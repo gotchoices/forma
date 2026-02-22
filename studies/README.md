@@ -35,7 +35,9 @@ studies) since physical constants and common utilities are universal.
 
 ## Active Studies
 
-(none)
+- `knot-zoo/` — What torus knots model known particles? Systematic
+  enumeration of (p,q) knots with predicted spin, charge, mass, and
+  fermion/boson classification.
 
 ## Concluded Studies
 
