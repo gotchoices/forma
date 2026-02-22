@@ -66,6 +66,8 @@ of extra dimensions required by string/M-theory (6 or 7).
 
 ## 3. Errors and Overreach in the Gemini Dialog
 
+*Verified computationally in `scripts/04_dialog_claims.py`.*
+
 The Gemini conversation (ref/dialog.md) generated many of the ideas explored
 here, but several of its quantitative claims do not hold up. These are
 corrected below.
@@ -129,7 +131,7 @@ Despite the above, several conceptual points from the dialog are sound:
 We define four testable propositions, ordered from most concrete to most
 speculative.
 
-### P1. Series Hypothesis
+### P1. Series Hypothesis  *(scripts/01_wvm_baseline.py, scripts/02_series_scan.py)*
 
 The WvM charge q₀ ≈ 0.91 e is the leading term of a convergent series.
 Additional toroidal sub-structures each contribute a geometrically
@@ -142,7 +144,7 @@ and some finite number of terms n+1.
 
 **Target:** S = e / q₀ ≈ 1.0985
 
-### P2. Recognizable Ratio
+### P2. Recognizable Ratio  *(scripts/02_series_scan.py)*
 
 The common ratio r corresponds to a recognized physical or mathematical
 constant. Preliminary numerical exploration identifies two promising
@@ -159,7 +161,7 @@ The exact required ratio (for an infinite series) is r ≈ 0.08968. The
 candidate 1/11 is intriguing given M-theory's 11 dimensions; 4πα has
 physical motivation from the Coulomb constant. Neither is exact.
 
-### P3. Finite Number of Terms
+### P3. Finite Number of Terms  *(scripts/03_scaling_dimensions.py)*
 
 The series has a finite number of terms n+1, corresponding to a
 physical cutoff (e.g., the Planck length). For small r (~0.09), the
@@ -170,7 +172,7 @@ strongly constrained by the charge target alone.
 If a physical argument can fix r independently, then n becomes
 meaningful: it is the number of sub-dimensions the photon traverses.
 
-### P4. Dimensional Correspondence
+### P4. Dimensional Correspondence  *(scripts/03_scaling_dimensions.py)*
 
 The number of terms (n+1) or the number of sub-dimensions (n)
 corresponds to the number of extra compactified dimensions required by
@@ -195,7 +197,7 @@ yields:
 
     q = (1/2π) √(3 ε₀ ℏ c)
 
-### 5.2 Sub-torus correction model
+### 5.2 Sub-torus correction model  *(scripts/02_series_scan.py)*
 
 Suppose the electron is not a single torus but a hierarchy: the primary
 torus of circumference λ_C contains a secondary torus of circumference
