@@ -301,31 +301,96 @@ fixed and the field retains its ~2.5% anisotropy.
 
 ---
 
-## Open Questions After F1–F5
+## F6. Analytical Derivation: a/R = 1/√(πα)
 
-1. **Can we model the field falloff from the orbit?** Rather than
-   hard walls at arbitrary a, compute the field of a guided wave
-   on the toroidal geodesic and see how it decays with distance
-   from the orbit. Does it fill the rotation horizon sphere
-   approximately uniformly?
+**No script** — algebraic derivation from WvM charge formula
+**Bears on:** P4 (self-consistency condition)
 
-2. **Is the non-uniform distribution quantifiable?** If the field
-   is denser near the orbit and sparser near the horizon, does
-   this non-uniformity produce a correction factor close to 1/0.91
-   ≈ 1.099? If so, the correction has a clean geometric origin.
+The empirical value a/R ≈ 6.60 from F4 has an exact analytical form.
 
-3. **What fixes the effective volume?** The value a/R ≈ 6.60 gives
-   q = e exactly. Is there a self-consistency condition (e.g., the
-   field at the horizon matches the external Coulomb field, or the
-   energy density at the boundary equals zero) that selects this
-   value?
+### Derivation
 
-4. **Does the geodesic orbit change with a/R?** In the spindle
-   regime, the orbit passes through the center. Does this alter the
-   photon dynamics, or is the orbit purely determined by the major
-   radius R regardless of the field extent?
+WvM's charge (uniform field in volume V, matched at radius r_c = R):
 
-5. **Does the quadrupole anisotropy affect the charge?** The (2,1)
-   orbit produces a ~2.5% quadrupole deviation from spherical
-   symmetry at the horizon. Does including this correction in the
-   charge derivation shift q/e appreciably?
+    q² = 3ε₀ℏc / (4π²)
+
+Elementary charge in terms of α:
+
+    e² = 4πε₀αℏc
+
+For q = e using torus volume V = 2π²Ra²:
+
+    (a/R)² = 2ε₀hc / (πe²) = 1/(πα)
+
+Therefore:
+
+    a/R = 1/√(πα) = 6.60454...
+
+This is exact — not a numerical coincidence. Verification:
+
+    πα = 0.022925...
+    1/√(πα) = 6.60454
+    empirical search value = 6.60450
+    agreement: 0.0006%
+
+### Interpretation
+
+The result is partly tautological: since q_WvM encodes ε₀ℏc and e²
+encodes α = e²/(4πε₀ℏc), inverting one to match the other naturally
+produces α. However, the form is clean and physically suggestive:
+
+**The effective field extent equals 1/√(πα) times the orbital radius.**
+
+This directly ties the geometry (how far the field extends from the
+orbit) to the electromagnetic coupling strength. If an independent
+physical argument could derive a/R = 1/√(πα) — without simply
+demanding q = e — that would amount to deriving α from geometry.
+
+Possible independent routes (not yet explored):
+- **Boundary matching:** Require the internal field at the horizon
+  to match the external Coulomb field continuously. Does this
+  condition select a/R = 1/√(πα)?
+- **Energy minimization:** Find the a/R that minimizes the total
+  energy (internal EM + external Coulomb) for a fixed photon energy.
+- **Self-consistent confinement:** Require the field to produce
+  exactly the geometry that confines it (the photon's own field
+  defines the torus/sphere it lives in).
+
+These remain open for future investigation.
+
+---
+
+## Conclusion
+
+Study 2 answers its central question:
+
+**What effective geometry reproduces q = e?**
+
+A degenerate torus (or equivalently, the rotation-horizon sphere)
+with tube-to-ring ratio a/R = 1/√(πα) ≈ 6.60. The field of the
+photon, orbiting at R = λ/(4π), extends outward to approximately
+0.6λ, filling a nearly spherical volume. The topology (double-loop
+geodesic) gives spin ½ exactly; the extended field geometry gives
+charge ≈ e; the ~2.5% quadrupole anisotropy from the (2,1) orbit
+is presumably averaged by quantum spin superposition.
+
+The deeper question — can a/R = 1/√(πα) be derived independently,
+thereby deriving α from geometry? — remains open.
+
+---
+
+## Open Questions (for future studies)
+
+1. **Can α be derived from geometry?** Is there a self-consistency
+   condition (boundary matching, energy minimization, or self-
+   consistent confinement) that independently selects a/R = 1/√(πα)?
+
+2. **Field falloff from the orbit.** Compute the guided-wave decay
+   profile to determine the actual (non-uniform) field distribution
+   within the horizon sphere.
+
+3. **Quadrupole correction.** Quantify how the (2,1) orbit's ~2.5%
+   anisotropy affects the charge derivation.
+
+4. **Precession.** What would cause the torus axis to precess, and
+   would it restore spherical symmetry?

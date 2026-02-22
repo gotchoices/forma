@@ -35,11 +35,14 @@ studies) since physical constants and common utilities are universal.
 
 ## Active Studies
 
-- `toroid-geometry/` — What effective geometry in the WvM electron
-  model reproduces the measured charge q = e? Explores the
-  torus-to-sphere continuum and the degenerate torus solution.
+(none)
 
 ## Concluded Studies
+
+- `toroid-geometry/` — What effective geometry reproduces q = e?
+  **Answer:** a/R = 1/√(πα) ≈ 6.60 — the field extends 1/√(πα) orbital
+  radii from the geodesic, filling a nearly spherical volume. Whether
+  this can be derived independently of demanding q = e remains open.
 
 - `toroid-series/` — Can a geometric series of nested toroidal
   sub-dimensions correct WvM's ~9% charge deficit? **Null result:**
@@ -55,6 +58,14 @@ studies) since physical constants and common utilities are universal.
   or hypothetical particles? Systematic enumeration of knot types
   and their predicted quantum numbers.
 
+- **α from geometry.** Study 2 showed a/R = 1/√(πα) gives q = e.
+  This is algebraically exact but derived by demanding q = e. Can
+  an independent physical argument (boundary matching, energy
+  minimization, self-consistent confinement) select this ratio,
+  thereby deriving α from geometry? All three candidate routes
+  require solving the guided-wave profile — a substantial
+  electromagnetic calculation.
+
 - **Precession of the torus axis.** The (2,1) orbit produces an
   axially symmetric field, not a spherically symmetric one (~2.5%
   quadrupole at the horizon). If axis precession eliminates this
@@ -62,13 +73,6 @@ studies) since physical constants and common utilities are universal.
   coupling, self-interaction, Thomas precession analog) and
   mathematically (is it a natural consequence of the equations of
   motion in curved self-generated geometry)?
-
-- **Analytical derivation of a/R ≈ 6.60.** The degenerate torus with
-  a/R ≈ 6.60 gives q = e exactly (empirically). Can this ratio be
-  derived from natural units or first principles? Is it expressible
-  in terms of known constants (π, α, etc.)? A self-consistency
-  condition (field matching at the boundary, energy minimization)
-  might select this value uniquely.
 
 - **Confinement mechanism.** What physical mechanism (nonlinear vacuum,
   compactified dimension, self-gravity) confines the photon to the

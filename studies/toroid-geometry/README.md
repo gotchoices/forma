@@ -1,31 +1,34 @@
-# Toroid Geometry
+# Toroid Geometry  *(concluded)*
 
 What effective geometry in the Williamson–van der Mark (WvM) electron
 model reproduces the measured electron charge q = e?
 
-## Background
+## Result
 
-The predecessor study (`../toroid-series/`) attempted to correct WvM's
-~9% charge deficit via a geometric series of nested sub-tori. That study
-blocked when geometric sensitivity analysis and a toroidal cavity mode
-calculation revealed that the deficit is not a robust physical number —
-it depends entirely on WvM's choice of a spherical cavity of diameter λ.
+**a/R = 1/√(πα) ≈ 6.60** — a degenerate torus whose tube radius is
+1/√(πα) times the orbital radius reproduces q = e exactly.
 
-This study investigates the geometry itself: why does WvM's sphere work,
-what does the continuum from torus to sphere look like, and can we
-identify the physically correct effective volume?
+The photon orbits at R = λ/(4π), but its field extends outward to
+~0.6λ, filling a nearly spherical volume bounded by the rotation
+horizon (r = λ/2). The topology (double-loop geodesic) gives spin ½
+exactly; the extended field geometry gives charge; the analytical
+ratio ties the geometry directly to the fine-structure constant α.
 
-## Key Questions
+## Key Findings
 
-1. Why does WvM's sphere of diameter λ give q ≈ 0.91e, while an actual
-   toroidal cavity gives q = 14–128× e?
-2. Is the "rotation horizon" at r = λ/2 the physically correct boundary
-   for the field?
-3. A degenerate torus (tube radius a ≫ major radius R) bridges the gap
-   between torus and sphere. At a/R ≈ 6.60, q = e exactly. Is there a
-   self-consistency condition that selects this value?
-4. Can the field falloff from the geodesic orbit be modeled to determine
-   the actual effective volume?
+1. WvM's sphere is the rotation horizon — a physically motivated
+   boundary, not arbitrary (F1, F3).
+2. A toroidal cavity (hard walls) gives q = 14–128× e; the sphere
+   is what makes q ≈ e (F2).
+3. The torus-to-sphere continuum is smooth; a/R ≈ 6.60 gives q = e (F4).
+4. The (2,1) orbit produces ~2.5% quadrupole anisotropy (F5).
+5. a/R = 1/√(πα) exactly — clean analytical form (F6).
+
+## Spawned Questions
+
+Whether a/R = 1/√(πα) can be derived independently (not just by
+demanding q = e) remains open. See `findings.md` conclusion and
+`../README.md` future study ideas.
 
 ## Scripts
 
