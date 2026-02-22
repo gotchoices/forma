@@ -35,14 +35,22 @@ studies) since physical constants and common utilities are universal.
 
 ## Active Studies
 
-- `toroid-series/` — Can a series correction to the WvM charge
-  estimate, based on nested toroidal sub-dimensions, converge to the
-  measured electron charge?
+- `toroid-geometry/` — What effective geometry in the WvM electron
+  model reproduces the measured charge q = e? Explores the
+  torus-to-sphere continuum and the degenerate torus solution.
+
+## Concluded Studies
+
+- `toroid-series/` — Can a geometric series of nested toroidal
+  sub-dimensions correct WvM's ~9% charge deficit? **Null result:**
+  the deficit is an artifact of geometric approximations, not a robust
+  target for series correction. Spawned `toroid-geometry/`.
 
 ## Future Study Ideas
 
-- **Alternative field-distribution models for WvM charge.** The WvM
-  charge estimate (q ≈ 0.91 e) relies on simplifying assumptions
-  (homogeneous field, spherical cavity, specific charge radius). A
-  study could explore whether more realistic field distributions close
-  the 9% gap without requiring sub-structure.
+- **Lepton mass spectrum from winding number.** The (2,1) torus knot
+  gives spin ½ for the electron. Could (2,3) or (2,5) knots correspond
+  to muon and tau, with the winding complexity setting the mass?
+- **Confinement mechanism.** What physical mechanism (nonlinear vacuum,
+  compactified dimension, self-gravity) confines the photon to the
+  toroidal geodesic?

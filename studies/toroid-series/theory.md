@@ -236,7 +236,34 @@ field-distribution calculation is needed first.
 
 ---
 
-## 6. Scope Exclusions
+## 6. Outcome
+
+**This study reached a null result.** The series hypothesis (P1–P4)
+was predicated on the 9% charge deficit being a precise, physically
+meaningful target. Follow-on geometric analysis (now in
+`../toroid-geometry/`) showed that:
+
+- The deficit arises entirely from WvM's choice of a spherical cavity
+  of diameter λ, not from the toroidal topology.
+- A toroidal cavity (Maxwell's equations, hard walls) gives q = 14–128× e.
+- The sphere is physically justified as the "rotation horizon" — the
+  boundary within which the photon's field exists — but the precise
+  charge depends sensitively on the assumed volume and comparison
+  radius (~5–10% systematic uncertainty).
+- No series correction to an imprecise target can be physically
+  meaningful.
+
+The study did establish several useful results:
+- The geometric series form is uniquely optimal (F5).
+- Named-constant candidates (1/11, 4πα) exist near r ≈ 0.09 (F2).
+- The Gemini dialog's specific quantitative claims are largely wrong (F4).
+
+**Spawned study:** `../toroid-geometry/` — what effective geometry
+reproduces q = e?
+
+---
+
+## 7. Scope Exclusions
 
 The following topics from the Gemini dialog are **out of scope** for this
 study. They are noted here so they can be revisited in future studies if
