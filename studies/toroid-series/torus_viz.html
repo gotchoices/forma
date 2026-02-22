@@ -106,6 +106,8 @@ input[type=range]::-webkit-slider-thumb {
   <div class="toggle"><label><input type="checkbox" id="tp" checked> Photon (animated)</label></div>
   <div class="toggle"><label><input type="checkbox" id="th"> Rotation horizon sphere</label></div>
   <div class="toggle"><label><input type="checkbox" id="ta"> Symmetry axis</label></div>
+  <hr style="border-color:#333; margin:8px 0 6px">
+  <div class="toggle"><label><input type="checkbox" id="tf" checked> Auto-fit scale</label></div>
 </div>
 
 <div id="info">
@@ -172,7 +174,12 @@ scene.add(fill);
 
 const R = 1.0;
 let aR = 0.5;
+let autoFit = true;
+const FIT = 2.0;
 const HORIZON = 2 * Math.PI;
+
+const world = new THREE.Group();
+scene.add(world);
 
 const SEG_U = 96, SEG_V = 192;
 
@@ -212,8 +219,8 @@ const wireMat = new THREE.MeshBasicMaterial({
 
 let torusMesh = new THREE.Mesh(buildTorusGeom(aR), torusMat);
 let wireMesh = new THREE.Mesh(buildTorusGeom(aR), wireMat);
-scene.add(torusMesh);
-scene.add(wireMesh);
+world.add(torusMesh);
+world.add(wireMesh);
 
 const GEO_N = 600;
 function geodesicPoints(a) {
@@ -229,7 +236,8 @@ function geodesicPoints(a) {
 function buildGeodesicTube(a) {
   const pts = geodesicPoints(a);
   const curve = new THREE.CatmullRomCurve3(pts, true);
-  const tubeR = 0.025 * Math.max(1, a * 0.5);
+  const gs = autoFit ? FIT / (R + a) : 1.0;
+  const tubeR = 0.025 / gs;
   return new THREE.TubeGeometry(curve, GEO_N, tubeR, 6, true);
 }
 
@@ -237,14 +245,14 @@ const geoMat = new THREE.MeshPhongMaterial({
   color: 0xff6e40, emissive: 0x661800, shininess: 80
 });
 let geoMesh = new THREE.Mesh(buildGeodesicTube(aR), geoMat);
-scene.add(geoMesh);
+world.add(geoMesh);
 
 const photonGeo = new THREE.SphereGeometry(0.06, 16, 12);
 const photonMat = new THREE.MeshBasicMaterial({ color: 0xfdd835 });
 const photon = new THREE.Mesh(photonGeo, photonMat);
 const photonGlow = new THREE.PointLight(0xfdd835, 2, 3);
 photon.add(photonGlow);
-scene.add(photon);
+world.add(photon);
 
 const horizonGeo = new THREE.SphereGeometry(HORIZON, 40, 24);
 const horizonMat = new THREE.MeshBasicMaterial({
@@ -252,26 +260,27 @@ const horizonMat = new THREE.MeshBasicMaterial({
 });
 const horizonMesh = new THREE.Mesh(horizonGeo, horizonMat);
 horizonMesh.visible = false;
-scene.add(horizonMesh);
+world.add(horizonMesh);
 
 const axisGeo = new THREE.BufferGeometry().setFromPoints([
   new THREE.Vector3(0, -20, 0), new THREE.Vector3(0, 20, 0)
 ]);
 const axisMesh = new THREE.Line(axisGeo, new THREE.LineBasicMaterial({ color: 0x444444 }));
 axisMesh.visible = false;
-scene.add(axisMesh);
+world.add(axisMesh);
 
 function rebuild() {
   const a = aR * R;
+  const gs = autoFit ? FIT / (R + a) : 1.0;
+  world.scale.setScalar(gs);
   torusMesh.geometry.dispose();
   torusMesh.geometry = buildTorusGeom(a);
   wireMesh.geometry.dispose();
   wireMesh.geometry = buildTorusGeom(a);
   geoMesh.geometry.dispose();
   geoMesh.geometry = buildGeodesicTube(a);
-  const s = 0.06 * Math.max(1, a * 0.4);
-  photon.scale.setScalar(s);
-  photonGlow.distance = 3 * Math.max(1, a * 0.3);
+  photon.scale.setScalar(0.06 / gs);
+  photonGlow.distance = 3 / gs;
   updateInfo();
 }
 
@@ -316,6 +325,7 @@ document.getElementById('tg').addEventListener('change', e => { geoMesh.visible 
 document.getElementById('tp').addEventListener('change', e => { photon.visible = e.target.checked; });
 document.getElementById('th').addEventListener('change', e => { horizonMesh.visible = e.target.checked; });
 document.getElementById('ta').addEventListener('change', e => { axisMesh.visible = e.target.checked; });
+document.getElementById('tf').addEventListener('change', e => { autoFit = e.target.checked; rebuild(); });
 
 window.addEventListener('resize', () => {
   camera.aspect = window.innerWidth / window.innerHeight;
