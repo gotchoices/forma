@@ -48,9 +48,28 @@ studies) since physical constants and common utilities are universal.
 
 ## Future Study Ideas
 
-- **Lepton mass spectrum from winding number.** The (2,1) torus knot
-  gives spin ½ for the electron. Could (2,3) or (2,5) knots correspond
-  to muon and tau, with the winding complexity setting the mass?
+- **Torus knot particle zoo.** The (2,1) torus knot gives spin ½ for
+  the electron. What other knots properly model known or expected
+  particles? Could (2,3) or (2,5) correspond to muon and tau (with
+  winding complexity setting the mass)? What about bosons, baryons,
+  or hypothetical particles? Systematic enumeration of knot types
+  and their predicted quantum numbers.
+
+- **Precession of the torus axis.** The (2,1) orbit produces an
+  axially symmetric field, not a spherically symmetric one (~2.5%
+  quadrupole at the horizon). If axis precession eliminates this
+  anisotropy, what drives the precession — classically (spin-orbit
+  coupling, self-interaction, Thomas precession analog) and
+  mathematically (is it a natural consequence of the equations of
+  motion in curved self-generated geometry)?
+
+- **Analytical derivation of a/R ≈ 6.60.** The degenerate torus with
+  a/R ≈ 6.60 gives q = e exactly (empirically). Can this ratio be
+  derived from natural units or first principles? Is it expressible
+  in terms of known constants (π, α, etc.)? A self-consistency
+  condition (field matching at the boundary, energy minimization)
+  might select this value uniquely.
+
 - **Confinement mechanism.** What physical mechanism (nonlinear vacuum,
   compactified dimension, self-gravity) confines the photon to the
   toroidal geodesic?

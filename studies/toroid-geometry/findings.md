@@ -236,7 +236,72 @@ descriptions might be mathematically equivalent.
 
 ---
 
-## Open Questions After F1–F4
+## F5. Spherical Symmetry of the (2,1) Orbit Field
+
+**No script** — geometric/analytical reasoning
+**Bears on:** P1 (rotation horizon), P3 (non-uniform distribution)
+
+The (2,1) geodesic does NOT produce a perfectly spherically symmetric
+time-averaged field. It produces an **axially symmetric** field
+(symmetric about the torus/spin axis) with a preferred equatorial
+plane. The key reasons:
+
+### What the (2,1) orbit does provide
+
+- **Full azimuthal symmetry:** The photon visits all angles φ
+  uniformly (two full revolutions), giving perfect rotational
+  symmetry about the spin axis.
+- **Mirror symmetry:** The photon passes above and below the
+  equatorial plane equally, eliminating any dipole moment.
+
+### What it does not provide
+
+The orbit is always at distance R from the torus center. It never
+visits the poles of the rotation-horizon sphere. The time-averaged
+charge distribution is a thickened ring in the equatorial plane,
+not a uniform sphere.
+
+The leading non-spherical correction is the **quadrupole**, which
+scales as (R/r)² relative to the monopole. At the rotation horizon
+(r = λ/2 ≈ 2πR):
+
+    quadrupole / monopole ≈ 1/(4π²) ≈ 2.5%
+
+So the field is ~97.5% monopole (spherical) at the horizon boundary,
+but not perfectly uniform. This ~2.5% deviation is the same order
+as part of the charge correction.
+
+### Precession and spherical symmetry
+
+To produce a truly uniform 3D radial field, the **torus axis itself
+would need to precess** through all orientations — not just the
+photon circling the ring, but the ring's axis tumbling through every
+direction. This is analogous to how a single atomic p-orbital is
+not spherically symmetric, but summing over all magnetic quantum
+numbers m gives a spherical distribution.
+
+In quantum mechanics, this averaging happens automatically: the
+electron's spin has no definite axis until measured. The quantum
+state is a superposition over orientations, which averages the
+quadrupole to zero. In the classical WvM picture, the axis is
+fixed and the field retains its ~2.5% anisotropy.
+
+### Implications
+
+1. WvM's "uniform field in a sphere" assumption is valid to ~97.5%
+   at the horizon boundary. This is another source of the few-percent
+   geometric uncertainty.
+2. The quadrupole correction is the same order (~2.5%) as part of
+   the charge deficit. A full calculation of the charge including
+   the non-spherical field distribution might shift q/e by a few
+   percent.
+3. If precession of the torus axis is physically present (either
+   classically or via quantum superposition), it would eliminate the
+   quadrupole and potentially change the effective charge.
+
+---
+
+## Open Questions After F1–F5
 
 1. **Can we model the field falloff from the orbit?** Rather than
    hard walls at arbitrary a, compute the field of a guided wave
@@ -259,3 +324,8 @@ descriptions might be mathematically equivalent.
    regime, the orbit passes through the center. Does this alter the
    photon dynamics, or is the orbit purely determined by the major
    radius R regardless of the field extent?
+
+5. **Does the quadrupole anisotropy affect the charge?** The (2,1)
+   orbit produces a ~2.5% quadrupole deviation from spherical
+   symmetry at the horizon. Does including this correction in the
+   charge derivation shift q/e appreciably?
