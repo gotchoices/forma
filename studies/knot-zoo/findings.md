@@ -86,19 +86,103 @@ the field extent. So spin = ℏ/q holds even though a_field/R ≈ 6.6.
 2. **What determines the mass?** If different particles have different
    torus sizes, what selects the torus size (and hence the mass)?
    The WvM model does not answer this — mass is an input.
+   **However:** if the torus is reframed as a fixed compact extra
+   dimension (see F2 below), mass comes from photon energy, not
+   torus size. This resolves the mass problem entirely. See the
+   "compact dimension and mass spectrum" future study in
+   `../README.md`.
 
 3. **Do higher-p knots on q = 2 correspond to heavier fermions?**
-   (3,2) and (5,2) are spin-½ fermions. If they live on smaller
-   tori (higher mass), could they be the muon and tau? What would
-   set the mass ratio?
+   (3,2) and (5,2) are spin-½ fermions. On a fixed torus they are
+   lighter (longer path), but higher harmonics (n > 1) of the same
+   knot could be heavier. Alternatively, different particle types
+   might live in different compact dimensions.
 
 4. **Charge for different knots.** Does the charge derivation
    (q = e via a/R = 1/√(πα)) change for different (p,q)? Or is
    it universal? The field topology may differ for higher-p knots.
+   Fractional charges (1/3, 2/3 for quarks) are a key test.
 
-5. **Spin 1 bosons.** The (2,1) knot is a spin-1 boson. Could this
-   model the photon (which IS a spin-1 boson)? That would be
-   intriguingly circular: the WvM electron is a photon on a (1,2)
-   knot, and the photon itself might be a photon on a (2,1) knot —
-   or perhaps a free, unconfined photon is the trivial (0,1) or
-   (1,0) case.
+5. **Photon as trivial case.** The free photon is not a knot — it
+   is the unconfined building block. A photon traversing ordinary
+   (non-compact) space is massless and has spin 1 without any
+   toroidal topology. Modeling it as a knot of itself is circular.
+
+---
+
+## F2. Compact Dimension Reframing
+
+**No script** — conceptual analysis
+**Bears on:** P3 (mass ratios), theory.md §4
+
+### The confinement problem dissolves
+
+WvM's biggest weakness is the unknown confinement mechanism: what
+forces a photon into a toroidal orbit? This problem disappears under
+a different interpretation:
+
+**Interpretation A (WvM original):** The photon orbits in our 3D space.
+Something confines it. No known force can do this.
+
+**Interpretation B (compact dimension):** The torus IS an extra
+dimension of spacetime — compact, fixed in size, orthogonal to (x,y,z).
+The photon follows a geodesic (straight line) in this space. No force
+is needed: a straight line on a compact space is already closed.
+
+This is the Kaluza-Klein idea (1919–1926): charge emerges from momentum
+in a compactified dimension. WvM's charge derivation is a specific
+instance of this.
+
+### Mass from photon energy, not torus size
+
+Under interpretation B, the torus dimensions (R, a) are properties of
+spacetime — fixed, shared by all particles. The photon's energy is a
+separate parameter that determines the particle mass:
+
+    m = E/c² = h/(λc)
+
+The knot topology (p,q) determines quantum numbers (spin, charge).
+The photon energy determines mass. These are independent.
+
+Quantization: the photon wavelength must fit the closed path
+(constructive interference). On a path of length L, allowed
+wavelengths are λ = L/n, giving:
+
+    m_n = nh/(Lc)    for n = 1, 2, 3, ...
+
+The fundamental (n=1) is the lightest particle for that knot type.
+Higher harmonics (n > 1) are heavier particles with the same quantum
+numbers.
+
+### Two sub-models
+
+**Shared dimension:** All particles live on one fixed torus. Different
+knots give different quantum numbers. Harmonics give the mass spectrum.
+Testable prediction: lepton mass ratios should be integers
+(m_μ/m_e ≈ 207, m_τ/m_e ≈ 3477). If not exact integers, the model
+needs refinement.
+
+**Per-particle dimensions:** Electron and quarks each have their own
+compact dimension (a small number: perhaps 1 for leptons, 1 for
+quarks). This is cleaner if mass ratios don't fit integer harmonics,
+and it's still economical — 2 or 3 extra dimensions vs string theory's
+6–7.
+
+### Implications for this study
+
+This reframing is significant enough to warrant its own study. The
+knot-zoo study can continue with topological classification (spin,
+charge, fermion/boson) without committing to either mass model. The
+mass spectrum question — harmonics on a fixed torus vs separate
+dimensions — should be explored in a dedicated "compact dimension"
+study.
+
+### Why this matters
+
+If the compact dimension picture works:
+- No confinement problem (geodesic on compact space)
+- Mass from photon energy (not a free parameter per particle)
+- Spin from topology (robust, not approximate)
+- Charge from field geometry (as in study 2)
+- Small number of extra dimensions (1–3, not 6–7)
+- Particles are literally just photons on different paths

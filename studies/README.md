@@ -53,12 +53,22 @@ studies) since physical constants and common utilities are universal.
 
 ## Future Study Ideas
 
-- **Torus knot particle zoo.** The (2,1) torus knot gives spin ½ for
-  the electron. What other knots properly model known or expected
-  particles? Could (2,3) or (2,5) correspond to muon and tau (with
-  winding complexity setting the mass)? What about bosons, baryons,
-  or hypothetical particles? Systematic enumeration of knot types
-  and their predicted quantum numbers.
+- **Compact dimension and mass spectrum.** Reframe the torus as a
+  fixed compact extra dimension (not a particle-specific confinement).
+  The photon follows a geodesic (no confining force needed); its
+  energy — not the torus size — creates the apparent particle mass.
+  Quantization (wavelength must fit the closed path) restricts allowed
+  masses to m_n = nh/(Lc). Two sub-models to explore:
+  - *Shared dimension:* All particles live on one fixed torus.
+    Different knots give different quantum numbers; harmonics (n)
+    give the mass spectrum. Leptons as (1,2) harmonics: are
+    m_μ/m_e ≈ 207 and m_τ/m_e ≈ 3477 close to integers?
+  - *Per-particle dimensions:* Electron and quarks each have their
+    own compact dimension (still a small number: 1 for leptons, 1
+    for quarks, maybe 1 shared). Cleaner if mass ratios don't fit
+    integer harmonics.
+  This study also eliminates the confinement problem: on a compact
+  space, a geodesic is already closed — no force required.
 
 - **α from geometry.** Study 2 showed a/R = 1/√(πα) gives q = e.
   This is algebraically exact but derived by demanding q = e. Can
@@ -75,7 +85,3 @@ studies) since physical constants and common utilities are universal.
   coupling, self-interaction, Thomas precession analog) and
   mathematically (is it a natural consequence of the equations of
   motion in curved self-generated geometry)?
-
-- **Confinement mechanism.** What physical mechanism (nonlinear vacuum,
-  compactified dimension, self-gravity) confines the photon to the
-  toroidal geodesic?
