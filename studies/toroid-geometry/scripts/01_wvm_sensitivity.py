@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-06_wvm_sensitivity.py — Sensitivity of the WvM charge estimate to geometry.
+01_wvm_sensitivity.py — Sensitivity of the WvM charge estimate to geometry.
 
 The WvM charge derivation makes two geometric choices:
   1. Cavity volume V  (determines average field ⟨E⟩ from photon energy)

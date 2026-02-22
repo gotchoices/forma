@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-07_toroidal_modes.py — EM cavity modes of the WvM toroidal electron.
+02_toroidal_modes.py — EM cavity modes of the WvM toroidal electron.
 
 Solves Maxwell's equations (Helmholtz equation) for the lowest resonant
 mode in a toroidal cavity, replacing WvM's uniform-field-in-a-sphere
