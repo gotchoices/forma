@@ -1,20 +1,20 @@
 # Knot Zoo — Status
 
+**Study concluded.**
+
 ## Completed
 
 - [x] Torus knot survey: spin, fermion/boson, mass ratios — `01_knot_survey.py` → F1
 - [x] Compact dimension reframing — F2
+- [x] Charge variation across (p,q) knots — `02_knot_charge.py` → F3 (null: only (1,2) produces charge)
+- [x] Charge from geometry: same knot, different a/R — `03_charge_geometry.py` → F4
 
-## In Progress
+## Not Pursued (out of scope for this study)
 
-(none)
+- Verify spin formula for general (p,q) beyond the a << R limit
+- Multi-photon states as mechanism for fractional quark charge
+- Non-toroidal compact topologies for quark charge quantization
 
-## Planned
+## Questions Raised
 
-- [ ] Verify spin formula for general (p,q) beyond the a << R limit
-- [ ] Generalize WvM charge derivation for (p,q) knots — can fractional charges emerge?
-- [ ] Focus on e, u, d: what knots give charges -1, +2/3, -1/3?
-
-## Spawned Study Ideas
-
-- Compact dimension and mass spectrum (see `../README.md`)
+See `../QUESTIONS.md` for the research question queue.

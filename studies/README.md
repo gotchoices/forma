@@ -35,21 +35,24 @@ studies) since physical constants and common utilities are universal.
 
 ## Active Studies
 
-- `knot-zoo/` — What torus knots model known particles? Systematic
-  enumeration of (p,q) knots with predicted spin, charge, mass, and
-  fermion/boson classification.
+(none)
 
-## Concluded Studies
+## Concluded Studies (chronological)
 
-- `toroid-geometry/` — What effective geometry reproduces q = e?
-  **Answer:** a/R = 1/√(πα) ≈ 6.60 — the field extends 1/√(πα) orbital
-  radii from the geodesic, filling a nearly spherical volume. Whether
-  this can be derived independently of demanding q = e remains open.
+1. **`toroid-series/`** — Can a geometric series of nested toroidal
+   sub-dimensions correct WvM's ~9% charge deficit? **Null result:**
+   the deficit is an artifact of geometric approximations, not a robust
+   target for series correction. Spawned `toroid-geometry/`.
 
-- `toroid-series/` — Can a geometric series of nested toroidal
-  sub-dimensions correct WvM's ~9% charge deficit? **Null result:**
-  the deficit is an artifact of geometric approximations, not a robust
-  target for series correction. Spawned `toroid-geometry/`.
+2. **`toroid-geometry/`** — What effective geometry reproduces q = e?
+   **Answer:** a/R = 1/√(πα) ≈ 6.60 — the field extends 1/√(πα)
+   orbital radii from the geodesic, filling a nearly spherical volume.
+   Spawned `knot-zoo/`.
+
+3. **`knot-zoo/`** — What torus knots model known particles?
+   **Answer:** only the (1,2) knot produces charge. Different particles
+   are the same knot on compact dimensions with different aspect ratios.
+   Raises foundational questions about the nature of compact dimensions.
 
 ## Future Study Ideas
 

@@ -148,3 +148,13 @@ extend?
 - Gravitational effects
 - Detailed field calculations (see toroid-geometry open questions)
 - Strong/weak force interactions
+
+---
+
+## 7. Outcome
+
+The zoo is empty. Only the (1,2) knot produces electric charge
+(F3). Different particles are distinguished not by knot type but
+by the geometry of their compact dimension (F4) and photon energy
+(F2). The relevant framework is no longer knot classification but
+compact dimension theory. See findings.md conclusion.

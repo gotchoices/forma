@@ -110,6 +110,190 @@ the field extent. So spin = ℏ/q holds even though a_field/R ≈ 6.6.
 
 ---
 
+## F3. Charge Variation Across Knots — Null Result
+
+**Script:** `scripts/02_knot_charge.py`
+**Bears on:** P2 (charge), F1 open question 4
+
+### Method
+
+Parameterized (p,q) torus knots on a thin torus (a ≪ R) and propagated
+a circularly polarized E-field along each path using the Frenet frame.
+Computed three independent charge measures:
+
+- **M_sph** = ⟨E · r̂⟩ — spherical monopole moment
+- **M_cyl** = ⟨E · ρ̂⟩ — cylindrical radial component
+- **M_tube** = ⟨E · r̂_tube⟩ — outward from tube center (WvM mechanism)
+
+All measures normalized to the (1,2) baseline (electron).
+
+### Result
+
+**Only (1,2) produces charge. All other knots produce exactly zero.**
+
+| Knot  | Spin | Q_sph | Q_cyl | Q_tube |
+|-------|------|-------|-------|--------|
+| (1,2) | ½    | 1.000 | 1.000 | 1.000  |
+| (3,2) | ½    | 0.000 | 0.000 | 0.000  |
+| (5,2) | ½    | 0.000 | 0.000 | 0.000  |
+| (7,2) | ½    | 0.000 | 0.000 | 0.000  |
+| (9,2) | ½    | 0.000 | 0.000 | 0.000  |
+
+Tested across a/R = 0.001, 0.01, 0.1, 0.3, 0.5 — result is
+identical in every case. This is not a numerical artifact.
+
+### Why this happens — symmetry cancellation
+
+For a (p,2) knot, the path winds p times around the tube per 2
+circuits of the major axis. The E-field, transverse to the path,
+rotates with tube angle θ = p·t.
+
+For p = 1, the E-field orientation correlates with the azimuthal
+position in just the right way to produce a net outward monopole
+component — this is the WvM electron.
+
+For p > 1, the E-field completes multiple oscillations around the
+tube cross-section per trip around the major axis. Outward and inward
+contributions cancel exactly, leaving zero monopole moment. This is
+the same reason ∫cos(nθ)dθ = 0 for n ≥ 1 over a full period.
+
+The cancellation is topological: it depends only on the winding
+numbers, not on the torus geometry (a/R). No tuning of the torus
+shape can produce fractional charge from higher-winding knots.
+
+### Implications
+
+1. **Fractional charges cannot emerge from single-photon torus knots.**
+   The 1/3 and 2/3 charges of quarks cannot be explained by assigning
+   quarks to (3,2) or (5,2) knots on the same torus.
+
+2. **The WvM electron (1,2) is unique.** It is the only torus knot
+   that produces a net electric field with monopole character. This
+   is actually a strength of the model: it explains why there is
+   exactly one fundamental charged lepton topology.
+
+3. **Quarks need a different mechanism.** Possible directions:
+   - **Multi-photon states:** Three confined photons with correlated
+     phases could each contribute 1/3 of the charge, yielding
+     fractional apparent charge. This naturally connects to three
+     color charges.
+   - **Different compact dimensions:** Quarks might live in a
+     different extra dimension with different topology, where the
+     charge integral produces 1/3 or 2/3 instead of 1.
+   - **Non-toroidal topology:** Quarks might not be torus knots at
+     all. Other compact manifolds (lens spaces, Seifert fibrations)
+     could yield different charge quantizations.
+
+4. **Neutrino interpretation.** The (3,2), (5,2), ... knots have
+   spin ½ and zero charge — precisely the neutrino's quantum numbers.
+   This is suggestive but not conclusive, since the mass mechanism
+   is unresolved.
+
+---
+
+## F4. Charge from Geometry: Same Knot, Different Torus
+
+**Script:** `scripts/03_charge_geometry.py`
+**Bears on:** P2 (charge), F3 (null result for winding-based charge)
+
+### Setup
+
+F3 showed that varying the knot winding produces zero charge for
+everything except (1,2). But from the toroid-geometry study (F6), the
+charge is a continuous function of the torus aspect ratio:
+
+    q = e / ((a/R) · √(πα))
+
+This means different a/R values produce different charges. Inverting:
+
+    a/R = 1 / (q_frac · √(πα))
+
+### Required a/R for each charge quantum
+
+| Particle    | Charge | a/R           | Numerical | Multiple of electron |
+|-------------|--------|---------------|-----------|---------------------|
+| Electron    | e      | 1/√(πα)       | 6.60      | 1.0×                |
+| Up quark    | 2e/3   | (3/2)/√(πα)   | 9.91      | 1.5×                |
+| Down quark  | e/3    | 3/√(πα)       | 19.81     | 3.0×                |
+| Neutrino    | 0      | ∞             | —         | —                   |
+
+The ratios are clean: a/R scales as 1/q_frac, giving 1 : 3/2 : 3
+for electron : up : down. All three are the same knot — (1,2) — on
+tori with different field extents.
+
+### Model A: shared compact dimension
+
+If all particles live on one compact dimension (tube radius a fixed,
+R varies with particle mass via R = ℏ/(2mc)):
+
+    m_u/m_e = (a/R_u)/(a/R_e) = 3/2 → m_u = 0.77 MeV
+
+Experimental m_u ≈ 2.2 MeV — off by a factor of ~3. Absolute masses
+do not match.
+
+However, the *ratio* within the quark sector:
+
+    m_d/m_u = (a/R_d)/(a/R_u) = (3)/(3/2) = 2.000
+    Experimental m_d/m_u = 2.162
+
+Agreement to 7.5%. The model predicts a clean 2:1 mass ratio for
+first-generation quarks.
+
+### Model B: two compact dimensions (leptons vs quarks)
+
+Separate the electron and quarks into different compact dimensions.
+The quark dimension has its own tube radius a_q. Only the quark mass
+ratio is predicted:
+
+    m_d/m_u = 2.000  vs  experimental 2.162  (7.5% off)
+
+### Cross-generation test (Model A only)
+
+Model A links mass and charge through geometry: with fixed a, the
+orbital radius R determines both the charge (via a/R) and the mass
+(via R = ℏ/(2mc)). This predicts that the mass ratio between
+charge-partners should always be 2:
+
+| Generation | m_{-1/3} / m_{+2/3} | Predicted |
+|------------|---------------------|-----------|
+| 1st        | m_d/m_u = 2.16      | 2.000     |
+| 2nd        | m_s/m_c = 0.074     | 2.000     |
+| 3rd        | m_b/m_t = 0.024     | 2.000     |
+
+This fails for generations 2 and 3. But the test is likely
+**asking the wrong question.** If the compact dimension picture
+(F2) is correct, mass comes from photon energy (independent of
+geometry), and charge comes from a/R (fixed per dimension). In
+that case:
+
+- Charge and mass are decoupled
+- Generations are energy levels (harmonics), not different geometries
+- The cross-generation test is irrelevant — it tests Model A,
+  which conflates two independent quantities
+
+The 1st-generation m_d/m_u ≈ 2 agreement is likely coincidental.
+
+### What this finding means
+
+1. **Fractional charges can emerge from geometry** — not from
+   different knots, but from different torus aspect ratios. The a/R
+   values are algebraically clean: integer multiples of 1/√(πα).
+
+2. **Same topology, different geometry.** Electron, up quark, and
+   down quark could all be (1,2) knots. The knot determines spin
+   (½) and the fermion/boson nature. The geometry determines charge.
+
+3. **Three compact dimensions.** The three distinct a/R values
+   (6.60, 9.91, 19.81) suggest three compact dimensions — one
+   for each charge quantum (e, 2e/3, e/3). Generations within
+   each dimension are photon energy levels.
+
+4. **Neutrino remains special.** q = 0 requires a/R → ∞, meaning
+   either no compact dimension (free photon → massless boson, wrong)
+   or a fundamentally different topology. This is unresolved.
+
+---
+
 ## F2. Compact Dimension Reframing
 
 **No script** — conceptual analysis
@@ -186,3 +370,46 @@ If the compact dimension picture works:
 - Charge from field geometry (as in study 2)
 - Small number of extra dimensions (1–3, not 6–7)
 - Particles are literally just photons on different paths
+
+---
+
+## Conclusion
+
+The knot zoo study asked: **what torus knots model known particles?**
+
+The answer is unexpectedly simple: **there is only one knot that
+matters — (1,2).** This is the only torus knot that produces a net
+electric charge (F3). Different particles are not different knots;
+but they could be the same knot on different compact dimensions (F4).
+
+### What was answered
+
+- **P1 (spin):** Odd p → fermion, even p → boson. Only q = 1, 2
+  give known spin values. This is topological and robust.
+- **P2 (charge):** Varying the knot winding does NOT produce
+  different charges (F3). But varying the torus geometry (a/R)
+  does (F4). Fractional charges (1/3, 2/3) correspond to clean
+  algebraic multiples of 1/√(πα).
+- **P3 (mass):** Mass cannot come from the knot type on a fixed
+  torus (F1). It must come from photon energy, independent of
+  topology (F2). Generations are energy levels, not different
+  geometries.
+- **P4 (particle ID):** The framework suggests three compact
+  dimensions (one per charge quantum), each hosting (1,2) knots
+  at various energy levels.
+
+### What remains open
+
+The study raises questions that go beyond torus knot classification:
+
+- What is the nature of the compact dimension(s)? Is the space
+  toroidal in the geometric sense, or only topologically so?
+- How does the photon's E/B field manifest in xyz from flat
+  motion in compact space?
+- Is the compact space 2D (surface path) or 3D (volume)?
+- Can orthogonality between xyz and compact dimensions be
+  formalized with a transform?
+- What determines the number and sizes of compact dimensions?
+
+These are foundational questions about the framework itself, not
+about knot classification. They warrant a dedicated study.

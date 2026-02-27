@@ -1,34 +1,38 @@
-# Knot Zoo
+# Knot Zoo — Concluded
 
 What torus knots model known particles, and what quantum numbers do
 they predict?
 
-## Motivation
+## Result
 
-The WvM electron model uses a (2,1) torus knot: the photon loops
-twice around the major axis for each circuit of the tube, producing
-spin ½. This is the simplest closed geodesic with half-integer spin.
-But many other torus knots exist — do any of them correspond to other
-known particles?
+**Only the (1,2) knot matters.** It is the only torus knot that
+produces net electric charge (F3). Different particles are not
+different knots — they are the same (1,2) knot on compact dimensions
+with different aspect ratios (F4). The winding determines spin; the
+geometry determines charge; photon energy determines mass.
 
-## Key Questions
+### Key Findings
 
-1. **Fermions (spin ½):** Which (p,q) torus knots give spin ½? Can
-   muon and tau be modeled as higher-winding knots on the same torus?
-   What sets the mass for each knot?
-2. **Bosons (spin 0, 1, 2):** Do any torus knots produce integer spin?
-   What about the photon (spin 1), W/Z bosons, or the Higgs (spin 0)?
-3. **Charge:** Does the charge derivation (q = e via a/R = 1/√(πα))
-   generalize to other knots, or is it specific to (2,1)? Do some
-   knots predict fractional charge (quarks)?
-4. **Composite particles:** Can baryons (3 quarks) be modeled as
-   linked or braided knots? What about mesons (quark-antiquark)?
+- Odd tube-windings (p) → fermion; even → boson. Only q = 1, 2
+  give physically known spins (F1).
+- Varying the knot winding does NOT produce fractional charges —
+  all knots except (1,2) yield exactly zero charge (F3).
+- Fractional charges (1/3, 2/3 for quarks) emerge from different
+  torus aspect ratios: a/R = n/√(πα) for n = 1, 3/2, 3 (F4).
+- Mass comes from photon energy, not topology — generations are
+  energy levels on the same compact dimension (F2).
+
+### Questions Raised
+
+This study raises foundational questions about the nature of the
+compact dimension(s): what is the space, how does it relate to xyz,
+and what determines its shape? See `../QUESTIONS.md`.
 
 ## Approach
 
-Start with a systematic enumeration of (p,q) torus knots, computing
-predicted spin, charge, and any other derivable quantum numbers for
-each. Compare against the known particle spectrum.
+Systematic enumeration of (p,q) torus knots, computing spin, charge,
+and mass predictions for each. Comparison against the known particle
+spectrum.
 
 ## Scripts
 
@@ -40,7 +44,9 @@ repo root) and the shared library (`../lib/`). Run from the repo root:
 
 | Script | Findings | Description |
 |--------|----------|-------------|
-| `01_knot_survey.py` | F1 | Enumerates (p,q) torus knots, computes spin and charge predictions. |
+| `01_knot_survey.py` | F1 | Enumerates (p,q) torus knots, computes spin and mass ratio predictions. |
+| `02_knot_charge.py` | F3 | Propagates circularly polarized E-field along each knot path, computes charge fractions. |
+| `03_charge_geometry.py` | F4 | Tests whether fractional charges emerge from varying a/R (same knot, different torus). |
 
 ## Other Files
 
