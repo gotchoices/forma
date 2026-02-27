@@ -143,15 +143,14 @@ Follow-on analysis (now in `../toroid-geometry/`) revealed that the
    uncertainty.
 
 2. **Toroidal cavity modes (→ toroid-geometry F2):** Solving Maxwell's
-   equations for actual EM modes in a toroidal cavity gives q = 14–128× e
-   (never close to 0.91e). The sphere of diameter λ — not the torus — is
-   what produces q ≈ e.
+   equations for standing-wave modes in a toroidal cavity gives
+   q = 14–128× e (never close to 0.91e). The sphere of diameter λ —
+   not the torus — is necessary to get q ≈ e.
 
-3. **The sphere is the rotation horizon (→ toroid-geometry F3–F4):**
-   WvM's sphere is physically justified as the "rotation horizon" — the
-   boundary within which the photon's field exists. The photon orbits
-   at R = λ/(4π) but its time-averaged field fills a sphere of radius
-   λ/2, which is much larger than the toroidal core.
+3. **The sphere may be the rotation horizon (→ toroid-geometry F3–F4):**
+   WvM's sphere may be physically justified as the "rotation horizon"
+   — the boundary within which the photon's field exists. This is an
+   interpretation, not a derivation from first principles.
 
 **Consequence:** The series hypothesis (P1–P4) was predicated on the
 9% deficit being a precise, physically meaningful number that demanded

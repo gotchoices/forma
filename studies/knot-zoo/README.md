@@ -5,22 +5,29 @@ they predict?
 
 ## Result
 
-**Only the (1,2) knot matters.** It is the only torus knot that
-produces net electric charge (F3). Different particles are not
-different knots — they are the same (1,2) knot on compact dimensions
-with different aspect ratios (F4). The winding determines spin; the
-geometry determines charge; photon energy determines mass.
+### Demonstrated
 
-### Key Findings
+- Odd tube-windings (p) → fermion; even → boson (topological,
+  robust). Only q = 1, 2 give known spin values in the a ≪ R
+  limit (F1).
+- In the Frenet frame model, only (1,2) produces nonzero charge.
+  All other knots yield exactly zero (F3). This assumes a specific
+  polarization transport rule.
+- On a fixed torus, different knots cannot reproduce the known
+  particle mass spectrum (F1).
 
-- Odd tube-windings (p) → fermion; even → boson. Only q = 1, 2
-  give physically known spins (F1).
-- Varying the knot winding does NOT produce fractional charges —
-  all knots except (1,2) yield exactly zero charge (F3).
-- Fractional charges (1/3, 2/3 for quarks) emerge from different
-  torus aspect ratios: a/R = n/√(πα) for n = 1, 3/2, 3 (F4).
-- Mass comes from photon energy, not topology — generations are
-  energy levels on the same compact dimension (F2).
+### Shown algebraically (not physically demonstrated)
+
+- The WvM charge formula maps specific a/R values to fractional
+  charges: a/R = n/√(πα) for n = 1, 3/2, 3 gives e, 2e/3, e/3
+  respectively (F4). This is algebra, not a physical demonstration
+  that quarks are (1,2) knots on different tori.
+
+### Hypothesized (untested)
+
+- The compact dimension reframing: the torus as an extra dimension,
+  mass from photon energy, generations as harmonics (F2).
+- Three compact dimensions for three charge quanta (F4).
 
 ### Questions Raised
 

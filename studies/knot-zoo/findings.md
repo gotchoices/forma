@@ -21,7 +21,7 @@ circuits to restore the E-field → half-integer spin).
 
 Even p → boson (2π-twist, restores in 1 circuit → integer spin).
 
-This is a purely topological result and should be robust.
+This is a purely topological result and is robust.
 
 ### Spin values — only q = 1 and q = 2 give known spins
 
@@ -36,8 +36,9 @@ This gives:
 - **q ≥ 3** → non-standard spins
 
 Only q = 1 and q = 2 produce spins that match known particles.
-This strongly constrains the zoo: physically relevant knots are
-likely limited to the q = 1 and q = 2 families.
+This constrains the zoo — but the spin formula L_z = ℏ/q has only
+been verified in the a ≪ R limit and may need revision for general
+geometry.
 
 | q | Spin | Statistics | Relevant knots |
 |---|------|-----------|---------------|
@@ -87,10 +88,9 @@ the field extent. So spin = ℏ/q holds even though a_field/R ≈ 6.6.
    torus sizes, what selects the torus size (and hence the mass)?
    The WvM model does not answer this — mass is an input.
    **However:** if the torus is reframed as a fixed compact extra
-   dimension (see F2 below), mass comes from photon energy, not
-   torus size. This resolves the mass problem entirely. See the
-   "compact dimension and mass spectrum" future study in
-   `../README.md`.
+   dimension (see F2 below), mass could come from photon energy
+   rather than torus size. This is a hypothesis, not a demonstrated
+   result — see F2 for discussion and caveats.
 
 3. **Do higher-p knots on q = 2 correspond to heavier fermions?**
    (3,2) and (5,2) are spin-½ fermions. On a fixed torus they are
@@ -129,7 +129,8 @@ All measures normalized to the (1,2) baseline (electron).
 
 ### Result
 
-**Only (1,2) produces charge. All other knots produce exactly zero.**
+**In the Frenet frame model, only (1,2) produces charge. All other
+knots produce exactly zero.**
 
 | Knot  | Spin | Q_sph | Q_cyl | Q_tube |
 |-------|------|-------|-------|--------|
@@ -157,22 +158,29 @@ tube cross-section per trip around the major axis. Outward and inward
 contributions cancel exactly, leaving zero monopole moment. This is
 the same reason ∫cos(nθ)dθ = 0 for n ≥ 1 over a full period.
 
-The cancellation is topological: it depends only on the winding
+Within this model, the cancellation depends only on the winding
 numbers, not on the torus geometry (a/R). No tuning of the torus
 shape can produce fractional charge from higher-winding knots.
 
+**Caveat:** This computation assumes Frenet frame transport for the
+polarization vector. A different transport rule (e.g., parallel
+transport on the torus surface, or a Berry phase correction) might
+give different results. This has not been tested.
+
 ### Implications
 
-1. **Fractional charges cannot emerge from single-photon torus knots.**
-   The 1/3 and 2/3 charges of quarks cannot be explained by assigning
-   quarks to (3,2) or (5,2) knots on the same torus.
+1. **In this model, fractional charges do not emerge from different
+   torus knots.** The 1/3 and 2/3 charges of quarks cannot be
+   explained by assigning quarks to (3,2) or (5,2) knots on the
+   same torus — at least not with Frenet frame polarization transport.
 
-2. **The WvM electron (1,2) is unique.** It is the only torus knot
-   that produces a net electric field with monopole character. This
-   is actually a strength of the model: it explains why there is
-   exactly one fundamental charged lepton topology.
+2. **Within this model, the (1,2) knot is unique** — the only torus
+   knot that produces a net monopole E-field. If this result
+   survives under more general transport rules, it would explain
+   why there is exactly one fundamental charged lepton topology.
 
-3. **Quarks need a different mechanism.** Possible directions:
+3. **If this result holds generally, quarks need a different
+   mechanism.** Possible directions:
    - **Multi-photon states:** Three confined photons with correlated
      phases could each contribute 1/3 of the charge, yielding
      fractional apparent charge. This naturally connects to three
@@ -218,8 +226,13 @@ This means different a/R values produce different charges. Inverting:
 | Neutrino    | 0      | ∞             | —         | —                   |
 
 The ratios are clean: a/R scales as 1/q_frac, giving 1 : 3/2 : 3
-for electron : up : down. All three are the same knot — (1,2) — on
-tori with different field extents.
+for electron : up : down.
+
+**Note:** This is algebra — inverting the WvM charge formula for
+each target charge. It shows what geometry *would be required* if
+the WvM mechanism applies to quarks. It does not demonstrate that
+quarks are (1,2) knots or that compact dimensions with these aspect
+ratios exist.
 
 ### Model A: shared compact dimension
 
@@ -275,31 +288,38 @@ The 1st-generation m_d/m_u ≈ 2 agreement is likely coincidental.
 
 ### What this finding means
 
-1. **Fractional charges can emerge from geometry** — not from
-   different knots, but from different torus aspect ratios. The a/R
-   values are algebraically clean: integer multiples of 1/√(πα).
+1. **The WvM charge formula admits fractional charges** via different
+   torus aspect ratios. The required a/R values are algebraically
+   clean multiples of 1/√(πα). This is a mathematical property of
+   the formula, not a physical demonstration.
 
-2. **Same topology, different geometry.** Electron, up quark, and
-   down quark could all be (1,2) knots. The knot determines spin
-   (½) and the fermion/boson nature. The geometry determines charge.
+2. **Hypothesis: same topology, different geometry.** Electron, up
+   quark, and down quark *could* all be (1,2) knots on compact
+   dimensions with different aspect ratios. This is consistent with
+   the algebra but untested as physics.
 
-3. **Three compact dimensions.** The three distinct a/R values
-   (6.60, 9.91, 19.81) suggest three compact dimensions — one
-   for each charge quantum (e, 2e/3, e/3). Generations within
-   each dimension are photon energy levels.
+3. **Hypothesis: three compact dimensions.** The three distinct a/R
+   values (6.60, 9.91, 19.81) are consistent with three compact
+   dimensions — one for each charge quantum. This is speculative.
 
-4. **Neutrino remains special.** q = 0 requires a/R → ∞, meaning
-   either no compact dimension (free photon → massless boson, wrong)
-   or a fundamentally different topology. This is unresolved.
+4. **Neutrino remains unresolved.** q = 0 requires a/R → ∞, which
+   is unphysical. Whether the neutrino fits this framework at all
+   is unclear.
 
 ---
 
-## F2. Compact Dimension Reframing
+## F2. Compact Dimension Reframing (Hypothesis)
 
-**No script** — conceptual analysis
+**No script** — conceptual analysis, not a computed result
 **Bears on:** P3 (mass ratios), theory.md §4
 
-### The confinement problem dissolves
+**Status: This entire section is a hypothesis.** It has not been
+tested computationally or derived from first principles. It is
+included because it reframes the confinement problem and suggests
+a testable mass spectrum, but none of its predictions have been
+verified.
+
+### The confinement problem dissolves (if this interpretation holds)
 
 WvM's biggest weakness is the unknown confinement mechanism: what
 forces a photon into a toroidal orbit? This problem disappears under
@@ -313,9 +333,10 @@ dimension of spacetime — compact, fixed in size, orthogonal to (x,y,z).
 The photon follows a geodesic (straight line) in this space. No force
 is needed: a straight line on a compact space is already closed.
 
-This is the Kaluza-Klein idea (1919–1926): charge emerges from momentum
-in a compactified dimension. WvM's charge derivation is a specific
-instance of this.
+This resembles the Kaluza-Klein idea (1919–1926): charge emerges from
+momentum in a compactified dimension. Whether WvM's charge derivation
+is literally a KK mechanism has not been verified — the mathematical
+correspondence needs to be checked explicitly.
 
 ### Mass from photon energy, not torus size
 
@@ -325,8 +346,10 @@ separate parameter that determines the particle mass:
 
     m = E/c² = h/(λc)
 
-The knot topology (p,q) determines quantum numbers (spin, charge).
-The photon energy determines mass. These are independent.
+In this picture, the knot topology (p,q) would determine quantum
+numbers (spin, charge), and the photon energy would determine mass.
+These would be independent — but this decoupling is assumed, not
+derived.
 
 Quantization: the photon wavelength must fit the closed path
 (constructive interference). On a path of length L, allowed
@@ -361,15 +384,18 @@ mass spectrum question — harmonics on a fixed torus vs separate
 dimensions — should be explored in a dedicated "compact dimension"
 study.
 
-### Why this matters
+### Why this would matter (if correct)
 
 If the compact dimension picture works:
 - No confinement problem (geodesic on compact space)
 - Mass from photon energy (not a free parameter per particle)
-- Spin from topology (robust, not approximate)
-- Charge from field geometry (as in study 2)
+- Spin from topology (demonstrated for (1,2) in WvM)
+- Charge from field geometry (demonstrated algebraically in study 2)
 - Small number of extra dimensions (1–3, not 6–7)
-- Particles are literally just photons on different paths
+
+These are attractive properties, but none have been derived from a
+compact-dimension formulation. The hypothesis needs to be tested
+against Kaluza-Klein theory explicitly before drawing conclusions.
 
 ---
 
@@ -377,26 +403,34 @@ If the compact dimension picture works:
 
 The knot zoo study asked: **what torus knots model known particles?**
 
-The answer is unexpectedly simple: **there is only one knot that
-matters — (1,2).** This is the only torus knot that produces a net
-electric charge (F3). Different particles are not different knots;
-but they could be the same knot on different compact dimensions (F4).
+### What was demonstrated
 
-### What was answered
+- **P1 (spin):** Odd p → fermion, even p → boson (topological,
+  robust). Only q = 1, 2 give known spin values — but the spin
+  formula L_z = ℏ/q is only verified in the a ≪ R limit.
+- **P2 (charge):** In the Frenet frame model, varying the knot
+  winding does NOT produce different charges — only (1,2) gives
+  nonzero charge (F3). This is a clear computational result, though
+  it assumes a specific polarization transport rule.
+- **P3 (mass):** On a fixed torus, different knots give lighter
+  particles (longer paths), not heavier. Mass ratios of known
+  particles cannot be reproduced by different knots on one torus (F1).
 
-- **P1 (spin):** Odd p → fermion, even p → boson. Only q = 1, 2
-  give known spin values. This is topological and robust.
-- **P2 (charge):** Varying the knot winding does NOT produce
-  different charges (F3). But varying the torus geometry (a/R)
-  does (F4). Fractional charges (1/3, 2/3) correspond to clean
-  algebraic multiples of 1/√(πα).
-- **P3 (mass):** Mass cannot come from the knot type on a fixed
-  torus (F1). It must come from photon energy, independent of
-  topology (F2). Generations are energy levels, not different
-  geometries.
-- **P4 (particle ID):** The framework suggests three compact
-  dimensions (one per charge quantum), each hosting (1,2) knots
-  at various energy levels.
+### What was shown algebraically (but not physically demonstrated)
+
+- The WvM charge formula maps specific a/R values to specific
+  charge fractions: 6.60 → e, 9.91 → 2e/3, 19.81 → e/3 (F4).
+  These are clean algebraic relationships.
+
+### What was hypothesized (untested)
+
+- The compact dimension reframing (F2): the torus as an extra
+  dimension of spacetime, mass from photon energy, generations as
+  harmonics. Attractive but unverified.
+- Three compact dimensions for three charge quanta (F4). Consistent
+  with the algebra but speculative.
+- Neutrino as a (3,2) knot (F3). Quantum numbers match but this
+  is suggestive, not conclusive.
 
 ### What remains open
 

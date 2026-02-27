@@ -49,33 +49,31 @@ to investigate next.
    target for series correction. Spawned `toroid-geometry/`.
 
 2. **`toroid-geometry/`** — What effective geometry reproduces q = e?
-   **Answer:** a/R = 1/√(πα) ≈ 6.60 — the field extends 1/√(πα)
-   orbital radii from the geodesic, filling a nearly spherical volume.
-   Spawned `knot-zoo/`.
+   **Algebraic result:** a/R = 1/√(πα) ≈ 6.60 (inverting the WvM
+   charge formula). Whether this geometry is physically realized or
+   can be derived independently remains open. Spawned `knot-zoo/`.
 
 3. **`knot-zoo/`** — What torus knots model known particles?
-   **Answer:** only the (1,2) knot produces charge. Different particles
-   are the same knot on compact dimensions with different aspect ratios.
-   Raises foundational questions about the nature of compact dimensions.
+   **Demonstrated:** in the Frenet frame model, only (1,2) produces
+   charge. **Algebraic:** the WvM formula maps specific a/R values
+   to fractional charges. **Hypothesized:** compact dimensions,
+   mass from photon energy. Raises foundational questions.
 
 ## Future Study Ideas
 
-- **Compact dimension and mass spectrum.** Reframe the torus as a
-  fixed compact extra dimension (not a particle-specific confinement).
-  The photon follows a geodesic (no confining force needed); its
-  energy — not the torus size — creates the apparent particle mass.
-  Quantization (wavelength must fit the closed path) restricts allowed
-  masses to m_n = nh/(Lc). Two sub-models to explore:
-  - *Shared dimension:* All particles live on one fixed torus.
-    Different knots give different quantum numbers; harmonics (n)
-    give the mass spectrum. Leptons as (1,2) harmonics: are
-    m_μ/m_e ≈ 207 and m_τ/m_e ≈ 3477 close to integers?
-  - *Per-particle dimensions:* Electron and quarks each have their
-    own compact dimension (still a small number: 1 for leptons, 1
-    for quarks, maybe 1 shared). Cleaner if mass ratios don't fit
-    integer harmonics.
-  This study also eliminates the confinement problem: on a compact
-  space, a geodesic is already closed — no force required.
+- **Compact dimension and mass spectrum.** Hypothesis: the torus is
+  a fixed compact extra dimension. If so, the photon follows a
+  geodesic (no confining force needed) and its energy determines the
+  particle mass. This is untested — the study would formalize the
+  hypothesis and check it against Kaluza-Klein theory. Two sub-models:
+  - *Shared dimension:* All particles on one torus. Harmonics give
+    the mass spectrum. Test: are m_μ/m_e ≈ 207 and m_τ/m_e ≈ 3477
+    close to integers? (They are not — so the simplest version
+    likely fails.)
+  - *Per-particle dimensions:* Separate compact dimensions for
+    leptons and quarks. More free parameters, fewer predictions.
+  This study would also need to address whether the confinement
+  problem is truly eliminated or merely reframed.
 
 - **α from geometry.** Study 2 showed a/R = 1/√(πα) gives q = e.
   This is algebraically exact but derived by demanding q = e. Can

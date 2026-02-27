@@ -153,8 +153,16 @@ extend?
 
 ## 7. Outcome
 
-The zoo is empty. Only the (1,2) knot produces electric charge
-(F3). Different particles are distinguished not by knot type but
-by the geometry of their compact dimension (F4) and photon energy
-(F2). The relevant framework is no longer knot classification but
-compact dimension theory. See findings.md conclusion.
+In the Frenet frame model, only the (1,2) knot produces electric
+charge (F3). This is a computational result, not a general proof —
+it assumes a specific polarization transport rule.
+
+The WvM charge formula algebraically admits fractional charges
+via different a/R values (F4), which is consistent with the
+hypothesis that quarks might be (1,2) knots on compact dimensions
+with different geometry. The compact dimension reframing (F2) is
+an untested hypothesis that, if correct, would resolve the
+confinement and mass problems simultaneously.
+
+See findings.md for the full distinction between demonstrated
+results, algebraic observations, and untested hypotheses.

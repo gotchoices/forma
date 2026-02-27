@@ -127,9 +127,10 @@ of the cross-sectional profile.
 
 ### Key finding
 
-**WvM's choice of a sphere of diameter λ is what makes q ≈ e.**
-It's not a minor approximation — it's the central reason the charge
-comes out close to the elementary charge.
+**WvM's choice of a sphere of diameter λ is necessary to get q ≈ e.**
+No other simple cavity shape produces a charge near e. Whether the
+sphere is the physically correct choice (rather than merely the one
+that works) is an interpretation, not a proven result.
 
 ---
 
@@ -185,8 +186,11 @@ at c and averages over the toroidal structure.
 **Visualization:** `torus_viz.html` (interactive 3D, slider for a/R)
 **Bears on:** P2 (field falloff), P4 (self-consistency)
 
-The "tube radius" a is not a hard wall — it describes how far the
-photon's E-field extends from the geodesic orbit. Three regimes:
+**Interpretation:** In this analysis, "tube radius" a is treated not
+as a hard wall but as a parameter describing how far the photon's
+E-field extends from the geodesic orbit. This is a reinterpretation
+of the WvM geometry, not something WvM explicitly state. Three
+regimes:
 
 - **Ring** (a < R): Toroidal field region with a hole. q ≫ e.
 - **Horn** (a = R): Hole closes. Still q ≫ e.
@@ -198,7 +202,9 @@ photon's E-field extends from the geodesic orbit. Three regimes:
 There is no blowup at a = R. The parametric equations remain valid;
 the geodesic orbit continues unchanged (it depends on R, not a).
 The E-field direction (radially from the orbit) is a topological
-property of the photon's polarization and is preserved in all regimes.
+property of the photon's polarization and should be preserved in all
+regimes — though this has been argued geometrically, not computed
+from Maxwell's equations for the degenerate case.
 
 ### Key a/R values
 
@@ -271,20 +277,20 @@ So the field is ~97.5% monopole (spherical) at the horizon boundary,
 but not perfectly uniform. This ~2.5% deviation is the same order
 as part of the charge correction.
 
-### Precession and spherical symmetry
+### Precession and spherical symmetry (speculative)
 
 To produce a truly uniform 3D radial field, the **torus axis itself
-would need to precess** through all orientations — not just the
-photon circling the ring, but the ring's axis tumbling through every
-direction. This is analogous to how a single atomic p-orbital is
-not spherically symmetric, but summing over all magnetic quantum
-numbers m gives a spherical distribution.
+would need to precess** through all orientations. This is analogous
+to how a single atomic p-orbital is not spherically symmetric, but
+summing over all magnetic quantum numbers m gives a spherical
+distribution.
 
 In quantum mechanics, this averaging happens automatically: the
-electron's spin has no definite axis until measured. The quantum
-state is a superposition over orientations, which averages the
-quadrupole to zero. In the classical WvM picture, the axis is
-fixed and the field retains its ~2.5% anisotropy.
+electron's spin has no definite axis until measured. Whether this
+quantum averaging applies to the WvM model's field anisotropy is
+an assumption by analogy, not a derivation. In the classical WvM
+picture, the axis is fixed and the field retains its ~2.5%
+anisotropy.
 
 ### Implications
 
@@ -295,9 +301,10 @@ fixed and the field retains its ~2.5% anisotropy.
    the charge deficit. A full calculation of the charge including
    the non-spherical field distribution might shift q/e by a few
    percent.
-3. If precession of the torus axis is physically present (either
-   classically or via quantum superposition), it would eliminate the
-   quadrupole and potentially change the effective charge.
+3. If precession of the torus axis is physically present, it would
+   eliminate the quadrupole and potentially change the effective
+   charge. Whether precession occurs (and what would drive it) has
+   not been investigated.
 
 ---
 
@@ -362,20 +369,34 @@ These remain open for future investigation.
 
 ## Conclusion
 
-Study 2 answers its central question:
+Study 2 answers its central question algebraically:
 
 **What effective geometry reproduces q = e?**
 
-A degenerate torus (or equivalently, the rotation-horizon sphere)
-with tube-to-ring ratio a/R = 1/√(πα) ≈ 6.60. The field of the
-photon, orbiting at R = λ/(4π), extends outward to approximately
-0.6λ, filling a nearly spherical volume. The topology (double-loop
-geodesic) gives spin ½ exactly; the extended field geometry gives
-charge ≈ e; the ~2.5% quadrupole anisotropy from the (2,1) orbit
-is presumably averaged by quantum spin superposition.
+A degenerate torus with a/R = 1/√(πα) ≈ 6.60. This is the result
+of inverting the WvM charge formula with torus volume (F6). It is
+exact algebra, acknowledged as partly tautological.
 
-The deeper question — can a/R = 1/√(πα) be derived independently,
-thereby deriving α from geometry? — remains open.
+**What is demonstrated:**
+- Spin ½ from the double-loop topology is exact (WvM's result).
+- The sphere of diameter λ is the only simple cavity that gives
+  q ≈ e (F2). Other shapes give q ≫ e.
+- a/R = 1/√(πα) is the algebraic consequence of q = e with
+  torus volume (F6).
+
+**What is interpreted (not proven):**
+- "a" as field extent rather than a physical tube wall (F4).
+- The rotation horizon as a physically motivated sphere boundary (F3).
+- The degenerate torus as a bridge between the toroidal orbit and
+  the spherical field region (F4).
+
+**What is speculative:**
+- Quantum spin superposition averaging the ~2.5% quadrupole (F5).
+- Whether a/R = 1/√(πα) can be derived independently of
+  demanding q = e.
+
+The deeper question — can a/R = 1/√(πα) be derived from first
+principles? — remains open.
 
 ---
 
