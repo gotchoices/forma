@@ -19,14 +19,6 @@ closing a study to decide what to investigate next.
 
 ### Tier 1 — Answerable from established physics (no computation)
 
-Q7. **Topological wrapping vs geometric shape.** If we have a
-transform equation and we specify that the edges of the dimension
-wrap, does the dimension need to be spatially toroidal? Or is it
-only mathematically so — like a wrapping digital number that repeats
-and rolls over?
-*Source: user question*
-*Status: answerable from standard differential geometry / KK theory*
-
 Q1. **Geometric vs topological compactification.** If a dimensional
 space is compactified and is evident in our 3-space, would/could it
 manifest as a toroid? Or is "toroidal" only a topological description
@@ -202,4 +194,17 @@ WvM reduces to Kaluza-Klein theory*
 
 ## Answered
 
-(none yet)
+Q7. **Flat compact dimensions and transforms.** Can an extra spatial
+dimension be intrinsically flat (a photon experiences straight-line
+motion) yet finite and boundary-free, because the coordinate is
+periodic? If so, the "toroidal" shape we use to visualize it is a
+drawing aid, not a physical shape. What are transforms in this
+context, and how does the familiar xyz machinery (translations,
+rotations, conservation laws) generalize to compact dimensions?
+**Answer:** Yes. A compact dimension is a periodic coordinate —
+flat, no curvature, straight-line geodesics. The torus/circle is
+only a visualization. Translation in the compact direction gives
+charge conservation (Noether's theorem), exactly as translation in
+x gives momentum. The EM field is the off-diagonal metric mixing
+the compact dimension with spacetime (Kaluza-Klein theory).
+→ [Full answer](answers/A7-flat-compact-dimensions.md)

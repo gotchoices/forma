@@ -22,6 +22,11 @@ studies) since physical constants and common utilities are universal.
 arise during studies. Review it when closing a study to decide what
 to investigate next.
 
+`answers/` contains standalone answers to questions that don't
+warrant a full study. Each file is named `A<N>-<topic>.md` matching
+the question ID in `QUESTIONS.md`. These are referenced by link from
+the Answered section of `QUESTIONS.md`.
+
 ### Guidelines
 
 - **`theory.md` is slow-moving.** Don't update it after every script
