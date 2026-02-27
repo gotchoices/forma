@@ -18,6 +18,10 @@ Every study folder should contain these files:
 Shared code lives in `lib/` at this level (not inside individual
 studies) since physical constants and common utilities are universal.
 
+`QUESTIONS.md` is the research question queue — open questions that
+arise during studies. Review it when closing a study to decide what
+to investigate next.
+
 ### Guidelines
 
 - **`theory.md` is slow-moving.** Don't update it after every script
