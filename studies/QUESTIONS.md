@@ -44,6 +44,25 @@ corrections, etc.)?
 *Status: partially answerable — m_μ/m_e = 206.768, not close to any
 integer. Simplest harmonic model is falsified for leptons.*
 
+Q22. **Does exact path closure matter?** The (1,2) geodesic is
+exactly closed (rational winding ratio → the path retraces every
+cycle). But is exact closure necessary for the electron's properties?
+Charge comes from the topology (one twist per wavelength +
+double-loop commensurability) — a local property at each point
+along the path. Spin ½ comes from the (1,2) winding ratio. Mass
+comes from photon energy. Magnetic moment and g-factor come from
+circulating current and external field energy. None of these
+derivations appear to require the path to close exactly. If so, a
+precessing (1,2) orbit would preserve all five properties.
+*Source: user question, prompted by analysis of path closure*
+*Status: answerable — analytical argument suggests exact closure is
+not required. All five properties derive from (1,2) topology and
+local commensurability, not from global periodicity. The one
+subtlety is WvM's constructive self-interference argument (§2),
+which implicitly assumes phase matching at closure — but in the
+diffractive limit, small spatial shifts may not degrade interference
+significantly. See ref/WvM-summary.md §4.*
+
 ### Tier 2 — Answerable with some algebra or paper review
 
 Q3/Q4. **Dimensionality of the compact space.** WvM describes "a
@@ -115,6 +134,22 @@ to known particles?
 *Status: needs computation — would require parameterizing general
 closed paths in a 3D compact space and computing the resulting
 time-averaged E and B field multipole moments.*
+
+Q23. **Precessing orbit and volume-filling.** If the (1,2) path
+precesses (drifts on the torus surface between cycles due to
+self-field perturbation or geometric imperfection), does the
+time-averaged field reproduce the volume-filling energy flow pattern
+of WvM Fig. 2? Does the time-averaged field of a precessing orbit
+match observed electron properties better or worse than the static
+closed path? What determines the precession rate?
+This is distinct from Q19 (axis precession), which asks about the
+whole torus rotating in space to eliminate the quadrupole. Here the
+torus orientation is fixed, but the photon's path drifts on the
+torus surface.
+*Source: user question, prompted by discussion of path closure*
+*Status: needs computation — would require simulating a (1,2) orbit
+with a small perturbation that breaks exact closure, then computing
+the time-averaged E and B field and comparing to the static case.*
 
 Q9. **Guided-wave decay profile.** What is the actual E-field falloff
 from the orbit? WvM assume uniform field inside a sphere, but a

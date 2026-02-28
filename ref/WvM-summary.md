@@ -100,6 +100,20 @@ whose field, as a wave, extends across the toroidal volume.
   field profile is the transverse mode structure, not a separate
   dimension.
 
+**Open question: precession as an alternative to diffraction.**
+WvM explain the volume-filling energy flow by appealing to the
+diffractive limit. An alternative: if the (1,2) path **precesses**
+(drifts on the torus surface between cycles), the time-averaged
+field would sweep out the nested surfaces naturally. The (1,2)
+geodesic is exactly closed (winding ratio 1:2 is rational), so
+exact closure gives no precession — but any perturbation (self-field
+interaction, geometric imperfection) would break exact closure.
+The electron's key properties (charge, spin, mass, magnetic moment,
+g-factor) all derive from the (1,2) topology and local
+commensurability, not from exact path closure — so precession would
+preserve them. WvM do not discuss this possibility. See
+QUESTIONS.md Q22–Q23.
+
 ## 5. Charge derivation (§3)
 
 WvM confine a photon of wavelength λ to a spherical volume of
@@ -172,6 +186,13 @@ by making the toroidal path a geodesic — see `studies/answers/A7`.
 - **Tube radius** — not determined from first principles.
 - **Radial field profile** — the distribution of field intensity
   across the toroidal volume is not computed.
+- **Path closure and precession** — the paper assumes the (1,2)
+  path is exactly closed (retraces every cycle). It does not
+  discuss whether exact closure is necessary, or whether a
+  precessing orbit would produce the same properties. The
+  constructive self-interference argument (§2) implicitly assumes
+  exact closure, but in the diffractive limit small spatial shifts
+  may not affect interference significantly.
 
 ## 11. Where WvM concepts appear in our studies
 
