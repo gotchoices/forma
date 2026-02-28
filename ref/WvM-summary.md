@@ -13,6 +13,25 @@ earlier interpretations.
 
 ---
 
+## Notation
+
+Throughout this project, **(p,q) torus knot** notation means:
+
+| Symbol | Winds around | Axis | Coordinate | Visual test |
+|--------|-------------|------|------------|-------------|
+| **p** | tube (minor circle) | minor / meridional | θ | Sitting inside the tube, count rotations |
+| **q** | ring (major circle) | major / longitudinal | φ | Looking through the hole, count loops |
+
+The WvM electron is **(1,2)**: once around the tube, twice around
+the ring. This convention is defined in `studies/knot-zoo/theory.md`
+§1 and used consistently across all studies and scripts.
+
+**Caution:** some mathematical references reverse p and q. Our
+electron would be called (2,1) in those sources. When reading
+external material, always check which convention is in use.
+
+---
+
 ## 1. Core claim
 
 A single photon confined to a toroidal topology, with periodic
@@ -56,7 +75,8 @@ that gives rise to the **magnetic moment**.
 ## 3. The geometry (§2, Fig. 2)
 
 - **Double loop = (1,2) topology.** The path goes once around the
-  major axis (φ) for every two loops around the minor axis (θ).
+  tube (p=1, minor axis θ) for every two loops around the ring
+  (q=2, major axis φ). Looking through the hole you see two loops.
   This is what makes the spin half-integral.
 - **Intrinsic length scale:** the special case where both loops
   overlap gives a loop radius r = λ_C / 4π, which is the mean
