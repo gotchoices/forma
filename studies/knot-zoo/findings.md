@@ -78,6 +78,42 @@ the charge.
 For the spin calculation, the relevant parameter is the orbit, not
 the field extent. So spin = ℏ/q holds even though a_field/R ≈ 6.6.
 
+### Correction history: surface, volume, and radial structure
+
+This understanding was corrected twice. The full analysis is in
+`ref/WvM-summary.md` §4.
+
+**v1 (initial):** Treated the photon path as living on one torus
+surface (2D compact space, T² = S¹ × S¹).
+
+**v2 (over-correction):** Noted that WvM Fig. 2 shows "a family of
+nested toroidal surfaces" and energy flow filling a 3D volume.
+Suggested the compact space might need 3 dimensions (φ, θ, r).
+
+**v3 (current):** After full re-read of the paper:
+
+- WvM's primary model (Fig. 1b) IS a single path — a twisted strip
+  closed into a double loop on the torus surface. This is the
+  visualization that produces E-inward and B-vertical.
+- WvM then note (§2) that "we are firmly in the diffractive limit,
+  where it makes little sense to talk about a specific photon
+  'path'." The nested surfaces in Fig. 2 are **streamlines of
+  energy flow** — the Poynting vector pattern of a single photon
+  whose field extends across the toroidal volume as a wave.
+- The nested surfaces are not separate photons or separate orbits.
+  Individual streamlines stay at constant tube radius r. Nothing
+  propagates radially. r is a **transverse mode coordinate** (like
+  the radial intensity profile of a waveguide mode).
+- The compact space (if one exists) is **2D** (φ, θ). The radial
+  field profile is the transverse mode structure, not a third
+  compact dimension.
+- Our scripts (`02_knot_charge.py`) modeled a single path on one
+  surface — this matches WvM's primary visualization (Fig. 1b)
+  and captures the correct topology and winding.
+
+This does not invalidate the charge computation (F3) or the
+algebraic relationships (F4).
+
 ### Open questions from F1
 
 1. **Why only q = 1, 2?** Is there a physical selection rule that

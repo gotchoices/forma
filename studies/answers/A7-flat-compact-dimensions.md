@@ -216,7 +216,15 @@ mathematical infrastructure, not empirical claims.
 - The flat torus assumption (zero curvature) is the simplest case.
   The compact dimension could have curvature, which would modify
   the physics.
-- The number of compact dimensions needed is unclear. WvM's (1,2)
-  knot requires at least 2 (a flat T²). If quarks require different
-  compact dimensions (from knot-zoo F4), the total could be 3 or
-  more. String theory uses 6–7 for different reasons.
+- **Dimensionality is likely 2.** Each (1,2) geodesic requires 2
+  compact dimensions (two wrapping directions, φ and θ). WvM's
+  "family of nested toroidal surfaces" (§2, Fig. 2) means the EM
+  field fills a 3D volume, but individual streamlines stay at
+  constant tube radius — the radial direction is a transverse mode
+  profile (like a waveguide mode), not a propagation direction or
+  compact dimension. See `ref/WvM-summary.md` §4. Earlier versions
+  of this answer incorrectly suggested the compact space might need
+  to be 3D; this was corrected after analyzing streamline behavior.
+- If quarks require different compact dimensions (from knot-zoo F4),
+  the total could be higher still. String theory uses 6–7 for
+  different reasons.

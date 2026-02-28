@@ -19,29 +19,6 @@ closing a study to decide what to investigate next.
 
 ### Tier 1 — Answerable from established physics (no computation)
 
-Q1. **Geometric vs topological compactification.** If a dimensional
-space is compactified and is evident in our 3-space, would/could it
-manifest as a toroid? Or is "toroidal" only a topological description
-(both dimensions wrap) without requiring the physical shape of a
-donut?
-*Source: user question*
-*Status: answerable — closely related to Q7*
-
-Q4. **1D, 2D, or 3D compact space.** Would a compactified space be
-1D (a circle), 2D (a torus surface), or 3D (a solid torus)? What
-determines this? A 1D compact dimension (Kaluza-Klein circle) is the
-simplest and produces charge naturally. Does WvM need more than 1D?
-*Source: user question*
-*Status: answerable — the (1,2) knot requires S¹ × S¹ (2D)*
-
-Q3. **Dimensionality of the compact space.** Is the space inside the
-toroid 2D or 3D? If the photon path is always on the surface, that
-is a 2D space with both dimensions wrapped. Is that what WvM really
-describes? Or does the photon trace paths through the internal
-volume — not just the surface?
-*Source: user question*
-*Status: answerable — follows from Q4*
-
 Q5. **Size and independence.** If a compactified space fits inside
 the diameter of uncertainty of the resultant particle (electron), can
 it still be toroidal (or some other shape) and still qualify as
@@ -68,6 +45,22 @@ corrections, etc.)?
 integer. Simplest harmonic model is falsified for leptons.*
 
 ### Tier 2 — Answerable with some algebra or paper review
+
+Q3/Q4. **Dimensionality of the compact space.** WvM describes "a
+family of nested toroidal surfaces" (§2, Fig. 2) — the EM field
+fills a 3D volume. Each individual streamline is a (1,2) geodesic
+on its own toroidal surface at fixed tube radius r. Streamlines do
+not move radially; the path periodicity comes entirely from the two
+angular coordinates φ (wraps) and θ (wraps). The radial direction
+is a transverse mode profile — like the radial intensity of a
+waveguide mode — not a propagation direction.
+*Source: user question, corrected twice — first from 2D to 3D, then
+refined: r is a transverse mode coordinate, not a compact dimension*
+*Status: largely resolved. The compact space is 2D (φ, θ). The
+radial structure is the field's transverse extent. The remaining
+subtlety is whether this interpretation holds when the field
+equations are solved self-consistently (rather than assumed). See
+ref/WvM-summary.md §4.*
 
 Q6. **Orthogonality and transforms.** Is there a way to study the
 orthogonality of xyz and extend this to a compactified dimension? Is
@@ -109,6 +102,19 @@ dimension.
 against standard KK charge quantization.*
 
 ### Tier 3 — Need computation or substantial investigation
+
+Q21. **Orbit constraints and uniqueness.** WvM's (1,2) double-loop
+produces E always pointing outward (monopole-like), B always pointing
+toward the poles (magnetic dipole), spin ½, and angular momentum.
+Can we derive or solve for orbit/knot shapes that satisfy all four
+constraints simultaneously? Is the (1,2) path the unique solution,
+or are there other topologies that also produce E-outward, B-polar,
+spin ½, and net angular momentum? If others exist, do they correspond
+to known particles?
+*Source: user question, prompted by WvM re-read*
+*Status: needs computation — would require parameterizing general
+closed paths in a 3D compact space and computing the resulting
+time-averaged E and B field multipole moments.*
 
 Q9. **Guided-wave decay profile.** What is the actual E-field falloff
 from the orbit? WvM assume uniform field inside a sphere, but a
@@ -208,3 +214,12 @@ charge conservation (Noether's theorem), exactly as translation in
 x gives momentum. The EM field is the off-diagonal metric mixing
 the compact dimension with spacetime (Kaluza-Klein theory).
 → [Full answer](answers/A7-flat-compact-dimensions.md)
+
+Q1. **Geometric vs topological compactification.** Would a
+compactified dimension manifest as a toroid in our 3-space, or is
+"toroidal" only a topological description?
+**Answer:** Topological only. See A7 §2 — "toroidal" means the
+coordinates wrap (S¹ × S¹), not that there is a donut shape in
+physical space. A flat torus has zero curvature; the donut shape
+is an embedding artifact.
+→ [Answered by A7](answers/A7-flat-compact-dimensions.md)
