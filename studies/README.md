@@ -3,55 +3,97 @@
 Each subfolder contains a self-contained investigation with its own
 documentation and computational work.
 
+**Current priorities:** See [`STATUS.md`](STATUS.md).
+
+## Workflow
+
+```
+1. CAPTURE    New idea or question → QUESTIONS.md
+
+2. TRIAGE     Review QUESTIONS.md →
+              Quick answer?  → answer inline, mark answered
+              Needs work?    → STATUS.md entry (R<N>) at correct priority
+                               Tag question → R<N>
+                               If enough substance → create draft study folder
+
+3. PLAN       Flesh out draft study folders as thinking develops
+              (README.md = the proposal; theory.md = the math)
+
+4. EXECUTE    Pick top item from STATUS.md "Next" → move to "Active"
+              Activate study folder (add findings.md, scripts/, tasks)
+              Or write answer in answers/ for non-compute items
+
+5. CLOSE      STATUS.md item → "Done" with link to result
+              Study → *(concluded)* in its README.md title
+              Spawned new questions? → step 1
+```
+
+## Project-Level Files
+
+| File | Job |
+|------|-----|
+| `STATUS.md` | Priority-ordered work queue. What to work on next. |
+| `QUESTIONS.md` | Raw capture log. Questions as they arise. |
+| `answers/` | Standalone answers (named `A<N>-<topic>.md` matching question IDs). |
+| `lib/` | Shared code — physical constants, common utilities. |
+
 ## Study Folder Convention
 
-Every study folder should contain these files:
+Study folders have a lifecycle: **draft → active → concluded**,
+shown in the first line of their README.md:
 
-| File | Purpose | Update cadence |
-|------|---------|----------------|
-| `README.md` | Brief summary of the study's question, approach, and scope. | Rarely — when scope changes. |
-| `theory.md` | The "paper": hypotheses, mathematical framework, testable propositions. | Infrequently — when the theory itself is revised (new propositions, corrected math, scope shifts). |
-| `findings.md` | Lab notebook: chronological log of what each experiment tried, what it found, and what it means for the next step. | After each script run or analysis. |
-| `STATUS.md` | Bare checklist of tasks — completed, in progress, planned. | Ongoing, as tasks start and finish. |
-| `scripts/` | Computational work. Each script is numbered (`01_`, `02_`, …) and references the findings entry and theory section it bears on. | As needed. |
+```
+# Study Name  *(draft)*
+# Study Name  *(active)*
+# Study Name  *(concluded)*
+```
 
-Shared code lives in `lib/` at this level (not inside individual
-studies) since physical constants and common utilities are universal.
+### Files by lifecycle stage
 
-`QUESTIONS.md` is the research question queue — open questions that
-arise during studies. Review it when closing a study to decide what
-to investigate next.
-
-`answers/` contains standalone answers to questions that don't
-warrant a full study. Each file is named `A<N>-<topic>.md` matching
-the question ID in `QUESTIONS.md`. These are referenced by link from
-the Answered section of `QUESTIONS.md`.
+| File | Draft | Active | Concluded |
+|------|-------|--------|-----------|
+| `README.md` | Proposal: question, approach, expected outcomes | + Tasks section | + Result summary at top |
+| `theory.md` | Framework, math (if ready) | Updated as needed | Final |
+| `findings.md` | — | Running log (F1, F2, …) | Final |
+| `scripts/` | — | Numbered (`01_`, `02_`, …) | Final |
 
 ### Guidelines
 
-- **`theory.md` is slow-moving.** Don't update it after every script
-  run. Revise it when a finding forces a change to the hypotheses,
-  framework, or propositions.
+- **`theory.md` is slow-moving.** Revise when a finding forces a
+  change to hypotheses, framework, or propositions.
 - **`findings.md` is the running narrative.** Each entry gets a
-  sequential ID (F1, F2, …), names the script, states the result, and
-  notes implications. This is the place to record both positive and
-  null results.
-- **`STATUS.md` is a checklist, not prose.** Keep entries short. Move
-  detail to `findings.md`.
-- **Scripts are self-documenting.** Each script's docstring should
-  reference the `theory.md` section and `findings.md` entry it
-  corresponds to.
+  sequential ID (F1, F2, …), names the script, states the result,
+  and notes implications.
+- **Scripts are self-documenting.** Each script's docstring
+  references the `theory.md` section and `findings.md` entry it
+  bears on.
 
-## Active Studies
+### STATUS.md entry format
 
-(none)
+Each item in `STATUS.md` follows this pattern:
+
+```
+### R<N>. <Title>
+**Question:** Q<N>  **Type:** reason|research|compute  **Depends on:** —
+**Study:** `<folder>/`
+
+One to two sentences: what and why.
+```
+
+Resolution types:
+
+| Type | Means | Produces |
+|------|-------|----------|
+| **research** | Read papers/references | Note in `answers/` or inline |
+| **reason** | Algebra or logical derivation | Answer in `answers/` |
+| **compute** | Scripts, numerical work | Study folder |
 
 ## Concluded Studies (chronological)
 
 1. **`toroid-series/`** — Can a geometric series of nested toroidal
    sub-dimensions correct WvM's ~9% charge deficit? **Null result:**
-   the deficit is an artifact of geometric approximations, not a robust
-   target for series correction. Spawned `toroid-geometry/`.
+   the deficit is an artifact of geometric approximations, not a
+   robust target for series correction. Spawned `toroid-geometry/`.
 
 2. **`toroid-geometry/`** — What effective geometry reproduces q = e?
    **Algebraic result:** a/R = 1/√(πα) ≈ 6.60 (inverting the WvM
@@ -63,35 +105,3 @@ the Answered section of `QUESTIONS.md`.
    charge. **Algebraic:** the WvM formula maps specific a/R values
    to fractional charges. **Hypothesized:** compact dimensions,
    mass from photon energy. Raises foundational questions.
-
-## Future Study Ideas
-
-- **Compact dimension and mass spectrum.** Hypothesis: the torus is
-  a fixed compact extra dimension. If so, the photon follows a
-  geodesic (no confining force needed) and its energy determines the
-  particle mass. This is untested — the study would formalize the
-  hypothesis and check it against Kaluza-Klein theory. Two sub-models:
-  - *Shared dimension:* All particles on one torus. Harmonics give
-    the mass spectrum. Test: are m_μ/m_e ≈ 207 and m_τ/m_e ≈ 3477
-    close to integers? (They are not — so the simplest version
-    likely fails.)
-  - *Per-particle dimensions:* Separate compact dimensions for
-    leptons and quarks. More free parameters, fewer predictions.
-  This study would also need to address whether the confinement
-  problem is truly eliminated or merely reframed.
-
-- **α from geometry.** Study 2 showed a/R = 1/√(πα) gives q = e.
-  This is algebraically exact but derived by demanding q = e. Can
-  an independent physical argument (boundary matching, energy
-  minimization, self-consistent confinement) select this ratio,
-  thereby deriving α from geometry? All three candidate routes
-  require solving the guided-wave profile — a substantial
-  electromagnetic calculation.
-
-- **Precession of the torus axis.** The (2,1) orbit produces an
-  axially symmetric field, not a spherically symmetric one (~2.5%
-  quadrupole at the horizon). If axis precession eliminates this
-  anisotropy, what drives the precession — classically (spin-orbit
-  coupling, self-interaction, Thomas precession analog) and
-  mathematically (is it a natural consequence of the equations of
-  motion in curved self-generated geometry)?
