@@ -1,9 +1,10 @@
-# Electron from Compact Dimensions  *(draft)*
+# Electron from Compact Dimensions  *(concluded)*
 
 Assemble all established results into a single framework and
 verify: a photon of specific energy, on a specific geodesic, in
 a periodic geometry, produces an electron with all measured
-properties. Identify what inputs are required and what is free.
+properties. Identify what inputs are required and whether any
+parameters are free.
 
 ## Motivation
 
@@ -39,62 +40,35 @@ minimal specification that produces an electron?
 - Charge: e (from field extent a/R = 1/√(πα))
 - g-factor: ≈ 2.0023 (from external field fraction α/(2π))
 
-## Expected result
+## Result
 
-The system is under-determined. Specifically:
+The initial hypothesis was that r = L_θ/L_φ would be a free
+parameter. This was wrong: since a = L_θ/(2π) and R = L_φ/(2π),
+the charge condition a/R = 1/√(πα) directly fixes r = 1/√(πα).
+The mass constraint then fixes the absolute scale.
 
-- Path length constraint: √(4L_φ² + L_θ²) = λ_C — one equation
-  relating L_φ and L_θ, parameterized by r = L_θ/L_φ.
-- Spin: topological, independent of r.
-- Charge: fixes a/R = 1/√(πα), where R = L_φ/(2π). This
-  determines a in terms of r, but does not constrain r itself.
-- g-factor: depends on α = e²/(4πε₀ℏc), not on the compact
-  geometry. Independent of r.
+**The electron has zero free continuous parameters.** Given
+the (1,2) topology, photon energy E = m_e c², and α ≈ 1/137,
+everything is determined:
 
-**Prediction: r is free.** The electron works on any T² whose
-(1,2) geodesic has path length λ_C. The compact dimensions are a
-property of the universe, not of the electron.
+    r = 1/√(πα) ≈ 6.60
+    L_φ = λ_C / √(4 + 1/(πα)) ≈ 3.52 × 10⁻¹³ m
+    L_θ = r L_φ ≈ 2.32 × 10⁻¹² m
+    R = L_φ/(2π) ≈ 5.60 × 10⁻¹⁴ m
+    a = L_θ/(2π) ≈ 3.70 × 10⁻¹³ m
 
-The study should confirm or refute this prediction.
+The photon resonates at the Compton frequency f = m_e c²/h.
 
-## Approach
-
-### Part A: Algebra (findings.md)
-
-1. Write all four property formulas explicitly as functions of
-   (L_φ, L_θ, a, E) and the (1,2) winding numbers.
-2. Substitute constraints (path length, charge, g-factor).
-3. Count free parameters. Confirm r is free (or discover it isn't).
-4. State the result: the minimal specification for an electron.
-
-### Part B: Numerical verification (scripts/)
-
-A Python script that:
-- Takes r as input (or sweeps a range)
-- Computes L_φ(r), L_θ(r), R(r), a(r)
-- Evaluates all four properties and compares to experiment
-- Prints a table showing everything works (or doesn't) for each r
-- Produces the "recipe card" — the explicit inputs and outputs
-
-## What success looks like
-
-A verified statement: "A photon of energy m_e c² on a (1,2)
-geodesic in any T² with path length λ_C produces a particle with
-q = e, s = ½, g ≈ 2.0023. The aspect ratio r = L_θ/L_φ is a
-free parameter — a property of the universe, not the electron."
-
-Plus: a clear list of what would constrain r (other particles,
-field profile calculations, self-consistency conditions) pointing
-to future work.
+See [`findings.md`](findings.md) for full derivation and
+[`scripts/verify.py`](scripts/verify.py) for numerical
+verification.
 
 ## What this does NOT address
 
-- Why α has the value it does (S2 demands a/R = 1/√(πα) but
-  doesn't derive it)
-- What determines r (deferred to future studies)
-- Whether other particles (muon, quarks) live on the same T²
-- The guided-wave field profile that should derive a/R from first
-  principles (deferred to R6)
+- Why α has the value it does
+- Whether other particles (muon, quarks) fit this framework
+- The guided-wave field profile (R6)
+- The spindle torus self-intersection (a/R ≈ 6.6 > 1)
 
 ## References
 

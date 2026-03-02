@@ -27,7 +27,7 @@ m_tau = 3.16754e-27            # tau mass (kg)
 # ── Derived scales ────────────────────────────────────────────────────────────
 lambda_C = h / (m_e * c)                    # electron Compton wavelength (m)
 r_bar    = lambda_C / (4 * math.pi)         # WvM toroid transport radius (m)
-l_P      = math.sqrt(hbar * 6.67430e-11 / c**3)  # Planck length (m), ~1.616e-35
+l_P      = math.sqrt(hbar * G / c**3)             # Planck length (m), ~1.616e-35
 
 # ── Mathematical constants ────────────────────────────────────────────────────
 phi = (1 + math.sqrt(5)) / 2   # golden ratio ≈ 1.618034

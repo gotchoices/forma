@@ -8,23 +8,6 @@ Priority-ordered work queue. Pick from the top of Next.
 
 ## Active
 
-(none)
-
----
-
-## Next
-
-### R2. Electron from geometry
-**Question:** Q20 (partial)  **Type:** compute  **Depends on:** —
-**Study:** [`electron-compact/`](electron-compact/)
-
-Assemble all established results (spin from topology, charge from
-a/R = 1/√(πα), mass from path length, g-factor from WvM) into
-one framework. Verify they are mutually consistent. Identify the
-minimal inputs that produce an electron and what remains free.
-Expected result: r = L_θ/L_φ is a free parameter (a property
-of the universe, not of the electron).
-
 ### R3. Dual visualizer (3D torus + 2D flat)
 **Type:** compute  **Depends on:** —
 **Study:** (not yet created)
@@ -107,6 +90,14 @@ on field extent geometry. The key algebraic result of the project.
 Only (1,2) produces charge (all other knots cancel by symmetry).
 Fractional charges (e/3, 2e/3) map to clean a/R multiples.
 Compact dimension hypothesis proposed.
+
+### R2. Electron from geometry  *(concluded)*
+**Study:** [`electron-compact/`](electron-compact/)
+
+Confirmed: a photon of energy m_e c² on a (1,2) geodesic in a T²
+produces q = e, s = ½, g ≈ 2.0023. The geometry is fully
+determined: r = a/R = 1/√(πα) ≈ 6.60 (from charge), absolute
+scale from mass (ℓ = λ_C). Zero free continuous parameters.
 
 ### R1. KK charge comparison  *(concluded)*
 **Study:** [`kk-charge/`](kk-charge/)
