@@ -14,16 +14,16 @@ Priority-ordered work queue. Pick from the top of Next.
 
 ## Next
 
-### R2. Solve for electron properties
+### R2. Electron from geometry
 **Question:** Q20 (partial)  **Type:** compute  **Depends on:** —
 **Study:** [`electron-compact/`](electron-compact/)
 
-Given the established results (spin from topology, charge from
-a/R = 1/√(πα), mass from path length), write down all unknowns
-and constraints and determine whether they fix a unique geometry.
-Specifically: do q = e, m = m_e, s = ½, and g ≈ 2.0023
-simultaneously determine the compact dimensions L₁, L₂ and the
-field extent a? This is the main goal of the project.
+Assemble all established results (spin from topology, charge from
+a/R = 1/√(πα), mass from path length, g-factor from WvM) into
+one framework. Verify they are mutually consistent. Identify the
+minimal inputs that produce an electron and what remains free.
+Expected result: r = L_θ/L_φ is a free parameter (a property
+of the universe, not of the electron).
 
 ### R3. Dual visualizer (3D torus + 2D flat)
 **Type:** compute  **Depends on:** —

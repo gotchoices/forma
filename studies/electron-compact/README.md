@@ -1,87 +1,105 @@
 # Electron from Compact Dimensions  *(draft)*
 
-Given the established results from S1–S3 and R1, write down all
-unknowns and constraints for the electron and determine whether
-they fix a unique geometry.
+Assemble all established results into a single framework and
+verify: a photon of specific energy, on a specific geodesic, in
+a periodic geometry, produces an electron with all measured
+properties. Identify what inputs are required and what is free.
+
+## Motivation
+
+If the universe is built from geometry — dimensions and how they
+relate to each other — then particles should emerge from energy
+on geodesics in that geometry. The electron is the simplest test
+case. Prior studies established each property separately (spin
+from S3, charge from S2, mass from WvM, g-factor from WvM). This
+study checks them all simultaneously and asks: what is the
+minimal specification that produces an electron?
 
 ## What we know
 
-From prior studies:
+| Property | Value | How it arises | Source |
+|----------|-------|---------------|--------|
+| Spin ½ | L = ℏ/2 | (1,2) topology: double loop | WvM, S3 |
+| Charge | q = e | a/R = 1/√(πα): field extent geometry | S2 |
+| Mass | m_e | Path length = λ_C: photon energy | WvM |
+| g-factor | g ≈ 2(1 + α/(2π)) | External field energy fraction | WvM |
+| Only (1,2) has charge | All other knots cancel | Symmetry | S3 |
+| KK gravity not involved | q_KK ~ 10⁻²² e at this scale | Scale separation | R1 |
 
-| Property | Value | Source | Status |
-|----------|-------|--------|--------|
-| Spin ½ | L = ℏ/2 | (1,2) topology | Exact (S3) |
-| Charge | q = e | a/R = 1/√(πα) | Exact algebra (S2) |
-| Mass | m_e = h/(λ_C c) | Path length = λ_C | WvM |
-| g-factor | g ≈ 2(1 + α'/2π) | External field fraction | WvM |
-| Charge mechanism | Electromagnetic, not KK gravitational | WvM ≠ KK | R1 |
-| Charge uniqueness | Only (1,2) has nonzero charge | Symmetry cancellation | S3 |
+## The recipe (hypothesis)
 
-## The picture
+**Inputs:**
+- A flat torus T² with circumferences L_φ, L_θ
+- A (1,2) geodesic (topology choice)
+- A photon of energy E = m_e c²
 
-- Two compact dimensions (φ, θ), both periodic → flat torus T².
-- A photon follows a straight-line geodesic in this flat space.
-- In the 3D embedding, this geodesic is a (1,2) torus knot.
-- The photon's energy determines the particle mass: m = E/c².
-- The topology determines spin; the field extent determines charge.
+**Outputs (to verify):**
+- Mass: m = E/c² = m_e (by construction)
+- Spin: ½ (from double winding — any T² with a (1,2) path)
+- Charge: e (from field extent a/R = 1/√(πα))
+- g-factor: ≈ 2.0023 (from external field fraction α/(2π))
 
-## Unknowns
+## Expected result
 
-| Variable | Meaning | Constrained by |
-|----------|---------|----------------|
-| L_φ | Circumference of major circle | mass (path length = λ_C) |
-| L_θ | Circumference of minor circle | mass (path length = λ_C) |
-| r = L_θ/L_φ | Aspect ratio of T² | ? (free parameter?) |
-| a | Field extent into non-compact space | charge (a/R = 1/√(πα) from S2) |
-| E | Photon energy | mass: m = E/c² |
+The system is under-determined. Specifically:
 
-The path length constraint √(4L_φ² + L_θ²) = λ_C relates L_φ
-and L_θ, leaving one free: the ratio r = L_θ/L_φ.
+- Path length constraint: √(4L_φ² + L_θ²) = λ_C — one equation
+  relating L_φ and L_θ, parameterized by r = L_θ/L_φ.
+- Spin: topological, independent of r.
+- Charge: fixes a/R = 1/√(πα), where R = L_φ/(2π). This
+  determines a in terms of r, but does not constrain r itself.
+- g-factor: depends on α = e²/(4πε₀ℏc), not on the compact
+  geometry. Independent of r.
 
-## Key questions
+**Prediction: r is free.** The electron works on any T² whose
+(1,2) geodesic has path length λ_C. The compact dimensions are a
+property of the universe, not of the electron.
 
-1. **Is the system determined?** We have:
-   - Spin: automatic from (1,2) topology — no constraint on geometry
-   - Mass: fixes path length = λ_C — one equation, two unknowns (L_φ, L_θ)
-   - Charge: fixes a/R = 1/√(πα) — constrains field extent, not L_φ/L_θ
-   - g-factor: depends on external field fraction — may constrain r
-
-   So: path length fixes L_φ(r) and L_θ(r) for any r. Charge
-   fixes a/R. The ratio r appears to be free unless the g-factor
-   or another condition constrains it.
-
-2. **What is "a" in the compact-dimension picture?** S2 treats
-   a as the field extent — how far the photon's E-field reaches
-   from the geodesic orbit. In a compact-dimension framework,
-   this should emerge from the field equations (guided-wave decay
-   profile), not be an input.
-
-3. **Does the g-factor constrain r?** WvM derives
-   g = 2(1 + α'/2π) from the energy fraction in the non-rotating
-   external field. If the external field depends on the T² aspect
-   ratio r, this could fix the remaining free parameter.
-
-4. **Fixed T² vs per-particle T².** If T² is a property of
-   spacetime (same for all particles), then mass comes purely from
-   photon energy and different particles are different energy
-   modes on the same geometry. If T² varies per particle, the
-   geometry determines both mass and charge. S3 suggested fixed T²
-   with mass from harmonics; this needs testing.
+The study should confirm or refute this prediction.
 
 ## Approach
 
-1. Write down all equations explicitly (path length, charge,
-   g-factor) as functions of (L_φ, L_θ, a, E).
-2. Count independent constraints vs unknowns.
-3. If under-determined: identify what additional physics could
-   close the system.
-4. If determined: solve and check consistency.
-5. If over-determined: check whether the constraints are mutually
-   consistent (a non-trivial test of the model).
+### Part A: Algebra (findings.md)
+
+1. Write all four property formulas explicitly as functions of
+   (L_φ, L_θ, a, E) and the (1,2) winding numbers.
+2. Substitute constraints (path length, charge, g-factor).
+3. Count free parameters. Confirm r is free (or discover it isn't).
+4. State the result: the minimal specification for an electron.
+
+### Part B: Numerical verification (scripts/)
+
+A Python script that:
+- Takes r as input (or sweeps a range)
+- Computes L_φ(r), L_θ(r), R(r), a(r)
+- Evaluates all four properties and compares to experiment
+- Prints a table showing everything works (or doesn't) for each r
+- Produces the "recipe card" — the explicit inputs and outputs
 
 ## What success looks like
 
-A self-consistent solution where the compact dimension sizes
-and photon energy produce all four electron properties (q, m,
-s, g) from a small number of inputs — ideally just the T²
-geometry and the photon energy, with everything else following.
+A verified statement: "A photon of energy m_e c² on a (1,2)
+geodesic in any T² with path length λ_C produces a particle with
+q = e, s = ½, g ≈ 2.0023. The aspect ratio r = L_θ/L_φ is a
+free parameter — a property of the universe, not the electron."
+
+Plus: a clear list of what would constrain r (other particles,
+field profile calculations, self-consistency conditions) pointing
+to future work.
+
+## What this does NOT address
+
+- Why α has the value it does (S2 demands a/R = 1/√(πα) but
+  doesn't derive it)
+- What determines r (deferred to future studies)
+- Whether other particles (muon, quarks) live on the same T²
+- The guided-wave field profile that should derive a/R from first
+  principles (deferred to R6)
+
+## References
+
+- S2 (charge geometry): [`toroid-geometry/findings.md`](../toroid-geometry/findings.md)
+- S3 (knot classification): [`knot-zoo/findings.md`](../knot-zoo/findings.md)
+- R1 (KK comparison): [`kk-charge/findings.md`](../kk-charge/findings.md)
+- WvM paper: [`ref/WvM.pdf`](../../ref/WvM.pdf)
+- WvM summary: [`ref/WvM-summary.md`](../../ref/WvM-summary.md)
