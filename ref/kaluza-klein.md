@@ -178,21 +178,25 @@ In ordinary 4D spacetime, coordinates are (t, x, y, z) and the
 metric is a 4×4 matrix. Add a fifth coordinate w. Now the metric
 is a 5×5 matrix.
 
-The 5D distance formula has three kinds of terms:
-
-    ds² = (4D spacetime terms) + (pure w term) + (cross terms)
-
-Written out with coordinates labeled 0–3 for spacetime and 5 for
-the extra dimension:
+The 5D distance formula could be written as a single expression
+— g_AB dx^A dx^B with A,B running over all five coordinates —
+but that would bury the physics inside a 25-term sum. Instead,
+we split the 5×5 matrix into three groups, each with a distinct
+physical meaning:
 
     ds² = g_μν dx^μ dx^ν + g₅₅ dw² + 2 g_μ5 dx^μ dw
+          ───────┬──────   ────┬────   ──────┬──────
+          spacetime×space   w×w        spacetime×w
+          = gravity         = scalar   = electromagnetism
 
 Here μ and ν each run over {t, x, y, z} — the four spacetime
-coordinates. This is **index notation**: instead of writing out all
-16 spacetime terms individually, g_μν dx^μ dx^ν is shorthand for
-"sum over all combinations of μ and ν." When an index appears
-twice (once up, once down), you sum over it. This is called the
-**Einstein summation convention**.
+coordinates. The expression g_μν dx^μ dx^ν uses index notation
+(see `matrix-primer.md` §9): it means "sum over all combinations
+of μ and ν," which is 4×4 = 16 terms — the spacetime metric.
+
+The factor of 2 on the cross terms has the same origin as in the
+matrix primer (§7): the metric matrix is symmetric (g_μ5 = g_5μ),
+so the terms with indices (μ,5) and (5,μ) are equal and combine.
 
 For example, in just 2D:
 
@@ -208,19 +212,38 @@ The three groups of terms in the 5D metric:
 | g₅₅ dw² | Length of the extra dimension | A scalar field (the "dilaton") |
 | 2 g_μ5 dx^μ dw | Cross terms mixing w with spacetime | **Electromagnetism** |
 
-The cross terms are the key. Kaluza identified them with the
-electromagnetic potential:
+The cross terms are the key. They connect to the electromagnetic
+potential — the four-number object A_μ from which all electric
+and magnetic fields are derived. (For a full review of Maxwell's
+equations, potentials, and A_μ, see [`maxwell-primer.md`](maxwell-primer.md).
+The short version follows.)
+
+In electromagnetism, the E and B fields (6 components total) can
+all be derived from just 4 numbers called the **four-potential**:
+
+    A_μ = (φ/c, A_x, A_y, A_z)
+
+where φ is the scalar potential (voltage) and **A** is the vector
+potential. The fields come from derivatives of the potentials:
+
+    E = −∇φ − ∂A/∂t       (E points "downhill" from high voltage)
+    B = ∇ × A              (B is the "swirl" of A)
+
+Kaluza's identification: the four cross terms of the 5D metric
+ARE the four-potential:
 
     g_μ5 = A_μ
 
-where A_μ = (A_t, A_x, A_y, A_z) is the **electromagnetic
-four-potential** — the quantity whose derivatives give the electric
-and magnetic fields:
+The metric cross terms (how much the compact dimension tilts
+relative to each spacetime direction) and the electromagnetic
+potential (the object whose derivatives give E and B) are the
+same mathematical object. If you know the 5D metric, you know
+the electromagnetic field.
 
-    E = −∇A_t − ∂A/∂t
-    B = ∇ × A
-
-(These are the standard relations from electromagnetism.)
+This is why the three-way split matters. The cross terms between
+spacetime and the compact dimension aren't just "some off-diagonal
+entries" — they are electromagnetism, encoded in the geometry of
+the extra dimension.
 
 
 ## 8. What the cross terms do physically

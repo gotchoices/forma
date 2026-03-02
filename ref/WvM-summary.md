@@ -6,6 +6,11 @@ Broglie*, Vol. 22 No. 2, 1997.
 
 **Full text:** `WvM.pdf` in this folder.
 
+This is a living summary. It records our current understanding of
+what the paper claims, what it demonstrates, and where we have
+previously misread it. Sections marked ⚠ contain corrections to
+earlier interpretations.
+
 ---
 
 ## Notation
