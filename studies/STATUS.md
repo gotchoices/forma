@@ -14,23 +14,16 @@ Priority-ordered work queue. Pick from the top of Next.
 
 ## Next
 
-### R1. KK charge comparison
-**Question:** Q17  **Type:** reason  **Depends on:** —
-**Study:** [`kk-charge/`](kk-charge/)
-
-Does WvM's charge derivation reduce to the Kaluza-Klein charge
-quantum? If yes, the compact-dimension framework is on solid
-theoretical ground. If no, we know exactly where the gap is.
-Foundation for everything below.
-
 ### R2. Solve for electron properties
-**Question:** Q20 (partial)  **Type:** compute  **Depends on:** R1
+**Question:** Q20 (partial)  **Type:** compute  **Depends on:** —
 **Study:** [`electron-compact/`](electron-compact/)
 
-Given the compact-dimension framework, write down the unknowns
-(dimension sizes, winding, photon energy), the constraints
-(q = e, m = m_e, s = ½, g ≈ 2.0023), and solve. This is the
-main goal.
+Given the established results (spin from topology, charge from
+a/R = 1/√(πα), mass from path length), write down all unknowns
+and constraints and determine whether they fix a unique geometry.
+Specifically: do q = e, m = m_e, s = ½, and g ≈ 2.0023
+simultaneously determine the compact dimensions L₁, L₂ and the
+field extent a? This is the main goal of the project.
 
 ### R3. Dual visualizer (3D torus + 2D flat)
 **Type:** compute  **Depends on:** —
@@ -54,24 +47,24 @@ confirm and write up.
 ## Backlog
 
 ### R5. Flat space → curved appearance
-**Question:** Q2  **Type:** reason  **Depends on:** R1
+**Question:** Q2  **Type:** reason  **Depends on:** —
 
 If compact dimensions are flat, how do the photon's fields
-project into 3+1D? Answerable from KK field projection once
-R1 establishes the framework.
+project into 3+1D? The 6D decomposition from R1 provides the
+framework; what remains is working out the field projection.
 
 ### R6. Guided-wave field profile
 **Question:** Q9  **Type:** compute  **Depends on:** R2
 
 What is the actual E-field falloff from the orbit? Replaces
 WvM's uniform-field-in-a-sphere with a proper mode profile.
-Affects charge derivation accuracy.
+May provide a first-principles derivation of a/R = 1/√(πα).
 
 ### R7. Quadrupole correction
 **Question:** Q10  **Type:** compute  **Depends on:** R6
 
 Full calculation of charge including the (1,2) orbit's ~2.5%
-field anisotropy.
+field anisotropy (quantified in S2 F5).
 
 ### R8. Derive α from geometry
 **Question:** Q18  **Type:** compute  **Depends on:** R2, R6
@@ -94,6 +87,35 @@ energy flow (Fig. 2)?
 ---
 
 ## Done
+
+### S1. Toroid series  *(concluded)*
+**Study:** [`toroid-series/`](toroid-series/)
+
+Null result. The 9% charge deficit is an artifact of geometric
+assumptions, not a robust target for correction.
+
+### S2. Toroid geometry  *(concluded)*
+**Study:** [`toroid-geometry/`](toroid-geometry/)
+
+a/R = 1/√(πα) ≈ 6.60 gives q = e exactly. The sphere is the
+rotation horizon. Spin is exact (topological), charge depends
+on field extent geometry. The key algebraic result of the project.
+
+### S3. Knot zoo  *(concluded)*
+**Study:** [`knot-zoo/`](knot-zoo/)
+
+Only (1,2) produces charge (all other knots cancel by symmetry).
+Fractional charges (e/3, 2e/3) map to clean a/R multiples.
+Compact dimension hypothesis proposed.
+
+### R1. KK charge comparison  *(concluded)*
+**Study:** [`kk-charge/`](kk-charge/)
+
+KK gravitational charge is ruled out at the Compton scale
+(~10⁻²² × e). WvM charge mechanism is structurally different
+(no G, different scale). Compact topology still useful for
+confinement and spin. The 6D decomposition (gravity + 2 gauge
+fields + 3 scalars) is documented for reference.
 
 ### D1. WvM summary revision
 **Type:** research  **Result:** [`ref/WvM-summary.md`](../ref/WvM-summary.md)

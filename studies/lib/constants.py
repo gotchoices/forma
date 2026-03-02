@@ -15,6 +15,7 @@ c     = 299_792_458           # speed of light (m/s), exact
 eps0  = 8.8541878128e-12      # vacuum permittivity (F/m)
 mu0   = 1 / (eps0 * c**2)    # vacuum permeability (H/m)
 e     = 1.602176634e-19       # elementary charge (C), exact post-2019
+G     = 6.67430e-11              # gravitational constant (m³/(kg·s²))
 alpha = 7.2973525693e-3       # fine-structure constant (dimensionless)
 k_B   = 1.380649e-23          # Boltzmann constant (J/K), exact
 

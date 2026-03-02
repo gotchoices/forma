@@ -1,11 +1,21 @@
 # Electron from Compact Dimensions  *(draft)*
 
-Given the compact-dimension framework, solve for a self-consistent
-set of variables (geometry, energy) that reproduce the measured
-electron properties: charge, mass, spin, magnetic moment.
+Given the established results from S1–S3 and R1, write down all
+unknowns and constraints for the electron and determine whether
+they fix a unique geometry.
 
-**Depends on:** R1 (KK charge comparison) — determines whether
-the framework is KK, WvM, or something hybrid.
+## What we know
+
+From prior studies:
+
+| Property | Value | Source | Status |
+|----------|-------|--------|--------|
+| Spin ½ | L = ℏ/2 | (1,2) topology | Exact (S3) |
+| Charge | q = e | a/R = 1/√(πα) | Exact algebra (S2) |
+| Mass | m_e = h/(λ_C c) | Path length = λ_C | WvM |
+| g-factor | g ≈ 2(1 + α'/2π) | External field fraction | WvM |
+| Charge mechanism | Electromagnetic, not KK gravitational | WvM ≠ KK | R1 |
+| Charge uniqueness | Only (1,2) has nonzero charge | Symmetry cancellation | S3 |
 
 ## The picture
 
@@ -13,74 +23,65 @@ the framework is KK, WvM, or something hybrid.
 - A photon follows a straight-line geodesic in this flat space.
 - In the 3D embedding, this geodesic is a (1,2) torus knot.
 - The photon's energy determines the particle mass: m = E/c².
-- The topology and geometry determine charge, spin, and g-factor.
+- The topology determines spin; the field extent determines charge.
 
 ## Unknowns
 
 | Variable | Meaning | Constrained by |
 |----------|---------|----------------|
-| L_φ | Circumference of major circle | charge + mass |
-| L_θ | Circumference of minor circle | charge + spin |
-| p, q | Winding numbers | spin (must be (1,2)) |
-| E | Photon energy | mass |
-| Field profile | How E/B extend beyond the compact surface | charge, g-factor |
+| L_φ | Circumference of major circle | mass (path length = λ_C) |
+| L_θ | Circumference of minor circle | mass (path length = λ_C) |
+| r = L_θ/L_φ | Aspect ratio of T² | ? (free parameter?) |
+| a | Field extent into non-compact space | charge (a/R = 1/√(πα) from S2) |
+| E | Photon energy | mass: m = E/c² |
 
-Some of these may not be independent. Part of the study is
-determining which variables are free and which are fixed by
-the constraints.
-
-## Constraints
-
-| Property | Measured value | WvM derivation |
-|----------|---------------|----------------|
-| Charge | q = e = 1.602 × 10⁻¹⁹ C | Topology + field geometry |
-| Mass | m_e = 0.511 MeV/c² | Photon energy: m = h/(λc) |
-| Spin | s = ½ | (1,2) winding: L = ℏ/2 |
-| g-factor | g ≈ 2.0023 | External field energy fraction |
+The path length constraint √(4L_φ² + L_θ²) = λ_C relates L_φ
+and L_θ, leaving one free: the ratio r = L_θ/L_φ.
 
 ## Key questions
 
-1. **Is the system determined?** Four constraints, roughly five
-   unknowns. Is there a free parameter, or does the system
-   over-determine (requiring consistency checks)?
+1. **Is the system determined?** We have:
+   - Spin: automatic from (1,2) topology — no constraint on geometry
+   - Mass: fixes path length = λ_C — one equation, two unknowns (L_φ, L_θ)
+   - Charge: fixes a/R = 1/√(πα) — constrains field extent, not L_φ/L_θ
+   - g-factor: depends on external field fraction — may constrain r
 
-2. **Does mass fix the geometry, or vice versa?** In WvM,
-   R = λ_C/(4π) links the orbital radius to the mass. In the
-   compact dimension picture, R is a property of spacetime
-   (fixed for all particles). These can't both be true. R1
-   should clarify which picture is correct.
+   So: path length fixes L_φ(r) and L_θ(r) for any r. Charge
+   fixes a/R. The ratio r appears to be free unless the g-factor
+   or another condition constrains it.
 
-3. **What sets L_φ and L_θ?** If the compact dimensions have
-   fixed sizes, all particles on the same T² have the same
-   geometry. Mass comes from photon energy (independent of
-   geometry). Charge comes from the geometry (independent of
-   energy). These decouple — but do they decouple cleanly?
+2. **What is "a" in the compact-dimension picture?** S2 treats
+   a as the field extent — how far the photon's E-field reaches
+   from the geodesic orbit. In a compact-dimension framework,
+   this should emerge from the field equations (guided-wave decay
+   profile), not be an input.
 
-4. **The g-factor constraint.** WvM derives g = 2(1 + α'/2π)
-   from the energy in the external (non-rotating) Coulomb field.
-   In the compact dimension picture, what is the "external" field?
-   The field that extends into the non-compact dimensions (xyz)?
-   This needs to be mapped carefully.
+3. **Does the g-factor constrain r?** WvM derives
+   g = 2(1 + α'/2π) from the energy fraction in the non-rotating
+   external field. If the external field depends on the T² aspect
+   ratio r, this could fix the remaining free parameter.
 
-5. **Consistency with R1.** If R1 shows WvM ≈ KK, then charge
-   comes from KK quantization (q = nℏ/(R_KK c)) and the compact
-   radius is fixed by demanding q = e. If R1 shows WvM ≠ KK,
-   the charge derivation is WvM's cavity argument and the
-   compact radius is less constrained.
+4. **Fixed T² vs per-particle T².** If T² is a property of
+   spacetime (same for all particles), then mass comes purely from
+   photon energy and different particles are different energy
+   modes on the same geometry. If T² varies per particle, the
+   geometry determines both mass and charge. S3 suggested fixed T²
+   with mass from harmonics; this needs testing.
 
 ## Approach
 
-1. Wait for R1 to establish the framework.
-2. Write down the full set of equations (KK or WvM, per R1).
-3. Count unknowns and constraints.
-4. Solve, or identify what additional physics is needed to close
-   the system.
-5. Compare predictions to measured values.
+1. Write down all equations explicitly (path length, charge,
+   g-factor) as functions of (L_φ, L_θ, a, E).
+2. Count independent constraints vs unknowns.
+3. If under-determined: identify what additional physics could
+   close the system.
+4. If determined: solve and check consistency.
+5. If over-determined: check whether the constraints are mutually
+   consistent (a non-trivial test of the model).
 
 ## What success looks like
 
-A self-consistent solution where the compact dimension sizes,
-photon energy, and winding numbers produce all four electron
-properties from a small number of inputs (ideally: just the
-compact dimension sizes and the photon energy, with everything
-else following from the framework).
+A self-consistent solution where the compact dimension sizes
+and photon energy produce all four electron properties (q, m,
+s, g) from a small number of inputs — ideally just the T²
+geometry and the photon energy, with everything else following.

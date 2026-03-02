@@ -181,7 +181,7 @@ supports other geodesics. This makes predictions:
 | (5,2) | ½ | 0 | (unknown) |
 | (1,1) | 1 | ? | Boson? |
 
-The knot-zoo study (study 3) showed that in the Frenet frame
+S3 (knot-zoo) showed that in the Frenet frame
 model, only (1,2) gives nonzero charge. All other (p,2) knots
 give exactly zero by symmetry cancellation. Whether this holds
 under a different polarization transport rule, or in the full KK
@@ -291,7 +291,7 @@ single effective charge?
 
 ### P4. Unification of α
 
-**Claim:** the a/R = 1/√(πα) relationship from study 2 and the
+**Claim:** the a/R = 1/√(πα) relationship from S2 and the
 KK compact radius R_KK = ℏ/(ec) are two expressions of the same
 geometric quantity.
 
