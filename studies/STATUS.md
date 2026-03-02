@@ -8,15 +8,6 @@ Priority-ordered work queue. Pick from the top of Next.
 
 ## Active
 
-### R3. Dual visualizer (3D torus + 2D flat)
-**Type:** compute  **Depends on:** —
-**Study:** (not yet created)
-
-Augment the existing torus visualizer to show a side-by-side 2D
-flat rectangle with wrapping (Pac-Man style) alongside the 3D
-torus. A (1,2) path is a straight line at a specific angle on
-the flat view. Builds intuition for the compact-dimension picture.
-
 ### R4. B-field and magnetic dipole
 **Question:** Q8  **Type:** research  **Depends on:** —
 
@@ -90,6 +81,13 @@ on field extent geometry. The key algebraic result of the project.
 Only (1,2) produces charge (all other knots cancel by symmetry).
 Fractional charges (e/3, 2e/3) map to clean a/R multiples.
 Compact dimension hypothesis proposed.
+
+### R3. Dual visualizer  *(concluded)*
+**Study:** [`dual-visualizer/`](dual-visualizer/)
+
+Side-by-side 3D torus + 2D flat rectangle view with synchronized
+photon animation. Supports a/R slider, knot selection, speed
+control. Shows how geodesics are straight lines on the flat T².
 
 ### R2. Electron from geometry  *(concluded)*
 **Study:** [`electron-compact/`](electron-compact/)
