@@ -1,80 +1,101 @@
 # KK Charge Comparison  *(draft)*
 
-Does WvM's charge derivation reduce to the Kaluza-Klein charge
-quantum? This determines whether the compact-dimension framework
-is the right theoretical foundation for the project.
+Does WvM's charge derivation relate to the Kaluza-Klein charge
+mechanism? If so, how? If not, what framework should we use?
 
 ## Why this is first
 
-Every study after this depends on the answer. If WvM reduces to
-KK, we have a principled framework (5D geodesics, Noether charge,
-established math). If it doesn't, we need to understand exactly
-where the gap is before building further.
+Every study after this depends on the answer. It determines
+whether we can use established KK mathematics as our framework,
+or whether we need something different.
 
-## The two charge derivations
+## The sharpened questions
 
-**WvM (1997):** Confine a photon of wavelength λ to a sphere of
-diameter λ. Average E-field inside: ⟨E⟩ = √(6hc / πε₀λ⁴).
-Match to Coulomb field at r = λ/4π:
+Our preliminary analysis (see `theory.md` and discussions in
+`ref/kaluza-klein.md`) revealed that this is not a simple yes/no
+comparison. Three structural issues must be addressed:
 
-    q_WvM = (1/2π) √(3ε₀ℏc) ≈ 0.91e
+**1. Gravitational vs electromagnetic coupling.** Standard KK
+derives charge from 5D gravity — the factor √G appears in the
+charge formula, giving a compact radius of ~10⁻³⁴ m (Planck
+scale). WvM is purely electromagnetic, with structures at
+~10⁻¹² m (Compton scale). These differ by 10²¹. The question is
+whether a non-gravitational version of KK (electromagnetic fields
+on a compact space, no gravity) gives a different charge formula
+with a different natural scale.
 
-**Kaluza-Klein:** Momentum in a compact dimension of circumference
-L is quantized: p_w = nℏ/L. This momentum manifests as charge:
+**2. Two U(1) charges from T².** A 6D theory with T² compact
+space gives U(1) × U(1) — two independent gauge fields. The
+(1,2) geodesic winds in both compact directions, so it carries
+two charges. How these combine into the single electric charge we
+observe is non-trivial.
 
-    q_KK = n · ℏ / (R_KK · c)
-
-where R_KK = L/(2π) is the compact radius and n is the winding
-number.
-
-## What to check
-
-1. **Algebraic comparison.** Set q_WvM = q_KK and solve for R_KK.
-   Does the implied compact radius relate to any WvM length scale
-   (λ_C/4π, λ_C/2, the torus parameters)?
-
-2. **Dimensional analysis.** Both formulas produce a charge from
-   ℏ and c. Are they algebraically the same expression with
-   different names for the geometric parameters, or are they
-   structurally different?
-
-3. **If they match:** the compact dimension circumference L is
-   determined. What is it in terms of λ_C? Does it correspond to
-   the path length (λ_C), the orbital circumference (λ_C/2), or
-   something else?
-
-4. **If they don't match:** what specifically differs? Is WvM's
-   charge an approximation to KK's (with geometric corrections)?
-   Or are they different mechanisms entirely?
-
-5. **The α connection.** Our study 2 found a/R = 1/√(πα) gives
-   q = e exactly (by inverting the WvM formula). In KK, α = e²/(4πε₀ℏc)
-   relates the charge quantum to the compact radius. Do these two
-   appearances of α unify?
-
-## Expected outcomes
-
-- **Best case:** WvM charge = KK charge with a specific
-  identification of the compact radius. The entire WvM model
-  becomes a specific KK solution. Confinement dissolves.
-
-- **Partial match:** WvM charge ≈ KK charge with geometric
-  corrections (the ~9% deficit maps to a specific geometric
-  factor). The framework is KK but the details need refinement.
-
-- **No match:** The mechanisms are structurally different. The
-  compact dimension hypothesis needs independent justification,
-  or WvM is not a KK theory at all.
+**3. Two different charge mechanisms.** KK: charge = quantized
+momentum in the compact direction (exact, from Noether's theorem).
+WvM: charge = electromagnetic field topology (approximate, from
+average E-field in a cavity). These might be the same thing
+viewed differently, or genuinely different physics.
 
 ## Approach
 
-This is pure algebra — no computation needed. Read the KK charge
-derivation carefully, substitute the WvM parameters, and compare.
-The result is either an identity, an approximation, or a
-contradiction.
+The study has two parts.
 
-Key references:
+### Part A: Algebraic derivation (findings.md)
+
+A step-by-step mathematical paper, written so each step can be
+independently verified. Covers:
+
+- F1. The standard KK charge formula (with √G) and what compact
+  radius it implies for q = e.
+- F2. The electromagnetic KK formula — what happens when we do
+  KK without gravity (Maxwell on a compact space). Does the charge
+  formula change?
+- F3. Direct comparison: WvM charge formula vs KK charge formula.
+  Express both in terms of the same variables. Are they
+  structurally the same, proportional, or unrelated?
+- F4. The T² extension: how two compact momenta combine for a
+  (1,2) geodesic. What is the effective single charge?
+- F5. The α connection: do a/R = 1/√(πα) and the KK compact
+  radius unify?
+
+### Part B: Numerical verification (scripts/)
+
+A Python script that:
+- Evaluates both charge formulas with physical constants
+- Computes implied compact dimensions for each formula
+- Explores the T² parameter space (L₁, L₂) for a (1,2) path
+  of length λ_C, checking which combinations give q = e
+- Produces a clear numerical summary for verification
+
+## Propositions (from theory.md)
+
+- **P1.** WvM and KK charge are algebraically related
+- **P2.** T² compact momentum gives q ≈ e for the (1,2) geodesic
+- **P3.** Two U(1) charges combine into a single effective charge
+- **P4.** The α appearances unify
+
+## Expected outcomes
+
+The outcome is likely not "WvM = KK exactly" (the gravitational
+coupling makes this improbable). More likely outcomes:
+
+- **WvM ≈ electromagnetic KK:** same mechanism, different from
+  standard gravitational KK, at a much larger scale.
+- **WvM is structurally different:** charge from field topology is
+  a genuinely different mechanism from charge as compact momentum.
+  The compact-dimension framework is useful for confinement and
+  spin but the charge derivation is WvM's own.
+- **Hybrid:** the T² topology provides spin and confinement; the
+  charge mechanism is electromagnetic (WvM-like) rather than
+  gravitational (KK-like); the two are complementary.
+
+Any of these outcomes tells us what framework to use for R2
+(solving for electron properties).
+
+## References
+
 - WvM paper §3 (charge derivation): `ref/WvM.pdf`
-- KK charge quantization: standard reference (Kaluza 1921,
-  Klein 1926, or any modern review)
-- A7 §4 (our KK summary): `answers/A7-flat-compact-dimensions.md`
+- KK primer: `ref/kaluza-klein.md`
+- Maxwell primer: `ref/maxwell-primer.md`
+- A7 (compact dimensions): `answers/A7-flat-compact-dimensions.md`
+- Propositions and framework: `theory.md`

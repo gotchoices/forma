@@ -191,6 +191,30 @@ direction), is an open question.
 
 ## 8. Open issues with the T² mapping
 
+### Gravitational vs electromagnetic coupling
+
+Standard KK derives electromagnetism from 5D gravity. The charge
+formula involves the gravitational constant G:
+
+    q_KK = √(16πG/c⁴) × nℏc / R_KK
+
+(The exact prefactor depends on normalization conventions, but √G
+always appears.) This gives R_KK ~ 10⁻³⁴ m for q = e — the
+Planck scale.
+
+WvM's model is purely electromagnetic. The structures are at the
+Compton scale (~10⁻¹² m). This 10²¹ discrepancy means WvM is
+NOT standard gravitational KK.
+
+However, one can do KK-like analysis without gravity: study
+Maxwell's equations on a space with compact dimensions, without
+embedding in a gravitational metric. In this "electromagnetic KK,"
+the charge mechanism would be the same (quantized momentum in
+the compact direction) but the coupling constant would be
+electromagnetic, not gravitational. Whether this gives a different
+charge formula — and whether it matches WvM — is the central
+question of this study (P1).
+
 ### The field in non-compact directions
 
 In WvM, the photon's electromagnetic field extends into 3D space
