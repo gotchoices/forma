@@ -27,24 +27,17 @@ If compact dimensions are flat, how do the photon's fields
 project into 3+1D? The 6D decomposition from R1 provides the
 framework; what remains is working out the field projection.
 
-### R6. Guided-wave field profile
-**Question:** Q9  **Type:** compute  **Depends on:** R2
+### R6-next. Wave equation on T²
+**Question:** Q9  **Type:** compute  **Depends on:** R6
 
-Solve (or approximate) the photon's guided-wave mode on T².
-What is the actual E-field profile as a function of distance
-from the orbit? Replaces the uniform-field approximation with
-a physical mode shape. Key questions:
+R6 found the self-consistent (r, R) for several assumed profiles
+but could not determine which profile is physical. The next step
+is solving the actual scalar/vector wave equation on the T²
+geometry to see what mode shapes emerge. This would determine:
 
-- Does the mode profile predict a/R, or is a/R an input?
-- If the profile predicts a/R, does it give 1/√(πα) — i.e.,
-  does α fall out of the geometry? (Connects to R8.)
-- Are there multiple mode solutions with different effective
-  field extents? If so, do any correspond to fractional charges
-  (e/3, 2e/3)? (Connects to R11.)
-
-This is the critical next study: it tests the uniform-field
-assumption that the entire charge derivation rests on, and it
-is the gateway to R7, R8, and R11.
+- The physical field profile and its width σ
+- Whether α is predicted or must be input (→ R8)
+- Whether multiple modes exist with different σ (→ R11, quarks)
 
 ### R7. Quadrupole correction
 **Question:** Q10  **Type:** compute  **Depends on:** R6
@@ -136,6 +129,16 @@ Side-by-side 3D torus + 2D flat rectangle view with synchronized
 photon animation. Supports a/R slider, knot selection, speed
 control. Shows how geodesics are straight lines on the flat T².
 
+### R6. Guided-wave field profile  *(concluded)*
+**Study:** [`field-profile/`](field-profile/)
+
+Found that S2's a/R = 6.60 is not self-consistent: it assumed the
+thin-torus R = λ_C/(4π), but the path constraint gives a smaller R.
+The self-consistent solution gives r ≈ 4.29, R ≈ 8.2 × 10⁻¹⁴ m.
+Different profile shapes (uniform, Gaussian, exponential) all yield
+q = e but need different σ values. The actual profile requires
+solving the wave equation on T² (→ R6-next).
+
 ### R2. Electron from geometry  *(concluded)*
 **Study:** [`electron-compact/`](electron-compact/)
 
@@ -143,6 +146,7 @@ Confirmed: a photon of energy m_e c² on a (1,2) geodesic in a T²
 produces q = e, s = ½, g ≈ 2.0023. The geometry is fully
 determined: r = a/R = 1/√(πα) ≈ 6.60 (from charge), absolute
 scale from mass (ℓ = λ_C). Zero free continuous parameters.
+(Note: R6 found that r ≈ 4.29 when self-consistency is enforced.)
 
 ### R1. KK charge comparison  *(concluded)*
 **Study:** [`kk-charge/`](kk-charge/)
