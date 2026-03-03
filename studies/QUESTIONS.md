@@ -139,6 +139,21 @@ Q23. **Precessing orbit and volume-filling.** Does a precessing
 *Source: user question*
 *Status: → R10*
 
+Q24. **String theory parallels.** A string is a 1D vibrating
+object on compact geometry; our photon is a 1D wave on a closed
+geodesic. How deep is the analogy? Is our T² model a special
+case of string compactification?
+*Source: user question*
+*Status: → R12*
+
+Q25. **Digital periodicity.** A number on a counter that rolls
+over (modular arithmetic) is the simplest compact dimension.
+A sinusoid on this counter is a standing wave. Is a "particle"
+just a resonance in a periodic register? Does this connect to
+simulation-theory ideas?
+*Source: user question*
+*Status: → R12*
+
 ---
 
 ## Answered

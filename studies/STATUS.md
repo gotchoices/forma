@@ -30,9 +30,21 @@ framework; what remains is working out the field projection.
 ### R6. Guided-wave field profile
 **Question:** Q9  **Type:** compute  **Depends on:** R2
 
-What is the actual E-field falloff from the orbit? Replaces
-WvM's uniform-field-in-a-sphere with a proper mode profile.
-May provide a first-principles derivation of a/R = 1/√(πα).
+Solve (or approximate) the photon's guided-wave mode on T².
+What is the actual E-field profile as a function of distance
+from the orbit? Replaces the uniform-field approximation with
+a physical mode shape. Key questions:
+
+- Does the mode profile predict a/R, or is a/R an input?
+- If the profile predicts a/R, does it give 1/√(πα) — i.e.,
+  does α fall out of the geometry? (Connects to R8.)
+- Are there multiple mode solutions with different effective
+  field extents? If so, do any correspond to fractional charges
+  (e/3, 2e/3)? (Connects to R11.)
+
+This is the critical next study: it tests the uniform-field
+assumption that the entire charge derivation rests on, and it
+is the gateway to R7, R8, and R11.
 
 ### R7. Quadrupole correction
 **Question:** Q10  **Type:** compute  **Depends on:** R6
@@ -57,6 +69,41 @@ What drives axis precession? Does it restore spherical symmetry?
 
 Does a precessing (1,2) orbit reproduce WvM's volume-filling
 energy flow (Fig. 2)?
+
+### R11. Quarks from geometry
+**Type:** compute  **Depends on:** R6
+**Questions:** Q12, Q13
+
+Can fractional charges (e/3, 2e/3) arise from the same
+framework? S3 showed the WvM formula admits them via different
+a/R multiples (1.5×, 3× the electron's). Possible mechanisms:
+
+- Different guided-wave modes on the same T² (from R6)
+- Different T² geometries (three compact dimensions?)
+- Multi-photon states with correlated phases (color charge?)
+- Non-toroidal compact manifolds
+
+Also: quark confinement — quarks are never free. Does the
+geometry explain this, or is it a separate mechanism?
+
+### R12. String theory parallels
+**Type:** research  **Depends on:** —
+
+Compare the photon-on-T² model with string theory:
+
+- A string is a 1D object that vibrates; our photon is a 1D
+  wave on a closed geodesic. Both are "something periodic on
+  compact geometry" producing particle properties.
+- String harmonics ↔ our winding numbers. String tension ↔
+  our path-length constraint. How deep is the analogy?
+- A periodic counter (modular arithmetic) is the simplest
+  1D compact dimension: a number that increments and rolls
+  over. A sinusoid on this counter is a standing wave. Our
+  photon is exactly this — a wave whose phase rolls over
+  after one circuit. Is a "particle" just a resonance in a
+  periodic register?
+- Explore whether the T² model is a special case of, or
+  parallel to, string compactification on a torus.
 
 ---
 
