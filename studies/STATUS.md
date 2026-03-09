@@ -102,43 +102,13 @@ long-term goal.
 Ordered roughly by priority.  Items get an R-number when
 promoted to Active.
 
-### Gauss's law charge integral (flat-torus approach)
+### Electrostatic charge from torus self-capacitance
 **Type:** compute  **Depends on:** R6
 **Advances:** objective 3 (charge)
+**Study:** [`torus-capacitance/`](torus-capacitance/) *(draft)*
 
-Replace the WvM energy-balance approximation with an exact
-Gauss's law integral.  Key idea: compute in the flat-rectangle
-picture, then wrap.
-
-On the flat T² (a rectangle with periodic boundaries), the
-photon is a diagonal plane wave.  Its E field emanates
-perpendicular to the rectangle — into the non-compact 3+1D
-spacetime.  Since the rectangle is compact (tiny), all the flux
-converges to look like a point charge from far away.  The total
-perpendicular flux through the rectangle IS the charge:
-
-    q = ε₀ × ∫∫_rectangle E_perp dA
-
-This eliminates two arbitrary choices from WvM's method (the
-averaging volume V and the Coulomb-matching radius).  The
-remaining unknown is the perpendicular field extent δ — how far
-E reaches into 3D before the compactness of the dimensions
-constrains it.  Possible routes to determine δ:
-
-- The compact dimensions themselves limit δ (field wraps back)
-- Solve the wave equation for the mode on T² × ℝ³ to get the
-  perpendicular profile from first principles
-- Energy conservation: U_E = ½ε₀ ∫ E² dV over all space
-
-If δ is determined by the geometry, the system closes: path
-constraint + Gauss's law + energy conservation → (R, a)
-with no free parameters.
-
-Build a numerical integrator that:
-1. Models the photon as a traveling wave on the (1,2) geodesic
-2. Computes E_perp at each point on the rectangle
-3. Integrates total flux to get q
-4. Sweeps geometry to find q = e
+Most rigorous charge calculation available without solving the
+wave equation.  See study folder for full proposal.
 
 ### Wave equation on T²
 **Question:** Q9  **Type:** compute  **Depends on:** R6
