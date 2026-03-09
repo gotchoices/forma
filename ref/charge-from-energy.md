@@ -94,6 +94,15 @@ magnetic dipole.  This is WvM's result (§2 of the paper),
 arrived at here from the field equations rather than the
 twisted-strip visualization.
 
+**Important:** the magnetic dipole does NOT arise from a
+circulating charge.  No charge moves around the torus — a photon
+is electrically neutral.  The "charge" is an apparent effect
+(net E flux from the topology).  The magnetic moment comes
+directly from the photon's own B field: its direction in the
+plane, when mapped to the 3D torus, has a net component along
+the symmetry axis.  This is a geometric projection, not a
+current loop.
+
 ## 5. Why geometry determines charge
 
 The total E field energy is fixed:
@@ -195,7 +204,40 @@ There is energy, there is topology, and there is geometry.  What
 we call charge is how they combine to produce a net E-field flux
 from a compact region.
 
-## 8. Gauss's law vs the WvM energy balance
+## 8. Self-capacitance: the geometry–energy–charge bridge
+
+Capacitance relates charge to energy: U_E = q²/(2C).  Since both
+U_E and q are known, the required capacitance is determined:
+
+    C = e² / (m_e c²) ≈ 3.13 × 10⁻²⁵ F
+
+Self-capacitance is defined as the capacitance between an object
+and a grounded shell at infinite distance.  In our picture, the
+"object" is the compact surface (T²) and the "shell at infinity"
+is the surrounding 3+1D space.  The E field radiating from the
+compact surface into 3D is exactly the field between these two
+"plates."
+
+This gives a clean accounting of the electron's rest mass energy:
+
+| Half of m_e c² | Field | Where            | What it produces |
+|----------------|-------|------------------|------------------|
+| U_E = m_e c²/2 | E    | Surface → ∞      | Charge (monopole)|
+| U_B = m_e c²/2 | B    | On the surface   | Magnetic moment  |
+
+The electrostatic energy q²/(2C) stored between the compact
+surface and infinity equals exactly half the rest mass.  The
+other half is the B field energy confined to the compact surface.
+The entire rest mass is field energy — nothing left over.
+
+The self-capacitance C is a purely geometric quantity (times ε₀).
+Different compact surface shapes have different self-capacitances.
+The electron is the shape whose C equals e²/(m_e c²).  This is
+equivalent to the Gauss's law constraint — just repackaged
+through capacitance.
+
+
+## 9. Gauss's law vs the WvM energy balance
 
 WvM computed the charge using an energy-balance shortcut:
 
