@@ -154,6 +154,32 @@ simulation-theory ideas?
 *Source: user question*
 *Status: → R12*
 
+Q26. **Multi-photon hadrons.** Could protons and neutrons be
+multi-photon states on a compact geometry, rather than bound
+states of quarks?  If so, "quarks" would be features of the
+internal mode structure (nodes, lobes, interference regions)
+rather than independent particles.  Confinement would be
+automatic: you can't isolate a feature from the wave that
+contains it.  Consider:
+- Two photons? Three? Some factor of (1, 2, 3)?
+- Could the number of photons explain the 1/3 and 2/3 charge
+  fractions seen in the quark model?
+- The proton (charge +e, spin ½, 938 MeV) and neutron (charge 0,
+  spin ½, 940 MeV) would need different modes or configurations
+  of the same multi-photon system.
+*Source: user question*
+
+Q27. **Foundational axioms.** The model rests on a minimal set
+of assumptions.  Candidates for explicit axioms:
+- Certain dimensions exist (at least 3+1 non-compact + 2 compact)
+- Some dimensions can be compactified (periodic)
+- Fields exist
+- Energy in the form of photons (EM field disturbances) can be
+  introduced
+- Energy propagates according to dimensional constraints
+Can all particle properties be derived from these alone?
+*Source: user question*
+
 ---
 
 ## Answered

@@ -1,8 +1,93 @@
 # Project Status
 
-Priority-ordered work queue. Pick from the top of Backlog.
+**Goal:** Build a geometric model of fundamental particles from
+pure electromagnetic energy.  See top-level `README.md`.
 
 **Workflow:** See `README.md` for conventions.
+
+---
+
+## Electron objectives
+
+The near-term goal is a complete electron model.  Each objective
+has a status and a note on what remains.
+
+### 1. Spin ½
+**Status: SOLVED** (S3, R2)
+
+Exact, topological.  The (1,2) winding number gives L = ℏ/2
+regardless of geometry.  Only (1,2) produces net charge.
+
+### 2. Mass m_e
+**Status: SOLVED** (given input) (R2)
+
+Path length = λ_C = h/(m_e c) fixes the absolute scale.  The
+model does not predict WHY the electron has this mass — it takes
+m_e as input and derives the geometry.  Predicting the mass
+spectrum (why m_e, m_μ, m_τ?) is a long-term open problem.
+
+### 3. Charge e
+**Status: PARTIAL** (S2, R6)
+
+The mechanism is established: charge = total E-field flux from
+the compact surface (Gauss's law).  The WvM energy-balance
+formula gives q = e for a self-consistent geometry (r ≈ 4.29,
+R6).  But the method is approximate — it uses an assumed uniform
+field profile and an arbitrary Coulomb-matching radius.
+
+**Remaining:** Replace the energy-balance shortcut with a
+rigorous Gauss's law integral.  This requires determining the
+actual field profile (from the wave equation or energy
+conservation).  See backlog: "Gauss's law charge integral."
+
+### 4. Magnetic moment
+**Status: SOLVED** (WvM §5, charge-from-energy primer §4)
+
+The direction is understood: B tangent to the compact surface
+has a net axial component when mapped to 3D (geometric
+projection of k̂ × E, not a current loop).  The g-factor
+g ≈ 2(1 + α/2π) comes from WvM's energy-partition argument.
+Documented in [`ref/charge-from-energy.md`](../ref/charge-from-energy.md) §4.
+
+### 5. g-factor ≈ 2.0023
+**Status: SOLVED** (WvM §5, R2)
+
+Depends on α (fraction of energy in external non-rotating field),
+not on geometry.  Near-exact match to QED first-order result.
+
+### 6. Zero free parameters
+**Status: ESTABLISHED** (R2, R6)
+
+Given (1,2) topology + charge e + mass m_e, the geometry is fully
+determined.  No continuous free parameters.  The numerical values
+depend on the charge calculation method (r ≈ 6.60 from S2's
+approximate formula, r ≈ 4.29 from R6's self-consistent version).
+Final values await objective 3.
+
+---
+
+## Deeper open problems
+
+These go beyond "reproduce known properties" toward the
+long-term goal.
+
+- **Derive α from geometry.**  Can a/R be derived from an
+  independent physical argument rather than setting q = e?
+  Would amount to predicting charge from pure geometry.
+- **Mass spectrum.**  Why m_e and not some other value?
+  Is there a quantization condition that selects discrete masses?
+- **Other particles.**  Proton and neutron as multi-photon states
+  on compact geometry (Q26).  S3 found suggestive a/R multiples
+  for fractional charges.
+
+### Resolved by axioms
+
+- **~~Confinement mechanism.~~**  In WvM's 3+1D picture, the
+  photon must somehow be forced into a loop — a real puzzle.
+  In the compact-dimension framework, this dissolves: the photon
+  travels in a straight line on a flat T² that is periodic.  It
+  wraps because the space wraps.  If "compact dimensions exist"
+  is axiomatic, no confinement mechanism is needed.  (See Q27.)
 
 ---
 
@@ -14,16 +99,12 @@ Priority-ordered work queue. Pick from the top of Backlog.
 
 ## Backlog
 
-### B-field and magnetic dipole
-**Question:** Q8  **Type:** research
-
-Close out open question about how the B-field direction and
-magnetic dipole emerge from the (1,2) orbit. Mostly answered
-by the WvM summary revision (§7, §8); needs a final pass to
-confirm and write up.
+Ordered roughly by priority.  Items get an R-number when
+promoted to Active.
 
 ### Gauss's law charge integral (flat-torus approach)
 **Type:** compute  **Depends on:** R6
+**Advances:** objective 3 (charge)
 
 Replace the WvM energy-balance approximation with an exact
 Gauss's law integral.  Key idea: compute in the flat-rectangle
@@ -59,24 +140,18 @@ Build a numerical integrator that:
 3. Integrates total flux to get q
 4. Sweeps geometry to find q = e
 
-### Amend R2 with self-consistent geometry
-**Type:** revision  **Depends on:** R6
-
-R6 found the self-consistent r ≈ 4.29 (not 6.60).  Update R2's
-findings and verify script with the corrected values.  The
-framework and conclusions are sound; only numerics change.
-
 ### Wave equation on T²
 **Question:** Q9  **Type:** compute  **Depends on:** R6
+**Advances:** objective 3 (charge), deeper problem (derive α)
 
 R6 found the self-consistent (r, R) for several assumed profiles
-but could not determine which profile is physical. The next step
-is solving the actual scalar/vector wave equation on the T²
-geometry to see what mode shapes emerge. This would determine:
+but could not determine which profile is physical. Solving the
+wave equation on the T² geometry would determine:
 
 - The physical field profile and its width σ
 - Whether α is predicted or must be input
 - Whether multiple modes exist with different σ (→ quarks)
+
 
 ### Flat space → curved appearance
 **Question:** Q2  **Type:** reason
@@ -87,16 +162,10 @@ framework; what remains is working out the field projection.
 
 ### Quadrupole correction
 **Question:** Q10  **Type:** compute  **Depends on:** R6
+**Advances:** objective 3 (charge)
 
 Full calculation of charge including the (1,2) orbit's ~2.5%
 field anisotropy (quantified in S2 F5).
-
-### Derive α from geometry
-**Question:** Q18  **Type:** compute
-
-Can a/R be derived from an independent physical argument
-(boundary matching, energy minimization, self-consistent
-confinement)? Major open problem.
 
 ### Precession of torus axis
 **Question:** Q19  **Type:** compute
@@ -109,20 +178,27 @@ What drives axis precession? Does it restore spherical symmetry?
 Does a precessing (1,2) orbit reproduce WvM's volume-filling
 energy flow (Fig. 2)?
 
-### Quarks from geometry
-**Type:** compute  **Questions:** Q12, Q13
+### Hadrons from multi-photon states
+**Type:** compute/reason  **Questions:** Q12, Q13, Q26
+**Advances:** deeper problem (other particles)
 
-Can fractional charges (e/3, 2e/3) arise from the same
-framework? S3 showed the WvM formula admits them via different
-a/R multiples (1.5×, 3× the electron's). Possible mechanisms:
+Can protons and neutrons be built directly from multiple photons
+on a compact geometry — bypassing quarks entirely?  "Quarks"
+would then be features of the internal mode structure (nodes,
+lobes) rather than independent particles.  Confinement is
+automatic: you can't isolate a feature from its wave.
 
-- Different guided-wave modes on the same T²
-- Different T² geometries (three compact dimensions?)
-- Multi-photon states with correlated phases (color charge?)
-- Non-toroidal compact manifolds
+Open questions:
+- How many photons?  Two? Three? Some factor of (1,2,3)?
+- Could the photon count explain 1/3 and 2/3 charge fractions?
+- What topology/mode gives charge +e, spin ½, mass 938 MeV
+  (proton) vs charge 0, spin ½, mass 940 MeV (neutron)?
+- Deep inelastic scattering sees three point-like scattering
+  centers.  Can a multi-photon mode structure reproduce this?
 
-Also: quark confinement — quarks are never free. Does the
-geometry explain this, or is it a separate mechanism?
+S3 found that the WvM charge formula maps specific a/R values
+to fractional charges.  This could reflect mode structure rather
+than separate particles.
 
 ### String theory parallels
 **Type:** research

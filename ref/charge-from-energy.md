@@ -45,6 +45,27 @@ The photon is still a photon.  It still has zero "fundamental
 charge."  But from outside, the E field looks exactly like a
 point charge.
 
+### Electron vs positron
+
+What determines which way E points — inward (electron) or
+outward (positron)?  Two things together:
+
+1. **The photon's polarization handedness** — right vs left
+   circular polarization determines which face of the compact
+   surface E exits from.
+2. **The orientation of the compact dimensions relative to xyz**
+   — how T² "sits" in the full spacetime determines which 3D
+   direction that corresponds to.
+
+Neither alone fixes the charge sign; it's the combination.
+Flipping either one (reversing the polarization, or mirroring
+the compact-dimension orientation) flips the charge — this is
+charge conjugation (C).
+
+The dimensional orientation is axiomatic — it's part of how the
+universe is wired, like the perpendicularity of x and y.  The
+photon's handedness is a degree of freedom within that structure.
+
 ## 3. The flat-rectangle picture
 
 In the compact-dimension framework, the photon lives on a flat
