@@ -164,13 +164,19 @@ Sweep the winding number q across the R8 solution family
 (spin locked at 1:2) and compute physical quantities that
 could select a specific q:
 
-- Track 1: Divisor spectrum and sub-harmonic analysis
-  (number theory + geodesic closure proof)
-- Track 2: Geodesic Coulomb self-energy vs. uniform
-  (which q minimizes excess energy?)
-- Track 3 *(future)*: Field overlap / multipole uniformity
-- Track 4 *(future)*: Continuous δ sweep
-- Track 5 *(future)*: Full vector EM
+- Track 1: Divisor spectrum + sub-harmonic analysis ✓
+  (no sub-periodic closure for any q on sheared T²)
+- Track 2: Geodesic Coulomb self-energy ✓
+  (initial result: minimum near q ≈ 137)
+- **Track 2c: Convergence study ✓ — RETRACTED Track 2.**
+  Higher resolution (up to 120 pts/orbit + extrapolation)
+  shows the Track 2 minimum was a numerical artifact.
+  Excess is monotonically increasing with q; the pairwise
+  Coulomb sum does NOT select q ≈ 137.
+- Track 3 *(next)*: Magnetic (Biot-Savart) self-energy
+- Track 4 *(future)*: Multipole decomposition
+- Track 5 *(future)*: Wave propagation / phase coherence
+- Track 6 *(future)*: Continuous δ sweep
 
 ---
 

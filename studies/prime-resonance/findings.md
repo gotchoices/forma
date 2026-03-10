@@ -45,7 +45,8 @@ Primes within ±10 of 137: {127, 131, 137, 139}.
 For each q, charge e is distributed along the (p, q) torus
 knot with p = (q−1)/2, placed on a 3D torus of unit major
 radius (R = 1, a = r).  The Coulomb self-energy is computed
-by direct pairwise summation of N = 20q point charges.
+by direct pairwise summation of N = q × (pts_per_orbit)
+point charges.
 
 The geodesic shape factor G(r, q) is defined by:
 
@@ -59,42 +60,50 @@ The excess is G/g − 1: how much MORE energy the geodesic
 distribution has compared to the uniform case.
 
 
-### F4. The excess energy has a minimum near q ≈ 137
+### F4. ~~Minimum near q ≈ 137~~ — RETRACTED (resolution artifact)
 
-| q   | P? | r     | g_unif | G_geod | G/g   | excess |
-|-----|----|-------|--------|--------|-------|--------|
-| 101 | ★  | 0.105 | 0.677  | 0.838  | 1.237 | +23.7% |
-| 113 | ★  | 0.160 | 0.604  | 0.707  | 1.169 | +16.9% |
-| 127 | ★  | 0.241 | 0.536  | 0.607  | 1.133 | +13.3% |
-| 131 | ★  | 0.267 | 0.518  | 0.585  | 1.128 | +12.8% |
-| 133 |    | 0.281 | 0.510  | 0.575  | 1.126 | +12.6% |
-| 135 |    | 0.294 | 0.502  | 0.566  | 1.126 | +12.6% |
-| **137** | **★** | **0.308** | **0.494** | **0.556** | **1.126** | **+12.6%** |
-| **139** | **★** | **0.323** | **0.487** | **0.547** | **1.125** | **+12.5%** |
-| 141 |    | 0.337 | 0.479  | 0.539  | 1.126 | +12.6% |
-| 145 |    | 0.367 | 0.465  | 0.524  | 1.128 | +12.8% |
-| 151 | ★  | 0.413 | 0.444  | 0.504  | 1.133 | +13.3% |
-| 163 | ★  | 0.509 | 0.407  | 0.471  | 1.155 | +15.5% |
-| 181 | ★  | 0.667 | 0.359  | 0.435  | 1.211 | +21.1% |
-| 211 | ★  | 0.936 | 0.294  | 0.416  | 1.416 | +41.6% |
-| 251 | ★  | 1.562 | 0.215  | 0.307  | 1.429 | +42.9% |
+The original Track 2 result (20 pts/orbit) showed a minimum
+excess near q ≈ 137–139.  **Track 2c proved this was a
+numerical artifact of insufficient resolution.**
 
-**The excess Coulomb energy is minimized in the range
-q ≈ 135–141, with the lowest value at q = 139 (+12.50%)
-and q = 137 just above (+12.56%).**
+Convergence study (excess % at q = 137):
 
-The energy rises steeply for both lower q (sparse winding,
-concentrated charge) and higher q (fat torus, high aspect
-ratio).  The minimum is broad — the ~0.1% difference between
-q = 137 and q = 139 is within numerical uncertainty at 20
-points per orbit.
+| Resolution   | q=113  | q=125  | q=137  | q=139  | q=149  |
+|--------------|--------|--------|--------|--------|--------|
+| 20 pts/orbit | +16.9% | +13.5% | +12.6% | +12.5% | +13.2% |
+| 40 pts/orbit |  +7.3% |  +7.0% |  +7.8% |  +8.0% |  +9.5% |
+| 80 pts/orbit |  +4.0% |  +4.8% |  +6.3% |  +6.6% |  +8.5% |
+| 120 pts/orbit|  +3.3% |  +4.4% |  +6.1% |  +6.4% |  +8.4% |
+| extrap (h→0) |  +1.9% |  +3.6% |  +5.6% |  +5.9% |  +8.1% |
 
-The Coulomb energy alone selects the NEIGHBORHOOD of q ≈ 137
-but does not pin the exact value.  Discriminating 137 from
-139 (or 135, 141) requires additional physics.
+The minimum-excess q shifts with resolution:
+
+| Resolution   | Minimum at |
+|--------------|------------|
+| 20 pts/orbit | q = 139    |
+| 40 pts/orbit | q = 125    |
+| 80 pts/orbit | q = 113    |
+| 120 pts/orbit| q = 113    |
+| Extrapolated | q ≤ 113    |
+
+**At every resolution ≥ 40 pts/orbit, excess is monotonically
+increasing from the lowest q sampled.**  There is no local
+minimum in the physically interesting range.
+
+The convergence rate (ratio of successive corrections) is
+~0.30–0.35, consistent with 1/N convergence from the
+Coulomb singularity.  Lower q converges slower because the
+path is tighter and the nearest-neighbor regularization
+contributes a larger fraction of the total energy.
+
+**Conclusion:** the pairwise Coulomb sum on a discretized
+geodesic has a systematic bias that depends on q through
+the local point density.  This bias created an artificial
+minimum at 20 pts/orbit that vanishes at higher resolution.
+The naive geodesic Coulomb energy does NOT select q ≈ 137.
 
 
-### F5. Physical interpretation
+### F5. Physical interpretation (revised)
 
 The geodesic charge distribution is always more concentrated
 than uniform surface charge (G > g for all q), because the
@@ -102,28 +111,29 @@ charge sits on a 1D curve rather than a 2D surface.  The
 excess energy measures how efficiently the winding pattern
 distributes charge.
 
-At low q (thin torus, sparse path): few windings leave large
-gaps in surface coverage → high excess.
+At higher resolution, the excess is monotonically increasing
+with q across the sampled range (q = 113–161).  This means
+lower q always has lower excess — the sparse winding pattern
+on a thin torus is energetically cheaper than dense winding on
+a fat torus, for this 1D-vs-2D comparison.
 
-At high q (fat torus, dense path): the torus aspect ratio r
-grows with q, and the charge becomes concentrated near the
-inner edge of the torus where the path's curvature radius is
-smallest → high excess.
+The original interpretation (optimal balance of coverage and
+curvature at q ≈ 137) was an artifact of resolution-dependent
+bias at 20 pts/orbit.
 
-The minimum at q ≈ 137 represents the optimal balance: enough
-windings to cover the surface reasonably well, on a torus thin
-enough that the path curvature doesn't concentrate charge.
-
-This is R ≈ r_e (the classical electron radius), the same
-coincidence noted in R8.
+Note: the physical significance of this ratio (1D geodesic vs
+2D uniform) is itself uncertain.  The real electron's charge
+is presumably associated with the field, not concentrated on
+the photon's classical path.  A more physical observable may
+be needed.
 
 
-### F6. The 137/139 discrimination problem
+### F6. What selects q?  (open question)
 
-All four electron properties (mass, charge, spin, g-factor)
-are equally satisfied at q = 137 and q = 139.  Neither is
-"more electron-like."  The Coulomb excess is nearly identical.
-So what could discriminate them?
+With the Coulomb minimum retracted, no computation in this
+study selects q ≈ 137.  The electron properties (mass, charge,
+spin, g-factor) are all satisfied for any q in the solution
+family.
 
 | Property           | q = 137        | q = 139        |
 |--------------------|----------------|----------------|
@@ -134,50 +144,58 @@ So what could discriminate them?
 | Mass               | exact (= m_e)  | exact (= m_e)  |
 | Charge             | exact (= e)    | exact (= e)    |
 | Spin               | exact ½        | exact ½         |
-| Coulomb excess     | +12.56%        | +12.50%        |
 
-Candidate discriminants (none yet confirmed):
+Candidate selection mechanisms (none yet confirmed):
 
-1. **R/r_e proximity.**  At q = 137, R = 0.989 r_e — nearly
-   exact.  At q = 139, R = 0.973 r_e — 2.7% off.  r_e is the
-   distance where Coulomb potential energy equals the rest
-   energy; being AT r_e might have physical significance, but
-   we lack a principle that demands R = r_e exactly.
+1. **Magnetic self-energy.**  The current geometry differs
+   between q values.  The Biot-Savart energy has NOT been
+   computed and does not suffer from the same 1D-vs-2D
+   comparison issue.  This remains a viable discriminant.
 
-2. **Per-orbit cost.**  The photon must maintain phase
-   coherence over q orbits.  Fewer orbits = fewer coherence
-   constraints = lower dynamical cost.  137 < 139.  But no
-   known law directly penalizes winding number, and the cost
-   per orbit has not been quantified.
+2. **Wave propagation / phase coherence.**  A scalar or EM
+   wave on the sheared T² would test whether self-consistency
+   (constructive interference after q orbits) selects a
+   specific q.  Most complete but hardest to implement.
 
-3. **Magnetic self-energy.**  The current geometry differs
-   between the two tori (different R, a).  The magnetic
-   contribution to total energy has not been computed and
-   could break the degeneracy.
+3. **R/r_e proximity.**  At q = 137, R = 0.989 r_e.  This
+   near-coincidence might reflect deeper physics, but we lack
+   a principle that demands R = r_e.
 
-4. **Wave propagation.**  A proper EM wave calculation on the
-   sheared T² would capture both phase coherence and field
-   self-consistency.  This is the most complete test but also
-   the most difficult.
+4. **Per-orbit cost.**  Fewer orbits = lower dynamical cost.
+   Favors lower q, not specifically 137.  Would need to be
+   balanced against some increasing cost to create a minimum.
 
 
 ### F7. Prime/composite distinction in Coulomb energy
 
 The prime/composite distinction is NOT visible in the Coulomb
 self-energy.  At the same q, primes and composites have
-nearly identical excess:
-
-    Primes (17 values):    mean excess = +22.3%
-    Composites (15 values): mean excess = +22.4%
-
+nearly identical excess (confirmed across all resolutions).
 The charge distribution depends on the torus geometry (R, a)
 and the total number of windings, not on q's factorization.
-Equally-spaced passes along the geodesic produce the same
-charge pattern regardless of whether q has divisors.
 
 If primality matters, it must enter through a mechanism beyond
 static Coulomb energy — likely involving the wave dynamics
 (mode coupling, radiation, or phase coherence).
+
+
+### F8. Methodological lesson: Coulomb sums on 1D curves
+
+The Track 2 → 2c progression revealed that pairwise Coulomb
+sums on discretized curves converge as ~1/N, much slower than
+the 1/N² expected for smooth 2D charge distributions.  This
+is because the 1D Coulomb self-energy has a logarithmic
+divergence: the sum over nearest-neighbor pairs grows as
+ln(N), and only the DIFFERENCE between the geodesic and
+reference distributions converges.  But even this difference
+converges slowly when the two distributions have different
+dimensionality (1D curve vs 2D surface).
+
+Any future energy comparison between geodesic and uniform
+distributions should either:
+- Use analytic regularization (subtract the known ln(N) divergence)
+- Compare distributions of the same dimensionality
+- Use spectral / Ewald methods adapted for the torus topology
 
 
 ---
@@ -187,49 +205,45 @@ static Coulomb energy — likely involving the wave dynamics
 | Finding | Result |
 |---------|--------|
 | Sub-periodic closure | Impossible on sheared T² for any q |
-| Geodesic Coulomb excess | Minimum at q ≈ 135–141 |
-| 137 vs 139 | Degenerate in Coulomb; 4 candidate discriminants identified |
+| Geodesic Coulomb excess | ~~Minimum at q ≈ 137~~ — **retracted** (resolution artifact) |
+| Geodesic Coulomb (converged) | Monotonically increasing with q; does NOT select q ≈ 137 |
 | Prime vs composite (Coulomb) | No distinction |
 | Prime vs composite (path topology) | No distinction |
 
-**The big result:** the geodesic Coulomb self-energy selects
-the neighborhood q ≈ 135–141 as the minimum-energy winding
-number.  This is the first computation that picks a specific
-range from the R8 solution family, confirming the "least
-expensive path" hypothesis at the Coulomb level.
+**The big result from Track 2c:** the apparent Coulomb minimum
+at q ≈ 137 from Track 2 was a numerical artifact.  Higher
+resolution (up to 120 pts/orbit + extrapolation) shows the
+excess is monotonically increasing with q.  The pairwise
+Coulomb sum does NOT select q ≈ 137.
 
-**What it doesn't explain:** why 137 specifically (vs 139 or
-135 — all within the flat minimum), whether primality plays
-any role, and what additional physics pins the exact q.
+**What remains viable:** magnetic self-energy, wave propagation
+/ phase coherence, and R/r_e proximity are still untested
+selection mechanisms.  The Coulomb result tells us that
+*static electric* energy is not the selector — we need either
+the magnetic term or dynamical (wave) physics.
 
 
 ## Next steps
 
-1. **Track 2c: Higher resolution** — rerun the Coulomb scan
-   with 40–80 points per orbit, dense sampling near the
-   minimum (every odd q from 129–149).  Determine whether
-   the minimum genuinely favors 139 over 137 or whether the
-   current 0.06% difference is numerical noise.
-
-2. **Track 3: Magnetic self-energy** — compute the
+1. **Track 3: Magnetic self-energy** — compute the
    Biot-Savart magnetic self-energy of the geodesic current.
-   This is the second physical energy term; the current
-   geometry differs between q = 137 and 139, so it may break
-   the Coulomb degeneracy.  Combined E_Coulomb + E_magnetic
-   gives the total static field energy.
+   Unlike Coulomb energy, this compares a 1D current to a 1D
+   current (no 1D-vs-2D mismatch), so it may converge better.
+   The current geometry differs between q values, making it a
+   genuine candidate discriminant.
 
-3. **Track 4: Multipole decomposition** — decompose the
+2. **Track 4: Multipole decomposition** — decompose the
    geodesic charge distribution into azimuthal harmonics.
    Even if total energy doesn't distinguish prime from
    composite, the spatial structure might.
 
-4. **Track 5: Wave propagation / phase coherence** — the
+3. **Track 5: Wave propagation / phase coherence** — the
    most complete test.  Propagate a scalar wave along the
    geodesic and compute the accumulated phase error and
    self-consistency.  This is where a "per-orbit cost" would
    emerge from first principles rather than being assumed.
 
-5. **Track 6: Continuous δ sweep** — for q = 137, sweep δ
+4. **Track 6: Continuous δ sweep** — for q = 137, sweep δ
    continuously and check whether the energy minimum matches
    the spin-½ value.
 
@@ -239,4 +253,8 @@ any role, and what additional physics pins the exact q.
 - [`scripts/track1_divisor_spectrum.py`](scripts/track1_divisor_spectrum.py)
   — Track 1: number theory + geodesic closure analysis
 - [`scripts/track2_geodesic_energy.py`](scripts/track2_geodesic_energy.py)
-  — Track 2: geodesic Coulomb self-energy scan
+  — Track 2: geodesic Coulomb self-energy scan (20 pts/orbit)
+- [`scripts/track2c_hires.py`](scripts/track2c_hires.py)
+  — Track 2c: high-resolution scan (40 pts/orbit + 60-pt convergence check)
+- [`scripts/track2c_convergence.py`](scripts/track2c_convergence.py)
+  — Track 2c: convergence study (20/40/80/120 pts/orbit + extrapolation)

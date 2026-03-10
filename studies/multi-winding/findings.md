@@ -306,10 +306,11 @@ by the exact 1:2 local winding ratio.
    to the multi-winding case is a future investigation.
 
 4. **Does q = 137 have special status?**  It gives R ≈ r_e,
-   but so do nearby values (within a few percent).  Candidate
-   additional constraints: (a) 137 is prime — no sub-harmonic
-   energy leakage (Q30), (b) variational energy minimization
-   among primes in the range (Q29).  The discrepancy between
+   but so do nearby values (within a few percent).  The
+   geodesic Coulomb energy does NOT select q ≈ 137 (R11
+   Track 2c: retracted).  Remaining candidates: (a) 137 is
+   prime — harmonic avoidance (Q30), (b) magnetic self-energy,
+   (c) wave/phase coherence (Q29).  The discrepancy between
    1/137 and measured 1/137.036 may be accounted for by
    higher-order shape corrections (Track 5).
 
@@ -522,12 +523,13 @@ it cannot be claimed as an exact, zero-free-parameter result.
      composite q, every divisor creates a sub-harmonic mode
      that can drain energy from the fundamental resonance.
      For prime q, no leakage channels exist — all energy
-     stays in the fundamental.  This constrains q to be
-     prime.  Combined with Coulomb energy (range ~100–287)
-     and variational minimization, the three-part selection
-     may uniquely determine q = 137.  Testable by
-     overlaying q shifted waves and checking interference
-     at sub-harmonic periods.  See Q30.
+     stays in the fundamental.  See Q30.
+
+   **R11 update (Track 2c):** The geodesic Coulomb self-energy
+   does NOT select q ≈ 137.  The original Track 2 minimum was
+   a numerical artifact of insufficient resolution (retracted).
+   Static Coulomb energy is ruled out as a selector.  Magnetic
+   self-energy and wave propagation remain untested.
 
 2. **Anomalous magnetic moment.**  Track 3 established the
    leading-order result μ = μ_B (g = 2) from the photon's
