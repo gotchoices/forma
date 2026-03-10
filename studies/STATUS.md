@@ -181,11 +181,17 @@ could select a specific q:
   mode coupling (nonlinear / parametric resonance), which
   Track 7 did not address.  **Primality hypothesis remains
   viable** — requires dynamical test.
-- Track 8 *(next)*: Mode spectrum and degeneracy counting
-  on the sheared T².  Analytically solvable (flat geometry).
-  Count near-degenerate modes for prime vs composite q.
+- **Track 8: Mode spectrum ✓ — no prime/composite
+  distinction.**  Beat-frequency pair counts show no
+  enhancement at divisor frequencies.  q enters the flat-T²
+  spectrum as a continuous parameter (1/(2q)), not through
+  its factorization.  Combined with Track 7: all linear
+  analyses are blind to primality.
+- Geometric floor analysis *(next)*: what constrains the
+  minimum viable q?  If R = r_e pins q ≈ 137, primality
+  may be irrelevant.
 - Track 3 *(future)*: Magnetic (Biot-Savart) self-energy
-- Track 6 *(future)*: Continuous δ sweep
+- Nonlinear coupling on curved torus *(future/hard)*
 
 ---
 

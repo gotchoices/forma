@@ -272,7 +272,109 @@ parametrically excite the d-th harmonic.  For prime q, no
 such periodic sub-structure exists.
 
 **The primality hypothesis remains viable** — but requires a
-dynamical test (Track 8).
+dynamical test.
+
+
+---
+
+## Track 8: Mode spectrum and degeneracy on the sheared T²
+
+### F13. Mode spectrum is analytically exact
+
+The sheared T² is flat, so the scalar Helmholtz equation has
+exact plane-wave solutions.  Mode frequencies:
+
+    ω(n,m) = √(n²/r² + (m − n/(2q))²)    [units: c/R]
+
+Every mode has an exact time-reversal partner: ω(n,m) = ω(−n,−m).
+This gives min_gap = 0 for ALL q (trivial double degeneracy).
+
+
+### F14. No prime/composite distinction in mode spectrum
+
+Four analyses were performed:
+
+**(a) Basic statistics:** Mode count, mean gap, and std gap
+vary smoothly with q (through r = a/R).  No prime/composite
+signal.
+
+**(b) Near-degeneracy pairs:** At ε = 0.001, the pair count
+tracks N_modes/2 (dominated by trivial time-reversal pairs).
+At ε = 0.01, q = 137 has MORE close pairs (336) than q = 135
+(239) — the OPPOSITE of Q30's prediction.
+
+**(c) Beat frequency test (strongest test):** For composite
+q = 135 (divisors {3,5,9,15,27,45}), the count of mode pairs
+at divisor beat frequencies shows NO enhancement:
+
+| d  | divisor? | Δω     | pairs (q=135) | pairs (q=137) |
+|----|----------|--------|---------------|---------------|
+| 3  | ÷ 135   | 0.0222 | 20            | 12            |
+| 5  | ÷ 135   | 0.0370 | 16            | 24            |
+| 7  | no      | 0.0519 | 32            | 12            |
+| 9  | ÷ 135   | 0.0667 | 20            | 36            |
+
+The pair count at divisor frequencies is NOT systematically
+higher than at non-divisor frequencies.  For q=141 (divisors
+{3,47}), the divisor d=3 gives 36 pairs while non-divisor
+d=7 gives 52.  The counts are determined by the lattice
+geometry (aspect ratio r), not by q's factorization.
+
+**(d) Direct comparison q=135 vs q=137:** Mode counts are
+nearly identical (534 vs 540).  Non-trivial near-degeneracies
+are indistinguishable.
+
+
+### F15. Why the mode spectrum is blind to primality
+
+The mode frequencies ω(n,m) depend on q only through the
+shear term −n/(2q).  Since 1/(2q) varies smoothly and
+monotonically with q, the spectrum shifts continuously.  The
+integer factorization of q does not enter the frequency
+formula — only the VALUE of q matters.
+
+This is the same root cause as Track 7: on the flat sheared
+T², the wave equation is linear, and its solutions depend on
+q as a continuous parameter.  The distinction between q = 135
+and q = 137 is a smooth shift of 1/(270) vs 1/(274) in the
+shear, not a structural change.
+
+
+### F16. Revised scope of the primality hypothesis
+
+Five tests have now failed to find prime/composite distinction:
+
+| Track | Test                    | Domain        | Result |
+|-------|-------------------------|---------------|--------|
+| 1     | Path topology           | geometry      | None   |
+| 2     | Coulomb energy          | static energy | None   |
+| 7     | Wave superposition      | linear waves  | None   |
+| 8a    | Mode degeneracy         | linear modes  | None   |
+| 8c    | Beat frequency pairs    | linear modes  | None   |
+
+All five are LINEAR analyses on the flat (or nearly flat) T².
+
+**For primality to matter, ALL of the following must hold:**
+1. The coupling mechanism must be NONLINEAR (mode-mode
+   interaction, not just mode existence)
+2. The nonlinearity must be sensitive to the INTEGER
+   factorization of q, not just its numerical value
+3. The effect must survive on the actual CURVED torus
+   (not just the flat approximation)
+
+The most promising remaining mechanism is the CURVED torus
+metric: the factor (1 + r cos θ) creates an effective
+potential that modulates the wave equation.  This modulation
+has period 2π in θ and couples modes differing by Δn = ±1.
+Through chains of such couplings, energy can flow between
+modes.  Whether the RATE of this flow depends on q's
+factorization is an open question that requires solving the
+coupled nonlinear system.
+
+Alternatively, primality may not matter in this model.  The
+selection of q = 137 might come entirely from the geometric
+floor (minimum viable q from the R8 constraints) combined
+with the Coulomb cost (lower q is cheaper).
 
 
 ### F8. Methodological lesson: Coulomb sums on 1D curves
@@ -301,80 +403,56 @@ distributions should either:
 | Finding | Result |
 |---------|--------|
 | Sub-periodic closure | Impossible on sheared T² for any q |
-| Geodesic Coulomb excess | ~~Minimum at q ≈ 137~~ — **retracted** (resolution artifact) |
-| Geodesic Coulomb (converged) | Monotonically increasing with q; lower q = cheaper |
+| Geodesic Coulomb (converged) | Lower q = cheaper (monotonic) |
 | Wave superposition (linear) | No prime/composite distinction |
-| Track 7 scope | Proved: linear/static tests blind to primality |
-| Track 7 scope | Did NOT test: dynamical mode coupling |
+| Mode spectrum (linear) | No prime/composite distinction |
+| Beat frequency pairs | No enhancement at divisor frequencies |
+| **All linear tests** | **Blind to primality** |
 
-**Track 2c:** Lower q = less excess Coulomb energy.  This is
-a real physical result: fewer orbits is energetically cheaper.
+**The one solid positive result:** lower q costs less energy
+(Track 2c).  This pushes the system toward the lowest viable q.
 
-**Track 7:** The linear superposition test found no spectral
-distinction.  However, the test has significant limitations
-(F12): it only probes linear, static observables.  The Q30
-primality hypothesis is about dynamical energy transfer
-(parametric mode coupling), which Track 7 did not address.
-**The hypothesis remains viable.**
+**Primality:** Five linear tests found no prime/composite
+distinction (Tracks 1, 2, 7, 8a, 8c).  The root cause is
+that q enters the flat-T² wave equation as a continuous
+parameter (through the shear 1/(2q)), not through its integer
+factorization.  **For primality to matter, the mechanism must
+be nonlinear AND sensitive to integer factorization** (F16).
 
-**What we know:**
-- Lower q is cheaper (Coulomb) — pushes toward low q
-- Some geometric floor must exist (path must fit λ_C)
-- Linear/static observables are blind to primality (proven)
-- Dynamical mode coupling is untested
+**The selection picture (updated):**
+1. Geometric floor → minimum viable q (untested — key open question)
+2. Coulomb cost → pushes q to that floor
+3. Primality → requires nonlinear dynamics on the CURVED
+   torus (not yet tested; may not apply)
 
-**The selection picture (working hypothesis):**
-1. Geometric floor → minimum viable q
-2. Coulomb cost → pushes q to the floor
-3. Mode stability (if confirmed) → prime q more stable
-4. Convergence → lowest prime above the floor = 137 ?
+The most important open question is now **the geometric floor**:
+what sets the minimum q?  If the floor lands at or near 137,
+we don't need primality at all.
 
 
 ## Next steps
 
-1. **Track 8: Mode spectrum and degeneracy on the sheared T²**
-   The sheared T² is flat, so the scalar Helmholtz equation
-   is analytically solvable.  The mode frequencies are:
+1. **Geometric floor analysis** — determine what constrains
+   the minimum q.  The R8 solution curve allows q from ~100
+   to ~287.  Is there a physical reason the lower end is at
+   ~100?  Does the constraint R ≈ r_e play a role?  If the
+   floor is q ≈ 137 (e.g., R = r_e exactly selects q = 137),
+   the problem is solved without primality.
 
-       ω(n,m) = c√(n²/a² + (m − n/(2q))²/R²)
+2. **Nonlinear mode coupling on the CURVED torus** — solve
+   the wave equation including the (1 + r cos θ) metric
+   factor.  This is the only regime where primality could
+   still matter, but it requires a significantly more complex
+   computation (perturbation theory or numerical PDE).
 
-   For each q, compute:
-   (a) the mode spectrum (all eigenfrequencies up to a cutoff)
-   (b) the number of modes near-degenerate with the Compton
-       fundamental (within Δω/ω < ε)
-   (c) whether the degeneracy count differs for prime vs
-       composite q
-
-   **Why this matters:** Near-degenerate modes are the channels
-   through which the fundamental can lose energy (through any
-   coupling mechanism, however weak).  More channels = less
-   stable resonance = more expensive.  If composite q has more
-   near-degenerate modes, prime q is demonstrably cheaper.
-
-   This is the key intermediate step between Track 7 (linear,
-   no dynamics) and a full dynamical simulation.  It answers:
-   "even granting that coupling exists, does q's factorization
-   affect how many modes the fundamental can leak to?"
-
-   *Sub-step 8a (conceptual):* Prove that energy in non-Compton
-   modes is parasitic.  Argument: the electron IS the Compton
-   resonance (mass = hν_C/c²).  Energy in a different mode
-   doesn't contribute to the mass at ν_C, so the system needs
-   more total energy to maintain m_e.  Therefore: more leakage
-   channels = higher cost.
-
-2. **Track 3: Magnetic self-energy** — compute the
+3. **Track 3: Magnetic self-energy** — compute the
    Biot-Savart magnetic self-energy of the geodesic current.
    Unlike Coulomb energy, this compares a 1D current to a 1D
-   current (no 1D-vs-2D mismatch), so it may converge better.
+   current (no 1D-vs-2D mismatch).
 
-3. **Track 6: Continuous δ sweep** — for selected q, sweep δ
+4. **Track 6: Continuous δ sweep** — for selected q, sweep δ
    continuously and check whether a phase-coherence optimum
    coincides with the spin-½ value δ = L_θ/(2q).
-
-4. **Geometric floor analysis** — determine the minimum q
-   allowed by the R8 constraints and whether q = 137 is
-   special in that context (e.g., lowest prime where R ≈ r_e).
 
 
 ## Scripts
@@ -389,3 +467,5 @@ primality hypothesis is about dynamical energy transfer
   — Track 2c: convergence study (20/40/80/120 pts/orbit + extrapolation)
 - [`scripts/track7_wave_superposition.py`](scripts/track7_wave_superposition.py)
   — Track 7: wave superposition / sub-harmonic test (Q30 hypothesis)
+- [`scripts/track8_mode_spectrum.py`](scripts/track8_mode_spectrum.py)
+  — Track 8: mode spectrum and degeneracy on the sheared T²
