@@ -103,13 +103,13 @@ q = nℏ/(R_KK·c). Does the WvM a/R relationship reduce to this?
 *Source: implied by knot-zoo F2, F4*
 *Status: → R1*
 
-Q18. **Can α be derived from geometry?** R8 Track 4 found that
-the shear δ = αR at r = 1/π, with q = 1/α.  This is a numerical
-coincidence (0.3% agreement) suggesting α emerges from the
-photon's EM self-interaction on the torus.  Remains to be proved
-analytically via a self-force calculation.
-*Source: toroid-geometry F6, R7 energy shortfall, R8 Track 4*
-*Status: partially answered by R8; analytical proof open*
+Q18. **Can α be derived from geometry?** R8 Track 4 found
+δ ≈ αR (within ~6%) near q ≈ 137.  Track 5 showed this is
+approximate: the apparent exact match at 32×64 resolution was
+a grid artifact.  The shear is of the right order (α × R) to
+suggest EM self-interaction, but the relationship is not exact.
+*Source: toroid-geometry F6, R7 energy shortfall, R8 Tracks 4–5*
+*Status: suggestive but unproven; self-force calculation needed*
 
 Q19. **Precession causes.** If the torus axis precesses, what
 drives it? Is it a natural consequence of the equations of motion?

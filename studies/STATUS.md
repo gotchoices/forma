@@ -29,17 +29,17 @@ m_e as input and derives the geometry.  Predicting the mass
 spectrum (why m_e, m_μ, m_τ?) is a long-term open problem.
 
 ### 3. Charge e
-**Status: SOLVED** (S2, R6, R7, R8)
+**Status: OPEN — strong lead** (S2, R6, R7, R8)
 
 R8 resolved the R7 energy shortfall: a multi-winding path on a
-sheared T² with q ≈ 1/α major orbits fits λ_C of path on a
-torus of radius R ≈ r_e, where the Coulomb self-energy is
-exactly m_e c²/2.
+sheared T² fits λ_C of path on a torus of radius R ≈ r_e,
+where the Coulomb self-energy is m_e c²/2.  R/r_e ≈ 0.989 is
+robust across resolutions.
 
-R8 Track 4 found that the shear δ = αR at r = 1/π, which
-uniquely selects q = 1/α and R = r_e.  If this relationship
-is confirmed analytically, the charge is fully determined by
-the photon's electromagnetic self-interaction.
+However, q remains a free parameter.  Track 4 found δ ≈ αR
+(within ~6%), suggesting EM self-interaction as the origin of
+the shear, but Track 5 showed this is approximate, not exact.
+**Remaining:** determine what selects q (and hence r and δ).
 
 ### 4. Magnetic moment
 **Status: SOLVED** (WvM §5, charge-from-energy primer §4)
@@ -72,10 +72,11 @@ Final values await objective 3.
 These go beyond "reproduce known properties" toward the
 long-term goal.
 
-- **Derive α from geometry.**  R8 Track 4 found δ = αR at
-  r = 1/π, suggesting α emerges from the photon's EM
-  self-interaction on the torus.  Proving this from first
-  principles (computing the self-force) would close the loop.
+- **Derive α from geometry.**  R8 Track 4 found δ ≈ αR
+  (within ~6%), suggesting the shear has electromagnetic origin.
+  Track 5 showed this is approximate, not an exact identity.
+  Computing the EM self-force on the photon trajectory could
+  determine whether q = 1/α is selected or just coincidental.
 - **Mass spectrum.**  Why m_e and not some other value?
   Is there a quantization condition that selects discrete masses?
 - **Other particles.**  Proton and neutron as multi-photon states
