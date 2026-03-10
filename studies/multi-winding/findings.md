@@ -492,14 +492,21 @@ it cannot be claimed as an exact, zero-free-parameter result.
    and charge constraints.  The shear δ/L_θ = 1/(2q) is the
    one remaining free parameter.  Track 4 found δ ≈ αR
    (within ~6%) and ruled out the Berry phase as the mechanism.
-   The most promising lead is the photon's EM self-interaction:
-   the Coulomb field of charge e on the torus back-reacts on
-   the photon's trajectory, and the coupling strength α is the
-   right scale.  A first-principles self-force calculation —
-   computing the gradient of the Coulomb potential along the
-   photon's path on the torus surface — would determine whether
-   the back-reaction naturally produces the observed shear and
-   selects a specific q.
+
+   Note that a classical photon does not interact with static
+   EM fields (superposition principle), so a naive "Coulomb
+   self-force" argument is problematic.  However, in a
+   Kaluza-Klein framework the compact dimensions ARE the gauge
+   field — the shear of the T² is literally the EM potential.
+   The photon's stress-energy tensor sources the metric of the
+   compact space, including its shear.  The most promising
+   approach is therefore a **self-consistent geometry
+   calculation**: solve for the T² metric (including shear)
+   with the photon's energy-momentum as source, via the
+   higher-dimensional Einstein equations.  If the
+   self-consistent solution has δ ≈ αR, the shear is not a
+   free parameter but a dynamical consequence of the photon's
+   own energy curving the space it inhabits.
 
 2. **Anomalous magnetic moment.**  Track 3 established the
    leading-order result μ = μ_B (g = 2) from the photon's

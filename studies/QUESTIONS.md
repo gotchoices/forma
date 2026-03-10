@@ -105,11 +105,37 @@ q = nℏ/(R_KK·c). Does the WvM a/R relationship reduce to this?
 
 Q18. **Can α be derived from geometry?** R8 Track 4 found
 δ ≈ αR (within ~6%) near q ≈ 137.  Track 5 showed this is
-approximate: the apparent exact match at 32×64 resolution was
-a grid artifact.  The shear is of the right order (α × R) to
-suggest EM self-interaction, but the relationship is not exact.
+approximate, not exact.  A classical photon doesn't interact
+with static EM fields (superposition), so a naive self-force
+argument is problematic.  The better framing: in a Kaluza-Klein
+picture, the compact T² metric IS the gauge field.  The
+photon's stress-energy sources the compact geometry, including
+its shear.  A **self-consistent geometry calculation** — solving
+the higher-dimensional Einstein equations with the photon's
+energy-momentum as source — would determine whether the shear
+(and hence α) is dynamically fixed rather than free.
+
+Two supporting observations:
+1. **The shear MUST exist** (independent of its value).  On an
+   unsheared T², the geodesic slope IS the spin ratio.  You
+   cannot simultaneously have exact spin-½ (ratio = 1/2) AND
+   dense torus coverage (large coprime q).  The shear is the
+   unique mechanism that decouples lattice winding numbers from
+   the physical ratio — allowing coprime (p, q) for coverage
+   while maintaining physical ratio exactly 1/2 for spin.
+2. **α runs with energy** (1/137 at low E, ~1/128 at Z-mass).
+   At first glance this supports self-induced shear: different
+   energy → different self-consistent metric → different α.
+   **Counter-argument:** q must be an odd integer (discrete),
+   so the geometric α can't vary continuously.  The running
+   more likely reflects vacuum polarization screening in 3+1D
+   (virtual pairs dressing the bare charge), not changes in the
+   compact geometry.  Implication: q is fixed topological data
+   for the electron; the KK calculation would determine the
+   bare α, while the running is a separate 3+1D QFT effect.
 *Source: toroid-geometry F6, R7 energy shortfall, R8 Tracks 4–5*
-*Status: suggestive but unproven; self-force calculation needed*
+*Status: suggestive but unproven; KK self-consistent metric
+calculation is the concrete next step*
 
 Q19. **Precession causes.** If the torus axis precesses, what
 drives it? Is it a natural consequence of the equations of motion?
@@ -157,19 +183,47 @@ simulation-theory ideas?
 *Source: user question*
 *Status: → R12*
 
-Q26. **Multi-photon hadrons.** Could protons and neutrons be
-multi-photon states on a compact geometry, rather than bound
-states of quarks?  If so, "quarks" would be features of the
-internal mode structure (nodes, lobes, interference regions)
-rather than independent particles.  Confinement would be
-automatic: you can't isolate a feature from the wave that
-contains it.  Consider:
-- Two photons? Three? Some factor of (1, 2, 3)?
-- Could the number of photons explain the 1/3 and 2/3 charge
-  fractions seen in the quark model?
+Q26. **Multi-photon hadrons and knot confinement.** Could
+protons and neutrons be multi-photon states on a compact
+geometry, rather than bound states of quarks?  The strongest
+version of this idea: three photons in a **knotted**
+configuration on the compact T² — topologically linked so that
+no single photon can be extracted without cutting through
+another.  "Quarks" would be features of each photon's
+contribution to the combined field; quark confinement would
+be automatic because the knot cannot be untied within the
+compact topology.  Consider:
+- Three photons (matching the three valence quarks)?
+- Could each photon's winding topology produce the 1/3 and 2/3
+  charge fractions seen in the quark model?
 - The proton (charge +e, spin ½, 938 MeV) and neutron (charge 0,
-  spin ½, 940 MeV) would need different modes or configurations
-  of the same multi-photon system.
+  spin ½, 940 MeV) would need different knotting or mode
+  configurations of the same three-photon system.
+- Deep inelastic scattering sees three point-like scattering
+  centers.  Can a three-photon knot reproduce this?
+- S3 found that the WvM charge formula maps specific a/R values
+  to fractional charges — potentially reflecting per-photon
+  contributions rather than separate particles.
+*Source: user question, knot-zoo F3*
+
+Q28. **Photon absorption and excited electrons.** In standard
+QM, an orbiting electron absorbs a photon and jumps to a higher
+energy level.  In the compact-dimension model, the electron IS
+a photon on T².  What does "absorb another photon" mean?
+Possible pictures:
+- The second photon enters the compact space and adds energy to
+  the existing mode — a higher harmonic or larger amplitude on
+  the same T².  The compact space now holds more energy, giving
+  a heavier/more-energetic electron.
+- The compact geometry itself changes (dimensions shift) to
+  accommodate the extra energy, analogous to a resonant cavity
+  whose shape depends on the stored energy.
+- The second photon remains in 3+1D but couples to the electron's
+  compact field, creating a composite state.
+If excited electrons are simply "more energy loaded into the same
+compact space," this should predict a discrete spectrum (only
+certain energy increments fit the periodic boundary conditions).
+Does this reproduce the hydrogen energy levels?
 *Source: user question*
 
 Q27. **Foundational axioms.** The model rests on a minimal set

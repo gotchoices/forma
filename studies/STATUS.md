@@ -72,16 +72,44 @@ Final values await objective 3.
 These go beyond "reproduce known properties" toward the
 long-term goal.
 
-- **Derive α from geometry.**  R8 Track 4 found δ ≈ αR
-  (within ~6%), suggesting the shear has electromagnetic origin.
-  Track 5 showed this is approximate, not an exact identity.
-  Computing the EM self-force on the photon trajectory could
-  determine whether q = 1/α is selected or just coincidental.
+- **Derive α from geometry (self-consistent T² metric).**
+  R8 Track 4 found δ ≈ αR (within ~6%).  A classical photon
+  doesn't scatter off EM fields, so a naive self-force
+  argument is problematic.  The correct framing: in a KK
+  picture the T² metric IS the gauge field.  The photon's
+  stress-energy sources the compact geometry including its
+  shear.  A self-consistent solution of the higher-dimensional
+  Einstein equations would determine whether δ (and hence α)
+  is dynamically fixed.  **This is the concrete next
+  calculation.** (Q18)
+  Supporting evidence and counter-argument:
+  (a) In QED, α runs with energy (1/137 at low E, ~1/128 at
+  Z-mass).  Initially this seems to support self-induced shear:
+  more energy → different self-consistent shape → different
+  effective shear/charge.
+  (b) **Counter-argument:** q must be an odd integer for
+  coprime winding numbers with exact spin-½, so δ = L_θ/(2q)
+  is discrete, not continuous.  The running of α is continuous.
+  This suggests q is fixed (part of the electron's topology)
+  and the running comes from vacuum polarization screening
+  in 3+1D — a separate phenomenon, not a change in the
+  compact geometry.  The "bare" α from geometry would be
+  fixed; the "dressed" α that runs would be the bare value
+  modified by virtual-pair screening.
+  The self-consistent KK metric argument stands on its own
+  (it explains what SETS the bare α), but the running of α
+  is probably not evidence for it.
 - **Mass spectrum.**  Why m_e and not some other value?
   Is there a quantization condition that selects discrete masses?
-- **Other particles.**  Proton and neutron as multi-photon states
-  on compact geometry (Q26).  S3 found suggestive a/R multiples
-  for fractional charges.
+  (Q16)
+- **Hadrons from multi-photon knots.**  Proton and neutron as
+  three photons knotted on the compact T², with quark
+  confinement arising from the topological linking.  (Q26)
+- **Photon absorption / excited electrons.**  What does it
+  mean for a photon-on-T² to absorb another photon?  Can
+  excited states be modeled as more energy loaded into the
+  compact space, and does this predict discrete spectra?
+  (Q28)
 
 ### Resolved by axioms
 
@@ -153,27 +181,49 @@ What drives axis precession? Does it restore spherical symmetry?
 Does a precessing (1,2) orbit reproduce WvM's volume-filling
 energy flow (Fig. 2)?
 
-### Hadrons from multi-photon states
+### Hadrons from multi-photon knots
 **Type:** compute/reason  **Questions:** Q12, Q13, Q26
 **Advances:** deeper problem (other particles)
 
-Can protons and neutrons be built directly from multiple photons
-on a compact geometry — bypassing quarks entirely?  "Quarks"
-would then be features of the internal mode structure (nodes,
-lobes) rather than independent particles.  Confinement is
-automatic: you can't isolate a feature from its wave.
+Can protons and neutrons be built from three photons
+**topologically knotted** on the compact T²?  The key insight:
+if three photons are linked in a knot configuration, no single
+photon can be extracted without cutting through another —
+giving automatic quark confinement as a topological property
+rather than a dynamical force.  "Quarks" would be the
+individual photon contributions to the composite field.
 
 Open questions:
-- How many photons?  Two? Three? Some factor of (1,2,3)?
-- Could the photon count explain 1/3 and 2/3 charge fractions?
-- What topology/mode gives charge +e, spin ½, mass 938 MeV
+- Three photons in a Borromean or trefoil-like linking?
+- Does each photon's winding topology produce the 1/3 and 2/3
+  charge fractions?
+- What knot/linking gives charge +e, spin ½, mass 938 MeV
   (proton) vs charge 0, spin ½, mass 940 MeV (neutron)?
 - Deep inelastic scattering sees three point-like scattering
-  centers.  Can a multi-photon mode structure reproduce this?
+  centers.  Can a three-photon knot reproduce this?
+- S3 found that the WvM charge formula maps specific a/R values
+  to fractional charges — consistent with per-photon
+  contributions.
 
-S3 found that the WvM charge formula maps specific a/R values
-to fractional charges.  This could reflect mode structure rather
-than separate particles.
+### Photon absorption and excited electrons
+**Type:** reason/compute  **Questions:** Q28
+**Advances:** deeper problem (photon absorption)
+
+In the compact-dimension model the electron IS a photon on T².
+When a standard QM electron "absorbs a photon," what happens
+in this picture?
+
+Candidate mechanisms:
+- The incoming photon enters the compact space and adds energy
+  to the existing mode (higher harmonic, larger amplitude)
+- The compact geometry reshapes to accommodate the extra energy
+- The incoming photon remains in 3+1D, coupling to the compact
+  field as a composite state
+
+If excited electrons are "more energy in the same T²," the
+periodic boundary conditions should impose discrete allowed
+increments — potentially reproducing atomic energy levels.
+This would be a strong test of the framework.
 
 ### String theory parallels
 **Type:** research
