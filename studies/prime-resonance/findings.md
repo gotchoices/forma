@@ -200,12 +200,11 @@ is the fundamental Compton mode.  For composite q = d×m,
 frequency n = q/d is the sub-harmonic at period d.
 
 
-### F10. No prime/composite distinction in wave superposition
+### F10. No prime/composite distinction in LINEAR wave superposition
 
-**The Q30 sub-harmonic leakage hypothesis is not supported.**
-
-Fair comparison: measuring power at the SAME frequencies
-(n = 3, 5, 9, 15, 27, 45 — the divisors of 135) for all q:
+The linear superposition test shows no spectral distinction
+between prime and composite q.  Fair comparison at the SAME
+frequencies (n = 3, 5, 9, 15, 27, 45) for all q:
 
 | q   | P? | n=3 power | n=5 power | n=9 power | sum      |
 |-----|----|-----------|-----------|-----------|----------|
@@ -214,57 +213,66 @@ Fair comparison: measuring power at the SAME frequencies
 | 137 | ★  | 0.44688%  | ~0        | ~0        | 0.44688% |
 | 139 | ★  | 0.44539%  | ~0        | ~0        | 0.44539% |
 
-The power at frequency n = 3 varies smoothly with q and
-shows ZERO dependence on whether 3 divides q.  This holds
-for all tested frequencies, all kernel widths (σ = 0.1 to π),
-and all q values.
-
-The deep dive confirms: the top 15 spectral peaks for q = 135
-and q = 137 are virtually identical.  The dominant non-
-fundamental peaks are at n ≈ p ≈ q/2 (from the minor-circle
-winding), not at divisor frequencies.
+Power at n = 3 varies smoothly with q, showing zero dependence
+on whether 3 divides q.  Robust across all kernel widths.
 
 
-### F11. Mathematical explanation
+### F11. Mathematical explanation (linear case)
 
-Since gcd(p, q) = 1 for ALL q in the solution family (whether
-prime or composite), the orbit positions {2πpk/q mod 2π} for
-k = 0, ..., q−1 always form a COMPLETE residue system mod q.
-The power spectrum is:
+Since gcd(p, q) = 1 for ALL q, the orbit positions always
+form a complete residue system mod q.  The power spectrum is:
 
     |A(n)|² = q² |ĉ(np⁻¹ mod q)|²
 
-where ĉ(m) are the Fourier coefficients of the kernel K(θ).
-This is a permutation of {|ĉ(m)|²}, and the permutation
-depends on p = (q−1)/2, not on q's factorization.
-
-Power at any frequency n depends on which Fourier coefficient
-of K gets mapped to it (via np⁻¹ mod q), not on whether n
-divides q.  The divisibility structure of q is invisible to
-this spectral analysis.
+— a permutation of the kernel's Fourier coefficients.  Power
+at any frequency depends on which kernel coefficient gets
+mapped to it, not on whether n divides q.
 
 
-### F12. Implications for the primality hypothesis
+### F12. Limitations of Track 7 — why the test may be too weak
 
-Three tests have now failed to find a prime/composite
-distinction:
+Track 7 proved that **linear, static** observables are blind
+to primality.  But the Q30 hypothesis is about **dynamical
+energy transfer**, which Track 7 did not test:
 
-| Test                        | Mechanism tested      | Result |
-|-----------------------------|-----------------------|--------|
-| Track 1: path topology      | sub-periodic closure  | None   |
-| Track 2: Coulomb energy     | static E-field energy | None   |
-| Track 7: wave superposition | spectral sub-harmonics| None   |
+1. **Linear vs nonlinear.**  In a linear system, modes never
+   exchange energy — they are independent by definition.  The
+   Q30 hypothesis requires nonlinear mode coupling (or
+   parametric resonance), which is a fundamentally different
+   regime.  Track 7's DFT is purely linear.
 
-The failure is not a numerical artifact — it is a consequence
-of gcd(p, q) = 1 holding for all q.  Any observable that
-depends only on the SET of orbit positions (not their time-
-ordering or nonlinear dynamics) will be blind to primality.
+2. **Snapshot vs evolution.**  Track 7 analyzed an imposed
+   wave at one instant.  Energy leakage is a process that
+   unfolds over time — the growth rate of parasitic modes
+   depends on coupling coefficients, not static spectra.
 
-**If primality matters, it must enter through genuinely
-dynamical physics:** nonlinear mode coupling, radiation
-losses, or self-consistent field equations where the time
-evolution feeds back on the mode structure.  The simple
-"overlay and add" picture does not distinguish primes.
+3. **Imposed vs self-consistent.**  The wave was prescribed
+   externally, not a self-sustaining resonance.  A real
+   electron's field must reinforce itself after q orbits.
+   Self-consistency could have different stability properties
+   for prime vs composite q.
+
+4. **Smooth kernel hid structure.**  The Gaussian kernel has
+   Fourier coefficients ~exp(−σ²m²/2), which are negligible
+   at m ~ q/d (the divisor frequencies).  A realistic EM field
+   falls off as ~1/r, giving coefficients ~1/|m| — much larger
+   at high harmonics.
+
+**Track 7 proved:** any observable depending only on the SET
+of orbit positions (not their temporal ordering or dynamics)
+is blind to primality.
+
+**Track 7 did NOT test:** whether the temporal ordering of
+orbits creates resonant mode coupling at divisor frequencies
+in a dynamical system.  For composite q = d×m, the sequence
+of orbit positions has periodic sub-structure at interval m
+(every m orbits, the angular position is related by d-fold
+symmetry).  In a nonlinear system, this periodic driving can
+parametrically excite the d-th harmonic.  For prime q, no
+such periodic sub-structure exists.
+
+**The primality hypothesis remains viable** — but requires a
+dynamical test (Track 8).
 
 
 ### F8. Methodological lesson: Coulomb sums on 1D curves
@@ -295,45 +303,70 @@ distributions should either:
 | Sub-periodic closure | Impossible on sheared T² for any q |
 | Geodesic Coulomb excess | ~~Minimum at q ≈ 137~~ — **retracted** (resolution artifact) |
 | Geodesic Coulomb (converged) | Monotonically increasing with q; lower q = cheaper |
-| Wave superposition spectrum | No prime/composite distinction (gcd(p,q)=1 for all q) |
-| Prime vs composite (all static tests) | **No distinction found** |
+| Wave superposition (linear) | No prime/composite distinction |
+| Track 7 scope | Proved: linear/static tests blind to primality |
+| Track 7 scope | Did NOT test: dynamical mode coupling |
 
-**Track 2c:** The Coulomb excess increases monotonically with
-q.  Fewer orbits = less excess energy.  This is a real result:
-lower q is energetically cheaper.
+**Track 2c:** Lower q = less excess Coulomb energy.  This is
+a real physical result: fewer orbits is energetically cheaper.
 
-**Track 7:** The wave superposition test shows zero spectral
-distinction between prime and composite q.  Power at any
-frequency depends on the kernel's Fourier structure, not on
-q's divisibility.  The "sub-harmonic leakage" hypothesis (Q30)
-is not supported by this model.
+**Track 7:** The linear superposition test found no spectral
+distinction.  However, the test has significant limitations
+(F12): it only probes linear, static observables.  The Q30
+primality hypothesis is about dynamical energy transfer
+(parametric mode coupling), which Track 7 did not address.
+**The hypothesis remains viable.**
 
-**What we know works:**
+**What we know:**
 - Lower q is cheaper (Coulomb) — pushes toward low q
 - Some geometric floor must exist (path must fit λ_C)
-- These two together bracket q, but don't pin it to 137
+- Linear/static observables are blind to primality (proven)
+- Dynamical mode coupling is untested
 
-**What remains untested:**
-- Magnetic self-energy (different geometry, 1D-vs-1D)
-- Nonlinear / self-consistent dynamics (radiation, feedback)
-- Wave equation eigenvalues on the sheared T²
-- Whether the geometric floor itself lands near q = 137
+**The selection picture (working hypothesis):**
+1. Geometric floor → minimum viable q
+2. Coulomb cost → pushes q to the floor
+3. Mode stability (if confirmed) → prime q more stable
+4. Convergence → lowest prime above the floor = 137 ?
 
 
 ## Next steps
 
-1. **Track 3: Magnetic self-energy** — compute the
+1. **Track 8: Mode spectrum and degeneracy on the sheared T²**
+   The sheared T² is flat, so the scalar Helmholtz equation
+   is analytically solvable.  The mode frequencies are:
+
+       ω(n,m) = c√(n²/a² + (m − n/(2q))²/R²)
+
+   For each q, compute:
+   (a) the mode spectrum (all eigenfrequencies up to a cutoff)
+   (b) the number of modes near-degenerate with the Compton
+       fundamental (within Δω/ω < ε)
+   (c) whether the degeneracy count differs for prime vs
+       composite q
+
+   **Why this matters:** Near-degenerate modes are the channels
+   through which the fundamental can lose energy (through any
+   coupling mechanism, however weak).  More channels = less
+   stable resonance = more expensive.  If composite q has more
+   near-degenerate modes, prime q is demonstrably cheaper.
+
+   This is the key intermediate step between Track 7 (linear,
+   no dynamics) and a full dynamical simulation.  It answers:
+   "even granting that coupling exists, does q's factorization
+   affect how many modes the fundamental can leak to?"
+
+   *Sub-step 8a (conceptual):* Prove that energy in non-Compton
+   modes is parasitic.  Argument: the electron IS the Compton
+   resonance (mass = hν_C/c²).  Energy in a different mode
+   doesn't contribute to the mass at ν_C, so the system needs
+   more total energy to maintain m_e.  Therefore: more leakage
+   channels = higher cost.
+
+2. **Track 3: Magnetic self-energy** — compute the
    Biot-Savart magnetic self-energy of the geodesic current.
    Unlike Coulomb energy, this compares a 1D current to a 1D
    current (no 1D-vs-2D mismatch), so it may converge better.
-   The current geometry differs between q values, making it a
-   genuine candidate discriminant.
-
-2. **Track 8: Wave equation eigenvalues on sheared T²** —
-   solve the scalar Helmholtz equation on the sheared T² and
-   find which shear values (→ which q) permit standing-wave
-   solutions consistent with the Compton frequency.  This is
-   the most direct "self-consistency" test.
 
 3. **Track 6: Continuous δ sweep** — for selected q, sweep δ
    continuously and check whether a phase-coherence optimum

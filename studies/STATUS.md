@@ -173,14 +173,18 @@ could select a specific q:
   shows the Track 2 minimum was a numerical artifact.
   Excess is monotonically increasing with q (lower q =
   cheaper).  Coulomb does NOT select q ≈ 137.
-- **Track 7: Wave superposition ✓ — no prime/composite
-  distinction.**  Power at any frequency depends on the
-  kernel's Fourier structure, not on q's divisibility.
-  The Q30 sub-harmonic leakage hypothesis is not supported.
-  Root cause: gcd(p, q) = 1 for all q, so orbit positions
-  form a complete residue system regardless of primality.
-- Track 3 *(next)*: Magnetic (Biot-Savart) self-energy
-- Track 8 *(future)*: Wave equation eigenvalues on sheared T²
+- **Track 7: Wave superposition ✓ — no distinction in
+  LINEAR regime.**  Power at any frequency depends on the
+  kernel's Fourier structure, not q's divisibility.  However,
+  the test has significant limitations: it only probes linear,
+  static observables.  The Q30 hypothesis concerns dynamical
+  mode coupling (nonlinear / parametric resonance), which
+  Track 7 did not address.  **Primality hypothesis remains
+  viable** — requires dynamical test.
+- Track 8 *(next)*: Mode spectrum and degeneracy counting
+  on the sheared T².  Analytically solvable (flat geometry).
+  Count near-degenerate modes for prime vs composite q.
+- Track 3 *(future)*: Magnetic (Biot-Savart) self-energy
 - Track 6 *(future)*: Continuous δ sweep
 
 ---
@@ -239,16 +243,17 @@ perspective.
 **Question:** Q30  **Type:** compute
 **Advances:** deeper problem (derive α)
 
-**Result:** R11 Track 7 tested this directly.  The wave
-superposition shows NO prime/composite distinction.  Power at
-any frequency depends on the kernel's Fourier structure, not
-on q's divisibility.  Root cause: gcd(p, q) = 1 for all q
-in the solution family, so orbit positions always form a
-complete residue system regardless of primality.
+**Result:** R11 Track 7 found no distinction in the linear
+regime.  Root cause: gcd(p, q) = 1 for all q, so orbit
+positions always form a complete residue system.  Any linear,
+static observable is blind to primality.
 
-If primality matters, it must enter through genuinely dynamical
-physics (nonlinear mode coupling, radiation losses, self-
-consistent field equations) — not through linear superposition.
+**However:** Track 7 has significant limitations (see R11
+findings F12).  The Q30 hypothesis is about dynamical energy
+transfer (parametric mode coupling), not linear superposition.
+Track 8 will test whether composite q has more near-degenerate
+modes (= more leakage channels), which would make primality
+relevant even through weak coupling.
 
 
 ### Flat space → curved appearance

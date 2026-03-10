@@ -530,11 +530,12 @@ it cannot be claimed as an exact, zero-free-parameter result.
      q ≈ 137 (original minimum was a resolution artifact).
      However, lower q = lower excess energy — "fewer orbits
      is cheaper" is a real result.
-   - *Track 7:* Wave superposition shows NO prime/composite
-     distinction.  The Q30 sub-harmonic leakage hypothesis
-     is not supported (gcd(p,q) = 1 for all q).
-   - Remaining viable leads: magnetic self-energy, wave
-     equation eigenvalues on sheared T², geometric floor.
+   - *Track 7:* Linear wave superposition shows no prime/
+     composite distinction.  But this test only covers the
+     linear, static regime.  The Q30 hypothesis (dynamical
+     mode coupling) remains viable — requires Track 8.
+   - Remaining viable leads: mode degeneracy counting
+     (Track 8), magnetic self-energy, geometric floor.
 
 2. **Anomalous magnetic moment.**  Track 3 established the
    leading-order result μ = μ_B (g = 2) from the photon's

@@ -82,16 +82,44 @@ the kernel's Fourier structure, not q's divisibility.  Since
 gcd(p,q) = 1 for all q, orbit positions always form a complete
 residue system — the prime/composite structure is invisible.
 
-### Track 3: Magnetic self-energy *(next)*
+### Track 8: Mode spectrum and degeneracy *(next)*
+**Type:** analytical + numerical
+
+The sheared T² is flat, so the Helmholtz equation has exact
+plane-wave solutions with modified boundary conditions.  The
+mode frequencies are:
+
+    ω(n,m) = c√(n²/a² + (m − n/(2q))²/R²)
+
+where (n, m) are integer quantum numbers and the shear
+enters through the −n/(2q) offset.
+
+**Step 8a (conceptual):** Establish that energy in non-
+fundamental modes is parasitic.  The electron = Compton
+resonance at ν_C.  Energy at other frequencies doesn't
+contribute to m_e → system needs more total energy → more
+expensive.
+
+**Step 8b (mode counting):** For each q, count modes within
+Δω/ω < ε of the fundamental Compton frequency.  This is a
+lattice-point counting problem on the sheared reciprocal
+lattice.  The count depends on the arithmetic of q.
+
+**Step 8c (prime vs composite):** Compare the degeneracy
+density.  If composite q has more near-degenerate modes,
+its fundamental is less stable (more leakage channels,
+regardless of coupling strength).
+
+This bridges the gap between Track 7 (linear, static — no
+distinction found) and a full dynamical simulation.  It asks:
+"even granting that some coupling exists, does q's
+factorization affect the NUMBER of available channels?"
+
+### Track 3: Magnetic self-energy *(future)*
 
 Compute the Biot-Savart magnetic self-energy of the geodesic
 current.  This is a 1D-vs-1D comparison (no dimensionality
 mismatch), so it may converge better than Coulomb.
-
-### Track 8: Wave equation eigenvalues *(future)*
-
-Solve the scalar Helmholtz equation on the sheared T² and
-find which shear values permit standing-wave solutions.
 
 ### Track 6: Continuous δ sweep *(future)*
 
