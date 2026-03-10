@@ -105,37 +105,40 @@ q = nℏ/(R_KK·c). Does the WvM a/R relationship reduce to this?
 
 Q18. **Can α be derived from geometry?** R8 Track 4 found
 δ ≈ αR (within ~6%) near q ≈ 137.  Track 5 showed this is
-approximate, not exact.  A classical photon doesn't interact
-with static EM fields (superposition), so a naive self-force
-argument is problematic.  The better framing: in a Kaluza-Klein
-picture, the compact T² metric IS the gauge field.  The
-photon's stress-energy sources the compact geometry, including
-its shear.  A **self-consistent geometry calculation** — solving
-the higher-dimensional Einstein equations with the photon's
-energy-momentum as source — would determine whether the shear
-(and hence α) is dynamically fixed rather than free.
+approximate, not exact.  The shear selects q and hence α —
+but what selects the shear?
 
-Two supporting observations:
-1. **The shear MUST exist** (independent of its value).  On an
-   unsheared T², the geodesic slope IS the spin ratio.  You
-   cannot simultaneously have exact spin-½ (ratio = 1/2) AND
-   dense torus coverage (large coprime q).  The shear is the
-   unique mechanism that decouples lattice winding numbers from
-   the physical ratio — allowing coprime (p, q) for coverage
-   while maintaining physical ratio exactly 1/2 for spin.
-2. **α runs with energy** (1/137 at low E, ~1/128 at Z-mass).
-   At first glance this supports self-induced shear: different
-   energy → different self-consistent metric → different α.
-   **Counter-argument:** q must be an odd integer (discrete),
-   so the geometric α can't vary continuously.  The running
-   more likely reflects vacuum polarization screening in 3+1D
-   (virtual pairs dressing the bare charge), not changes in the
-   compact geometry.  Implication: q is fixed topological data
-   for the electron; the KK calculation would determine the
-   bare α, while the running is a separate 3+1D QFT effect.
-*Source: toroid-geometry F6, R7 energy shortfall, R8 Tracks 4–5*
-*Status: suggestive but unproven; KK self-consistent metric
-calculation is the concrete next step*
+Ruled out mechanisms:
+- *EM self-force:* photons don't couple to EM fields.
+- *KK gravitational self-consistent metric:* R1 showed
+  Gm_e/(Rc²) ~ 10⁻⁴³, which is 41 orders of magnitude too
+  weak.  The 6D Einstein equations would return "flat T², no
+  shear" to extreme precision.
+- *Berry phase:* wrong scaling (R8 Track 4).
+
+Active leads:
+1. **EM self-consistency (wave equation on sheared T²):**
+   The WvM charge mechanism is purely electromagnetic (no G).
+   Solving Maxwell's equations on the sheared T² might show
+   that self-consistent EM solutions exist only for specific
+   shear values, determining α from boundary conditions alone.
+2. **Feasibility function for α:** see Q29.
+
+Key insight: **the shear MUST exist** (independent of its
+value).  On an unsheared T², the geodesic slope IS the spin
+ratio.  You cannot simultaneously have exact spin-½ AND dense
+torus coverage.  The shear is the unique mechanism that
+decouples these, so its existence is forced — only its
+magnitude is undetermined.
+
+On the running of α: α runs in QED (1/137 → ~1/128 at Z-mass),
+but q must be an odd integer (discrete), so the geometric α
+can't vary continuously.  The running likely reflects vacuum
+polarization screening in 3+1D, not compact geometry changes.
+The bare α is fixed; the dressed α runs.
+*Source: toroid-geometry F6, R7, R8 Tracks 4–5, R1 (gravity
+too weak)*
+*Status: EM self-consistency is the concrete next step*
 
 Q19. **Precession causes.** If the torus axis precesses, what
 drives it? Is it a natural consequence of the equations of motion?
@@ -236,6 +239,42 @@ of assumptions.  Candidates for explicit axioms:
 - Energy propagates according to dimensional constraints
 Can all particle properties be derived from these alone?
 *Source: user question*
+
+Q29. **Variational principle for α.**  Every other quantity in
+physics is determined by extremizing something: particles follow
+geodesics (least action), light takes the fastest path (Fermat),
+fields extremize the Lagrangian.  Can α be determined the same
+way — by minimizing a total energy functional E(δ) over the
+shear parameter?
+
+The electron model already has a family of valid geometries
+(all odd q from ~100 to ~287, each with shear δ = L_θ/(2q)).
+Each distributes the photon's field differently on the torus.
+The total energy includes terms we can compute:
+- **Coulomb self-energy** — depends on how uniformly charge
+  covers the torus surface (varies with q)
+- **Magnetic field energy** — same dependence
+- **Multipole structure** — more uniform coverage (higher q)
+  means lower multipole moments, potentially lower energy
+- **Shear stiffness** — if deforming the T² from rectangular
+  to sheared costs energy, this penalizes large δ (low q)
+
+If E_total(q) has a minimum at a specific q, the electron's
+ground state selects that q — and hence α = δ/R.  This is the
+same logic by which atoms have ground states: nature finds the
+lowest-energy configuration consistent with the constraints.
+
+In string theory this is exactly how compact-dimension shapes
+are fixed: the "moduli" (shape parameters) settle to the
+minimum of an effective potential.  Our shear is a modulus of
+the T², and E(δ) is its effective potential.
+
+This approach is complementary to the EM self-consistency
+approach (Q18): the wave equation gives the allowed modes, and
+the variational principle selects which mode nature occupies.
+*Source: user question*
+*Status: open — could start by computing E_total(q) across the
+existing R8 solution family to see if a minimum exists*
 
 ---
 

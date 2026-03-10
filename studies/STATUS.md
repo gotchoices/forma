@@ -72,33 +72,42 @@ Final values await objective 3.
 These go beyond "reproduce known properties" toward the
 long-term goal.
 
-- **Derive α from geometry (self-consistent T² metric).**
-  R8 Track 4 found δ ≈ αR (within ~6%).  A classical photon
-  doesn't scatter off EM fields, so a naive self-force
-  argument is problematic.  The correct framing: in a KK
-  picture the T² metric IS the gauge field.  The photon's
-  stress-energy sources the compact geometry including its
-  shear.  A self-consistent solution of the higher-dimensional
-  Einstein equations would determine whether δ (and hence α)
-  is dynamically fixed.  **This is the concrete next
-  calculation.** (Q18)
-  Supporting evidence and counter-argument:
-  (a) In QED, α runs with energy (1/137 at low E, ~1/128 at
-  Z-mass).  Initially this seems to support self-induced shear:
-  more energy → different self-consistent shape → different
-  effective shear/charge.
-  (b) **Counter-argument:** q must be an odd integer for
-  coprime winding numbers with exact spin-½, so δ = L_θ/(2q)
-  is discrete, not continuous.  The running of α is continuous.
-  This suggests q is fixed (part of the electron's topology)
-  and the running comes from vacuum polarization screening
-  in 3+1D — a separate phenomenon, not a change in the
-  compact geometry.  The "bare" α from geometry would be
-  fixed; the "dressed" α that runs would be the bare value
-  modified by virtual-pair screening.
-  The self-consistent KK metric argument stands on its own
-  (it explains what SETS the bare α), but the running of α
-  is probably not evidence for it.
+- **Derive α from geometry.** (Q18, Q29)
+  R8 Track 4 found δ ≈ αR (within ~6%).  The shear selects
+  q and hence α.  But what selects the shear?
+
+  **Ruled out:**
+  - *EM self-force:* photons don't couple to EM fields
+    (superposition principle).
+  - *Gravitational self-force / KK self-consistent metric:*
+    R1 showed KK gravity is ~10⁻²² × e at the electron scale.
+    The gravitational back-reaction Gm_e/(Rc²) ~ 10⁻⁴³ is
+    41 orders of magnitude too weak to produce δ/R ~ α ~ 10⁻².
+  - *Berry phase:* wrong scaling (Track 4).
+
+  **Active leads:**
+  - *EM self-consistency (wave equation on T²):* The WvM charge
+    mechanism is purely electromagnetic (no G).  If Maxwell's
+    equations on the sheared T² admit self-consistent solutions
+    only for specific shear values, α would be determined by EM
+    boundary conditions, not gravity.  **This is the concrete
+    next calculation** — solve for the photon field modes on
+    the compact T² and check which shear values permit
+    self-consistent solutions.
+  - *Variational principle:* write E_total(q) — the total energy
+    of the electron configuration as a function of winding
+    number — and minimize.  The ground state selects q and
+    hence α.  Same logic as moduli stabilization in string
+    theory.  Could start by computing E_total(q) across the
+    existing R8 solution family.  (Q29)
+
+  **Context on running of α:**
+  α runs in QED (1/137 → ~1/128 at Z-mass), but q must be an
+  odd integer, so the geometric α is discrete.  The running
+  likely reflects vacuum polarization screening in 3+1D, not
+  changes in compact geometry.  The bare α (from geometry) is
+  fixed; the dressed α (measured) runs due to virtual-pair
+  screening.
 - **Mass spectrum.**  Why m_e and not some other value?
   Is there a quantization condition that selects discrete masses?
   (Q16)
@@ -143,17 +152,43 @@ expected from the local winding ratio.
 Ordered roughly by priority.  Items get an R-number when
 promoted to Active.
 
-### Wave equation on T²
-**Question:** Q9  **Type:** compute  **Depends on:** R6
+### Wave equation on sheared T² ★ HIGH PRIORITY
+**Question:** Q9, Q18  **Type:** compute  **Depends on:** R6, R8
 **Advances:** objective 3 (charge), deeper problem (derive α)
 
-R6 found the self-consistent (r, R) for several assumed profiles
-but could not determine which profile is physical. Solving the
-wave equation on the T² geometry would determine:
+Now the leading approach for determining the shear (and hence
+α), after the KK gravitational mechanism was ruled out as too
+weak (R1: Gm_e/(Rc²) ~ 10⁻⁴³).  The WvM charge mechanism is
+purely electromagnetic (no G), so the relevant field equations
+are Maxwell's, not Einstein's.  Solving for the photon field
+modes on a sheared T² would determine:
 
+- Which shear values permit self-consistent EM solutions
 - The physical field profile and its width σ
-- Whether α is predicted or must be input
+- Whether α is predicted by EM boundary conditions alone
 - Whether multiple modes exist with different σ (→ quarks)
+
+### Variational principle for α
+**Question:** Q29  **Type:** compute
+**Advances:** deeper problem (derive α)
+
+Nature determines everything else by extremizing an action or
+energy functional.  Apply the same principle to α: write the
+total energy E(δ) of the electron configuration as a function
+of shear, and minimize.  The existing R8 solution family (odd
+q from ~100 to ~287) provides discrete candidates.  E_total(q)
+includes:
+- Coulomb self-energy (varies with charge distribution on torus)
+- Magnetic field energy (same dependence)
+- Multipole structure (higher q → more uniform → lower energy?)
+- Shear stiffness (if deforming T² costs energy → penalizes
+  large δ / low q)
+
+If E_total(q) has a minimum, that q is the ground state and
+determines α.  Same logic as string-theory moduli
+stabilization: the shear is a modulus of the T², and E(δ) is
+its effective potential.  **Could start by computing E_total(q)
+across the existing R8 data to see if a minimum exists.**
 
 
 ### Flat space → curved appearance

@@ -493,20 +493,26 @@ it cannot be claimed as an exact, zero-free-parameter result.
    one remaining free parameter.  Track 4 found δ ≈ αR
    (within ~6%) and ruled out the Berry phase as the mechanism.
 
-   Note that a classical photon does not interact with static
-   EM fields (superposition principle), so a naive "Coulomb
-   self-force" argument is problematic.  However, in a
-   Kaluza-Klein framework the compact dimensions ARE the gauge
-   field — the shear of the T² is literally the EM potential.
-   The photon's stress-energy tensor sources the metric of the
-   compact space, including its shear.  The most promising
-   approach is therefore a **self-consistent geometry
-   calculation**: solve for the T² metric (including shear)
-   with the photon's energy-momentum as source, via the
-   higher-dimensional Einstein equations.  If the
-   self-consistent solution has δ ≈ αR, the shear is not a
-   free parameter but a dynamical consequence of the photon's
-   own energy curving the space it inhabits.
+   **Mechanisms ruled out:**
+   - *EM self-force:* a classical photon doesn't couple to
+     static EM fields (superposition principle).
+   - *KK gravitational self-consistent metric:* R1 showed
+     gravitational coupling at the electron scale is
+     Gm_e/(Rc²) ~ 10⁻⁴³, which is 41 orders of magnitude
+     too weak to produce δ/R ~ α ~ 10⁻².
+   - *Berry phase:* wrong scaling (Track 4).
+
+   **Active leads:**
+   - *EM self-consistency:* The WvM charge mechanism is purely
+     electromagnetic (no G).  Solving Maxwell's equations on
+     the sheared T² might reveal that self-consistent EM
+     solutions exist only for specific shear values.  This
+     would determine α from EM boundary conditions alone.
+   - *Feasibility/optimization:* α is finely tuned for stable
+     atoms and chemistry.  A function scoring how many physical
+     constraints (conservation laws, quantization, stability)
+     are simultaneously satisfiable might have a unique
+     extremum at α ≈ 1/137.  See Q29.
 
 2. **Anomalous magnetic moment.**  Track 3 established the
    leading-order result μ = μ_B (g = 2) from the photon's
