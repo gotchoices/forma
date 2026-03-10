@@ -155,6 +155,23 @@ multi-winding path (~1/α major orbits, local 1:2 ratio) can
 fit λ_C of path length on a torus of radius ~r_e.  Spin ½ is
 expected from the local winding ratio.
 
+### R11. Prime resonance / least-expensive path
+**Study:** [`prime-resonance/`](prime-resonance/)
+**Question:** Q29, Q30  **Type:** compute  **Depends on:** R8
+**Advances:** deeper problem (derive α)
+
+Sweep the winding number q across the R8 solution family
+(spin locked at 1:2) and compute physical quantities that
+could select a specific q:
+
+- Track 1: Divisor spectrum and sub-harmonic analysis
+  (number theory + geodesic closure proof)
+- Track 2: Geodesic Coulomb self-energy vs. uniform
+  (which q minimizes excess energy?)
+- Track 3 *(future)*: Field overlap / multipole uniformity
+- Track 4 *(future)*: Continuous δ sweep
+- Track 5 *(future)*: Full vector EM
+
 ---
 
 ## Backlog
