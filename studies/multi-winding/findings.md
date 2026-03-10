@@ -487,24 +487,41 @@ it cannot be claimed as an exact, zero-free-parameter result.
 
 ### What remains open
 
-1. **What selects q?**  Every odd q from ~100 to ~287 has a
-   valid geometry.  The mass and charge constraints don't pick
-   a unique q.  The shear δ/L_θ = 1/(2q) is the free parameter.
-   If q = 137 ≈ 1/α, this might follow from an EM self-
-   interaction argument, but no proof exists.
+1. **What selects q (and hence the shear)?**  Every odd q
+   from ~100 to ~287 has a valid geometry satisfying the mass
+   and charge constraints.  The shear δ/L_θ = 1/(2q) is the
+   one remaining free parameter.  Track 4 found δ ≈ αR
+   (within ~6%) and ruled out the Berry phase as the mechanism.
+   The most promising lead is the photon's EM self-interaction:
+   the Coulomb field of charge e on the torus back-reacts on
+   the photon's trajectory, and the coupling strength α is the
+   right scale.  A first-principles self-force calculation —
+   computing the gradient of the Coulomb potential along the
+   photon's path on the torus surface — would determine whether
+   the back-reaction naturally produces the observed shear and
+   selects a specific q.
 
-2. **Explain the shear mechanism.**  Track 4 showed δ ≈ αR
-   (within ~6%) and ruled out the Berry phase.  The EM
-   self-interaction is the right order of magnitude but has
-   not been computed from first principles.
+2. **Anomalous magnetic moment.**  Track 3 established the
+   leading-order result μ = μ_B (g = 2) from the photon's
+   spin-1 nature and the electron's spin-½ topology.  The
+   measured g − 2 ≈ α/π is attributed in WvM's framework to
+   the fraction of field energy in the non-co-rotating
+   (external) component.  Whether this fraction depends on
+   the torus geometry — which changed drastically from WvM's
+   fat Compton-scale torus to R8's thin r_e-scale torus — has
+   not been checked.  A calculation of the external field
+   fraction for the multi-winding geometry would test whether
+   the α/π correction carries over.
 
-3. **Anomalous g-factor** (from Track 3).
-
-4. **Higher-precision shape factor.**  Track 5 showed g(r)
+3. **Higher-precision shape factor.**  Track 5 showed g(r)
    has not fully converged at 192×384 resolution (still
-   drifting at ~0.1% per grid doubling).  An analytical
-   evaluation or specialized numerical method could give
-   the converged values.
+   drifting at ~0.1% per grid doubling).  The converged g
+   values would sharpen the solution curve and pin down r at
+   q = 137 more precisely.  Approaches include: analytical
+   evaluation using toroidal harmonics, ring decomposition
+   with elliptic integrals (requiring careful treatment of
+   the ring self-energy), or Richardson extrapolation from
+   the existing data.
 
 
 ## Scripts
