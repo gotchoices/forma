@@ -171,11 +171,16 @@ could select a specific q:
 - **Track 2c: Convergence study ✓ — RETRACTED Track 2.**
   Higher resolution (up to 120 pts/orbit + extrapolation)
   shows the Track 2 minimum was a numerical artifact.
-  Excess is monotonically increasing with q; the pairwise
-  Coulomb sum does NOT select q ≈ 137.
+  Excess is monotonically increasing with q (lower q =
+  cheaper).  Coulomb does NOT select q ≈ 137.
+- **Track 7: Wave superposition ✓ — no prime/composite
+  distinction.**  Power at any frequency depends on the
+  kernel's Fourier structure, not on q's divisibility.
+  The Q30 sub-harmonic leakage hypothesis is not supported.
+  Root cause: gcd(p, q) = 1 for all q, so orbit positions
+  form a complete residue system regardless of primality.
 - Track 3 *(next)*: Magnetic (Biot-Savart) self-energy
-- Track 4 *(future)*: Multipole decomposition
-- Track 5 *(future)*: Wave propagation / phase coherence
+- Track 8 *(future)*: Wave equation eigenvalues on sheared T²
 - Track 6 *(future)*: Continuous δ sweep
 
 ---
@@ -230,34 +235,20 @@ energy in the fundamental Compton mode.  This is equivalent
 to minimizing E_total(q) but formulated from the photon's
 perspective.
 
-### Prime resonance test
+### ~~Prime resonance test~~ → DONE (R11 Track 7, negative result)
 **Question:** Q30  **Type:** compute
 **Advances:** deeper problem (derive α)
 
-137 is prime — and this may be functionally required.  For
-composite q, every divisor d creates a sub-period: after q/d
-orbits the field pattern has partial closure, a sub-harmonic
-mode that can siphon energy from the fundamental Compton-scale
-resonance.  For prime q, the only divisors are {1, q}, so no
-intermediate sub-harmonics exist.
+**Result:** R11 Track 7 tested this directly.  The wave
+superposition shows NO prime/composite distinction.  Power at
+any frequency depends on the kernel's Fourier structure, not
+on q's divisibility.  Root cause: gcd(p, q) = 1 for all q
+in the solution family, so orbit positions always form a
+complete residue system regardless of primality.
 
-**Proposed computation:** overlay q phase-shifted copies of
-the wave on the torus — one per major orbit, each shifted by
-2π/q in phase.  For prime q, the sub-harmonics should
-destructively interfere (all energy in the fundamental).  For
-composite q, constructive interference at sub-harmonic periods
-should appear — visible energy leakage channels.
-
-This is a direct, computable discriminant.  If confirmed, it
-constrains q to be prime.  Combined with Coulomb energy
-(q ~ 100–287) and variational minimization (Q29), the
-three-part selection may converge to q = 137 uniquely.
-
-Primes in the Coulomb range include: 101, 103, 107, 109, 113,
-127, 131, **137**, 139, 149, 151, 157, 163, 167, 173, 179,
-181, 191, 193, 197, 199, 211, 223, 227, 229, 233, 239, 241,
-251, 257, 263, 269, 271, 277, 281, 283.  If E_total has a
-minimum among these, that is the predicted α.
+If primality matters, it must enter through genuinely dynamical
+physics (nonlinear mode coupling, radiation losses, self-
+consistent field equations) — not through linear superposition.
 
 
 ### Flat space → curved appearance

@@ -525,11 +525,16 @@ it cannot be claimed as an exact, zero-free-parameter result.
      For prime q, no leakage channels exist — all energy
      stays in the fundamental.  See Q30.
 
-   **R11 update (Track 2c):** The geodesic Coulomb self-energy
-   does NOT select q ≈ 137.  The original Track 2 minimum was
-   a numerical artifact of insufficient resolution (retracted).
-   Static Coulomb energy is ruled out as a selector.  Magnetic
-   self-energy and wave propagation remain untested.
+   **R11 updates:**
+   - *Track 2c:* Geodesic Coulomb self-energy does NOT select
+     q ≈ 137 (original minimum was a resolution artifact).
+     However, lower q = lower excess energy — "fewer orbits
+     is cheaper" is a real result.
+   - *Track 7:* Wave superposition shows NO prime/composite
+     distinction.  The Q30 sub-harmonic leakage hypothesis
+     is not supported (gcd(p,q) = 1 for all q).
+   - Remaining viable leads: magnetic self-energy, wave
+     equation eigenvalues on sheared T², geometric floor.
 
 2. **Anomalous magnetic moment.**  Track 3 established the
    leading-order result μ = μ_B (g = 2) from the photon's

@@ -68,22 +68,36 @@ U_excess(q) = U_geodesic − m_e c²/2 varies with q because
 higher q covers the torus more densely.  If U_excess has a
 minimum, that q is the ground state.
 
-### Track 3: Field overlap and uniformity *(future)*
+### Track 7: Wave superposition / sub-harmonic test
+**Type:** numerical (Fourier analysis)
 
-Compute the superposed field intensity |Ψ|² on the torus
-surface from all q geodesic passes.  Quantify uniformity
-via multipole decomposition.
+Test the Q30 hypothesis: do composite q leak energy to
+sub-harmonic frequencies?  Superimpose the wave contributions
+from all q orbits (with geometry-dependent amplitude
+modulation) and compare the power spectrum for prime vs
+composite q.
 
-### Track 4: Continuous δ sweep *(future)*
+**Result: No distinction.**  Power at any frequency depends on
+the kernel's Fourier structure, not q's divisibility.  Since
+gcd(p,q) = 1 for all q, orbit positions always form a complete
+residue system — the prime/composite structure is invisible.
+
+### Track 3: Magnetic self-energy *(next)*
+
+Compute the Biot-Savart magnetic self-energy of the geodesic
+current.  This is a 1D-vs-1D comparison (no dimensionality
+mismatch), so it may converge better than Coulomb.
+
+### Track 8: Wave equation eigenvalues *(future)*
+
+Solve the scalar Helmholtz equation on the sheared T² and
+find which shear values permit standing-wave solutions.
+
+### Track 6: Continuous δ sweep *(future)*
 
 For selected q, sweep δ continuously and check whether the
 phase-coherence optimum coincides with the spin-½ value
 δ = L_θ/(2q).
-
-### Track 5: Full vector EM *(future)*
-
-Upgrade from scalar wave to full Maxwell field on the
-sheared T².
 
 ## Dependencies
 

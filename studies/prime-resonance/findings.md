@@ -179,6 +179,94 @@ static Coulomb energy — likely involving the wave dynamics
 (mode coupling, radiation, or phase coherence).
 
 
+---
+
+## Track 7: Wave superposition / sub-harmonic test
+
+### F9. Method
+
+For each q, the photon's q orbits each contribute a wave at
+the observation point.  Orbit k arrives at minor angle
+θ_k = 2πpk/q with Compton phase exp(2πik/q).  The observed
+signal is:
+
+    a_k = K(θ_k) / (1 + r cos θ_k) × exp(2πik/q)
+
+where K is a Gaussian proximity kernel and the 1/(1+r cos θ)
+factor captures flux conservation on the torus.
+
+The DFT of {a_k} gives the power spectrum.  Frequency n = 1
+is the fundamental Compton mode.  For composite q = d×m,
+frequency n = q/d is the sub-harmonic at period d.
+
+
+### F10. No prime/composite distinction in wave superposition
+
+**The Q30 sub-harmonic leakage hypothesis is not supported.**
+
+Fair comparison: measuring power at the SAME frequencies
+(n = 3, 5, 9, 15, 27, 45 — the divisors of 135) for all q:
+
+| q   | P? | n=3 power | n=5 power | n=9 power | sum      |
+|-----|----|-----------|-----------|-----------|----------|
+| 133 |    | 0.44991%  | ~0        | ~0        | 0.44991% |
+| 135 |    | 0.44839%  | ~0        | ~0        | 0.44839% |
+| 137 | ★  | 0.44688%  | ~0        | ~0        | 0.44688% |
+| 139 | ★  | 0.44539%  | ~0        | ~0        | 0.44539% |
+
+The power at frequency n = 3 varies smoothly with q and
+shows ZERO dependence on whether 3 divides q.  This holds
+for all tested frequencies, all kernel widths (σ = 0.1 to π),
+and all q values.
+
+The deep dive confirms: the top 15 spectral peaks for q = 135
+and q = 137 are virtually identical.  The dominant non-
+fundamental peaks are at n ≈ p ≈ q/2 (from the minor-circle
+winding), not at divisor frequencies.
+
+
+### F11. Mathematical explanation
+
+Since gcd(p, q) = 1 for ALL q in the solution family (whether
+prime or composite), the orbit positions {2πpk/q mod 2π} for
+k = 0, ..., q−1 always form a COMPLETE residue system mod q.
+The power spectrum is:
+
+    |A(n)|² = q² |ĉ(np⁻¹ mod q)|²
+
+where ĉ(m) are the Fourier coefficients of the kernel K(θ).
+This is a permutation of {|ĉ(m)|²}, and the permutation
+depends on p = (q−1)/2, not on q's factorization.
+
+Power at any frequency n depends on which Fourier coefficient
+of K gets mapped to it (via np⁻¹ mod q), not on whether n
+divides q.  The divisibility structure of q is invisible to
+this spectral analysis.
+
+
+### F12. Implications for the primality hypothesis
+
+Three tests have now failed to find a prime/composite
+distinction:
+
+| Test                        | Mechanism tested      | Result |
+|-----------------------------|-----------------------|--------|
+| Track 1: path topology      | sub-periodic closure  | None   |
+| Track 2: Coulomb energy     | static E-field energy | None   |
+| Track 7: wave superposition | spectral sub-harmonics| None   |
+
+The failure is not a numerical artifact — it is a consequence
+of gcd(p, q) = 1 holding for all q.  Any observable that
+depends only on the SET of orbit positions (not their time-
+ordering or nonlinear dynamics) will be blind to primality.
+
+**If primality matters, it must enter through genuinely
+dynamical physics:** nonlinear mode coupling, radiation
+losses, or self-consistent field equations where the time
+evolution feeds back on the mode structure.  The simple
+"overlay and add" picture does not distinguish primes.
+
+
 ### F8. Methodological lesson: Coulomb sums on 1D curves
 
 The Track 2 → 2c progression revealed that pairwise Coulomb
@@ -206,21 +294,30 @@ distributions should either:
 |---------|--------|
 | Sub-periodic closure | Impossible on sheared T² for any q |
 | Geodesic Coulomb excess | ~~Minimum at q ≈ 137~~ — **retracted** (resolution artifact) |
-| Geodesic Coulomb (converged) | Monotonically increasing with q; does NOT select q ≈ 137 |
-| Prime vs composite (Coulomb) | No distinction |
-| Prime vs composite (path topology) | No distinction |
+| Geodesic Coulomb (converged) | Monotonically increasing with q; lower q = cheaper |
+| Wave superposition spectrum | No prime/composite distinction (gcd(p,q)=1 for all q) |
+| Prime vs composite (all static tests) | **No distinction found** |
 
-**The big result from Track 2c:** the apparent Coulomb minimum
-at q ≈ 137 from Track 2 was a numerical artifact.  Higher
-resolution (up to 120 pts/orbit + extrapolation) shows the
-excess is monotonically increasing with q.  The pairwise
-Coulomb sum does NOT select q ≈ 137.
+**Track 2c:** The Coulomb excess increases monotonically with
+q.  Fewer orbits = less excess energy.  This is a real result:
+lower q is energetically cheaper.
 
-**What remains viable:** magnetic self-energy, wave propagation
-/ phase coherence, and R/r_e proximity are still untested
-selection mechanisms.  The Coulomb result tells us that
-*static electric* energy is not the selector — we need either
-the magnetic term or dynamical (wave) physics.
+**Track 7:** The wave superposition test shows zero spectral
+distinction between prime and composite q.  Power at any
+frequency depends on the kernel's Fourier structure, not on
+q's divisibility.  The "sub-harmonic leakage" hypothesis (Q30)
+is not supported by this model.
+
+**What we know works:**
+- Lower q is cheaper (Coulomb) — pushes toward low q
+- Some geometric floor must exist (path must fit λ_C)
+- These two together bracket q, but don't pin it to 137
+
+**What remains untested:**
+- Magnetic self-energy (different geometry, 1D-vs-1D)
+- Nonlinear / self-consistent dynamics (radiation, feedback)
+- Wave equation eigenvalues on the sheared T²
+- Whether the geometric floor itself lands near q = 137
 
 
 ## Next steps
@@ -232,20 +329,19 @@ the magnetic term or dynamical (wave) physics.
    The current geometry differs between q values, making it a
    genuine candidate discriminant.
 
-2. **Track 4: Multipole decomposition** — decompose the
-   geodesic charge distribution into azimuthal harmonics.
-   Even if total energy doesn't distinguish prime from
-   composite, the spatial structure might.
+2. **Track 8: Wave equation eigenvalues on sheared T²** —
+   solve the scalar Helmholtz equation on the sheared T² and
+   find which shear values (→ which q) permit standing-wave
+   solutions consistent with the Compton frequency.  This is
+   the most direct "self-consistency" test.
 
-3. **Track 5: Wave propagation / phase coherence** — the
-   most complete test.  Propagate a scalar wave along the
-   geodesic and compute the accumulated phase error and
-   self-consistency.  This is where a "per-orbit cost" would
-   emerge from first principles rather than being assumed.
+3. **Track 6: Continuous δ sweep** — for selected q, sweep δ
+   continuously and check whether a phase-coherence optimum
+   coincides with the spin-½ value δ = L_θ/(2q).
 
-4. **Track 6: Continuous δ sweep** — for q = 137, sweep δ
-   continuously and check whether the energy minimum matches
-   the spin-½ value.
+4. **Geometric floor analysis** — determine the minimum q
+   allowed by the R8 constraints and whether q = 137 is
+   special in that context (e.g., lowest prime where R ≈ r_e).
 
 
 ## Scripts
@@ -258,3 +354,5 @@ the magnetic term or dynamical (wave) physics.
   — Track 2c: high-resolution scan (40 pts/orbit + 60-pt convergence check)
 - [`scripts/track2c_convergence.py`](scripts/track2c_convergence.py)
   — Track 2c: convergence study (20/40/80/120 pts/orbit + extrapolation)
+- [`scripts/track7_wave_superposition.py`](scripts/track7_wave_superposition.py)
+  — Track 7: wave superposition / sub-harmonic test (Q30 hypothesis)
