@@ -103,12 +103,13 @@ q = nℏ/(R_KK·c). Does the WvM a/R relationship reduce to this?
 *Source: implied by knot-zoo F2, F4*
 *Status: → R1*
 
-Q18. **Can α be derived from geometry?** On a curved compact
-surface, geodesic precession determines how many (1,2)-like
-circuits fit before the path closes.  That number is 1/(2α).
-If the precession rate depends on a/R, the geometry fixes α.
-*Source: toroid-geometry F6, R7 energy shortfall*
-*Status: → R8*
+Q18. **Can α be derived from geometry?** R8 Track 4 found that
+the shear δ = αR at r = 1/π, with q = 1/α.  This is a numerical
+coincidence (0.3% agreement) suggesting α emerges from the
+photon's EM self-interaction on the torus.  Remains to be proved
+analytically via a self-force calculation.
+*Source: toroid-geometry F6, R7 energy shortfall, R8 Track 4*
+*Status: partially answered by R8; analytical proof open*
 
 Q19. **Precession causes.** If the torus axis precesses, what
 drives it? Is it a natural consequence of the equations of motion?

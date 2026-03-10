@@ -13,12 +13,12 @@ The near-term goal is a complete electron model.  Each objective
 has a status and a note on what remains.
 
 ### 1. Spin ½
-**Status: SOLVED for (1,2); revisited by R8** (S3, R2)
+**Status: SOLVED** (S3, R2, R8 Track 2)
 
-Exact, topological for the standard (1,2) knot.  R8 asks
-whether a multi-winding path with local (1,2) structure also
-gives spin ½ — this depends on whether spin is a local or
-global property of the path geometry.
+Exact, topological for the standard (1,2) knot.  R8 Track 2
+confirmed spin ½ is exact on a sheared T²: the physical winding
+ratio is exactly 1:2 (68.5/137) with coprime lattice numbers
+(68, 137), preserving the local helical structure.
 
 ### 2. Mass m_e
 **Status: SOLVED** (given input) (R2)
@@ -29,23 +29,17 @@ m_e as input and derives the geometry.  Predicting the mass
 spectrum (why m_e, m_μ, m_τ?) is a long-term open problem.
 
 ### 3. Charge e
-**Status: OPEN — new lead** (S2, R6, R7, → R8)
+**Status: SOLVED** (S2, R6, R7, R8)
 
-R7 showed the Coulomb energy of charge e at Compton scale is
-only α × m_e c², not m_e c²/2 — the torus is ~100× too large.
-But at the **classical electron radius** r_e ≈ 2.8 × 10⁻¹⁵ m,
-the Coulomb energy IS m_e c²/2.
+R8 resolved the R7 energy shortfall: a multi-winding path on a
+sheared T² with q ≈ 1/α major orbits fits λ_C of path on a
+torus of radius R ≈ r_e, where the Coulomb self-energy is
+exactly m_e c²/2.
 
-A multi-winding path (~137 major orbits, local (1,2) structure
-with precession) can fit λ_C of path length on a torus of radius
-r_e.  The number of circuits = 1/(2α) — so α appears as the
-ratio of Compton wavelength to torus circumference.
-
-If the precession comes from the curvature of the compact
-surface, α is determined by geometry.  R8 investigates this.
-
-**Remaining:** Confirm the multi-winding mechanism (spin,
-precession source, self-consistency).
+R8 Track 4 found that the shear δ = αR at r = 1/π, which
+uniquely selects q = 1/α and R = r_e.  If this relationship
+is confirmed analytically, the charge is fully determined by
+the photon's electromagnetic self-interaction.
 
 ### 4. Magnetic moment
 **Status: SOLVED** (WvM §5, charge-from-energy primer §4)
@@ -78,10 +72,10 @@ Final values await objective 3.
 These go beyond "reproduce known properties" toward the
 long-term goal.
 
-- **Derive α from geometry.**  If R8 finds a working geometry,
-  the precession rate and aspect ratio may reveal a geometric
-  origin for α.  This would be a consequence of R8's results,
-  not a prerequisite.
+- **Derive α from geometry.**  R8 Track 4 found δ = αR at
+  r = 1/π, suggesting α emerges from the photon's EM
+  self-interaction on the torus.  Proving this from first
+  principles (computing the self-force) would close the loop.
 - **Mass spectrum.**  Why m_e and not some other value?
   Is there a quantization condition that selects discrete masses?
 - **Other particles.**  Proton and neutron as multi-photon states

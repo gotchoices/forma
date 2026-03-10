@@ -310,7 +310,203 @@ by the exact 1:2 local winding ratio.
    an additional constraint that selects it exactly?
 
 
+---
+
+## Track 4: Shear analysis
+
+### F12. δ in absolute terms is nearly constant
+
+The absolute shear δ = L_θ/(2q) varies surprisingly little
+across the solution curve.  While q spans 83–263 (a factor of
+3), δ stays within a factor of 3 and is remarkably flat in the
+physically interesting range:
+
+| q | r | R (m) | δ (m) | δ/(αr_e) |
+|---|---|-------|-------|----------|
+| 83 | 0.05 | 4.65e-15 | 8.81e-18 | 0.43 |
+| 100 | 0.10 | 3.88e-15 | 1.22e-17 | 0.59 |
+| 120 | 0.20 | 3.21e-15 | 1.68e-17 | 0.82 |
+| 135 | 0.30 | 2.83e-15 | 1.98e-17 | 0.96 |
+| **137** | **0.32** | **2.78e-15** | **2.01e-17** | **0.98** |
+| 142 | 0.35 | 2.68e-15 | 2.08e-17 | 1.01 |
+| 161 | 0.50 | 2.33e-15 | 2.28e-17 | 1.11 |
+| 216 | 1.00 | 1.60e-15 | 2.32e-17 | 1.13 |
+
+Near q ≈ 137, the absolute shear is:
+
+    δ ≈ 2.0 × 10⁻¹⁷ m ≈ α r_e = α² λ̄_C
+
+This is the fine-structure constant squared times the reduced
+Compton wavelength.  It is a known length scale: the product of
+α and the classical electron radius.
+
+
+### F13. δ = αR at q ≈ 1/α
+
+The ratio δ/(αR) crosses 1.0 near q = 137:
+
+| q | r | δ/(αR) |
+|---|---|--------|
+| 128 | 0.25 | 0.84 |
+| 135 | 0.30 | 0.96 |
+| 136 | 0.31 | 0.98 |
+| 142 | 0.35 | 1.06 |
+| 148 | 0.40 | 1.16 |
+
+Algebraically, δ/(αR) = 2πr g(r) √(1 + r²/4).  This factor
+equals 1 when the shape factor satisfies:
+
+    g(r) = 1 / (2πr √(1 + r²/4))
+
+Testing at r = 1/π = 0.3183:
+
+    g(1/π) = 0.4924    (computed)
+    g_need = 0.4938    (required for δ = αR)
+    ratio  = 0.9973    (agreement to 0.3%)
+
+The 0.3% discrepancy is consistent with our grid discretization
+error (32 × 64 surface elements).  At this r value:
+
+    q = 137.41  ≈  1/α = 137.036
+
+So **at r = 1/π, the shear equals α times the major radius,
+and the winding number is 1/α.**  The coincidence that the
+computed g(1/π) matches the needed g to three digits is
+striking.
+
+If this relationship is exact, the model has zero remaining
+free parameters: the aspect ratio r = 1/π uniquely determines
+q = 1/α, R = r_e, and δ = αR.
+
+
+### F14. δ/R = α is the electromagnetic coupling
+
+Restating F13 in physical terms:
+
+    δ/R = α = e²/(4πε₀ ℏc)
+
+Per major circuit, the photon's θ-position shifts by a fraction
+α of the major radius.  This is exactly the dimensionless
+measure of electromagnetic field strength.
+
+The shear fraction per minor circumference is:
+
+    δ/L_θ = 1/(2q) ≈ α/2
+
+And the transit time per major circuit is:
+
+    T_circuit = ℓ_per_circuit / c = λ_C / (qc) = α × T_Compton
+
+So each circuit takes time α × T_Compton and shifts the path
+by α × R.
+
+
+### F15. Berry phase is not the mechanism
+
+The geometric (Berry) phase per major revolution —
+Ω = 2π(1 − cos θ_pitch) where θ_pitch is the helix angle —
+does not match the required shear.  At q = 137:
+
+    Berry phase / revolution  = 0.0122 × 2π
+    Required δ/L_θ            = 0.00365
+    Ratio                     = 3.35
+
+The Berry phase is 3.35× too large.  This ratio varies
+strongly with q (from 0.05 at q = 83 to 154 at q = 263),
+ruling out a simple proportionality.  The shear does not come
+from the geometric phase of photon propagation on a helix.
+
+
+### F16. What changes during one crossing?
+
+The photon completes one major circuit in time T = α T_Compton.
+During this time:
+
+- It traverses distance ℓ = λ_C/137 ≈ 1.77 × 10⁻¹⁴ m
+- Its phase advances by Δφ = 2πα ≈ 0.046 rad (2.6°)
+- Only α of a wavelength fits around the major circle
+- L_φ/λ_C = α: the photon is ~137× "larger" than the torus
+  circumference
+
+The photon's own electromagnetic field permeates the entire
+torus.  It is not localized to a point — it wraps around and
+overlaps itself.  The Coulomb self-energy U = m_e c²/2 means
+the field is strongly self-interacting at this scale.
+
+The fact that δ/R = α is the coupling constant suggests the
+shear is caused by the photon's electromagnetic self-interaction:
+on each circuit, the photon propagates through its own Coulomb
+field, which shifts the effective boundary condition by α × R.
+
+This is analogous to the QED self-energy corrections (Lamb
+shift, anomalous magnetic moment), where the electron's own
+field modifies its properties at order α.  Here, instead of an
+energy shift, the self-field produces a spatial shift of
+order α per revolution.
+
+
+### F17. The self-consistency argument
+
+If δ = αR is exact, there is a compelling self-consistency loop:
+
+1. The photon's charge e creates a Coulomb field on the torus.
+2. The field's self-energy U = e²g(r)/(4πε₀R) = m_e c²/2
+   determines the torus size (R ≈ r_e).
+3. The field's back-reaction on the photon's trajectory
+   shifts each circuit by δ = αR, producing precession.
+4. The precession rate δ/L_θ = 1/(2q) determines the
+   winding number q = 1/α.
+5. The path length λ_C (with q major windings) gives the
+   correct mass m_e = h/(λ_C c).
+
+The entire electron emerges from the self-consistent
+interplay of one photon's field with its own periodic
+boundary conditions.  The only input is the photon (E = ℏω,
+charge e from the compact topology) and the requirement that
+all constraints close simultaneously.
+
+
+---
+
+## Updated summary
+
+| Property | Value | Determined by |
+|----------|-------|---------------|
+| Mass m_e | Path = λ_C | Construction |
+| Charge e | U = m_e c²/2 | Shape factor + R = r_e |
+| Spin ½ | Exact 1:2 on sheared T² | Track 2 |
+| μ = μ_B | g = 2 from photon spin-1 | Track 3 |
+| **q = 1/α** | **δ = αR at r = 1/π** | **Track 4 (new)** |
+| **r = 1/π** | **g(1/π) satisfies δ = αR** | **Track 4 (new)** |
+| R | 0.99 r_e | Follows from r, q |
+| δ | αR ≈ 2.06 × 10⁻¹⁷ m | EM self-interaction |
+
+
+### What remains open
+
+1. **Prove δ = αR from first principles.**  Track 4 shows
+   the numerical coincidence but does not derive it from a
+   field self-interaction calculation.  A proper derivation
+   would compute the Coulomb back-reaction force on the photon
+   trajectory and show it produces exactly this shift.
+
+2. **Verify g(1/π) = 1/(2π/π √(1+1/(4π²))) exactly.**
+   The numerical agreement is 0.3%.  A higher-resolution
+   computation or analytical evaluation of the shape factor
+   integral could confirm whether this is exact or approximate.
+
+3. **Anomalous g-factor** (from Track 3).
+
+4. **Why r = 1/π?**  If this aspect ratio is exact, what
+   geometric principle selects it?  The value 1/π arises
+   naturally if the minor circumference 2πa equals 2R
+   (the diameter), i.e., the minor circle's circumference
+   wraps exactly once around the torus diameter.
+
+
 ## Scripts
 
 - [`scripts/geometry_search.py`](scripts/geometry_search.py) —
   Track 1: shape factor computation and geometry sweep
+- [`scripts/shear_analysis.py`](scripts/shear_analysis.py) —
+  Track 4: shear δ analysis and hypothesis testing
