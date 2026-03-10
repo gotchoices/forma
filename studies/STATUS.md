@@ -72,7 +72,7 @@ Final values await objective 3.
 These go beyond "reproduce known properties" toward the
 long-term goal.
 
-- **Derive α from geometry.** (Q18, Q29)
+- **Derive α from geometry.** (Q18, Q29, Q30)
   R8 Track 4 found δ ≈ αR (within ~6%).  The shear selects
   q and hence α.  But what selects the shear?
 
@@ -94,12 +94,22 @@ long-term goal.
     next calculation** — solve for the photon field modes on
     the compact T² and check which shear values permit
     self-consistent solutions.
-  - *Variational principle:* write E_total(q) — the total energy
-    of the electron configuration as a function of winding
-    number — and minimize.  The ground state selects q and
-    hence α.  Same logic as moduli stabilization in string
-    theory.  Could start by computing E_total(q) across the
-    existing R8 solution family.  (Q29)
+  - *Variational principle / least-expensive path:* write
+    E_total(q) — the total energy of the electron as a function
+    of winding number — and minimize.  The ground state selects
+    q and hence α.  Same logic as moduli stabilization in string
+    theory.  The photon must find the "cheapest" closed path
+    that maintains phase coherence at the Compton frequency.
+    Could start by computing E_total(q) across the existing R8
+    solution family.  (Q29)
+  - *Prime q / harmonic avoidance:* 137 is prime.  For composite
+    q, every divisor creates a sub-harmonic mode that can drain
+    energy from the fundamental Compton resonance.  For prime q,
+    no such leakage channels exist — all energy stays in the
+    fundamental.  This constrains q to be prime; combined with
+    the Coulomb energy range and energy minimization, it may
+    uniquely select q = 137.  Testable by wave interference
+    computation.  (Q30)
 
   **Context on running of α:**
   α runs in QED (1/137 → ~1/128 at Z-mass), but q must be an
@@ -168,8 +178,8 @@ modes on a sheared T² would determine:
 - Whether α is predicted by EM boundary conditions alone
 - Whether multiple modes exist with different σ (→ quarks)
 
-### Variational principle for α
-**Question:** Q29  **Type:** compute
+### Variational principle for α ★ HIGH PRIORITY
+**Question:** Q29, Q30  **Type:** compute
 **Advances:** deeper problem (derive α)
 
 Nature determines everything else by extremizing an action or
@@ -189,6 +199,42 @@ determines α.  Same logic as string-theory moduli
 stabilization: the shear is a modulus of the T², and E(δ) is
 its effective potential.  **Could start by computing E_total(q)
 across the existing R8 data to see if a minimum exists.**
+
+The "least-expensive path" framing: the photon must find the
+closed path on the sheared T² that minimizes phase mismatch
+per circuit, maximizes field uniformity, and concentrates all
+energy in the fundamental Compton mode.  This is equivalent
+to minimizing E_total(q) but formulated from the photon's
+perspective.
+
+### Prime resonance test
+**Question:** Q30  **Type:** compute
+**Advances:** deeper problem (derive α)
+
+137 is prime — and this may be functionally required.  For
+composite q, every divisor d creates a sub-period: after q/d
+orbits the field pattern has partial closure, a sub-harmonic
+mode that can siphon energy from the fundamental Compton-scale
+resonance.  For prime q, the only divisors are {1, q}, so no
+intermediate sub-harmonics exist.
+
+**Proposed computation:** overlay q phase-shifted copies of
+the wave on the torus — one per major orbit, each shifted by
+2π/q in phase.  For prime q, the sub-harmonics should
+destructively interfere (all energy in the fundamental).  For
+composite q, constructive interference at sub-harmonic periods
+should appear — visible energy leakage channels.
+
+This is a direct, computable discriminant.  If confirmed, it
+constrains q to be prime.  Combined with Coulomb energy
+(q ~ 100–287) and variational minimization (Q29), the
+three-part selection may converge to q = 137 uniquely.
+
+Primes in the Coulomb range include: 101, 103, 107, 109, 113,
+127, 131, **137**, 139, 149, 151, 157, 163, 167, 173, 179,
+181, 191, 193, 197, 199, 211, 223, 227, 229, 233, 239, 241,
+251, 257, 263, 269, 271, 277, 281, 283.  If E_total has a
+minimum among these, that is the predicted α.
 
 
 ### Flat space → curved appearance

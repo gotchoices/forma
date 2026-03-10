@@ -122,7 +122,8 @@ Active leads:
    Solving Maxwell's equations on the sheared T² might show
    that self-consistent EM solutions exist only for specific
    shear values, determining α from boundary conditions alone.
-2. **Feasibility function for α:** see Q29.
+2. **Variational principle / least-expensive path:** see Q29.
+3. **Prime q / harmonic avoidance:** see Q30.
 
 Key insight: **the shear MUST exist** (independent of its
 value).  On an unsheared T², the geodesic slope IS the spin
@@ -272,9 +273,71 @@ the T², and E(δ) is its effective potential.
 This approach is complementary to the EM self-consistency
 approach (Q18): the wave equation gives the allowed modes, and
 the variational principle selects which mode nature occupies.
+
+**"Least-expensive path" framing:** A photon with fixed
+energy, velocity, and Compton frequency is trapped in a
+periodic geometry.  It must return to its starting point
+in phase — constructive self-interference is required for
+a stable resonance.  The "cheapest" path is the one that
+minimizes phase mismatch per circuit, maximizes field
+uniformity (lowest multipole moments), and concentrates
+all energy in the fundamental Compton mode.  Solving for
+this on the sheared T² should yield the shear that selects
+q.  The primality constraint (Q30) acts as a filter: only
+prime q avoids sub-harmonic leakage.
 *Source: user question*
 *Status: open — could start by computing E_total(q) across the
 existing R8 solution family to see if a minimum exists*
+
+Q30. **Prime q and harmonic avoidance.**  137 is prime.  Is
+that functional — not coincidental?
+
+On the torus, the photon completes q major orbits per Compton
+cycle.  Each orbit is a sub-cycle whose rotating E-field
+contributes to the total field.  If q is composite
+(e.g. q = 136 = 2³ × 17), then every divisor d of q creates
+a sub-period: after q/d orbits the field pattern has partial
+closure, a sub-harmonic mode that can siphon energy from the
+fundamental (full Compton-cycle) resonance.
+
+| q   | Factorization | # divisors | Sub-resonances |
+|-----|---------------|------------|----------------|
+| 131 | prime         | 2          | 0              |
+| 135 | 3³ × 5       | 8          | 6              |
+| 136 | 2³ × 17      | 8          | 6              |
+| 137 | prime         | 2          | 0              |
+| 139 | prime         | 2          | 0              |
+| 140 | 2² × 5 × 7   | 12         | 10             |
+
+For prime q, the only divisors are {1, q}.  No intermediate
+sub-harmonics exist — all field energy is forced into the
+fundamental mode.
+
+This is a standard engineering principle: prime numbers are
+used in turbine blade counts, gear ratios, and antenna
+arrays specifically to prevent resonant coupling between
+sub-systems.
+
+**Three-part selection of q:**
+1. Coulomb self-energy → q in range ~100–287
+2. Primality → no energy leakage to sub-harmonics
+3. Energy minimization (Q29) → selects which prime
+
+**Proposed computation:** overlay q phase-shifted copies of
+the wave — one per major orbit, each shifted by 2π/q.
+For prime q, the superposition should destructively
+interfere everywhere except at the fundamental period
+(the full Compton cycle).  For composite q, constructive
+interference at sub-harmonic periods should be visible —
+representing energy leakage channels.  This is a direct,
+computable discriminant.
+
+Note: primality also guarantees gcd(p, q) = 1 for ANY
+choice of minor winding p — the single-path topology is
+automatic and maximally robust.  For composite q, only
+specific p values avoid splitting into multiple loops.
+*Source: user question*
+*Status: open — concrete computation proposed*
 
 ---
 

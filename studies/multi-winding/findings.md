@@ -306,8 +306,12 @@ by the exact 1:2 local winding ratio.
    to the multi-winding case is a future investigation.
 
 4. **Does q = 137 have special status?**  It gives R ≈ r_e,
-   but so do nearby values (within a few percent).  Is there
-   an additional constraint that selects it exactly?
+   but so do nearby values (within a few percent).  Candidate
+   additional constraints: (a) 137 is prime — no sub-harmonic
+   energy leakage (Q30), (b) variational energy minimization
+   among primes in the range (Q29).  The discrepancy between
+   1/137 and measured 1/137.036 may be accounted for by
+   higher-order shape corrections (Track 5).
 
 
 ---
@@ -508,11 +512,22 @@ it cannot be claimed as an exact, zero-free-parameter result.
      the sheared T² might reveal that self-consistent EM
      solutions exist only for specific shear values.  This
      would determine α from EM boundary conditions alone.
-   - *Feasibility/optimization:* α is finely tuned for stable
-     atoms and chemistry.  A function scoring how many physical
-     constraints (conservation laws, quantization, stability)
-     are simultaneously satisfiable might have a unique
-     extremum at α ≈ 1/137.  See Q29.
+   - *Variational principle / least-expensive path:* the
+     photon must find the closed path on the sheared T² that
+     minimizes phase mismatch, maximizes field uniformity,
+     and concentrates all energy in the fundamental Compton
+     mode.  Minimize E_total(q) across the R8 solution
+     family.  See Q29.
+   - *Prime q / harmonic avoidance:* 137 is prime.  For
+     composite q, every divisor creates a sub-harmonic mode
+     that can drain energy from the fundamental resonance.
+     For prime q, no leakage channels exist — all energy
+     stays in the fundamental.  This constrains q to be
+     prime.  Combined with Coulomb energy (range ~100–287)
+     and variational minimization, the three-part selection
+     may uniquely determine q = 137.  Testable by
+     overlaying q shifted waves and checking interference
+     at sub-harmonic periods.  See Q30.
 
 2. **Anomalous magnetic moment.**  Track 3 established the
    leading-order result μ = μ_B (g = 2) from the photon's
