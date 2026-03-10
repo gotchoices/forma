@@ -1,8 +1,8 @@
 # Charge from Torus Geometry  *(draft)*
 
-Compute the torus dimensions that produce q = e, using exact
-electrostatics with the field profile determined by the
-synchronized circular polarization mechanism.
+Find the torus aspect ratio that produces q = e by computing
+the exact 3D field of a circularly polarized photon on a (1,2)
+geodesic.
 
 ## Physical picture
 
@@ -10,121 +10,118 @@ The photon is circularly polarized on the (1,2) geodesic.  Its
 polarization rotation is synchronized with the geometric winding
 around the minor circle: as the surface normal rotates by 2π in
 3D, the circular polarization rotates by 2π in the opposite
-sense.  These cancel, producing a field that is always normal
-to the torus surface with constant magnitude E₀.
+sense.  These cancel, producing an E field that is always normal
+to the torus surface with constant magnitude E₀ at the photon's
+location.
 
 (See [`ref/charge-from-energy.md`](../../ref/charge-from-energy.md)
 §2 for the derivation.)
 
-This is equivalent to a **uniform surface charge distribution**
-on the torus.  The charge is real (nonzero Gauss's law flux),
-not an artifact of an energy-matching approximation.
+The photon travels along the (1,2) geodesic — a 1D curve on the
+torus surface.  It is NOT spread over the entire surface.  The
+torus surface itself is just a visualization of the T² topology;
+it has no physical existence.  Only the path carries the field.
+
+## Strategy
+
+We use q = e as an input and find the geometry that is
+consistent with it.  This is "backing in" — we set the charge
+and solve for the aspect ratio r = a/R.
+
+Once we know r, we examine whether it has a clean geometric
+form (multiples of π, etc.) that might suggest a deeper
+principle.  If so, a future study could attempt to run the
+logic in reverse: derive r from that principle and predict e.
 
 ## What this study computes
 
-Given a torus with major radius R and minor radius a
-(aspect ratio r = a/R):
+Given a torus with major radius R, minor radius a, and
+aspect ratio r = a/R:
 
-1. **Self-capacitance C(R, a).**  Place uniform charge Q on the
-   torus surface.  Solve for the potential in 3D.  Compute
-   C = Q / V_surface.  This is a purely geometric quantity
-   (times ε₀) — it doesn't depend on Q.
+1. **Path constraint (mass).**  The geodesic path length equals
+   one Compton wavelength:
 
-2. **Charge as a function of geometry.**  The E-field energy of
-   charge q on a surface with self-capacitance C is U_E = q²/(2C).
-   Setting U_E = m_e c²/2:
+       ℓ = 2π√(4R² + a²) = λ_C
 
-       q(r) = √(m_e c² × C(R(r), a(r)))
+   This fixes R and a as functions of r:
 
-   where R(r) and a(r) come from the path constraint
-   2π√(4R² + a²) = λ_C.
+       R(r) = λ_C / (2π√(4 + r²))
+       a(r) = r × R(r)
 
-3. **Aspect ratio for q = e.**  Sweep r to find the value where
-   q(r) = e.  This is the self-consistent geometry — the electron.
+2. **Line source along the geodesic.**  Distribute total charge
+   Q = e uniformly along the (1,2) torus knot path.  At each
+   point on the path, the E field contribution points along the
+   local surface normal n̂ (from synchronized CP).
 
-## Why this works
+3. **3D field computation.**  Sum the E field contributions from
+   all path segments to get E(P) at any point P in 3D space.
+   This is a direct integration — no surface charge, no BEM,
+   no assumed volumes.
 
-The synchronized CP mechanism eliminates the arbitrary choices
-in previous approaches:
+4. **Energy check.**  Compute the total E-field energy:
 
-| Method | Arbitrary choices | Field profile |
-|--------|-------------------|---------------|
-| WvM    | Volume V, matching radius | Uniform in sphere |
-| S2/R6  | Effective volume formula   | Uniform in torus volume |
-| This   | None                       | Uniform on surface (from synchronized CP) |
+       U_E = ½ε₀ ∫ E² dV
 
-The surface field profile is physically determined by the
-circular polarization mechanism.  The self-capacitance captures
-exactly how that surface field extends into 3D and stores energy.
-No assumed volumes, no matching radii, no δ.
+   The correct geometry satisfies U_E = m_e c²/2.
 
-## Path constraint
-
-The photon's geodesic path length equals one Compton wavelength:
-
-    ℓ = 2π√(4R² + a²) = λ_C
-
-This fixes R as a function of r:
-
-    R(r) = λ_C / (2π√(4 + r²))
-    a(r) = r × R(r)
-
-## Self-capacitance of a torus
-
-For a torus with uniform surface charge, the self-capacitance
-depends on the aspect ratio r = a/R:
-
-- **Ring torus (r < 1):** Analytic solutions exist using
-  toroidal coordinates (η, θ, φ) and half-integer Legendre
-  functions Q_{n-½}.  Well-studied problem.
-
-- **Spindle torus (r > 1):** The 3D embedding self-intersects.
-  The analytic toroidal-coordinate approach breaks down.
-  Numerical methods (BEM) are needed.
-
-Previous studies found r ≈ 4–7, so we expect to be deep in the
-spindle regime.  The BEM approach handles this naturally.
-
-## Implementation
-
-**Primary: Boundary Element Method (BEM)**
-
-1. Discretize the torus surface into N panels
-2. Place a point charge at each panel center
-3. Compute the N×N influence matrix (potential at panel i due
-   to unit charge at panel j)
-4. Solve for the charge distribution that produces uniform
-   potential on the surface → conductor capacitance
-5. Also compute capacitance for uniform charge distribution
-   (our physical case — may differ from conductor result)
-6. Sweep r from 0.1 to 10+, computing C(r) at each value
-7. Combine with path constraint to get q(r)
-8. Find r where q = e
-
-**Cross-check: Analytic (r < 1 only)**
-
-For a conducting torus with a < R, the self-capacitance can be
-expressed as a series involving Q_{n-½}(cosh η₀).  Compare
-with BEM results in the ring-torus regime.
-
-## Key questions
-
-1. **What aspect ratio gives q = e?**  This is the main result.
-   Previous approximations gave r ≈ 6.60 (S2) or r ≈ 4.29 (R6).
-   The exact electrostatics should give a definitive value.
-
-2. **Is r a clean geometric expression?**  If r involves simple
-   factors of π, that would be a clue toward deriving α from
+5. **Sweep r.**  Repeat steps 1–4 for a range of aspect ratios.
+   Find r where U_E(r) = m_e c²/2.  This is the electron's
    geometry.
 
-3. **How does the uniform-charge C compare to the conductor C?**
-   The synchronized CP gives uniform surface charge, not the
-   equilibrium (conductor) distribution.  If these give very
-   different capacitances, the charge mechanism matters.  If
-   similar, the result is robust.
+## Why this is better than previous approaches
 
-4. **How sensitive is q to r?**  The slope dq/dr at the solution
-   tells us how tightly the geometry is constrained.
+| Method | Source model | Arbitrary choices |
+|--------|-------------|-------------------|
+| WvM    | Uniform field in sphere | Volume, matching radius |
+| S2/R6  | Uniform field in torus volume | Effective volume formula |
+| This   | Line source along geodesic | None |
+
+The field profile is physically determined: a circularly
+polarized photon on a specific path.  The 3D field follows from
+direct integration.  No assumed distributions, no matching.
+
+## Energy integral and the cutoff
+
+For a line source, E ~ 1/d near the path (d = distance to the
+nearest point on the geodesic).  The energy density E² ~ 1/d²,
+and the volume element in cylindrical coordinates around the
+path goes as d·dd·ds.  The energy integral therefore has a
+logarithmic divergence:
+
+    U_E ~ (Q²/ℓ) × ln(D/d_min)
+
+where D is the outer scale (~R) and d_min is the inner cutoff.
+
+The divergent near-field energy is geometry-independent — it
+depends only on d_min, not on R or a.  The geometry-dependent
+part (the interaction between different segments of the path)
+is finite.  Therefore:
+
+- The value of r where U_E = m_e c²/2 is insensitive to d_min
+  (changing d_min shifts U_E by a constant for all r).
+- Numerically, using a finite grid spacing as d_min is adequate.
+
+## Looking ahead: deriving e
+
+This study uses q = e as input.  A more ambitious goal would
+be to predict q from the geometry alone (without feeding in e).
+The forward calculation is:
+
+1. Fix r → geometry from path constraint
+2. Place a line source with unknown E₀ along the geodesic
+3. Compute total field energy: U(E₀, r) = E₀² × f(r)
+4. Set U = m_e c²/2 → determines E₀(r)
+5. Compute total flux → q(r)
+
+This gives q as a function of r.  But nothing in the current
+model selects a specific r — that would require a third
+constraint (stability, quantization, gravitational
+self-consistency) equivalent to deriving α from first
+principles.  This is a long-term open problem.
+
+If the aspect ratio from this study turns out to be a clean
+geometric expression, that would be a strong hint toward
+identifying the missing third constraint.
 
 ## Open question: mode structure
 
@@ -138,7 +135,7 @@ This study proceeds under the assumption that the synchronized
 state exists (as WvM describes).  The mechanism might involve
 waveguide-like behavior (phase fronts determined by the minor-
 circle geometry while energy propagates along the geodesic), or
-it might require the compact space to have slight curvature.
+the compact space might have curvature from the embedded energy.
 Resolving this is a separate problem.
 
 ## References

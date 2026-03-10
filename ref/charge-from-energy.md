@@ -322,8 +322,7 @@ The rigorous alternative is Gauss's law:
 over any closed surface.  No arbitrary volume, no matching
 radius.
 
-### The synchronized circular polarization resolves the field
-profile
+### The synchronized circular polarization resolves the field profile
 
 If the circularly polarized photon's rotation is synchronized
 with the geometric winding (§2), the field on the torus surface
