@@ -89,6 +89,10 @@ ratio).  The minimum is broad — the ~0.1% difference between
 q = 137 and q = 139 is within numerical uncertainty at 20
 points per orbit.
 
+The Coulomb energy alone selects the NEIGHBORHOOD of q ≈ 137
+but does not pin the exact value.  Discriminating 137 from
+139 (or 135, 141) requires additional physics.
+
 
 ### F5. Physical interpretation
 
@@ -114,7 +118,50 @@ This is R ≈ r_e (the classical electron radius), the same
 coincidence noted in R8.
 
 
-### F6. Prime/composite distinction in Coulomb energy
+### F6. The 137/139 discrimination problem
+
+All four electron properties (mass, charge, spin, g-factor)
+are equally satisfied at q = 137 and q = 139.  Neither is
+"more electron-like."  The Coulomb excess is nearly identical.
+So what could discriminate them?
+
+| Property           | q = 137        | q = 139        |
+|--------------------|----------------|----------------|
+| R / r_e            | 0.989          | 0.973          |
+| r = a/R            | 0.308          | 0.323          |
+| Orbits to close    | 137            | 139            |
+| Shear δ/L_θ        | 1/274          | 1/278          |
+| Mass               | exact (= m_e)  | exact (= m_e)  |
+| Charge             | exact (= e)    | exact (= e)    |
+| Spin               | exact ½        | exact ½         |
+| Coulomb excess     | +12.56%        | +12.50%        |
+
+Candidate discriminants (none yet confirmed):
+
+1. **R/r_e proximity.**  At q = 137, R = 0.989 r_e — nearly
+   exact.  At q = 139, R = 0.973 r_e — 2.7% off.  r_e is the
+   distance where Coulomb potential energy equals the rest
+   energy; being AT r_e might have physical significance, but
+   we lack a principle that demands R = r_e exactly.
+
+2. **Per-orbit cost.**  The photon must maintain phase
+   coherence over q orbits.  Fewer orbits = fewer coherence
+   constraints = lower dynamical cost.  137 < 139.  But no
+   known law directly penalizes winding number, and the cost
+   per orbit has not been quantified.
+
+3. **Magnetic self-energy.**  The current geometry differs
+   between the two tori (different R, a).  The magnetic
+   contribution to total energy has not been computed and
+   could break the degeneracy.
+
+4. **Wave propagation.**  A proper EM wave calculation on the
+   sheared T² would capture both phase coherence and field
+   self-consistency.  This is the most complete test but also
+   the most difficult.
+
+
+### F7. Prime/composite distinction in Coulomb energy
 
 The prime/composite distinction is NOT visible in the Coulomb
 self-energy.  At the same q, primes and composites have
@@ -140,38 +187,49 @@ static Coulomb energy — likely involving the wave dynamics
 | Finding | Result |
 |---------|--------|
 | Sub-periodic closure | Impossible on sheared T² for any q |
-| Geodesic Coulomb excess | Minimum at q ≈ 137–139 |
+| Geodesic Coulomb excess | Minimum at q ≈ 135–141 |
+| 137 vs 139 | Degenerate in Coulomb; 4 candidate discriminants identified |
 | Prime vs composite (Coulomb) | No distinction |
 | Prime vs composite (path topology) | No distinction |
 
-**The big result:** the "least expensive path" hypothesis is
-confirmed for Coulomb energy — the geodesic charge distribution
-selects q ≈ 137 as the minimum-energy winding number.  This is
-the first computation that selects a specific q from the R8
-solution family.
+**The big result:** the geodesic Coulomb self-energy selects
+the neighborhood q ≈ 135–141 as the minimum-energy winding
+number.  This is the first computation that picks a specific
+range from the R8 solution family, confirming the "least
+expensive path" hypothesis at the Coulomb level.
 
-**What it doesn't explain:** why 137 specifically rather than
-139 or 135 (all within the flat minimum), and whether primality
-plays any role.  These require Track 3 (field overlap / mode
-coupling) or higher-resolution computation.
+**What it doesn't explain:** why 137 specifically (vs 139 or
+135 — all within the flat minimum), whether primality plays
+any role, and what additional physics pins the exact q.
 
 
 ## Next steps
 
-1. **Higher resolution** — rerun Track 2 with more points per
-   orbit (40, 80) to sharpen the minimum and resolve the
-   q = 137 vs 139 ambiguity.
+1. **Track 2c: Higher resolution** — rerun the Coulomb scan
+   with 40–80 points per orbit, dense sampling near the
+   minimum (every odd q from 129–149).  Determine whether
+   the minimum genuinely favors 139 over 137 or whether the
+   current 0.06% difference is numerical noise.
 
-2. **Track 3: Multipole decomposition** — decompose the
+2. **Track 3: Magnetic self-energy** — compute the
+   Biot-Savart magnetic self-energy of the geodesic current.
+   This is the second physical energy term; the current
+   geometry differs between q = 137 and 139, so it may break
+   the Coulomb degeneracy.  Combined E_Coulomb + E_magnetic
+   gives the total static field energy.
+
+3. **Track 4: Multipole decomposition** — decompose the
    geodesic charge distribution into azimuthal harmonics.
-   Even if the total energy doesn't distinguish prime from
-   composite, the multipole STRUCTURE might.
+   Even if total energy doesn't distinguish prime from
+   composite, the spatial structure might.
 
-3. **Magnetic energy** — add the current-loop magnetic
-   self-energy to the total.  The magnetic contribution may
-   shift the minimum or break the prime/composite degeneracy.
+4. **Track 5: Wave propagation / phase coherence** — the
+   most complete test.  Propagate a scalar wave along the
+   geodesic and compute the accumulated phase error and
+   self-consistency.  This is where a "per-orbit cost" would
+   emerge from first principles rather than being assumed.
 
-4. **Track 4: Continuous δ sweep** — for q = 137, sweep δ
+5. **Track 6: Continuous δ sweep** — for q = 137, sweep δ
    continuously and check whether the energy minimum matches
    the spin-½ value.
 
