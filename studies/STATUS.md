@@ -13,10 +13,12 @@ The near-term goal is a complete electron model.  Each objective
 has a status and a note on what remains.
 
 ### 1. Spin ½
-**Status: SOLVED** (S3, R2)
+**Status: SOLVED for (1,2); revisited by R8** (S3, R2)
 
-Exact, topological.  The (1,2) winding number gives L = ℏ/2
-regardless of geometry.  Only (1,2) produces net charge.
+Exact, topological for the standard (1,2) knot.  R8 asks
+whether a multi-winding path with local (1,2) structure also
+gives spin ½ — this depends on whether spin is a local or
+global property of the path geometry.
 
 ### 2. Mass m_e
 **Status: SOLVED** (given input) (R2)
@@ -27,21 +29,23 @@ m_e as input and derives the geometry.  Predicting the mass
 spectrum (why m_e, m_μ, m_τ?) is a long-term open problem.
 
 ### 3. Charge e
-**Status: OPEN** (S2, R6, R7)
+**Status: OPEN — new lead** (S2, R6, R7, → R8)
 
-The WvM energy-balance approach (equating all E-field energy
-with Coulomb field energy) was shown in R7 to overestimate by
-~1/α.  The Coulomb field energy of charge e at Compton scale
-is α × m_e c², not m_e c²/2.  The "magic ratios" from S2
-(r ≈ 6.60) and R6 (r ≈ 4.29) were artifacts of this assumption.
+R7 showed the Coulomb energy of charge e at Compton scale is
+only α × m_e c², not m_e c²/2 — the torus is ~100× too large.
+But at the **classical electron radius** r_e ≈ 2.8 × 10⁻¹⁵ m,
+the Coulomb energy IS m_e c²/2.
 
-The mechanism that produces the observed charge e from a photon
-on T² is not yet established.  Candidates:
-- Near-field/far-field coupling (α fraction of energy leaks out)
-- Topological charge (KK compact momentum / winding number)
-- A mechanism we haven't identified yet
+A multi-winding path (~137 major orbits, local (1,2) structure
+with precession) can fit λ_C of path length on a torus of radius
+r_e.  The number of circuits = 1/(2α) — so α appears as the
+ratio of Compton wavelength to torus circumference.
 
-**Remaining:** Identify the correct charge mechanism.
+If the precession comes from the curvature of the compact
+surface, α is determined by geometry.  R8 investigates this.
+
+**Remaining:** Confirm the multi-winding mechanism (spin,
+precession source, self-consistency).
 
 ### 4. Magnetic moment
 **Status: SOLVED** (WvM §5, charge-from-energy primer §4)
@@ -74,9 +78,10 @@ Final values await objective 3.
 These go beyond "reproduce known properties" toward the
 long-term goal.
 
-- **Derive α from geometry.**  Can a/R be derived from an
-  independent physical argument rather than setting q = e?
-  Would amount to predicting charge from pure geometry.
+- **Derive α from geometry.**  If R8 finds a working geometry,
+  the precession rate and aspect ratio may reveal a geometric
+  origin for α.  This would be a consequence of R8's results,
+  not a prerequisite.
 - **Mass spectrum.**  Why m_e and not some other value?
   Is there a quantization condition that selects discrete masses?
 - **Other particles.**  Proton and neutron as multi-photon states
@@ -96,7 +101,17 @@ long-term goal.
 
 ## Active
 
-*(nothing active)*
+### R8. Multi-winding electron
+**Study:** [`multi-winding/`](multi-winding/)
+**Question:** Q18  **Type:** compute  **Depends on:** R7
+**Advances:** objectives 1, 3 (spin, charge)
+
+Find the torus geometry (R, a, winding number q) that produces
+the electron's charge, mass, spin, and magnetic moment.  R7
+showed the torus must be ~100× smaller than Compton scale; a
+multi-winding path (~1/α major orbits, local 1:2 ratio) can
+fit λ_C of path length on a torus of radius ~r_e.  Spin ½ is
+expected from the local winding ratio.
 
 ---
 

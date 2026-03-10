@@ -103,9 +103,11 @@ q = nℏ/(R_KK·c). Does the WvM a/R relationship reduce to this?
 *Source: implied by knot-zoo F2, F4*
 *Status: → R1*
 
-Q18. **Can α be derived from geometry?** Can an independent
-physical argument select a/R = 1/√(πα), thereby deriving α?
-*Source: toroid-geometry F6*
+Q18. **Can α be derived from geometry?** On a curved compact
+surface, geodesic precession determines how many (1,2)-like
+circuits fit before the path closes.  That number is 1/(2α).
+If the precession rate depends on a/R, the geometry fixes α.
+*Source: toroid-geometry F6, R7 energy shortfall*
 *Status: → R8*
 
 Q19. **Precession causes.** If the torus axis precesses, what
