@@ -1,4 +1,4 @@
-# Charge from Torus Geometry  *(draft)*
+# R7. Charge from Torus Geometry  *(concluded)*
 
 Find the torus aspect ratio that produces q = e by computing
 the exact 3D field of a circularly polarized photon on a (1,2)

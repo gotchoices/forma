@@ -27,18 +27,21 @@ m_e as input and derives the geometry.  Predicting the mass
 spectrum (why m_e, m_μ, m_τ?) is a long-term open problem.
 
 ### 3. Charge e
-**Status: PARTIAL** (S2, R6)
+**Status: OPEN** (S2, R6, R7)
 
-The mechanism is established: charge = total E-field flux from
-the compact surface (Gauss's law).  The WvM energy-balance
-formula gives q = e for a self-consistent geometry (r ≈ 4.29,
-R6).  But the method is approximate — it uses an assumed uniform
-field profile and an arbitrary Coulomb-matching radius.
+The WvM energy-balance approach (equating all E-field energy
+with Coulomb field energy) was shown in R7 to overestimate by
+~1/α.  The Coulomb field energy of charge e at Compton scale
+is α × m_e c², not m_e c²/2.  The "magic ratios" from S2
+(r ≈ 6.60) and R6 (r ≈ 4.29) were artifacts of this assumption.
 
-**Remaining:** Replace the energy-balance shortcut with a
-rigorous Gauss's law integral.  This requires determining the
-actual field profile (from the wave equation or energy
-conservation).  See backlog: "Gauss's law charge integral."
+The mechanism that produces the observed charge e from a photon
+on T² is not yet established.  Candidates:
+- Near-field/far-field coupling (α fraction of energy leaks out)
+- Topological charge (KK compact momentum / winding number)
+- A mechanism we haven't identified yet
+
+**Remaining:** Identify the correct charge mechanism.
 
 ### 4. Magnetic moment
 **Status: SOLVED** (WvM §5, charge-from-energy primer §4)
@@ -101,16 +104,6 @@ long-term goal.
 
 Ordered roughly by priority.  Items get an R-number when
 promoted to Active.
-
-### Charge from torus geometry
-**Type:** compute  **Depends on:** R6
-**Advances:** objective 3 (charge), deeper problem (derive α)
-**Study:** [`torus-capacitance/`](torus-capacitance/) *(draft)*
-
-Compute self-capacitance of a torus with uniform surface charge
-(from synchronized circular polarization), sweep aspect ratio
-to find q = e.  Exact electrostatics, no arbitrary choices.
-See study folder for full proposal.
 
 ### Wave equation on T²
 **Question:** Q9  **Type:** compute  **Depends on:** R6
@@ -258,3 +251,15 @@ The self-consistent solution gives r ≈ 4.29, R ≈ 8.2 × 10⁻¹⁴ m.
 Different profile shapes (uniform, Gaussian, exponential) all yield
 q = e but need different σ values. The actual profile requires
 solving the wave equation on T².
+
+### 9. R7. Charge from torus geometry
+**Study:** [`torus-capacitance/`](torus-capacitance/)
+
+Computed the 3D Coulomb field of charge e distributed along the
+(1,2) geodesic for a range of aspect ratios.  Found that the
+field energy is ~1–2% of m_e c²/2 for all r tested — roughly α
+times the target.  No geometry at Compton scale stores enough
+Coulomb energy.  The WvM energy-balance approach to computing
+charge overestimates by ~1/α.  The "magic ratios" from S2 and
+R6 were artifacts of that assumption.  The correct charge
+mechanism remains open.
