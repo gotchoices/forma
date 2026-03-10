@@ -29,17 +29,44 @@ total outward flux is zero.
 Now confine the photon to a closed path — specifically, a (1,2)
 torus knot (once around the tube, twice around the ring).
 
-WvM's key insight: because of the double-loop topology, when the
-photon's E field rotates as it travels (circular polarization),
-the commensurate twist and orbital motion conspire so that **E
-always points radially inward** (or always outward).  It never
-flips.  Visualize a twisted strip of paper whose ends are joined
-into a double loop — one face always points outward.
+### Why a linearly polarized photon gives zero charge
 
-A photon in free space has E pointing in all directions (it
-rotates) → zero net flux → no charge.  A photon on a closed
-(1,2) path has E always pointing the same way → net outward
-flux → apparent charge.
+A linearly polarized photon has E oscillating sinusoidally:
+positive on one half-wavelength, negative on the other.  On any
+closed path, the outward and inward halves cancel — the net
+E flux through any enclosing surface is zero.  Gauss's law:
+no net flux → no charge.
+
+### Circular polarization changes the picture
+
+A circularly polarized photon is different: |E| is constant
+everywhere — it never passes through zero.  What changes is
+the *direction* of E, which rotates once per wavelength.
+
+On the torus, as the photon winds once around the minor circle
+(θ: 0 → 2π), the outward normal to the surface also rotates
+by 2π in 3D space.  If the circular polarization rotates in
+the opposite sense to this geometric rotation, the two
+rotations cancel.  The result:
+
+**E has constant magnitude and always points normal to the
+torus surface — outward everywhere, at all times.**
+
+Verified directly: for left-circular polarization with phase
+synchronized to the geometric angle θ,
+
+    E = E₀[cos θ · n̂(θ) − sin θ · ê_θ(θ)]
+
+Expanding n̂ and ê_θ in 3D cylindrical coordinates:
+
+    E · ρ̂ = E₀(cos²θ + sin²θ) = E₀     (constant, always outward)
+    E · ẑ = 0                             (no vertical component)
+
+This is WvM's key insight: circular polarization on a closed
+winding path produces a field that never flips.  A photon in
+free space has E rotating in all directions → zero net flux →
+no charge.  The same photon on a (1,2) path has E always
+pointing outward → net flux → apparent charge.
 
 The photon is still a photon.  It still has zero "fundamental
 charge."  But from outside, the E field looks exactly like a
@@ -83,6 +110,22 @@ On this rectangle:
   "perpendicular" is the non-compact space we live in.
 - **B is tangent to the rectangle**, perpendicular to the photon's
   path within the plane.
+
+For circular polarization, E spirals around the propagation
+direction: the perpendicular component (out of the plane) and
+the in-plane transverse component oscillate 90° out of phase,
+each with amplitude E₀.  In the flat picture, the perpendicular
+component oscillates sinusoidally — positive, then negative,
+then positive again along the path.
+
+**The "always outward" effect is hidden in the flat picture.**
+When the rectangle is wrapped into a torus, the fixed
+"perpendicular" direction of the flat picture becomes the
+*local* surface normal n̂(θ), which rotates with θ.  The
+sinusoidal oscillation of E_perp and the rotation of n̂ cancel
+each other — producing the constant outward field described in
+§2.  The flat picture is valid; the charge mechanism just isn't
+visually obvious until you wrap.
 
 This gives a clean separation:
 
@@ -277,10 +320,26 @@ The rigorous alternative is Gauss's law:
     q = ε₀ ∮ E · dA
 
 over any closed surface.  No arbitrary volume, no matching
-radius.  The only unknown is the field profile — how E is
-distributed over the surface.  Determining this profile (by
-solving the wave equation on the compact geometry) is the key
-open problem.
+radius.
+
+### The synchronized circular polarization resolves the field
+profile
+
+If the circularly polarized photon's rotation is synchronized
+with the geometric winding (§2), the field on the torus surface
+is determined: E = E₀ n̂ (constant magnitude, always normal).
+This is equivalent to a **uniform surface charge** on the torus.
+
+The charge then depends on the torus geometry through
+self-capacitance: U_E = q²/(2C), where C(R, a) is the
+self-capacitance of the torus shape (§8).  Setting U_E = m_e c²/2
+gives q = √(m_e c² · C).  Combined with the path constraint,
+this determines the aspect ratio.
+
+This is a well-posed electrostatics problem with no arbitrary
+choices — the field profile is fixed by the circular polarization
+mechanism, and the geometry is fixed by two constraints (mass
+and charge).
 
 ---
 

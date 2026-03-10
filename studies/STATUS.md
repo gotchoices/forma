@@ -102,13 +102,15 @@ long-term goal.
 Ordered roughly by priority.  Items get an R-number when
 promoted to Active.
 
-### Electrostatic charge from torus self-capacitance
+### Charge from torus geometry
 **Type:** compute  **Depends on:** R6
-**Advances:** objective 3 (charge)
+**Advances:** objective 3 (charge), deeper problem (derive α)
 **Study:** [`torus-capacitance/`](torus-capacitance/) *(draft)*
 
-Most rigorous charge calculation available without solving the
-wave equation.  See study folder for full proposal.
+Compute self-capacitance of a torus with uniform surface charge
+(from synchronized circular polarization), sweep aspect ratio
+to find q = e.  Exact electrostatics, no arbitrary choices.
+See study folder for full proposal.
 
 ### Wave equation on T²
 **Question:** Q9  **Type:** compute  **Depends on:** R6
