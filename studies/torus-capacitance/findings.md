@@ -96,15 +96,25 @@ effective charge could be different.  The oscillation problem
 (see README §"Open question: mode structure") remains unresolved
 and could change the result.
 
-### Possibility C: The line-source model is too simple
+### ~~Possibility C: The line-source model is too simple~~ ELIMINATED
 
-We modeled the photon as a mathematical line charge on the
-geodesic.  A real photon field has transverse extent (Fresnel
-zone, wavelength-scale spread).  A thicker field distribution
-would change the energy integral and the effective charge.  The
-d_min cutoff in the script removes near-field energy, and while
-the remaining far-field energy should be geometry-independent
-in the cutoff, this assumption deserves scrutiny.
+Track B repeated the computation with Q = e distributed
+uniformly over the torus SURFACE (not the geodesic path).
+Results:
+
+| r | Line U/U_target | Surface U/U_target |
+|---|-----------------|-------------------|
+| 0.50 | 0.018 | 0.012 |
+| 1.00 | 0.016 | 0.008 |
+| 4.29 | 0.012 | 0.007 |
+| 6.60 | 0.011 | 0.008 |
+| 10.0 | 0.011 | 0.010 |
+
+Both methods give ~1% of target.  The surface method gives
+slightly lower values (charge more spread out → less energy),
+but both are in the same range and both match the analytical
+prediction 2α ≈ 0.015.  The charge distribution model is not
+the source of the shortfall.
 
 ### Possibility D: The torus dimensions are wrong
 
@@ -124,12 +134,12 @@ case, computing the Coulomb field energy is the wrong approach
 entirely — the charge would be determined by the topology and
 coupling constants, not by field energy.
 
-### Possibility F: We made a computational error
+### ~~Possibility F: We made a computational error~~ ELIMINATED
 
-The grid resolution, integration bounds, or field computation
-could contain errors.  The analytical cross-check (F3) matches
-the numerics, which reduces this concern, but does not eliminate
-it.
+Two independent scripts (line source and surface charge) with
+different discretizations, different source models, and
+different code paths produce consistent results.  Both also
+match the analytical estimate (F3).  A shared bug is unlikely.
 
 
 ## F5. What this tells us
@@ -177,7 +187,9 @@ from what WvM assumed, and determining it remains open.
    (set by λ_C), not by the detailed shape.
 
 
-## Script
+## Scripts
 
-[`scripts/torus_charge.py`](scripts/torus_charge.py) — line-source
-integration along (1,2) torus knot, 3D field energy computation.
+- [`scripts/torus_charge.py`](scripts/torus_charge.py) — Track A:
+  line source along (1,2) geodesic
+- [`scripts/torus_surface_charge.py`](scripts/torus_surface_charge.py) —
+  Track B: uniform surface charge on torus
