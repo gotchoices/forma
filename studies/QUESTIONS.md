@@ -122,15 +122,28 @@ Active leads:
    Solving Maxwell's equations on the sheared T² might show
    that self-consistent EM solutions exist only for specific
    shear values, determining α from boundary conditions alone.
-2. **Variational principle / least-expensive path:** see Q29.
-3. **Prime q / harmonic avoidance:** see Q30.
+   **This is now R12.**
 
-Key insight: **the shear MUST exist** (independent of its
-value).  On an unsheared T², the geodesic slope IS the spin
-ratio.  You cannot simultaneously have exact spin-½ AND dense
-torus coverage.  The shear is the unique mechanism that
-decouples these, so its existence is forced — only its
-magnitude is undetermined.
+Closed leads (R11):
+- *Variational / energy cost:* Coulomb energy favors low q
+  (monotonic, no minimum at 137).  See Q29.
+- *Prime q / harmonic avoidance:* five linear tests found no
+  prime/composite distinction.  See Q30.
+
+Key insights:
+- **The shear MUST exist** (independent of its value).  On
+  an unsheared T², the geodesic slope IS the spin ratio.  You
+  cannot simultaneously have exact spin-½ AND dense torus
+  coverage.  The shear decouples these — its existence is
+  forced, only its magnitude is undetermined.
+- **q ~ 1/α is partly tautological.**  The model uses the
+  measured charge e as input.  Since α = e²/(4πε₀ℏc), the
+  charge constraint forces R ~ r_e and the mass constraint
+  forces q ~ 1/α.  The value ~137 is a restatement of the
+  input, not a prediction.  The real free parameter is
+  **r (the aspect ratio)**, not q.
+- Breaking the circularity requires deriving the shear from
+  field self-consistency WITHOUT using e as input.
 
 On the running of α: α runs in QED (1/137 → ~1/128 at Z-mass),
 but q must be an odd integer (discrete), so the geometric α
@@ -138,8 +151,8 @@ can't vary continuously.  The running likely reflects vacuum
 polarization screening in 3+1D, not compact geometry changes.
 The bare α is fixed; the dressed α runs.
 *Source: toroid-geometry F6, R7, R8 Tracks 4–5, R1 (gravity
-too weak)*
-*Status: EM self-consistency is the concrete next step*
+too weak), R11 (tautology analysis)*
+*Status: → R12 (self-consistent fields on sheared T²)*
 
 Q19. **Precession causes.** If the torus axis precesses, what
 drives it? Is it a natural consequence of the equations of motion?
@@ -177,7 +190,7 @@ object on compact geometry; our photon is a 1D wave on a closed
 geodesic. How deep is the analogy? Is our T² model a special
 case of string compactification?
 *Source: user question*
-*Status: → R12*
+*Status: open (backlog — string theory parallels study)*
 
 Q25. **Digital periodicity.** A number on a counter that rolls
 over (modular arithmetic) is the simplest compact dimension.
@@ -185,7 +198,7 @@ A sinusoid on this counter is a standing wave. Is a "particle"
 just a resonance in a periodic register? Does this connect to
 simulation-theory ideas?
 *Source: user question*
-*Status: → R12*
+*Status: open (backlog — string theory parallels study)*
 
 Q26. **Multi-photon hadrons and knot confinement.** Could
 protons and neutrons be multi-photon states on a compact
@@ -286,8 +299,11 @@ this on the sheared T² should yield the shear that selects
 q.  The primality constraint (Q30) acts as a filter: only
 prime q avoids sub-harmonic leakage.
 *Source: user question*
-*Status: open — could start by computing E_total(q) across the
-existing R8 solution family to see if a minimum exists*
+*Status: partly addressed by R11 (Coulomb cost favors low q,
+no minimum at 137).  The variational approach requires a
+richer energy functional.  The prerequisite is R12: solve
+the field equations on the sheared T² to understand what
+self-consistent configurations exist.  → R12*
 
 Q30. **Prime q and harmonic avoidance.**  137 is prime.  Is
 that functional — not coincidental?
@@ -337,7 +353,11 @@ choice of minor winding p — the single-path topology is
 automatic and maximally robust.  For composite q, only
 specific p values avoid splitting into multiple loops.
 *Source: user question*
-*Status: open — concrete computation proposed*
+*Status: CLOSED (R11 — negative).  Eight tracks found no
+prime/composite distinction in any linear analysis.  q enters
+the flat-T² spectrum as a continuous parameter, not through
+its factorization.  The hypothesis remains viable only in the
+nonlinear/curved-torus regime.*
 
 ---
 

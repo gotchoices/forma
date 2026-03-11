@@ -1,8 +1,9 @@
-# R11. Prime Resonance / Least-Expensive Path
+# R11. Prime Resonance / Least-Expensive Path — COMPLETE
 
 Study whether the winding number q is selected by resonance
 quality, energy minimization, or number-theoretic constraints
-(primality).
+(primality).  **Result: negative across all tracks.**  See
+[`findings.md`](findings.md) for full conclusions.
 
 ## Motivation
 

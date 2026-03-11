@@ -85,31 +85,21 @@ long-term goal.
     41 orders of magnitude too weak to produce δ/R ~ α ~ 10⁻².
   - *Berry phase:* wrong scaling (Track 4).
 
-  **Active leads:**
-  - *EM self-consistency (wave equation on T²):* The WvM charge
-    mechanism is purely electromagnetic (no G).  If Maxwell's
-    equations on the sheared T² admit self-consistent solutions
-    only for specific shear values, α would be determined by EM
-    boundary conditions, not gravity.  **This is the concrete
-    next calculation** — solve for the photon field modes on
-    the compact T² and check which shear values permit
-    self-consistent solutions.
-  - *Variational principle / least-expensive path:* write
-    E_total(q) — the total energy of the electron as a function
-    of winding number — and minimize.  The ground state selects
-    q and hence α.  Same logic as moduli stabilization in string
-    theory.  The photon must find the "cheapest" closed path
-    that maintains phase coherence at the Compton frequency.
-    Could start by computing E_total(q) across the existing R8
-    solution family.  (Q29)
-  - *Prime q / harmonic avoidance:* 137 is prime.  For composite
-    q, every divisor creates a sub-harmonic mode that can drain
-    energy from the fundamental Compton resonance.  For prime q,
-    no such leakage channels exist — all energy stays in the
-    fundamental.  This constrains q to be prime; combined with
-    the Coulomb energy range and energy minimization, it may
-    uniquely select q = 137.  Testable by wave interference
-    computation.  (Q30)
+  **R11 result (COMPLETE):** Eight tracks of investigation
+  found no mechanism that selects q = 137 from energy cost
+  or primality.  Coulomb energy favors low q (monotonic).
+  Five linear tests found no prime/composite distinction.
+  **Crucially, q ~ 1/α is partly tautological** — it follows
+  from the input charge e via dimensional analysis.  The real
+  free parameter is r (aspect ratio), not q.
+
+  **Remaining lead → R12:**
+  - *EM self-consistency (wave equation on T²):* Solve
+    Maxwell's equations (or a scalar proxy) on the sheared T²
+    WITHOUT using e as input.  If self-consistent solutions
+    exist only for specific shear values, α is predicted from
+    geometry alone.  This is the path to breaking the
+    circularity and making the model genuinely predictive.
 
   **Context on running of α:**
   α runs in QED (1/137 → ~1/128 at Z-mass), but q must be an
@@ -155,43 +145,22 @@ multi-winding path (~1/α major orbits, local 1:2 ratio) can
 fit λ_C of path length on a torus of radius ~r_e.  Spin ½ is
 expected from the local winding ratio.
 
-### R11. Prime resonance / least-expensive path
-**Study:** [`prime-resonance/`](prime-resonance/)
-**Question:** Q29, Q30  **Type:** compute  **Depends on:** R8
+### R12. Self-consistent fields on sheared T²
+**Study:** [`self-consistent-fields/`](self-consistent-fields/)
+**Question:** Q18, Q29  **Type:** compute  **Depends on:** R8, R11
 **Advances:** deeper problem (derive α)
 
-Sweep the winding number q across the R8 solution family
-(spin locked at 1:2) and compute physical quantities that
-could select a specific q:
+The key insight from R11: q ~ 1/α is tautological (follows
+from using the measured charge as input).  To break the
+circularity, solve for field configurations on the sheared T²
+that are self-consistent WITHOUT assuming the value of e.
 
-- Track 1: Divisor spectrum + sub-harmonic analysis ✓
-  (no sub-periodic closure for any q on sheared T²)
-- Track 2: Geodesic Coulomb self-energy ✓
-  (initial result: minimum near q ≈ 137)
-- **Track 2c: Convergence study ✓ — RETRACTED Track 2.**
-  Higher resolution (up to 120 pts/orbit + extrapolation)
-  shows the Track 2 minimum was a numerical artifact.
-  Excess is monotonically increasing with q (lower q =
-  cheaper).  Coulomb does NOT select q ≈ 137.
-- **Track 7: Wave superposition ✓ — no distinction in
-  LINEAR regime.**  Power at any frequency depends on the
-  kernel's Fourier structure, not q's divisibility.  However,
-  the test has significant limitations: it only probes linear,
-  static observables.  The Q30 hypothesis concerns dynamical
-  mode coupling (nonlinear / parametric resonance), which
-  Track 7 did not address.  **Primality hypothesis remains
-  viable** — requires dynamical test.
-- **Track 8: Mode spectrum ✓ — no prime/composite
-  distinction.**  Beat-frequency pair counts show no
-  enhancement at divisor frequencies.  q enters the flat-T²
-  spectrum as a continuous parameter (1/(2q)), not through
-  its factorization.  Combined with Track 7: all linear
-  analyses are blind to primality.
-- Geometric floor analysis *(next)*: what constrains the
-  minimum viable q?  If R = r_e pins q ≈ 137, primality
-  may be irrelevant.
-- Track 3 *(future)*: Magnetic (Biot-Savart) self-energy
-- Nonlinear coupling on curved torus *(future/hard)*
+Approach: solve the wave equation (scalar first, then full
+Maxwell) on a family of sheared T² geometries parameterized
+by the shear δ (or equivalently the aspect ratio r).
+Determine which shear values permit self-consistent,
+single-valued, normalizable solutions.  If only discrete
+shear values work, α is predicted from geometry alone.
 
 ---
 
@@ -200,66 +169,29 @@ could select a specific q:
 Ordered roughly by priority.  Items get an R-number when
 promoted to Active.
 
-### Wave equation on sheared T² ★ HIGH PRIORITY
-**Question:** Q9, Q18  **Type:** compute  **Depends on:** R6, R8
-**Advances:** objective 3 (charge), deeper problem (derive α)
+### ~~Wave equation on sheared T²~~ → PROMOTED to R12
+**Absorbed into R12.**  Now the active study.
 
-Now the leading approach for determining the shear (and hence
-α), after the KK gravitational mechanism was ruled out as too
-weak (R1: Gm_e/(Rc²) ~ 10⁻⁴³).  The WvM charge mechanism is
-purely electromagnetic (no G), so the relevant field equations
-are Maxwell's, not Einstein's.  Solving for the photon field
-modes on a sheared T² would determine:
-
-- Which shear values permit self-consistent EM solutions
-- The physical field profile and its width σ
-- Whether α is predicted by EM boundary conditions alone
-- Whether multiple modes exist with different σ (→ quarks)
-
-### Variational principle for α ★ HIGH PRIORITY
+### ~~Variational principle for α~~ → partly addressed by R11
 **Question:** Q29, Q30  **Type:** compute
 **Advances:** deeper problem (derive α)
 
-Nature determines everything else by extremizing an action or
-energy functional.  Apply the same principle to α: write the
-total energy E(δ) of the electron configuration as a function
-of shear, and minimize.  The existing R8 solution family (odd
-q from ~100 to ~287) provides discrete candidates.  E_total(q)
-includes:
-- Coulomb self-energy (varies with charge distribution on torus)
-- Magnetic field energy (same dependence)
-- Multipole structure (higher q → more uniform → lower energy?)
-- Shear stiffness (if deforming T² costs energy → penalizes
-  large δ / low q)
+R11 tested energy-cost and primality approaches.  Result:
+Coulomb cost favors low q (no minimum at 137); five linear
+tests found no prime/composite distinction.  The variational
+idea remains valid in principle but requires a richer energy
+functional (e.g., including magnetic energy or shear
+stiffness) that R12's field solutions may provide.
 
-If E_total(q) has a minimum, that q is the ground state and
-determines α.  Same logic as string-theory moduli
-stabilization: the shear is a modulus of the T², and E(δ) is
-its effective potential.  **Could start by computing E_total(q)
-across the existing R8 data to see if a minimum exists.**
-
-The "least-expensive path" framing: the photon must find the
-closed path on the sheared T² that minimizes phase mismatch
-per circuit, maximizes field uniformity, and concentrates all
-energy in the fundamental Compton mode.  This is equivalent
-to minimizing E_total(q) but formulated from the photon's
-perspective.
-
-### ~~Prime resonance test~~ → DONE (R11 Track 7, negative result)
+### ~~Prime resonance test~~ → DONE (R11, negative result)
 **Question:** Q30  **Type:** compute
-**Advances:** deeper problem (derive α)
 
-**Result:** R11 Track 7 found no distinction in the linear
-regime.  Root cause: gcd(p, q) = 1 for all q, so orbit
-positions always form a complete residue system.  Any linear,
-static observable is blind to primality.
-
-**However:** Track 7 has significant limitations (see R11
-findings F12).  The Q30 hypothesis is about dynamical energy
-transfer (parametric mode coupling), not linear superposition.
-Track 8 will test whether composite q has more near-degenerate
-modes (= more leakage channels), which would make primality
-relevant even through weak coupling.
+**Result:** R11 Tracks 1, 2c, 7, 8 — eight tracks total.
+All linear analyses are blind to primality.  q enters the
+flat-T² spectrum as a continuous parameter (1/(2q)), not
+through its factorization.  The hypothesis remains viable
+only in the nonlinear/curved-torus regime, which would
+require a significantly more complex computation.
 
 
 ### Flat space → curved appearance
@@ -355,6 +287,19 @@ Compare the photon-on-T² model with string theory:
 ## Done
 
 Studies listed in chronological order of completion.
+
+### 10. R11. Prime resonance / least-expensive path
+**Study:** [`prime-resonance/`](prime-resonance/)
+
+Explored whether q is selected by energy cost, resonance
+quality, or primality.  Eight tracks of investigation.
+**Key results:** (1) Coulomb energy favors low q — no minimum
+at 137.  (2) Five linear tests found no prime/composite
+distinction.  (3) q ~ 1/α is partly tautological — it follows
+from using the measured charge as input.  **Strategic insight:**
+the real free parameter is r (aspect ratio), not q.  Breaking
+the tautology requires solving field equations on the T²
+without using e as input (→ R12).
 
 ### 1. S1. Toroid series
 **Study:** [`toroid-series/`](toroid-series/)

@@ -305,14 +305,22 @@ by the exact 1:2 local winding ratio.
    may depend on the field geometry; verifying it carries over
    to the multi-winding case is a future investigation.
 
-4. **Does q = 137 have special status?**  It gives R ≈ r_e,
-   but so do nearby values (within a few percent).  The
-   geodesic Coulomb energy does NOT select q ≈ 137 (R11
-   Track 2c: retracted).  Remaining candidates: (a) 137 is
-   prime — harmonic avoidance (Q30), (b) magnetic self-energy,
-   (c) wave/phase coherence (Q29).  The discrepancy between
-   1/137 and measured 1/137.036 may be accounted for by
-   higher-order shape corrections (Track 5).
+4. **Does q = 137 have special status?**  R11 (eight tracks)
+   found no mechanism that selects q = 137 specifically.
+   Geodesic Coulomb energy favors low q (monotonic, no
+   minimum).  Five linear tests found no prime/composite
+   distinction.  Moreover, **q ~ 1/α is partly tautological**:
+   since the model uses the measured charge e as input, and
+   α = e²/(4πε₀ℏc), the charge constraint forces R ~ r_e and
+   the mass constraint then forces q ~ 1/α.  The value ~137
+   is a restatement of the input, not a prediction.
+
+   The genuinely free parameter is **r (the aspect ratio)**,
+   not q.  The question "what selects q" is really "what
+   selects r ≈ 0.31."  Breaking the circularity requires
+   deriving the shear from field self-consistency (Maxwell's
+   equations on T²) without using e as an input.  This is
+   the subject of a new study (R12).
 
 
 ---
@@ -525,17 +533,16 @@ it cannot be claimed as an exact, zero-free-parameter result.
      For prime q, no leakage channels exist — all energy
      stays in the fundamental.  See Q30.
 
-   **R11 updates:**
-   - *Track 2c:* Geodesic Coulomb self-energy does NOT select
-     q ≈ 137 (original minimum was a resolution artifact).
-     However, lower q = lower excess energy — "fewer orbits
-     is cheaper" is a real result.
-   - *Track 7:* Linear wave superposition shows no prime/
-     composite distinction.  But this test only covers the
-     linear, static regime.  The Q30 hypothesis (dynamical
-     mode coupling) remains viable — requires Track 8.
-   - Remaining viable leads: mode degeneracy counting
-     (Track 8), magnetic self-energy, geometric floor.
+   **R11 (COMPLETE — see [`prime-resonance/findings.md`](../prime-resonance/findings.md)):**
+   Eight tracks tested energy cost, resonance quality, and
+   primality.  All negative for selecting q = 137.  Lower q is
+   always cheaper (Coulomb); five linear tests found no
+   prime/composite distinction; q ~ 1/α is partly tautological.
+   The real free parameter is r (aspect ratio), not q.
+   **Next approach (R12):** solve Maxwell's equations on the
+   sheared T² to find self-consistent field configurations
+   that constrain r (and hence the shear) from first
+   principles.
 
 2. **Anomalous magnetic moment.**  Track 3 established the
    leading-order result μ = μ_B (g = 2) from the photon's

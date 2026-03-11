@@ -430,29 +430,98 @@ what sets the minimum q?  If the floor lands at or near 137,
 we don't need primality at all.
 
 
-## Next steps
+## The tautology question
 
-1. **Geometric floor analysis** — determine what constrains
-   the minimum q.  The R8 solution curve allows q from ~100
-   to ~287.  Is there a physical reason the lower end is at
-   ~100?  Does the constraint R ≈ r_e play a role?  If the
-   floor is q ≈ 137 (e.g., R = r_e exactly selects q = 137),
-   the problem is solved without primality.
+### F17. q ~ 1/α is forced by inputs, not predicted
 
-2. **Nonlinear mode coupling on the CURVED torus** — solve
-   the wave equation including the (1 + r cos θ) metric
-   factor.  This is the only regime where primality could
-   still matter, but it requires a significantly more complex
-   computation (perturbation theory or numerical PDE).
+The R8 model takes two measured inputs: m_e (electron mass)
+and e (electron charge).  From these:
 
-3. **Track 3: Magnetic self-energy** — compute the
-   Biot-Savart magnetic self-energy of the geodesic current.
-   Unlike Coulomb energy, this compares a 1D current to a 1D
-   current (no 1D-vs-2D mismatch).
+- The charge constraint (U = m_e c²/2) forces R ~ r_e
+- The mass constraint (path = λ_C) then forces
+  q ~ λ̄_C / r_e = 1/α ≈ 137
 
-4. **Track 6: Continuous δ sweep** — for selected q, sweep δ
-   continuously and check whether a phase-coherence optimum
-   coincides with the spin-½ value δ = L_θ/(2q).
+Since α = e²/(4πε₀ ℏc) is just a dimensionless repackaging
+of the input e, the value q ~ 137 was **baked into the
+inputs**.  The model gives this a geometric interpretation
+(winding number), but the numerical value follows from
+dimensional analysis once you assume "mass comes from EM
+energy" and "path = Compton wavelength."
+
+**What IS non-tautological:**
+
+1. A self-consistent solution exists at all — mass, charge,
+   and spin can be simultaneously satisfied on a torus with
+   a physically reasonable geometry (r ~ 0.1–1, R ~ r_e).
+
+2. Multi-winding is required.  q = 1 fails: a single-winding
+   torus at the Compton scale has Coulomb energy ~ α × m_e c²,
+   which is ~137× too small.  The photon MUST wind ~137 times.
+
+3. Spin-½ emerges exactly from the 1:2 winding ratio on the
+   sheared T², independent of q.
+
+4. The geometry is physically reasonable — not Planck-scale
+   or absurd.
+
+**What IS tautological:**
+
+- The specific value q ~ 137.  It is 1/α wearing a geometric
+  hat.  Breaking this circularity requires deriving the shear
+  from something other than the charge constraint — e.g., a
+  self-consistency condition on the wave equation where e is
+  NOT an input.  Then α = 1/(2gq) would be a genuine
+  prediction.
+
+
+### F18. The real free parameter is r (aspect ratio), not q
+
+q and r are related by the R8 solution curve:
+
+    q(r) = 1 / (2α × g(r) × √(1 + r²/4))
+
+Since α is an input, q is DETERMINED by r.  The only genuine
+freedom is the aspect ratio r ∈ (~0.05, ~5).  The range
+q ~ 100–287 merely reflects g(r)√(1+r²/4) varying by ~3×
+across that interval.
+
+**The question "what selects q = 137" is really "what selects
+r ≈ 0.31."**  This is a question about the compact geometry's
+shape, not a number-theory question about 137.
+
+
+---
+
+## Study conclusions
+
+R11 explored whether the winding number q could be selected
+by energy cost, resonance quality, or number-theoretic
+properties (primality).  After eight tracks of investigation:
+
+**Negative results:**
+- Coulomb self-energy does not select q ≈ 137 (Track 2c:
+  monotonically increasing — lower q is always cheaper)
+- No prime/composite distinction in any linear analysis
+  (Tracks 1, 7, 8a, 8c — five independent tests)
+- q ~ 1/α is partly tautological given the measured inputs
+  e and m_e
+
+**Positive results:**
+- Lower q = lower excess energy (Track 2c) — a real physical
+  tendency toward the minimum viable q
+- The model's qualitative content is genuinely non-trivial:
+  multi-winding is required, spin emerges from topology,
+  the geometry is at the r_e scale
+
+**Strategic insight:**
+The real free parameter is not q but r (the aspect ratio).
+Determining r requires a fundamentally different approach:
+solving for self-consistent field configurations on the
+sheared T², where the shear is constrained by the field
+equations rather than put in by hand from the measured charge.
+This is the subject of a new study (R12).
+
+**Study status: COMPLETE.**
 
 
 ## Scripts
