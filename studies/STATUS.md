@@ -93,13 +93,26 @@ long-term goal.
   from the input charge e via dimensional analysis.  The real
   free parameter is r (aspect ratio), not q.
 
-  **Remaining lead → R12:**
-  - *EM self-consistency (wave equation on T²):* Solve
-    Maxwell's equations (or a scalar proxy) on the sheared T²
-    WITHOUT using e as input.  If self-consistent solutions
-    exist only for specific shear values, α is predicted from
-    geometry alone.  This is the path to breaking the
-    circularity and making the model genuinely predictive.
+  **R12 result (COMPLETE):** The scalar wave equation on the
+  flat T² has no eigenmodes at ω_C (spectral gap = factor
+  of ~137).  Geodesics on the curved embedded torus are
+  qualitatively wrong (give q ≈ 193, not 137), confirming
+  the compact space must be intrinsically flat.  Neither
+  approach constrains the shear.
+
+  **Key methodological insight (R12):** R8's charge calculation
+  is internally inconsistent — it uses flat-T² physics for
+  mass and spin, but 3D-embedded distances for Coulomb energy.
+  The correct approach: compute everything from the photon's
+  flat-T² perspective, with 3D effects emerging as field
+  projections (Kaluza-Klein decomposition).  See R13 (backlog).
+
+  **Remaining lead → R13 (backlog):**
+  - *KK charge from flat T²:* Re-derive the charge from 6D
+    field equations on M₄ × T² (flat).  The photon's field
+    leaks into 3+1D as the Coulomb potential.  The self-energy
+    (sum over KK modes) depends on the T² geometry and may
+    constrain the shear without using e as input.
 
   **Context on running of α:**
   α runs in QED (1/137 → ~1/128 at Z-mass), but q must be an
@@ -145,22 +158,6 @@ multi-winding path (~1/α major orbits, local 1:2 ratio) can
 fit λ_C of path length on a torus of radius ~r_e.  Spin ½ is
 expected from the local winding ratio.
 
-### R12. Self-consistent fields on sheared T²
-**Study:** [`self-consistent-fields/`](self-consistent-fields/)
-**Question:** Q18, Q29  **Type:** compute  **Depends on:** R8, R11
-**Advances:** deeper problem (derive α)
-
-The key insight from R11: q ~ 1/α is tautological (follows
-from using the measured charge as input).  To break the
-circularity, solve for field configurations on the sheared T²
-that are self-consistent WITHOUT assuming the value of e.
-
-Approach: solve the wave equation (scalar first, then full
-Maxwell) on a family of sheared T² geometries parameterized
-by the shear δ (or equivalently the aspect ratio r).
-Determine which shear values permit self-consistent,
-single-valued, normalizable solutions.  If only discrete
-shear values work, α is predicted from geometry alone.
 
 ---
 
@@ -169,8 +166,38 @@ shear values work, α is predicted from geometry alone.
 Ordered roughly by priority.  Items get an R-number when
 promoted to Active.
 
-### ~~Wave equation on sheared T²~~ → PROMOTED to R12
-**Absorbed into R12.**  Now the active study.
+### R13. KK charge from flat T²
+**Question:** Q18, Q29  **Type:** compute  **Depends on:** R8, R11, R12
+**Advances:** deeper problem (derive α), objective 3 (charge)
+
+Re-derive the electron's charge entirely from the flat-T²
+perspective using Kaluza-Klein field decomposition.
+
+**Motivation:** R12 showed that R8's charge calculation is
+internally inconsistent (flat T² for mass/spin, 3D embedding
+for Coulomb energy).  The photon experiences a flat compact
+space; its fields leak into 3+1D as projections.  This is
+exactly the KK framework: a 6D massless field on M₄ × T²
+decomposes into a tower of 4D modes, with the zero-mode
+producing the Coulomb potential.
+
+**Approach:**
+1. Set up the 6D scalar (or Maxwell) field equation on
+   Minkowski⁴ × flat sheared T²
+2. Perform the KK mode expansion; identify which mode
+   corresponds to the photon-on-geodesic
+3. Compute the 4D effective charge from the mode's coupling
+   to the zero-mode (Coulomb potential)
+4. Compute the self-energy (sum over KK tower) as a function
+   of the T² geometry (R, r, δ)
+5. Determine whether requiring self-energy = m_e c²/2
+   constrains the shear δ without using e as input
+
+If the self-energy depends on shear in a way that has a
+unique solution, α is predicted from geometry alone.
+
+### ~~Wave equation on sheared T²~~ → absorbed into R12
+**Absorbed into R12.**  R12 is now complete.
 
 ### ~~Variational principle for α~~ → partly addressed by R11
 **Question:** Q29, Q30  **Type:** compute
@@ -287,6 +314,19 @@ Compare the photon-on-T² model with string theory:
 ## Done
 
 Studies listed in chronological order of completion.
+
+### 11. R12. Self-consistent fields on sheared T²
+**Study:** [`self-consistent-fields/`](self-consistent-fields/)
+
+Two tracks investigating whether the wave equation or
+geodesic structure on the sheared T² constrains the shear δ.
+**Key results:** (1) The flat T² has no eigenmodes at ω_C — a
+spectral gap of factor ~137. (2) Curved-torus geodesics give
+q ≈ 193 (not 137) and holonomy is zero — no constraint on δ.
+**Methodological insight:** R8's charge calculation mixes
+flat-T² (mass, spin) with 3D-embedded (Coulomb) physics.
+The correct approach is KK decomposition from the flat T²,
+with 3D effects emerging as field projections (→ R13 backlog).
 
 ### 10. R11. Prime resonance / least-expensive path
 **Study:** [`prime-resonance/`](prime-resonance/)

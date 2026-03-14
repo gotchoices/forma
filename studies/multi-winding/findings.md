@@ -317,10 +317,11 @@ by the exact 1:2 local winding ratio.
 
    The genuinely free parameter is **r (the aspect ratio)**,
    not q.  The question "what selects q" is really "what
-   selects r ≈ 0.31."  Breaking the circularity requires
-   deriving the shear from field self-consistency (Maxwell's
-   equations on T²) without using e as an input.  This is
-   the subject of a new study (R12).
+   selects r ≈ 0.31."     Breaking the circularity requires deriving the shear
+   without using e as an input.  R12 (flat-T² wave equation
+   and curved geodesics) found no constraint.  R13 (backlog)
+   proposes KK decomposition on M₄ × flat T² as the
+   consistent approach.
 
 
 ---
@@ -539,10 +540,14 @@ it cannot be claimed as an exact, zero-free-parameter result.
    always cheaper (Coulomb); five linear tests found no
    prime/composite distinction; q ~ 1/α is partly tautological.
    The real free parameter is r (aspect ratio), not q.
-   **Next approach (R12):** solve Maxwell's equations on the
-   sheared T² to find self-consistent field configurations
-   that constrain r (and hence the shear) from first
-   principles.
+   **R12 (COMPLETE — see [`self-consistent-fields/findings.md`](../self-consistent-fields/findings.md)):**
+   Track 1: flat-T² wave equation has no modes at ω_C (spectral
+   gap ~137×); shear unconstrained.  Track 2: curved-torus
+   geodesics give q ≈ 193; holonomy zero; confirms compact space
+   must be intrinsically flat.  **Key insight:** R8's charge
+   calculation is internally inconsistent (flat T² for mass/spin,
+   3D embedding for Coulomb energy).  The correct approach is KK
+   decomposition from the flat T².  → R13 (backlog).
 
 2. **Anomalous magnetic moment.**  Track 3 established the
    leading-order result μ = μ_B (g = 2) from the photon's

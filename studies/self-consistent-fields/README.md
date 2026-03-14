@@ -1,5 +1,7 @@
 # R12. Self-Consistent Fields on the Sheared T²
 
+**Status: COMPLETE** — see [`findings.md`](findings.md)
+
 Can the shear (and hence α) be derived from field
 self-consistency alone — without using the measured charge
 as an input?
@@ -60,20 +62,11 @@ q ≈ 193 (not 137).  Holonomy is zero (Gauss-Bonnet).
 flat (not the embedded curved torus) for the model to
 give q ~ 1/α.
 
-### Track 3: Casimir energy on sheared T² *(next)*
-**Type:** analytical + numerical
-
-The vacuum energy of a field on a compact space depends
-on the geometry.  If E_Casimir(δ) has a minimum, it
-could stabilize the shear.  Standard moduli-stabilization
-mechanism from string theory / KK.
-
-### Track 4: 3D field projection *(future)*
-**Type:** theoretical
-
-How the compact-dimension EM field projects into 3+1D.
-Self-consistency of the 3D Maxwell equations may constrain
-the compact geometry.
+### Tracks 3–4: not pursued
+Superseded by the realization (from Tracks 1–2) that the
+correct approach is KK decomposition from the flat T², not
+eigenvalue or geodesic analyses.  See R13 (backlog in
+STATUS.md).
 
 ## What we abstract
 

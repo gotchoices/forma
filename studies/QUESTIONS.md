@@ -117,12 +117,14 @@ Ruled out mechanisms:
 - *Berry phase:* wrong scaling (R8 Track 4).
 
 Active leads:
-1. **EM self-consistency (wave equation on sheared T²):**
-   The WvM charge mechanism is purely electromagnetic (no G).
-   Solving Maxwell's equations on the sheared T² might show
-   that self-consistent EM solutions exist only for specific
-   shear values, determining α from boundary conditions alone.
-   **This is now R12.**
+1. **KK charge from flat T² (R13, backlog):**
+   R12 showed the charge calculation must be done entirely from
+   the flat-T² perspective (KK decomposition), not by mixing
+   flat-T² path lengths with 3D-embedded Coulomb energies.
+   Set up 6D field equations on M₄ × flat T², compute the 4D
+   effective charge and self-energy from KK modes, and check
+   whether requiring self-energy = m_e c²/2 constrains the
+   shear without using e as input.
 
 Closed leads (R11):
 - *Variational / energy cost:* Coulomb energy favors low q
@@ -152,7 +154,17 @@ polarization screening in 3+1D, not compact geometry changes.
 The bare α is fixed; the dressed α runs.
 *Source: toroid-geometry F6, R7, R8 Tracks 4–5, R1 (gravity
 too weak), R11 (tautology analysis)*
-*Status: → R12 (self-consistent fields on sheared T²)*
+R12 results (COMPLETE):
+- Track 1: flat-T² wave equation has no modes at ω_C (spectral
+  gap of ~137×).  Shear unconstrained.
+- Track 2: curved-torus geodesics give q ≈ 193 (not 137);
+  holonomy is zero.  Confirms compact space must be
+  intrinsically flat.
+- Key insight: R8's charge calculation mixes flat-T² (mass/spin)
+  with 3D-embedded (Coulomb) physics — inconsistent.  The correct
+  approach is KK decomposition from the flat T².
+
+*Status: → R13 (KK charge from flat T², backlog)*
 
 Q19. **Precession causes.** If the torus axis precesses, what
 drives it? Is it a natural consequence of the equations of motion?
@@ -300,10 +312,11 @@ q.  The primality constraint (Q30) acts as a filter: only
 prime q avoids sub-harmonic leakage.
 *Source: user question*
 *Status: partly addressed by R11 (Coulomb cost favors low q,
-no minimum at 137).  The variational approach requires a
-richer energy functional.  The prerequisite is R12: solve
-the field equations on the sheared T² to understand what
-self-consistent configurations exist.  → R12*
+no minimum at 137).  R12 found that the flat-T² wave equation
+provides no constraint on shear; the variational approach
+requires a richer energy functional.  The KK self-energy
+(sum over the mode tower on M₄ × flat T²) is the natural
+candidate for such a functional.  → R13 (backlog)*
 
 Q30. **Prime q and harmonic avoidance.**  137 is prime.  Is
 that functional — not coincidental?

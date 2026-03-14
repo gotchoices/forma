@@ -322,21 +322,30 @@ the 2D compact geometry alone.  Candidates:
 - An external input (the shear as a property of the vacuum)
 
 
-## Next steps
+## Study conclusion
 
-1. **Track 3: Casimir energy on the sheared T².**
-   The vacuum energy of the compact space depends on
-   its geometry (dimensions and shear).  If E_Casimir(δ)
-   has a minimum, it could stabilize the shear.  This
-   is the standard moduli-stabilization mechanism in
-   string theory and Kaluza-Klein.
+R12 is **COMPLETE**.  Two tracks investigated whether the
+wave equation or geodesic structure on the sheared T² can
+constrain the shear δ.  Both gave negative results: no
+mechanism within the 2D compact geometry alone selects a
+preferred shear.
 
-2. **Track 4: 3D field projection.**  The photon's EM
-   field extends into 3+1D.  The projection of the
-   compact-dimension field determines the charge and
-   magnetic structure.  Self-consistency of the 3D
-   field (Maxwell's equations in 3+1D) may constrain
-   the compact geometry.
+**The critical insight:** R8's charge calculation is
+internally inconsistent.  It uses the flat T² for mass
+and spin (photon on a geodesic, path = λ_C), but switches
+to the 3D-embedded curved torus for the Coulomb self-energy
+(integrating 1/|r − r'| over the 3D positions of the
+path).  The photon experiences a flat compact space — its
+fields should leak into 3+1D as projections, not as though
+the photon "knows about" the 3D embedding.
+
+This points to a Kaluza-Klein approach: set up the 6D
+field equation on M₄ × flat T², perform the KK mode
+expansion, and compute the 4D effective charge and
+self-energy from the mode couplings.  The self-energy
+depends on the T² geometry and may constrain the shear
+without using e as input.  This is the subject of R13
+(see STATUS.md backlog).
 
 
 ## Scripts
