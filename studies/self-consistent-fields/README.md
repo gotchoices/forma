@@ -49,36 +49,31 @@ a propagating wave whose wavelength spans the entire path
 reformulated as a propagation problem, not an eigenvalue
 problem.
 
-### Track 2: Propagating wave on curved torus *(next)*
-**Type:** numerical
+### Track 2: Geodesics on the curved torus ✓
+**Type:** analytical + numerical
+**Result:** The flat-torus (1,2) geodesic has angular
+momentum L_flat > R − a, making it INCOMPATIBLE with
+wrapping on the curved torus.  The actual curved geodesic
+(L* ≈ R − a) concentrates near the inner equator, giving
+q ≈ 193 (not 137).  Holonomy is zero (Gauss-Bonnet).
+**Key insight:** the compact space MUST be intrinsically
+flat (not the embedded curved torus) for the model to
+give q ~ 1/α.
 
-Track 1 showed eigenmodes are the wrong framework.  The
-correct question: can a propagating EM wave at ω_C,
-traveling along the geodesic on the CURVED torus,
-maintain its field profile after q orbits?
-
-The (1 + r cos θ) metric factor modulates the wave on
-each orbit.  After q orbits, the transverse profile must
-return to its starting shape (self-consistency).  This
-constrains the allowed geometries.
-
-### Track 3: Transverse waveguide modes *(future)*
+### Track 3: Casimir energy on sheared T² *(next)*
 **Type:** analytical + numerical
 
-The curved torus metric creates an effective waveguide
-in the θ direction.  Compute the transverse mode
-structure and determine whether it constrains the aspect
-ratio r.
+The vacuum energy of a field on a compact space depends
+on the geometry.  If E_Casimir(δ) has a minimum, it
+could stabilize the shear.  Standard moduli-stabilization
+mechanism from string theory / KK.
 
-### Track 4: Self-consistent boundary conditions *(future)*
+### Track 4: 3D field projection *(future)*
 **Type:** theoretical
 
-Investigate whether the shear itself can emerge from the
-field's back-reaction on the geometry — i.e., the field
-determines the shear, and the shear determines the field.
-This is the moduli-stabilization approach: the shear is a
-modulus of the T² whose effective potential is generated
-by the field energy.
+How the compact-dimension EM field projects into 3+1D.
+Self-consistency of the 3D Maxwell equations may constrain
+the compact geometry.
 
 ## What we abstract
 

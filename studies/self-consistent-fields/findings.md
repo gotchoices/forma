@@ -189,20 +189,154 @@ maintaining its field profile over q orbits on the
 curved torus.
 
 
+---
+
+## Track 2: Geodesics on the curved torus
+
+### F9. The flat-torus geodesic is incompatible with the curved torus
+
+On a surface of revolution, geodesics obey Clairaut's
+relation: L = (R + a cos θ)² dφ/ds = const.  For the
+geodesic to wrap around the minor circle (required for
+spin ½), L must satisfy L < R − a.
+
+The flat-torus (1,2) geodesic has angular momentum
+L_flat = 2R²/√(a² + 4R²).  For all r > 0.05:
+
+    L_flat > R − a
+
+The flat-torus angular momentum EXCEEDS the wrapping
+limit on the curved torus.  A geodesic with L = L_flat
+would oscillate in θ (staying on the outer half) instead
+of wrapping around the minor circle.
+
+| r    | L_flat/R | (R−a)/R | L_flat > R−a? |
+|------|----------|---------|---------------|
+| 0.10 | 0.999    | 0.90    | YES           |
+| 0.31 | 0.988    | 0.69    | YES           |
+| 0.50 | 0.970    | 0.50    | YES           |
+| 1.00 | 0.894    | 0.00    | YES           |
+
+This means the flat-torus (1,2) geodesic cannot be
+directly mapped to the curved torus.  The curved-torus
+geodesic achieving 1:2 winding has a qualitatively
+different angular momentum (L* ≈ R − a).
+
+
+### F10. The curved geodesic concentrates near the inner equator
+
+On the curved torus, the 1:2 geodesic has L* ≈ R − a
+(the wrapping limit).  This geodesic spends most of its
+time near θ = π (inner equator), where the effective
+circumference is 2π(R − a).
+
+At r = 0.31: dφ/dθ ranges from 0.15 (outer equator) to
+77 (inner equator), compared to the flat-torus constant
+dφ/dθ = 2.  The geodesic whips around quickly in φ near
+the inner equator and barely advances in φ near the outer
+equator.
+
+
+### F11. Path length is SHORTER — q increases
+
+Because the geodesic hugs the inner equator (smaller
+circumference), the path per θ revolution is shorter than
+the flat prediction:
+
+| r    | ℓ_curv/ℓ_flat | q_flat | q_curved |
+|------|---------------|--------|----------|
+| 0.10 | 0.439         | 100    | 227      |
+| 0.31 | 0.706         | 136    | 193      |
+| 0.50 | 0.665         | 161    | 242      |
+| 1.00 | 0.447         | 217    | 484      |
+
+Notably, q_curved has a **minimum near r ≈ 0.31** with
+q_min ≈ 193.  This is the same r where the flat model
+gives q ≈ 137.  For both smaller and larger r, q_curved
+increases.
+
+
+### F12. Holonomy is zero (no constraint from polarization)
+
+For a simple closed geodesic on a torus, Gauss-Bonnet
+gives holonomy = 2πχ(enclosed region) = 0 (the enclosed
+annular region has Euler characteristic 0).  Verified
+numerically: total ∫K dA = 0 to machine precision.
+
+The EM polarization automatically returns to its initial
+orientation after any number of orbits.  No constraint
+on the geometry from parallel transport.
+
+
+### F13. The curved correction does not constrain r
+
+The path-length correction shifts the q(r) curve but
+does not introduce a discontinuity, selection rule, or
+preferred value of r.  The free parameter r survives.
+
+However, the QUALITATIVE finding that q_curved has a
+minimum near r ≈ 0.31 is noteworthy: this is where the
+flat and curved models agree most closely, and it
+corresponds to the thinnest-practical torus geometry.
+
+
+---
+
+## Conceptual implications (Tracks 1 + 2)
+
+### F14. The compact space must be intrinsically flat
+
+If the compact space had the intrinsic geometry of the
+embedded torus (Gaussian curvature K = cos θ/(a(R+a cos θ))),
+the (1,2) geodesic would concentrate near the inner equator,
+giving q ≈ 193 instead of ~137.  This does NOT match α.
+
+Since the model requires q ~ 1/α ≈ 137, the compact space
+must be intrinsically flat (a flat T², not a curved embedded
+torus).  The "torus shape" is a topological property (periodic
+boundaries), not a metric property.
+
+This resolves a longstanding ambiguity: the compact T² is
+a flat quotient space R²/Λ (straight-line geodesics), and
+the 3D torus visualization is just a convenient embedding.
+
+
+### F15. The shear question remains open
+
+Neither the wave equation (Track 1) nor geodesic structure
+(Track 2) of the torus (flat or curved) constrains the
+shear δ.  The free parameter r survives both analyses.
+
+Five approaches have now been exhausted:
+1. Energy minimization (R11): monotonic, no minimum
+2. Primality (R11): invisible to linear analysis
+3. Eigenmode matching (Track 1): spectral gap, no modes at ω_C
+4. Geodesic closure (Track 2): always achievable
+5. Polarization holonomy (Track 2): identically zero on torus
+
+The shear must be determined by physics NOT captured by
+the 2D compact geometry alone.  Candidates:
+- 3D field structure (how compact fields project into 3+1D)
+- Quantum effects (e.g., Casimir energy of the compact space)
+- The full 6D Einstein-Maxwell system
+- An external input (the shear as a property of the vacuum)
+
+
 ## Next steps
 
-1. **Track 2 (revised): Propagating wave on curved torus.**
-   Solve Maxwell's equations for a wave propagating along
-   the (1,2) geodesic on the curved torus.  Track how the
-   transverse profile evolves orbit-by-orbit.  Determine
-   which geometries (r values) allow the profile to return
-   to itself after q orbits.
+1. **Track 3: Casimir energy on the sheared T².**
+   The vacuum energy of the compact space depends on
+   its geometry (dimensions and shear).  If E_Casimir(δ)
+   has a minimum, it could stabilize the shear.  This
+   is the standard moduli-stabilization mechanism in
+   string theory and Kaluza-Klein.
 
-2. **Track 3: Transverse mode structure.**  On the curved
-   torus, the (1 + r cos θ) factor creates an effective
-   waveguide.  Compute the transverse modes of this
-   waveguide and determine whether they constrain the
-   allowed aspect ratios.
+2. **Track 4: 3D field projection.**  The photon's EM
+   field extends into 3+1D.  The projection of the
+   compact-dimension field determines the charge and
+   magnetic structure.  Self-consistency of the 3D
+   field (Maxwell's equations in 3+1D) may constrain
+   the compact geometry.
 
 
 ## Scripts
@@ -210,3 +344,6 @@ curved torus.
 - [`scripts/track1_spectral_structure.py`](scripts/track1_spectral_structure.py)
   — Spectral analysis: gap, mode search, geodesic mode,
   shear sweep, phase coherence
+- [`scripts/track2_curved_geodesics.py`](scripts/track2_curved_geodesics.py)
+  — Curved torus geodesics: angular momentum, path length,
+  holonomy, trajectory comparison
