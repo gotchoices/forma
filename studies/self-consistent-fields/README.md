@@ -32,40 +32,45 @@ If only discrete δ values work, the model predicts α from
 geometry alone.  If a continuum of δ works, the model has a
 genuine free parameter and needs additional physics.
 
-## Planned tracks
+## Tracks
 
-### Track 1: Scalar Helmholtz on sheared T² (warm-up)
+### Track 1: Spectral structure of flat sheared T² ✓
+**Type:** analytical + numerical
+**Result:** The Compton frequency ω_C is ~137× below the
+lowest torus eigenmode (ω_C/ω_min = 2gα ≈ α).  No
+eigenmode exists at ω_C for any geometry or shear value.
+The phase coherence condition is identical to the mass
+condition.  **The flat-T² wave equation cannot constrain
+the shear.**
+
+Key insight: the photon is NOT a torus eigenmode.  It is
+a propagating wave whose wavelength spans the entire path
+(all q orbits).  The self-consistency question must be
+reformulated as a propagation problem, not an eigenvalue
+problem.
+
+### Track 2: Propagating wave on curved torus *(next)*
+**Type:** numerical
+
+Track 1 showed eigenmodes are the wrong framework.  The
+correct question: can a propagating EM wave at ω_C,
+traveling along the geodesic on the CURVED torus,
+maintain its field profile after q orbits?
+
+The (1 + r cos θ) metric factor modulates the wave on
+each orbit.  After q orbits, the transverse profile must
+return to its starting shape (self-consistency).  This
+constrains the allowed geometries.
+
+### Track 3: Transverse waveguide modes *(future)*
 **Type:** analytical + numerical
 
-The flat sheared T² has exact plane-wave solutions (R11
-Track 8 computed the spectrum).  But those solutions are
-free — no self-consistency condition was imposed.
+The curved torus metric creates an effective waveguide
+in the θ direction.  Compute the transverse mode
+structure and determine whether it constrains the aspect
+ratio r.
 
-Here: require the field to be a propagating mode that
-returns to its starting configuration after one full
-circuit (constructive self-interference).  This is the
-analog of the Bohr quantization condition.  Determine
-which shear values permit such modes at the Compton
-frequency.
-
-### Track 2: Scalar wave on the CURVED torus
-**Type:** numerical (PDE)
-
-Include the (1 + r cos θ) metric factor from the actual
-3D torus embedding.  This breaks the flat-T² degeneracy
-and couples modes.  Solve the Helmholtz equation
-numerically and determine how the allowed spectrum depends
-on shear.
-
-### Track 3: Full Maxwell on sheared T²
-**Type:** analytical + numerical
-
-The photon is an EM wave, not a scalar.  Solve Maxwell's
-equations on the compact space.  The polarization
-structure may introduce constraints that the scalar
-equation misses.
-
-### Track 4: Self-consistent boundary conditions
+### Track 4: Self-consistent boundary conditions *(future)*
 **Type:** theoretical
 
 Investigate whether the shear itself can emerge from the
