@@ -76,8 +76,16 @@ photons with correlated phases each contribute 1/3 of the charge?
 Q13. **Three compact dimensions.** The three distinct a/R values
 for charges (e, 2e/3, e/3) suggest three compact dimensions. Is
 this connected to three color charges?
+
+**R14 Track 0 result:** YES — T³ is required.  T² cannot
+support topological linking of geodesics (F1).  T³ can, with
+three linking planes corresponding to three color charges (F2).
+Three compact dimensions give 3+1+3 = 7 total spacetime
+dimensions (6+1).  The electron uses 2 of 3 compact dimensions;
+hadrons use all 3.  See R14 findings.
 *Source: knot-zoo F4*
-*Status: open — speculative, needs framework from R1/R2 first*
+*Status: → R14 (draft).  Promoted from speculative to
+supported by topological necessity.*
 
 Q14. **Neutrino topology.** q = 0 requires a/R → ∞ (unphysical).
 Is the neutrino a fundamentally different topology? A (3,2) knot

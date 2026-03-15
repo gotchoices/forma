@@ -204,33 +204,36 @@ producing the Coulomb potential.
 If the self-energy depends on shear in a way that has a
 unique solution, α is predicted from geometry alone.
 
-### R14. Universal geometry — shared T² for all particles
+### R14. Universal geometry — shared T³ for all particles
 **Study:** [`universal-geometry/`](universal-geometry/)  *(draft)*
 **Question:** Q12, Q13, Q26, Q32  **Type:** compute/reason
 **Depends on:** R13
 **Advances:** deeper problem (derive α), objective 3 (charge),
 hadrons, confinement
 
-If all particles (electrons, quarks, hadrons) share a single
-compact T², the one remaining free parameter r = a/R is
-constrained by multi-particle consistency: the same geometry
-must simultaneously produce electron charge e (single photon),
-fractional quark charges (multi-photon linked states), and
-the correct proton/neutron masses and spins.
+**Track 0 result:** T² cannot support topological linking
+(2D surfaces lack the dimensionality).  T³ can, with three
+linking planes mapping naturally to three color charges.
+m_p = 3 × 612 × m_e to 0.008%.
+
+If all particles share a single compact T³, the geometry
+(three circumferences L₁, L₂, L₃) is constrained by
+multi-particle consistency: electron charge e (single photon
+on 2D subspace), fractional quark charges (three linked
+photons, each in a different dimensional plane), and correct
+proton/neutron masses.
 
 Key elements:
-- Fractional charges from topological linking of multiple
-  photons on the same T² (not from different a/R)
-- Quark confinement as a topological consequence (linked
-  paths can't separate)
-- Proton mass from three-photon energy on the same geometry
-  that gives the electron
-- If successful, fixes r and hence α from multi-particle
+- Three compact dimensions → three color charges (linking
+  in three planes)
+- Quark confinement = Borromean linking (topological)
+- Proton mass from three-photon harmonic n = 612
+- Electron uses 2 of 3 dimensions; hadrons use all 3
+- If successful, fixes the geometry from multi-particle
   consistency
 
-Prerequisite: R13 (KK charge for single photon) must be
-completed first — need to know how one photon's field
-projects before handling three.
+Prerequisite: R13 (KK charge for single photon), extended
+to T³.
 
 ### ~~Wave equation on sheared T²~~ → absorbed into R12
 **Absorbed into R12.**  R12 is now complete.

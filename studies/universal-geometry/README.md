@@ -1,9 +1,15 @@
 # R14. Universal Geometry  *(draft)*
 
-Can a single compact T² host all known particles — electrons,
+Can a single compact space host all known particles — electrons,
 quarks, protons, neutrons — with particle identity determined
 by topology (winding, linking) and energy (harmonics), not by
 geometry?
+
+**Track 0 result:** T² cannot support topological linking of
+geodesics (2D surfaces lack the dimensionality).  **T³** (three
+compact dimensions) can, and naturally maps three linking
+planes to three color charges.  The proton mass fits as
+3 × 612 × m_e to 0.008%.  See [`findings.md`](findings.md).
 
 ## Motivation
 
@@ -45,51 +51,58 @@ the topology of T².
 
 ## The hypothesis
 
-**All particles are photon configurations on a single flat T².**
+**All particles are photon configurations on a single flat T³.**
 
-- **Electron:** One photon, (1,2) geodesic, fundamental mode
-  (n = 1).  Charge e from the field's monopole projection.
+(Originally proposed for T², revised to T³ after Track 0
+showed that topological linking requires 3 compact dimensions.)
+
+- **Electron:** One photon on a (1,2) geodesic in a 2D
+  subspace of T³, fundamental mode (n = 1).  Third dimension
+  inert.  Charge e from the field's monopole projection.
 - **Positron:** Same, opposite winding direction.  Charge −e.
-- **Quarks:** Each quark is one photon in a multi-photon
-  linked state.  The linking constrains each photon's field to
-  project as fractional charge (e/3 or 2e/3).
-- **Proton:** Three photons, topologically linked (Borromean or
-  similar), with total charge +e and spin ½.
-- **Neutron:** Three photons, differently linked, with total
-  charge 0 and spin ½.
-- **Neutrino:** Unknown topology — possibly a (p, q) knot with
-  p > 1 (zero charge from S3 F3) but nearly zero mass.
+- **Quarks:** Each quark is one photon in a three-photon
+  linked state on T³.  Each photon winds in a different pair
+  of dimensions (→ three "colors").  The linking constrains
+  each photon's field to project as fractional charge.
+- **Proton:** Three photons, topologically linked (Borromean
+  or similar) on T³, with total charge +e and spin ½.
+  Each photon at harmonic n ≈ 612, giving m_p ≈ 3 × 612 m_e.
+- **Neutron:** Three photons, differently linked, total
+  charge 0 and spin ½.  m_n ≈ 3 × 613 m_e.
+- **Neutrino:** Unknown topology — possibly a geodesic with
+  zero charge projection but nearly zero mass.
 
-### How fractional charges could arise on the SAME T²
+### How fractional charges could arise on T³
 
-S3 showed that only (1,2) gives nonzero charge for a single
-photon (higher knots cancel by symmetry).  This seems to
-require different a/R for different charges.
+S3 showed that on T², only (1,2) gives nonzero charge (higher
+knots cancel by symmetry), and different charges seem to
+require different a/R.
 
-But S3 analyzed single photons in isolation.  For a multi-
-photon state, the charge calculation changes fundamentally:
+But on T³, there are three dimensions for winding.  Three
+photons winding in different dimensional planes have
+fundamentally different field configurations than three
+parallel photons on T².  Mechanisms for fractional charge:
 
-1. **Field interference:** Three photons on the same T² have
-   overlapping EM fields.  The total field is a superposition.
-   The charge seen from 3+1D is the monopole moment of the
-   TOTAL field, which can differ from the sum of individual
-   monopole moments if the fields interfere.
+1. **Different winding planes:** A photon winding in the (1,2)
+   plane has a different field projection into 3+1D than one
+   winding in the (2,3) plane.  The charge depends on WHICH
+   dimensions the photon winds around, not just the a/R ratio.
 
-2. **Topological linking:** If the three geodesics are linked,
-   each photon's field is constrained by the others' presence.
-   The linking may force each photon into a configuration
-   whose individual monopole moment is e/3 or 2e/3, even
-   though a free (1,2) photon would give e.
+2. **Topological linking:** On T³, three geodesics in different
+   planes are genuinely linked.  The linking constrains each
+   photon's field, potentially forcing each to project as
+   fractional charge even though a free photon would give
+   integer charge.
 
 3. **Winding number fractionalization:** In condensed matter
-   physics, topological linking can fractionalize quantum
-   numbers (fractional quantum Hall effect, anyons).  The same
-   mechanism on T² could produce fractional charges from
+   physics, topological linking fractionalizes quantum numbers
+   (fractional quantum Hall effect, anyons).  The same
+   mechanism on T³ could produce fractional charges from
    integer-winding photons.
 
 ### How mass works on a shared geometry
 
-On a fixed T², the allowed path lengths are:
+On a fixed T³, the allowed path lengths are:
 
     ℓ_n = ℓ_fundamental / n     (harmonics)
 
@@ -129,7 +142,7 @@ charge from the KK field projection, then verify it matches e.
 
 ## What shared geometry constrains
 
-If electrons and hadrons share one T², the geometry must
+If electrons and hadrons share one T³, the geometry must
 simultaneously satisfy:
 
 1. **Electron:** single (1,2) photon at n = 1 gives charge e,
@@ -143,26 +156,33 @@ simultaneously satisfy:
 5. **Deep inelastic scattering:** three distinct scattering
    centers within the proton
 
-These are severe constraints on one (r, R, a) triple.  If
-they can be satisfied simultaneously, r is determined — and
-so is everything else (q, δ, α).
+These are severe constraints on one (L₁, L₂, L₃) triple.
+If they can be satisfied simultaneously, the geometry is
+determined — and so is everything else.
 
 ## Planned approach
 
-### Track 1: Multi-photon field on T² (prerequisite: R13)
+### Track 0: Feasibility check ✓
 
-Extend R13's single-photon KK analysis to two and three
-photons.  Compute the total EM field of multiple linked
-geodesics on flat T², project into 3+1D, extract the
+**Result:** T² cannot support linking (negative).  T³ can,
+with three linking planes mapping to three color charges
+(positive).  Proton mass = 3 × 612 × m_e to 0.008%
+(suggestive).  See [`findings.md`](findings.md).
+
+### Track 1: Multi-photon field on T³ (prerequisite: R13)
+
+Extend R13's single-photon KK analysis to T³ and to two and
+three photons.  Compute the total EM field of multiple linked
+geodesics on flat T³, project into 3+1D, extract the
 monopole charge.
 
 Key question: does topological linking produce fractional
 charges from integer-winding photons?
 
-### Track 2: Linking topologies on T²
+### Track 2: Linking topologies on T³
 
 Classify the possible topological links of two and three
-closed geodesics on T².  Which configurations are Borromean
+closed geodesics on T³.  Which configurations are Borromean
 (no pair linked, but triple linked)?  Which give spin ½ for
 the composite?
 
