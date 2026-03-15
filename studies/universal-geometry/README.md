@@ -195,6 +195,39 @@ Does the geometry determined by Tracks 1–3 satisfy:
 3. Is quark confinement automatic from the linking topology?
 4. Does the proton-to-electron mass ratio emerge?
 
+## Consequence: baryogenesis without antimatter
+
+If all particles share one T², the only fundamental
+conservation law involving "charge-like" quantities is total
+winding number conservation (= total charge conservation).
+"Baryon number" and "lepton number" are not fundamental —
+they count topological configurations, not conserved charges.
+
+A charge-neutral atom (e.g. hydrogen) has total winding = 0,
+the same as the vacuum.  This means:
+
+**Neutral atoms can form directly from photons.**
+
+The reaction 4γ → H (three photons link into a proton, one
+winds into an electron) conserves energy, momentum, and total
+winding.  No antimatter is required.
+
+This dissolves the baryogenesis puzzle: in the early universe
+(T > 10¹² K), energetic photons could condense directly into
+neutral matter.  The observed matter-antimatter "asymmetry" is
+not an asymmetry — it's the natural outcome of photon
+condensation into charge-neutral topological states.
+
+**Testable prediction: proton decay.**  Since baryon number is
+not fundamental, the proton's three-photon linked state can in
+principle unlink.  The rate depends on the topological barrier
+height — expected to be extremely suppressed but nonzero.
+Current bound: τ_p > 10³⁴ years (Super-Kamiokande).
+
+This prediction is shared by Grand Unified Theories but arises
+from a completely different mechanism: topological unlinking
+vs. gauge boson exchange.
+
 ## Relation to other questions
 
 - Q12: multi-photon and color charge

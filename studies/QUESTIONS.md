@@ -516,6 +516,36 @@ from flat T²) attempts.  α is not "the coupling strength
 between fundamental charges" — it is a geometric ratio
 characterizing the compact space.
 
+**Implications for baryogenesis:**  In this framework,
+"baryon number" and "lepton number" are not fundamental —
+they count topological configurations (three-photon linked
+states and single-photon wound states, respectively).  Only
+the total winding number (= total charge) is conserved.  A
+charge-neutral atom (e.g. hydrogen = proton + electron) has
+total winding zero — the same as the vacuum.  Therefore:
+
+- **Neutral atoms can form directly from photons** without
+  producing antimatter.  The reaction 4γ → H (3 photons
+  link into a proton, 1 winds into an electron) conserves
+  energy, momentum, and total winding.
+- **No baryogenesis puzzle.**  In the early universe (T >
+  10¹² K), energetic photons could condense directly into
+  neutral matter without needing equal antimatter.  The
+  matter-antimatter asymmetry is not an asymmetry at all —
+  it's the natural outcome of photon condensation into
+  charge-neutral topological states.
+- **Proton decay is predicted** (but rare).  Since baryon
+  number is not fundamental, the three-photon linked state
+  can in principle unlink, releasing free photons or lighter
+  particles.  The rate depends on the topological barrier to
+  unlinking — expected to be extremely suppressed but nonzero.
+  Current experimental bound: τ_p > 10³⁴ years (Super-K).
+- **Testable prediction:** any charge-neutral combination of
+  particles can be created from photons alone, given sufficient
+  energy and the right conditions.  This is also predicted by
+  Grand Unified Theories but from a completely different
+  mechanism (gauge boson mediation vs. topological transition).
+
 **Historical context:** This view is in the lineage of
 Wheeler's "charge without charge" and "mass without mass"
 (geometrodynamics, 1950s–60s), Kaluza-Klein theory
