@@ -233,7 +233,13 @@ compact topology.  Consider:
 - S3 found that the WvM charge formula maps specific a/R values
   to fractional charges — potentially reflecting per-photon
   contributions rather than separate particles.
+**Shared geometry hypothesis (Q32, R14):** If all particles
+share one T², fractional charges must arise from topological
+linking of multiple photons on the same geometry — not from
+different a/R values.  This is far more constraining and
+would fix the free parameter r.  See R14 (draft).
 *Source: user question, knot-zoo F3*
+*Status: → R14 (draft, not yet active)*
 
 Q28. **Photon absorption and excited electrons.** In standard
 QM, an orbiting electron absorbs a photon and jumps to a higher
@@ -264,6 +270,11 @@ of assumptions.  Candidates for explicit axioms:
   introduced
 - Energy propagates according to dimensional constraints
 Can all particle properties be derived from these alone?
+
+**Refined framing (from Q32 analysis):** The axioms may reduce
+to just two fundamental ingredients: **energy** and **geometry**
+(including topology).  All particle properties — mass, charge,
+spin, magnetic moment — are emergent.  See Q32.
 *Source: user question*
 
 Q29. **Variational principle for α.**  Every other quantity in
@@ -371,6 +382,151 @@ prime/composite distinction in any linear analysis.  q enters
 the flat-T² spectrum as a continuous parameter, not through
 its factorization.  The hypothesis remains viable only in the
 nonlinear/curved-torus regime.*
+
+Q31. **Discrete T² and digital counter hypothesis.**  What if
+the compact space is not continuous but has a finite number of
+discrete states — a digital counter?
+
+**Core idea:** Represent T² as a single integer counter with
+N total states that wraps (modular arithmetic).  Assign the
+low-order bits to the minor circumference (a-dimension) and
+the high-order bits to the major circumference (R-dimension).
+This naturally produces:
+
+- **Wrapping:** the counter is periodic by definition.
+- **Shear:** upper bits only increment when lower bits roll
+  over (like an odometer).  The carry propagation IS the
+  shear — the seam offset arises from hierarchical counting,
+  not from an imposed boundary condition.
+- **Full coverage:** every state in the counter is visited
+  exactly once per full cycle, so the entire T² domain is
+  scanned.
+- **Two periodicities:** the lower bits cycle at a higher
+  frequency (minor circumference) while the upper bits cycle
+  at a lower frequency (major circumference), consistent with
+  the (p, q) winding structure.
+
+**The 128 question:** If the counter uses binary, the natural
+modulus is a power of 2.  128 = 2^7 is suggestive because the
+measured 1/α(M_Z) = 127.951 ± 0.009 — within 0.04% of 2^7.
+In QED, vacuum polarization screens the bare charge, making
+the effective coupling weaker (1/α larger) at low energy.  If
+α_bare = 1/128, the dressed α at zero energy could be ~1/137
+via standard running.
+
+**Preliminary calculation (one-loop perturbative QED):**
+
+Using the known fermion spectrum (e, μ, τ, u, d, s, c, b)
+with one-loop vacuum polarization:
+
+| Scale         | 1/α (perturbative) |
+|---------------|---------------------|
+| 0 (measured)  | 137.036             |
+| ℏc/r_e        | 134.8               |
+| m_c           | 132.5               |
+| m_b           | 130.9               |
+| 10 GeV        | 129.7               |
+| 33 GeV        | 128.0               |
+| M_Z (91 GeV)  | 126.6               |
+
+The perturbative calc overshoots the measured running by
+~1.4 units (gives 126.6 at M_Z vs. measured 127.95) because
+light-quark contributions require non-perturbative QCD
+treatment (dispersion relations with e+e- → hadrons data).
+After correcting for this, 1/α = 128 likely falls near
+M_Z or slightly below.
+
+**Assessment:**
+- 1/α(M_Z) = 127.951 is close to 128 but ~5σ below it.
+  Tantalizing, not conclusive.  Scheme-dependent (MS-bar
+  vs. on-shell) at the ~0.1 level.
+- The direction of running is correct: bare α larger
+  (1/α smaller), dressed α smaller (1/α larger).
+- The digital counter elegantly explains the shear as carry
+  propagation rather than an externally imposed boundary
+  condition.
+- The deeper question — why would spacetime be discrete at
+  the torus scale (~10⁻¹⁵ m), far above the Planck scale
+  (~10⁻³⁵ m) — is unanswered.
+- If taken seriously, the bit allocation between minor and
+  major dimensions would fix the winding ratio, providing a
+  fundamentally different mechanism for selecting q.
+
+**Relation to other questions:**
+- Q18 (derive α): if α_bare = 1/128, the "derivation" becomes
+  explaining why the counter is 2^7 states, plus standard QED
+  running.
+- Q30 (prime q): 137 is prime, but 128 = 2^7 is maximally
+  non-prime.  If the bare q is 128, the primality of 137 is
+  accidental (an artifact of the running correction).
+
+*Source: user hypothesis*
+*Status: open — conceptual.  The numerical coincidence
+1/α(M_Z) ≈ 128 is real.  A formal study would require:
+(1) precise calculation of QED running from α_bare = 1/128
+using dispersion-relation hadronic data, checking if α(0)
+matches 137.036 exactly; (2) a theoretical framework for
+why spacetime has discrete states at this scale.*
+
+Q32. **Energy and geometry as the only fundamentals.**  In
+the WvM framework, charge is not a fundamental substance —
+it is an EM field configuration that masquerades as charge
+when viewed from 3+1D.  Mass is not fundamental either —
+it is photon momentum confined in a periodic orbit.  If
+both are emergent, then only two things are truly
+fundamental: **energy** and **geometry** (topology of space).
+
+**The emergent hierarchy:**
+
+| Property  | Emergent from                         |
+|-----------|---------------------------------------|
+| Mass      | Energy confined in periodic geometry  |
+| Charge    | Field winding number on compact T²    |
+| Spin      | Winding ratio of geodesic (p:q)       |
+| Mag. mom. | Geometric projection of compact field |
+| g-factor  | Energy partition (co- vs non-rotating)|
+
+**Conservation laws are also emergent:**
+- *Mass conservation* = energy conservation (fundamental)
+- *Charge conservation* = winding number conservation
+  (topological: you can't smoothly unwrap a path on T²)
+- *Spin conservation* = topology of the geodesic
+  (can't change the knot type by smooth deformation)
+
+These emergent conservation laws are exact — not
+approximate — because topology is exact.  But their
+*reason* is different from the standard picture.  In
+standard physics, charge conservation follows from U(1)
+gauge symmetry (Noether's theorem).  In the WvM picture,
+it follows from the impossibility of changing winding
+number without tearing the field configuration.  The
+only processes that change winding are topological
+transitions: pair creation (winding + anti-winding from
+zero) and annihilation (winding + anti-winding → zero).
+Both conserve net winding = net charge.
+
+**Implications for the α problem:**  If charge is not an
+input but an emergent property of geometry, then using e
+in the charge calculation (R8) is circular in a deep
+sense.  The correct approach: derive the field pattern
+from the geometry alone, compute the apparent charge from
+the 3+1D projection, and check whether the geometry is
+self-consistent.  This is exactly what R13 (KK charge
+from flat T²) attempts.  α is not "the coupling strength
+between fundamental charges" — it is a geometric ratio
+characterizing the compact space.
+
+**Historical context:** This view is in the lineage of
+Wheeler's "charge without charge" and "mass without mass"
+(geometrodynamics, 1950s–60s), Kaluza-Klein theory
+(charge from the 5th dimension), and string theory
+(particles from compactification geometry).  The WvM
+model adds the specific claim that a single photon on T²
+suffices for the electron.
+*Source: user insight*
+*Status: open — conceptual.  This is a framing principle
+rather than a testable calculation, but it sharpens the
+direction for R13 and informs Q27 (foundational axioms).*
 
 ---
 

@@ -72,7 +72,7 @@ Final values await objective 3.
 These go beyond "reproduce known properties" toward the
 long-term goal.
 
-- **Derive α from geometry.** (Q18, Q29, Q30)
+- **Derive α from geometry.** (Q18, Q29, Q30, Q32)
   R8 Track 4 found δ ≈ αR (within ~6%).  The shear selects
   q and hence α.  But what selects the shear?
 
@@ -114,13 +114,21 @@ long-term goal.
     (sum over KK modes) depends on the T² geometry and may
     constrain the shear without using e as input.
 
+  **Conceptual reframing (Q32):** If charge is not a
+  fundamental substance but an emergent property of field
+  geometry (winding on T²), then α is a geometric ratio, not
+  a coupling constant.  Using e as input is circular — the
+  correct approach derives the apparent charge from the 3D
+  field projection, without introducing e as a parameter.
+  This sharpens the motivation for R13.
+
   **Context on running of α:**
   α runs in QED (1/137 → ~1/128 at Z-mass), but q must be an
   odd integer, so the geometric α is discrete.  The running
   likely reflects vacuum polarization screening in 3+1D, not
   changes in compact geometry.  The bare α (from geometry) is
   fixed; the dressed α (measured) runs due to virtual-pair
-  screening.
+  screening.  Note: 1/α(M_Z) ≈ 127.95 ≈ 2^7 (Q31).
 - **Mass spectrum.**  Why m_e and not some other value?
   Is there a quantization condition that selects discrete masses?
   (Q16)
@@ -196,6 +204,34 @@ producing the Coulomb potential.
 If the self-energy depends on shear in a way that has a
 unique solution, α is predicted from geometry alone.
 
+### R14. Universal geometry — shared T² for all particles
+**Study:** [`universal-geometry/`](universal-geometry/)  *(draft)*
+**Question:** Q12, Q13, Q26, Q32  **Type:** compute/reason
+**Depends on:** R13
+**Advances:** deeper problem (derive α), objective 3 (charge),
+hadrons, confinement
+
+If all particles (electrons, quarks, hadrons) share a single
+compact T², the one remaining free parameter r = a/R is
+constrained by multi-particle consistency: the same geometry
+must simultaneously produce electron charge e (single photon),
+fractional quark charges (multi-photon linked states), and
+the correct proton/neutron masses and spins.
+
+Key elements:
+- Fractional charges from topological linking of multiple
+  photons on the same T² (not from different a/R)
+- Quark confinement as a topological consequence (linked
+  paths can't separate)
+- Proton mass from three-photon energy on the same geometry
+  that gives the electron
+- If successful, fixes r and hence α from multi-particle
+  consistency
+
+Prerequisite: R13 (KK charge for single photon) must be
+completed first — need to know how one photon's field
+projects before handling three.
+
 ### ~~Wave equation on sheared T²~~ → absorbed into R12
 **Absorbed into R12.**  R12 is now complete.
 
@@ -246,7 +282,7 @@ What drives axis precession? Does it restore spherical symmetry?
 Does a precessing (1,2) orbit reproduce WvM's volume-filling
 energy flow (Fig. 2)?
 
-### Hadrons from multi-photon knots
+### ~~Hadrons from multi-photon knots~~ → folded into R14
 **Type:** compute/reason  **Questions:** Q12, Q13, Q26
 **Advances:** deeper problem (other particles)
 
