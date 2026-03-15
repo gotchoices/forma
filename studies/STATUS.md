@@ -167,42 +167,20 @@ fit λ_C of path length on a torus of radius ~r_e.  Spin ½ is
 expected from the local winding ratio.
 
 
----
-
-## Backlog
-
-Ordered roughly by priority.  Items get an R-number when
-promoted to Active.
-
-### R13. KK charge from flat T²
-**Question:** Q18, Q29  **Type:** compute  **Depends on:** R8, R11, R12
+### R13. KK charge from flat T³
+**Study:** [`kk-charge-t3/`](kk-charge-t3/)
+**Question:** Q18, Q29, Q32  **Type:** compute
+**Depends on:** R8, R11, R12, R14-Track0
 **Advances:** deeper problem (derive α), objective 3 (charge)
 
-Re-derive the electron's charge entirely from the flat-T²
-perspective using Kaluza-Klein field decomposition.
+Compute the 4D effective charge of a photon on a geodesic of
+flat T³, using Kaluza-Klein field decomposition.  Map how the
+apparent charge depends on the compact geometry.  Originally
+framed for T²; upgraded to T³ after R14 Track 0 showed that
+three compact dimensions are needed for hadron linking.
 
-**Motivation:** R12 showed that R8's charge calculation is
-internally inconsistent (flat T² for mass/spin, 3D embedding
-for Coulomb energy).  The photon experiences a flat compact
-space; its fields leak into 3+1D as projections.  This is
-exactly the KK framework: a 6D massless field on M₄ × T²
-decomposes into a tower of 4D modes, with the zero-mode
-producing the Coulomb potential.
-
-**Approach:**
-1. Set up the 6D scalar (or Maxwell) field equation on
-   Minkowski⁴ × flat sheared T²
-2. Perform the KK mode expansion; identify which mode
-   corresponds to the photon-on-geodesic
-3. Compute the 4D effective charge from the mode's coupling
-   to the zero-mode (Coulomb potential)
-4. Compute the self-energy (sum over KK tower) as a function
-   of the T² geometry (R, r, δ)
-5. Determine whether requiring self-energy = m_e c²/2
-   constrains the shear δ without using e as input
-
-If the self-energy depends on shear in a way that has a
-unique solution, α is predicted from geometry alone.
+See [`kk-charge-t3/README.md`](kk-charge-t3/README.md) for
+full study plan.
 
 ### R14. Universal geometry — shared T³ for all particles
 **Study:** [`universal-geometry/`](universal-geometry/)  *(draft)*
@@ -234,6 +212,13 @@ Key elements:
 
 Prerequisite: R13 (KK charge for single photon), extended
 to T³.
+
+---
+
+## Backlog
+
+Ordered roughly by priority.  Items get an R-number when
+promoted to Active.
 
 ### ~~Wave equation on sheared T²~~ → absorbed into R12
 **Absorbed into R12.**  R12 is now complete.
