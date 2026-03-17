@@ -105,7 +105,7 @@ constrains the geometry, α becomes a geometric prediction.
 
 ## Housekeeping — todo list
 
-Organizational improvements identified. Review and approve before executing.
+All items complete.
 
 ### 1. Create top-level `qa/` folder  *(done)*
 - [x] Create `qa/README.md` explaining purpose and naming convention
@@ -114,18 +114,7 @@ Organizational improvements identified. Review and approve before executing.
 - [x] File questions with substantial content as individual `Q<N>-slug.md` files
 - [x] Update all cross-references that point to `studies/QUESTIONS.md` or `studies/answers/`
 
-**Questions ready to be filed individually** (currently buried in INBOX):
-
-| File | Topic | Status |
-|------|-------|--------|
-| `Q01-compact-dimension-topology.md` | Topological vs. geometric compactification | Answered → A7 |
-| `Q05-orthogonality-and-size.md` | Can a sub-uncertainty compact space be orthogonal? | Answerable (standard KK) |
-| `Q07-flat-compact-dimensions.md` | Can a compact dimension be flat? | Answered → A7 |
-| `Q11-spin-statistics-filter.md` | Why only q = 1 and q = 2? | Answerable (spin-statistics theorem) |
-| `Q22-path-closure.md` | Does exact path closure matter? | Largely answered (analytical) |
-| `Q33-gravity-vs-charge.md` | Can gravity and charge both arise from photons? | Answered inline — deserves own file |
-| `Q18-deriving-alpha.md` | What selects q? (the α problem) | Open but rich — move out of INBOX |
-| `Q32-energy-geometry-fundamentals.md` | Energy and geometry as the only fundamentals | Open but rich — move out of INBOX |
+- [x] Q05, Q07, Q11, Q13, Q18, Q22, Q26–Q33 filed as individual Q files; INBOX trimmed to pointers
 
 ### 2. Create `totu/STATUS.md` *(done — this file)*
 

@@ -30,12 +30,7 @@ self-consistently?
 *Source: user question, corrected twice*
 *Status: largely resolved; residual question folded into R2*
 
-Q5. **Size and independence.** If a compactified space fits inside
-the diameter of uncertainty of the resultant particle, can it
-still be toroidal and qualify as orthogonal to xyz?
-*Source: user question*
-*Status: answerable — yes, orthogonality is metric-based, not
-size-dependent. Standard KK result. Needs write-up.*
+Q5. **Size and independence.** → [Q05-orthogonality-and-size.md](Q05-orthogonality-and-size.md) *(answered)*
 
 Q6. **Orthogonality and transforms.** Is there a transform that
 connects xyz to the compactified dimension? Does the new
@@ -64,12 +59,7 @@ q/e by a few percent?
 *Source: toroid-geometry F5*
 *Status: → R7 (concluded); backlog for full calculation*
 
-Q11. **Why only q = 1 and q = 2?** Is there a physical selection
-rule eliminating torus knots with q ≥ 3?
-*Source: knot-zoo F1*
-*Status: answerable — spin-statistics theorem requires integer or
-half-integer spin. q ≥ 3 gives non-standard spins, ruled out.
-Needs write-up.*
+Q11. **Why only q = 1 and q = 2?** → [Q11-spin-statistics-filter.md](Q11-spin-statistics-filter.md) *(answered)*
 
 Q12. **Multi-photon states and color charge.** Could three confined
 photons with correlated phases each contribute 1/3 of the charge?
@@ -118,15 +108,7 @@ angular momentum simultaneously? Is (1,2) unique?
 *Source: user question*
 *Status: open — needs computation*
 
-Q22. **Does exact path closure matter?** All five electron
-properties derive from (1,2) topology and local commensurability,
-not from global periodicity. A precessing orbit should preserve
-them all.
-*Source: user question*
-*Status: largely answered — analytical argument says exact closure
-is not required. The one subtlety is constructive
-self-interference, which implicitly assumes phase matching.
-Needs write-up.*
+Q22. **Does exact path closure matter?** → [Q22-path-closure.md](Q22-path-closure.md) *(largely answered)*
 
 Q23. **Precessing orbit and volume-filling.** Does a precessing
 (1,2) orbit reproduce WvM's volume-filling energy flow pattern?
@@ -160,7 +142,10 @@ See [`README.md`](README.md) for the full index.
 | # | File | Note |
 |---|------|------|
 | Q1, Q7 | [Q07-flat-compact-dimensions.md](Q07-flat-compact-dimensions.md) | Compact dimensions can be flat; orthogonality is metric-based |
+| Q5 | [Q05-orthogonality-and-size.md](Q05-orthogonality-and-size.md) | Orthogonality is metric, not size-dependent; standard KK result |
+| Q11 | [Q11-spin-statistics-filter.md](Q11-spin-statistics-filter.md) | Spin-statistics theorem excludes free particles with q ≥ 3 |
 | Q13 | [Q13-three-compact-dimensions.md](Q13-three-compact-dimensions.md) | Three compact dims required for topological linking (R14 Track 0) |
+| Q22 | [Q22-path-closure.md](Q22-path-closure.md) | Exact closure not needed; properties depend on topology, not global periodicity |
 | Q30 | [Q30-prime-q-harmonic-avoidance.md](Q30-prime-q-harmonic-avoidance.md) | Negative result — primality does not select q (R11) |
 | Q33 | [Q33-gravity-vs-charge.md](Q33-gravity-vs-charge.md) | Both can arise from photons; different coupling channels |
 

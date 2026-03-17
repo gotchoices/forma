@@ -20,9 +20,12 @@ For questions that need a computational model, see [`studies/`](../studies/).
 
 | File | Question | Status |
 |------|----------|--------|
+| [Q05](Q05-orthogonality-and-size.md) | Can a sub-uncertainty compact space be orthogonal to xyz? | Answered |
 | [Q07](Q07-flat-compact-dimensions.md) | Can a compact dimension be flat? (covers Q1 and Q7) | Answered |
+| [Q11](Q11-spin-statistics-filter.md) | Why are only winding numbers q = 1 and q = 2 physical? | Answered |
 | [Q13](Q13-three-compact-dimensions.md) | Are three compact dimensions required? | Answered (R14 Track 0) |
 | [Q18](Q18-deriving-alpha.md) | Can α be derived from geometry? What selects q? | Open — active front |
+| [Q22](Q22-path-closure.md) | Does exact path closure matter for electron properties? | Largely answered |
 | [Q26](Q26-hadrons-photon-knots.md) | Multi-photon hadrons and knot confinement | Open → R14 |
 | [Q27](Q27-foundational-axioms.md) | What are the foundational axioms of the model? | Open — framing |
 | [Q28](Q28-photon-absorption.md) | What does photon absorption mean in this model? | Open — needs computation |
