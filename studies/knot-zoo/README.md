@@ -33,7 +33,7 @@ they predict?
 
 This study raises foundational questions about the nature of the
 compact dimension(s): what is the space, how does it relate to xyz,
-and what determines its shape? See `../QUESTIONS.md`.
+and what determines its shape? See [`../../qa/INBOX.md`](../../qa/INBOX.md).
 
 ## Approach
 

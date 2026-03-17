@@ -360,8 +360,8 @@ The following studies build on or investigate WvM concepts:
 
 - [`studies/toroid-geometry/`](../studies/toroid-geometry/) — charge from geometric ratios
 - [`studies/knot-zoo/`](../studies/knot-zoo/) — orbit uniqueness, fractional charges, field extent
-- [`studies/answers/A7`](../studies/answers/A7-flat-compact-dimensions.md) — compact dimension hypothesis
-- [`studies/QUESTIONS.md`](../studies/QUESTIONS.md) — open questions (esp. Q3/Q4 on dimensionality, Q22/Q23 on precession)
+- [`qa/Q07-flat-compact-dimensions.md`](../qa/Q07-flat-compact-dimensions.md) — compact dimension hypothesis
+- [`qa/INBOX.md`](../qa/INBOX.md) — open questions (esp. Q3/Q4 on dimensionality, Q22/Q23 on precession)
 
 ---
 

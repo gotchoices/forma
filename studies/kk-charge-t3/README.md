@@ -1,4 +1,4 @@
-# R13. KK Charge from Flat T³
+# R13. KK Charge from Flat T³  *(active)*
 
 How does a photon on a flat compact T³ manifest as a charged
 particle in 3+1D?  Compute the effective 4D charge using

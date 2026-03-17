@@ -44,7 +44,8 @@ dimensions, and (3) the rules of propagation (Maxwell's
 equations).  Everything else — the particle zoo, their
 properties, their interactions — should follow.
 
-See [`studies/QUESTIONS.md`](studies/QUESTIONS.md) Q27, Q32
+See [`qa/Q27-foundational-axioms.md`](qa/Q27-foundational-axioms.md) and
+[`qa/Q32-energy-geometry-fundamentals.md`](qa/Q32-energy-geometry-fundamentals.md)
 for discussion.
 
 ## Foundation
@@ -57,29 +58,31 @@ confined to a (1,2) torus knot.  The model reproduces spin ½
 This project extends the WvM model into a compact-dimension
 framework: the photon lives on a flat torus T² (two periodic
 dimensions), and the electron's properties emerge from the
-geometry of that surface.  Key results so far:
-
-- Charge e arises from the EM field configuration on T²,
-  projected into 3+1D.  Charge is emergent, not fundamental.
-- Mass m_e comes from the resonance condition (path length = λ_C).
-  Mass is confined photon energy.
-- Spin ½ is topological (the (1,2) winding number).
-- The magnetic moment comes from B's net axial projection on the
-  torus.
-- The fine-structure constant α is a geometric ratio of the
-  compact space, not an independent coupling constant.
+geometry of that surface.
 
 See [`primers/charge-from-energy.md`](primers/charge-from-energy.md) for
-the conceptual framework and [`studies/STATUS.md`](studies/STATUS.md)
-for the current state of work.
+the conceptual framework and [`STATUS.md`](STATUS.md) for results,
+active work, and open problems.
 
 [wvm]: https://fondationlouisdebroglie.org/AFLB-222/MARK.TEX2.pdf
 
 ## Structure
 
 - `reference/` — Source material by others and recorded conversations.
-- `primers/` — Self-contained tutorials to come up to speed on topics used in the studies.
+- `primers/` — Self-contained tutorials on topics needed to follow the studies.
 - `papers/` — Authored documents presenting theories, results, and proofs.
-- `studies/` — Individual studies, each in its own folder.
-  See [`studies/README.md`](studies/README.md) for workflow and
-  conventions.
+- `qa/` — Physics questions answered by logic and existing theory (no computation).
+  See [`qa/README.md`](qa/README.md) for the index.
+- `studies/` — Questions that require a computational model to answer.
+  See [`studies/README.md`](studies/README.md) for workflow and conventions.
+
+## Navigation
+
+| File | Purpose |
+|------|---------|
+| [`STATUS.md`](STATUS.md) | Where we are: objectives, results, active front, open problems |
+| [`studies/STATUS.md`](studies/STATUS.md) | Study-by-study registry: active, backlog, done |
+| [`qa/README.md`](qa/README.md) | Index of answered and open physics questions |
+| [`qa/INBOX.md`](qa/INBOX.md) | Capture queue for new questions |
+| [`primers/charge-from-energy.md`](primers/charge-from-energy.md) | Conceptual foundation: how EM energy becomes apparent charge |
+| [`reference/WvM-summary.md`](reference/WvM-summary.md) | Living summary of the foundational WvM paper |

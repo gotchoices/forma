@@ -1,18 +1,14 @@
-# A7. Flat Compact Dimensions and Transforms
+# Q07: Flat compact dimensions and transforms
 
-**Question:** Can an extra spatial dimension be intrinsically flat
-(a photon traveling in it experiences straight-line motion) yet finite
-and boundary-free, simply because the coordinate is periodic? If so,
-the "toroidal" shape we use to visualize such a space is a drawing
-aid, not a physical shape. What are transforms in this context, and
-how does the familiar xyz machinery generalize to compact dimensions?
+**Covers:** Q1 (geometric vs topological compactification), Q7 (flat compact dimensions)  
+**Status:** Answered  
+**Source:** User questions  
+**Related:** [Q06 inbox](INBOX.md#q6), [R1](../studies/kk-charge/), [R13](../studies/kk-charge-t3/)
 
-**Short answer:** Yes. A compact dimension is just a periodic
-coordinate. The space is flat, the photon moves in a straight line,
-and the torus/circle is only a visualization. Transforms generalize
-naturally: translation in the compact direction produces charge
-conservation, exactly as translation in x produces momentum
-conservation.
+**Short answer:** Yes. A compact dimension is just a periodic coordinate. The space is
+flat, the photon moves in a straight line, and the torus/circle is only a visualization.
+Transforms generalize naturally: translation in the compact direction produces charge
+conservation, exactly as translation in x produces momentum conservation.
 
 ---
 
@@ -161,7 +157,7 @@ per two wraps around the other.
 
 Whether WvM's specific charge derivation maps exactly onto the KK
 charge quantization formula (p_w = nℏ/L) is an open question
-(see QUESTIONS.md Q17). The algebra has not been checked
+(see [Q17 in INBOX](INBOX.md#q17)). The algebra has not been checked
 explicitly.
 
 ## 6. Status of Kaluza-Klein theory

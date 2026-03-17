@@ -17,4 +17,4 @@
 
 ## Questions Raised
 
-See `../QUESTIONS.md` for the research question queue.
+See [`../../qa/INBOX.md`](../../qa/INBOX.md) for the research question queue.

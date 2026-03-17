@@ -8,10 +8,11 @@ documentation and computational work.
 ## Workflow
 
 ```
-1. CAPTURE    New idea or question → QUESTIONS.md
+1. CAPTURE    New idea or question → qa/INBOX.md
 
-2. TRIAGE     Review QUESTIONS.md →
+2. TRIAGE     Review qa/INBOX.md →
               Quick answer?  → answer inline, mark answered
+              Substantial?   → write up as qa/Q<N>-slug.md
               Needs work?    → STATUS.md entry (R<N>) at correct priority
                                Tag question → R<N>
                                If enough substance → create draft study folder
@@ -21,7 +22,7 @@ documentation and computational work.
 
 4. EXECUTE    Pick top item from STATUS.md "Next" → move to "Active"
               Activate study folder (add findings.md, scripts/, tasks)
-              Or write answer in answers/ for non-compute items
+              Or write answer in qa/ for non-compute items
 
 5. CLOSE      STATUS.md item → "Done" with link to result
               Study → *(concluded)* in its README.md title
@@ -33,8 +34,8 @@ documentation and computational work.
 | File | Job |
 |------|-----|
 | `STATUS.md` | Priority-ordered work queue. What to work on next. |
-| `QUESTIONS.md` | Raw capture log. Questions as they arise. |
-| `answers/` | Standalone answers (named `A<N>-<topic>.md` matching question IDs). |
+| [`../qa/INBOX.md`](../qa/INBOX.md) | Raw capture log. Questions as they arise. |
+| [`../qa/`](../qa/) | Q&A folder — answered and open questions written up individually. |
 | `lib/` | Shared code — physical constants, common utilities. |
 
 ## Study Folder Convention
