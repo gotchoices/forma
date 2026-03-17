@@ -85,7 +85,7 @@ the charge test badly.
 **Script:** `scripts/04_dialog_claims.py`
 **Bears on:** theory.md §3 (errors in the source material)
 
-Tested 8 quantitative claims from `ref/dialog.md`:
+Tested 8 quantitative claims from `reference/gemini-tensors-compton-toroid.md`:
 
 | Claim | Verdict |
 |-------|---------|

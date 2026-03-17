@@ -57,4 +57,4 @@ spread of a wave on a curved path match the field extent?
 
 - S2 (charge derivation): [`toroid-geometry/findings.md`](../toroid-geometry/findings.md)
 - R2 (geometry): [`electron-compact/findings.md`](../electron-compact/findings.md)
-- WvM paper: [`ref/WvM.pdf`](../../ref/WvM.pdf)
+- WvM paper: [`reference/WvM.pdf`](../../reference/WvM.pdf)

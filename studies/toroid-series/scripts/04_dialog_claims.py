@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 04_dialog_claims.py — Verify or refute specific quantitative claims from the
-Gemini dialog (ref/dialog.md).
+Gemini dialog (reference/gemini-tensors-compton-toroid.md).
 
 Each claim is tested independently and labeled CONFIRMED, REFUTED, or
 PARTIALLY CONFIRMED with an explanation.

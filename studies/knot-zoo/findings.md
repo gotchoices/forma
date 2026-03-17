@@ -81,7 +81,7 @@ the field extent. So spin = ℏ/q holds even though a_field/R ≈ 6.6.
 ### Correction history: surface, volume, and radial structure
 
 This understanding was corrected twice. The full analysis is in
-`ref/WvM-summary.md` §4.
+`reference/WvM-summary.md` §4.
 
 **v1 (initial):** Treated the photon path as living on one torus
 surface (2D compact space, T² = S¹ × S¹).

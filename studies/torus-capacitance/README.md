@@ -14,7 +14,7 @@ sense.  These cancel, producing an E field that is always normal
 to the torus surface with constant magnitude E₀ at the photon's
 location.
 
-(See [`ref/charge-from-energy.md`](../../ref/charge-from-energy.md)
+(See [`primers/charge-from-energy.md`](../../primers/charge-from-energy.md)
 §2 for the derivation.)
 
 The photon travels along the (1,2) geodesic — a 1D curve on the
@@ -141,7 +141,7 @@ Resolving this is a separate problem.
 ## References
 
 - Charge-from-energy primer:
-  [`ref/charge-from-energy.md`](../../ref/charge-from-energy.md)
+  [`primers/charge-from-energy.md`](../../primers/charge-from-energy.md)
 - R6 (self-consistent geometry):
   [`field-profile/findings.md`](../field-profile/findings.md)
 - S2 (energy-balance charge):

@@ -48,7 +48,7 @@ The direction is understood: B tangent to the compact surface
 has a net axial component when mapped to 3D (geometric
 projection of k̂ × E, not a current loop).  The g-factor
 g ≈ 2(1 + α/2π) comes from WvM's energy-partition argument.
-Documented in [`ref/charge-from-energy.md`](../ref/charge-from-energy.md) §4.
+Documented in [`primers/charge-from-energy.md`](../primers/charge-from-energy.md) §4.
 
 ### 5. g-factor ≈ 2.0023
 **Status: SOLVED** (WvM §5, R2)
@@ -386,7 +386,7 @@ Fractional charges (e/3, 2e/3) map to clean a/R multiples.
 Compact dimension hypothesis proposed.
 
 ### 4. D1. WvM summary revision
-**Result:** [`ref/WvM-summary.md`](../ref/WvM-summary.md)
+**Result:** [`reference/WvM-summary.md`](../reference/WvM-summary.md)
 
 Revised to separate paper content from study results. Added
 Zitterbewegung, harmony of phases, monopole exclusion, pair

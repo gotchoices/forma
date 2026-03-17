@@ -136,7 +136,7 @@ that works) is an interpretation, not a proven result.
 
 ## F3. What WvM Gets Right vs. What Depends on Geometry
 
-**No script** — analytical review of the WvM paper (ref/WvM.pdf §2–5)
+**No script** — analytical review of the WvM paper (reference/WvM.pdf §2–5)
 **Bears on:** P1 (rotation horizon justification)
 
 WvM derive three electron properties. Their robustness differs

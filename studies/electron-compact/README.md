@@ -75,5 +75,5 @@ verification.
 - S2 (charge geometry): [`toroid-geometry/findings.md`](../toroid-geometry/findings.md)
 - S3 (knot classification): [`knot-zoo/findings.md`](../knot-zoo/findings.md)
 - R1 (KK comparison): [`kk-charge/findings.md`](../kk-charge/findings.md)
-- WvM paper: [`ref/WvM.pdf`](../../ref/WvM.pdf)
-- WvM summary: [`ref/WvM-summary.md`](../../ref/WvM-summary.md)
+- WvM paper: [`reference/WvM.pdf`](../../reference/WvM.pdf)
+- WvM summary: [`reference/WvM-summary.md`](../../reference/WvM-summary.md)

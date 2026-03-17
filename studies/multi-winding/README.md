@@ -224,6 +224,6 @@ These become relevant only after a working geometry is found:
 - R7 findings:
   [`torus-capacitance/findings.md`](../torus-capacitance/findings.md)
 - Charge-from-energy primer:
-  [`ref/charge-from-energy.md`](../../ref/charge-from-energy.md)
+  [`primers/charge-from-energy.md`](../../primers/charge-from-energy.md)
 - R6 (self-consistent geometry):
   [`field-profile/findings.md`](../field-profile/findings.md)

@@ -5,7 +5,7 @@
 We modeled the electron as a circularly polarized photon on a
 (1,2) geodesic of a torus with major radius R and minor radius a.
 The synchronized circular polarization mechanism (see
-[`ref/charge-from-energy.md`](../../ref/charge-from-energy.md) §2)
+[`primers/charge-from-energy.md`](../../primers/charge-from-energy.md) §2)
 produces E always pointing outward along the local surface normal.
 
 We distributed total charge Q = e uniformly along the geodesic

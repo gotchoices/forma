@@ -1,6 +1,6 @@
 # From S¹ to T²: Two Compact Dimensions and the Electron
 
-**Prerequisite:** [`ref/kaluza-klein.md`](../../ref/kaluza-klein.md)
+**Prerequisite:** [`primers/kaluza-klein.md`](../../primers/kaluza-klein.md)
 — Kaluza-Klein theory from the ground up.
 
 This paper argues that the Williamson–van der Mark (WvM) electron
@@ -76,7 +76,7 @@ in each direction before closing.
 A straight line on the flat rectangle with slope L₂/L₁ × (q/p)
 wraps p times vertically (w₂ direction) per q times horizontally
 (w₁ direction) before closing. This is a **(p,q) torus knot** in
-our convention (see `ref/WvM-summary.md` Notation).
+our convention (see `reference/WvM-summary.md` Notation).
 
 Different coprime (p,q) pairs give **topologically distinct**
 geodesics on the same T²:
@@ -302,5 +302,5 @@ Do they unify?
 
 *This paper sets up the framework. The study proceeds by testing
 P1 first (pure algebra), then P2–P4 if P1 succeeds. See
-`README.md` for the study plan and `../../ref/kaluza-klein.md`
+`README.md` for the study plan and `../../primers/kaluza-klein.md`
 for the KK prerequisite.*

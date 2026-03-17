@@ -41,7 +41,7 @@ repo root) and the shared library (`../lib/`). Run from the repo root:
 | `01_wvm_baseline.py` | F1 | Reproduces WvM Eq. 5 charge prediction (q ≈ 0.91e). Establishes the correction factor S ≈ 1.0985. |
 | `02_series_scan.py` | F2 | Scans 18 named candidate ratios for a geometric series summing to S. Tests P1 (series hypothesis) and P2 (recognizable ratio). |
 | `03_scaling_dimensions.py` | F3 | Counts nested layers to reach Planck length for each ratio. Tests P3 (finite terms) and P4 (dimensional correspondence). |
-| `04_dialog_claims.py` | F4 | Verifies or refutes 8 quantitative claims from `ref/dialog.md`. |
+| `04_dialog_claims.py` | F4 | Verifies or refutes 8 quantitative claims from `reference/gemini-tensors-compton-toroid.md`. |
 | `05_free_series.py` | F5 | Unconstrained optimization: finds the smoothest N-term decomposition of the deficit. Requires `scipy` and `numpy`. |
 
 ## Other Files

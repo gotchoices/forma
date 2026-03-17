@@ -1,7 +1,7 @@
 # Gemini dialog: Tensors, Compton wavelength, and harmonic toroidal theory
 
 **Source:** https://g.co/gemini/share/8687bd0e440b  
-**Formatted from:** `ref/dialog.txt`
+**Formatted from:** raw paste (dialog.txt, now removed)
 
 ---
 

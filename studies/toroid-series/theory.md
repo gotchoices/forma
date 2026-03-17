@@ -68,7 +68,7 @@ of extra dimensions required by string/M-theory (6 or 7).
 
 *Verified computationally in `scripts/04_dialog_claims.py`.*
 
-The Gemini conversation (ref/dialog.md) generated many of the ideas explored
+The Gemini conversation (reference/gemini-tensors-compton-toroid.md) generated many of the ideas explored
 here, but several of its quantitative claims do not hold up. These are
 corrected below.
 

@@ -69,7 +69,7 @@ geometry of that surface.  Key results so far:
 - The fine-structure constant α is a geometric ratio of the
   compact space, not an independent coupling constant.
 
-See [`ref/charge-from-energy.md`](ref/charge-from-energy.md) for
+See [`primers/charge-from-energy.md`](primers/charge-from-energy.md) for
 the conceptual framework and [`studies/STATUS.md`](studies/STATUS.md)
 for the current state of work.
 
@@ -77,7 +77,9 @@ for the current state of work.
 
 ## Structure
 
-- `ref/` — Reference material, primers, and the WvM paper.
+- `reference/` — Source material by others and recorded conversations.
+- `primers/` — Self-contained tutorials to come up to speed on topics used in the studies.
+- `papers/` — Authored documents presenting theories, results, and proofs.
 - `studies/` — Individual studies, each in its own folder.
   See [`studies/README.md`](studies/README.md) for workflow and
   conventions.

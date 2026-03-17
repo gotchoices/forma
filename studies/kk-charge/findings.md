@@ -4,9 +4,9 @@ Study R1. Each section builds on the previous one; every formula
 is derived step by step and verified numerically in
 [`scripts/verify.py`](scripts/verify.py).
 
-**Prerequisites:** [`ref/kaluza-klein.md`](../../ref/kaluza-klein.md),
-[`ref/matrix-primer.md`](../../ref/matrix-primer.md),
-[`ref/maxwell-primer.md`](../../ref/maxwell-primer.md).
+**Prerequisites:** [`primers/kaluza-klein.md`](../../primers/kaluza-klein.md),
+[`primers/matrix-primer.md`](../../primers/matrix-primer.md),
+[`primers/maxwell-primer.md`](../../primers/maxwell-primer.md).
 
 ---
 

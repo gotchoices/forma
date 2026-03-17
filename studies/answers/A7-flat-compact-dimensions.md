@@ -222,7 +222,7 @@ mathematical infrastructure, not empirical claims.
   field fills a 3D volume, but individual streamlines stay at
   constant tube radius — the radial direction is a transverse mode
   profile (like a waveguide mode), not a propagation direction or
-  compact dimension. See `ref/WvM-summary.md` §4. Earlier versions
+  compact dimension. See `reference/WvM-summary.md` §4. Earlier versions
   of this answer incorrectly suggested the compact space might need
   to be 3D; this was corrected after analyzing streamline behavior.
 - If quarks require different compact dimensions (from knot-zoo F4),

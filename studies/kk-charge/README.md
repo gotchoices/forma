@@ -51,8 +51,8 @@ definitive scale separation (10²¹×) between KK and WvM.
 
 ## References
 
-- WvM paper §3 (charge): [`ref/WvM.pdf`](../../ref/WvM.pdf)
+- WvM paper §3 (charge): [`reference/WvM.pdf`](../../reference/WvM.pdf)
 - S2 findings (a/R = 1/√(πα)): [`toroid-geometry/findings.md`](../toroid-geometry/findings.md)
 - S3 findings (only (1,2) has charge): [`knot-zoo/findings.md`](../knot-zoo/findings.md)
-- KK primer: [`ref/kaluza-klein.md`](../../ref/kaluza-klein.md)
+- KK primer: [`primers/kaluza-klein.md`](../../primers/kaluza-klein.md)
 - Propositions: [`theory.md`](theory.md)
