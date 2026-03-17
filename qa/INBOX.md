@@ -130,6 +130,176 @@ simulation-theory ideas?
 *Source: user question*
 *Status: open (backlog — see also [Q31](Q31-discrete-torus-digital-counter.md))*
 
+Q34. **Shared compact space.** Is the compact T³ a single space
+shared by all particles — each particle a distinct topological
+feature of one global manifold — or does each particle carry
+its own private subspace? A shared T³ makes entanglement and
+interactions geometric; independent subspaces push the mystery
+down a level. The dialog notes that all mature frameworks
+(AdS/CFT, string theory, LQG) favor a single shared space.
+What does the WvM/T³ model imply?
+*Source: claude-photon-knots-particle-structure.md*
+*Status: open — conceptual/foundational*
+
+Q35. **Entanglement as topological knot-linking in T³.** When two
+electrons approach in 3D, their toroidal knots overlap in the
+shared compact space. If the knots become topologically linked
+(like interlocked rings), that link persists after the particles
+separate in 3D — because T³ topology is independent of 3D
+distance. Measurement resolves one knot's configuration and
+instantly determines the other's. This gives entanglement a
+concrete geometric mechanism that standard QM simply postulates.
+What topological invariant encodes the link? What severs it?
+*Source: claude-photon-knots-particle-structure.md, user question*
+*Status: open — needs topological framework*
+
+Q36. **Coulomb force as a subspace proximity effect.** We can
+model a point charge (E-field lines radiating from a point in 3D),
+but it is less clear why two separated charges exert a force on
+each other across empty 3D space. If both charges live as knots
+in a shared T³, the force might be a T³ geometric effect rather
+than a 3D field effect. Is the Coulomb potential the macro-space
+projection of knot-knot interaction energy in T³? How does this
+relate to what R13 is computing via KK decomposition?
+*Source: user question*
+*Status: open — may be addressed by R13 results*
+
+Q37. **Are attraction/repulsion and entanglement the same
+phenomenon?** Conjecture: when two knots are in T³ proximity
+they interact — this manifests in 3D as the Coulomb force.
+When they separate, a residual topological link may persist —
+this manifests as entanglement. Same T³ mechanism, different
+regimes. If so, the force law and the entanglement statistics
+should share a common derivation. Is Coulomb force the
+"classical limit" of knot-knot interaction, and entanglement
+its topological residue?
+*Source: user question*
+*Status: open — speculative but testable in principle*
+
+Q38. **Decoherence as topological link dilution.** In the knot
+model, decoherence would correspond to the topological link
+between two knots being transferred to — and spread across —
+environmental knots. The entanglement isn't destroyed, just
+dispersed into an ever-larger web of T³ connections. Does this
+reproduce the observed decoherence timescales? Does the knot's
+internal structure confer any resistance to decoherence (a
+natural isolation mechanism)?
+*Source: claude-photon-knots-particle-structure.md*
+*Status: open — qualitative picture only*
+
+Q39. **Particle/antiparticle annihilation as topological
+cancellation.** A positron may be the same (1,2) toroidal knot
+wound in the opposite sense. Annihilation = the two
+oppositely-wound knots unwinding each other, releasing the
+confined photon as free propagation. This reframes annihilation
+as topological cancellation rather than matter destruction. Is
+this consistent with energy/momentum conservation? Does it
+predict anything about the emission angles or polarizations of
+the annihilation photons?
+*Source: claude-photon-knots-particle-structure.md*
+*Status: open — qualitative; testable prediction may exist*
+
+Q40. **Gravity as macro-space curvature sourced by T³ boundary
+conditions.** Wheeler's geometrodynamics proposed particles as
+spacetime topology — "mass without mass, charge without charge."
+In our framework: each particle is a boundary between the
+compact T³ and 3D macro-space; macro space curves around that
+boundary; that curvature is gravity. This is distinct from Q33
+(which asks whether gravity and charge arise from the same
+photon — they don't). Here the question is specifically: is
+gravity the 3D curvature induced at the T³/3D interface, and
+can it be computed from the stress-energy of the confined photon?
+*Source: claude-photon-knots-particle-structure.md*
+*Status: open — Wheeler's program not yet translated into T³ language*
+
+---
+*Wave-language analog of WvM (Q41–Q46)*
+*The questions below reformulate the photon-knot model in pure wave/field*
+*terms. WvM uses a particle orbiting a torus; the wave analog replaces the*
+*particle trajectory with a resonant EM standing wave in a compact cavity.*
+*The ~137 sub-paths of R8 become harmonic numbers in the cavity mode spectrum.*
+
+Q41. **Wave-language equivalent of the (1,2) geodesic.** In particle
+language the electron is a photon tracing a (1,2) torus knot. In
+wave language it should be an EM standing wave on T³ with specific
+KK mode numbers — a superposition of Fourier modes whose spatial
+pattern has (1,2) winding symmetry. What is the explicit mode
+decomposition? Are the particle and wave pictures provably equivalent
+descriptions of the same field configuration, or do they differ in
+predictions?
+*Source: user question*
+*Status: open — translation between pictures not yet written down*
+
+Q42. **Compton scale as the beat envelope of compact-space modes.**
+The winding number q (a free parameter in the range ~100–200) means the
+confined photon completes q major loops per Compton cycle. In wave
+language: two adjacent compact-space harmonics (modes n and n+1) produce
+a beat pattern — fast oscillation at n×f₀ inside the cavity, slow
+modulation envelope at f₀. If the compact circumference L ≈ 2πR, the
+beat wavelength is q×L ≈ λ_C. Hypothesis: the Compton-scale behavior
+of the electron is the beat envelope of adjacent compact-space harmonics,
+not the fundamental mode. Does this picture reproduce the correct energy
+and charge for a range of q, or does it constrain q to a specific value?
+Note: q ≈ 1/α ≈ 137 is an intriguing coincidence but is not yet
+established as the required value — q is currently a free parameter (R8,
+R11).
+*Source: user question*
+*Status: open — quantitative check needed; q is free*
+
+Q43. **What selects the harmonic number q? (Wave-language α problem.)**
+A compact-space cavity supports all harmonics in principle. The electron
+corresponds to some harmonic n = q, where q is in the range ~100–200.
+Lower harmonics would be higher-energy bound states; higher harmonics
+lower-energy ones. What physical principle selects one particular q as
+the stable ground state? Candidates: energy minimization within a
+topological sector, self-consistency of the field (the mode must be its
+own source), or boundary conditions imposed by the coupling to 3D.
+This is the wave-language restatement of Q18 (what selects q?). Does
+framing it as a cavity eigenvalue problem — find the self-consistent mode
+— make it more tractable than the particle-path version?
+*Source: user question*
+*Status: open — wave reframing of the α problem; q is free, ~100–200*
+
+Q44. **Sub-Compton cavity with high-harmonic resonance.** Hypothesis:
+a cavity of size ~L_compact (some fraction of λ_C) supports standing
+waves. The electron corresponds to harmonic n = q of this cavity, where
+q is a free parameter (~100–200). A narrow superposition of modes near
+n = q produces an envelope at q×L_compact ≈ λ_C. This gives a concrete
+wave model: a small cavity oscillating at high harmonic, with
+Compton-scale behavior emerging from the mode envelope rather than from
+a large orbit. The cavity size and the harmonic number are related by
+L_compact = λ_C/q. Can the electron's charge, spin, and magnetic moment
+be derived from the field structure of this mode, independently of q?
+Or does the field self-consistency condition fix q — which would be the
+wave-language route to deriving α?
+*Source: user question*
+*Status: open — core wave-language hypothesis; q is free parameter*
+
+Q45. **Charge as field-phase winding number (Chern number).** In
+particle language, charge comes from the winding number of the path.
+In wave language, the U(1) phase of the complex EM field can also wind
+around the compact dimension — this is the first Chern number of the
+U(1) bundle, and it is exactly how charge is topologically defined in
+gauge theory. Can the WvM charge formula be rederived from the
+topological winding of the field phase alone, without invoking a
+particle trajectory? If the two definitions (path winding vs. field
+phase winding) give the same integer, the wave and particle pictures
+are truly equivalent.
+*Source: user question*
+*Status: open — likely answerable from gauge theory; needs explicit check*
+
+Q46. **Multi-mode resonance and hadron masses: three coupled cavity
+modes.** The proton is three photon-knots linked on T³ (R14 Track 0).
+In wave language: three coupled resonant modes of the T³ cavity, phase-
+locked and topologically entangled (Borromean resonances). The proton
+mass = 3×612×m_e emerged geometrically from the particle picture. Can
+the same result be derived from the resonance frequencies of three
+mutually coupled cavity modes? Does the coupling between modes shift
+the resonance frequency in a way that predicts the neutron-proton mass
+difference (1.293 MeV)?
+*Source: user question*
+*Status: open — wave-language extension of R14; no computation yet*
+
 ---
 
 ## Filed (promoted to individual files)
