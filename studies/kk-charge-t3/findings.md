@@ -312,13 +312,101 @@ In this picture:
 - The hierarchy problem = why compact curvature is small
 
 
-### F14. The key unknown
+### F14. Revised ranking of resolutions
+
+After closer examination:
+
+1. **Resolution 1 (curvature)** — the deepest.  Connects charge
+   to gravity through 7D geometry.  The hierarchy problem is the
+   price of admission, but solving one would solve the other.
+2. **Resolution 3 (topological/WvM)** — the most practical.
+   WvM's charge calculation, elevated to a topological principle:
+   any field configuration with winding number w has monopole
+   moment ∝ w.  Can be computed.  Doesn't determine α alone.
+3. **Resolution 2 (gauge connection)** — DOWNGRADED.  Descriptive
+   but not explanatory.  Says "a pre-existing twist in the vacuum
+   gives charge to winding modes" but doesn't explain where the
+   twist comes from.  Replaces "what determines α?" with "what
+   determines the twist?" — relabeling, not progress.
+4. **Resolution 4 (cross-terms)** — ELIMINATED.
+
+Resolutions 1 and 3 are complementary: topology (Res. 3)
+determines THAT the winding mode is charged and quantized;
+curvature (Res. 1) determines HOW MUCH charge per winding,
+connecting to gravity.
+
+
+### F15. What the model already unifies (and what it doesn't)
+
+The model achieves conceptual unification: all particles are
+photon configurations on compact geometry.  Mass, charge, spin,
+magnetic moment are emergent from energy + topology.
+
+The emergent-gravity picture is consistent with GR but not
+derived from it:
+- The photon has energy → confined momentum = mass
+- Mass curves spacetime (GR) → every electron creates gravity
+- This gravity is real, measurable, and exactly what GR predicts
+- But this gravity is ~10⁴⁵× too weak to produce the compact
+  curvature needed for charge
+
+Three levels of unification:
+
+| Level | Claim | Status |
+|-------|-------|--------|
+| Conceptual | All particles = photons on geometry | YES |
+| Framework | 7D metric → gravity + EM | Partial (KK structure exists, not derived) |
+| Dynamical | Both forces from one equation, one coupling | NO (hierarchy problem unsolved) |
+
+To claim a true unification theory, the model needs Level 2:
+the 7D metric must produce both the gravitational and EM
+fields from a single geometric object.  The missing piece is
+what determines the T³ geometry.  If the geometry is derived
+(e.g., as the unique self-consistent solution of 7D Einstein
+equations), that's unification.  If it's an input, it's a
+framework.
+
+
+### F16. The key unknown
 
 What determines the compact-space curvature?  Candidates:
 - Flux compactification (string theory mechanism)
 - Casimir energy of the compact space
 - Topological stability constraint on winding modes
 - Non-Einsteinian gravity at the compact scale
+
+
+### F17. Both forces as photon-photon interactions
+
+A clarifying observation: both gravity and EM can be understood as
+photon-photon interactions, distinguished by what property of the
+photon they couple to.
+
+**Gravity** comes from the photon's energy.  Two photons
+gravitationally attract (a GR result, not Newtonian).  Anti-parallel
+photons attract with effective mass 2E/c² (Tolman-Ehrenfest-Podolsky);
+co-propagating photons have zero gravitational interaction (exact
+pp-wave result).  The interaction is always attractive or zero, never
+repulsive — because energy is always positive.  This IS gravity.
+
+**Electromagnetism** comes from the photon's winding direction on the
+compact space.  A free photon has no net charge (linear Maxwell: no
+photon-photon EM interaction).  But a confined photon with winding +q
+produces a time-averaged field pattern that looks like positive charge;
+winding −q looks like negative charge.  Two confined photons with
+same-sign winding repel; opposite-sign attract.  The sign of the
+interaction is purely topological.
+
+| Force | Couples to     | Source         | Sign         |
+|-------|----------------|----------------|--------------|
+| Gravity | Energy (T_μν) | Always positive | Universal +  |
+| EM      | Winding (topology) | ±q         | Sign-carrying |
+
+Gravity = force between energies.
+Electromagnetism = force between topologies.
+
+This is arguably the sharpest expression of the guiding principle
+"energy and geometry are the only fundamentals" at the force level.
 
 
 ## Summary (Tracks 1 + 2)
@@ -335,6 +423,7 @@ What determines the compact-space curvature?  Candidates:
 | Combined picture | Curvature + gauge connection + topological quantization |
 | Key unknown | What determines compact-space curvature |
 | Gravity connection | Hierarchy problem ↔ charge mechanism |
+| Both forces | Gravity = energy-energy; EM = topology-topology |
 
 
 ## Scripts
