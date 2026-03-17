@@ -70,7 +70,8 @@ active work, and open problems.
 
 - `reference/` — Source material by others and recorded conversations.
 - `primers/` — Self-contained tutorials on topics needed to follow the studies.
-- `papers/` — Authored documents presenting theories, results, and proofs.
+  See [`primers/README.md`](primers/README.md) for the list (matrix notation, Maxwell, KK theory, charge-from-energy).
+- `papers/` — Authored documents presenting theories, results, and proofs. *(None yet.)*
 - `qa/` — Physics questions answered by logic and existing theory (no computation).
   See [`qa/README.md`](qa/README.md) for the index.
 - `studies/` — Questions that require a computational model to answer.
@@ -84,5 +85,5 @@ active work, and open problems.
 | [`studies/STATUS.md`](studies/STATUS.md) | Study-by-study registry: active, backlog, done |
 | [`qa/README.md`](qa/README.md) | Index of answered and open physics questions |
 | [`qa/INBOX.md`](qa/INBOX.md) | Capture queue for new questions |
-| [`primers/charge-from-energy.md`](primers/charge-from-energy.md) | Conceptual foundation: how EM energy becomes apparent charge |
+| [`primers/README.md`](primers/README.md) | Four tutorials: matrix notation, Maxwell, KK theory, charge-from-energy |
 | [`reference/WvM-summary.md`](reference/WvM-summary.md) | Living summary of the foundational WvM paper |
