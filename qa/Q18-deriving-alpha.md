@@ -65,8 +65,9 @@ R12 results (COMPLETE):
 - Track 2: curved-torus geodesics give q ≈ 193 (not 137);
   holonomy is zero.  Confirms compact space must be
   intrinsically flat.
-- Key insight: R8's charge calculation mixes flat-T² (mass/spin)
-  with 3D-embedded (Coulomb) physics — inconsistent.  The correct
-  approach is KK decomposition from the flat T².
+- Corrected picture: R8's use of flat T² for mass/spin and
+  3D embedding for charge is the correct physical procedure
+  (internal vs external domains), not an inconsistency.
+  Charge is a projection property of the embedding.
 
 *Status: → R13 (KK charge from flat T², backlog)*

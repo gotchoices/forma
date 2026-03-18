@@ -1,4 +1,4 @@
-# R13. KK Charge from Flat T³ — Findings
+# R13. Charge from the Embedding — Findings
 
 ## Track 1: KK mode spectrum and the electron's identity
 
@@ -118,46 +118,36 @@ The net radial E-field, integrated over the torus surface,
 gives charge e.
 
 
-### F6. The flat-T³ tension
+### F6. Flat T³ alone gives zero charge — the embedding provides it
 
 On a flat T³, geodesics are straight lines in the covering
 space.  Parallel transport along a straight line on a flat
 manifold preserves vectors exactly — there is NO rotation.
+Therefore, a photon propagating on flat T³ with no embedding
+information develops no monopole moment and no charge.
 
-This creates a tension:
-- **Flat T³:** no curvature → no polarization rotation →
-  no net monopole → no charge
-- **Embedded torus:** curvature → polarization rotation →
-  net monopole → charge e
+This was initially framed as a "tension" with the WvM model.
+It is not.  The correct physical picture (see R12 F14
+revised) has two domains:
 
-The charge mechanism seems to require the photon's field to
-"know about" the 3D embedding — specifically, how the compact
-coordinates map to 3+1D spatial directions.  On a flat T³
-with no embedding information, the field has no reason to
-develop a monopole moment.
+- **Internal (flat T³):** The photon propagates through
+  flat space.  This determines mass and spin.  No charge
+  arises here — and none should.
+- **External (embedding):** The compact space is embedded
+  in 3+1D with a toroidal geometry.  The photon's fields,
+  when they extend beyond the compact space, encounter
+  this embedding.  The curvature of the embedding rotates
+  the polarization, creating the net monopole moment = charge
+  (the WvM mechanism).
 
-**This is the deepest version of the R12 inconsistency.**
-R12 showed that mixing flat-T² and 3D-embedded physics is
-inconsistent.  Track 1 shows that pure flat-T³ physics gives
-no charge at all, while the embedded picture gives the right
-charge but is inconsistent with the flat-T³ framework used
-for mass and spin.
+The flat-T³ zero-charge result is therefore expected, not
+problematic.  Charge is a projection property — it arises
+from how compact-space fields appear in 3D, not from the
+internal geometry.
 
-**Possible resolutions:**
-1. The compact space is NOT perfectly flat — it has a small
-   curvature that provides the polarization rotation.  The
-   curvature would have to be specifically tuned to give the
-   right charge.
-2. The connection between compact and spatial dimensions is
-   part of the metric (KK off-diagonal terms), and the charge
-   arises from this connection, not from curvature.
-3. The charge mechanism is not polarization rotation but
-   something else entirely — perhaps related to the topology
-   of the field configuration (winding number itself carries
-   charge) rather than the geometry.
-4. The field equation in 7D has cross-terms that couple compact
-   and spatial degrees of freedom, even when the compact space
-   is flat.  The charge might arise from these couplings.
+**The open question is not "how does charge arise" (answer:
+the embedding) but "what determines the embedding geometry"
+(equivalently: what determines α).**
 
 
 ---
@@ -195,42 +185,51 @@ we need to:
 
 1. Write the full EM field of a photon propagating along the
    (68,137) geodesic on flat T³
-2. Determine how the compact-space field couples to the 3+1D
-   spatial dimensions (the embedding/metric question)
-3. Compute the resulting 3+1D field at large distances
+2. Specify the embedding: how the compact dimensions map into
+   3+1D spatial directions
+3. Project the compact-space field into 3+1D using the
+   embedding geometry
 4. Extract the monopole moment = apparent charge
 
-Step 2 is the crux.  It requires specifying how the compact
-dimensions relate to the spatial dimensions — which is NOT
-determined by the flat-T³ geometry alone.  It is additional
-physical input.
+Step 2 is the crux — and it IS determined by the model.
+The WvM model specifies a toroidal embedding where the
+compact T² (or T³) sits inside 3+1D as a torus of major
+radius R and minor radius a.  This is the embedding that
+produces charge via polarization rotation.
 
-In KK theory, this information lives in the metric's
-off-diagonal components (the gauge connection A^a_μ).  In the
-WvM picture, it comes from the 3D embedding.  These may be
-equivalent descriptions of the same physics.
+In KK language, the embedding information lives in the
+metric's off-diagonal components (the gauge connection
+A^a_μ).  In the WvM picture, it is the 3D torus geometry.
+These are likely equivalent descriptions — the KK gauge
+connection encodes the same information as the embedding map.
+
+**The remaining open question:** the embedding has free
+parameters (R, a, and hence r = a/R).  What determines the
+specific embedding geometry?  This is the α problem:
+different embeddings would give different effective charges,
+and only one matches the measured e.
 
 
-## Summary
+## Track 1 Summary
 
 | Finding | Result |
 |---------|--------|
 | Electron as KK mode | NO — mass is ~36,000× too high |
 | Standard KK charge | Does not apply (zero compact momentum) |
 | Electron identity | Winding mode (topological, not dynamical) |
-| Charge mechanism | Field configuration / WvM, not KK momentum |
-| Flat T³ charge | ZERO (no polarization rotation) |
-| Key tension | Charge requires compact↔spatial coupling not present in flat T³ |
+| Charge mechanism | Field projection via embedding (WvM), not KK momentum |
+| Flat T³ alone | ZERO charge (expected — charge is a projection property) |
+| Embedding role | Provides the polarization rotation → monopole moment |
 
-**The electron's charge cannot be computed from flat-T³ geometry
-alone.**  Additional structure — either curvature, a metric
-connection between compact and spatial dimensions, or a
-non-geometric mechanism — is needed to generate the monopole
-moment.
+**The electron's charge comes from the embedding of the compact
+space in 3+1D** — the toroidal geometry that the photon's fields
+encounter when they extend beyond the compact dimensions.  This
+is the WvM mechanism, now understood as a projection property
+rather than an internal property of the flat compact space.
 
-This does NOT invalidate the WvM model or the compact-dimension
-framework.  It identifies the specific missing ingredient: the
-coupling between compact and spatial degrees of freedom.
+The open question is not how charge arises (the embedding
+provides it) but what determines the specific embedding geometry
+(which determines α).
 
 
 ---
@@ -239,101 +238,66 @@ coupling between compact and spatial degrees of freedom.
 
 **Script:** [`scripts/track2_charge_mechanisms.py`](scripts/track2_charge_mechanisms.py)
 
-### F9. Resolution 4 (7D cross-terms) is RULED OUT
+### F9. 7D cross-terms cannot generate charge on flat T³
 
 The 7D Maxwell equations on flat T³ give zero volume-averaged
 4D current: ∫_T³ ∂_a F^aν d³y = 0 by periodicity.  A winding
 mode on flat T³ produces NO long-range Coulomb field.  This
-confirms F6 through a rigorous, independent argument.
+independently confirms F6: charge cannot arise from the flat
+interior alone.  (Under the corrected picture, this is expected
+— charge comes from the embedding, not the interior.)
 
 
-### F10. Resolution 1 (curvature) — viable but needs non-standard gravity
+### F10–F13. What determines the embedding geometry?
 
+The charge mechanism is understood: the toroidal embedding
+provides the polarization rotation that creates the monopole
+moment (WvM mechanism, see F6 revised).  The open question
+is: **what determines the specific embedding geometry?**  The
+embedding has free parameters (R, a, hence r = a/R), and
+different embeddings give different effective charges.  Only
+one matches e.  This is the α problem.
+
+Four candidate answers were analyzed for what could constrain
+the embedding:
+
+**Candidate 1: Gravitational curvature.**
 Einstein gravity gives compact curvature ~10⁻¹⁶ m⁻².  The
-embedded torus has curvature ~10²⁹ m⁻².  The ratio is ~10⁴⁵ —
-standard gravity is hopelessly weak.
+embedded torus has curvature ~10²⁹ m⁻².  The ratio is ~10⁴⁵
+— standard gravity is hopelessly weak to determine the
+embedding.  However, this ratio IS the hierarchy problem.
+If some mechanism makes gravity stronger at the compact
+scale, it could determine the embedding and hence α — which
+would unify EM and gravity through 7D geometry.
 
-However, the required G_eff/G ratio (~10⁴⁵) is essentially
-the same as the EM-to-gravity force ratio between electrons
-(~4 × 10⁴²).  This is the hierarchy problem restated:
-unifying charge with gravity at the compact scale requires
-explaining why gravity is so weak compared to EM.
+**Candidate 2: KK gauge connection (off-diagonal metric).**
+In KK theory, off-diagonal metric terms encode how compact
+dimensions connect to spatial dimensions.  This is the formal
+description of the embedding.  It explains charge quantization
+(integer winding → integer charge) but doesn't explain what
+determines the off-diagonal terms themselves.  It describes
+the embedding rather than determining it.
 
-If solved, this resolution would unify EM and gravity through
-7D geometry — the strongest possible outcome.
+**Candidate 3: Topological constraint.**
+If a mathematical theorem guarantees that any winding-w field
+configuration on T³ embedded in 3+1D has monopole moment ∝ w,
+then the existence of charge is topologically forced.  This
+would make charge quantization and conservation automatic.
+However, the "charge per winding" (i.e., α) would still
+depend on the embedding geometry.
 
+**Candidate 4: 7D field equation cross-terms.**
+ELIMINATED (F9).  Periodicity forces zero net 4D current.
 
-### F11. Resolution 2 (gauge connection) — explains quantization, not α
+**Assessment:** Candidates 1–3 are complementary, not
+competing.  Topology (Cand. 3) guarantees THAT the winding
+mode is charged.  The embedding geometry (described by
+Cand. 2) determines HOW MUCH charge.  And the deepest
+question — what fixes the embedding — connects to gravity
+(Cand. 1) and the hierarchy problem.
 
-Off-diagonal KK metric terms can give winding modes a charge
-proportional to their winding number.  This explains:
-- Charge quantization (integer winding → integer charge units)
-- Why only winding modes are charged
-- The Aharonov-Bohm–like mechanism (Wilson line around compact dim)
-
-But the value of α is encoded in a background gauge flux Φ₀,
-which is a free parameter.  The problem shifts from "what
-determines the geometry?" to "what determines the background
-flux?"
-
-
-### F12. Resolution 3 (topological charge) — most elegant, needs theorem
-
-If winding number IS charge (analogous to how Chern number IS
-magnetic monopole charge), then charge quantization and
-conservation are automatic.  Fractional charges from T³ linking
-are natural.
-
-This requires a mathematical theorem: any smooth EM field on
-M₄ × T³ with winding number w has 4D monopole moment ∝ w.
-Whether such a theorem exists is an open question.  If it does,
-it would be the strongest foundation for the model.
-
-Does not determine α by itself — the "charge per winding" is
-a separate question.
-
-
-### F13. The combined picture
-
-The three surviving resolutions are not mutually exclusive.
-A combined picture:
-
-1. The compact space has curvature (from some mechanism
-   stronger than Einstein gravity)
-2. This curvature creates off-diagonal metric terms coupling
-   compact and spatial dimensions
-3. Winding modes couple to these terms with strength ∝ winding
-   number (topological charge quantization)
-
-In this picture:
-- Charge = winding number × curvature-dependent coupling
-- α = f(compact curvature, geometry)
-- Gravity and EM are both aspects of 7D geometry
-- The hierarchy problem = why compact curvature is small
-
-
-### F14. Revised ranking of resolutions
-
-After closer examination:
-
-1. **Resolution 1 (curvature)** — the deepest.  Connects charge
-   to gravity through 7D geometry.  The hierarchy problem is the
-   price of admission, but solving one would solve the other.
-2. **Resolution 3 (topological/WvM)** — the most practical.
-   WvM's charge calculation, elevated to a topological principle:
-   any field configuration with winding number w has monopole
-   moment ∝ w.  Can be computed.  Doesn't determine α alone.
-3. **Resolution 2 (gauge connection)** — DOWNGRADED.  Descriptive
-   but not explanatory.  Says "a pre-existing twist in the vacuum
-   gives charge to winding modes" but doesn't explain where the
-   twist comes from.  Replaces "what determines α?" with "what
-   determines the twist?" — relabeling, not progress.
-4. **Resolution 4 (cross-terms)** — ELIMINATED.
-
-Resolutions 1 and 3 are complementary: topology (Res. 3)
-determines THAT the winding mode is charged and quantized;
-curvature (Res. 1) determines HOW MUCH charge per winding,
-connecting to gravity.
+The α problem reduces to: **what determines the toroidal
+embedding of the compact space in 3+1D?**
 
 
 ### F15. What the model already unifies (and what it doesn't)
@@ -369,11 +333,13 @@ framework.
 
 ### F16. The key unknown
 
-What determines the compact-space curvature?  Candidates:
-- Flux compactification (string theory mechanism)
-- Casimir energy of the compact space
+What determines the toroidal embedding geometry?  Candidates:
+- Gravitational self-consistency (confined energy curves space)
+- Casimir energy of the compact space (may have a minimum)
 - Topological stability constraint on winding modes
-- Non-Einsteinian gravity at the compact scale
+- Energy minimization (photon + field total energy)
+
+The α problem = the embedding problem.
 
 
 ### F17. Both forces as photon-photon interactions
@@ -415,14 +381,13 @@ This is arguably the sharpest expression of the guiding principle
 |---------|--------|
 | Electron as KK mode | NO — winding mode, not momentum mode |
 | Standard KK charge | Does not apply (zero compact momentum) |
-| Flat T³ + Maxwell | ZERO charge (rigorously proven) |
-| Curvature (Res. 1) | Viable if gravity is stronger at compact scale |
-| Gauge connection (Res. 2) | Explains quantization, not α |
-| Topological charge (Res. 3) | Elegant, needs mathematical theorem |
-| 7D cross-terms (Res. 4) | RULED OUT (periodicity kills monopole) |
-| Combined picture | Curvature + gauge connection + topological quantization |
-| Key unknown | What determines compact-space curvature |
-| Gravity connection | Hierarchy problem ↔ charge mechanism |
+| Charge mechanism | WvM: embedding provides polarization rotation → monopole |
+| Flat T³ alone | ZERO charge (expected — charge is a projection property) |
+| 7D cross-terms | RULED OUT (periodicity kills monopole) |
+| What determines α | = what determines the embedding geometry |
+| Topology | Guarantees charge quantization (winding = integer) |
+| KK gauge connection | Formal description of the embedding |
+| Gravity connection | Hierarchy problem ↔ embedding scale |
 | Both forces | Gravity = energy-energy; EM = topology-topology |
 
 

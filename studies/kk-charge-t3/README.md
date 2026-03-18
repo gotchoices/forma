@@ -1,25 +1,31 @@
-# R13. KK Charge from Flat T³  *(active)*
+# R13. Charge from the Embedding  *(active)*
 
-How does a photon on a flat compact T³ manifest as a charged
-particle in 3+1D?  Compute the effective 4D charge using
-Kaluza-Klein decomposition and map its dependence on the
-compact geometry.
+How does a photon on a flat compact T³, embedded in 3+1D
+as a torus, manifest as a charged particle?  The photon
+propagates through flat space internally (mass, spin).  Its
+fields project into 3D through the toroidal embedding,
+producing apparent charge (WvM mechanism).  This study
+computes the effective 4D charge from the embedding and
+investigates what determines the embedding geometry.
 
 ## Motivation
 
-### The inconsistency in R8
+### Two domains in R8
 
-R8 computed the electron's charge by placing a surface charge
-on a 3D-embedded torus and integrating the Coulomb energy.
-R12 showed this is internally inconsistent: the model uses
-flat-T² physics for mass and spin (photon on a geodesic,
-path = λ_C), but switches to the curved 3D embedding for
-the charge calculation.
+R8 computed mass and spin using the flat compact space
+(photon on a geodesic, path = λ_C), and charge using the
+3D-embedded torus (Coulomb self-energy).
 
-The photon experiences a flat compact space.  Its fields
-should leak into 3+1D as projections of the compact-space
-field configuration — not as though the photon "knows about"
-the 3D torus shape.
+This was initially diagnosed as an inconsistency (R12), but
+it is actually the correct physical picture: the photon
+propagates through intrinsically flat compact space (setting
+mass and spin), while its fields project into 3+1D through
+the toroidal embedding (producing apparent charge).  These
+are two aspects of the same geometry — internal vs external.
+
+The remaining question: R8 used the measured charge e as
+input to determine the embedding size (R = r_e).  Can the
+embedding be determined from geometry alone?
 
 ### Why KK
 
@@ -117,46 +123,76 @@ The key question: what is the coupling of this specific
 configuration to the zero-mode?  That coupling determines the
 effective 4D charge.
 
-## Planned tracks
+## Tracks
 
-### Track 1: Mode spectrum and zero-mode coupling
+### Track 1: Mode spectrum and electron identity ✓
 
 Set up the KK expansion on T³.  Identify the mode spectrum.
-Compute the coupling of the geodesic-mode to the zero-mode
-(the 4D Coulomb potential).
+Determine whether the electron is a KK momentum mode or a
+winding mode.
 
-Key deliverable: effective charge q_eff as a function of
-(L₁, L₂, L₃) and winding numbers (p, q).
+**Result:** The electron is a winding mode, not a KK momentum
+mode (mass mismatch ~36,000×).  Standard KK charge formula
+gives zero for winding modes.  Flat T³ alone gives zero
+charge — which is expected, since charge is a projection
+property of the embedding.  See findings F1–F8.
 
-### Track 2: Self-energy from KK tower
+### Track 2: What determines the embedding? ✓
 
-The self-energy of the geodesic mode is the sum of its
-couplings to all other modes.  In 4D, this appears as the
-"Coulomb self-energy" of the particle.
+Analyze candidate mechanisms for what fixes the toroidal
+embedding geometry (and hence α).
 
-Compute the self-energy as a function of the T³ geometry.
-Compare to R8's result (U = m_e c²/2 at R ≈ r_e).
+**Result:** Four candidates analyzed.  7D cross-terms
+eliminated.  Gravitational curvature, KK gauge connection,
+and topological quantization are complementary aspects of
+the same question: what determines the embedding.  The α
+problem = the embedding problem = (possibly) the hierarchy
+problem.  See findings F9–F13.
 
-### Track 3: Parameter dependence
+### Track 3: Charge from the embedding *(open)*
 
-Map how q_eff and the self-energy depend on:
-- The three circumferences L₁, L₂, L₃
-- The winding numbers (p, q)
-- Any shear parameters
+Compute the apparent 4D charge of a photon on the (68,137)
+geodesic of flat T³, using the toroidal embedding to project
+the compact-space field into 3+1D.
 
-Identify which combinations are constrained by requiring
-q_eff = e and/or self-energy = m_e c²/2.
+The calculation:
+1. Write the EM field of a circularly polarized photon
+   propagating along the geodesic on flat T³
+2. Apply the toroidal embedding map (how compact coordinates
+   map to 3D positions)
+3. Compute the 3+1D field at large distances
+4. Extract the monopole moment = apparent charge q_eff
 
-### Track 4: Consistency with electron model
+Key deliverable: q_eff as a function of the embedding
+parameters (R, a) and winding numbers (p, q).  If q_eff
+depends on R and a, then the measured charge e constrains
+the embedding — connecting to R8's solution curve.
 
-Check whether the KK-derived charge reproduces the R8
-solution curve.  If the KK result differs from R8's embedded-
-torus Coulomb calculation, understand why and which is correct.
+This is the WvM charge calculation done rigorously from the
+flat-interior perspective, with the embedding as the bridge.
+
+### Track 4: What constrains the embedding? *(open)*
+
+Given the charge calculation from Track 3, determine what
+physical principle fixes the embedding geometry.  Candidates:
+
+- Self-consistency: the confined photon's energy curves
+  spacetime (GR), and the resulting curvature must match
+  the assumed embedding
+- Energy minimization: the embedding that minimizes total
+  energy (photon + field) is preferred
+- Topological stability: only certain embeddings support
+  stable winding modes
+- Casimir energy: quantum vacuum energy on the compact
+  space depends on the embedding and may have a minimum
+
+If any of these selects a specific R, a (and hence r = a/R),
+α is derived from geometry.
 
 ## Dependencies
 
 - R8: electron solution curve, geometry parameters
-- R12: inconsistency diagnosis (why KK is needed)
+- R12: internal vs external domain clarification
 - R14 Track 0: T³ requirement (why not T²)
 
 ## What we abstract

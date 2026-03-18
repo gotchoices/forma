@@ -284,21 +284,36 @@ corresponds to the thinnest-practical torus geometry.
 
 ## Conceptual implications (Tracks 1 + 2)
 
-### F14. The compact space must be intrinsically flat
+### F14. The compact space is intrinsically flat; the embedding is physical
 
-If the compact space had the intrinsic geometry of the
-embedded torus (Gaussian curvature K = cos θ/(a(R+a cos θ))),
+If the photon experienced the intrinsic curvature of a
+3D-embedded torus (Gaussian curvature K = cos θ/(a(R+a cos θ))),
 the (1,2) geodesic would concentrate near the inner equator,
 giving q ≈ 193 instead of ~137.  This does NOT match α.
 
-Since the model requires q ~ 1/α ≈ 137, the compact space
-must be intrinsically flat (a flat T², not a curved embedded
-torus).  The "torus shape" is a topological property (periodic
-boundaries), not a metric property.
+Since the model requires q ~ 1/α ≈ 137, the photon must
+propagate through intrinsically flat space — a flat quotient
+space R²/Λ with straight-line geodesics and periodic
+boundaries.  This determines mass and spin correctly.
 
-This resolves a longstanding ambiguity: the compact T² is
-a flat quotient space R²/Λ (straight-line geodesics), and
-the 3D torus visualization is just a convenient embedding.
+However, the compact space IS embedded in 3+1D with a
+toroidal geometry.  The embedding is not "just a
+visualization" — it is physical.  It determines how the
+photon's fields project into 3D, which determines the
+apparent charge (via WvM's polarization-rotation mechanism).
+
+The correct picture has two domains:
+
+| Domain      | Geometry          | Determines        |
+|-------------|-------------------|--------------------|
+| Internal    | Flat (Cartesian)  | Mass, spin         |
+| External    | Embedded (toroidal)| Charge, mag. moment|
+
+These are not inconsistent — they are two aspects of the
+same physical object.  The photon propagates through flat
+space internally, but its fields, when they leak into 3D,
+encounter the embedding geometry.  The charge is an
+external (projection) property, not an internal one.
 
 
 ### F15. The shear question remains open
@@ -324,28 +339,38 @@ the 2D compact geometry alone.  Candidates:
 
 ## Study conclusion
 
-R12 is **COMPLETE**.  Two tracks investigated whether the
-wave equation or geodesic structure on the sheared T² can
-constrain the shear δ.  Both gave negative results: no
-mechanism within the 2D compact geometry alone selects a
-preferred shear.
+R12 Tracks 1–2 are **COMPLETE**.  Both gave negative
+results for constraining the shear from the 2D compact
+geometry alone: no eigenmode exists at ω_C, and the
+geodesic structure provides no selection mechanism.
 
-**The critical insight:** R8's charge calculation is
-internally inconsistent.  It uses the flat T² for mass
-and spin (photon on a geodesic, path = λ_C), but switches
-to the 3D-embedded curved torus for the Coulomb self-energy
-(integrating 1/|r − r'| over the 3D positions of the
-path).  The photon experiences a flat compact space — its
-fields should leak into 3+1D as projections, not as though
-the photon "knows about" the 3D embedding.
+**Key clarification (revised):** R8's charge calculation
+uses the flat T² for mass/spin and the 3D embedding for
+charge.  This was initially diagnosed as an inconsistency,
+but the correct interpretation is that these are two
+aspects of the same physical object:
 
-This points to a Kaluza-Klein approach: set up the 6D
-field equation on M₄ × flat T², perform the KK mode
-expansion, and compute the 4D effective charge and
-self-energy from the mode couplings.  The self-energy
-depends on the T² geometry and may constrain the shear
-without using e as input.  This is the subject of R13
-(see STATUS.md backlog).
+- **Mass and spin** are internal properties, determined by
+  the photon's propagation through flat compact space.
+- **Charge** is an external property, determined by how the
+  compact-space fields project into 3+1D via the toroidal
+  embedding.
+
+The photon doesn't "know about" the embedding, but its
+fields, when they extend beyond the compact space, DO
+encounter the embedding geometry.  R8's approach — flat
+for propagation, embedded for charge — is the physically
+correct procedure, not an inconsistency.
+
+**What remains open:** F7 identified the right self-
+consistency question: can a propagating EM wave at ω_C
+maintain its field profile over q orbits?  This is a 1D
+propagation problem along the geodesic in flat space,
+where the wave must match itself after 137 circuits.
+This has not been pursued and could constrain the geometry.
+
+R12 is **REOPENED** for Track 3 (self-consistent
+propagation).
 
 
 ## Scripts

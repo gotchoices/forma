@@ -540,14 +540,15 @@ it cannot be claimed as an exact, zero-free-parameter result.
    always cheaper (Coulomb); five linear tests found no
    prime/composite distinction; q ~ 1/α is partly tautological.
    The real free parameter is r (aspect ratio), not q.
-   **R12 (COMPLETE — see [`self-consistent-fields/findings.md`](../self-consistent-fields/findings.md)):**
+   **R12 (Tracks 1–2 complete, Track 3 open — see [`self-consistent-fields/findings.md`](../self-consistent-fields/findings.md)):**
    Track 1: flat-T² wave equation has no modes at ω_C (spectral
    gap ~137×); shear unconstrained.  Track 2: curved-torus
-   geodesics give q ≈ 193; holonomy zero; confirms compact space
-   must be intrinsically flat.  **Key insight:** R8's charge
-   calculation is internally inconsistent (flat T² for mass/spin,
-   3D embedding for Coulomb energy).  The correct approach is KK
-   decomposition from the flat T².  → R13 (backlog).
+   geodesics give q ≈ 193; holonomy zero; confirms photon sees
+   flat space internally.  **Corrected picture:** R8's use of
+   flat space for mass/spin and the 3D embedding for charge is
+   the correct physical procedure — internal vs external domains,
+   not an inconsistency.  Track 3 (open): self-consistent
+   propagation.  → R13 (charge from the embedding).
 
 2. **Anomalous magnetic moment.**  Track 3 established the
    leading-order result μ = μ_B (g = 2) from the photon's

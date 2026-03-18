@@ -18,17 +18,33 @@ local 1:2 ratio) fits λ_C of path length on a torus of radius ~r_e. R/r_e ≈ 0
 is robust across resolutions. Spin ½ is exact from the local winding ratio (68:137).
 q remains a free parameter — determining what fixes it is the open edge.
 
-### R13. KK charge from flat T³
-**Study:** [`kk-charge-t3/`](kk-charge-t3/)
-**Questions:** [Q18](../qa/Q18-deriving-alpha.md), [Q29](../qa/Q29-variational-principle-alpha.md), [Q32](../qa/Q32-energy-geometry-fundamentals.md)  **Type:** compute  **Depends on:** R8, R11, R12, R14-Track0
+### R12. Self-consistent fields on sheared T²
+**Study:** [`self-consistent-fields/`](self-consistent-fields/)
+**Questions:** [Q18](../qa/Q18-deriving-alpha.md), [Q29](../qa/Q29-variational-principle-alpha.md)  **Type:** compute  **Depends on:** R8, R11
 
-Compute the 4D effective charge of a photon on a geodesic of flat T³ using
-Kaluza-Klein field decomposition — without using e as input. The goal: derive
-the apparent charge from geometry alone, then check whether the self-energy
-constraint (= m_e c²/2) fixes the T³ shape. If it does, α becomes a geometric
-prediction rather than an input. Originally framed for T²; upgraded to T³ after
-R14 Track 0 showed three compact dimensions are required for hadron linking.
-See [`kk-charge-t3/README.md`](kk-charge-t3/README.md) for the full study plan.
+Tracks 1–2 complete: flat T² has no eigenmodes at ω_C (spectral gap ~137×);
+curved-torus geodesics give q ≈ 193, confirming photon sees flat space internally.
+R8's use of flat space for mass/spin and embedded geometry for charge is the correct
+physical picture (internal vs external domains), not an inconsistency.
+
+**Track 3 (open):** Self-consistent propagation — can a wave at ω_C maintain its
+field profile over 137 orbits on the flat geodesic? If only specific geometries
+(r, δ) permit this, the free parameter is constrained and α may be derivable.
+
+### R13. Charge from the embedding
+**Study:** [`kk-charge-t3/`](kk-charge-t3/)
+**Questions:** [Q18](../qa/Q18-deriving-alpha.md), [Q29](../qa/Q29-variational-principle-alpha.md), [Q32](../qa/Q32-energy-geometry-fundamentals.md)  **Type:** compute  **Depends on:** R8, R12, R14-Track0
+
+Tracks 1–2 complete: the electron is a winding mode (not KK momentum); flat T³
+alone gives zero charge (expected — charge is a projection property of the
+embedding).  The WvM charge mechanism (polarization rotation from the toroidal
+embedding) is the correct approach, not an inconsistency.
+
+**Track 3 (open):** Compute the apparent 4D charge by projecting the compact-space
+field through the toroidal embedding.  q_eff as a function of embedding parameters
+(R, a).  **Track 4 (open):** What physical principle determines the embedding
+geometry?  Candidates: gravitational self-consistency, energy minimization,
+topological stability, Casimir energy.  If solved, α is derived.
 
 ### R14. Universal geometry — shared T³ for all particles
 **Study:** [`universal-geometry/`](universal-geometry/)  *(draft)*
@@ -51,10 +67,11 @@ T³ geometry is fully fixed by particle data, with no free parameters. Awaits R1
 Ordered roughly by priority. Items get an R-number when promoted to Active.
 
 ### Flat space → curved appearance  *(Q2)*
-If compact dimensions are intrinsically flat, how do the photon's fields project
-into 3+1D as a Coulomb-like potential? The 6D decomposition from R1 provides the
-framework; what remains is explicitly working out the field projection. This is
-partly what R13 addresses — it may be subsumed by R13's results.
+The compact space is intrinsically flat (photon sees Cartesian space), but
+embedded in 3+1D with toroidal geometry.  The photon's fields project into 3D
+through this embedding, producing the Coulomb-like potential.  This is now
+understood as the correct physical picture (R12 F14 revised).  The explicit
+field projection calculation is R13 Track 3.
 
 ### Quadrupole correction  *(Q10, depends on R6)*
 The (1,2) orbit has ~2.5% field anisotropy at the rotation horizon (quantified in
@@ -108,4 +125,4 @@ Studies in chronological order of completion. Key result only — see each study
 | — | **R9. Precession causes** *(number retired)* | *Number pre-assigned but study never started. Question lives on in backlog as "Precession of torus axis (Q19)".* |
 | — | **R10. Precessing orbit / volume-filling** *(number retired)* | *Number pre-assigned but study never started. Question lives on in backlog as "Orbit precession and volume-filling (Q23)".* |
 | 9 | **R11. Prime resonance** [`prime-resonance/`](prime-resonance/) | Eight tracks: no mechanism selects q = 137 from energy cost or primality. q ~ 1/α is partly tautological (follows from using e as input). Real free parameter is r (aspect ratio), not q. → R12. |
-| 10 | **R12. Self-consistent fields** [`self-consistent-fields/`](self-consistent-fields/) | Flat T² has no eigenmodes at ω_C (spectral gap ~137×). Curved-torus geodesics give q ≈ 193 — compact space must be intrinsically flat. R8's charge calculation is internally inconsistent (mixes flat-T² and 3D-Coulomb). Correct approach: KK decomposition from flat T². → R13. |
+| 10 | **R12. Self-consistent fields** [`self-consistent-fields/`](self-consistent-fields/) | Tracks 1–2: flat T² has no eigenmodes at ω_C (spectral gap ~137×). Curved geodesics give q ≈ 193 — photon sees flat space internally. Embedding in 3D is physical and determines charge (not an inconsistency). **Reopened** for Track 3 (self-consistent propagation). |

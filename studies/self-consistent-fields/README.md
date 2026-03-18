@@ -1,6 +1,6 @@
 # R12. Self-Consistent Fields on the Sheared T²
 
-**Status: COMPLETE** — see [`findings.md`](findings.md)
+**Status: OPEN** (Tracks 1–2 complete, Track 3 open) — see [`findings.md`](findings.md)
 
 Can the shear (and hence α) be derived from field
 self-consistency alone — without using the measured charge
@@ -62,11 +62,29 @@ q ≈ 193 (not 137).  Holonomy is zero (Gauss-Bonnet).
 flat (not the embedded curved torus) for the model to
 give q ~ 1/α.
 
-### Tracks 3–4: not pursued
-Superseded by the realization (from Tracks 1–2) that the
-correct approach is KK decomposition from the flat T², not
-eigenvalue or geodesic analyses.  See R13 (backlog in
-STATUS.md).
+### Track 3: Self-consistent propagation *(open)*
+**Type:** analytical + numerical
+**Status:** Not yet started
+
+F7 identified the correct self-consistency question: can a
+propagating EM wave at frequency ω_C, traveling along the
+(1,2) geodesic at speed c in flat compact space, maintain
+its field configuration over q = 137 orbits?
+
+The wave must return to its starting field profile — not
+just in phase (the mass condition) but in amplitude,
+polarization, and transverse structure.  This is a 1D
+propagation problem along the geodesic, with self-
+interaction from the wave's own field (it permeates the
+entire torus and overlaps itself).
+
+If only specific geometries (values of r, δ) permit self-
+consistent solutions, this would constrain the free
+parameter and potentially derive α without using e as input.
+
+Note: this calculation operates entirely in the flat
+interior (correct domain for propagation).  The charge
+question is separate — it involves the embedding (see F14).
 
 ## What we abstract
 
