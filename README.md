@@ -76,6 +76,7 @@ active work, and open problems.
   See [`qa/README.md`](qa/README.md) for the index.
 - `studies/` — Questions that require a computational model to answer.
   See [`studies/README.md`](studies/README.md) for workflow and conventions.
+- `viz/` — Interactive browser-based visualizations. See [`viz/index.html`](viz/index.html).
 
 ## Navigation
 
@@ -87,3 +88,4 @@ active work, and open problems.
 | [`qa/INBOX.md`](qa/INBOX.md) | Capture queue for new questions |
 | [`primers/README.md`](primers/README.md) | Four tutorials: matrix notation, Maxwell, KK theory, charge-from-energy |
 | [`reference/WvM-summary.md`](reference/WvM-summary.md) | Living summary of the foundational WvM paper |
+| [`viz/index.html`](viz/index.html) | Browser launcher for all interactive visualizations |

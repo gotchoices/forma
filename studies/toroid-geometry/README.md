@@ -45,10 +45,11 @@ repo root) and the shared library (`../lib/`). Run from the repo root:
 
 ## Visualizer
 
-`torus_viz.html` — Interactive 3D visualization of the torus-to-sphere
-continuum. Open directly in any modern browser (no server required):
+[`viz/torus-explorer.html`](../../viz/torus-explorer.html) — Interactive 3D
+visualization of the torus-to-sphere continuum. Open directly in any modern
+browser (no server required):
 
-    open studies/toroid-geometry/torus_viz.html
+    open viz/torus-explorer.html
 
 **Controls:**
 - **a/R slider** — Tube-to-ring radius ratio (0.05 to 12). The key

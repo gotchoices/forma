@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>totu — Visualizations</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@300;400;600&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:      #0d1117;
+    --surface: #161b22;
+    --border:  #21262d;
+    --accent:  #58a6ff;
+    --accent2: #3fb950;
+    --text:    #c9d1d9;
+    --muted:   #8b949e;
+    --tag-bg:  #1f2937;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    padding: 3rem 2rem;
+  }
+
+  header {
+    max-width: 760px;
+    margin: 0 auto 3rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 2rem;
+  }
+
+  header h1 {
+    font-size: 1.1rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 600;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  header p {
+    font-size: 1.05rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .grid {
+    max-width: 760px;
+    margin: 0 auto;
+    display: grid;
+    gap: 1.25rem;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.5rem 1.75rem;
+    text-decoration: none;
+    display: block;
+    transition: border-color 0.15s, background 0.15s;
+    position: relative;
+  }
+
+  .card:hover {
+    border-color: var(--accent);
+    background: #1a2132;
+  }
+
+  .card-header {
+    display: flex;
+    align-items: baseline;
+    gap: 0.85rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .card-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--accent2);
+    background: var(--tag-bg);
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+
+  .card h2 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  .card p {
+    font-size: 0.92rem;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  .card-file {
+    margin-top: 0.85rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+    color: #444d56;
+  }
+
+  footer {
+    max-width: 760px;
+    margin: 3rem auto 0;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.8rem;
+    color: #444d56;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>totu / viz</h1>
+  <p>Interactive visualizations of the photon-knot electron model.<br>
+     Click any card to open the tool. All tools run locally in the browser.</p>
+</header>
+
+<div class="grid">
+
+  <a class="card" href="dual-torus.html">
+    <div class="card-header">
+      <span class="card-tag">R3</span>
+      <h2>Dual Torus — Flat &amp; 3D</h2>
+    </div>
+    <p>Side-by-side animation of a photon on a (1,2) geodesic: a 3D embedded
+       torus on the left, the equivalent flat 2D rectangle on the right.
+       Shows that the winding knot is a straight line on the flat T² —
+       the physically correct picture for the compact-dimension model.</p>
+    <div class="card-file">dual-torus.html</div>
+  </a>
+
+  <a class="card" href="torus-explorer.html">
+    <div class="card-header">
+      <span class="card-tag">S2</span>
+      <h2>Torus Explorer</h2>
+    </div>
+    <p>Interactive 3D torus with a/R slider. Morph continuously from a thin
+       ring through the horn torus (a/R = 1) to a sphere-like blob. Preset
+       buttons jump to notable values: Ring, Horn, the WvM charge-matching
+       ratio (a/R ≈ 6.60), and the rotation horizon.</p>
+    <div class="card-file">torus-explorer.html</div>
+  </a>
+
+  <a class="card" href="multi-winding.html">
+    <div class="card-header">
+      <span class="card-tag">R8</span>
+      <h2>Multi-Winding Electron</h2>
+    </div>
+    <p>Visualizes the compact torus geometry of the multi-winding electron
+       model. Shows how many-orbit photon paths (winding number q ~ 100–200)
+       fit a Compton-scale path length on a torus of radius ~ r_e.
+       Explore the relationship between winding number, torus aspect ratio,
+       and the self-consistent geometry.</p>
+    <div class="card-file">multi-winding.html</div>
+  </a>
+
+</div>
+
+<footer>open viz/index.html &nbsp;·&nbsp; totu research workbench</footer>
+
+</body>
+</html>

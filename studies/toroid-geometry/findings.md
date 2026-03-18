@@ -183,7 +183,7 @@ at c and averages over the toroidal structure.
 
 ## F4. The Degenerate Torus: Bridging Torus and Sphere
 
-**Visualization:** `torus_viz.html` (interactive 3D, slider for a/R)
+**Visualization:** [`viz/torus-explorer.html`](../../../viz/torus-explorer.html) (interactive 3D, slider for a/R)
 **Bears on:** P2 (field falloff), P4 (self-consistency)
 
 **Interpretation:** In this analysis, "tube radius" a is treated not
