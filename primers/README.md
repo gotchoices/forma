@@ -8,3 +8,4 @@ Self-contained tutorials on topics a reader needs to understand the project's st
 - `kaluza-klein.md` — Introduction to Kaluza-Klein theory: starts from coordinates and distance, ends with electromagnetism emerging from geometry. Assumes calculus, vectors, and matrices.
 - `maxwell-primer.md` — Ground-up review of Maxwell's equations — what EM fields are, how they are described mathematically — building to the four-potential A_μ as a bridge to Kaluza-Klein.
 - `matrix-primer.md` — How matrices encode distance formulas (the metric), and what the index notation in `kaluza-klein.md` means. Starts from scratch.
+- `natural-units-and-alpha.md` — Why most physical constants are bookkeeping, how natural units reveal the vacuum's symmetry, and how α emerges as the ratio of the electron's charge-energy to its mass-energy.
