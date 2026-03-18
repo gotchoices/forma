@@ -18,19 +18,6 @@ local 1:2 ratio) fits λ_C of path length on a torus of radius ~r_e. R/r_e ≈ 0
 is robust across resolutions. Spin ½ is exact from the local winding ratio (68:137).
 q remains a free parameter — determining what fixes it is the open edge.
 
-### R12. Self-consistent fields on sheared T²
-**Study:** [`self-consistent-fields/`](self-consistent-fields/)
-**Questions:** [Q18](../qa/Q18-deriving-alpha.md), [Q29](../qa/Q29-variational-principle-alpha.md)  **Type:** compute  **Depends on:** R8, R11
-
-Tracks 1–2 complete: flat T² has no eigenmodes at ω_C (spectral gap ~137×);
-curved-torus geodesics give q ≈ 193, confirming photon sees flat space internally.
-R8's use of flat space for mass/spin and embedded geometry for charge is the correct
-physical picture (internal vs external domains), not an inconsistency.
-
-**Track 3 (open):** Self-consistent propagation — can a wave at ω_C maintain its
-field profile over 137 orbits on the flat geodesic? If only specific geometries
-(r, δ) permit this, the free parameter is constrained and α may be derivable.
-
 ### R13. Charge from the embedding
 **Study:** [`kk-charge-t3/`](kk-charge-t3/)
 **Questions:** [Q18](../qa/Q18-deriving-alpha.md), [Q29](../qa/Q29-variational-principle-alpha.md), [Q32](../qa/Q32-energy-geometry-fundamentals.md)  **Type:** compute  **Depends on:** R8, R12, R14-Track0
@@ -125,4 +112,4 @@ Studies in chronological order of completion. Key result only — see each study
 | — | **R9. Precession causes** *(number retired)* | *Number pre-assigned but study never started. Question lives on in backlog as "Precession of torus axis (Q19)".* |
 | — | **R10. Precessing orbit / volume-filling** *(number retired)* | *Number pre-assigned but study never started. Question lives on in backlog as "Orbit precession and volume-filling (Q23)".* |
 | 9 | **R11. Prime resonance** [`prime-resonance/`](prime-resonance/) | Eight tracks: no mechanism selects q = 137 from energy cost or primality. q ~ 1/α is partly tautological (follows from using e as input). Real free parameter is r (aspect ratio), not q. → R12. |
-| 10 | **R12. Self-consistent fields** [`self-consistent-fields/`](self-consistent-fields/) | Tracks 1–2: flat T² has no eigenmodes at ω_C (spectral gap ~137×). Curved geodesics give q ≈ 193 — photon sees flat space internally. Embedding in 3D is physical and determines charge (not an inconsistency). **Reopened** for Track 3 (self-consistent propagation). |
+| 10 | **R12. Self-consistent fields** [`self-consistent-fields/`](self-consistent-fields/) | Flat T² has no eigenmodes at ω_C (spectral gap ~137×). Curved geodesics give q ≈ 193 — photon sees flat space internally. Flat-for-mass / embedded-for-charge is the correct two-domain picture (not an inconsistency). Track 3 (propagation self-consistency) trivially satisfied on flat T². |

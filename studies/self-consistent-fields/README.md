@@ -1,6 +1,6 @@
 # R12. Self-Consistent Fields on the Sheared T²
 
-**Status: OPEN** (Tracks 1–2 complete, Track 3 open) — see [`findings.md`](findings.md)
+**Status: COMPLETE** — see [`findings.md`](findings.md)
 
 Can the shear (and hence α) be derived from field
 self-consistency alone — without using the measured charge
@@ -62,29 +62,19 @@ q ≈ 193 (not 137).  Holonomy is zero (Gauss-Bonnet).
 flat (not the embedded curved torus) for the model to
 give q ~ 1/α.
 
-### Track 3: Self-consistent propagation *(open)*
-**Type:** analytical + numerical
-**Status:** Not yet started
+### Track 3: Self-consistent propagation *(closed — trivial)*
 
-F7 identified the correct self-consistency question: can a
-propagating EM wave at frequency ω_C, traveling along the
-(1,2) geodesic at speed c in flat compact space, maintain
-its field configuration over q = 137 orbits?
+F7 asked whether propagation self-consistency could
+constrain the geometry.  Under the corrected two-domain
+picture (flat interior), this is trivially satisfied:
+a traveling wave on flat T² experiences no curvature
+modulation, no polarization rotation, and no profile
+evolution.  The only condition is the mass condition
+(phase matching), already satisfied by construction.
 
-The wave must return to its starting field profile — not
-just in phase (the mass condition) but in amplitude,
-polarization, and transverse structure.  This is a 1D
-propagation problem along the geodesic, with self-
-interaction from the wave's own field (it permeates the
-entire torus and overlaps itself).
-
-If only specific geometries (values of r, δ) permit self-
-consistent solutions, this would constrain the free
-parameter and potentially derive α without using e as input.
-
-Note: this calculation operates entirely in the flat
-interior (correct domain for propagation).  The charge
-question is separate — it involves the embedding (see F14).
+The non-trivial version (gravitational self-consistency,
+where the wave's own energy influences the embedding)
+is R13 Track 4.
 
 ## What we abstract
 

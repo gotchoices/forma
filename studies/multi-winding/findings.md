@@ -540,7 +540,7 @@ it cannot be claimed as an exact, zero-free-parameter result.
    always cheaper (Coulomb); five linear tests found no
    prime/composite distinction; q ~ 1/α is partly tautological.
    The real free parameter is r (aspect ratio), not q.
-   **R12 (Tracks 1–2 complete, Track 3 open — see [`self-consistent-fields/findings.md`](../self-consistent-fields/findings.md)):**
+   **R12 (COMPLETE — see [`self-consistent-fields/findings.md`](../self-consistent-fields/findings.md)):**
    Track 1: flat-T² wave equation has no modes at ω_C (spectral
    gap ~137×); shear unconstrained.  Track 2: curved-torus
    geodesics give q ≈ 193; holonomy zero; confirms photon sees

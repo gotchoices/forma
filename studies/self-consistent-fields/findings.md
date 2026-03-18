@@ -362,15 +362,35 @@ encounter the embedding geometry.  R8's approach — flat
 for propagation, embedded for charge — is the physically
 correct procedure, not an inconsistency.
 
-**What remains open:** F7 identified the right self-
-consistency question: can a propagating EM wave at ω_C
-maintain its field profile over q orbits?  This is a 1D
-propagation problem along the geodesic in flat space,
-where the wave must match itself after 137 circuits.
-This has not been pursued and could constrain the geometry.
+**On Track 3 (self-consistent propagation):** F7 asked
+whether a propagating EM wave at ω_C could maintain its
+field profile over q = 137 orbits, hoping this might
+constrain the geometry.  However, F7 was written before the
+two-domain clarification and assumed the wave would
+experience the (1 + r cos θ) metric modulation of the
+embedded torus on each passage.
 
-R12 is **REOPENED** for Track 3 (self-consistent
-propagation).
+Under the corrected premises, the photon propagates through
+*flat* space.  On flat T²:
+- A traveling wave experiences no curvature modulation
+- Parallel transport preserves polarization exactly
+- Amplitude and transverse profile do not evolve
+- The only self-consistency condition is the phase condition
+  (total phase = 2π after path = λ_C), which is the mass
+  condition — already satisfied by construction (F4)
+
+Track 3 is therefore **trivially satisfied** for any
+geometry (any r, any δ).  No constraint on the free
+parameter arises from propagation self-consistency in
+flat space.
+
+The non-trivial version of this question — where the wave's
+own field energy influences the geometry it propagates
+through — is a gravitational self-consistency problem.
+That question belongs to R13 Track 4 (what determines the
+embedding).
+
+R12 is **COMPLETE**.
 
 
 ## Scripts
