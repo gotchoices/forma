@@ -33,6 +33,20 @@ explanation.  *Paused:* R18 showed that curvature-induced mode mixing on an
 axisymmetric torus still gives zero charge (φ-symmetry protection).  R16's
 approach needs the φ-symmetry breaking that R18 provides.
 
+### R19. Shear-induced charge on T²
+**Study:** [`shear-charge/`](shear-charge/)
+**Questions:** Q58 (shear breaks φ-symmetry), [Q18](../qa/Q18-deriving-alpha.md), Q34 Path 7  **Type:** analytical/compute  **Depends on:** R12, R15, R18
+
+On the sheared T², the (1,2) mode has non-integer effective winding q_eff = 2 − δ/a.
+The charge integral sin(πq_eff)/q_eff is NONZERO — bypassing the φ-symmetry protection
+that blocked R17 and R18.  No wavepacket localization needed.  R12 F5 showed shear is
+internally unconstrained → external constraint (T³, topology) may fix it.
+
+Track 1: input known α, solve for required shear δ, check if it's geometrically natural.
+Track 2: energy analysis — is non-zero shear stable?
+Track 3: normalization reconciliation (E₀ conventions).
+Track 4: connection to T³ and quark charges (deferred).
+
 ### R14. Universal geometry — shared T³ for all particles
 **Study:** [`universal-geometry/`](universal-geometry/)  *(draft)*
 **Questions:** [Q13](../qa/Q13-three-compact-dimensions.md), [Q26](../qa/Q26-hadrons-photon-knots.md), [Q32](../qa/Q32-energy-geometry-fundamentals.md)  **Type:** compute/reason  **Depends on:** R13

@@ -319,8 +319,37 @@ pressure) has been ruled out.  R17 Track 4 showed tube
 deformation preserves φ-symmetry (charge = 0).  Track 5
 showed F ⊥ v (no clumping), σ_φ = const (breathing is
 conservative), and the centrifugal force is a consequence
-of confinement, not a separate mechanism.  Remaining viable
-candidates: 1–6.
+of confinement, not a separate mechanism.
+
+**Update (R18 complete):** Candidate 5 (geometric deformation
+of the torus) has been ruled out.  R18 Track 2 showed the
+Coulomb cost of the charge exceeds the photon energy saving
+by ~96×.  The symmetric torus is energetically stable.
+Furthermore, R18 F7 showed the charge integral of cos(θ+2φ)
+vanishes on ANY smooth torus — deformed or not.
+
+Candidate 6 (dipole radiation pattern) is likely ruled out
+by the same φ-symmetry protection (the radiation pattern
+rotates with the mode, so it depends on θ+2φ — the same
+combination the charge integral kills).  Not yet directly
+computed (see Q54).
+
+**Update (shear analysis):** A new candidate has emerged:
+
+8. **Shear of the compact T².**  On a sheared T² (lattice
+   vectors non-orthogonal, shear displacement δ), the (1,2)
+   mode has q_eff = 2 − δ/a (non-integer for δ ≠ 0).  The
+   charge integral sin(πq_eff)/q_eff is NONZERO — bypassing
+   the φ-symmetry protection entirely.  No wavepacket
+   localization needed (σ can be ∞).  R12 F5 showed shear is
+   unconstrained internally; the constraint must come from
+   outside (T³ geometry, topology).  The question "what
+   determines σ?" becomes "what determines δ?"  → R19.
+
+**Remaining viable candidates: 2, 3, 4, 8** (mode structure,
+quantum uncertainty, topology of the (1,2) knot, shear).
+Candidate 8 is qualitatively different from 2–4: it replaces
+the quantum-state parameter σ with the geometric parameter δ.
 
 
 ### F9. Coulomb soliton mechanism fails (Track 5)
@@ -411,5 +440,9 @@ width).
 - #2: Mode structure of the compact space
 - #3: Quantum uncertainty (possibly equivalent to #2)
 - #4: Topology of the (1,2) knot
-- #5: Breaking torus symmetry (non-flat embedding shape)
-- #6: Dipole radiation pattern from embedding (subcase of #5)
+
+**Ruled out:**
+- #1: Coulomb soliton (R15 F9)
+- #5: Geometric deformation (R18 — Coulomb cost 96× too large; F7)
+- #6: Dipole radiation pattern (likely, same φ-symmetry protection — Q54)
+- #7: Centrifugal pressure (R17)

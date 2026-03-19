@@ -535,6 +535,226 @@ Key questions:
 *Connects to: R8 Track 3, Q34 (α derivation), Q52 (aspect ratio)*
 *Status: open — needs field-fraction calculation for our geometry*
 
+Q57. **Does T³ (vs T²) break the φ-symmetry that protects
+zero charge?**  On T², the charge integral of cos(θ+2φ)
+vanishes because ∫cos(2φ)dφ = 0.  All mechanisms tested
+(Coulomb soliton, centrifugal pressure, geometric deformation)
+fail to break this protection.
+
+On T³, three possibilities emerge:
+
+**A. Richer knot topology.**  On T², the (1,2) curve's topology
+is fully described by its winding numbers.  On T³, a (1,2,n₃)
+curve can have SELF-LINKING — a topological invariant that
+depends on the ratios L₁:L₂:L₃ and could provide charge
+without wavepacket localization.  This is R15 F8 candidate #4,
+never computed.
+
+**B. Non-trivial fiber structure.**  If T³ is NOT a product
+S¹ × S¹ × S¹ but has a twisted/fibered structure (the z-fiber
+rotates as φ advances), the charge integral doesn't factorize.
+Different z-slices see different effective φ-geometry, and the
+cancellation that kills the T² charge may not occur.  A
+Hopf-like fibration would couple z to φ intrinsically.
+
+**C. R14 already requires T³.**  T³ is needed for topological
+linking (quarks/confinement, R14 Track 0).  If T³ also provides
+the charge mechanism — and the SAME fiber structure that enables
+linking also breaks φ-symmetry — the model gains unity: quarks,
+confinement, AND α from one geometric structure.
+
+The critical sub-question: is the physical T³ a flat product
+(in which case the z-integral factors out and gives zero, same
+as T²) or a twisted/fibered space (in which case the charge
+mechanism is fundamentally different)?
+
+*Source: user question*
+*Connects to: R14 (T³ for quarks), R15 F8 #4 (topology),
+Q51 (mode coupling route to α), Q13 (three compact dims)*
+*Status: open — promising new direction; no computation yet*
+
+Q54. **Is the dipole radiation pattern route to α effectively
+ruled out?**  R15 F8 Candidate 6 proposed: the circularly
+polarized photon's radiation pattern (power ∝ (1 + cos²Θ)/2)
+deforms the tube cross-section, breaking the θ-symmetry and
+enabling mode coupling to the charge-carrying (1,0) mode.
+
+R18 tested a closely related mechanism (cos(2φ) deformation
+of the major radius) and found it fails: the Coulomb cost of
+the charge exceeds the photon energy saving by 96×.
+
+For the dipole radiation pattern specifically:
+- The radiation pattern rotates WITH the photon along the
+  (1,2) geodesic, so the deformation depends on (θ+2φ), the
+  same combination as the mode itself.
+- Products like cos(θ+2φ) × f(θ+2φ) × cos θ still integrate
+  to zero over the full torus because the φ-integral kills
+  any n ≠ 0 harmonic.
+- Time-averaged field energy density on the symmetric torus
+  is φ-UNIFORM (the oscillating part averages away), so the
+  time-averaged tube deformation is also uniform — no
+  symmetry breaking.
+
+The mechanism likely falls to the same φ-symmetry protection
+that kills R18.  But a direct computation of the NEAR-FIELD
+radiation pattern (not the far-field dipole approximation)
+on the curved torus surface has NOT been done.  The near-field
+pattern could have contributions at harmonics other than
+(θ+2φ), which might evade the protection.
+
+Status: likely ruled out by the same φ-symmetry protection
+(R18 F7), but not yet directly computed.  Low priority.
+
+*Source: user question, R18 Track 2 analysis*
+*Connects to: R15 F8 #6, R18 F7, Q51*
+*Status: open — likely negative but uncomputed*
+
+Q55. **Confinement without compact dimensions: is a self-
+sustaining EM soliton possible in flat 3+1D spacetime?**
+The WvM/photon-knot model confines a photon on a compact
+manifold (T² or T³).  But what if the photon is not on a
+compact space at all — just a self-sustaining standing wave
+held together by some nonlinear mechanism?
+
+Precedents for self-sustaining EM structures:
+- **Wheeler's geons** (1955): self-gravitating EM wave packets.
+  Unstable — gravitational self-energy is ~10⁻⁴³ too weak.
+- **Kerr-Newman solutions**: charged rotating black holes whose
+  gyromagnetic ratio matches the electron's (g = 2).  But mass
+  ~Planck mass, not m_e.
+- **Nonlinear QED (Euler-Heisenberg)**: at extreme field
+  strengths (E ~ E_Schwinger), photon-photon scattering
+  becomes significant.  Could photon self-interaction at
+  Compton-scale field strengths confine a wave packet?
+- **Ranada's knotted EM fields** (1989): topologically
+  nontrivial solutions to Maxwell's equations in flat space.
+  They are NOT stable equilibria — they disperse.
+
+The standard result: in LINEAR Maxwell theory, there are no
+stable localized solutions (no solitons).  All wave packets
+disperse.  Confinement requires either nonlinearity (which
+Maxwell doesn't have classically) or topology (compact space
+provides reflecting boundary conditions).
+
+The compact-dimension model's strength is that confinement is
+TOPOLOGICAL — the photon can't escape a closed manifold.
+Without this, no known mechanism confines a single photon in
+flat space.  The strong force analogy is interesting: QCD's
+confinement is also topological (flux tubes, not point forces).
+
+*Source: user question*
+*Connects to: Q27 (foundational axioms), Q32 (geometry + energy),
+R14 (T³ for hadrons)*
+*Status: open — foundational; answers "why compact dimensions?"*
+
+Q56. **Natural-units analysis of the photon-knot model.**
+In natural units (ℏ = c = 1), all physical quantities reduce
+to powers of length and energy (or equivalently mass).  In the
+photon-knot model, these correspond to:
+- **Length** = compact geometry (R, a, σ)
+- **Energy** = confined photon (m_ec²)
+
+The model's dimensionless parameters:
+- r = a/R (aspect ratio) — still free, plausibly 1/2 from Q52
+- σ (wavepacket width in radians) — the unknow that determines α
+- α = exp(−4σ²) — the fine-structure constant
+
+In natural units:
+- R ≈ 0.485/m_e (about half the reduced Compton wavelength)
+- a ≈ 0.243/m_e (for r = 1/2)
+- e²/(4π) = α ≈ 1/137 (the coupling constant)
+- All torus dimensions are O(1/m_e) — the Compton scale
+
+The energy budget (in units of m_e):
+- Total: m_ec² = 1 (the photon)
+- Kinetic localization: ~exp(−4σ²) ≈ α (from σ ≈ 1.1)
+- Coulomb self-energy: α × 1 = α (from R7)
+- Magnetic moment: g ≈ 2(1 + α/(2π))
+
+Observation: every deviation from the "natural" value appears
+with coefficient α.  The kinetic localization cost is α × m_ec².
+The Coulomb energy is α × m_ec².  The g−2 correction is α/(2π).
+This suggests α is the single parameter controlling ALL
+perturbative effects in the model.
+
+Does this pattern constrain σ?  If σ is determined by minimizing
+the total energy including all O(α) corrections, the equilibrium
+might fix α self-consistently.  This would be a variational
+approach to the α problem (see Q29).
+
+*Source: user question*
+*Connects to: Q49 (natural units parallel), Q29 (variational α),
+R15 F5 (α = exp(−4σ²))*
+*Status: open — variational approach not yet attempted*
+
+Q58. **Shear of the compact T² breaks φ-symmetry and produces
+charge for the delocalized wave.**  On the unsheared T², the
+(1,2) mode has q_eff = 2 (integer).  The charge integral
+∫cos(2φ)dφ = 0 — the φ-protection that has blocked every
+mechanism tested.
+
+On a SHEARED T² (lattice vectors non-orthogonal, shear
+displacement δ), the (1,2) mode has q_eff = 2 − δ/L₁ in the
+embedding coordinates.  For δ ≠ 0 and δ ≠ nL₁, q_eff is NOT
+an integer, and the charge integral becomes:
+
+    Q ∝ sin(δ/a) / (2 − δ/(2πa))
+
+which is NONZERO.
+
+Key properties:
+- **No wavepacket localization needed.**  The wave can be fully
+  delocalized (σ = ∞) and still carry charge.  The symmetry
+  breaking is geometric, not quantum-state.
+- **R12 F5 showed the shear is internally unconstrained.**
+  The flat-T² wave equation gives no constraint on δ — exactly
+  the condition where an external constraint (T³ structure,
+  embedding, topology) could determine it.
+- **R12 F14 established the two-domain picture:** mass/spin are
+  internal (shear-independent), charge is external (depends on
+  how the compact fields project via the embedding).  Shear
+  changes the projection → changes the charge.
+- **Connects to T³ (Q57):** on T³, the shear between the three
+  directions is part of the moduli space.  The T³ geometry
+  needed for quark confinement (R14) constrains these shears.
+  The same constraint could fix the shear that determines α.
+
+The question "what determines σ?" becomes "what determines δ?"
+— but δ is a GEOMETRIC parameter (compact-space metric), not a
+quantum-state parameter.  → R19.
+
+*Source: user question, R12 F5/F14, R15 F8 analysis*
+*Connects to: R12 (shear unconstrained), R15 F8 (what determines
+σ), Q57 (T³), R14 (T³ for quarks), Q52 (aspect ratio)*
+*Status: → R19*
+
+Q59. **Oval tube cross-section and elliptical ring — do they
+constrain σ?**  In the discussion following R18's negative
+result, two geometric deformations were proposed:
+
+(a) **Oval tube** (cross-section becomes elliptical rather
+than circular).  This changes the θ-mode structure but NOT
+the φ-integration.  For the (1,2) mode cos(θ+2φ), the charge
+integral still separates as ∫cos(2φ)dφ × (θ-integral).  The
+φ-integral is zero regardless of tube shape.  → Does not help.
+
+(b) **Elliptical ring** (major radius varies: R(φ) = R₀ +
+δcos(2φ)).  This is exactly R18's cos(2φ) deformation.  The
+amplitude modulation from the varying curvature might seem to
+break φ-symmetry, but for a traveling wave, |ψ|² = 1 uniformly
+around the ring.  The energy density is constant in φ regardless
+of ring shape.  → φ-symmetry protection holds.
+
+Both fall to the same obstruction: the (1,2) traveling wave
+maintains uniform probability density around the ring.  Any
+geometric deformation that preserves T² topology (without shear)
+cannot break the integer-q condition that makes the charge
+integral vanish.
+
+*Source: user questions*
+*Connects to: R18 (geometric deformation), Q58 (shear), R15 F8*
+*Status: closed — both ruled out*
+
 Q34. **The charge mechanism problem: how does the electron have
 charge?** R13 Track 3 showed that the multi-winding (68, 137)
 model breaks WvM's charge mechanism.  WvM's charge requires
