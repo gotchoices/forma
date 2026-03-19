@@ -342,6 +342,184 @@ and Q27 (foundational axioms).
 *Status: noted — incorporate into Q27/Q32 when those are
 next revised*
 
+Q51. **Non-torus embeddings and the mode-coupling route to α.**
+The compact space (flat T²) can be embedded in 3D as shapes
+other than a standard torus.  A perfect torus has rotational
+symmetry around its central axis, which forces the angular
+mode number to be conserved — an n = 2 wave can never produce
+the n = 0 component needed for net charge (R15 F3).
+
+But other embeddings of the same flat T² break this symmetry:
+- **Elliptical torus** — tube cross-section is an ellipse
+- **D-shaped cross-section** — like a tokamak
+- **Knotted ring** — the tube tied in a knot (trefoil, etc.)
+- **Asymmetric deformation** — any smooth deformation that
+  removes the rotational symmetry
+
+On any of these shapes, the angular mode number is NOT
+conserved.  The 3D field equations couple n = 2 directly to
+n = 0, producing net charge without needing the photon to be
+localized as a wavepacket.  The coupling strength depends on
+the geometry of the deformation.
+
+If α = (coupling coefficient from n = 2 to n = 0), then α
+is determined by the embedding shape.  This could be computed
+from the overlap integrals of the deformed geometry.
+
+Questions:
+- What is the simplest deformation that gives nonzero coupling?
+- Does the coupling coefficient have a nice form?
+- Can we recover α ≈ 1/137 from a specific deformation?
+- Is the deformation determined by something physical (e.g.,
+  the photon's own field backreacting on the embedding)?
+
+**Key lead: the dipole radiation pattern.** A circularly
+polarized wave (which is what WvM uses) has a non-isotropic
+radiation pattern in 3D: intensity ∝ (1 + cos²θ)/2.  If
+the photon's field leaks from the compact space into 3D
+with this pattern, and if the field energy shapes the tube
+cross-section (self-consistency), then the tube is NOT
+circular — it is elongated or D-shaped, determined by
+Maxwell's equations.  This chain:
+
+  CP wave → non-isotropic radiation → non-circular tube
+  → broken symmetry → n=2 couples to n=0 → charge
+  → α = coupling strength = f(deformation)
+  → deformation from Maxwell → α derived
+
+would give α from Maxwell's equations and topology alone,
+with no free parameters.  The deformation shape is not
+arbitrary — it IS the dipole radiation pattern, which is
+fundamental.
+
+This may be the most direct path to deriving α: not "what
+localizes the photon" but "what shape is the embedding,
+given that the photon's own radiation pattern is
+non-isotropic."
+
+**Dimensional assignment is not arbitrary (Q52).** The
+assignment of which flat-T² dimension becomes the tube (a)
+vs. the ring (R) is forced by physics: the WvM charge
+mechanism requires p = 1 in the tube (where the surface
+normal rotates).  This means L₁ → tube, L₂ → ring, and
+the two directions are physically distinct.  If a second
+constraint fixes the aspect ratio r = a/R (e.g., equal
+distance per winding → r = 1/2, or the radiation pattern
+determining the tube shape), the entire geometry is fixed
+with zero free parameters.
+
+*Source: R15 F7 candidate 5, user question, dipole
+radiation pattern observation*
+*Connects to: Q34 Paths 4 and 8, R15, R16, Q48, Q52*
+*Status: open — high priority; needs feasibility study*
+
+Q52. **Dimensional assignment constrains the aspect ratio.**
+On flat T², the two periodic dimensions L₁ and L₂ are
+internally symmetric.  But the embedding and the charge
+mechanism break this symmetry: the WvM commensurability
+condition (p = 1 → E always outward) requires the single
+winding to be in the TUBE direction (where the surface
+normal rotates).  This forces:
+
+    L₁ = 2πa (tube, p = 1 winding)
+    L₂ = 2πR (ring, q = 2 windings)
+
+The assignment is NOT arbitrary — swapping gives p = 2 in
+the tube, which destroys the charge mechanism (R13).
+
+This established asymmetry may constrain the aspect ratio
+r = a/R if we add a self-consistency requirement.  For
+example:
+
+- **Equal distance per winding:**
+  tube: 2πa per 1 winding = 2πa
+  ring: 2πR per 2 windings = πR
+  Equal → 2πa = πR → r = 1/2
+
+- **Equal transit time per winding:** same argument if v = c
+  in both directions.  Gives r = 1/2.
+
+- **Radiation pattern determines tube shape (Q51):** the
+  non-isotropic leakage into 3D shapes the tube, fixing r
+  through self-consistency with the field equations.
+
+If any of these fix r, the entire geometry is determined:
+R and a follow from the path constraint ℓ = λ_C, with zero
+free continuous parameters.
+
+Quick check for r = 1/2:
+  R = λ_C / (2π√(4 + 1/4)) = λ_C / (2π√(17/4))
+    = λ_C / (π√17) ≈ 5.93 × 10⁻¹⁴ m
+  a = R/2 ≈ 2.97 × 10⁻¹⁴ m
+
+Quick check results (check_r_half.py):
+- R = λ_C/(π√17) ≈ 1.87 × 10⁻¹³ m ≈ 0.485 λ̄_C ≈ 66.5 r_e
+- a = R/2 ≈ 9.37 × 10⁻¹⁴ m
+- Equal distance per winding confirmed: 2πa/1 = 2πR/2 ✓
+- Coulomb energy = α × m_e c² (same as every Compton-scale
+  torus — r doesn't change this)
+- Classical current-loop μ/μ_B = 2/(4 + r²) = 8/17 ≈ 0.471
+  (but classical approach is wrong; g = 2 comes from the
+  spin-1 → spin-½ topology, not from the loop area)
+- Does NOT connect to α or any measured quantity
+
+Verdict: r = 1/2 is a clean geometric choice (equal arc per
+winding, R = λ_C/(π√17), etc.) and eliminates the aspect ratio
+as a free parameter, but it does not determine α.  α still
+requires deriving σ (R15) or the embedding deformation (Q51).
+The value r = 1/2 is plausible as a background constraint.
+
+*Source: user question on dimensional assignment*
+*Connects to: R15 F5, Q51, Q34*
+*Status: open — r = 1/2 checked; clean but doesn't determine α*
+
+Q53. **Does the model predict the anomalous magnetic moment
+(g = 2.002...)?** Our studies (R8 Track 3) established that the
+model predicts the LEADING-ORDER g = 2 from topology: the
+photon is spin-1 (carries ℏ), the electron is spin-½ (carries
+ℏ/2), and the gyromagnetic ratio is their ratio = 2.  This is
+geometry-independent — it works for any torus shape, any
+winding number, any aspect ratio.
+
+The measured value g ≈ 2.00232 includes the anomalous part
+g − 2 ≈ α/π.  WvM claim this comes from the fraction of
+field energy in the "non-co-rotating (external) component"
+(the part of the EM field that doesn't travel with the
+photon).  They write g = 2(1 + α'/(2π)) where α' = (q/e)²α.
+With q = e (our current model), α' = α, and this reproduces
+the Schwinger first-order correction exactly.
+
+Key questions:
+1. **Is the WvM g-factor argument a derivation or a match?**
+   WvM's α/(2π) correction predates their model (it's
+   Schwinger's 1948 result).  Did WvM derive it from the
+   field structure, or fit a "field fraction" to match
+   the known answer?
+2. **What does our model predict at leading order?**
+   - g = 1? No — that's the classical current-loop result
+     (R8 F8), known to be wrong.
+   - g = 2? Yes — from topology (R8 F9). This is solid.
+   - g = 2.002...? Plausible but unverified in our framework.
+3. **Should we expect the anomalous correction from geometry?**
+   In QED, g − 2 comes from virtual photon loops (radiative
+   corrections).  In our model, there are no "virtual photons"
+   — but there IS a non-co-rotating external field component.
+   If the energy fraction in this component equals α/(2π),
+   we'd reproduce the Schwinger result.  But we haven't
+   computed this fraction from our geometry.
+4. **Does r = a/R affect the anomalous correction?**
+   The leading g = 2 is r-independent.  But the correction
+   might depend on r (R8 F11 notes this as open).  If our
+   model gives a specific r (e.g., r = 1/2 from Q52), does
+   the resulting field-fraction calculation reproduce α/(2π)?
+5. **Higher-order terms:** QED computes g − 2 to ≈ 12 decimal
+   places.  Does the photon-knot model offer any insight into
+   the higher-order terms (α²/π², etc.)?
+
+*Source: user question*
+*Connects to: R8 Track 3, Q34 (α derivation), Q52 (aspect ratio)*
+*Status: open — needs field-fraction calculation for our geometry*
+
 Q34. **The charge mechanism problem: how does the electron have
 charge?** R13 Track 3 showed that the multi-winding (68, 137)
 model breaks WvM's charge mechanism.  WvM's charge requires

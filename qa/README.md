@@ -39,5 +39,8 @@ For questions that need a computational model, see [`studies/`](../studies/).
 | Q48 | Why does E point outward and not B? | Open — in [INBOX](INBOX.md) |
 | Q49 | Natural units ↔ geometry+energy premise | Noted — in [INBOX](INBOX.md) |
 | Q50 | Shared compact space (single T³ vs. per-particle) | Open — in [INBOX](INBOX.md) |
+| Q51 | Non-torus embeddings and mode coupling route to α | Open — in [INBOX](INBOX.md) |
+| Q52 | Dimensional assignment constrains the aspect ratio | Open — r = 1/2 checked; in [INBOX](INBOX.md) |
+| Q53 | Does the model predict the anomalous magnetic moment? | Open — in [INBOX](INBOX.md) |
 
 Unprocessed and brief questions live in [`INBOX.md`](INBOX.md).
