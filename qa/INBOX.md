@@ -300,6 +300,58 @@ difference (1.293 MeV)?
 *Source: user question*
 *Status: open — wave-language extension of R14; no computation yet*
 
+Q48. **Why does E point outward and not B? (Electric vs.
+magnetic charge selection.)** WvM hypothesizes that the
+circularly polarized photon's E-field is always oriented
+normal to the torus surface (outward), producing electric
+charge.  But E and B are 90° out of phase in a circularly
+polarized wave — they are symmetric partners.  If the
+alignment were rotated 90°, B would point outward instead,
+and we'd have a universe with magnetic monopoles and no
+electric charge.
+
+Questions:
+- Is there a geometric reason (from the torus topology,
+  the embedding, or the polarization-winding commensurability)
+  that forces E outward rather than B?
+- Or is it a convention / symmetry breaking — one of two
+  degenerate ground states, with the other being the
+  antiparticle (or a monopole)?
+- If the answer is "nothing forces it," does this predict
+  magnetic monopoles as a topologically allowed but perhaps
+  energetically disfavored state?
+
+This could be a key geometric constraint.  If the embedding
+geometry or the boundary conditions at the compact/3D
+interface select E over B, that selection mechanism likely
+involves the same geometric factors that determine α.
+
+*Source: user question*
+*Status: open — may constrain the geometry; connects to Q34*
+
+Q49. **Natural units reduce to length and energy — analogy
+to the geometry+energy premise.** In natural units (ℏ = c = 1),
+all physical quantities reduce to powers of two base units:
+length (or equivalently time, via c = 1) and energy (or
+equivalently mass, via E = mc²).  This is a striking parallel
+to the model's foundational premise that particles are built
+from only geometry (= length/topology) and energy.
+
+If the parallel is more than coincidence, it suggests that
+the model's two ingredients — compact geometry and confined
+photon energy — are not just sufficient but *complete*: they
+are the only two independent quantities that nature provides.
+Every other physical property (charge, spin, mass, magnetic
+moment) must be derivable from combinations of these two.
+
+This is not a new question per se but a strengthening of the
+axiom base.  See Q32 (energy and geometry as fundamentals)
+and Q27 (foundational axioms).
+
+*Source: user question, primers/natural-units-and-alpha.md*
+*Status: noted — incorporate into Q27/Q32 when those are
+next revised*
+
 Q47. **Geometric interpretation of the running of α.**
 The one-loop QED running is:
 

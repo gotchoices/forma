@@ -36,5 +36,7 @@ For questions that need a computational model, see [`studies/`](../studies/).
 | [Q33](Q33-gravity-vs-charge.md) | Can gravity and charge both arise from photons? | Answered |
 | Q34 | The charge mechanism problem (8 candidate paths) | Open — in [INBOX](INBOX.md) |
 | Q47 | Geometric interpretation of the running of α | Open — in [INBOX](INBOX.md) |
+| Q48 | Why does E point outward and not B? | Open — in [INBOX](INBOX.md) |
+| Q49 | Natural units ↔ geometry+energy premise | Noted — in [INBOX](INBOX.md) |
 
 Unprocessed and brief questions live in [`INBOX.md`](INBOX.md).
