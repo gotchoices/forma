@@ -300,6 +300,72 @@ difference (1.293 MeV)?
 *Source: user question*
 *Status: open — wave-language extension of R14; no computation yet*
 
+Q34. **The charge mechanism problem: how does the electron have
+charge?** R13 Track 3 showed that the multi-winding (68, 137)
+model breaks WvM's charge mechanism.  WvM's charge requires
+p = 1 (one tube winding per wavelength = commensurability
+between polarization rotation and frame rotation, so E always
+points outward).  R8's multi-winding model has p = 68, destroying
+this.  The root cause is α ≈ 1/137: at the Compton scale
+(where p = 1 works), U_Coulomb = α × m_e c² — a factor of
+~137 too small (R7).  Shrinking the torus to fix the Coulomb
+energy forces multi-winding, which breaks charge.
+
+Eight candidate paths to resolve the tension:
+
+**Path 1. Compact-space refractive index.** If c_sub < c in
+the compact space, a photon at Compton frequency has shorter
+wavelength, fitting into a smaller torus with p = 1.  Need
+c_sub/c ≈ α.  Waveguides routinely have effective speeds < c.
+Could c_sub be determined by the geometry?
+
+**Path 2. Compact metric scale factor.** Equivalent to Path 1
+in KK language: a conformal factor in the compact metric that
+plays the role of α.
+
+**Path 3. Membrane permeability.** If only a fraction of the
+photon's field leaks into 3D, the apparent charge is reduced.
+If the leakage fraction ≈ α, this explains U_Coulomb = α × m_e c²
+at Compton scale.  The torus stays at Compton scale with p = 1,
+preserving charge.  Charge = √α × e_bare.  Connects to running
+of α (higher energy probes penetrate deeper into compact space).
+
+**Path 4. Geometric projection factor.** The solid angle
+subtended by the torus tube, or the ratio of compact to 3D
+surface area at the embedding, could provide a geometric
+suppression ≈ α.  Calculable from embedding geometry.
+
+**Path 5. Multi-mode / beating.** The electron is a
+superposition of many modes on a SMALL torus (R ≈ r_e), each
+with p = 1 (preserving WvM charge).  The modes have different
+ring winding numbers q_i at eigenfrequencies of the small
+torus.  Total energy = m_e c².  Beat frequency = ω_C.  Each
+mode contributes charge individually.  Connects α to mode
+spacing = pure geometry.
+
+**Path 6. Topological charge (winding number IS charge).**
+Decouple charge from the commensurability argument entirely.
+The winding number is a topological invariant that IS the
+charge, with the coupling strength to 3D fields determined by
+some geometric factor = α.  Needs a mathematical framework
+beyond WvM.
+
+**Path 7. Keep (1, 2) at Compton scale; reinterpret Coulomb
+energy.** Accept U_Coulomb = α × m_e c².  The "missing" energy
+is near-field energy trapped in the compact space, not in the
+far-field Coulomb component.  r_e is a derived quantity (radius
+where Coulomb energy = mass), not the torus size.  Simplest
+resolution — may not require new physics, just reinterpretation.
+
+**Path 8. Different compact topology.** The torus is WvM's
+choice but not the only option.  Lens spaces, spheres, or more
+exotic manifolds could have different charge mechanisms and
+mode structures.
+
+*Source: R13 Track 3 conclusion, user brainstorm*
+*Status: open — needs triage to select most promising path(s)
+for a new study*
+
 ---
 
 ## Filed (promoted to individual files)

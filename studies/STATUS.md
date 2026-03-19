@@ -18,21 +18,6 @@ local 1:2 ratio) fits λ_C of path length on a torus of radius ~r_e. R/r_e ≈ 0
 is robust across resolutions. Spin ½ is exact from the local winding ratio (68:137).
 q remains a free parameter — determining what fixes it is the open edge.
 
-### R13. Charge from the embedding
-**Study:** [`kk-charge-t3/`](kk-charge-t3/)
-**Questions:** [Q18](../qa/Q18-deriving-alpha.md), [Q29](../qa/Q29-variational-principle-alpha.md), [Q32](../qa/Q32-energy-geometry-fundamentals.md)  **Type:** compute  **Depends on:** R8, R12, R14-Track0
-
-Tracks 1–2 complete: the electron is a winding mode (not KK momentum); flat T³
-alone gives zero charge (expected — charge is a projection property of the
-embedding).  The WvM charge mechanism (polarization rotation from the toroidal
-embedding) is the correct approach, not an inconsistency.
-
-**Track 3 (open):** Compute the apparent 4D charge by projecting the compact-space
-field through the toroidal embedding.  q_eff as a function of embedding parameters
-(R, a).  **Track 4 (open):** What physical principle determines the embedding
-geometry?  Candidates: gravitational self-consistency, energy minimization,
-topological stability, Casimir energy.  If solved, α is derived.
-
 ### R14. Universal geometry — shared T³ for all particles
 **Study:** [`universal-geometry/`](universal-geometry/)  *(draft)*
 **Questions:** [Q13](../qa/Q13-three-compact-dimensions.md), [Q26](../qa/Q26-hadrons-photon-knots.md), [Q32](../qa/Q32-energy-geometry-fundamentals.md)  **Type:** compute/reason  **Depends on:** R13
@@ -113,3 +98,4 @@ Studies in chronological order of completion. Key result only — see each study
 | — | **R10. Precessing orbit / volume-filling** *(number retired)* | *Number pre-assigned but study never started. Question lives on in backlog as "Orbit precession and volume-filling (Q23)".* |
 | 9 | **R11. Prime resonance** [`prime-resonance/`](prime-resonance/) | Eight tracks: no mechanism selects q = 137 from energy cost or primality. q ~ 1/α is partly tautological (follows from using e as input). Real free parameter is r (aspect ratio), not q. → R12. |
 | 10 | **R12. Self-consistent fields** [`self-consistent-fields/`](self-consistent-fields/) | Flat T² has no eigenmodes at ω_C (spectral gap ~137×). Curved geodesics give q ≈ 193 — photon sees flat space internally. Flat-for-mass / embedded-for-charge is the correct two-domain picture (not an inconsistency). Track 3 (propagation self-consistency) trivially satisfied on flat T². |
+| 11 | **R13. Charge from the embedding** [`kk-charge-t3/`](kk-charge-t3/) | Electron is winding mode (not KK). Multi-winding (68,137) breaks WvM charge mechanism: p = 68 ≠ 1 destroys commensurability, E oscillates 67× relative to surface normal, monopole = 0 (exact). The α problem ≡ the charge mechanism problem: α ≈ 1/137 forces a tradeoff between correct Coulomb energy (multi-winding) and correct charge (p = 1). → Q34. |

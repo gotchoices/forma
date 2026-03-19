@@ -34,5 +34,6 @@ For questions that need a computational model, see [`studies/`](../studies/).
 | [Q31](Q31-discrete-torus-digital-counter.md) | Is the compact space a discrete digital counter? | Open — conceptual |
 | [Q32](Q32-energy-geometry-fundamentals.md) | Energy and geometry as the only fundamentals | Open — framing |
 | [Q33](Q33-gravity-vs-charge.md) | Can gravity and charge both arise from photons? | Answered |
+| Q34 | The charge mechanism problem (8 candidate paths) | Open — in [INBOX](INBOX.md) |
 
 Unprocessed and brief questions live in [`INBOX.md`](INBOX.md).

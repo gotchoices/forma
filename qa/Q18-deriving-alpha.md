@@ -70,4 +70,16 @@ R12 results (COMPLETE):
   (internal vs external domains), not an inconsistency.
   Charge is a projection property of the embedding.
 
-*Status: → R13 (KK charge from flat T², backlog)*
+R13 results (COMPLETE):
+- Track 1: electron is a winding mode, not KK momentum mode.
+- Track 2: four candidate mechanisms for determining the
+  embedding.  7D cross-terms eliminated.
+- Track 3: multi-winding (68, 137) breaks WvM charge mechanism.
+  p = 68 ≠ 1 destroys commensurability between polarization
+  rotation and frame rotation.  Monopole = 0 (exact).  R8 used
+  charge e as input — never derived it.
+- The α problem ≡ the charge mechanism problem.  α ≈ 1/137
+  forces a tradeoff between correct Coulomb energy (needs small
+  torus, multi-winding) and correct charge (needs p = 1).
+
+*Status: → Q34 (8 candidate paths for charge mechanism)*

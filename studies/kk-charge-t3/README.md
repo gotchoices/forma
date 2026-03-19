@@ -1,4 +1,4 @@
-# R13. Charge from the Embedding  *(active)*
+# R13. Charge from the Embedding  *(complete)*
 
 How does a photon on a flat compact T³, embedded in 3+1D
 as a torus, manifest as a charged particle?  The photon
@@ -149,45 +149,30 @@ the same question: what determines the embedding.  The α
 problem = the embedding problem = (possibly) the hierarchy
 problem.  See findings F9–F13.
 
-### Track 3: Charge from the embedding *(open)*
+### Track 3: Charge from the embedding ✓
 
-Compute the apparent 4D charge of a photon on the (68,137)
-geodesic of flat T³, using the toroidal embedding to project
-the compact-space field into 3+1D.
+Computed the monopole moment of a circularly polarized plane
+wave on flat T², embedded on a torus.
 
-The calculation:
-1. Write the EM field of a circularly polarized photon
-   propagating along the geodesic on flat T³
-2. Apply the toroidal embedding map (how compact coordinates
-   map to 3D positions)
-3. Compute the 3+1D field at large distances
-4. Extract the monopole moment = apparent charge q_eff
+**Result:** Q = 0, exactly, for any (p, q) with q ≥ 1.
+The multi-winding model (p = 68) breaks the WvM charge
+mechanism.  WvM's charge requires commensurability: p = 1
+tube winding matching the 1 cycle of circular polarization.
+With p = 68, E oscillates 67 times relative to the surface
+normal and the integral vanishes.
 
-Key deliverable: q_eff as a function of the embedding
-parameters (R, a) and winding numbers (p, q).  If q_eff
-depends on R and a, then the measured charge e constrains
-the embedding — connecting to R8's solution curve.
+This is the critical finding of R13: moving from (1, 2) to
+(68, 137) solved the Coulomb energy problem (R7) but broke
+the charge mechanism.  The underlying tension is α ≈ 1/137.
 
-This is the WvM charge calculation done rigorously from the
-flat-interior perspective, with the embedding as the bridge.
+### Track 4: not pursued
 
-### Track 4: What constrains the embedding? *(open)*
+Track 4 was predicated on Track 3 producing a charge that
+depends on the embedding parameters (R, a).  Since Track 3
+gives zero charge, Track 4 as framed has no starting point.
 
-Given the charge calculation from Track 3, determine what
-physical principle fixes the embedding geometry.  Candidates:
-
-- Self-consistency: the confined photon's energy curves
-  spacetime (GR), and the resulting curvature must match
-  the assumed embedding
-- Energy minimization: the embedding that minimizes total
-  energy (photon + field) is preferred
-- Topological stability: only certain embeddings support
-  stable winding modes
-- Casimir energy: quantum vacuum energy on the compact
-  space depends on the embedding and may have a minimum
-
-If any of these selects a specific R, a (and hence r = a/R),
-α is derived from geometry.
+The question of resolving the charge-vs-Coulomb-energy
+tension is captured as Q34 in the INBOX for future work.
 
 ## Dependencies
 

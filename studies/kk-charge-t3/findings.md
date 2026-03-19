@@ -375,19 +375,229 @@ This is arguably the sharpest expression of the guiding principle
 "energy and geometry are the only fundamentals" at the force level.
 
 
-## Summary (Tracks 1 + 2)
+---
+
+## Track 3: Charge from the embedding
+
+**Script:** [`scripts/track3_charge_from_embedding.py`](scripts/track3_charge_from_embedding.py)
+
+### F18. The multi-winding model breaks WvM's charge mechanism
+
+WvM's charge mechanism relies on **commensurability**: the
+circular polarization rotates E by one full cycle per
+wavelength, and the tube winding (p = 1) rotates the local
+frame by one full cycle per wavelength.  These match, so E
+always points radially outward — producing a net monopole.
+
+For the multi-winding (68, 137) electron:
+
+    E rotation (circular pol.):    1 cycle per wavelength
+    Frame rotation (tube winding): 68 cycles per wavelength
+    Relative rotation:             67 cycles → E oscillates
+
+The polarization twist is no longer commensurate with the
+tube winding.  The E-field's normal component oscillates 67
+times over the full path, and its integral is zero.
+
+More precisely, the normal component at each point on the
+embedded torus surface is:
+
+    E_n(θ, φ) = E₀ cos(pθ + qφ)
+
+The monopole moment (total charge) is proportional to:
+
+    Q ∝ ∫₀²π ∫₀²π cos(pθ + qφ) · (R + a cos θ) dθ dφ
+
+Since q ≥ 1:  ∫₀²π cos(qφ) dφ = 0.
+
+**Therefore Q = 0, exactly, for any (p, q) with q ≥ 1 and
+any torus geometry (R, a).**
+
+This is not a methodological error — it reflects a real
+physical difference between (1, 2) and (68, 137):
+
+| Property       | WvM (1, 2)      | Multi-winding (68, 137) |
+|---------------|-----------------|--------------------------|
+| Tube windings  | 1               | 68                       |
+| Pol. rotation  | 1 cycle         | 1 cycle                  |
+| Commensurability | YES (1 = 1)  | NO (68 ≠ 1)             |
+| E_n            | Constant (outward) | Oscillates 67×        |
+| Monopole       | Nonzero         | Zero                     |
+
+Numerical verification at 200×200 grid: |integral|/area < 10⁻¹⁶.
+
+
+### F19. Geometric phase correction also gives zero
+
+The torus embedding rotates the surface normal by 2π per
+tube circuit (one θ revolution).  Over the full (p, q)
+geodesic, the frame rotates p times.  The effective normal
+component with this geometric phase correction:
+
+    E_n^eff(θ, φ) = E₀ cos((p−1)θ + qφ)
+
+The φ integral is still ∫cos(qφ)dφ = 0 for q ≥ 1.
+
+**The geometric phase changes the θ structure but cannot
+affect the φ integral.  Q = 0 regardless of p.**
+
+
+### F20. Fourier analysis of the monopole condition
+
+The monopole requires a (0, 0) Fourier component of the
+integrand.  The area element (R + a cos θ) introduces
+cos(θ) coupling, which shifts the θ mode number by ±1:
+
+    cos(mθ + nφ) × (R + a cos θ)
+      = R cos(mθ + nφ)
+      + (a/2) cos((m+1)θ + nφ)
+      + (a/2) cos((m−1)θ + nφ)
+
+A (0, 0) component requires n = 0.  Since n = q ≥ 1 in
+all physical cases, **no torus-knot winding produces a
+monopole from a uniform-amplitude wave.**
+
+Amplitude modulation in θ alone (e.g., E₀ ∝ 1/(R + a cos θ))
+cannot help either: it introduces θ harmonics but cannot
+create a φ = 0 component.  The φ integral of cos(qφ) is
+zero regardless of what multiplies it, as long as the
+multiplier has no φ dependence.
+
+
+### F21. The multi-winding charge problem
+
+R8 computed the (68, 137) electron geometry by assuming
+charge e as input — it placed charge e on the torus surface
+and found the geometry where the Coulomb self-energy equals
+m_e c²/2.  It did not derive charge from the field.
+
+Track 3 now shows that the WvM mechanism (E always outward)
+does NOT apply to the (68, 137) knot.  Moving from (1, 2)
+to (68, 137) solved the mass/size problem (R ≈ r_e instead
+of R ≈ λ_C/4π) but broke the charge mechanism (p went
+from 1 to 68, destroying commensurability).
+
+| Gain from multi-winding | Loss from multi-winding |
+|-------------------------|-------------------------|
+| Correct torus size (R ≈ r_e) | Commensurability (p = 1 → 68) |
+| Coulomb energy matches mass  | WvM charge mechanism broken |
+| Spin ½ preserved             | Charge must come from elsewhere |
+
+For charge to emerge from the (68, 137) configuration,
+the field distribution must be non-uniform on the torus —
+the embedding must affect the field amplitude, not just
+its direction.  This is a fundamentally different mechanism
+from WvM's commensurability argument.
+
+
+### F22. Three paths to non-uniform amplitude
+
+For charge to emerge, the field must have a non-trivial
+amplitude profile that breaks the φ-averaging to zero.
+Three mechanisms could produce this:
+
+**Path A — Mode mixing on the embedded torus.**
+The curved-torus wave equation couples the (p, q) mode to
+other Fourier modes, including (0, 0).  The (0, 0) mode IS
+the monopole = charge.  The coupling strength is determined
+by the embedding curvature (the (1 + r cos θ) factor in the
+metric).  This is a perturbation theory problem: treat the
+embedded metric as the flat metric plus a curvature
+perturbation, and compute the (0,0) amplitude induced by
+the (p, q) source.
+
+**Path B — Boundary-value problem.**
+WvM's charge calculation treats the photon as confined to a
+torus-shaped cavity, not as a plane wave on flat T².  Inside
+the cavity, the field satisfies Maxwell's equations with
+boundary conditions set by the torus surface.  The resulting
+field is NOT a plane wave — it has nodes and amplitude
+variations imposed by the boundary shape.  This non-uniformity
+is what produces the net radial E-field.
+
+**Path C — Self-consistent field modification.**
+The photon's own electromagnetic field, when projected into
+3D via the embedding, creates a Coulomb-like field that acts
+back on the field distribution in the compact space.  This
+self-interaction breaks the uniform-amplitude assumption.
+
+All three paths point to the same physics: **the field
+distribution on the compact space is shaped by the boundary
+(embedding geometry), not just by the flat interior metric.**
+The flat-interior picture is correct for the phase (and hence
+mass, spin), but the amplitude requires knowledge of the
+boundary.
+
+### F23. Connection to prior results
+
+This finding is consistent with all prior work:
+
+- **R8** computed charge by assuming uniform surface charge on
+  the embedded torus (not a plane wave) — an implicit
+  boundary-value assumption.
+- **R12 Track 1** showed no eigenmodes at ω_C on flat T² —
+  the photon is not a standing wave on the flat space.
+- **R12 F6** noted the photon "fills" the torus (λ ≫ L) — in
+  the deep-wave regime, the field is shaped by the boundary,
+  not by geometric optics.
+- **WvM** used a cavity model (energy confined in a torus
+  volume) — inherently a boundary-value approach.
+
+The two-domain picture needs refinement: the photon's PHASE
+is set by the flat metric, but its AMPLITUDE PROFILE is set
+by the embedding boundary.  This is not a contradiction — it
+is how waves behave in bounded geometry (compare: a waveguide
+has propagation speed set by the medium, but mode shape set by
+the boundary).
+
+
+## Study conclusion
+
+R13 is **COMPLETE**.
+
+The central result is Track 3's finding that the multi-winding
+(68, 137) electron model breaks the WvM charge mechanism.
+WvM's charge arises from commensurability: p = 1 tube winding
+matches the 1 cycle of circular polarization, so E always
+points radially outward.  When R8 shrank the torus to R ≈ r_e
+(to fix the Coulomb energy problem from R7), the winding
+number jumped to p = 68, destroying this commensurability.
+
+The underlying tension is the smallness of α.  At the Compton
+scale, U_Coulomb = α × m_e c² — a factor of ~137 below the
+target.  If α were ~1, the (1, 2) torus at Compton scale would
+produce correct mass, charge, Coulomb energy, and spin
+simultaneously.  The existence of α ≈ 1/137 forces the model
+into a dilemma: keep (1, 2) with correct charge but wrong
+Coulomb energy, or go multi-winding with correct Coulomb energy
+but broken charge mechanism.
+
+**What R13 establishes:**
+
+1. The electron is a winding mode, not a KK momentum mode
+2. Charge is a projection property of the embedding
+3. The WvM charge mechanism (commensurability) requires p = 1
+4. The multi-winding model (p = 68) does not produce charge
+5. R8's charge was assumed as input, never derived
+6. The α problem is equivalent to the charge mechanism problem
+
+**What remains open:** resolving the charge-vs-Coulomb-energy
+tension.  Eight candidate paths are captured in
+[`qa/INBOX.md`](../../qa/INBOX.md) (Q34).
+
+
+## Summary (all tracks)
 
 | Finding | Result |
 |---------|--------|
 | Electron as KK mode | NO — winding mode, not momentum mode |
 | Standard KK charge | Does not apply (zero compact momentum) |
-| Charge mechanism | WvM: embedding provides polarization rotation → monopole |
-| Flat T³ alone | ZERO charge (expected — charge is a projection property) |
-| 7D cross-terms | RULED OUT (periodicity kills monopole) |
-| What determines α | = what determines the embedding geometry |
-| Topology | Guarantees charge quantization (winding = integer) |
-| KK gauge connection | Formal description of the embedding |
-| Gravity connection | Hierarchy problem ↔ embedding scale |
+| WvM charge mechanism | Works for (1,2): p = 1 → E always outward |
+| Multi-winding charge | BROKEN for (68,137): p = 68 ≠ 1 → E oscillates 67× |
+| Monopole integral | ZERO (exact, analytical, any q ≥ 1) |
+| Root cause | Commensurability lost when p went from 1 to 68 |
+| Underlying tension | α ≈ 1/137 forces Coulomb energy vs charge tradeoff |
+| R8 assumption | Used charge e as input — never derived it |
 | Both forces | Gravity = energy-energy; EM = topology-topology |
 
 
@@ -399,3 +609,6 @@ This is arguably the sharpest expression of the guiding principle
 - [`scripts/track2_charge_mechanisms.py`](scripts/track2_charge_mechanisms.py)
   — Four charge mechanisms: curvature, gauge connection,
   topological, cross-terms
+- [`scripts/track3_charge_from_embedding.py`](scripts/track3_charge_from_embedding.py)
+  — Monopole integral of embedded plane wave: analytical proof
+  of zero charge, Fourier analysis, paths forward
