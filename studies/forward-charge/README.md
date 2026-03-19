@@ -255,6 +255,129 @@ expression for α.
 integral f(r) has no known closed form, but an asymptotic
 expansion or a clever change of variables might yield one.
 
+
+### Track 5. Self-consistent σ from Coulomb self-energy  *(open)*
+
+Tracks 1–4 compute Q given a field configuration.  F5 showed
+that Q depends on the wavepacket width σ via α = exp(−4σ²).
+F8 asked: what physics selects σ ≈ 1.1 rad?
+
+This track computes the total energy U(σ) for a Gaussian
+wavepacket of angular width σ on the (1,2) geodesic, including
+the Coulomb self-interaction, and finds the equilibrium σ.
+
+#### Physical picture
+
+The photon on the torus can be in any superposition of modes.
+A single plane wave (σ → ∞) has zero charge and zero Coulomb
+energy.  A localized packet (finite σ) has charge Q ∝ exp(−2σ²)
+and Coulomb self-energy.  The equilibrium is set by the
+balance of three energy contributions:
+
+| Energy term | σ-dependence | Favors |
+|-------------|-------------|--------|
+| Kinetic (localization cost) | Increases as σ↓ | Spreading |
+| Coulomb monopole (self-repulsion) | Increases as σ↓ (more charge) | Spreading |
+| Coulomb multipole (±cos(θ+2φ) pattern) | Decreases as σ↓ (attractive) | **Concentration** |
+
+The first two terms both favor delocalization (σ → ∞).  But
+the third term is the key: the surface charge density has the
+pattern cos(θ + 2φ), with alternating positive and negative
+regions.  As the packet localizes, these opposite charges get
+closer together, and the attractive energy between them becomes
+more negative.  If this attraction outweighs the kinetic +
+monopole costs at some σ, there is a stable equilibrium.
+
+This is the soliton mechanism (F7): the nonlinear self-
+interaction (Coulomb attraction between opposite charges in the
+pattern) balances the linear dispersion (kinetic spreading).
+The equilibrium width is σ_eq, and α = exp(−4σ_eq²).
+
+#### The energy functional
+
+**U_kinetic(σ):** The photon has total energy m_e c².  A
+Gaussian wavepacket of width σ (in the ring angle φ) excites
+Fourier modes up to n_max ~ 1/σ.  On the flat T² with the
+(1,2) geodesic, the mode spacing is Δω = c/(2L) where
+L = 2π√(a²/4 + R²) is the half-path length.  The kinetic
+energy from localization is:
+
+    U_K(σ) = ℏ × Σ_n ω_n |c_n|²  −  ℏ ω₀
+
+where the sum is over all modes in the packet and ω₀ is the
+ground mode energy.  For a Gaussian packet, the Fourier
+coefficients c_n ∝ exp(−n²σ²/4), and the sum can be evaluated
+analytically.
+
+**U_Coulomb(σ):** The surface charge density for a localized
+wavepacket at ring position φ₀ is:
+
+    σ_charge(θ, φ) = Q₀ × cos(θ + 2φ) × exp(−(φ−φ₀)²/σ²)
+
+The Coulomb self-energy is the double integral:
+
+    U_C = 1/(8πε₀) ∫∫ σ(r₁) σ(r₂) / |r₁−r₂| dA₁ dA₂
+
+This integral is over the torus surface.  It decomposes into
+multipole contributions:
+
+- Monopole (net charge Q = Q₀ exp(−σ²)): repulsive, U_mono > 0
+- Dipole, quadrupole, etc. (from the cos(θ+2φ) oscillation):
+  attractive between adjacent ± regions, U_multi < 0
+
+The total U_C = U_mono + U_multi may have a minimum at finite σ
+if the attractive multipole terms dominate at small σ.
+
+#### Method
+
+1. Parametrize the (1,2) geodesic on the torus in 3D.
+2. For each σ, construct the Gaussian wavepacket and its
+   charge distribution σ_charge(θ, φ).
+3. Compute U_kinetic(σ) from the Fourier decomposition.
+4. Compute U_Coulomb(σ) by numerical integration of the
+   pairwise Coulomb interaction over the torus surface.
+5. Plot U_total(σ) = U_kinetic(σ) + U_Coulomb(σ).
+6. Find σ_eq where dU_total/dσ = 0.
+7. Compute α = exp(−4σ_eq²) and compare to 1/137.
+
+#### What could go wrong
+
+- **No minimum:** if U_Coulomb is everywhere repulsive (the
+  multipole attraction never outweighs the monopole repulsion),
+  then U_total is monotonically decreasing with σ, and the
+  equilibrium is σ → ∞ (zero charge).  This would rule out
+  the soliton mechanism.
+
+- **Wrong σ:** a minimum exists but at σ ≠ 1.109 rad.  This
+  would mean the mechanism works but gives the wrong α.  The
+  discrepancy could be from the Gaussian approximation, the
+  specific aspect ratio r, or missing physics.
+
+- **r-dependent:** if σ_eq depends strongly on the aspect
+  ratio r = a/R, the model still has a free parameter.  But
+  if r is fixed by Q52 (equal distance per winding → r = 1/2),
+  this is resolved.
+
+#### What would success look like
+
+- **Strong:** U_total(σ) has a minimum at σ ≈ 1.1 rad,
+  giving α ≈ 1/137, for r = 1/2 or for all r.  First-
+  principles derivation of α from energy + topology.
+
+- **Promising:** A minimum exists at the right order of
+  magnitude (σ ~ 1 rad, α ~ 10⁻²–10⁻³), suggesting
+  the mechanism is correct but needs refinement.
+
+- **Negative:** No minimum, or minimum at σ → ∞.  Rules out
+  the Coulomb self-interaction as the σ-determining mechanism.
+
+**Expected difficulty:** Medium.  The main computational
+challenge is the 4D Coulomb integral (double integral over
+the torus surface).  This can be reduced using Fourier
+decomposition of 1/|r₁−r₂| on the torus, or evaluated
+numerically with modest resolution (the integrand is smooth).
+
+
 ## Connections
 
 - **R7** — provides the backward calculation, scripts, and the

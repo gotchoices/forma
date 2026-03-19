@@ -323,6 +323,59 @@ of confinement, not a separate mechanism.  Remaining viable
 candidates: 1–6.
 
 
+### F9. Coulomb soliton mechanism fails (Track 5)
+
+**Setup:** Can the Coulomb self-energy of the charge
+distribution determine σ?  A Gaussian wavepacket with width σ
+produces a charge distribution with cos(θ + 2φ) × Gaussian
+modulation.  This distribution has Coulomb self-energy
+U_C(σ) and localization kinetic energy U_K(σ).  If the total
+U_total(σ) = U_K + U_C has a minimum at finite σ, the soliton
+mechanism works.
+
+**Result: negative.**  Both energy contributions DECREASE
+monotonically as σ increases:
+
+| σ (rad) | Q/e   | U_K / m_e c²  | U_C / m_e c²  |
+|---------|-------|---------------|---------------|
+| 0.32    | 1.69  | 0.73          | 4.3 × 10⁻²   |
+| 0.57    | 2.11  | 0.12          | 6.7 × 10⁻²   |
+| 1.06    | 1.12  | 1.8 × 10⁻³   | 1.9 × 10⁻²   |
+| 2.05    | 0.02  | ~0            | 5.0 × 10⁻⁶   |
+| 4.02    | ~0    | ~0            | ~0            |
+
+Since U_total is monotonically decreasing, the minimum is
+at σ → ∞ (fully delocalized, zero charge).  No finite-σ
+equilibrium exists.
+
+**Why it fails — two independent reasons:**
+
+1. **Both energies favor delocalization.**  U_K decreases
+   because a wider packet has less localization cost.  U_C
+   decreases because a wider packet has less charge (the
+   cos(5φ/2) oscillations cancel).  Nothing pulls the system
+   toward finite σ.
+
+2. **Self-energy is always positive.**  The Coulomb self-energy
+   of ANY charge distribution is ∫ ε₀E²/2 dV ≥ 0.  It is
+   always a COST, never a benefit.  A soliton requires an
+   attractive self-interaction (negative energy contribution
+   from localization), but no such attraction exists for the
+   Coulomb field.
+
+**Energy scales:**
+- U_K at σ ~ 1 is of order 10⁻³ m_e c²
+- U_C at σ ~ 1 is of order 10⁻² m_e c²
+- Both are tiny compared to m_e c² = 8.19 × 10⁻¹⁴ J
+- The mode spacing equals m_e c² (by construction), so
+  one mode of localization costs the entire photon energy
+
+**Implication:** R15 F8 candidate 1 (self-interaction /
+soliton balance) is ruled out.  The Coulomb self-energy is
+a small perturbation on the system, not the mechanism that
+selects σ.  Script: `scripts/track5_self_energy.py`.
+
+
 ## Summary
 
 | Finding | Result |
@@ -334,7 +387,8 @@ candidates: 1–6.
 | F5 | α = exp(−4σ²); σ ≈ 1.1 rad (63°) for α = 1/137 |
 | F6 | α = energy fraction in the charge-producing mode |
 | F7 | σ is well-defined (like Bohr radius); soliton analogy |
-| F8 | What determines σ? Seven candidates; #7 (centrifugal, R17) ruled out; #5–6 (embedding shape) remain most promising |
+| F8 | What determines σ? Seven candidates; #7 (centrifugal, R17) ruled out; #5–6 (embedding shape) most promising |
+| F9 | Coulomb soliton fails — both U_K and U_C decrease with σ; self-energy always positive (repulsive); candidate 1 ruled out |
 
 The chain of reasoning:
 
@@ -346,7 +400,16 @@ The chain of reasoning:
     → coupling constant α = Q²/Q_max² = exp(−4σ²)
 
 **Deriving α is equivalent to deriving σ** (the wavepacket
-width).  Or — more promisingly — if the embedding shape is
-not a perfect torus but is deformed by the photon's own
-radiation pattern, α may be determined by the geometry of
-that deformation (F8, candidate 6 / Q51).
+width).
+
+**Ruled-out mechanisms for σ:**
+- Candidate 1: Coulomb soliton (F9 — self-energy is repulsive)
+- Candidate 7: Centrifugal pressure (R17 — no component along
+  path; two-pass cancellation preserves symmetry)
+
+**Surviving candidates:**
+- #2: Mode structure of the compact space
+- #3: Quantum uncertainty (possibly equivalent to #2)
+- #4: Topology of the (1,2) knot
+- #5: Breaking torus symmetry (non-flat embedding shape)
+- #6: Dipole radiation pattern from embedding (subcase of #5)
