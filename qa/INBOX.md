@@ -300,6 +300,45 @@ difference (1.293 MeV)?
 *Source: user question*
 *Status: open — wave-language extension of R14; no computation yet*
 
+Q47. **Geometric interpretation of the running of α.**
+The one-loop QED running is:
+
+    1/α(μ) = 1/α₀ − (2/3π) ln(μ/m_e)
+
+The coefficient 2/(3π) comes from the vacuum polarization
+loop and decomposes as (4/3) × 1/(2π), where 4/3 = beta
+coefficient (2 spin states, 1/3 from averaging over 3
+spatial dimensions) and 1/(2π) from the loop integral.
+
+In the torus model, these factors may have geometric meaning:
+- **3** = number of spatial dimensions the field projects into
+- **2** = number of polarization states (transverse directions)
+- **π** = periodicity of compact dimensions (circular contour)
+- **ln(μ/m_e)** = how deeply the probe penetrates toward the
+  compact boundary (probe wavelength vs. compact size)
+
+In KK theory, coupling constants change their running above
+the compactification scale: from logarithmic (4D) to power-law
+(higher-D).  If the compact space is at the Compton scale, the
+transition happens at ~0.5 MeV.  All measured α values (atomic
+to LEP at 200 GeV) span this transition.
+
+Study could: (1) Write α running in 4+2D or 4+3D KK on T²/T³.
+(2) Compare to standard 4D formula. (3) Check if compact dims
+modify the β coefficient consistently with experiment. (4) See
+if GUT convergence at 1/24 has a geometric interpretation.
+
+Connection to Q34: if α runs because higher-energy probes
+penetrate deeper into the compact space (seeing more of the
+bare charge), this is the same physics as Q34 Path 3 (membrane
+permeability).  The "leakage fraction" IS α, and it runs with
+probe energy.
+
+*Source: primer on natural units and alpha, reference dialog,
+user brainstorm*
+*Status: open — needs both theoretical analysis and comparison
+with measured running*
+
 Q34. **The charge mechanism problem: how does the electron have
 charge?** R13 Track 3 showed that the multi-winding (68, 137)
 model breaks WvM's charge mechanism.  WvM's charge requires
@@ -335,13 +374,37 @@ subtended by the torus tube, or the ratio of compact to 3D
 surface area at the embedding, could provide a geometric
 suppression ≈ α.  Calculable from embedding geometry.
 
-**Path 5. Multi-mode / beating.** The electron is a
-superposition of many modes on a SMALL torus (R ≈ r_e), each
-with p = 1 (preserving WvM charge).  The modes have different
-ring winding numbers q_i at eigenfrequencies of the small
-torus.  Total energy = m_e c².  Beat frequency = ω_C.  Each
-mode contributes charge individually.  Connects α to mode
-spacing = pure geometry.
+**Path 5. Harmonic decomposition of the confined photon.**
+The photon's energy m_e c² is distributed across multiple
+harmonics of the compact space.  One harmonic has p = 1
+(commensurate with polarization → produces charge via WvM)
+and carries only ~1/137th of the total energy.  The remaining
+harmonics have p ≠ 1 (not commensurate → no net charge) and
+carry the other ~136/137 of the energy.  Then:
+  α = (energy in charge-producing mode) / (total energy)
+
+This derives α as an energy partition ratio — a geometric
+property of how the photon's energy distributes across the
+mode spectrum of the compact space.  The other harmonics
+still contribute to mass (they have energy), and may
+contribute to spin and magnetic moment.
+
+*Note: the simpler "two photons beating at Compton" version
+is ruled out by energy conservation.  If a single photon
+(energy m_e c²) splits into two that beat at ω_C, each must
+have frequency HIGHER than ω_C (since beat = difference of
+frequencies), hence each has energy > m_e c².  Total > 2 m_e c².
+Violates conservation.  The viable version is many LOWER-energy
+harmonics whose sum = m_e c², with only one at the right
+frequency/topology to produce charge.*
+
+Arithmetic challenge: the r_e-scale torus has fundamental
+eigenfrequency ω₀ ≈ 137 × ω_C.  A single quantum at ω₀ has
+energy ~137 × m_e c².  So a quantum picture has trouble.  But
+a classical field picture (coherent state) allows any energy
+at any frequency.  Alternatively, the mode spectrum on a torus
+with a ≠ R is non-uniform — mode pairs with Δω = ω_C may
+exist naturally.  A feasibility study could check this.
 
 **Path 6. Topological charge (winding number IS charge).**
 Decouple charge from the commensurability argument entirely.
@@ -356,6 +419,14 @@ is near-field energy trapped in the compact space, not in the
 far-field Coulomb component.  r_e is a derived quantity (radius
 where Coulomb energy = mass), not the torus size.  Simplest
 resolution — may not require new physics, just reinterpretation.
+*Key observation:* R7 found U_Coulomb = α × m_e c² and called
+it a failure.  But this IS the definition of α: the ratio of
+electromagnetic interaction energy to mass energy.  R7 may have
+derived α from geometry without realizing it.  The (1, 2) WvM
+torus at Compton scale gives charge (commensurability), mass
+(path = λ_C), spin (topology), AND α (Coulomb/mass ratio).
+If so, the multi-winding detour (R8) was unnecessary — the
+original WvM geometry was correct all along.  Quick to check.
 
 **Path 8. Different compact topology.** The torus is WvM's
 choice but not the only option.  Lens spaces, spheres, or more
@@ -363,8 +434,11 @@ exotic manifolds could have different charge mechanisms and
 mode structures.
 
 *Source: R13 Track 3 conclusion, user brainstorm*
+*Related: Q42, Q44 (wave-language versions of Path 5), Q47
+(geometric interpretation of α running — connects to Path 3)*
 *Status: open — needs triage to select most promising path(s)
-for a new study*
+for a new study.  Paths 5 and 7 are currently the most
+developed candidates.*
 
 ---
 
