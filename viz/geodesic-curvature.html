@@ -16,6 +16,10 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:12px;heigh
 .b{background:#1e1e2e;border:1px solid #333;color:#999;padding:2px 7px;border-radius:4px;font-size:10px;cursor:pointer;white-space:nowrap}
 .b:hover{background:#2a2a40;color:#ddd;border-color:#4fc3f7}
 .b.on{background:#1a3050;border-color:#4fc3f7;color:#4fc3f7}
+.bx.on{background:#301a1a;border-color:#ff5577;color:#ff5577}
+.by.on{background:#1a3018;border-color:#55ff99;color:#55ff99}
+.bz.on{background:#1a1a30;border-color:#5599ff;color:#5599ff}
+.bw.on{background:#302818;border-color:#ffaa44;color:#ffaa44}
 .sep{width:1px;height:20px;background:#333}
 #view{flex:1;position:relative}
 #info{position:absolute;bottom:10px;left:14px;font:11px/1.4 monospace;color:#444;pointer-events:none}
@@ -30,10 +34,26 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:12px;heigh
     <button class="b" id="b2t">2D + Time</button>
   </div><div class="sep"></div>
   <div class="g">
+    <button class="b on" id="bGeo">Geodesics</button>
+    <button class="b" id="bFld">Field lines</button>
+  </div><div class="sep"></div>
+  <div class="g">
+    <label>Show</label>
+    <button class="b bx on" id="bX">X</button>
+    <button class="b by on" id="bY">Y</button>
+    <button class="b bz on" id="bZ">Z</button>
+    <button class="b bw on" id="bW" style="display:none">W</button>
+  </div><div class="sep"></div>
+  <div class="g">
     <label>r<sub>s</sub>/R</label>
     <input type="range" id="sC" min="0" max="1.8" step="0.01" value="0.3">
     <span class="v" id="vC">0.30</span>
     <button class="b" id="bG">G</button>
+  </div><div class="sep"></div>
+  <div class="g">
+    <label>Sphere R</label>
+    <input type="range" id="sSR" min="0.2" max="3.0" step="0.05" value="1.0">
+    <span class="v" id="vSR">1.00</span>
   </div><div class="sep"></div>
   <div class="g">
     <label>Density</label>
@@ -62,7 +82,10 @@ import * as THREE from 'three';
 import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
 
 const $ = id => document.getElementById(id);
-const P = { mode:'3d', rs:0.3, den:14, gsz:8, opa:0.12, sR:1.0 };
+const P = {
+  mode:'3d', viz:'geo', rs:0.3, den:14, gsz:8, opa:0.12, sR:1.0,
+  showX:true, showY:true, showZ:true, showW:true
+};
 
 const box = $('view');
 const scene = new THREE.Scene();
@@ -79,9 +102,12 @@ const dl = new THREE.DirectionalLight(0xffffff, 0.5);
 dl.position.set(5, 8, 6);
 scene.add(dl);
 
-const gLines = new THREE.Group();
-const gZone  = new THREE.Group();
-scene.add(gLines, gZone);
+const gX = new THREE.Group();
+const gY = new THREE.Group();
+const gZ = new THREE.Group();
+const gW = new THREE.Group();
+const gZone = new THREE.Group();
+scene.add(gX, gY, gZ, gW, gZone);
 
 const axLen = P.gsz;
 [[1,0,0,0xff4444],[0,1,0,0x44ff44],[0,0,1,0x4488ff]].forEach(([x,y,z,c]) => {
@@ -133,8 +159,8 @@ function buildZone() {
 
 /* ---------- geodesic acceleration ---------- */
 // Schwarzschild spatial metric in isotropic coords:
-//   dl² = Ω⁴ (dx²+dy²+dz²),  Ω = 1 + m/ρ,  m = r_s/4
-// Spatial geodesic equation (conformal metric, Ω² = conformal factor):
+//   dl² = Ψ⁴(dx²+dy²+dz²),  Ψ = 1 + m/ρ,  m = r_s/4
+// Let Ω = Ψ² = (1+m/ρ)².  Geodesic equation:
 //   ẍⁱ = Ω⁻¹ [ Ω,ⁱ |ẋ|² − 2(∇Ω·ẋ) ẋⁱ ]
 function gAcc(px, py, pz, vx, vy, vz, m) {
   const r2 = px*px + py*py + pz*pz;
@@ -192,24 +218,25 @@ function traceGeo(sx,sy,sz, dx,dy,dz, rs) {
 }
 
 /* ---------- line helpers ---------- */
-function addLine(pts, color, alpha=0.55) {
+function addLine(group, pts, color, alpha=0.55) {
   if (pts.length < 6) return;
   const g = new THREE.BufferGeometry();
   g.setAttribute('position', new THREE.Float32BufferAttribute(pts, 3));
-  gLines.add(new THREE.Line(g, new THREE.LineBasicMaterial({
+  group.add(new THREE.Line(g, new THREE.LineBasicMaterial({
     color, transparent:true, opacity:alpha
   })));
 }
 
 /* ---------- 3D spatial grid ---------- */
 function build3D() {
-  gLines.clear();
+  gX.clear(); gY.clear(); gZ.clear(); gW.clear();
   const rs = P.rs * P.sR, n = P.den, G = P.gsz, sp = G*2/n;
   const cols = [0xff5577, 0x55ff99, 0x5599ff];
+  const groups = [gX, gY, gZ];
   const cutoff = P.sR*5 + rs*3;
 
   for (let dir = 0; dir < 3; dir++) {
-    const c = cols[dir];
+    const c = cols[dir], grp = groups[dir];
     const d1 = (dir+1)%3, d2 = (dir+2)%3;
     for (let i = 0; i < n; i++) {
       for (let j = 0; j < n; j++) {
@@ -219,17 +246,17 @@ function build3D() {
         const e = [0,0,0]; e[dir]= G; e[d1]=u; e[d2]=w;
 
         if (rs < 0.001 || b > cutoff) {
-          addLine([s[0],s[1],s[2], e[0],e[1],e[2]], c);
+          addLine(grp, [s[0],s[1],s[2], e[0],e[1],e[2]], c);
         } else {
           const d = [0,0,0]; d[dir]=1;
           const fwd = traceGeo(s[0],s[1],s[2], d[0],d[1],d[2], rs);
-          addLine(fwd, c);
+          addLine(grp, fwd, c);
           if (fwd.length >= 3) {
             const li = fwd.length;
             const lr = Math.sqrt(fwd[li-3]**2 + fwd[li-2]**2 + fwd[li-1]**2);
             if (lr < P.sR*1.3) {
               const rd = [0,0,0]; rd[dir]=-1;
-              addLine(traceGeo(e[0],e[1],e[2], rd[0],rd[1],rd[2], rs), c);
+              addLine(grp, traceGeo(e[0],e[1],e[2], rd[0],rd[1],rd[2], rs), c);
             }
           }
         }
@@ -240,11 +267,10 @@ function build3D() {
 
 /* ---------- 2D+T worldlines ---------- */
 function build2DT() {
-  gLines.clear();
+  gX.clear(); gY.clear(); gZ.clear(); gW.clear();
   const rs = P.rs*P.sR, n = P.den, G = P.gsz, sp = G*2/n;
   const gm = rs/2, tMax = G*2, dt = 0.03;
 
-  // Worldlines: particles at rest in XZ plane, Y = time
   for (let i = 0; i < n; i++) {
     for (let j = 0; j < n; j++) {
       const x0 = -G+(i+.5)*sp, z0 = -G+(j+.5)*sp;
@@ -262,12 +288,12 @@ function build2DT() {
         }
         x += vx*dt; z += vz*dt;
       }
-      addLine(pts, 0xffaa44, 0.4);
+      addLine(gW, pts, 0xffaa44, 0.4);
     }
   }
 
-  // Spatial geodesics at t=0 (y=0) as reference grid
   const sCols = [0xff5577, 0x5599ff];
+  const sGroups = [gX, gZ];
   const cutoff = P.sR*5 + rs*3;
   for (let dir = 0; dir < 2; dir++) {
     const axis = dir===0 ? 0 : 2, perp = dir===0 ? 2 : 0;
@@ -277,27 +303,110 @@ function build2DT() {
       const e = [0,0,0]; e[axis]= G; e[perp]=u;
 
       if (rs < 0.001 || Math.abs(u) > cutoff) {
-        addLine([s[0],0,s[2], e[0],0,e[2]], sCols[dir], 0.25);
+        addLine(sGroups[dir], [s[0],0,s[2], e[0],0,e[2]], sCols[dir], 0.25);
       } else {
         const d = [0,0,0]; d[axis]=1;
         const fwd = traceGeo(s[0],0,s[2], d[0],0,d[2], rs);
         for (let k=1; k<fwd.length; k+=3) fwd[k]=0;
-        addLine(fwd, sCols[dir], 0.25);
+        addLine(sGroups[dir], fwd, sCols[dir], 0.25);
         if (Math.abs(u) < P.sR*1.5 && rs > 0.001) {
           const rd = [0,0,0]; rd[axis]=-1;
           const rev = traceGeo(e[0],0,e[2], rd[0],0,rd[2], rs);
           for (let k=1; k<rev.length; k+=3) rev[k]=0;
-          addLine(rev, sCols[dir], 0.25);
+          addLine(sGroups[dir], rev, sCols[dir], 0.25);
         }
       }
     }
   }
 }
 
+/* ---------- 3D field lines ---------- */
+function buildField3D() {
+  gX.clear(); gY.clear(); gZ.clear(); gW.clear();
+  const G = P.gsz;
+  const nLines = P.den * P.den;
+  const cols = [0xff5577, 0x55ff99, 0x5599ff];
+  const groups = [gX, gY, gZ];
+  const golden = (1 + Math.sqrt(5)) / 2;
+
+  for (let i = 0; i < nLines; i++) {
+    const theta = Math.acos(1 - 2 * (i + 0.5) / nLines);
+    const phi = 2 * Math.PI * i / golden;
+    const nx = Math.sin(theta) * Math.cos(phi);
+    const ny = Math.sin(theta) * Math.sin(phi);
+    const nz = Math.cos(theta);
+
+    const sx = P.sR * nx, sy = P.sR * ny, sz = P.sR * nz;
+    const maxAbs = Math.max(Math.abs(nx), Math.abs(ny), Math.abs(nz));
+    const reach = G / maxAbs;
+    const ex = reach * nx, ey = reach * ny, ez = reach * nz;
+
+    const ax = Math.abs(nx), ay = Math.abs(ny), az = Math.abs(nz);
+    const idx = (ax >= ay && ax >= az) ? 0 : (ay >= az) ? 1 : 2;
+    addLine(groups[idx], [sx,sy,sz, ex,ey,ez], cols[idx], 0.5);
+  }
+}
+
+/* ---------- 2D+T field lines ---------- */
+function buildField2DT() {
+  gX.clear(); gY.clear(); gZ.clear(); gW.clear();
+  const G = P.gsz, n = P.den;
+  const gm = (P.rs * P.sR) / 2, tMax = G * 2, dt = 0.03;
+
+  // Worldlines (same as geo mode)
+  const sp = G * 2 / n;
+  for (let i = 0; i < n; i++) {
+    for (let j = 0; j < n; j++) {
+      const x0 = -G + (i + .5) * sp, z0 = -G + (j + .5) * sp;
+      if (Math.sqrt(x0 * x0 + z0 * z0) < P.sR * 1.01) continue;
+      const pts = [];
+      let x = x0, z = z0, vx = 0, vz = 0;
+      for (let t = 0; t < tMax; t += dt) {
+        const r = Math.sqrt(x * x + z * z);
+        if (r < P.sR) break;
+        pts.push(x, t, z);
+        if (gm > 1e-4) {
+          const r3 = r * r * r;
+          vx -= gm * x / r3 * dt;
+          vz -= gm * z / r3 * dt;
+        }
+        x += vx * dt; z += vz * dt;
+      }
+      addLine(gW, pts, 0xffaa44, 0.4);
+    }
+  }
+
+  // Radial field lines in XZ plane at y=0
+  const nRays = P.den * 4;
+  for (let i = 0; i < nRays; i++) {
+    const angle = 2 * Math.PI * i / nRays;
+    const nx = Math.cos(angle), nz = Math.sin(angle);
+    const sx = P.sR * nx, sz = P.sR * nz;
+    const reach = G / Math.max(Math.abs(nx), Math.abs(nz) || 1);
+    const ex = reach * nx, ez = reach * nz;
+    const idx = Math.abs(nx) >= Math.abs(nz) ? 0 : 1;
+    addLine(idx === 0 ? gX : gZ,
+      [sx, 0, sz, ex, 0, ez],
+      idx === 0 ? 0xff5577 : 0x5599ff, 0.35);
+  }
+}
+
 /* ---------- rebuild ---------- */
 function rebuild() {
   buildZone();
-  if (P.mode==='3d') build3D(); else build2DT();
+  if (P.viz === 'geo') {
+    if (P.mode === '3d') build3D(); else build2DT();
+  } else {
+    if (P.mode === '3d') buildField3D(); else buildField2DT();
+  }
+  syncVis();
+}
+
+function syncVis() {
+  gX.visible = P.showX;
+  gY.visible = P.showY;
+  gZ.visible = P.showZ;
+  gW.visible = P.showW;
 }
 
 /* ---------- camera presets ---------- */
@@ -307,12 +416,34 @@ function setCam2DT() { cam.position.set(12,P.gsz,10); ctl.target.set(0,P.gsz*.5,
 /* ---------- UI ---------- */
 $('b3d').onclick = () => {
   P.mode='3d'; $('b3d').classList.add('on'); $('b2t').classList.remove('on');
+  $('bY').style.display=''; $('bW').style.display='none';
   setCam3D(); rebuild();
 };
 $('b2t').onclick = () => {
   P.mode='2dt'; $('b2t').classList.add('on'); $('b3d').classList.remove('on');
+  $('bY').style.display='none'; $('bW').style.display='';
   setCam2DT(); rebuild();
 };
+
+$('bGeo').onclick = () => {
+  P.viz='geo'; $('bGeo').classList.add('on'); $('bFld').classList.remove('on');
+  rebuild();
+};
+$('bFld').onclick = () => {
+  P.viz='field'; $('bFld').classList.add('on'); $('bGeo').classList.remove('on');
+  rebuild();
+};
+
+function toggleAxis(key, btnId) {
+  P[key] = !P[key];
+  $(btnId).classList.toggle('on', P[key]);
+  syncVis();
+}
+$('bX').onclick = () => toggleAxis('showX', 'bX');
+$('bY').onclick = () => toggleAxis('showY', 'bY');
+$('bZ').onclick = () => toggleAxis('showZ', 'bZ');
+$('bW').onclick = () => toggleAxis('showW', 'bW');
+
 $('bG').onclick = () => {
   $('sC').value=0.3; P.rs=0.3; $('vC').textContent='0.30'; rebuild();
 };
@@ -320,6 +451,9 @@ $('bR').onclick = () => { P.mode==='3d' ? setCam3D() : setCam2DT(); };
 
 $('sC').oninput = e => {
   P.rs = +e.target.value; $('vC').textContent = P.rs.toFixed(2); rebuild();
+};
+$('sSR').oninput = e => {
+  P.sR = +e.target.value; $('vSR').textContent = P.sR.toFixed(2); rebuild();
 };
 $('sD').oninput = e => {
   P.den = +e.target.value; $('vD').textContent = P.den; rebuild();
