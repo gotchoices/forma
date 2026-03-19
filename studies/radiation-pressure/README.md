@@ -349,63 +349,142 @@ from self-consistency.  If α ≈ 1/137, we have a derivation.
 calculation (Track 2) is the hard part; once the shape is
 known, the mode coupling integral is straightforward.
 
-### Track 4. Analytical estimate
+### Track 4. Analytical estimate  *(COMPLETE — negative result)*
 
-Before the full numerical calculation, attempt a perturbative
-estimate.
+**Script:** [`scripts/track4_analytical.py`](scripts/track4_analytical.py)
+
+Computed the 3D curvature, centrifugal force, and Fourier
+decomposition along the (1,2) helix for r = 0.25, 0.5, 1.0.
+Tested four variants of the charge integral: perfect torus,
+deformed tube, velocity-modulated field, nonlinear metric
+coupling.
+
+**Result: ALL charge integrals give exactly zero.**
+
+The tube deformation (from centrifugal pressure) is
+φ-independent on a symmetric torus.  It breaks the tube's
+circular symmetry (in θ) but preserves the ring's rotational
+symmetry (in φ).  The charge integral factorizes as
+[θ-stuff] × ∫cos(2φ)dφ = 0 regardless of the deformation.
+
+The root cause is the **two-pass cancellation**: the (1,2)
+winding visits each ring position at θ and θ+π.  Any
+θ-dependent quantity cancels between the two passes because
+cos(θ) + cos(θ+π) = 0.
+
+**This rules out Tracks 1–3** (tube deformation → mode
+coupling → charge) as originally conceived.  On a symmetric
+torus, no amount of tube deformation can produce a monopole.
+
+**Positive findings preserved:**
+- Curvature harmonic series quantified (F1, F2)
+- Force magnitudes and components catalogued
+- The φ-symmetry protection clearly identified (F3–F5)
+- Opens Track 5 (dynamic wavepacket compression)
+
+See [`findings.md`](findings.md) F1–F5 for details.
+
+
+### Track 5. Dynamic wavepacket compression  *(open)*
+
+Track 4 assumed a fully delocalized wave (σ = ∞), which
+gives zero charge.  But R15 showed that a localized
+wavepacket (finite σ) HAS charge: α = exp(−4σ²).
+
+The centrifugal forces, while they can't produce charge
+from a delocalized wave, could DETERMINE σ for a localized
+wavepacket — and hence determine α.
+
+**Physical picture:**
+
+Model the wavepacket as a "fluid" of energy/momentum
+distributed along the (1,2) geodesic.  The centrifugal
+force has a gradient across the packet:
+
+- The curvature varies along the path (F1–F2).
+- The azimuthal force accelerates/decelerates different
+  parts of the packet at different rates.
+- This gradient COMPRESSES the packet at some path positions
+  (where the leading edge decelerates relative to the
+  trailing edge) and STRETCHES it at others.
+- Near the inner equator (tight curvature, strong forces):
+  the force changes rapidly → strong compression/stretching.
+- Near the outer equator (gentle curvature, weak forces):
+  the force changes slowly → weak compression/stretching.
+
+Because the centrifugal force is nonlinear (F ∝ 1/ρ,
+where ρ = R + a cos θ), the compression at the inner
+equator may be STRONGER than the stretching at the outer
+equator.  The net effect over one circuit could be a
+residual compression that squeezes the wavepacket.
+
+**Balance of forces:**
+
+| Force | Direction | Depends on |
+|-------|-----------|-----------|
+| Quantum pressure | Spreading (↑ σ) | ℏ, packet width |
+| Centrifugal compression | Concentrating (↓ σ) | Curvature gradient, energy |
+| Coulomb self-repulsion | Spreading (↑ σ) | Charge² |
+
+The equilibrium σ is where:
+
+    quantum pressure + Coulomb repulsion = centrifugal compression
+
+This is the Bohr-atom analog for the photon-knot:
+
+| System | Spreading | Concentrating | Balance |
+|--------|-----------|---------------|---------|
+| H atom | Kinetic (ℏ²/mr²) | Coulomb (−e²/r) | Bohr radius |
+| Star | Thermal pressure | Gravity | Stellar radius |
+| **Photon-knot** | **Quantum + Coulomb** | **Centrifugal** | **σ → α** |
 
 **Method:**
-1. Model the tube cross-section as a circle plus a small
-   elliptical deformation: ρ(θ) = a(1 + ε cos θ), where
-   ε is the deformation parameter.
-2. The deformation ε is determined by the ratio of centrifugal
-   pressure variation to the restoring stiffness.  For a thin
-   torus (a ≪ R), ε ∝ a/R.
-3. The mode coupling from (1, 2) to (0, 0) involves the
-   product of the deformation (cos θ term) with the wave
-   pattern (cos θ from the p = 1 winding), giving a cos²θ
-   term that has a nonzero θ-average.
-4. The coupling coefficient is proportional to ε.
-5. α ∝ ε².
+1. Write the equation of motion for a wavepacket of
+   width σ on the (1,2) geodesic in the presence of the
+   centrifugal force field from F1.
+2. Compute the net compression per circuit as a function
+   of σ: does the nonlinearity of 1/ρ produce a residual?
+3. Compute the quantum pressure (from the uncertainty
+   principle or equivalently from the Fourier width of
+   the packet).
+4. Equate: find σ_equilibrium.
+5. Compute α = exp(−4σ²).
 
-If ε ∝ a/R and α ∝ (a/R)², then fixing a/R = 1/2 (from Q52,
-the "equal distance per winding" constraint) would give a
-specific numerical value for α.  Check whether it matches
-1/137.
+**Key test:** does the nonlinear centrifugal compression
+survive averaging over a full circuit?  If the compression
+and stretching cancel exactly (because the force is
+antisymmetric in φ), then centrifugal compression is NOT
+the mechanism and we need to look elsewhere.
 
-**Expected difficulty:** low-medium.  This is a back-of-
-envelope calculation that could confirm or rule out the
-mechanism before investing in the full numerics.
-
-**Priority:** do this FIRST.  If the perturbative estimate
-gives α ~ 10⁻² for reasonable geometry, the mechanism is
-viable and the full calculation is worth doing.  If it gives
-α ~ 1 or α ~ 10⁻⁶, the mechanism is likely wrong.
+**Expected difficulty:** medium.  The main calculation is
+the net compression integral over a full circuit, which
+is a 1D integral amenable to both numerical and analytical
+evaluation.
 
 
-## What would success look like?
+## Status
 
-**Tier 1 (strong):** α = 1/137 falls out of the self-consistent
-radiation pressure calculation with no free parameters.  The
-deformation is determined by the photon's energy, the torus
-topology, and Maxwell's equations.
+**Track 4 result: Tier 4 (negative) for tube deformation.**
+The centrifugal deformation is φ-independent on a symmetric
+torus, so the monopole integral vanishes.  Tracks 1–3 are
+ruled out as originally conceived.
 
-**Tier 2 (promising):** α comes out as a function of the
-aspect ratio r = a/R.  Combined with Q52's constraint (r = 1/2
-from equal distance per winding), α is determined.  Two
-independent geometric constraints fix two parameters (r and α).
+**Track 5 (open): redirected to dynamic wavepacket compression.**
+The centrifugal forces could still determine σ (and hence α)
+through a dynamic balance — compression of the wavepacket by
+centrifugal force gradients vs. spreading by quantum pressure.
+This is the study's remaining active question.
 
-**Tier 3 (informative):** the mechanism produces charge but at
-the wrong magnitude (α ≠ 1/137).  This would still identify
-radiation pressure as the physical origin of charge and narrow
-the search for corrections.
+**What would success look like for Track 5?**
 
-**Tier 4 (negative):** the centrifugal deformation preserves
-too much symmetry (e.g., the deformation is φ-independent on
-a symmetric torus, so the monopole integral still vanishes).
-This would rule out the mechanism and redirect toward other
-candidates (F8 candidates 1–4, or the dipole radiation pattern
-as an independent effect).
+- **Strong:** the net centrifugal compression over one circuit
+  is nonzero (due to the nonlinearity of 1/ρ), and balancing
+  against quantum pressure gives σ = 1.109 rad → α = 1/137.
+- **Promising:** the compression gives σ as a function of r,
+  and r = 1/2 (Q52) yields σ ≈ 1.1.
+- **Negative:** the net compression is exactly zero (the
+  nonlinearity cancels over a full circuit), ruling out
+  centrifugal forces as the σ-determining mechanism.
 
 
 ## What is NOT addressed
