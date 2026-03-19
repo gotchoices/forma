@@ -385,106 +385,82 @@ torus, no amount of tube deformation can produce a monopole.
 See [`findings.md`](findings.md) F1–F5 for details.
 
 
-### Track 5. Dynamic wavepacket compression  *(open)*
+### Track 5. Dynamic wavepacket compression  *(COMPLETE — negative result)*
 
-Track 4 assumed a fully delocalized wave (σ = ∞), which
-gives zero charge.  But R15 showed that a localized
-wavepacket (finite σ) HAS charge: α = exp(−4σ²).
+**Script:** [`scripts/track5_wavepacket.py`](scripts/track5_wavepacket.py)
 
-The centrifugal forces, while they can't produce charge
-from a delocalized wave, could DETERMINE σ for a localized
-wavepacket — and hence determine α.
+Track 4 showed that the centrifugal force can't produce
+charge from a delocalized wave.  Track 5 asked: can it
+determine σ (the localization width) for a localized
+wavepacket?
 
-**Physical picture:**
+Two sub-effects were investigated:
 
-Model the wavepacket as a "fluid" of energy/momentum
-distributed along the (1,2) geodesic.  The centrifugal
-force has a gradient across the packet:
+**A. Width clumping (compression/stretching).**
+Could the centrifugal force gradient across the wavepacket
+compress it at the inner equator and stretch it at the outer,
+with a net residual from the nonlinearity?
 
-- The curvature varies along the path (F1–F2).
-- The azimuthal force accelerates/decelerates different
-  parts of the packet at different rates.
-- This gradient COMPRESSES the packet at some path positions
-  (where the leading edge decelerates relative to the
-  trailing edge) and STRETCHES it at others.
-- Near the inner equator (tight curvature, strong forces):
-  the force changes rapidly → strong compression/stretching.
-- Near the outer equator (gentle curvature, weak forces):
-  the force changes slowly → weak compression/stretching.
+**Result: No.**  Two independent reasons:
 
-Because the centrifugal force is nonlinear (F ∝ 1/ρ,
-where ρ = R + a cos θ), the compression at the inner
-equator may be STRONGER than the stretching at the outer
-equator.  The net effect over one circuit could be a
-residual compression that squeezes the wavepacket.
+1. **F ⊥ v exactly.**  The centrifugal force has zero
+   component along the path direction (it is always
+   perpendicular to the velocity).  This is a geometric
+   identity, not an approximation.  There is no direct
+   force that can push energy volumes together or apart
+   along the path.
 
-**Balance of forces:**
+2. **σ_φ = const in the flat metric.**  The angular width
+   of the wavepacket in the flat T² coordinates is a
+   constant of the motion.  The 3D width σ_3D oscillates
+   ("breathes") because the 3D arc length per unit φ
+   varies, but the net magnification per circuit is
+   exactly 1.  The packet returns to its original 3D
+   extent after every circuit.
 
-| Force | Direction | Depends on |
-|-------|-----------|-----------|
-| Quantum pressure | Spreading (↑ σ) | ℏ, packet width |
-| Centrifugal compression | Concentrating (↓ σ) | Curvature gradient, energy |
-| Coulomb self-repulsion | Spreading (↑ σ) | Charge² |
+**B. Path deflection.**
+Could the surface-perpendicular centrifugal force deflect
+the path from the flat-T² geodesic, modifying the charge
+integral?
 
-The equilibrium σ is where:
+**Result: The force is not an external perturbation.**
+The centrifugal force and the confinement force are
+Newton's third-law pair — they are the same force viewed
+from inside (flat T²) and outside (3D).  The photon
+follows the flat-T² geodesic, and the 3D curvature is
+what this straight-line motion looks like from outside.
 
-    quantum pressure + Coulomb repulsion = centrifugal compression
+A hypothetical deflection calculation (treating the force
+as external) gives enormous displacements (Δθ ~ 8–16 rad,
+multiple full tube rotations), confirming the force
+magnitude but also confirming that it is already fully
+balanced by the confinement.
 
-This is the Bohr-atom analog for the photon-knot:
-
-| System | Spreading | Concentrating | Balance |
-|--------|-----------|---------------|---------|
-| H atom | Kinetic (ℏ²/mr²) | Coulomb (−e²/r) | Bohr radius |
-| Star | Thermal pressure | Gravity | Stellar radius |
-| **Photon-knot** | **Quantum + Coulomb** | **Centrifugal** | **σ → α** |
-
-**Method:**
-1. Write the equation of motion for a wavepacket of
-   width σ on the (1,2) geodesic in the presence of the
-   centrifugal force field from F1.
-2. Compute the net compression per circuit as a function
-   of σ: does the nonlinearity of 1/ρ produce a residual?
-3. Compute the quantum pressure (from the uncertainty
-   principle or equivalently from the Fourier width of
-   the packet).
-4. Equate: find σ_equilibrium.
-5. Compute α = exp(−4σ²).
-
-**Key test:** does the nonlinear centrifugal compression
-survive averaging over a full circuit?  If the compression
-and stretching cancel exactly (because the force is
-antisymmetric in φ), then centrifugal compression is NOT
-the mechanism and we need to look elsewhere.
-
-**Expected difficulty:** medium.  The main calculation is
-the net compression integral over a full circuit, which
-is a 1D integral amenable to both numerical and analytical
-evaluation.
+See [`findings.md`](findings.md) F7–F10 for details.
 
 
 ## Status
 
-**Track 4 result: Tier 4 (negative) for tube deformation.**
-The centrifugal deformation is φ-independent on a symmetric
-torus, so the monopole integral vanishes.  Tracks 1–3 are
-ruled out as originally conceived.
+**Tracks 4 & 5: both negative.  R17 is complete.**
 
-**Track 5 (open): redirected to dynamic wavepacket compression.**
-The centrifugal forces could still determine σ (and hence α)
-through a dynamic balance — compression of the wavepacket by
-centrifugal force gradients vs. spreading by quantum pressure.
-This is the study's remaining active question.
+**Track 4** showed that tube deformation from centrifugal
+pressure preserves the ring's rotational symmetry, so the
+monopole integral vanishes.  Tracks 1–3 are ruled out.
 
-**What would success look like for Track 5?**
+**Track 5** showed that the centrifugal force cannot
+determine σ either:
+- F ⊥ v exactly → no direct clumping (F7)
+- Width breathing is exactly conservative → σ_φ = const (F8)
+- The centrifugal force is a consequence of confinement,
+  not an external perturbation → cannot deflect the path (F10)
 
-- **Strong:** the net centrifugal compression over one circuit
-  is nonzero (due to the nonlinearity of 1/ρ), and balancing
-  against quantum pressure gives σ = 1.109 rad → α = 1/137.
-- **Promising:** the compression gives σ as a function of r,
-  and r = 1/2 (Q52) yields σ ≈ 1.1.
-- **Negative:** the net compression is exactly zero (the
-  nonlinearity cancels over a full circuit), ruling out
-  centrifugal forces as the σ-determining mechanism.
+**Key positive insight:** the centrifugal force decomposition
+reveals that ~70% of the force is normal to the surface
+(pushes field into 3D) and ~70% is perpendicular to the
+path on the surface (would deflect if external).  These are
+enormous (~0.5 N) and fully balanced by the confinement.
+This confirms the model's self-consistency: the centrifugal
+force IS the inertia of the confined photon.
 
 
 ## What is NOT addressed

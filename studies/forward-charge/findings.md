@@ -312,10 +312,15 @@ Candidates:
 None of candidates 1–4 immediately gives σ = 1.109 rad.
 Candidates 5–7 are qualitatively different: they bypass the
 localization mechanism entirely and make α a geometric
-property of the embedding shape.  Candidate 7 (→ R17) is
-the most promising because the deformation has a known,
-computable physical origin (centrifugal radiation pressure
-from the photon's own momentum on the curved path).
+property of the embedding shape.
+
+**Update (R17 complete):** Candidate 7 (centrifugal radiation
+pressure) has been ruled out.  R17 Track 4 showed tube
+deformation preserves φ-symmetry (charge = 0).  Track 5
+showed F ⊥ v (no clumping), σ_φ = const (breathing is
+conservative), and the centrifugal force is a consequence
+of confinement, not a separate mechanism.  Remaining viable
+candidates: 1–6.
 
 
 ## Summary
@@ -329,7 +334,7 @@ from the photon's own momentum on the curved path).
 | F5 | α = exp(−4σ²); σ ≈ 1.1 rad (63°) for α = 1/137 |
 | F6 | α = energy fraction in the charge-producing mode |
 | F7 | σ is well-defined (like Bohr radius); soliton analogy |
-| F8 | What determines σ? Seven candidates; #7 (centrifugal radiation pressure → tube deformation → R17) most promising |
+| F8 | What determines σ? Seven candidates; #7 (centrifugal, R17) ruled out; #5–6 (embedding shape) remain most promising |
 
 The chain of reasoning:
 

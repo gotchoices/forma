@@ -31,19 +31,6 @@ with the p = 1 sector retaining fraction α of the total energy, then
 Complementary to R15 (numerical forward calc); R16 seeks the analytical
 explanation.
 
-### R17. Radiation pressure self-consistency — centrifugal deformation → α
-**Study:** [`radiation-pressure/`](radiation-pressure/)
-**Questions:** [Q18](../qa/Q18-deriving-alpha.md), Q34, Q51, Q52  **Type:** compute/analytical  **Depends on:** R15, R16, R13
-
-A confined photon has momentum; on the curved (1,2) helix, centrifugal radiation
-pressure deforms the tube cross-section (stronger at the inner equator, weaker at
-the outer). The non-circular cross-section breaks the azimuthal symmetry that kills
-the monopole (R15 F3), allowing the n = 2 mode to couple to n = 0 (charge). The
-coupling strength — and hence α — is determined by the magnitude of the deformation,
-which is fixed by the photon's own energy and the geometry. No free parameters.
-Track 4 (perturbative estimate) is the priority: check whether α ~ 1/137 for
-reasonable geometry before committing to the full calculation.
-
 ### R14. Universal geometry — shared T³ for all particles
 **Study:** [`universal-geometry/`](universal-geometry/)  *(draft)*
 **Questions:** [Q13](../qa/Q13-three-compact-dimensions.md), [Q26](../qa/Q26-hadrons-photon-knots.md), [Q32](../qa/Q32-energy-geometry-fundamentals.md)  **Type:** compute/reason  **Depends on:** R13
@@ -126,3 +113,4 @@ Studies in chronological order of completion. Key result only — see each study
 | 10 | **R12. Self-consistent fields** [`self-consistent-fields/`](self-consistent-fields/) | Flat T² has no eigenmodes at ω_C (spectral gap ~137×). Curved geodesics give q ≈ 193 — photon sees flat space internally. Flat-for-mass / embedded-for-charge is the correct two-domain picture (not an inconsistency). Track 3 (propagation self-consistency) trivially satisfied on flat T². |
 | 11 | **R13. Charge from the embedding** [`kk-charge-t3/`](kk-charge-t3/) | Electron is winding mode (not KK). Multi-winding (68,137) breaks WvM charge mechanism: p = 68 ≠ 1 destroys commensurability, E oscillates 67× relative to surface normal, monopole = 0 (exact). The α problem ≡ the charge mechanism problem: α ≈ 1/137 forces a tradeoff between correct Coulomb energy (multi-winding) and correct charge (p = 1). → Q34. |
 | 12 | **R8. Multi-winding electron** [`multi-winding/`](multi-winding/) | (68,137) on sheared T² at r_e scale: mass ✓, spin ½ exact ✓, g = 2 ✓, R/r_e = 0.989 ✓. **Charge mechanism invalidated by R13** — multi-winding breaks WvM commensurability (Q = 0). Spin/g-factor results carry over to any (1,2)-local model. q was never selected; the premise (U_Coulomb = m_e c²/2) was the wrong target (see R15). |
+| 13 | **R17. Radiation pressure** [`radiation-pressure/`](radiation-pressure/) | Centrifugal force from confined photon's curved 3D path cannot determine α. Track 4: tube deformation preserves φ-symmetry → charge = 0. Track 5: F ⊥ v (no clumping), σ_φ = const (breathing conservative), force is a consequence of confinement. Positive: force decomposition quantified; confirms model self-consistency. |
