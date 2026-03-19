@@ -19,6 +19,18 @@ energy m_e c² and (1,2) topology, compute the far-field Coulomb flux, read off
 charge Q, and check whether Q²/(4πε₀ℏc) ≈ 1/137. If so, α is derived from
 energy and topology alone.
 
+### R16. Harmonic decomposition and the charge-producing mode
+**Study:** [`harmonic-charge/`](harmonic-charge/)
+**Questions:** [Q18](../qa/Q18-deriving-alpha.md), Q34 Path 5  **Type:** analytical/compute  **Depends on:** R12, R13
+
+The confined photon's field decomposes into Fourier modes of T². Only the
+p = 1 component produces charge (WvM commensurability; R13). If the embedding
+curvature redistributes energy from the (1,2) plane wave to a broad spectrum,
+with the p = 1 sector retaining fraction α of the total energy, then
+α = (charge-mode energy) / (total energy) — derived from geometry.
+Complementary to R15 (numerical forward calc); R16 seeks the analytical
+explanation.
+
 ### R14. Universal geometry — shared T³ for all particles
 **Study:** [`universal-geometry/`](universal-geometry/)  *(draft)*
 **Questions:** [Q13](../qa/Q13-three-compact-dimensions.md), [Q26](../qa/Q26-hadrons-photon-knots.md), [Q32](../qa/Q32-energy-geometry-fundamentals.md)  **Type:** compute/reason  **Depends on:** R13

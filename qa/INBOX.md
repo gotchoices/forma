@@ -14,50 +14,7 @@ Raw capture queue. Add questions here as they arise, tagged with source.
 
 ## Open
 
-Q2. **Flat space inside, curved appearance outside.** If photons
-travel a straight line inside the compact space, would they
-manifest fields in xyz as though their flat space is toroidal?
-Is the toroidal shape something we impose, or a consequence of
-how flat compact dimensions embed in 3+1D?
-*Source: user question*
-*Status: R5 retired — subsumed by R13 (KK field projection on flat T³)*
-
-Q3/Q4. **Dimensionality of the compact space.** The compact space
-is 2D (φ, θ). The radial field profile is transverse mode
-structure, not a third compact dimension. Remaining subtlety:
-does this hold when the field equations are solved
-self-consistently?
-*Source: user question, corrected twice*
-*Status: largely resolved; residual question folded into R2*
-
 Q5. **Size and independence.** → [Q05-orthogonality-and-size.md](Q05-orthogonality-and-size.md) *(answered)*
-
-Q6. **Orthogonality and transforms.** Is there a transform that
-connects xyz to the compactified dimension? Does the new
-dimension need to be orthogonal to xyz to avoid requiring a
-confinement mechanism?
-*Source: user question*
-*Status: largely answered by [Q07](Q07-flat-compact-dimensions.md) (KK metric). Residual detail
-folded into R1/R13 (R5 retired).*
-
-Q8. **B-field and magnetic dipole.** Does the B-field always point
-toward the poles? Is the magnetic moment an integral or average
-over all positions? What did WvM say about getting a single N/S
-dipole from the toroidal orbit?
-*Source: user question*
-*Status: R4 retired — answered within D1/R2; magnetic moment is axial projection of B on T²*
-
-Q9. **Guided-wave decay profile.** What is the actual E-field
-falloff from the orbit? How does a guided-wave mode (vs uniform
-sphere) affect the charge derivation?
-*Source: toroid-geometry F5*
-*Status: → R6 (concluded)*
-
-Q10. **Quadrupole correction.** The (1,2) orbit has ~2.5%
-anisotropy at the rotation horizon. Does a full calculation shift
-q/e by a few percent?
-*Source: toroid-geometry F5*
-*Status: → R7 (concluded); backlog for full calculation*
 
 Q11. **Why only q = 1 and q = 2?** → [Q11-spin-statistics-filter.md](Q11-spin-statistics-filter.md) *(answered)*
 
@@ -84,12 +41,6 @@ model, mass = photon energy / c². What determines which photon
 energies are allowed?
 *Source: knot-zoo F2*
 *Status: open — this is the mass problem*
-
-Q17. **Kaluza-Klein charge quantum.** In standard KK theory,
-q = nℏ/(R_KK·c). Does the WvM a/R relationship reduce to this?
-*Source: implied by knot-zoo F2, F4*
-*Status: → R1 (concluded — KK gravitational charge ruled out;
-algebraic mapping of WvM → KK not yet checked)*
 
 Q19. **Precession causes.** If the torus axis precesses, what
 drives it? Is it a natural consequence of the equations of motion?
@@ -130,7 +81,7 @@ simulation-theory ideas?
 *Source: user question*
 *Status: open (backlog — see also [Q31](Q31-discrete-torus-digital-counter.md))*
 
-Q34. **Shared compact space.** Is the compact T³ a single space
+Q50. **Shared compact space.** Is the compact T³ a single space
 shared by all particles — each particle a distinct topological
 feature of one global manifold — or does each particle carry
 its own private subspace? A shared T³ makes entanglement and
@@ -300,6 +251,45 @@ difference (1.293 MeV)?
 *Source: user question*
 *Status: open — wave-language extension of R14; no computation yet*
 
+Q47. **Geometric interpretation of the running of α.**
+The one-loop QED running is:
+
+    1/α(μ) = 1/α₀ − (2/3π) ln(μ/m_e)
+
+The coefficient 2/(3π) comes from the vacuum polarization
+loop and decomposes as (4/3) × 1/(2π), where 4/3 = beta
+coefficient (2 spin states, 1/3 from averaging over 3
+spatial dimensions) and 1/(2π) from the loop integral.
+
+In the torus model, these factors may have geometric meaning:
+- **3** = number of spatial dimensions the field projects into
+- **2** = number of polarization states (transverse directions)
+- **π** = periodicity of compact dimensions (circular contour)
+- **ln(μ/m_e)** = how deeply the probe penetrates toward the
+  compact boundary (probe wavelength vs. compact size)
+
+In KK theory, coupling constants change their running above
+the compactification scale: from logarithmic (4D) to power-law
+(higher-D).  If the compact space is at the Compton scale, the
+transition happens at ~0.5 MeV.  All measured α values (atomic
+to LEP at 200 GeV) span this transition.
+
+Study could: (1) Write α running in 4+2D or 4+3D KK on T²/T³.
+(2) Compare to standard 4D formula. (3) Check if compact dims
+modify the β coefficient consistently with experiment. (4) See
+if GUT convergence at 1/24 has a geometric interpretation.
+
+Connection to Q34: if α runs because higher-energy probes
+penetrate deeper into the compact space (seeing more of the
+bare charge), this is the same physics as Q34 Path 3 (membrane
+permeability).  The "leakage fraction" IS α, and it runs with
+probe energy.
+
+*Source: primer on natural units and alpha, reference dialog,
+user brainstorm*
+*Status: open — needs both theoretical analysis and comparison
+with measured running*
+
 Q48. **Why does E point outward and not B? (Electric vs.
 magnetic charge selection.)** WvM hypothesizes that the
 circularly polarized photon's E-field is always oriented
@@ -352,45 +342,6 @@ and Q27 (foundational axioms).
 *Status: noted — incorporate into Q27/Q32 when those are
 next revised*
 
-Q47. **Geometric interpretation of the running of α.**
-The one-loop QED running is:
-
-    1/α(μ) = 1/α₀ − (2/3π) ln(μ/m_e)
-
-The coefficient 2/(3π) comes from the vacuum polarization
-loop and decomposes as (4/3) × 1/(2π), where 4/3 = beta
-coefficient (2 spin states, 1/3 from averaging over 3
-spatial dimensions) and 1/(2π) from the loop integral.
-
-In the torus model, these factors may have geometric meaning:
-- **3** = number of spatial dimensions the field projects into
-- **2** = number of polarization states (transverse directions)
-- **π** = periodicity of compact dimensions (circular contour)
-- **ln(μ/m_e)** = how deeply the probe penetrates toward the
-  compact boundary (probe wavelength vs. compact size)
-
-In KK theory, coupling constants change their running above
-the compactification scale: from logarithmic (4D) to power-law
-(higher-D).  If the compact space is at the Compton scale, the
-transition happens at ~0.5 MeV.  All measured α values (atomic
-to LEP at 200 GeV) span this transition.
-
-Study could: (1) Write α running in 4+2D or 4+3D KK on T²/T³.
-(2) Compare to standard 4D formula. (3) Check if compact dims
-modify the β coefficient consistently with experiment. (4) See
-if GUT convergence at 1/24 has a geometric interpretation.
-
-Connection to Q34: if α runs because higher-energy probes
-penetrate deeper into the compact space (seeing more of the
-bare charge), this is the same physics as Q34 Path 3 (membrane
-permeability).  The "leakage fraction" IS α, and it runs with
-probe energy.
-
-*Source: primer on natural units and alpha, reference dialog,
-user brainstorm*
-*Status: open — needs both theoretical analysis and comparison
-with measured running*
-
 Q34. **The charge mechanism problem: how does the electron have
 charge?** R13 Track 3 showed that the multi-winding (68, 137)
 model breaks WvM's charge mechanism.  WvM's charge requires
@@ -427,36 +378,13 @@ surface area at the embedding, could provide a geometric
 suppression ≈ α.  Calculable from embedding geometry.
 
 **Path 5. Harmonic decomposition of the confined photon.**
-The photon's energy m_e c² is distributed across multiple
-harmonics of the compact space.  One harmonic has p = 1
-(commensurate with polarization → produces charge via WvM)
-and carries only ~1/137th of the total energy.  The remaining
-harmonics have p ≠ 1 (not commensurate → no net charge) and
-carry the other ~136/137 of the energy.  Then:
-  α = (energy in charge-producing mode) / (total energy)
-
-This derives α as an energy partition ratio — a geometric
-property of how the photon's energy distributes across the
-mode spectrum of the compact space.  The other harmonics
-still contribute to mass (they have energy), and may
-contribute to spin and magnetic moment.
-
-*Note: the simpler "two photons beating at Compton" version
-is ruled out by energy conservation.  If a single photon
-(energy m_e c²) splits into two that beat at ω_C, each must
-have frequency HIGHER than ω_C (since beat = difference of
-frequencies), hence each has energy > m_e c².  Total > 2 m_e c².
-Violates conservation.  The viable version is many LOWER-energy
-harmonics whose sum = m_e c², with only one at the right
-frequency/topology to produce charge.*
-
-Arithmetic challenge: the r_e-scale torus has fundamental
-eigenfrequency ω₀ ≈ 137 × ω_C.  A single quantum at ω₀ has
-energy ~137 × m_e c².  So a quantum picture has trouble.  But
-a classical field picture (coherent state) allows any energy
-at any frequency.  Alternatively, the mode spectrum on a torus
-with a ≠ R is non-uniform — mode pairs with Δω = ω_C may
-exist naturally.  A feasibility study could check this.
+→ **R16** [`studies/harmonic-charge/`](../studies/harmonic-charge/).
+The embedding curvature redistributes the (1,2) plane wave's
+energy across Fourier modes; only the p = 1 component produces
+charge; if that fraction = α, we have a derivation.
+Complementary to R15 (numerical); R16 seeks the analytical
+explanation.  "Two photons beating" version ruled out by
+energy conservation — see R16 README for details.
 
 **Path 6. Topological charge (winding number IS charge).**
 Decouple charge from the commensurability argument entirely.
@@ -479,9 +407,8 @@ mode structures.
 *Source: R13 Track 3 conclusion, user brainstorm*
 *Related: Q42, Q44 (wave-language versions of Path 5), Q47
 (geometric interpretation of α running — connects to Path 3)*
-*Status: open — needs triage to select most promising path(s)
-for a new study.  Paths 5 and 7 are currently the most
-developed candidates.*
+*Status: open — Path 7 → R15, Path 5 → R16.  Remaining
+paths (1–4, 6, 8) await triage.*
 
 ---
 
@@ -495,9 +422,16 @@ See [`README.md`](README.md) for the full index.
 | # | File | Note |
 |---|------|------|
 | Q1, Q7 | [Q07-flat-compact-dimensions.md](Q07-flat-compact-dimensions.md) | Compact dimensions can be flat; orthogonality is metric-based |
+| Q2 | *(inline)* | Answered: two-domain picture (R12 F14, R13). Flat inside, toroidal embedding in 3D. |
+| Q3/Q4 | *(inline)* | Answered: compact space is 2D (T²) or 3D (T³ for linking, Q13/R14). Radial profile is transverse mode structure. |
 | Q5 | [Q05-orthogonality-and-size.md](Q05-orthogonality-and-size.md) | Orthogonality is metric, not size-dependent; standard KK result |
+| Q6 | *(inline)* | Answered by [Q07](Q07-flat-compact-dimensions.md): KK metric provides the transform; orthogonality is metric-based. |
+| Q8 | *(inline)* | Answered: B always axial (R2, R8 F10). Magnetic moment = net axial projection of B on T². |
+| Q9 | *(inline)* | Concluded via R6. Field profile shape doesn't change q = e; actual profile needs wave eq. on T². |
+| Q10 | *(inline)* | Concluded via R7. Quadrupole correction ~few %; backlog until charge mechanism settled. |
 | Q11 | [Q11-spin-statistics-filter.md](Q11-spin-statistics-filter.md) | Spin-statistics theorem excludes free particles with q ≥ 3 |
 | Q13 | [Q13-three-compact-dimensions.md](Q13-three-compact-dimensions.md) | Three compact dims required for topological linking (R14 Track 0) |
+| Q17 | *(inline)* | Concluded via R1. KK gravitational charge ~10⁻²² × e — ruled out. WvM mechanism is different. |
 | Q22 | [Q22-path-closure.md](Q22-path-closure.md) | Exact closure not needed; properties depend on topology, not global periodicity |
 | Q30 | [Q30-prime-q-harmonic-avoidance.md](Q30-prime-q-harmonic-avoidance.md) | Negative result — primality does not select q (R11) |
 | Q33 | [Q33-gravity-vs-charge.md](Q33-gravity-vs-charge.md) | Both can arise from photons; different coupling channels |
