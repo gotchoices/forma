@@ -31,6 +31,19 @@ with the p = 1 sector retaining fraction α of the total energy, then
 Complementary to R15 (numerical forward calc); R16 seeks the analytical
 explanation.
 
+### R17. Radiation pressure self-consistency — centrifugal deformation → α
+**Study:** [`radiation-pressure/`](radiation-pressure/)
+**Questions:** [Q18](../qa/Q18-deriving-alpha.md), Q34, Q51, Q52  **Type:** compute/analytical  **Depends on:** R15, R16, R13
+
+A confined photon has momentum; on the curved (1,2) helix, centrifugal radiation
+pressure deforms the tube cross-section (stronger at the inner equator, weaker at
+the outer). The non-circular cross-section breaks the azimuthal symmetry that kills
+the monopole (R15 F3), allowing the n = 2 mode to couple to n = 0 (charge). The
+coupling strength — and hence α — is determined by the magnitude of the deformation,
+which is fixed by the photon's own energy and the geometry. No free parameters.
+Track 4 (perturbative estimate) is the priority: check whether α ~ 1/137 for
+reasonable geometry before committing to the full calculation.
+
 ### R14. Universal geometry — shared T³ for all particles
 **Study:** [`universal-geometry/`](universal-geometry/)  *(draft)*
 **Questions:** [Q13](../qa/Q13-three-compact-dimensions.md), [Q26](../qa/Q26-hadrons-photon-knots.md), [Q32](../qa/Q32-energy-geometry-fundamentals.md)  **Type:** compute/reason  **Depends on:** R13

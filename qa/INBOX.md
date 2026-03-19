@@ -408,10 +408,25 @@ distance per winding → r = 1/2, or the radiation pattern
 determining the tube shape), the entire geometry is fixed
 with zero free parameters.
 
+**Physical mechanism: centrifugal radiation pressure.**
+The dipole radiation pattern is one source of tube deformation,
+but there is a more fundamental one: the photon has momentum
+(p = E/c), and on the curved (1,2) helix, centrifugal force
+pushes the field outward from the center of curvature.  The
+radiation pressure on the tube wall is stronger at the inner
+equator (tighter curvature, R − a from ring center) and weaker
+at the outer equator (R + a).  This non-uniform pressure
+deforms the tube cross-section even on a perfect torus —
+no external asymmetry is needed.
+
+Both effects (centrifugal pressure + dipole radiation pattern)
+contribute to the deformation and may reinforce each other.
+→ **R17** [`studies/radiation-pressure/`](../studies/radiation-pressure/).
+
 *Source: R15 F7 candidate 5, user question, dipole
-radiation pattern observation*
-*Connects to: Q34 Paths 4 and 8, R15, R16, Q48, Q52*
-*Status: open — high priority; needs feasibility study*
+radiation pattern observation, centrifugal force analysis*
+*Connects to: Q34 Paths 4 and 8, R15, R16, R17, Q48, Q52*
+*Status: open — → R17 (radiation pressure self-consistency)*
 
 Q52. **Dimensional assignment constrains the aspect ratio.**
 On flat T², the two periodic dimensions L₁ and L₂ are
@@ -585,8 +600,9 @@ mode structures.
 *Source: R13 Track 3 conclusion, user brainstorm*
 *Related: Q42, Q44 (wave-language versions of Path 5), Q47
 (geometric interpretation of α running — connects to Path 3)*
-*Status: open — Path 7 → R15, Path 5 → R16.  Remaining
-paths (1–4, 6, 8) await triage.*
+*Status: open — Path 7 → R15, Path 5 → R16, Paths 4+5 → R17
+(radiation pressure / centrifugal deformation).  Remaining
+paths (1–3, 6, 8) await triage.*
 
 ---
 

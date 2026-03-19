@@ -294,12 +294,28 @@ Candidates:
    This is the strongest version of candidate 5 because the
    deformation has a known, computable shape.  See Q51.
 
+7. **Centrifugal radiation pressure (R17).** The photon has
+   momentum p = E/c.  On the curved (1,2) helix, centrifugal
+   force creates non-uniform radiation pressure on the tube
+   wall: stronger at the inner equator (tighter curvature,
+   R − a from ring center), weaker at the outer equator
+   (R + a).  This deforms the tube cross-section even on a
+   perfect torus — no external asymmetry needed.  A balance-
+   of-forces argument (spreading from quantum pressure vs.
+   concentration from the centrifugal potential well) could
+   yield σ directly.  More likely, the deformation route
+   applies: the non-circular cross-section breaks azimuthal
+   symmetry, enabling n = 2 → n = 0 mode coupling.  This
+   is the physical mechanism behind candidate 5, and it
+   reinforces candidate 6.  → R17.
+
 None of candidates 1–4 immediately gives σ = 1.109 rad.
-Candidates 5–6 are qualitatively different: they bypass the
+Candidates 5–7 are qualitatively different: they bypass the
 localization mechanism entirely and make α a geometric
-property of the embedding shape.  Candidate 6 is the most
-promising because the deformation is determined by known
-physics (the dipole radiation pattern).
+property of the embedding shape.  Candidate 7 (→ R17) is
+the most promising because the deformation has a known,
+computable physical origin (centrifugal radiation pressure
+from the photon's own momentum on the curved path).
 
 
 ## Summary
@@ -313,7 +329,7 @@ physics (the dipole radiation pattern).
 | F5 | α = exp(−4σ²); σ ≈ 1.1 rad (63°) for α = 1/137 |
 | F6 | α = energy fraction in the charge-producing mode |
 | F7 | σ is well-defined (like Bohr radius); soliton analogy |
-| F8 | What determines σ? Six candidates; #6 (dipole radiation → tube shape) most promising |
+| F8 | What determines σ? Seven candidates; #7 (centrifugal radiation pressure → tube deformation → R17) most promising |
 
 The chain of reasoning:
 

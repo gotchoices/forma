@@ -34,12 +34,12 @@ For questions that need a computational model, see [`studies/`](../studies/).
 | [Q31](Q31-discrete-torus-digital-counter.md) | Is the compact space a discrete digital counter? | Open — conceptual |
 | [Q32](Q32-energy-geometry-fundamentals.md) | Energy and geometry as the only fundamentals | Open — framing |
 | [Q33](Q33-gravity-vs-charge.md) | Can gravity and charge both arise from photons? | Answered |
-| Q34 | The charge mechanism problem (8 candidate paths) | Open — in [INBOX](INBOX.md); Path 5 → R16, Path 7 → R15 |
+| Q34 | The charge mechanism problem (8 candidate paths) | Open — in [INBOX](INBOX.md); Path 5 → R16, Path 7 → R15, Paths 4+5 → R17 |
 | Q47 | Geometric interpretation of the running of α | Open — in [INBOX](INBOX.md) |
 | Q48 | Why does E point outward and not B? | Open — in [INBOX](INBOX.md) |
 | Q49 | Natural units ↔ geometry+energy premise | Noted — in [INBOX](INBOX.md) |
 | Q50 | Shared compact space (single T³ vs. per-particle) | Open — in [INBOX](INBOX.md) |
-| Q51 | Non-torus embeddings and mode coupling route to α | Open — in [INBOX](INBOX.md) |
+| Q51 | Non-torus embeddings and mode coupling route to α | Open — → R17; in [INBOX](INBOX.md) |
 | Q52 | Dimensional assignment constrains the aspect ratio | Open — r = 1/2 checked; in [INBOX](INBOX.md) |
 | Q53 | Does the model predict the anomalous magnetic moment? | Open — in [INBOX](INBOX.md) |
 
