@@ -19,7 +19,7 @@ energy m_e c² and (1,2) topology, compute the far-field Coulomb flux, read off
 charge Q, and check whether Q²/(4πε₀ℏc) ≈ 1/137. If so, α is derived from
 energy and topology alone.
 
-### R16. Harmonic decomposition and the charge-producing mode
+### R16. Harmonic decomposition and the charge-producing mode  *(paused)*
 **Study:** [`harmonic-charge/`](harmonic-charge/)
 **Questions:** [Q18](../qa/Q18-deriving-alpha.md), Q34 Path 5  **Type:** analytical/compute  **Depends on:** R12, R13
 
@@ -29,7 +29,22 @@ curvature redistributes energy from the (1,2) plane wave to a broad spectrum,
 with the p = 1 sector retaining fraction α of the total energy, then
 α = (charge-mode energy) / (total energy) — derived from geometry.
 Complementary to R15 (numerical forward calc); R16 seeks the analytical
-explanation.
+explanation.  *Paused:* R18 showed that curvature-induced mode mixing on an
+axisymmetric torus still gives zero charge (φ-symmetry protection).  R16's
+approach needs the φ-symmetry breaking that R18 provides.
+
+### R18. Self-consistent geometry — deriving α from torus stiffness
+**Study:** [`torus-stiffness/`](torus-stiffness/)
+**Questions:** [Q18](../qa/Q18-deriving-alpha.md)  **Type:** compute/analytical  **Depends on:** R15, R17
+
+The photon's EM field creates a cos(2φ) pressure that deforms the torus,
+coupling the (1,2) mode to the charge-carrying (1,0) mode.  Track 1 (complete):
+working backwards from α = 1/137 gives stiffness κ = ε₀E₀²/(2R) —
+the EM energy density per unit major radius.  Both the pressure P and the
+deformation δ scale linearly with the coupling ε, so κ is α-independent
+at first order (linear degeneracy).  α is determined by the NONLINEAR
+self-consistency (second-order PT, energy conservation).  Structure resembles
+Landau theory: the quartic term in the free energy selects the order parameter.
 
 ### R14. Universal geometry — shared T³ for all particles
 **Study:** [`universal-geometry/`](universal-geometry/)  *(draft)*
