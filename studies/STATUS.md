@@ -33,19 +33,6 @@ explanation.  *Paused:* R18 showed that curvature-induced mode mixing on an
 axisymmetric torus still gives zero charge (φ-symmetry protection).  R16's
 approach needs the φ-symmetry breaking that R18 provides.
 
-### R18. Self-consistent geometry — deriving α from torus stiffness
-**Study:** [`torus-stiffness/`](torus-stiffness/)
-**Questions:** [Q18](../qa/Q18-deriving-alpha.md)  **Type:** compute/analytical  **Depends on:** R15, R17
-
-The photon's EM field creates a cos(2φ) pressure that deforms the torus,
-coupling the (1,2) mode to the charge-carrying (1,0) mode.  Track 1 (complete):
-working backwards from α = 1/137 gives stiffness κ = ε₀E₀²/(2R) —
-the EM energy density per unit major radius.  Both the pressure P and the
-deformation δ scale linearly with the coupling ε, so κ is α-independent
-at first order (linear degeneracy).  α is determined by the NONLINEAR
-self-consistency (second-order PT, energy conservation).  Structure resembles
-Landau theory: the quartic term in the free energy selects the order parameter.
-
 ### R14. Universal geometry — shared T³ for all particles
 **Study:** [`universal-geometry/`](universal-geometry/)  *(draft)*
 **Questions:** [Q13](../qa/Q13-three-compact-dimensions.md), [Q26](../qa/Q26-hadrons-photon-knots.md), [Q32](../qa/Q32-energy-geometry-fundamentals.md)  **Type:** compute/reason  **Depends on:** R13
@@ -129,3 +116,4 @@ Studies in chronological order of completion. Key result only — see each study
 | 11 | **R13. Charge from the embedding** [`kk-charge-t3/`](kk-charge-t3/) | Electron is winding mode (not KK). Multi-winding (68,137) breaks WvM charge mechanism: p = 68 ≠ 1 destroys commensurability, E oscillates 67× relative to surface normal, monopole = 0 (exact). The α problem ≡ the charge mechanism problem: α ≈ 1/137 forces a tradeoff between correct Coulomb energy (multi-winding) and correct charge (p = 1). → Q34. |
 | 12 | **R8. Multi-winding electron** [`multi-winding/`](multi-winding/) | (68,137) on sheared T² at r_e scale: mass ✓, spin ½ exact ✓, g = 2 ✓, R/r_e = 0.989 ✓. **Charge mechanism invalidated by R13** — multi-winding breaks WvM commensurability (Q = 0). Spin/g-factor results carry over to any (1,2)-local model. q was never selected; the premise (U_Coulomb = m_e c²/2) was the wrong target (see R15). |
 | 13 | **R17. Radiation pressure** [`radiation-pressure/`](radiation-pressure/) | Centrifugal force from confined photon's curved 3D path cannot determine α. Track 4: tube deformation preserves φ-symmetry → charge = 0. Track 5: F ⊥ v (no clumping), σ_φ = const (breathing conservative), force is a consequence of confinement. Positive: force decomposition quantified; confirms model self-consistency. |
+| 14 | **R18. Torus stiffness** [`torus-stiffness/`](torus-stiffness/) | Geometric deformation cannot produce charge. Track 1: backwards stiffness κ = ε₀E₀²/(2R), α-independent at linear order. Track 2: Coulomb cost exceeds photon energy saving by 96×. Symmetric torus is stable. Charge integral of cos(θ+2φ) vanishes on any smooth torus. |

@@ -1,4 +1,4 @@
-# R18. Self-Consistent Geometry — Deriving α from Torus Stiffness  *(open)*
+# R18. Self-Consistent Geometry — Deriving α from Torus Stiffness  *(complete — negative)*
 
 Can the photon's own electromagnetic field deform the compact
 space, breaking the symmetry that protects zero charge and
@@ -144,34 +144,18 @@ of the compact space.
 perturbation matrix element, which requires discretizing the
 Laplacian on the embedded torus.
 
-### Track 2. Forward instability analysis
+### Track 2. Forward energy balance  *(complete — negative)*
 
-Check whether the undeformed torus is stable or unstable to
-cos(2φ) perturbations.
+Compute the total energy E_total(δ) = E_photon(δ) + E_Coulomb(δ)
+to determine whether deformation is energetically favorable.
 
-**Method:**
+**Result:** NEGATIVE.  The Coulomb cost of the charge exceeds
+the photon energy saving by ~96×.  The symmetric torus is the
+energy minimum.  See findings F5–F7.
 
-1. Start with the undeformed torus and the (1,2) eigenmode.
-2. Add a small cos(2φ) perturbation to R.
-3. Compute the resulting mode coupling ε(δ).
-4. Compute the cos(2φ) component of the EM energy density.
-5. Compute the resulting pressure on the torus surface.
-6. Compare the sign: does the pressure reinforce or oppose
-   the perturbation?
+### Track 3. Self-consistent equilibrium  *(cancelled)*
 
-If reinforcing → the symmetric torus is UNSTABLE and the
-system spontaneously deforms → charge emerges from SSB.
-If opposing → the symmetric torus is STABLE → this
-mechanism doesn't work (negative result).
-
-### Track 3. Self-consistent equilibrium (if Track 2 positive)
-
-If the system is unstable, find the equilibrium deformation.
-
-1. Balance equation: κ δ = P_EM(δ, ε(δ))
-2. Self-consistent solution: δ* where both sides agree
-3. Compute α = Q(ε(δ*))²/(4πε₀ℏc)
-4. Compare to 1/137
+Track 2's negative result makes this unnecessary.
 
 
 ## What could go wrong
