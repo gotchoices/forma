@@ -466,19 +466,10 @@ some geometric factor = α.  Needs a mathematical framework
 beyond WvM.
 
 **Path 7. Keep (1, 2) at Compton scale; reinterpret Coulomb
-energy.** Accept U_Coulomb = α × m_e c².  The "missing" energy
-is near-field energy trapped in the compact space, not in the
-far-field Coulomb component.  r_e is a derived quantity (radius
-where Coulomb energy = mass), not the torus size.  Simplest
-resolution — may not require new physics, just reinterpretation.
-*Key observation:* R7 found U_Coulomb = α × m_e c² and called
-it a failure.  But this IS the definition of α: the ratio of
-electromagnetic interaction energy to mass energy.  R7 may have
-derived α from geometry without realizing it.  The (1, 2) WvM
-torus at Compton scale gives charge (commensurability), mass
-(path = λ_C), spin (topology), AND α (Coulomb/mass ratio).
-If so, the multi-winding detour (R8) was unnecessary — the
-original WvM geometry was correct all along.  Quick to check.
+energy.** → **R15** [`studies/forward-charge/`](../studies/forward-charge/).
+Run R7's calculation forward: energy + topology → charge → α.
+See R15 README for full analysis of how R7 → R8 → R13 led
+back here.
 
 **Path 8. Different compact topology.** The torus is WvM's
 choice but not the only option.  Lens spaces, spheres, or more

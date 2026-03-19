@@ -7,16 +7,17 @@ See [`../qa/`](../qa/) for open physics questions and detailed problem analysis.
 
 ## Active
 
-### R8. Multi-winding electron
-**Study:** [`multi-winding/`](multi-winding/)
-**Questions:** [Q18](../qa/Q18-deriving-alpha.md)  **Type:** compute  **Depends on:** R7
+### R15. Forward charge calculation — deriving α
+**Study:** [`forward-charge/`](forward-charge/)
+**Questions:** [Q18](../qa/Q18-deriving-alpha.md), Q34 Path 7  **Type:** compute  **Depends on:** R7, R13
 
-Find the torus geometry (R, a, winding number q) that produces the electron's
-charge, mass, spin, and magnetic moment on a sheared T². R7 showed the torus
-must be ~100× smaller than Compton scale. A multi-winding path (~1/α major orbits,
-local 1:2 ratio) fits λ_C of path length on a torus of radius ~r_e. R/r_e ≈ 0.989
-is robust across resolutions. Spin ½ is exact from the local winding ratio (68:137).
-q remains a free parameter — determining what fixes it is the open edge.
+R7 computed U_Coulomb = α × m_e c² and called it a failure. R8 "fixed" it by
+shrinking the torus, requiring multi-winding (68,137). R13 showed multi-winding
+breaks WvM charge (monopole = 0, exactly). This revives (1,2) at Compton scale —
+the only model where charge works. R15 runs R7's calculation *forward*: input
+energy m_e c² and (1,2) topology, compute the far-field Coulomb flux, read off
+charge Q, and check whether Q²/(4πε₀ℏc) ≈ 1/137. If so, α is derived from
+energy and topology alone.
 
 ### R14. Universal geometry — shared T³ for all particles
 **Study:** [`universal-geometry/`](universal-geometry/)  *(draft)*
@@ -99,3 +100,4 @@ Studies in chronological order of completion. Key result only — see each study
 | 9 | **R11. Prime resonance** [`prime-resonance/`](prime-resonance/) | Eight tracks: no mechanism selects q = 137 from energy cost or primality. q ~ 1/α is partly tautological (follows from using e as input). Real free parameter is r (aspect ratio), not q. → R12. |
 | 10 | **R12. Self-consistent fields** [`self-consistent-fields/`](self-consistent-fields/) | Flat T² has no eigenmodes at ω_C (spectral gap ~137×). Curved geodesics give q ≈ 193 — photon sees flat space internally. Flat-for-mass / embedded-for-charge is the correct two-domain picture (not an inconsistency). Track 3 (propagation self-consistency) trivially satisfied on flat T². |
 | 11 | **R13. Charge from the embedding** [`kk-charge-t3/`](kk-charge-t3/) | Electron is winding mode (not KK). Multi-winding (68,137) breaks WvM charge mechanism: p = 68 ≠ 1 destroys commensurability, E oscillates 67× relative to surface normal, monopole = 0 (exact). The α problem ≡ the charge mechanism problem: α ≈ 1/137 forces a tradeoff between correct Coulomb energy (multi-winding) and correct charge (p = 1). → Q34. |
+| 12 | **R8. Multi-winding electron** [`multi-winding/`](multi-winding/) | (68,137) on sheared T² at r_e scale: mass ✓, spin ½ exact ✓, g = 2 ✓, R/r_e = 0.989 ✓. **Charge mechanism invalidated by R13** — multi-winding breaks WvM commensurability (Q = 0). Spin/g-factor results carry over to any (1,2)-local model. q was never selected; the premise (U_Coulomb = m_e c²/2) was the wrong target (see R15). |
