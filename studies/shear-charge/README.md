@@ -20,10 +20,10 @@ over a full φ period.  This is the **φ-symmetry protection**.
 
 But on a **sheared T²** (lattice vectors non-orthogonal), the
 (1,2) mode acquires a non-integer effective winding number
-q_eff = 2 − δ/L₁ in the embedding coordinates.  The charge
-integral becomes:
+q_eff = 2 − s in the embedding coordinates, where s = δ/(2πa)
+is the fractional shear.  The charge integral becomes:
 
-    Q ∝ sin(πq_eff) / q_eff
+    Q ∝ sin(2πs) / (2 − s)
 
 which is **nonzero** for non-integer q_eff.  This is the first
 mechanism found that produces charge from a **fully delocalized**
@@ -47,7 +47,7 @@ If shear determines charge, then:
 
 ## Tracks
 
-### Track 1. Backwards: derive required shear from known α  *(planned)*
+### Track 1. Backwards: derive required shear from known α  *(complete)*
 
 Input the known α = 1/137.036... and solve for the shear δ
 that produces Q = e.
@@ -114,32 +114,74 @@ until Tracks 1–3 produce definitive results.
 
 ---
 
+## Key facts
+
+### One shear parameter on T², three on T³
+
+A flat T² metric has three independent components: g₁₁, g₂₂
+(the two circumferences) and g₁₂ (the shear).  Only ONE
+independent shear parameter exists.  "Shearing θ along φ" and
+"shearing φ along θ" are different descriptions of the same
+geometric tilt.
+
+On T³, by contrast, there are THREE independent shear
+parameters (g₁₂, g₁₃, g₂₃) — one per pair of axes.  This
+maps naturally to three charge types (electron, up quark,
+down quark) in Track 4.
+
+### T³ does not embed in ℝ³
+
+T² embeds in ℝ³ (the familiar donut).  T³ cannot — it
+requires at minimum ℝ⁴.  But in the Kaluza-Klein framework,
+the compact space is ADDITIONAL to 3D, not sitting inside it.
+At every point in physical 3D space, a copy of T² (or T³)
+is attached as a fiber.  Going from T² to T³ means going
+from a (3+2)D spacetime to a (3+3)D spacetime.  No embedding
+obstruction arises.
+
+---
+
 ## Key equations
 
-**Sheared T² metric:**
+**Convention:** Define s ≡ δ/(2πa) as the fractional shear
+(dimensionless, 0 ≤ s < 1), where δ is the linear shear
+displacement.  This matches R12's `shear_frac = δ/L_θ`.
 
-    ds² = dθ² + 2(δ/a) dθ dφ + (1 + (δ/a)²) dφ²
+**Sheared T² lattice:**
 
-where θ ∈ [0, 2πa), φ ∈ [0, 2πR), and δ is the shear
-displacement (θ-direction offset per φ-period).
+    e₁ = (L₁, 0)    where L₁ = 2πa
+    e₂ = (δ, L₂)    where L₂ = 2πR
+    s  = δ/L₁
+
+Identification: (x,y) ~ (x + L₁, y) ~ (x + δ, y + L₂)
 
 **Mode on sheared T²:**
 
-    ψ(θ,φ) = exp[i(m θ/a + n φ/R)]
+The (1,2) mode (n=1 winding in θ, m=2 in φ) has wavevector:
 
-For the (1,2) knot: m=1, n=2.  In embedding coordinates
-(where the charge integral is defined), the effective
-φ-winding becomes q_eff = n − m δ/a = 2 − δ/a.
+    k_θ = 1/a,  k_φ = (2 − s)/R
+
+In embedding coordinates (Θ = x/a, Φ = y/R):
+
+    ψ(Θ,Φ) = exp[i(Θ + q_eff Φ)]
+    q_eff = 2 − s = 2 − δ/(2πa)
 
 **Charge integral:**
 
-    Q = (2ε₀ E₀ / R) × ∫∫ cos(θ/a + q_eff φ/R) √g dθ dφ
+    Q = ε₀ E₀ aπ ∫₀²π cos(q_eff Φ) dΦ
+      = ε₀ E₀ aπ × sin(2π q_eff) / q_eff
+      = −ε₀ E₀ aπ × sin(2πs) / (2 − s)
 
-For q_eff ∉ ℤ, this is proportional to sin(2π q_eff)/q_eff ≠ 0.
+Since 2πs = δ/a, this is equivalently:
+
+    |Q| = ε₀ E₀ aπ × |sin(δ/a)| / |2 − δ/(2πa)|
+
+For s ∉ ℤ (i.e., δ ≠ 2kπa), q_eff is non-integer and Q ≠ 0.
 
 ---
 
 ## Status
 
 **Created:** 2026-03-01
-**Status:** framed — ready for Track 1
+**Status:** Track 1 complete — promising result (δ ≈ a for r = 1).
+Tracks 2–3 pending.

@@ -42,7 +42,8 @@ The charge integral sin(πq_eff)/q_eff is NONZERO — bypassing the φ-symmetry 
 that blocked R17 and R18.  No wavepacket localization needed.  R12 F5 showed shear is
 internally unconstrained → external constraint (T³, topology) may fix it.
 
-Track 1: input known α, solve for required shear δ, check if it's geometrically natural.
+Track 1 (complete): α = C(r)×sin²(2πs)/(2−s)². For r=1: s≈1/(2π), δ≈a. Clean result.
+Critical r ≈ 0.54. Normalization question (full E₀ vs κ=α) determines viability.
 Track 2: energy analysis — is non-zero shear stable?
 Track 3: normalization reconciliation (E₀ conventions).
 Track 4: connection to T³ and quark charges (deferred).
