@@ -56,8 +56,12 @@ same-plane impossible; mass forces m≈−6; s≈1/6 near-miss (1%); T³ consist
 fails by factor of 2 (quarks need r₁₂=2, electron needs r₁₂≈1).
 Track 5 (complete): non-uniform shear solves charge but kills mass — quark E =
 1–12 m_e (×150–900 too low). Single-photon (1,−6) quark model definitively ruled
-out. The single-photon shear formula does not extend to quarks. Quark charges
-likely require linking fractionalization (Track 6 / R14).
+out. The 2D single-photon shear formula does not extend to quarks.
+Track 6 (active): 3D geodesic charge on sheared T³. The 2D charge formula was
+always extended to T³ by assumption — what does the full 3D charge integral look
+like? Quarks could be 3D windings (1,2,k), k≠0, not confined to a plane.
+Track 7 (contingency): linking fractionalization (R14) + shear hybrid.
+Q60–Q66 document all unexplored directions from this analysis.
 
 ### R14. Universal geometry — shared T³ for all particles
 **Study:** [`universal-geometry/`](universal-geometry/)  *(draft)*

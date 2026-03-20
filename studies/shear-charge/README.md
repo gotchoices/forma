@@ -223,18 +223,64 @@ can make (1,−6) quarks work.  The single-photon quark hypothesis
 is ruled out (F24).  Quark charges likely require a different
 mechanism (linking fractionalization, Track 6).
 
-### Track 6. Linking + shear hybrid  *(contingency)*
+### Track 6. 3D geodesic charge on sheared T³  *(active)*
 
-If neither Track 4 nor 5 produces fractional charges from
-kinematics alone, revisit R14's topological linking mechanism
-in combination with shear.  In this picture:
-- Shear provides the *base* charge (integer-like)
-- Linking fractionalizes it (topology modifies the projection)
-- The combination determines the quark charges
+Tracks 4–5 showed that the 2D charge formula (derived for
+modes confined to a plane of T³) cannot produce quarks: the
+mass and charge constraints are incompatible.  But this formula
+was always a 2D result extended to T³ by assumption.
 
-This would retain R14's linking for both confinement AND
-charge fractionalization, with shear providing the overall
-charge scale (α).
+Track 6 asks the more fundamental question: **what does the
+charge formula look like for a 3D geodesic on a sheared T³?**
+
+On T³, a photon can wind in all three compact dimensions:
+winding numbers (n₁, n₂, n₃) with all nᵢ ≠ 0.  Such a path
+is a genuine 3D curve, not confined to any 2D subplane.
+
+Key differences from the 2D case:
+- The charge integral is over all three compact coordinates
+- The n=1 selection rule (F17) was derived from a 2D angular
+  integral; it may not hold in 3D
+- Three shear parameters (s₁₂, s₁₃, s₂₃) ALL affect the mode,
+  not just the one in "its" plane
+- The geodesic length includes contributions from all three
+  circumferences, providing additional mass
+
+Physical picture:
+- Electron = (1, 2, 0): confined to a plane (n₃ = 0), lowest
+  energy spin-½ state.  The 2D formula applies.
+- Quark = (1, 2, k) or other 3D winding: wraps all three
+  dimensions.  Heavier (longer geodesic), potentially different
+  charge (3D integral differs from 2D).
+
+Steps:
+1. Derive the charge integral for a general (n₁, n₂, n₃) mode
+   on a sheared T³.  The key question: does the Gauss's-law
+   projection into 3D spacetime produce a monopole moment, and
+   how does it depend on the winding numbers?
+2. Check the n=1 constraint: does it generalize, modify, or
+   break in 3D?
+3. Compute charge values for candidate quark windings.
+4. Check mass: does adding n₃ ≠ 0 produce quark-scale
+   energies on the same T³ that hosts the electron?
+5. If charges of 2e/3 and e/3 emerge: check proton mass.
+
+**Success criterion:** A 3D geodesic on the same T³ as the
+electron produces fractional charge AND the correct quark
+mass.  The T³ geometry would then be fully constrained.
+
+### Track 7. Linking + shear hybrid  *(contingency)*
+
+If 3D geodesics (Track 6) don't produce fractional charges,
+the remaining option is R14's topological linking mechanism
+combined with shear.  In this picture:
+- Shear sets the overall charge scale (α) via the electron
+- Linking fractionalizes it for multi-photon quark states
+- Confinement is topological (Borromean linking)
+
+This is the most conservative hypothesis: it preserves the
+electron result from Tracks 1–3 and defers quark charges to
+R14's topological mechanism.  See Q64, Q66.
 
 ---
 
@@ -368,4 +414,8 @@ Key findings: n=1 required; same-plane impossible; mass forces m≈−6;
 s≈1/6 near-miss (1%); T³ consistency fails (r₁₂=2 vs 1).
 Track 5 (complete): non-uniform shear solves charge but kills mass
 (quark E = 1–12 m_e, not 612). Single-photon (1,−6) quark model
-definitively ruled out (F24). Track 6 (linking) is the remaining path.
+definitively ruled out (F24).
+Track 6 (active): 3D geodesic charge on sheared T³ — does the charge
+formula change when the photon winds in all three compact dimensions?
+Track 7 (contingency): linking + shear hybrid.
+New inbox entries: Q60–Q66 document unexplored directions.

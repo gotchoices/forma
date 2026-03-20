@@ -755,6 +755,112 @@ integral vanish.
 *Connects to: R18 (geometric deformation), Q58 (shear), R15 F8*
 *Status: closed — both ruled out*
 
+Q60. **3D geodesics on sheared T³: what is the charge formula?**
+R19 Tracks 1–5 used the 2D charge formula for (1,m) modes
+confined to a plane of T³.  But on T³, a photon can wind in
+all three compact dimensions: (n₁, n₂, n₃) with all nᵢ ≠ 0.
+Such a geodesic is a true 3D path, not confined to any plane.
+The charge integral for a 3D geodesic has not been computed.
+The angular integration is over all three compact coordinates,
+not just two — this could produce qualitatively different
+charge values, potentially including fractional charges.
+
+The electron would have (1, 2, 0) — confined to a plane
+because n₃ = 0 is the lowest-energy state.  Quarks would have
+n₃ ≠ 0, making them heavier (longer geodesic) and potentially
+giving different charge through the 3D integral.
+
+*Source: R19 Track 4/5 discussion*
+*Connects to: R19, R14, Q13 (three compact dimensions)*
+*Status: → R19 Track 6*
+
+Q61. **Does the n=1 tube-winding constraint hold in 3D?**
+On T², the WvM charge mechanism requires n = 1 (one tube
+winding) for nonzero monopole moment (R19 F17, S3 F3).
+For n ≠ 1, ∫cos(Θ)cos(nΘ + q_eff Φ)dΘ = 0.  On T³, the
+field rotates in a 3D compact space.  The angular integration
+is more complex — the 2D selection rule (n = 1 only) may not
+apply.  This could open up more winding configurations for
+charged particles.
+
+*Source: R19 Track 4/5 analysis*
+*Connects to: R19 F17, S3 F3*
+*Status: open — to be investigated in R19 Track 6*
+
+Q62. **Independent quark T² (Model B from S3): revisit with shear?**
+S3 F4 proposed "Model B" — separate compact dimensions for
+leptons and quarks.  The quark's own T² would have a/R = 9.91
+(for Q = 2e/3) or 19.81 (for Q = e/3).  This was based on the
+WvM charge formula without shear.  With shear, the quark T²
+could have different dimensions and its own shear value,
+decoupled from the electron.  This sacrifices multi-particle
+consistency (no shared T³) but avoids the mass constraint
+problem that killed Tracks 4–5.
+
+Trade-off: fewer constraints (no T³ linking) but also fewer
+predictions (independent geometries are less falsifiable).
+
+*Source: S3 F4 Model B, R19 Track 4/5 failure*
+*Connects to: S3, R19, R14*
+*Status: open — possible fallback if T³ approaches fail*
+
+Q63. **Why is the electron confined to a 2D plane on T³?**
+R14 F2 assumed the electron uses 2 of 3 compact dimensions
+with the third "inert."  This was never derived.  The physical
+reason could be energetic: (1, 2, 0) has a shorter geodesic
+than (1, 2, k) for k ≠ 0, so it is the lowest-energy state.
+If so, the electron is the ground state and quarks are
+excited states with n₃ ≠ 0.  This should be verified by
+computing the geodesic lengths and showing that (1, 2, 0) is
+the minimum-energy configuration with spin ½ and charge e.
+
+*Source: R19 Track 4/5 discussion*
+*Connects to: R14 F2, R19, Q13*
+*Status: open*
+
+Q64. **Does topological linking modify the charge formula?**
+R14 proposed that Borromean linking of three photons on T³
+fractionalizes their charges.  This is a topological effect,
+distinct from the kinematic shear formula Q ∝ sin(2πs)/(m−s).
+If linking modifies the effective q_eff (e.g., by shifting the
+winding number by a fractional amount), it could produce 1/3
+and 2/3 charges even when the single-photon formula gives
+integer charge.  The mathematical framework for computing
+charge of linked geodesics has not been developed.
+
+*Source: R14, R19 Track 4/5 discussion*
+*Connects to: R14 F2, R19 F24*
+*Status: open — possible Track 7 of R19 or new study*
+
+Q65. **Quark photon energies: are they equal?**
+R14 F3 assumed equal energy per quark photon (each at harmonic
+n = 612, giving m_p = 3 × 612 × m_e to 0.008%).  But the
+actual current quark masses are very different (m_u ≈ 2 MeV,
+m_d ≈ 5 MeV), with 99% of the proton mass from gluon field
+energy in QCD.  In the WvM framework (no gluons), the photon
+energies ARE the mass — but they needn't be equal.  Unequal
+quark photon energies would change the mass constraints on
+the T³ geometry.  The 3 × 612 coincidence could be a guide
+rather than a hard constraint.
+
+*Source: R14 F3, R19 Track 4/5 analysis*
+*Connects to: R14 F3, R19 F19*
+*Status: open*
+
+Q66. **Shear sets the charge scale (α); linking sets the
+fractions (1/3, 2/3)?**  A hybrid model where:
+- Shear determines the OVERALL coupling strength α = 1/137
+  (derived from single-photon electron on T²/T³)
+- Linking fractionalization determines the RELATIVE charges
+  (quarks get 1/3, 2/3 of the electron charge)
+- These are independent mechanisms operating simultaneously
+This preserves the R19 electron result and the R14 quark
+picture, with each addressing a different aspect.
+
+*Source: R19 Track 5 conclusion*
+*Connects to: R19, R14*
+*Status: open — the most conservative next hypothesis*
+
 Q34. **The charge mechanism problem: how does the electron have
 charge?** R13 Track 3 showed that the multi-winding (68, 137)
 model breaks WvM's charge mechanism.  WvM's charge requires
