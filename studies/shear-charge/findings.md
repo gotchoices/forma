@@ -299,3 +299,187 @@ external physics (T³ topology).
 | F9 | No specific shear selected on flat T² — shear is a free modulus, like r; external constraint needed |
 | F10 | Local minima at r ≥ 3 (fixed geometry) pass through α at r ≈ 3.2 — suggestive but wrong mass |
 | F11 | EM self-energy = O(α m_e c²), consistent with QED mass correction |
+
+---
+
+## Track 3 (partial). Self-consistent Compton constraint with shear
+
+Script: [`scripts/track3_self_consistent.py`](scripts/track3_self_consistent.py)
+
+Tracks 1 and 2 used the s = 0 geometry to set (a, R) from the
+Compton constraint, then computed Q(s) at nonzero s.  But shear
+changes the geodesic path length, which changes the Compton
+constraint.  A self-consistent treatment must adjust (a, R) and s
+together.
+
+
+### F12. Self-consistent α formula
+
+On the sheared T², the (1,2) geodesic has path length:
+
+    L(s) = 2π √(a²(1+2s)² + 4R²)
+
+Setting L = λ_C gives:
+
+    R(r,s) = λ_C / (2π √(r²(1+2s)² + 4))
+    a(r,s) = r × R(r,s)
+
+Substituting into Q = e yields:
+
+    α = r² sin²(2πs) / (4π (2−s)² √(r²(1+2s)² + 4))
+
+Compare with Track 1 (s = 0 geometry):
+
+    α = r² sin²(2πs) / (4π (2−s)² √(r² + 4))
+
+The only change is r²+4 → r²(1+2s)²+4 in the denominator.
+The denominator is larger when s > 0, so the required s is
+slightly larger than Track 1 predicted.
+
+**Plain language:** Including the shear's effect on the torus
+dimensions is a small correction (~5%), not a qualitative change.
+The mechanism survives self-consistency.
+
+
+### F13. Self-consistent electron geometry
+
+For each aspect ratio r, there is a UNIQUE shear s(r) that
+produces exactly Q = e, with L = λ_C and E_photon = m_e c²
+all satisfied simultaneously.  The complete table:
+
+| r    | s (self-con) | s (Track 1) | Δs/s  | R (m)       | a (m)       | δ/a (rad) | Lattice off-90° |
+|------|-------------|-------------|-------|-------------|-------------|-----------|-----------------|
+| 0.50 | —           | —           | —     | —           | —           | —         | —               |
+| 0.75 | 0.670       | —           | —     | 1.451e-13   | 1.089e-13   | 4.21      | 26.7°           |
+| 1.00 | 0.1651      | 0.1571      | +5.1% | 1.608e-13   | 1.608e-13   | 1.038     | 9.4°            |
+| 1.25 | 0.1286      | 0.1230      | +4.6% | 1.518e-13   | 1.898e-13   | 0.808     | 9.1°            |
+| 1.50 | 0.1081      | 0.1035      | +4.5% | 1.426e-13   | 2.140e-13   | 0.680     | 9.2°            |
+| 2.00 | 0.0849      | 0.0812      | +4.6% | 1.255e-13   | 2.509e-13   | 0.534     | 9.6°            |
+| 3.00 | 0.0633      | 0.0606      | +4.5% | 9.833e-14   | 2.950e-13   | 0.398     | 10.8°           |
+| 4.00 | 0.0526      | 0.0505      | +4.2% | 7.958e-14   | 3.183e-13   | 0.331     | 11.9°           |
+
+Every row satisfies L/λ_C = 1.0000000000 and Q/e = 1.00000000.
+
+**Key observations:**
+- Self-consistency shifts s upward by 4–5% (a small correction)
+- The r = 0.75 solution has extreme shear (27° from orthogonal);
+  r ≥ 1 solutions are geometrically natural (~9° off orthogonal)
+- The lattice deviation from 90° remains remarkably stable at
+  ~9° across all reasonable aspect ratios (confirming F4)
+- δ/a = 1.038 at r = 1 (vs. 0.987 in Track 1) — still close to
+  unity but the self-consistent value overshoots slightly
+
+**Plain language:** The self-consistent calculation confirms
+Track 1's results with small quantitative corrections.
+The mechanism is robust.
+
+
+### F14. The Coulomb self-energy is consistently O(α)
+
+| r    | E_C / (m_e c²) | E_C / (α m_e c²) |
+|------|----------------|-------------------|
+| 1.00 | 0.88%          | 1.20              |
+| 1.25 | 0.93%          | 1.27              |
+| 1.50 | 0.99%          | 1.35              |
+| 2.00 | 1.12%          | 1.54              |
+| 3.00 | 1.43%          | 1.96              |
+| 4.00 | 1.77%          | 2.43              |
+
+For all r, the electromagnetic mass contribution is O(α) ×
+m_e c², consistent with QED.  The bare photon energy
+(E_photon = m_e c² without the Coulomb field) is 99% of the
+total, meaning the electron is 99% "kinetic photon energy"
+and ~1% "electrostatic field energy."
+
+This updates F11 with self-consistent numbers.
+
+
+### F15. The electron on T² is a one-parameter family
+
+Combining all results, the T² electron is completely characterized
+once the aspect ratio r is chosen:
+
+| Property       | Value / formula                                               | Status       |
+|----------------|---------------------------------------------------------------|--------------|
+| Mass           | m_e c² = hc/λ_C = hc/L_geodesic                              | exact (input)|
+| Spin           | ½ (from (1,2) winding: odd total = half-integer)              | topological  |
+| g-factor       | 2 (leading order, from n=2 poloidal windings)                 | topological  |
+| Charge         | Q = e (from shear s, solved via the α formula)                | geometric    |
+| Shear s(r)     | α = r²sin²(2πs) / (4π(2−s)²√(r²(1+2s)²+4))                  | self-con.    |
+| Ring radius    | R(r) = λ_C / (2π√(r²(1+2s)²+4))                              | derived      |
+| Tube radius    | a(r) = r × R(r)                                               | derived      |
+| E_Coulomb      | O(α) × m_e c²                                                 | consistent   |
+
+Everything except r is determined.  The flat T² provides no
+constraint on r — it is a free modulus, just like the shear s
+was free before we imposed Q = e.
+
+**What determines r?**
+
+This is the single remaining question for the T² model.
+Candidates for fixing r:
+
+1. **T³ topology (R14):** Three shear parameters on T³,
+   constrained by modular consistency and quark-charge
+   requirements, may simultaneously fix r and s.
+
+2. **Self-linking / knot invariants:** In T³, the photon's
+   geodesic can self-link.  The linking number is a topological
+   invariant that could constrain the winding geometry.
+
+3. **Multi-particle consistency:** If the electron, up quark,
+   and down quark all live on the same T³, the single compact
+   geometry must accommodate all three particles simultaneously.
+   This is a highly constrained system (three charges from three
+   shear parameters, three masses from three geodesic lengths).
+
+All three candidates point to the same next step: T³.
+
+
+### F16. Phase 1 (what) is essentially complete
+
+The T² electron model has been systematically developed across
+studies R2–R19.  The current state:
+
+**Settled:**
+- The electron is a photon of energy m_e c² on a (1,2) geodesic
+  of a flat T² (R2, R12)
+- The photon sees flat space internally; curved 3D embedding
+  produces external fields (R12 F14)
+- Mass comes from the Compton constraint L = λ_C (R2)
+- Spin ½ and g ≈ 2 are topological (R2, R8)
+- Charge comes from shear of the T² lattice (R19 F1–F13)
+- Shear is energetically favorable, not resisted (R19 F8)
+- The EM self-energy is O(α), matching QED (R19 F11, F14)
+
+**Open:**
+- What sets the aspect ratio r (→ T³)
+- Normalization reconciliation (Track 3 remainder)
+- Connection to quark charges (Track 4, deferred)
+
+Phase 2 — *why* the geometry takes its specific values — is the
+T³ question (R14, Track 4).
+
+
+---
+
+## Summary table
+
+| # | Finding |
+|---|---------|
+| F1 | α = C(r) × sin²(2πs)/(2−s)², where C(r) = r²/(4π√(r²+4)) — clean dimensionless formula |
+| F2 | Critical aspect ratio r_crit ≈ 0.54: shear mechanism requires r > 0.54 |
+| F3 | For r = 1: s ≈ 1/(2π), δ ≈ a — shear displacement equals tube radius |
+| F4 | The lattice angle deviation (~9° from orthogonal) is stable across r |
+| F5 | Full E₀ normalization gives clean result; κ-suppression kills the mechanism |
+| F6 | Formula has one equation in two unknowns (r, s) — one more constraint needed |
+| F7 | Photon energy = hc/L_geodesic ≠ eigenmode energy (5× for r=1); confirms R12 F6 |
+| F8 | Shear is energetically cheap: geodesic saving (6.6%) ≫ Coulomb cost (0.8%); shear is FAVORED |
+| F9 | No specific shear selected on flat T² — shear is a free modulus, like r; external constraint needed |
+| F10 | Local minima at r ≥ 3 (fixed geometry) pass through α at r ≈ 3.2 — suggestive but wrong mass |
+| F11 | EM self-energy = O(α m_e c²), consistent with QED mass correction |
+| F12 | Self-consistent α formula: r²+4 → r²(1+2s)²+4; small (~5%) upward shift in s |
+| F13 | Complete self-consistent geometry: every r > r_crit has unique (s, R, a) giving Q=e, L=λ_C |
+| F14 | Coulomb self-energy = 1–2 × α m_e c² for all r (self-consistent values) |
+| F15 | The electron is a one-parameter family in r; everything else determined |
+| F16 | Phase 1 (what the T² electron is) essentially complete; Phase 2 (why) → T³ |

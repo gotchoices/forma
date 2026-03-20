@@ -89,17 +89,22 @@ a nonzero shear:
 3. If T³ topology constrains the shear moduli space, identify
    the constraint and its effect on δ
 
-### Track 3. Normalization reconciliation  *(planned)*
+### Track 3. Self-consistent geometry + normalization  *(self-consistency complete; normalization pending)*
 
-Previous calculations have shown a persistent discrepancy in
-the absolute charge normalization (~0.46e vs. 8e for max shear)
-depending on whether E₀ uses a line-source or volume-averaged
-convention.  Establish the correct E₀ normalization from first
-principles:
-1. Total photon energy = m_e c² = ∫(ε₀E² + B²/μ₀)dV / 2
-2. Solve for E₀ given the mode structure and torus volume
-3. Recompute Q(δ) with the correct normalization
-4. Verify consistency with R15's charge calculation
+Self-consistent Compton constraint with shear:
+L(s) = 2π√(a²(1+2s)² + 4R²) = λ_C adjusts (a, R) for
+nonzero shear, feeding back into the charge formula.
+
+Complete: the self-consistent α formula
+    α = r²sin²(2πs) / (4π(2−s)²√(r²(1+2s)²+4))
+is solved for all r.  Result: s shifts up ~5% from Track 1 values.
+All properties verified: L/λ_C = 1, Q/e = 1 exactly.
+The electron is a one-parameter family in r (F15).
+
+Remaining: normalization reconciliation (E₀ conventions) to
+confirm which coupling applies.  Previous calculations show
+full E₀ gives clean results while κ-suppression kills the
+mechanism (F5).
 
 ### Track 4. Connection to T³ and quark charges  *(deferred)*
 
@@ -183,6 +188,7 @@ For s ∉ ℤ (i.e., δ ≠ 2kπa), q_eff is non-integer and Q ≠ 0.
 ## Status
 
 **Created:** 2026-03-01
-**Status:** Tracks 1–2 complete.  Track 1 positive (δ ≈ a for r=1).
+**Status:** Tracks 1–3 (self-consistency part) complete.  Track 1 positive (δ ≈ a for r=1).
 Track 2: shear is energetically favorable but free (no specific value selected on flat T²).
-Track 3 pending, Track 4 deferred.
+Track 3: self-consistent geometry confirmed (~5% correction to s); normalization part pending.
+Track 4 deferred.  Phase 1 (T² electron characterization) essentially complete (F16).

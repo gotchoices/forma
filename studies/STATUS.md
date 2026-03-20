@@ -48,7 +48,9 @@ Track 2 (complete): shear is energetically FAVORABLE — geodesic saving (6.6%) 
 Coulomb cost (0.8%) by 8.6×. No barrier to charge appearing. But the flat T² does not
 select a specific shear value (it's a free modulus, like r). External constraint
 (T³ topology) needed to pin the shear and thereby determine α.
-Track 3: normalization reconciliation (E₀ conventions).
+Track 3 (self-consistency complete): self-consistent Compton constraint with shear
+shifts s up ~5%. The electron is a one-parameter family in r — mass, spin, g, charge
+all determined. Normalization part still pending. Phase 1 (what) essentially complete.
 Track 4: connection to T³ and quark charges (deferred).
 
 ### R14. Universal geometry — shared T³ for all particles
