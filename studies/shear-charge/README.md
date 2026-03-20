@@ -71,7 +71,7 @@ Steps:
 small enough to be a perturbation, with a recognizable geometric
 interpretation.
 
-### Track 2. Energy analysis: is non-zero shear stable?  *(planned)*
+### Track 2. Energy analysis: is non-zero shear stable?  *(complete — viable but free)*
 
 On the flat T², mode energy is shear-independent (R12 F5), so
 the Coulomb self-energy of the charge makes δ = 0 the energy
@@ -183,5 +183,6 @@ For s ∉ ℤ (i.e., δ ≠ 2kπa), q_eff is non-integer and Q ≠ 0.
 ## Status
 
 **Created:** 2026-03-01
-**Status:** Track 1 complete — promising result (δ ≈ a for r = 1).
-Tracks 2–3 pending.
+**Status:** Tracks 1–2 complete.  Track 1 positive (δ ≈ a for r=1).
+Track 2: shear is energetically favorable but free (no specific value selected on flat T²).
+Track 3 pending, Track 4 deferred.

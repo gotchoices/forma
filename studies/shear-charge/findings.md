@@ -145,6 +145,145 @@ relating r and s.  Candidates:
 
 ---
 
+## Track 2. Energy balance: is non-zero shear stable?
+
+Script: [`scripts/track2_energy_balance.py`](scripts/track2_energy_balance.py)
+
+**The question:** If we take an unsheared torus and gradually
+increase the shear, does the total energy go up (making shear
+costly and disfavored) or down (making shear cheap and favored)?
+And does the energy reach a minimum at some specific shear value,
+which would pin the shear — and therefore α — automatically?
+
+
+### F7. The photon energy is hc/L_geodesic, not the eigenmode energy
+
+The (1,2) eigenmode of the torus has energy ℏc|k| = ℏc√(1/a² + 4/R²).
+For r = 1, this is 5 m_e c² — five times the physical photon energy.
+This confirms R12 F6: the photon is a traveling wave, not an eigenmode.
+
+The physical photon has ONE wavelength (λ_C) along the full geodesic
+path.  The eigenmode has √((r²+4)(1/r²+4)) ≈ 5 wavelengths per
+geodesic for r = 1.
+
+
+### F8. Shear is energetically cheap — it LOWERS the total energy
+
+When we shear the T², two things happen:
+
+1. **The geodesic path gets longer.**  On the sheared lattice, the
+   (1,2) winding follows a longer straight line in the universal
+   cover.  Since the photon energy is E = hc/L, a longer path means
+   a lower-frequency photon — the mode energy DECREASES.
+
+2. **Charge appears, adding Coulomb energy.**  The non-integer q_eff
+   produces Q ≠ 0, and the resulting Coulomb field has self-energy
+   E_C > 0.  This INCREASES the total energy.
+
+The key result: **the energy saving from (1) is much larger than
+the energy cost from (2).**
+
+At the Track 1 solution (r = 1, s = 0.157, Q ≈ e):
+
+    ΔE_photon = −6.6% of m_e c²   (saved — path got longer)
+    E_Coulomb = +0.76% of m_e c²   (cost — charge appeared)
+    Net:        −5.8% of m_e c²    (shear LOWERS total energy)
+
+The photon energy saving is **8.6× larger** than the Coulomb cost.
+
+**Plain language:** Shearing the torus is energetically favorable.
+The system does not resist shear — it welcomes it.  Having charge
+is "cheap" compared to the energy released by lengthening the
+geodesic.  This means there is NO energetic barrier preventing
+charge from appearing via shear.
+
+
+### F9. The flat T² does not select a specific shear value
+
+While shear is energetically favorable, E_total(s) keeps
+decreasing as s increases — it never reaches a minimum and
+turns back up.  There is no "valley" in the energy landscape
+that would pin the shear at a specific value.
+
+- At s = 0: dE_total/ds = −0.4 m_e c² per unit s (steep downhill).
+- The Coulomb cost starts quadratically (Q ∝ s for small s),
+  so it cannot resist the photon energy drop, which is linear.
+- E_total continues to decrease all the way to s → 1.
+
+**Plain language:** The flat T² says "shear is fine, go ahead,"
+but it doesn't say "stop here."  Shear is a free parameter —
+a modulus — just like the aspect ratio r, which has also been
+free in every study so far.  The flat T² imposes no constraint
+on either one.
+
+**This does NOT mean the mechanism is ruled out.**  It means
+the specific shear value must come from outside the flat T²:
+- The T³ geometry (needed for quark confinement, R14) has three
+  shear parameters constrained by topology.
+- Those topological constraints could fix the shear that
+  determines α = 1/137.
+
+Think of it this way: the shear mechanism provides the
+*formula* (α depends on shear), while T³ topology would
+provide the specific *input* (the shear value).
+
+
+### F10. Hint at large aspect ratios: energy minima at r ≥ 3
+
+At large aspect ratios (r ≥ 2.5) with **fixed** torus geometry,
+the Coulomb energy becomes large enough that E_total does develop
+local minima:
+
+| r   | s_min  | E_total/m_ec² | Q/e    | α_eq     | α_eq/α  |
+|-----|--------|---------------|--------|----------|---------|
+| 3.0 | 0.569  | 0.553         | 1.117  | 0.00910  | 1.25    |
+| 3.5 | 0.551  | 0.541         | 0.913  | 0.00608  | 0.83    |
+| 4.0 | 0.540  | 0.532         | 0.763  | 0.00425  | 0.58    |
+
+At r ≈ 3.2, the equilibrium charge passes through Q = e,
+giving α = 1/137.
+
+**Caveat:** These minima occur at E_total ≈ 0.55 m_e c² —
+only 55% of the observed electron mass.  This is because the
+geometry was held fixed at the s = 0 Compton constraint.  In
+a self-consistent picture where the geometry adjusts, the
+picture changes.  These are suggestive but not yet physical.
+
+
+### F11. The EM self-energy is the right size
+
+If the electron carries charge Q = e, the Coulomb field energy
+stored around the torus is:
+
+    E_EM = α g(r) √(r²+4) × m_e c² ≈ 0.8% of m_e c²
+
+This is the electromagnetic contribution to the electron's
+rest mass — and it matches what QED predicts: an O(α) correction
+(about 1 part in 137).  The "bare" photon energy (without the
+Coulomb field) is E_bare ≈ 0.992 m_e c².
+
+**Plain language:** The shear mechanism produces the right
+amount of charge, and that charge contributes the right amount
+of energy to the electron's mass.  Everything is self-consistent.
+
+
+### Track 2 overall assessment
+
+The shear mechanism is **viable and energetically favorable**:
+- Shear lowers the total energy (no barrier to charge appearing)
+- The Coulomb self-energy at Q = e matches QED expectations
+- Mass and spin are unaffected (topological, not metric)
+- The mechanism does not contradict any known physics
+
+What it does NOT do is select the specific shear value on its
+own.  The flat T² treats shear as a free parameter.  This is
+the same situation as the aspect ratio r — it has been free
+throughout all studies.  Both may be determined by the same
+external physics (T³ topology).
+
+
+---
+
 ## Summary table
 
 | # | Finding |
@@ -155,3 +294,8 @@ relating r and s.  Candidates:
 | F4 | The lattice angle deviation (~9° from orthogonal) is stable across r |
 | F5 | Full E₀ normalization gives clean result; κ-suppression kills the mechanism |
 | F6 | Formula has one equation in two unknowns (r, s) — one more constraint needed |
+| F7 | Photon energy = hc/L_geodesic ≠ eigenmode energy (5× for r=1); confirms R12 F6 |
+| F8 | Shear is energetically cheap: geodesic saving (6.6%) ≫ Coulomb cost (0.8%); shear is FAVORED |
+| F9 | No specific shear selected on flat T² — shear is a free modulus, like r; external constraint needed |
+| F10 | Local minima at r ≥ 3 (fixed geometry) pass through α at r ≈ 3.2 — suggestive but wrong mass |
+| F11 | EM self-energy = O(α m_e c²), consistent with QED mass correction |

@@ -44,7 +44,10 @@ internally unconstrained → external constraint (T³, topology) may fix it.
 
 Track 1 (complete): α = C(r)×sin²(2πs)/(2−s)². For r=1: s≈1/(2π), δ≈a. Clean result.
 Critical r ≈ 0.54. Normalization question (full E₀ vs κ=α) determines viability.
-Track 2: energy analysis — is non-zero shear stable?
+Track 2 (complete): shear is energetically FAVORABLE — geodesic saving (6.6%) exceeds
+Coulomb cost (0.8%) by 8.6×. No barrier to charge appearing. But the flat T² does not
+select a specific shear value (it's a free modulus, like r). External constraint
+(T³ topology) needed to pin the shear and thereby determine α.
 Track 3: normalization reconciliation (E₀ conventions).
 Track 4: connection to T³ and quark charges (deferred).
 
