@@ -3,53 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <title>Toroidal Explorer — WvM Electron Model</title>
+<link rel="stylesheet" href="totu-viz.css">
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { background: #0e0e12; color: #e0e0e0; font-family: 'Segoe UI', system-ui, sans-serif; overflow: hidden; }
-canvas { display: block; }
+body { display: block; height: auto; }
 
 #controls {
   position: absolute; top: 16px; left: 16px;
   background: rgba(10,10,18,0.88); padding: 18px; border-radius: 10px;
   width: 290px; backdrop-filter: blur(8px);
   border: 1px solid rgba(255,255,255,0.06);
+  z-index: 10;
 }
 #controls h2 { font-size: 15px; margin-bottom: 14px; color: #ccc; font-weight: 600; }
 
 .slider-group { margin-bottom: 12px; }
 .slider-group label { display: block; font-size: 12px; color: #999; margin-bottom: 3px; }
-.slider-group .val { float: right; color: #4fc3f7; font-weight: 700; font-size: 13px; }
-input[type=range] {
-  -webkit-appearance: none; width: 100%; height: 6px; border-radius: 3px;
-  background: #2a2a3a; outline: none; margin-top: 2px;
-}
-input[type=range]::-webkit-slider-thumb {
-  -webkit-appearance: none; width: 16px; height: 16px; border-radius: 50%;
-  background: #4fc3f7; cursor: pointer;
-}
+.slider-group .sval { float: right; color: #4fc3f7; font-weight: 700; font-size: 13px; }
+#controls input[type=range] { width: 100%; height: 6px; }
 
 .presets { margin-bottom: 12px; }
 .presets label { display: block; font-size: 11px; color: #777; margin-bottom: 4px; }
-.preset-btn {
-  background: #1e1e2e; border: 1px solid #333; color: #aaa; padding: 3px 7px;
-  border-radius: 4px; font-size: 10px; cursor: pointer; margin: 1px;
-}
-.preset-btn:hover { background: #2a2a40; color: #ddd; border-color: #4fc3f7; }
-
-.toggle { margin-bottom: 5px; }
-.toggle label { font-size: 12px; cursor: pointer; color: #bbb; }
-.toggle input { margin-right: 5px; accent-color: #4fc3f7; }
-
-#info {
-  position: absolute; top: 16px; right: 16px;
-  background: rgba(10,10,18,0.88); padding: 18px; border-radius: 10px;
-  width: 240px; backdrop-filter: blur(8px);
-  border: 1px solid rgba(255,255,255,0.06);
-  font-size: 12px; line-height: 2;
-}
-#info h2 { font-size: 15px; margin-bottom: 6px; color: #ccc; font-weight: 600; }
-.lbl { color: #777; }
-.v { color: #4fc3f7; font-weight: 700; }
 
 .badge {
   display: inline-block; padding: 1px 8px; border-radius: 3px;
@@ -59,11 +32,22 @@ input[type=range]::-webkit-slider-thumb {
 .b-horn    { background: #3e2700; color: #ffb74d; }
 .b-spindle { background: #3b1010; color: #ef9a9a; }
 
+#info {
+  position: absolute; top: 16px; right: 16px;
+  background: rgba(10,10,18,0.88); padding: 18px; border-radius: 10px;
+  width: 240px; backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.06);
+  font-size: 12px; line-height: 2; z-index: 10;
+}
+#info h2 { font-size: 15px; margin-bottom: 6px; color: #ccc; font-weight: 600; }
+.lbl { color: #777; }
+.v { color: #4fc3f7; font-weight: 700; }
+
 #legend {
   position: absolute; bottom: 16px; left: 16px;
   background: rgba(10,10,18,0.80); padding: 10px 14px; border-radius: 8px;
   font-size: 11px; backdrop-filter: blur(6px);
-  border: 1px solid rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.05); z-index: 10;
 }
 .leg { display: flex; align-items: center; margin: 3px 0; color: #aaa; }
 .sw { width: 18px; height: 4px; border-radius: 2px; margin-right: 8px; flex-shrink: 0; }
@@ -72,42 +56,44 @@ input[type=range]::-webkit-slider-thumb {
   position: absolute; bottom: 16px; right: 16px;
   background: rgba(10,10,18,0.70); padding: 8px 12px; border-radius: 6px;
   font-size: 10px; color: #555; max-width: 240px; text-align: right;
-  border: 1px solid rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.04); z-index: 10;
 }
+
+#view { position: fixed; inset: 0; }
 </style>
 </head>
 <body>
-<canvas id="c"></canvas>
+<div id="view"></div>
 
 <div id="controls">
   <h2>Toroidal Explorer</h2>
 
   <div class="slider-group">
-    <label>Tube / Ring ratio (a/R) <span class="val" id="ar-v">0.50</span></label>
+    <label>Tube / Ring ratio (a/R) <span class="sval" id="ar-v">0.50</span></label>
     <input type="range" id="ar" min="0.05" max="12" step="0.01" value="0.5">
   </div>
 
   <div class="presets">
     <label>Presets</label>
-    <button class="preset-btn" data-v="0.50">Ring 0.5</button>
-    <button class="preset-btn" data-v="1.00">Horn 1.0</button>
-    <button class="preset-btn" data-v="5.28">Horizon</button>
-    <button class="preset-btn" data-v="6.60">q = e</button>
-    <button class="preset-btn" data-v="7.26">WvM sphere</button>
+    <button class="btn" data-v="0.50">Ring 0.5</button>
+    <button class="btn" data-v="1.00">Horn 1.0</button>
+    <button class="btn" data-v="5.28">Horizon</button>
+    <button class="btn" data-v="6.60">q = e</button>
+    <button class="btn" data-v="7.26">WvM sphere</button>
   </div>
 
   <div class="slider-group">
-    <label>Surface opacity <span class="val" id="op-v">0.45</span></label>
+    <label>Surface opacity <span class="sval" id="op-v">0.45</span></label>
     <input type="range" id="op" min="0" max="1" step="0.01" value="0.45">
   </div>
 
-  <div class="toggle"><label><input type="checkbox" id="tw" checked> Wireframe</label></div>
-  <div class="toggle"><label><input type="checkbox" id="tg" checked> Geodesic (spin-&#189; path)</label></div>
-  <div class="toggle"><label><input type="checkbox" id="tp" checked> Photon (animated)</label></div>
-  <div class="toggle"><label><input type="checkbox" id="th"> Rotation horizon sphere</label></div>
-  <div class="toggle"><label><input type="checkbox" id="ta"> Symmetry axis</label></div>
+  <div class="tog"><label><input type="checkbox" id="tw" checked> Wireframe</label></div>
+  <div class="tog"><label><input type="checkbox" id="tg" checked> Geodesic (spin-½ path)</label></div>
+  <div class="tog"><label><input type="checkbox" id="tp" checked> Photon (animated)</label></div>
+  <div class="tog"><label><input type="checkbox" id="th"> Rotation horizon sphere</label></div>
+  <div class="tog"><label><input type="checkbox" id="ta"> Symmetry axis</label></div>
   <hr style="border-color:#333; margin:8px 0 6px">
-  <div class="toggle"><label><input type="checkbox" id="tf" checked> Auto-fit scale</label></div>
+  <div class="tog"><label><input type="checkbox" id="tf" checked> Auto-fit scale</label></div>
 </div>
 
 <div id="info">
@@ -136,136 +122,58 @@ input[type=range]::-webkit-slider-thumb {
 </div>
 
 <script type="importmap">
-{
-  "imports": {
-    "three": "https://cdn.jsdelivr.net/npm/three@0.163.0/build/three.module.js",
-    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.163.0/examples/jsm/"
-  }
-}
+{"imports":{
+  "three":"https://cdn.jsdelivr.net/npm/three@0.163.0/build/three.module.js",
+  "three/addons/":"https://cdn.jsdelivr.net/npm/three@0.163.0/examples/jsm/"
+}}
 </script>
 <script type="module">
-import * as THREE from 'three';
-import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import {
+  THREE, createScene, autoResize, buildTorusGeom,
+  torusPt, torusPathGeom, createPhoton, PALETTE
+} from './totu-viz.js';
 
-const canvas = document.getElementById('c');
-const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-renderer.setSize(window.innerWidth, window.innerHeight);
+const $ = id => document.getElementById(id);
+const R = 1.0, FIT = 2.0, HORIZON = 2 * Math.PI;
 
-const scene = new THREE.Scene();
-scene.background = new THREE.Color(0x0e0e12);
+let aR = 0.5, autoFit = true;
 
-const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.01, 200);
-camera.position.set(2.5, 1.8, 3.5);
-
-const ctrl = new OrbitControls(camera, canvas);
-ctrl.enableDamping = true;
-ctrl.dampingFactor = 0.07;
-ctrl.minDistance = 0.5;
-ctrl.maxDistance = 80;
-
-scene.add(new THREE.AmbientLight(0x606070, 1.5));
-const sun = new THREE.DirectionalLight(0xffffff, 1.2);
-sun.position.set(4, 6, 5);
-scene.add(sun);
-const fill = new THREE.DirectionalLight(0x6688cc, 0.4);
-fill.position.set(-3, -2, -3);
-scene.add(fill);
-
-const R = 1.0;
-let aR = 0.5;
-let autoFit = true;
-const FIT = 2.0;
-const HORIZON = 2 * Math.PI;
+const { scene, camera, renderer, controls, clock } = createScene($('view'), {
+  maxDistance: 80,
+});
+autoResize(renderer, camera, $('view'));
 
 const world = new THREE.Group();
 scene.add(world);
 
-const SEG_U = 96, SEG_V = 192;
-
-function buildTorusGeom(a) {
-  const pos = [], idx = [];
-  for (let i = 0; i <= SEG_U; i++) {
-    const u = i / SEG_U, th = u * Math.PI * 2;
-    const ct = Math.cos(th), st = Math.sin(th);
-    for (let j = 0; j <= SEG_V; j++) {
-      const v = j / SEG_V, ph = v * Math.PI * 2;
-      const cp = Math.cos(ph), sp = Math.sin(ph);
-      const rr = R + a * ct;
-      pos.push(rr * cp, a * st, rr * sp);
-    }
-  }
-  for (let i = 0; i < SEG_U; i++) {
-    for (let j = 0; j < SEG_V; j++) {
-      const a_ = i * (SEG_V + 1) + j, b_ = a_ + SEG_V + 1;
-      idx.push(a_, b_, a_ + 1, b_, b_ + 1, a_ + 1);
-    }
-  }
-  const g = new THREE.BufferGeometry();
-  g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
-  g.setIndex(idx);
-  g.computeVertexNormals();
-  return g;
-}
-
 const torusMat = new THREE.MeshPhongMaterial({
-  color: 0x4fc3f7, transparent: true, opacity: 0.45,
-  side: THREE.DoubleSide, depthWrite: false, shininess: 60
+  color: PALETTE.surface, transparent: true, opacity: 0.45,
+  side: THREE.DoubleSide, depthWrite: false, shininess: 60,
 });
 const wireMat = new THREE.MeshBasicMaterial({
-  color: 0x4fc3f7, wireframe: true, transparent: true, opacity: 0.08,
-  side: THREE.DoubleSide
+  color: PALETTE.surface, wireframe: true, transparent: true, opacity: 0.08,
+  side: THREE.DoubleSide,
 });
-
-let torusMesh = new THREE.Mesh(buildTorusGeom(aR), torusMat);
-let wireMesh = new THREE.Mesh(buildTorusGeom(aR), wireMat);
-world.add(torusMesh);
-world.add(wireMesh);
-
-const GEO_N = 600;
-function geodesicPoints(a) {
-  const pts = [];
-  for (let i = 0; i <= GEO_N; i++) {
-    const t = (i / GEO_N) * 4 * Math.PI;
-    const th = t / 2, ph = t;
-    const rr = R + a * Math.cos(th);
-    pts.push(new THREE.Vector3(rr * Math.cos(ph), a * Math.sin(th), rr * Math.sin(ph)));
-  }
-  return pts;
-}
-function buildGeodesicTube(a) {
-  const pts = geodesicPoints(a);
-  const curve = new THREE.CatmullRomCurve3(pts, true);
-  const gs = autoFit ? FIT / (R + a) : 1.0;
-  const tubeR = 0.025 / gs;
-  return new THREE.TubeGeometry(curve, GEO_N, tubeR, 6, true);
-}
-
 const geoMat = new THREE.MeshPhongMaterial({
-  color: 0xff6e40, emissive: 0x661800, shininess: 80
+  color: PALETTE.path, emissive: 0x661800, shininess: 80,
 });
-let geoMesh = new THREE.Mesh(buildGeodesicTube(aR), geoMat);
-world.add(geoMesh);
 
-const photonGeo = new THREE.SphereGeometry(0.06, 16, 12);
-const photonMat = new THREE.MeshBasicMaterial({ color: 0xfdd835 });
-const photon = new THREE.Mesh(photonGeo, photonMat);
-const photonGlow = new THREE.PointLight(0xfdd835, 2, 3);
-photon.add(photonGlow);
-world.add(photon);
+let torusMesh, wireMesh, geoMesh;
 
-const horizonGeo = new THREE.SphereGeometry(HORIZON, 40, 24);
-const horizonMat = new THREE.MeshBasicMaterial({
-  color: 0x66bb6a, wireframe: true, transparent: true, opacity: 0.07
-});
-const horizonMesh = new THREE.Mesh(horizonGeo, horizonMat);
+const photon = createPhoton({ r: 0.06 });
+world.add(photon.mesh);
+
+const horizonMesh = new THREE.Mesh(
+  new THREE.SphereGeometry(HORIZON, 40, 24),
+  new THREE.MeshBasicMaterial({ color: 0x66bb6a, wireframe: true, transparent: true, opacity: 0.07 })
+);
 horizonMesh.visible = false;
 world.add(horizonMesh);
 
-const axisGeo = new THREE.BufferGeometry().setFromPoints([
-  new THREE.Vector3(0, -20, 0), new THREE.Vector3(0, 20, 0)
-]);
-const axisMesh = new THREE.Line(axisGeo, new THREE.LineBasicMaterial({ color: 0x444444 }));
+const axisMesh = new THREE.Line(
+  new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0,-20,0), new THREE.Vector3(0,20,0)]),
+  new THREE.LineBasicMaterial({ color: 0x444444 })
+);
 axisMesh.visible = false;
 world.add(axisMesh);
 
@@ -273,19 +181,29 @@ function rebuild() {
   const a = aR * R;
   const gs = autoFit ? FIT / (R + a) : 1.0;
   world.scale.setScalar(gs);
-  torusMesh.geometry.dispose();
-  torusMesh.geometry = buildTorusGeom(a);
-  wireMesh.geometry.dispose();
-  wireMesh.geometry = buildTorusGeom(a);
-  geoMesh.geometry.dispose();
-  geoMesh.geometry = buildGeodesicTube(a);
-  photon.scale.setScalar(0.06 / gs);
-  photonGlow.distance = 3 / gs;
+
+  if (torusMesh) { torusMesh.geometry.dispose(); world.remove(torusMesh); }
+  if (wireMesh)  { wireMesh.geometry.dispose();  world.remove(wireMesh); }
+  if (geoMesh)   { geoMesh.geometry.dispose();   world.remove(geoMesh); }
+
+  const tg = buildTorusGeom(R, a, 96, 192);
+  torusMesh = new THREE.Mesh(tg, torusMat);
+  wireMesh  = new THREE.Mesh(buildTorusGeom(R, a, 48, 96), wireMat);
+  geoMesh   = new THREE.Mesh(
+    torusPathGeom(R, a, 1, 2, { segments: 600, tubeR: 0.025 / gs }),
+    geoMat
+  );
+
+  world.add(torusMesh, wireMesh, geoMesh);
+  wireMesh.visible = $('tw').checked;
+  geoMesh.visible = $('tg').checked;
+
+  photon.mesh.scale.setScalar(0.06 / gs);
+  photon.glow.distance = 3 / gs;
   updateInfo();
 }
 
 function updateInfo() {
-  const $ = id => document.getElementById(id);
   $('i-ar').textContent = aR.toFixed(2);
   const ty = $('i-type');
   if (aR < 0.999)      { ty.textContent = 'RING';    ty.className = 'badge b-ring'; }
@@ -294,64 +212,56 @@ function updateInfo() {
   $('i-out').textContent = ((1 + aR) / (4 * Math.PI)).toFixed(4);
   const vr = 3 * aR * aR / (16 * Math.PI * Math.PI);
   $('i-vr').textContent = vr.toFixed(4);
-  const qe = 0.910318 / Math.sqrt(vr);
-  $('i-qe').textContent = qe.toFixed(4);
+  $('i-qe').textContent = (0.910318 / Math.sqrt(vr)).toFixed(4);
 }
 
-const arSlider = document.getElementById('ar');
-const opSlider = document.getElementById('op');
-arSlider.addEventListener('input', () => {
-  aR = parseFloat(arSlider.value);
-  document.getElementById('ar-v').textContent = aR.toFixed(2);
+/* ── Controls ─────────────────────────────────────────── */
+
+$('ar').addEventListener('input', e => {
+  aR = parseFloat(e.target.value);
+  $('ar-v').textContent = aR.toFixed(2);
   rebuild();
 });
-opSlider.addEventListener('input', () => {
-  const v = parseFloat(opSlider.value);
-  document.getElementById('op-v').textContent = v.toFixed(2);
+$('op').addEventListener('input', e => {
+  const v = parseFloat(e.target.value);
+  $('op-v').textContent = v.toFixed(2);
   torusMat.opacity = v;
 });
 
-document.querySelectorAll('.preset-btn').forEach(btn => {
+document.querySelectorAll('[data-v]').forEach(btn => {
   btn.addEventListener('click', () => {
     aR = parseFloat(btn.dataset.v);
-    arSlider.value = aR;
-    document.getElementById('ar-v').textContent = aR.toFixed(2);
+    $('ar').value = aR; $('ar-v').textContent = aR.toFixed(2);
     rebuild();
   });
 });
 
-document.getElementById('tw').addEventListener('change', e => { wireMesh.visible = e.target.checked; });
-document.getElementById('tg').addEventListener('change', e => { geoMesh.visible = e.target.checked; });
-document.getElementById('tp').addEventListener('change', e => { photon.visible = e.target.checked; });
-document.getElementById('th').addEventListener('change', e => { horizonMesh.visible = e.target.checked; });
-document.getElementById('ta').addEventListener('change', e => { axisMesh.visible = e.target.checked; });
-document.getElementById('tf').addEventListener('change', e => { autoFit = e.target.checked; rebuild(); });
+$('tw').addEventListener('change', e => { if (wireMesh) wireMesh.visible = e.target.checked; });
+$('tg').addEventListener('change', e => { if (geoMesh) geoMesh.visible = e.target.checked; });
+$('tp').addEventListener('change', e => { photon.mesh.visible = e.target.checked; });
+$('th').addEventListener('change', e => { horizonMesh.visible = e.target.checked; });
+$('ta').addEventListener('change', e => { axisMesh.visible = e.target.checked; });
+$('tf').addEventListener('change', e => { autoFit = e.target.checked; rebuild(); });
 
-window.addEventListener('resize', () => {
-  camera.aspect = window.innerWidth / window.innerHeight;
-  camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
-});
+/* ── Animation ────────────────────────────────────────── */
 
-const clock = new THREE.Clock();
-function animate() {
+rebuild();
+
+(function animate() {
   requestAnimationFrame(animate);
-  ctrl.update();
+  controls.update();
 
-  if (photon.visible) {
+  if (photon.mesh.visible) {
     const t = clock.getElapsedTime() * 1.2;
-    const phase = (t % (4 * Math.PI));
-    const th = phase / 2, ph = phase;
+    const phase = t % (4 * Math.PI);
     const a = aR * R;
-    const rr = R + a * Math.cos(th);
-    photon.position.set(rr * Math.cos(ph), a * Math.sin(th), rr * Math.sin(ph));
+    const pt = torusPt(phase, R, a, 1, 2);
+    photon.mesh.position.copy(pt);
   }
 
   renderer.render(scene, camera);
-}
+})();
 
-updateInfo();
-animate();
 </script>
 </body>
 </html>

@@ -3,117 +3,68 @@
 <head>
 <meta charset="UTF-8">
 <title>Dual Visualizer — 3D Torus + 2D Flat</title>
+<link rel="stylesheet" href="totu-viz.css">
 <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body {
-  background: #0e0e12; color: #e0e0e0;
-  font-family: 'Segoe UI', system-ui, sans-serif;
-  overflow: hidden; display: flex; flex-direction: column;
-  height: 100vh;
-}
-
-#top-bar {
-  display: flex; align-items: center; gap: 16px;
-  padding: 10px 20px;
-  background: rgba(10,10,18,0.95);
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-  flex-shrink: 0; flex-wrap: wrap;
-}
-#top-bar h1 { font-size: 15px; color: #ccc; font-weight: 600; margin-right: 8px; }
-
-.ctrl-group { display: flex; align-items: center; gap: 6px; }
-.ctrl-group label { font-size: 11px; color: #888; white-space: nowrap; }
-.ctrl-group .val { color: #4fc3f7; font-weight: 700; font-size: 12px; min-width: 36px; }
-input[type=range] {
-  -webkit-appearance: none; width: 120px; height: 5px; border-radius: 3px;
-  background: #2a2a3a; outline: none;
-}
-input[type=range]::-webkit-slider-thumb {
-  -webkit-appearance: none; width: 14px; height: 14px; border-radius: 50%;
-  background: #4fc3f7; cursor: pointer;
-}
-.preset-btn {
-  background: #1e1e2e; border: 1px solid #333; color: #aaa; padding: 3px 8px;
-  border-radius: 4px; font-size: 10px; cursor: pointer;
-}
-.preset-btn:hover { background: #2a2a40; color: #ddd; border-color: #4fc3f7; }
-.preset-btn.active { background: #1a3050; border-color: #4fc3f7; color: #4fc3f7; }
-.toggle label { font-size: 11px; cursor: pointer; color: #bbb; }
-.toggle input { margin-right: 3px; accent-color: #4fc3f7; }
-.sep { width: 1px; height: 24px; background: #333; }
-
 #main { display: flex; flex: 1; min-height: 0; }
-
 #view-3d { flex: 1; position: relative; }
-#view-3d canvas { display: block; width: 100%; height: 100%; }
-
 #view-2d {
   flex: 1; position: relative;
   border-left: 1px solid rgba(255,255,255,0.08);
 }
 #flat-canvas { display: block; width: 100%; height: 100%; }
-
 .view-label {
   position: absolute; top: 8px; left: 12px;
   font-size: 11px; color: #666; font-weight: 600;
   letter-spacing: 1px; text-transform: uppercase;
   pointer-events: none;
 }
-
 #info-panel {
   position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%);
   background: rgba(10,10,18,0.88); padding: 10px 18px; border-radius: 8px;
   backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.06);
   font-size: 11px; display: flex; gap: 24px; white-space: nowrap;
+  pointer-events: none; z-index: 10;
 }
-.info-item .lbl { color: #777; }
-.info-item .v { color: #4fc3f7; font-weight: 700; }
+.lbl { color: #777; }
+.v { color: #4fc3f7; font-weight: 700; }
 </style>
 </head>
 <body>
 
-<div id="top-bar">
-  <h1>Dual Visualizer</h1>
-  <div class="sep"></div>
+<div class="top-bar">
+  <h1>Dual Visualizer</h1><div class="sep"></div>
 
-  <div class="ctrl-group">
+  <div class="cg">
     <label>a/R</label>
     <input type="range" id="ar" min="0.1" max="12" step="0.01" value="6.60">
     <span class="val" id="ar-v">6.60</span>
   </div>
+  <div class="cg" style="gap:3px">
+    <button class="btn" data-v="0.50">Ring 0.5</button>
+    <button class="btn" data-v="1.00">Horn</button>
+    <button class="btn on" data-v="6.60">q = e</button>
+  </div><div class="sep"></div>
 
-  <div class="ctrl-group" style="gap:3px">
-    <button class="preset-btn" data-v="0.50">Ring 0.5</button>
-    <button class="preset-btn" data-v="1.00">Horn</button>
-    <button class="preset-btn active" data-v="6.60">q = e</button>
-  </div>
-
-  <div class="sep"></div>
-
-  <div class="ctrl-group">
+  <div class="cg">
     <label>Knot (p,q)</label>
-    <button class="preset-btn knot-btn active" data-p="1" data-q="2">(1,2)</button>
-    <button class="preset-btn knot-btn" data-p="1" data-q="1">(1,1)</button>
-    <button class="preset-btn knot-btn" data-p="2" data-q="3">(2,3)</button>
-    <button class="preset-btn knot-btn" data-p="3" data-q="2">(3,2)</button>
-  </div>
+    <button class="btn knot on" data-p="1" data-q="2">(1,2)</button>
+    <button class="btn knot" data-p="1" data-q="1">(1,1)</button>
+    <button class="btn knot" data-p="2" data-q="3">(2,3)</button>
+    <button class="btn knot" data-p="3" data-q="2">(3,2)</button>
+  </div><div class="sep"></div>
 
-  <div class="sep"></div>
-
-  <div class="ctrl-group">
+  <div class="cg">
     <label>Speed</label>
     <input type="range" id="speed" min="0.1" max="4" step="0.1" value="1.0">
     <span class="val" id="speed-v">1.0</span>
   </div>
-
-  <div class="toggle"><label><input type="checkbox" id="t-surface" checked> Surface</label></div>
-  <div class="toggle"><label><input type="checkbox" id="t-path" checked> Path</label></div>
-  <div class="toggle"><label><input type="checkbox" id="t-photon" checked> Photon</label></div>
+  <div class="tog"><label><input type="checkbox" id="t-surface" checked> Surface</label></div>
+  <div class="tog"><label><input type="checkbox" id="t-path" checked> Path</label></div>
+  <div class="tog"><label><input type="checkbox" id="t-photon" checked> Photon</label></div>
 </div>
 
 <div id="main">
   <div id="view-3d">
-    <canvas id="c3d"></canvas>
     <div class="view-label">3D Torus</div>
   </div>
   <div id="view-2d">
@@ -123,223 +74,98 @@ input[type=range]::-webkit-slider-thumb {
 </div>
 
 <div id="info-panel">
-  <div class="info-item"><span class="lbl">a/R = </span><span class="v" id="i-ar">6.60</span></div>
-  <div class="info-item"><span class="lbl">Knot </span><span class="v" id="i-knot">(1,2)</span></div>
-  <div class="info-item"><span class="lbl">Type </span><span class="v" id="i-type">SPINDLE</span></div>
-  <div class="info-item"><span class="lbl">L<sub>θ</sub>/L<sub>φ</sub> = </span><span class="v" id="i-r">6.60</span></div>
-  <div class="info-item"><span class="lbl">Path = </span><span class="v" id="i-path">—</span><span class="lbl"> λ<sub>C</sub></span></div>
-  <div class="info-item"><span class="lbl">Slope = </span><span class="v" id="i-slope">—</span></div>
+  <div><span class="lbl">a/R = </span><span class="v" id="i-ar">6.60</span></div>
+  <div><span class="lbl">Knot </span><span class="v" id="i-knot">(1,2)</span></div>
+  <div><span class="lbl">Type </span><span class="v" id="i-type">SPINDLE</span></div>
+  <div><span class="lbl">L<sub>θ</sub>/L<sub>φ</sub> = </span><span class="v" id="i-r">6.60</span></div>
+  <div><span class="lbl">Path = </span><span class="v" id="i-path">—</span><span class="lbl"> λ<sub>C</sub></span></div>
+  <div><span class="lbl">Slope = </span><span class="v" id="i-slope">—</span></div>
 </div>
 
 <script type="importmap">
-{
-  "imports": {
-    "three": "https://cdn.jsdelivr.net/npm/three@0.163.0/build/three.module.js",
-    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.163.0/examples/jsm/"
-  }
-}
+{"imports":{
+  "three":"https://cdn.jsdelivr.net/npm/three@0.163.0/build/three.module.js",
+  "three/addons/":"https://cdn.jsdelivr.net/npm/three@0.163.0/examples/jsm/"
+}}
 </script>
 <script type="module">
-import * as THREE from 'three';
-import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import {
+  THREE, createScene, autoResize, buildTorusGeom,
+  torusPt, torusPathGeom, createPhoton, torusMaterials, PALETTE
+} from './totu-viz.js';
 
-// ── State ────────────────────────────────────────────────────
+const $ = id => document.getElementById(id);
+const R = 1.0, FIT = 2.2;
 
 const state = {
-  aR: 6.60,
-  p: 1, q: 2,
-  speed: 1.0,
-  showSurface: true,
-  showPath: true,
-  showPhoton: true,
+  aR: 6.60, p: 1, q: 2, speed: 1.0,
+  showSurface: true, showPath: true, showPhoton: true,
 };
 
-const R_UNIT = 1.0;
-const FIT_TARGET = 2.2;
-const PATH_SEGMENTS = 800;
-const TORUS_SEG_U = 64;
-const TORUS_SEG_V = 128;
+/* ── 3D View ──────────────────────────────────────────── */
 
-// ── Colors ───────────────────────────────────────────────────
-
-const COL = {
-  surface:  0x4fc3f7,
-  path:     0xff6e40,
-  photon:   0xfdd835,
-  grid:     '#2a2a3a',
-  gridEdge: '#4fc3f7',
-  flatPath: '#ff6e40',
-  flatDot:  '#fdd835',
-  wrap:     '#333',
-  dimLabel: '#666',
-};
-
-// ═══════════════════════════════════════════════════════════
-//  3D VIEW (Three.js)
-// ═══════════════════════════════════════════════════════════
-
-const canvas3d = document.getElementById('c3d');
-const renderer = new THREE.WebGLRenderer({ canvas: canvas3d, antialias: true });
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-const scene = new THREE.Scene();
-scene.background = new THREE.Color(0x0e0e12);
-
-const camera = new THREE.PerspectiveCamera(45, 1, 0.01, 200);
-camera.position.set(2.5, 1.8, 3.5);
-
-const orbitCtrl = new OrbitControls(camera, canvas3d);
-orbitCtrl.enableDamping = true;
-orbitCtrl.dampingFactor = 0.07;
-
-scene.add(new THREE.AmbientLight(0x606070, 1.5));
-const sun = new THREE.DirectionalLight(0xffffff, 1.2);
-sun.position.set(4, 6, 5);
-scene.add(sun);
-scene.add(new THREE.DirectionalLight(0x6688cc, 0.4).position.set(-3, -2, -3) || scene);
+const { scene, camera, renderer, controls, clock } = createScene($('view-3d'));
+autoResize(renderer, camera, $('view-3d'));
 
 const world = new THREE.Group();
 scene.add(world);
 
-// Torus surface
-const torusMat = new THREE.MeshPhongMaterial({
-  color: COL.surface, transparent: true, opacity: 0.35,
-  side: THREE.DoubleSide, depthWrite: false, shininess: 60,
-});
-const wireMat = new THREE.MeshBasicMaterial({
-  color: COL.surface, wireframe: true, transparent: true, opacity: 0.06,
-  side: THREE.DoubleSide,
-});
-
-let torusMesh, wireMesh;
-
-function buildTorusGeom(a) {
-  const pos = [], idx = [];
-  for (let i = 0; i <= TORUS_SEG_U; i++) {
-    const u = i / TORUS_SEG_U, th = u * Math.PI * 2;
-    const ct = Math.cos(th), st = Math.sin(th);
-    for (let j = 0; j <= TORUS_SEG_V; j++) {
-      const v = j / TORUS_SEG_V, ph = v * Math.PI * 2;
-      const rr = R_UNIT + a * ct;
-      pos.push(rr * Math.cos(ph), a * st, rr * Math.sin(ph));
-    }
-  }
-  for (let i = 0; i < TORUS_SEG_U; i++) {
-    for (let j = 0; j < TORUS_SEG_V; j++) {
-      const a_ = i * (TORUS_SEG_V + 1) + j, b_ = a_ + TORUS_SEG_V + 1;
-      idx.push(a_, b_, a_ + 1, b_, b_ + 1, a_ + 1);
-    }
-  }
-  const g = new THREE.BufferGeometry();
-  g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
-  g.setIndex(idx);
-  g.computeVertexNormals();
-  return g;
-}
-
-// Geodesic path
+const mats = torusMaterials();
 const pathMat = new THREE.MeshPhongMaterial({
-  color: COL.path, emissive: 0x661800, shininess: 80,
+  color: PALETTE.path, emissive: 0x661800, shininess: 80,
 });
-let pathMesh;
+let torusMesh, wireMesh, pathMesh;
 
-function geodesicPoint3D(t, a, p, q) {
-  const phi = q * t;
-  const theta = p * t;
-  const rr = R_UNIT + a * Math.cos(theta);
-  return new THREE.Vector3(
-    rr * Math.cos(phi),
-    a * Math.sin(theta),
-    rr * Math.sin(phi),
-  );
-}
-
-function buildPathGeom(a, p, q) {
-  const pts = [];
-  const totalAngle = 2 * Math.PI * q;
-  for (let i = 0; i <= PATH_SEGMENTS; i++) {
-    const t = (i / PATH_SEGMENTS) * totalAngle;
-    pts.push(geodesicPoint3D(t, a, p, q));
-  }
-  const curve = new THREE.CatmullRomCurve3(pts, true);
-  const gs = FIT_TARGET / (R_UNIT + a);
-  const tubeR = 0.02 / gs;
-  return new THREE.TubeGeometry(curve, PATH_SEGMENTS, tubeR, 6, true);
-}
-
-// Photon
-const photonGeo = new THREE.SphereGeometry(0.05, 16, 12);
-const photonMat3d = new THREE.MeshBasicMaterial({ color: COL.photon });
-const photon3d = new THREE.Mesh(photonGeo, photonMat3d);
-const photonGlow = new THREE.PointLight(COL.photon, 2, 3);
-photon3d.add(photonGlow);
-world.add(photon3d);
+const photon = createPhoton();
+world.add(photon.mesh);
 
 function rebuild3D() {
-  const a = state.aR * R_UNIT;
-  const gs = FIT_TARGET / (R_UNIT + a);
+  const a = state.aR * R;
+  const gs = FIT / (R + a);
   world.scale.setScalar(gs);
 
   if (torusMesh) { torusMesh.geometry.dispose(); world.remove(torusMesh); }
   if (wireMesh)  { wireMesh.geometry.dispose();  world.remove(wireMesh); }
   if (pathMesh)  { pathMesh.geometry.dispose();  world.remove(pathMesh); }
 
-  torusMesh = new THREE.Mesh(buildTorusGeom(a), torusMat);
-  wireMesh  = new THREE.Mesh(buildTorusGeom(a), wireMat);
-  pathMesh  = new THREE.Mesh(buildPathGeom(a, state.p, state.q), pathMat);
+  torusMesh = new THREE.Mesh(buildTorusGeom(R, a), mats.surface);
+  wireMesh  = new THREE.Mesh(buildTorusGeom(R, a), mats.wire);
+  pathMesh  = new THREE.Mesh(
+    torusPathGeom(R, a, state.p, state.q, { tubeR: 0.02 / gs }),
+    pathMat
+  );
 
   torusMesh.visible = state.showSurface;
   wireMesh.visible  = state.showSurface;
   pathMesh.visible  = state.showPath;
-  photon3d.visible  = state.showPhoton;
+  photon.mesh.visible = state.showPhoton;
 
-  world.add(torusMesh);
-  world.add(wireMesh);
-  world.add(pathMesh);
-
-  photon3d.scale.setScalar(0.05 / gs);
-  photonGlow.distance = 3 / gs;
+  world.add(torusMesh, wireMesh, pathMesh);
+  photon.mesh.scale.setScalar(0.05 / gs);
+  photon.glow.distance = 3 / gs;
 }
 
-// ═══════════════════════════════════════════════════════════
-//  2D FLAT VIEW (Canvas 2D)
-// ═══════════════════════════════════════════════════════════
+/* ── 2D Flat View ─────────────────────────────────────── */
 
-const flatCanvas = document.getElementById('flat-canvas');
+const flatCanvas = $('flat-canvas');
 const ctx = flatCanvas.getContext('2d');
 
 function draw2D(phase) {
-  const W = flatCanvas.width;
-  const H = flatCanvas.height;
+  const W = flatCanvas.width, H = flatCanvas.height;
   const dpr = window.devicePixelRatio || 1;
-
   ctx.clearRect(0, 0, W, H);
 
   const { p, q, aR } = state;
   const r = aR;
 
-  // Rectangle dimensions in "units" — L_φ wide, L_θ tall
-  // We normalize so the rectangle fills the view with padding
-  const pad = 40 * dpr;
-  const labelPad = 20 * dpr;
-  const availW = W - 2 * pad;
-  const availH = H - 2 * pad - labelPad;
+  const pad = 40 * dpr, labelPad = 20 * dpr;
+  const availW = W - 2 * pad, availH = H - 2 * pad - labelPad;
+  const scale = Math.min(availW / 1.0, availH / r);
+  const rectW = scale * 1.0, rectH = scale * r;
+  const ox = (W - rectW) / 2, oy = (H - rectH) / 2;
 
-  // Scale to fit the rectangle
-  const scaleX = availW / 1.0;   // L_φ = 1 (normalized)
-  const scaleY = availH / r;     // L_θ = r
-  const scale = Math.min(scaleX, scaleY);
-
-  const rectW = scale * 1.0;
-  const rectH = scale * r;
-  const ox = (W - rectW) / 2;
-  const oy = (H - rectH) / 2;
-
-  // Background grid
-  ctx.strokeStyle = COL.grid;
-  ctx.lineWidth = 1 * dpr;
-  const gridN_phi = 8;
-  const gridN_theta = Math.max(2, Math.round(8 * r));
+  ctx.strokeStyle = '#2a2a3a'; ctx.lineWidth = 1 * dpr;
+  const gridN_phi = 8, gridN_theta = Math.max(2, Math.round(8 * r));
   for (let i = 0; i <= gridN_phi; i++) {
     const x = ox + (i / gridN_phi) * rectW;
     ctx.beginPath(); ctx.moveTo(x, oy); ctx.lineTo(x, oy + rectH); ctx.stroke();
@@ -349,20 +175,16 @@ function draw2D(phase) {
     ctx.beginPath(); ctx.moveTo(ox, y); ctx.lineTo(ox + rectW, y); ctx.stroke();
   }
 
-  // Rectangle border (identified edges highlighted)
   ctx.lineWidth = 2 * dpr;
-  // Left & right edges (φ identification) — same color
   ctx.strokeStyle = '#e05050';
   ctx.setLineDash([6 * dpr, 4 * dpr]);
   ctx.beginPath(); ctx.moveTo(ox, oy); ctx.lineTo(ox, oy + rectH); ctx.stroke();
   ctx.beginPath(); ctx.moveTo(ox + rectW, oy); ctx.lineTo(ox + rectW, oy + rectH); ctx.stroke();
-  // Top & bottom edges (θ identification) — same color
   ctx.strokeStyle = '#50b0e0';
   ctx.beginPath(); ctx.moveTo(ox, oy); ctx.lineTo(ox + rectW, oy); ctx.stroke();
   ctx.beginPath(); ctx.moveTo(ox, oy + rectH); ctx.lineTo(ox + rectW, oy + rectH); ctx.stroke();
   ctx.setLineDash([]);
 
-  // Edge arrows showing identification direction
   const arrowSize = 8 * dpr;
   ctx.fillStyle = '#e05050';
   drawArrow(ctx, ox, oy + rectH * 0.5, 0, -1, arrowSize);
@@ -371,7 +193,6 @@ function draw2D(phase) {
   drawArrow(ctx, ox + rectW * 0.5, oy, 1, 0, arrowSize);
   drawArrow(ctx, ox + rectW * 0.5, oy + rectH, 1, 0, arrowSize);
 
-  // Dimension labels
   ctx.font = `${12 * dpr}px 'Segoe UI', system-ui, sans-serif`;
   ctx.textAlign = 'center';
   ctx.fillStyle = '#e05050';
@@ -383,80 +204,45 @@ function draw2D(phase) {
   ctx.fillText('L_θ  →', 0, 0);
   ctx.restore();
 
-  // The geodesic line(s) — draw the straight line with wrapping
-  // On the flat rectangle: slope = (p * L_θ) / (q * L_φ) = p*r/q
-  // The line goes from (0,0) and wraps. Total traversal: q copies of L_φ,
-  // p copies of L_θ.
-  ctx.strokeStyle = COL.flatPath;
-  ctx.lineWidth = 2.5 * dpr;
-  ctx.globalAlpha = 0.9;
-
-  const slope = (p * r) / q;
-  const totalLen = Math.sqrt((q * 1.0) ** 2 + (p * r) ** 2);
+  ctx.strokeStyle = '#ff6e40'; ctx.lineWidth = 2.5 * dpr; ctx.globalAlpha = 0.9;
   const steps = 2000;
-
-  // Draw the wrapping line segments
   let prevX = null, prevY = null;
   for (let i = 0; i <= steps; i++) {
     const frac = i / steps;
-    // Position in "unwrapped" coordinates
-    const rawX = frac * q * 1.0;
-    const rawY = frac * p * r;
-    // Wrap into [0, 1) x [0, r)
-    const wx = rawX % 1.0;
-    const wy = rawY % r;
-
+    const wx = (frac * q) % 1.0;
+    const wy = (frac * p * r) % r;
     const sx = ox + wx * rectW;
     const sy = oy + rectH - wy * (rectH / r);
-
     if (prevX !== null) {
-      const dx = Math.abs(sx - prevX);
-      const dy = Math.abs(sy - prevY);
+      const dx = Math.abs(sx - prevX), dy = Math.abs(sy - prevY);
       if (dx < rectW * 0.5 && dy < rectH * 0.5) {
-        ctx.beginPath();
-        ctx.moveTo(prevX, prevY);
-        ctx.lineTo(sx, sy);
-        ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(prevX, prevY); ctx.lineTo(sx, sy); ctx.stroke();
       }
     }
     prevX = sx; prevY = sy;
   }
   ctx.globalAlpha = 1.0;
 
-  // Photon dot on 2D
   if (state.showPhoton) {
     const totalAngle = 2 * Math.PI * q;
     const t = phase % totalAngle;
     const frac = t / totalAngle;
-
-    const rawX = frac * q * 1.0;
-    const rawY = frac * p * r;
-    const wx = rawX % 1.0;
-    const wy = rawY % r;
-
+    const wx = (frac * q) % 1.0;
+    const wy = (frac * p * r) % r;
     const sx = ox + wx * rectW;
     const sy = oy + rectH - wy * (rectH / r);
 
-    // Glow
     const grad = ctx.createRadialGradient(sx, sy, 0, sx, sy, 18 * dpr);
     grad.addColorStop(0, 'rgba(253, 216, 53, 0.6)');
     grad.addColorStop(1, 'rgba(253, 216, 53, 0)');
     ctx.fillStyle = grad;
-    ctx.beginPath();
-    ctx.arc(sx, sy, 18 * dpr, 0, Math.PI * 2);
-    ctx.fill();
-
-    // Dot
-    ctx.fillStyle = COL.flatDot;
-    ctx.beginPath();
-    ctx.arc(sx, sy, 5 * dpr, 0, Math.PI * 2);
-    ctx.fill();
+    ctx.beginPath(); ctx.arc(sx, sy, 18 * dpr, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#fdd835';
+    ctx.beginPath(); ctx.arc(sx, sy, 5 * dpr, 0, Math.PI * 2); ctx.fill();
   }
 
-  // Corner labels
   ctx.font = `${10 * dpr}px 'Segoe UI', system-ui, sans-serif`;
-  ctx.fillStyle = '#555';
-  ctx.textAlign = 'left';
+  ctx.fillStyle = '#555'; ctx.textAlign = 'left';
   ctx.fillText('(0, 0)', ox + 4 * dpr, oy + rectH - 4 * dpr);
 }
 
@@ -465,139 +251,110 @@ function drawArrow(ctx, x, y, dx, dy, size) {
   ctx.moveTo(x + dy * size * 0.5, y - dx * size * 0.5);
   ctx.lineTo(x + dx * size, y + dy * size);
   ctx.lineTo(x - dy * size * 0.5, y + dx * size * 0.5);
-  ctx.closePath();
-  ctx.fill();
+  ctx.closePath(); ctx.fill();
 }
 
-// ═══════════════════════════════════════════════════════════
-//  INFO PANEL
-// ═══════════════════════════════════════════════════════════
+/* ── Info Panel ───────────────────────────────────────── */
 
 function updateInfo() {
   const { aR, p, q: q_ } = state;
-  const r = aR;
-  const pathLen = Math.sqrt((q_ * 1) ** 2 + (p * r) ** 2);
-  const slope = (p * r) / q_;
+  const pathLen = Math.sqrt((q_ * 1) ** 2 + (p * aR) ** 2);
+  const slope = (p * aR) / q_;
 
-  document.getElementById('i-ar').textContent = aR.toFixed(2);
-  document.getElementById('i-knot').textContent = `(${p},${q_})`;
-  document.getElementById('i-r').textContent = r.toFixed(2);
-  document.getElementById('i-path').textContent = pathLen.toFixed(3);
-  document.getElementById('i-slope').textContent = slope.toFixed(3);
+  $('i-ar').textContent = aR.toFixed(2);
+  $('i-knot').textContent = `(${p},${q_})`;
+  $('i-r').textContent = aR.toFixed(2);
+  $('i-path').textContent = pathLen.toFixed(3);
+  $('i-slope').textContent = slope.toFixed(3);
 
-  const ty = document.getElementById('i-type');
+  const ty = $('i-type');
   if (aR < 0.999) { ty.textContent = 'RING'; ty.style.color = '#81c784'; }
   else if (aR < 1.001) { ty.textContent = 'HORN'; ty.style.color = '#ffb74d'; }
   else { ty.textContent = 'SPINDLE'; ty.style.color = '#ef9a9a'; }
 }
 
-// ═══════════════════════════════════════════════════════════
-//  CONTROLS
-// ═══════════════════════════════════════════════════════════
+/* ── Controls ─────────────────────────────────────────── */
 
-const arSlider = document.getElementById('ar');
-arSlider.addEventListener('input', () => {
-  state.aR = parseFloat(arSlider.value);
-  document.getElementById('ar-v').textContent = state.aR.toFixed(2);
+$('ar').addEventListener('input', e => {
+  state.aR = parseFloat(e.target.value);
+  $('ar-v').textContent = state.aR.toFixed(2);
+  document.querySelectorAll('[data-v]').forEach(b => b.classList.remove('on'));
   rebuild3D(); updateInfo();
 });
 
-document.getElementById('speed').addEventListener('input', e => {
+$('speed').addEventListener('input', e => {
   state.speed = parseFloat(e.target.value);
-  document.getElementById('speed-v').textContent = state.speed.toFixed(1);
+  $('speed-v').textContent = state.speed.toFixed(1);
 });
 
-document.querySelectorAll('.preset-btn:not(.knot-btn)').forEach(btn => {
+document.querySelectorAll('[data-v]').forEach(btn => {
   btn.addEventListener('click', () => {
     state.aR = parseFloat(btn.dataset.v);
-    arSlider.value = state.aR;
-    document.getElementById('ar-v').textContent = state.aR.toFixed(2);
-    document.querySelectorAll('.preset-btn:not(.knot-btn)').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
+    $('ar').value = state.aR; $('ar-v').textContent = state.aR.toFixed(2);
+    document.querySelectorAll('[data-v]').forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
     rebuild3D(); updateInfo();
   });
 });
 
-document.querySelectorAll('.knot-btn').forEach(btn => {
+document.querySelectorAll('.knot').forEach(btn => {
   btn.addEventListener('click', () => {
-    state.p = parseInt(btn.dataset.p);
-    state.q = parseInt(btn.dataset.q);
-    document.querySelectorAll('.knot-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
+    state.p = parseInt(btn.dataset.p); state.q = parseInt(btn.dataset.q);
+    document.querySelectorAll('.knot').forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
     rebuild3D(); updateInfo();
   });
 });
 
-document.getElementById('t-surface').addEventListener('change', e => {
+$('t-surface').addEventListener('change', e => {
   state.showSurface = e.target.checked;
   if (torusMesh) torusMesh.visible = state.showSurface;
   if (wireMesh) wireMesh.visible = state.showSurface;
 });
-document.getElementById('t-path').addEventListener('change', e => {
+$('t-path').addEventListener('change', e => {
   state.showPath = e.target.checked;
   if (pathMesh) pathMesh.visible = state.showPath;
 });
-document.getElementById('t-photon').addEventListener('change', e => {
+$('t-photon').addEventListener('change', e => {
   state.showPhoton = e.target.checked;
-  photon3d.visible = state.showPhoton;
+  photon.mesh.visible = state.showPhoton;
 });
 
-// ═══════════════════════════════════════════════════════════
-//  RESIZE
-// ═══════════════════════════════════════════════════════════
+/* ── Resize ───────────────────────────────────────────── */
 
-function resize() {
-  const view3d = document.getElementById('view-3d');
-  const w3 = view3d.clientWidth, h3 = view3d.clientHeight;
-  renderer.setSize(w3, h3);
-  camera.aspect = w3 / h3;
-  camera.updateProjectionMatrix();
-
+function resize2D() {
   const dpr = window.devicePixelRatio || 1;
-  const view2d = document.getElementById('view-2d');
-  flatCanvas.width = view2d.clientWidth * dpr;
-  flatCanvas.height = view2d.clientHeight * dpr;
-  flatCanvas.style.width = view2d.clientWidth + 'px';
-  flatCanvas.style.height = view2d.clientHeight + 'px';
+  const v2 = $('view-2d');
+  flatCanvas.width = v2.clientWidth * dpr;
+  flatCanvas.height = v2.clientHeight * dpr;
+  flatCanvas.style.width = v2.clientWidth + 'px';
+  flatCanvas.style.height = v2.clientHeight + 'px';
 }
+window.addEventListener('resize', resize2D);
+resize2D();
 
-window.addEventListener('resize', resize);
+/* ── Animation ────────────────────────────────────────── */
 
-// ═══════════════════════════════════════════════════════════
-//  ANIMATION LOOP
-// ═══════════════════════════════════════════════════════════
+rebuild3D();
+updateInfo();
 
-const clock = new THREE.Clock();
-
-function animate() {
+(function animate() {
   requestAnimationFrame(animate);
-  orbitCtrl.update();
+  controls.update();
 
   const elapsed = clock.getElapsedTime() * state.speed;
-  const a = state.aR * R_UNIT;
+  const a = state.aR * R;
   const totalAngle = 2 * Math.PI * state.q;
   const phase = elapsed % totalAngle;
 
-  // 3D photon
-  if (photon3d.visible) {
-    const pt = geodesicPoint3D(phase, a, state.p, state.q);
-    photon3d.position.copy(pt);
+  if (photon.mesh.visible) {
+    const pt = torusPt(phase, R, a, state.p, state.q);
+    photon.mesh.position.copy(pt);
   }
 
   renderer.render(scene, camera);
-
-  // 2D
   draw2D(phase);
-}
-
-// ═══════════════════════════════════════════════════════════
-//  INIT
-// ═══════════════════════════════════════════════════════════
-
-resize();
-rebuild3D();
-updateInfo();
-animate();
+})();
 
 </script>
 </body>
