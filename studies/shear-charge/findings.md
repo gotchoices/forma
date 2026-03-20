@@ -463,6 +463,158 @@ T³ question (R14, Track 4).
 
 ---
 
+## Track 4. T³ quark charges: most constrained hypothesis
+
+Script: [`scripts/track4_t3_quarks.py`](scripts/track4_t3_quarks.py)
+
+**The question:** Can a single T³ with uniform shear produce
+all three particle charges (e, 2e/3, e/3) from different
+winding configurations?
+
+
+### F17. The n = 1 constraint persists on sheared lattices
+
+The WvM charge mechanism requires the E-field to rotate ONCE
+around the tube cross-section (n = 1).  For n ≠ 1, the angular
+integral ∫cos(Θ)cos(nΘ + q_eff Φ)dΘ vanishes — no monopole
+moment.  This was previously shown for unsheared T² (S3); it
+holds on sheared T² as well.
+
+Consequence: ALL charged particles must have n = 1 tube
+winding.  Different charges can only come from different
+ring windings m, not from different tube windings n.
+
+For n = 1 modes, the charge factor simplifies:
+
+    Q ∝ sin(2πs) / (m − s)
+
+Since sin(2πs) is the same for all m, the pure charge RATIO
+between two n = 1 modes is:
+
+    Q(1,m₂) / Q(1,m₁) = (m₁ − s) / (m₂ − s)
+
+This is purely geometric — independent of aspect ratios
+and normalization.
+
+
+### F18. Same-plane fractional charges: ruled out
+
+If all three particles share the same 2D plane (same r, same
+E₀), the charge ratio constraint requires:
+
+    Q_u/Q_e = 2/3:  m_u = 3 − s/2
+    Q_d/Q_e = 1/3:  m_d = 6 − 2s
+
+Both m_u and m_d must be integers (periodic boundary conditions).
+There is NO solution with 0 < s < 1.
+
+- m_u = 2 → s = 2 (out of range)
+- m_u = 3 → s = 0 (trivial, no charge)
+
+**Fractional quark charges cannot come from different winding
+numbers alone on a single plane.**  The particles must be in
+different planes of T³, with different aspect ratios and/or
+different shear values.
+
+
+### F19. Mass constraint forces m ≈ −6 for quarks
+
+On a shared T³, the electron sets two circumferences (L₁, L₂)
+at the Compton scale (~10⁻¹² m).  A quark photon with energy
+612 m_e c² needs a geodesic 612× shorter (L_q ~ 10⁻¹⁵ m).
+
+For a (1,m) mode in a plane sharing one circumference with the
+electron, the geodesic length is:
+
+    L_q = √(L_shared²(1+ms)² + m² L_other²)
+
+Since L_shared ~ 10⁻¹² ≫ L_q ~ 10⁻¹⁵, the shared-circumference
+term dominates unless (1+ms) ≈ 0, i.e., **m ≈ −1/s**.
+
+With s ≈ 0.165 (the electron's value), −1/s ≈ −6.06.
+The closest integer is m = −6.
+
+For m = −6: (1+ms) = 1 − 6×0.165 = 0.009 — small but nonzero.
+The residual L_shared contribution gives E_q ≈ 260 m_e c² (from
+L₂ term alone), not 612.  The quark mass doesn't match exactly.
+
+
+### F20. The s = 1/6 near-miss
+
+If the shear were s = 1/6 = 0.16667 instead of the electron's
+self-consistent s = 0.16513:
+
+- (1 + (−6)(1/6)) = 0 **exactly** — the shared circumference
+  drops out of the quark geodesic entirely.
+- L_q = 6 L₃, determined solely by the third circumference.
+- For E_q = 612 m_e c²: L₃ = λ_C/3672 ≈ **0.66 fm**.
+- The proton charge radius is 0.88 fm — same order.
+
+The electron's s is just 1% away from 1/6.  At s = 1/6,
+the electron α formula gives α = 0.00739 at r = 1 — 1.2%
+above the actual α.  With r = 0.993, the correct α is
+recovered.
+
+**This is tantalizingly close but not exact.**
+
+
+### F21. T³ consistency: the factor-of-2 problem
+
+If both quarks are (1,−6) modes in different T³ planes
+(up in (1,3), down in (2,3)), with s = 1/6:
+
+The charge formula reduces to α_q = r_q² / 3817, where
+r_q is the aspect ratio of the quark's plane.
+
+Solving:
+- Up quark (Q = 2e/3): r₁₃ = L₁/L₃ = 3.52
+- Down quark (Q = e/3): r₂₃ = L₂/L₃ = 1.76
+
+Consistency: r₁₂ = r₁₃/r₂₃ = 3.52/1.76 = **2.000 exactly**.
+
+But the electron requires r₁₂ ≈ 0.993 for α = 1/137.
+
+**The factor of 2 is exact**, following algebraically from
+α_u/α_d = (Q_u/Q_d)² = 4 and α_q ∝ r_q².  Since
+r₁₃/r₂₃ = L₁/L₂ = r₁₂, we get r₁₂² = 4, r₁₂ = 2.
+
+The uniform-shear hypothesis with (1,−6) quarks in
+different planes is **ruled out** by the T³ consistency
+constraint.
+
+Notably, r₁₂ = 2 equals the electron's poloidal winding
+number — possibly coincidental, possibly hinting at a
+variant of the model.
+
+
+### Track 4 overall assessment
+
+The most constrained hypothesis (uniform shear, different
+windings on one T³) fails, but produces several suggestive
+near-misses:
+
+| Feature | Prediction | Target | Discrepancy |
+|---------|-----------|--------|-------------|
+| Electron s | 0.165 | 1/6 = 0.167 | 1% |
+| Charge ratio (m=−6) | 0.30 | 1/3 | 10% |
+| Third circumference L₃ | 0.66 fm | ~r_proton | right order |
+| Quark-implied r₁₂ | 2.000 | ~1 (from electron) | factor 2 |
+
+The near-misses suggest the correct picture is *close to*
+this one but requires a modification.  Candidates for
+Track 5 / 6:
+
+1. **Non-uniform shear** (different s per plane) — adds
+   degrees of freedom to resolve the r₁₂ conflict.
+2. **Linking modifies the charge formula** — topological
+   linking between quark photons changes the effective
+   q_eff, potentially introducing the needed factors.
+3. **Alternative winding assignments** — different (n,m)
+   for the quarks, or the electron in a different mode.
+
+
+---
+
 ## Summary table
 
 | # | Finding |
@@ -483,3 +635,8 @@ T³ question (R14, Track 4).
 | F14 | Coulomb self-energy = 1–2 × α m_e c² for all r (self-consistent values) |
 | F15 | The electron is a one-parameter family in r; everything else determined |
 | F16 | Phase 1 (what the T² electron is) essentially complete; Phase 2 (why) → T³ |
+| F17 | n=1 tube winding required for charge; different particles differ only in ring winding m |
+| F18 | Same-plane fractional charges ruled out: integer m cannot produce 1/3 and 2/3 ratios |
+| F19 | Mass constraint forces quark winding m ≈ −1/s ≈ −6 (to cancel shared circumference) |
+| F20 | s ≈ 1/6 near-miss: electron s is 1% from 1/6; would make m=−6 exact, L₃ ≈ 0.66 fm |
+| F21 | T³ consistency fails: quarks need r₁₂ = 2, electron needs r₁₂ ≈ 1 — factor-of-2 conflict |

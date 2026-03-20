@@ -51,7 +51,10 @@ select a specific shear value (it's a free modulus, like r). External constraint
 Track 3 (self-consistency complete): self-consistent Compton constraint with shear
 shifts s up ~5%. The electron is a one-parameter family in r — mass, spin, g, charge
 all determined. Normalization part still pending. Phase 1 (what) essentially complete.
-Track 4: connection to T³ and quark charges (deferred).
+Track 4 (complete): uniform shear on T³ ruled out. Key: n=1 required for charge;
+same-plane impossible; mass forces m≈−6; s≈1/6 near-miss (1%); T³ consistency
+fails by factor of 2 (quarks need r₁₂=2, electron needs r₁₂≈1). Near-misses
+suggest correct picture is close. Tracks 5–6 (non-uniform shear, linking hybrid) next.
 
 ### R14. Universal geometry — shared T³ for all particles
 **Study:** [`universal-geometry/`](universal-geometry/)  *(draft)*
