@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Shear Torus — totu viz</title>
+<link rel="stylesheet" href="totu-viz.css">
+<style>
+.lbl { color: #777; }
+.v { color: #4fc3f7; font-weight: 700; }
+#info-panel {
+  position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%);
+  background: rgba(10,10,18,0.9); padding: 8px 18px; border-radius: 8px;
+  backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.06);
+  font-size: 11px; display: flex; gap: 18px; white-space: nowrap;
+  pointer-events: none; z-index: 10;
+}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <h1>Shear Torus</h1><div class="sep"></div>
+
+  <div class="cg">
+    <label>a/R</label>
+    <input type="range" id="sl-ar" min="0.1" max="3.0" step="0.01" value="1.00">
+    <span class="val" id="v-ar">1.00</span>
+  </div>
+  <div class="cg" style="gap:3px">
+    <button class="btn" data-ar="0.34">R8</button>
+    <button class="btn on" data-ar="1.00">Square</button>
+    <button class="btn" data-ar="1.00" data-horn>Horn</button>
+  </div><div class="sep"></div>
+
+  <div class="cg">
+    <label>Shear s</label>
+    <input type="range" id="sl-s" min="0" max="0.50" step="0.001" value="0">
+    <span class="val" id="v-s">0.000</span>
+  </div>
+  <div class="cg" style="gap:3px">
+    <button class="btn on" data-s="0">0</button>
+    <button class="btn" data-s="0.157">α</button>
+    <button class="btn" data-s="0.25">¼</button>
+    <button class="btn" data-s="0.5">½</button>
+  </div><div class="sep"></div>
+
+  <div class="cg">
+    <label>(p,q)</label>
+    <button class="btn pq on" data-p="1" data-q="2">(1,2)</button>
+    <button class="btn pq" data-p="1" data-q="1">(1,1)</button>
+    <button class="btn pq" data-p="2" data-q="3">(2,3)</button>
+    <button class="btn pq" data-p="1" data-q="3">(1,3)</button>
+  </div><div class="sep"></div>
+
+  <button class="btn on" id="btn-play">▶ Play</button>
+  <div class="cg">
+    <label>Speed</label>
+    <input type="range" id="sl-speed" min="0" max="4" step="0.1" value="1.0">
+    <span class="val" id="v-speed">1.0</span>
+  </div><div class="sep"></div>
+
+  <div class="tog"><label><input type="checkbox" id="t-surf" checked> Surface</label></div>
+  <div class="tog"><label><input type="checkbox" id="t-wire"> Wire</label></div>
+  <div class="tog"><label><input type="checkbox" id="t-ring" checked> Ring</label></div>
+  <div class="tog"><label><input type="checkbox" id="t-tube" checked> Tube</label></div>
+  <div class="tog"><label><input type="checkbox" id="t-geo" checked> Geodesic</label></div>
+  <div class="tog"><label><input type="checkbox" id="t-phot" checked> Photon</label></div>
+</div>
+
+<div class="view-full" id="view">
+  <div id="info-panel">
+    <div><span class="lbl">a/R = </span><span class="v" id="i-ar">1.00</span></div>
+    <div><span class="lbl">s = </span><span class="v" id="i-s">0.000</span></div>
+    <div><span class="lbl">δ/a = </span><span class="v" id="i-da">0.000</span></div>
+    <div><span class="lbl">Lattice ∠ = </span><span class="v" id="i-ang">90.0°</span></div>
+    <div><span class="lbl">q<sub>eff</sub> = </span><span class="v" id="i-qe">2.000</span></div>
+  </div>
+</div>
+
+<script type="importmap">
+{"imports":{
+  "three":"https://cdn.jsdelivr.net/npm/three@0.163.0/build/three.module.js",
+  "three/addons/":"https://cdn.jsdelivr.net/npm/three@0.163.0/examples/jsm/"
+}}
+</script>
+<script type="module">
+import {
+  THREE, createScene, autoResize, animLoop,
+  buildTorusGeom, torusPt, createPhoton, torusMaterials, PALETTE
+} from './totu-viz.js';
+
+const $ = id => document.getElementById(id);
+const R = 1.0;
+const FIT = 2.2;
+const SEG = 200;
+
+const S = {
+  aR: 1.0, shear: 0, p: 1, q: 2, speed: 1.0, playing: true,
+  showSurf: true, showWire: false, showRing: true,
+  showTube: true, showGeo: true, showPhot: true,
+};
+
+const { scene, camera, renderer, controls, clock } = createScene($('view'));
+autoResize(renderer, camera, $('view'));
+
+const world = new THREE.Group();
+scene.add(world);
+
+const mats = torusMaterials({ opacity: 0.3 });
+let surfMesh, wireMesh;
+
+const gRing = new THREE.Group();
+const gTube = new THREE.Group();
+const gGeo  = new THREE.Group();
+world.add(gRing, gTube, gGeo);
+
+const photon = createPhoton();
+world.add(photon.mesh);
+
+/* ── Line helper ──────────────────────────────────────── */
+function addLine(group, pts, color, alpha = 0.6) {
+  const g = new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.Float32BufferAttribute(pts, 3));
+  group.add(new THREE.Line(g, new THREE.LineBasicMaterial({
+    color, transparent: true, opacity: alpha
+  })));
+}
+
+/* ── Build ring lines (toroidal, affected by shear) ──── */
+function buildRingLines() {
+  gRing.clear();
+  const a = S.aR * R, n = 12;
+  for (let i = 0; i < n; i++) {
+    const theta0 = (2 * Math.PI * i) / n;
+    const pts = [];
+    for (let j = 0; j <= SEG; j++) {
+      const phi = (2 * Math.PI * j) / SEG;
+      const theta = theta0 + S.shear * phi;
+      const rr = R + a * Math.cos(theta);
+      pts.push(rr * Math.cos(phi), a * Math.sin(theta), rr * Math.sin(phi));
+    }
+    addLine(gRing, pts, PALETTE.red, 0.55);
+  }
+}
+
+/* ── Build tube lines (poloidal, unaffected by shear) ── */
+function buildTubeLines() {
+  gTube.clear();
+  const a = S.aR * R, n = 24;
+  for (let i = 0; i < n; i++) {
+    const phi0 = (2 * Math.PI * i) / n;
+    const pts = [];
+    for (let j = 0; j <= SEG; j++) {
+      const theta = (2 * Math.PI * j) / SEG;
+      const rr = R + a * Math.cos(theta);
+      pts.push(rr * Math.cos(phi0), a * Math.sin(theta), rr * Math.sin(phi0));
+    }
+    addLine(gTube, pts, PALETTE.blue, 0.35);
+  }
+}
+
+/* ── Build geodesic path ──────────────────────────────── */
+function buildGeodesic() {
+  gGeo.clear();
+  const a = S.aR * R;
+  const pEff = S.p + S.q * S.shear;
+  const pts = [];
+  const nSeg = 1200;
+  for (let i = 0; i <= nSeg; i++) {
+    const t = (2 * Math.PI * i) / nSeg;
+    const theta = pEff * t;
+    const phi = S.q * t;
+    const rr = R + a * Math.cos(theta);
+    pts.push(rr * Math.cos(phi), a * Math.sin(theta), rr * Math.sin(phi));
+  }
+  addLine(gGeo, pts, PALETTE.green, 0.9);
+}
+
+/* ── Rebuild surface ──────────────────────────────────── */
+function rebuildSurface() {
+  if (surfMesh) { surfMesh.geometry.dispose(); world.remove(surfMesh); }
+  if (wireMesh) { wireMesh.geometry.dispose(); world.remove(wireMesh); }
+  const a = S.aR * R;
+  const gs = FIT / (R + a);
+  world.scale.setScalar(gs);
+
+  const tg = buildTorusGeom(R, a);
+  surfMesh = new THREE.Mesh(tg, mats.surface);
+  wireMesh = new THREE.Mesh(buildTorusGeom(R, a, 24, 48), mats.wire);
+  surfMesh.visible = S.showSurf;
+  wireMesh.visible = S.showWire;
+  world.add(surfMesh);
+  world.add(wireMesh);
+
+  photon.mesh.scale.setScalar(0.05 / gs);
+  photon.glow.distance = 3 / gs;
+}
+
+/* ── Full rebuild ─────────────────────────────────────── */
+function rebuild() {
+  rebuildSurface();
+  buildRingLines();
+  buildTubeLines();
+  buildGeodesic();
+  syncVis();
+  updateInfo();
+}
+
+function syncVis() {
+  if (surfMesh) surfMesh.visible = S.showSurf;
+  if (wireMesh) wireMesh.visible = S.showWire;
+  gRing.visible = S.showRing;
+  gTube.visible = S.showTube;
+  gGeo.visible = S.showGeo;
+  photon.mesh.visible = S.showPhot;
+}
+
+function updateInfo() {
+  const { aR, shear, p, q } = S;
+  const da = 2 * Math.PI * shear;
+  const qEff = q - p * shear;
+  const latticeAngle = 90 - Math.atan(shear * aR) * 180 / Math.PI;
+
+  $('i-ar').textContent = aR.toFixed(2);
+  $('i-s').textContent = shear.toFixed(3);
+  $('i-da').textContent = da.toFixed(3);
+  $('i-ang').textContent = latticeAngle.toFixed(1) + '°';
+  $('i-qe').textContent = qEff.toFixed(3);
+}
+
+/* ── Controls ─────────────────────────────────────────── */
+$('sl-ar').oninput = e => {
+  S.aR = +e.target.value; $('v-ar').textContent = S.aR.toFixed(2);
+  document.querySelectorAll('[data-ar]').forEach(b => b.classList.remove('on'));
+  rebuild();
+};
+$('sl-s').oninput = e => {
+  S.shear = +e.target.value; $('v-s').textContent = S.shear.toFixed(3);
+  document.querySelectorAll('[data-s]').forEach(b => b.classList.remove('on'));
+  buildRingLines(); buildGeodesic(); updateInfo();
+};
+$('sl-speed').oninput = e => {
+  S.speed = +e.target.value; $('v-speed').textContent = S.speed.toFixed(1);
+};
+
+document.querySelectorAll('[data-ar]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    S.aR = parseFloat(btn.dataset.ar);
+    $('sl-ar').value = S.aR; $('v-ar').textContent = S.aR.toFixed(2);
+    document.querySelectorAll('[data-ar]').forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
+    rebuild();
+  });
+});
+
+document.querySelectorAll('[data-s]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    S.shear = parseFloat(btn.dataset.s);
+    $('sl-s').value = S.shear; $('v-s').textContent = S.shear.toFixed(3);
+    document.querySelectorAll('[data-s]').forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
+    buildRingLines(); buildGeodesic(); updateInfo();
+  });
+});
+
+document.querySelectorAll('.pq').forEach(btn => {
+  btn.addEventListener('click', () => {
+    S.p = parseInt(btn.dataset.p); S.q = parseInt(btn.dataset.q);
+    document.querySelectorAll('.pq').forEach(b => b.classList.remove('on'));
+    btn.classList.add('on');
+    buildGeodesic(); updateInfo();
+  });
+});
+
+const toggles = [
+  ['t-surf', 'showSurf'], ['t-wire', 'showWire'], ['t-ring', 'showRing'],
+  ['t-tube', 'showTube'], ['t-geo',  'showGeo'],  ['t-phot', 'showPhot'],
+];
+toggles.forEach(([id, key]) => {
+  $(id).addEventListener('change', e => { S[key] = e.target.checked; syncVis(); });
+});
+
+let tAccum = 0, lastT = 0;
+$('btn-play').addEventListener('click', () => {
+  S.playing = !S.playing;
+  const b = $('btn-play');
+  b.textContent = S.playing ? '▶ Play' : '⏸ Pause';
+  b.classList.toggle('on', S.playing);
+  if (S.playing) lastT = clock.getElapsedTime();
+});
+
+/* ── Animation ────────────────────────────────────────── */
+rebuild();
+
+animLoop(() => {
+  if (!photon.mesh.visible) return;
+  const now = clock.getElapsedTime();
+  if (S.playing) tAccum += (now - lastT) * S.speed;
+  lastT = now;
+  const a = S.aR * R;
+  const pEff = S.p + S.q * S.shear;
+  const phase = tAccum % (2 * Math.PI);
+  const theta = pEff * phase;
+  const phi = S.q * phase;
+  const rr = R + a * Math.cos(theta);
+  photon.mesh.position.set(rr * Math.cos(phi), a * Math.sin(theta), rr * Math.sin(phi));
+}, { renderer, scene, camera, controls });
+
+</script>
+</body>
+</html>
