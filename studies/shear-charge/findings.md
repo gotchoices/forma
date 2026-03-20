@@ -467,9 +467,18 @@ T³ question (R14, Track 4).
 
 Script: [`scripts/track4_t3_quarks.py`](scripts/track4_t3_quarks.py)
 
-**The question:** Can a single T³ with uniform shear produce
-all three particle charges (e, 2e/3, e/3) from different
-winding configurations?
+**The question:** Can a single T³ with uniform shear (same s
+in every plane) produce all three particle charges (e, 2e/3,
+e/3) from different winding configurations?
+
+Two sub-hypotheses tested, in order of increasing freedom:
+
+- **4a. Same plane, same shear:** All three particles in the
+  same 2D plane, differing only in ring winding m.
+- **4b. Different planes, same shear:** Particles in different
+  planes of T³ (electron in (1,2), quarks in (1,3) and (2,3)),
+  all sharing the same shear s.  Each plane has a different
+  aspect ratio r because L₁ ≠ L₂ ≠ L₃.
 
 
 ### F17. The n = 1 constraint persists on sheared lattices
@@ -589,28 +598,41 @@ variant of the model.
 
 ### Track 4 overall assessment
 
-The most constrained hypothesis (uniform shear, different
-windings on one T³) fails, but produces several suggestive
-near-misses:
+Both sub-hypotheses fail:
 
-| Feature | Prediction | Target | Discrepancy |
-|---------|-----------|--------|-------------|
-| Electron s | 0.165 | 1/6 = 0.167 | 1% |
-| Charge ratio (m=−6) | 0.30 | 1/3 | 10% |
-| Third circumference L₃ | 0.66 fm | ~r_proton | right order |
-| Quark-implied r₁₂ | 2.000 | ~1 (from electron) | factor 2 |
+| Sub-hypothesis | Failure mode |
+|---------------|-------------|
+| 4a. Same plane | Integer-m constraint impossible (F18) |
+| 4b. Different planes, same shear | T³ consistency: r₁₂ = 2 vs 1 (F21) |
 
-The near-misses suggest the correct picture is *close to*
-this one but requires a modification.  Candidates for
-Track 5 / 6:
+But the investigation produces several suggestive near-misses:
 
-1. **Non-uniform shear** (different s per plane) — adds
-   degrees of freedom to resolve the r₁₂ conflict.
-2. **Linking modifies the charge formula** — topological
-   linking between quark photons changes the effective
-   q_eff, potentially introducing the needed factors.
-3. **Alternative winding assignments** — different (n,m)
-   for the quarks, or the electron in a different mode.
+| What works | Status |
+|-----------|--------|
+| n = 1 for all charged particles | Robust (F17) |
+| Mass forces quark winding m ≈ −6 | Compelling (F19) |
+| s ≈ 1/6, only 1% from electron's s | Tantalizing (F20) |
+| L₃ ≈ 0.66 fm, proton-radius scale | Right order (F20) |
+
+| What doesn't work | Discrepancy |
+|-------------------|-------------|
+| Same-plane fractional charges | Impossible (F18) |
+| Charge pure ratio (m = −6) | 0.30 vs 1/3 target (10% off) |
+| T³ circumference consistency | Factor of 2 (exact, F21) |
+
+**Interpretation:** The uniform-shear picture is *close* but
+not right.  The factor-of-2 is algebraically exact (from
+Q_u/Q_d = 2 and α ∝ r²), so it cannot be fixed by small
+adjustments.  A structural modification is needed:
+
+1. **Track 5: Non-uniform shear** — different s per plane
+   breaks the α ∝ r² proportionality, potentially resolving
+   the r₁₂ conflict.
+2. **Track 6: Linking modifies the charge** — topological
+   linking between quark photons adds a correction to q_eff,
+   changing the charge formula for linked (but not free) modes.
+3. **Alternative winding assignments** — different (n,m) for
+   quarks, or a different electron mode.
 
 
 ---
