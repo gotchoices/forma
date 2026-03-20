@@ -637,6 +637,112 @@ adjustments.  A structural modification is needed:
 
 ---
 
+## Track 5. Non-uniform shear on T³
+
+Script: [`scripts/track5_nonuniform_shear.py`](scripts/track5_nonuniform_shear.py)
+
+**The question:** Does relaxing to three independent shear values
+(s₁₂ ≠ s₁₃ ≠ s₂₃) resolve the factor-of-2 problem from Track 4
+and produce a T³ geometry with the correct proton mass?
+
+
+### F22. Charge equations are solvable with non-uniform shear
+
+With three independent shears, the system has 5 parameters
+(r₁₂, r₂₃, s₁₂, s₁₃, s₂₃) and 4 constraints (3 charge equations
++ circumference consistency r₁₃ = r₁₂ × r₂₃).  One degree of
+freedom remains (e.g., choose r₁₂).
+
+For every r₁₂ tested (0.75 to 3.0), solutions exist with all
+three charges simultaneously correct: Q_e = e, Q_u = 2e/3,
+Q_d = e/3.
+
+The factor-of-2 problem from Track 4 (F21) disappears because
+each plane now has its own shear, breaking the α ∝ r²
+proportionality that forced r₁₂ = 2.
+
+**The charge constraint alone is satisfied.  The system fails
+on mass.**
+
+
+### F23. Mass kills the (1,−6) quark model — decisively
+
+The proton mass requires each quark photon to have energy
+~612 m_e c² (from m_p ≈ 3 × 612 × m_e).  But across ALL
+solutions found:
+
+    E_quark = 1 – 12 m_e c²   (factor of 50–600× too low)
+    E_proton = 2 – 12 m_e c²   (vs 1836 m_e target)
+
+**This is not a near-miss — it's a factor of 150–900.**
+
+The cause: the charge formula requires specific (r, s) values
+per plane to produce each target charge.  Those values give
+quark-plane shears of s ≈ 0.02–0.21 — far from the s ≈ 1/6
+needed for the mass cancellation (1 + ms) ≈ 0.  Without that
+cancellation, the shared circumference (~10⁻¹² m) dominates
+the geodesic, making the quark geodesic too long and its
+energy too low.
+
+**Plain language:** The charge and mass requirements pull in
+opposite directions.  To get the right quark charge, the
+quark plane needs certain shear values.  To get the right
+quark mass, it needs s ≈ 1/6.  These are incompatible.
+
+Track 4's s ≈ 1/6 near-miss was an artifact of forcing all
+planes to share the same s.  When each plane gets the s it
+needs for charge (as it must for T³ consistency), the mass
+fails by orders of magnitude.
+
+
+### F24. The (1,−6) quark hypothesis is definitively ruled out
+
+Combining Tracks 4 and 5:
+
+| Hypothesis | Charge | Mass | T³ consistency |
+|-----------|--------|------|----------------|
+| Uniform shear (T4) | ✓ individual | ~ok (s≈1/6) | ✗ (r₁₂=2 vs 1) |
+| Non-uniform shear (T5) | ✓ all three | ✗ (×150–900) | ✓ |
+
+No configuration of shear values on T³ can simultaneously
+satisfy the charge AND mass constraints for (1,−6) quarks.
+The hypothesis that quarks are single-photon (1,−6) modes
+in other T³ planes is ruled out.
+
+
+### What remains viable
+
+The shear mechanism for the **electron** is solid (Tracks 1–3).
+What's ruled out is the specific idea that quarks are (1,−6)
+single-photon modes governed by the same charge formula.
+
+Possible next directions:
+
+1. **Track 6: Linking-modified charge.**  Topological linking
+   between three photons (R14's model) could produce a charge
+   formula different from the single-photon q_eff = m−s.
+   Linked modes might have fractional effective charges by a
+   mechanism distinct from the shear formula — consistent with
+   R14's original insight that linking fractionalizes quantum
+   numbers.
+
+2. **Separate mechanisms for electrons and quarks.**  The
+   electron charge comes from shear (R19 Tracks 1–3); quark
+   charges come from linking fractionalization (R14).  Shear
+   sets the overall charge scale (α), linking distributes it
+   fractionally.  This is the most conservative option: it
+   preserves the electron result and defers quark charges to
+   R14.
+
+3. **Alternative quark models.**  Maybe quarks don't have n=1
+   tube winding (the WvM monopole mechanism might not apply to
+   linked multi-photon states on T³).  Or maybe the quark
+   photon energies are not equal (m_p/3 per quark was an
+   assumption from R14 F3).
+
+
+---
+
 ## Summary table
 
 | # | Finding |
@@ -662,3 +768,6 @@ adjustments.  A structural modification is needed:
 | F19 | Mass constraint forces quark winding m ≈ −1/s ≈ −6 (to cancel shared circumference) |
 | F20 | s ≈ 1/6 near-miss: electron s is 1% from 1/6; would make m=−6 exact, L₃ ≈ 0.66 fm |
 | F21 | T³ consistency fails: quarks need r₁₂ = 2, electron needs r₁₂ ≈ 1 — factor-of-2 conflict |
+| F22 | Non-uniform shear solves the charge equations (T³ consistency satisfied) |
+| F23 | Mass kills (1,−6) quarks: E_quark = 1–12 m_e, not 612 m_e — factor 150–900× off |
+| F24 | The (1,−6) single-photon quark hypothesis is definitively ruled out |

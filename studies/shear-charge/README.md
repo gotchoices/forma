@@ -210,12 +210,18 @@ Steps:
 charges from different windings, with mass ratios consistent
 with observations.
 
-### Track 5. Relaxed hypothesis: non-uniform shear  *(contingency)*
+### Track 5. Relaxed hypothesis: non-uniform shear  *(complete — ruled out)*
 
-If Track 4 fails (uniform shear cannot produce the right charge
-ratios), relax to three independent shear values s₁₂ ≠ s₂₃ ≠ s₁₃.
-Each plane then has its own effective charge formula.  More free
-parameters but still constrained by multi-particle consistency.
+Relaxed to three independent shear values s₁₂ ≠ s₂₃ ≠ s₁₃.
+The charge equations are solvable (factor-of-2 disappears), but
+the mass constraint kills the model: quark energies come out as
+1–12 m_e instead of 612 m_e.  The charge and mass constraints
+are fundamentally incompatible for (1,−6) single-photon quarks.
+
+Combined with Track 4: no shear configuration (uniform or not)
+can make (1,−6) quarks work.  The single-photon quark hypothesis
+is ruled out (F24).  Quark charges likely require a different
+mechanism (linking fractionalization, Track 6).
 
 ### Track 6. Linking + shear hybrid  *(contingency)*
 
@@ -359,5 +365,7 @@ Track 2: shear is energetically favorable but free (no specific value selected o
 Track 3: self-consistent geometry confirmed (~5% correction to s); normalization part pending.
 Track 4 (complete): uniform shear + different windings on T³ ruled out.
 Key findings: n=1 required; same-plane impossible; mass forces m≈−6;
-s≈1/6 near-miss (1%); T³ consistency fails (r₁₂=2 vs 1). Near-misses
-suggest correct picture is close. Tracks 5–6 are next options.
+s≈1/6 near-miss (1%); T³ consistency fails (r₁₂=2 vs 1).
+Track 5 (complete): non-uniform shear solves charge but kills mass
+(quark E = 1–12 m_e, not 612). Single-photon (1,−6) quark model
+definitively ruled out (F24). Track 6 (linking) is the remaining path.

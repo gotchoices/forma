@@ -53,8 +53,11 @@ shifts s up ~5%. The electron is a one-parameter family in r — mass, spin, g, 
 all determined. Normalization part still pending. Phase 1 (what) essentially complete.
 Track 4 (complete): uniform shear on T³ ruled out. Key: n=1 required for charge;
 same-plane impossible; mass forces m≈−6; s≈1/6 near-miss (1%); T³ consistency
-fails by factor of 2 (quarks need r₁₂=2, electron needs r₁₂≈1). Near-misses
-suggest correct picture is close. Tracks 5–6 (non-uniform shear, linking hybrid) next.
+fails by factor of 2 (quarks need r₁₂=2, electron needs r₁₂≈1).
+Track 5 (complete): non-uniform shear solves charge but kills mass — quark E =
+1–12 m_e (×150–900 too low). Single-photon (1,−6) quark model definitively ruled
+out. The single-photon shear formula does not extend to quarks. Quark charges
+likely require linking fractionalization (Track 6 / R14).
 
 ### R14. Universal geometry — shared T³ for all particles
 **Study:** [`universal-geometry/`](universal-geometry/)  *(draft)*
