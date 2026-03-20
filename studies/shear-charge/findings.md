@@ -743,6 +743,83 @@ Possible next directions:
 
 ---
 
+## Track 6, Step 0: T³ mode energy landscape
+
+### F25. Lighter (1,2,k) modes always exist below the electron
+
+On a T³ with the electron as (1,2,0), the modes (1,2,k) for
+k ≠ 0 have longer geodesics and are therefore **lighter**.
+This holds for:
+- **Unsheared T³** (s₁₃ = s₂₃ = 0): L(1,2,k)² = L_e² + k²L₃²,
+  always larger than L_e² for any k ≠ 0.
+- **Sheared T³** with cancellation tuning: even when specific k*
+  values are made very heavy, positive-k modes remain lighter.
+
+On a T³ with k* = −6 cancellation (s₁₃ ≈ 0.22, s₂₃ = 1/3):
+
+    k:    ... -7   -6   -5   -4   -3   -2   -1   0   1     2     3   ...
+    E/m_e: 6.0 612  6.0  3.0  2.0  1.5  1.2  1.0 0.86 0.75 0.67  ...
+
+The mass spectrum follows the clean formula:
+
+    E(1,2,k) ≈ |k*| / |k* − k| × m_e
+
+This produces an **infinite tower** of modes lighter than the
+electron.  If any carry charge, they should be observable.
+
+### F26. Electron planarity is NOT energetic
+
+The electron (1,2,0) is the **heaviest** member of the (1,2,k)
+family, not the lightest.  Its confinement to a plane (n₃ = 0)
+cannot be explained by energy minimization.
+
+The electron must be selected by a **charge selection rule**:
+only modes with k = 0 carry nonzero charge from the 3D integral.
+Alternatively, 3D windings could change the spin quantum number
+(making k ≠ 0 modes bosons rather than fermions).
+
+This is a strong prediction of the framework that will be tested
+in Track 6, Step 1 (3D charge integral derivation).
+
+### F27. Shear cancellation produces quark-mass modes
+
+For specific negative k values, the shear cross-terms can cause
+the L₁ and L₂ contributions to the geodesic to cancel, leaving
+L ≈ |k| L₃.  This produces modes far heavier than the electron.
+
+Feasible cases (both |s₁₃|, |s₂₃| < 1):
+
+| k   | s₁₃ needed | s₂₃ needed | L₃ for 612 m_e |
+|-----|-----------|-----------|----------------|
+| −8  | 0.166     | 0.250     | 0.50 fm        |
+| −6  | 0.222     | 0.333     | 0.66 fm        |
+| −4  | 0.333     | 0.500     | 0.99 fm        |
+| −3  | 0.443     | 0.667     | 1.32 fm        |
+
+k = −8 is notable: s₁₃ ≈ 0.166 ≈ s₁₂ (near-uniform shear).
+k = −6 reproduces Track 4's near-miss with L₃ ≈ 0.66 fm
+(proton radius scale).
+
+This is the **same physics** as the (1,−6) quark from Track 4,
+now reinterpreted: the quark is not a (1,−6) mode in a different
+plane, but a **(1, 2, −6) mode on the same T³** as the electron.
+The "−6" winding is in the third compact dimension, not a
+replacement of the ring winding.
+
+### F28. Track 6 Step 1 is the critical gating calculation
+
+The 3D charge integral must be computed to determine:
+1. Whether charge vanishes for (1,2,k≠0) — explaining electron
+   planarity and the absence of sub-electron charged particles.
+2. If charge is nonzero for k ≠ 0, what values it takes — and
+   whether fractional charges (1/3, 2/3) emerge.
+
+Until this integral is computed, the (1,2,k) model remains
+viable as a unified electron-quark framework on a single T³.
+
+
+---
+
 ## Summary table
 
 | # | Finding |
@@ -771,3 +848,7 @@ Possible next directions:
 | F22 | Non-uniform shear solves the charge equations (T³ consistency satisfied) |
 | F23 | Mass kills (1,−6) quarks: E_quark = 1–12 m_e, not 612 m_e — factor 150–900× off |
 | F24 | The (1,−6) single-photon quark hypothesis is definitively ruled out |
+| F25 | Lighter (1,2,k) modes always exist below the electron on any T³ — infinite tower |
+| F26 | Electron planarity is NOT energetic; must be a charge selection rule or spin change |
+| F27 | Shear cancellation makes specific k very heavy; (1,2,−6) ≡ Track 4's quark, reinterpreted |
+| F28 | 3D charge integral (Track 6 Step 1) is the critical gating calculation |

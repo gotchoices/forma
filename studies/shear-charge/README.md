@@ -254,6 +254,11 @@ Physical picture:
   charge (3D integral differs from 2D).
 
 Steps:
+0. Map the T³ mode energy landscape (F25–F28) — **complete**.
+   Key result: (1,2,k≠0) modes are LIGHTER than the electron.
+   Electron planarity requires a charge selection rule, not
+   energetics.  Shear cancellation can make specific k values
+   quark-mass heavy (same mechanism as Track 4, reinterpreted).
 1. Derive the charge integral for a general (n₁, n₂, n₃) mode
    on a sheared T³.  The key question: does the Gauss's-law
    projection into 3D spacetime produce a monopole moment, and
