@@ -15,6 +15,7 @@ browser, no server required.
 | [`shear-torus.html`](shear-torus.html) | R19 | Shear deformation on the flat T². Ring lines twist into helices; geodesic follows q_eff = m − ns. |
 | [`torus-slice.html`](torus-slice.html) | 4D | Sweeps a cutting plane through the 3D torus, showing the annular cross-section over time. |
 | [`t3-slice.html`](t3-slice.html) | T³ | 3D hyperplane slices of a T³ = T² × S¹ in R⁴. Two tori split and merge as the slice sweeps. Tube-sweep and ring-sweep modes. |
+| [`nested-torus.html`](nested-torus.html) | T^d | Recursive nesting of periodic dimensions (1–5 levels). Each level wraps the previous around a new circle, producing concentric boundary tori. Per-level colour, opacity, wireframe/shell, and visibility. |
 
 ## Launch
 
