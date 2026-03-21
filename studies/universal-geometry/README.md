@@ -40,7 +40,8 @@ Energy and geometry are the only fundamentals.  Mass, charge,
 spin, and magnetic moment are all emergent:
 
 - Mass = photon energy confined in periodic geometry
-- Charge = field winding on T³, projected into 3+1D
+- Charge = field winding on T³, projected into 3+1D (monopole
+  component: the spherically symmetric part of the field)
 - Spin = winding ratio of geodesic
 - Confinement = topology (linked paths can't separate)
 
@@ -64,8 +65,9 @@ showed that topological linking requires 3 compact dimensions.)
   linked state on T³.  Each photon winds in a different pair
   of dimensions (→ three "colors").  The linking constrains
   each photon's field to project as fractional charge.
-- **Proton:** Three photons, topologically linked (Borromean
-  or similar) on T³, with total charge +e and spin ½.
+- **Proton:** Three photons, topologically linked (Borromean:
+  no two are linked pairwise, but the triple is inseparable)
+  on T³, with total charge +e and spin ½.
   Each photon at harmonic n ≈ 612, giving m_p ≈ 3 × 612 m_e.
 - **Neutron:** Three photons, differently linked, total
   charge 0 and spin ½.  m_n ≈ 3 × 613 m_e.
@@ -169,38 +171,35 @@ with three linking planes mapping to three color charges
 (positive).  Proton mass = 3 × 612 × m_e to 0.008%
 (suggestive).  See [`findings.md`](findings.md).
 
-### Track 1: Charge of linked photons on T³
+### Track 1: Charge of linked photons on T³  ✓
 
-Compute the total projected charge of two and three photons
-whose geodesics are topologically linked on T³.
+**Result (F8–F13):** For delocalized modes, the R19 charge
+formula gives total charge +e for any three-photon state with
+one photon per linking plane.  The charge comes entirely from
+the (1,2)-plane photon; the other two are uncharged (by F30
+and F31).  Individual "quark charges" (2/3, 1/3) do NOT emerge
+from delocalized mode superposition.
 
-R19 established the single-photon charge formula: for (1,n₂,n₃)
-on sheared T³, Q ∝ sin(πs₁₂)sin(πs₁₃)/((n₂−s₁₂)(n₃−s₁₃)).
-With s₁₃ = 0, a single (1,2,0) photon gives charge e (the
-electron).  The question for Track 1 is: when three such
-photons are topologically linked, what is the *total* charge
-projected into 3+1D?
+Key discoveries:
+- Spin quantization forbids (1,n₂>2,0) modes in 3+1D, making
+  the electron the lightest charged fermion (F10).
+- Proton mass requires uncharged photons in direction 3 (F11).
+- Deep inelastic scattering (DIS) is the critical test: applying
+  R19's formula to each photon independently gives one charged
+  constituent, not the three observed.  Resolving this requires
+  either localized-photon charge redistribution or multi-component
+  EM (F12–F13).
 
-Key constraints from R19 (F29–F34):
-- s₁₂ ≈ 0.165 (sets α for the electron)
-- s₁₃ = 0 (protects electron planarity)
-- s₂₃ free (irrelevant for charge, affects mass)
-- Each photon individually obeys n₁ = 1
+**Open:** does linking (localization) redistribute charge?
 
-Steps:
-1. Write the EM field of a single (1,2,0) photon at harmonic
-   n = 612 on the shared T³.
-2. Write the total field of three such photons on geodesics
-   in three different linking planes (per F2).
-3. Compute the monopole projection (total charge) of the
-   combined field in the 3+1D effective theory.
-4. Determine whether the linking topology forces the total
-   to be +e (proton) or 0 (neutron), and whether individual
-   "quark" contributions come out as 2/3 and 1/3.
+### Track 1b: Localized photon charge on sheared T³  ✓
 
-Key question: does topological linking redistribute the
-charge of three integer-charge photons into fractional
-contributions that sum to an integer?
+**Result (F14–F19):** Both paths from F13 fail.  Localization
+cannot charge the (2,3)-plane photon (its field is uniform in
+the tube direction regardless of σ).  KK gauge mixing makes
+the electron and quark indistinguishable.  The charge mechanism
+has a structural limitation: charge depends on mode numbers,
+not spatial arrangement.  Three possible exits identified (F19).
 
 ### Track 2: Linking topologies on T³
 
@@ -209,23 +208,26 @@ closed geodesics on T³.  Which configurations are Borromean
 (no pair linked, but triple linked)?  Which give spin ½ for
 the composite?
 
-R19 constrains the space: each photon has n₁ = 1 (tube winding),
-and uses a different pair of dimensions for its (1,2) geodesic.
-With s₁₃ = 0, only photons in the (1,2) plane carry charge
-individually — linking must redistribute charge from these
-into the other planes.
+Track 1 constrains the space: for a proton, the (1,2)-plane
+photon has n₁ = 1 (charged), while the other two photons are
+uncharged.  The neutron's (1,2)-plane photon has n₁ ≠ 1 (e.g.,
+(2,4,0) for spin 1/2).  Linking must bind these asymmetric
+components into a stable topological state.
 
 ### Track 3: Proton mass from three-photon state
 
-For each candidate linking from Track 2, compute the total
-energy (including interaction energy between the photons'
-fields).  Does the energy of the lowest three-photon linked
-state match m_p c² on the same T³ that gives the electron?
+Track 1 established (F11) that the proton's mass comes primarily
+from uncharged photons in direction 3.  For L₃ = λ_C/612 ≈ 4 fm,
+(0,0,1) photons have energy 612 m_e.
 
-R19 constraints: L₁ and L₂ are Compton-scale (~pm).
-L₃ is unconstrained by the electron — it is a free parameter
-that could be fm-scale (proton radius).  s₂₃ affects mass
-but not charge, providing additional freedom.
+Candidate proton: one (1,2,0) photon at m_e + three (0,0,1)
+photons at 612 m_e each = 1837 m_e ≈ m_p.
+
+Remaining questions:
+- Is a four-photon proton viable, or must it be three?
+- Does the interaction energy between linked photons shift
+  the mass to match m_p exactly?
+- What determines L₃?
 
 ### Track 4: Consistency check
 
@@ -233,7 +235,7 @@ Does the geometry determined by Tracks 1–3 satisfy:
 - α ≈ 1/137 (from R19's shear mechanism, already established)
 - Correct neutron-proton mass difference (~1.3 MeV)
 - Correct magnetic moments (μ_p, μ_n)
-- Three distinct scattering centers (deep inelastic scattering)
+- Three distinct scattering centers (deep inelastic scattering, F12)
 
 ## Dependencies
 

@@ -6,7 +6,7 @@
 ## Audience
 - Assume user has college level general engineering experience but is not necessarily a physics expert
 - Do not assume the reader has special knowledge about the topic other than what exists in the project
-- Explain new terms, variables, conventions, principles where appropriate
+- Explain new terms, variables, acronyms, conventions, principles etc where they might not be known or remembered
 
 ## Common Code
 - Make use of common code and virtual environment where useful (./lib)

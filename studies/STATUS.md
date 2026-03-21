@@ -60,12 +60,21 @@ from topological linking (→ R14 Track 1).
 lack the extra dimension needed. T³ can, with three linking planes mapping to three
 color charges. m_p = 3 × 612 × m_e to 0.008%.
 
-**Next (Track 1):** R19 established the single-photon charge formula and showed that
-quark charges CANNOT come from shear (F33–F34).  The electron's charge is purely 2D
-(shear s₁₂ ≈ 0.165, with s₁₃ = 0 protecting planarity).  Quark charges must come
-from topological linking of multiple photons on T³.  Track 1 computes the total
-projected charge of three linked photons to determine whether linking redistributes
-charge into fractional contributions (2/3 + 2/3 − 1/3 = +1 for the proton).
+**Track 1 (complete):** For delocalized modes, three linked photons (one per plane)
+give total charge +e — the (1,2)-plane photon carries all the charge, the others
+are silent (F8).  Spin quantization forbids (1,n₂>2,0) modes, making the electron
+the lightest charged fermion (F10).  Proton mass requires uncharged direction-3
+photons (F11).  However, applying R19's formula independently gives one charged
+constituent, contradicting deep inelastic scattering which sees
+three (F12).  Linking must redistribute charge — requires
+localized-photon analysis.
+
+**Track 1b (complete, negative):** Both paths from F13 fail.  Localization cannot
+charge the (2,3)-plane photon (field uniform in tube direction regardless of σ).
+KK gauge mixing makes electron and quark indistinguishable.  The R19 charge
+mechanism has a structural limitation: charge depends on mode structure, not spatial
+arrangement (F18).  Three possible exits identified (F19): reinterpret DIS
+scattering, go beyond linear EM (topological solitons), or beyond flat T³.
 
 ---
 

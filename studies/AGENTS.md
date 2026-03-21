@@ -1,5 +1,8 @@
 # Studies
 
+## Audience
+- Assume the reader may not remember facts, figures, conclusions from prior sources, studies
+
 ## Framing
 - Stay focused on the purpose of the project (../README.md) and the particular study (./README.md)
 - Explain how we got here (reference past studies outcomes, findings, open questions, etc)
