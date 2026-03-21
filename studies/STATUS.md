@@ -75,6 +75,12 @@ experimentally allowed.  Mode splittings reach sub-eV naturally (0.29 eV).
 Muon/tau fit as "hot electrons" (same fundamental + harmonics); stability pattern
 explained by charge conservation.
 
+**Track 5 (complete):** Three-mode neutrino packet ruled out.  No uncharged
+triplet sums to 1.531 m_e (neutron excess).  All uncharged modes have rest
+mass ≥ 245 keV vs neutrino < 0.8 eV.  Neutrino as ejected harmonics on
+electron's T² definitively excluded.  Separate T² or geometry fluctuation
+remain.
+
 ### R14. Universal geometry — shared T³ for all particles  *(closed, negative)*
 **Study:** [`universal-geometry/`](universal-geometry/)
 **Questions:** [Q13](../qa/Q13-three-compact-dimensions.md), [Q26](../qa/Q26-hadrons-photon-knots.md), [Q32](../qa/Q32-energy-geometry-fundamentals.md), Q64, Q66  **Type:** compute/reason  **Depends on:** R13, R19
@@ -94,6 +100,18 @@ KK gauge mixing).  DIS (three charged constituents) remains unexplained.
 ## Backlog
 
 Ordered roughly by priority. Items get an R-number when promoted to Active.
+
+### Natural harmonic spectrum from mode coupling  *(Q16, depends on R20)*
+On flat T², eigenmodes are orthogonal — no preferred harmonic distribution exists.
+But the electron's T² is embedded in 3D, and embedding curvature breaks mode
+orthogonality, creating mode-mode coupling.  This coupling should select a
+preferred equilibrium spectrum of uncharged harmonics — the "natural resonance"
+of the torus.  If this spectrum differs between one-fundamental (proton) and
+two-fundamental (neutron) configurations by exactly 1.531 m_e, the model would
+*predict* the proton-neutron mass difference rather than fitting it.  Tracks:
+(1) compute mode-mode coupling from embedding curvature, (2) find equilibrium
+spectrum for proton, (3) compare with neutron, (4) derive mass difference.
+This is the key step toward making the harmonic proton model predictive.
 
 ### Flat space → curved appearance  *(Q2)*
 The compact space is intrinsically flat (photon sees Cartesian space), but

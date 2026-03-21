@@ -207,6 +207,21 @@ both explained by charge conservation.
 **Open:** neutrino identity (separate T², geometry fluctuation,
 or created in decay).
 
+### Track 5: Three-mode neutrino packet  ✓
+
+**Result (F19–F20):** No triplet of uncharged modes from the
+electron's T² sums to the neutron excess (1.531 m_e).  The
+lightest triple is 3 × (0,1) = 1.44 m_e — 0.09 m_e short,
+and the next option overshoots.  The Δm² ratio test could
+not be performed (no triplets to test).
+
+More fundamentally, every uncharged mode has rest mass
+≥ 0.48 m_e = 245 keV, while the neutrino is < 0.8 eV.
+No wave packet construction closes this 10⁵ gap.  F18c
+(neutrino as ejected harmonics on electron's T²) is now
+ruled out.  F18a (separate T²) and F18b (geometry
+fluctuation) remain viable.
+
 ## Dependencies
 
 - **R19 (complete):** Charge formula, s₁₂ ≈ 0.165, n₁ = 1

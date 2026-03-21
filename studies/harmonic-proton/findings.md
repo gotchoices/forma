@@ -380,6 +380,44 @@ weak interaction in the torus framework.
 
 ---
 
+## Track 5: Three-mode neutrino packet
+
+**Script:** [`scripts/track5_neutrino_triplets.py`](scripts/track5_neutrino_triplets.py)
+
+
+### F19. No uncharged triplet matches the neutron excess
+
+The neutron's excess energy (1.531 m_e) cannot be composed of
+three uncharged modes from the electron's T².  Only 10 uncharged
+modes exist with E < 1.58 m_e, and the three lightest (three
+copies of (0,±1) at 0.48 m_e each) sum to only 1.44 m_e —
+0.09 m_e short.  No combination of three uncharged modes hits
+the target within ±0.05 m_e.
+
+This rules out the literal "three-mode neutrino packet" picture
+where three uncharged eigenmodes from the electron's T² carry
+away the neutron's excess energy.
+
+
+### F20. Neutrino as ejected harmonics: ruled out by mass scale
+
+Even if a mode combination existed, each mode's rest mass is
+≥ 0.48 m_e ≈ 245 keV.  The neutrino's measured rest mass is
+< 0.8 eV — a gap of ~3 × 10⁵.  No wave packet construction
+(superposition, beat frequency, collinear ultra-relativistic
+emission) reduces the invariant mass below the individual mode
+masses by the required factor.
+
+This definitively rules out F18c ("created in decay as escaped
+harmonics") if "harmonics" means KK modes on the electron's T².
+The neutrino must either:
+- Live on a separate, larger T² (F15/F18a)
+- Be a geometry fluctuation, not a field mode (F18b)
+- Involve physics beyond the current T² framework
+
+
+---
+
 ## Summary table
 
 | # | Finding |
@@ -402,6 +440,8 @@ weak interaction in the torus framework.
 | F16 | Mode splittings on electron's T² reach sub-eV (0.29 eV at E < 100 m_e); neutrino scale appears naturally |
 | F17 | Muon/tau = same (1,2) fundamental + harmonics; decay = harmonic evaporation; stability from charge conservation |
 | F18 | Neutrino identity open: separate T², geometry fluctuation, or created in decay |
+| F19 | No uncharged triplet sums to neutron excess (1.531 m_e); three-mode packet ruled out |
+| F20 | Ejected harmonics ruled out: mode masses ≥ 245 keV vs neutrino < 0.8 eV; F18c eliminated |
 
 
 ## Scripts
@@ -412,3 +452,5 @@ weak interaction in the torus framework.
   — Neutron charge cancellation, decay energetics, spin, stability
 - [`scripts/track4_neutrino.py`](scripts/track4_neutrino.py)
   — Neutrino mass constraints, T² size, mode splittings, muon/tau as hot electrons
+- [`scripts/track5_neutrino_triplets.py`](scripts/track5_neutrino_triplets.py)
+  — Three-mode triplet search, doublet analysis, Δm² ratio test
