@@ -187,6 +187,26 @@ m_n - m_p = 2.53 m_e splits as 1 m_e (extra fundamental) +
 **Open:** antineutrino identity, binding mechanism, what sets
 the 1.53 m_e harmonic excess.
 
+### Track 4: Neutrino mass and spin  ✓
+
+**Result (F14–F18):** The neutrino cannot be a mode on the
+electron's T² — the lightest uncharged spin-1/2 mode is (2,4)
+at 2 m_e, six orders of magnitude too heavy.  A separate T²
+with L_ν ≈ 1.5 μm (at the KATRIN bound) is experimentally
+allowed.  Near-degeneracies between high modes on the electron's
+T² naturally produce sub-eV energy splittings (0.29 eV at
+E < 100 m_e), showing the neutrino mass scale emerges from
+the torus geometry without tuning.
+
+**Bonus (F17):** The muon and tau fit naturally as "hot electrons"
+— same (1,2) fundamental + uncharged harmonics.  Decay = harmonic
+evaporation.  Proton stability (no lighter +e particle) and
+muon/tau instability (can shed harmonics to bare electron) are
+both explained by charge conservation.
+
+**Open:** neutrino identity (separate T², geometry fluctuation,
+or created in decay).
+
 ## Dependencies
 
 - **R19 (complete):** Charge formula, s₁₂ ≈ 0.165, n₁ = 1

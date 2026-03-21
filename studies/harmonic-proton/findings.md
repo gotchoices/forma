@@ -265,6 +265,121 @@ tiny but nonzero.
 
 ---
 
+## Track 4: Neutrino mass and spin
+
+**Script:** [`scripts/track4_neutrino.py`](scripts/track4_neutrino.py)
+
+
+### F14. Neutrino cannot be a mode on the electron's T²
+
+The neutrino requires spin 1/2, charge 0, and mass < 0.8 eV
+(≈ 1.6 × 10⁻⁶ m_e).  On the electron's T², uncharged spin-1/2
+modes have the form (n, 2n) with |n| ≥ 2.  The lightest is
+(2, 4) at E = 2 m_e = 1.022 MeV — six orders of magnitude
+heavier than the neutrino.
+
+No other uncharged mode has spin 1/2.  The spin constraint
+n₂ = 2n₁ combined with the charge constraint |n₁| ≥ 2 sets
+a hard floor at 2 m_e.
+
+
+### F15. A neutrino-scale T² is experimentally allowed
+
+If the neutrino is a (1,2) fundamental on a separate, larger T²:
+
+| Scenario | m_ν (eV) | L_ν (μm) | Status |
+|----------|----------|----------|--------|
+| KATRIN upper bound | 0.8 | 1.5 | allowed (below ~30 μm gravity bound) |
+| Cosmological per flavor | 0.03 | 41 | in tension (exceeds gravity bound) |
+| Atmospheric Δm² scale | 0.05 | 25 | marginal |
+
+A neutrino T² at ~1.5 μm is well within current experimental
+limits for extra compact dimensions.  However, the cosmological
+mass bound (~0.03 eV per flavor) would require ~41 μm, which
+exceeds the sub-mm gravity constraint (~30 μm).  This tension
+could indicate: (a) the neutrino is not a KK mode, (b) the
+neutrino T² does not couple gravitationally in the same way,
+or (c) the cosmological bound is model-dependent and the true
+mass is closer to the KATRIN limit.
+
+
+### F16. Mode splittings reach neutrino mass scale
+
+Near-degeneracies between modes on the electron's T² produce
+energy splittings at the sub-eV scale:
+
+| Mode range | Closest pair | ΔE (eV) |
+|------------|-------------|---------|
+| E < 20 m_e | (0,+6) – (−6,−1) | 1.7 |
+| E < 100 m_e | (+3,−46) – (−46,−15) | 0.29 |
+
+At higher mode numbers, splittings drop below the KATRIN
+bound (0.8 eV).  The closest pair at E < 100 m_e has
+ΔE = 0.29 eV = 0.36 × m_ν(KATRIN).
+
+This means the electron's T², with its irrational shear,
+naturally produces energy differences at the neutrino mass
+scale.  However, a beat between two modes is not obviously
+a particle — it would require nonlinear mode coupling to
+create a bound excitation at energy ΔE.  The physical
+meaning of these near-degeneracies remains open.
+
+
+### F17. Muon and tau as "hot electrons"
+
+The muon and tau have the same quantum numbers as the electron
+(spin 1/2, charge −e) but higher mass.  In the harmonic model,
+they are the same (1,2) fundamental plus uncharged harmonics:
+
+| Particle | Mass/m_e | Harmonics needed | Stable? |
+|----------|----------|-----------------|---------|
+| Electron | 1.00 | 0 | yes |
+| Muon | 206.77 | 205.77 m_e | no (2.2 μs) |
+| Tau | 3477.2 | 3476.2 m_e | no (0.3 ps) |
+| Proton | 1836.15 | 1835.15 m_e | yes |
+
+The stability pattern is explained by charge conservation:
+- Muon/tau: charge −e.  Can shed harmonics to become
+  a bare electron (+ neutrinos).  Unstable.
+- Proton: charge +e.  No lighter +e particle exists, so
+  harmonics cannot escape without violating charge conservation.
+  Stable.
+- Neutron: charge 0.  Charged pair can separate.  Unstable.
+
+Muon/tau decay is "harmonic evaporation" — the same mechanism
+as neutron decay, but simpler (one fundamental, no charge
+cancellation needed).
+
+
+### F18. Neutrino identity remains open
+
+Three options for the neutrino's nature:
+
+**(a) Mode on a separate, larger T².**  The neutrino is a
+(1,2) fundamental on its own torus with L_ν ~ 1.5 μm.
+Experimentally allowed at the KATRIN bound.  Predicts the
+neutrino is structurally identical to the electron but on a
+much larger geometry.
+
+**(b) Geometry fluctuation.**  The neutrino is not a field
+mode but a fluctuation of the compact geometry itself — a
+ripple in the torus shape rather than a wave on it.  This
+would naturally explain the tiny mass (suppressed by
+gravitational coupling) and the absence of charge.
+
+**(c) Created in decay, not pre-existing.**  The neutrino
+is produced when harmonic energy escapes a composite,
+rather than being a pre-existing constituent.  The decay
+process converts electromagnetic energy (harmonics on T²)
+into a different sector.  This is closest to the Standard
+Model picture where neutrinos are created in weak decays.
+
+Distinguishing these options requires understanding the
+weak interaction in the torus framework.
+
+
+---
+
 ## Summary table
 
 | # | Finding |
@@ -282,6 +397,11 @@ tiny but nonzero.
 | F11 | m_n − m_p = 1 m_e (extra fundamental) + 1.53 m_e (extra harmonics); ΔT/T = 0.04% |
 | F12 | Spin 1/2 compatible for both proton and neutron with any harmonic count |
 | F13 | Open: antineutrino identity, binding mechanism, mass-difference selection rule |
+| F14 | Neutrino cannot be a mode on the electron's T² — lightest uncharged spin-1/2 is (2,4) at 2 m_e, gap ~10⁶ |
+| F15 | Neutrino T² at ~1.5 μm (KATRIN bound) is experimentally allowed; cosmo bound in tension |
+| F16 | Mode splittings on electron's T² reach sub-eV (0.29 eV at E < 100 m_e); neutrino scale appears naturally |
+| F17 | Muon/tau = same (1,2) fundamental + harmonics; decay = harmonic evaporation; stability from charge conservation |
+| F18 | Neutrino identity open: separate T², geometry fluctuation, or created in decay |
 
 
 ## Scripts
@@ -290,3 +410,5 @@ tiny but nonzero.
   — Harmonic energies, charges, mode catalog, mass sums, energy formula comparison
 - [`scripts/track3_neutron_model.py`](scripts/track3_neutron_model.py)
   — Neutron charge cancellation, decay energetics, spin, stability
+- [`scripts/track4_neutrino.py`](scripts/track4_neutrino.py)
+  — Neutrino mass constraints, T² size, mode splittings, muon/tau as hot electrons

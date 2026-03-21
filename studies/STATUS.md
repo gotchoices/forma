@@ -69,6 +69,12 @@ geometric x ≈ 0.98).  Energy formula: E = ℏc|k|, harmonics are heavier (n ×
 Decay energetics match (0.782 MeV endpoint).  Proton stable (1 fundamental),
 neutron unstable (charged pair).  Open: neutrino, binding, mass-difference origin.
 
+**Track 4 (complete):** Neutrino cannot be a mode on the electron's T² (lightest
+uncharged spin-1/2 is (2,4) at 2 m_e, gap 10⁶).  A separate T² at ~1.5 μm is
+experimentally allowed.  Mode splittings reach sub-eV naturally (0.29 eV).
+Muon/tau fit as "hot electrons" (same fundamental + harmonics); stability pattern
+explained by charge conservation.
+
 ### R14. Universal geometry — shared T³ for all particles  *(closed, negative)*
 **Study:** [`universal-geometry/`](universal-geometry/)
 **Questions:** [Q13](../qa/Q13-three-compact-dimensions.md), [Q26](../qa/Q26-hadrons-photon-knots.md), [Q32](../qa/Q32-energy-geometry-fundamentals.md), Q64, Q66  **Type:** compute/reason  **Depends on:** R13, R19
