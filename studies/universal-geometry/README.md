@@ -1,4 +1,4 @@
-# R14. Universal Geometry  *(draft)*
+# R14. Universal Geometry
 
 Can a single compact space host all known particles — electrons,
 quarks, protons, neutrons — with particle identity determined
@@ -26,8 +26,8 @@ geodesic structure — none constrain r.
 Current approaches treat the electron in isolation.  But the
 Standard Model has many particles — and in the WvM framework,
 they're ALL photons on compact geometry.  If each particle type
-has its own T², the free parameters multiply (r_electron,
-r_up, r_down, ...).  If all particles share ONE T², the
+has its own compact space, the free parameters multiply (r_electron,
+r_up, r_down, ...).  If all particles share ONE T³, the
 constraint is massive: one (r, R, a) must simultaneously
 produce the electron, up quark, down quark, proton, and
 neutron with correct charges, spins, and masses.
@@ -40,14 +40,14 @@ Energy and geometry are the only fundamentals.  Mass, charge,
 spin, and magnetic moment are all emergent:
 
 - Mass = photon energy confined in periodic geometry
-- Charge = field winding on T², projected into 3+1D
+- Charge = field winding on T³, projected into 3+1D
 - Spin = winding ratio of geodesic
 - Confinement = topology (linked paths can't separate)
 
 If this is correct, the particle zoo is just the catalog of
 distinct topological configurations of photons on a single
 compact space.  The "Standard Model" becomes a theorem about
-the topology of T².
+the topology of T³.
 
 ## The hypothesis
 
@@ -169,15 +169,38 @@ with three linking planes mapping to three color charges
 (positive).  Proton mass = 3 × 612 × m_e to 0.008%
 (suggestive).  See [`findings.md`](findings.md).
 
-### Track 1: Multi-photon field on T³ (prerequisite: R13)
+### Track 1: Charge of linked photons on T³
 
-Extend R13's single-photon KK analysis to T³ and to two and
-three photons.  Compute the total EM field of multiple linked
-geodesics on flat T³, project into 3+1D, extract the
-monopole charge.
+Compute the total projected charge of two and three photons
+whose geodesics are topologically linked on T³.
 
-Key question: does topological linking produce fractional
-charges from integer-winding photons?
+R19 established the single-photon charge formula: for (1,n₂,n₃)
+on sheared T³, Q ∝ sin(πs₁₂)sin(πs₁₃)/((n₂−s₁₂)(n₃−s₁₃)).
+With s₁₃ = 0, a single (1,2,0) photon gives charge e (the
+electron).  The question for Track 1 is: when three such
+photons are topologically linked, what is the *total* charge
+projected into 3+1D?
+
+Key constraints from R19 (F29–F34):
+- s₁₂ ≈ 0.165 (sets α for the electron)
+- s₁₃ = 0 (protects electron planarity)
+- s₂₃ free (irrelevant for charge, affects mass)
+- Each photon individually obeys n₁ = 1
+
+Steps:
+1. Write the EM field of a single (1,2,0) photon at harmonic
+   n = 612 on the shared T³.
+2. Write the total field of three such photons on geodesics
+   in three different linking planes (per F2).
+3. Compute the monopole projection (total charge) of the
+   combined field in the 3+1D effective theory.
+4. Determine whether the linking topology forces the total
+   to be +e (proton) or 0 (neutron), and whether individual
+   "quark" contributions come out as 2/3 and 1/3.
+
+Key question: does topological linking redistribute the
+charge of three integer-charge photons into fractional
+contributions that sum to an integer?
 
 ### Track 2: Linking topologies on T³
 
@@ -186,44 +209,59 @@ closed geodesics on T³.  Which configurations are Borromean
 (no pair linked, but triple linked)?  Which give spin ½ for
 the composite?
 
+R19 constrains the space: each photon has n₁ = 1 (tube winding),
+and uses a different pair of dimensions for its (1,2) geodesic.
+With s₁₃ = 0, only photons in the (1,2) plane carry charge
+individually — linking must redistribute charge from these
+into the other planes.
+
 ### Track 3: Proton mass from three-photon state
 
 For each candidate linking from Track 2, compute the total
 energy (including interaction energy between the photons'
 fields).  Does the energy of the lowest three-photon linked
-state match m_p c² on the same T² that gives the electron?
+state match m_p c² on the same T³ that gives the electron?
+
+R19 constraints: L₁ and L₂ are Compton-scale (~pm).
+L₃ is unconstrained by the electron — it is a free parameter
+that could be fm-scale (proton radius).  s₂₃ affects mass
+but not charge, providing additional freedom.
 
 ### Track 4: Consistency check
 
 Does the geometry determined by Tracks 1–3 satisfy:
-- R ≈ r_e (R8 electron constraint)
-- α ≈ 1/137 (or bare α ≈ 1/128, see Q31)
+- α ≈ 1/137 (from R19's shear mechanism, already established)
 - Correct neutron-proton mass difference (~1.3 MeV)
 - Correct magnetic moments (μ_p, μ_n)
+- Three distinct scattering centers (deep inelastic scattering)
 
 ## Dependencies
 
-- **R13 (prerequisite):** KK charge from flat T² — how one
-  photon's field projects into 3+1D
-- R8: electron solution curve (geometry_search.py)
+- **R19 (prerequisite, complete):** Single-photon charge from
+  sheared T³.  Provides the charge formula, s₁₂ ≈ 0.165,
+  s₁₃ = 0, the n₁ = 1 selection rule, and the conclusion
+  that quark charges must come from linking.
+- **R13 (complete):** KK charge from flat T² — establishes
+  the winding-mode picture.
 - S3: fractional charge algebra (knot-zoo F3, F4)
 
 ## Key questions this study would answer
 
-1. Can three photons linked on T² produce fractional charges?
-2. Does requiring electron + proton on one T² fix r?
+1. Can three linked photons on T³ produce total charge +e?
+2. Does linking redistribute charge into 2/3 + 2/3 − 1/3?
 3. Is quark confinement automatic from the linking topology?
-4. Does the proton-to-electron mass ratio emerge?
+4. Does requiring electron + proton on one T³ fix r?
+5. Does the proton-to-electron mass ratio (3 × 612) emerge?
 
 ## Consequence: baryogenesis without antimatter
 
-If all particles share one T², the only fundamental
+If all particles share one T³, the only fundamental
 conservation law involving "charge-like" quantities is total
 winding number conservation (= total charge conservation).
 "Baryon number" and "lepton number" are not fundamental —
 they count topological configurations, not conserved charges.
 
-A charge-neutral atom (e.g. hydrogen) has total winding = 0,
+A charge-neutral atom (e.g., hydrogen) has total winding = 0,
 the same as the vacuum.  This means:
 
 **Neutral atoms can form directly from photons.**
@@ -257,18 +295,26 @@ vs. gauge boson exchange.
 - Q27: foundational axioms
 - Q31: discrete T² / digital counter hypothesis
 - Q32: energy and geometry as only fundamentals
+- Q60: 3D geodesic charge on sheared T³ (answered by R19 F29)
+- Q64: does topological linking modify the charge formula?
+- Q66: hybrid model (shear for electron, linking for quarks)
 
 ## Risk assessment
 
 **High risk, high reward.**
 
 - The multi-photon field calculation is substantially harder
-  than the single-photon case (R13).
-- Topological linking on T² is well-studied mathematically
+  than the single-photon case.  The interaction between linked
+  photons on T³ is novel territory.
+- Topological linking on T³ is well-studied mathematically
   (braid groups, mapping class groups) but connecting it to
   EM field projections is novel.
+- R19 significantly de-risks the approach: the single-photon
+  charge formula is now known and tested (F29–F34), and the
+  constraints on T³ geometry (s₁₂, s₁₃, s₂₃) are established.
+  Track 1 is a well-defined calculation, not open-ended.
 - If it works — even partially (e.g., fractional charges
   emerge from linking) — it would be a major result.
-- If it fails, it would push toward Model A (separate T² per
+- If it fails, it would push toward Model A (separate T²/T³ per
   particle type), which has more free parameters but might
   still be tractable.

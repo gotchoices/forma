@@ -223,7 +223,7 @@ can make (1,−6) quarks work.  The single-photon quark hypothesis
 is ruled out (F24).  Quark charges likely require a different
 mechanism (linking fractionalization, Track 6).
 
-### Track 6. 3D geodesic charge on sheared T³  *(active)*
+### Track 6. 3D geodesic charge on sheared T³  *(complete)*
 
 Tracks 4–5 showed that the 2D charge formula (derived for
 modes confined to a plane of T³) cannot produce quarks: the
@@ -255,24 +255,20 @@ Physical picture:
 
 Steps:
 0. Map the T³ mode energy landscape (F25–F28) — **complete**.
-   Key result: (1,2,k≠0) modes are LIGHTER than the electron.
-   Electron planarity requires a charge selection rule, not
-   energetics.  Shear cancellation can make specific k values
-   quark-mass heavy (same mechanism as Track 4, reinterpreted).
-1. Derive the charge integral for a general (n₁, n₂, n₃) mode
-   on a sheared T³.  The key question: does the Gauss's-law
-   projection into 3D spacetime produce a monopole moment, and
-   how does it depend on the winding numbers?
-2. Check the n=1 constraint: does it generalize, modify, or
-   break in 3D?
-3. Compute charge values for candidate quark windings.
-4. Check mass: does adding n₃ ≠ 0 produce quark-scale
-   energies on the same T³ that hosts the electron?
-5. If charges of 2e/3 and e/3 emerge: check proton mass.
+   (1,2,k≠0) modes are lighter than the electron.  Planarity
+   requires a charge selection rule, not energetics.
+1. Derive the 3D charge integral (F29–F34) — **complete**.
+   Q ∝ sin(πs₁₂)sin(πs₁₃)/((n₂−s₁₂)(n₃−s₁₃)).
+   n₁=1 rule persists (F30).  s₂₃ irrelevant for charge (F29).
+   At s₁₃=0: only n₃=0 carries charge (F31) — electron is
+   automatically planar.  But s₁₃≠0 creates sub-electron
+   charged particles (F32), ruling out shear-based quark
+   charges (F33–F34).
 
-**Success criterion:** A 3D geodesic on the same T³ as the
-electron produces fractional charge AND the correct quark
-mass.  The T³ geometry would then be fully constrained.
+**Conclusion:** The 3D charge integral does NOT provide a
+path to quark charges from shear alone.  Instead, it delivers
+a clean selection rule (F31) that protects the electron and
+pushes quark charges to the linking mechanism (Track 7/R14).
 
 ### Track 7. Linking + shear hybrid  *(contingency)*
 
@@ -410,17 +406,21 @@ different planes of T³.
 ## Status
 
 **Created:** 2026-03-01
-**Status:** Phase 1 (T² electron) essentially complete (F16).
-Tracks 1–3 (self-consistency part) complete.  Track 1 positive (δ ≈ a for r=1).
-Track 2: shear is energetically favorable but free (no specific value selected on flat T²).
-Track 3: self-consistent geometry confirmed (~5% correction to s); normalization part pending.
-Track 4 (complete): uniform shear + different windings on T³ ruled out.
-Key findings: n=1 required; same-plane impossible; mass forces m≈−6;
-s≈1/6 near-miss (1%); T³ consistency fails (r₁₂=2 vs 1).
-Track 5 (complete): non-uniform shear solves charge but kills mass
-(quark E = 1–12 m_e, not 612). Single-photon (1,−6) quark model
-definitively ruled out (F24).
-Track 6 (active): 3D geodesic charge on sheared T³ — does the charge
-formula change when the photon winds in all three compact dimensions?
-Track 7 (contingency): linking + shear hybrid.
+
+**Electron (Tracks 1–3): essentially complete.**
+The electron's charge comes from shear on T² (F1–F16).
+Self-consistent geometry gives a one-parameter family in r.
+The free parameter r requires external constraint (→ R14).
+
+**Quark program (Tracks 4–6): complete, negative.**
+All single-photon shear approaches to quark charges are ruled out.
+Track 4: uniform shear fails (T³ consistency, F21).
+Track 5: non-uniform shear fails (mass, F23–F24).
+Track 6: 3D charge integral fails (sub-electron particles, F31–F34).
+Key positive result: F31 predicts no charged particle lighter than
+the electron, explaining why the electron is confined to a 2D plane
+on T³ despite lighter modes existing.
+
+**Next:** quark charges from topological linking → R14 Track 1.
+
 New inbox entries: Q60–Q66 document unexplored directions.

@@ -743,79 +743,167 @@ Possible next directions:
 
 ---
 
-## Track 6, Step 0: T³ mode energy landscape
+## Track 6: 3D charge on sheared T³
 
-### F25. Lighter (1,2,k) modes always exist below the electron
+Track 6 asked: what happens to the charge formula when the photon
+winds in all three compact dimensions of T³, not just two?
 
-On a T³ with the electron as (1,2,0), the modes (1,2,k) for
-k ≠ 0 have longer geodesics and are therefore **lighter**.
-This holds for:
-- **Unsheared T³** (s₁₃ = s₂₃ = 0): L(1,2,k)² = L_e² + k²L₃²,
-  always larger than L_e² for any k ≠ 0.
-- **Sheared T³** with cancellation tuning: even when specific k*
-  values are made very heavy, positive-k modes remain lighter.
+This was motivated by the failure of Tracks 4–5 (single-photon
+quarks from 2D charge formulas per plane).  Track 6 derives the
+full 3D charge integral from first principles and discovers a
+selection rule that reshapes the entire quark strategy.
 
-On a T³ with k* = −6 cancellation (s₁₃ ≈ 0.22, s₂₃ = 1/3):
+### F25. An infinite tower of lighter modes exists below the electron
 
-    k:    ... -7   -6   -5   -4   -3   -2   -1   0   1     2     3   ...
-    E/m_e: 6.0 612  6.0  3.0  2.0  1.5  1.2  1.0 0.86 0.75 0.67  ...
+On any T³ hosting the electron as (1,2,0), modes (1,2,k) with
+k ≠ 0 have **longer** geodesics and therefore **lower** energy
+(lighter mass).  E = hc/L, so longer path → lighter particle.
 
-The mass spectrum follows the clean formula:
+This is unavoidable: L(1,2,k)² = L_e² + k²L₃² > L_e² for k ≠ 0.
+Even with shear tuning, modes with positive k remain lighter.
 
-    E(1,2,k) ≈ |k*| / |k* − k| × m_e
+If any of these lighter modes carried charge, we would observe
+charged spin-½ particles lighter than the electron.  We don't.
 
-This produces an **infinite tower** of modes lighter than the
-electron.  If any carry charge, they should be observable.
+### F26. The electron is the heaviest, not the lightest
 
-### F26. Electron planarity is NOT energetic
+The electron (1,2,0) sits at the **top** of the (1,2,k) mass
+spectrum.  It is not the ground state — it is the most energetic
+member of its family.  Its "confinement" to a 2D plane (n₃ = 0)
+cannot be explained by energy minimization.  Something else must
+select it.  → answered by F31.
 
-The electron (1,2,0) is the **heaviest** member of the (1,2,k)
-family, not the lightest.  Its confinement to a plane (n₃ = 0)
-cannot be explained by energy minimization.
+### F27. Shear cancellation can make specific modes very heavy
 
-The electron must be selected by a **charge selection rule**:
-only modes with k = 0 carry nonzero charge from the 3D integral.
-Alternatively, 3D windings could change the spin quantum number
-(making k ≠ 0 modes bosons rather than fermions).
+For specific negative k values, the shear cross-terms cause the
+L₁ and L₂ contributions to cancel, leaving L ≈ |k|L₃.  This
+produces modes far heavier than the electron — at quark-mass
+scales — but only for finely tuned shear values.  This mechanism
+was explored but ultimately superseded by F31's selection rule.
 
-This is a strong prediction of the framework that will be tested
-in Track 6, Step 1 (3D charge integral derivation).
+### F28. (Superseded — see F29–F34)
 
-### F27. Shear cancellation produces quark-mass modes
 
-For specific negative k values, the shear cross-terms can cause
-the L₁ and L₂ contributions to the geodesic to cancel, leaving
-L ≈ |k| L₃.  This produces modes far heavier than the electron.
+### F29. The 3D charge integral has a closed-form solution
 
-Feasible cases (both |s₁₃|, |s₂₃| < 1):
+We derived the charge integral for a general (1, n₂, n₃) mode
+on a sheared T³.  The derivation works by changing variables
+from lattice coordinates (θ₁, θ₂, θ₃) to physical angle
+θ₁_phys = θ₁ + s₁₂θ₂ + s₁₃θ₃, then evaluating three nested
+integrals.  The result is exact:
 
-| k   | s₁₃ needed | s₂₃ needed | L₃ for 612 m_e |
-|-----|-----------|-----------|----------------|
-| −8  | 0.166     | 0.250     | 0.50 fm        |
-| −6  | 0.222     | 0.333     | 0.66 fm        |
-| −4  | 0.333     | 0.500     | 0.99 fm        |
-| −3  | 0.443     | 0.667     | 1.32 fm        |
+    Q ∝ cos(π(s₁₂+s₁₃)) × sin(πs₁₂) × sin(πs₁₃)
+        / ((n₂ - s₁₂)(n₃ - s₁₃))
 
-k = −8 is notable: s₁₃ ≈ 0.166 ≈ s₁₂ (near-uniform shear).
-k = −6 reproduces Track 4's near-miss with L₃ ≈ 0.66 fm
-(proton radius scale).
+Two key structural properties:
 
-This is the **same physics** as the (1,−6) quark from Track 4,
-now reinterpreted: the quark is not a (1,−6) mode in a different
-plane, but a **(1, 2, −6) mode on the same T³** as the electron.
-The "−6" winding is in the third compact dimension, not a
-replacement of the ring winding.
+**Factorization.**  Each compact direction contributes an
+independent factor sin(πsᵢ)/(nᵢ − sᵢ).  The charge of a mode
+is the product of its "effective charge" in each direction.
 
-### F28. Track 6 Step 1 is the critical gating calculation
+**s₂₃ is absent.**  The shear between directions 2 and 3 does
+not appear.  Only shears involving the tube axis (direction 1)
+affect charge.  s₂₃ affects mass (geodesic lengths) but not
+charge.  This means one of the three T³ shear parameters is
+irrelevant to the charge problem.
 
-The 3D charge integral must be computed to determine:
-1. Whether charge vanishes for (1,2,k≠0) — explaining electron
-   planarity and the absence of sub-electron charged particles.
-2. If charge is nonzero for k ≠ 0, what values it takes — and
-   whether fractional charges (1/3, 2/3) emerge.
+### F30. The n₁ = 1 selection rule extends to T³
 
-Until this integral is computed, the (1,2,k) model remains
-viable as a unified electron-quark framework on a single T³.
+On T², only modes with tube winding n = 1 produce charge (F17).
+The same integral — ∫cos(n₁θ)cos(θ)dθ — appears in the 3D
+derivation and vanishes for n₁ ≠ 1.  All charged particles on
+T³ must have n₁ = 1.
+
+### F31. The model predicts no charged particle lighter than the electron
+
+This is the central result of Track 6.
+
+When s₁₃ = 0 (no shear between the tube and the third direction),
+the factor sin(πs₁₃) in the numerator is zero.  This kills the
+charge for *every* mode — except one.  For the electron (n₃ = 0),
+the denominator (n₃ − s₁₃) = (0 − 0) also vanishes.  The 0/0
+limit evaluates to a finite value (−π).  Result:
+
+- **(1,2,0): charge is finite** — the electron.
+- **(1,2,k≠0): charge is exactly zero** — uncharged.
+
+The entire infinite tower of lighter modes (F25) is rendered
+**electrically invisible** by the selection rule.  They exist as
+uncharged excitations but cannot be detected electromagnetically.
+
+This is a **prediction of the model**, not an assumption.  It
+follows directly from the 3D charge integral.  It explains:
+- Why the electron is confined to a 2D plane on T³ (F26/Q63)
+- Why no charged fermion lighter than the electron is observed
+- Why the electron's charge physics is purely 2D despite living
+  on a 3D compact space
+
+### F32. Turning on s₁₃ creates a problem
+
+If s₁₃ ≠ 0, sin(πs₁₃) ≠ 0, and every mode acquires charge.
+The charge ratio for (1,2,k) relative to the electron is
+simply s₁₃/(s₁₃ − k).
+
+The lighter modes (k > 0) get small but nonzero charges.  For
+example, at s₁₃ = 0.25, the (1,2,1) mode — which is lighter
+than the electron — has charge exactly e/3.  No such particle
+has ever been observed.
+
+This means s₁₃ must be zero (or negligibly small) on the
+physical T³.
+
+### F33. Single-photon quarks from shear are ruled out
+
+Although the 3D formula CAN produce 1/3 and 2/3 charge ratios
+for specific s₁₃ values, doing so inevitably creates observable
+sub-electron charged particles (F32).  No value of s₁₃ avoids
+this problem.  Therefore:
+
+**Quark charges cannot come from shear.**
+
+This definitively closes the single-photon shear approach for
+quarks (Tracks 4, 5, and 6 of R19).
+
+### F34. What R19 establishes — and where the program goes next
+
+**What is now solid (the electron):**
+
+R19 Tracks 1–3 derive the electron's charge from shear on T².
+The charge formula α = r²sin²(2πs)/(4π(2−s)²√(r²(1+2s)²+4))
+gives a self-consistent geometry for every aspect ratio r > 0.54,
+producing the correct mass, spin, g-factor, and charge.  Track 6
+shows that s₁₃ = 0 protects this result on T³ — the electron's
+charge is a purely 2D phenomenon, unaffected by the third compact
+dimension.  The remaining free parameter (r) must be fixed by
+multi-particle constraints (→ R14).
+
+**What is ruled out (single-photon quarks from shear):**
+
+Tracks 4–6 systematically tested whether individual photons on
+T³ could produce fractional charges via shear.  Every approach
+fails: uniform shear (Track 4), non-uniform shear (Track 5),
+and 3D charge integral (Track 6).  The root cause is F31: any
+shear that gives quarks charge also gives lighter modes charge.
+
+**Where the program goes (→ R14):**
+
+Quark charges require a fundamentally different mechanism from
+the electron's.  The leading candidate is **topological linking**
+of multiple photons on T³ (R14).  In this picture:
+- The proton is three photons, topologically linked on T³
+- Their *combined* field projects as charge +e into 3D
+- Individual "quark" charges (2/3, 1/3) are an internal
+  bookkeeping of the composite state, not properties of
+  isolated single-photon modes
+- Confinement is topological: linked curves can't separate
+
+R19's contributions to R14:
+- s₁₂ ≈ 0.165 sets the charge scale (α) for the electron
+- s₁₃ = 0 (no shear in the 1-3 plane)
+- s₂₃ is free (doesn't affect charge) but constrains mass
+- The n₁ = 1 selection rule applies to each photon individually
+- The T³ circumferences L₁, L₂ are at the Compton scale (~pm)
+- L₃ is unconstrained by R19 (could be fm-scale for protons)
 
 
 ---
@@ -848,7 +936,13 @@ viable as a unified electron-quark framework on a single T³.
 | F22 | Non-uniform shear solves the charge equations (T³ consistency satisfied) |
 | F23 | Mass kills (1,−6) quarks: E_quark = 1–12 m_e, not 612 m_e — factor 150–900× off |
 | F24 | The (1,−6) single-photon quark hypothesis is definitively ruled out |
-| F25 | Lighter (1,2,k) modes always exist below the electron on any T³ — infinite tower |
-| F26 | Electron planarity is NOT energetic; must be a charge selection rule or spin change |
-| F27 | Shear cancellation makes specific k very heavy; (1,2,−6) ≡ Track 4's quark, reinterpreted |
-| F28 | 3D charge integral (Track 6 Step 1) is the critical gating calculation |
+| F25 | Infinite tower of (1,2,k≠0) modes lighter than the electron exists on any T³ |
+| F26 | Electron is the heaviest of its family; planarity is not energetic → needs selection rule |
+| F27 | Shear cancellation can make specific modes heavy (quark-scale), but doesn't solve charge |
+| F28 | (Superseded by F29–F34) |
+| F29 | 3D charge integral has exact closed form; factorizes; s₂₃ irrelevant for charge |
+| F30 | n₁ = 1 selection rule extends from T² to T³ |
+| F31 | **s₁₃ = 0 kills charge for all n₃≠0**: model predicts no charged particle lighter than electron |
+| F32 | s₁₃ ≠ 0 gives lighter modes charge → contradicts observation → s₁₃ must be zero |
+| F33 | Single-photon quarks from shear definitively ruled out (Tracks 4, 5, 6 all closed) |
+| F34 | Electron charge is 2D shear; quark charges require topological linking (→ R14) |

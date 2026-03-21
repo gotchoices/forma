@@ -33,49 +33,39 @@ explanation.  *Paused:* R18 showed that curvature-induced mode mixing on an
 axisymmetric torus still gives zero charge (φ-symmetry protection).  R16's
 approach needs the φ-symmetry breaking that R18 provides.
 
-### R19. Shear-induced charge on T²
+### R19. Shear-induced charge on T² → T³  *(electron complete; quark program → R14)*
 **Study:** [`shear-charge/`](shear-charge/)
 **Questions:** Q58 (shear breaks φ-symmetry), [Q18](../qa/Q18-deriving-alpha.md), Q34 Path 7  **Type:** analytical/compute  **Depends on:** R12, R15, R18
 
-On the sheared T², the (1,2) mode has non-integer effective winding q_eff = 2 − δ/a.
-The charge integral sin(πq_eff)/q_eff is NONZERO — bypassing the φ-symmetry protection
-that blocked R17 and R18.  No wavepacket localization needed.  R12 F5 showed shear is
-internally unconstrained → external constraint (T³, topology) may fix it.
+Shear on the T² lattice breaks φ-symmetry, giving the (1,2) mode a non-integer
+effective winding q_eff = 2 − s.  The charge integral is NONZERO — the first
+mechanism producing charge from a fully delocalized wave.
 
-Track 1 (complete): α = C(r)×sin²(2πs)/(2−s)². For r=1: s≈1/(2π), δ≈a. Clean result.
-Critical r ≈ 0.54. Normalization question (full E₀ vs κ=α) determines viability.
-Track 2 (complete): shear is energetically FAVORABLE — geodesic saving (6.6%) exceeds
-Coulomb cost (0.8%) by 8.6×. No barrier to charge appearing. But the flat T² does not
-select a specific shear value (it's a free modulus, like r). External constraint
-(T³ topology) needed to pin the shear and thereby determine α.
-Track 3 (self-consistency complete): self-consistent Compton constraint with shear
-shifts s up ~5%. The electron is a one-parameter family in r — mass, spin, g, charge
-all determined. Normalization part still pending. Phase 1 (what) essentially complete.
-Track 4 (complete): uniform shear on T³ ruled out. Key: n=1 required for charge;
-same-plane impossible; mass forces m≈−6; s≈1/6 near-miss (1%); T³ consistency
-fails by factor of 2 (quarks need r₁₂=2, electron needs r₁₂≈1).
-Track 5 (complete): non-uniform shear solves charge but kills mass — quark E =
-1–12 m_e (×150–900 too low). Single-photon (1,−6) quark model definitively ruled
-out. The 2D single-photon shear formula does not extend to quarks.
-Track 6 (active): 3D geodesic charge on sheared T³. The 2D charge formula was
-always extended to T³ by assumption — what does the full 3D charge integral look
-like? Quarks could be 3D windings (1,2,k), k≠0, not confined to a plane.
-Track 7 (contingency): linking fractionalization (R14) + shear hybrid.
-Q60–Q66 document all unexplored directions from this analysis.
+**Electron (Tracks 1–3, complete):** α = r²sin²(2πs)/(4π(2−s)²√(r²(1+2s)²+4)).
+Self-consistent geometry gives a one-parameter family in r.  Shear is energetically
+favorable.  The free parameter r must be fixed by multi-particle constraints (→ R14).
+
+**Quark program (Tracks 4–6, complete, negative):** Three approaches tested —
+uniform shear (T4), non-uniform shear (T5), and full 3D charge integral (T6).
+All ruled out.  Single-photon quarks from shear are definitively excluded (F24, F33).
+Key positive result: the 3D charge integral predicts no charged particle lighter than
+the electron (F31), explaining electron planarity on T³.  Quark charges must come
+from topological linking (→ R14 Track 1).
 
 ### R14. Universal geometry — shared T³ for all particles
-**Study:** [`universal-geometry/`](universal-geometry/)  *(draft)*
-**Questions:** [Q13](../qa/Q13-three-compact-dimensions.md), [Q26](../qa/Q26-hadrons-photon-knots.md), [Q32](../qa/Q32-energy-geometry-fundamentals.md)  **Type:** compute/reason  **Depends on:** R13
+**Study:** [`universal-geometry/`](universal-geometry/)  *(active — Track 1 next)*
+**Questions:** [Q13](../qa/Q13-three-compact-dimensions.md), [Q26](../qa/Q26-hadrons-photon-knots.md), [Q32](../qa/Q32-energy-geometry-fundamentals.md), Q64, Q66  **Type:** compute/reason  **Depends on:** R13, R19
 
 **Track 0 result (complete):** T² cannot support topological linking — 2D surfaces
 lack the extra dimension needed. T³ can, with three linking planes mapping to three
 color charges. m_p = 3 × 612 × m_e to 0.008%.
 
-Open: if all particles share a single compact T³, the three circumferences (L₁, L₂, L₃)
-are constrained by multi-particle consistency — electron charge, fractional quark
-charges (three linked photons), and proton/neutron masses must all fit simultaneously.
-Quark confinement = Borromean linking (topological, automatic). If successful, the
-T³ geometry is fully fixed by particle data, with no free parameters. Awaits R13.
+**Next (Track 1):** R19 established the single-photon charge formula and showed that
+quark charges CANNOT come from shear (F33–F34).  The electron's charge is purely 2D
+(shear s₁₂ ≈ 0.165, with s₁₃ = 0 protecting planarity).  Quark charges must come
+from topological linking of multiple photons on T³.  Track 1 computes the total
+projected charge of three linked photons to determine whether linking redistributes
+charge into fractional contributions (2/3 + 2/3 − 1/3 = +1 for the proton).
 
 ---
 
