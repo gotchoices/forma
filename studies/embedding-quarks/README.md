@@ -99,24 +99,17 @@ This also provides:
 
 ## Planned approach
 
-### Track 1: Eigenmodes on the embedded torus
+### Track 1: Eigenmodes on the embedded torus  ✓
 
-Solve the wave equation on the embedded (curved) torus:
-
-    ∇²ψ + ω²ψ = 0
-
-where ∇² uses the induced metric:
-
-    ds² = a²dθ₁² + (R + a cos θ₁)²dθ₂²
-
-The eigenmodes are still periodic in θ₂ (axial symmetry), so
-ψ(θ₁, θ₂) = f_n(θ₁) × e^(in₂θ₂).  The equation for f_n
-is a Hill/Mathieu-type ODE in θ₁.
-
-Key questions:
-1. How do the eigenfrequencies differ from flat T²?
-2. Do modes localize in θ₁ (concentrate at specific positions)?
-3. What is the mode structure for the electron's (1,2) winding?
+**Result (F1–F5):** The curvature creates an effective potential
+V(θ₁) = ε²n₂²/(1+ε cos θ₁)² that concentrates modes at the
+outer equator.  At ε = 0.5 (r = 2), the n₁ = 0 ground state
+has 40:1 outer/inner amplitude ratio — strongly localized.
+The ±n₁ degeneracy lifts (56% splitting at ε = 0.5), making
+eigenstates into standing waves with distinct spatial profiles.
+Three modes (n₁ = −1, 0, +1) sit at different angular positions,
+seeing different effective geometry — the key ingredient for
+position-dependent charge.
 
 ### Track 2: Position-dependent charge
 
