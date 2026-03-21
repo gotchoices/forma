@@ -111,17 +111,18 @@ Three modes (n₁ = −1, 0, +1) sit at different angular positions,
 seeing different effective geometry — the key ingredient for
 position-dependent charge.
 
-### Track 2: Position-dependent charge
+### Track 2: Position-dependent charge  ✓
 
-Compute the R19 charge integral using the curved-space
-eigenmodes from Track 1 instead of flat-space plane waves.
-
-Key questions:
-1. Does the effective charge depend on where a mode is
-   concentrated in θ₁?
-2. If modes localize near the outer equator (θ₁ ≈ 0) vs the
-   inner equator (θ₁ ≈ π), do they carry different charges?
-3. Do the effective charges match the S3 ratios (e, 2e/3, e/3)?
+**Result (F6–F10):** Odd modes carry zero charge by symmetry;
+only even modes contribute (F6).  The ground state acquires
+charge on the curved torus — its ratio to the electron grows
+monotonically from 0 to 1 as ε increases (F7).  Charge ratios
+pass through 1/3 and 2/3 at specific ε values, but NEVER both
+at the same ε (F8).  Ratios are continuous, not quantized —
+no preferred fractionalization (F9).  The single-torus
+position-dependent mechanism cannot produce a proton with two
+distinct fractional charges.  Either the full shear-curvature
+coupling or a multi-plane mechanism is needed.
 
 ### Track 3: Three-quark proton
 

@@ -63,11 +63,15 @@ potentially producing position-dependent charge.  S3 showed algebraically that
 a/R ratios of 6.60, 9.91, 19.81 give charges e, 2e/3, e/3.  If curvature creates
 these effective ratios, three phase-spaced fundamentals could be quarks.
 
-**Track 1 complete (F1–F5):** Curvature creates effective potential concentrating
-modes at outer equator (40:1 amplitude ratio at ε = 0.5).  ±n₁ degeneracy lifts
-(56% splitting), giving standing-wave eigenstates at distinct angular positions.
-Three modes (n₁ = −1, 0, +1) sample different geometry — prerequisite for
-position-dependent charge.  Track 2 next: compute charge with curved eigenmodes.
+**Track 1 (F1–F5):** Curvature concentrates modes at outer equator (40:1 at
+ε = 0.5); ±n₁ degeneracy lifts (56% splitting); standing-wave eigenstates at
+distinct angular positions.
+
+**Track 2 (F6–F10):** Odd modes carry zero charge (parity); ground state
+acquires charge on curved torus.  Charge ratios pass through 1/3 and 2/3 at
+specific ε values, but never both simultaneously.  Ratios are continuous, not
+quantized — single-torus mechanism insufficient for quarks.  Next: assess
+whether full shear-curvature coupling or multi-plane T³ picture changes this.
 
 This study unifies four open questions from R20: (1) quarks/DIS — three charged
 centers with fractional charges; (2) binding — curvature-induced mode coupling;
