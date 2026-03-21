@@ -1,9 +1,23 @@
-# R14. Universal Geometry
+# R14. Universal Geometry  *(closed, negative)*
 
 Can a single compact space host all known particles — electrons,
 quarks, protons, neutrons — with particle identity determined
 by topology (winding, linking) and energy (harmonics), not by
 geometry?
+
+**Outcome:** The three-photon linking model for hadrons is ruled out.
+Topological linking on T³ cannot redistribute charge — the R19 charge
+mechanism depends on mode numbers and shear, not on spatial arrangement
+of photons (F18).  All four mechanisms tested (localization, classical
+interaction, KK gauge mixing, wavepacket superposition) fail to produce
+fractional charges.  DIS compatibility (three charged constituents)
+remains the central unsolved problem.
+
+**Positive results carried forward:**
+- Spin quantization forbids exotic-spin modes → electron is lightest
+  charged fermion (F10)
+- Uncharged modes (n₁ ≠ 1) can add mass without affecting charge (F8/F30)
+- The 3 × 612 × m_e mass relation holds to 0.008% (F3)
 
 **Track 0 result:** T² cannot support topological linking of
 geodesics (2D surfaces lack the dimensionality).  **T³** (three

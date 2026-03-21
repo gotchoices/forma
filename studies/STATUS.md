@@ -49,32 +49,31 @@ favorable.  The free parameter r must be fixed by multi-particle constraints (�
 uniform shear (T4), non-uniform shear (T5), and full 3D charge integral (T6).
 All ruled out.  Single-photon quarks from shear are definitively excluded (F24, F33).
 Key positive result: the 3D charge integral predicts no charged particle lighter than
-the electron (F31), explaining electron planarity on T³.  Quark charges must come
-from topological linking (→ R14 Track 1).
+the electron (F31), explaining electron planarity on T³.  Quark charges cannot come
+from single-photon shear (→ R14, closed negative).
 
-### R14. Universal geometry — shared T³ for all particles
-**Study:** [`universal-geometry/`](universal-geometry/)  *(active — Track 1 next)*
+### R20. Harmonic proton — mass from uncharged harmonics on T²
+**Study:** [`harmonic-proton/`](harmonic-proton/)
+**Questions:** Q16, [Q26](../qa/Q26-hadrons-photon-knots.md), Q28, [Q32](../qa/Q32-energy-geometry-fundamentals.md)  **Type:** compute  **Depends on:** R19, R14
+
+The proton as the electron's (1,2) fundamental plus higher harmonics on the same
+geodesic.  Harmonics add mass (E_n = n × m_e) but not charge (n₁ ≠ 1 → F30).
+Neutron = electron + positron fundamentals + harmonics; decay = electron escapes.
+Track 1 (harmonic spectrum and charge) is next.
+
+### R14. Universal geometry — shared T³ for all particles  *(closed, negative)*
+**Study:** [`universal-geometry/`](universal-geometry/)
 **Questions:** [Q13](../qa/Q13-three-compact-dimensions.md), [Q26](../qa/Q26-hadrons-photon-knots.md), [Q32](../qa/Q32-energy-geometry-fundamentals.md), Q64, Q66  **Type:** compute/reason  **Depends on:** R13, R19
 
-**Track 0 result (complete):** T² cannot support topological linking — 2D surfaces
-lack the extra dimension needed. T³ can, with three linking planes mapping to three
-color charges. m_p = 3 × 612 × m_e to 0.008%.
+The three-photon linking model for hadrons is ruled out.  Topological linking on T³
+cannot redistribute charge: the R19 charge mechanism depends on mode numbers, not
+spatial arrangement (F18).  All four tested mechanisms fail (localization, interaction,
+KK gauge mixing).  DIS (three charged constituents) remains unexplained.
 
-**Track 1 (complete):** For delocalized modes, three linked photons (one per plane)
-give total charge +e — the (1,2)-plane photon carries all the charge, the others
-are silent (F8).  Spin quantization forbids (1,n₂>2,0) modes, making the electron
-the lightest charged fermion (F10).  Proton mass requires uncharged direction-3
-photons (F11).  However, applying R19's formula independently gives one charged
-constituent, contradicting deep inelastic scattering which sees
-three (F12).  Linking must redistribute charge — requires
-localized-photon analysis.
-
-**Track 1b (complete, negative):** Both paths from F13 fail.  Localization cannot
-charge the (2,3)-plane photon (field uniform in tube direction regardless of σ).
-KK gauge mixing makes electron and quark indistinguishable.  The R19 charge
-mechanism has a structural limitation: charge depends on mode structure, not spatial
-arrangement (F18).  Three possible exits identified (F19): reinterpret DIS
-scattering, go beyond linear EM (topological solitons), or beyond flat T³.
+**Positive results carried forward:**
+- Spin quantization forbids (1,n₂>2,0) modes → electron is lightest charged fermion (F10)
+- Only n₁ = 1 modes carry charge → uncharged modes can add mass without charge (F30/F8)
+- m_p = 3 × 612 × m_e to 0.008% (F3, numerological — not explained by linking)
 
 ---
 
@@ -146,3 +145,4 @@ Studies in chronological order of completion. Key result only — see each study
 | 12 | **R8. Multi-winding electron** [`multi-winding/`](multi-winding/) | (68,137) on sheared T² at r_e scale: mass ✓, spin ½ exact ✓, g = 2 ✓, R/r_e = 0.989 ✓. **Charge mechanism invalidated by R13** — multi-winding breaks WvM commensurability (Q = 0). Spin/g-factor results carry over to any (1,2)-local model. q was never selected; the premise (U_Coulomb = m_e c²/2) was the wrong target (see R15). |
 | 13 | **R17. Radiation pressure** [`radiation-pressure/`](radiation-pressure/) | Centrifugal force from confined photon's curved 3D path cannot determine α. Track 4: tube deformation preserves φ-symmetry → charge = 0. Track 5: F ⊥ v (no clumping), σ_φ = const (breathing conservative), force is a consequence of confinement. Positive: force decomposition quantified; confirms model self-consistency. |
 | 14 | **R18. Torus stiffness** [`torus-stiffness/`](torus-stiffness/) | Geometric deformation cannot produce charge. Track 1: backwards stiffness κ = ε₀E₀²/(2R), α-independent at linear order. Track 2: Coulomb cost exceeds photon energy saving by 96×. Symmetric torus is stable. Charge integral of cos(θ+2φ) vanishes on any smooth torus. |
+| 15 | **R14. Universal geometry** [`universal-geometry/`](universal-geometry/) | Three-photon linking model for hadrons ruled out. Charge depends on mode numbers, not spatial arrangement (F18). All redistribution mechanisms fail. Positive: spin quantization protects electron (F10); uncharged modes can add mass (F8). |

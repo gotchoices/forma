@@ -26,3 +26,21 @@
 - This means to not be overconfidence about either positive or negative results
 - Summarize results in plain language: What does this mean for the study
 - Project next possible steps: Where do we go from here
+
+## Repo Management
+- The user will typically want to commit at regular milestones:
+  - When a new study is framed
+  - When a track has be completed or a study is closed
+  - New entries entered to the INBOX
+
+## Tracking
+- Studies are tracked in ./STATUS.md
+- Maintain the file structure as studies progress
+  - Acive studies: Short summary
+  - Backlog: Intended future studies
+  - Done: studies concluded whether positively or negatively
+- Inbox tracked in qa/INBOX.md
+  - Any questions we can think of that might spawn future studies or analyses
+  - Questions that can be answered easily are addressed in a qa/Q*.md
+  - More extensive projects become a study
+- Scan the INBOX at the end of each study when evaluating possible next subjects to pursue
