@@ -124,28 +124,101 @@ position-dependent mechanism cannot produce a proton with two
 distinct fractional charges.  Either the full shear-curvature
 coupling or a multi-plane mechanism is needed.
 
-### Track 3: Three-quark proton
+### Track 3: Three-quark proton  ✗ (dead)
 
-If Tracks 1–2 give position-dependent fractional charges,
-construct a proton from three fundamentals at the appropriate
-positions.
+**Premise failed:** Track 2 showed that (a) only even modes
+carry charge (odd modes are zero by symmetry → only two charged
+modes, not three), and (b) no single ε gives both 1/3 and 2/3
+simultaneously (ratios are continuous, not quantized).
+
+The single-torus position-dependent mechanism cannot produce a
+proton with two distinct fractional charges.  The quark question
+remains open — see "Status of the quark program" below.
+
+
+### Track 4: Curvature-corrected α and self-consistent geometry
+
+Track 2 showed that the R19 charge overlap integral changes on
+the curved torus: the eigenfunction f(θ₁) replaces cos θ₁ in
+the charge integral, modifying α.  Since ε = 1/r, the curvature
+correction couples the charge formula to the aspect ratio:
+
+    α_curved(r, s) = (C(1/r)/C_flat)² × α_flat(r, s)
+
+At each r, the required shear s shifts.  This gives the
+corrected geometry (r, s) consistent with α = 1/137 on the
+curved (not flat) torus.
 
 Key questions:
-1. Do three localized modes at specific θ₁ positions give
-   charges summing to +e?
-2. Is ΣQ² consistent with DIS cross sections?
-3. Is the proton stable (no decay channel with lower energy)?
+1. How large is the curvature correction to α at each r?
+2. Does the self-consistent (r, s) differ significantly from
+   the flat-T² values?
+3. Does the IPR of the curved eigenfunction relate to R15's
+   localization parameter σ?
 
-### Track 4: Natural harmonic spectrum
 
-Compute mode-mode coupling coefficients from the curvature.
-On the curved torus, modes are NOT orthogonal — they couple.
-The coupling matrix determines:
+### Track 5: Muon charge constraint on the aspect ratio
 
-1. Which harmonic combinations have lowest total energy.
-2. Whether the equilibrium spectrum is unique (predictive)
-   or degenerate (still underdetermined).
-3. If unique: does it predict m_p = 1836 m_e?
+Track 2 (F7) showed that uncharged modes (n₁ ≥ 2, uncharged on
+flat T²) acquire small charges on the curved torus.  In R20's
+"hot electron" model, the muon is the fundamental + harmonics.
+If the harmonics carry small charges, the muon's total charge
+deviates from exactly −e.
+
+Experimentally, Q_muon/Q_electron = 1 to ~10⁻¹² precision.
+This constrains:
+
+1. The harmonic charge contributions: C(n₁=2)/C(n₁=1) ≈ 0.03
+   at ε = 0.2 (Track 2, Section 1).
+2. The occupation of charged harmonics in the muon.
+3. The aspect ratio r (through ε = 1/r): larger r = smaller ε
+   = smaller harmonic charges = weaker constraint.
+
+If the constraint forces ε < ε_max, this gives a LOWER BOUND
+on r — the first physical constraint on the free parameter.
+
+
+### Track 6: Mode-mode coupling and harmonic spectrum
+
+Compute the electromagnetic coupling between modes on the
+curved torus.  On the embedded torus, modes with different
+spatial profiles (Track 1) have different Coulomb overlap
+integrals.  The coupling matrix:
+
+    V_{mn} = ∫∫ ρ_m(x) ρ_n(x') / |x-x'| dV dV'
+
+determines which harmonic combinations minimize total energy.
+
+Key questions:
+1. Does the coupling select a unique harmonic spectrum?
+2. If unique: does it predict m_p = 1836 m_e?
+3. Does the coupling provide a binding mechanism for composites?
+
+
+### Status of the quark program
+
+Track 2 tested the most natural embedding-curvature mechanism
+for quarks: position-dependent charge from curved eigenmodes.
+It failed (F8–F9).  Combined with previous failures:
+
+| Study | Mechanism | Result |
+|-------|-----------|--------|
+| R19 T4–6 | Shear on flat T²/T³ | F31: gives lighter charged modes |
+| R14 | Topological linking on T³ | F18: charge is mode-number, not position |
+| R21 T2 | Position on curved T² | F8: ratios are continuous, not quantized |
+
+**What's common:** Every mechanism produces CONTINUOUS charge
+ratios.  None yields charge QUANTIZATION at 1/3 and 2/3.  The
+standard model postulates fractional charges; GUTs derive them
+from group theory (SU(5) representations).  The torus model has
+no equivalent algebraic constraint.
+
+**What would be needed:** A topological or algebraic condition
+that forces charges on a torus to take specific rational values.
+Possible directions (not yet explored):
+- Multi-torus models (each quark on its own T²)
+- Non-abelian structure (higher gauge symmetry on T²)
+- Charge quantization from global T³ consistency conditions
 
 ## Dependencies
 
@@ -164,19 +237,20 @@ The coupling matrix determines:
 - Q16: what sets the photon energy / mass spectrum
 - Q32: energy and geometry as only fundamentals
 
-## Risk assessment
+## Risk assessment (updated after Track 2)
 
-**High risk, high reward.**
+**Quarks: dead end for now.**  The single-torus mechanism doesn't
+produce quantized fractional charges.  The quark program needs a
+new idea (multi-torus, non-abelian, or topological quantization).
 
-- The foundational calculation (Track 1) is well-defined:
-  solve the wave equation on a curved torus.  This will
-  produce concrete numbers regardless of outcome.
-- The critical test is Track 2: does curvature make charge
-  position-dependent?  If not, the approach fails cleanly.
-- The S3 ratios (1 : 3/2 : 3) are specific targets.  A match
-  would be striking; a miss rules out the mechanism.
-- Mode localization (Track 1) may not occur if the curvature
-  is too weak — modes might remain delocalized.  The ratio
-  a/R determines the curvature strength.
-- Track 4 (natural spectrum) is the highest-value outcome
-  but depends on Tracks 1–2 succeeding.
+**Remaining tracks: medium risk, concrete value.**
+
+- **Track 4 (curvature-corrected α):** Low risk.  The computation
+  is well-defined.  Even if the correction is small, it gives
+  the corrected self-consistent geometry.
+- **Track 5 (muon charge constraint):** Low risk, high
+  discriminating power.  A quick calculation using Track 2
+  results.  Could give the first physical constraint on r.
+- **Track 6 (harmonic spectrum):** Medium risk, highest reward.
+  If mode coupling selects a unique spectrum, this predicts
+  the proton mass.  If not, the spectrum remains free.
