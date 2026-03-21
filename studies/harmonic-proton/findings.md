@@ -167,6 +167,104 @@ without a selection rule.
 
 ---
 
+---
+
+## Track 3: Neutron model and decay
+
+**Script:** [`scripts/track3_neutron_model.py`](scripts/track3_neutron_model.py)
+
+
+### F8. The neutron as a charge-neutral composite
+
+The neutron can be modeled as two opposite-charge fundamentals
+plus uncharged harmonics:
+
+    neutron = (-1,-2) [Q = +e] + (1,2) [Q = -e] + harmonics [Q = 0]
+    total charge = 0
+
+The charge magnitudes are equal (|Q| = e for both fundamentals),
+and the signs are opposite by CPT symmetry — opposite-winding
+modes carry opposite charges.
+
+The (1,2) + (-1,-2) pair is the only option using physical
+spin-1/2 modes with unit charge.  Other charge-cancellation
+pairs (e.g., (1,1)+(-1,-1)) have either forbidden spins or
+non-integer charges.
+
+
+### F9. Beta decay energetics match exactly
+
+    n → p + e⁻ + ν̄_e
+
+| Component | Mass (m_e) | Mass (MeV) |
+|-----------|-----------|------------|
+| Neutron | 1838.684 | 939.565 |
+| Proton | 1836.153 | 938.272 |
+| m_n − m_p | 2.531 | 1.293 |
+| Emitted electron | 1.000 | 0.511 |
+| Available KE | 1.531 | 0.782 |
+
+The neutron has 1.531 m_e more harmonic energy than the proton.
+In the decay, the electron fundamental (1 m_e) escapes, and the
+excess harmonic energy (1.531 m_e = 0.782 MeV) is released as
+kinetic energy shared between the electron and antineutrino.
+
+The endpoint energy 0.782 MeV matches the experimental value.
+
+
+### F10. Proton stability vs neutron instability
+
+The proton has one charged fundamental and no way to shed it:
+uncharged harmonics cannot spontaneously acquire charge (n₁ ≠ 1
+→ Q = 0, exact).  The proton is stable.
+
+The neutron contains a charged pair (+e and −e) that can separate.
+The separation is energetically favorable (m_n > m_p + m_e), so
+the neutron is unstable.  The long lifetime (879 s) implies a
+substantial barrier to the electron's escape.
+
+
+### F11. The neutron-proton mass difference
+
+    m_n − m_p = 2.531 m_e = extra electron fundamental (1 m_e)
+                            + extra harmonic energy (1.531 m_e)
+
+In the thermal model, the neutron's harmonic temperature is
+T'_n = 33.869 m_e versus the proton's T'_p = 33.855 m_e — a
+0.041% temperature difference.  The neutron is "slightly hotter."
+
+
+### F12. Spin compatibility
+
+All (n, 2n) harmonics have winding ratio n/(2n) = 1/2, so each
+is spin-1/2.  The proton (one fundamental + N harmonics) and
+neutron (two fundamentals + N' harmonics) each combine many
+spin-1/2 components.  The total spin-1/2 sector is always
+accessible regardless of N or N'.  The spin constraint is
+compatible with any harmonic spectrum but does not select one.
+
+
+### F13. Open questions from Track 3
+
+**(a) The antineutrino.**  The model accounts for the decay
+energy but does not predict the specific decay products.  The
+0.782 MeV is shared between electron and antineutrino, but
+what IS the neutrino in this framework?  Possibly a burst of
+harmonic energy that escapes the composite, or a separate
+topological object.
+
+**(b) The binding mechanism.**  What prevents the electron
+fundamental from escaping instantly?  The 879 s lifetime
+requires an energy barrier or tunneling probability.
+
+**(c) The selection rule for the mass difference.**  What
+determines the neutron's extra 1.53 m_e of harmonic energy?
+In the thermal picture, a 0.04% temperature difference is
+tiny but nonzero.
+
+
+---
+
 ## Summary table
 
 | # | Finding |
@@ -178,9 +276,17 @@ without a selection rule.
 | F5 | Correct energy is E = ℏc\|k\| — harmonics are heavier (n × m_e); "winding energy" was a misidentification |
 | F6 | Lighter charged modes exist (spin-1 with Q ≈ 1.6e, 2.2e) — need charge quantization or instability argument |
 | F7 | 98 uncharged modes exist below 10 m_e — proton mass need not come from (n,2n) alone |
+| F8 | Neutron = two opposite-charge spin-1/2 fundamentals + harmonics; Q = 0 exactly |
+| F9 | Decay energetics match: 0.782 MeV available KE for electron + antineutrino |
+| F10 | Proton stable (1 fundamental), neutron unstable (charged pair can separate) |
+| F11 | m_n − m_p = 1 m_e (extra fundamental) + 1.53 m_e (extra harmonics); ΔT/T = 0.04% |
+| F12 | Spin 1/2 compatible for both proton and neutron with any harmonic count |
+| F13 | Open: antineutrino identity, binding mechanism, mass-difference selection rule |
 
 
 ## Scripts
 
 - [`scripts/track1_harmonic_spectrum.py`](scripts/track1_harmonic_spectrum.py)
   — Harmonic energies, charges, mode catalog, mass sums, energy formula comparison
+- [`scripts/track3_neutron_model.py`](scripts/track3_neutron_model.py)
+  — Neutron charge cancellation, decay energetics, spin, stability

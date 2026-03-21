@@ -165,32 +165,27 @@ picture predicts lighter charged modes with non-integer charges
 (spin-1 bosons at ~0.6–0.7 m_e with Q ≈ 1.6–2.2e).  These are
 not observed; charge quantization or instability may forbid them.
 
-### Track 2: Proton mass from harmonic sums
+### Track 2: Proton mass from harmonic sums  ✓
 
-Given the spectrum from Track 1, find harmonic combinations that
-reproduce m_p = 1836 m_e.
+**Result:** Covered by Track 1, sections 4a–4e.  Multiple
+convergent series reach 1836 m_e (F4).  The (n, 2n) harmonic
+energies are exactly n × m_e with no shear correction (F5),
+so step 3 is trivially satisfied.  The distribution is
+underdetermined — many spectra work, none uniquely selected.
 
-Steps:
-1. Test complete series (all harmonics up to N).
-2. Test thermal/weighted distributions.
-3. Check whether shear corrections to E_n shift the sums closer
-   to 1836.
-4. Determine if there's a natural cutoff or distribution.
+### Track 3: Neutron model and decay  ✓
 
-Key question: does a simple, natural harmonic sum give 1836 m_e?
+**Result (F8–F13):** The neutron = two opposite-charge spin-1/2
+fundamentals (+e and -e) plus uncharged harmonics.  Total charge
+is exactly 0.  Beta decay energetics match: the endpoint energy
+0.782 MeV is reproduced.  Proton stability (one fundamental,
+nothing to annihilate) and neutron instability (charged pair can
+separate) have natural explanations.  The mass difference
+m_n - m_p = 2.53 m_e splits as 1 m_e (extra fundamental) +
+1.53 m_e (extra harmonics, a 0.04% thermal temperature shift).
 
-### Track 3: Neutron model and decay
-
-Construct the neutron and verify decay energetics.
-
-Steps:
-1. Define the CPT-conjugate (positron-type) fundamental on
-   sheared T².  Verify its charge is exactly −Q_electron.
-2. Compute neutron mass = 2m_e + harmonic sum.  Check whether
-   the harmonic spectrum naturally gives m_n − m_p ≈ 2.53 m_e.
-3. Model the decay: what harmonic energy is released when the
-   electron fundamental escapes?
-4. Check spin: does the neutron composite have spin ½?
+**Open:** antineutrino identity, binding mechanism, what sets
+the 1.53 m_e harmonic excess.
 
 ## Dependencies
 

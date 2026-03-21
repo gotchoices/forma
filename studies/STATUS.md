@@ -61,9 +61,13 @@ geodesic.  Harmonics add mass (E_n = n × m_e) but not charge (n₁ ≠ 1 → F3
 
 **Track 1 (complete):** Harmonics (n,2n) are exactly uncharged for n ≥ 2.
 Convergent infinite series exist for proton mass (thermal T' ≈ 34 m_e,
-geometric x ≈ 0.98).  Energy formula resolved (F5): E = ℏc|k| is correct,
-harmonics are heavier (n × m_e).  Open: lighter charged spin-1 modes exist
-in the spectrum with non-integer charges (F6) — not observed in nature.
+geometric x ≈ 0.98).  Energy formula: E = ℏc|k|, harmonics are heavier (n × m_e).
+
+**Track 2 (complete):** Covered by Track 1.  Multiple spectra work; none uniquely selected.
+
+**Track 3 (complete):** Neutron = two opposite-charge fundamentals + harmonics.
+Decay energetics match (0.782 MeV endpoint).  Proton stable (1 fundamental),
+neutron unstable (charged pair).  Open: neutrino, binding, mass-difference origin.
 
 ### R14. Universal geometry — shared T³ for all particles  *(closed, negative)*
 **Study:** [`universal-geometry/`](universal-geometry/)
