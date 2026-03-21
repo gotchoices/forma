@@ -58,8 +58,12 @@ from single-photon shear (→ R14, closed negative).
 
 The proton as the electron's (1,2) fundamental plus higher harmonics on the same
 geodesic.  Harmonics add mass (E_n = n × m_e) but not charge (n₁ ≠ 1 → F30).
-Neutron = electron + positron fundamentals + harmonics; decay = electron escapes.
-Track 1 (harmonic spectrum and charge) is next.
+
+**Track 1 (complete):** Harmonics (n,2n) are exactly uncharged for n ≥ 2.
+Convergent infinite series exist for proton mass (thermal T' ≈ 34 m_e,
+geometric x ≈ 0.98).  Energy formula resolved (F5): E = ℏc|k| is correct,
+harmonics are heavier (n × m_e).  Open: lighter charged spin-1 modes exist
+in the spectrum with non-integer charges (F6) — not observed in nature.
 
 ### R14. Universal geometry — shared T³ for all particles  *(closed, negative)*
 **Study:** [`universal-geometry/`](universal-geometry/)

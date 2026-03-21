@@ -146,22 +146,24 @@ or half-integer spin in 3+1D).
 
 ## Planned approach
 
-### Track 1: Harmonic spectrum and charge on sheared T²
+### Track 1: Harmonic spectrum and charge on sheared T²  ✓
 
-Compute the energy and charge of the first ~100 harmonics of the
-(1,2) geodesic on sheared T² (with s₁₂ ≈ 0.165 from R19).
+**Result (F1–F7):** The (n, 2n) harmonics are exactly uncharged
+for n ≥ 2 (by the n₁ selection rule — no leakage).  In the
+momentum picture (E = ℏc|k|), E(n,2n) = n × m_e, and convergent
+infinite series (thermal T' ≈ 34 m_e, geometric x ≈ 0.98) reach
+the proton mass.  A pure thermal distribution fails because it
+gives Q ≈ 33e; the fundamental must have occupation f(1) = 1
+exactly (F3).
 
-Steps:
-1. Define "nth harmonic" precisely: standing wave on the geodesic
-   with n wavelengths.  Decompose into T² Fourier modes.
-2. Compute E_n for each harmonic (including shear corrections).
-3. Apply R19's charge formula to each harmonic's Fourier
-   decomposition.  Verify Q_n ≈ 0 for n ≥ 2.
-4. Quantify charge leakage: how much n₁ = 1 content leaks into
-   the higher harmonics?
-
-Key question: is the charge of harmonics exactly zero, approximately
-zero, or significantly nonzero?
+**Energy formula resolved (F5):** The correct energy is E = ℏc|k|
+(standard QFT for a massless field on a torus).  Harmonics are
+heavier (n × m_e).  The "winding energy" E = hc/L_geo used in R13
+was a correct simplification for the fundamental mode but does not
+generalize to higher modes.  A remaining question (F6): the momentum
+picture predicts lighter charged modes with non-integer charges
+(spin-1 bosons at ~0.6–0.7 m_e with Q ≈ 1.6–2.2e).  These are
+not observed; charge quantization or instability may forbid them.
 
 ### Track 2: Proton mass from harmonic sums
 
