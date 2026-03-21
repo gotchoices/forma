@@ -157,25 +157,24 @@ Key questions:
    localization parameter σ?
 
 
-### Track 5: Muon charge constraint on the aspect ratio
+### Track 5: Muon charge constraint on the aspect ratio  ✓
 
-Track 2 (F7) showed that uncharged modes (n₁ ≥ 2, uncharged on
-flat T²) acquire small charges on the curved torus.  In R20's
-"hot electron" model, the muon is the fundamental + harmonics.
-If the harmonics carry small charges, the muon's total charge
-deviates from exactly −e.
+**Result (F11–F15):** The muon charge precision (10⁻¹²) creates
+a PARITY SELECTION RULE for harmonic spectra.  The n₁ = 0 ground
+state is completely excluded as a harmonic (charge-per-mass is
+O(1), independent of ε, giving |ΔQ/e| ~ 70).  Cos-like (even
+parity) modes with n₁ ≥ 2 are also constrained: the n₁ = 2 cos
+mode requires ε < 10⁻¹³.  Sin-like (odd parity) modes carry
+zero charge exactly and are always allowed.
 
-Experimentally, Q_muon/Q_electron = 1 to ~10⁻¹² precision.
-This constrains:
+The result is a dilemma: EITHER the torus is essentially flat
+(ε < 10⁻¹⁴), OR all harmonics must be sin-like.  The sin-like
+selection is a genuine prediction that constrains the R20
+harmonic spectrum — the first such constraint from combining
+geometry with experimental precision.
 
-1. The harmonic charge contributions: C(n₁=2)/C(n₁=1) ≈ 0.03
-   at ε = 0.2 (Track 2, Section 1).
-2. The occupation of charged harmonics in the muon.
-3. The aspect ratio r (through ε = 1/r): larger r = smaller ε
-   = smaller harmonic charges = weaker constraint.
-
-If the constraint forces ε < ε_max, this gives a LOWER BOUND
-on r — the first physical constraint on the free parameter.
+Does NOT directly constrain r (unless cos-like harmonics are
+present).  Open question: does shear break the parity symmetry?
 
 
 ### Track 6: Mode-mode coupling and harmonic spectrum
@@ -248,9 +247,10 @@ new idea (multi-torus, non-abelian, or topological quantization).
 - **Track 4 (curvature-corrected α):** Low risk.  The computation
   is well-defined.  Even if the correction is small, it gives
   the corrected self-consistent geometry.
-- **Track 5 (muon charge constraint):** Low risk, high
-  discriminating power.  A quick calculation using Track 2
-  results.  Could give the first physical constraint on r.
+- **Track 5 (muon charge constraint):** COMPLETE.  Found a
+  parity selection rule instead of a constraint on r.  All
+  harmonics must be sin-like (odd parity) unless ε < 10⁻¹⁴.
+  Opens the question of whether shear breaks parity.
 - **Track 6 (harmonic spectrum):** Medium risk, highest reward.
   If mode coupling selects a unique spectrum, this predicts
   the proton mass.  If not, the spectrum remains free.

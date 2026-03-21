@@ -70,8 +70,14 @@ distinct angular positions.
 **Track 2 (F6–F10):** Odd modes carry zero charge (parity); ground state
 acquires charge on curved torus.  Charge ratios pass through 1/3 and 2/3 at
 specific ε values, but never both simultaneously.  Ratios are continuous, not
-quantized — single-torus mechanism insufficient for quarks.  Next: assess
-whether full shear-curvature coupling or multi-plane T³ picture changes this.
+quantized — single-torus mechanism insufficient for quarks.
+
+**Track 5 (F11–F15):** Muon charge precision (10⁻¹²) creates a parity
+selection rule.  n₁ = 0 ground state excluded as harmonic (|ΔQ/e| ~ 70,
+independent of ε).  Cos-like modes constrained (n₁ = 2 requires ε < 10⁻¹³).
+Sin-like modes always allowed (C = 0 exactly).  Dilemma: either ε < 10⁻¹⁴
+(flat torus) or all harmonics must be sin-like — a genuine prediction that
+selects the R20 harmonic spectrum.
 
 This study unifies four open questions from R20: (1) quarks/DIS — three charged
 centers with fractional charges; (2) binding — curvature-induced mode coupling;

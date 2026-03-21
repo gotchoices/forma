@@ -278,6 +278,127 @@ with two distinct fractional charges.  Either:
 
 ---
 
+## Track 5: Muon charge constraint on the aspect ratio
+
+**Script:** [`scripts/track5_muon_charge.py`](scripts/track5_muon_charge.py)
+
+
+### F11. The n₁ = 0 ground state is excluded as a harmonic
+
+In R20, the muon is a "hot electron": the (1,2) fundamental
+plus uncharged harmonics totaling 205.8 m_e of extra mass.
+On flat T², harmonics are exactly uncharged (C = 0).  On the
+curved torus, even-parity modes acquire nonzero charge overlap.
+
+The n₁ = 0 ground state has charge-per-mass ratio independent
+of ε:
+
+    charge-per-mass ∝ C(n₁=0)/E(n₁=0) ∝ ε/(ε × m_e) = const
+
+With 205.8 m_e of harmonic mass in n₁ = 0 modes, the charge
+deviation is |ΔQ/e| ≈ 70–150, regardless of how small ε is.
+This EXCLUDES n₁ = 0 modes from the harmonic spectrum of any
+charged composite.  The experimental bound is |ΔQ/e| < 10⁻¹².
+
+
+### F12. Parity selection rule: sin-like modes carry zero charge
+
+Each n₁ ≥ 1 eigenmode splits into two versions on the curved torus:
+
+| Version   | Parity | Charge overlap | As harmonic? |
+|-----------|--------|----------------|--------------|
+| cos-like  | even   | C ≠ 0          | CONSTRAINED  |
+| sin-like  | odd    | C = 0 exactly  | ALWAYS ALLOWED |
+
+The sin-like (odd-parity) modes have C = 0 by symmetry
+(odd × even × even integrand), regardless of n₁ or ε.
+They can serve as harmonics at any ε without affecting
+the total charge.
+
+
+### F13. Cos-like harmonics are strongly constrained
+
+For cos-like (even-parity) harmonics, the charge overlap scales as:
+
+| Mode        | C scaling | |ΔQ/e| at ε=0.1 | Constraint on ε |
+|-------------|-----------|----------------|-----------------|
+| n₁=0 ground | C ∝ ε     | 80             | EXCLUDED (any ε)|
+| n₁=2 cos    | C ∝ ε     | 1.2            | ε < 9×10⁻¹⁴    |
+| n₁=3 cos    | C ∝ ε²    | 4×10⁻³         | ε < 3×10⁻¹¹    |
+| n₁=4 cos    | C ∝ ε²    | 6×10⁻⁴         | ε < 2×10⁻¹⁰    |
+| n₁=5 cos    | C ∝ ε³    | 4×10⁻⁵         | ε < 3×10⁻⁹     |
+
+The n₁ = 2 cos mode is the most dangerous after the ground state:
+its charge overlap scales linearly with ε, and the muon needs
+~103 quanta, giving |ΔQ/e| ≈ 50ε.  This requires ε < 10⁻¹³ for
+consistency — an astronomically thin torus.
+
+Higher cos modes have progressively weaker constraints due to
+the higher-order ε scaling.
+
+
+### F14. The perturbative scaling is verified numerically
+
+The charge overlap C(n₁)/ε^n converges to a constant at
+small ε, confirming the analytical prediction:
+
+- n₁ = 0: C/ε → 3.14 (= π)
+- n₁ = 2 cos: C/ε → 0.74 (≈ π/4, from ∫cos2θ cos²θ dθ)
+- n₁ = 4 cos: C/ε² converges but is very small
+
+The key integral identity:
+∫₀²π cos(nθ) cos²(θ) dθ = π/2 × δ_{n,2}
+
+explains why only n₁ = 0 and n₁ = 2 get O(ε) charge.
+All higher even modes require higher-order corrections.
+
+
+### F15. Dilemma: flat torus or parity selection
+
+The muon charge constraint creates a sharp dilemma:
+
+**(a) Extremely thin torus (ε < 10⁻¹⁴):** All harmonics
+allowed because curvature effects are negligible.  But this
+makes the entire R21 program pointless — the torus is
+effectively flat, and curvature-based mechanisms (quarks,
+mode coupling) vanish.
+
+**(b) Finite ε with parity selection:** All harmonics must be
+sin-like (odd parity).  This is a genuine prediction that
+SELECTS the harmonic spectrum — an unexpected constraint from
+combining R20's "hot electron" model with R21's curved torus.
+
+Option (b) is the more interesting outcome.  It means:
+- The muon = electron + sin-like harmonics (not cos-like)
+- The proton's harmonic spectrum is similarly constrained
+- The ground state (n₁ = 0) cannot participate in composites
+
+This is the first constraint on the harmonic spectrum from
+a combination of geometry and experimental precision.
+
+
+### What Track 5 establishes
+
+**Positive:**
+- The muon charge precision (10⁻¹²) provides a powerful probe
+  of internal structure
+- Curvature creates a natural selection rule: sin-like harmonics
+  only
+- The model makes a testable prediction about mode parity
+
+**Negative:**
+- No direct constraint on the aspect ratio r (unless cos-like
+  harmonics are present)
+- The selection rule is a consequence of exact parity symmetry,
+  which could be broken by shear or other effects
+
+**Open question:** Does shear break the θ₁ → 2π−θ₁ parity?
+If so, sin-like modes would acquire small charge overlaps,
+and the constraint WOULD fix ε.
+
+
+---
+
 ## Summary table
 
 | # | Finding |
@@ -292,6 +413,11 @@ with two distinct fractional charges.  Either:
 | F8 | Charge ratios pass through 1/3 and 2/3 — but at different ε, never simultaneously |
 | F9 | Charge ratio is continuous (not quantized); no preferred fractionalization |
 | F10 | Calculation used simplified (zeroth-order shear) integral; full coupling not computed |
+| F11 | n₁ = 0 ground state excluded as harmonic: charge-per-mass is O(1), |ΔQ/e| ~ 70 |
+| F12 | Parity selection rule: sin-like modes carry zero charge; cos-like modes are constrained |
+| F13 | Cos-like n₁ = 2 harmonic requires ε < 10⁻¹³; higher modes weaker but still constrained |
+| F14 | C scaling verified: C ∝ ε for n₁ = 0, 2; C ∝ ε² for n₁ ≥ 3 cos modes |
+| F15 | Dilemma: either ε < 10⁻¹⁴ (flat torus) or all harmonics must be sin-like (prediction) |
 
 
 ## Scripts
@@ -300,3 +426,5 @@ with two distinct fractional charges.  Either:
   — Eigenvalues, eigenfunctions, localization on the curved embedded torus
 - [`scripts/track2_position_charge.py`](scripts/track2_position_charge.py)
   — Charge overlap integrals, charge ratios, quark ratio scan
+- [`scripts/track5_muon_charge.py`](scripts/track5_muon_charge.py)
+  — Muon charge constraint: harmonic selection rule from parity

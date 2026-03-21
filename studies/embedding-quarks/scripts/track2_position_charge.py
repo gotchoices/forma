@@ -82,11 +82,11 @@ def classify_parity(f, N):
     Returns ('even', score) or ('odd', score) where score ∈ [0, 1].
     """
     f_rev = np.array([f[(-j) % N] for j in range(N)])
-    overlap_even = abs(np.dot(f, f_rev)) / (np.linalg.norm(f)**2)
-    if overlap_even > 0.5:
-        return 'even', overlap_even
+    overlap = np.dot(f, f_rev) / (np.linalg.norm(f)**2)
+    if overlap > 0:
+        return 'even', abs(overlap)
     else:
-        return 'odd', 1 - overlap_even
+        return 'odd', abs(overlap)
 
 
 def charge_overlap(f, eps, N):
