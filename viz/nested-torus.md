@@ -4,7 +4,7 @@ Visualize how periodic dimensions build on each other: a circle becomes a torus,
 
 ## Levels
 
-The visualizer supports 1 to 5 nesting levels, selectable at runtime. Adding a level wraps the existing structure — it does not destroy previous geometry.
+The visualizer supports 1 to 4 nesting levels, selectable at runtime. Adding a level wraps the existing structure — it does not destroy previous geometry.
 
 | Level | Internal dim | What you see |
 |-------|-------------|--------------|
@@ -12,13 +12,18 @@ The visualizer supports 1 to 5 nesting levels, selectable at runtime. Adding a l
 | 2 | L₁ × L₂ | Standard torus — tube r₁, major r₂ |
 | 3 | L₁ × L₂ × L₃ | Major r₃, tube boundaries at r₂ ± r₁ (2 tori, hollow tube) |
 | 4 | … | Major r₄, tubes r₃ ± r₂ ± r₁ (4 boundary tori) |
-| 5 | … | Major r₅, tubes r₄ ± r₃ ± r₂ ± r₁ (8 boundary tori) |
 
 ### Sweep rule
 
 At each new level *k*, the ring (major circle) of the previous torus becomes part of the tube cross-section of the new torus. The new torus sweeps the entire previous structure around a new circle of radius r_k, with the rotation axis shifted 90° from the previous sweep.
 
 Concretely: the level-k torus has major radius r_k. Its tube contains the level-(k−1) structure as a cross-section.
+
+Example:
+- Ring for level 1 (circle) is in xz axis
+- Ring for level 2 is in xy axis
+- Ring for level 3 is in yz axis
+- Ring for level 4 is in xz axis
 
 ### Boundary formula
 
