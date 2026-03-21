@@ -416,6 +416,29 @@ The neutrino must either:
 - Involve physics beyond the current T² framework
 
 
+### F21. Complex geodesics cannot produce lighter modes
+
+On flat T², every excitation decomposes into plane-wave modes
+(n₁, n₂).  The energy is E = ℏc|k(n₁,n₂)|, where |k| grows
+monotonically with the mode numbers.  A "complex knot" with
+high winding numbers (e.g., (100, 37)) has very large |k| and
+correspondingly large energy (~48 m_e for that example).
+
+The lightest uncharged mode is provably (0, ±1) at 0.479 m_e:
+
+- For n₁ = 0: |k|² ∝ n₂², minimized at |n₂| = 1.
+- For |n₁| ≥ 2: |k|² ∝ n₁² + (n₂ − n₁s)² ≥ 4, so
+  E ≥ √(4/4.37) m_e ≈ 0.957 m_e regardless of n₂.
+
+No amount of geodesic complexity can produce a sub-eV mode.
+The mass floor (245 keV) is a hard consequence of the torus
+size being set by the electron mass.
+
+The only way to get lighter modes is a larger torus (different
+T²) or a qualitatively different excitation type (geometry
+fluctuation rather than field mode).
+
+
 ---
 
 ## Summary table
@@ -442,6 +465,7 @@ The neutrino must either:
 | F18 | Neutrino identity open: separate T², geometry fluctuation, or created in decay |
 | F19 | No uncharged triplet sums to neutron excess (1.531 m_e); three-mode packet ruled out |
 | F20 | Ejected harmonics ruled out: mode masses ≥ 245 keV vs neutrino < 0.8 eV; F18c eliminated |
+| F21 | Complex geodesics don't help: higher (n₁,n₂) always means higher E; floor is (0,1) at 0.48 m_e |
 
 
 ## Scripts

@@ -239,17 +239,104 @@ fluctuation) remain viable.
   excitations of the same geodesic)
 - Q32: energy and geometry as only fundamentals
 
-## Risk assessment
+## Model status after R20
 
-**Medium risk, high reward.**
+### What is determined
 
-- The charge protection (F30) is solid — harmonics should be
-  uncharged.  Track 1 is a well-defined calculation.
-- The mass arithmetic is plausible but needs a selection rule
-  (Track 2).  Without one, the model is underdetermined.
-- The binding/stability question is deferred but ultimately
-  essential.  If no binding mechanism exists, the model is
-  descriptive but not dynamical.
-- DIS compatibility is the largest long-term risk.
-- If Track 1 shows harmonics carry significant charge leakage,
-  the approach fails immediately (total charge ≠ e).
+| Quantity | Value | Set by |
+|----------|-------|--------|
+| Electron mode | (1,2) on sheared T² | R13 |
+| Shear s₁₂ | ≈ 0.165 (at r = 1) | R19: α(1,2) = 1/137 |
+| Charge rule | only \|n₁\| = 1 modes carry charge | R19 F30 |
+| L₁ | λ_C × √(1 + (2−s)²/r²) ≈ 2.09 λ_C at r = 1 | E(1,2) = m_e c² |
+| L₂ | r × L₁ | by definition |
+| Proton charge | +e (from (−1,−2) fundamental) | R20 F2 |
+| Neutron charge | 0 (two opposite fundamentals) | R20 F8 |
+| Decay endpoint | 0.782 MeV (matches experiment) | R20 F9 |
+| Stability | proton stable, neutron unstable | R20 F10 |
+| Spin | 1/2 for all baryons and leptons | R14 F10 |
+
+Note: once r is chosen, s₁₂ is fixed by α = 1/137, and then
+L₁, L₂ follow from m_e c².  The absolute torus size is NOT free
+— it is set by the electron mass.  At r = 1:
+L₁ ≈ L₂ ≈ 5.1 × 10⁻¹² m,  a ≈ R ≈ 8.1 × 10⁻¹³ m.
+
+### Free parameters
+
+1. **Aspect ratio r = L₂/L₁.**  The single continuous free
+   parameter.  Currently set to r = 1 for simplicity.
+   Different r values give different s values (all producing
+   α = 1/137) and different mode spectra.  Nothing in the
+   model fixes r — it would need to come from an energy
+   minimization or stability argument.
+
+2. **Harmonic spectrum.**  Which uncharged modes compose the
+   proton (and neutron) is underdetermined.  Many distributions
+   reproduce 1836 m_e — thermal (T' ≈ 34 m_e), geometric
+   (x ≈ 0.98), truncated sums, or mixtures.  A selection rule
+   requires understanding mode-mode coupling from embedding
+   curvature (→ backlog: natural harmonic spectrum study).
+
+### Open structural questions
+
+3. **Why (1,2)?**  Why the electron has winding numbers (1,2)
+   rather than (1,1) or (1,3) is not derived.  The answer
+   likely involves spin quantization (only half-integer spin
+   modes are fermions) and charge quantization (only (1,2)
+   gives Q = e exactly), but this hasn't been proven.
+
+4. **Binding mechanism.**  On flat T², eigenmodes are
+   orthogonal and don't interact.  Embedding curvature
+   breaks this orthogonality, potentially binding modes
+   into composites.  Without binding, the model is
+   kinematic (correct numbers) but not dynamical.
+
+5. **Charge coupling to 3D.**  The R19 charge integral
+   computes a 2D quantity.  How this couples to the
+   external Coulomb field in 3D is not derived from first
+   principles.  R15/R16/R17/R18 attempted this and
+   identified the difficulty.
+
+6. **Neutrino mechanism.**  The neutrino cannot live on the
+   electron's T² (F14).  A separate T² at ~1.5 μm or a
+   geometry fluctuation are the remaining options (F18).
+
+7. **DIS compatibility.**  Deep inelastic scattering shows
+   three charged scattering centers in the proton.  The
+   model has one (the fundamental).  This is the largest
+   long-term risk.
+
+8. **Non-integer charged modes.**  The spectrum predicts
+   spin-1 bosons lighter than the electron with charges
+   ~1.6e and ~2.2e (F6).  These are unobserved and need
+   a suppression mechanism.
+
+### Lightest modes on the electron's T²
+
+Complex geodesics (high winding numbers) do not help.  On
+flat T², every excitation decomposes into plane-wave modes
+(n₁, n₂) with E = ℏc|k(n₁,n₂)|.  Higher mode numbers
+always give higher |k| and higher energy.  The lightest
+uncharged mode is (0,±1) at 0.479 m_e = 245 keV.  Proof:
+
+- n₁ = 0: lightest is |n₂| = 1 → E = 0.479 m_e
+- |n₁| ≥ 2: n₁² ≥ 4, so E ≥ √(4/4.37) m_e = 0.957 m_e
+
+No mode on this lattice — regardless of complexity — can
+be lighter than 245 keV.  Sub-eV particles require either
+a much larger torus or a non-KK mechanism.
+
+### What would make the model predictive
+
+The current model is **descriptive**: it shows that the
+right masses, charges, and spins can be constructed, but
+doesn't uniquely predict them (the harmonic spectrum is
+free).  To become **predictive**, the model needs:
+
+1. A principle selecting r (fixes the geometry completely).
+2. Mode-mode coupling from embedding curvature (selects the
+   harmonic spectrum → predicts m_p, m_n, m_μ, m_τ).
+3. A neutrino mechanism (completes the lepton sector).
+
+The first two are addressed by the backlog item "Natural
+harmonic spectrum from mode coupling."
