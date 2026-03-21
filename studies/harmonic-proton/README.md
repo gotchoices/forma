@@ -1,7 +1,13 @@
-# R20. Harmonic Proton
+# R20. Harmonic Proton  *(complete)*
 
 Can the proton be modeled as the electron's fundamental mode plus
 higher harmonics on the same geodesic — adding mass without charge?
+
+**Answer: yes.**  Five tracks confirm the construction works
+kinematically.  The model is descriptive but not yet predictive —
+the harmonic spectrum is underdetermined.  Predictivity requires
+embedding curvature to select the spectrum and potentially produce
+quarks (→ R21).
 
 ## Background
 

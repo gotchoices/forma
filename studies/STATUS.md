@@ -52,34 +52,33 @@ Key positive result: the 3D charge integral predicts no charged particle lighter
 the electron (F31), explaining electron planarity on T³.  Quark charges cannot come
 from single-photon shear (→ R14, closed negative).
 
-### R20. Harmonic proton — mass from uncharged harmonics on T²
+### R21. Quarks from embedding curvature
+**Study:** [`embedding-quarks/`](embedding-quarks/)
+**Questions:** [Q26](../qa/Q26-hadrons-photon-knots.md), Q13, Q16, [Q32](../qa/Q32-energy-geometry-fundamentals.md)  **Type:** compute  **Depends on:** R20, R19, R12
+
+The embedded torus has position-dependent curvature K = cos(θ₁)/(a(R + a cos θ₁)).
+On flat T², all positions are equivalent and charge is uniform.  On the embedded
+torus, modes at different angular positions see different effective geometry,
+potentially producing position-dependent charge.  S3 showed algebraically that
+a/R ratios of 6.60, 9.91, 19.81 give charges e, 2e/3, e/3.  If curvature creates
+these effective ratios, three phase-spaced fundamentals could be quarks.
+
+This study unifies four open questions from R20: (1) quarks/DIS — three charged
+centers with fractional charges; (2) binding — curvature-induced mode coupling;
+(3) spectrum selection — equilibrium harmonic distribution; (4) proton-neutron
+mass difference — predicted, not fitted.
+
+### R20. Harmonic proton  *(complete)*
 **Study:** [`harmonic-proton/`](harmonic-proton/)
 **Questions:** Q16, [Q26](../qa/Q26-hadrons-photon-knots.md), Q28, [Q32](../qa/Q32-energy-geometry-fundamentals.md)  **Type:** compute  **Depends on:** R19, R14
 
-The proton as the electron's (1,2) fundamental plus higher harmonics on the same
-geodesic.  Harmonics add mass (E_n = n × m_e) but not charge (n₁ ≠ 1 → F30).
-
-**Track 1 (complete):** Harmonics (n,2n) are exactly uncharged for n ≥ 2.
-Convergent infinite series exist for proton mass (thermal T' ≈ 34 m_e,
-geometric x ≈ 0.98).  Energy formula: E = ℏc|k|, harmonics are heavier (n × m_e).
-
-**Track 2 (complete):** Covered by Track 1.  Multiple spectra work; none uniquely selected.
-
-**Track 3 (complete):** Neutron = two opposite-charge fundamentals + harmonics.
-Decay energetics match (0.782 MeV endpoint).  Proton stable (1 fundamental),
-neutron unstable (charged pair).  Open: neutrino, binding, mass-difference origin.
-
-**Track 4 (complete):** Neutrino cannot be a mode on the electron's T² (lightest
-uncharged spin-1/2 is (2,4) at 2 m_e, gap 10⁶).  A separate T² at ~1.5 μm is
-experimentally allowed.  Mode splittings reach sub-eV naturally (0.29 eV).
-Muon/tau fit as "hot electrons" (same fundamental + harmonics); stability pattern
-explained by charge conservation.
-
-**Track 5 (complete):** Three-mode neutrino packet ruled out.  No uncharged
-triplet sums to 1.531 m_e (neutron excess).  All uncharged modes have rest
-mass ≥ 245 keV vs neutrino < 0.8 eV.  Neutrino as ejected harmonics on
-electron's T² definitively excluded.  Separate T² or geometry fluctuation
-remain.
+Proton = electron's (1,2) fundamental + uncharged harmonics.  Neutron = two
+opposite-charge fundamentals + harmonics.  Five tracks completed (F1–F21).
+Key results: harmonics exactly uncharged (F1), decay energetics match (F9),
+proton stable / neutron unstable (F10), muon/tau as "hot electrons" (F17),
+neutrino cannot live on electron's T² (F14).  Model is descriptive (correct
+kinematics) but not yet predictive (harmonic spectrum underdetermined).
+→ R21 addresses the predictivity gap.
 
 ### R14. Universal geometry — shared T³ for all particles  *(closed, negative)*
 **Study:** [`universal-geometry/`](universal-geometry/)
@@ -100,18 +99,6 @@ KK gauge mixing).  DIS (three charged constituents) remains unexplained.
 ## Backlog
 
 Ordered roughly by priority. Items get an R-number when promoted to Active.
-
-### Natural harmonic spectrum from mode coupling  *(Q16, depends on R20)*
-On flat T², eigenmodes are orthogonal — no preferred harmonic distribution exists.
-But the electron's T² is embedded in 3D, and embedding curvature breaks mode
-orthogonality, creating mode-mode coupling.  This coupling should select a
-preferred equilibrium spectrum of uncharged harmonics — the "natural resonance"
-of the torus.  If this spectrum differs between one-fundamental (proton) and
-two-fundamental (neutron) configurations by exactly 1.531 m_e, the model would
-*predict* the proton-neutron mass difference rather than fitting it.  Tracks:
-(1) compute mode-mode coupling from embedding curvature, (2) find equilibrium
-spectrum for proton, (3) compare with neutron, (4) derive mass difference.
-This is the key step toward making the harmonic proton model predictive.
 
 ### Flat space → curved appearance  *(Q2)*
 The compact space is intrinsically flat (photon sees Cartesian space), but
@@ -178,3 +165,4 @@ Studies in chronological order of completion. Key result only — see each study
 | 13 | **R17. Radiation pressure** [`radiation-pressure/`](radiation-pressure/) | Centrifugal force from confined photon's curved 3D path cannot determine α. Track 4: tube deformation preserves φ-symmetry → charge = 0. Track 5: F ⊥ v (no clumping), σ_φ = const (breathing conservative), force is a consequence of confinement. Positive: force decomposition quantified; confirms model self-consistency. |
 | 14 | **R18. Torus stiffness** [`torus-stiffness/`](torus-stiffness/) | Geometric deformation cannot produce charge. Track 1: backwards stiffness κ = ε₀E₀²/(2R), α-independent at linear order. Track 2: Coulomb cost exceeds photon energy saving by 96×. Symmetric torus is stable. Charge integral of cos(θ+2φ) vanishes on any smooth torus. |
 | 15 | **R14. Universal geometry** [`universal-geometry/`](universal-geometry/) | Three-photon linking model for hadrons ruled out. Charge depends on mode numbers, not spatial arrangement (F18). All redistribution mechanisms fail. Positive: spin quantization protects electron (F10); uncharged modes can add mass (F8). |
+| 16 | **R20. Harmonic proton** [`harmonic-proton/`](harmonic-proton/) | Proton/neutron as fundamental + uncharged harmonics on T². 5 tracks, 21 findings. Harmonics exactly uncharged (F1), decay energetics match (F9), stability explained (F10), muon/tau = "hot electrons" (F17), neutrino excluded from electron's T² (F14). Descriptive model complete; predictivity requires embedding curvature (→ R21). |
