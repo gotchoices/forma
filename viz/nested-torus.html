@@ -32,11 +32,6 @@ input[type=color].dim { opacity: 0.25; pointer-events: none; }
     <button class="btn" id="d4">4</button>
     <button class="btn" id="d5">5</button>
   </div><div class="sep"></div>
-  <div class="cg">
-    <label>r₁</label>
-    <input type="range" id="sl-r1" min="0.2" max="3" step="0.05">
-    <span class="val" id="v-r1"></span>
-  </div><div class="sep"></div>
   <div class="cg" id="palette"></div><div class="sep"></div>
   <div class="cg tog"><label><input type="checkbox" id="cb-fit"> Auto-fit</label></div>
   <button class="btn" id="btn-reset">Reset</button>
@@ -59,10 +54,10 @@ import { THREE, createScene, autoResize, animLoop, buildTorusGeom } from './totu
 
 const $ = id => document.getElementById(id);
 
-const KEY = 'nested-torus';
+const KEY = 'nested-torus-v2';
 const DEFAULTS = {
-  depth: 2, r1: 1.0,
-  ratios: [0.3, 0.3, 0.3, 0.3],
+  depth: 2,
+  ratios: [2.5, 2.5, 2.5, 2.5, 2.5],
   opacities: [0.8, 0.25, 0.25, 0.25, 0.25],
   modes: ['shell', 'shell', 'shell', 'shell', 'shell'],
   visible: [true, true, true, true, true],
@@ -72,8 +67,12 @@ const DEFAULTS = {
 
 function load() {
   try {
-    const r = localStorage.getItem(KEY);
-    if (r) return { ...structuredClone(DEFAULTS), ...JSON.parse(r) };
+    const raw = localStorage.getItem(KEY);
+    if (raw) {
+      const s = { ...structuredClone(DEFAULTS), ...JSON.parse(raw) };
+      while (s.ratios.length < 5) s.ratios.push(DEFAULTS.ratios[s.ratios.length]);
+      return s;
+    }
   } catch {}
   return structuredClone(DEFAULTS);
 }
@@ -82,25 +81,32 @@ function save() { localStorage.setItem(KEY, JSON.stringify(S)); }
 
 /* ── Radii ──────────────────────────────────────────── */
 
+/**
+ * r₀ = 1 (implicit reference).
+ * r₁ = ratio₁ × r₀,  r_k = ratio_k × r_{k−1}.
+ * Returns R[0..5] where R[0]=0 (unused), R[k]=r_k.
+ */
 function computeRadii() {
-  const r = [0, S.r1];
-  for (let k = 2; k <= 5; k++) r[k] = S.ratios[k - 2] * r[k - 1];
-  return r;
+  const R = [0];
+  R[1] = S.ratios[0];
+  for (let k = 2; k <= 5; k++) R[k] = S.ratios[k - 1] * R[k - 1];
+  return R;
 }
 
 /**
  * Boundary tube radii at level k.
- * Tube radii = r[2] ± r[3] ± … ± r[k]  (r[2] always +).
- * All tori share major radius = r[1] + r[2] (offset so circle sits at inner edge).
+ * Level k torus has major = r_k.
+ * Tube radii = all ± combinations of r_{k−1} ± r_{k−2} ± … ± r₁
+ * (r_{k−1} always +, remaining signs vary).
  * Returns sorted array of positive values.
  */
-function tubeRadii(r, k) {
+function tubeRadii(R, k) {
   if (k < 2) return [];
-  if (k === 2) return [r[2]];
+  if (k === 2) return [R[1]];
   const n = k - 2, out = [];
   for (let m = 0; m < (1 << n); m++) {
-    let s = r[2];
-    for (let b = 0; b < n; b++) s += (m & (1 << b)) ? -r[b + 3] : r[b + 3];
+    let s = R[k - 1];
+    for (let b = 0; b < n; b++) s += (m & (1 << b)) ? -R[k - 2 - b] : R[k - 2 - b];
     if (s > 1e-6) out.push(s);
   }
   return out.sort((a, b) => b - a);
@@ -109,7 +115,7 @@ function tubeRadii(r, k) {
 /* ── Scene ──────────────────────────────────────────── */
 
 const { scene, camera, renderer, controls } = createScene($('view'), {
-  camPos: [3.2, 2.2, 4.0], maxDistance: 80,
+  camPos: [3.2, 2.2, 4.0], maxDistance: 2000,
 });
 autoResize(renderer, camera, $('view'));
 
@@ -136,44 +142,43 @@ function makeMat(k) {
 }
 
 function rebuild() {
-  const r = computeRadii();
+  const R = computeRadii();
   for (let k = 1; k <= 5; k++) clearGroup(groups[k]);
 
   const N = 128;
-  const M = S.depth >= 2 ? r[1] + r[2] : r[1]; // torus major radius (offset so circle = inner edge)
 
-  /* Level 1 */
+  /* Level 1: circle of radius r₁ */
   const pts = [];
   if (S.depth === 1) {
-    /* Depth 1: circle in XZ plane, radius r₁ */
     for (let i = 0; i <= N; i++) {
       const a = (i / N) * Math.PI * 2;
-      pts.push(new THREE.Vector3(r[1] * Math.cos(a), 0, r[1] * Math.sin(a)));
+      pts.push(new THREE.Vector3(R[1] * Math.cos(a), 0, R[1] * Math.sin(a)));
     }
   } else {
-    /* Depth ≥ 2: tube cross-section profile at φ=0 (circle in z=0 plane) */
+    /* Depth ≥ 2: tube cross-section at φ=0 on L2 torus (major R[2], tube R[1]) */
     for (let i = 0; i <= N; i++) {
       const a = (i / N) * Math.PI * 2;
-      pts.push(new THREE.Vector3(M + r[2] * Math.cos(a), r[2] * Math.sin(a), 0));
+      pts.push(new THREE.Vector3(R[2] + R[1] * Math.cos(a), R[1] * Math.sin(a), 0));
     }
   }
   const curve = new THREE.CatmullRomCurve3(pts, true);
-  const tubeW = Math.max(0.008, 0.012 * (S.depth === 1 ? r[1] : r[2]));
+  const tubeW = Math.max(0.008, 0.012 * R[1]);
   groups[1].add(new THREE.Mesh(new THREE.TubeGeometry(curve, N, tubeW, 8, true), makeMat(1)));
 
-  /* Levels 2..depth: boundary tori (all share major M) */
+  /* Levels 2..depth: each level k has major = r_k */
   for (let k = 2; k <= S.depth; k++) {
-    const trs = tubeRadii(r, k);
+    const trs = tubeRadii(R, k);
     const mat = makeMat(k);
     for (const tR of trs) {
-      const su = Math.max(12, Math.min(48, Math.round(48 * tR / Math.max(M, 0.01))));
-      groups[k].add(new THREE.Mesh(buildTorusGeom(M, tR, su, 64), mat));
+      const su = Math.max(12, Math.min(48, Math.round(48 * tR / Math.max(R[k], 0.01))));
+      const sv = Math.max(32, Math.min(128, Math.round(64 * R[k] / Math.max(R[2], 0.01))));
+      groups[k].add(new THREE.Mesh(buildTorusGeom(R[k], tR, su, sv), mat));
     }
   }
 
   for (let k = 1; k <= 5; k++) groups[k].visible = k <= S.depth && S.visible[k - 1];
-  if (S.autoFit) fitCamera(r);
-  updateInfo(r);
+  if (S.autoFit) fitCamera(R);
+  updateInfo(R);
   save();
 }
 
@@ -194,28 +199,28 @@ function updateVis() {
   save();
 }
 
-function fitCamera(r) {
-  r = r || computeRadii();
-  const M = S.depth >= 2 ? r[1] + r[2] : r[1];
-  const tr = tubeRadii(r, S.depth);
-  const bound = M + (tr.length ? Math.max(...tr) : 0) + 0.1;
-  const dist = bound * 3.2;
+function fitCamera(R) {
+  R = R || computeRadii();
+  const d = S.depth;
+  const tr = tubeRadii(R, d);
+  const bound = (d >= 2 ? R[d] : R[1]) + (tr.length ? Math.max(...tr) : 0) + 0.1;
+  const dist = bound * 3.0;
   camera.position.set(dist * 0.55, dist * 0.4, dist * 0.72);
   controls.target.set(0, 0, 0);
   controls.update();
 }
 
-function updateInfo(r) {
-  r = r || computeRadii();
+function updateInfo(R) {
+  R = R || computeRadii();
   const SUB = '\u2080\u2081\u2082\u2083\u2084\u2085';
   const p = [`depth ${S.depth}`];
-  for (let k = 1; k <= S.depth; k++) p.push(`r${SUB[k]}=${r[k].toFixed(4)}`);
-  const M = S.depth >= 2 ? r[1] + r[2] : r[1];
-  const tr = tubeRadii(r, S.depth);
-  const bound = M + (tr.length ? Math.max(...tr) : 0);
-  p.push(`bound=${bound.toFixed(3)}`);
+  for (let k = 1; k <= S.depth; k++) p.push(`r${SUB[k]}=${R[k].toFixed(2)}`);
+  const d = S.depth;
+  const tr = tubeRadii(R, d);
+  const bound = (d >= 2 ? R[d] : R[1]) + (tr.length ? Math.max(...tr) : 0);
+  p.push(`bound=${bound.toFixed(1)}`);
   let total = 0;
-  for (let k = 2; k <= S.depth; k++) total += tubeRadii(r, k).length;
+  for (let k = 2; k <= d; k++) total += tubeRadii(R, k).length;
   if (total) p.push(`${total} tori`);
   $('info').textContent = p.join('  ');
 }
@@ -239,14 +244,11 @@ for (let k = 1; k <= 5; k++) {
   row.className = 'lrow'; row.id = `lr-${k}`;
   if (k > S.depth) row.style.display = 'none';
 
+  const rv = S.ratios[k - 1];
   let h = `<span class="ltag" id="lt-${k}" style="color:${S.colors[k-1]}">L${k}</span>`;
-
-  if (k >= 2) {
-    const rv = S.ratios[k - 2];
-    h += `<div class="cg"><label>ratio</label>
-      <input type="range" id="sl-r-${k}" min="0.05" max="0.95" step="0.01" value="${rv}">
-      <span class="val" id="vr-${k}">${rv.toFixed(2)}</span></div>`;
-  }
+  h += `<div class="cg"><label>ratio</label>
+    <input type="range" id="sl-r-${k}" min="0.1" max="10" step="0.1" value="${rv}">
+    <span class="val" id="vr-${k}">${rv.toFixed(1)}</span></div>`;
 
   h += `<div class="cg"><label>\u03b1</label>
     <input type="range" id="sl-a-${k}" min="0" max="1" step="0.05" value="${S.opacities[k-1]}">
@@ -265,12 +267,12 @@ for (let k = 1; k <= 5; k++) {
 /* ── UI: wire up per-level events ───────────────────── */
 
 for (let k = 1; k <= 5; k++) {
+  $(`sl-r-${k}`).oninput = function () {
+    S.ratios[k - 1] = +this.value;
+    $(`vr-${k}`).textContent = (+this.value).toFixed(1);
+    rebuild();
+  };
   if (k >= 2) {
-    $(`sl-r-${k}`).oninput = function () {
-      S.ratios[k - 2] = +this.value;
-      $(`vr-${k}`).textContent = (+this.value).toFixed(2);
-      rebuild();
-    };
     $(`bm-${k}`).onclick = function () {
       S.modes[k - 1] = S.modes[k - 1] === 'shell' ? 'wire' : 'shell';
       this.textContent = S.modes[k - 1];
@@ -291,8 +293,6 @@ for (let k = 1; k <= 5; k++) {
 
 /* ── UI: global controls ────────────────────────────── */
 
-$('sl-r1').value = S.r1;
-$('v-r1').textContent = S.r1.toFixed(2);
 $('cb-fit').checked = S.autoFit;
 
 for (let d = 1; d <= 5; d++) {
@@ -300,11 +300,6 @@ for (let d = 1; d <= 5; d++) {
   $(`d${d}`).onclick = () => { S.depth = d; refreshDepthUI(); rebuild(); };
 }
 
-$('sl-r1').oninput = function () {
-  S.r1 = +this.value;
-  $('v-r1').textContent = S.r1.toFixed(2);
-  rebuild();
-};
 $('cb-fit').onchange = function () { S.autoFit = this.checked; save(); };
 $('btn-reset').onclick = () => {
   localStorage.removeItem(KEY);
@@ -322,14 +317,12 @@ function refreshDepthUI() {
 }
 
 function syncAllUI() {
-  $('sl-r1').value = S.r1;
-  $('v-r1').textContent = S.r1.toFixed(2);
   $('cb-fit').checked = S.autoFit;
   refreshDepthUI();
   for (let k = 1; k <= 5; k++) {
+    $(`sl-r-${k}`).value = S.ratios[k - 1];
+    $(`vr-${k}`).textContent = S.ratios[k - 1].toFixed(1);
     if (k >= 2) {
-      $(`sl-r-${k}`).value = S.ratios[k - 2];
-      $(`vr-${k}`).textContent = S.ratios[k - 2].toFixed(2);
       $(`bm-${k}`).textContent = S.modes[k - 1];
       $(`bm-${k}`).classList.toggle('on', S.modes[k - 1] === 'wire');
     }

@@ -4,44 +4,51 @@ Visualize how periodic dimensions build on each other: a circle becomes a torus,
 
 ## Levels
 
-The visualizer supports 1 to 5 nesting levels, selectable at runtime. Adding a level does not destroy previous geometry — it wraps it.
+The visualizer supports 1 to 5 nesting levels, selectable at runtime. Adding a level wraps the existing structure — it does not destroy previous geometry.
 
 | Level | Internal dim | What you see |
 |-------|-------------|--------------|
-| 1 | L₁ | A flat circle (line) of radius r₁ |
-| 2 | L₁ × L₂ | Standard torus — major radius r₁, tube radius r₂ |
-| 3 | L₁ × L₂ × L₃ | Two tori (outer/inner walls of a hollow tube). Major radius r₁, tubes r₂ ± r₃ |
-| 4 | … | Four boundary tori. Major r₁, tubes r₂ ± r₃ ± r₄ |
-| 5 | … | Eight boundary tori. Major r₁, tubes r₂ ± r₃ ± r₄ ± r₅ |
+| 1 | L₁ | Circle of radius r₁ |
+| 2 | L₁ × L₂ | Standard torus — tube r₁, major r₂ |
+| 3 | L₁ × L₂ × L₃ | Major r₃, tube boundaries at r₂ ± r₁ (2 tori, hollow tube) |
+| 4 | … | Major r₄, tubes r₃ ± r₂ ± r₁ (4 boundary tori) |
+| 5 | … | Major r₅, tubes r₄ ± r₃ ± r₂ ± r₁ (8 boundary tori) |
 
 ### Sweep rule
 
-At each new level *k*, the tube of the previous torus gains internal structure by becoming a torus itself. The tube-torus has major radius r_{k−1} and tube radius r_k.
+At each new level *k*, the ring (major circle) of the previous torus becomes part of the tube cross-section of the new torus. The new torus sweeps the entire previous structure around a new circle of radius r_k, with the rotation axis shifted 90° from the previous sweep.
+
+Concretely: the level-k torus has major radius r_k. Its tube contains the level-(k−1) structure as a cross-section.
 
 ### Boundary formula
 
-At depth d, each level k (k ≥ 2) renders 2^(k−2) standard tori. All share major radius r₁. Tube radii are all combinations of r₂ ± r₃ ± … ± r_k (r₂ always positive, remaining signs vary). Combinations with tube radius ≤ 0 are skipped.
+At depth d, level k (k ≥ 2) renders 2^(k−2) standard tori. Each has major radius r_k. Tube radii are all combinations of r_{k−1} ± r_{k−2} ± … ± r₁ (r_{k−1} always positive, remaining signs vary). Combinations yielding tube ≤ 0 are skipped.
 
 ### Radius convention
 
-r₁ is the outermost (largest). Each deeper level is smaller: r_k = ratio_k × r_{k−1}. With default ratio = 0.3, a depth-2 torus has a/R ≈ 0.3 — a nice ring torus.
+r₀ = 1 is an abstract reference unit (not rendered). Each level has a ratio factor:
+
+    r₁ = ratio₁ × r₀
+    r_k = ratio_k × r_{k−1}    (k ≥ 2)
+
+With ratio > 1, each successive radius grows — the level-k torus is a bigger ring than level-(k−1). With ratio < 1, the structure shrinks inward. For non-self-intersection at all levels, ratio ≳ φ ≈ 1.618 (golden ratio), but self-intersecting configurations are valid and interesting to explore.
 
 ### Rendering by level
 
-All levels 1 through d are rendered simultaneously as separate groups, each with its own color, opacity, render mode, and visibility. Inner levels are visible through translucent outer levels.
+All levels 1 through d are rendered simultaneously as separate groups, each with its own color, opacity, render mode, and visibility. With ratio > 1, inner levels appear as smaller rings nested concentrically. With translucency you can see all layers.
 
 ## Per-level controls
 
-Each active level *k* (1 ≤ k ≤ depth) has its own control row that appears when the level is enabled:
+Each active level *k* (1 ≤ k ≤ depth) has its own control row:
 
 | Control | Applies to | Range | Default | Notes |
 |---------|-----------|-------|---------|-------|
-| Ratio r_k/r_{k−1} | k ≥ 2 | slider, 0.05–0.95 | 0.3 | Changing a ratio cascades to all deeper levels. |
-| Opacity α_k | all | slider, 0–1 | L1: 0.8, rest: 0.3 | Surface translucency |
+| Ratio r_k/r_{k−1} | all | slider, 0.1–10 | 2.5 | Values > 1 grow outward, < 1 shrink inward. Cascades to deeper levels. |
+| Opacity α_k | all | slider, 0–1 | L1: 0.8, rest: 0.25 | Surface translucency |
 | Render mode | k ≥ 2 | shell / wire toggle | shell | Wire makes it easy to see inside |
-| Visible | all | toggle | on | Hides this level only. Children remain visible. |
+| Visible | all | toggle | on | Hides this level only. Other levels unaffected. |
 
-Radius computation: `r₁` is set by the global slider. For k > 1, `r_k = ratio_k × r_{k−1}`. Changing r₁ or any ratio rescales all downstream levels automatically.
+Radius computation: `r₀ = 1` (implicit). `r₁ = ratio₁ × r₀`. For k > 1, `r_k = ratio_k × r_{k−1}`. Changing any ratio rescales all downstream levels.
 
 ## Color palette
 
@@ -54,8 +61,7 @@ A persistent row of 5 swatches, always visible in the control bar. Click any swa
 
 | Control | Range | Default | Notes |
 |---------|-------|---------|-------|
-| Depth | 1–5 (buttons) | 1 | Number of active nesting levels |
-| r₁ | slider, 0.2–3.0 | 1.0 | Base radius — all others derive via ratios |
+| Depth | 1–5 (buttons) | 2 | Number of active nesting levels |
 | Auto-fit | toggle | on | Camera zooms to fit when depth or radii change |
 | Reset | button | — | Clears localStorage, restores all defaults |
 
@@ -65,24 +71,26 @@ All configuration saved to `localStorage` key `nested-torus`. Restored on page l
 
 ## Geometry
 
-Level 1: `THREE.Line` circle of radius r₁ in the XZ plane.
+Level 1: `TubeGeometry` circle of radius r₁ in the XZ plane (thin tube so it's visible).
 
-Level k ≥ 2: standard torus meshes via `buildTorusGeom(r₁, tubeR)` for each tube radius in the boundary set. Segment counts scale with tube radius (more segments for bigger tubes).
+Level k ≥ 2: standard torus meshes via `buildTorusGeom(r_k, tubeR)` for each tube radius in the boundary set. Each level k has its own major radius r_k. Segment counts scale with tube-to-major ratio.
 
 ## Camera
 
-- Auto-fit: bounding radius = r₁ + max(tube radii). Camera distance set to fit.
+- Auto-fit: bounding radius = r_d + max(tube radii at depth d), where d is current depth. Camera distance set to fit.
 - OrbitControls for manual navigation.
+- maxDistance large enough for depth-5 structures.
 
 ## Info panel
 
 Bottom center:
 - Depth d
-- Bounding radius
 - r₁ through r_d values
+- Bounding radius
+- Total torus count
 
 ## Future features
 
-- **Wrap/unwrap animation:** when depth increases/decreases, animate the sweep (partial toroidal angle 0 → 2π) so you watch it wrap/unwrap. Code should be structured to support this.
-- **Photon animation:** a glowing particle traveling through the nested space (first planned addition after wrap/unwrap).
+- **Wrap/unwrap animation:** when depth increases/decreases, animate the sweep (partial toroidal angle 0 → 2π) so you watch it wrap/unwrap.
+- **Photon animation:** a glowing particle traveling through the nested space.
 - **Auto-rotate:** slow turntable spin.
