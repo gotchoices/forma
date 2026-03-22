@@ -96,23 +96,35 @@ neutrino cannot live on electron's T² (F14).  Model is descriptive (correct
 kinematics) but not yet predictive (harmonic spectrum underdetermined).
 → R21 addresses the predictivity gap.
 
-### R22. Mode coupling and proton mass  *(not started)*
-**Study:** TBD
+### R23. Neutrino from harmonic beating  *(closed — negative)*
+**Study:** [`neutrino-beating/`](neutrino-beating/)
+**Questions:** Q14, Q67, Q70  **Type:** compute  **Depends on:** R20, R21, R19
+
+Track 1 ✓: Δm² ratio 33.6 achievable but not selective (F1–F7).
+Track 2 ✓: θ₂-momentum conservation blocks phonon mechanism —
+harmonics have different n₂ and don't couple through curvature
+(F8–F12).  No viable neutrino on T² yet (F14).
+
+**R22 F5 closes the last rescue path:** backreaction preserves θ₂
+symmetry (energy density is θ₂-independent for every mode).
+Phonon neutrino model is definitively ruled out on single T².
+Remaining paths: separate T² per flavor, multi-torus, or moduli
+oscillation with a spin-½ mechanism.
+
+
+### R22. Mode coupling and proton mass  *(Track 1 complete)*
+**Study:** [`mode-coupling/`](mode-coupling/)
 **Questions:** Q16, Q26, Q32  **Type:** compute  **Depends on:** R21, R20, R19
 
-Promoted from R21 Track 6.  On the curved embedded torus, eigenmodes
-with different spatial profiles (R21 F1–F3) have different Coulomb overlap
-integrals.  The coupling matrix V_{mn} = ∫∫ ρ_m ρ_n'/|x-x'| dV dV'
-determines which harmonic combinations minimize total energy.
+Track 1 ✓: Curvature-corrected harmonic energies (spectral S-L solver).
+Harmonics are heavier than flat-torus values (δ/n ≈ 0.26 ε²) due to
+cos/sin parity splitting.  Proton mass decreases: ΔM ≈ −53 m_e (r=3),
+−1 m_e (r=10).  Correction is monotonic, does not select r (F4).
 
-R21 Track 5 constrains the spectrum: all harmonics must be sin-like
-(odd parity) unless ε < 10⁻¹⁴ (F12, F15).  This reduces the search
-space for the energy-minimizing configuration.
+**Key result:** θ₂ symmetry preserved by backreaction (F5) — phonon
+neutrino model (R23) is definitively ruled out at the mean-field level.
 
-Key questions:
-1. Does mode coupling select a unique harmonic spectrum for the proton?
-2. If unique: does it predict m_p/m_e = 1836?
-3. Does the coupling provide a binding mechanism for composites?
+Tracks 2–3 (mode coupling matrix, spectrum prediction) remain open.
 
 
 ### R14. Universal geometry — shared T³ for all particles  *(closed, negative)*

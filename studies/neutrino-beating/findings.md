@@ -258,8 +258,9 @@ topological defects (neutrino.md Direction E), separate larger T²
 | F10 | Fixed-n₂ near-degeneracy ~8 eV (not sub-eV) | established |
 | F11 | Coupling desert between gravity and EM | established |
 | F12 | Phonon model has structural obstacle (θ₂) | established |
-| F13 | Backreaction (R22) is the rescue path | identified |
+| F13 | Backreaction (R22) is the rescue path | **ruled out (R22 F5)** |
 | F14 | T² model has no viable neutrino yet | established |
+| F15 | R22 F5: backreaction preserves θ₂ (|ψ|² is θ₂-indep.) | established |
 
 ### Scripts
 
