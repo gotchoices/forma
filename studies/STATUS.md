@@ -22,23 +22,19 @@ energy and topology alone.
 **Open sub-problem:** the formula α(r,s) produces a one-parameter family of
 solutions — every r > ~2 has a self-consistent s.  Nothing currently selects r.
 
-### R24. Torus dynamics — T³ structure and nonlinear mode selection  *(complete)*
-**Study:** [`torus-dynamics/`](torus-dynamics/)
-**Questions:** Q18, Q14, Q16, Q32  **Type:** compute/analytical  **Depends on:** R15, R19, R20–R23
+### R25. Neutrino spin and T³ topology
+**Study:** [`neutrino-spin/`](neutrino-spin/)
+**Questions:** Q14, Q18  **Type:** analytical/compute  **Depends on:** R24, R19, R2
 
-**Track 1 ✓ — T³ neutrino flavors:** Modes (0,0,n₃) on the third compact
-dimension are automatically uncharged (F1) and have mass-squared ratio
-determined purely by integers (F3).  Best match: (7,10,42) → ratio 33.63
-(experiment: 33.60 ± 0.9).  Predicted Σm = 72 meV (below bound).
-System is over-determined: 3 free params vs 4 mixing observables → r predicted,
-model falsifiable (F7).  Critical open: spin of (0,0,n₃) modes (Q1).
+R24 T1 showed (0,0,n₃) modes are kinematically viable neutrinos, but the
+**spin gate** blocks progress: the WvM mechanism gives these modes spin-0,
+not spin-½.  Three candidate rescues:
+- **(A)** Winding on (θ₂,θ₃) subplane → spin-½ but mass ~ 100 keV
+- **(B)** Non-trivial spin structure on T³ → applies to spinors, not vectors
+- **(C)** Curvature spin-orbit coupling → scales as ε₃ ~ 10⁻⁸
 
-**Track 2 ✓ — Wave dynamics:** Pseudo-spectral simulation confirms impulse
-response = eigenmode decomposition (F8).  Curvature mixes θ₁ modes within
-θ₂ sectors (F9).  Defocusing nonlinearity does NOT select modes (F11–F12).
-
-**Track 3 ✗ — r-selection:** Pre-empted by F12.  The viable path to r is
-through PMNS over-determination (Track 1), not dynamics.
+Track 1 tests all three.  If one works → Track 2 derives PMNS → r predicted.
+If all fail → T³ neutrino path is definitively closed.
 
 ---
 
@@ -117,3 +113,4 @@ Studies in chronological order of completion. Key result only — see each study
 | 19 | **R21. Quarks from embedding curvature** [`embedding-quarks/`](embedding-quarks/) | Curvature concentrates modes, lifts ±n₁ degeneracy (T1).  Charge ratios continuous, not quantized — single-torus quarks insufficient (T2).  Parity selection rule: all harmonics must be sin-like; cos-like electron is unique charged mode (T5 F12).  Selects R20 harmonic spectrum. |
 | 20 | **R22. Mode coupling** [`mode-coupling/`](mode-coupling/) | Spectral S-L solver: curvature makes harmonics heavier (δ/n ≈ 0.26 ε²), proton mass decreases slightly (ΔM ≈ −53 m_e at r=3).  Correction monotonic in r — does not select r (F4).  θ₂ symmetry preserved by backreaction (F5) — phonon neutrino definitively ruled out.  Tracks 2–3 deferred: mode-coupling matrix cannot select spectrum without nonlinear dynamics. |
 | 21 | **R23. Neutrino from harmonic beating** [`neutrino-beating/`](neutrino-beating/) | Δm² ratio 33.6 achievable by many triplets — not selective (T1).  θ₂-momentum conservation blocks phonon mechanism (T2).  R22 F5 closes last rescue path (backreaction preserves θ₂).  Single-T² neutrino ruled out.  Neutrino mechanism remains open. |
+| 22 | **R24. Torus dynamics** [`torus-dynamics/`](torus-dynamics/) | T³ neutrinos: modes (0,0,n₃) uncharged, mass ratio 33.63 from integers alone (0.03σ), Σm = 72 meV, system over-determined → r predicted (T1 F1–F7).  Wave dynamics: defocusing nonlinearity does not select modes (T2 F8–F12).  r-selection via dynamics pre-empted (T3).  Critical open: spin of (0,0,n₃) → R25. |
