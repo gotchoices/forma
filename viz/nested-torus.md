@@ -2,6 +2,8 @@
 
 Visualize how periodic dimensions build on each other: a circle becomes a torus, a torus becomes a torus-of-a-torus, and so on. Each level wraps the previous structure around a new circle, producing a recursively nested surface in 3D.
 
+This visualizer is broken--not yet working.
+
 ## Levels
 
 The visualizer supports 1 to 4 nesting levels, selectable at runtime. Adding a level wraps the existing structure — it does not destroy previous geometry.
