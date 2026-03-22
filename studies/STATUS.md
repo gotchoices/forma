@@ -96,6 +96,40 @@ neutrino cannot live on electron's T² (F14).  Model is descriptive (correct
 kinematics) but not yet predictive (harmonic spectrum underdetermined).
 → R21 addresses the predictivity gap.
 
+### R23. Neutrino from harmonic beating
+**Study:** [`neutrino-beating/`](neutrino-beating/)
+**Questions:** Q14, Q67, Q70  **Type:** compute  **Depends on:** R20, R21, R19
+
+The neutrino as a phonon of the harmonic condensate, driven by three
+nearly-degenerate modes beating during neutron decay.  The mass-squared
+splitting ratio Δm²₃₁/Δm²₂₁ ≈ 33.6 is a dimensionless observable that
+depends on torus parameters (r, s) through the mode spectrum.  Finding
+a matching triplet would pin down r — the central free parameter.
+
+Combines neutrino.md Directions A (phonon) and B (beats).  Track 1
+(triplet search) is a sharp pass/fail test.  Four tracks planned:
+triplet search, phonon mass, spin verification, flavor production.
+
+
+### R22. Mode coupling and proton mass  *(not started)*
+**Study:** TBD
+**Questions:** Q16, Q26, Q32  **Type:** compute  **Depends on:** R21, R20, R19
+
+Promoted from R21 Track 6.  On the curved embedded torus, eigenmodes
+with different spatial profiles (R21 F1–F3) have different Coulomb overlap
+integrals.  The coupling matrix V_{mn} = ∫∫ ρ_m ρ_n'/|x-x'| dV dV'
+determines which harmonic combinations minimize total energy.
+
+R21 Track 5 constrains the spectrum: all harmonics must be sin-like
+(odd parity) unless ε < 10⁻¹⁴ (F12, F15).  This reduces the search
+space for the energy-minimizing configuration.
+
+Key questions:
+1. Does mode coupling select a unique harmonic spectrum for the proton?
+2. If unique: does it predict m_p/m_e = 1836?
+3. Does the coupling provide a binding mechanism for composites?
+
+
 ### R14. Universal geometry — shared T³ for all particles  *(closed, negative)*
 **Study:** [`universal-geometry/`](universal-geometry/)
 **Questions:** [Q13](../qa/Q13-three-compact-dimensions.md), [Q26](../qa/Q26-hadrons-photon-knots.md), [Q32](../qa/Q32-energy-geometry-fundamentals.md), Q64, Q66  **Type:** compute/reason  **Depends on:** R13, R19

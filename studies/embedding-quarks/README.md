@@ -177,21 +177,11 @@ Does NOT directly constrain r (unless cos-like harmonics are
 present).  Open question: does shear break the parity symmetry?
 
 
-### Track 6: Mode-mode coupling and harmonic spectrum
+### Track 6: Mode-mode coupling and harmonic spectrum  → R22
 
-Compute the electromagnetic coupling between modes on the
-curved torus.  On the embedded torus, modes with different
-spatial profiles (Track 1) have different Coulomb overlap
-integrals.  The coupling matrix:
-
-    V_{mn} = ∫∫ ρ_m(x) ρ_n(x') / |x-x'| dV dV'
-
-determines which harmonic combinations minimize total energy.
-
-Key questions:
-1. Does the coupling select a unique harmonic spectrum?
-2. If unique: does it predict m_p = 1836 m_e?
-3. Does the coupling provide a binding mechanism for composites?
+Promoted to its own study: **R22. Mode coupling and proton mass.**
+The computation is large enough to warrant independent tracking.
+See studies/STATUS.md for the R22 entry.
 
 
 ### Status of the quark program
@@ -251,6 +241,4 @@ new idea (multi-torus, non-abelian, or topological quantization).
   parity selection rule instead of a constraint on r.  All
   harmonics must be sin-like (odd parity) unless ε < 10⁻¹⁴.
   Opens the question of whether shear breaks parity.
-- **Track 6 (harmonic spectrum):** Medium risk, highest reward.
-  If mode coupling selects a unique spectrum, this predicts
-  the proton mass.  If not, the spectrum remains free.
+- **Track 6 (harmonic spectrum):** Promoted to R22.

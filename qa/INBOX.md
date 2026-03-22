@@ -21,20 +21,31 @@ Q11. **Why only q = 1 and q = 2?** → [Q11-spin-statistics-filter.md](Q11-spin-
 Q12. **Multi-photon states and color charge.** Could three confined
 photons with correlated phases each contribute 1/3 of the charge?
 *Source: knot-zoo F3*
-*Status: open — folded into R14*
+*Status: obsolete — R14 (closed negative) showed linking cannot
+redistribute charge; R21 T2 showed curvature gives continuous
+ratios, not quantized 1/3.  Quark charge mechanism remains open
+(see Q62, Q64, Q66).*
 
 Q14. **Neutrino topology.** q = 0 requires a/R → ∞ (unphysical).
 Is the neutrino a fundamentally different topology? A (3,2) knot
 has spin ½ and zero charge, but does this identification hold?
 *Source: knot-zoo F3, F4*
-*Status: open*
+*Status: partially answered — R20 F14 proved the neutrino
+cannot be any KK eigenmode on the electron's T² (lightest
+uncharged mode is 245 keV, neutrino < 0.8 eV).  Five
+alternative directions analyzed in harmonic-proton/neutrino.md.
+Most promising: harmonic beating (Direction B) and condensate
+phonon (Direction A).  See Q70 and any future neutrino study.*
 
 Q15. **Generations as harmonics.** m_μ/m_e ≈ 206.8 is not an
 integer. Does this rule out the simplest harmonic model?
 *Source: knot-zoo F2*
-*Status: partially answered — simplest harmonic model is
-falsified for leptons. Anharmonic or relativistic corrections
-not explored.*
+*Status: answered by R20 F17 — muon/tau are "hot electrons"
+(same (1,2) fundamental + uncharged sin-like harmonics adding
+mass), not simple overtones.  Mass ratios aren't integers
+because the harmonic spectrum is thermal/free, not a single
+overtone.  R21 F12 further constrains harmonics to sin-like
+(odd parity) modes.*
 
 Q16. **What sets the photon energy?** In the compact dimension
 model, mass = photon energy / c². What determines which photon
@@ -249,7 +260,10 @@ mutually coupled cavity modes? Does the coupling between modes shift
 the resonance frequency in a way that predicts the neutron-proton mass
 difference (1.293 MeV)?
 *Source: user question*
-*Status: open — wave-language extension of R14; no computation yet*
+*Status: obsolete — R14 (closed negative) ruled out the three-photon
+linking model.  R20 replaced it with the harmonic proton model
+(single fundamental + uncharged harmonics).  The proton mass
+prediction is now an R22 question (mode coupling selects spectrum).*
 
 Q47. **Geometric interpretation of the running of α.**
 The one-loop QED running is:
@@ -759,33 +773,27 @@ Q60. **3D geodesics on sheared T³: what is the charge formula?**
 R19 Tracks 1–5 used the 2D charge formula for (1,m) modes
 confined to a plane of T³.  But on T³, a photon can wind in
 all three compact dimensions: (n₁, n₂, n₃) with all nᵢ ≠ 0.
-Such a geodesic is a true 3D path, not confined to any plane.
-The charge integral for a 3D geodesic has not been computed.
-The angular integration is over all three compact coordinates,
-not just two — this could produce qualitatively different
-charge values, potentially including fractional charges.
-
-The electron would have (1, 2, 0) — confined to a plane
-because n₃ = 0 is the lowest-energy state.  Quarks would have
-n₃ ≠ 0, making them heavier (longer geodesic) and potentially
-giving different charge through the 3D integral.
 
 *Source: R19 Track 4/5 discussion*
 *Connects to: R19, R14, Q13 (three compact dimensions)*
-*Status: → R19 Track 6*
+*Status: answered by R19 Track 6 (F31) — the 3D charge
+integral gives a selection rule: s₁₃ = 0 kills charge for
+n₃ ≠ 0 modes.  No charged particle lighter than the electron
+exists on T³.  Fractional charges from 3D geodesics are
+ruled out.  See also Q63 (electron planarity).*
 
 Q61. **Does the n=1 tube-winding constraint hold in 3D?**
 On T², the WvM charge mechanism requires n = 1 (one tube
 winding) for nonzero monopole moment (R19 F17, S3 F3).
-For n ≠ 1, ∫cos(Θ)cos(nΘ + q_eff Φ)dΘ = 0.  On T³, the
-field rotates in a 3D compact space.  The angular integration
-is more complex — the 2D selection rule (n = 1 only) may not
-apply.  This could open up more winding configurations for
-charged particles.
 
 *Source: R19 Track 4/5 analysis*
 *Connects to: R19 F17, S3 F3*
-*Status: open — to be investigated in R19 Track 6*
+*Status: answered by R19 Track 6 — the n₁ = 1 constraint
+holds in 3D.  The 3D charge integral factorizes, and the
+tube-winding selection rule (n₁ = 1 only for nonzero charge)
+carries over from 2D to 3D.  R21 Track 2 (F6) extends this
+further on the curved torus: only even-parity (cos-like)
+n₁ = 1 modes carry charge.*
 
 Q62. **Independent quark T² (Model B from S3): revisit with shear?**
 S3 F4 proposed "Model B" — separate compact dimensions for
@@ -806,17 +814,18 @@ predictions (independent geometries are less falsifiable).
 
 Q63. **Why is the electron confined to a 2D plane on T³?**
 R14 F2 assumed the electron uses 2 of 3 compact dimensions
-with the third "inert."  This was never derived.  The physical
-reason could be energetic: (1, 2, 0) has a shorter geodesic
-than (1, 2, k) for k ≠ 0, so it is the lowest-energy state.
-If so, the electron is the ground state and quarks are
-excited states with n₃ ≠ 0.  This should be verified by
-computing the geodesic lengths and showing that (1, 2, 0) is
-the minimum-energy configuration with spin ½ and charge e.
+with the third "inert."  This was never derived.
 
 *Source: R19 Track 4/5 discussion*
 *Connects to: R14 F2, R19, Q13*
-*Status: open*
+*Status: answered by R19 F31 — the 3D charge integral on
+sheared T³ gives a selection rule: s₁₃ = 0 (no shear in
+the third dimension) kills charge for any mode with n₃ ≠ 0.
+The electron must have n₃ = 0, confining it to a 2D plane.
+Additionally, (1, 2, 0) has shorter geodesic length than
+(1, 2, k) for k ≠ 0, making it the lowest-energy charged
+spin-½ state.  Both energetic and charge-based arguments
+agree: the electron is planar on T³.*
 
 Q64. **Does topological linking modify the charge formula?**
 R14 proposed that Borromean linking of three photons on T³
@@ -860,6 +869,54 @@ picture, with each addressing a different aspect.
 *Source: R19 Track 5 conclusion*
 *Connects to: R19, R14*
 *Status: open — the most conservative next hypothesis*
+
+Q67. **What fixes the aspect ratio r?**  The central free
+parameter.  α(r, s) = 1/137 fixes s at each r, but nothing
+pins r.  Potential second constraints: (a) energy extremality
+or stability; (b) matching a second observable (muon mass
+ratio, proton-electron mass ratio); (c) Q52's r = 1/2 from
+equal arc per winding; (d) neutrino mass-squared splittings
+(three near-degenerate mode triplet constraining r — see
+neutrino study if created).  R21 Track 5 showed muon charge
+does NOT constrain r (parity selection rule instead).
+*Source: R21 Track 5 conclusion, project-wide assessment*
+*Connects to: Q52, R19, R21*
+*Status: open — highest priority free-parameter problem*
+
+Q68. **Write up the electron model (paper).**  The model has
+a complete electron: mass from T² periodicity, charge from
+shear (R19), spin ½ from (1,2) winding, g = 2 from topology
+(R8), α from one equation in (r, s).  A paper would consolidate
+S1–R21 results, force confrontation with what's rigorous vs.
+hand-waving, and establish priority.  Could frame as "single
+photon on sheared T² reproduces electron properties" with the
+free parameter r acknowledged.
+*Source: project assessment after R21*
+*Status: open — consolidation task*
+
+Q69. **DIS and scattering predictions from the harmonic proton.**
+R20's proton has internal structure (fundamental + uncharged
+harmonics).  R21 Track 5 constrains harmonics to be sin-like.
+What does deep inelastic scattering look like in this model?
+Can we compute form factors or structure functions?  This tests
+the model against hard experimental data without requiring
+quarks.  The sin-like harmonics have specific spatial profiles
+on the curved torus — these determine the scattering response.
+*Source: project assessment after R21*
+*Connects to: R20, R21, Q26*
+*Status: open — could constrain the harmonic spectrum*
+
+Q70. **Neutrino from beating harmonics.**  In beta decay,
+three nearly-degenerate harmonics could form a beat pattern
+that escapes the proton as a quasi-particle.  The beat
+envelope has effective mass ~ ΔE (the splitting), naturally
+sub-eV.  Three pairwise beats → three neutrino flavors.
+The mass-squared splitting ratio Δm²₃₁/Δm²₂₁ ≈ 33.6 is
+a dimensionless observable that could pin down r.
+See neutrino.md Directions A (phonon) and B (beats).
+*Source: user insight + R20 F16 (sub-eV mode splittings)*
+*Connects to: R20 F14–F21, neutrino.md, Q14*
+*Status: open — promising; could become R23*
 
 Q34. **The charge mechanism problem: how does the electron have
 charge?** R13 Track 3 showed that the multi-winding (68, 137)

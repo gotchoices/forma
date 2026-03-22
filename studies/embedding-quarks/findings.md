@@ -392,9 +392,33 @@ a combination of geometry and experimental precision.
 - The selection rule is a consequence of exact parity symmetry,
   which could be broken by shear or other effects
 
-**Open question:** Does shear break the θ₁ → 2π−θ₁ parity?
-If so, sin-like modes would acquire small charge overlaps,
-and the constraint WOULD fix ε.
+### Note: Shear does not break parity (analytical)
+
+The Track 5 open question — does shear break θ₁ → 2π−θ₁
+symmetry? — is resolved analytically: **no**.
+
+On the sheared torus, mode ψ = f(θ₁) e^{iq_eff θ₂} with
+q_eff = n₂ − s·n₁.  The Sturm-Liouville equation for f
+depends on q_eff only through the potential term
+q(θ₁) = ε²q_eff²/(1+ε cos θ₁)², which is **even** under
+θ₁ → 2π−θ₁ regardless of q_eff.  The operator p(θ₁) and
+weight w(θ₁) are also even.  Periodic boundary conditions
+are unchanged.  Therefore:
+
+- Eigenfunctions remain strictly even or odd
+- C = 0 for odd modes (exact, not approximate)
+- The parity selection rule is robust under shear
+
+Shear changes eigenvalues (through q_eff) and charges
+(through sin(2πs)/q_eff), but not the θ₁-parity of f.
+The muon charge constraint cannot fix ε through parity
+breaking.
+
+The only way to break this parity would be a mechanism
+that makes the EMBEDDING asymmetric in θ₁ — e.g., a
+deformed (non-circular) tube cross-section, or coupling
+to an external field.  On the standard embedded torus,
+the symmetry is exact.
 
 
 ---
