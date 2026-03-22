@@ -28,22 +28,20 @@ This study attacks both problems with two new approaches:
   an impulse selects specific stable configurations (attractors), potentially
   fixing r and the harmonic spectrum.
 
-## Track 1 — T³ mode structure and neutrino flavors
+## Track 1 — T³ mode structure and neutrino flavors  ✓
 
-Enumerate modes on flat T³ with general lattice (3 radii, 3 shears).
-Identify the electron's T² subplane.  Classify remaining modes by:
-- Which subplane(s) they occupy
-- Charge (only modes winding in θ₁ carry charge via R19 mechanism)
-- Spin (winding topology → spin-½ requires (1, n₂) or equivalent)
-- Energy scale
+Modes with n₁ = 0 are automatically uncharged (R19).  The lightest are
+pure θ₃ modes (0,0,n₃) with m ∝ n₃/L₃.  The mass-squared ratio
+(n_c²−n_a²)/(n_b²−n_a²) is determined by integers alone — parameter-free.
 
-Key questions:
-- Do modes on the (θ₁, θ₃) and (θ₂, θ₃) planes have zero charge?
-- Can they carry spin-½?
-- Does the mass spectrum depend on the third radius c in a way that
-  could reproduce Δm²₃₁/Δm²₂₁ ≈ 33.6?
-- How many free parameters remain after fitting α + neutrino masses?
-  If mixing angles are predicted, the model is falsifiable.
+Key results (F1–F7):
+- (7,10,42) matches the experimental ratio 33.60 to 0.03σ
+- L₃ ~ 250–1020 μm, independent of all T² parameters
+- Predicted Σm = 65–72 meV (below cosmological bound)
+- System is over-determined (3 free params, 4 mixing observables)
+  → r is predicted, model is falsifiable
+
+Critical open: spin of (0,0,n₃) modes, sterile neutrino suppression.
 
 ## Track 2 — Nonlinear wave equation on embedded T²
 
