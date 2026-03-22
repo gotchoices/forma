@@ -96,23 +96,6 @@ neutrino cannot live on electron's T² (F14).  Model is descriptive (correct
 kinematics) but not yet predictive (harmonic spectrum underdetermined).
 → R21 addresses the predictivity gap.
 
-### R23. Neutrino from harmonic beating
-**Study:** [`neutrino-beating/`](neutrino-beating/)
-**Questions:** Q14, Q67, Q70  **Type:** compute  **Depends on:** R20, R21, R19
-
-The neutrino as a phonon of the harmonic condensate, driven by three
-nearly-degenerate modes beating during neutron decay.  The mass-squared
-splitting ratio Δm²₃₁/Δm²₂₁ ≈ 33.6 is a dimensionless observable that
-depends on torus parameters (r, s) through the mode spectrum.
-
-**Track 1 ✓ (complete):** Triplet search.  At E_max = 100 m_e, the ratio
-33.6 is trivially achieved at keV-scale splittings (millions of matches
-at every r).  At the physically relevant sub-eV scale, best match is
-r = 10 with ratio 33.82 (0.75% off, 753 pairs).  The ratio alone does
-not fix r — match quality is limited by mode count, not geometry.  The
-test needs higher E_max or analytical Diophantine methods.  Findings F1–F7.
-
-
 ### R22. Mode coupling and proton mass  *(not started)*
 **Study:** TBD
 **Questions:** Q16, Q26, Q32  **Type:** compute  **Depends on:** R21, R20, R19

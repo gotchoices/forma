@@ -126,17 +126,17 @@ pair counts drop to ~85 (r = 1) through ~753 (r = 10).  Best sub-eV
 match: r = 10, ratio = 33.82 (0.75% off).  The ratio alone does not
 uniquely fix r.  See findings F1–F7.
 
-### Track 2: Phonon dispersion and effective mass
+### Track 2: Phonon coupling analysis  ✓ (complete)
 
-Given a candidate triplet, compute the phonon dispersion
-relation for collective excitations involving these three modes.
+Does the embedding curvature provide the mode-mode coupling
+needed for a sub-eV phonon?
 
-Steps:
-1. Write the Hamiltonian for coupled modes on the curved torus.
-2. Linearize around the proton's equilibrium occupation.
-3. Compute the phonon spectrum (small oscillations).
-4. Extract effective masses for the three phonon branches.
-5. Compare to neutrino mass bounds (< 0.8 eV).
+**Result:** NO — θ₂-momentum is conserved on the axisymmetric
+embedded torus (the metric has no θ₂ dependence).  Modes with
+different n₂ don't couple.  The proton's harmonics (n, 2n) each
+have a different n₂, so they don't couple through curvature.
+The phonon model has a structural obstacle.  The only rescue
+path is the proton's backreaction on T² shape (R22).  See F8–F14.
 
 ### Track 3: Spin and quantum numbers
 
@@ -184,10 +184,11 @@ splittings above the sub-eV regime.  At sub-eV scale, match quality
 The ratio test does not falsify the model but does not fix r either.
 Higher E_max or analytical Diophantine methods could sharpen the test.
 
-**Track 2 (phonon mass): high risk.**
-Getting a sub-eV effective mass requires weak mode-mode coupling.
-The coupling strength hasn't been computed (this is also R22's
-domain).  If the coupling is too strong, the phonon is too heavy.
+**Track 2 (phonon coupling): resolved — structural obstacle.**
+θ₂-momentum conservation prevents curvature-mediated coupling
+between harmonics (F8–F9).  The required coupling (~0.025 eV)
+falls in a desert between gravity (10⁻²⁴ eV) and EM (~1 eV).
+The phonon model needs R22's backreaction to break θ₂ symmetry.
 
 **Track 3 (spin): medium risk.**
 Angular momentum conservation requires spin ½.  Whether the
@@ -200,9 +201,10 @@ If Tracks 1–3 succeed, the flavor structure follows from the
 decay kinematics and mode coupling.  This is an extension, not
 a new obstacle.
 
-**Overall: the study is worth continuing.**  Track 1 showed the
-ratio test is not sharp at E_max = 100 — triplets exist everywhere
-at keV scale, while sub-eV statistics are too sparse.  But the
-model is NOT falsified: good matches exist at every r.  The next
-discriminating test is Track 2 (phonon mass), which provides an
-absolute scale constraint independent of mode-counting statistics.
+**Overall: the neutrino remains the model's biggest gap.**
+Track 1 showed the Δm² ratio is achievable but not constraining.
+Track 2 found a structural obstacle (θ₂ conservation) that blocks
+the phonon mechanism at the fixed-background level.  The model
+does NOT yet have a viable neutrino.  The most promising rescue
+is R22's self-consistent calculation, which may break θ₂ symmetry
+through backreaction.  Tracks 3–4 are deferred pending R22.
