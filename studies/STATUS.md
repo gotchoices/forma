@@ -22,24 +22,23 @@ energy and topology alone.
 **Open sub-problem:** the formula α(r,s) produces a one-parameter family of
 solutions — every r > ~2 has a self-consistent s.  Nothing currently selects r.
 
-### R24. Torus dynamics — T³ structure and nonlinear mode selection
+### R24. Torus dynamics — T³ structure and nonlinear mode selection  *(complete)*
 **Study:** [`torus-dynamics/`](torus-dynamics/)
 **Questions:** Q18, Q14, Q16, Q32  **Type:** compute/analytical  **Depends on:** R15, R19, R20–R23
 
-Two open problems (r-selection and neutrino) share a root cause: the model is
-linear on a fixed geometry.  R24 attacks both with new approaches.
+**Track 1 ✓ — T³ neutrino flavors:** Modes (0,0,n₃) on the third compact
+dimension are automatically uncharged (F1) and have mass-squared ratio
+determined purely by integers (F3).  Best match: (7,10,42) → ratio 33.63
+(experiment: 33.60 ± 0.9).  Predicted Σm = 72 meV (below bound).
+System is over-determined: 3 free params vs 4 mixing observables → r predicted,
+model falsifiable (F7).  Critical open: spin of (0,0,n₃) modes (Q1).
 
-**Track 1 — T³ neutrino flavors:** The electron uses 2 of 3 compact dimensions.
-C(3,2) = 3 subplanes in T³ → three neutrino flavors, same geometry, no separate
-space.  T³ has 5 free parameters vs ≥6 observables (α + neutrino sector) →
-potentially over-determined and predictive.
+**Track 2 ✓ — Wave dynamics:** Pseudo-spectral simulation confirms impulse
+response = eigenmode decomposition (F8).  Curvature mixes θ₁ modes within
+θ₂ sectors (F9).  Defocusing nonlinearity does NOT select modes (F11–F12).
 
-**Track 2 — Nonlinear dynamics:** Time-domain wave equation with self-interaction
-on embedded T².  Impulse response on nonlinear system can select stable modes,
-potentially fixing r and the harmonic spectrum.
-
-**Track 3 — r-selection:** If Track 2 shows mode selection, sweep over r to find
-stable aspect ratios.
+**Track 3 ✗ — r-selection:** Pre-empted by F12.  The viable path to r is
+through PMNS over-determination (Track 1), not dynamics.
 
 ---
 

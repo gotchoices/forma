@@ -100,3 +100,83 @@ If successful, r is predicted and the model becomes fully constrained.
 L₃ ~ 250–1080 μm exceeds the ~50 μm range of current gravity tests.
 If gravity propagates in the third dimension, these sizes are excluded.
 The model requires gravity to be confined to 3+1D non-compact dimensions.
+
+---
+
+## Track 2: Wave dynamics on embedded T²
+
+### F8. Linear impulse = eigenmode decomposition
+On the flat torus, Fourier modes are eigenmodes and conserve energy
+individually.  An impulse rings at all eigenfrequencies simultaneously.
+The impulse response IS the eigenvalue spectrum, viewed in the time domain.
+
+### F9. Curvature mixes θ₁ modes within θ₂ sectors
+On the embedded torus (ε = 1/r), the θ₁-dependent metric couples
+different m values within each θ₂ sector n₂.  Power oscillates
+between m values over time, while the total power per sector stays
+approximately constant (exact axial symmetry).
+
+This is a direct visualization of the Sturm-Liouville eigenmode
+structure from R22: the eigenmodes are not pure Fourier modes but
+linear combinations of different m, explaining the observed power flow.
+
+### F10. Position-dependent excitation
+An impulse at the outer equator (θ₁ = 0) excites different mode
+mixtures than one at the inner equator (θ₁ = π).  The outer equator
+is where curvature concentrates eigenmodes (R21 F1), so pulses there
+couple more strongly to the localized modes.
+
+### F11. Defocusing nonlinearity does not select modes
+With a defocusing cubic term −λψ³ (modeling electromagnetic self-repulsion):
+- At λ = 0.5 (artificially strong): energy redistributes between modes
+  but does NOT concentrate.  The low-mode fraction E_low/E_tot stays
+  between 0.92–0.98 over 50 periods.  No mode selection occurs.
+- At physical coupling λ = α ≈ 0.007: the nonlinearity slightly shifts
+  eigenfrequencies, producing phase differences relative to the linear
+  system.  But no net energy redistribution between mode sectors.
+
+### F12. Conclusion on impulse-based mode selection
+The impulse + cubic nonlinearity does NOT solve the r-selection problem.
+Defocusing self-interaction disperses energy rather than concentrating it.
+
+Mode selection would require one of:
+- A focusing (attractive) nonlinearity
+- Energy dissipation (coupling to external degrees of freedom)
+- A more physical self-interaction than simple |ψ|²ψ (e.g., long-range
+  Coulomb coupling between charge-carrying modes)
+- An external constraint from the T³ structure (Track 1's parameter
+  over-determination)
+
+---
+
+## Track 3: Aspect ratio selection — closed (pre-empted by F12)
+
+### F13. Track 3 pre-empted
+Track 3 was contingent on Track 2 finding mode selection via nonlinear
+dynamics, then sweeping over r to find which aspect ratios are stable.
+Track 2 found no mode selection (F11–F12): defocusing self-interaction
+disperses energy rather than concentrating it.  Track 3's premise does
+not hold.
+
+### F14. The r-selection path forward
+F12 rules out simple impulse dynamics but points to Track 1's T³
+over-determination as the viable alternative.  The parameter-counting
+argument (F7) shows 4 observables (PMNS mixing angles) constraining
+3 free parameters (r, s₁₃, s₂₃).  If the PMNS mapping can be derived,
+r is predicted without needing dynamical mode selection.
+
+The critical path is:
+1. **Q1 — Spin:** Do (0,0,n₃) modes carry spin-½?  This is a gate.
+   If they're spin-0, the T³ neutrino model fails entirely.
+   Requires analytical work on the T³ fibration topology.
+2. **Q3 — PMNS from shear:** Derive the mapping
+   (r, s₁₃, s₂₃) → (θ₁₂, θ₂₃, θ₁₃, δ_CP).
+   This is a well-defined calculation but requires understanding how
+   the (0,0,n₃) modes couple to the charged leptons via the weak
+   interaction analog in this model.
+3. **r prediction:** If Q1 and Q3 succeed, solving the PMNS equations
+   yields r (and with it, the full T³ geometry).
+
+Each step depends on the previous.  Step 1 is analytical and cannot
+be resolved by simulation — it requires understanding what "spin"
+means for a field mode on T³.

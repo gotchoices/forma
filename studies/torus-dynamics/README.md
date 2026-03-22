@@ -43,40 +43,43 @@ Key results (F1–F7):
 
 Critical open: spin of (0,0,n₃) modes, sterile neutrino suppression.
 
-## Track 2 — Nonlinear wave equation on embedded T²
+## Track 2 — Nonlinear wave equation on embedded T²  ✓
 
-Solve the time-dependent wave equation on the embedded torus:
+Pseudo-spectral simulation (64×64 grid, RK4 time integration) of the
+wave equation on the embedded torus with optional cubic nonlinearity.
 
-    ∂²ψ/∂t² = c² Δ_T² ψ + V[ψ]
+Key results (F8–F12):
+- Linear impulse = eigenmode decomposition (confirmed, as expected)
+- Curvature mixes θ₁ Fourier modes within each θ₂ sector (F9)
+- Pulse position matters: outer vs inner equator excite different modes (F10)
+- Defocusing nonlinearity (−λψ³) does NOT select modes (F11)
+- At physical coupling λ = α, effect is negligible phase shifts only
 
-where V[ψ] includes self-interaction (Coulomb energy of the field).
+Conclusion: impulse dynamics with simple self-repulsion cannot solve
+the r-selection problem.  Mode selection needs either a focusing
+interaction, dissipation, or external constraints (→ Track 1's T³
+parameter over-determination may be the right path).
 
-Steps:
-1. Spectral spatial discretization (Fourier basis on T²)
-2. Time-stepping (RK4 or similar)
-3. Start with localized impulse: Gaussian packet at (θ₁₀, θ₂₀)
-4. Evolve and monitor: which modes grow, which decay, what survives
+## Track 3 — Aspect ratio selection  ✗ (pre-empted)
 
-On the linear system (V=0), this reproduces eigenmode decomposition.
-With V ≠ 0, mode coupling occurs and specific configurations may be
-selected as attractors.
+Track 2 found no mode selection (F12): defocusing self-interaction
+disperses rather than concentrates energy.  Track 3's premise — sweep
+r for dynamically stable configurations — does not hold.
 
-## Track 3 — Aspect ratio selection
+The viable r-selection path is through Track 1's over-determination:
+the PMNS mixing matrix provides 4 constraints on 3 parameters (r, s₁₃, s₂₃).
+Deriving this mapping would predict r without needing dynamics.
 
-If Track 2 shows mode selection, sweep over r to find which aspect
-ratios produce stable configurations.  Compare with α constraint
-from R19.  If a unique r emerges, the model becomes fully predictive.
+## Critical path forward
 
-## Risk assessment
+R24 is complete (Tracks 1–3).  The next steps are sequential:
 
-- **Track 1:** Low risk, high value.  Straightforward mode enumeration.
-  Main risk: T³ neutrino might not give correct mass splittings.
-  Even a negative result narrows the landscape.
+1. **Spin gate (Q1):** Do (0,0,n₃) modes carry spin-½?  Analytical,
+   not computational.  If spin-0, the T³ neutrino model fails.
+2. **PMNS derivation (Q3):** Map (r, s₁₃, s₂₃) → mixing angles.
+   Requires understanding the weak-interaction analog on T³.
+3. **r prediction:** Solve the PMNS equations → r is determined.
 
-- **Track 2:** Medium risk.  The correct form of V[ψ] is not fully
-  specified — is it electromagnetic self-energy, gravitational
-  backreaction, or both?  Starting with the simplest (Coulomb) is
-  defensible.  Risk: on a weakly nonlinear system (α << 1), mode
-  selection may be too slow to observe numerically.
-
-- **Track 3:** Depends on Track 2 succeeding.  Deferred.
+This is a natural scope for a new study (R25) rather than Track 4,
+because it requires different tools (analytical topology, group theory)
+rather than the numerical simulation methods used here.
