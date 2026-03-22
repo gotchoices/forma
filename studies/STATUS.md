@@ -19,127 +19,27 @@ energy m_e c² and (1,2) topology, compute the far-field Coulomb flux, read off
 charge Q, and check whether Q²/(4πε₀ℏc) ≈ 1/137. If so, α is derived from
 energy and topology alone.
 
-### R16. Harmonic decomposition and the charge-producing mode  *(paused)*
-**Study:** [`harmonic-charge/`](harmonic-charge/)
-**Questions:** [Q18](../qa/Q18-deriving-alpha.md), Q34 Path 5  **Type:** analytical/compute  **Depends on:** R12, R13
+**Open sub-problem:** the formula α(r,s) produces a one-parameter family of
+solutions — every r > ~2 has a self-consistent s.  Nothing currently selects r.
 
-The confined photon's field decomposes into Fourier modes of T². Only the
-p = 1 component produces charge (WvM commensurability; R13). If the embedding
-curvature redistributes energy from the (1,2) plane wave to a broad spectrum,
-with the p = 1 sector retaining fraction α of the total energy, then
-α = (charge-mode energy) / (total energy) — derived from geometry.
-Complementary to R15 (numerical forward calc); R16 seeks the analytical
-explanation.  *Paused:* R18 showed that curvature-induced mode mixing on an
-axisymmetric torus still gives zero charge (φ-symmetry protection).  R16's
-approach needs the φ-symmetry breaking that R18 provides.
+### R24. Torus dynamics — T³ structure and nonlinear mode selection
+**Study:** [`torus-dynamics/`](torus-dynamics/)
+**Questions:** Q18, Q14, Q16, Q32  **Type:** compute/analytical  **Depends on:** R15, R19, R20–R23
 
-### R19. Shear-induced charge on T² → T³  *(electron complete; quark program → R14)*
-**Study:** [`shear-charge/`](shear-charge/)
-**Questions:** Q58 (shear breaks φ-symmetry), [Q18](../qa/Q18-deriving-alpha.md), Q34 Path 7  **Type:** analytical/compute  **Depends on:** R12, R15, R18
+Two open problems (r-selection and neutrino) share a root cause: the model is
+linear on a fixed geometry.  R24 attacks both with new approaches.
 
-Shear on the T² lattice breaks φ-symmetry, giving the (1,2) mode a non-integer
-effective winding q_eff = 2 − s.  The charge integral is NONZERO — the first
-mechanism producing charge from a fully delocalized wave.
+**Track 1 — T³ neutrino flavors:** The electron uses 2 of 3 compact dimensions.
+C(3,2) = 3 subplanes in T³ → three neutrino flavors, same geometry, no separate
+space.  T³ has 5 free parameters vs ≥6 observables (α + neutrino sector) →
+potentially over-determined and predictive.
 
-**Electron (Tracks 1–3, complete):** α = r²sin²(2πs)/(4π(2−s)²√(r²(1+2s)²+4)).
-Self-consistent geometry gives a one-parameter family in r.  Shear is energetically
-favorable.  The free parameter r must be fixed by multi-particle constraints (→ R14).
+**Track 2 — Nonlinear dynamics:** Time-domain wave equation with self-interaction
+on embedded T².  Impulse response on nonlinear system can select stable modes,
+potentially fixing r and the harmonic spectrum.
 
-**Quark program (Tracks 4–6, complete, negative):** Three approaches tested —
-uniform shear (T4), non-uniform shear (T5), and full 3D charge integral (T6).
-All ruled out.  Single-photon quarks from shear are definitively excluded (F24, F33).
-Key positive result: the 3D charge integral predicts no charged particle lighter than
-the electron (F31), explaining electron planarity on T³.  Quark charges cannot come
-from single-photon shear (→ R14, closed negative).
-
-### R21. Quarks from embedding curvature
-**Study:** [`embedding-quarks/`](embedding-quarks/)
-**Questions:** [Q26](../qa/Q26-hadrons-photon-knots.md), Q13, Q16, [Q32](../qa/Q32-energy-geometry-fundamentals.md)  **Type:** compute  **Depends on:** R20, R19, R12
-
-The embedded torus has position-dependent curvature K = cos(θ₁)/(a(R + a cos θ₁)).
-On flat T², all positions are equivalent and charge is uniform.  On the embedded
-torus, modes at different angular positions see different effective geometry,
-potentially producing position-dependent charge.  S3 showed algebraically that
-a/R ratios of 6.60, 9.91, 19.81 give charges e, 2e/3, e/3.  If curvature creates
-these effective ratios, three phase-spaced fundamentals could be quarks.
-
-**Track 1 (F1–F5):** Curvature concentrates modes at outer equator (40:1 at
-ε = 0.5); ±n₁ degeneracy lifts (56% splitting); standing-wave eigenstates at
-distinct angular positions.
-
-**Track 2 (F6–F10):** Odd modes carry zero charge (parity); ground state
-acquires charge on curved torus.  Charge ratios pass through 1/3 and 2/3 at
-specific ε values, but never both simultaneously.  Ratios are continuous, not
-quantized — single-torus mechanism insufficient for quarks.
-
-**Track 5 (F11–F15):** Muon charge precision (10⁻¹²) creates a parity
-selection rule.  n₁ = 0 ground state excluded as harmonic (|ΔQ/e| ~ 70,
-independent of ε).  Cos-like modes constrained (n₁ = 2 requires ε < 10⁻¹³).
-Sin-like modes always allowed (C = 0 exactly).  Dilemma: either ε < 10⁻¹⁴
-(flat torus) or all harmonics must be sin-like — a genuine prediction that
-selects the R20 harmonic spectrum.
-
-This study unifies four open questions from R20: (1) quarks/DIS — three charged
-centers with fractional charges; (2) binding — curvature-induced mode coupling;
-(3) spectrum selection — equilibrium harmonic distribution; (4) proton-neutron
-mass difference — predicted, not fitted.
-
-### R20. Harmonic proton  *(complete)*
-**Study:** [`harmonic-proton/`](harmonic-proton/)
-**Questions:** Q16, [Q26](../qa/Q26-hadrons-photon-knots.md), Q28, [Q32](../qa/Q32-energy-geometry-fundamentals.md)  **Type:** compute  **Depends on:** R19, R14
-
-Proton = electron's (1,2) fundamental + uncharged harmonics.  Neutron = two
-opposite-charge fundamentals + harmonics.  Five tracks completed (F1–F21).
-Key results: harmonics exactly uncharged (F1), decay energetics match (F9),
-proton stable / neutron unstable (F10), muon/tau as "hot electrons" (F17),
-neutrino cannot live on electron's T² (F14).  Model is descriptive (correct
-kinematics) but not yet predictive (harmonic spectrum underdetermined).
-→ R21 addresses the predictivity gap.
-
-### R23. Neutrino from harmonic beating  *(closed — negative)*
-**Study:** [`neutrino-beating/`](neutrino-beating/)
-**Questions:** Q14, Q67, Q70  **Type:** compute  **Depends on:** R20, R21, R19
-
-Track 1 ✓: Δm² ratio 33.6 achievable but not selective (F1–F7).
-Track 2 ✓: θ₂-momentum conservation blocks phonon mechanism —
-harmonics have different n₂ and don't couple through curvature
-(F8–F12).  No viable neutrino on T² yet (F14).
-
-**R22 F5 closes the last rescue path:** backreaction preserves θ₂
-symmetry (energy density is θ₂-independent for every mode).
-Phonon neutrino model is definitively ruled out on single T².
-Remaining paths: separate T² per flavor, multi-torus, or moduli
-oscillation with a spin-½ mechanism.
-
-
-### R22. Mode coupling and proton mass  *(Track 1 complete)*
-**Study:** [`mode-coupling/`](mode-coupling/)
-**Questions:** Q16, Q26, Q32  **Type:** compute  **Depends on:** R21, R20, R19
-
-Track 1 ✓: Curvature-corrected harmonic energies (spectral S-L solver).
-Harmonics are heavier than flat-torus values (δ/n ≈ 0.26 ε²) due to
-cos/sin parity splitting.  Proton mass decreases: ΔM ≈ −53 m_e (r=3),
-−1 m_e (r=10).  Correction is monotonic, does not select r (F4).
-
-**Key result:** θ₂ symmetry preserved by backreaction (F5) — phonon
-neutrino model (R23) is definitively ruled out at the mean-field level.
-
-Tracks 2–3 (mode coupling matrix, spectrum prediction) remain open.
-
-
-### R14. Universal geometry — shared T³ for all particles  *(closed, negative)*
-**Study:** [`universal-geometry/`](universal-geometry/)
-**Questions:** [Q13](../qa/Q13-three-compact-dimensions.md), [Q26](../qa/Q26-hadrons-photon-knots.md), [Q32](../qa/Q32-energy-geometry-fundamentals.md), Q64, Q66  **Type:** compute/reason  **Depends on:** R13, R19
-
-The three-photon linking model for hadrons is ruled out.  Topological linking on T³
-cannot redistribute charge: the R19 charge mechanism depends on mode numbers, not
-spatial arrangement (F18).  All four tested mechanisms fail (localization, interaction,
-KK gauge mixing).  DIS (three charged constituents) remains unexplained.
-
-**Positive results carried forward:**
-- Spin quantization forbids (1,n₂>2,0) modes → electron is lightest charged fermion (F10)
-- Only n₁ = 1 modes carry charge → uncharged modes can add mass without charge (F30/F8)
-- m_p = 3 × 612 × m_e to 0.008% (F3, numerological — not explained by linking)
+**Track 3 — r-selection:** If Track 2 shows mode selection, sweep over r to find
+stable aspect ratios.
 
 ---
 
@@ -213,3 +113,8 @@ Studies in chronological order of completion. Key result only — see each study
 | 14 | **R18. Torus stiffness** [`torus-stiffness/`](torus-stiffness/) | Geometric deformation cannot produce charge. Track 1: backwards stiffness κ = ε₀E₀²/(2R), α-independent at linear order. Track 2: Coulomb cost exceeds photon energy saving by 96×. Symmetric torus is stable. Charge integral of cos(θ+2φ) vanishes on any smooth torus. |
 | 15 | **R14. Universal geometry** [`universal-geometry/`](universal-geometry/) | Three-photon linking model for hadrons ruled out. Charge depends on mode numbers, not spatial arrangement (F18). All redistribution mechanisms fail. Positive: spin quantization protects electron (F10); uncharged modes can add mass (F8). |
 | 16 | **R20. Harmonic proton** [`harmonic-proton/`](harmonic-proton/) | Proton/neutron as fundamental + uncharged harmonics on T². 5 tracks, 21 findings. Harmonics exactly uncharged (F1), decay energetics match (F9), stability explained (F10), muon/tau = "hot electrons" (F17), neutrino excluded from electron's T² (F14). Descriptive model complete; predictivity requires embedding curvature (→ R21). |
+| 17 | **R16. Harmonic charge** [`harmonic-charge/`](harmonic-charge/) | Paused indefinitely.  R18 showed axisymmetric curvature cannot mix modes into charge — needs φ-symmetry breaking.  Superseded by R19 (shear provides the symmetry breaking).  Analytical complement to R15 never materialized. |
+| 18 | **R19. Shear-induced charge** [`shear-charge/`](shear-charge/) | Shear breaks φ-symmetry → first mechanism producing charge from delocalized wave.  α(r,s) formula derived (Tracks 1–3).  Quark program (Tracks 4–6) ruled out: single-photon quarks from shear definitively excluded (F24, F33).  3D integral predicts electron is lightest charged particle (F31).  Free parameter r remains open (→ R15). |
+| 19 | **R21. Quarks from embedding curvature** [`embedding-quarks/`](embedding-quarks/) | Curvature concentrates modes, lifts ±n₁ degeneracy (T1).  Charge ratios continuous, not quantized — single-torus quarks insufficient (T2).  Parity selection rule: all harmonics must be sin-like; cos-like electron is unique charged mode (T5 F12).  Selects R20 harmonic spectrum. |
+| 20 | **R22. Mode coupling** [`mode-coupling/`](mode-coupling/) | Spectral S-L solver: curvature makes harmonics heavier (δ/n ≈ 0.26 ε²), proton mass decreases slightly (ΔM ≈ −53 m_e at r=3).  Correction monotonic in r — does not select r (F4).  θ₂ symmetry preserved by backreaction (F5) — phonon neutrino definitively ruled out.  Tracks 2–3 deferred: mode-coupling matrix cannot select spectrum without nonlinear dynamics. |
+| 21 | **R23. Neutrino from harmonic beating** [`neutrino-beating/`](neutrino-beating/) | Δm² ratio 33.6 achievable by many triplets — not selective (T1).  θ₂-momentum conservation blocks phonon mechanism (T2).  R22 F5 closes last rescue path (backreaction preserves θ₂).  Single-T² neutrino ruled out.  Neutrino mechanism remains open. |
