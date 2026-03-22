@@ -113,24 +113,18 @@ superpositions.
 
 ## Planned approach
 
-### Track 1: Near-degenerate triplet search
+### Track 1: Near-degenerate triplet search  ✓ (complete)
 
 Systematically search for triplets of uncharged modes on the
 sheared T² whose pairwise energy splittings have ratio ≈ 33.6.
 
-Steps:
-1. Scan r over a range (e.g., 0.5 to 10).
-2. At each r, compute s from α = 1/137.
-3. Build mode catalog up to E ~ 200 m_e.
-4. Apply R21 parity filter: only sin-like modes allowed.
-5. Find all near-degenerate triplets with splittings < 10 eV.
-6. Compute splitting ratio for each triplet.
-7. Report matches to 33.6 ± tolerance.
-
-Key questions:
-- Do triplets with ratio ≈ 33.6 exist for any r?
-- If yes, at what r?  Is the solution unique?
-- Are the absolute Δm² values consistent with experiment?
+**Result:** At E_max = 100 m_e (~68k modes at r = 1), the ratio 33.6
+is trivially achieved at keV-scale inner splittings — mode density
+is so high (~686/m_e) that ANY ratio matches to 4+ decimal places.
+The test becomes non-trivial only at sub-eV inner splittings, where
+pair counts drop to ~85 (r = 1) through ~753 (r = 10).  Best sub-eV
+match: r = 10, ratio = 33.82 (0.75% off).  The ratio alone does not
+uniquely fix r.  See findings F1–F7.
 
 ### Track 2: Phonon dispersion and effective mass
 
@@ -183,10 +177,12 @@ Steps:
 
 ## Risk assessment
 
-**Track 1 (triplet search): medium risk.**
-Near-degenerate pairs exist (F16).  Triplets with the right
-ratio may or may not exist — this is the make-or-break computation.
-If no triplet matches, the model is falsified for this mechanism.
+**Track 1 (triplet search): resolved — not a sharp test.**
+Triplets matching ratio 33.6 exist at all r values, but only at
+splittings above the sub-eV regime.  At sub-eV scale, match quality
+(0.75%–2.8% off) is limited by counting statistics, not geometry.
+The ratio test does not falsify the model but does not fix r either.
+Higher E_max or analytical Diophantine methods could sharpen the test.
 
 **Track 2 (phonon mass): high risk.**
 Getting a sub-eV effective mass requires weak mode-mode coupling.
@@ -204,8 +200,9 @@ If Tracks 1–3 succeed, the flavor structure follows from the
 decay kinematics and mode coupling.  This is an extension, not
 a new obstacle.
 
-**Overall: the study is worth doing because Track 1 alone gives
-a sharp test.**  Either a triplet with ratio ≈ 33.6 exists at
-some r, or it doesn't.  If it does, the model gains a dramatic
-prediction (r and all three neutrino masses from one geometric
-parameter).  If not, the beating mechanism is cleanly ruled out.
+**Overall: the study is worth continuing.**  Track 1 showed the
+ratio test is not sharp at E_max = 100 — triplets exist everywhere
+at keV scale, while sub-eV statistics are too sparse.  But the
+model is NOT falsified: good matches exist at every r.  The next
+discriminating test is Track 2 (phonon mass), which provides an
+absolute scale constraint independent of mode-counting statistics.
