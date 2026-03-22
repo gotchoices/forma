@@ -22,20 +22,6 @@ energy and topology alone.
 **Open sub-problem:** the formula α(r,s) produces a one-parameter family of
 solutions — every r > ~2 has a self-consistent s.  Nothing currently selects r.
 
-### R25. Neutrino spin and T³ topology
-**Study:** [`neutrino-spin/`](neutrino-spin/)
-**Questions:** Q14, Q18  **Type:** analytical/compute  **Depends on:** R24, R19, R2
-
-R24 T1 showed (0,0,n₃) modes are kinematically viable neutrinos, but the
-**spin gate** blocks progress: the WvM mechanism gives these modes spin-0,
-not spin-½.  Three candidate rescues:
-- **(A)** Winding on (θ₂,θ₃) subplane → spin-½ but mass ~ 100 keV
-- **(B)** Non-trivial spin structure on T³ → applies to spinors, not vectors
-- **(C)** Curvature spin-orbit coupling → scales as ε₃ ~ 10⁻⁸
-
-Track 1 tests all three.  If one works → Track 2 derives PMNS → r predicted.
-If all fail → T³ neutrino path is definitively closed.
-
 ---
 
 ## Backlog
@@ -114,3 +100,4 @@ Studies in chronological order of completion. Key result only — see each study
 | 20 | **R22. Mode coupling** [`mode-coupling/`](mode-coupling/) | Spectral S-L solver: curvature makes harmonics heavier (δ/n ≈ 0.26 ε²), proton mass decreases slightly (ΔM ≈ −53 m_e at r=3).  Correction monotonic in r — does not select r (F4).  θ₂ symmetry preserved by backreaction (F5) — phonon neutrino definitively ruled out.  Tracks 2–3 deferred: mode-coupling matrix cannot select spectrum without nonlinear dynamics. |
 | 21 | **R23. Neutrino from harmonic beating** [`neutrino-beating/`](neutrino-beating/) | Δm² ratio 33.6 achievable by many triplets — not selective (T1).  θ₂-momentum conservation blocks phonon mechanism (T2).  R22 F5 closes last rescue path (backreaction preserves θ₂).  Single-T² neutrino ruled out.  Neutrino mechanism remains open. |
 | 22 | **R24. Torus dynamics** [`torus-dynamics/`](torus-dynamics/) | T³ neutrinos: modes (0,0,n₃) uncharged, mass ratio 33.63 from integers alone (0.03σ), Σm = 72 meV, system over-determined → r predicted (T1 F1–F7).  Wave dynamics: defocusing nonlinearity does not select modes (T2 F8–F12).  r-selection via dynamics pre-empted (T3).  Critical open: spin of (0,0,n₃) → R25. |
+| 23 | **R25. Neutrino spin** [`neutrino-spin/`](neutrino-spin/) | Charge-spin linkage (F4): both charge (n₁ = ±1) and spin-½ (n₁ odd) are controlled by tube winding n₁.  "Uncharged" and "fermion" are mutually exclusive — WvM cannot produce neutrinos.  T³ kinematic success (R24 T1) blocked at spin gate.  PMNS path to r-selection closed.  Neutrino mechanism remains the central open problem. |

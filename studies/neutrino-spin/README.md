@@ -71,43 +71,26 @@ contribution would be negligibly small.
 
 Track 1 will compute the actual magnitude of this coupling to confirm.
 
-## Track 1 — Spin analysis
+## Track 1 ✓ — Spin analysis  *(complete — negative result)*
 
-For each mechanism (A, B, C):
-1. Formulate the angular momentum of the mode's electromagnetic field
-   on T³ with the given topology / boundary conditions
-2. Compute the spin projection along the external symmetry axis
-3. Determine whether spin-½ is achievable
+All three mechanisms tested.  All fail.
 
-This is primarily analytical but can be supported with numerical
-calculation of angular momentum integrals on the embedded torus.
+- **A:** Wavevector of (0,0,n₃) is purely along θ₃ regardless of
+  shear (reciprocal lattice is perpendicular to T²).  No spin.
+- **B:** Spin structures affect spinors, not vectors.  Inapplicable.
+- **C:** Curvature mixing amplitude ~10⁻⁹.  Negligible.
 
-**Possible outcomes:**
-- One mechanism gives spin-½ → proceed to Track 2
-- All mechanisms fail → T³ neutrino model is dead at the spin gate;
-  neutrino mechanism remains open (requires fundamentally new idea)
-- Mechanism A works if we abandon the "pure (0,0,n₃)" assignment
-  and accept modes with winding → changes the mass predictions from
-  R24 T1 (may or may not still match experiment)
+**Central finding (F4):** The charge-spin linkage.  Both charge
+(n₁ = ±1 required) and spin-½ (n₁ odd required) are controlled
+by the tube winding number n₁.  "Uncharged" (n₁ = 0) and "fermion"
+(n₁ odd) are mutually exclusive.  The WvM mechanism cannot produce
+uncharged fermions.
 
-## Track 2 — PMNS matrix from T³ geometry  *(contingent on Track 1)*
+See [`findings.md`](findings.md) for full analysis (F1–F7).
 
-If a viable spin-½ mechanism is found:
-1. Identify how the neutrino modes couple to the charged leptons
-   (the "weak interaction" in compact-dimension language)
-2. The coupling matrix between 3 neutrino modes and 3 charged leptons
-   defines the PMNS mixing matrix
-3. Map (r, s₁₃, s₂₃) → (θ₁₂, θ₂₃, θ₁₃, δ_CP)
-4. Solve: does a unique (r, s₁₃, s₂₃) reproduce all 4 observables?
-5. If yes → r is predicted → α is fully derived → model is falsifiable
+## Track 2 ✗ — PMNS matrix  *(cancelled)*
 
-## Risk assessment
-
-- **Track 1:** High risk.  All three mechanisms have identified
-  difficulties.  The most likely outcome is negative (spin-0 for all
-  candidate modes).  But a negative result is clean and closes the
-  T³ neutrino path definitively.
-
-- **Track 2:** High value but speculative.  Requires understanding
-  the weak interaction analog on T³, which is not yet formulated.
-  Depends entirely on Track 1 succeeding.
+Depended on Track 1 producing a viable spin-½ mechanism.
+Track 1 returned a structural negative: the charge-spin linkage
+makes uncharged fermions impossible in the WvM framework.
+PMNS derivation has no target.
