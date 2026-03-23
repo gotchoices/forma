@@ -112,3 +112,115 @@ Assignment B is better on spin and cosmology but worse on sterile
 neutrinos.  Neither assignment is clean.  Tracks 1b–1f investigate
 whether the mode menu can be changed (non-coprime modes, revised spin/
 charge formulas) to find a better solution.
+
+### F8. Assignment A is the electron's mode pattern, downscaled
+
+Assignment A's triplet (1,1), (−1,1), (1,2) is the same mode pattern
+that exists on the electron T²: the electron is (1,2), and the two
+nearest modes with the same tube winding are (1,1) and (−1,1).
+Assignment A places this pattern on a separate T² at a larger scale.
+
+This means Assignment A is equivalent to asking: "at what scale does
+the electron's mode pattern produce the neutrino mass splittings?"
+The answer is E₀ ≈ 29 meV (L₄ ≈ 42 μm) — the same mode geometry,
+10⁸× larger.
+
+### F9. The μm torus size is a hard constraint, not a modeling choice
+
+A neutrino mass eigenstate is a particle at rest with energy m_ν c².
+In the WvM framework, this rest energy IS the mode energy on the
+compact space: E = E₀√((n₃/r)² + (n₄ − n₃s)²).  Because the mode
+energy and mode differences both scale linearly with E₀ = ℏc/L₄,
+you cannot make the modes high-frequency while keeping the differences
+small — everything scales together.
+
+The neutrino cannot be a "beat" between high-frequency modes on a
+smaller torus.  A beat frequency determines the oscillation rate
+(which is Δm²/E), but the particle's rest mass is the individual
+mode energy, not the beat.  Experiment bounds each neutrino mass to
+≲ 50 meV, which requires E₀ ~ meV, which requires L₄ ~ μm.
+
+This makes the μm neutrino T² one of the model's most distinctive
+predictions — and one of its most testable.  Short-range gravity
+experiments probing below 50 μm could detect the extra dimensions
+if gravity propagates there.
+
+---
+
+## Track 1b: All-spin-½ triplet search
+
+### F10. 175 of 286 triplets match the ratio — non-selective
+
+Searched all C(13,3) = 286 triplets of odd p values from 1 to 25.
+175 triplets (61%) produce a (s, r) solution matching Δm²₃₁/Δm²₂₁ =
+33.6 ± 0.9.  The ratio constraint alone does not select a unique
+mode assignment — many triplets work.
+
+### F11. No clean solution exists
+
+**No triplet with p ≤ 25 achieves both zero sterile neutrinos and
+Σm < 120 meV.**
+
+The minimum sterile counts are:
+
+| Min N_sterile | Triplets | Σm status |
+|--------------|----------|-----------|
+| 2 | (7,11,13), (9,11,13), (1,3,5), ... | All ✗ (Σm = 140–510 meV) |
+| 6 | **(3,7,11)**, **(3,9,13)**, ... | Some ✓ |
+| 10 | (5,9,15), (1,9,15), ... | Most ✓ |
+
+The two best viable candidates:
+
+| Triplet | s | r | Σm (meV) | N_sterile | L₄ (μm) |
+|---------|------|------|---------|----------|---------|
+| (3,7,11) | 0.379 | 9.17 | 96.3 | 6 | 56.7 |
+| (3,9,13) | 0.292 | 8.51 | 117.4 | 6 | 50.3 |
+
+### F12. The sterile count is structural — cannot reach zero
+
+The minimum achievable sterile count for any triplet that also
+satisfies the cosmological bound is **6**.  This is structural:
+
+1. **Gap modes:** Between p₂ and p₃ there is always at least one
+   odd integer (since p₃ − p₂ ≥ 4 for the ratio to be large enough).
+   Each intermediate odd |p| produces 4 modes: (±p, ±2).
+2. **Low-p modes:** The p = 1 modes (±1, ±2) are lighter than most
+   triplet members and often fall in the ν₂–ν₃ gap.
+3. **Scaling law:** N_sterile ≈ 4 × (number of odd integers between
+   p₂ and p₃) + boundary contributions.
+
+The ratio ≈ 33.6 requires μ²(p₃)/μ²(p₁) ≫ 1, which forces a large
+span p₃ − p₁.  Narrowing the span to minimize sterile modes pushes
+the individual masses up (larger E₀), violating the cosmological bound.
+These two constraints work against each other, producing an irreducible
+minimum of 6 sterile spin-½ fermion modes.
+
+### F13. Consecutive-p triplets minimize sterile count but fail cosmology
+
+Triplets with smallest p₃ − p₂ gap (consecutive odd: p₃ = p₂ + 2)
+achieve N_sterile = 2, but all require Σm > 140 meV, exceeding the
+cosmological bound.  Examples:
+
+    (7,11,13): Σm = 307 meV,  N_sterile = 2
+    (1, 3, 5): Σm = 151 meV,  N_sterile = 2
+    (1, 7, 9): Σm = 140 meV,  N_sterile = 2
+
+The conflict: consecutive p values give small splittings only at large
+s (strong shear) and large r, which pushes E₀ high and Σm above the
+cosmological bound.
+
+### F14. Track 1b conclusion — Assignment B definitively fails
+
+The sterile neutrino problem cannot be solved within the all-spin-½
+(p, 2) framework:
+
+- Zero-sterile solutions do not satisfy cosmology
+- Cosmology-satisfying solutions have ≥ 6 sterile neutrinos
+- The conflict is structural (scaling law), not accidental
+- Extending to p > 25 makes things worse (more intermediate modes)
+
+This closes Assignment B.  The remaining paths are:
+- Track 1c: non-coprime or cross-plane modes (different mode menu)
+- Track 1d: revised spin formula (rescue Assignment A)
+- Track 1e: revised charge formula (change which modes are uncharged)
+- Track 1f: direct spin resolution for Assignment A
