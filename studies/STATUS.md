@@ -13,11 +13,12 @@ See [`../qa/`](../qa/) for open physics questions and detailed problem analysis.
 
 Each stable particle on its own T² at its Compton scale: electron (~pm),
 neutrino (~μm), proton (~fm).  All three embedded as subplanes of a single T⁶
-(10 total dimensions).  Neutrino gets spin ½ from (1,2) winding on its own
-large T²; charge 0 from n₁ = 0.  Three-mode frequency spacing on the neutrino
-T² gives Δm²₃₁/Δm²₂₁ = (3−2s)/(4s) = 33.6 at s ≈ 0.022.  T⁶ has 15 free
-parameters vs ≥16 observables → potentially over-determined and fully predictive.
-Four tracks: neutrino torus, proton torus, parameter census, T⁶ unification.
+(10D total).  Neutrino gets spin-½ from (1,2) winding on its own T²; EM charge
+= 0 from n₁ = 0 on the electron T².  **Central challenge:** the modes that give
+a clean mass-squared ratio (Assignment A: (1,1), (−1,1), (1,2)) include two
+spin-1 modes; modes that are all spin-½ (Assignment B: (p,2) triplets) require
+high p₃ and create sterile neutrinos.  Track 1 (sub-tracks 1a–1c) resolves this.
+T⁶ has 15 free parameters vs ≥16 observables → potentially over-determined.
 
 ### R15. Forward charge calculation — deriving α
 **Study:** [`forward-charge/`](forward-charge/)
