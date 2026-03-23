@@ -7,17 +7,17 @@ See [`../qa/`](../qa/) for open physics questions and detailed problem analysis.
 
 ## Active
 
-### R26. Neutrino on T⁴ — two-scale compact geometry
+### R26. Three tori — electron, neutrino, proton on T⁶
 **Study:** [`neutrino-t4/`](neutrino-t4/)
-**Questions:** Q14, Q18, Q32  **Type:** compute/analytical  **Depends on:** R25, R24, R19, R20
+**Questions:** Q14, Q16, Q18, Q32  **Type:** compute/analytical  **Depends on:** R25, R24, R19, R20
 
-Upgrade compact space from T³ to T⁴ with a two-scale hierarchy: two pm-scale
-dimensions (electron sector) and two μm-scale dimensions (neutrino sector).
-Mode (0,0,1,2) has spin ½ (from 1:2 winding on the large T²), charge 0
-(n₁ = 0), and mass ~ meV (both large dimensions).  First candidate satisfying
-all three neutrino requirements within the WvM spin mechanism.  Cross-shear
-between sectors provides coupling for beta decay and maps to PMNS mixing angles.
-Four tracks: mode spectrum, PMNS from cross-shear, r-selection, sterile suppression.
+Each stable particle on its own T² at its Compton scale: electron (~pm),
+neutrino (~μm), proton (~fm).  All three embedded as subplanes of a single T⁶
+(10 total dimensions).  Neutrino gets spin ½ from (1,2) winding on its own
+large T²; charge 0 from n₁ = 0.  Three-mode frequency spacing on the neutrino
+T² gives Δm²₃₁/Δm²₂₁ = (3−2s)/(4s) = 33.6 at s ≈ 0.022.  T⁶ has 15 free
+parameters vs ≥16 observables → potentially over-determined and fully predictive.
+Four tracks: neutrino torus, proton torus, parameter census, T⁶ unification.
 
 ### R15. Forward charge calculation — deriving α
 **Study:** [`forward-charge/`](forward-charge/)

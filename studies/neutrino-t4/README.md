@@ -1,305 +1,390 @@
-# R26. Neutrino on T⁴ — two-scale compact geometry
+# R26. Three tori — electron, neutrino, proton on T⁶
 
-**Questions:** Q14 (neutrino), Q18 (α / r-selection), Q32 (energy-geometry)
+**Questions:** Q14 (neutrino), Q16 (proton mass), Q18 (α / r-selection), Q32 (energy-geometry)
 **Type:** compute/analytical  **Depends on:** R25, R24, R19, R20
 
-## The problem
+## Motivation
 
-The neutrino is the hardest open problem in the compact-dimension model.
-Twenty-five studies have established:
+Twenty-five studies have mapped the electron as a (1,2) photon on a
+sheared T² at pm scale.  The proton and neutron can be modeled on this same T2
+only with great coersion.  The neutrino has resisted all efforts at
+clean modeling on that same T²:
 
-1. The electron is a (1,2) photon on a sheared T² at pm scale.  Spin ½
-   from the 1:2 winding ratio, charge e from shear (R19).
-2. The proton/neutron are the electron fundamental plus uncharged
-   harmonics on the same T² (R20).
-3. The neutrino must exist — angular momentum conservation in beta
-   decay requires a spin-½ fermion (see `../torus-dynamics/neutrinos.md`).
-4. No mode on the electron's T² can be a neutrino: the lightest
-   uncharged mode is 245 keV, five orders of magnitude too heavy (R20 F14).
-5. On T³ (three compact dimensions), pure θ₃ modes (0,0,n₃) have the
-   right mass scale and reproduce the mass-squared ratio to 0.03σ
-   (R24 F3).  But they are spin-0 — the WvM mechanism cannot give them
-   spin ½ (R25 F4–F5).
-6. The structural barrier (R25 F4): in the WvM framework, spin ½
-   requires tube winding (n₁ = 1), and tube winding produces charge.
-   "Uncharged fermion" appears impossible — charge and spin are
-   controlled by the same quantum number.
+- **Proton (R20):** Modeled as the electron fundamental plus ~1835 m_e
+  of uncharged harmonics.  Kinematically correct but descriptive — the
+  harmonic spectrum is underdetermined and nothing selects it.
+- **Neutrino (R23–R25):** Every mechanism on the electron's T² or T³
+  fails.  On T², the mass floor is 245 keV (R20 F14).  On T³, modes
+  have the right mass but spin 0 (R25 F4).  The charge-spin linkage
+  blocks uncharged fermions on any single T².
 
-The root cause of the T³ failure: there is only one large compact
-dimension (L₃ ~ μm).  A standing wave along a single direction has
-no winding ratio — it cannot carry spin ½.  The neutrino needs a
-(1,2) winding for spin, and that requires **two** large dimensions.
+Meanwhile, the free parameter r (aspect ratio of the electron's T²)
+remains unconstrained through all studies.  The model is descriptive,
+not predictive.
 
-## The proposal: T⁴
+This study proposes a different architecture: **each stable particle
+lives on its own T²**, at a scale set by its Compton wavelength.
+The three T²s are not independent — they are subplanes of a single
+T⁶, coupled by cross-shear.  The coupling provides interaction
+channels (beta decay, neutrino production) and the combined geometry
+may over-determine the free parameters.
 
-Upgrade the compact space from T³ to T⁴ = S¹ × S¹ × S¹ × S¹ with
-four compact dimensions arranged in a two-scale hierarchy:
+## The three domains
 
-| Dimension | Label | Scale | Role |
-|-----------|-------|-------|------|
-| θ₁ | tube | ~pm | electron charge/spin (small) |
-| θ₂ | ring | ~pm | electron mass (small) |
-| θ₃ | ν-tube | ~μm | neutrino spin (large) |
-| θ₄ | ν-ring | ~μm | neutrino mass (large) |
+### Domain 1: Electron T² (θ₁, θ₂) — pm scale
 
-The electron lives on the (θ₁, θ₂) subplane — unchanged from the
-existing model.  The neutrino lives on the (θ₃, θ₄) subplane — a
-second T² at a vastly larger scale.
+The electron is a (1,2) photon on a sheared T² with circumferences
+L₁, L₂ at the Compton scale (~2.4 pm).  This is the established
+model from R2/R19:
 
-### Neutrino mode: (0, 0, 1, 2)
+| Property | Value | Origin |
+|----------|-------|--------|
+| Mass | m_e = 0.511 MeV | E = ℏc/L, path length = λ_C |
+| Spin | ½ | (1,2) winding ratio, topological |
+| Charge | e | Shear s₁₂ ≈ 0.165 breaks φ-symmetry (R19) |
+| g-factor | ≈ 2 | Spin-1 photon → spin-½ fermion |
 
-A photon with winding numbers (n₁, n₂, n₃, n₄) = (0, 0, 1, 2):
+**Constrained:** s₁₂ by α (one equation), one length by m_e.
+**Free:** aspect ratio r_e = L₁/L₂.
 
-- **Spin ½:** The 1:2 winding ratio on the (θ₃, θ₄) plane gives
-  spin ½ through the same WvM mechanism as the electron.  No new
-  spin mechanism is needed.
+### Domain 2: Neutrino T² (θ₃, θ₄) — μm scale
 
-- **Charge 0:** n₁ = 0 means no winding on the electron's tube.
-  The R19 charge formula requires n₁ = 1 (F30).  With n₁ = 0,
-  charge is exactly zero regardless of shear.
+The neutrino is a (1,2) photon on a second T² with circumferences
+L₃, L₄ at the μm scale.  This solves the problem that killed T³:
+two large dimensions provide a (1,2) winding plane, giving spin ½
+through the same WvM mechanism as the electron.
 
-- **Mass ~ meV:** Both L₃ and L₄ are μm-scale.  The mode energy is
-  E = ℏc √((1/L₃)² + (2/L₄)²), which is in the meV range.  For
-  comparison, on T³ with only one μm dimension, the (0,0,n₃) mode
-  has mass ~ meV but no winding ratio — hence no spin.
+| Property | Value | Origin |
+|----------|-------|--------|
+| Mass | ~5–50 meV | E = ℏc √((1/L₃)² + (2/L₄)²) |
+| Spin | ½ | (1,2) winding on (θ₃, θ₄), same mechanism as electron |
+| Charge | 0 | n₁ = 0: no winding on electron's tube (R19 F30) |
 
-This is the first candidate that satisfies all three neutrino
-requirements (spin ½, charge 0, mass ~ meV) using the existing WvM
-spin mechanism.
+**Three flavors from three modes.**  On a T² with small shear s,
+the three lightest modes are (1,1), (−1,1), and (1,2), with energies:
 
-### Why T⁴ is not just "two separate T²s"
+    f(1,1)  = 1 + (1−s)²/r²
+    f(−1,1) = 1 + (1+s)²/r²
+    f(1,2)  = 1 + (2−s)²/r²
 
-Two independent T² spaces (one for electrons, one for neutrinos)
-would give the same single-particle spectrum.  The critical
-difference is **coupling**.
+The mass-squared splitting ratio simplifies exactly:
 
-On a general T⁴, the lattice has six shear parameters:
+    Δm²₃₁ / Δm²₂₁ = (3 − 2s) / (4s)
 
-| Shear | Planes | Role |
-|-------|--------|------|
-| s₁₂ | (θ₁, θ₂) | electron charge (≈ 0.165, from α) |
-| s₃₄ | (θ₃, θ₄) | neutrino charge (= 0 for Q = 0) |
-| s₁₃, s₁₄, s₂₃, s₂₄ | cross-plane | **coupling between sectors** |
+This depends **only on the shear** — the aspect ratio r cancels
+completely.  The experimental value (33.6 ± 0.9) is reproduced at:
 
-Without cross-shear (all s_{ij} = 0 between planes), the T⁴
-factorizes as T²_small × T²_large.  Modes separate completely.
-There is no mechanism for neutrino production in beta decay — the
-electron sector and neutrino sector are disconnected.  This is
-physically identical to two independent T²s.
+    s₃₄ = 3 / (4 × 33.6 + 2) ≈ 0.022
 
-With nonzero cross-shear, the sectors couple:
+A nearly unsheared torus.  The shear is small enough that any
+"charge" generated on the neutrino plane (if the R19 mechanism
+applies there) would be proportional to sin(2π × 0.022) ≈ 0.14 —
+but this may not be electromagnetic charge at all, since the
+projection from μm-scale compact dimensions into 3D differs
+qualitatively from the pm-scale projection.  Electric charge
+neutrality is protected by n₁ = 0 regardless.
 
-1. **Neutrino production:** During neutron decay, energy in the
-   (θ₁, θ₂) sector can flow into the (θ₃, θ₄) sector through
-   cross-shear coupling.  The neutrino is produced geometrically,
-   not by fiat.
+**Spin question:** The (1,1) and (−1,1) modes have winding ratio
+1:1, giving spin 1 by the standard WvM mechanism.  Only (1,2) has
+spin ½.  Whether the physical spin of neutrino flavors ν₁, ν₂, ν₃
+matches these modes' geometric spin — or whether cross-plane
+coupling on T⁶ modifies the effective spin — is a key question for
+Track 1.
 
-2. **Mixing angles:** Cross-shear determines how neutrino mass
-   eigenstates (modes on the large T²) couple to charged leptons
-   (modes on the small T²).  The PMNS matrix should emerge from
-   the four cross-shear parameters.
+**Constrained:** s₃₄ by Δm² ratio (one equation), one length
+combination by absolute neutrino mass scale.
+**Free:** r_ν = L₃/L₄, overall L₃ scale (pending absolute mass
+measurement or cosmological bound).
 
-3. **Constraints:** Four cross-shear parameters are constrained by
-   four PMNS observables (θ₁₂, θ₂₃, θ₁₃, δ_CP).  The system is
-   exactly determined — or over-determined if additional observables
-   (mass ratios, Majorana phases) provide further constraints.
+### Domain 3: Proton T² (θ₅, θ₆) — fm scale
 
-### Three neutrino flavors
+The proton is a (1,2) photon on a third T² with circumferences
+L₅, L₆ at the fm scale.  This replaces R20's harmonic model
+(electron fundamental + 1835 uncharged harmonics) with a single
+standing wave on its own geometry — directly analogous to the
+electron, just smaller.
 
-On the neutrino T² (θ₃, θ₄), the (p, 2p) family of modes all have
-spin ½ (winding ratio p:2p = 1:2).  Three flavors correspond to
-three such modes with different masses:
+| Property | Value | Origin |
+|----------|-------|--------|
+| Mass | m_p = 938.3 MeV | E = ℏc/L, path length = λ_C(proton) ≈ 1.32 fm |
+| Spin | ½ | (1,2) winding on (θ₅, θ₆) |
+| Charge | +e | Shear s₅₆, same α formula as electron |
 
-    ν₁ = (0, 0, n_a, 2n_a)     lightest
-    ν₂ = (0, 0, n_b, 2n_b)     middle
-    ν₃ = (0, 0, n_c, 2n_c)     heaviest
+The proton and electron have the **same charge** (e), so the
+shear-charge relationship α(r, s) from R19 applies to both.  If
+the formula is universal, then s₅₆ = s₁₂(r_p) — the same functional
+relationship, but evaluated at the proton's aspect ratio r_p.
 
-The mass of mode (0, 0, p, 2p) on the neutrino T² depends on p,
-the aspect ratio r_ν = L₃/L₄, and the shear s₃₄ (which must be
-zero for charge neutrality):
+The proton Compton wavelength is 1.32 fm.  The measured proton
+charge radius is 0.88 fm — the same order of magnitude.  On the
+electron's T², the charge radius is related to the major radius R,
+which is of order the Compton wavelength.  If this scaling holds for
+the proton, the charge radius emerges naturally.
 
-    m(p) = (ℏc/L₃) × p × √(1 + 4/r_ν²)
+**Neutron:** Two (1,2) fundamentals on the proton T² with opposite
+charge orientation, as in R20.  Total charge = +e + (−e) = 0.
+Mass slightly above the proton (the pairing adds a small energy).
+Beta decay: one fundamental escapes as a proton-scale photon that
+then... this raises a question about how the neutron-decay electron
+emerges.  Track 2 must address this.
 
-Masses scale linearly with p: m(p) = p × m(1).
+**Constrained:** s₅₆ by α (same equation as electron), one length
+by m_p.
+**Free:** r_p = L₅/L₆.
 
-The mass-squared ratio is then:
+## The unified T⁶
 
-    Δm²₃₁/Δm²₂₁ = (n_c² − n_a²) / (n_b² − n_a²)
+The three T²s are subplanes of a single compact space
+T⁶ = S¹ × S¹ × S¹ × S¹ × S¹ × S¹ with six compact dimensions.
 
-This is the same integer-ratio formula as R24 F3 — parameter-free.
-The kinematic success of T³ carries over exactly.  The (7, 10, 42)
-assignment matches 33.63 (0.03σ).  But now the modes ALSO have
-spin ½.
+Total spacetime: 3 (spatial) + 1 (time) + 6 (compact) = **10 dimensions**.
 
-### Charge neutrality constraint on s₃₄
-
-On the electron's T², shear s₁₂ ≈ 0.165 breaks symmetry and
-produces charge.  On the neutrino's T², s₃₄ must be zero (or
-integer) to keep neutrinos uncharged.
-
-The R19 charge formula extends to the neutrino plane:
-
-    Q_ν ∝ sin(2π s₃₄)
-
-At s₃₄ = 0: Q_ν = 0 exactly.  This is not fine-tuned — it is the
-natural unsheared state.  Shear is what's special (the electron's
-T² is sheared); the absence of shear is the default.
+This is exactly the critical dimension of superstring theory.  The
+model does not invoke string theory, but the coincidence is notable.
 
 ### Scale hierarchy
 
-The electron T² has circumferences L₁, L₂ ~ pm (set by m_e c²).
-The neutrino T² has circumferences L₃, L₄ ~ μm (set by neutrino
-masses ~ meV).  The ratio is:
+| Domain | Dimensions | Scale | Particle |
+|--------|-----------|-------|----------|
+| Proton T² | θ₅, θ₆ | ~fm (10⁻¹⁵ m) | proton, neutron |
+| Electron T² | θ₁, θ₂ | ~pm (10⁻¹² m) | electron, positron |
+| Neutrino T² | θ₃, θ₄ | ~μm (10⁻⁶ m) | ν_e, ν_μ, ν_τ |
 
-    L_ν / L_e ~ m_e / m_ν ~ 10⁶
+Three scales spanning 9 orders of magnitude: fm → pm → μm.
+Each scale is set by the corresponding particle's Compton wavelength.
 
-This hierarchy is large but not unprecedented — it mirrors the
-observed mass hierarchy between electrons and neutrinos.  The model
-does not explain the hierarchy, but it localizes it: the ratio of
-compact-dimension scales IS the mass ratio, directly.
+### Shear parameters
 
-### Total spacetime
+A general T⁶ lattice has C(6,2) = 15 shear parameters:
 
-    3 (spatial) + 1 (time) + 4 (compact) = 8 dimensions
+| Type | Count | Parameters | Role |
+|------|-------|------------|------|
+| Within-plane | 3 | s₁₂, s₃₄, s₅₆ | Charge on each T² |
+| Electron–neutrino cross | 4 | s₁₃, s₁₄, s₂₃, s₂₄ | PMNS mixing, ν production |
+| Electron–proton cross | 4 | s₁₅, s₁₆, s₂₅, s₂₆ | Weak interaction? |
+| Neutrino–proton cross | 4 | s₃₅, s₃₆, s₄₅, s₄₆ | ν–nucleon coupling |
 
-or equivalently 7+1.  This is within the range of string theory
-compactifications (10 or 11 total), though the model does not
-invoke string theory.
+### Parameter counting
 
-### What R25 F4 actually says — and what it missed
+**Free continuous parameters** (after using within-plane constraints):
 
-R25's charge-spin linkage concluded that "uncharged fermion" is
-impossible because n₁ = 0 → spin integer and n₁ = 1 → charged.
+| Parameter | Source | Count |
+|-----------|--------|-------|
+| r_e | Electron aspect ratio | 1 |
+| r_ν | Neutrino aspect ratio | 1 |
+| r_p | Proton aspect ratio | 1 |
+| 12 cross-shears | Inter-plane coupling | 12 |
+| **Total** | | **15** |
 
-This is correct **on the electron's T²**.  But on T⁴, spin can
-arise from winding on a *different* subplane.  Mode (0, 0, 1, 2)
-has n₁ = 0 (uncharged on the electron plane) and winding ratio 1:2
-on the (θ₃, θ₄) plane (spin ½).  The charge-spin linkage is broken
-by having two independent winding planes — charge is generated by
-the sheared plane, spin by whichever plane has a 1:2 winding.
+(Within-plane shears s₁₂, s₃₄, s₅₆ are determined by α and the
+neutrino splitting ratio.  Absolute scales L₁, L₃, L₅ are set by
+m_e, m_ν, m_p.)
 
-R25 was correct within its scope (T³, where only one large dimension
-exists).  T⁴ evades the structural barrier by providing a second
-large dimension for the neutrino's winding.
+**Available observables:**
+
+| Observable | Count |
+|------------|-------|
+| α (fine structure constant) | 1 |
+| m_p/m_e (mass ratio) | 1 |
+| Neutrino Δm² ratio | 1 |
+| PMNS mixing angles (θ₁₂, θ₂₃, θ₁₃, δ_CP) | 4 |
+| CKM mixing angles (if quarks are modes on proton T²) | 4 |
+| Proton charge radius | 1 |
+| Neutron–proton mass difference | 1 |
+| Neutrino absolute mass scale (from cosmology) | 1 |
+| Muon/tau masses (if they are modes on the proton or electron T²) | 2 |
+| **Total** | **≥ 16** |
+
+**16 observables vs 15 parameters → over-determined by at least 1.**
+
+If even one observable cannot be accommodated, the model fails —
+it is falsifiable.  If all 16+ fit, the geometry is essentially
+unique.
 
 ## Tracks
 
-### Track 1 — Mode spectrum and mass predictions
+### Track 1 — The neutrino torus
 
-Enumerate modes on T⁴ with the two-scale hierarchy.  Compute
-energies for all (n₁, n₂, n₃, n₄) modes with small quantum numbers.
-Verify:
+**Goal:** Determine the geometry of a T² that produces three
+neutrino-like modes with the correct mass splittings and (if
+possible) spin ½.
 
-1. Electron (1, 2, 0, 0) has E = m_e c² with appropriate L₁, L₂
-2. Neutrino (0, 0, 1, 2) has E ~ meV with appropriate L₃, L₄
-3. Mass-squared ratios for the (0, 0, p, 2p) family match
-   experimental neutrino oscillation data
-4. No unexpected light charged modes appear
+Starting point: the three-mode result.  On a T² with shear s and
+aspect ratio r, the modes (1,1), (−1,1), and (1,2) have mass-squared
+splitting ratio:
 
-Determine L₃, L₄ (or equivalently r_ν = L₃/L₄) from the neutrino
-mass data.
+    R = (3 − 2s) / (4s)
 
-### Track 2 — Cross-shear and PMNS mixing
+This is independent of r.  At s ≈ 0.022, R = 33.6 (experimental
+value).  The absolute mass scale sets the T² circumferences at
+~μm.
 
-Derive how cross-shear (s₁₃, s₁₄, s₂₃, s₂₄) couples the electron
-and neutrino sectors.  Compute the effective mixing matrix:
+Steps:
+1. Verify the three-mode frequency result computationally (not just
+   algebraically)
+2. Compute the full mode spectrum on the neutrino T² and check for
+   unwanted light modes
+3. Determine the neutrino T²'s aspect ratio r_ν from additional
+   constraints (absolute mass scale, mixing angles)
+4. Address the spin question: (1,1) and (−1,1) have spin 1 by WvM.
+   Investigate whether cross-plane coupling on T⁶ can modify the
+   effective spin, or whether a different mode triplet (all spin ½)
+   can reproduce the 33.6 ratio
+5. Compute predicted masses and compare with cosmological bounds
+   (Σm < 120 meV) and upcoming experimental sensitivity (KATRIN,
+   Project 8)
 
-    (s₁₃, s₁₄, s₂₃, s₂₄) → (θ₁₂, θ₂₃, θ₁₃, δ_CP)
+**Key question:** Is s₃₄ ≈ 0.022 compatible with neutrino charge
+neutrality?  Electric charge is protected by n₁ = 0 on T⁶, but does
+the neutrino plane's shear produce a different kind of gauge charge?
 
-If the mapping is invertible, the four PMNS observables uniquely
-determine the four cross-shear parameters.  Check consistency:
-do the resulting shear values produce the correct coupling strength
-for beta decay rates?
+### Track 2 — The proton torus
 
-### Track 3 — r-selection from over-determination
+**Goal:** Determine the geometry of a T² that produces a single
+(1,2) standing wave at the proton mass.
 
-With the neutrino sector providing additional constraints, revisit
-the r-selection problem.  The electron's aspect ratio r = L₁/L₂
-has been free throughout all studies.  On T⁴:
+The proton as a single (1,2) photon on its own T²:
+- Compton wavelength: λ_C = h/(m_p c) = 1.32 fm → L₅, L₆ ~ fm
+- Charge: +e → s₅₆ determined by α(r_p, s₅₆) from R19
+- Spin: ½ from (1,2) winding
 
-- s₁₂(r) is fixed by α (R19)
-- L₃, L₄ are fixed by neutrino masses
-- Cross-shears are fixed by PMNS angles (Track 2)
-- Any remaining constraint (e.g., a geometric consistency condition
-  on the T⁴ lattice, or a quantization condition from modular
-  invariance) would determine r
+Steps:
+1. Apply R19's α formula to the proton T².  Since the proton has the
+   same charge as the electron, the same functional relationship
+   α(r, s) holds.  Solve for s₅₆(r_p).  Is the solution space the
+   same one-parameter family as the electron, or does the fm scale
+   introduce new constraints?
+2. Compute the proton charge radius from the T² geometry and compare
+   with experiment (0.841 fm).  On the electron's T², the charge
+   radius ~ R (major radius).  Does this scaling give the right
+   proton charge radius for reasonable r_p?
+3. Model the neutron as two opposite-charge (1,2) fundamentals on
+   the proton T².  Compute the mass difference m_n − m_p = 1.293 MeV.
+   What sets the pairing energy?
+4. Address beta decay: n → p + e⁻ + ν̄.  One (1,2) fundamental
+   escapes the proton T².  How does it become an electron on the
+   electron T²?  This requires energy transfer between T² subplanes
+   — the cross-shear coupling from Track 4.  The escaping photon
+   has energy ~m_p c²/2 ~ 470 MeV, far more than m_e = 0.511 MeV.
+   Where does the excess energy go?  (In R20, it was redistributed
+   among harmonics.  In this model, it must be radiated or absorbed
+   by the geometry.)
+5. The muon (105.7 MeV) and tau (1777 MeV): are they excited states
+   on the proton T²?  Higher harmonics?  Or do they live on the
+   electron T² as in R20?
 
-If r is predicted, m_e follows, and the model becomes fully
-predictive.
+### Track 3 — Parameter census of the three domains
 
-### Track 4 — Sterile neutrino suppression
+**Goal:** Catalog every constrained and free parameter across all
+three T² subplanes.
 
-On the neutrino T², modes (0, 0, p, 2p) with p between the three
-active flavors exist and could behave as sterile neutrinos.  For the
-(1, 2, 10) assignment: p = 3–9 are intermediate.  For (7, 10, 42):
-p = 8–41 are intermediate.
+For each domain, determine:
+1. Which parameters are fixed by known physics (α, particle masses,
+   measured radii)
+2. Which are fixed by internal consistency (e.g., the same α formula
+   must work on both the electron and proton T²s)
+3. Which remain genuinely free
+4. Which observables are predicted (not used as inputs)
 
-Determine whether cross-shear coupling suppresses these modes'
-interaction with the charged sector.  If the coupling to charged
-leptons depends on the mode number p, heavy modes might decouple
-naturally.  Compare predicted N_eff with CMB constraint
-(N_eff = 2.99 ± 0.17).
+Produce a single table:
+
+| Parameter | Domain | Fixed by | Value | Status |
+|-----------|--------|----------|-------|--------|
+| s₁₂ | electron | α | 0.165 | constrained |
+| r_e | electron | ? | ? | **free** |
+| s₃₄ | neutrino | Δm² ratio | 0.022 | constrained |
+| r_ν | neutrino | ? | ? | **free** |
+| s₅₆ | proton | α(r_p) | f(r_p) | constrained (given r_p) |
+| r_p | proton | ? | ? | **free** |
+| ... | | | | |
+
+Identify the minimum number of free parameters.  Count the
+independent observables not used as inputs.  Determine if the
+system is under-, exactly-, or over-determined.
+
+### Track 4 — Unification on T⁶
+
+**Goal:** Embed the three T²s in a single T⁶ with 12 cross-shear
+parameters.  Determine whether the combined geometry is fully
+constrained.
+
+Steps:
+1. Write the general T⁶ metric and mode spectrum as a function of
+   all 15 shear parameters and 6 circumferences.  Verify that the
+   three T² spectra emerge in the limit of zero cross-shear.
+2. Map the 12 cross-shear parameters to physical observables:
+   - s₁₃, s₁₄, s₂₃, s₂₄ → PMNS mixing (electron–neutrino coupling)
+   - s₁₅, s₁₆, s₂₅, s₂₆ → electron–proton coupling (weak interaction?)
+   - s₃₅, s₃₆, s₄₅, s₄₆ → neutrino–proton coupling
+3. Determine if the PMNS and CKM mixing matrices jointly constrain
+   enough cross-shears to fix the three free aspect ratios
+   (r_e, r_ν, r_p).
+4. Check for geometric consistency conditions on T⁶ that are not
+   present on individual T²s.  Modular invariance, lattice
+   self-consistency, or topological constraints may impose relations
+   among the 15 shear parameters that further reduce the free
+   parameter count.
+5. If the system is over-determined: solve for all parameters and
+   compute predictions (m_e, m_p, α, neutrino masses, mixing
+   angles).  Every one that matches experiment without being used
+   as input is a genuine prediction.
+6. If the system is under-determined: identify which additional
+   observable would close it.
+
+**Key question:** Does 16 observables vs 15 parameters actually
+over-determine the system, or are some observables redundant?  The
+counting is suggestive but the actual constraint equations may have
+degeneracies.  Only an explicit computation can answer this.
 
 ## Risk assessment
 
-- **Track 1:** Low risk.  Straightforward mode enumeration.  The
-  mass-squared ratio is inherited from R24 and is already a strong
-  match.  Main risk: unexpected light modes with problematic quantum
-  numbers.
+- **Track 1 (neutrino torus):** Low–medium risk.  The mass-squared
+  ratio result is algebraically clean; computation is verification.
+  Main risk: the spin question — if all three modes must be spin ½
+  and the (1,1)/(−1,1) modes cannot acquire effective spin ½ through
+  cross-plane coupling, the three-mode picture fails.
 
-- **Track 2:** Medium risk.  The cross-shear → PMNS mapping requires
-  understanding how modes on different T² subplanes couple through
-  the weak interaction analog in this framework.  The weak interaction
-  has not yet been addressed in the model — this track may need to
-  define it.
+- **Track 2 (proton torus):** Medium risk.  The single-fundamental
+  proton is conceptually simple, but beta decay becomes harder to
+  explain — a 470 MeV photon must convert to a 0.511 MeV electron.
+  The energy transfer mechanism is unclear.
 
-- **Track 3:** High risk, high reward.  Requires Track 2 to succeed
-  AND produce an additional constraint beyond the four PMNS angles.
-  If it works, the model becomes fully predictive.
+- **Track 3 (parameter census):** Low risk.  This is bookkeeping —
+  but essential bookkeeping.  Forces precise statements about what
+  is known vs assumed.
 
-- **Track 4:** Medium risk.  Sterile neutrino suppression is the same
-  challenge as R24 Q2, now potentially solvable through cross-shear
-  selectivity.
+- **Track 4 (T⁶ unification):** High risk, high reward.  Requires
+  Tracks 1–3 to succeed.  The PMNS/CKM mapping is uncharted
+  territory in this framework.  If it works, the model becomes
+  fully predictive.  If it fails, it identifies exactly which
+  structural element is missing.
 
-## Dependencies
+## Relation to prior studies
 
-| Study | What it provides |
-|-------|-----------------|
-| R19 | Charge formula, s₁₂ from α, n₁ = 1 selection rule, s₁₃ = 0 |
-| R20 | Harmonic proton model, neutrino mass floor on T² (245 keV) |
-| R24 | T³ kinematics: mass-squared ratio, L₃ scale, parameter counting |
-| R25 | Spin gate: T³ fails, charge-spin linkage on single T² |
-| R21 | Curvature effects on embedded torus (parity selection rule) |
-
-## Relation to prior neutrino attempts
-
-| Study | Mechanism | Result | What T⁴ inherits |
-|-------|-----------|--------|-----------------|
-| R20 F14 | Eigenmode on electron's T² | Mass too high (245 keV floor) | Electron sector unchanged |
-| R23 | Beating between near-degenerate modes | Not selective; phonon blocked | — |
-| R24 T1 | Pure θ₃ modes on T³ | Kinematics perfect, spin = 0 | Mass-squared ratio formula |
-| R25 | Spin analysis of T³ modes | Structural failure: n₁ controls both charge and spin | Evaded: spin from second T² |
-| **R26** | **(0,0,1,2) on T⁴** | **Spin ½ ✓, Q = 0 ✓, m ~ meV ✓** | **All three requirements met** |
+| Study | Model | Status | R26 relationship |
+|-------|-------|--------|-----------------|
+| R20 | Proton = electron + harmonics on T² | Descriptive, harmonic spectrum free | Track 2 replaces with single fundamental |
+| R23 | Neutrino from beating on T² | Failed (not selective) | Superseded by Track 1 |
+| R24 | Neutrino on T³ | Kinematics ✓, spin ✗ | Track 1 inherits mass-squared formula |
+| R25 | Spin analysis of T³ | Charge-spin linkage blocks neutrino | Evaded: spin from separate T² plane |
+| R19 | Charge from shear on T² | α(r,s) formula, s₁₃ = 0 | Applied to all three T²s |
+| R14 | Universal T³ for all particles | Linking ruled out, quarks open | Replaced by T⁶ with three T² subplanes |
 
 ## What this study does NOT address
 
-- **Why four compact dimensions?**  The model does not derive the
-  number of compact dimensions from first principles.  T⁴ is
-  motivated by the requirements (spin + charge + mass), not by a
-  deeper geometric principle.  String theory requires 6 or 7 compact
-  dimensions; this model uses 4.
+- **Why six compact dimensions?**  The number 6 is motivated by
+  requiring three particles × two dimensions each.  It happens to
+  match the string theory critical dimension (10 total), but no
+  deeper explanation is given.
 
-- **The mass hierarchy.**  Why L₃, L₄ ~ μm while L₁, L₂ ~ pm is
-  not explained.  The hierarchy is equivalent to the observed
-  electron-neutrino mass ratio and is taken as input.
+- **Quarks and confinement.**  If quarks are localized modes on
+  the proton T², their fractional charges and confinement remain
+  open.  T⁶ provides geometric room but this study does not
+  address quarks.
 
-- **Quarks and confinement.**  The quark problem (fractional charges,
-  DIS structure, confinement) remains open.  T⁴ provides more
-  geometric room than T³ but this study does not address quarks.
+- **The scale hierarchy.**  Why fm ≪ pm ≪ μm (equivalently, why
+  m_p ≫ m_e ≫ m_ν) is not explained.  The hierarchy is input.
 
-- **Gravity.**  If gravity propagates in all compact dimensions,
-  L₃, L₄ ~ μm would modify gravity at sub-millimeter scales.
-  Current experimental bounds constrain extra dimensions to
-  < ~50 μm.  This is compatible with the (1, 2, 10) assignment
-  (L₃ ~ 250 μm is marginal) but may exclude (7, 10, 42)
-  (L₃ ~ 1 mm).  A gravity-confining mechanism may be needed.
+- **Gravity at sub-mm scales.**  L₃, L₄ ~ μm would modify gravity
+  below ~250 μm if gravity propagates in all compact dimensions.
+  Current bounds (< 50 μm) may require a gravity-confining mechanism.
