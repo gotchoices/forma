@@ -106,11 +106,12 @@ already flags the (1,1) fermion as "unusual").
 **Assignment B — all spin-½ (tunable ratio, sterile neutrino problem):**
 Modes (p₁,2), (p₂,2), (p₃,2) with p odd (all spin-½ fermions).
 The ratio depends on both s and r.  For (1,2), (3,2), (17,2) at
-s₃₄ ≈ −0.09 and r_ν ≈ 1.0, the ratio is 33.6.
+s₃₄ ≈ −0.025 and r_ν ≈ 1.93, the ratio is 33.6 (Track 1a F3).
 
-**Problem:** Six intermediate spin-½ modes (5,2) through (15,2) lie
-between ν₂ and ν₃ — sterile neutrinos that violate N_eff if they
-thermalize.
+**Problem:** 26 intermediate spin-½ fermion modes lie between ν₂ and ν₃
+(Track 1a F4).  Each odd |p| from 5 to 17 produces four modes via sign
+combinations (±p, ±2).  These are sterile neutrinos that violate N_eff
+if they thermalize.
 
 Resolving this tension is the primary objective of Track 1.
 
