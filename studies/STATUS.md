@@ -7,6 +7,18 @@ See [`../qa/`](../qa/) for open physics questions and detailed problem analysis.
 
 ## Active
 
+### R26. Neutrino on T⁴ — two-scale compact geometry
+**Study:** [`neutrino-t4/`](neutrino-t4/)
+**Questions:** Q14, Q18, Q32  **Type:** compute/analytical  **Depends on:** R25, R24, R19, R20
+
+Upgrade compact space from T³ to T⁴ with a two-scale hierarchy: two pm-scale
+dimensions (electron sector) and two μm-scale dimensions (neutrino sector).
+Mode (0,0,1,2) has spin ½ (from 1:2 winding on the large T²), charge 0
+(n₁ = 0), and mass ~ meV (both large dimensions).  First candidate satisfying
+all three neutrino requirements within the WvM spin mechanism.  Cross-shear
+between sectors provides coupling for beta decay and maps to PMNS mixing angles.
+Four tracks: mode spectrum, PMNS from cross-shear, r-selection, sterile suppression.
+
 ### R15. Forward charge calculation — deriving α
 **Study:** [`forward-charge/`](forward-charge/)
 **Questions:** [Q18](../qa/Q18-deriving-alpha.md), Q34 Path 7  **Type:** compute  **Depends on:** R7, R13
