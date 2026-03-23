@@ -224,3 +224,60 @@ This closes Assignment B.  The remaining paths are:
 - Track 1d: revised spin formula (rescue Assignment A)
 - Track 1e: revised charge formula (change which modes are uncharged)
 - Track 1f: direct spin resolution for Assignment A
+
+---
+
+## Track 1c: Non-coprime and higher-order modes
+
+### F15. Non-coprime modes are harmonics, not new fundamentals
+
+A non-coprime mode (n₃, n₄) with d = gcd(|n₃|, |n₄|) > 1 decomposes
+as d × (p, q) where (p, q) is a coprime fundamental.  It has:
+
+- **Same spin** as the fundamental: L_z = ℏ/|q|
+- **d × the energy** of the fundamental (d wavelengths fit in the path)
+- **Same fermion/boson classification** (determined by |p| odd/even)
+
+Example: mode (2,4) is the 2nd harmonic of (1,2).  It has spin-½ and
+twice the electron's mass, not a new particle type.
+
+### F16. Non-coprime modes worsen the sterile neutrino problem
+
+Including non-coprime modes in the spectrum adds 472 additional spin-½
+fermion modes below 1 eV (at Assignment A parameters), on top of the
+200 coprime spin-½ fermions.  Total: 672 spin-½ fermion modes below 1 eV.
+
+Non-coprime harmonics fill in the gaps between coprime modes, making
+the spectrum denser.  A triplet like (1,2), (2,4), (10,20) — all
+harmonics of (1,2) — gives ratio ≈ 33 but has **88 intermediate
+spin-½ fermion modes**, far worse than the coprime search (minimum 6).
+
+### F17. Cross-plane modes on T⁶ are too heavy to be neutrinos
+
+A cross-plane mode has nonzero winding on two or more T² subplanes.
+In the zero-cross-shear limit, its energy is:
+
+    E² = E²_e(n₁,n₂) + E²_ν(n₃,n₄) + E²_p(n₅,n₆)
+
+The lightest cross-plane mode involving the neutrino T² has
+E ≥ √(m_e² + m_ν²) ≈ 511 keV — ten billion times heavier than
+the neutrino.  Even with cross-shear, the mixing amplitude is
+suppressed by (m_ν/m_e)² ~ 10⁻¹⁷.  Cross-plane modes cannot
+create new light states.
+
+Cross-plane modes are relevant for PMNS mixing (perturbative
+coupling) and heavy sterile neutrinos (MeV–GeV), but not for
+the three light mass eigenstates.
+
+### F18. Track 1c conclusion — the mode menu is closed
+
+No non-coprime mode or cross-plane mode provides a new spin-½
+neutrino candidate.  The complete spin-½ fermion menu on the
+neutrino T² is:
+
+    (p, ±2)  with p odd,  for all p = ±1, ±3, ±5, ...
+
+This was already fully explored in Track 1b.  The mode menu
+cannot be expanded to solve the sterile neutrino problem.
+Remaining paths: Tracks 1d–1f (revise the spin/charge formulas,
+or rescue Assignment A).
