@@ -8,9 +8,10 @@
 #modes-panel {
   position: absolute; top: 0; right: 0; width: 280px; height: 100%;
   background: rgba(14,14,18,0.92); border-left: 1px solid var(--border);
-  overflow-y: auto; z-index: 20; font-size: 11px;
+  overflow-y: auto; z-index: 10; font-size: 11px;
   backdrop-filter: blur(8px);
 }
+.top-bar { position: relative; z-index: 30; }
 #modes-panel::-webkit-scrollbar { width: 4px; }
 #modes-panel::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
 .mp-head { padding: 8px 12px; display: flex; align-items: center; gap: 6px;
@@ -58,6 +59,9 @@
     <span class="val" id="v-shell">0.12</span>
   </div>
   <div class="cg tog"><label><input type="checkbox" id="cb-wire"> wire</label></div>
+  <div class="cg tog"><label>grid</label>
+    <button class="btn" id="btn-grid" style="font-size:10px;min-width:40px">3D</button>
+  </div>
   <div class="sep"></div>
   <button class="btn" id="btn-reset">Reset</button>
 </div>
@@ -101,11 +105,19 @@ const KEY = 'torus-modes';
 const MODE_COLORS = ['#ff6e40','#4fc3f7','#66bb6a','#ab47bc','#fdd835','#e05050','#26c6da','#ff7043'];
 const DEFAULTS = {
   eps: 0.30, shear: 0.165, shellAlpha: 0.12, wire: false,
+  gridMode: 'arc',
   modes: [{ n1: 1, n2: 2, parity: 'even', color: '#ff6e40', brightness: 0.8, visible: true }],
 };
 
 function load() {
-  try { const r = localStorage.getItem(KEY); if (r) return JSON.parse(r); } catch {}
+  try {
+    const r = localStorage.getItem(KEY);
+    if (r) {
+      const parsed = JSON.parse(r);
+      if (!parsed.gridMode) parsed.gridMode = 'arc';
+      return parsed;
+    }
+  } catch {}
   return structuredClone(DEFAULTS);
 }
 let S = load();
@@ -337,68 +349,108 @@ function rebuildTorus() {
 
 /* ── Mode cloud management ─────────────────────────── */
 
-const PARTICLES_PER_MODE = 15000;
+const MAX_PARTICLES = 40000;
+const GRID_TARGET   = 15000;
 const DENSITY_SAMPLES = 256;
 
 const modeClouds = []; // parallel to S.modes: { points, density, eigenvalue }
 
 /**
- * Sample θ₁ from the metric-weighted distribution p(θ₁) ∝ (1 + ε cos θ₁).
- * CDF: F(θ) = (θ + ε sin θ) / (2π).  Invert via Newton's method.
+ * Generate a structured dot grid inside the torus tube.
+ *
+ * gridMode = 'arc':     constant arc-length spacing in θ₁ and θ₂ →
+ *                        uniform 3D density (what a 3D camera sees)
+ * gridMode = 'angular': constant angular spacing in θ₁ and θ₂ →
+ *                        uniform coordinate density (T² intrinsic view)
+ *
+ * Radial (ρ) spacing is constant in both modes.
  */
-function sampleMetricTheta1(eps) {
-  const target = Math.random() * TAU;  // 2π u
-  let th = target;                     // initial guess
-  for (let iter = 0; iter < 8; iter++) {
-    const residual = th + eps * Math.sin(th) - target;
-    th -= residual / (1 + eps * Math.cos(th));
-  }
-  return ((th % TAU) + TAU) % TAU;
-}
-
-function generateParticlePositions(eps) {
+function generateGridPositions(eps, gridMode) {
   const a = eps * R_MAJOR;
-  const positions = new Float32Array(PARTICLES_PER_MODE * 3);
-  const thetas = new Float32Array(PARTICLES_PER_MODE);
-  const radFracs = new Float32Array(PARTICLES_PER_MODE);
+  const positions = new Float32Array(MAX_PARTICLES * 3);
+  const thetas    = new Float32Array(MAX_PARTICLES);
+  const radFracs  = new Float32Array(MAX_PARTICLES);
+  let count = 0;
 
-  for (let i = 0; i < PARTICLES_PER_MODE; i++) {
-    const th1 = sampleMetricTheta1(eps);
-    const th2 = Math.random() * TAU;
-    const rFrac = Math.sqrt(Math.random());
-    const rho = rFrac * a;
+  if (a < 1e-6) return { positions, thetas, radFracs, count: 0 };
 
-    const rr = R_MAJOR + rho * Math.cos(th1);
-    positions[i * 3] = rr * Math.cos(th2);
-    positions[i * 3 + 1] = rho * Math.sin(th1);
-    positions[i * 3 + 2] = rr * Math.sin(th2);
+  if (gridMode === 'arc') {
+    /* Derive isotropic arc spacing from target count.
+     * Total ≈ 2π²R a² / s³  (when Δρ = s), so s = (2π²Ra²/T)^(1/3). */
+    const s = Math.cbrt(2 * Math.PI * Math.PI * R_MAJOR * a * a / GRID_TARGET);
+    const nRho = Math.max(3, Math.min(12, Math.round(a / s)));
+    const dRho = a / nRho;
 
-    thetas[i] = th1;
-    radFracs[i] = rFrac;
+    for (let ir = 1; ir <= nRho && count < MAX_PARTICLES; ir++) {
+      const rho = (ir - 0.5) * dRho;
+      const nTh1 = Math.max(6, Math.min(64, Math.round(TAU * rho / s)));
+      for (let it1 = 0; it1 < nTh1 && count < MAX_PARTICLES; it1++) {
+        const th1 = (it1 / nTh1) * TAU;
+        const circ = R_MAJOR + rho * Math.cos(th1);
+        const nTh2 = Math.max(6, Math.min(400, Math.round(TAU * circ / s)));
+        for (let it2 = 0; it2 < nTh2 && count < MAX_PARTICLES; it2++) {
+          const th2 = (it2 / nTh2) * TAU;
+          const rr = R_MAJOR + rho * Math.cos(th1);
+          positions[count * 3]     = rr * Math.cos(th2);
+          positions[count * 3 + 1] = rho * Math.sin(th1);
+          positions[count * 3 + 2] = rr * Math.sin(th2);
+          thetas[count]   = th1;
+          radFracs[count] = rho / a;
+          count++;
+        }
+      }
+    }
+  } else {
+    /* Angular mode: constant angle spacing in both θ₁ and θ₂. */
+    const nRho = 8;
+    const nTh1 = 32;
+    const nTh2 = Math.max(6, Math.round(GRID_TARGET / (nRho * nTh1)));
+    const dRho = a / nRho;
+
+    for (let ir = 1; ir <= nRho && count < MAX_PARTICLES; ir++) {
+      const rho = (ir - 0.5) * dRho;
+      for (let it1 = 0; it1 < nTh1 && count < MAX_PARTICLES; it1++) {
+        const th1 = (it1 / nTh1) * TAU;
+        for (let it2 = 0; it2 < nTh2 && count < MAX_PARTICLES; it2++) {
+          const th2 = (it2 / nTh2) * TAU;
+          const rr = R_MAJOR + rho * Math.cos(th1);
+          positions[count * 3]     = rr * Math.cos(th2);
+          positions[count * 3 + 1] = rho * Math.sin(th1);
+          positions[count * 3 + 2] = rr * Math.sin(th2);
+          thetas[count]   = th1;
+          radFracs[count] = rho / a;
+          count++;
+        }
+      }
+    }
   }
-  return { positions, thetas, radFracs };
+
+  return { positions, thetas, radFracs, count };
 }
 
 let sharedPositions = null;
-let sharedThetas = null;
-let sharedRadFracs = null;
+let sharedThetas    = null;
+let sharedRadFracs  = null;
+let sharedCount     = 0;
 
 function ensureParticles() {
-  const data = generateParticlePositions(S.eps);
+  const data = generateGridPositions(S.eps, S.gridMode);
   sharedPositions = data.positions;
-  sharedThetas = data.thetas;
-  sharedRadFracs = data.radFracs;
+  sharedThetas    = data.thetas;
+  sharedRadFracs  = data.radFracs;
+  sharedCount     = data.count;
 }
 
 function makeCloud(modeIdx) {
   const m = S.modes[modeIdx];
   const geometry = new THREE.BufferGeometry();
   geometry.setAttribute('position', new THREE.Float32BufferAttribute(sharedPositions.slice(), 3));
-  const colors = new Float32Array(PARTICLES_PER_MODE * 4);
+  const colors = new Float32Array(MAX_PARTICLES * 4);
   geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 4));
+  geometry.setDrawRange(0, sharedCount);
 
   const material = new THREE.PointsMaterial({
-    size: 0.04,
+    size: 0.035,
     sizeAttenuation: true,
     vertexColors: true,
     transparent: true,
@@ -420,22 +472,15 @@ function updateCloudColors(modeIdx) {
   const col = new THREE.Color(m.color);
   const colors = cloud.points.geometry.attributes.color;
   const arr = colors.array;
-  const a = S.eps * R_MAJOR;
-  const circNorm = R_MAJOR + a;
 
-  for (let i = 0; i < PARTICLES_PER_MODE; i++) {
+  for (let i = 0; i < sharedCount; i++) {
     const th1 = sharedThetas[i];
     const sampleIdx = Math.floor((th1 / TAU) * DENSITY_SAMPLES) % DENSITY_SAMPLES;
     const d = cloud.density[sampleIdx];
-    const radFade = 1 - 0.6 * sharedRadFracs[i] * sharedRadFracs[i];
-    /* Metric-weighted sampling gives uniform 3D density. In the 2D
-     * projection the inner equator's smaller circumference compresses
-     * particles into fewer pixels, inflating perceived brightness.
-     * Multiply alpha by circumference ratio to cancel this. */
-    const circ = (R_MAJOR + a * Math.cos(th1)) / circNorm;
-    const alpha = d * m.brightness * radFade * circ;
+    const radFade = 1 - 0.5 * sharedRadFracs[i] * sharedRadFracs[i];
+    const alpha = d * m.brightness * radFade;
 
-    arr[i * 4] = col.r;
+    arr[i * 4]     = col.r;
     arr[i * 4 + 1] = col.g;
     arr[i * 4 + 2] = col.b;
     arr[i * 4 + 3] = alpha;
@@ -653,6 +698,16 @@ $('cb-wire').onchange = function () {
   save();
 };
 
+const gridBtn = $('btn-grid');
+gridBtn.textContent = S.gridMode === 'arc' ? '3D' : 'T²';
+gridBtn.onclick = () => {
+  S.gridMode = S.gridMode === 'arc' ? 'angular' : 'arc';
+  gridBtn.textContent = S.gridMode === 'arc' ? '3D' : 'T²';
+  rebuildAllClouds();
+  renderModeList();
+  save();
+};
+
 $('btn-add').onclick = () => addMode();
 $('sel-preset').onchange = function () {
   if (this.value) { applyPreset(this.value); this.value = ''; }
@@ -665,6 +720,7 @@ $('btn-reset').onclick = () => {
   $('sl-s').value = S.shear; $('v-s').textContent = S.shear.toFixed(3);
   $('sl-shell').value = S.shellAlpha; $('v-shell').textContent = S.shellAlpha.toFixed(2);
   $('cb-wire').checked = S.wire;
+  gridBtn.textContent = S.gridMode === 'arc' ? '3D' : 'T²';
   rebuildTorus();
   rebuildAllClouds();
   renderModeList();
