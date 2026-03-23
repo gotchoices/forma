@@ -281,3 +281,118 @@ This was already fully explored in Track 1b.  The mode menu
 cannot be expanded to solve the sterile neutrino problem.
 Remaining paths: Tracks 1d–1f (revise the spin/charge formulas,
 or rescue Assignment A).
+
+---
+
+## Track 1d: Spin formula at finite a/R
+
+### F19. The thin-torus spin formula breaks down dramatically at finite ε
+
+The orbital angular momentum of a photon on a (p,q) geodesic at
+finite ε = a/R is:
+
+    ⟨L_z⟩ = hqπ(2 + ε²) / I²(ε)
+
+where I(ε) = ∫₀²π √(p²ε² + q²(1+ε cos pt)²) dt is the path
+length in units of R.  The spin correction factor S(ε) = ⟨L_z⟩/(ℏ/q)
+deviates from 1 as soon as ε > 0.1:
+
+| Mode | S(0) | S(0.5) | S(1.0) | S(2.0) | S(6.6) |
+|------|------|--------|--------|--------|--------|
+| (1,2) | 1.00 | 1.05 | 1.06 | 0.88 | 0.73 |
+| (1,1) | 1.00 | 0.88 | 0.66 | 0.45 | 0.35 |
+| (3,2) | 1.00 | 0.70 | 0.42 | 0.25 | 0.19 |
+| (5,2) | 1.00 | 0.43 | 0.20 | 0.11 | 0.08 |
+
+Higher tube winding (p) causes faster decay of S(ε).
+
+### F20. The tube winding p DOES affect spin at finite ε
+
+Contrary to the thin-torus formula L = ℏ/q (p-independent), the
+orbital angular momentum at finite ε depends strongly on p.  At
+ε = 6.6 (electron):
+
+    (1,2): L_z/ℏ = 0.365
+    (3,2): L_z/ℏ = 0.095
+    (5,2): L_z/ℏ = 0.039
+
+These are radically different.  The thin-torus prediction (0.500
+for all) is qualitatively wrong at the electron's aspect ratio.
+
+### F21. The (1,1) mode crosses spin-½ at ε ≈ 1.6
+
+L_z/ℏ for (1,1) decreases monotonically from 1.000 at ε = 0 to
+~0.338 as ε → ∞.  It passes through 0.500 at **ε ≈ 1.6**.
+
+This means: at aspect ratios ε > 1.6, the (1,1) mode has orbital
+angular momentum closer to ℏ/2 (spin-½) than to ℏ (spin-1).
+Since (1,1) is a fermion (p = 1, odd), the nearest allowed quantum
+spin is ½.  **Assignment A's spin problem may be resolved at
+finite ε.**
+
+### F22. All modes converge at large ε
+
+At large ε, all modes' orbital angular momentum converges to a
+common limit near ~0.34ℏ:
+
+    ε = 10:  (1,2) → 0.360,  (1,1) → 0.343,  (3,2) → 0.093
+
+The (1,2) and (1,1) modes converge tightly.  Higher-p modes
+converge to smaller values.  At the regime relevant for Assignment A
+(ε > 5), both (1,1) and (1,2) have similar L_z ≈ 0.35ℏ — both
+closer to spin-½ than to any other value.
+
+### F23. Higher-p modes lose spin-½ character at finite ε
+
+Track 1b's search relied on (p,2) modes with p = 3, 5, ..., 17
+all being spin-½.  At finite ε, this fails:
+
+| Mode | L_z/ℏ at ε=1.93 | L_z/ℏ at ε=6.6 | Nearest ½-integer |
+|------|-----------------|----------------|-------------------|
+| (1,2) | 0.444 | 0.365 | ½ |
+| (3,2) | 0.130 | 0.095 | ½ (but barely) |
+| (5,2) | 0.055 | 0.039 | ½ (nominal only) |
+| (17,2) | 0.005 | 0.004 | ½ (indistinguishable from 0) |
+
+While fermions (odd p) must have half-integer spin, a mode with
+L_z/ℏ = 0.005 is spin-½ only in the most formal sense.  It
+carries negligible angular momentum and would not behave as a
+spin-½ particle in interactions.  The practical spin-½ sector
+at finite ε is much smaller than the thin-torus prediction.
+
+### F24. Assignment A is rehabilitated; Assignment B is undermined
+
+The finite-ε calculation reverses the thin-torus spin assessment:
+
+**Assignment A — improved:**
+- (1,1) crosses spin-½ at ε ≈ 1.6
+- At ε > 5 (needed for cosmology), both (1,1) and (1,2) have
+  L_z ≈ 0.35ℏ — effectively the same spin-½ fermion
+- The spin problem that blocked Assignment A at ε = 0 dissolves
+  at realistic aspect ratios
+
+**Assignment B — undermined:**
+- (3,2), (5,2), (17,2) have negligible angular momentum at finite ε
+- Calling them "spin-½" is formally correct (fermions, nearest
+  half-integer) but physically hollow
+- Assignment B relied on the thin-torus spin classification, which
+  is not valid at ε > 0.5
+
+### F25. Caveat — point-particle orbital angular momentum only
+
+This calculation computes the ORBITAL angular momentum of a
+point-particle photon on a geodesic.  The photon's intrinsic spin
+(helicity ±ℏ) has a z-projection that averages to zero for integer p.
+The full EM field calculation may include additional contributions
+from the field structure (polarization distribution, evanescent
+coupling).  The point-particle result should be viewed as establishing
+the DIRECTION and MAGNITUDE of finite-ε corrections, not as the final
+word on quantum spin.
+
+Crucially: the electron (1,2) at ε = 6.6 has L_z = 0.365ℏ, below
+the expected 0.500ℏ.  The electron IS spin-½ experimentally.  This
+implies either: (a) the embedded-torus orbital angular momentum is
+not the full picture (field contributions restore L_z to ℏ/2), or
+(b) the electron's ε is lower than 6.6 (S2's value used a/R for
+field extent, not orbit).  Either way, the qualitative finding —
+finite-ε corrections are large and p-dependent — is robust.
