@@ -222,50 +222,102 @@ neutrino mass eigenstates with correct splittings and spin ½.
 
 This is the highest-risk track.  The spin-mass tension identified
 above has no known resolution yet.  The track is organized as
-sub-tracks to explore each candidate path:
+sub-tracks, each with a single script, covering both the T⁶
+neutrino model and targeted re-checks from the knot-zoo study (S3)
+that bear on mode properties.
 
-**Track 1a — Verify the three-mode formula.**
+**Track 1a — Neutrino T² mode spectrum.**
 
-1. Compute the full mode spectrum on the neutrino T² for both
-   Assignment A (s ≈ 0.022) and Assignment B (s ≈ −0.09, r ≈ 1)
-2. Verify the mass-squared ratio algebraically and numerically
-3. Catalog all modes below 1 eV — identify sterile neutrinos
-4. Compare predicted Σm with cosmological bound (120 meV)
+Compute the full mode spectrum on the neutrino T² for both
+assignment families.  One script.
 
-**Track 1b — All-spin-½ search.**
+1. Assignment A (s ≈ 0.022): compute spectrum, verify Δm²₃₁/Δm²₂₁
+   algebraically and numerically.
+2. Assignment B (s ≈ −0.09, r ≈ 1): same.
+3. Catalog all modes below 1 eV for each — identify sterile states.
+4. Compare predicted Σm with cosmological bound (120 meV).
 
-Systematically search for mode triplets (p₁, 2), (p₂, 2), (p₃, 2)
-with all pᵢ odd that reproduce Δm²₃₁/Δm²₂₁ = 33.6 ± 0.9 for
-some (s₃₄, r_ν).
+**Track 1b — All-spin-½ triplet search.**
 
-1. For each candidate triplet (p₁, p₂, p₃), solve for the (s, r)
-   curve that gives ratio = 33.6.  Does a physical solution exist?
+Systematic search over (p₁,2), (p₂,2), (p₃,2) mode triplets with
+all pᵢ odd.  Extend the search range to p ≤ 25 (the knot-zoo
+stopped at p = 10).  One script.
+
+1. For each candidate triplet, solve for (s, r) giving ratio = 33.6.
 2. Count intermediate spin-½ modes between ν₂ and ν₃.
 3. Assess N_eff constraints — can intermediate modes avoid
    thermalizing?  (Need a coupling selection rule.)
-4. If no clean solution exists: quantify the best achievable match
-   and its cost (sterile neutrino count, N_eff tension).
+4. If no clean solution: quantify the best achievable match and
+   its cost (sterile neutrino count, N_eff tension).
 
-**Track 1c — Spin resolution for Assignment A.**
+**Track 1c — Non-coprime and higher-order modes.**
 
-If 1b fails to produce a clean all-spin-½ solution:
+The knot-zoo excluded non-coprime (p,q) pairs (gcd ≠ 1), but
+these are valid standing waves on T².  Enumerate them and
+determine their relevance.  One script.
 
-1. Investigate whether cross-plane coupling on T⁶ modifies the
-   effective spin of (1,1) modes.  The mixing amplitude scales
-   as cross-shear × (energy ratio) — compute whether this can
-   convert spin-1 to effective spin-½.
-2. Re-examine the WvM spin formula L = ℏ/q for the q = 1 case.
-   The knot-zoo noted this "may need refinement."  Does the
-   embedded-torus geometry (finite a/R) modify the spin of (1,1)?
-3. If neither works: can the neutrino be a spin-1 fermion?
-   Is this experimentally excluded, or merely conventional?
-   (Neutrino helicity measurements constrain this.)
+1. List all modes (p,q) with p,q ≤ 25, including non-coprime.
+2. Compute mass, assign spin (L = ℏ/q, fermion if p odd).
+3. Identify any non-coprime modes that are light and spin-½ —
+   could they serve as neutrinos?
+4. On T⁶, identify cross-plane mode families (modes with nonzero
+   winding on two or more T² subplanes simultaneously).  Classify
+   their spin and charge properties.
+
+**Track 1d — Spin formula at finite a/R.**
+
+The WvM spin formula L = ℏ/q was derived in the a ≪ R limit
+(the knot-zoo flagged this as "tentative" and "may need
+refinement").  Re-derive it at realistic aspect ratios.  One script.
+
+1. Compute angular momentum L for a circularly polarized standing
+   wave on a (p,q) torus knot at finite a/R.
+2. Compare L(a/R) with the thin-torus limit L = ℏ/q for
+   (1,2), (1,1), (3,2), (5,2).
+3. Determine if curvature corrections can shift (1,1) from spin-1
+   toward spin-½, or shift (p,2) modes away from spin-½.
+4. Quantify the correction magnitude at the electron's a/R ≈ 6.6
+   and at plausible neutrino a/R.
+
+**Track 1e — Charge via parallel transport.**
+
+The knot-zoo computed charge using the Frenet frame for
+polarization transport.  Parallel transport along the geodesic
+is the physically correct choice and may give different results
+for higher modes.  One script.
+
+1. Implement parallel transport of circular polarization along
+   (p,q) geodesics on the embedded torus, for (1,2), (3,2),
+   (5,2), (1,1), and (1,3).
+2. Compute net E-flux (apparent charge) for each mode.
+3. Compare with Frenet-frame results from S3.  Does any mode
+   besides (1,2) acquire nonzero charge?
+4. Implications for the neutrino T²: if (3,2) acquires charge
+   under parallel transport, it cannot be an uncharged neutrino.
+
+**Track 1f — Assignment A spin resolution.**
+
+If 1b finds no clean all-spin-½ solution, investigate whether
+Assignment A's spin-1 modes can be rescued.  One script
+(analytical + numerical).
+
+1. Cross-plane coupling on T⁶: compute whether shear mixing
+   with spin-½ modes on the electron T² can convert (1,1)
+   effective spin from 1 to ½.  Mixing amplitude scales as
+   cross-shear × (energy ratio).
+2. If 1d shows (1,1) spin is modified at finite a/R, apply
+   that correction.
+3. Fallback: can the neutrino be a spin-1 fermion?  Review
+   experimental constraints (helicity measurements, double
+   beta decay kinematics).
 
 **Possible outcomes:**
 - 1b succeeds → three all-spin-½ modes with acceptable sterile
   spectrum → proceed to Tracks 2–4
-- 1c succeeds → Assignment A is viable with modified spin → proceed
-- Both fail → the neutrino T² model fails at the same spin gate
+- 1c finds new candidate modes → revise assignments and retry
+- 1d or 1e changes mode properties → revise and retry
+- 1f succeeds → Assignment A is viable with modified spin → proceed
+- All fail → the neutrino T² model fails at the same spin gate
   as T³, and the neutrino remains an open problem
 
 ### Track 2 — The proton torus
@@ -333,11 +385,12 @@ Steps:
 
 ## Risk assessment
 
-- **Track 1:** **High risk.**  The spin-mass tension has no known
-  resolution.  The most likely outcome is that one sub-track
-  partially succeeds with caveats (sterile neutrinos or modified
-  spin).  A full failure is possible — it would close the T⁶
-  neutrino path.
+- **Track 1:** **High risk.**  Six sub-tracks covering the full
+  problem space.  1a–1b are straightforward computation.  1c–1e
+  are targeted re-checks from the knot-zoo that could change the
+  mode menu (new candidates, revised spin/charge).  1f is the
+  fallback if no clean all-spin-½ solution exists.  A full failure
+  across all sub-tracks would close the T⁶ neutrino path.
 
 - **Track 2:** Medium risk.  The single-fundamental proton is clean,
   but beta decay becomes harder — a 470 MeV photon must convert to
@@ -352,6 +405,7 @@ Steps:
 
 | Study | Model | Status | R26 relationship |
 |-------|-------|--------|-----------------|
+| S3 | Knot zoo — (p,q) mode census | Partial | Tracks 1c–1e re-check: non-coprime modes, spin at finite a/R, charge via parallel transport |
 | R20 | Proton = electron + harmonics on T² | Descriptive | Track 2 replaces with single fundamental |
 | R23 | Neutrino from beating on T² | Failed | Superseded by Track 1 |
 | R24 | Neutrino on T³ | Kinematics ✓, spin ✗ | Track 1 inherits mass-splitting approach |

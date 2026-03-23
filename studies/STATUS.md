@@ -9,7 +9,7 @@ See [`../qa/`](../qa/) for open physics questions and detailed problem analysis.
 
 ### R26. Three tori — electron, neutrino, proton on T⁶
 **Study:** [`neutrino-t4/`](neutrino-t4/)
-**Questions:** Q14, Q16, Q18, Q32  **Type:** compute/analytical  **Depends on:** R25, R24, R19, R20
+**Questions:** Q14, Q16, Q18, Q32  **Type:** compute/analytical  **Depends on:** R25, R24, R19, R20, S3
 
 Each stable particle on its own T² at its Compton scale: electron (~pm),
 neutrino (~μm), proton (~fm).  All three embedded as subplanes of a single T⁶
@@ -17,7 +17,9 @@ neutrino (~μm), proton (~fm).  All three embedded as subplanes of a single T⁶
 = 0 from n₁ = 0 on the electron T².  **Central challenge:** the modes that give
 a clean mass-squared ratio (Assignment A: (1,1), (−1,1), (1,2)) include two
 spin-1 modes; modes that are all spin-½ (Assignment B: (p,2) triplets) require
-high p₃ and create sterile neutrinos.  Track 1 (sub-tracks 1a–1c) resolves this.
+high p₃ and create sterile neutrinos.  Track 1 (sub-tracks 1a–1f) resolves this,
+incorporating targeted re-checks from S3 (knot-zoo): non-coprime modes (1c),
+spin formula at finite a/R (1d), charge via parallel transport (1e).
 T⁶ has 15 free parameters vs ≥16 observables → potentially over-determined.
 
 ### R15. Forward charge calculation — deriving α
