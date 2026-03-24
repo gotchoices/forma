@@ -22,6 +22,27 @@ energy and topology alone.
 **Open sub-problem:** the formula α(r,s) produces a one-parameter family of
 solutions — every r > ~2 has a self-consistent s.  Nothing currently selects r.
 
+### R27. Bound states from T⁶ — atoms and nuclei as oscillation patterns
+**Study:** [`bound-states/`](bound-states/)
+**Questions:** Q28, Q32  **Type:** compute/analytical  **Depends on:** R26, R19, R15
+
+Does the T⁶ support stable oscillation patterns with the properties of atoms and
+nuclei?  Not "what force holds hydrogen together" but "is there a T⁶ pattern that
+IS hydrogen?"  Five tracks: self-consistent neutron mass, multi-mode energy cross-
+terms, hydrogen-like patterns, deuteron-like patterns, energy level structure.
+If hydrogen binding emerges, α is geometrically determined.
+
+### R28. Unstable particle spectrum from T⁶
+**Study:** [`particle-spectrum/`](particle-spectrum/)
+**Questions:** Q16, Q32  **Type:** compute  **Depends on:** R26
+
+Every unstable particle (μ, τ, W, Z, mesons, ...) is a potential T⁶ mode match.
+Extended spectral scan at high quantum numbers (|n_i| ≤ 15–20), matched against
+measured masses, charges, and spins.  Each match adds a constraint equation on the
+15 free parameters.  With ~5 matches beyond the neutron, the geometry is fully
+determined and remaining predictions are parameter-free.  Six tracks: spectral scan,
+match score, optimizer, μ/τ identification, W/Z identification, lifetime correlations.
+
 ---
 
 ## Backlog
