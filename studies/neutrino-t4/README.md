@@ -402,7 +402,7 @@ three domains, its constraint source, and its status (fixed/free).
 | s₃₄ | neutrino | Δm² ratio | depends on assignment | constrained |
 | r_ν | neutrino | ? | ? | **free** |
 | s₅₆ | proton | α(r_p) | s₅₆(r_p) | constrained (given r_p) |
-| r_p | proton | r_ch(proton) | ≈ 0.33 or 0.97 | **constrained (F47)** |
+| r_p | proton | ? | ? | **free** (F48: charge radius not a clean input) |
 | ... | cross-shears | ... | ... | ... |
 
 Identify the minimum number of genuinely free parameters.  Count
@@ -441,9 +441,11 @@ Steps:
 
 - **Track 2:** Low–medium risk.  2a (geometry) complete — proton T²
   is a scaled copy of the electron T² (same α formula, same s(r)).
-  2b (charge radius) complete — the experimental r_ch = 0.841 fm
-  selects ε ≈ 0.33 or ε ≈ 0.97 (F47), far from S2's ε = 6.6.
-  This is the first constraint on the aspect ratio from experiment.
+  2b (charge radius) complete — the naive torus embedding gives
+  r_ch = R√(1+5ε²/2), but the "charge radius" is a model-dependent
+  quantity (F48).  The aspect ratio ε remains free.  The Compton-
+  scale ring radius (~0.42 fm) is within 2× of experiment (0.84 fm),
+  which is suggestive but not a precision test.
   2c (neutron) is expected to produce a null result; beta decay
   and muon/tau deferred to Track 4.
 
