@@ -1184,3 +1184,93 @@ The Epstein zeta function Z(5) is dominated by the neutrino T²
 no detectable change.  Casimir energy can only provide structure
 if computed as a function of σ_eν or σ_νp (which couple to the
 neutrino T² scale).
+
+
+---
+
+## Track 4d. Cross-shear landscape
+
+Script: [`scripts/track4d_cross_shear_landscape.py`](scripts/track4d_cross_shear_landscape.py)
+
+
+### F70. Joint positivity bounds allow large electron–neutrino coupling
+
+At the neutron-matched σ_ep = 0.038:  |σ_eν| < 0.545.  The two
+cross-shear parameters are nearly independent — turning on σ_eν
+barely reduces the σ_ep bound.  The parameter space is a rounded
+hypercube, not a narrow sliver.
+
+
+### F71. Casimir energy decreases monotonically with σ_eν
+
+    σ_eν = 0.00 :  Z = 3.437 × 10¹¹³  (maximum)
+    σ_eν = 0.45 :  Z = 1.187 × 10¹¹²  (minimum, at positivity boundary)
+
+    Relative variation: 96.5% — enormous.
+
+The Casimir energy (vacuum energy) prefers MAXIMAL electron–neutrino
+coupling — it wants the T² planes to be as tilted as possible.
+There is no internal minimum; the minimum sits at the boundary.
+
+
+### F72. Neutrino mass ratio constrains σ_eν to be small
+
+    σ_eν = 0.00 :  Δm²₃₁/Δm²₂₁ = 33.6  (correct)
+    σ_eν = 0.05 :  ratio = 35.0  (4% shift)
+    σ_eν = 0.10 :  ratio = 40.3  (20% shift — unacceptable)
+
+The neutrino mass-squared ratio is sensitive to σ_eν because the
+cross-shear distorts the effective metric on the neutrino T².
+Preserving the ratio at ≤5% requires |σ_eν| ≲ 0.05.
+
+
+### F73. Tension: Casimir wants maximal coupling, masses want minimal
+
+Casimir energy prefers σ_eν → boundary (F71), but the neutrino
+mass ratio requires σ_eν ≲ 0.05 (F72).  This is a genuine
+physical tension — the vacuum energy drives coupling up while
+the mass spectrum demands small coupling.
+
+If a stabilization mechanism balances these two effects, it would
+select a specific σ_eν value.  This is the first candidate for
+a physical principle that could FIX a cross-shear parameter.
+
+
+### F74. Self-consistency caveat on the neutron mass
+
+The Track 4a neutron prediction (F67) assumed the proton and
+electron masses are unchanged by the cross-shear.  In fact, both
+shift:
+
+    At σ_ep = 0.038:
+      m_e: 0.511 → 0.512 MeV  (+0.1%)
+      m_p: 938.3 → 939.5 MeV  (+0.14%)
+      m_n: 938.3 → 939.5 MeV  (+0.13%)
+      m_n − m_p = −0.019 MeV  (wrong sign!)
+
+A self-consistent treatment must RE-DERIVE the circumferences L₂
+and L₆ at each σ_ep so that E(1,2,0,0,0,0) = m_e and
+E(0,0,0,0,1,2) = m_p exactly.  Then the neutron mass prediction
+is m_n − m_p (not the absolute m_n).  This correction is needed
+before the neutron result can be claimed quantitatively.
+
+
+### F75. The low-energy spectrum is cleanly separated
+
+At σ_eν = 0.1, the T⁶ mode spectrum separates into clear tiers:
+
+    ~6–90 meV:    pure neutrino modes (uncharged, fermionic/bosonic)
+    ~39–258 keV:  cross-plane e–ν modes (charged, various spin)
+    ~0.5 MeV:     electron mode
+    ~938 MeV:     proton mode
+    ~940 MeV:     neutron candidate
+
+The gap between the neutrino tier (~meV) and the next modes
+(~keV) spans 6 orders of magnitude.  This spectral isolation is
+a natural feature of the scale hierarchy — the T² circumferences
+differ by factors of ~10³ and ~10⁷.
+
+Cross-plane e–ν modes at ~39 keV have charge ±e and would be
+new charged particles at keV scale — unobserved.  Their energies
+scale with σ_eν, so small σ_eν pushes them closer to m_e (where
+they might be reinterpreted as radiative corrections).
