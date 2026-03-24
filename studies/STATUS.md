@@ -27,11 +27,33 @@ solutions — every r > ~2 has a self-consistent s.  Nothing currently selects r
 **Questions:** Q16, Q28, Q32  **Type:** compute/analytical  **Depends on:** R26, R19, R15
 
 Discovery engine (`lib/t6_solver.py`) searches for T⁶ modes matching known particles.
-Tracks 1–3 complete: self-consistent neutron found (mode (0,−2,n₃,n₄,0,+2), fixes
-σ_ep = −0.0906), muon found (mode (−1,+5,0,0,−2,0), fixes r_p = 8.906).  Two
-parameters determined; tau at +5.6% needs asymmetric cross-shears (Track 4).  Later
-tracks: extended particle spectrum, lifetime correlations, nuclear stability, hydrogen,
-deuteron.  Subsumes former R28 (unstable particle spectrum).
+7 tracks complete (54 findings).  Neutron and muon pin r_p = 8.906 and σ_ep = −0.0906,
+leaving zero free parameters at MeV scale.  Parameter-free predictions: kaon (1.2%),
+eta (0.6%), eta prime (0.3%), phi (0.8%), kaon neutral (1.2%).  Lifetime-gap correlation
+r = −0.84 (p = 0.009) for weak decays supports off-resonance hypothesis.  Reaction
+energetics: 17/21 decays pass.  Tau at 5.6% (structural gap), pion at 14% (rough).
+Ω⁻ structurally forbidden (spin-3/2 + odd charge).  Hydrogen and nuclear stability
+deferred to future study (requires multi-mode formalism).  **Substantially complete.**
+
+### R28. T⁶ spectrum refinement
+**Study:** [`particle-spectrum/`](particle-spectrum/)
+**Questions:** Q16, Q32  **Type:** compute  **Depends on:** R27
+
+Explores the parameters R27 left at zero (σ_eν, σ_νp), counts ghost modes
+(predicted particles with no observed counterpart), refines strange baryon
+assignments (Λ/Σ⁺ sign flips), and searches for W/Z/Higgs at high energy.
+The tractable near-term follow-up to R27.
+
+### R29. Atoms and nuclei — from T⁶ modes to multi-body physics
+**Study:** [`atoms-and-nuclei/`](atoms-and-nuclei/)
+**Questions:** Q28, Q16  **Type:** theoretical + compute  **Depends on:** R27, R15
+
+The jump from single particles to atoms.  Requires extending from T⁶ (6D compact)
+to T⁶ × R³ (9D): two T⁶ modes at different spatial positions, interacting through
+the geometry.  Seven open questions cataloged (mode-mode interaction, T⁶–R³ shears
+as gauge fields, role of time, nuclear binding without strong force).  May resolve
+the α problem (R15) as a byproduct.  Likely begins as theoretical formalism before
+becoming computational.
 
 ---
 

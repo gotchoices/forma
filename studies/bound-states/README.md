@@ -201,7 +201,12 @@ Key results:
 - This motivates the off-resonance reframing.
 
 
-### Track 5 — Systematic particle catalog
+### Track 5 — Systematic particle catalog  ✔
+
+**Status:** Complete.  See findings F31–F36.
+
+Key results: 19 particles searched, 5 within 1.5% (kaons, η, η′, φ),
+Ω⁻ structurally forbidden (spin-3/2 + odd charge impossible).
 
 For **every well-measured unstable particle**, compute:
 
@@ -234,7 +239,12 @@ gap = 0 and lifetime = ∞ as reference points.
 nearest mode, mode energy, gap, lifetime.
 
 
-### Track 6 — Lifetime-gap correlation
+### Track 6 — Lifetime-gap correlation  ✔
+
+**Status:** Complete.  See findings F37–F42.
+
+Key results: r = −0.84 (p = 0.009) for weak decays.  Two-factor
+model: interaction strength sets baseline, gap modulates within class.
 
 The central test of the off-resonance hypothesis.
 
@@ -259,7 +269,12 @@ The central test of the off-resonance hypothesis.
 **Deliverable:** Correlation plot and statistical analysis.
 
 
-### Track 7 — Reaction energetics
+### Track 7 — Reaction energetics  ✔
+
+**Status:** Complete.  See findings F43–F49.
+
+Key results: 21 reactions tested, 17/21 sign-consistent.  All
+leptonic/meson decays pass.  4 sign flips in strange baryon decays.
 
 Do reaction conservation laws work at the T⁶ mode level?
 
