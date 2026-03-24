@@ -713,3 +713,109 @@ Its position and energy levels come from R³.
    - r_e — unconstrained (invisible to MeV-scale observables)
    - r_ν — weakly constrained
    - σ_eν, σ_νp — set to 0, untested
+
+
+---
+
+## R29 Conclusion
+
+### F26. What R29 established
+
+R29 extended the T⁶ model from single particles to atoms
+and nuclei.  Four tracks, 25 findings.
+
+**Solved / established:**
+
+1. **Coulomb potential from geometry.**  The KK zero-mode
+   gauge field on T⁶ × R³ produces V(r) = −αℏc/r with
+   α = 1/137 from the R19 shear mechanism.  No free
+   parameters. (F1)
+
+2. **Hydrogen binding energy.**  E₁ = −13.6 eV, a₀ = 0.53 Å.
+   The complete chain from T⁶ geometry to atomic binding. (F2)
+
+3. **Nuclei are T⁶ modes.**  Every stable nucleus from
+   deuterium to iron-56 follows the scaling law n₅ = A,
+   n₆ = 2A (the proton mode wound A times).  All 12 nuclei
+   tested match to < 1%.  No nuclear force assumed. (F16)
+
+4. **Deuteron: parameter-free prediction.**  1875.9 MeV
+   predicted vs 1875.6 MeV observed (0.02% error).  86% of
+   the 2.2 MeV binding energy captured. (F18)
+
+5. **Nuclear spins from geometry.**  9 of 11 nuclei have
+   spins correctly predicted by tube-winding parity. (F17)
+
+6. **Free neutron ≠ nuclear neutron.**  Different T⁶ modes.
+   Explains why neutrons don't decay in nuclei: there is no
+   neutron in a nucleus, only the nuclear mode. (F20)
+
+7. **Two-tier physics.**  T⁶ determines particles and nuclei
+   (MeV scale).  R³ determines atomic binding and nuclear
+   stability (eV–keV scale).  Atoms are not T⁶ modes. (F24)
+
+8. **Z-degeneracy.**  For a given A, all isotopes have the
+   same T⁶ energy.  Which Z is stable comes from R³. (F23)
+
+9. **KK boson picture fails for nuclear binding.**  The
+   naive KK gauge coupling produces unphysical Yukawa
+   corrections (10⁴× too large).  Direct T⁶ mode search
+   succeeds where the boson approach fails. (F11, F16, F21)
+
+**Not solved / unconstrained:**
+
+1. **r_e** — Invisible to nuclear masses (F22).  Must be
+   pinned by electron-scale or atomic-precision observables.
+   The R19 formula α(r_e, s_e) = 1/137 provides a curve,
+   not a point.
+
+2. **r_ν** — Weakly constrained.  Neutrino dimensions are
+   macroscopic (~mm) and decouple from atom/nuclear physics.
+
+3. **σ_eν, σ_νp** — Set to zero throughout.  Untested.
+
+4. **~8 MeV/A residual gap** for heavy nuclei.  The T⁶
+   mode captures > 99% of nuclear mass but not the fine
+   binding energy.  The residual may come from R³ effects.
+
+5. **KK massive-mode coupling.**  The naive assumption
+   (uniform coupling for all KK modes) fails.  The actual
+   coupling on the sheared T² is unknown.
+
+6. **What is a photon in T⁶?**  The zero-mode gauge field
+   gives the classical EM field.  Its quantization and
+   the T⁶-R³ energy transfer mechanism are unresolved.
+
+7. **Electron energy levels.**  Coulomb produces the
+   standard hydrogen spectrum.  Fine structure, Lamb shift,
+   and radiative corrections require understanding the
+   KK coupling or an alternative approach.
+
+
+### F27. The model works with unconstrained variables
+
+The T⁶ model's predictions are robust:
+
+- **Nuclear masses (< 1%)** depend only on r_p and σ_ep
+  (both pinned).  They are insensitive to r_e, r_ν,
+  σ_eν, σ_νp.
+
+- **Particle masses** from R27 depend on r_p, σ_ep, and
+  weakly on r_e.  The parameter-free predictions (kaon,
+  eta, eta prime, phi) hold across a wide range of r_e.
+
+- **The Coulomb potential** depends on α, which comes from
+  the shear formula.  For any r_e, a self-consistent shear
+  s₁₂ exists that gives α = 1/137.
+
+The unconstrained variables (r_e, r_ν, σ_eν, σ_νp) are
+"invisible" at the energy scales tested so far.  The model
+works — it simply has a flat direction in parameter space
+that current observables cannot resolve.
+
+Potential paths to constrain the remaining variables:
+- σ_eν, σ_νp: may improve the pion, tau, and strange
+  baryon fits (→ R28)
+- r_e: may be constrained by atomic precision measurements,
+  the tau mass, or the W/Z mass ratio
+- r_ν: may be constrained by neutrino physics or cosmology

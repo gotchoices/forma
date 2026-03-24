@@ -44,16 +44,17 @@ Explores the parameters R27 left at zero (σ_eν, σ_νp), counts ghost modes
 assignments (Λ/Σ⁺ sign flips), and searches for W/Z/Higgs at high energy.
 The tractable near-term follow-up to R27.
 
-### R29. Atoms and nuclei — from T⁶ modes to multi-body physics
+### R29. Atoms and nuclei — from T⁶ modes to multi-body physics  **Complete**
 **Study:** [`atoms-and-nuclei/`](atoms-and-nuclei/)
 **Questions:** Q28, Q16  **Type:** theoretical + compute  **Depends on:** R27, R15
 
-The jump from single particles to atoms.  Requires extending from T⁶ (6D compact)
-to T⁶ × R³ (9D): two T⁶ modes at different spatial positions, interacting through
-the geometry.  Seven open questions cataloged (mode-mode interaction, T⁶–R³ shears
-as gauge fields, role of time, nuclear binding without strong force).  May resolve
-the α problem (R15) as a byproduct.  Likely begins as theoretical formalism before
-becoming computational.
+4 tracks, 27 findings.  Coulomb potential derived from T⁶ × R³ (α = 1/137, hydrogen
+E₁ = −13.6 eV).  KK boson approach fails for nuclear binding (Yukawa corrections 10⁴×
+too large).  Pivoted to direct T⁶ mode search: nuclei ARE T⁶ modes.  Scaling law
+n₅ = A, n₆ = 2A matches all nuclei d→⁵⁶Fe to < 1%.  Deuteron: 0.02% error, 86% of
+binding captured.  Nuclear spins predicted (9/11).  Free neutron ≠ nuclear neutron
+(explains nuclear stability).  Two-tier physics: T⁶ = particles + nuclei (MeV);
+R³ = atoms + stability (eV).  r_e unconstrained by nuclear data.
 
 ---
 

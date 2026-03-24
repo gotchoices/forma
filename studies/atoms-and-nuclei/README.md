@@ -2,7 +2,7 @@
 
 **Questions:** Q28 (photon absorption / energy levels), Q16
 **Type:** theoretical + compute  **Depends on:** R27, R15, R19
-**Status:** Active
+**Status:** Complete (4 tracks, 27 findings)
 
 
 ## Motivation
