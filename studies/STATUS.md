@@ -7,21 +7,6 @@ See [`../qa/`](../qa/) for open physics questions and detailed problem analysis.
 
 ## Active
 
-### R26. Three tori — electron, neutrino, proton on T⁶
-**Study:** [`neutrino-t4/`](neutrino-t4/)
-**Questions:** Q14, Q16, Q18, Q32  **Type:** compute/analytical  **Depends on:** R25, R24, R19, R20, S3
-
-Each stable particle on its own T² at its Compton scale: electron (~pm),
-neutrino (~μm), proton (~fm).  All three embedded as subplanes of a single T⁶
-(10D total).  Neutrino gets spin-½ from (1,2) winding on its own T²; EM charge
-= 0 from n₁ = 0 on the electron T².  **Central challenge:** the modes that give
-a clean mass-squared ratio (Assignment A: (1,1), (−1,1), (1,2)) include two
-spin-1 modes; modes that are all spin-½ (Assignment B: (p,2) triplets) require
-high p₃ and create sterile neutrinos.  Track 1 (sub-tracks 1a–1f) resolves this,
-incorporating targeted re-checks from S3 (knot-zoo): non-coprime modes (1c),
-spin formula at finite a/R (1d), charge via parallel transport (1e).
-T⁶ has 15 free parameters vs ≥16 observables → potentially over-determined.
-
 ### R15. Forward charge calculation — deriving α
 **Study:** [`forward-charge/`](forward-charge/)
 **Questions:** [Q18](../qa/Q18-deriving-alpha.md), Q34 Path 7  **Type:** compute  **Depends on:** R7, R13
@@ -116,3 +101,4 @@ Studies in chronological order of completion. Key result only — see each study
 | 21 | **R23. Neutrino from harmonic beating** [`neutrino-beating/`](neutrino-beating/) | Δm² ratio 33.6 achievable by many triplets — not selective (T1).  θ₂-momentum conservation blocks phonon mechanism (T2).  R22 F5 closes last rescue path (backreaction preserves θ₂).  Single-T² neutrino ruled out.  Neutrino mechanism remains open. |
 | 22 | **R24. Torus dynamics** [`torus-dynamics/`](torus-dynamics/) | T³ neutrinos: modes (0,0,n₃) uncharged, mass ratio 33.63 from integers alone (0.03σ), Σm = 72 meV, system over-determined → r predicted (T1 F1–F7).  Wave dynamics: defocusing nonlinearity does not select modes (T2 F8–F12).  r-selection via dynamics pre-empted (T3).  Critical open: spin of (0,0,n₃) → R25. |
 | 23 | **R25. Neutrino spin** [`neutrino-spin/`](neutrino-spin/) | Charge-spin linkage (F4): both charge (n₁ = ±1) and spin-½ (n₁ odd) are controlled by tube winding n₁.  "Uncharged" and "fermion" are mutually exclusive — WvM cannot produce neutrinos.  T³ kinematic success (R24 T1) blocked at spin gate.  PMNS path to r-selection closed.  Neutrino mechanism remains the central open problem. |
+| 24 | **R26. Three tori — T⁶** [`neutrino-t4/`](neutrino-t4/) | T⁶ = three T² subplanes (electron, neutrino, proton).  Neutrino mass ratio Δm²₃₁/Δm²₂₁ = 33.6 from shear s₃₄ = 0.022 (exact, r-independent).  Charge-neutral neutron mode (1,2,0,0,1,2) reproduces m_n at |σ_ep| ≈ 0.038.  Parameter census: 21 total, 15 free (3 aspect ratios + 12 cross-shears) — under-determined.  Casimir–mass tension (F73): vacuum energy wants maximal coupling, mass spectrum wants minimal — first candidate for a self-selecting principle.  75 findings across 4 tracks. |

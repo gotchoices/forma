@@ -1274,3 +1274,271 @@ Cross-plane e–ν modes at ~39 keV have charge ±e and would be
 new charged particles at keV scale — unobserved.  Their energies
 scale with σ_eν, so small σ_eν pushes them closer to m_e (where
 they might be reinterpreted as radiative corrections).
+
+
+---
+
+## Possible next steps
+
+R26 established the T⁶ framework and produced quantitative results
+across four tracks.  The model has clear structural successes
+(charge, spin, g ≈ 2, neutrino mass ratio, charge-neutral neutron
+mode) but remains under-determined (15 free parameters, 3 aspect
+ratios completely unconstrained).  Here are the most promising
+directions for future work, ordered by a combination of
+tractability and potential impact.
+
+
+### N1. Self-consistent neutron mass (high priority, straightforward)
+
+**Problem:** F74 showed that the Track 4a neutron prediction
+assumed fixed circumferences while cross-shears shift ALL mode
+energies, including the proton and electron.  The raw calculation
+gives m_n − m_p = −0.019 MeV (wrong sign).
+
+**Approach:** At each σ_ep value, solve for L₂ and L₆ such that
+E(1,2,0,0,0,0) = m_e and E(0,0,0,0,1,2) = m_p exactly (a 2D
+root-finding problem at each point in the sweep).  Then compute
+E(1,2,0,0,1,2) with those adjusted scales.  The physical
+prediction is the self-consistent m_n − m_p as a function of σ_ep.
+
+**Computational model:** Wrap the existing `build_scaled_metric`
+in a root-finder that adjusts L₂ and L₆ (equivalently, adjusts
+E₀_e and E₀_p) to satisfy the mass constraints.  This is a
+nested optimization — outer loop sweeps σ_ep, inner loop solves
+for scales — but each inner solve is a small 2D problem (fast).
+
+**What to look for:** Does there exist a σ_ep where the self-
+consistent m_n − m_p = 1.293 MeV?  If yes, what is the required
+σ_ep, and is it geometrically natural?  If no, the single-mode
+neutron hypothesis (F65) would need revision.
+
+**Effort:** ~1 script, ~1 track.  Could resolve the neutron
+question definitively within this framework.
+
+
+### N2. Moduli stabilization potential (high priority, theoretical)
+
+**Problem:** F73 identified a tension between Casimir energy
+(which wants maximal coupling) and the mass spectrum (which
+wants minimal coupling).  This tension could select specific
+cross-shear values — but only if we can write down the full
+effective potential.
+
+**Approach:** The one-loop Casimir energy is just one contribution
+to the moduli potential.  In string-theory compactifications, the
+full potential includes:
+
+1. Casimir energy (computed in Track 4d — monotonically decreasing)
+2. Flux contributions (from the EM field threading the T²s)
+3. Curvature corrections (from embedding in 4+6D)
+4. Mass-gap contributions (heavy modes integrated out)
+
+The flux term is particularly interesting: the shear charge
+mechanism (R19) means the EM field ALREADY threads each T².
+This flux energy depends on the cross-shears and could provide
+the "upward pressure" that balances the Casimir downward pull.
+
+**Computational model:** Compute the EM flux energy stored in
+the sheared T⁶ as a function of cross-shears.  Add it to the
+Casimir energy.  Look for a minimum of the total potential in the
+(σ_ep, σ_eν, σ_νp) space.  If a minimum exists and coincides
+with the neutron mass constraint and small neutrino ratio
+perturbation, the model would select specific cross-shear values.
+
+**What to look for:** A local minimum of V_total(σ_ep, σ_eν) at
+physically viable parameter values.  This would be the first
+evidence that the geometry is self-selecting.
+
+**Effort:** Moderate.  The Casimir part is done.  The flux
+contribution requires deriving the EM energy density on the
+sheared T⁶ — analytical work followed by numerical evaluation.
+
+
+### N3. Non-symmetric cross-shear structure (medium priority)
+
+**Problem:** Track 4 set all 4 cross-shears within each block
+equal (e.g., s₁₃ = s₁₄ = s₂₃ = s₂₄ = σ_eν).  This is the
+simplest parametrization but physically restrictive.  PMNS
+mixing requires DIFFERENT couplings between electron-tube vs
+electron-ring and neutrino-tube vs neutrino-ring.
+
+**Approach:** Introduce a 2×2 mixing matrix for each inter-plane
+block:
+
+    σ_eν block: [[σ₁₃, σ₁₄], [σ₂₃, σ₂₄]]
+
+The PMNS matrix emerges as the rotation that diagonalizes the
+mass matrix in the (electron, muon, tau) × (ν₁, ν₂, ν₃) space.
+If different σ_ij values within the block can preserve the
+neutrino mass ratio (F72 showed the SYMMETRIC case shifts it),
+the PMNS angles would constrain the 4 individual shears.
+
+**Computational model:** Sweep σ₁₃, σ₁₄, σ₂₃, σ₂₄ independently
+(4D grid, but constrained to the positive-definite region).  At
+each point, compute the neutrino mass ratio and mass eigenstate
+rotation angle.  The rotation angle IS the PMNS mixing angle in
+this framework.  Find where the ratio is preserved AND the
+rotation angle matches θ₁₂ ≈ 33°.
+
+**What to look for:** A parameter surface where Δm²₃₁/Δm²₂₁ = 33.6
+AND θ₁₂ = 33.4°.  If it exists, θ₂₃ and θ₁₃ provide two
+additional constraints on 4 parameters — the system could become
+over-determined (a prediction).
+
+**Effort:** Moderate to high.  The 4D sweep is expensive but
+parallelizable.  The conceptual challenge is correctly defining
+"mixing angle" in terms of mode overlaps on the T⁶.
+
+
+### N4. Spinor structure on T⁶ (medium priority, analytical)
+
+**Problem:** F68 identified that the neutron mode (1,2,0,0,1,2)
+has two odd tube windings, naively giving spin-0 or spin-1 rather
+than the observed spin-½.
+
+**Approach:** The spin structure on T⁶ is governed by SO(6) (or
+its double cover SU(4)), not SO(3) × SO(3).  In 6 compact
+dimensions, a spinor has 2³ = 8 components.  The tube winding
+quantum numbers (n₁, n₃, n₅) determine the spinor representation
+of each mode.
+
+Key questions:
+1. Does the T⁶ lattice admit a spin structure? (It does — flat
+   tori always do.)
+2. How do two independent odd windings compose in the SO(6) spinor
+   representation?
+3. Is there a choice of spin structure on T⁶ where (1,2,0,0,1,2)
+   is spin-½?
+
+**Computational model:** Primarily analytical, but the
+representation theory can be checked numerically.  Construct the
+SO(6) Clifford algebra, identify the spinor representation, and
+compute the spin of the mode (1,2,0,0,1,2).
+
+**What to look for:** A spin-½ assignment that is consistent with
+the known particles (electron = ½, proton = ½, neutrino = ½) and
+predicts the neutron's spin correctly.
+
+**Effort:** Low (if the representation theory is standard) to
+high (if subtleties of the T⁶ lattice spin structure intervene).
+
+
+### N5. Aspect ratio selection (high priority, hardest problem)
+
+**Problem:** The 3 aspect ratios (r_e, r_ν, r_p) are the most
+consequential free parameters — they enter every observable but
+nothing currently selects them.  F60 identified this as the
+critical open problem.
+
+**Possible approaches:**
+
+1. **Modular invariance.**  The T⁶ lattice has a modular group
+   SL(6, Z).  Physically equivalent lattices are related by
+   modular transformations.  The fundamental domain of this group
+   is a finite region in parameter space.  If the aspect ratios
+   must lie in the fundamental domain, this constrains them (but
+   probably not to unique values).
+
+2. **Self-dual lattice condition.**  Certain lattices (like E₈)
+   are self-dual: Λ = Λ*.  Requiring the T⁶ lattice to be
+   self-dual is a strong constraint that may fix the aspect ratios.
+
+3. **Anomaly cancellation.**  In string theory, modular invariance
+   of the partition function requires specific lattice properties.
+   If our model has a similar constraint, it might select r.
+
+4. **Over-determination from PMNS.**  If N3 succeeds and the PMNS
+   angles constrain the cross-shears, the system might become
+   over-determined — with more equations than unknowns.  Solving
+   this over-determined system could force specific r values.
+
+5. **Experimental constraint from Σm_ν.**  F2 showed that
+   Assignment A's Σm_ν → 116.4 meV as r → ∞, but Σm ≈ 120 meV
+   at r ≈ 3.  If cosmological measurements pin Σm_ν precisely
+   (e.g., DESI reports Σm ≈ 60 meV), that would fix r_ν and
+   distinguish our model from others.
+
+**Effort:** High.  This is likely a multi-study problem.  The
+most tractable entry point is N3 (PMNS), which might cascade into
+r-selection via over-determination.
+
+
+### N6. Muon and tau placement (speculative)
+
+**Problem:** The muon (105.7 MeV) and tau (1777 MeV) are not
+accommodated in the current T⁶.  They have the same charge and
+spin as the electron but different mass.
+
+**Possible models:**
+
+1. **Excited modes on the electron T².**  Higher (p, q) modes
+   like (1, 4) or (3, 2) have higher mass.  At the electron's
+   Compton scale, m(1,4) ≈ 4 × m_e — far too light for the muon.
+   But if the EFFECTIVE mass includes cross-plane coupling, the
+   shift could be much larger.
+
+2. **Separate T² planes.**  The muon lives on its own T² at its
+   own Compton scale (~1.3 fm).  This would expand T⁶ to T⁸ or
+   T¹⁰.  Aesthetically unappealing but not ruled out.
+
+3. **Different spin structures.**  The muon and tau might be the
+   same (1, 2) mode on the electron T² but with different spinor
+   phases on the T⁶.  This is speculative but would keep the
+   geometry compact.
+
+**Effort:** Exploratory.  Option 1 is computable with existing
+infrastructure (extend the spectral scan to look for modes near
+m_μ and m_τ).  Options 2 and 3 require new theoretical framework.
+
+
+### N7. Gravity and the sub-mm bound (important constraint)
+
+**Problem:** The neutrino T² has circumferences L₃ ≈ 212 mm and
+L₄ ≈ 42 mm.  If gravity propagates in these dimensions, Newton's
+law would deviate from 1/r² below ~42 mm.  Current experimental
+bounds show no deviation down to ~50 μm — three orders of magnitude
+smaller.  However, 42 mm is three orders of magnitude LARGER than
+the current bound, apparently ruling out the model.
+
+**Possible resolutions:**
+
+1. **Gravity does not propagate in all compact dimensions.**  Only
+   the proton T² (fm-scale) is gravitationally active; the electron
+   and neutrino T²s are "dark" to gravity.
+
+2. **The neutrino T² is warped.**  A Randall-Sundrum-type warping
+   could make the effective gravitational size much smaller than the
+   geometric size.
+
+3. **The neutrino mass hierarchy is different.**  If our neutrino
+   mass assignment is wrong and the neutrino T² is actually at a
+   smaller scale, the gravitational bound might be satisfied.
+
+**Computational model:** Compute the gravitational potential
+modification from the T⁶ geometry and compare to experimental
+constraints (Eöt-Wash, Casimir force measurements, neutron
+interferometry).  Determine which T² planes must be gravitationally
+hidden and what mechanism could achieve this.
+
+**Effort:** Moderate.  The gravitational Kaluza-Klein spectrum is
+well-understood; the calculation is standard.
+
+
+### Summary of priorities
+
+| # | Direction | Tractability | Impact | Priority |
+|---|-----------|-------------|--------|----------|
+| N1 | Self-consistent neutron | High | High | ★★★ |
+| N2 | Moduli potential | Medium | Very high | ★★★ |
+| N3 | PMNS from cross-shears | Medium | Very high | ★★★ |
+| N4 | SO(6) spin structure | Medium | High | ★★☆ |
+| N5 | Aspect ratio selection | Low | Critical | ★★☆ |
+| N6 | Muon/tau placement | Low | Medium | ★☆☆ |
+| N7 | Gravity bound | Medium | High | ★★☆ |
+
+N1–N3 form a natural cluster for the next study: fix the neutron
+self-consistency, derive the moduli potential, and connect PMNS
+to cross-shear structure.  If all three succeed, the model would
+go from "compatible" (current status) to "predictive" — and the
+aspect ratios (N5) might fall out as a consequence.
