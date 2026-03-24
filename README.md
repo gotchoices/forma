@@ -1,5 +1,39 @@
 # Theory of the Universe
 
+## About this project
+
+I'm an electrical engineer, not a physicist.  This started
+as a hobby — a "what if" exploration of a 1997 paper that
+proposed the electron is a confined photon.  It has since
+produced results I did not expect: parameter-free
+predictions of particle masses at percent-level accuracy,
+an emergent neutron from pure geometry, and nuclei that
+appear as standing-wave modes rather than bound collections
+of particles.
+
+Because I am not expert in theoretical physics, I have
+worked more as an architect and project manager than as a
+traditional researcher.  The computational modeling,
+mathematical derivations, and literature comparisons have
+been performed collaboratively with AI (Claude).  Every
+numerical result is produced by scripts in this repository
+that can be inspected and re-run.
+
+I do not claim that this model is correct.  It may turn out
+to be a mathematical coincidence, an elaborate numerology,
+or a useful approximation to something deeper.  What I do
+claim is that it is *interesting*: a model that starts from
+three axioms and derives percent-level particle masses with
+no free parameters is, at minimum, worth understanding why
+it works as well as it does — and worth understanding
+precisely where and why it fails.
+
+The project is conducted in the open.  The studies, scripts,
+findings, and failures are all here.  Readers with relevant
+expertise are welcome to examine, challenge, or extend the
+work.
+
+
 ## Goal
 
 Build a geometric model of fundamental particles from pure
@@ -71,7 +105,8 @@ active work, and open problems.
 - `reference/` — Source material by others and recorded conversations.
 - `primers/` — Self-contained tutorials on topics needed to follow the studies.
   See [`primers/README.md`](primers/README.md) for the list (matrix notation, Maxwell, KK theory, charge-from-energy).
-- `papers/` — Authored documents presenting theories, results, and proofs. *(None yet.)*
+- `papers/` — Authored documents presenting theories, results, and proofs.
+  See [`papers/`](papers/) for the current drafts.
 - `qa/` — Physics questions answered by logic and existing theory (no computation).
   See [`qa/README.md`](qa/README.md) for the index.
 - `studies/` — Questions that require a computational model to answer.
