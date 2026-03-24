@@ -1101,3 +1101,86 @@ shears).  Within this region, the model reproduces all
 established physics.  Track 4 should determine whether T⁶
 consistency conditions collapse this region to a smaller
 manifold or discrete set.
+
+
+---
+
+## Track 4a. T⁶ metric and mode spectrum
+
+Script: [`scripts/track4a_t6_metric.py`](scripts/track4a_t6_metric.py)
+
+
+### F64. The dimensionless metric G̃ is well-conditioned
+
+The physical T⁶ metric G has entries spanning 22 orders of
+magnitude (fm² to mm²), giving condition number ~10²¹ and
+destroying numerical precision.  Rescaling to the dimensionless
+metric G̃_ij = G_ij / (L_i L_j) gives condition number 1.25.
+
+Mode energies computed via E²(n) = (2πℏc)² ñᵀ G̃⁻¹ ñ where
+ñ_i = n_i / L_i reproduce all five reference modes (e, ν₁, ν₂,
+ν₃, p) to machine precision at zero cross-shear.
+
+
+### F65. The cross-plane mode (1,2,0,0,1,2) is automatically charge-neutral
+
+The T⁶ mode with electron quantum numbers (n₁=1, n₂=2) and proton
+quantum numbers (n₅=1, n₆=2) carries:
+
+    charge = (−e from n₁=1) + (+e from n₅=1) = 0
+
+This is not imposed — it follows automatically from the charge
+mechanism on each T².  The mode is a candidate for the neutron.
+
+
+### F66. Any nonzero e–p cross-shear increases the neutron mode energy
+
+At zero cross-shear:
+
+    E(1,2,0,0,1,2) = √(m_e² + m_p²) = 938.272 MeV
+
+The energy correction is QUADRATIC in σ_ep:  ΔE ∝ σ² (always
+positive).  Both positive and negative cross-shear increase the
+mass.  This means the neutron is NATURALLY HEAVIER than m_p for
+any nonzero electron–proton coupling.
+
+
+### F67. Neutron mass reproduced at σ_ep ≈ ±0.038
+
+    |σ_ep| = 0.0378  →  E(1,2,0,0,1,2) = 939.565 MeV = m_n
+
+    Positivity bound:  |σ_ep| < 0.535
+    Required fraction: 7.1% of bound
+
+The cross-shear is geometrically modest — the electron and proton
+T² planes are nearly orthogonal (arccos(0.038) ≈ 87.8°), tilted
+by only 2.2° from perpendicular.
+
+The sign of σ_ep is unconstrained by the neutron mass (both ±
+give the same energy at leading order).  This discrete ambiguity
+may relate to charge conjugation or parity.
+
+
+### F68. The spin problem is open
+
+The mode (1,2,0,0,1,2) has TWO odd tube windings: n₁ = 1 and
+n₅ = 1.  Each contributes spin-½.  Naively, two spin-½'s combine
+to spin-0 or spin-1, but the neutron is spin-½.
+
+Possible resolutions:
+1. SO(6) spinor structure differs from naive SO(3) × SO(3)
+2. The tube windings live in different planes and don't add
+   as angular momenta — the total spin might be max(½, ½) = ½
+3. The correct neutron mode has different quantum numbers
+
+This requires deeper analysis of the spinor structure on T⁶.
+
+
+### F69. Casimir energy is insensitive to e–p cross-shear
+
+The Epstein zeta function Z(5) is dominated by the neutrino T²
+(L ~ mm), which contributes ~10¹¹³ to the sum.  Varying σ_ep
+(which only couples the fm-scale electron and proton T²s) produces
+no detectable change.  Casimir energy can only provide structure
+if computed as a function of σ_eν or σ_νp (which couple to the
+neutrino T² scale).

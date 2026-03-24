@@ -411,24 +411,95 @@ Script: `scripts/track3_parameter_census.py`
 
 ### Track 4 — Unification on T⁶
 
-**Goal:** Embed the three T²s in a single T⁶ and determine
-whether the combined geometry is fully constrained.
+**Goal:** Embed the three T²s in a single T⁶, turn on cross-plane
+shears, and look for geometries where the observed particle spectrum
+emerges naturally.
 
-Steps:
-1. Write the general T⁶ metric and mode spectrum as a function of
-   all 15 shears and 6 circumferences.  Verify that the three T²
-   spectra emerge in the zero-cross-shear limit.
-2. Map the 12 cross-shears to physical observables:
-   - s₁₃, s₁₄, s₂₃, s₂₄ → PMNS mixing
-   - s₁₅, s₁₆, s₂₅, s₂₆ → electron–proton coupling
-   - s₃₅, s₃₆, s₄₅, s₄₆ → neutrino–proton coupling
-3. Determine if PMNS + CKM jointly constrain enough cross-shears
-   to fix r_e, r_ν, r_p.
-4. Check for T⁶ geometric consistency conditions (modular
-   invariance, lattice self-consistency, topological constraints)
-   that may reduce the free parameter count.
-5. If over-determined: solve and compute predictions.
-6. If under-determined: identify which observable would close it.
+The fundamental question (F62): the topology demonstrates compatibility
+but not uniqueness.  Track 4 asks whether the T⁶ structure is more
+selective than three independent T²s — does it prefer particular
+cross-shear values via energy minimization, spectral structure, or
+geometric consistency?
+
+#### Track 4a — T⁶ metric and mode spectrum
+
+Build the computational infrastructure.
+
+1. Parametrize the 6×6 metric G from 6 scales + 15 shears.
+2. Compute the mode energy E²(n₁,...,n₆) = (ℏc)² n^T G⁻¹ n
+   for arbitrary quantum numbers.
+3. Verify: at zero cross-shear, spectrum decomposes into three
+   independent T² spectra matching Tracks 1–2.
+4. Classify each mode by charge (from n₁, n₅ tube windings)
+   and spin (from parity of tube quantum numbers).
+
+#### Track 4b — Metric positivity bounds
+
+For given within-plane parameters (r_e, r_ν, r_p, s₁₂, s₃₄, s₅₆),
+compute the maximum cross-shear values consistent with a positive-
+definite metric (det G > 0, all principal minors > 0).  This gives
+hard upper bounds on the cross-shear parameter space.
+
+Reduce the 12 cross-shears to a manageable sweep by introducing
+one overall scale per inter-plane block:
+
+    σ_eν (electron–neutrino), σ_ep (electron–proton), σ_νp (neutrino–proton)
+
+with s_ij = σ × f_ij (f_ij = O(1) structure factors set to 1 initially).
+Sweep σ_eν, σ_ep, σ_νp and map the allowed region.
+
+#### Track 4c — Neutron as T⁶ mode (1,2,0,0,1,2)
+
+The cross-plane mode with electron quantum numbers (1,2) and proton
+quantum numbers (1,2) automatically has:
+- charge: (−e) + (+e) = 0  ✓
+- at zero cross-shear: mass = √(m_e² + m_p²) ≈ m_p
+
+Compute E(1,2,0,0,1,2) as a function of the 4 electron–proton
+cross-shears (s₁₅, s₁₆, s₂₅, s₂₆).  Find the constraint surface
+where E = m_n = 939.565 MeV (need ΔE ≈ +1.293 MeV).
+
+Reduce to a 1–2 parameter sweep (e.g., set all 4 equal: σ_ep)
+and find the required value.  Check:
+- Does this value satisfy the positivity bounds from 4b?
+- What is the spin of this mode?  (Two odd tube windings — may
+  require SO(6) analysis rather than naive spin addition.)
+
+#### Track 4d — Casimir energy landscape
+
+The vacuum energy of a quantum field on T⁶ is the Epstein zeta
+function of the dual lattice:
+
+    E_Casimir ∝ Σ_{n ∈ Z⁶, n≠0} (n^T G⁻¹ n)^{-5}
+
+This is a physical energy that the geometry wants to minimize
+(it drives moduli stabilization in string-theory compactifications).
+Compute E_Casimir as a function of cross-shears and look for minima.
+
+Sweep strategy:
+- Fix within-plane parameters at established values.
+- Parameterize cross-shears by 2–3 reduced variables (σ_eν, σ_ep, σ_νp).
+- Compute E_Casimir on a grid.
+- Look for minima, saddle points, or other structure.
+- Check whether minima coincide with the neutron constraint (4c).
+
+If a minimum naturally selects cross-shear values that also produce
+the correct neutron mass, that would be a genuine prediction rather
+than a fit.
+
+#### Track 4e — Spectral landscape scan
+
+At each point in cross-shear space, compute the full low-energy
+T⁶ mode spectrum and compare to observation.
+
+Define a match score:
+- Does a charge-zero, spin-½ mode appear near m_n?
+- Is there a spectral gap between the known particles and exotic modes?
+- Do the e–ν cross-shears produce mixing consistent with PMNS?
+
+Sweep the reduced cross-shear parameters and plot the match score.
+Look for sharp minima — regions where the T⁶ spectrum naturally
+resembles the observed particle spectrum.
 
 ## Risk assessment
 
