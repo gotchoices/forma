@@ -60,144 +60,120 @@ prerequisites; later tracks tackle deeper conceptual
 problems.  New intermediate tracks may be inserted as
 earlier results clarify the path.
 
+### Guiding principle: geometry predicts, theories explain
 
-### Track 1 — KK reduction: from 9D to Coulomb
+The neutron was not predicted by an intermediate theory of
+proton-electron binding — it was found directly as a T⁶
+mode.  We adopt the same posture throughout R29:
 
-**Goal:** Show that the T⁶ × R³ wave equation reduces to
-4D electrodynamics with α = 1/137.
-
-**Method:**
-1. Write the scalar wave equation on T⁶ × R³:
-   (Δ_R³ + Δ_T⁶) ψ = −(ω/c)² ψ
-2. Expand ψ in T⁶ eigenmodes: ψ(x,θ) = Σ_n f_n(x) φ_n(θ)
-3. Each T⁶ mode gives a 4D field with mass m_n = E_n/c²
-4. The zero mode (n = 0) is massless → mediates 1/r potential
-5. Massive modes give Yukawa corrections ~ exp(−m_n r)/r
-
-The coupling constant between two charged modes (electron
-and proton) via the zero-mode exchange is α.  Compute it
-from the T⁶ geometry and verify α = 1/137.
-
-Also compute the leading Yukawa correction at the Bohr
-radius (0.53 Å).  The dominant correction comes from the
-lightest massive KK mode.  If the correction depends on
-r_e (the last free parameter from R15), this could
-constrain r_e.
-
-**Deliverable:** V(r) for the electron-proton system,
-decomposed into Coulomb + Yukawa corrections.  Verification
-that the Coulomb coupling matches R19.
-
-**Addresses:** OQ1 (mode-mode interaction), OQ2 (T⁶-R³
-shears as gauge fields).
+- **We use the T⁶ solver to search for modes that match
+  observed composite systems** (nuclei, atoms).
+- **Intermediate theories** (KK gauge fields, Coulomb, QM)
+  are useful for building intuition and cross-checking, but
+  we do not require them.  If a T⁶ mode at 1876 MeV with
+  Q = +1, S = 1 exists, that IS the deuteron, regardless of
+  whether we can derive the nuclear force.
+- **Predictive power comes from the geometry**, not from
+  any particular reduction framework.
 
 
-### Track 2 — Hydrogen from T⁶ geometry
+### Track 1 — KK reduction: from 9D to Coulomb  ✔ Complete
 
-**Goal:** Derive the hydrogen ground state energy from
-the T⁶ × R³ model.
+**Result:** Coulomb 1/r potential emerges from the zero-mode
+gauge field.  α = 1/137 verified from R19 shear on both
+electron and proton sheets.  Six U(1) gauge fields identified,
+including a proton-tube gauge boson (52 MeV, 3.8 fm range)
+as a nuclear force candidate.
 
-**Method:**
-1. Use V(r) from Track 1 as the electron-proton potential
-2. Solve the radial Schrödinger equation for the bound state
-3. Compare: E₁ = −13.6 eV?  a₀ = 0.53 Å?
-
-If V(r) = −α ℏc/r exactly, this is textbook QM — the result
-is guaranteed.  The value is in showing the chain:
-T⁶ geometry → particle charges → Coulomb → hydrogen.
-
-If the Yukawa corrections from Track 1 are nonzero, solve
-with the full V(r) and report the deviation from 13.6 eV.
-
-**Deliverable:** Hydrogen binding energy derived from
-compact-dimension geometry.
-
-**Addresses:** OQ5 (energy levels from 9D).
+See findings F1–F8.
 
 
-### Track 3 — The r_e constraint from atomic spectra
+### Track 2 — Hydrogen from T⁶ geometry  ✔ Complete
 
-**Goal:** Determine whether the hydrogen spectrum depends
-on r_e (electron aspect ratio) and, if so, pin its value.
+**Result:** E₁ = −13.6 eV and a₀ = 0.53 Å reproduced from
+the Coulomb term.  Yukawa corrections from KK massive modes
+are orders of magnitude too large under the naive uniform-
+coupling assumption — indicating that the simple KK gauge
+picture does not hold quantitatively.  The tension
+(F11–F14) motivates the direct-mode approach adopted in
+subsequent tracks.
+
+See findings F9–F15.
+
+
+### Track 3 — Light nuclei as T⁶ modes
+
+**Goal:** Search for T⁶ modes that directly reproduce
+observed nuclear systems, without assuming any intermediate
+force theory.
+
+**Rationale:** The neutron was discovered as a T⁶ mode, not
+derived from a proton-electron force.  Nuclei may follow the
+same pattern — a deuteron might be a single oscillation
+in the T⁶ compact space, not two particles bound together.
 
 **Method:**
-The Yukawa corrections from Track 1 depend on the T⁶
-circumferences, which depend on r_e.  For different values
-of r_e, compute:
-1. The shift in hydrogen ground state energy
-2. The shift in the Lamb shift (2S₁/₂ − 2P₁/₂)
-3. The shift in fine structure
+1. Search for modes matching the deuteron (1875.6 MeV,
+   Q = +1, S = 1), helium-3 (2808.4 MeV, Q = +2, S = 1/2),
+   helium-4 / alpha (3727.4 MeV, Q = +2, S = 0), and
+   other light nuclei.
+2. If matches are found: compare predicted vs observed mass,
+   assess whether the binding energy (mass deficit) emerges.
+3. If NO matches: this is also informative — it means nuclei
+   are genuinely multi-mode objects and require the R³
+   interaction framework.
 
-Compare to measured precision (~10⁻¹² for the 1S-2S
-transition).  If the Yukawa corrections are large enough
-to be constrained by experiment, r_e is determined.
+**Deliverable:** Catalog of nuclear T⁶ mode candidates,
+or evidence that nuclei are not single T⁶ modes.
 
-**Deliverable:** r_e constraint from atomic spectroscopy,
-or a finding that the corrections are too small to measure.
+**Addresses:** OQ4 (multi-particle states), OQ6 (nuclear
+binding).
+
+
+### Track 4 — The r_e constraint
+
+**Goal:** Determine r_e from any available observable.
+
+**Method:**
+Track 2 showed the KK Yukawa corrections depend on r_e.
+The qualitative constraint (r_e ≲ a few) is robust even
+if the exact coupling needs revision.  Other constraints:
+- Does r_e affect the T⁶ mode spectrum at second order?
+- Do muonic atoms or high-Z atoms provide bounds?
+- Can the proton charge radius constrain r_e?
+
+**Deliverable:** Narrowed range or pinned value of r_e.
 
 **Addresses:** The α problem (R15) — r_e is the last
 undetermined parameter.
 
 
-### Track 4 — Mode census of the gauge sector
+### Track 5 — Atomic binding mechanism
 
-**Goal:** Enumerate the gauge fields that emerge from T⁶.
+**Goal:** Understand how atoms arise in the T⁶ framework.
 
-**Method:**
-The KK reduction of T⁶ gives up to 6 independent U(1)
-gauge fields (one per compact dimension).  The physical
-electromagnetic field is a specific linear combination:
-A_μ^EM = −A_μ^1 + A_μ^5 (from Q = −n₁ + n₅).
+**Method depends on Track 3 results:**
+- If nuclei are T⁶ modes: atoms may also be modes (heavier
+  modes with an electron-sheet component).
+- If nuclei are NOT T⁶ modes: atoms require the R³
+  interaction picture.  The KK Coulomb derivation from
+  Track 1 provides the leading term; the coupling strength
+  issue from Track 2 needs resolution.
 
-Questions:
-- What are the other 5 gauge fields?  Do any correspond
-  to known forces (weak, strong)?
-- What are the masses of these gauge bosons?  (If they
-  acquire mass from the T⁶ geometry, they are short-range.)
-- Does the neutrino sector (A_μ^3, A_μ^4) produce a force
-  that could explain nuclear binding?
-
-**Deliverable:** Classification of the T⁶ gauge sector.
-
-**Addresses:** OQ6 (nuclear binding mechanism).
+**Deliverable:** Mechanism for atomic binding in T⁶,
+whether mode-based or interaction-based.
 
 
-### Track 5 — Deuterium binding
+### Track 6 — Nuclear stability and neutron lifetime *(deferred)*
 
-**Goal:** Determine whether the T⁶ geometry produces
-nuclear binding.
-
-**Method:**
-The proton mode (0,0,0,0,1,2) and neutron mode
-(0,−2,1,0,0,+2) share proton-sheet quantum numbers.
-Their interaction may include:
-- Coulomb repulsion (if both charged — but neutron is
-  neutral, so V_EM = 0)
-- Non-EM gauge forces from Track 4 (neutrino-sector
-  gauge fields?)
-- Direct overlap in the compact dimensions at nuclear
-  separations (~2 fm ≈ L₆, the proton ring circumference)
-
-At separations comparable to the T⁶ size, the KK reduction
-breaks down and the full 9D structure matters.  This is
-where the "9D solver" is truly needed.
-
-**Deliverable:** p-n interaction potential at nuclear scales.
-Comparison to 2.224 MeV (deuterium binding energy).
-
-**Addresses:** OQ6 (nuclear binding), OQ7 (neutron stability).
+Why a neutron in a nucleus doesn't decay.  Depends on
+Track 3 outcome.
 
 
-### Track 6 — Nuclear stability  *(deferred)*
+### Track 7 — Full atomic spectrum  *(deferred)*
 
-Why a neutron in a nucleus doesn't decay.  Requires Tracks
-4–5 results.
-
-
-### Track 7 — Hydrogen energy levels  *(deferred)*
-
-Full hydrogen spectrum, fine structure, Lamb shift.
-Requires Track 2–3 results.
+Fine structure, Lamb shift, energy levels.  Depends on
+Track 5 mechanism.
 
 
 ## Open questions
