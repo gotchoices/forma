@@ -10,6 +10,8 @@ Sits on top of lib/t6.py.  Provides:
   self_consistent_metric()  Build a metric where input particle
                             masses are exact at any cross-shear.
 
+  self_consistent_metric_asym()  Same, with 12 independent σ_ij.
+
   multi_target_optimize()   Find parameter regions where multiple
                             targets are matched simultaneously.
 
@@ -155,6 +157,121 @@ def self_consistent_metric(r_e, r_nu, r_p,
     for iteration in range(max_iter):
         Gt, Gti = _build_metric_from_L(
             L, s12, s34, s56, sigma_ep, sigma_enu, sigma_nup)
+
+        if Gt is None:
+            return {'converged': False, 'iterations': iteration,
+                    'reason': 'metric not positive-definite'}
+
+        E_e = mode_energy(_N_ELECTRON, Gti, L)
+        E_p = mode_energy(_N_PROTON, Gti, L)
+
+        err_e = abs(E_e - M_E_MEV) / M_E_MEV
+        err_p = abs(E_p - M_P_MEV) / M_P_MEV
+
+        if err_e < tol and err_p < tol:
+            return {
+                'Gtilde': Gt, 'Gtilde_inv': Gti, 'L': L.copy(),
+                's12': s12, 's34': s34, 's56': s56,
+                'converged': True, 'iterations': iteration + 1,
+            }
+
+        L[1] *= E_e / M_E_MEV
+        L[0] = r_e * L[1]
+        L[5] *= E_p / M_P_MEV
+        L[4] = r_p * L[5]
+
+    return {'converged': False, 'iterations': max_iter,
+            'reason': 'max iterations reached'}
+
+
+# ══════════════════════════════════════════════════════════════════════
+#  Asymmetric cross-shear metric
+# ══════════════════════════════════════════════════════════════════════
+
+# Indices for the 12 independent cross-shear entries.
+# e-p block:  (0,4)=σ₁₅  (0,5)=σ₁₆  (1,4)=σ₂₅  (1,5)=σ₂₆
+# e-ν block:  (0,2)=σ₁₃  (0,3)=σ₁₄  (1,2)=σ₂₃  (1,3)=σ₂₄
+# ν-p block:  (2,4)=σ₃₅  (2,5)=σ₃₆  (3,4)=σ₄₅  (3,5)=σ₄₆
+
+CROSS_INDICES = {
+    'ep':  [(0, 4), (0, 5), (1, 4), (1, 5)],
+    'enu': [(0, 2), (0, 3), (1, 2), (1, 3)],
+    'nup': [(2, 4), (2, 5), (3, 4), (3, 5)],
+}
+
+
+def _build_metric_asym(L, s12, s34, s56, cross_shears):
+    """
+    Build G̃ with individually specified cross-shear entries.
+
+    Parameters
+    ----------
+    L : ndarray (6,) — circumferences in fm.
+    s12, s34, s56 : float — within-plane shears.
+    cross_shears : dict mapping (i,j) tuples to float values.
+        Keys are pairs like (0,4), (0,5), etc.  Missing entries
+        default to zero.
+
+    Returns
+    -------
+    (Gtilde, Gtilde_inv) or (None, None) if not positive-definite.
+    """
+    S_within = np.zeros((6, 6))
+    S_within[0, 1] = s12
+    S_within[2, 3] = s34
+    S_within[4, 5] = s56
+
+    B = np.diag(L) @ (np.eye(6) + S_within)
+    G_phys = B.T @ B
+
+    Gtilde = np.zeros((6, 6))
+    for i in range(6):
+        for j in range(6):
+            if L[i] == 0 or L[j] == 0:
+                return None, None
+            Gtilde[i, j] = G_phys[i, j] / (L[i] * L[j])
+
+    for (i, j), val in cross_shears.items():
+        Gtilde[i, j] = val
+        Gtilde[j, i] = val
+
+    if not is_positive_definite(Gtilde):
+        return None, None
+
+    return Gtilde, np.linalg.inv(Gtilde)
+
+
+def self_consistent_metric_asym(r_e, r_nu, r_p, cross_shears,
+                                tol=1e-12, max_iter=50):
+    """
+    Self-consistent metric with 12 independent cross-shear entries.
+
+    Like self_consistent_metric() but takes a dict of individual
+    cross-shear values instead of 3 collective parameters.
+
+    Parameters
+    ----------
+    r_e, r_nu, r_p : float
+        Aspect ratios.
+    cross_shears : dict
+        Maps (i,j) index pairs to float values.  For example:
+        {(0,4): -0.08, (0,5): -0.10, (1,4): -0.05, (1,5): -0.09}
+        Missing cross-block entries default to zero.
+    tol : float
+        Convergence tolerance (relative mass error).
+    max_iter : int
+        Maximum iterations.
+
+    Returns
+    -------
+    dict with keys:
+        'Gtilde', 'Gtilde_inv', 'L', 's12', 's34', 's56',
+        'converged', 'iterations'
+    """
+    L, s12, s34, s56 = compute_scales(r_e, r_nu, r_p)
+
+    for iteration in range(max_iter):
+        Gt, Gti = _build_metric_asym(L, s12, s34, s56, cross_shears)
 
         if Gt is None:
             return {'converged': False, 'iterations': iteration,

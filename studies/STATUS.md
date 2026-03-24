@@ -22,26 +22,16 @@ energy and topology alone.
 **Open sub-problem:** the formula α(r,s) produces a one-parameter family of
 solutions — every r > ~2 has a self-consistent s.  Nothing currently selects r.
 
-### R27. Bound states from T⁶ — atoms and nuclei as oscillation patterns
+### R27. T⁶ oscillation patterns — particles, atoms, and nuclei
 **Study:** [`bound-states/`](bound-states/)
-**Questions:** Q28, Q32  **Type:** compute/analytical  **Depends on:** R26, R19, R15
+**Questions:** Q16, Q28, Q32  **Type:** compute/analytical  **Depends on:** R26, R19, R15
 
-Does the T⁶ support stable oscillation patterns with the properties of atoms and
-nuclei?  Not "what force holds hydrogen together" but "is there a T⁶ pattern that
-IS hydrogen?"  Five tracks: self-consistent neutron mass, multi-mode energy cross-
-terms, hydrogen-like patterns, deuteron-like patterns, energy level structure.
-If hydrogen binding emerges, α is geometrically determined.
-
-### R28. Unstable particle spectrum from T⁶
-**Study:** [`particle-spectrum/`](particle-spectrum/)
-**Questions:** Q16, Q32  **Type:** compute  **Depends on:** R26
-
-Every unstable particle (μ, τ, W, Z, mesons, ...) is a potential T⁶ mode match.
-Extended spectral scan at high quantum numbers (|n_i| ≤ 15–20), matched against
-measured masses, charges, and spins.  Each match adds a constraint equation on the
-15 free parameters.  With ~5 matches beyond the neutron, the geometry is fully
-determined and remaining predictions are parameter-free.  Six tracks: spectral scan,
-match score, optimizer, μ/τ identification, W/Z identification, lifetime correlations.
+Discovery engine (`lib/t6_solver.py`) searches for T⁶ modes matching known particles.
+Tracks 1–3 complete: self-consistent neutron found (mode (0,−2,n₃,n₄,0,+2), fixes
+σ_ep = −0.0906), muon found (mode (−1,+5,0,0,−2,0), fixes r_p = 8.906).  Two
+parameters determined; tau at +5.6% needs asymmetric cross-shears (Track 4).  Later
+tracks: extended particle spectrum, lifetime correlations, nuclear stability, hydrogen,
+deuteron.  Subsumes former R28 (unstable particle spectrum).
 
 ---
 

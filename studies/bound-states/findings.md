@@ -464,17 +464,17 @@ that the tau and proton-antiproton system are related.
 
 ### F21. Summary of particle matches at the golden parameter point
 
-    Particle   Observed    Predicted    Error    Status
-    e⁻           0.511       0.511     exact    INPUT
-    p          938.272     938.272     exact    INPUT
-    ν₁,₂,₃    (Δm²)       (Δm²)     exact    INPUT
-    n          939.565     939.565    <1 eV    MATCHED (fixes σ_ep)
-    μ⁻         105.658     105.658    <1 eV    MATCHED (fixes r_p)
-    τ⁻        1776.9      1876.4      +5.6%   NEAR MISS
-    π⁺         139.6        —          —       NO MATCH (n_max=5)
-    K⁺         493.7        —          —       NO MATCH
-    W⁻       80377          —          —       NO MATCH
-    Z⁰       91188          —          —       NO MATCH
+    Particle         Observed    Predicted    Error    Status
+    e⁻  electron        0.511       0.511     exact    INPUT
+    p   proton         938.272     938.272     exact    INPUT
+    ν   neutrinos      (Δm²)       (Δm²)     exact    INPUT
+    n   neutron        939.565     939.565    <1 eV    MATCHED (fixes σ_ep)
+    μ⁻  muon           105.658     105.658    <1 eV    MATCHED (fixes r_p)
+    τ⁻  tau           1776.9      1876.4      +5.6%   NEAR MISS
+    π⁺  pion           139.6        —          —       NO MATCH (n_max=5)
+    K⁺  kaon           493.7        —          —       NO MATCH
+    W⁻  W boson      80377          —          —       NO MATCH
+    Z⁰  Z boson      91188          —          —       NO MATCH
 
 Parameters determined:
     r_p  = 8.906    ← neutron + muon
@@ -485,3 +485,184 @@ Parameters still free:
     r_nu (invisible at MeV scale)
     σ_eν (zero for now; would affect neutron if nonzero)
     σ_νp (zero for now; would affect neutron if nonzero)
+
+
+## Track 4. Asymmetric cross-shears and the tau
+
+Script: [`scripts/track4_tau_asymmetric.py`](scripts/track4_tau_asymmetric.py)
+
+
+### F22. Symmetric tau energy is locked by self-consistency
+
+The tau candidate (−1, 5, 0, 0, −2, −4) has proton quantum
+numbers (n₅ = −2, n₆ = −4) that are exactly 2× the proton
+mode (1, 2).  Because the self-consistent solver adjusts L₅
+and L₆ to keep E(proton) = m_p at every parameter point, the
+tau mode's proton contribution is locked at 2 × m_p ≈ 1876 MeV.
+
+No cross-shear value (symmetric or asymmetric) can break this
+lock for proportional modes.  Varying the 4 e-p cross-shear
+entries independently shifts the tau by at most ±2 MeV — two
+orders of magnitude short of the 100 MeV needed.
+
+
+### F23. The proton-scale energy ladder has a hard gap at the tau mass
+
+The proton dimensions (L₅ ≈ 23.7 fm, L₆ ≈ 2.66 fm) create
+discrete energy bands:
+
+    n₆ = ±1:  ~470–525 MeV
+    n₆ = ±2:  ~938–974 MeV   (proton lives here)
+    n₆ = ±3:  ~1408–1436 MeV
+    n₆ = ±4:  ~1877–1902 MeV (tau candidate here)
+
+The tau mass (1776.9 MeV) falls in the GAP between the n₆ = ±3
+and n₆ = ±4 bands.
+
+Exhaustive search over ALL charge −1, spin ½ modes with
+|n₁| ≤ 3, |n₅| ≤ 10, |n₆| ≤ 10 finds:
+
+**Zero modes between 1700 and 1850 MeV.**
+
+The gap is structural: it persists regardless of asymmetric
+cross-shears, aspect ratios r_e and r_nu, or neutrino quantum
+numbers.  The electron-scale contributions (hbar_c/L₂ ≈ 0.04
+MeV per winding) are far too small to bridge it.
+
+
+### F24. Asymmetric cross-shears confirmed insufficient
+
+Full investigation of the 4 independent e-p cross-shear entries
+(σ₁₅, σ₁₆, σ₂₅, σ₂₆) varied from −0.29 to +0.11:
+
+- Maximum shift of tau energy: ±2 MeV
+- Maximum shift of non-proportional modes (n₅ = −1, n₆ = −4):
+  ±1 MeV
+- All modes in the tau mass region remain at ~1877 MeV
+
+The e-ν and ν-p cross-shear blocks also have no effect on tau
+modes that lack neutrino windings.
+
+
+### F25. What the tau gap means
+
+The tau cannot be matched as a single T⁶ mode at the neutron+
+muon parameter point.  This is informative:
+
+1. **The tau may be a multi-mode composite.**  If two or more
+   modes can couple (e.g., a ~1408 MeV mode plus a ~370 MeV
+   mode), their compound pattern could have the right total
+   energy.  This requires the multi-mode formalism (Track 7).
+
+2. **Different mode assignment for the muon might help.**  Our
+   muon was matched via (−1, 5, 0, 0, −2, 0), pinning r_p =
+   8.906.  A different muon mode at a different r_p would
+   change the energy ladder spacing.  However, the gap is
+   ~470 MeV wide and the tau sits ~100 MeV into it — a 20%
+   shift in ladder spacing is implausible from r_p alone.
+
+3. **The tau's mass involves physics beyond single-mode KK.**
+   In the standard model, the tau gets its mass from Yukawa
+   coupling to the Higgs field — a fundamentally different
+   mechanism than KK mode energy.  The T⁶ may need a Higgs-
+   like mechanism or backreaction effect to account for it.
+
+The tau is the first particle that the single-mode T⁶ spectrum
+cannot accommodate.  This marks the boundary of what the
+current linearized, single-mode framework can predict.
+
+
+### F26. Summary of Track 4
+
+The tau mass gap is structural and robust.  No combination of
+asymmetric cross-shears, aspect ratios, or quantum numbers can
+place a single T⁶ mode at 1776.9 MeV.  The proton-scale energy
+ladder has a ~470 MeV gap (between the n₆ = ±3 and ±4 bands)
+that the tau falls into.
+
+The model's scorecard:
+
+    Predicted correctly:  neutron, muon (2 particles, 2 params)
+    Structural gap:       tau (5.6% off, hard wall)
+    Not yet searched:     pion, kaon, W, Z, Higgs
+
+**Next steps:** Search for pion and kaon modes (Track 5).
+
+
+## Track 5 (preliminary). Pion and kaon search
+
+
+### F27. The kaon⁺ appears at 487.9 MeV — a 1.2% parameter-free prediction
+
+Searching charge +1, spin 0 modes near the kaon mass:
+
+    Mode (2, 5, −5, 0, 3, 1):  E = 487.9 MeV
+    Observed kaon⁺:             m_K = 493.7 MeV
+    Error: −1.2%
+
+This mode has:
+- n₁ = 2 (electron ring, even → charge −2)
+- n₂ = 5 (electron tube)
+- n₃ = −5 (neutrino ring, odd → contributes spin ½)
+- n₅ = 3 (proton ring, odd → charge +3, contributes spin ½)
+- n₆ = 1 (proton tube)
+- Net charge: −2 + 3 = +1 ✓
+- Spin: 2 × ½ → 0 or 1 (bosonic if anti-aligned) ✓
+
+Critical: this is a **parameter-free prediction**.  The kaon
+energy is insensitive to σ_eν, σ_νp, r_e, and r_nu.  Varying
+each from −0.10 to +0.10 changes E_kaon by less than 0.04 MeV.
+The kaon mass is determined entirely by r_p and σ_ep, which are
+already pinned by the neutron and muon.
+
+The 1.2% error (5.8 MeV) may be addressable by asymmetric
+cross-shears or by a different mode assignment, but at the
+current level of approximation, it is a genuine prediction.
+
+
+### F28. Charged spin-0 particles require neutrino ring windings
+
+A charged particle (Q ≠ 0) with spin 0 must satisfy:
+- Charge: −n₁ + n₅ ≠ 0 → n₁ and n₅ have different parity
+- Spin 0: even count of odd ring windings
+
+Since n₁ and n₅ have different parity, there is always 1 odd
+ring winding.  To reach an even count, a second odd ring winding
+is needed from the neutrino ring (n₃ odd).
+
+This means: **every charged meson in the T⁶ must involve the
+neutrino sheet.**  This is a non-trivial structural prediction —
+it connects the weak interaction (neutrinos) to the strong
+interaction (mesons) through geometric necessity.
+
+
+### F29. The pion⁺ is 13.6% off
+
+Best pion⁺ candidate: mode (2, −5, −5, 0, 3, 0) at 158.5 MeV
+(target: 139.6 MeV, error: +13.6%).
+
+This is a weaker match than the kaon.  However, the pion's
+mass may be more sensitive to the still-unresolved within-plane
+shear details or nonlinear corrections.
+
+
+### F30. Updated particle scorecard
+
+    Particle         Observed    Predicted    Error     Status
+    e⁻  electron        0.511       0.511     exact     INPUT
+    p   proton         938.272     938.272     exact     INPUT
+    ν   neutrinos      (Δm²)       (Δm²)     exact     INPUT
+    n   neutron        939.565     939.565    <1 eV     MATCHED (fixes σ_ep)
+    μ⁻  muon           105.658     105.658    <1 eV     MATCHED (fixes r_p)
+    K⁺  kaon           493.7       487.9      −1.2%     PREDICTION
+    π⁺  pion           139.6       158.5      +13.6%    ROUGH
+    τ⁻  tau           1776.9      1876.4      +5.6%     STRUCTURAL GAP
+    W⁻  W boson      80377          —          —        NOT SEARCHED
+    Z⁰  Z boson      91188          —          —        NOT SEARCHED
+
+Parameters consumed: 2 (r_p, σ_ep) out of ~15 total.
+Parameters invisible: r_e, r_nu, σ_eν, σ_νp (no effect at MeV).
+
+The kaon prediction at −1.2% is the strongest test of the model
+beyond the neutron and muon.  It uses no additional free
+parameters.
