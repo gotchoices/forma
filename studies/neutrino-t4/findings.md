@@ -684,3 +684,82 @@ neutrino T² model.
 
 Track 1 is complete.  The neutrino T² model is viable with
 Assignment A.  Proceed to Track 2 (proton torus).
+
+---
+
+## Track 2a: Proton T² geometry
+
+### F40. Same α formula, same one-parameter family
+
+The proton T² uses the identical R19 α formula:
+
+    α = r² sin²(2πs) / (4π (2−s)² √(r²(1+2s)²+4))
+
+The solution curve s(r) is the same for proton and electron — both
+are (1,2) modes with charge ±e.  The geometry is a one-parameter
+family in r, with s uniquely determined by α = 1/137.
+
+### F41. Proton T² is a scaled copy of the electron T²
+
+If r_p = r_e (same aspect ratio), then the proton T² is geometrically
+similar to the electron T², scaled by m_e/m_p ≈ 1/1836 in all linear
+dimensions:
+
+| Property | Electron T² (r=6.6) | Proton T² (r=6.6) | Ratio |
+|----------|--------------------|--------------------|-------|
+| Mass | 0.511 MeV | 938.3 MeV | 1836 |
+| L₄ (ring) | 4.77 pm | 2.60 fm | 1836 |
+| R (ring radius) | 0.759 pm | 0.414 fm | 1836 |
+| a (tube radius) | 5.01 pm | 2.73 fm | 1836 |
+| s (shear) | 0.03933 | 0.03933 | 1 |
+| E₀ | 0.260 MeV | 477 MeV | 1836 |
+
+The mass ratio m_p/m_e is an INPUT — it sets the ratio of compact
+dimension sizes.  The model does not predict this ratio.
+
+### F42. The charge radius is 2.0× the ring radius
+
+At r = 6.6, the proton's ring radius R = 0.414 fm.  The experimental
+proton charge radius is 0.841 fm = 2.0 × R.  This ratio is in the
+right ballpark for a charge distribution along a (1,2) geodesic
+whose extent in 3D is set by R but spread over the torus surface.
+Track 2b will compute the exact RMS radius.
+
+### F43. Mode spectrum mirrors the electron's
+
+The proton T² at r = 6.6 has mode spectrum:
+
+| Mode | Mass (MeV) | Type | Charged | L_z/ℏ |
+|------|-----------|------|---------|-------|
+| (±1,0) | 74.7 | fermion | yes | 0 |
+| (1,1) | 464.0 | fermion | yes | 0.350 |
+| (−1,1) | 501.1 | fermion | yes | 0.350 |
+| (0,±1) | 477.1 | boson | no | 1.261 |
+| **(1,2)** | **938.3** | **fermion** | **yes** | **0.365** |
+| (−1,2) | 1008.6* | fermion | yes | 0.365 |
+
+The (1,1) and (−1,1) modes are at ~half the proton mass — these are
+the proton T²'s analogue of the neutrino's Assignment A modes.
+
+### F44. WvM vs KK mode energy conventions are inconsistent
+
+Two conventions exist for mode energies on sheared T²:
+
+**KK (reciprocal lattice):** E = E₀ √((n₃/r)² + (n₄ − n₃s)²)
+- Used in Track 1a for neutrino mass ratios → matched experiment.
+- (1,2) is heavier than (1,1).
+
+**WvM (geodesic length):** E = hc / L_geodesic
+- Used in R19 to derive the α formula → matched 1/137.
+- (1,2) is lighter than (1,1) — reversed mass ordering.
+
+These give different mode energies, mass orderings, and physical
+scales.  For the neutrino study, only KK reproduces the Δm² ratio
+of 33.6.  For the charge formula, only WvM gives α = 1/137.
+
+**This is a genuine inconsistency in the project.**  Reconciliation
+requires either: (a) showing they agree in some limit, (b) re-deriving
+α under the KK convention, or (c) re-deriving neutrino masses under
+WvM.  This is an open problem that affects the quantitative predictions
+of all three T²s but does not change the qualitative structure
+(same topology, same shape family, same charge mechanism).
