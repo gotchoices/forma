@@ -56,6 +56,13 @@ consistent with R27's off-resonance hypothesis: these are
 transient excitations, not exact eigenmodes.  Their gaps
 from the nearest mode correlate with lifetime (R27 F37–F42).
 
+**Note (updated by Track 3):** The Λ and Σ⁺ entries above
+used n_max = 8.  Track 3 found that extending to n_max = 15
+reveals much closer modes: Λ drops to 0.9%, Σ⁺ to 0.3%.
+These two are NOT structurally off-resonance — they were
+limited by search range.  The other particles in this table
+(π⁺, τ⁻, ρ⁰, ω, Δ⁺⁺) remain genuinely off-resonance.
+
 
 ### F4. Summary of Track 1
 
@@ -171,3 +178,129 @@ This means:
    rigid energy bands.  Particles must live near these bands.
    The electron/neutrino sheets contribute charge and spin
    variety within each band.
+
+
+---
+
+## Track 3. Strange baryon refinement
+
+Script: `scripts/track3_strange_baryons.py`
+
+
+### F10. R27's sign flips were a search-range artifact
+
+R27 used n_max = 8, restricting quantum numbers to |n| ≤ 8.
+This limited the search to proton-sheet harmonics with
+|n₅| ≤ 8.  The nearest Q = 0, S = ½ mode below |n₅| ≤ 8
+falls at 1050.9 MeV — 65 MeV below the Λ mass and below
+the p + π decay threshold (1096.8 MeV), causing sign flips.
+
+Extending to n_max = 15 reveals proton-sheet harmonics at
+higher energies that were inaccessible in R27's search:
+
+| Particle | R27 mode (n_max=8) | New mode (n_max=15) |
+|----------|-------------------|---------------------|
+| Λ (1115.7 MeV) | 1050.9 MeV (+5.8%) | 1105.9 MeV (+0.9%) |
+| Σ⁺ (1189.4 MeV) | 1050.9 MeV (+11.6%) | 1193.4 MeV (−0.3%) |
+
+The new modes are above the decay threshold, resolving all
+four sign flips.
+
+
+### F11. All four sign flips resolved
+
+With the extended mode assignments:
+
+| Reaction | Q_mode (R27) | Q_mode (new) |
+|----------|-------------|-------------|
+| Λ → p + π⁻ | −45.8 (FLIP) | +9.2 (OK) |
+| Λ → n + π⁰ | −47.1 (FLIP) | +7.9 (OK) |
+| Σ⁺ → p + π⁰ | −45.8 (FLIP) | +96.7 (OK) |
+| Σ⁺ → n + π⁺ | −47.1 (FLIP) | +95.4 (OK) |
+
+The R27 reaction scorecard improves from 17/21 to **21/21** —
+every tested decay reaction is now mode-level sign-consistent.
+
+
+### F12. Energy is dominated by proton-sheet harmonics
+
+The new Λ mode n = (−12,−15,1,0,−12,−2) has:
+- Proton dimensions (n₅,n₆): contribute 1105 MeV
+- Electron dimensions (n₁,n₂): contribute 4 MeV
+- Cross-term (σ_ep coupling): −3 MeV
+
+The high |n₁| = 12 and |n₂| = 15 values are cosmetic: L₁
+and L₂ are so large (32,000 and 4,900 fm) that each n-step
+adds < 0.04 MeV.  The physical mode lives on the proton
+sheet at harmonics (n₅ = −12, n₆ = −2).
+
+Similarly, the Σ⁺ mode n = (−14,−15,0,0,−13,2) is
+determined by its proton harmonics (n₅ = −13, n₆ = 2).
+
+
+### F13. The energy band landscape near Λ and Σ⁺
+
+Between 1000–1300 MeV, the T⁶ produces 9 energy bands at
+Q = 0, S = ½ and 18 bands at Q = +1, S = ½.  The bands
+are spaced by ~25–55 MeV (proton-tube harmonics).
+
+For Λ (1115.7 MeV): the two nearest bands sit at 1105 and
+1161 MeV — the Λ mass falls between them at +10.7 and
+−45.7 MeV respectively.  The 1105 band is the best match
+at 0.9%.
+
+For Σ⁺ (1189.4 MeV): a band exists at 1193.4 MeV — almost
+exactly at the observed mass (−0.3%).  This is a remarkable
+match, better than many "well-behaved" particles.
+
+
+### F14. Σ⁺ joins the sub-1% club
+
+With the extended assignment, Σ⁺ achieves a 0.3% gap,
+placing it among the best-matched particles in the catalog
+alongside the proton (0.0%), neutron (0.0%), muon (0.5%),
+kaon (1.2%), and phi (0.8%).
+
+The Λ at 0.9% also improves dramatically from 5.8%.
+
+These were R27's two worst-performing baryons.  Their poor
+showing was not a structural failing of the model but a
+consequence of the limited search range.
+
+
+### F15. Updated R27 scorecard
+
+With the extended mode assignments, the full R27 particle
+catalog is updated:
+
+| Category | R27 within 1.5% | Updated within 1.5% |
+|----------|----------------|---------------------|
+| Stable/long-lived | 5 of 19 | 7 of 19 |
+| Reaction sign flips | 4 of 21 | 0 of 21 |
+
+The Λ (0.9%) and Σ⁺ (0.3%) join the sub-1.5% group.  The
+remaining large-gap particles (π⁺ at 13.5%, τ⁻ at 5.6%,
+ρ⁰ at 20.9%, etc.) are genuinely off-resonance — their
+gaps correlate with lifetime (R27 F37–F42).
+
+
+### F16. Summary of Track 3
+
+1. **R27's sign flips were a search artifact**, not a model
+   defect.  Extending n_max from 8 to 15 reveals better
+   modes for both Λ and Σ⁺.
+
+2. **All 4 sign flips resolved.**  Every tested decay is
+   now mode-level sign-consistent (21/21).
+
+3. **Λ gap: 5.8% → 0.9%.  Σ⁺ gap: 11.6% → 0.3%.**
+   Both particles move from "problem cases" to among the
+   best matches in the catalog.
+
+4. **The energy is physical.**  High electron-dimension
+   quantum numbers are cosmetic (< 4 MeV); the real physics
+   is proton-sheet harmonics at |n₅| ~ 12–14.
+
+5. **Strange baryons are not structurally problematic.**
+   The model accommodates them well once the search range
+   includes the relevant proton harmonics.
