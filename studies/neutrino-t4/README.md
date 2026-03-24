@@ -334,25 +334,61 @@ phenomenology at realistic ε.
 ### Track 2 — The proton torus
 
 **Goal:** Determine the geometry of a T² that produces a single
-(1,2) standing wave at the proton mass.
+(1,2) standing wave at the proton mass, and test whether the
+neutron can live on the same T².
 
-Steps:
-1. Apply R19's α formula to the proton T².  Same charge → same
-   α(r, s) → solve for s₅₆(r_p).  Is the solution space the same
-   one-parameter family as the electron?
-2. Compute the proton charge radius from T² geometry.  On the
-   electron's T², the charge radius ~ R (major radius).  Does
-   this scaling give 0.841 fm for reasonable r_p?
-3. Model the neutron as two opposite-charge (1,2) fundamentals.
-   Compute the mass difference m_n − m_p = 1.293 MeV.
-4. Address beta decay: n → p + e⁻ + ν̄.  One fundamental escapes
-   the proton T² with energy ~470 MeV.  How does it become a
-   0.511 MeV electron on the electron T²?  Where does the excess
-   energy go?  (In R20, it redistributed among harmonics.  Here
-   it must be radiated or absorbed by the T⁶ geometry.)
-5. Muon and tau: excited states on which T²?  Higher (p,2) modes
-   on the electron T² (giving m_μ/m_e from winding ratio)?
-   Or modes on the proton T²?
+**Track 2a — Proton T² geometry.**
+
+Apply R19's α formula to the proton T².  Same charge (+e) → same
+α(r, s) constraint → solve for s₅₆(r_p).  One script.
+
+1. Compute the α(r, s) = 1/137 solution curve for the proton T².
+   Is it the same one-parameter family as the electron's?
+2. Determine the physical scale: L₄ (ring circumference), L₃ (tube),
+   R, a from the proton mass and mode energy formula.
+3. Catalog the full mode spectrum on the proton T² for representative
+   r_p values: masses, spins, charges of all modes below ~2 GeV.
+4. Compare to the electron T²: same topology, different scale.  What
+   is the proton/electron mass ratio m_p/m_e in terms of (r, s) and
+   the ratio of compact dimension sizes?
+
+**Track 2b — Proton charge radius.**
+
+Compute the proton charge radius from T² geometry.  One script.
+
+1. The RMS charge radius is the second moment of the charge
+   distribution projected into 3D.  On the torus, the charge
+   is distributed along the (1,2) geodesic.  Compute ⟨r²⟩^(1/2)
+   as a function of R and a.
+2. Compare to the experimental value 0.841 fm.
+3. Does the proton T² geometry naturally produce the right charge
+   radius, or is it sensitive to r_p?
+
+**Track 2c — Neutron mode search.**
+
+Test whether the proton T² can produce a neutral spin-½ fermion
+at m_n = m_p + 1.293 MeV.  One script (likely null result).
+
+1. Search all single modes on the proton T² for an uncharged (p > 1)
+   spin-½ fermion near m_n.  Expected problem: Track 1d showed
+   p > 1 modes have negligible spin at finite ε.
+2. Test two-mode composites: (1,2) + (−1,−2) gives charge 0 but
+   mass ≈ 2m_p.  What binding energy is needed?  Is it physical?
+3. Test adjacent charged modes: can any pair of p = 1 modes
+   produce a charge-neutral spin-½ state?
+4. If null: conclude that the neutron requires cross-plane physics
+   (proton T² + electron T² coupling), supporting the working
+   hypothesis that the neutron is a proton+electron bound state
+   mediated by the T⁶ geometry.  Note: m_n − m_p = 1.293 MeV,
+   while m_e = 0.511 MeV; the Q-value of beta decay (0.782 MeV)
+   is the remainder.  This energy bookkeeping is a Track 4 target.
+
+**Deferred to Track 4:**
+- Beta decay (n → p + e⁻ + ν̄): requires cross-plane coupling
+  between all three T²s.
+- Muon/tau placement: which T² hosts the heavier leptons?
+  m_μ/m_e ≈ 207 does not match a simple (p,q) ratio.  May require
+  the full T⁶ framework or a separate study.
 
 ### Track 3 — Parameter census
 
@@ -403,9 +439,11 @@ Steps:
   fallback if no clean all-spin-½ solution exists.  A full failure
   across all sub-tracks would close the T⁶ neutrino path.
 
-- **Track 2:** Medium risk.  The single-fundamental proton is clean,
-  but beta decay becomes harder — a 470 MeV photon must convert to
-  a 0.511 MeV electron.
+- **Track 2:** Low–medium risk.  2a (geometry) and 2b (charge radius)
+  are clean calculations.  2c (neutron) is expected to produce a null
+  result establishing that the neutron requires cross-plane physics,
+  which is itself a valuable finding.  Beta decay and muon/tau
+  deferred to Track 4.
 
 - **Track 3:** Low risk.  Bookkeeping, but essential.
 
