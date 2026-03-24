@@ -402,7 +402,7 @@ three domains, its constraint source, and its status (fixed/free).
 | s₃₄ | neutrino | Δm² ratio | depends on assignment | constrained |
 | r_ν | neutrino | ? | ? | **free** |
 | s₅₆ | proton | α(r_p) | s₅₆(r_p) | constrained (given r_p) |
-| r_p | proton | ? | ? | **free** |
+| r_p | proton | r_ch(proton) | ≈ 0.33 or 0.97 | **constrained (F47)** |
 | ... | cross-shears | ... | ... | ... |
 
 Identify the minimum number of genuinely free parameters.  Count
@@ -439,11 +439,13 @@ Steps:
   fallback if no clean all-spin-½ solution exists.  A full failure
   across all sub-tracks would close the T⁶ neutrino path.
 
-- **Track 2:** Low–medium risk.  2a (geometry) and 2b (charge radius)
-  are clean calculations.  2c (neutron) is expected to produce a null
-  result establishing that the neutron requires cross-plane physics,
-  which is itself a valuable finding.  Beta decay and muon/tau
-  deferred to Track 4.
+- **Track 2:** Low–medium risk.  2a (geometry) complete — proton T²
+  is a scaled copy of the electron T² (same α formula, same s(r)).
+  2b (charge radius) complete — the experimental r_ch = 0.841 fm
+  selects ε ≈ 0.33 or ε ≈ 0.97 (F47), far from S2's ε = 6.6.
+  This is the first constraint on the aspect ratio from experiment.
+  2c (neutron) is expected to produce a null result; beta decay
+  and muon/tau deferred to Track 4.
 
 - **Track 3:** Low risk.  Bookkeeping, but essential.
 
