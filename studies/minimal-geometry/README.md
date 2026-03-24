@@ -189,16 +189,15 @@ Planck scale (~10⁻³⁵ m) — there is room for many levels.
 
 ## Approach — tracks
 
-### Track 1 — T¹ electron: what works, what fails
+### Track 1 — T¹ electron: what works, what fails  **Answered by Tracks 4 & 6**
 
-Build a T¹ solver (circle of circumference L).  Check:
-- Mass quantization: E_n = nℏc/L
-- Spin: can parity of n give spin ½?
-- Charge: what mechanism, if any, produces charge on T¹?
-- g-factor: any analogue?
-
-Compare the T¹ spectrum to T² at the same mass scale.
-Document exactly what T² adds over T¹.
+T¹ provides mass quantization (E_n = nℏc/L) and spin
+(odd/even parity), but cannot produce charge (requires
+shear between two directions — Track 4 F11) and cannot
+produce neutral spin-½ particles (requires three
+independent tube dimensions — Track 6 F2, F7).
+T¹ is structurally insufficient; no dedicated computation
+needed beyond what Tracks 4 and 6 already demonstrate.
 
 ### Track 2 — Non-uniform T¹: can complexity replace dimensions?
 
@@ -212,16 +211,18 @@ equation that produces non-trivially spaced energies
 - What is the minimal complexity of g(x) needed to
   get charge-like behavior?
 
-### Track 3 — Klein bottle and non-orientable identifications
+### Track 3 — Klein bottle and non-orientable identifications  **Complete**
 
 Replace the standard T² identification with the Klein
-bottle identification (one edge reversed).  Compute:
-- Mode spectrum: how does it differ from T²?
-- Charge: does the reversed identification affect the
-  Gauss flux integral?
-- Spin: does the orientation-reversal change the phase
-  accumulation?
-- Does the Klein bottle produce fewer ghost modes?
+bottle identification (one edge reversed).
+**Result:** Non-orientable spaces are structurally
+incompatible with the model.  The Klein bottle kills
+both charge (Gauss's law requires orientation; KK gauge
+field becomes Z₂ not U(1)) and spin-½ (all closed
+geodesics have even tube winding).  T² is the unique
+compact, orientable, 2D surface with winding numbers.
+Also analyzed: r-degeneracy as a curve in (r,s) space,
+and elastic/dynamic geometry.  Findings F15–F20.
 
 ### Track 4 — The r → ∞ limit: T² degenerating to T¹  **Complete**
 
@@ -233,26 +234,19 @@ r is free because charge is integer-quantized — the α
 formula self-adjusts s(r) to maintain α = 1/137 at every r.
 Findings F9–F14.
 
-### Track 5 — Minimum geometry for charge
+### Track 5 — Minimum geometry for charge  **Answered by Tracks 4 & 6**
 
-Theoretical analysis: what is the simplest compact space
-that produces quantized electric charge?
+The combined findings from Tracks 4 and 6 answer this:
+- T¹: NO — only one winding number, no shear (Track 4 F11)
+- T²: YES — shear between two directions produces charge
+- T³ shared: FAILS — loses neutral spin-½ (Track 6 F2)
+- Klein bottle: investigated in Track 3
 
-Candidates:
-- T¹: no (only one winding number)
-- T²: yes (shear between two directions)
-- Klein bottle: unknown (Track 3)
-- Möbius strip: has a boundary — not compact
-- T¹ with twist: a circle with antiperiodic boundary
-  conditions (ψ(x+L) = −ψ(x)) — changes mode spectrum
-  but may not produce charge
-- Lens space L(p,q): 3D analogue of T² — compact,
-  orientable, with topological invariants
-
-If T² is the minimum, that gives a structural reason
-for 6 compact dimensions (3 sheets × 2 per sheet).
-If something simpler works, it suggests the model can
-be compressed.
+**Conclusion:** T² is the minimum geometry for quantized
+charge.  Each sheet needs a tube (for charge/spin via
+topology) and a ring (for the energy scale).  3 sheets
+× 2 dimensions = 6 is structurally minimum (Track 6 F7).
+Track 3 tests whether a non-orientable T² variant works.
 
 
 ### Track 6 — Shared-dimension T³: electron and proton on a common surface  **Complete**

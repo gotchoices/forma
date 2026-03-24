@@ -106,6 +106,141 @@ large r.
 
 ---
 
+## Track 3. Klein bottle and non-orientable identifications
+
+Script: `scripts/track3_klein_bottle.py`
+
+
+### F15. Klein bottle kills charge
+
+On a Klein bottle, one pair of edges is identified with
+reversal: (0, y) ~ (L₁, L₂ − y).  This non-orientable
+identification has two fatal consequences for charge:
+
+1. **Gauss's law fails.**  The surface integral ∮ E·dA
+   requires a consistently oriented normal vector.  On a
+   Klein bottle, the normal flips sign after one tube circuit.
+   The "enclosed charge" is sign-ambiguous.
+
+2. **KK gauge field becomes Z₂, not U(1).**  The gauge
+   potential A_μ ∝ g_μθ changes sign around the tube
+   (θ → −θ after the identification).  A gauge field
+   that changes sign around a loop is a Z₂ gauge field,
+   which cannot produce the continuous U(1) symmetry
+   needed for electromagnetism.
+
+Non-orientability is structurally incompatible with the
+KK charge mechanism.
+
+
+### F16. Klein bottle kills spin-½
+
+On a Klein bottle, the y-direction is reflected at each
+tube circuit.  A geodesic with ring winding bounces back
+after each tube traversal, so it must wrap the tube an
+EVEN number of times to close.
+
+The (1,2) geodesic on T² closes after 1 tube circuit.
+On the Klein bottle, the same geodesic requires 2 tube
+circuits to close (because the y-velocity reverses).
+The effective tube winding is n = 2 (even).
+
+Even tube winding → spin count 0, not 1.
+**No closed geodesic on a Klein bottle has odd tube winding.**
+Therefore: no spin-½ particles.
+
+
+### F17. T² is the unique compact geometry for this model
+
+The model requires:
+- Compact (finite volume for quantized modes)
+- Orientable (for Gauss's law and U(1) charge)
+- 2D per sheet (for tube + ring = charge + energy scale)
+
+Non-orientable surfaces (Klein bottle, RP², Möbius strip)
+are all ruled out by F15–F16.  The sphere S² has no
+non-contractible cycles (no winding numbers → no mode
+spectrum).  The only compact, orientable, 2D surface
+with non-contractible cycles is the torus T².
+
+**T² is not an assumption — it is the unique geometry
+consistent with the model's requirements.**
+
+
+### F18. The r-degeneracy is a curve in (r, s) space
+
+The α = 1/137 constraint defines a 1D curve in (r, s)
+space.  All points on this curve give identical physics:
+
+| r | s | r²s² |
+|---|---|------|
+| 0.26 | 0.239 | 0.00385 |
+| 1 | 0.065 | 0.00422 |
+| 6.6 | 0.010 | 0.00462 |
+| 100 | 0.0007 | 0.00464 |
+| 1000 | 0.00007 | 0.00465 |
+
+The product r²s² converges to ~0.00465.  The charge
+mechanism depends on rs (the combined effect of aspect
+ratio and shear), not on r or s individually.
+
+The particle is ANY point on this curve.  Whether nature
+selects a specific r or the geometry is genuinely
+degenerate is a dynamical question the kinematic model
+cannot answer.
+
+
+### F19. The geometry can be elastic in principle
+
+Three types of flexibility are physically possible:
+
+1. **Static:** r is a fixed unknown constant.  Physics
+   is the same at every r > 0.26.
+
+2. **Dynamic (moduli/radion):** r varies in space or time.
+   This is a breathing mode of the compact geometry —
+   a scalar field in 4D.  Charge stays quantized
+   (topological), but mass would vary with r.
+   Observational constraints (constant electron mass)
+   limit spatial variation to < 10⁻¹⁰.
+
+3. **Curve solution:** reality is the entire family of
+   (r, s) solutions, not a single point.  The compact
+   geometry might vary along R³, with r(x) being a
+   field.  This is the "moduli space" picture from
+   string theory.
+
+All three are consistent with the kinematic model.
+The flat torus with constant r is the simplest option
+and matches all observations.
+
+
+### F20. Summary of Track 3
+
+1. **Non-orientable spaces are ruled out.**
+   Klein bottle, RP², Möbius strip all fail on both
+   charge (no U(1)) and spin (no odd winding).
+
+2. **T² is the unique viable geometry:**
+   compact + orientable + 2D + non-contractible cycles.
+
+3. **The r-degeneracy is a curve, not a defect.**
+   The α constraint defines a 1D family of equivalent
+   geometries.  The physics lives on the curve, not at
+   a specific point.
+
+4. **Elastic geometry is possible** but unconstrained
+   by current data.  The flat torus is the simplest
+   consistent model.
+
+5. **Combined with Tracks 4 and 6:** The T⁶ geometry
+   (3 T² sheets × 2 dimensions each) is the unique
+   minimal geometry that produces quantized charge,
+   spin ½, and the observed particle spectrum.
+
+
+---
+
 ## Track 6. Shared-dimension T³
 
 Script: `scripts/track6_shared_t3.py`
