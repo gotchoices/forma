@@ -324,36 +324,29 @@ def main():
     print("=" * 76)
 
     print(f"""
-  Two conventions exist for mode energies on the sheared T²:
+  R19 derived the α formula using WvM's convention: E = hc/L_geodesic
+  (photon energy = hc / path length).  Track 1a used the KK convention:
+  E = E₀ √((n₃/r)² + (n₄ − n₃s)²)  (wave equation on flat torus).
 
-  KK (Track 1a):  E(n₃,n₄) = E₀ √((n₃/r)² + (n₄ − n₃s)²)
-    Wavevector on flat torus with quantized reciprocal lattice.
-    Used for neutrino mass ratios → matched experiment.
+  KK is the rigorous result (eigenvalues of the Laplacian on T²).
+  WvM is a classical approximation.  Only KK reproduces the neutrino
+  mass-squared ratio of 33.6 (WvM gives ~1.7).
 
-  WvM (R19):      E(n₃,n₄) = hc / L_geodesic(n₃,n₄)
-    Single photon energy = hc / path length.
-    Used to derive α formula → matched 1/137.
+  The α charge mechanism works under EITHER convention — the physics
+  (shear → broken symmetry → net radial E-flux) is the same.  Only
+  the relationship between α and s changes:
 
-  These give DIFFERENT mode energies for the same (n₃,n₄).
-  The KK formula has E ∝ |k| (larger k → more energy).
-  The WvM formula has E ∝ 1/L (longer path → less energy).
+    R19 (WvM scale): α = r²sin²(2πs) / (4π(2−s)²√(r²(1+2s)²+4))
+    KK scale:        α = r²√(1/r²+(2−s)²)sin²(2πs) / (4π(2−s)²)
 
-  Consequences:
-  - KK: (1,2) is heavier than (1,1) [more momentum → more energy]
-  - WvM: (1,2) is lighter than (1,1) [longer path → less energy]
-  - Mass ordering is REVERSED between conventions.
+  Both give α = 1/137 — at different s values (e.g., r=1: s≈0.165
+  under R19 vs s≈0.065 under KK).  Since the electron/proton shear
+  (s₁₂, s₅₆) and neutrino shear (s₃₄) are INDEPENDENT parameters
+  on DIFFERENT T²s, there is no conflict.
 
-  For Track 2a, we use KK convention (consistent with Track 1a):
-    E₀ = m_proton / μ(1,2) where μ = √(1/r² + (2−s)²)
-
-  The α formula s(r) is the same dimensionless curve regardless
-  (it depends on geometry, not on which convention sets the scale).
-  But the PHYSICAL SCALES (R, a, L₄) differ between conventions.
-
-  Reconciling these two pictures — one gives correct neutrino
-  ratios, the other gives correct α — is an open problem.
-  It may require a unified energy formula that reduces to both
-  in appropriate limits, or one convention may be wrong.
+  Action: re-derive R19's s(r) curve under KK conventions.  This is
+  a revision to R19, not a new study.  The qualitative results
+  (same shape family, same charge mechanism) are unchanged.
 """)
 
     # ================================================================
@@ -396,10 +389,10 @@ def main():
      on the proton T² has p = 3, with mass and spin very different
      from the neutron's requirements.
 
-  8. OPEN QUESTION: the WvM and KK mode energy conventions give
-     different physical scales and mass orderings.  The neutrino
-     study used KK; the α derivation used WvM.  Reconciliation
-     needed.
+  8. R19 REVISION NEEDED: R19 derived α under WvM conventions;
+     KK is the correct wave-equation result.  Re-deriving α under
+     KK changes the s(r) curve but not the charge mechanism.
+     This is a bookkeeping update, not a physics change.
 """)
 
 

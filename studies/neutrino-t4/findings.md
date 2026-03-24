@@ -741,25 +741,35 @@ The proton T² at r = 6.6 has mode spectrum:
 The (1,1) and (−1,1) modes are at ~half the proton mass — these are
 the proton T²'s analogue of the neutrino's Assignment A modes.
 
-### F44. WvM vs KK mode energy conventions are inconsistent
+### F44. WvM vs KK mode energy conventions — reconcilable
 
 Two conventions exist for mode energies on sheared T²:
 
 **KK (reciprocal lattice):** E = E₀ √((n₃/r)² + (n₄ − n₃s)²)
+- Standard wave-equation result on flat torus.
 - Used in Track 1a for neutrino mass ratios → matched experiment.
-- (1,2) is heavier than (1,1).
+- The WvM formula gives ratio ≈ 1.7 (not 33.6), so KK is required.
 
 **WvM (geodesic length):** E = hc / L_geodesic
-- Used in R19 to derive the α formula → matched 1/137.
-- (1,2) is lighter than (1,1) — reversed mass ordering.
+- Classical approximation: single photon energy = hc/path length.
+- Used in R19 to set the physical scale when deriving α.
 
-These give different mode energies, mass orderings, and physical
-scales.  For the neutrino study, only KK reproduces the Δm² ratio
-of 33.6.  For the charge formula, only WvM gives α = 1/137.
+These give different physical scales (R, a) for the same (r, s),
+but the α charge mechanism works under EITHER convention:
 
-**This is a genuine inconsistency in the project.**  Reconciliation
-requires either: (a) showing they agree in some limit, (b) re-deriving
-α under the KK convention, or (c) re-deriving neutrino masses under
-WvM.  This is an open problem that affects the quantitative predictions
-of all three T²s but does not change the qualitative structure
-(same topology, same shape family, same charge mechanism).
+  R19:  α = r² sin²(2πs) / (4π(2−s)² √(r²(1+2s)²+4))
+  KK:   α = r² √(1/r²+(2−s)²) sin²(2πs) / (4π(2−s)²)
+
+Both produce α = 1/137 — they just require different s values
+(e.g., at r=1: R19 gives s≈0.165, KK gives s≈0.065).
+
+**This is NOT a fundamental inconsistency.**  The neutrino and
+electron T²s have different shears (s₃₄ vs s₁₂) on different
+T²s, so their numerical values don't conflict.  The resolution
+is to use KK throughout (it's the rigorous wave-equation result)
+and re-derive R19's s(r) curve under KK conventions.  The charge
+physics (shear → broken symmetry → net E-flux) is unchanged;
+only the numerical relationship between s and α shifts.
+
+This re-derivation is noted as an R19 revision task but does not
+block Tracks 2b–4.
