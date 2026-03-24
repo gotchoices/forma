@@ -106,6 +106,109 @@ large r.
 
 ---
 
+## Can α be derived from geometry?
+
+Script: `scripts/alpha_from_geometry.py`
+
+(Exploratory analysis prompted by the question: does the
+T⁶ geometry predict α, or is it purely an input?)
+
+
+### F21. Currently α is input, not predicted
+
+The model has a circular structure: input α → solve for s →
+build geometry → verify α.  Any α works.  The hydrogen
+calculation (R29 Track 1) uses conventional Coulomb QM
+with α as a given.  Nothing in the current solver is
+new enough to reveal α independently.
+
+
+### F22. The Yukawa correction does not select a preferred α
+
+Sweeping α (via s) at fixed r_e = 6.6, the Yukawa
+correction from KK massive modes grows monotonically:
+
+| 1/α | Yukawa/Coulomb | λ/a₀ |
+|-----|----------------|------|
+| 200 | 5.1% | 0.071 |
+| 137 | 7.4% | 0.088 |
+| 100 | 14.0% | 0.126 |
+| 50 | 30.3% | 0.202 |
+| 20 | 114% | 0.508 |
+
+No inflection point, no minimum, no "sweet spot."
+Smaller α is always smoother; larger α always worse.
+Perturbation theory alone cannot select α = 1/137.
+
+
+### F23. Atom existence gives an UPPER BOUND on r_e
+
+The Bohr radius a₀ = ℏc/(m_e α) must exceed the tube
+circumference L_tube for atoms to exist as R³ objects
+(otherwise the electron orbit is inside the compact
+geometry and the KK approximation breaks down).
+
+This requires:  **r_e < 1/(α × μ₁₂) ≈ 68.5**
+
+Combined with the shear-charge lower bound (R19):
+
+    **0.26 < r_e < 68.5**
+
+This is the first upper bound on r_e from physics.
+Previously r_e was unconstrained above 0.26.
+
+At r_e = 100: Yukawa correction would be 368% of Coulomb
+binding — atoms would not exist in recognizable form.
+
+
+### F24. The Yukawa correction may further constrain r_e
+
+At α = 1/137, the Yukawa/Coulomb ratio depends on r_e:
+
+| r_e | a₀/L_tube | Yukawa/Coulomb |
+|-----|-----------|----------------|
+| 1 | 10.0 | 0.3% |
+| 2 | 5.4 | 1.0% |
+| 5 | 2.2 | 5.3% |
+| 6.6 | 1.7 | 8.8% |
+| 8.9 | 1.2 | 14.7% |
+| 20 | 0.5 | 53% |
+
+The measured hydrogen ground state is −13.598 eV to
+sub-eV precision.  A 7-9% Yukawa correction (at r_e=6.6)
+would shift this by ~1 eV — easily ruled out unless
+the naive KK Yukawa picture is incomplete (see R29 F11).
+
+If the Yukawa calculation IS correct, then r_e < ~2 is
+required by hydrogen spectroscopy, dramatically narrowing
+the allowed range.  This remains an open tension (R29).
+
+
+### F25. Paths to deriving α
+
+Four routes could break the circular α-input structure:
+
+1. **Pin r_e from another observable** (Lamb shift, proton
+   charge radius, electron g−2).  If r_e is determined,
+   α follows from the KK formula.  Most promising
+   near-term path.
+
+2. **Casimir energy minimization.**  The T⁶ vacuum energy
+   depends on all shears.  If the geometry minimizes its
+   vacuum energy, all shears (including those determining
+   α) are predicted.
+
+3. **Full 9D hydrogen calculation.**  Solve the wave
+   equation on T⁶ × R³ without KK reduction.  The
+   effective coupling that emerges IS α.
+
+4. **Spectral self-consistency.**  Find a condition where
+   the T⁶ mode spectrum and atomic binding are mutually
+   consistent only at a specific α.
+
+
+---
+
 ## Track 3. Klein bottle and non-orientable identifications
 
 Script: `scripts/track3_klein_bottle.py`
