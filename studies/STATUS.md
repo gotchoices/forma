@@ -35,14 +35,17 @@ energetics: 17/21 decays pass.  Tau at 5.6% (structural gap), pion at 14% (rough
 Ω⁻ structurally forbidden (spin-3/2 + odd charge).  Hydrogen and nuclear stability
 deferred to future study (requires multi-mode formalism).  **Substantially complete.**
 
-### R28. T⁶ spectrum refinement
+### R28. T⁶ spectrum refinement  **Complete**
 **Study:** [`particle-spectrum/`](particle-spectrum/)
 **Questions:** Q16, Q32  **Type:** compute  **Depends on:** R27
 
-Explores the parameters R27 left at zero (σ_eν, σ_νp), counts ghost modes
-(predicted particles with no observed counterpart), refines strange baryon
-assignments (Λ/Σ⁺ sign flips), and searches for W/Z/Higgs at high energy.
-The tractable near-term follow-up to R27.
+4 tracks, 22 findings.  σ_eν and σ_νp irrelevant (neutrino sheet decouples).
+~48 energy bands below 2 GeV, ~900 modes at physical charges vs ~40 known
+particles — consistent with off-resonance hypothesis.  **Strange baryon sign
+flips resolved**: extending search range to n_max=15 gives Λ at 0.9%, Σ⁺ at
+0.3%, all 4 sign flips fixed (21/21 reactions).  W/Z/Higgs match trivially
+at high energy — T⁶ spectrum non-predictive above ~2 GeV (band spacing
+< 5 MeV).  Predictive horizon established.
 
 ### R29. Atoms and nuclei — from T⁶ modes to multi-body physics  **Complete**
 **Study:** [`atoms-and-nuclei/`](atoms-and-nuclei/)

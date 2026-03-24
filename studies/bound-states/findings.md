@@ -1130,6 +1130,13 @@ class contains all 4 sign flips.
    self-consistent for the 15 non-strange-baryon reactions.
    The strange baryons are the model's weakest point.
 
+**Update (R28 Track 3, F10–F16):** The sign flips were a
+search-range artifact.  R27 used n_max = 8; extending to
+n_max = 15 reveals proton-sheet harmonics at 1105.9 MeV
+(Λ, gap = 0.9%) and 1193.4 MeV (Σ⁺, gap = 0.3%).  All
+four sign flips resolve.  Scorecard becomes **21/21**.
+Strange baryons are no longer the model's weakest point.
+
 
 ---
 
@@ -1194,10 +1201,9 @@ energy balances — was made with zero adjustable parameters.
    1776.9 MeV.  The tau may be a multi-mode composite or
    require physics beyond the single-mode KK picture.
 
-2. **Strange baryon mode assignments.**  The Λ and Σ⁺ are
-   poorly matched (~6–12% off), causing reaction energy
-   sign flips.  Their modes may need refinement or a
-   multi-mode treatment.
+2. ~~**Strange baryon mode assignments.**~~  **Resolved in
+   R28 Track 3.**  Extending the search to n_max = 15
+   gives Λ at 0.9% and Σ⁺ at 0.3%.  All sign flips fixed.
 
 3. **The pion gap (14%).**  The charged pion is one of the
    worst-matched particles.  Since it appears as a product

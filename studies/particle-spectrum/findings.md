@@ -304,3 +304,111 @@ gaps correlate with lifetime (R27 F37–F42).
 5. **Strange baryons are not structurally problematic.**
    The model accommodates them well once the search range
    includes the relevant proton harmonics.
+
+
+---
+
+## Track 4. High-energy modes (W, Z, Higgs)
+
+Script: `scripts/track4_high_energy.py`
+
+
+### F17. W, Z, and Higgs all have nearby T⁶ modes
+
+| Particle | Observed (MeV) | Mode (MeV) | Gap |
+|----------|---------------|-----------|------|
+| W± | 80,379 | 80,379.1 | 0.0002% |
+| Z⁰ | 91,188 | 91,188.5 | 0.0006% |
+| H⁰ | 125,250 | 125,250.1 | 0.0001% |
+
+All three match to < 1 MeV.  The quantum numbers are
+large: n₅ ~ 14–283, n₆ ~ 171–263.
+
+
+### F18. The matches are trivially easy
+
+Fake particles at arbitrary high-energy masses match
+equally well:
+
+| Target | Mass (MeV) | Gap | Real? |
+|--------|-----------|------|-------|
+| Fake-C | 110,000 | 0.0001% | no |
+| W± | 80,379 | 0.0002% | yes |
+| Z⁰ | 91,188 | 0.0006% | yes |
+| Fake-D | 75,000 | 0.0006% | no |
+| Fake-B | 97,500 | 0.0014% | no |
+| Fake-A | 83,000 | 0.0018% | no |
+| H⁰ | 125,250 | 0.0001% | yes |
+
+Real and fake particles are indistinguishable.  The T⁶
+spectrum is so dense above ~5 GeV that any mass can be
+matched to < 0.01%.
+
+
+### F19. Band density grows linearly with energy
+
+| Energy | Modes in ±500 MeV | Avg spacing |
+|--------|-------------------|------------|
+| 500 MeV | 33 | 29.3 MeV |
+| 1 GeV | 66 | 15.3 MeV |
+| 2 GeV | 126 | 7.9 MeV |
+| 5 GeV | 313 | 3.2 MeV |
+| 10 GeV | 629 | 1.6 MeV |
+| 80 GeV | 527 | 1.9 MeV |
+| 125 GeV | 1,748 | 0.6 MeV |
+
+The mode count in a fixed window scales roughly as E
+(2D lattice point counting on the proton sheet).
+Above ~2 GeV the spacing drops below the typical
+particle mass uncertainty, making all matches trivial.
+
+
+### F20. The W/Z ratio is not geometrically special
+
+The observed ratio m_Z/m_W = 1.1345 is reproduced by
+72,621 mode pairs within ±200 MeV of the W and Z masses.
+The spectrum is so dense that any ratio near 1.1 is
+achievable by multiple pairs.  The W/Z ratio carries no
+geometric content in this model.
+
+
+### F21. The T⁶ has a predictive horizon at ~2 GeV
+
+Below ~2 GeV, the average band spacing (~8–30 MeV) is
+comparable to particle mass differences, so matching a
+specific mass is non-trivial.  The model can distinguish
+a proton (938) from a neutron (940), a pion (140) from
+a kaon (494), etc.
+
+Above ~2 GeV, the spacing drops below ~5 MeV and any
+target mass matches to < 0.1%.  The model loses all
+discriminating power.
+
+This boundary roughly coincides with the transition from
+hadronic physics (QCD scale, ~1 GeV) to electroweak
+physics (~80–125 GeV) in the standard model.  The T⁶
+model's natural domain is the particle spectrum below
+~2 GeV — which is also where all its structural
+predictions (eigenmodes, off-resonance gaps, lifetime
+correlations) operate.
+
+
+### F22. Summary of Track 4
+
+1. **W, Z, Higgs all match** to < 0.001% — but so does
+   any arbitrary mass above ~5 GeV.
+
+2. **The W/Z mass ratio is not special** in T⁶ geometry.
+   Tens of thousands of mode pairs reproduce it.
+
+3. **The T⁶ has a predictive horizon at ~2 GeV.**  Below
+   this, the proton-sheet energy ladder is sparse enough
+   to make mass predictions non-trivial.  Above it, the
+   spectrum is a continuum.
+
+4. **Implication for W/Z/Higgs:** The T⁶ model says
+   nothing about electroweak physics.  These particles
+   are not structural predictions of the geometry — they
+   live in a regime where the model has no discriminating
+   power.  Whether the Higgs is "real" or not is beyond
+   the model's reach.
