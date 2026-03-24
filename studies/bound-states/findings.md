@@ -179,3 +179,182 @@ R26's emergent neutron narrative (charge cancellation, natural
 instability, m_n > m_p from geometry) remains correct in spirit.
 The quantitative identification of which mode IS the neutron is
 the open problem.
+
+
+## Track 2. T⁶ mode solver (discovery engine)
+
+Script: [`scripts/track3_neutron_discovery.py`](scripts/track3_neutron_discovery.py)
+(Track 2 deliverable is the library itself: `lib/t6_solver.py`)
+
+
+### F9. Discovery engine built and validated
+
+A solver library (`lib/t6_solver.py`) was built on top of
+`lib/t6.py` providing:
+
+- **`find_modes()`** — search for modes matching target mass,
+  charge, and spin, with self-consistent circumferences.
+- **`self_consistent_metric()`** — generalized self-consistent
+  metric solver for any cross-shear values.
+- **`multi_target_optimize()`** — find cross-shear parameters
+  matching multiple targets simultaneously.
+
+The solver reproduces all Track 1 results and enables systematic
+searches over quantum numbers up to |n_i| ≤ n_max at any
+parameter point.
+
+
+## Track 3. Neutron mode identification
+
+Script: [`scripts/track3_neutron_discovery.py`](scripts/track3_neutron_discovery.py)
+
+
+### F10. Two self-consistent neutron candidates found
+
+The discovery engine identifies two charge-0, spin-½ modes that
+EXACTLY reproduce m_n − m_p = 1.293 MeV self-consistently:
+
+**Candidate A: (0, −2, n₃_odd, n₄, 0, +2)**
+
+    σ_ep* = −0.0798  (at r_e=6.6, r_nu=5.0, r_p=6.6)
+    E = 939.565 MeV
+    m_n − m_p = 1.293 MeV (exact to < 1 eV)
+
+    n₂ = −2: same magnitude as electron tube winding
+    n₆ = +2: same as proton tube winding
+    Spin from neutrino ring (n₃ odd)
+
+**Candidate B: (0, −5, n₃_odd, n₄, 0, −2)**
+
+    σ_ep* = −0.0861  (at r_e=6.6, r_nu=5.0, r_p=6.6)
+    E = 939.565 MeV
+    m_n − m_p = 1.293 MeV (exact to < 1 eV)
+
+    n₂ = −5: 5th harmonic of electron tube
+    n₆ = −2: proton tube winding (opposite sign)
+    Spin from neutrino ring (n₃ odd)
+
+Both modes are degenerate in the neutrino quantum numbers
+(n₃, n₄) as long as n₃ is odd (for spin ½).  The neutrino
+dimensions contribute negligible energy at the mm scale.
+
+**Candidate A is preferred** on the principle of simplicity:
+lower quantum numbers, and n₂ = −2 mirrors the electron tube.
+
+
+### F11. The neutron mass pins σ_ep
+
+At any r_p, exactly one value of σ_ep produces the correct
+neutron mass.  This eliminates σ_ep as a free parameter:
+
+    r_p    σ_ep* (Candidate B)
+    5.0    −0.0505
+    5.5    −0.0674
+    6.0    −0.0778
+    6.6    −0.0861
+    7.0    −0.0900
+    8.0    −0.0963
+    9.0    −0.0993
+   10.0    −0.1002
+
+σ_ep is always negative and approaches −0.10 as r_p → ∞.
+
+
+### F12. The neutron mass excludes r_p ≤ 4.5
+
+At σ_ep = 0 (block-diagonal limit), the neutron mode energy
+is maximum.  For r_p ≤ 4.5, this maximum gives m_n − m_p <
+1.293 MeV, so NO value of σ_ep can produce the correct mass:
+
+    r_p = 3.0:  max(m_n − m_p) = −2.52 MeV  EXCLUDED
+    r_p = 4.0:  max(m_n − m_p) = +0.58 MeV  EXCLUDED
+    r_p = 4.5:  max(m_n − m_p) = +1.25 MeV  EXCLUDED
+    r_p = 5.0:  max(m_n − m_p) = +1.66 MeV  OK
+
+The neutron mass provides a lower bound: **r_p > 4.5**.
+
+This is the first constraint on the proton aspect ratio from
+ANY measurement.
+
+
+### F13. σ_ep depends on r_p but not r_e
+
+Sweeping r_e from 4.0 to 10.0 at fixed r_p produces the same
+σ_ep* to 5 significant figures.  The neutron mass is insensitive
+to the electron aspect ratio.
+
+This makes physical sense: the neutron mode's energy is
+dominated by the proton-scale dimensions (L₅, L₆ ~ fm), and
+the electron tube winding (n₂) contributes sub-MeV energy at
+the nm scale (L₂ ~ 5000 fm).
+
+
+### F14. Cross-block shears (σ_eν, σ_νp) shift the neutron mass
+
+With σ_ep = −0.0861 and nonzero σ_eν or σ_νp:
+
+    σ_eν    σ_νp    m_n − m_p
+    0.000   0.000   1.293 MeV (reference)
+   −0.050   0.000   1.286 MeV
+    0.000  −0.050   0.986 MeV
+   −0.050  −0.050   0.881 MeV
+   +0.050  +0.050   0.881 MeV
+
+The effect is significant: |σ_eν| or |σ_νp| = 0.05 shifts the
+mass gap by up to 0.4 MeV.  For the neutron mass to be correct,
+either σ_eν ≈ σ_νp ≈ 0, or σ_ep must be re-tuned to compensate.
+
+If additional targets (muon, tau) require nonzero σ_eν or σ_νp,
+this creates a system of coupled constraints — exactly the kind
+of over-determined system that can fully pin the geometry.
+
+
+### F15. Physical interpretation of the neutron mode
+
+The neutron is a three-sheet mode:
+
+    Electron sheet:  n₁ = 0, n₂ = −2 (tube winding, no ring)
+    Neutrino sheet:  n₃ = odd (ring), n₄ = any (tube)
+    Proton sheet:    n₅ = 0, n₆ = +2 (tube winding, no ring)
+
+Charge: n₁ = 0 → no electron charge; n₅ = 0 → no proton charge.
+Charge = 0.
+
+Spin: n₃ odd → one spin-½ contribution from the neutrino ring.
+Spin = ½.
+
+Decay: the mode spans all three sheets.  When the cross-shear
+coupling weakens (metaphorically: the mode "unravels"), it
+decomposes into the three resident modes — electron, neutrino,
+and proton — exactly as observed in beta decay.
+
+The spin comes from the neutrino sector, which is
+suggestive: in the standard model, beta decay involves the
+weak interaction, which is intimately tied to neutrinos.
+
+The original R26 candidate (1,2,0,0,1,2) was conceptually
+right (a cross-sheet mode with combined electron + proton
+quantum numbers) but had the wrong quantum numbers.  The
+actual neutron mode has no ring winding on either the electron
+or proton sheets — it lives purely in the tube dimensions of
+those sheets — and gets its spin from the neutrino ring.
+
+
+### F16. Summary of Tracks 2–3
+
+**The neutron problem is solved.**  The mode (0, −2, n₃_odd,
+n₄, 0, +2) reproduces m_n − m_p = 1.293 MeV self-consistently,
+with the right charge, spin, and natural instability.
+
+Consequences:
+1. **σ_ep is determined** — the neutron mass fixes it as a
+   function of r_p.
+2. **r_p > 4.5** — the neutron mass provides a lower bound.
+3. **σ_eν and σ_νp affect the neutron mass** — future targets
+   (unstable particles, atoms) will constrain them.
+4. **The discovery engine works** — the solver finds modes that
+   manual analysis missed, validating the approach for R28.
+
+The model now has one fewer free parameter (σ_ep is fixed by
+the neutron mass), a constraint on r_p, and a validated search
+tool for the next targets.
