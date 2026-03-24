@@ -69,6 +69,19 @@ suggest possible over-parameterization.  Can T¹ (circle) reproduce particle
 properties?  Is the charge mechanism irreducibly 2D?  What about Klein bottle
 identification?  Hierarchical compactification?  Non-uniform T¹?  5 tracks.
 
+### R31. The origin of α and the nature of atomic binding  **Complete**
+**Study:** [`alpha-derivation/`](alpha-derivation/)
+**Questions:** Q34, Q28, Q18  **Type:** theoretical + compute  **Depends on:** R19, R26, R29, R30
+
+6 tracks, 24 findings.  Hydrogen atom is NOT a T⁶ mode (spectrum
+2,830× too coarse).  Casimir energy cannot select α (no minimum).
+**Naive KK Yukawa ruled out** — corrections 10³–10⁶× too large for
+Lamb shift, requiring KK massive mode coupling suppressed by ≥10⁵.
+T⁶ merging always costs energy (neutron 0.78 MeV heavier than H).
+α remains an input; deriving it requires a dynamics/moduli potential
+not yet in the model.  r_e confirmed as a geometric constant, not
+per-electron.
+
 ---
 
 ## Backlog
