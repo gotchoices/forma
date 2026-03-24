@@ -1464,32 +1464,101 @@ most tractable entry point is N3 (PMNS), which might cascade into
 r-selection via over-determination.
 
 
-### N6. Muon and tau placement (speculative)
+### N6. Unstable particle spectrum as T⁶ excitations (high priority)
 
-**Problem:** The muon (105.7 MeV) and tau (1777 MeV) are not
-accommodated in the current T⁶.  They have the same charge and
-spin as the electron but different mass.
+**Reframing:** The muon (μ⁻, 105.7 MeV, τ = 2.2 μs) and tau
+(τ⁻, 1777 MeV, τ = 0.29 ps) are unstable — they always decay
+to the stable T⁶ residents (electrons + neutrinos).  Rather than
+requiring new geometry, they are naturally interpreted as EXCITED
+T⁶ modes: energy temporarily occupying higher quantum-number
+configurations that ring unstably until cascading down to the
+fundamental modes.  The decay μ → e + ν̄ₑ + ν_μ is literally
+a T⁶ mode relaxation: excited electron-T² mode → ground-state
+(1,2) mode + neutrino-T² modes.
 
-**Possible models:**
+**The opportunity:** Every unstable particle with measured mass,
+charge, and spin is a potential T⁶ mode match.  Each match adds
+one mass equation constraining the 15 free metric parameters.
+With enough matches, the system becomes over-determined and the
+free parameters get pinned.
 
-1. **Excited modes on the electron T².**  Higher (p, q) modes
-   like (1, 4) or (3, 2) have higher mass.  At the electron's
-   Compton scale, m(1,4) ≈ 4 × m_e — far too light for the muon.
-   But if the EFFECTIVE mass includes cross-plane coupling, the
-   shift could be much larger.
+**Catalog of candidates (fundamental or quasi-fundamental):**
 
-2. **Separate T² planes.**  The muon lives on its own T² at its
-   own Compton scale (~1.3 fm).  This would expand T⁶ to T⁸ or
-   T¹⁰.  Aesthetically unappealing but not ruled out.
+    Particle      Mass (MeV)   Q/e   Spin   Lifetime
+    ─────────────────────────────────────────────────
+    μ⁻            105.66       −1    ½      2.2 μs
+    τ⁻            1776.9       −1    ½      0.29 ps
+    W⁻            80,377       −1    1      ~3×10⁻²⁵ s
+    Z⁰            91,188        0    1      ~3×10⁻²⁵ s
+    H⁰            125,250       0    0      ~1.6×10⁻²² s
 
-3. **Different spin structures.**  The muon and tau might be the
-   same (1, 2) mode on the electron T² but with different spinor
-   phases on the T⁶.  This is speculative but would keep the
-   geometry compact.
+In the standard model, mesons (π, K, η, ρ, ...) and unstable
+baryons (Δ, Σ, Λ, Ξ, Ω, ...) are composite (quark-antiquark or
+three-quark states).  Whether they map to single T⁶ modes or to
+multi-mode bound states is an open question.  However, even
+composite particles have definite masses — if the T⁶ can produce
+modes at those energies with the right quantum numbers, each
+match still constrains the geometry.
 
-**Effort:** Exploratory.  Option 1 is computable with existing
-infrastructure (extend the spectral scan to look for modes near
-m_μ and m_τ).  Options 2 and 3 require new theoretical framework.
+**Constraints from quantum numbers:**
+
+In the T⁶ framework, charge and spin are determined by mode
+quantum numbers (n₁, ..., n₆):
+  - Charge −e requires odd n₁ (electron tube winding)
+  - Spin ½ requires an odd number of odd tube windings
+  - Spin 0 requires all tube windings even (n₁, n₃, n₅ even)
+  - Spin 1 requires two odd tube windings (or vector mode)
+
+This immediately predicts:
+  - μ⁻ and τ⁻ (charge −e, spin ½) must have odd n₁ → they
+    live partly on the electron T².  They ARE excited electrons.
+  - Z⁰ (charge 0, spin 1) has even n₁ → no electron-T²
+    component.  It could be a pure cross-plane mode.
+  - W⁻ (charge −e, spin 1) has odd n₁ and must have a second
+    odd tube winding → cross-plane mode spanning electron T²
+    and at least one other T².
+
+**Computational approach:**
+
+1. Extend the Track 4d spectral scan to higher quantum numbers
+   (|n_i| up to ~10–20 instead of ~3).  At each point in the
+   cross-shear space, catalog all modes below ~200 GeV with
+   their mass, charge, and spin.
+
+2. Build a "match score" function: for each set of T⁶ parameters,
+   count how many known particles have a T⁶ mode within X% of
+   their mass with correct charge and spin.
+
+3. Optimize the match score over the 15 free parameters.  Regions
+   of parameter space where many particles match simultaneously
+   are the physically interesting ones.
+
+4. Each successful match is an equation:
+     E(n₁,...,n₆; r_e, r_ν, r_p, σ_ij) = m_particle
+   With ~5–10 matches, plus the existing 6 constraints, the
+   system could approach or exceed 15 equations for 15 unknowns.
+
+**What to look for:**
+  - Is there a region in parameter space where the muon AND tau
+    both appear as T⁶ modes with correct quantum numbers?
+  - Do the W and Z masses emerge from cross-plane modes?
+  - If the match score has a sharp peak (many simultaneous
+    matches at one parameter point), that point IS the physical
+    geometry — and the aspect ratios, cross-shears, and all
+    other free parameters would be determined.
+
+**Why this could work:** The T⁶ spectrum is DENSE at high energy
+(the number of modes below energy E grows as E⁶ for a 6D
+lattice).  The concern is false matches — random modes at the
+right mass.  But requiring correct charge AND spin AND mass
+simultaneously is highly constraining.  A mode at 105.66 MeV
+with charge −e and spin ½ is a specific prediction, not a
+generic feature of any random metric.
+
+**Effort:** Moderate.  The infrastructure exists (Track 4a/4d
+scripts).  The main work is extending the scan to higher quantum
+numbers and building the match-score optimizer.  This is the most
+direct path to collapsing the free parameter space.
 
 
 ### N7. Gravity and the sub-mm bound (important constraint)
@@ -1532,13 +1601,17 @@ well-understood; the calculation is standard.
 | N1 | Self-consistent neutron | High | High | ★★★ |
 | N2 | Moduli potential | Medium | Very high | ★★★ |
 | N3 | PMNS from cross-shears | Medium | Very high | ★★★ |
+| N6 | Particle spectrum match | Medium | Very high | ★★★ |
 | N4 | SO(6) spin structure | Medium | High | ★★☆ |
 | N5 | Aspect ratio selection | Low | Critical | ★★☆ |
-| N6 | Muon/tau placement | Low | Medium | ★☆☆ |
 | N7 | Gravity bound | Medium | High | ★★☆ |
 
-N1–N3 form a natural cluster for the next study: fix the neutron
-self-consistency, derive the moduli potential, and connect PMNS
-to cross-shear structure.  If all three succeed, the model would
-go from "compatible" (current status) to "predictive" — and the
-aspect ratios (N5) might fall out as a consequence.
+N1 is the quickest win (one script, one constraint).  N6 is
+potentially the most powerful: if the T⁶ spectrum can match
+even 3–4 unstable particles (μ, τ, W, Z) with correct mass,
+charge, and spin simultaneously, the free parameter count drops
+from 15 to ~5 — and the aspect ratios (N5) might be forced.
+N2 and N3 attack the problem from the theoretical side (moduli
+potential and PMNS mixing), while N6 attacks it empirically
+by fitting the known particle spectrum.  Together, they could
+take the model from "compatible" to "predictive."
