@@ -1036,3 +1036,68 @@ The derived quantities are non-trivial — getting charge, spin,
 and g-factor correct from geometry alone is a structural success.
 But the model does not yet make quantitative predictions beyond
 Σm_ν.
+
+
+### F62. The model demonstrates compatibility, not uniqueness
+
+The T⁶ topology CAN support the observed particles — but
+nothing in the current framework predicts ONLY these particles
+or ONLY one specific geometry.  For each domain there is a
+continuous family of solutions, not a unique point.
+
+This is not a failure — it reflects the current state of
+constraints.  Track 4 (T⁶ unification) may introduce geometric
+consistency conditions that reduce the solution set.
+
+
+### F63. Solution sets by domain
+
+**Electron T² — one-parameter family indexed by r_e:**
+
+    r_e ∈ (0, ∞)           aspect ratio (free)
+    s₁₂ = s₁₂(r_e)         fixed by α = 1/137 (unique for each r_e)
+    L₂  = L₂(r_e, s₁₂)    fixed by m_e (unique for each r_e)
+    R_e = L₂ / 2π          ring radius — ranges from ~100 fm to ~700 fm
+    a_e = r_e × R_e         tube radius
+
+    All electron observables (Q, spin, g ≈ 2) are r_e-independent.
+    No known observable selects a unique r_e.
+
+**Neutrino T² — one-parameter family indexed by r_ν:**
+
+    r_ν ∈ [~3.2, ∞)        aspect ratio (free, lower bound from Σm_ν ≤ 120 meV)
+    s₃₄ = 0.02199           fixed by Δm² ratio (r_ν-independent)
+    L₄  = L₄(r_ν)          fixed by Δm²₂₁ (unique for each r_ν)
+
+    The mass-squared ratio Δm²₃₁/Δm²₂₁ = 33.6 is reproduced
+    at ALL r_ν — it depends only on s₃₄.  Individual neutrino
+    masses scale weakly with r_ν:
+      r_ν →  ∞:  m₁ → 28.6 meV,  Σm → 116.4 meV  (asymptote)
+      r_ν =  5:  m₁ = 29.2 meV,  Σm = 117.9 meV
+      r_ν =  3:  m₁ = 30.2 meV,  Σm = 120.4 meV   (at cosmological bound)
+
+**Proton T² — one-parameter family indexed by r_p:**
+
+    r_p ∈ (0, ∞)           aspect ratio (free)
+    s₅₆ = s₅₆(r_p)         fixed by α = 1/137 (same formula as electron)
+    L₆  = L₆(r_p, s₅₆)    fixed by m_p (unique for each r_p)
+    R_p = L₆ / 2π          ring radius — ranges from ~0.05 fm to ~0.5 fm
+
+    The proton charge radius is NOT a clean constraint (F48):
+    its extraction is model-dependent, so r_p remains free.
+
+**Cross-plane — 12 unconstrained shears:**
+
+    s₁₃, s₁₄, s₂₃, s₂₄    electron–neutrino coupling (→ PMNS?)
+    s₁₅, s₁₆, s₂₅, s₂₆    electron–proton coupling   (→ neutron?)
+    s₃₅, s₃₆, s₄₅, s₄₆    neutrino–proton coupling   (→ β decay?)
+
+    All 12 are unconstrained.  No mapping to observables
+    has been derived yet.
+
+**Summary:**  The full solution set is a connected region in
+a 15-dimensional parameter space (3 aspect ratios + 12 cross-
+shears).  Within this region, the model reproduces all
+established physics.  Track 4 should determine whether T⁶
+consistency conditions collapse this region to a smaller
+manifold or discrete set.

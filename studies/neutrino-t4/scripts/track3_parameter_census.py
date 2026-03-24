@@ -345,6 +345,15 @@ def main():
     haven't identified), the 12 cross-shears would face ≥7
     constraints from 15 free → potentially solvable.  The
     aspect ratios are the critical open problem.
+
+  COMPATIBILITY vs UNIQUENESS:
+    The topology CAN support the observed particles, but
+    nothing predicts ONLY these particles or ONLY one geometry.
+    Each domain has a continuous one-parameter family of
+    solutions (indexed by its aspect ratio).  The full solution
+    set is a 15-dimensional region.  Track 4 should determine
+    whether T⁶ consistency conditions collapse this to a
+    smaller manifold or discrete set.
 """)
 
 
