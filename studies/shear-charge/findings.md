@@ -905,6 +905,131 @@ R19's contributions to R14:
 - The T³ circumferences L₁, L₂ are at the Compton scale (~pm)
 - L₃ is unconstrained by R19 (could be fm-scale for protons)
 
+**Update (Track 8):** s₁₂ ≈ 0.165 applies under WvM convention.
+Under the correct KK convention, s₁₂ ≈ 0.065 (at r=1) — see F36.
+
+
+---
+
+## Track 8. KK convention reconciliation
+
+Script: [`scripts/track8_kk_convention.py`](scripts/track8_kk_convention.py)
+
+Reopened for R26.  R26 Track 1a proved that only the KK eigenmode
+formula reproduces the neutrino mass-squared ratio of 33.6.  The
+WvM geodesic formula gives ~1.7.  This track re-derives α under
+the KK Compton constraint.
+
+
+### F35. The KK α formula
+
+Under the KK Compton constraint (E₀ μ(1,2) = m_e c², where
+E₀ = ℏc/R and μ = √(1/r²+(2−s)²)):
+
+    R_KK = λ̄_C √(1/r² + (2−s)²)
+
+The charge integral is unchanged, so α = r²(R/λ̄_C) sin²(2πs)/(4π(2−s)²):
+
+    α_KK = r² √(1/r²+(2−s)²) sin²(2πs) / (4π(2−s)²)
+
+Compare R19 Track 3 (WvM):
+
+    α_WvM = r² sin²(2πs) / (4π(2−s)² √(r²(1+2s)²+4))
+
+The ratio α_KK/α_WvM = √((1/r²+(2−s)²)(r²(1+2s)²+4)), which
+ranges from ~5 (r=1) to ~15 (r=6.6).  The charge PHYSICS is
+identical; only the Compton constraint differs.
+
+
+### F36. KK shear values are smaller than WvM
+
+For each r, α_KK = 1/137 requires less shear than α_WvM:
+
+| r    | s_WvM    | s_KK     | s_KK/s_WvM | δ/a (KK) |
+|------|----------|----------|------------|----------|
+| 1.00 | 0.165128 | 0.064981 | 0.394      | 23.4°    |
+| 3.00 | 0.063315 | 0.022509 | 0.356      | 8.1°     |
+| 6.60 | 0.039333 | 0.010293 | 0.262      | 3.7°     |
+
+Under KK, the lattice angle deviates ~3.8° from orthogonal
+(vs ~9° under WvM) — a nearly rectangular lattice.
+
+
+### F37. KK torus is LARGER than WvM torus
+
+| r    | R_WvM (m)  | R_KK (m)   | R_KK/R_WvM |
+|------|------------|------------|-------------|
+| 1.00 | 1.608e-13  | 8.411e-13  | 5.23        |
+| 3.00 | 9.833e-14  | 7.744e-13  | 7.88        |
+| 6.60 | 5.222e-14  | 7.706e-13  | 14.8        |
+
+The KK torus is ~5–15× larger in ring radius R.  At large r,
+R_KK converges to ~λ̄_C × (2−s) ≈ 2λ̄_C ≈ 7.7e-13 m, because
+μ(1,2) → (2−s) as 1/r² → 0.
+
+
+### F38. F7 resolved: eigenmode energy = m_e c² under KK
+
+F7 noted that the eigenmode energy on the WvM-sized torus is
+5× m_e c² (at r=1).  Resolution: the WvM torus is too SMALL.
+Smaller cavity → higher eigenfrequencies.  The KK torus is
+larger, so E(1,2) = E₀ μ = m_e c² by construction.
+
+The "5× discrepancy" was never a physics problem — it was an
+artifact of using the wrong Compton constraint.  The photon
+IS the eigenmode, on the correctly-sized torus.
+
+
+### F39. Neutrino mass ratio proves KK is correct
+
+| Convention | r_ν=1 ratio | r_ν=3 ratio | r_ν=6.6 ratio | r_ν=10 ratio |
+|------------|-------------|-------------|---------------|--------------|
+| KK         | 33.61       | 33.61       | 33.61         | 33.61        |
+| WvM        | 1.08        | 1.33        | 1.93          | 2.36         |
+
+Only KK gives the r-independent ratio 33.6 matching experiment.
+WvM gives r-dependent ratios of order 1–2.  This is decisive:
+the KK eigenmode formula is the correct energy quantization
+on a flat T².
+
+
+### F40. Critical aspect ratio shifts downward
+
+r_crit (WvM) ≈ 0.81.  r_crit (KK) ≈ 0.26.
+
+The KK formula allows solutions at much smaller r because the
+factor √(1/r²+(2−s)²) grows as r→0, amplifying α.  All
+r > 0.26 have solutions.
+
+
+### F41. One-parameter family preserved under KK
+
+The electron remains a one-parameter family in r.  For each
+r > r_crit ≈ 0.26, there is a unique s(r) giving α = 1/137,
+with all other properties (mass, spin, g-factor, charge)
+determined.  The structure of F15 is unchanged.
+
+
+### F42. Coulomb self-energy stable
+
+E_Coulomb ≈ 0.18–0.25 × α m_e c² across all r (KK values).
+Consistent with F14 and the QED mass correction.
+
+
+### F43. All R19 findings carry over qualitatively
+
+Findings F1–F34 (charge mechanism, selection rules, quark
+exclusions) are unchanged in their qualitative conclusions.
+Only numerical values of s, R, a shift.  In particular:
+- The n₁=1 selection rule (F17, F30) is topological → unchanged
+- The s₁₃=0 requirement (F31–F32) → unchanged
+- The quark exclusions (F24, F33) → unchanged (mass ratios
+  change but remain the wrong order of magnitude)
+
+**Summary:** KK is the correct convention.  R19's α formula
+updates to α_KK; all downstream work (R26 Tracks 2b–4) should
+use KK scales.
+
 
 ---
 
@@ -946,3 +1071,12 @@ R19's contributions to R14:
 | F32 | s₁₃ ≠ 0 gives lighter modes charge → contradicts observation → s₁₃ must be zero |
 | F33 | Single-photon quarks from shear definitively ruled out (Tracks 4, 5, 6 all closed) |
 | F34 | Electron charge is 2D shear; quark charges require topological linking (→ R14) |
+| F35 | KK α formula: α = r²√(1/r²+(2−s)²)sin²(2πs)/(4π(2−s)²) — same physics, KK Compton constraint |
+| F36 | KK shear values ~0.3–0.4× WvM values; lattice angle ~3.8° off orthogonal (vs ~9° WvM) |
+| F37 | KK torus is 5–15× larger in R than WvM torus; R_KK → 2λ̄_C at large r |
+| F38 | **F7 resolved:** eigenmode energy = m_e c² on KK-sized torus; WvM torus was too small |
+| F39 | **Neutrino proof:** KK gives r-independent ratio 33.6; WvM gives ~1–2. KK is correct. |
+| F40 | r_crit shifts from 0.81 (WvM) to 0.26 (KK) |
+| F41 | One-parameter family in r preserved under KK |
+| F42 | Coulomb self-energy ≈ 0.18–0.25 α m_e c² (stable across r) |
+| F43 | All R19 findings (F1–F34) carry over qualitatively; only numerical values of s, R, a change |

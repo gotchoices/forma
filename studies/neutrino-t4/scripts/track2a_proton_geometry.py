@@ -344,9 +344,9 @@ def main():
   (s₁₂, s₅₆) and neutrino shear (s₃₄) are INDEPENDENT parameters
   on DIFFERENT T²s, there is no conflict.
 
-  Action: re-derive R19's s(r) curve under KK conventions.  This is
-  a revision to R19, not a new study.  The qualitative results
-  (same shape family, same charge mechanism) are unchanged.
+  RESOLVED: R19 Track 8 re-derived the s(r) curve under KK.
+  Same charge physics, smaller shear values (s_KK ≈ 0.3–0.4 × s_WvM).
+  See R19 findings F35–F43.
 """)
 
     # ================================================================

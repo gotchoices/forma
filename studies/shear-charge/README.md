@@ -283,6 +283,44 @@ This is the most conservative hypothesis: it preserves the
 electron result from Tracks 1–3 and defers quark charges to
 R14's topological mechanism.  See Q64, Q66.
 
+### Track 8. KK convention reconciliation  *(reopened for R26)*
+
+R26 Track 1a showed that the KK eigenmode energy formula
+E = E₀ √((n₃/r)² + (n₄−n₃s)²) is the correct wave-equation
+result on a flat T² — it reproduces the experimental neutrino
+mass-squared ratio of 33.6, while the WvM geodesic formula
+E = hc/L gives ratio ≈ 1.7.
+
+Tracks 1–3 used the WvM Compton constraint (L_geodesic = λ_C)
+to set physical scales, which feeds into the α formula.  Under
+the KK constraint (E₀ μ(1,2) = m_e c²), the torus is smaller
+and the α formula becomes:
+
+    α_KK = r² √(1/r²+(2−s)²) sin²(2πs) / (4π(2−s)²)
+
+vs the original:
+
+    α_WvM = r² sin²(2πs) / (4π(2−s)² √(r²(1+2s)²+4))
+
+The charge PHYSICS is unchanged — same field, same Gauss's law
+integral, same shear mechanism.  Only the Compton constraint
+(and thus the physical scales R, a) differs.
+
+Steps:
+1. Derive α_KK from the charge integral with KK-consistent
+   scales.  Verify the formula analytically.
+2. Solve s(r) for α_KK = 1/137 across aspect ratios.
+3. Compare with Track 3's WvM s(r) curve.
+4. Recheck all electron properties (mass, spin, charge, g,
+   Coulomb self-energy) under KK scales.
+5. Verify F7 is resolved: E_eigenmode = m_e c² by construction
+   under KK, eliminating the 5× discrepancy.
+6. Update the one-parameter family characterization (F15).
+
+**Success criterion:** α = 1/137 is achievable for all r > r_crit
+under KK, with geometrically natural s values and no new
+pathologies.
+
 ---
 
 ## Key facts
@@ -421,6 +459,9 @@ Key positive result: F31 predicts no charged particle lighter than
 the electron, explaining why the electron is confined to a 2D plane
 on T³ despite lighter modes existing.
 
-**Next:** quark charges from topological linking → R14 Track 1.
+**Track 8 (KK reconciliation): reopened for R26.**
+R26 showed the KK eigenmode formula is the correct wave-equation
+result.  Track 8 re-derives α under KK conventions — same charge
+physics, updated Compton constraint and s(r) curve.
 
 New inbox entries: Q60–Q66 document unexplored directions.

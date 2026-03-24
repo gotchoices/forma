@@ -771,5 +771,6 @@ and re-derive R19's s(r) curve under KK conventions.  The charge
 physics (shear → broken symmetry → net E-flux) is unchanged;
 only the numerical relationship between s and α shifts.
 
-This re-derivation is noted as an R19 revision task but does not
-block Tracks 2b–4.
+**Resolved in R19 Track 8** (F35–F43): α re-derived under KK.
+Same charge physics, updated s(r) curve.  See
+[`../shear-charge/findings.md`](../shear-charge/findings.md).
