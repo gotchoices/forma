@@ -109,28 +109,47 @@ circumferences.
 
 ## Motivation
 
-R26 showed that the T⁶ produces an emergent neutron — a cross-
-sheet mode with zero charge and mass near m_n.  R27 Track 1
-showed that the naive mode identification needed revision, and
-Track 3 found the correct self-consistent neutron mode.  The
-neutron + muon together pin two parameters (r_p and σ_ep).
+R26 showed that the T⁶ produces an emergent neutron.  R27
+Tracks 1–3 found the correct self-consistent neutron mode
+and simultaneously matched the muon, pinning two parameters
+(r_p = 8.906 and σ_ep = −0.0906).
 
-This study now pursues two parallel goals:
+Track 4 showed that the tau mass falls in a structural gap
+of the proton-scale energy ladder — no single T⁶ mode exists
+at 1776.9 MeV.  Preliminary Track 5 work found the kaon at
+1.2% error and the pion at 13.6% — both parameter-free
+predictions.
 
-1. **Particle spectrum** — find T⁶ modes matching known unstable
-   particles (tau, pions, W, Z, ...).  Each match pins more
-   parameters.  Enough matches fully determine the geometry.
+**Key reframing (from findings discussion):**
 
-2. **Bound states** — find T⁶ oscillation patterns with the
-   properties of atoms and nuclei (hydrogen, deuteron).
+Stable particles (electron, proton, neutrinos) are **exact
+eigenmodes** of the T⁶ — perfect standing waves.  Unstable
+particles need not be exact eigenmodes.  They are **transient,
+off-resonance excitations** — energy temporarily in a
+configuration close to but not exactly on a mode.  The gap
+between the observed mass and the nearest mode energy is
+physically meaningful:
+
+- Particles close to a mode resonate longer (longer lifetime).
+- Particles far from a mode decay quickly (shorter lifetime).
+- Particles always appear in reactions where total energy
+  and quantum numbers are conserved.  The energy of the
+  transient pattern is determined by the reaction kinematics,
+  not by the nearest mode.
+
+This changes the question from "does a mode exist at exactly
+this mass?" to "is there a nearby mode, and does the gap
+correlate with the particle's lifetime and production context?"
 
 
 ## Core hypothesis
 
-**The T⁶ supports oscillation patterns — single modes or compound
-configurations — with the observed properties of known particles,
-atoms, and nuclei.  These patterns are discoverable by systematic
-search over quantum numbers and metric parameters.**
+**The T⁶ has a discrete spectrum of eigenmodes.  Stable
+particles are exact eigenmodes.  Unstable particles are
+off-resonance excitations whose lifetimes correlate with their
+distance from the nearest eigenmode.  The full spectrum of
+observed particles — stable and unstable — is explained by
+the eigenmode structure plus reaction kinematics.**
 
 
 ## Approach
@@ -143,9 +162,8 @@ Key results:
 - The naive (1,2,0,0,1,2) mode with symmetric σ_ep is
   quantitatively insufficient (max m_n − m_p ≈ 0.50 MeV).
 - Negative σ_ep gives the correct sign (m_n > m_p).
-- Alternative modes (0, −3, n₃, n₄, 0, 2) achieve 0.93 MeV.
 - The qualitative neutron picture is intact; the quantitative
-  mode identification is open.
+  mode identification required the discovery engine (Track 2).
 
 
 ### Track 2 — T⁶ mode solver (discovery engine)  ✔
@@ -168,112 +186,117 @@ Key results:
 - Muon: mode (−1, +5, 0, 0, −2, 0),
   r_p = 8.906 gives m_μ = 105.658 MeV exactly.
 - Both matched simultaneously.  Two parameters determined.
-- Tau: nearest mode at 1876.4 MeV (+5.6%).
 
 
-### Track 4 — Asymmetric cross-shears and the tau
+### Track 4 — Asymmetric cross-shears and the tau  ✔
 
-The tau mass (1776.9 MeV) falls between rungs of the proton-
-scale energy ladder.  Symmetric cross-shears cannot reach it.
+**Status:** Complete.  See findings F22–F26.
 
-**Method:** Extend the solver to use all 12 independent σ_ij
-entries instead of 3 collective values.  Search for parameter
-combinations where:
-- Neutron mass remains exact
-- Muon mass remains exact
-- A charge −1, spin ½ mode appears at 1776.9 MeV
-
-The 12-parameter space is large but heavily constrained by the
-neutron and muon requirements.
-
-**Deliverable:** Tau mode identification and constrained σ_ij
-values, or a determination that the tau requires mechanisms
-beyond single-mode KK physics.
+Key results:
+- The tau mass falls in a structural gap of the proton-scale
+  energy ladder (between n₆ = ±3 at ~1408 MeV and n₆ = ±4
+  at ~1877 MeV).
+- Asymmetric cross-shears shift energies by at most ±2 MeV.
+- No single T⁶ mode exists at 1776.9 MeV.
+- This motivates the off-resonance reframing.
 
 
-### Track 5 — Extended particle spectrum
+### Track 5 — Systematic particle catalog
 
-With parameters pinned by neutron + muon + (hopefully) tau,
-search for additional known particles:
+For **every well-measured unstable particle**, compute:
 
-**Fundamental particles:**
+1. Nearest T⁶ mode with matching charge and spin
+2. Mode energy (parameter-free, since r_p and σ_ep are pinned)
+3. Gap = observed mass − nearest mode energy
+4. Gap direction (above or below the mode)
+5. Fractional gap = |gap| / observed mass
 
-| Particle | Full name | Mass (MeV) | Charge | Spin |
-|----------|-----------|-----------|--------|------|
-| μ⁻       | muon      | 105.66    | −1     | ½    |
-| τ⁻       | tau       | 1776.9    | −1     | ½    |
-| W⁻       | W boson   | 80,377    | −1     | 1    |
-| Z⁰       | Z boson   | 91,188    |  0     | 1    |
-| H⁰       | Higgs     | 125,250   |  0     | 0    |
+**Particle catalog** (targets):
 
-**Composite particles (mesons and baryons):**
+| Particle | Full name       | Mass (MeV) | Q  | Spin | Lifetime |
+|----------|----------------|-----------|-----|------|----------|
+| μ⁻       | muon           | 105.66    | −1  | ½    | 2.20 μs  |
+| π⁺       | pion (charged) | 139.57    | +1  | 0    | 26.0 ns  |
+| π⁰       | pion (neutral) | 135.0     |  0  | 0    | 8.5×10⁻¹⁷ s |
+| K⁺       | kaon (charged) | 493.68    | +1  | 0    | 12.4 ns  |
+| K⁰       | kaon (neutral) | 497.61    |  0  | 0    | varies   |
+| η        | eta meson      | 547.86    |  0  | 0    | 5.0×10⁻¹⁹ s |
+| ρ⁰       | rho meson      | 775.3     |  0  | 1    | 4.5×10⁻²⁴ s |
+| ω        | omega meson    | 782.7     |  0  | 1    | 7.7×10⁻²³ s |
+| n        | neutron        | 939.565   |  0  | ½    | 878 s    |
+| Δ⁺⁺      | delta baryon   | 1232      | +2  | 3/2  | 5.6×10⁻²⁴ s |
+| τ⁻       | tau            | 1776.9    | −1  | ½    | 2.9×10⁻¹³ s |
 
-| Particle | Full name    | Mass (MeV) | Charge | Spin |
-|----------|-------------|-----------|--------|------|
-| π⁺       | pion (plus)  | 139.6     | +1     | 0    |
-| π⁰       | pion (zero)  | 135.0     |  0     | 0    |
-| K⁺       | kaon (plus)  | 493.7     | +1     | 0    |
-| η        | eta meson    | 547.9     |  0     | 0    |
-| ρ⁰       | rho meson    | 775.3     |  0     | 1    |
-| Δ⁺⁺      | delta baryon | 1232      | +2     | 3/2  |
+Also include the stable particles (electron, proton) with
+gap = 0 and lifetime = ∞ as reference points.
 
-Each match adds a constraint equation on the free parameters.
-
-**Deliverable:** Mode assignments for matched particles, or
-identification of which particles are genuinely composite
-(not single T⁶ modes).
-
-
-### Track 6 — Lifetime correlations
-
-A mode's instability should correlate with its "distance" from
-fundamental modes in quantum number space.
-
-**Method:** For each matched particle, compute a distance metric
-between its mode and the nearest fundamental mode.  Plot against
-measured lifetime.
-
-**Deliverable:** Distance-vs-lifetime plot.  If monotonic, this
-provides a geometric interpretation of particle lifetimes.
+**Deliverable:** A complete table: particle, observed mass,
+nearest mode, mode energy, gap, lifetime.
 
 
-### Track 7 — Nuclear stability criterion
+### Track 6 — Lifetime-gap correlation
 
-A neutron in a nucleus is stable.  A free neutron decays.
+The central test of the off-resonance hypothesis.
 
-**Hypothesis:** The neutron mode's energy depends on what other
-modes are simultaneously present.  In isolation, E_n > m_p + m_e
-(decay allowed).  With a proton mode present, the compound
-pattern has lower energy (neutron trapped).
+**Method:**
 
-**Deliverable:** Whether the T⁶ produces different effective
-neutron masses in isolation vs in a nuclear environment.
+1. From the Track 5 catalog, extract (gap, lifetime) pairs.
+2. Plot log(lifetime) vs log(|gap|) or |gap|/mass.
+3. Test for correlation: do short-lived particles have large
+   gaps?  Do long-lived ones have small gaps?
+4. The stable particles (e, p, ν) should be at gap = 0,
+   lifetime = ∞.  The neutron should be at a very small gap
+   and the longest finite lifetime.
 
+**What to look for:**
 
-### Track 8 — Hydrogen-like patterns
+- Monotonic relationship → strong support for the off-resonance
+  picture.
+- Clustering → groups of particles may share a decay mechanism.
+- Outliers → particles that break the trend may be composites
+  or require different mechanisms.
 
-Search for T⁶ oscillation patterns with hydrogen properties:
-    charge = 0
-    mass ≈ m_p + m_e − 13.6 eV
-    discrete excited states at −13.6/n² eV
-
-Requires the geometry to be well-determined first (from particle
-spectrum tracks), since the 13.6 eV binding energy is 10⁸ times
-smaller than the rest masses.
-
-**Deliverable:** Hydrogen-like T⁶ pattern, or identification of
-what prevents it.
+**Deliverable:** Correlation plot and statistical analysis.
 
 
-### Track 9 — Deuteron-like patterns
+### Track 7 — Reaction energetics
 
-Search for a proton-neutron bound state:
-    charge = +1e
-    mass = m_p + m_n − 2.224 MeV
-    spin = 1
+Do reaction conservation laws work at the T⁶ mode level?
 
-**Deliverable:** Deuteron-like T⁶ pattern, or diagnosis of why
-the simplest nucleus doesn't emerge.
+**Method:** For well-measured reactions, check whether the
+total nearest-mode energies balance:
+
+| Reaction | Input modes | Output modes |
+|----------|-------------|-------------|
+| π⁻ → μ⁻ + ν̄_μ | E(π mode) | E(μ mode) + E(ν) |
+| K⁺ → μ⁺ + ν_μ | E(K mode) | E(μ mode) + E(ν) |
+| n → p + e⁻ + ν̄_e | E(n mode) | E(p) + E(e) + E(ν) |
+| τ⁻ → μ⁻ + ν̄_μ + ν_τ | E(τ mode?) | E(μ mode) + 2E(ν) |
+
+If particle masses don't exactly equal mode energies, does
+the mismatch cancel when you look at complete reactions?
+For example: if the pion's mass is 19 MeV below its mode
+energy, does that 19 MeV appear as extra kinetic energy in
+the decay products?
+
+**Deliverable:** Mode-energy balance table for common decays.
+
+
+### Track 8 — Nuclear stability criterion  *(deferred)*
+
+Why a neutron in a nucleus doesn't decay.  Requires multi-mode
+formalism.  Deferred until the single-particle picture is clear.
+
+
+### Track 9 — Hydrogen-like patterns  *(deferred)*
+
+Requires well-determined geometry.  Deferred until the particle
+spectrum constrains enough parameters.
+
+
+### Track 10 — Deuteron-like patterns  *(deferred)*
+
+Deferred with Track 9.
 
 
 ## Infrastructure
@@ -289,6 +312,7 @@ the simplest nucleus doesn't emerge.
 
 - `find_modes(target, ...)` — search for modes matching targets
 - `self_consistent_metric(sigmas, ...)` — self-consistent metric
+- `self_consistent_metric_asym(...)` — asymmetric cross-shears
 - `multi_target_optimize(targets, ...)` — multi-target search
 
 Track-specific scripts go in `bound-states/scripts/`.
@@ -302,24 +326,26 @@ Track-specific scripts go in `bound-states/scripts/`.
 |--------|-----------|
 | m_n − m_p = 1.293 MeV | **Done:** pins σ_ep = −0.0906 |
 | m_μ = 105.658 MeV | **Done:** pins r_p = 8.906 |
-| m_τ = 1776.9 MeV | Expected: pins asymmetric σ_ij entries |
-| Each additional particle | One more constraint equation |
+| Lifetime-gap correlation | Tests off-resonance hypothesis |
+| Reaction energy balance | Tests mode-energy conservation |
 | Hydrogen binding 13.6 eV | Constrains cross-shear strength |
-| α from binding energy | Relates r_e to shears |
 
 ### Possible outcomes
 
-**Best case:** Asymmetric shears close the tau gap, 3+ more
-particles match, the geometry is fully determined, and hydrogen
-emerges as a compound pattern.
+**Best case:** The lifetime-gap correlation is strong, reaction
+energetics balance, and the T⁶ mode spectrum explains both
+stable and unstable particles through the off-resonance
+mechanism.  The model transitions from "fitting masses" to
+"predicting lifetimes."
 
-**Partial success:** Neutron and muon are matched (done), tau
-and a few more particles constrain most parameters, but atoms
-require mechanisms beyond single-mode T⁶ physics.
+**Partial success:** Some particles fit the off-resonance
+picture but others (especially short-lived resonances like ρ,
+Δ) require multi-mode or nonlinear effects.  The boundary
+between single-mode and composite physics is identified.
 
-**Null result (informative):** The tau requires mechanisms not
-in the current model.  This would point to specific extensions
-(nonlinear coupling, backreaction on the metric, etc.).
+**Null result:** No correlation between gap and lifetime.  The
+T⁶ mode spectrum is not sufficient to explain unstable
+particles even as off-resonance excitations.
 
 
 ## Relation to prior studies
