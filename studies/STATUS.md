@@ -59,6 +59,16 @@ binding captured.  Nuclear spins predicted (9/11).  Free neutron ≠ nuclear neu
 (explains nuclear stability).  Two-tier physics: T⁶ = particles + nuclei (MeV);
 R³ = atoms + stability (eV).  r_e unconstrained by nuclear data.
 
+### R30. Minimal compact geometry — is T² necessary?
+**Study:** [`minimal-geometry/`](minimal-geometry/)
+**Questions:** Q34, Q16  **Type:** theoretical + compute  **Depends on:** R19, R26, R27
+
+Each T² represents a curve, not an area.  The persistent r-degeneracy
+(r_e free, r_ν ≥ 3.2, only r_p pinned) and 20× ghost-mode over-prediction
+suggest possible over-parameterization.  Can T¹ (circle) reproduce particle
+properties?  Is the charge mechanism irreducibly 2D?  What about Klein bottle
+identification?  Hierarchical compactification?  Non-uniform T¹?  5 tracks.
+
 ---
 
 ## Backlog
