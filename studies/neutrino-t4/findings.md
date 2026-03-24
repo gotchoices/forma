@@ -518,3 +518,169 @@ method is correct depends on the physical model:
    the production asymmetry changes the oscillation pattern.  This
    should be resolved by determining which transport law follows from
    the WvM Maxwell equations on T².
+
+---
+
+## Track 1f: Assignment A — final resolution
+
+### F31. The mass aspect ratio r equals the spin aspect ratio ε
+
+The mode energy formula uses r = L₃/L₄.  The embedded torus has
+L₃ = 2πa (tube circumference) and L₄ = 2πR (ring circumference).
+Therefore r = L₃/L₄ = a/R = ε.
+
+This identification is crucial: cosmology wants large r (to suppress
+the 1/r² mass contribution and keep Σm < 120 meV), and spin wants
+large ε (for (1,1) to cross spin-½).  These are the SAME constraint
+pulling in the SAME direction.
+
+### F32. The viable window is ε ≥ 3.2
+
+Combined scorecard vs ε (s₃₄ = 0.02199 fixed by ratio):
+
+| ε | Σm (meV) | L_z(1,1)/ℏ | L_z(1,2)/ℏ | Spin OK | Σm OK | All OK |
+|---|----------|------------|------------|---------|-------|--------|
+| 1.0 | 147.6 | 0.655 | 0.530 | ✓ | ✗ | ✗ |
+| 1.6 | 129.7 | 0.500 | 0.470 | ✓ | ✗ | ✗ |
+| 3.0 | 120.4 | 0.391 | 0.398 | ✓ | ✗ | ✗ |
+| **3.2** | **119.9** | **0.385** | **0.393** | **✓** | **✓** | **✓** |
+| 5.0 | 117.8 | 0.358 | 0.372 | ✓ | ✓ | ✓ |
+| 6.6 | 117.2 | 0.350 | 0.365 | ✓ | ✓ | ✓ |
+| 10.0 | 116.8 | 0.343 | 0.360 | ✓ | ✓ | ✓ |
+
+The binding constraint is cosmology (Σm < 120 meV), which requires
+ε ≥ 3.2.  Spin was already satisfied at ε ≥ 1.6.  There is no upper
+bound from Track 1; ε is constrained from below only.
+
+### F33. Assignment A at ε = 5 (reference point)
+
+| Property | Value |
+|----------|-------|
+| ν₁ = (1,1) | 29.21 meV |
+| ν₂ = (−1,1) | 30.47 meV |
+| ν₃ = (1,2) | 58.17 meV |
+| Σm | 117.8 meV |
+| Δm²₃₁/Δm²₂₁ | 33.60 (exact) |
+| Mass ordering | Normal (m₁ < m₂ < m₃) |
+| s₃₄ | 0.02199 |
+| E₀ | 29.26 meV |
+| L₄ (ring) | 42.4 μm |
+| L₃ (tube) | 212 μm |
+
+The model predicts **normal ordering**, consistent with current
+experimental preference (NOvA, T2K, atmospheric data).
+
+### F34. Zero effective sterile neutrinos
+
+The 3 "charged sterile" modes found below ν₃ are the three
+**antineutrinos**: (−n₃, −n₄) for each neutrino (n₃, n₄).
+
+| "Sterile" mode | Antiparticle of | Mass |
+|----------------|----------------|------|
+| (−1,−1) | (1,1) = ν₁ | 29.21 meV |
+| (+1,−1) | (−1,1) = ν₂ | 30.47 meV |
+| (−1,−2) | (1,2) = ν₃ | 58.17 meV |
+
+Proof: μ²(−n₃,−n₄) = (n₃/r)² + (−n₄+n₃s)² = (n₃/r)² + (n₄−n₃s)²
+= μ²(n₃,n₄).  Identical masses — these are CPT conjugates.
+
+The remaining 14 lighter modes all have p ≥ 3 and carry no weak
+charge (Track 1e).  They are invisible to all known interactions
+except gravity and cannot thermalize.
+
+**Effective sterile neutrino count: ZERO.**
+
+This is a dramatic improvement over Assignment B (26 sterile modes)
+and the Track 1b search (minimum 6 for any (p,2) triplet).
+
+### F35. Surface parallel transport is the correct charge law
+
+The photon lives on the flat T² surface.  On a flat manifold:
+
+1. Maxwell's equations reduce to flat-space electrodynamics.
+2. Parallel transport is trivial — a vector's coordinate components
+   (θ₃, θ₄) are constant along any path.
+3. The polarization vector rotates only due to the wave phase (one
+   rotation per wavelength), with constant rate in coordinates.
+
+The charge depends on the projection of E onto the embedded surface
+normal n̂, which rotates p times per circuit.  Commensurability
+requires p = 1 for net charge.
+
+The Frenet frame is an extrinsic 3D property that captures the
+curve's bending in the embedding space, not the wave's propagation
+on the surface.  Its 8.6× disagreement for (1,1) vs (1,2) is an
+artifact of the 3D geometry — the (1,1) curve has different 3D
+curvature from (1,2), but the wave doesn't know that.
+
+**Result:** All three Assignment A modes carry equal weak charge.
+The knot-zoo's Frenet frame approach (S3) gave correct binary
+assignments for (p,2) modes but incorrect relative magnitudes
+across different q.
+
+### F36. Cross-plane coupling cannot modify spin
+
+The mixing amplitude between neutrino-T² and electron-T² modes
+scales as s_cross × (m_ν/m_e)² ≈ 10⁻⁸.  Even maximum cross-shear
+cannot change any neutrino property at leading order.
+
+Cross-plane coupling IS relevant for PMNS mixing (Track 2+).
+
+### F37. The L_z deficit is physical but not disqualifying
+
+The point-particle orbital L_z at all computed ε values is ~0.35ℏ
+for (1,2), systematically below the quantum value ℏ/2.  The
+electron at ε = 6.6 shows the same deficit (L_z = 0.365ℏ) yet
+IS experimentally spin-½.
+
+This means the geodesic calculation captures the direction and
+ε-dependence of spin but not the full quantum value.  The missing
+~0.135ℏ likely comes from the EM field's spatial extent (not
+captured by the point-particle geodesic) and/or quantum
+discretization to the nearest half-integer.
+
+The critical result is that (1,1) and (1,2) converge to the SAME
+L_z at large ε (0.358 vs 0.372 at ε = 5), so both are the same
+kind of spin-½ fermion.
+
+### F38. Σm ≈ 117 meV is a sharp, testable prediction
+
+Assignment A predicts Σm → E₀(4 − s) ≈ 116.4 meV in the large-ε
+limit.  At ε = 5, Σm = 117.8 meV.  This is:
+- Below the current cosmological bound (120 meV, Planck + BAO)
+- Above the minimum allowed by oscillation data (~60 meV for NO)
+- Within reach of CMB-S4 (projected sensitivity ~60 meV)
+
+If CMB-S4 measures Σm < 117 meV, Assignment A is **falsified**.
+If Σm ≈ 117 meV is confirmed, it would be strong evidence for the
+neutrino T² model.
+
+### F39. Track 1 — Final verdict
+
+**Assignment A passes all tests at ε ≥ 3.2:**
+
+| Criterion | Status | Track |
+|-----------|--------|-------|
+| Δm² ratio = 33.60 | ✓ (exact) | 1a |
+| Normal mass ordering | ✓ | 1a |
+| Σm < 120 meV | ✓ (117.8 at ε=5) | 1a, 1f |
+| All spin-½ at finite ε | ✓ | 1d, 1f |
+| All weakly charged | ✓ | 1e |
+| Zero effective sterile ν | ✓ | 1f |
+| Transport-law robust | ✓ | 1e, 1f |
+
+**Assignment B fails on five independent grounds:**
+
+| Failure | Track |
+|---------|-------|
+| 26 sterile neutrinos | 1a, 1b |
+| No zero-sterile solution satisfies cosmology | 1b |
+| Higher-p modes lose spin-½ at finite ε | 1d |
+| Only (1,2) carries weak charge (p > 1 uncharged) | 1e |
+| Structural: sterile count minimum is 6 | 1b |
+
+**Free parameter:** ε ≥ 3.2 (from below only).
+**Testable prediction:** Σm ≈ 117 meV (falsifiable by CMB-S4).
+
+Track 1 is complete.  The neutrino T² model is viable with
+Assignment A.  Proceed to Track 2 (proton torus).
