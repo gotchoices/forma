@@ -606,3 +606,110 @@ yielded:
    The full binding energy is not captured by T⁶ alone —
    either the electron ring winding (n₂) needs refinement,
    or R³ effects contribute the remainder.
+
+
+---
+
+## Track 4. r_e, nuclear stability, and atoms
+
+Script: `scripts/track4_re_and_stability.py`
+
+
+### F22. Nuclear masses do NOT constrain r_e
+
+Sweeping r_e from 1 to 23, the RMS nuclear mass error
+changes by less than 0.3 MeV (176.57 → 176.29 MeV).  The
+fit is flat — nuclear masses are completely insensitive
+to r_e.
+
+The reason: nuclear mode energy is dominated by the proton-
+sheet quantum numbers (n₅ = A, n₆ = 2A).  The electron
+dimensions contribute energy at the keV scale:
+
+    ℏc / L₁ = 0.002 MeV  (at r_e = 23)
+    ℏc / L₂ = 0.04 MeV
+
+These are 10⁴ – 10⁵ × smaller than the proton-sheet
+contributions (~470 MeV per ring winding).  The electron
+tube winding n₁ = N records the neutron count but
+contributes negligible energy.
+
+**r_e remains unconstrained.**  It must be pinned by
+something at the electron energy scale — the R19 shear
+formula, muonic atom spectroscopy, or particle-level
+observables (possibly the tau or meson spectrum from R28).
+
+
+### F23. T⁶ is Z-degenerate: mass depends on A, not composition
+
+For a given mass number A, the T⁶ mode energy is
+essentially independent of the charge Z.  For A = 12:
+
+    E(Z = 0)  = 11260.145 MeV  (pure neutrons)
+    E(Z = 6)  = 11260.140 MeV  (carbon-12)
+    E(Z = 12) = 11259.264 MeV  (pure protons)
+    Total spread: < 1 MeV on 11260 MeV (< 0.01%)
+
+All Z compositions for the same A have essentially the same
+T⁶ energy.  This means the T⁶ model predicts:
+
+- **Which mass numbers A are accessible** (from the proton-
+  sheet energy ladder)
+- **But NOT which isotope is stable** (which Z for a given A)
+
+The preferred Z for each A is determined by R³ effects:
+Coulomb repulsion between protons, the neutron-proton mass
+difference, and other spatial interactions.
+
+This is a clean separation of responsibilities:
+    T⁶  →  nuclear mass (from A)
+    R³  →  nuclear stability (which Z)
+
+
+### F24. Atoms are NOT T⁶ modes
+
+The smallest T⁶ energy step near the proton mass is
+~22 keV (from changing n₂ by ±1).  The hydrogen binding
+energy is 13.6 eV — 1600× smaller.
+
+    T⁶ energy resolution:  ~22 keV
+    Atomic binding:         ~13.6 eV
+    Ratio:                  ~1600
+
+Atomic binding is invisible to T⁶ modes.  This confirms
+the two-tier structure:
+
+- **Nuclei are T⁶ modes.**  Nuclear binding (~MeV) is at
+  the T⁶ energy scale.  A nucleus is a single standing wave
+  in the compact space.
+
+- **Atoms are nuclei + electrons in R³.**  Atomic binding
+  (~eV) is at the Coulomb energy scale.  The electron
+  orbits in R³, coupled to the nucleus by the electromagnetic
+  field derived in Track 1.
+
+The electron's identity (mass, charge, spin) comes from T⁶.
+Its position and energy levels come from R³.
+
+
+### F25. Summary of Track 4
+
+1. **r_e is not constrained by nuclear masses.**  The
+   electron dimensions contribute negligible energy at
+   nuclear scale.  r_e must be pinned by electron-scale
+   observables.
+
+2. **T⁶ determines mass, R³ determines stability.**  For a
+   given A, the T⁶ mode energy is Z-independent.  Which
+   isotope is stable depends on Coulomb and other R³ effects.
+
+3. **Two-tier structure confirmed:**
+   - T⁶: particles and nuclei (MeV scale)
+   - R³: atomic binding and nuclear stability (eV–keV scale)
+
+4. **Free parameter status after R29:**
+   - r_p = 8.906 — pinned (R27, neutron + muon)
+   - σ_ep = −0.0906 — pinned (R27, neutron mass)
+   - r_e — unconstrained (invisible to MeV-scale observables)
+   - r_ν — weakly constrained
+   - σ_eν, σ_νp — set to 0, untested

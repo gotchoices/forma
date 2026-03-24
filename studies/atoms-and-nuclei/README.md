@@ -130,50 +130,52 @@ or evidence that nuclei are not single T⁶ modes.
 binding).
 
 
-### Track 4 — The r_e constraint
+### Track 4 — r_e from nuclear masses, stability, and atoms
 
-**Goal:** Determine r_e from any available observable.
+**Goal:** Constrain r_e using the nuclear mode pattern,
+test whether the model predicts nuclear stability, and
+determine whether atoms are T⁶ modes or R³ phenomena.
 
 **Method:**
-Track 2 showed the KK Yukawa corrections depend on r_e.
-The qualitative constraint (r_e ≲ a few) is robust even
-if the exact coupling needs revision.  Other constraints:
-- Does r_e affect the T⁶ mode spectrum at second order?
-- Do muonic atoms or high-Z atoms provide bounds?
-- Can the proton charge radius constrain r_e?
+1. **r_e sweep:** The nuclear scaling law (F16) uses n₂
+   (electron ring winding) as an optimization parameter.
+   The optimal n₂ depends on L₂, which depends on r_e.
+   Sweep r_e = 1–20 and compute total nuclear mass error
+   across all nuclei.  The minimum pins r_e.
+2. **Valley of stability:** For each A = 1–30, compute
+   mode energy for all Z and find the energetically
+   preferred isotope.  Compare to observed stable nuclei.
+3. **Atom test:** Atomic binding energy (~13.6 eV) is
+   ~10⁻⁵ MeV.  Confirm this is below T⁶ energy
+   resolution, establishing that atoms require R³.
 
-**Deliverable:** Narrowed range or pinned value of r_e.
+**Deliverable:** r_e constraint from nuclear data; valley
+of stability prediction; atoms vs nuclei in the T⁶
+framework.
 
-**Addresses:** The α problem (R15) — r_e is the last
-undetermined parameter.
-
-
-### Track 5 — Atomic binding mechanism
-
-**Goal:** Understand how atoms arise in the T⁶ framework.
-
-**Method depends on Track 3 results:**
-- If nuclei are T⁶ modes: atoms may also be modes (heavier
-  modes with an electron-sheet component).
-- If nuclei are NOT T⁶ modes: atoms require the R³
-  interaction picture.  The KK Coulomb derivation from
-  Track 1 provides the leading term; the coupling strength
-  issue from Track 2 needs resolution.
-
-**Deliverable:** Mechanism for atomic binding in T⁶,
-whether mode-based or interaction-based.
+**Addresses:** R15's α problem (r_e), OQ6 (nuclear
+stability).
 
 
-### Track 6 — Nuclear stability and neutron lifetime *(deferred)*
+### Track 5 — Helium and multi-electron atoms *(deferred)*
 
-Why a neutron in a nucleus doesn't decay.  Depends on
-Track 3 outcome.
+Helium atom = ⁴He nucleus (T⁶ mode) + 2 electrons bound
+via Coulomb in R³.  Requires Track 1 Coulomb result plus
+electron-electron repulsion.
+
+
+### Track 6 — Electron energy shells *(deferred)*
+
+Energy levels from the Coulomb potential.  The leading term
+gives standard hydrogen levels (Track 1).  Fine structure
+and Lamb shift require understanding why the KK boson
+corrections from Track 2 are suppressed.
 
 
 ### Track 7 — Full atomic spectrum  *(deferred)*
 
-Fine structure, Lamb shift, energy levels.  Depends on
-Track 5 mechanism.
+Fine structure, Lamb shift, isotope shifts.  Depends on
+Tracks 5–6.
 
 
 ## Open questions
