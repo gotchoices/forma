@@ -966,3 +966,73 @@ The null result is EXPECTED and consistent:
 
 The neutron is a Track 4 problem (cross-plane coupling), not a
 Track 2 problem (single-T² physics).
+
+
+---
+
+## Track 3. Parameter census
+
+Script: [`scripts/track3_parameter_census.py`](scripts/track3_parameter_census.py)
+
+
+### F57. The T⁶ metric has 21 parameters
+
+The flat T⁶ metric (symmetric 6×6) has 21 independent components:
+- 3 aspect ratios: r_e, r_ν, r_p
+- 3 ring scales: L₂, L₄, L₆ (set by particle masses)
+- 3 within-plane shears: s₁₂, s₃₄, s₅₆
+- 12 cross-plane shears: 4 per pair of T²s
+
+
+### F58. Six parameters are constrained by established physics
+
+| Constraint | Observable | Fixes | Type |
+|------------|-----------|-------|------|
+| C1 | m_e = 0.511 MeV | L₂ (given r_e) | equality |
+| C2 | m_p = 938.3 MeV | L₆ (given r_p) | equality |
+| C3 | α = 1/137 | s₁₂(r_e) | equality |
+| C4 | α = 1/137 | s₅₆(r_p) | equality |
+| C5 | Δm² ratio = 33.6 | s₃₄ = 0.02199 | equality |
+| C7 | Δm²₂₁ = 7.53×10⁻⁵ eV² | L₄ (given r_ν) | equality |
+
+After these 6 constraints: **15 free parameters remain**
+(3 aspect ratios + 12 cross-plane shears).
+
+
+### F59. The model is under-determined
+
+Potential additional constraints from experiment:
+- PMNS mixing (4 observables: θ₁₂, θ₂₃, θ₁₃, δ_CP) → 4 e–ν cross-shears
+- Fermi constant G_F → 1 combination of cross-shears
+- m_n − m_p → e–p cross-shears
+- τ_n → coupling rates
+
+At most ~7 additional constraints on 15 free parameters,
+leaving ≥8 unconstrained.  The system is under-determined.
+
+
+### F60. The aspect ratios are the critical open problem
+
+The 3 aspect ratios (r_e, r_ν, r_p) enter every calculation
+but have NO known experimental constraint:
+- r_e: no clean observable pins it (form factor is model-dependent)
+- r_ν: Δm² ratio is r-independent; Σm only bounded
+- r_p: same as r_e
+
+If the aspect ratios could be fixed by a geometric principle
+(modular invariance, topological consistency, or a symmetry
+of the T⁶ lattice), the remaining 12 cross-shears would face
+≥7 constraints — potentially solvable.
+
+
+### F61. The observables scorecard
+
+From 5 inputs (m_e, m_p, α, Δm² ratio, Δm²₂₁), the model:
+- **Derives** 6 observables: Q_e, Q_p, spin_e, spin_p, g_e ≈ 2, ν charge = 0
+- **Predicts** 1 testable quantity: Σm_ν ≈ 117 meV
+- **Cannot yet compute** ≥8: m_n−m_p, τ_n, PMNS angles, m_μ, m_τ, G_F
+
+The derived quantities are non-trivial — getting charge, spin,
+and g-factor correct from geometry alone is a structural success.
+But the model does not yet make quantitative predictions beyond
+Σm_ν.

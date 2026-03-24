@@ -390,24 +390,24 @@ at m_n = m_p + 1.293 MeV.  One script (likely null result).
   m_μ/m_e ≈ 207 does not match a simple (p,q) ratio.  May require
   the full T⁶ framework or a separate study.
 
-### Track 3 — Parameter census
+### Track 3 — Parameter census ✔
 
 **Goal:** Produce a single table of every parameter across all
 three domains, its constraint source, and its status (fixed/free).
 
-| Parameter | Domain | Fixed by | Value | Status |
-|-----------|--------|----------|-------|--------|
-| s₁₂ | electron | α | s₁₂(r_e) | constrained (given r_e) |
-| r_e | electron | ? | ? | **free** |
-| s₃₄ | neutrino | Δm² ratio | depends on assignment | constrained |
-| r_ν | neutrino | ? | ? | **free** |
-| s₅₆ | proton | α(r_p) | s₅₆(r_p) | constrained (given r_p) |
-| r_p | proton | ? | ? | **free** (F48: charge radius not a clean input) |
-| ... | cross-shears | ... | ... | ... |
+**Result (F57–F61):** The T⁶ metric has 21 parameters total.
+6 are constrained by established physics (particle masses, α,
+Δm² ratio and value).  15 remain free: 3 aspect ratios +
+12 cross-plane shears.  With ≤9 potential additional constraints
+(PMNS 4, G_F 1, Δm_np 1, τ_n 1, m_μ 1, m_τ 1), the system
+is **under-determined** with ≥6 free parameters.
 
-Identify the minimum number of genuinely free parameters.  Count
-independent observables not used as inputs.  Determine if the
-system is under-, exactly-, or over-determined.
+The 3 aspect ratios are the critical open problem — no known
+observable pins them.  If a geometric principle fixes them,
+the 12 cross-shears face ≥7 constraints and the system may
+become solvable.
+
+Script: `scripts/track3_parameter_census.py`
 
 ### Track 4 — Unification on T⁶
 
