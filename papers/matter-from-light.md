@@ -1,5 +1,32 @@
 ## Matter from Light and Geometry
 
+**Status:** outline, under revision
+
+---
+
+### Table of contents (current outline)
+
+| # | Section | One-line summary |
+|---|---------|-----------------|
+| 1 | Premise | WvM (1997): electron = confined photon. Axioms: energy, geometry, Maxwell. |
+| 2 | Confinement and compact space | Topology traps the photon — T² is a flat periodic surface. |
+| 3 | The electron | (1,2) mode on sheared T² gives spin ½, charge e, g ≈ 2. |
+| 4 | The proton and neutron | Fundamental + uncharged harmonics; beta decay; stability. |
+| 5 | The energy gap | KK mass floor at 245 keV; quantum-classical boundary. |
+| 6 | The neutrino problem | Lightest uncharged mode is 10⁵× too heavy. Neutrino doesn't fit. |
+| 7 | Curved eigenmodes | Embedding curvature modifies modes; α from shear-curvature coupling. |
+| 8 | Derived vs. open | Summary of successes and the α/aspect-ratio problem. |
+| 9 | Ephemeral particles | Muon/tau = hot electrons; pions/kaons = unstable harmonics. |
+
+**Missing from current outline (needed for full theory paper):**
+- T⁶ architecture (R26): three tori, one per particle family
+- Neutrino resolution: mass splittings from neutrino T² mode spectrum
+- The emergent neutron: cross-sheet mode with zero charge, correct mass
+- The particle zoo (R27): parameter-free predictions for 19 particles
+- Experimental predictions and falsifiable tests
+
+---
+
 ### 1. Premise
 
 - Williamson & van der Mark (1997): electron as a single photon
