@@ -396,3 +396,125 @@ not the full picture (field contributions restore L_z to ℏ/2), or
 (b) the electron's ε is lower than 6.6 (S2's value used a/R for
 field extent, not orbit).  Either way, the qualitative finding —
 finite-ε corrections are large and p-dependent — is robust.
+
+---
+
+## Track 1e: Charge via parallel transport
+
+### F26. Geodesic torsion confirms p turns per circuit
+
+The geometric phase (rotation of the surface normal n̂ relative to
+a parallel-transported frame) for a (p,q) curve on a thin torus
+equals exactly p full rotations per circuit, independent of q:
+
+| Mode | Geometric turns | Expected |
+|------|----------------|----------|
+| (1,2) | 1.0000 | 1 |
+| (3,2) | 2.9998 | 3 |
+| (5,2) | 4.9987 | 5 |
+| (7,2) | 6.9961 | 7 |
+| (1,1) | 1.0000 | 1 |
+| (1,3) | 1.0000 | 1 |
+| (2,1) | 1.9997 | 2 |
+
+This is the geodesic torsion integral: τ_g = p.  The wave phase
+makes exactly 1 rotation per circuit.  For net charge (⟨cos φ⟩ ≠ 0),
+the wave and geometric rotations must be commensurable.  This
+selects p = 1 modes as charged, p > 1 as uncharged.
+
+### F27. Frenet and surface transport agree for (p,2) modes
+
+For all (p,2) modes at thin torus (ε = 0.01), the normalized charge
+fractions from both transport laws agree to < 0.001:
+
+| Mode | Q_geom | Q_frenet | Match |
+|------|--------|----------|-------|
+| (1,2) | 1.0000 | 1.0000 | ✓ |
+| (3,2) | −0.0001 | −0.0000 | ✓ |
+| (5,2) | −0.0003 | −0.0000 | ✓ |
+| (7,2) | −0.0006 | +0.0000 | ✓ |
+| (2,1) | −0.0003 | −0.0000 | ✓ |
+
+Both methods confirm: among (p,2) modes, only p = 1 carries charge.
+The knot-zoo's Frenet frame result is correct for these modes.
+
+### F28. Frenet and surface transport DISAGREE for different q values
+
+The two transport laws give dramatically different charge magnitudes
+when q varies:
+
+| Mode | Q_geom (norm) | Q_frenet (norm) | Ratio |
+|------|--------------|----------------|-------|
+| (1,1) | 1.0000 | 8.6143 | 8.6× |
+| (1,3) | 1.0000 | −0.2582 | −0.26× |
+
+Both methods agree that (1,1) and (1,3) are CHARGED (p = 1), but
+they disagree wildly on the relative magnitude.  The Frenet method
+gives (1,1) 8.6× the charge of (1,2), while the surface transport
+method gives them identical charge.
+
+This matters for Assignment A, whose three modes are (1,1), (−1,1),
+(1,2) — spanning q = 1 and q = 2.  The relative charge magnitudes
+depend on which transport law is physical.
+
+The discrepancy arises because the Frenet frame of a 3D curve depends
+on the embedding curvature (both geodesic and normal curvature), while
+the surface parallel transport depends only on the intrinsic surface
+geometry (which is flat for T²).  For modes with the same q, the
+embedding contributions largely cancel in the ratio; for different q,
+they do not.
+
+### F29. Finite a/R introduces charge leakage to higher-p modes
+
+At large aspect ratios, the geometric method gives nonzero normalized
+charge to (3,2) and (5,2) modes, while the Frenet method keeps them
+at zero:
+
+| ε = a/R | Q_geom(3,2) | Q_geom(5,2) | Q_frenet(3,2) | Q_frenet(5,2) |
+|---------|-------------|-------------|---------------|---------------|
+| 0.01 | −0.0001 | −0.0003 | 0.0000 | 0.0000 |
+| 0.5 | 0.0140 | 0.0777 | 0.0000 | 0.0000 |
+| 1.0 | −0.4713 | −0.4637 | 0.0000 | 0.0000 |
+| 2.0 | 2.3827 | 2.5494 | 0.0000 | 0.0000 |
+
+At ε ≥ 1, the geometric method shows ~50% charge leakage to p = 3
+and p = 5 modes.  This is because the embedding curvature at large ε
+distorts the relationship between wave phase and geometric phase: the
+path is no longer geodesically "simple" on the embedded surface.
+
+The Frenet method maintains zero charge for p > 1 at all ε.  Which
+method is correct depends on the physical model:
+- If the E-field rotates in the surface-normal frame → geometric
+- If the E-field rotates in the Frenet frame of the 3D curve → Frenet
+
+### F30. Track 1e conclusions
+
+1. **Knot-zoo confirmed for (p,2) modes:** Both transport laws agree
+   that only (1,2) is charged among modes with q = 2.  The charge
+   mechanism is the commensurability between wave phase (1 turn) and
+   geodesic torsion (p turns) — only p = 1 achieves resonance.
+
+2. **Transport laws diverge across q values:** The (1,1) vs (1,2)
+   charge ratio differs by 8.6× between methods.  This is a genuine
+   physical ambiguity: the correct answer depends on whether
+   polarization transport follows the surface geometry or the 3D
+   Frenet frame.
+
+3. **Assignment A charge coupling:** All three modes (1,1), (−1,1),
+   (1,2) are charged in both methods (p = 1).  All couple to the
+   weak interaction.  ✓
+
+4. **Assignment B receives a third fatal blow:** Only (1,2) is
+   charged; (3,2) and (17,2) are uncharged (p > 1).  Two of the
+   three neutrino mass eigenstates would not couple to the weak
+   force and could not be produced in beta decay.  Combined with
+   the sterile neutrino problem (Track 1b) and the spin problem
+   (Track 1d), Assignment B fails on three independent grounds.
+
+5. **Open question for Track 1f:** The transport-law ambiguity
+   affects Assignment A's phenomenology.  If (1,1) and (1,2) have
+   identical weak charge (surface transport), they would be produced
+   equally in weak processes.  If (1,1) has 8.6× the charge (Frenet),
+   the production asymmetry changes the oscillation pattern.  This
+   should be resolved by determining which transport law follows from
+   the WvM Maxwell equations on T².

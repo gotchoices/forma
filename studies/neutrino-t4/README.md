@@ -312,14 +312,24 @@ Assignment A's spin-1 modes can be rescued.  One script
    experimental constraints (helicity measurements, double
    beta decay kinematics).
 
-**Possible outcomes:**
-- 1b succeeds → three all-spin-½ modes with acceptable sterile
-  spectrum → proceed to Tracks 2–4
-- 1c finds new candidate modes → revise assignments and retry
-- 1d or 1e changes mode properties → revise and retry
-- 1f succeeds → Assignment A is viable with modified spin → proceed
-- All fail → the neutrino T² model fails at the same spin gate
-  as T³, and the neutrino remains an open problem
+**Results to date (Tracks 1a–1e):**
+- 1a: Assignment A has exact ratio but Σm > 120 meV at moderate r.
+  Assignment B has ratio + cosmology but 26 sterile neutrinos.
+- 1b: Exhaustive (p,2) triplet search — no zero-sterile solution
+  satisfies cosmology.  Assignment B definitively closed.
+- 1c: Non-coprime modes are harmonics; cross-plane modes too heavy.
+  No new candidates.
+- 1d: Finite ε rehabilitates Assignment A — (1,1) crosses spin-½
+  at ε ≈ 1.6.  Higher-p modes lose spin-½ character, undermining
+  Assignment B on a fourth ground.
+- 1e: Both transport laws confirm only p = 1 modes carry charge.
+  Assignment A's three modes (all p = 1) all couple to weak force.
+  Assignment B's (3,2) and (17,2) are uncharged — fifth fatal flaw.
+  Transport laws diverge on relative charge magnitudes across q
+  values (open question for 1f).
+
+**Remaining:** Track 1f — resolve Assignment A's spin and charge
+phenomenology at realistic ε.
 
 ### Track 2 — The proton torus
 
