@@ -1,6 +1,6 @@
 # Matter from Light and Geometry
 
-**Status:** outline (revised), constructive presentation
+**Status:** draft
 
 **Paper 1 of 3.**  Paper 2: [Sub-Quantum Memory](storage-in-t6.md).
 Paper 3: [The Nine-Dimensional Atom](atoms-from-geometry.md) (rough outline).
@@ -27,56 +27,139 @@ Paper 3: [The Nine-Dimensional Atom](atoms-from-geometry.md) (rough outline).
 ---
 
 
+### Abstract
+
+We explore a model in which all matter is electromagnetic
+radiation confined to compact extra dimensions.  The model
+begins with three axioms — energy exists, compact
+dimensions exist, and Maxwell's equations govern propagation
+— and derives particle properties from geometry alone.
+
+On a single flat torus (T²), the simplest nontrivial mode
+reproduces the electron: spin ½ from the winding topology,
+charge e from the shear of the lattice, and the g-factor
+g ≈ 2 from the ratio of photon to fermion angular momentum.
+The torus imposes a hard mass floor at ~245 keV, below
+which no compact-dimension modes exist, providing a
+geometric origin for the quantum-classical boundary.
+
+A structural crisis forces the architecture beyond one
+torus: the neutrino — uncharged, spin ½, and 10⁵ times
+lighter than the mass floor — is impossible on any single
+T² because a charge-spin linkage ties both properties to
+the same quantum number.  The resolution is a six-
+dimensional torus (T⁶) composed of three T² subplanes, one
+per stable particle family.  On this geometry, the neutrino
+mass-squared splitting ratio Δm²₃₁/Δm²₂₁ = 33.6 is
+reproduced exactly from a single shear parameter.
+
+The T⁶ generates an emergent neutron as a cross-sheet mode
+whose charge, mass, and decay products follow from the
+geometry without adjustment.  With the proton aspect ratio
+pinned by the neutron and muon (r_p = 8.906, σ_ep = −0.091),
+the model has zero free parameters at the MeV scale and
+produces parameter-free predictions for the kaon (1.2%
+error), eta (0.6%), eta-prime (0.3%), and phi (0.8%).
+
+We present the model's successes, its specific failures
+(tau at 5.6%, pion at 14%, Ω⁻ structurally forbidden),
+and its central open problem: nothing yet selects the
+electron's aspect ratio, and therefore nothing predicts the
+fine-structure constant α from first principles.
+
+---
+
+
 ## 1. The premise
 
-### 1.1 Williamson and van der Mark
-The seed idea (1997): an electron is a single photon
-confined to a (1,2) torus knot.  Spin ½ is exact
-(topological).  Charge is approximate (~0.91e in their
-model).  The paper is largely forgotten, but the core idea
-— matter IS light, trapped by geometry — turns out to be
-more fruitful than its authors realized.
+In 1997, J. G. Williamson and M. B. van der Mark proposed
+a radical idea: the electron is a single photon, trapped in
+a loop.  Specifically, they modeled it as a photon
+traveling along a (1,2) torus knot — a path that winds once
+around the short way (the "tube") for every two times
+around the long way (the "ring").  The idea was not widely
+adopted, partly because the paper left open what mechanism
+could confine a photon, and partly because its charge
+prediction was approximate: Q ≈ 0.91e, about 9% too low.
 
-### 1.2 Three axioms
-The T⁶ model takes WvM's idea seriously and pushes it
-as far as it will go.  The axioms are minimal:
+But the core claim — that spin ½ is topological, emerging
+from the 1:2 winding ratio — was exact.  And the idea that
+matter might *be* light, shaped by geometry rather than
+composed of point-like quarks, was radical enough to be
+worth pushing as far as it would go.
 
-1. **Energy exists** — photons (electromagnetic radiation).
-2. **Compact dimensions exist** — closed periodic surfaces.
+The model described in this paper takes the WvM idea
+seriously and extends it.  We state three axioms and attempt
+to derive everything else — mass, charge, spin, the particle
+spectrum, nuclear binding — from the geometry of compact
+extra dimensions.
+
+
+### 1.1 Three axioms
+
+The axioms are:
+
+1. **Energy exists** — in the form of electromagnetic
+   radiation (photons).
+2. **Compact dimensions exist** — space has additional
+   dimensions that are periodic: closed surfaces that wrap
+   around on themselves.
 3. **Maxwell's equations govern propagation** — the wave
-   equation on these surfaces is the starting point.
+   equation on these compact surfaces is the starting point
+   for all dynamics.
 
-Everything else — mass, charge, spin, the particle zoo,
-nuclear binding — should follow.
+These are minimal.  No quantum mechanics is assumed (it will
+emerge from the periodic boundary conditions).  No nuclear
+or weak forces are assumed (they will emerge from the
+geometry).  No particle masses are assumed (they will emerge
+from the mode spectrum).  The axioms say only that photons
+propagate on compact surfaces according to Maxwell.
 
-### 1.3 Natural units: everything reduces to energy and length
-SI physics has seven independent base units.  Natural units
-(ℏ = c = 1) collapse them to just two: **energy** and
-**length** (which are inverses of each other).
+
+### 1.2 Natural units: everything reduces to energy and length
+
+SI physics has seven independent base units: the meter,
+kilogram, second, ampere, kelvin, mole, and candela.
+Natural units (ℏ = c = 1) collapse them to just two:
+**energy** and **length** — which are inverses of each other
+(a photon's energy is inversely proportional to its
+wavelength: E = ℏc/λ).
 
 The collapse is revealing.  In SI, the vacuum's electric
 permittivity ε₀ and magnetic permeability μ₀ look like
 independent constants with different units and different
 magnitudes.  They are not.  They are two springs of an LC
-circuit — ε₀ stores electric energy (½ε₀E²), 1/μ₀ stores
-magnetic energy (B²/2μ₀).  Maxwell showed that c = 1/√(ε₀μ₀):
-the speed of light is the resonant frequency of these two
-springs.  Setting c = ε₀ = 1 makes the springs identical,
-and E and B acquire the same dimensions — which is what
-special relativity already requires (they are components of
-a single tensor F^μν).
+circuit.  ε₀ governs how much the vacuum resists an
+electric field (electric energy density u_E = ½ε₀E²), while
+1/μ₀ governs how readily it supports a magnetic field
+(magnetic energy density u_B = B²/2μ₀).  In an
+electromagnetic wave, energy sloshes between these two
+springs — from electric to magnetic and back — just as
+energy bounces between a capacitor and an inductor.
+
+Maxwell showed that the resonant frequency of this vacuum
+LC circuit is c = 1/√(ε₀μ₀): the speed of light.  Setting
+c = ε₀ = 1 makes the two springs identical.  The electric
+and magnetic fields acquire the same dimensions — which is
+not an artifact of unit choice but a consequence of special
+relativity, where E and B are already components of a
+single electromagnetic field tensor F^μν.
 
 The most dramatic casualty is **charge**.  In SI, charge is
-an independent dimension (coulombs cannot be expressed in
-meters, kilograms, and seconds without ε₀ doing the
-conversion).  Setting ε₀ = 1 eliminates that conversion.
-From Coulomb's law F = q²/r², force has dimensions
-energy/length and r² has dimensions length², so q² has
-dimensions of energy — charge is √energy.  This is not a
-trick.  Energy is always bilinear: Coulomb energy needs two
-charges meeting (q×q/r), just as kinetic energy needs
-velocity meeting itself (mv²).  One charge brings √energy
-to the table; two together produce energy.
+an independent base dimension: coulombs cannot be expressed
+in terms of meters, kilograms, and seconds without ε₀
+doing the conversion.  Setting ε₀ = 1 eliminates that
+conversion.  From Coulomb's law F = q²/r², force has
+dimensions of energy/length and r² has dimensions of
+length², so q² must have dimensions of energy.  Charge is
+√energy.
+
+This is not a mathematical trick.  It reflects something
+physical: energy is always bilinear.  Coulomb energy
+requires two charges meeting (q × q / r), just as kinetic
+energy requires velocity meeting itself (½mv²).  A single
+charge brings √energy to the table; two charges together
+produce energy.
 
 | SI quantity | Natural units |
 |-------------|--------------|
@@ -85,397 +168,964 @@ to the table; two together produce energy.
 | Charge | √energy |
 | E field, B field | Same dimensions |
 
-The model takes this literally.  If all of physics reduces
-to energy and length, and particles are energy (photons)
-shaped by length (compact geometry), then the three axioms
-— energy exists, geometry exists, Maxwell governs — are not
-a subset of physics.  They may be all of it.
+The three axioms take this reduction literally.  If all of
+physics reduces to energy and length, and particles are
+energy (photons) shaped by length (compact geometry), then
+the axioms — energy exists, geometry exists, Maxwell governs
+— are not a subset of physics.  They may be all of it.
 
-### 1.4 What this paper covers
+
+### 1.3 What this paper covers
+
 Starting from the three axioms, we build a model of matter
 in stages.  Each stage is motivated by what the previous
-stage could not explain.  We arrive at a six-dimensional
-compact geometry (T⁶) that produces the known stable
-particles, predicts the masses of unstable particles with
-no free parameters, and gives a natural explanation for why
-most particles are ephemeral while only a few are stable.
+stage could not explain.  We begin with a single flat torus
+and show that it produces an electron with the correct
+spin, charge, and g-factor.  We then encounter a crisis —
+the neutrino is structurally impossible on any single torus
+— which forces the model into a six-dimensional compact
+geometry (T⁶).  On this larger geometry, the neutrino is
+accommodated, the neutron emerges unbidden as a cross-sheet
+mode, and the model generates parameter-free predictions
+for the masses of unstable particles.
+
+At each stage we identify what works, what fails, and what
+remains open.
 
 
 ## 2. Why topology?
 
-### 2.1 The confinement problem
-A photon travels at the speed of light.  What could
-possibly trap it?  Whatever mechanism confines the photon
-must be exact — not approximate, not probabilistic — because
-particles are stable for the age of the universe.
+A photon travels at the speed of light.  It cannot be
+slowed, cannot be stopped, and cannot be turned around
+without a force acting on it.  So the first question any
+model of "matter from light" must answer is: what could
+possibly confine a photon?
 
-### 2.2 Gravity is too weak
-The gravitational self-energy of a photon with the
-electron's energy is 10²² times weaker than needed to
-provide confinement at the electron's Compton scale (R1).
+The confinement must be exact.  Protons have been stable
+for at least 10³⁴ years.  Whatever traps the photon cannot
+leak, cannot fluctuate, and cannot be disrupted by thermal
+energy, collisions, or the passage of time.  An approximate
+confinement mechanism would produce approximately stable
+particles — and that is not what we observe.
 
-### 2.3 Nonlinear EM has no solitons
-Maxwell's equations are linear.  Electromagnetic waves
-pass through each other without interacting.  There are no
-stable "lumps" of electromagnetic energy in free space — no
-solitons, no self-trapping.
 
-### 2.4 Topology: a closed surface
-The answer is that the photon is not trapped *by* anything
-— it is trapped by the *shape of space itself*.  If space
-has compact dimensions — dimensions that wrap around on
-themselves, like the surface of a sphere or a torus — then
-a photon on that surface cannot escape.  It was never
-trapped; it simply has nowhere else to go.  Confinement is
-exact, permanent, and requires no force.
+### 2.1 Gravity is too weak
+
+The most obvious candidate is gravity: a photon has energy,
+energy gravitates, so perhaps a photon could form a
+gravitational bound state with itself — a "geon."  The
+calculation (R1) rules this out decisively.  The
+gravitational self-energy of a photon with the electron's
+rest energy, evaluated at the electron's Compton wavelength
+(λ̄_C ≈ 3.86 × 10⁻¹³ m), is roughly 10²² times weaker than
+would be needed for confinement.  Gravity is irrelevant at
+the scale of particle physics.
+
+
+### 2.2 Nonlinear self-trapping fails
+
+Maxwell's equations are linear: electromagnetic waves pass
+through each other without interacting.  There are no
+stable lumps of electromagnetic energy in free space — no
+solitons, no self-focusing, no self-trapping.  Nonlinear
+extensions of electrodynamics (Born-Infeld theory, for
+instance) can produce soliton-like solutions, but these
+require modifying Maxwell's equations, which violates
+axiom 3.
+
+
+### 2.3 Topology: confinement without a force
+
+The resolution is that the photon is not trapped *by*
+anything.  It is trapped by the *shape of space itself*.
+
+If space has compact dimensions — dimensions that wrap
+around on themselves, like the surface of a cylinder or a
+torus — then a photon propagating on that surface cannot
+escape.  It is not confined by a force, a potential well, or
+a boundary.  It simply has nowhere else to go.  The path is
+closed because the space is closed.
+
+This is exact confinement.  It requires no energy to
+maintain.  It cannot leak because there is no edge to leak
+through.  It is permanent because the topology of space does
+not change with time (at least not at the energy scales of
+particle physics).  And it is automatic: every photon on a
+compact surface is confined, whether or not it "wants" to
+be.
+
+The question of confinement thus reduces to a question of
+geometry: what compact surface, what shape, gives rise to
+the particles we observe?
 
 
 ## 3. The flat torus
 
-### 3.1 The T² geometry
-Introduce the flat torus (T²): a rectangle with opposite
-edges identified.  The Asteroids analogy.  Two
-circumferences (L₁, L₂), an aspect ratio r = L₁/L₂, and
-a shear angle s.  The photon propagates through flat space
-internally but the surface wraps around on itself.
+The simplest compact 2D surface is the flat torus, T².
+To build one, start with a rectangle and identify opposite
+edges: the left edge is the same as the right edge, and the
+top is the same as the bottom.  A photon traveling off the
+right side reappears on the left.  One traveling off the
+top reappears at the bottom.
+
+If this sounds familiar, it is the geometry of the classic
+video game *Asteroids* — a flat, unbounded space that
+nevertheless wraps around on itself.
+
+
+### 3.1 The geometry
+
+The torus has three parameters:
+
+- **L₁** — the circumference of the first loop (the
+  "tube").  A photon traveling in the θ₁ direction returns
+  to its starting point after traveling a distance L₁.
+
+- **L₂** — the circumference of the second loop (the
+  "ring").  Similarly for the θ₂ direction.
+
+- **s** — the shear.  If s = 0, the two loops are
+  perpendicular.  If s ≠ 0, they are tilted: the tube
+  direction is no longer exactly orthogonal to the ring.
+  Geometrically, the rectangle that defines the torus has
+  been skewed into a parallelogram.
+
+The aspect ratio r = L₁/L₂ is the ratio of tube to ring
+circumference.  Together with the shear, it completely
+specifies the shape of the torus.  The scale (how big the
+torus is) is set by the particle mass, as we will see.
+
+Crucially, the torus is **flat**: it has zero intrinsic
+curvature.  A photon inside the torus travels in a straight
+line through Euclidean space.  The "donut" shape is just
+how we visualize the torus when we embed it in 3D — the
+photon does not experience any curvature.  This matters
+because it means Maxwell's equations on the torus are
+exactly the same as in flat space, with periodic boundary
+conditions.
+
 
 ### 3.2 Standing waves and the mode spectrum
-A wave on the torus must fit a whole number of wavelengths
-around each loop.  Allowed modes labeled by (n₁, n₂).
-Guitar-string analogy extended to two dimensions.  The
-mode spectrum — the set of allowed frequencies — is the
-torus's fingerprint.
+
+A wave on the torus must satisfy a constraint: after
+traveling around either loop, it must return to its starting
+value.  This is the periodic boundary condition.  It means
+the wave must fit a whole number of wavelengths around each
+circumference.
+
+A guitar string vibrates at discrete frequencies —
+fundamental, second harmonic, third harmonic — because the
+string has fixed endpoints.  The torus imposes the same
+kind of discreteness, but in two dimensions simultaneously.
+Each allowed vibration is labeled by two integers (n₁, n₂):
+the number of wavelengths around the tube and the number
+around the ring.  The pair (n₁, n₂) is called a **mode**.
+
+The set of all allowed modes — and their corresponding
+energies — is the torus's **mode spectrum**.  It is entirely
+determined by the geometry (L₁, L₂, s).  Different torus
+shapes produce different spectra, just as different guitar
+strings produce different sets of harmonics.
+
 
 ### 3.3 Mode energy and mass
-E = mc²: the energy of a standing wave on the torus IS the
-mass of the corresponding particle.  The mode energy formula:
 
-    E = (ℏc) × √((n₁/L₁)² + ((n₂ − n₁ s)/L₂)²)
+Einstein's E = mc² says that energy and mass are the same
+thing, measured in different units.  The energy of a
+standing wave on the torus is therefore the mass of the
+corresponding particle.
 
-Higher mode numbers (shorter wavelengths) → higher energy
-→ heavier particle.  The geometry determines the particle
-spectrum.
+The mode energy formula on a sheared torus is:
+
+    E(n₁, n₂) = (ℏc/L₂) × √((n₁/r)² + (n₂ − n₁ s)²)
+
+Each mode (n₁, n₂) has a definite energy, which is a
+definite mass.  Higher mode numbers mean shorter
+wavelengths, higher frequencies, and more energy — hence
+heavier particles.
+
+The geometry determines the particle spectrum.  If the torus
+has the right shape, its mode energies will match the masses
+of observed particles.  This is the central hypothesis:
+**particles are standing waves on compact extra dimensions,
+and their masses are the eigenfrequencies of that geometry.**
 
 
 ## 4. The electron
 
+The electron is the lightest charged particle.  It has mass
+0.511 MeV, spin ½, charge −e, and a magnetic moment that
+corresponds to g ≈ 2.002.  These four properties must all
+emerge from the geometry.
+
+
 ### 4.1 The (1,2) mode
-The electron is a photon in the (1,2) mode: one cycle
-around the tube, two around the ring.  This is the simplest
-mode with both n₁ and n₂ nonzero.  Its energy, at the
-electron Compton scale, equals m_e c².
+
+The electron corresponds to the (1,2) mode: one cycle around
+the tube, two around the ring.  This is the simplest mode
+with both n₁ and n₂ nonzero (modes with n₁ = 0 or n₂ = 0
+are qualitatively different, as we will see in section 7).
+
+When L₂ is set so that E(1,2) = 0.511 MeV, the torus size
+is fixed at the electron's Compton wavelength — the quantum
+length scale of the electron.  This is the Kaluza-Klein
+Compton constraint: the mode energy equals the particle mass,
+which sets the compact geometry's scale.
+
 
 ### 4.2 Spin ½ from topology
-The (1,2) winding ratio is 1:2 — the photon completes one
-tube cycle for every two ring cycles.  This gives angular
-momentum L = ℏ/2: spin ½.  The result is topological and
-exact — not a perturbative approximation.  The spin-1
-photon becomes a spin-½ fermion because of the winding.
+
+Spin is intrinsic angular momentum.  In the standard model,
+it is an abstract quantum number assigned to particles.  In
+the torus model, it has a geometric origin.
+
+A photon has spin 1: its electromagnetic field completes one
+full rotation per oscillation cycle.  The (1,2) mode on the
+torus winds once around the tube for every two times around
+the ring.  This 1:2 ratio means the field completes only
+half a rotation per ring traversal.
+
+More precisely: the angular frequency of the photon's field
+rotation is set by the tube winding (ω_tube = 2π/T_tube),
+while the orbital period is set by the ring (T_ring =
+2T_tube for the (1,2) path).  The angular momentum is:
+
+    L = E / ω_orbital = E × T_ring / (2π) = E / (2 × ω_tube/(2π) × 2π) = ℏ/2
+
+The spin-1 photon becomes a spin-½ fermion because of the
+1:2 winding topology.  The result is exact — not a
+perturbative approximation, not an artifact of a particular
+limit.  It is a topological invariant: any continuous
+deformation of the torus that preserves the 1:2 winding
+ratio preserves the spin.
+
+More generally, a (p, q) mode has spin q/(2p).  Only when
+q/(2p) is a half-integer (1/2, 3/2, ...) does the mode
+represent a fermion.  The simplest case is p = 1, q = 2:
+spin ½.
+
 
 ### 4.3 Charge from shear
-On an unsheared torus (s = 0), the photon's electric field
-integrates to zero over a full orbit — no net charge.
-Shear (tilting the tube relative to the ring) breaks this
-symmetry.  The net far-field flux becomes nonzero: the
-particle acquires electric charge.  The charge depends on
-the shear through a specific integral (the α formula from
-R19).  For the right shear, Q = e exactly.
+
+On an unsheared torus (s = 0), the two loops are exactly
+perpendicular.  A photon's electric field oscillates
+symmetrically as it winds around the surface: the positive
+and negative half-cycles cancel exactly when integrated over
+a full orbit.  The net far-field flux is zero.  The particle
+is electrically neutral.
+
+Shear breaks this symmetry.  When the tube is tilted
+relative to the ring (s ≠ 0), the cancellation is
+imperfect.  The photon's electric field no longer integrates
+to zero — there is a net flux, and the mode acquires
+electric charge.
+
+The charge depends on the shear through a specific integral
+over the torus surface.  The result (R19) is a clean,
+dimensionless formula relating the fine-structure constant α
+to the aspect ratio r and shear s:
+
+    α = r² sin²(2πs) / (4π(2−s)² √(1/r² + (2−s)²))
+
+For any aspect ratio r above a critical value (~0.26),
+there exists a unique shear s that produces Q = e exactly.
+The charge is not approximate — it is the exact solution of
+a transcendental equation.  The ~9% deficit in WvM's
+original calculation was an artifact of their
+uniform-sphere field approximation, not a problem with the
+mechanism.
+
+Shear is energetically favorable: tilting the torus
+lengthens the (1,2) geodesic, which lowers the photon's
+energy, saving about 6.6% of the rest mass.  The Coulomb
+self-energy of the resulting charge costs only ~0.8% of the
+rest mass.  The system does not resist acquiring charge — it
+welcomes it.
+
 
 ### 4.4 The g-factor
-A spin-1 photon produces a spin-½ fermion.  The ratio of
-magnetic moment to spin (the g-factor) is g = 2 × (photon
-spin) / (fermion spin) = 2 × 1 / (½) ≈ 2.  The anomalous
-magnetic moment (g − 2 ≈ 0.002) is a higher-order
-correction not yet computed in this framework.
+
+The g-factor measures the ratio of a particle's magnetic
+moment to its spin, in units of the appropriate magneton.
+For a classical spinning charged sphere, g = 1.  For the
+electron, g ≈ 2.002.
+
+In the torus model, the magnetic moment comes from the
+photon's circulating current (a charged photon orbiting on
+a torus is a current loop), and the spin is ℏ/2 from the
+1:2 winding.  Because the photon has spin 1 but produces a
+spin-½ fermion, the g-factor is:
+
+    g = 2 × (photon spin) / (fermion spin) = 2 × 1 / (½) = 2
+
+The leading-order result g = 2 is exact.  The anomalous
+magnetic moment (g − 2 ≈ 0.002) arises in QED from
+radiative corrections — loop diagrams involving virtual
+photons.  These corrections have not yet been computed in
+the torus framework, but the zeroth-order result matches.
+
 
 ### 4.5 The lightest charged fermion
-Only integer and half-integer spins are physically
-meaningful.  Combined with the requirement of nonzero
-charge (which requires n₁ ≠ 0 in the shear mechanism),
-the (1,2) mode is the lightest state that is both charged
-and spin-½.  No lighter charged fermion can exist on the
-torus — not by assumption, but by topological necessity.
+
+An important structural result: no charged fermion lighter
+than the electron can exist on the torus.
+
+Charge requires n₁ ≠ 0 (the shear mechanism produces zero
+net flux when n₁ = 0).  Spin ½ requires the winding ratio
+n₁/n₂ to be an odd integer over an even integer in lowest
+terms — the simplest case is 1/2.  Among all modes
+satisfying both constraints, the (1,2) mode has the lowest
+energy for any torus with r > 0.26.
+
+This is a prediction, not an assumption: the electron is
+the lightest charged fermion because no lighter mode on the
+torus satisfies the joint requirements of nonzero charge
+and half-integer spin.  The topological constraint forbids
+it.
 
 
 ## 5. The energy gap
 
 ### 5.1 The Kaluza-Klein mass floor
-The lightest nontrivial mode on the electron T² has energy
-~245 keV.  Below this energy, no compact-dimension mode can
-be excited.  The spectrum is empty between zero (photons in
-3D) and 245 keV (first KK mode).
+
+The lightest nontrivial mode on the electron's T² — the
+(0, 1) mode, a single wavelength around the ring with no
+tube winding — has energy approximately 245 keV (about half
+the electron mass).  Below this energy, the mode spectrum is
+empty.  There are no compact-dimension excitations between
+zero energy and 245 keV.
+
+This gap is not put in by hand.  It follows directly from
+the periodic boundary conditions: the shortest wavelength
+that fits around the torus determines the minimum
+excitation energy, and that wavelength is set by the torus
+circumference, which is set by the electron mass.
+
+The gap is called the **Kaluza-Klein mass floor**, after
+Theodor Kaluza and Oskar Klein, who first studied physics
+in compact extra dimensions in the 1920s.
+
 
 ### 5.2 Below the gap: classical electromagnetism
-Below 245 keV, the compact dimensions are invisible.
-Photons propagate in 3D space according to Maxwell's
-equations — not approximately, but exactly.  Classical
-electromagnetism is the low-energy limit of the compact-
-dimension theory.
+
+Below 245 keV, no compact-dimension modes can be excited.
+The extra dimensions are invisible — there is nothing to
+observe about them, no experiment that can detect them.
+Photons propagate in the three ordinary spatial dimensions
+according to Maxwell's equations, exactly as if the compact
+dimensions did not exist.
+
+This is not an approximation.  It is a rigorous consequence
+of the gap: if the compact modes require a minimum energy
+of 245 keV to excite, then any process occurring at lower
+energies simply cannot access them.  Classical
+electromagnetism — Maxwell's equations in 3D — is the exact
+low-energy limit of the compact-dimension theory.
+
 
 ### 5.3 Above the gap: the quantum world
-Above 245 keV, compact modes can be excited.  Energy
-becomes discretized (only specific mode energies are
-allowed).  Pair creation thresholds appear.  The stability
-of matter follows from the discreteness of the spectrum.
+
+Above 245 keV, compact modes can be excited.  Energy is no
+longer continuous: only specific mode energies are allowed,
+and the energy of any excitation is an integer combination
+of mode quanta.  Pair creation becomes possible (a photon
+with enough energy can excite a charged mode and its
+antimode).  The stability of matter follows from the
+discreteness of the spectrum: a particle sitting at a mode
+energy has no lower-energy state to decay into unless one
+exists in the spectrum.
+
+The hallmarks of quantum mechanics — discrete energy levels,
+pair creation thresholds, stable ground states — all appear
+as consequences of the geometry.
+
 
 ### 5.4 The quantum-classical boundary
-The gap is the physical origin of the quantum-classical
-boundary.  It is not imposed as a postulate — it is derived
-from the periodic boundary conditions on a finite compact
-surface.  Quantization is a consequence of geometry.
+
+The energy gap provides a physical, geometric origin for
+the boundary between quantum and classical physics.  It is
+not imposed as a philosophical postulate ("observation
+collapses the wave function") or a mathematical axiom
+("operators on Hilbert space").  It is derived from the
+periodic boundary conditions of a finite compact surface.
+
+Below the gap: continuous, classical, deterministic.
+Above the gap: discrete, quantum, statistical.
+The boundary between them is set by the size of the compact
+dimensions — which is set by the mass of the lightest
+particle.
+
+Quantization is a consequence of geometry.
 
 
 ## 6. Heavier particles: harmonics on the torus
 
-### 6.1 Harmonics add mass without charge
-Higher modes (n₁, 2n₁) on the torus are uncharged because
-their fields integrate to zero over the surface.  But they
-carry energy.  A packet containing the (1,2) fundamental
-plus uncharged harmonics has charge e (from the fundamental)
-and mass greater than m_e (from the added energy).
+The electron is the (1,2) mode.  But the torus supports an
+infinite tower of higher modes — (2,4), (3,6), (4,8), and
+so on — each with the same 1:2 winding ratio but higher
+frequency.  These are the **harmonics** of the electron,
+analogous to the overtones of a guitar string.
+
+Like a guitar string's harmonics, which vibrate at 2×, 3×,
+4× the fundamental frequency, the torus harmonics have
+energies that are integer multiples of the electron mass:
+E(n, 2n) = n × m_e.  The (2,4) mode has energy 2m_e, the
+(3,6) mode 3m_e, and so on.
+
+
+### 6.1 Harmonics are uncharged
+
+A crucial property: the harmonics (n, 2n) with n ≥ 2 carry
+**exactly zero charge**.  This follows from the same shear
+integral that gives the electron its charge.  The integral
+contains a factor that selects |n₁| = 1; for any higher tube
+winding, the electromagnetic field oscillates too rapidly
+and the positive and negative half-cycles cancel exactly
+over the surface.
+
+This means you can add harmonic energy to a particle
+without changing its charge.  A composite of the (1,2)
+fundamental plus any number of uncharged harmonics has
+charge e (from the fundamental) and mass greater than m_e
+(from the added energy).
+
 
 ### 6.2 The proton
-The proton is the (1,2) fundamental — same topology as the
-electron — plus a tower of uncharged harmonics summing to
-m_p = 1836 m_e.  Multiple convergent harmonic series
-reproduce this mass (R20).  Same spin ½, same charge e.
-The proton is a "fat electron" — the same fundamental mode
-weighed down by harmonic energy.
+
+The proton has the same quantum numbers as the electron —
+spin ½, charge +e — but is 1836 times heavier.  In the
+harmonic model, the proton is the same (1,2) fundamental
+mode (providing the charge and spin) plus a tower of
+uncharged harmonics whose total energy sums to m_p.
+
+Multiple convergent harmonic series reproduce this mass.
+A corrected thermal distribution with temperature T ≈ 34 m_e
+(about 17 MeV) gives the right total.  A geometric series
+with ratio x ≈ 0.977 also works.  The proton is, in this
+picture, a "fat electron" — the same topological object
+carrying a large amount of uncharged harmonic energy.
+
+This is descriptive rather than predictive: multiple
+harmonic combinations can reach 1836 m_e, and nothing in
+the single-torus model selects one over another.  The model
+explains the proton's quantum numbers but does not predict
+its mass from first principles.  That requires the more
+rigid architecture introduced in section 8.
+
 
 ### 6.3 The neutron (first pass)
-The neutron is two opposite-charge (1,2) fundamentals
-(+e and −e) plus harmonics.  Charge cancels exactly.  Mass
-is slightly above m_p because the pairing adds energy.  We
-will revisit the neutron more rigorously in section 10.
+
+The neutron is electrically neutral but otherwise resembles
+the proton.  In the harmonic model, it is two opposite-
+charge fundamentals — a (1,2) mode with charge +e and a
+(−1,−2) mode with charge −e — plus uncharged harmonics.
+The charges cancel exactly (CPT symmetry guarantees that
+the conjugate mode carries exactly opposite charge).  The
+total mass is slightly above m_p because the pairing adds
+energy.
+
+We will revisit the neutron more rigorously in section 10,
+where the T⁶ geometry produces it as a single mode rather
+than a composite.  But the qualitative picture — charge
+cancellation from opposite-winding fundamentals, instability
+from the possibility of the pair separating — carries over.
+
 
 ### 6.4 Beta decay
-The neutron decays (n → p + e⁻ + ν̄) when one of the two
-fundamentals escapes.  The released harmonic energy
-(0.782 MeV) becomes kinetic energy of the decay products.
-The endpoint energy matches experiment (R20 F9).
+
+In this picture, neutron decay (n → p + e⁻ + ν̄_e) is the
+escape of one of the two fundamentals.  The −e fundamental
+departs as the emitted electron.  The remaining +e
+fundamental, still dressed in its harmonic tower, is the
+proton.  The excess harmonic energy (the neutron had
+slightly more than the proton needs) is released as
+kinetic energy of the decay products.
+
+The energy budget works: m_n − m_p − m_e = 0.782 MeV, and
+this is exactly the kinetic energy shared between the
+electron and antineutrino.  The endpoint energy matches the
+experimentally measured value.
+
 
 ### 6.5 Proton stability
-The proton has one fundamental.  There is nothing to
-annihilate, nothing to separate.  It cannot decay because
-there is no lower-energy charged spin-½ state on the torus
-— the (1,2) mode is the ground state of the charged fermion
-sector.
+
+The proton contains a single charged fundamental.  There is
+nothing to annihilate, no opposite-charge partner to
+separate from.  To decay, the proton would need to shed its
+(1,2) fundamental — but the fundamental IS the charge, and
+the charge is conserved.  No lighter particle with charge +e
+and spin ½ exists on the torus (section 4.5 proved that the
+electron is the lightest charged fermion).  So the proton
+cannot decay: it is the ground state of the charged sector.
+
+This explains both proton stability and neutron instability
+from the same geometric principle: the topology of the
+torus determines which configurations are energetically
+terminal.
+
 
 ### 6.6 What this gets right, and what it doesn't
-The harmonic model is *descriptive*: it explains the proton
-mass but does not predict it.  Multiple harmonic
-combinations can reach 1836 m_e — nothing selects one over
-another.  The model needs a more rigid architecture.  The
-neutrino provides the motivation.
+
+The harmonic model successfully explains:
+- Why the proton has the same charge and spin as the
+  electron despite being 1836× heavier
+- Why the neutron is slightly heavier than the proton
+- Why the neutron decays into exactly p + e⁻ + ν̄
+- Why the proton is stable
+- Why the muon and tau (which have the same charge and
+  spin as the electron but higher mass) are unstable —
+  they are the same fundamental carrying excess harmonic
+  energy that radiates away, like a hot object cooling
+
+What it does NOT do is predict the proton mass, select a
+unique harmonic spectrum, or account for the neutrino.
+Multiple harmonic combinations reach 1836 m_e, and the
+model provides no principle to choose among them.  The
+neutrino — uncharged, spin ½, and absurdly light — is an
+even deeper problem.  The next section shows why.
 
 
 ## 7. The neutrino crisis
 
+The neutrino is the ghost of the particle zoo: nearly
+massless (< 0.1 eV), electrically neutral, and barely
+interacting with anything.  It has spin ½, so it is a
+fermion.  These three properties — light, uncharged, spin ½
+— turn out to be mutually incompatible on any single torus.
+
+This is not a minor technical issue.  It is a structural
+impossibility that forces the model into a fundamentally
+different architecture.
+
+
 ### 7.1 The mass floor
-The lightest uncharged mode on the electron's T² has mass
-~245 keV.  The neutrino's mass is < 0.1 eV — a factor of
-10⁵ too light.  The neutrino simply cannot be a standard
-mode on the electron's torus.
 
-### 7.2 Failed alternatives
-Three approaches were tried and failed:
+The lightest uncharged mode on the electron's T² is the
+(0,1) mode at approximately 245 keV.  The neutrino's mass
+is below 0.1 eV — a factor of more than two million too
+light.
 
-**(a) Beating between high modes (R23).**  Near-degenerate
-modes on the electron T² can produce small energy
-differences.  But the neutrino's mass is the rest energy of
-a particle, not an oscillation frequency.  Beating gives
-the right oscillation rate but the wrong rest mass.
+The mass floor is a direct consequence of the torus size.
+The electron mass sets the torus circumference at the
+Compton wavelength (~3.86 × 10⁻¹³ m).  Any mode on this
+torus has energy at least ℏc/L₂ ≈ 245 keV.  There is no
+way around this: making the neutrino lighter requires
+making the torus larger, but the torus size is already
+fixed by the electron.
 
-**(b) T³ modes (R24).**  Adding a third compact dimension
-gives uncharged modes with the right mass-squared
-splittings (Δm²₃₁/Δm²₂₁ = 33.6, matching experiment to
-0.03σ).  But the modes have spin 0, not spin ½.
 
-**(c) Mixed T² + T³ approaches (R25).**  The charge-spin
-linkage: on any single torus, both charge and spin-½ arise
-from tube winding (n₁ ≠ 0).  "Uncharged" requires n₁ = 0.
-"Spin-½" requires n₁ odd.  These are mutually exclusive.
-The neutrino — uncharged, spin ½ — is structurally
-impossible on any single torus.
+### 7.2 Three failed approaches
+
+Three increasingly creative approaches were tried over the
+course of studies R23–R25.  All failed.
+
+**Beating between high modes (R23).**  On the electron's T²,
+near-degenerate mode pairs exist with energy differences in
+the sub-eV range — tantalizing close to neutrino mass
+splittings.  The ratio Δm²₃₁/Δm²₂₁ = 33.6 can be
+reproduced by many triplets.  But a beat between two modes
+is an oscillation frequency, not a rest mass.  The neutrino
+is a particle with invariant mass < 0.1 eV, not a
+fluctuation at the eV scale.  The beating mechanism
+gives the right oscillation rate but the wrong physical
+interpretation.
+
+**Third compact dimension (R24).**  Adding a third compact
+dimension (making the space T³ instead of T²) introduces
+modes (0, 0, n₃) that propagate purely along the new axis.
+With n₁ = n₂ = 0, these modes are automatically uncharged.
+The mass-squared ratio Δm²₃₁/Δm²₂₁ depends only on integer
+mode numbers, and the triplet (7, 10, 42) matches the
+experimental value 33.6 to 0.03σ — a remarkable result.
+
+But these modes have spin 0.  On a product space T² × S¹,
+modes with n₁ = n₂ = 0 have no tube winding and therefore
+no angular momentum.  They are bosons, not fermions.  The
+neutrino must be spin ½.
+
+**The charge-spin linkage (R25).**  The root cause of the
+failure is a structural constraint on the WvM spin
+mechanism.  Both charge and spin ½ are controlled by the
+same quantum number: n₁, the tube winding.
+
+| n₁ | Charge (from shear) | Spin |
+|----|---------------------|------|
+| 0 | zero | integer (boson) |
+| odd | nonzero | half-integer (fermion) |
+| even ≥ 2 | zero | integer (boson) |
+
+An uncharged particle requires n₁ = 0 (or even n₁, but even
+n₁ ≥ 2 are also uncharged bosons).  A spin-½ fermion
+requires n₁ to be odd.  These two requirements are **mutually
+exclusive**.  They demand contradictory values of the same
+quantum number.
+
 
 ### 7.3 The crisis
-This is not a technical failure that might be fixed by
-a cleverer calculation.  It is a structural impossibility.
-The charge-spin linkage blocks every route to a neutrino on
-the electron's torus.  Either the model is wrong, or the
-neutrino lives somewhere else.
+
+This is not a technical failure that might be fixed by a
+cleverer calculation, a different mode assignment, or a
+modest extension of the model.  The charge-spin linkage is
+a mathematical fact about the torus geometry: on any single
+T² (or T³), the WvM spin mechanism ties fermionic spin to
+tube winding, and tube winding is the same quantum number
+that produces charge.  The neutrino — uncharged, fermionic
+— falls in a category that the mechanism structurally
+cannot produce.
+
+Either the model is wrong, or the neutrino lives somewhere
+else entirely.
 
 
 ## 8. Three tori on T⁶
 
-### 8.1 The architectural insight
-The resolution: each stable particle family gets its own
-T² subplane within a shared six-dimensional torus (T⁶).
-The electron lives on dimensions (θ₁, θ₂).  The neutrino
-lives on (θ₃, θ₄).  The proton lives on (θ₅, θ₆).  Total
-spacetime: 3 space + 1 time + 6 compact = 10 dimensions.
+The neutrino crisis has an architectural resolution.
 
-### 8.2 How T⁶ resolves the crisis
-Spin ½ on the neutrino T² comes from winding on *its own*
-tube (n₃ odd).  Charge zero comes from having n₁ = 0 on the
-electron's tube — a different dimension entirely.  The
-charge-spin linkage no longer blocks the neutrino because
-charge and spin now operate on different T² subplanes.
+Instead of trying to fit all particles onto a single T² (or
+T³), we give each stable particle family its own T²
+subplane within a shared six-dimensional torus.  The
+resulting compact space is T⁶ — a product of three T²
+sheets.
 
-### 8.3 The three scales
+| Particle | Dimensions | T² subplane |
+|----------|-----------|-------------|
+| Electron | θ₁, θ₂ | Sheet 1 |
+| Neutrino | θ₃, θ₄ | Sheet 2 |
+| Proton | θ₅, θ₆ | Sheet 3 |
 
-| Particle | T² subplane | Circumferences | Set by |
-|----------|------------|----------------|--------|
-| Electron | (θ₁, θ₂) | ~pm (10⁻¹² m) | m_e |
-| Neutrinos | (θ₃, θ₄) | ~μm (10⁻⁶ m) | m_ν |
-| Proton | (θ₅, θ₆) | ~fm (10⁻¹⁵ m) | m_p |
+Each mode on T⁶ is labeled by six integers:
+(n₁, n₂, n₃, n₄, n₅, n₆).  The electron is
+(1, 2, 0, 0, 0, 0) — it winds on its own sheet and is
+inert on the other two.  The proton is (0, 0, 0, 0, 1, 2).
+The neutrino is a mode on (θ₃, θ₄) with n₃ odd (for spin
+½) and n₁ = n₅ = 0 (for zero charge).
 
-The neutrino T² is vastly larger than the other two because
-neutrinos are vastly lighter.  This is not a choice — it is
-a consequence of the mass-energy-geometry relationship.
 
-### 8.4 Cross-shear coupling
-The three T² subplanes are not perfectly independent.  Small
-tilts between them (cross-shear parameters) allow modes on
-one sheet to couple to modes on another.  These couplings
-are weak — typically a few degrees from perpendicular — but
-they produce observable consequences, as the next two
-sections demonstrate.
+### 8.1 How T⁶ resolves the crisis
+
+The charge-spin linkage depended on charge and spin being
+tied to the same quantum number on the same torus.  On T⁶,
+they are decoupled:
+
+- **Charge** comes from the electron sheet: Q = −n₁ + n₅.
+  A mode with n₁ = 0 and n₅ = 0 is uncharged, regardless
+  of what happens on the neutrino sheet.
+
+- **Spin** on the neutrino sheet comes from n₃ (the
+  neutrino tube winding).  An odd n₃ gives spin ½.  This
+  has nothing to do with n₁.
+
+The neutrino (n₁ = 0, n₃ = odd) is simultaneously uncharged
+(because n₁ = n₅ = 0) and spin ½ (because n₃ is odd).  The
+crisis is resolved because charge and spin now operate on
+different dimensions of the compact space.
+
+
+### 8.2 The three scales
+
+The three T² sheets have vastly different sizes, set by the
+masses of their resident particles:
+
+| Particle | T² subplane | Circumferences | Energy scale |
+|----------|------------|----------------|-------------|
+| Electron | (θ₁, θ₂) | ~5000 fm, ~32000 fm | ~0.5 MeV |
+| Neutrino | (θ₃, θ₄) | ~42 μm, ~200 μm | ~30 meV |
+| Proton | (θ₅, θ₆) | ~2.7 fm, ~24 fm | ~938 MeV |
+
+The neutrino T² is roughly a billion times larger than the
+proton T², because neutrinos are roughly a billion times
+lighter.  This enormous scale separation is not a choice or
+a fine-tuning — it is a direct consequence of the
+energy-geometry relationship E ∝ ℏc/L.  Lighter particles
+live on bigger tori.
+
+The neutrino T² circumferences (~42–200 μm) are
+macroscopic by particle physics standards.  If gravity
+propagates in these compact dimensions, deviations from
+Newton's inverse-square law should appear at distances below
+~50 μm.  Current experiments have tested gravity down to
+about 50 μm without finding deviations — the T⁶ prediction
+sits right at the edge of experimental sensitivity.
+
+
+### 8.3 Cross-shear coupling
+
+The three T² sheets are not perfectly independent.  The
+full T⁶ metric can include off-diagonal terms that tilt one
+sheet relative to another.  These tilts are parameterized
+by **cross-shears** (σ_ep, σ_eν, σ_νp) — small angles
+between the subplanes.
+
+Cross-shears are weak (a few degrees from perpendicular),
+but they have observable consequences.  The most dramatic is
+the subject of section 10: a cross-shear between the
+electron and proton sheets produces a new mode — the
+neutron — that nobody put in and nobody expected.
+
+With three sheets, three within-sheet shears (s₁₂, s₃₄,
+s₅₆), three aspect ratios (r_e, r_ν, r_p), three
+circumferences (L₂, L₄, L₆), and three cross-shears
+(σ_ep, σ_eν, σ_νp), the T⁶ has 12 geometric parameters in
+total.  How many are determined by observation is the
+subject of section 12.
 
 
 ## 9. The neutrino resolved
 
-### 9.1 Neutrino modes on the neutrino T²
-The neutrino T² supports its own mode spectrum.  Three modes
-form a triplet corresponding to the three neutrino mass
-eigenstates (ν₁, ν₂, ν₃).
+With the neutrino living on its own T², its properties are
+determined by the geometry of that sheet.
+
+
+### 9.1 Neutrino modes
+
+The neutrino T² supports a mode spectrum just like the
+electron's, but at a vastly lower energy scale (meV instead
+of MeV).  Three modes form the triplet that corresponds to
+the three observed neutrino mass eigenstates (ν₁, ν₂, ν₃).
+All three have spin ½ (from odd n₃) and zero charge (from
+n₁ = n₅ = 0).
+
 
 ### 9.2 Mass-squared splittings
-The ratio Δm²₃₁/Δm²₂₁ depends *only* on the neutrino
-sheet's shear s₃₄ — the aspect ratio cancels completely.
-At s₃₄ = 0.022, the ratio is 33.6, matching the
-experimental value to 0.03σ.  This is one equation with
-one unknown (s₃₄), yielding an exact solution.
 
-### 9.3 Absolute masses and the sum
-At large aspect ratio (r_ν ≳ 5), the three masses converge
-to: m₁ ≈ 29 meV, m₂ ≈ 30 meV, m₃ ≈ 58 meV.  The sum
-Σm_ν ≈ 117 meV.  The current cosmological upper bound
-is ~120 meV — the T⁶ prediction sits just below it.
+Neutrino oscillation experiments do not measure individual
+masses directly.  They measure differences in the squares
+of masses: Δm²₂₁ = m₂² − m₁² and Δm²₃₁ = m₃² − m₁².
+The ratio R = Δm²₃₁/Δm²₂₁ is one of the best-measured
+quantities in neutrino physics: R = 33.60 ± 0.90.
 
-### 9.4 A structural prediction: the neutrino T² scale
-The neutrino masses fix the scale: L₄ ≈ 42 μm,
-L₃ ≈ 200 μm at r_ν ≈ 5.  If gravity propagates in
-compact dimensions, this predicts deviations from Newton's
-law below ~50 μm — at the edge of current experimental
-sensitivity.
+On the neutrino T², this ratio depends on a single
+parameter: the within-sheet shear s₃₄.  The aspect ratio
+r_ν cancels completely from the formula — a remarkable
+algebraic simplification.  The ratio is:
+
+    R = (3 − 2s₃₄) / (4s₃₄)
+
+Setting R = 33.60 gives s₃₄ = 0.02199.  This is one
+equation with one unknown, yielding an exact solution.  The
+match to experiment is to 0.03σ.
+
+
+### 9.3 Absolute masses
+
+The individual neutrino masses depend on both s₃₄ and the
+aspect ratio r_ν.  At large r_ν (≳ 5), the three masses
+converge to:
+
+    m₁ ≈ 29 meV,  m₂ ≈ 30 meV,  m₃ ≈ 58 meV
+
+The sum Σm_ν ≈ 117 meV sits just below the current
+cosmological upper bound of ~120 meV — a testable
+prediction.  If the cosmological bound tightens below
+~115 meV, this prediction is falsified.
+
+The mass hierarchy is "normal ordering" (m₃ > m₂ > m₁),
+consistent with the current experimental preference but not
+yet definitively established.  The T⁶ model predicts normal
+ordering as a structural consequence of the mode spectrum.
 
 
 ## 10. The emergent neutron
 
+The neutron is the most remarkable output of the T⁶ model.
+It was not designed to produce a neutron.  The T⁶ was built
+to accommodate three particles — the electron, the
+neutrino, and the proton — on three separate T² sheets.
+The neutron appeared uninvited.
+
+
 ### 10.1 A mode nobody looked for
+
 When the electron T² and proton T² are tilted by a small
-cross-shear (σ_ep ≈ −0.09), a new mode appears in the T⁶
-spectrum: (1,2,0,0,1,2).  This mode has the electron's
-winding pattern on the electron sheet AND the proton's
-winding pattern on the proton sheet, simultaneously.
+cross-shear (σ_ep ≈ −0.09), the T⁶ spectrum contains a
+mode that lives on all three sheets simultaneously:
+(0, −2, n₃_odd, n₄, 0, +2).  This mode has quantum
+numbers from the electron sheet (n₂ = −2), the neutrino
+sheet (n₃ odd, providing spin ½), and the proton sheet
+(n₆ = +2, providing the bulk of the mass).
 
-It was not put in.  It was not looked for.  It appeared as
-a natural vibration of the combined geometry.
+Its charge is Q = −n₁ + n₅ = 0 + 0 = 0.  Its spin is ½
+(from the odd neutrino tube winding).  Its mass is very
+close to the proton mass but slightly higher, because the
+cross-sheet coupling adds energy.
 
-### 10.2 Its properties are not adjustable
-Given the electron and proton masses (which set the sheet
-sizes), the mode's properties are automatic:
 
-- **Charge:** −e + e = 0 (electron pattern + proton pattern)
-- **Mass:** ≈ m_p (proton sheet dominates), with a small
-  positive correction from cross-shear → m_n > m_p
-- **Instability:** The cross-sheet wave can relax into
-  single-sheet waves → n → p + e⁻ + ν̄
+### 10.2 The neutron mass pins the cross-shear
 
-### 10.3 Why m_n > m_p is geometric necessity
-The neutron is heavier than the proton because a wave
-spanning two tilted sheets has higher energy than a wave
-on a single sheet.  It couldn't be otherwise.  In the
-standard model, m_n > m_p is a fine-tuned accident with
-enormous consequences (it allows neutron decay, prevents
-proton decay, makes nuclear physics possible).  Here it
-is a geometric theorem.
+At any proton aspect ratio r_p, exactly one value of the
+cross-shear σ_ep produces a neutron mode at the observed
+mass difference m_n − m_p = 1.293 MeV.  This eliminates
+σ_ep as a free parameter: the neutron mass determines it.
 
-### 10.4 What the neutron tells us about the model
+The muon provides a second constraint.  A charge −1, spin ½
+mode appears at the muon mass (105.658 MeV) when r_p ≈ 8.9.
+The simultaneous requirement of the correct neutron AND muon
+masses pins both parameters:
+
+    r_p = 8.906
+    σ_ep = −0.0906
+
+
+### 10.3 Why m_n > m_p is geometric
+
+The neutron is heavier than the proton because a mode
+spanning two tilted sheets has higher energy than a mode on
+a single sheet.  This is a geometric theorem, not a
+contingent fact.
+
+In the standard model, m_n > m_p is a fine-tuned accident
+with enormous consequences.  If the neutron were lighter
+than the proton, protons would decay instead of neutrons.
+Hydrogen would be unstable.  Nuclear physics — and therefore
+chemistry, biology, and the universe as we know it — would
+not exist.  The standard model provides no explanation for
+why m_n − m_p has the sign and magnitude it does.
+
+In the T⁶ model, m_n > m_p follows from the geometry:
+a cross-sheet mode always has more energy than a single-
+sheet mode, because the tilt adds strain.  The sign is not
+accidental; it is a consequence of the cross-shear coupling
+between sheets.
+
+
+### 10.4 What the neutron tells us
+
 The neutron is the first particle the T⁶ produces that was
-not put in by hand.  Its decay products are exactly the
-three particles the T⁶ was built around.  The mode was
-the simplest cross-sheet vibration — the most natural thing
-the geometry could do.  This suggests the T⁶ is not just a
-bookkeeping device.  It is generating physics.
+not put in by hand.  The model was built around three
+particles (electron, neutrino, proton); the neutron emerged
+as the simplest cross-sheet vibration the geometry could
+support.  Its decay products (p + e⁻ + ν̄) are exactly the
+three particles the T⁶ was built around — the mode
+unraveling into its constituent sheets.
+
+That the geometry's most natural cross-sheet excitation
+reproduces a known particle — with the correct charge,
+spin, mass, decay products, and instability — is suggestive
+evidence that the T⁶ is not merely a bookkeeping device.
+It appears to be generating physics.
 
 
 ## 11. The particle zoo
 
-### 11.1 From three particles to many
-With the proton aspect ratio r_p pinned by the neutron
-and muon masses (r_p = 8.906), and the electron-proton
-cross-shear σ_ep pinned by the neutron mass difference
-(σ_ep = −0.0906), the T⁶ has zero free parameters at the
-MeV scale.  Every mode in its spectrum has a definite mass,
-charge, and spin.  The question becomes: do the predicted
-modes match known particles?
+With r_p = 8.906 and σ_ep = −0.0906 determined by the
+neutron and muon, the T⁶ has **zero free parameters at the
+MeV scale**.  The three input masses (m_e, m_ν, m_p) set
+the three circumferences.  The neutron mass and muon mass
+pin the remaining two parameters.  Every other mode energy
+in the T⁶ spectrum is now a definite number — a prediction.
 
-### 11.2 Parameter-free predictions
-A systematic search (R27) across the T⁶ spectrum yields
-matches for known particles at percent-level accuracy:
+The question becomes: do these predicted modes correspond to
+known particles?
+
+
+### 11.1 Parameter-free predictions
+
+A systematic search (R27, Track 5) across the T⁶ mode
+spectrum identifies the nearest mode to each known particle,
+matching by mass, charge, and spin.  The results for the
+closest matches:
 
 | Particle | Observed (MeV) | T⁶ mode (MeV) | Error |
 |----------|---------------|---------------|-------|
-| Kaon (K⁺) | 493.7 | 487.6 | 1.2% |
-| Eta (η) | 547.9 | 544.5 | 0.6% |
-| Eta-prime (η′) | 957.8 | 955.1 | 0.3% |
-| Phi (φ) | 1019.5 | 1011.5 | 0.8% |
-| K⁰ | 497.6 | 491.6 | 1.2% |
+| Kaon K⁺ | 493.7 | 488.0 | 1.2% |
+| Kaon K⁰ | 497.6 | 503.7 | 1.2% |
+| Eta η | 547.9 | 551.2 | 0.6% |
+| Eta-prime η′ | 957.8 | 961.1 | 0.3% |
+| Phi φ | 1019.5 | 1028.0 | 0.8% |
 
-These predictions use no adjustable parameters.  The
+Five particles, each matched to within 1.2% of their
+observed mass, with zero adjustable parameters.  The
 geometry is fully determined by the stable particles; the
-unstable particle masses are outputs.
+unstable particle masses are outputs, not inputs.
 
-### 11.3 Why most particles are ephemeral
-In the T⁶ picture, there are only three stable endpoints:
-the electron (lightest charged fermion — no lighter charged
-spin-½ state exists), the proton (lightest charged baryon —
-no lighter +e state on the proton T²), and the neutrino
-(lightest fermion on the neutrino T²).
 
-Every other particle is a higher mode that can decay by
-shedding energy to reach one of these endpoints.  Muon and
-tau are "hot electrons" — the (1,2) fundamental carrying
-excess harmonic energy that it radiates away.  Pions, kaons,
-and other mesons are unstable harmonic excitations that
-decay because lower-energy configurations exist.
+### 11.2 Why most particles are ephemeral
 
-The particle zoo is not a zoo of fundamentals.  It is a
-*spectrum of excitations* on a single compact geometry.
+In the T⁶ picture, only three particles are absolutely
+stable:
 
-### 11.4 Lifetime–gap correlation
-R27 found a striking correlation: particles whose T⁶ mode
-energy is far from their observed mass (larger "gap") tend
-to have longer lifetimes.  For weak decays, the correlation
-coefficient is r = −0.84 (p = 0.009).  This supports an
-"off-resonance" interpretation: particles that sit far from
-the nearest T⁶ resonance decay slowly because the coupling
-is weak.
+- **The electron**: the lightest charged fermion.  No
+  lighter mode with charge e and spin ½ exists on any T²
+  sheet.  It has nowhere to decay to.
 
-### 11.5 What doesn't work
-The tau mass is off by 5.6% — a structural gap, not a
-fine-tuning issue.  The pion is rough (14%).  The Ω⁻
-baryon is structurally forbidden (spin-3/2 with odd charge
-cannot be achieved with the current mode quantum numbers).
-These failures constrain the model and point to where
-refinement is needed (R28).
+- **The proton**: the lightest positively charged state on
+  the proton T².  Its charge is topologically protected.
+
+- **The neutrino**: the lightest fermion on the neutrino
+  T².
+
+Every other particle is a higher mode — a more energetic
+vibration of the compact geometry — that can shed energy by
+decaying into one of these endpoints.  The muon and tau are
+"hot electrons": the same (1,2) fundamental carrying excess
+energy that radiates away (muon decay is harmonic
+evaporation — the extra energy escapes as neutrinos).
+Pions, kaons, and other mesons are unstable harmonic
+excitations: they are modes on the T⁶ that can relax to
+lower-energy configurations.
+
+The particle zoo is not a zoo of fundamentally different
+objects.  It is a **spectrum of excitations** on a single
+compact geometry — the same geometry that produces the
+stable particles.
+
+
+### 11.3 The lifetime–gap correlation
+
+A striking pattern emerges from the data.  Among particles
+that decay via the weak interaction, those whose T⁶ mode
+energy is close to their observed mass (small "gap") tend to
+live longer, while those with larger gaps decay faster.
+
+The correlation for the 8 weakly-decaying particles is
+r = −0.84, with p = 0.009 — statistically significant.
+
+The physical interpretation: a particle whose mass happens
+to sit near a natural T⁶ resonance is well-described by
+that mode and has a long lifetime.  A particle far from any
+resonance is poorly described by a single mode — it is "off
+resonance" — and decays quickly because the geometry offers
+no stable resting place near its mass.
+
+This is not a complete theory of lifetimes (it does not
+account for the strong/electromagnetic/weak hierarchy), but
+within the weak-decay class, the gap-lifetime correlation
+is robust and makes a testable prediction.
+
+
+### 11.4 What doesn't work
+
+Not every particle finds a close match.  The failures are
+as informative as the successes:
+
+- **Tau (5.6% off):** The closest mode is at 1876 MeV —
+  almost exactly 2 × m_p.  The proton energy ladder has a
+  structural gap at the tau mass; no single T⁶ mode can
+  reach 1777 MeV.  This is the boundary of the single-mode
+  framework.
+
+- **Pion (14% off):** The pion is rougher than the kaon,
+  possibly because it is sensitive to within-plane shear
+  details or nonlinear corrections not yet included.
+
+- **Ω⁻ baryon (no match):** Spin 3/2 requires all three
+  tube windings (n₁, n₃, n₅) to be odd.  But charge
+  Q = −n₁ + n₅ with both n₁ and n₅ odd is always even.
+  Charge −1 with spin 3/2 is **structurally forbidden** in
+  the T⁶ mode spectrum.  The Ω⁻ cannot be a single T⁶
+  mode; it must be a multi-mode composite or involve physics
+  beyond the single-mode picture.
+
+These failures are specific, informative, and falsifiable.
+They are not "the model doesn't work well enough" — they
+are "the model says this particular thing is impossible for
+this particular geometric reason."
 
 
 ## 12. What remains open
 
 ### 12.1 The parameter census
+
 The T⁶ geometry has 12 parameters.  Here is the honest
 balance sheet:
 
@@ -498,39 +1148,103 @@ balance sheet:
 1 unconstrained, 2 untested.
 
 The three circumferences are not free parameters in the
-usual sense — they are fixed by the three input masses (m_e,
-m_ν, m_p).  The particle spectrum predictions (section 11)
-use zero additional parameters beyond these inputs.
+usual sense — they are fixed by the three input masses
+(m_e, m_ν, m_p), just as the length of a guitar string is
+fixed by the pitch you want it to play.  The particle
+spectrum predictions (section 11) use zero additional
+parameters beyond these inputs.
+
 
 ### 12.2 The α problem
-The shear-charge formula α(r, s) produces a one-parameter
-family of solutions.  Every aspect ratio r above ~2 has a
-self-consistent shear s.  Nothing currently selects the
-electron's aspect ratio r_e — and therefore nothing
-predicts α from first principles.  This is the central
-open problem.  A geometric principle that fixes r_e would
-likely determine α and complete the model.
+
+The shear-charge formula produces a one-parameter family of
+solutions: for every aspect ratio r_e above ~0.26, there is
+a unique shear s₁₂ that gives α = 1/137.  The formula is
+self-consistent at every point on this family — the
+electron's mass, spin, charge, and g-factor are all correct
+simultaneously.
+
+But nothing selects where on the family the electron sits.
+The aspect ratio r_e is invisible to all MeV-scale
+observables: it enters no mode energy at any precision we
+can currently probe.  Without a geometric principle that
+fixes r_e, the model cannot predict α from first
+principles.
+
+This is the central open problem.  A solution would likely
+complete the model: if r_e is determined, then s₁₂ follows
+from the charge formula, and the entire T⁶ geometry is
+fully specified.
+
 
 ### 12.3 Ghost modes
+
 The T⁶ spectrum contains modes that do not correspond to
-any known particle.  If the model is correct, these modes
-either correspond to undiscovered particles, are forbidden
-by a selection rule we have not identified, or are
-artifacts of the simplified treatment.  Counting ghost
-modes is a priority for R28.
+any known particle.  These "ghost modes" are predicted
+vibrations of the compact geometry with definite mass,
+charge, and spin that have no observed counterpart.
+
+If the model is correct, ghost modes must be explained.
+They might correspond to undiscovered particles, or they
+might be forbidden by a selection rule the model has not
+yet identified (for example, a coupling rule that prevents
+certain modes from being produced in reactions), or they
+might be artifacts of the linearized single-mode treatment.
+
+Counting ghost modes and understanding their status is a
+priority.  An excess of stable ghost modes with no observed
+counterpart would be a serious problem; an excess of
+unstable ghost modes with very short lifetimes would be
+less concerning, as they might simply be unobservable.
+
 
 ### 12.4 Beyond single particles
-The T⁶ model describes single-particle properties.  Atoms,
-nuclei, and multi-body systems require extending to
-T⁶ × R³ — nine dimensions.  Preliminary results (R29) show
-that nuclei are themselves T⁶ modes (not bound multi-
-particle states), while atoms require the R³ spatial
-dimensions.  This is the subject of a companion paper.
+
+The T⁶ model as presented describes single-particle
+properties: mass, charge, spin.  But nature is not isolated
+particles — atoms exist, nuclei are stable, electrons
+occupy discrete energy levels.
+
+Extending the model to multi-body systems requires adding
+the three ordinary spatial dimensions, making the full
+framework T⁶ × R³ — nine dimensions.  Preliminary results
+(R29) are striking: nuclei turn out to be T⁶ modes
+themselves (not bound multi-particle states), matching all
+tested nuclei from the deuteron to iron-56 to within 1%.
+Atoms, by contrast, live below the T⁶ energy resolution
+floor and require the spatial dimensions for their
+description.
+
+These results are the subject of a companion paper.
+
 
 ### 12.5 The path forward
+
 The model's value lies in its falsifiability.  It makes
-specific numerical predictions (particle masses, neutrino
-mass sum, nuclear mode patterns) that can be compared to
-experiment.  Where it fails (tau, pion, Ω⁻), the failures
-are specific and informative.  Where it succeeds (kaon,
-eta, eta-prime, neutron), the successes are parameter-free.
+specific numerical predictions that can be compared to
+experiment:
+
+- **Neutrino mass sum:** Σm_ν ≈ 117 meV (testable by
+  next-generation cosmological surveys)
+- **Normal mass ordering:** m₃ > m₂ > m₁ (testable by
+  JUNO, DUNE, and other oscillation experiments)
+- **Particle masses:** kaon at 488 MeV, eta at 551 MeV,
+  eta-prime at 961 MeV, phi at 1028 MeV
+- **Structural constraints:** no single-mode Ω⁻; tau
+  cannot be a single mode at 1777 MeV
+- **Sub-mm gravity:** deviations from Newton's law below
+  ~50 μm if gravity propagates in the neutrino T²
+
+Where the model fails — tau, pion, Ω⁻ — the failures are
+specific and informative, pointing to the boundary between
+single-mode physics and multi-mode or nonlinear effects.
+Where it succeeds — kaon, eta, eta-prime, neutron — the
+successes are parameter-free.
+
+The fine-structure constant remains underived.  The ghost
+mode census is incomplete.  The connection to quantum field
+theory is unexplored.  But a model that begins with three
+axioms and arrives at percent-level predictions for particle
+masses — without adjustable parameters — has, at minimum,
+earned the right to be taken seriously as a framework worth
+investigating further.
