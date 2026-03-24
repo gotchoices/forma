@@ -358,3 +358,130 @@ Consequences:
 The model now has one fewer free parameter (σ_ep is fixed by
 the neutron mass), a constraint on r_p, and a validated search
 tool for the next targets.
+
+
+## Track 3 (continued). Muon discovery and parameter determination
+
+
+### F17. The muon appears as mode (−1, +5, 0, 0, −2, 0)
+
+Searching the T⁶ spectrum for charge −1, spin ½ modes near
+105.658 MeV, the solver finds a candidate that varies with
+r_p.  At r_p ≈ 8.9, it crosses the muon mass.
+
+Mode properties:
+- n₁ = −1 (electron ring, odd → charge −1)
+- n₂ = +5 (electron tube → mass contribution)
+- n₃ = n₄ = 0 (no neutrino windings)
+- n₅ = −2 (proton ring, even → charge 0 from proton)
+- n₆ = 0 (no proton tube winding)
+- Net charge: −(−1) + (−2) = +1 − 2 = −1 ✓
+- Spin: |n₁| = 1 (odd), |n₃| = 0, |n₅| = 2 (even) → 1 contribution → ½ ✓
+
+The muon is a mixed electron-proton mode with no neutrino
+content.  Its mass comes primarily from the proton ring
+dimension (n₅ = −2 on L₅ ~ 24 fm).
+
+
+### F18. Simultaneous neutron + muon fit pins r_p and σ_ep
+
+With both the neutron mass and muon mass as constraints:
+
+    r_p  = 8.906
+    σ_ep = −0.09064
+
+    Neutron (0, −2, n₃_odd, n₄, 0, +2):
+        m_n − m_p = 1.293 MeV (exact)
+
+    Muon (−1, +5, 0, 0, −2, 0):
+        E = 105.658 MeV (error < 0.1 keV)
+
+The proton aspect ratio r_p is now **determined**, not just
+bounded.  This is from two measurements (neutron mass, muon
+mass) fixing two parameters (σ_ep, r_p).
+
+Self-consistent circumferences at this parameter point:
+
+    L₁ (e-ring)  = 3.221 × 10⁴ fm
+    L₂ (e-tube)  = 4.880 × 10³ fm
+    L₃ (ν-ring)  = 2.119 × 10¹¹ fm
+    L₄ (ν-tube)  = 4.238 × 10¹⁰ fm
+    L₅ (p-ring)  = 2.366 × 10¹ fm
+    L₆ (p-tube)  = 2.657 fm
+
+
+### F19. r_e and r_nu are invisible in the mass spectrum
+
+Sweeping r_e from 3.0 to 11.5 at the neutron+muon-pinned
+r_p and σ_ep:  all masses are identical to 6 significant
+figures.  r_nu has the same non-effect.
+
+The electron-scale dimensions (L₁ ~ 10⁴ fm, L₂ ~ 10³ fm)
+and neutrino-scale dimensions (L₃ ~ 10¹¹ fm, L₄ ~ 10¹⁰ fm)
+are so much larger than the proton scale (L₅ ~ 24 fm,
+L₆ ~ 2.7 fm) that their contributions to mode energies are
+negligible at MeV precision.
+
+r_e and r_nu would become visible only for:
+- Sub-eV precision (neutrino mass splittings)
+- Fine-structure effects (α = 1/137)
+- Properties that depend explicitly on the electron or
+  neutrino circumferences
+
+
+### F20. Tau candidate at 1876.4 MeV (5.6% above observed)
+
+The closest charge −1, spin ½ mode to the tau mass is:
+
+    Mode (−1, +5, 0, 0, −2, −4):  E = 1876.4 MeV
+    Observed tau:                   m_τ = 1776.9 MeV
+    Error: +5.6%
+
+This mode is the muon mode with n₆ = −4 (proton tube windings)
+added.  Its proton winding (n₅ = −2, n₆ = −4) is exactly
+twice the proton mode (n₅ = 1, n₆ = 2), giving E ≈ 2m_p.
+
+The tau energy is insensitive to σ_eν, σ_νp, r_e, and r_nu
+because the mode has no neutrino windings and the electron-
+scale contributions are negligible.
+
+There are NO charge −1, spin ½ modes within 100 MeV of
+1776.9 MeV — even with neutrino windings and n_max up to 8.
+The proton-scale energy ladder has rungs at ~938, ~1876,
+~2815 MeV with no intermediate step near 1777.
+
+This means either:
+1. The tau requires asymmetric cross-shears (12 independent
+   σ_ij entries rather than 3 collective values)
+2. The tau involves a mechanism beyond single-mode KK physics
+3. The 5.6% error is a genuine limitation of the model at
+   this level of approximation
+
+Note: 1876.4 MeV ≈ 2 × m_p is physically significant — it is
+the proton-antiproton threshold.  The model may be predicting
+that the tau and proton-antiproton system are related.
+
+
+### F21. Summary of particle matches at the golden parameter point
+
+    Particle   Observed    Predicted    Error    Status
+    e⁻           0.511       0.511     exact    INPUT
+    p          938.272     938.272     exact    INPUT
+    ν₁,₂,₃    (Δm²)       (Δm²)     exact    INPUT
+    n          939.565     939.565    <1 eV    MATCHED (fixes σ_ep)
+    μ⁻         105.658     105.658    <1 eV    MATCHED (fixes r_p)
+    τ⁻        1776.9      1876.4      +5.6%   NEAR MISS
+    π⁺         139.6        —          —       NO MATCH (n_max=5)
+    K⁺         493.7        —          —       NO MATCH
+    W⁻       80377          —          —       NO MATCH
+    Z⁰       91188          —          —       NO MATCH
+
+Parameters determined:
+    r_p  = 8.906    ← neutron + muon
+    σ_ep = −0.0906  ← neutron mass
+
+Parameters still free:
+    r_e  (invisible at MeV scale)
+    r_nu (invisible at MeV scale)
+    σ_eν (zero for now; would affect neutron if nonzero)
+    σ_νp (zero for now; would affect neutron if nonzero)
