@@ -223,15 +223,15 @@ bottle identification (one edge reversed).  Compute:
   accumulation?
 - Does the Klein bottle produce fewer ghost modes?
 
-### Track 4 — The r → ∞ limit: T² degenerating to T¹
+### Track 4 — The r → ∞ limit: T² degenerating to T¹  **Complete**
 
-Take the existing T² solver and examine the large-r limit:
-- How do mode energies behave as r → ∞?
-- At what r does the charge mechanism break down?
-- Is there a smooth transition from "charged T²" to
-  "uncharged T¹," or a sharp phase boundary?
-- Does r_p = 8.906 (our pinned proton value) sit near
-  any critical threshold?
+Take the existing T² solver and examine the large-r limit.
+**Result:** No phase transition at any r.  Charge works for
+all r > 0.26.  The tube becomes energetically negligible
+(0.003% at r=100) but remains topologically essential.
+r is free because charge is integer-quantized — the α
+formula self-adjusts s(r) to maintain α = 1/137 at every r.
+Findings F9–F14.
 
 ### Track 5 — Minimum geometry for charge
 
@@ -255,7 +255,7 @@ If something simpler works, it suggests the model can
 be compressed.
 
 
-### Track 6 — Shared-dimension T³: electron and proton on a common surface
+### Track 6 — Shared-dimension T³: electron and proton on a common surface  **Complete**
 
 **Motivation:**  The electron T² (dims 1,2) and proton T²
 (dims 5,6) have no shared dimensions in T⁶ — they are

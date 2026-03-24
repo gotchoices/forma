@@ -1,6 +1,111 @@
 # R30 Findings
 
 
+## Track 4. The r → ∞ limit
+
+Script: `scripts/track4_r_limit.py`
+
+
+### F9. No phase transition — charge works at all r > 0.26
+
+The shear-charge mechanism (R19) produces α = 1/137 for every
+r > r_crit ≈ 0.26.  There is no upper bound.  As r increases:
+
+| r | s | Tube E% | L_tube (fm) |
+|---|---|---------|-------------|
+| 0.3 | 0.193 | 77.3% | 2,760 |
+| 1 | 0.065 | 21.1% | 5,285 |
+| 6.6 | 0.010 | 0.58% | 31,955 |
+| 8.9 | 0.008 | 0.32% | 43,121 |
+| 100 | 0.0007 | 0.003% | 485,103 |
+| 1000 | 0.00007 | 0.00003% | 4,852,456 |
+
+The shear s decreases as 1/r, but the product r²s² converges
+to 0.00465.  The α formula r²μ sin²(2πs)/[4π(2−s)²] stays
+exactly 1/137 by construction.  Charge = e at every r.
+
+
+### F10. The tube is topologically essential, energetically optional
+
+At r = 1000:
+- The tube is 4.9 million fm long (≈ 0.5 μm — macroscopic!)
+- It contributes 0.00003% of the mode energy
+- The electron still has charge −e and spin ½
+
+The tube dimension is a **topological degree of freedom**: its
+EXISTENCE creates the second winding number needed for charge
+and spin.  Its SIZE is energetically irrelevant at large r.
+
+This resolves the "too many dimensions" question: the tube
+dimensions don't contribute significant energy and are
+invisible in scattering experiments, but they MUST EXIST
+for the charge/spin algebra to work.
+
+
+### F11. r is free because charge is topological
+
+The charge mechanism depends on:
+1. The topology: a (1,2) geodesic wrapping tube once, ring twice
+2. The existence of shear: s ≠ 0
+
+It does NOT depend on:
+- The magnitude of s (which self-adjusts via α constraint)
+- The tube circumference (which can be arbitrarily large)
+- The aspect ratio r (any r > 0.26 works)
+
+This is why r produces a one-parameter family at every T²
+sheet.  The charge is integer-quantized — it's either e or 0
+with nothing in between.  Any geometry with nonzero shear
+and a (1,2) geodesic produces exactly the same charge.
+
+
+### F12. r_p = 8.906 is pinned by physics, not geometry
+
+The proton's r = 8.906 comes from the neutron mass constraint
+(R27 Track 2): the cross-shear σ_ep must shift the neutron
+mode to 939.565 MeV, and this requires a specific r_p.
+
+At r_p = 8.906, the proton tube contributes only 0.32% of E².
+The proton is 99.7% ring-dominated.  Its tube is structurally
+necessary (charge +1, spin ½) but energetically marginal.
+
+
+### F13. The mode spectrum degenerates at large r
+
+At r = 1 (tube = ring), the first 10 modes span a rich energy
+landscape with both ring (n₂) and tube (n₁) excited modes.
+
+At r > 5, the spectrum simplifies: the first ~10 modes are ALL
+pure tube modes (n₁ ≠ 0, n₂ = 0), with energies far below the
+electron mass.  Ring modes (which include the electron) are
+at much higher energy.  The tube modes form a ladder at
+E_n = n × ℏc/(r × L_ring), becoming a near-continuum at
+large r.
+
+
+### F14. Summary of Track 4
+
+1. **No phase transition** in the charge mechanism.
+   Charge = e for all r > 0.26.  No upper limit.
+
+2. **The tube is topological, not energetic.**  It provides
+   charge and spin through winding topology.  Its size
+   (and energy contribution) can be arbitrarily small.
+
+3. **r is free because charge is integer-quantized.**
+   The α formula self-adjusts s(r) to maintain α = 1/137
+   at every r.  No geometric principle selects r.
+
+4. **The spectrum degenerates at large r** into a tube-mode
+   ladder far below the particle mass.  Ring modes
+   (including the electron) are isolated at higher energy.
+
+5. **r_p = 8.906 is physically pinned**, not geometrically
+   special.  The other r values (r_e, r_ν) remain free.
+
+
+---
+
 ## Track 6. Shared-dimension T³
 
 Script: `scripts/track6_shared_t3.py`
