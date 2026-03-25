@@ -98,39 +98,21 @@ interaction strength (off by 11 orders of magnitude).
 Findings F8–F12.
 
 
-### Track 3 — Why 24?  Geometric relationships
+### Track 3 — Why 24?  Geometric relationships  **Complete**
 
-Investigate the number 24 in the context of torus geometry:
+Survey all known mathematical contexts where 24 appears
+and assess connection to T⁶.
 
-- **Modular properties**: The Dedekind eta function η(τ)²⁴
-  governs modular invariance on tori.  The 24th power
-  appears because the partition function must be invariant
-  under modular transformations (τ → τ+1 and τ → −1/τ).
-  Does the T⁶ partition function involve η²⁴?
-
-- **Lattice kissing number**: In 4D, the kissing number
-  (maximum number of non-overlapping unit spheres touching
-  a central sphere) is 24, realized by the D₄ root lattice.
-  Does the T⁶ lattice have D₄ structure?
-
-- **Euler characteristic**: χ(K3) = 24 for the K3 surface
-  (simplest Calabi-Yau 4-fold).  Is there a connection
-  between T⁶ and K3?
-
-- **Combinatorial**: 24 = 4! = permutations of the 4 non-
-  compact dimensions (R³ × R¹).  Is α related to a
-  symmetry factor from the non-compact sector?
-
-- **Refraction geometry**: A field refracting off a toroidal
-  surface encounters a geometry that varies with position.
-  The tube has curvature 1/a, the ring has curvature 1/R.
-  The total solid angle subtended, or the integrated
-  Gaussian curvature, or the number of independent
-  refraction directions — could any of these produce 24?
-
-**Output**: Catalog of geometric appearances of 24 in
-torus-related mathematics.  Assessment of which (if any)
-connect naturally to the T⁶ lattice.
+**Result:** Cataloged 8 contexts.  The Dedekind eta
+function η(τ)²⁴ is the strongest candidate: it is the
+unique modular-invariant cusp form, and modular
+invariance of the T² partition function forces it to
+appear.  However, the naive T⁶ scalar partition function
+contains |η|⁶ (not |η|²⁴), and no combination of the
+model's aspect ratios produces 24.  The most promising
+path: compute the gauge coupling normalization from the
+modular-invariant partition function and check for 1/24.
+Findings F13–F17.
 
 
 ### Track 4 — Impedance at the T⁶/R³ interface

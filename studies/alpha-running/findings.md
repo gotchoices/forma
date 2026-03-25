@@ -133,6 +133,8 @@ Possible resolutions:
 This is an open issue for the model.
 
 
+---
+
 ## Track 2 — Volume dilution and the high-energy coupling
 
 ### F8. The dimensionless volume is r × μ₁₂²
@@ -206,3 +208,95 @@ No value of r_e makes α_bare exactly 1/24.  To get
 α_bare = 1/24, one would need r × μ₁₂² = 1/(24α) ≈ 5.71,
 giving r ≈ 1.41.  This is within the allowed range
 (r > 0.26) but has no independent motivation.
+
+
+---
+
+## Track 3 — Why 24?  Geometric relationships
+
+
+### F13. Eight contexts where 24 appears in torus mathematics
+
+A systematic survey cataloged 24 in eight mathematical
+contexts.  Ranked by strength of connection to T⁶:
+
+| Context | Why 24? | T⁶ connection | Strength |
+|---------|---------|----------------|----------|
+| Dedekind η²⁴ | Modular invariance of T² | Each T² has τ = r | STRONG |
+| D₄ kissing number | 4D lattice geometry | 4 non-compact dims | MODERATE |
+| ζ(−1) = −1/12 | Regularized sum → 24 = −2/ζ | String dimension formula | MODERATE |
+| χ(K3) = 24 | 24 independent 2-cycles | T⁴ → K3 orbifold | WEAK |
+| 4! = 24 | Permutations of (x,y,z,t) | Euclidean Weyl group | WEAK |
+| 4 × 6 | Non-compact × compact dims | Dimension counting | WEAK |
+| Bosonic string c = 24 | 24 transverse dimensions | 10D vs 26D gap | WEAK |
+| Torus curvature | ∫K dA = 0 by Gauss-Bonnet | No 24 emerges | NONE |
+
+
+### F14. The Dedekind eta function is the strongest candidate
+
+η(τ)²⁴ is the discriminant modular form Δ(τ), the unique
+cusp form of lowest weight on SL(2,ℤ).  The exponent 24
+is uniquely determined: it is the smallest power of η that
+transforms without phase ambiguity under modular
+transformations (τ → τ+1 gives e^(iπ/12), needing 24
+copies to return to unity).
+
+Each T² sheet has a modular parameter τ_i = r_i + is_i.
+If the T⁶ partition function must be modular-invariant
+(a natural physical requirement for consistency of the
+compact space), factors of η²⁴ are forced to appear.
+The gauge coupling normalization in string theory derives
+from precisely this kind of partition function.
+
+Concrete claim: if the T⁶ gauge coupling is computed
+from the modular-invariant partition function, the
+leading normalization should contain 1/24, making this
+the origin of 1/α → 24 at high energies.
+
+
+### F15. No combination of aspect ratios produces 24
+
+Direct numerical search over simple functions of
+(r_e, r_ν, r_p):
+
+    r_e + r_ν + r_p = 20.5  (15% off)
+    r_e + r_p = 15.5
+    r_e × r_p = 58.8
+    r × μ₁₂² = 26.5 (electron), 35.7 (proton)
+
+No algebraic combination of the model's geometric
+parameters equals 24.  If 24 enters the theory, it
+does so through modular invariance or number theory,
+not through the specific values of the aspect ratios.
+
+
+### F16. 1/α decomposes as 24 × 5.71 or 4π × 10.9
+
+The decomposition 1/α = 137.036 into "nice" factors:
+
+    1/α ≈ 4π × 10.9   (10.9 ≈ 11, off by 0.9%)
+    1/α ≈ 24 × 5.71   (5.71 ≈ 2π × 0.91, off 9% from 2π)
+    1/α ≈ 4π² × 3.47  (3.47 ≈ π, off 10%)
+
+None of these decompositions is exact enough to be
+convincing.  The 4π × 11 approximation (= 138.23) is
+the closest, off by 0.9%.  This is the well-known
+"1/α ≈ 4π × 11" observation from the literature.
+
+
+### F17. The T⁶ partition function contains |η|⁶, not |η|²⁴
+
+For a scalar field on T⁶ = (T²)³, the partition
+function is Z ∝ 1/|η(τ₁) η(τ₂) η(τ₃)|², involving
+|η|⁶.  To get |η|²⁴ would require either:
+- 12 scalar fields (12 × 2 = 24 powers)
+- 8 transverse dimensions × 3 sheets = 24 indices
+- The full gravitational partition function (21 moduli
+  ≈ but not quite 24)
+
+The gap between 6 and 24 means the simple scalar
+counting does not produce η²⁴.  A more sophisticated
+treatment — perhaps involving the gravitational
+degrees of freedom or a worldsheet formulation — would
+be needed to connect T⁶ directly to the discriminant
+modular form.
