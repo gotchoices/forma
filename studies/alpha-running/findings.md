@@ -131,3 +131,78 @@ Possible resolutions:
    (consistent with F4)
 
 This is an open issue for the model.
+
+
+## Track 2 — Volume dilution and the high-energy coupling
+
+### F8. The dimensionless volume is r × μ₁₂²
+
+The dimensionless area of each T² sheet (area divided by
+the natural unit (2πλ_C)²) reduces to a simple geometric
+formula:
+
+    A / (2πλ_C)² = r × μ₁₂(r, s)²
+
+where r is the aspect ratio and μ₁₂ ≈ 2.01 is the
+dimensionless (1,2) mode energy.  Values:
+
+| Sheet | r | A/(2πλ)² | α_bare = α × A/(2πλ)² | 1/α_bare |
+|-------|---|----------|------------------------|----------|
+| Electron | 6.6 | 26.7 | 0.195 | 5.1 |
+| Proton | 8.906 | 36.0 | 0.263 | 3.8 |
+
+The "bare" coupling is approximately 1/5 (electron) and
+1/4 (proton) — not 1/24 and not the same for both sheets.
+
+
+### F9. Naive volume dilution does not produce 1/24
+
+The KK volume dilution α₄ = α_D / V_dimensionless gives
+α_bare values of 0.195 and 0.263 for the two sheets.
+Neither is close to 1/24 (= 0.042).  The bare coupling
+is approximately 5× larger than 1/24.
+
+The two sheets give different bare couplings because they
+have different aspect ratios (r_e = 6.6 vs r_p = 8.906).
+In a unified theory the bare coupling should be universal.
+The discrepancy means either:
+1. The simple volume dilution picture is incomplete
+2. The "true" higher-dimensional coupling involves
+   cross-sheet geometry, not individual sheets
+3. The bare coupling is not a simple volume ratio
+
+
+### F10. The ring ratio L₂/L₆ = m_p/m_e (by construction)
+
+The ratio of electron to proton ring circumferences is
+L₂/L₆ = 1836.6, matching the proton-electron mass ratio
+to 0.03%.  This is by construction (L ∝ 1/mass) but
+confirms internal consistency.
+
+
+### F11. The neutrino volume ratio does not explain weak interactions
+
+The neutrino T² is 5.7 × 10¹³ times larger than the
+electron T².  If weak interaction strength were simply
+α × A_e/A_ν (volume dilution), the effective weak coupling
+would be ~10⁻¹⁶ — eleven orders of magnitude too small
+compared to the measured Fermi constant (G_F m_p² ≈ 10⁻⁵).
+
+The weak interaction scale cannot be explained by simple
+area-ratio dilution.  The coupling mechanism between sheets
+must involve cross-shears or other geometry, not just
+relative volumes.
+
+
+### F12. The bare coupling depends on the aspect ratio r
+
+Since α_bare = α × r × μ₁₂², and r_e is unconstrained,
+the "bare" coupling is not uniquely determined.  At r_e = 1,
+α_bare would be ≈ 0.030 (1/α_bare ≈ 34); at r_e = 6.6 it
+is 0.195; at r_e = 24/μ₁₂² ≈ 5.94 it would be
+α × 24 = 0.175 (1/α_bare = 5.7).
+
+No value of r_e makes α_bare exactly 1/24.  To get
+α_bare = 1/24, one would need r × μ₁₂² = 1/(24α) ≈ 5.71,
+giving r ≈ 1.41.  This is within the allowed range
+(r > 0.26) but has no independent motivation.

@@ -85,25 +85,17 @@ strength.  Suppression factor ~10⁵ required, consistent
 with the Lamb shift constraint.  Findings F1–F7.
 
 
-### Track 2 — Volume dilution and the high-energy coupling
+### Track 2 — Volume dilution and the high-energy coupling  **Complete**
 
-Compute the T⁶ volume (excluding the neutrino sheet,
-which decouples for charged-mode physics):
+Compute the T⁶ sheet areas and KK volume dilution.
 
-    V_eff = L₁ × L₂ × L₅ × L₆
-
-The KK relationship between the effective 4D and higher-D
-couplings is:
-
-    α₄ = α_D / V_eff
-
-Compute α_D (the "bare" coupling) and check whether it is
-a recognizable constant.
-
-Also check: does the full volume (including neutrino sheet)
-give a different result, and does the decoupling of the
-neutrino sheet explain the separation between
-electromagnetic and weak scales?
+**Result:** The "bare" coupling α_bare = α × r × μ₁₂²
+gives 1/α_bare ≈ 5.1 (electron sheet) and 3.8 (proton
+sheet).  NOT 1/24.  The two sheets give different bare
+couplings because they have different aspect ratios.
+The neutrino sheet volume ratio does NOT explain weak
+interaction strength (off by 11 orders of magnitude).
+Findings F8–F12.
 
 
 ### Track 3 — Why 24?  Geometric relationships
