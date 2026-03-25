@@ -300,3 +300,119 @@ treatment — perhaps involving the gravitational
 degrees of freedom or a worldsheet formulation — would
 be needed to connect T⁶ directly to the discriminant
 modular form.
+
+
+---
+
+## Track 4 — Impedance at the T²/R³ interface
+
+
+### F18. Energy partitions by channel count are too large
+
+The 10D metric has 55 independent components, of which
+45 are off-diagonal.  These decompose into:
+
+| Category | Count | 4D interpretation |
+|----------|-------|-------------------|
+| g_{μν} (non-compact, μ≠ν) | 6 | Gravity |
+| g_{μi} (non-compact × compact) | 24 | Gauge fields |
+| g_{ij} (within-sheet, i≠j) | 3 | Shears |
+| g_{ij} (cross-sheet, i≠j) | 12 | Cross-sheet couplings |
+
+The 24 gauge components are 3 sheets × 8 per sheet
+(= 4 non-compact × 2 compact).  The EM field is ONE
+gauge field (4 components out of 24).
+
+Democratic partition: 4/45 = 1/11 (too large by ~12×).
+Weighted by 1/L²: EM fraction = 0.0125 = 1/80 (still
+too large by ~1.7×, but closest of any simple model).
+
+No simple channel-counting rule reproduces α = 1/137.
+
+
+### F19. The 4π in the α formula IS the 3D solid angle
+
+The R19 formula decomposes as:
+
+    α = r²μ sin²(2πs) / (4π(2−s)²)
+
+With the correct shears (s_e = 0.01029, s_p = 0.00764):
+
+| Factor | Electron | Proton | Role |
+|--------|----------|--------|------|
+| r² | 43.56 | 79.32 | Geometric amplification |
+| μ₁₂ | 1.995 | 1.996 | Mode energy factor |
+| sin²(2πs) | 4.18×10⁻³ | 2.30×10⁻³ | Shear leak (1/239, 1/435) |
+| 4π(2−s)² | 49.75 | 49.88 | 3D normalization |
+| **Product** | **0.00730** | **0.00730** | **= α** |
+
+The numerator r²μ sin²(2πs) ≈ 0.363 is nearly identical
+for both sheets — this must be so because both must produce
+the same α, and the denominator 4π(2−s)² ≈ 4π×4 ≈ 50 is
+also nearly sheet-independent.
+
+The 4π is the solid angle of a sphere in R³: energy
+radiates isotropically into 3D space, and 4π is the
+normalization.  This is NOT 24 or 8 — it is the
+standard 3D angular factor.
+
+
+### F20. Solid angle fractions are far too large to explain α
+
+For isotropic radiation in d = 10 dimensions, the
+fraction going into a k-dimensional subspace is k/d:
+
+    R³ in 10D: 3/10 = 0.30  (vs α = 0.0073)
+    R³⁺¹ in 10D: 4/10 = 0.40
+
+These are ~40–50× too large.  Dimensional geometry
+alone cannot explain α.  The factor-of-137 suppression
+comes from the shear sin²(2πs), not from how many
+dimensions the energy can propagate into.
+
+
+### F21. The aperture model gives 1/α ≈ 27 (close to 24)
+
+The waveguide aperture model treats T² as a 2D cavity:
+the coupling depends on the area in wavelength units:
+
+    α_aperture ≈ λ²/A = 1/(r × μ₁₂²)
+
+For the electron sheet: 1/α_aperture ≈ 27 (= r_e × μ²).
+This is tantalizingly close to 24 but depends on the
+unconstrained aspect ratio r_e.  At r_e ≈ 5.94, it
+would give exactly 24.  But the aperture model misses
+the shear physics entirely.
+
+
+### F22. The shear IS the impedance mismatch — confirmed
+
+α is dominated by sin²(2πs), which provides a
+suppression of ~1/240 (electron) or ~1/435 (proton).
+The geometric factors (r², μ, 4π) modulate the coupling
+but do not set its order of magnitude.
+
+An unsheared torus (s = 0) has α = 0 regardless of
+its size, shape, or the number of dimensions.  The
+shear tilts the internal standing wave, breaking the
+perfect cancellation of positive and negative half-cycles.
+This is geometrically identical to an impedance mismatch:
+the shear makes the compact vacuum anisotropic, and
+only the anisotropic component couples to R³.
+
+The question "why is α = 1/137?" reduces to "why is
+s ≈ 0.01?"  — what selects this particular shear.
+
+
+### F23. Weighted gauge field partition is closest match
+
+When gauge field channels are weighted by 1/L_i² (energy
+per unit winding), the proton sheet dominates completely
+(shortest circumference → strongest gauge field).  The
+EM fraction (tubes θ₁ and θ₅) is 0.0125 = 1/80.
+
+This is within 1.7× of α = 1/137.  The remaining
+discrepancy could come from the mode structure
+normalization ((2−s)² factor) or wavefunction overlap.
+This is the closest any simple partition model comes
+to reproducing α.

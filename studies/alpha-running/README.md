@@ -115,7 +115,7 @@ modular-invariant partition function and check for 1/24.
 Findings F13–F17.
 
 
-### Track 4 — Impedance at the T²/R³ interface
+### Track 4 — Impedance at the T²/R³ interface  **Complete**
 
 The central physical picture: a particle is a standing
 wave on T².  That wave carries energy.  How much of that
@@ -212,6 +212,16 @@ as a function of s?
 **Output**: Numerical coupling efficiency from each
 sub-track.  Does any produce α = 1/137 from geometry?
 
+**Result:** The 4π in the α formula IS the 3D solid angle.
+The shear sin²(2πs) provides the dominant suppression
+(~1/240 to ~1/435).  No simple geometric partition
+(channel counting, solid angles, aperture ratios)
+reproduces 1/137.  The weighted gauge field partition
+(by 1/L²) gives 1/80, the closest match.  The question
+"why α = 1/137?" reduces to "why s ≈ 0.01?"  The
+aperture model gives 1/α ≈ r × μ² ≈ 27, close to 24
+but dependent on unconstrained r_e.  Findings F18–F23.
+
 
 ## What success looks like
 
@@ -238,3 +248,103 @@ sub-track.  Does any produce α = 1/137 from geometry?
   independently produces α = 1/137 from the T² geometry,
   this would be the derivation of α we've been looking
   for — not from within T⁶, but from the T⁶/R³ interface.
+
+
+---
+
+## Summary — R32 complete
+
+### Outcome: Moderate-to-null result with one major structural insight
+
+The study confirms that α cannot be derived from T⁶ geometry
+at the current level of the model.  But it clarifies exactly
+WHERE the derivation must come from.
+
+
+### Track-by-track results
+
+**Track 1 — KK mode running (null).**  If all ~78,000 charged
+T⁶ modes contribute to vacuum polarization, α runs ~157,000×
+faster than in the Standard Model, with a Landau pole at ~1 MeV.
+This independently confirms that ghost modes must be
+electromagnetically suppressed by ~10⁵ (consistent with the
+Lamb shift constraint from R31 Track 4).
+
+**Track 2 — Volume dilution (null).**  The "bare" higher-
+dimensional coupling α_bare = α × r × μ₁₂² gives 1/α_bare
+≈ 5 (electron) and 4 (proton) — not 1/24.  Different sheets
+give different bare couplings.  The neutrino sheet volume
+ratio does not explain weak interactions (off by 11 orders
+of magnitude).
+
+**Track 3 — Why 24 (moderate).**  Cataloged 8 mathematical
+contexts where 24 appears.  The strongest connection to T⁶ is
+the Dedekind eta function η(τ)²⁴, which is forced by modular
+invariance on any torus.  But the naive T⁶ scalar partition
+function contains |η|⁶, not |η|²⁴.  No combination of aspect
+ratios produces 24.
+
+**Track 4 — Impedance (structural insight).**  The 4π in the
+α formula IS the 3D solid angle.  The shear sin²(2πs) provides
+the dominant suppression (~1/240).  Simple geometric mechanisms
+(solid angles, channel counting, Fresnel) give values of
+order 1/3 to 1/11 — too large.  The weighted gauge field
+partition (by 1/L²) gives 1/80, the closest match.
+
+
+### The central finding
+
+The α formula decomposes as:
+
+    α = r²μ sin²(2πs) / (4π(2−s)²)
+
+But the shear s is NOT independently determined.  It is
+reverse-engineered from the requirement that α = 1/137
+(via `solve_shear_for_alpha(r)` in lib/t6.py).  So the
+formula is a tautology for computing α: it takes α as input
+(through s) and returns α as output.
+
+The formula IS valuable for separating α into physical
+factors (shear leak, geometric amplification, angular
+normalization), but it does not derive α from first
+principles because s is a free parameter tuned to match.
+
+
+### The question that remains
+
+"Why is α = 1/137?" reduces to "why is s ≈ 0.01?"
+
+Neither kinematic geometry (Tracks 2–4) nor spectral
+self-consistency (R31 Tracks 3–6) constrains s.  The shear
+requires DYNAMICS — a variational principle, modular
+invariance condition, or stability requirement — to be
+selected.
+
+Possible next steps:
+1. Modular invariance: does requiring the T² partition
+   function to be modular-invariant constrain s?
+   (η²⁴ connection from Track 3)
+2. Self-consistent shear: does requiring the same α on all
+   sheets constrain r and s jointly?
+3. Stability: does minimizing some energy functional select s?
+4. Running endpoint: the weighted gauge partition gives 1/80
+   ≈ (137 + 24)/2 to 99.8%.  If α runs from 1/137 to 1/24,
+   the "midpoint" coupling 1/80 might have geometric meaning
+   as the scale-averaged coupling.
+
+
+### Open questions promoted
+
+- Q: Why is the weighted gauge partition 1/80 ≈ arithmetic
+  mean of 1/137 and 1/24?  Is this coincidence or evidence
+  that 137 and 24 are the IR and UV endpoints of a running
+  whose midpoint is geometrically determined?
+
+- Q: Can the shear be derived from modular invariance?
+  The Dedekind eta function constrains which modular
+  parameters τ = r + is are consistent.  Does requiring
+  Δ(τ) ≠ 0 (no degenerate torus) select s?
+
+- Q: Is the aperture ratio r × μ² (≈ 27 for electron,
+  ≈ 36 for proton) related to 24 through a geometric
+  correction factor?
