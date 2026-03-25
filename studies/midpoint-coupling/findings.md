@@ -223,3 +223,122 @@ or some other mechanism) remains open.  Track 2 showed
 that uniform-f QFT running doesn't produce the right
 profile, but more sophisticated models have not been
 tested.
+
+
+---
+
+## Track 5 — Running with known T⁶ particles only
+
+
+### F13. T⁶ particle content runs α ~2.4× too fast
+
+With ONLY empirically confirmed T⁶ particles (no ghost
+modes), the total screening from m_e to m_Z is:
+
+    Δ(1/α) = 21.9  (T⁶ known particles)
+    Δ(1/α) = 7.0   (SM one-loop)
+    Δ(1/α) = 9.0   (measured)
+
+This gives 1/α(m_Z) = 115, not 128.  The T⁶ model
+overshoots the measured running by a factor of ~2.4.
+
+Note: the SM one-loop also undershoots (7.0 vs 9.0)
+because it omits higher-order corrections and non-
+perturbative hadronic VP.  But the T⁶ error is in the
+opposite direction and much larger.
+
+
+### F14. The T⁶ running rate is 4.1× the SM rate
+
+The total vacuum-polarization coefficient is:
+
+    T⁶:  Σ b×Q² = 44.0   (23 charged species)
+    SM:   Σ N_c×b×Q² = 10.7  (9 species × color)
+
+The ratio is 4.1, driven by:
+- 15 charged baryons at b = 4/3 each (vs 3 leptons in SM)
+- Δ⁺⁺ with Q = +2 contributing Q² = 4 (11% alone)
+- No color factor ×3, but compensated by many more species
+- Vector mesons ρ± and K*± at b = 7 (32% of total)
+
+
+### F15. Vector mesons dominate the uncertainty
+
+The vacuum-polarization coefficient for massive spin-1
+(Proca) fields is b = 7, much larger than b = 4/3
+(Dirac) or b = 1/3 (scalar).  The ρ± and K*± together
+contribute 32% of the total T⁶ screening.
+
+Sensitivity:
+    b_vector = 1/3:   Δ(m_e→m_Z) = 15.3
+    b_vector = 4/3:   Δ(m_e→m_Z) = 16.3
+    b_vector = 7:     Δ(m_e→m_Z) = 21.9
+
+Even minimizing the vector contribution (b = 1/3),
+Δ = 15.3 is still 70% above the measured 9.0.  The
+overshooting is not solely due to the vector meson
+coefficient.
+
+
+### F16. The cutoff for 1/α₀ = 80 is ~168 TeV
+
+With only known T⁶ particles, the cutoff needed to
+accumulate 57 units of screening (from 80 to 137) is:
+
+    T⁶: Λ = 168 TeV  (log₁₀ Λ/GeV = 5.2)
+    SM:  Λ = 1.6 × 10²¹ GeV  (beyond Planck)
+
+The T⁶ model reaches 1/α₀ = 80 at a much lower scale
+because it runs faster.  168 TeV is above the LHC
+(~14 TeV) but well below the GUT scale — it would
+be accessible to a ~100× more powerful collider.
+
+
+### F17. Charged baryons and Δ⁺⁺ are the distinctive T⁶ contribution
+
+In the SM, protons do not appear in vacuum polarization
+loops (quarks do).  In T⁶, the proton is fundamental
+and contributes directly.  The per-particle breakdown
+from m_e to m_Z:
+
+    e⁻:     1.71  (7.8%)    ← same in both models
+    μ⁻:     0.96  (4.4%)    ← same
+    τ⁻:     0.56  (2.5%)    ← same
+    π±:     0.23  (1.0%)    ← replaces u,d quarks
+    K±:     0.18  (0.8%)    ← replaces s quark
+    ρ±:     3.54  (16.1%)   ← no SM analogue
+    K*±:    3.44  (15.7%)   ← no SM analogue
+    p:      0.65  (3.0%)    ← no SM analogue (quarks instead)
+    Δ⁺⁺:   2.44  (11.1%)   ← Q=+2, no SM analogue
+    Other baryons: 6.15 (28.0%)
+
+The 3 leptons contribute identically in both models
+(3.23 total).  The difference is entirely in the
+hadronic sector: T⁶ hadrons contribute 18.7 vs SM
+quarks' 3.75 (a factor of 5×).
+
+
+### F18. Open question: should short-lived resonances contribute?
+
+Many of the T⁶ baryons are extremely short-lived:
+- Δ resonances: τ ~ 10⁻²³ s (strong decay)
+- N* resonances: τ ~ 10⁻²³ s
+- ρ±: τ ~ 4 × 10⁻²⁴ s
+
+In the SM, these are not fundamental — they're composite
+resonances and do NOT appear as separate VP contributions.
+Instead, their effect is implicitly included in the non-
+perturbative hadronic VP (computed from e⁺e⁻ data).
+
+In T⁶, they ARE fundamental modes.  But their extreme
+instability (widths Γ ~ 100–300 MeV, comparable to their
+masses) raises the question: should a mode with Γ ~ m
+really be treated as a sharp mass threshold in the VP
+sum?  Or should its contribution be smeared over a wide
+energy range, effectively diluting its impact?
+
+This is not a small effect: the Δ, N*, ρ, and K*
+together account for ~75% of the T⁶ screening.  If
+their contribution is reduced by form factors or width
+effects, the T⁶ running could approach the measured
+value.

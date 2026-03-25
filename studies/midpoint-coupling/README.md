@@ -1,6 +1,6 @@
 # R34. The midpoint coupling — bidirectional modulation of α
 
-**Status:** Framed  
+**Status:** Active  
 **Questions:** Q77 (α as impedance), Q18 (deriving α)  
 **Type:** compute + theoretical  
 **Depends on:** R19 (shear-charge), R31 (alpha derivation),
@@ -177,6 +177,87 @@ metric channel count.  Solve for the required numerator.
 What function of (r, s, E) gives this modulation?
 
 
+### Track 5 — Running with known particles only (no ghosts)
+
+Track 2 included ~78,000 ghost modes at a uniform
+suppression factor f.  But ghost modes are empirically
+unobserved.  If nature does not select them as real
+excitations, they should not participate as virtual
+excitations either.  Virtual particles in QFT vacuum
+polarization loops are drawn from the same spectrum as
+real particles.  If ghost modes are absent from the
+physical spectrum, they are absent from the loops.
+
+**Premise:** The running of α should be computed using
+ONLY the particles that T⁶ predicts AND that nature
+confirms.  No ghosts.  No suppression factors.
+
+This changes the calculation fundamentally.  In the
+Standard Model, vacuum polarization comes from:
+- 3 charged leptons (e, μ, τ)
+- 6 quarks × 3 colors (u, d, s, c, b, t with
+  fractional charges 2/3 and 1/3)
+Total: ~21 charged Dirac fermions
+Effective Σ Q² × N_c = 3 + 4 + 1 = 8 (quarks) + 3
+(leptons) = 11
+
+In T⁶, hadrons are fundamental — there are no quarks.
+The vacuum polarization comes from the known T⁶ modes:
+- Leptons: e⁻, μ⁻, τ⁻ (Q = −1)
+- Mesons: π⁺, K⁺ (spin-0, Q = +1); ρ⁺, K*⁺ (spin-1,
+  Q = +1)
+- Baryons: p, Σ⁺, Δ⁺, N* resonances (Q = +1);
+  Σ⁻, Ξ⁻, Δ⁻, Σ*⁻, Ξ*⁻, Ω⁻ (Q = −1);
+  Δ⁺⁺ (Q = +2, contributes Q² = 4)
+Plus antiparticles for each.
+
+Key differences from SM:
+1. No color factor ×3 (hadrons are fundamental, not
+   composite)
+2. No fractional charges (all Q = ±1 or ±2)
+3. Many more charged species above ~140 MeV (pions,
+   kaons, hyperons, deltas)
+4. The Δ⁺⁺ with Q = +2 contributes 4× per unit
+
+The effective Σ Q² for T⁶ particles is comparable to
+the SM value but distributed very differently in mass:
+- Below 100 MeV: only e (vs e + u,d quarks in SM)
+- 100–1800 MeV: many hadrons enter (vs s,c quarks + μ)
+- Above 1800 MeV: τ only (vs b,t quarks + τ in SM)
+
+**Procedure:**
+1. Enumerate all known T⁶ particles from R28 with their
+   masses, charges, and spins
+2. Assign vacuum-polarization coefficients:
+   b = 4/3 for spin-1/2 fermions (Dirac)
+   b = 1/3 for spin-0 scalars
+   b = 7   for spin-1 vectors (Proca)
+3. Compute one-loop running:
+   1/α(E) = 1/α₀ + Σ_k (b_k Q_k²)/(3π) × ln(Λ/max(E,m_k))
+   for all known charged particles k with m_k < Λ
+4. Fit 1/α₀ so that 1/α(m_e) = 137.036
+5. Check: does 1/α(m_Z) = 128?
+6. Plot the full running curve and compare to SM
+
+**Success criteria:**
+- A bare coupling 1/α₀ ≈ 80 would validate the
+  weighted gauge partition from R32
+- 1/α(m_Z) matching 128 without tuning would be a
+  strong result
+- Any clean geometric value for 1/α₀ (even if not 80)
+  would be interesting
+
+**Result:** T⁶ known particles run α ~2.4× too fast.
+Δ(1/α) from m_e to m_Z = 21.9 (vs measured 9.0),
+giving 1/α(m_Z) = 115.  The T⁶ particle content has
+Σ b×Q² = 44 vs SM's 10.7, driven by many charged
+baryons, Δ⁺⁺ (Q=+2), and vector mesons (b=7).
+Even minimizing the vector coefficient: Δ = 15.3,
+still too large.  Cutoff for 1/α₀ = 80 is ~168 TeV.
+Open question: should short-lived resonances (Γ ~ m)
+contribute as sharp thresholds?  Findings F13–F18.
+
+
 ### ~~Track 4 — Bidirectional physics on the torus~~  **Retired**
 
 Superseded by Track 2.  The bidirectional hypothesis
@@ -187,9 +268,9 @@ a geometric base coupling).
 
 ---
 
-## Summary — R34 complete
+## Summary — R34 in progress
 
-### Outcome: Open — null result for simplest models, but untested avenues remain
+### Outcome so far: null result for ghost-based models; ghost-free approach (Track 5) pending
 
 **Track 1 (Kramers-Kronig):** The Lorentzian dispersion
 model has the right endpoints (137, 24) but the wrong
@@ -212,6 +293,14 @@ particles beyond e/p have not been tested.
 viable — solving s from 1/α₀ = 80 could reveal whether
 the resulting shear has geometric significance.
 
+**Track 5 (known particles only):** T⁶ known particles
+(no ghosts) run α 2.4× too fast: Δ(1/α) = 21.9 from
+m_e to m_Z vs measured 9.0.  The overshoot comes from
+many charged baryons (especially Δ⁺⁺ with Q²=4) and
+vector mesons (ρ±, K*± with b=7).  However, 75% of the
+excess comes from short-lived resonances (Γ ~ m) whose
+treatment as sharp VP thresholds is questionable.
+
 ### Key clarifications
 
 1. The T⁶ model provides a MECHANISM for α (shear-charge
@@ -227,7 +316,15 @@ the resulting shear has geometric significance.
    the unverified UV value 1/24.  Without it, 1/80 stands
    alone as a geometric number.
 
-4. The uniform-f running model is ruled out, but the
-   parameter space has not been exhausted.  Energy-
-   dependent ghost suppression (from R33) could
-   redistribute the running and fix the m_Z discrepancy.
+4. Ghost modes are empirically unobserved.  If they are
+   absent from the physical spectrum, they should also be
+   absent from virtual loops.  Track 5 confirms this
+   premise but reveals that even the known T⁶ content
+   runs too fast — the hadronic sector contributes 5×
+   more screening than SM quarks.
+
+5. The central open question is whether the T⁶ hadronic
+   VP should be computed perturbatively (as done here)
+   or requires non-perturbative treatment (as in the SM,
+   where hadronic VP is extracted from e⁺e⁻ → hadrons
+   data, not from quark loops).
