@@ -9,67 +9,56 @@
 
 | # | Section | Story beat |
 |---|---------|------------|
-| 1 | Geometry vs. particle | The neutrino T² is everywhere — you don't need a neutrino per cell |
-| 2 | The address space | Each point in space has a frequency-indexed mode spectrum |
+| 1 | The neutrino sheet | T²_ν is a feature of spacetime at every point; the concert-hall analogy |
+| 2 | The address space | Each cavity has a frequency-indexed mode spectrum |
 | 3 | Information capacity | How much can one cavity store, and how does it scale? |
-| 4 | The mobility problem | Stored information must move with the organism |
-| 5 | The wavepacket resolution | Compact-dimension excitations have spatial wavefunctions |
-| 6 | Electromagnetic coupling as the anchor | The cell's field is the bowl; the excitation is the marble |
-| 7 | Survival, mobility, and disruption | Three regimes: cell death, locomotion, trauma |
-| 8 | Comparison to engineered memory | How the architecture maps to RAM, radio, and holography |
-| 9 | Constraints and open calculations | What must be computed to make this quantitative |
+| 4 | Neutrons as gateways | Every neutron is a cross-plane node that couples to T²_ν |
+| 5 | Mobility solved | Neutrons are bound to atoms; the gateway travels with the cell |
+| 6 | Three regimes | Cell death, locomotion, and violent disruption |
+| 7 | Comparison to engineered memory | How the architecture maps to RAM, radio, and holography |
+| 8 | Constraints and open calculations | What must be computed to make this quantitative |
 
 ---
 
-## 1. Geometry vs. particle: the concert hall, not the violin
+## 1. The neutrino sheet
 
 ### 1.1 The compact dimensions exist everywhere
 
-The neutrino T² is not located inside a neutrino.  It is a
-structural feature of spacetime — two compact dimensions (θ₃,
-θ₄) that exist at every point in ordinary 3D space.  A neutrino
-particle is a specific standing-wave excitation on this geometry,
-the way a specific note is a vibration of a guitar string.  The
-string is there whether or not anyone is playing.
+The neutrino T² (hereafter "neutrino sheet" or T²_ν) is not
+located inside a neutrino particle.  It is a structural feature
+of spacetime — two compact dimensions (θ₃, θ₄) that exist at
+every point in ordinary 3D space.  A neutrino particle is a
+specific standing-wave excitation on this geometry, the way a
+specific note is a vibration of a guitar string.  The string is
+there whether or not anyone is playing.
 
-### 1.2 No neutrino particle per cell
+### 1.2 The concert hall analogy
 
-The storage hypothesis does not require a neutrino particle to
-be associated with each biological cell.  Neutrinos interact
-only via the weak force (cross-section ~10⁻⁴⁴ cm²); there is no
-known force that could confine one to a cell.  In the T⁶ model
-specifically, the cross-plane coupling between the neutrino T²
-and the electron/proton T²s is suppressed by (mᵥ/mₑ)² ~ 10⁻⁸.
-Trapping a neutrino is neither necessary nor possible.
+The neutrino sheet is the concert hall — a resonant space with
+specific acoustic modes determined by its geometry.  Neutrino
+particles are violins — one type of excitation that can exist
+in the hall.  Cell membranes are speakers — sources that inject
+energy at the hall's resonant frequencies.  The storage is in
+the hall's mode pattern, not in the violins.
 
-### 1.3 The concert hall analogy
+### 1.3 Accessing the hall requires a door
 
-The neutrino T² is the concert hall — a resonant space with
-specific acoustic modes.  Neutrino particles are violins — one
-type of excitation that can exist in the hall.  Cell membranes
-are speakers — sources that inject energy at the hall's resonant
-frequencies.  The storage is in the hall's mode pattern, not in
-the violins.  The hall exists whether or not any violin is present.
-
-### 1.4 What couples to what
-
-The write mechanism is resonant frequency coupling: an
-electromagnetic field oscillating at a mode's frequency, at a
-given location in space, couples into that compact-dimension mode
-via evanescent overlap.  The cell membrane's voltage oscillations
-(10–90 meV) match the neutrino T² mode energies.  No particle
-exchange is involved — the coupling is field-to-geometry, not
-particle-to-particle.
+The concert hall exists everywhere, but its modes are in compact
+dimensions — inaccessible to ordinary electromagnetic fields
+except through cross-dimensional coupling.  To write energy into
+the hall, or read it back, something must bridge the gap between
+ordinary 3D space and the neutrino sheet.  That bridge is the
+neutron (section 4).
 
 
 ## 2. The address space: frequency-indexed storage
 
 ### 2.1 Mode labeling
 
-Each standing wave on the neutrino T² is labeled by an integer
-pair (n₃, n₄) — the number of wavelengths around each compact
-loop.  The pair is the mode's address.  Its energy (and therefore
-frequency) is uniquely determined by the address and the geometry:
+Each standing wave on T²_ν is labeled by an integer pair (n₃,
+n₄) — the number of wavelengths around each compact loop.  The
+pair is the mode's address.  Its energy (and therefore frequency)
+is uniquely determined by the address and the geometry:
 
     E(n₃, n₄) = E₀ √((n₃/r)² + (n₄ − n₃s)²)
 
@@ -87,12 +76,12 @@ multiplexing in compact dimensions.
 
 ### 2.3 One cavity per ~(100 μm)³
 
-The neutrino T² has circumferences L₃ ≈ 200 μm and L₄ ≈ 42 μm.
-The evanescent coupling that connects 3+1D fields to compact
-modes has a characteristic range set by these lengths.  Two
-regions of space closer than ~100 μm share the same cavity and
-cannot store independent information.  The spatial resolution is
-one independent cavity per ~(100 μm)³ — the volume of a
+T²_ν has circumferences L₃ ≈ 200 μm and L₄ ≈ 42 μm.  The
+spatial resolution of compact-mode excitations is set by the
+Compton wavelength of the lightest neutrino mode (~42 μm).  Two
+regions of space closer than ~42 μm share the same cavity and
+cannot store independent information.  The spatial grain is one
+independent cavity per roughly (100 μm)³ — the volume of a
 biological cell.
 
 
@@ -157,158 +146,166 @@ cavity holds about 160 bytes — less than a tweet.
 | Compact-dim. body (1 eV) | ~555 PB |
 
 
-## 4. The mobility problem
+## 4. Neutrons as gateways to the neutrino sheet
 
-### 4.1 The naive picture is fatal
+### 4.1 The neutron is a cross-plane mode
 
-If compact-dimension modes are properties of fixed locations in
-spacetime, then walking across a room would separate an organism
-from its stored information — like writing a message on the floor
-and then leaving.  Every cell would arrive at a new location
-containing someone else's (or no one's) stored state.
+In the T⁶ model, the neutron is not a bag of quarks.  It is a
+single cross-plane standing wave: mode (1,2,0,0,1,2), spanning
+the electron T² (dimensions 1–2) and the proton T² (dimensions
+5–6).  Its charge neutrality follows from the cancellation of
+the electron-T² and proton-T² charge contributions.  Its mass
+exceeds the proton's because the cross-shear coupling σ_ep adds
+energy.
 
-### 4.2 The problem applies to all particles
+### 4.2 Cross-shear couples all three sheets
 
-This concern is not unique to storage.  In the T⁶ model, the
-electron IS a standing wave on compact dimensions.  When an
-electron moves through space, its mass, charge, and spin do not
-get left behind.  Whatever mechanism allows particles to carry
-their compact-dimension properties through space applies equally
-to sub-threshold storage excitations.
+The T⁶ metric contains cross-shear parameters that couple every
+pair of T² subplanes.  The neutron's mode directly involves the
+electron–proton coupling (σ_ep ≈ 0.038).  But the metric also
+contains electron–neutrino coupling (σ_eν) and proton–neutrino
+coupling (σ_νp).  A neutron — a physical excitation that already
+bridges two T² subplanes — provides a local coupling node where
+energy in ordinary EM fields can reach the neutrino sheet via
+the chain:
 
-### 4.3 The problem is therefore already solved (in principle)
+    EM field → electron T² → σ_eν → T²_ν
+    EM field → proton T²  → σ_νp → T²_ν
 
-If the T⁶ model is viable at all — if it can describe moving
-particles — then it already contains the mechanism for mobile
-compact-dimension excitations.  The storage paper inherits this
-mechanism; it does not need to invent a new one.
+### 4.3 Every cell has many gateways
 
+Nearly every atom heavier than hydrogen contains neutrons.  A
+typical human cell contains ~10¹⁴ atoms, most with one or more
+neutrons.  Each neutron is a cross-plane coupling node — a
+gateway to T²_ν at its location in R³.  The cell does not need
+to create or capture a special particle to access the neutrino
+sheet; the gateways are already embedded in its ordinary matter.
 
-## 5. The wavepacket resolution
+### 4.4 Redundancy
 
-### 5.1 Two-part wavefunctions in Kaluza-Klein theory
+The sheer number of neutron gateways per cell (~10¹⁴) provides
+massive redundancy.  No single atom is critical.  Atoms are
+continuously replaced by metabolism (the average atom in a human
+body is replaced every few months to years), but as long as
+replacement atoms also contain neutrons — which they do, because
+chemistry requires them — the gateway population is maintained.
 
-In standard KK theory, every excitation of the compact
-dimensions has both a compact part and a spatial part:
+### 4.5 Coupling strength scales with neutron density
 
-    ψ(x, θ) = φ(x, t) × χ(θ₃, θ₄)
+More neutrons per unit volume means stronger aggregate coupling
+to T²_ν.  Neutron-rich tissue (bone: calcium, phosphorus;
+enzymes: zinc, iron, copper) would couple more strongly than
+hydrogen-rich tissue (fat, water).  This is a testable
+prediction: mineral-dense structures might serve as preferential
+coupling sites.
 
-The compact part χ determines the mode identity (which frequency
-channel, what mass, what charge).  The spatial part φ is a
-wavepacket in ordinary 3D space that determines where the
-excitation is localized and how it moves.
+### 4.6 All gateways share one cavity
 
-### 5.2 Storage excitations are wavepackets, not fixed points
+The spatial resolution of T²_ν is ~42 μm (set by the Compton
+wavelength of the lightest neutrino mode).  All neutrons within
+a cell (~10–100 μm diameter) are within one cavity.  They do
+not create separate address spaces — they are multiple faucets
+flowing into the same tub.  More gateways means stronger
+coupling, not more storage.
 
-A sub-threshold energy deposit in mode (n₃, n₄) at position x₀
-is not a permanent marking on spacetime at x₀.  It is a
-wavepacket — a localized disturbance with both compact quantum
-numbers and a spatial envelope.  The spatial envelope can
-propagate, accelerate, and respond to forces, just like any
-other field excitation.
-
-### 5.3 Group velocity and dispersion
-
-The dispersion relation for a compact-dimension mode with 3D
-momentum k is E² = m²c⁴ + (ℏck)², where m is the mode mass
-(set by the compact quantum numbers).  The group velocity is
-v_g = ℏck/E — the same as any relativistic particle.  Storage
-excitations can move at any speed up to c.
-
-
-## 6. Electromagnetic coupling as the anchor
-
-### 6.1 The potential well picture
-
-The cell's electromagnetic field — generated by membrane
-voltages, ion currents, and charge distributions — creates a
-potential landscape in the compact-mode sector at the cell's
-location.  A sub-threshold excitation sits in the potential well
-created by this field.  The marble sits in the bowl.
-
-### 6.2 The bowl moves with the cell
-
-When the cell moves, its electromagnetic field moves.  The
-potential well shifts in space.  The compact-dimension
-excitation, coupled to the field, is dragged along — the way
-a marble follows a bowl being carried across a room.
-
-### 6.3 Coupling strength determines tracking fidelity
-
-The excitation tracks the cell if the coupling can "refresh"
-the compact-dimension state faster than the cell traverses one
-cavity width.  At walking speed (~1 m/s), a cell crosses 100 μm
-in ~100 μs.  THz-scale electromagnetic coupling operates on
-picosecond timescales — about 10⁸ times faster than needed.
-Even with severe evanescent suppression (factors of 10⁶), the
-margin is comfortable.
-
-### 6.4 The water-surface analogy
-
-The compact dimensions are like a water surface that extends
-everywhere.  A wave pattern on the surface is localized — a
-disturbance at a specific place.  A boat (the cell) moving
-across the lake drags wave patterns (the stored state) with it
-through electromagnetic coupling.  The water is everywhere, but
-the pattern follows the boat.
+Between cells (separated by ≳42 μm), neutrons couple to
+different cavities — independent address spaces.  The one-cavity-
+per-cell picture holds.
 
 
-## 7. Three regimes: survival, mobility, and disruption
+## 5. Mobility: the gateway travels with the cell
 
-### 7.1 Cell death within intact tissue
+### 5.1 The mobility problem
 
-When a single cell dies, its neighbors maintain the aggregate
-electromagnetic field of the tissue region (connected via gap
-junctions into isopotential fields).  The compact-mode
-excitation at that location does not lose its anchor — the
-surrounding cells' fields sustain the potential well.  The marble
-stays in the bowl even if one stave is replaced.
+If compact-dimension storage is tied to fixed locations in
+spacetime, then an organism walking across a room would leave its
+stored information behind — like writing on the floor and then
+walking away.
 
-This is why compact-dimension storage survives tissue turnover:
-the excitation is coupled to the collective field, not to any
-single cell.
+### 5.2 The neutron gateway resolves this
 
-### 7.2 Organism locomotion
+Neutrons are bound to atomic nuclei.  Atomic nuclei are bound
+into molecules.  Molecules are bound into cells.  When a cell
+moves through R³, its atoms — and their neutrons — move with it.
+The gateways are physically part of the matter.
 
-When the entire organism moves, all cells move together.  The
-aggregate electromagnetic field moves rigidly.  Every compact-
-mode excitation is dragged along simultaneously.  There is no
-relative displacement between the stored state and the biology
-— the entire system translates as a unit.
+The coupling chain (section 4.2) is local: each neutron couples
+to T²_ν at the neutron's own position in R³.  As the neutron
+moves, it couples to the neutrino sheet at its new position.  The
+stored state is continuously refreshed and dragged along by the
+moving gateway population, the way a magnet drags its field
+pattern through a ferrofluid.
 
-### 7.3 Violent disruption
+### 5.3 The coupling timescale is fast enough
 
-Severe trauma (crush injury, burns, radiation damage) destroys
-the electromagnetic field structure over a region.  The potential
-wells that anchor compact-mode excitations are disrupted.
-Information in the affected region degrades or is lost.
+The compact-mode excitation must track the cell faster than the
+cell crosses one cavity width.  At walking speed (~1 m/s), a cell
+traverses ~100 μm in ~100 μs.  The gateway coupling operates at
+THz-scale frequencies (picosecond timescales) — about 10⁸ times
+faster than needed.  Even with severe evanescent suppression
+(factors of 10⁶), a comfortable margin remains.
 
-This is consistent with biology: severe trauma causes
-morphogenetic errors, developmental defects, and loss of
-regenerative fidelity.  The prediction is that the boundary
-between "recoverable" and "lost" information correlates with
-the boundary between "intact field structure" and "disrupted
-field structure" — not with the boundary between "living cells"
-and "dead cells."
+### 5.4 The stored state is an attribute of the matter
 
-### 7.4 The Goldilocks coupling
+In this picture, the compact-dimension state is not "information
+stored at a location in spacetime."  It is "information stored
+in the matter at that location" — carried by the matter's
+neutron population and refreshed continuously through the
+gateway coupling.  The matter carries its neutrino-sheet state
+the same way it carries its mass, charge, and spin: as an
+attribute of the particles, not of the coordinates.
+
+
+## 6. Three regimes: survival, mobility, and disruption
+
+### 6.1 Cell death within intact tissue
+
+When a single cell dies, the surrounding tissue retains its
+atoms (and their neutrons).  The gateway population in the
+region is temporarily reduced but not eliminated.  More
+importantly, the neighboring cells' gap-junction-connected
+isopotential fields maintain the aggregate electromagnetic
+environment that sustains the compact-mode state.  The stored
+information survives because the tissue-level field and the
+gateway population persist.
+
+### 6.2 Organism locomotion
+
+When the organism moves, all cells move together.  Every neutron
+in every atom moves with the body.  The entire gateway
+population translates as a rigid body.  There is no relative
+displacement between the stored state and the biology.
+
+### 6.3 Violent disruption
+
+Severe trauma destroys tissue structure, scatters atoms, and
+disrupts the electromagnetic field.  The gateway population is
+dispersed and the coupling environment is destroyed.  Stored
+information in the affected region degrades or is lost.
+
+This predicts that the boundary between "recoverable" and "lost"
+morphogenetic information correlates with the boundary between
+"intact matter + field structure" and "dispersed matter" — not
+simply with cell viability.
+
+### 6.4 The Goldilocks coupling
 
 The coupling must be:
-- **Strong enough** to drag excitations along during movement
+- **Strong enough** to drag the stored state during locomotion
   and to write/read via membrane voltages
 - **Weak enough** to preserve stored states against thermal
   noise and casual electromagnetic interference
 
-This is the same tension identified in the parent paper
-(storage-in-t6, section 14.2).  The margin analysis (6.3)
-suggests both conditions can be met simultaneously, but the
-definitive answer requires computing the evanescent coupling
-strength from the T⁶ metric.
+The neutron-gateway model helps with the "strong enough" side:
+~10¹⁴ gateways per cell provide an aggregate coupling much
+larger than a single evanescent tail.  The definitive answer
+still requires computing the per-gateway coupling strength from
+the T⁶ metric.
 
 
-## 8. Comparison to engineered memory architectures
+## 7. Comparison to engineered memory architectures
 
-### 8.1 RAM analogy: address space and word size
+### 7.1 RAM analogy: address space and word size
 
 RAM addresses memory by physical location (row, column on a
 chip); each address holds 8 bits.  Compact-dimension memory
@@ -318,7 +315,7 @@ total address space (~180 modes at bio-relevant cutoff) is tiny
 by RAM standards — but there are 37 trillion "chips" in a human
 body.
 
-### 8.2 Radio analogy: frequency-division multiplexing
+### 7.2 Radio analogy: frequency-division multiplexing
 
 The architecture is closer to a radio spectrum than to a memory
 chip.  Each cavity has ~180 independent frequency channels, all
@@ -327,7 +324,7 @@ division multiplexing — the same principle used in fiber-optic
 communications, where a single fiber carries hundreds of
 independent data streams separated by wavelength.
 
-### 8.3 Holographic analogy: distributed, analog, interference-based
+### 7.3 Holographic analogy: distributed, analog, interference-based
 
 Holographic memory stores information as interference patterns
 in an optical medium.  Compact-dimension memory stores energy
@@ -336,7 +333,7 @@ distributed, and frequency-addressed.  Both degrade gracefully
 (losing detail before losing structure).  The key difference:
 holographic media wear out; compact-dimension geometry does not.
 
-### 8.4 DNA analogy: capacity and addressing
+### 7.4 DNA analogy: capacity and addressing
 
 The human genome stores ~750 MB (3 billion base pairs × 2 bits).
 One cell's compact-dimension cavity stores ~160 bytes (at
@@ -348,18 +345,17 @@ genomic — the compact-dimension system wins by a factor of
 ~10⁷ in aggregate unique information.
 
 
-## 9. Constraints and open calculations
+## 8. Constraints and open calculations
 
-### 9.1 The coupling strength (critical)
+### 8.1 Per-gateway coupling strength (critical)
 
-The evanescent coupling between 3+1D electromagnetic fields and
-compact-dimension modes has not been computed.  This single
-number determines whether the entire architecture is physically
-viable.  It must satisfy the Goldilocks constraint (section 7.4):
-strong enough for write/read and mobility, weak enough for
-retention and noise immunity.
+The cross-shear–mediated coupling from a single neutron into
+T²_ν modes has not been computed.  This determines the
+effective coupling per cell (single-neutron strength × ~10¹⁴
+gateways), which in turn determines write/read speed, noise
+immunity, and whether the Goldilocks condition (6.4) is met.
 
-### 9.2 The noise floor (determines bits per mode)
+### 8.2 The noise floor (determines bits per mode)
 
 The 7-bits-per-mode estimate assumes a ~1% noise floor.  The
 actual noise floor depends on thermal coupling (kT ≈ 25 meV at
@@ -367,34 +363,31 @@ room temperature), cross-shear leakage rates, and environmental
 electromagnetic interference.  A 10% noise floor halves the
 capacity; a 0.1% floor increases it by ~50%.
 
-### 9.3 Mode–mode coupling (determines information lifetime)
+### 8.3 Mode–mode coupling (determines information lifetime)
 
 On a perfectly flat T² with linear dynamics, modes are exactly
 independent and information persists forever.  Real corrections
 — cross-shear coupling, nonlinear wave interactions — transfer
 energy between modes, blurring the stored state.  The rate of
-this transfer sets the information lifetime.  This calculation
-requires the full T⁶ metric with realistic cross-shear
-parameters.
+this transfer sets the information lifetime.
 
-### 9.4 Spatial resolution (determines cavity independence)
+### 8.4 Spatial resolution (determines cavity independence)
 
-The estimate of one independent cavity per ~(100 μm)³ assumes
-the evanescent coupling range matches the compact dimension
-size.  The actual spatial resolution could be finer (if the
-coupling is more localized) or coarser (if field configurations
-create larger coherent regions, as suggested by Levin's
-isopotential cell fields).
+The one-cavity-per-cell estimate assumes the resolution is set
+by the Compton wavelength of the lightest neutrino mode (~42 μm).
+The actual resolution could be finer (if gateway coupling is
+more localized) or coarser (if Levin's isopotential cell fields
+create larger coherent regions).
 
-### 9.5 Tracking speed limit (determines mobility constraint)
+### 8.5 Neutron density variation across tissue types
 
-The maximum organism speed at which compact-mode excitations
-can track the biology.  Estimated at ≫ 1 m/s (section 6.3),
-but the actual limit depends on the coupling strength.  If
-the limit is below biological speeds (cheetah: 30 m/s; nerve
-impulse: 100 m/s), the hypothesis faces a constraint.
+If coupling scales with neutron count, different tissues have
+different coupling strengths.  Mapping neutron density across
+tissue types (bone vs. fat vs. nerve vs. muscle) could predict
+which tissues are most sensitive to compact-dimension storage —
+and which are most vulnerable to disruption.
 
-### 9.6 Relationship to the parent paper
+### 8.6 Relationship to the parent paper
 
 This paper develops the information-theoretic and engineering
 implications of the storage hypothesis presented in
@@ -403,3 +396,6 @@ of that paper as given (T⁶ geometry, threshold absorption,
 evanescent coupling) and works through three questions that
 paper leaves open: how much can the system store, how is it
 addressed, and how does the stored state move with the organism.
+The neutron-gateway mechanism (section 4) provides a concrete
+physical answer to the mobility question that the parent paper
+identifies but does not resolve.

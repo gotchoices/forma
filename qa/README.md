@@ -44,5 +44,6 @@ For questions that need a computational model, see [`studies/`](../studies/).
 | Q53 | Does the model predict the anomalous magnetic moment? | Open — in [INBOX](INBOX.md) |
 | [Q76](Q76-origin-of-metric-signature.md) | What makes time temporal? Origin of metric signature and 6+3+1 split | Open — deepest structural question |
 | [Q77](Q77-alpha-as-impedance.md) | Is α the impedance mismatch between T⁶ and R³? | Open — reframes α derivation |
+| [Q78](Q78-neutrino-sheet-access.md) | How does a biological cell access the neutrino sheet? | Open — two candidate mechanisms |
 
 Unprocessed and brief questions live in [`INBOX.md`](INBOX.md).
