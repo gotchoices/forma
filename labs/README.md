@@ -31,5 +31,5 @@ These are designs, not results.  None have been performed.
 
 | Lab | Tests | Status |
 |-----|-------|--------|
-| [L00](L00-reiter-replication.md) | Is threshold absorption real? Replicate Reiter's beam-split coincidence experiment | Proposed — prerequisite |
+| [L00](L00-reiter-replication.md) | Independent replication of Reiter's beam-split coincidence experiments (γ-ray and α-ray) | Proposed — prerequisite |
 | [L01](L01-thz-write-read.md) | Can energy be written into and read from T²_ν modes via THz radiation? | Proposed |

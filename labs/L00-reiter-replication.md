@@ -1,542 +1,725 @@
-# L00: Threshold Absorption — Replication and Characterisation
+# L00: Independent Replication of the Unquantum Beam-Split Coincidence Experiment
 
-**Status:** Proposed — prerequisite for all storage experiments
-**Tests:** Threshold model (continuous absorption, quantized emission)
-**T⁶ sheet:** Electron T² (88 keV gamma ≈ 17% of the 511 keV
-  electron-mass threshold)
+**Status:** Proposed
+**Objective:** Independently replicate the gamma-ray and alpha-ray
+  beam-split coincidence experiments reported by Eric S. Reiter.
 **Source paper:** Reiter, E.S. "New Experiments Call for a Continuous
   Absorption Alternative to Quantum Mechanics — The Unquantum Effect."
   *Progress in Physics*, Vol. 10, Issue 2, pp. 82–88 (2014).
-**Related:** [storage-in-t6](../papers/storage-in-t6.md) §3
-  (threshold theory foundation)
+**Additional references:**
+  Reiter, E.S. "Photon Violation Spectroscopy." viXra:1203.0094 (2012).
+  Reiter, E.S. "A Serious Challenge to Quantization." viXra:1203.0092 (2012).
+  Reiter, E.S. "Particle Violation Spectroscopy." viXra:1204.0032 (2012).
 
 ---
 
-## 0. Why this comes first
+## Background
 
-The entire compact-dimension storage hypothesis rests on two
-pillars: the T⁶ geometry model and Reiter's threshold model.
-If threshold absorption is not real — if energy is truly
-quantized at absorption, not just at emission — then
-sub-threshold storage in compact-dimension modes is impossible
-by definition.  Reiter's experiment has not been independently
-replicated.  Before investing in THz write/read experiments
-(L01), we should establish whether the foundational claim
-survives independent scrutiny.
+In a standard beam-split coincidence test, a single quantum
+(photon or particle) is directed at a beam splitter.  Two
+detectors measure coincident arrivals.  Quantum mechanics
+predicts that a single quantum cannot trigger both detectors
+simultaneously; the only coincidences should be accidental
+(two independent quanta arriving within the coincidence
+window).  The expected accidental coincidence rate is:
 
-**Note on T⁶ sheet assignment:** The 88 keV gammas interact with
-detector atoms via the photoelectric effect — coupling to atomic
-electrons.  In T⁶ language, the sub-threshold pre-loaded state
-is energy sitting in electron-T² modes.  The electron T²
-fundamental mode is at 511 keV (m_e c²), so 88 keV is deeply
-sub-threshold.  All tracks in this lab operate on the electron
-T².  The neutrino T² (mode energies ~6–90 meV, THz frequencies)
-is unreachable with gamma-ray equipment — that requires L01.
+    Rc = R₁ × R₂ × τ
+
+where R₁ and R₂ are the singles rates of each detector and
+τ is the coincidence time window.
+
+All prior beam-split coincidence tests (Givens 1946, Brannen
+& Ferguson 1956, Clauser 1974, Grainger et al. 1986) used
+visible light or x-rays and measured Re/Rc ≈ 1, confirming the
+quantum prediction.
+
+Reiter (2014) performed this test with gamma rays and alpha
+rays.  He reports coincidence rates far exceeding chance:
+
+| Experiment | Source | Re/Rc |
+|------------|--------|-------|
+| Cd-109 tandem | 88 keV γ | 33.5 |
+| Na-22 triple coincidence | 511 keV γ | 963 |
+| Am-241 alpha split | 5.5 MeV α | 105 |
+
+These results, if reproducible, would contradict the single-
+quantum prediction of quantum mechanics.  No independent
+replication has been published.
 
 ---
 
 ## Tracks
 
-| # | Name | Question | Depends on |
-|---|------|----------|------------|
-| 1 | Tandem replication | Does Re/Rc ≫ 1 reproduce? | — |
-| 2 | Pre-load persistence | How long does the pre-loaded state survive? | Track 1 |
-| 3 | Controlled write/read | Can we load a known energy and read it back? | Track 2 |
-| 4 | Geometry and source variants | Beam-split, Na-22 triple, alpha split | Track 1 |
+| # | Name | Objective | Depends on |
+|---|------|-----------|------------|
+| 1 | Cd-109 tandem coincidence | Replicate Reiter's core γ-ray result (Re/Rc ≫ 1) | — |
+| 2 | Sensitivity studies | Measure response to coincidence window, SCA window, source chemistry, and temperature | Track 1 |
+| 3 | Na-22 triple coincidence | Replicate the strongest reported signal (Re/Rc = 963) | Track 1 |
+| 4 | Beam-split geometry | Replace tandem with scattering-target geometry | Track 1 |
+| 5 | Alpha-ray split | Extend to matter waves (He-4 nucleus) | Track 1 |
 
 ---
 
----
+# Track 1: Cd-109 Tandem Coincidence
 
-# Track 1: Tandem replication
+This is the core experiment.  It reproduces the setup described
+in Reiter (2014) §2 and Reiter (2012, viXra:1203.0094) Fig. 6.
 
-## 1.1 Hypothesis
+## 1.1 Claim under test
 
-Energy absorption in matter is continuous (not quantized).
-Detectors accumulate sub-threshold energy from previous
-absorptions.  When a gamma ray is split between two detectors,
-both detectors can fire simultaneously if each had accumulated
-enough pre-loaded energy to reach threshold with only a partial
-gamma — producing coincidence rates that exceed the chance
-prediction of quantum mechanics.
+A single 88 keV gamma ray emitted by Cd-109 decay can trigger
+coincident detections in two detectors arranged in tandem, at
+a rate far exceeding the accidental chance rate.
 
-## 1.2 Predicted outcome (threshold model)
+## 1.2 Geometry
 
-Coincidence rate Re significantly exceeds the chance rate Rc:
+```
+   ┌──────────┐     ┌──────────────┐     ┌──────────────────┐
+   │  Cd-109  │     │ Detector #1  │     │   Detector #2    │
+   │  source  │ ──► │ (thin, 4 mm) │ ──► │ (thick, 1.5 in)  │
+   │  in Sn   │     │   NaI(Tl)    │     │    NaI(Tl)       │
+   │collimator│     │              │     │                  │
+   └──────────┘     └──────┬───────┘     └───────┬──────────┘
+                           │                     │
+                      Shaping amp           Shaping amp
+                           │                     │
+                         SCA #1                SCA #2
+                           │                     │
+                           └─────┬───────────────┘
+                                 │
+                          Coincidence unit
+                                 │
+                           Counter / DSO
+```
 
-    Re/Rc ≫ 1
+"Tandem geometry": the source illuminates the thin front
+detector.  The front detector partially absorbs the gamma;
+the remainder passes through to the thick rear detector.
+Both detectors are enclosed in a lead shield.
 
-Reiter reports Re/Rc = 33.5 for Cd-109 in tandem geometry, and
-Re/Rc = 963 for Na-22 triple-coincidence.
+## 1.3 What Reiter measured
 
-## 1.3 Null outcome (standard QM)
+With the setup described above:
 
-    Re/Rc = 1
-
-A single gamma photon goes to one detector or the other, never
-both.  Coincidences occur only by chance (two independent
-gammas arriving within the time window).
-
-## 1.4 What Reiter did (reference protocol)
-
-### 1.4.1 Gamma-ray beam-split (tandem geometry)
-
-**Source:** Cd-109 (88 keV gamma, single emission per decay via
-electron capture to stable Ag-109).  License-exempt activity
-level.  Also tested: Co-57 (122 keV), Am-241 (59.6 keV),
-Na-22 (511 keV pair-annihilation), Mn-54, Cs-137.
-
-**Detectors:** Two NaI(Tl) scintillation crystals coupled to
-photomultiplier tubes (PMTs):
-- Detector #1 (front): custom 4 mm thick, 40×40 mm NaI(Tl)
-- Detector #2 (behind): 1.5-inch Bicron NaI-PMT
-
-"Tandem geometry": source → thin detector #1 → thick detector #2.
-The thin front detector partially absorbs the gamma; the
-remainder passes through to the thick rear detector.
-
-**Shielding:** Lead enclosure reducing background rate by 31×.
-
-**Electronics per channel:**
-- Ortec 460 shaping amplifier
-- Ortec 551 single-channel analyzer (SCA)
-- HP 5334 counter (singles rate)
-- Lecroy LT344 4-channel digital storage oscilloscope (DSO)
-  with histogram software (pulse-height and Δt histograms)
-
-**SCA window:** Lower level (LL) set to ~2/3 of the Cd-109
-characteristic 88 keV pulse height.  This ensures both
-detectors record only full-energy (or near-full-energy)
-events — ruling out frequency down-conversion as an
-explanation.
-
-**Coincidence window:** τ = 185 ns.
-
-**Key measurement:**
-- Singles rates: R₁ = 291/s, R₂ = 30/s
-- Chance rate: Rc = R₁ × R₂ × τ = 0.0016/s
-- Background (no source): 0.0004/s
+- Singles rate, detector #1: R₁ = 291/s
+- Singles rate, detector #2: R₂ = 30/s
+- Coincidence window: τ = 185 ns
+- Chance coincidence rate: Rc = R₁ × R₂ × τ = 0.0016/s
+- Background (no source, 40.1 ks): 0.0004/s
 - Measured coincidence rate: Re = 295/5500s − 0.0004/s = 0.053/s
 - **Result: Re/Rc = 33.5**
 
-### 1.4.2 Additional findings from Reiter
+## 1.4 Procedure
 
-- **Chemical state sensitivity:** Cd-109 in salt (crystalline)
-  form produced 5× more coincidences than Cd-109 electroplated
-  as metal onto platinum wire.  Conventional gamma spectroscopy
-  showed no difference between the two forms.
-- **Distance sensitivity:** Longer-wavelength gammas (Am-241)
-  showed enhanced effect at closer range; shorter-wavelength
-  (Cs-137) showed enhanced effect at greater range.
-- **Temperature sensitivity:** Liquid-nitrogen-cooled aluminum
-  beam splitter produced 50% more coincidences.
-- **Crystal orientation:** Coincidence rate varied with crystal
-  angle — a new form of crystallography distinct from Bragg
-  diffraction.
-- **Triple coincidence (Na-22):** Positron annihilation produces
-  two 511 keV gammas.  Third detector catches the accompanying
-  1.27 MeV gamma.  One of the two annihilation gammas was split
-  in tandem.  Re/Rc = 963.
-- **Alpha-ray split (Am-241):** 5.5 MeV alpha through gold leaf.
-  Two silicon surface-barrier detectors.  Re/Rc = 105.  Six
-  coincident pulse pairs exceeded particle-energy conservation
-  (both pulses above half the characteristic alpha energy).
+### Step 1: Detector calibration
 
----
+Place the Cd-109 source directly in front of each detector
+individually.  Record the pulse-height spectrum on the MCA.
+Identify the 88 keV photopeak.
 
-## 1.5 Replication protocol
+Set each SCA window:
+- Lower level (LL): ~2/3 of the photopeak centroid (~59 keV
+  equivalent pulse height)
+- Upper level (UL): ~4/3 of the photopeak centroid (~117 keV
+  equivalent pulse height)
 
-### 1.5.1 Minimum viable replication
+This window accepts only events consistent with full-energy
+absorption of the 88 keV gamma.  It rejects:
+- Compton-scattered photons (lower energy)
+- NaI fluorescence x-rays (~30 keV, iodine K-edge)
+- Noise
 
-Reproduce the Cd-109 tandem-geometry gamma test with
-off-the-shelf nuclear instrumentation.
+Record the photopeak centroid, FWHM, and SCA window settings
+for each detector.  Verify that the SCA passes ~80–90% of the
+photopeak events and rejects events below 59 keV.
 
-**Source:**
-- Cd-109 sealed source, ~1 μCi (license-exempt in most
-  jurisdictions).  Available from Spectrum Techniques or
-  Eckert & Ziegler.  ~$50–200.
+### Step 2: Background measurement
 
-**Detectors:**
-- Detector #1: thin NaI(Tl) crystal, 3–5 mm thick, ~40 mm
-  diameter, coupled to PMT.  Custom order from Saint-Gobain
-  or Hilger Crystals.  ~$1,000–3,000.
-- Detector #2: standard 1.5" or 2" NaI(Tl) detector assembly
-  (e.g., Ortec 905 series or Saint-Gobain 2M2/2).  ~$2,000–4,000.
+Remove all sources.  Run in tandem geometry (both detectors
+in position, lead shield closed) for ≥10 hours.  Record:
+- Background singles rate for each detector
+- Background coincidence rate
+- MCA spectrum for each detector (to check for unexpected
+  environmental peaks)
 
-**Electronics:**
-- 2× shaping amplifier (Ortec 572A or CAEN N568B)
-- 2× single-channel analyzer (Ortec 550A or 551)
-- Coincidence unit (Ortec 414A) with adjustable τ
-- 2× counter/scaler (Ortec 994 or CAEN N1145)
-- Multichannel analyzer or DSO for pulse-height verification
-  (e.g., Ortec EASY-MCA or any 100+ MHz oscilloscope)
+Expected background coincidence rate: < 0.001/s (dominated by
+cosmic rays at ~1/min/cm²).
 
-**Shielding:**
-- Lead castle: 2" thick lead bricks surrounding the detector
-  assembly.  Available from nuclear lab suppliers.  ~$500–1,000.
+### Step 3: Single-emission verification (facing geometry)
 
-**Approximate total cost:** $5,000–15,000 (less if borrowing from
-a university nuclear physics teaching lab, which typically has
-all of this equipment).
+Place the Cd-109 source between the two detectors, with
+detectors facing each other to cover close to 4π solid angle.
+Measure coincidence rate for ≥2 hours.
 
-### 1.5.2 Procedure
+Expected: Re/Rc ≈ 1.  This confirms that Cd-109 emits only
+one gamma per decay event.  If Re/Rc > 1 in this geometry,
+the source may be contaminated or the electronics have
+cross-talk.
 
-1. **Calibrate detectors.**  Place Cd-109 source directly in
-   front of each detector separately.  Record the 88 keV
-   photopeak on the MCA.  Set each SCA window: LL at ~2/3 of
-   the photopeak centroid, UL at ~4/3.  This accepts only
-   full-energy events.
+### Step 4: Tandem coincidence measurement
 
-2. **Background measurement.**  No source.  Record coincidence
-   rate for ≥10 hours.  This establishes the accidental +
-   cosmic-ray baseline.
+Assemble the tandem geometry:
+1. Place Cd-109 source in tin collimator.
+2. Position collimator directly in front of detector #1
+   (thin crystal).
+3. Position detector #2 (thick crystal) directly behind
+   detector #1, as close as possible.
+4. Close lead shield around the assembly.
 
-3. **Control: facing geometry.**  Place source between the two
-   detectors facing each other (covering ~4π).  Measure
-   coincidence rate.  Expected: Re/Rc ≈ 1 (confirms only one
-   gamma emitted per decay; Reiter verified this).
+Set coincidence window τ = 185 ns.
 
-4. **Tandem measurement.**  Source in collimator in front of
-   detector #1.  Detector #2 directly behind #1.  Record
-   singles rates R₁, R₂ and coincidence rate Re for ≥2 hours.
-   Compute Rc = R₁ × R₂ × τ.  Compute Re/Rc.
+Record for ≥2 hours:
+- Singles rates R₁ and R₂ (from counters)
+- Coincidence rate Re (from coincidence unit → counter)
+- Δt histogram on DSO (time difference between coincident
+  pulses)
+- Pulse-height histograms on DSO for both channels
 
-5. **Vary τ.**  Repeat tandem measurement with τ = 50, 100, 200,
-   500 ns.  If the effect is real, Re/Rc should be roughly
-   constant (the coincidences are genuinely simultaneous, not
-   time-smeared); if artifact, Re/Rc may depend on τ.
+Compute:
+- Rc = R₁ × R₂ × τ
+- Re (corrected for background from Step 2)
+- Re/Rc
 
-6. **Vary SCA window.**  Repeat with LL at 1/2 and 3/4 of
-   photopeak.  Reiter's prediction: higher LL (stricter energy
-   window) should still show Re/Rc ≫ 1, ruling out
-   down-conversion.
+**Reiter's claim is replicated if Re/Rc ≫ 1.**
 
-7. **Source chemical state (if resources allow).**  Prepare
-   Cd-109 in salt form (evaporate isotope solution) and metal
-   form (electroplate onto wire).  Compare Re/Rc.  Reiter
-   reports 5× difference.
+### Step 5: DSO pulse verification
 
-### 1.5.3 Statistical requirements
+For every coincident event, examine the analog pulse shapes
+on the DSO.  Verify:
+- Both pulses are well-shaped (smooth rise, exponential
+  decay, consistent with scintillation pulses)
+- No misshapen pulses (double pulses, truncated pulses,
+  or pulses from electronic ringing)
+- The fraction of misshapen pulses is < 1%
 
-At Reiter's rates (Re ≈ 0.053/s, Rc ≈ 0.0016/s), achieving
-5σ significance requires:
+This rules out electronic artifacts, pile-up, and PMT
+anomalies as explanations for excess coincidences.
 
-    N = (5/√N)² → N ≈ 25 events at Re
-    Time = 25 / 0.053 ≈ 470 seconds ≈ 8 minutes
+### Step 6: Δt histogram analysis
 
-This is remarkably fast.  A single afternoon of data collection
-should establish or refute the effect at high statistical
-significance.  The main time investment is calibration and
-systematics.
+From the DSO, plot the time-difference histogram between
+coincident pulses.  Expected features:
+- A peak near Δt = 0 (genuine coincidences)
+- A flat background (accidental coincidences)
 
----
+If Re/Rc ≫ 1, the peak at Δt = 0 should be prominent above
+the flat background.  The width of the peak indicates the
+timing resolution of the system.
 
-## 1.6 Potential artifacts to control for
+## 1.5 Expected results
 
-| Artifact | Mechanism | Control |
-|---|---|---|
-| Pile-up | Two independent gammas within τ | Compute Rc from R₁, R₂, τ; this IS the pile-up rate; Re/Rc ≫ 1 rules it out |
-| Compton scatter | Gamma Compton-scatters in #1, scattered photon hits #2 | SCA window rejects scattered photons (lower energy than 88 keV) |
-| Fluorescence | Gamma excites NaI fluorescence in #1, fluorescence photon hits #2 | NaI fluorescence is ~30 keV (iodine K-edge), well below LL at ~59 keV |
-| Cosmic rays | Cosmic muon traverses both detectors | Background subtraction; cosmic rate is ~1/min/cm², orders below Re |
-| PMT afterpulsing | PMT #1 fires, afterpulse triggers PMT #2 | Detectors are separate assemblies with no electrical coupling; DSO pulse-shape verification |
-| Source contamination | Cd-109 sample contains other isotopes | Check singles spectrum on MCA for unexpected peaks |
-| Cross-talk | Electrical cross-talk between detector channels | Shield cables; use separate amplifier/SCA units; test with pulser |
+| Outcome | Interpretation | Action |
+|---------|---------------|--------|
+| Re/Rc ≫ 1 (e.g. 10–50) | Reiter's core result replicated | Proceed to Tracks 2–5 |
+| Re/Rc ≈ 1 | Result not replicated | Review systematics; consult Reiter's detailed protocols; attempt with different detector/source |
+| 1 < Re/Rc < 5 | Ambiguous; possible small effect or systematic | Increase measurement time; vary geometry; investigate artifacts |
+
+## 1.6 Potential artifacts
+
+| Artifact | Mechanism | How it is controlled |
+|----------|-----------|---------------------|
+| Pile-up | Two independent gammas arrive within τ | This IS the chance rate Rc; Re/Rc ≫ 1 rules it out by definition |
+| Compton scatter | Gamma Compton-scatters in detector #1; scattered photon enters detector #2 | SCA rejects scattered photons (they have lower energy than 88 keV); LL at 59 keV excludes them |
+| Iodine fluorescence | 88 keV gamma ejects iodine K-shell electron in detector #1; fluorescence x-ray (~30 keV) enters detector #2 | 30 keV is well below LL (59 keV); rejected by SCA |
+| Cosmic rays | Cosmic muon traverses both detectors | Background subtraction (Step 2); rate is ~1/min/cm², orders below expected Re |
+| PMT afterpulsing | PMT in detector #1 fires, electrical afterpulse triggers PMT in detector #2 | Detectors are separate assemblies with no shared electronics; DSO pulse-shape verification (Step 5) |
+| Electrical cross-talk | Signal from channel 1 leaks into channel 2 via shared cables or ground loops | Separate amplifier and SCA units per channel; shielded cables; verify with electronic pulser (trigger one channel, confirm no response on other) |
+| Source contamination | Cd-109 sample contains other isotopes that emit multiple gammas | Check singles spectrum on MCA for unexpected peaks; Cd-109 should show only the 88 keV peak and low-energy Ag x-rays |
 
 ---
 
----
+# Track 2: Sensitivity Studies
 
-# Track 2: Pre-load persistence
+*Requires:* Track 1 produces Re/Rc ≫ 1.
 
-*Requires:* Track 1 succeeds (Re/Rc ≫ 1).
-*Uses:* Same equipment as Track 1.
+These measurements reproduce the sensitivity findings
+reported by Reiter in viXra:1203.0094.
 
-## 2.1 Hypothesis
+## 2.1 Coincidence window variation
 
-The sub-threshold pre-loaded state in a detector crystal
-persists for a measurable duration — it is not merely a
-transient excitation that decays in nanoseconds.  In T⁶
-language: energy deposited into electron-T² modes below the
-511 keV emission threshold remains trapped in those modes
-until either (a) additional energy pushes it over threshold
-or (b) it leaks out via cross-shear coupling to other T²
-subplanes or thermal radiation.
+Repeat the Track 1 tandem measurement with different
+coincidence windows:
 
-## 2.2 Predicted outcome
+    τ = 50, 100, 185, 200, 500, 1000 ns
 
-The coincidence rate Re/Rc remains elevated even when the
-pre-loading source is removed for a controlled delay before
-the probe source is applied.  The persistence time reveals
-the storage lifetime of sub-threshold energy on the
-electron T².
+Record Re and compute Re/Rc for each τ.
 
-Possible regimes:
-- **Nanoseconds:** pre-load is a transient electronic
-  excitation (not compact-dimension storage)
-- **Microseconds–milliseconds:** consistent with phonon-mediated
-  relaxation in the crystal lattice
-- **Seconds–hours:** strong evidence for a protected mode (compact
-  dimension or long-lived metastable state)
-- **Days+:** extraordinary — would imply near-perfect isolation
+**Expected (if effect is real):** Re/Rc should be roughly
+constant across τ values, because the coincident events are
+genuinely simultaneous (Δt ≈ 0).  The absolute coincidence
+count increases with τ (wider window catches more accidentals
+too), but the ratio Re/Rc should be stable.
 
-## 2.3 Null outcome
+**Expected (if artifact):** Re/Rc depends on τ, suggesting the
+excess coincidences are time-smeared rather than simultaneous.
 
-Coincidence rate drops to Re/Rc ≈ 1 immediately when the
-source is removed — the pre-loaded state has zero persistence.
-This would not invalidate Track 1 (threshold absorption can
-still work if the pre-load is continuously replenished by
-ambient radiation) but would constrain the storage hypothesis:
-retention requires active maintenance, not passive memory.
+## 2.2 SCA window variation
 
-## 2.4 Procedure
+Repeat the Track 1 tandem measurement with different SCA
+lower-level settings:
 
-1. **Establish baseline.**  Run Track 1 to confirm Re/Rc ≫ 1
-   in tandem geometry with continuous Cd-109 source.
+    LL = 1/2, 2/3, 3/4, 5/6 of photopeak centroid
 
-2. **Two-source protocol.**  Use two separate Cd-109 sources:
-   - Source A ("pre-loader"): placed in front of detector #1
-     for a controlled exposure time T_load.
-   - Source B ("probe"): a second, identical source used to
-     test the detector after Source A is removed.
-   Use separate collimators so each source only illuminates
-   detector #1 and can be inserted/removed independently.
+Record Re/Rc for each LL setting.
 
-3. **Load–wait–probe cycle.**
-   - **Load phase:** Expose detector to Source A for T_load
-     (e.g. 60 seconds at the standard ~300/s singles rate).
-   - **Remove source:** Physically remove Source A (shutter or
-     retraction).
-   - **Wait phase:** Delay Δt (variable: 0, 1s, 10s, 60s,
-     5min, 30min, 2hr).
-   - **Probe phase:** Insert Source B and measure Re/Rc for a
-     fixed probe duration (e.g. 60 seconds).
+**Expected:** Re/Rc ≫ 1 at all LL settings, including the
+strictest (5/6).  This rules out energy down-conversion as an
+explanation — if the coincidences were due to a single gamma
+splitting its energy between two detectors (half-energy in
+each), a strict SCA window would reject them.
 
-4. **Plot Re/Rc vs. Δt.**  Fit an exponential decay to extract
-   the pre-load lifetime τ_preload.
+Reiter's key argument: the SCA window must be set high enough
+that BOTH detectors record full-energy (or near-full-energy)
+pulses.  This is only possible if the detectors had
+sub-threshold energy already present.
 
-5. **Controls:**
-   - No-load control: probe without prior loading (expect
-     Re/Rc at whatever level Track 1 established with a
-     fresh detector — there is always some ambient pre-load).
-   - Temperature variation: repeat at room temperature and
-     with detector cooled (LN₂ or Peltier) to see if
-     τ_preload changes (threshold model predicts longer
-     lifetime at lower temperature — less thermal leakage).
+## 2.3 Source chemical state
 
----
+Prepare Cd-109 in two chemical forms:
 
-# Track 3: Controlled write/read
+- **Salt form:** Evaporate a Cd-109 isotope solution on a
+  substrate.  The cadmium forms a crystalline salt.
+- **Metal form:** Electroplate Cd-109 from solution onto the
+  end of a platinum wire.
 
-*Requires:* Track 2 shows τ_preload ≫ probe duration.
-*Uses:* Same equipment plus a multichannel analyzer (MCA) for
-spectral resolution.
+Using the same tandem geometry and electronics, measure Re/Rc
+for each source form.
 
-## 3.1 Hypothesis
-
-A specific quantity of sub-threshold energy can be
-deliberately loaded ("written") into a detector crystal, and
-the amount of stored energy can be inferred ("read") from the
-subsequent coincidence rate or from shifts in the pulse-height
-spectrum.
-
-## 3.2 Predicted outcome
-
-- **Write:** Exposing a detector to N gamma pulses at a
-  controlled rate deposits a predictable amount of
-  sub-threshold energy.  The coincidence rate Re/Rc
-  increases monotonically with N (more pre-load → easier to
-  reach threshold from a split gamma).
-- **Read:** The pulse-height spectrum of the pre-loaded
-  detector shows a subtle upward shift in the photopeak
-  centroid, or a broadening of the peak toward higher
-  energies, because some events start from a pre-loaded
-  baseline.
-- **Destructive read:** A sufficiently intense probe beam
-  "reads out" all the stored pre-load by pushing it over
-  threshold, and the coincidence rate returns to the
-  fresh-detector baseline.  The integrated excess
-  coincidences during readout correspond to the total
-  stored energy.
-
-## 3.3 Null outcome
-
-No correlation between prior loading history and subsequent
-coincidence rate or spectral shape.  Each detection event is
-independent of previous history.  This would be consistent
-with standard QM and would argue against addressable storage.
-
-## 3.4 Procedure
-
-1. **Dose-response curve.**  Load the detector with Source A
-   for varying durations (1s, 5s, 15s, 60s, 300s).  After
-   each loading, immediately probe with Source B and record
-   Re/Rc.  Plot Re/Rc vs. T_load.  Threshold model predicts
-   a saturation curve (pre-load fills up to just below
-   threshold).
-
-2. **Spectral shift.**  Record the full MCA spectrum of
-   detector #2 during the probe phase, for various T_load
-   values.  Look for a shift in the photopeak centroid
-   compared to the no-load control.
-
-3. **Depletion ("destructive read").**  Load the detector
-   heavily (T_load = 300s).  Then probe with Source B at
-   high rate.  Monitor Re/Rc over time.  If the pre-loaded
-   state is being consumed, Re/Rc should start high and
-   decay back to the fresh-detector baseline as the stored
-   energy is read out.
-
-4. **Repeated cycles.**  Perform load → read → load → read
-   cycles.  If the coincidence rate recovers after each
-   load and depletes after each read, this demonstrates
-   reproducible write/read on the electron T².
-
----
-
-# Track 4: Geometry and source variants
-
-*Requires:* Track 1 succeeds.
-*Uses:* Additional sources and detector configurations.
-
-## 4.1 Beam-split geometry
-
-Instead of tandem, use a scattering target (aluminum, silicon,
-germanium crystal) to deflect part of the gamma beam to a side
-detector.  This is more analogous to an optical beam splitter.
-Compare Rayleigh (elastic) vs. Compton (inelastic) scattering
-by examining the pulse-height spectrum of the side detector.
-
-## 4.2 Na-22 triple coincidence
-
-Use Na-22 (positron emitter).  Positron annihilation produces
-two back-to-back 511 keV gammas.  Place two detectors in tandem
-to catch one, and a third detector opposite to catch the other.
-Triple coincidence.  Reiter reports Re/Rc = 963 — the strongest
-signal.
-
-## 4.3 Alpha-ray split
-
-Am-241 alpha particles through gold leaf, detected by two
-silicon surface-barrier detectors.  This extends the threshold
-claim from electromagnetic radiation (gammas) to matter waves
-(helium nuclei).  Requires a vacuum chamber.
-
-## 4.4 Chemical state sensitivity
-
-Prepare Cd-109 in salt form (evaporate isotope solution) and
-metal form (electroplate onto platinum wire).  Compare Re/Rc
-between the two.  Reiter reports a 5× difference — salt
-(crystalline) form produces more coincidences.  Replication
-of this finding would be a strong confirmation that the effect
-is physically real and not instrumental, since the
-conventional singles spectrum shows no difference between
+**Expected (Reiter's finding):** The salt (crystalline) form
+produces approximately 5× more coincidences than the metal
+form.  The conventional singles spectrum (MCA photopeak shape,
+centroid, count rate) shows no measurable difference between
 the two forms.
 
+This finding is significant because:
+- It cannot be explained by any electronic or geometric
+  artifact (the electronics and geometry are unchanged)
+- It demonstrates sensitivity to the source's solid-state
+  structure
+- It has no explanation in standard quantum mechanics
+
+## 2.4 Temperature variation
+
+Place an aluminum slab between the source and detector #1
+(beam-split geometry; see Track 4).  Measure Re/Rc with:
+
+- Aluminum at room temperature
+- Aluminum cooled to 77 K (liquid nitrogen)
+
+**Expected (Reiter's finding):** The LN₂-cooled aluminum
+produces approximately 50% more coincidences than room-
+temperature aluminum.
+
+## 2.5 Distance variation
+
+Vary the source-to-detector distance while maintaining tandem
+geometry.  Test at 2, 5, 10, and 20 cm source-to-detector #1
+distance.  Record Re/Rc at each distance.
+
+**Expected (Reiter's finding):** The effect depends on the
+ratio between the gamma wavelength and the spreading area of
+the classical wave cone at the detector.  Longer-wavelength
+sources (Am-241, 59.6 keV) show enhanced effect at closer
+range; shorter-wavelength sources (Cs-137, 662 keV) show
+enhanced effect at greater range.
+
 ---
 
-# Shared sections
+# Track 3: Na-22 Triple Coincidence
 
-## Equipment (all tracks)
+*Requires:* Track 1 produces Re/Rc ≫ 1.
 
-### Core (Tracks 1–3)
+This replicates the experiment described in Reiter (2012,
+viXra:1204.0032) which produced the strongest reported signal.
 
-- **Source:** Cd-109 sealed source, ~1 μCi (license-exempt).
-  Available from Spectrum Techniques or Eckert & Ziegler.
-  ~$50–200.  Two identical sources for Track 2–3 two-source
-  protocol.
-- **Detector #1:** Thin NaI(Tl) crystal, 3–5 mm thick, ~40 mm
-  diameter, coupled to PMT.  Custom order from Saint-Gobain
-  or Hilger Crystals.  ~$1,000–3,000.
-- **Detector #2:** Standard 1.5" or 2" NaI(Tl) detector assembly
-  (e.g., Ortec 905 series).  ~$2,000–4,000.
-- **Electronics (per channel):** Shaping amplifier (Ortec 572A),
-  single-channel analyzer (Ortec 550A), counter/scaler
-  (Ortec 994).
-- **Coincidence unit:** Ortec 414A with adjustable τ.
-- **MCA or DSO:** Multichannel analyzer (Ortec EASY-MCA) or
-  100+ MHz oscilloscope for pulse-height verification.
-- **Shielding:** Lead castle (2" thick lead bricks).
+## 3.1 Principle
 
-### Additional (Track 4)
+Na-22 decays by positron emission.  The positron annihilates
+with an electron, producing two back-to-back 511 keV gamma
+rays.  Na-22 also emits a 1.275 MeV gamma in the same decay.
 
-- **Na-22 source** and third detector for triple coincidence.
-- **Am-241 source**, gold leaf, two silicon surface-barrier
-  detectors, vacuum chamber for alpha-ray split.
-- **Scattering targets** (Al, Si, Ge crystals) for beam-split
-  geometry.
+The 1.275 MeV gamma is caught by a third detector as a timing
+tag.  One of the two 511 keV annihilation gammas is directed
+into a tandem detector pair.
 
-### Budget
+The triple-coincidence chance rate is:
 
-| Scope | Estimated cost |
-|-------|---------------|
-| Track 1 only | $5,000–15,000 |
-| Tracks 1–3 | $6,000–18,000 (add second source + MCA) |
-| All tracks | $15,000–35,000 (add vacuum chamber, extra detectors) |
-| Using university lab | ~$0 (most equipment already available) |
+    Rc = R₁ × R₂ × R₃ × τ₁₂ × τ₂₃
 
-## Feasibility assessment
+## 3.2 Geometry
+
+```
+                              Detector #3
+                           (1.275 MeV tag)
+                                 ▲
+                                 │
+   ┌──────────┐     ┌───────────┼───────────┐
+   │Detector#1│ ◄── │        Na-22          │ ──► │Detector#2│
+   │  (thin)  │     │        source         │     │ (thick)  │
+   │ NaI(Tl)  │     └───────────────────────┘     │ NaI(Tl)  │
+   └──────────┘           tandem pair              └──────────┘
+```
+
+Detectors #1 and #2 are in tandem on one side of the source
+to catch one of the 511 keV annihilation gammas.  Detector #3
+is positioned to catch the 1.275 MeV gamma (or the opposite
+511 keV gamma, depending on geometry).
+
+## 3.3 Procedure
+
+1. Calibrate all three detectors on their respective
+   photopeaks (511 keV for #1 and #2; 1.275 MeV for #3).
+2. Set SCA windows appropriately for each detector.
+3. Record singles rates R₁, R₂, R₃.
+4. Record triple-coincidence rate Re.
+5. Compute Rc = R₁ × R₂ × R₃ × τ₁₂ × τ₂₃.
+6. Compute Re/Rc.
+
+## 3.4 Expected result
+
+Reiter reports Re/Rc = 963 — the largest ratio in any of his
+experiments.  The higher energy (511 keV vs. 88 keV) and
+triple-coincidence requirement make this the most dramatic
+test.
+
+---
+
+# Track 4: Beam-Split Geometry
+
+*Requires:* Track 1 produces Re/Rc ≫ 1.
+
+This replicates the scattering-target experiments described in
+Reiter (2012, viXra:1203.0094) §4 and Figs. 12–18.
+
+## 4.1 Principle
+
+Instead of tandem geometry (thin detector as passive
+splitter), a scattering target (metal or crystal) deflects
+part of the gamma beam to a side detector.  The undeflected
+remainder continues to a forward detector.
+
+This is analogous to an optical beam splitter and allows
+independent control of the split material.
+
+## 4.2 Geometry
+
+```
+                       Detector #2
+                       (scattered)
+                            ▲
+                           ╱
+                          ╱ scattered γ
+                         ╱
+   ┌──────────┐     ┌───────┐     ┌───────────┐
+   │  Cd-109  │ ──► │Target │ ──► │Detector #1│
+   │  source  │     │(Al,Si,│     │(transmitted│
+   │          │     │ or Ge)│     │    γ)      │
+   └──────────┘     └───────┘     └───────────┘
+```
+
+## 4.3 Procedure
+
+1. Position scattering target (aluminum slab, silicon
+   crystal, or germanium crystal) in the beam path.
+2. Position detector #1 behind the target (transmitted beam).
+3. Position detector #2 at a scattering angle (e.g. 30°, 60°,
+   90°) from the beam axis.
+4. Calibrate SCA windows on each detector.
+5. Record singles rates and coincidence rate.
+6. Compute Re/Rc.
+
+Test multiple target materials and scattering angles.
+
+## 4.4 Crystal orientation (if using single-crystal targets)
+
+For silicon or germanium single-crystal targets, repeat the
+measurement at different crystal orientations (rotate the
+crystal in the beam).  Record Re/Rc vs. crystal angle.
+
+**Expected (Reiter's finding):** The coincidence rate varies
+with crystal orientation, revealing a new form of
+crystallography.  Reiter reports this is distinct from Bragg
+diffraction — the periodicity corresponds to structures
+smaller than inter-atomic distance.
+
+## 4.5 Spectroscopic analysis
+
+Using the MCA, record the full pulse-height spectrum of
+detector #2 (scattered beam) for each target material.
+
+- A non-shifted spectral peak indicates elastic (Rayleigh)
+  scattering.
+- A shifted spectral peak indicates inelastic (Compton)
+  scattering.
+
+Reiter used this as a spectroscopic technique ("Photon
+Violation Spectroscopy") to characterise scatterer properties.
+
+---
+
+# Track 5: Alpha-Ray Split
+
+*Requires:* Track 1 produces Re/Rc ≫ 1.
+
+This replicates the alpha-ray experiments described in Reiter
+(2014) §3 and viXra:1204.0032.
+
+## 5.1 Principle
+
+Am-241 emits a single 5.5 MeV alpha particle per decay.  If
+the alpha is a classical matter wave (not an indivisible
+particle), it could split at a target and trigger coincident
+detections in two detectors.  Quantum mechanics predicts only
+accidental coincidences.
+
+The alpha split is significant because it extends the test from
+electromagnetic radiation (gammas) to matter waves (helium
+nuclei).  A helium nucleus requires ~7 MeV per nucleon to
+break apart; at 5.5 MeV total kinetic energy, there is not
+enough energy for conventional nuclear splitting.
+
+## 5.2 Geometry
+
+```
+   ┌──────────┐     ┌─────────┐     ┌───────────┐
+   │  Am-241  │ ──► │  Gold   │ ──► │Detector #2│
+   │  source  │     │  leaf   │     │  (Si SBD) │
+   └──────────┘     │(splitter│     └───────────┘
+                    └────┬────┘
+                         │ reflected α
+                         ▼
+                    ┌───────────┐
+                    │Detector #1│
+                    │  (Si SBD) │
+                    └───────────┘
+
+   (All inside vacuum chamber)
+```
+
+## 5.3 Procedure
+
+1. Mount Am-241 source and two silicon surface-barrier
+   detectors (SBDs) in a vacuum chamber.
+2. Place two layers of 24-carat gold leaf over the front face
+   of detector #2.  The gold leaf acts as the beam splitter.
+3. Position Am-241 source to illuminate the gold leaf from
+   the side, shaded from detector #1.
+4. Evacuate chamber.
+5. Set SCA lower level to 1/3 of the characteristic alpha
+   pulse height.  (Reiter found that alpha splits usually
+   maintain particle-energy conservation — most coincident
+   pulse pairs show half-height pulses in each detector.)
+6. Set coincidence window τ = 100 ns.
+
+**Control measurement:** Position the two detectors at right
+angles to each other with the source centred between them.
+Measure coincidence rate for ≥2 hours.  Expected: only the
+chance rate (confirms single alpha emission per decay).
+
+**Split measurement:** Assemble beam-split geometry with gold
+leaf.  Record singles and coincidence rates.  Record pulse-
+height pairs for all coincident events.
+
+7. Compute Re/Rc.
+8. Plot coincident pulse-height pairs as a 2D scatter plot
+   (detector #1 pulse height vs. detector #2 pulse height).
+   Identify events where both pulses exceed half the
+   characteristic alpha energy — these would violate
+   particle-energy conservation.
+
+## 5.4 Expected result
+
+Reiter reports Re/Rc = 105 with gold leaf.  Six coincident
+events exceeded particle-energy conservation (both detectors
+above half-energy).  Counting only these six events still
+gives Re/Rc = 3.97, which independently contradicts the
+single-particle prediction.
+
+---
+
+# Equipment and Supplies
+
+## Bill of materials — Tracks 1–2
+
+These items are sufficient for the core replication (Track 1)
+and sensitivity studies (Track 2).
+
+### Radioactive sources
+
+| Item | Specification | Supplier examples | Est. cost |
+|------|--------------|-------------------|-----------|
+| Cd-109 sealed source | ~1 μCi, license-exempt | Spectrum Techniques (#CD1U), Eckert & Ziegler | $50–200 |
+| Cd-109 solution (Track 2.3) | ~0.5 μCi in HCl solution, for chemical-state preparation | Eckert & Ziegler custom order | $200–500 |
+
+All sources are low-level, license-exempt under NRC 10 CFR
+30.71 Schedule B (< 10 μCi for Cd-109).
+
+### Detectors
+
+| Item | Specification | Supplier examples | Est. cost |
+|------|--------------|-------------------|-----------|
+| Detector #1 — thin NaI(Tl) | 3–5 mm thick × 40 mm diameter NaI(Tl) crystal coupled to PMT; requires custom order | Saint-Gobain (custom), Hilger Crystals, Scionix | $1,500–3,000 |
+| Detector #2 — standard NaI(Tl) | 1.5" or 2" diameter × 2" thick NaI(Tl), integrated with PMT | Ortec 905 series, Saint-Gobain 2M2/2, Scionix 38B51/2M-E1 | $2,000–4,000 |
+| HV power supply (2 channels) | 0–2000 V DC, NIM standard | Ortec 556, CAEN N470A | $1,000–2,500 |
+
+### Signal processing electronics (NIM standard)
+
+| Item | Specification | Qty | Supplier examples | Est. cost (each) |
+|------|--------------|-----|-------------------|-----------------|
+| Shaping amplifier | Gaussian shaping, 0.5–10 μs shaping time | 2 | Ortec 572A, CAEN N568B | $800–1,500 |
+| Single-channel analyzer (SCA) | Adjustable LL and UL window, NIM output | 2 | Ortec 550A, Ortec 551, CAEN N845 | $500–1,000 |
+| Coincidence unit | 2+ inputs, adjustable resolving time τ (50–1000 ns) | 1 | Ortec 414A, CAEN N455 | $500–1,000 |
+| Counter/scaler | ≥1 channel, gated input | 3 | Ortec 994, CAEN N1145 | $400–800 |
+| NIM crate + power supply | Standard NIM bin, ±6V, ±12V, ±24V | 1 | Ortec 4001C + 4002D, Wiener UEP6021 | $800–1,500 |
+
+### Data acquisition
+
+| Item | Specification | Supplier examples | Est. cost |
+|------|--------------|-------------------|-----------|
+| Multichannel analyzer (MCA) | ≥1024 channels, USB interface | Ortec EASY-MCA-2K, Amptek MCA-8000D | $1,500–3,000 |
+| Digital storage oscilloscope | ≥4 channels, ≥100 MHz bandwidth, histogram software | Lecroy (any current 4-ch model), Tektronix MDO3000 series, Keysight DSOX3000 | $3,000–8,000 or use existing lab scope |
+
+### Shielding and mechanical
+
+| Item | Specification | Est. cost |
+|------|--------------|-----------|
+| Lead bricks | 2" × 4" × 8", sufficient to build enclosure ~12" × 12" × 12" (~20 bricks, ~250 kg) | $400–800 |
+| Tin collimator | Custom-machined tin cylinder with aperture; or tin sheet wrapped into tube, ~2 cm ID × 3 cm length | $50–100 (machine shop) |
+| Detector mounting | Optical rail or custom bracket to hold detectors in tandem alignment | $100–300 |
+| BNC cables | 50 Ω, various lengths | $50–100 |
+
+### Consumables (Track 2.3, chemical state preparation)
+
+| Item | Specification | Est. cost |
+|------|--------------|-----------|
+| Platinum wire | ~1 mm diameter, ~5 cm length, for electroplating | $30–80 |
+| Substrate for salt preparation | Glass slide or ceramic dish | < $10 |
+| Electroplating supplies | DC power supply (0–5 V, 0–1 A), beaker, leads | $50–100 (or use existing lab supply) |
+
+### Budget summary — Tracks 1–2
+
+| Scenario | Estimated total |
+|----------|----------------|
+| Purchase all new equipment | $13,000–30,000 |
+| University lab (most NIM equipment available) | $2,000–5,000 (sources + custom thin detector) |
+| Facility with existing nuclear spectroscopy setup | $500–1,500 (sources only) |
+
+## Additional equipment — Track 3
+
+| Item | Specification | Est. cost |
+|------|--------------|-----------|
+| Na-22 sealed source | ~1 μCi, license-exempt | $100–300 |
+| Third NaI(Tl) detector + HV | 2" standard assembly | $2,000–4,000 |
+| Additional SCA + amplifier + counter | One more NIM channel | $1,700–3,300 |
+
+## Additional equipment — Track 4
+
+| Item | Specification | Est. cost |
+|------|--------------|-----------|
+| Aluminum slab | ~5 mm thick, ~50 mm square, high purity | $20–50 |
+| Silicon single crystal | ~5 mm thick, ~25 mm diameter, polished faces | $50–200 |
+| Germanium single crystal | ~5 mm thick, ~25 mm diameter, polished faces | $100–300 |
+| Rotation stage | Manual goniometer for crystal orientation | $200–500 |
+| Liquid nitrogen + dewar (Track 2.4 / 4) | Standard lab supply | $50–100 per fill |
+
+## Additional equipment — Track 5
+
+| Item | Specification | Est. cost |
+|------|--------------|-----------|
+| Am-241 sealed source | ~1 μCi, license-exempt (also emits 59.6 keV γ, usable in Tracks 1–2) | $50–200 |
+| Silicon surface-barrier detectors (SBDs) | 2 units, ~300 mm² active area, ~100 μm depletion depth | $1,000–2,000 each |
+| Charge-sensitive preamplifiers | 2 units, matched to SBDs | $500–1,000 each |
+| Vacuum chamber | ~30 cm diameter bell jar or cube, with feedthroughs for 4 BNC + HV | $2,000–5,000 |
+| Vacuum pump | Rotary vane, ~10⁻² torr sufficient | $1,000–2,000 (or use existing) |
+| Gold leaf | 24-carat, standard booklet (~80 mm square sheets, ~100 nm thick) | $30–60 |
+
+## Budget summary — all tracks
+
+| Scope | Estimated total (new purchase) | With existing lab |
+|-------|-------------------------------|-------------------|
+| Track 1 only | $13,000–30,000 | $500–5,000 |
+| Tracks 1–2 | $13,500–31,000 | $700–5,500 |
+| Tracks 1–4 | $17,000–39,000 | $1,500–7,000 |
+| All tracks (1–5) | $22,000–48,000 | $4,000–12,000 |
+
+---
+
+# Statistical Analysis
+
+## Primary metric
+
+For each measurement, the primary metric is the coincidence
+ratio:
+
+    Re/Rc = (measured coincidence rate − background rate) /
+            (R₁ × R₂ × τ)
+
+## Significance threshold
+
+The null hypothesis is Re/Rc = 1 (standard quantum mechanics).
+To claim rejection of the null at 5σ:
+
+    (Re − Rc) / √Re ≥ 5
+
+At Reiter's rates (Re ≈ 0.053/s, Rc ≈ 0.0016/s), this
+requires ≥25 coincidence events, achievable in ~8 minutes.
+
+For conservative analysis, collect data for ≥2 hours per
+measurement to accumulate ~380 coincidence events (if
+Reiter's rates hold), giving statistical uncertainty of
+±5% on Re/Rc.
+
+## Systematic uncertainty
+
+The dominant systematic is the measurement of R₁, R₂, and τ
+that enter the Rc calculation.  These are measurable to < 1%
+with standard NIM electronics.
+
+The SCA window calibration contributes a systematic through
+the acceptance fraction.  Record the MCA spectrum and the SCA
+pass rate to quantify this.
+
+---
+
+# Data Deliverables
+
+For each track, record and report:
+
+1. **MCA spectra** — Full pulse-height spectra for each
+   detector, with and without source, with SCA window
+   boundaries marked.
+
+2. **Singles rates** — R₁ and R₂ for each detector, with
+   statistical uncertainty.
+
+3. **Coincidence rate** — Re with statistical uncertainty,
+   and the computed chance rate Rc.
+
+4. **Δt histogram** — Time-difference distribution of
+   coincident events, showing peak structure (if any) and
+   flat accidental background.
+
+5. **Pulse-shape gallery** — DSO screen captures of ≥20
+   representative coincident pulse pairs, demonstrating
+   pulse quality.
+
+6. **Re/Rc ratio** — With propagated statistical and
+   systematic uncertainties.
+
+7. **Raw data files** — All counter readings, timestamps,
+   and DSO data in machine-readable format.
+
+---
+
+# Feasibility Assessment
 
 | Factor | Assessment |
-|---|---|
-| Equipment | Standard nuclear physics teaching lab equipment |
-| Budget | $5,000–35,000 depending on scope (or ~$0 using existing university lab) |
-| Expertise | Undergraduate nuclear physics lab level |
-| Time to result | Track 1: ~1 week.  Tracks 2–3: ~2 weeks additional.  Track 4: ~1 month. |
-| Risk of false positive | Moderate (pile-up, cross-talk); controlled by standard nuclear spectroscopy practices |
-| Risk of false negative | Low (if Reiter's effect is real, the signal is large: Re/Rc = 33) |
-| Replication value | Extremely high — no independent replication of this claim exists |
-
-This is likely the cheapest, fastest, and most consequential
-experiment in the entire project.
-
----
-
-## What results would mean
-
-**Track 1 — Re/Rc ≫ 1 (replicates Reiter):**
-
-The threshold model gains independent experimental support.
-Sub-threshold energy accumulation is real.  The storage
-hypothesis retains its second pillar.  This result would also
-be independently publishable as the first independent
-replication of a deeply heterodox claim.  Proceed to Track 2.
-
-**Track 1 — Re/Rc ≈ 1 (fails to replicate):**
-
-The threshold model loses its only experimental support.
-Compact-dimension storage may still be possible under standard
-quantum mechanics (modes can hold integer quanta), but the
-unique advantages of the threshold model — continuous analog
-storage, sub-quantum access, invisibility to standard
-measurement — are lost.  Stop here; reassess before spending
-further.
-
-**Track 2 — τ_preload measurable (seconds or longer):**
-
-Sub-threshold energy is a stable, protected state.  Storage
-on compact dimensions is not just possible in principle — it
-happens spontaneously in ordinary matter exposed to radiation.
-This dramatically strengthens the case for neutrino-sheet
-storage and motivates L01 (THz write/read on T²_ν).
-
-**Track 2 — τ_preload ~ nanoseconds or undetectable:**
-
-Pre-load exists (Track 1) but decays instantly.  Storage
-requires continuous energy input, not passive retention.
-The biological storage hypothesis weakens unless cells
-actively maintain the stored state.
-
-**Track 3 — Reproducible write/read cycles:**
-
-Controlled, addressable storage on the electron T² is real.
-The same physics should apply to the neutrino T² at different
-energy scales.  L01 becomes a matter of equipment, not
-principle.
-
-**Track 3 — No write/read correlation:**
-
-Threshold absorption is real but not controllable.  The
-pre-loaded state may be too chaotic or distributed to
-function as addressable memory.  The storage hypothesis
-needs a mechanism for order.
+|--------|-----------|
+| Equipment | Standard nuclear physics teaching lab instrumentation (NIM) |
+| Regulatory | All sources license-exempt at specified activities |
+| Expertise required | Competence in nuclear spectroscopy; undergraduate or technician level |
+| Time to first result | Track 1: ~1 week (including setup and calibration) |
+| Time for all tracks | ~2 months |
+| Lab space | Standard radiation bench with ventilation; no special facility required |
+| Safety | Standard sealed-source handling procedures; lead shielding; dosimetry badges |
+| Replication value | No independent replication of Reiter's results has been published; extremely high scientific value regardless of outcome |
