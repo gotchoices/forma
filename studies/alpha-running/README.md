@@ -1,4 +1,4 @@
-# R32. The running of α and the UV coupling
+# R32. The running of α and the high-energy coupling
 
 **Questions:** Q77 (α as impedance), Q18 (deriving α), Q47 (running of α)
 **Type:** compute + theoretical  **Depends on:** R19, R27, R28, R31
@@ -33,9 +33,12 @@ the screening, and the T⁶ has ~900 modes below 2 GeV (R28).
 
 The central question: if we sum the contributions of ALL
 charged T⁶ modes, does α converge to a recognizable
-geometric constant at the compact scale?  In particular,
-does it converge to **1/24**, the value where gauge
-couplings unify in GUT physics?
+geometric constant at the compact scale (the high-energy
+limit, often called "UV" in physics — by analogy with the
+electromagnetic spectrum, where ultraviolet = short
+wavelength = high energy)?  In particular, does it
+converge to **1/24**, the value where gauge couplings
+unify in GUT physics?
 
 
 ## Prior results
@@ -69,26 +72,20 @@ couplings unify in GUT physics?
 
 ## Approach: 4 tracks
 
-### Track 1 — KK mode running of α
+### Track 1 — KK mode running of α  **Complete**
 
-Enumerate all charged (Q ≠ 0) T⁶ modes up to high energy.
-For each mode with mass m_i, charge Q_i, and spin s_i,
-compute its one-loop contribution to the running:
+Enumerate all charged (Q ≠ 0) T⁶ modes and compute their
+one-loop vacuum polarization contribution.
 
-    1/α(E) = 1/α(0) − Σ  b_i Q_i² / (12π) × ln(E/m_i)
-
-where b_i depends on the spin (b = 1 for scalars,
-b = 4 for Dirac fermions, b = −11 for vectors).
-
-**Simplification**: Neutrino-sheet-only modes have Q = 0
-and don't contribute.  The running is dominated by
-electron-sheet and proton-sheet modes.
-
-**Output**: α(E) from m_e to 10 TeV.  Plot 1/α vs log(E).
-Compare to SM running at m_Z (known: 1/α(m_Z) ≈ 128).
+**Result:** CATASTROPHIC.  78,608 charged modes produce
+running ~157,000× faster than the SM.  Landau pole at
+~1 MeV.  This independently confirms R31 Track 4: ghost
+modes cannot couple to the electromagnetic field at full
+strength.  Suppression factor ~10⁵ required, consistent
+with the Lamb shift constraint.  Findings F1–F7.
 
 
-### Track 2 — Volume dilution and the UV coupling
+### Track 2 — Volume dilution and the high-energy coupling
 
 Compute the T⁶ volume (excluding the neutrino sheet,
 which decouples for charged-mode physics):
