@@ -115,38 +115,102 @@ modular-invariant partition function and check for 1/24.
 Findings F13–F17.
 
 
-### Track 4 — Impedance at the T⁶/R³ interface
+### Track 4 — Impedance at the T²/R³ interface
 
-Model the T⁶/R³ coupling as an impedance boundary.  A
-photon (or more precisely, a gauge field fluctuation) in
-R³ encounters the compact space.  The compact space has
-a different effective impedance because:
+The central physical picture: a particle is a standing
+wave on T².  That wave carries energy.  How much of that
+energy couples out into R³ as observable interaction?
+The answer should be α.
 
-- The metric is different (sheared, periodic)
-- The mode density is discrete (not continuous)
-- The boundary conditions are periodic (not open)
+The framing is per-sheet (T² → R³⁺¹), not T⁶ → R³.
+Each T² independently couples to the non-compact space.
+If 24 enters, it may be 3 sheets × 8 channels/sheet,
+where 8 = 2 compact × 4 non-compact dimensions.
 
-The transmission coefficient at a waveguide-to-free-space
-junction is well-known in microwave engineering.  A
-toroidal cavity radiating into free space has a quality
-factor Q and a radiation resistance R_rad.  The coupling
-efficiency is:
 
-    η = R_rad / (R_rad + R_loss)
+#### Sub-track 4a — Energy partition by propagation channels
 
-Compute R_rad for the electron T² (a toroidal cavity with
-known dimensions) radiating into R³.  Does the coupling
-efficiency equal α?
+A source at a point in 10D radiates into all available
+directions.  At the emission point, the source does not
+know which dimensions are compact and which are open.
+Energy divides among ALL propagation channels:
 
-Alternative approach: the Fresnel equations give the
-reflection/transmission at an interface between media
-with different wave speeds.  If c_T⁶ ≠ c_R³, the
-transmission coefficient T depends on the ratio.  Solve
-T = α for c_T⁶/c_R³ and check if the ratio is
-geometrically meaningful.
+The 10D metric has 10×11/2 = 55 independent components:
+- 10 diagonal (4 non-compact + 6 compact)
+- 45 off-diagonal, decomposing into:
+  - 6 within R³⁺¹ (gravity: g_{μν})
+  - 3 within-sheet shears (s₁₂, s₃₄, s₅₆)
+  - 3 cross-sheet shears (σ_ep, σ_eν, σ_νp)
+  - 9 within-T⁶ cross-dimension (g_{ij}, i≠j, different sheets)
+  - 24 gauge couplings (g_{μi}: 4 non-compact × 6 compact)
 
-**Output**: Numerical coupling efficiency from waveguide/
-cavity QED calculation.  Comparison to α = 1/137.
+The electromagnetic field is ONE gauge field (4 components
+out of 24 total gauge components).  Compute the fraction
+of energy in the EM channel under various partition rules
+(democratic, weighted by metric determinant, etc.).
+
+Shears matter here: they are off-diagonal metric
+components that redirect energy between dimensions.
+A sheared torus has energy flowing in directions that
+are tilted relative to the coordinate axes.  The shear
+doesn't just create charge — it redirects propagation,
+mixing compact and non-compact channels.
+
+
+#### Sub-track 4b — Dimensional mismatch: 2D cavity → 3D space
+
+When a 2D resonator (T²) radiates into 3D open space,
+there is a fundamental dimensional mismatch:
+
+- In T² (2D): the density of states is constant per unit
+  energy (ρ₂D = A/(2πℏ²c²))
+- In R³ (3D): the density of states grows as √E
+  (ρ₃D ∝ V × E^{1/2})
+
+The ratio ρ₂D/ρ₃D at a given energy E sets how well a
+T² mode couples to the R³ continuum.  This is analogous
+to a waveguide opening into free space: the transmission
+coefficient depends on the ratio of confined to free
+mode densities.
+
+Compute the waveguide radiation resistance for a
+rectangular cavity (dimensions L₁ × L₂) opening into
+3D free space.  This is standard microwave engineering:
+the coupling depends on L₁L₂/λ² (aperture area in
+wavelength units).  For the electron T² at the (1,2)
+mode frequency, this ratio is A_e/(2πλ_e)² ≈ 27
+(from Track 2, F8).
+
+
+#### Sub-track 4c — Solid angle in d dimensions
+
+In d = 10 dimensions, a point source radiates into a
+(d−1)-sphere with solid angle Ω_d = 2π^{d/2}/Γ(d/2).
+The fraction going into any 3D subspace is related to
+the ratio Ω₃/Ω₉ (or more precisely, the projection).
+
+Compute this for d = 4 (non-compact), d = 6 (compact),
+and d = 10 (total).  Also for the per-sheet case:
+d_eff = 4 + 2 = 6 dimensions (one T² + R³⁺¹).
+
+
+#### Sub-track 4d — Fresnel transmission at impedance boundary
+
+The Fresnel equations give reflection/transmission at an
+interface between media with different wave speeds.  If
+c_T² ≠ c_R³, the transmission coefficient T depends on
+the ratio n = c_R³/c_T².  Solve T = α for n and check
+if n is geometrically meaningful.
+
+Also compute: for a sheared torus, the effective wave
+speed in the shear direction differs from the coordinate
+directions.  The shear s creates an anisotropy.  This
+anisotropy IS a refractive index.  What is c_shear/c_axis
+as a function of s?
+
+
+**Output**: Numerical coupling efficiency from each
+sub-track.  Does any produce α = 1/137 from geometry?
 
 
 ## What success looks like
