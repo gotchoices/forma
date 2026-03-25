@@ -98,6 +98,19 @@ between torus lattices and the number 24 (modular functions, kissing numbers,
 refraction geometry).  Track 4: impedance/transmission coefficient at the
 T⁶/R³ interface via waveguide/cavity QED.
 
+### R34. The midpoint coupling — bidirectional modulation of α  **Framed**
+**Study:** [`midpoint-coupling/`](midpoint-coupling/)
+**Questions:** Q77, Q18  **Type:** compute + theoretical  **Depends on:** R19, R31, R32
+
+4 tracks.  R32 found the weighted gauge partition gives 1/80 = (137+24)/2
+to 99.8%.  Tests whether this is a geometric base coupling with bidirectional
+Kramers-Kronig dispersion: T⁶ modes as absorption resonances modulate α
+upward (IR → 137) and downward (UV → 24) from the midpoint.  Track 1:
+dispersive integral.  Track 2: locate the resonance scale.  Track 3: derive
+the shear from 1/80 instead of 1/137.  Track 4: clockwise/counterclockwise
+interference on the torus as the bidirectional mechanism.
+
+
 ### R33. Ghost mode selection — why most T⁶ modes are dark  **Framed**
 **Study:** [`ghost-selection/`](ghost-selection/)
 **Questions:** Q77, Q34  **Type:** compute + theoretical  **Depends on:** R19, R27, R28, R31, R32
