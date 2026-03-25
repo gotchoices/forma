@@ -82,6 +82,18 @@ T⁶ merging always costs energy (neutron 0.78 MeV heavier than H).
 not yet in the model.  r_e confirmed as a geometric constant, not
 per-electron.
 
+### R32. The running of α and the UV coupling  **Active**
+**Study:** [`alpha-running/`](alpha-running/)
+**Questions:** Q77, Q18, Q47  **Type:** compute + theoretical  **Depends on:** R19, R27, R28, R31
+
+4 tracks.  Tests the hypothesis that α is the impedance mismatch between T⁶
+and R³ — a refractive index that runs with energy.  Track 1: compute α(E)
+from KK mode running using the full T⁶ charged-mode census.  Track 2: volume
+dilution and the bare UV coupling.  Track 3: why 24? — geometric relationships
+between torus lattices and the number 24 (modular functions, kissing numbers,
+refraction geometry).  Track 4: impedance/transmission coefficient at the
+T⁶/R³ interface via waveguide/cavity QED.
+
 ---
 
 ## Backlog
