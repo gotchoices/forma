@@ -101,32 +101,56 @@ vs logarithmic).  No T⁶ geometric scale gives the right E*.
 Findings F1–F6.
 
 
-### Track 2 — The resonance scale
+### Track 2 — Logarithmic running from 1/α₀ = 80
 
-In standard QFT running, 1/α = 80 requires ~10³⁰ GeV —
-unreachable.  So the "midpoint" is not a running value
-but a geometric one.  What T⁶ scale corresponds to the
-crossover?
+Drop the speculative UV endpoint of 24.  Use only
+verified physics:
 
-Candidates:
-- Proton ring energy: 467 MeV (strongest gauge field)
-- Proton sheet geometric mean: 156 MeV
-- Electron sheet geometric mean: 0.1 MeV
-- Some function of circumference ratios
+- 1/α(0) = 137.036  (measured)
+- 1/α(m_Z) = 128.0   (measured)
+- 1/α₀ = 80          (T⁶ geometric base, from R32 F23)
 
-Compute φ(E) = π × f(E/E_resonance) for various
-resonance scales and check which one gives the right
-running shape (1/α going from 137 to 24 over the right
-energy range).
+The standard QFT one-loop running is:
 
-Also check: does the "resonance" correspond to the
-energy where the probing wavelength equals a T²
-circumference?  At E = ℏc/L₆ ≈ 467 MeV (proton ring),
-a probe fits exactly one wavelength around the ring.
-Below this: the compact space is "invisible" (long-
-wavelength limit).  Above this: the probe resolves the
-internal structure.  The transition region is where the
-dispersion occurs.
+    1/α(E) = 1/α₀ + Σ_k (b_k Q_k²)/(3π) × ln(Λ/max(E, m_k))
+
+where the sum runs over all charged species (SM fermions
++ T⁶ ghost modes).  Each species contributes screening
+above its mass threshold.
+
+With SM fermions alone, the running rate is ~0.74 per
+unit ln(E).  This gives only 9 units of screening by m_Z,
+not nearly enough to reach 137 from 80 (needs 57 units).
+
+But T⁶ ghost modes (~78,000 charged modes) contribute at
+a suppressed level.  At suppression factor f:
+    Effective rate = SM_rate × (1 + 157,000 × f)
+    Need rate ≈ 5.75 × SM_rate to cover 57 units
+
+Procedure:
+1. Fit f so that 1/α(0) = 137 (using the full T⁶ mode
+   spectrum from R32 Track 1)
+2. With this f, compute 1/α(m_Z) — does it equal 128?
+3. Report f and compare to the R31/R32 constraint (~10⁻⁵)
+
+If the fitted f ≈ 3 × 10⁻⁵ AND the model matches 128
+at m_Z, the ghost suppression factor is independently
+derived from the running (not from Lamb shift), providing
+a cross-check on the T⁶ model.
+
+Also compute 1/α(E) at 10+ energy points and compare to
+the SM predictions.  The T⁶ model should reproduce the
+SM running at all measured energies, with the ghost modes
+adding a small (but necessary) correction that shifts the
+bare coupling from ~60 (SM at GUT scale) to 80.
+
+**Result:** NULL.  f ≈ 6 × 10⁻⁵ fits 1/α(0) = 137
+(right order for ghost suppression), but 1/α(m_Z) = 101,
+not 128.  Root cause: ghost modes cluster below 2 GeV,
+causing front-loaded running that exhausts most of its
+screening before reaching m_Z.  The discrepancy shrinks
+with higher cutoffs (119 at 1 PeV) but never fully
+closes.  Findings F7–F10.
 
 
 ### Track 3 — Backing into the shear
@@ -153,56 +177,57 @@ metric channel count.  Solve for the required numerator.
 What function of (r, s, E) gives this modulation?
 
 
-### Track 4 — Bidirectional physics on the torus
+### ~~Track 4 — Bidirectional physics on the torus~~  **Retired**
 
-On a T², a wave can propagate in two directions around
-a cycle (clockwise and counterclockwise).  The shear
-breaks the degeneracy: the two directions have different
-effective path lengths (L vs L + δL where δL ∝ s).
-
-The CHARGE is the asymmetry between the two directions.
-The COUPLING is related to how much of the internal
-energy leaks into R³ through this asymmetry.
-
-At low energy (long wavelength), the probe averages over
-both directions — the net coupling is REDUCED by
-destructive interference between the two propagation
-directions.  This is the IR screening that pushes
-1/α up to 137.
-
-At high energy (short wavelength), the probe resolves
-the two directions separately — the net coupling is
-ENHANCED because the interference is no longer complete.
-This is the UV anti-screening that pushes 1/α down to 24.
-
-Compute:
-- The path length difference δL = s × L_tube for each sheet
-- The interference visibility V(E) = |cos(2πE δL/ℏc)|
-- The effective coupling: 1/α(E) = 1/α₀ + 56.5 × V(E)
-- Does V(0) = +1 and V(∞) → −1?
+Superseded by Track 2.  The bidirectional hypothesis
+depended on the unverified UV endpoint 1/α → 24.
+Track 2 uses only verified physics (QFT running from
+a geometric base coupling).
 
 
-## What success looks like
+---
 
-- **Strong result**: The dispersive model reproduces the
-  running of α from 1/137 to ~1/128 (at m_Z) AND
-  extrapolates to 1/24 at the compact scale.  The
-  resonance scale is the proton ring energy (~467 MeV).
-  The shear can be derived from 1/α₀ = 80 without
-  reference to the observed α.
+## Summary — R34 complete
 
-- **Moderate result**: The bidirectional model has the
-  right qualitative shape but the wrong numerical values.
-  The concept of a geometric base coupling modulated by
-  dispersion is supported but the details need refinement.
+### Outcome: Open — null result for simplest models, but untested avenues remain
 
-- **Null result**: 1/80 ≈ (137+24)/2 is coincidence.
-  The dispersive model produces the wrong sign, wrong
-  magnitude, or no convergence.  The base coupling is
-  not 1/80.
+**Track 1 (Kramers-Kronig):** The Lorentzian dispersion
+model has the right endpoints (137, 24) but the wrong
+intermediate shape.  The fitted midpoint scale E* ≈ 310
+GeV falls near the electroweak scale.  The UV endpoint
+1/24 is unverified — only the IR (137) and one measured
+intermediate point (128 at m_Z) are established.
 
-- **Structural insight**: Even a null numerical result
-  could clarify WHERE α comes from: whether the shear
-  has one or two independent modulation mechanisms, and
-  whether the 4π in the formula should be 24 (gauge
-  channels) or 4π (solid angle) or something else.
+**Track 2 (logarithmic running from 80):** With uniform
+ghost suppression f ≈ 6 × 10⁻⁵, the model correctly
+reaches 1/α(0) = 137 but gives 1/α(m_Z) = 101 (not 128).
+Root cause: ghost modes cluster below 2 GeV, causing
+front-loaded running.  The discrepancy shrinks with
+higher cutoffs (119 at 1 PeV).  The uniform-f model
+is ruled out, but mass-dependent suppression, winding-
+number-dependent coupling, and inclusion of known T⁶
+particles beyond e/p have not been tested.
+
+**Track 3 (backing into the shear):** Not yet run.  Still
+viable — solving s from 1/α₀ = 80 could reveal whether
+the resulting shear has geometric significance.
+
+### Key clarifications
+
+1. The T⁶ model provides a MECHANISM for α (shear-charge
+   coupling on the torus) but does not DERIVE the value
+   1/137.  The shear s is reverse-engineered from α.
+
+2. 1/80 from the weighted gauge partition is a real
+   geometric property of the 10D metric.  Whether it
+   connects to α (via running, impedance, or otherwise)
+   remains open.
+
+3. The hypothesis that 1/80 = (137 + 24)/2 depends on
+   the unverified UV value 1/24.  Without it, 1/80 stands
+   alone as a geometric number.
+
+4. The uniform-f running model is ruled out, but the
+   parameter space has not been exhausted.  Energy-
+   dependent ghost suppression (from R33) could
+   redistribute the running and fix the m_Z discrepancy.

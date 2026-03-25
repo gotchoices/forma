@@ -102,3 +102,124 @@ mean:
 2. It's a coincidence (310 ≠ 246; off by 26%)
 3. The T⁶ model needs to incorporate electroweak physics
    to address the running at this scale
+
+
+---
+
+## Track 2 — Logarithmic running from 1/α₀ = 80
+
+
+### F7. Ghost suppression factor f ≈ 6 × 10⁻⁵ fits the IR endpoint
+
+To produce 57 units of screening (from 1/80 to 1/137)
+via QFT logarithmic running, the ghost modes require a
+suppression factor f ≈ 3–6 × 10⁻⁵ (depending on the
+cutoff scale).  This is within the ~10⁻⁵ range established
+by R31 (Lamb shift) and R32 (catastrophic running).
+
+The SM fermions contribute only 2.7% of the total
+screening.  Ghost modes provide 97.3%.
+
+
+### F8. NULL RESULT: 1/α(m_Z) ≈ 101, not 128
+
+With a 1 TeV cutoff, the model gives 1/α(m_Z) = 101 —
+27 units below the measured 128.  The discrepancy shrinks
+with higher cutoffs but persists:
+
+| Cutoff | f | 1/α(m_Z) | Δ from 128 |
+|--------|---|----------|------------|
+| 1 TeV | 6.1 × 10⁻⁵ | 101 | −27 |
+| 10 TeV | 4.5 × 10⁻⁵ | 110 | −18 |
+| 100 TeV | 3.5 × 10⁻⁵ | 116 | −12 |
+| 1 PeV | 2.9 × 10⁻⁵ | 119 | −9 |
+
+Extrapolating: the model would reach 128 at a cutoff
+of ~10¹² GeV (EeV scale).  This is below the GUT/Planck
+scale but implies the "bare" coupling is defined at an
+extremely high energy.
+
+
+### F9. Root cause: ghost modes are too concentrated at low energy
+
+The T⁶ mode spectrum puts most charged ghost modes below
+2 GeV (41,616 out of 78,608).  These modes contribute
+their screening mostly below 2 GeV, making the running
+very fast at low energies and nearly flat above.
+
+By m_Z, the ghost modes have already contributed most of
+their screening (21 out of 55 units at 1 TeV cutoff).
+The remaining screening between m_Z and E = 0 is only
+~36 units instead of the needed 48 (= 128 − 80).
+
+In the SM, running is spread over a wide energy range
+because charged fermions span masses from 0.5 MeV (electron)
+to 173 GeV (top).  In T⁶, the ghost modes cluster below
+the predictive horizon (~2 GeV), causing front-loaded
+running.
+
+
+### F10. The discrepancy shrinks with higher cutoffs
+
+As the cutoff increases:
+- Each mode contributes more screening (larger ln(Λ/m_k))
+- The relative contribution of high-mass vs low-mass modes
+  shifts: at m_Z, only modes with m < m_Z contribute
+- The fraction of total screening below m_Z decreases
+
+1/α(m_Z) improves from 101 (1 TeV) to 119 (1 PeV).
+Extrapolating: would reach ~128 at ~10¹² GeV cutoff.
+
+
+### F11. The uniform-f model is the simplest, not the only, model
+
+Track 2 tested a UNIFORM ghost suppression factor: every
+ghost mode couples at the same fraction f of full strength.
+This is the simplest assumption but not the most physical.
+
+Untested models that could fix the m_Z discrepancy:
+
+1. **Mass-dependent suppression**: f(m) decreasing with
+   mass.  If lighter ghosts are more suppressed, less
+   running would occur below 2 GeV, spreading it more
+   evenly.
+
+2. **Winding-number-dependent suppression**: modes with
+   higher quantum numbers couple more weakly (R33 Track 4
+   hypothesis).  This would preferentially suppress the
+   many complex low-mass modes.
+
+3. **Known T⁶ particles beyond e/p**: the muon, tau,
+   pion, kaon, Lambda, Sigma are identified T⁶ modes
+   (R27, R28) and should couple at full strength.
+   Including these (~7 modes at 100–1200 MeV) would add
+   non-ghost screening at intermediate energies.
+
+4. **Higher-mass ghost modes**: the enumeration truncated
+   at n_max=8.  Higher modes extend above 1000 TeV and
+   could contribute above m_Z.
+
+The null result applies to the uniform-f model, not to
+the 1/80 hypothesis in general.
+
+
+### F12. α = 1/137 is an input, not an output, of the T⁶ model
+
+The R19 shear-charge formula α = r²μ sin²(2πs)/(4π(2−s)²)
+has two free parameters (r and s).  The shear s is solved
+from the requirement α = 1/137.  So the formula provides
+a MECHANISM for how geometry produces a coupling constant
+(shear → charge leakage), but does not DERIVE the value
+1/137.
+
+Similarly, 1/80 from the weighted gauge partition is a
+geometric property of the metric channel distribution.
+It describes how energy is partitioned among the 10D
+metric components, weighted by the inverse-squared
+circumferences.
+
+Whether 137 and 80 are related (by running, dispersion,
+or some other mechanism) remains open.  Track 2 showed
+that uniform-f QFT running doesn't produce the right
+profile, but more sophisticated models have not been
+tested.
