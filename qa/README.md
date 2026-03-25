@@ -42,5 +42,7 @@ For questions that need a computational model, see [`studies/`](../studies/).
 | Q51 | Non-torus embeddings and mode coupling route to α | Open — → R17; in [INBOX](INBOX.md) |
 | Q52 | Dimensional assignment constrains the aspect ratio | Open — r = 1/2 checked; in [INBOX](INBOX.md) |
 | Q53 | Does the model predict the anomalous magnetic moment? | Open — in [INBOX](INBOX.md) |
+| [Q76](Q76-origin-of-metric-signature.md) | What makes time temporal? Origin of metric signature and 6+3+1 split | Open — deepest structural question |
+| [Q77](Q77-alpha-as-impedance.md) | Is α the impedance mismatch between T⁶ and R³? | Open — reframes α derivation |
 
 Unprocessed and brief questions live in [`INBOX.md`](INBOX.md).

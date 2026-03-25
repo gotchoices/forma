@@ -1120,6 +1120,69 @@ functional not yet in the model (R31 F7, F23).
 Q34 Path 7 (forward charge)*
 *Status: open — the deepest open question in the model*
 
+Q77. **Is α the impedance mismatch between T⁶ and R³?**
+
+Promoted to individual file: [Q77-alpha-as-impedance.md](Q77-alpha-as-impedance.md)
+
+α might not be a "coupling constant" but a refractive
+index — the impedance ratio between the compact vacuum
+and the spatial vacuum.  If c inside T⁶ differs from c
+in R³ by a factor related to α, the observable consequences
+are exactly what we see.  We never directly measure c
+inside T⁶; the only observable effect of a speed difference
+would be the coupling strength, which IS α.
+
+The shear mechanism already implements this: a sheared
+torus is metrically anisotropic, making the effective
+propagation speed direction-dependent.  This anisotropy
+determines α.  The reframing redirects the search for α's
+derivation from internal T⁶ mechanisms (Casimir, moduli —
+both failed) to the T⁶/R³ interface: what geometric
+matching condition fixes the impedance ratio?
+
+The three fundamental constants map onto three dimensional
+interfaces: c converts spatial ↔ temporal, ℏ converts
+continuous ↔ quantum, α converts compact ↔ spatial.
+
+*Source: user insight (R31 discussion)*
+*Connects to: Q18 (deriving α), Q75 (contingency), Q76
+(dimensional character), R31 (Casimir fails, dynamics
+needed)*
+*Status: open — promoted to individual file*
+
+Q76. **What makes time temporal?  The origin of metric
+signature and the 6+3+1 dimensional split.**
+
+Promoted to individual file: [Q76-origin-of-metric-signature.md](Q76-origin-of-metric-signature.md)
+
+The T⁶ × R³ × R¹ framework has 10 dimensions with three
+distinct characters: compact (6), spatial (3), temporal (1).
+What determines which dimensions get which character?  The
+entire difference between time and space is a single minus
+sign in the metric (ds² = −c²dt² + dx² + ...).  That sign
+makes motion through time compulsory rather than optional.
+Could the 1+3+6 split be derived from a single geometric
+principle rather than assumed?
+
+Each character corresponds to a geometric "tweak" applied
+to a raw degree of freedom: compactification (periodic
+boundary → quantization), spatial extension (default, open,
+positive signature), or temporal signature (negative metric
+→ causality).  All dimensional perception — within T⁶,
+between R³ and T⁶, between R³ and R¹ — is mediated by
+off-diagonal metric components (shears, gauge fields,
+signature flip).
+
+Constraints on the split: exactly 1 time (for causality),
+exactly 3 space (for stable orbits), exactly 6 compact
+(R30: minimum for particle spectrum).  If all are necessary,
+1+3+6 = 10 is the ONLY self-consistent assignment.
+
+*Source: user insight (R31 discussion)*
+*Connects to: Q27 (axioms), Q32 (energy/geometry as
+fundamentals), Q75 (contingency), R30 (minimal geometry)*
+*Status: open — promoted to individual file*
+
 ---
 
 ## Filed (promoted to individual files)
