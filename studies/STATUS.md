@@ -111,6 +111,19 @@ the shear from 1/80 instead of 1/137.  Track 4: clockwise/counterclockwise
 interference on the torus as the bidirectional mechanism.
 
 
+### R35. Threshold detection and compact-dimension coupling  **Draft**
+**Study:** [`threshold-coupling/`](threshold-coupling/)
+**Questions:** Q78, Q32  **Type:** compute + theoretical  **Depends on:** R26, R19, R27
+
+4 tracks.  Track 1: Monte Carlo model of Reiter's beam-split experiment
+with T⁶-informed pre-load distribution — computational test of threshold
+theory before physical replication (L00).  Track 2: write/read dynamics
+on T²_ν modes (driven damped oscillator) — produces the "operating manual"
+for L01 (source power, exposure time, detectability thresholds).  Track 3:
+cross-shear leakage rate from T⁶ metric — sets storage lifetime.  Track 4:
+neutron-gateway coupling estimate from overlap integral — determines whether
+a Goldilocks window (writable + retainable + readable) exists.
+
 ### R33. Ghost mode selection — why most T⁶ modes are dark  **Framed**
 **Study:** [`ghost-selection/`](ghost-selection/)
 **Questions:** Q77, Q34  **Type:** compute + theoretical  **Depends on:** R19, R27, R28, R31, R32
