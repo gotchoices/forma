@@ -987,6 +987,139 @@ mode structures.
 (radiation pressure / centrifugal deformation).  Remaining
 paths (1–3, 6, 8) await triage.*
 
+Q71. **How does R³ perceive periodic, compactified dimensions?**
+The T⁶ model says "space is just shaped that way" — compact
+dimensions exist as geometric fact.  Based on relativity, the
+photon "thinks" it travels a straight path; from R³, we see
+periodicity.  What IS our perception of that periodicity?
+
+In KK theory, the answer is known: R³ perceives T⁶ as particles
+(modes = quantized masses) and forces (gauge fields from off-
+diagonal metric terms).  But this raises the deeper question:
+is this the ONLY way to perceive compact dimensions, or are
+there phenomena that reveal the compact geometry more directly?
+
+The Bohr radius (53,000 fm) and the electron tube (32,000 fm)
+are within a factor of 1.7 (R31 F11).  The compact geometry is
+NOT deeply hidden — it's just barely smaller than atomic scales.
+Could precision atomic measurements (Lamb shift, g−2, proton
+charge radius) reveal the compact geometry?  R31 Track 4 showed
+the naive KK Yukawa is ruled out by 10⁵, but that rules out the
+naive COUPLING, not the geometry itself.
+
+*Source: user question (R31 discussion)*
+*Connects to: R29 (KK reduction), R31 F11, F15–F18, Q36*
+*Status: open — foundational; partially addressed by R29/R31*
+
+Q72. **Is R³ itself periodic?  Is our universe toroidal to an
+outside observer?**  If R³ is a very large T³, the distinction
+between "space" and "internal structure" is one of scale, not
+kind.  Consequences:
+
+- Photons have a maximum wavelength (set by the cosmic T³ circumference)
+- The universe has finite volume
+- From a larger space, our universe is a set of modes — "particles"
+- The hierarchy continues: T⁶ modes are particles to us;
+  our R³ modes might be particles to an outer space
+
+Cosmological bounds: the CMB constrains the T³ circumference to
+be > the observable universe (~10⁴¹ fm) if the topology is
+detectable.  But if R³ is a large T³, and T⁶ is a small T⁶,
+the only difference is scale.  The scale hierarchy:
+
+| Space | Circumference | Perceived as |
+|-------|---------------|-------------|
+| Proton T² | 3–24 fm | Hadrons, nuclei |
+| Electron T² | 5,000–32,000 fm | Electron, charge |
+| Neutrino T² | 10¹⁰–10¹¹ fm | Neutrino masses |
+| R³ (if T³) | ~10⁴¹ fm? | Our universe |
+
+*Source: user question (R31 discussion)*
+*Connects to: Q7, Q50, R30 (minimal geometry)*
+*Status: open — speculative but concrete; testable via CMB topology*
+
+Q73. **Is there shear between R³ and T⁶?**  The electromagnetic
+potential A_μ IS the off-diagonal metric component between R³
+and the compact dimensions (standard KK result, used in R29
+Track 1).  So the answer is YES — electromagnetism IS the R³-T⁶
+shear.  The Coulomb force doesn't come from within T⁶ or R³;
+it comes from their cross-term.
+
+Open questions beyond this established result:
+- Are there ADDITIONAL R³-T⁶ cross-terms beyond the gauge field?
+- Do magnetic effects (velocity-dependent: F = qv×B) have a
+  different geometric origin than electric effects?
+- If the R³-T⁶ shear is electromagnetism, and within-plane
+  shear determines α, is there a unified principle governing
+  ALL shears (within-plane, cross-plane, R³-T⁶)?
+
+*Source: user question (R31 discussion)*
+*Connects to: R29 Track 1 (KK Coulomb), R19 (shear-charge formula),
+R31 F7 (mechanisms for selecting α)*
+*Status: partially answered — EM as R³-T⁶ shear is established;
+additional cross-terms and unification are open*
+
+Q74. **Cross-sheet perception: is there an analog between how
+the electron sheet "sees" the proton sheet and how we (in R³)
+see the neutrino sheet?**
+
+The electron sheet perceives the proton sheet through σ_ep
+(cross-shear ≈ −0.09).  This coupling produces the neutron
+(a mode spanning both sheets) and affects particle masses.
+The electron sheet doesn't know the proton sheet's geometry
+directly — only the coupling.
+
+Similarly, R³ perceives T⁶ through gauge fields (cross-terms
+in the metric).  And we perceive the neutrino sheet through
+neutrino masses and weak interactions.  The neutrino sheet is
+10⁷× larger than the electron sheet — effectively decoupled
+(R28 F1: σ_eν, σ_νp irrelevant).
+
+The pattern: each "level" perceives others through couplings,
+not geometry.  Geometry is invisible; only its consequences
+(forces, masses, mode energies) are accessible.  This might
+explain why the compact dimensions are not directly observable
+— the same way the electron sheet cannot "observe" the proton
+sheet's aspect ratio, only its coupling effects.
+
+*Source: user question (R31 discussion)*
+*Connects to: R28 F1 (neutrino decouples), R31 Q&A (r_e
+sensitivity analysis), Q50 (shared compact space)*
+*Status: open — conceptual; could inform how to interpret
+the model's free parameters*
+
+Q75. **Is α = 1/137 a contingent fact ("design choice") or
+necessary ("the only way")?**
+
+The T⁶ model currently treats α as contingent — any shear s
+produces a valid geometry (R31 F4–F6).  But the model only has
+kinematics (spectra), not dynamics (what holds the geometry in
+shape).
+
+The question maps to: does the moduli potential (distortion
+energy + Casimir energy + any other contributions) have a
+UNIQUE minimum?
+
+- If YES: α is necessary — the geometry relaxes to one shape
+- If NO (flat direction): α is contingent — a "choice" or
+  initial condition, possibly varying across a multiverse
+
+From standard physics: no derivation of α exists after 100+
+years.  String landscape (~10⁵⁰⁰ vacua) suggests contingency.
+Anthropic arguments note α must be NEAR 1/137 for chemistry
+but don't explain the exact value.
+
+In our model, the concrete next step is computing the moduli
+potential: the energy cost of maintaining the shear on the
+torus.  This requires a gravitational or elastic energy
+functional not yet in the model (R31 F7, F23).
+
+*Source: user question (R31 discussion)*
+*Connects to: R31 F4–F7 (Casimir doesn't select α), F23
+(dynamics needed), Q18 (deriving α), Q29 (variational α),
+Q34 Path 7 (forward charge)*
+*Status: open — the deepest open question in the model*
+
 ---
 
 ## Filed (promoted to individual files)

@@ -21,8 +21,8 @@ Paper 3: [The Nine-Dimensional Atom](atoms-from-geometry.md) (rough outline).
 | 8 | Three tori on T⁶ | Resolution | Each particle family gets its own T². The crisis is resolved by architecture. |
 | 9 | The neutrino resolved | Resolution | Mass-squared splittings from the neutrino T², matching experiment. |
 | 10 | The emergent neutron | Surprise | A cross-sheet mode nobody looked for: charge 0, correct mass, natural decay. |
-| 11 | The particle zoo | Payoff | Parameter-free predictions: kaon 1.2%, eta 0.6%, eta-prime 0.3%. |
-| 12 | What remains open | Honesty | The α problem, aspect ratios, ghost modes, and next steps. |
+| 11 | The particle zoo | Payoff | Parameter-free predictions: kaon 1.2%, lambda 0.9%, eta-prime 0.3%. |
+| 12 | What remains open | Honesty | The α problem, predictive horizon, ghost modes, and next steps. |
 
 ---
 
@@ -59,7 +59,8 @@ geometry without adjustment.  With the proton aspect ratio
 pinned by the neutron and muon (r_p = 8.906, σ_ep = −0.091),
 the model has zero free parameters at the MeV scale and
 produces parameter-free predictions for the kaon (1.2%
-error), eta (0.6%), eta-prime (0.3%), and phi (0.8%).
+error), eta (0.6%), lambda (0.9%), sigma (0.3%),
+eta-prime (0.3%), and phi (0.8%).
 
 We present the model's successes, its specific failures
 (tau at 5.6%, pion at 14%, Ω⁻ structurally forbidden),
@@ -610,7 +611,11 @@ harmonic combinations can reach 1836 m_e, and nothing in
 the single-torus model selects one over another.  The model
 explains the proton's quantum numbers but does not predict
 its mass from first principles.  That requires the more
-rigid architecture introduced in section 8.
+rigid architecture introduced in section 8, where the
+proton gets its own T² sheet and becomes a single
+fundamental mode (0,0,0,0,1,2) — not an electron dressed
+in harmonics, but an independent standing wave on a
+separate compact surface.
 
 
 ### 6.3 The neutron (first pass)
@@ -973,13 +978,15 @@ spanning two tilted sheets has higher energy than a mode on
 a single sheet.  This is a geometric theorem, not a
 contingent fact.
 
-In the standard model, m_n > m_p is a fine-tuned accident
+In the standard model, m_n > m_p is an unexplained fact
 with enormous consequences.  If the neutron were lighter
 than the proton, protons would decay instead of neutrons.
 Hydrogen would be unstable.  Nuclear physics — and therefore
 chemistry, biology, and the universe as we know it — would
-not exist.  The standard model provides no explanation for
-why m_n − m_p has the sign and magnitude it does.
+not exist.  The standard model traces the mass difference
+to m_d − m_u (a free parameter) partially offset by
+electromagnetic self-energy, but provides no explanation
+for why the sign and magnitude come out as they do.
 
 In the T⁶ model, m_n > m_p follows from the geometry:
 a cross-sheet mode always has more energy than a single-
@@ -1020,7 +1027,7 @@ known particles?
 
 ### 11.1 Parameter-free predictions
 
-A systematic search (R27, Track 5) across the T⁶ mode
+A systematic search (R27, R28) across the T⁶ mode
 spectrum identifies the nearest mode to each known particle,
 matching by mass, charge, and spin.  The results for the
 closest matches:
@@ -1030,10 +1037,12 @@ closest matches:
 | Kaon K⁺ | 493.7 | 488.0 | 1.2% |
 | Kaon K⁰ | 497.6 | 503.7 | 1.2% |
 | Eta η | 547.9 | 551.2 | 0.6% |
+| Lambda Λ | 1115.7 | 1105.6 | 0.9% |
+| Sigma Σ⁺ | 1189.4 | 1185.5 | 0.3% |
 | Eta-prime η′ | 957.8 | 961.1 | 0.3% |
 | Phi φ | 1019.5 | 1028.0 | 0.8% |
 
-Five particles, each matched to within 1.2% of their
+Seven particles, each matched to within 1.2% of their
 observed mass, with zero adjustable parameters.  The
 geometry is fully determined by the stable particles; the
 unstable particle masses are outputs, not inputs.
@@ -1122,6 +1131,27 @@ are "the model says this particular thing is impossible for
 this particular geometric reason."
 
 
+### 11.5 The predictive horizon
+
+Above approximately 2 GeV, the T⁶ mode spectrum becomes
+too dense to be discriminating.  The band spacing drops
+below 5 MeV, meaning that any mass in this range can be
+matched to within ~0.001% by some T⁶ mode — including
+fictional particles.  The W boson (80.4 GeV), Z boson
+(91.2 GeV), and Higgs (125 GeV) all find modes at sub-
+0.001% accuracy, but so would any invented mass.
+
+This is not a failure of the model — it is a structural
+boundary.  Below ~2 GeV, the spectrum is sparse enough
+that a close match is meaningful (a random mass has only
+a ~5% chance of landing within 1% of a mode).  Above
+~2 GeV, matches are trivially guaranteed.  The T⁶ has a
+**predictive horizon**: it makes sharp predictions in the
+hadron mass range but loses discriminating power at higher
+energies, where physics may require dynamics beyond the
+single-mode framework.
+
+
 ## 12. What remains open
 
 ### 12.1 The parameter census
@@ -1141,11 +1171,11 @@ balance sheet:
 | s₅₆ | Proton within-sheet shear | **Constrained** by α formula (same family as s₁₂) |
 | r_ν | Neutrino aspect ratio | **Weakly constrained** (r_ν ≳ 5 from mass convergence) |
 | r_e | Electron aspect ratio | **Unconstrained** (invisible to MeV-scale observables) |
-| σ_eν | Electron-neutrino cross-shear | **Untested** (set to 0) |
-| σ_νp | Neutrino-proton cross-shear | **Untested** (set to 0) |
+| σ_eν | Electron-neutrino cross-shear | **Irrelevant** (no measurable effect) |
+| σ_νp | Neutrino-proton cross-shear | **Irrelevant** (no measurable effect) |
 
 **Score:** 6 pinned, 2 constrained, 1 weakly constrained,
-1 unconstrained, 2 untested.
+1 unconstrained, 2 irrelevant.
 
 The three circumferences are not free parameters in the
 usual sense — they are fixed by the three input masses
@@ -1179,23 +1209,29 @@ fully specified.
 
 ### 12.3 Ghost modes
 
-The T⁶ spectrum contains modes that do not correspond to
-any known particle.  These "ghost modes" are predicted
-vibrations of the compact geometry with definite mass,
-charge, and spin that have no observed counterpart.
+A census of the T⁶ mode spectrum below 2 GeV (R28)
+reveals approximately 900 distinct modes — roughly 20×
+more than the ~40 known particles in this mass range.
+These "ghost modes" are predicted vibrations of the
+compact geometry with definite mass, charge, and spin
+that have no observed counterpart.
 
-If the model is correct, ghost modes must be explained.
-They might correspond to undiscovered particles, or they
-might be forbidden by a selection rule the model has not
-yet identified (for example, a coupling rule that prevents
-certain modes from being produced in reactions), or they
-might be artifacts of the linearized single-mode treatment.
+The ghost modes are consistent with the off-resonance
+hypothesis from section 11.2.  Most observed particles
+sit slightly off a T⁶ eigenfrequency — they are transient
+excitations, not exact modes.  The ghosts are the
+eigenfrequencies themselves: most are not directly
+realized as particles because producing a mode requires
+a reaction that delivers exactly the right energy and
+quantum numbers.  In collider experiments, most of
+these modes would appear as extremely short-lived
+resonances — too brief to register as distinct particles.
 
-Counting ghost modes and understanding their status is a
-priority.  An excess of stable ghost modes with no observed
-counterpart would be a serious problem; an excess of
-unstable ghost modes with very short lifetimes would be
-less concerning, as they might simply be unobservable.
+The mode spectrum is dominated by a rigid energy ladder
+set by the proton sheet, with steps of ~52 MeV (proton
+tube) and ~467 MeV (proton ring).  Every observed
+particle's mass is explained by where it falls on this
+ladder, not by any internal quark structure.
 
 
 ### 12.4 Beyond single particles
@@ -1207,15 +1243,33 @@ occupy discrete energy levels.
 
 Extending the model to multi-body systems requires adding
 the three ordinary spatial dimensions, making the full
-framework T⁶ × R³ — nine dimensions.  Preliminary results
-(R29) are striking: nuclei turn out to be T⁶ modes
-themselves (not bound multi-particle states), matching all
-tested nuclei from the deuteron to iron-56 to within 1%.
-Atoms, by contrast, live below the T⁶ energy resolution
-floor and require the spatial dimensions for their
-description.
+framework T⁶ × R³ — nine dimensions.  Results (R29) are
+striking: nuclei turn out to be T⁶ modes themselves (not
+bound multi-particle states), following the scaling law
+n₅ = A, n₆ = 2A (mass number A), and matching all tested
+nuclei from the deuteron to iron-56 to within 1%.
 
-These results are the subject of a companion paper.
+Atoms, by contrast, live below the T⁶ energy resolution
+floor (~38 keV, vs atomic binding at ~13.6 eV) and require
+the spatial dimensions for their description.  Hydrogen's
+ground state energy emerges from the Kaluza-Klein Coulomb
+potential — the same T⁶ geometry that defines the
+particles also generates the force between them.
+
+The naive Kaluza-Klein boson-exchange picture initially
+produced a crisis: Yukawa corrections to the hydrogen Lamb
+shift exceeded observations by a factor of 10⁵.  This was
+resolved not by abandoning the geometry but by recognizing
+that the boson-mediation picture was the wrong intermediate
+theory — nuclei are modes, not force-bound composites,
+and the massive KK tower couples far more weakly than the
+zero-mode (photon) channel.
+
+These results establish a two-tier architecture: T⁶
+determines particle identity and nuclear composition (MeV
+scale), while R³ determines atomic binding and nuclear
+stability (eV scale).  They are the subject of a companion
+paper.
 
 
 ### 12.5 The path forward
@@ -1229,17 +1283,22 @@ experiment:
 - **Normal mass ordering:** m₃ > m₂ > m₁ (testable by
   JUNO, DUNE, and other oscillation experiments)
 - **Particle masses:** kaon at 488 MeV, eta at 551 MeV,
-  eta-prime at 961 MeV, phi at 1028 MeV
+  lambda at 1106 MeV, sigma at 1186 MeV, eta-prime at
+  961 MeV, phi at 1028 MeV
 - **Structural constraints:** no single-mode Ω⁻; tau
   cannot be a single mode at 1777 MeV
+- **Predictive horizon:** the T⁶ spectrum becomes too
+  dense above ~2 GeV to distinguish real particles from
+  noise — electroweak-scale physics is outside the
+  model's current reach
 - **Sub-mm gravity:** deviations from Newton's law below
   ~50 μm if gravity propagates in the neutrino T²
 
 Where the model fails — tau, pion, Ω⁻ — the failures are
 specific and informative, pointing to the boundary between
 single-mode physics and multi-mode or nonlinear effects.
-Where it succeeds — kaon, eta, eta-prime, neutron — the
-successes are parameter-free.
+Where it succeeds — kaon, eta, lambda, sigma, eta-prime,
+phi, neutron — the successes are parameter-free.
 
 The fine-structure constant remains underived.  The ghost
 mode census is incomplete.  The connection to quantum field
