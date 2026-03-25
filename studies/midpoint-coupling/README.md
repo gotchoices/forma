@@ -82,30 +82,23 @@ midpoint coupling 1/80.
 ## Tracks
 
 
-### Track 1 — Kramers-Kronig dispersive model
+### Track 1 — Kramers-Kronig dispersive model  **Complete**
 
-Model the T² mode spectrum as a set of absorption
-resonances.  The refractive index (= coupling) follows:
+Model the T² mode spectrum as absorption resonances and
+compute the dispersive running of α(E).
 
-    1/α(E) = 1/α₀ + (2/π) P∫ E'σ(E')/(E'² − E²) dE'
+**Result:** Pure Kramers-Kronig cannot reach 1/24 — the
+dispersive contribution vanishes at high E, leaving 1/α →
+80.5.  A hybrid model (screening + running as complementary
+functions) reduces to a Lorentzian dispersion:
 
-where σ(E') is the absorption cross-section at each mode
-energy and α₀ = 1/80.5 is the base coupling.
+    1/α(E) = 80.5 + 56.5 × (E*² − E²) / (E² + E*²)
 
-For each T⁶ mode at energy E_k with oscillator strength f_k:
-- Known particles (e, p, n, etc.): f_k = 1
-- Ghost modes: f_k = 10⁻⁵ (suppressed)
-
-Compute the dispersive integral and check:
-- Does 1/α(0) → 137?  (IR screening)
-- Does 1/α(∞) → 24?  (UV anti-screening)
-- What energy gives 1/α = 80?  (resonance)
-
-The sign structure is critical: Kramers-Kronig guarantees
-that IF there is absorption (ghost modes absorb energy at
-their resonant frequencies), the refractive index is
-enhanced below the resonance and reduced above it.  This
-is exactly the bidirectional modulation.
+Fitting to α(m_Z) gives E* ≈ 310 GeV (near the electroweak
+scale).  The Lorentzian works below m_Z (within 3%) but
+fails catastrophically above (wrong curvature — Lorentzian
+vs logarithmic).  No T⁶ geometric scale gives the right E*.
+Findings F1–F6.
 
 
 ### Track 2 — The resonance scale
