@@ -98,7 +98,7 @@ between torus lattices and the number 24 (modular functions, kissing numbers,
 refraction geometry).  Track 4: impedance/transmission coefficient at the
 T⁶/R³ interface via waveguide/cavity QED.
 
-### R34. The midpoint coupling — bidirectional modulation of α  **Active**
+### R34. The midpoint coupling — bidirectional modulation of α  **Complete**
 **Study:** [`midpoint-coupling/`](midpoint-coupling/)
 **Questions:** Q77, Q18  **Type:** compute + theoretical  **Depends on:** R19, R31, R32
 

@@ -342,3 +342,84 @@ together account for ~75% of the T⁶ screening.  If
 their contribution is reduced by form factors or width
 effects, the T⁶ running could approach the measured
 value.
+
+
+---
+
+## Track 3 — Backing into the shear
+
+
+### F19. The shear scales as √α, with identical ratio on both sheets
+
+Solving s from α₀ = 1/80 instead of 1/137:
+
+    Electron: s goes from 0.01029 to 0.01347 (ratio 1.308)
+    Proton:   s goes from 0.00764 to 0.00999 (ratio 1.308)
+
+The ratio is identical for both sheets and equals
+√(137/80) = 1.308.  This is expected: for small s,
+sin(2πs) ≈ 2πs, so α ∝ s² and s ∝ √α.
+
+The shear encodes the coupling directly, and changing
+the target α simply rescales s by √(α_new/α_old).
+
+
+### F20. Neither shear matches any obvious geometric constant
+
+Tested against 1/2π, 1/r, 1/12, 1/24, √α, and 18
+other candidates.  The only near-matches:
+
+    s_e(137) ≈ 1/100   (ratio 1.029 — 3% off)
+    s_p(80)  ≈ 1/100   (ratio 0.999 — 0.1% off!)
+
+The s_p(80) ≈ 1/100 match is striking (0.1% accuracy)
+but may be coincidental given that 1/100 has no known
+geometric significance for tori.  The proton shear for
+α₀ = 1/137 gives s_p(137) ≈ α (ratio 1.046 — 5% off).
+
+
+### F21. The prefactor is nearly s-independent
+
+Decomposing α = prefactor(r,s) × sin²(2πs):
+
+    Electron: prefactor = 1.747 (at s₁₃₇) vs 1.750 (at s₈₀)
+    Proton:   prefactor = 3.173 (at s₁₃₇) vs 3.177 (at s₈₀)
+
+The prefactor r²μ/(4π(2−s)²) depends very weakly on s
+(because s ≪ 2).  All the variation in α comes from
+sin²(2πs).  The formula is effectively:
+
+    α ≈ C(r) × (2πs)²    for small s
+
+where C(r) = r²√(1/r² + 4) / (16π) is determined
+entirely by the aspect ratio.
+
+    C(r_e = 6.6) = 1.747
+    C(r_p = 8.906) = 3.173
+
+
+### F22. The standard denominator 4π(2−s)² ≈ 50, not 24
+
+    Electron: 4π(2−s)² = 49.75
+    Proton:   4π(2−s)² = 49.88
+    Ratio to 24:  ~2.07
+
+Replacing the denominator with 24 (gauge channel count)
+approximately doubles α.  With the standard shear
+(from 1/137), the 24-denominator formula gives α ≈ 1/66,
+not 1/137 or 1/80.
+
+
+### F23. The shear is a continuous free parameter with no selection
+
+The α formula can produce any value of α between 0 and
+~2 (for r_e) by varying s from 0 to ~0.26.  There is
+no potential minimum, quantization condition, or
+topological constraint that selects a particular s.
+
+This confirms F12: the formula provides a MECHANISM
+(shear → charge leakage → coupling) but not a VALUE.
+To derive α from geometry, one needs a dynamical
+principle that fixes s — such as energy minimization,
+modular invariance, or a variational condition on the
+metric.

@@ -1,6 +1,6 @@
 # R34. The midpoint coupling — bidirectional modulation of α
 
-**Status:** Active  
+**Status:** Complete  
 **Questions:** Q77 (α as impedance), Q18 (deriving α)  
 **Type:** compute + theoretical  
 **Depends on:** R19 (shear-charge), R31 (alpha derivation),
@@ -153,7 +153,7 @@ with higher cutoffs (119 at 1 PeV) but never fully
 closes.  Findings F7–F10.
 
 
-### Track 3 — Backing into the shear
+### Track 3 — Backing into the shear  **Complete**
 
 The α formula α = r²μ sin²(2πs) / (4π(2−s)²) currently
 uses s solved from α = 1/137.  Instead:
@@ -175,6 +175,16 @@ metric channel count.  Solve for the required numerator.
     modulation(E=0) = 80.5/137 = 0.588
     modulation(E→∞) = 80.5/24 = 3.354
 What function of (r, s, E) gives this modulation?
+
+**Result:** The shear scales as √α — changing the target
+from 1/137 to 1/80 just rescales s by √(137/80) = 1.308,
+identically on both sheets.  Neither shear matches a
+geometric constant (though s_p(80) ≈ 1/100 to 0.1%).
+The prefactor r²μ/(4π(2−s)²) is nearly s-independent,
+so the formula reduces to α ≈ C(r) × (2πs)².  The
+standard denominator 4π(2−s)² ≈ 50, not 24.  The shear
+is a continuous free parameter with no selection
+mechanism.  Findings F19–F23.
 
 
 ### Track 5 — Running with known particles only (no ghosts)
@@ -268,9 +278,9 @@ a geometric base coupling).
 
 ---
 
-## Summary — R34 in progress
+## Summary — R34 complete
 
-### Outcome so far: null result for ghost-based models; ghost-free approach (Track 5) pending
+### Outcome: No model successfully reproduces the observed running of α from a geometric base
 
 **Track 1 (Kramers-Kronig):** The Lorentzian dispersion
 model has the right endpoints (137, 24) but the wrong
@@ -289,9 +299,13 @@ is ruled out, but mass-dependent suppression, winding-
 number-dependent coupling, and inclusion of known T⁶
 particles beyond e/p have not been tested.
 
-**Track 3 (backing into the shear):** Not yet run.  Still
-viable — solving s from 1/α₀ = 80 could reveal whether
-the resulting shear has geometric significance.
+**Track 3 (backing into the shear):** The shear is a
+continuous free parameter: changing the target α just
+rescales s by √(α_new/α_old).  Neither the 1/137 nor
+1/80 shear matches a geometric constant.  The formula
+provides a mechanism (shear → coupling) but has no
+selection principle for s.  The denominator 4π(2−s)² ≈ 50,
+not 24.  One curiosity: s_p(80) ≈ 1/100 to 0.1%.
 
 **Track 5 (known particles only):** T⁶ known particles
 (no ghosts) run α 2.4× too fast: Δ(1/α) = 21.9 from
