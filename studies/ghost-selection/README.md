@@ -29,6 +29,35 @@ strength as known particles.  But neither explains WHY.
 This study investigates the geometric mechanism behind ghost
 mode suppression.
 
+### Sheet-by-sheet focus
+
+The three T² sheets have different roles:
+
+**Electron sheet (L₁ ~ fm, L₂ ~ fm):** The electron is
+mode (1,2).  The question is why this mode dominates — why
+don't other modes on this sheet appear as stable charged
+particles?  The spin filter (Track 6) and charge integral
+(Track 1) should explain this.
+
+**Proton sheet (L₅ ~ fm, L₆ ~ fm):** The proton is mode
+(1,2).  Same question: why does the fundamental dominate?
+The proton sheet's shear and aspect ratio (r_p ≈ 6.6) are
+pinned by the neutron mass, so the computation is more
+constrained.
+
+**Neutrino sheet (L₃ ~ 42 μm, L₄ ~ 210+ μm):** The
+neutrino is mode (1,2).  Ghost modes on this sheet are
+NOT a problem — they are the hypothesized storage medium
+(Q85 §8, §12–13).  The neutrino sheet should have many
+modes.  The question is only whether the fundamental
+(1,2) is preferred as the ground state, not whether other
+modes are suppressed.
+
+This study focuses primarily on the electron and proton
+sheets.  Neutrino-sheet modes are investigated only in
+Tracks 5 and 7(e), and there the goal is characterization
+(what modes exist) rather than elimination.
+
 
 ## Prior results
 
@@ -68,30 +97,50 @@ mode suppression.
    that correlate with known particles?
 
 
-## Approach: 5 tracks
+## Approach: 7 tracks
 
-### Track 1 — Charge integral per mode
+### Track 1 — Charge integral per mode (electron and proton sheets)
 
 The R19 shear-charge formula derives α from a surface
 integral over the electron T².  The integral assumes the
-(1,2) mode shape.  Generalize it:
+(1,2) mode shape.  Generalize it to all modes on both the
+electron and proton sheets.
 
-For each mode (n₁, n₂), compute the charge integral:
+For each mode (n₁, n₂) on the electron T²:
 
     Q_eff(n₁, n₂) = ∫∫ [EM flux from mode (n₁,n₂)] dA
 
-on the sheared T².  The KK formula says Q = −n₁ (for the
-electron sheet), independent of n₂.  The WvM integral may
-give a different (suppressed) result for modes other than
-(1,2).
+The KK formula says Q = −n₁, independent of n₂.  The WvM
+integral may give a different (suppressed) result for
+modes other than (1,2).
 
-**Test**: Compute Q_eff for all modes with |n₁| ≤ 8,
-|n₂| ≤ 8.  Does Q_eff → 0 for ghost modes?  Does the
-suppression scale as ~10⁻⁵?
+**Compute separately for each sheet:**
 
-**Output**: Table of Q_eff / Q_KK for each mode.
-Identification of which modes are electromagnetically
-active vs dark.
+a) **Electron sheet:** Q_eff(n₁, n₂) for |n₁| ≤ 8,
+   |n₂| ≤ 8.  Use r_e = 6.6 (default) and s₁₂ from
+   solve_shear_for_alpha(r_e).  Does Q_eff select (1,2)?
+   What about (1,1) — the dangerous spin-1 mode?
+
+b) **Proton sheet:** Q_eff(n₅, n₆) for |n₅| ≤ 8,
+   |n₆| ≤ 8.  Use r_p = 6.6 and s₅₆ from the proton
+   self-consistent metric.  Does the same mechanism that
+   selects the electron also select the proton?
+
+c) **Cross-sheet modes** (e.g., neutron (1,2,0,0,1,2)):
+   how does the charge integral behave when both sheets
+   are active?  The neutron has Q = 0 by n₁ − n₅ = 0.
+   Do cross-sheet ghosts have anomalous charge?
+
+The question is not whether all ghosts have zero charge,
+but whether the fundamental (1,2) is PREFERRED — does it
+have the largest |Q_eff| among all modes?  A preference
+hierarchy (strong fundamental, weakly coupled ghosts)
+explains both the dominance of known particles and the
+~10⁵ suppression.
+
+**Output**: Table of Q_eff / Q_KK for each mode on each
+sheet.  Rank ordering by |Q_eff|.  Identification of the
+preference hierarchy.
 
 
 ### Track 2 — Quantum number reachability
@@ -343,12 +392,15 @@ turn r_e from a free parameter into a prediction.
 ## What success looks like
 
 - **Strong result**: Track 1 shows the charge integral
-  naturally suppresses ghost modes by ~10⁵, explaining
-  both the Lamb shift and running constraints from a
-  single geometric mechanism.  The KK charge formula
-  Q = −n₁ + n₅ is a zeroth-order approximation; the
-  full integral adds mode-shape-dependent corrections
-  that kill most modes.
+  gives a clear preference hierarchy: (1,2) has the
+  largest |Q_eff| on both the electron and proton sheets.
+  Other modes are suppressed by ~10⁵, explaining both
+  the Lamb shift and running constraints from a single
+  geometric mechanism.  The KK formula Q = −n₁ is a
+  zeroth-order approximation; the full integral adds
+  mode-shape-dependent corrections that suppress ghosts.
+  The same hierarchy appears independently on both sheets,
+  explaining why one particle dominates per sheet.
 
 - **Moderate result**: Track 3 shows all sub-electron
   charged modes are unstable (can decay to lighter
@@ -369,13 +421,7 @@ turn r_e from a free parameter into a prediction.
   observed particle stability.  Known stable particles sit
   in gaps; known resonances sit in crowds.  Ghost modes
   cluster in dense regions where rapid cascade drains them
-  to known particles.  The harmonic ladder is scrambled
-  enough that "harmonics" are not a distinct excitation
-  channel — energy above m goes to R³ kinetic energy, not
-  internal harmonics.  This would confirm that pair
-  production is the only internal energy-release mechanism
-  and that the mode spectrum's gap structure is itself a
-  selection rule.
+  to known particles.
 
 - **Track 6 + 7 combined strong result**: The spin filter
   (Track 6) kills most modes via fractional spin.  The
@@ -387,3 +433,13 @@ turn r_e from a free parameter into a prediction.
   sheet pins r_p (currently ~6.6 from neutron fitting).
   If the two methods give consistent r_p values, this is
   a cross-check of the entire ghost selection framework.
+
+- **Neutrino sheet (not a problem)**: Dense neutrino-sheet
+  modes in [m_ν, 2m_ν] are a FEATURE, not a bug — they
+  are the hypothesized information storage medium (Q85).
+  Success here means confirming that the fundamental
+  (1,2) neutrino is the ground state (lowest-energy
+  spin-½ mode) while many higher modes exist.  If the
+  neutrino sheet has only a few modes, storage capacity
+  is limited and the Reiter model may need to be a
+  hybrid of continuous + quantum mechanisms.
