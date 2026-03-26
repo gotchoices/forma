@@ -277,6 +277,69 @@ Angular momentum integral results for benchmark modes.
 If WvM spin eliminates most ghosts, this is a STRONG result.
 
 
+### Track 7 — Aspect ratio scan for the prediction minimum
+
+The spin filter (Track 6) leaves a dangerous survivor:
+mode (1, 1) on the electron sheet is spin-1 (valid boson),
+charge −1 (at KK zeroth order), and lighter than the
+electron.  No such particle is observed.
+
+The R19 charge integral computes effective charge from the
+mode shape on a sheared T².  Crucially, this integral
+depends on the aspect ratio r_e.  If Q(1, 1, r_e) = 0 at
+some specific r_e, the mode is uncharged and invisible —
+eliminating the most dangerous ghost AND pinning r_e.
+
+**Compute:**
+
+a) Evaluate the R19 shear-charge integral Q(n₁, n₂, r, s)
+   for modes (1,0), (1,1), (1,2), (1,3) on the electron
+   sheet across a dense grid of r_e values from 0.1 to 100.
+   At each r_e, s is determined by α (solve_shear_for_alpha).
+   Plot Q vs r_e for each mode.
+
+b) Find zeros: at which r_e does Q(1,1) = 0?  Does Q(1,2)
+   remain at −1 at that same r_e?  If both conditions hold
+   simultaneously, r_e is pinned.
+
+c) Define a "tension score" T(r_e): for each r_e, count the
+   number of modes on the electron sheet below 2 GeV that
+   are (i) charged (|Q| > 0.01), (ii) have valid spin
+   (integer or half-integer per Track 6), and (iii) do not
+   correspond to a known particle.  Plot T(r_e).  Find the
+   minimum — this is the "prediction minimum" r_e where the
+   model makes the fewest unexplained predictions.
+
+d) Repeat (a)–(c) for the proton sheet.  The proton is
+   mode (1, 2) on its T².  Mode (1, 1) on the proton sheet
+   would be a charged spin-1 boson at ~half the proton mass
+   (~470 MeV).  Does Q(1, 1, r_p) = 0 at r_p ≈ 6.6?
+
+e) Apply the same analysis to the neutrino sheet.  The
+   neutrino is uncharged (n₁ = 0 on the electron sheet),
+   but modes with n₃ ≠ 0 on the neutrino sheet could carry
+   "neutrino charge" (weak interaction analog).  Does the
+   charge integral on the neutrino T² constrain r_ν?
+
+f) If the prediction minimum exists and gives a unique r_e:
+   compute the full mode spectrum at that r_e.  List every
+   surviving mode (valid spin, nonzero charge) below 2 GeV.
+   These are firm predictions — the model says they exist.
+   Compare to the R28 particle catalog.
+
+**Output**: Q(r_e) curves for benchmark modes.  Zeros of
+Q(1,1,r_e).  Tension score T(r_e) plot with minimum
+identified.  If r_e is pinned, the full predicted spectrum
+at that r_e.  Repeat for proton sheet.
+
+**Why this matters**: r_e has been a free parameter since
+R19.  If the charge integral's r-dependence pins it, the
+T⁶ model loses a free parameter and gains predictive
+power.  Combined with Track 6 (spin filter), this could
+reduce the electron-sheet ghost population to zero and
+turn r_e from a free parameter into a prediction.
+
+
 ## What success looks like
 
 - **Strong result**: Track 1 shows the charge integral
@@ -313,3 +376,14 @@ If WvM spin eliminates most ghosts, this is a STRONG result.
   production is the only internal energy-release mechanism
   and that the mode spectrum's gap structure is itself a
   selection rule.
+
+- **Track 6 + 7 combined strong result**: The spin filter
+  (Track 6) kills most modes via fractional spin.  The
+  charge integral scan (Track 7) finds r_e where the
+  remaining dangerous modes (especially (1,1)) lose their
+  charge.  Together, they eliminate all electron-sheet
+  ghosts AND pin r_e — converting a free parameter into a
+  prediction.  The same mechanism applied to the proton
+  sheet pins r_p (currently ~6.6 from neutron fitting).
+  If the two methods give consistent r_p values, this is
+  a cross-check of the entire ghost selection framework.

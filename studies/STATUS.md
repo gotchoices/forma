@@ -141,7 +141,7 @@ mass spectrum preservation.
 **Study:** [`ghost-selection/`](ghost-selection/)
 **Questions:** Q77, Q34  **Type:** compute + theoretical  **Depends on:** R19, R27, R28, R31, R32
 
-6 tracks.  The T⁶ has ~900 modes below 2 GeV but only ~40 known particles.
+7 tracks.  The T⁶ has ~900 modes below 2 GeV but only ~40 known particles.
 R31 and R32 independently demand ~10⁵ coupling suppression for ghost modes.
 Track 1: generalize the R19 charge integral to all modes (does it naturally
 suppress ghosts?).  Track 2: quantum number reachability (which ghosts can
