@@ -142,6 +142,16 @@ explains both the dominance of known particles and the
 sheet.  Rank ordering by |Q_eff|.  Identification of the
 preference hierarchy.
 
+**Result (Complete):**  The n₁ = ±1 selection rule kills 88%
+of modes.  Among survivors, coupling scales as 1/(n₂-s)²,
+ENHANCING low-n₂ modes (not suppressing them).  Combined
+with the spin filter (Track 6 preview: spin = n₁/n₂), only
+4 modes survive per sheet: (1,±1) spin-1 bosons and (1,±2)
+spin-½ fermions.  The (1,1) boson has 2× electron coupling
+at half the mass — the critical remaining ghost.  The charge
+integral CANNOT pin r_e: Q(1,1) is nonzero for all s ≠ 0.
+See findings F1–F8.
+
 
 ### Track 2 — Quantum number reachability
 
