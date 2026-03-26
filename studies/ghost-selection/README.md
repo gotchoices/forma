@@ -229,6 +229,54 @@ in r) for electron and proton.  Isolation index per known
 particle vs observed lifetime.
 
 
+### Track 6 — Spin-statistics selection rule
+
+The WvM confined-photon derivation assigns spin ℏ × n₁/n₂
+to a mode (n₁, n₂).  Only integer and half-integer spin
+values correspond to physical particles.  If this formula
+is correct, most ghost modes have fractional spin and are
+forbidden by the spin-statistics theorem.
+
+**Compute:**
+
+a) For every T⁶ mode below 2 GeV (from R28 mode catalog),
+   compute Spin = n₁/n₂ for the dominant sheet winding.
+   Classify as integer, half-integer, or fractional.
+   Count: how many modes survive vs. are killed?
+
+b) Derive the angular momentum of the confined EM field for
+   modes (1,1), (1,2), (1,3) on a sheared T².  Method:
+   solve Maxwell's equations on the (L₁, L₂, s) torus,
+   compute the angular momentum density J = ε₀(E × B), and
+   integrate over the T² cell.  Does the total J give spin
+   = n₁/n₂?  Or does shear modify the result?
+
+c) Alternative derivation: treat the mode as a pair of
+   winding numbers on a T².  The spin is the ratio of
+   orbital periods.  For (n₁, n₂) on T² with aspect ratio
+   r, the tube circuit takes time t₁ = L₁/c = 2πrL₂/c,
+   the ring circuit takes t₂ = L₂ n₂/c.  The ratio
+   t₁/(n₂ t₂) = r/n₂.  Does this give a different spin
+   formula (aspect-ratio-dependent)?
+
+d) Compare to the field-theoretic assignment (spin ½ per
+   active sheet, regardless of winding).  In the R27/R28
+   mode tables, spin was assigned per sheet.  Which
+   assignment reproduces the observed particle spins?
+
+e) For multi-sheet modes: if mode (n₁, n₂, n₃, n₄, n₅, n₆)
+   has nonzero windings on two sheets, does spin add?  E.g.,
+   the neutron has windings on electron and proton sheets.
+   Does spin = ½ + ½ = 1 (wrong) or ½ (correct)?  The
+   WvM formula needs a multi-sheet generalization.
+
+**Output**: Table of all modes below 2 GeV with spin
+assignment from both formulas (WvM and field-theoretic).
+Count of modes surviving the spin-statistics filter.
+Angular momentum integral results for benchmark modes.
+If WvM spin eliminates most ghosts, this is a STRONG result.
+
+
 ## What success looks like
 
 - **Strong result**: Track 1 shows the charge integral

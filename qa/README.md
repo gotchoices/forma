@@ -50,6 +50,7 @@ For questions that need a computational model, see [`studies/`](../studies/).
 | [Q81](Q81-regeneration-and-trophic-memory.md) | How does T²_ν explain regeneration, subroutine calls, and trophic memory? | Open — hypothesis development |
 | [Q82](Q82-entanglement-as-t6-geometry.md) | Is quantum entanglement a geometric property of T⁶? Shared modes, ER=EPR, Bell's theorem | Open — deep hypothesis |
 | [Q83](Q83-neutrino-sheet-coherence.md) | Can quantum coherence persist on the neutrino sheet at biological temperatures? | Open — quantitative estimates |
-| [Q84](Q84-mast-terminology.md) | MaST — a naming convention for the framework (Material, Space, Time) | Draft — terminology proposal |
+| [Q84](Q84-mast-terminology.md) | MaST Universe — terminology and naming conventions (U¹⁰ = M⁶ × S³ × T¹) | Draft — terminology proposal |
+| [Q85](Q85-harmonic-ladder-and-threshold.md) | The harmonic ladder — energy levels, threshold theory, and digital counting on T² | Open — quantitative framework |
 
 Unprocessed and brief questions live in [`INBOX.md`](INBOX.md).

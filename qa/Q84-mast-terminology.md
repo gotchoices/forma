@@ -1,4 +1,4 @@
-# Q84: MaST — terminology and naming conventions
+# Q84: MaST Universe — terminology and naming conventions
 
 **Status:** Draft — terminology proposal
 **Related:**
@@ -21,11 +21,12 @@ topology.
 
 ---
 
-## 2. MaST — the naming convention
+## 2. MaST Universe — the naming convention
 
 **Ma** — Material dimensions (where matter lives)
 **S**  — Space (the three large dimensions we navigate)
 **T**  — Time
+**U**  — Universe (the full 10D arena)
 
 The compact dimensions are not abstract mathematical
 structures.  They are the dimensions where matter IS —
@@ -36,43 +37,65 @@ the vocabulary.
 The familiar intuition: matter moves through spacetime.
 MaST says: energy moves through Material-Space-Time.
 
+The framework may be referred to as "the MaST Universe
+model" in external communication.
+
 ---
 
 ## 3. Dimension inventory
 
 | Symbol | Name | Count | Description |
 |--------|------|-------|-------------|
-| M⁶ | Material space | 6 | The compact dimensions; three M² sheets |
+| U¹⁰ | Universe | 10 | The full arena: M⁶ × S³ × T¹ |
+| M⁶ | Material space | 6 | The compact dimensions; 3M (three M² sheets) |
 | S³ | Space | 3 | The large spatial dimensions (x, y, z) |
 | T¹ | Time | 1 | Time |
-| **Total** | | **10** | 9 spatial + 1 temporal |
 
-The full framework is M⁶ × S³ × T¹.
+Decomposition: U¹⁰ = M⁶ × S³ × T¹ (9 spatial + 1 temporal).
 
 Ordinary "spacetime" is S³ × T¹ — the familiar 4D block.
 M⁶ is the new part: six material dimensions at every point.
 
-### 3.1 Convention: superscript = dimension count
+### 3.1 Conventions
 
-Throughout MaST notation, superscripts are always dimension
-counts.  Subscripts are always labels.
+**Superscript = dimension count.**  Always.
 
 | Symbol | Reads as |
 |--------|----------|
+| U¹⁰ | "the ten-dimensional universe" |
 | M⁶ | "six material dimensions" |
 | M² | "a two-dimensional material sheet" (generic) |
 | M²_ν | "the neutrino material plane" |
 | S³ | "three-dimensional space" |
 | T¹ | "one-dimensional time" |
 
-There is no M³.  The number of sheets (three) is structural,
-not notational — it is expressed by listing M²_ν, M²_e, M²_p.
+**Subscript = label.**  Always a letter or particle symbol
+identifying a specific sheet or axis.
+
+**Prefixed numeral = count of structural units.**  3M means
+"three sheets," not "three dimensions."  The arithmetic:
+3M = three M² sheets = M⁶ (3 sheets × 2 dimensions each).
+
+| Symbol | Meaning |
+|--------|---------|
+| M⁶ | The six material dimensions (the space) |
+| 3M | The three-sheet decomposition (the structure) |
+| M² | One sheet (two dimensions) |
+| M²_ν | The neutrino sheet specifically |
 
 ### 3.2 Convention clash: S³
 
 In standard mathematics, S³ denotes the 3-sphere.  In MaST
 notation, S³ means flat 3-space (ℝ³).  Within the project,
 S³ always means flat space.
+
+### 3.3 Convention clash: U vs U(1)
+
+In gauge theory, U(1) denotes the unitary symmetry group of
+electromagnetism.  In MaST, U¹⁰ denotes the full 10D
+manifold.  The superscript and context disambiguate:
+U(1) always has parentheses and refers to a symmetry group;
+U¹⁰ has a superscript and refers to a space.
 
 ---
 
@@ -216,8 +239,9 @@ or a second sheet — this drove the move from T² to T⁶ (R25).
 | T⁶ | M⁶ | No collision with time |
 | T² | M² | Same |
 | T²_ν | M²_ν | Reads as "neutrino material plane" |
+| "the three T² sheets" | 3M | Compact; arithmetic is transparent (3M = M⁶) |
 | R³ | S³ | "Space" more intuitive than ℝ³ |
-| R³ × T⁶ | S³ × M⁶ | Parses as "space and material" |
+| R³ × T⁶ | U¹⁰ = S³ × M⁶ | Named universe; parses as "space and material" |
 | "compact dimensions" | "material dimensions" | States the thesis |
 | "the neutrino T²" | M_ν or "the neutrino sheet" | Shorter, clearer |
 | "cross-shear" | (unchanged) | Already clear |
@@ -225,18 +249,18 @@ or a second sheet — this drove the move from T² to T⁶ (R25).
 
 ---
 
-## 10. The MaST acronym
+## 10. The MaST Universe name
 
-MaST = Material-Space-Time.
+**MaST** = Material-Space-Time.
+**MaST Universe** = the full framework and its 10D arena.
 
 - Pronounceable, memorable
-- States the three ingredients of the framework
+- States the ingredients: Material, Space, Time
 - Claims "material" is on equal footing with space and
   time — not derivative, not emergent, but a fundamental
   geometric ingredient
-
-The framework may be referred to as "the MaST model"
-or "the MaST framework" in external communication.
+- "Universe" names the arena (U¹⁰) and completes the
+  vocabulary
 
 ---
 
@@ -250,8 +274,8 @@ or "the MaST framework" in external communication.
    "Matter" is a noun for the stuff itself.  Open to
    alternatives.
 
-3. **Symbol for M⁶ × S³ (the 9D spatial manifold).**
-   Candidates: Σ⁹, or simply M⁶S³.
+3. **Symbol for the 9D spatial manifold (M⁶ × S³, no
+   time).**  Candidates: Σ⁹, or simply M⁶S³.
 
 4. **Does T¹ need a dedicated symbol?**  Time is already
    universally "t."  T¹ is mainly for completeness in
