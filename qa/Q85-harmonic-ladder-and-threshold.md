@@ -848,3 +848,296 @@ A cross-sheet coupling (σ_eν) links them: the electron
 architecture — one sheet for interaction, one for storage
 — is the structural prediction of the T⁶ model for
 biological information processing.
+
+
+## 12. Superposition encoding and the frequency chord
+
+### A single mode is a pure tone
+
+Each eigenmode (n₃, n₄) on the neutrino T² has one
+temporal frequency: ω = E(n₃, n₄)/ℏ.  But it has TWO
+spatial frequency components — one per torus axis:
+
+- Along L₃ (tube): k₃ = 2π n₃/L₃
+- Along L₄ (ring): k₄ = 2π n₄/L₄
+
+The ratio n₃/n₄ is the mode's spatial fingerprint.
+Mode (1, 2) oscillates once along the tube per two ring
+circuits.  Mode (3, 2) oscillates three times per two
+ring circuits.  Same ring structure, different tube
+pattern, slightly different energy.
+
+### A superposition is a chord
+
+A neutrino need not occupy a single eigenmode.  It can
+be in a superposition:
+
+    ψ = c₁|1,2⟩ + c₂|2,2⟩ + c₃|3,2⟩ + ...
+
+Each coefficient c_k = |c_k| × e^{iφ_k} has an amplitude
+and a phase.  The set {c_k} defines a waveform on the
+torus — a 2D interference pattern — that changes in time
+because each component oscillates at a different frequency.
+
+This is exactly a chord:
+- Each mode is a note (pure frequency)
+- The amplitudes {|c_k|} set the loudness of each note
+- The phases {φ_k} set the timing
+- Different chords = different stored information
+
+The beat frequencies between adjacent modes are:
+
+    f_beat(k, k+1) = |ω(k+1, 2) − ω(k, 2)| / 2π
+                   ≈ m_ν c² × (2k+1) / (8π ℏ r_ν²)
+
+For large r_ν these are very small — the chord evolves
+slowly.  The superposition doesn't rapidly dephase; it's
+a slowly rotating pattern on the torus.
+
+
+## 13. Storage capacity estimates
+
+### Total modes available
+
+All modes (n₃, n₄) with energy in [m_ν, 2m_ν] satisfy
+4 ≤ n₃²/r_ν² + n₄² ≤ 16 (for large r_ν).  The lattice
+point count in this annulus scales as:
+
+    N_total ≈ 12π r_ν ≈ 38 r_ν
+
+(12π = area of the annulus in scaled coordinates.)
+This is ~10× more than the (k, 2)-only estimate because
+modes with n₄ = 1 and n₄ = 3 also fall in the window.
+
+### Framework A: Single-mode (which note is playing)
+
+The simplest encoding: the neutrino occupies exactly one
+mode.  The stored value is the mode index.
+
+    Capacity = log₂(N_total) bits
+
+| r_ν   | N modes in [m_ν, 2m_ν] | Capacity       |
+|--------|------------------------|----------------|
+| 10     | ~380                   | 8.6 bits       |
+| 100    | ~3,800                 | 11.9 bits      |
+| 1,000  | ~38,000                | 15.2 bits      |
+| 10,000 | ~380,000               | 18.5 bits      |
+| 10⁶    | ~3.8 × 10⁷            | 25.2 bits      |
+
+Requirements: the mode must be stable (no spontaneous
+decay).  No coherence needed — this is classical storage.
+Very robust, but only ~2 bytes per neutrino even at large
+r_ν.
+
+### Framework B: Superposition with finite precision (Reiter)
+
+Under threshold theory, the full superposition state is
+physically real and persistent.  The state is a point in
+a (2N − 2)-dimensional real space (N complex amplitudes
+minus normalization and global phase).  If each real
+parameter is set to p bits of precision:
+
+    Capacity = (2N − 2) × p bits
+
+| r_ν   | N modes | p = 8 bits   | p = 16 bits  | p = 32 bits  |
+|--------|---------|--------------|--------------|--------------|
+| 100    | 3,800   | 60 kbits     | 120 kbits    | 240 kbits    |
+|        |         | **7.5 KB**   | **15 KB**    | **30 KB**    |
+| 1,000  | 38,000  | 600 kbits    | 1.2 Mbits    | 2.4 Mbits    |
+|        |         | **75 KB**    | **150 KB**   | **300 KB**   |
+| 10,000 | 380,000 | 6 Mbits      | 12 Mbits     | 24 Mbits     |
+|        |         | **750 KB**   | **1.5 MB**   | **3 MB**     |
+| 10⁶    | 3.8×10⁷ | 600 Mbits    | 1.2 Gbits    | 2.4 Gbits    |
+|        |         | **75 MB**    | **150 MB**   | **300 MB**   |
+
+The precision p is set by whatever physical mechanism
+reads and writes the state.  If the Reiter channel
+operates at the natural energy resolution of the mode
+spacing (δE ~ m_ν/r_ν), then p is limited by the
+signal-to-noise of the read/write process, not by
+quantum uncertainty.
+
+### Framework C: Standard quantum (Holevo bound)
+
+Under standard QM, the maximum classical information
+extractable from an N-dimensional quantum state by
+a single measurement is:
+
+    Capacity_readable = log₂(N) bits
+
+This is the Holevo bound.  A superposition of 38,000
+modes still yields at most ~15 bits of readable output
+per measurement.  The state space is huge, but quantum
+measurement collapses it.
+
+**The gap:** Framework B gives 75 KB where Framework C
+gives 15 bits.  The entire premise of threshold theory
+is that Framework B is physically correct — that the
+superposition state carries persistent, readable
+information through a channel that standard QM doesn't
+recognize.  If Framework C is correct, the neutrino sheet
+is a 2-byte register at best.
+
+### One cell = one coherent domain
+
+The neutrino T² ring circumference is L₄ ≈ 42 μm (R26).
+A typical animal cell is 10–100 μm in diameter.  The
+Compton wavelength of the lightest neutrino (λ_C = 2πL₄
+≈ 42 μm) matches the cell scale.
+
+Every atom in a cell has the same T⁶ geometry (same L₃,
+L₄, r_ν).  Because all atoms sit within one Compton
+wavelength of each other in R³, their neutrino-sheet
+wavefunctions overlap completely.  They cannot be resolved
+as separate locations on the neutrino T².  They all
+contribute to a SINGLE collective neutrino-sheet state.
+
+**One cell = one neutrino storage domain.**
+
+This is not an arbitrary assumption — it follows directly
+from the neutrino T² scale (R26) and the definition of
+spatial resolution on the compact dimensions.
+
+### Collective occupation: many atoms, one state
+
+A cell contains ~10¹⁴ atoms.  Each atom contributes one
+"quantum" to the neutrino-sheet occupation.  These 10¹⁴
+quanta are distributed across the ~N available modes.  The
+PATTERN of distribution is the stored information.
+
+With M = 10¹⁴ quanta in N = 38,000 modes (r_ν = 1000):
+
+Average occupation per mode: M/N ≈ 2.6 × 10⁹
+
+The number of distinguishable distributions (information
+capacity) depends on the precision with which occupancies
+can be distinguished.  The large number of atoms provides
+natural statistical precision — the occupation of each
+mode can be specified to ~√M/N ≈ 51,000 distinguishable
+levels (Poisson statistics), giving:
+
+    Bits per mode ≈ log₂(√(M/N)) ≈ log₂(51,000) ≈ 15.6
+    Total capacity ≈ N × 15.6 ≈ 38,000 × 15.6
+                   ≈ 593,000 bits ≈ **74 KB per cell**
+
+This is remarkably close to the Framework B estimate
+(75 KB at p = 8) — the large atom count provides about
+8 bits of natural precision per mode through statistics.
+
+### Capacity estimates per cell
+
+| r_ν   | Modes N | Bits/mode | Total        |
+|--------|---------|-----------|--------------|
+| 100    | 3,800   | 15.6      | 7.4 KB       |
+| 1,000  | 38,000  | 15.6      | **74 KB**    |
+| 10,000 | 380,000 | 15.6      | **740 KB**   |
+| 10⁶    | 3.8×10⁷ | 15.6      | **74 MB**    |
+
+(Bits per mode is nearly constant because it depends on
+M/N, and M ≈ 10¹⁴ is large for all reasonable N.)
+
+### Scaling to organisms
+
+Each cell is one domain.  The human body has ~37 trillion
+cells (3.7 × 10¹³).  Each organ, tissue type, or
+developmental lineage might maintain a coherent sub-
+population.
+
+| System             | Cells   | Capacity (r_ν=1000) |
+|--------------------|---------|---------------------|
+| One cell           | 1       | 74 KB               |
+| One neuron         | 1       | 74 KB               |
+| Brain (86 billion) | 8.6×10¹⁰| **6.4 PB**         |
+| Whole body         | 3.7×10¹³| **2.7 EB**         |
+
+For comparison:
+- Human genome: ~750 MB
+- Estimated synaptic weights in the brain: ~1–10 PB
+- Entire internet (2025): ~120 ZB
+
+**74 KB per cell** is biologically meaningful — comparable
+to the information content of a small program or a
+detailed configuration file.  A brain at 6.4 PB is in
+the same range as the synaptic-weight estimate — two
+entirely different models converging on the same order
+of magnitude.
+
+### Why one-cell-one-domain is a strong gateway
+
+All 10¹⁴ atoms in a cell are "antennas" broadcasting and
+receiving on the same neutrino-sheet state.  This gives:
+
+1. **Massive signal amplification:** 10¹⁴ coherent
+   contributors make the collective state extremely robust.
+   Losing or gaining a few atoms doesn't change the pattern.
+
+2. **Natural cell boundary:** when a cell divides, the two
+   daughter cells separate beyond one Compton wavelength.
+   Their neutrino states DECOUPLE — each gets an
+   independent 74 KB register.  Cell division is a natural
+   "fork" operation in the storage model.
+
+3. **Intra-cell communication:** every atom in the cell
+   "sees" the same neutrino-sheet pattern.  A chemical
+   reaction at one end of the cell shifts mode occupancy;
+   every other atom instantly reflects the change (at the
+   speed of light on the compact dimensions).  This is
+   instantaneous intra-cell signaling that doesn't require
+   molecular diffusion.
+
+4. **Inter-cell communication:** two adjacent cells share
+   a boundary where their Compton-wavelength domains
+   overlap.  Atoms near the boundary couple to BOTH cells'
+   states.  This is the gateway for cell-to-cell
+   communication — a physical overlap region, not a
+   chemical signal.
+
+5. **Thermal protection:** neutrino modes are electrically
+   neutral.  Thermal photons at 300K (kT = 26 meV ≈ m_ν)
+   couple to the neutrino sheet only through the
+   vanishingly small cross-shear σ_eν.  The storage medium
+   is naturally insulated from thermal noise.
+
+### What sets the precision?
+
+The precision p (bits per amplitude) determines whether
+storage is byte-scale or megabyte-scale.  Physical
+constraints:
+
+1. **Energy resolution:** distinguishing two amplitudes
+   requires detecting energy differences ~m_ν × δc².
+   If δc = 2^{−p}, then δE ~ m_ν/2^p.  At p = 8,
+   δE ~ m_ν/256 ~ 0.1 μeV — detectable by any system
+   sensitive to sub-eV energy (e.g., molecular vibrations).
+
+2. **Thermal noise:** at temperature T, thermal energy
+   kT = 26 meV at 300K.  This is ~equal to m_ν at
+   r_ν = 5.  For thermal noise not to scramble the state,
+   the mode spacing must be larger than kT, OR the storage
+   must be in a protected subspace where thermal noise
+   doesn't couple.  Neutrino modes on T² couple weakly to
+   thermal photons (no EM charge), which provides natural
+   thermal protection.
+
+3. **Decoherence time:** for adjacent modes separated by
+   δE, the coherence time is τ = ℏ/δE.  At r_ν = 1000,
+   the minimum mode spacing is ~m_ν/r_ν² ~ 30 neV, giving
+   τ ~ 22 ps.  This is fast.  Long-lived superpositions
+   require either (a) very large r_ν so that only widely
+   spaced modes are used, or (b) Reiter's premise that the
+   state is sub-quantum and doesn't decohere by standard
+   mechanisms.
+
+### Summary of capacity regimes
+
+| Regime          | Per-particle    | Per-cell (10⁶ domains) |
+|-----------------|-----------------|------------------------|
+| Classical QM    | 2 bytes         | 2 MB                   |
+| Threshold (p=8) | 75 KB           | 75 GB                  |
+| Threshold (p=16)| 150 KB          | 150 GB                 |
+| Threshold (p=32)| 300 KB          | 300 GB                 |
+
+The threshold theory regime gives biologically meaningful
+storage capacity.  The classical QM regime gives a
+trivially small register.  The difference is entirely
+about whether Reiter's sub-quantum channel exists.
