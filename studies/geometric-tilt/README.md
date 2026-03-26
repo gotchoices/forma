@@ -105,7 +105,7 @@ does the physics come out right?
 ## Tracks
 
 
-### Track 1 — Tilt-angle formalism and mode projection
+### Track 1 — Tilt-angle formalism and mode projection  **Complete**
 
 Work in a simplified model: 1 spatial dimension R¹ and
 one compact T² (2 periodic dimensions with circumferences
@@ -116,23 +116,16 @@ Introduce a tilt: the T² plane is rotated by angle θ in
 the (R¹, T²) hyperplane, so that compact motion has a
 small R¹ component.
 
-Compute:
-a) Mode energies as a function of θ (do they shift?)
-b) The R-projection of each mode's compact momentum:
-   p_R(n₁, n₂, θ).  This is the "charge current" as
-   seen from R¹.
-c) The effective coupling:
-   α_eff(θ, r, n₁, n₂) = [p_R / p_total]²
-d) Compare to the KK formula α(r, s).  Is θ doing the
-   same job as s?  Or is the functional dependence
-   different?
-e) For the (1,2) mode (electron): what θ gives α = 1/137?
-   Is this θ geometrically natural?
-
-Key test: if α(θ) = sin²(θ) and the KK formula gives
-α ∝ sin²(2πs), then θ and 2πs play the same mathematical
-role.  But θ might be constrained by the embedding while
-s is not.
+**Result:** The tilt preserves masses exactly (F1) but
+produces no interaction between modes (F4).  It is
+mathematically equivalent to a constant KK gauge potential
+(Wilson line) — which has zero field strength (F3).  Ghost
+mode suppression is absent: all modes with nonzero windings
+are charged, with no cancellations (F5).  Shear and tilt
+are structurally different parameters serving different
+roles (F6).  KK is not an assumption imposed on the model
+— it emerges from solving the wave equation on compact ×
+non-compact space (F8).  Findings F1–F8.
 
 
 ### Track 2 — Mode-mode interaction from geometry
