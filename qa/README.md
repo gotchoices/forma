@@ -45,5 +45,10 @@ For questions that need a computational model, see [`studies/`](../studies/).
 | [Q76](Q76-origin-of-metric-signature.md) | What makes time temporal? Origin of metric signature and 6+3+1 split | Open — deepest structural question |
 | [Q77](Q77-alpha-as-impedance.md) | Is α the impedance mismatch between T⁶ and R³? | Open — reframes α derivation |
 | [Q78](Q78-neutrino-sheet-access.md) | How does a biological cell access the neutrino sheet? | Open — two candidate mechanisms |
+| [Q79](Q79-cellular-resonators-and-levin.md) | What cellular structures couple to T²_ν, and is Levin's bioelectric code a decoded projection? | Open — hypothesis catalog |
+| [Q80](Q80-cancer-as-coupling-failure.md) | Could cancer be a failure of neutrino-sheet coupling? Levin's cancer model × T²_ν cascade | Open — hypothesis |
+| [Q81](Q81-regeneration-and-trophic-memory.md) | How does T²_ν explain regeneration, subroutine calls, and trophic memory? | Open — hypothesis development |
+| [Q82](Q82-entanglement-as-t6-geometry.md) | Is quantum entanglement a geometric property of T⁶? Shared modes, ER=EPR, Bell's theorem | Open — deep hypothesis |
+| [Q83](Q83-neutrino-sheet-coherence.md) | Can quantum coherence persist on the neutrino sheet at biological temperatures? | Open — quantitative estimates |
 
 Unprocessed and brief questions live in [`INBOX.md`](INBOX.md).
