@@ -124,6 +124,19 @@ cross-shear leakage rate from T⁶ metric — sets storage lifetime.  Track 4:
 neutron-gateway coupling estimate from overlap integral — determines whether
 a Goldilocks window (writable + retainable + readable) exists.
 
+### R36. Geometric tilt — α from T²/R³ embedding without KK  **Framed**
+**Study:** [`geometric-tilt/`](geometric-tilt/)
+**Questions:** Q77, Q76, Q18  **Type:** compute + theoretical  **Depends on:** R19, R26, R34
+
+Drops KK entirely.  T² axes are orthogonal internally (s=0), but the T²
+plane is tilted relative to R³ by angle θ.  The tilt determines how much R³
+"sees" of compact modes — α = f(θ).  Electromagnetic interaction emerges
+from the R-projection of compact momentum, not from gauge fields.  α may
+be a free "designer's choice" parameter rather than a derivable constant.
+Track 1: tilt formalism and mode projection.  Track 2: mode-mode coupling
+(does 1/r Coulomb emerge?).  Track 3: ghost mode projection.  Track 4:
+mass spectrum preservation.
+
 ### R33. Ghost mode selection — why most T⁶ modes are dark  **Framed**
 **Study:** [`ghost-selection/`](ghost-selection/)
 **Questions:** Q77, Q34  **Type:** compute + theoretical  **Depends on:** R19, R27, R28, R31, R32
