@@ -62,9 +62,13 @@ mode suppression.
 5. Do production selection rules (quantum number
    conservation) explain which modes are reachable from
    known-particle reactions?
+6. Does the energy gap structure of the T⁶ spectrum
+   (spacing between modes, pair-production ceilings,
+   harmonic ladders) create natural stability islands
+   that correlate with known particles?
 
 
-## Approach: 4 tracks
+## Approach: 5 tracks
 
 ### Track 1 — Charge integral per mode
 
@@ -156,6 +160,75 @@ ghosts.  If there's a clean separation, the complexity
 metric itself might BE the selection rule.
 
 
+### Track 5 — Energy gap structure and pair-production ceilings
+
+Each T⁶ mode has a fixed rest energy.  For fermions
+(spin-½), Pauli exclusion limits occupancy to 1 particle
+per quantum state.  At energy 2m, a particle–antiparticle
+pair can be created — this is the pair-production ceiling.
+
+Between m and 2m, additional energy goes to either R³
+kinetic energy (momentum) or excitation of a DIFFERENT T⁶
+mode.  The charge-preserving excitations (1, n₂) for
+n₂ = 3, 4, 5, ... on the electron sheet keep charge = −1
+while increasing mass.  These form the "harmonic ladder"
+(see Q85).  Their spacing depends on the free parameter r.
+
+The question is whether the gap structure of the T⁶
+spectrum constrains which modes can absorb intermediate
+energy and which are left isolated.
+
+Compute:
+
+a) For each mode below 2 GeV, find the nearest mode
+   with compatible quantum numbers (same sheet, charge
+   conservation).  Record the energy gap Δm.  Are gaps
+   large (isolated modes, stable) or small (dense
+   clusters, easy transitions)?
+
+b) Build the "decay cascade" for each ghost mode: if it
+   decays to the nearest lighter compatible mode + photon,
+   does the cascade terminate at a known particle or at a
+   sub-electron ghost?  This extends Track 3 with explicit
+   cascade paths.
+
+c) For each known particle, identify its pair-production
+   threshold (2m).  Is there always a T⁶ mode near 2m
+   with the right quantum numbers to absorb the pair?
+   The pion at ~280 MeV should sit near 2 × m_π — does
+   the mode spectrum cooperate?
+
+d) "Charge-preserving ladder": for the electron (1,2),
+   the modes (1,3), (1,4), (1,5)... preserve charge
+   while increasing mass.  Energy ratios:
+
+       E(1,n₂)/m_e = √[ (1/r² + n₂²) / (1/r² + 4) ]
+
+   Compute as a function of r.  How many levels fit in
+   the [m_e, 2m_e) window?  Also compute the proportional
+   harmonics (2,4), (3,6)... which have energy exactly
+   k × m_e (shear cancels) but charge = −k.  These are
+   pair-production channels, not excitation channels.
+
+   Build the same ladder for the proton: modes
+   (0,0,0,0,1,n₆) for n₆ = 3, 4, 5, ...  Compare to
+   the nuclear scaling law (n₅=A, n₆=2A) — are nuclei
+   occupying the proton's harmonic ladder?
+
+e) Count the modes accessible within each energy window
+   [m, 2m] for every known particle.  If the window is
+   empty (no other modes available), the particle is
+   "isolated" — energy above m has nowhere to go except
+   R³ kinetic energy.  If the window is crowded, the
+   particle can easily transition.  Does "isolated"
+   correlate with "stable" and "crowded" with "unstable"?
+
+**Output**: Gap distribution histogram.  Cascade trees for
+ghost modes.  Charge-preserving ladder table (parametric
+in r) for electron and proton.  Isolation index per known
+particle vs observed lifetime.
+
+
 ## What success looks like
 
 - **Strong result**: Track 1 shows the charge integral
@@ -179,3 +252,16 @@ metric itself might BE the selection rule.
   This would be a genuine tension requiring either a
   new selection rule or a modification to the charge
   mechanism.
+
+- **Track 5 bonus**: The "isolation index" (how empty the
+  energy window [m, 2m] is for each mode) correlates with
+  observed particle stability.  Known stable particles sit
+  in gaps; known resonances sit in crowds.  Ghost modes
+  cluster in dense regions where rapid cascade drains them
+  to known particles.  The harmonic ladder is scrambled
+  enough that "harmonics" are not a distinct excitation
+  channel — energy above m goes to R³ kinetic energy, not
+  internal harmonics.  This would confirm that pair
+  production is the only internal energy-release mechanism
+  and that the mode spectrum's gap structure is itself a
+  selection rule.

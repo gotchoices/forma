@@ -124,7 +124,7 @@ cross-shear leakage rate from T⁶ metric — sets storage lifetime.  Track 4:
 neutron-gateway coupling estimate from overlap integral — determines whether
 a Goldilocks window (writable + retainable + readable) exists.
 
-### R36. Geometric tilt — α from T²/R³ embedding without KK  **Framed**
+### R36. Geometric tilt — α from T²/R³ embedding without KK  **Complete**
 **Study:** [`geometric-tilt/`](geometric-tilt/)
 **Questions:** Q77, Q76, Q18  **Type:** compute + theoretical  **Depends on:** R19, R26, R34
 
@@ -141,13 +141,15 @@ mass spectrum preservation.
 **Study:** [`ghost-selection/`](ghost-selection/)
 **Questions:** Q77, Q34  **Type:** compute + theoretical  **Depends on:** R19, R27, R28, R31, R32
 
-4 tracks.  The T⁶ has ~900 modes below 2 GeV but only ~40 known particles.
+5 tracks.  The T⁶ has ~900 modes below 2 GeV but only ~40 known particles.
 R31 and R32 independently demand ~10⁵ coupling suppression for ghost modes.
 Track 1: generalize the R19 charge integral to all modes (does it naturally
 suppress ghosts?).  Track 2: quantum number reachability (which ghosts can
 be produced from known-particle collisions?).  Track 3: stable ghost census
 (are there charged modes lighter than the electron with no decay channel?).
-Track 4: winding number complexity as selection rule.
+Track 4: winding number complexity as selection rule.  Track 5: energy gap
+structure and pair-production ceilings — does the spacing between modes
+create stability islands that correlate with known particles?
 
 ---
 

@@ -1,6 +1,6 @@
 # R36. Geometric tilt — α from T²/R³ embedding without KK
 
-**Status:** Framed  
+**Status:** Complete  
 **Questions:** Q77 (α as impedance), Q76 (metric signature),
 Q18 (deriving α)  
 **Type:** compute + theoretical  
@@ -128,63 +128,37 @@ roles (F6).  KK is not an assumption imposed on the model
 non-compact space (F8).  Findings F1–F8.
 
 
-### Track 2 — Mode-mode interaction from geometry
+### ~~Tracks 2–4~~ **Answered by Track 1**
 
-Place two (1,2) modes on a tilted T² at positions x₁ and
-x₂ in R¹ (separation d = |x₂ − x₁|).
+Track 1 proved that the tilt is mathematically equivalent
+to a constant KK gauge potential, which produces no
+interactions (F4), no ghost suppression (F5), and no mass
+shift (F1).  This resolves all remaining tracks:
 
-Compute the interaction energy directly:
-a) Write the Green's function G(x, y; x', y') on the
-   tilted T² × R¹ space
-b) The interaction energy of two modes is:
-   V(d) = ∫∫ ψ₁*(y) ψ₂*(y') G(x₁,y; x₂,y') ψ₁(y) ψ₂(y') dy dy'
-c) Does V(d) ∝ 1/d (Coulomb) for d ≫ L?
-d) What is the coefficient?  Does it equal α × Q₁Q₂?
-e) At short distances d ~ L, are there corrections?
-   Compare to the Yukawa corrections from KK.
-
-This is the critical test: if the Coulomb potential
-emerges from pure geometry (no gauge field decomposition),
-and the coefficient gives α, the tilt picture reproduces
-electromagnetic physics without KK.
+- **Track 2** (mode-mode coupling): impossible without
+  gauge field fluctuations, which IS KK.
+- **Track 3** (ghost mode projection): tilt gives no
+  suppression — charge is linear in n, all modes charged.
+- **Track 4** (mass preservation): exact, by construction
+  (tilt is a coordinate rotation).
 
 
-### Track 3 — Ghost mode projection
+## Summary
 
-In the KK picture, ghost modes are suppressed by charge
-integral cancellation.  In the tilt picture, different
-modes have different winding directions on the T², so
-their R-projections differ.
+**Result: Null (but clarifying).**  Track 1 is definitive.  A uniform
+tilt of T² relative to R³ is mathematically equivalent to a constant
+KK gauge potential (Wilson line), which has zero field strength and
+produces no interactions.  Interactions require the cross-term to VARY
+in space — and a spatially varying metric cross-term IS a dynamical KK
+gauge field.  KK is therefore not an external assumption; it emerges
+from solving the wave equation on compact × non-compact space.
 
-Compute:
-a) For each mode (n₁, n₂), the R-projection p_R as a
-   function of winding pattern and tilt angle
-b) The ratio p_R(ghost) / p_R(electron) — is there
-   natural suppression for complex winding patterns?
-c) Does the tilt picture give a ~10⁵ suppression for
-   typical ghost modes, matching R31/R32 constraints?
-d) Is the suppression mode-dependent (as needed for
-   the running of α to work)?
+The "designer's-choice" hypothesis for α survives: the shear s (or
+equivalently the tilt angle θ) is a free parameter that sets the
+coupling strength.  Nothing in the geometry selects its value.
 
 
-### Track 4 — Mass spectrum preservation
-
-The T⁶ model's mass spectrum is its strongest result.
-The tilt must NOT break it.
-
-Compute:
-a) Mode energies on a tilted T² vs an un-tilted one
-b) For small θ (as needed for α ≪ 1), the energy shift
-   should be O(θ²) ≈ O(α) — is this within the model's
-   existing mass accuracy?
-c) The self-consistent metric uses within-plane shear s
-   to constrain the geometry.  If s = 0 and we use θ
-   instead, does the metric change?  Do the masses?
-d) Critical: the electron mass, proton mass, and neutron
-   mass must still be reproduced to < 1%.
-
-
-## What success looks like
+## What success looks like (pre-study)
 
 - **Strong result**: The tilt angle θ produces the same
   coupling α as the KK formula, the 1/r Coulomb potential
