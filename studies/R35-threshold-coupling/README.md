@@ -1,4 +1,4 @@
-# R35. Threshold detection and compact-dimension coupling
+# R35. Threshold detection and material-dimension coupling
 
 **Questions:** Q78, Q32  **Type:** compute + theoretical
 **Depends on:** R26, R19, R27, R33
@@ -13,26 +13,26 @@ The storage hypothesis requires three quantitative ingredients
 that have not been computed:
 
 1. Whether threshold detection statistics reproduce Reiter's
-   Re/Rc ≫ 1 from a T⁶-informed pre-load model.
-2. How fast energy can be written into and read from a T²_ν
+   Re/Rc ≫ 1 from a Ma (the six-dimensional material space)-informed pre-load model.
+2. How fast energy can be written into and read from a Ma_ν
    mode, given a coupling strength.
 3. What the coupling strength actually is, and whether a
    "Goldilocks window" exists (strong enough to write/read,
    weak enough to retain).
 
 Each of these is computable with existing infrastructure
-(T⁶ solver from R26) plus standard physics (driven oscillators,
+(Ma solver from R26) plus standard physics (driven oscillators,
 Monte Carlo statistics, perturbation theory).
 
 ### The unified mode-density picture (Q85 §14)
 
 The threshold "continuity" is not a separate mechanism — it
-is what T² mode-hopping looks like when the ladder is dense.
+is what material-sheet mode-hopping looks like when the ladder is dense.
 On the neutrino sheet (r_ν ≫ 1), thousands of modes fit in
 [m, 2m], making energy steps unresolvable.  On the electron
 and proton sheets (r ~ 7–9), the ladder is sparse — only a
 handful of modes survive the spin filter (R33 F3), so energy
-goes to R³ momentum instead of mode-hopping.
+goes to S (the three spatial dimensions) momentum instead of mode-hopping.
 
 This means threshold detection (Track 1) and storage (Tracks
 2–4) are specifically neutrino-sheet phenomena.  The electron
@@ -45,11 +45,11 @@ model maps onto the neutrino sheet's quasi-continuum.
 ## Track 1. Threshold detection statistics
 
 **Goal:** Model Reiter's beam-split coincidence experiment as
-threshold detectors with T⁶-informed pre-loaded states.
+threshold detectors with Ma-informed pre-loaded states.
 Compute Re/Rc and compare to Reiter's measured values.
 
 **Model:**
-- A detector crystal (NaI) has atoms whose electron-T² modes
+- A detector crystal (NaI) has atoms whose Ma_e modes
   can accumulate sub-threshold energy.
 - A gamma ray (88 keV from Cd-109) is a classical wave packet
   that splits at the beam splitter (tandem geometry: fraction α
@@ -67,7 +67,7 @@ Compute Re/Rc and compare to Reiter's measured values.
 - Threshold energy E_th = 88 keV (the gamma energy)
 - SCA window: LL at 2/3 × E_th (as Reiter set it)
 - Pre-load distribution P(E_pre) — this is the key free
-  function; derived from T⁶ cross-shear leakage rates
+  function; derived from Ma cross-shear leakage rates
 
 **Output:**
 - Re/Rc as a function of the pre-load distribution shape
@@ -94,9 +94,9 @@ See findings F1–F7.
 
 ---
 
-## Track 2. Write/read dynamics on T²_ν
+## Track 2. Write/read dynamics on Ma_ν
 
-**Goal:** Model write/read dynamics on T²_ν, including storage
+**Goal:** Model write/read dynamics on Ma_ν, including storage
 capacity, write/read timescales, pattern fidelity, and
 experimental predictions.
 
@@ -133,40 +133,40 @@ the SCA upper-limit mechanism (F3).
 
 ## Track 3. Cross-shear leakage rate
 
-**Goal:** Compute the rate at which energy in a T²_ν mode leaks
+**Goal:** Compute the rate at which energy in a Ma_ν mode leaks
 into other modes via cross-shear coupling.  This sets the
 damping rate γ for Track 2 and the storage lifetime.
 
-**Model:** The T⁶ metric (from R26 Track 4a) with cross-shear
-parameters σ_eν and σ_νp couples modes on different T²
+**Model:** The Ma metric (from R26 Track 4a) with cross-shear
+parameters σ_eν and σ_νp couples modes on different material-sheet
 subplanes.  A pure neutrino mode (0,0,n₃,n₄,0,0) has a small
-admixture of electron-T² and proton-T² modes due to the
+admixture of Ma_e and Ma_p modes due to the
 cross-shear.  Energy leaks from the neutrino mode into these
 admixtures at a rate proportional to σ².
 
 **Computation:**
-1. Build the T⁶ metric using `self_consistent_metric()` at
+1. Build the Ma metric using `self_consistent_metric()` at
    various (σ_eν, σ_νp) values.
 2. For each neutrino mode (n₃, n₄), compute the eigenvalue
    shift due to cross-shear (perturbation theory or direct
    diagonalization).
 3. The imaginary part of the eigenvalue shift gives the decay
    rate γ.  (At first order, the shift is purely real — need
-   second-order perturbation theory with the continuum of R³
+   second-order perturbation theory with the continuum of S
    states to get a width.)
 
 **Alternative (simpler):** Fermi's golden rule applied to the
 mode-mode coupling matrix element.  The rate of energy transfer
-from neutrino mode |ν⟩ to electron-T² mode |e⟩ is:
+from neutrino mode |ν⟩ to Ma_e mode |e⟩ is:
 
     γ = (2π/ℏ) |⟨e| V_cross |ν⟩|² ρ(E)
 
 where V_cross is the cross-shear perturbation and ρ(E) is the
-density of final states.  Both can be computed from the T⁶
+density of final states.  Both can be computed from the Ma
 metric.
 
 **Inputs:**
-- T⁶ metric parameters from R26 (all three T²s, cross-shears)
+- Ma metric parameters from R26 (all three material sheets, cross-shears)
 - The cross-shear perturbation matrix V = G_full − G_block
 
 **Output:**
@@ -181,14 +181,14 @@ metric.
 **Result (Complete):** Neutrino modes are EXACTLY uncharged
 (Q = 0, topological) — Γ_EM = 0 to all orders in σ_eν (F8).
 Cross-shear shifts energies (δE/E ∝ σ_eν²) but does NOT mix
-modes on a flat T⁶ (F9).  Naive thermal model gives τ ~ 12 days
+modes on a flat Ma (F9).  Naive thermal model gives τ ~ 12 days
 (σ_eν = 0.01) to 3.2 years (σ_eν = 0.001) with collective
 protection (F11).  The actual thermal pathway requires bridging
 a MeV gap — exponentially suppressed (F12).  Three-layer
 protection (charge + gap + collective) is direction-independent:
 radiation from inside the cell (K-40, chemistry) is equally
 blocked (F15).  Crucially, the shielding blocks READING equally —
-on a flat T⁶, the ν-state doesn't affect any observable (F16).
+on a flat Ma, the ν-state doesn't affect any observable (F16).
 The elastic torus (Hypothesis I) resolves this: geometric
 modulation bypasses all three layers, enabling active internal
 write + passive external read (co-resonance) while maintaining
@@ -200,24 +200,24 @@ noise protection (F17).  The Goldilocks parameter shifts from
 ## Track 4. Coupling strength estimate
 
 **Goal:** Estimate the strength of the neutron-gateway coupling
-between R³ electromagnetic fields and T²_ν modes.  Determine
+between S electromagnetic fields and Ma_ν modes.  Determine
 whether a Goldilocks window exists.
 
-**Model:** The neutron mode (1,2,0,0,1,2) bridges the electron-T²
-and proton-T² subplanes.  Cross-shear parameters σ_eν and σ_νp
-connect these to T²_ν.  A 3+1D electromagnetic field at
-frequency ω₀ (matching a T²_ν mode) can transfer energy into
+**Model:** The neutron mode (1,2,0,0,1,2) bridges the Ma_e
+and Ma_p subplanes.  Cross-shear parameters σ_eν and σ_νp
+connect these to Ma_ν.  A 3+1D electromagnetic field at
+frequency ω₀ (matching a Ma_ν mode) can transfer energy into
 that mode via the chain:
 
-    EM → electron-T² → σ_eν → T²_ν
+    EM → Ma_e → σ_eν → Ma_ν
 
 The coupling g is the product of:
-- The EM-to-electron-T² coupling (related to α = 1/137)
-- The electron-T²-to-neutrino-T² coupling (related to σ_eν)
+- The EM-to-Ma_e coupling (related to α = 1/137)
+- The Ma_e-to-Ma_ν coupling (related to σ_eν)
 
 **Computation:**
-1. From the T⁶ metric, compute the off-diagonal metric
-   component coupling the electron-T² and neutrino-T² sectors.
+1. From the Ma metric, compute the off-diagonal metric
+   component coupling the Ma_e and Ma_ν sectors.
 2. This gives the mode-mode coupling matrix element
    ⟨ν_mode | G_cross | e_mode⟩.
 3. The per-neutron coupling g₁ is this matrix element times the
@@ -240,7 +240,7 @@ The coupling g is the product of:
 
 **Script:** `scripts/track4_coupling_estimate.py`
 
-**Result (Complete):** Flat T⁶ coupling is EXACTLY ZERO — neutrino
+**Result (Complete):** Flat Ma coupling is EXACTLY ZERO — neutrino
 modes are uncharged, cross-shear doesn't mix modes, and the MeV gap
 blocks thermal pathways (F22).  The elastic torus shifts I/O from EM
 to geometry: molecular forces → δs₃₄ → mode energy shift (F23).
@@ -263,12 +263,12 @@ See findings F22–F28.
    power and exposure time are needed for a detectable
    write/read cycle, as a function of coupling strength.
 
-3. **Storage lifetime estimates** (Track 3) — does the T⁶
+3. **Storage lifetime estimates** (Track 3) — does the Ma
    metric predict lifetimes of seconds, hours, or geological
    time?  This directly constrains the biological relevance.
 
 4. **A Goldilocks assessment** (Track 4) — is there ANY region
-   of parameter space where compact-dimension storage is
+   of parameter space where material-dimension storage is
    physically viable?  If no such region exists, the hypothesis
    can be retired on theoretical grounds alone, before spending
    money on experiments.

@@ -1,6 +1,6 @@
 # Guided-Wave Field Profile  *(concluded)*
 
-Investigate the photon's field profile on the T² geometry.
+Investigate the photon's field profile on the Ma_e (the electron sheet) geometry.
 Replace the uniform-field approximation from S2 with a physical
 mode shape and check what changes.
 

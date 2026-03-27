@@ -81,11 +81,11 @@ where R coincides with a named physical constant (r_e).
 
 ---
 
-## Track 2: Exact spin from sheared T²
+## Track 2: Exact spin from sheared material sheet
 
 ### F4. The problem with standard torus knots
 
-On a standard (rectangular) flat T², a (p, q) torus knot with
+On a standard (rectangular) flat material sheet, a (p, q) torus knot with
 p/q = exactly 1/2 requires gcd(p, q) > 1.  For example,
 (68, 136) has gcd = 68 — it is 68 separate (1,2) loops, not a
 single path.  Only coprime pairs like (68, 137) give a single
@@ -95,9 +95,9 @@ exactly 1/2.
 If spin ½ requires an exact 1:2 ratio, this is a problem.
 
 
-### F5. The sheared T² resolves it
+### F5. The sheared material sheet resolves it
 
-On a sheared T² — where the compact dimensions are slightly
+On a sheared material sheet — where the material dimensions are slightly
 tilted (non-orthogonal) — the situation is different.
 
 The lattice is defined by two basis vectors:
@@ -146,7 +146,7 @@ winding (the Berry phase from the 1:2 helix), and the winding
 ratio is exactly 1:2 everywhere, **spin ½ is exact** — not
 approximate.
 
-The sheared T² eliminates the tension between:
+The sheared material sheet eliminates the tension between:
 - exact 1:2 ratio (needed for spin)
 - coprime winding numbers (needed for a single path)
 - large winding count (needed for small torus)
@@ -165,7 +165,7 @@ are automatically coprime):
 | 141 | 70 | 1 | 1/282 | 0.96 |
 
 All are within ~2% of r_e and all have exact 1:2 physical
-winding ratio.  The shear δ/L_θ = 1/(2q) is tiny — the compact
+winding ratio.  The shear δ/L_θ = 1/(2q) is tiny — the material
 dimensions are barely tilted.
 
 
@@ -207,7 +207,7 @@ between spin angular momentum and the gyromagnetic ratio.
 
 **Step 1: Spin.**  The electron spin is S = ℏ/2.  This is
 established in Track 2 — the exact 1:2 winding ratio on the
-sheared T² gives spin ½ regardless of q.
+sheared material sheet gives spin ½ regardless of q.
 
 **Step 2: g-factor.**  For a spin-½ particle, the Dirac
 equation gives g = 2.  In the WvM framework, this has a
@@ -236,7 +236,7 @@ The net magnetic moment points along the torus symmetry axis
 (the spin axis).  This follows from the symmetry of the
 winding:
 
-- B is tangent to the compact surface, perpendicular to the
+- B is tangent to the material surface, perpendicular to the
   photon's path direction (from k̂ × E).
 - At each point on the (1,2)-like helix, B has an axial
   component (along the torus z-axis) and an azimuthal
@@ -275,12 +275,12 @@ to carry over.
 |----------|-------------|------------------|--------|
 | Mass m_e | Path = λ_C | Path = λ_C | ✓ same |
 | Charge e | Coulomb energy too low | Coulomb energy = m_e c²/2 | ✓ fixed |
-| Spin ½ | From (1,2) topology | From exact 1:2 on sheared T² | ✓ exact |
+| Spin ½ | From (1,2) topology | From exact 1:2 on sheared sheet | ✓ exact |
 | μ = μ_B | From g = 2, S = ℏ/2 | From g = 2, S = ℏ/2 | ✓ same |
 | g ≈ 2.0023 | α/π correction | Expected same | ○ open |
 | Torus radius | ~10⁻¹³ m (Compton) | ~3 × 10⁻¹⁵ m (r_e) | — |
 | Winding number | 2 | ~137 | — |
-| Compact space | Flat T² (rectangular) | Flat T² (sheared) | — |
+| Material sheet | Flat (rectangular) | Flat (sheared) | — |
 
 All four fundamental electron properties (mass, charge, spin,
 magnetic moment) are reproduced by the R8-multi-winding model.
@@ -295,8 +295,8 @@ by the exact 1:2 local winding ratio.
    a unique q — something else must.  The shear δ/L_θ is the
    free parameter.
 
-2. **Why is the T² sheared?**  The shear is a property of the
-   compact space itself.  What determines δ?  Options include:
+2. **Why is the material sheet sheared?**  The shear is a property of the
+   material space itself.  What determines δ?  Options include:
    self-consistency (the photon's energy curves the space),
    a discrete symmetry, or simply an axiom.
 
@@ -318,9 +318,9 @@ by the exact 1:2 local winding ratio.
    The genuinely free parameter is **r (the aspect ratio)**,
    not q.  The question "what selects q" is really "what
    selects r ≈ 0.31."     Breaking the circularity requires deriving the shear
-   without using e as an input.  R12 (flat-T² wave equation
+   without using e as an input.  R12 (flat-sheet wave equation
    and curved geodesics) found no constraint.  R13 (backlog)
-   proposes KK decomposition on M₄ × flat T² as the
+   proposes KK decomposition on M₄ × flat material sheet as the
    consistent approach.
 
 
@@ -491,7 +491,7 @@ it cannot be claimed as an exact, zero-free-parameter result.
 |----------|-------|---------------|
 | Mass m_e | Path = λ_C | Construction |
 | Charge e | U = m_e c²/2 | Shape factor + R ≈ r_e |
-| Spin ½ | Exact 1:2 on sheared T² | Track 2 |
+| Spin ½ | Exact 1:2 on sheared sheet | Track 2 |
 | μ = μ_B | g = 2 from photon spin-1 | Track 3 |
 | R ≈ r_e | R/r_e = 0.989 at q = 137 | Tracks 1, 5 |
 | δ ≈ αR | δ/(αR) ≈ 1.06 | Track 4 (approximate) |
@@ -519,11 +519,11 @@ it cannot be claimed as an exact, zero-free-parameter result.
    **Active leads:**
    - *EM self-consistency:* The WvM charge mechanism is purely
      electromagnetic (no G).  Solving Maxwell's equations on
-     the sheared T² might reveal that self-consistent EM
+     the sheared material sheet might reveal that self-consistent EM
      solutions exist only for specific shear values.  This
      would determine α from EM boundary conditions alone.
    - *Variational principle / least-expensive path:* the
-     photon must find the closed path on the sheared T² that
+     photon must find the closed path on the sheared material sheet that
      minimizes phase mismatch, maximizes field uniformity,
      and concentrates all energy in the fundamental Compton
      mode.  Minimize E_total(q) across the R8 solution
@@ -541,7 +541,7 @@ it cannot be claimed as an exact, zero-free-parameter result.
    prime/composite distinction; q ~ 1/α is partly tautological.
    The real free parameter is r (aspect ratio), not q.
    **R12 (COMPLETE — see [`R12-self-consistent-fields/findings.md`](../R12-self-consistent-fields/findings.md)):**
-   Track 1: flat-T² wave equation has no modes at ω_C (spectral
+   Track 1: flat-sheet wave equation has no modes at ω_C (spectral
    gap ~137×); shear unconstrained.  Track 2: curved-torus
    geodesics give q ≈ 193; holonomy zero; confirms photon sees
    flat space internally.  **Corrected picture:** R8's use of

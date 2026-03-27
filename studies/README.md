@@ -104,5 +104,5 @@ Resolution types:
 3. **`S3-knot-zoo/`** — What torus knots model known particles?
    **Demonstrated:** in the Frenet frame model, only (1,2) produces
    charge. **Algebraic:** the WvM formula maps specific a/R values
-   to fractional charges. **Hypothesized:** compact dimensions,
+   to fractional charges. **Hypothesized:** material dimensions,
    mass from photon energy. Raises foundational questions.

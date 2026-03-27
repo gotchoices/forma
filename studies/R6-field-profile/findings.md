@@ -131,10 +131,10 @@ self-consistent solution gives a smaller R and a smaller a.
 
 The self-consistent `r = a/R ≈ 4.29` means `a > R`, which is a
 **spindle torus** — a self-intersecting surface in 3D Euclidean
-space.  This is not a problem for the compact-dimension picture:
-the flat T² (rectangle with opposite sides identified) has no
+space.  This is not a problem for the material-dimension picture:
+the flat Ma_e (the electron sheet) (rectangle with opposite sides identified) has no
 such restriction.  The spindle shape is an artifact of embedding
-T² into ℝ³ as a torus of revolution.
+Ma_e into ℝ³ as a torus of revolution.
 
 The 3D visualization shows a self-intersecting surface, but the
 physics lives on the flat 2D manifold, where the photon simply

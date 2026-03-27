@@ -4,31 +4,31 @@
 
 **Script:** [`scripts/track0_feasibility.py`](scripts/track0_feasibility.py)
 
-### F1. Geodesics on T² cannot be topologically linked
+### F1. Geodesics on a material sheet cannot be topologically linked
 
 Linking is a 3D concept — one curve passing through the
 interior of another.  On a 2D surface, this is impossible.
 
-Two closed geodesics on T² with winding numbers (p₁, q₁) and
+Two closed geodesics on a material sheet with winding numbers (p₁, q₁) and
 (p₂, q₂) have intersection number I = |p₁q₂ − p₂q₁|.  For
 geodesics in the same winding class (e.g., three (1,2)
 geodesics), I = 0 — they are parallel and don't even cross.
 
 **This is a negative result for the original R14 hypothesis.**
-Three (1,2) photons on T² have no topological interaction.
+Three (1,2) photons on a material sheet have no topological interaction.
 They can be smoothly deformed to non-intersecting parallel
 paths.  There is no mechanism for confinement or forced
-binding from T² topology alone.
+binding from material sheet topology alone.
 
 
 ### F2. T³ supports topological linking
 
-On T³ = S¹ × S¹ × S¹ (three compact dimensions), closed
+On T³ = S¹ × S¹ × S¹ (three material dimensions), closed
 curves CAN form genuine 3D links.  A curve on T³ has three
 winding numbers (n₁, n₂, n₃).  Two curves that wind around
 different pairs of dimensions can be topologically linked.
 
-Three compact dimensions provide three distinct linking planes:
+Three material dimensions provide three distinct linking planes:
 (1,2), (2,3), and (1,3).  Three curves, each winding in a
 different plane, form a three-component link.
 
@@ -111,21 +111,21 @@ non-integer offsets might reflect:
 
 ## Conceptual implications
 
-### F5. The compact space should be T³, not T²
+### F5. The material space should be T³, not a single material sheet
 
 Track 0 establishes:
-1. T² cannot support topological linking (F1)
+1. A material sheet cannot support topological linking (F1)
 2. T³ can, with natural three-color structure (F2)
 3. S3 previously found three distinct a/R values for the three
-   charge quanta (e, 2e/3, e/3) — consistent with three compact
+   charge quanta (e, 2e/3, e/3) — consistent with three material
    dimensions (Q13)
 
-The upgrade from T² to T³ has specific consequences:
+The upgrade from a material sheet to T³ has specific consequences:
 - Total spacetime dimensions: 3+1+3 = 7 (or 6+1)
 - The electron uses a 2D subspace of T³ for its (1,2) geodesic
 - Quarks use all three dimensions, with linking providing
   confinement
-- Each compact dimension has its own circumference (L₁, L₂, L₃)
+- Each material dimension has its own circumference (L₁, L₂, L₃)
   and the three aspect ratios (L₁/L₂, L₂/L₃, L₁/L₃) determine
   the three charge values
 - The number of free geometric parameters increases (from one r
@@ -145,7 +145,7 @@ not prove) a three-photon model.
 
 The upgrade to T³ affects the entire project:
 - R13 (KK charge): the mode decomposition on T³ is richer than
-  on T² (three quantum numbers instead of two)
+  on a material sheet (three quantum numbers instead of two)
 - R14 (universal geometry): linking topology becomes possible
 - The electron model (R8): needs re-verification on T³, but
   if the electron uses only 2 of 3 dimensions, the results
@@ -456,7 +456,7 @@ like vortices), the linking topology imposes O(1) boundary
 conditions that modify the mode structure.  This goes beyond
 the WvM picture of "photons as ordinary EM waves."
 
-**(C) Beyond flat T³.**  If the compact space has curvature
+**(C) Beyond flat T³.**  If the material space has curvature
 (like a Calabi-Yau manifold, the kind of space used in string
 theory compactifications), the mode structure and charge
 projections could be fundamentally different.  Curvature could
@@ -470,11 +470,11 @@ n₁ = 0 in the flat limit to acquire effective n₁ ≠ 0 charge.
 
 | # | Finding |
 |---|---------|
-| F1 | Geodesics on T² cannot be topologically linked |
+| F1 | Geodesics on a material sheet cannot be topologically linked |
 | F2 | T³ supports linking; three planes → three color charges |
 | F3 | Proton mass = 3 × 612 × m_e to 0.008% |
 | F4 | Lepton mass ratios are near-integer (tau: 7 ppm) |
-| F5 | The compact space should be T³, not T² |
+| F5 | The material space should be T³, not a single material sheet |
 | F6 | The three-photon proton mass is not trivially wrong |
 | F7 | R13 and R14 both need T³ |
 | F8 | Three linked photons give total charge +e (robust at s₁₃ = 0) |
@@ -494,7 +494,7 @@ n₁ = 0 in the flat limit to acquire effective n₁ ≠ 0 charge.
 ## Scripts
 
 - [`scripts/track0_feasibility.py`](scripts/track0_feasibility.py)
-  — Topology on T² and T³, proton mass arithmetic, harmonic
+  — Topology on a material sheet and T³, proton mass arithmetic, harmonic
   spectrum
 - [`scripts/track1_linked_charge.py`](scripts/track1_linked_charge.py)
   — Charge of linked photons: R19 formula applied to three-photon

@@ -136,7 +136,7 @@ Track 1 establishes:
 
 ### F8. Neutrino modes are exactly uncharged (topological)
 
-Charge on T⁶ is Q = −n₁ + n₅.  Neutrino modes have n₁ = n₅ = 0,
+Charge on Ma (the six-dimensional material space) is Q = −n₁ + n₅.  Neutrino modes have n₁ = n₅ = 0,
 so Q = 0 EXACTLY.  Cross-shear changes the metric (eigenvalues)
 but not the eigenfunctions (plane waves on a flat torus).  Charge
 is topological, not geometric.
@@ -146,7 +146,7 @@ EM leakage is not a mechanism — ever.
 
 ### F9. Cross-shear shifts energies but does not mix modes
 
-On a flat T⁶, modes are exact plane waves exp(i n·θ) regardless
+On a flat Ma, modes are exact plane waves exp(i n·θ) regardless
 of the metric.  Cross-shear modifies mode energies:
 
 | σ_eν | Fractional shift δE/E |
@@ -191,10 +191,10 @@ The actual mechanism is unclear — see F12.
 
 ### F12. The thermal coupling mechanism is an open question
 
-The naive model assumes direct R³ → T²_ν coupling with
+The naive model assumes direct S (the three spatial dimensions) → Ma_ν coupling with
 probability σ_eν².  But the physical coupling chain is:
 
-    R³ thermal → electron T² → (σ_eν) → neutrino T²
+    S thermal → the electron sheet → (σ_eν) → the neutrino sheet
 
 Step 1 requires bridging a ~MeV energy gap (electron mode
 spacing) with ~meV thermal energy.  This is Boltzmann-
@@ -207,15 +207,15 @@ than the naive model — potentially geological or longer.
 Possible alternative pathways:
 
 (a) Phonon-metric coupling: atomic vibrations modulate the
-    T⁶ metric, directly exciting neutrino modes.  Rate
+    Ma metric, directly exciting neutrino modes.  Rate
     depends on the metric's "stiffness" (unknown).
 
-(b) Direct R³ × T⁶ coupling through dimensional reduction.
+(b) Direct S × Ma coupling through dimensional reduction.
     Uncharged modes couple gravitationally (negligible) or
     through unidentified mechanisms.
 
 (c) Collective oscillation: the 10¹⁴-atom domain's
-    neutrino state may have observable R³ effects that
+    neutrino state may have observable S effects that
     couple to the thermal bath.
 
 This is the deepest open question in the storage program.
@@ -273,9 +273,9 @@ of position.
 
 ### F16. Shielding is symmetric: blocks reading equally
 
-On a flat T⁶, mode energies are properties of the GEOMETRY,
+On a flat Ma, mode energies are properties of the GEOMETRY,
 not of which modes are occupied.  The neutrino-sheet quantum
-state does not affect any electron-sheet observable.  No R³
+state does not affect any electron-sheet observable.  No S
 measurement can detect the neutrino pattern.
 
 This means:
@@ -284,7 +284,7 @@ This means:
 - Co-resonance is blocked (two cells with different ν-states
   are electromagnetically identical)
 
-The flat T⁶ gives perfect retention + zero I/O.
+The flat Ma gives perfect retention + zero I/O.
 
 ### F17. The elastic torus (Hypothesis I) breaks the symmetry
 
@@ -325,7 +325,7 @@ same geometric channel:
 
 ### F18. The Goldilocks parameter shifts
 
-In the flat T⁶, the Goldilocks tradeoff was:
+In the flat Ma, the Goldilocks tradeoff was:
   σ_eν large → fast I/O but short lifetime
   σ_eν small → long lifetime but no I/O
 
@@ -335,15 +335,15 @@ stiffness K (compliance of the torus geometry):
   K large (floppy) → fast I/O, noisy retention
 
 The stiffness K replaces σ_eν as the master parameter.
-Computing K requires the moduli potential of the T⁶
+Computing K requires the moduli potential of the Ma
 geometry — connected to the moduli stabilization problem
 in string theory (Q85 §8a).
 
-### F19. Coulomb field is the monopole projection of compact-dimension structure
+### F19. Coulomb field is the monopole projection of material-dimension structure
 
 The static electric field of a charged particle at
 r >> λ_C = 2πR is the l=0 (monopole) term of a
-multipole expansion over the compact T² coordinates.
+multipole expansion over the material-sheet coordinates.
 The mode on the torus has angular structure ~ e^{i(n₁θ₁ + n₂θ₂)},
 producing a field that is NOT uniform around the torus.
 
@@ -352,17 +352,17 @@ survives — giving the symmetric 1/r² Coulomb law.  The
 angular structure is invisible.
 
 At r ~ λ_C, higher multipoles become resolvable.  These
-are the KK tower: excited compact-dimension modes with
+are the KK tower: excited material-dimension modes with
 masses m_n ~ n/R ~ n × m_particle.  The field deviates
 from 1/r² and encodes the torus topology (winding numbers,
 shear).
 
 The non-linearity arises because the KK gauge field comes
-from the Einstein equations on the compact space, which
+from the Einstein equations on the material space, which
 are non-linear.  At r >> R, linearized → Maxwell →
 Coulomb.  At r ~ R, full non-linear geometry matters.
 
-In the T⁶ model, R = λ_C/2π by construction.  The compact
+In the Ma model, R = λ_C/2π by construction.  The material
 structure becomes resolvable at EXACTLY the quantum-
 mechanical Compton scale.  This is automatic, not a
 coincidence — the compactification radius IS the Compton
@@ -372,7 +372,7 @@ Provocative question: could the known QED corrections at
 the Compton scale (Uehling potential, vacuum polarization)
 be KK tower effects?  Both appear at the same scale
 (r ~ λ_C).  If they match, then QED radiative corrections
-= compact-dimension geometry.  Computable (see Q85 §8a).
+= material-dimension geometry.  Computable (see Q85 §8a).
 
 ### F20. Neutrino-sheet modes project non-uniform voltage on the cell membrane
 
@@ -397,7 +397,7 @@ the harmonic content of the occupied neutrino modes:
 The information capacity of this pattern is vastly greater
 than a single scalar voltage:
 - Scalar Vmem: ~1 number per cell (Levin's resolution)
-- T⁶ prediction: thousands of harmonic coefficients,
+- Ma prediction: thousands of harmonic coefficients,
   each encoding a mode occupation number
 
 This is consistent with the Q85 §13 capacity estimate.
@@ -407,7 +407,7 @@ The voltage pattern arises INDIRECTLY:
   ν-state → (elastic torus) → local geometry variation →
   charged-particle energy shifts → non-uniform E field
 This requires the elastic torus hypothesis (F17).  On
-a flat T⁶, the pattern is invisible (F16).
+a flat Ma, the pattern is invisible (F16).
 
 ### F21. Connection to Levin: scalar Vmem vs. harmonic voltage map
 
@@ -417,7 +417,7 @@ has one scalar value (-70 to +40 mV).  He observes that
 these patterns are instructive for morphogenesis and
 survive events that should destroy them.
 
-The T⁶ model predicts that the information content is
+The Ma model predicts that the information content is
 MUCH richer than Levin's current resolution captures:
 the voltage on a single cell's membrane has sub-cellular
 spatial structure encoding the full neutrino mode
@@ -425,7 +425,7 @@ occupation.  Levin's scalar Vmem is the AVERAGE of
 this rich pattern — the DC component, discarding all
 AC harmonics.
 
-This explains his results in the T⁶ framework:
+This explains his results in the Ma framework:
 - Vmem patterns ARE instructive (they encode neutrino-
   sheet information)
 - The information survives cell death (the ν-sheet is
@@ -439,7 +439,7 @@ content — not random noise — with spatial frequencies
 corresponding to the neutrino mode spectrum.
 
 Writing via membrane voltage: Levin shows that changing
-Vmem reprograms cell fate.  In the T⁶ picture:
+Vmem reprograms cell fate.  In the Ma picture:
   ΔVmem → changed ionic forces → mechanical stress →
   (elastic torus) → geometry modulation → ν-state change
 This makes Vmem an indirect write channel to the
@@ -449,10 +449,10 @@ observation that voltage IS instructive.
 
 ## Track 4 — Coupling strength estimate
 
-### F22. Flat T⁶ coupling is exactly zero
+### F22. Flat Ma coupling is exactly zero
 
-On a flat T⁶, the neutron-gateway coupling chain
-(EM → e-T² → σ_eν → ν-T²) is broken at every step:
+On a flat Ma, the neutron-gateway coupling chain
+(EM → Ma_e → σ_eν → Ma_ν) is broken at every step:
 
 1. Neutrino modes are exactly uncharged (F8): Q = 0.
 2. Cross-shear does not mix modes (F9): eigenstates
@@ -461,7 +461,7 @@ On a flat T⁶, the neutron-gateway coupling chain
    exp(-MeV/meV) ≈ 0.
 
 The EM coupling g_flat = 0 (exact, to all orders in σ_eν).
-No Goldilocks window exists on a flat T⁶.
+No Goldilocks window exists on a flat Ma.
 
 ### F23. The elastic torus shifts coupling from EM to geometry
 
@@ -531,7 +531,7 @@ Biological predictions:
 
 K must be in [0.043, 0.080] eV⁻¹ for ATP-driven storage.
 Computing K from first principles requires the moduli
-potential of the T⁶ geometry — the central open question
+potential of the Ma geometry — the central open question
 connecting this model to string theory's moduli
 stabilization problem.
 

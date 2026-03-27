@@ -6,7 +6,7 @@ Script: `scripts/track1_triplet_search.py`
 
 ### Setup
 
-On the sheared T² with aspect ratio r and shear s (fixed by α = 1/137),
+On the sheared material sheet with aspect ratio r and shear s (fixed by α = 1/137),
 the uncharged modes (|n₁| ≥ 2) have energies
 
     E(n₁,n₂) = √(n₁² + ((n₂ − n₁s)/r)²) / √(1 + ((2−s)/r)²)   [in m_e]
@@ -152,7 +152,7 @@ the poloidal angle θ₁).  Therefore:
 - Modes with different p₂ live in orthogonal subspaces
 - Curvature cannot mix them — at ANY order of perturbation theory
 
-This is exact, not a perturbative statement.  On the sheared T²,
+This is exact, not a perturbative statement.  On the sheared material sheet,
 the effective θ₂-momentum for mode (n₁, n₂) is p₂ = n₂.
 
 ### F9. Proton harmonics don't couple at fixed-background level
@@ -192,7 +192,7 @@ available coupling mechanisms:
 |:----------|:--------------|:-------------|
 | Gravity (backreaction on spacetime) | 10⁻²⁴ | 10²³× too weak |
 | EM 2nd-order (virtual photon) | model-dependent | uncertain |
-| Proton backreaction on T² shape | unknown | requires R22 |
+| Proton backreaction on sheet shape | unknown | requires R22 |
 
 Gravity is negligible.  EM coupling between uncharged modes is
 suppressed (no net charge → no direct photon coupling).  The
@@ -209,7 +209,7 @@ fixed-background level because:
 3. No known mechanism provides coupling at the required ~0.025 eV
    scale (F11)
 
-The model could be rescued if the proton's backreaction on T²
+The model could be rescued if the proton's backreaction on the material sheet
 breaks θ₂ symmetry (F13), but this is uncomputed.
 
 ### F13. Backreaction is the rescue path
@@ -235,12 +235,12 @@ open question that depends on the details of R22.
 | Created in decay | ✓ occupation shift | ✓ geometry readjusts |
 | Mode-mode coupling | ✗ θ₂ blocks it (F12) | N/A |
 
-**Verdict:** The T² model does NOT yet have a viable neutrino.
+**Verdict:** The material-sheet model does NOT yet have a viable neutrino.
 The phonon model fails on coupling (F12); the moduli model
 fails on spin.  The neutrino is the model's most serious open
 problem.  Possible resolutions: proton backreaction (R22),
-topological defects (neutrino.md Direction E), separate larger T²
-(R20 option (a)), or physics beyond the T² framework.
+topological defects (neutrino.md Direction E), separate larger material sheet
+(R20 option (a)), or physics beyond the material-sheet framework.
 
 ### Summary table
 
@@ -259,7 +259,7 @@ topological defects (neutrino.md Direction E), separate larger T²
 | F11 | Coupling desert between gravity and EM | established |
 | F12 | Phonon model has structural obstacle (θ₂) | established |
 | F13 | Backreaction (R22) is the rescue path | **ruled out (R22 F5)** |
-| F14 | T² model has no viable neutrino yet | established |
+| F14 | Material-sheet model has no viable neutrino yet | established |
 | F15 | R22 F5: backreaction preserves θ₂ (|ψ|² is θ₂-indep.) | established |
 
 ### Scripts

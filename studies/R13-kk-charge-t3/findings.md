@@ -58,7 +58,7 @@ The two formulas agree only when all circumferences are equal
 
 ### F3. The electron is a WINDING mode
 
-In string theory, states on compact spaces are characterized
+In string theory, states on material spaces are characterized
 by two types of quantum numbers:
 - **Momentum** quantum numbers n_a: how many wavelengths fit
   around each circle.  KK modes.
@@ -69,30 +69,30 @@ These have OPPOSITE scaling with the circumference L:
 - Momentum mode mass ∝ n/L  (lighter at large L)
 - Winding mode mass  ∝ wL   (lighter at small L)
 
-The electron's compact space is very small (L ~ 10⁻¹⁵ m).
+The electron's material space is very small (L ~ 10⁻¹⁵ m).
 In this regime, winding modes are light and momentum modes
 are heavy.  The electron is a winding mode:
-- Winding numbers: (p, q) = (68, 137) on T²
-- Effective compact momentum: ~zero (n_eff ~ 10⁻³)
+- Winding numbers: (p, q) = (68, 137) on the electron sheet
+- Effective material momentum: ~zero (n_eff ~ 10⁻³)
 - Mass from Compton condition: ℏc/(path length) = m_e c²
 
 The key distinction: the electron's mass comes from the TOTAL
 PATH LENGTH (how far the wave travels before closing), not
-from its compact momentum (how many wavelengths fit on one
+from its material momentum (how many wavelengths fit on one
 circumference).
 
 
 ### F4. Standard KK charge does NOT apply
 
 In standard KK theory, the 4D electric charge of a particle
-comes from its compact momentum:
+comes from its material momentum:
 
     e_KK = g₄ × 2πn/L
 
-where g₄ = g_D/√V is the 4D gauge coupling, n is the compact
+where g₄ = g_D/√V is the 4D gauge coupling, n is the material
 momentum quantum number, and L is the circumference.
 
-The electron has effectively zero compact momentum (n ~ 10⁻³).
+The electron has effectively zero material momentum (n ~ 10⁻³).
 The standard KK charge formula gives ~zero charge.
 
 This is NOT a failure — it correctly tells us that the electron
@@ -103,11 +103,11 @@ different mechanism.
 ### F5. Charge from field configuration (WvM mechanism)
 
 The electron's charge comes from the EM FIELD CONFIGURATION,
-not from compact momentum.  Specifically:
+not from material momentum.  Specifically:
 
 The photon propagating along the geodesic has a polarization
 vector (E-field direction) transverse to the propagation
-direction.  As the photon winds around the compact space, the
+direction.  As the photon winds around the material space, the
 polarization rotates relative to the 3+1D coordinate axes.
 The time-averaged field has a net monopole moment — this IS
 the charge.
@@ -133,16 +133,16 @@ revised) has two domains:
 - **Internal (flat T³):** The photon propagates through
   flat space.  This determines mass and spin.  No charge
   arises here — and none should.
-- **External (embedding):** The compact space is embedded
+- **External (embedding):** The material space is embedded
   in 3+1D with a toroidal geometry.  The photon's fields,
-  when they extend beyond the compact space, encounter
+  when they extend beyond the material space, encounter
   this embedding.  The curvature of the embedding rotates
   the polarization, creating the net monopole moment = charge
   (the WvM mechanism).
 
 The flat-T³ zero-charge result is therefore expected, not
 problematic.  Charge is a projection property — it arises
-from how compact-space fields appear in 3D, not from the
+from how material-space fields appear in 3D, not from the
 internal geometry.
 
 **The open question is not "how does charge arise" (answer:
@@ -157,7 +157,7 @@ the embedding) but "what determines the embedding geometry"
 ### F7. Winding vs momentum — a fundamental distinction
 
 The KK framework assumes particles are momentum modes of
-compact dimensions.  The WvM electron is a winding mode.
+material dimensions.  The WvM electron is a winding mode.
 These are qualitatively different:
 
 | Property       | Momentum mode     | Winding mode       |
@@ -167,7 +167,7 @@ These are qualitatively different:
 | Quantization   | n = integer        | w = integer          |
 | Light when     | L is large         | L is small           |
 
-The electron is light because the compact space is small —
+The electron is light because the material space is small —
 exactly the winding-mode regime.  This is why the electron
 mass (0.511 MeV) is far below the KK gap (~71 MeV).
 
@@ -185,15 +185,15 @@ we need to:
 
 1. Write the full EM field of a photon propagating along the
    (68,137) geodesic on flat T³
-2. Specify the embedding: how the compact dimensions map into
+2. Specify the embedding: how the material dimensions map into
    3+1D spatial directions
-3. Project the compact-space field into 3+1D using the
+3. Project the material-space field into 3+1D using the
    embedding geometry
 4. Extract the monopole moment = apparent charge
 
 Step 2 is the crux — and it IS determined by the model.
 The WvM model specifies a toroidal embedding where the
-compact T² (or T³) sits inside 3+1D as a torus of major
+material sheet (or T³) sits inside 3+1D as a torus of major
 radius R and minor radius a.  This is the embedding that
 produces charge via polarization rotation.
 
@@ -215,17 +215,17 @@ and only one matches the measured e.
 | Finding | Result |
 |---------|--------|
 | Electron as KK mode | NO — mass is ~36,000× too high |
-| Standard KK charge | Does not apply (zero compact momentum) |
+| Standard KK charge | Does not apply (zero material momentum) |
 | Electron identity | Winding mode (topological, not dynamical) |
 | Charge mechanism | Field projection via embedding (WvM), not KK momentum |
-| Flat T³ alone | ZERO charge (expected — charge is a projection property) |
+| Flat T³ alone | ZERO charge (expected -- charge is a projection property) |
 | Embedding role | Provides the polarization rotation → monopole moment |
 
-**The electron's charge comes from the embedding of the compact
+**The electron's charge comes from the embedding of the material
 space in 3+1D** — the toroidal geometry that the photon's fields
-encounter when they extend beyond the compact dimensions.  This
+encounter when they extend beyond the material dimensions.  This
 is the WvM mechanism, now understood as a projection property
-rather than an internal property of the flat compact space.
+rather than an internal property of the flat material space.
 
 The open question is not how charge arises (the embedding
 provides it) but what determines the specific embedding geometry
@@ -262,16 +262,16 @@ Four candidate answers were analyzed for what could constrain
 the embedding:
 
 **Candidate 1: Gravitational curvature.**
-Einstein gravity gives compact curvature ~10⁻¹⁶ m⁻².  The
+Einstein gravity gives material curvature ~10⁻¹⁶ m⁻².  The
 embedded torus has curvature ~10²⁹ m⁻².  The ratio is ~10⁴⁵
 — standard gravity is hopelessly weak to determine the
 embedding.  However, this ratio IS the hierarchy problem.
-If some mechanism makes gravity stronger at the compact
+If some mechanism makes gravity stronger at the material
 scale, it could determine the embedding and hence α — which
 would unify EM and gravity through 7D geometry.
 
 **Candidate 2: KK gauge connection (off-diagonal metric).**
-In KK theory, off-diagonal metric terms encode how compact
+In KK theory, off-diagonal metric terms encode how material
 dimensions connect to spatial dimensions.  This is the formal
 description of the embedding.  It explains charge quantization
 (integer winding → integer charge) but doesn't explain what
@@ -297,13 +297,13 @@ question — what fixes the embedding — connects to gravity
 (Cand. 1) and the hierarchy problem.
 
 The α problem reduces to: **what determines the toroidal
-embedding of the compact space in 3+1D?**
+embedding of the material space in 3+1D?**
 
 
 ### F15. What the model already unifies (and what it doesn't)
 
 The model achieves conceptual unification: all particles are
-photon configurations on compact geometry.  Mass, charge, spin,
+photon configurations on material geometry.  Mass, charge, spin,
 magnetic moment are emergent from energy + topology.
 
 The emergent-gravity picture is consistent with GR but not
@@ -311,7 +311,7 @@ derived from it:
 - The photon has energy → confined momentum = mass
 - Mass curves spacetime (GR) → every electron creates gravity
 - This gravity is real, measurable, and exactly what GR predicts
-- But this gravity is ~10⁴⁵× too weak to produce the compact
+- But this gravity is ~10⁴⁵× too weak to produce the material
   curvature needed for charge
 
 Three levels of unification:
@@ -335,7 +335,7 @@ framework.
 
 What determines the toroidal embedding geometry?  Candidates:
 - Gravitational self-consistency (confined energy curves space)
-- Casimir energy of the compact space (may have a minimum)
+- Casimir energy of the material space (may have a minimum)
 - Topological stability constraint on winding modes
 - Energy minimization (photon + field total energy)
 
@@ -356,7 +356,7 @@ pp-wave result).  The interaction is always attractive or zero, never
 repulsive — because energy is always positive.  This IS gravity.
 
 **Electromagnetism** comes from the photon's winding direction on the
-compact space.  A free photon has no net charge (linear Maxwell: no
+material space.  A free photon has no net charge (linear Maxwell: no
 photon-photon EM interaction).  But a confined photon with winding +q
 produces a time-averaged field pattern that looks like positive charge;
 winding −q looks like negative charge.  Two confined photons with
@@ -508,7 +508,7 @@ the (p, q) source.
 
 **Path B — Boundary-value problem.**
 WvM's charge calculation treats the photon as confined to a
-torus-shaped cavity, not as a plane wave on flat T².  Inside
+torus-shaped cavity, not as a plane wave on a flat material sheet.  Inside
 the cavity, the field satisfies Maxwell's equations with
 boundary conditions set by the torus surface.  The resulting
 field is NOT a plane wave — it has nodes and amplitude
@@ -518,11 +518,11 @@ is what produces the net radial E-field.
 **Path C — Self-consistent field modification.**
 The photon's own electromagnetic field, when projected into
 3D via the embedding, creates a Coulomb-like field that acts
-back on the field distribution in the compact space.  This
+back on the field distribution in the material space.  This
 self-interaction breaks the uniform-amplitude assumption.
 
 All three paths point to the same physics: **the field
-distribution on the compact space is shaped by the boundary
+distribution on the material space is shaped by the boundary
 (embedding geometry), not just by the flat interior metric.**
 The flat-interior picture is correct for the phase (and hence
 mass, spin), but the amplitude requires knowledge of the
@@ -535,7 +535,7 @@ This finding is consistent with all prior work:
 - **R8** computed charge by assuming uniform surface charge on
   the embedded torus (not a plane wave) — an implicit
   boundary-value assumption.
-- **R12 Track 1** showed no eigenmodes at ω_C on flat T² —
+- **R12 Track 1** showed no eigenmodes at ω_C on the flat sheet —
   the photon is not a standing wave on the flat space.
 - **R12 F6** noted the photon "fills" the torus (λ ≫ L) — in
   the deep-wave regime, the field is shaped by the boundary,
@@ -591,7 +591,7 @@ tension.  Eight candidate paths are captured in
 | Finding | Result |
 |---------|--------|
 | Electron as KK mode | NO — winding mode, not momentum mode |
-| Standard KK charge | Does not apply (zero compact momentum) |
+| Standard KK charge | Does not apply (zero material momentum) |
 | WvM charge mechanism | Works for (1,2): p = 1 → E always outward |
 | Multi-winding charge | BROKEN for (68,137): p = 68 ≠ 1 → E oscillates 67× |
 | Monopole integral | ZERO (exact, analytical, any q ≥ 1) |

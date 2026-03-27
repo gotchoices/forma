@@ -84,7 +84,7 @@ Scanning all 4 individual cross-shear entries (σ₁₅, σ₁₆, σ₂₅,
 
 The "checkerboard" pattern (σ₁₅ = −σ₁₆ = σ₂₅ = −σ₂₆ ≈ 0.35)
 corresponds to a relative twist between the tube and ring axes
-of the two T² sheets.  It is worse than pure negative symmetric
+of the two material sheets.  It is worse than pure negative symmetric
 σ_ep, not better.
 
 Half of the 6560 tested asymmetric configurations give m_n > m_p,
@@ -93,7 +93,7 @@ but none exceed +0.50 MeV.
 
 ### F6. Alternative charge-neutral modes exist near m_n
 
-At σ_ep = 0.1, the T⁶ spectrum contains charge-0, spin-½ modes
+At σ_ep = 0.1, the Ma (the six-dimensional material space) spectrum contains charge-0, spin-½ modes
 near the neutron mass:
 
     Mode (0, −3, n₃_odd, n₄, 0, 2):  E = 939.20 MeV
@@ -145,7 +145,7 @@ Possible paths forward:
    all 12 cross-shears simultaneously might find a sweet spot.
 
 3. **Multi-mode neutron.**  The neutron might not be a single
-   T⁶ mode but a bound state of multiple modes — analogous to
+   Ma mode but a bound state of multiple modes — analogous to
    how the standard model treats it as three quarks.  This would
    require the multi-mode formalism (R27 Track 2).
 
@@ -365,7 +365,7 @@ tool for the next targets.
 
 ### F17. The muon appears as mode (−1, +5, 0, 0, −2, 0)
 
-Searching the T⁶ spectrum for charge −1, spin ½ modes near
+Searching the Ma spectrum for charge −1, spin ½ modes near
 105.658 MeV, the solver finds a candidate that varies with
 r_p.  At r_p ≈ 8.9, it crosses the muon mass.
 
@@ -546,7 +546,7 @@ modes that lack neutrino windings.
 
 ### F25. What the tau gap means
 
-The tau cannot be matched as a single T⁶ mode at the neutron+
+The tau cannot be matched as a single Ma mode at the neutron+
 muon parameter point.  This is informative:
 
 1. **The tau may be a multi-mode composite.**  If two or more
@@ -564,10 +564,10 @@ muon parameter point.  This is informative:
 3. **The tau's mass involves physics beyond single-mode KK.**
    In the standard model, the tau gets its mass from Yukawa
    coupling to the Higgs field — a fundamentally different
-   mechanism than KK mode energy.  The T⁶ may need a Higgs-
+   mechanism than KK mode energy.  The Ma may need a Higgs-
    like mechanism or backreaction effect to account for it.
 
-The tau is the first particle that the single-mode T⁶ spectrum
+The tau is the first particle that the single-mode Ma spectrum
 cannot accommodate.  This marks the boundary of what the
 current linearized, single-mode framework can predict.
 
@@ -576,7 +576,7 @@ current linearized, single-mode framework can predict.
 
 The tau mass gap is structural and robust.  No combination of
 asymmetric cross-shears, aspect ratios, or quantum numbers can
-place a single T⁶ mode at 1776.9 MeV.  The proton-scale energy
+place a single Ma mode at 1776.9 MeV.  The proton-scale energy
 ladder has a ~470 MeV gap (between the n₆ = ±3 and ±4 bands)
 that the tau falls into.
 
@@ -630,7 +630,7 @@ Since n₁ and n₅ have different parity, there is always 1 odd
 ring winding.  To reach an even count, a second odd ring winding
 is needed from the neutrino ring (n₃ odd).
 
-This means: **every charged meson in the T⁶ must involve the
+This means: **every charged meson in the Ma must involve the
 neutrino sheet.**  This is a non-trivial structural prediction —
 it connects the weak interaction (neutrinos) to the strong
 interaction (mesons) through geometric necessity.
@@ -733,7 +733,7 @@ log|gap| and log(lifetime) is:
     r = −0.61
 
 This is a moderately strong *negative* correlation: particles
-whose mass falls farther from the nearest T⁶ eigenmode decay
+whose mass falls farther from the nearest Ma eigenmode decay
 faster.  This is exactly what the off-resonance hypothesis
 predicts.
 
@@ -783,7 +783,7 @@ channel.  This could indicate the Λ's mode assignment needs
 refinement, or that the decay dynamics involve mode mixing.
 
 
-### F35. The Ω⁻ baryon has no T⁶ mode — a structural constraint
+### F35. The Ω⁻ baryon has no Ma mode — a structural constraint
 
 The Ω⁻ (mass 1672.5 MeV, charge −1, spin 3/2) found no
 matching mode in the entire search space (|n_i| ≤ 8).
@@ -795,10 +795,10 @@ windings (n₁, n₃, n₅) must be odd.  But charge = −n₁ + n₅,
 and when both n₁ and n₅ are odd, −(odd) + (odd) is always
 even.  Therefore:
 
-**Spin-3/2 particles must have even charge in the T⁶ model.**
+**Spin-3/2 particles must have even charge in the Ma model.**
 
 The Ω⁻ (charge −1, spin 3/2) violates this constraint.  It
-cannot be a single T⁶ mode.  This predicts the Ω⁻ must be
+cannot be a single Ma mode.  This predicts the Ω⁻ must be
 either:
   (a) A multi-mode composite (bound state of two or more modes)
   (b) An excitation requiring physics beyond the single-mode
@@ -821,9 +821,9 @@ The systematic catalog yields several significant results:
 2. **Lifetime-gap correlation (r = −0.61)**: Supports the
    off-resonance hypothesis that unstable particles are
    transient excitations whose lifetime is governed by their
-   distance from the nearest T⁶ eigenmode.
+   distance from the nearest Ma eigenmode.
 
-3. **Structural constraint on spin-3/2 particles**: The T⁶
+3. **Structural constraint on spin-3/2 particles**: The Ma
    model predicts spin-3/2 modes can only carry even charge.
    The Ω⁻ (charge −1, spin 3/2) is structurally forbidden
    as a single mode.
@@ -844,7 +844,7 @@ the catalog is a zero-parameter prediction.
 Script: `scripts/track6_lifetime_gap.py`
 
 The central test of the off-resonance hypothesis.  Uses the
-Track 5 catalog to ask: do particles farther from a T⁶
+Track 5 catalog to ask: do particles farther from a Ma
 eigenmode decay faster?
 
 
@@ -910,7 +910,7 @@ The baryons alone also show strong correlation:
    This creates horizontal bands in the log-log plot.
 
 2. **Off-resonance gap** — modulates lifetime *within* each
-   band.  Particles closer to a T⁶ eigenmode live longer
+   band.  Particles closer to a Ma eigenmode live longer
    within their decay class.
 
 The naive hypothesis "gap alone determines lifetime" is too
@@ -971,7 +971,7 @@ decay-mechanism picture.
    - Off-resonance gap modulates lifetime within each class
 
 4. The model makes a testable prediction: among particles
-   sharing the same decay channel, those closer to a T⁶
+   sharing the same decay channel, those closer to a Ma
    eigenmode should live longer.  This holds for weak decays
    with 8 particles and p < 0.01.
 
@@ -983,7 +983,7 @@ decay-mechanism picture.
 Script: `scripts/track7_reaction_energetics.py`
 
 Tested 21 well-measured decay reactions at the mode level:
-do T⁶ nearest-mode energies conserve energy in known decays?
+do Ma nearest-mode energies conserve energy in known decays?
 
 
 ### F43. Charge conservation is exact
@@ -999,7 +999,7 @@ internal consistency.
 
 For 17 out of 21 reactions, the mode-level Q-value has the
 correct sign (Q_mode ≥ 0 for decays that are observed to
-occur).  This means the T⁶ mode energies are consistent
+occur).  This means the Ma mode energies are consistent
 with energy conservation in most known decays.
 
 Results by category:
@@ -1038,7 +1038,7 @@ So the products outweigh the parent at the mode level.
 This suggests the Λ and Σ⁺ mode assignments (both at
 ~1050.9 MeV) may be incorrect, or these particles may be
 multi-mode composites that don't map cleanly to a single
-T⁶ eigenmode.
+Ma eigenmode.
 
 
 ### F46. Neutron beta decay is exact
@@ -1121,12 +1121,12 @@ class contains all 4 sign flips.
    compounding with the pion's +19 MeV overshoot.
 
 4. **Implication**: The Λ and Σ⁺ may not be well-described
-   as single T⁶ modes.  They may be multi-mode composites
+   as single Ma modes.  They may be multi-mode composites
    or require cross-shear refinement.  Alternatively, the
    proton-scale energy ladder may need a mode near 1115 MeV
    that our current search missed.
 
-5. **Overall**: The T⁶ mode picture is energetically
+5. **Overall**: The Ma mode picture is energetically
    self-consistent for the 15 non-strange-baryon reactions.
    The strange baryons are the model's weakest point.
 
@@ -1144,7 +1144,7 @@ Strange baryons are no longer the model's weakest point.
 
 ### F50. Free parameter inventory
 
-The T⁶ model has 21 raw geometric parameters.  After R27,
+The Ma model has 21 raw geometric parameters.  After R27,
 their status is:
 
 | Parameter | Status | Determined by |
@@ -1197,7 +1197,7 @@ energy balances — was made with zero adjustable parameters.
 
 ### F52. What R27 did not resolve
 
-1. **The tau gap (5.6%).**  No single T⁶ mode exists at
+1. **The tau gap (5.6%).**  No single Ma mode exists at
    1776.9 MeV.  The tau may be a multi-mode composite or
    require physics beyond the single-mode KK picture.
 
@@ -1228,7 +1228,7 @@ energy balances — was made with zero adjustable parameters.
 Hydrogen = proton + electron bound at 13.6 eV.  This is
 10⁵× smaller than our MeV-scale mode energies.  To model it:
 
-- We need two modes (e and p) coexisting in the T⁶, with
+- We need two modes (e and p) coexisting in the Ma, with
   their interaction producing a binding potential.
 - The binding energy (13.6 eV) requires resolving energy
   differences at the 10⁻⁵ MeV level — well within our
@@ -1240,7 +1240,7 @@ Hydrogen = proton + electron bound at 13.6 eV.  This is
 
 **What's needed for hydrogen:**
 
-1. A two-body (or multi-mode) energy functional on T⁶.
+1. A two-body (or multi-mode) energy functional on Ma.
    The Coulomb interaction between modes must emerge from
    the geometry — this connects directly to R15/R19 (the
    charge/α problem).
@@ -1280,7 +1280,7 @@ requires multi-mode formalism.  Should also move to R29.
    over-predicts.
 
 4. **The α problem (R15).**  If hydrogen is the goal,
-   solving α from geometry is a prerequisite.  The T⁶
+   solving α from geometry is a prerequisite.  The Ma
    charge mechanism (from R19) gives α(r,s), but nothing
    yet selects r.  Hydrogen binding at 13.6 eV might
    provide exactly this constraint.
@@ -1290,7 +1290,7 @@ requires multi-mode formalism.  Should also move to R29.
 
 | Study | Scope | Prerequisites |
 |-------|-------|---------------|
-| **R27 (this study)** | Complete. Single-mode T⁶ spectrum. | — |
+| **R27 (this study)** | Complete. Single-mode Ma spectrum. | — |
 | **R28 (new)** | σ_eν/σ_νp exploration; mode overcounting; strange baryon refinement | R27 |
 | **R29** | Multi-mode interactions; hydrogen; nuclear stability | R27, R15 |
 

@@ -1,4 +1,4 @@
-# R29. Atoms and nuclei — from T⁶ modes to multi-body physics
+# R29. Atoms and nuclei — from Ma modes to multi-body physics
 
 **Questions:** Q28 (photon absorption / energy levels), Q16
 **Type:** theoretical + compute  **Depends on:** R27, R15, R19
@@ -7,13 +7,13 @@
 
 ## Motivation
 
-R27 showed that the T⁶ compact space accounts for the
+R27 showed that the Ma (the six-dimensional material space) accounts for the
 single-particle spectrum with zero free parameters at MeV
 scale.  But nature is not isolated particles — atoms exist,
 nuclei are stable, electrons occupy discrete energy levels.
 
-This study bridges single-mode T⁶ physics to multi-body
-systems.  The central question: does the T⁶ geometry that
+This study bridges single-mode Ma physics to multi-body
+systems.  The central question: does the Ma geometry that
 predicts particle masses also predict their interactions?
 
 
@@ -21,35 +21,35 @@ predicts particle masses also predict their interactions?
 
 | Dims | Space | What lives there | Status |
 |------|-------|-----------------|--------|
-| 6 | T⁶ (compact) | Particle identity: mass, charge, spin | R27: solved |
-| 3 | R³ (spatial) | Positions, separation, binding | This study |
+| 6 | Ma (material) | Particle identity: mass, charge, spin | R27: solved |
+| 3 | S (spatial) | Positions, separation, binding | This study |
 | 1 | R¹ (time) | Dynamics, decays, transitions | Deferred |
-| **9** | **T⁶ × R³** | **Static multi-body** | **Minimum for atoms** |
-| 10 | T⁶ × R³⁺¹ | Full dynamics | Future |
+| **9** | **Ma × S** | **Static multi-body** | **Minimum for atoms** |
+| 10 | Ma × S⁺¹ | Full dynamics | Future |
 
 
 ## Key insight: the gauge field IS the geometry
 
 In Kaluza-Klein theory, the 4D electromagnetic potential
 A_μ is the off-diagonal metric component g_{μi} between
-extended (μ) and compact (i) dimensions.  The full 9D
+extended (μ) and material (i) dimensions.  The full 9D
 metric has the structure:
 
     ┌             ┐
-    │  g_R³    A  │
-    │   Aᵀ   G_T⁶│
+    │  g_S     A  │
+    │   Aᵀ   G_Ma│
     └             ┘
 
-where G_T⁶ is the compact metric from R27, g_R³ is flat
+where G_Ma is the material metric from R27, g_S is flat
 Euclidean, and A is a 3×6 block encoding gauge fields.
 
-A charged T⁶ mode at position x₀ in R³ generates nonzero
+A charged Ma mode at position x₀ in S generates nonzero
 A(x), which is the Coulomb potential.  Another mode at x₁
 feels this field.  The Coulomb interaction emerges from the
 9D geometry — it is not assumed separately.
 
 R19 derived the coupling constant: α = 1/137 from the
-shear mechanism on T².  R29 must show that this same α
+shear mechanism on the electron sheet.  R29 must show that this same α
 governs the inter-particle interaction.
 
 
@@ -63,14 +63,14 @@ earlier results clarify the path.
 ### Guiding principle: geometry predicts, theories explain
 
 The neutron was not predicted by an intermediate theory of
-proton-electron binding — it was found directly as a T⁶
+proton-electron binding — it was found directly as a Ma
 mode.  We adopt the same posture throughout R29:
 
-- **We use the T⁶ solver to search for modes that match
+- **We use the Ma solver to search for modes that match
   observed composite systems** (nuclei, atoms).
 - **Intermediate theories** (KK gauge fields, Coulomb, QM)
   are useful for building intuition and cross-checking, but
-  we do not require them.  If a T⁶ mode at 1876 MeV with
+  we do not require them.  If a Ma mode at 1876 MeV with
   Q = +1, S = 1 exists, that IS the deuteron, regardless of
   whether we can derive the nuclear force.
 - **Predictive power comes from the geometry**, not from
@@ -80,15 +80,15 @@ mode.  We adopt the same posture throughout R29:
 ### Track 1 — KK reduction: from 9D to Coulomb  ✔ Complete
 
 **Result:** Coulomb 1/r potential emerges from the zero-mode
-gauge field.  α = 1/137 verified from R19 shear on both
-electron and proton sheets.  Six U(1) gauge fields identified,
+gauge field.  α = 1/137 verified from R19 shear on both the
+electron sheet and the proton sheet.  Six U(1) gauge fields identified,
 including a proton-tube gauge boson (52 MeV, 3.8 fm range)
 as a nuclear force candidate.
 
 See findings F1–F8.
 
 
-### Track 2 — Hydrogen from T⁶ geometry  ✔ Complete
+### Track 2 — Hydrogen from Ma geometry  ✔ Complete
 
 **Result:** E₁ = −13.6 eV and a₀ = 0.53 Å reproduced from
 the Coulomb term.  Yukawa corrections from KK massive modes
@@ -101,16 +101,16 @@ subsequent tracks.
 See findings F9–F15.
 
 
-### Track 3 — Light nuclei as T⁶ modes
+### Track 3 — Light nuclei as Ma modes
 
-**Goal:** Search for T⁶ modes that directly reproduce
+**Goal:** Search for Ma modes that directly reproduce
 observed nuclear systems, without assuming any intermediate
 force theory.
 
-**Rationale:** The neutron was discovered as a T⁶ mode, not
+**Rationale:** The neutron was discovered as a Ma mode, not
 derived from a proton-electron force.  Nuclei may follow the
 same pattern — a deuteron might be a single oscillation
-in the T⁶ compact space, not two particles bound together.
+in the material space, not two particles bound together.
 
 **Method:**
 1. Search for modes matching the deuteron (1875.6 MeV,
@@ -120,11 +120,11 @@ in the T⁶ compact space, not two particles bound together.
 2. If matches are found: compare predicted vs observed mass,
    assess whether the binding energy (mass deficit) emerges.
 3. If NO matches: this is also informative — it means nuclei
-   are genuinely multi-mode objects and require the R³
+   are genuinely multi-mode objects and require the S
    interaction framework.
 
-**Deliverable:** Catalog of nuclear T⁶ mode candidates,
-or evidence that nuclei are not single T⁶ modes.
+**Deliverable:** Catalog of nuclear Ma mode candidates,
+or evidence that nuclei are not single Ma modes.
 
 **Addresses:** OQ4 (multi-particle states), OQ6 (nuclear
 binding).
@@ -134,7 +134,7 @@ binding).
 
 **Goal:** Constrain r_e using the nuclear mode pattern,
 test whether the model predicts nuclear stability, and
-determine whether atoms are T⁶ modes or R³ phenomena.
+determine whether atoms are Ma modes or S phenomena.
 
 **Method:**
 1. **r_e sweep:** The nuclear scaling law (F16) uses n₂
@@ -146,11 +146,11 @@ determine whether atoms are T⁶ modes or R³ phenomena.
    mode energy for all Z and find the energetically
    preferred isotope.  Compare to observed stable nuclei.
 3. **Atom test:** Atomic binding energy (~13.6 eV) is
-   ~10⁻⁵ MeV.  Confirm this is below T⁶ energy
-   resolution, establishing that atoms require R³.
+   ~10⁻⁵ MeV.  Confirm this is below Ma energy
+   resolution, establishing that atoms require S.
 
 **Deliverable:** r_e constraint from nuclear data; valley
-of stability prediction; atoms vs nuclei in the T⁶
+of stability prediction; atoms vs nuclei in the Ma
 framework.
 
 **Addresses:** R15's α problem (r_e), OQ6 (nuclear
@@ -159,8 +159,8 @@ stability).
 
 ### Track 5 — Helium and multi-electron atoms *(deferred)*
 
-Helium atom = ⁴He nucleus (T⁶ mode) + 2 electrons bound
-via Coulomb in R³.  Requires Track 1 Coulomb result plus
+Helium atom = ⁴He nucleus (Ma mode) + 2 electrons bound
+via Coulomb in S.  Requires Track 1 Coulomb result plus
 electron-electron repulsion.
 
 
@@ -185,16 +185,16 @@ the track most likely to address it.
 
 | # | Question | Track |
 |---|----------|-------|
-| OQ1 | How do T⁶ modes interact in R³? | T1 |
-| OQ2 | Are T⁶-R³ shears the gauge fields? | T1 |
+| OQ1 | How do Ma modes interact in S? | T1 |
+| OQ2 | Are Ma-S shears the gauge fields? | T1 |
 | OQ3 | When does time (10D) enter? | Deferred |
-| OQ4 | What is a two-particle state in T⁶ × R³? | T1-T2 |
+| OQ4 | What is a two-particle state in Ma × S? | T1-T2 |
 | OQ5 | Does 9D expose electron energy levels? | T2-T3 |
 | OQ6 | Nuclear binding without nuclear force? | T4-T5 |
 | OQ7 | Why doesn't n decay in a nucleus? | T6 |
 
 
-## On the question of a 7D (T⁶ × R¹) solver
+## On the question of a 7D (Ma × R¹) solver
 
 A 1D spatial simplification is tempting but has a
 fundamental limitation: the Coulomb potential in 1D is
@@ -202,7 +202,7 @@ NOT 1/r — it is |x| (linear confinement).  A 7D solver
 would demonstrate binding and measure the coupling strength,
 but would not reproduce hydrogen energy levels.
 
-However, the coupling constant α is a property of the T⁶
+However, the coupling constant α is a property of the Ma
 geometry, independent of the spatial dimensionality.  So a
 7D computation could still determine α without getting the
 right energy spectrum.  This makes it a useful diagnostic
@@ -222,8 +222,8 @@ nuclear binding), build it in 3D from the start.
 
 ### New module: `lib/t6r3.py`
 Multi-mode interaction library.  Imports from `lib/ma.py`
-for the compact-dimension part and adds:
-- KK mode decomposition of the T⁶ × R³ Green's function
+for the material-dimension part and adds:
+- KK mode decomposition of the Ma × S Green's function
 - Effective 4D interaction potential V(r)
 - Yukawa correction calculator
 - (Later) Schrödinger solver for bound states
@@ -235,7 +235,7 @@ Scripts go in `R29-atoms-and-nuclei/scripts/`.
 
 | Study | Relationship |
 |-------|-------------|
-| R27   | Single-mode T⁶ spectrum; pinned parameters |
+| R27   | Single-mode Ma spectrum; pinned parameters |
 | R19   | Shear-charge mechanism → α formula; the source of EM |
 | R15   | The α problem → r_e undetermined; Track 3 may solve it |
-| R26   | T⁶ framework, metric infrastructure |
+| R26   | Ma framework, metric infrastructure |

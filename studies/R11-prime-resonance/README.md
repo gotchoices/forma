@@ -51,7 +51,7 @@ Three hypotheses:
 For each q in the solution range (~100–287):
 - Factorize q, count divisors, compute sub-harmonic score
 - Identify primes vs composites
-- Analyze whether the sheared T² permits sub-periodic
+- Analyze whether the sheared material sheet permits sub-periodic
   geodesic closure for composite q
 - Compute divisor-weighted sub-harmonic coupling metric
 
@@ -86,7 +86,7 @@ residue system — the prime/composite structure is invisible.
 ### Track 8: Mode spectrum and degeneracy *(next)*
 **Type:** analytical + numerical
 
-The sheared T² is flat, so the Helmholtz equation has exact
+The sheared material sheet is flat, so the Helmholtz equation has exact
 plane-wave solutions with modified boundary conditions.  The
 mode frequencies are:
 

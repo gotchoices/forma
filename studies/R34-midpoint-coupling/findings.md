@@ -5,7 +5,7 @@
 
 ### F1. Pure Kramers-Kronig dispersion cannot reach 1/α = 24
 
-A dispersive sum over T⁶ mode resonances adds to 1/α at
+A dispersive sum over Ma (the six-dimensional material space) mode resonances adds to 1/α at
 low energy (screening: modes below the probe energy push
 1/α upward) but the contribution vanishes at high energy
 (E ≫ all mode masses).  So 1/α → 80.5 at E → ∞, NOT 24.
@@ -42,7 +42,7 @@ Requiring 1/α(m_Z = 91.2 GeV) = 128 gives:
 
 This is 1.26 × the Higgs vacuum expectation value
 (v = 246 GeV), placing it at the electroweak scale.
-No T⁶ geometric scale corresponds to 310 GeV.
+No Ma geometric scale corresponds to 310 GeV.
 
 
 ### F4. The Lorentzian shape does not match SM running
@@ -73,34 +73,34 @@ must happen much more slowly — logarithmically, not as
 a power law.
 
 
-### F5. Using T⁶ geometric scales for E* gives wrong running
+### F5. Using Ma geometric scales for E* gives wrong running
 
 | E* choice | 1/α at m_p | 1/α at m_Z | Comment |
 |-----------|-----------|-----------|---------|
 | Proton ring (467 MeV) | 46 | 24 | Way too fast |
 | m_p (938 MeV) | 80.5 | 24 | Too fast |
-| 2 GeV (T⁶ horizon) | 117 | 24 | Too fast |
+| 2 GeV (Ma horizon) | 117 | 24 | Too fast |
 | 310 GeV (fit) | 137 | 128 | Matches at m_Z |
 | m_Z (91.2 GeV) | 137 | 73 | Overshoots |
 
 Only E* ≫ m_Z gives a good fit at intermediate energies,
 but then the UV convergence to 24 happens too slowly
-(beyond Planck scale).  No T⁶ geometric scale works.
+(beyond Planck scale).  No Ma geometric scale works.
 
 
 ### F6. The midpoint scale has electroweak character
 
 E* = 310 GeV ≈ 1.26 v (Higgs VEV).  This is NOT derived
-from T⁶ geometry — it is the electroweak symmetry breaking
-scale, which the T⁶ model does not yet address.
+from Ma geometry — it is the electroweak symmetry breaking
+scale, which the Ma model does not yet address.
 
 If 1/α truly passes through 80.5, it does so at or near
 the scale where the Higgs mechanism operates.  This could
 mean:
 1. The Higgs VEV sets the resonance scale (Higgs as the
-   "boundary" between compact and spatial physics)
+   "boundary" between material and spatial physics)
 2. It's a coincidence (310 ≠ 246; off by 26%)
-3. The T⁶ model needs to incorporate electroweak physics
+3. The Ma model needs to incorporate electroweak physics
    to address the running at this scale
 
 
@@ -142,7 +142,7 @@ extremely high energy.
 
 ### F9. Root cause: ghost modes are too concentrated at low energy
 
-The T⁶ mode spectrum puts most charged ghost modes below
+The Ma mode spectrum puts most charged ghost modes below
 2 GeV (41,616 out of 78,608).  These modes contribute
 their screening mostly below 2 GeV, making the running
 very fast at low energies and nearly flat above.
@@ -154,7 +154,7 @@ The remaining screening between m_Z and E = 0 is only
 
 In the SM, running is spread over a wide energy range
 because charged fermions span masses from 0.5 MeV (electron)
-to 173 GeV (top).  In T⁶, the ghost modes cluster below
+to 173 GeV (top).  In Ma, the ghost modes cluster below
 the predictive horizon (~2 GeV), causing front-loaded
 running.
 
@@ -189,8 +189,8 @@ Untested models that could fix the m_Z discrepancy:
    hypothesis).  This would preferentially suppress the
    many complex low-mass modes.
 
-3. **Known T⁶ particles beyond e/p**: the muon, tau,
-   pion, kaon, Lambda, Sigma are identified T⁶ modes
+3. **Known Ma particles beyond e/p**: the muon, tau,
+   pion, kaon, Lambda, Sigma are identified Ma modes
    (R27, R28) and should couple at full strength.
    Including these (~7 modes at 100–1200 MeV) would add
    non-ghost screening at intermediate energies.
@@ -203,7 +203,7 @@ The null result applies to the uniform-f model, not to
 the 1/80 hypothesis in general.
 
 
-### F12. α = 1/137 is an input, not an output, of the T⁶ model
+### F12. α = 1/137 is an input, not an output, of the Ma model
 
 The R19-shear-charge formula α = r²μ sin²(2πs)/(4π(2−s)²)
 has two free parameters (r and s).  The shear s is solved
@@ -227,32 +227,32 @@ tested.
 
 ---
 
-## Track 5 — Running with known T⁶ particles only
+## Track 5 — Running with known Ma particles only
 
 
-### F13. T⁶ particle content runs α ~2.4× too fast
+### F13. Ma particle content runs α ~2.4× too fast
 
-With ONLY empirically confirmed T⁶ particles (no ghost
+With ONLY empirically confirmed Ma particles (no ghost
 modes), the total screening from m_e to m_Z is:
 
-    Δ(1/α) = 21.9  (T⁶ known particles)
+    Δ(1/α) = 21.9  (Ma known particles)
     Δ(1/α) = 7.0   (SM one-loop)
     Δ(1/α) = 9.0   (measured)
 
-This gives 1/α(m_Z) = 115, not 128.  The T⁶ model
+This gives 1/α(m_Z) = 115, not 128.  The Ma model
 overshoots the measured running by a factor of ~2.4.
 
 Note: the SM one-loop also undershoots (7.0 vs 9.0)
 because it omits higher-order corrections and non-
-perturbative hadronic VP.  But the T⁶ error is in the
+perturbative hadronic VP.  But the Ma error is in the
 opposite direction and much larger.
 
 
-### F14. The T⁶ running rate is 4.1× the SM rate
+### F14. The Ma running rate is 4.1× the SM rate
 
 The total vacuum-polarization coefficient is:
 
-    T⁶:  Σ b×Q² = 44.0   (23 charged species)
+    Ma:  Σ b×Q² = 44.0   (23 charged species)
     SM:   Σ N_c×b×Q² = 10.7  (9 species × color)
 
 The ratio is 4.1, driven by:
@@ -267,7 +267,7 @@ The ratio is 4.1, driven by:
 The vacuum-polarization coefficient for massive spin-1
 (Proca) fields is b = 7, much larger than b = 4/3
 (Dirac) or b = 1/3 (scalar).  The ρ± and K*± together
-contribute 32% of the total T⁶ screening.
+contribute 32% of the total Ma screening.
 
 Sensitivity:
     b_vector = 1/3:   Δ(m_e→m_Z) = 15.3
@@ -282,22 +282,22 @@ coefficient.
 
 ### F16. The cutoff for 1/α₀ = 80 is ~168 TeV
 
-With only known T⁶ particles, the cutoff needed to
+With only known Ma particles, the cutoff needed to
 accumulate 57 units of screening (from 80 to 137) is:
 
-    T⁶: Λ = 168 TeV  (log₁₀ Λ/GeV = 5.2)
+    Ma: Λ = 168 TeV  (log₁₀ Λ/GeV = 5.2)
     SM:  Λ = 1.6 × 10²¹ GeV  (beyond Planck)
 
-The T⁶ model reaches 1/α₀ = 80 at a much lower scale
+The Ma model reaches 1/α₀ = 80 at a much lower scale
 because it runs faster.  168 TeV is above the LHC
 (~14 TeV) but well below the GUT scale — it would
 be accessible to a ~100× more powerful collider.
 
 
-### F17. Charged baryons and Δ⁺⁺ are the distinctive T⁶ contribution
+### F17. Charged baryons and Δ⁺⁺ are the distinctive Ma contribution
 
 In the SM, protons do not appear in vacuum polarization
-loops (quarks do).  In T⁶, the proton is fundamental
+loops (quarks do).  In Ma, the proton is fundamental
 and contributes directly.  The per-particle breakdown
 from m_e to m_Z:
 
@@ -314,13 +314,13 @@ from m_e to m_Z:
 
 The 3 leptons contribute identically in both models
 (3.23 total).  The difference is entirely in the
-hadronic sector: T⁶ hadrons contribute 18.7 vs SM
+hadronic sector: Ma hadrons contribute 18.7 vs SM
 quarks' 3.75 (a factor of 5×).
 
 
 ### F18. Open question: should short-lived resonances contribute?
 
-Many of the T⁶ baryons are extremely short-lived:
+Many of the Ma baryons are extremely short-lived:
 - Δ resonances: τ ~ 10⁻²³ s (strong decay)
 - N* resonances: τ ~ 10⁻²³ s
 - ρ±: τ ~ 4 × 10⁻²⁴ s
@@ -330,7 +330,7 @@ resonances and do NOT appear as separate VP contributions.
 Instead, their effect is implicitly included in the non-
 perturbative hadronic VP (computed from e⁺e⁻ data).
 
-In T⁶, they ARE fundamental modes.  But their extreme
+In Ma, they ARE fundamental modes.  But their extreme
 instability (widths Γ ~ 100–300 MeV, comparable to their
 masses) raises the question: should a mode with Γ ~ m
 really be treated as a sharp mass threshold in the VP
@@ -338,9 +338,9 @@ sum?  Or should its contribution be smeared over a wide
 energy range, effectively diluting its impact?
 
 This is not a small effect: the Δ, N*, ρ, and K*
-together account for ~75% of the T⁶ screening.  If
+together account for ~75% of the Ma screening.  If
 their contribution is reduced by form factors or width
-effects, the T⁶ running could approach the measured
+effects, the Ma running could approach the measured
 value.
 
 

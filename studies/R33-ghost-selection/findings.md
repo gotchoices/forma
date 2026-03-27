@@ -112,7 +112,7 @@ The antiparticle mode (1,-2) has:
 
 This is the positron's mirror mode.  The slight mass
 asymmetry (1%) is a prediction — the (1,2) and (1,-2) modes
-are NOT exact CPT conjugates on the sheared T².
+are NOT exact CPT conjugates on the sheared Ma_e.
 
 ### F7. Cross-sheet ghosts introduce new tensions
 
@@ -193,12 +193,12 @@ vs the proton's μ ≈ 2.0.  Same 1/16 suppression.
 The ω⁴ Larmor scaling applies to classical dipole radiation.
 In QFT, the coupling between a charged particle and the
 photon field depends on charge, not ω⁴.  Whether the ω⁴
-factor is physical depends on whether the T² → R³ coupling
+factor is physical depends on whether the Ma_e → S coupling
 is better described by:
 
 - Classical radiation (ω⁴ applies): ghost suppressed ✓
 - QFT vertex (charge only): Track 1 stands, ghost unsuppressed ✗
 
 This is the deepest open question in the ghost selection
-program.  A QFT-level calculation of the T² mode / R³ photon
+program.  A QFT-level calculation of the material sheet mode / S photon
 vertex would resolve it definitively.

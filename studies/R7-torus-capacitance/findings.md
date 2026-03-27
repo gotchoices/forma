@@ -73,17 +73,17 @@ know which (if any) is correct.
 
 Perhaps the photon's E-field energy (m_e c²/2) is NOT entirely
 stored in the far-field Coulomb pattern.  Most of the energy
-might remain in near-field modes confined to the compact surface
+might remain in near-field modes confined to the material surface
 and its immediate vicinity, with only a fraction α leaking out
 as the long-range 1/r² field.  In this picture:
 
 | Component | Energy | Fraction |
 |-----------|--------|----------|
-| Near field (compact surface) | ~(1−2α) × m_e c²/2 | ~98.5% |
+| Near field (material surface) | ~(1−2α) × m_e c²/2 | ~98.5% |
 | Far field (Coulomb) | ~α × m_e c² | ~1.5% |
 
 This would be consistent with α being the EM coupling constant:
-it measures how strongly the compact-dimension fields couple to
+it measures how strongly the material-dimension fields couple to
 the non-compact (3D) space.
 
 ### Possibility B: The synchronized CP picture is incomplete
@@ -91,7 +91,7 @@ the non-compact (3D) space.
 We assumed E is constant and always outward (from synchronized
 circular polarization).  If the actual field configuration is
 different — for example, if the wave has multiple oscillations
-per circuit (as the mode structure on flat T² suggests) — the
+per circuit (as the mode structure on flat Ma_e suggests) — the
 effective charge could be different.  The oscillation problem
 (see README §"Open question: mode structure") remains unresolved
 and could change the result.
@@ -119,7 +119,7 @@ the source of the shortfall.
 ### Possibility D: The torus dimensions are wrong
 
 The path constraint ℓ = λ_C gives torus dimensions of order
-10⁻¹³ m.  If the actual compact dimensions were much smaller
+10⁻¹³ m.  If the actual material dimensions were much smaller
 (closer to the classical electron radius r_e ≈ 2.8 × 10⁻¹⁵ m),
 the Coulomb energy would be correspondingly larger.  This would
 require abandoning the ℓ = λ_C resonance condition, which is
@@ -129,7 +129,7 @@ central to WvM.
 
 Perhaps the "charge" of the electron does not arise from a
 Coulomb-like 1/r² field at all, but from a topological or
-KK-type mechanism (compact momentum, winding number).  In that
+KK-type mechanism (material-dimension momentum, winding number).  In that
 case, computing the Coulomb field energy is the wrong approach
 entirely — the charge would be determined by the topology and
 coupling constants, not by field energy.
@@ -170,7 +170,7 @@ from what WvM assumed, and determining it remains open.
    ~1/α.
 
 2. **The charge mechanism needs rethinking.**  Whether it's
-   topological (KK compact momentum), a near-field/far-field
+   topological (KK material-dimension momentum), a near-field/far-field
    coupling, or something else, the connection between photon
    energy and observed charge is more subtle than WvM proposed.
 

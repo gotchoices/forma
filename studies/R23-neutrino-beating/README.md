@@ -1,20 +1,20 @@
 # R23. Neutrino from Harmonic Beating
 
 Can the neutrino emerge as a collective excitation (phonon) of
-three nearly-degenerate harmonics on the electron's T², with
+three nearly-degenerate harmonics on Ma_e (the electron sheet), with
 the mass-squared splitting ratio constraining the aspect ratio r?
 
 ## Background
 
 ### The neutrino problem (R20 F14–F21, neutrino.md)
 
-The neutrino cannot be a KK eigenmode on the electron's T².
+The neutrino cannot be a KK eigenmode on Ma_e.
 The lightest uncharged mode is (0,±1) at 245 keV — five orders
 of magnitude above the neutrino mass (< 0.8 eV).  No wave-packet
 or geodesic construction closes the gap (F20, F21).
 
 Three options survived R20:
-- (a) Separate T² for neutrinos (viable but unsatisfying)
+- (a) Separate material sheet for neutrinos (viable but unsatisfying)
 - (b) Geometry fluctuation (never computed)
 - (c) Decay product from harmonic rearrangement (ruled out if
   "harmonics" means KK eigenmodes — but NOT if it means a
@@ -22,7 +22,7 @@ Three options survived R20:
 
 ### Near-degeneracies exist (R20 F16)
 
-Mode splittings on the electron's T² reach the sub-eV scale
+Mode splittings on Ma_e reach the sub-eV scale
 naturally.  At E < 100 m_e, splittings as small as 0.29 eV
 were found.  These arise from the irrational shear s₁₂ making
 mode energies incommensurate — near-degeneracies are Diophantine
@@ -116,7 +116,7 @@ superpositions.
 ### Track 1: Near-degenerate triplet search  ✓ (complete)
 
 Systematically search for triplets of uncharged modes on the
-sheared T² whose pairwise energy splittings have ratio ≈ 33.6.
+sheared material sheet whose pairwise energy splittings have ratio ≈ 33.6.
 
 **Result:** At E_max = 100 m_e (~68k modes at r = 1), the ratio 33.6
 is trivially achieved at keV-scale inner splittings — mode density
@@ -136,7 +136,7 @@ embedded torus (the metric has no θ₂ dependence).  Modes with
 different n₂ don't couple.  The proton's harmonics (n, 2n) each
 have a different n₂, so they don't couple through curvature.
 The phonon model has a structural obstacle.  The only rescue
-path is the proton's backreaction on T² shape (R22).  See F8–F14.
+path is the proton's backreaction on material sheet shape (R22).  See F8–F14.
 
 ### Track 3: Spin and quantum numbers
 

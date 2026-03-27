@@ -53,7 +53,7 @@ It does NOT depend on:
 - The tube circumference (which can be arbitrarily large)
 - The aspect ratio r (any r > 0.26 works)
 
-This is why r produces a one-parameter family at every T²
+This is why r produces a one-parameter family at every material
 sheet.  The charge is integer-quantized — it's either e or 0
 with nothing in between.  Any geometry with nonzero shear
 and a (1,2) geodesic produces exactly the same charge.
@@ -111,7 +111,7 @@ large r.
 Script: `scripts/alpha_from_geometry.py`
 
 (Exploratory analysis prompted by the question: does the
-T⁶ geometry predict α, or is it purely an input?)
+Ma (the six-dimensional material space) geometry predict α, or is it purely an input?)
 
 
 ### F21. Currently α is input, not predicted
@@ -144,8 +144,8 @@ Perturbation theory alone cannot select α = 1/137.
 ### F23. Atom existence gives an UPPER BOUND on r_e
 
 The Bohr radius a₀ = ℏc/(m_e α) must exceed the tube
-circumference L_tube for atoms to exist as R³ objects
-(otherwise the electron orbit is inside the compact
+circumference L_tube for atoms to exist as S (the three spatial dimensions) objects
+(otherwise the electron orbit is inside the material
 geometry and the KK approximation breaks down).
 
 This requires:  **r_e < 1/(α × μ₁₂) ≈ 68.5**
@@ -193,17 +193,17 @@ Four routes could break the circular α-input structure:
    α follows from the KK formula.  Most promising
    near-term path.
 
-2. **Casimir energy minimization.**  The T⁶ vacuum energy
+2. **Casimir energy minimization.**  The Ma vacuum energy
    depends on all shears.  If the geometry minimizes its
    vacuum energy, all shears (including those determining
    α) are predicted.
 
 3. **Full 9D hydrogen calculation.**  Solve the wave
-   equation on T⁶ × R³ without KK reduction.  The
+   equation on Ma × S without KK reduction.  The
    effective coupling that emerges IS α.
 
 4. **Spectral self-consistency.**  Find a condition where
-   the T⁶ mode spectrum and atomic binding are mutually
+   the Ma mode spectrum and atomic binding are mutually
    consistent only at a specific α.
 
 
@@ -243,7 +243,7 @@ tube circuit.  A geodesic with ring winding bounces back
 after each tube traversal, so it must wrap the tube an
 EVEN number of times to close.
 
-The (1,2) geodesic on T² closes after 1 tube circuit.
+The (1,2) geodesic on a material sheet closes after 1 tube circuit.
 On the Klein bottle, the same geodesic requires 2 tube
 circuits to close (because the y-velocity reverses).
 The effective tube winding is n = 2 (even).
@@ -253,7 +253,7 @@ Even tube winding → spin count 0, not 1.
 Therefore: no spin-½ particles.
 
 
-### F17. T² is the unique compact geometry for this model
+### F17. The material sheet is the unique compact geometry for this model
 
 The model requires:
 - Compact (finite volume for quantized modes)
@@ -264,9 +264,9 @@ Non-orientable surfaces (Klein bottle, RP², Möbius strip)
 are all ruled out by F15–F16.  The sphere S² has no
 non-contractible cycles (no winding numbers → no mode
 spectrum).  The only compact, orientable, 2D surface
-with non-contractible cycles is the torus T².
+with non-contractible cycles is the torus (material sheet).
 
-**T² is not an assumption — it is the unique geometry
+**The material sheet is not an assumption — it is the unique geometry
 consistent with the model's requirements.**
 
 
@@ -301,15 +301,15 @@ Three types of flexibility are physically possible:
    is the same at every r > 0.26.
 
 2. **Dynamic (moduli/radion):** r varies in space or time.
-   This is a breathing mode of the compact geometry —
+   This is a breathing mode of the material geometry —
    a scalar field in 4D.  Charge stays quantized
    (topological), but mass would vary with r.
    Observational constraints (constant electron mass)
    limit spatial variation to < 10⁻¹⁰.
 
 3. **Curve solution:** reality is the entire family of
-   (r, s) solutions, not a single point.  The compact
-   geometry might vary along R³, with r(x) being a
+   (r, s) solutions, not a single point.  The material
+   geometry might vary along S, with r(x) being a
    field.  This is the "moduli space" picture from
    string theory.
 
@@ -324,7 +324,7 @@ and matches all observations.
    Klein bottle, RP², Möbius strip all fail on both
    charge (no U(1)) and spin (no odd winding).
 
-2. **T² is the unique viable geometry:**
+2. **The material sheet is the unique viable geometry:**
    compact + orientable + 2D + non-contractible cycles.
 
 3. **The r-degeneracy is a curve, not a defect.**
@@ -336,8 +336,8 @@ and matches all observations.
    by current data.  The flat torus is the simplest
    consistent model.
 
-5. **Combined with Tracks 4 and 6:** The T⁶ geometry
-   (3 T² sheets × 2 dimensions each) is the unique
+5. **Combined with Tracks 4 and 6:** The Ma geometry
+   (3 material sheets × 2 dimensions each) is the unique
    minimal geometry that produces quantized charge,
    spin ½, and the observed particle spectrum.
 
@@ -364,13 +364,13 @@ Circumferences at L_b = 5000 fm:
     L_b = 5,000 fm   (shared dimension — free parameter)
     L_c = 1.321 fm   (proton ring scale)
 
-The electron uses A and B (like a T² ring+tube).  The proton
+The electron uses A and B (like a material-sheet ring+tube).  The proton
 uses B and C.  The neutron bridges all three with a high
 winding on B (n_b ≈ 199) to close the 1.3 MeV mass gap.
 
 L_b is free (any value > 4854 fm works), analogous to the
-aspect ratio degeneracy in T².  L_c ≈ L₆/2 from T⁶ because
-the proton uses n_c = 1 here vs n₆ = 2 in T⁶.
+aspect ratio degeneracy in a material sheet.  L_c ≈ L₆/2 from Ma because
+the proton uses n_c = 1 here vs n₆ = 2 in Ma.
 
 
 ### F2. Neutral spin-½ is structurally impossible in T³
@@ -394,7 +394,7 @@ its antiparticle has ½ components), and all neutral fermions.
 
 ### F3. The neutrino tube dimension is structurally necessary
 
-In T⁶, the neutron mode is (0, −2, 1, 0, 0, 2):
+In Ma, the neutron mode is (0, −2, 1, 0, 0, 2):
 - n₁ = 0 (electron tube, even → no charge, no spin)
 - n₃ = 1 (neutrino tube, odd → spin ½ contribution)
 - n₅ = 0 (proton tube, even → no charge, no spin)
@@ -402,8 +402,8 @@ In T⁶, the neutron mode is (0, −2, 1, 0, 0, 2):
 - Spin: 0 + 1 + 0 = 1 → ½  ✓
 
 The neutrino tube provides the single odd winding needed for
-a neutral fermion.  **This is the structural reason T⁶ has
-three T² sheets** — each sheet provides a "tube" dimension
+a neutral fermion.  **This is the structural reason Ma has
+three material sheets** — each sheet provides a "tube" dimension
 that contributes independently to charge and spin.
 
 Without the neutrino tube, the only way to get Q = 0 is
@@ -425,7 +425,7 @@ The T³ spectrum has only two energy scales:
 - L_b = 5000 fm → modes at ~0.25 MeV (fine spacing)
 
 There is nothing at 20–50 fm that would produce modes in the
-100–500 MeV range.  In T⁶, this is the proton TUBE
+100–500 MeV range.  In Ma, this is the proton TUBE
 (L₅ = 23.7 fm, spacing ~53 MeV per step), which is a
 separate dimension from the proton ring (L₆ = 2.66 fm).
 
@@ -435,9 +435,9 @@ energy ladder.  **The meson/baryon mass spectrum requires the
 proton tube as a distinct dimension.**
 
 
-### F5. T³ has 10× fewer ghost modes than T⁶
+### F5. T³ has 10× fewer ghost modes than Ma
 
-| | T³ | T⁶ |
+| | T³ | Ma |
 |--|-----|------|
 | Modes below 2 GeV | 89 | ~900 |
 | Energy bands | 4 | ~48 |
@@ -460,7 +460,7 @@ Several alternatives were tested:
    proton spin (proton has n_a = 0 → spin 0).
 
 3. **Context-dependent spin**: Ad hoc and breaks the clean
-   algebraic structure that makes T⁶ work.
+   algebraic structure that makes Ma work.
 
 4. **T⁴ = T³ × T¹**: Adding a neutrino tube (dimension D)
    fixes the spin problem.  Neutron mode (0, n_b, 0, 1)
@@ -469,9 +469,9 @@ Several alternatives were tested:
    restored as a separate dimension.
 
 
-### F7. Why T⁶ needs exactly 6 compact dimensions
+### F7. Why Ma needs exactly 6 material dimensions
 
-Track 6 reveals that each T² sheet contributes two
+Track 6 reveals that each material sheet contributes two
 structurally essential things:
 
 1. **A tube dimension** — provides charge (via shear) and
@@ -487,7 +487,7 @@ structurally essential things:
 
 Sharing a ring dimension between sheets (T³) loses the
 second energy scale and collapses the intermediate spectrum.
-Removing a tube dimension (T² instead of T⁶) loses the spin
+Removing a tube dimension (a single material sheet instead of Ma) loses the spin
 degree of freedom for neutral particles.
 
 **3 sheets × 2 dimensions = 6 is the structural minimum.**
@@ -501,7 +501,7 @@ degree of freedom for neutral particles.
 2. **T³ spin fails** — neutral spin-½ is topologically
    forbidden.  The neutrino tube cannot be eliminated.
 
-3. **T³ spectrum fails** — only 2 energy scales vs T⁶'s 6.
+3. **T³ spectrum fails** — only 2 energy scales vs Ma's 6.
    The proton tube's 53 MeV ladder is essential for mesons
    and baryons.
 
@@ -511,5 +511,5 @@ degree of freedom for neutral particles.
    - Any reduction loses either spin or spectrum.
 
 5. **The r-degeneracy is real** — T³ has the same free-L_b
-   problem that T⁶ has with aspect ratios.  Reducing
+   problem that Ma has with aspect ratios.  Reducing
    dimensions does not fix the under-determination.

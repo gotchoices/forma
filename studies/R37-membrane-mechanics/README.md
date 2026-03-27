@@ -1,9 +1,9 @@
-# R37. Membrane mechanics — gravity and stability from the T²/R³ interface
+# R37. Membrane mechanics — gravity and stability from the material-sheet/S interface
 
 **Status:** Complete
 **Questions:** Q2 (curved appearance), Q76 (metric signature)
 **Type:** theoretical + compute
-**Depends on:** R19 (R19-shear-charge), R26 (T⁶), R17 (radiation pressure),
+**Depends on:** R19 (R19-shear-charge), R26 (Ma), R17 (radiation pressure),
 R18 (torus stiffness), R31 (origin of α), R35 (elastic torus hypothesis),
 R36 (geometric tilt — interactions require spatially varying metric)
 **Supports:** Paper 4 candidate (universe-as-mode)
@@ -24,23 +24,22 @@ curvature and by HOW MUCH, but never says WHY.  The mechanism
 by which a lump of energy deforms the surrounding geometry is
 not provided — it is taken as axiomatic.
 
-In the T⁶ framework, matter IS geometry: the electron is a
-standing electromagnetic wave (photon) confined on a compact
-T² surface.  The mass m_e c² is the photon's field energy.
-The T² surface sits at the boundary between compact dimensions
-and non-compact R³ — a physical **interface** through which the
+In the Ma (the six-dimensional material space) framework, matter IS geometry: the electron is a
+standing electromagnetic wave (photon) confined on Ma_e (the electron sheet).  The mass m_e c² is the photon's field energy.
+The Ma_e surface sits at the boundary between material dimensions
+and non-compact S (the three spatial dimensions) — a physical **interface** through which the
 photon's fields partially extend.  The E field projects
-perpendicular to this surface into R³ (producing charge), while
+perpendicular to this surface into S (producing charge), while
 the B field remains tangent (producing the magnetic dipole).
 
-This study asks: does the photon's confinement on T² exert a
-measurable force on the T²/R³ interface?  If so, does the
+This study asks: does the photon's confinement on a material sheet exert a
+measurable force on the material-sheet/S interface?  If so, does the
 interface's elastic response:
 
 1. **Stabilize the particle** — radiation pressure balanced
    against membrane tension sets the torus dimensions?
 2. **Produce gravity** — the membrane deformation propagates
-   into R³ as spacetime curvature?
+   into S as spacetime curvature?
 
 α remains an input (R31 conclusion), not derived here.  But
 α determines the membrane's shear modulus μ_m (via the
@@ -65,7 +64,7 @@ conservative, and φ-symmetry is preserved.  Centrifugal
 force is a consequence of confinement, not a mechanism for
 charge.  **R17 looked at forces ALONG the torus surface.**
 This study looks at forces NORMAL to the surface — pressure
-on the T²/R³ boundary itself.
+on the material-sheet/S boundary itself.
 
 **R18 (torus stiffness):** Tested whether the photon's EM
 field could deform the torus shape and break the φ-symmetry
@@ -74,11 +73,11 @@ deformation preserves φ-symmetry → charge remains zero, and
 the Coulomb energy cost exceeds the photon energy saving by
 96×.  The symmetric torus is stable against shape
 deformation.  **R18 asked whether the photon deforms the
-torus.** This study asks whether the photon deforms R³
+torus.** This study asks whether the photon deforms S
 through the torus boundary — a different target.
 
 **R31 (origin of α):** Systematically tested mechanisms for
-deriving α.  Hydrogen is NOT a T⁶ mode.  Casimir energy has
+deriving α.  Hydrogen is NOT a Ma mode.  Casimir energy has
 no minimum.  KK Yukawa corrections are 10³–10⁶× too large.
 α remains an input.  **This study accepts R31's conclusion:
 α is an input, not derived.**  But α determines the
@@ -87,7 +86,7 @@ independently determined K_n (from gravity) gives a
 mechanical characterization of the hierarchy.
 
 **R35 (elastic torus, Hypothesis I):** Track 3 found that a
-flat T⁶ blocks both reading and writing to the neutrino
+flat Ma blocks both reading and writing to the neutrino
 sheet — the shielding is symmetric.  The resolution was
 Hypothesis I: the torus geometry is NOT rigid but deformable.
 Geometric modulation (metric fluctuations) bypasses the
@@ -119,7 +118,7 @@ spacetime" — the conversion factor between stress-energy
 density and curvature.  It is enormous, meaning spacetime is
 extremely rigid.  GR provides no explanation for this value.
 
-In the T⁶ picture, matter IS geometry (compact-dimension
+In the Ma picture, matter IS geometry (material-dimension
 modes).  The field equation should become a self-consistency
 condition: the compact geometry (which constitutes the
 particle) must be consistent with the non-compact geometry
@@ -130,9 +129,9 @@ requirement that the total geometry be globally self-consistent.
 
 ### The membrane picture
 
-A circularly polarized photon confined on T² is a photon
+A circularly polarized photon confined on a material sheet is a photon
 bouncing inside a resonant cavity.  The cavity walls are the
-T²/R³ interface — the boundary between compact and non-compact
+material-sheet/S interface — the boundary between material and non-compact
 dimensions.
 
 **Radiation pressure.** A confined photon exerts radiation
@@ -144,14 +143,14 @@ pressure on the cavity walls.  For the electron:
 
 This is ~10¹⁰ atmospheres — an enormous internal pressure,
 applied at every point on the compact surface, directed
-perpendicular to the surface (into R³).
+perpendicular to the surface (into S).
 
-**Spacetime resistance.** If R³ has a finite resistance to
+**Spacetime resistance.** If S has a finite resistance to
 deformation, it pushes back.  The gravitational stiffness is:
 
     κ = c⁴ / (8πG) ≈ 4.8 × 10⁴² N
 
-The resulting deformation of R³ around the particle:
+The resulting deformation of S around the particle:
 
     δg/g ~ P_rad / κ
          ~ (m_e c² / V) / (c⁴/(8πG))
@@ -163,7 +162,7 @@ boundary, balanced against spacetime stiffness, produces the
 weak-field Schwarzschild metric.  The chain is:
 
     confined photon → radiation pressure → membrane deformation
-    → R³ metric perturbation → gravitational field
+    → S metric perturbation → gravitational field
 
 No postulate is needed.  Gravity FOLLOWS from the photon's
 confinement on a compact surface in a geometry that resists
@@ -182,9 +181,9 @@ In the membrane picture, the particle's size is set by a
 
 | Force | Direction | Source |
 |-------|-----------|--------|
-| Radiation pressure | Outward (expanding T²) | Confined photon energy density |
-| Membrane tension | Inward (contracting T²) | T²/R³ boundary surface energy |
-| R³ curvature cost | Inward | Energy penalty for deforming R³ |
+| Radiation pressure | Outward (expanding sheet) | Confined photon energy density |
+| Membrane tension | Inward (contracting sheet) | material-sheet/S boundary surface energy |
+| S curvature cost | Inward | Energy penalty for deforming S |
 
 - **Too small:** Radiation pressure dominates (energy density
   ∝ 1/V → diverges as V → 0).  The photon pushes the membrane
@@ -204,7 +203,7 @@ balances membrane resistance.
 ### The shear connection — α as input, μ_m as output
 
 The (1,2) winding creates an anisotropic stress pattern on
-the T² surface.  This stress has a shear component ΔP that
+the material-sheet surface.  This stress has a shear component ΔP that
 deforms the lattice tangentially.  The equilibrium shear is:
 
     s_eq = ΔP / μ_m
@@ -230,9 +229,9 @@ electromagnetism in purely mechanical terms.
 
 The two elastic responses arise from the same membrane but
 involve deformation in different directions: tangential (on
-T²) for charge, normal (into R³) for gravity.  These probe
+a material sheet) for charge, normal (into S) for gravity.  These probe
 different sectors of the total geometry, so K_n/μ_m need not
-be O(1) — the hierarchy K_n ≫ μ_m would mean the T²/R³
+be O(1) — the hierarchy K_n ≫ μ_m would mean the material-sheet/S
 boundary is extremely rigid against normal displacement
 (making gravity weak) but compliant to tangential shear
 (allowing appreciable charge).
@@ -240,11 +239,11 @@ boundary is extremely rigid against normal displacement
 
 ### Axial vs radial coupling asymmetry
 
-The magnetic dipole and electric charge couple to R³ with
+The magnetic dipole and electric charge couple to S with
 strikingly different efficiencies:
 
 - **B (axial):** The torus symmetry axis is a fixed direction
-  in R³.  The B field's axial component adds coherently around
+  in S.  The B field's axial component adds coherently around
   the torus.  No symmetry breaking needed.  The g-factor g ≈ 2
   is topological (O(1) coupling).
 
@@ -273,11 +272,11 @@ energy through membrane shear.**
 
 ### Fiber vs. bubble — what the "membrane" is
 
-The T² is not a soap bubble floating in R³.  It is a compact
-fiber over each point of R³: at every spatial location, there
-exist 2 compact coordinates (θ, φ) in addition to the 3
-non-compact coordinates (x, y, z).  The "T²/R³ interface" is
-the boundary in the total 5D space between the compact and
+A material sheet is not a soap bubble floating in S.  It is a compact
+fiber over each point of S: at every spatial location, there
+exist 2 material coordinates (θ, φ) in addition to the 3
+non-compact coordinates (x, y, z).  The "material-sheet/S interface" is
+the boundary in the total 5D space between the material and
 non-compact sectors — a codimension boundary, not a spatial
 surface.
 
@@ -285,8 +284,8 @@ The Israel junction conditions handle exactly this situation:
 a hypersurface in a higher-dimensional spacetime separating
 two regions with potentially different geometries.  The
 formalism is rigorous even though the "membrane" is not a
-surface you could point to in R³.  What makes it physical
-is that the photon's field configuration on T² creates
+surface you could point to in S.  What makes it physical
+is that the photon's field configuration on a material sheet creates
 stress-energy AT the boundary, and this stress-energy
 affects the geometry on both sides.
 
@@ -316,9 +315,9 @@ are:
 3. What is K_n/μ_m, and does it match the hierarchy? (Track 5)
 
 
-### The T²/R³ interface as an elastic membrane
+### The material-sheet/S interface as an elastic membrane
 
-Model the T²/R³ boundary as a 2D elastic membrane with:
+Model the material-sheet/S boundary as a 2D elastic membrane with:
 
 - **Surface energy density σ_m** (energy per unit area of
   the interface — analogous to surface tension)
@@ -327,7 +326,7 @@ Model the T²/R³ boundary as a 2D elastic membrane with:
 - **Shear modulus μ_m** (resistance to tangential
   deformation of the lattice)
 - **Normal stiffness K_n** (resistance to displacement of
-  the membrane into R³ — related to spacetime stiffness κ)
+  the membrane into S — related to spacetime stiffness κ)
 
 The confined photon provides:
 
@@ -358,8 +357,8 @@ discontinuity in the extrinsic curvature K_ab:
 where [K_ab] is the jump in extrinsic curvature across the
 membrane, [K] is its trace, and h_ab is the induced metric.
 
-In the T⁶ framework, the T² surface is precisely such a
-hypersurface: it separates the compact interior from the
+In the Ma framework, the material-sheet surface is precisely such a
+hypersurface: it separates the material interior from the
 non-compact exterior.  The Israel conditions applied to this
 surface would give the membrane stress-energy tensor in terms
 of the metric jump.
@@ -367,23 +366,23 @@ of the metric jump.
 **The Randall-Sundrum model** (1999) is a brane-world scenario
 where our universe is a 3-brane (membrane) in a
 5-dimensional bulk.  The brane tension relates to the
-cosmological constant.  The T² membrane is an analogous
-structure at particle scale — a 2-brane separating compact
-and non-compact dimensions.
+cosmological constant.  The material-sheet membrane is an analogous
+structure at particle scale — a 2-brane separating material
+and non-material dimensions.
 
 **The Nambu-Goto action** describes a membrane (string, brane)
-whose dynamics minimizes surface area.  Applied to the T²
+whose dynamics minimizes surface area.  Applied to the material-sheet
 surface:
 
     S_membrane = −σ_m ∫ √|det h_ab| d²ξ
 
-where h_ab is the induced metric on the T² surface.  This
+where h_ab is the induced metric on the material-sheet surface.  This
 gives the surface tension contribution to the force balance.
 
 
 ### What the membrane stiffness IS
 
-The key unknown is K_n — the normal stiffness of the T²/R³
+The key unknown is K_n — the normal stiffness of the material-sheet/S
 interface.  Several candidates:
 
 1. **Planck stiffness.** K_n = c⁴/(8πG) per unit area.
@@ -391,7 +390,7 @@ interface.  Several candidates:
    stiffness, giving a direct connection to the gravitational
    constant.
 
-2. **KK moduli potential.** In KK theory, the compact
+2. **KK moduli potential.** In KK theory, the material
    dimensions have "moduli" — continuous parameters (like R, a,
    s) not fixed by the equations of motion on a flat torus.
    A moduli potential V(R, a, s) would provide forces
@@ -400,46 +399,46 @@ interface.  Several candidates:
    K_n = ∂²V/∂(δn)².
 
 3. **Casimir energy.** The quantum vacuum energy of the
-   confined photon field on T² depends on the torus geometry.
-   Casimir forces between the compact walls could provide a
+   confined photon field on a material sheet depends on the torus geometry.
+   Casimir forces between the material walls could provide a
    restoring force.  R31 found no minimum in the Casimir
    energy as a function of geometry — but that calculation
-   used a flat T² without the normal displacement degree of
-   freedom.  Including the T²/R³ interface as a dynamical
+   used a flat material sheet without the normal displacement degree of
+   freedom.  Including the material-sheet/S interface as a dynamical
    surface may change this.
 
 4. **Higher-dimensional Einstein equations.** If the full
-   10D geometry (T⁶ × R³ × R¹) satisfies the 10D Einstein
+   10D geometry (Ma × S × R¹) satisfies the 10D Einstein
    equations, the compactification itself provides forces on
-   the T² surfaces.  The requirement of self-consistency
+   the material-sheet surfaces.  The requirement of self-consistency
    (10D Ricci flatness, or a specific cosmological constant)
    could determine K_n.
 
 
 ## Approach
 
-### Track 1. Radiation pressure on the T² surface
+### Track 1. Radiation pressure on the material-sheet surface
 
 **Goal:** Compute the stress tensor of the confined (1,2)
-photon mode on the T² surface.  Decompose it into isotropic
+photon mode on the material-sheet surface.  Decompose it into isotropic
 pressure, anisotropic shear stress, and the normal force on
-the T²/R³ boundary.
+the material-sheet/S boundary.
 
 **Method:**
-1. Write the (1,2) mode's E and B fields on the T² surface
+1. Write the (1,2) mode's E and B fields on the material-sheet surface
    using the known mode functions from R19/R26.
 2. Compute the Maxwell stress tensor T_ij at the surface.
 3. Decompose into:
    - P_iso: isotropic pressure (drives expansion/contraction)
    - ΔP(θ,φ): anisotropic part (drives shear)
-   - T_nn: normal-normal component (drives R³ deformation)
+   - T_nn: normal-normal component (drives S deformation)
 4. Evaluate numerically for the electron (m_e c², r = 1–9,
    KK Compton constraint).
 
 **Output:**
-- P_iso, ΔP, T_nn as functions of position on the T² surface
+- P_iso, ΔP, T_nn as functions of position on the material-sheet surface
   and aspect ratio r
-- The force per unit area on the T²/R³ boundary
+- The force per unit area on the material-sheet/S boundary
 - Whether the stress is predominantly normal (bulge) or
   tangential (shear)
 
@@ -470,7 +469,7 @@ independent methods:
   tension alone.
 - Methods A and B give identical results (F10).
 - The Schwarzschild metric follows from confinement alone:
-  photon energy → force on boundary → R³ deformation.
+  photon energy → force on boundary → S deformation.
   The gravity result is robust and model-independent (F11, F12).
 
 **Script:** `scripts/track2_force_balance.py`
@@ -484,7 +483,7 @@ independent methods:
 the confined photon's stress-energy.
 
 **Three routes:**
-  - Route A (KK reduction): 6D Einstein → integrate T² → 4D
+  - Route A (KK reduction): 6D Einstein → integrate material sheet → 4D
   - Route B (centripetal force): confinement → F = E/R → δg
   - Route C (Israel conditions): S_ab → [K_ab] → exterior metric
 
@@ -492,7 +491,7 @@ the confined photon's stress-energy.
 - All three routes give g₀₀ = −(1 − r_S/r) with r_S = 1.35 × 10⁻⁵⁷ m.
 - ADM mass = m_e exactly.  No binding energy correction.
 - Self-gravity at the torus surface: δg₀₀ ~ 10⁻³⁵ — negligible.
-  Validates flat T² metric in Tracks 1–2.
+  Validates flat material-sheet metric in Tracks 1–2.
 - Hierarchy ratio K_n/μ_m = 1.1 × 10³² encodes the weakness
   of gravity vs EM as a ratio of elastic constants.
 - G is an INPUT (not derived).  What IS derived: the Schwarzschild
@@ -538,9 +537,9 @@ centripetal force argument is circular — G goes in, G comes out.
   geometry + α.  Stress anisotropy, crossover at r ≈ 2.
 - F5 (Track 2): the aspect ratio problem.  Isotropic σ_m
   predicts r = 0.5, not 6.6.  This is a real constraint.
-- F6 (Track 2): self-gravity negligible — validates flat T².
+- F6 (Track 2): self-gravity negligible — validates flat material sheet.
 - F8 (Track 5): electron sheet too stiff for R35 coupling.
   Constrains the biological mechanism.
 
 **Open question:** The neutrino sheet stiffness (R35's Goldilocks K)
-requires the T⁶ moduli potential — same open question as R35 F28.
+requires the Ma moduli potential — same open question as R35 F28.

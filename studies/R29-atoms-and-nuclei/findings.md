@@ -1,7 +1,7 @@
 # R29 Findings
 
 
-## Track 1. KK reduction: from T⁶ × R³ to atoms
+## Track 1. KK reduction: from Ma × S to atoms
 
 Script: `scripts/track1_kk_reduction.py`
 
@@ -9,9 +9,9 @@ Script: `scripts/track1_kk_reduction.py`
 ### F1. The Coulomb interaction arises from the KK gauge mechanism
 
 In Kaluza-Klein theory, the off-diagonal metric components
-g_{μi} (where μ indexes R³ and i indexes T⁶) are the gauge
-fields.  T⁶ has 6 compact dimensions, so KK decomposition
-gives **6 independent U(1) gauge fields**: one per compact
+g_{μi} (where μ indexes S (the three spatial dimensions) and i indexes Ma (the six-dimensional material space)) are the gauge
+fields.  Ma has 6 material dimensions, so KK decomposition
+gives **6 independent U(1) gauge fields**: one per material
 direction.
 
 The electromagnetic field is the combination:
@@ -22,12 +22,12 @@ This gives charge Q = −n₁ + n₅, exactly matching the
 mode_charge formula used throughout R26–R27.
 
 The gauge fields are massless in the zero-mode sector →
-they propagate as 1/r in R³ → Coulomb potential.  The
+they propagate as 1/r in S → Coulomb potential.  The
 coupling constant α is determined by the shear mechanism
-(R19) independently on each T² sheet:
+(R19) independently on each material sheet:
 
-    α(r_e, s_e) = 1/137.036    (electron T²)
-    α(r_p, s_p) = 1/137.036    (proton T²)
+    α(r_e, s_e) = 1/137.036    (electron sheet)
+    α(r_p, s_p) = 1/137.036    (proton sheet)
 
 The Coulomb potential between electron and proton modes:
 
@@ -35,7 +35,7 @@ The Coulomb potential between electron and proton modes:
 
 No free parameters are used.  The electromagnetic force is
 not an additional assumption — it emerges from the 9D
-geometry of T⁶ × R³.
+geometry of Ma × S.
 
 
 ### F2. Hydrogen ground state reproduced
@@ -43,13 +43,13 @@ geometry of T⁶ × R³.
 Using V(r) = −α ℏc / r and solving the Schrödinger equation
 with the reduced mass μ = m_e m_p / (m_e + m_p):
 
-| Quantity | T⁶ prediction | PDG value | Error |
+| Quantity | Ma prediction | PDG value | Error |
 |----------|--------------|-----------|-------|
 | E₁       | −13.5983 eV  | −13.5984 eV | +0.001% |
 | a₀       | 0.52947 Å    | 0.52918 Å   | +0.054% |
 
 The complete chain is:
-T⁶ geometry → mode quantum numbers → charges (R19) →
+Ma geometry → mode quantum numbers → charges (R19) →
 Coulomb potential (KK mechanism) → hydrogen binding energy.
 
 The tiny residual errors come from rounding in the input
@@ -58,12 +58,12 @@ physical constants, not from the model.
 
 ### F3. Yukawa corrections from massive KK gauge bosons
 
-Each compact dimension contributes a tower of massive gauge
+Each material dimension contributes a tower of massive gauge
 bosons.  The lightest has mass m ≈ 2πℏc/L, where L is the
 circumference.  At the Bohr radius, these contribute Yukawa
 corrections exp(−2πd/L)/d to the potential.
 
-The corrections are exponentially suppressed for all compact
+The corrections are exponentially suppressed for all material
 dimensions much smaller than the Bohr radius:
 
 | Gauge boson | Circumference L | Mass | Yukawa at a₀ |
@@ -75,7 +75,7 @@ dimensions much smaller than the Bohr radius:
 | Neutrino     (A³,⁴) | ~10¹⁰ fm | ~10⁻⁸ MeV | ≈ 1 (not compact) |
 
 The neutrino dimensions are macroscopic (~mm) and not
-compact at atomic scales.  However, the electron and proton
+material at atomic scales.  However, the electron and proton
 modes have n₃ = n₄ = 0, so they don't couple to the
 neutrino gauge fields.  These fields are invisible to
 atoms.
@@ -108,11 +108,11 @@ the hydrogen wave function).
 From Lamb shift precision: **r_e ≲ 5**.
 
 These are the first experimental constraints on r_e (the
-electron aspect ratio) from the T⁶ model.  R15's α problem
+electron aspect ratio) from the Ma model.  R15's α problem
 — what selects r_e? — now has an empirical upper bound.
 
 
-### F5. T⁶ predicts 6 gauge fields — the gauge sector census
+### F5. Ma predicts 6 gauge fields — the gauge sector census
 
 | Gauge field | Dimension | Mass (MeV) | Range (fm) | Couples to |
 |-------------|-----------|-----------|-----------|------------|
@@ -125,7 +125,7 @@ electron aspect ratio) from the T⁶ model.  R15's α problem
 
 The physical electromagnetic field is the combination
 A^EM = −A¹ + A⁵.  The 5 remaining independent combinations
-are additional forces predicted by the T⁶ geometry.
+are additional forces predicted by the Ma geometry.
 
 
 ### F6. The proton-tube gauge boson is a nuclear force candidate
@@ -180,11 +180,11 @@ strength (unknown without G₁₀) may be too weak to detect.
 ### F8. Summary of Track 1
 
 1. **Coulomb potential derived from geometry:** The KK
-   gauge mechanism on T⁶ × R³ produces the 1/r potential
+   gauge mechanism on Ma × S produces the 1/r potential
    with α = 1/137 from R19's shear formula.
 
 2. **Hydrogen reproduced:** E₁ = −13.6 eV, a₀ = 0.53 Å.
-   The complete chain from compact geometry to atomic
+   The complete chain from material geometry to atomic
    binding is established.
 
 3. **r_e constrained:** Yukawa corrections from the
@@ -201,7 +201,7 @@ strength (unknown without G₁₀) may be too weak to detect.
    offering a mechanism for neutron-proton asymmetry in
    nuclear physics.
 
-6. **Six gauge fields total:** The T⁶ geometry predicts a
+6. **Six gauge fields total:** The Ma geometry predicts a
    richer gauge structure than electromagnetism alone —
    potentially encompassing nuclear forces within the same
    geometric framework.
@@ -223,7 +223,7 @@ functions.  The energy shift of level (n,l) is:
     ΔE_nl = -α ℏc × Σ_i <nl| exp(-β_i r)/r |nl>
 
 where β_i = 2π/L_i and the sum runs over the 4 electron and
-proton compact dimensions (neutrino decouples).
+proton material dimensions (neutrino decouples).
 
 For the 1S state, the analytical result is:
 
@@ -273,7 +273,7 @@ Even at the smallest tested r_e = 1.5 (L₁ = 7606 fm):
 - 1S shift: −0.076 eV (0.6%)
 - Lamb-like splitting: −0.006 eV (1400× measured Lamb shift)
 
-For the T⁶ Lamb splitting to be below the measured Lamb
+For the Ma Lamb splitting to be below the measured Lamb
 shift precision (~10 kHz ≈ 2.4 × 10⁻⁹ eV), we would need
 L₁ < ~2 fm, i.e., r_e < 0.0004.  This is far below the
 critical r_e ≈ 0.26 needed for the shear mechanism (R19 F40).
@@ -281,7 +281,7 @@ critical r_e ≈ 0.26 needed for the shear mechanism (R19 F40).
 **This is a genuine tension in the model.**
 
 
-### F12. T⁶ Lamb-like splitting
+### F12. Ma Lamb-like splitting
 
 The Yukawa correction shifts S states more than P, D, F
 states because S-wave wave functions peak at the origin
@@ -289,13 +289,13 @@ while higher-l states vanish there.
 
 At r_e = 6.6:
 
-| Splitting | T⁶ prediction | Measured |
+| Splitting | Ma prediction | Measured |
 |-----------|--------------|---------|
 | 2S − 2P | −0.089 eV | +4.37 × 10⁻⁶ eV |
 | 3S − 3P | −0.026 eV | — |
 | 4S − 4P | −0.007 eV | — |
 
-The T⁶ splitting has the same sign as the QED Lamb shift
+The Ma splitting has the same sign as the QED Lamb shift
 (S below P) and the same qualitative origin (short-range
 potential modification).  But it is 10⁴ to 10⁵ times too
 large.
@@ -319,14 +319,14 @@ corrections would be heavily suppressed.  The simple
 assumption that all modes couple equally may be wrong.
 
 **Resolution C — The electron is not a simple plane wave.**
-Our modes are plane waves e^{in·θ} on T⁶.  In reality, the
+Our modes are plane waves e^{in·θ} in Ma.  In reality, the
 sheared geometry modifies the mode profile.  If the electron
-mode is localized (not uniform) on the T², its coupling to
+mode is localized (not uniform) on the electron sheet, its coupling to
 the KK gauge tower would be modified.  The overlap integrals
 could suppress the Yukawa corrections.
 
 **Resolution D — Gauge field mass from shear.**
-The within-plane shear s₁₂ modifies the T⁶ metric.  The
+The within-plane shear s₁₂ modifies the Ma metric.  The
 effective mass of the KK gauge bosons may be different from
 the naive 2πℏc/L.  If shear raises the mass of the lightest
 KK mode, the Yukawa range decreases and the correction at
@@ -339,7 +339,7 @@ small.  At r_e > ~5, the correction exceeds 3%.  Nonlinear
 
 These resolutions are not mutually exclusive.  The most
 promising is B: the R19-shear-charge mechanism involves a
-specific integral over the T² surface, and the massive KK
+specific integral over the electron sheet, and the massive KK
 modes may not participate in this integral in the same way.
 This requires a detailed calculation of the KK gauge
 coupling in the sheared-torus geometry.
@@ -364,7 +364,7 @@ because it directly measures the S-P energy difference.
 
 ### F15. Summary of Track 2: the boson approach fails
 
-1. **Hydrogen is reproduced** from T⁶ geometry (Coulomb
+1. **Hydrogen is reproduced** from Ma geometry (Coulomb
    term).  E₁ = −13.6 eV with no free parameters.
 
 2. **But the KK boson framework fails quantitatively.**
@@ -376,7 +376,7 @@ because it directly measures the S-P energy difference.
    spectroscopic constraint (r_e < 0.001).
 
 3. **The failure is in the intermediate theory, not the
-   geometry.**  We assumed that the T⁶ compact space
+   geometry.**  We assumed that the material space
    generates gauge bosons (KK mechanism), which mediate
    forces between particles, which bind atoms.  The
    leading-order Coulomb term works perfectly — but the
@@ -394,7 +394,7 @@ This failure motivated a fundamental change in approach.
 
 ---
 
-## Pivot: from bosons to direct T⁶ modes
+## Pivot: from bosons to direct Ma modes
 
 Tracks 1–2 adopted the conventional physics strategy:
 derive forces from the geometry, then use those forces to
@@ -406,24 +406,24 @@ The key insight came from reconsidering the neutron.  In
 R27, we initially hypothesized the neutron as a
 proton-electron bound pair — two particles held together by
 some force.  That failed.  Instead, the neutron turned out
-to be its **own T⁶ mode** — a single standing wave, not a
+to be its **own Ma mode** — a single standing wave, not a
 composite.  No force was needed.
 
 Applied to nuclei: rather than asking "what force binds a
-proton and neutron?", we ask "is there a T⁶ mode with the
+proton and neutron?", we ask "is there a Ma mode with the
 mass, charge, and spin of a deuteron?"  This is directly
 testable with the existing solver.
 
-If nuclei are T⁶ modes, the boson-mediation picture is
+If nuclei are Ma modes, the boson-mediation picture is
 unnecessary.  A deuteron is not two particles exchanging
-pions — it is a single oscillation in the compact space.
+pions — it is a single oscillation in the material space.
 The "nuclear force" is an emergent description of what the
 geometry already contains.
 
 
 ---
 
-## Track 3. Light nuclei as T⁶ modes
+## Track 3. Light nuclei as Ma modes
 
 Script: `scripts/track3_nuclear_modes.py`
 
@@ -431,7 +431,7 @@ Script: `scripts/track3_nuclear_modes.py`
 ### F16. Nuclear scaling law: n₅ = A, n₆ = 2A
 
 A systematic search reveals that every stable nucleus from
-the deuteron to iron-56 is matched by a T⁶ mode following
+the deuteron to iron-56 is matched by a Ma mode following
 a simple rule:
 
     n₅ = A  (mass number)
@@ -464,13 +464,13 @@ The charge is automatically correct:
     Q = −n₁ + n₅ = −N + A = Z  ✓
 
 The physical picture: a nucleus is literally the proton
-oscillation wound A times around the compact torus.  It is
+oscillation wound A times around the material torus.  It is
 not "particles bound by a force" — it is a single, higher-
 harmonic standing wave.  This is the neutron lesson applied
 at the nuclear scale.
 
 
-### F17. Nuclear spins from T⁶ mode parity
+### F17. Nuclear spins from Ma mode parity
 
 Nuclear spin (in our mode_spin convention, = count of odd
 tube windings among n₁, n₃, n₅) matches observed spins for
@@ -516,13 +516,13 @@ deuteron binding energy (2.2 MeV) is largely captured:
     Observed mass:     1875.6 MeV  → BE_obs  = 2.2 MeV
     Captured:          86%
 
-The T⁶ mode accounts for 86% of the deuteron binding
-energy purely from compact-dimension geometry.
+The Ma mode accounts for 86% of the deuteron binding
+energy purely from material-dimension geometry.
 
 
 ### F19. Binding energy: partial capture with systematic residual
 
-The T⁶ mode energy falls between the free-nucleon sum and
+The Ma mode energy falls between the free-nucleon sum and
 the observed mass for all nuclei tested — the correct
 direction for binding.  But the fraction captured decreases
 with A:
@@ -540,10 +540,10 @@ with A:
 
 The residual gap per nucleon (Gap/A) grows from 0.15 MeV
 (deuteron) to ~8 MeV (iron), asymptoting near 8.8 MeV/A.
-This residual may represent binding energy from R³
-mode interactions that the T⁶-only calculation misses.
+This residual may represent binding energy from S
+mode interactions that the Ma-only calculation misses.
 
-The T⁶ mode captures the gross nuclear mass (> 99%) and
+The Ma mode captures the gross nuclear mass (> 99%) and
 the dominant part of the binding energy for light nuclei.
 
 
@@ -565,7 +565,7 @@ This distinction may explain two longstanding puzzles:
    particles — it is a single oscillation that cannot be
    decomposed without disrupting the entire mode.
 
-This is the T⁶ answer to "why doesn't the neutron decay in
+This is the Ma answer to "why doesn't the neutron decay in
 a nucleus?": because there is no neutron in the nucleus.
 There is only the nuclear mode.
 
@@ -577,21 +577,21 @@ succeeded.**
 
 The KK reduction (Tracks 1–2) produced unphysical Yukawa
 corrections 10⁴× too large.  Abandoning the boson-mediation
-framework and searching for nuclei as T⁶ modes directly
+framework and searching for nuclei as Ma modes directly
 yielded:
 
-1. **Nuclei ARE T⁶ modes.**  Every stable nucleus tested
-   (A = 1 to 56) matches a T⁶ mode to < 1%.  The scaling
+1. **Nuclei ARE Ma modes.**  Every stable nucleus tested
+   (A = 1 to 56) matches a Ma mode to < 1%.  The scaling
    law n₅ = A, n₆ = 2A is universal.
 
 2. **No nuclear force needed.**  The deuteron binding
-   energy is 86% captured by the T⁶ mode alone.  The
+   energy is 86% captured by the Ma mode alone.  The
    nucleus is a single standing wave, not two particles
    bound by a mediating boson.
 
 3. **The Yukawa tension (F11) is dissolved.**  The large
    KK corrections were a problem with the intermediate
-   boson theory, not with the geometry.  The T⁶ model
+   boson theory, not with the geometry.  The Ma model
    predicts nuclei directly — no intermediate theory
    required.
 
@@ -599,13 +599,13 @@ yielded:
    correctly predicted by tube-winding parity.
 
 5. **Free ≠ nuclear neutron.**  The free neutron and the
-   neutron-in-nucleus are different T⁶ modes.  This
+   neutron-in-nucleus are different Ma modes.  This
    provides a geometric explanation for nuclear stability.
 
 6. **Open:** The ~8 MeV/A residual gap for heavy nuclei.
-   The full binding energy is not captured by T⁶ alone —
+   The full binding energy is not captured by Ma alone —
    either the electron ring winding (n₂) needs refinement,
-   or R³ effects contribute the remainder.
+   or S effects contribute the remainder.
 
 
 ---
@@ -619,8 +619,8 @@ Script: `scripts/track4_re_and_stability.py`
 
 Sweeping r_e from 1 to 23, the RMS nuclear mass error
 changes by less than 0.3 MeV (176.57 → 176.29 MeV).  The
-fit is flat — nuclear masses are completely insensitive
-to r_e.
+fit is flat — nuclear masses are completely insensitive to
+r_e.
 
 The reason: nuclear mode energy is dominated by the proton-
 sheet quantum numbers (n₅ = A, n₆ = 2A).  The electron
@@ -640,9 +640,9 @@ formula, muonic atom spectroscopy, or particle-level
 observables (possibly the tau or meson spectrum from R28).
 
 
-### F23. T⁶ is Z-degenerate: mass depends on A, not composition
+### F23. Ma is Z-degenerate: mass depends on A, not composition
 
-For a given mass number A, the T⁶ mode energy is
+For a given mass number A, the Ma mode energy is
 essentially independent of the charge Z.  For A = 12:
 
     E(Z = 0)  = 11260.145 MeV  (pure neutrons)
@@ -651,45 +651,45 @@ essentially independent of the charge Z.  For A = 12:
     Total spread: < 1 MeV on 11260 MeV (< 0.01%)
 
 All Z compositions for the same A have essentially the same
-T⁶ energy.  This means the T⁶ model predicts:
+Ma energy.  This means the Ma model predicts:
 
 - **Which mass numbers A are accessible** (from the proton-
   sheet energy ladder)
 - **But NOT which isotope is stable** (which Z for a given A)
 
-The preferred Z for each A is determined by R³ effects:
+The preferred Z for each A is determined by S effects:
 Coulomb repulsion between protons, the neutron-proton mass
 difference, and other spatial interactions.
 
 This is a clean separation of responsibilities:
-    T⁶  →  nuclear mass (from A)
-    R³  →  nuclear stability (which Z)
+    Ma  →  nuclear mass (from A)
+    S   →  nuclear stability (which Z)
 
 
-### F24. Atoms are NOT T⁶ modes
+### F24. Atoms are NOT Ma modes
 
-The smallest T⁶ energy step near the proton mass is
+The smallest Ma energy step near the proton mass is
 ~22 keV (from changing n₂ by ±1).  The hydrogen binding
 energy is 13.6 eV — 1600× smaller.
 
-    T⁶ energy resolution:  ~22 keV
+    Ma energy resolution:  ~22 keV
     Atomic binding:         ~13.6 eV
     Ratio:                  ~1600
 
-Atomic binding is invisible to T⁶ modes.  This confirms
+Atomic binding is invisible to Ma modes.  This confirms
 the two-tier structure:
 
-- **Nuclei are T⁶ modes.**  Nuclear binding (~MeV) is at
-  the T⁶ energy scale.  A nucleus is a single standing wave
-  in the compact space.
+- **Nuclei are Ma modes.**  Nuclear binding (~MeV) is at
+  the Ma energy scale.  A nucleus is a single standing wave
+  in the material space.
 
-- **Atoms are nuclei + electrons in R³.**  Atomic binding
+- **Atoms are nuclei + electrons in S.**  Atomic binding
   (~eV) is at the Coulomb energy scale.  The electron
-  orbits in R³, coupled to the nucleus by the electromagnetic
+  orbits in S, coupled to the nucleus by the electromagnetic
   field derived in Track 1.
 
-The electron's identity (mass, charge, spin) comes from T⁶.
-Its position and energy levels come from R³.
+The electron's identity (mass, charge, spin) comes from Ma.
+Its position and energy levels come from S.
 
 
 ### F25. Summary of Track 4
@@ -699,13 +699,13 @@ Its position and energy levels come from R³.
    nuclear scale.  r_e must be pinned by electron-scale
    observables.
 
-2. **T⁶ determines mass, R³ determines stability.**  For a
-   given A, the T⁶ mode energy is Z-independent.  Which
-   isotope is stable depends on Coulomb and other R³ effects.
+2. **Ma determines mass, S determines stability.**  For a
+   given A, the Ma mode energy is Z-independent.  Which
+   isotope is stable depends on Coulomb and other S effects.
 
 3. **Two-tier structure confirmed:**
-   - T⁶: particles and nuclei (MeV scale)
-   - R³: atomic binding and nuclear stability (eV–keV scale)
+   - Ma: particles and nuclei (MeV scale)
+   - S: atomic binding and nuclear stability (eV–keV scale)
 
 4. **Free parameter status after R29:**
    - r_p = 8.906 — pinned (R27, neutron + muon)
@@ -721,20 +721,20 @@ Its position and energy levels come from R³.
 
 ### F26. What R29 established
 
-R29 extended the T⁶ model from single particles to atoms
+R29 extended the Ma model from single particles to atoms
 and nuclei.  Four tracks, 25 findings.
 
 **Solved / established:**
 
 1. **Coulomb potential from geometry.**  The KK zero-mode
-   gauge field on T⁶ × R³ produces V(r) = −αℏc/r with
+   gauge field on Ma × S produces V(r) = −αℏc/r with
    α = 1/137 from the R19 shear mechanism.  No free
    parameters. (F1)
 
 2. **Hydrogen binding energy.**  E₁ = −13.6 eV, a₀ = 0.53 Å.
-   The complete chain from T⁶ geometry to atomic binding. (F2)
+   The complete chain from Ma geometry to atomic binding. (F2)
 
-3. **Nuclei are T⁶ modes.**  Every stable nucleus from
+3. **Nuclei are Ma modes.**  Every stable nucleus from
    deuterium to iron-56 follows the scaling law n₅ = A,
    n₆ = 2A (the proton mode wound A times).  All 12 nuclei
    tested match to < 1%.  No nuclear force assumed. (F16)
@@ -746,20 +746,20 @@ and nuclei.  Four tracks, 25 findings.
 5. **Nuclear spins from geometry.**  9 of 11 nuclei have
    spins correctly predicted by tube-winding parity. (F17)
 
-6. **Free neutron ≠ nuclear neutron.**  Different T⁶ modes.
+6. **Free neutron ≠ nuclear neutron.**  Different Ma modes.
    Explains why neutrons don't decay in nuclei: there is no
    neutron in a nucleus, only the nuclear mode. (F20)
 
-7. **Two-tier physics.**  T⁶ determines particles and nuclei
-   (MeV scale).  R³ determines atomic binding and nuclear
-   stability (eV–keV scale).  Atoms are not T⁶ modes. (F24)
+7. **Two-tier physics.**  Ma determines particles and nuclei
+   (MeV scale).  S determines atomic binding and nuclear
+   stability (eV–keV scale).  Atoms are not Ma modes. (F24)
 
 8. **Z-degeneracy.**  For a given A, all isotopes have the
-   same T⁶ energy.  Which Z is stable comes from R³. (F23)
+   same Ma energy.  Which Z is stable comes from S. (F23)
 
 9. **KK boson picture fails for nuclear binding.**  The
    naive KK gauge coupling produces unphysical Yukawa
-   corrections (10⁴× too large).  Direct T⁶ mode search
+   corrections (10⁴× too large).  Direct Ma mode search
    succeeds where the boson approach fails. (F11, F16, F21)
 
 **Not solved / unconstrained:**
@@ -774,17 +774,17 @@ and nuclei.  Four tracks, 25 findings.
 
 3. **σ_eν, σ_νp** — Set to zero throughout.  Untested.
 
-4. **~8 MeV/A residual gap** for heavy nuclei.  The T⁶
+4. **~8 MeV/A residual gap** for heavy nuclei.  The Ma
    mode captures > 99% of nuclear mass but not the fine
-   binding energy.  The residual may come from R³ effects.
+   binding energy.  The residual may come from S effects.
 
 5. **KK massive-mode coupling.**  The naive assumption
    (uniform coupling for all KK modes) fails.  The actual
-   coupling on the sheared T² is unknown.
+   coupling on the sheared electron sheet is unknown.
 
-6. **What is a photon in T⁶?**  The zero-mode gauge field
+6. **What is a photon in Ma?**  The zero-mode gauge field
    gives the classical EM field.  Its quantization and
-   the T⁶-R³ energy transfer mechanism are unresolved.
+   the Ma-S energy transfer mechanism are unresolved.
 
 7. **Electron energy levels.**  Coulomb produces the
    standard hydrogen spectrum.  Fine structure, Lamb shift,
@@ -794,7 +794,7 @@ and nuclei.  Four tracks, 25 findings.
 
 ### F27. The model works with unconstrained variables
 
-The T⁶ model's predictions are robust:
+The Ma model's predictions are robust:
 
 - **Nuclear masses (< 1%)** depend only on r_p and σ_ep
   (both pinned).  They are insensitive to r_e, r_ν,

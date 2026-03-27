@@ -1,4 +1,4 @@
-# R19 Findings — Shear-induced charge on T²
+# R19 Findings — Shear-induced charge on a material sheet
 
 Study: [`README.md`](README.md)
 
@@ -68,7 +68,7 @@ from orthogonal.
 
 This is a **geometrically natural** result.  The shear
 displacement equals the tube size, which is the only intrinsic
-length scale available in the compact space.
+length scale available in the material sheet.
 
 
 ### F4. The ~9° lattice angle is stable across aspect ratios
@@ -169,7 +169,7 @@ geodesic for r = 1.
 
 ### F8. Shear is energetically cheap — it LOWERS the total energy
 
-When we shear the T², two things happen:
+When we shear the material sheet, two things happen:
 
 1. **The geodesic path gets longer.**  On the sheared lattice, the
    (1,2) winding follows a longer straight line in the universal
@@ -198,7 +198,7 @@ geodesic.  This means there is NO energetic barrier preventing
 charge from appearing via shear.
 
 
-### F9. The flat T² does not select a specific shear value
+### F9. The flat material sheet does not select a specific shear value
 
 While shear is energetically favorable, E_total(s) keeps
 decreasing as s increases — it never reaches a minimum and
@@ -210,14 +210,14 @@ that would pin the shear at a specific value.
   so it cannot resist the photon energy drop, which is linear.
 - E_total continues to decrease all the way to s → 1.
 
-**Plain language:** The flat T² says "shear is fine, go ahead,"
+**Plain language:** The flat material sheet says "shear is fine, go ahead,"
 but it doesn't say "stop here."  Shear is a free parameter —
 a modulus — just like the aspect ratio r, which has also been
-free in every study so far.  The flat T² imposes no constraint
+free in every study so far.  The flat material sheet imposes no constraint
 on either one.
 
 **This does NOT mean the mechanism is ruled out.**  It means
-the specific shear value must come from outside the flat T²:
+the specific shear value must come from outside the flat material sheet:
 - The T³ geometry (needed for quark confinement, R14) has three
   shear parameters constrained by topology.
 - Those topological constraints could fix the shear that
@@ -276,7 +276,7 @@ The shear mechanism is **viable and energetically favorable**:
 - The mechanism does not contradict any known physics
 
 What it does NOT do is select the specific shear value on its
-own.  The flat T² treats shear as a free parameter.  This is
+own.  The flat material sheet treats shear as a free parameter.  This is
 the same situation as the aspect ratio r — it has been free
 throughout all studies.  Both may be determined by the same
 external physics (T³ topology).
@@ -296,7 +296,7 @@ external physics (T³ topology).
 | F6 | Formula has one equation in two unknowns (r, s) — one more constraint needed |
 | F7 | Photon energy = hc/L_geodesic ≠ eigenmode energy (5× for r=1); confirms R12 F6 |
 | F8 | Shear is energetically cheap: geodesic saving (6.6%) ≫ Coulomb cost (0.8%); shear is FAVORED |
-| F9 | No specific shear selected on flat T² — shear is a free modulus, like r; external constraint needed |
+| F9 | No specific shear selected on flat material sheet — shear is a free modulus, like r; external constraint needed |
 | F10 | Local minima at r ≥ 3 (fixed geometry) pass through α at r ≈ 3.2 — suggestive but wrong mass |
 | F11 | EM self-energy = O(α m_e c²), consistent with QED mass correction |
 
@@ -315,7 +315,7 @@ together.
 
 ### F12. Self-consistent α formula
 
-On the sheared T², the (1,2) geodesic has path length:
+On the sheared material sheet, the (1,2) geodesic has path length:
 
     L(s) = 2π √(a²(1+2s)² + 4R²)
 
@@ -394,9 +394,9 @@ and ~1% "electrostatic field energy."
 This updates F11 with self-consistent numbers.
 
 
-### F15. The electron on T² is a one-parameter family
+### F15. The electron on the electron sheet is a one-parameter family
 
-Combining all results, the T² electron is completely characterized
+Combining all results, the electron-sheet electron is completely characterized
 once the aspect ratio r is chosen:
 
 | Property       | Value / formula                                               | Status       |
@@ -410,13 +410,13 @@ once the aspect ratio r is chosen:
 | Tube radius    | a(r) = r × R(r)                                               | derived      |
 | E_Coulomb      | O(α) × m_e c²                                                 | consistent   |
 
-Everything except r is determined.  The flat T² provides no
+Everything except r is determined.  The flat material sheet provides no
 constraint on r — it is a free modulus, just like the shear s
 was free before we imposed Q = e.
 
 **What determines r?**
 
-This is the single remaining question for the T² model.
+This is the single remaining question for the material-sheet model.
 Candidates for fixing r:
 
 1. **T³ topology (R14):** Three shear parameters on T³,
@@ -438,17 +438,17 @@ All three candidates point to the same next step: T³.
 
 ### F16. Phase 1 (what) is essentially complete
 
-The T² electron model has been systematically developed across
+The material-sheet electron model has been systematically developed across
 studies R2–R19.  The current state:
 
 **Settled:**
 - The electron is a photon of energy m_e c² on a (1,2) geodesic
-  of a flat T² (R2, R12)
+  of a flat material sheet (R2, R12)
 - The photon sees flat space internally; curved 3D embedding
   produces external fields (R12 F14)
 - Mass comes from the Compton constraint L = λ_C (R2)
 - Spin ½ and g ≈ 2 are topological (R2, R8)
-- Charge comes from shear of the T² lattice (R19 F1–F13)
+- Charge comes from shear of the material-sheet lattice (R19 F1–F13)
 - Shear is energetically favorable, not resisted (R19 F8)
 - The EM self-energy is O(α), matching QED (R19 F11, F14)
 
@@ -486,8 +486,8 @@ Two sub-hypotheses tested, in order of increasing freedom:
 The WvM charge mechanism requires the E-field to rotate ONCE
 around the tube cross-section (n = 1).  For n ≠ 1, the angular
 integral ∫cos(Θ)cos(nΘ + q_eff Φ)dΘ vanishes — no monopole
-moment.  This was previously shown for unsheared T² (S3); it
-holds on sheared T² as well.
+moment.  This was previously shown for an unsheared material sheet (S3); it
+holds on a sheared material sheet as well.
 
 Consequence: ALL charged particles must have n = 1 tube
 winding.  Different charges can only come from different
@@ -746,7 +746,7 @@ Possible next directions:
 ## Track 6: 3D charge on sheared T³
 
 Track 6 asked: what happens to the charge formula when the photon
-winds in all three compact dimensions of T³, not just two?
+winds in all three material dimensions of T³, not just two?
 
 This was motivated by the failure of Tracks 4–5 (single-photon
 quarks from 2D charge formulas per plane).  Track 6 derives the
@@ -809,7 +809,7 @@ irrelevant to the charge problem.
 
 ### F30. The n₁ = 1 selection rule extends to T³
 
-On T², only modes with tube winding n = 1 produce charge (F17).
+On a material sheet, only modes with tube winding n = 1 produce charge (F17).
 The same integral — ∫cos(n₁θ)cos(θ)dθ — appears in the 3D
 derivation and vanishes for n₁ ≠ 1.  All charged particles on
 T³ must have n₁ = 1.
@@ -836,7 +836,7 @@ follows directly from the 3D charge integral.  It explains:
 - Why the electron is confined to a 2D plane on T³ (F26/Q63)
 - Why no charged fermion lighter than the electron is observed
 - Why the electron's charge physics is purely 2D despite living
-  on a 3D compact space
+  on a 3D material space
 
 ### F32. Turning on s₁₃ creates a problem
 
@@ -868,7 +868,7 @@ quarks (Tracks 4, 5, and 6 of R19).
 
 **What is now solid (the electron):**
 
-R19 Tracks 1–3 derive the electron's charge from shear on T².
+R19 Tracks 1–3 derive the electron's charge from shear on the electron sheet.
 The charge formula α = r²sin²(2πs)/(4π(2−s)²√(r²(1+2s)²+4))
 gives a self-consistent geometry for every aspect ratio r > 0.54,
 producing the correct mass, spin, g-factor, and charge.  Track 6
@@ -930,20 +930,20 @@ E₀ = ℏc/R and μ = √(1/r²+(2−s)²)):
 
 The charge integral is unchanged, so α = r²(R/λ̄_C) sin²(2πs)/(4π(2−s)²):
 
-    α_KK = r² √(1/r²+(2−s)²) sin²(2πs) / (4π(2−s)²)
+    α_Ma = r² √(1/r²+(2−s)²) sin²(2πs) / (4π(2−s)²)
 
 Compare R19 Track 3 (WvM):
 
     α_WvM = r² sin²(2πs) / (4π(2−s)² √(r²(1+2s)²+4))
 
-The ratio α_KK/α_WvM = √((1/r²+(2−s)²)(r²(1+2s)²+4)), which
+The ratio α_Ma/α_WvM = √((1/r²+(2−s)²)(r²(1+2s)²+4)), which
 ranges from ~5 (r=1) to ~15 (r=6.6).  The charge PHYSICS is
 identical; only the Compton constraint differs.
 
 
 ### F36. KK shear values are smaller than WvM
 
-For each r, α_KK = 1/137 requires less shear than α_WvM:
+For each r, α_Ma = 1/137 requires less shear than α_WvM:
 
 | r    | s_WvM    | s_KK     | s_KK/s_WvM | δ/a (KK) |
 |------|----------|----------|------------|----------|
@@ -990,7 +990,7 @@ IS the eigenmode, on the correctly-sized torus.
 Only KK gives the r-independent ratio 33.6 matching experiment.
 WvM gives r-dependent ratios of order 1–2.  This is decisive:
 the KK eigenmode formula is the correct energy quantization
-on a flat T².
+on a flat material sheet.
 
 
 ### F40. Critical aspect ratio shifts downward
@@ -1027,7 +1027,7 @@ Only numerical values of s, R, a shift.  In particular:
   change but remain the wrong order of magnitude)
 
 **Summary:** KK is the correct convention.  R19's α formula
-updates to α_KK; all downstream work (R26 Tracks 2b–4) should
+updates to α_Ma; all downstream work (R26 Tracks 2b–4) should
 use KK scales.
 
 
@@ -1045,14 +1045,14 @@ use KK scales.
 | F6 | Formula has one equation in two unknowns (r, s) — one more constraint needed |
 | F7 | Photon energy = hc/L_geodesic ≠ eigenmode energy (5× for r=1); confirms R12 F6 |
 | F8 | Shear is energetically cheap: geodesic saving (6.6%) ≫ Coulomb cost (0.8%); shear is FAVORED |
-| F9 | No specific shear selected on flat T² — shear is a free modulus, like r; external constraint needed |
+| F9 | No specific shear selected on flat material sheet — shear is a free modulus, like r; external constraint needed |
 | F10 | Local minima at r ≥ 3 (fixed geometry) pass through α at r ≈ 3.2 — suggestive but wrong mass |
 | F11 | EM self-energy = O(α m_e c²), consistent with QED mass correction |
 | F12 | Self-consistent α formula: r²+4 → r²(1+2s)²+4; small (~5%) upward shift in s |
 | F13 | Complete self-consistent geometry: every r > r_crit has unique (s, R, a) giving Q=e, L=λ_C |
 | F14 | Coulomb self-energy = 1–2 × α m_e c² for all r (self-consistent values) |
 | F15 | The electron is a one-parameter family in r; everything else determined |
-| F16 | Phase 1 (what the T² electron is) essentially complete; Phase 2 (why) → T³ |
+| F16 | Phase 1 (what the material-sheet electron is) essentially complete; Phase 2 (why) → T³ |
 | F17 | n=1 tube winding required for charge; different particles differ only in ring winding m |
 | F18 | Same-plane fractional charges ruled out: integer m cannot produce 1/3 and 2/3 ratios |
 | F19 | Mass constraint forces quark winding m ≈ −1/s ≈ −6 (to cancel shared circumference) |
@@ -1066,7 +1066,7 @@ use KK scales.
 | F27 | Shear cancellation can make specific modes heavy (quark-scale), but doesn't solve charge |
 | F28 | (Superseded by F29–F34) |
 | F29 | 3D charge integral has exact closed form; factorizes; s₂₃ irrelevant for charge |
-| F30 | n₁ = 1 selection rule extends from T² to T³ |
+| F30 | n₁ = 1 selection rule extends from a material sheet to T³ |
 | F31 | **s₁₃ = 0 kills charge for all n₃≠0**: model predicts no charged particle lighter than electron |
 | F32 | s₁₃ ≠ 0 gives lighter modes charge → contradicts observation → s₁₃ must be zero |
 | F33 | Single-photon quarks from shear definitively ruled out (Tracks 4, 5, 6 all closed) |

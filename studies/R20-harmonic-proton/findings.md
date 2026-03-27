@@ -5,7 +5,7 @@ See [`README.md`](README.md) for motivation and study plan.
 
 ---
 
-## Track 1: Harmonic spectrum and charge on sheared T²
+## Track 1: Harmonic spectrum and charge on sheared electron sheet
 
 **Script:** [`scripts/track1_harmonic_spectrum.py`](scripts/track1_harmonic_spectrum.py)
 
@@ -15,7 +15,7 @@ Electron geometry: r = 1.0, s₁₂ = 0.16513, q_eff = 1.835.
 ### F1. Harmonics are uncharged (exact)
 
 The (n, 2n) mode — the nth multiple of the electron's wavevector
-on sheared T² — has charge exactly zero for n ≥ 2.  This is
+on the sheared electron sheet — has charge exactly zero for n ≥ 2.  This is
 a direct consequence of the n₁ selection rule (R19 F30): the
 charge integral's θ₁ projection selects |n₁| = 1, and the
 (n, 2n) mode has n₁ = n.
@@ -270,10 +270,10 @@ tiny but nonzero.
 **Script:** [`scripts/track4_neutrino.py`](scripts/track4_neutrino.py)
 
 
-### F14. Neutrino cannot be a mode on the electron's T²
+### F14. Neutrino cannot be a mode on the electron sheet
 
 The neutrino requires spin 1/2, charge 0, and mass < 0.8 eV
-(≈ 1.6 × 10⁻⁶ m_e).  On the electron's T², uncharged spin-1/2
+(≈ 1.6 × 10⁻⁶ m_e).  On the electron sheet, uncharged spin-1/2
 modes have the form (n, 2n) with |n| ≥ 2.  The lightest is
 (2, 4) at E = 2 m_e = 1.022 MeV — six orders of magnitude
 heavier than the neutrino.
@@ -283,9 +283,9 @@ n₂ = 2n₁ combined with the charge constraint |n₁| ≥ 2 sets
 a hard floor at 2 m_e.
 
 
-### F15. A neutrino-scale T² is experimentally allowed
+### F15. A neutrino-scale neutrino sheet is experimentally allowed
 
-If the neutrino is a (1,2) fundamental on a separate, larger T²:
+If the neutrino is a (1,2) fundamental on a separate, larger neutrino sheet:
 
 | Scenario | m_ν (eV) | L_ν (μm) | Status |
 |----------|----------|----------|--------|
@@ -293,19 +293,19 @@ If the neutrino is a (1,2) fundamental on a separate, larger T²:
 | Cosmological per flavor | 0.03 | 41 | in tension (exceeds gravity bound) |
 | Atmospheric Δm² scale | 0.05 | 25 | marginal |
 
-A neutrino T² at ~1.5 μm is well within current experimental
-limits for extra compact dimensions.  However, the cosmological
+A neutrino sheet at ~1.5 μm is well within current experimental
+limits for extra material dimensions.  However, the cosmological
 mass bound (~0.03 eV per flavor) would require ~41 μm, which
 exceeds the sub-mm gravity constraint (~30 μm).  This tension
 could indicate: (a) the neutrino is not a KK mode, (b) the
-neutrino T² does not couple gravitationally in the same way,
+neutrino sheet does not couple gravitationally in the same way,
 or (c) the cosmological bound is model-dependent and the true
 mass is closer to the KATRIN limit.
 
 
 ### F16. Mode splittings reach neutrino mass scale
 
-Near-degeneracies between modes on the electron's T² produce
+Near-degeneracies between modes on the electron sheet produce
 energy splittings at the sub-eV scale:
 
 | Mode range | Closest pair | ΔE (eV) |
@@ -317,7 +317,7 @@ At higher mode numbers, splittings drop below the KATRIN
 bound (0.8 eV).  The closest pair at E < 100 m_e has
 ΔE = 0.29 eV = 0.36 × m_ν(KATRIN).
 
-This means the electron's T², with its irrational shear,
+This means the electron sheet, with its irrational shear,
 naturally produces energy differences at the neutrino mass
 scale.  However, a beat between two modes is not obviously
 a particle — it would require nonlinear mode coupling to
@@ -355,14 +355,14 @@ cancellation needed).
 
 Three options for the neutrino's nature:
 
-**(a) Mode on a separate, larger T².**  The neutrino is a
+**(a) Mode on a separate, larger neutrino sheet.**  The neutrino is a
 (1,2) fundamental on its own torus with L_ν ~ 1.5 μm.
 Experimentally allowed at the KATRIN bound.  Predicts the
 neutrino is structurally identical to the electron but on a
 much larger geometry.
 
 **(b) Geometry fluctuation.**  The neutrino is not a field
-mode but a fluctuation of the compact geometry itself — a
+mode but a fluctuation of the material geometry itself — a
 ripple in the torus shape rather than a wave on it.  This
 would naturally explain the tiny mass (suppressed by
 gravitational coupling) and the absence of charge.
@@ -370,7 +370,7 @@ gravitational coupling) and the absence of charge.
 **(c) Created in decay, not pre-existing.**  The neutrino
 is produced when harmonic energy escapes a composite,
 rather than being a pre-existing constituent.  The decay
-process converts electromagnetic energy (harmonics on T²)
+process converts electromagnetic energy (harmonics on the electron sheet)
 into a different sector.  This is closest to the Standard
 Model picture where neutrinos are created in weak decays.
 
@@ -388,14 +388,14 @@ weak interaction in the torus framework.
 ### F19. No uncharged triplet matches the neutron excess
 
 The neutron's excess energy (1.531 m_e) cannot be composed of
-three uncharged modes from the electron's T².  Only 10 uncharged
+three uncharged modes from the electron sheet.  Only 10 uncharged
 modes exist with E < 1.58 m_e, and the three lightest (three
 copies of (0,±1) at 0.48 m_e each) sum to only 1.44 m_e —
 0.09 m_e short.  No combination of three uncharged modes hits
 the target within ±0.05 m_e.
 
 This rules out the literal "three-mode neutrino packet" picture
-where three uncharged eigenmodes from the electron's T² carry
+where three uncharged eigenmodes from the electron sheet carry
 away the neutron's excess energy.
 
 
@@ -409,16 +409,16 @@ emission) reduces the invariant mass below the individual mode
 masses by the required factor.
 
 This definitively rules out F18c ("created in decay as escaped
-harmonics") if "harmonics" means KK modes on the electron's T².
+harmonics") if "harmonics" means KK modes on the electron sheet.
 The neutrino must either:
-- Live on a separate, larger T² (F15/F18a)
+- Live on a separate, larger neutrino sheet (F15/F18a)
 - Be a geometry fluctuation, not a field mode (F18b)
-- Involve physics beyond the current T² framework
+- Involve physics beyond the current material-sheet framework
 
 
 ### F21. Complex geodesics cannot produce lighter modes
 
-On flat T², every excitation decomposes into plane-wave modes
+On a flat material sheet, every excitation decomposes into plane-wave modes
 (n₁, n₂).  The energy is E = ℏc|k(n₁,n₂)|, where |k| grows
 monotonically with the mode numbers.  A "complex knot" with
 high winding numbers (e.g., (100, 37)) has very large |k| and
@@ -435,7 +435,7 @@ The mass floor (245 keV) is a hard consequence of the torus
 size being set by the electron mass.
 
 The only way to get lighter modes is a larger torus (different
-T²) or a qualitatively different excitation type (geometry
+material sheet) or a qualitatively different excitation type (geometry
 fluctuation rather than field mode).
 
 
@@ -458,11 +458,11 @@ fluctuation rather than field mode).
 | F11 | m_n − m_p = 1 m_e (extra fundamental) + 1.53 m_e (extra harmonics); ΔT/T = 0.04% |
 | F12 | Spin 1/2 compatible for both proton and neutron with any harmonic count |
 | F13 | Open: antineutrino identity, binding mechanism, mass-difference selection rule |
-| F14 | Neutrino cannot be a mode on the electron's T² — lightest uncharged spin-1/2 is (2,4) at 2 m_e, gap ~10⁶ |
-| F15 | Neutrino T² at ~1.5 μm (KATRIN bound) is experimentally allowed; cosmo bound in tension |
-| F16 | Mode splittings on electron's T² reach sub-eV (0.29 eV at E < 100 m_e); neutrino scale appears naturally |
+| F14 | Neutrino cannot be a mode on the electron sheet — lightest uncharged spin-1/2 is (2,4) at 2 m_e, gap ~10⁶ |
+| F15 | Neutrino sheet at ~1.5 μm (KATRIN bound) is experimentally allowed; cosmo bound in tension |
+| F16 | Mode splittings on electron sheet reach sub-eV (0.29 eV at E < 100 m_e); neutrino scale appears naturally |
 | F17 | Muon/tau = same (1,2) fundamental + harmonics; decay = harmonic evaporation; stability from charge conservation |
-| F18 | Neutrino identity open: separate T², geometry fluctuation, or created in decay |
+| F18 | Neutrino identity open: separate neutrino sheet, geometry fluctuation, or created in decay |
 | F19 | No uncharged triplet sums to neutron excess (1.531 m_e); three-mode packet ruled out |
 | F20 | Ejected harmonics ruled out: mode masses ≥ 245 keV vs neutrino < 0.8 eV; F18c eliminated |
 | F21 | Complex geodesics don't help: higher (n₁,n₂) always means higher E; floor is (0,1) at 0.48 m_e |
@@ -475,6 +475,6 @@ fluctuation rather than field mode).
 - [`scripts/track3_neutron_model.py`](scripts/track3_neutron_model.py)
   — Neutron charge cancellation, decay energetics, spin, stability
 - [`scripts/track4_neutrino.py`](scripts/track4_neutrino.py)
-  — Neutrino mass constraints, T² size, mode splittings, muon/tau as hot electrons
+  — Neutrino mass constraints, material-sheet size, mode splittings, muon/tau as hot electrons
 - [`scripts/track5_neutrino_triplets.py`](scripts/track5_neutrino_triplets.py)
   — Three-mode triplet search, doublet analysis, Δm² ratio test

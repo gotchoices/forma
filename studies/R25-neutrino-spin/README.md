@@ -5,7 +5,7 @@
 
 ## Motivation
 
-R24 Track 1 showed that modes (0,0,n₃) on the third compact dimension
+R24 Track 1 showed that modes (0,0,n₃) on the third material dimension
 are kinematically viable neutrinos: automatically uncharged, with a
 parameter-free mass-squared ratio matching experiment to 0.03σ, and an
 over-determined system that would predict r.
@@ -34,7 +34,7 @@ A mode (0, p, q) with p/q half-integer (e.g., (0,1,2)) would give
 spin-½ by the same WvM mechanism that gives the electron spin-½.
 It is uncharged (n₁ = 0).
 
-**Problem:** Mass ~ m_e/r ≈ 100 keV, set by the small T² dimension.
+**Problem:** Mass ~ m_e/r ≈ 100 keV, set by the small Ma_e dimension.
 Far too heavy for a neutrino (need meV).
 
 Track 1 will test whether any geometric arrangement makes this work:
@@ -60,10 +60,10 @@ the "vector-to-spinor conversion" might extend to the third dimension.)
 
 ### Mechanism C: Curvature-induced spin-orbit coupling
 
-The embedded T² has position-dependent curvature that couples the
+The embedded Ma_e has position-dependent curvature that couples the
 photon's polarization (helicity) to its orbital motion (R21).  This
 is what gives the electron spin-½.  If the third dimension is coupled
-to the T² through the embedding geometry, modes along θ₃ might
+to Ma_e through the embedding geometry, modes along θ₃ might
 acquire an effective spin through polarization–geometry coupling.
 
 **Problem:** The coupling scales as ε₃ = L₁/L₃ ~ 10⁻⁸.  Any spin
@@ -76,7 +76,7 @@ Track 1 will compute the actual magnitude of this coupling to confirm.
 All three mechanisms tested.  All fail.
 
 - **A:** Wavevector of (0,0,n₃) is purely along θ₃ regardless of
-  shear (reciprocal lattice is perpendicular to T²).  No spin.
+  shear (reciprocal lattice is perpendicular to Ma_e).  No spin.
 - **B:** Spin structures affect spinors, not vectors.  Inapplicable.
 - **C:** Curvature mixing amplitude ~10⁻⁹.  Negligible.
 

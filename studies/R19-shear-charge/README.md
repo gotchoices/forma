@@ -1,4 +1,4 @@
-# R19. Shear-induced charge on T² → T³
+# R19. Shear-induced charge on a material sheet → T³
 
 **Questions:** [Q58](../../qa/INBOX.md) (shear breaks φ-symmetry),
 [Q18](../../qa/Q18-deriving-alpha.md) (deriving α),
@@ -19,7 +19,7 @@ centrifugal radiation pressure (R17), geometric torus deformation
 integral of the (1,2) mode cos(θ+2φ) vanishes when integrated
 over a full φ period.  This is the **φ-symmetry protection**.
 
-But on a **sheared T²** (lattice vectors non-orthogonal), the
+But on a **sheared material sheet** (lattice vectors non-orthogonal), the
 (1,2) mode acquires a non-integer effective winding number
 q_eff = 2 − s in the embedding coordinates, where s = δ/(2πa)
 is the fractional shear.  The charge integral becomes:
@@ -30,8 +30,8 @@ which is **nonzero** for non-integer q_eff.  This is the first
 mechanism found that produces charge from a **fully delocalized**
 wave, without requiring wavepacket localization (σ < ∞).
 
-The shear δ is a geometric parameter of the compact-space metric.
-R12 F5 showed it is **unconstrained** by the flat-T² wave
+The shear δ is a geometric parameter of the material-space metric.
+R12 F5 showed it is **unconstrained** by the flat-material-sheet wave
 equation — exactly the condition where an external constraint
 (T³ geometry, embedding curvature, topological consistency)
 could determine it.
@@ -58,7 +58,7 @@ that model:
 - "What determines σ?" was the central unsolved question
 
 The shear mechanism changes this fundamentally.  The photon is
-now treated as a proper **wave** on the flat T².  Charge comes
+now treated as a proper **wave** on the flat material sheet.  Charge comes
 from the **geometry of the space** (non-orthogonal lattice
 vectors), not from the wave's state (localization):
 
@@ -70,7 +70,7 @@ vectors), not from the wave's state (localization):
 
 ### Generalized q_eff: different windings → different charges
 
-On the sheared T², a general (n,m) mode has:
+On the sheared material sheet, a general (n,m) mode has:
 
     q_eff(n,m) = m − n·s
 
@@ -95,7 +95,7 @@ and down quark may be **different winding configurations** on a
 emerging from different (n,m) values, not from different shear
 parameters.
 
-### From T² to T³: two roles, now separated
+### From a material sheet to T³: two roles, now separated
 
 R14 originally proposed T³ for two purposes:
 
@@ -130,7 +130,7 @@ Input the known α = 1/137.036... and solve for the shear δ
 that produces Q = e.
 
 Steps:
-1. Set up the charge integral on the sheared T² with the
+1. Set up the charge integral on the sheared material sheet with the
    (1,2) mode field pattern, using the correct E₀ normalization
    (photon energy m_e c² distributed over the torus volume).
 2. Compute Q(δ) analytically and/or numerically.
@@ -150,10 +150,10 @@ interpretation.
 
 ### Track 2. Energy analysis: is non-zero shear stable?  *(complete — viable but free)*
 
-On the flat T², mode energy is shear-independent (R12 F5), so
+On the flat material sheet, mode energy is shear-independent (R12 F5), so
 the Coulomb self-energy of the charge makes δ = 0 the energy
 minimum.  But:
-- The T² is embedded in 3D with specific curvature
+- The material sheet is embedded in 3D with specific curvature
 - Gravitational (or metric) effects from the embedding may
   contribute a term that favors nonzero shear
 - T³ constraints (R14) may impose shear externally
@@ -162,7 +162,7 @@ Investigate whether any energy contribution can stabilize
 a nonzero shear:
 1. Compute E_Coulomb(δ) = Q(δ)²/(4πε₀ R_eff)
 2. Check if embedding curvature contributes a δ-dependent
-   energy term (from the extrinsic curvature of T² in 3D)
+   energy term (from the extrinsic curvature of the material sheet in 3D)
 3. If T³ topology constrains the shear moduli space, identify
    the constraint and its effect on δ
 
@@ -233,7 +233,7 @@ was always a 2D result extended to T³ by assumption.
 Track 6 asks the more fundamental question: **what does the
 charge formula look like for a 3D geodesic on a sheared T³?**
 
-On T³, a photon can wind in all three compact dimensions:
+On T³, a photon can wind in all three material dimensions:
 winding numbers (n₁, n₂, n₃) with all nᵢ ≠ 0.  Such a path
 is a genuine 3D curve, not confined to any 2D subplane.
 
@@ -287,7 +287,7 @@ R14's topological mechanism.  See Q64, Q66.
 
 R26 Track 1a showed that the KK eigenmode energy formula
 E = E₀ √((n₃/r)² + (n₄−n₃s)²) is the correct wave-equation
-result on a flat T² — it reproduces the experimental neutrino
+result on a flat material sheet — it reproduces the experimental neutrino
 mass-squared ratio of 33.6, while the WvM geodesic formula
 E = hc/L gives ratio ≈ 1.7.
 
@@ -296,7 +296,7 @@ to set physical scales, which feeds into the α formula.  Under
 the KK constraint (E₀ μ(1,2) = m_e c²), the torus is smaller
 and the α formula becomes:
 
-    α_KK = r² √(1/r²+(2−s)²) sin²(2πs) / (4π(2−s)²)
+    α_Ma = r² √(1/r²+(2−s)²) sin²(2πs) / (4π(2−s)²)
 
 vs the original:
 
@@ -307,9 +307,9 @@ integral, same shear mechanism.  Only the Compton constraint
 (and thus the physical scales R, a) differs.
 
 Steps:
-1. Derive α_KK from the charge integral with KK-consistent
+1. Derive α_Ma from the charge integral with KK-consistent
    scales.  Verify the formula analytically.
-2. Solve s(r) for α_KK = 1/137 across aspect ratios.
+2. Solve s(r) for α_Ma = 1/137 across aspect ratios.
 3. Compare with Track 3's WvM s(r) curve.
 4. Recheck all electron properties (mass, spin, charge, g,
    Coulomb self-energy) under KK scales.
@@ -325,9 +325,9 @@ pathologies.
 
 ## Key facts
 
-### One shear parameter on T², three on T³
+### One shear parameter on a material sheet, three on T³
 
-A flat T² metric has three independent components: g₁₁, g₂₂
+A flat material-sheet metric has three independent components: g₁₁, g₂₂
 (the two circumferences) and g₁₂ (the shear).  Only ONE
 independent shear parameter exists.  "Shearing θ along φ" and
 "shearing φ along θ" are different descriptions of the same
@@ -338,11 +338,11 @@ parameters (g₁₂, g₁₃, g₂₃) — one per pair of axes.
 
 ### T³ does not embed in ℝ³
 
-T² embeds in ℝ³ (the familiar donut).  T³ cannot — it
+A material sheet embeds in ℝ³ (the familiar donut).  T³ cannot — it
 requires at minimum ℝ⁴.  But in the Kaluza-Klein framework,
-the compact space is ADDITIONAL to 3D, not sitting inside it.
-At every point in physical 3D space, a copy of T² (or T³)
-is attached as a fiber.  Going from T² to T³ means going
+the material space is ADDITIONAL to 3D, not sitting inside it.
+At every point in physical 3D space, a copy of a material sheet (or T³)
+is attached as a fiber.  Going from a material sheet to T³ means going
 from a (3+2)D spacetime to a (3+3)D spacetime.  No embedding
 obstruction arises.
 
@@ -368,8 +368,8 @@ The most constrained sub-case (Track 4) sets all shears equal
 ### Different charges from different windings (not different shears)
 
 Historically (S3, R14), different particle charges were
-attributed to different winding numbers (knots) on the compact
-space.  S3 found that on an *unsheared* T², only (1,2) gives
+attributed to different winding numbers (knots) on the material
+space.  S3 found that on an *unsheared* material sheet, only (1,2) gives
 nonzero charge — other knots are blocked by φ-symmetry.
 
 With shear, this restriction is lifted.  ALL modes on a sheared
@@ -387,7 +387,7 @@ for each charge.
 (dimensionless, 0 ≤ s < 1), where δ is the linear shear
 displacement.  This matches R12's `shear_frac = δ/L_θ`.
 
-**Sheared T² lattice:**
+**Sheared material-sheet lattice:**
 
     e₁ = (L₁, 0)    where L₁ = 2πa
     e₂ = (δ, L₂)    where L₂ = 2πR
@@ -395,7 +395,7 @@ displacement.  This matches R12's `shear_frac = δ/L_θ`.
 
 Identification: (x,y) ~ (x + L₁, y) ~ (x + δ, y + L₂)
 
-**Mode on sheared T²:**
+**Mode on sheared material sheet:**
 
 The (1,2) mode (n=1 winding in θ, m=2 in φ) has wavevector:
 
@@ -406,7 +406,7 @@ In embedding coordinates (Θ = x/a, Φ = y/R):
     ψ(Θ,Φ) = exp[i(Θ + q_eff Φ)]
     q_eff = 2 − s = 2 − δ/(2πa)
 
-**Generalized (n,m) mode on sheared T²:**
+**Generalized (n,m) mode on sheared material sheet:**
 
 For a general (n,m) mode, periodicity under both lattice
 identifications gives:
@@ -446,7 +446,7 @@ different planes of T³.
 **Created:** 2026-03-01
 
 **Electron (Tracks 1–3): essentially complete.**
-The electron's charge comes from shear on T² (F1–F16).
+The electron's charge comes from shear on the electron sheet (F1–F16).
 Self-consistent geometry gives a one-parameter family in r.
 The free parameter r requires external constraint (→ R14).
 

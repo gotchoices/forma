@@ -1,4 +1,4 @@
-# R37 Findings — Membrane mechanics at the T²/R³ interface
+# R37 Findings — Membrane mechanics at the material-sheet/S interface
 
 Study: [`README.md`](README.md)
 
@@ -11,17 +11,17 @@ constraint (Track 5).
 
 ---
 
-## Track 1 — Radiation stress tensor on the T² surface
+## Track 1 — Radiation stress tensor on the material-sheet surface
 
 ### F1. The (1,2) mode stress is anisotropic and uniform
 
-The momentum fractions on T² are:
+The momentum fractions on a material sheet are:
 
     f₁ (tube) = r²/(r² + q₂²)
     f₂ (ring) = q₂²/(r² + q₂²),   q₂ = 2−s
 
 For a running wave, the energy density ρ = m_e c²/A is constant
-over T² — no spatial pattern, only directional anisotropy.
+over the sheet — no spatial pattern, only directional anisotropy.
 The isotropic crossover is at r ≈ 2.  For r < 2 the stress is
 ring-dominated; for r > 2, tube-dominated.
 
@@ -61,7 +61,7 @@ of the alpha curve.
 
     δg₀₀(R₂) ≈ 10⁻³⁵
 
-Validates treating T² as flat in all calculations.
+Validates treating the material sheet as flat in all calculations.
 
 ### F6. Gravity is tautological and blind to r
 
@@ -113,11 +113,11 @@ The electron is a fat torus (r < 1), not a thin one (r > 1).
 
 The membrane constraint used isotropic surface tension
 (E_boundary = σ_m × A).  The actual boundary energy depends
-on how the T² shape maps to the vacuum energy of the compact
+on how the material-sheet shape maps to the vacuum energy of the material
 manifold — the **moduli potential**.  This is the same deep
 unknown that blocks computing R35's Goldilocks K (F11).
 
-The Casimir energy of the T² is calculable but negligible
+The Casimir energy of the material sheet is calculable but negligible
 (~10⁻⁹ of the mode energy).  Any stronger anisotropic
 restoring force must come from the full moduli potential,
 which is not derivable within the current framework.
@@ -131,18 +131,18 @@ but the precise value of r awaits the moduli potential.
 
 ### F10. Electron sheet too stiff for direct molecular coupling
 
-Total shear spring constant of the electron T²:
+Total shear spring constant of Ma_e:
 
     k_e = μ_m × A ~ 10⁷ eV  (r-dependent)
 
 R35's Goldilocks window requires ~17 eV stiffness.  The electron
 sheet is ~10⁶× too stiff.  Biological coupling (R35 Hypothesis I)
-cannot go through direct modulation of the electron T².
+cannot go through direct modulation of Ma_e.
 
 ### F11. Neutrino sheet stiffness not computable from R37
 
 R37's membrane constants characterise the electron sheet only.
-The neutrino sheet stiffness depends on the Ma moduli potential
+The neutrino sheet stiffness depends on the Ma (the six-dimensional material space) moduli potential
 — the same open question as R35 F28.
 
 ### F12. The Goldilocks window is thermodynamic, not geometric

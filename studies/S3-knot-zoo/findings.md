@@ -84,11 +84,11 @@ This understanding was corrected twice. The full analysis is in
 `reference/WvM-summary.md` §4.
 
 **v1 (initial):** Treated the photon path as living on one torus
-surface (2D compact space, T² = S¹ × S¹).
+surface (2D material space, a material sheet = S¹ × S¹).
 
 **v2 (over-correction):** Noted that WvM Fig. 2 shows "a family of
 nested toroidal surfaces" and energy flow filling a 3D volume.
-Suggested the compact space might need 3 dimensions (φ, θ, r).
+Suggested the material space might need 3 dimensions (φ, θ, r).
 
 **v3 (current):** After full re-read of the paper:
 
@@ -104,9 +104,9 @@ Suggested the compact space might need 3 dimensions (φ, θ, r).
   Individual streamlines stay at constant tube radius r. Nothing
   propagates radially. r is a **transverse mode coordinate** (like
   the radial intensity profile of a waveguide mode).
-- The compact space (if one exists) is **2D** (φ, θ). The radial
+- The material space (if one exists) is **2D** (φ, θ). The radial
   field profile is the transverse mode structure, not a third
-  compact dimension.
+  material dimension.
 - Our scripts (`02_knot_charge.py`) modeled a single path on one
   surface — this matches WvM's primary visualization (Fig. 1b)
   and captures the correct topology and winding.
@@ -123,7 +123,7 @@ algebraic relationships (F4).
 2. **What determines the mass?** If different particles have different
    torus sizes, what selects the torus size (and hence the mass)?
    The WvM model does not answer this — mass is an input.
-   **However:** if the torus is reframed as a fixed compact extra
+   **However:** if the torus is reframed as a fixed material extra
    dimension (see F2 below), mass could come from photon energy
    rather than torus size. This is a hypothesis, not a demonstrated
    result — see F2 for discussion and caveats.
@@ -132,7 +132,7 @@ algebraic relationships (F4).
    (3,2) and (5,2) are spin-½ fermions. On a fixed torus they are
    lighter (longer path), but higher harmonics (n > 1) of the same
    knot could be heavier. Alternatively, different particle types
-   might live in different compact dimensions.
+   might live in different material dimensions.
 
 4. **Charge for different knots.** Does the charge derivation
    (q = e via a/R = 1/√(πα)) change for different (p,q)? Or is
@@ -141,7 +141,7 @@ algebraic relationships (F4).
 
 5. **Photon as trivial case.** The free photon is not a knot — it
    is the unconfined building block. A photon traversing ordinary
-   (non-compact) space is massless and has spin 1 without any
+   (non-material) space is massless and has spin 1 without any
    toroidal topology. Modeling it as a knot of itself is circular.
 
 ---
@@ -221,7 +221,7 @@ give different results. This has not been tested.
      phases could each contribute 1/3 of the charge, yielding
      fractional apparent charge. This naturally connects to three
      color charges.
-   - **Different compact dimensions:** Quarks might live in a
+   - **Different material dimensions:** Quarks might live in a
      different extra dimension with different topology, where the
      charge integral produces 1/3 or 2/3 instead of 1.
    - **Non-toroidal topology:** Quarks might not be torus knots at
@@ -267,12 +267,12 @@ for electron : up : down.
 **Note:** This is algebra — inverting the WvM charge formula for
 each target charge. It shows what geometry *would be required* if
 the WvM mechanism applies to quarks. It does not demonstrate that
-quarks are (1,2) knots or that compact dimensions with these aspect
+quarks are (1,2) knots or that material dimensions with these aspect
 ratios exist.
 
-### Model A: shared compact dimension
+### Model A: shared material dimension
 
-If all particles live on one compact dimension (tube radius a fixed,
+If all particles live on one material dimension (tube radius a fixed,
 R varies with particle mass via R = ℏ/(2mc)):
 
     m_u/m_e = (a/R_u)/(a/R_e) = 3/2 → m_u = 0.77 MeV
@@ -288,9 +288,9 @@ However, the *ratio* within the quark sector:
 Agreement to 7.5%. The model predicts a clean 2:1 mass ratio for
 first-generation quarks.
 
-### Model B: two compact dimensions (leptons vs quarks)
+### Model B: two material dimensions (leptons vs quarks)
 
-Separate the electron and quarks into different compact dimensions.
+Separate the electron and quarks into different material dimensions.
 The quark dimension has its own tube radius a_q. Only the quark mass
 ratio is predicted:
 
@@ -310,7 +310,7 @@ charge-partners should always be 2:
 | 3rd        | m_b/m_t = 0.024     | 2.000     |
 
 This fails for generations 2 and 3. But the test is likely
-**asking the wrong question.** If the compact dimension picture
+**asking the wrong question.** If the material dimension picture
 (F2) is correct, mass comes from photon energy (independent of
 geometry), and charge comes from a/R (fixed per dimension). In
 that case:
@@ -330,12 +330,12 @@ The 1st-generation m_d/m_u ≈ 2 agreement is likely coincidental.
    the formula, not a physical demonstration.
 
 2. **Hypothesis: same topology, different geometry.** Electron, up
-   quark, and down quark *could* all be (1,2) knots on compact
+   quark, and down quark *could* all be (1,2) knots on material
    dimensions with different aspect ratios. This is consistent with
    the algebra but untested as physics.
 
-3. **Hypothesis: three compact dimensions.** The three distinct a/R
-   values (6.60, 9.91, 19.81) are consistent with three compact
+3. **Hypothesis: three material dimensions.** The three distinct a/R
+   values (6.60, 9.91, 19.81) are consistent with three material
    dimensions — one for each charge quantum. This is speculative.
 
 4. **Neutrino remains unresolved.** q = 0 requires a/R → ∞, which
@@ -364,10 +364,10 @@ a different interpretation:
 **Interpretation A (WvM original):** The photon orbits in our 3D space.
 Something confines it. No known force can do this.
 
-**Interpretation B (compact dimension):** The torus IS an extra
-dimension of spacetime — compact, fixed in size, orthogonal to (x,y,z).
+**Interpretation B (material dimension):** The torus IS an extra
+dimension of spacetime — material, fixed in size, orthogonal to (x,y,z).
 The photon follows a geodesic (straight line) in this space. No force
-is needed: a straight line on a compact space is already closed.
+is needed: a straight line on a material space is already closed.
 
 This resembles the Kaluza-Klein idea (1919–1926): charge emerges from
 momentum in a compactified dimension. Whether WvM's charge derivation
@@ -406,7 +406,7 @@ Testable prediction: lepton mass ratios should be integers
 needs refinement.
 
 **Per-particle dimensions:** Electron and quarks each have their own
-compact dimension (a small number: perhaps 1 for leptons, 1 for
+material dimension (a small number: perhaps 1 for leptons, 1 for
 quarks). This is cleaner if mass ratios don't fit integer harmonics,
 and it's still economical — 2 or 3 extra dimensions vs string theory's
 6–7.
@@ -417,20 +417,20 @@ This reframing is significant enough to warrant its own study. The
 S3-knot-zoo study can continue with topological classification (spin,
 charge, fermion/boson) without committing to either mass model. The
 mass spectrum question — harmonics on a fixed torus vs separate
-dimensions — should be explored in a dedicated "compact dimension"
+dimensions — should be explored in a dedicated "material dimension"
 study.
 
 ### Why this would matter (if correct)
 
-If the compact dimension picture works:
-- No confinement problem (geodesic on compact space)
+If the material dimension picture works:
+- No confinement problem (geodesic on material space)
 - Mass from photon energy (not a free parameter per particle)
 - Spin from topology (demonstrated for (1,2) in WvM)
 - Charge from field geometry (demonstrated algebraically in study 2)
 - Small number of extra dimensions (1–3, not 6–7)
 
 These are attractive properties, but none have been derived from a
-compact-dimension formulation. The hypothesis needs to be tested
+material-dimension formulation. The hypothesis needs to be tested
 against Kaluza-Klein theory explicitly before drawing conclusions.
 
 ---
@@ -460,10 +460,10 @@ The knot zoo study asked: **what torus knots model known particles?**
 
 ### What was hypothesized (untested)
 
-- The compact dimension reframing (F2): the torus as an extra
+- The material dimension reframing (F2): the torus as an extra
   dimension of spacetime, mass from photon energy, generations as
   harmonics. Attractive but unverified.
-- Three compact dimensions for three charge quanta (F4). Consistent
+- Three material dimensions for three charge quanta (F4). Consistent
   with the algebra but speculative.
 - Neutrino as a (3,2) knot (F3). Quantum numbers match but this
   is suggestive, not conclusive.
@@ -472,14 +472,14 @@ The knot zoo study asked: **what torus knots model known particles?**
 
 The study raises questions that go beyond torus knot classification:
 
-- What is the nature of the compact dimension(s)? Is the space
+- What is the nature of the material dimension(s)? Is the space
   toroidal in the geometric sense, or only topologically so?
 - How does the photon's E/B field manifest in xyz from flat
-  motion in compact space?
-- Is the compact space 2D (surface path) or 3D (volume)?
-- Can orthogonality between xyz and compact dimensions be
+  motion in material space?
+- Is the material space 2D (surface path) or 3D (volume)?
+- Can orthogonality between xyz and material dimensions be
   formalized with a transform?
-- What determines the number and sizes of compact dimensions?
+- What determines the number and sizes of material dimensions?
 
 These are foundational questions about the framework itself, not
 about knot classification. They warrant a dedicated study.

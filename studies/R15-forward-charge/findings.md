@@ -217,7 +217,7 @@ state has a definite wavefunction ψ(φ) with a definite
 width σ.  The value of σ is a property of the state, not a
 measurement uncertainty.
 
-The key question is: which state?  On flat T² with no
+The key question is: which state?  On flat Ma_e (the electron sheet) with no
 interactions, the eigenstates are pure modes (fully
 delocalized, σ = ∞, charge = 0).  But the photon interacts
 with its own field — it creates a Coulomb field that acts
@@ -245,8 +245,8 @@ Candidates:
    determined by the balance between dispersion and
    nonlinearity.
 
-2. **Mode structure of the compact space.**  R12 found that
-   the lowest resonant frequency of the flat T² is ~137×
+2. **Mode structure of the material space.**  R12 found that
+   the lowest resonant frequency of the flat Ma_e is ~137×
    higher than the Compton frequency.  The wavepacket's
    width σ depends on how many modes participate in the
    superposition.  If only 2–3 adjacent modes contribute,
@@ -281,7 +281,7 @@ Candidates:
 6. **Dipole radiation pattern as natural deformation.**
    A circularly polarized photon (WvM's model) radiates
    with a non-isotropic pattern: power ∝ (1 + cos²θ)/2.
-   If the field leaking from the compact space into 3D
+   If the field leaking from the material space into 3D
    follows this pattern, and if the field energy shapes the
    tube cross-section (self-consistency), the tube is NOT
    circular — it is deformed by the radiation pattern
@@ -336,7 +336,7 @@ computed (see Q54).
 
 **Update (shear analysis):** A new candidate has emerged:
 
-8. **Shear of the compact T².**  On a sheared T² (lattice
+8. **Shear of Ma_e.**  On a sheared Ma_e (lattice
    vectors non-orthogonal, shear displacement δ), the (1,2)
    mode has q_eff = 2 − δ/a (non-integer for δ ≠ 0).  The
    charge integral sin(πq_eff)/q_eff is NONZERO — bypassing
@@ -437,7 +437,7 @@ width).
   path; two-pass cancellation preserves symmetry)
 
 **Surviving candidates:**
-- #2: Mode structure of the compact space
+- #2: Mode structure of the material space
 - #3: Quantum uncertainty (possibly equivalent to #2)
 - #4: Topology of the (1,2) knot
 

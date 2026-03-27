@@ -38,7 +38,7 @@ The minimal solution (1,2,10) is at 0.7σ — acceptable but not precise.
 Consecutive modes (n, n+1, n+2) give max ratio 8/3 = 2.67.
 The experimental ratio 33.6 REQUIRES a gap between ν₂ and ν₃.
 
-### F4. Third dimension size — independent of T² parameters
+### F4. Third dimension size — independent of Ma_e parameters
 L₃ is fixed entirely by Δm²₂₁ and the mode assignment:
 
     L₃ = hc × √((n_b² − n_a²) / Δm²₂₁)
@@ -48,7 +48,7 @@ L₃ is fixed entirely by Δm²₂₁ and the mode assignment:
 | (1, 2, 10) | 247     | 39            |
 | (7, 10, 42)| 1082    | 172           |
 
-L₃ does NOT depend on r, s₁₂, or any T² parameter.
+L₃ does NOT depend on r, s₁₂, or any Ma_e parameter.
 
 ### F5. Predicted neutrino masses
 
@@ -81,7 +81,7 @@ reproduced by any (r, s₁₃, s₂₃), the model fails.
 **Q1 (critical). Spin of (0,0,n₃) modes.**
 Neutrinos are spin-½.  In WvM, spin-½ arises from (1,2) winding
 topology.  Mode (0,0,n₃) has no winding → spin mechanism unclear.
-If T³ = T² × S¹ (direct product), these modes are spin-0.  A non-trivial
+If T³ = Ma_e × S¹ (direct product), these modes are spin-0.  A non-trivial
 T³ fibration might provide spinor structure.  Must be resolved before
 the model is viable.
 
@@ -99,11 +99,11 @@ If successful, r is predicted and the model becomes fully constrained.
 **Q4. Gravity constraint.**
 L₃ ~ 250–1080 μm exceeds the ~50 μm range of current gravity tests.
 If gravity propagates in the third dimension, these sizes are excluded.
-The model requires gravity to be confined to 3+1D non-compact dimensions.
+The model requires gravity to be confined to 3+1D non-material dimensions.
 
 ---
 
-## Track 2: Wave dynamics on embedded T²
+## Track 2: Wave dynamics on embedded Ma_e
 
 ### F8. Linear impulse = eigenmode decomposition
 On the flat torus, Fourier modes are eigenmodes and conserve energy

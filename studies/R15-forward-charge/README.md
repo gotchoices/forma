@@ -33,7 +33,7 @@ r_e (~3 × 10⁻¹⁵ m).  The smaller torus needed q ≈ 137
 major windings (with p = 68 minor windings) to fit path
 length λ_C.  R8 produced several valuable results:
 
-- Exact spin ½ from sheared T² with (68,137) winding
+- Exact spin ½ from sheared Ma_e (the electron sheet) with (68,137) winding
 - R/r_e = 0.989 — stable across resolutions
 - g = 2 from photon spin-1 / electron spin-½ topology
 - δ ≈ αR — shear of electromagnetic origin (approximate)
@@ -54,15 +54,15 @@ The assumption that drove R7 → R8 was: **all the photon's
 E-field energy should appear as far-field Coulomb energy.**
 This led to the target U = m_e c²/2.
 
-But in a model where a photon is confined to a compact space,
+But in a model where a photon is confined to a material space,
 most of its energy naturally stays in near-field modes
-localized near the compact boundary.  Only a fraction couples
+localized near the material boundary.  Only a fraction couples
 to the 3D far field.  R7's Possibility A identified this
 explicitly (F4):
 
 | Component | Energy | Fraction |
 |-----------|--------|----------|
-| Near field (compact surface) | ~(1−2α) × m_e c²/2 | ~98.5% |
+| Near field (material surface) | ~(1−2α) × m_e c²/2 | ~98.5% |
 | Far field (Coulomb) | ~α × m_e c² | ~1.5% |
 
 The fraction that leaks IS α — the electromagnetic coupling
@@ -143,12 +143,12 @@ Step 4 is the crux.  The near-field is localized on the torus
 surface (E always radially outward from the (1,2) knot path).
 The far-field is a 1/r² Coulomb pattern.  The transition
 between these two regimes is the boundary-value problem:
-how does an EM wave confined to a compact T² couple to 3D?
+how does an EM wave confined to Ma_e couple to 3D?
 
-In waveguide language: the compact space is the guide, and the
+In waveguide language: the material space is the guide, and the
 Coulomb field is evanescent leakage into 3D.  The leakage
 fraction is α.  Computing it requires solving Maxwell's
-equations with the compact wave as a source term in 3D.
+equations with the material-space wave as a source term in 3D.
 
 R7's existing scripts compute the 3D field of a line source
 along the (1,2) geodesic — this is exactly the near-field
@@ -297,7 +297,7 @@ The equilibrium width is σ_eq, and α = exp(−4σ_eq²).
 
 **U_kinetic(σ):** The photon has total energy m_e c².  A
 Gaussian wavepacket of width σ (in the ring angle φ) excites
-Fourier modes up to n_max ~ 1/σ.  On the flat T² with the
+Fourier modes up to n_max ~ 1/σ.  On the flat Ma_e with the
 (1,2) geodesic, the mode spacing is Δω = c/(2L) where
 L = 2π√(a²/4 + R²) is the half-path length.  The kinetic
 energy from localization is:

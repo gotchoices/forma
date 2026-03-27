@@ -1,4 +1,4 @@
-# R28. T⁶ spectrum refinement
+# R28. Ma spectrum refinement
 
 **Questions:** Q16 (mass spectrum), Q32 (energy-geometry)
 **Type:** compute  **Depends on:** R27
@@ -19,8 +19,8 @@ hypothesis.  But several loose ends remain:
    the tau (5.6%), and the strange baryons (Λ, Σ⁺).
 
 2. **Mode overcounting.**  R27 asked "for each known particle,
-   what's the nearest T⁶ mode?"  The inverse question — "what
-   T⁶ modes exist that don't correspond to any known particle?"
+   what's the nearest Ma (the six-dimensional material space) mode?"  The inverse question — "what
+   Ma modes exist that don't correspond to any known particle?"
    — is equally important.  A model that predicts 200 particles
    where nature has 20 is not predictive.
 
@@ -31,15 +31,15 @@ hypothesis.  But several loose ends remain:
 4. **W, Z, and Higgs.**  R27 searched only up to ~1.7 GeV.
    The W (80.4 GeV), Z (91.2 GeV), and Higgs (125.3 GeV)
    are fundamental particles at much higher energy.  Can the
-   T⁶ reach them?
+   Ma reach them?
 
 
 ## Core questions
 
 1. Do σ_eν and σ_νp improve the spectrum?
-2. How many T⁶ modes exist below 2 GeV, and how does this
+2. How many Ma modes exist below 2 GeV, and how does this
    compare to the number of known particles?
-3. Can the W/Z mass ratio (1.134) emerge from T⁶ geometry?
+3. Can the W/Z mass ratio (1.134) emerge from Ma geometry?
 4. Is the Ω⁻ genuinely forbidden, or does it appear with
    nonzero neutrino-sector shears?
 
@@ -65,7 +65,7 @@ positive-definite metric).  At each point:
 
 ### Track 2 — Mode census below 2 GeV
 
-Enumerate **all** T⁶ modes with E < 2000 MeV at the pinned
+Enumerate **all** Ma modes with E < 2000 MeV at the pinned
 parameter point (and at the best point from Track 1).
 
 For each mode, classify:
@@ -74,7 +74,7 @@ For each mode, classify:
   does not exhibit
 
 **What to look for:**
-- If ghost modes are few, the T⁶ spectrum is economical.
+- If ghost modes are few, the Ma spectrum is economical.
 - If ghost modes are numerous, the model over-predicts and
   the single-mode picture may be too permissive.
 - Ghost modes might correspond to particles not yet included
@@ -107,11 +107,11 @@ then solve for the ring winding n₆ (or n₂) that brings
 E(n) closest to the target.
 
 **What to look for:**
-- m_Z / m_W ≈ 1.134 — does the T⁶ produce this ratio?
+- m_Z / m_W ≈ 1.134 — does Ma produce this ratio?
 - Higgs (spin 0, charge 0) — is there a mode near 125.3 GeV?
 
 **Deliverable:** Mode assignments for W, Z, H, or a finding
-that the T⁶ does not naturally produce these masses.
+that Ma does not naturally produce these masses.
 
 
 ## Infrastructure
@@ -128,6 +128,6 @@ Scripts go in `R28-particle-spectrum/scripts/`.
 | Study | Relationship |
 |-------|-------------|
 | R27   | Predecessor: particle catalog, lifetime correlation, parameter pinning |
-| R26   | T⁶ framework, metric infrastructure |
+| R26   | Ma framework, metric infrastructure |
 | R19   | Shear-charge mechanism |
 | R15   | The α problem — may connect to W/Z masses |

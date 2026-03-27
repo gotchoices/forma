@@ -6,7 +6,7 @@
 
 ## Background
 
-On flat T², each harmonic (n, 2n) has energy exactly n × m_e.  The
+On flat Ma_e (the electron sheet), each harmonic (n, 2n) has energy exactly n × m_e.  The
 proton mass M = m_e + Σ n f(n) is determined entirely by the thermal
 temperature T' ≈ 34 m_e, independent of the torus geometry (r, s).
 

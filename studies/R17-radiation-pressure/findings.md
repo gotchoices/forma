@@ -212,7 +212,7 @@ per unit φ varies:
     S(φ) = ds_3D/dφ = √(a²/4 + (R + a cos φ/2)²)
 
 The 3D width σ_3D(φ) = σ_φ × S(φ), where σ_φ is the angular
-width in the flat T² metric.
+width in the flat sheet metric.
 
 | Position | θ | σ_3D/σ_3D(outer), r=0.25 | r=0.50 |
 |----------|---|--------------------------|--------|
@@ -230,7 +230,7 @@ magnification per circuit is **exactly 1**:
 This is exact (not approximate) because S(φ) depends on
 cos(φ/2), which has period 4π — the path period.  The
 angular width σ_φ is a constant of the motion in the
-flat-T² metric.
+flat-sheet metric.
 
 The physical picture: the packet "breathes" (narrows and
 widens in 3D) but returns to its original extent after each
@@ -267,7 +267,7 @@ does not physically occur.
 
 The centrifugal force is the 3D INTERPRETATION of the photon's
 confined motion.  It is not an external perturbation that can
-modify the path.  The photon follows the flat-T² geodesic
+modify the path.  The photon follows the flat-sheet geodesic
 (θ = φ/2, a straight line on the unrolled rectangle), and the
 3D curvature is what this straight-line motion LOOKS LIKE
 from outside.
@@ -277,7 +277,7 @@ confirms this: the centrifugal force and the confinement
 force are the SAME force viewed from two frames.  The
 centrifugal force equals the confinement force by
 construction — they are Newton's third-law pair for the
-compact-space embedding.
+material-sheet embedding.
 
 Consequently:
 - The force cannot cause clumping (F ⊥ v, F7)
@@ -286,7 +286,7 @@ Consequently:
 - The force cannot determine σ at the classical level
 
 To determine σ, we need a mechanism that creates a
-σ-dependent potential in the flat-T² dynamics.  The
+σ-dependent potential in the flat-sheet dynamics.  The
 centrifugal force, being σ-independent in the flat metric,
 cannot provide this.  Possible mechanisms include:
 - Self-interaction of the electromagnetic field (Coulomb +

@@ -1,4 +1,4 @@
-# R30. Minimal compact geometry — is T² necessary?
+# R30. Minimal compact geometry — is a material sheet necessary?
 
 **Questions:** Q34 (what selects α), Q16 (mass spectrum)
 **Type:** theoretical + compute  **Depends on:** R19, R26, R27
@@ -7,20 +7,20 @@
 
 ## Motivation
 
-Each particle in the T⁶ model lives on a T² — a
+Each particle in the Ma (the six-dimensional material space) model lives on a material sheet — a
 two-dimensional torus.  But the physics seems to inhabit a
 **curve**, not a surface.  The electron is the (1,2)
 geodesic: a one-dimensional closed path that happens to
-wrap around a two-dimensional torus.  The full T² provides
+wrap around a two-dimensional torus.  The full material sheet provides
 the *context* for how the curve wraps, but the particle
 itself occupies a 1D path.
 
-This raises a fundamental question: **does the T² structure
+This raises a fundamental question: **does the material-sheet structure
 carry more dimensions than the physics requires?**
 
 Several clues suggest it might:
 
-1. **One-parameter families.**  Each T² has an aspect ratio
+1. **One-parameter families.**  Each material sheet has an aspect ratio
    r that is unconstrained (r_e completely free, r_ν ≥ 3.2,
    r_p pinned only because we have a second particle — the
    neutron — to anchor it).  A model with exactly the right
@@ -34,7 +34,7 @@ Several clues suggest it might:
    2D torus geometry — but the wave function lives *along*
    the curve, not across the surface.
 
-3. **Ghost modes.**  The T⁶ predicts ~900 modes below
+3. **Ghost modes.**  Ma predicts ~900 modes below
    2 GeV but nature shows ~40 particles.  The 20×
    over-prediction might reflect extra geometric structure
    that produces modes nature doesn't need.
@@ -48,7 +48,7 @@ Several clues suggest it might:
 
 ## Core questions
 
-1. **Can a single compact dimension (T¹) reproduce any
+1. **Can a single material dimension (T¹) reproduce any
    of the particle properties (mass, charge, spin)?**
    What specifically requires a second dimension?
 
@@ -58,36 +58,36 @@ Several clues suggest it might:
    curvature, twist, or non-uniform metric?
 
 3. **What is the minimum compact geometry that produces
-   quantized charge?**  T¹ (circle), T² (torus),
+   quantized charge?**  T¹ (circle), material sheet (torus),
    Klein bottle, Möbius strip, or something else?
 
-4. **What happens when one T² dimension shrinks to zero?**
-   If the tube circumference L_tube → 0 (r → ∞), the T²
+4. **What happens when one material-sheet dimension shrinks to zero?**
+   If the tube circumference L_tube → 0 (r → ∞), the material sheet
    degenerates toward T¹ (just the ring).  Does charge
    survive this limit?  Does it emerge gradually or
    vanish discontinuously?
 
 5. **Can a non-orientable identification (Klein bottle)
    produce charge or spin effects that a torus cannot?**
-   We have never investigated non-orientable compact spaces.
+   We have never investigated non-orientable material spaces.
 
 6. **If the tube is itself further compactified** (a circle
    of circles — hierarchical compactification), does this
-   effectively reduce T² to T¹ at accessible energies,
+   effectively reduce a material sheet to T¹ at accessible energies,
    deferring the second dimension to a higher energy scale
    (possibly Planck)?
 
 7. **Can a 1D space with non-uniform metric reproduce
-   T²-like mode structure?**  A circle with g(x) = f(x)
+   material-sheet-like mode structure?**  A circle with g(x) = f(x)
    has a Mathieu-like spectrum with band gaps and avoided
-   crossings.  Could this mimic the T² energy ladder?
+   crossings.  Could this mimic the material-sheet energy ladder?
 
 
 ## Context from prior studies
 
-### What T² currently provides
+### What a material sheet currently provides
 
-Each T² sheet in the T⁶ model contributes:
+Each material sheet in the Ma model contributes:
 
 - **Two length scales** (L_tube, L_ring) → mass + aspect ratio
 - **Shear** (σ between directions) → charge (R19)
@@ -95,12 +95,12 @@ Each T² sheet in the T⁶ model contributes:
 - **Tube parity** (odd/even n_tube) → spin contribution
 
 The charge formula Q = −n₁ + n₅ fundamentally needs two
-independent winding numbers from different compact
+independent winding numbers from different material
 directions.  On T¹, there is only one winding number.
 
 ### What T¹ provides
 
-A single compact dimension (circle of circumference L):
+A single material dimension (circle of circumference L):
 
 - **One length scale** L → mass
 - **One winding number** n → mode energy E_n = |n| ℏc/L
@@ -118,7 +118,7 @@ An interval [0, L] with boundary conditions:
 
 - **Standing waves** sin(nπx/L) with E_n = nℏc/(2L)
 - **Boundaries break translational symmetry** — different
-  from T¹ (periodic) or T² (doubly periodic)
+  from T¹ (periodic) or a material sheet (doubly periodic)
 - Adding boundary conditions to a 1D space does NOT add
   a dimension — it constrains solutions within the
   existing 1D space
@@ -145,12 +145,12 @@ in the project is a metaphorical "Möbius-like" description
 of the spin mechanism in the S3-knot-zoo study (the E-field
 picks up a phase of π per traversal → spin ½ from two
 circuits).  This metaphor was never formalized as a study
-of compact geometry with reversed identification.
+of material geometry with reversed identification.
 
 A Klein bottle is formed by identifying opposite edges of
 a rectangle with one pair reversed:
 
-    T²:            (x, 0) ~ (x, L₂)  and  (0, y) ~ (L₁, y)
+    Material sheet: (x, 0) ~ (x, L₂)  and  (0, y) ~ (L₁, y)
     Klein bottle:  (x, 0) ~ (x, L₂)  and  (0, y) ~ (L₁, L₂ − y)
 
 The reversed identification breaks orientability and
@@ -176,8 +176,8 @@ minimal energy, but the mass spectrum degenerates.
 
 An intermediate scenario: the tube circumference is at
 a scale between Compton and Planck.  Low-energy physics
-sees T¹; T²-effects appear only at high energies.  But
-the electron IS a T²-effect (charge from winding) — so
+sees T¹; material-sheet effects appear only at high energies.  But
+the electron IS a material-sheet effect (charge from winding) — so
 this seems to require the tube at Compton scale.
 
 Could there be a *third* level of compactification below
@@ -204,7 +204,7 @@ needed beyond what Tracks 4 and 6 already demonstrate.
 A circle with position-dependent metric g(x) has a mode
 equation that produces non-trivially spaced energies
 (Mathieu-like).  Explore:
-- Can a specific g(x) reproduce the electron's T² mode
+- Can a specific g(x) reproduce the electron's material-sheet mode
   structure (mass ratios, spin)?
 - Does the non-uniformity create an effective "second
   direction" that mimics shear?
@@ -213,20 +213,20 @@ equation that produces non-trivially spaced energies
 
 ### Track 3 — Klein bottle and non-orientable identifications  **Complete**
 
-Replace the standard T² identification with the Klein
+Replace the standard material-sheet identification with the Klein
 bottle identification (one edge reversed).
 **Result:** Non-orientable spaces are structurally
 incompatible with the model.  The Klein bottle kills
 both charge (Gauss's law requires orientation; KK gauge
 field becomes Z₂ not U(1)) and spin-½ (all closed
-geodesics have even tube winding).  T² is the unique
+geodesics have even tube winding).  The material sheet is the unique
 compact, orientable, 2D surface with winding numbers.
 Also analyzed: r-degeneracy as a curve in (r,s) space,
 and elastic/dynamic geometry.  Findings F15–F20.
 
-### Track 4 — The r → ∞ limit: T² degenerating to T¹  **Complete**
+### Track 4 — The r → ∞ limit: material sheet degenerating to T¹  **Complete**
 
-Take the existing T² solver and examine the large-r limit.
+Take the existing material-sheet solver and examine the large-r limit.
 **Result:** No phase transition at any r.  Charge works for
 all r > 0.26.  The tube becomes energetically negligible
 (0.003% at r=100) but remains topologically essential.
@@ -238,23 +238,23 @@ Findings F9–F14.
 
 The combined findings from Tracks 4 and 6 answer this:
 - T¹: NO — only one winding number, no shear (Track 4 F11)
-- T²: YES — shear between two directions produces charge
+- Material sheet: YES — shear between two directions produces charge
 - T³ shared: FAILS — loses neutral spin-½ (Track 6 F2)
 - Klein bottle: investigated in Track 3
 
-**Conclusion:** T² is the minimum geometry for quantized
+**Conclusion:** A material sheet is the minimum geometry for quantized
 charge.  Each sheet needs a tube (for charge/spin via
 topology) and a ring (for the energy scale).  3 sheets
 × 2 dimensions = 6 is structurally minimum (Track 6 F7).
-Track 3 tests whether a non-orientable T² variant works.
+Track 3 tests whether a non-orientable material-sheet variant works.
 
 
 ### Track 6 — Shared-dimension T³: electron and proton on a common surface  **Complete**
 
-**Motivation:**  The electron T² (dims 1,2) and proton T²
-(dims 5,6) have no shared dimensions in T⁶ — they are
+**Motivation:**  Ma_e (dims 1,2) and Ma_p
+(dims 5,6) have no shared dimensions in Ma — they are
 coupled only through the cross-shear σ_ep.  What if they
-share a dimension, reducing T⁶ to T³ (plus the neutrino
+share a dimension, reducing Ma to T³ (plus the neutrino
 sheet, treated separately)?
 
 The user's key questions:
@@ -272,7 +272,7 @@ A T³ with circumferences (L_a, L_b, L_c) can accommodate:
     Proton   (0, 1, 1):  E_p = m_p      Q = +1
     Neutron  (1, n_b, 1): E_n = m_n     Q =  0
 
-with charge Q = −n_a + n_c (analogous to T⁶'s Q = −n₁ + n₅).
+with charge Q = −n_a + n_c (analogous to Ma's Q = −n₁ + n₅).
 
 Circumferences:
     L_a ≈ 419 fm  (electron tube scale)
@@ -284,10 +284,10 @@ mass gap using a high winding on the shared dimension.
 Preliminary result: m_n − m_p = 1.291 MeV (0.002 MeV off!).
 
 This is encouraging but raises questions:
-- The neutron's n_b ≈ 499 is a high winding.  In T⁶, the
+- The neutron's n_b ≈ 499 is a high winding.  In Ma, the
   neutron has small quantum numbers on all dimensions.
   Is n_b = 499 physical or a sign that T³ needs shear?
-- L_b is free — same r-degeneracy as T², just fewer copies.
+- L_b is free — same r-degeneracy as a material sheet, just fewer copies.
 - The neutrino scale is 10¹⁰× larger than L_a.  Sharing
   with the neutrino is almost certainly not viable.
 
@@ -296,17 +296,17 @@ This is encouraging but raises questions:
 2. Pin L_a and L_c by electron and proton masses.
 3. Sweep L_b and compute the full particle spectrum.
 4. Check spin assignment from winding parities.
-5. Compare ghost-mode count to T⁶ (fewer dimensions
+5. Compare ghost-mode count to Ma (fewer dimensions
    should mean fewer ghosts).
 6. Test whether T³ with shear can reduce the neutron's
-   n_b to a small value (as σ_ep does in T⁶).
+   n_b to a small value (as σ_ep does in Ma).
 7. Assess whether the muon, pion, kaon, and other
    particles find modes in the T³ spectrum.
 
 **Success criterion:**  T³ reproduces at least the core
 particles (e, p, n, μ, π, K) with comparable accuracy
-to T⁶ but with fewer free parameters and fewer ghosts.
-If it fails, that demonstrates T⁶'s extra dimensions
+to Ma but with fewer free parameters and fewer ghosts.
+If it fails, that demonstrates Ma's extra dimensions
 are structurally necessary.
 
 
@@ -321,7 +321,7 @@ Klein bottle will be standalone.
 | Study | Relationship |
 |-------|-------------|
 | R19   | Shear-charge mechanism — the thing we're testing |
-| R26   | T⁶ framework being questioned |
+| R26   | Ma framework being questioned |
 | R27   | Particle spectrum — baseline for comparison |
 | R28   | Ghost modes — possibly an over-counting signal |
 | R15   | α problem — may dissolve if geometry simplifies |

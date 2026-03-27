@@ -12,13 +12,13 @@ Every formula is verified numerically in
 ## F1. The setup
 
 Six coordinates: (t, x, y, z, φ, θ). The first four are ordinary
-spacetime. The last two are compact — periodic with
+spacetime. The last two are material — periodic with
 circumferences L_φ and L_θ:
 
     φ ~ φ + L_φ          (major circle)
     θ ~ θ + L_θ          (minor circle)
 
-The compact space is a flat torus T² = S¹ × S¹. A photon travels
+The material space is a flat torus Ma_e (the electron sheet) = S¹ × S¹. A photon travels
 on a geodesic (straight line) in this space.
 
 
@@ -61,7 +61,7 @@ aspect ratio r = L_θ / L_φ:
     L_φ(r) = λ_C / √(4 + r²)
     L_θ(r) = r × L_φ(r) = r λ_C / √(4 + r²)
 
-For any r > 0, these give a valid T² with path length λ_C.
+For any r > 0, these give a valid Ma_e with path length λ_C.
 
 The orbital radius (mean distance from the torus axis in the
 3D embedding) is:
@@ -98,7 +98,7 @@ with a toroidal field volume V = 2π²Ra² gives q = e when:
 where a is the tube radius (field extent around the minor
 circle) and R is the orbital radius (major circle).
 
-In the compact-dimension picture, the tube circumference IS the
+In the material-dimension picture, the tube circumference IS the
 minor circumference: L_θ = 2πa. The major circumference gives
 R = L_φ/(2π). Therefore:
 
@@ -228,7 +228,7 @@ the proper toroidal field volume with finite a) resolved this.
 
 ### Inputs
 
-1. **Topology:** two compact periodic dimensions (T²)
+1. **Topology:** two material periodic dimensions (Ma_e)
 2. **Geodesic type:** (1,2) torus knot
 3. **Photon energy:** E = m_e c² = 0.511 MeV
 4. **Fine-structure constant:** α ≈ 1/137
@@ -247,7 +247,7 @@ the proper toroidal field volume with finite a) resolved this.
 
 ### What the framework requires
 
-- Two compact dimensions (the minimum for spin ½ — one dimension
+- Two material dimensions (the minimum for spin ½ — one dimension
   only gives integer spin, per R1/theory.md)
 - Electromagnetic fields that propagate in these dimensions
 - Periodic boundary conditions (single-valued wavefunction)
@@ -255,7 +255,7 @@ the proper toroidal field volume with finite a) resolved this.
 ### What it does NOT require
 
 - Gravity (charge is electromagnetic, not KK gravitational)
-- A confinement mechanism (geodesics on compact space are
+- A confinement mechanism (geodesics on the material space are
   automatically closed)
 - Any free parameters (everything is determined)
 
@@ -277,7 +277,7 @@ why the framework works:
 
 3. **The spindle torus.** With a/R ≈ 6.60, the torus heavily
    self-intersects in a 3D embedding (a spindle torus). This
-   is fine for the flat T² (which needs no 3D embedding), but
+   is fine for the flat Ma_e (which needs no 3D embedding), but
    raises questions about the physical field distribution in xyz.
 
 4. **Other particles.** Do the muon, tau, quarks, and neutrino
@@ -292,7 +292,7 @@ why the framework works:
 
 ### The main result
 
-**A photon of energy m_e c² on a (1,2) geodesic in a T² produces
+**A photon of energy m_e c² on a (1,2) geodesic in Ma_e produces
 a particle with all measured electron properties: q = e, s = ½,
 m = m_e, g ≈ 2.0023. The geometry is fully determined — there
 are zero free continuous parameters.**
@@ -307,10 +307,10 @@ The electron is specified by:
 
 A complete specification for particles from geometry:
 
-    compact dimensions + geodesic topology + photon energy
+    material dimensions + geodesic topology + photon energy
     → mass, spin, charge, magnetic moment, geometry
 
-The compact dimensions provide the stage. The geodesic provides
+The material dimensions provide the stage. The geodesic provides
 the quantum numbers. The photon energy provides the mass. The
 charge condition fixes the shape of the stage. The mass fixes
 its scale. No forces, no confinement mechanism, no point

@@ -1,6 +1,6 @@
 # R14. Universal Geometry  *(closed, negative)*
 
-Can a single compact space host all known particles — electrons,
+Can a single material space host all known particles — electrons,
 quarks, protons, neutrons — with particle identity determined
 by topology (winding, linking) and energy (harmonics), not by
 geometry?
@@ -19,9 +19,9 @@ remains the central unsolved problem.
 - Uncharged modes (n₁ ≠ 1) can add mass without affecting charge (F8/F30)
 - The 3 × 612 × m_e mass relation holds to 0.008% (F3)
 
-**Track 0 result:** T² cannot support topological linking of
+**Track 0 result:** A material sheet cannot support topological linking of
 geodesics (2D surfaces lack the dimensionality).  **T³** (three
-compact dimensions) can, and naturally maps three linking
+material dimensions) can, and naturally maps three linking
 planes to three color charges.  The proton mass fits as
 3 × 612 × m_e to 0.008%.  See [`findings.md`](findings.md).
 
@@ -40,7 +40,7 @@ geodesic structure — none constrain r.
 Current approaches treat the electron in isolation.  But the
 Standard Model has many particles — and in the WvM framework,
 they're ALL photons on compact geometry.  If each particle type
-has its own compact space, the free parameters multiply (r_electron,
+has its own material space, the free parameters multiply (r_electron,
 r_up, r_down, ...).  If all particles share ONE T³, the
 constraint is massive: one (r, R, a) must simultaneously
 produce the electron, up quark, down quark, proton, and
@@ -61,15 +61,15 @@ spin, and magnetic moment are all emergent:
 
 If this is correct, the particle zoo is just the catalog of
 distinct topological configurations of photons on a single
-compact space.  The "Standard Model" becomes a theorem about
+material space.  The "Standard Model" becomes a theorem about
 the topology of T³.
 
 ## The hypothesis
 
 **All particles are photon configurations on a single flat T³.**
 
-(Originally proposed for T², revised to T³ after Track 0
-showed that topological linking requires 3 compact dimensions.)
+(Originally proposed for a material sheet, revised to T³ after Track 0
+showed that topological linking requires 3 material dimensions.)
 
 - **Electron:** One photon on a (1,2) geodesic in a 2D
   subspace of T³, fundamental mode (n = 1).  Third dimension
@@ -90,14 +90,14 @@ showed that topological linking requires 3 compact dimensions.)
 
 ### How fractional charges could arise on T³
 
-S3 showed that on T², only (1,2) gives nonzero charge (higher
+S3 showed that on a material sheet, only (1,2) gives nonzero charge (higher
 knots cancel by symmetry), and different charges seem to
 require different a/R.
 
 But on T³, there are three dimensions for winding.  Three
 photons winding in different dimensional planes have
 fundamentally different field configurations than three
-parallel photons on T².  Mechanisms for fractional charge:
+parallel photons on a material sheet.  Mechanisms for fractional charge:
 
 1. **Different winding planes:** A photon winding in the (1,2)
    plane has a different field projection into 3+1D than one
@@ -180,7 +180,7 @@ determined — and so is everything else.
 
 ### Track 0: Feasibility check ✓
 
-**Result:** T² cannot support linking (negative).  T³ can,
+**Result:** A material sheet cannot support linking (negative).  T³ can,
 with three linking planes mapping to three color charges
 (positive).  Proton mass = 3 × 612 × m_e to 0.008%
 (suggestive).  See [`findings.md`](findings.md).
@@ -257,7 +257,7 @@ Does the geometry determined by Tracks 1–3 satisfy:
   sheared T³.  Provides the charge formula, s₁₂ ≈ 0.165,
   s₁₃ = 0, the n₁ = 1 selection rule, and the conclusion
   that quark charges must come from linking.
-- **R13 (complete):** KK charge from flat T² — establishes
+- **R13 (complete):** KK charge from flat material sheet — establishes
   the winding-mode picture.
 - S3: fractional charge algebra (S3-knot-zoo F3, F4)
 
@@ -305,11 +305,11 @@ vs. gauge boson exchange.
 ## Relation to other questions
 
 - Q12: multi-photon and color charge
-- Q13: three compact dimensions (alternative to shared geometry)
+- Q13: three material dimensions (alternative to shared geometry)
 - Q16: what sets the photon energy / mass spectrum
 - Q26: multi-photon hadrons and knot confinement
 - Q27: foundational axioms
-- Q31: discrete T² / digital counter hypothesis
+- Q31: discrete material sheet / digital counter hypothesis
 - Q32: energy and geometry as only fundamentals
 - Q60: 3D geodesic charge on sheared T³ (answered by R19 F29)
 - Q64: does topological linking modify the charge formula?
@@ -331,6 +331,6 @@ vs. gauge boson exchange.
   Track 1 is a well-defined calculation, not open-ended.
 - If it works — even partially (e.g., fractional charges
   emerge from linking) — it would be a major result.
-- If it fails, it would push toward Model A (separate T²/T³ per
+- If it fails, it would push toward Model A (separate material sheet/T³ per
   particle type), which has more free parameters but might
   still be tractable.

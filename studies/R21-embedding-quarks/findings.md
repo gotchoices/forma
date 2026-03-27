@@ -47,7 +47,7 @@ it is a qualitative change in mode structure.
 
 ### F3. The ±n₁ degeneracy is lifted
 
-On flat T², modes (n₁, n₂) and (-n₁, n₂) have the same energy.
+On a flat material sheet, modes (n₁, n₂) and (-n₁, n₂) have the same energy.
 On the curved torus, this degeneracy breaks.  The eigenmodes
 become standing waves (cos n₁θ₁ and sin n₁θ₁ in the flat limit),
 with different eigenvalues:
@@ -80,7 +80,7 @@ geometry for the charge integral.
 | 0.9 | −14.8% | non-perturbative |
 
 Corrections are perturbative for ε < 0.3 (r > 3.3) and
-significant for ε > 0.5 (r < 2).  The flat-T² approximation
+significant for ε > 0.5 (r < 2).  The flat-material-sheet approximation
 is good for thin tori but breaks down for fat ones.
 
 
@@ -99,7 +99,7 @@ fractional charges:
    means each mode sees a different effective a/R ratio for the
    charge integral.
 
-3. **Charge redistribution:** On flat T², only |n₁| = 1 modes
+3. **Charge redistribution:** On a flat material sheet, only |n₁| = 1 modes
    carry charge (R19 F30).  On the curved torus, the n₁ = 0
    mode has non-uniform |f(θ₁)|² — the charge integral may
    become nonzero.  Track 2 will test this.
@@ -123,7 +123,7 @@ cannot break the φ-integral that kills charge (R15 F3).
 (R19 candidate 8).
 
 However, curvature **modifies** the charge that shear produces.
-On flat T², the R19 charge formula uses plane-wave eigenmodes.
+On a flat material sheet, the R19 charge formula uses plane-wave eigenmodes.
 On the curved torus, the eigenmodes are standing waves with
 non-uniform |f(θ₁)|² distributions (F2–F3).  These modified
 profiles enter the charge integral, changing it to:
@@ -134,7 +134,7 @@ Different modes (n₁ = 0, ±1) have different f(θ₁), so they get
 **different charges from the same shear** — one shear parameter,
 multiple charge values.  This is the new ingredient for quarks.
 
-**Path to deriving α:** On flat T², α(r, s) = 1/137 is one
+**Path to deriving α:** On a flat material sheet, α(r, s) = 1/137 is one
 equation in two unknowns — it fixes s at each r, but r is free.
 Adding curvature gives three unknowns (r, s, ε).  But if three
 modes carry charges Q₁ = e, Q₂ = 2e/3, Q₃ = e/3, that gives
@@ -171,7 +171,7 @@ the cos-like mode).  The sin-like mode is always uncharged.
 
 ### F7. The ground state acquires charge on the curved torus
 
-On flat T², the n₁ = 0 ground state has C = 0 (constant
+On a flat material sheet, the n₁ = 0 ground state has C = 0 (constant
 wavefunction has zero cos θ₁ projection).  On the curved
 torus, the ground state localizes at the outer equator
 (where cos θ₁ = 1), acquiring nonzero charge overlap:
@@ -268,7 +268,7 @@ with two distinct fractional charges.  Either:
 (a) The full shear-curvature coupling (not computed) changes
     the picture qualitatively — possible but speculative.
 (b) Quarks require a DIFFERENT mechanism than position on a
-    single embedded torus — e.g., modes on different T² planes
+    single embedded torus — e.g., modes on different material sheet planes
     within T³ (each plane having its own ε), or a non-WvM
     charge formula.
 (c) The S3 algebraic ratios (which DO give exact fractions)
@@ -287,7 +287,7 @@ with two distinct fractional charges.  Either:
 
 In R20, the muon is a "hot electron": the (1,2) fundamental
 plus uncharged harmonics totaling 205.8 m_e of extra mass.
-On flat T², harmonics are exactly uncharged (C = 0).  On the
+On a flat material sheet, harmonics are exactly uncharged (C = 0).  On the
 curved torus, even-parity modes acquire nonzero charge overlap.
 
 The n₁ = 0 ground state has charge-per-mass ratio independent

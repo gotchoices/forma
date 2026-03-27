@@ -1,6 +1,6 @@
 # R26 Findings
 
-## Track 1a: Neutrino T² mode spectrum
+## Track 1a: Ma_ν mode spectrum
 
 ### F1. Assignment A ratio — algebraically exact, r-independent
 
@@ -92,10 +92,10 @@ these modes could be produced in decays.
 | A | 29.26 | 42.4 |
 | B | 5.64 | 219.7 |
 
-Assignment B requires a much larger neutrino T² — L₄ ≈ 220 μm.  This
+Assignment B requires a much larger Ma_ν — L₄ ≈ 220 μm.  This
 is within the current experimental bound on deviations from Newtonian
 gravity (~ 50 μm), but only if gravity does not propagate in these
-compact dimensions.
+material dimensions.
 
 ### F7. Summary of Assignment A vs B scorecard
 
@@ -116,9 +116,9 @@ charge formulas) to find a better solution.
 ### F8. Assignment A is the electron's mode pattern, downscaled
 
 Assignment A's triplet (1,1), (−1,1), (1,2) is the same mode pattern
-that exists on the electron T²: the electron is (1,2), and the two
+that exists on Ma_e: the electron is (1,2), and the two
 nearest modes with the same tube winding are (1,1) and (−1,1).
-Assignment A places this pattern on a separate T² at a larger scale.
+Assignment A places this pattern on a separate material sheet at a larger scale.
 
 This means Assignment A is equivalent to asking: "at what scale does
 the electron's mode pattern produce the neutrino mass splittings?"
@@ -129,7 +129,7 @@ The answer is E₀ ≈ 29 meV (L₄ ≈ 42 μm) — the same mode geometry,
 
 A neutrino mass eigenstate is a particle at rest with energy m_ν c².
 In the WvM framework, this rest energy IS the mode energy on the
-compact space: E = E₀√((n₃/r)² + (n₄ − n₃s)²).  Because the mode
+material space: E = E₀√((n₃/r)² + (n₄ − n₃s)²).  Because the mode
 energy and mode differences both scale linearly with E₀ = ℏc/L₄,
 you cannot make the modes high-frequency while keeping the differences
 small — everything scales together.
@@ -140,7 +140,7 @@ smaller torus.  A beat frequency determines the oscillation rate
 mode energy, not the beat.  Experiment bounds each neutrino mass to
 ≲ 50 meV, which requires E₀ ~ meV, which requires L₄ ~ μm.
 
-This makes the μm neutrino T² one of the model's most distinctive
+This makes the μm Ma_ν one of the model's most distinctive
 predictions — and one of its most testable.  Short-range gravity
 experiments probing below 50 μm could detect the extra dimensions
 if gravity propagates there.
@@ -252,14 +252,14 @@ the spectrum denser.  A triplet like (1,2), (2,4), (10,20) — all
 harmonics of (1,2) — gives ratio ≈ 33 but has **88 intermediate
 spin-½ fermion modes**, far worse than the coprime search (minimum 6).
 
-### F17. Cross-plane modes on T⁶ are too heavy to be neutrinos
+### F17. Cross-plane modes on Ma are too heavy to be neutrinos
 
-A cross-plane mode has nonzero winding on two or more T² subplanes.
+A cross-plane mode has nonzero winding on two or more material sheets.
 In the zero-cross-shear limit, its energy is:
 
     E² = E²_e(n₁,n₂) + E²_ν(n₃,n₄) + E²_p(n₅,n₆)
 
-The lightest cross-plane mode involving the neutrino T² has
+The lightest cross-plane mode involving Ma_ν has
 E ≥ √(m_e² + m_ν²) ≈ 511 keV — ten billion times heavier than
 the neutrino.  Even with cross-shear, the mixing amplitude is
 suppressed by (m_ν/m_e)² ~ 10⁻¹⁷.  Cross-plane modes cannot
@@ -273,7 +273,7 @@ the three light mass eigenstates.
 
 No non-coprime mode or cross-plane mode provides a new spin-½
 neutrino candidate.  The complete spin-½ fermion menu on the
-neutrino T² is:
+Ma_ν is:
 
     (p, ±2)  with p odd,  for all p = ±1, ±3, ±5, ...
 
@@ -460,7 +460,7 @@ depend on which transport law is physical.
 The discrepancy arises because the Frenet frame of a 3D curve depends
 on the embedding curvature (both geodesic and normal curvature), while
 the surface parallel transport depends only on the intrinsic surface
-geometry (which is flat for T²).  For modes with the same q, the
+geometry (which is flat for a material sheet).  For modes with the same q, the
 embedding contributions largely cancel in the ratio; for different q,
 they do not.
 
@@ -517,7 +517,7 @@ method is correct depends on the physical model:
    equally in weak processes.  If (1,1) has 8.6× the charge (Frenet),
    the production asymmetry changes the oscillation pattern.  This
    should be resolved by determining which transport law follows from
-   the WvM Maxwell equations on T².
+   the WvM Maxwell equations on a material sheet.
 
 ---
 
@@ -595,7 +595,7 @@ and the Track 1b search (minimum 6 for any (p,2) triplet).
 
 ### F35. Surface parallel transport is the correct charge law
 
-The photon lives on the flat T² surface.  On a flat manifold:
+The photon lives on the flat material sheet surface.  On a flat manifold:
 
 1. Maxwell's equations reduce to flat-space electrodynamics.
 2. Parallel transport is trivial — a vector's coordinate components
@@ -620,7 +620,7 @@ across different q.
 
 ### F36. Cross-plane coupling cannot modify spin
 
-The mixing amplitude between neutrino-T² and electron-T² modes
+The mixing amplitude between Ma_ν and Ma_e modes
 scales as s_cross × (m_ν/m_e)² ≈ 10⁻⁸.  Even maximum cross-shear
 cannot change any neutrino property at leading order.
 
@@ -653,7 +653,7 @@ limit.  At ε = 5, Σm = 117.8 meV.  This is:
 
 If CMB-S4 measures Σm < 117 meV, Assignment A is **falsified**.
 If Σm ≈ 117 meV is confirmed, it would be strong evidence for the
-neutrino T² model.
+Ma_ν model.
 
 ### F39. Track 1 — Final verdict
 
@@ -682,16 +682,16 @@ neutrino T² model.
 **Free parameter:** ε ≥ 3.2 (from below only).
 **Testable prediction:** Σm ≈ 117 meV (falsifiable by CMB-S4).
 
-Track 1 is complete.  The neutrino T² model is viable with
+Track 1 is complete.  The Ma_ν model is viable with
 Assignment A.  Proceed to Track 2 (proton torus).
 
 ---
 
-## Track 2a: Proton T² geometry
+## Track 2a: Ma_p geometry
 
 ### F40. Same α formula, same one-parameter family
 
-The proton T² uses the identical R19 α formula:
+Ma_p uses the identical R19 α formula:
 
     α = r² sin²(2πs) / (4π (2−s)² √(r²(1+2s)²+4))
 
@@ -699,13 +699,13 @@ The solution curve s(r) is the same for proton and electron — both
 are (1,2) modes with charge ±e.  The geometry is a one-parameter
 family in r, with s uniquely determined by α = 1/137.
 
-### F41. Proton T² is a scaled copy of the electron T²
+### F41. Ma_p is a scaled copy of Ma_e
 
-If r_p = r_e (same aspect ratio), then the proton T² is geometrically
-similar to the electron T², scaled by m_e/m_p ≈ 1/1836 in all linear
+If r_p = r_e (same aspect ratio), then Ma_p is geometrically
+similar to Ma_e, scaled by m_e/m_p ≈ 1/1836 in all linear
 dimensions:
 
-| Property | Electron T² (r=6.6) | Proton T² (r=6.6) | Ratio |
+| Property | Ma_e (r=6.6) | Ma_p (r=6.6) | Ratio |
 |----------|--------------------|--------------------|-------|
 | Mass | 0.511 MeV | 938.3 MeV | 1836 |
 | L₄ (ring) | 4.77 pm | 2.60 fm | 1836 |
@@ -714,7 +714,7 @@ dimensions:
 | s (shear) | 0.03933 | 0.03933 | 1 |
 | E₀ | 0.260 MeV | 477 MeV | 1836 |
 
-The mass ratio m_p/m_e is an INPUT — it sets the ratio of compact
+The mass ratio m_p/m_e is an INPUT — it sets the ratio of material
 dimension sizes.  The model does not predict this ratio.
 
 ### F42. The charge radius is 2.0× the ring radius
@@ -727,7 +727,7 @@ Track 2b will compute the exact RMS radius.
 
 ### F43. Mode spectrum mirrors the electron's
 
-The proton T² at r = 6.6 has mode spectrum:
+Ma_p at r = 6.6 has mode spectrum:
 
 | Mode | Mass (MeV) | Type | Charged | L_z/ℏ |
 |------|-----------|------|---------|-------|
@@ -739,11 +739,11 @@ The proton T² at r = 6.6 has mode spectrum:
 | (−1,2) | 1008.6* | fermion | yes | 0.365 |
 
 The (1,1) and (−1,1) modes are at ~half the proton mass — these are
-the proton T²'s analogue of the neutrino's Assignment A modes.
+Ma_p's analogue of the neutrino's Assignment A modes.
 
 ### F44. WvM vs KK mode energy conventions — reconcilable
 
-Two conventions exist for mode energies on sheared T²:
+Two conventions exist for mode energies on a sheared material sheet:
 
 **KK (reciprocal lattice):** E = E₀ √((n₃/r)² + (n₄ − n₃s)²)
 - Standard wave-equation result on flat torus.
@@ -764,8 +764,8 @@ Both produce α = 1/137 — they just require different s values
 (e.g., at r=1: R19 gives s≈0.165, KK gives s≈0.065).
 
 **This is NOT a fundamental inconsistency.**  The neutrino and
-electron T²s have different shears (s₃₄ vs s₁₂) on different
-T²s, so their numerical values don't conflict.  The resolution
+Ma_ν and Ma_e have different shears (s₃₄ vs s₁₂) on different
+material sheets, so their numerical values don't conflict.  The resolution
 is to use KK throughout (it's the rigorous wave-equation result)
 and re-derive R19's s(r) curve under KK conventions.  The charge
 physics (shear → broken symmetry → net E-flux) is unchanged;
@@ -836,11 +836,11 @@ factor expansion G_E(Q²) = 1 − Q²r²/6 + ..., then interpreting
 r as a spatial size.  This interpretation presupposes the proton
 is a blob of charge in 3D space.
 
-In our model, the proton is a wave on compact T².  The compact
+In our model, the proton is a wave on a material sheet.  The material
 dimensions are internal, not spatial.  The scattering cross
 sections are real measurements, but translating them to a
 "radius" carries model-dependent assumptions that don't
-necessarily apply to a compact-dimension framework.
+necessarily apply to a material-dimension framework.
 
 Clean model inputs are: masses, charges (α), spins, mass-squared
 splittings, and mixing angles.  The charge radius is a derived
@@ -849,7 +849,7 @@ quantity whose interpretation depends on the theoretical framework.
 **Consequence:** the aspect ratio ε remains FREE (R19 F15).
 Track 2b's naive embedding is an exploratory calculation, not
 a constraint.  Properly computing the proton's electromagnetic
-form factor in the compact-dimension model requires a KK
+form factor in the material-dimension model requires a KK
 decomposition, not a 3D torus embedding.
 
 
@@ -871,7 +871,7 @@ high-energy scattering).
 
 This conflict reinforces F48: the naive embedding is the wrong
 framework.  A proper KK treatment of the form factor — where the
-compact dimensions are internal and the form factor arises from
+material dimensions are internal and the form factor arises from
 virtual KK excitations — would give a qualitatively different
 result.  Computing this is deferred to a future study.
 
@@ -892,14 +892,14 @@ This exercise is recorded for reference but does not constrain ε.
 Script: [`scripts/track2c_neutron_search.py`](scripts/track2c_neutron_search.py)
 
 
-### F52. No uncharged fermion exists on a single sheared T²
+### F52. No uncharged fermion exists on a single sheared material sheet
 
-The charge-spin linkage (R25 F4) is absolute on a sheared T²:
+The charge-spin linkage (R25 F4) is absolute on a sheared material sheet:
 - All spin-½ modes have |n₃| = 1, giving charge ∝ sin(2πs) ≠ 0
 - All uncharged modes have n₃ = 0, giving spin = 0 (boson)
 
 There is NO combination of (n₃, n₄) that is both uncharged and
-spin-½.  The neutron cannot be a single mode on the proton T².
+spin-½.  The neutron cannot be a single mode on Ma_p.
 This holds at ALL aspect ratios ε.
 
 
@@ -946,13 +946,13 @@ lighter) but consistent with the neutron's instability: the
 stored energy drives the decay n → p + e⁻ + ν̄_e.
 
 The 0.782 MeV may be stored as:
-- Cross-plane coupling energy between the proton and electron T²s
-- A contribution from the neutrino T² (but neutrino masses are
+- Cross-plane coupling energy between Ma_p and Ma_e
+- A contribution from Ma_ν (but neutrino masses are
   ~10⁴× too small at ~50 meV)
 - Kinetic/confinement energy of the electron mode bound to the
-  proton T²
+  Ma_p
 
-Quantifying this requires the full T⁶ framework (Track 4).
+Quantifying this requires the full Ma framework (Track 4).
 
 
 ### F56. The neutron result does not undermine the model
@@ -961,11 +961,11 @@ The null result is EXPECTED and consistent:
 1. The charge-spin linkage was already established (R25 F4)
 2. The proton + electron hypothesis matches beta decay exactly
 3. The neutron's instability is naturally explained (stored energy)
-4. The antineutrino in beta decay involves the neutrino T²,
-   requiring all three T²s — consistent with T⁶ architecture
+4. The antineutrino in beta decay involves Ma_ν,
+   requiring all three material sheets — consistent with Ma architecture
 
 The neutron is a Track 4 problem (cross-plane coupling), not a
-Track 2 problem (single-T² physics).
+Track 2 problem (single-material-sheet physics).
 
 
 ---
@@ -975,13 +975,13 @@ Track 2 problem (single-T² physics).
 Script: [`scripts/track3_parameter_census.py`](scripts/track3_parameter_census.py)
 
 
-### F57. The T⁶ metric has 21 parameters
+### F57. The Ma metric has 21 parameters
 
-The flat T⁶ metric (symmetric 6×6) has 21 independent components:
+The flat Ma metric (symmetric 6×6) has 21 independent components:
 - 3 aspect ratios: r_e, r_ν, r_p
 - 3 ring scales: L₂, L₄, L₆ (set by particle masses)
 - 3 within-plane shears: s₁₂, s₃₄, s₅₆
-- 12 cross-plane shears: 4 per pair of T²s
+- 12 cross-plane shears: 4 per pair of material sheets
 
 
 ### F58. Six parameters are constrained by established physics
@@ -1021,7 +1021,7 @@ but have NO known experimental constraint:
 
 If the aspect ratios could be fixed by a geometric principle
 (modular invariance, topological consistency, or a symmetry
-of the T⁶ lattice), the remaining 12 cross-shears would face
+of the Ma lattice), the remaining 12 cross-shears would face
 ≥7 constraints — potentially solvable.
 
 
@@ -1040,19 +1040,19 @@ But the model does not yet make quantitative predictions beyond
 
 ### F62. The model demonstrates compatibility, not uniqueness
 
-The T⁶ topology CAN support the observed particles — but
+The Ma topology CAN support the observed particles — but
 nothing in the current framework predicts ONLY these particles
 or ONLY one specific geometry.  For each domain there is a
 continuous family of solutions, not a unique point.
 
 This is not a failure — it reflects the current state of
-constraints.  Track 4 (T⁶ unification) may introduce geometric
+constraints.  Track 4 (Ma unification) may introduce geometric
 consistency conditions that reduce the solution set.
 
 
 ### F63. Solution sets by domain
 
-**Electron T² — one-parameter family indexed by r_e:**
+**Ma_e — one-parameter family indexed by r_e:**
 
     r_e ∈ (0, ∞)           aspect ratio (free)
     s₁₂ = s₁₂(r_e)         fixed by α = 1/137 (unique for each r_e)
@@ -1063,7 +1063,7 @@ consistency conditions that reduce the solution set.
     All electron observables (Q, spin, g ≈ 2) are r_e-independent.
     No known observable selects a unique r_e.
 
-**Neutrino T² — one-parameter family indexed by r_ν:**
+**Ma_ν — one-parameter family indexed by r_ν:**
 
     r_ν ∈ [~3.2, ∞)        aspect ratio (free, lower bound from Σm_ν ≤ 120 meV)
     s₃₄ = 0.02199           fixed by Δm² ratio (r_ν-independent)
@@ -1076,7 +1076,7 @@ consistency conditions that reduce the solution set.
       r_ν =  5:  m₁ = 29.2 meV,  Σm = 117.9 meV
       r_ν =  3:  m₁ = 30.2 meV,  Σm = 120.4 meV   (at cosmological bound)
 
-**Proton T² — one-parameter family indexed by r_p:**
+**Ma_p — one-parameter family indexed by r_p:**
 
     r_p ∈ (0, ∞)           aspect ratio (free)
     s₅₆ = s₅₆(r_p)         fixed by α = 1/137 (same formula as electron)
@@ -1098,21 +1098,21 @@ consistency conditions that reduce the solution set.
 **Summary:**  The full solution set is a connected region in
 a 15-dimensional parameter space (3 aspect ratios + 12 cross-
 shears).  Within this region, the model reproduces all
-established physics.  Track 4 should determine whether T⁶
+established physics.  Track 4 should determine whether Ma
 consistency conditions collapse this region to a smaller
 manifold or discrete set.
 
 
 ---
 
-## Track 4a. T⁶ metric and mode spectrum
+## Track 4a. Ma metric and mode spectrum
 
 Script: [`scripts/track4a_t6_metric.py`](scripts/track4a_t6_metric.py)
 
 
 ### F64. The dimensionless metric G̃ is well-conditioned
 
-The physical T⁶ metric G has entries spanning 22 orders of
+The physical Ma metric G has entries spanning 22 orders of
 magnitude (fm² to mm²), giving condition number ~10²¹ and
 destroying numerical precision.  Rescaling to the dimensionless
 metric G̃_ij = G_ij / (L_i L_j) gives condition number 1.25.
@@ -1124,13 +1124,13 @@ Mode energies computed via E²(n) = (2πℏc)² ñᵀ G̃⁻¹ ñ where
 
 ### F65. The cross-plane mode (1,2,0,0,1,2) is automatically charge-neutral
 
-The T⁶ mode with electron quantum numbers (n₁=1, n₂=2) and proton
+The Ma mode with electron quantum numbers (n₁=1, n₂=2) and proton
 quantum numbers (n₅=1, n₆=2) carries:
 
     charge = (−e from n₁=1) + (+e from n₅=1) = 0
 
 This is not imposed — it follows automatically from the charge
-mechanism on each T².  The mode is a candidate for the neutron.
+mechanism on each material sheet.  The mode is a candidate for the neutron.
 
 
 ### F66. Any nonzero e–p cross-shear increases the neutron mode energy
@@ -1153,7 +1153,7 @@ any nonzero electron–proton coupling.
     Required fraction: 7.1% of bound
 
 The cross-shear is geometrically modest — the electron and proton
-T² planes are nearly orthogonal (arccos(0.038) ≈ 87.8°), tilted
+material-sheet planes are nearly orthogonal (arccos(0.038) ≈ 87.8°), tilted
 by only 2.2° from perpendicular.
 
 The sign of σ_ep is unconstrained by the neutron mass (both ±
@@ -1173,17 +1173,17 @@ Possible resolutions:
    as angular momenta — the total spin might be max(½, ½) = ½
 3. The correct neutron mode has different quantum numbers
 
-This requires deeper analysis of the spinor structure on T⁶.
+This requires deeper analysis of the spinor structure on Ma.
 
 
 ### F69. Casimir energy is insensitive to e–p cross-shear
 
-The Epstein zeta function Z(5) is dominated by the neutrino T²
+The Epstein zeta function Z(5) is dominated by Ma_ν
 (L ~ mm), which contributes ~10¹¹³ to the sum.  Varying σ_ep
-(which only couples the fm-scale electron and proton T²s) produces
+(which only couples the fm-scale Ma_e and Ma_p) produces
 no detectable change.  Casimir energy can only provide structure
 if computed as a function of σ_eν or σ_νp (which couple to the
-neutrino T² scale).
+Ma_ν scale).
 
 
 ---
@@ -1209,7 +1209,7 @@ hypercube, not a narrow sliver.
     Relative variation: 96.5% — enormous.
 
 The Casimir energy (vacuum energy) prefers MAXIMAL electron–neutrino
-coupling — it wants the T² planes to be as tilted as possible.
+coupling — it wants the material-sheet planes to be as tilted as possible.
 There is no internal minimum; the minimum sits at the boundary.
 
 
@@ -1220,7 +1220,7 @@ There is no internal minimum; the minimum sits at the boundary.
     σ_eν = 0.10 :  ratio = 40.3  (20% shift — unacceptable)
 
 The neutrino mass-squared ratio is sensitive to σ_eν because the
-cross-shear distorts the effective metric on the neutrino T².
+cross-shear distorts the effective metric on Ma_ν.
 Preserving the ratio at ≤5% requires |σ_eν| ≲ 0.05.
 
 
@@ -1257,7 +1257,7 @@ before the neutron result can be claimed quantitatively.
 
 ### F75. The low-energy spectrum is cleanly separated
 
-At σ_eν = 0.1, the T⁶ mode spectrum separates into clear tiers:
+At σ_eν = 0.1, the Ma mode spectrum separates into clear tiers:
 
     ~6–90 meV:    pure neutrino modes (uncharged, fermionic/bosonic)
     ~39–258 keV:  cross-plane e–ν modes (charged, various spin)
@@ -1267,7 +1267,7 @@ At σ_eν = 0.1, the T⁶ mode spectrum separates into clear tiers:
 
 The gap between the neutrino tier (~meV) and the next modes
 (~keV) spans 6 orders of magnitude.  This spectral isolation is
-a natural feature of the scale hierarchy — the T² circumferences
+a natural feature of the scale hierarchy — the material-sheet circumferences
 differ by factors of ~10³ and ~10⁷.
 
 Cross-plane e–ν modes at ~39 keV have charge ±e and would be
@@ -1280,7 +1280,7 @@ they might be reinterpreted as radiative corrections).
 
 ## Possible next steps
 
-R26 established the T⁶ framework and produced quantitative results
+R26 established the Ma framework and produced quantitative results
 across four tracks.  The model has clear structural successes
 (charge, spin, g ≈ 2, neutrino mass ratio, charge-neutral neutron
 mode) but remains under-determined (15 free parameters, 3 aspect
@@ -1330,17 +1330,17 @@ to the moduli potential.  In string-theory compactifications, the
 full potential includes:
 
 1. Casimir energy (computed in Track 4d — monotonically decreasing)
-2. Flux contributions (from the EM field threading the T²s)
+2. Flux contributions (from the EM field threading the material sheets)
 3. Curvature corrections (from embedding in 4+6D)
 4. Mass-gap contributions (heavy modes integrated out)
 
 The flux term is particularly interesting: the shear charge
-mechanism (R19) means the EM field ALREADY threads each T².
+mechanism (R19) means the EM field ALREADY threads each material sheet.
 This flux energy depends on the cross-shears and could provide
 the "upward pressure" that balances the Casimir downward pull.
 
 **Computational model:** Compute the EM flux energy stored in
-the sheared T⁶ as a function of cross-shears.  Add it to the
+the sheared Ma as a function of cross-shears.  Add it to the
 Casimir energy.  Look for a minimum of the total potential in the
 (σ_ep, σ_eν, σ_νp) space.  If a minimum exists and coincides
 with the neutron mass constraint and small neutrino ratio
@@ -1352,7 +1352,7 @@ evidence that the geometry is self-selecting.
 
 **Effort:** Moderate.  The Casimir part is done.  The flux
 contribution requires deriving the EM energy density on the
-sheared T⁶ — analytical work followed by numerical evaluation.
+sheared Ma — analytical work followed by numerical evaluation.
 
 
 ### N3. Non-symmetric cross-shear structure (medium priority)
@@ -1388,27 +1388,27 @@ over-determined (a prediction).
 
 **Effort:** Moderate to high.  The 4D sweep is expensive but
 parallelizable.  The conceptual challenge is correctly defining
-"mixing angle" in terms of mode overlaps on the T⁶.
+"mixing angle" in terms of mode overlaps on Ma.
 
 
-### N4. Spinor structure on T⁶ (medium priority, analytical)
+### N4. Spinor structure on Ma (medium priority, analytical)
 
 **Problem:** F68 identified that the neutron mode (1,2,0,0,1,2)
 has two odd tube windings, naively giving spin-0 or spin-1 rather
 than the observed spin-½.
 
-**Approach:** The spin structure on T⁶ is governed by SO(6) (or
-its double cover SU(4)), not SO(3) × SO(3).  In 6 compact
+**Approach:** The spin structure on Ma is governed by SO(6) (or
+its double cover SU(4)), not SO(3) × SO(3).  In 6 material
 dimensions, a spinor has 2³ = 8 components.  The tube winding
 quantum numbers (n₁, n₃, n₅) determine the spinor representation
 of each mode.
 
 Key questions:
-1. Does the T⁶ lattice admit a spin structure? (It does — flat
+1. Does the Ma lattice admit a spin structure? (It does — flat
    tori always do.)
 2. How do two independent odd windings compose in the SO(6) spinor
    representation?
-3. Is there a choice of spin structure on T⁶ where (1,2,0,0,1,2)
+3. Is there a choice of spin structure on Ma where (1,2,0,0,1,2)
    is spin-½?
 
 **Computational model:** Primarily analytical, but the
@@ -1421,7 +1421,7 @@ the known particles (electron = ½, proton = ½, neutrino = ½) and
 predicts the neutron's spin correctly.
 
 **Effort:** Low (if the representation theory is standard) to
-high (if subtleties of the T⁶ lattice spin structure intervene).
+high (if subtleties of the Ma lattice spin structure intervene).
 
 
 ### N5. Aspect ratio selection (high priority, hardest problem)
@@ -1433,7 +1433,7 @@ critical open problem.
 
 **Possible approaches:**
 
-1. **Modular invariance.**  The T⁶ lattice has a modular group
+1. **Modular invariance.**  The Ma lattice has a modular group
    SL(6, Z).  Physically equivalent lattices are related by
    modular transformations.  The fundamental domain of this group
    is a finite region in parameter space.  If the aspect ratios
@@ -1441,7 +1441,7 @@ critical open problem.
    probably not to unique values).
 
 2. **Self-dual lattice condition.**  Certain lattices (like E₈)
-   are self-dual: Λ = Λ*.  Requiring the T⁶ lattice to be
+   are self-dual: Λ = Λ*.  Requiring the Ma lattice to be
    self-dual is a strong constraint that may fix the aspect ratios.
 
 3. **Anomaly cancellation.**  In string theory, modular invariance
@@ -1464,20 +1464,20 @@ most tractable entry point is N3 (PMNS), which might cascade into
 r-selection via over-determination.
 
 
-### N6. Unstable particle spectrum as T⁶ excitations (high priority)
+### N6. Unstable particle spectrum as Ma excitations (high priority)
 
 **Reframing:** The muon (μ⁻, 105.7 MeV, τ = 2.2 μs) and tau
 (τ⁻, 1777 MeV, τ = 0.29 ps) are unstable — they always decay
-to the stable T⁶ residents (electrons + neutrinos).  Rather than
+to the stable Ma residents (electrons + neutrinos).  Rather than
 requiring new geometry, they are naturally interpreted as EXCITED
-T⁶ modes: energy temporarily occupying higher quantum-number
+Ma modes: energy temporarily occupying higher quantum-number
 configurations that ring unstably until cascading down to the
 fundamental modes.  The decay μ → e + ν̄ₑ + ν_μ is literally
-a T⁶ mode relaxation: excited electron-T² mode → ground-state
-(1,2) mode + neutrino-T² modes.
+a Ma mode relaxation: excited Ma_e mode → ground-state
+(1,2) mode + Ma_ν modes.
 
 **The opportunity:** Every unstable particle with measured mass,
-charge, and spin is a potential T⁶ mode match.  Each match adds
+charge, and spin is a potential Ma mode match.  Each match adds
 one mass equation constraining the 15 free metric parameters.
 With enough matches, the system becomes over-determined and the
 free parameters get pinned.
@@ -1494,15 +1494,15 @@ free parameters get pinned.
 
 In the standard model, mesons (π, K, η, ρ, ...) and unstable
 baryons (Δ, Σ, Λ, Ξ, Ω, ...) are composite (quark-antiquark or
-three-quark states).  Whether they map to single T⁶ modes or to
+three-quark states).  Whether they map to single Ma modes or to
 multi-mode bound states is an open question.  However, even
-composite particles have definite masses — if the T⁶ can produce
+composite particles have definite masses — if Ma can produce
 modes at those energies with the right quantum numbers, each
 match still constrains the geometry.
 
 **Constraints from quantum numbers:**
 
-In the T⁶ framework, charge and spin are determined by mode
+In the Ma framework, charge and spin are determined by mode
 quantum numbers (n₁, ..., n₆):
   - Charge −e requires odd n₁ (electron tube winding)
   - Spin ½ requires an odd number of odd tube windings
@@ -1511,12 +1511,12 @@ quantum numbers (n₁, ..., n₆):
 
 This immediately predicts:
   - μ⁻ and τ⁻ (charge −e, spin ½) must have odd n₁ → they
-    live partly on the electron T².  They ARE excited electrons.
-  - Z⁰ (charge 0, spin 1) has even n₁ → no electron-T²
+    live partly on Ma_e.  They ARE excited electrons.
+  - Z⁰ (charge 0, spin 1) has even n₁ → no Ma_e
     component.  It could be a pure cross-plane mode.
   - W⁻ (charge −e, spin 1) has odd n₁ and must have a second
-    odd tube winding → cross-plane mode spanning electron T²
-    and at least one other T².
+    odd tube winding → cross-plane mode spanning Ma_e
+    and at least one other material sheet.
 
 **Computational approach:**
 
@@ -1525,8 +1525,8 @@ This immediately predicts:
    cross-shear space, catalog all modes below ~200 GeV with
    their mass, charge, and spin.
 
-2. Build a "match score" function: for each set of T⁶ parameters,
-   count how many known particles have a T⁶ mode within X% of
+2. Build a "match score" function: for each set of Ma parameters,
+   count how many known particles have a Ma mode within X% of
    their mass with correct charge and spin.
 
 3. Optimize the match score over the 15 free parameters.  Regions
@@ -1540,14 +1540,14 @@ This immediately predicts:
 
 **What to look for:**
   - Is there a region in parameter space where the muon AND tau
-    both appear as T⁶ modes with correct quantum numbers?
+    both appear as Ma modes with correct quantum numbers?
   - Do the W and Z masses emerge from cross-plane modes?
   - If the match score has a sharp peak (many simultaneous
     matches at one parameter point), that point IS the physical
     geometry — and the aspect ratios, cross-shears, and all
     other free parameters would be determined.
 
-**Why this could work:** The T⁶ spectrum is DENSE at high energy
+**Why this could work:** The Ma spectrum is DENSE at high energy
 (the number of modes below energy E grows as E⁶ for a 6D
 lattice).  The concern is false matches — random modes at the
 right mass.  But requiring correct charge AND spin AND mass
@@ -1563,7 +1563,7 @@ direct path to collapsing the free parameter space.
 
 ### N7. Gravity and the sub-mm bound (important constraint)
 
-**Problem:** The neutrino T² has circumferences L₃ ≈ 212 mm and
+**Problem:** Ma_ν has circumferences L₃ ≈ 212 mm and
 L₄ ≈ 42 mm.  If gravity propagates in these dimensions, Newton's
 law would deviate from 1/r² below ~42 mm.  Current experimental
 bounds show no deviation down to ~50 μm — three orders of magnitude
@@ -1572,22 +1572,22 @@ the current bound, apparently ruling out the model.
 
 **Possible resolutions:**
 
-1. **Gravity does not propagate in all compact dimensions.**  Only
-   the proton T² (fm-scale) is gravitationally active; the electron
-   and neutrino T²s are "dark" to gravity.
+1. **Gravity does not propagate in all material dimensions.**  Only
+   Ma_p (fm-scale) is gravitationally active; Ma_e
+   and Ma_ν are "dark" to gravity.
 
-2. **The neutrino T² is warped.**  A Randall-Sundrum-type warping
+2. **Ma_ν is warped.**  A Randall-Sundrum-type warping
    could make the effective gravitational size much smaller than the
    geometric size.
 
 3. **The neutrino mass hierarchy is different.**  If our neutrino
-   mass assignment is wrong and the neutrino T² is actually at a
+   mass assignment is wrong and Ma_ν is actually at a
    smaller scale, the gravitational bound might be satisfied.
 
 **Computational model:** Compute the gravitational potential
-modification from the T⁶ geometry and compare to experimental
+modification from the Ma geometry and compare to experimental
 constraints (Eöt-Wash, Casimir force measurements, neutron
-interferometry).  Determine which T² planes must be gravitationally
+interferometry).  Determine which material-sheet planes must be gravitationally
 hidden and what mechanism could achieve this.
 
 **Effort:** Moderate.  The gravitational Kaluza-Klein spectrum is
@@ -1607,7 +1607,7 @@ well-understood; the calculation is standard.
 | N7 | Gravity bound | Medium | High | ★★☆ |
 
 N1 is the quickest win (one script, one constraint).  N6 is
-potentially the most powerful: if the T⁶ spectrum can match
+potentially the most powerful: if the Ma spectrum can match
 even 3–4 unstable particles (μ, τ, W, Z) with correct mass,
 charge, and spin simultaneously, the free parameter count drops
 from 15 to ~5 — and the aspect ratios (N5) might be forced.

@@ -5,11 +5,11 @@
 
 ## Motivation
 
-Twenty-one studies have mapped the *static* landscape of T²: eigenvalue spectra,
+Twenty-one studies have mapped the *static* landscape of Ma_e (the electron sheet): eigenvalue spectra,
 charge formulas, harmonic decompositions.  Two problems remain stubbornly open:
 
 1. **r-selection:** α(r,s) gives a one-parameter family.  Nothing selects r.
-2. **Neutrino:** No viable mechanism on single T².  Beating works kinematically
+2. **Neutrino:** No viable mechanism on a single sheet.  Beating works kinematically
    but isn't selective; phonon coupling is forbidden by θ₂ symmetry.
 
 Both problems have the same root cause: the model is **linear on a fixed geometry**.
@@ -17,7 +17,7 @@ Every eigenmode is equally valid; nothing prefers one configuration over another
 
 This study attacks both problems with two new approaches:
 
-- **T³ structure:** The electron uses two of three compact dimensions.
+- **T³ structure:** The electron uses two of three material dimensions.
   Modes extending into the third dimension could be neutrinos.
   T³ has C(3,2) = 3 subplanes — matching three neutrino flavors.
   More parameters (5) but also more observables (α + neutrino sector ≥ 6),
@@ -36,14 +36,14 @@ pure θ₃ modes (0,0,n₃) with m ∝ n₃/L₃.  The mass-squared ratio
 
 Key results (F1–F7):
 - (7,10,42) matches the experimental ratio 33.60 to 0.03σ
-- L₃ ~ 250–1020 μm, independent of all T² parameters
+- L₃ ~ 250–1020 μm, independent of all Ma_e parameters
 - Predicted Σm = 65–72 meV (below cosmological bound)
 - System is over-determined (3 free params, 4 mixing observables)
   → r is predicted, model is falsifiable
 
 Critical open: spin of (0,0,n₃) modes, sterile neutrino suppression.
 
-## Track 2 — Nonlinear wave equation on embedded T²  ✓
+## Track 2 — Nonlinear wave equation on embedded Ma_e  ✓
 
 Pseudo-spectral simulation (64×64 grid, RK4 time integration) of the
 wave equation on the embedded torus with optional cubic nonlinearity.

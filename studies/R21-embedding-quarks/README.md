@@ -7,9 +7,9 @@ fractional charges, binding, and a preferred harmonic spectrum?
 
 ### The two-domain picture (R12)
 
-The photon propagates through flat compact space (T²), but its
+The photon propagates through flat material space (a material sheet), but its
 fields project into 3D through the toroidal embedding.  Mass and
-spin are internal properties (flat T²).  Charge is an external
+spin are internal properties (flat material sheet).  Charge is an external
 property (embedded torus in 3D).  These are two aspects of the
 same object (R12 F14).
 
@@ -41,10 +41,10 @@ never physically implemented.
 
 | Study | Mechanism | Why it failed |
 |-------|-----------|---------------|
-| R19 T4–6 | Shear variations on flat T²/T³ | Charges or masses wrong |
+| R19 T4–6 | Shear variations on flat material sheet/T³ | Charges or masses wrong |
 | R14 | Three linked photons on flat T³ | Charge depends on mode numbers, not arrangement |
 
-All operated on flat compact space.  None tested the embedding.
+All operated on flat material space.  None tested the embedding.
 
 ### What R20 established
 
@@ -57,7 +57,7 @@ spectrum is free).  Three open questions feed into R21:
 2. **Binding:** What couples eigenmodes into composites?
 3. **Spectrum:** What selects the harmonic distribution?
 
-All three involve physics beyond flat T².
+All three involve physics beyond flat material sheets.
 
 ## Core idea
 
@@ -152,7 +152,7 @@ curved (not flat) torus.
 Key questions:
 1. How large is the curvature correction to α at each r?
 2. Does the self-consistent (r, s) differ significantly from
-   the flat-T² values?
+   the flat-material-sheet values?
 3. Does the IPR of the curved eigenfunction relate to R15's
    localization parameter σ?
 
@@ -192,9 +192,9 @@ It failed (F8–F9).  Combined with previous failures:
 
 | Study | Mechanism | Result |
 |-------|-----------|--------|
-| R19 T4–6 | Shear on flat T²/T³ | F31: gives lighter charged modes |
+| R19 T4–6 | Shear on flat material sheet/T³ | F31: gives lighter charged modes |
 | R14 | Topological linking on T³ | F18: charge is mode-number, not position |
-| R21 T2 | Position on curved T² | F8: ratios are continuous, not quantized |
+| R21 T2 | Position on curved material sheet | F8: ratios are continuous, not quantized |
 
 **What's common:** Every mechanism produces CONTINUOUS charge
 ratios.  None yields charge QUANTIZATION at 1/3 and 2/3.  The
@@ -205,8 +205,8 @@ no equivalent algebraic constraint.
 **What would be needed:** A topological or algebraic condition
 that forces charges on a torus to take specific rational values.
 Possible directions (not yet explored):
-- Multi-torus models (each quark on its own T²)
-- Non-abelian structure (higher gauge symmetry on T²)
+- Multi-torus models (each quark on its own material sheet)
+- Non-abelian structure (higher gauge symmetry on a material sheet)
 - Charge quantization from global T³ consistency conditions
 
 ## Dependencies
@@ -222,7 +222,7 @@ Possible directions (not yet explored):
 ## Relation to other questions
 
 - Q26: hadrons from photon knots (DIS test)
-- Q13: three compact dimensions (quarks in a different plane?)
+- Q13: three material dimensions (quarks in a different plane?)
 - Q16: what sets the photon energy / mass spectrum
 - Q32: energy and geometry as only fundamentals
 

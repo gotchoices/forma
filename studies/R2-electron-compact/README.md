@@ -30,13 +30,13 @@ minimal specification that produces an electron?
 ## The recipe (hypothesis)
 
 **Inputs:**
-- A flat torus T² with circumferences L_φ, L_θ
+- A flat torus Ma_e (the electron sheet) with circumferences L_φ, L_θ
 - A (1,2) geodesic (topology choice)
 - A photon of energy E = m_e c²
 
 **Outputs (to verify):**
 - Mass: m = E/c² = m_e (by construction)
-- Spin: ½ (from double winding — any T² with a (1,2) path)
+- Spin: ½ (from double winding — any material sheet with a (1,2) path)
 - Charge: e (from field extent a/R = 1/√(πα))
 - g-factor: ≈ 2.0023 (from external field fraction α/(2π))
 

@@ -24,7 +24,7 @@ are compact — periodic with circumferences L₁ and L₂:
     w¹ ~ w¹ + L₁
     w² ~ w² + L₂
 
-This makes the compact space a flat torus T² = S¹ × S¹. "Flat"
+This makes the material space a flat torus (S¹ × S¹). "Flat"
 means zero intrinsic curvature: straight lines are genuinely
 straight. The "donut" shape is just how we visualize it in 3D.
 
@@ -46,7 +46,7 @@ where μ,ν ∈ {0,1,2,3} and a,b ∈ {1,2}.
 g_μν is a 4×4 matrix — the ordinary spacetime metric. This is
 general relativity. We already know this block.
 
-### Block 2: compact × compact → shape of T²
+### Block 2: material × material → shape of the material sheet
 
 γ_ab is a 2×2 matrix describing the geometry of the compact
 space:
@@ -61,7 +61,7 @@ For a rectangular torus (perpendicular axes), γ₁₂ = 0:
 
 where R_a = L_a/(2π) is the compact radius in each direction.
 This block gives us scalar fields — the sizes (and possible
-angle) of the compact dimensions. These are the "moduli" of T².
+angle) of the material dimensions. These are the "moduli" of the material sheet.
 
 ### Block 3: spacetime × compact → gauge fields
 
@@ -96,17 +96,17 @@ The 6D metric decomposes into:
 - **4D gravity** (familiar — general relativity)
 - **Two Maxwell-like gauge fields** (each satisfies Maxwell's
   equations, independently)
-- **Three scalar fields** (the shape of T²)
+- **Three scalar fields** (the shape of the material sheet)
 
 The gauge group is **U(1) × U(1)** — two independent
-electromagnetic-like symmetries, one for each compact dimension.
+electromagnetic-like symmetries, one for each material dimension.
 
-In the 5D case, one compact dimension gave one U(1) = one
-electromagnetism. Adding a second compact dimension gives a
+In the 5D case, one material dimension gave one U(1) = one
+electromagnetism. Adding a second material dimension gives a
 second, independent copy.
 
 
-## F3. The KK metric ansatz for T²
+## F3. The KK metric ansatz for the material sheet
 
 The standard way to write the 6D metric (generalizing the 5D
 ansatz from the primer, §8) is:
@@ -128,14 +128,14 @@ cross terms (block 3). The third is a small correction to the
 spacetime metric from gauge field energy.
 
 This is exactly two copies of the 5D ansatz, side by side. Each
-compact dimension contributes its own gauge field, its own scalar,
+material dimension contributes its own gauge field, its own scalar,
 and its own cross terms. If you understand the 5D case, you
 understand this — it's the same structure, doubled.
 
 
-## F4. Momentum quantization on T²
+## F4. Momentum quantization on the material sheet
 
-Each compact dimension is periodic. The same argument as in the
+Each material dimension is periodic. The same argument as in the
 5D case (KK primer §9) applies independently to each:
 
 A wavefunction must be single-valued. Going around w^a and
@@ -215,13 +215,13 @@ smaller than a proton.
 
 ## F6. The 6D charge: two independent charges
 
-Extending F5 to the 6D case with two compact dimensions, each
+Extending F5 to the 6D case with two material dimensions, each
 has its own gauge field and its own charge:
 
     q₁ = κ × p₁       from momentum in w¹
     q₂ = κ × p₂       from momentum in w²
 
-For a rectangular T² where both dimensions couple to gravity
+For a rectangular material sheet where both dimensions couple to gravity
 symmetrically, κ₁ = κ₂ = κ, and:
 
     q₁ = n₁ × ℏ√(4πε₀G) / (cR₁)
@@ -229,7 +229,7 @@ symmetrically, κ₁ = κ₂ = κ, and:
 
 ### For the (1,2) geodesic
 
-The electron in the WvM/T² picture follows a (1,2) torus knot:
+The electron in the WvM/material-sheet picture follows a (1,2) torus knot:
 it winds n₁ = 2 times around w¹ per n₂ = 1 time around w².
 
 This gives TWO charges:
@@ -253,7 +253,7 @@ Three possibilities:
    mixing angle θ.
 
 3. **The charges are not independent.** The geodesic constraint
-   (fixed path on T²) might force a relationship between R₁ and
+   (fixed path on a material sheet) might force a relationship between R₁ and
    R₂ that makes q₁ and q₂ proportional.
 
 We'll return to this in F9 after comparing to WvM.
@@ -262,7 +262,7 @@ We'll return to this in F9 after comparing to WvM.
 ## F7. The WvM charge formula — no gravity
 
 WvM derives charge from a completely different mechanism. No
-compact dimensions, no momentum quantization, no gravitational
+material dimensions, no momentum quantization, no gravitational
 constant G.
 
 ### The derivation (from WvM paper §3)
@@ -394,30 +394,30 @@ This means:
 
 ## F9. What the compact topology DOES provide
 
-Although the charge mechanisms differ, the T² compact topology is
+Although the charge mechanisms differ, the material sheet topology is
 still valuable. It provides three things that WvM needs but
 cannot explain on its own:
 
 ### 1. Confinement without a force
 
-WvM's biggest open problem: what confines the photon? On T², no
+WvM's biggest open problem: what confines the photon? On a material sheet, no
 confinement is needed. The photon follows a geodesic (straightest
-possible path) on a compact space. The path is closed because the
+possible path) on a material space. The path is closed because the
 space is compact, not because a force bends it.
 
 ### 2. Spin from topology
 
-The (1,2) geodesic on T² winds twice before returning. This
+The (1,2) geodesic on a material sheet winds twice before returning. This
 gives spin ½ by the same argument WvM uses (double traversal →
 ωs = 2ω → L = ℏ/2). The topology of the path determines the
-spin, and T² provides the two wrapping directions needed for
+spin, and the material sheet provides the two wrapping directions needed for
 non-trivial topology.
 
 ### 3. Mass from wavelength quantization
 
-On T², the photon must fit an integer number of wavelengths
+On a material sheet, the photon must fit an integer number of wavelengths
 around the closed geodesic. The path length for a (1,2) geodesic
-on a rectangular T² is:
+on a rectangular material sheet is:
 
     L_path = √((n₁L₁)² + (n₂L₂)²) = √(4L₁² + L₂²)
 
@@ -427,7 +427,7 @@ compact geometry.
 
 ### Charge: from field profile, not compact momentum
 
-The T² topology does not determine the charge through the KK
+The material sheet topology does not determine the charge through the KK
 momentum mechanism (which requires gravity and produces Planck-
 scale structures). Instead, the charge comes from the photon's
 electromagnetic field profile on the geodesic — the WvM mechanism.
@@ -439,7 +439,7 @@ these establish that the charge is determined by the combination
 of topology (which knot) and geometry (the field extent a/R).
 
 
-## F10. The T² parameter space
+## F10. The material sheet parameter space
 
 The (1,2) geodesic constraint gives one equation:
 
@@ -467,17 +467,17 @@ q₁ and q₂, the WvM charge, and the Compton-scale geometry.
    Twenty-two orders of magnitude too small. The KK gravitational
    charge mechanism does not work at the Compton scale.
 
-2. **WvM charge depends on field extent, not T² dimensions.**
+2. **WvM charge depends on field extent, not material sheet dimensions.**
    The un-corrected WvM formula gives q ≈ 0.91e regardless of
-   the T² geometry. But S2 showed that the corrected charge
+   the material sheet geometry. But S2 showed that the corrected charge
    (using the actual field extent a/R = 1/√(πα) instead of a
    uniform sphere) gives q = e exactly. The field extent "a" is
-   not one of the T² parameters (L₁, L₂) — it describes how far
-   the photon's field reaches into the non-compact dimensions.
+   not one of the material sheet parameters (L₁, L₂) — it describes how far
+   the photon's field reaches into the non-material dimensions.
 
 3. **The free parameter r determines the shape.** Different r
    values give different L₁/L₂ ratios — different aspect ratios
-   of the compact space. This free parameter might be constrained
+   of the material space. This free parameter might be constrained
    by the magnetic moment, g-factor, or a self-consistency
    condition.
 
@@ -498,9 +498,9 @@ numerically close (both are ~0.08 × q_P) because both involve
 simple powers of π, but they are different formulas reflecting
 different physics.
 
-### P2. Does T² compact momentum give q ≈ e?
+### P2. Does material sheet momentum give q ≈ e?
 
-**Not at the Compton scale.** For compact dimensions of order
+**Not at the Compton scale.** For material dimensions of order
 λ_C, the gravitational KK charges are ~10⁻²² × e. Only at
 R ~ l_P/√α ≈ 10⁻³⁴ m would the KK mechanism give charges of
 order e.
@@ -510,7 +510,7 @@ order e.
 **Not relevant for the gravitational mechanism** (charges are too
 small). For the WvM mechanism, the charge is already single
 (it comes from the total E-field profile, not from compact
-momenta). The two U(1) gauge symmetries of T² might play a role
+momenta). The two U(1) gauge symmetries of the material sheet might play a role
 in a deeper theory, but they don't determine the electron's
 charge.
 
@@ -522,7 +522,7 @@ ratio to the fine-structure constant. In the KK framework,
 different quantities at vastly different scales:
 
 - S2: a/R involves the field extent and orbital radius (~10⁻¹³ m)
-- KK: R_KK is the compact dimension radius (~10⁻³⁴ m)
+- KK: R_KK is the material dimension radius (~10⁻³⁴ m)
 
 They don't unify. However, both express α as a geometric ratio,
 which suggests α might have a geometric origin. The S2 result is
@@ -554,7 +554,7 @@ This study should have started from the established results:
 | Mass | From path length = λ_C | WvM |
 | g ≈ 2.002 | Near-exact | WvM (depends on charge) |
 | Only (1,2) has charge | Demonstrated | S3 (symmetry cancellation) |
-| Confinement | Geodesic on compact space | Compact dimension hypothesis |
+| Confinement | Geodesic on material space | Material dimension hypothesis |
 
 The charge question was resolved by S2. The 9% deficit is an
 artifact of WvM's uniform-sphere approximation; the correct
@@ -562,7 +562,7 @@ geometry (degenerate torus with a/R = 1/√(πα)) gives q = e.
 
 ### What this study adds
 
-1. **6D metric decomposition (F1–F3).** Two compact dimensions
+1. **6D metric decomposition (F1–F3).** Two material dimensions
    give gravity + two gauge fields + three scalars. The gauge
    group is U(1) × U(1). This is useful structural knowledge.
 
@@ -572,7 +572,7 @@ geometry (degenerate torus with a/R = 1/√(πα)) gives q = e.
    WvM and KK charge mechanisms.
 
 3. **The compact topology is still useful (F9).** Even without
-   the KK charge mechanism, compact dimensions provide
+   the KK charge mechanism, material dimensions provide
    confinement (geodesic, no force), spin (double winding), and
    mass quantization (wavelength fitting).
 
@@ -586,13 +586,13 @@ but about **deriving the geometry from first principles:**
    matching, energy minimization, self-consistent confinement)
    would amount to deriving α from geometry.
 
-2. **What determines the compact dimensions L₁, L₂?** The path
+2. **What determines the material dimensions L₁, L₂?** The path
    length constraint (√(4L₁² + L₂²) = λ_C) leaves one free
    parameter. What fixes it?
 
-3. **What is "a" in the compact-dimension picture?** S2's "a" is
+3. **What is "a" in the material-dimension picture?** S2's "a" is
    the field extent — how far the photon's field reaches into
-   non-compact space. In a compact-dimension framework, this
+   non-material space. In a material-dimension framework, this
    should emerge from the field equations, not be put in by hand.
 
 4. **Do all constraints (q, m, spin, g) determine a unique

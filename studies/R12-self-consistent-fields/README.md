@@ -1,4 +1,4 @@
-# R12. Self-Consistent Fields on the Sheared T²
+# R12. Self-Consistent Fields on the Sheared Material Sheet
 
 **Status: COMPLETE** — see [`findings.md`](findings.md)
 
@@ -25,7 +25,7 @@ equivalently δ, the shear) that does NOT use e as input.
 
 ## Approach
 
-Solve the wave equation on a sheared T² parameterized by
+Solve the wave equation on a sheared material sheet parameterized by
 the shear δ.  Determine which values of δ permit
 self-consistent, single-valued, normalizable field
 configurations.
@@ -36,13 +36,13 @@ genuine free parameter and needs additional physics.
 
 ## Tracks
 
-### Track 1: Spectral structure of flat sheared T² ✓
+### Track 1: Spectral structure of flat sheared material sheet ✓
 **Type:** analytical + numerical
 **Result:** The Compton frequency ω_C is ~137× below the
 lowest torus eigenmode (ω_C/ω_min = 2gα ≈ α).  No
 eigenmode exists at ω_C for any geometry or shear value.
 The phase coherence condition is identical to the mass
-condition.  **The flat-T² wave equation cannot constrain
+condition.  **The flat-material-sheet wave equation cannot constrain
 the shear.**
 
 Key insight: the photon is NOT a torus eigenmode.  It is
@@ -58,7 +58,7 @@ momentum L_flat > R − a, making it INCOMPATIBLE with
 wrapping on the curved torus.  The actual curved geodesic
 (L* ≈ R − a) concentrates near the inner equator, giving
 q ≈ 193 (not 137).  Holonomy is zero (Gauss-Bonnet).
-**Key insight:** the compact space MUST be intrinsically
+**Key insight:** the material space MUST be intrinsically
 flat (not the embedded curved torus) for the model to
 give q ~ 1/α.
 
@@ -67,7 +67,7 @@ give q ~ 1/α.
 F7 asked whether propagation self-consistency could
 constrain the geometry.  Under the corrected two-domain
 picture (flat interior), this is trivially satisfied:
-a traveling wave on flat T² experiences no curvature
+a traveling wave on flat Ma_e experiences no curvature
 modulation, no polarization rotation, and no profile
 evolution.  The only condition is the mass condition
 (phase matching), already satisfied by construction.
@@ -78,7 +78,7 @@ is R13 Track 4.
 
 ## What we abstract
 
-- **Geometry:** Sheared T² with shear δ as the free
+- **Geometry:** Sheared material sheet with shear δ as the free
   parameter (or equivalently r, since δ = πra/q for
   given R, a).
 - **Field:** Start with scalar, promote to EM.

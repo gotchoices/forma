@@ -98,11 +98,11 @@ for the neutrino is dead at the mean-field level.
 ### F6. Remaining neutrino paths
 
 With the phonon mechanism ruled out (R23 F8–F12, R22 F5),
-the T² model's neutrino options are:
+the material-sheet model's neutrino options are:
 
 | Path | Mechanism | Status |
 |------|-----------|--------|
-| (a) Separate T² per flavor | Each neutrino on its own torus | Not yet explored |
+| (a) Separate material sheet per flavor | Each neutrino on its own torus | Not yet explored |
 | (b) Quantum fluctuations | Beyond-mean-field θ₂ breaking | Exponentially suppressed |
 | (c) Multi-torus / T³ | Higher-dimensional topology | Not yet explored |
 | (d) Moduli oscillation | Shape fluctuation + spin mechanism | Needs spin-½ construction |
@@ -117,7 +117,7 @@ the T² model's neutrino options are:
 | F3 | Proton mass decreases: ΔM ≈ −53 m_e (r=3), −1 m_e (r=10) |
 | F4 | Correction monotonic in r; does not select geometry |
 | F5 | θ₂ symmetry preserved by backreaction → phonon neutrino ruled out |
-| F6 | Remaining neutrino paths: separate T², multi-torus, moduli oscillation |
+| F6 | Remaining neutrino paths: separate material sheet, multi-torus, moduli oscillation |
 
 
 ## Scripts

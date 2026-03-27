@@ -7,7 +7,7 @@
 
 ## Motivation
 
-The T⁶ model takes α = 1/137 as an input.  Given any r > 0.26,
+The Ma (the six-dimensional material space) model takes α = 1/137 as an input.  Given any r > 0.26,
 the shear formula α(r, s) is solved for s, and the geometry is
 built.  This is circular: any α works.  But nature picks ONE
 value.  Something in the geometry must select it.
@@ -19,11 +19,11 @@ are stable for ALL α > 0 (in non-relativistic QM), so atom
 stability alone cannot pin α.
 
 Simultaneously, R29 dissolved the nuclear force by showing
-nuclei are T⁶ modes.  This raises the same radical question
+nuclei are Ma modes.  This raises the same radical question
 about atoms: is the electron-proton relationship really a
-Coulomb force across R³?  Or could it be a T⁶ phenomenon?
+Coulomb force across S (the three spatial dimensions)?  Or could it be a Ma phenomenon?
 The neutron already answers one version: when electron and
-proton windings merge in T⁶, you get a neutron — not a
+proton windings merge in Ma, you get a neutron — not a
 hydrogen atom.
 
 
@@ -39,7 +39,7 @@ The dynamics (what selects the geometry) are missing.
 To predict α, we need to break this circle with an independent
 constraint on s.  Possible approaches:
 
-1. **Geometric principle** — the T⁶ vacuum energy (Casimir)
+1. **Geometric principle** — the Ma vacuum energy (Casimir)
    or some other functional of the geometry has a minimum
    at specific s values.
 
@@ -48,7 +48,7 @@ constraint on s.  Possible approaches:
    α follows from α(r_e, s_e).
 
 3. **Full 9D self-consistency** — solve the electron-proton
-   system on T⁶ × R³ without KK reduction; the effective
+   system on Ma × S without KK reduction; the effective
    coupling that emerges IS α.
 
 
@@ -62,7 +62,7 @@ constraint on s.  Possible approaches:
   select cross-shear values.  Not yet extended to within-plane
   shears (which determine α).
 
-- **R29:** Nuclei are T⁶ modes.  Atoms are NOT (two-tier
+- **R29:** Nuclei are Ma modes.  Atoms are NOT (two-tier
   physics).  The Coulomb potential derives from KK reduction.
   Yukawa corrections from KK massive modes are problematic
   at r_e = 6.6 (~7–9% of Coulomb binding).
@@ -93,9 +93,9 @@ the richness of chemistry, but not their existence.
 ### Was deriving hydrogen tautological?
 
 Partially.  The NON-tautological result (R29 Track 1): the
-T⁶ × R³ geometry produces a 1/r Coulomb potential via KK
+Ma × S geometry produces a 1/r Coulomb potential via KK
 reduction.  This explains WHY there's an inverse-square force
-— it's a consequence of the compact geometry, not a postulate.
+— it's a consequence of the material geometry, not a postulate.
 
 The tautological part: once V = −α/r with α input, the
 hydrogen spectrum (E₁ = −13.6 eV) follows from standard QM.
@@ -105,10 +105,10 @@ We proved the mechanism, not the number.
 
 The neutron mode (1, −2, 1, 0, 0, 2) has both electron-tube
 (n₁ = 1) and proton-tube (n₅ = 0, but n₃ = 1 for spin)
-windings.  It IS an electron+proton merged in T⁶:
+windings.  It IS an electron+proton merged in Ma:
 
-- Hydrogen (R³ binding): separate modes, 938.783 MeV total
-- Neutron (T⁶ merger): single mode, 939.565 MeV
+- Hydrogen (S binding): separate modes, 938.783 MeV total
+- Neutron (Ma merger): single mode, 939.565 MeV
 
 The atom is 0.8 MeV LIGHTER than the neutron.  This explains:
 - Hydrogen is stable (lower energy than neutron)
@@ -118,27 +118,27 @@ The atom is 0.8 MeV LIGHTER than the neutron.  This explains:
 
 ## Approach — tracks
 
-### Track 1 — Is the atom a T⁶ mode?  **Complete**
+### Track 1 — Is the atom a Ma mode?  **Complete**
 
-Search for T⁶ modes near hydrogen mass (938.783 MeV) with
+Search for Ma modes near hydrogen mass (938.783 MeV) with
 Q = 0, spin = ½.  **Result:** NO.  Closest mode is 661,354 eV
-away — 48,629× the binding energy.  The T⁶ spectrum has no
+away — 48,629× the binding energy.  The Ma spectrum has no
 eV-scale structure (finest step: 38,494 eV).  Atomic binding
-is irreducibly R³.  Findings F1–F3.
+is irreducibly S.  Findings F1–F3.
 
-### Track 2 — T⁶ merging: neutron, helium, and beyond  **Complete**
+### Track 2 — Ma merging: neutron, helium, and beyond  **Complete**
 
 Search for merger modes beyond the neutron.
 **Result:** Multi-electron mergers exist (e.g., 2e+2p at
 939.9 MeV) but ALL are heavier than separated particles.
-No mode can match helium's 79 eV binding.  T⁶ merging
+No mode can match helium's 79 eV binding.  Ma merging
 always costs energy — atoms cannot be mergers.
 Findings F12–F14.
 
 ### Track 3 — What selects the shear?  (Casimir energy)  **Complete**
 
 Sweep within-plane shear s₁₂ and compute Casimir energy.
-**Result:** Full T⁶ Casimir is neutrino-dominated, independent
+**Result:** Full Ma Casimir is neutrino-dominated, independent
 of s₁₂.  Electron-sheet Casimir varies monotonically (prefers
 maximum α).  NO interior minimum — Casimir alone cannot select α.
 The missing ingredient is the energy COST of shear (moduli
@@ -154,11 +154,11 @@ modes couple with strength α.  The coupling must be suppressed
 by at least ~10⁵.  This resolves the R29 F11 "Critical Tension"
 and is itself a model prediction.  Findings F15–F18.
 
-### Track 5 — R³ vs T⁶: the electron-proton energy landscape  **Complete**
+### Track 5 — S vs Ma: the electron-proton energy landscape  **Complete**
 
 Compute energy at all separations from infinity to merger.
-**Result:** Hydrogen (R³ bound, 938.783 MeV) is 0.782 MeV
-lighter than neutron (T⁶ merged, 939.565 MeV).  The merger
+**Result:** Hydrogen (S bound, 938.783 MeV) is 0.782 MeV
+lighter than neutron (Ma merged, 939.565 MeV).  The merger
 barrier is 57,500× the binding energy — atoms are stable.
 The Bohr radius (53,000 fm) and electron tube (32,000 fm)
 are surprisingly close (factor 1.7).  Complete two-tier
@@ -166,11 +166,11 @@ picture established.  Findings F8–F11.
 
 ### Track 6 — Multi-electron atoms and the Pauli principle  **Complete**
 
-Analyze how multi-electron atoms work in T⁶ + R³.
+Analyze how multi-electron atoms work in Ma + S.
 **Result:** r_e is a geometric constant (one value for all
-electrons).  Pauli exclusion operates entirely in R³ (orbital
+electrons).  Pauli exclusion operates entirely in S (orbital
 + spin quantum numbers).  Multi-electron atoms work naturally:
-Z copies of the same T⁶ mode, distinguished by R³ states.
+Z copies of the same Ma mode, distinguished by S states.
 The 37,000× scale separation between particle identity (MeV)
 and atomic binding (eV) guarantees atomic physics works.
 Findings F19–F22.

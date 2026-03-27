@@ -11,7 +11,7 @@ quarks (→ R21).
 
 ## Background
 
-R19 established the electron as a (1,2) mode on sheared T², with
+R19 established the electron as a (1,2) mode on the sheared electron sheet, with
 charge arising from the n₁ = 1 selection rule (F30): only modes
 with n₁ = 1 produce nonzero charge.  All other modes are electrically
 silent.
@@ -31,7 +31,7 @@ and add mass through uncharged harmonics.
 
 ### The electron
 
-A photon on the (1,2) geodesic of sheared T², with one wavelength
+A photon on the (1,2) geodesic of the sheared electron sheet, with one wavelength
 fitting the geodesic length L_e.  Energy m_e c², charge e, spin ½.
 This is the fundamental — the base term of the series.
 
@@ -44,8 +44,8 @@ fitting in one traversal.  The nth harmonic has:
     energy:      E_n = n × m_e c²      (shorter wavelength → more energy)
     charge:      Q_n ≈ 0               (n₁ ≈ n ≠ 1 → uncharged by F30)
 
-The charge claim needs verification: on sheared T², the nth harmonic
-of the geodesic decomposes into a superposition of T² Fourier modes.
+The charge claim needs verification: on the sheared electron sheet, the nth harmonic
+of the geodesic decomposes into a superposition of material-sheet Fourier modes.
 The dominant component is (n, 2n) with n₁ = n, which is uncharged.
 But sub-dominant components may include n₁ = 1 terms, leaking
 a small amount of charge.  Track 1 will compute this.
@@ -144,7 +144,7 @@ or half-integer spin in 3+1D).
   what DIS measures (R14 F19 exit A).  This is a stretch goal,
   not a prerequisite.
 
-- **Binding mechanism.**  On a flat T² with linear Maxwell
+- **Binding mechanism.**  On a flat material sheet with linear Maxwell
   equations, eigenmodes are decoupled — a superposition is not
   a bound state.  A physical proton requires mode-mode coupling
   (from embedding curvature, nonlinear effects, or quantum
@@ -152,7 +152,7 @@ or half-integer spin in 3+1D).
 
 ## Planned approach
 
-### Track 1: Harmonic spectrum and charge on sheared T²  ✓
+### Track 1: Harmonic spectrum and charge on sheared electron sheet  ✓
 
 **Result (F1–F7):** The (n, 2n) harmonics are exactly uncharged
 for n ≥ 2 (by the n₁ selection rule — no leakage).  In the
@@ -196,11 +196,11 @@ the 1.53 m_e harmonic excess.
 ### Track 4: Neutrino mass and spin  ✓
 
 **Result (F14–F18):** The neutrino cannot be a mode on the
-electron's T² — the lightest uncharged spin-1/2 mode is (2,4)
-at 2 m_e, six orders of magnitude too heavy.  A separate T²
-with L_ν ≈ 1.5 μm (at the KATRIN bound) is experimentally
-allowed.  Near-degeneracies between high modes on the electron's
-T² naturally produce sub-eV energy splittings (0.29 eV at
+electron sheet — the lightest uncharged spin-1/2 mode is (2,4)
+at 2 m_e, six orders of magnitude too heavy.  A separate
+neutrino sheet with L_ν ≈ 1.5 μm (at the KATRIN bound) is experimentally
+allowed.  Near-degeneracies between high modes on the electron
+sheet naturally produce sub-eV energy splittings (0.29 eV at
 E < 100 m_e), showing the neutrino mass scale emerges from
 the torus geometry without tuning.
 
@@ -210,13 +210,13 @@ evaporation.  Proton stability (no lighter +e particle) and
 muon/tau instability (can shed harmonics to bare electron) are
 both explained by charge conservation.
 
-**Open:** neutrino identity (separate T², geometry fluctuation,
+**Open:** neutrino identity (separate neutrino sheet, geometry fluctuation,
 or created in decay).
 
 ### Track 5: Three-mode neutrino packet  ✓
 
 **Result (F19–F20):** No triplet of uncharged modes from the
-electron's T² sums to the neutron excess (1.531 m_e).  The
+electron sheet sums to the neutron excess (1.531 m_e).  The
 lightest triple is 3 × (0,1) = 1.44 m_e — 0.09 m_e short,
 and the next option overshoots.  The Δm² ratio test could
 not be performed (no triplets to test).
@@ -224,8 +224,8 @@ not be performed (no triplets to test).
 More fundamentally, every uncharged mode has rest mass
 ≥ 0.48 m_e = 245 keV, while the neutrino is < 0.8 eV.
 No wave packet construction closes this 10⁵ gap.  F18c
-(neutrino as ejected harmonics on electron's T²) is now
-ruled out.  F18a (separate T²) and F18b (geometry
+(neutrino as ejected harmonics on electron sheet) is now
+ruled out.  F18a (separate neutrino sheet) and F18b (geometry
 fluctuation) remain viable.
 
 ## Dependencies
@@ -235,7 +235,7 @@ fluctuation) remain viable.
 - **R14 (closed, negative):** Established that linking cannot
   redistribute charge.  Positive results carried forward: F10
   (spin quantization), F30 (only n₁ = 1 carries charge).
-- **R13 (complete):** Electron is a winding mode on T².
+- **R13 (complete):** Electron is a winding mode on the electron sheet.
 
 ## Relation to other questions
 
@@ -251,7 +251,7 @@ fluctuation) remain viable.
 
 | Quantity | Value | Set by |
 |----------|-------|--------|
-| Electron mode | (1,2) on sheared T² | R13 |
+| Electron mode | (1,2) on sheared electron sheet | R13 |
 | Shear s₁₂ | ≈ 0.165 (at r = 1) | R19: α(1,2) = 1/137 |
 | Charge rule | only \|n₁\| = 1 modes carry charge | R19 F30 |
 | L₁ | λ_C × √(1 + (2−s)²/r²) ≈ 2.09 λ_C at r = 1 | E(1,2) = m_e c² |
@@ -291,7 +291,7 @@ L₁ ≈ L₂ ≈ 5.1 × 10⁻¹² m,  a ≈ R ≈ 8.1 × 10⁻¹³ m.
    modes are fermions) and charge quantization (only (1,2)
    gives Q = e exactly), but this hasn't been proven.
 
-4. **Binding mechanism.**  On flat T², eigenmodes are
+4. **Binding mechanism.**  On a flat material sheet, eigenmodes are
    orthogonal and don't interact.  Embedding curvature
    breaks this orthogonality, potentially binding modes
    into composites.  Without binding, the model is
@@ -304,7 +304,7 @@ L₁ ≈ L₂ ≈ 5.1 × 10⁻¹² m,  a ≈ R ≈ 8.1 × 10⁻¹³ m.
    identified the difficulty.
 
 6. **Neutrino mechanism.**  The neutrino cannot live on the
-   electron's T² (F14).  A separate T² at ~1.5 μm or a
+   electron sheet (F14).  A separate neutrino sheet at ~1.5 μm or a
    geometry fluctuation are the remaining options (F18).
 
 7. **DIS compatibility.**  Deep inelastic scattering shows
@@ -317,10 +317,10 @@ L₁ ≈ L₂ ≈ 5.1 × 10⁻¹² m,  a ≈ R ≈ 8.1 × 10⁻¹³ m.
    ~1.6e and ~2.2e (F6).  These are unobserved and need
    a suppression mechanism.
 
-### Lightest modes on the electron's T²
+### Lightest modes on the electron sheet
 
 Complex geodesics (high winding numbers) do not help.  On
-flat T², every excitation decomposes into plane-wave modes
+a flat material sheet, every excitation decomposes into plane-wave modes
 (n₁, n₂) with E = ℏc|k(n₁,n₂)|.  Higher mode numbers
 always give higher |k| and higher energy.  The lightest
 uncharged mode is (0,±1) at 0.479 m_e = 245 keV.  Proof:

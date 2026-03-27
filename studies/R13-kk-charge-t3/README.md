@@ -1,6 +1,6 @@
 # R13. Charge from the Embedding  *(complete)*
 
-How does a photon on a flat compact T³, embedded in 3+1D
+How does a photon on a flat T³, embedded in 3+1D
 as a torus, manifest as a charged particle?  The photon
 propagates through flat space internally (mass, spin).  Its
 fields project into 3D through the toroidal embedding,
@@ -12,13 +12,13 @@ investigates what determines the embedding geometry.
 
 ### Two domains in R8
 
-R8 computed mass and spin using the flat compact space
+R8 computed mass and spin using the flat material space
 (photon on a geodesic, path = λ_C), and charge using the
 3D-embedded torus (Coulomb self-energy).
 
 This was initially diagnosed as an inconsistency (R12), but
 it is actually the correct physical picture: the photon
-propagates through intrinsically flat compact space (setting
+propagates through intrinsically flat material space (setting
 mass and spin), while its fields project into 3+1D through
 the toroidal embedding (producing apparent charge).  These
 are two aspects of the same geometry — internal vs external.
@@ -30,24 +30,24 @@ embedding be determined from geometry alone?
 ### Why KK
 
 Kaluza-Klein theory is the standard framework for connecting
-compact-dimension physics to 4D observations.  A field on
-M₄ × K (Minkowski × compact space K) decomposes into a tower
-of 4D modes.  Each mode has a mass (from its compact-space
+material-dimension physics to 4D observations.  A field on
+M₄ × K (Minkowski × material space K) decomposes into a tower
+of 4D modes.  Each mode has a mass (from its material-space
 eigenvalue) and a coupling to other modes.  The zero-mode
 produces the long-range 4D field (Coulomb potential).
 
 What was disqualified (R1): KK *gravity* — the gravitational
-coupling from compact dimensions is ~10⁻²² × e at the
-electron scale.  Gravity cannot determine the compact geometry.
+coupling from material dimensions is ~10⁻²² × e at the
+electron scale.  Gravity cannot determine the material geometry.
 
 What was NOT disqualified: KK *electromagnetism* — the EM
-field decomposition on a compact space.  This is exactly how
+field decomposition on a material space.  This is exactly how
 charge should emerge from geometry.
 
-### Why T³ (not T²)
+### Why T³ (not a single sheet)
 
 R14 Track 0 showed that topological linking of geodesics
-requires at least 3 compact dimensions.  Three linking planes
+requires at least 3 material dimensions.  Three linking planes
 on T³ map naturally to three color charges.  The electron
 uses 2 of 3 dimensions; hadrons use all 3.
 
@@ -63,7 +63,7 @@ Possible outcomes and what they mean:
    The parameter dependence still narrows the geometry search.
 3. **KK gives no charge** — the KK projection doesn't capture
    the WvM mechanism.  Need a different way to connect
-   compact-space fields to 4D observables.
+   material-space fields to 4D observables.
 
 All three outcomes advance the project.  Even outcome 3 tells
 us something important about what the correct framework is.
@@ -152,7 +152,7 @@ problem.  See findings F9–F13.
 ### Track 3: Charge from the embedding ✓
 
 Computed the monopole moment of a circularly polarized plane
-wave on flat T², embedded on a torus.
+wave on a flat material sheet, embedded on a torus.
 
 **Result:** Q = 0, exactly, for any (p, q) with q ≥ 1.
 The R8-multi-winding model (p = 68) breaks the WvM charge
@@ -178,7 +178,7 @@ tension is captured as Q34 in the INBOX for future work.
 
 - R8: electron solution curve, geometry parameters
 - R12: internal vs external domain clarification
-- R14 Track 0: T³ requirement (why not T²)
+- R14 Track 0: T³ requirement (why not a single sheet)
 
 ## What we abstract
 

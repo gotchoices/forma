@@ -35,8 +35,8 @@ Below resonance (φ → 0): n > n₀ (normal dispersion, coupling
 weaker, 1/α large).  Above resonance (φ → π): n < n₀
 (anomalous dispersion, coupling stronger, 1/α small).
 
-If α is the refractive index of the T²/R³ interface (Q77),
-then the T² modes are the absorption resonances, and the
+If α is the refractive index of the material-sheet/S interface (Q77),
+then the material-sheet modes are the absorption resonances, and the
 dispersion of α with energy follows from Kramers-Kronig
 relations — a bidirectional modulation from a geometric base.
 
@@ -55,24 +55,24 @@ midpoint coupling 1/80.
 - **R31 F7, F23**: No kinematic mechanism selects s.
   Dynamics (variational principle) needed.
 - **R32 F18**: 24 gauge field components = 3 sheets × 8
-  per sheet (4 non-compact × 2 compact).
+  per sheet (4 non-compact × 2 material).
 - **R32 F19**: The 4π in the formula IS the 3D solid angle.
 - **R32 F23**: Weighted gauge partition (by 1/L²) gives
   1/80, matching (137+24)/2 to 99.8%.
 - **R32 F14**: The Dedekind η²⁴ is forced by modular
   invariance on any torus.
 - **Q77**: α as an impedance mismatch / refractive index
-  between T⁶ and R³.
+  between Ma (the six-dimensional material space) and S (the three spatial dimensions).
 
 
 ## Key questions
 
 1. Is 1/80 the geometric base coupling, with energy-dependent
    modulation in both directions?  Or is it a coincidence?
-2. Can Kramers-Kronig dispersive running, using T⁶ modes
+2. Can Kramers-Kronig dispersive running, using Ma modes
    as resonances, reproduce 1/α from 137 (IR) to 24 (UV)?
 3. What energy scale is the "resonance" where φ = π/2 and
-   1/α = 80?  Does it correspond to a T² geometric scale?
+   1/α = 80?  Does it correspond to a material-sheet geometric scale?
 4. Can the shear s be derived from the base coupling 1/80
    instead of from the observed α = 1/137?
 5. What is the second mechanism?  The shear provides ONE
@@ -84,7 +84,7 @@ midpoint coupling 1/80.
 
 ### Track 1 — Kramers-Kronig dispersive model  **Complete**
 
-Model the T² mode spectrum as absorption resonances and
+Model the material-sheet mode spectrum as absorption resonances and
 compute the dispersive running of α(E).
 
 **Result:** Pure Kramers-Kronig cannot reach 1/24 — the
@@ -97,7 +97,7 @@ functions) reduces to a Lorentzian dispersion:
 Fitting to α(m_Z) gives E* ≈ 310 GeV (near the electroweak
 scale).  The Lorentzian works below m_Z (within 3%) but
 fails catastrophically above (wrong curvature — Lorentzian
-vs logarithmic).  No T⁶ geometric scale gives the right E*.
+vs logarithmic).  No Ma geometric scale gives the right E*.
 Findings F1–F6.
 
 
@@ -108,27 +108,27 @@ verified physics:
 
 - 1/α(0) = 137.036  (measured)
 - 1/α(m_Z) = 128.0   (measured)
-- 1/α₀ = 80          (T⁶ geometric base, from R32 F23)
+- 1/α₀ = 80          (Ma geometric base, from R32 F23)
 
 The standard QFT one-loop running is:
 
     1/α(E) = 1/α₀ + Σ_k (b_k Q_k²)/(3π) × ln(Λ/max(E, m_k))
 
 where the sum runs over all charged species (SM fermions
-+ T⁶ ghost modes).  Each species contributes screening
++ Ma ghost modes).  Each species contributes screening
 above its mass threshold.
 
 With SM fermions alone, the running rate is ~0.74 per
 unit ln(E).  This gives only 9 units of screening by m_Z,
 not nearly enough to reach 137 from 80 (needs 57 units).
 
-But T⁶ ghost modes (~78,000 charged modes) contribute at
+But Ma ghost modes (~78,000 charged modes) contribute at
 a suppressed level.  At suppression factor f:
     Effective rate = SM_rate × (1 + 157,000 × f)
     Need rate ≈ 5.75 × SM_rate to cover 57 units
 
 Procedure:
-1. Fit f so that 1/α(0) = 137 (using the full T⁶ mode
+1. Fit f so that 1/α(0) = 137 (using the full Ma mode
    spectrum from R32 Track 1)
 2. With this f, compute 1/α(m_Z) — does it equal 128?
 3. Report f and compare to the R31/R32 constraint (~10⁻⁵)
@@ -136,10 +136,10 @@ Procedure:
 If the fitted f ≈ 3 × 10⁻⁵ AND the model matches 128
 at m_Z, the ghost suppression factor is independently
 derived from the running (not from Lamb shift), providing
-a cross-check on the T⁶ model.
+a cross-check on the Ma model.
 
 Also compute 1/α(E) at 10+ energy points and compare to
-the SM predictions.  The T⁶ model should reproduce the
+the SM predictions.  The Ma model should reproduce the
 SM running at all measured energies, with the ghost modes
 adding a small (but necessary) correction that shifts the
 bare coupling from ~60 (SM at GUT scale) to 80.
@@ -199,7 +199,7 @@ real particles.  If ghost modes are absent from the
 physical spectrum, they are absent from the loops.
 
 **Premise:** The running of α should be computed using
-ONLY the particles that T⁶ predicts AND that nature
+ONLY the particles that Ma predicts AND that nature
 confirms.  No ghosts.  No suppression factors.
 
 This changes the calculation fundamentally.  In the
@@ -211,8 +211,8 @@ Total: ~21 charged Dirac fermions
 Effective Σ Q² × N_c = 3 + 4 + 1 = 8 (quarks) + 3
 (leptons) = 11
 
-In T⁶, hadrons are fundamental — there are no quarks.
-The vacuum polarization comes from the known T⁶ modes:
+In Ma, hadrons are fundamental — there are no quarks.
+The vacuum polarization comes from the known Ma modes:
 - Leptons: e⁻, μ⁻, τ⁻ (Q = −1)
 - Mesons: π⁺, K⁺ (spin-0, Q = +1); ρ⁺, K*⁺ (spin-1,
   Q = +1)
@@ -229,14 +229,14 @@ Key differences from SM:
    kaons, hyperons, deltas)
 4. The Δ⁺⁺ with Q = +2 contributes 4× per unit
 
-The effective Σ Q² for T⁶ particles is comparable to
+The effective Σ Q² for Ma particles is comparable to
 the SM value but distributed very differently in mass:
 - Below 100 MeV: only e (vs e + u,d quarks in SM)
 - 100–1800 MeV: many hadrons enter (vs s,c quarks + μ)
 - Above 1800 MeV: τ only (vs b,t quarks + τ in SM)
 
 **Procedure:**
-1. Enumerate all known T⁶ particles from R28 with their
+1. Enumerate all known Ma particles from R28 with their
    masses, charges, and spins
 2. Assign vacuum-polarization coefficients:
    b = 4/3 for spin-1/2 fermions (Dirac)
@@ -257,9 +257,9 @@ the SM value but distributed very differently in mass:
 - Any clean geometric value for 1/α₀ (even if not 80)
   would be interesting
 
-**Result:** T⁶ known particles run α ~2.4× too fast.
+**Result:** Ma known particles run α ~2.4× too fast.
 Δ(1/α) from m_e to m_Z = 21.9 (vs measured 9.0),
-giving 1/α(m_Z) = 115.  The T⁶ particle content has
+giving 1/α(m_Z) = 115.  The Ma particle content has
 Σ b×Q² = 44 vs SM's 10.7, driven by many charged
 baryons, Δ⁺⁺ (Q=+2), and vector mesons (b=7).
 Even minimizing the vector coefficient: Δ = 15.3,
@@ -296,7 +296,7 @@ Root cause: ghost modes cluster below 2 GeV, causing
 front-loaded running.  The discrepancy shrinks with
 higher cutoffs (119 at 1 PeV).  The uniform-f model
 is ruled out, but mass-dependent suppression, winding-
-number-dependent coupling, and inclusion of known T⁶
+number-dependent coupling, and inclusion of known Ma
 particles beyond e/p have not been tested.
 
 **Track 3 (backing into the shear):** The shear is a
@@ -307,7 +307,7 @@ provides a mechanism (shear → coupling) but has no
 selection principle for s.  The denominator 4π(2−s)² ≈ 50,
 not 24.  One curiosity: s_p(80) ≈ 1/100 to 0.1%.
 
-**Track 5 (known particles only):** T⁶ known particles
+**Track 5 (known particles only):** Ma known particles
 (no ghosts) run α 2.4× too fast: Δ(1/α) = 21.9 from
 m_e to m_Z vs measured 9.0.  The overshoot comes from
 many charged baryons (especially Δ⁺⁺ with Q²=4) and
@@ -317,7 +317,7 @@ treatment as sharp VP thresholds is questionable.
 
 ### Key clarifications
 
-1. The T⁶ model provides a MECHANISM for α (R19-shear-charge
+1. The Ma model provides a MECHANISM for α (R19-shear-charge
    coupling on the torus) but does not DERIVE the value
    1/137.  The shear s is reverse-engineered from α.
 
@@ -333,11 +333,11 @@ treatment as sharp VP thresholds is questionable.
 4. Ghost modes are empirically unobserved.  If they are
    absent from the physical spectrum, they should also be
    absent from virtual loops.  Track 5 confirms this
-   premise but reveals that even the known T⁶ content
+   premise but reveals that even the known Ma content
    runs too fast — the hadronic sector contributes 5×
    more screening than SM quarks.
 
-5. The central open question is whether the T⁶ hadronic
+5. The central open question is whether the Ma hadronic
    VP should be computed perturbatively (as done here)
    or requires non-perturbative treatment (as in the SM,
    where hadronic VP is extracted from e⁺e⁻ → hadrons

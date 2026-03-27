@@ -7,14 +7,14 @@
 
 ## Motivation
 
-R31 tried to derive α = 1/137 by looking INSIDE T⁶ (Casimir
+R31 tried to derive α = 1/137 by looking INSIDE Ma (the six-dimensional material space) (Casimir
 energy, moduli stabilization) and failed — no mechanism
-within the compact space selects the shear.
+within the material space selects the shear.
 
-Q77 reframes the problem: α might not be an internal T⁶
+Q77 reframes the problem: α might not be an internal Ma
 parameter.  It might be the **impedance mismatch** between
-T⁶ and R³ — a refractive index measuring how efficiently
-electromagnetic energy crosses from compact to spatial
+Ma and S (the three spatial dimensions) — a refractive index measuring how efficiently
+electromagnetic energy crosses from material to spatial
 dimensions.
 
 If α is a refractive index, it should exhibit **dispersion**:
@@ -27,12 +27,12 @@ the running of α, observed experimentally:
 
 In the Standard Model, the running comes from vacuum
 polarization — virtual charged particles screening the bare
-charge.  In the T⁶ model, the running would come from
-the KK mode spectrum: each charged T⁶ mode contributes to
-the screening, and the T⁶ has ~900 modes below 2 GeV (R28).
+charge.  In the Ma model, the running would come from
+the KK mode spectrum: each charged Ma mode contributes to
+the screening, and Ma has ~900 modes below 2 GeV (R28).
 
 The central question: if we sum the contributions of ALL
-charged T⁶ modes, does α converge to a recognizable
+charged Ma modes, does α converge to a recognizable
 geometric constant at the compact scale (the high-energy
 limit, often called "UV" in physics — by analogy with the
 electromagnetic spectrum, where ultraviolet = short
@@ -48,7 +48,7 @@ unify in GUT physics?
 - **R28 Track 4**: Predictive horizon at ~2 GeV (band
   spacing < 5 MeV).
 - **R31 Track 3**: Casimir energy has no minimum — cannot
-  select α from within T⁶.
+  select α from within Ma.
 - **R31 Track 4**: Naive KK Yukawa ruled out by 10⁵ — the
   massive KK tower couples far more weakly than the zero
   mode.
@@ -58,15 +58,15 @@ unify in GUT physics?
 
 ## Key questions
 
-1. Does the T⁶ mode spectrum reproduce the observed running
+1. Does the Ma mode spectrum reproduce the observed running
    of α between 0 and m_Z?
 2. What value does α converge to at the compact scale
    (E ~ 467 MeV, the proton ring energy)?
 3. Is that value geometrically recognizable (1/24, 1/4π,
-   or a lattice constant of T⁶)?
+   or a lattice constant of Ma)?
 4. Does the number 24 have a natural geometric relationship
    to toroidal compactification?
-5. Can the T⁶/R³ interface be modeled as an impedance
+5. Can the Ma/S interface be modeled as an impedance
    boundary with a computable transmission coefficient?
 
 
@@ -74,7 +74,7 @@ unify in GUT physics?
 
 ### Track 1 — KK mode running of α  **Complete**
 
-Enumerate all charged (Q ≠ 0) T⁶ modes and compute their
+Enumerate all charged (Q ≠ 0) Ma modes and compute their
 one-loop vacuum polarization contribution.
 
 **Result:** CATASTROPHIC.  78,608 charged modes produce
@@ -87,10 +87,10 @@ with the Lamb shift constraint.  Findings F1–F7.
 
 ### Track 2 — Volume dilution and the high-energy coupling  **Complete**
 
-Compute the T⁶ sheet areas and KK volume dilution.
+Compute the Ma sheet areas and KK volume dilution.
 
 **Result:** The "bare" coupling α_bare = α × r × μ₁₂²
-gives 1/α_bare ≈ 5.1 (electron sheet) and 3.8 (proton
+gives 1/α_bare ≈ 5.1 (the electron sheet) and 3.8 (the proton
 sheet).  NOT 1/24.  The two sheets give different bare
 couplings because they have different aspect ratios.
 The neutrino sheet volume ratio does NOT explain weak
@@ -101,13 +101,13 @@ Findings F8–F12.
 ### Track 3 — Why 24?  Geometric relationships  **Complete**
 
 Survey all known mathematical contexts where 24 appears
-and assess connection to T⁶.
+and assess connection to Ma.
 
 **Result:** Cataloged 8 contexts.  The Dedekind eta
 function η(τ)²⁴ is the strongest candidate: it is the
 unique modular-invariant cusp form, and modular
-invariance of the T² partition function forces it to
-appear.  However, the naive T⁶ scalar partition function
+invariance of the material-sheet partition function forces it to
+appear.  However, the naive Ma scalar partition function
 contains |η|⁶ (not |η|²⁴), and no combination of the
 model's aspect ratios produces 24.  The most promising
 path: compute the gauge coupling normalization from the
@@ -115,17 +115,17 @@ modular-invariant partition function and check for 1/24.
 Findings F13–F17.
 
 
-### Track 4 — Impedance at the T²/R³ interface  **Complete**
+### Track 4 — Impedance at the material-sheet/S interface  **Complete**
 
 The central physical picture: a particle is a standing
-wave on T².  That wave carries energy.  How much of that
-energy couples out into R³ as observable interaction?
+wave on a material sheet.  That wave carries energy.  How much of that
+energy couples out into S as observable interaction?
 The answer should be α.
 
-The framing is per-sheet (T² → R³⁺¹), not T⁶ → R³.
-Each T² independently couples to the non-compact space.
+The framing is per-sheet (material sheet → S⁺¹), not Ma → S.
+Each material sheet independently couples to the non-material space.
 If 24 enters, it may be 3 sheets × 8 channels/sheet,
-where 8 = 2 compact × 4 non-compact dimensions.
+where 8 = 2 material × 4 non-material dimensions.
 
 
 #### Sub-track 4a — Energy partition by propagation channels
@@ -138,10 +138,10 @@ Energy divides among ALL propagation channels:
 The 10D metric has 10×11/2 = 55 independent components:
 - 10 diagonal (4 non-compact + 6 compact)
 - 45 off-diagonal, decomposing into:
-  - 6 within R³⁺¹ (gravity: g_{μν})
+  - 6 within S⁺¹ (gravity: g_{μν})
   - 3 within-sheet shears (s₁₂, s₃₄, s₅₆)
   - 3 cross-sheet shears (σ_ep, σ_eν, σ_νp)
-  - 9 within-T⁶ cross-dimension (g_{ij}, i≠j, different sheets)
+  - 9 within-Ma cross-dimension (g_{ij}, i≠j, different sheets)
   - 24 gauge couplings (g_{μi}: 4 non-compact × 6 compact)
 
 The electromagnetic field is ONE gauge field (4 components
@@ -159,16 +159,16 @@ mixing compact and non-compact channels.
 
 #### Sub-track 4b — Dimensional mismatch: 2D cavity → 3D space
 
-When a 2D resonator (T²) radiates into 3D open space,
+When a 2D resonator (a material sheet) radiates into 3D open space,
 there is a fundamental dimensional mismatch:
 
-- In T² (2D): the density of states is constant per unit
+- On a material sheet (2D): the density of states is constant per unit
   energy (ρ₂D = A/(2πℏ²c²))
-- In R³ (3D): the density of states grows as √E
+- In S (3D): the density of states grows as √E
   (ρ₃D ∝ V × E^{1/2})
 
 The ratio ρ₂D/ρ₃D at a given energy E sets how well a
-T² mode couples to the R³ continuum.  This is analogous
+material-sheet mode couples to the S continuum.  This is analogous
 to a waveguide opening into free space: the transmission
 coefficient depends on the ratio of confined to free
 mode densities.
@@ -177,7 +177,7 @@ Compute the waveguide radiation resistance for a
 rectangular cavity (dimensions L₁ × L₂) opening into
 3D free space.  This is standard microwave engineering:
 the coupling depends on L₁L₂/λ² (aperture area in
-wavelength units).  For the electron T² at the (1,2)
+wavelength units).  For Ma_e at the (1,2)
 mode frequency, this ratio is A_e/(2πλ_e)² ≈ 27
 (from Track 2, F8).
 
@@ -191,15 +191,15 @@ the ratio Ω₃/Ω₉ (or more precisely, the projection).
 
 Compute this for d = 4 (non-compact), d = 6 (compact),
 and d = 10 (total).  Also for the per-sheet case:
-d_eff = 4 + 2 = 6 dimensions (one T² + R³⁺¹).
+d_eff = 4 + 2 = 6 dimensions (one material sheet + S⁺¹).
 
 
 #### Sub-track 4d — Fresnel transmission at impedance boundary
 
 The Fresnel equations give reflection/transmission at an
 interface between media with different wave speeds.  If
-c_T² ≠ c_R³, the transmission coefficient T depends on
-the ratio n = c_R³/c_T².  Solve T = α for n and check
+c_sheet ≠ c_S, the transmission coefficient T depends on
+the ratio n = c_S/c_sheet.  Solve T = α for n and check
 if n is geometrically meaningful.
 
 Also compute: for a sheared torus, the effective wave
@@ -226,9 +226,9 @@ but dependent on unconstrained r_e.  Findings F18–F23.
 ## What success looks like
 
 - **Strong result**: Track 1 reproduces α(m_Z) ≈ 1/128
-  from the T⁶ mode spectrum, AND α converges to 1/24 at
+  from the Ma mode spectrum, AND α converges to 1/24 at
   the compact scale, AND Track 3 identifies WHY 24 appears
-  in torus geometry.  This would connect T⁶ to GUT
+  in torus geometry.  This would connect Ma to GUT
   unification and provide a geometric origin for the
   running.
 
@@ -245,9 +245,9 @@ but dependent on unconstrained r_e.  Findings F18–F23.
   status.
 
 - **Track 4 payoff**: If the impedance calculation
-  independently produces α = 1/137 from the T² geometry,
+  independently produces α = 1/137 from the material-sheet geometry,
   this would be the derivation of α we've been looking
-  for — not from within T⁶, but from the T⁶/R³ interface.
+  for — not from within Ma, but from the Ma/S interface.
 
 
 ---
@@ -256,7 +256,7 @@ but dependent on unconstrained r_e.  Findings F18–F23.
 
 ### Outcome: Moderate-to-null result with one major structural insight
 
-The study confirms that α cannot be derived from T⁶ geometry
+The study confirms that α cannot be derived from Ma geometry
 at the current level of the model.  But it clarifies exactly
 WHERE the derivation must come from.
 
@@ -264,7 +264,7 @@ WHERE the derivation must come from.
 ### Track-by-track results
 
 **Track 1 — KK mode running (null).**  If all ~78,000 charged
-T⁶ modes contribute to vacuum polarization, α runs ~157,000×
+Ma modes contribute to vacuum polarization, α runs ~157,000×
 faster than in the Standard Model, with a Landau pole at ~1 MeV.
 This independently confirms that ghost modes must be
 electromagnetically suppressed by ~10⁵ (consistent with the
@@ -278,9 +278,9 @@ ratio does not explain weak interactions (off by 11 orders
 of magnitude).
 
 **Track 3 — Why 24 (moderate).**  Cataloged 8 mathematical
-contexts where 24 appears.  The strongest connection to T⁶ is
+contexts where 24 appears.  The strongest connection to Ma is
 the Dedekind eta function η(τ)²⁴, which is forced by modular
-invariance on any torus.  But the naive T⁶ scalar partition
+invariance on any torus.  But the naive Ma scalar partition
 function contains |η|⁶, not |η|²⁴.  No combination of aspect
 ratios produces 24.
 
@@ -321,7 +321,7 @@ invariance condition, or stability requirement — to be
 selected.
 
 Possible next steps:
-1. Modular invariance: does requiring the T² partition
+1. Modular invariance: does requiring the material-sheet partition
    function to be modular-invariant constrain s?
    (η²⁴ connection from Track 3)
 2. Self-consistent shear: does requiring the same α on all

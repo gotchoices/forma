@@ -19,7 +19,7 @@ location.
 
 The photon travels along the (1,2) geodesic — a 1D curve on the
 torus surface.  It is NOT spread over the entire surface.  The
-torus surface itself is just a visualization of the T² topology;
+torus surface itself is just a visualization of the Ma_e (the electron sheet) topology;
 it has no physical existence.  Only the path carries the field.
 
 ## Strategy
@@ -126,7 +126,7 @@ identifying the missing third constraint.
 ## Open question: mode structure
 
 The synchronized CP picture requires the polarization rotation
-to match the geometric winding (one-to-one).  On flat T² with
+to match the geometric winding (one-to-one).  On flat Ma_e with
 a (1,2) geodesic, a simple plane-wave mode has ψ = θ + 2φ,
 giving multiple oscillations per circuit — not perfectly
 synchronized.
@@ -135,7 +135,7 @@ This study proceeds under the assumption that the synchronized
 state exists (as WvM describes).  The mechanism might involve
 waveguide-like behavior (phase fronts determined by the minor-
 circle geometry while energy propagates along the geodesic), or
-the compact space might have curvature from the embedded energy.
+the material space might have curvature from the embedded energy.
 Resolving this is a separate problem.
 
 ## References

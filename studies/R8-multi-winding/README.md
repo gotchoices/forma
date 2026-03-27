@@ -112,14 +112,14 @@ The exact (p, q) will be determined by which winding number
 gives a self-consistent solution.  The slight deviation from
 exactly 1:2 is the precession.
 
-## Precession mechanism: sheared T²
+## Precession mechanism: sheared material sheet
 
-On a standard flat T² (rectangular lattice), geodesics are
+On a standard flat material sheet (rectangular lattice), geodesics are
 straight lines that close exactly — a (1,2) path closes after
 2 orbits with no precession.
 
-For R8-multi-winding to occur, the compact space must have a
-**sheared identification**: the two compact dimensions are
+For R8-multi-winding to occur, the material space must have a
+**sheared identification**: the two material dimensions are
 slightly tilted (non-orthogonal).  Concretely, when the photon
 crosses the φ boundary, it re-enters with a small offset δ in
 the θ direction.
@@ -133,7 +133,7 @@ double-orbit, it misses the start by δ.  After N double-orbits:
 
     N × 2δ = L_θ    →    N = L_θ / (2δ)
 
-The tilt ratio δ/L_θ is a property of the compact space.
+The tilt ratio δ/L_θ is a property of the material space.
 Understanding why it has a particular value is a follow-up
 question — this study just finds the geometry that works.
 
@@ -198,7 +198,7 @@ corresponding r (and hence R, a, p).
 
 These become relevant only after a working geometry is found:
 
-- **What determines the precession?**  The sheared-T² mechanism
+- **What determines the precession?**  The sheared-sheet mechanism
   provides a framework (the tilt ratio δ/L_θ), but why does the
   tilt have a particular value?  This might come from a
   self-consistency condition or a deeper symmetry.

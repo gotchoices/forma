@@ -1,7 +1,7 @@
 # R16. Harmonic Decomposition and the Charge-Producing Mode  *(open)*
 
 If the confined photon's energy distributes across multiple
-Fourier components of the compact space, and only the p = 1
+Fourier components of the material space, and only the p = 1
 component produces charge (via WvM commensurability), then:
 
     α = (energy in p = 1 mode) / (total energy)
@@ -27,25 +27,25 @@ a physical explanation for WHY only a fraction α of the energy
 couples to the far field.
 
 Path 5 of Q34 proposes the answer: the photon's field, when
-decomposed into Fourier modes of the compact space, has its
+decomposed into Fourier modes of the material space, has its
 energy spread across many (p, q) components.  Only the p = 1
 component produces net charge.  The fraction of energy in that
 component is α.
 
 ### What R12 Track 1 tells us
 
-R12 found that flat T² at Compton scale has no eigenmodes at
+R12 found that a flat material sheet at Compton scale has no eigenmodes at
 ω_C — the spectral gap is ~137×.  The lowest eigenfrequency
 is ~137 × ω_C.  This means:
 
 - The electron is NOT a resonant eigenmode of the cavity.
   It is a **winding mode** (R13 confirmed this).
-- A winding mode wraps around the compact space many times.
-  Its field, expressed in compact-space coordinates (θ, φ),
+- A winding mode wraps around the material space many times.
+  Its field, expressed in material-space coordinates (θ, φ),
   is NOT a single Fourier component — it has structure at
   multiple scales.
 - The Fourier decomposition of this winding-mode field into
-  the natural (p, q) basis of T² distributes energy across
+  the natural (p, q) basis of the material sheet distributes energy across
   multiple components.
 
 This is exactly the setup where Path 5 applies.  The question
@@ -58,7 +58,7 @@ small torus beat at the Compton frequency.  The pure two-photon
 version is ruled out by energy conservation (each would need
 frequency > ω_C, so total > 2 m_e c²).  But the viable version
 is a single photon's field decomposing into many harmonics of
-the compact space, with the p = 1 harmonic being the one that
+the material space, with the p = 1 harmonic being the one that
 produces charge.  This is NOT multiple photons — it is one
 photon whose field has multiple Fourier components.
 
@@ -80,17 +80,17 @@ confirmation.
 
 ### Track 1. Fourier decomposition of the (1,2) winding mode
 
-On flat T² with coordinates (θ, φ), a photon on the (1,2)
+On a flat material sheet with coordinates (θ, φ), a photon on the (1,2)
 geodesic has wave phase ψ = θ + 2φ.  As a pure plane wave,
 this is a single Fourier component (p, q) = (1, 2).  All
 the energy is in one mode, and p = 1 — so 100% of energy is
 in the charge-producing mode.  This gives α = 1, which is
 wrong.
 
-**The resolution:** the pure plane wave on flat T² is NOT the
+**The resolution:** the pure plane wave on the flat sheet is NOT the
 physical field configuration.  The physical field must satisfy
-boundary conditions at the compact/3D interface — the
-embedding.  When the compact T² is embedded in 3D as a torus,
+boundary conditions at the material/3D interface — the
+embedding.  When the material sheet is embedded in 3D as a torus,
 the field is modified:
 
 - The area element varies as (R + a cos θ), concentrating
@@ -103,7 +103,7 @@ the field is modified:
   free plane wave.
 
 **Calculation:**
-1. Write the (1, 2) plane wave on flat T²
+1. Write the (1, 2) plane wave on the flat sheet
 2. Embed on the torus in 3D
 3. Apply the physical boundary condition: the field must
    satisfy Maxwell's equations both ON the torus surface
@@ -144,10 +144,10 @@ If both give the same α, the result is robust.
 **Expected difficulty:** Medium — depends on Track 1 having
 a tractable solution.
 
-### Track 3. Mode spectrum and energy partition on T² with
+### Track 3. Mode spectrum and energy partition on the material sheet with
 embedding curvature
 
-The flat T² Laplacian has eigenvalues
+The flat-sheet Laplacian has eigenvalues
 ω²_{p,q} = c²(p²/a² + q²/R²).  The embedding curvature
 modifies these to coupled modes.  Compute:
 
@@ -155,7 +155,7 @@ modifies these to coupled modes.  Compute:
 2. The overlap integrals between flat-space modes and
    curved-space modes
 3. The energy distribution when a (1, 2) state is prepared
-   on flat T² and then allowed to evolve on the embedded
+   on the flat sheet and then allowed to evolve on the embedded
    (curved) torus
 
 If the curvature redistributes energy from (1, 2) to a broad
@@ -209,14 +209,14 @@ field.  This would:
    is the far-field energy of the p = 1 component)
 3. Explain R15's forward calculation (if it succeeds)
 4. Connect the charge mechanism to the mode structure of
-   the compact space
+   the material space
 5. Potentially determine the aspect ratio r if α(r) has a
    unique solution at 1/137
 
 ## Connections
 
 - **R15** — numerical forward calculation (complementary)
-- **R12** — flat-T² mode spectrum; spectral gap
+- **R12** — flat-sheet mode spectrum; spectral gap
 - **R13** — monopole integral; winding mode identification
 - **R7** — U_Coulomb = α × m_e c²; Possibility A
 - **Q34 Path 5** — the originating idea
@@ -225,7 +225,7 @@ field.  This would:
 
 ## References
 
-- R12 Track 1: flat-T² spectrum, spectral gap
+- R12 Track 1: flat-sheet spectrum, spectral gap
   [`R12-self-consistent-fields/findings.md`](../R12-self-consistent-fields/findings.md)
 - R13 Track 3: monopole integral, Fourier analysis
   [`R13-kk-charge-t3/findings.md`](../R13-kk-charge-t3/findings.md) (F18–F23)

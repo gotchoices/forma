@@ -25,14 +25,14 @@ they predict?
 
 ### Hypothesized (untested)
 
-- The compact dimension reframing: the torus as an extra dimension,
+- The material dimension reframing: the torus as an extra dimension,
   mass from photon energy, generations as harmonics (F2).
-- Three compact dimensions for three charge quanta (F4).
+- Three material dimensions for three charge quanta (F4).
 
 ### Questions Raised
 
 This study raises foundational questions about the nature of the
-compact dimension(s): what is the space, how does it relate to xyz,
+material dimension(s): what is the space, how does it relate to xyz,
 and what determines its shape? See [`../../qa/INBOX.md`](../../qa/INBOX.md).
 
 ## Approach

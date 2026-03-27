@@ -4,43 +4,43 @@ Study: `R31-alpha-derivation/`
 6 tracks, 24 findings.
 
 
-## Track 1 — Is the hydrogen atom a T⁶ mode?
+## Track 1 — Is the hydrogen atom a Ma mode?
 
-### F1. The T⁶ energy spectrum has no eV-scale structure
+### F1. The Ma energy spectrum has no eV-scale structure
 
-The finest energy resolution in T⁶ is the electron tube step:
+The finest energy resolution in Ma (the six-dimensional material space) is the electron tube step:
 38,494 eV.  The hydrogen binding energy is 13.6 eV — 2,830×
-finer.  No combination of T⁶ quantum numbers can produce an
+finer.  No combination of Ma quantum numbers can produce an
 energy shift of 13.6 eV.
 
-Even the closest pair of T⁶ modes near the proton mass are
+Even the closest pair of Ma modes near the proton mass are
 10,000 eV apart.  The mode spectrum cannot resolve atomic
 energy scales.
 
-### F2. The hydrogen atom is NOT a T⁶ mode
+### F2. The hydrogen atom is NOT a Ma mode
 
-The closest T⁶ mode to the hydrogen mass (938.783 MeV, Q=0,
+The closest Ma mode to the hydrogen mass (938.783 MeV, Q=0,
 spin ½) is 661,354 eV away — 48,629× the binding energy.
-There is no T⁶ mode that could represent a hydrogen atom.
+There is no Ma mode that could represent a hydrogen atom.
 
 This definitively confirms the two-tier picture:
-- T⁶ → particles and nuclei (MeV scale)
-- R³ → atoms and chemistry (eV scale)
+- Ma → particles and nuclei (MeV scale)
+- S (the three spatial dimensions) → atoms and chemistry (eV scale)
 
 ### F3. To understand atoms, we must understand α
 
-Since atomic binding is irreducibly an R³ phenomenon, the
+Since atomic binding is irreducibly an S phenomenon, the
 Coulomb potential V = −α/r is the mechanism.  The value of
-α is the ONLY bridge between compact geometry (T⁶) and
-extended-space physics (R³).  Deriving α would complete the
+α is the ONLY bridge between material geometry (Ma) and
+extended-space physics (S).  Deriving α would complete the
 connection between the two tiers.
 
 
 ## Track 3 — What selects the shear? (Casimir energy)
 
-### F4. The full T⁶ Casimir energy is neutrino-dominated
+### F4. The full Ma Casimir energy is neutrino-dominated
 
-The Casimir (vacuum) energy of the T⁶ is dominated by modes
+The Casimir (vacuum) energy of Ma is dominated by modes
 on the largest dimensions — the neutrino sheet (L ~ 10¹¹ fm).
 The electron and proton sheets (L ~ 10⁰–10⁴ fm) contribute
 negligibly to the total.
@@ -51,7 +51,7 @@ log₁₀(Z) = 113.536 at ALL shear values tested.
 
 ### F5. The electron-sheet Casimir varies monotonically
 
-Isolating the electron T² contribution, the Casimir energy
+Isolating the electron sheet contribution, the Casimir energy
 decreases monotonically with increasing shear.  It prefers
 maximum shear (maximum α) — the opposite of what nature selects.
 
@@ -60,7 +60,7 @@ electron sheet does not select a preferred α.
 
 ### F6. Casimir energy alone does not select α
 
-The Casimir energy on the full T⁶ is nearly independent
+The Casimir energy on the full Ma is nearly independent
 of the within-plane shears.  The per-sheet Casimir varies
 monotonically.  Neither has a minimum that could select α.
 
@@ -84,15 +84,15 @@ elastic energy functional not yet in the model.
    allow smooth geodesic closure
 
 
-## Track 5 — R³ vs T⁶: the electron-proton energy landscape
+## Track 5 — S vs Ma: the electron-proton energy landscape
 
 ### F8. Hydrogen is 0.782 MeV lighter than the neutron
 
 | Configuration | Energy | Mechanism |
 |--------------|--------|-----------|
 | p + e (separated) | 938.783 MeV | free particles |
-| Hydrogen atom | 938.783 MeV − 13.6 eV | Coulomb in R³ |
-| Neutron | 939.565 MeV | T⁶ merged mode |
+| Hydrogen atom | 938.783 MeV − 13.6 eV | Coulomb in S |
+| Neutron | 939.565 MeV | Ma merged mode |
 
 The atom is 782 keV = 782,007 eV below the neutron.
 This is WHY hydrogen is stable and neutrons decay.
@@ -112,16 +112,16 @@ is ten million times too high.  Only extreme environments
 
 | Tier | Governs | Energy | Mechanism |
 |------|---------|--------|-----------|
-| T⁶ | Particles, nuclei | MeV–GeV | Mode spectrum |
-| R³ | Atoms, chemistry | eV–keV | Coulomb (α) |
+| Ma | Particles, nuclei | MeV–GeV | Mode spectrum |
+| S | Atoms, chemistry | eV–keV | Coulomb (α) |
 
-**The bridge:** α emerges from T⁶ geometry (shear) and
-governs R³ interactions (Coulomb).  Deriving α = deriving
-the bridge between compact geometry and extended-space physics.
+**The bridge:** α emerges from Ma geometry (shear) and
+governs S interactions (Coulomb).  Deriving α = deriving
+the bridge between material geometry and extended-space physics.
 
 ### F11. The energy landscape has distinct regimes
 
-As electron approaches proton in R³:
+As electron approaches proton in S:
 
 | Separation | Physics |
 |-----------|---------|
@@ -131,17 +131,17 @@ As electron approaches proton in R³:
 | r ~ L₂ (4,900 fm) | Electron ring scale |
 | r ~ L₅ (24 fm) | Proton tube (nuclear) |
 | r ~ L₆ (2.7 fm) | Proton ring (deep nuclear) |
-| r → 0 | T⁶ merger → neutron |
+| r → 0 | Ma merger → neutron |
 
 The Bohr radius (53,000 fm) and electron tube (32,000 fm)
 are surprisingly close — within a factor of 1.7.  This
-means the compact geometry is NOT deeply hidden below
+means the material geometry is NOT deeply hidden below
 atomic scales; it's just barely smaller.
 
 
-## Track 2 — T⁶ merger modes beyond the neutron
+## Track 2 — Ma merger modes beyond the neutron
 
-### F12. Multi-electron T⁶ mergers exist but cost energy
+### F12. Multi-electron Ma mergers exist but cost energy
 
 Modes with n₁ = 2 (two electron tube windings) combined
 with proton windings exist.  Example:
@@ -156,22 +156,22 @@ with proton windings exist.  Example:
 Every merger mode is HEAVIER than the separated particles.
 Merging always costs energy.
 
-### F13. Atoms cannot be T⁶ mergers
+### F13. Atoms cannot be Ma mergers
 
-Helium atom mass: 3728.4 MeV.  The nearest T⁶ modes
+Helium atom mass: 3728.4 MeV.  The nearest Ma modes
 with Q = 0 are at MeV-scale offsets.  The 79 eV binding
-energy of helium is invisible in the T⁶ spectrum.
+energy of helium is invisible in the Ma spectrum.
 
-Multi-electron T⁶ modes produce new particles at MeV
+Multi-electron Ma modes produce new particles at MeV
 energies, not atoms at eV energies.  Atoms are irreducibly
-R³ composites — multiple T⁶ modes interacting via Coulomb.
+S composites — multiple Ma modes interacting via Coulomb.
 
-### F14. T⁶ merging always costs energy — atoms are lower energy
+### F14. Ma merging always costs energy — atoms are lower energy
 
-The neutron (T⁶ merged e + p) is 0.78 MeV heavier than
-hydrogen (R³ separated e + p).  This is general: combining
-modes in T⁶ cannot produce lower energy than keeping them
-separate.  The compact geometry's "ground state" for an
+The neutron (Ma merged e + p) is 0.78 MeV heavier than
+hydrogen (S separated e + p).  This is general: combining
+modes in Ma cannot produce lower energy than keeping them
+separate.  The material geometry's "ground state" for an
 electron + proton system is the SEPARATED configuration
 (hydrogen), not the merged one (neutron).
 
@@ -191,7 +191,7 @@ splitting from KK massive modes:
 | 20.0 | 3.4 | −205,141,000 | 194,000× too large |
 | 68.0 | 1.0 | −796,000,000 | 752,000× too large |
 
-The actual Lamb shift is 1,058 MHz.  The naive T⁶ Yukawa
+The actual Lamb shift is 1,058 MHz.  The naive Ma Yukawa
 correction exceeds it by factors of 300 to 750,000 across
 the entire viable r_e range.
 
@@ -210,24 +210,24 @@ naive KK Yukawa exceeds this by at least 10⁵.  This rules
 out the assumption that KK massive modes couple with strength
 α — the same as the massless (photon) mode.
 
-This does NOT rule out the T⁶ model.  It rules out the
+This does NOT rule out the Ma model.  It rules out the
 naive coupling assumption.  The KK massive mode coupling
 must be suppressed by a factor of at least ~10⁵ relative
 to the massless mode.
 
 ### F18. This is a prediction, not a failure
 
-The T⁶ model PREDICTS that KK massive mode couplings must
+The Ma model PREDICTS that KK massive mode couplings must
 be strongly suppressed.  Possible mechanisms:
 
 1. **Wavefunction overlap** — point-particle wavefunctions
-   in R³ don't overlap with the compact-dimension structure
+   in S don't overlap with the material-dimension structure
    of massive KK modes
 2. **Renormalization** — the coupling runs from the KK mass
    scale down to atomic energies
 3. **Different gauge origin** — the electromagnetic gauge
    field may not be simply the off-diagonal metric component
-   but may have a different geometric origin in T⁶
+   but may have a different geometric origin in Ma
 
 This finding resolves the tension identified in R29 Track 2
 (F11, "Critical Tension") and R30 F24 (Yukawa at r_e = 6.6
@@ -239,48 +239,48 @@ coupling is assumed, but the coupling must not be naive.
 
 ### F19. r_e is a geometric constant, not per-electron
 
-The aspect ratio r_e is a property of the T² sheet — the
-shape of the compact space.  All electrons share the same
+The aspect ratio r_e is a property of the electron sheet — the
+shape of the material space.  All electrons share the same
 geometry.  Having different r_e values for different electrons
-would require multiple copies of the electron T² sheet,
-adding new compact dimensions and violating the structural
+would require multiple copies of the electron sheet,
+adding new material dimensions and violating the structural
 minimum of 6 (R30 F7).
 
-### F20. Pauli exclusion operates in R³, not T⁶
+### F20. Pauli exclusion operates in S, not Ma
 
-In the T⁶ + R³ picture:
-- **T⁶ part** (same for all electrons): mode (1,2,0,0,0,0)
+In the Ma + S picture:
+- **Ma part** (same for all electrons): mode (1,2,0,0,0,0)
   — defines particle identity
-- **R³ part** (different per electron): orbital + spin
+- **S part** (different per electron): orbital + spin
   quantum numbers (n, l, m_l, m_s) — where Pauli exclusion
   operates
 
-No two electrons can share the same R³ state.  T⁶ plays
+No two electrons can share the same S state.  Ma plays
 no role in exclusion — it only determines WHAT the particle is.
 
 ### F21. Multi-electron atoms work naturally
 
-Z electrons in T⁶ mode (1,2,0,0,0,0), each in a different
-R³ state (n, l, m_l, m_s), interacting via Coulomb.  No new
-T⁶ degrees of freedom needed.
+Z electrons in Ma mode (1,2,0,0,0,0), each in a different
+S state (n, l, m_l, m_s), interacting via Coulomb.  No new
+Ma degrees of freedom needed.
 
 The 37,000× scale separation between particle identity
 (m_e = 511 keV) and atomic binding (13.6 eV) guarantees
 that electrons maintain their identity during atomic physics.
 
-### F22. Shell structure and chemistry are R³ phenomena
+### F22. Shell structure and chemistry are S phenomena
 
-T⁶ provides:
+Ma provides:
 - particle masses
 - coupling constant α
 - nuclear masses (as modes)
 
-R³ provides:
+S provides:
 - shell structure (QM eigenstates of V = −Zα/r)
-- Pauli exclusion (antisymmetry of R³ wavefunctions)
+- Pauli exclusion (antisymmetry of S wavefunctions)
 - electron configurations and filling order
-- atomic spectra (transitions between R³ states)
-- chemical bonding (overlap of R³ orbitals)
+- atomic spectra (transitions between S states)
+- chemical bonding (overlap of S orbitals)
 
 
 ## Synthesis
@@ -298,13 +298,13 @@ dynamics (what selects the geometry).  To predict α requires:
 
 The Casimir energy alone is insufficient (F4–F6).  The
 missing ingredient is the moduli potential — the cost of
-deforming the compact geometry away from a flat torus.
+deforming the material geometry away from a flat torus.
 
 ### F24. Summary of what R31 established
 
 | Question | Answer | Track |
 |----------|--------|-------|
-| Is atom a T⁶ mode? | NO — 2,830× too coarse | 1 |
+| Is atom a Ma mode? | NO — 2,830× too coarse | 1 |
 | Can Casimir select α? | NO — no minimum | 3 |
 | Why is hydrogen stable? | 0.78 MeV lighter than neutron | 5 |
 | Can electrons merge with nuclei? | YES, but costs energy → not atoms | 2 |
@@ -324,7 +324,7 @@ deforming the compact geometry away from a flat torus.
 | σ_eν, σ_νp | Irrelevant | Neutrino decouples (R28) |
 
 **α remains an input.**  The model successfully predicts
-particle and nuclear masses, explains atoms as R³ composites,
+particle and nuclear masses, explains atoms as S composites,
 and identifies why hydrogen is stable — but cannot yet
 derive α = 1/137 from first principles.
 
@@ -339,7 +339,7 @@ anything attempted so far.
 ### Q: r_p is "fixed" at 8.906 — but was that really derived?
 
 Not from pure geometry.  It's an experimental fit: two known
-particles live on the proton T² sheet (proton and muon), giving
+particles live on the proton sheet (proton and muon), giving
 two equations for two unknowns (L₅ and L₆):
 
 - Proton mode (0,0,0,0,1,2) = 938.272 MeV → pins L₆
@@ -383,7 +383,7 @@ But its energy is 99.997% determined by the proton tube
 mass changes by ±24 keV out of 105,658 keV — a 0.02% shift,
 well below the model's ~1% matching accuracy.
 
-### Q: Are there any particles on the electron T² that could supply a second equation?
+### Q: Are there any particles on the electron sheet that could supply a second equation?
 
 No.  Every known particle with n₁ ≠ 0 gets its mass from the
 proton sheet.  The electron tube's 38 keV contribution is
@@ -409,7 +409,7 @@ particles have significant proton-sheet windings.  The electron
 sheet is **whisper-quiet** — its tube contributes 38 keV per
 step, invisible at the MeV scale where we have data.
 
-The electron sheet is the quietest corner of the T⁶.  It
+The electron sheet is the quietest corner of Ma.  It
 determines the electron mass (by construction) and α (via the
 shear), but its geometric details (r_e) are hidden from every
 observable we can currently compute.

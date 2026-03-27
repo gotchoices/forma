@@ -2,9 +2,9 @@
 
 ## Track 1: Divisor spectrum and sub-harmonic structure
 
-### F1. No sub-periodic geodesic closure on the sheared T²
+### F1. No sub-periodic geodesic closure on the sheared material sheet
 
-On a sheared T² with δ = L_θ/(2q), the 1:2 geodesic closes
+On a sheared material sheet with δ = L_θ/(2q), the 1:2 geodesic closes
 at lattice winding (n, m) when n = m(q−1)/(2q) is an integer.
 Since gcd(q, q−1) = 1, the smallest m giving integer n is
 always m = q — regardless of whether q is prime or composite.
@@ -153,7 +153,7 @@ Candidate selection mechanisms (none yet confirmed):
    comparison issue.  This remains a viable discriminant.
 
 2. **Wave propagation / phase coherence.**  A scalar or EM
-   wave on the sheared T² would test whether self-consistency
+   wave on the sheared material sheet would test whether self-consistency
    (constructive interference after q orbits) selects a
    specific q.  Most complete but hardest to implement.
 
@@ -277,11 +277,11 @@ dynamical test.
 
 ---
 
-## Track 8: Mode spectrum and degeneracy on the sheared T²
+## Track 8: Mode spectrum and degeneracy on the sheared material sheet
 
 ### F13. Mode spectrum is analytically exact
 
-The sheared T² is flat, so the scalar Helmholtz equation has
+The sheared material sheet is flat, so the scalar Helmholtz equation has
 exact plane-wave solutions.  Mode frequencies:
 
     ω(n,m) = √(n²/r² + (m − n/(2q))²)    [units: c/R]
@@ -334,7 +334,7 @@ integer factorization of q does not enter the frequency
 formula — only the VALUE of q matters.
 
 This is the same root cause as Track 7: on the flat sheared
-T², the wave equation is linear, and its solutions depend on
+material sheet, the wave equation is linear, and its solutions depend on
 q as a continuous parameter.  The distinction between q = 135
 and q = 137 is a smooth shift of 1/(270) vs 1/(274) in the
 shear, not a structural change.
@@ -352,7 +352,7 @@ Five tests have now failed to find prime/composite distinction:
 | 8a    | Mode degeneracy         | linear modes  | None   |
 | 8c    | Beat frequency pairs    | linear modes  | None   |
 
-All five are LINEAR analyses on the flat (or nearly flat) T².
+All five are LINEAR analyses on the flat (or nearly flat) material sheet.
 
 **For primality to matter, ALL of the following must hold:**
 1. The coupling mechanism must be NONLINEAR (mode-mode
@@ -402,7 +402,7 @@ distributions should either:
 
 | Finding | Result |
 |---------|--------|
-| Sub-periodic closure | Impossible on sheared T² for any q |
+| Sub-periodic closure | Impossible on sheared sheet for any q |
 | Geodesic Coulomb (converged) | Lower q = cheaper (monotonic) |
 | Wave superposition (linear) | No prime/composite distinction |
 | Mode spectrum (linear) | No prime/composite distinction |
@@ -414,7 +414,7 @@ distributions should either:
 
 **Primality:** Five linear tests found no prime/composite
 distinction (Tracks 1, 2, 7, 8a, 8c).  The root cause is
-that q enters the flat-T² wave equation as a continuous
+that q enters the flat-sheet wave equation as a continuous
 parameter (through the shear 1/(2q)), not through its integer
 factorization.  **For primality to matter, the mechanism must
 be nonlinear AND sensitive to integer factorization** (F16).
@@ -459,7 +459,7 @@ energy" and "path = Compton wavelength."
    which is ~137× too small.  The photon MUST wind ~137 times.
 
 3. Spin-½ emerges exactly from the 1:2 winding ratio on the
-   sheared T², independent of q.
+   sheared material sheet, independent of q.
 
 4. The geometry is physically reasonable — not Planck-scale
    or absurd.
@@ -486,7 +486,7 @@ q ~ 100–287 merely reflects g(r)√(1+r²/4) varying by ~3×
 across that interval.
 
 **The question "what selects q = 137" is really "what selects
-r ≈ 0.31."**  This is a question about the compact geometry's
+r ≈ 0.31."**  This is a question about the material geometry's
 shape, not a number-theory question about 137.
 
 
@@ -517,7 +517,7 @@ properties (primality).  After eight tracks of investigation:
 The real free parameter is not q but r (the aspect ratio).
 Determining r requires a fundamentally different approach:
 solving for self-consistent field configurations on the
-sheared T², where the shear is constrained by the field
+sheared material sheet, where the shear is constrained by the field
 equations rather than put in by hand from the measured charge.
 This is the subject of a new study (R12).
 
@@ -537,4 +537,4 @@ This is the subject of a new study (R12).
 - [`scripts/track7_wave_superposition.py`](scripts/track7_wave_superposition.py)
   — Track 7: wave superposition / sub-harmonic test (Q30 hypothesis)
 - [`scripts/track8_mode_spectrum.py`](scripts/track8_mode_spectrum.py)
-  — Track 8: mode spectrum and degeneracy on the sheared T²
+  — Track 8: mode spectrum and degeneracy on the sheared material sheet

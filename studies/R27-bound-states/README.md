@@ -1,4 +1,4 @@
-# R27. T⁶ oscillation patterns — particles, atoms, and nuclei  *(active)*
+# R27. Ma oscillation patterns — particles, atoms, and nuclei  *(active)*
 
 **Questions:** Q16 (mass spectrum), Q28 (photon absorption / energy levels), Q32 (energy-geometry)
 **Type:** compute/analytical  **Depends on:** R26, R19, R15
@@ -6,10 +6,10 @@
 
 ## Background and definitions
 
-### The T⁶ model
+### The Ma model
 
-The T⁶ is a six-dimensional compact torus composed of three
-T² subplanes — one each for the electron, neutrino, and proton.
+Ma (the six-dimensional material space) is composed of three
+material sheets — one each for the electron, neutrino, and proton.
 A quantum field on this geometry has modes (standing waves)
 labeled by six integer quantum numbers (n₁, n₂, n₃, n₄, n₅, n₆).
 Each mode has a definite mass, charge, and spin determined by
@@ -17,7 +17,7 @@ its quantum numbers and the geometry.
 
 ### Dimensions and circumferences
 
-Each T² has two compact dimensions: a "ring" and a "tube."
+Each material sheet has two material dimensions: a "ring" and a "tube."
 
 | Index | Dimension | Circumference | Physical scale | Role |
 |-------|-----------|---------------|---------------|------|
@@ -30,7 +30,7 @@ Each T² has two compact dimensions: a "ring" and a "tube."
 
 ### Aspect ratios
 
-Each T² has an aspect ratio r = L_ring / L_tube:
+Each material sheet has an aspect ratio r = L_ring / L_tube:
 
 | Symbol | Definition | Status |
 |--------|-----------|--------|
@@ -40,18 +40,18 @@ Each T² has an aspect ratio r = L_ring / L_tube:
 
 ### Within-plane shear parameters
 
-Each T² can be sheared (the tube tilted relative to the ring).
+Each material sheet can be sheared (the tube tilted relative to the ring).
 These parameters are determined by measured constants:
 
 | Symbol | Plane | Value | Determined by |
 |--------|-------|-------|--------------|
-| s₁₂    | Electron (T²_e) | Depends on r_e via α formula | Fine structure constant α |
-| s₃₄    | Neutrino (T²_ν) | 0.022 | Neutrino mass ratio Δm²₃₁/Δm²₂₁ |
-| s₅₆    | Proton (T²_p)   | Depends on r_p via α formula | Fine structure constant α |
+| s₁₂    | Electron (Ma_e) | Depends on r_e via α formula | Fine structure constant α |
+| s₃₄    | Neutrino (Ma_ν) | 0.022 | Neutrino mass ratio Δm²₃₁/Δm²₂₁ |
+| s₅₆    | Proton (Ma_p)   | Depends on r_p via α formula | Fine structure constant α |
 
 ### Cross-plane shear parameters (σ)
 
-Cross-shears couple different T² subplanes.  They are the
+Cross-shears couple different material sheets.  They are the
 mechanism that produces cross-sheet modes (like the neutron)
 and determines the particle spectrum beyond the three inputs.
 
@@ -109,13 +109,13 @@ circumferences.
 
 ## Motivation
 
-R26 showed that the T⁶ produces an emergent neutron.  R27
+R26 showed that Ma produces an emergent neutron.  R27
 Tracks 1–3 found the correct self-consistent neutron mode
 and simultaneously matched the muon, pinning two parameters
 (r_p = 8.906 and σ_ep = −0.0906).
 
 Track 4 showed that the tau mass falls in a structural gap
-of the proton-scale energy ladder — no single T⁶ mode exists
+of the proton-scale energy ladder — no single Ma mode exists
 at 1776.9 MeV.  Preliminary Track 5 work found the kaon at
 1.2% error and the pion at 13.6% — both parameter-free
 predictions.
@@ -123,7 +123,7 @@ predictions.
 **Key reframing (from findings discussion):**
 
 Stable particles (electron, proton, neutrinos) are **exact
-eigenmodes** of the T⁶ — perfect standing waves.  Unstable
+eigenmodes** of Ma — perfect standing waves.  Unstable
 particles need not be exact eigenmodes.  They are **transient,
 off-resonance excitations** — energy temporarily in a
 configuration close to but not exactly on a mode.  The gap
@@ -144,7 +144,7 @@ correlate with the particle's lifetime and production context?"
 
 ## Core hypothesis
 
-**The T⁶ has a discrete spectrum of eigenmodes.  Stable
+**Ma has a discrete spectrum of eigenmodes.  Stable
 particles are exact eigenmodes.  Unstable particles are
 off-resonance excitations whose lifetimes correlate with their
 distance from the nearest eigenmode.  The full spectrum of
@@ -197,7 +197,7 @@ Key results:
   energy ladder (between n₆ = ±3 at ~1408 MeV and n₆ = ±4
   at ~1877 MeV).
 - Asymmetric cross-shears shift energies by at most ±2 MeV.
-- No single T⁶ mode exists at 1776.9 MeV.
+- No single Ma mode exists at 1776.9 MeV.
 - This motivates the off-resonance reframing.
 
 
@@ -210,7 +210,7 @@ Key results: 19 particles searched, 5 within 1.5% (kaons, η, η′, φ),
 
 For **every well-measured unstable particle**, compute:
 
-1. Nearest T⁶ mode with matching charge and spin
+1. Nearest Ma mode with matching charge and spin
 2. Mode energy (parameter-free, since r_p and σ_ep are pinned)
 3. Gap = observed mass − nearest mode energy
 4. Gap direction (above or below the mode)
@@ -276,7 +276,7 @@ The central test of the off-resonance hypothesis.
 Key results: 21 reactions tested, 17/21 sign-consistent.  All
 leptonic/meson decays pass.  4 sign flips in strange baryon decays.
 
-Do reaction conservation laws work at the T⁶ mode level?
+Do reaction conservation laws work at the Ma mode level?
 
 **Method:** For well-measured reactions, check whether the
 total nearest-mode energies balance:
@@ -348,7 +348,7 @@ Track-specific scripts go in `R27-bound-states/scripts/`.
 ### Possible outcomes
 
 **Best case:** The lifetime-gap correlation is strong, reaction
-energetics balance, and the T⁶ mode spectrum explains both
+energetics balance, and the Ma mode spectrum explains both
 stable and unstable particles through the off-resonance
 mechanism.  The model transitions from "fitting masses" to
 "predicting lifetimes."
@@ -359,7 +359,7 @@ picture but others (especially short-lived resonances like ρ,
 between single-mode and composite physics is identified.
 
 **Null result:** No correlation between gap and lifetime.  The
-T⁶ mode spectrum is not sufficient to explain unstable
+Ma mode spectrum is not sufficient to explain unstable
 particles even as off-resonance excitations.
 
 
@@ -367,7 +367,7 @@ particles even as off-resonance excitations.
 
 | Study | Relationship |
 |-------|-------------|
-| R26 | T⁶ framework, initial neutron discovery, metric infrastructure |
-| R19 | Shear-charge mechanism — origin of the EM field on T² |
+| R26 | Ma framework, initial neutron discovery, metric infrastructure |
+| R19 | Shear-charge mechanism — origin of the EM field on a material sheet |
 | R15 | The α problem — hydrogen binding could solve it |
 | R20 F17 | First mention of muon/tau as "hot electrons" |

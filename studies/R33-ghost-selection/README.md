@@ -1,4 +1,4 @@
-# R33. Ghost mode selection — why most T⁶ modes are dark
+# R33. Ghost mode selection — why most Ma modes are dark
 
 **Questions:** Q77 (coupling suppression), Q34 (charge mechanism)
 **Type:** compute + theoretical  **Depends on:** R19, R27, R28, R31, R32
@@ -7,10 +7,10 @@
 
 ## Motivation
 
-The T⁶ spectrum contains ~900 modes below 2 GeV, but only
+The Ma (the six-dimensional material space) spectrum contains ~900 modes below 2 GeV, but only
 ~40 correspond to observed particles (R28 Track 2).  The
 remaining ~860 are "ghost modes" — valid solutions of the
-wave equation on T⁶ with definite mass, charge, and spin,
+wave equation on Ma with definite mass, charge, and spin,
 but no observed counterpart.
 
 Two independent calculations demand that ghost modes are
@@ -18,7 +18,7 @@ electromagnetically suppressed by a factor of ~10⁵:
 
 - **R31 Track 4**: Naive KK Yukawa corrections to the
   hydrogen Lamb shift exceed observation by 10⁵.
-- **R32 Track 1**: Naive vacuum polarization from the T⁶
+- **R32 Track 1**: Naive vacuum polarization from the Ma
   mode spectrum produces running of α that is 157,000×
   too fast, with a Landau pole at ~1 MeV.
 
@@ -31,7 +31,7 @@ mode suppression.
 
 ### Sheet-by-sheet focus
 
-The three T² sheets have different roles:
+The three material sheets have different roles:
 
 **Electron sheet (L₁ ~ fm, L₂ ~ fm):** The electron is
 mode (1,2).  The question is why this mode dominates — why
@@ -66,7 +66,7 @@ Tracks 5 and 7(e), and there the goal is characterization
   on the full mode shape, not just n₁.
 - **R27 F37–F42**: Lifetime-gap correlation (r = −0.84)
   suggests observed particles are off-resonance
-  excitations, not exact T⁶ eigenmodes.
+  excitations, not exact Ma eigenmodes.
 - **R28 Track 2**: ~900 modes below 2 GeV, ~20× more than
   known particles.  Proton energy ladder (52 MeV steps)
   dominates the spectrum.
@@ -91,7 +91,7 @@ Tracks 5 and 7(e), and there the goal is characterization
 5. Do production selection rules (quantum number
    conservation) explain which modes are reachable from
    known-particle reactions?
-6. Does the energy gap structure of the T⁶ spectrum
+6. Does the energy gap structure of the Ma spectrum
    (spacing between modes, pair-production ceilings,
    harmonic ladders) create natural stability islands
    that correlate with known particles?
@@ -102,11 +102,11 @@ Tracks 5 and 7(e), and there the goal is characterization
 ### Track 1 — Charge integral per mode (electron and proton sheets)
 
 The R19-shear-charge formula derives α from a surface
-integral over the electron T².  The integral assumes the
+integral over the electron sheet.  The integral assumes the
 (1,2) mode shape.  Generalize it to all modes on both the
 electron and proton sheets.
 
-For each mode (n₁, n₂) on the electron T²:
+For each mode (n₁, n₂) on Ma_e:
 
     Q_eff(n₁, n₂) = ∫∫ [EM flux from mode (n₁,n₂)] dA
 
@@ -156,7 +156,7 @@ See findings F1–F8.
 ### Track 2 — Quantum number reachability
 
 Starting from the known stable particles (e, p, ν) and
-their antiparticles, determine which T⁶ modes are
+their antiparticles, determine which Ma modes are
 "reachable" — producible by collisions that conserve
 charge, energy, and total winding numbers.
 
@@ -221,19 +221,19 @@ metric itself might BE the selection rule.
 
 ### Track 5 — Energy gap structure and pair-production ceilings
 
-Each T⁶ mode has a fixed rest energy.  For fermions
+Each Ma mode has a fixed rest energy.  For fermions
 (spin-½), Pauli exclusion limits occupancy to 1 particle
 per quantum state.  At energy 2m, a particle–antiparticle
 pair can be created — this is the pair-production ceiling.
 
-Between m and 2m, additional energy goes to either R³
-kinetic energy (momentum) or excitation of a DIFFERENT T⁶
+Between m and 2m, additional energy goes to either S (the three spatial dimensions)
+kinetic energy (momentum) or excitation of a DIFFERENT Ma
 mode.  The charge-preserving excitations (1, n₂) for
 n₂ = 3, 4, 5, ... on the electron sheet keep charge = −1
 while increasing mass.  These form the "harmonic ladder"
 (see Q85).  Their spacing depends on the free parameter r.
 
-The question is whether the gap structure of the T⁶
+The question is whether the gap structure of the Ma
 spectrum constrains which modes can absorb intermediate
 energy and which are left isolated.
 
@@ -252,7 +252,7 @@ b) Build the "decay cascade" for each ghost mode: if it
    cascade paths.
 
 c) For each known particle, identify its pair-production
-   threshold (2m).  Is there always a T⁶ mode near 2m
+   threshold (2m).  Is there always a Ma mode near 2m
    with the right quantum numbers to absorb the pair?
    The pion at ~280 MeV should sit near 2 × m_π — does
    the mode spectrum cooperate?
@@ -278,7 +278,7 @@ e) Count the modes accessible within each energy window
    [m, 2m] for every known particle.  If the window is
    empty (no other modes available), the particle is
    "isolated" — energy above m has nowhere to go except
-   R³ kinetic energy.  If the window is crowded, the
+   S kinetic energy.  If the window is crowded, the
    particle can easily transition.  Does "isolated"
    correlate with "stable" and "crowded" with "unstable"?
 
@@ -298,21 +298,21 @@ forbidden by the spin-statistics theorem.
 
 **Compute:**
 
-a) For every T⁶ mode below 2 GeV (from R28 mode catalog),
+a) For every Ma mode below 2 GeV (from R28 mode catalog),
    compute Spin = n₁/n₂ for the dominant sheet winding.
    Classify as integer, half-integer, or fractional.
    Count: how many modes survive vs. are killed?
 
 b) Derive the angular momentum of the confined EM field for
-   modes (1,1), (1,2), (1,3) on a sheared T².  Method:
+   modes (1,1), (1,2), (1,3) on a sheared material sheet.  Method:
    solve Maxwell's equations on the (L₁, L₂, s) torus,
    compute the angular momentum density J = ε₀(E × B), and
-   integrate over the T² cell.  Does the total J give spin
+   integrate over the material sheet cell.  Does the total J give spin
    = n₁/n₂?  Or does shear modify the result?
 
 c) Alternative derivation: treat the mode as a pair of
-   winding numbers on a T².  The spin is the ratio of
-   orbital periods.  For (n₁, n₂) on T² with aspect ratio
+   winding numbers on a material sheet.  The spin is the ratio of
+   orbital periods.  For (n₁, n₂) on a material sheet with aspect ratio
    r, the tube circuit takes time t₁ = L₁/c = 2πrL₂/c,
    the ring circuit takes t₂ = L₂ n₂/c.  The ratio
    t₁/(n₂ t₂) = r/n₂.  Does this give a different spin
@@ -353,14 +353,14 @@ the (1,1) ghost couples 16× WEAKER than the electron —
 flipping the hierarchy found in Track 1.
 
 The question is whether the Bethe scaling applies to the
-T²/R³ coupling, or whether the geometric charge integral
+Ma/S coupling, or whether the geometric charge integral
 is the correct physics.
 
 **Compute:**
 
 a) Model the shear as a sub-wavelength slit of width
-   δ = s × L₂ connecting a 2D cavity (T²) to a 3D space
-   (R³).  Solve Maxwell's equations for the radiation
+   δ = s × L₂ connecting a 2D cavity (a material sheet) to a 3D space
+   (S).  Solve Maxwell's equations for the radiation
    emitted by mode (1, n₂) through this slit.  Compute the
    transmitted power as a function of n₂.
 
@@ -417,7 +417,7 @@ of four models tested show low-n₂ suppression; the geometric
 integral is the outlier.  The net observable coupling
 (charge × radiation) gives (1,1) at ~1/8× the electron.
 Critical caveat: ω⁴ is classical Larmor — whether it applies
-to the T²/R³ coupling requires a QFT vertex calculation.
+to the Ma/S coupling requires a QFT vertex calculation.
 See findings F9–F14.
 
 
@@ -429,7 +429,7 @@ charge −1 (at KK zeroth order), and lighter than the
 electron.  No such particle is observed.
 
 The R19 charge integral computes effective charge from the
-mode shape on a sheared T².  Crucially, this integral
+mode shape on a sheared material sheet.  Crucially, this integral
 depends on the aspect ratio r_e.  If Q(1, 1, r_e) = 0 at
 some specific r_e, the mode is uncharged and invisible —
 eliminating the most dangerous ghost AND pinning r_e.
@@ -455,7 +455,7 @@ c) Define a "tension score" T(r_e): for each r_e, count the
    model makes the fewest unexplained predictions.
 
 d) Repeat (a)–(c) for the proton sheet.  The proton is
-   mode (1, 2) on its T².  Mode (1, 1) on the proton sheet
+   mode (1, 2) on Ma_p.  Mode (1, 1) on the proton sheet
    would be a charged spin-1 boson at ~half the proton mass
    (~470 MeV).  Does Q(1, 1, r_p) = 0 at r_p ≈ 6.6?
 
@@ -463,7 +463,7 @@ e) Apply the same analysis to the neutrino sheet.  The
    neutrino is uncharged (n₁ = 0 on the electron sheet),
    but modes with n₃ ≠ 0 on the neutrino sheet could carry
    "neutrino charge" (weak interaction analog).  Does the
-   charge integral on the neutrino T² constrain r_ν?
+   charge integral on Ma_ν constrain r_ν?
 
 f) If the prediction minimum exists and gives a unique r_e:
    compute the full mode spectrum at that r_e.  List every
@@ -478,7 +478,7 @@ at that r_e.  Repeat for proton sheet.
 
 **Why this matters**: r_e has been a free parameter since
 R19.  If the charge integral's r-dependence pins it, the
-T⁶ model loses a free parameter and gains predictive
+Ma model loses a free parameter and gains predictive
 power.  Combined with Track 6 (spin filter), this could
 reduce the electron-sheet ghost population to zero and
 turn r_e from a free parameter into a prediction.

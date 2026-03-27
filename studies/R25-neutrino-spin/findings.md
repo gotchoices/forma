@@ -27,16 +27,16 @@ no conversion occurs.
 
 ### F3. Mechanism C fails — curvature mixing is perturbatively negligible
 
-The embedded T² mixes θ₁ modes (R22), so a (0,0,n₃) mode could
+The embedded Ma_e (the electron sheet) mixes θ₁ modes (R22), so a (0,0,n₃) mode could
 mix with (m,0,n₃) modes acquiring a spin-½ component.
 
 Mixing amplitude: V/ΔE ~ (ε × E_ν) / E_e ~ (0.2 × meV) / (0.5 MeV)
 ~ 4 × 10⁻¹⁰.  Spin contribution: c² × ℏ/2 ~ 10⁻¹⁹ ℏ.  Negligible.
 
-Furthermore, on a product space T² × S¹, the curvature Hamiltonian
+Furthermore, on a product space Ma_e × S¹, the curvature Hamiltonian
 factorizes: it acts on the (θ₁,θ₂) wavefunction but leaves the θ₃
 part as a spectator.  The mode's quantum numbers (0,0,n₃) are not
-changed by curvature — only the T² eigenmodes are corrected.
+changed by curvature — only the Ma_e eigenmodes are corrected.
 
 ### F4. The charge-spin linkage (structural result)
 
@@ -77,7 +77,7 @@ Despite remarkable kinematic success:
 ### F6. Scope: this is a structural limitation of the WvM spin mechanism
 
 The charge-spin linkage (F4) is not specific to T³.  It applies to
-**any** compact-dimension model that uses the WvM spin mechanism
+**any** material-dimension model that uses the WvM spin mechanism
 (L = E/ωs with ωs from ring winding, fermion/boson from tube
 parity).  The mechanism inherently links charge to spin: both
 require tube traversal (n₁ ≠ 0).

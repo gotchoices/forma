@@ -15,7 +15,7 @@ The charge question itself was already resolved by S2 (toroid-
 geometry): a/R = 1/√(πα) gives q = e exactly. This study
 confirms that the resolution is WvM's own, not a KK result.
 
-The compact-dimension topology (T²) remains useful for
+The material-dimension topology (a material sheet) remains useful for
 confinement (geodesic, no force), spin (double winding), and
 mass quantization — but charge comes from the photon's field
 profile, not from compact momentum.
@@ -45,7 +45,7 @@ definitive scale separation (10²¹×) between KK and WvM.
 
 | File | Contents |
 |------|----------|
-| `theory.md` | S¹ vs T² framework, propositions P1–P4 |
+| `theory.md` | S¹ vs material sheet framework, propositions P1–P4 |
 | `findings.md` | Results F1–F12, step-by-step derivation |
 | `scripts/verify.py` | Numerical verification of all formulas |
 

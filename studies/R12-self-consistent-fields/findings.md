@@ -1,10 +1,10 @@
-# R12. Self-Consistent Fields on Sheared T² — Findings
+# R12. Self-Consistent Fields on Sheared Material Sheet — Findings
 
-## Track 1: Spectral structure of the flat sheared T²
+## Track 1: Spectral structure of the flat sheared material sheet
 
 ### F1. The Compton frequency sits in a spectral gap
 
-The lowest eigenmode of the flat sheared T² is ω_min = c/R
+The lowest eigenmode of the flat sheared material sheet is ω_min = c/R
 (the mode n=0, m=1).  The Compton frequency is ω_C = c/λ̄_C.
 Their ratio:
 
@@ -42,7 +42,7 @@ Any mode with n ≥ 1 has ω > 186 × ω_C.
 **For n = 0:** ω(0,m) = c|m|/R.  Setting this equal to ω_C
 requires m = R/λ̄_C = 2gα ≈ 0.007.  Not an integer.
 
-**No eigenmode of the flat sheared T² has frequency ω_C,
+**No eigenmode of the flat sheared material sheet has frequency ω_C,
 for any geometry on the R8 solution curve, for any value
 of the shear δ.**
 
@@ -91,10 +91,10 @@ Phase per orbit = 2π/q ≈ 2πα — a restatement of the
 mass + charge constraints.
 
 
-### F5. The shear is unconstrained by the flat-T² wave equation
+### F5. The shear is unconstrained by the flat-material-sheet wave equation
 
 Five independent checks confirm that the scalar Helmholtz
-equation on the flat sheared T² provides no constraint on
+equation on the flat sheared material sheet provides no constraint on
 the shear δ:
 
 1. The mode spectrum depends on δ only through 1/(2q),
@@ -113,14 +113,14 @@ the shear δ:
 ### F6. The photon is NOT a torus eigenmode
 
 The spectral gap (ω_C ≪ ω_min) means the "electron" cannot
-be described as a standing wave on the T².  The Compton
+be described as a standing wave on the material sheet.  The Compton
 frequency has no corresponding eigenmode.
 
 **What the photon IS:**  A propagating electromagnetic wave
 traveling along the geodesic at speed c.  Its wavelength
 (λ_C) spans the ENTIRE path — all q orbits.  It wraps
 around the torus ~137 times per wavelength.  The field is
-not localized; it permeates the entire compact space.
+not localized; it permeates the entire material space.
 
 This is the deep-wave regime (λ ≫ L), not geometric optics
 (λ ≪ L).  The photon "fills" the torus.
@@ -133,10 +133,10 @@ formulation.  The right question is:
 
 **Can a propagating EM wave at frequency ω_C, traveling
 along the (1,2) geodesic at speed c, maintain a
-self-consistent field configuration on the compact T²?**
+self-consistent field configuration on the material sheet?**
 
 This is a 1D propagation problem along the geodesic, not
-a 2D eigenvalue problem on the T².  The field at each
+a 2D eigenvalue problem on the material sheet.  The field at each
 point on the geodesic is determined by the EM boundary
 conditions and the photon's own past history (it passes
 each point every q orbits).
@@ -177,9 +177,9 @@ that constrain the geometry.
 | Modes at ω_C | None (for any geometry, any shear) |
 | Geodesic mode | ω_geo ≈ q²ω_C/2, oblique to geodesic |
 | Phase coherence | = mass condition (no new info) |
-| Shear constraint | None from flat-T² wave equation |
+| Shear constraint | None from flat-material-sheet wave equation |
 
-**The scalar wave equation on the flat T² cannot constrain
+**The scalar wave equation on the flat material sheet cannot constrain
 the shear.**  The Compton frequency sits in a spectral
 gap where no eigenmodes exist.
 
@@ -284,7 +284,7 @@ corresponds to the thinnest-practical torus geometry.
 
 ## Conceptual implications (Tracks 1 + 2)
 
-### F14. The compact space is intrinsically flat; the embedding is physical
+### F14. The material space is intrinsically flat; the embedding is physical
 
 If the photon experienced the intrinsic curvature of a
 3D-embedded torus (Gaussian curvature K = cos θ/(a(R+a cos θ))),
@@ -296,7 +296,7 @@ propagate through intrinsically flat space — a flat quotient
 space R²/Λ with straight-line geodesics and periodic
 boundaries.  This determines mass and spin correctly.
 
-However, the compact space IS embedded in 3+1D with a
+However, the material space IS embedded in 3+1D with a
 toroidal geometry.  The embedding is not "just a
 visualization" — it is physical.  It determines how the
 photon's fields project into 3D, which determines the
@@ -332,7 +332,7 @@ Five approaches have now been exhausted:
 The shear must be determined by physics NOT captured by
 the 2D compact geometry alone.  Candidates:
 - 3D field structure (how compact fields project into 3+1D)
-- Quantum effects (e.g., Casimir energy of the compact space)
+- Quantum effects (e.g., Casimir energy of the material space)
 - The full 6D Einstein-Maxwell system
 - An external input (the shear as a property of the vacuum)
 
@@ -345,19 +345,19 @@ geometry alone: no eigenmode exists at ω_C, and the
 geodesic structure provides no selection mechanism.
 
 **Key clarification (revised):** R8's charge calculation
-uses the flat T² for mass/spin and the 3D embedding for
+uses the flat material sheet for mass/spin and the 3D embedding for
 charge.  This was initially diagnosed as an inconsistency,
 but the correct interpretation is that these are two
 aspects of the same physical object:
 
 - **Mass and spin** are internal properties, determined by
-  the photon's propagation through flat compact space.
+  the photon's propagation through flat material space.
 - **Charge** is an external property, determined by how the
   compact-space fields project into 3+1D via the toroidal
   embedding.
 
 The photon doesn't "know about" the embedding, but its
-fields, when they extend beyond the compact space, DO
+fields, when they extend beyond the material space, DO
 encounter the embedding geometry.  R8's approach — flat
 for propagation, embedded for charge — is the physically
 correct procedure, not an inconsistency.
@@ -371,7 +371,7 @@ experience the (1 + r cos θ) metric modulation of the
 embedded torus on each passage.
 
 Under the corrected premises, the photon propagates through
-*flat* space.  On flat T²:
+*flat* space.  On flat Ma_e:
 - A traveling wave experiences no curvature modulation
 - Parallel transport preserves polarization exactly
 - Amplitude and transverse profile do not evolve

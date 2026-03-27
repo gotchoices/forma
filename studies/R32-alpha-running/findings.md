@@ -2,11 +2,11 @@
 
 ## Track 1 — KK mode running of α
 
-### F1. The T⁶ has ~78,000 charged modes below 1000 TeV
+### F1. Ma (the six-dimensional material space) has ~78,000 charged modes below 1000 TeV
 
 With n_max = 8 for the electron/proton sheets (neutrino
 excluded — correctly, since neutrino-only modes have Q = 0),
-the T⁶ spectrum contains 78,608 charged modes.  Of these:
+the Ma spectrum contains 78,608 charged modes.  Of these:
 
 - 41,616 below 2 GeV  (vs ~40 known particles in this range)
 - 78,608 below 1000 TeV
@@ -17,7 +17,7 @@ Classification by spin:
 - 16,184 ambiguous (2×½ → spin 0 or 1)
 
 
-### F2. The lightest charged T⁶ mode is 39 keV — not the electron
+### F2. The lightest charged Ma mode is 39 keV — not the electron
 
 The mode (−1, 0, 0, 0, 0, 0) has charge −1 and mass
 ~39 keV (from the electron tube, L₁ ≈ 32,000 fm).  This
@@ -26,12 +26,12 @@ modes below the electron mass (0.511 MeV).
 
 These sub-electron charged modes are not observed in
 nature.  The electron IS the lightest charged particle.
-This is a known structural issue: on the electron T²,
+This is a known structural issue: on Ma_e,
 modes with n₂ = 0 (no ring winding) are lighter than
 (1,2) but carry charge.  The WvM spin mechanism
 requires n₂ = 2 for spin ½, which is why the electron
 is the lightest charged FERMION — but charged bosons
-with n₂ = 0 exist at lower masses in the T⁶ spectrum.
+with n₂ = 0 exist at lower masses in the Ma spectrum.
 
 These modes might be excluded by a selection rule not
 yet identified (spin-statistics, stability, coupling).
@@ -43,7 +43,7 @@ If all charged modes contribute to vacuum polarization
 as independent quantum fields (standard one-loop QFT),
 the running of 1/α is ~157,000× faster than the SM:
 
-| Energy | SM 1/α | T⁶ 1/α (naive) |
+| Energy | SM 1/α | Ma 1/α (naive) |
 |--------|--------|-----------------|
 | 0 (input) | 137.0 | 137.0 |
 | 0.5 MeV | 137.0 | 86 |
@@ -56,7 +56,7 @@ This is completely incompatible with observation.
 **The SM running**: Δ(1/α) = −9.1 from 0 to m_Z, from
 ~12 charged species (e, μ, τ, u, d, s, c, b quarks, W).
 
-**The T⁶ running**: Δ(1/α) = −1,427,752 from 0 to m_Z,
+**The Ma running**: Δ(1/α) = −1,427,752 from 0 to m_Z,
 from ~78,000 charged modes.
 
 
@@ -75,10 +75,10 @@ provides independent confirmation of R31 Track 4:
   comparable factor.
 
 Both results point to the same conclusion: the massive
-modes of the T⁶ do not couple to the electromagnetic field
+modes of Ma do not couple to the electromagnetic field
 with the same strength as the zero mode (photon).  The
 ghost modes are geometrically present (they are valid
-solutions of the wave equation on T⁶) but electromagnetically
+solutions of the wave equation on Ma) but electromagnetically
 suppressed.
 
 
@@ -139,7 +139,7 @@ This is an open issue for the model.
 
 ### F8. The dimensionless volume is r × μ₁₂²
 
-The dimensionless area of each T² sheet (area divided by
+The dimensionless area of each material sheet (area divided by
 the natural unit (2πλ_C)²) reduces to a simple geometric
 formula:
 
@@ -184,8 +184,8 @@ confirms internal consistency.
 
 ### F11. The neutrino volume ratio does not explain weak interactions
 
-The neutrino T² is 5.7 × 10¹³ times larger than the
-electron T².  If weak interaction strength were simply
+Ma_ν is 5.7 × 10¹³ times larger than
+Ma_e.  If weak interaction strength were simply
 α × A_e/A_ν (volume dilution), the effective weak coupling
 would be ~10⁻¹⁶ — eleven orders of magnitude too small
 compared to the measured Fermi constant (G_F m_p² ≈ 10⁻⁵).
@@ -218,16 +218,16 @@ giving r ≈ 1.41.  This is within the allowed range
 ### F13. Eight contexts where 24 appears in torus mathematics
 
 A systematic survey cataloged 24 in eight mathematical
-contexts.  Ranked by strength of connection to T⁶:
+contexts.  Ranked by strength of connection to Ma:
 
-| Context | Why 24? | T⁶ connection | Strength |
+| Context | Why 24? | Ma connection | Strength |
 |---------|---------|----------------|----------|
-| Dedekind η²⁴ | Modular invariance of T² | Each T² has τ = r | STRONG |
+| Dedekind η²⁴ | Modular invariance of material sheet | Each sheet has τ = r | STRONG |
 | D₄ kissing number | 4D lattice geometry | 4 non-compact dims | MODERATE |
 | ζ(−1) = −1/12 | Regularized sum → 24 = −2/ζ | String dimension formula | MODERATE |
 | χ(K3) = 24 | 24 independent 2-cycles | T⁴ → K3 orbifold | WEAK |
 | 4! = 24 | Permutations of (x,y,z,t) | Euclidean Weyl group | WEAK |
-| 4 × 6 | Non-compact × compact dims | Dimension counting | WEAK |
+| 4 × 6 | Non-compact × material dims | Dimension counting | WEAK |
 | Bosonic string c = 24 | 24 transverse dimensions | 10D vs 26D gap | WEAK |
 | Torus curvature | ∫K dA = 0 by Gauss-Bonnet | No 24 emerges | NONE |
 
@@ -241,14 +241,14 @@ transforms without phase ambiguity under modular
 transformations (τ → τ+1 gives e^(iπ/12), needing 24
 copies to return to unity).
 
-Each T² sheet has a modular parameter τ_i = r_i + is_i.
-If the T⁶ partition function must be modular-invariant
+Each material sheet has a modular parameter τ_i = r_i + is_i.
+If the Ma partition function must be modular-invariant
 (a natural physical requirement for consistency of the
-compact space), factors of η²⁴ are forced to appear.
+material space), factors of η²⁴ are forced to appear.
 The gauge coupling normalization in string theory derives
 from precisely this kind of partition function.
 
-Concrete claim: if the T⁶ gauge coupling is computed
+Concrete claim: if the Ma gauge coupling is computed
 from the modular-invariant partition function, the
 leading normalization should contain 1/24, making this
 the origin of 1/α → 24 at high energies.
@@ -284,9 +284,9 @@ the closest, off by 0.9%.  This is the well-known
 "1/α ≈ 4π × 11" observation from the literature.
 
 
-### F17. The T⁶ partition function contains |η|⁶, not |η|²⁴
+### F17. The Ma partition function contains |η|⁶, not |η|²⁴
 
-For a scalar field on T⁶ = (T²)³, the partition
+For a scalar field on Ma = (material sheet)³, the partition
 function is Z ∝ 1/|η(τ₁) η(τ₂) η(τ₃)|², involving
 |η|⁶.  To get |η|²⁴ would require either:
 - 12 scalar fields (12 × 2 = 24 powers)
@@ -298,13 +298,13 @@ The gap between 6 and 24 means the simple scalar
 counting does not produce η²⁴.  A more sophisticated
 treatment — perhaps involving the gravitational
 degrees of freedom or a worldsheet formulation — would
-be needed to connect T⁶ directly to the discriminant
+be needed to connect Ma directly to the discriminant
 modular form.
 
 
 ---
 
-## Track 4 — Impedance at the T²/R³ interface
+## Track 4 — Impedance at the material-sheet/S (the three spatial dimensions) interface
 
 
 ### F18. Energy partitions by channel count are too large
@@ -351,7 +351,7 @@ for both sheets — this must be so because both must produce
 the same α, and the denominator 4π(2−s)² ≈ 4π×4 ≈ 50 is
 also nearly sheet-independent.
 
-The 4π is the solid angle of a sphere in R³: energy
+The 4π is the solid angle of a sphere in S: energy
 radiates isotropically into 3D space, and 4π is the
 normalization.  This is NOT 24 or 8 — it is the
 standard 3D angular factor.
@@ -362,8 +362,8 @@ standard 3D angular factor.
 For isotropic radiation in d = 10 dimensions, the
 fraction going into a k-dimensional subspace is k/d:
 
-    R³ in 10D: 3/10 = 0.30  (vs α = 0.0073)
-    R³⁺¹ in 10D: 4/10 = 0.40
+    S in 10D: 3/10 = 0.30  (vs α = 0.0073)
+    S⁺¹ in 10D: 4/10 = 0.40
 
 These are ~40–50× too large.  Dimensional geometry
 alone cannot explain α.  The factor-of-137 suppression
@@ -373,7 +373,7 @@ dimensions the energy can propagate into.
 
 ### F21. The aperture model gives 1/α ≈ 27 (close to 24)
 
-The waveguide aperture model treats T² as a 2D cavity:
+The waveguide aperture model treats a material sheet as a 2D cavity:
 the coupling depends on the area in wavelength units:
 
     α_aperture ≈ λ²/A = 1/(r × μ₁₂²)
@@ -397,8 +397,8 @@ its size, shape, or the number of dimensions.  The
 shear tilts the internal standing wave, breaking the
 perfect cancellation of positive and negative half-cycles.
 This is geometrically identical to an impedance mismatch:
-the shear makes the compact vacuum anisotropic, and
-only the anisotropic component couples to R³.
+the shear makes the material vacuum anisotropic, and
+only the anisotropic component couples to S.
 
 The question "why is α = 1/137?" reduces to "why is
 s ≈ 0.01?"  — what selects this particular shear.

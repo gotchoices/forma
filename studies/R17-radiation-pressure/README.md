@@ -19,20 +19,20 @@ and the geometry determines the field.
 
 The model has two domains (R12 F14):
 
-- **Inside T²:** the compact space is flat.  The photon
-  propagates along a straight geodesic (no forces, no
+- **Inside the electron sheet:** Ma_e (the electron sheet) is flat.
+  The photon propagates along a straight geodesic (no forces, no
   curvature).  Mass and spin emerge from the topology.
 
-- **Outside in 3D:** the same compact space is embedded as a
+- **Outside in 3D:** the same material sheet is embedded as a
   torus.  The (1,2) geodesic appears as a tight helix in 3D.
   The photon's electromagnetic field leaks into 3D through
   the embedding.  Charge and Coulomb energy emerge from this
   projection.
 
 These are not two different models — they are two descriptions
-of the same field, seen from inside or outside the compact
-space.  Effects computed in the 3D frame can feed back into
-the compact-space dynamics through the coupling between the
+of the same field, seen from inside or outside the material
+sheet.  Effects computed in the 3D frame can feed back into
+the material-sheet dynamics through the coupling between the
 two domains.
 
 ### Centrifugal force on a confined photon
@@ -42,7 +42,6 @@ path, its momentum must continuously change direction.  The
 confining geometry provides the centripetal force; the reaction
 is centrifugal force (radiation pressure on the "walls" of the
 confining geometry).
-
 This is not exotic physics — it is the same effect as:
 - Radiation pressure in a curved waveguide (higher on the
   outside of bends)
@@ -164,12 +163,12 @@ mass.
 ### Why the embedding already creates harmonics
 
 Even BEFORE the centrifugal deformation, the embedding
-itself creates harmonics.  A uniform wave on flat T²
+itself creates harmonics.  A uniform wave on a flat material sheet
 (constant amplitude, constant velocity c) maps to a
 non-uniform field in 3D because the metric scale factor
 varies over the torus surface.
 
-On flat T², the photon's "little Cartesian squares" are all
+On the flat sheet, the photon's "little Cartesian squares" are all
 identical.  But on the embedded torus, the outer equator
 (distance R + a from the ring center) has circumference
 2π(R + a), while the inner equator has circumference
@@ -194,7 +193,7 @@ The 3D energy density transforms accordingly:
     u_3D = u_flat × R / (R + a cos θ)
          ≈ u_flat × (1 − r cos θ + r² cos²θ − ...)
 
-A single-mode wave in flat T² becomes a multi-harmonic
+A single-mode wave in the flat sheet becomes a multi-harmonic
 pattern in 3D.  The nonlinear metric mapping generates
 harmonics in the θ direction (tube cross-section) that the
 flat-space wave does not have.
@@ -308,8 +307,8 @@ Two possible approaches:
 
 A. **Energy minimization:** the tube shape adjusts until the
    internal radiation pressure is balanced by the restoring
-   force (from the requirement that the compact space remain
-   flat — the total Gaussian curvature is zero for a flat T²,
+   force (from the requirement that the material sheet remain
+   flat — the total Gaussian curvature is zero for a flat sheet,
    constraining the allowed deformations).
 
 B. **Self-consistent field:** solve Maxwell's equations on the
@@ -318,8 +317,8 @@ B. **Self-consistent field:** solve Maxwell's equations on the
    with the shape.
 
 **Key constraint:** the deformed tube must still have the same
-topology (T²) and the same total path length (λ_C).  The flat-
-torus condition constrains the allowed deformations — not all
+topology and the same total path length (λ_C).  The flat-
+sheet condition constrains the allowed deformations — not all
 shapes are compatible with zero intrinsic curvature.
 
 **Expected output:** the equilibrium tube cross-section shape
@@ -411,7 +410,7 @@ with a net residual from the nonlinearity?
    along the path.
 
 2. **σ_φ = const in the flat metric.**  The angular width
-   of the wavepacket in the flat T² coordinates is a
+   of the wavepacket in the flat sheet coordinates is a
    constant of the motion.  The 3D width σ_3D oscillates
    ("breathes") because the 3D arc length per unit φ
    varies, but the net magnification per circuit is
@@ -420,14 +419,14 @@ with a net residual from the nonlinearity?
 
 **B. Path deflection.**
 Could the surface-perpendicular centrifugal force deflect
-the path from the flat-T² geodesic, modifying the charge
+the path from the flat-sheet geodesic, modifying the charge
 integral?
 
 **Result: The force is not an external perturbation.**
 The centrifugal force and the confinement force are
 Newton's third-law pair — they are the same force viewed
-from inside (flat T²) and outside (3D).  The photon
-follows the flat-T² geodesic, and the 3D curvature is
+from inside (flat sheet) and outside (3D).  The photon
+follows the flat-sheet geodesic, and the 3D curvature is
 what this straight-line motion looks like from outside.
 
 A hypothetical deflection calculation (treating the force

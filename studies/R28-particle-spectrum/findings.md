@@ -51,7 +51,7 @@ The large-gap particles are unchanged by cross-shear tuning:
 | Δ⁺⁺ | 14.2% | ~14% |
 
 These gaps are structural — the particles don't sit near any
-T⁶ eigenmode regardless of parameter values.  This is fully
+Ma (the six-dimensional material space) eigenmode regardless of parameter values.  This is fully
 consistent with R27's off-resonance hypothesis: these are
 transient excitations, not exact eigenmodes.  Their gaps
 from the nearest mode correlate with lifetime (R27 F37–F42).
@@ -87,10 +87,10 @@ limited by search range.  The other particles in this table
 Script: `scripts/track2_mode_census.py`
 
 
-### F5. The T⁶ spectrum has ~48 energy bands below 2 GeV
+### F5. The Ma spectrum has ~48 energy bands below 2 GeV
 
 Removing the near-degenerate n₂ dimension (which shifts
-energy by only ~0.02 MeV per step), the T⁶ spectrum below
+energy by only ~0.02 MeV per step), the Ma spectrum below
 2 GeV consists of approximately **48 energy bands** spaced
 by the proton-tube scale (~53 MeV) and proton-ring scale
 (~470 MeV).
@@ -106,7 +106,7 @@ combinations fill the spectrum more closely.
 
 ### F6. Each energy band contains all charges and spins
 
-At every energy band, the T⁶ geometry produces modes at
+At every energy band, the Ma geometry produces modes at
 all charge values Q = −2 to +2 (for |Q| ≤ 2) and all
 spin values (0, 1/2, 1, 3/2).
 
@@ -117,7 +117,7 @@ Known particles below 2 GeV: **~40**.
 
 The model predicts ~20× more physically-charged modes
 than observed particles.  This is the "ghost mode"
-problem — most T⁶ modes have no observed counterpart.
+problem — most Ma modes have no observed counterpart.
 
 
 ### F7. The ghost problem is consistent with off-resonance
@@ -240,7 +240,7 @@ determined by its proton harmonics (n₅ = −13, n₆ = 2).
 
 ### F13. The energy band landscape near Λ and Σ⁺
 
-Between 1000–1300 MeV, the T⁶ produces 9 energy bands at
+Between 1000–1300 MeV, Ma produces 9 energy bands at
 Q = 0, S = ½ and 18 bands at Q = +1, S = ½.  The bands
 are spaced by ~25–55 MeV (proton-tube harmonics).
 
@@ -313,7 +313,7 @@ gaps correlate with lifetime (R27 F37–F42).
 Script: `scripts/track4_high_energy.py`
 
 
-### F17. W, Z, and Higgs all have nearby T⁶ modes
+### F17. W, Z, and Higgs all have nearby Ma modes
 
 | Particle | Observed (MeV) | Mode (MeV) | Gap |
 |----------|---------------|-----------|------|
@@ -340,7 +340,7 @@ equally well:
 | Fake-A | 83,000 | 0.0018% | no |
 | H⁰ | 125,250 | 0.0001% | yes |
 
-Real and fake particles are indistinguishable.  The T⁶
+Real and fake particles are indistinguishable.  The Ma
 spectrum is so dense above ~5 GeV that any mass can be
 matched to < 0.01%.
 
@@ -372,7 +372,7 @@ achievable by multiple pairs.  The W/Z ratio carries no
 geometric content in this model.
 
 
-### F21. The T⁶ has a predictive horizon at ~2 GeV
+### F21. Ma has a predictive horizon at ~2 GeV
 
 Below ~2 GeV, the average band spacing (~8–30 MeV) is
 comparable to particle mass differences, so matching a
@@ -386,7 +386,7 @@ discriminating power.
 
 This boundary roughly coincides with the transition from
 hadronic physics (QCD scale, ~1 GeV) to electroweak
-physics (~80–125 GeV) in the standard model.  The T⁶
+physics (~80–125 GeV) in the standard model.  The Ma
 model's natural domain is the particle spectrum below
 ~2 GeV — which is also where all its structural
 predictions (eigenmodes, off-resonance gaps, lifetime
@@ -398,15 +398,15 @@ correlations) operate.
 1. **W, Z, Higgs all match** to < 0.001% — but so does
    any arbitrary mass above ~5 GeV.
 
-2. **The W/Z mass ratio is not special** in T⁶ geometry.
+2. **The W/Z mass ratio is not special** in Ma geometry.
    Tens of thousands of mode pairs reproduce it.
 
-3. **The T⁶ has a predictive horizon at ~2 GeV.**  Below
+3. **Ma has a predictive horizon at ~2 GeV.**  Below
    this, the proton-sheet energy ladder is sparse enough
    to make mass predictions non-trivial.  Above it, the
    spectrum is a continuum.
 
-4. **Implication for W/Z/Higgs:** The T⁶ model says
+4. **Implication for W/Z/Higgs:** The Ma model says
    nothing about electroweak physics.  These particles
    are not structural predictions of the geometry — they
    live in a regime where the model has no discriminating
