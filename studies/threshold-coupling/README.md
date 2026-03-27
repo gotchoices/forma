@@ -3,7 +3,7 @@
 **Questions:** Q78, Q32  **Type:** compute + theoretical
 **Depends on:** R26, R19, R27, R33
 **Supports:** L00 (Reiter replication), L01 (THz write/read)
-**Status:** Active
+**Status:** Complete (4 tracks, 34 findings)
 
 ---
 
@@ -96,54 +96,38 @@ See findings F1–F7.
 
 ## Track 2. Write/read dynamics on T²_ν
 
-**Goal:** Model the time evolution of energy in a T²_ν mode
-when driven by an external THz source (write) and when probed
-for readout (read).
+**Goal:** Model write/read dynamics on T²_ν, including storage
+capacity, write/read timescales, pattern fidelity, and
+experimental predictions.
 
-**Model:** Each T²_ν mode behaves as a damped driven harmonic
-oscillator:
+**Original model (superseded):** damped driven oscillator
+(ä + γȧ + ω₀²a = gF) with EM coupling g.  Tracks 3–4
+showed g = 0 (F22) and the elastic torus is the I/O mechanism.
 
-    ä + γ ȧ + ω₀² a = g × F(t)
+**Reframed model:** Stochastic mode hopping on the neutrino
+sheet, driven by ATP events (write) and opposed by thermal
+disruption (noise).  Reading is passive co-resonance via
+molecular vibration shifts (F25).
 
-where a is the mode amplitude, ω₀ is the mode frequency, γ is
-the damping rate (from cross-shear leakage), g is the coupling
-strength, and F(t) is the external drive.
-
-**Write operation:**
-- F(t) = F₀ cos(ω₀ t) (narrowband source on resonance)
-- Steady-state amplitude: a_ss = gF₀ / (γ ω₀)
-- Write time: τ_write ~ 2/γ (time to reach ~90% of steady
-  state)
-- Stored energy: E_stored = ½ ω₀² |a_ss|²
-
-**Destructive read:**
-- Turn off drive.  Stored energy radiates back through the
-  coupling at rate γ_rad ∝ g².
-- Read signal power: P_read = g² × E_stored
-- Read time: τ_read ~ E_stored / P_read
-
-**Non-destructive read (sympathetic resonance):**
-- Probe field at ω₀ acquires a phase shift:
-  Δφ = g² × a / (ω₀ γ_probe)
-- The stored energy is inferred from Δφ without extracting it.
-- Back-action on stored state: ΔE/E ~ (g/ω₀)² per probe
-  interaction.
-
-**Inputs:**
-- Mode frequencies ω₀ from R26 Assignment A mode spectrum
-- Damping γ from Track 3 (cross-shear leakage)
-- Coupling g from Track 4 (or treated as free parameter)
-- Source power (in watts at the target)
-
-**Output:**
-- Write time vs. (g, γ, P_source) — contour plot
-- Read signal vs. (g, γ, E_stored) — detectability threshold
-- Storage lifetime (1/γ) vs. cross-shear parameters
-- Non-destructive read: Δφ vs. stored energy
-- "Operating manual" plot: what source power and exposure time
-  are needed for a detectable write/read cycle?
+**Computed:**
+- Storage capacity: 10–324 bits/cell (energy-bin vs. pattern)
+- Write dynamics: ~70 ps/hop at mid-Goldilocks (K = 0.06)
+- Read dynamics: ~3 ps/channel (K-independent, SNR ~ 10⁷)
+- Dynamic Goldilocks: W/N ~ 10¹⁴, fidelity > 99.99%
+- Storage lifetime (passive): 2.6–10.4 hr depending on K
+- L01 revision: THz → thermal disruption (not direct drive)
+- Reiter reinterpretation: source saturates ν-sheet pre-load
 
 **Script:** `scripts/track2_write_read_dynamics.py`
+
+**Result (Complete):** F29–F34.  Storage is 10–324 bits/cell.
+Write takes ~70 ps/hop (ATP-driven, sub-μs for full pattern).
+Read takes ~3 ps (passive, K-independent).  Fidelity > 99.99%
+during active metabolism; passive storage lifetime 2.6–10 hr.
+THz cannot directly drive ν-modes (g = 0); revised L01 uses
+thermal degradation as the observable.  Reiter's source drives
+pre-load to saturation (fill/leak ~ 10¹²), consistent with
+the SCA upper-limit mechanism (F3).
 
 ---
 

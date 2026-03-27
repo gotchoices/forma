@@ -111,28 +111,28 @@ the shear from 1/80 instead of 1/137.  Track 4: clockwise/counterclockwise
 interference on the torus as the bidirectional mechanism.
 
 
-### R35. Threshold detection and compact-dimension coupling  **Active**
+### R35. Threshold detection and compact-dimension coupling  **Complete**
 **Study:** [`threshold-coupling/`](threshold-coupling/)
 **Questions:** Q78, Q32  **Type:** compute + theoretical  **Depends on:** R26, R19, R27, R33
 
-4 tracks (3 complete).  Motivated by the unified mode-density picture
-(Q85 §14): threshold "continuity" is mode-hopping on the neutrino
-sheet's dense ladder.  Track 1 (COMPLETE, F1–F7): Cd-109 Re/Rc = 33
-reproduced via SCA upper-limit mechanism.  Na-22 Re/Rc ≈ 963 constrains
-pre-load distribution.  Track 3 (COMPLETE, F8–F21): three-layer protection is direction-
-independent (F15) and symmetric — blocks reading equally (F16).
-Elastic torus resolves I/O (F17).  Coulomb field is the monopole
-projection of compact-dimension structure — higher multipoles
-visible at λ_C ≈ 42 μm ≈ cell size (F19).  Neutrino modes project
-non-uniform voltage on cell membrane (F20) — Levin's scalar Vmem
-is the DC component of a richer harmonic pattern (F21).
-Track 4 (COMPLETE, F22–F28): flat T⁶ coupling is exactly zero
-(F22).  Elastic torus shifts I/O from EM to geometry (F23).  The
-Goldilocks criterion is purely thermodynamic: F_write/kT > 10
-(F24).  Read SNR ~ 10⁷, K-independent (F25).  Passive vibrations
-can't write (F26).  ATP hydrolysis (F/kT = 18.7) opens a
-Goldilocks window: K ∈ [0.043, 0.080] eV⁻¹ (F27).  Writing
-REQUIRES metabolic energy.  Track 2: deferred.
+4 tracks (all complete, F1–F34).  Motivated by the unified mode-density
+picture (Q85 §14): threshold "continuity" is mode-hopping on the
+neutrino sheet's dense ladder.  Track 1 (F1–F7): Cd-109 Re/Rc = 33
+reproduced via SCA upper-limit mechanism.  Na-22 constrains pre-load.
+Track 2 (F29–F34): reframed around elastic torus (g_EM = 0).  Storage
+10–324 bits/cell.  Write ~70 ps/hop (ATP-driven).  Read ~3 ps
+(passive, SNR ~ 10⁷).  Fidelity > 99.99%.  THz can't directly drive
+ν-modes; revised L01 uses thermal degradation.  Reiter's source
+saturates pre-load (fill/leak ~ 10¹²).
+Track 3 (F8–F21): three-layer protection is direction-independent
+(F15) and symmetric (F16).  Elastic torus resolves I/O (F17).
+Coulomb field = monopole projection of compact-dimension structure
+(F19).  Non-uniform voltage on cell membrane (F20) — Levin's Vmem
+is the DC component of a harmonic pattern (F21).
+Track 4 (F22–F28): flat T⁶ coupling exactly zero (F22).  Elastic
+torus shifts I/O to geometry (F23).  Goldilocks: F_write/kT > 10
+(F24).  ATP opens window K ∈ [0.043, 0.080] eV⁻¹ (F27).  Writing
+REQUIRES metabolic energy.
 
 ### R36. Geometric tilt — α from T²/R³ embedding without KK  **Complete**
 **Study:** [`geometric-tilt/`](geometric-tilt/)

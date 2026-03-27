@@ -534,3 +534,125 @@ Computing K from first principles requires the moduli
 potential of the T⁶ geometry — the central open question
 connecting this model to string theory's moduli
 stabilization problem.
+
+
+## Track 2 — Write/read dynamics (elastic torus reframing)
+
+The original Track 2 was framed as a damped driven oscillator
+(ä + γȧ + ω₀²a = gF) with EM coupling g.  Tracks 3–4
+established g = 0 (F22) and that the elastic torus is the
+I/O mechanism (F23).  Track 2 is therefore reframed around
+stochastic mode hopping driven by ATP events, opposed by
+thermal disruption.
+
+### F29. Storage capacity: 10–324 bits per cell
+
+Two capacity measures at r_ν = 100, with modes up to
+E_max = 2m₁₂ ≈ 116 meV:
+
+| Measure | Channels | Bits |
+|---------|----------|------|
+| Energy-bin (lower bound) | 5 thermally distinct | 10 |
+| Pattern (upper bound) | 324 modes ON/OFF | 324 |
+
+The lower bound groups modes into bins of width kT ≈ 27 meV;
+only 5 bins fit below E_max.  The upper bound treats each
+mode (n₃, n₄) as a binary channel, detectable through the
+2D voltage map (F20).  True capacity depends on whether the
+read mechanism resolves individual mode patterns or only
+total energy.  Capacity is r_ν-INDEPENDENT above r_ν ~ 50
+(the mode spectrum converges).
+
+### F30. Write time: ~70 ps per mode hop
+
+At K = 0.06 (mid-Goldilocks), each ATP event causes ~1.4
+mode hops.  With R_ATP ≈ 10¹⁰/s:
+
+    write rate ≈ 1.4 × 10¹⁰ hops/s
+    τ(1 hop) ≈ 69 ps
+    τ(full pattern, 5 channels) ≈ 344 ps
+
+Writing is fast compared to ALL biological timescales.
+The cell rewrites its entire ν-sheet pattern ~10⁹ times
+per second.
+
+### F31. Read time: ~3 ps per channel
+
+SNR_collective = √N_atoms × E_mode/kT ≈ 10⁷ (K-independent,
+confirming F25).  The read time is set by the molecular
+vibration Q factor:
+
+    τ_read ~ Q / f_vibration ~ 30 / 10¹³ Hz ≈ 3 ps
+
+The write/read asymmetry is complete:
+    Write: ~70 ps, requires ATP (active)
+    Read:  ~3 ps, passive, always on
+    Read is ~20× faster than write
+
+Co-resonance between cells: two cells with matching
+ν-patterns have identical molecular vibration spectra →
+sympathetic resonance via gap junctions (Levin's "data bus").
+Mismatch → no resonance.
+
+### F32. Pattern fidelity > 99.99% (write/noise ratio ~ 10¹⁴)
+
+Collective protection (1/N_atoms = 10⁻¹⁴) suppresses thermal
+disruption so severely that W/N ≈ E_ATP/kT × (R_ATP/f_coll)
+× N_atoms ~ 10¹⁴.  Pattern fidelity at steady state is
+effectively unity.
+
+However, the Goldilocks boundary (F24) is about PER-COLLISION
+hop probability, not the collective ratio.  Storage lifetime
+per channel (without active ATP rewriting):
+
+| K (eV⁻¹) | τ_storage |
+|-----------|-----------|
+| 0.04 | 10 hr |
+| 0.06 | 4.6 hr |
+| 0.08 | 2.6 hr |
+| 0.10 | 1.7 hr |
+
+With active ATP rewriting (which refreshes the pattern at
+~10¹⁰ hops/s), the effective storage is indefinite as long
+as metabolism continues.  ATP cessation (cell death) starts
+a ~3–10 hr degradation clock.
+
+### F33. THz cannot directly excite neutrino modes
+
+Because g_EM = 0 (F22), a THz source cannot resonantly drive
+ν-modes.  THz energy is absorbed thermally (water absorption
+coefficient ~100 cm⁻¹) and raises the local temperature.
+
+A 1 mW THz source focused to 50 μm spot delivers ~10⁴× more
+power than ATP per cell, but it is UNDIRECTED thermal energy.
+THz acts as noise (raises kT), not signal.  The effect is:
+
+    ΔT ~ 69 K/s → ~10 K rise in ~0.15 s
+
+This shifts the Goldilocks boundary: at T+10 K, the retention
+threshold moves to lower K, and stored patterns degrade faster.
+
+Revised L01 experiment: THz heating → degraded retention →
+detectable change in Levin's Vmem pattern.  Controls:
+- Dead tissue: no change (pattern already frozen, no ATP)
+- Gap-junction-blocked tissue: permanent degradation
+  (cannot re-read pattern from neighbors after cooling)
+- Normal tissue: transient degradation, ATP-driven recovery
+
+### F34. Reiter's source saturates the ν-sheet pre-load
+
+In the elastic torus framework, Reiter's experiment maps onto:
+
+    gamma deposition → geometry modulation → ν-mode hopping
+
+At K = 0.06, the Cd-109 source (300 γ/s × 88 keV) provides
+~8 × 10⁷ hops/s — overwhelming thermal leak (~6 × 10⁻⁵
+hops/s) by a factor of ~10¹².  The crystal is driven to
+near-saturation, consistent with Track 1's finding (F3)
+that ⟨E_pre⟩/E_th ≈ 0.98.
+
+Even background radiation alone (1 ionizing event/cell/hr)
+outpaces thermal leak by ~10⁴×, establishing a nonzero
+baseline pre-load.  This explains why Reiter's effect is
+robust: the fill/leak ratio is enormous for any measurable
+radiation source.
