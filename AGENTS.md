@@ -17,6 +17,22 @@
 ## Visualizations
 - Build tools to help the user visualize and understand difficult concepts (./viz)
 
+## Formula Notation
+
+All markdown files in this repo use a hybrid formula format for maximum readability in both raw source and rendered output:
+
+**Simple inline expressions** — write directly in prose using Unicode:
+> ε₀, μ₀, α ≈ 1/137, c = 1/√(ε₀μ₀), ∇·E = ρ
+
+**Complex multi-level formulas** — a `$$` TeX display block preceded by a Unicode approximation in an HTML comment:
+```
+<!-- α(μ) = α₀ / (1 − (2α₀/3π) ln(μ/mₑ)) -->
+$$
+\alpha(\mu) = \frac{\alpha_0}{1 - \frac{2\alpha_0}{3\pi}\ln\frac{\mu}{m_e}}
+$$
+```
+The comment is invisible when rendered but readable in raw source. The `$$` block renders as typeset math in any math-aware viewer (GitHub, Obsidian, etc.).
+
 ## Tickets (tess)
 
 This project uses [tess](tess/) for AI-driven ticket management.
