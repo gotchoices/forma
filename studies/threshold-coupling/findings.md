@@ -130,3 +130,114 @@ Track 1 establishes:
    depends on whether Reiter's actual SCA window was tight enough
    to reject events at ~1.5× E_γ.  This is an experimental detail
    that could be verified from Reiter's original setup description.
+
+
+## Track 3 — Cross-shear leakage rate
+
+### F8. Neutrino modes are exactly uncharged (topological)
+
+Charge on T⁶ is Q = −n₁ + n₅.  Neutrino modes have n₁ = n₅ = 0,
+so Q = 0 EXACTLY.  Cross-shear changes the metric (eigenvalues)
+but not the eigenfunctions (plane waves on a flat torus).  Charge
+is topological, not geometric.
+
+EM radiation rate: Γ_EM = 0 to all orders in σ_eν.
+EM leakage is not a mechanism — ever.
+
+### F9. Cross-shear shifts energies but does not mix modes
+
+On a flat T⁶, modes are exact plane waves exp(i n·θ) regardless
+of the metric.  Cross-shear modifies mode energies:
+
+| σ_eν | Fractional shift δE/E |
+|-------|----------------------|
+| 0.001 | 2.1 × 10⁻⁶          |
+| 0.01  | 2.1 × 10⁻⁴          |
+| 0.05  | 5.4 × 10⁻³          |
+
+The shift is proportional to σ_eν² and independent of mode
+number — all modes shift by the same fraction.
+
+### F10. Coupling matrix elements are tiny
+
+The energy coupling V = ñ_e · δ(G̃⁻¹) · ñ_ν between neutrino
+and electron modes is ~10⁻¹⁰ MeV² (for σ_eν = 0.01).  The
+mixing coefficient c_mix = V/(E_ν² − E_e²) is ~10⁻⁹ because
+the energy gap is enormous: E_e ≈ 0.5 MeV vs E_ν ≈ 0.03 meV
+(ratio ~10⁷).
+
+This gap makes ALL cross-sheet processes exponentially or
+algebraically suppressed.
+
+### F11. Thermal disruption — the candidate leakage mechanism
+
+Naive kinetic model:
+
+    γ_per_atom = f_collision × σ_eν² × exp(−ΔE/kT)
+    γ_collective = γ_per_atom / N_atoms
+    τ_store = 1/γ_collective
+
+| σ_eν  | τ_store (f = 10¹²/s)  |
+|--------|-----------------------|
+| 0.001  | 3.2 years             |
+| 0.005  | 46 days               |
+| 0.01   | 12 days               |
+| 0.02   | 2.9 days              |
+| 0.05   | 11 hours              |
+
+CAVEAT: This model assumes each thermal collision has
+probability σ_eν² of affecting the neutrino-sheet state.
+The actual mechanism is unclear — see F12.
+
+### F12. The thermal coupling mechanism is an open question
+
+The naive model assumes direct R³ → T²_ν coupling with
+probability σ_eν².  But the physical coupling chain is:
+
+    R³ thermal → electron T² → (σ_eν) → neutrino T²
+
+Step 1 requires bridging a ~MeV energy gap (electron mode
+spacing) with ~meV thermal energy.  This is Boltzmann-
+suppressed by exp(−MeV/meV) ≈ 0.
+
+If the thermal-to-neutrino pathway must go through the
+electron sheet, the storage lifetime is exponentially longer
+than the naive model — potentially geological or longer.
+
+Possible alternative pathways:
+
+(a) Phonon-metric coupling: atomic vibrations modulate the
+    T⁶ metric, directly exciting neutrino modes.  Rate
+    depends on the metric's "stiffness" (unknown).
+
+(b) Direct R³ × T⁶ coupling through dimensional reduction.
+    Uncharged modes couple gravitationally (negligible) or
+    through unidentified mechanisms.
+
+(c) Collective oscillation: the 10¹⁴-atom domain's
+    neutrino state may have observable R³ effects that
+    couple to the thermal bath.
+
+This is the deepest open question in the storage program.
+
+### F13. Three-layer protection
+
+The neutrino-sheet state is protected by:
+
+1. **Charge immunity** (exact): Q = 0, EM coupling = 0.
+2. **Energy gap** (~10⁷ ratio): electron sheet at MeV,
+   neutrino sheet at meV.  Thermal cross-talk requires
+   bridging this gap.
+3. **Collective averaging**: 10¹⁴ atoms per domain.
+   Individual disruptions are negligible.
+
+Combined: even the naive model gives biologically relevant
+lifetimes (hours to years).  The energy-gap suppression
+(F12) could extend this to geological timescales.
+
+### F14. Storage lifetime is mode-independent
+
+All neutrino modes have the same fractional energy shift
+from cross-shear (δE/E ∝ σ_eν², independent of n₃, n₄).
+All modes leak at the same rate.  Information encoded in
+mode PATTERNS is uniformly protected — no vulnerable modes.

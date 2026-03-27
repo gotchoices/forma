@@ -194,6 +194,18 @@ metric.
 
 **Script:** `scripts/track3_leakage_rate.py`
 
+**Result (Complete):** Neutrino modes are EXACTLY uncharged
+(Q = 0, topological) — Γ_EM = 0 to all orders in σ_eν (F8).
+Cross-shear shifts energies (δE/E ∝ σ_eν²) but does NOT mix
+modes on a flat T⁶ (F9).  Coupling to electron modes is tiny
+(c_mix ~ 10⁻⁹) due to the 10⁷ energy gap (F10).  Naive thermal
+model gives τ ~ 12 days (σ_eν = 0.01) to 3.2 years (σ_eν = 0.001)
+with 1/N_atoms collective protection (F11).  BUT the actual
+thermal pathway (R³ → electron T² → σ_eν → neutrino T²) requires
+bridging a MeV gap with meV thermal energy — exponentially
+suppressed (F12).  True storage lifetime may be far longer than
+the naive estimate.  See findings F8–F14.
+
 ---
 
 ## Track 4. Coupling strength estimate

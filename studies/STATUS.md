@@ -115,15 +115,18 @@ interference on the torus as the bidirectional mechanism.
 **Study:** [`threshold-coupling/`](threshold-coupling/)
 **Questions:** Q78, Q32  **Type:** compute + theoretical  **Depends on:** R26, R19, R27, R33
 
-4 tracks (1 complete).  Motivated by the unified mode-density picture
+4 tracks (2 complete).  Motivated by the unified mode-density picture
 (Q85 §14): threshold "continuity" is mode-hopping on the neutrino
-sheet's dense ladder.  Track 1 (COMPLETE, F1–F7): Monte Carlo of
-Reiter's beam-split.  Cd-109 Re/Rc = 33 reproduced via SCA upper-limit
-mechanism (atoms nearly full → pulses exceed photopeak window).  Na-22
-Re/Rc = 963 constrains pre-load distribution (uniform max ≈ 0.43 E_γ).
-30% tension on joint fit.  Master parameter = fill_rate/leak_rate.
-Track 2: write/read dynamics.  Track 3: cross-shear leakage (sets
-storage lifetime).  Track 4: neutron-gateway coupling (Goldilocks).
+sheet's dense ladder.  Track 1 (COMPLETE, F1–F7): Cd-109 Re/Rc = 33
+reproduced via SCA upper-limit mechanism.  Na-22 Re/Rc ≈ 963 constrains
+pre-load distribution.  Track 3 (COMPLETE, F8–F14): neutrino modes are
+EXACTLY uncharged (topological, F8), Γ_EM = 0.  Cross-shear doesn't
+mix modes on flat T⁶ (F9).  Naive thermal model: τ ~ 12 days at
+σ_eν = 0.01 (F11).  But actual thermal pathway requires bridging a
+MeV gap — exponentially suppressed (F12).  True lifetime potentially
+geological.  Three-layer protection: charge immunity + energy gap +
+collective averaging (F13).  Track 2: deferred (needs Track 4).
+Track 4: neutron-gateway coupling (Goldilocks).
 
 ### R36. Geometric tilt — α from T²/R³ embedding without KK  **Complete**
 **Study:** [`geometric-tilt/`](geometric-tilt/)
