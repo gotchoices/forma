@@ -232,7 +232,7 @@ Studies in chronological order of completion. Key result only — see each study
 |---|-------|------------|
 | 1 | **S1. Toroid series** [`S1-toroid-series/`](S1-toroid-series/) | Null result. The 9% charge deficit is an artifact of geometric approximations, not a real target. |
 | 2 | **S2. Toroid geometry** [`S2-toroid-geometry/`](S2-toroid-geometry/) | a/R = 1/√(πα) ≈ 6.60 gives q = e in WvM's formula. Key algebraic result, but not self-consistent (see R6). |
-| 3 | **S3. Knot zoo** [`S3-knot-zoo/`](S3-knot-zoo/) | Only (1,2) produces nonzero charge. Fractional charges (e/3, 2e/3) map to specific a/R multiples. Compact dimension hypothesis proposed. |
+| 3 | **S3. Knot zoo** [`S3-knot-zoo/`](S3-knot-zoo/) | Only (1,2) produces nonzero charge. Fractional charges (e/3, 2e/3) map to specific a/R multiples. Material dimension hypothesis proposed. |
 | 4 | **R1. KK charge comparison** [`R1-kk-charge/`](R1-kk-charge/) | KK gravitational charge is ~10⁻²² × e at Compton scale — ruled out. WvM mechanism is structurally different. 6D decomposition documented for reference. |
 | 5 | **R2. Electron from geometry** [`R2-electron-compact/`](R2-electron-compact/) | Photon of energy m_e c² on (1,2) geodesic on Ma_e gives q = e, s = ½, g ≈ 2.0023 with zero free continuous parameters. Framework sound; numerics use S2's r = 6.60 (later revised by R6). |
 | — | **R4. B-field / magnetic dipole** *(retired)* | *Not started. Answered within R2: magnetic moment is the net axial projection of B on Ma_e. No separate study needed.* |
