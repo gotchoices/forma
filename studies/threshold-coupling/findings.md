@@ -338,3 +338,199 @@ The stiffness K replaces σ_eν as the master parameter.
 Computing K requires the moduli potential of the T⁶
 geometry — connected to the moduli stabilization problem
 in string theory (Q85 §8a).
+
+### F19. Coulomb field is the monopole projection of compact-dimension structure
+
+The static electric field of a charged particle at
+r >> λ_C = 2πR is the l=0 (monopole) term of a
+multipole expansion over the compact T² coordinates.
+The mode on the torus has angular structure ~ e^{i(n₁θ₁ + n₂θ₂)},
+producing a field that is NOT uniform around the torus.
+
+At r >> λ_C, only the total charge (integral over θ₁, θ₂)
+survives — giving the symmetric 1/r² Coulomb law.  The
+angular structure is invisible.
+
+At r ~ λ_C, higher multipoles become resolvable.  These
+are the KK tower: excited compact-dimension modes with
+masses m_n ~ n/R ~ n × m_particle.  The field deviates
+from 1/r² and encodes the torus topology (winding numbers,
+shear).
+
+The non-linearity arises because the KK gauge field comes
+from the Einstein equations on the compact space, which
+are non-linear.  At r >> R, linearized → Maxwell →
+Coulomb.  At r ~ R, full non-linear geometry matters.
+
+In the T⁶ model, R = λ_C/2π by construction.  The compact
+structure becomes resolvable at EXACTLY the quantum-
+mechanical Compton scale.  This is automatic, not a
+coincidence — the compactification radius IS the Compton
+wavelength.
+
+Provocative question: could the known QED corrections at
+the Compton scale (Uehling potential, vacuum polarization)
+be KK tower effects?  Both appear at the same scale
+(r ~ λ_C).  If they match, then QED radiative corrections
+= compact-dimension geometry.  Computable (see Q85 §8a).
+
+### F20. Neutrino-sheet modes project non-uniform voltage on the cell membrane
+
+The neutrino Compton wavelength (≈ 42 μm) matches the cell
+diameter.  A neutrino mode (n₃, n₄) is a standing wave
+across the ~42 μm domain.  Higher harmonics have shorter
+spatial wavelengths.
+
+The cell membrane sits at the domain boundary and samples
+this standing-wave pattern.  Through the elastic torus
+(F17), different membrane positions experience different
+geometric modulations → different electron-sheet energies
+→ non-uniform voltage.
+
+The voltage pattern on a single cell's membrane encodes
+the harmonic content of the occupied neutrino modes:
+- Fundamental (lowest winding): one lobe across the cell
+- Higher harmonics: multiple nodes, finer structure
+- Superposition of occupied modes: complex, information-
+  rich 2D pattern on the membrane surface
+
+The information capacity of this pattern is vastly greater
+than a single scalar voltage:
+- Scalar Vmem: ~1 number per cell (Levin's resolution)
+- T⁶ prediction: thousands of harmonic coefficients,
+  each encoding a mode occupation number
+
+This is consistent with the Q85 §13 capacity estimate.
+
+Important caveat: the neutrino modes are uncharged (F8).
+The voltage pattern arises INDIRECTLY:
+  ν-state → (elastic torus) → local geometry variation →
+  charged-particle energy shifts → non-uniform E field
+This requires the elastic torus hypothesis (F17).  On
+a flat T⁶, the pattern is invisible (F16).
+
+### F21. Connection to Levin: scalar Vmem vs. harmonic voltage map
+
+Levin measures membrane voltage at cell-level resolution
+across tissues: spatial patterns of Vmem where each cell
+has one scalar value (-70 to +40 mV).  He observes that
+these patterns are instructive for morphogenesis and
+survive events that should destroy them.
+
+The T⁶ model predicts that the information content is
+MUCH richer than Levin's current resolution captures:
+the voltage on a single cell's membrane has sub-cellular
+spatial structure encoding the full neutrino mode
+occupation.  Levin's scalar Vmem is the AVERAGE of
+this rich pattern — the DC component, discarding all
+AC harmonics.
+
+This explains his results in the T⁶ framework:
+- Vmem patterns ARE instructive (they encode neutrino-
+  sheet information)
+- The information survives cell death (the ν-sheet is
+  the primary store, not the cells)
+- But Levin's resolution doesn't reveal the full
+  information content
+
+Testable prediction: sub-micron voltage imaging of a
+single cell's membrane should reveal specific harmonic
+content — not random noise — with spatial frequencies
+corresponding to the neutrino mode spectrum.
+
+Writing via membrane voltage: Levin shows that changing
+Vmem reprograms cell fate.  In the T⁶ picture:
+  ΔVmem → changed ionic forces → mechanical stress →
+  (elastic torus) → geometry modulation → ν-state change
+This makes Vmem an indirect write channel to the
+neutrino sheet, consistent with Levin's experimental
+observation that voltage IS instructive.
+
+
+## Track 4 — Coupling strength estimate
+
+### F22. Flat T⁶ coupling is exactly zero
+
+On a flat T⁶, the neutron-gateway coupling chain
+(EM → e-T² → σ_eν → ν-T²) is broken at every step:
+
+1. Neutrino modes are exactly uncharged (F8): Q = 0.
+2. Cross-shear does not mix modes (F9): eigenstates
+   remain exact plane waves.
+3. The MeV gap blocks thermal coupling (F12):
+   exp(-MeV/meV) ≈ 0.
+
+The EM coupling g_flat = 0 (exact, to all orders in σ_eν).
+No Goldilocks window exists on a flat T⁶.
+
+### F23. The elastic torus shifts coupling from EM to geometry
+
+Molecular forces → geometry change (δs₃₄ or δr_ν) →
+neutrino mode energy shift → mode hop.  This bypasses
+all three protection layers because the mechanism is
+geometric, not electromagnetic:
+
+- Charge immunity: irrelevant (no EM involved)
+- Energy gap: bypassed (geometry change is adiabatic)
+- Collective: HELPS (amplifies the geometric signal)
+
+### F24. Shear channel dominates; Goldilocks is thermodynamic
+
+Modes with n₃ = 0 are r_ν-independent (insensitive to
+aspect ratio changes).  Modes with n₃ ≠ 0 respond to
+s₃₄ with ∂E/∂s₃₄ ≈ E₀ ≈ 29 meV per unit shear.
+
+Because ∂E/∂s₃₄ ≈ mode spacing, the Goldilocks condition
+reduces to a purely thermodynamic criterion:
+
+    mode_hops = K × F_energy × (amplification factor)
+
+where the amplification factor ≈ 46.6 (ratio of |∂E/∂s|
+to the actual minimum mode spacing of ~0.6 meV at r_ν=100).
+
+The criterion for a Goldilocks window: F_write / kT > 10.
+
+### F25. Read SNR is independent of compliance K
+
+Both signal and noise scale with K → K cancels:
+    SNR_single = E_mode / kT ≈ 1–3
+    SNR_collective = √N × E_mode / kT ≈ 10⁷
+
+Reading is ALWAYS viable with collective enhancement.
+No constraint on K from read.  Even the lowest mode
+(E ~ 29 meV) has collective SNR ~ 10⁷.
+
+### F26. Passive vibrations cannot write
+
+Molecular vibrations (50 meV) vs thermal noise (27 meV)
+gives F/kT = 1.9 — far below the threshold of 10.
+No value of K allows writing with passive vibrations while
+retaining the stored state against thermal noise.
+
+Ion channel gating (70 meV): F/kT = 2.6 — also insufficient.
+
+### F27. ATP-driven write opens a Goldilocks window
+
+ATP hydrolysis (0.5 eV) vs kT (27 meV) gives F/kT = 18.7,
+exceeding the threshold of 10.
+
+Goldilocks window: K ∈ [0.043, 0.080] eV⁻¹  (span 1.8×).
+At mid-window (K ≈ 0.06), each ATP event shifts by ~1.4
+mode hops — fast compared to biological timescales given
+the ~10¹⁰ ATP/cell/s metabolic rate.
+
+Biological predictions:
+- Dead cells cannot write (no ATP) but can be read
+- Metabolically active cells write faster
+- Anesthesia (reduced ATP turnover) slows writing
+- Writing is an active, ATP-consuming process
+- The stored pattern persists without metabolic maintenance
+  (retention is passive, protected by F13)
+
+### F28. The metric compliance K is the master parameter
+
+K must be in [0.043, 0.080] eV⁻¹ for ATP-driven storage.
+Computing K from first principles requires the moduli
+potential of the T⁶ geometry — the central open question
+connecting this model to string theory's moduli
+stabilization problem.

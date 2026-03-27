@@ -256,6 +256,17 @@ The coupling g is the product of:
 
 **Script:** `scripts/track4_coupling_estimate.py`
 
+**Result (Complete):** Flat T⁶ coupling is EXACTLY ZERO — neutrino
+modes are uncharged, cross-shear doesn't mix modes, and the MeV gap
+blocks thermal pathways (F22).  The elastic torus shifts I/O from EM
+to geometry: molecular forces → δs₃₄ → mode energy shift (F23).
+Shear sensitivity ∂E/∂s₃₄ ≈ E₀; Goldilocks reduces to F_write/kT > 10
+(F24).  Read SNR is K-independent at ~10⁷ (F25).  Passive vibrations
+CANNOT write (F/kT = 1.9, F26).  ATP hydrolysis (0.5 eV, F/kT = 18.7)
+opens a Goldilocks window: K ∈ [0.043, 0.080] eV⁻¹ (F27).  Writing
+REQUIRES metabolic energy — dead cells can't write but can be read.
+See findings F22–F28.
+
 ---
 
 ## Expected deliverables

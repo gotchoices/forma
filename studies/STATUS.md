@@ -115,20 +115,24 @@ interference on the torus as the bidirectional mechanism.
 **Study:** [`threshold-coupling/`](threshold-coupling/)
 **Questions:** Q78, Q32  **Type:** compute + theoretical  **Depends on:** R26, R19, R27, R33
 
-4 tracks (2 complete).  Motivated by the unified mode-density picture
+4 tracks (3 complete).  Motivated by the unified mode-density picture
 (Q85 §14): threshold "continuity" is mode-hopping on the neutrino
 sheet's dense ladder.  Track 1 (COMPLETE, F1–F7): Cd-109 Re/Rc = 33
 reproduced via SCA upper-limit mechanism.  Na-22 Re/Rc ≈ 963 constrains
-pre-load distribution.  Track 3 (COMPLETE, F8–F18): neutrino modes are
-EXACTLY uncharged (topological, F8), Γ_EM = 0.  Three-layer
-protection (charge + MeV gap + collective) is direction-independent
-— blocks internal radiation equally (F15).  Shielding is SYMMETRIC:
-also blocks reading / co-resonance on flat T⁶ (F16).  The elastic
-torus (Hypothesis I) resolves the I/O problem: geometric modulation
-bypasses all three layers, giving active internal write + passive
-external read while maintaining noise protection (F17).  Goldilocks
-parameter shifts from σ_eν to metric stiffness K (F18).  Track 2:
-deferred.  Track 4: neutron-gateway coupling.
+pre-load distribution.  Track 3 (COMPLETE, F8–F21): three-layer protection is direction-
+independent (F15) and symmetric — blocks reading equally (F16).
+Elastic torus resolves I/O (F17).  Coulomb field is the monopole
+projection of compact-dimension structure — higher multipoles
+visible at λ_C ≈ 42 μm ≈ cell size (F19).  Neutrino modes project
+non-uniform voltage on cell membrane (F20) — Levin's scalar Vmem
+is the DC component of a richer harmonic pattern (F21).
+Track 4 (COMPLETE, F22–F28): flat T⁶ coupling is exactly zero
+(F22).  Elastic torus shifts I/O from EM to geometry (F23).  The
+Goldilocks criterion is purely thermodynamic: F_write/kT > 10
+(F24).  Read SNR ~ 10⁷, K-independent (F25).  Passive vibrations
+can't write (F26).  ATP hydrolysis (F/kT = 18.7) opens a
+Goldilocks window: K ∈ [0.043, 0.080] eV⁻¹ (F27).  Writing
+REQUIRES metabolic energy.  Track 2: deferred.
 
 ### R36. Geometric tilt — α from T²/R³ embedding without KK  **Complete**
 **Study:** [`geometric-tilt/`](geometric-tilt/)
@@ -142,6 +146,21 @@ be a free "designer's choice" parameter rather than a derivable constant.
 Track 1: tilt formalism and mode projection.  Track 2: mode-mode coupling
 (does 1/r Coulomb emerge?).  Track 3: ghost mode projection.  Track 4:
 mass spectrum preservation.
+
+### R37. Membrane mechanics — gravity, stability, and α from the T²/R³ interface  **Draft**
+**Study:** [`membrane-mechanics/`](membrane-mechanics/)
+**Questions:** Q2, Q18, Q76  **Type:** theoretical + compute  **Depends on:** R19, R26, R17, R18, R31, R35
+
+5 tracks (0 complete).  The confined photon exerts ~10²⁵ Pa radiation pressure
+on the T²/R³ boundary.  Balanced against spacetime stiffness κ = c⁴/(8πG),
+the resulting R³ deformation reproduces the Newtonian potential.  Hypothesis:
+a single elastic membrane simultaneously determines particle stability (force
+balance → Compton wavelength), gravity (normal deformation → Schwarzschild),
+and α (anisotropic shear → lattice tilt → charge).  Track 1: radiation stress
+tensor on T².  Track 2: force balance and equilibrium geometry.  Track 3:
+Israel junction conditions → gravitational field.  Track 4: anisotropic
+stress → shear → α.  Track 5: predicted α/G ratio vs membrane Poisson ratio.
+Connects to R35 Hypothesis I (elastic torus) and universe-as-mode paper.
 
 ### R33. Ghost mode selection — why most T⁶ modes are dark  **Paused**
 **Study:** [`ghost-selection/`](ghost-selection/)

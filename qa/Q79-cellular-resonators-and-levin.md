@@ -622,7 +622,144 @@ below the quantum measurement threshold.
 
 ---
 
-## 8. Open questions
+## 8. Sub-cellular voltage patterns — beyond Levin's scalar Vmem
+
+### 8.1 The Coulomb field as a compact-dimension projection (R35 F19)
+
+At distances r >> λ_C = 2πR (the compactification radius),
+a charged particle's electric field is the l=0 monopole
+projection of its compact-dimension structure.  The mode on
+the torus has angular structure ~ e^{i(n₁θ₁ + n₂θ₂)}, so the
+full field is NOT uniform in the compact dimensions.  But at
+large r, only the total charge (integral over angles) survives
+— giving the symmetric 1/r² Coulomb law.
+
+At r ~ λ_C, higher multipoles become visible.  These are the
+KK tower contributions: the field deviates from 1/r² and
+encodes the torus topology.  In the T⁶ model, R = λ_C/2π by
+construction, so compact structure is resolvable at exactly
+the Compton scale.
+
+For the neutrino sheet, λ_C ≈ 42 μm = cell diameter.  The
+cell membrane sits at the boundary of the neutrino domain,
+exactly where compact-dimension multipoles become resolvable.
+
+### 8.2 Non-uniform membrane voltage from neutrino modes (R35 F20)
+
+A neutrino mode (n₃, n₄) is a standing wave across the ~42 μm
+domain.  Through the elastic torus (R35 F17), different
+positions on the cell membrane experience different geometric
+modulations → different electron-sheet energies → non-uniform
+voltage.
+
+The voltage pattern on a single cell's membrane encodes the
+harmonic content of the occupied neutrino modes:
+
+| Mode structure | Membrane pattern |
+|----------------|-----------------|
+| Fundamental (0,1) | Uniform (DC offset) |
+| (1,1) | One node; two voltage regions |
+| (2,3) | Multiple nodes; complex 2D pattern |
+| Superposition | Information-rich harmonic map |
+
+The information capacity is vastly richer than a single Vmem:
+- Levin's resolution: ~1 scalar per cell
+- T⁶ prediction: ~N_modes harmonic coefficients per cell
+  (potentially thousands, per Q85 §13)
+
+### 8.3 How this connects to Levin's observations
+
+Levin treats membrane voltage as a scalar per cell or region.
+His voltage-sensitive dyes provide cell-level resolution across
+tissues but not sub-cellular resolution on individual cells.
+
+In the T⁶ framework, Levin's scalar Vmem is the spatial
+AVERAGE of the non-uniform voltage pattern — the DC component,
+discarding all harmonic content.  His experiments confirm that
+even this averaged signal is instructive, but the full
+information content remains hidden below his spatial resolution.
+
+This reinterpretation explains:
+
+1. **Why Vmem patterns are instructive but seem informationally
+   thin.** The real information is in the sub-cellular pattern,
+   not the scalar average.  Levin's manipulations (changing
+   Vmem via ion channel drugs) work because they change the
+   average, which feeds back to the neutrino sheet through the
+   elastic torus mechanism — a blunt but effective write.
+
+2. **Why gap junctions matter so much.** Gap junctions couple
+   the scalar averages between cells.  But the full harmonic
+   pattern on each membrane is local to that cell's neutrino
+   domain.  Gap junctions coordinate the coarse (tissue-level)
+   pattern; the fine (intra-cellular) pattern is autonomous.
+
+3. **How the planaria memory survives.** The neutrino-sheet
+   pattern (stored at each ~42 μm locus) encodes the full
+   harmonic map.  When a new cell grows into that location, it
+   reads the harmonics and reconstructs the Vmem pattern.
+   Levin observes the reconstructed scalar average; the
+   harmonics are the persistent substrate.
+
+### 8.4 Writing via membrane voltage
+
+Levin demonstrates experimentally that artificially changing
+Vmem reprograms cell fate.  In the T⁶ framework:
+
+    ΔVmem → changed ionic forces → mechanical stress on cell
+    → (elastic torus) → geometry modulation → ν-state change
+
+This makes Vmem manipulation an indirect write channel.  The
+write is "blunt" — changing the scalar average affects many
+harmonic modes simultaneously — but effective for changing
+the overall cell identity (head vs. tail, polarized vs.
+depolarized).
+
+A more targeted write would require sub-cellular voltage
+patterning — applying different voltages at different membrane
+positions to address specific harmonic modes.  This is beyond
+current experimental capability but suggests a future avenue.
+
+### 8.5 The read asymmetry: why reading is easier than writing
+
+The shielding analysis (R35 F16–F17) shows that on a flat T⁶,
+both reading and writing are equally blocked.  But the elastic
+torus creates an asymmetry:
+
+**Reading (passive, external):** The neutrino pattern → geometry
+→ membrane voltage pattern.  This is a continuous projection —
+the pattern is always there, updating in real time as the
+neutrino state evolves.  No energy needs to cross the MeV gap.
+Neighboring cells can detect the pattern via sympathetic
+resonance (co-resonance).
+
+**Writing (active, internal):** Changing the neutrino state
+requires energy input.  The mechanism is: biochemistry →
+mechanical forces → geometry change → mode transition.  This
+is thermodynamically irreversible and requires metabolic
+energy (ATP).
+
+The asymmetry is biologically ideal: active internal write
+(metabolically driven, only from within the cell) and passive
+external read (sympathetic resonance, across cell boundaries).
+
+### 8.6 Testable prediction
+
+Sub-micron voltage imaging (e.g., voltage-sensitive fluorescent
+proteins with super-resolution microscopy) of a single cell's
+membrane should reveal specific harmonic content:
+
+- NOT random noise (which would indicate no compact-dimension
+  coupling)
+- Specific spatial frequencies corresponding to the neutrino
+  mode spectrum (if the elastic torus mechanism is operating)
+- Pattern stability over time (reflecting persistent storage)
+- Pattern change correlated with cell fate decisions (reflecting
+  write operations)
+
+---
+
+## 9. Open questions
 
 1. **Can the coupling chain be quantified?** What is the
    energy transfer rate from neutrino-sheet modes through
@@ -660,3 +797,16 @@ below the quantum measurement threshold.
    may work by disrupting the cell's read access to the
    neutrino sheet — temporarily disconnecting consciousness
    from its persistent storage.
+
+7. **Can sub-cellular voltage patterns be resolved?**
+   (§8.6) Voltage-sensitive fluorescent proteins with
+   super-resolution microscopy might reveal harmonic content
+   on a single cell's membrane.  The T⁶ model predicts
+   specific spatial frequencies, not random noise.
+
+8. **Are QED corrections at the Compton scale KK tower
+   effects?** (§8.1, R35 F19) The Uehling potential and
+   the KK tower both modify the Coulomb potential at
+   r ~ λ_C.  If they match quantitatively, QED radiative
+   corrections = compact-dimension geometry.  This is
+   computable.
