@@ -343,7 +343,7 @@ computed (see Q54).
    the φ-symmetry protection entirely.  No wavepacket
    localization needed (σ can be ∞).  R12 F5 showed shear is
    unconstrained internally; the constraint must come from
-   outside (T³ geometry, topology).  The question "what
+   outside (Ma geometry, topology).  The question "what
    determines σ?" becomes "what determines δ?"  → R19.
 
 **Remaining viable candidates: 2, 3, 4, 8** (mode structure,

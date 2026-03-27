@@ -46,8 +46,8 @@ on both sheets simultaneously (e.g., the neutron).
 
 ### F1. Tilt preserves the mass spectrum exactly
 
-On a tilted material sheet × R¹ (tilt angle θ between the z₁ axis
-and R), the rest mass of every mode at its energy minimum
+On a tilted material sheet in one spatial dimension (tilt angle θ between the z₁ axis
+and the spatial direction), the rest mass of every mode at its energy minimum
 is identical to the un-tilted case:
 
     m² = (2πn₁/L₁)² + (2πn₂/L₂)²

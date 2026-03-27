@@ -344,7 +344,7 @@ The 1st-generation m_d/m_u ≈ 2 agreement is likely coincidental.
 
 ---
 
-## F2. Compact Dimension Reframing (Hypothesis)
+## F2. Material Dimension Reframing (Hypothesis)
 
 **No script** — conceptual analysis, not a computed result
 **Bears on:** P3 (mass ratios), theory.md §4

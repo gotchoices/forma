@@ -23,7 +23,7 @@ predicts particle masses also predict their interactions?
 |------|-------|-----------------|--------|
 | 6 | Ma (material) | Particle identity: mass, charge, spin | R27: solved |
 | 3 | S (spatial) | Positions, separation, binding | This study |
-| 1 | R¹ (time) | Dynamics, decays, transitions | Deferred |
+| 1 | t (time) | Dynamics, decays, transitions | Deferred |
 | **9** | **Ma × S** | **Static multi-body** | **Minimum for atoms** |
 | 10 | Ma × S⁺¹ | Full dynamics | Future |
 
@@ -194,7 +194,7 @@ the track most likely to address it.
 | OQ7 | Why doesn't n decay in a nucleus? | T6 |
 
 
-## On the question of a 7D (Ma × R¹) solver
+## On the question of a 7D (Ma × t) solver
 
 A 1D spatial simplification is tempting but has a
 fundamental limitation: the Coulomb potential in 1D is

@@ -4,7 +4,7 @@
 ## F1. The stiffness equals the EM energy density / R
 
 Working backwards from α = 1/137 to extract the required
-stiffness κ of the compact space:
+stiffness κ of the material space:
 
     κ = ε₀E₀²/(2R) = m_ec²/(4π²R²a²)
 
@@ -16,7 +16,7 @@ With the curvature correction:
 where C(r) = (2/r²)[1 − 2/√(1−r²) + 1/(1−r²)^{3/2}].
 For r = 0.5: C = 1.842.
 
-Physical interpretation: the compact space's stiffness IS
+Physical interpretation: the material space's stiffness IS
 the photon's own EM energy density divided by R.  The vacuum
 "resists deformation with exactly the same force that creates
 the deformation."
@@ -180,7 +180,7 @@ C_Coulomb = K²/(4πε₀R) where K = Q₀|V₀|/Δ(ω²/c²)
 
 The 96× ratio arises because:
 - The path length change is O(δ/S₀)² — a GEOMETRIC effect
-  suppressed by the compact space's size S₀ ~ 10⁻¹³ m.
+  suppressed by the material space's size S₀ ~ 10⁻¹³ m.
 - The Coulomb energy is O(Q²/R) — an ELECTROSTATIC effect
   set by e²/(4πε₀R) = α × m_ec² ≈ 0.007 m_ec².
 
@@ -260,7 +260,7 @@ Script: `scripts/track2_energy_balance.py`.
 
 The geometric deformation mechanism (R18) is **ruled out**.
 
-The photon cannot spontaneously deform its compact space to
+The photon cannot spontaneously deform its material space to
 produce charge, because the electrostatic cost of the charge
 (~0.01 m_ec²) far exceeds the energy saved by the deformation
 (~10⁻⁴ m_ec²).

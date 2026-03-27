@@ -41,8 +41,8 @@ never physically implemented.
 
 | Study | Mechanism | Why it failed |
 |-------|-----------|---------------|
-| R19 T4–6 | Shear variations on flat material sheet/T³ | Charges or masses wrong |
-| R14 | Three linked photons on flat T³ | Charge depends on mode numbers, not arrangement |
+| R19 T4–6 | Shear variations on flat material sheet/3-torus | Charges or masses wrong |
+| R14 | Three linked photons on flat 3-torus | Charge depends on mode numbers, not arrangement |
 
 All operated on flat material space.  None tested the embedding.
 
@@ -192,8 +192,8 @@ It failed (F8–F9).  Combined with previous failures:
 
 | Study | Mechanism | Result |
 |-------|-----------|--------|
-| R19 T4–6 | Shear on flat material sheet/T³ | F31: gives lighter charged modes |
-| R14 | Topological linking on T³ | F18: charge is mode-number, not position |
+| R19 T4–6 | Shear on flat material sheet/3-torus | F31: gives lighter charged modes |
+| R14 | Topological linking on 3-torus | F18: charge is mode-number, not position |
 | R21 T2 | Position on curved material sheet | F8: ratios are continuous, not quantized |
 
 **What's common:** Every mechanism produces CONTINUOUS charge
@@ -207,7 +207,7 @@ that forces charges on a torus to take specific rational values.
 Possible directions (not yet explored):
 - Multi-torus models (each quark on its own material sheet)
 - Non-abelian structure (higher gauge symmetry on a material sheet)
-- Charge quantization from global T³ consistency conditions
+- Charge quantization from global 3-torus consistency conditions
 
 ## Dependencies
 

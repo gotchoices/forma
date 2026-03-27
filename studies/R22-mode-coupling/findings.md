@@ -104,7 +104,7 @@ the material-sheet model's neutrino options are:
 |------|-----------|--------|
 | (a) Separate material sheet per flavor | Each neutrino on its own torus | Not yet explored |
 | (b) Quantum fluctuations | Beyond-mean-field θ₂ breaking | Exponentially suppressed |
-| (c) Multi-torus / T³ | Higher-dimensional topology | Not yet explored |
+| (c) Multi-torus / 3-torus | Higher-dimensional topology | Not yet explored |
 | (d) Moduli oscillation | Shape fluctuation + spin mechanism | Needs spin-½ construction |
 
 

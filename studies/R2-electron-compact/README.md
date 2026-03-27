@@ -1,4 +1,4 @@
-# Electron from Compact Dimensions  *(concluded)*
+# Electron from Material Dimensions  *(concluded)*
 
 Assemble all established results into a single framework and
 verify: a photon of specific energy, on a specific geodesic, in

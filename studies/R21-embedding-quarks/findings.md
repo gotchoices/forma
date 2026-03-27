@@ -269,7 +269,7 @@ with two distinct fractional charges.  Either:
     the picture qualitatively — possible but speculative.
 (b) Quarks require a DIFFERENT mechanism than position on a
     single embedded torus — e.g., modes on different material sheet planes
-    within T³ (each plane having its own ε), or a non-WvM
+    within Ma (each sheet having its own ε), or a non-WvM
     charge formula.
 (c) The S3 algebraic ratios (which DO give exact fractions)
     operate through a mechanism not captured by the curved-torus

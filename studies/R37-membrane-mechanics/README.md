@@ -408,7 +408,7 @@ interface.  Several candidates:
    surface may change this.
 
 4. **Higher-dimensional Einstein equations.** If the full
-   10D geometry (Ma × S × R¹) satisfies the 10D Einstein
+   10D geometry (Ma × S × t) satisfies the 10D Einstein
    equations, the compactification itself provides forces on
    the material-sheet surfaces.  The requirement of self-consistency
    (10D Ricci flatness, or a specific cosmological constant)

@@ -1,9 +1,9 @@
 # R18. Self-Consistent Geometry — Deriving α from Torus Stiffness  *(complete — negative)*
 
-Can the photon's own electromagnetic field deform the compact
+Can the photon's own electromagnetic field deform the material
 space, breaking the symmetry that protects zero charge and
 thereby producing the electron's charge?  If so, α is determined
-by the balance between EM pressure and the compact space's
+by the balance between EM pressure and the material space's
 resistance to deformation (its "stiffness").
 
 This study works BACKWARDS from the known α = 1/137 to extract
@@ -113,7 +113,7 @@ equilibrium amplitude determines the charge and hence α.
 ### Track 1. Backwards calculation — stiffness from known α
 
 Work backwards from α = 1/137 to extract the required stiffness
-of the compact space.
+of the material space.
 
 **Method:**
 
@@ -183,7 +183,7 @@ Track 2's negative result makes this unnecessary.
 
 - **Strong:** The backwards calculation gives κ expressible in
   terms of ε₀, μ₀, c, ℏ, or simple combinations.  This would
-  identify the compact space's stiffness with a known vacuum
+  identify the material space's stiffness with a known vacuum
   property.  If the forward calculation (Track 2) also shows
   instability, this is a first-principles derivation of α.
 

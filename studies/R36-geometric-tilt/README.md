@@ -89,7 +89,7 @@ does the physics come out right?
 
 ## Key questions
 
-1. In a simplified (R¹ + material sheet) model, does a tilt angle θ
+1. In a simplified (one spatial dimension + material sheet) model, does a tilt angle θ
    produce a coupling α(θ) with the same form as the KK
    formula α(r, s)?  Or is it structurally different?
 2. Do two modes on a tilted material sheet interact with a 1/r
@@ -107,14 +107,14 @@ does the physics come out right?
 
 ### Track 1 — Tilt-angle formalism and mode projection  **Complete**
 
-Work in a simplified model: 1 spatial dimension R¹ and
+Work in a simplified model: one spatial dimension and
 one material sheet (2 periodic dimensions with circumferences
 L₁, L₂ and aspect ratio r = L₁/L₂).
 
 The material-sheet axes are orthogonal to each other (s = 0).
 Introduce a tilt: the material-sheet plane is rotated by angle θ in
-the (R¹, material-sheet) hyperplane, so that material-dimension motion has a
-small R¹ component.
+the (spatial, material-sheet) hyperplane, so that material-dimension motion has a
+small spatial component.
 
 **Result:** The tilt preserves masses exactly (F1) but
 produces no interaction between modes (F4).  It is

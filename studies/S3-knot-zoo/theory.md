@@ -159,8 +159,8 @@ it assumes a specific polarization transport rule.
 
 The WvM charge formula algebraically admits fractional charges
 via different a/R values (F4), which is consistent with the
-hypothesis that quarks might be (1,2) knots on compact dimensions
-with different geometry. The compact dimension reframing (F2) is
+hypothesis that quarks might be (1,2) knots on material dimensions
+with different geometry. The material dimension reframing (F2) is
 an untested hypothesis that, if correct, would resolve the
 confinement and mass problems simultaneously.
 
