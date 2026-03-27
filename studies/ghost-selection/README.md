@@ -2,7 +2,7 @@
 
 **Questions:** Q77 (coupling suppression), Q34 (charge mechanism)
 **Type:** compute + theoretical  **Depends on:** R19, R27, R28, R31, R32
-**Status:** Framed
+**Status:** Paused (2 tracks complete, 1 dead, 5 deferred)
 
 
 ## Motivation
@@ -97,7 +97,7 @@ Tracks 5 and 7(e), and there the goal is characterization
    that correlate with known particles?
 
 
-## Approach: 7 tracks
+## Approach: 8 tracks
 
 ### Track 1 — Charge integral per mode (electron and proton sheets)
 
@@ -336,7 +336,92 @@ Angular momentum integral results for benchmark modes.
 If WvM spin eliminates most ghosts, this is a STRONG result.
 
 
-### Track 7 — Aspect ratio scan for the prediction minimum
+### Track 8 — Wave-optics coupling through the shear aperture
+
+Track 1 uses a geometric (Fourier) charge integral that
+gives coupling ∝ 1/(n₂ − s)².  This ENHANCES the (1,1)
+ghost relative to the electron.  But the shear creates a
+physical aperture of width δ = s × L₂ ≈ 0.01 L₂, and all
+modes are deeply sub-wavelength relative to this aperture:
+
+    (1,1): ring wavelength = L₂,   aperture/λ = 0.01
+    (1,2): ring wavelength = L₂/2, aperture/λ = 0.02
+
+In sub-wavelength optics (Bethe's theory), transmission
+through an aperture scales as (d/λ)⁴.  Under this scaling,
+the (1,1) ghost couples 16× WEAKER than the electron —
+flipping the hierarchy found in Track 1.
+
+The question is whether the Bethe scaling applies to the
+T²/R³ coupling, or whether the geometric charge integral
+is the correct physics.
+
+**Compute:**
+
+a) Model the shear as a sub-wavelength slit of width
+   δ = s × L₂ connecting a 2D cavity (T²) to a 3D space
+   (R³).  Solve Maxwell's equations for the radiation
+   emitted by mode (1, n₂) through this slit.  Compute the
+   transmitted power as a function of n₂.
+
+b) Compare the transmitted power scaling to:
+   - Geometric integral: P ∝ 1/(n₂ − s)²
+   - Bethe (aperture): P ∝ (s × n₂)⁴ ∝ n₂⁴
+   - Intermediate: some power law P ∝ n₂^β
+
+   What is the actual exponent β?
+
+c) If β > 0 (Bethe-like), compute the coupling ratio for
+   the critical modes:
+
+       α_eff(1,1) / α_eff(1,2) = ?
+
+   If < 1, the (1,1) ghost is suppressed.  How much
+   suppression?  Is it enough to explain non-observation?
+
+d) Extend to the proton sheet.  Same shear, different
+   circumferences.  Does the proton's (1,1) ghost at
+   ~470 MeV get suppressed by the same mechanism?
+
+e) Physical picture: the shear aperture acts as a high-pass
+   filter on the ring wavelength.  Modes with long ring
+   wavelength (low n₂) are "too big to fit through the
+   gap."  Modes with short ring wavelength (high n₂) pass
+   easily.  The electron (n₂ = 2) is the lowest mode that
+   couples efficiently.  (1,1) is below the cutoff.
+
+   Compute the effective cutoff n₂* where the Bethe
+   suppression equals 10⁻⁵ (the empirical ghost
+   suppression factor from R31/R32).  Is n₂* ≈ 1?
+
+**Output**: Transmitted power vs n₂ for both geometric and
+wave-optics treatments.  Coupling ratio α(1,1)/α(1,2).
+Effective cutoff frequency.  If the aperture mechanism
+suppresses (1,1), this resolves the last remaining ghost
+tension on the charged sheets.
+
+**Why this matters**: The geometric charge integral is a
+zeroth-order calculation that ignores the wave nature of
+the coupling.  The shear aperture is ~100× smaller than the
+mode wavelength — deeply in the regime where wave optics
+dominates.  A Bethe-like suppression would naturally explain
+why only n₂ ≥ 2 modes are observed, without needing the
+spin filter at all.  It would also explain the ~10⁵ ghost
+suppression factor from a single geometric parameter (s).
+
+**Result (Complete):** The aperture sinc effect is negligible
+(all modes are equally sub-wavelength).  BUT the ω⁴ Larmor
+radiation factor provides 16× suppression of (1,1) relative
+to (1,2): lower-energy modes radiate less efficiently.  Three
+of four models tested show low-n₂ suppression; the geometric
+integral is the outlier.  The net observable coupling
+(charge × radiation) gives (1,1) at ~1/8× the electron.
+Critical caveat: ω⁴ is classical Larmor — whether it applies
+to the T²/R³ coupling requires a QFT vertex calculation.
+See findings F9–F14.
+
+
+### Track 7 — Aspect ratio scan for the prediction minimum  **DEAD (F8)**
 
 The spin filter (Track 6) leaves a dangerous survivor:
 mode (1, 1) on the electron sheet is spin-1 (valid boson),
@@ -453,3 +538,29 @@ turn r_e from a free parameter into a prediction.
   neutrino sheet has only a few modes, storage capacity
   is limited and the Reiter model may need to be a
   hybrid of continuous + quantum mechanisms.
+
+
+## Current status — Paused
+
+### Completed
+- **Track 1** (charge integral): 8 findings (F1–F8).
+  n₁ = ±1 kills 88%.  Spin filter → 4 survivors per sheet.
+  (1,1) ghost has 2× charge — tension.
+- **Track 8** (wave-optics): 6 findings (F9–F14).
+  ω⁴ Larmor suppression gives (1,1) ~1/8× electron coupling.
+  Classical caveat remains.
+
+### Dead
+- **Track 7** (r_e scan): killed by F8.  Q(1,1) ≠ 0 for all s.
+
+### Deferred
+- **Track 6** (spin derivation): highest-value remaining track.
+  If spin ≠ n₁/n₂, the entire ghost landscape changes.
+- **Tracks 2–5**: cleanup tracks, reduced urgency given the
+  strong results from Tracks 1 + 8.
+
+### Key open question
+Does the ω⁴ radiation efficiency survive a QFT vertex
+calculation?  If yes, (1,1) is suppressed 8× and the ghost
+problem is essentially solved for charged sheets.  If no,
+(1,1) remains a genuine tension at 2× electron coupling.

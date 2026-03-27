@@ -137,19 +137,21 @@ Track 1: tilt formalism and mode projection.  Track 2: mode-mode coupling
 (does 1/r Coulomb emerge?).  Track 3: ghost mode projection.  Track 4:
 mass spectrum preservation.
 
-### R33. Ghost mode selection — why most T⁶ modes are dark  **Framed**
+### R33. Ghost mode selection — why most T⁶ modes are dark  **Paused**
 **Study:** [`ghost-selection/`](ghost-selection/)
 **Questions:** Q77, Q34  **Type:** compute + theoretical  **Depends on:** R19, R27, R28, R31, R32
 
-7 tracks.  The T⁶ has ~900 modes below 2 GeV but only ~40 known particles.
-R31 and R32 independently demand ~10⁵ coupling suppression for ghost modes.
-Track 1: generalize the R19 charge integral to all modes (does it naturally
-suppress ghosts?).  Track 2: quantum number reachability (which ghosts can
-be produced from known-particle collisions?).  Track 3: stable ghost census
-(are there charged modes lighter than the electron with no decay channel?).
-Track 4: winding number complexity as selection rule.  Track 5: energy gap
-structure and pair-production ceilings — does the spacing between modes
-create stability islands that correlate with known particles?
+8 tracks (2 complete, 1 dead, 5 deferred).  15 findings.  The n₁ = ±1
+selection rule (F1) kills 88% of modes.  The spin-statistics filter (F3,
+spin = n₁/n₂) kills most of the rest.  Result: ~860 ghosts reduced to 4
+per charged sheet — the (1,±1) spin-1 bosons and (1,±2) spin-½ fermions.
+The (1,1) boson at half the electron mass is the critical remaining
+tension: unobserved but charged with valid spin.  Track 8 (wave-optics)
+found ω⁴ radiation suppression gives it ~1/16× the electron's radiation
+efficiency (F10), but this is model-dependent (F14).  Track 7 (r_e scan)
+is dead — the charge integral cannot pin r_e (F8).  Remaining: Track 6
+(spin derivation) could change the ghost landscape entirely; Tracks 2–5
+are cleanup.  Neutrino-sheet ghosts are a feature, not a bug (Q85 §8).
 
 ---
 

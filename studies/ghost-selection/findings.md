@@ -1,5 +1,38 @@
 # R33 Findings
 
+## Summary
+
+Two tracks completed (1, 8), one killed (7), five deferred
+(2–6).  15 findings.
+
+**The ghost problem is reduced from ~860 modes to ~4 per
+charged sheet** by two complementary mechanisms:
+
+1. **n₁ = ±1 selection rule** (F1): the WvM charge integral
+   gives zero charge to all modes with |n₁| ≠ 1.  Kills 88%.
+
+2. **Spin-statistics filter** (F3): if spin = n₁/n₂ (WvM),
+   only integer and half-integer spin modes are physical.
+   Kills all n₂ ≥ 3 and n₂ = 0 modes.  Reduces survivors
+   to (1,±1) spin-1 bosons and (1,±2) spin-½ fermions.
+
+**The remaining tension is the (1,1) boson** — a charged
+spin-1 particle at half the electron mass, unobserved.
+Track 8 found that ω⁴ radiation suppression reduces its
+observable coupling to ~1/8× the electron (F12), but this
+is model-dependent (F14).
+
+**The neutrino sheet is not a ghost problem** — its dense
+mode spectrum is the hypothesized storage medium (Q85 §8).
+
+**Open for future work:**
+- Track 6 (spin derivation): could change the entire filter
+  if spin ≠ n₁/n₂
+- Tracks 2–5: cleanup tracks, reduced in urgency
+- QFT vertex calculation: would settle the ω⁴ question
+
+---
+
 ## Track 1 — Charge integral per mode
 
 ### F1. n₁ = ±1 selection rule is the primary ghost killer
@@ -108,3 +141,64 @@ The (1,1) tension must be resolved by a different mechanism:
 - The WvM spin assignment is wrong (spin = ½ per sheet)
 - An additional topological selection rule forbids (1,1)
 - The (1,1) boson is unstable (but to what?)
+- **Wave-optics aperture suppression (Track 8):** See F9–F15.
+
+## Track 8 — Wave-optics coupling through the shear aperture
+
+### F9. The sinc aperture effect is negligible
+
+The shear aperture (δ = s × L₂ ≈ 1% of ring) is so small
+compared to ALL mode wavelengths that it treats them all
+equally.  The sinc(πsn₂) factor differs by < 0.2% between
+n₂ = 1 and n₂ = 2.  Pure aperture size is not the mechanism.
+
+### F10. The ω⁴ Larmor factor is the key suppression
+
+In the dipole radiation model (P ∝ ω⁴ |p|²), the mode
+frequency determines radiation efficiency.  Since the (1,1)
+mode has half the electron's energy:
+
+    P(1,1)/P(1,2) ∝ (μ₁₁/μ₁₂)⁴ = (1.0/2.0)⁴ = 1/16
+
+The (1,1) ghost radiates 16× less power than the electron.
+
+### F11. Three of four models show low-n₂ suppression
+
+| Model | Scaling | (1,1)/(1,2) coupling |
+|-------|---------|---------------------|
+| Geometric (Track 1) | n₂⁻² | 2.03× (enhanced) |
+| Bethe (d/λ)⁴ | n₂⁺⁴ | 0.063× (suppressed) |
+| Cavity-slit | n₂⁺² | 0.25× (suppressed) |
+| Dipole+sinc | n₂⁺⁴ | 0.063× (suppressed) |
+
+The geometric integral is the outlier.  It measures charge
+structure but ignores radiation efficiency.
+
+### F12. Observable coupling = charge × radiation efficiency
+
+The geometric integral answers "how much charge does the
+mode carry?"  The dipole model answers "how efficiently
+does it radiate?"  The observable coupling is the product.
+For (1,1): charge factor 2× × radiation factor 1/16 =
+**net 1/8× the electron**.  The ω⁴ suppression overwhelms
+the charge enhancement.
+
+### F13. The same mechanism suppresses the proton-sheet ghost
+
+The (1,1) mode on the proton sheet at ~470 MeV has μ ≈ 1.0
+vs the proton's μ ≈ 2.0.  Same 1/16 suppression.
+
+### F14. Critical caveat — ω⁴ may be classical artifact
+
+The ω⁴ Larmor scaling applies to classical dipole radiation.
+In QFT, the coupling between a charged particle and the
+photon field depends on charge, not ω⁴.  Whether the ω⁴
+factor is physical depends on whether the T² → R³ coupling
+is better described by:
+
+- Classical radiation (ω⁴ applies): ghost suppressed ✓
+- QFT vertex (charge only): Track 1 stands, ghost unsuppressed ✗
+
+This is the deepest open question in the ghost selection
+program.  A QFT-level calculation of the T² mode / R³ photon
+vertex would resolve it definitively.
