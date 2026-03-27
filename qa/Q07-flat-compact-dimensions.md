@@ -3,7 +3,7 @@
 **Covers:** Q1 (geometric vs topological compactification), Q7 (flat compact dimensions)  
 **Status:** Answered  
 **Source:** User questions  
-**Related:** [Q06 inbox](INBOX.md#q6), [R1](../studies/kk-charge/), [R13](../studies/kk-charge-t3/)
+**Related:** [Q06 inbox](INBOX.md#q6), [R1](../studies/R1-kk-charge/), [R13](../studies/R13-kk-charge-t3/)
 
 **Short answer:** Yes. A compact dimension is just a periodic coordinate. The space is
 flat, the photon moves in a straight line, and the torus/circle is only a visualization.
@@ -221,6 +221,6 @@ mathematical infrastructure, not empirical claims.
   compact dimension. See `reference/WvM-summary.md` §4. Earlier versions
   of this answer incorrectly suggested the compact space might need
   to be 3D; this was corrected after analyzing streamline behavior.
-- If quarks require different compact dimensions (from knot-zoo F4),
+- If quarks require different compact dimensions (from S3-knot-zoo F4),
   the total could be higher still. String theory uses 6–7 for
   different reasons.

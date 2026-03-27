@@ -91,17 +91,17 @@ Resolution types:
 
 ## Concluded Studies (chronological)
 
-1. **`toroid-series/`** — Can a geometric series of nested toroidal
+1. **`S1-toroid-series/`** — Can a geometric series of nested toroidal
    sub-dimensions correct WvM's ~9% charge deficit? **Null result:**
    the deficit is an artifact of geometric approximations, not a
-   robust target for series correction. Spawned `toroid-geometry/`.
+   robust target for series correction. Spawned `S2-toroid-geometry/`.
 
-2. **`toroid-geometry/`** — What effective geometry reproduces q = e?
+2. **`S2-toroid-geometry/`** — What effective geometry reproduces q = e?
    **Algebraic result:** a/R = 1/√(πα) ≈ 6.60 (inverting the WvM
    charge formula). Whether this geometry is physically realized or
-   can be derived independently remains open. Spawned `knot-zoo/`.
+   can be derived independently remains open. Spawned `S3-knot-zoo/`.
 
-3. **`knot-zoo/`** — What torus knots model known particles?
+3. **`S3-knot-zoo/`** — What torus knots model known particles?
    **Demonstrated:** in the Frenet frame model, only (1,2) produces
    charge. **Algebraic:** the WvM formula maps specific a/R values
    to fractional charges. **Hypothesized:** compact dimensions,

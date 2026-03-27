@@ -53,20 +53,20 @@ equivalently, what fixes the shear δ of the T². This is the α problem.
 
 Three studies are currently open:
 
-**R8. Multi-winding electron** ([`studies/multi-winding/`](studies/multi-winding/))  
+**R8. Multi-winding electron** ([`studies/R8-multi-winding/`](studies/R8-multi-winding/))  
 Finding the torus geometry that self-consistently produces charge, mass,
 spin, and magnetic moment. A sheared T² with q ≈ 1/α major orbits and
 local 1:2 ratio resolves the Compton path-length constraint. R/r_e ≈ 0.989
 is robust. q remains a free parameter — this is still the open edge.
 
-**R13. KK charge from flat T³** ([`studies/kk-charge-t3/`](studies/kk-charge-t3/))  
+**R13. KK charge from flat T³** ([`studies/R13-kk-charge-t3/`](studies/R13-kk-charge-t3/))  
 Compute the 4D effective charge of a photon on a flat T³ geodesic via
 Kaluza-Klein field decomposition. The goal: derive apparent charge from
 field geometry alone, without using e as input. If the self-energy
 constraint (= m_e c²/2) determines the T³ geometry, α becomes a
 prediction, not an input.
 
-**R14. Universal geometry — shared T³** ([`studies/universal-geometry/`](studies/universal-geometry/))  
+**R14. Universal geometry — shared T³** ([`studies/R14-universal-geometry/`](studies/R14-universal-geometry/))  
 Can a single compact T³ host all particles? Track 0 established that T³
 is necessary (T² lacks the topological linking dimension). Three linking
 planes map to three color charges. Proton mass checks out. Pending R13.

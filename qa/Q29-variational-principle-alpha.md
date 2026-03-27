@@ -2,7 +2,7 @@
 
 **Status:** Open — partially addressed by R11; richer functional needed  
 **Source:** User question  
-**Related:** [Q18](Q18-deriving-alpha.md), [Q30](Q30-prime-q-harmonic-avoidance.md), [R11](../studies/prime-resonance/), [R13](../studies/kk-charge-t3/)
+**Related:** [Q18](Q18-deriving-alpha.md), [Q30](Q30-prime-q-harmonic-avoidance.md), [R11](../studies/R11-prime-resonance/), [R13](../studies/R13-kk-charge-t3/)
 
 **Question:** Can α be determined by minimizing a total energy functional E(δ) over
 the shear parameter, the same way atoms find their ground states by minimizing energy?

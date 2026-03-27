@@ -1,7 +1,7 @@
 # Q11: Why are only winding numbers q = 1 and q = 2 physical?
 
 **Status:** Answered  
-**Source:** [`knot-zoo/findings.md`](../studies/knot-zoo/findings.md) F1  
+**Source:** [`S3-knot-zoo/findings.md`](../studies/S3-knot-zoo/findings.md) F1  
 **Related:** [Q13](Q13-three-compact-dimensions.md), [Q26](Q26-hadrons-photon-knots.md)
 
 **Short answer:** The spin-statistics theorem requires particles to have
@@ -14,7 +14,7 @@ spin values that are excluded.
 
 ## Question
 
-The knot-zoo study (R3/S3) found that only the (1,2) winding produces
+The S3-knot-zoo study (R3/S3) found that only the (1,2) winding produces
 a nonzero charge matching the electron. But the question is more general:
 is there a physical principle that eliminates torus knots with q ≥ 3,
 or is the restriction purely numerical?
@@ -47,7 +47,7 @@ This means p/q must be a ratio with denominator 1 or 2.
   1 or 2, the spin is non-standard. Reduced fractions with q ≥ 3 are
   excluded.
 
-**Fractional charges from higher q.** The knot-zoo study also found
+**Fractional charges from higher q.** The S3-knot-zoo study also found
 that (p, 3) knots produce charges e/3 and 2e/3 — the quark charges. If
 three such photons are Borromean-linked on T³ (see Q26, R14), they form
 a baryon and their charges sum to e. The q = 3 exclusion applies to

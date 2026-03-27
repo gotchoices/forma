@@ -551,7 +551,7 @@ masses are insensitive to it (electron dimensions contribute
 energy at the keV scale, 10⁴–10⁵× smaller than the proton-
 sheet contributions).  It must be pinned by electron-scale
 observables — possibly through the KK coupling structure
-or through the shear-charge formula.
+or through the R19-shear-charge formula.
 
 ### 15.2 The 8 MeV/A residual
 Heavy nuclei show a systematic residual of ~8 MeV per

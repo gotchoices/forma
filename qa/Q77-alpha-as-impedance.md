@@ -205,10 +205,10 @@ T⁶ and R³, which is the least-explored part of the model.
 
 *Connects to: Q18 (deriving α), Q29 (variational α),
 Q75 (contingency), Q76 (dimensional character), R19
-(shear-charge formula), R31 F4–F7 (Casimir fails),
+(R19-shear-charge formula), R31 F4–F7 (Casimir fails),
 R31 F23–F24 (dynamics needed)*
 
-*Status: open — under investigation in R32 (alpha-running).
+*Status: open — under investigation in R32 (R32-alpha-running).
 Concrete reframing of the α problem that redirects the
 search from internal T⁶ mechanisms to the T⁶/R³ interface.
 R32 tests this via KK mode running, volume dilution,

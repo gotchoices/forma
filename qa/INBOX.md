@@ -20,7 +20,7 @@ Q11. **Why only q = 1 and q = 2?** → [Q11-spin-statistics-filter.md](Q11-spin-
 
 Q12. **Multi-photon states and color charge.** Could three confined
 photons with correlated phases each contribute 1/3 of the charge?
-*Source: knot-zoo F3*
+*Source: S3-knot-zoo F3*
 *Status: obsolete — R14 (closed negative) showed linking cannot
 redistribute charge; R21 T2 showed curvature gives continuous
 ratios, not quantized 1/3.  Quark charge mechanism remains open
@@ -29,17 +29,17 @@ ratios, not quantized 1/3.  Quark charge mechanism remains open
 Q14. **Neutrino topology.** q = 0 requires a/R → ∞ (unphysical).
 Is the neutrino a fundamentally different topology? A (3,2) knot
 has spin ½ and zero charge, but does this identification hold?
-*Source: knot-zoo F3, F4*
+*Source: S3-knot-zoo F3, F4*
 *Status: partially answered — R20 F14 proved the neutrino
 cannot be any KK eigenmode on the electron's T² (lightest
 uncharged mode is 245 keV, neutrino < 0.8 eV).  Five
-alternative directions analyzed in harmonic-proton/neutrino.md.
+alternative directions analyzed in R20-harmonic-proton/neutrino.md.
 Most promising: harmonic beating (Direction B) and condensate
 phonon (Direction A).  See Q70 and any future neutrino study.*
 
 Q15. **Generations as harmonics.** m_μ/m_e ≈ 206.8 is not an
 integer. Does this rule out the simplest harmonic model?
-*Source: knot-zoo F2*
+*Source: S3-knot-zoo F2*
 *Status: answered by R20 F17 — muon/tau are "hot electrons"
 (same (1,2) fundamental + uncharged sin-like harmonics adding
 mass), not simple overtones.  Mass ratios aren't integers
@@ -50,18 +50,18 @@ overtone.  R21 F12 further constrains harmonics to sin-like
 Q16. **What sets the photon energy?** In the compact dimension
 model, mass = photon energy / c². What determines which photon
 energies are allowed?
-*Source: knot-zoo F2*
+*Source: S3-knot-zoo F2*
 *Status: open — this is the mass problem*
 
 Q19. **Precession causes.** If the torus axis precesses, what
 drives it? Is it a natural consequence of the equations of motion?
-*Source: toroid-geometry F5*
+*Source: S2-toroid-geometry F5*
 *Status: open — backlog (R9 number retired; study TBD)*
 
 Q20. **5D geodesic formulation.** Can the (1,2) path be understood
 as a geodesic on a 5D manifold? If so, charge, spin, and mass
 emerge from the geometry.
-*Source: synthesis of knot-zoo F2 and KK theory*
+*Source: synthesis of S3-knot-zoo F2 and KK theory*
 *Status: → R2 (partial)*
 
 Q21. **Orbit constraints and uniqueness.** Can we derive or solve
@@ -356,7 +356,7 @@ and Q27 (foundational axioms).
 *Status: noted — incorporate into Q27/Q32 when those are
 next revised*
 
-Q51. **Non-torus embeddings and the mode-coupling route to α.**
+Q51. **Non-torus embeddings and the R22-mode-coupling route to α.**
 The compact space (flat T²) can be embedded in 3D as shapes
 other than a standard torus.  A perfect torus has rotational
 symmetry around its central axis, which forces the angular
@@ -435,7 +435,7 @@ no external asymmetry is needed.
 
 Both effects (centrifugal pressure + dipole radiation pattern)
 contribute to the deformation and may reinforce each other.
-→ **R17** [`studies/radiation-pressure/`](../studies/radiation-pressure/).
+→ **R17** [`studies/R17-radiation-pressure/`](../studies/R17-radiation-pressure/).
 
 *Source: R15 F7 candidate 5, user question, dipole
 radiation pattern observation, centrifugal force analysis*
@@ -919,15 +919,15 @@ See neutrino.md Directions A (phonon) and B (beats).
 *Status: open — promising; could become R23*
 
 Q34. **The charge mechanism problem: how does the electron have
-charge?** R13 Track 3 showed that the multi-winding (68, 137)
+charge?** R13 Track 3 showed that the R8-multi-winding (68, 137)
 model breaks WvM's charge mechanism.  WvM's charge requires
 p = 1 (one tube winding per wavelength = commensurability
 between polarization rotation and frame rotation, so E always
-points outward).  R8's multi-winding model has p = 68, destroying
+points outward).  R8's R8-multi-winding model has p = 68, destroying
 this.  The root cause is α ≈ 1/137: at the Compton scale
 (where p = 1 works), U_Coulomb = α × m_e c² — a factor of
 ~137 too small (R7).  Shrinking the torus to fix the Coulomb
-energy forces multi-winding, which breaks charge.
+energy forces R8-multi-winding, which breaks charge.
 
 Eight candidate paths to resolve the tension:
 
@@ -954,7 +954,7 @@ surface area at the embedding, could provide a geometric
 suppression ≈ α.  Calculable from embedding geometry.
 
 **Path 5. Harmonic decomposition of the confined photon.**
-→ **R16** [`studies/harmonic-charge/`](../studies/harmonic-charge/).
+→ **R16** [`studies/R16-harmonic-charge/`](../studies/R16-harmonic-charge/).
 The embedding curvature redistributes the (1,2) plane wave's
 energy across Fourier modes; only the p = 1 component produces
 charge; if that fraction = α, we have a derivation.
@@ -970,7 +970,7 @@ some geometric factor = α.  Needs a mathematical framework
 beyond WvM.
 
 **Path 7. Keep (1, 2) at Compton scale; reinterpret Coulomb
-energy.** → **R15** [`studies/forward-charge/`](../studies/forward-charge/).
+energy.** → **R15** [`studies/R15-forward-charge/`](../studies/R15-forward-charge/).
 Run R7's calculation forward: energy + topology → charge → α.
 See R15 README for full analysis of how R7 → R8 → R13 led
 back here.
@@ -1054,7 +1054,7 @@ Open questions beyond this established result:
   ALL shears (within-plane, cross-plane, R³-T⁶)?
 
 *Source: user question (R31 discussion)*
-*Connects to: R29 Track 1 (KK Coulomb), R19 (shear-charge formula),
+*Connects to: R29 Track 1 (KK Coulomb), R19 (R19-shear-charge formula),
 R31 F7 (mechanisms for selecting α)*
 *Status: partially answered — EM as R³-T⁶ shear is established;
 additional cross-terms and unification are open*

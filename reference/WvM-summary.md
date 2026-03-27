@@ -23,7 +23,7 @@ Throughout this project, **(p,q) torus knot** notation means:
 | **q** | ring (major circle) | major / longitudinal | φ | Looking through the hole, count loops |
 
 The WvM electron is **(1,2)**: once around the tube, twice around
-the ring. This convention is defined in `studies/knot-zoo/theory.md`
+the ring. This convention is defined in `studies/S3-knot-zoo/theory.md`
 §1 and used consistently across all studies and scripts.
 
 **Caution:** some mathematical references reverse p and q. Our
@@ -358,8 +358,8 @@ stable magnetic monopole cannot form within this framework.
 
 The following studies build on or investigate WvM concepts:
 
-- [`studies/toroid-geometry/`](../studies/toroid-geometry/) — charge from geometric ratios
-- [`studies/knot-zoo/`](../studies/knot-zoo/) — orbit uniqueness, fractional charges, field extent
+- [`studies/S2-toroid-geometry/`](../studies/S2-toroid-geometry/) — charge from geometric ratios
+- [`studies/S3-knot-zoo/`](../studies/S3-knot-zoo/) — orbit uniqueness, fractional charges, field extent
 - [`qa/Q07-flat-compact-dimensions.md`](../qa/Q07-flat-compact-dimensions.md) — compact dimension hypothesis
 - [`qa/INBOX.md`](../qa/INBOX.md) — open questions (esp. Q3/Q4 on dimensionality, Q22/Q23 on precession)
 

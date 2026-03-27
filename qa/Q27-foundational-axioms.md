@@ -2,7 +2,7 @@
 
 **Status:** Open — conceptual framing  
 **Source:** User question  
-**Related:** [Q32](Q32-energy-geometry-fundamentals.md), [R14](../studies/universal-geometry/)
+**Related:** [Q32](Q32-energy-geometry-fundamentals.md), [R14](../studies/R14-universal-geometry/)
 
 **Question:** The model rests on a minimal set of assumptions. Can all particle properties
 be derived from just: energy exists, compact dimensions exist, fields exist, Maxwell's

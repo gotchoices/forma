@@ -1,5 +1,5 @@
 """
-Geometric series utilities for the toroid-series study.
+Geometric series utilities for the S1-toroid-series study.
 """
 
 

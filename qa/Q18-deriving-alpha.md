@@ -1,8 +1,8 @@
 # Q18: Can α be derived from geometry?
 
 **Status:** Open — active research front  
-**Source:** toroid-geometry F6, R7, R8 Tracks 4–5, R1, R11, R12  
-**Related:** [Q29](Q29-variational-principle-alpha.md), [Q30](Q30-prime-q-harmonic-avoidance.md), [Q31](Q31-discrete-torus-digital-counter.md), [Q32](Q32-energy-geometry-fundamentals.md), [R13](../studies/kk-charge-t3/)
+**Source:** S2-toroid-geometry F6, R7, R8 Tracks 4–5, R1, R11, R12  
+**Related:** [Q29](Q29-variational-principle-alpha.md), [Q30](Q30-prime-q-harmonic-avoidance.md), [Q31](Q31-discrete-torus-digital-counter.md), [Q32](Q32-energy-geometry-fundamentals.md), [R13](../studies/R13-kk-charge-t3/)
 
 **Question:** R8 Track 4 found δ ≈ αR (within ~6%) near q ≈ 137. Track 5 showed this
 is approximate, not exact. The shear selects q and hence α — but what selects the shear?
@@ -57,7 +57,7 @@ but q must be an odd integer (discrete), so the geometric α
 can't vary continuously.  The running likely reflects vacuum
 polarization screening in 3+1D, not compact geometry changes.
 The bare α is fixed; the dressed α runs.
-*Source: toroid-geometry F6, R7, R8 Tracks 4–5, R1 (gravity
+*Source: S2-toroid-geometry F6, R7, R8 Tracks 4–5, R1 (gravity
 too weak), R11 (tautology analysis)*
 R12 results (COMPLETE):
 - Track 1: flat-T² wave equation has no modes at ω_C (spectral
@@ -74,12 +74,12 @@ R13 results (COMPLETE):
 - Track 1: electron is a winding mode, not KK momentum mode.
 - Track 2: four candidate mechanisms for determining the
   embedding.  7D cross-terms eliminated.
-- Track 3: multi-winding (68, 137) breaks WvM charge mechanism.
+- Track 3: R8-multi-winding (68, 137) breaks WvM charge mechanism.
   p = 68 ≠ 1 destroys commensurability between polarization
   rotation and frame rotation.  Monopole = 0 (exact).  R8 used
   charge e as input — never derived it.
 - The α problem ≡ the charge mechanism problem.  α ≈ 1/137
   forces a tradeoff between correct Coulomb energy (needs small
-  torus, multi-winding) and correct charge (needs p = 1).
+  torus, R8-multi-winding) and correct charge (needs p = 1).
 
 *Status: → Q34 (8 candidate paths for charge mechanism)*

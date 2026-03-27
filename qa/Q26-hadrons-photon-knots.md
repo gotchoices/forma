@@ -1,8 +1,8 @@
 # Q26: Multi-photon hadrons and knot confinement
 
 **Status:** Open — folded into R14 (draft)  
-**Source:** User question, knot-zoo F3  
-**Related:** [Q13](Q13-three-compact-dimensions.md), [Q32](Q32-energy-geometry-fundamentals.md), [R14](../studies/universal-geometry/)
+**Source:** User question, S3-knot-zoo F3  
+**Related:** [Q13](Q13-three-compact-dimensions.md), [Q32](Q32-energy-geometry-fundamentals.md), [R14](../studies/R14-universal-geometry/)
 
 **Question:** Could protons and neutrons be multi-photon states on a compact geometry,
 rather than bound states of quarks? Three photons topologically linked on compact T³ —
@@ -35,5 +35,5 @@ share one T², fractional charges must arise from topological
 linking of multiple photons on the same geometry — not from
 different a/R values.  This is far more constraining and
 would fix the free parameter r.  See R14 (draft).
-*Source: user question, knot-zoo F3*
+*Source: user question, S3-knot-zoo F3*
 *Status: → R14 (draft, not yet active)*

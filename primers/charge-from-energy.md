@@ -364,6 +364,6 @@ Just energy, topology, and geometry.
   summary: [`WvM-summary.md`](WvM-summary.md)
 - Maxwell primer: [`maxwell-primer.md`](maxwell-primer.md)
 - R6 findings (self-consistency):
-  [`studies/field-profile/findings.md`](../studies/field-profile/findings.md)
+  [`studies/R6-field-profile/findings.md`](../studies/R6-field-profile/findings.md)
 - S2 findings (charge from geometry):
-  [`studies/toroid-geometry/findings.md`](../studies/toroid-geometry/findings.md)
+  [`studies/S2-toroid-geometry/findings.md`](../studies/S2-toroid-geometry/findings.md)

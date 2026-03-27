@@ -1187,7 +1187,7 @@ parameters beyond these inputs.
 
 ### 12.2 The α problem
 
-The shear-charge formula produces a one-parameter family of
+The R19-shear-charge formula produces a one-parameter family of
 solutions: for every aspect ratio r_e above ~0.26, there is
 a unique shear s₁₂ that gives α = 1/137.  The formula is
 self-consistent at every point on this family — the

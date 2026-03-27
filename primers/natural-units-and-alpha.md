@@ -347,4 +347,4 @@ relationships in SI.
 - *Spring constants, natural units, running couplings:*
   Dialog in `reference/claude-epsilon-mu-alpha.md`
 - *α as ratio of energy scales:*
-  `studies/torus-capacitance/findings.md`, F3
+  `studies/R7-torus-capacitance/findings.md`, F3

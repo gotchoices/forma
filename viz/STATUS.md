@@ -2,7 +2,7 @@
 
 ## Motivation
 
-The four visualizers (`torus-explorer`, `dual-torus`, `multi-winding`,
+The four visualizers (`torus-explorer`, `dual-torus`, `R8-multi-winding`,
 `geodesic-curvature`) duplicate ~350 lines of identical code:
 
 | Duplicated pattern | Lines × files | Total |
@@ -34,7 +34,7 @@ viz/
   totu-viz.js           ← Layer 1: shared JS module
   torus-explorer.html   ← Layer 2: individual visualizers
   dual-torus.html
-  multi-winding.html
+  R8-multi-winding.html
   geodesic-curvature.html
   index.html
 ```
@@ -125,7 +125,7 @@ Migrate in order of increasing complexity so regressions are caught early.
       work.
 - [ ] **2.2 dual-torus.html** — split view. Same as 2.1 plus verify 2D canvas
       still renders and photon syncs across both views.
-- [ ] **2.3 multi-winding.html** — most complex torus viz. Same as 2.1 plus
+- [ ] **2.3 R8-multi-winding.html** — most complex torus viz. Same as 2.1 plus
       verify multi-loop paths, shear, and winding presets.
 - [ ] **2.4 geodesic-curvature.html** — uses different scene model (no shared
       torus mesh in sphere mode; `genTorus()` for mass elements in torus
@@ -173,5 +173,5 @@ Migrate in order of increasing complexity so regressions are caught early.
 | Date | Decision | Rationale |
 |------|----------|-----------|
 | 2026-03-18 | Adopt 3-layer architecture | 385 lines of duplication across 4 files; project is growing |
-| 2026-03-18 | Torus in XZ plane, axis Y | Matches existing `torus-explorer`, `dual-torus`, `multi-winding` convention and Three.js TorusGeometry after 90° X rotation |
+| 2026-03-18 | Torus in XZ plane, axis Y | Matches existing `torus-explorer`, `dual-torus`, `R8-multi-winding` convention and Three.js TorusGeometry after 90° X rotation |
 | 2026-03-18 | No build step | Simplicity; all files must work with `open` or simple HTTP server |

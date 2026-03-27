@@ -88,7 +88,7 @@ ORIGINS
 =======
 
 Extracted from R26 Track 4a
-(studies/neutrino-t4/scripts/track4a_t6_metric.py).
+(studies/R26-neutrino-t4/scripts/track4a_t6_metric.py).
 """
 
 import math

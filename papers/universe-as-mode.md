@@ -348,7 +348,7 @@ with sufficiently deep surveys.
 
 If α = 1/137.036 is the fixed point of a self-referential
 geometry, it should be derivable from the topology alone.
-The alpha-derivation study has already shown α emerges
+The R31-alpha-derivation study has already shown α emerges
 from the T² lattice shear — a purely geometric quantity.
 In the self-referential picture, the shear is not a free
 parameter; it is the unique value that closes the loop.

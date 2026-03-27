@@ -2,7 +2,7 @@
 
 **Status:** Open — conceptual framing; sharpens direction for R13  
 **Source:** User insight  
-**Related:** [Q27](Q27-foundational-axioms.md), [Q26](Q26-hadrons-photon-knots.md), [Q18](Q18-deriving-alpha.md), [R13](../studies/kk-charge-t3/)
+**Related:** [Q27](Q27-foundational-axioms.md), [Q26](Q26-hadrons-photon-knots.md), [Q18](Q18-deriving-alpha.md), [R13](../studies/R13-kk-charge-t3/)
 
 **Question:** If both charge and mass are emergent, then only energy and geometry
 (topology) are truly fundamental. What does this imply for how we derive α, for

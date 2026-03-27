@@ -2,7 +2,7 @@
 
 **Status:** Closed — negative result (R11)  
 **Source:** User question  
-**Related:** [Q18](Q18-deriving-alpha.md), [Q29](Q29-variational-principle-alpha.md), [R11](../studies/prime-resonance/)
+**Related:** [Q18](Q18-deriving-alpha.md), [Q29](Q29-variational-principle-alpha.md), [R11](../studies/R11-prime-resonance/)
 
 **Question:** 137 is prime. Is that functional — does prime q prevent sub-harmonic
 energy leakage and thereby select q = 137?
