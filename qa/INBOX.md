@@ -31,7 +31,7 @@ Is the neutrino a fundamentally different topology? A (3,2) knot
 has spin ½ and zero charge, but does this identification hold?
 *Source: S3-knot-zoo F3, F4*
 *Status: partially answered — R20 F14 proved the neutrino
-cannot be any KK eigenmode on the electron's T² (lightest
+cannot be any KK eigenmode on the electron's Ma_e (lightest
 uncharged mode is 245 keV, neutrino < 0.8 eV).  Five
 alternative directions analyzed in R20-harmonic-proton/neutrino.md.
 Most promising: harmonic beating (Direction B) and condensate
@@ -47,7 +47,7 @@ because the harmonic spectrum is thermal/free, not a single
 overtone.  R21 F12 further constrains harmonics to sin-like
 (odd parity) modes.*
 
-Q16. **What sets the photon energy?** In the compact dimension
+Q16. **What sets the photon energy?** In the material dimension
 model, mass = photon energy / c². What determines which photon
 energies are allowed?
 *Source: S3-knot-zoo F2*
@@ -79,20 +79,20 @@ Q23. **Precessing orbit and volume-filling.** Does a precessing
 
 Q24. **String theory parallels.** A string is a 1D vibrating
 object on compact geometry; our photon is a 1D wave on a closed
-geodesic. How deep is the analogy? Is our T² model a special
+geodesic. How deep is the analogy? Is our Ma_e model a special
 case of string compactification?
 *Source: user question*
 *Status: open (backlog)*
 
 Q25. **Digital periodicity.** A number on a counter that rolls
-over (modular arithmetic) is the simplest compact dimension.
+over (modular arithmetic) is the simplest material dimension.
 A sinusoid on this counter is a standing wave. Is a "particle"
 just a resonance in a periodic register? Does this connect to
 simulation-theory ideas?
 *Source: user question*
 *Status: open (backlog — see also [Q31](Q31-discrete-torus-digital-counter.md))*
 
-Q50. **Shared compact space.** Is the compact T³ a single space
+Q50. **Shared material space.** Is the material T³ a single space
 shared by all particles — each particle a distinct topological
 feature of one global manifold — or does each particle carry
 its own private subspace? A shared T³ makes entanglement and
@@ -105,7 +105,7 @@ What does the WvM/T³ model imply?
 
 Q35. **Entanglement as topological knot-linking in T³.** When two
 electrons approach in 3D, their toroidal knots overlap in the
-shared compact space. If the knots become topologically linked
+shared material space. If the knots become topologically linked
 (like interlocked rings), that link persists after the particles
 separate in 3D — because T³ topology is independent of 3D
 distance. Measurement resolves one knot's configuration and
@@ -165,7 +165,7 @@ Q40. **Gravity as macro-space curvature sourced by T³ boundary
 conditions.** Wheeler's geometrodynamics proposed particles as
 spacetime topology — "mass without mass, charge without charge."
 In our framework: each particle is a boundary between the
-compact T³ and 3D macro-space; macro space curves around that
+material T³ and 3D macro-space; macro space curves around that
 boundary; that curvature is gravity. This is distinct from Q33
 (which asks whether gravity and charge arise from the same
 photon — they don't). Here the question is specifically: is
@@ -178,7 +178,7 @@ can it be computed from the stress-energy of the confined photon?
 *Wave-language analog of WvM (Q41–Q46)*
 *The questions below reformulate the photon-knot model in pure wave/field*
 *terms. WvM uses a particle orbiting a torus; the wave analog replaces the*
-*particle trajectory with a resonant EM standing wave in a compact cavity.*
+*particle trajectory with a resonant EM standing wave in a material-space cavity.*
 *The ~137 sub-paths of R8 become harmonic numbers in the cavity mode spectrum.*
 
 Q41. **Wave-language equivalent of the (1,2) geodesic.** In particle
@@ -192,14 +192,14 @@ predictions?
 *Source: user question*
 *Status: open — translation between pictures not yet written down*
 
-Q42. **Compton scale as the beat envelope of compact-space modes.**
+Q42. **Compton scale as the beat envelope of material-space modes.**
 The winding number q (a free parameter in the range ~100–200) means the
 confined photon completes q major loops per Compton cycle. In wave
-language: two adjacent compact-space harmonics (modes n and n+1) produce
+language: two adjacent material-space harmonics (modes n and n+1) produce
 a beat pattern — fast oscillation at n×f₀ inside the cavity, slow
-modulation envelope at f₀. If the compact circumference L ≈ 2πR, the
+modulation envelope at f₀. If the material circumference L ≈ 2πR, the
 beat wavelength is q×L ≈ λ_C. Hypothesis: the Compton-scale behavior
-of the electron is the beat envelope of adjacent compact-space harmonics,
+of the electron is the beat envelope of adjacent material-space harmonics,
 not the fundamental mode. Does this picture reproduce the correct energy
 and charge for a range of q, or does it constrain q to a specific value?
 Note: q ≈ 1/α ≈ 137 is an intriguing coincidence but is not yet
@@ -209,7 +209,7 @@ R11).
 *Status: open — quantitative check needed; q is free*
 
 Q43. **What selects the harmonic number q? (Wave-language α problem.)**
-A compact-space cavity supports all harmonics in principle. The electron
+A material-space cavity supports all harmonics in principle. The electron
 corresponds to some harmonic n = q, where q is in the range ~100–200.
 Lower harmonics would be higher-energy bound states; higher harmonics
 lower-energy ones. What physical principle selects one particular q as
@@ -223,14 +223,14 @@ framing it as a cavity eigenvalue problem — find the self-consistent mode
 *Status: open — wave reframing of the α problem; q is free, ~100–200*
 
 Q44. **Sub-Compton cavity with high-harmonic resonance.** Hypothesis:
-a cavity of size ~L_compact (some fraction of λ_C) supports standing
+a cavity of size ~L_ma (some fraction of λ_C) supports standing
 waves. The electron corresponds to harmonic n = q of this cavity, where
 q is a free parameter (~100–200). A narrow superposition of modes near
-n = q produces an envelope at q×L_compact ≈ λ_C. This gives a concrete
+n = q produces an envelope at q×L_ma ≈ λ_C. This gives a concrete
 wave model: a small cavity oscillating at high harmonic, with
 Compton-scale behavior emerging from the mode envelope rather than from
 a large orbit. The cavity size and the harmonic number are related by
-L_compact = λ_C/q. Can the electron's charge, spin, and magnetic moment
+L_ma = λ_C/q. Can the electron's charge, spin, and magnetic moment
 be derived from the field structure of this mode, independently of q?
 Or does the field self-consistency condition fix q — which would be the
 wave-language route to deriving α?
@@ -240,7 +240,7 @@ wave-language route to deriving α?
 Q45. **Charge as field-phase winding number (Chern number).** In
 particle language, charge comes from the winding number of the path.
 In wave language, the U(1) phase of the complex EM field can also wind
-around the compact dimension — this is the first Chern number of the
+around the material dimension — this is the first Chern number of the
 U(1) bundle, and it is exactly how charge is topologically defined in
 gauge theory. Can the WvM charge formula be rederived from the
 topological winding of the field phase alone, without invoking a
@@ -278,23 +278,23 @@ spatial dimensions) and 1/(2π) from the loop integral.
 In the torus model, these factors may have geometric meaning:
 - **3** = number of spatial dimensions the field projects into
 - **2** = number of polarization states (transverse directions)
-- **π** = periodicity of compact dimensions (circular contour)
+- **π** = periodicity of material dimensions (circular contour)
 - **ln(μ/m_e)** = how deeply the probe penetrates toward the
-  compact boundary (probe wavelength vs. compact size)
+  material boundary (probe wavelength vs. material size)
 
 In KK theory, coupling constants change their running above
 the compactification scale: from logarithmic (4D) to power-law
-(higher-D).  If the compact space is at the Compton scale, the
+(higher-D).  If the material space is at the Compton scale, the
 transition happens at ~0.5 MeV.  All measured α values (atomic
 to LEP at 200 GeV) span this transition.
 
-Study could: (1) Write α running in 4+2D or 4+3D KK on T²/T³.
-(2) Compare to standard 4D formula. (3) Check if compact dims
+Study could: (1) Write α running in 4+2D or 4+3D KK on Ma_e/T³.
+(2) Compare to standard 4D formula. (3) Check if material dims
 modify the β coefficient consistently with experiment. (4) See
 if GUT convergence at 1/24 has a geometric interpretation.
 
 Connection to Q34: if α runs because higher-energy probes
-penetrate deeper into the compact space (seeing more of the
+penetrate deeper into the material space (seeing more of the
 bare charge), this is the same physics as Q34 Path 3 (membrane
 permeability).  The "leakage fraction" IS α, and it runs with
 probe energy.
@@ -326,7 +326,7 @@ Questions:
   energetically disfavored state?
 
 This could be a key geometric constraint.  If the embedding
-geometry or the boundary conditions at the compact/3D
+geometry or the boundary conditions at the material/3D
 interface select E over B, that selection mechanism likely
 involves the same geometric factors that determine α.
 
@@ -342,7 +342,7 @@ to the model's foundational premise that particles are built
 from only geometry (= length/topology) and energy.
 
 If the parallel is more than coincidence, it suggests that
-the model's two ingredients — compact geometry and confined
+the model's two ingredients — material geometry and confined
 photon energy — are not just sufficient but *complete*: they
 are the only two independent quantities that nature provides.
 Every other physical property (charge, spin, mass, magnetic
@@ -357,13 +357,13 @@ and Q27 (foundational axioms).
 next revised*
 
 Q51. **Non-torus embeddings and the R22-mode-coupling route to α.**
-The compact space (flat T²) can be embedded in 3D as shapes
+The material space (flat Ma_e) can be embedded in 3D as shapes
 other than a standard torus.  A perfect torus has rotational
 symmetry around its central axis, which forces the angular
 mode number to be conserved — an n = 2 wave can never produce
 the n = 0 component needed for net charge (R15 F3).
 
-But other embeddings of the same flat T² break this symmetry:
+But other embeddings of the same flat Ma_e break this symmetry:
 - **Elliptical torus** — tube cross-section is an ellipse
 - **D-shaped cross-section** — like a tokamak
 - **Knotted ring** — the tube tied in a knot (trefoil, etc.)
@@ -390,7 +390,7 @@ Questions:
 **Key lead: the dipole radiation pattern.** A circularly
 polarized wave (which is what WvM uses) has a non-isotropic
 radiation pattern in 3D: intensity ∝ (1 + cos²θ)/2.  If
-the photon's field leaks from the compact space into 3D
+the photon's field leaks from the material space into 3D
 with this pattern, and if the field energy shapes the tube
 cross-section (self-consistency), then the tube is NOT
 circular — it is elongated or D-shaped, determined by
@@ -412,7 +412,7 @@ given that the photon's own radiation pattern is
 non-isotropic."
 
 **Dimensional assignment is not arbitrary (Q52).** The
-assignment of which flat-T² dimension becomes the tube (a)
+assignment of which flat-Ma_e dimension becomes the tube (a)
 vs. the ring (R) is forced by physics: the WvM charge
 mechanism requires p = 1 in the tube (where the surface
 normal rotates).  This means L₁ → tube, L₂ → ring, and
@@ -443,7 +443,7 @@ radiation pattern observation, centrifugal force analysis*
 *Status: open — → R17 (radiation pressure self-consistency)*
 
 Q52. **Dimensional assignment constrains the aspect ratio.**
-On flat T², the two periodic dimensions L₁ and L₂ are
+On flat Ma_e, the two periodic dimensions L₁ and L₂ are
 internally symmetric.  But the embedding and the charge
 mechanism break this symmetry: the WvM commensurability
 condition (p = 1 → E always outward) requires the single
@@ -549,15 +549,15 @@ Key questions:
 *Connects to: R8 Track 3, Q34 (α derivation), Q52 (aspect ratio)*
 *Status: open — needs field-fraction calculation for our geometry*
 
-Q57. **Does T³ (vs T²) break the φ-symmetry that protects
-zero charge?**  On T², the charge integral of cos(θ+2φ)
+Q57. **Does T³ (vs a material sheet) break the φ-symmetry that protects
+zero charge?**  On Ma_e, the charge integral of cos(θ+2φ)
 vanishes because ∫cos(2φ)dφ = 0.  All mechanisms tested
 (Coulomb soliton, centrifugal pressure, geometric deformation)
 fail to break this protection.
 
 On T³, three possibilities emerge:
 
-**A. Richer knot topology.**  On T², the (1,2) curve's topology
+**A. Richer knot topology.**  On a material sheet, the (1,2) curve's topology
 is fully described by its winding numbers.  On T³, a (1,2,n₃)
 curve can have SELF-LINKING — a topological invariant that
 depends on the ratios L₁:L₂:L₃ and could provide charge
@@ -568,7 +568,7 @@ never computed.
 S¹ × S¹ × S¹ but has a twisted/fibered structure (the z-fiber
 rotates as φ advances), the charge integral doesn't factorize.
 Different z-slices see different effective φ-geometry, and the
-cancellation that kills the T² charge may not occur.  A
+cancellation that kills the material sheet charge may not occur.  A
 Hopf-like fibration would couple z to φ intrinsically.
 
 **C. R14 already requires T³.**  T³ is needed for topological
@@ -579,12 +579,12 @@ confinement, AND α from one geometric structure.
 
 The critical sub-question: is the physical T³ a flat product
 (in which case the z-integral factors out and gives zero, same
-as T²) or a twisted/fibered space (in which case the charge
+as a material sheet) or a twisted/fibered space (in which case the charge
 mechanism is fundamentally different)?
 
 *Source: user question*
 *Connects to: R14 (T³ for quarks), R15 F8 #4 (topology),
-Q51 (mode coupling route to α), Q13 (three compact dims)*
+Q51 (mode coupling route to α), Q13 (three material dims)*
 *Status: open — promising new direction; no computation yet*
 
 Q54. **Is the dipole radiation pattern route to α effectively
@@ -623,11 +623,11 @@ Status: likely ruled out by the same φ-symmetry protection
 *Connects to: R15 F8 #6, R18 F7, Q51*
 *Status: open — likely negative but uncomputed*
 
-Q55. **Confinement without compact dimensions: is a self-
+Q55. **Confinement without material dimensions: is a self-
 sustaining EM soliton possible in flat 3+1D spacetime?**
-The WvM/photon-knot model confines a photon on a compact
-manifold (T² or T³).  But what if the photon is not on a
-compact space at all — just a self-sustaining standing wave
+The WvM/photon-knot model confines a photon on a material
+manifold (Ma_e or T³).  But what if the photon is not on a
+material space at all — just a self-sustaining standing wave
 held together by some nonlinear mechanism?
 
 Precedents for self-sustaining EM structures:
@@ -647,10 +647,10 @@ Precedents for self-sustaining EM structures:
 The standard result: in LINEAR Maxwell theory, there are no
 stable localized solutions (no solitons).  All wave packets
 disperse.  Confinement requires either nonlinearity (which
-Maxwell doesn't have classically) or topology (compact space
+Maxwell doesn't have classically) or topology (material space
 provides reflecting boundary conditions).
 
-The compact-dimension model's strength is that confinement is
+The material-dimension model's strength is that confinement is
 TOPOLOGICAL — the photon can't escape a closed manifold.
 Without this, no known mechanism confines a single photon in
 flat space.  The strong force analogy is interesting: QCD's
@@ -659,13 +659,13 @@ confinement is also topological (flux tubes, not point forces).
 *Source: user question*
 *Connects to: Q27 (foundational axioms), Q32 (geometry + energy),
 R14 (T³ for hadrons)*
-*Status: open — foundational; answers "why compact dimensions?"*
+*Status: open — foundational; answers "why material dimensions?"*
 
 Q56. **Natural-units analysis of the photon-knot model.**
 In natural units (ℏ = c = 1), all physical quantities reduce
 to powers of length and energy (or equivalently mass).  In the
 photon-knot model, these correspond to:
-- **Length** = compact geometry (R, a, σ)
+- **Length** = material geometry (R, a, σ)
 - **Energy** = confined photon (m_ec²)
 
 The model's dimensionless parameters:
@@ -701,13 +701,13 @@ approach to the α problem (see Q29).
 R15 F5 (α = exp(−4σ²))*
 *Status: open — variational approach not yet attempted*
 
-Q58. **Shear of the compact T² breaks φ-symmetry and produces
-charge for the delocalized wave.**  On the unsheared T², the
+Q58. **Shear of the material sheet breaks φ-symmetry and produces
+charge for the delocalized wave.**  On the unsheared Ma_e, the
 (1,2) mode has q_eff = 2 (integer).  The charge integral
 ∫cos(2φ)dφ = 0 — the φ-protection that has blocked every
 mechanism tested.
 
-On a SHEARED T² (lattice vectors non-orthogonal, shear
+On a SHEARED Ma_e (lattice vectors non-orthogonal, shear
 displacement δ), the (1,2) mode has q_eff = 2 − δ/L₁ in the
 embedding coordinates.  For δ ≠ 0 and δ ≠ nL₁, q_eff is NOT
 an integer, and the charge integral becomes:
@@ -721,12 +721,12 @@ Key properties:
   delocalized (σ = ∞) and still carry charge.  The symmetry
   breaking is geometric, not quantum-state.
 - **R12 F5 showed the shear is internally unconstrained.**
-  The flat-T² wave equation gives no constraint on δ — exactly
+  The flat-Ma_e wave equation gives no constraint on δ — exactly
   the condition where an external constraint (T³ structure,
   embedding, topology) could determine it.
 - **R12 F14 established the two-domain picture:** mass/spin are
   internal (shear-independent), charge is external (depends on
-  how the compact fields project via the embedding).  Shear
+  how the material fields project via the embedding).  Shear
   changes the projection → changes the charge.
 - **Connects to T³ (Q57):** on T³, the shear between the three
   directions is part of the moduli space.  The T³ geometry
@@ -734,7 +734,7 @@ Key properties:
   The same constraint could fix the shear that determines α.
 
 The question "what determines σ?" becomes "what determines δ?"
-— but δ is a GEOMETRIC parameter (compact-space metric), not a
+— but δ is a GEOMETRIC parameter (material-space metric), not a
 quantum-state parameter.  → R19.
 
 *Source: user question, R12 F5/F14, R15 F8 analysis*
@@ -761,7 +761,7 @@ of ring shape.  → φ-symmetry protection holds.
 
 Both fall to the same obstruction: the (1,2) traveling wave
 maintains uniform probability density around the ring.  Any
-geometric deformation that preserves T² topology (without shear)
+geometric deformation that preserves material sheet topology (without shear)
 cannot break the integer-q condition that makes the charge
 integral vanish.
 
@@ -772,10 +772,10 @@ integral vanish.
 Q60. **3D geodesics on sheared T³: what is the charge formula?**
 R19 Tracks 1–5 used the 2D charge formula for (1,m) modes
 confined to a plane of T³.  But on T³, a photon can wind in
-all three compact dimensions: (n₁, n₂, n₃) with all nᵢ ≠ 0.
+all three material dimensions: (n₁, n₂, n₃) with all nᵢ ≠ 0.
 
 *Source: R19 Track 4/5 discussion*
-*Connects to: R19, R14, Q13 (three compact dimensions)*
+*Connects to: R19, R14, Q13 (three material dimensions)*
 *Status: answered by R19 Track 6 (F31) — the 3D charge
 integral gives a selection rule: s₁₃ = 0 kills charge for
 n₃ ≠ 0 modes.  No charged particle lighter than the electron
@@ -783,7 +783,7 @@ exists on T³.  Fractional charges from 3D geodesics are
 ruled out.  See also Q63 (electron planarity).*
 
 Q61. **Does the n=1 tube-winding constraint hold in 3D?**
-On T², the WvM charge mechanism requires n = 1 (one tube
+On Ma_e, the WvM charge mechanism requires n = 1 (one tube
 winding) for nonzero monopole moment (R19 F17, S3 F3).
 
 *Source: R19 Track 4/5 analysis*
@@ -795,11 +795,11 @@ carries over from 2D to 3D.  R21 Track 2 (F6) extends this
 further on the curved torus: only even-parity (cos-like)
 n₁ = 1 modes carry charge.*
 
-Q62. **Independent quark T² (Model B from S3): revisit with shear?**
-S3 F4 proposed "Model B" — separate compact dimensions for
-leptons and quarks.  The quark's own T² would have a/R = 9.91
+Q62. **Independent quark material sheet (Model B from S3): revisit with shear?**
+S3 F4 proposed "Model B" — separate material dimensions for
+leptons and quarks.  The quark's own material sheet would have a/R = 9.91
 (for Q = 2e/3) or 19.81 (for Q = e/3).  This was based on the
-WvM charge formula without shear.  With shear, the quark T²
+WvM charge formula without shear.  With shear, the quark sheet
 could have different dimensions and its own shear value,
 decoupled from the electron.  This sacrifices multi-particle
 consistency (no shared T³) but avoids the mass constraint
@@ -813,7 +813,7 @@ predictions (independent geometries are less falsifiable).
 *Status: open — possible fallback if T³ approaches fail*
 
 Q63. **Why is the electron confined to a 2D plane on T³?**
-R14 F2 assumed the electron uses 2 of 3 compact dimensions
+R14 F2 assumed the electron uses 2 of 3 material dimensions
 with the third "inert."  This was never derived.
 
 *Source: R19 Track 4/5 discussion*
@@ -859,7 +859,7 @@ rather than a hard constraint.
 Q66. **Shear sets the charge scale (α); linking sets the
 fractions (1/3, 2/3)?**  A hybrid model where:
 - Shear determines the OVERALL coupling strength α = 1/137
-  (derived from single-photon electron on T²/T³)
+  (derived from single-photon electron on Ma_e/T³)
 - Linking fractionalization determines the RELATIVE charges
   (quarks get 1/3, 2/3 of the electron charge)
 - These are independent mechanisms operating simultaneously
@@ -884,12 +884,12 @@ does NOT constrain r (parity selection rule instead).
 *Status: open — highest priority free-parameter problem*
 
 Q68. **Write up the electron model (paper).**  The model has
-a complete electron: mass from T² periodicity, charge from
+a complete electron: mass from Ma_e periodicity, charge from
 shear (R19), spin ½ from (1,2) winding, g = 2 from topology
 (R8), α from one equation in (r, s).  A paper would consolidate
 S1–R21 results, force confrontation with what's rigorous vs.
 hand-waving, and establish priority.  Could frame as "single
-photon on sheared T² reproduces electron properties" with the
+photon on sheared Ma_e reproduces electron properties" with the
 free parameter r acknowledged.
 *Source: project assessment after R21*
 *Status: open — consolidation task*
@@ -932,13 +932,13 @@ energy forces R8-multi-winding, which breaks charge.
 Eight candidate paths to resolve the tension:
 
 **Path 1. Compact-space refractive index.** If c_sub < c in
-the compact space, a photon at Compton frequency has shorter
+the material space, a photon at Compton frequency has shorter
 wavelength, fitting into a smaller torus with p = 1.  Need
 c_sub/c ≈ α.  Waveguides routinely have effective speeds < c.
 Could c_sub be determined by the geometry?
 
 **Path 2. Compact metric scale factor.** Equivalent to Path 1
-in KK language: a conformal factor in the compact metric that
+in KK language: a conformal factor in the material metric that
 plays the role of α.
 
 **Path 3. Membrane permeability.** If only a fraction of the
@@ -946,10 +946,10 @@ photon's field leaks into 3D, the apparent charge is reduced.
 If the leakage fraction ≈ α, this explains U_Coulomb = α × m_e c²
 at Compton scale.  The torus stays at Compton scale with p = 1,
 preserving charge.  Charge = √α × e_bare.  Connects to running
-of α (higher energy probes penetrate deeper into compact space).
+of α (higher energy probes penetrate deeper into material space).
 
 **Path 4. Geometric projection factor.** The solid angle
-subtended by the torus tube, or the ratio of compact to 3D
+subtended by the torus tube, or the ratio of material to 3D
 surface area at the embedding, could provide a geometric
 suppression ≈ α.  Calculable from embedding geometry.
 
@@ -975,7 +975,7 @@ Run R7's calculation forward: energy + topology → charge → α.
 See R15 README for full analysis of how R7 → R8 → R13 led
 back here.
 
-**Path 8. Different compact topology.** The torus is WvM's
+**Path 8. Different material topology.** The torus is WvM's
 choice but not the only option.  Lens spaces, spheres, or more
 exotic manifolds could have different charge mechanisms and
 mode structures.
@@ -987,23 +987,24 @@ mode structures.
 (radiation pressure / centrifugal deformation).  Remaining
 paths (1–3, 6, 8) await triage.*
 
-Q71. **How does R³ perceive periodic, compactified dimensions?**
-The T⁶ model says "space is just shaped that way" — compact
-dimensions exist as geometric fact.  Based on relativity, the
-photon "thinks" it travels a straight path; from R³, we see
+Q71. **How does S perceive periodic, compactified dimensions?**
+The Ma (the six-dimensional material space) model says "space
+is just shaped that way" — material dimensions exist as geometric
+fact.  Based on relativity, the photon "thinks" it travels a
+straight path; from S (the three spatial dimensions), we see
 periodicity.  What IS our perception of that periodicity?
 
-In KK theory, the answer is known: R³ perceives T⁶ as particles
+In KK theory, the answer is known: S perceives Ma as particles
 (modes = quantized masses) and forces (gauge fields from off-
 diagonal metric terms).  But this raises the deeper question:
-is this the ONLY way to perceive compact dimensions, or are
-there phenomena that reveal the compact geometry more directly?
+is this the ONLY way to perceive material dimensions, or are
+there phenomena that reveal the material geometry more directly?
 
 The Bohr radius (53,000 fm) and the electron tube (32,000 fm)
-are within a factor of 1.7 (R31 F11).  The compact geometry is
+are within a factor of 1.7 (R31 F11).  The material geometry is
 NOT deeply hidden — it's just barely smaller than atomic scales.
 Could precision atomic measurements (Lamb shift, g−2, proton
-charge radius) reveal the compact geometry?  R31 Track 4 showed
+charge radius) reveal the material geometry?  R31 Track 4 showed
 the naive KK Yukawa is ruled out by 10⁵, but that rules out the
 naive COUPLING, not the geometry itself.
 
@@ -1011,56 +1012,56 @@ naive COUPLING, not the geometry itself.
 *Connects to: R29 (KK reduction), R31 F11, F15–F18, Q36*
 *Status: open — foundational; partially addressed by R29/R31*
 
-Q72. **Is R³ itself periodic?  Is our universe toroidal to an
-outside observer?**  If R³ is a very large T³, the distinction
+Q72. **Is S itself periodic?  Is our universe toroidal to an
+outside observer?**  If S is a very large T³, the distinction
 between "space" and "internal structure" is one of scale, not
 kind.  Consequences:
 
 - Photons have a maximum wavelength (set by the cosmic T³ circumference)
 - The universe has finite volume
 - From a larger space, our universe is a set of modes — "particles"
-- The hierarchy continues: T⁶ modes are particles to us;
-  our R³ modes might be particles to an outer space
+- The hierarchy continues: Ma modes are particles to us;
+  our S modes might be particles to an outer space
 
 Cosmological bounds: the CMB constrains the T³ circumference to
 be > the observable universe (~10⁴¹ fm) if the topology is
-detectable.  But if R³ is a large T³, and T⁶ is a small T⁶,
+detectable.  But if S is a large T³, and Ma is a small Ma,
 the only difference is scale.  The scale hierarchy:
 
 | Space | Circumference | Perceived as |
 |-------|---------------|-------------|
-| Proton T² | 3–24 fm | Hadrons, nuclei |
-| Electron T² | 5,000–32,000 fm | Electron, charge |
-| Neutrino T² | 10¹⁰–10¹¹ fm | Neutrino masses |
-| R³ (if T³) | ~10⁴¹ fm? | Our universe |
+| Ma_p | 3–24 fm | Hadrons, nuclei |
+| Ma_e | 5,000–32,000 fm | Electron, charge |
+| Ma_ν | 10¹⁰–10¹¹ fm | Neutrino masses |
+| S (if T³) | ~10⁴¹ fm? | Our universe |
 
 *Source: user question (R31 discussion)*
 *Connects to: Q7, Q50, R30 (minimal geometry)*
 *Status: open — speculative but concrete; testable via CMB topology*
 
-Q73. **Is there shear between R³ and T⁶?**  The electromagnetic
-potential A_μ IS the off-diagonal metric component between R³
-and the compact dimensions (standard KK result, used in R29
-Track 1).  So the answer is YES — electromagnetism IS the R³-T⁶
-shear.  The Coulomb force doesn't come from within T⁶ or R³;
+Q73. **Is there shear between S and Ma?**  The electromagnetic
+potential A_μ IS the off-diagonal metric component between S
+and the material dimensions (standard KK result, used in R29
+Track 1).  So the answer is YES — electromagnetism IS the S-Ma
+shear.  The Coulomb force doesn't come from within Ma or S;
 it comes from their cross-term.
 
 Open questions beyond this established result:
-- Are there ADDITIONAL R³-T⁶ cross-terms beyond the gauge field?
+- Are there ADDITIONAL S-Ma cross-terms beyond the gauge field?
 - Do magnetic effects (velocity-dependent: F = qv×B) have a
   different geometric origin than electric effects?
-- If the R³-T⁶ shear is electromagnetism, and within-plane
+- If the S-Ma shear is electromagnetism, and within-plane
   shear determines α, is there a unified principle governing
-  ALL shears (within-plane, cross-plane, R³-T⁶)?
+  ALL shears (within-plane, cross-plane, S-Ma)?
 
 *Source: user question (R31 discussion)*
 *Connects to: R29 Track 1 (KK Coulomb), R19 (R19-shear-charge formula),
 R31 F7 (mechanisms for selecting α)*
-*Status: partially answered — EM as R³-T⁶ shear is established;
+*Status: partially answered — EM as S-Ma shear is established;
 additional cross-terms and unification are open*
 
 Q74. **Cross-sheet perception: is there an analog between how
-the electron sheet "sees" the proton sheet and how we (in R³)
+the electron sheet "sees" the proton sheet and how we (in S)
 see the neutrino sheet?**
 
 The electron sheet perceives the proton sheet through σ_ep
@@ -1069,7 +1070,7 @@ The electron sheet perceives the proton sheet through σ_ep
 The electron sheet doesn't know the proton sheet's geometry
 directly — only the coupling.
 
-Similarly, R³ perceives T⁶ through gauge fields (cross-terms
+Similarly, S perceives Ma through gauge fields (cross-terms
 in the metric).  And we perceive the neutrino sheet through
 neutrino masses and weak interactions.  The neutrino sheet is
 10⁷× larger than the electron sheet — effectively decoupled
@@ -1078,20 +1079,20 @@ neutrino masses and weak interactions.  The neutrino sheet is
 The pattern: each "level" perceives others through couplings,
 not geometry.  Geometry is invisible; only its consequences
 (forces, masses, mode energies) are accessible.  This might
-explain why the compact dimensions are not directly observable
+explain why the material dimensions are not directly observable
 — the same way the electron sheet cannot "observe" the proton
 sheet's aspect ratio, only its coupling effects.
 
 *Source: user question (R31 discussion)*
 *Connects to: R28 F1 (neutrino decouples), R31 Q&A (r_e
-sensitivity analysis), Q50 (shared compact space)*
+sensitivity analysis), Q50 (shared material space)*
 *Status: open — conceptual; could inform how to interpret
 the model's free parameters*
 
 Q75. **Is α = 1/137 a contingent fact ("design choice") or
 necessary ("the only way")?**
 
-The T⁶ model currently treats α as contingent — any shear s
+The Ma model currently treats α as contingent — any shear s
 produces a valid geometry (R31 F4–F6).  But the model only has
 kinematics (spectra), not dynamics (what holds the geometry in
 shape).
@@ -1120,29 +1121,29 @@ functional not yet in the model (R31 F7, F23).
 Q34 Path 7 (forward charge)*
 *Status: open — the deepest open question in the model*
 
-Q77. **Is α the impedance mismatch between T⁶ and R³?**
+Q77. **Is α the impedance mismatch between Ma and S?**
 
 Promoted to individual file: [Q77-alpha-as-impedance.md](Q77-alpha-as-impedance.md)
 
 α might not be a "coupling constant" but a refractive
-index — the impedance ratio between the compact vacuum
-and the spatial vacuum.  If c inside T⁶ differs from c
-in R³ by a factor related to α, the observable consequences
+index — the impedance ratio between the material vacuum
+and the spatial vacuum.  If c inside Ma differs from c
+in S by a factor related to α, the observable consequences
 are exactly what we see.  We never directly measure c
-inside T⁶; the only observable effect of a speed difference
+inside Ma; the only observable effect of a speed difference
 would be the coupling strength, which IS α.
 
 The shear mechanism already implements this: a sheared
 torus is metrically anisotropic, making the effective
 propagation speed direction-dependent.  This anisotropy
 determines α.  The reframing redirects the search for α's
-derivation from internal T⁶ mechanisms (Casimir, moduli —
-both failed) to the T⁶/R³ interface: what geometric
+derivation from internal Ma mechanisms (Casimir, moduli —
+both failed) to the Ma/S interface: what geometric
 matching condition fixes the impedance ratio?
 
 The three fundamental constants map onto three dimensional
 interfaces: c converts spatial ↔ temporal, ℏ converts
-continuous ↔ quantum, α converts compact ↔ spatial.
+continuous ↔ quantum, α converts material ↔ spatial.
 
 *Source: user insight (R31 discussion)*
 *Connects to: Q18 (deriving α), Q75 (contingency), Q76
@@ -1155,8 +1156,8 @@ signature and the 6+3+1 dimensional split.**
 
 Promoted to individual file: [Q76-origin-of-metric-signature.md](Q76-origin-of-metric-signature.md)
 
-The T⁶ × R³ × R¹ framework has 10 dimensions with three
-distinct characters: compact (6), spatial (3), temporal (1).
+The Ma × S × R¹ framework has 10 dimensions with three
+distinct characters: material (6), spatial (3), temporal (1).
 What determines which dimensions get which character?  The
 entire difference between time and space is a single minus
 sign in the metric (ds² = −c²dt² + dx² + ...).  That sign
@@ -1168,13 +1169,13 @@ Each character corresponds to a geometric "tweak" applied
 to a raw degree of freedom: compactification (periodic
 boundary → quantization), spatial extension (default, open,
 positive signature), or temporal signature (negative metric
-→ causality).  All dimensional perception — within T⁶,
-between R³ and T⁶, between R³ and R¹ — is mediated by
+→ causality).  All dimensional perception — within Ma,
+between S and Ma, between S and R¹ — is mediated by
 off-diagonal metric components (shears, gauge fields,
 signature flip).
 
 Constraints on the split: exactly 1 time (for causality),
-exactly 3 space (for stable orbits), exactly 6 compact
+exactly 3 space (for stable orbits), exactly 6 material
 (R30: minimum for particle spectrum).  If all are necessary,
 1+3+6 = 10 is the ONLY self-consistent assignment.
 
@@ -1194,16 +1195,16 @@ See [`README.md`](README.md) for the full index.
 
 | # | File | Note |
 |---|------|------|
-| Q1, Q7 | [Q07-flat-compact-dimensions.md](Q07-flat-compact-dimensions.md) | Compact dimensions can be flat; orthogonality is metric-based |
+| Q1, Q7 | [Q07-flat-compact-dimensions.md](Q07-flat-compact-dimensions.md) | Material dimensions can be flat; orthogonality is metric-based |
 | Q2 | *(inline)* | Answered: two-domain picture (R12 F14, R13). Flat inside, toroidal embedding in 3D. |
-| Q3/Q4 | *(inline)* | Answered: compact space is 2D (T²) or 3D (T³ for linking, Q13/R14). Radial profile is transverse mode structure. |
+| Q3/Q4 | *(inline)* | Answered: material space is 2D (material sheet) or 3D (T³ for linking, Q13/R14). Radial profile is transverse mode structure. |
 | Q5 | [Q05-orthogonality-and-size.md](Q05-orthogonality-and-size.md) | Orthogonality is metric, not size-dependent; standard KK result |
 | Q6 | *(inline)* | Answered by [Q07](Q07-flat-compact-dimensions.md): KK metric provides the transform; orthogonality is metric-based. |
-| Q8 | *(inline)* | Answered: B always axial (R2, R8 F10). Magnetic moment = net axial projection of B on T². |
-| Q9 | *(inline)* | Concluded via R6. Field profile shape doesn't change q = e; actual profile needs wave eq. on T². |
+| Q8 | *(inline)* | Answered: B always axial (R2, R8 F10). Magnetic moment = net axial projection of B on Ma_e. |
+| Q9 | *(inline)* | Concluded via R6. Field profile shape doesn't change q = e; actual profile needs wave eq. on Ma_e. |
 | Q10 | *(inline)* | Concluded via R7. Quadrupole correction ~few %; backlog until charge mechanism settled. |
 | Q11 | [Q11-spin-statistics-filter.md](Q11-spin-statistics-filter.md) | Spin-statistics theorem excludes free particles with q ≥ 3 |
-| Q13 | [Q13-three-compact-dimensions.md](Q13-three-compact-dimensions.md) | Three compact dims required for topological linking (R14 Track 0) |
+| Q13 | [Q13-three-compact-dimensions.md](Q13-three-compact-dimensions.md) | Three material dims required for topological linking (R14 Track 0) |
 | Q17 | *(inline)* | Concluded via R1. KK gravitational charge ~10⁻²² × e — ruled out. WvM mechanism is different. |
 | Q22 | [Q22-path-closure.md](Q22-path-closure.md) | Exact closure not needed; properties depend on topology, not global periodicity |
 | Q30 | [Q30-prime-q-harmonic-avoidance.md](Q30-prime-q-harmonic-avoidance.md) | Negative result — primality does not select q (R11) |

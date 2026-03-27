@@ -22,9 +22,9 @@ fundamental: **energy** and **geometry** (topology of space).
 | Property  | Emergent from                         |
 |-----------|---------------------------------------|
 | Mass      | Energy confined in periodic geometry  |
-| Charge    | Field winding number on compact T²    |
+| Charge    | Field winding number on material sheet |
 | Spin      | Winding ratio of geodesic (p:q)       |
-| Mag. mom. | Geometric projection of compact field |
+| Mag. mom. | Geometric projection of material-dimension field |
 | g-factor  | Energy partition (co- vs non-rotating)|
 
 **Conservation laws are also emergent:**
@@ -53,9 +53,9 @@ sense.  The correct approach: derive the field pattern
 from the geometry alone, compute the apparent charge from
 the 3+1D projection, and check whether the geometry is
 self-consistent.  This is exactly what R13 (KK charge
-from flat T²) attempts.  α is not "the coupling strength
+from flat material sheet) attempts.  α is not "the coupling strength
 between fundamental charges" — it is a geometric ratio
-characterizing the compact space.
+characterizing the material space.
 
 **Implications for baryogenesis:**  In this framework,
 "baryon number" and "lepton number" are not fundamental —

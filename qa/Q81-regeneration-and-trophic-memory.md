@@ -1,4 +1,4 @@
-# Q81: How does T²_ν explain regeneration, subroutine calls, and trophic memory?
+# Q81: How does Ma_ν explain regeneration, subroutine calls, and trophic memory?
 
 **Status:** Open — hypothesis development
 **Related:**
@@ -12,7 +12,7 @@
 ## 1. Levin phenomena addressed
 
 For context only — brief catalog of the experimental results
-this file attempts to explain through T²_ν:
+this file attempts to explain through Ma_ν:
 
 - **Ectopic eyes** — voltage manipulation causes functional
   eyes on Xenopus tadpole tails, backs, and guts; they work
@@ -39,9 +39,9 @@ this file attempts to explain through T²_ν:
 
 ---
 
-## 2. The central T²_ν thesis
+## 2. The central Ma_ν thesis
 
-The neutrino T² sheet is a geometric property of spacetime
+The neutrino sheet (Ma_ν) is a geometric property of spacetime
 at every point.  It does not belong to any cell or
 structure — it exists whether matter is present or not.
 Each ~42 μm locus is an independent storage element,
@@ -55,7 +55,7 @@ signals (Vmem, gap junctions) are the decoded readout layer
 
 This reframes Levin's results as follows:
 
-| Levin's language | T²_ν translation |
+| Levin's language | Ma_ν translation |
 |---|---|
 | Target morphology | Pattern stored on local neutrino-sheet patches |
 | Bioelectric code | Decoded projection of sheet data into Vmem |
@@ -127,7 +127,7 @@ readers of the sheet program.
 
 If the neutrino sheet stores all morphogenetic programs at
 every spatial point, then the "library of subroutines" is
-the mode spectrum of the neutrino T²:
+the mode spectrum of the neutrino sheet (Ma_ν):
 
 | Harmonic range | Hypothesized program class |
 |---|---|
@@ -173,7 +173,7 @@ geometric.  The torus modes do not spontaneously reset.
 
 Levin's third worm type — fragments that randomly choose
 1 or 2 heads — suggests a sheet pattern at the boundary
-between two attractors.  In T²_ν terms:
+between two attractors.  In Ma_ν terms:
 
 - The sheet pattern at the posterior end is in a metastable
   state — partially overwritten, balanced between "head"
@@ -185,7 +185,7 @@ between two attractors.  In T²_ν terms:
   each fragment reads its own local sheet patches
   independently — the patches are physically separate.
 
-This is the T²_ν analog of a bistable flip-flop circuit
+This is the Ma_ν analog of a bistable flip-flop circuit
 with the input hovering at the threshold voltage.
 
 ---
@@ -297,7 +297,7 @@ Levin's planaria work shows that:
 - Information about the target morphology is present
   throughout the body, not localized.
 
-### 6.2 T²_ν interpretation: redundant write-back
+### 6.2 Ma_ν interpretation: redundant write-back
 
 Each cell's neutrino-sheet patch is ~42 μm — one cell's
 worth of data.  But the gap junction network enables a
@@ -334,7 +334,7 @@ plan (head at both ends), so they rebuild two heads.
 
 ### 6.4 Capacity check
 
-The neutrino T² has ~10⁸ independent harmonic channels per
+The neutrino sheet (Ma_ν) has ~10⁸ independent harmonic channels per
 locus (from the mode spectrum analysis in earlier work).
 A planarian has ~10⁵–10⁶ cells.  Storing a compressed
 global plan (which cell types go where, in what polarity)
@@ -347,7 +347,7 @@ The capacity is not a bottleneck.
 
 When tadpole facial organs are displaced to wrong
 positions, they migrate to correct locations.  In the
-T²_ν framework:
+Ma_ν framework:
 
 1. Each cell reads its local sheet patch and determines
    its *assigned* position in the face plan.

@@ -487,5 +487,5 @@ can be formulated precisely.
 ---
 
 *See also: `studies/R1-kk-charge/theory.md` for how this framework
-extends to two compact dimensions and connects to the WvM electron
+extends to two material dimensions and connects to the WvM electron
 model.*

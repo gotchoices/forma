@@ -17,16 +17,16 @@ Ruled out mechanisms:
 - *EM self-force:* photons don't couple to EM fields.
 - *KK gravitational self-consistent metric:* R1 showed
   Gm_e/(Rc²) ~ 10⁻⁴³, which is 41 orders of magnitude too
-  weak.  The 6D Einstein equations would return "flat T², no
+  weak.  The 6D Einstein equations would return "flat material sheet, no
   shear" to extreme precision.
 - *Berry phase:* wrong scaling (R8 Track 4).
 
 Active leads:
-1. **KK charge from flat T² (R13, backlog):**
+1. **KK charge from flat material sheet (R13, backlog):**
    R12 showed the charge calculation must be done entirely from
-   the flat-T² perspective (KK decomposition), not by mixing
-   flat-T² path lengths with 3D-embedded Coulomb energies.
-   Set up 6D field equations on M₄ × flat T², compute the 4D
+   the flat-material-sheet perspective (KK decomposition), not by mixing
+   flat-material-sheet path lengths with 3D-embedded Coulomb energies.
+   Set up 6D field equations on M₄ × flat material sheet, compute the 4D
    effective charge and self-energy from KK modes, and check
    whether requiring self-energy = m_e c²/2 constrains the
    shear without using e as input.
@@ -39,7 +39,7 @@ Closed leads (R11):
 
 Key insights:
 - **The shear MUST exist** (independent of its value).  On
-  an unsheared T², the geodesic slope IS the spin ratio.  You
+  an unsheared material sheet, the geodesic slope IS the spin ratio.  You
   cannot simultaneously have exact spin-½ AND dense torus
   coverage.  The shear decouples these — its existence is
   forced, only its magnitude is undetermined.
@@ -55,17 +55,17 @@ Key insights:
 On the running of α: α runs in QED (1/137 → ~1/128 at Z-mass),
 but q must be an odd integer (discrete), so the geometric α
 can't vary continuously.  The running likely reflects vacuum
-polarization screening in 3+1D, not compact geometry changes.
+polarization screening in 3+1D, not material geometry changes.
 The bare α is fixed; the dressed α runs.
 *Source: S2-toroid-geometry F6, R7, R8 Tracks 4–5, R1 (gravity
 too weak), R11 (tautology analysis)*
 R12 results (COMPLETE):
-- Track 1: flat-T² wave equation has no modes at ω_C (spectral
+- Track 1: flat-material-sheet wave equation has no modes at ω_C (spectral
   gap of ~137×).  Shear unconstrained.
 - Track 2: curved-torus geodesics give q ≈ 193 (not 137);
-  holonomy is zero.  Confirms compact space must be
+  holonomy is zero.  Confirms material space must be
   intrinsically flat.
-- Corrected picture: R8's use of flat T² for mass/spin and
+- Corrected picture: R8's use of flat material sheet for mass/spin and
   3D embedding for charge is the correct physical procedure
   (internal vs external domains), not an inconsistency.
   Charge is a projection property of the embedding.

@@ -1,12 +1,12 @@
 # Q80: Could cancer be a failure of neutrino-sheet coupling?
 
-**Status:** Open — hypothesis linking Levin's cancer model to T²_ν coupling
+**Status:** Open — hypothesis linking Levin's cancer model to Ma_ν coupling
 **Related:**
   [Q79](Q79-cellular-resonators-and-levin.md) (coupling mechanisms, Levin background),
   [Q78](Q78-neutrino-sheet-access.md) (neutron gateway model),
   [neutrino-domain-storage](../papers/neutrino-domain-storage.md) (architecture),
-  [storage-in-t6](../papers/storage-in-t6.md) (storage hypothesis),
-  R26 F1–F9 (neutrino T² mode spectrum)
+  [sub-quantum-memory](../papers/sub-quantum-memory.md) (storage hypothesis),
+  R26 F1–F9 (neutrino sheet mode spectrum)
 
 ---
 

@@ -1,4 +1,4 @@
-# Q31: Discrete T² and the digital counter hypothesis
+# Q31: Discrete material sheet and the digital counter hypothesis
 
 **Status:** Open — conceptual; numerical coincidence 1/α(M_Z) ≈ 128 is real  
 **Source:** User hypothesis  
@@ -13,7 +13,7 @@ counter with carry-propagation as the shear?
 the compact space is not continuous but has a finite number of
 discrete states — a digital counter?
 
-**Core idea:** Represent T² as a single integer counter with
+**Core idea:** Represent the material sheet as a single integer counter with
 N total states that wraps (modular arithmetic).  Assign the
 low-order bits to the minor circumference (a-dimension) and
 the high-order bits to the major circumference (R-dimension).
@@ -25,7 +25,7 @@ This naturally produces:
   shear — the seam offset arises from hierarchical counting,
   not from an imposed boundary condition.
 - **Full coverage:** every state in the counter is visited
-  exactly once per full cycle, so the entire T² domain is
+  exactly once per full cycle, so the entire material-sheet domain is
   scanned.
 - **Two periodicities:** the lower bits cycle at a higher
   frequency (minor circumference) while the upper bits cycle

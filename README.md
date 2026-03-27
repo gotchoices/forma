@@ -40,7 +40,7 @@ Build a geometric model of fundamental particles from pure
 electromagnetic energy — no fundamental charges, no point
 particles.
 
-**Near-term:** Find a set of compact-dimension parameters
+**Near-term:** Find a set of material-dimension parameters
 (topology, aspect ratio, scale) that reproduces all measured
 properties of the electron: charge, mass, spin, and magnetic
 moment.
@@ -61,14 +61,14 @@ Mass, charge, spin, and magnetic moment are all emergent:
 | Property  | Emerges from                          |
 |-----------|---------------------------------------|
 | Mass      | Energy confined in periodic geometry  |
-| Charge    | Field winding number on compact T²    |
+| Charge    | Field winding number on material sheet |
 | Spin      | Winding ratio of geodesic (p:q)       |
 | Mag. mom. | Geometric projection of compact field |
 
 Conservation laws are emergent too — but exact.  Mass
 conservation is energy conservation.  Charge conservation
 is topological winding-number conservation (you can't
-smoothly unwrap a path on T²).  Spin conservation is
+smoothly unwrap a path on the material sheet).  Spin conservation is
 geodesic topology.  These are exact because topology is
 exact.
 
@@ -89,8 +89,8 @@ Mark ([PDF][wvm]) proposing that an electron is a single photon
 confined to a (1,2) torus knot.  The model reproduces spin ½
 (exact, topological) and charge ≈ 0.91e (approximate, geometric).
 
-This project extends the WvM model into a compact-dimension
-framework: the photon lives on a flat torus T² (two periodic
+This project extends the WvM model into a material-dimension
+framework: the photon lives on a flat material sheet (two periodic
 dimensions), and the electron's properties emerge from the
 geometry of that surface.
 

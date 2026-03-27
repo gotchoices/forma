@@ -1,18 +1,19 @@
 # The Universe as a Mode
 
 **Status:** outline (thought piece / what-if)
-**Depends on:** [Matter from Light](matter-from-light.md) (T⁶ framework),
-  [Sub-Quantum Memory](storage-in-t6.md) (fiber-bundle entanglement),
-  [Q82](../qa/Q82-entanglement-as-t6-geometry.md) (entanglement as geometry),
+**Depends on:** [Matter from Light](matter-from-light.md) (Ma framework),
+  [Sub-Quantum Memory](sub-quantum-memory.md) (fiber-bundle entanglement),
+  [Q82](../qa/Q82-entanglement-as-ma-geometry.md) (entanglement as geometry),
   [Q83](../qa/Q83-neutrino-sheet-coherence.md) (neutrino-sheet coherence)
 
 ---
 
 ### Premise
 
-The T⁶ model produces a hierarchy: the larger a compact
-dimension, the richer its mode spectrum.  The neutrino T²
-(~mm scale) already has enough modes to serve as a
+The Ma model (Ma being the six-dimensional material space)
+produces a hierarchy: the larger a material dimension, the
+richer its mode spectrum.  The neutrino sheet Ma_ν (~mm scale)
+already has enough modes to serve as a
 biological information substrate.  This paper follows the
 hierarchy to its logical limit and asks: what if the
 observable universe is itself a mode on a still-larger
@@ -20,7 +21,7 @@ compact geometry — a "cosmic neutrino" whose internal
 structure is rich enough to encode everything we observe?
 
 The paper is a controlled thought experiment in the spirit
-of [Sub-Quantum Memory](storage-in-t6.md) — a map of
+of [Sub-Quantum Memory](sub-quantum-memory.md) — a map of
 implications, not a claim of discovery.
 
 ---
@@ -31,11 +32,11 @@ implications, not a claim of discovery.
 |---|---------|------------|-----------------|
 | 1 | The scaling pattern | Setup | Bigger torus → more modes → richer physics. A pattern already in the data. |
 | 2 | The extrapolation | Setup | Push the pattern to L ~ 10²⁶ m. Count the modes. Compare to Bekenstein. |
-| 3 | The fiber computer | Core idea | Each particle's T⁶ fiber is a local processor: it manages energy propagation according to its own frame. |
+| 3 | The fiber computer | Core idea | Each particle's Ma fiber is a local processor: it manages energy propagation according to its own frame. |
 | 4 | Propagation without a medium | Core idea | EM waves don't need an aether — each fiber IS the local medium, anchored to its observer. |
 | 5 | Entanglement as shared fiber | Core idea | Co-located fibers share modes. Separation preserves the correlation. Collapse resolves the whole structure. |
-| 6 | Everything is periodic | Implication | Compact = periodic. If the universe is compact, it is periodic at every scale. |
-| 7 | The self-referential closure | Implication | The hierarchy of compact dimensions must either regress infinitely or close on itself. Closure is more elegant — and more testable. |
+| 6 | Everything is periodic | Implication | Compact = periodic. If the universe is a compact manifold, it is periodic at every scale. |
+| 7 | The self-referential closure | Implication | The hierarchy of material dimensions must either regress infinitely or close on itself. Closure is more elegant — and more testable. |
 | 8 | What periodicity predicts | Implication | CMB topology, large-scale correlations, the axis of evil, the cosmological constant. |
 | 9 | What closure predicts | Implication | The fundamental constants are the fixed point of a self-consistent recursive geometry. |
 | 10 | Comparison to existing ideas | Context | Wheeler's it-from-bit, ER=EPR, holographic principle, loop quantum gravity, cellular automata. |
@@ -48,16 +49,16 @@ implications, not a claim of discovery.
 
 ### 1.1 The hierarchy already exists
 
-The T⁶ framework assigns a compact T² sheet to each
-particle family.  Each sheet has a characteristic size
+The Ma framework assigns a material sheet to each particle
+family.  Each sheet has a characteristic size
 that sets its fundamental mode energy E₀ = ℏc/L and its
 mode count.  The hierarchy:
 
 | Sheet | Size L | E₀ | Modes at 300K |
 |-------|--------|----|---------------|
-| Proton T² | ~fm | ~GeV | ~1 (frozen) |
-| Electron T² | ~pm | ~MeV | ~1 (frozen) |
-| Neutrino T² | ~μm–mm | ~meV | Many (thermally active) |
+| Ma_p (proton sheet) | ~fm | ~GeV | ~1 (frozen) |
+| Ma_e (electron sheet) | ~pm | ~MeV | ~1 (frozen) |
+| Ma_ν (neutrino sheet) | ~μm–mm | ~meV | Many (thermally active) |
 
 The neutrino sheet's richness — many accessible modes,
 thermally coupled to biology — is a direct consequence of
@@ -74,7 +75,7 @@ L ~ 10²⁶ m — the scale of the observable universe?
 
 ### 2.1 Mode count at cosmological scale
 
-A compact dimension of circumference L ~ 10²⁶ m has a
+A material dimension of circumference L ~ 10²⁶ m has a
 fundamental mode energy:
 
     E₀ = ℏc / L ≈ 10⁻³² eV
@@ -98,7 +99,7 @@ universe-scale compact geometry has enough room.
 
 ### 2.3 What "enough modes" means
 
-With ~10¹²² independent modes, the compact geometry could
+With ~10¹²² independent modes, the material geometry could
 encode the state of every particle, field configuration,
 and correlation in the observable universe.  The geometry
 does not merely contain the universe's information — it
@@ -109,11 +110,11 @@ IS the universe's information.
 
 ### 3.1 The Kaluza-Klein fiber bundle
 
-In KK theory, each point in R³ carries its own copy of
-the compact space — a "fiber."  The fibers are not
-isolated; they are connected by the bundle connection,
-which IS the gauge field (electromagnetism, gravity in KK
-theory).
+In Kaluza-Klein theory, each point in S (the three spatial
+dimensions) carries its own copy of the material space — a
+"fiber."  The fibers are not isolated; they are connected
+by the bundle connection, which IS the gauge field
+(electromagnetism, gravity in Kaluza-Klein theory).
 
 Each particle is a mode excitation on its local fiber.
 The particle's quantum numbers (mass, charge, spin) are
@@ -185,7 +186,7 @@ coupling.
 
 ### 5.1 Co-location = shared mode (Q82 recap)
 
-When two particles occupy the same R³ location, they
+When two particles occupy the same S location, they
 don't each have "their own" fiber mode — they are
 excitations of the SAME fiber.  One geometric vibration,
 two particles.
@@ -224,8 +225,8 @@ correlations, not of creating them.
 
 A torus is a manifold with periodic boundary conditions.
 That is what "compact" means in this context.  The
-electron T² is periodic with period ~pm.  The neutrino T²
-is periodic with period ~mm.
+electron sheet Ma_e is periodic with period ~pm.  The
+neutrino sheet Ma_ν is periodic with period ~mm.
 
 If the universe is a mode on a torus of circumference
 ~10²⁶ m, then the universe is periodic with period
@@ -236,7 +237,7 @@ compact direction.
 
 ### 6.2 The periodicity is at every scale
 
-The T⁶ model already has periodicity at the fm, pm, and
+The Ma model already has periodicity at the fm, pm, and
 mm scales (proton, electron, neutrino sheets).  Adding
 the cosmological scale means the universe is periodic at
 at least four scales simultaneously.  Each scale's
@@ -261,7 +262,7 @@ topology would produce:
   multipoles could reflect a preferred direction in the
   compact topology.
 
-These are active observational programs.  The T⁶
+These are active observational programs.  The Ma
 framework predicts that they should find a positive
 signal.
 
@@ -282,7 +283,7 @@ is THAT space a mode of?  Either:
 
 Option (b) means the cosmological-scale torus's
 fundamental mode IS the Planck-scale structure that
-generates the proton T².  The hierarchy is not a tower —
+generates the proton sheet Ma_p.  The hierarchy is not a tower —
 it is a loop:
 
     ... → Planck → proton → electron → neutrino →
@@ -313,7 +314,7 @@ either has exactly one solution or none.  It cannot be
 
 ### 8.1 CMB topology
 
-The T⁶ framework, extended to cosmological scale,
+The Ma framework, extended to cosmological scale,
 predicts a compact spatial topology.  The specific
 prediction depends on whether the cosmological dimensions
 form a T³ (flat torus), a T² × S¹, or some other compact
@@ -349,7 +350,7 @@ with sufficiently deep surveys.
 If α = 1/137.036 is the fixed point of a self-referential
 geometry, it should be derivable from the topology alone.
 The R31-alpha-derivation study has already shown α emerges
-from the T² lattice shear — a purely geometric quantity.
+from the material-sheet lattice shear — a purely geometric quantity.
 In the self-referential picture, the shear is not a free
 parameter; it is the unique value that closes the loop.
 
@@ -358,12 +359,12 @@ parameter; it is the unique value that closes the loop.
 The proton/electron mass ratio (1836.15), the
 neutrino mass splittings, and the nuclear binding energy
 curve should all follow from the closure condition.  The
-existing T⁶ results (electron, proton, neutron masses
+existing Ma results (electron, proton, neutron masses
 from mode numbers) are the first terms in this program.
 
 ### 9.3 The number of dimensions
 
-Why 6 compact + 3 spatial + 1 time = 10?  In the self-
+Why 6 material + 3 spatial + 1 time = 10?  In the self-
 referential picture, the number of dimensions is the
 minimum required for the recursive closure to work.
 Fewer dimensions → not enough mode richness for the
@@ -409,7 +410,7 @@ from collective behavior.
 ### 10.5 Cellular automata (Wolfram, 't Hooft)
 
 The fiber-computer picture resembles a cellular automaton:
-local cells (fibers) with local rules (Maxwell on T⁶)
+local cells (fibers) with local rules (Maxwell on Ma)
 producing emergent global behavior.  The key difference is
 that the fibers are continuously connected by a smooth
 manifold, not discrete.
@@ -447,14 +448,14 @@ manifold, not discrete.
 ### 11.2 Honesty
 
 This paper is the most speculative in the series.  It
-builds on the established T⁶ framework but extends it
+builds on the established Ma framework but extends it
 far beyond the regime where quantitative predictions have
 been tested.  It is included because the implications are
 striking and because several of its predictions (CMB
 topology, large-scale correlations, constant derivation)
 are in principle testable — and because the question it
-asks is the one the T⁶ framework naturally leads to.
+asks is the one the Ma framework naturally leads to.
 
-The universe is either periodic or it isn't.  The T⁶
+The universe is either periodic or it isn't.  The Ma
 model says: periodic is the default.  Aperiodicity would
 be the thing requiring explanation.

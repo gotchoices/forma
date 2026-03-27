@@ -13,7 +13,7 @@ preserves them all.
 
 ## Question
 
-The electron model uses a photon on a (1,2) geodesic on T². For the
+The electron model uses a photon on a (1,2) geodesic on the material sheet. For the
 winding numbers to be exactly (1,2), the orbit must close exactly after
 one major revolution and two minor revolutions. But orbits that are
 almost-closed (irrational winding numbers) could also exist.

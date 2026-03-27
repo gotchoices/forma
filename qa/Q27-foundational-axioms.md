@@ -11,7 +11,7 @@ equations hold?
 ---
 
 of assumptions.  Candidates for explicit axioms:
-- Certain dimensions exist (at least 3+1 non-compact + 2 compact)
+- Certain dimensions exist (at least 3+1 non-compact + 2 material)
 - Some dimensions can be compactified (periodic)
 - Fields exist
 - Energy in the form of photons (EM field disturbances) can be

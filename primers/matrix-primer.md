@@ -258,7 +258,7 @@ In 4D spacetime:
 The −1 in the top-left corner is what makes time different from
 space. Same matrix machinery, just 4×4.
 
-In Kaluza-Klein (5D): a 5×5 matrix. In our T² model (6D): a 6×6
+In Kaluza-Klein (5D): a 5×5 matrix. In our Ma model (6D): a 6×6
 matrix. The machinery scales without any new concepts.
 
 

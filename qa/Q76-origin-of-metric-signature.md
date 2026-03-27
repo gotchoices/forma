@@ -4,20 +4,20 @@
 **Source:** User insight (R31 discussion)
 **Related:** [Q27](Q27-foundational-axioms.md) (foundational axioms),
 [Q32](Q32-energy-geometry-fundamentals.md) (energy/geometry as fundamentals),
-Q71–Q74 (R³ ↔ T⁶ perception), Q75 (contingency vs necessity of α),
+Q71–Q74 (S ↔ Ma perception), Q75 (contingency vs necessity of α),
 R30 (minimal geometry), R31 (alpha derivation)
 
 ---
 
 ## The question
 
-The T⁶ × R³ × R¹ framework has 10 dimensions with three
+The Ma × S × R¹ framework has 10 dimensions with three
 distinct characters:
 
 | Character | Count | Geometric property | Physical consequence |
 |-----------|-------|-------------------|---------------------|
-| **Compact** (T) | 6 | Periodic boundary conditions | Quantization, particle identity, mass |
-| **Spatial** (R⁺) | 3 | Open topology, positive metric signature | Position, freedom of movement |
+| **Material** (Ma) | 6 | Periodic boundary conditions | Quantization, particle identity, mass |
+| **Spatial** (S) | 3 | Open topology, positive metric signature | Position, freedom of movement |
 | **Temporal** (R⁻) | 1 | Open topology, negative metric signature | Causality, mandatory forward flow |
 
 What determines which dimensions get which character?  Is
@@ -124,40 +124,40 @@ dimension multiplied by i — the algebraic tweak is
 multiplication by √(−1).
 
 
-## Connection to the T⁶ model
+## Connection to the Ma model
 
-Within T⁶, we already have a concrete example of
+Within Ma, we already have a concrete example of
 dimensional perception.  The mechanism is always the same:
 off-diagonal metric components (shears/tilts) couple one
 dimension to another:
 
 | Coupling | Metric component | Physical manifestation |
 |----------|-----------------|----------------------|
-| Within T² | shear s | Charge (α = 1/137) |
-| T² ↔ T² | cross-shear σ_ep | Neutron (cross-sheet mode) |
-| R³ ↔ T⁶ | KK gauge field g_{μi} | Electromagnetism, gauge forces |
-| R³ ↔ R¹ | metric signature | Causality, time flow |
+| Within a sheet | shear s | Charge (α = 1/137) |
+| Sheet ↔ sheet | cross-shear σ_ep | Neutron (cross-sheet mode) |
+| S ↔ Ma | Kaluza-Klein gauge field g_{μi} | Electromagnetism, gauge forces |
+| S ↔ R¹ | metric signature | Causality, time flow |
 
 The pattern suggests a hierarchy of couplings:
 
-1. **Within a sheet**: shear tilts one compact dimension
+1. **Within a sheet**: shear tilts one material dimension
    relative to another → creates charge
-2. **Between sheets**: cross-shear tilts one T² relative
-   to another → creates cross-sheet modes (neutron)
-3. **Between R³ and T⁶**: off-diagonal metric → creates
-   gauge forces (electromagnetism is the R³-T⁶ shear)
-4. **Between R³ and R¹**: metric signature flip → creates
+2. **Between sheets**: cross-shear tilts one material sheet
+   relative to another → creates cross-sheet modes (neutron)
+3. **Between S and Ma**: off-diagonal metric → creates
+   gauge forces (electromagnetism is the S-Ma shear)
+4. **Between S and R¹**: metric signature flip → creates
    causality and the arrow of time
 
 All four are "one dimension perceiving another."  The
 difference is in the character of the coupling: real-valued
-shear (compact), gauge coupling (spatial-compact), or
+shear (material), gauge coupling (spatial-material), or
 signature flip (spatial-temporal).
 
 
 ## How does x perceive y?
 
-In flat R³ with no fields, x does not perceive y at all.
+In flat S with no fields, x does not perceive y at all.
 The metric is diagonal (δ_ij), and the dimensions are
 independent.  A particle moving in x has no knowledge of y.
 
@@ -174,10 +174,10 @@ x perceives y only when something couples them:
 - **Gravity** (curved spacetime) introduces off-diagonal
   metric components g_{xy} ≠ 0, directly coupling x to y.
 
-By analogy, R³ perceives each compact dimension through
+By analogy, S perceives each material dimension through
 its gauge field:
 
-| Compact dimension | Gauge boson mass | Range in R³ |
+| Material dimension | Gauge boson mass | Range in S |
 |-------------------|-----------------|-------------|
 | Proton ring (θ₆) | ~467 MeV | ~0.4 fm |
 | Proton tube (θ₅) | ~52 MeV | ~3.8 fm |
@@ -186,7 +186,7 @@ its gauge field:
 | Neutrino tube (θ₃) | ~30 meV | ~7 μm |
 | Neutrino ring (θ₄) | ~6 meV | ~33 μm |
 
-R³ perceives the neutrino sheet at the longest range
+S perceives the neutrino sheet at the longest range
 (micrometers) because the neutrino sheet is biggest
 (lightest gauge bosons → longest range).  But perception
 also requires coupling — a particle must wind on a sheet
@@ -219,11 +219,11 @@ arbitrary:
   inward.  The Coulomb and gravitational potentials only
   have stable bound states in 3D.
 
-- **Exactly 6 compact dimensions**: R30 showed that fewer
-  than 6 compact dimensions cannot simultaneously produce
+- **Exactly 6 material dimensions**: R30 showed that fewer
+  than 6 material dimensions cannot simultaneously produce
   neutral fermions (spin ½, charge 0 — the neutrino) and
   the full particle mass ladder (proton-sheet energy
-  steps).  T³ fails structurally.  T⁶ = 3 × T² is the
+  steps).  T³ fails structurally.  Ma = 3 × T² is the
   minimum.
 
 If these constraints are all necessary, then 1+3+6 = 10
@@ -232,7 +232,7 @@ allows:
 
 1. Causality (1 time)
 2. Stable atoms (3 space)
-3. The observed particle spectrum (6 compact)
+3. The observed particle spectrum (6 material)
 
 The dimensional character is not a design choice — it is
 the only self-consistent assignment.
@@ -260,7 +260,7 @@ Possible directions:
 1. **Signature from compactification**: In some string
    theory constructions, the signature of spacetime is
    related to the topology of the compact space.  Could
-   the T⁶ topology force the remaining 4 dimensions into
+   the Ma topology force the remaining 4 dimensions into
    a (−,+,+,+) signature?
 
 2. **Signature from dynamics**: The minus sign ensures

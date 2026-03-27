@@ -2,17 +2,17 @@
 
 **Status:** Open — hypothesis catalog + literature review
 **Related:**
-  [storage-in-t6](../papers/storage-in-t6.md) (storage hypothesis),
+  [sub-quantum-memory](../papers/sub-quantum-memory.md) (storage hypothesis),
   [neutrino-domain-storage](../papers/neutrino-domain-storage.md) (architecture),
   [Q78](Q78-neutrino-sheet-access.md) (access mechanisms),
-  R26 F1–F9 (neutrino T² mode spectrum)
+  R26 F1–F9 (neutrino sheet mode spectrum)
 
 ---
 
 ## 1. The question
 
-The neutrino T² mode spectrum spans 1.4–24 THz (6–90 meV,
-wavelengths 12–200 μm).  If compact-dimension storage on the
+The neutrino sheet mode spectrum spans 1.4–24 THz (6–90 meV,
+wavelengths 12–200 μm).  If material-dimension storage on the
 neutrino sheet is real, then biological cells must have
 structures capable of oscillating at these frequencies to set
 up sympathetic resonances for writing and reading.  What
@@ -45,8 +45,8 @@ storage medium themselves?
 
 ## 3. Harmonic range — the full accessible spectrum
 
-Section 2 lists the fundamental neutrino T² modes at
-1.4–24 THz.  But the T² supports a full harmonic spectrum:
+Section 2 lists the fundamental neutrino sheet modes at
+1.4–24 THz.  But Ma_ν supports a full harmonic spectrum:
 modes (n₃, n₄) = (2,2), (3,3), ... extend the accessible
 frequencies upward without limit.  Coupling need not be at
 the fundamental — any harmonic is a valid address.
@@ -200,11 +200,11 @@ membrane: dielectric boundary (lipid vs. cytoplasm).
 
 **Relevance:** At THz frequencies, the EM wavelength is
 12–200 μm.  A mammalian cell's physical dimensions make it a
-resonant EM cavity at exactly the neutrino T² mode
+resonant EM cavity at exactly the neutrino sheet mode
 frequencies.  The cell membrane serves as the cavity wall.
 
 This is the "biological coincidence" noted in
-`storage-in-t6.md` — the Compton wavelength of the lightest
+`sub-quantum-memory.md` — the Compton wavelength of the lightest
 neutrino mode (~42 μm) matches a typical mammalian cell
 diameter.  This makes each cell an independently addressable
 storage locus.
@@ -305,7 +305,7 @@ conformational specificity beyond chemical identity.
 ### 4.8 Fröhlich condensation — the theoretical framework
 
 In 1968, Herbert Fröhlich predicted from thermodynamic
-considerations (independent of T⁶) that biological systems
+considerations (independent of Ma) that biological systems
 should contain coherent oscillations at **10¹¹–10¹² Hz**.
 His argument: metabolically driven energy input into polar
 structures (membranes, proteins) should produce a
@@ -319,10 +319,10 @@ PNAS):
 - **Coherent condensates:** Single quantum state (fragile,
   unlikely in biological environments)
 
-The overlap with the neutrino T² frequency range is striking
-and independent of T⁶.  Fröhlich's "energy stored in coherent
+The overlap with the neutrino sheet frequency range is striking
+and independent of Ma.  Fröhlich's "energy stored in coherent
 oscillations" maps directly to the threshold model's
-"sub-threshold energy in compact-dimension modes."
+"sub-threshold energy in material-dimension modes."
 
 ### 4.9 Other structures
 
@@ -452,7 +452,7 @@ Levin himself identifies several open questions:
 
 ---
 
-## 6. Hypothesis: membrane potentials as a decoded projection of T²_ν storage
+## 6. Hypothesis: membrane potentials as a decoded projection of Ma_ν storage
 
 ### 6.1 The gap in Levin's framework
 
@@ -484,13 +484,13 @@ problem: if memories are stored in neural connections,
 how can they survive the destruction and replacement of
 those connections?
 
-### 6.2 The T²_ν resolution
+### 6.2 The Ma_ν resolution
 
 The neutrino-sheet storage hypothesis offers a potential
 resolution:
 
-1. **The primary storage medium is the neutrino T²
-   sheet** — a geometric structure of spacetime that
+1. **The primary storage medium is the neutrino sheet
+   (Ma_ν)** — a geometric structure of spacetime that
    exists at every point, is not made of cells, and is not
    destroyed when cells are destroyed.
 
@@ -521,13 +521,13 @@ resolution:
 
 ### 6.3 What this explains
 
-| Levin observation | Bioelectric-only explanation | T²_ν + bioelectric explanation |
+| Levin observation | Bioelectric-only explanation | Ma_ν + bioelectric explanation |
 |---|---|---|
 | Planaria memory survives decapitation | Unclear — network destroyed | Master copy on neutrino sheet intact; new brain reads it |
 | Two-headed phenotype persists after re-cutting | "Attractor in voltage space" (mechanism unspecified) | Octanol treatment corrupted the neutrino-sheet pattern at the tail region; new cells read the corrupted pattern and express two heads |
 | Information is distributed (holographic) | Somehow in the gap-junction network | Neutrino sheet stores pattern at every locus; each cell reads its local patch independently |
 | Voltage overrides genetics | Voltage is "software" vs. genetic "hardware" | Voltage is decoded from a deeper layer (neutrino sheet) that operates below the genetic level |
-| Membrane potential matches neutrino-T² mode energies | Coincidence | Design feature — membrane voltage (~70 meV) matches the ν₃ mode because the cell uses this mode for storage |
+| Membrane potential matches neutrino-sheet mode energies | Coincidence | Design feature — membrane voltage (~70 meV) matches the ν₃ mode because the cell uses this mode for storage |
 
 ### 6.4 The octanol experiment reinterpreted
 
@@ -587,7 +587,7 @@ The cellular structures from section 3 could work together
 as a layered coupling chain:
 
 ```
-Neutrino T² sheet (persistent storage, ~meV modes)
+Neutrino sheet Ma_ν (persistent storage, ~meV modes)
         ↕  neutron gateways (cross-shear coupling)
 Cell electromagnetic cavity (resonant at THz)
         ↕  EM coupling
@@ -624,25 +624,25 @@ below the quantum measurement threshold.
 
 ## 8. Sub-cellular voltage patterns — beyond Levin's scalar Vmem
 
-### 8.1 The Coulomb field as a compact-dimension projection (R35 F19)
+### 8.1 The Coulomb field as a material-dimension projection (R35 F19)
 
 At distances r >> λ_C = 2πR (the compactification radius),
 a charged particle's electric field is the l=0 monopole
-projection of its compact-dimension structure.  The mode on
+projection of its material-dimension structure.  The mode on
 the torus has angular structure ~ e^{i(n₁θ₁ + n₂θ₂)}, so the
-full field is NOT uniform in the compact dimensions.  But at
+full field is NOT uniform in the material dimensions.  But at
 large r, only the total charge (integral over angles) survives
 — giving the symmetric 1/r² Coulomb law.
 
 At r ~ λ_C, higher multipoles become visible.  These are the
 KK tower contributions: the field deviates from 1/r² and
-encodes the torus topology.  In the T⁶ model, R = λ_C/2π by
-construction, so compact structure is resolvable at exactly
+encodes the torus topology.  In the Ma model, R = λ_C/2π by
+construction, so material structure is resolvable at exactly
 the Compton scale.
 
 For the neutrino sheet, λ_C ≈ 42 μm = cell diameter.  The
 cell membrane sits at the boundary of the neutrino domain,
-exactly where compact-dimension multipoles become resolvable.
+exactly where material-dimension multipoles become resolvable.
 
 ### 8.2 Non-uniform membrane voltage from neutrino modes (R35 F20)
 
@@ -664,7 +664,7 @@ harmonic content of the occupied neutrino modes:
 
 The information capacity is vastly richer than a single Vmem:
 - Levin's resolution: ~1 scalar per cell
-- T⁶ prediction: ~N_modes harmonic coefficients per cell
+- Ma prediction: ~N_modes harmonic coefficients per cell
   (potentially thousands, per Q85 §13)
 
 ### 8.3 How this connects to Levin's observations
@@ -673,7 +673,7 @@ Levin treats membrane voltage as a scalar per cell or region.
 His voltage-sensitive dyes provide cell-level resolution across
 tissues but not sub-cellular resolution on individual cells.
 
-In the T⁶ framework, Levin's scalar Vmem is the spatial
+In the Ma framework, Levin's scalar Vmem is the spatial
 AVERAGE of the non-uniform voltage pattern — the DC component,
 discarding all harmonic content.  His experiments confirm that
 even this averaged signal is instructive, but the full
@@ -704,7 +704,7 @@ This reinterpretation explains:
 ### 8.4 Writing via membrane voltage
 
 Levin demonstrates experimentally that artificially changing
-Vmem reprograms cell fate.  In the T⁶ framework:
+Vmem reprograms cell fate.  In the Ma framework:
 
     ΔVmem → changed ionic forces → mechanical stress on cell
     → (elastic torus) → geometry modulation → ν-state change
@@ -722,7 +722,7 @@ current experimental capability but suggests a future avenue.
 
 ### 8.5 The read asymmetry: why reading is easier than writing
 
-The shielding analysis (R35 F16–F17) shows that on a flat T⁶,
+The shielding analysis (R35 F16–F17) shows that on a flat Ma,
 both reading and writing are equally blocked.  But the elastic
 torus creates an asymmetry:
 
@@ -749,7 +749,7 @@ Sub-micron voltage imaging (e.g., voltage-sensitive fluorescent
 proteins with super-resolution microscopy) of a single cell's
 membrane should reveal specific harmonic content:
 
-- NOT random noise (which would indicate no compact-dimension
+- NOT random noise (which would indicate no material-dimension
   coupling)
 - Specific spatial frequencies corresponding to the neutrino
   mode spectrum (if the elastic torus mechanism is operating)
@@ -801,12 +801,12 @@ membrane should reveal specific harmonic content:
 7. **Can sub-cellular voltage patterns be resolved?**
    (§8.6) Voltage-sensitive fluorescent proteins with
    super-resolution microscopy might reveal harmonic content
-   on a single cell's membrane.  The T⁶ model predicts
+   on a single cell's membrane.  The Ma model predicts
    specific spatial frequencies, not random noise.
 
 8. **Are QED corrections at the Compton scale KK tower
    effects?** (§8.1, R35 F19) The Uehling potential and
    the KK tower both modify the Coulomb potential at
    r ~ λ_C.  If they match quantitatively, QED radiative
-   corrections = compact-dimension geometry.  This is
+   corrections = material-dimension geometry.  This is
    computable.

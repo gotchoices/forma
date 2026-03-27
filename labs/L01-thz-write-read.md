@@ -1,22 +1,22 @@
 # L01: THz Write/Read of Neutrino-Sheet Modes
 
 **Status:** Proposed
-**Tests:** Compact-dimension storage hypothesis
-  ([storage-in-t6](../papers/storage-in-t6.md) §5, §7, §13.1;
+**Tests:** Material-dimension storage hypothesis
+  ([sub-quantum-memory](../papers/sub-quantum-memory.md) §5, §7, §13.1;
    [neutrino-domain-storage](../papers/neutrino-domain-storage.md) §2–4)
-**Related:** R26 F1–F9 (neutrino T² mode spectrum),
+**Related:** R26 F1–F9 (neutrino sheet mode spectrum),
   [Q78](../qa/Q78-neutrino-sheet-access.md) (cell access mechanisms)
 
 ---
 
 ## 1. Hypothesis
 
-The neutrino sheet (T²_ν) supports standing-wave modes at
+The neutrino sheet (Ma_ν) supports standing-wave modes at
 specific frequencies in the THz / far-infrared band.  If
-compact-dimension storage is real, then:
+material-dimension storage is real, then:
 
 1. Narrowband THz radiation at a predicted mode frequency can
-   deposit energy into the corresponding T²_ν mode via the
+   deposit energy into the corresponding Ma_ν mode via the
    neutron-gateway coupling (through neutrons in the target
    material).
 2. The deposited energy persists after the source is removed —
@@ -42,7 +42,7 @@ compact-dimension storage is real, then:
 On-resonance and off-resonance illumination produce
 indistinguishable results.  No persistent spectral feature is
 observed beyond conventional molecular relaxation timescales
-(~ps–ns).  This would mean either: (a) compact-dimension modes
+(~ps–ns).  This would mean either: (a) material-dimension modes
 do not exist at these frequencies, (b) the neutron-gateway
 coupling is too weak to detect with available equipment, or
 (c) the storage hypothesis is wrong.
@@ -55,7 +55,7 @@ entire storage hypothesis.
 
 ## 4. Target frequencies
 
-The T²_ν mode spectrum (Assignment A: E₀ = 29.26 meV, r ≈ 5,
+The Ma_ν mode spectrum (Assignment A: E₀ = 29.26 meV, r ≈ 5,
 s = 0.022) has its lowest modes at:
 
 | Mode (n₃, n₄) | Energy (meV) | Frequency (THz) | λ (μm) | Identity |
@@ -227,13 +227,13 @@ physics or materials-science lab.
 
 Conventional molecular/phonon excitations in the THz band relax
 on timescales of picoseconds to nanoseconds.  A spectral feature
-that persists for seconds or longer at a predicted T²_ν mode
+that persists for seconds or longer at a predicted Ma_ν mode
 frequency, after the source is removed, has no conventional
 explanation.
 
 | Observation | Interpretation |
 |---|---|
-| Persistent feature at predicted frequency | Consistent with compact-dimension storage |
+| Persistent feature at predicted frequency | Consistent with material-dimension storage |
 | Feature persists for seconds–hours | Cross-shear leakage rate is slow (as predicted) |
 | On-resonance ≫ off-resonance | Frequency selectivity confirms mode addressing |
 | BaF₂ ≫ polyethylene | Neutron-gateway coupling confirmed |
@@ -266,7 +266,7 @@ explanation.
 | Time to first result | ~3–6 months from equipment delivery |
 | Risk of false positive | Moderate (trapped-charge states mimic persistence); controlled by material comparison |
 | Risk of false negative | High (coupling may be too weak for current sensitivity); a null result constrains coupling strength |
-| Uniqueness | No existing experiment tests for persistent THz spectral features at predicted T²_ν frequencies |
+| Uniqueness | No existing experiment tests for persistent THz spectral features at predicted Ma_ν frequencies |
 
 ### 9.1 Existing facilities that could perform this
 
@@ -309,15 +309,15 @@ hint — would justify the full narrowband experiment.
 
 **Positive result (persistent feature at predicted frequency):**
 
-This would be evidence that T²_ν modes exist and can be
+This would be evidence that Ma_ν modes exist and can be
 addressed by THz radiation.  It would not prove the full storage
 hypothesis (which also requires threshold absorption, biological
 coupling, and information encoding), but it would establish the
-most fundamental prerequisite: that compact-dimension modes at
+most fundamental prerequisite: that material-dimension modes at
 the neutrino scale are physically real and accessible.
 
 It would also constrain the coupling strength — the most
-important unknown parameter in the entire T⁶ framework — by
+important unknown parameter in the entire Ma framework — by
 measuring the write efficiency (energy deposited vs. energy in
 the beam) and the decay rate (persistence timescale).
 
@@ -327,5 +327,5 @@ This constrains the coupling strength from above: if no feature
 is detectable with X watts of narrowband THz for Y seconds on
 a BaF₂ target, the per-neutron coupling must be below Z.  This
 bound is useful regardless of whether the storage hypothesis is
-correct — it constrains ALL predictions of the T⁶ model that
-depend on evanescent coupling between R³ and compact dimensions.
+correct — it constrains ALL predictions of the Ma model that
+depend on evanescent coupling between S and material dimensions.

@@ -2,17 +2,17 @@
 
 **Status:** Open — hypothesis with quantitative estimates
 **Related:**
-  [Q82](Q82-entanglement-as-t6-geometry.md) (entanglement as T⁶ geometry — the general case),
+  [Q82](Q82-entanglement-as-ma-geometry.md) (entanglement as Ma geometry — the general case),
   [Q81](Q81-regeneration-and-trophic-memory.md) (trophic memory, regeneration),
   [Q80](Q80-cancer-as-coupling-failure.md) (cancer as coupling failure),
   [Q79](Q79-cellular-resonators-and-levin.md) (coupling mechanisms),
-  R26 F1–F9 (neutrino T² mode spectrum)
+  R26 F1–F9 (neutrino sheet mode spectrum)
 
 ---
 
 ## 1. The question
 
-Regardless of whether T⁶ geometry explains entanglement's
+Regardless of whether Ma geometry explains entanglement's
 origin (Q82), a separate question is whether the neutrino
 sheet's specific energy scale allows quantum coherence —
 entanglement and correlated mode states — to survive at
@@ -21,7 +21,7 @@ biological temperatures (~300K).
 Standard quantum decoherence at 300K destroys macroscopic
 coherence in femtoseconds to picoseconds.  This is why
 most physicists dismiss quantum effects in biology.  But
-the neutrino T²'s larger topology puts its mode energies
+Ma_ν's larger topology puts its mode energies
 in a regime where the standard argument may not apply.
 
 ---
@@ -30,7 +30,7 @@ in a regime where the standard argument may not apply.
 
 ### 2.1 The threshold protection mechanism
 
-For a T⁶ mode to decohere, the thermal environment must
+For an Ma mode to decohere, the thermal environment must
 exchange energy with it.  In the Reiter threshold model,
 a mode does not emit a quantum until accumulated energy
 reaches the threshold h·ν.  Below threshold, the mode is
@@ -49,15 +49,15 @@ decohere the mode.  Below T_d, thermal energy cannot
 reach the threshold — the mode sits in the sub-threshold
 regime, protected from standard decoherence.
 
-### 2.2 The hierarchy across T² sheets
+### 2.2 The hierarchy across the three material sheets
 
 | Sheet | Fundamental h·ν | T_d (fundamental) | Status at 300K |
 |-------|-----------------|-------------------|----------------|
-| Proton T² | ~1 GeV | ~10¹³ K | Deeply protected — immune at all physical temperatures |
-| Electron T² | ~0.5 MeV | ~6 × 10⁹ K | Deeply protected — inaccessible to biology |
-| Neutrino T² (ν₃) | ~50–90 meV | ~580–1045 K | **Protected at 300K** |
-| Neutrino T² (ν₂) | ~15 meV | ~174 K | **Unprotected at 300K** |
-| Neutrino T² (ν₁) | ~6 meV | ~70 K | Unprotected — thermally active |
+| Ma_p | ~1 GeV | ~10¹³ K | Deeply protected — immune at all physical temperatures |
+| Ma_e | ~0.5 MeV | ~6 × 10⁹ K | Deeply protected — inaccessible to biology |
+| Ma_ν (ν₃) | ~50–90 meV | ~580–1045 K | **Protected at 300K** |
+| Ma_ν (ν₂) | ~15 meV | ~174 K | **Unprotected at 300K** |
+| Ma_ν (ν₁) | ~6 meV | ~70 K | Unprotected — thermally active |
 
 The electron and proton sheets are too protected — nothing
 biological can couple to them.  The neutrino sheet is the
@@ -108,7 +108,7 @@ and higher harmonics — **high enough to be protected from
 thermal decoherence**.
 
 This is a direct consequence of its larger topology.
-The neutrino T² circumference (~42–200 μm) is set by the
+The Ma_ν circumference (~42–200 μm) is set by the
 lightest neutrino mass, which determines the mode energy
 scale.  The fact that this scale falls near kT at 300K
 means biological systems at ~300K are precisely the
@@ -128,27 +128,27 @@ energy to drive any modes).  An organism at 2000K could
 not maintain coherence (all modes above T_d decohere).
 **300K is the temperature where both functions work.**
 
-This may provide a T⁶-based explanation for why complex
+This may provide an Ma-based explanation for why complex
 multicellular life operates in a narrow temperature band.
 
 ---
 
-## 4. Tissue as a coherent T⁶ domain
+## 4. Tissue as a coherent Ma domain
 
 ### 4.1 Gap junctions as geometric bridges
 
 Gap junctions are not just electrical connections.  They
 are physical conduits that maintain the continuity of the
-compact manifold across cell boundaries.
+material manifold across cell boundaries.
 
-When a gap junction is open, the T⁶ fibers at two cells'
+When a gap junction is open, the Ma fibers at two cells'
 locations are continuously connected through the shared
-cytoplasm.  T⁶ modes can propagate across the junction.
-The two cells' compact geometries function as a single
+cytoplasm.  Ma modes can propagate across the junction.
+The two cells' material geometries function as a single
 system.
 
 When a gap junction closes, the geometric continuity is
-broken at the cell boundary.  T⁶ modes at the two
+broken at the cell boundary.  Ma modes at the two
 locations evolve independently.  Coherence begins to
 decay — immediately for unprotected modes, slowly for
 protected modes.
@@ -156,26 +156,26 @@ protected modes.
 ### 4.2 A healthy tissue is a single quantum domain
 
 A gap-junction-coupled tissue is, in this picture, a
-**single coherent T⁶ domain**.  The compact geometry is
+**single coherent Ma domain**.  The material geometry is
 continuous across all connected cells.  The tissue's
 neutrino-sheet modes form a single quantum system, not a
 collection of independent cells.
 
 This connects directly to Levin's "collective
 intelligence" framework: the collective is not metaphorical
-— it is a literal quantum-coherent domain on the compact
+— it is a literal quantum-coherent domain on the material
 geometry, held together by gap junctions.
 
 ### 4.3 Cancer fragments the domain (→ Q80)
 
 Gap junction loss in cancer breaks the coherent domain
-into isolated cells.  Each cell's T⁶ modes decohere from
+into isolated cells.  Each cell's Ma modes decohere from
 the collective.  The cell loses access to the
 tissue-scale pattern stored on the protected modes.
 
 ### 4.4 Octanol disruption (→ Q79, Q81)
 
-**Octanol blocks gap junctions → breaks T⁶ geometric
+**Octanol blocks gap junctions → breaks Ma geometric
 continuity → modes decohere between cells → collective
 coherence is lost → cells write inconsistent patterns
 to the sheet → body plan is corrupted.**
@@ -195,7 +195,7 @@ the entire antler-pedicle system.
 
 ### 5.2 Injury perturbs the shared mode structure
 
-An injury perturbs local T⁶ modes.  Because the modes
+An injury perturbs local Ma modes.  Because the modes
 are geometrically continuous across the tissue, the
 perturbation is encoded in the shared mode structure —
 as a correlation across all connected tissue, including
@@ -204,7 +204,7 @@ the pedicle.
 ### 5.3 Shedding breaks the classical channel
 
 When the antler sheds, nerves and gap junctions are
-severed.  Classical channels are broken.  But T⁶ mode
+severed.  Classical channels are broken.  But Ma mode
 correlations established during months of physical
 contact may persist — particularly in the protected modes
 where decoherence is suppressed at 300K.
@@ -224,17 +224,17 @@ Unprotected modes (ν₁) decohere quickly after separation.
 
 ### 5.5 Combined mechanisms (→ Q81)
 
-Classical write-back (nerves, gap junctions) and T⁶
+Classical write-back (nerves, gap junctions) and Ma
 coherence operate in parallel:
 
 | Mechanism | Channel | Timescale | What it carries |
 |---|---|---|---|
 | Nerve-mediated write-back | Classical | Before shedding | Gross positional info |
 | Gap-junction holographic encoding | Classical | Before shedding | Compressed global pattern |
-| T⁶ mode coherence | Geometric | Persists after shedding | Fine positional correlations |
+| Ma mode coherence | Geometric | Persists after shedding | Fine positional correlations |
 
 The classical channels write injury information to the
-pedicle before shedding.  T⁶ coherence may provide
+pedicle before shedding.  Ma coherence may provide
 additional precision and persistence after the classical
 channels are severed.
 
@@ -263,7 +263,7 @@ channels are severed.
 
 5. **Temperature band for complex life.**  Multicellular
    organisms with morphogenetic coherence should be
-   restricted to a temperature band where the neutrino T²
+   restricted to a temperature band where Ma_ν
    has both accessible and protected modes (~100–600K).
 
 ---
@@ -283,10 +283,10 @@ This hypothesis depends on two unverified premises:
    effects in biology (Penrose-Hameroff, quantum
    photosynthesis) have faced intense skepticism.  This
    hypothesis proposes a different mechanism (sub-threshold
-   protection on compact dimensions rather than coherence
+   protection on material dimensions rather than coherence
    in warm protein structures), but the burden of proof
    remains high.
 
 3. **The T_d calculation is order-of-magnitude.**  A
-   rigorous derivation would require solving the T⁶ field
+   rigorous derivation would require solving the Ma field
    equations with thermal boundary conditions.

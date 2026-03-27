@@ -361,7 +361,7 @@ const modeClouds = []; // parallel to S.modes: { points, density, eigenvalue }
  * gridMode = 'arc':     constant arc-length spacing in θ₁ and θ₂ →
  *                        uniform 3D density (what a 3D camera sees)
  * gridMode = 'angular': constant angular spacing in θ₁ and θ₂ →
- *                        uniform coordinate density (T² intrinsic view)
+ *                        uniform coordinate density (Ma intrinsic view)
  *
  * Radial (ρ) spacing is constant in both modes.
  */
@@ -699,10 +699,10 @@ $('cb-wire').onchange = function () {
 };
 
 const gridBtn = $('btn-grid');
-gridBtn.textContent = S.gridMode === 'arc' ? '3D' : 'T²';
+gridBtn.textContent = S.gridMode === 'arc' ? '3D' : 'Ma';
 gridBtn.onclick = () => {
   S.gridMode = S.gridMode === 'arc' ? 'angular' : 'arc';
-  gridBtn.textContent = S.gridMode === 'arc' ? '3D' : 'T²';
+  gridBtn.textContent = S.gridMode === 'arc' ? '3D' : 'Ma';
   rebuildAllClouds();
   renderModeList();
   save();
@@ -720,7 +720,7 @@ $('btn-reset').onclick = () => {
   $('sl-s').value = S.shear; $('v-s').textContent = S.shear.toFixed(3);
   $('sl-shell').value = S.shellAlpha; $('v-shell').textContent = S.shellAlpha.toFixed(2);
   $('cb-wire').checked = S.wire;
-  gridBtn.textContent = S.gridMode === 'arc' ? '3D' : 'T²';
+  gridBtn.textContent = S.gridMode === 'arc' ? '3D' : 'Ma';
   rebuildTorus();
   rebuildAllClouds();
   renderModeList();

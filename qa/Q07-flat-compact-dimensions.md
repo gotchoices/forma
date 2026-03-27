@@ -37,7 +37,7 @@ the original question.
 
 ## 2. Flat torus vs embedded torus
 
-When we say the compact space is a "torus," we mean it has the
+When we say the material space is a "torus," we mean it has the
 topology T² = S¹ × S¹. This does NOT mean it has the shape of a
 donut.
 
@@ -123,7 +123,7 @@ theory, the full 5D metric is:
 The A_μ dx^μ term mixes w with spacetime. When A_μ ≠ 0, motion in
 xyz nudges you in the w direction and vice versa. This mixing IS
 the electromagnetic field. The electromagnetic potential is the
-off-diagonal metric component connecting the compact dimension to
+off-diagonal metric component connecting the material dimension to
 spacetime.
 
 - **A_μ = 0** (no EM field): dimensions are perfectly orthogonal
@@ -131,7 +131,7 @@ spacetime.
   relative to xyz — motion in x induces a drift in w
 
 The electromagnetic force on a charged particle is, in 5D language,
-the geometry of how the compact dimension is tilted relative to
+the geometry of how the material dimension is tilted relative to
 spacetime.
 
 ### Why orthogonality matters
@@ -144,14 +144,14 @@ independently), then:
   are already closed)
 - Electromagnetic force is just geometry (metric off-diagonal terms)
 
-This is why the compact dimension interpretation resolves the WvM
+This is why the material dimension interpretation resolves the WvM
 confinement problem: the photon isn't "trapped" — it's moving in
 a straight line through a space that happens to wrap around.
 
 ## 5. How this connects to WvM
 
 The WvM model has a photon tracing a (1,2) path. In the compact
-dimension picture, this path is a straight line on a flat T²
+dimension picture, this path is a straight line on a flat material sheet
 drawn at a specific angle — one that wraps once around one circle
 per two wraps around the other.
 
@@ -213,14 +213,14 @@ mathematical infrastructure, not empirical claims.
   The compact dimension could have curvature, which would modify
   the physics.
 - **Dimensionality is likely 2.** Each (1,2) geodesic requires 2
-  compact dimensions (two wrapping directions, φ and θ). WvM's
+  material dimensions (two wrapping directions, φ and θ). WvM's
   "family of nested toroidal surfaces" (§2, Fig. 2) means the EM
   field fills a 3D volume, but individual streamlines stay at
   constant tube radius — the radial direction is a transverse mode
   profile (like a waveguide mode), not a propagation direction or
   compact dimension. See `reference/WvM-summary.md` §4. Earlier versions
-  of this answer incorrectly suggested the compact space might need
+  of this answer incorrectly suggested the material space might need
   to be 3D; this was corrected after analyzing streamline behavior.
-- If quarks require different compact dimensions (from S3-knot-zoo F4),
+- If quarks require different material dimensions (from S3-knot-zoo F4),
   the total could be higher still. String theory uses 6–7 for
   different reasons.

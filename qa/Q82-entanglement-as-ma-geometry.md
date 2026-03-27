@@ -1,4 +1,4 @@
-# Q82: Is quantum entanglement a geometric property of T⁶?
+# Q82: Is quantum entanglement a geometric property of Ma?
 
 **Status:** Open — deep hypothesis (foundational physics)
 **Related:**
@@ -10,25 +10,27 @@
 
 ## 1. The idea
 
-When two particles occupy the same R³ location and share a
-mode on one of the T² compact subplanes, they are not
-"sharing" the mode — they ARE the same mode.  A standing
-wave on the T² at that R³ point does not belong to particle
-A or particle B.  It is a single geometric vibration of the
-compact space, and both particles are excitations of it.
+When two particles occupy the same S location (S being the
+three spatial dimensions) and share a mode on one of the
+material sheets, they are not "sharing" the mode — they ARE
+the same mode.  A standing wave on the material sheet at
+that S point does not belong to particle A or particle B.
+It is a single geometric vibration of the material space,
+and both particles are excitations of it.
 
-When the particles separate in R³, each moves to a new
-fiber of the compact space.  But the T⁶ geometry is a
-smooth manifold — the compact dimensions at point A are
-continuously connected to those at point B through the
-metric.  The mode was a single thing.  It has been stretched
-across two R³ locations, but the underlying geometric
-continuity means the mode structures at the two locations
-were seeded by the same original configuration.
+When the particles separate in S, each moves to a new
+fiber of the material space.  But Ma (the six-dimensional
+material space) is a smooth manifold — the material
+dimensions at point A are continuously connected to those
+at point B through the metric.  The mode was a single
+thing.  It has been stretched across two S locations, but
+the underlying geometric continuity means the mode
+structures at the two locations were seeded by the same
+original configuration.
 
 **Hypothesis:** Quantum entanglement is the persistence of
-shared T⁶ mode structure across R³ separation.  Two
-particles are "entangled" when their T⁶ modes were
+shared Ma mode structure across S separation.  Two
+particles are "entangled" when their Ma modes were
 established by co-location and retain geometric correlation
 after separation.
 
@@ -42,27 +44,27 @@ biological applications or the neutrino sheet specifically.
 
 ### 2.1 The fiber bundle picture
 
-In Kaluza-Klein theory, the compact dimensions form a
-**fiber bundle** over the R³ base space.  Each R³ point has
-its own copy of the compact space (the "fiber"), but the
+In Kaluza-Klein theory, the material dimensions form a
+**fiber bundle** over the S base space.  Each S point has
+its own copy of the material space (the "fiber"), but the
 copies are connected by the **bundle connection** — which
 in KK theory IS the gauge field (electromagnetism, gravity).
 
-The compact dimensions are not isolated bubbles at each
+The material dimensions are not isolated bubbles at each
 point.  They are a continuous fabric.  A standing wave
-on the T² at point A is connected to the standing wave
-at adjacent point B by this continuity.
+on the material sheet at point A is connected to the
+standing wave at adjacent point B by this continuity.
 
 ### 2.2 Co-location establishes a shared mode
 
-When two particles are at the same R³ point, their T⁶
+When two particles are at the same S point, their Ma
 modes are literally the same geometric structure.  There
 is no distinction between "A's mode" and "B's mode" — there
 is only "the mode at this point."  Both particles are
 excitations of it.
 
 This is not an abstract mathematical statement.  It is a
-physical one: the compact dimensions at that point are
+physical one: the material dimensions at that point are
 vibrating, and both particles are aspects of that vibration.
 
 ### 2.3 Separation preserves the correlation
@@ -81,7 +83,7 @@ particles were co-located.
 
 In standard QM, measuring particle A seems to
 "instantaneously" determine particle B's state.  In the
-T⁶ picture, nothing is transmitted.  B's mode was always
+Ma picture, nothing is transmitted.  B's mode was always
 correlated with A's because they are opposite ends of the
 same continuous geometric structure.  Measurement at A
 reveals the state of a shared structure — it does not
@@ -97,17 +99,17 @@ equivalent to wormholes (Einstein-Rosen bridges).  Every
 entangled pair is connected by a tiny geometric bridge
 through spacetime.
 
-The T⁶ entanglement hypothesis is a concrete, more
+The Ma entanglement hypothesis is a concrete, more
 modest realization of this idea.  The "bridge" is not an
-exotic wormhole — it is the ordinary compact geometry
+exotic wormhole — it is the ordinary material geometry
 that already exists at every point.  Two particles that
-shared a T⁶ mode are connected by the continuity of the
-compact manifold, which is a standard feature of KK
+shared an Ma mode are connected by the continuity of the
+material manifold, which is a standard feature of KK
 theory, not a speculative addition.
 
 Key difference: ER=EPR requires creating a wormhole for
-each entangled pair.  T⁶ requires nothing to be created —
-the compact geometry is already there.  Entanglement is
+each entangled pair.  Ma requires nothing to be created —
+the material geometry is already there.  Entanglement is
 established by co-location (using the existing geometry)
 and persists through the existing continuity of the
 manifold.
@@ -125,23 +127,23 @@ of entanglement must either:
 - Accept that the "hidden variables" are not local
   in the Bell sense.
 
-T⁶ modes are not local hidden variables in Bell's sense.
+Ma modes are not local hidden variables in Bell's sense.
 They are **extended geometric structures** — standing
-waves on compact dimensions that exist at every point in
-R³ and are connected by the fiber bundle structure.  They
+waves on material dimensions that exist at every point in
+S and are connected by the fiber bundle structure.  They
 are "hidden" (below measurement threshold) but not
-"local" (they are properties of the global compact
+"local" (they are properties of the global material
 geometry, not of a point).
 
 Whether this is sufficient to reproduce Bell inequality
 violations is an open mathematical question.  It requires
-showing that the continuous compact geometry can produce
+showing that the continuous material geometry can produce
 correlations that exceed the Bell bound — which may
-depend on the specific topology and metric of the T⁶.
+depend on the specific topology and metric of Ma.
 
-**This is a major open question for the T⁶ program.**
-If T⁶ geometry can be shown to naturally produce Bell
-inequality violations through shared compact-dimension
+**This is a major open question for the Ma program.**
+If Ma geometry can be shown to naturally produce Bell
+inequality violations through shared material-dimension
 modes, it would be a significant theoretical result
 connecting Kaluza-Klein geometry to the foundations of
 quantum mechanics.
@@ -150,19 +152,19 @@ quantum mechanics.
 
 ## 5. What entanglement looks like on each sheet
 
-If entanglement is shared T⁶ mode structure, then the
-character of entanglement depends on which T² sheet
+If entanglement is shared Ma mode structure, then the
+character of entanglement depends on which material sheet
 carries the shared mode:
 
 | Sheet | Mode energy | Entanglement character |
 |-------|-------------|----------------------|
-| Electron T² | ~MeV | Standard particle-physics entanglement (spin, polarization) — the well-studied regime |
-| Proton T² | ~GeV | Nuclear/hadronic correlations — strong-force entanglement |
-| Neutrino T² | ~meV | Low-energy, large-scale correlations — potentially accessible to biological and macroscopic systems |
+| Ma_e | ~MeV | Standard particle-physics entanglement (spin, polarization) — the well-studied regime |
+| Ma_p | ~GeV | Nuclear/hadronic correlations — strong-force entanglement |
+| Ma_ν | ~meV | Low-energy, large-scale correlations — potentially accessible to biological and macroscopic systems |
 | Cross-plane | Mixed | Correlations spanning multiple sheets — mediated by neutrons (cross-plane modes) |
 
 Standard entanglement experiments (Bell tests, quantum
-optics) operate on the electron sheet.  The T⁶ hypothesis
+optics) operate on the electron sheet.  The Ma hypothesis
 does not change any predictions for these experiments —
 it provides a geometric mechanism for correlations that
 are already observed and well-characterized.
@@ -178,15 +180,15 @@ properties (→ Q83).
 
 If entanglement is geometric, then "wavefunction collapse"
 also has a geometric interpretation.  Measurement is an
-interaction that localizes the shared T⁶ mode — forcing
+interaction that localizes the shared Ma mode — forcing
 the extended geometric correlation to resolve into a
 definite configuration at each location.
 
 This does not solve the measurement problem, but it
 reframes it: instead of asking "why does the wavefunction
-collapse?", we ask "why does the continuous compact
+collapse?", we ask "why does the continuous material
 geometry resolve into definite mode configurations upon
-interaction?"  This may be more tractable because the T⁶
+interaction?"  This may be more tractable because the Ma
 geometry has specific topological and metric properties
 that constrain how modes can be excited and resolved.
 
@@ -194,21 +196,21 @@ that constrain how modes can be excited and resolved.
 
 ## 7. Open questions
 
-1. **Can T⁶ geometry produce Bell violations?**  The
+1. **Can Ma geometry produce Bell violations?**  The
    critical test.  Requires a formal calculation of the
-   correlations predicted by shared compact-dimension
+   correlations predicted by shared material-dimension
    modes for a specific experimental setup (e.g., spin
    measurements on entangled electrons).
 
 2. **How does decoherence work geometrically?**  If
-   entanglement is shared T⁶ mode structure, decoherence
+   entanglement is shared Ma mode structure, decoherence
    is the loss of that structure through interaction with
    the environment.  What determines the rate?  (→ Q83
    for the neutrino-sheet case.)
 
 3. **Does entanglement require co-location?**  In
    standard QM, entanglement can be created at a distance
-   (entanglement swapping).  In the T⁶ picture, what
+   (entanglement swapping).  In the Ma picture, what
    mediates this?  Possibly chain propagation through
    intermediate co-locations.
 
@@ -223,7 +225,7 @@ that constrain how modes can be excited and resolved.
    If entanglement is geometric, then the black hole
    information paradox (which hinges on entanglement
    across the event horizon) becomes a question about
-   the continuity of compact geometry across horizons.
+   the continuity of material geometry across horizons.
 
 ---
 

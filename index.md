@@ -15,7 +15,7 @@ Terse map of the repo for quick navigation. See `README.md` for project backgrou
 | Folder | What's in it | Key entry point |
 |--------|-------------|-----------------|
 | `studies/` | Computational investigations (R1–R37, S1–S3), each self-contained | `studies/STATUS.md` (work queue), `studies/README.md` (workflow) |
-| `studies/lib/` | Shared Python code: constants, T⁶ solver, utilities | `studies/lib/t6.py`, `studies/lib/t6_solver.py` |
+| `studies/lib/` | Shared Python code: constants, Ma solver, utilities | `studies/lib/t6.py`, `studies/lib/t6_solver.py` |
 | `qa/` | Physics Q&A — answered and open questions (Q05–Q85) | `qa/README.md` (index), `qa/INBOX.md` (capture queue) |
 | `papers/` | Authored theory documents (drafts and outlines) | `papers/README.md` |
 | `primers/` | Tutorials: matrix notation, Maxwell, KK theory, charge-from-energy | `primers/README.md` |

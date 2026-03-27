@@ -58,6 +58,6 @@ specific p values avoid splitting into multiple loops.
 *Source: user question*
 *Status: CLOSED (R11 — negative).  Eight tracks found no
 prime/composite distinction in any linear analysis.  q enters
-the flat-T² spectrum as a continuous parameter, not through
+the flat-material-sheet spectrum as a continuous parameter, not through
 its factorization.  The hypothesis remains viable only in the
 nonlinear/curved-torus regime.*

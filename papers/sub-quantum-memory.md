@@ -1,4 +1,4 @@
-# Sub-Quantum Memory: Information Storage in Compact Dimensions
+# Sub-Quantum Memory: Information Storage in Material Dimensions
 
 **Status:** Part I draft, Part II outline
 
@@ -10,28 +10,29 @@ What if the extra dimensions of spacetime can store information?
 
 Two developing theoretical frameworks — each speculative on its
 own — combine to imply something neither predicts alone.  The
-T⁶ compact geometry model proposes that fundamental particles
-are standing waves of light confined on a six-dimensional torus,
+Ma compact geometry model (Ma being the six-dimensional material
+space) proposes that fundamental particles are standing waves of
+light confined on a six-dimensional torus,
 where the particle's mass is simply energy trapped in the
 geometry.  Reiter's threshold model proposes that energy
 absorption is continuous, not quantized: systems accumulate
 energy smoothly until a threshold triggers a discrete emission
 event.  If both contain elements of truth, their union implies
-that the compact dimensions of spacetime could function as an
+that the material dimensions of spacetime could function as an
 analog information storage medium — one that is frequency-
 addressable, inherently noise-resistant, and invisible to
 standard quantum measurements.
 
 This paper develops that idea in two layers.  Part I builds the
 physics case in the abstract: how energy could be written into
-compact-dimension modes, how it would be retained, and how it
+material-dimension modes, how it would be retained, and how it
 might be read back.  These mechanisms could, in principle, apply
 to future synthetic technology.
 
 Part II asks whether nature got there first.  Three numerical
-coincidences link the model to biology: the neutrino T²
-subplane has circumferences matching the scale of a biological
-cell (40–200 μm); its mode energies (6–90 meV) overlap the
+coincidences link the model to biology: the neutrino sheet Ma_ν
+has circumferences matching the scale of a biological cell
+(40–200 μm); its mode energies (6–90 meV) overlap the
 voltage range of cell membranes (10–90 mV → 10–90 meV per
 charge); and its mode frequencies fall in the terahertz band
 where DNA exhibits collective vibrations.  These coincidences
@@ -40,19 +41,19 @@ laboratory has demonstrated that voltage patterns across cell
 membranes store morphogenetic information — including memories
 that survive decapitation and head regeneration in flatworms.
 Levin's deepest unsolved problem is where the target morphology
-is stored.  Compact-dimension modes offer a candidate answer.
+is stored.  Material-dimension modes offer a candidate answer.
 
 The paper is a controlled thought experiment — a map of
 implications, not a claim of discovery.  It identifies a
-specific, falsifiable chain: if T⁶ geometry is real, and
-threshold absorption is real, and the neutrino T² scale matches
+specific, falsifiable chain: if Ma geometry is real, and
+threshold absorption is real, and the neutrino sheet scale matches
 the cellular scale, then biological morphogenesis should be
 measurably sensitive to perturbations at the specific
-frequencies of the neutrino T² mode spectrum.
+frequencies of the neutrino sheet mode spectrum.
 
 ---
 
-## PART I — Physics: compact dimensions as an information medium
+## PART I — Physics: material dimensions as an information medium
 
 ---
 
@@ -66,7 +67,7 @@ This paper is a "what if."
 We take two speculative theoretical frameworks, accept their
 premises for the sake of argument, and ask what follows when
 they are combined.  The answer turns out to be surprising: the
-combination implies that the extra dimensions of spacetime could
+combination implies that the material dimensions of spacetime could
 function as an information storage medium — a kind of memory
 built into the fabric of space itself.
 
@@ -93,8 +94,8 @@ intuition needed for everything that follows.
 
 **Claims:**
 
-1. The combination of the T⁶ compact geometry model and
-   Reiter's threshold model logically implies that compact-
+1. The combination of the Ma compact geometry model and
+   Reiter's threshold model logically implies that material-
    dimension modes could store analog information.
 2. Three quantitative coincidences — in spatial scale, energy
    scale, and frequency — connect this storage mechanism to the
@@ -105,14 +106,14 @@ intuition needed for everything that follows.
 **Does not claim:**
 
 1. That either framework is proven or should be accepted.
-2. That biology uses compact dimensions for information storage.
+2. That biology uses material dimensions for information storage.
 3. That the coupling mechanism between ordinary space and
-   compact dimensions has been computed.
+   material dimensions has been computed.
 
 ### 1.4 Road map
 
 The paper is organized in two parts.  Part I (sections 1–8)
-develops the physics of compact-dimension storage in the
+develops the physics of material-dimension storage in the
 abstract.  It explains the two frameworks, shows how they
 combine, and works through the mechanics of writing, retaining,
 and reading information.  Everything in Part I could, in
@@ -129,7 +130,7 @@ speculation built on top of speculation — and is labeled as
 such.
 
 
-## 2. Foundation: the T⁶ model — particles as trapped light
+## 2. Foundation: the Ma model — particles as trapped light
 
 ### 2.1 What are "extra" dimensions?
 
@@ -154,7 +155,7 @@ inside them.
 
 ### 2.2 The torus: a surface that wraps around on itself
 
-The specific geometry used in the T⁶ model is a *torus*.  A
+The specific geometry used in the Ma model is a *torus*.  A
 two-dimensional torus (written T²) is the surface you get by
 taking a flat rectangle and gluing opposite edges together: glue
 the top to the bottom to make a tube, then bend the tube into
@@ -167,20 +168,20 @@ the left.  Fly off the top and you reappear at the bottom.  The
 screen is flat, but it wraps around in both directions — that
 is exactly a flat torus.
 
-A six-dimensional torus (T⁶) is three such flat rectangles
-stacked.  Each rectangle is a T², and together they form a
-compact six-dimensional space.  In the T⁶ model, each of the
-three stable particle families lives on its own T² subplane:
+A six-dimensional torus (Ma) is three such flat rectangles
+stacked.  Each rectangle is a material sheet, and together they
+form the material space.  In the Ma model, each of the three
+stable particle families lives on its own material sheet:
 
-| Particle family | Subplane | Scale |
-|-----------------|----------|-------|
-| Electron | T² in dimensions 1–2 | ~picometers (10⁻¹² m) |
-| Neutrinos | T² in dimensions 3–4 | ~micrometers (10⁻⁶ m) |
-| Proton | T² in dimensions 5–6 | ~femtometers (10⁻¹⁵ m) |
+| Particle family | Sheet | Scale |
+|-----------------|-------|-------|
+| Electron | Ma_e in dimensions 1–2 | ~picometers (10⁻¹² m) |
+| Neutrinos | Ma_ν in dimensions 3–4 | ~micrometers (10⁻⁶ m) |
+| Proton | Ma_p in dimensions 5–6 | ~femtometers (10⁻¹⁵ m) |
 
 The total number of spacetime dimensions is 3 (ordinary space)
-+ 1 (time) + 6 (compact) = 10, matching the critical dimension
-of string theory — though the T⁶ model does not invoke string
++ 1 (time) + 6 (material) = 10, matching the critical dimension
+of string theory — though the Ma model does not invoke string
 theory.
 
 ### 2.3 Standing waves and the mode spectrum
@@ -211,16 +212,16 @@ spectrum, like a fingerprint.
 
 ### 2.4 Mass is stored energy
 
-Here is the key insight of the T⁶ model: **a particle's mass is
-energy stored in a standing-wave mode on a compact torus.**
+Here is the key insight of the Ma model: **a particle's mass is
+energy stored in a standing-wave mode on a material sheet.**
 
 Einstein's equation E = mc² tells us that mass and energy are
 interchangeable.  A particle at rest has energy equal to its
-mass times the speed of light squared.  In the T⁶ model, that
+mass times the speed of light squared.  In the Ma model, that
 energy is the energy of a photon — a quantum of light —
-vibrating in a specific mode of a compact T².  The electron, for
-example, is light vibrating in the (1,2) mode of the electron's
-T².  The energy of that vibration, determined by the size of the
+vibrating in a specific mode of the electron sheet Ma_e.  The
+electron, for example, is light vibrating in the (1,2) mode of
+Ma_e.  The energy of that vibration, determined by the size of the
 torus, is exactly the electron's measured mass (0.511 MeV).
 
 This is not a metaphor.  In the model, the electron literally
@@ -231,33 +232,34 @@ the photon's field.  There are no fundamental charges, no point
 particles, no unexplained mass values — only photons, geometry,
 and the rules of wave propagation.
 
-The critical point for this paper: compact dimensions are
+The critical point for this paper: material dimensions are
 already storing energy.  The electron's mass IS energy stored in
 the geometry.  The proton's mass IS energy stored in a different
 geometry.  Neutrino masses are energy stored on a third
-geometry.  The question we are asking is not *whether* compact
+geometry.  The question we are asking is not *whether* material
 dimensions can store energy — they already do.  The question is
 whether they can store *additional* energy, in configurations
 that encode retrievable information.
 
-### 2.5 The three tori and their scales
+### 2.5 The three material sheets and their scales
 
-The three T² subplanes span a vast range of sizes:
+The three material sheets span a vast range of sizes:
 
-**The electron T²** has circumferences near the electron's
-Compton wavelength, about 2.4 picometers (trillionths of a
-meter).  This is roughly 200 times smaller than a hydrogen atom.
+**The electron sheet Ma_e** has circumferences near the
+electron's Compton wavelength, about 2.4 picometers (trillionths
+of a meter).  This is roughly 200 times smaller than a hydrogen
+atom.
 
-**The proton T²** is smaller still, with circumferences near the
-proton's Compton wavelength, about 1.3 femtometers (10⁻¹⁵
-meters).  This is the scale of an atomic nucleus.
+**The proton sheet Ma_p** is smaller still, with circumferences
+near the proton's Compton wavelength, about 1.3 femtometers
+(10⁻¹⁵ meters).  This is the scale of an atomic nucleus.
 
-**The neutrino T²** is vastly larger than either.  Because
-neutrino masses are tiny (a few tens of millielectronvolts,
-roughly 10 million times lighter than the electron), the
-geometry that produces them must be comparatively enormous.  The
-neutrino T² has circumferences of approximately L₃ ≈ 200 μm and
-L₄ ≈ 42 μm — on the order of a tenth of a millimeter.
+**The neutrino sheet Ma_ν** is vastly larger than either.
+Because neutrino masses are tiny (a few tens of
+millielectronvolts, roughly 10 million times lighter than the
+electron), the geometry that produces them must be comparatively
+enormous.  Ma_ν has circumferences of approximately L₃ ≈ 200 μm
+and L₄ ≈ 42 μm — on the order of a tenth of a millimeter.
 
 That last number — micrometers — is the scale of a biological
 cell.  We will return to this in Part II.
@@ -331,7 +333,7 @@ which we adopt as a premise of our thought experiment.
 ### 3.4 Why this matters for storage
 
 If absorption is truly continuous, then a physical system can
-hold energy *below* the quantum threshold.  Consider a compact-
+hold energy *below* the quantum threshold.  Consider a material-
 dimension mode that normally requires, say, 30 meV to fully
 excite.  In standard quantum mechanics, the mode is either
 excited (30 meV) or not (0 meV).  In the threshold model, the
@@ -352,13 +354,13 @@ only if you know how to probe below the quantum floor — a
 requirement that functions as a natural access control.
 
 
-## 4. The synthesis: compact dimensions as analog memory
+## 4. The synthesis: material dimensions as analog memory
 
 ### 4.1 Combining the pieces
 
 We now have two ingredients:
 
-From the T⁶ model: compact dimensions contain resonant cavities
+From the Ma model: material dimensions contain resonant cavities
 (tori) with discrete mode spectra.  Energy deposited into these
 cavities takes the form of standing waves at specific
 frequencies.
@@ -367,7 +369,7 @@ From the threshold model: energy can accumulate continuously in
 a mode, in any amount, without triggering a discrete quantum
 transition.  Sub-threshold energy is stable and hidden.
 
-Together, these imply that a compact-dimension cavity could hold
+Together, these imply that a material-dimension cavity could hold
 a *distribution* of energy across its modes — some energy in the
 (1,0) mode, some in the (0,1) mode, some in the (1,2) mode,
 and so on — with each mode's energy taking any continuous value.
@@ -383,7 +385,7 @@ how hard — is a description of a state.  Two keyboards with
 different configurations represent different states, even if the
 total force (total energy) is the same.
 
-On a compact T², each allowed mode is a "key."  The amount of
+On a material sheet, each allowed mode is a "key."  The amount of
 energy in each mode is how hard the key is pressed.  The full
 set of mode energies constitutes a *state vector* — a point in
 a high-dimensional space where each dimension corresponds to one
@@ -393,7 +395,7 @@ Unlike a digital bit (which is either 0 or 1), this memory cell
 is *analog*: each mode holds a continuously variable amount of
 energy.  And unlike a single analog value (like the position of
 a dial), the cell has *many independent degrees of freedom* —
-one per mode.  A single compact-dimension cavity is not a single
+one per mode.  A single material-dimension cavity is not a single
 memory cell.  It is a bank of memory cells, one per mode, all
 sharing the same physical location.
 
@@ -401,7 +403,7 @@ sharing the same physical location.
 
 What keeps the "keys" from drifting?
 
-On a perfectly flat T² governed by a linear wave equation, the
+On a perfectly flat material sheet governed by a linear wave equation, the
 answer is: nothing makes them drift.  Each mode's energy is an
 independently conserved quantity.  Energy in the (1,0) mode
 stays in the (1,0) mode forever.  Energy in the (3,2) mode
@@ -410,7 +412,7 @@ energy to move between modes, because on a flat torus with
 linear dynamics, the modes do not interact.
 
 This is fundamentally different from a guitar string, which
-loses energy to the surrounding air.  A compact dimension has no
+loses energy to the surrounding air.  A material dimension has no
 "air."  It is a closed geometry — a surface that wraps around on
 itself with no boundary and no exterior.  Energy on a flat torus
 has nowhere to leak.  In the idealized case, the stored state
@@ -423,12 +425,12 @@ address those in section 6.
 
 ### 4.4 Information capacity
 
-How much information can a single compact-dimension cavity hold?
+How much information can a single material-dimension cavity hold?
 
-The number of modes below a given energy cutoff on a T² grows
-roughly as the area of the torus (in units of the wavelength
-squared).  For the neutrino T², which is the largest torus in
-the T⁶ model, the mode count below 100 meV runs into the
+The number of modes below a given energy cutoff on a material
+sheet grows roughly as the area of the torus (in units of the
+wavelength squared).  For Ma_ν, which is the largest sheet in
+the Ma model, the mode count below 100 meV runs into the
 thousands.  Each mode carries a continuous amplitude.
 
 In practice, the precision of each amplitude is limited by
@@ -440,14 +442,14 @@ precision or more modes, the capacity grows.
 
 These are rough estimates.  The actual information capacity
 depends on the coupling strength between the 3+1D environment
-and the compact modes (which determines the noise floor) and on
-the energy cutoff above which modes are too short-lived to be
-useful.  But the *architecture* is clear: compact dimensions
-offer a high-dimensional analog storage medium with many
-independent channels per spatial location.
+and the material-dimension modes (which determines the noise
+floor) and on the energy cutoff above which modes are too short-
+lived to be useful.  But the *architecture* is clear: material
+dimensions offer a high-dimensional analog storage medium with
+many independent channels per spatial location.
 
 
-## 5. Writing: how energy enters a compact mode
+## 5. Writing: how energy enters a material-dimension mode
 
 ### 5.1 Resonant injection
 
@@ -458,7 +460,7 @@ the wrong rhythm, and the swing barely responds — the energy
 goes into random jostling that dissipates rather than building
 up.
 
-The same principle governs compact-dimension modes.  To deposit
+The same principle governs material-dimension modes.  To deposit
 energy into a specific mode, supply energy at that mode's
 frequency.  Energy at the right frequency couples into the mode
 and stays there; energy at the wrong frequency does not.  This
@@ -483,42 +485,42 @@ operation analog, not digital — like turning a volume knob
 rather than flipping a light switch.  A small pulse deposits
 a little energy; a large pulse deposits more.
 
-Together, these properties mean that a compact-dimension cavity
+Together, these properties mean that a material-dimension cavity
 can be *programmed*: energy at specific frequencies, in specific
 amounts, sets the cavity into a desired state.  The operation is
 conceptually identical to preparing a quantum state in a
 microwave cavity (cavity QED) or exciting specific nuclear spin
 states in an MRI machine (NMR pulse sequences).
 
-### 5.3 The coupling channel: from ordinary space into compact dimensions
+### 5.3 The coupling channel: from ordinary space into material dimensions
 
 Here is the open question at the heart of the write mechanism:
 how does energy in ordinary (3+1-dimensional) space get *into*
-a compact-dimension mode?
+a material-dimension mode?
 
-The T⁶ model already demonstrates that this coupling exists.
-The electron is a standing wave confined to the compact
-electron T², but its electric field extends beyond the compact
+The Ma model already demonstrates that this coupling exists.
+The electron is a standing wave confined to the electron sheet
+Ma_e, but its electric field extends beyond the material
 dimensions into ordinary 3D space — that extended field is what
 we measure as the electron's Coulomb field.  Physicists call
 this extension an *evanescent tail*: the field decays
-exponentially away from the compact surface but never quite
-reaches zero.
+exponentially away from the material sheet surface but never
+quite reaches zero.
 
-If the compact wave's field extends *out*, then an external
+If the confined wave's field extends *out*, then an external
 field can push energy *in*.  The coupling works in both
 directions.  An electromagnetic field at the right frequency,
-applied in ordinary space at the location of a compact-
+applied in ordinary space at the location of a material-
 dimension cavity, should couple into the matching mode via the
 evanescent overlap.
 
 The quantitative strength of this coupling has not been
-computed.  It depends on the geometry of the compact dimensions,
+computed.  It depends on the geometry of the material dimensions,
 the polarization structure of the modes, and the nature of the
 evanescent overlap.  This calculation is the single most
 important missing piece in the entire storage hypothesis (see
 section 8.3).  But the *existence* of the coupling is not in
-doubt within the T⁶ framework — without it, particles would
+doubt within the Ma framework — without it, particles would
 have no fields and no interactions.
 
 ### 5.4 Continuous injection under the threshold model
@@ -546,7 +548,7 @@ model is correct.
 
 ### 6.1 The idealized case: perfect conservation
 
-On an isolated, perfectly flat T² governed by a linear wave
+On an isolated, perfectly flat material sheet governed by a linear wave
 equation (the simplest case), there is no interaction between
 modes.  Each mode is an independent oscillator.  Energy placed
 in a mode stays in that mode indefinitely, the way a perfectly
@@ -554,26 +556,26 @@ elastic ball bouncing in a frictionless box would bounce forever.
 
 This is the theoretical ceiling for information retention:
 infinite lifetime.  It is an idealization, but an important one,
-because it tells us that the *architecture* of compact-dimension
+because it tells us that the *architecture* of material-dimension
 storage does not inherently degrade information.  Any
 degradation must come from specific physical mechanisms that
 perturb the idealized case.
 
 ### 6.2 The realistic case: cross-shear leakage
 
-The T⁶ model is not perfectly flat.  The three T² subplanes are
-tilted relative to each other by small angles called
-*cross-shear parameters*.  These tilts connect the subplanes:
-a wave on one T² can slowly leak energy into modes on another
-T².
+The Ma model is not perfectly flat.  The three material sheets
+are tilted relative to each other by small angles called
+*cross-shear parameters*.  These tilts connect the sheets:
+a wave on one material sheet can slowly leak energy into modes on
+another sheet.
 
 This is not hypothetical — it is the mechanism that explains
-neutron decay in the T⁶ model.  The neutron is a standing wave
-that spans both the electron T² and the proton T².  The small
-cross-shear coupling between these sheets allows the wave to
-slowly split apart: the proton component settles onto the proton
-T², the electron component separates onto the electron T², and
-the excess energy goes into neutrino modes.  The coupling is
+neutron decay in the Ma model.  The neutron is a standing wave
+that spans both Ma_e and Ma_p.  The small cross-shear coupling
+between these sheets allows the wave to slowly split apart: the
+proton component settles onto Ma_p, the electron component
+separates onto Ma_e, and the excess energy goes into neutrino
+modes.  The coupling is
 weak (a tilt of only about 2 degrees from perpendicular), so
 the process is slow — about 15 minutes, matching the neutron's
 observed lifetime.
@@ -582,8 +584,9 @@ For information storage, cross-shear coupling is a degradation
 mechanism.  Energy in one mode can slowly transfer to other
 modes, blurring the stored state.  The rate of this transfer
 depends on the magnitude of the cross-shear — smaller tilts mean
-slower leakage.  In principle, modes confined to a single T²
-(rather than spanning multiple sheets) experience less cross-
+slower leakage.  In principle, modes confined to a single material
+sheet (rather than spanning multiple sheets) experience less
+cross-
 shear disturbance, giving them longer information lifetimes.
 
 ### 6.3 Mode cascade as error correction
@@ -600,7 +603,7 @@ But the sound quickly "settles" — the higher harmonics die out
 first, and the fundamental rings longest.  The settling is not
 random; it is directional, always moving toward the lowest mode.
 
-In a compact-dimension cavity, the same tendency acts as a
+In a material-dimension cavity, the same tendency acts as a
 natural error-correction mechanism.  Small perturbations to the
 mode distribution — noise injected by thermal fluctuations or
 cross-shear coupling — preferentially affect higher modes.
@@ -619,24 +622,24 @@ familiar from many real-world storage systems.
 
 The ordinary 3+1-dimensional environment has thermal energy.  At
 room temperature, the characteristic thermal energy is kT ≈ 25
-meV.  This is comparable to the mode energies on the neutrino T²
+meV.  This is comparable to the mode energies on Ma_ν
 (6–90 meV), which raises an immediate concern: could thermal
-fluctuations randomly excite compact modes and scramble stored
-information?
+fluctuations randomly excite material-dimension modes and
+scramble stored information?
 
 The answer depends on the *coupling strength* between the 3+1D
-thermal bath and the compact-dimension modes.  If the coupling
+thermal bath and the material-dimension modes.  If the coupling
 is strong, thermal noise would quickly overwhelm any stored
-state.  If the coupling is weak, the compact modes are
+state.  If the coupling is weak, the material-dimension modes are
 effectively isolated from thermal fluctuations — an insulated
 memory.
 
-There is reason to believe the coupling is weak.  The T⁶ model's
-compact dimensions interact with ordinary space only through
+There is reason to believe the coupling is weak.  The Ma model's
+material dimensions interact with ordinary space only through
 evanescent tails.  Evanescent fields decay exponentially, so
-the coupling between a compact mode and the 3+1D thermal bath
+the coupling between a material-dimension mode and the 3+1D thermal bath
 should be exponentially suppressed.  The same weakness that
-makes compact dimensions hard to detect would make them hard to
+makes material dimensions hard to detect would make them hard to
 disturb — a feature that is problematic for writing (section
 5.3) but advantageous for retention.
 
@@ -645,7 +648,7 @@ it is a priority for any quantitative development of the storage
 hypothesis.
 
 
-## 7. Reading: how to extract information from a compact mode
+## 7. Reading: how to extract information from a material-dimension mode
 
 This is the most difficult problem in the storage hypothesis.
 Writing energy into a resonant mode has well-established
@@ -665,7 +668,7 @@ tell what note it is playing.  One option is to smash through
 the wall, grab the bell, and analyze the fragments and residual
 vibrations.  You learn the frequency, but the bell is silenced.
 
-In compact-dimension terms, a sufficiently strong probe could
+In material-dimension terms, a sufficiently strong probe could
 couple to the cavity and drain its energy into measurable
 3+1D fields.  Spectral analysis of the extracted energy reveals
 which modes were excited and at what amplitudes — a complete
@@ -690,7 +693,7 @@ atoms acquire a phase shift that depends on the photon number,
 but they do not absorb or emit photons.  The photon count is
 measured without changing it.
 
-The compact-dimension analog would be a probe that interacts
+The material-dimension analog would be a probe that interacts
 with the *mode pattern* of a cavity without exchanging energy.
 For example, a probe field at a slightly different frequency
 than any cavity mode might acquire a phase shift that depends
@@ -699,7 +702,7 @@ draining it.
 
 QND measurements are experimentally demanding even in
 well-understood optical cavities.  Extending the concept to
-compact-dimension modes adds the challenge of coupling a probe
+material-dimension modes adds the challenge of coupling a probe
 to a geometry that is not directly accessible.  The mechanism
 is theoretically plausible but far from practical.
 
@@ -718,7 +721,7 @@ curtain.  The matching fork in the room begins to hum in
 sympathy — revealing the hidden fork's frequency without anyone
 touching it.
 
-In compact-dimension terms: the evanescent tail of a cavity mode
+In material-dimension terms: the evanescent tail of a cavity mode
 extends weakly into neighboring space.  A test resonator placed
 nearby, tuned to a specific frequency, would couple
 preferentially to the matching mode.  The coupling would be
@@ -726,7 +729,7 @@ extremely weak — the evanescent field decays exponentially — but
 in principle it transfers a tiny amount of energy or induces a
 detectable phase shift in the test resonator.
 
-An array of test resonators, each tuned to a different compact-
+An array of test resonators, each tuned to a different material-
 dimension mode frequency, could function as a parallel readout
 device: the subset of resonators that respond identifies the
 excited modes.  The read is nearly non-destructive (only a
@@ -746,7 +749,7 @@ mechanics.  The fourth is not.
 If the threshold model is correct, then energy below the quantum
 threshold is physically real and can, in principle, be
 transferred between systems.  This opens the possibility of
-extracting *less than one quantum* of energy from a compact mode
+extracting *less than one quantum* of energy from a material-dimension mode
 — enough to carry frequency information (which mode the energy
 came from) but not enough to trigger a state transition in the
 mode (which would constitute a measurement in the quantum sense).
@@ -760,23 +763,23 @@ between the two frameworks.  If it can be demonstrated — if
 frequency information can be retrieved from a resonant system
 using energy transfers smaller than one quantum — it
 simultaneously confirms the threshold model and demonstrates a
-non-destructive readout mechanism for compact-dimension storage.
+non-destructive readout mechanism for material-dimension storage.
 If it cannot be demonstrated despite favorable conditions, it
 provides evidence against the threshold model.
 
 
 ## 8. Implications for synthetic technology
 
-### 8.1 Properties of compact-dimension memory
+### 8.1 Properties of material-dimension memory
 
-If the physics described in sections 4–7 is correct, compact-
+If the physics described in sections 4–7 is correct, material-
 dimension storage has several notable properties:
 
 **High density.**  Each cavity (a location in ordinary space
 the size of the corresponding torus) holds many modes, each
 carrying a continuously variable amplitude.  The information
 density scales with the number of modes and the precision per
-mode.  For the neutrino T² — the largest cavity in the model —
+mode.  For Ma_ν — the largest cavity in the model —
 thousands of modes are available below 100 meV in a volume the
 size of a biological cell.
 
@@ -794,7 +797,7 @@ more susceptible to noise but also less energetically costly;
 the fundamental is the most robust.
 
 **Environmental isolation.**  The evanescent coupling between
-compact dimensions and ordinary space is exponentially weak.
+material dimensions and ordinary space is exponentially weak.
 Stored information is naturally protected from environmental
 disturbance — including thermal noise, electromagnetic
 interference, and accidental measurement.
@@ -805,9 +808,9 @@ paths to reading without erasing.
 
 ### 8.2 Comparison with existing technologies
 
-How does compact-dimension memory compare to what we have today?
+How does material-dimension memory compare to what we have today?
 
-| Property | HDD | DRAM | Flash | Holographic | Compact-dim. |
+| Property | HDD | DRAM | Flash | Holographic | Material-dim. |
 |----------|-----|------|-------|-------------|--------------|
 | Medium | Magnetic domains | Capacitors | Charge traps | Optical film | Spacetime geometry |
 | Wears out? | Yes (mechanical) | No (but leaks) | Yes (write cycles) | Yes (media decay) | No (geometry is permanent) |
@@ -815,7 +818,7 @@ How does compact-dimension memory compare to what we have today?
 | Addressing | Physical position | Physical position | Physical position | Angle/wavelength | Frequency |
 | Density limit | Domain size | Capacitor size | Cell size | Diffraction | Mode count per cavity |
 
-The unique feature of compact-dimension memory is that its
+The unique feature of material-dimension memory is that its
 storage medium is the geometry of spacetime itself.  It does not
 rely on any material substrate that can wear out, demagnetize,
 or chemically degrade.  The information is stored in the
@@ -823,39 +826,39 @@ configuration of standing waves on a fixed geometric structure.
 
 This comparison is illustrative, not quantitative.  We have not
 computed the write/read speeds, error rates, or energy costs of
-compact-dimension memory, because the coupling strength between
-ordinary space and compact dimensions is unknown.
+material-dimension memory, because the coupling strength between
+ordinary space and material dimensions is unknown.
 
 ### 8.3 What would be needed to engineer it
 
 The gap between the theoretical possibility described above and
 anything that could be built is vast.  Three things are needed:
 
-**First, confirmation that compact dimensions exist at
-accessible scales.**  The neutrino T² has circumferences of
-~42–200 μm.  If gravity propagates in these compact dimensions,
+**First, confirmation that material dimensions exist at
+accessible scales.**  Ma_ν has circumferences of ~42–200 μm.
+If gravity propagates in these material dimensions,
 short-range gravity experiments probing below ~50 μm could
 detect deviations from Newton's law.  Current experiments have
 reached this scale without finding deviations, which means
-either the compact dimensions do not exist, gravity does not
+either the material dimensions do not exist, gravity does not
 propagate in them, or they are slightly smaller than current
 sensitivity.
 
 **Second, computation of the coupling strength.**  This is the
 central missing calculation.  Without knowing how strongly 3+1D
-electromagnetic fields couple to compact-dimension modes, we
+electromagnetic fields couple to material-dimension modes, we
 cannot estimate the energy required to write a bit, the signal
 strength of a read, or the time scale of either operation.  The
-coupling may turn out to be so weak that compact-dimension
+coupling may turn out to be so weak that material-dimension
 memory, while theoretically possible, is practically useless.
 
 **Third, development of frequency-specific probes in the relevant
-band.**  The neutrino T² mode frequencies fall in the terahertz
-(THz) range.  THz technology is an active area of research —
+band.**  The Ma_ν mode frequencies fall in the terahertz (THz)
+range.  THz technology is an active area of research —
 useful for medical imaging, security screening, and
 communications — but generating and detecting THz radiation with
-the frequency precision needed to address individual compact
-modes would require significant advances.
+the frequency precision needed to address individual material-
+dimension modes would require significant advances.
 
 We present these requirements not as a research program but as
 an honest accounting of the distance between idea and
@@ -872,23 +875,23 @@ calculations, not to promise the technology.
 
 ## 9. Three numerical coincidences
 
-Part I developed the physics of compact-dimension storage in the
-abstract.  Nothing in sections 2–8 requires biology.  The write,
-retain, and read mechanisms apply to any compact-dimension cavity
-at any scale.
+Part I developed the physics of material-dimension storage in
+the abstract.  Nothing in sections 2–8 requires biology.  The
+write, retain, and read mechanisms apply to any material-
+dimension cavity at any scale.
 
 Part II asks a different question: is there a physical system
 that already operates at the right scale, the right energy, and
-the right frequency to couple to compact-dimension modes?
+the right frequency to couple to material-dimension modes?
 
 The answer, unexpectedly, is yes.  Three independent numerical
 coincidences point to the same system: the biological cell.
 
-### 9.1 Spatial scale: the neutrino T² and the eukaryotic cell
+### 9.1 Spatial scale: the neutrino sheet and the eukaryotic cell
 
-The neutrino T² — the compact-dimension subplane where neutrino
-mass eigenstates live — has circumferences L₃ ≈ 200 μm and
-L₄ ≈ 42 μm.  These are not adjustable parameters chosen to
+The neutrino sheet Ma_ν — the material-dimension sheet where
+neutrino mass eigenstates live — has circumferences L₃ ≈ 200 μm
+and L₄ ≈ 42 μm.  These are not adjustable parameters chosen to
 match biology.  They are fixed by the measured neutrino masses:
 because neutrinos are so light (~30–60 meV), the geometry that
 produces them must be comparatively large.
@@ -899,14 +902,14 @@ extend axons much longer, but the cell body (soma) of a neuron
 is typically 10–30 μm across.  Epithelial cells, muscle fibers,
 and liver cells range from 10 to 100 μm.
 
-The neutrino T² and the eukaryotic cell occupy the same spatial
-scale.  If the compact dimensions described by the T⁶ model
-exist, then every biological cell is embedded in a compact-
-dimension cavity whose circumferences match the cell's own size.
+Ma_ν and the eukaryotic cell occupy the same spatial scale.  If
+the material dimensions described by the Ma model exist, then
+every biological cell is embedded in a material-dimension cavity
+whose circumferences match the cell's own size.
 
 ### 9.2 Energy scale: mode energies and membrane voltages
 
-The neutrino T² mode spectrum spans roughly 6–90 meV.  These
+The Ma_ν mode spectrum spans roughly 6–90 meV.  These
 are the energies of the standing-wave modes that the neutrino
 torus supports — the "keys on the piano" from section 4.
 
@@ -926,22 +929,23 @@ where e is the elementary charge.  For a membrane potential of
 Across the biological range of membrane potentials, the energy
 per ion transit spans 10–90 meV.
 
-This is the same range as the neutrino T² mode spectrum.
+This is the same range as the Ma_ν mode spectrum.
 
 The coincidence is quantitative, not merely order-of-magnitude.
 The energy that a single ion gains crossing a cell membrane is
-energetically matched to the standing-wave modes of the compact
+energetically matched to the standing-wave modes of the material
 dimensions at the cellular scale.  If a coupling exists between
-membrane voltage and compact-dimension modes, the energy
+membrane voltage and material-dimension modes, the energy
 exchange would be resonant — each ion transit carries exactly
-the right energy to excite or de-excite a compact mode.
+the right energy to excite or de-excite a material-dimension
+mode.
 
-### 9.3 Frequency scale: DNA vibrations and compact-mode resonances
+### 9.3 Frequency scale: DNA vibrations and material-dimension mode resonances
 
-The neutrino T² mode energies (6–90 meV) correspond to
-frequencies in the terahertz (THz) band: roughly 1.4–22 THz
-(since frequency = energy / h, where h is Planck's constant).
-The lower end of the neutrino mode spectrum extends to
+The Ma_ν mode energies (6–90 meV) correspond to frequencies in
+the terahertz (THz) band: roughly 1.4–22 THz (since frequency =
+energy / h, where h is Planck's constant).  The lower end of the
+neutrino sheet mode spectrum extends to
 sub-THz frequencies.
 
 DNA — the molecule that carries genetic information in every
@@ -960,12 +964,12 @@ distribution of DNA oscillates at THz frequencies as these modes
 are excited, producing oscillating electromagnetic fields at the
 same frequencies.
 
-If compact dimensions exist at the cellular scale, these
+If material dimensions exist at the cellular scale, these
 oscillating fields are at the right frequency to couple
-resonantly to compact-dimension modes.  The DNA molecule, in
+resonantly to material-dimension modes.  The DNA molecule, in
 this picture, would function as an antenna — its collective
 vibrations broadcasting and receiving at the frequencies of the
-compact-dimension mode spectrum.
+material-dimension mode spectrum.
 
 ### 9.4 The compound improbability
 
@@ -982,7 +986,7 @@ coincidence (DNA vibrations ↔ mode frequencies) is set by the
 mechanical properties of the double helix.  None of these three
 quantities was tuned to match the others.  They emerge from
 unrelated physics and unrelated biology, yet they all point to
-the same compact-dimension geometry and the same biological
+the same material-dimension geometry and the same biological
 structure.
 
 Three independent coincidences do not constitute proof.  They
@@ -992,13 +996,13 @@ examines what we find when we look.
 
 ## 10. Levin's bioelectric field: distributed memory without a brain
 
-The numerical coincidences of section 9 suggest that compact-
+The numerical coincidences of section 9 suggest that material-
 dimension modes *could* couple to biology.  But coincidences
 alone are circumstantial.  What would strengthen the case is
 evidence that biological systems actually store and retrieve
 information in ways that are difficult to explain with
 conventional molecular biology — ways that *look like* the
-behavior of a compact-dimension storage medium.
+behavior of a material-dimension storage medium.
 
 Such evidence exists.  Michael Levin's laboratory at Tufts
 University has spent two decades studying how organisms store
@@ -1008,7 +1012,7 @@ Biology, Biosystems, Nature, and others), describe phenomena
 that conventional models struggle to explain.  Levin does not
 invoke extra dimensions.  His theoretical framework — the
 "bioelectric code" — is entirely within mainstream biology.  But
-the phenomena he documents are precisely the kind that compact-
+the phenomena he documents are precisely the kind that material-
 dimension storage would produce.
 
 We present his key findings here as reported, without
@@ -1062,7 +1066,8 @@ transmitter uses vacuum tubes or transistors.  The signal is in
 the waveform, not the hardware.
 
 This substrate independence is exactly the property predicted by
-compact-dimension storage.  If the compact modes respond to the
+material-dimension storage.  If the material-dimension modes
+respond to the
 aggregate electromagnetic field (which depends on voltage), they
 are indifferent to which molecular species produced that field.
 
@@ -1198,22 +1203,21 @@ determine what to build.  But the code does not identify the
 *storage medium* — the physical system that holds the target
 morphology in the first place.
 
-This is the gap that compact-dimension storage addresses.
+This is the gap that material-dimension storage addresses.
 
 
 ## 11. The bioelectric code as a cavity resonance
 
-Levin's findings and the compact-dimension storage model were
+Levin's findings and the material-dimension storage model were
 developed completely independently.  Levin has never invoked
-extra dimensions; the T⁶ model was not built to explain
-biology.  Yet when the two are placed side by side, the
+extra dimensions; the Ma model was not built to explain biology.  Yet when the two are placed side by side, the
 structural parallels are difficult to ignore.
 
 In this section, we do not claim that Levin's bioelectric code
-*is* a compact-dimension resonance.  We observe that if it
+*is* a material-dimension resonance.  We observe that if it
 were, the observed properties would follow naturally.
 
-### 11.1 Substrate independence as mode-level information
+### 11.1 Substrate independence as material-dimension information
 
 Levin's finding: the bioelectric code "signals by virtue of its
 physiological state, with no 1:1 correspondence to any specific
@@ -1221,11 +1225,12 @@ gene product" (Levin & Martyniuk, Biosystems 2017).  A yeast
 pump can substitute for a frog pump if it achieves the same
 voltage.  The information is in the voltage, not the protein.
 
-Compact-dimension analog: the mode distribution of a cavity is
+Material-dimension analog: the mode distribution of a cavity is
 determined by the total electromagnetic field at the cavity
 boundary, not by the molecular source of that field.  A
-compact mode at 30 meV responds to a 30 mV membrane potential
-regardless of whether sodium channels, potassium channels, or
+material-dimension mode at 30 meV responds to a 30 mV membrane
+potential regardless of whether sodium channels, potassium
+channels, or
 an exotic yeast transporter produced it.  The "music" is in the
 waveform, not in the instrument.
 
@@ -1242,9 +1247,10 @@ regions where all cells share the same membrane voltage,
 separated by boundaries (gap-junction isolation zones) where the
 voltage changes abruptly.
 
-In the T⁶ model, each isopotential region would correspond to a
-coherent compact-dimension cavity — a spatial zone where the
-compact modes share a single, self-consistent state vector.
+In the Ma model, each isopotential region would correspond to a
+coherent material-dimension cavity — a spatial zone where the
+material-dimension modes share a single, self-consistent state
+vector.
 The gap junctions serve as the coupling channels between
 adjacent cavities.  The isolation zones are boundaries where the
 mode distribution changes from one pattern to another.
@@ -1274,9 +1280,9 @@ contains enormously more information than the input (a voltage
 value in a small region).  The trigger is a seed; the complexity
 is in the medium.
 
-The compact-dimension analog is the mode cascade described in
+The material-dimension analog is the mode cascade described in
 section 6.3.  A single energy input at one frequency excites
-one compact mode.  That mode interacts nonlinearly with others,
+one material-dimension mode.  That mode interacts nonlinearly with others,
 and the energy cascades toward the fundamental, organizing the
 full mode distribution into a characteristic pattern.  The final
 pattern contains far more structure than the initial input — just
@@ -1285,11 +1291,11 @@ organizes billions of molecules into a precise lattice.  The
 crystal's pattern is not in the seed; it is in the physics of the
 medium.
 
-If a cell's compact-dimension cavity has a characteristic
+If a cell's material-dimension cavity has a characteristic
 pattern that corresponds to "eye," then a voltage trigger that
 excites the right seed mode would initiate a cascade that
 organizes the entire cavity into the "eye" pattern.  The
-bioelectric signal is the seed; the compact-dimension geometry
+bioelectric signal is the seed; the material-dimension geometry
 is the supersaturated solution.
 
 
@@ -1303,33 +1309,33 @@ what it does not.
 
 We propose that the morphogenetic setpoint — the target shape
 that cells build toward during development and regeneration —
-is encoded in the mode distribution of the neutrino T² at the
-cellular scale.
+is encoded in the mode distribution of Ma_ν at the cellular
+scale.
 
 Each cell occupies a location in ordinary 3D space that is also
-a location within the compact-dimension geometry.  The neutrino
-T², with circumferences matching the cell's dimensions, defines
+a location within the material-dimension geometry.  Ma_ν, with
+circumferences matching the cell's dimensions, defines
 a resonant cavity at that location.  The mode pattern of the
 cavity — which modes are excited, and at what amplitudes —
 encodes the local contribution to the organism's target
 morphology.
 
 The voltage gradients that Levin measures across cell membranes
-are, in this picture, the *evanescent tails* of the compact-
-dimension standing waves, projecting from the neutrino T² into
+are, in this picture, the *evanescent tails* of the material-
+dimension standing waves, projecting from Ma_ν into
 ordinary 3+1D spacetime.  This is the same mechanism by which
-the electron's (1,2) mode on the electron T² produces the
-Coulomb field we measure in the laboratory — the confined wave's
-field does not stop at the boundary of the compact dimensions
+the electron's (1,2) mode on Ma_e produces the Coulomb field we
+measure in the laboratory — the confined wave's field does not
+stop at the boundary of the material dimensions
 but extends (with exponential decay) into the surrounding space.
 
 The stop condition is reached when the 3D tissue configuration
-is self-consistent with the compact-dimension template.
+is self-consistent with the material-dimension template.
 Building an organ changes the distribution of charges, currents,
 and fields in 3D space.  These changes feed back into the
-compact modes through evanescent coupling.  When the 3D
-configuration matches the compact-dimension pattern — when the
-evanescent projections of all nearby cavities are mutually
+material-dimension modes through evanescent coupling.  When the
+3D configuration matches the material-dimension pattern — when
+the evanescent projections of all nearby cavities are mutually
 consistent — the error signal drops to zero and growth stops.
 
 ### 12.2 What this explains
@@ -1337,51 +1343,51 @@ consistent — the error signal drops to zero and growth stops.
 If the proposal is correct, several of Levin's otherwise
 puzzling findings become natural consequences:
 
-**Memory survives decapitation.**  The compact-dimension state
+**Memory survives decapitation.**  The material-dimension state
 is not stored in the 3D tissue.  It is a property of the
 geometry at that location in spacetime.  Cutting away the head
 destroys the 3D tissue — the cells, the proteins, the neural
-connections — but does not alter the compact-dimension mode
+connections — but does not alter the material-dimension mode
 pattern.  When new cells grow into the region, they encounter
-the intact compact-dimension template and build accordingly.
+the intact material-dimension template and build accordingly.
 The memory was never in the brain; it was in the geometry.
 
 **Xenobots build novel forms from a frog genome.**  Frog
 embryonic cells normally develop within the bioelectric
-environment of the embryo, which constrains their compact-
+environment of the embryo, which constrains their material-
 dimension cavities to the "frog" mode pattern.  When cells are
 removed from the embryo and placed in a dish, those constraints
-are released.  The cells' compact-dimension cavities are free to
+are released.  The cells' material-dimension cavities are free to
 explore different regions of mode space, and they settle into a
 different pattern — one that corresponds to xenobot morphology,
 not frog morphology.  The genome does not limit them; the
-available compact-dimension modes do.
+available material-dimension modes do.
 
-**The bioelectric code is substrate-independent.**  The compact
-modes respond to the aggregate electromagnetic field at the
-cavity boundary, which depends on voltage but not on the
+**The bioelectric code is substrate-independent.**  The
+material-dimension modes respond to the aggregate electromagnetic
+field at the cavity boundary, which depends on voltage but not on the
 molecular identity of the ion channels that produced it.
 Replacing a frog pump with a yeast pump changes the hardware but
-not the signal.  The compact-dimension cavity sees the same
+not the signal.  The material-dimension cavity sees the same
 voltage and responds the same way.
 
 **Trophic memory persists across tissue turnover.**  The
-compact-dimension state's lifetime is set by cross-shear
+material-dimension state's lifetime is set by cross-shear
 coupling (section 6.2), not by molecular half-lives.  If the
-cross-shear is small — and in the T⁶ model, the inter-sheet
-tilts are on the order of 2° — the compact-mode pattern can
-persist far longer than any protein, any epigenetic mark, or
+cross-shear is small — and in the Ma model, the inter-sheet
+tilts are on the order of 2° — the material-dimension mode
+pattern can persist far longer than any protein, any epigenetic mark, or
 any cell.  Deer antler growth plates can "remember" damage for
-months because the compact-dimension state at that location
+months because the material-dimension state at that location
 outlasts every molecular pathway in the tissue.
 
 ### 12.3 What this does not explain
 
 Honesty requires stating the limits.
 
-This proposal does not explain **how** compact modes couple to
-cellular voltage.  It asserts that evanescent coupling exists
-(because it must, within the T⁶ framework — without it,
+This proposal does not explain **how** material-dimension modes
+couple to cellular voltage.  It asserts that evanescent coupling
+exists (because it must, within the Ma framework — without it,
 particles would have no fields) but does not compute its
 strength.
 
@@ -1389,7 +1395,7 @@ It does not **predict specific head shapes**.  It identifies the
 storage medium but does not decode the stored information.
 Predicting that a planarian will grow a round head rather than a
 flat head would require knowing the complete mode distribution of
-the neutrino T² at the scale of the planarian's body — a
+Ma_ν at the scale of the planarian's body — a
 calculation that is currently far out of reach.
 
 It does not **replace** Levin's molecular-level findings.  The
@@ -1397,14 +1403,14 @@ ion channels, gap junctions, neurotransmitter signals, and
 transcriptional responses that Levin's lab studies are real and
 functionally important.  In our picture, they are the *readout
 and actuation hardware* — the machinery that translates the
-compact-dimension state into cellular behavior.  We are
+material-dimension state into cellular behavior.  We are
 proposing an underlying storage layer, not denying the
 existence of the layers above it.
 
 The relationship is analogous to the relationship between a
 hard drive and the software that runs on it.  Understanding the
 software (Levin's bioelectric code) does not require knowing
-the physics of the hard drive (compact dimensions).  But if you
+the physics of the hard drive (material dimensions).  But if you
 want to know where the data lives *physically*, you eventually
 need the hardware layer.
 
@@ -1418,18 +1424,18 @@ We label each prediction by the component it tests.
 
 ### 13.1 THz perturbation of regeneration
 
-**Tests:** the link between T⁶ mode spectrum and biology.
+**Tests:** the link between Ma mode spectrum and biology.
 
 **Experiment:** Expose regenerating planaria to narrow-band
 terahertz radiation at specific frequencies.  Use frequencies
-matching the neutrino T² mode spectrum (for the T⁶ model's
+matching the Ma_ν mode spectrum (for the Ma model's
 Assignment A: modes near 29, 30, and 58 meV, corresponding to
 ~7.0, 7.2, and 14.0 THz) and control frequencies that fall
 between modes.
 
 **Prediction:** On-resonance frequencies disrupt or alter
 regeneration significantly more than off-resonance frequencies
-of equal intensity.  If compact-dimension modes participate in
+of equal intensity.  If material-dimension modes participate in
 morphogenesis, resonant THz radiation should interfere with them;
 off-resonance radiation should not.
 
@@ -1446,9 +1452,9 @@ membrane resting potentials (Vmem) across a wide range of cell
 types, developmental stages, and organisms.  Compile a
 distribution of observed Vmem values.
 
-**Prediction:** If compact-dimension modes influence or constrain
-Vmem, the distribution should show clustering near values that
-correspond to neutrino T² mode energies — that is, near −29 mV,
+**Prediction:** If material-dimension modes influence or
+constrain Vmem, the distribution should show clustering near
+values that correspond to Ma_ν mode energies — that is, near −29 mV,
 −30 mV, −42 mV, −58 mV, and other mode-derived values.  The
 distribution would not be uniform or Gaussian; it would show
 preferred values (peaks) at mode-specific voltages.
@@ -1464,9 +1470,9 @@ existing electrophysiology data.
 
 ### 13.3 Neutrino mass sum in biological spectra
 
-**Tests:** a specific T⁶ prediction.
+**Tests:** a specific Ma prediction.
 
-The T⁶ model predicts the sum of neutrino masses:
+The Ma model predicts the sum of neutrino masses:
 Σm_ν ≈ 117 meV (for Assignment A in the large-r limit).  This
 number has not been confirmed by cosmology — current
 observations provide an upper bound of ~120 meV but have not
@@ -1476,20 +1482,21 @@ measured the sum precisely.
 tissue (particularly DNA-rich tissue) for spectral features at
 28.3 THz (the frequency corresponding to 117 meV).
 
-**Prediction:** If compact modes couple to molecular vibrations,
-the total neutrino mass — which represents a characteristic
-energy scale of the neutrino T² — should appear as a resonance,
+**Prediction:** If material-dimension modes couple to molecular
+vibrations, the total neutrino mass — which represents a
+characteristic energy scale of Ma_ν — should appear as a
+resonance,
 absorption edge, or spectral feature in biological THz spectra.
 
 **What would falsify it:** Absence of any spectral feature at
 28.3 THz in biological tissue, combined with a cosmological
 measurement confirming Σm_ν ≈ 117 meV, would indicate that the
-T⁶ mode spectrum does not couple to biology.
+Ma mode spectrum does not couple to biology.
 
 ### 13.4 THz shielding of developing organisms
 
 **Tests:** whether THz fields mediate the coupling between
-ordinary space and compact dimensions.
+ordinary space and material dimensions.
 
 **Experiment:** Raise model organisms (planaria, zebrafish, frog
 embryos) in environments that strongly attenuate THz radiation.
@@ -1500,14 +1507,15 @@ rates to controls raised in standard (THz-transparent)
 environments.
 
 **Prediction:** If THz-frequency electromagnetic fields are
-the coupling channel between 3+1D and compact-dimension modes,
+the coupling channel between 3+1D and material-dimension modes,
 organisms raised in THz-depleted environments should exhibit
 morphogenetic anomalies: slower regeneration, increased
 frequency of patterning errors, or altered body proportions.
 
 **What would falsify it:** If THz-shielded organisms develop
 and regenerate normally, THz radiation is not required for
-compact-mode coupling (or the coupling operates through a
+material-dimension mode coupling (or the coupling operates
+through a
 different channel).
 
 ### 13.5 Sub-quantum information extraction
@@ -1543,7 +1551,7 @@ remaining mechanisms (sections 7.1–7.3) are unaffected.
 This paper is a chain of reasoning, and a chain is only as
 strong as its weakest link.  Each link has a known status:
 
-**The T⁶ model** reproduces electron and proton masses from
+**The Ma model** reproduces electron and proton masses from
 geometry, derives the fine-structure constant from torus shear,
 predicts neutrino mass-squared splittings that match experiment,
 and produces the neutron as an emergent cross-sheet mode with
@@ -1571,23 +1579,24 @@ biological systems described in section 10 have conventional
 ### 14.2 The coupling gap
 
 The central missing calculation is the coupling strength between
-3+1D electromagnetic fields and compact-dimension modes.  This
-single number determines whether compact-dimension storage is a
+3+1D electromagnetic fields and material-dimension modes.  This
+single number determines whether material-dimension storage is a
 real physical phenomenon or a mathematical curiosity.
 
 If the coupling is too weak, it cannot be exploited: writing
 would require impractical energies, reading would produce
 undetectable signals, and biological systems could not have
-evolved to use it.  If the coupling is too strong, the compact
-modes would thermalize with the 3+1D environment, scrambling
-any stored information.
+evolved to use it.  If the coupling is too strong, the material-
+dimension modes would thermalize with the 3+1D environment,
+scrambling any stored information.
 
 The useful range — strong enough to write and read, weak enough
 to retain — may or may not exist.  The calculation requires
-solving the Maxwell equations on the full T⁶ metric with
+solving the Maxwell equations on the full Ma metric with
 realistic cross-shear parameters and computing the overlap
-integral between 3+1D and compact-mode field configurations.
-This is difficult but not impossible with current mathematical
+integral between 3+1D and material-dimension mode field
+configurations.  This is difficult but not impossible with
+current mathematical
 tools.
 
 ### 14.3 Levin's own framework is sufficient for his data
@@ -1614,7 +1623,7 @@ physically?" — may have a conventional answer that we have not
 considered.  Chromatin structure, cytoskeletal organization,
 extracellular matrix properties, and other molecular-scale
 phenomena are all candidates for durable information storage.
-The compact-dimension hypothesis is an unconventional answer to
+The material-dimension hypothesis is an unconventional answer to
 a question that may have a conventional solution.
 
 ### 14.4 The paper's value as a "what if"
@@ -1622,17 +1631,17 @@ a question that may have a conventional solution.
 This paper is a map of implications, not a claim of discovery.
 
 Its value lies in three things.  First, it makes the logical
-chain explicit.  Each link — T⁶ geometry, threshold absorption,
-compact-dimension storage, numerical coincidences, biological
+chain explicit.  Each link — Ma geometry, threshold absorption,
+material-dimension storage, numerical coincidences, biological
 coupling — can be tested independently.  A failure at any link
 collapses the chain at that point but leaves the links below
-intact.  The T⁶ model's validity does not depend on threshold
+intact.  The Ma model's validity does not depend on threshold
 theory; the biological coincidences do not depend on whether
 Reiter's experiments are correct; the storage hypothesis stands
 or falls on the coupling calculation regardless of biology.
 
 Second, it generates predictions that none of the component
-frameworks produce alone.  The T⁶ model by itself does not
+frameworks produce alone.  The Ma model by itself does not
 predict THz effects on planarian regeneration.  Threshold theory
 by itself does not predict preferred membrane voltages.  Levin's
 bioelectric code by itself does not predict spectral features at
@@ -1655,11 +1664,11 @@ retire the hypothesis, organized by feasibility.
 **Achievable now, with existing data:**
 
 - Meta-analysis of published Vmem distributions across cell
-  types, looking for clustering at neutrino T² mode energies
+  types, looking for clustering at Ma_ν mode energies
   (section 13.2).
 - Survey of biological THz absorption spectra for features at
   mode-predicted frequencies (section 13.3).
-- Completion of the T⁶ model's internal program: constraining
+- Completion of the Ma model's internal program: constraining
   the three aspect ratios, computing the full six-dimensional
   spinor structure, and resolving the neutron spin composition.
 
@@ -1673,22 +1682,22 @@ retire the hypothesis, organized by feasibility.
 
 **Requiring theoretical breakthroughs:**
 
-- Computing the 3+1D ↔ compact-dimension coupling strength from
-  the T⁶ metric (section 14.2).
-- Deriving the T⁶ model from a fundamental Lagrangian or action
+- Computing the 3+1D ↔ material-dimension coupling strength from
+  the Ma metric (section 14.2).
+- Deriving the Ma model from a fundamental Lagrangian or action
   principle.
-- Developing a quantitative model of how compact-mode patterns
-  map to morphogenetic target states.
+- Developing a quantitative model of how material-dimension mode
+  patterns map to morphogenetic target states.
 
 The last item — decoding the "morphogenetic Rosetta Stone" that
-translates between compact-mode distributions and body plans —
-is the most ambitious and the most distant.  But every item on
+translates between material-dimension mode distributions and
+body plans — is the most ambitious and the most distant.  But every item on
 this list is, in principle, achievable.  The hypothesis is
 falsifiable, the predictions are specific, and the tools to test
 them either exist or are under active development.
 
 The question "can spacetime store information?" may sound like
-philosophy.  But if the T⁶ model is correct, it is not
+philosophy.  But if the Ma model is correct, it is not
 philosophy — it is engineering.  And if three numerical
 coincidences and a laboratory full of regenerating flatworms are
 any guide, it may also be biology.

@@ -5,10 +5,10 @@ observe in experiments is not a fundamental property of nature
 but an illusion created by threshold detectors acting on
 classical waves.  This primer explains the theory, catalogs the
 experimental claims, and examines where the ideas touch — and
-diverge from — our T⁶ model of particles as confined light.
+diverge from — our Ma (six-dimensional material space) model of particles as confined light.
 
 The final section explores a speculative but physically grounded
-possibility: that the T⁶ model may *contain* a threshold-like
+possibility: that the Ma model may *contain* a threshold-like
 mechanism, arising from the natural tendency of energy in
 coupled oscillating systems to cascade into the fundamental mode.
 
@@ -284,9 +284,9 @@ Q_{m/h} ratio of the detector atoms.
 
 ---
 
-## 4. Comparison with our T⁶ model
+## 4. Comparison with our Ma model
 
-The T⁶ model and Reiter's threshold model start from a
+The Ma model and Reiter's threshold model start from a
 strikingly similar philosophical premise and then diverge sharply
 in their mathematical implementation.
 
@@ -294,9 +294,9 @@ in their mathematical implementation.
 
 **4.1 — Particles are wave phenomena, not point objects.**
 
-Our T⁶ model's founding axiom: "particles are confined light."
-An electron is a photon trapped on a T², a proton on another T²,
-neutrinos on a third.  Reiter's founding axiom: particles are
+Our Ma model's founding axiom: "particles are confined light."
+An electron is a photon trapped on Ma_e, a proton on Ma_p,
+neutrinos on Ma_ν.  Reiter's founding axiom: particles are
 charge-waves, not point objects.  Light is classical.  Both
 frameworks reject the standard model's treatment of particles as
 elementary point-like entities and instead derive particle
@@ -305,11 +305,11 @@ properties from wave behavior.
 **4.2 — E = hν as a property of geometry/matter, not free
 light.**
 
-In the T⁶ model, quantization E = ℏc/L arises from the compact
+In the Ma model, quantization E = ℏc/L arises from the material
 geometry — it is a property of the torus (the "matter"), not of
 photons propagating freely in 3+1 dimensions.  A free-space
 photon in our model is an ordinary classical EM wave; the
-quantization that produces particle masses occurs at the compact
+quantization that produces particle masses occurs at the material
 boundary.
 
 Reiter makes the same point, following Planck's 1911 position:
@@ -317,13 +317,13 @@ E = hν is a property of matter (of the absorber/emitter), not of
 light.  Light is classical and continuous.
 
 This is the deepest resonance between the two frameworks.  Both
-locate quantization in the structure of matter (compact geometry
-in T⁶; absorber thresholds in Reiter), not in the nature of free
+locate quantization in the structure of matter (material geometry
+in Ma; absorber thresholds in Reiter), not in the nature of free
 electromagnetic radiation.
 
 **4.3 — The ratio principle echoes geometric ratios.**
 
-In the T⁶ model, observable quantities emerge as ratios of
+In the Ma model, observable quantities emerge as ratios of
 geometric parameters.  The fine-structure constant α is:
 
     α = r² sin²(2πs) / (4π(2−s)² √(r²(1+2s)²+4))
@@ -343,8 +343,8 @@ constants.
 
 **4.4 — Threshold-like behavior in mode selection.**
 
-The T⁶ mode spectrum has a structural property that resembles
-thresholding.  Not every vibration pattern on the T⁶ manifests as
+The Ma mode spectrum has a structural property that resembles
+thresholding.  Not every vibration pattern on Ma manifests as
 a stable particle.  Only modes satisfying specific topological
 constraints — correct winding numbers, coprimality, spin
 selection — are stable.  Modes that fail these constraints either
@@ -352,7 +352,7 @@ do not couple to known forces or decay rapidly.
 
 In the neutrino sector: only modes with tube winding |n₃| = 1
 carry weak charge and can be produced in beta decay (R26 F35).
-The 14 other light modes on the neutrino T² are "dark" — they
+The 14 other light modes on Ma_ν are "dark" — they
 exist in the spectrum but cannot thermalize.  This acts as a
 selection threshold: a mode must satisfy discrete topological
 criteria to participate in physics.
@@ -360,14 +360,14 @@ criteria to participate in physics.
 
 ### Points of divergence
 
-**4.5 — Quantization is topological in T⁶; Reiter rejects
+**4.5 — Quantization is topological in Ma; Reiter rejects
 intrinsic quantization.**
 
-This is the core disagreement.  In the T⁶ model, quantization is
+This is the core disagreement.  In the Ma model, quantization is
 exact and topological.  Mode quantum numbers (n₁, ..., n₆) are
 integers because the wave must satisfy periodic boundary
 conditions on the torus.  Mass eigenvalues are discrete because
-the spectrum of the Laplacian on T⁶ is discrete.  Charge is
+the spectrum of the Laplacian on Ma is discrete.  Charge is
 exactly ±e because the (1,2) winding produces exactly one unit of
 net E-flux projection through the shear mechanism.
 
@@ -384,7 +384,7 @@ amounts exist but are invisible to threshold detectors.
 Reiter's position: "There are no photons.  Light is classical."
 
 Our position: "Everything IS photons" — particles are photons
-trapped on compact geometry.
+trapped on material geometry.
 
 This disagreement is partly semantic.  When Reiter says "no
 photons," he means no indivisible energy packets traveling through
@@ -392,7 +392,7 @@ space.  When we say "everything is photons," we mean that the
 electromagnetic field is the only fundamental ingredient, and
 particle properties emerge from its confinement.  Our free-space
 photon is also effectively a classical EM wave — the
-quantization occurs at the compact geometry level, not during
+quantization occurs at the material geometry level, not during
 propagation.
 
 So the disagreement about the nature of free-space light is
@@ -401,12 +401,12 @@ actually smaller than the slogans suggest.
 **4.7 — No geometric mechanism for spin or charge.**
 
 Reiter's framework lacks the mathematical machinery to explain
-spin or charge from first principles.  In the T⁶ model:
+spin or charge from first principles.  In the Ma model:
 
 - Spin-½ arises from the (1,2) winding topology (topological,
   exact, geometry-independent).
 - Charge arises from the shear-induced breaking of φ-symmetry
-  on the embedded T² (R19).
+  on the embedded material sheet (R19).
 - The g-factor g ≈ 2 follows from the spin-1 photon producing
   a spin-½ fermion.
 
@@ -414,14 +414,14 @@ The threshold model explains *why quantization appears* (threshold
 detectors on classical waves) but does not explain *what
 determines the specific quantum numbers* that nature selects.
 
-**4.8 — The T⁶ model's quantization is robust against
+**4.8 — The Ma model's quantization is robust against
 Reiter's challenge.**
 
 Even if Reiter is correct that free-space absorption is
-continuous rather than quantized, the T⁶ model's predictions
+continuous rather than quantized, the Ma model's predictions
 about mass spectra, charges, and spins are unchanged.  These
-properties depend on the compact geometry (mode spectrum of the
-Laplacian on T⁶), not on the nature of free-space propagation.
+properties depend on the material geometry (mode spectrum of the
+Laplacian on Ma), not on the nature of free-space propagation.
 The integer winding numbers, the discrete mass eigenvalues, the
 charge mechanism — all are topological and survive any
 reinterpretation of how energy is absorbed by macroscopic
@@ -430,10 +430,10 @@ detectors.
 
 ---
 
-## 5. Could T⁶ explain the threshold effect?
+## 5. Could Ma explain the threshold effect?
 
 If Reiter's experimental claims are eventually confirmed by
-independent replication, our T⁶ model may contain a natural
+independent replication, our Ma model may contain a natural
 mechanism to explain them — without abandoning quantization.
 The mechanism involves energy cascade between oscillation modes,
 a well-established phenomenon in wave physics.
@@ -500,26 +500,26 @@ genuine phase transition, experimentally demonstrated in
 thousands of laser systems since 1960.
 
 
-### 5.3 — How this maps onto T⁶
+### 5.3 — How this maps onto Ma
 
-In the T⁶ model, each T² subplane supports a spectrum of
-standing-wave modes.  The fundamental (1,2) mode on the
-electron's T² IS the electron.  Higher modes are higher-energy
-excitations — the muon (if it maps to an excited electron-T²
+In the Ma model, each material sheet supports a spectrum of
+standing-wave modes.  The fundamental (1,2) mode on
+Ma_e IS the electron.  Higher modes are higher-energy
+excitations — the muon (if it maps to an excited Ma_e
 mode), other unstable particles, or modes that don't couple to
 known forces.
 
-Consider what happens when energy is deposited on a T²:
+Consider what happens when energy is deposited on a material sheet:
 
 **Step 1 — Energy at the fundamental.**  If the incoming energy
-matches the (1,2) mode energy (m_e c² for the electron T²), it
+matches the (1,2) mode energy (m_e c² for Ma_e), it
 excites the fundamental directly.  A stable electron exists.
 
 **Step 2 — Energy between fundamental and first harmonic.**  If
 additional energy arrives, but not enough to excite the next
 stable mode, it must distribute across higher modes temporarily.
-These modes are the T²'s overtones — higher winding numbers,
-higher masses.  On an isolated T², these higher modes are
+These modes are the sheet's overtones — higher winding numbers,
+higher masses.  On an isolated material sheet, these higher modes are
 quasi-stable at best.  The excess energy sits in a superposition
 of non-fundamental modes, unable to form a stable particle.
 
@@ -529,9 +529,9 @@ into a recognizable particle.
 
 **Step 3 — Cascade to the fundamental.**  The higher modes are
 unstable.  Through the same mechanisms that operate in any
-oscillating system — dissipation (coupling to the non-compact
+oscillating system — dissipation (coupling to the spatial
 dimensions), nonlinear mode coupling (cross-shear interactions
-between T² planes), or parametric processes — energy cascades
+between material sheets), or parametric processes — energy cascades
 from the higher modes back to the fundamental.  When enough
 energy has accumulated in the fundamental to satisfy the
 topological boundary conditions (integer winding, correct
@@ -546,11 +546,11 @@ This provides a geometric explanation for Reiter's observations
 (if confirmed):
 
 - **"Pre-loaded" detectors** are detector atoms whose internal
-  compact geometry already has sub-threshold energy distributed
+  material geometry already has sub-threshold energy distributed
   across non-fundamental modes from previous interactions.
 
 - **"Continuous absorption"** corresponds to incoming EM energy
-  gradually populating the mode spectrum of the compact space,
+  gradually populating the mode spectrum of Ma,
   without yet triggering a cascade to the fundamental.
 
 - **"Explosive emission"** (the detector click) corresponds to
@@ -560,7 +560,7 @@ This provides a geometric explanation for Reiter's observations
 
 - **The beam-split coincidence** would occur because a classical
   EM wave splits and each half delivers energy to a detector
-  whose compact modes are already pre-loaded.  Neither half alone
+  whose material modes are already pre-loaded.  Neither half alone
   would create a new particle from nothing — each half merely
   supplies the final increment that triggers a cascade in an
   already-loaded system.
@@ -569,7 +569,7 @@ This provides a geometric explanation for Reiter's observations
 ### 5.4 — Threshold from topology
 
 There is a deeper reason why the cascade produces sharp
-thresholds rather than gradual transitions.  On a compact
+thresholds rather than gradual transitions.  On a closed
 manifold, the mode spectrum is discrete.  The (1,2) fundamental
 has a specific energy E₀ determined by the torus geometry.
 There is no mode at 0.99 × E₀ or 1.01 × E₀ — the spectrum has
@@ -587,16 +587,16 @@ determined by the cavity length (L):
     Δν = c / (2L)
 
 The laser threshold is sharp because the mode spacing creates a
-discrete set of allowed frequencies.  In the T⁶ model, the "mode
-spacing" is set by the compact geometry, and the threshold
+discrete set of allowed frequencies.  In the Ma model, the "mode
+spacing" is set by the material geometry, and the threshold
 sharpness is likewise set by the topology.
 
 
 ### 5.5 — Decay as the reverse process
 
-The T⁶ model's treatment of unstable particles is the reverse
-of the loading process.  The muon (if it is an excited electron-
-T² mode) is energy that has been loaded into a higher mode and
+The Ma model's treatment of unstable particles is the reverse
+of the loading process.  The muon (if it is an excited Ma_e
+mode) is energy that has been loaded into a higher mode and
 has not yet cascaded to the fundamental.  It is metastable —
 held up temporarily by some coupling barrier — but eventually
 the energy reorganizes:
@@ -606,18 +606,18 @@ the energy reorganizes:
 The muon's 2.2 μs lifetime measures the timescale for energy to
 cascade from the excited mode to the fundamental.  The neutron's
 15-minute lifetime reflects the weakness of cross-sheet coupling
-(only 2.2° of tilt between the electron and proton T² planes) —
+(only 2.2° of tilt between Ma_e and Ma_p) —
 a very slow cascade.
 
 In the language of mode coupling:
 
 | Particle | Description | Cascade time |
 |----------|-------------|-------------|
-| Electron | Fundamental of electron T² | Stable (no lower mode) |
-| Muon | Excited electron-T² mode (?) | ~2.2 μs |
+| Electron | Fundamental of Ma_e | Stable (no lower mode) |
+| Muon | Excited Ma_e mode (?) | ~2.2 μs |
 | Neutron | Cross-sheet mode (1,2,0,0,1,2) | ~15 min |
-| Proton | Fundamental of proton T² | Stable (no lower mode) |
-| Neutrinos | Fundamental modes of neutrino T² | Stable |
+| Proton | Fundamental of Ma_p | Stable (no lower mode) |
+| Neutrinos | Fundamental modes of Ma_ν | Stable |
 
 Stable particles are the fundamentals.  Unstable particles are
 excited modes.  Decay is energy cascading to the fundamental.
@@ -628,7 +628,7 @@ mode and the fundamental.
 ### 5.6 — What this does and does not explain
 
 **Does explain (in principle):**
-- Why detectors exhibit threshold behavior: the compact mode
+- Why detectors exhibit threshold behavior: the material mode
   spectrum is discrete, so mode occupation is all-or-nothing.
 - Why particle creation has sharp energy thresholds: you need at
   least E₀ to excite the fundamental.
@@ -641,19 +641,19 @@ mode and the fundamental.
 - Reiter's specific experimental results (beam-split
   coincidences exceeding chance).  These would require a detailed
   model of how sub-threshold energy distributes across non-
-  fundamental compact modes in a macroscopic detector crystal, and
+  fundamental material modes in a macroscopic detector crystal, and
   how incoming EM radiation loads those modes.  This is far beyond
-  the current state of the T⁶ framework.
+  the current state of the Ma framework.
 - Whether pre-loaded states actually exist in detector materials.
   This is an experimental question, not a theoretical one.
-- The ratio principle specifically.  In the T⁶ model, the ratios
+- The ratio principle specifically.  In the Ma model, the ratios
   e/m, h/m, e/h emerge from geometry, but the individual
   constants are also well-defined (charge is exactly e, mass is
   exactly the mode energy, h is exactly the periodicity scale of
-  the compact space).  Sub-quantum ratios do not exist in the T⁶
+  Ma).  Sub-quantum ratios do not exist in the Ma
   framework.
 
-The honest summary: the T⁶ model's mode-cascade mechanism
+The honest summary: the Ma model's mode-cascade mechanism
 provides a natural language for threshold-like behavior in
 particle physics (creation thresholds, decay cascades, the
 stability of fundamental modes).  Whether it can explain the
@@ -716,23 +716,23 @@ question that would require substantial theoretical development.
 
 ## 7. Summary
 
-| Aspect | Threshold Model | T⁶ Model | Agreement? |
+| Aspect | Threshold Model | Ma Model | Agreement? |
 |--------|----------------|----------|------------|
-| Nature of particles | Charge-waves, not points | Confined photons on T⁶ | ✓ Both reject point particles |
+| Nature of particles | Charge-waves, not points | Confined photons on Ma | ✓ Both reject point particles |
 | Nature of free light | Classical wave, no photons | Classical EM wave (free-space) | ✓ Agree on free-space light |
-| Where quantization arises | Detector thresholds (matter) | Compact geometry (topology) | ✓ Both: in matter, not in light |
+| Where quantization arises | Detector thresholds (matter) | Material geometry (topology) | ✓ Both: in matter, not in light |
 | Is quantization fundamental? | No — thresholds create illusion | Yes — topology enforces it | ✗ Core disagreement |
 | h, e, m_e | Maxima / thresholds | Exact, topological | ✗ |
 | Experiments measure ratios | Yes — ratios conserved, constants hidden | Yes — geometry produces ratios | ~ Partial overlap |
 | Sub-quantum states exist? | Yes, in free space | No — spectrum is discrete | ✗ |
-| Mechanism for decay | Not addressed | Mode cascade to fundamental | T⁶ extends the picture |
+| Mechanism for decay | Not addressed | Mode cascade to fundamental | Ma extends the picture |
 | Mechanism for detection | Loading + threshold | Not yet addressed | Open question |
 
 The two frameworks are complementary more than contradictory.
-The threshold model asks *how detectors work* (a question the T⁶
-model has not addressed).  The T⁶ model asks *what particles are*
+The threshold model asks *how detectors work* (a question the Ma
+model has not addressed).  The Ma model asks *what particles are*
 (a question the threshold model leaves open).  If both are
 partially correct, the synthesis would be: particles are
-topologically quantized modes on compact geometry (T⁶), and
+topologically quantized modes on material geometry (Ma), and
 their creation/destruction in detectors involves a mode-cascade
 process that looks like threshold loading from the outside.

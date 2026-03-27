@@ -78,15 +78,15 @@ What determines which way E points — inward (electron) or
 outward (positron)?  Two things together:
 
 1. **The photon's polarization handedness** — right vs left
-   circular polarization determines which face of the compact
+   circular polarization determines which face of the material
    surface E exits from.
-2. **The orientation of the compact dimensions relative to xyz**
-   — how T² "sits" in the full spacetime determines which 3D
+2. **The orientation of the material dimensions relative to xyz**
+   — how the material sheet "sits" in the full spacetime determines which 3D
    direction that corresponds to.
 
 Neither alone fixes the charge sign; it's the combination.
 Flipping either one (reversing the polarization, or mirroring
-the compact-dimension orientation) flips the charge — this is
+the material-dimension orientation) flips the charge — this is
 charge conjugation (C).
 
 The dimensional orientation is axiomatic — it's part of how the
@@ -95,7 +95,7 @@ photon's handedness is a degree of freedom within that structure.
 
 ## 3. The flat-rectangle picture
 
-In the compact-dimension framework, the photon lives on a flat
+In the material-dimension framework, the photon lives on a flat
 rectangle with periodic boundary conditions (opposite edges
 identified).  This is a flat torus T² — topologically equivalent
 to the 3D donut, but without curvature.
@@ -106,8 +106,8 @@ On this rectangle:
   L_θ/L_φ, completing two horizontal and one vertical crossing
   per cycle).
 - **E extends perpendicular to the rectangle**, out into our
-  3+1D spacetime.  The rectangle is the compact dimensions;
-  "perpendicular" is the non-compact space we live in.
+  3+1D spacetime.  The rectangle is the material dimensions;
+  "perpendicular" is the spatial dimensions we live in.
 - **B is tangent to the rectangle**, perpendicular to the photon's
   path within the plane.
 

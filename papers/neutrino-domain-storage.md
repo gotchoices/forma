@@ -1,7 +1,7 @@
 # The Neutrino-Domain Memory: Architecture, Capacity, and Mobility
 
 **Status:** outline
-**Companion to:** [Sub-Quantum Memory](storage-in-t6.md)
+**Companion to:** [Sub-Quantum Memory](sub-quantum-memory.md)
 
 ---
 
@@ -9,10 +9,10 @@
 
 | # | Section | Story beat |
 |---|---------|------------|
-| 1 | The neutrino sheet | T²_ν is a feature of spacetime at every point; the concert-hall analogy |
+| 1 | The neutrino sheet | Ma_ν is a feature of spacetime at every point; the concert-hall analogy |
 | 2 | The address space | Each cavity has a frequency-indexed mode spectrum |
 | 3 | Information capacity | How much can one cavity store, and how does it scale? |
-| 4 | Neutrons as gateways | Every neutron is a cross-plane node that couples to T²_ν |
+| 4 | Neutrons as gateways | Every neutron is a cross-plane node that couples to Ma_ν |
 | 5 | Mobility solved | Neutrons are bound to atoms; the gateway travels with the cell |
 | 6 | Three regimes | Cell death, locomotion, and violent disruption |
 | 7 | Comparison to engineered memory | How the architecture maps to RAM, radio, and holography |
@@ -22,12 +22,13 @@
 
 ## 1. The neutrino sheet
 
-### 1.1 The compact dimensions exist everywhere
+### 1.1 The material dimensions exist everywhere
 
-The neutrino T² (hereafter "neutrino sheet" or T²_ν) is not
-located inside a neutrino particle.  It is a structural feature
-of spacetime — two compact dimensions (θ₃, θ₄) that exist at
-every point in ordinary 3D space.  A neutrino particle is a
+The neutrino sheet (Ma_ν, the six-dimensional material space's
+neutrino subplane) is not located inside a neutrino particle.
+It is a structural feature of spacetime — two material
+dimensions (θ₃, θ₄) that exist at every point in ordinary
+3D space.  A neutrino particle is a
 specific standing-wave excitation on this geometry, the way a
 specific note is a vibration of a guitar string.  The string is
 there whether or not anyone is playing.
@@ -43,11 +44,11 @@ the hall's mode pattern, not in the violins.
 
 ### 1.3 Accessing the hall requires a door
 
-The concert hall exists everywhere, but its modes are in compact
+The concert hall exists everywhere, but its modes are in material
 dimensions — inaccessible to ordinary electromagnetic fields
 except through cross-dimensional coupling.  To write energy into
 the hall, or read it back, something must bridge the gap between
-ordinary 3D space and the neutrino sheet.  That bridge is the
+ordinary 3D space (S) and the neutrino sheet.  That bridge is the
 neutron (section 4).
 
 
@@ -55,8 +56,8 @@ neutron (section 4).
 
 ### 2.1 Mode labeling
 
-Each standing wave on T²_ν is labeled by an integer pair (n₃,
-n₄) — the number of wavelengths around each compact loop.  The
+Each standing wave on Ma_ν is labeled by an integer pair (n₃,
+n₄) — the number of wavelengths around each material loop.  The
 pair is the mode's address.  Its energy (and therefore frequency)
 is uniquely determined by the address and the geometry:
 
@@ -67,17 +68,17 @@ with E₀ = 29.26 meV, r ≈ 5, s = 0.022 (from R26 Assignment A).
 ### 2.2 Frequency as address
 
 Unlike RAM (which addresses by physical location on a chip),
-compact-dimension storage addresses by frequency.  Each mode is
+material-dimension storage addresses by frequency.  Each mode is
 a distinct frequency channel.  Writing to mode (1,0) does not
 disturb mode (3,2), just as tuning a radio to one station does
 not interfere with another.  All channels occupy the same
 physical location simultaneously — wavelength-division
-multiplexing in compact dimensions.
+multiplexing in material dimensions.
 
 ### 2.3 One cavity per ~(100 μm)³
 
-T²_ν has circumferences L₃ ≈ 200 μm and L₄ ≈ 42 μm.  The
-spatial resolution of compact-mode excitations is set by the
+Ma_ν has circumferences L₃ ≈ 200 μm and L₄ ≈ 42 μm.  The
+spatial resolution of material-mode excitations is set by the
 Compton wavelength of the lightest neutrino mode (~42 μm).  Two
 regions of space closer than ~42 μm share the same cavity and
 cannot store independent information.  The spatial grain is one
@@ -89,8 +90,8 @@ biological cell.
 
 ### 3.1 Mode counting
 
-The number of modes below energy E_max on a T² with aspect
-ratio r is:
+The number of modes below energy E_max on a material sheet with
+aspect ratio r is:
 
     N(E_max) ≈ π r (E_max / E₀)²
 
@@ -141,43 +142,43 @@ cavity holds about 160 bytes — less than a tweet.
 | Laptop RAM | 16–64 GB |
 | High-end server | 1–4 TB |
 | Human brain (neural estimate) | ~2.5 PB |
-| Compact-dim. body (100 meV) | ~6 PB |
+| Ma-dim. body (100 meV) | ~6 PB |
 | Library of Congress (digitized) | ~15 PB |
-| Compact-dim. body (1 eV) | ~555 PB |
+| Ma-dim. body (1 eV) | ~555 PB |
 
 
 ## 4. Neutrons as gateways to the neutrino sheet
 
 ### 4.1 The neutron is a cross-plane mode
 
-In the T⁶ model, the neutron is not a bag of quarks.  It is a
+In the Ma model, the neutron is not a bag of quarks.  It is a
 single cross-plane standing wave: mode (1,2,0,0,1,2), spanning
-the electron T² (dimensions 1–2) and the proton T² (dimensions
-5–6).  Its charge neutrality follows from the cancellation of
-the electron-T² and proton-T² charge contributions.  Its mass
+the electron sheet Ma_e (dimensions 1–2) and the proton sheet
+Ma_p (dimensions 5–6).  Its charge neutrality follows from the
+cancellation of the Ma_e and Ma_p charge contributions.  Its mass
 exceeds the proton's because the cross-shear coupling σ_ep adds
 energy.
 
 ### 4.2 Cross-shear couples all three sheets
 
-The T⁶ metric contains cross-shear parameters that couple every
-pair of T² subplanes.  The neutron's mode directly involves the
+The Ma metric contains cross-shear parameters that couple every
+pair of material-sheet subplanes.  The neutron's mode directly involves the
 electron–proton coupling (σ_ep ≈ 0.038).  But the metric also
 contains electron–neutrino coupling (σ_eν) and proton–neutrino
 coupling (σ_νp).  A neutron — a physical excitation that already
-bridges two T² subplanes — provides a local coupling node where
-energy in ordinary EM fields can reach the neutrino sheet via
-the chain:
+bridges two material-sheet subplanes — provides a local coupling
+node where energy in ordinary EM fields can reach the neutrino
+sheet via the chain:
 
-    EM field → electron T² → σ_eν → T²_ν
-    EM field → proton T²  → σ_νp → T²_ν
+    EM field → Ma_e → σ_eν → Ma_ν
+    EM field → Ma_p → σ_νp → Ma_ν
 
 ### 4.3 Every cell has many gateways
 
 Nearly every atom heavier than hydrogen contains neutrons.  A
 typical human cell contains ~10¹⁴ atoms, most with one or more
 neutrons.  Each neutron is a cross-plane coupling node — a
-gateway to T²_ν at its location in R³.  The cell does not need
+gateway to Ma_ν at its location in S.  The cell does not need
 to create or capture a special particle to access the neutrino
 sheet; the gateways are already embedded in its ordinary matter.
 
@@ -193,7 +194,7 @@ chemistry requires them — the gateway population is maintained.
 ### 4.5 Coupling strength scales with neutron density
 
 More neutrons per unit volume means stronger aggregate coupling
-to T²_ν.  Neutron-rich tissue (bone: calcium, phosphorus;
+to Ma_ν.  Neutron-rich tissue (bone: calcium, phosphorus;
 enzymes: zinc, iron, copper) would couple more strongly than
 hydrogen-rich tissue (fat, water).  This is a testable
 prediction: mineral-dense structures might serve as preferential
@@ -201,7 +202,7 @@ coupling sites.
 
 ### 4.6 All gateways share one cavity
 
-The spatial resolution of T²_ν is ~42 μm (set by the Compton
+The spatial resolution of Ma_ν is ~42 μm (set by the Compton
 wavelength of the lightest neutrino mode).  All neutrons within
 a cell (~10–100 μm diameter) are within one cavity.  They do
 not create separate address spaces — they are multiple faucets
@@ -217,7 +218,7 @@ per-cell picture holds.
 
 ### 5.1 The mobility problem
 
-If compact-dimension storage is tied to fixed locations in
+If material-dimension storage is tied to fixed locations in
 spacetime, then an organism walking across a room would leave its
 stored information behind — like writing on the floor and then
 walking away.
@@ -226,11 +227,11 @@ walking away.
 
 Neutrons are bound to atomic nuclei.  Atomic nuclei are bound
 into molecules.  Molecules are bound into cells.  When a cell
-moves through R³, its atoms — and their neutrons — move with it.
+moves through S, its atoms — and their neutrons — move with it.
 The gateways are physically part of the matter.
 
 The coupling chain (section 4.2) is local: each neutron couples
-to T²_ν at the neutron's own position in R³.  As the neutron
+to Ma_ν at the neutron's own position in S.  As the neutron
 moves, it couples to the neutrino sheet at its new position.  The
 stored state is continuously refreshed and dragged along by the
 moving gateway population, the way a magnet drags its field
@@ -238,7 +239,7 @@ pattern through a ferrofluid.
 
 ### 5.3 The coupling timescale is fast enough
 
-The compact-mode excitation must track the cell faster than the
+The material-mode excitation must track the cell faster than the
 cell crosses one cavity width.  At walking speed (~1 m/s), a cell
 traverses ~100 μm in ~100 μs.  The gateway coupling operates at
 THz-scale frequencies (picosecond timescales) — about 10⁸ times
@@ -247,7 +248,7 @@ faster than needed.  Even with severe evanescent suppression
 
 ### 5.4 The stored state is an attribute of the matter
 
-In this picture, the compact-dimension state is not "information
+In this picture, the material-dimension state is not "information
 stored at a location in spacetime."  It is "information stored
 in the matter at that location" — carried by the matter's
 neutron population and refreshed continuously through the
@@ -265,7 +266,7 @@ atoms (and their neutrons).  The gateway population in the
 region is temporarily reduced but not eliminated.  More
 importantly, the neighboring cells' gap-junction-connected
 isopotential fields maintain the aggregate electromagnetic
-environment that sustains the compact-mode state.  The stored
+environment that sustains the material-mode state.  The stored
 information survives because the tissue-level field and the
 gateway population persist.
 
@@ -300,7 +301,7 @@ The neutron-gateway model helps with the "strong enough" side:
 ~10¹⁴ gateways per cell provide an aggregate coupling much
 larger than a single evanescent tail.  The definitive answer
 still requires computing the per-gateway coupling strength from
-the T⁶ metric.
+the Ma metric.
 
 
 ## 7. Comparison to engineered memory architectures
@@ -308,7 +309,7 @@ the T⁶ metric.
 ### 7.1 RAM analogy: address space and word size
 
 RAM addresses memory by physical location (row, column on a
-chip); each address holds 8 bits.  Compact-dimension memory
+chip); each address holds 8 bits.  Material-dimension memory
 addresses by frequency (mode quantum numbers); each address
 holds ~7 bits.  The per-address capacity is comparable.  The
 total address space (~180 modes at bio-relevant cutoff) is tiny
@@ -327,21 +328,21 @@ independent data streams separated by wavelength.
 ### 7.3 Holographic analogy: distributed, analog, interference-based
 
 Holographic memory stores information as interference patterns
-in an optical medium.  Compact-dimension memory stores energy
+in an optical medium.  Material-dimension memory stores energy
 distributions across standing-wave modes.  Both are analog,
 distributed, and frequency-addressed.  Both degrade gracefully
 (losing detail before losing structure).  The key difference:
-holographic media wear out; compact-dimension geometry does not.
+holographic media wear out; material-dimension geometry does not.
 
 ### 7.4 DNA analogy: capacity and addressing
 
 The human genome stores ~750 MB (3 billion base pairs × 2 bits).
-One cell's compact-dimension cavity stores ~160 bytes (at
+One cell's material-dimension cavity stores ~160 bytes (at
 100 meV cutoff) — about 5,000× less than the genome.  But the
-genome is the same in every cell; the compact-dimension state
+genome is the same in every cell; the material-dimension state
 could be different in every cell.  The total unique information
-across 37 trillion cells is ~6 PB compact-dimension vs. ~750 MB
-genomic — the compact-dimension system wins by a factor of
+across 37 trillion cells is ~6 PB material-dimension vs. ~750 MB
+genomic — the material-dimension system wins by a factor of
 ~10⁷ in aggregate unique information.
 
 
@@ -350,7 +351,7 @@ genomic — the compact-dimension system wins by a factor of
 ### 8.1 Per-gateway coupling strength (critical)
 
 The cross-shear–mediated coupling from a single neutron into
-T²_ν modes has not been computed.  This determines the
+Ma_ν modes has not been computed.  This determines the
 effective coupling per cell (single-neutron strength × ~10¹⁴
 gateways), which in turn determines write/read speed, noise
 immunity, and whether the Goldilocks condition (6.4) is met.
@@ -365,7 +366,7 @@ capacity; a 0.1% floor increases it by ~50%.
 
 ### 8.3 Mode–mode coupling (determines information lifetime)
 
-On a perfectly flat T² with linear dynamics, modes are exactly
+On a perfectly flat material sheet with linear dynamics, modes are exactly
 independent and information persists forever.  Real corrections
 — cross-shear coupling, nonlinear wave interactions — transfer
 energy between modes, blurring the stored state.  The rate of
@@ -384,15 +385,15 @@ create larger coherent regions).
 If coupling scales with neutron count, different tissues have
 different coupling strengths.  Mapping neutron density across
 tissue types (bone vs. fat vs. nerve vs. muscle) could predict
-which tissues are most sensitive to compact-dimension storage —
+which tissues are most sensitive to material-dimension storage —
 and which are most vulnerable to disruption.
 
 ### 8.6 Relationship to the parent paper
 
 This paper develops the information-theoretic and engineering
 implications of the storage hypothesis presented in
-[Sub-Quantum Memory](storage-in-t6.md).  It takes the physics
-of that paper as given (T⁶ geometry, threshold absorption,
+[Sub-Quantum Memory](sub-quantum-memory.md).  It takes the physics
+of that paper as given (Ma geometry, threshold absorption,
 evanescent coupling) and works through three questions that
 paper leaves open: how much can the system store, how is it
 addressed, and how does the stored state move with the organism.

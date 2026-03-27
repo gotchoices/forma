@@ -43,7 +43,7 @@ localized.
 **Standard KK result.** This is the standard picture in Kaluza-Klein theory
 and string compactification. Extra dimensions can have circumference as small
 as the Planck length (~10⁻³⁵ m), orders of magnitude below any experimental
-resolution, and remain fully orthogonal. The Compton-scale compact space
+resolution, and remain fully orthogonal. The Compton-scale material space
 (R ~ 10⁻¹³ m) in our model is actually *large* by that standard, but the
 same logic applies.
 

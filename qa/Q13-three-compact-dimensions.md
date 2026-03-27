@@ -16,8 +16,8 @@ this connected to three color charges?
 **R14 Track 0 result:** YES — T³ is required.  T² cannot
 support topological linking of geodesics (F1).  T³ can, with
 three linking planes corresponding to three color charges (F2).
-Three compact dimensions give 3+1+3 = 7 total spacetime
-dimensions (6+1).  The electron uses 2 of 3 compact dimensions;
+Three material dimensions give 3+1+3 = 7 total spacetime
+dimensions (6+1).  The electron uses 2 of 3 material dimensions;
 hadrons use all 3.  See R14 findings.
 *Source: S3-knot-zoo F4*
 *Status: → R14 (draft).  Promoted from speculative to

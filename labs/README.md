@@ -1,6 +1,6 @@
 # Labs
 
-Proposed physical experiments to test predictions of the T⁶
+Proposed physical experiments to test predictions of the Ma
 model and related hypotheses.  Each proposal is a self-contained
 document describing what to measure, what equipment is needed,
 what outcome the model predicts, and what outcome would falsify
@@ -32,4 +32,4 @@ These are designs, not results.  None have been performed.
 | Lab | Tests | Status |
 |-----|-------|--------|
 | [L00](L00-reiter-replication.md) | Independent replication of Reiter's beam-split coincidence experiments (γ-ray and α-ray) | Proposed — prerequisite |
-| [L01](L01-thz-write-read.md) | Can energy be written into and read from T²_ν modes via THz radiation? | Proposed |
+| [L01](L01-thz-write-read.md) | Can energy be written into and read from Ma_ν modes via THz radiation? | Proposed |

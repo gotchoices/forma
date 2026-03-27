@@ -24,7 +24,7 @@ The total energy includes terms we can compute:
 - **Magnetic field energy** — same dependence
 - **Multipole structure** — more uniform coverage (higher q)
   means lower multipole moments, potentially lower energy
-- **Shear stiffness** — if deforming the T² from rectangular
+- **Shear stiffness** — if deforming the material sheet from rectangular
   to sheared costs energy, this penalizes large δ (low q)
 
 If E_total(q) has a minimum at a specific q, the electron's
@@ -35,7 +35,7 @@ lowest-energy configuration consistent with the constraints.
 In string theory this is exactly how compact-dimension shapes
 are fixed: the "moduli" (shape parameters) settle to the
 minimum of an effective potential.  Our shear is a modulus of
-the T², and E(δ) is its effective potential.
+the material sheet, and E(δ) is its effective potential.
 
 This approach is complementary to the EM self-consistency
 approach (Q18): the wave equation gives the allowed modes, and
@@ -49,13 +49,13 @@ a stable resonance.  The "cheapest" path is the one that
 minimizes phase mismatch per circuit, maximizes field
 uniformity (lowest multipole moments), and concentrates
 all energy in the fundamental Compton mode.  Solving for
-this on the sheared T² should yield the shear that selects
+this on the sheared material sheet should yield the shear that selects
 q.  The primality constraint (Q30) acts as a filter: only
 prime q avoids sub-harmonic leakage.
 *Source: user question*
 *Status: partly addressed by R11 (Coulomb cost favors low q,
-no minimum at 137).  R12 found that the flat-T² wave equation
+no minimum at 137).  R12 found that the flat-material-sheet wave equation
 provides no constraint on shear; the variational approach
 requires a richer energy functional.  The KK self-energy
-(sum over the mode tower on M₄ × flat T²) is the natural
+(sum over the mode tower on M₄ × flat material sheet) is the natural
 candidate for such a functional.  → R13 (backlog)*

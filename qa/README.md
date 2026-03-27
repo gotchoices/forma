@@ -43,14 +43,14 @@ For questions that need a computational model, see [`studies/`](../studies/).
 | Q52 | Dimensional assignment constrains the aspect ratio | Open — r = 1/2 checked; in [INBOX](INBOX.md) |
 | Q53 | Does the model predict the anomalous magnetic moment? | Open — in [INBOX](INBOX.md) |
 | [Q76](Q76-origin-of-metric-signature.md) | What makes time temporal? Origin of metric signature and 6+3+1 split | Open — deepest structural question |
-| [Q77](Q77-alpha-as-impedance.md) | Is α the impedance mismatch between T⁶ and R³? | Open — reframes α derivation |
+| [Q77](Q77-alpha-as-impedance.md) | Is α the impedance mismatch between Ma and S? | Open — reframes α derivation |
 | [Q78](Q78-neutrino-sheet-access.md) | How does a biological cell access the neutrino sheet? | Open — two candidate mechanisms |
-| [Q79](Q79-cellular-resonators-and-levin.md) | What cellular structures couple to T²_ν, and is Levin's bioelectric code a decoded projection? | Open — hypothesis catalog |
-| [Q80](Q80-cancer-as-coupling-failure.md) | Could cancer be a failure of neutrino-sheet coupling? Levin's cancer model × T²_ν cascade | Open — hypothesis |
-| [Q81](Q81-regeneration-and-trophic-memory.md) | How does T²_ν explain regeneration, subroutine calls, and trophic memory? | Open — hypothesis development |
-| [Q82](Q82-entanglement-as-t6-geometry.md) | Is quantum entanglement a geometric property of T⁶? Shared modes, ER=EPR, Bell's theorem | Open — deep hypothesis |
+| [Q79](Q79-cellular-resonators-and-levin.md) | What cellular structures couple to Ma_ν, and is Levin's bioelectric code a decoded projection? | Open — hypothesis catalog |
+| [Q80](Q80-cancer-as-coupling-failure.md) | Could cancer be a failure of neutrino-sheet coupling? Levin's cancer model × Ma_ν cascade | Open — hypothesis |
+| [Q81](Q81-regeneration-and-trophic-memory.md) | How does Ma_ν explain regeneration, subroutine calls, and trophic memory? | Open — hypothesis development |
+| [Q82](Q82-entanglement-as-ma-geometry.md) | Is quantum entanglement a geometric property of Ma? Shared modes, ER=EPR, Bell's theorem | Open — deep hypothesis |
 | [Q83](Q83-neutrino-sheet-coherence.md) | Can quantum coherence persist on the neutrino sheet at biological temperatures? | Open — quantitative estimates |
 | [Q84](Q84-mast-terminology.md) | MaST Universe — terminology and naming conventions (U¹⁰ = M⁶ × S³ × T¹) | Draft — terminology proposal |
-| [Q85](Q85-harmonic-ladder-and-threshold.md) | The harmonic ladder — energy levels, threshold theory, and digital counting on T² | Open — quantitative framework |
+| [Q85](Q85-harmonic-ladder-and-threshold.md) | The harmonic ladder — energy levels, threshold theory, and digital counting on material sheet | Open — quantitative framework |
 
 Unprocessed and brief questions live in [`INBOX.md`](INBOX.md).

@@ -13,7 +13,7 @@ rather than bound states of quarks? Three photons topologically linked on compac
 protons and neutrons be multi-photon states on a compact
 geometry, rather than bound states of quarks?  The strongest
 version of this idea: three photons in a **knotted**
-configuration on the compact T² — topologically linked so that
+configuration on the material sheet — topologically linked so that
 no single photon can be extracted without cutting through
 another.  "Quarks" would be features of each photon's
 contribution to the combined field; quark confinement would
@@ -31,7 +31,7 @@ compact topology.  Consider:
   to fractional charges — potentially reflecting per-photon
   contributions rather than separate particles.
 **Shared geometry hypothesis (Q32, R14):** If all particles
-share one T², fractional charges must arise from topological
+share one material sheet, fractional charges must arise from topological
 linking of multiple photons on the same geometry — not from
 different a/R values.  This is far more constraining and
 would fix the free parameter r.  See R14 (draft).

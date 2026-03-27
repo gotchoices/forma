@@ -1,4 +1,4 @@
-# Q85: Energy accumulation in compact modes — toward threshold theory on T²
+# Q85: Energy accumulation in material modes — toward threshold theory on Ma_e
 
 **Status:** Open — hypothesis catalog  
 **Source:** User insight (R36/R33 discussion)  
@@ -6,18 +6,18 @@
 [Q31](Q31-discrete-torus-digital-counter.md) (digital counter),
 [Q77](Q77-alpha-as-impedance.md) (impedance mismatch),
 R33 (ghost selection), R35 (threshold coupling),
-[`papers/storage-in-t6.md`](../papers/storage-in-t6.md) (Reiter's threshold theory)
+[`papers/sub-quantum-memory.md`](../papers/sub-quantum-memory.md) (Reiter's threshold theory)
 
 ---
 
 ## 1. The core question
 
-Reiter's threshold model (`papers/storage-in-t6.md` §3)
+Reiter's threshold model (`papers/sub-quantum-memory.md` §3)
 proposes that energy absorption is continuous: a mode
 accumulates energy gradually until a threshold triggers a
-discrete event.  If this is correct and T⁶ is the geometry
-of matter, how does sub-threshold energy distribute itself
-within a particle's compact dimensions?
+discrete event.  If this is correct and Ma (the six-dimensional material space)
+is the geometry of matter, how does sub-threshold energy
+distribute itself within a particle's material dimensions?
 
 This question sits at the intersection of:
 
@@ -29,7 +29,7 @@ This question sits at the intersection of:
   measurements but physically real.
 - **Information storage**: the pattern of accumulated energy
   across modes could encode information (the premise of the
-  storage-in-t6 paper).
+  sub-quantum-memory paper).
 
 The ideal answer would explain WHERE the energy goes
 (which degrees of freedom hold it), HOW it distributes
@@ -42,7 +42,7 @@ production occurs at exactly 2×.
 Whatever mechanism holds sub-threshold energy must satisfy:
 
 1. **Charge preservation.** Adding energy to an electron
-   must not change its charge (−1).  In T⁶, charge depends
+   must not change its charge (−1).  In Ma, charge depends
    on n₁ (tube winding).  Any excitation must keep n₁ = 1.
 
 2. **Pair production at 2m.** The total internal capacity
@@ -63,7 +63,7 @@ Whatever mechanism holds sub-threshold energy must satisfy:
 
 ## 3. The mode spectrum (what the torus gives us)
 
-On the electron T², the energy of mode (1, n₂) is:
+On Ma_e (the electron sheet), the energy of mode (1, n₂) is:
 
     E(1, n₂) / m_e = √[ (1/r² + n₂²) / (1/r² + 4) ]
 
@@ -116,11 +116,11 @@ theory seems to require.
 
 ## 4. Hypothesis catalog
 
-### A. Discrete mode transitions (standard QM on T²)
+### A. Discrete mode transitions (standard QM on Ma_e)
 
 Energy goes into the charge-preserving ladder (1, n₂).
 Transitions are discrete jumps.  Between levels, energy
-can only go to R³ kinetic energy (the particle moves
+can only go to S kinetic energy (the particle moves
 faster).  No sub-threshold storage.
 
 - **Supports:** known physics, pair production at 2m
@@ -138,13 +138,13 @@ E(1,3) − m_e without triggering a transition.  Energy
 fills the mode continuously.  At the threshold, a discrete
 event fires.
 
-- **Supports:** Reiter's experiments; storage-in-t6 paper;
+- **Supports:** Reiter's experiments; sub-quantum-memory paper;
   explains why sub-threshold energy is invisible
 - **Problems:** traveling waves on a torus have uniform
   |ψ|² — unclear what "increased amplitude" means for a
-  mode with fixed winding numbers; the current T⁶ model
+  mode with fixed winding numbers; the current Ma model
   is linear, so mode energy = rest mass (fixed)
-- **What's needed:** a nonlinear extension of the T⁶ wave
+- **What's needed:** a nonlinear extension of the Ma wave
   equation where mode amplitude is a dynamical variable,
   not fixed by the boundary conditions alone
 
@@ -169,7 +169,7 @@ m_e and 2m_e.
   connects to Q31 (digital counter); binary subdivision is
   maximally information-efficient
 - **Problems:** no known torus mechanism produces this
-  spectrum; mode energies on T² INCREASE (not decrease)
+  spectrum; mode energies on Ma_e INCREASE (not decrease)
   with harmonic number; would require a fundamentally
   different kind of excitation
 - **What's needed:** nonlinear mode coupling where
@@ -194,7 +194,7 @@ rapidly converging series.
 
 - **Supports:** standard physics (multipole expansion);
   naturally produces geometric suppression; the ratio α
-  appears from the compact/spatial interface
+  appears from the material/spatial interface
 - **Problems:** this is about coupling, not about energy
   levels; it doesn't change where the energy SITS, only
   how easily it gets there; doesn't explain sub-threshold
@@ -225,11 +225,11 @@ that pattern.
   produces the desired geometric distribution; connects
   to condensed matter (phonon occupation)
 - **Problems:** requires the particle to have an effective
-  temperature, which has no current meaning in the T⁶
+  temperature, which has no current meaning in the Ma
   model; thermal equilibrium implies fluctuations, which
   might destroy stored information
 - **What's needed:** a definition of "internal temperature"
-  for a compact-dimension mode; possibly related to the
+  for a material-dimension mode; possibly related to the
   particle's interaction with the vacuum or with other
   particles
 
@@ -293,10 +293,10 @@ measurable (interference).  Sub-threshold phase advance
 could encode information readable only by a system that
 shares a phase reference.  This connects to:
 - Q31 (digital counter): phase subdivisions as bits
-- Storage-in-t6 paper: cross-sheet phase as the storage
+- Sub-quantum-memory paper: cross-sheet phase as the storage
   channel (electron phase relative to neutrino-sheet mode)
 - Entanglement (Q82): shared phase reference between
-  particles on the same T⁶
+  particles on the same Ma
 
 - **Supports:** energy and phase are conjugate variables
   (ΔE·Δt ≥ ℏ/2); phase advance is a natural consequence
@@ -304,7 +304,7 @@ shares a phase reference.  This connects to:
   spin-phase catastrophe; provides a continuous (analog)
   storage channel; pair production gets a geometric
   explanation
-- **Problems:** the current T⁶ model uses fixed-frequency
+- **Problems:** the current Ma model uses fixed-frequency
   modes — no mechanism for continuous frequency change on
   a fixed torus; requires Reiter premise or backreaction
   (Hypothesis G); the "fractional spin" state between m
@@ -318,7 +318,7 @@ shares a phase reference.  This connects to:
 
 ### G. Nonlinear anharmonicity (backreaction)
 
-The T⁶ model uses a linear wave equation on a fixed
+The Ma model uses a linear wave equation on a fixed
 background.  If the wave energy backreacts on the torus
 geometry (Einstein's equations: energy curves spacetime),
 the mode spectrum becomes energy-dependent.  A mode with
@@ -332,7 +332,7 @@ equally spaced.  Depending on the sign of the anharmonicity:
 - **Negative (softening):** gaps decrease → easier to
   excite successive levels
 
-If the T² geometry softens under energy loading, the
+If the Ma_e geometry softens under energy loading, the
 harmonic ladder could have DECREASING gaps — each
 additional excitation costs less.  In the extreme case,
 this could produce the geometric series of Hypothesis C.
@@ -344,15 +344,16 @@ this could produce the geometric series of Hypothesis C.
 - **Problems:** not computed; the backreaction might be
   tiny (of order α or smaller); could go either direction
   (stiffening or softening)
-- **What's needed:** solve Einstein's equations for a T²
-  with finite mode energy and compute the corrected mode
-  spectrum.  This would be a new study beyond R33.
+- **What's needed:** solve Einstein's equations for a
+  material sheet with finite mode energy and compute the
+  corrected mode spectrum.  This would be a new study
+  beyond R33.
 
 
 ### H. Wavepacket breathing
 
 If the electron is not a pure (1, 2) eigenstate but a
-narrow wavepacket on T² (as in the original WvM picture),
+narrow wavepacket on Ma_e (as in the original WvM picture),
 it has a spatial extent σ.  Adding energy could change σ
 (the packet broadens or narrows) without changing the
 winding numbers.
@@ -365,7 +366,7 @@ of freedom that could hold analog energy.
 - **Supports:** connects to the original WvM localization
   picture; wavepacket width is a continuous parameter;
   R15 explored σ as the parameter controlling α
-- **Problems:** in KK theory, the electron is a
+- **Problems:** in Kaluza-Klein theory, the electron is a
   delocalized mode (no wavepacket); the relationship
   between σ and energy is not monotonic
 - **Connection:** if α = f(σ) (R15), then changing σ
@@ -393,7 +394,7 @@ rest mass, so the maximum total energy is 2m.**
 
 If these are the same phenomenon viewed from different
 angles, pair production is not just a kinematic threshold
-but a CAPACITY limit: the compact mode is "full" and must
+but a CAPACITY limit: the material mode is "full" and must
 create a new mode to hold more energy.  Hypothesis F gives
 the most specific geometric mechanism: the phase advance
 laps the topological periodicity, destroying the fermion
@@ -438,7 +439,7 @@ production channels, not excitations.
 (spin ½ per active sheet, regardless of n₂).  If that is
 correct, the filter doesn't work and ghosts return.
 Whether spin = n₁/n₂ (WvM geometric) or spin = ½ per
-sheet (KK field-theoretic) is one of the deepest
+sheet (Kaluza-Klein field-theoretic) is one of the deepest
 unresolved questions in the model.  R33 could resolve
 this: if Track 1 (charge integral) also selects n₂ = 2,
 it and the spin filter tell the same story.
@@ -458,32 +459,32 @@ confirm T² is the unique compact orientable 2D surface
 with the required winding structure.
 
 
-## 7. Continuous energy and R³ momentum
+## 7. Continuous energy and S momentum
 
 If Reiter's continuous filling is correct and the electron
 accumulates sub-threshold energy, the standard picture
-says the only place for extra energy is R³ kinetic energy
+says the only place for extra energy is S (the three spatial dimensions) kinetic energy
 (momentum).  But what does this actually mean?
 
 **What changes physically:**
 - The electron moves through space.  Its de Broglie
   wavelength shortens (λ = h/p).
-- Its T⁶ mode (1, 2) is unchanged — same charge, same
+- Its Ma mode (1, 2) is unchanged — same charge, same
   rest mass, same spin.
 - The total energy is E = √(m²c⁴ + p²c²).
-- The wave function gains an R³ plane wave factor: e^{ikx}
+- The wave function gains an S plane wave factor: e^{ikx}
 
 **Where is the energy stored?**
 - In the SPATIAL wavelength of the particle.  A moving
-  electron is a shorter-wavelength wave in R³ while its
-  T⁶ pattern is unchanged.
+  electron is a shorter-wavelength wave in S while its
+  Ma pattern is unchanged.
 - The energy is "stored" in the momentum degree of freedom
   — which is continuous, not quantized (in free space).
 - On the torus, nothing has changed.  The energy is
-  entirely in R³.
+  entirely in S.
 
 **The tension with threshold theory:**
-Reiter proposes that energy enters the MODE, not just R³.
+Reiter proposes that energy enters the MODE, not just S.
 A mode that accumulates sub-threshold energy has more
 internal energy than m_e but hasn't yet transitioned.
 Standard QM says this is impossible — the mode energy is
@@ -491,16 +492,16 @@ fixed by the geometry.  But:
 
 - **Hypothesis F (phase advance):** extra energy shows up
   as faster phase evolution of the (1, 2) mode itself.
-  The T⁶ pattern is still (1, 2), but ω > ω₀.  This is
-  energy stored IN the compact mode, not in R³ momentum.
+  The Ma pattern is still (1, 2), but ω > ω₀.  This is
+  energy stored IN the material mode, not in S momentum.
   The distinction: a phase-loaded electron at rest
-  (p = 0) has E > m_e but zero R³ momentum.
+  (p = 0) has E > m_e but zero S momentum.
 
 - **Hypothesis G (backreaction):** extra energy slightly
   deforms the torus (L₁, L₂ shift), changing the mode
   frequency.  The energy is stored in the geometry.
 
-- **Standard QM:** extra energy can only be R³ kinetic
+- **Standard QM:** extra energy can only be S kinetic
   energy.  An electron with E > m_e is always moving.
   An electron at rest always has E = m_e exactly.
 
@@ -524,7 +525,7 @@ The neutrino sheet aspect ratio r_ν is NOT pinned.
 
 ### Why the neutrino sheet is the natural storage medium
 
-On the neutrino T², the energy of mode (n₃, n₄) is
+On Ma_ν (the neutrino sheet), the energy of mode (n₃, n₄) is
 
     E(n₃, n₄) = E₀ √(n₃²/r_ν² + n₄²)
 
@@ -564,17 +565,17 @@ has NO discrete internal excitations at all.  The only
 storage mechanism is phase advance (Hypothesis F).  The
 neutrino sheet, by contrast, has a rich internal structure
 — potentially thousands of closely spaced levels between
-m_ν and 2m_ν.  This is consistent with the storage-in-t6
+m_ν and 2m_ν.  This is consistent with the sub-quantum-memory
 paper's claim that the neutrino sheet is the primary
 information storage medium.
 
 ### Where the energy really goes (threshold theory)
 
 Standard QM says: all energy beyond the rest mass goes
-into R³ momentum.  A faster particle has shorter de
-Broglie wavelength (λ = h/p).  The T⁶ mode is unchanged.
+into S momentum.  A faster particle has shorter de
+Broglie wavelength (λ = h/p).  The Ma mode is unchanged.
 The energy is stored in the spatial wavelength, not the
-compact dimensions.
+material dimensions.
 
 Threshold theory rejects this for sub-threshold
 increments.  It proposes energy enters the MODE ITSELF.
@@ -588,7 +589,7 @@ electron sheet, because:
 3. The transitions change n₃ (tube winding on the long
    axis) while keeping n₄ = 2 — the ring structure that
    determines spin is preserved
-4. From outside (R³), the neutrino's mass changes by a
+4. From outside (S), the neutrino's mass changes by a
    tiny amount — undetectable at current precision
 
 What changes physically when energy enters: the neutrino
@@ -706,7 +707,7 @@ Yes, in multiple ways:
    occupying the torus has energy E_total on a torus with
    aspect ratio r(E_total).  This is a fixed-point problem.
 
-3. **The stiffness K is the unknown.**  In the current T⁶
+3. **The stiffness K is the unknown.**  In the current Ma
    model, there is no moduli potential — the torus shape
    is a flat direction.  K = 0 means infinite compliance:
    any energy addition causes unbounded stretching.  This
@@ -723,7 +724,7 @@ Yes, in multiple ways:
    parameter.  For each K, compute the full r(E) curve,
    the mode density, the level spacing, and the total
    number of "bits" in [m_ν, 2m_ν].  Map K → bit count.
-   The storage-in-t6 paper requires ~10–20 bits per
+   The sub-quantum-memory paper requires ~10–20 bits per
    neutrino; this constrains K.
 
 **Connection to the moduli problem:**
@@ -731,7 +732,7 @@ Yes, in multiple ways:
 String theory has the same issue — moduli (shape
 parameters of compact dimensions) are massless scalars
 with no potential.  Flux compactification and other
-mechanisms stabilize them.  The T⁶ model needs an
+mechanisms stabilize them.  The Ma model needs an
 analogous stabilization.  The elastic torus hypothesis
 proposes that stabilization is SOFT — the moduli have a
 potential, but it's shallow enough that mode energy can
@@ -753,7 +754,7 @@ Detecting the (1, 3) excitation — a charge −1 particle at
 0.66–0.77 MeV (depending on r) — would:
 - Pin r_e with zero remaining freedom
 - Make all higher modes parameter-free predictions
-- Be a smoking-gun test of the T⁶ model
+- Be a smoking-gun test of the Ma model
 
 No such particle has been identified.  The muon (charge −1,
 mass 207 m_e) would require n₂ ~ 414 — not a "next level."
@@ -817,7 +818,7 @@ Two sheets, two storage mechanisms:
   partition (Hypothesis C)
 - Information encoded in which mode (k, 2) is occupied
 - Capacity: ~log₂(3.5 r_ν) bits per neutrino
-- This is the storage-in-t6 paper's channel
+- This is the sub-quantum-memory paper's channel
 
 **Electron sheet (limited storage):**
 - Sparse ladder: 1–2 modes in [m_e, 2m_e] at most
@@ -842,11 +843,11 @@ theory's counting ladder because:
 
 The electron sheet's role is different: it provides the
 CHARGE CARRIER.  The electron interacts electromagnetically
-(through R³), while the neutrino sheet stores the pattern.
+(through S), while the neutrino sheet stores the pattern.
 A cross-sheet coupling (σ_eν) links them: the electron
 "reads" the neutrino sheet's state.  This two-layer
 architecture — one sheet for interaction, one for storage
-— is the structural prediction of the T⁶ model for
+— is the structural prediction of the Ma model for
 biological information processing.
 
 
@@ -854,7 +855,7 @@ biological information processing.
 
 ### A single mode is a pure tone
 
-Each eigenmode (n₃, n₄) on the neutrino T² has one
+Each eigenmode (n₃, n₄) on Ma_ν has one
 temporal frequency: ω = E(n₃, n₄)/ℏ.  But it has TWO
 spatial frequency components — one per torus axis:
 
@@ -980,23 +981,23 @@ is a 2-byte register at best.
 
 ### One cell = one coherent domain
 
-The neutrino T² ring circumference is L₄ ≈ 42 μm (R26).
+The Ma_ν ring circumference is L₄ ≈ 42 μm (R26).
 A typical animal cell is 10–100 μm in diameter.  The
 Compton wavelength of the lightest neutrino (λ_C = 2πL₄
 ≈ 42 μm) matches the cell scale.
 
-Every atom in a cell has the same T⁶ geometry (same L₃,
+Every atom in a cell has the same Ma geometry (same L₃,
 L₄, r_ν).  Because all atoms sit within one Compton
-wavelength of each other in R³, their neutrino-sheet
+wavelength of each other in S, their neutrino-sheet
 wavefunctions overlap completely.  They cannot be resolved
-as separate locations on the neutrino T².  They all
+as separate locations on Ma_ν.  They all
 contribute to a SINGLE collective neutrino-sheet state.
 
 **One cell = one neutrino storage domain.**
 
 This is not an arbitrary assumption — it follows directly
-from the neutrino T² scale (R26) and the definition of
-spatial resolution on the compact dimensions.
+from the Ma_ν scale (R26) and the definition of
+spatial resolution on the material dimensions.
 
 ### Collective occupation: many atoms, one state
 
@@ -1081,7 +1082,7 @@ receiving on the same neutrino-sheet state.  This gives:
    "sees" the same neutrino-sheet pattern.  A chemical
    reaction at one end of the cell shifts mode occupancy;
    every other atom instantly reflects the change (at the
-   speed of light on the compact dimensions).  This is
+   speed of light on the material dimensions).  This is
    instantaneous intra-cell signaling that doesn't require
    molecular diffusion.
 
@@ -1115,7 +1116,7 @@ constraints:
    r_ν = 5.  For thermal noise not to scramble the state,
    the mode spacing must be larger than kT, OR the storage
    must be in a protected subspace where thermal noise
-   doesn't couple.  Neutrino modes on T² couple weakly to
+   doesn't couple.  Neutrino modes on Ma_ν couple weakly to
    thermal photons (no EM charge), which provides natural
    thermal protection.
 
@@ -1147,16 +1148,16 @@ about whether Reiter's sub-quantum channel exists.
 
 The previous sections treat "continuous" energy accumulation
 as a special property of threshold theory.  But within the
-T⁶ model, continuity is not a separate mechanism — it is
+Ma model, continuity is not a separate mechanism — it is
 what mode-hopping looks like when the mode ladder is dense.
 
 ### All three sheets have the same physics
 
-On every T² sheet, energy beyond a particle's rest mass can
+On every material sheet, energy beyond a particle's rest mass can
 go into:
 
-1. **R³ kinetic energy** — standard momentum (always available)
-2. **Excitation to a higher mode** on the same T² — mode-hop
+1. **S kinetic energy** — standard momentum (always available)
+2. **Excitation to a higher mode** on the same sheet — mode-hop
 3. **Pair production at 2m** — creates a new particle pair
 
 The difference between sheets is the density of option (2):
@@ -1176,8 +1177,8 @@ On the electron sheet (r_e ~ 7), the charge-preserving
 ladder (1,3), (1,4), ... has steps of ~m_e/2 each.  The
 spin filter (R33 Track 6) kills most: spin = 1/3, 1/4 are
 forbidden.  Only (1,±1) and (1,±2) survive per sheet.
-Energy beyond m_e has very few places to go on the compact
-geometry — it goes to R³ kinetic energy (momentum).  This
+Energy beyond m_e has very few places to go on the material
+geometry — it goes to S kinetic energy (momentum).  This
 is standard quantum mechanics.
 
 On the proton sheet (r_p ~ 9), the (1,3) mode is at roughly
@@ -1197,7 +1198,7 @@ This has several implications:
 1. **Proton resonances are the sparse-sheet version.**  The
    Δ(1232), N(1440), N(1520)... are well-known proton
    excitations at discrete energies.  If these are mode-hops
-   on the proton T², then particle physics has been observing
+   on Ma_p, then particle physics has been observing
    this mechanism for decades — at the sparse end of the
    spectrum.
 
@@ -1263,4 +1264,4 @@ The mode-density picture predicts that only the neutrino
 sheet contributes to Reiter's threshold channel.  If Track 1
 succeeds in reproducing Re/Rc with a physically motivated
 pre-load distribution, the threshold/storage hypothesis
-gains its first quantitative support from the T⁶ model.
+gains its first quantitative support from the Ma model.

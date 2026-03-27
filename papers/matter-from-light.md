@@ -2,7 +2,7 @@
 
 **Status:** draft
 
-**Paper 1 of 3.**  Paper 2: [Sub-Quantum Memory](storage-in-t6.md).
+**Paper 1 of 3.**  Paper 2: [Sub-Quantum Memory](sub-quantum-memory.md).
 Paper 3: [The Nine-Dimensional Atom](atoms-from-geometry.md) (rough outline).
 
 ---
@@ -18,8 +18,8 @@ Paper 3: [The Nine-Dimensional Atom](atoms-from-geometry.md) (rough outline).
 | 5 | The energy gap | Payoff | A hard mass floor at 245 keV. Below it: classical EM. Above it: particles. |
 | 6 | Heavier particles | Extension | Harmonics add mass without charge → proton, neutron, beta decay. |
 | 7 | The neutrino crisis | Crisis | Lightest uncharged mode is 10⁵× too heavy. Charge-spin linkage blocks all fixes. |
-| 8 | Three tori on T⁶ | Resolution | Each particle family gets its own T². The crisis is resolved by architecture. |
-| 9 | The neutrino resolved | Resolution | Mass-squared splittings from the neutrino T², matching experiment. |
+| 8 | Three tori on Ma | Resolution | Each particle family gets its own material sheet. The crisis is resolved by architecture. |
+| 9 | The neutrino resolved | Resolution | Mass-squared splittings from the neutrino sheet, matching experiment. |
 | 10 | The emergent neutron | Surprise | A cross-sheet mode nobody looked for: charge 0, correct mass, natural decay. |
 | 11 | The particle zoo | Payoff | Parameter-free predictions: kaon 1.2%, lambda 0.9%, eta-prime 0.3%. |
 | 12 | What remains open | Honesty | The α problem, predictive horizon, ghost modes, and next steps. |
@@ -30,8 +30,8 @@ Paper 3: [The Nine-Dimensional Atom](atoms-from-geometry.md) (rough outline).
 ### Abstract
 
 We explore a model in which all matter is electromagnetic
-radiation confined to compact extra dimensions.  The model
-begins with three axioms — energy exists, compact
+radiation confined to material extra dimensions.  The model
+begins with three axioms — energy exists, material
 dimensions exist, and Maxwell's equations govern propagation
 — and derives particle properties from geometry alone.
 
@@ -40,20 +40,20 @@ reproduces the electron: spin ½ from the winding topology,
 charge e from the shear of the lattice, and the g-factor
 g ≈ 2 from the ratio of photon to fermion angular momentum.
 The torus imposes a hard mass floor at ~245 keV, below
-which no compact-dimension modes exist, providing a
+which no material-dimension modes exist, providing a
 geometric origin for the quantum-classical boundary.
 
 A structural crisis forces the architecture beyond one
 torus: the neutrino — uncharged, spin ½, and 10⁵ times
 lighter than the mass floor — is impossible on any single
 T² because a charge-spin linkage ties both properties to
-the same quantum number.  The resolution is a six-
-dimensional torus (T⁶) composed of three T² subplanes, one
+the same quantum number.  The resolution is Ma, the six-
+dimensional material space, composed of three material sheets, one
 per stable particle family.  On this geometry, the neutrino
 mass-squared splitting ratio Δm²₃₁/Δm²₂₁ = 33.6 is
 reproduced exactly from a single shear parameter.
 
-The T⁶ generates an emergent neutron as a cross-sheet mode
+Ma generates an emergent neutron as a cross-sheet mode
 whose charge, mass, and decay products follow from the
 geometry without adjustment.  With the proton aspect ratio
 pinned by the neutron and muon (r_p = 8.906, σ_ep = −0.091),
@@ -92,7 +92,7 @@ worth pushing as far as it would go.
 The model described in this paper takes the WvM idea
 seriously and extends it.  We state three axioms and attempt
 to derive everything else — mass, charge, spin, the particle
-spectrum, nuclear binding — from the geometry of compact
+spectrum, nuclear binding — from the geometry of material
 extra dimensions.
 
 
@@ -102,11 +102,11 @@ The axioms are:
 
 1. **Energy exists** — in the form of electromagnetic
    radiation (photons).
-2. **Compact dimensions exist** — space has additional
+2. **Material dimensions exist** — space has additional
    dimensions that are periodic: closed surfaces that wrap
    around on themselves.
 3. **Maxwell's equations govern propagation** — the wave
-   equation on these compact surfaces is the starting point
+   equation on these material surfaces is the starting point
    for all dynamics.
 
 These are minimal.  No quantum mechanics is assumed (it will
@@ -114,7 +114,7 @@ emerge from the periodic boundary conditions).  No nuclear
 or weak forces are assumed (they will emerge from the
 geometry).  No particle masses are assumed (they will emerge
 from the mode spectrum).  The axioms say only that photons
-propagate on compact surfaces according to Maxwell.
+propagate on material surfaces according to Maxwell.
 
 
 ### 1.2 Natural units: everything reduces to energy and length
@@ -171,7 +171,7 @@ produce energy.
 
 The three axioms take this reduction literally.  If all of
 physics reduces to energy and length, and particles are
-energy (photons) shaped by length (compact geometry), then
+energy (photons) shaped by length (material geometry), then
 the axioms — energy exists, geometry exists, Maxwell governs
 — are not a subset of physics.  They may be all of it.
 
@@ -184,8 +184,8 @@ stage could not explain.  We begin with a single flat torus
 and show that it produces an electron with the correct
 spin, charge, and g-factor.  We then encounter a crisis —
 the neutrino is structurally impossible on any single torus
-— which forces the model into a six-dimensional compact
-geometry (T⁶).  On this larger geometry, the neutrino is
+— which forces the model into a six-dimensional material
+geometry (Ma).  On this larger geometry, the neutrino is
 accommodated, the neutron emerges unbidden as a cross-sheet
 mode, and the model generates parameter-free predictions
 for the masses of unstable particles.
@@ -348,7 +348,7 @@ heavier particles.
 The geometry determines the particle spectrum.  If the torus
 has the right shape, its mode energies will match the masses
 of observed particles.  This is the central hypothesis:
-**particles are standing waves on compact extra dimensions,
+**particles are standing waves on material extra dimensions,
 and their masses are the eigenfrequencies of that geometry.**
 
 
@@ -371,7 +371,7 @@ When L₂ is set so that E(1,2) = 0.511 MeV, the torus size
 is fixed at the electron's Compton wavelength — the quantum
 length scale of the electron.  This is the Kaluza-Klein
 Compton constraint: the mode energy equals the particle mass,
-which sets the compact geometry's scale.
+which sets the material geometry's scale.
 
 
 ### 4.2 Spin ½ from topology
@@ -489,11 +489,11 @@ it.
 
 ### 5.1 The Kaluza-Klein mass floor
 
-The lightest nontrivial mode on the electron's T² — the
+The lightest nontrivial mode on Ma_e — the
 (0, 1) mode, a single wavelength around the ring with no
 tube winding — has energy approximately 245 keV (about half
 the electron mass).  Below this energy, the mode spectrum is
-empty.  There are no compact-dimension excitations between
+empty.  There are no material-dimension excitations between
 zero energy and 245 keV.
 
 This gap is not put in by hand.  It follows directly from
@@ -509,24 +509,24 @@ in compact extra dimensions in the 1920s.
 
 ### 5.2 Below the gap: classical electromagnetism
 
-Below 245 keV, no compact-dimension modes can be excited.
-The extra dimensions are invisible — there is nothing to
+Below 245 keV, no material-dimension modes can be excited.
+The material dimensions are invisible — there is nothing to
 observe about them, no experiment that can detect them.
 Photons propagate in the three ordinary spatial dimensions
-according to Maxwell's equations, exactly as if the compact
+according to Maxwell's equations, exactly as if the material
 dimensions did not exist.
 
 This is not an approximation.  It is a rigorous consequence
-of the gap: if the compact modes require a minimum energy
+of the gap: if the material modes require a minimum energy
 of 245 keV to excite, then any process occurring at lower
 energies simply cannot access them.  Classical
 electromagnetism — Maxwell's equations in 3D — is the exact
-low-energy limit of the compact-dimension theory.
+low-energy limit of the material-dimension theory.
 
 
 ### 5.3 Above the gap: the quantum world
 
-Above 245 keV, compact modes can be excited.  Energy is no
+Above 245 keV, material modes can be excited.  Energy is no
 longer continuous: only specific mode energies are allowed,
 and the energy of any excitation is an integer combination
 of mode quanta.  Pair creation becomes possible (a photon
@@ -552,7 +552,7 @@ periodic boundary conditions of a finite compact surface.
 
 Below the gap: continuous, classical, deterministic.
 Above the gap: discrete, quantum, statistical.
-The boundary between them is set by the size of the compact
+The boundary between them is set by the size of the material
 dimensions — which is set by the mass of the lightest
 particle.
 
@@ -612,10 +612,10 @@ the single-torus model selects one over another.  The model
 explains the proton's quantum numbers but does not predict
 its mass from first principles.  That requires the more
 rigid architecture introduced in section 8, where the
-proton gets its own T² sheet and becomes a single
+proton gets its own material sheet (Ma_p) and becomes a single
 fundamental mode (0,0,0,0,1,2) — not an electron dressed
 in harmonics, but an independent standing wave on a
-separate compact surface.
+separate material surface.
 
 
 ### 6.3 The neutron (first pass)
@@ -630,7 +630,7 @@ total mass is slightly above m_p because the pairing adds
 energy.
 
 We will revisit the neutron more rigorously in section 10,
-where the T⁶ geometry produces it as a single mode rather
+where the Ma geometry produces it as a single mode rather
 than a composite.  But the qualitative picture — charge
 cancellation from opposite-winding fundamentals, instability
 from the possibility of the pair separating — carries over.
@@ -705,7 +705,7 @@ different architecture.
 
 ### 7.1 The mass floor
 
-The lightest uncharged mode on the electron's T² is the
+The lightest uncharged mode on Ma_e is the
 (0,1) mode at approximately 245 keV.  The neutrino's mass
 is below 0.1 eV — a factor of more than two million too
 light.
@@ -724,7 +724,7 @@ fixed by the electron.
 Three increasingly creative approaches were tried over the
 course of studies R23–R25.  All failed.
 
-**Beating between high modes (R23).**  On the electron's T²,
+**Beating between high modes (R23).**  On Ma_e,
 near-degenerate mode pairs exist with energy differences in
 the sub-eV range — tantalizing close to neutrino mass
 splittings.  The ratio Δm²₃₁/Δm²₂₁ = 33.6 can be
@@ -782,23 +782,23 @@ Either the model is wrong, or the neutrino lives somewhere
 else entirely.
 
 
-## 8. Three tori on T⁶
+## 8. Three tori on Ma
 
 The neutrino crisis has an architectural resolution.
 
 Instead of trying to fit all particles onto a single T² (or
-T³), we give each stable particle family its own T²
-subplane within a shared six-dimensional torus.  The
-resulting compact space is T⁶ — a product of three T²
+T³), we give each stable particle family its own material
+sheet within a shared six-dimensional torus.  The
+resulting material space is Ma — a product of three material
 sheets.
 
-| Particle | Dimensions | T² subplane |
+| Particle | Dimensions | Material sheet |
 |----------|-----------|-------------|
-| Electron | θ₁, θ₂ | Sheet 1 |
-| Neutrino | θ₃, θ₄ | Sheet 2 |
-| Proton | θ₅, θ₆ | Sheet 3 |
+| Electron | θ₁, θ₂ | Ma_e |
+| Neutrino | θ₃, θ₄ | Ma_ν |
+| Proton | θ₅, θ₆ | Ma_p |
 
-Each mode on T⁶ is labeled by six integers:
+Each mode on Ma is labeled by six integers:
 (n₁, n₂, n₃, n₄, n₅, n₆).  The electron is
 (1, 2, 0, 0, 0, 0) — it winds on its own sheet and is
 inert on the other two.  The proton is (0, 0, 0, 0, 1, 2).
@@ -806,10 +806,10 @@ The neutrino is a mode on (θ₃, θ₄) with n₃ odd (for spin
 ½) and n₁ = n₅ = 0 (for zero charge).
 
 
-### 8.1 How T⁶ resolves the crisis
+### 8.1 How Ma resolves the crisis
 
 The charge-spin linkage depended on charge and spin being
-tied to the same quantum number on the same torus.  On T⁶,
+tied to the same quantum number on the same torus.  On Ma,
 they are decoupled:
 
 - **Charge** comes from the electron sheet: Q = −n₁ + n₅.
@@ -823,40 +823,40 @@ they are decoupled:
 The neutrino (n₁ = 0, n₃ = odd) is simultaneously uncharged
 (because n₁ = n₅ = 0) and spin ½ (because n₃ is odd).  The
 crisis is resolved because charge and spin now operate on
-different dimensions of the compact space.
+different dimensions of the material space.
 
 
 ### 8.2 The three scales
 
-The three T² sheets have vastly different sizes, set by the
+The three material sheets have vastly different sizes, set by the
 masses of their resident particles:
 
-| Particle | T² subplane | Circumferences | Energy scale |
+| Particle | Material sheet | Circumferences | Energy scale |
 |----------|------------|----------------|-------------|
-| Electron | (θ₁, θ₂) | ~5000 fm, ~32000 fm | ~0.5 MeV |
-| Neutrino | (θ₃, θ₄) | ~42 μm, ~200 μm | ~30 meV |
-| Proton | (θ₅, θ₆) | ~2.7 fm, ~24 fm | ~938 MeV |
+| Electron | Ma_e (θ₁, θ₂) | ~5000 fm, ~32000 fm | ~0.5 MeV |
+| Neutrino | Ma_ν (θ₃, θ₄) | ~42 μm, ~200 μm | ~30 meV |
+| Proton | Ma_p (θ₅, θ₆) | ~2.7 fm, ~24 fm | ~938 MeV |
 
-The neutrino T² is roughly a billion times larger than the
-proton T², because neutrinos are roughly a billion times
+The neutrino sheet is roughly a billion times larger than
+Ma_p, because neutrinos are roughly a billion times
 lighter.  This enormous scale separation is not a choice or
 a fine-tuning — it is a direct consequence of the
 energy-geometry relationship E ∝ ℏc/L.  Lighter particles
 live on bigger tori.
 
-The neutrino T² circumferences (~42–200 μm) are
+The Ma_ν circumferences (~42–200 μm) are
 macroscopic by particle physics standards.  If gravity
-propagates in these compact dimensions, deviations from
+propagates in these material dimensions, deviations from
 Newton's inverse-square law should appear at distances below
 ~50 μm.  Current experiments have tested gravity down to
-about 50 μm without finding deviations — the T⁶ prediction
+about 50 μm without finding deviations — the Ma prediction
 sits right at the edge of experimental sensitivity.
 
 
 ### 8.3 Cross-shear coupling
 
-The three T² sheets are not perfectly independent.  The
-full T⁶ metric can include off-diagonal terms that tilt one
+The three material sheets are not perfectly independent.  The
+full Ma metric can include off-diagonal terms that tilt one
 sheet relative to another.  These tilts are parameterized
 by **cross-shears** (σ_ep, σ_eν, σ_νp) — small angles
 between the subplanes.
@@ -870,20 +870,20 @@ neutron — that nobody put in and nobody expected.
 With three sheets, three within-sheet shears (s₁₂, s₃₄,
 s₅₆), three aspect ratios (r_e, r_ν, r_p), three
 circumferences (L₂, L₄, L₆), and three cross-shears
-(σ_ep, σ_eν, σ_νp), the T⁶ has 12 geometric parameters in
+(σ_ep, σ_eν, σ_νp), Ma has 12 geometric parameters in
 total.  How many are determined by observation is the
 subject of section 12.
 
 
 ## 9. The neutrino resolved
 
-With the neutrino living on its own T², its properties are
+With the neutrino living on its own material sheet, its properties are
 determined by the geometry of that sheet.
 
 
 ### 9.1 Neutrino modes
 
-The neutrino T² supports a mode spectrum just like the
+Ma_ν supports a mode spectrum just like the
 electron's, but at a vastly lower energy scale (meV instead
 of MeV).  Three modes form the triplet that corresponds to
 the three observed neutrino mass eigenstates (ν₁, ν₂, ν₃).
@@ -899,7 +899,7 @@ of masses: Δm²₂₁ = m₂² − m₁² and Δm²₃₁ = m₃² − m₁².
 The ratio R = Δm²₃₁/Δm²₂₁ is one of the best-measured
 quantities in neutrino physics: R = 33.60 ± 0.90.
 
-On the neutrino T², this ratio depends on a single
+On Ma_ν, this ratio depends on a single
 parameter: the within-sheet shear s₃₄.  The aspect ratio
 r_ν cancels completely from the formula — a remarkable
 algebraic simplification.  The ratio is:
@@ -926,23 +926,23 @@ prediction.  If the cosmological bound tightens below
 
 The mass hierarchy is "normal ordering" (m₃ > m₂ > m₁),
 consistent with the current experimental preference but not
-yet definitively established.  The T⁶ model predicts normal
+yet definitively established.  The Ma model predicts normal
 ordering as a structural consequence of the mode spectrum.
 
 
 ## 10. The emergent neutron
 
-The neutron is the most remarkable output of the T⁶ model.
-It was not designed to produce a neutron.  The T⁶ was built
+The neutron is the most remarkable output of the Ma model.
+It was not designed to produce a neutron.  Ma was built
 to accommodate three particles — the electron, the
-neutrino, and the proton — on three separate T² sheets.
+neutrino, and the proton — on three separate material sheets.
 The neutron appeared uninvited.
 
 
 ### 10.1 A mode nobody looked for
 
-When the electron T² and proton T² are tilted by a small
-cross-shear (σ_ep ≈ −0.09), the T⁶ spectrum contains a
+When Ma_e and Ma_p are tilted by a small
+cross-shear (σ_ep ≈ −0.09), the Ma spectrum contains a
 mode that lives on all three sheets simultaneously:
 (0, −2, n₃_odd, n₄, 0, +2).  This mode has quantum
 numbers from the electron sheet (n₂ = −2), the neutrino
@@ -988,7 +988,7 @@ to m_d − m_u (a free parameter) partially offset by
 electromagnetic self-energy, but provides no explanation
 for why the sign and magnitude come out as they do.
 
-In the T⁶ model, m_n > m_p follows from the geometry:
+In the Ma model, m_n > m_p follows from the geometry:
 a cross-sheet mode always has more energy than a single-
 sheet mode, because the tilt adds strain.  The sign is not
 accidental; it is a consequence of the cross-shear coupling
@@ -997,29 +997,29 @@ between sheets.
 
 ### 10.4 What the neutron tells us
 
-The neutron is the first particle the T⁶ produces that was
+The neutron is the first particle Ma produces that was
 not put in by hand.  The model was built around three
 particles (electron, neutrino, proton); the neutron emerged
 as the simplest cross-sheet vibration the geometry could
 support.  Its decay products (p + e⁻ + ν̄) are exactly the
-three particles the T⁶ was built around — the mode
+three particles Ma was built around — the mode
 unraveling into its constituent sheets.
 
 That the geometry's most natural cross-sheet excitation
 reproduces a known particle — with the correct charge,
 spin, mass, decay products, and instability — is suggestive
-evidence that the T⁶ is not merely a bookkeeping device.
+evidence that Ma is not merely a bookkeeping device.
 It appears to be generating physics.
 
 
 ## 11. The particle zoo
 
 With r_p = 8.906 and σ_ep = −0.0906 determined by the
-neutron and muon, the T⁶ has **zero free parameters at the
+neutron and muon, Ma has **zero free parameters at the
 MeV scale**.  The three input masses (m_e, m_ν, m_p) set
 the three circumferences.  The neutron mass and muon mass
 pin the remaining two parameters.  Every other mode energy
-in the T⁶ spectrum is now a definite number — a prediction.
+in the Ma spectrum is now a definite number — a prediction.
 
 The question becomes: do these predicted modes correspond to
 known particles?
@@ -1027,12 +1027,12 @@ known particles?
 
 ### 11.1 Parameter-free predictions
 
-A systematic search (R27, R28) across the T⁶ mode
+A systematic search (R27, R28) across the Ma mode
 spectrum identifies the nearest mode to each known particle,
 matching by mass, charge, and spin.  The results for the
 closest matches:
 
-| Particle | Observed (MeV) | T⁶ mode (MeV) | Error |
+| Particle | Observed (MeV) | Ma mode (MeV) | Error |
 |----------|---------------|---------------|-------|
 | Kaon K⁺ | 493.7 | 488.0 | 1.2% |
 | Kaon K⁰ | 497.6 | 503.7 | 1.2% |
@@ -1050,39 +1050,38 @@ unstable particle masses are outputs, not inputs.
 
 ### 11.2 Why most particles are ephemeral
 
-In the T⁶ picture, only three particles are absolutely
+In the Ma picture, only three particles are absolutely
 stable:
 
 - **The electron**: the lightest charged fermion.  No
-  lighter mode with charge e and spin ½ exists on any T²
+  lighter mode with charge e and spin ½ exists on any material
   sheet.  It has nowhere to decay to.
 
 - **The proton**: the lightest positively charged state on
-  the proton T².  Its charge is topologically protected.
+  Ma_p.  Its charge is topologically protected.
 
-- **The neutrino**: the lightest fermion on the neutrino
-  T².
+- **The neutrino**: the lightest fermion on Ma_ν.
 
 Every other particle is a higher mode — a more energetic
-vibration of the compact geometry — that can shed energy by
+vibration of the material geometry — that can shed energy by
 decaying into one of these endpoints.  The muon and tau are
 "hot electrons": the same (1,2) fundamental carrying excess
 energy that radiates away (muon decay is harmonic
 evaporation — the extra energy escapes as neutrinos).
 Pions, kaons, and other mesons are unstable harmonic
-excitations: they are modes on the T⁶ that can relax to
+excitations: they are modes on Ma that can relax to
 lower-energy configurations.
 
 The particle zoo is not a zoo of fundamentally different
 objects.  It is a **spectrum of excitations** on a single
-compact geometry — the same geometry that produces the
+material geometry — the same geometry that produces the
 stable particles.
 
 
 ### 11.3 The lifetime–gap correlation
 
 A striking pattern emerges from the data.  Among particles
-that decay via the weak interaction, those whose T⁶ mode
+that decay via the weak interaction, those whose Ma mode
 energy is close to their observed mass (small "gap") tend to
 live longer, while those with larger gaps decay faster.
 
@@ -1090,7 +1089,7 @@ The correlation for the 8 weakly-decaying particles is
 r = −0.84, with p = 0.009 — statistically significant.
 
 The physical interpretation: a particle whose mass happens
-to sit near a natural T⁶ resonance is well-described by
+to sit near a natural Ma resonance is well-described by
 that mode and has a long lifetime.  A particle far from any
 resonance is poorly described by a single mode — it is "off
 resonance" — and decays quickly because the geometry offers
@@ -1109,7 +1108,7 @@ as informative as the successes:
 
 - **Tau (5.6% off):** The closest mode is at 1876 MeV —
   almost exactly 2 × m_p.  The proton energy ladder has a
-  structural gap at the tau mass; no single T⁶ mode can
+  structural gap at the tau mass; no single Ma mode can
   reach 1777 MeV.  This is the boundary of the single-mode
   framework.
 
@@ -1121,7 +1120,7 @@ as informative as the successes:
   tube windings (n₁, n₃, n₅) to be odd.  But charge
   Q = −n₁ + n₅ with both n₁ and n₅ odd is always even.
   Charge −1 with spin 3/2 is **structurally forbidden** in
-  the T⁶ mode spectrum.  The Ω⁻ cannot be a single T⁶
+  the Ma mode spectrum.  The Ω⁻ cannot be a single Ma
   mode; it must be a multi-mode composite or involve physics
   beyond the single-mode picture.
 
@@ -1133,10 +1132,10 @@ this particular geometric reason."
 
 ### 11.5 The predictive horizon
 
-Above approximately 2 GeV, the T⁶ mode spectrum becomes
+Above approximately 2 GeV, the Ma mode spectrum becomes
 too dense to be discriminating.  The band spacing drops
 below 5 MeV, meaning that any mass in this range can be
-matched to within ~0.001% by some T⁶ mode — including
+matched to within ~0.001% by some Ma mode — including
 fictional particles.  The W boson (80.4 GeV), Z boson
 (91.2 GeV), and Higgs (125 GeV) all find modes at sub-
 0.001% accuracy, but so would any invented mass.
@@ -1145,7 +1144,7 @@ This is not a failure of the model — it is a structural
 boundary.  Below ~2 GeV, the spectrum is sparse enough
 that a close match is meaningful (a random mass has only
 a ~5% chance of landing within 1% of a mode).  Above
-~2 GeV, matches are trivially guaranteed.  The T⁶ has a
+~2 GeV, matches are trivially guaranteed.  Ma has a
 **predictive horizon**: it makes sharp predictions in the
 hadron mass range but loses discriminating power at higher
 energies, where physics may require dynamics beyond the
@@ -1156,7 +1155,7 @@ single-mode framework.
 
 ### 12.1 The parameter census
 
-The T⁶ geometry has 12 parameters.  Here is the honest
+The Ma geometry has 12 parameters.  Here is the honest
 balance sheet:
 
 | Parameter | Description | Status |
@@ -1203,22 +1202,22 @@ principles.
 
 This is the central open problem.  A solution would likely
 complete the model: if r_e is determined, then s₁₂ follows
-from the charge formula, and the entire T⁶ geometry is
+from the charge formula, and the entire Ma geometry is
 fully specified.
 
 
 ### 12.3 Ghost modes
 
-A census of the T⁶ mode spectrum below 2 GeV (R28)
+A census of the Ma mode spectrum below 2 GeV (R28)
 reveals approximately 900 distinct modes — roughly 20×
 more than the ~40 known particles in this mass range.
 These "ghost modes" are predicted vibrations of the
-compact geometry with definite mass, charge, and spin
+material geometry with definite mass, charge, and spin
 that have no observed counterpart.
 
 The ghost modes are consistent with the off-resonance
 hypothesis from section 11.2.  Most observed particles
-sit slightly off a T⁶ eigenfrequency — they are transient
+sit slightly off an Ma eigenfrequency �� they are transient
 excitations, not exact modes.  The ghosts are the
 eigenfrequencies themselves: most are not directly
 realized as particles because producing a mode requires
@@ -1236,24 +1235,24 @@ ladder, not by any internal quark structure.
 
 ### 12.4 Beyond single particles
 
-The T⁶ model as presented describes single-particle
+The Ma model as presented describes single-particle
 properties: mass, charge, spin.  But nature is not isolated
 particles — atoms exist, nuclei are stable, electrons
 occupy discrete energy levels.
 
 Extending the model to multi-body systems requires adding
 the three ordinary spatial dimensions, making the full
-framework T⁶ × R³ — nine dimensions.  Results (R29) are
-striking: nuclei turn out to be T⁶ modes themselves (not
+framework Ma × S — nine dimensions.  Results (R29) are
+striking: nuclei turn out to be Ma modes themselves (not
 bound multi-particle states), following the scaling law
 n₅ = A, n₆ = 2A (mass number A), and matching all tested
 nuclei from the deuteron to iron-56 to within 1%.
 
-Atoms, by contrast, live below the T⁶ energy resolution
+Atoms, by contrast, live below the Ma energy resolution
 floor (~38 keV, vs atomic binding at ~13.6 eV) and require
 the spatial dimensions for their description.  Hydrogen's
 ground state energy emerges from the Kaluza-Klein Coulomb
-potential — the same T⁶ geometry that defines the
+potential — the same Ma geometry that defines the
 particles also generates the force between them.
 
 The naive Kaluza-Klein boson-exchange picture initially
@@ -1265,9 +1264,9 @@ theory — nuclei are modes, not force-bound composites,
 and the massive KK tower couples far more weakly than the
 zero-mode (photon) channel.
 
-These results establish a two-tier architecture: T⁶
+These results establish a two-tier architecture: Ma
 determines particle identity and nuclear composition (MeV
-scale), while R³ determines atomic binding and nuclear
+scale), while S (the three spatial dimensions) determines atomic binding and nuclear
 stability (eV scale).  They are the subject of a companion
 paper.
 
@@ -1287,12 +1286,12 @@ experiment:
   961 MeV, phi at 1028 MeV
 - **Structural constraints:** no single-mode Ω⁻; tau
   cannot be a single mode at 1777 MeV
-- **Predictive horizon:** the T⁶ spectrum becomes too
+- **Predictive horizon:** the Ma spectrum becomes too
   dense above ~2 GeV to distinguish real particles from
   noise — electroweak-scale physics is outside the
   model's current reach
 - **Sub-mm gravity:** deviations from Newton's law below
-  ~50 μm if gravity propagates in the neutrino T²
+  ~50 μm if gravity propagates in Ma_ν
 
 Where the model fails — tau, pion, Ω⁻ — the failures are
 specific and informative, pointing to the boundary between
