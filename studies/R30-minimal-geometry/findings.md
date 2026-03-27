@@ -344,14 +344,14 @@ and matches all observations.
 
 ---
 
-## Track 6. Shared-dimension T³
+## Track 6. Shared-dimension 3-torus
 
 Script: `scripts/track6_shared_t3.py`
 
 
-### F1. T³ reproduces electron, proton, and neutron masses
+### F1. The 3-torus reproduces electron, proton, and neutron masses
 
-A T³ with circumferences (L_a, L_b, L_c) and modes:
+A 3-torus with circumferences (L_a, L_b, L_c) and modes:
 
 | Particle | Mode | Energy | Charge | Mass match |
 |----------|------|--------|--------|------------|
@@ -373,7 +373,7 @@ aspect ratio degeneracy in a material sheet.  L_c ≈ L₆/2 from Ma because
 the proton uses n_c = 1 here vs n₆ = 2 in Ma.
 
 
-### F2. Neutral spin-½ is structurally impossible in T³
+### F2. Neutral spin-½ is structurally impossible in the 3-torus
 
 With the charge formula Q = −n_a + n_c:
 
@@ -382,7 +382,7 @@ With the charge formula Q = −n_a + n_c:
 
 Spin ½ requires exactly ONE odd tube winding.  But n_a = n_c
 forces both to be odd (spin count 2) or both even (spin count 0).
-**No neutral spin-½ mode exists in T³.**
+**No neutral spin-½ mode exists in the 3-torus.**
 
 This is not a parameter problem.  It is a topological
 constraint — no choice of L_a, L_b, L_c, shears, or winding
@@ -411,16 +411,16 @@ to match the electron and proton tube windings (n_a = n_c),
 which locks their parities together and forbids spin ½.
 
 
-### F4. T³ fails catastrophically on intermediate particles
+### F4. The 3-torus fails catastrophically on intermediate particles
 
-| Particle | Mass (MeV) | Best T³ match | Gap |
+| Particle | Mass (MeV) | Best 3-torus match | Gap |
 |----------|-----------|--------------|------|
 | μ⁻ | 105.7 | 7.4 MeV | 93% |
 | π⁺ | 139.6 | 7.4 MeV | 95% |
 | K⁺ | 493.7 | 938.3 MeV | 90% |
 | η | 547.9 | 938.3 MeV | 71% |
 
-The T³ spectrum has only two energy scales:
+The 3-torus spectrum has only two energy scales:
 - L_c = 1.32 fm → modes at ~938 MeV (proton scale)
 - L_b = 5000 fm → modes at ~0.25 MeV (fine spacing)
 
@@ -429,27 +429,27 @@ There is nothing at 20–50 fm that would produce modes in the
 (L₅ = 23.7 fm, spacing ~53 MeV per step), which is a
 separate dimension from the proton ring (L₆ = 2.66 fm).
 
-T³ merges the proton's two dimensions into one shared surface,
+The 3-torus merges the proton's two dimensions into one shared surface,
 losing the independent tube scale that creates the intermediate
 energy ladder.  **The meson/baryon mass spectrum requires the
 proton tube as a distinct dimension.**
 
 
-### F5. T³ has 10× fewer ghost modes than Ma
+### F5. The 3-torus has 10× fewer ghost modes than Ma
 
-| | T³ | Ma |
+| | 3-torus | Ma |
 |--|-----|------|
 | Modes below 2 GeV | 89 | ~900 |
 | Energy bands | 4 | ~48 |
 | Mode/particle ratio | ~2× | ~20× |
 
-The T³ ghost problem is much smaller — but this is a
+The 3-torus ghost problem is much smaller — but this is a
 consequence of having too FEW modes, not of having the right
-number.  T³ fails to accommodate most known particles, so
+number.  The 3-torus fails to accommodate most known particles, so
 its economy is not a virtue.
 
 
-### F6. Alternative charge formulas cannot save T³
+### F6. Alternative charge formulas cannot save the 3-torus
 
 Several alternatives were tested:
 
@@ -462,7 +462,7 @@ Several alternatives were tested:
 3. **Context-dependent spin**: Ad hoc and breaks the clean
    algebraic structure that makes Ma work.
 
-4. **T⁴ = T³ × T¹**: Adding a neutrino tube (dimension D)
+4. **The 3-torus augmented by an extra circle (a 4-torus)**: Adding a neutrino tube (dimension D)
    fixes the spin problem.  Neutron mode (0, n_b, 0, 1)
    has Q = 0, spin = 1 → ½.  But the intermediate energy
    problem (F4) remains unless the proton tube is also
@@ -485,7 +485,7 @@ structurally essential things:
    produce the rich energy spectrum where mesons and baryons
    live.
 
-Sharing a ring dimension between sheets (T³) loses the
+Sharing a ring dimension between sheets (the 3-torus) loses the
 second energy scale and collapses the intermediate spectrum.
 Removing a tube dimension (a single material sheet instead of Ma) loses the spin
 degree of freedom for neutral particles.
@@ -495,13 +495,13 @@ degree of freedom for neutral particles.
 
 ### F8. Summary of Track 6
 
-1. **T³ masses work** for e, p, n — the shared dimension
+1. **3-torus masses work** for e, p, n — the shared dimension
    successfully bridges the 1836× mass ratio.
 
-2. **T³ spin fails** — neutral spin-½ is topologically
+2. **3-torus spin fails** — neutral spin-½ is topologically
    forbidden.  The neutrino tube cannot be eliminated.
 
-3. **T³ spectrum fails** — only 2 energy scales vs Ma's 6.
+3. **3-torus spectrum fails** — only 2 energy scales vs Ma's 6.
    The proton tube's 53 MeV ladder is essential for mesons
    and baryons.
 
@@ -510,6 +510,6 @@ degree of freedom for neutral particles.
    - 3 rings for the energy scale hierarchy
    - Any reduction loses either spin or spectrum.
 
-5. **The r-degeneracy is real** — T³ has the same free-L_b
+5. **The r-degeneracy is real** — the 3-torus has the same free-L_b
    problem that Ma has with aspect ratios.  Reducing
    dimensions does not fix the under-determination.

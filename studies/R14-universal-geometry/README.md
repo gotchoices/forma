@@ -6,9 +6,9 @@ by topology (winding, linking) and energy (harmonics), not by
 geometry?
 
 **Outcome:** The three-photon linking model for hadrons is ruled out.
-Topological linking on T³ cannot redistribute charge — the R19 charge
-mechanism depends on mode numbers and shear, not on spatial arrangement
-of photons (F18).  All four mechanisms tested (localization, classical
+Topological linking on the 3-torus cannot redistribute charge — the R19
+charge mechanism depends on mode numbers and shear, not on spatial
+arrangement of photons (F18).  All four mechanisms tested (localization, classical
 interaction, KK gauge mixing, wavepacket superposition) fail to produce
 fractional charges.  DIS compatibility (three charged constituents)
 remains the central unsolved problem.
@@ -20,9 +20,9 @@ remains the central unsolved problem.
 - The 3 × 612 × m_e mass relation holds to 0.008% (F3)
 
 **Track 0 result:** A material sheet cannot support topological linking of
-geodesics (2D surfaces lack the dimensionality).  **T³** (three
-material dimensions) can, and naturally maps three linking
-planes to three color charges.  The proton mass fits as
+geodesics (2D surfaces lack the dimensionality).  A shared
+three-dimensional material space (the 3-torus) can, and naturally maps
+three linking planes to three color charges.  The proton mass fits as
 3 × 612 × m_e to 0.008%.  See [`findings.md`](findings.md).
 
 ## Motivation
@@ -41,7 +41,7 @@ Current approaches treat the electron in isolation.  But the
 Standard Model has many particles — and in the WvM framework,
 they're ALL photons on compact geometry.  If each particle type
 has its own material space, the free parameters multiply (r_electron,
-r_up, r_down, ...).  If all particles share ONE T³, the
+r_up, r_down, ...).  If all particles share one 3-torus, the
 constraint is massive: one (r, R, a) must simultaneously
 produce the electron, up quark, down quark, proton, and
 neutron with correct charges, spins, and masses.
@@ -54,7 +54,7 @@ Energy and geometry are the only fundamentals.  Mass, charge,
 spin, and magnetic moment are all emergent:
 
 - Mass = photon energy confined in periodic geometry
-- Charge = field winding on T³, projected into 3+1D (monopole
+- Charge = field winding on the 3-torus, projected into 3+1D (monopole
   component: the spherically symmetric part of the field)
 - Spin = winding ratio of geodesic
 - Confinement = topology (linked paths can't separate)
@@ -62,39 +62,39 @@ spin, and magnetic moment are all emergent:
 If this is correct, the particle zoo is just the catalog of
 distinct topological configurations of photons on a single
 material space.  The "Standard Model" becomes a theorem about
-the topology of T³.
+the topology of the 3-torus.
 
 ## The hypothesis
 
-**All particles are photon configurations on a single flat T³.**
+**All particles are photon configurations on a single flat 3-torus.**
 
-(Originally proposed for a material sheet, revised to T³ after Track 0
-showed that topological linking requires 3 material dimensions.)
+(Originally proposed for a material sheet, revised to the 3-torus after
+Track 0 showed that topological linking requires 3 material dimensions.)
 
 - **Electron:** One photon on a (1,2) geodesic in a 2D
-  subspace of T³, fundamental mode (n = 1).  Third dimension
+  subspace of the 3-torus, fundamental mode (n = 1).  Third dimension
   inert.  Charge e from the field's monopole projection.
 - **Positron:** Same, opposite winding direction.  Charge −e.
 - **Quarks:** Each quark is one photon in a three-photon
-  linked state on T³.  Each photon winds in a different pair
+  linked state on the 3-torus.  Each photon winds in a different pair
   of dimensions (→ three "colors").  The linking constrains
   each photon's field to project as fractional charge.
 - **Proton:** Three photons, topologically linked (Borromean:
   no two are linked pairwise, but the triple is inseparable)
-  on T³, with total charge +e and spin ½.
+  on the 3-torus, with total charge +e and spin ½.
   Each photon at harmonic n ≈ 612, giving m_p ≈ 3 × 612 m_e.
 - **Neutron:** Three photons, differently linked, total
   charge 0 and spin ½.  m_n ≈ 3 × 613 m_e.
 - **Neutrino:** Unknown topology — possibly a geodesic with
   zero charge projection but nearly zero mass.
 
-### How fractional charges could arise on T³
+### How fractional charges could arise on the 3-torus
 
 S3 showed that on a material sheet, only (1,2) gives nonzero charge (higher
 knots cancel by symmetry), and different charges seem to
 require different a/R.
 
-But on T³, there are three dimensions for winding.  Three
+But on the 3-torus, there are three dimensions for winding.  Three
 photons winding in different dimensional planes have
 fundamentally different field configurations than three
 parallel photons on a material sheet.  Mechanisms for fractional charge:
@@ -104,7 +104,7 @@ parallel photons on a material sheet.  Mechanisms for fractional charge:
    winding in the (2,3) plane.  The charge depends on WHICH
    dimensions the photon winds around, not just the a/R ratio.
 
-2. **Topological linking:** On T³, three geodesics in different
+2. **Topological linking:** On the 3-torus, three geodesics in different
    planes are genuinely linked.  The linking constrains each
    photon's field, potentially forcing each to project as
    fractional charge even though a free photon would give
@@ -113,12 +113,12 @@ parallel photons on a material sheet.  Mechanisms for fractional charge:
 3. **Winding number fractionalization:** In condensed matter
    physics, topological linking fractionalizes quantum numbers
    (fractional quantum Hall effect, anyons).  The same
-   mechanism on T³ could produce fractional charges from
+   mechanism on the 3-torus could produce fractional charges from
    integer-winding photons.
 
 ### How mass works on a shared geometry
 
-On a fixed T³, the allowed path lengths are:
+On a fixed 3-torus, the allowed path lengths are:
 
     ℓ_n = ℓ_fundamental / n     (harmonics)
 
@@ -158,7 +158,7 @@ charge from the KK field projection, then verify it matches e.
 
 ## What shared geometry constrains
 
-If electrons and hadrons share one T³, the geometry must
+If electrons and hadrons share one 3-torus, the geometry must
 simultaneously satisfy:
 
 1. **Electron:** single (1,2) photon at n = 1 gives charge e,
@@ -180,12 +180,12 @@ determined — and so is everything else.
 
 ### Track 0: Feasibility check ✓
 
-**Result:** A material sheet cannot support linking (negative).  T³ can,
+**Result:** A material sheet cannot support linking (negative).  The 3-torus can,
 with three linking planes mapping to three color charges
 (positive).  Proton mass = 3 × 612 × m_e to 0.008%
 (suggestive).  See [`findings.md`](findings.md).
 
-### Track 1: Charge of linked photons on T³  ✓
+### Track 1: Charge of linked photons on the 3-torus  ✓
 
 **Result (F8–F13):** For delocalized modes, the R19 charge
 formula gives total charge +e for any three-photon state with
@@ -206,7 +206,7 @@ Key discoveries:
 
 **Open:** does linking (localization) redistribute charge?
 
-### Track 1b: Localized photon charge on sheared T³  ✓
+### Track 1b: Localized photon charge on sheared 3-torus  ✓
 
 **Result (F14–F19):** Both paths from F13 fail.  Localization
 cannot charge the (2,3)-plane photon (its field is uniform in
@@ -215,10 +215,10 @@ the electron and quark indistinguishable.  The charge mechanism
 has a structural limitation: charge depends on mode numbers,
 not spatial arrangement.  Three possible exits identified (F19).
 
-### Track 2: Linking topologies on T³
+### Track 2: Linking topologies on the 3-torus
 
 Classify the possible topological links of two and three
-closed geodesics on T³.  Which configurations are Borromean
+closed geodesics on the 3-torus.  Which configurations are Borromean
 (no pair linked, but triple linked)?  Which give spin ½ for
 the composite?
 
@@ -254,7 +254,7 @@ Does the geometry determined by Tracks 1–3 satisfy:
 ## Dependencies
 
 - **R19 (prerequisite, complete):** Single-photon charge from
-  sheared T³.  Provides the charge formula, s₁₂ ≈ 0.165,
+  sheared 3-torus.  Provides the charge formula, s₁₂ ≈ 0.165,
   s₁₃ = 0, the n₁ = 1 selection rule, and the conclusion
   that quark charges must come from linking.
 - **R13 (complete):** KK charge from flat material sheet — establishes
@@ -263,15 +263,15 @@ Does the geometry determined by Tracks 1–3 satisfy:
 
 ## Key questions this study would answer
 
-1. Can three linked photons on T³ produce total charge +e?
+1. Can three linked photons on the 3-torus produce total charge +e?
 2. Does linking redistribute charge into 2/3 + 2/3 − 1/3?
 3. Is quark confinement automatic from the linking topology?
-4. Does requiring electron + proton on one T³ fix r?
+4. Does requiring electron + proton on one 3-torus fix r?
 5. Does the proton-to-electron mass ratio (3 × 612) emerge?
 
 ## Consequence: baryogenesis without antimatter
 
-If all particles share one T³, the only fundamental
+If all particles share one 3-torus, the only fundamental
 conservation law involving "charge-like" quantities is total
 winding number conservation (= total charge conservation).
 "Baryon number" and "lepton number" are not fundamental —
@@ -311,7 +311,7 @@ vs. gauge boson exchange.
 - Q27: foundational axioms
 - Q31: discrete material sheet / digital counter hypothesis
 - Q32: energy and geometry as only fundamentals
-- Q60: 3D geodesic charge on sheared T³ (answered by R19 F29)
+- Q60: 3D geodesic charge on sheared 3-torus (answered by R19 F29)
 - Q64: does topological linking modify the charge formula?
 - Q66: hybrid model (shear for electron, linking for quarks)
 
@@ -321,16 +321,16 @@ vs. gauge boson exchange.
 
 - The multi-photon field calculation is substantially harder
   than the single-photon case.  The interaction between linked
-  photons on T³ is novel territory.
-- Topological linking on T³ is well-studied mathematically
+  photons on the 3-torus is novel territory.
+- Topological linking on the 3-torus is well-studied mathematically
   (braid groups, mapping class groups) but connecting it to
   EM field projections is novel.
 - R19 significantly de-risks the approach: the single-photon
   charge formula is now known and tested (F29–F34), and the
-  constraints on T³ geometry (s₁₂, s₁₃, s₂₃) are established.
+  constraints on the 3-torus geometry (s₁₂, s₁₃, s₂₃) are established.
   Track 1 is a well-defined calculation, not open-ended.
 - If it works — even partially (e.g., fractional charges
   emerge from linking) — it would be a major result.
-- If it fails, it would push toward Model A (separate material sheet/T³ per
+- If it fails, it would push toward Model A (separate material sheet/3-torus per
   particle type), which has more free parameters but might
   still be tractable.

@@ -6,7 +6,8 @@
 
 ### F1. The electron is NOT a KK momentum mode
 
-The KK mode (n₁, n₂, n₃) on T³ with circumferences L₁, L₂, L₃
+The KK mode (n₁, n₂, n₃) on the 3-torus (a three-dimensional
+material space) with circumferences L₁, L₂, L₃
 has mass:
 
     m_KK c² = 2πℏc × √((n₁/L₁)² + (n₂/L₂)² + (n₃/L₃)²)
@@ -118,19 +119,19 @@ The net radial E-field, integrated over the torus surface,
 gives charge e.
 
 
-### F6. Flat T³ alone gives zero charge — the embedding provides it
+### F6. The flat 3-torus alone gives zero charge — the embedding provides it
 
-On a flat T³, geodesics are straight lines in the covering
+On a flat 3-torus, geodesics are straight lines in the covering
 space.  Parallel transport along a straight line on a flat
 manifold preserves vectors exactly — there is NO rotation.
-Therefore, a photon propagating on flat T³ with no embedding
+Therefore, a photon propagating on the flat 3-torus with no embedding
 information develops no monopole moment and no charge.
 
 This was initially framed as a "tension" with the WvM model.
 It is not.  The correct physical picture (see R12 F14
 revised) has two domains:
 
-- **Internal (flat T³):** The photon propagates through
+- **Internal (flat 3-torus):** The photon propagates through
   flat space.  This determines mass and spin.  No charge
   arises here — and none should.
 - **External (embedding):** The material space is embedded
@@ -140,7 +141,7 @@ revised) has two domains:
   the polarization, creating the net monopole moment = charge
   (the WvM mechanism).
 
-The flat-T³ zero-charge result is therefore expected, not
+The flat-3-torus zero-charge result is therefore expected, not
 problematic.  Charge is a projection property — it arises
 from how material-space fields appear in 3D, not from the
 internal geometry.
@@ -180,11 +181,11 @@ introduces the string tension α' as a new parameter.
 
 ### F8. What the correct calculation requires
 
-To compute the electron's charge from first principles on T³,
+To compute the electron's charge from first principles on the 3-torus,
 we need to:
 
 1. Write the full EM field of a photon propagating along the
-   (68,137) geodesic on flat T³
+   (68,137) geodesic on the flat 3-torus
 2. Specify the embedding: how the material dimensions map into
    3+1D spatial directions
 3. Project the material-space field into 3+1D using the
@@ -193,7 +194,7 @@ we need to:
 
 Step 2 is the crux — and it IS determined by the model.
 The WvM model specifies a toroidal embedding where the
-material sheet (or T³) sits inside 3+1D as a torus of major
+material sheet (or 3-torus) sits inside 3+1D as a torus of major
 radius R and minor radius a.  This is the embedding that
 produces charge via polarization rotation.
 
@@ -218,7 +219,7 @@ and only one matches the measured e.
 | Standard KK charge | Does not apply (zero material momentum) |
 | Electron identity | Winding mode (topological, not dynamical) |
 | Charge mechanism | Field projection via embedding (WvM), not KK momentum |
-| Flat T³ alone | ZERO charge (expected -- charge is a projection property) |
+| Flat 3-torus alone | ZERO charge (expected -- charge is a projection property) |
 | Embedding role | Provides the polarization rotation → monopole moment |
 
 **The electron's charge comes from the embedding of the material
@@ -238,11 +239,11 @@ provides it) but what determines the specific embedding geometry
 
 **Script:** [`scripts/track2_charge_mechanisms.py`](scripts/track2_charge_mechanisms.py)
 
-### F9. 7D cross-terms cannot generate charge on flat T³
+### F9. 7D cross-terms cannot generate charge on the flat 3-torus
 
-The 7D Maxwell equations on flat T³ give zero volume-averaged
-4D current: ∫_T³ ∂_a F^aν d³y = 0 by periodicity.  A winding
-mode on flat T³ produces NO long-range Coulomb field.  This
+The 7D Maxwell equations on the flat 3-torus give zero volume-averaged
+4D current: ∫ ∂_a F^aν d³y = 0 by periodicity.  A winding
+mode on the flat 3-torus produces NO long-range Coulomb field.  This
 independently confirms F6: charge cannot arise from the flat
 interior alone.  (Under the corrected picture, this is expected
 — charge comes from the embedding, not the interior.)
@@ -280,7 +281,7 @@ the embedding rather than determining it.
 
 **Candidate 3: Topological constraint.**
 If a mathematical theorem guarantees that any winding-w field
-configuration on T³ embedded in 3+1D has monopole moment ∝ w,
+configuration on the 3-torus embedded in 3+1D has monopole moment ∝ w,
 then the existence of charge is topologically forced.  This
 would make charge quantization and conservation automatic.
 However, the "charge per winding" (i.e., α) would still
@@ -325,7 +326,7 @@ Three levels of unification:
 To claim a true unification theory, the model needs Level 2:
 the 7D metric must produce both the gravitational and EM
 fields from a single geometric object.  The missing piece is
-what determines the T³ geometry.  If the geometry is derived
+what determines the 3-torus geometry.  If the geometry is derived
 (e.g., as the unique self-consistent solution of 7D Einstein
 equations), that's unification.  If it's an input, it's a
 framework.

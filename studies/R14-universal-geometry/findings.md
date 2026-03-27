@@ -21,10 +21,10 @@ paths.  There is no mechanism for confinement or forced
 binding from material sheet topology alone.
 
 
-### F2. T³ supports topological linking
+### F2. The 3-torus supports topological linking
 
-On T³ = S¹ × S¹ × S¹ (three material dimensions), closed
-curves CAN form genuine 3D links.  A curve on T³ has three
+On the 3-torus (T³ = S¹ × S¹ × S¹, three material dimensions), closed
+curves CAN form genuine 3D links.  A curve on the 3-torus has three
 winding numbers (n₁, n₂, n₃).  Two curves that wind around
 different pairs of dimensions can be topologically linked.
 
@@ -46,8 +46,8 @@ the Borromean property (a link where no two components are
 linked pairwise, but the triple is inseparable): remove any
 one curve and the other two can separate.
 
-**Implication:** If T³ is required for hadrons, the electron
-also lives on T³.  It would use 2 of the 3 dimensions for its
+**Implication:** If the 3-torus is required for hadrons, the electron
+also lives on the 3-torus.  It would use 2 of the 3 dimensions for its
 (1,2) winding, with the third dimension inert for single-photon
 states but essential for multi-photon states.
 
@@ -111,18 +111,18 @@ non-integer offsets might reflect:
 
 ## Conceptual implications
 
-### F5. The material space should be T³, not a single material sheet
+### F5. The material space should be the 3-torus, not a single material sheet
 
 Track 0 establishes:
 1. A material sheet cannot support topological linking (F1)
-2. T³ can, with natural three-color structure (F2)
+2. The 3-torus can, with natural three-color structure (F2)
 3. S3 previously found three distinct a/R values for the three
    charge quanta (e, 2e/3, e/3) — consistent with three material
    dimensions (Q13)
 
-The upgrade from a material sheet to T³ has specific consequences:
+The upgrade from a material sheet to the 3-torus has specific consequences:
 - Total spacetime dimensions: 3+1+3 = 7 (or 6+1)
-- The electron uses a 2D subspace of T³ for its (1,2) geodesic
+- The electron uses a 2D subspace of the 3-torus for its (1,2) geodesic
 - Quarks use all three dimensions, with linking providing
   confinement
 - Each material dimension has its own circumference (L₁, L₂, L₃)
@@ -141,13 +141,13 @@ the photon energies ARE the mass.  The fact that m_p/m_e is
 divisible by 3 to within 0.008% is consistent with (but does
 not prove) a three-photon model.
 
-### F7. R13 and R14 both need T³
+### F7. R13 and R14 both need the 3-torus
 
-The upgrade to T³ affects the entire project:
-- R13 (KK charge): the mode decomposition on T³ is richer than
+The upgrade to the 3-torus affects the entire project:
+- R13 (KK charge): the mode decomposition on the 3-torus is richer than
   on a material sheet (three quantum numbers instead of two)
 - R14 (universal geometry): linking topology becomes possible
-- The electron model (R8): needs re-verification on T³, but
+- The electron model (R8): needs re-verification on the 3-torus, but
   if the electron uses only 2 of 3 dimensions, the results
   should carry over with the third dimension adding a tower
   of modes that don't affect the (1,2) sector
@@ -155,7 +155,7 @@ The upgrade to T³ affects the entire project:
 
 ---
 
-## Track 1: Charge of linked photons on T³
+## Track 1: Charge of linked photons on the 3-torus
 
 **Script:** [`scripts/track1_linked_charge.py`](scripts/track1_linked_charge.py)
 
@@ -164,7 +164,7 @@ photons — one in each linking plane — as a candidate proton model.
 
 ### F8. Three linked photons give total charge +e
 
-Consider three photons, one in each linking plane of T³:
+Consider three photons, one in each linking plane of the 3-torus:
 
 | Plane | Photon winding | Charge mechanism     | Charge |
 |-------|----------------|----------------------|--------|
@@ -250,11 +250,11 @@ These may correspond to antiparticles or exotic states.
 ### F11. Charge-mass tension: proton requires uncharged mass carriers
 
 The n₁ = 1 rule (F30) constrains all charged modes on the
-electron's T³ to energies of order m_e.  Proton-scale energy
+electron's 3-torus to energies of order m_e.  Proton-scale energy
 (938 MeV = 1836 m_e) cannot come from charged photons alone.
 
 The resolution: the proton's mass comes from **uncharged photons**
-winding in direction 3 of T³:
+winding in direction 3 of the 3-torus:
 
 | Component       | Winding   | Energy  | Charge |
 |-----------------|-----------|---------|--------|
@@ -287,7 +287,7 @@ to the EM field:
 | Model     | Charges           | Σ e_i²    | Scattering centers |
 |-----------|-------------------|-----------|-------------------|
 | SM (uud)  | 2/3, 2/3, −1/3   | 1         | 3                 |
-| Naive T³  | 1, 0, 0           | 1         | 1                 |
+| Naive 3-torus | 1, 0, 0       | 1         | 1                 |
 
 Both models give Σ e_i² = 1 (total charge conservation), but
 the SM distributes charge across three partons (constituent
@@ -301,7 +301,7 @@ contradicting the independent-mode result.
 The R19 charge formula applies to **delocalized** single-photon
 modes.  For a multi-photon linked state, the photons must be
 **localized** (wavepackets) — a delocalized mode uniformly
-filling T³ cannot be meaningfully "linked" with another mode.
+filling the 3-torus cannot be meaningfully "linked" with another mode.
 Localization introduces a parameter σ (wavepacket width), and
 the charge becomes Q(σ, s₁₂, topology).
 
@@ -315,11 +315,11 @@ for Track 1, Step 2.
 ### F13. Two paths forward
 
 **(A) Localized photon charge.**  Compute Q(σ) for a wavepacket
-on sheared T³, then determine whether the boundary conditions
+on the sheared 3-torus, then determine whether the boundary conditions
 imposed by linking produce fractional charges.  This is the
 natural extension of R19's charge formula to multi-photon states.
 
-**(B) Multi-component electromagnetism.**  In standard KK on T³,
+**(B) Multi-component electromagnetism.**  In standard KK on the 3-torus,
 each compact direction generates its own U(1) gauge field.  If
 the physical photon is a linear combination of all three U(1)s,
 then photons in all three planes contribute to the EM charge,
@@ -329,7 +329,7 @@ revisiting R19's derivation with the generalized gauge field.
 
 ---
 
-## Track 1b: Localized photon charge on sheared T³
+## Track 1b: Localized photon charge on sheared 3-torus
 
 **Script:** [`scripts/track1b_localized_charge.py`](scripts/track1b_localized_charge.py)
 
@@ -376,7 +376,7 @@ can only decrease the time-averaged charge.
 
 ### F16. Classical EM linking is inert
 
-On a flat T³, Maxwell's equations are linear.  Two EM waves
+On a flat 3-torus, Maxwell's equations are linear.  Two EM waves
 superpose without interaction.  The total field of three photons
 is the sum of their individual fields, and the total charge is
 the sum of their individual charges — regardless of whether
@@ -396,7 +396,7 @@ too small to produce O(1) charge redistribution.
 ### F17. KK multi-component EM is incompatible with (1,2) electron
 
 In Kaluza-Klein theory (which derives gauge forces from extra
-dimensions), each compact direction of T³ generates its own
+dimensions), each compact direction of the 3-torus generates its own
 U(1) gauge field.  If the physical EM field is a linear
 combination A_EM = a₁A₁ + a₂A₂ + a₃A₃, then a mode's charge
 is Q = a₁n₁ + a₂n₂ + a₃n₃.
@@ -450,13 +450,13 @@ cross-sections could differ from their monopole charges if the
 probe sees field amplitude rather than total flux.
 
 **(B) Beyond linear EM.**  R19's charge formula assumes free
-(non-interacting) photons on flat T³.  If the photons are
+(non-interacting) photons on a flat 3-torus.  If the photons are
 topological solitons (stable, localized field configurations
 like vortices), the linking topology imposes O(1) boundary
 conditions that modify the mode structure.  This goes beyond
 the WvM picture of "photons as ordinary EM waves."
 
-**(C) Beyond flat T³.**  If the material space has curvature
+**(C) Beyond the flat 3-torus.**  If the material space has curvature
 (like a Calabi-Yau manifold, the kind of space used in string
 theory compactifications), the mode structure and charge
 projections could be fundamentally different.  Curvature could
@@ -471,12 +471,12 @@ n₁ = 0 in the flat limit to acquire effective n₁ ≠ 0 charge.
 | # | Finding |
 |---|---------|
 | F1 | Geodesics on a material sheet cannot be topologically linked |
-| F2 | T³ supports linking; three planes → three color charges |
+| F2 | The 3-torus supports linking; three planes → three color charges |
 | F3 | Proton mass = 3 × 612 × m_e to 0.008% |
 | F4 | Lepton mass ratios are near-integer (tau: 7 ppm) |
-| F5 | The material space should be T³, not a single material sheet |
+| F5 | The material space should be the 3-torus, not a single material sheet |
 | F6 | The three-photon proton mass is not trivially wrong |
-| F7 | R13 and R14 both need T³ |
+| F7 | R13 and R14 both need the 3-torus |
 | F8 | Three linked photons give total charge +e (robust at s₁₃ = 0) |
 | F9 | Neutron charge = 0 when (1,2)-plane photon has n₁ ≠ 1 |
 | F10 | Spin quantization forbids (1,n₂>2,0) modes → electron is lightest charged fermion |
@@ -488,13 +488,13 @@ n₁ = 0 in the flat limit to acquire effective n₁ ≠ 0 charge.
 | F16 | Classical EM linking is inert — linear Maxwell, no photon interaction |
 | F17 | KK gauge mixing gives same charge to electron and quark — incompatible |
 | F18 | Structural limitation: charge depends on mode numbers, not spatial arrangement |
-| F19 | Possible exits: (A) reinterpret DIS, (B) beyond linear EM, (C) beyond flat T³ |
+| F19 | Possible exits: (A) reinterpret DIS, (B) beyond linear EM, (C) beyond flat 3-torus |
 
 
 ## Scripts
 
 - [`scripts/track0_feasibility.py`](scripts/track0_feasibility.py)
-  — Topology on a material sheet and T³, proton mass arithmetic, harmonic
+  — Topology on a material sheet and the 3-torus, proton mass arithmetic, harmonic
   spectrum
 - [`scripts/track1_linked_charge.py`](scripts/track1_linked_charge.py)
   — Charge of linked photons: R19 formula applied to three-photon

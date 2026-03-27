@@ -48,7 +48,7 @@ Several clues suggest it might:
 
 ## Core questions
 
-1. **Can a single material dimension (T¹) reproduce any
+1. **Can a single material dimension (a circle) reproduce any
    of the particle properties (mass, charge, spin)?**
    What specifically requires a second dimension?
 
@@ -57,13 +57,13 @@ Several clues suggest it might:
    directions.  Is there a 1D analogue — charge from
    curvature, twist, or non-uniform metric?
 
-3. **What is the minimum compact geometry that produces
-   quantized charge?**  T¹ (circle), material sheet (torus),
+3. **What is the minimum material geometry that produces
+   quantized charge?**  A circle, material sheet (torus),
    Klein bottle, Möbius strip, or something else?
 
 4. **What happens when one material-sheet dimension shrinks to zero?**
    If the tube circumference L_tube → 0 (r → ∞), the material sheet
-   degenerates toward T¹ (just the ring).  Does charge
+   degenerates toward a circle (just the ring).  Does charge
    survive this limit?  Does it emerge gradually or
    vanish discontinuously?
 
@@ -73,7 +73,7 @@ Several clues suggest it might:
 
 6. **If the tube is itself further compactified** (a circle
    of circles — hierarchical compactification), does this
-   effectively reduce a material sheet to T¹ at accessible energies,
+   effectively reduce a material sheet to a circle at accessible energies,
    deferring the second dimension to a higher energy scale
    (possibly Planck)?
 
@@ -96,9 +96,9 @@ Each material sheet in the Ma model contributes:
 
 The charge formula Q = −n₁ + n₅ fundamentally needs two
 independent winding numbers from different material
-directions.  On T¹, there is only one winding number.
+directions.  On a circle, there is only one winding number.
 
-### What T¹ provides
+### What a circle provides
 
 A single material dimension (circle of circumference L):
 
@@ -118,7 +118,7 @@ An interval [0, L] with boundary conditions:
 
 - **Standing waves** sin(nπx/L) with E_n = nℏc/(2L)
 - **Boundaries break translational symmetry** — different
-  from T¹ (periodic) or a material sheet (doubly periodic)
+  from a circle (periodic) or a material sheet (doubly periodic)
 - Adding boundary conditions to a 1D space does NOT add
   a dimension — it constrains solutions within the
   existing 1D space
@@ -166,7 +166,7 @@ have energy ≫ ℏc/L_ring and decouple at low energies.
 In the extreme limit L_tube → 0 (r → ∞):
 
 - Only n_tube = 0 modes survive at low energy
-- The effective geometry reduces to T¹ (the ring)
+- The effective geometry reduces to a circle (the ring)
 - Charge requires n_tube ≠ 0 (the (1,2) mode has
   n_tube = 1), so charge vanishes in this limit
 
@@ -176,7 +176,7 @@ minimal energy, but the mass spectrum degenerates.
 
 An intermediate scenario: the tube circumference is at
 a scale between Compton and Planck.  Low-energy physics
-sees T¹; material-sheet effects appear only at high energies.  But
+sees a circle; material-sheet effects appear only at high energies.  But
 the electron IS a material-sheet effect (charge from winding) — so
 this seems to require the tube at Compton scale.
 
@@ -189,17 +189,17 @@ Planck scale (~10⁻³⁵ m) — there is room for many levels.
 
 ## Approach — tracks
 
-### Track 1 — T¹ electron: what works, what fails  **Answered by Tracks 4 & 6**
+### Track 1 — Circle-based electron: what works, what fails  **Answered by Tracks 4 & 6**
 
-T¹ provides mass quantization (E_n = nℏc/L) and spin
+A circle provides mass quantization (E_n = nℏc/L) and spin
 (odd/even parity), but cannot produce charge (requires
 shear between two directions — Track 4 F11) and cannot
 produce neutral spin-½ particles (requires three
 independent tube dimensions — Track 6 F2, F7).
-T¹ is structurally insufficient; no dedicated computation
+A circle is structurally insufficient; no dedicated computation
 needed beyond what Tracks 4 and 6 already demonstrate.
 
-### Track 2 — Non-uniform T¹: can complexity replace dimensions?
+### Track 2 — Non-uniform circle: can complexity replace dimensions?
 
 A circle with position-dependent metric g(x) has a mode
 equation that produces non-trivially spaced energies
@@ -224,7 +224,7 @@ compact, orientable, 2D surface with winding numbers.
 Also analyzed: r-degeneracy as a curve in (r,s) space,
 and elastic/dynamic geometry.  Findings F15–F20.
 
-### Track 4 — The r → ∞ limit: material sheet degenerating to T¹  **Complete**
+### Track 4 — The r → ∞ limit: material sheet degenerating to a circle  **Complete**
 
 Take the existing material-sheet solver and examine the large-r limit.
 **Result:** No phase transition at any r.  Charge works for
@@ -237,9 +237,9 @@ Findings F9–F14.
 ### Track 5 — Minimum geometry for charge  **Answered by Tracks 4 & 6**
 
 The combined findings from Tracks 4 and 6 answer this:
-- T¹: NO — only one winding number, no shear (Track 4 F11)
+- Circle: NO — only one winding number, no shear (Track 4 F11)
 - Material sheet: YES — shear between two directions produces charge
-- T³ shared: FAILS — loses neutral spin-½ (Track 6 F2)
+- Shared-dimension 3-torus: FAILS — loses neutral spin-½ (Track 6 F2)
 - Klein bottle: investigated in Track 3
 
 **Conclusion:** A material sheet is the minimum geometry for quantized
@@ -249,24 +249,24 @@ topology) and a ring (for the energy scale).  3 sheets
 Track 3 tests whether a non-orientable material-sheet variant works.
 
 
-### Track 6 — Shared-dimension T³: electron and proton on a common surface  **Complete**
+### Track 6 — Shared-dimension 3-torus: electron and proton on a common surface  **Complete**
 
 **Motivation:**  Ma_e (dims 1,2) and Ma_p
 (dims 5,6) have no shared dimensions in Ma — they are
 coupled only through the cross-shear σ_ep.  What if they
-share a dimension, reducing Ma to T³ (plus the neutrino
-sheet, treated separately)?
+share a dimension, reducing Ma to a shared 3D material space (the 3-torus), plus the neutrino
+sheet treated separately?
 
 The user's key questions:
-- Can the electron and proton ratios work in a shared T³?
+- Can the electron and proton ratios work in a shared 3-torus?
 - Does sharing a dimension eliminate one degree of freedom
   or just defer it?
 - Could the neutrino sheet be folded in too, or is it
   too far off in scale?
 
-**Preliminary analysis (diagonal T³, no shear):**
+**Preliminary analysis (diagonal 3-torus, no shear):**
 
-A T³ with circumferences (L_a, L_b, L_c) can accommodate:
+A 3-torus with circumferences (L_a, L_b, L_c) can accommodate:
 
     Electron (1, 2, 0):  E_e = m_e      Q = −1
     Proton   (0, 1, 1):  E_p = m_p      Q = +1
@@ -286,24 +286,24 @@ Preliminary result: m_n − m_p = 1.291 MeV (0.002 MeV off!).
 This is encouraging but raises questions:
 - The neutron's n_b ≈ 499 is a high winding.  In Ma, the
   neutron has small quantum numbers on all dimensions.
-  Is n_b = 499 physical or a sign that T³ needs shear?
+  Is n_b = 499 physical or a sign that the 3-torus needs shear?
 - L_b is free — same r-degeneracy as a material sheet, just fewer copies.
 - The neutrino scale is 10¹⁰× larger than L_a.  Sharing
   with the neutrino is almost certainly not viable.
 
 **Computational plan:**
-1. Build a T³ solver with metric, shear, and charge.
+1. Build a 3-torus solver with metric, shear, and charge.
 2. Pin L_a and L_c by electron and proton masses.
 3. Sweep L_b and compute the full particle spectrum.
 4. Check spin assignment from winding parities.
 5. Compare ghost-mode count to Ma (fewer dimensions
    should mean fewer ghosts).
-6. Test whether T³ with shear can reduce the neutron's
+6. Test whether the 3-torus with shear can reduce the neutron's
    n_b to a small value (as σ_ep does in Ma).
 7. Assess whether the muon, pion, kaon, and other
-   particles find modes in the T³ spectrum.
+   particles find modes in the 3-torus spectrum.
 
-**Success criterion:**  T³ reproduces at least the core
+**Success criterion:**  The 3-torus reproduces at least the core
 particles (e, p, n, μ, π, K) with comparable accuracy
 to Ma but with fewer free parameters and fewer ghosts.
 If it fails, that demonstrates Ma's extra dimensions
@@ -313,7 +313,7 @@ are structurally necessary.
 ## Infrastructure
 
 New scripts in `R30-minimal-geometry/scripts/`.  May use
-`lib/ma.py` for comparison; new solvers for T¹ and
+`lib/ma.py` for comparison; new solvers for the circle and
 Klein bottle will be standalone.
 
 ## Relation to prior studies

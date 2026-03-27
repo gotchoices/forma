@@ -137,7 +137,7 @@ This is ONE equation in TWO unknowns (r, s).  It constrains
 the model but doesn't fully fix it — one degree of freedom
 remains.  To fully determine α, we need a second equation
 relating r and s.  Candidates:
-- The T³ geometry (R14) imposes constraints on all three shear
+- The 3-torus geometry (R14) imposes constraints on all three shear
   parameters simultaneously
 - An energy condition (Track 2) might select a preferred s
 - The aspect ratio r might be fixed by some other physics
@@ -218,13 +218,13 @@ on either one.
 
 **This does NOT mean the mechanism is ruled out.**  It means
 the specific shear value must come from outside the flat material sheet:
-- The T³ geometry (needed for quark confinement, R14) has three
+- The 3-torus geometry (needed for quark confinement, R14) has three
   shear parameters constrained by topology.
 - Those topological constraints could fix the shear that
   determines α = 1/137.
 
 Think of it this way: the shear mechanism provides the
-*formula* (α depends on shear), while T³ topology would
+*formula* (α depends on shear), while 3-torus topology would
 provide the specific *input* (the shear value).
 
 
@@ -279,7 +279,7 @@ What it does NOT do is select the specific shear value on its
 own.  The flat material sheet treats shear as a free parameter.  This is
 the same situation as the aspect ratio r — it has been free
 throughout all studies.  Both may be determined by the same
-external physics (T³ topology).
+external physics (3-torus topology).
 
 
 ---
@@ -419,21 +419,21 @@ was free before we imposed Q = e.
 This is the single remaining question for the material-sheet model.
 Candidates for fixing r:
 
-1. **T³ topology (R14):** Three shear parameters on T³,
+1. **3-torus topology (R14):** Three shear parameters on the 3-torus,
    constrained by modular consistency and quark-charge
    requirements, may simultaneously fix r and s.
 
-2. **Self-linking / knot invariants:** In T³, the photon's
+2. **Self-linking / knot invariants:** In the 3-torus, the photon's
    geodesic can self-link.  The linking number is a topological
    invariant that could constrain the winding geometry.
 
 3. **Multi-particle consistency:** If the electron, up quark,
-   and down quark all live on the same T³, the single compact
+   and down quark all live on the same 3-torus, the single material
    geometry must accommodate all three particles simultaneously.
    This is a highly constrained system (three charges from three
    shear parameters, three masses from three geodesic lengths).
 
-All three candidates point to the same next step: T³.
+All three candidates point to the same next step: the 3-torus.
 
 
 ### F16. Phase 1 (what) is essentially complete
@@ -453,21 +453,21 @@ studies R2–R19.  The current state:
 - The EM self-energy is O(α), matching QED (R19 F11, F14)
 
 **Open:**
-- What sets the aspect ratio r (→ T³)
+- What sets the aspect ratio r (→ the 3-torus)
 - Normalization reconciliation (Track 3 remainder)
 - Connection to quark charges (Track 4, deferred)
 
 Phase 2 — *why* the geometry takes its specific values — is the
-T³ question (R14, Track 4).
+3-torus question (R14, Track 4).
 
 
 ---
 
-## Track 4. T³ quark charges: most constrained hypothesis
+## Track 4. 3-torus quark charges: most constrained hypothesis
 
 Script: [`scripts/track4_t3_quarks.py`](scripts/track4_t3_quarks.py)
 
-**The question:** Can a single T³ with uniform shear (same s
+**The question:** Can a single 3-torus with uniform shear (same s
 in every plane) produce all three particle charges (e, 2e/3,
 e/3) from different winding configurations?
 
@@ -476,7 +476,7 @@ Two sub-hypotheses tested, in order of increasing freedom:
 - **4a. Same plane, same shear:** All three particles in the
   same 2D plane, differing only in ring winding m.
 - **4b. Different planes, same shear:** Particles in different
-  planes of T³ (electron in (1,2), quarks in (1,3) and (2,3)),
+  planes of the 3-torus (electron in (1,2), quarks in (1,3) and (2,3)),
   all sharing the same shear s.  Each plane has a different
   aspect ratio r because L₁ ≠ L₂ ≠ L₃.
 
@@ -522,13 +522,13 @@ There is NO solution with 0 < s < 1.
 
 **Fractional quark charges cannot come from different winding
 numbers alone on a single plane.**  The particles must be in
-different planes of T³, with different aspect ratios and/or
+different planes of the 3-torus, with different aspect ratios and/or
 different shear values.
 
 
 ### F19. Mass constraint forces m ≈ −6 for quarks
 
-On a shared T³, the electron sets two circumferences (L₁, L₂)
+On a shared 3-torus, the electron sets two circumferences (L₁, L₂)
 at the Compton scale (~10⁻¹² m).  A quark photon with energy
 612 m_e c² needs a geodesic 612× shorter (L_q ~ 10⁻¹⁵ m).
 
@@ -567,9 +567,9 @@ recovered.
 **This is tantalizingly close but not exact.**
 
 
-### F21. T³ consistency: the factor-of-2 problem
+### F21. 3-torus consistency: the factor-of-2 problem
 
-If both quarks are (1,−6) modes in different T³ planes
+If both quarks are (1,−6) modes in different 3-torus planes
 (up in (1,3), down in (2,3)), with s = 1/6:
 
 The charge formula reduces to α_q = r_q² / 3817, where
@@ -588,7 +588,7 @@ But the electron requires r₁₂ ≈ 0.993 for α = 1/137.
 r₁₃/r₂₃ = L₁/L₂ = r₁₂, we get r₁₂² = 4, r₁₂ = 2.
 
 The uniform-shear hypothesis with (1,−6) quarks in
-different planes is **ruled out** by the T³ consistency
+different planes is **ruled out** by the 3-torus consistency
 constraint.
 
 Notably, r₁₂ = 2 equals the electron's poloidal winding
@@ -603,7 +603,7 @@ Both sub-hypotheses fail:
 | Sub-hypothesis | Failure mode |
 |---------------|-------------|
 | 4a. Same plane | Integer-m constraint impossible (F18) |
-| 4b. Different planes, same shear | T³ consistency: r₁₂ = 2 vs 1 (F21) |
+| 4b. Different planes, same shear | 3-torus consistency: r₁₂ = 2 vs 1 (F21) |
 
 But the investigation produces several suggestive near-misses:
 
@@ -618,7 +618,7 @@ But the investigation produces several suggestive near-misses:
 |-------------------|-------------|
 | Same-plane fractional charges | Impossible (F18) |
 | Charge pure ratio (m = −6) | 0.30 vs 1/3 target (10% off) |
-| T³ circumference consistency | Factor of 2 (exact, F21) |
+| 3-torus circumference consistency | Factor of 2 (exact, F21) |
 
 **Interpretation:** The uniform-shear picture is *close* but
 not right.  The factor-of-2 is algebraically exact (from
@@ -637,13 +637,13 @@ adjustments.  A structural modification is needed:
 
 ---
 
-## Track 5. Non-uniform shear on T³
+## Track 5. Non-uniform shear on the 3-torus
 
 Script: [`scripts/track5_nonuniform_shear.py`](scripts/track5_nonuniform_shear.py)
 
 **The question:** Does relaxing to three independent shear values
 (s₁₂ ≠ s₁₃ ≠ s₂₃) resolve the factor-of-2 problem from Track 4
-and produce a T³ geometry with the correct proton mass?
+and produce a 3-torus geometry with the correct proton mass?
 
 
 ### F22. Charge equations are solvable with non-uniform shear
@@ -691,7 +691,7 @@ quark mass, it needs s ≈ 1/6.  These are incompatible.
 
 Track 4's s ≈ 1/6 near-miss was an artifact of forcing all
 planes to share the same s.  When each plane gets the s it
-needs for charge (as it must for T³ consistency), the mass
+needs for charge (as it must for 3-torus consistency), the mass
 fails by orders of magnitude.
 
 
@@ -699,15 +699,15 @@ fails by orders of magnitude.
 
 Combining Tracks 4 and 5:
 
-| Hypothesis | Charge | Mass | T³ consistency |
+| Hypothesis | Charge | Mass | 3-torus consistency |
 |-----------|--------|------|----------------|
 | Uniform shear (T4) | ✓ individual | ~ok (s≈1/6) | ✗ (r₁₂=2 vs 1) |
 | Non-uniform shear (T5) | ✓ all three | ✗ (×150–900) | ✓ |
 
-No configuration of shear values on T³ can simultaneously
+No configuration of shear values on the 3-torus can simultaneously
 satisfy the charge AND mass constraints for (1,−6) quarks.
 The hypothesis that quarks are single-photon (1,−6) modes
-in other T³ planes is ruled out.
+in other 3-torus planes is ruled out.
 
 
 ### What remains viable
@@ -736,17 +736,17 @@ Possible next directions:
 
 3. **Alternative quark models.**  Maybe quarks don't have n=1
    tube winding (the WvM monopole mechanism might not apply to
-   linked multi-photon states on T³).  Or maybe the quark
+   linked multi-photon states on the 3-torus).  Or maybe the quark
    photon energies are not equal (m_p/3 per quark was an
    assumption from R14 F3).
 
 
 ---
 
-## Track 6: 3D charge on sheared T³
+## Track 6: 3D charge on sheared 3-torus
 
 Track 6 asked: what happens to the charge formula when the photon
-winds in all three material dimensions of T³, not just two?
+winds in all three material dimensions of the 3-torus, not just two?
 
 This was motivated by the failure of Tracks 4–5 (single-photon
 quarks from 2D charge formulas per plane).  Track 6 derives the
@@ -755,7 +755,7 @@ selection rule that reshapes the entire quark strategy.
 
 ### F25. An infinite tower of lighter modes exists below the electron
 
-On any T³ hosting the electron as (1,2,0), modes (1,2,k) with
+On any 3-torus hosting the electron as (1,2,0), modes (1,2,k) with
 k ≠ 0 have **longer** geodesics and therefore **lower** energy
 (lighter mass).  E = hc/L, so longer path → lighter particle.
 
@@ -787,7 +787,7 @@ was explored but ultimately superseded by F31's selection rule.
 ### F29. The 3D charge integral has a closed-form solution
 
 We derived the charge integral for a general (1, n₂, n₃) mode
-on a sheared T³.  The derivation works by changing variables
+on a sheared 3-torus.  The derivation works by changing variables
 from lattice coordinates (θ₁, θ₂, θ₃) to physical angle
 θ₁_phys = θ₁ + s₁₂θ₂ + s₁₃θ₃, then evaluating three nested
 integrals.  The result is exact:
@@ -804,15 +804,15 @@ is the product of its "effective charge" in each direction.
 **s₂₃ is absent.**  The shear between directions 2 and 3 does
 not appear.  Only shears involving the tube axis (direction 1)
 affect charge.  s₂₃ affects mass (geodesic lengths) but not
-charge.  This means one of the three T³ shear parameters is
+charge.  This means one of the three 3-torus shear parameters is
 irrelevant to the charge problem.
 
-### F30. The n₁ = 1 selection rule extends to T³
+### F30. The n₁ = 1 selection rule extends to the 3-torus
 
 On a material sheet, only modes with tube winding n = 1 produce charge (F17).
 The same integral — ∫cos(n₁θ)cos(θ)dθ — appears in the 3D
 derivation and vanishes for n₁ ≠ 1.  All charged particles on
-T³ must have n₁ = 1.
+the 3-torus must have n₁ = 1.
 
 ### F31. The model predicts no charged particle lighter than the electron
 
@@ -833,7 +833,7 @@ uncharged excitations but cannot be detected electromagnetically.
 
 This is a **prediction of the model**, not an assumption.  It
 follows directly from the 3D charge integral.  It explains:
-- Why the electron is confined to a 2D plane on T³ (F26/Q63)
+- Why the electron is confined to a 2D plane on the 3-torus (F26/Q63)
 - Why no charged fermion lighter than the electron is observed
 - Why the electron's charge physics is purely 2D despite living
   on a 3D material space
@@ -850,7 +850,7 @@ than the electron — has charge exactly e/3.  No such particle
 has ever been observed.
 
 This means s₁₃ must be zero (or negligibly small) on the
-physical T³.
+physical 3-torus.
 
 ### F33. Single-photon quarks from shear are ruled out
 
@@ -872,7 +872,7 @@ R19 Tracks 1–3 derive the electron's charge from shear on the electron sheet.
 The charge formula α = r²sin²(2πs)/(4π(2−s)²√(r²(1+2s)²+4))
 gives a self-consistent geometry for every aspect ratio r > 0.54,
 producing the correct mass, spin, g-factor, and charge.  Track 6
-shows that s₁₃ = 0 protects this result on T³ — the electron's
+shows that s₁₃ = 0 protects this result on the 3-torus — the electron's
 charge is a purely 2D phenomenon, unaffected by the third compact
 dimension.  The remaining free parameter (r) must be fixed by
 multi-particle constraints (→ R14).
@@ -880,7 +880,7 @@ multi-particle constraints (→ R14).
 **What is ruled out (single-photon quarks from shear):**
 
 Tracks 4–6 systematically tested whether individual photons on
-T³ could produce fractional charges via shear.  Every approach
+the 3-torus could produce fractional charges via shear.  Every approach
 fails: uniform shear (Track 4), non-uniform shear (Track 5),
 and 3D charge integral (Track 6).  The root cause is F31: any
 shear that gives quarks charge also gives lighter modes charge.
@@ -889,8 +889,8 @@ shear that gives quarks charge also gives lighter modes charge.
 
 Quark charges require a fundamentally different mechanism from
 the electron's.  The leading candidate is **topological linking**
-of multiple photons on T³ (R14).  In this picture:
-- The proton is three photons, topologically linked on T³
+of multiple photons on the 3-torus (R14).  In this picture:
+- The proton is three photons, topologically linked on the 3-torus
 - Their *combined* field projects as charge +e into 3D
 - Individual "quark" charges (2/3, 1/3) are an internal
   bookkeeping of the composite state, not properties of
@@ -902,7 +902,7 @@ R19's contributions to R14:
 - s₁₃ = 0 (no shear in the 1-3 plane)
 - s₂₃ is free (doesn't affect charge) but constrains mass
 - The n₁ = 1 selection rule applies to each photon individually
-- The T³ circumferences L₁, L₂ are at the Compton scale (~pm)
+- The 3-torus circumferences L₁, L₂ are at the Compton scale (~pm)
 - L₃ is unconstrained by R19 (could be fm-scale for protons)
 
 **Update (Track 8):** s₁₂ ≈ 0.165 applies under WvM convention.
@@ -1052,21 +1052,21 @@ use KK scales.
 | F13 | Complete self-consistent geometry: every r > r_crit has unique (s, R, a) giving Q=e, L=λ_C |
 | F14 | Coulomb self-energy = 1–2 × α m_e c² for all r (self-consistent values) |
 | F15 | The electron is a one-parameter family in r; everything else determined |
-| F16 | Phase 1 (what the material-sheet electron is) essentially complete; Phase 2 (why) → T³ |
+| F16 | Phase 1 (what the material-sheet electron is) essentially complete; Phase 2 (why) → the 3-torus |
 | F17 | n=1 tube winding required for charge; different particles differ only in ring winding m |
 | F18 | Same-plane fractional charges ruled out: integer m cannot produce 1/3 and 2/3 ratios |
 | F19 | Mass constraint forces quark winding m ≈ −1/s ≈ −6 (to cancel shared circumference) |
 | F20 | s ≈ 1/6 near-miss: electron s is 1% from 1/6; would make m=−6 exact, L₃ ≈ 0.66 fm |
-| F21 | T³ consistency fails: quarks need r₁₂ = 2, electron needs r₁₂ ≈ 1 — factor-of-2 conflict |
-| F22 | Non-uniform shear solves the charge equations (T³ consistency satisfied) |
+| F21 | 3-torus consistency fails: quarks need r₁₂ = 2, electron needs r₁₂ ≈ 1 — factor-of-2 conflict |
+| F22 | Non-uniform shear solves the charge equations (3-torus consistency satisfied) |
 | F23 | Mass kills (1,−6) quarks: E_quark = 1–12 m_e, not 612 m_e — factor 150–900× off |
 | F24 | The (1,−6) single-photon quark hypothesis is definitively ruled out |
-| F25 | Infinite tower of (1,2,k≠0) modes lighter than the electron exists on any T³ |
+| F25 | Infinite tower of (1,2,k≠0) modes lighter than the electron exists on any 3-torus |
 | F26 | Electron is the heaviest of its family; planarity is not energetic → needs selection rule |
 | F27 | Shear cancellation can make specific modes heavy (quark-scale), but doesn't solve charge |
 | F28 | (Superseded by F29–F34) |
 | F29 | 3D charge integral has exact closed form; factorizes; s₂₃ irrelevant for charge |
-| F30 | n₁ = 1 selection rule extends from a material sheet to T³ |
+| F30 | n₁ = 1 selection rule extends from a material sheet to the 3-torus |
 | F31 | **s₁₃ = 0 kills charge for all n₃≠0**: model predicts no charged particle lighter than electron |
 | F32 | s₁₃ ≠ 0 gives lighter modes charge → contradicts observation → s₁₃ must be zero |
 | F33 | Single-photon quarks from shear definitively ruled out (Tracks 4, 5, 6 all closed) |

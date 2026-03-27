@@ -1,4 +1,4 @@
-# R19. Shear-induced charge on a material sheet → T³
+# R19. Shear-induced charge on a material sheet → the 3-torus
 
 **Questions:** [Q58](../../qa/INBOX.md) (shear breaks φ-symmetry),
 [Q18](../../qa/Q18-deriving-alpha.md) (deriving α),
@@ -7,7 +7,7 @@ Q34 Path 7 (charge mechanism)
 **Depends on:** R12 (shear unconstrained, two-domain picture),
 R15 (forward charge, what determines σ),
 R18 (geometric deformation ruled out),
-R14 (universal geometry — T³ for quarks, linking)
+R14 (universal geometry — the 3-torus for quarks, linking)
 
 ---
 
@@ -33,7 +33,7 @@ wave, without requiring wavepacket localization (σ < ∞).
 The shear δ is a geometric parameter of the material-space metric.
 R12 F5 showed it is **unconstrained** by the flat-material-sheet wave
 equation — exactly the condition where an external constraint
-(T³ geometry, embedding curvature, topological consistency)
+(3-torus geometry, embedding curvature, topological consistency)
 could determine it.
 
 If shear determines charge, then:
@@ -41,7 +41,7 @@ If shear determines charge, then:
   "what determines δ?"
 - δ is geometric (metric parameter), not quantum-state
 - α = Q²/(4πε₀ℏc) becomes a function of δ alone
-- The same T³ geometry needed for quark confinement (R14)
+- The same 3-torus geometry needed for quark confinement (R14)
   may constrain the shear, thereby fixing α
 
 ### The paradigm shift: particle-like → wave
@@ -89,18 +89,18 @@ sheared lattice produce different charge values:
 | (2,1)   | 1 − 2s   | sin(4πs) / (1−2s)        |
 | (n,m)   | m − ns   | sin(2πns) / (m−ns)       |
 
-This is critical for the T³ extension: the electron, up quark,
+This is critical for the 3-torus extension: the electron, up quark,
 and down quark may be **different winding configurations** on a
 **single fixed geometry**, with their charges (e, 2e/3, e/3)
 emerging from different (n,m) values, not from different shear
 parameters.
 
-### From a material sheet to T³: two roles, now separated
+### From a material sheet to the 3-torus: two roles, now separated
 
-R14 originally proposed T³ for two purposes:
+R14 originally proposed the 3-torus for two purposes:
 
 1. **Charge fractionalization** — linking of photon geodesics
-   on T³ would fractionalize each photon's charge projection,
+   on the 3-torus would fractionalize each photon's charge projection,
    producing quark charges 2e/3 and e/3.
 
 2. **Confinement** — topological linking (Borromean) prevents
@@ -110,10 +110,10 @@ With the shear mechanism, these two roles separate:
 
 - **Charge** now comes from the shear + winding numbers.
   Different particles are different (n,m) modes on the same
-  sheared T³.  No linking is needed for charge.
+  sheared 3-torus.  No linking is needed for charge.
 
 - **Confinement** still requires linking topology.  Geodesics
-  in different planes of T³ can be topologically linked,
+  in different planes of the 3-torus can be topologically linked,
   preventing separation.  This role is unchanged from R14.
 
 The shear mechanism makes fractional charges a *kinematic*
@@ -156,14 +156,14 @@ minimum.  But:
 - The material sheet is embedded in 3D with specific curvature
 - Gravitational (or metric) effects from the embedding may
   contribute a term that favors nonzero shear
-- T³ constraints (R14) may impose shear externally
+- 3-torus constraints (R14) may impose shear externally
 
 Investigate whether any energy contribution can stabilize
 a nonzero shear:
 1. Compute E_Coulomb(δ) = Q(δ)²/(4πε₀ R_eff)
 2. Check if embedding curvature contributes a δ-dependent
    energy term (from the extrinsic curvature of the material sheet in 3D)
-3. If T³ topology constrains the shear moduli space, identify
+3. If 3-torus topology constrains the shear moduli space, identify
    the constraint and its effect on δ
 
 ### Track 3. Self-consistent geometry + normalization  *(self-consistency complete; normalization pending)*
@@ -183,9 +183,9 @@ confirm which coupling applies.  Previous calculations show
 full E₀ gives clean results while κ-suppression kills the
 mechanism (F5).
 
-### Track 4. T³ quark charges: most constrained hypothesis  *(complete — ruled out, near-misses)*
+### Track 4. 3-torus quark charges: most constrained hypothesis  *(complete — ruled out, near-misses)*
 
-**Hypothesis:** A single T³ metric (three circumferences L₁, L₂,
+**Hypothesis:** A single 3-torus metric (three circumferences L₁, L₂,
 L₃ and a uniform shear s₁₂ = s₂₃ = s₁₃ = s) supports all three
 particles as different winding configurations:
 
@@ -194,7 +194,7 @@ particles as different winding configurations:
 - **Down quark:** some (0, n, m) in the (2,3) plane → Q = e/3
 
 Steps:
-1. Generalize the self-consistent charge formula to T³ with
+1. Generalize the self-consistent charge formula to the 3-torus with
    three circumferences and uniform shear.
 2. For each candidate winding (n,m), compute the charge as a
    function of the plane's aspect ratio and shear.
@@ -206,7 +206,7 @@ Steps:
 5. If yes: count free parameters vs. constraints.
    Is the geometry fully determined?
 
-**Success criterion:** One T³ geometry produces all three
+**Success criterion:** One 3-torus geometry produces all three
 charges from different windings, with mass ratios consistent
 with observations.
 
@@ -223,17 +223,17 @@ can make (1,−6) quarks work.  The single-photon quark hypothesis
 is ruled out (F24).  Quark charges likely require a different
 mechanism (linking fractionalization, Track 6).
 
-### Track 6. 3D geodesic charge on sheared T³  *(complete)*
+### Track 6. 3D geodesic charge on sheared 3-torus  *(complete)*
 
 Tracks 4–5 showed that the 2D charge formula (derived for
-modes confined to a plane of T³) cannot produce quarks: the
+modes confined to a plane of the 3-torus) cannot produce quarks: the
 mass and charge constraints are incompatible.  But this formula
-was always a 2D result extended to T³ by assumption.
+was always a 2D result extended to the 3-torus by assumption.
 
 Track 6 asks the more fundamental question: **what does the
-charge formula look like for a 3D geodesic on a sheared T³?**
+charge formula look like for a 3D geodesic on a sheared 3-torus?**
 
-On T³, a photon can wind in all three material dimensions:
+On the 3-torus, a photon can wind in all three material dimensions:
 winding numbers (n₁, n₂, n₃) with all nᵢ ≠ 0.  Such a path
 is a genuine 3D curve, not confined to any 2D subplane.
 
@@ -254,7 +254,7 @@ Physical picture:
   charge (3D integral differs from 2D).
 
 Steps:
-0. Map the T³ mode energy landscape (F25–F28) — **complete**.
+0. Map the 3-torus mode energy landscape (F25–F28) — **complete**.
    (1,2,k≠0) modes are lighter than the electron.  Planarity
    requires a charge selection rule, not energetics.
 1. Derive the 3D charge integral (F29–F34) — **complete**.
@@ -325,7 +325,7 @@ pathologies.
 
 ## Key facts
 
-### One shear parameter on a material sheet, three on T³
+### One shear parameter on a material sheet, three on the 3-torus
 
 A flat material-sheet metric has three independent components: g₁₁, g₂₂
 (the two circumferences) and g₁₂ (the shear).  Only ONE
@@ -333,22 +333,22 @@ independent shear parameter exists.  "Shearing θ along φ" and
 "shearing φ along θ" are different descriptions of the same
 geometric tilt.
 
-On T³, by contrast, there are THREE independent shear
+On the 3-torus, by contrast, there are THREE independent shear
 parameters (g₁₂, g₁₃, g₂₃) — one per pair of axes.
 
-### T³ does not embed in ℝ³
+### The 3-torus does not embed in ℝ³
 
-A material sheet embeds in ℝ³ (the familiar donut).  T³ cannot — it
+A material sheet embeds in ℝ³ (the familiar donut).  The 3-torus cannot — it
 requires at minimum ℝ⁴.  But in the Kaluza-Klein framework,
 the material space is ADDITIONAL to 3D, not sitting inside it.
-At every point in physical 3D space, a copy of a material sheet (or T³)
-is attached as a fiber.  Going from a material sheet to T³ means going
+At every point in physical 3D space, a copy of a material sheet (or the 3-torus)
+is attached as a fiber.  Going from a material sheet to the 3-torus means going
 from a (3+2)D spacetime to a (3+3)D spacetime.  No embedding
 obstruction arises.
 
-### T³ geometry: parameters and constraints
+### 3-torus geometry: parameters and constraints
 
-The flat T³ metric has 6 independent parameters:
+The flat 3-torus metric has 6 independent parameters:
 - 3 circumferences: L₁, L₂, L₃
 - 3 shears: s₁₂, s₁₃, s₂₃
 
@@ -437,7 +437,7 @@ for integer m, so the numerator depends on n·s, not on m.
 
 The normalization ratio accounts for different photon energies
 (different geodesic lengths) and different torus volumes in
-different planes of T³.
+different planes of the 3-torus.
 
 ---
 
@@ -452,12 +452,12 @@ The free parameter r requires external constraint (→ R14).
 
 **Quark program (Tracks 4–6): complete, negative.**
 All single-photon shear approaches to quark charges are ruled out.
-Track 4: uniform shear fails (T³ consistency, F21).
+Track 4: uniform shear fails (3-torus consistency, F21).
 Track 5: non-uniform shear fails (mass, F23–F24).
 Track 6: 3D charge integral fails (sub-electron particles, F31–F34).
 Key positive result: F31 predicts no charged particle lighter than
 the electron, explaining why the electron is confined to a 2D plane
-on T³ despite lighter modes existing.
+on the 3-torus despite lighter modes existing.
 
 **Track 8 (KK reconciliation): reopened for R26.**
 R26 showed the KK eigenmode formula is the correct wave-equation

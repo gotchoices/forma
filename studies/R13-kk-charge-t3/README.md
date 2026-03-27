@@ -1,7 +1,8 @@
 # R13. Charge from the Embedding  *(complete)*
 
-How does a photon on a flat T³, embedded in 3+1D
-as a torus, manifest as a charged particle?  The photon
+How does a photon on a flat 3-torus (a three-dimensional
+material space), embedded in 3+1D as a torus, manifest as
+a charged particle?  The photon
 propagates through flat space internally (mass, spin).  Its
 fields project into 3D through the toroidal embedding,
 producing apparent charge (WvM mechanism).  This study
@@ -44,11 +45,11 @@ What was NOT disqualified: KK *electromagnetism* — the EM
 field decomposition on a material space.  This is exactly how
 charge should emerge from geometry.
 
-### Why T³ (not a single sheet)
+### Why the 3-torus (not a single sheet)
 
 R14 Track 0 showed that topological linking of geodesics
 requires at least 3 material dimensions.  Three linking planes
-on T³ map naturally to three color charges.  The electron
+on the 3-torus map naturally to three color charges.  The electron
 uses 2 of 3 dimensions; hadrons use all 3.
 
 ### Exploratory framing
@@ -72,16 +73,16 @@ us something important about what the correct framework is.
 
 ### Spacetime
 
-7D spacetime: M₄ × T³
+7D spacetime: M₄ × T³ (the 3-torus)
 
     ds² = η_μν dx^μ dx^ν + δ_ab dy^a dy^b
 
 where x^μ = (t, x, y, z) and y^a = (y¹, y², y³) are
-coordinates on the flat T³ with periodicities L₁, L₂, L₃.
+coordinates on the flat 3-torus with periodicities L₁, L₂, L₃.
 
 ### The field
 
-A massless scalar field Φ(x, y) on M₄ × T³, as a proxy
+A massless scalar field Φ(x, y) on M₄ × the 3-torus, as a proxy
 for the full EM field.  (Start scalar, promote to Maxwell
 if the scalar result is promising.)
 
@@ -90,11 +91,11 @@ The 7D wave equation:
     □₇ Φ = (□₄ + Δ_T³) Φ = 0
 
 where □₄ is the 4D d'Alembertian and Δ_T³ is the Laplacian
-on T³.
+on the 3-torus.
 
 ### KK mode expansion
 
-Expand in Fourier modes of T³:
+Expand in Fourier modes of the 3-torus:
 
     Φ(x, y) = Σ_{n₁,n₂,n₃} φ_{n}(x) × exp(2πi n_a y^a / L_a)
 
@@ -111,7 +112,7 @@ The zero-mode (n = 0,0,0) is massless — it's the 4D photon
 
 ### The photon-on-geodesic
 
-The "electron" is a specific field configuration on T³:
+The "electron" is a specific field configuration on the 3-torus:
 a photon propagating along a (1,2) geodesic in, say, the
 (y¹, y²) subspace, with y³ trivial.
 
@@ -127,13 +128,13 @@ effective 4D charge.
 
 ### Track 1: Mode spectrum and electron identity ✓
 
-Set up the KK expansion on T³.  Identify the mode spectrum.
+Set up the KK expansion on the 3-torus.  Identify the mode spectrum.
 Determine whether the electron is a KK momentum mode or a
 winding mode.
 
 **Result:** The electron is a winding mode, not a KK momentum
 mode (mass mismatch ~36,000×).  Standard KK charge formula
-gives zero for winding modes.  Flat T³ alone gives zero
+gives zero for winding modes.  The flat 3-torus alone gives zero
 charge — which is expected, since charge is a projection
 property of the embedding.  See findings F1–F8.
 
@@ -178,11 +179,11 @@ tension is captured as Q34 in the INBOX for future work.
 
 - R8: electron solution curve, geometry parameters
 - R12: internal vs external domain clarification
-- R14 Track 0: T³ requirement (why not a single sheet)
+- R14 Track 0: 3-torus requirement (why not a single sheet)
 
 ## What we abstract
 
-- **Geometry:** Flat T³ with circumferences L₁, L₂, L₃
+- **Geometry:** Flat 3-torus with circumferences L₁, L₂, L₃
 - **Field:** Start with scalar, promote to EM if warranted
 - **Configuration:** Photon on (1,2) geodesic in (y¹, y²) plane
 - **Observable:** Effective 4D charge and self-energy
