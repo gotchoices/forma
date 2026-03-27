@@ -48,7 +48,7 @@ modeling on that same sheet:
   of uncharged harmonics.  Kinematically correct but descriptive — the
   harmonic spectrum is underdetermined and nothing selects it.
 - **Neutrino (R23–R25):** Every mechanism on Ma_e or a
-  shared T³ fails.  On Ma_e, mass floor is 245 keV (R20 F14).  On T³,
+  shared 3-torus fails.  On Ma_e, mass floor is 245 keV (R20 F14).  On the 3-torus,
   modes have the right mass but spin 0 (R25 F4).  The charge-spin
   linkage blocks uncharged fermions on any single material sheet.
 
@@ -502,10 +502,10 @@ resembles the observed particle spectrum.
 | S3 | Knot zoo — (p,q) mode census | Partial | Tracks 1c–1e re-check: non-coprime modes, spin at finite a/R, charge via parallel transport |
 | R20 | Proton = electron + harmonics on a material sheet | Descriptive | Track 2 replaces with single fundamental |
 | R23 | Neutrino from beating on a material sheet | Failed | Superseded by Track 1 |
-| R24 | Neutrino on T³ | Kinematics ✓, spin ✗ | Track 1 inherits mass-splitting approach |
-| R25 | Spin analysis of T³ | Charge-spin linkage | Evaded: spin from separate material sheet |
+| R24 | Neutrino on the 3-torus | Kinematics ✓, spin ✗ | Track 1 inherits mass-splitting approach |
+| R25 | Spin analysis of the 3-torus | Charge-spin linkage | Evaded: spin from separate material sheet |
 | R19 | Charge from shear on a material sheet | α(r,s) formula | Applied to all three material sheets |
-| R14 | Universal T³ for all particles | Linking ruled out | Replaced by Ma with three material sheets |
+| R14 | Universal 3-torus for all particles | Linking ruled out | Replaced by Ma with three material sheets |
 
 ## What this study does NOT address
 

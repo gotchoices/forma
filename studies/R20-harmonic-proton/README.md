@@ -17,7 +17,7 @@ with n₁ = 1 produce nonzero charge.  All other modes are electrically
 silent.
 
 R14 attempted to build hadrons from three topologically linked
-photons on T³.  This failed: the charge mechanism depends on mode
+photons on the 3-torus.  This failed: the charge mechanism depends on mode
 numbers, not spatial arrangement (F18).  Linking cannot redistribute
 charge.  All four mechanisms tested (localization, classical
 interaction, KK gauge mixing, wavepacket superposition) fail to

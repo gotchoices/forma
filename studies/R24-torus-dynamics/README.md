@@ -1,4 +1,4 @@
-# R24. Torus dynamics — T³ structure and nonlinear mode selection
+# R24. Torus dynamics — 3-torus structure and nonlinear mode selection
 
 **Questions:** Q18 (α), Q14 (neutrino), Q16 (proton spectrum), Q32 (energy-geometry)
 **Type:** compute/analytical  **Depends on:** R15, R19, R20, R21, R22, R23
@@ -17,9 +17,9 @@ Every eigenmode is equally valid; nothing prefers one configuration over another
 
 This study attacks both problems with two new approaches:
 
-- **T³ structure:** The electron uses two of three material dimensions.
+- **3-torus structure:** The electron uses two of three material dimensions.
   Modes extending into the third dimension could be neutrinos.
-  T³ has C(3,2) = 3 subplanes — matching three neutrino flavors.
+  The 3-torus has C(3,2) = 3 subplanes — matching three neutrino flavors.
   More parameters (5) but also more observables (α + neutrino sector ≥ 6),
   so the system may be over-determined → predictive.
 
@@ -28,7 +28,7 @@ This study attacks both problems with two new approaches:
   an impulse selects specific stable configurations (attractors), potentially
   fixing r and the harmonic spectrum.
 
-## Track 1 — T³ mode structure and neutrino flavors  ✓
+## Track 1 — 3-torus mode structure and neutrino flavors  ✓
 
 Modes with n₁ = 0 are automatically uncharged (R19).  The lightest are
 pure θ₃ modes (0,0,n₃) with m ∝ n₃/L₃.  The mass-squared ratio
@@ -57,7 +57,7 @@ Key results (F8–F12):
 
 Conclusion: impulse dynamics with simple self-repulsion cannot solve
 the r-selection problem.  Mode selection needs either a focusing
-interaction, dissipation, or external constraints (→ Track 1's T³
+interaction, dissipation, or external constraints (→ Track 1's 3-torus
 parameter over-determination may be the right path).
 
 ## Track 3 — Aspect ratio selection  ✗ (pre-empted)
@@ -75,9 +75,9 @@ Deriving this mapping would predict r without needing dynamics.
 R24 is complete (Tracks 1–3).  The next steps are sequential:
 
 1. **Spin gate (Q1):** Do (0,0,n₃) modes carry spin-½?  Analytical,
-   not computational.  If spin-0, the T³ neutrino model fails.
+   not computational.  If spin-0, the 3-torus neutrino model fails.
 2. **PMNS derivation (Q3):** Map (r, s₁₃, s₂₃) → mixing angles.
-   Requires understanding the weak-interaction analog on T³.
+   Requires understanding the weak-interaction analog on the 3-torus.
 3. **r prediction:** Solve the PMNS equations → r is determined.
 
 This is a natural scope for a new study (R25) rather than Track 4,

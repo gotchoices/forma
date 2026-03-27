@@ -1,11 +1,11 @@
 # R24 Findings
 
-## Track 1: T³ mode structure and neutrino flavors
+## Track 1: 3-torus mode structure and neutrino flavors
 
 ### F1. Automatic charge neutrality
-Modes with n₁ = 0 on T³ carry zero charge (follows from R19: charge
+Modes with n₁ = 0 on the 3-torus carry zero charge (follows from R19: charge
 requires n₁ = ±1).  These are natural neutrino candidates living on
-the *same* compact geometry as the electron — no separate space needed.
+the *same* material geometry as the electron — no separate space needed.
 
 ### F2. Lightest uncharged modes are pure θ₃
 With the third dimension much larger than the first two (L₃ >> L₁, L₂),
@@ -61,13 +61,13 @@ For the (7, 10, 42) assignment:
 - m₁ = 8.51 meV,  m₂ = 12.15 meV,  m₃ = 51.03 meV
 - Σm = 72 meV  (below bound ✓)
 
-### F6. T³ shear does not modify the θ₃ spectrum
+### F6. 3-torus shear does not modify the θ₃ spectrum
 Pure θ₃ modes (n₁ = n₂ = 0) have effective wavevector q₃ = n₃ regardless
 of s₁₃ or s₂₃.  Shear only affects modes with nonzero n₁ or n₂.
 The mass-squared ratio is immune to all continuous parameter variation.
 
 ### F7. Parameter counting — over-determined system
-T³ free continuous parameters: r, s₁₃, s₂₃  (3 total).
+3-torus free continuous parameters: r, s₁₃, s₂₃  (3 total).
 After using α → s₁₂(r), m_e → L₁, Δm²₂₁ → L₃.
 
 Remaining observables: θ₁₂, θ₂₃, θ₁₃, δ_CP  (4 constraints).
@@ -81,8 +81,8 @@ reproduced by any (r, s₁₃, s₂₃), the model fails.
 **Q1 (critical). Spin of (0,0,n₃) modes.**
 Neutrinos are spin-½.  In WvM, spin-½ arises from (1,2) winding
 topology.  Mode (0,0,n₃) has no winding → spin mechanism unclear.
-If T³ = Ma_e × S¹ (direct product), these modes are spin-0.  A non-trivial
-T³ fibration might provide spinor structure.  Must be resolved before
+If the 3-torus is Ma_e × S¹ (direct product), these modes are spin-0.  A non-trivial
+3-torus fibration might provide spinor structure.  Must be resolved before
 the model is viable.
 
 **Q2. Sterile neutrinos.**
@@ -92,14 +92,14 @@ For (7,10,42): the problem is worse (35 intermediate modes).
 Need: either a selection rule suppressing their coupling, or evidence
 they don't thermalize.
 
-**Q3. PMNS matrix from T³ shear.**
+**Q3. PMNS matrix from 3-torus shear.**
 Explicit derivation needed to map (r, s₁₃, s₂₃) → (θ₁₂, θ₂₃, θ₁₃, δ_CP).
 If successful, r is predicted and the model becomes fully constrained.
 
 **Q4. Gravity constraint.**
 L₃ ~ 250–1080 μm exceeds the ~50 μm range of current gravity tests.
 If gravity propagates in the third dimension, these sizes are excluded.
-The model requires gravity to be confined to 3+1D non-material dimensions.
+The model requires gravity to be confined to the 3+1D non-material dimensions.
 
 ---
 
@@ -144,7 +144,7 @@ Mode selection would require one of:
 - Energy dissipation (coupling to external degrees of freedom)
 - A more physical self-interaction than simple |ψ|²ψ (e.g., long-range
   Coulomb coupling between charge-carrying modes)
-- An external constraint from the T³ structure (Track 1's parameter
+- An external constraint from the 3-torus structure (Track 1's parameter
   over-determination)
 
 ---
@@ -159,7 +159,7 @@ disperses energy rather than concentrating it.  Track 3's premise does
 not hold.
 
 ### F14. The r-selection path forward
-F12 rules out simple impulse dynamics but points to Track 1's T³
+F12 rules out simple impulse dynamics but points to Track 1's 3-torus
 over-determination as the viable alternative.  The parameter-counting
 argument (F7) shows 4 observables (PMNS mixing angles) constraining
 3 free parameters (r, s₁₃, s₂₃).  If the PMNS mapping can be derived,
@@ -167,16 +167,16 @@ r is predicted without needing dynamical mode selection.
 
 The critical path is:
 1. **Q1 — Spin:** Do (0,0,n₃) modes carry spin-½?  This is a gate.
-   If they're spin-0, the T³ neutrino model fails entirely.
-   Requires analytical work on the T³ fibration topology.
+   If they're spin-0, the 3-torus neutrino model fails entirely.
+   Requires analytical work on the 3-torus fibration topology.
 2. **Q3 — PMNS from shear:** Derive the mapping
    (r, s₁₃, s₂₃) → (θ₁₂, θ₂₃, θ₁₃, δ_CP).
    This is a well-defined calculation but requires understanding how
    the (0,0,n₃) modes couple to the charged leptons via the weak
    interaction analog in this model.
 3. **r prediction:** If Q1 and Q3 succeed, solving the PMNS equations
-   yields r (and with it, the full T³ geometry).
+   yields r (and with it, the full 3-torus geometry).
 
 Each step depends on the previous.  Step 1 is analytical and cannot
 be resolved by simulation — it requires understanding what "spin"
-means for a field mode on T³.
+means for a field mode on the 3-torus.

@@ -2,7 +2,7 @@
 
 The neutrino is not an optional feature of the particle model.  It is
 forced by angular momentum conservation.  An intelligent designer
-building the periodic table from T² compact dimensions cannot substitute
+building the periodic table from material dimensions cannot substitute
 photons or any other boson — the neutrino (or something with its
 quantum numbers) must exist.
 
@@ -35,9 +35,9 @@ The neutrino is the cheapest fermion available: no charge, minimal
 mass, spin ½.  It is the minimum addition required by the topology of
 angular momentum.
 
-## In T² language
+## In material-sheet language
 
-In the compact-dimension model:
+In the material-dimension model:
 
 - The electron is a (1,2) winding mode — spin ½ from the 1:2
   winding ratio (topological, exact).
@@ -74,38 +74,38 @@ because energy was missing (that could have been radiation), but
 because spin was missing.  The continuous beta spectrum confirmed a
 three-body decay, but the *necessity* of the third body is spin.
 
-## Implications for the T³ model
+## Implications for the 3-torus model
 
-R24 Track 1 proposes neutrinos as (0,0,n₃) modes on T³ — pure
-oscillations in the third compact dimension.  The spin constraint
+R24 Track 1 proposes neutrinos as (0,0,n₃) modes on the 3-torus — pure
+oscillations in the third material dimension.  The spin constraint
 places a hard requirement on this proposal:
 
 **The (0,0,n₃) mode must carry spin ½.**
 
 In the WvM picture, spin ½ arises from the (1,2) winding topology.
-A pure θ₃ mode has no such winding.  If T³ is a simple direct
+A pure θ₃ mode has no such winding.  If the 3-torus is a simple direct
 product T² × S¹, these modes are scalar (spin 0) — and the model
 fails.
 
-For the T³ neutrino to work, the compact space must have non-trivial
+For the 3-torus neutrino to work, the material space must have non-trivial
 fibration: twisted boundary conditions or topological structure that
 endows θ₃ modes with spinor character.  This is R24 open question Q1
 and is a gate for the entire neutrino program.
 
 The neutrino's existence is not negotiable — spin conservation demands
-it.  The question is whether T³ can provide it.
+it.  The question is whether the 3-torus can provide it.
 
 ## Connection to earlier studies
 
 | Study | Finding | Relevance |
 |-------|---------|-----------|
-| R20 F14 | Neutrino cannot be a mode on electron's T² | Mass floor 245 keV, too heavy by 10⁵ |
-| R23 | Beating and phonon mechanisms on single T² fail | θ₂ symmetry blocks phonon; beating not selective |
+| R20 F14 | Neutrino cannot be a mode on Ma_e | Mass floor 245 keV, too heavy by 10⁵ |
+| R23 | Beating and phonon mechanisms on single material sheet fail | θ₂ symmetry blocks phonon; beating not selective |
 | R24 F1 | (0,0,n₃) modes are automatically uncharged | Correct: neutrinos have Q = 0 |
-| R24 F3 | Mass-squared ratio matches experiment (0.03σ) | Strong evidence for T³ neutrino |
+| R24 F3 | Mass-squared ratio matches experiment (0.03σ) | Strong evidence for 3-torus neutrino |
 | R24 Q1 | Spin of (0,0,n₃) modes unknown | **Critical open question** |
 
 The spin argument in this document strengthens Q1 from "important
-open question" to "mandatory requirement."  If T³ cannot give these
+open question" to "mandatory requirement."  If the 3-torus cannot give these
 modes spin ½, the model must find another neutrino mechanism — but
 it cannot avoid having a neutrino altogether.

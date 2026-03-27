@@ -2,10 +2,10 @@
 
 ## What this article is about
 
-The T⁶ model was built around three stable particles: the
+The Ma model was built around three stable particles: the
 electron, three neutrino mass eigenstates, and the proton.  Each
-gets its own two-dimensional sheet (a T²) in a six-dimensional
-compact space.  The neutron was not put in.  It appeared on its
+gets its own two-dimensional material sheet in a six-dimensional
+material space.  The neutron was not put in.  It appeared on its
 own — a natural vibration of the combined geometry with the right
 mass, zero charge, and a built-in explanation for why it decays
 into exactly the particles we started with.
@@ -21,11 +21,11 @@ A photon trapped on a closed surface — a flat torus with periodic
 boundaries — behaves like a massive particle.  Its energy becomes
 mass.  Its winding pattern determines charge and spin.  No
 fundamental charges or point particles are assumed.  The only
-inputs are energy (photons), geometry (the shape of compact
+inputs are energy (photons), geometry (the shape of material
 dimensions), and the rules of propagation (Maxwell's equations).
 
 An electron, in this picture, is a photon winding once around the
-tube and twice around the ring of a small torus (T²).  That (1,2)
+tube and twice around the ring of a small torus.  That (1,2)
 winding gives spin ½ exactly (topological, not approximate) and
 produces an electric charge −e from the field's asymmetric
 projection into ordinary 3D space.  The torus's size is set by
@@ -41,7 +41,7 @@ torus (~mm scale), with different winding patterns that produce
 zero charge and the observed mass-squared splittings.
 
 All three tori are embedded as subplanes of a single
-six-dimensional compact space, T⁶.  Think of it as three sheets
+six-dimensional material space, Ma.  Think of it as three sheets
 of paper that share a common 6D room.
 
 
@@ -61,7 +61,7 @@ possible.  A wave can ring across both sheets simultaneously.
 
 The neutron is exactly this: **a single standing wave whose
 vibration pattern is (1,2) on the electron sheet AND (1,2) on
-the proton sheet at the same time.**  In T⁶ coordinates, its
+the proton sheet at the same time.**  In Ma coordinates, its
 quantum numbers are (1,2,0,0,1,2) — the electron's signature
 in the first pair, nothing in the neutrino pair, the proton's
 signature in the last pair.
@@ -93,7 +93,7 @@ before the metric becomes inconsistent.  The geometry is barely
 disturbed.
 
 **Natural instability.**  The neutron decays (in about 15 minutes)
-into a proton + electron + antineutrino.  In T⁶ language, the
+into a proton + electron + antineutrino.  In Ma language, the
 cross-sheet wave (1,2,0,0,1,2) can relax: it splits into the
 proton wave (0,0,0,0,1,2) on its own sheet, the electron wave
 (1,2,0,0,0,0) on its sheet, and the leftover energy goes into
@@ -120,7 +120,7 @@ designed around three of them.  The fourth showed up uninvited.
 More specifically:
 
 1. **The mode was not sought.**  Nobody went looking for a neutron
-   in the T⁶ spectrum.  The mode (1,2,0,0,1,2) is just the most
+   in the Ma spectrum.  The mode (1,2,0,0,1,2) is just the most
    natural cross-sheet vibration — the simplest pattern that
    involves both the electron and proton sheets.
 
@@ -131,13 +131,13 @@ More specifically:
 
 3. **Its decay products are exactly the input particles.**  The
    neutron decays to proton + electron + neutrino.  These are the
-   three particles the T⁶ was built around.  The decay is the
+   three particles Ma was built around.  The decay is the
    cross-sheet wave relaxing back into single-sheet waves.
 
 4. **It explains why m_n > m_p.**  This fact is not a coincidence
    in the model; it is a geometric necessity.
 
-The neutron is the first particle the T⁶ model produces that was
+The neutron is the first particle the Ma model produces that was
 not put in by hand.  Even if the quantitative mass prediction
 needs refinement (a self-consistency correction is required;
 see R26 F74), the qualitative result — a charge-neutral,
@@ -158,25 +158,25 @@ result (m_n > m_p, charge = 0) is robust.
 (n₁ = 1 and n₅ = 1), each contributing spin-½.  Naively two
 spin-½ contributions combine to spin-0 or spin-1, but the
 neutron is spin-½.  The resolution likely lies in the SO(6)
-spinor structure on the full T⁶ — the spin composition rules
+spinor structure on the full Ma — the spin composition rules
 in six dimensions differ from naive three-dimensional addition.
 This is analyzed in R26 F68.
 
 **The sign of σ_ep.**  Both positive and negative tilt give the
 same neutron mass (the energy correction is quadratic).  This
-discrete ambiguity — two geometrically distinct T⁶ configurations
+discrete ambiguity — two geometrically distinct Ma configurations
 producing the same neutron — may relate to charge conjugation
 symmetry.
 
 
 ## What the neutron tells us about the model
 
-The neutron is a proof of concept.  It demonstrates that the T⁶
+The neutron is a proof of concept.  It demonstrates that Ma
 is not just a bookkeeping device for three separate tori — the
 cross-sheet coupling produces genuinely new physics.  The
 geometry does more than host the particles we designed it for.
 
-This raises an immediate question: what else does the T⁶
+This raises an immediate question: what else does the Ma
 spectrum contain?  If the simplest cross-sheet mode is the
 neutron, what are the next-simplest modes?  Could they correspond
 to other known particles?  Every such match would constrain the

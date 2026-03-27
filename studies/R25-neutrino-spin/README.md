@@ -1,4 +1,4 @@
-# R25. Neutrino spin and T³ topology
+# R25. Neutrino spin and 3-torus topology
 
 **Questions:** Q14 (neutrino), Q18 (α via r-prediction)
 **Type:** analytical/compute  **Depends on:** R24 (T1 F1–F7), R19, R2
@@ -23,7 +23,7 @@ The spin requirement is not optional.  As documented in
 angular momentum conservation in beta decay demands a fermion — no
 combination of photons can close the spin budget.  If (0,0,n₃) modes
 cannot carry spin-½, the model must still produce a neutrino from
-somewhere.  Failure here closes the T³ neutrino path *and* reopens
+somewhere.  Failure here closes the 3-torus neutrino path *and* reopens
 the neutrino mechanism as a fundamental open problem.
 
 ## The spin problem — three candidate mechanisms
@@ -42,11 +42,11 @@ Track 1 will test whether any geometric arrangement makes this work:
 - With shear, is there a winding whose effective momentum is dominated
   by the large (θ₃) dimension?
 
-### Mechanism B: Spin structure on T³
+### Mechanism B: Spin structure on the 3-torus
 
-A flat T³ admits 2³ = 8 distinct spin structures, differing in the
+A flat 3-torus admits 2³ = 8 distinct spin structures, differing in the
 boundary conditions for spinor fields: periodic (P) or anti-periodic (A)
-in each direction.  On a (P,P,A) spin structure, spinor modes in θ₃
+in each direction.  On a (P,P,A) structure, spinor modes in θ₃
 have half-integer quantum numbers: n₃ = ½, 3/2, 5/2, ...
 
 **Problem:** The photon is a vector field (spin-1), not a spinor
@@ -54,7 +54,7 @@ have half-integer quantum numbers: n₃ = ½, 3/2, 5/2, ...
 The spin structure affects spinors, not vectors.
 
 Track 1 will check: is there a formulation where the photon's
-polarization components behave as spinors under T³ periodicity?
+polarization components behave as spinors under 3-torus periodicity?
 (Relevant if the (1,2) winding already makes the electron a spinor —
 the "vector-to-spinor conversion" might extend to the third dimension.)
 

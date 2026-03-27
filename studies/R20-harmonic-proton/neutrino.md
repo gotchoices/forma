@@ -1,7 +1,7 @@
-# The Neutrino Problem in T²
+# The Neutrino Problem on the Material Sheet
 
 R20 demonstrated that the electron, proton, neutron, muon, and tau can
-all be built from modes on a single sheared T²: a charged (1,2)
+all be built from modes on a single sheared material sheet: a charged (1,2)
 fundamental carries spin ½ and charge ±e, while uncharged harmonics
 (n, 2n) add mass without changing the charge.  Decay, stability, and
 the lepton mass hierarchy all follow from charge conservation and the
@@ -11,8 +11,8 @@ The neutrino is the one particle that resists this construction.
 
 This document collects what R20 proved about the neutrino, identifies
 the precise obstacle, and lays out investigation directions for
-producing the neutrino from the same T² — without invoking a separate
-compact geometry.
+producing the neutrino from the same material sheet — without invoking a separate
+material geometry.
 
 
 ---
@@ -20,7 +20,7 @@ compact geometry.
 ## 1. What R20 established (the hard constraints)
 
 R20 ran five tracks that progressively closed off the simplest paths
-to a neutrino on the electron's T².
+to a neutrino on Ma_e.
 
 | Constraint | Source | What it means |
 |---|---|---|
@@ -32,14 +32,14 @@ to a neutrino on the electron's T².
 
 ### The three options left after R20 (F18)
 
-**(a) Separate T².**  The neutrino is a (1,2) fundamental on its own
+**(a) Separate material sheet.**  The neutrino is a (1,2) fundamental on its own
 larger torus, with L_ν ~ 1.5 μm.  Experimentally allowed at the KATRIN
-bound (F15).  This works mechanically but introduces a new compact
+bound (F15).  This works mechanically but introduces a new material
 geometry for each neutrino flavor — it is descriptive rather than
 explanatory.
 
-**(b) Geometry fluctuation.**  The neutrino is not a wave ON T² but a
-ripple OF T² — a fluctuation of the torus shape parameters themselves.
+**(b) Geometry fluctuation.**  The neutrino is not a wave ON the material sheet but a
+ripple OF it — a fluctuation of the torus shape parameters themselves.
 Naturally uncharged and naturally light (suppressed by geometric
 stiffness).  Conceptual only; never computed.
 
@@ -52,7 +52,7 @@ free parameter (L_ν) for each observation.  Option (c) is dead.
 Option (b) was never developed.
 
 The question is whether there is a **(d)** — a mechanism that keeps
-the neutrino on the same T² as the electron, without requiring it to
+the neutrino on the same material sheet as the electron, without requiring it to
 be a standard Kaluza-Klein eigenmode.
 
 
@@ -64,9 +64,9 @@ In beta decay the neutron has 1.531 m_e (0.782 MeV) more harmonic
 energy than the proton (F9, F11).  When the electron fundamental
 escapes, this excess energy must go somewhere.
 
-On a **flat T²**, the available channels are exactly:
+On a **flat material sheet**, the available channels are exactly:
 
-1. **Zero mode** (n₁ = 0, n₂ = 0): zero compact momentum, zero rest
+1. **Zero mode** (n₁ = 0, n₂ = 0): zero material momentum, zero rest
    mass.  This is a **photon**.  It propagates in 3D at speed c.  But
    if the decay energy goes entirely into photons and the electron, the
    decay is two-body (proton + electron), and the electron emerges
@@ -77,7 +77,7 @@ On a **flat T²**, the available channels are exactly:
 2. **KK eigenmodes** (n₁, n₂ with non-trivial mode numbers): rest
    mass ≥ 245 keV.  Far too heavy to be a neutrino.
 
-There is nothing in between.  On flat T², the mass spectrum has a
+There is nothing in between.  On the flat material sheet, the mass spectrum has a
 **gap** — from exactly 0 (photon) to 245 keV (lightest KK mode) —
 with no states inside it.
 
@@ -86,15 +86,15 @@ torus size: L₁ ≈ L₂ ≈ 5.1 × 10⁻¹² m (at r = 1).  The lightest
 standing wave on this torus has wavelength λ = L₂ ≈ 5 pm, which
 corresponds to E = hc/λ ≈ 245 keV.  A neutrino-wavelength excitation
 (λ_ν ~ 1.5 μm at the KATRIN bound) spans roughly 300,000 torus
-periods.  It cannot fit as a standing wave on this T².
+periods.  It cannot fit as a standing wave on this material sheet.
 
-So the flat-T² model says the excess energy becomes photons.  That
+So the flat-material-sheet model says the excess energy becomes photons.  That
 contradicts three-body kinematics.  And it can't form a KK mode light
 enough to be a neutrino.
 
 **This is the contradiction.**  The energy can't leave as a photon
 (beta decay requires a massive third particle), and it can't be a KK
-mode (too heavy).  Something about the flat-T² eigenmode picture is
+mode (too heavy).  Something about the flat-material-sheet eigenmode picture is
 incomplete.
 
 ### What the energy can't do
@@ -108,34 +108,34 @@ spectrum requires the third particle to be very light — at most
 ~0.8 eV in rest mass.
 
 These are exactly the neutrino's properties: spin ½, charge 0,
-mass < 0.8 eV, produced in beta decay.  The T² model must find a way
+mass < 0.8 eV, produced in beta decay.  The material-sheet model must find a way
 to produce this object.
 
 
 ---
 
-## 3. What path would trapped sub-threshold energy take on T²?
+## 3. What path would trapped sub-threshold energy take on the material sheet?
 
-Suppose some energy from the decay is left behind on T² — too little
-to form any KK eigenmode, but carrying some imprint of the compact
+Suppose some energy from the decay is left behind on the material sheet — too little
+to form any KK eigenmode, but carrying some imprint of the material
 dimensions (so it isn't a photon).  What does it do?
 
-### On flat T²: the energy has nowhere to go
+### On the flat material sheet: the energy has nowhere to go
 
 On a flat torus with periodic boundary conditions, the only
 normalizable solutions are plane waves with quantized momenta.  A wave
-function that is non-uniform on T² but has energy below the first
+function that is non-uniform on the material sheet but has energy below the first
 eigenmode (245 keV) does not exist — the boundary conditions forbid it.
 The energy is forced to be either a winding mode or the zero mode
 (photon).  There is no intermediate option.
 
-This is the fundamental limitation of the flat-T² model.  The spectrum
+This is the fundamental limitation of the flat-material-sheet model.  The spectrum
 is discrete and gapped, and no amount of cleverness within linear
-theory on flat T² can create a sub-eV massive state.
+theory on the flat material sheet can create a sub-eV massive state.
 
-### On the embedded (curved) T²: new possibilities
+### On the embedded (curved) material sheet: new possibilities
 
-The physical T² is not flat — it is embedded in 3D as a torus with
+The physical material sheet is not flat — it is embedded in 3D as a torus with
 position-dependent Gaussian curvature (R12, R21):
 
     K(θ₁) = cos(θ₁) / (a(R + a cos(θ₁)))
@@ -145,7 +145,7 @@ curvature).  At the inner equator (θ₁ = π), K < 0 (negative,
 saddle-like curvature).  The curvature varies smoothly between these
 extremes.
 
-This curvature acts as an **effective potential** for waves on T².
+This curvature acts as an **effective potential** for waves on the material sheet.
 A mode propagating on a flat torus sees uniform geometry everywhere.
 A mode on the embedded torus sees hills and valleys — regions where
 propagation is easier or harder.
@@ -155,12 +155,12 @@ a curvature potential well**: sitting near a specific θ₁ position,
 not winding around either direction, oscillating in place while
 propagating through 3D.
 
-Its "path on T²" would be: **stationary**.  A localized bump at a
+Its "path on the material sheet" would be: **stationary**.  A localized bump at a
 fixed angular position, carried through 3D by its bulk momentum.
 Fundamentally different from the electron's helical (1,2) winding.
 
 However, there is a quantitative problem.  Curvature corrections to
-eigenvalues are O(a/R) relative to the flat-T² values.  With
+eigenvalues are O(a/R) relative to the flat-material-sheet values.  With
 a/R ≈ 1 (at r = 1), corrections can shift the 245 keV floor by
 factors of order unity — perhaps to ~100 keV or ~50 keV.  Getting
 to sub-eV requires a suppression of 10⁵, far beyond what curvature
@@ -168,23 +168,23 @@ perturbation theory can deliver.
 
 Curvature alone almost certainly cannot bring a mode down to the
 neutrino scale.  But it opens the door to qualitatively new types
-of excitation that don't exist on flat T².
+of excitation that don't exist on the flat material sheet.
 
 
 ---
 
-## 4. Beyond eigenmodes: what flat T² is missing
+## 4. Beyond eigenmodes: what the flat material sheet is missing
 
-The flat-T² model treats the torus as a fixed background with
+The flat-material-sheet model treats the torus as a fixed background with
 decoupled eigenmodes.  Every excitation decomposes into independent
 plane waves; every plane wave has quantized energy ≥ 245 keV (for
 uncharged modes).  There is no room for a neutrino.
 
 But the physical torus is not a fixed background with decoupled modes.
-Three features of the real system break the flat-T² picture:
+Three features of the real system break the flat-material-sheet picture:
 
 1. **Embedding curvature** breaks mode orthogonality.  On the embedded
-   torus, eigenmodes are NOT the same as flat-T² plane waves.  Modes
+   torus, eigenmodes are NOT the same as flat-material-sheet plane waves.  Modes
    couple to each other through the curvature.  R21 Track 4 is designed
    to compute these coupling coefficients.
 
@@ -198,7 +198,7 @@ Three features of the real system break the flat-T² picture:
    fundamental escapes, the remaining harmonic energy must rearrange
    from the neutron's equilibrium to the proton's.  This rearrangement
    is not instantaneous — it proceeds through mode-mode coupling, which
-   is weak (nearly flat T²).  Non-equilibrium configurations that arise
+   is weak (nearly flat material sheet).  Non-equilibrium configurations that arise
    during this process may have properties not captured by the
    equilibrium eigenmode picture.
 
@@ -304,7 +304,7 @@ condensate may or may not have the right structure.
 
 #### Concept
 
-F16 discovered that pairs of high-energy modes on the electron's T²
+F16 discovered that pairs of high-energy modes on Ma_e
 are nearly degenerate, with energy splittings at the sub-eV scale:
 
 | Mode range | Closest pair | ΔE (eV) |
@@ -343,13 +343,13 @@ could be related to ΔE rather than to the constituent mode masses.
 #### Why this is attractive
 
 - **Neutrino oscillations emerge naturally** from the geometry of
-  T² — no new physics needed beyond the existing mode spectrum.
+  the material sheet — no new physics needed beyond the existing mode spectrum.
 - **Δm² values come from the torus parameters** (r, s₁₂, L₁).
   Different near-degeneracy pairs give different ΔE values, which
   could match the atmospheric and solar Δm² scales
   (Δm²_atm ≈ 2.5 × 10⁻³ eV², Δm²_sol ≈ 7.5 × 10⁻⁵ eV²).
 - **Three flavors from three pairs.**  If three independent
-  near-degeneracy classes exist on the electron's T², each
+  near-degeneracy classes exist on Ma_e, each
   corresponds to a neutrino flavor.
 
 #### The challenge
@@ -364,13 +364,13 @@ This distinction — the particle IS the beat, not the carrier waves —
 is unusual but not unprecedented.  In optics, a beat frequency between
 two sources has a well-defined energy ΔE even though the individual
 photons have much higher energy.  Whether this analogy extends to
-massive particles on T² requires careful analysis of the invariant mass
+massive particles on the material sheet requires careful analysis of the invariant mass
 of the propagating superposition.
 
 #### Concrete steps
 
-1. Systematically compute all near-degeneracy pairs on the electron's
-   T² up to E ~ 200 m_e.
+1. Systematically compute all near-degeneracy pairs on Ma_e
+   up to E ~ 200 m_e.
 2. Compute ΔE values and check against known Δm² ratios.
 3. Determine whether the decay process preferentially populates
    specific superpositions (selection rules from mode-mode coupling).
@@ -392,7 +392,7 @@ of this energy among modes is not instantaneous — it requires
 mode-mode coupling, which is weak (the torus is nearly flat).  Some
 energy may get "stranded" in a configuration that is:
 
-- Not an eigenmode of T² (so it's not a stable KK state)
+- Not an eigenmode of the material sheet (so it's not a stable KK state)
 - Not the zero mode (so it's not a photon)
 - Slowly decaying toward one or the other, but with a decay rate so
   slow that it propagates macroscopic distances before converting
@@ -411,8 +411,8 @@ The decay ejects some harmonic energy in a non-eigenmode configuration.
 This configuration "wants" to become photons (zero mode) but can't
 fully convert because:
 
-- It originated from modes with specific compact structure (winding
-  numbers, angular momentum in the compact dimensions).
+- It originated from modes with specific material structure (winding
+  numbers, angular momentum in the material dimensions).
 - Topological conservation (winding number is a topological invariant)
   prevents clean conversion.
 - The mismatch between its structure and the zero mode creates a
@@ -465,7 +465,7 @@ moduli fluctuation is m_mod ~ √(κ / kinetic_coefficient).
   winding number, so it carries no charge.
 - **Naturally light:** if the stiffness is low (the torus shape is
   "floppy"), the fluctuation mass can be tiny.
-- **On the same T²:** no new dimensions required — it's the geometry
+- **On the same material sheet:** no new dimensions required — it's the geometry
   itself oscillating.
 
 #### The spin problem
@@ -475,7 +475,7 @@ Tensor fluctuations have spin 2.  Getting spin ½ from a pure shape
 fluctuation typically requires supersymmetry, which this model does
 not invoke.
 
-However, the T² has shear (s₁₂ ≈ 0.165), and a shear fluctuation
+However, the material sheet has shear (s₁₂ ≈ 0.165), and a shear fluctuation
 involves a cross-term between the two torus directions.  On the
 embedded torus, this cross-term couples asymmetrically to the
 tube-ring structure.  Whether this asymmetric coupling can produce an
@@ -484,7 +484,7 @@ on the details of the embedding.
 
 #### Concrete steps
 
-1. Write down the moduli action for the sheared T² — kinetic and
+1. Write down the moduli action for the sheared material sheet — kinetic and
    potential energy terms for L₁, L₂, s₁₂.
 2. Compute the mass eigenvalues of small oscillations around the
    equilibrium geometry.
@@ -504,9 +504,9 @@ on the details of the embedding.
 When the electron's (1,2) winding mode escapes the neutron during beta
 decay, the process of "unwinding" one fundamental from the composite
 might not be clean.  The separation could leave a **topological
-scar** — a phase defect in the remaining field configuration on T².
+scar** — a phase defect in the remaining field configuration on the material sheet.
 
-On T², topological defects include:
+On the material sheet, topological defects include:
 - **Vortices** (point-like phase singularities where the field phase
   winds by 2π around a point).
 - **Dislocations** (mismatches in the periodic field structure).
@@ -533,7 +533,7 @@ configuration near the defect core) and propagates in 3D.
 
 - **Topological protection** means the defect can't decay into
   photons — it is stable or very long-lived.
-- **Low energy:** vortex energy on T² is proportional to
+- **Low energy:** vortex energy on the material sheet is proportional to
   ln(L/ξ) where ξ is the core size.  If the core is not much
   smaller than the torus, the energy can be small.
 - **Created in decay:** produced by the topological rearrangement
@@ -545,16 +545,16 @@ configuration near the defect core) and propagates in 3D.
 
 1. Analyze the field topology during decay: when a (1,2) mode
    separates from a (−1,−2) mode, what field configuration remains?
-2. Can the separation produce vortices or dislocations on T²?
-3. Compute vortex energies on the electron's T².
-4. Determine the spin of a vortex/anti-vortex pair on T².
+2. Can the separation produce vortices or dislocations on the material sheet?
+3. Compute vortex energies on Ma_e.
+4. Determine the spin of a vortex/anti-vortex pair on the material sheet.
 
 
 ---
 
 ## 6. Comparison of directions
 
-| Direction | Stays on same T²? | Natural mass scale | Spin ½? | Ties to existing work |
+| Direction | Stays on same Ma_e? | Natural mass scale | Spin ½? | Ties to existing work |
 |---|---|---|---|---|
 | **A. Condensate phonon** | yes | Sub-eV (weak coupling) | Plausible (spinon analog) | R21 Track 4 |
 | **B. Near-degeneracy beats** | yes | Sub-eV (from F16) | Open | F16, extends R20 |
@@ -583,9 +583,9 @@ immediately using the F16 mode catalog — no new infrastructure needed.
 The project's guiding principle (from the top-level README) is:
 **energy and geometry are the only fundamentals.**  The electron,
 proton, neutron, muon, and tau all emerge from energy (photons)
-confined in geometry (T²).  The neutrino should too.
+confined in geometry (the material sheet).  The neutrino should too.
 
-Creating a separate T² for the neutrino (F18a) is mechanically
+Creating a separate material sheet for the neutrino (F18a) is mechanically
 viable but philosophically retrograde — it introduces a new free
 parameter (L_ν) for each flavor, explaining nothing.  The neutrino
 should be *emergent* from the dynamics of energy on the geometry
@@ -593,7 +593,7 @@ that already exists, not a fundamental field living on its own
 private surface.
 
 All five directions above share a common requirement: **mode-mode
-coupling**.  On flat T², modes are independent, the spectrum is
+coupling**.  On the flat material sheet, modes are independent, the spectrum is
 gapped, and there is no room for a neutrino.  On the embedded torus,
 curvature couples modes together, and new phenomena appear:
 collective excitations, near-degeneracy beats, non-equilibrium
@@ -616,15 +616,15 @@ Solving one likely solves both.
 
 | Study | Relevant findings |
 |---|---|
-| R20 F14 | Neutrino cannot be a mode on the electron's T² |
-| R20 F15 | Separate T² at ~1.5 μm experimentally allowed |
+| R20 F14 | Neutrino cannot be a mode on Ma_e |
+| R20 F15 | Separate material sheet at ~1.5 μm experimentally allowed |
 | R20 F16 | Mode splittings reach sub-eV scale naturally |
-| R20 F18 | Three options: separate T², geometry fluctuation, decay product |
+| R20 F18 | Three options: separate material sheet, geometry fluctuation, decay product |
 | R20 F19–F21 | Ejected harmonics and complex geodesics ruled out |
 | R20 F9, F11 | Neutron excess = 1.531 m_e; decay endpoint 0.782 MeV |
 | R20 F17 | Muon/tau decay as "harmonic evaporation" — also produces neutrinos |
 | R21 | Embedding curvature → mode coupling → binding, spectrum, quarks |
 | R12 | Two-domain picture: flat for mass/spin, embedded for charge |
-| R18 | Torus stiffness κ = ε₀E₀²/(2R) |
+| R18 | Material-sheet stiffness κ = ε₀E₀²/(2R) |
 | Q14 (INBOX) | Neutrino topology — earliest note on the problem |
 | Q11 | Spin-statistics filter: only q = 1 (bosons) and q = 2 (fermions) |

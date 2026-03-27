@@ -2,11 +2,11 @@
 
 ## Summary
 
-Track 1a computes the mode spectrum on the neutrino T² for two
+Track 1a computes the mode spectrum on Ma_ν for two
 candidate neutrino assignments:
 
 - **Assignment A:** (1,1), (−1,1), (1,2) — the same mode pattern
-  as the electron T², downscaled
+  as Ma_e, downscaled
 - **Assignment B:** (1,2), (3,2), (17,2) — all modes sharing n₄ = 2
 
 The mass-squared ratio, cosmological mass sum, mode catalogs, and
@@ -60,7 +60,7 @@ correct WvM formula is:
     spin = |n₃| / |n₄|
 
 where n₃ is the tube winding (minor circle) and n₄ is the ring
-winding (major circle) on the neutrino T².
+winding (major circle) on Ma_ν.
 
 ### Evidence for the correct formula
 
@@ -106,7 +106,7 @@ experimentally neutrinos are exclusively spin ½.
 
 - **F5 is affected.**  The count of "spin-½ fermions" in the mode
   catalog (60–204 depending on r) is inflated.  The true spin-½
-  fermion count on the neutrino T² is small: only (1,2) and (−1,2)
+  fermion count on Ma_ν is small: only (1,2) and (−1,2)
   have spin ½.  That is two modes total, not hundreds.
 
 - **F7 scorecard must be revised:**
@@ -119,7 +119,7 @@ experimentally neutrinos are exclusively spin ½.
 
 ## Structural consequence: only two spin-½ modes exist
 
-On any T² with shear s, the spin-½ modes are those with winding
+On any material sheet with shear s, the spin-½ modes are those with winding
 ratio |n₃|/|n₄| = 1/2.  The only solutions are:
 
     (±1, ±2)
@@ -132,37 +132,37 @@ accounting for orientation, these give two distinct mass values:
 (The modes (1,−2) and (−1,−2) are degenerate with (−1,2) and (1,2)
 respectively.)
 
-**A single T² can produce at most two spin-½ mass eigenstates.**
+**A single material sheet can produce at most two spin-½ mass eigenstates.**
 Three neutrino flavors require three.  This is a structural
 limitation — no choice of shear or aspect ratio can produce a
-third spin-½ mode on one T².
+third spin-½ mode on one material sheet.
 
 This limitation was not identified in the findings because the
 incorrect spin formula masked it.
 
 ## Possible resolutions
 
-### (a) Cross-plane coupling on T⁶
+### (a) Cross-plane coupling on Ma
 
-On T⁶, modes on the neutrino T² couple to modes on the electron
-and proton T²s through cross-shear.  If this coupling splits
+On Ma, modes on Ma_ν couple to modes on the electron
+and proton material sheets through cross-shear.  If this coupling splits
 degenerate modes or mixes spin sectors, a third effective spin-½
 state might emerge.  This is speculative and requires the Track 4
 calculation.
 
-### (b) Two T²s for neutrinos → T⁸
+### (b) Two material sheets for neutrinos → an eight-dimensional compact space (T⁸)
 
-If one T² gives two spin-½ modes, two T²s give four.  Selecting
+If one material sheet gives two spin-½ modes, two material sheets give four.  Selecting
 three of four matches the three neutrino flavors.  But this adds
-two more compact dimensions (total: 12, or 11+1), which is less
+two more material dimensions (total: 12, or 11+1), which is less
 economical and enters the territory of M-theory (11D).
 
 ### (c) Revisit the spin mechanism
 
 The WvM spin formula spin = p/q was derived for a single photon
 on a torus knot.  It may not extend straightforwardly to modes on
-a flat T² that are standing waves rather than circulating geodesics.
-A mode (3,2) on a flat T² is a plane wave with three wavelengths
+a flat material sheet that are standing waves rather than circulating geodesics.
+A mode (3,2) on a flat material sheet is a plane wave with three wavelengths
 fitting in the θ₃ direction and two in θ₄.  Whether this has
 angular momentum 3ℏ/2 or ℏ/2 depends on how the photon's
 polarization couples to the geometry — not just on the winding
@@ -173,7 +173,7 @@ p/q formula.
 
 Assignment A has spin-1 modes for ν₁ and ν₂.  If the neutrino
 mass eigenstates are not identical to the propagation eigenstates
-on the T², and if cross-plane coupling on T⁶ projects them into
+on the material sheet, and if cross-plane coupling on Ma projects them into
 effective spin-½ states in 3+1D, Assignment A might still work.
 Its algebraic cleanliness (r-independent ratio, single free
 parameter) is attractive.
@@ -186,9 +186,9 @@ parameter) is attractive.
 
 2. **Investigate resolution (c):** The spin = p/q formula was
    established for circulating geodesics (the WvM picture).
-   Standing-wave modes on a flat T² may have different angular
+   Standing-wave modes on a flat material sheet may have different angular
    momentum properties.  A first-principles calculation of the
-   angular momentum of a (3,2) standing wave on the neutrino T²
+   angular momentum of a (3,2) standing wave on Ma_ν
    would resolve whether higher-winding modes can contribute to
    the spin-½ sector.
 
@@ -277,7 +277,7 @@ The review correctly notes that:
    finite a/R, corrections may exist.  This is why Track 1d
    (spin formula at finite a/R) is included in R26.
 
-2. Standing-wave modes on a flat T² may have different angular
+2. Standing-wave modes on a flat material sheet may have different angular
    momentum properties than circulating geodesics.  This is a
    valid concern that warrants the first-principles calculation
    planned for Track 1d.
@@ -299,7 +299,7 @@ spin-½ — is the project's best current understanding.
 ### The structural question remains open
 
 Even if spin = ℏ/q is correct, the reviewer raises a deep question:
-can a T² produce THREE spin-½ mass eigenstates?  With L = ℏ/q,
+can a material sheet produce THREE spin-½ mass eigenstates?  With L = ℏ/q,
 yes — there are infinitely many (p, 2) modes with spin ½.  But
 Track 1b showed that all triplets of these modes produce sterile
 neutrinos (F12: minimum 6 with cosmological viability).

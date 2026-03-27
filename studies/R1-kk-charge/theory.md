@@ -1,11 +1,11 @@
-# From S¹ to T²: Two Compact Dimensions and the Electron
+# From S¹ to T²: Two Material Dimensions and the Electron
 
 **Prerequisite:** [`primers/kaluza-klein.md`](../../primers/kaluza-klein.md)
 — Kaluza-Klein theory from the ground up.
 
 This paper argues that the Williamson–van der Mark (WvM) electron
 model maps naturally onto a Kaluza-Klein theory with **two**
-compact dimensions (a flat torus T²) rather than one (a circle S¹).
+material dimensions (a flat torus T²) rather than one (a circle S¹).
 It sets up the propositions that this study will test.
 
 ---
@@ -41,14 +41,14 @@ starting orientation. This topological property requires two
 independent wrapping directions. It cannot exist on S¹.
 
 
-## 2. Two compact dimensions: the flat torus T²
+## 2. Two material dimensions: the flat torus T²
 
-Add two compact dimensions instead of one:
+Add two material dimensions instead of one:
 
     w₁ ~ w₁ + L₁
     w₂ ~ w₂ + L₂
 
-Two independent periodic coordinates. The compact space is
+Two independent periodic coordinates. The material space is
 T² = S¹ × S¹ — a flat torus. "Flat" means zero intrinsic
 curvature: a straight line in this space is genuinely straight, not
 curved. The "torus" (donut) shape is an artifact of embedding this
@@ -94,7 +94,7 @@ travel, not by confinement.
 
 **Key contrast with S¹:** on S¹, all geodesics are the same
 circle (traversed n times). On T², different directions give
-different topologies. The compact space itself determines what
+different topologies. The material space itself determines what
 particle types are possible.
 
 
@@ -132,7 +132,7 @@ path, combined with the photon's energy density, gives:
 
     q_WvM = (1/2π) √(3ε₀ℏc) ≈ 0.91e
 
-**In KK with T²:** momentum in each compact direction is
+**In KK with T²:** momentum in each material direction is
 independently quantized:
 
     p₁ = n₁ ℏ / R₁
@@ -149,29 +149,29 @@ mechanism with different names, or different mechanisms that happen
 to give similar answers?
 
 
-## 6. The WvM electron as a T² geodesic
+## 6. The WvM electron as a geodesic on the material sheet
 
-The mapping between the WvM model and a T² compact space:
+The mapping between the WvM model and the material sheet (T²):
 
-| WvM concept | T² concept |
+| WvM concept | Material-sheet concept |
 |-------------|------------|
-| Photon confined to toroidal path | Photon following a geodesic on T² |
+| Photon confined to toroidal path | Photon following a geodesic on the material sheet |
 | (1,2) double loop | Straight line at slope 1:2 on the rectangle |
 | Path length = λ_C | Geodesic circumference = λ_C |
-| Confinement by unknown force | No force needed — geodesic on compact space |
-| Charge from E-field topology | Charge from momentum in compact directions |
+| Confinement by unknown force | No force needed — geodesic on material space |
+| Charge from E-field topology | Charge from momentum in material directions |
 | Spin ½ from double loop | Spin ½ from q = 2 winding |
 | Rotation horizon at λ_C/2 | (No direct analog — see §8) |
 | Nested toroidal surfaces (Fig. 2) | Transverse field profile in non-compact directions |
 
 If this mapping is valid, the WvM model IS a 6D KK theory
-(3 space + 1 time + 2 compact), with the specific compact space
+(3 space + 1 time + 2 material), with the specific material space
 T² and a (1,2) geodesic.
 
 
-## 7. What T² predicts that S¹ doesn't
+## 7. What the material sheet predicts that S¹ doesn't
 
-If the electron is a (1,2) geodesic on T², the same compact space
+If the electron is a (1,2) geodesic on T², the same material space
 supports other geodesics. This makes predictions:
 
 | Geodesic | Spin | Charge (Frenet model) | Candidate |
@@ -189,7 +189,7 @@ framework (where charge comes from compact momentum, not E-field
 direction), is an open question.
 
 
-## 8. Open issues with the T² mapping
+## 8. Open issues with the material-sheet mapping
 
 ### Gravitational vs electromagnetic coupling
 
@@ -221,24 +221,24 @@ In WvM, the photon's electromagnetic field extends into 3D space
 out to the rotation horizon (λ_C/2). The nested toroidal surfaces
 of Fig. 2 are the field's transverse profile in xyz.
 
-In the T² picture, the photon moves in the compact dimensions
+In the material-sheet picture, the photon moves in the material dimensions
 (w₁, w₂). Its field extends into the non-compact dimensions
-(x, y, z). How the compact-dimension motion produces 3D fields
+(x, y, z). How the material-dimension motion produces 3D fields
 is governed by the 6D field equations — the higher-dimensional
 analog of how KK produces Maxwell's equations from 5D gravity.
 
 Whether WvM's "rotation horizon" and "spherical cavity" have
-natural T² analogs, or whether they're artifacts of the 3D
+natural material-sheet analogs, or whether they're artifacts of the 3D
 visualization, is unclear.
 
 ### The gauge group
 
-T² gives U(1) × U(1) — two independent gauge symmetries. We
+The material sheet gives U(1) × U(1) — two independent gauge symmetries. We
 observe only one electromagnetism. Either:
 - One of the U(1)'s is electromagnetism and the other is something
   else (a hidden or broken symmetry)
 - The two U(1)'s combine in a specific way for the (1,2) geodesic
-- The T² structure breaks U(1) × U(1) to a single U(1) through
+- The material-sheet structure breaks U(1) × U(1) to a single U(1) through
   some mechanism
 
 This is a genuine theoretical question that the study should
@@ -272,7 +272,7 @@ a WvM length scale (λ_C/4π, λ_C/2, the path length)?
 ### P2. Charge from compact momentum
 
 **Claim:** the (1,2) geodesic on T² has winding numbers (n₁, n₂)
-= (2, 1). The momentum in each compact direction is quantized.
+= (2, 1). The momentum in each material direction is quantized.
 The net charge is a specific function of n₁, n₂, R₁, R₂.
 
 **Test:** Write down the KK charge formula for T² (two compact
@@ -281,7 +281,7 @@ reasonable dimension sizes?
 
 ### P3. Single effective charge from two U(1)'s
 
-**Claim:** although T² gives U(1) × U(1), the physical charge of
+**Claim:** although the material sheet gives U(1) × U(1), the physical charge of
 the (1,2) geodesic is a single effective charge (the electron has
 one charge, not two independent charges).
 
@@ -295,7 +295,7 @@ single effective charge?
 KK compact radius R_KK = ℏ/(ec) are two expressions of the same
 geometric quantity.
 
-**Test:** Express both in terms of the T² parameters (L₁, L₂).
+**Test:** Express both in terms of the material-sheet parameters (L₁, L₂).
 Do they unify?
 
 ---

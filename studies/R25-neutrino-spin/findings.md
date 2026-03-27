@@ -1,10 +1,10 @@
-# R25. Neutrino Spin and T³ Topology — Findings
+# R25. Neutrino Spin and 3-Torus Topology — Findings
 
 ## Track 1: Spin analysis of (0,0,n₃) modes
 
 ### F1. Mechanism A fails — shear does not redirect wavevectors
 
-On a sheared T³, the lattice vector a₃ = (s₁₃L₁, s₂₃L₂, L₃) is
+On a sheared 3-torus, the lattice vector a₃ = (s₁₃L₁, s₂₃L₂, L₃) is
 tilted, but the wavevector of mode (0,0,n₃) is determined by the
 reciprocal lattice: **k = (0, 0, 2πn₃/L₃)** regardless of shear.
 
@@ -15,7 +15,7 @@ symmetry axis.  **Spin = 0.**
 
 ### F2. Mechanism B is inapplicable — spin structures affect spinors, not vectors
 
-A flat T³ admits 2³ = 8 spin structures (periodic/anti-periodic
+A flat 3-torus admits 2³ = 8 spin structures (periodic/anti-periodic
 boundary conditions in each direction).  These affect spinor fields
 (spin-½), not vector fields (spin-1).
 
@@ -33,7 +33,7 @@ mix with (m,0,n₃) modes acquiring a spin-½ component.
 Mixing amplitude: V/ΔE ~ (ε × E_ν) / E_e ~ (0.2 × meV) / (0.5 MeV)
 ~ 4 × 10⁻¹⁰.  Spin contribution: c² × ℏ/2 ~ 10⁻¹⁹ ℏ.  Negligible.
 
-Furthermore, on a product space Ma_e × S¹, the curvature Hamiltonian
+Furthermore, on a product space (Ma_e × S¹), the curvature Hamiltonian
 factorizes: it acts on the (θ₁,θ₂) wavefunction but leaves the θ₃
 part as a spectator.  The mode's quantum numbers (0,0,n₃) are not
 changed by curvature — only the Ma_e eigenmodes are corrected.
@@ -64,7 +64,7 @@ creates a closed trap:
     Uncharged    →  n₁ = 0
     Spin-½       →  n₁ odd  (contradicts uncharged)
 
-### F5. T³ neutrino model fails at the spin gate
+### F5. 3-torus neutrino model fails at the spin gate
 
 Despite remarkable kinematic success:
 - Mass-squared ratio 33.63 from integers alone (0.03σ match)
@@ -76,7 +76,7 @@ Despite remarkable kinematic success:
 
 ### F6. Scope: this is a structural limitation of the WvM spin mechanism
 
-The charge-spin linkage (F4) is not specific to T³.  It applies to
+The charge-spin linkage (F4) is not specific to the 3-torus.  It applies to
 **any** material-dimension model that uses the WvM spin mechanism
 (L = E/ωs with ωs from ring winding, fermion/boson from tube
 parity).  The mechanism inherently links charge to spin: both
@@ -91,7 +91,7 @@ The neutrino must exist (angular momentum conservation in beta
 decay demands a fermion — see `../R24-torus-dynamics/neutrinos.md`).
 The WvM framework currently has no mechanism to produce it.
 
-**Track 2 (PMNS from T³ geometry) is cancelled.**  Without
+**Track 2 (PMNS from 3-torus geometry) is cancelled.**  Without
 spin-½ neutrinos, the PMNS derivation has no target and the
 r-selection path through neutrino mixing is closed.
 
@@ -111,7 +111,7 @@ of charged particles (e.g., eēe) would need a binding mechanism.
 
 **(c) Beyond the WvM framework.**  The neutrino might arise from
 a field type not currently in the model (e.g., a gravitational
-mode, a topological defect, or a fundamentally different compact
+mode, a topological defect, or a fundamentally different material
 structure).
 
 ---
