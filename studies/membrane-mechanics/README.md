@@ -1,11 +1,11 @@
-# R37. Membrane mechanics — gravity, stability, and α from the T²/R³ interface
+# R37. Membrane mechanics — gravity and stability from the T²/R³ interface
 
-**Status:** Draft — awaiting review
-**Questions:** Q2 (curved appearance), Q18 (deriving α), Q76 (metric
-signature)
+**Status:** Draft
+**Questions:** Q2 (curved appearance), Q76 (metric signature)
 **Type:** theoretical + compute
 **Depends on:** R19 (shear-charge), R26 (T⁶), R17 (radiation pressure),
-R18 (torus stiffness), R31 (origin of α), R35 (elastic torus hypothesis)
+R18 (torus stiffness), R31 (origin of α), R35 (elastic torus hypothesis),
+R36 (geometric tilt — interactions require spatially varying metric)
 **Supports:** Paper 4 candidate (universe-as-mode)
 
 ---
@@ -41,13 +41,17 @@ interface's elastic response:
    against membrane tension sets the torus dimensions?
 2. **Produce gravity** — the membrane deformation propagates
    into R³ as spacetime curvature?
-3. **Determine α** — the shear of the lattice is the
-   membrane's tangential deformation under load?
 
-If all three follow from the same membrane mechanics, then
-mass, charge, and gravitational coupling are not independent
-facts — they are three aspects of a single force balance at
-the compact/non-compact interface.
+α remains an input (R31 conclusion), not derived here.  But
+α determines the membrane's shear modulus μ_m (via the
+R19 charge formula), while the gravitational response
+determines the normal stiffness K_n.  The ratio K_n/μ_m
+then quantifies the gravitational hierarchy — why gravity
+is ~10⁴⁰× weaker than electromagnetism — in mechanical terms.
+
+If gravity follows from the same membrane that produces
+charge, then the Einstein field equation is not a postulate
+but a consequence of photon confinement on a compact surface.
 
 
 ## Background
@@ -76,9 +80,11 @@ through the torus boundary — a different target.
 **R31 (origin of α):** Systematically tested mechanisms for
 deriving α.  Hydrogen is NOT a T⁶ mode.  Casimir energy has
 no minimum.  KK Yukawa corrections are 10³–10⁶× too large.
-α remains an input; deriving it requires dynamics or a moduli
-potential.  **The membrane stiffness proposed here IS a
-candidate moduli potential.**
+α remains an input.  **This study accepts R31's conclusion:
+α is an input, not derived.**  But α determines the
+membrane's shear modulus μ_m, which combined with the
+independently determined K_n (from gravity) gives a
+mechanical characterization of the hierarchy.
 
 **R35 (elastic torus, Hypothesis I):** Track 3 found that a
 flat T⁶ blocks both reading and writing to the neutrino
@@ -195,39 +201,41 @@ free parameter — it is the size at which radiation pressure
 balances membrane resistance.
 
 
-### The shear connection — charge and α
+### The shear connection — α as input, μ_m as output
 
-A perfectly elastic membrane under uniform pressure deforms
-symmetrically.  But the T² lattice has two independent
-directions (poloidal and toroidal), and the pressure is not
-isotropic — the (1,2) winding creates an anisotropic stress
-pattern.  Under anisotropic stress, an elastic membrane
-responds with **shear** — a tangential displacement of the
-lattice.
+The (1,2) winding creates an anisotropic stress pattern on
+the T² surface.  This stress has a shear component ΔP that
+deforms the lattice tangentially.  The equilibrium shear is:
 
-If the equilibrium shear is determined by the pressure
-balance:
+    s_eq = ΔP / μ_m
 
-    s_eq ~ P_anisotropic / K_shear
-
-where K_shear is the membrane's shear modulus, then the
-charge formula (R19)
+where μ_m is the membrane's shear modulus.  The R19 charge
+formula relates shear to α:
 
     α = r² μ sin²(2πs) / (4π(2−s)²)
 
-gives α as a derived quantity — determined by the ratio of
-anisotropic radiation pressure to membrane shear stiffness.
-Both are geometric quantities.  No free parameters.
+**α is an observed input, not derived here** (per R31).
+The known value α = 1/137 fixes the required shear s_eq.
+Track 1 computes the anisotropic stress ΔP.  Together they
+**determine μ_m**:
 
-The chain would be:
+    μ_m = ΔP / s_eq(α)
 
-    (1,2) winding → anisotropic stress → membrane shear
-    → lattice tilt s → charge Q → α
+This is the key inversion: α tells us how compliant the
+membrane is to tangential deformation.  The normal stiffness
+K_n is independently determined by requiring the correct
+gravitational field (Track 3).  The ratio K_n/μ_m then
+characterizes the hierarchy between gravity and
+electromagnetism in purely mechanical terms.
 
-And α and G would arise from the SAME membrane mechanics:
-α from the tangential (shear) response, G from the normal
-(bulge) response.  They would be related through the
-membrane's elastic properties (Lamé parameters or equivalent).
+The two elastic responses arise from the same membrane but
+involve deformation in different directions: tangential (on
+T²) for charge, normal (into R³) for gravity.  These probe
+different sectors of the total geometry, so K_n/μ_m need not
+be O(1) — the hierarchy K_n ≫ μ_m would mean the T²/R³
+boundary is extremely rigid against normal displacement
+(making gravity weak) but compliant to tangential shear
+(allowing appreciable charge).
 
 
 ### Axial vs radial coupling asymmetry
@@ -262,6 +270,51 @@ energy through membrane shear.**
 
 
 ## Theory
+
+### Fiber vs. bubble — what the "membrane" is
+
+The T² is not a soap bubble floating in R³.  It is a compact
+fiber over each point of R³: at every spatial location, there
+exist 2 compact coordinates (θ, φ) in addition to the 3
+non-compact coordinates (x, y, z).  The "T²/R³ interface" is
+the boundary in the total 5D space between the compact and
+non-compact sectors — a codimension boundary, not a spatial
+surface.
+
+The Israel junction conditions handle exactly this situation:
+a hypersurface in a higher-dimensional spacetime separating
+two regions with potentially different geometries.  The
+formalism is rigorous even though the "membrane" is not a
+surface you could point to in R³.  What makes it physical
+is that the photon's field configuration on T² creates
+stress-energy AT the boundary, and this stress-energy
+affects the geometry on both sides.
+
+
+### Parameter counting
+
+The membrane has 3 independent elastic parameters:
+
+| Parameter | Controls | Determined by |
+|-----------|----------|---------------|
+| σ_m (surface energy) | Equilibrium torus size (R, a) | Track 2: force balance → R_eq ~ λ̄_C |
+| K_n (normal stiffness) | Gravitational coupling G | Track 3: Israel conditions → K_n = c⁴/(8πG) |
+| μ_m (shear modulus) | Charge coupling α | Track 4: α (input) + ΔP (Track 1) → μ_m = ΔP/s_eq |
+
+3 unknowns, 3 observables (R_eq, G, α).  The system is
+exactly determined — no free parameters once the inputs
+(α, G, λ̄_C) are specified.  The bending rigidity κ_b is
+derived from σ_m and the membrane thickness (or topology)
+via thin-shell theory.
+
+The non-trivial output is NOT the values of (σ_m, K_n, μ_m)
+— those are fixed by the inputs.  The non-trivial outputs
+are:
+1. Does a stable equilibrium EXIST? (Track 2)
+2. Does the normal deformation reproduce the Schwarzschild
+   metric, not just the right G? (Track 3)
+3. What is K_n/μ_m, and does it match the hierarchy? (Track 5)
+
 
 ### The T²/R³ interface as an elastic membrane
 
@@ -455,106 +508,146 @@ the weak-field Schwarzschild metric.
 **Script:** `scripts/track3_gravity_from_membrane.py`
 
 
-### Track 4. Shear from anisotropic stress → α
+### Track 4. Shear modulus from α (input) and anisotropic stress
 
-**Goal:** Determine whether the anisotropic stress from the
-(1,2) winding pattern produces an equilibrium shear that
-matches the value needed for α = 1/137.
+**Goal:** Given α = 1/137 as input, extract the membrane's
+shear modulus μ_m from the anisotropic stress computed in
+Track 1.  Compare μ_m to K_n (from Track 3) to quantify the
+gravitational hierarchy in mechanical terms.
 
 **Method:**
 1. From Track 1, extract the anisotropic stress ΔP(θ,φ)
    on the T² surface.
-2. Model the T² lattice as an elastic sheet with shear
-   modulus μ_m.  Under the anisotropic stress, the lattice
-   deforms:
+2. From the R19 charge formula, the known α fixes the
+   required shear: s_eq ≈ 0.0116 (at r = 6.6).
+3. Extract the shear modulus:
 
-       s_eq = ΔP / μ_m
+       μ_m = ΔP / s_eq
 
-3. Substitute s_eq into the KK α formula (R19 F35):
+4. From Track 3: K_n = c⁴/(8πG) determines G.
+5. Compute the hierarchy ratio:
 
-       α = r² √(1/r² + (2−s)²) sin²(2πs) / (4π(2−s)²)
+       K_n / μ_m = ?
 
-4. Solve for the shear modulus μ_m that gives α = 1/137.
-5. Check: is this μ_m related to K_n (from Track 2/3) by
-   a known elasticity relationship (e.g., μ = K/(2(1+ν))
-   for Poisson ratio ν)?
+   If this ratio reproduces the known gravitational
+   hierarchy (~10¹⁴ or similar large number), the hierarchy
+   problem has a mechanical interpretation: the T²/R³
+   boundary is extremely rigid against normal deformation
+   (weak gravity) but compliant to tangential shear
+   (appreciable charge).
 
-**Success criterion:** A single membrane with two elastic
-constants (K_n, μ_m) related by a Poisson ratio simultaneously
-produces:
-- Correct particle size (Compton wavelength)
-- Correct gravitational field (G)
-- Correct electric charge (α = 1/137)
+**Key point:** K_n and μ_m involve deformation in different
+directions (normal into R³ vs. tangential on T²).  These
+probe different sectors of the total geometry, so the ratio
+is NOT constrained by 2D isotropic elasticity (no Poisson
+ratio applies).  A large ratio would be a feature, not a bug.
 
-If the Poisson ratio is determined by the T² topology (e.g.,
-ν = 1/3 for a 2D membrane in 3D), then G and α are related
-through a single elastic constant with no free parameters.
+**Output:**
+- μ_m in natural units
+- K_n/μ_m ratio
+- Whether the ratio matches the known hierarchy
+- Physical interpretation: what property of the T²/R³
+  interface makes it rigid normally but soft tangentially?
 
 **Script:** `scripts/track4_shear_from_stress.py`
 
 
-### Track 5. Relationship between α and G
+### Track 5. The hierarchy in mechanical terms
 
-**Goal:** If Tracks 2–4 succeed, extract the predicted
-relationship between α and G.
+**Goal:** Synthesize Tracks 2–4 into a coherent mechanical
+picture of the gravitational hierarchy.
 
 **Method:**
-1. From Track 3: K_n determines G via K_n = c⁴/(8πG).
-2. From Track 4: μ_m determines α via the shear mechanism.
-3. The ratio K_n/μ_m is related to the membrane's Poisson
-   ratio ν:
+1. From Track 3: K_n = c⁴/(8πG) ≈ 4.8 × 10⁴² N.
+2. From Track 4: μ_m = ΔP/s_eq (computable once Track 1
+   gives ΔP).
+3. Compute the hierarchy ratio K_n/μ_m.  If it matches the
+   known gravitational hierarchy Gm_e²/(ℏc) ≈ 10⁻⁴⁵, then
+   the hierarchy is the statement:
 
-       K_n / μ_m = 2(1 + ν)   (for 2D isotropic elasticity)
+       "The T²/R³ boundary is 10¹⁴× more rigid against normal
+       deformation than against tangential shear."
 
-4. Substituting:
+4. Ask WHY the normal and tangential responses are so
+   different.  Candidate explanations:
+   - Normal deformation requires deforming ALL of R³
+     (long-range, integrated over infinite volume →
+     enormous effective stiffness).  Tangential shear
+     is LOCAL to the T² surface (finite area → moderate
+     stiffness).
+   - The topology of T² may protect tangential modes
+     (soft directions in the moduli space) while normal
+     modes are fully constrained by the Einstein equations
+     in 10D.
 
-       G / α = f(ν, r, topology)
-
-   where f is a computable function.
-
-5. Compare to the known ratio:
-
-       G m_e² / (ℏc) ≈ 1.75 × 10⁻⁴⁵
-
-   which is the gravitational coupling constant.  In this
-   picture, this ratio is not a coincidence — it is set by the
-   membrane's elastic properties.
+5. Check whether the R35 Goldilocks compliance K ∈
+   [0.043, 0.080] eV⁻¹ is consistent with the membrane
+   parameters.  K from R35 describes the neutrino sheet's
+   geometric compliance; it should be derivable from the
+   same membrane physics applied to T²_ν.
 
 **Output:**
-- The predicted α/G ratio as a function of Poisson ratio ν
-  and aspect ratio r
-- Whether any physically reasonable (ν, r) reproduces the
-  observed ratio
-- If so: a derivation of the hierarchy problem (why gravity
-  is 10⁴⁰× weaker than electromagnetism) from membrane
-  elasticity
+- K_n/μ_m ratio and whether it matches the hierarchy
+- Physical interpretation of the ratio
+- Connection to R35's Goldilocks K for the neutrino sheet
+- Whether the membrane picture gives a mechanical
+  explanation for why gravity is weak
 
 
 ## What success looks like
 
-- **Strong result:** A single elastic membrane with
-  computable constants simultaneously gives particle
-  stability, gravity, and α.  The hierarchy problem
-  (G ≪ α) reduces to the membrane's Poisson ratio.
+- **Strong result:** The confined photon's radiation
+  pressure on the T²/R³ boundary, balanced against
+  spacetime stiffness, produces the weak-field
+  Schwarzschild metric — deriving the Einstein field
+  equation from confinement mechanics.  α remains an
+  input, but G emerges from the same membrane.  The
+  hierarchy K_n/μ_m has a clear mechanical interpretation.
 
-- **Moderate result:** The force balance works
-  qualitatively — stable equilibrium exists — but the
-  predicted α or G are orders of magnitude off.  This
-  would suggest the membrane picture is correct but the
-  elastic model is too simple (need non-linear elasticity,
-  quantum corrections, or additional membrane physics).
+- **Moderate result:** The force balance gives a stable
+  equilibrium — particle size is determined — but the
+  gravitational field has the wrong prefactor (G off by
+  orders of magnitude).  This would suggest the membrane
+  picture is qualitatively correct but the elastic model
+  needs refinement (non-linear effects, quantum
+  corrections, or contributions from the other T² sheets).
 
 - **Null result:** No stable equilibrium exists, or the
-  membrane deformation produces no coupling to R³.  This
-  would rule out the mechanical membrane picture and
-  push toward the "designer's-choice" hypothesis for α
-  (R36 conclusion).
+  normal deformation does not propagate into R³ as
+  curvature.  This would rule out the mechanical membrane
+  picture for gravity.
 
-- **Breakthrough:** The relationship between α and G is
-  derived with no free parameters.  The gravitational
-  hierarchy is explained.  The measured G and α are the
-  unique self-consistent solution of the membrane
-  mechanics.
+- **Bonus:** The K_n/μ_m ratio, computed from first
+  principles (Track 1 stress + Israel conditions),
+  reproduces the observed gravitational hierarchy
+  ~10⁻⁴⁵ without additional input.  The hierarchy
+  problem becomes: "the membrane is rigid normally
+  because normal deformation costs R³ curvature energy
+  integrated over all space, but soft tangentially
+  because shear is a local T² deformation."
+
+
+## Connection to R35 elastic torus
+
+R35 Track 4 introduced the metric compliance K as the master
+Goldilocks parameter for neutrino-sheet I/O, with the viable
+window K ∈ [0.043, 0.080] eV⁻¹.  F28 noted that computing K
+from first principles requires the moduli potential of the T⁶
+geometry.
+
+The membrane mechanics studied here IS the physics behind K.
+If this study succeeds in computing σ_m, K_n, and μ_m for the
+electron sheet, the same formalism applied to the neutrino
+sheet should yield the neutrino-sheet compliance.  Checking
+consistency with R35's Goldilocks window is a concrete
+falsifiability test (Track 5).
+
+The key difference between sheets: the electron sheet carries
+a charged photon mode (high radiation pressure, large ΔP),
+while the neutrino sheet carries uncharged modes (no EM
+radiation pressure — the confinement mechanism and stress
+pattern may be different).  This asymmetry may explain why
+the neutrino sheet is more compliant (larger K, easier I/O).
 
 
 ## Relationship to the universe-as-mode hypothesis
