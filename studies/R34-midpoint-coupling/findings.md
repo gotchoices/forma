@@ -205,7 +205,7 @@ the 1/80 hypothesis in general.
 
 ### F12. α = 1/137 is an input, not an output, of the T⁶ model
 
-The R19 R19-shear-charge formula α = r²μ sin²(2πs)/(4π(2−s)²)
+The R19-shear-charge formula α = r²μ sin²(2πs)/(4π(2−s)²)
 has two free parameters (r and s).  The shear s is solved
 from the requirement α = 1/137.  So the formula provides
 a MECHANISM for how geometry produces a coupling constant

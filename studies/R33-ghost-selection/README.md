@@ -79,7 +79,7 @@ Tracks 5 and 7(e), and there the goal is characterization
 
 ## Key questions
 
-1. Does the R19 R19-shear-charge integral naturally suppress
+1. Does the R19-shear-charge integral naturally suppress
    modes with high winding numbers?
 2. Do modes with n₂ = 0 (no ring winding) have zero
    effective electromagnetic coupling, even though the KK
@@ -101,7 +101,7 @@ Tracks 5 and 7(e), and there the goal is characterization
 
 ### Track 1 — Charge integral per mode (electron and proton sheets)
 
-The R19 R19-shear-charge formula derives α from a surface
+The R19-shear-charge formula derives α from a surface
 integral over the electron T².  The integral assumes the
 (1,2) mode shape.  Generalize it to all modes on both the
 electron and proton sheets.
@@ -436,7 +436,7 @@ eliminating the most dangerous ghost AND pinning r_e.
 
 **Compute:**
 
-a) Evaluate the R19 R19-shear-charge integral Q(n₁, n₂, r, s)
+a) Evaluate the R19-shear-charge integral Q(n₁, n₂, r, s)
    for modes (1,0), (1,1), (1,2), (1,3) on the electron
    sheet across a dense grid of r_e values from 0.1 to 100.
    At each r_e, s is determined by α (solve_shear_for_alpha).

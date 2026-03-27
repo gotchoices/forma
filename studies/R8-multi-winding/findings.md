@@ -271,7 +271,7 @@ to carry over.
 
 ## Summary
 
-| Property | Standard WvM | R8 R8-multi-winding | Status |
+| Property | Standard WvM | R8-multi-winding | Status |
 |----------|-------------|------------------|--------|
 | Mass m_e | Path = λ_C | Path = λ_C | ✓ same |
 | Charge e | Coulomb energy too low | Coulomb energy = m_e c²/2 | ✓ fixed |

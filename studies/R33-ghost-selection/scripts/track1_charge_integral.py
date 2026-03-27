@@ -2,7 +2,7 @@
 """
 R33 Track 1: Charge integral per mode on electron and proton sheets.
 
-Generalizes the R19 R19-shear-charge integral from the (1,2) electron mode
+Generalizes the R19-shear-charge integral from the (1,2) electron mode
 to all (n₁, n₂) modes.  Determines which modes carry charge and how
 strongly they couple electromagnetically.
 
