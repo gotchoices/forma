@@ -1,8 +1,9 @@
-# R35. Threshold detection and compact-dimension coupling  *(draft)*
+# R35. Threshold detection and compact-dimension coupling
 
 **Questions:** Q78, Q32  **Type:** compute + theoretical
-**Depends on:** R26, R19, R27
+**Depends on:** R26, R19, R27, R33
 **Supports:** L00 (Reiter replication), L01 (THz write/read)
+**Status:** Active
 
 ---
 
@@ -22,6 +23,22 @@ that have not been computed:
 Each of these is computable with existing infrastructure
 (T⁶ solver from R26) plus standard physics (driven oscillators,
 Monte Carlo statistics, perturbation theory).
+
+### The unified mode-density picture (Q85 §14)
+
+The threshold "continuity" is not a separate mechanism — it
+is what T² mode-hopping looks like when the ladder is dense.
+On the neutrino sheet (r_ν ≫ 1), thousands of modes fit in
+[m, 2m], making energy steps unresolvable.  On the electron
+and proton sheets (r ~ 7–9), the ladder is sparse — only a
+handful of modes survive the spin filter (R33 F3), so energy
+goes to R³ momentum instead of mode-hopping.
+
+This means threshold detection (Track 1) and storage (Tracks
+2–4) are specifically neutrino-sheet phenomena.  The electron
+and proton sheets contribute known discrete physics (quantum
+jumps, nuclear resonances).  The "continuous" feel of Reiter's
+model maps onto the neutrino sheet's quasi-continuum.
 
 ---
 
@@ -64,6 +81,16 @@ Draw pre-load states, draw split fractions, apply threshold,
 count coincidences.
 
 **Script:** `scripts/track1_threshold_statistics.py`
+
+**Result (Complete):** The Compton asymmetry at 88 keV makes Re/Rc =
+1/(2τR) ≈ 1667, independent of pre-load (F1).  This over-predicts
+Reiter's Cd-109 by 51×.  The SCA upper limit resolves this: atoms
+nearly fully loaded (⟨E_pre⟩ ≈ 0.98 E_th) have pulses that exceed
+the photopeak window, bringing Re/Rc to ~33 (F3).  Na-22 (511 keV)
+IS pre-load-sensitive: uniform max ≈ 0.43 E_γ matches Re/Rc ≈ 963
+(F2).  Joint Cd-109/Na-22 match is approximate (30% tension on
+Na-22).  The fill_rate/leak_rate ratio is the master parameter (F6).
+See findings F1–F7.
 
 ---
 

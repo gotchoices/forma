@@ -111,18 +111,19 @@ the shear from 1/80 instead of 1/137.  Track 4: clockwise/counterclockwise
 interference on the torus as the bidirectional mechanism.
 
 
-### R35. Threshold detection and compact-dimension coupling  **Draft**
+### R35. Threshold detection and compact-dimension coupling  **Active**
 **Study:** [`threshold-coupling/`](threshold-coupling/)
-**Questions:** Q78, Q32  **Type:** compute + theoretical  **Depends on:** R26, R19, R27
+**Questions:** Q78, Q32  **Type:** compute + theoretical  **Depends on:** R26, R19, R27, R33
 
-4 tracks.  Track 1: Monte Carlo model of Reiter's beam-split experiment
-with T⁶-informed pre-load distribution — computational test of threshold
-theory before physical replication (L00).  Track 2: write/read dynamics
-on T²_ν modes (driven damped oscillator) — produces the "operating manual"
-for L01 (source power, exposure time, detectability thresholds).  Track 3:
-cross-shear leakage rate from T⁶ metric — sets storage lifetime.  Track 4:
-neutron-gateway coupling estimate from overlap integral — determines whether
-a Goldilocks window (writable + retainable + readable) exists.
+4 tracks (1 complete).  Motivated by the unified mode-density picture
+(Q85 §14): threshold "continuity" is mode-hopping on the neutrino
+sheet's dense ladder.  Track 1 (COMPLETE, F1–F7): Monte Carlo of
+Reiter's beam-split.  Cd-109 Re/Rc = 33 reproduced via SCA upper-limit
+mechanism (atoms nearly full → pulses exceed photopeak window).  Na-22
+Re/Rc = 963 constrains pre-load distribution (uniform max ≈ 0.43 E_γ).
+30% tension on joint fit.  Master parameter = fill_rate/leak_rate.
+Track 2: write/read dynamics.  Track 3: cross-shear leakage (sets
+storage lifetime).  Track 4: neutron-gateway coupling (Goldilocks).
 
 ### R36. Geometric tilt — α from T²/R³ embedding without KK  **Complete**
 **Study:** [`geometric-tilt/`](geometric-tilt/)

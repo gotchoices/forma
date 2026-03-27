@@ -1141,3 +1141,126 @@ The threshold theory regime gives biologically meaningful
 storage capacity.  The classical QM regime gives a
 trivially small register.  The difference is entirely
 about whether Reiter's sub-quantum channel exists.
+
+
+## 14. The unified mode-density picture
+
+The previous sections treat "continuous" energy accumulation
+as a special property of threshold theory.  But within the
+T⁶ model, continuity is not a separate mechanism — it is
+what mode-hopping looks like when the mode ladder is dense.
+
+### All three sheets have the same physics
+
+On every T² sheet, energy beyond a particle's rest mass can
+go into:
+
+1. **R³ kinetic energy** — standard momentum (always available)
+2. **Excitation to a higher mode** on the same T² — mode-hop
+3. **Pair production at 2m** — creates a new particle pair
+
+The difference between sheets is the density of option (2):
+
+| Sheet    | r       | Spacing ΔE/m  | Regime             |
+|----------|---------|---------------|--------------------|
+| Neutrino | 100–10⁶ | 10⁻²–10⁻⁶   | Quasi-continuous   |
+| Electron | ~7      | ~0.5          | Discrete (few)     |
+| Proton   | ~9      | ~0.5          | Very discrete      |
+
+On the neutrino sheet (large r_ν), thousands of modes fit
+in the [m, 2m] window.  Adjacent modes differ by μeV–neV.
+Stepping through them is imperceptible — energy accumulation
+LOOKS continuous.  This is Reiter's "threshold" regime.
+
+On the electron sheet (r_e ~ 7), the charge-preserving
+ladder (1,3), (1,4), ... has steps of ~m_e/2 each.  The
+spin filter (R33 Track 6) kills most: spin = 1/3, 1/4 are
+forbidden.  Only (1,±1) and (1,±2) survive per sheet.
+Energy beyond m_e has very few places to go on the compact
+geometry — it goes to R³ kinetic energy (momentum).  This
+is standard quantum mechanics.
+
+On the proton sheet (r_p ~ 9), the (1,3) mode is at roughly
+3/2 × m_p ≈ 1400 MeV.  These are nuclear resonances
+(compare Δ(1232), N(1440)), not continuous accumulation.
+
+### Threshold theory = dense mode-hopping
+
+Reiter's "continuous" accumulation is not a new kind of
+physics.  It is the same mode-hopping that happens on all
+sheets, but the neutrino sheet's dense spectrum makes the
+steps unresolvable.  The difference is quantitative (mode
+density), not qualitative (different physics).
+
+This has several implications:
+
+1. **Proton resonances are the sparse-sheet version.**  The
+   Δ(1232), N(1440), N(1520)... are well-known proton
+   excitations at discrete energies.  If these are mode-hops
+   on the proton T², then particle physics has been observing
+   this mechanism for decades — at the sparse end of the
+   spectrum.
+
+2. **The electron sheet stores almost nothing.**  With only
+   ~4 surviving modes, there is no room for continuous
+   accumulation.  Energy beyond m_e goes to momentum.  This
+   explains why threshold effects are invisible to standard
+   electron-beam experiments.
+
+3. **The neutrino sheet is the natural storage medium.**
+   Its large r_ν provides the dense ladder needed for
+   quasi-continuous accumulation and high-capacity encoding
+   (§13).
+
+4. **Threshold detection is a neutrino-sheet phenomenon.**
+   Reiter's anomalous coincidence rates (if real) must be
+   mediated by the neutrino sheet — the electron and proton
+   sheets cannot store the sub-threshold energy because
+   their mode ladders are too sparse.
+
+### The spin-filter question for internal excitations
+
+On the electron sheet, modes (1,3), (1,4), etc. are killed
+by the spin-statistics filter (fractional spin = 1/n₂ is
+forbidden for free particles).  But does this filter apply
+to INTERNAL excitations?
+
+A mode occupied as a storage state is not emitted as a free
+particle — it does not need valid asymptotic quantum
+numbers.  Virtual states in QFT routinely violate on-shell
+constraints.  If the spin filter applies only to external
+(propagating) states, then:
+
+- The neutrino sheet's dense ladder is unaffected (most
+  modes have valid spin at large r_ν anyway)
+- The electron sheet's intermediate modes (1,3), (1,4)...
+  MIGHT be accessible as transient excitations
+- The proton sheet's nuclear resonances might include
+  nominally "forbidden" spin states
+
+This distinction — free-particle filter vs. internal-
+excitation filter — is the deepest open question in the
+threshold/storage program.  R35 Track 3 (leakage rate)
+will probe it indirectly: if internal excitations are
+allowed, the leakage pathways are richer and the storage
+lifetime may be shorter.
+
+### Connection to R35
+
+The mode-density picture directly motivates R35:
+
+- **Track 1** (threshold statistics): models Reiter's
+  experiment as a pre-load / threshold process.  The pre-
+  load distribution P(E_pre) is shaped by the mode density
+  and storage lifetime.
+- **Track 3** (leakage rate): determines how long energy
+  persists in neutrino modes — the key to whether storage
+  is biologically relevant.
+- **Track 4** (coupling strength): the neutron-gateway
+  coupling mediates write/read to the neutrino sheet.
+
+The mode-density picture predicts that only the neutrino
+sheet contributes to Reiter's threshold channel.  If Track 1
+succeeds in reproducing Re/Rc with a physically motivated
+pre-load distribution, the threshold/storage hypothesis
+gains its first quantitative support from the T⁶ model.
