@@ -241,3 +241,100 @@ All neutrino modes have the same fractional energy shift
 from cross-shear (δE/E ∝ σ_eν², independent of n₃, n₄).
 All modes leak at the same rate.  Information encoded in
 mode PATTERNS is uniformly protected — no vulnerable modes.
+
+### F15. Protection is direction-independent (inside = outside)
+
+The three-layer protection applies equally to radiation
+originating INSIDE the neutrino domain (e.g., from the
+co-located cell nucleus):
+
+**Layer 1 (charge immunity):** topological, not spatial.
+Q = 0 is a property of the mode's winding numbers,
+independent of where the EM field originates.
+
+**Layer 2 (energy gap):** energetic, not directional.
+Sources inside the cell:
+
+| Source              | Energy    | Can reach e-sheet? |
+|---------------------|-----------|-------------------|
+| DNA chemistry       | 1–5 eV   | No (need MeV)     |
+| Metabolic (ATP)     | 0.1–1 eV | No                |
+| Thermal vibrations  | 27 meV   | No                |
+| K-40 decay          | 1.3 MeV  | Yes (but rare)    |
+
+K-40: ~1 decay per cell per 300 years.  Each decay ionizes
+~40,000 atoms.  With σ_eν² ≈ 10⁻⁴, that's ~4 ν-sheet
+disruptions per decay on a 10¹⁴-atom domain — negligible.
+
+**Layer 3 (collective):** no perimeter.  The domain is a
+volume (~42 μm), not a shell.  The nucleus (~5–10 μm) is
+fully embedded.  All atoms are equal members regardless
+of position.
+
+### F16. Shielding is symmetric: blocks reading equally
+
+On a flat T⁶, mode energies are properties of the GEOMETRY,
+not of which modes are occupied.  The neutrino-sheet quantum
+state does not affect any electron-sheet observable.  No R³
+measurement can detect the neutrino pattern.
+
+This means:
+- Writing is blocked (energy can't reach the ν-sheet)
+- Reading is blocked (ν-state doesn't affect observables)
+- Co-resonance is blocked (two cells with different ν-states
+  are electromagnetically identical)
+
+The flat T⁶ gives perfect retention + zero I/O.
+
+### F17. The elastic torus (Hypothesis I) breaks the symmetry
+
+If the neutrino-sheet occupation modulates the geometry
+(elastic torus, Q85 §8a), then the state DOES affect
+observables:
+
+    ν-state → δr_ν → δE_electron → δ(molecular vibrations)
+
+This bypasses all three protection layers because the
+mechanism is GEOMETRIC, not electromagnetic:
+
+- Charge immunity: irrelevant (geometry, not charge)
+- Energy gap: bypassed (geometry change is adiabatic,
+  no energy transfer across the MeV gap)
+- Collective: actually HELPS (10¹⁴ atoms shift together
+  → amplified geometric signal)
+
+Both writing and reading become possible through the
+same geometric channel:
+
+**Writing:** molecular forces → geometry change →
+  ν-state change.  Biochemistry inside the cell directly
+  modulates the torus shape.
+
+**Reading (co-resonance):** ν-state → geometry →
+  molecular vibration spectrum.  Two cells with the same
+  ν-pattern have matching vibration frequencies → resonance.
+  Different patterns → frequency mismatch → no resonance.
+  Operates at meV molecular scale; MeV gap irrelevant.
+
+**Asymmetry:** writing requires energy input from
+  biochemistry (active, inside the cell).  Reading is
+  passive (sympathetic resonance, can cross cell
+  boundaries).  This gives exactly the architecture a
+  biological storage system needs: active internal write,
+  passive external read, shielded from noise.
+
+### F18. The Goldilocks parameter shifts
+
+In the flat T⁶, the Goldilocks tradeoff was:
+  σ_eν large → fast I/O but short lifetime
+  σ_eν small → long lifetime but no I/O
+
+In the elastic torus, the tradeoff shifts to the metric
+stiffness K (compliance of the torus geometry):
+  K small (stiff) → good retention, slow I/O
+  K large (floppy) → fast I/O, noisy retention
+
+The stiffness K replaces σ_eν as the master parameter.
+Computing K requires the moduli potential of the T⁶
+geometry — connected to the moduli stabilization problem
+in string theory (Q85 §8a).

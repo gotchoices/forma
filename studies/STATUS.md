@@ -119,14 +119,16 @@ interference on the torus as the bidirectional mechanism.
 (Q85 §14): threshold "continuity" is mode-hopping on the neutrino
 sheet's dense ladder.  Track 1 (COMPLETE, F1–F7): Cd-109 Re/Rc = 33
 reproduced via SCA upper-limit mechanism.  Na-22 Re/Rc ≈ 963 constrains
-pre-load distribution.  Track 3 (COMPLETE, F8–F14): neutrino modes are
-EXACTLY uncharged (topological, F8), Γ_EM = 0.  Cross-shear doesn't
-mix modes on flat T⁶ (F9).  Naive thermal model: τ ~ 12 days at
-σ_eν = 0.01 (F11).  But actual thermal pathway requires bridging a
-MeV gap — exponentially suppressed (F12).  True lifetime potentially
-geological.  Three-layer protection: charge immunity + energy gap +
-collective averaging (F13).  Track 2: deferred (needs Track 4).
-Track 4: neutron-gateway coupling (Goldilocks).
+pre-load distribution.  Track 3 (COMPLETE, F8–F18): neutrino modes are
+EXACTLY uncharged (topological, F8), Γ_EM = 0.  Three-layer
+protection (charge + MeV gap + collective) is direction-independent
+— blocks internal radiation equally (F15).  Shielding is SYMMETRIC:
+also blocks reading / co-resonance on flat T⁶ (F16).  The elastic
+torus (Hypothesis I) resolves the I/O problem: geometric modulation
+bypasses all three layers, giving active internal write + passive
+external read while maintaining noise protection (F17).  Goldilocks
+parameter shifts from σ_eν to metric stiffness K (F18).  Track 2:
+deferred.  Track 4: neutron-gateway coupling.
 
 ### R36. Geometric tilt — α from T²/R³ embedding without KK  **Complete**
 **Study:** [`geometric-tilt/`](geometric-tilt/)

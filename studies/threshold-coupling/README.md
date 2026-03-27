@@ -197,14 +197,19 @@ metric.
 **Result (Complete):** Neutrino modes are EXACTLY uncharged
 (Q = 0, topological) — Γ_EM = 0 to all orders in σ_eν (F8).
 Cross-shear shifts energies (δE/E ∝ σ_eν²) but does NOT mix
-modes on a flat T⁶ (F9).  Coupling to electron modes is tiny
-(c_mix ~ 10⁻⁹) due to the 10⁷ energy gap (F10).  Naive thermal
-model gives τ ~ 12 days (σ_eν = 0.01) to 3.2 years (σ_eν = 0.001)
-with 1/N_atoms collective protection (F11).  BUT the actual
-thermal pathway (R³ → electron T² → σ_eν → neutrino T²) requires
-bridging a MeV gap with meV thermal energy — exponentially
-suppressed (F12).  True storage lifetime may be far longer than
-the naive estimate.  See findings F8–F14.
+modes on a flat T⁶ (F9).  Naive thermal model gives τ ~ 12 days
+(σ_eν = 0.01) to 3.2 years (σ_eν = 0.001) with collective
+protection (F11).  The actual thermal pathway requires bridging
+a MeV gap — exponentially suppressed (F12).  Three-layer
+protection (charge + gap + collective) is direction-independent:
+radiation from inside the cell (K-40, chemistry) is equally
+blocked (F15).  Crucially, the shielding blocks READING equally —
+on a flat T⁶, the ν-state doesn't affect any observable (F16).
+The elastic torus (Hypothesis I) resolves this: geometric
+modulation bypasses all three layers, enabling active internal
+write + passive external read (co-resonance) while maintaining
+noise protection (F17).  The Goldilocks parameter shifts from
+σ_eν to metric stiffness K (F18).  See findings F8–F18.
 
 ---
 
