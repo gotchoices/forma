@@ -2,15 +2,15 @@
 """
 R30 Track 6: Shared-dimension T³ — can electron and proton share a surface?
 
-Build a T³ solver (3 compact dimensions, 3 shears) and test whether
-the particle spectrum can be reproduced with fewer dimensions than T⁶.
+Build a T³ solver (3 material dimensions, 3 shears) and test whether
+the particle spectrum can be reproduced with fewer dimensions than Ma.
 
 Dimensions:
     A — electron tube-like (large, ~400 fm)
     B — shared dimension (free parameter)
     C — proton ring-like (small, ~0.2 fm)
 
-Charge: Q = -n_a + n_c  (analogous to T⁶'s Q = -n₁ + n₅)
+Charge: Q = -n_a + n_c  (analogous to Ma's Q = -n₁ + n₅)
 Spin:   count odd |n_a|, |n_c|  (A and C are "tube-like")
 
 Key question: does T³ reproduce e, p, n, μ, π, K with correct
@@ -22,9 +22,9 @@ import numpy as np
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 
-from lib.t6 import hbar_c_MeV_fm, M_E_MEV, M_P_MEV, M_N_MEV, ALPHA
-from lib.t6 import solve_shear_for_alpha
-from lib.t6_solver import self_consistent_metric
+from lib.ma import hbar_c_MeV_fm, M_E_MEV, M_P_MEV, M_N_MEV, ALPHA
+from lib.ma import solve_shear_for_alpha
+from lib.ma_solver import self_consistent_metric
 
 TWO_PI_HC = 2 * math.pi * hbar_c_MeV_fm
 
@@ -34,7 +34,7 @@ TWO_PI_HC = 2 * math.pi * hbar_c_MeV_fm
 # ══════════════════════════════════════════════════════════════════
 
 def t3_metric(L_a, L_b, L_c, s_ab=0.0, s_bc=0.0, s_ac=0.0):
-    """Build T³ scaled metric and inverse, analogous to T⁶."""
+    """Build T³ scaled metric and inverse, analogous to Ma."""
     L = np.array([L_a, L_b, L_c])
 
     S = np.zeros((3, 3))
@@ -240,7 +240,7 @@ print()
 print("  Affected particles: neutron, Λ, K⁰, π⁰, η, η′")
 print("  (any neutral particle with spin ½ or where spin ½ is needed)")
 print()
-print("  In T⁶, the neutron gets spin ½ from the NEUTRINO tube (n₃=1).")
+print("  In Ma, the neutron gets spin ½ from the NEUTRINO tube (n₃=1).")
 print("  This third tube dimension is the structural escape hatch.")
 print()
 
@@ -279,13 +279,13 @@ print()
 
 print("  Option 3: Q = -n_a + n_c (keep), spin from A only when")
 print("    n_a ≠ 0, spin from C only when n_c ≠ 0")
-print("    This is ad hoc and breaks the clean T⁶ structure.")
+print("    This is ad hoc and breaks the clean Ma structure.")
 print()
 
 print("  Option 4: Add a fourth dimension (neutrino tube)")
 print("    T⁴ = (A, B, C, D) where D is the neutrino tube")
 print("    D provides the odd winding for neutral spin-½ particles")
-print("    This is T³ × T¹ — 4 compact dimensions instead of 6.")
+print("    This is T³ × T¹ — 4 material dimensions instead of 6.")
 print("    Spin = (|n_a| % 2) + (|n_d| % 2) + (|n_c| % 2)")
 print("    Neutron: (0, n_b, 0, 1): Q = 0+0 = 0, spin = 0+1+0 = 1 → ½  ✓")
 print("    But this mode has no n_c winding → energy only from B and D")
@@ -306,7 +306,7 @@ else:
     _, Gti, L = t3_metric(L_a, L_b, L_c)
 
     print(f"  L_a = {L_a:.1f} fm,  L_b = {L_b:.0f} fm,  L_c = {L_c:.4f} fm")
-    print(f"  (cf. T⁶: L₁ = 32209 fm, L₂ = 4880 fm, L₅ = 23.7 fm, L₆ = 2.66 fm)")
+    print(f"  (cf. Ma: L₁ = 32209 fm, L₂ = 4880 fm, L₅ = 23.7 fm, L₆ = 2.66 fm)")
     print()
     print(f"  {'Particle':>8s} {'Mass':>8s} {'Q':>3s} {'S':>3s}"
           f" {'Mode':>14s} {'E_mode':>10s} {'Gap':>8s} {'Spin OK':>8s}")
@@ -363,7 +363,7 @@ for name, mass, Q, spin, desc in PARTICLES:
 
 # ── Section 6: Ghost mode count comparison ───────────────────────
 
-print("\n\n── Section 6: Ghost mode count — T³ vs T⁶ ──\n")
+print("\n\n── Section 6: Ghost mode count — T³ vs Ma ──\n")
 
 # Count T³ modes below 2 GeV
 t3_modes = set()
@@ -379,8 +379,8 @@ for na in range(-15, 16):
                 t3_modes.add((round(E, 1), Q, t3_spin(n)))
 
 print(f"  T³ modes below 2 GeV (|Q| ≤ 2, n_max=15): {len(t3_modes)}")
-print(f"  T⁶ modes below 2 GeV (R28 Track 2):       ~29,000 (raw)")
-print(f"  T⁶ modes below 2 GeV (degenerate removed): ~900")
+print(f"  Ma modes below 2 GeV (R28 Track 2):       ~29,000 (raw)")
+print(f"  Ma modes below 2 GeV (degenerate removed): ~900")
 print()
 
 # Cluster by energy
@@ -397,21 +397,21 @@ for E in energies_t3:
         bands_t3.append([E])
 
 print(f"  T³ energy bands below 2 GeV: {len(bands_t3)}")
-print(f"  T⁶ energy bands below 2 GeV: ~48")
+print(f"  Ma energy bands below 2 GeV: ~48")
 print()
-print(f"  T³/T⁶ mode ratio: {len(t3_modes)/900:.1f}× "
+print(f"  T³/Ma mode ratio: {len(t3_modes)/900:.1f}× "
       f"({'fewer' if len(t3_modes) < 900 else 'more'} ghosts)")
 
 
-# ── Section 7: Comparison to T⁶ ─────────────────────────────────
+# ── Section 7: Comparison to Ma ─────────────────────────────────
 
-print("\n\n── Section 7: T⁶ reference (for comparison) ──\n")
+print("\n\n── Section 7: Ma reference (for comparison) ──\n")
 
 sc = self_consistent_metric(6.6, 5.0, 8.906, sigma_ep=-0.09064)
 Gti6 = sc['Gtilde_inv']
 L6 = sc['L']
 
-from lib.t6 import mode_energy as t6_energy, mode_charge as t6_charge, mode_spin as t6_spin
+from lib.ma import mode_energy as ma_energy, mode_charge as ma_charge, mode_spin as ma_spin
 
 t6_particles = [
     ("e⁻",   0.511,    -1, 1, (1, 2, 0, 0, 0, 0)),
@@ -422,13 +422,13 @@ t6_particles = [
     ("K⁺",   493.677,  +1, 0, None),
 ]
 
-print(f"  {'Particle':>8s} {'T⁶ gap':>10s} {'T³ gap (mass)':>14s} {'T³ spin':>10s}")
+print(f"  {'Particle':>8s} {'Ma gap':>10s} {'T³ gap (mass)':>14s} {'T³ spin':>10s}")
 print(f"  {'─'*46}")
 
 for name, mass, Q, spin, t6_mode in t6_particles:
-    # T⁶ gap
+    # Ma gap
     if t6_mode:
-        E6 = t6_energy(t6_mode, Gti6, L6)
+        E6 = ma_energy(t6_mode, Gti6, L6)
         gap6 = abs(mass - E6) / mass * 100
     else:
         gap6 = None
@@ -467,7 +467,7 @@ print("  2. SPIN BREAKS: Q = 0 requires n_a = n_c → same parity →")
 print("     spin count always 0 or 2, never 1.  No spin-½ neutral")
 print("     particle exists in T³.  The NEUTRON cannot have spin ½.")
 print()
-print("  3. In T⁶, the neutrino tube (dim 3) provides the odd winding")
+print("  3. In Ma, the neutrino tube (dim 3) provides the odd winding")
 print("     for neutral spin-½ particles.  This is a STRUCTURAL")
 print("     necessity — not just parametric convenience.")
 print()
@@ -475,7 +475,7 @@ print("  4. T³ needs at least one more 'tube' dimension to escape")
 print("     the spin constraint.  The minimal extension is T⁴")
 print("     (= T³ × T¹) with a neutrino tube dimension.")
 print()
-print("  5. Conclusion: the neutrino compact dimension is structurally")
+print("  5. Conclusion: the neutrino material dimension is structurally")
 print("     required for the neutron's spin.  The electron-proton")
 print("     surface CAN be shared (T³), but the neutrino dimension")
-print("     cannot be eliminated.  Minimum: T⁴ = 4 compact dimensions.")
+print("     cannot be eliminated.  Minimum: T⁴ = 4 material dimensions.")

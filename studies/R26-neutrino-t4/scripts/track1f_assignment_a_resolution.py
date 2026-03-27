@@ -269,13 +269,13 @@ def main():
 
   The correct choice follows from the physics:
 
-  1. The photon lives on the FLAT T² surface.  Its E-field is governed
+  1. The photon lives on the FLAT material sheet surface.  Its E-field is governed
      by Maxwell's equations on this flat 2D manifold.
 
   2. On a flat manifold, parallel transport is trivial: a vector's
      coordinate components (in θ₃, θ₄) are constant along any path.
 
-  3. The polarization of a circularly polarized photon on flat T²
+  3. The polarization of a circularly polarized photon on the flat material sheet
      rotates at a rate determined by the wavelength — one full rotation
      per λ.  This rotation has constant rate in the coordinate basis.
 
@@ -407,7 +407,7 @@ def main():
     # SECTION 7: Cross-plane coupling — can it change spin?
     # ================================================================
     print("\n" + "=" * 76)
-    print("SECTION 7: Cross-plane coupling on T⁶")
+    print("SECTION 7: Cross-plane coupling on Ma")
     print("=" * 76)
 
     m_e = 0.511e6  # meV
@@ -416,9 +416,9 @@ def main():
 
     print(f"""
   Original Track 1f question: can cross-plane shear mixing with
-  electron T² modes convert (1,1) spin?
+  electron material sheet modes convert (1,1) spin?
 
-  The mixing amplitude between a neutrino-T² mode and an electron-T²
+  The mixing amplitude between a neutrino material sheet mode and an electron material sheet
   mode scales as:
 
     |⟨ν|H_cross|e⟩|/E ~ s_cross × (m_ν/m_e)²
@@ -496,14 +496,14 @@ def main():
   3. FREE PARAMETER: ε (= r = a/R) remains a free parameter.  It must
      be ≳ {eps_min:.1f} for cosmology but is otherwise unconstrained by
      Track 1 alone.  Fixing it requires either:
-     - Matching to the electron's ε (if all T²s share the same shape)
+     - Matching to the electron's ε (if all material sheets share the same shape)
      - Deriving from Track 4's over-determination analysis
      - Experimental measurement of Σm_ν
 
   CONCLUSION: Track 1 is complete.  Assignment A — modes (1,1), (−1,1),
-  (1,2) on the neutrino T² — passes all tests at ε ≳ {eps_min:.1f}.
+  (1,2) on the neutrino material sheet — passes all tests at ε ≳ {eps_min:.1f}.
   Assignment B fails on five independent grounds.
-  The neutrino T² model is viable.  Proceed to Track 2 (proton).
+  The neutrino material sheet model is viable.  Proceed to Track 2 (proton).
 """)
 
 

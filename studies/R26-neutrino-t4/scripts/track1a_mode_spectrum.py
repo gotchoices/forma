@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """
-R26 Track 1a: Neutrino T² mode spectrum.
+R26 Track 1a: Neutrino material sheet mode spectrum.
 
-Computes the full mode spectrum on the neutrino T² for both Assignment A
+Computes the full mode spectrum on the neutrino material sheet (Ma_ν) for both Assignment A
 and Assignment B.  Verifies the mass-squared ratio Δm²₃₁/Δm²₂₁ = 33.6,
 catalogs all modes below 1 eV, and compares Σm with the cosmological bound.
 
 ENERGY FORMULA
 ==============
-On the neutrino T² with circumferences L₃, L₄ and shear s = s₃₄:
+On the neutrino material sheet with circumferences L₃, L₄ and shear s = s₃₄:
 
   E(n₃, n₄) = ℏc √((n₃/L₃)² + ((n₄ − n₃·s)/L₄)²)
 
@@ -141,7 +141,7 @@ def print_modes(modes, label, max_show=40):
 
 def main():
     print("=" * 76)
-    print("R26 Track 1a: Neutrino T² Mode Spectrum")
+    print("R26 Track 1a: Neutrino Material Sheet Mode Spectrum")
     print("=" * 76)
 
     # ================================================================

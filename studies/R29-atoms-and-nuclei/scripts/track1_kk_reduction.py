@@ -1,29 +1,29 @@
 #!/usr/bin/env python3
 """
-R29 Track 1: KK reduction of T⁶ × R³ — deriving the Coulomb interaction.
+R29 Track 1: Kaluza-Klein reduction of Ma × R³ — deriving the Coulomb interaction.
 
-The 9D wave equation on T⁶ × R³, expanded in T⁶ eigenmodes, gives a
+The 9D wave equation on Ma × R³, expanded in Ma eigenmodes, gives a
 tower of 4D fields.  The massless zero mode mediates the 1/r Coulomb
 potential; massive KK modes give Yukawa corrections exp(-m r)/r.
 
 This script:
-  1. Computes the T⁶ mode spectrum (KK tower)
+  1. Computes the Ma mode spectrum (KK tower)
   2. Builds the effective 4D potential V(r) = Σ_n C_n exp(-m_n r) / r
   3. Identifies the zero mode → Coulomb coupling → α
   4. Evaluates Yukawa corrections at the Bohr radius
   5. Checks whether corrections depend on r_e (→ constrain R15)
 
 Physics summary:
-  The Green's function of the 9D Laplacian on T⁶ × R³ is:
-    G₉(x,θ; x',θ') = (1/V_T⁶) Σ_n φ_n(θ) φ_n*(θ') G₃(|x-x'|; m_n)
-  where φ_n are T⁶ eigenmodes, m_n = E_n/c², and
+  The Green's function of the 9D Laplacian on Ma × R³ is:
+    G₉(x,θ; x',θ') = (1/V_Ma) Σ_n φ_n(θ) φ_n*(θ') G₃(|x-x'|; m_n)
+  where φ_n are Ma eigenmodes, m_n = E_n/c², and
     G₃(r; m) = exp(-m r) / (4π r)     (massive 3D propagator)
     G₃(r; 0) = 1 / (4π r)             (Coulomb)
 
   The interaction between two modes ψ_a and ψ_b at separation d is:
     V(d) = g² Σ_n |<ψ_a|φ_n|ψ_b>|² exp(-m_n d) / (4π d)
 
-  For T⁶ plane waves, <a|n|b> = δ_{n, a-b}, so only one KK mode
+  For Ma plane waves, <a|n|b> = δ_{n, a-b}, so only one KK mode
   contributes: the mode with quantum numbers n = n_a - n_b.
 """
 
@@ -34,12 +34,12 @@ import numpy as np
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 
-from lib.t6 import (
+from lib.ma import (
     compute_scales, build_scaled_metric, mode_energy,
-    alpha_kk, solve_shear_for_alpha, mu_12,
+    alpha_ma, solve_shear_for_alpha, mu_12,
     ALPHA, M_E_MEV, M_P_MEV, hbar_c_MeV_fm,
 )
-from lib.t6_solver import self_consistent_metric
+from lib.ma_solver import self_consistent_metric
 
 R_P = 8.906
 SIGMA_EP = -0.09064
@@ -57,9 +57,9 @@ def section(n, title):
 def main():
 
     # ══════════════════════════════════════════════════════════════════
-    #  Section 1: T⁶ geometry at the pinned point
+    #  Section 1: Ma geometry at the pinned point
     # ══════════════════════════════════════════════════════════════════
-    section(1, "T⁶ geometry and scale hierarchy")
+    section(1, "Ma geometry and scale hierarchy")
 
     r_e_values = [3.0, 5.0, 6.6, 10.0, 20.0]
     r_nu = 5.0
@@ -71,8 +71,8 @@ def main():
         L = sc['L']
         s_e = solve_shear_for_alpha(r_e)
         s_p = solve_shear_for_alpha(R_P)
-        alpha_e = alpha_kk(r_e, s_e)
-        alpha_p = alpha_kk(R_P, s_p)
+        alpha_e = alpha_ma(r_e, s_e)
+        alpha_p = alpha_ma(R_P, s_p)
 
         R_e_tube = L[0] / (2 * math.pi)
         R_e_ring = L[1] / (2 * math.pi)
@@ -95,7 +95,7 @@ def main():
     # ══════════════════════════════════════════════════════════════════
     #  Section 2: KK decomposition — mode-exchange interaction
     # ══════════════════════════════════════════════════════════════════
-    section(2, "KK mode exchange between electron and proton")
+    section(2, "Ma mode exchange between electron and proton")
 
     r_e = 6.6
     sc = self_consistent_metric(r_e, r_nu, R_P, sigma_ep=SIGMA_EP)
@@ -117,9 +117,9 @@ def main():
     print(f"    m = E/c² → Yukawa range = ℏc/E = {hbar_c_MeV_fm / E_diff:.2f} fm")
     print()
 
-    print("  In KK theory, the interaction between modes ψ_a and ψ_b")
+    print("  In Kaluza-Klein theory, the interaction between modes ψ_a and ψ_b")
     print("  at separation d in R³ involves exchange of KK modes.")
-    print("  For plane waves on T⁶, momentum conservation gives:")
+    print("  For plane waves on Ma, momentum conservation gives:")
     print("    <ψ_a|φ_n|ψ_b> = δ(n, n_a - n_b)")
     print("  So only the mode n = n_a - n_b contributes.")
     print()
@@ -141,11 +141,11 @@ def main():
 
     print("  The Coulomb 1/r potential comes not from exchanging the")
     print("  specific mode (n_a - n_b), but from the ZERO MODE of the")
-    print("  gauge field that lives on T⁶ × R³.")
+    print("  gauge field that lives on Ma × R³.")
     print()
-    print("  In KK theory, the 9D metric g_{MN} contains off-diagonal")
-    print("  components g_{μi} (μ = R³ index, i = T⁶ index).  These")
-    print("  are the gauge fields A^i_μ.  For T⁶ with 6 dimensions,")
+    print("  In Kaluza-Klein theory, the 9D metric g_{MN} contains off-diagonal")
+    print("  components g_{μi} (μ = R³ index, i = Ma index).  These")
+    print("  are the gauge fields A^i_μ.  For Ma with 6 dimensions,")
     print("  there are 6 independent U(1) gauge fields.")
     print()
     print("  A charged particle (mode with n_i ≠ 0 in direction i)")
@@ -162,19 +162,19 @@ def main():
     print("    Both couple to A^EM with charge ∓1")
     print()
 
-    print("  The gauge coupling g² is determined by the T⁶ geometry.")
-    print("  In standard KK on a circle of circumference L:")
+    print("  The gauge coupling g² is determined by the Ma geometry.")
+    print("  In standard Kaluza-Klein on a circle of circumference L:")
     print("    g² = (4π G_D) / L")
     print("  where G_D is the higher-dimensional gravitational constant.")
     print()
     print("  In our model, α is determined by the shear mechanism (R19):")
     s_e = solve_shear_for_alpha(r_e)
     s_p = solve_shear_for_alpha(R_P)
-    print(f"    α(r_e={r_e}, s_e={s_e:.6f}) = {alpha_kk(r_e, s_e):.6f}")
-    print(f"    α(r_p={R_P}, s_p={s_p:.6f}) = {alpha_kk(R_P, s_p):.6f}")
+    print(f"    α(r_e={r_e}, s_e={s_e:.6f}) = {alpha_ma(r_e, s_e):.6f}")
+    print(f"    α(r_p={R_P}, s_p={s_p:.6f}) = {alpha_ma(R_P, s_p):.6f}")
     print(f"    Target: α = {ALPHA:.6f}")
     print()
-    print("  Both T² sheets independently give α = 1/137.")
+    print("  Both material sheets independently give α = 1/137.")
     print("  The Coulomb potential between e and p is:")
     print(f"    V(r) = -α ℏc / r = -{ALPHA * hbar_c_MeV_fm:.4f} / r  MeV·fm")
 
@@ -184,8 +184,8 @@ def main():
     section(4, "Yukawa corrections from massive KK gauge bosons")
 
     print("  The massive KK modes of the gauge field have masses")
-    print("  determined by the compact circumferences.  The lightest")
-    print("  massive gauge mode in each T² has mass ~ 2πℏc/L.\n")
+    print("  determined by the material dimensions.  The lightest")
+    print("  massive gauge mode in each material sheet has mass ~ 2πℏc/L.\n")
 
     for r_e in r_e_values:
         sc = self_consistent_metric(r_e, r_nu, R_P, sigma_ep=SIGMA_EP)
@@ -218,9 +218,9 @@ def main():
         print()
 
     # ══════════════════════════════════════════════════════════════════
-    #  Section 5: Hydrogen ground state from T⁶ × R³
+    #  Section 5: Hydrogen ground state from Ma × R³
     # ══════════════════════════════════════════════════════════════════
-    section(5, "Hydrogen ground state from T⁶ geometry")
+    section(5, "Hydrogen ground state from Ma geometry")
 
     print("  With V(r) = -α ℏc / r + Yukawa corrections, the hydrogen")
     print("  ground state energy is:")
@@ -247,17 +247,17 @@ def main():
     print(f"  Radius error: {err_a:+.4f}%")
     print()
 
-    print("  The T⁶ model reproduces hydrogen because:")
-    print("  1. Particle masses (m_e, m_p) are inputs to the T⁶ model")
+    print("  The Ma model reproduces hydrogen because:")
+    print("  1. Particle masses (m_e, m_p) are inputs to the Ma model")
     print("  2. α = 1/137 is derived from shear (R19)")
-    print("  3. The Coulomb potential follows from KK gauge mechanism")
+    print("  3. The Coulomb potential follows from Kaluza-Klein gauge mechanism")
     print("  4. Hydrogen = Schrödinger equation with Coulomb potential")
     print()
     print("  What is NEW:")
-    print("  - The chain T⁶ geometry → charges → Coulomb → hydrogen is")
+    print("  - The chain Ma geometry → charges → Coulomb → hydrogen is")
     print("    complete.  No separate 'electromagnetic force' is assumed.")
     print("  - Yukawa corrections from massive KK modes are specific")
-    print("    predictions of the T⁶ geometry.")
+    print("    predictions of the Ma geometry.")
 
     # ══════════════════════════════════════════════════════════════════
     #  Section 6: r_e sensitivity of corrections
@@ -265,7 +265,7 @@ def main():
     section(6, "Can atomic spectra constrain r_e?")
 
     print("  The dominant Yukawa correction comes from the electron")
-    print("  tube dimension (largest compact circumference besides")
+    print("  tube dimension (largest material circumference besides")
     print("  the neutrino dimensions).")
     print()
     print(f"  {'r_e':>6s}  {'L₁ (fm)':>12s}  {'Yuk factor':>12s}  "
@@ -295,11 +295,11 @@ def main():
     print("  to ~ 10⁻⁶ of the ground state energy.")
 
     # ══════════════════════════════════════════════════════════════════
-    #  Section 7: The 6 gauge fields of T⁶
+    #  Section 7: The 6 gauge fields of Ma
     # ══════════════════════════════════════════════════════════════════
-    section(7, "Gauge field census of T⁶")
+    section(7, "Gauge field census of Ma")
 
-    print("  KK on T⁶ gives 6 U(1) gauge fields A^i_μ (i = 1..6).")
+    print("  Kaluza-Klein on Ma gives 6 U(1) gauge fields A^i_μ (i = 1..6).")
     print("  Each mode (n₁,...,n₆) has charges (n₁,...,n₆) under")
     print("  these gauge fields.\n")
 
@@ -315,7 +315,7 @@ def main():
     print("  EM combination: A^EM = -A^1 + A^5  (gives Q = -n₁ + n₅)")
     print()
 
-    print("  Gauge boson masses from compact circumferences:")
+    print("  Gauge boson masses from material circumferences:")
     r_e = 6.6
     sc = self_consistent_metric(r_e, r_nu, R_P, sigma_ep=SIGMA_EP)
     L = sc['L']
@@ -356,16 +356,16 @@ def main():
     # ══════════════════════════════════════════════════════════════════
     section(8, "Summary")
 
-    print("  1. The Coulomb interaction between T⁶ modes arises from")
-    print("     the KK gauge field mechanism.  The gauge fields are")
+    print("  1. The Coulomb interaction between Ma modes arises from")
+    print("     the Kaluza-Klein gauge field mechanism.  The gauge fields are")
     print("     the off-diagonal components of the 9D metric g_{μi}.")
     print()
     print("  2. The EM gauge field is A^EM = -A^1 + A^5, giving")
     print("     charge Q = -n₁ + n₅ — matching our mode_charge formula.")
     print()
     print("  3. The coupling constant α = 1/137 is determined by the")
-    print("     shear mechanism (R19) on each T² independently.")
-    print("     Both the electron and proton T² sheets give the same α.")
+    print("     shear mechanism (R19) on each material sheet independently.")
+    print("     Both the electron and proton material sheets give the same α.")
     print()
     print("  4. The hydrogen ground state follows: E₁ = -13.6 eV,")
     print("     a₀ = 0.529 Å — no free parameters used.")
@@ -376,7 +376,7 @@ def main():
     print("     but is too small to constrain r_e with current")
     print("     spectroscopic precision (for r_e < ~50).")
     print()
-    print("  6. T⁶ predicts 6 gauge fields.  The proton-tube gauge")
+    print("  6. Ma predicts 6 gauge fields.  The proton-tube gauge")
     print("     boson has mass ~52 MeV and range ~3.8 fm — a natural")
     print("     candidate for the nuclear binding force.")
     print()

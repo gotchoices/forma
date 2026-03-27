@@ -26,8 +26,8 @@ import numpy as np
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 
-from lib.t6 import (
-    alpha_kk, hbar_c_MeV_fm, M_E_MEV, M_P_MEV, ALPHA,
+from lib.ma import (
+    alpha_ma, hbar_c_MeV_fm, M_E_MEV, M_P_MEV, ALPHA,
 )
 
 TWO_PI_HC = 2 * math.pi * hbar_c_MeV_fm
@@ -257,7 +257,7 @@ print("      for electromagnetism")
 print()
 print("  CONCLUSION: The Klein bottle structurally CANNOT support")
 print("  the U(1) gauge field that produces electric charge.")
-print("  Non-orientability is incompatible with the KK charge")
+print("  Non-orientability is incompatible with the Ma charge")
 print("  mechanism.")
 
 
@@ -359,7 +359,7 @@ print("  The α = 1/137 constraint defines a CURVE in (r, s) space:\n")
 print(f"    {'r':>8s} {'s':>10s} {'r²s²':>10s}")
 print(f"    {'─'*30}")
 
-from lib.t6 import solve_shear_for_alpha
+from lib.ma import solve_shear_for_alpha
 
 extended_solve = None
 try:
@@ -371,10 +371,10 @@ try:
             np.linspace(1e-4, 0.01, 500),
             np.linspace(0.01, 0.49, 2000),
         ])
-        a_scan = [alpha_kk(r, s) for s in s_scan]
+        a_scan = [alpha_ma(r, s) for s in s_scan]
         for i in range(len(s_scan) - 1):
             if (a_scan[i] - ALPHA) * (a_scan[i + 1] - ALPHA) < 0:
-                return brentq(lambda s: alpha_kk(r, s) - ALPHA,
+                return brentq(lambda s: alpha_ma(r, s) - ALPHA,
                               s_scan[i], s_scan[i + 1])
         return None
 except ImportError:
@@ -486,7 +486,7 @@ print("     Non-orientability prevents:")
 print("     (a) Consistent Gauss flux → no U(1) charge")
 print("     (b) Odd tube winding → no spin-½")
 print("     The KK gauge field becomes Z₂ (sign-flip), not U(1).")
-print("     Non-orientable compact spaces are ruled out.")
+print("     Non-orientable material spaces are ruled out.")
 print()
 print("  2. THE TORUS (T²) IS THE MINIMUM ORIENTABLE COMPACT SURFACE.")
 print("     Compact + orientable + 2D → T² is the unique choice.")

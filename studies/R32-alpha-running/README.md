@@ -300,7 +300,7 @@ The α formula decomposes as:
 
 But the shear s is NOT independently determined.  It is
 reverse-engineered from the requirement that α = 1/137
-(via `solve_shear_for_alpha(r)` in lib/t6.py).  So the
+(via `solve_shear_for_alpha(r)` in lib/ma.py).  So the
 formula is a tautology for computing α: it takes α as input
 (through s) and returns α as output.
 

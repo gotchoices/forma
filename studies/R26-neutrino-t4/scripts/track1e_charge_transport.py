@@ -126,7 +126,7 @@ def compute_charge_geometric(p, q, R, a, N=20000):
     # extrinsic curvature that rotates the (n̂, ŝ) frame.
     #
     # We compute the rotation angle by tracking how n̂ rotates relative
-    # to a parallel-transported frame.  On the flat T², a parallel-
+    # to a parallel-transported frame.  On the flat material sheet, a parallel-
     # transported vector has CONSTANT components in (ê₃, ê₄) coordinates.
     # So the geometric phase = rotation of n̂ relative to fixed (ê₃, ê₄).
 
@@ -315,7 +315,7 @@ def main():
     # SECTION 4: Implications for neutrino modes
     # ================================================================
     print("\n" + "=" * 76)
-    print("SECTION 4: Implications for the neutrino T²")
+    print("SECTION 4: Implications for the neutrino material sheet")
     print("=" * 76)
 
     print("""
@@ -330,8 +330,8 @@ def main():
      the surface normal makes exactly p full rotations per circuit,
      and the wave makes exactly 1 rotation.  These match only for p = 1.
 
-  3. For the neutrino T²:
-     - (1,2) modes (p = 1): CHARGED — they carry the neutrino T²'s
+  3. For the neutrino material sheet:
+     - (1,2) modes (p = 1): CHARGED — they carry the neutrino Ma_ν's
        gauge charge (weak charge, not electromagnetic)
      - (3,2), (5,2), (17,2) modes (p > 1): UNCHARGED — no net flux
      - (1,1), (−1,1) modes (p = 1): CHARGED
@@ -341,8 +341,8 @@ def main():
      The transport law does not change which modes carry charge.
 
   5. For Assignment A: modes (1,1), (−1,1), (1,2) ALL have p = 1
-     → all charged on the neutrino T².  This is consistent: the
-     neutrino T²'s charge is a weak-sector quantity, and all three
+     → all charged on the neutrino material sheet.  This is consistent: the
+     neutrino Ma_ν's charge is a weak-sector quantity, and all three
      neutrino mass eigenstates should couple to the weak interaction.
 
   6. For Assignment B: modes (1,2), (3,2), (17,2) have p = 1, 3, 17.
@@ -369,7 +369,7 @@ def main():
      between the wave phase and the surface normal rotation.
 
   3. Assignment A modes: (1,1), (−1,1), (1,2) — all p = 1 — all
-     carry the neutrino T²'s gauge charge.  They couple to weak
+     carry the neutrino Ma_ν's gauge charge.  They couple to weak
      interactions.  ✓
 
   4. Assignment B modes: (1,2), (3,2), (17,2) — p = 1, 3, 17 —

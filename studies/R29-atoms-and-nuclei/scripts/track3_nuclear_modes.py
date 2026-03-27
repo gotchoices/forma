@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
-R29 Track 3: Light nuclei as T⁶ modes.
+R29 Track 3: Light nuclei as Ma modes.
 
-The neutron was predicted as a single T⁶ mode, not derived from a
+The neutron was predicted as a single Ma mode, not derived from a
 proton-electron binding force.  This track applies the same approach
-to nuclei: can stable nuclei be found as modes of the T⁶ compact space?
+to nuclei: can stable nuclei be found as modes of the Ma material space?
 
 For each target nucleus, we search the full quantum number space
-for the T⁶ mode with matching charge and spin closest in energy.
+for the Ma mode with matching charge and spin closest in energy.
 
 Targets include all stable light nuclei up to ¹⁶O, plus a few
 heavier benchmarks.
@@ -20,8 +20,8 @@ import numpy as np
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 
-from lib.t6_solver import self_consistent_metric
-from lib.t6 import (
+from lib.ma_solver import self_consistent_metric
+from lib.ma import (
     mode_energy, mode_charge, mode_spin,
     M_P_MEV, M_E_MEV, M_N_MEV,
 )
@@ -77,7 +77,7 @@ NUCLEI = [
 def find_nearest_mode(target_mass, target_charge, target_spin,
                       Gti, L, n_max=12):
     """
-    Find the T⁶ mode closest to target_mass with matching charge and spin.
+    Find the Ma mode closest to target_mass with matching charge and spin.
 
     Charge = -n₁ + n₅ (must match exactly).
     Spin = count of odd tube windings among n₁, n₃, n₅ (must match).
@@ -142,7 +142,7 @@ def main():
     # ── Section 1: Energy ladder reference ────────────────────────────
     section(1, "Proton-scale energy ladder")
 
-    print("  The T⁶ energy spectrum is dominated by proton-sheet")
+    print("  The Ma energy spectrum is dominated by proton-sheet")
     print("  quantum numbers (n₅, n₆).  Key energy levels:\n")
 
     ref_modes = [
@@ -200,9 +200,9 @@ def main():
             results.append((sym, name, mass, charge, spin, None))
 
     # ── Section 3: Binding energy analysis ────────────────────────────
-    section(3, "Binding energy from T⁶ modes")
+    section(3, "Binding energy from Ma modes")
 
-    print("  If a nucleus IS a T⁶ mode, its mass should be LESS than")
+    print("  If a nucleus IS a Ma mode, its mass should be LESS than")
     print("  the sum of constituent nucleon masses.  The deficit is the")
     print("  binding energy.\n")
 

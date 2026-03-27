@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-R31 Track 2: T⁶ merger modes — neutron, helium, and beyond.
+R31 Track 2: Ma merger modes — neutron, helium, and beyond.
 
-The neutron is electron + proton windings merged in T⁶.
+The neutron is electron + proton windings merged in Ma.
 What OTHER merger modes exist?  Can multiple electrons
 merge with a nucleus?  Does this connect to atoms?
 """
@@ -12,8 +12,8 @@ import numpy as np
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 
-from lib.t6_solver import self_consistent_metric
-from lib.t6 import mode_energy, mode_charge, mode_spin, M_P_MEV, M_E_MEV
+from lib.ma_solver import self_consistent_metric
+from lib.ma import mode_energy, mode_charge, mode_spin, M_P_MEV, M_E_MEV
 
 R_E, R_NU, R_P = 6.6, 5.0, 8.906
 SIGMA_EP = -0.09064
@@ -24,13 +24,13 @@ L = sc['L']
 
 
 print("=" * 72)
-print("R31 TRACK 2: T⁶ MERGER MODES BEYOND THE NEUTRON")
+print("R31 TRACK 2: Ma MERGER MODES BEYOND THE NEUTRON")
 print("=" * 72)
 
 
 # ── Section 1: The neutron as the template ───────────────────────
 
-print("\n\n── Section 1: The neutron — template for T⁶ merging ──\n")
+print("\n\n── Section 1: The neutron — template for Ma merging ──\n")
 
 neutron = [0, -2, 1, 0, 0, 2]
 E_n = mode_energy(neutron, Gti, L)
@@ -93,7 +93,7 @@ print()
 
 # He nucleus is alpha particle: 2p + 2n, mass 3727.4 MeV
 # Nuclear scaling: n₅ = A = 4, n₆ = 2A = 8
-print("  Case C: Helium-4 nucleus as T⁶ mode (from R29 scaling law)")
+print("  Case C: Helium-4 nucleus as Ma mode (from R29 scaling law)")
 n_He4 = [0, 0, 0, 0, 4, 8]
 E_He4 = mode_energy(n_He4, Gti, L)
 print(f"    Mode {tuple(n_He4)}: E = {E_He4:.1f} MeV (obs: 3727.4)")
@@ -132,8 +132,8 @@ print(f"  Electron mass × 2: {2*M_E_MEV:.3f} MeV")
 print(f"  Binding energy: 79 eV = {0.000079:.6f} MeV")
 print()
 
-# Check if any T⁶ mode near this mass has Q=0
-print("  T⁶ modes near helium atom mass (Q = 0):")
+# Check if any Ma mode near this mass has Q=0
+print("  Ma modes near helium atom mass (Q = 0):")
 target = M_He_atom
 candidates = []
 for n1 in range(-3, 4):
@@ -160,7 +160,7 @@ if candidates:
 
 # ── Section 4: Structural analysis ───────────────────────────────
 
-print("\n\n── Section 4: Why multi-electron T⁶ modes don't make atoms ──\n")
+print("\n\n── Section 4: Why multi-electron Ma modes don't make atoms ──\n")
 
 print("  Adding electron windings to a nuclear mode changes energy by:")
 e_tube_step = 2 * math.pi * 197.327 / L[0]
@@ -172,11 +172,11 @@ print(f"  Atomic binding energy:")
 print(f"    Hydrogen: 13.6 eV = 0.0136 keV")
 print(f"    Helium:   79 eV = 0.079 keV")
 print()
-print(f"  The smallest T⁶ energy step ({e_tube_step*1e3:.1f} keV) is")
+print(f"  The smallest Ma energy step ({e_tube_step*1e3:.1f} keV) is")
 print(f"  {e_tube_step*1e3/0.0136:.0f}× larger than hydrogen binding.")
 print()
 print("  CONCLUSION: Atomic binding energy is ~1000–3000× finer")
-print("  than any T⁶ energy quantum.  Multi-electron T⁶ modes")
+print("  than any Ma energy quantum.  Multi-electron Ma modes")
 print("  exist, but they correspond to DIFFERENT PARTICLES — not")
 print("  to atoms.")
 print()
@@ -191,16 +191,16 @@ print("    NOT two electrons orbiting a helium nucleus")
 print("    NOT any kind of atom")
 print()
 print("  Atoms are MULTI-MODE configurations in R³ — two or more")
-print("  T⁶ modes (electron + nucleus) at different R³ positions,")
-print("  interacting via the KK-derived Coulomb force.")
+print("  Ma modes (electron + nucleus) at different R³ positions,")
+print("  interacting via the Ma-derived Coulomb force.")
 
 
 # ── Section 5: Can more than one electron fit with a nucleus? ────
 
-print("\n\n── Section 5: Can multiple electrons merge with a nucleus in T⁶? ──\n")
+print("\n\n── Section 5: Can multiple electrons merge with a nucleus in Ma? ──\n")
 
 print("  The question: can we 'stuff' multiple electrons into a")
-print("  proton mode in T⁶?")
+print("  proton mode in Ma?")
 print()
 print("  Answer: yes — but the result is a DIFFERENT PARTICLE, not")
 print("  an atom.  Examples:")
@@ -229,33 +229,33 @@ print("  Merging more electron windings produces higher-energy modes,")
 print("  not lower-energy bound states.  Each electron winding adds")
 print(f"  ~{M_E_MEV*1e3:.0f} keV to the mode energy.")
 print()
-print("  There is no T⁶ merger that produces a LOWER energy than")
+print("  There is no Ma merger that produces a LOWER energy than")
 print("  the separated particles.  The merged state (neutron) is")
 print("  HEAVIER than the atom.  This is a general feature:")
 print("  merging always costs energy, never releases it.")
 print()
-print("  ATOMS CANNOT BE T⁶ MERGERS.  They must be R³ composites.")
+print("  ATOMS CANNOT BE Ma MERGERS.  They must be R³ composites.")
 
 
 # ── Summary ──────────────────────────────────────────────────────
 
 print("\n\n── Summary ──\n")
 
-print("  1. The neutron is the simplest T⁶ merger (e + p windings).")
+print("  1. The neutron is the simplest Ma merger (e + p windings).")
 print("     It is 0.78 MeV HEAVIER than the separated atom.")
 print()
-print("  2. Multi-electron mergers exist in T⁶ but produce")
+print("  2. Multi-electron mergers exist in Ma but produce")
 print("     particles at HIGHER energy — never bound states.")
 print()
-print("  3. Helium-like T⁶ modes (n₁=2 + He⁴ nucleus windings)")
+print("  3. Helium-like Ma modes (n₁=2 + He⁴ nucleus windings)")
 print("     exist but at MeV-scale offsets from the atom mass.")
 print("     No mode can match the 79 eV atomic binding.")
 print()
-print("  4. T⁶ merging always COSTS energy.  Atoms are R³")
+print("  4. Ma merging always COSTS energy.  Atoms are R³")
 print("     composites where Coulomb attraction provides the")
 print("     binding — a fundamentally different mechanism.")
 print()
-print("  5. You cannot 'fit' electrons into a nucleus via T⁶.")
+print("  5. You cannot 'fit' electrons into a nucleus via Ma.")
 print("     Merging gives new particles (neutrons, etc.), not atoms.")
 print("     Multiple electrons coexist with nuclei only in R³,")
 print("     distinguished by orbital and spin states.")

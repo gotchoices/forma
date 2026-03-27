@@ -22,7 +22,7 @@ import os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 
 import math
-from lib.t6 import (alpha_kk, solve_shear_for_alpha, mu_12,
+from lib.ma import (alpha_ma, solve_shear_for_alpha, mu_12,
                      hbar_c_MeV_fm, M_E_MEV, ALPHA)
 
 # ═══════════════════════════════════════════════════════════════════
@@ -486,7 +486,7 @@ F11. The Schwarzschild metric follows from confinement.
      parameter.  The gravity result is robust.
 
 F12. The gravity derivation is the EQUIVALENCE PRINCIPLE
-     in the T⁶ framework.
+     in the Ma framework.
      If matter IS confined photon energy, and energy curves
      spacetime, then gravity follows from confinement.  The
      only "new" content is identifying m_e c² as the energy

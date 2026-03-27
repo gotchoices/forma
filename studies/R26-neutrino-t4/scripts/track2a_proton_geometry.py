@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-R26 Track 2a: Proton T² geometry.
+R26 Track 2a: Proton material sheet geometry.
 
-The proton is a (1,2) photon on its own T² at fm scale, with charge +e.
+The proton is a (1,2) photon on its own material sheet at fm scale, with charge +e.
 R19's self-consistent α formula applies identically:
 
     α = r² sin²(2πs) / (4π (2−s)² √(r²(1+2s)²+4))
@@ -14,8 +14,8 @@ L₄ (ring circumference), and r_p = a/R sets the shape.
 This script:
 1. Solves the α constraint for s(r_p)
 2. Computes physical scales (L₃, L₄, R, a) from the proton mass
-3. Catalogs the mode spectrum on the proton T²
-4. Compares electron and proton T² geometries
+3. Catalogs the mode spectrum on the proton material sheet
+4. Compares electron and proton material sheet geometries
 """
 
 import sys
@@ -71,9 +71,9 @@ def mu_12(r, s):
 
 def physical_scales(r, s, particle_mass_MeV):
     """
-    Compute physical dimensions of the T² for given r, s.
+    Compute physical dimensions of the material sheet for given r, s.
 
-    Uses KK mode energy convention (consistent with Track 1a):
+    Uses Ma mode energy convention (consistent with Track 1a):
       E(1,2) = E₀ × μ(1,2) = particle mass
     → E₀ = m_particle / μ(1,2)
     → L₄ = hc / E₀
@@ -103,17 +103,17 @@ def spin_correction(p, q, eps, N=5000):
 
 def main():
     print("=" * 76)
-    print("R26 Track 2a: Proton T² Geometry")
+    print("R26 Track 2a: Proton Material Sheet Geometry")
     print("=" * 76)
 
     # ================================================================
     # SECTION 1: The α constraint — same formula, same family
     # ================================================================
     print("\n" + "=" * 76)
-    print("SECTION 1: α(r, s) = 1/137 for the proton T²")
+    print("SECTION 1: α(r, s) = 1/137 for the proton material sheet")
     print("=" * 76)
     print(f"""
-  The proton is a (1,2) photon on its own T² with charge +e.
+  The proton is a (1,2) photon on its own material sheet with charge +e.
   The R19 self-consistent α formula:
 
     α = r² sin²(2πs) / (4π (2−s)² √(r²(1+2s)²+4))
@@ -143,7 +143,7 @@ def main():
     print(f"""
   The solution curve s(r) is IDENTICAL for electron and proton — the
   α formula depends only on (r, s) and the charge +e, not on mass or
-  scale.  The proton T² is geometrically SIMILAR to the electron T²
+  scale.  The proton material sheet is geometrically SIMILAR to the electron material sheet
   (same shape family), just 1836× smaller in linear dimensions.
 """)
 
@@ -151,7 +151,7 @@ def main():
     # SECTION 2: Physical scales
     # ================================================================
     print("=" * 76)
-    print("SECTION 2: Physical scales of the proton T²")
+    print("SECTION 2: Physical scales of the proton material sheet")
     print("=" * 76)
 
     print(f"\n  Proton mass: {M_P_MEV:.3f} MeV")
@@ -173,7 +173,7 @@ def main():
               f"{R:8.4f}  {a:8.4f}  {E0:10.2f}")
 
     print(f"""
-  For comparison, the electron T² at the same r values:""")
+  For comparison, the electron material sheet at the same r values:""")
 
     print(f"\n  {'r_e':>5s}  {'s₁₂':>8s}  {'L₄ (fm)':>9s}  {'L₃ (fm)':>9s}  "
           f"{'R (fm)':>8s}  {'a (fm)':>8s}  {'E₀ (MeV)':>10s}")
@@ -189,10 +189,10 @@ def main():
     print(f"  (electron values in units of 10⁻³ fm = pm × 10⁻³)")
 
     # ================================================================
-    # SECTION 3: Mode spectrum on the proton T²
+    # SECTION 3: Mode spectrum on the proton material sheet
     # ================================================================
     print("\n" + "=" * 76)
-    print("SECTION 3: Mode spectrum on the proton T²")
+    print("SECTION 3: Mode spectrum on the proton material sheet")
     print("=" * 76)
 
     for r in [1.0, 5.0, 6.6]:
@@ -243,7 +243,7 @@ def main():
             print(f"  ... {len(modes) - 30} more modes below 2 GeV")
 
     # ================================================================
-    # SECTION 4: Electron vs proton T² comparison
+    # SECTION 4: Electron vs proton material sheet comparison
     # ================================================================
     print("\n" + "=" * 76)
     print("SECTION 4: Electron vs proton — same shape, different scale")
@@ -259,7 +259,7 @@ def main():
         print(f"""
   At r = {r_ref} (S2's electron aspect ratio), s = {s:.5f}:
 
-  │ Property       │ Electron T²      │ Proton T²        │ Ratio        │
+  │ Property       │ Electron Ma_e    │ Proton Ma_p      │ Ratio        │
   │ ──────         │ ──────────       │ ──────────       │ ─────        │
   │ Particle       │ (1,2) mode       │ (1,2) mode       │ same         │
   │ Mass           │ {M_E_MEV:.4f} MeV    │ {M_P_MEV:.3f} MeV   │ {M_P_MEV/M_E_MEV:.2f}     │
@@ -274,7 +274,7 @@ def main():
   │ E₀             │ {E0_e:.4f} MeV   │ {E0_p:.2f} MeV    │ {E0_p/E0_e:.2f}     │
 
   If the electron and proton share the same r (aspect ratio), then
-  the proton T² is a SCALED COPY of the electron T²:
+  the proton material sheet is a SCALED COPY of the electron material sheet:
 
     L_proton / L_electron = m_e / m_p = 1/{M_P_MEV/M_E_MEV:.2f}
 
@@ -290,7 +290,7 @@ def main():
     print("=" * 76)
 
     print(f"""
-  If both T²s have the SAME r and s (same shape), then:
+  If both material sheets have the SAME r and s (same shape), then:
 
     m_p/m_e = E₀_p/E₀_e × μ_p/μ_e
 
@@ -299,11 +299,11 @@ def main():
 
     m_p/m_e = E₀_p/E₀_e = L₄_e/L₄_p
 
-  The mass ratio is just the ratio of the compact dimension sizes.
+  The mass ratio is just the ratio of the material dimension sizes.
   The model does NOT predict m_p/m_e — it takes it as input (via
-  the ratio of compact dimension scales).
+  the ratio of material dimension scales).
 
-  If the two T²s have DIFFERENT r values (r_e ≠ r_p), then:
+  If the two material sheets have DIFFERENT r values (r_e ≠ r_p), then:
 
     m_p/m_e = (E₀_p/E₀_e) × √[((1/r_p)² + (2−s_p)²) /
                                  ((1/r_e)² + (2−s_e)²)]
@@ -312,24 +312,24 @@ def main():
   constrains the ratio of L₄ values but does not fix individual r.
 
   In either case, the proton/electron mass ratio is an INPUT to the
-  model, not a prediction.  The ratio of compact dimension scales
+  model, not a prediction.  The ratio of material dimension scales
   (L₄_proton/L₄_electron) is tuned to produce m_p/m_e = {M_P_MEV/M_E_MEV:.2f}.
 """)
 
     # ================================================================
-    # SECTION 6: Convention issue — WvM vs KK mode energies
+    # SECTION 6: Convention issue — WvM vs Ma mode energies
     # ================================================================
     print("=" * 76)
-    print("SECTION 6: Open question — WvM vs KK mode energies")
+    print("SECTION 6: Open question — WvM vs Ma mode energies")
     print("=" * 76)
 
     print(f"""
   R19 derived the α formula using WvM's convention: E = hc/L_geodesic
-  (photon energy = hc / path length).  Track 1a used the KK convention:
+  (photon energy = hc / path length).  Track 1a used the Ma convention:
   E = E₀ √((n₃/r)² + (n₄ − n₃s)²)  (wave equation on flat torus).
 
-  KK is the rigorous result (eigenvalues of the Laplacian on T²).
-  WvM is a classical approximation.  Only KK reproduces the neutrino
+  Ma is the rigorous result (eigenvalues of the Laplacian on the material sheet).
+  WvM is a classical approximation.  Only Ma reproduces the neutrino
   mass-squared ratio of 33.6 (WvM gives ~1.7).
 
   The α charge mechanism works under EITHER convention — the physics
@@ -337,15 +337,15 @@ def main():
   the relationship between α and s changes:
 
     R19 (WvM scale): α = r²sin²(2πs) / (4π(2−s)²√(r²(1+2s)²+4))
-    KK scale:        α = r²√(1/r²+(2−s)²)sin²(2πs) / (4π(2−s)²)
+    Ma scale:        α = r²√(1/r²+(2−s)²)sin²(2πs) / (4π(2−s)²)
 
   Both give α = 1/137 — at different s values (e.g., r=1: s≈0.165
-  under R19 vs s≈0.065 under KK).  Since the electron/proton shear
+  under R19 vs s≈0.065 under Ma).  Since the electron/proton shear
   (s₁₂, s₅₆) and neutrino shear (s₃₄) are INDEPENDENT parameters
-  on DIFFERENT T²s, there is no conflict.
+  on DIFFERENT material sheets, there is no conflict.
 
-  RESOLVED: R19 Track 8 re-derived the s(r) curve under KK.
-  Same charge physics, smaller shear values (s_KK ≈ 0.3–0.4 × s_WvM).
+  RESOLVED: R19 Track 8 re-derived the s(r) curve under Ma.
+  Same charge physics, smaller shear values (s_Ma ≈ 0.3–0.4 × s_WvM).
   See R19 findings F35–F43.
 """)
 
@@ -357,41 +357,41 @@ def main():
     print("=" * 76)
 
     print(f"""
-  1. The proton T² uses the SAME α formula as the electron T².
+  1. The proton material sheet uses the SAME α formula as the electron material sheet.
      The solution curve s(r) is identical — the geometry is a
      one-parameter family in r, just like the electron.
 
-  2. Physical scales at r = {r_ref} (KK convention):
+  2. Physical scales at r = {r_ref} (Ma convention):
      R_p = {R_p:.4f} fm,  a_p = {a_p:.3f} fm
      L₄ = {L4_p:.4f} fm,  L₃ = {L3_p:.3f} fm
      E₀ = {E0_p:.2f} MeV
 
-  3. The proton T² is geometrically SIMILAR to the electron T²
+  3. The proton material sheet is geometrically SIMILAR to the electron material sheet
      (same shape, scaled by m_e/m_p ≈ 1/1836 in all lengths).
      This is the simplest possibility; r_p ≠ r_e is also allowed
      but adds a free parameter.
 
-  4. The mode spectrum on the proton T² mirrors the electron's:
+  4. The mode spectrum on the proton material sheet mirrors the electron's:
      (1,2) = proton, (−1,−2) = antiproton, plus higher modes.
      The nearest modes to the proton are (1,1) and (−1,1) at
      different masses (depending on r_p).
 
   5. The mass ratio m_p/m_e = {M_P_MEV/M_E_MEV:.2f} is an INPUT — it
      sets the ratio L₄_e/L₄_p.  The model does not predict this
-     ratio; it emerges from the relative sizes of the two compact
-     T²s within T⁶.
+     ratio; it emerges from the relative sizes of the two
+     material sheets within Ma.
 
   6. For Track 2b (charge radius): the proton's charge distribution
      is the (1,2) geodesic on a torus with R = {R_p:.4f} fm.
      The experimental charge radius (0.841 fm) is {0.841/R_p:.1f}× R.
 
   7. For Track 2c (neutron): the nearest uncharged fermion mode
-     on the proton T² has p = 3, with mass and spin very different
+     on the proton material sheet has p = 3, with mass and spin very different
      from the neutron's requirements.
 
   8. R19 REVISION NEEDED: R19 derived α under WvM conventions;
-     KK is the correct wave-equation result.  Re-deriving α under
-     KK changes the s(r) curve but not the charge mechanism.
+     Ma is the correct wave-equation result.  Re-deriving α under
+     Ma changes the s(r) curve but not the charge mechanism.
      This is a bookkeeping update, not a physics change.
 """)
 

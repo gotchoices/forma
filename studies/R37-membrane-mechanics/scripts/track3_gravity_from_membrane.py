@@ -22,7 +22,7 @@ import os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 
 import math
-from lib.t6 import solve_shear_for_alpha, mu_12, ALPHA
+from lib.ma import solve_shear_for_alpha, mu_12, ALPHA
 
 hbar_SI = 1.0546e-34
 c_SI = 2.998e8
@@ -62,7 +62,7 @@ def main():
 
     # ── Part A: Kaluza-Klein reduction ────────────────────────────
     print(f"\n{'='*72}")
-    print("PART A: KK reduction — from 6D to 4D gravity")
+    print("PART A: Kaluza-Klein reduction — from 6D to 4D gravity")
     print("=" * 72)
 
     # In a (3+1+2)D setup with compact T²:
@@ -76,8 +76,8 @@ def main():
     K_4D = c_SI**4 / (8 * math.pi * G_N)
 
     print(f"""
-  The T⁶ model has 6 compact + 3 spatial + 1 time dimension.
-  For each T² subplane, the KK reduction gives:
+  The Ma model has 6 material + 3 spatial + 1 time dimension.
+  For each T² subplane, the Kaluza-Klein reduction gives:
 
     1/G_4D = V_T² / G_6D   →   G_6D = G_N × A_T²
 
@@ -91,7 +91,7 @@ def main():
   The effective 4D source is obtained by integrating the
   photon's stress-energy over the T² fiber:
 
-    T⁴ᴰ_μν(x) = ∫_T² T⁶ᴰ_μν dA = S_μν × δ³(x − x₀)
+    T⁴ᴰ_μν(x) = ∫_T² Maᴰ_μν dA = S_μν × δ³(x − x₀)
 
   where S_μν = ρ_surface × A = m_e c² for the (00) component.
   The photon mode is localised at one R³ point x₀, so the
@@ -232,11 +232,11 @@ def main():
 
     print(f"""
   The Israel junction conditions relate surface stress-energy
-  to extrinsic curvature jumps.  In the T⁶ framework, the T²
+  to extrinsic curvature jumps.  In the Ma framework, the T²
   is a fiber over R³, not an embedded shell.  The junction is
   in the full 6D space.
 
-  After KK reduction (Part A), the effective 4D picture is:
+  After Kaluza-Klein reduction (Part A), the effective 4D picture is:
 
     □h̄_μν = −16πG T_μν / c⁴
 
@@ -266,7 +266,7 @@ def main():
     print("=" * 72)
 
     print(f"""
-  Route A (KK reduction):
+  Route A (Kaluza-Klein reduction):
     6D Einstein → integrate over T² → 4D Einstein → Schwarzschild
     This is the standard Kaluza-Klein argument.  It works for
     ANY compact manifold, not just T².  The only T² input is
@@ -280,7 +280,7 @@ def main():
 
   Route C (Israel conditions):
     Surface stress-energy S_ab on T² → extrinsic curvature jump
-    → exterior metric.  After KK reduction, this reduces to the
+    → exterior metric.  After Kaluza-Klein reduction, this reduces to the
     standard thin-shell formalism in 4D, which gives Schwarzschild
     for a spherical shell with total mass m_e.
 
@@ -345,7 +345,7 @@ def main():
      makes it intuitive — pressure on a boundary deforms the
      boundary.
 
-  3. The T⁶ structure and (1,2) mode assignment.  The compact
+  3. The Ma structure and (1,2) mode assignment.  The compact
      geometry is taken as given.
 
   STATUS: The derivation of the Schwarzschild metric from
@@ -363,7 +363,7 @@ def main():
     print(f"""
 Key results:
 
-F13. KK reduction: G₆D = G_N × A_T² = {G_6D:.2e} m⁵/(kg·s²).
+F13. Kaluza-Klein reduction: G₆D = G_N × A_T² = {G_6D:.2e} m⁵/(kg·s²).
      The 4D Newton constant G emerges from integrating the 6D
      gravitational coupling over the T² fiber volume.
 
@@ -383,7 +383,7 @@ F16. Self-gravity is negligible at the torus scale:
      This validates treating the T² metric as flat in all
      previous force-balance and stress calculations.
 
-F17. Three routes (KK, centripetal force, Israel) all give
+F17. Three routes (Kaluza-Klein, centripetal force, Israel) all give
      the same Schwarzschild metric.  They differ in emphasis
      (geometry, mechanism, formalism) but are mathematically
      equivalent.

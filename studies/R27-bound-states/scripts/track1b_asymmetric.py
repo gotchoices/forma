@@ -18,7 +18,7 @@ import numpy as np
 from scipy.optimize import brentq, minimize
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
-from lib.t6 import (
+from lib.ma import (
     mode_energy, mode_charge, compute_scales, is_positive_definite,
     hbar_c_MeV_fm, M_E_MEV, M_P_MEV, M_N_MEV, S34,
 )

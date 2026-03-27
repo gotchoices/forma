@@ -26,7 +26,7 @@ solutions — every r > ~2 has a self-consistent s.  Nothing currently selects r
 **Study:** [`R27-bound-states/`](R27-bound-states/)
 **Questions:** Q16, Q28, Q32  **Type:** compute/analytical  **Depends on:** R26, R19, R15
 
-Discovery engine (`lib/t6_solver.py`) searches for T⁶ modes matching known particles.
+Discovery engine (`lib/ma_solver.py`) searches for Ma modes matching known particles.
 7 tracks complete (54 findings).  Neutron and muon pin r_p = 8.906 and σ_ep = −0.0906,
 leaving zero free parameters at MeV scale.  Parameter-free predictions: kaon (1.2%),
 eta (0.6%), eta prime (0.3%), phi (0.8%), kaon neutral (1.2%).  Lifetime-gap correlation

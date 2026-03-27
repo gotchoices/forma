@@ -7,7 +7,7 @@ Hypothesis: 1/α₀ = 80 is the bare geometric coupling
 QFT vacuum polarization screens the charge at low energy,
 pushing 1/α from 80 up to 137.
 
-Use the full T⁶ charged-mode spectrum (from R32 Track 1)
+Use the full Ma charged-mode spectrum (from R32 Track 1)
 with a uniform ghost suppression factor f, and:
 
 1. Fit f so that 1/α(E→0) = 137
@@ -23,8 +23,8 @@ from itertools import product
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 
-from lib.t6_solver import self_consistent_metric
-from lib.t6 import (
+from lib.ma_solver import self_consistent_metric
+from lib.ma import (
     mode_energy, mode_charge, mode_spin,
     M_P_MEV, M_E_MEV, M_N_MEV, hbar_c_MeV_fm,
 )
@@ -242,7 +242,7 @@ if best_cutoff_name:
         1e6: 123.5,
     }
 
-    print(f"\n  {'Energy':>25s} {'T⁶ 1/α':>10s} {'SM 1/α':>10s} {'Δ':>8s}")
+    print(f"\n  {'Energy':>25s} {'Ma 1/α':>10s} {'SM 1/α':>10s} {'Δ':>8s}")
     print(f"  {'─'*25} {'─'*10} {'─'*10} {'─'*8}")
 
     for name, E_val in energy_points:
@@ -340,7 +340,7 @@ Starting from the geometric base coupling 1/α₀ = 80:
         print(f"   The ghost suppression factor f = {f_best:.2e} is")
         print(f"   independently derived from the running (not from Lamb shift).")
         print(f"   If this matches the Lamb shift constraint, it provides")
-        print(f"   an independent cross-check on the T⁶ model.")
+        print(f"   an independent cross-check on the Ma model.")
     elif abs(inv_mZ_best - 128) < 10:
         print(f"   MODERATE RESULT: The model is within {abs(inv_mZ_best-128):.0f} units")
         print(f"   of the measured value.  The qualitative picture works")

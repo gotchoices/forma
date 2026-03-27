@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """
-R31 Track 1: Is the hydrogen atom a T⁶ mode?
+R31 Track 1: Is the hydrogen atom a Ma mode?
 
 Hydrogen: m_p + m_e - 13.6 eV = 938.783 MeV, Q = 0, spin = ½.
-Search for T⁶ modes near this mass.  The proton-sheet energy
+Search for Ma modes near this mass.  The proton-sheet energy
 ladder has ~53 MeV spacing — if no mode lands within ~1 eV of
-938.783 MeV, atomic binding CANNOT be a T⁶ phenomenon.
+938.783 MeV, atomic binding CANNOT be a Ma phenomenon.
 """
 
 import sys, os, math
@@ -13,8 +13,8 @@ import numpy as np
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 
-from lib.t6_solver import self_consistent_metric
-from lib.t6 import mode_energy, mode_charge, mode_spin, M_P_MEV, M_E_MEV
+from lib.ma_solver import self_consistent_metric
+from lib.ma import mode_energy, mode_charge, mode_spin, M_P_MEV, M_E_MEV
 
 R_E, R_NU, R_P = 6.6, 5.0, 8.906
 SIGMA_EP = -0.09064
@@ -27,7 +27,7 @@ M_HYDROGEN = M_P_MEV + M_E_MEV - 13.6e-6  # 938.783 MeV
 BINDING_EV = 13.6  # eV
 
 print("=" * 72)
-print("R31 TRACK 1: IS THE HYDROGEN ATOM A T⁶ MODE?")
+print("R31 TRACK 1: IS THE HYDROGEN ATOM A Ma MODE?")
 print("=" * 72)
 
 
@@ -40,20 +40,20 @@ E0_proton_ring = 2 * math.pi * 197.3269804 / L[5]
 E0_electron_tube = 2 * math.pi * 197.3269804 / L[0]
 E0_electron_ring = 2 * math.pi * 197.3269804 / L[1]
 
-print(f"  Energy scales of T⁶ dimensions:")
+print(f"  Energy scales of Ma dimensions:")
 print(f"    Proton tube (L₅ = {L[4]:.2f} fm):    {E0_proton_tube:.1f} MeV per step")
 print(f"    Proton ring (L₆ = {L[5]:.2f} fm):    {E0_proton_ring:.1f} MeV per step")
 print(f"    Electron tube (L₁ = {L[0]:.1f} fm):  {E0_electron_tube:.4f} MeV per step")
 print(f"    Electron ring (L₂ = {L[1]:.1f} fm):  {E0_electron_ring:.4f} MeV per step")
 print()
 print(f"  Hydrogen binding energy:  {BINDING_EV} eV = {BINDING_EV*1e-6:.9f} MeV")
-print(f"  Smallest T⁶ step:        {E0_electron_tube*1e6:.0f} eV (electron tube)")
+print(f"  Smallest Ma step:        {E0_electron_tube*1e6:.0f} eV (electron tube)")
 print(f"  Ratio:  {E0_electron_tube / (BINDING_EV * 1e-6):.0f}× coarser")
 print()
-print(f"  The FINEST energy resolution available in T⁶ is the electron tube")
+print(f"  The FINEST energy resolution available in Ma is the electron tube")
 print(f"  at {E0_electron_tube*1e6:.0f} eV.  The hydrogen binding energy (13.6 eV)")
 print(f"  is {E0_electron_tube / (BINDING_EV * 1e-6):.0f}× smaller than this.")
-print(f"  No T⁶ mode can match hydrogen's mass to eV precision.")
+print(f"  No Ma mode can match hydrogen's mass to eV precision.")
 
 
 # ── Section 2: Search for modes near hydrogen mass ───────────────
@@ -107,7 +107,7 @@ if matches:
     closest = matches[0]
     print(f"\n  Closest mode: gap = {closest['gap_eV']:+.0f} eV")
     print(f"  Hydrogen binding: −13.6 eV")
-    print(f"  The closest T⁶ mode is {abs(closest['gap_eV'])/BINDING_EV:.0f}× "
+    print(f"  The closest Ma mode is {abs(closest['gap_eV'])/BINDING_EV:.0f}× "
           f"farther from the hydrogen mass")
     print(f"  than the binding energy itself.")
 else:
@@ -129,12 +129,12 @@ print(f"  m_e = {M_E_MEV*1e6:.0f} eV — adding electron mass to proton")
 print(f"  gives {(E_proton + M_E_MEV):.6f} MeV = {(E_proton + M_E_MEV)*1e6:.0f} eV above hydrogen mass")
 print(f"  The electron adds 511,000 eV but binding removes only 13.6 eV.")
 print()
-print("  In T⁶ mode language, including electron windings (n₁, n₂ ≠ 0)")
+print("  In Ma mode language, including electron windings (n₁, n₂ ≠ 0)")
 print("  adds AT MINIMUM {:.0f} eV (electron tube step).".format(E0_electron_tube*1e6))
 print("  This is {:.0f}× the binding energy.".format(E0_electron_tube*1e6/BINDING_EV))
 print()
 print("  There is no combination of quantum numbers that can produce")
-print("  a 13.6 eV energy shift.  The T⁶ mode spectrum is quantized")
+print("  a 13.6 eV energy shift.  The Ma mode spectrum is quantized")
 print("  in steps thousands of times larger than the binding energy.")
 
 
@@ -178,18 +178,18 @@ else:
 
 print("\n\n── Summary ──\n")
 
-print("  1. The T⁶ energy spectrum has no structure at the eV scale.")
+print("  1. The Ma energy spectrum has no structure at the eV scale.")
 print("     The finest step (electron tube) is ~39,000 eV — 2,900×")
 print("     coarser than the 13.6 eV hydrogen binding energy.")
 print()
-print("  2. The closest T⁶ mode to the hydrogen mass is thousands")
+print("  2. The closest Ma mode to the hydrogen mass is thousands")
 print("     of eV away.  No mode can match to eV precision.")
 print()
-print("  3. CONCLUSION: The hydrogen atom is NOT a T⁶ mode.")
+print("  3. CONCLUSION: The hydrogen atom is NOT a Ma mode.")
 print("     Atomic binding is irreducibly an R³ phenomenon.")
 print()
 print("  4. This confirms the two-tier picture (R29 F26):")
-print("       T⁶ → particles and nuclei (MeV scale)")
+print("       Ma → particles and nuclei (MeV scale)")
 print("       R³ → atoms and chemistry (eV scale)")
 print()
 print("  5. To understand atoms, we MUST understand the R³")

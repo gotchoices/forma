@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
 """
-R26 Track 2c: Neutron mode search on the proton T².
+R26 Track 2c: Neutron mode search on the proton material sheet.
 
 Can the neutron (m_n = 939.565 MeV, Q = 0, spin ½) live on the
-proton's T²?  Three search strategies:
+proton's material sheet?  Three search strategies:
 
 1. Single uncharged modes near m_n
 2. Two-mode composites that cancel charge
 3. Extra energy injected into the proton cavity
 
 If all fail, the fallback hypothesis is: neutron = proton + electron
-bound by the T⁶ geometry, with 0.782 MeV of binding energy.
+bound by the Ma geometry, with 0.782 MeV of binding energy.
 """
 
 import sys
@@ -30,20 +30,20 @@ DM_NP_MEV = M_N_MEV - M_P_MEV   # 1.293 MeV
 Q_BETA = DM_NP_MEV - M_E_MEV    # 0.782 MeV
 
 
-def alpha_kk(r, s):
-    """KK convention α formula (R19 Track 8)."""
+def alpha_ma(r, s):
+    """Ma convention α formula (R19 Track 8)."""
     mu = math.sqrt(1/r**2 + (2 - s)**2)
     return r**2 * mu * math.sin(2*math.pi*s)**2 / (4*math.pi * (2-s)**2)
 
 
 def solve_shear_kk(r, alpha_target=ALPHA):
-    """Solve α_KK(r, s) = α_target for s."""
+    """Solve α_Ma(r, s) = α_target for s."""
     s_scan = np.linspace(0.001, 0.49, 5000)
-    a_scan = [alpha_kk(r, s) for s in s_scan]
+    a_scan = [alpha_ma(r, s) for s in s_scan]
     roots = []
     for i in range(len(s_scan) - 1):
         if (a_scan[i] - alpha_target) * (a_scan[i+1] - alpha_target) < 0:
-            roots.append(brentq(lambda s: alpha_kk(r, s) - alpha_target,
+            roots.append(brentq(lambda s: alpha_ma(r, s) - alpha_target,
                                 s_scan[i], s_scan[i+1], xtol=1e-14))
     return roots
 
@@ -255,11 +255,11 @@ def main():
   SEARCH RESULTS:
   ──────────────────────────────────────────────────────────────
 
-  1. SINGLE MODES: No viable neutron candidate on the proton T².
+  1. SINGLE MODES: No viable neutron candidate on the proton material sheet.
      The fundamental obstacle is the charge-spin linkage (R25 F4):
      all spin-½ modes (|n₃| = 1) carry charge via sin(2πs) ≠ 0.
      All uncharged modes (n₃ = 0) are bosonic.  There is no
-     uncharged fermion on a single sheared T².
+     uncharged fermion on a single sheared material sheet.
 
   2. TWO-MODE COMPOSITES: Charge-cancelling pairs exist (e.g.,
      (1,2) + (−1,−2) or (1,n) + (−1,n)), but their combined mass
@@ -277,21 +277,21 @@ def main():
   ──────────────────────────────────────────────────────────────
 
   The neutron cannot live as a single mode or mode pair on the
-  proton T².  The most natural picture is:
+  proton material sheet.  The most natural picture is:
 
-    neutron = proton T² mode + electron T² mode + 0.782 MeV
+    neutron = proton Ma_p mode + electron Ma_e mode + 0.782 MeV
 
   where the extra 0.782 MeV is stored as cross-plane coupling
-  energy in the T⁶ geometry.  This is consistent with:
+  energy in the Ma geometry.  This is consistent with:
   • Beta decay releasing exactly this energy
   • The neutron being unstable (stored energy wants to escape)
-  • The neutron requiring both proton and electron T²s to exist
+  • The neutron requiring both proton and electron material sheets to exist
   • The antineutrino carrying away part of the released energy
 
   The mechanism for cross-plane binding is a Track 4 question.
   The 0.782 MeV may relate to the cross-shear between the
-  proton and electron T² subplanes, but quantifying this requires
-  the full T⁶ framework.
+  proton and electron material sheet subplanes, but quantifying this requires
+  the full Ma framework.
 """)
 
 

@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
-R34 Track 5: Running of α with known T⁶ particles only.
+R34 Track 5: Running of α with known Ma particles only.
 
 Premise: Ghost modes are empirically unobserved.  If nature
 does not select them as real excitations, they should not
 participate as virtual excitations in vacuum polarization
 loops either.  The running of α comes ONLY from particles
-that T⁶ predicts AND that nature confirms.
+that Ma predicts AND that nature confirms.
 
 This is fundamentally different from the SM:
 - No quarks → no color factor ×3
@@ -16,7 +16,7 @@ This is fundamentally different from the SM:
 - Many charged species between 140–1800 MeV
 
 Procedure:
-1. Enumerate known T⁶ particles with masses, charges, spins
+1. Enumerate known Ma particles with masses, charges, spins
 2. Compute one-loop running of α
 3. Fit the bare coupling 1/α₀ so that 1/α(m_e) = 137
 4. Check: does 1/α(m_Z) = 128?
@@ -37,7 +37,7 @@ M_Z = 91187.6  # MeV
 M_E = 0.511
 
 
-# ── Known T⁶ particle catalog ────────────────────────────────────────
+# ── Known Ma particle catalog ────────────────────────────────────────
 # Each entry: (name, mass_MeV, |Q|, spin_type, notes)
 # spin_type: "dirac" (spin 1/2 or 3/2), "scalar" (spin 0), "vector" (spin 1)
 #
@@ -168,13 +168,13 @@ def total_screening(particles, E_low, E_high, use_color=False):
 
 # ══════════════════════════════════════════════════════════════════════
 print("=" * 70)
-print("R34 Track 5: Running of α with known T⁶ particles only")
+print("R34 Track 5: Running of α with known Ma particles only")
 print("=" * 70)
 
 
 # ── Section 1: Catalog ───────────────────────────────────────────────
 print(f"\n{'='*70}")
-print("SECTION 1: Known T⁶ particle catalog")
+print("SECTION 1: Known Ma particle catalog")
 print("=" * 70)
 
 total_Q2 = 0
@@ -197,7 +197,7 @@ for name, mass, Q, spin_type, Nc in SM_PARTICLES:
 print(f"\n  SM comparison:")
 print(f"  Total Σ N_c×b×Q²: {sm_total_Q2:.2f}")
 print(f"  SM running rate:   {sm_total_Q2/(3*math.pi):.4f} per unit ln(E)")
-print(f"  T⁶ / SM ratio:    {total_Q2/sm_total_Q2:.3f}")
+print(f"  Ma / SM ratio:    {total_Q2/sm_total_Q2:.3f}")
 
 
 # ── Section 2: Total running from m_e to various scales ──────────────
@@ -219,7 +219,7 @@ scales = [
     ("GUT",     2e16 * 1000),  # ~2×10¹⁶ GeV in MeV
 ]
 
-print(f"\n  {'Scale':>12s} {'Δ(1/α) T⁶':>12s} {'Δ(1/α) SM':>12s} {'T⁶/SM':>8s}")
+print(f"\n  {'Scale':>12s} {'Δ(1/α) Ma':>12s} {'Δ(1/α) SM':>12s} {'Ma/SM':>8s}")
 print(f"  {'─'*12} {'─'*12} {'─'*12} {'─'*8}")
 
 for name, E_high in scales:
@@ -238,7 +238,7 @@ print(f"\n  For a given cutoff Λ, the bare coupling is:")
 print(f"  1/α₀ = 1/α(m_e) − Δ(1/α) from m_e to Λ")
 print(f"  1/α₀ = 137.036 − Δ(m_e → Λ)")
 
-print(f"\n  {'Cutoff':>12s} {'Δ(m_e→Λ) T⁶':>14s} {'1/α₀ T⁶':>10s} {'Δ(m_e→Λ) SM':>14s} {'1/α₀ SM':>10s}")
+print(f"\n  {'Cutoff':>12s} {'Δ(m_e→Λ) Ma':>14s} {'1/α₀ Ma':>10s} {'Δ(m_e→Λ) SM':>14s} {'1/α₀ SM':>10s}")
 print(f"  {'─'*12} {'─'*14} {'─'*10} {'─'*14} {'─'*10}")
 
 for name, E_high in scales:
@@ -263,7 +263,7 @@ bare_t6 = INV_ALPHA_OBS - dt6_gut
 bare_sm = INV_ALPHA_OBS - dsm_gut
 
 print(f"\n  Cutoff: {cutoff:.0e} MeV (~GUT scale)")
-print(f"  1/α₀ (T⁶): {bare_t6:.2f}")
+print(f"  1/α₀ (Ma): {bare_t6:.2f}")
 print(f"  1/α₀ (SM):  {bare_sm:.2f}")
 
 energy_points = [
@@ -282,7 +282,7 @@ energy_points = [
     ("1 TeV",         1000000.0),
 ]
 
-print(f"\n  {'Energy':>25s} {'1/α T⁶':>10s} {'1/α SM':>10s} {'Δ':>8s}")
+print(f"\n  {'Energy':>25s} {'1/α Ma':>10s} {'1/α SM':>10s} {'Δ':>8s}")
 print(f"  {'─'*25} {'─'*10} {'─'*10} {'─'*8}")
 
 for name, E in energy_points:
@@ -302,7 +302,7 @@ target_screening = INV_ALPHA_OBS - target_bare  # = 57.036
 
 print(f"\n  Need: Δ(1/α) from m_e to Λ = {target_screening:.3f}")
 print(f"  Full running rate (all particles above threshold):")
-print(f"    T⁶: {total_Q2/(3*math.pi):.4f} per unit ln(E)")
+print(f"    Ma: {total_Q2/(3*math.pi):.4f} per unit ln(E)")
 
 # Binary search for the cutoff
 log_cutoff_low = math.log10(M_E)
@@ -320,7 +320,7 @@ for iteration in range(200):
 cutoff_for_80 = 10**((log_cutoff_low + log_cutoff_high) / 2)
 dt6_check = total_screening(T6_PARTICLES, M_E, cutoff_for_80)
 
-print(f"\n  Cutoff for 1/α₀ = 80 (T⁶):")
+print(f"\n  Cutoff for 1/α₀ = 80 (Ma):")
 print(f"    Λ = {cutoff_for_80:.3e} MeV = {cutoff_for_80/1000:.3e} GeV")
 print(f"    Δ(1/α) = {dt6_check:.3f} (target: {target_screening:.3f})")
 print(f"    log₁₀(Λ/MeV) = {math.log10(cutoff_for_80):.2f}")
@@ -358,7 +358,7 @@ test_cutoffs = [
     ("1 TeV",   1e6),
     ("10 TeV",  1e7),
     ("GUT",     2e19),
-    ("Λ for α₀=80 (T⁶)", cutoff_for_80),
+    ("Λ for α₀=80 (Ma)", cutoff_for_80),
 ]
 
 print(f"\n  For each cutoff, fit 1/α₀ from 1/α(m_e) = 137, then predict 1/α(m_Z):")
@@ -427,11 +427,11 @@ for name, mass, Q, spin_type, Nc in SM_PARTICLES:
     print(f"  {name:<8s} {mass:10.3f} {Q:6.3f} {Nc:4d} {delta:10.4f}")
 
 print(f"\n  SM total Δ(1/α) from m_e to m_Z: {sm_total:.4f}")
-print(f"  T⁶ total: {total_delta_mZ:.4f}")
-print(f"  Ratio T⁶/SM: {total_delta_mZ/sm_total:.3f}")
+print(f"  Ma total: {total_delta_mZ:.4f}")
+print(f"  Ratio Ma/SM: {total_delta_mZ/sm_total:.3f}")
 print(f"\n  SM measured: Δ(1/α) = 137 − 128 = 9.036")
 print(f"  SM computed: {sm_total:.3f}")
-print(f"  T⁶ computed: {total_delta_mZ:.3f}")
+print(f"  Ma computed: {total_delta_mZ:.3f}")
 
 
 # ── Section 8: Sensitivity to vector meson coefficient ────────────────
@@ -463,21 +463,21 @@ print("SUMMARY")
 print(f"{'='*70}")
 
 print(f"""
-Known T⁶ particle content (no ghosts):
+Known Ma particle content (no ghosts):
   Charged species: {len(T6_PARTICLES)}
   Total b×Q²:      {total_Q2:.2f}
   (SM total N_c×b×Q²: {sm_total_Q2:.2f})
 
 Running from m_e to m_Z:
-  T⁶ particles: Δ(1/α) = {total_delta_mZ:.3f}
+  Ma particles: Δ(1/α) = {total_delta_mZ:.3f}
   SM particles:  Δ(1/α) = {sm_total:.3f}
   Measured:      Δ(1/α) = 9.036
 
 Cutoff needed for 1/α₀ = 80:
-  T⁶: Λ = {cutoff_for_80:.2e} MeV ({cutoff_for_80/1e6:.2e} TeV)
+  Ma: Λ = {cutoff_for_80:.2e} MeV ({cutoff_for_80/1e6:.2e} TeV)
 
 Key question answered:
-  Does T⁶ particle content (no ghosts) reproduce the
-  observed running of α?  Compare T⁶ Δ = {total_delta_mZ:.1f} to
+  Does Ma particle content (no ghosts) reproduce the
+  observed running of α?  Compare Ma Δ = {total_delta_mZ:.1f} to
   measured Δ = 9.0 over the range m_e to m_Z.
 """)

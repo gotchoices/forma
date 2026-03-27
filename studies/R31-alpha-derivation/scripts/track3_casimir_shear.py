@@ -7,7 +7,7 @@ Instead of inputting α, sweep the within-plane shear s₁₂
 If V_Casimir(s) has a minimum, it predicts s → α.
 
 The Casimir energy is the zero-point (vacuum) energy of
-quantum fields on the compact space.  It depends on the
+quantum fields on the material space.  It depends on the
 geometry.  If it has a minimum, the geometry "wants" to
 be there.
 """
@@ -17,8 +17,8 @@ import numpy as np
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 
-from lib.t6 import (
-    alpha_kk, mu_12, hbar_c_MeV_fm, M_E_MEV, M_P_MEV, ALPHA,
+from lib.ma import (
+    alpha_ma, mu_12, hbar_c_MeV_fm, M_E_MEV, M_P_MEV, ALPHA,
     S34, DM2_21, compute_scales,
 )
 
@@ -27,7 +27,7 @@ TWO_PI_HC = 2 * math.pi * hbar_c_MeV_fm
 
 def build_metric_at_shear(s12, s56, r_e, r_nu, r_p, sigma_ep=-0.09064):
     """
-    Build T⁶ metric with GIVEN within-plane shears (not derived from α).
+    Build Ma metric with GIVEN within-plane shears (not derived from α).
 
     Circumferences are adjusted so that E(1,2,0,0,0,0) = m_e and
     E(0,0,0,0,1,2) = m_p exactly, using the provided s₁₂ and s₅₆.
@@ -120,8 +120,8 @@ s_values = np.linspace(0.002, 0.20, 80)
 results = []
 
 for s in s_values:
-    alpha_e = alpha_kk(R_E, s)
-    alpha_p = alpha_kk(R_P, s)
+    alpha_e = alpha_ma(R_E, s)
+    alpha_p = alpha_ma(R_P, s)
 
     if alpha_e <= 0 or alpha_e > 0.5:
         continue
@@ -291,7 +291,7 @@ if e_casimir:
 
 print("\n\n── Section 5: Analysis — what could select α? ──\n")
 
-print("  The Casimir energy on the full T⁶ is dominated by the")
+print("  The Casimir energy on the full Ma is dominated by the")
 print("  neutrino sheet (largest dimensions).  The within-plane")
 print("  shears s₁₂ and s₅₆ have negligible effect on it.")
 print()
@@ -313,7 +313,7 @@ print("  2. TOPOLOGICAL CONSTRAINT: the (1,2) geodesic must close")
 print("     smoothly on the sheared torus.  This is already")
 print("     satisfied for all s, so it doesn't constrain α.")
 print()
-print("  3. SELF-CONSISTENCY OF CHARGE: the KK charge formula")
+print("  3. SELF-CONSISTENCY OF CHARGE: the Ma charge formula")
 print("     gives α(r, s).  If the BACK-REACTION of the charge")
 print("     on the geometry is included (the charged mode distorts")
 print("     the metric), s might be self-consistently determined.")
@@ -337,7 +337,7 @@ print("  This would genuinely predict α from geometry alone.")
 
 print("\n\n── Summary ──\n")
 
-print("  1. The full T⁶ Casimir energy is dominated by the neutrino")
+print("  1. The full Ma Casimir energy is dominated by the neutrino")
 print("     sheet and is nearly independent of the within-plane")
 print("     shears s₁₂, s₅₆ that determine α.")
 print()

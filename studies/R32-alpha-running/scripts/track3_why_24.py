@@ -4,7 +4,7 @@ R32 Track 3: Why 24?  Geometric relationships.
 
 Investigate every known mathematical/geometric context in
 which the number 24 appears, and evaluate whether any of
-them connect naturally to the T⁶ model.
+them connect naturally to the Ma model.
 
 The question: R31 found (tentatively) that 1/α may approach
 ~24 at high energies.  If so, is 24 a geometric constant
@@ -18,8 +18,8 @@ import numpy as np
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 
-from lib.t6_solver import self_consistent_metric
-from lib.t6 import (
+from lib.ma_solver import self_consistent_metric
+from lib.ma import (
     M_P_MEV, M_E_MEV, M_N_MEV, hbar_c_MeV_fm, ALPHA,
 )
 
@@ -68,10 +68,10 @@ The exponent 24 arises because:
 - Equivalently: 24 is the smallest integer k such that
   η(τ)^k transforms without phase ambiguity
 
-CONNECTION TO T⁶:
+CONNECTION TO Ma:
 Each T² in the model has a modular parameter τ_i = L_tube/(L_ring × i)
 (up to the shear).  The partition function of a scalar field
-on T² is proportional to 1/|η(τ)|².  For T⁶ = (T²)³, the
+on T² is proportional to 1/|η(τ)|².  For Ma = (T²)³, the
 partition function involves a product of three such terms.
 
 The bosonic string has 24 transverse dimensions, making
@@ -124,19 +124,19 @@ D₄ has a remarkable triality symmetry: the three
 representations (vector, spinor, co-spinor) are
 permuted by an outer automorphism of order 3.
 
-CONNECTION TO T⁶:
-The T⁶ model has 6 compact dimensions, not 4.  The T⁶
+CONNECTION TO Ma:
+The Ma model has 6 material dimensions, not 4.  The Ma
 mode lattice is 6-dimensional (quantum numbers n₁...n₆),
 but it is NOT a D₄ lattice — it is a simple cubic lattice
 ℤ⁶ (possibly sheared by the metric).
 
-However, the 4 non-compact dimensions (R³ × R¹) DO form
+However, the 4 non-material dimensions (R³ × R¹) DO form
 a 4D Minkowski space.  If the Lorentz group's structure
 is related to the D₄ lattice, the kissing number 24 could
 enter through the non-compact sector.
 
 The D₄ root system is also the weight lattice of SO(8),
-which acts on 8-dimensional space.  In the T⁶ model,
+which acts on 8-dimensional space.  In the Ma model,
 6 compact + 3 spatial - 1 (light cone) = 8 transverse
 dimensions.  The SO(8) structure and its triality could
 be relevant.
@@ -168,9 +168,9 @@ K3 can be realized as a T⁴/ℤ₂ orbifold with 16 blown-up
 fixed points.  The Euler characteristic jumps:
     χ(T⁴) = 0  →  χ(T⁴/ℤ₂) = 8  →  χ(K3) = 24
 
-CONNECTION TO T⁶:
-Our T⁶ has real dimension 6, not 4.  However:
-- T⁶ can be viewed as T² × T⁴
+CONNECTION TO Ma:
+Our Ma has real dimension 6, not 4.  However:
+- Ma can be viewed as T² × T⁴
 - If the T⁴ part (say, electron + proton sheets) were
   orbifolded to K3, the Euler characteristic 24 would
   appear naturally
@@ -181,7 +181,7 @@ Our T⁶ has real dimension 6, not 4.  However:
 More directly: χ(K3) = 24 because K3 has 24 independent
 2-cycles.  In string theory, wrapping branes on these
 2-cycles produces 24 U(1) gauge fields.  The number of
-gauge fields in KK reduction on T⁶ is 6 (one per dimension).
+gauge fields in Kaluza-Klein reduction on Ma is 6 (one per dimension).
 24 = 4 × 6 suggests a possible relationship.
 """)
 
@@ -197,7 +197,7 @@ print("=" * 70)
 print("""
 24 = 4! = permutations of 4 objects.
 
-In the T⁶ model, the 4 non-compact dimensions are
+In the Ma model, the 4 non-material dimensions are
 R³ × R¹ = (x, y, z, t).  The symmetric group S₄
 permutes these 4 dimensions.
 
@@ -218,8 +218,8 @@ is speculative but has a concrete mechanism: path
 integrals over the non-compact sector produce symmetry
 factors that depend on the order of the isometry group.
 
-Also: 24 = (number of non-compact dimensions) ×
-     (number of compact dimensions) = 4 × 6.
+Also: 24 = (number of non-material dimensions) ×
+     (number of material dimensions) = 4 × 6.
      This is just 24 by numerology, but it could be
      meaningful if the coupling involves a sum over
      pairs of (compact, non-compact) dimensions.
@@ -313,18 +313,18 @@ d) In the zeta function: ζ(-1) = -1/12, so
 
 
 # ═══════════════════════════════════════════════════════════════════
-# 7. DIRECT COMPUTATION: T⁶ PARTITION FUNCTION
+# 7. DIRECT COMPUTATION: Ma PARTITION FUNCTION
 # ═══════════════════════════════════════════════════════════════════
 
 print(f"{'='*70}")
-print("7. T⁶ PARTITION FUNCTION AND η")
+print("7. Ma PARTITION FUNCTION AND η")
 print("=" * 70)
 
 # The partition function of a free scalar on T² with modular
 # parameter τ = τ₁ + iτ₂ is:
 #   Z(τ) = 1 / (τ₂ |η(τ)|²)
 # 
-# For T⁶ = T²₁ × T²₂ × T²₃:
+# For Ma = T²₁ × T²₂ × T²₃:
 #   Z = ∏_i 1 / (τ₂ᵢ |η(τᵢ)|²)
 #   = 1 / (∏ τ₂ᵢ × |η(τ₁)|² |η(τ₂)|² |η(τ₃)|²)
 #
@@ -335,14 +335,14 @@ print("=" * 70)
 print("""
 Scalar field on T²: Z = 1 / (τ₂ |η(τ)|²)
 
-For T⁶ = T²₁ × T²₂ × T²₃ (scalar):
-  Z_T⁶ = ∏ᵢ 1 / (τ₂ᵢ |η(τᵢ)|²)
+For Ma = T²₁ × T²₂ × T²₃ (scalar):
+  Z_Ma = ∏ᵢ 1 / (τ₂ᵢ |η(τᵢ)|²)
        = 1 / (∏ τ₂ᵢ) × 1 / |η(τ₁) η(τ₂) η(τ₃)|²
 
 The η function appears to the 6th power (2 per T²),
 not the 24th.  To get η²⁴, we would need:
 
-  Option A: 12 scalar fields on T⁶ (each giving |η|²)
+  Option A: 12 scalar fields on Ma (each giving |η|²)
             12 × 2 = 24.  But why 12 fields?
 
   Option B: 24 scalar fields on a single T²
@@ -353,10 +353,10 @@ not the 24th.  To get η²⁴, we would need:
             require each spatial dimension to contribute
             separately to each compact dimension.
 
-  Option D: The correct counting for gravity on T⁶ is
+  Option D: The correct counting for gravity on Ma is
             not just scalars.  The full metric has
             (10×11/2 - 1) = 54 independent components.
-            In KK reduction on T⁶, the metric gives:
+            In Kaluza-Klein reduction on Ma, the metric gives:
             - 1 graviton in 4D (2 physical polarizations)
             - 6 graviphotons (gauge fields, 2 polarizations each)
             - 21 scalars (moduli)
@@ -366,7 +366,7 @@ not the 24th.  To get η²⁴, we would need:
 The most natural way to get 24 from 3 T² sheets:
   24 = 8 × 3 (8 transverse modes × 3 sheets)
   or
-  24 = 4 × 6 (4 non-compact × 6 compact dimensions)
+  24 = 4 × 6 (4 non-compact × 6 material dimensions)
 
 Neither currently has a concrete mechanism linking to α.
 """)
@@ -377,12 +377,12 @@ Neither currently has a concrete mechanism linking to α.
 # ═══════════════════════════════════════════════════════════════════
 
 print(f"{'='*70}")
-print("8. NUMERICAL: DOES 24 APPEAR IN T⁶ GEOMETRY?")
+print("8. NUMERICAL: DOES 24 APPEAR IN Ma GEOMETRY?")
 print("=" * 70)
 
 # Check various geometric quantities for factors of 24
 
-from lib.t6 import mu_12
+from lib.ma import mu_12
 
 # Metric determinant of each T² sheet
 print(f"\nGeometric quantities involving 24:")
@@ -551,13 +551,13 @@ c_matter + c_ghost = 15 - 15 = 0 (anomaly-free).
 
 The connection between 24 and our model would require
 either:
-- The T⁶ model is secretly a bosonic string compactification
+- The Ma model is secretly a bosonic string compactification
   (unlikely — we don't have 16 extra dimensions)
 - The factor of 24 enters through the modular invariance
-  of the compact space (possible — see Section 1)
+  of the material space (possible — see Section 1)
 - It's a coincidence and 1/α doesn't actually converge to 24
 
-The most concrete path: if the T⁶ partition function
+The most concrete path: if the Ma partition function
 involves η²⁴ (through modular invariance requirements),
 then the leading coefficient of the partition function
 would naturally contain factors of 24.  This could set
@@ -574,7 +574,7 @@ print("SUMMARY: CATALOG OF 24 IN TORUS MATHEMATICS")
 print("=" * 70)
 
 print("""
-| Context             | Why 24?                     | T⁶ connection     | Strength |
+| Context             | Why 24?                     | Ma connection     | Strength |
 |---------------------|-----------------------------|--------------------|----------|
 | Dedekind η²⁴        | Modular invariance of T²    | Each T² has τ = r  | STRONG   |
 | D₄ kissing          | 4D lattice geometry         | 4 non-compact dims | MODERATE |
@@ -604,10 +604,10 @@ closest: r_e × r_p = 58.8 (not 24), r_e + r_p = 15.5
 (not 24), r_e + r_ν + r_p = 20.5 (close but 15% off).
 
 CONCLUSION: If 1/α → 24 at high energies, the most
-likely explanation is modular invariance of the T⁶
+likely explanation is modular invariance of the Ma
 partition function, entering through η(τ)²⁴.  This
 is a specific, testable mathematical claim: compute
-the T⁶ gauge coupling from the modular-invariant
+the Ma gauge coupling from the modular-invariant
 partition function and check whether the normalization
 involves 1/24.
 """)

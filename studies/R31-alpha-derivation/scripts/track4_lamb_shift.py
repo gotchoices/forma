@@ -2,7 +2,7 @@
 """
 R31 Track 4: Hydrogen Lamb shift as a probe of r_e.
 
-The T⁶ geometry produces KK massive gauge bosons with masses
+The Ma geometry produces KK massive gauge bosons with masses
 M_KK = n × 2πℏc / L_tube.  These generate Yukawa corrections
 to the Coulomb potential:
 
@@ -12,7 +12,7 @@ The Yukawa terms modify the hydrogen 2S-2P splitting (Lamb shift).
 Standard QED predicts 1057.833 MHz.  Measured: 1057.845(9) MHz.
 The residual ~0.012 MHz (with large uncertainty) could constrain r_e.
 
-We compute the T⁶ Yukawa contribution to the Lamb shift as a
+We compute the Ma Yukawa contribution to the Lamb shift as a
 function of r_e and find the r_e (if any) that matches.
 """
 
@@ -21,8 +21,8 @@ import numpy as np
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 
-from lib.t6 import (
-    alpha_kk, mu_12, solve_shear_for_alpha,
+from lib.ma import (
+    alpha_ma, mu_12, solve_shear_for_alpha,
     hbar_c_MeV_fm, M_E_MEV, M_P_MEV, ALPHA,
 )
 
@@ -39,7 +39,7 @@ print("R31 TRACK 4: HYDROGEN LAMB SHIFT AS r_e PROBE")
 print("=" * 72)
 
 
-# ── Section 1: The Lamb shift and T⁶ contribution ───────────────
+# ── Section 1: The Lamb shift and Ma contribution ───────────────
 
 print("\n\n── Section 1: Lamb shift overview ──\n")
 
@@ -49,10 +49,10 @@ print(f"    QED theory:   {LAMB_QED:.3f} MHz")
 print(f"    Residual:     {LAMB_RESIDUAL:+.3f} ± 0.009 MHz")
 print()
 print(f"  The residual is within experimental uncertainty —")
-print(f"  could be zero, or could be new physics (T⁶ Yukawa).")
+print(f"  could be zero, or could be new physics (Ma Yukawa).")
 print()
 print(f"  Bohr radius: a₀ = {a0_fm:,.0f} fm")
-print(f"  For T⁶ Yukawa to affect 2S-2P:")
+print(f"  For Ma Yukawa to affect 2S-2P:")
 print(f"    Yukawa range must be comparable to a₀")
 print(f"    → KK mass M ~ ℏc/a₀ = {hbar_c_MeV_fm/a0_fm*1e6:.1f} eV")
 print(f"    Or shorter range if the 2S wavefunction overlaps")
@@ -166,7 +166,7 @@ print()
 # More careful: integrate with 2S wavefunction
 def yukawa_lamb_correction(r_e, n_kk_max=10):
     """
-    Compute ΔE_Lamb from T⁶ Yukawa corrections.
+    Compute ΔE_Lamb from Ma Yukawa corrections.
 
     Uses exact integration of 2S wavefunction with Yukawa potential.
 
@@ -305,7 +305,7 @@ if lamb_results:
     print(f"    (a) The KK massive modes DON'T couple as assumed")
     print(f"    (b) There are cancellations between different KK towers")
     print(f"    (c) The effective theory breaks down at the tube scale")
-    print(f"    (d) The naive Yukawa picture is wrong for T⁶")
+    print(f"    (d) The naive Yukawa picture is wrong for Ma")
 
 
 # ── Section 5: Constraints on r_e from Lamb shift ───────────────
@@ -313,8 +313,8 @@ if lamb_results:
 print("\n\n── Section 5: Constraints on r_e ──\n")
 
 print("  The Lamb shift measurement has uncertainty ±0.009 MHz.")
-print("  The T⁶ Yukawa correction must satisfy:")
-print(f"    |ΔE_T⁶| < {LAMB_RESIDUAL + 0.009:.3f} MHz (upper bound)")
+print("  The Ma Yukawa correction must satisfy:")
+print(f"    |ΔE_Ma| < {LAMB_RESIDUAL + 0.009:.3f} MHz (upper bound)")
 print()
 
 print("  The Lamb shift constraint is moot — the naive Yukawa")
@@ -327,7 +327,7 @@ print(f"    r_e > 68.5:      Bohr radius < tube size (R30 F23)")
 print(f"    Viable range:    0.26 < r_e < 68.5")
 print(f"    Lamb shift:      ALL r_e ruled out by naive KK Yukawa")
 print()
-print("  This does NOT necessarily rule out the T⁶ model —")
+print("  This does NOT necessarily rule out the Ma model —")
 print("  it rules out the NAIVE ASSUMPTION that each KK massive")
 print("  mode couples with the same strength as the massless mode.")
 
@@ -340,7 +340,7 @@ print("  The Lamb shift is a ~1000 MHz splitting.")
 print("  QED accounts for it to 6 significant figures.")
 print(f"  The residual ({LAMB_RESIDUAL:.3f} MHz) is at the 7th digit.")
 print()
-print("  The T⁶ Yukawa correction at r_e = 6.6:")
+print("  The Ma Yukawa correction at r_e = 6.6:")
 res_66 = yukawa_lamb_correction(6.6)
 if res_66:
     print(f"    ΔE = {res_66['dE_MHz']:.4f} MHz")
@@ -390,7 +390,7 @@ print("  4. CONCLUSION: The naive KK Yukawa coupling is ruled")
 print("     out.  The KK massive modes CANNOT couple to electrons")
 print("     with the same strength (α) as the massless mode.")
 print()
-print("  5. This is actually a PREDICTION: T⁶ predicts that the")
+print("  5. This is actually a PREDICTION: Ma predicts that the")
 print("     effective coupling of KK massive modes must be")
 print("     suppressed relative to α.  The Lamb shift requires")
 print("     suppression by a factor of at least ~10⁵.")
@@ -401,4 +401,4 @@ print("         overlap with point-like particle wavefunctions")
 print("     (b) Renormalization — running coupling from the")
 print("         KK mass scale down to atomic scales")
 print("     (c) The gauge field is NOT simply off-diagonal")
-print("         metric — it may have a different origin in T⁶")
+print("         metric — it may have a different origin in Ma")

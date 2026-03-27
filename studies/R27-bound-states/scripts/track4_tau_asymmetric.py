@@ -23,11 +23,11 @@ from scipy.optimize import minimize, differential_evolution, brentq
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 
-from lib.t6_solver import (
+from lib.ma_solver import (
     self_consistent_metric, self_consistent_metric_asym,
     find_modes, CROSS_INDICES,
 )
-from lib.t6 import (
+from lib.ma import (
     mode_energy, mode_charge, mode_spin_label,
     M_P_MEV, M_E_MEV, M_N_MEV,
 )

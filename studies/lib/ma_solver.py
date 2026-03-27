@@ -1,8 +1,8 @@
 """
-T⁶ discovery engine — search for oscillation patterns matching
+Ma discovery engine — search for oscillation patterns matching
 target particle properties.
 
-Sits on top of lib/t6.py.  Provides:
+Sits on top of lib/ma.py.  Provides:
 
   find_modes()              Search for modes matching a target
                             (mass, charge, spin).
@@ -19,7 +19,7 @@ Sits on top of lib/t6.py.  Provides:
 TYPICAL USAGE
 =============
 
-    from lib.t6_solver import find_modes, self_consistent_metric
+    from lib.ma_solver import find_modes, self_consistent_metric
 
     # Find charge-0, spin-½ modes near the neutron mass
     results = find_modes(
@@ -36,7 +36,7 @@ TYPICAL USAGE
         print(r)
 
     # Optimize cross-shears to match neutron + muon simultaneously
-    from lib.t6_solver import multi_target_optimize
+    from lib.ma_solver import multi_target_optimize
 
     targets = [
         {'mass_MeV': 939.565, 'charge': 0, 'spin_halves': 1},
@@ -56,11 +56,11 @@ import numpy as np
 from itertools import product as iproduct
 from scipy.optimize import minimize, differential_evolution
 
-from lib.t6 import (
+from lib.ma import (
     build_scaled_metric, compute_scales, mode_energy, mode_charge,
     mode_spin, is_positive_definite, hbar_c_MeV_fm,
     M_E_MEV, M_P_MEV, M_N_MEV, S34,
-    alpha_kk, solve_shear_for_alpha, mu_12,
+    alpha_ma, solve_shear_for_alpha, mu_12,
 )
 
 
@@ -121,7 +121,7 @@ def self_consistent_metric(r_e, r_nu, r_p,
                            sigma_ep=0.0, sigma_enu=0.0, sigma_nup=0.0,
                            tol=1e-12, max_iter=50):
     """
-    Build a T⁶ metric where input particle masses are exact.
+    Build a Ma metric where input particle masses are exact.
 
     Iteratively adjusts L₂ (electron ring), L₄ (neutrino ring),
     and L₆ (proton ring) so that:
@@ -309,7 +309,7 @@ def find_modes(target_mass_MeV, target_charge=None, target_spin_halves=None,
                n_max=5, mass_tolerance_MeV=10.0,
                self_consistent=True, max_results=50):
     """
-    Search for T⁶ modes matching target properties.
+    Search for Ma modes matching target properties.
 
     Parameters
     ----------

@@ -35,10 +35,10 @@ import numpy as np
 from scipy.optimize import brentq
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
-from lib.t6 import (
+from lib.ma import (
     build_scaled_metric, mode_energy, mode_charge, mode_spin,
     mode_spin_label, compute_scales, is_positive_definite,
-    alpha_kk, solve_shear_for_alpha, mu_12,
+    alpha_ma, solve_shear_for_alpha, mu_12,
     hbar_c_MeV_fm, M_E_MEV, M_P_MEV, M_N_MEV, DM2_21, S34,
 )
 from lib.constants import alpha as ALPHA

@@ -4,7 +4,7 @@ R33 Track 8: Wave-optics coupling through the shear aperture.
 
 The shear s creates a physical displacement δ = s × L₂ between
 adjacent lattice rows on the T².  This displacement is the "aperture"
-through which compact modes radiate into R³.
+through which material modes radiate into R³.
 
 Track 1 used a geometric (Fourier) charge integral:
     Q ∝ sin(2πs) / (n₂ - s)
@@ -31,7 +31,7 @@ import math
 import numpy as np
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
-from lib.t6 import solve_shear_for_alpha, alpha_kk, ALPHA
+from lib.ma import solve_shear_for_alpha, alpha_ma, ALPHA
 
 
 def geometric_coupling(n2, s):
@@ -79,7 +79,7 @@ def cavity_slit_radiation(n2, s, r, n_terms=200):
 
     Combined: P ∝ |A|² × (k_free × d)²
 
-    For the compact mode, λ_free = c/f = (L₂/n₂) × (L₂/L_mode),
+    For the material mode, λ_free = c/f = (L₂/n₂) × (L₂/L_mode),
     but we're radiating into R³ where the free-space wavelength is
     λ = 2πℏc/E = λ̄_C.  The mode energy sets k_free.
 

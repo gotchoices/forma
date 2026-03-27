@@ -8,7 +8,7 @@ Scripts: [`scripts/track1_neutron_mass.py`](scripts/track1_neutron_mass.py),
 
 ### F1. Library validation — R26 results reproduced exactly
 
-The shared T⁶ library (`lib/t6.py`) reproduces all R26 reference
+The shared material-sheet library (`lib/ma.py`) reproduces all R26 reference
 results at zero cross-shear:
 
     electron (1,2,0,0,0,0):  E = 0.5110 MeV  ✓
@@ -181,16 +181,16 @@ The quantitative identification of which mode IS the neutron is
 the open problem.
 
 
-## Track 2. T⁶ mode solver (discovery engine)
+## Track 2. Ma mode solver (discovery engine)
 
 Script: [`scripts/track3_neutron_discovery.py`](scripts/track3_neutron_discovery.py)
-(Track 2 deliverable is the library itself: `lib/t6_solver.py`)
+(Track 2 deliverable is the library itself: `lib/ma_solver.py`)
 
 
 ### F9. Discovery engine built and validated
 
-A solver library (`lib/t6_solver.py`) was built on top of
-`lib/t6.py` providing:
+A solver library (`lib/ma_solver.py`) was built on top of
+`lib/ma.py` providing:
 
 - **`find_modes()`** — search for modes matching target mass,
   charge, and spin, with self-consistent circumferences.
@@ -1247,10 +1247,10 @@ Hydrogen = proton + electron bound at 13.6 eV.  This is
 2. Solving for the ground state of the interacting system.
 3. Verifying that the binding energy is ~13.6 eV.
 
-Our `lib/t6.py` and `lib/t6_solver.py` handle single-mode
+Our `lib/ma.py` and `lib/ma_solver.py` handle single-mode
 energies.  For hydrogen, we'd need to extend the library
 with mode-mode interaction terms — effectively building a
-second-quantized (or at least two-body) version of the T⁶
+second-quantized (or at least two-body) version of the Ma
 model.  This is a substantial extension.
 
 **Recommendation:** Hydrogen should be a **new study (R29)**,

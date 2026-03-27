@@ -23,7 +23,7 @@ import os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 
 import math
-from lib.t6 import (alpha_kk, solve_shear_for_alpha, mu_12,
+from lib.ma import (alpha_ma, solve_shear_for_alpha, mu_12,
                      compute_scales, hbar_c_MeV_fm, M_E_MEV, ALPHA)
 
 # ═══════════════════════════════════════════════════════════════════
@@ -122,7 +122,7 @@ def surface_energy_from_equilibrium(geom):
     For a torus, the Young-Laplace pressure balance:
         P_rad = σ_m × (mean curvature)
 
-    For a flat KK torus (zero intrinsic curvature), use instead
+    For a flat Kaluza-Klein torus (zero intrinsic curvature), use instead
     the variational approach: at equilibrium ∂E_total/∂L = 0.
 
         E_photon = ℏc × 2π μ / L₁    (decreases with L₁)
@@ -172,13 +172,13 @@ def main():
 
     r_e = 6.6  # canonical aspect ratio
     s_e = solve_shear_for_alpha(r_e)
-    alpha_check = alpha_kk(r_e, s_e)
+    alpha_check = alpha_ma(r_e, s_e)
 
     print(f"""
   Electron (1,2) mode on sheared T²:
     Aspect ratio r = {r_e}
     Shear s = {s_e:.6f}  (from α = 1/137)
-    α_KK(r, s) = {alpha_check:.6f}  (target: {ALPHA:.6f})
+    α_Ma(r, s) = {alpha_check:.6f}  (target: {ALPHA:.6f})
     μ₁₂ = {mu_12(r_e, s_e):.6f}
 
   Compton wavelength:

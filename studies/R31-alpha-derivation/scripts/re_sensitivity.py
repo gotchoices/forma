@@ -9,8 +9,8 @@ import numpy as np
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 
-from lib.t6_solver import self_consistent_metric
-from lib.t6 import mode_energy, hbar_c_MeV_fm
+from lib.ma_solver import self_consistent_metric
+from lib.ma import mode_energy, hbar_c_MeV_fm
 
 R_E, R_NU, R_P = 6.6, 5.0, 8.906
 SIGMA_EP = -0.09064

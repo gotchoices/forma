@@ -116,8 +116,8 @@ that the T⁶ does not naturally produce these masses.
 
 ## Infrastructure
 
-Uses `lib/t6.py` and `lib/t6_solver.py` from R27.  May
-require extensions to `t6_solver.py` for mode census and
+Uses `lib/ma.py` and `lib/ma_solver.py` from R27.  May
+require extensions to `ma_solver.py` for mode census and
 high-energy search.
 
 Scripts go in `R28-particle-spectrum/scripts/`.

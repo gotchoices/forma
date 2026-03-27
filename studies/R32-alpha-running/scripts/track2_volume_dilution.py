@@ -3,7 +3,7 @@
 R32 Track 2: Volume dilution and the high-energy coupling.
 
 In Kaluza-Klein theory, the 4D gauge coupling is related to
-the higher-dimensional coupling by the volume of the compact
+the higher-dimensional coupling by the volume of the material
 space:
 
     α₄ = α_D / V_compact   (in appropriate units)
@@ -13,11 +13,11 @@ on a d-dimensional torus, the 4D coupling is:
 
     g₄² = g_{4+d}² / V_d
 
-where V_d is the volume of the compact space in units of
+where V_d is the volume of the material space in units of
 the fundamental length scale.
 
 This script computes:
-1. The physical volume of each T² sheet and of T⁶
+1. The physical volume of each material sheet and of Ma
 2. The "bare" higher-dimensional coupling α_D = α × V / V_ref
 3. Whether α_D is a recognizable geometric constant
 4. Dimensionless volume ratios between sheets
@@ -30,8 +30,8 @@ import numpy as np
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 
-from lib.t6_solver import self_consistent_metric
-from lib.t6 import (
+from lib.ma_solver import self_consistent_metric
+from lib.ma import (
     M_P_MEV, M_E_MEV, M_N_MEV, hbar_c_MeV_fm, ALPHA,
 )
 
@@ -62,10 +62,10 @@ A_p = L[4] * L[5]
 V_t6 = A_e * A_nu * A_p
 
 print(f"\nSheet areas:")
-print(f"  Electron T²:  A_e  = L₁ × L₂ = {A_e:.4e} fm²")
-print(f"  Neutrino T²:  A_ν  = L₃ × L₄ = {A_nu:.4e} fm²")
-print(f"  Proton T²:    A_p  = L₅ × L₆ = {A_p:.4e} fm²")
-print(f"\n  Full T⁶ volume: V = {V_t6:.4e} fm⁶")
+print(f"  Electron Ma_e:  A_e  = L₁ × L₂ = {A_e:.4e} fm²")
+print(f"  Neutrino Ma_ν:  A_ν  = L₃ × L₄ = {A_nu:.4e} fm²")
+print(f"  Proton Ma_p:    A_p  = L₅ × L₆ = {A_p:.4e} fm²")
+print(f"\n  Full Ma volume: V = {V_t6:.4e} fm⁶")
 
 # ── Compton wavelengths for reference ────────────────────────────────
 
@@ -96,18 +96,18 @@ print(f"\n  Ratio A_e/A_p = {A_e/A_p:.4e}")
 print(f"  Ratio A_ν/A_e = {A_nu/A_e:.4e}")
 print(f"  Ratio A_ν/A_p = {A_nu/A_p:.4e}")
 
-# ── KK volume dilution ───────────────────────────────────────────────
+# ── Kaluza-Klein volume dilution ──────────────────────────────────────
 #
-# In KK theory for a single extra dimension of radius R:
+# In Kaluza-Klein theory for a single extra dimension of radius R:
 #   α₄ = α₅ / (2πR)
 # where α₅ has dimensions of [length].
 #
-# For 2 extra dimensions (one T²):
+# For 2 extra dimensions (one material sheet):
 #   α₄ = α₆ / A
 # where α₆ has dimensions of [length²].
 #
 # The dimensionless "bare" coupling is obtained by measuring
-# the volume in natural units.  For a T² with circumferences
+# the volume in natural units.  For a material sheet with circumferences
 # L₁, L₂, the natural unit of area is (2πλ_C)² where λ_C
 # is the Compton wavelength of the particle defining the scale.
 #
@@ -154,8 +154,8 @@ print(f"  μ₁₂(proton)   = L₆/(2πλ_p) = {mu_p:.6f}")
 print(f"  These encode the shear: L = 2πλ_C × μ₁₂")
 
 # ── Effective 4+2 coupling (electron sheet only) ─────────────────────
-# If we treat the electron sheet as a 2D compact space and
-# the proton/neutrino sheets as decoupled, the KK relation is:
+# If we treat the electron sheet as a 2D material space and
+# the proton/neutrino sheets as decoupled, the Kaluza-Klein relation is:
 #   α₄ = g₆² / A_e
 # So g₆² = α₄ × A_e = α × L₁ × L₂
 
@@ -236,7 +236,7 @@ print("THE BARE COUPLING QUESTION")
 print("="*70)
 
 print(f"""
-The KK volume dilution says:
+The Kaluza-Klein volume dilution says:
     α₄ = α_D / V_dimensionless
 
 If α₄ = 1/137 and V_dimensionless = A/(2πλ)²:
@@ -307,7 +307,7 @@ print(f"""
    electron sheet.  This volume ratio provides a natural
    explanation for why weak interactions are weak: the
    coupling is geometrically diluted by the enormous
-   neutrino compact space.
+   neutrino material space.
 
 5. The naive volume dilution does not produce 1/24 or any
    other immediately recognizable geometric constant.  The

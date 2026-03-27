@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-R31 Track 5: R³ vs T⁶ — the electron-proton energy landscape.
+R31 Track 5: R³ vs Ma — the electron-proton energy landscape.
 
 Two binding regimes:
-  R³ binding (atom):     separate T⁶ modes, Coulomb across R³
-  T⁶ merger  (neutron):  single T⁶ mode, same R³ point
+  R³ binding (atom):     separate Ma modes, Coulomb across R³
+  Ma merger  (neutron):  single Ma mode, same R³ point
 
 Which is lower energy?  What's the energy landscape between them?
 """
@@ -14,8 +14,8 @@ import numpy as np
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 
-from lib.t6_solver import self_consistent_metric
-from lib.t6 import mode_energy, mode_charge, mode_spin, M_P_MEV, M_E_MEV, ALPHA, hbar_c_MeV_fm
+from lib.ma_solver import self_consistent_metric
+from lib.ma import mode_energy, mode_charge, mode_spin, M_P_MEV, M_E_MEV, ALPHA, hbar_c_MeV_fm
 
 R_E, R_NU, R_P = 6.6, 5.0, 8.906
 SIGMA_EP = -0.09064
@@ -26,7 +26,7 @@ L = sc['L']
 
 
 print("=" * 72)
-print("R31 TRACK 5: R³ vs T⁶ — ELECTRON-PROTON ENERGY LANDSCAPE")
+print("R31 TRACK 5: R³ vs Ma — ELECTRON-PROTON ENERGY LANDSCAPE")
 print("=" * 72)
 
 
@@ -48,7 +48,7 @@ print(f"    Sum (∞ separation):    {E_H_separated:.6f} MeV")
 print(f"    Coulomb binding:       −{13.6e-6*1e6:.1f} eV")
 print(f"    Hydrogen ground state: {E_H_bound:.6f} MeV")
 print()
-print(f"  Regime 2: T⁶ MERGER (neutron)")
+print(f"  Regime 2: Ma MERGER (neutron)")
 print(f"    Neutron mode energy:   {E_neutron:.6f} MeV")
 print(f"    Mode: (0, −2, 1, 0, 0, 2)")
 print()
@@ -158,17 +158,17 @@ print("  TRANSITION PICTURE:")
 print("  ───────────────────")
 print(f"  r > a₀ ({a0_fm:.0f} fm):     Free e + p, barely interacting")
 print(f"  r ~ a₀:                      Hydrogen atom (Coulomb bound)")
-print(f"  r ~ L₁ ({L_tube_e:.0f} fm):  Electron 'sees' compact geometry")
+print(f"  r ~ L₁ ({L_tube_e:.0f} fm):  Electron 'sees' material geometry")
 print(f"  r ~ L₂ ({L_ring_e:.0f} fm):  Electron wave overlaps with ring")
 print(f"  r ~ L₅ ({L_tube_p:.1f} fm):  Proton tube scale (nuclear physics)")
 print(f"  r ~ L₆ ({L_ring_p:.2f} fm):  Proton ring scale (deep nuclear)")
-print(f"  r → 0:                        T⁶ merger → neutron")
+print(f"  r → 0:                        Ma merger → neutron")
 print()
 print(f"  The merger costs {merger_cost:.3f} MeV.  This energy must come")
 print(f"  from somewhere — in nuclear physics, it comes from a")
 print(f"  high-energy collision or weak interaction.  In our model,")
 print(f"  it corresponds to the energy difference between the")
-print(f"  separated T⁶ modes and the merged neutron mode.")
+print(f"  separated Ma modes and the merged neutron mode.")
 
 
 # ── Section 4: Why hydrogen doesn't collapse ────────────────────
@@ -195,18 +195,18 @@ print(f"  neutron star formation) where ~MeV energies are available.")
 print()
 print("  At room temperature, kT = 0.026 eV — ten million times")
 print("  below the merger threshold.  Hydrogen is stable because")
-print("  the T⁶ merger state (neutron) costs 0.8 MeV more energy.")
+print("  the Ma merger state (neutron) costs 0.8 MeV more energy.")
 
 
 # ── Section 5: The two-tier physics summarized ───────────────────
 
 print("\n\n── Section 5: Two-tier physics — complete picture ──\n")
 
-print("  TIER 1: T⁶ (compact geometry)")
+print("  TIER 1: Ma (material geometry)")
 print("  ─────────────────────────────")
 print("  - Determines WHAT particles exist (mode spectrum)")
 print("  - Sets particle masses (circumferences + shear)")
-print("  - Sets nuclear masses (nuclei = T⁶ modes)")
+print("  - Sets nuclear masses (nuclei = Ma modes)")
 print("  - Energy scale: MeV to GeV")
 print("  - Free variable: α (shear) — not yet determined")
 print()
@@ -219,11 +219,11 @@ print("  - Energy scale: eV to keV")
 print("  - Requires: α from Tier 1")
 print()
 print("  THE BRIDGE: α connects the tiers.")
-print("  α is a property of T⁶ geometry (shear) that determines")
+print("  α is a property of Ma geometry (shear) that determines")
 print("  the strength of R³ interactions (Coulomb).  It emerges")
-print("  from the compact geometry but governs extended-space physics.")
+print("  from the material geometry but governs extended-space physics.")
 print()
-print("  To derive α is to understand HOW T⁶ produces R³ forces.")
+print("  To derive α is to understand HOW Ma produces R³ forces.")
 print("  The KK reduction MECHANISM is understood (R29 Track 1).")
 print("  The STRENGTH (specific value of α) is not yet predicted.")
 
@@ -233,21 +233,21 @@ print("  The STRENGTH (specific value of α) is not yet predicted.")
 print("\n\n── Summary ──\n")
 
 print(f"  1. Hydrogen (R³ bound) is {delta:.3f} MeV lighter than")
-print(f"     the neutron (T⁶ merged).  This is WHY atoms exist")
+print(f"     the neutron (Ma merged).  This is WHY atoms exist")
 print(f"     and are stable — the separated state is lower energy.")
 print()
 print(f"  2. The energy landscape has TWO regimes:")
 print(f"     - Coulomb (R³): deepens as 1/r, reaches −13.6 eV at a₀")
-print(f"     - Merger (T⁶): costs +{merger_cost:.3f} MeV, produces neutron")
+print(f"     - Merger (Ma): costs +{merger_cost:.3f} MeV, produces neutron")
 print()
 print(f"  3. The merger barrier ({delta:.3f} MeV) is ~60,000× the")
 print(f"     atomic binding energy (13.6 eV).  Atoms are stable")
 print(f"     against collapse by a factor of 60,000.")
 print()
 print(f"  4. The two-tier picture is self-consistent:")
-print(f"     - T⁶ makes particles and nuclei (MeV scale)")
+print(f"     - Ma makes particles and nuclei (MeV scale)")
 print(f"     - R³ makes atoms (eV scale)")
 print(f"     - α bridges the two (geometry → force strength)")
 print()
 print(f"  5. Deriving α is deriving the bridge between")
-print(f"     compact geometry and extended-space physics.")
+print(f"     material geometry and extended-space physics.")

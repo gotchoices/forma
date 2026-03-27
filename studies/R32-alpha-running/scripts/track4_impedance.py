@@ -21,8 +21,8 @@ from scipy.special import gamma as Gamma
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 
-from lib.t6_solver import self_consistent_metric
-from lib.t6 import (
+from lib.ma_solver import self_consistent_metric
+from lib.ma import (
     M_P_MEV, M_E_MEV, M_N_MEV, hbar_c_MeV_fm, ALPHA,
     mu_12,
 )
@@ -56,20 +56,20 @@ print("""
 
   DIAGONAL (10):
     4 non-compact (g_tt, g_xx, g_yy, g_zz)
-    6 compact (g_θ₁θ₁, ..., g_θ₆θ₆)
+    6 material (g_θ₁θ₁, ..., g_θ₆θ₆)
 
   OFF-DIAGONAL (45):
     Category                          Count   What it becomes in 4D
     ─────────────────────────────────────────────────────────────────
     g_{μν} (μ≠ν, non-compact)           6     Gravity (4D graviton)
-    g_{μi} (non-compact × compact)     24     Gauge fields (6 KK vectors)
+    g_{μi} (non-compact × material)    24     Gauge fields (6 Kaluza-Klein vectors)
     g_{ij} (i≠j, within same T²)        3     Shears (s₁₂, s₃₄, s₅₆)
     g_{ij} (i≠j, cross-sheet)          12     Cross-sheet couplings
     ─────────────────────────────────────────────────────────────────
     Total off-diagonal                 45
 
   The 24 gauge components decompose per sheet:
-    Sheet      compact dims    g_{μi} components
+    Sheet      material dims   g_{μi} components
     ────────────────────────────────────────────
     Electron   θ₁, θ₂         4 × 2 = 8
     Neutrino   θ₃, θ₄         4 × 2 = 8
@@ -108,11 +108,11 @@ weights = 1.0 / np.array(L)**2
 total_gauge_weight = np.sum(weights)
 
 # EM field comes from the electron ring (θ₂) in the simplest model
-# Actually, the photon in KK is a combination of all gauge fields
+# Actually, the photon in Kaluza-Klein is a combination of all gauge fields
 # weighted by the charges.  For Q = -n₁ + n₅, the photon couples
 # to the electron tube (θ₁) and proton tube (θ₅).
 
-# Weight per gauge field (2 compact dims each, summed):
+# Weight per gauge field (2 material dims each, summed):
 sheet_weights = {
     "Electron (θ₁,θ₂)": weights[0] + weights[1],
     "Neutrino (θ₃,θ₄)": weights[2] + weights[3],
@@ -177,7 +177,7 @@ For d = 10:
 For R³ (3 spatial dims out of 10):
     Fraction = 3/10 = 0.3
 
-For T² (2 compact dims out of 10):
+For T² (2 material dims out of 10):
     Fraction = 2/10 = 0.2
 """)
 
@@ -187,13 +187,13 @@ For T² (2 compact dims out of 10):
 # Most compact energy stays trapped as rest mass.
 
 # Better model: at the source, energy goes equally into all
-# d dimensions.  In the compact dimensions, it bounces back
+# d dimensions.  In the material dimensions, it bounces back
 # (periodic BC) and forms standing waves = rest mass.  In the
 # open dimensions, it propagates away = radiation.
 #
 # The fraction that escapes is determined by the boundary:
 # how much of the internal standing wave's energy leaks out
-# through the "walls" of the compact space at each reflection?
+# through the "walls" of the material space at each reflection?
 
 # For a cavity with quality factor Q:
 #   Energy lost per cycle = 2π/Q × stored energy
@@ -255,7 +255,7 @@ print(f"  T² mode density at m_e:  ρ₂/A = {rho2_per_area:.4e} / (fm² · MeV
 
 # The coupling between T² and R³ at a point involves:
 # mode overlap ∝ ρ₂(E) × ρ₃(E) × |coupling matrix element|²
-# The matrix element for KK is ∝ 1/√A (wavefunction normalization on T²)
+# The matrix element for Kaluza-Klein is ∝ 1/√A (wavefunction normalization on T²)
 # So the coupling ∝ ρ₂ × ρ₃ / A ∝ E/(2πℏc)² × E²/(2πℏc)³
 
 # More directly: the radiation rate of a T² mode into R³
@@ -326,7 +326,7 @@ print("=" * 70)
 # time it hits a "wall" (completes one circuit), some fraction
 # leaks out.  The fraction is the radiation efficiency.
 #
-# In d_compact dimensions radiating into d_open dimensions:
+# In d_material dimensions radiating into d_open dimensions:
 #   The radiation fraction per bounce is:
 #   f = (Ω_{d_open} / Ω_{d_total}) × (a/λ)^{d_open - 1}
 #   where a is the aperture size and λ is the wavelength.
@@ -370,8 +370,8 @@ for d in range(2, 11):
 for d_compact, d_open, label in [
     (2, 3, "T² → R³ (ignore time)"),
     (2, 4, "T² → R³⁺¹ (include time)"),
-    (6, 3, "T⁶ → R³"),
-    (6, 4, "T⁶ → R³⁺¹"),
+    (6, 3, "Ma → R³"),
+    (6, 4, "Ma → R³⁺¹"),
 ]:
     d_total = d_compact + d_open
     f_escape = d_open / (d_total - 1)
@@ -427,7 +427,7 @@ cases = [
     (4, 6, "R³⁺¹ in T²×R³⁺¹"),
     (3, 10, "R³ in full 10D"),
     (4, 10, "R³⁺¹ in full 10D"),
-    (6, 10, "T⁶ in full 10D"),
+    (6, 10, "Ma in full 10D"),
 ]
 
 for k, d, desc in cases:
@@ -468,7 +468,7 @@ print("=" * 70)
 # On a sheared T², the metric is:
 #   ds² = L₂²(dθ₁² + 2s dθ₁dθ₂ + (1/r² + s²) dθ₂²)  (approximate)
 #
-# Wait — let me use the actual T⁶ metric.
+# Wait — let me use the actual Ma metric.
 # For a single T² with tube circumference L₁ = rL₂ and shear s:
 #   G = L₂² × [[r², rs], [rs, 1]]
 #
@@ -697,13 +697,13 @@ Together: {factor_r2 * factor_mu:.1f} × {factor_sin2:.2e} × {1/factor_denom:.4
 # Actually: 131 = r² × μ / X for some X
 # r² × μ = 87.6, so 131/87.6 = 1.49... hmm.
 
-# Let me just check what the code actually does in lib/t6.py
+# Let me just check what the code actually does in lib/ma.py
 # for the alpha formula.
 
 print(f"\nNote: the α formula decomposition shows α is controlled by")
 print(f"sin²(2πs) — the shear leak — with geometric prefactors from")
 print(f"the aspect ratio.  The channel counting (24 gauge components,")
-print(f"8 per sheet) enters through the KK gauge field normalization")
+print(f"8 per sheet) enters through the Kaluza-Klein gauge field normalization")
 print(f"in the 4π factor.")
 
 
@@ -730,7 +730,7 @@ SUB-TRACK RESULTS:
   This gives 1/α ≈ {R_E * mu_e**2:.0f} — close to the right
   order of magnitude but depends on the unconstrained r_e.
   The model captures the RIGHT PHYSICS: the coupling depends
-  on the compact area relative to the wavelength squared.
+  on the material area relative to the wavelength squared.
 
 4c — Solid angle fractions:
   R³ in 10D: fraction = 3/10 = 0.3

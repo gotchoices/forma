@@ -1,23 +1,24 @@
 """
-T⁶ model — shared infrastructure for compact-dimension studies.
+Ma model — shared infrastructure for material-dimension studies.
 
-Provides the T⁶ metric, mode energy/charge/spin calculations,
+Provides the Ma metric, mode energy/charge/spin calculations,
 and spectral scanning tools.  Used by R26, R27, R28, and any
-future study that works with the six-dimensional compact space.
+future study that works with the six-dimensional material space.
 
 
 PHYSICAL PICTURE
 ================
 
-Three flat T² subplanes (electron, neutrino, proton) are embedded
-in a single T⁶.  Each particle is a standing wave (mode) on the
-T⁶, characterized by six integer quantum numbers n = (n₁, ..., n₆).
+Three flat material sheets Ma_e, Ma_ν, Ma_p (electron, neutrino,
+proton) are embedded in a single Ma.  Each particle is a standing
+wave (mode) on Ma, characterized by six integer quantum numbers
+n = (n₁, ..., n₆).
 
 The six dimensions are organized in three pairs:
 
-    Indices 0, 1  →  electron T²   (θ₁ = tube, θ₂ = ring)
-    Indices 2, 3  →  neutrino T²   (θ₃ = tube, θ₄ = ring)
-    Indices 4, 5  →  proton T²     (θ₅ = tube, θ₆ = ring)
+    Indices 0, 1  →  Ma_e  (θ₁ = tube, θ₂ = ring)
+    Indices 2, 3  →  Ma_ν  (θ₃ = tube, θ₄ = ring)
+    Indices 4, 5  →  Ma_p  (θ₅ = tube, θ₆ = ring)
 
 Each pair has a "tube" direction (odd index: 0, 2, 4) and a
 "ring" direction (even index: 1, 3, 5).  Spin and charge are
@@ -27,18 +28,18 @@ determined by tube windings only.
 PARAMETERS
 ==========
 
-The T⁶ geometry is specified by:
+The Ma geometry is specified by:
 
   3 aspect ratios:   r_e, r_nu, r_p  (tube/ring circumference ratio
-                     for each T²; unconstrained, r > 0)
+                     for each material sheet; unconstrained, r > 0)
 
   3 within-plane shears:  s₁₂, s₃₄, s₅₆  (determined by physics:
-                          s₁₂ and s₅₆ from α via KK formula,
+                          s₁₂ and s₅₆ from α via Ma formula,
                           s₃₄ = 0.02199 from neutrino Δm² ratio)
 
-  3 cross-plane shears:  σ_ep, σ_eν, σ_νp  (coupling between T²
-                         sheets; σ_ep ≈ 0.038 from neutron mass,
-                         others unconstrained)
+  3 cross-plane shears:  σ_ep, σ_eν, σ_νp  (coupling between
+                         material sheets; σ_ep ≈ 0.038 from
+                         neutron mass, others unconstrained)
 
   6 circumferences:  L₁, ..., L₆  (derived from masses and aspect
                      ratios; not independent parameters)
@@ -65,7 +66,7 @@ for G).  Mode energy in terms of G̃:
 TYPICAL USAGE
 =============
 
-    from lib.t6 import build_scaled_metric, mode_energy, mode_charge
+    from lib.ma import build_scaled_metric, mode_energy, mode_charge
 
     # Build metric for given aspect ratios and cross-shears
     Gt, Gti, L, info = build_scaled_metric(
@@ -88,7 +89,7 @@ ORIGINS
 =======
 
 Extracted from R26 Track 4a
-(studies/R26-neutrino-t4/scripts/track4a_t6_metric.py).
+(studies/R26-neutrino-t4/scripts/track4a_ma_metric.py).
 """
 
 import math
@@ -113,12 +114,12 @@ S34 = 0.02199       # neutrino within-plane shear, from
 
 
 # ══════════════════════════════════════════════════════════════════════
-#  α formula (KK convention, from R19 Track 8)
+#  α formula (material geometry convention, from R19 Track 8)
 # ══════════════════════════════════════════════════════════════════════
 
-def alpha_kk(r, s):
+def alpha_ma(r, s):
     """
-    Fine-structure constant from sheared T² geometry (KK convention).
+    Fine-structure constant from sheared material sheet geometry.
 
     Parameters
     ----------
@@ -134,7 +135,7 @@ def alpha_kk(r, s):
 
     Notes
     -----
-    Derived in R19 Track 8 (F35–F43).  Under the KK Compton
+    Derived in R19 Track 8 (F35–F43).  Under the Ma Compton
     constraint, the (1,2) mode energy μ₁₂ = √(1/r² + (2−s)²)
     and α depends on both r and s.  For each r > ~2, there exists
     an s that gives α = 1/137.036.
@@ -145,33 +146,33 @@ def alpha_kk(r, s):
 
 def solve_shear_for_alpha(r, alpha_target=ALPHA):
     """
-    Find the shear s that produces a target α on a T² with aspect ratio r.
+    Find the shear s that produces a target α on a material sheet with aspect ratio r.
 
     Parameters
     ----------
     r : float
-        Aspect ratio of the T².
+        Aspect ratio of the material sheet.
     alpha_target : float, optional
         Target fine-structure constant (default: measured α ≈ 1/137.036).
 
     Returns
     -------
     float or None
-        The shear s ∈ (0, 0.5) such that α_KK(r, s) = alpha_target,
+        The shear s ∈ (0, 0.5) such that α_ma(r, s) = alpha_target,
         or None if no solution exists for this r.
     """
     s_scan = np.linspace(0.001, 0.49, 3000)
-    a_scan = [alpha_kk(r, s) for s in s_scan]
+    a_scan = [alpha_ma(r, s) for s in s_scan]
     for i in range(len(s_scan) - 1):
         if (a_scan[i] - alpha_target) * (a_scan[i + 1] - alpha_target) < 0:
-            return brentq(lambda s: alpha_kk(r, s) - alpha_target,
+            return brentq(lambda s: alpha_ma(r, s) - alpha_target,
                           s_scan[i], s_scan[i + 1])
     return None
 
 
 def mu_12(r, s):
     """
-    Dimensionless energy of the (1,2) mode on a sheared T².
+    Dimensionless energy of the (1,2) mode on a sheared material sheet.
 
     The physical energy is E = E₀ × μ₁₂, where E₀ = 2πℏc/L_ring.
 
@@ -188,7 +189,7 @@ def mu_12(r, s):
 
 
 # ══════════════════════════════════════════════════════════════════════
-#  T⁶ metric construction
+#  Ma metric construction
 # ══════════════════════════════════════════════════════════════════════
 
 def compute_scales(r_e, r_nu, r_p):
@@ -196,9 +197,9 @@ def compute_scales(r_e, r_nu, r_p):
     Compute the 6 circumferences and 3 within-plane shears.
 
     The circumferences are derived from:
-      - Electron T²:  L₂ from m_e and μ₁₂(r_e, s₁₂);  L₁ = r_e × L₂
-      - Neutrino T²:  L₄ from Δm²₂₁ and s₃₄;  L₃ = r_ν × L₄
-      - Proton T²:    L₆ from m_p and μ₁₂(r_p, s₅₆);  L₅ = r_p × L₆
+      - Ma_e:  L₂ from m_e and μ₁₂(r_e, s₁₂);  L₁ = r_e × L₂
+      - Ma_ν:  L₄ from Δm²₂₁ and s₃₄;  L₃ = r_ν × L₄
+      - Ma_p:  L₆ from m_p and μ₁₂(r_p, s₅₆);  L₅ = r_p × L₆
 
     Parameters
     ----------
@@ -240,17 +241,17 @@ def compute_scales(r_e, r_nu, r_p):
 def build_scaled_metric(r_e, r_nu, r_p,
                         sigma_ep=0.0, sigma_enu=0.0, sigma_nup=0.0):
     """
-    Build the dimensionless T⁶ metric G̃ and circumferences L.
+    Build the dimensionless Ma metric G̃ and circumferences L.
 
     Constructs the 6×6 metric from aspect ratios (which determine
     circumferences and within-plane shears) and cross-plane shears
-    (which couple the three T² sheets).
+    (which couple the three material sheets).
 
     Parameters
     ----------
-    r_e : float    — electron T² aspect ratio
-    r_nu : float   — neutrino T² aspect ratio
-    r_p : float    — proton T² aspect ratio
+    r_e : float    — Ma_e aspect ratio
+    r_nu : float   — Ma_ν aspect ratio
+    r_p : float    — Ma_p aspect ratio
     sigma_ep : float, optional
         Electron–proton cross-shear (default 0).  Positive-definite
         metric requires |σ_ep| < ~0.535.  The neutron mass matches
@@ -329,13 +330,13 @@ def build_scaled_metric(r_e, r_nu, r_p,
 
 def mode_energy(n, Gtilde_inv, L, hbar_c=hbar_c_MeV_fm):
     """
-    Energy of a T⁶ mode in MeV.
+    Energy of a Ma mode in MeV.
 
     Parameters
     ----------
     n : array-like (6,)
         Integer quantum numbers (n₁, n₂, n₃, n₄, n₅, n₆).
-        Indices 0,1 = electron T², 2,3 = neutrino T², 4,5 = proton T².
+        Indices 0,1 = Ma_e, 2,3 = Ma_ν, 4,5 = Ma_p.
     Gtilde_inv : ndarray (6, 6)
         Inverse of the dimensionless metric (from build_scaled_metric).
     L : ndarray (6,)
@@ -362,7 +363,7 @@ def mode_energy(n, Gtilde_inv, L, hbar_c=hbar_c_MeV_fm):
 
 def mode_charge(n):
     """
-    Net electric charge of a T⁶ mode, in units of e.
+    Net electric charge of a Ma mode, in units of e.
 
     Charge arises from odd tube windings:
       n₁ (index 0, electron tube):  odd → contributes −sign(n₁) × e
@@ -444,7 +445,7 @@ def mode_spin_label(n):
 
 def scan_modes(Gtilde_inv, L, n_max=3, E_max_MeV=None):
     """
-    Enumerate all T⁶ modes and compute their properties.
+    Enumerate all Ma modes and compute their properties.
 
     Scans all integer quantum numbers with |n_i| ≤ n_max
     (excluding the zero mode).  The total number of modes is
@@ -523,14 +524,14 @@ def is_positive_definite(Gtilde):
 def epstein_zeta(Gtilde_inv, L, s_exp=5, n_max=3,
                  hbar_c=hbar_c_MeV_fm):
     """
-    Epstein zeta function for the T⁶ vacuum energy.
+    Epstein zeta function for the Ma vacuum energy.
 
     Computes Z(s) = Σ_{n ≠ 0} (ñᵀ G̃⁻¹ ñ)^{-s} where the sum
     runs over nonzero n ∈ Z⁶ with |n_i| ≤ n_max and ñ_i = n_i/L_i.
 
-    The Casimir (vacuum) energy of a massless scalar field on the
-    T⁶ is proportional to Z(s) with s = (d+D)/2 where d = 4
-    (spacetime) and D = 6 (compact), so s = 5.
+    The Casimir (vacuum) energy of a massless scalar field on
+    Ma is proportional to Z(s) with s = (d+D)/2 where d = 4
+    (spacetime) and D = 6 (material), so s = 5.
 
     Parameters
     ----------
@@ -552,10 +553,10 @@ def epstein_zeta(Gtilde_inv, L, s_exp=5, n_max=3,
 
     Notes
     -----
-    The sum is truncated at n_max.  For the T⁶ with extreme scale
-    hierarchy, the sum is dominated by the largest T² (neutrino,
-    L ~ mm) and converges rapidly.  See R26 F69, F71 for behavior
-    under cross-shear variation.
+    The sum is truncated at n_max.  For Ma with extreme scale
+    hierarchy, the sum is dominated by the largest material sheet
+    (Ma_ν, L ~ mm) and converges rapidly.  See R26 F69, F71 for
+    behavior under cross-shear variation.
     """
     from itertools import product
     Z = 0.0

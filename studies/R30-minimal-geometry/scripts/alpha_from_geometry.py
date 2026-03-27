@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Can α be DERIVED from the T⁶×R³ geometry rather than input?
+Can α be DERIVED from the Ma×R³ geometry rather than input?
 
 Currently α = 1/137 is an input: we solve for the shear s that
 produces it.  But the geometry also produces Yukawa corrections
@@ -11,9 +11,9 @@ Approach:
   1. Fix r_e, keep m_e = 0.511 MeV
   2. Sweep s from 0 to 0.49
   3. At each s, compute:
-     - α from the KK formula
+     - α from the Ma formula
      - L_ring, L_tube from circumference formula
-     - KK gauge boson masses (Yukawa masses)
+     - Ma gauge boson masses (Yukawa masses)
      - Hydrogen ground state with perturbative Yukawa corrections
      - Ratio of Yukawa correction to Coulomb binding
   4. Look for special values of α:
@@ -27,7 +27,7 @@ import numpy as np
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 
-from lib.t6 import alpha_kk, mu_12, hbar_c_MeV_fm, M_E_MEV, M_P_MEV
+from lib.ma import alpha_ma, mu_12, hbar_c_MeV_fm, M_E_MEV, M_P_MEV
 
 TWO_PI_HC = 2 * math.pi * hbar_c_MeV_fm
 ALPHA_OBS = 1.0 / 137.036
@@ -35,13 +35,13 @@ ALPHA_OBS = 1.0 / 137.036
 
 def hydrogen_with_yukawa(alpha, m_e, L_tube, n_kk_max=10):
     """
-    Hydrogen ground state energy with Yukawa corrections from KK modes.
+    Hydrogen ground state energy with Yukawa corrections from Ma modes.
 
     Returns binding energy (negative), Yukawa correction, and diagnostics.
     """
     if alpha <= 0:
         return {'E1': 0, 'dE_yukawa': 0, 'E_total': 0,
-                'yukawa_frac': 0, 'a0': float('inf'), 'lambda_kk': 0}
+                'yukawa_frac': 0, 'a0': float('inf'), 'lambda_ma': 0}
 
     a0 = hbar_c_MeV_fm / (m_e * alpha)  # Bohr radius in fm
 
@@ -123,13 +123,13 @@ def hydrogen_with_yukawa(alpha, m_e, L_tube, n_kk_max=10):
         'E_total': E_total,
         'yukawa_frac': yukawa_frac,
         'a0': a0,
-        'lambda_kk': lambda_1,
+        'lambda_ma': lambda_1,
         'lambda_over_a0': lambda_1 / a0 if a0 > 0 else 0,
     }
 
 
 print("=" * 72)
-print("CAN α BE DERIVED FROM T⁶ GEOMETRY?")
+print("CAN α BE DERIVED FROM Ma GEOMETRY?")
 print("=" * 72)
 
 
@@ -146,7 +146,7 @@ s_values = np.linspace(0.002, 0.49, 500)
 results = []
 
 for s in s_values:
-    alpha = alpha_kk(R_E, s)
+    alpha = alpha_ma(R_E, s)
     if alpha <= 0 or alpha > 1.0:
         continue
 
@@ -199,14 +199,14 @@ for threshold in [0.01, 0.05, 0.10, 0.25, 0.50, 1.00]:
     else:
         print(f"  |ΔE_Yukawa/E_Coulomb| = {threshold:4.0%}: never reached in scan")
 
-# Find where Bohr radius < L_tube (electron "sees" compact dimensions)
+# Find where Bohr radius < L_tube (electron "sees" material dimensions)
 compact_transition = [r for r in results if r['a0'] < r['L_tube']]
 if compact_transition:
     first = compact_transition[0]
     print(f"\n  a₀ < L_tube at α ≈ 1/{1/first['alpha']:.0f}"
           f" (a₀ = {first['a0']:.0f} fm, L_tube = {first['L_tube']:.0f} fm)")
-    print(f"  Below this, the electron 'sees' the compact geometry directly.")
-    print(f"  The KK approximation breaks down.")
+    print(f"  Below this, the electron 'sees' the material geometry directly.")
+    print(f"  The Ma approximation breaks down.")
 
 # Find where Bohr radius < L_ring
 ring_transition = [r for r in results if r['a0'] < r['L_ring']]
@@ -266,14 +266,14 @@ print("  on the geometry).  Possible candidates:")
 print()
 
 print("  (A) CASIMIR ENERGY MINIMIZATION:")
-print("      The vacuum energy of T⁶ depends on the geometry.")
+print("      The vacuum energy of Ma depends on the geometry.")
 print("      If the geometry minimizes its vacuum energy, s is")
 print("      determined, and α follows.  This requires computing")
 print("      the Casimir energy as a function of s.")
 print()
 
 print("  (B) MODE-SPECTRUM MATCHING:")
-print("      The T⁶ spectrum depends on s (through the sheared")
+print("      The Ma spectrum depends on s (through the sheared")
 print("      metric).  If we demand that the spectrum matches")
 print("      observed particle masses OPTIMALLY, this constrains s.")
 print("      But at large r, s is small and barely affects the")
@@ -288,10 +288,10 @@ print("      This has not been explored.")
 print()
 
 print("  (D) MULTI-PARTICLE SELF-CONSISTENCY:")
-print("      In a full T⁶×R³ calculation (not KK-reduced),")
+print("      In a full Ma×R³ calculation (not Ma-reduced),")
 print("      the electron-proton interaction is computed from")
 print("      the FULL 9D wave equation.  The effective α that")
-print("      emerges might differ from α_KK.  If we demand")
+print("      emerges might differ from α_Ma.  If we demand")
 print("      that the 9D calculation reproduces the OBSERVED")
 print("      hydrogen spectrum, this constrains the geometry.")
 print("      This is the most fundamental approach but also")
@@ -306,7 +306,7 @@ print("\n\n── Section 5: What the Yukawa scale tells us ──\n")
 r_obs = min(results, key=lambda r: abs(r['alpha'] - ALPHA_OBS))
 print(f"  At α = 1/137 (observed), r_e = {R_E}:")
 print(f"    Bohr radius:     a₀ = {r_obs['a0']:,.0f} fm")
-print(f"    Yukawa range:    λ  = {r_obs['lambda_kk']:,.0f} fm")
+print(f"    Yukawa range:    λ  = {r_obs['lambda_ma']:,.0f} fm")
 print(f"    Ring circ:       L₂ = {r_obs['L_ring']:,.0f} fm")
 print(f"    Tube circ:       L₁ = {r_obs['L_tube']:,.0f} fm")
 print(f"    λ/a₀ = {r_obs['lambda_over_a0']:.4f}")
@@ -325,7 +325,7 @@ print()
 print(f"  The atom (a₀) is {r_obs['a0']/r_obs['L_tube']:.0f}× larger than the Yukawa range")
 print(f"  and {r_obs['a0']/r_obs['L_ring']:.0f}× larger than the ring.")
 print(f"  This separation of scales is WHAT MAKES ATOMS POSSIBLE:")
-print(f"  the electron orbit is large enough that the compact")
+print(f"  the electron orbit is large enough that the material")
 print(f"  dimensions are invisible to it (perturbative corrections only).")
 print()
 
@@ -334,14 +334,14 @@ print(f"  How the hierarchy changes with α:")
 print(f"    a₀ = ℏc/(m_e α) ∝ 1/α")
 print(f"    L_tube depends on r and s, hence on α")
 print(f"    At small α: a₀ → ∞, atom is huge, Yukawa irrelevant")
-print(f"    At large α: a₀ → 0, atom shrinks below compact dims")
+print(f"    At large α: a₀ → 0, atom shrinks below material dims")
 print()
 
 # Key transition point: where a₀ = L_tube
 if compact_transition:
     ct = compact_transition[0]
     print(f"  CRITICAL TRANSITION: a₀ = L_tube at α ≈ 1/{1/ct['alpha']:.0f}")
-    print(f"    Below this α, the atom is 'outside' the compact geometry")
+    print(f"    Below this α, the atom is 'outside' the material geometry")
     print(f"    Above this α, the atom is 'inside' — R³ QM breaks down")
     print(f"    The observed α = 1/137 is well below this threshold")
 
@@ -364,9 +364,9 @@ for r_e in [1.0, 2.0, 5.0, 6.6, 8.906, 20.0, 50.0, 100.0]:
     ])
     from scipy.optimize import brentq
     for i in range(len(s_scan) - 1):
-        if (alpha_kk(r_e, s_scan[i]) - ALPHA_OBS) * \
-           (alpha_kk(r_e, s_scan[i+1]) - ALPHA_OBS) < 0:
-            s = brentq(lambda ss: alpha_kk(r_e, ss) - ALPHA_OBS,
+        if (alpha_ma(r_e, s_scan[i]) - ALPHA_OBS) * \
+           (alpha_ma(r_e, s_scan[i+1]) - ALPHA_OBS) < 0:
+            s = brentq(lambda ss: alpha_ma(r_e, ss) - ALPHA_OBS,
                        s_scan[i], s_scan[i+1])
             break
     if s is None:
@@ -408,7 +408,7 @@ print("     No special 'preferred' α emerges from perturbation")
 print("     theory alone.")
 print()
 print("  2. There IS a maximum α ≈ 1/(r_e × μ₁₂) where the Bohr")
-print("     radius shrinks below L_tube.  Above this, the KK")
+print("     radius shrinks below L_tube.  Above this, the Ma")
 print("     approximation breaks down and atoms cannot exist in")
 print("     the 3D sense.  At r_e = 6.6: α_max ≈ 1/13.")
 print()
@@ -446,11 +446,11 @@ print()
 print("  PATHS TO DERIVING α:")
 print("  1. Find an observable that pins r_e → α follows from")
 print("     the α(r, s) formula.")
-print("  2. Compute the Casimir energy of T⁶ as a function of")
+print("  2. Compute the Casimir energy of Ma as a function of")
 print("     all shears → the minimum determines all shears → α.")
-print("  3. Solve the full 9D hydrogen atom (not KK-reduced)")
+print("  3. Solve the full 9D hydrogen atom (not Ma-reduced)")
 print("     → the effective coupling that emerges IS α.")
-print("  4. Find a self-consistency between the T⁶ spectrum and")
+print("  4. Find a self-consistency between the Ma spectrum and")
 print("     atomic binding that uniquely determines s.")
 print()
 print("  The most promising near-term: path (1).  The Lamb shift")

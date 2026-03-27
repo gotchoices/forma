@@ -22,8 +22,8 @@ from scipy import stats
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 
-from lib.t6_solver import self_consistent_metric
-from lib.t6 import mode_energy, mode_charge, mode_spin, M_P_MEV, M_E_MEV
+from lib.ma_solver import self_consistent_metric
+from lib.ma import mode_energy, mode_charge, mode_spin, M_P_MEV, M_E_MEV
 
 R_E, R_NU, R_P = 6.6, 5.0, 8.906
 SIGMA_EP = -0.09064

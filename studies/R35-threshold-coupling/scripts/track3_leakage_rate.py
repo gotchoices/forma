@@ -6,7 +6,7 @@ Computes the rate at which energy in a T²_ν mode leaks via:
   (a) EM radiation through cross-shear-induced charge admixture
   (b) Thermal randomization of the neutrino-sheet state
 
-Key physics: on a flat T⁶, modes are plane waves exp(i n·θ).
+Key physics: on a flat Ma, modes are plane waves exp(i n·θ).
 Cross-shear changes the metric → changes eigenvalues (energies)
 but NOT eigenfunctions.  Charge is topological (from winding
 numbers n₁, n₅), so neutrino modes (n₁=0, n₅=0) are EXACTLY
@@ -14,7 +14,7 @@ uncharged regardless of cross-shear.
 
 The dominant leakage mechanism is therefore NOT EM radiation but
 thermal randomization: collisions between atoms can transfer
-energy between T⁶ modes, changing the neutrino-sheet state.
+energy between Ma modes, changing the neutrino-sheet state.
 The rate depends on the cross-shear coupling strength and the
 collective protection from N_atoms sharing one domain.
 """
@@ -25,7 +25,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 
 import numpy as np
 import math
-from lib.t6 import (build_scaled_metric, mode_energy, compute_scales,
+from lib.ma import (build_scaled_metric, mode_energy, compute_scales,
                      solve_shear_for_alpha, hbar_c_MeV_fm, M_E_MEV,
                      M_P_MEV, DM2_21, S34, ALPHA)
 
@@ -300,7 +300,7 @@ def main():
     print("PART C: Coupling matrix elements (neutrino ↔ electron)")
     print("=" * 72)
     print(f"""
-On a flat T⁶, modes are plane waves — exact eigenstates.
+On a flat Ma, modes are plane waves — exact eigenstates.
 Cross-shear changes eigenvalues, not eigenstates.
 Charge is topological: Q = -n₁ + n₅.  Neutrino modes have
 n₁ = n₅ = 0 → Q = 0 EXACTLY, regardless of σ_eν.
@@ -488,7 +488,7 @@ F8.  Neutrino modes are EXACTLY uncharged (Q = 0, topological).
      EM leakage is not the mechanism — ever.
 
 F9.  Cross-shear shifts neutrino energies but does NOT mix modes.
-     On a flat T⁶, modes are plane waves regardless of metric.
+     On a flat Ma, modes are plane waves regardless of metric.
      The "mixing coefficient" is an energy perturbation, not
      a charge perturbation.
 

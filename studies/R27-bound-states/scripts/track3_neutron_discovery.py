@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-R27 Track 3: Neutron mode identification using the T⁶ solver.
+R27 Track 3: Neutron mode identification using the Ma solver.
 
-Uses the discovery engine (lib/t6_solver.py) to systematically search
+Uses the discovery engine (lib/ma_solver.py) to systematically search
 for a self-consistent neutron mode — one that gives m_n - m_p = 1.293 MeV
 while keeping m_e and m_p exactly reproduced.
 
@@ -24,8 +24,8 @@ from scipy.optimize import brentq
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 
-from lib.t6_solver import find_modes, self_consistent_metric, multi_target_optimize
-from lib.t6 import (
+from lib.ma_solver import find_modes, self_consistent_metric, multi_target_optimize
+from lib.ma import (
     mode_energy, mode_charge, mode_spin, mode_spin_label,
     is_positive_definite, M_P_MEV, M_E_MEV, M_N_MEV,
     hbar_c_MeV_fm,
@@ -244,7 +244,7 @@ def main():
     print("    The neutron is NOT a simple (1,2,0,0,1,2) cross-sheet mode.")
     print("    It has n₂=-5 (5th harmonic on electron tube), n₆=-2 (same")
     print("    as proton tube winding), and spin from the neutrino ring.")
-    print("    It spans all three T² sheets — electron, neutrino, proton.")
+    print("    It spans all three material sheets — electron, neutrino, proton.")
 
 
 if __name__ == '__main__':

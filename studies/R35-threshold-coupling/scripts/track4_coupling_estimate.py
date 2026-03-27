@@ -5,7 +5,7 @@ R35 Track 4: Coupling strength estimate
 Computes the strength of I/O coupling to the neutrino sheet
 via two channels:
 
-Channel A: Flat T⁶ (neutron-gateway / cross-shear)
+Channel A: Flat Ma (neutron-gateway / cross-shear)
   EM → electron-T² → σ_eν → neutrino-T²
   Result: EXACTLY ZERO for EM-driven processes.
   Neutrino modes are uncharged (F8), modes don't mix (F9),
@@ -26,7 +26,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 
 import numpy as np
 import math
-from lib.t6 import (build_scaled_metric, mode_energy, compute_scales,
+from lib.ma import (build_scaled_metric, mode_energy, compute_scales,
                      hbar_c_MeV_fm, M_E_MEV, M_P_MEV, DM2_21, S34, ALPHA)
 
 # ═══════════════════════════════════════════════════════════════════
@@ -76,14 +76,14 @@ def mode_energy_sensitivity(n3, n4, r_nu, s34=S34, param='r'):
 
 
 # ═══════════════════════════════════════════════════════════════════
-#  Channel A: Flat T⁶ coupling (null result)
+#  Channel A: Flat Ma coupling (null result)
 # ═══════════════════════════════════════════════════════════════════
 
 def flat_t6_coupling(r_nu, sigma_enu, r_e=6.6, r_p=6.6, sigma_ep=0.038):
     """
-    Compute the flat-T⁶ EM coupling to neutrino modes.
+    Compute the flat-Ma EM coupling to neutrino modes.
 
-    On a flat T⁶:
+    On a flat Ma:
     - Modes are exact plane waves (F9)
     - Charge is topological: Q = -n₁ + n₅ (F8)
     - Neutrino modes have n₁ = n₅ = 0 → Q = 0 EXACTLY
@@ -274,12 +274,12 @@ def main():
     r_nu = 100
     E0_eV = neutrino_E0_eV()
 
-    # ── Part A: Flat T⁶ channel (null result) ─────────────────────
+    # ── Part A: Flat Ma channel (null result) ─────────────────────
     print(f"\n{'='*72}")
-    print("PART A: Flat T⁶ coupling — the null result")
+    print("PART A: Flat Ma coupling — the null result")
     print("=" * 72)
     print("""
-On a flat T⁶, the neutron-gateway coupling chain is:
+On a flat Ma, the neutron-gateway coupling chain is:
     EM field → electron-T² → (σ_eν) → neutrino-T²
 
 But this chain is BROKEN at every step:
@@ -288,7 +288,7 @@ But this chain is BROKEN at every step:
    Q = -n₁ + n₅ = 0 - 0 = 0.  Topological.
    The EM field has no direct handle on neutrino modes.
 
-2. Cross-shear does NOT mix modes on a flat T⁶ (F9).
+2. Cross-shear does NOT mix modes on a flat Ma (F9).
    Modes remain exact plane waves.  The "coupling matrix
    element" V shifts ENERGIES, not WAVEFUNCTIONS.
 
@@ -297,7 +297,7 @@ But this chain is BROKEN at every step:
    factor exp(-MeV/meV) ≈ 0.
 
 Conclusion: g_flat = 0 (exact).  No Goldilocks window
-exists on a flat T⁶.
+exists on a flat Ma.
 """)
 
     for sigma_enu in [0.001, 0.01, 0.05]:
@@ -312,9 +312,9 @@ exists on a flat T⁶.
         print(f"    g_EM = {result['g_EM']} (EXACT ZERO)")
         print()
 
-    print("  VERDICT: Flat T⁶ channel is CLOSED.")
+    print("  VERDICT: Flat Ma channel is CLOSED.")
     print("  The neutron gateway (Q78 Theory B) requires the elastic")
-    print("  torus to operate.  On a flat T⁶, there is no I/O.")
+    print("  torus to operate.  On a flat Ma, there is no I/O.")
 
     # ── Part B: Mode energy sensitivity ───────────────────────────
     print(f"\n{'='*72}")
@@ -607,13 +607,13 @@ exists on a flat T⁶.
     print(f"""
 Key results:
 
-F22. Flat T⁶ coupling is EXACTLY ZERO.
+F22. Flat Ma coupling is EXACTLY ZERO.
      Neutrino modes are uncharged (Q = 0, topological).
-     Cross-shear does not mix modes (flat T⁶ eigenstates
+     Cross-shear does not mix modes (flat Ma eigenstates
      are exact plane waves).  The EM field has no handle
      on the neutrino sheet.  The neutron-gateway chain
      (EM → e-T² → σ_eν → ν-T²) is broken at every step.
-     No Goldilocks window exists on a flat T⁶.
+     No Goldilocks window exists on a flat Ma.
 
 F23. The elastic torus shifts the coupling channel from EM
      to geometry.  Molecular forces → geometry change →
@@ -652,7 +652,7 @@ F27. ATP-driven write opens a Goldilocks window:
 F28. The metric compliance K is the master parameter.
      K must be in [{K_write:.4f}, {K_retain:.4f}] eV⁻¹.
      Computing K from first principles requires the moduli
-     potential of the T⁶ geometry — the deepest remaining
+     potential of the Ma geometry — the deepest remaining
      open question.
 """)
 

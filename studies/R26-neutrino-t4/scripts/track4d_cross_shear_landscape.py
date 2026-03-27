@@ -6,13 +6,13 @@ With σ_ep fixed at the neutron-match value (≈ 0.038), sweep the
 electron–neutrino cross-shear σ_eν and compute:
 
 1. Positivity bounds in the (σ_ep, σ_eν) plane
-2. Casimir energy vs σ_eν  (now sensitive: couples to mm-scale ν T²)
+2. Casimir energy vs σ_eν  (now sensitive: couples to mm-scale ν material sheet)
 3. Neutrino mass shifts from cross-plane coupling
-4. Full low-energy T⁶ spectrum at selected σ_eν values
+4. Full low-energy Ma spectrum at selected σ_eν values
 5. Spectral match score: does any σ_eν produce a spectrum
    resembling the observed particle content?
 
-Imports the T⁶ infrastructure from track4a_t6_metric.py.
+Imports the Ma infrastructure from track4a_ma_metric.py.
 """
 
 import sys
@@ -22,9 +22,9 @@ import numpy as np
 from scipy.optimize import brentq
 
 sys.path.insert(0, os.path.dirname(__file__))
-from track4a_t6_metric import (
+from track4a_ma_metric import (
     build_scaled_metric, mode_energy_scaled, mode_charge, mode_spin_label,
-    compute_scales, alpha_kk, solve_shear_for_alpha, mu_12,
+    compute_scales, alpha_ma, solve_shear_for_alpha, mu_12,
     hbar_c_MeV_fm, M_E_MEV, M_P_MEV, M_N_MEV, DM2_21, S34, ALPHA
 )
 
@@ -200,7 +200,7 @@ def main():
     print("SECTION 4: Casimir energy vs σ_eν (at neutron σ_ep)")
     print("-" * 78)
     print("""
-  Now σ_eν couples the electron T² (L ~ 5000 fm) to the neutrino T²
+  Now σ_eν couples the electron material sheet (L ~ 5000 fm) to the neutrino material sheet
   (L ~ 40 mm).  The Casimir sum should be sensitive to this coupling
   since the neutrino scale dominates the Epstein zeta function.
 """)
@@ -265,7 +265,7 @@ def main():
     # ── SECTION 5: Low-energy spectrum at σ_eν = 0.1 ─────────────
     print()
     print()
-    print("SECTION 5: Low-energy T⁶ spectrum at σ_eν = 0.1")
+    print("SECTION 5: Low-energy Ma spectrum at σ_eν = 0.1")
     print("-" * 78)
     print()
 
@@ -390,7 +390,7 @@ def main():
     print(f"""
   SPECTRAL LANDSCAPE:
     At σ_eν = {test_senu:.2f}, the low-energy spectrum shows:
-    - Pure neutrino modes at ~30–60 meV (unchanged from T²)
+    - Pure neutrino modes at ~30–60 meV (unchanged from material sheet)
     - Electron at {M_E_MEV:.3f} MeV
     - Proton at ~{M_P_MEV:.0f} MeV
     - Neutron candidate (1,2,0,0,1,2) at ~{M_N_MEV:.0f} MeV

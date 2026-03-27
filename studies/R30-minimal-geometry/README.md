@@ -313,7 +313,7 @@ are structurally necessary.
 ## Infrastructure
 
 New scripts in `R30-minimal-geometry/scripts/`.  May use
-`lib/t6.py` for comparison; new solvers for T¹ and
+`lib/ma.py` for comparison; new solvers for T¹ and
 Klein bottle will be standalone.
 
 ## Relation to prior studies

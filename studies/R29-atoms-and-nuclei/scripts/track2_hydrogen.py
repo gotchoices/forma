@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-R29 Track 2: Hydrogen from T⁶ geometry.
+R29 Track 2: Hydrogen from Ma geometry.
 
-The T⁶ Yukawa corrections to the Coulomb potential are small
+The Ma Yukawa corrections to the Coulomb potential are small
 (10⁻¹⁵ to 10⁻¹ depending on r_e), so first-order perturbation
 theory is exact to high precision.
 
@@ -11,7 +11,7 @@ The energy shift of level (n,l) is:
   ΔE_nl = <nl| V_Yukawa |nl>
         = -α ℏc × Σ_i <nl| exp(-β_i r) / r |nl>
 
-where β_i = 2π / L_i and the sum runs over the 4 e/p compact
+where β_i = 2π / L_i and the sum runs over the 4 e/p material
 dimensions (neutrino decouples since n₃=n₄=0 for both e,p).
 
 For hydrogen wave functions, these expectation values are
@@ -35,10 +35,10 @@ from scipy.special import factorial, genlaguerre
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 
-from lib.t6 import (
+from lib.ma import (
     ALPHA, M_E_MEV, M_P_MEV, hbar_c_MeV_fm,
 )
-from lib.t6_solver import self_consistent_metric
+from lib.ma_solver import self_consistent_metric
 
 R_P = 8.906
 R_NU = 5.0
@@ -87,7 +87,7 @@ def yukawa_expectation_1s_analytic(beta):
 
 def energy_shift(n, l, L):
     """
-    First-order energy shift from T⁶ Yukawa corrections.
+    First-order energy shift from Ma Yukawa corrections.
 
     ΔE = -α ℏc × Σ_i <nl| exp(-2π r / L_i) / r |nl>
 
@@ -155,7 +155,7 @@ def main():
     print(f"  Fractional:     {total_shift / (0.5 * ALPHA**2 * MU):+.6e}")
 
     print(f"\n  Full level table:\n")
-    print(f"  {'(n,l)':>6s}  {'E_Coulomb (eV)':>16s}  {'ΔE_T⁶ (eV)':>16s}  "
+    print(f"  {'(n,l)':>6s}  {'E_Coulomb (eV)':>16s}  {'ΔE_Ma (eV)':>16s}  "
           f"{'|ΔE|/E':>12s}  {'E_total (eV)':>16s}")
     print(f"  {'-'*72}")
 
@@ -173,10 +173,10 @@ def main():
                   f"{E_tot * EV_PER_MEV:16.6f}")
 
     # ── Section 3: Lamb-like splitting ────────────────────────────────
-    section(3, "Lamb-like splitting from T⁶ corrections")
+    section(3, "Lamb-like splitting from Ma corrections")
 
     print("  In pure Coulomb, 2S and 2P are degenerate (E depends only on n).")
-    print("  The T⁶ Yukawa corrections lift this degeneracy because the")
+    print("  The Ma Yukawa corrections lift this degeneracy because the")
     print("  short-range correction affects S states (l=0, peaks at origin)")
     print("  more than P states (l=1, zero at origin).\n")
 
@@ -186,9 +186,9 @@ def main():
 
     print(f"  ΔE(2S) = {dE_2s * EV_PER_MEV:+.6e} eV")
     print(f"  ΔE(2P) = {dE_2p * EV_PER_MEV:+.6e} eV")
-    print(f"  T⁶ Lamb splitting = ΔE(2S) − ΔE(2P) = {lamb_t6:+.6e} eV")
+    print(f"  Ma Lamb splitting = ΔE(2S) − ΔE(2P) = {lamb_t6:+.6e} eV")
     print(f"  Measured Lamb shift = 4.372 × 10⁻⁶ eV (1057.845 MHz)")
-    print(f"  Ratio T⁶/measured = {abs(lamb_t6) / 4.372e-6:.2e}")
+    print(f"  Ratio Ma/measured = {abs(lamb_t6) / 4.372e-6:.2e}")
 
     print(f"\n  Splitting for all n=2,3,4 levels:\n")
     print(f"  {'Level pair':>14s}  {'ΔE (eV)':>14s}")
@@ -220,34 +220,34 @@ def main():
               f"{frac:12.2e}  {lamb:+14.6e}  {abs(lamb)/lamb_meas:12.2e}")
 
     print()
-    print("  The T⁶ Lamb splitting is same-sign as measured (2S below 2P")
+    print("  The Ma Lamb splitting is same-sign as measured (2S below 2P")
     print("  in energy ↔ 2S shifted down more because S-wave peaks at origin).")
     print()
     print("  Constraint thresholds:")
     print("    Lamb shift measured to ~10 kHz (2.4 × 10⁻⁹ eV):")
-    print("    → T⁶ Lamb splitting must be < 2.4 × 10⁻⁹ eV")
+    print("    → Ma Lamb splitting must be < 2.4 × 10⁻⁹ eV")
     print("    1S-2S measured to 10 Hz (4 × 10⁻¹⁴ eV):")
     print("    → 1S shift must be < ~10⁻¹⁴ eV")
 
     # ── Section 5: Physical interpretation ────────────────────────────
     section(5, "Physical interpretation")
 
-    print("  The T⁶ Yukawa corrections have a clean physical picture:")
+    print("  The Ma Yukawa corrections have a clean physical picture:")
     print()
-    print("  At distances r >> L_i (far from compact dimension size),")
+    print("  At distances r >> L_i (far from material dimension size),")
     print("  the correction exp(-2πr/L_i) → 0 and V → pure Coulomb.")
     print()
     print("  At distances r ~ L_i, the electron 'feels' the extra")
-    print("  compact dimension: the effective dimensionality is higher")
+    print("  material dimension: the effective dimensionality is higher")
     print("  than 3, making the potential steeper (more attractive).")
     print()
     print("  The proton dimensions (L₅ ≈ 24 fm, L₆ ≈ 2.7 fm) are so")
     print("  small compared to a₀ that their corrections vanish.")
     print("  Only the electron tube (L₁ = r_e × L₂) matters.")
     print()
-    print("  This means: the T⁶ model predicts a SPECIFIC short-range")
+    print("  This means: the Ma model predicts a SPECIFIC short-range")
     print("  deviation from Coulomb's law, governed by the geometry of")
-    print("  the electron's compact dimensions.  The deviation is an")
+    print("  the electron's material dimensions.  The deviation is an")
     print("  exponentially decaying enhancement of the attraction at")
     print(f"  distances < L₁/(2π) ≈ {L[0]/(2*math.pi):.0f} fm.")
 
@@ -255,26 +255,26 @@ def main():
     section(6, "Summary")
 
     print("  1. HYDROGEN REPRODUCED: E₁ = -13.6 eV, a₀ = 0.53 Å.")
-    print("     No free parameters — chain from T⁶ geometry to atoms.")
+    print("     No free parameters — chain from Ma geometry to atoms.")
     print()
     print("  2. YUKAWA CORRECTIONS computed via first-order perturbation")
     print("     theory with exact hydrogen wave functions.")
     print("     Dominant correction: electron tube dimension (L₁).")
     print()
-    print("  3. T⁶ LAMB SPLITTING: The Yukawa correction shifts S states")
+    print("  3. Ma LAMB SPLITTING: The Yukawa correction shifts S states")
     print("     more than P states (same sign as QED Lamb shift).")
-    print("     At r_e = 6.6: T⁶ Lamb ~ few × 10⁻⁴ eV, 100× too large")
+    print("     At r_e = 6.6: Ma Lamb ~ few × 10⁻⁴ eV, 100× too large")
     print("     compared to the real Lamb shift.  This CONSTRAINS r_e.")
     print()
     print("  4. r_e CONSTRAINT: The measured Lamb shift (~4.4 μeV ±10 kHz)")
-    print("     constrains the T⁶ contribution.  Exact bound depends on")
-    print("     whether the T⁶ correction adds to or competes with the")
+    print("     constrains the Ma contribution.  Exact bound depends on")
+    print("     whether the Ma correction adds to or competes with the")
     print("     QED Lamb shift, but order-of-magnitude: r_e ≲ 3–5.")
     print()
-    print("  5. PREDICTION: If r_e is known, the T⁶ model predicts a")
+    print("  5. PREDICTION: If r_e is known, the Ma model predicts a")
     print("     specific Yukawa correction to ALL atomic spectra — not")
     print("     just hydrogen.  Heavier atoms with smaller orbits would")
-    print("     show larger corrections (closer to the compact dimension).")
+    print("     show larger corrections (closer to the material dimension).")
 
 
 if __name__ == '__main__':

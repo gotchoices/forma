@@ -2,7 +2,7 @@
 """
 R36 Track 1: Tilt-angle formalism and mode projection.
 
-Model: R¹ × T² (1 non-compact + 2 compact dimensions).
+Model: R¹ × T² (1 non-compact + 2 material dimensions).
 The T² has orthogonal axes (within-plane shear s = 0)
 with circumferences L₁ and L₂, aspect ratio r = L₁/L₂.
 
@@ -13,7 +13,7 @@ Questions:
 a) Do mode energies shift with θ?
 b) What is the R-projection of compact momentum?
 c) What coupling α(θ) emerges?
-d) Compare to the KK formula α(r, s).
+d) Compare to the Ma convention formula α(r, s).
 e) What θ gives α = 1/137 for the (1,2) mode?
 """
 
@@ -24,7 +24,7 @@ import numpy as np
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 
-from lib.t6 import alpha_kk, solve_shear_for_alpha, ALPHA
+from lib.ma import alpha_ma, solve_shear_for_alpha, ALPHA
 
 R_E = 6.6
 R_P = 8.906
@@ -163,17 +163,17 @@ print("""
   IMPORTANT: The R-projection depends ONLY on n₁, not n₂.
   Only the winding number along the TILTED axis contributes.
   
-  In contrast, the KK charge formula (with shear s) gives:
+  In contrast, the Ma convention charge formula (with shear s) gives:
     Q ∝ sin(2πs) × (function of n₁, n₂, s)
   which depends on both n₁ and n₂.
 """)
 
 
 # ══════════════════════════════════════════════════════════════════════
-# Section 4: Is the tilt equivalent to KK?
+# Section 4: Is the tilt equivalent to Kaluza-Klein?
 # ══════════════════════════════════════════════════════════════════════
 print(f"\n{'='*70}")
-print("SECTION 4: Equivalence to KK constant gauge potential")
+print("SECTION 4: Equivalence to Kaluza-Klein constant gauge potential")
 print("=" * 70)
 
 print("""
@@ -187,7 +187,7 @@ Rewriting the metric in "standard" compact coordinates
         + (L₁cosθ/2π)² dφ₁² + (L₂/2π)² dφ₂²
 
 The off-diagonal term g_{x,φ₁} = L₁sinθ/(2π) is EXACTLY
-the KK gauge potential.  In KK theory:
+the Kaluza-Klein gauge potential.  In Kaluza-Klein theory:
 
   g_{μa} = A_μ^a  (gauge potential)
 
@@ -208,13 +208,13 @@ still produces no interaction.
 # Section 5: Dispersion relation comparison
 # ══════════════════════════════════════════════════════════════════════
 print(f"\n{'='*70}")
-print("SECTION 5: Dispersion relation — tilt vs. KK vs. un-tilted")
+print("SECTION 5: Dispersion relation — tilt vs. Ma convention vs. un-tilted")
 print("=" * 70)
 
 print("""
   Un-tilted:   E² = k² + (n₁/r)² + n₂²
   Tilted:      E² = (k − k₀)²/cos²θ + (n₁/r)² + n₂²
-  KK (shear):  E² = k² + (n₁/r)² + (n₂ − n₁s)²
+  Ma (shear):  E² = k² + (n₁/r)² + (n₂ − n₁s)²
 
   (All in dimensionless units with L₂/2π = 1)
 """)
@@ -222,13 +222,13 @@ print("""
 print("  For the (1,2) mode, r = 6.6:")
 r = R_E
 s_e = solve_shear_for_alpha(r, ALPHA)
-print(f"    KK shear: s = {s_e:.6f}")
-print(f"    KK mode energy: μ = √((1/r)² + (2−s)²) = {math.sqrt(1/r**2 + (2-s_e)**2):.6f}")
+print(f"    Ma shear: s = {s_e:.6f}")
+print(f"    Ma mode energy: μ = √((1/r)² + (2−s)²) = {math.sqrt(1/r**2 + (2-s_e)**2):.6f}")
 print(f"    Tilted mode energy (at minimum): μ = √((1/r)² + 4) = {math.sqrt(1/r**2 + 4):.6f}")
 print(f"    Un-tilted mode energy: μ = √((1/r)² + 4) = {math.sqrt(1/r**2 + 4):.6f}")
 
 print(f"\n    The tilted and un-tilted energies are IDENTICAL.")
-print(f"    The KK shear shifts the energy by (2−s)² vs 4 = (2−0)².")
+print(f"    The Ma shear shifts the energy by (2−s)² vs 4 = (2−0)².")
 print(f"    Shift: Δμ²/μ² = {((2-s_e)**2 - 4)/((1/r**2)+4):.6e} ({((2-s_e)**2 - 4)/((1/r**2)+4)*100:.4f}%)")
 
 
@@ -293,11 +293,11 @@ print("""
 │ Mode charge depends on │ Both n₁ and n₂       │ Only n₁ (or both if  │
 │                        │ (through sin(2πs))   │ both axes tilted)    │
 ├────────────────────────┼──────────────────────┼──────────────────────┤
-│ KK interpretation      │ Compact metric       │ Constant gauge       │
+│ Kaluza-Klein interp.   │ Material metric       │ Constant gauge       │
 │                        │ parameter            │ potential (Wilson     │
 │                        │                      │ line)                │
 ├────────────────────────┼──────────────────────┼──────────────────────┤
-│ Produces interactions? │ Yes (through KK      │ No (constant A has   │
+│ Produces interactions? │ Yes (through Ma       │ No (constant A has   │
 │                        │ gauge field)         │ zero field strength) │
 ├────────────────────────┼──────────────────────┼──────────────────────┤
 │ Spatially varying?     │ No (background)      │ No (background)      │
@@ -364,9 +364,9 @@ print(f"    θ = {math.degrees(theta_needed):.4f}° = {theta_needed:.6f} rad")
 print(f"    sinθ = {math.sin(theta_needed):.6f}")
 print(f"    θ/π = {theta_needed/math.pi:.6f}")
 
-# Compare to the KK shear
+# Compare to the Ma convention shear
 s_e = solve_shear_for_alpha(r, ALPHA)
-print(f"\n  KK comparison:")
+print(f"\n  Ma convention comparison:")
 print(f"    Shear s = {s_e:.6f}")
 print(f"    2πs = {2*math.pi*s_e:.6f}")
 print(f"    sin²(2πs) = {math.sin(2*math.pi*s_e)**2:.6e}")
@@ -387,8 +387,8 @@ If they are tilted by different angles θ₁ ≠ θ₂:
 
   Q(1,2) = sinθ₁/r + 2sinθ₂    [in units of 2π/L₂]
 
-Can we choose θ₁ and θ₂ to reproduce the KK charge formula?
-The KK charge for mode (n₁, n₂) with shear s is proportional to
+Can we choose θ₁ and θ₂ to reproduce the Ma convention charge formula?
+The Ma convention charge for mode (n₁, n₂) with shear s is proportional to
 sin(2πs) × (mode-dependent factor).  The tilt gives a LINEAR
 combination of n₁ and n₂.  These are structurally different.
 """)
@@ -429,7 +429,7 @@ print("SECTION 10: Ghost mode charges in the tilt picture")
 print("=" * 70)
 
 print("""
-In KK (shear), the charge depends on sin(2πs) and the mode
+In the Ma convention (shear), the charge depends on sin(2πs) and the mode
 numbers in a complicated way.  Ghost modes can have Q ≈ 0.
 
 In the tilt picture, the charge is:
@@ -477,9 +477,9 @@ print("""
   of ghost modes — modes like (3,2) have Q/Q_e ≈ 3.2, and
   ALL modes with nonzero windings are charged.
 
-  In contrast, the KK shear formula gives charge ∝ sin(2πs × n₁)
+  In contrast, the Ma convention shear formula gives charge ∝ sin(2πs × n₁)
   which has ZEROS — modes where the charge integral cancels.
-  This is how KK naturally suppresses some ghost modes.
+  This is how the Ma convention naturally suppresses some ghost modes.
 """)
 
 
@@ -500,7 +500,7 @@ print(f"""
 2. R-PROJECTION: EXISTS BUT IS A CONSTANT MOMENTUM SHIFT
    Each mode gets an R-projection k₀ = (2πn₁sinθ)/L₁.
    This looks like charge × gauge potential, and it IS:
-   the tilt is mathematically equivalent to a constant KK
+   the tilt is mathematically equivalent to a constant Kaluza-Klein
    gauge potential A = tanθ.
 
 3. NO INTERACTION
@@ -519,12 +519,12 @@ print(f"""
    with nonzero windings are charged.  There is no natural
    suppression of ghost modes.
 
-   In the KK shear picture, charge involves sin(2πs×n),
+   In the Ma shear picture, charge involves sin(2πs×n),
    which has zeros and cancellations — the mechanism that
    makes some modes "dark."
 
-5. EQUIVALENCE TO KK
-   The uniform tilt is mathematically a constant KK gauge
+5. EQUIVALENCE TO KALUZA-KLEIN
+   The uniform tilt is mathematically a constant Kaluza-Klein gauge
    potential (Wilson line).  For small θ, tanθ ≈ θ ≈ sinθ.
    The tilt angle θ plays the role of a BACKGROUND gauge
    field, not the within-plane shear s.
@@ -542,17 +542,17 @@ print(f"""
    This is geometrically small but not "cleaner" than s = {s_e:.5f}.
    Both are equally unconstrained continuous parameters.
 
-CONCLUSION: The tilt picture alone CANNOT replace KK.
+CONCLUSION: The tilt picture alone CANNOT replace Kaluza-Klein.
   - It preserves masses (good)
   - It gives a "charge" (momentum shift), but no interaction
   - It doesn't suppress ghost modes
-  - For interactions, spatially varying tilt → KK gauge field
+  - For interactions, spatially varying tilt → Kaluza-Klein gauge field
 
 However, the analysis clarifies that s (shear) and θ (tilt)
 are structurally different parameters.  The shear determines
 CHARGE STRUCTURE (which modes are charged, which are not).
 The tilt determines the BACKGROUND gauge field.  Both exist
-in the full 10D metric.  KK is not an assumption added on
+in the full 10D metric.  Kaluza-Klein is not an assumption added on
 top of the geometry — it emerges from solving the wave
-equation on the tilted, sheared compact space.
+equation on the tilted, sheared material space.
 """)

@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
-R26 Track 3: Parameter census for the T⁶ model.
+R26 Track 3: Parameter census for the Ma model.
 
 Enumerate every parameter in the three-torus model, identify its
 constraint source (if any), and determine the system's degree of
 freedom: under-, exactly-, or over-determined.
 
-The flat T⁶ metric has 6×7/2 = 21 independent components.  We
+The flat Ma metric has 6×7/2 = 21 independent components.  We
 organize these as 6 circumferences, 3 within-plane shears, and
 12 cross-plane shears.
 """
@@ -39,7 +39,7 @@ M_TAU_MEV = 1776.86
 
 def main():
     print("=" * 78)
-    print("R26 Track 3: T⁶ Parameter Census")
+    print("R26 Track 3: Ma Parameter Census")
     print("=" * 78)
 
     # ── SECTION 1: Parameter inventory ────────────────────────────
@@ -47,11 +47,11 @@ def main():
     print("SECTION 1: Complete parameter inventory")
     print("-" * 78)
     print("""
-  The flat T⁶ metric has 21 independent components (symmetric 6×6).
-  We label the compact coordinates (x₁,x₂,x₃,x₄,x₅,x₆) where:
-    (x₁,x₂) = electron T²
-    (x₃,x₄) = neutrino T²
-    (x₅,x₆) = proton T²
+  The flat Ma metric has 21 independent components (symmetric 6×6).
+  We label the material coordinates (x₁,x₂,x₃,x₄,x₅,x₆) where:
+    (x₁,x₂) = electron material sheet (Ma_e)
+    (x₃,x₄) = neutrino material sheet (Ma_ν)
+    (x₅,x₆) = proton material sheet (Ma_p)
 
   Parameters decompose as:
 
@@ -76,7 +76,7 @@ def main():
     print("  │                    r_p = L₅/L₆                      │")
     print("  │  3 overall scales: L₂, L₄, L₆                      │")
     print("  │  3 within-plane shears: s₁₂, s₃₄, s₅₆              │")
-    print("  │  12 cross-plane shears: s_ij (i,j in different T²s) │")
+    print("  │  12 cross-plane shears: s_ij (i,j in different sheets) │")
     print("  └──────────────────────────────────────────────────────┘")
 
     # ── SECTION 2: Constraints from experiment ────────────────────
@@ -93,13 +93,13 @@ def main():
          "Sets L₆ (given r_p, s₅₆): L₆ = 2πR_p, R_p = λ̄_p μ_p(r_p,s₅₆)",
          "equality", "scale"),
         ("C3", "α = 1/137.036",
-         "Fixes s₁₂(r_e) via α_KK formula (R19 Track 8 F35)",
+         "Fixes s₁₂(r_e) via α_Ma formula (R19 Track 8 F35)",
          "equality", "shear"),
         ("C4", "α = 1/137.036",
-         "Fixes s₅₆(r_p) via same α_KK formula (same charge +e)",
+         "Fixes s₅₆(r_p) via same α_Ma formula (same charge +e)",
          "equality", "shear"),
         ("C5", "Δm²₃₁/Δm²₂₁ = 33.6",
-         f"Fixes s₃₄ = 0.02199 (r-independent under KK, Track 1a)",
+         f"Fixes s₃₄ = 0.02199 (r-independent under Ma, Track 1a)",
          "equality", "shear"),
         ("C6", "Σm_ν ≤ 120 meV",
          "Upper bound on L₄ (given r_ν, s₃₄): constrains neutrino scale",
@@ -164,11 +164,11 @@ def main():
         ("P6", "m_n − m_p = 1.293 MeV",
          "e–p cross-shears (s₁₅,s₁₆,s₂₅,s₂₆)", "4 shears", "measured"),
         ("P7", "τ_n = 880 s",
-         "Coupling between all three T² planes", "combination", "measured"),
+         "Coupling between all three material sheet planes", "combination", "measured"),
         ("P8", "m_μ = 105.7 MeV",
-         "Unknown — may require excited modes or separate T²", "?", "measured"),
+         "Unknown — may require excited modes or separate material sheet", "?", "measured"),
         ("P9", "m_τ = 1777 MeV",
-         "Unknown — may require excited modes or separate T²", "?", "measured"),
+         "Unknown — may require excited modes or separate material sheet", "?", "measured"),
     ]
 
     for pid, obs, target, scope, status in potential:
@@ -207,12 +207,12 @@ def main():
     print(f"  If muon and tau masses also constrain parameters:")
     print(f"    Free = 15 − 9 = 6 (still under-determined)")
     print()
-    print(f"  ASSESSMENT: The T⁶ model is UNDER-DETERMINED with")
+    print(f"  ASSESSMENT: The Ma model is UNDER-DETERMINED with")
     print(f"  current observables.  At least 6–8 parameters (mainly")
     print(f"  cross-shears) have no known experimental handle.")
     print()
     print(f"  However, many of the 12 cross-shears may be zero or")
-    print(f"  related by symmetry.  Geometric consistency of T⁶")
+    print(f"  related by symmetry.  Geometric consistency of Ma")
     print(f"  (positive-definite metric) imposes inequalities that")
     print(f"  may further reduce the viable parameter space.")
 
@@ -224,13 +224,13 @@ def main():
     print()
 
     print("  r_e (electron aspect ratio):")
-    print("    Controls: electron T² shape, s₁₂ via α formula")
+    print("    Controls: electron material sheet shape, s₁₂ via α formula")
     print("    Observable consequences: electron g−2 correction (?),")
     print("      electron form factor at high Q²")
     print("    Status: FREE (no clean experimental constraint)")
     print()
     print("  r_ν (neutrino aspect ratio):")
-    print("    Controls: neutrino T² shape, absolute mass scale")
+    print("    Controls: neutrino material sheet shape, absolute mass scale")
     print("    Observable consequences: individual neutrino masses,")
     print("      Σm_ν (cosmological)")
     print("    Status: FREE (Δm² ratio is r-independent; absolute")
@@ -266,7 +266,7 @@ def main():
 
     print()
     print("  r_p (proton aspect ratio):")
-    print("    Controls: proton T² shape, s₅₆ via α formula")
+    print("    Controls: proton material sheet shape, s₅₆ via α formula")
     print("    Observable consequences: proton mode spectrum,")
     print("      neutron binding energy (via cross-plane coupling)")
     print("    Status: FREE")
@@ -290,15 +290,15 @@ def main():
         ("α", "1/137", "INPUT", "fixes within-plane shears s₁₂, s₅₆"),
         ("Δm²₃₁/Δm²₂₁", "33.6", "INPUT", "fixes s₃₄ = 0.02199"),
         ("Σm_ν", "≤120 meV", "PREDICTION", f"117 meV at ε≥3.2 (Track 1f)"),
-        ("ν spin", "½", "DERIVED", "from |n₃|=1 on neutrino T²"),
-        ("ν charge", "0", "DERIVED", "from n₁=n₅=0 on e/p T²s"),
-        ("m_n−m_p", "1.293 MeV", "NOT YET", "requires T⁶ cross-plane coupling"),
+        ("ν spin", "½", "DERIVED", "from |n₃|=1 on neutrino Ma_ν"),
+        ("ν charge", "0", "DERIVED", "from n₁=n₅=0 on e/p sheets"),
+        ("m_n−m_p", "1.293 MeV", "NOT YET", "requires Ma cross-plane coupling"),
         ("τ_n", "880 s", "NOT YET", "requires cross-plane coupling rates"),
         ("PMNS θ₁₂", "33.4°", "NOT YET", "maps to e–ν cross-shears"),
         ("PMNS θ₂₃", "49.0°", "NOT YET", "maps to e–ν cross-shears"),
         ("PMNS θ₁₃", "8.54°", "NOT YET", "maps to e–ν cross-shears"),
-        ("m_μ", "105.7 MeV", "NOT YET", "unknown placement in T⁶"),
-        ("m_τ", "1777 MeV", "NOT YET", "unknown placement in T⁶"),
+        ("m_μ", "105.7 MeV", "NOT YET", "unknown placement in Ma"),
+        ("m_τ", "1777 MeV", "NOT YET", "unknown placement in Ma"),
     ]
 
     print(f"  {'Observable':>15s} │ {'Value':>12s} │ {'Status':>10s} │ Notes")
@@ -312,7 +312,7 @@ def main():
     print("SECTION 7: Track 3 Summary")
     print("=" * 78)
     print(f"""
-  PARAMETERS:  21 total in the T⁶ metric
+  PARAMETERS:  21 total in the Ma metric
     6 constrained by established physics (C1–C7):
       L₂ (m_e), L₄ (Δm²₂₁), L₆ (m_p), s₁₂ (α), s₃₄ (Δm² ratio), s₅₆ (α)
     15 remaining free:
@@ -352,7 +352,7 @@ def main():
     Each domain has a continuous one-parameter family of
     solutions (indexed by its aspect ratio).  The full solution
     set is a 15-dimensional region.  Track 4 should determine
-    whether T⁶ consistency conditions collapse this to a
+    whether Ma consistency conditions collapse this to a
     smaller manifold or discrete set.
 """)
 

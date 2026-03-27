@@ -37,9 +37,9 @@ def alpha_wvm(r, s):
     return r**2 * math.sin(2*math.pi*s)**2 / (4*math.pi * (2-s)**2 * denom)
 
 
-def alpha_kk(r, s):
+def alpha_ma(r, s):
     """
-    α under KK Compton constraint.
+    α under Ma Compton constraint.
 
     Derivation:
       KK constraint:  E₀ μ(1,2) = m_e c²
@@ -146,7 +146,7 @@ def main():
 
     for r in r_values:
         s_wvm_sols = solve_shear(alpha_wvm, r)
-        s_kk_sols = solve_shear(alpha_kk, r)
+        s_kk_sols = solve_shear(alpha_ma, r)
 
         s_wvm = s_wvm_sols[0] if s_wvm_sols else float('nan')
         s_kk = s_kk_sols[0] if s_kk_sols else float('nan')
@@ -251,7 +251,7 @@ def main():
     r_scan = np.linspace(0.01, 2.0, 2000)
     r_crit_kk = None
     for r in r_scan:
-        sols = solve_shear(alpha_kk, r)
+        sols = solve_shear(alpha_ma, r)
         if sols:
             r_crit_kk = r
             break
@@ -267,11 +267,11 @@ def main():
     print(f"  r_crit (KK):  {r_crit_kk:.3f}")
     print()
 
-    max_alpha_kk_vals = []
+    max_alpha_ma_vals = []
     for r in [0.1, 0.2, 0.3, 0.4, 0.5]:
         s_test = np.linspace(0.001, 0.499, 1000)
-        a_vals = [alpha_kk(r, s) for s in s_test]
-        max_alpha_kk_vals.append((r, max(a_vals)))
+        a_vals = [alpha_ma(r, s) for s in s_test]
+        max_alpha_ma_vals.append((r, max(a_vals)))
         print(f"  r = {r:.1f}: max(α_KK) = {max(a_vals):.6f}  "
               f"(need {alpha:.6f})")
 

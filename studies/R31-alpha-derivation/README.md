@@ -178,8 +178,8 @@ Findings F19–F22.
 
 ## Infrastructure
 
-Scripts in `R31-alpha-derivation/scripts/`.  Uses `lib/t6.py`
-and `lib/t6_solver.py`.  The Casimir computation uses the
+Scripts in `R31-alpha-derivation/scripts/`.  Uses `lib/ma.py`
+and `lib/ma_solver.py`.  The Casimir computation uses the
 existing `epstein_zeta()` function, extended to sweep
 within-plane shears.
 

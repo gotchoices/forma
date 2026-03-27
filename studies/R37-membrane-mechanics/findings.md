@@ -81,7 +81,7 @@ along the alpha curve reduces to:
 
     E_total(r) ∝ μ(r, s(r))^(2/3) × r^(1/3)
 
-where s(r) is fixed by alpha_kk(r,s) = 1/137.  Numerically
+where s(r) is fixed by alpha_ma(r,s) = 1/137.  Numerically
 minimising this gives:
 
     r ≈ 0.50,  s ≈ 0.120,  α = 1/137  ✓
@@ -142,7 +142,7 @@ cannot go through direct modulation of the electron T².
 ### F11. Neutrino sheet stiffness not computable from R37
 
 R37's membrane constants characterise the electron sheet only.
-The neutrino sheet stiffness depends on the T⁶ moduli potential
+The neutrino sheet stiffness depends on the Ma moduli potential
 — the same open question as R35 F28.
 
 ### F12. The Goldilocks window is thermodynamic, not geometric

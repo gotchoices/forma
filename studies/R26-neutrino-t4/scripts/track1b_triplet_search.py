@@ -48,7 +48,7 @@ COSMO_BOUND = 0.120  # eV
 
 
 def mu_sq(p, q, s, r):
-    """Dimensionless mass-squared for mode (p, q) on sheared T²."""
+    """Dimensionless mass-squared for mode (p, q) on sheared material sheet."""
     return (p / r)**2 + (q - p * s)**2
 
 

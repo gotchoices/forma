@@ -16,8 +16,8 @@ import numpy as np
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 
-from lib.t6 import (
-    alpha_kk, solve_shear_for_alpha, mu_12,
+from lib.ma import (
+    alpha_ma, solve_shear_for_alpha, mu_12,
     hbar_c_MeV_fm, M_E_MEV, M_P_MEV, ALPHA,
 )
 
@@ -32,10 +32,10 @@ def solve_shear_extended(r, alpha_target=ALPHA):
         np.linspace(1e-4, 0.01, 500),
         np.linspace(0.01, 0.49, 2000),
     ])
-    a_scan = [alpha_kk(r, s) for s in s_scan]
+    a_scan = [alpha_ma(r, s) for s in s_scan]
     for i in range(len(s_scan) - 1):
         if (a_scan[i] - alpha_target) * (a_scan[i + 1] - alpha_target) < 0:
-            return brentq(lambda s: alpha_kk(r, s) - alpha_target,
+            return brentq(lambda s: alpha_ma(r, s) - alpha_target,
                           s_scan[i], s_scan[i + 1])
     return None
 
@@ -61,7 +61,7 @@ def t2_properties(r, mass, label=""):
     tube_frac = E_tube_sq / (E_tube_sq + E_ring_sq)
 
     # α at this (r, s) — should be 1/137
-    a = alpha_kk(r, s)
+    a = alpha_ma(r, s)
 
     return {
         'r': r, 's': s, 'mu': mu, 'E0': E0,

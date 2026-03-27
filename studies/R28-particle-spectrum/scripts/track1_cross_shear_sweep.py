@@ -22,8 +22,8 @@ from itertools import product
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 
-from lib.t6_solver import self_consistent_metric
-from lib.t6 import (
+from lib.ma_solver import self_consistent_metric
+from lib.ma import (
     mode_energy, mode_charge, mode_spin,
     M_P_MEV, M_E_MEV, M_N_MEV,
 )

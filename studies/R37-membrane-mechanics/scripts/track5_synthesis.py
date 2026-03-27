@@ -12,7 +12,7 @@ import os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 
 import math
-from lib.t6 import solve_shear_for_alpha, mu_12, ALPHA
+from lib.ma import solve_shear_for_alpha, mu_12, ALPHA
 
 hbar_SI = 1.0546e-34
 c_SI = 2.998e8
@@ -174,13 +174,13 @@ def main():
 
   But this estimate is wrong: the neutrino sheet stiffness
   is NOT just one mode's energy.  It depends on:
-  1. The moduli potential (how the T⁶ geometry resists shear)
+  1. The moduli potential (how the Ma geometry resists shear)
   2. The number and distribution of occupied modes
   3. Cross-shear coupling between T² subplanes
 
   CONCLUSION: The neutrino sheet stiffness CANNOT be computed
   from R37's membrane constants alone.  It requires the moduli
-  potential of the full T⁶, which is the same open question
+  potential of the full Ma, which is the same open question
   identified in R35 F28.
 """)
 
@@ -243,7 +243,7 @@ F19. Electron sheet stiffness k_e = μ_m × A = {k_shear_e_eV:.2e} eV.
      cross-shear, or moduli dynamics).
 
 F20. The neutrino sheet stiffness is NOT computable from R37.
-     It depends on the T⁶ moduli potential — the same open
+     It depends on the Ma moduli potential — the same open
      question identified in R35 F28.  R37's membrane constants
      (σ_m, μ_m) characterise the ELECTRON sheet only.
 

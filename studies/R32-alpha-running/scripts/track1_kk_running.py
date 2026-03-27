@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-R32 Track 1: Running of α from the T⁶ mode spectrum.
+R32 Track 1: Running of α from the Ma mode spectrum.
 
-Enumerate all charged (Q ≠ 0) T⁶ modes and compute their
+Enumerate all charged (Q ≠ 0) Ma modes and compute their
 one-loop contribution to the running of the electromagnetic
 coupling α.  Each mode with mass m_i, charge Q_i, and spin
 type s_i contributes:
@@ -14,7 +14,7 @@ where b_i depends on spin:
     Dirac fermion (spin ½):  b = 1
     vector (spin 1):         b = -7    (non-Abelian; for massive Abelian: +1/4)
 
-For massive KK modes in a U(1) theory, all modes contribute
+For massive Kaluza-Klein modes in a U(1) theory, all modes contribute
 with b > 0 (no asymptotic freedom), so 1/α(E) decreases
 monotonically with E (α increases).
 
@@ -29,8 +29,8 @@ from itertools import product
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 
-from lib.t6_solver import self_consistent_metric
-from lib.t6 import (
+from lib.ma_solver import self_consistent_metric
+from lib.ma import (
     mode_energy, mode_charge, mode_spin,
     M_P_MEV, M_E_MEV, M_N_MEV, hbar_c_MeV_fm,
 )
@@ -43,7 +43,7 @@ N_MAX_NU = 0
 ALPHA_0 = 1.0 / 137.036
 
 print("=" * 70)
-print("R32 Track 1: Running of α from T⁶ mode spectrum")
+print("R32 Track 1: Running of α from Ma mode spectrum")
 print("=" * 70)
 
 result = self_consistent_metric(
@@ -92,7 +92,7 @@ charged_modes.sort(key=lambda m: m['E_MeV'])
 print(f"Found {len(charged_modes)} charged modes below 1000 TeV")
 
 # ── Classify by spin ─────────────────────────────────────────────────
-# In a U(1) KK theory, the beta function coefficient for each
+# In a U(1) Kaluza-Klein theory, the beta function coefficient for each
 # charged mode depends on its spin.  For massive modes:
 #   spin 0 (scalar):     b = 1/12  (complex scalar: 1/6)
 #   spin ½ (fermion):    b = 1/3   (Dirac: 4/3 but we count per mode)
@@ -149,7 +149,7 @@ alpha_running = 1.0 / inv_alpha
 # ── Report key values ────────────────────────────────────────────────
 
 print("\n" + "=" * 70)
-print("RUNNING OF α FROM T⁶ MODE SPECTRUM")
+print("RUNNING OF α FROM Ma MODE SPECTRUM")
 print("=" * 70)
 
 checkpoints = [
@@ -158,7 +158,7 @@ checkpoints = [
     ("10 MeV", 10.0),
     ("100 MeV", 100.0),
     ("m_p (938 MeV)", 938.0),
-    ("2 GeV (T⁶ predictive horizon)", 2000.0),
+    ("2 GeV (Ma predictive horizon)", 2000.0),
     ("10 GeV", 10000.0),
     ("m_Z (91.2 GeV)", 91200.0),
 ]
@@ -182,8 +182,8 @@ print(f"  SM Δ(1/α) from 0 to m_Z: {137.036 - 127.9:+.1f}")
 idx_mz = np.searchsorted(E_points_MeV, 91200.0)
 if idx_mz < len(E_points_MeV):
     t6_delta = inv_alpha[idx_mz] - 1.0 / ALPHA_0
-    print(f"  T⁶ Δ(1/α) from 0 to m_Z: {t6_delta:+.1f}")
-    print(f"  T⁶ has {abs(t6_delta)/9.1:.1f}× the SM running")
+    print(f"  Ma Δ(1/α) from 0 to m_Z: {t6_delta:+.1f}")
+    print(f"  Ma has {abs(t6_delta)/9.1:.1f}× the SM running")
 
 # ── Count thresholds crossed ─────────────────────────────────────────
 
@@ -222,7 +222,7 @@ else:
     print(f"\n  No Landau pole in scanned range (up to {E_points_MeV[-1]/1000:.0f} GeV)")
     print(f"  Minimum 1/α = {min(inv_alpha):.2f}")
 
-# ── Energy of proton ring (compact scale) ────────────────────────────
+# ── Energy of proton ring (material scale) ────────────────────────────
 
 E_compact = hbar_c_MeV_fm * 2 * math.pi / L[5]
 print(f"\n  Proton ring energy scale: {E_compact:.1f} MeV")
@@ -250,7 +250,7 @@ print(f"Charged modes below 2 GeV: {len(heaviest_below_2gev)}")
 
 print(f"\nα(0) = 1/{1/ALPHA_0:.3f}")
 if idx_mz < len(inv_alpha) and inv_alpha[idx_mz] > 0:
-    print(f"α(m_Z) from T⁶ = 1/{inv_alpha[idx_mz]:.2f}  "
+    print(f"α(m_Z) from Ma = 1/{inv_alpha[idx_mz]:.2f}  "
           f"(SM: 1/127.9)")
 print(f"Minimum 1/α in range = {min(inv_alpha):.2f} "
       f"at E = {E_points_MeV[np.argmin(inv_alpha)]/1000:.1f} GeV")

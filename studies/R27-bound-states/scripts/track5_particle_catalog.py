@@ -2,7 +2,7 @@
 """
 R27 Track 5: Systematic particle catalog.
 
-For every well-measured particle, find the nearest T⁶ mode with
+For every well-measured particle, find the nearest Ma mode with
 matching charge and spin at the pinned parameter point
 (r_p = 8.906, σ_ep = −0.09064).  Record:
   - Nearest mode quantum numbers
@@ -25,8 +25,8 @@ import numpy as np
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 
-from lib.t6_solver import self_consistent_metric
-from lib.t6 import (
+from lib.ma_solver import self_consistent_metric
+from lib.ma import (
     mode_energy, mode_charge, mode_spin,
     M_P_MEV, M_E_MEV, M_N_MEV,
 )
@@ -105,7 +105,7 @@ def spin_achievable(n1, n5, target_spin):
 def find_nearest_mode(target_mass, target_charge, target_spin,
                       Gti, L, n_max_ep=8, n_max_p=8):
     """
-    Find the nearest T⁶ mode matching charge and spin.
+    Find the nearest Ma mode matching charge and spin.
 
     Strategy: sweep n1, n2 (electron), n5, n6 (proton) and pick
     n3 parity to match spin.  n4 = 0 (negligible energy).

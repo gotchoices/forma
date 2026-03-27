@@ -25,8 +25,8 @@ import numpy as np
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 
-from lib.t6 import (
-    alpha_kk, solve_shear_for_alpha, mu_12,
+from lib.ma import (
+    alpha_ma, solve_shear_for_alpha, mu_12,
     M_P_MEV, M_E_MEV, hbar_c_MeV_fm, ALPHA,
 )
 
@@ -49,14 +49,14 @@ s_p = solve_shear_for_alpha(R_P, ALPHA)
 
 print(f"\n  Electron sheet (r = {R_E}):")
 print(f"    s = {s_e:.8f}")
-print(f"    α(r, s) = {alpha_kk(R_E, s_e):.8e} = 1/{1/alpha_kk(R_E, s_e):.3f}")
+print(f"    α(r, s) = {alpha_ma(R_E, s_e):.8e} = 1/{1/alpha_ma(R_E, s_e):.3f}")
 print(f"    2πs = {2*math.pi*s_e:.8f}")
 print(f"    sin(2πs) = {math.sin(2*math.pi*s_e):.8f}")
 print(f"    sin²(2πs) = {math.sin(2*math.pi*s_e)**2:.8e}")
 
 print(f"\n  Proton sheet (r = {R_P}):")
 print(f"    s = {s_p:.8f}")
-print(f"    α(r, s) = {alpha_kk(R_P, s_p):.8e} = 1/{1/alpha_kk(R_P, s_p):.3f}")
+print(f"    α(r, s) = {alpha_ma(R_P, s_p):.8e} = 1/{1/alpha_ma(R_P, s_p):.3f}")
 print(f"    2πs = {2*math.pi*s_p:.8f}")
 print(f"    sin(2πs) = {math.sin(2*math.pi*s_p):.8f}")
 print(f"    sin²(2πs) = {math.sin(2*math.pi*s_p)**2:.8e}")
@@ -82,7 +82,7 @@ for alpha_target, label in [(ALPHA_80, "1/80"), (ALPHA_805, "1/80.5")]:
         print(f"    2πs = {2*math.pi*s_e_80:.8f}")
         print(f"    sin(2πs) = {math.sin(2*math.pi*s_e_80):.8f}")
         print(f"    sin²(2πs) = {math.sin(2*math.pi*s_e_80)**2:.8e}")
-        print(f"    α check = 1/{1/alpha_kk(R_E, s_e_80):.3f}")
+        print(f"    α check = 1/{1/alpha_ma(R_E, s_e_80):.3f}")
         print(f"    Ratio s₈₀/s₁₃₇ = {s_e_80/s_e:.6f}")
     else:
         print(f"    Electron: no solution found")
@@ -93,7 +93,7 @@ for alpha_target, label in [(ALPHA_80, "1/80"), (ALPHA_805, "1/80.5")]:
         print(f"    2πs = {2*math.pi*s_p_80:.8f}")
         print(f"    sin(2πs) = {math.sin(2*math.pi*s_p_80):.8f}")
         print(f"    sin²(2πs) = {math.sin(2*math.pi*s_p_80)**2:.8e}")
-        print(f"    α check = 1/{1/alpha_kk(R_P, s_p_80):.3f}")
+        print(f"    α check = 1/{1/alpha_ma(R_P, s_p_80):.3f}")
         print(f"    Ratio s₈₀/s₁₃₇ = {s_p_80/s_p:.6f}")
     else:
         print(f"    Proton: no solution found")
@@ -219,14 +219,14 @@ print(f"\n  {'s':>10s} {'α(r_e,s)':>14s} {'1/α(r_e)':>10s} {'α(r_p,s)':>14s} 
 print(f"  {'─'*10} {'─'*14} {'─'*10} {'─'*14} {'─'*10}")
 
 for s in np.linspace(0.001, 0.15, 30):
-    ae = alpha_kk(R_E, s)
-    ap = alpha_kk(R_P, s)
+    ae = alpha_ma(R_E, s)
+    ap = alpha_ma(R_P, s)
     print(f"  {s:10.5f} {ae:14.8f} {1/ae:10.2f} {ap:14.8f} {1/ap:10.2f}")
 
 # Find the maximum of α(r, s) over s
 s_scan_fine = np.linspace(0.001, 0.49, 10000)
-ae_scan = [alpha_kk(R_E, s) for s in s_scan_fine]
-ap_scan = [alpha_kk(R_P, s) for s in s_scan_fine]
+ae_scan = [alpha_ma(R_E, s) for s in s_scan_fine]
+ap_scan = [alpha_ma(R_P, s) for s in s_scan_fine]
 
 i_max_e = np.argmax(ae_scan)
 i_max_p = np.argmax(ap_scan)

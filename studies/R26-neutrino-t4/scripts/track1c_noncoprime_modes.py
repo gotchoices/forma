@@ -3,19 +3,19 @@
 R26 Track 1c: Non-coprime and higher-order modes.
 
 The S3-knot-zoo excluded non-coprime (p,q) pairs (gcd(p,q) ≠ 1), but on
-a flat T² these are valid standing waves — they are simply modes whose
+a flat material sheet these are valid standing waves — they are simply modes whose
 wavevector is a multiple of a shorter fundamental.  Enumerate all modes
 (p,q) with p,q up to 25, including non-coprime, and assess whether any
 offer a path to three spin-½ neutrino mass eigenstates.
 
-Also: on T⁶, modes can have nonzero winding on multiple T² subplanes.
+Also: on Ma, modes can have nonzero winding on multiple material sheet subplanes.
 Classify these cross-plane mode families.
 
-KEY DISTINCTION: torus knots vs. T² modes
+KEY DISTINCTION: torus knots vs. material sheet modes
 ==========================================
 - A torus KNOT (p,q) with gcd(p,q) = 1 is a single closed geodesic
   on the embedded torus surface.  The S3-knot-zoo studied these.
-- A T² MODE (n₃,n₄) is a standing wave on the flat torus, with
+- A material sheet MODE (n₃,n₄) is a standing wave on the flat torus, with
   wavevector k = (2πn₃/L₃, 2πn₄/L₄).  ALL integer (n₃,n₄) are
   valid, including non-coprime.
 - A non-coprime mode (n₃,n₄) = d×(p,q) with gcd(p,q)=1 is the
@@ -61,7 +61,7 @@ def fundamental(n3, n4):
 
 def spin_of_mode(n3, n4):
     """
-    Spin of mode (n₃, n₄) on the neutrino T².
+    Spin of mode (n₃, n₄) on the neutrino material sheet.
 
     The mode is the d-th harmonic of fundamental (p, q) = (n₃/d, n₄/d).
     Spin = ℏ/|q| where q is the fundamental ring winding.
@@ -169,7 +169,7 @@ def main():
     print("  They add to the sterile neutrino problem, not solve it.")
 
     # ================================================================
-    # SECTION 3: Complete mode census for neutrino T²
+    # SECTION 3: Complete mode census for neutrino material sheet
     # ================================================================
     print("\n\n" + "=" * 76)
     print("SECTION 3: Complete mode census — how many spin-½ fermions?")
@@ -306,17 +306,17 @@ def main():
     print("  count, never decreases it.")
 
     # ================================================================
-    # SECTION 5: Cross-plane modes on T⁶
+    # SECTION 5: Cross-plane modes on Ma
     # ================================================================
     print("\n\n" + "=" * 76)
-    print("SECTION 5: Cross-plane modes on T⁶")
+    print("SECTION 5: Cross-plane modes on Ma")
     print("=" * 76)
 
     print("""
-  On T⁶ = T²_e × T²_ν × T²_p, a general mode has six winding numbers:
+  On Ma = Ma_e × Ma_ν × Ma_p, a general mode has six winding numbers:
   (n₁, n₂, n₃, n₄, n₅, n₆)
 
-  "Pure" modes live on one T² subplane:
+  "Pure" modes live on one material sheet subplane:
     Electron:  (n₁, n₂, 0, 0, 0, 0)
     Neutrino:  (0, 0, n₃, n₄, 0, 0)
     Proton:    (0, 0, 0, 0, n₅, n₆)
@@ -327,7 +327,7 @@ def main():
   In the zero-cross-shear limit, cross-plane modes have energy:
     E² = E²_e(n₁,n₂) + E²_ν(n₃,n₄) + E²_p(n₅,n₆)
 
-  The lightest cross-plane modes involving the neutrino T² have:
+  The lightest cross-plane modes involving the neutrino material sheet have:
     E ≥ √(E²_ν + E²_other)
 
   where E_other is at least ~0.5 MeV (electron scale) or ~1 GeV
@@ -340,7 +340,7 @@ def main():
     m_nu_eV = 0.050    # ν₃ mass in eV (approximate)
 
     E_cross_min = math.sqrt(m_e_eV**2 + m_nu_eV**2)
-    print(f"  Lightest cross-plane mode (electron + neutrino T²):")
+    print(f"  Lightest cross-plane mode (electron + neutrino material sheet):")
     print(f"    E ≥ √(m_e² + m_ν²) ≈ {E_cross_min:.0f} eV = {E_cross_min/1e6:.6f} MeV")
     print(f"    This is ~10¹⁰ × heavier than the neutrino.")
     print(f"    Cross-plane modes cannot be neutrinos.")
@@ -375,11 +375,11 @@ def main():
   2. No non-coprime mode provides a new spin-½ candidate that wasn't
      already covered by the coprime (p, 2) modes in Track 1b.
 
-  3. Cross-plane modes on T⁶ are too heavy (≥ MeV) to be light
+  3. Cross-plane modes on Ma are too heavy (≥ MeV) to be light
      neutrinos.  The energy hierarchy (meV vs MeV) suppresses
      cross-plane mixing at the 10⁻¹⁷ level.
 
-  4. The mode menu for the neutrino T² is unchanged:
+  4. The mode menu for the neutrino material sheet is unchanged:
      - Spin-½ fermions: (p, 2) with p odd, for any p
      - All other modes have spin ≠ ½ or are bosons
      - Non-coprime modes add density but no new physics

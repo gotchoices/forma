@@ -8,7 +8,7 @@ strongly they couple electromagnetically.
 
 TWO CHARGE FORMULAS ARE COMPARED:
 
-1. KK formula: Q = -n₁ (electron sheet) or Q = +n₅ (proton sheet).
+1. Ma convention: Q = -n₁ (electron sheet) or Q = +n₅ (proton sheet).
    Every n₁ ≠ 0 mode carries charge proportional to n₁.
 
 2. WvM charge integral (R19):
@@ -26,8 +26,8 @@ import math
 import numpy as np
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
-from lib.t6 import (
-    alpha_kk, solve_shear_for_alpha, mode_energy, mode_charge, mode_spin,
+from lib.ma import (
+    alpha_ma, solve_shear_for_alpha, mode_energy, mode_charge, mode_spin,
     build_scaled_metric, ALPHA, M_E_MEV, M_P_MEV,
 )
 
@@ -50,7 +50,7 @@ def charge_integral_2d(n1, n2, s):
 def alpha_eff_kk(r, s, n1, n2):
     """
     Effective fine-structure constant for mode (n₁, n₂) using the
-    KK convention.  Generalizes alpha_kk to arbitrary modes.
+    Ma convention.  Generalizes alpha_ma to arbitrary modes.
 
     α_eff = r² × μ(n₁,n₂) × sin²(2πs) / (4π × (n₂ - n₁·s)²)
 
@@ -232,7 +232,7 @@ def main():
         ((1, 1, 0, 0, 1, 1), "cross ghost (1,1)+(1,1)"),
     ]
 
-    print(f"\n{'Mode':>25s} | {'E (MeV)':>10s} | {'Q_KK':>5s} | {'Q_WvM':>10s} | "
+    print(f"\n{'Mode':>25s} | {'E (MeV)':>10s} | {'Q_Ma':>5s} | {'Q_WvM':>10s} | "
           f"{'Spin':>10s} | Description")
     print(f"  {'─'*85}")
     for n, desc in cross_modes:

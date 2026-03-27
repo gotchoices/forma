@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
 """
-R31 Track 6: Multi-electron atoms and the Pauli principle in T⁶.
+R31 Track 6: Multi-electron atoms and the Pauli principle in Ma.
 
 All electrons share the SAME T² sheet.  Different electrons in
 multi-electron atoms are distinguished by R³ orbital/spin states,
-not by T⁶ geometry.  This track quantifies these statements.
+not by Ma geometry.  This track quantifies these statements.
 
 Key questions:
   - Is r_e a property of the geometry or per-electron?
-  - How does Pauli exclusion work in T⁶ + R³?
-  - Can T⁶ accommodate multi-electron atoms?
+  - How does Pauli exclusion work in Ma + R³?
+  - Can Ma accommodate multi-electron atoms?
   - What determines electron shell structure?
 """
 
@@ -18,8 +18,8 @@ import numpy as np
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 
-from lib.t6_solver import self_consistent_metric
-from lib.t6 import mode_energy, mode_charge, mode_spin, M_E_MEV, M_P_MEV, ALPHA, hbar_c_MeV_fm
+from lib.ma_solver import self_consistent_metric
+from lib.ma import mode_energy, mode_charge, mode_spin, M_E_MEV, M_P_MEV, ALPHA, hbar_c_MeV_fm
 
 R_E, R_NU, R_P = 6.6, 5.0, 8.906
 SIGMA_EP = -0.09064
@@ -40,39 +40,39 @@ print("=" * 72)
 
 print("\n\n── Section 1: r_e is a property of the geometry, not of electrons ──\n")
 
-print("  The T⁶ metric has three T² sheets:")
+print("  The Ma metric has three T² sheets:")
 print(f"    Electron sheet: dims (1,2), r_e = {R_E}, L₁ = {L[0]:,.0f} fm, L₂ = {L[1]:,.0f} fm")
 print(f"    Neutrino sheet: dims (3,4), r_ν = {R_NU}, L₃ = {L[2]:.1e} fm, L₄ = {L[3]:.1e} fm")
 print(f"    Proton sheet:   dims (5,6), r_p = {R_P}, L₅ = {L[4]:.2f} fm, L₆ = {L[5]:.2f} fm")
 print()
 print("  These are properties of the GEOMETRY — the shape of the")
-print("  compact space.  They do NOT change when you add more particles.")
+print("  material space.  They do NOT change when you add more particles.")
 print()
 print("  Analogy: the shape of a violin body is fixed.  Multiple")
 print("  harmonics (particles) can resonate in it simultaneously,")
 print("  but each one experiences the same geometry.")
 print()
 print("  Key consequence: ALL electrons have the same mass (m_e)")
-print("  because they all correspond to the SAME T⁶ mode (1,2,0,0,0,0)")
+print("  because they all correspond to the SAME Ma mode (1,2,0,0,0,0)")
 print("  on the SAME geometry.  Having different r_e values for")
 print("  different electrons would require MULTIPLE electron sheets —")
-print("  additional compact dimensions.")
+print("  additional material dimensions.")
 
 E_e = mode_energy([1, 2, 0, 0, 0, 0], Gti, L)
 print(f"\n  Electron mode: (1, 2, 0, 0, 0, 0)")
 print(f"  Mass: {E_e*1e3:.3f} keV (every electron, everywhere)")
 
 
-# ── Section 2: The Pauli principle in T⁶ + R³ ───────────────────
+# ── Section 2: The Pauli principle in Ma + R³ ───────────────────
 
-print("\n\n── Section 2: Pauli exclusion in T⁶ + R³ ──\n")
+print("\n\n── Section 2: Pauli exclusion in Ma + R³ ──\n")
 
 print("  In standard QM, electrons are IDENTICAL FERMIONS.")
 print("  Two electrons cannot occupy the same quantum state.")
 print()
-print("  In the T⁶ + R³ picture, the quantum state has two parts:")
+print("  In the Ma + R³ picture, the quantum state has two parts:")
 print()
-print("  T⁶ part (SAME for all electrons):")
+print("  Ma part (SAME for all electrons):")
 print("    Mode: (1, 2, 0, 0, 0, 0)")
 print("    This identifies the particle AS an electron.")
 print("    All electrons share this — it's the definition of 'electron'.")
@@ -86,14 +86,14 @@ print("  The Pauli principle operates on the R³ part:")
 print("    No two electrons can have the same (n, l, m_l, m_s).")
 print("    This is a standard QM constraint in R³.")
 print()
-print("  T⁶ does NOT participate in Pauli exclusion.")
+print("  Ma does NOT participate in Pauli exclusion.")
 print("  It only determines WHAT the particle is (electron vs proton).")
 print("  The HOW MANY and WHERE are R³ properties.")
 
 
 # ── Section 3: Multi-electron atoms — quantitative ──────────────
 
-print("\n\n── Section 3: Multi-electron atoms in T⁶ + R³ ──\n")
+print("\n\n── Section 3: Multi-electron atoms in Ma + R³ ──\n")
 
 atoms = [
     ("Hydrogen", 1, "1s1", 13.6, 1),
@@ -105,8 +105,8 @@ atoms = [
     ("Uranium", 92, "[Rn] 5f3 6d1 7s2", 74394.0, 7),
 ]
 
-print("  Each atom: Z electrons + 1 nucleus (T6 mode)")
-print("  Electrons are R3 wavefunctions on the SAME T6 geometry.")
+print("  Each atom: Z electrons + 1 nucleus (Ma mode)")
+print("  Electrons are R3 wavefunctions on the SAME Ma geometry.")
 print()
 print(f"  {'Atom':>10s} {'Z':>4s} {'Config':>20s} {'Bind (eV)':>10s}"
       f" {'Max n':>6s} {'# states':>10s}")
@@ -117,7 +117,7 @@ for name, Z, config, binding, max_n in atoms:
     print(f"  {name:>10s} {Z:4d} {config:>20s} {binding:10.1f}"
           f" {max_n:6d} {n_states:10d}")
 
-print(f"\n  All {atoms[-1][1]} electrons in uranium have the SAME T⁶ mode.")
+print(f"\n  All {atoms[-1][1]} electrons in uranium have the SAME Ma mode.")
 print(f"  They differ ONLY in their R³ quantum numbers (n, l, m_l, m_s).")
 
 
@@ -125,9 +125,9 @@ print(f"  They differ ONLY in their R³ quantum numbers (n, l, m_l, m_s).")
 
 print("\n\n── Section 4: Energy scale separation ──\n")
 
-print("  T⁶ energy (particle identity):    MeV scale")
+print("  Ma energy (particle identity):    MeV scale")
 print(f"    m_e = {M_E_MEV*1e3:.1f} keV = {M_E_MEV*1e6:.0f} eV")
-print(f"    Smallest T⁶ step: {2*math.pi*hbar_c_MeV_fm/L[0]*1e6:.0f} eV (electron tube)")
+print(f"    Smallest Ma step: {2*math.pi*hbar_c_MeV_fm/L[0]*1e6:.0f} eV (electron tube)")
 print()
 print("  R³ energy (electron configuration):  eV scale")
 print(f"    H binding:  13.6 eV")
@@ -137,12 +137,12 @@ print()
 
 ratio = M_E_MEV * 1e6 / 13.6
 print(f"  Ratio: m_e / E_binding(H) = {ratio:,.0f}")
-print(f"  The particle identity (T⁶) is 37,000× more energetic")
+print(f"  The particle identity (Ma) is 37,000× more energetic")
 print(f"  than the atomic binding (R³).")
 print()
 print("  This enormous scale separation is WHY atomic physics works:")
 print("  electrons maintain their identity perfectly while orbiting.")
-print("  The electron's T⁶ mode is never perturbed by atomic forces.")
+print("  The electron's Ma mode is never perturbed by atomic forces.")
 print("  It's like trying to reshape a steel ball with a feather.")
 
 
@@ -163,15 +163,15 @@ for Z in [1, 2, 6, 26]:
           f" a₀/Z = {a_Z:,.0f} fm ({a_Z*1e-4:.2f} Å)")
 
 print()
-print("  The Coulomb potential is determined by α (from T⁶ shear).")
+print("  The Coulomb potential is determined by α (from Ma shear).")
 print("  Shell structure is determined by quantum mechanics in R³.")
-print("  Both ultimately trace back to α — the bridge between T⁶ and R³.")
+print("  Both ultimately trace back to α — the bridge between Ma and R³.")
 print()
-print("  T⁶ determines:")
+print("  Ma determines:")
 print("    ✓ What particles exist (electron, proton)")
 print("    ✓ Their masses")
 print("    ✓ The coupling constant α")
-print("    ✓ Nuclear masses (nuclei as T⁶ modes)")
+print("    ✓ Nuclear masses (nuclei as Ma modes)")
 print()
 print("  R³ determines:")
 print("    ✓ Shell structure (QM eigenstates of V = −Zα/r)")
@@ -191,7 +191,7 @@ print()
 print("  Answer: NO.  Here's why:")
 print()
 print("  1. r_e is a property of the METRIC — the shape of the")
-print("     compact space.  There is ONE metric, not one per particle.")
+print("     material space.  There is ONE metric, not one per particle.")
 print()
 print("  2. If electron A had r_e = 3 and electron B had r_e = 10,")
 print("     they would have DIFFERENT masses (the mode energy depends")
@@ -202,7 +202,7 @@ print()
 print(f"     {'r_e':>6s} {'L₁ (fm)':>12s} {'L₂ (fm)':>10s} {'m_e check':>10s}")
 print(f"     {'─'*42}")
 for r_test in [1.0, 3.0, 6.6, 10.0, 20.0]:
-    from lib.t6 import solve_shear_for_alpha, mu_12
+    from lib.ma import solve_shear_for_alpha, mu_12
     s = solve_shear_for_alpha(r_test)
     if s is None:
         continue
@@ -236,24 +236,24 @@ print("\n\n── Summary ──\n")
 
 print("  1. r_e is a GEOMETRIC property (aspect ratio of the electron")
 print("     T² sheet), not a per-electron variable.  All electrons")
-print("     share the same compact geometry.")
+print("     share the same material geometry.")
 print()
 print("  2. The Pauli exclusion principle operates entirely in R³.")
 print("     Electrons are distinguished by orbital and spin quantum")
-print("     numbers, not by T⁶ geometry.")
+print("     numbers, not by Ma geometry.")
 print()
 print("  3. Multi-electron atoms work naturally: Z electrons, each")
-print("     in T⁶ mode (1,2,0,0,0,0), distinguished by R³ states")
-print("     (n, l, m_l, m_s).  No new T⁶ degrees of freedom needed.")
+print("     in Ma mode (1,2,0,0,0,0), distinguished by R³ states")
+print("     (n, l, m_l, m_s).  No new Ma degrees of freedom needed.")
 print()
 print("  4. The 37,000× scale separation between particle identity")
-print("     (T⁶, MeV) and atomic binding (R³, eV) guarantees that")
+print("     (Ma, MeV) and atomic binding (R³, eV) guarantees that")
 print("     atomic physics works: electrons never lose their identity.")
 print()
 print("  5. Shell structure, electron configurations, and chemistry")
-print("     are ALL R³ phenomena governed by α.  T⁶ provides α")
+print("     are ALL R³ phenomena governed by α.  Ma provides α")
 print("     and particle masses; R³ provides the rest.")
 print()
 print("  6. Having different r_e for different electrons is impossible")
-print("     without additional compact dimensions — violating the")
+print("     without additional material dimensions — violating the")
 print("     structural minimum of 6 dimensions (R30 F7).")

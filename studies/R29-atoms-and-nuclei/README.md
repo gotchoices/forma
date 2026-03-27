@@ -217,11 +217,11 @@ nuclear binding), build it in 3D from the start.
 ## Infrastructure
 
 ### Existing tools (do not modify)
-- `lib/t6.py` — T⁶ metric, mode energies, charge, spin
-- `lib/t6_solver.py` — discovery engine, self-consistent metric
+- `lib/ma.py` — Ma metric, mode energies, charge, spin
+- `lib/ma_solver.py` — discovery engine, self-consistent metric
 
 ### New module: `lib/t6r3.py`
-Multi-mode interaction library.  Imports from `lib/t6.py`
+Multi-mode interaction library.  Imports from `lib/ma.py`
 for the compact-dimension part and adds:
 - KK mode decomposition of the T⁶ × R³ Green's function
 - Effective 4D interaction potential V(r)

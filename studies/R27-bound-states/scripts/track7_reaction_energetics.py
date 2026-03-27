@@ -2,13 +2,13 @@
 """
 R27 Track 7: Reaction energetics.
 
-Do T⁶ mode energies satisfy conservation laws in known reactions?
+Do Ma mode energies satisfy conservation laws in known reactions?
 
 For each well-measured decay or scattering process, compare:
   (a) Observed: ΣM_in − ΣM_out  (kinetic Q-value from PDG masses)
-  (b) Mode:     ΣE_in − ΣE_out  (using nearest T⁶ mode energies)
+  (b) Mode:     ΣE_in − ΣE_out  (using nearest Ma mode energies)
 
-If the T⁶ picture is self-consistent, mode-level Q-values should
+If the Ma picture is self-consistent, mode-level Q-values should
 be non-negative for allowed decays and roughly track the observed
 Q-values.
 
@@ -25,8 +25,8 @@ import numpy as np
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 
-from lib.t6_solver import self_consistent_metric
-from lib.t6 import mode_energy, mode_charge, mode_spin, M_P_MEV, M_E_MEV
+from lib.ma_solver import self_consistent_metric
+from lib.ma import mode_energy, mode_charge, mode_spin, M_P_MEV, M_E_MEV
 
 R_E, R_NU, R_P = 6.6, 5.0, 8.906
 SIGMA_EP = -0.09064
@@ -239,7 +239,7 @@ def main():
               f"{Q:+10.3f}  {sign:>6s}  {note}")
 
     # ── Section 2: Mode-level Q-values ────────────────────────────────
-    section(2, "Mode-level Q-values (from nearest T⁶ modes)")
+    section(2, "Mode-level Q-values (from nearest Ma modes)")
 
     print(f"  {'Reaction':>30s}  {'ΣE_in':>10s}  {'ΣE_out':>10s}  "
           f"{'Q_mode':>10s}  {'ΔQ':>6s}  Note")

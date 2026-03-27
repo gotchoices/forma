@@ -8,7 +8,7 @@ matches at these energies are physically meaningful or trivially easy.
 
 Key diagnostic: compare the gap for W/Z/Higgs to the gap for an
 arbitrary "fake particle" at the same energy scale.  If both match
-equally well, the T⁶ spectrum is too dense to be predictive there.
+equally well, the Ma spectrum is too dense to be predictive there.
 """
 
 import sys, os
@@ -16,8 +16,8 @@ import numpy as np
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 
-from lib.t6_solver import self_consistent_metric
-from lib.t6 import mode_energy, mode_charge, mode_spin, M_P_MEV
+from lib.ma_solver import self_consistent_metric
+from lib.ma import mode_energy, mode_charge, mode_spin, M_P_MEV
 
 R_E, R_NU, R_P = 6.6, 5.0, 8.906
 SIGMA_EP = -0.09064
@@ -261,13 +261,13 @@ print(f"  Avg fake gap: {avg_fake:.4f}%")
 print()
 
 if max(W_gap, Z_gap, H_gap) < 0.01 and avg_fake < 0.01:
-    print("  CONCLUSION: The T⁶ spectrum is too dense at these energies.")
+    print("  CONCLUSION: The Ma spectrum is too dense at these energies.")
     print("  Both real and fake particles match to < 0.01%.")
     print("  The model is NOT predictive above a few GeV.")
 elif max(W_gap, Z_gap, H_gap) < avg_fake * 0.1:
     print("  CONCLUSION: Real particles match significantly better than fakes.")
-    print("  The T⁶ geometry may encode something about electroweak masses.")
+    print("  The Ma geometry may encode something about electroweak masses.")
 else:
     print("  CONCLUSION: Real and fake particles match comparably.")
-    print("  The T⁶ spectrum's high-energy density makes individual")
+    print("  The Ma spectrum's high-energy density makes individual")
     print("  mass matches non-diagnostic.")

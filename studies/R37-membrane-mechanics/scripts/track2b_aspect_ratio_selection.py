@@ -7,7 +7,7 @@ isotropic-membrane model reduces to:
 
     E_total(r) ∝ μ(r, s(r))^(2/3) × r^(1/3)
 
-where s(r) is determined by the alpha curve  alpha_kk(r, s) = 1/137.
+where s(r) is determined by the alpha curve  alpha_ma(r, s) = 1/137.
 
 Minimising E_total along the alpha curve gives the equilibrium r.
 """
@@ -19,7 +19,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 import math
 import numpy as np
 from scipy.optimize import minimize_scalar
-from lib.t6 import alpha_kk, solve_shear_for_alpha, mu_12, ALPHA
+from lib.ma import alpha_ma, solve_shear_for_alpha, mu_12, ALPHA
 
 hbar_SI = 1.0546e-34
 c_SI = 2.998e8
@@ -64,7 +64,7 @@ def main():
 
     E_total(r) ∝ μ(r, s(r))^(2/3) × r^(1/3)
 
-  where s(r) is fixed by  alpha_kk(r, s) = 1/137.
+  where s(r) is fixed by  alpha_ma(r, s) = 1/137.
   This is a function of r alone — minimise numerically.
 """)
 
@@ -82,7 +82,7 @@ def main():
     s_min = solve_shear_for_alpha(r_min)
     mu_min = mu_12(r_min, s_min)
     cost_min = cost(r_min)
-    a_check = alpha_kk(r_min, s_min)
+    a_check = alpha_ma(r_min, s_min)
     L1 = 2 * math.pi * lambda_bar_C * mu_min
     L2 = r_min * L1
 
@@ -169,7 +169,7 @@ def main():
 
   Neither spectrum immediately produces the muon (207 m_e) or
   tau (3477 m_e) from low-order modes — those mass ratios
-  require the full T⁶ multi-sheet structure, not a single T².
+  require the full Ma multi-sheet structure, not a single T².
 """)
 
     # ── Part E: Caveats and the moduli potential ──────────────────

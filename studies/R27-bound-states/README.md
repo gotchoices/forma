@@ -166,11 +166,11 @@ Key results:
   mode identification required the discovery engine (Track 2).
 
 
-### Track 2 — T⁶ mode solver (discovery engine)  ✔
+### Track 2 — Ma mode solver (discovery engine)  ✔
 
 **Status:** Complete.  See findings F9.
 
-Built `lib/t6_solver.py` on top of `lib/t6.py`:
+Built `lib/ma_solver.py` on top of `lib/ma.py`:
 - `find_modes()` — search for modes matching target properties
 - `self_consistent_metric()` — metric with exact input masses
 - `multi_target_optimize()` — match multiple targets at once
@@ -316,14 +316,14 @@ Deferred with Track 9.
 
 ## Infrastructure
 
-### `lib/t6.py` — low-level T⁶ model
+### `lib/ma.py` — low-level Ma model
 
 - Metric construction (`build_scaled_metric`)
 - Mode energies (`mode_energy`)
 - Charge and spin (`mode_charge`, `mode_spin`)
 - Spectral scanning (`scan_modes`)
 
-### `lib/t6_solver.py` — discovery engine
+### `lib/ma_solver.py` — discovery engine
 
 - `find_modes(target, ...)` — search for modes matching targets
 - `self_consistent_metric(sigmas, ...)` — self-consistent metric

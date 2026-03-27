@@ -29,7 +29,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 
 import numpy as np
 import math
-from lib.t6 import (build_scaled_metric, mode_energy, compute_scales,
+from lib.ma import (build_scaled_metric, mode_energy, compute_scales,
                      hbar_c_MeV_fm, M_E_MEV, DM2_21, S34, ALPHA)
 
 # ═══════════════════════════════════════════════════════════════════

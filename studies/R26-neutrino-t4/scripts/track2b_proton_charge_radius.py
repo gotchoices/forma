@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
 """
-R26 Track 2b: Proton charge radius from T² geometry.
+R26 Track 2b: Proton charge radius from material sheet geometry.
 
-The proton is a (1,2) mode on its own T² with ring radius R and
+The proton is a (1,2) mode on its own material sheet with ring radius R and
 tube radius a = εR.  The mode generates an apparent charge Q = e
 via the shear mechanism (R19).  The charge distribution in 3D is
 determined by the mode's E-field pattern projected through the
 torus embedding.
 
 This script computes the RMS charge radius r_ch as a function of
-the aspect ratio ε = a/R, using the KK convention for physical
+the aspect ratio ε = a/R, using the Ma convention for physical
 scales (R19 Track 8), and compares to experiment (0.841 fm).
 """
 
@@ -31,32 +31,32 @@ R_CH_EXP = 0.8414e-15       # CODATA 2018, meters
 R_CH_EXP_FM = R_CH_EXP * 1e15
 
 
-def alpha_kk(r, s):
-    """KK convention α formula (R19 Track 8, F35)."""
+def alpha_ma(r, s):
+    """Ma convention α formula (R19 Track 8, F35)."""
     mu = math.sqrt(1/r**2 + (2 - s)**2)
     return r**2 * mu * math.sin(2*math.pi*s)**2 / (4*math.pi * (2-s)**2)
 
 
 def solve_shear_kk(r, alpha_target=ALPHA):
-    """Solve α_KK(r, s) = α_target for s."""
+    """Solve α_Ma(r, s) = α_target for s."""
     s_scan = np.linspace(0.001, 0.49, 5000)
-    a_scan = [alpha_kk(r, s) for s in s_scan]
+    a_scan = [alpha_ma(r, s) for s in s_scan]
     roots = []
     for i in range(len(s_scan) - 1):
         if (a_scan[i] - alpha_target) * (a_scan[i+1] - alpha_target) < 0:
-            roots.append(brentq(lambda s: alpha_kk(r, s) - alpha_target,
+            roots.append(brentq(lambda s: alpha_ma(r, s) - alpha_target,
                                 s_scan[i], s_scan[i+1], xtol=1e-14))
     return roots
 
 
 def R_kk(r, s):
-    """Ring radius R under KK convention (meters)."""
+    """Ring radius R under Ma convention (meters)."""
     mu = math.sqrt(1/r**2 + (2 - s)**2)
     return LAMBDABAR_P * mu
 
 
 def physical_scales_kk(r, s):
-    """Return (R, a) in fm under KK convention."""
+    """Return (R, a) in fm under Ma convention."""
     R = R_kk(r, s)
     a = r * R
     return R * 1e15, a * 1e15
@@ -132,7 +132,7 @@ def rch_form_factor(R_fm, eps, N=2000, Nq=200):
 
 def main():
     print("=" * 76)
-    print("R26 Track 2b: Proton Charge Radius from T² Geometry")
+    print("R26 Track 2b: Proton Charge Radius from Material Sheet Geometry")
     print("=" * 76)
 
     # ── SECTION 1: The physics of the charge distribution ─────────
@@ -140,7 +140,7 @@ def main():
     print("SECTION 1: Charge distribution on the torus")
     print("-" * 76)
     print(f"""
-  The (1,2) mode on the proton T² generates charge Q = e via the
+  The (1,2) mode on the proton material sheet generates charge Q = e via the
   shear mechanism.  The charge distribution in 3D is determined by:
 
   1. The mode's E-field pattern: ψ ∝ exp(i(θ + q_eff φ − ωt))
@@ -172,7 +172,7 @@ def main():
         [10.0, 15.0, 20.0]
     ])
 
-    print(f"  {'ε':>5s} | {'s_KK':>8s} | {'R(fm)':>7s} | {'a(fm)':>7s} | "
+    print(f"  {'ε':>5s} | {'s_Ma':>8s} | {'R(fm)':>7s} | {'a(fm)':>7s} | "
           f"{'ring':>7s} | {'Gauss':>7s} | {'J₀':>7s} | {'uniform':>7s} | "
           f"{'expt':>7s}")
     print(f"  {'─'*5}─┼─{'─'*8}─┼─{'─'*7}─┼─{'─'*7}─┼─"
@@ -240,7 +240,7 @@ def main():
         rc_j0 = rch_form_factor(R_fm, eps_match)
 
         print(f"  Gauss-weighted model matches at ε = {eps_match:.4f}")
-        print(f"    s_KK  = {s_match:.6f}")
+        print(f"    s_Ma  = {s_match:.6f}")
         print(f"    R     = {R_fm:.4f} fm")
         print(f"    a     = {a_fm:.4f} fm")
         print(f"    r_ch  = {rc:.4f} fm  (Gauss)")
@@ -313,7 +313,7 @@ def main():
         print()
 
         R_e_fm = (hbar/(m_e*c)) * math.sqrt(1/eps_best**2 + (2-s_best)**2) * 1e15
-        print(f"  Electron T² at same ε = {eps_best:.4f}:")
+        print(f"  Electron material sheet at same ε = {eps_best:.4f}:")
         print(f"    Ring radius R_e = {R_e_fm:.4f} pm  ({R_e_fm*1e3:.1f} fm)")
         print(f"    Tube radius a_e = {R_e_fm*eps_best:.4f} pm")
         print(f"    R_p / R_e       = {R_fm/(R_e_fm*1e3):.6f}  (= m_e/m_p)")

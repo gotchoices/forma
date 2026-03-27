@@ -3,7 +3,7 @@
 R34 Track 1: Kramers-Kronig dispersive model of α(E).
 
 The hypothesis: 1/α₀ = 80.5 is the geometric base coupling.
-The T⁶ mode spectrum acts as a set of absorption resonances
+The Ma mode spectrum acts as a set of absorption resonances
 that modulate α via Kramers-Kronig dispersion:
 
     1/α(E) = 1/α₀ + Σ_k f_k × D(E, E_k, γ_k)
@@ -29,8 +29,8 @@ from itertools import product
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 
-from lib.t6_solver import self_consistent_metric
-from lib.t6 import (
+from lib.ma_solver import self_consistent_metric
+from lib.ma import (
     mode_energy, mode_charge, mode_spin,
     M_P_MEV, M_E_MEV, M_N_MEV, hbar_c_MeV_fm,
 )
@@ -97,7 +97,7 @@ print("KRAMERS-KRONIG DISPERSIVE MODEL")
 print("=" * 70)
 
 print(f"""
-Model: each T⁶ mode at energy E_k acts as a resonance.
+Model: each Ma mode at energy E_k acts as a resonance.
 The dispersive contribution to 1/α is:
 
   Δ(1/α) = Σ_k f_k × g_k × (E_k² - E²) / ((E_k² - E²)² + (γ E_k)²)
@@ -417,10 +417,10 @@ for E_val, sm_inv in sm_pts:
     print(f"  {label:>15s} {sm_inv:10.1f} {lor_inv:10.1f} {delta:+8.1f}")
 
 
-# ── Check what happens at T⁶ scales ──────────────────────────────────
+# ── Check what happens at Ma scales ──────────────────────────────────
 
 print(f"\n\n{'='*70}")
-print("LORENTZIAN MODEL AT T⁶ SCALES")
+print("LORENTZIAN MODEL AT Ma SCALES")
 print("=" * 70)
 
 t6_scales = [
@@ -466,16 +466,16 @@ print(f"""
   where α passes through its geometric midpoint is the
   electroweak scale itself.
 
-  Alternatively, E* could be a GEOMETRIC scale of the T⁶:
+  Alternatively, E* could be a GEOMETRIC scale of the Ma:
   - ℏc / √(L₅ × L₆) = {hbar_c_MeV_fm / math.sqrt(L[4]*L[5]):.1f} MeV
     (proton sheet, NOT 310 GeV)
-  - The T⁶ predictive horizon is ~2 GeV
+  - The Ma predictive horizon is ~2 GeV
     (NOT 310 GeV)
 
   E* = {E_star_best/1e3:.0f} GeV does not correspond to any
-  obvious T⁶ geometric scale.  It IS close to the electroweak
+  obvious Ma geometric scale.  It IS close to the electroweak
   scale, which may be a coincidence or may indicate that the
-  T⁶ model connects to electroweak physics at this scale.
+  Ma model connects to electroweak physics at this scale.
 """)
 
 
@@ -507,7 +507,7 @@ WEAKNESSES:
      So the Lorentzian UNDER-predicts the running at intermediate
      energies.
 
-  3. E* = 310 GeV has no T⁶ origin.  It's an electroweak scale,
+  3. E* = 310 GeV has no Ma origin.  It's an electroweak scale,
      not a compact geometry scale.
 
   4. The model has no MECHANISM — it's a fit, not a derivation.

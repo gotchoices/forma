@@ -2,12 +2,12 @@
 """
 R28 Track 2: Mode census below 2 GeV.
 
-Enumerate ALL T⁶ modes with energy below 2000 MeV at the
+Enumerate ALL Ma modes with energy below 2000 MeV at the
 pinned parameter point.  For each, classify as:
   - Matched to a known particle (within threshold)
   - Ghost mode (no known counterpart)
 
-This answers: is the T⁶ spectrum economical (few ghosts)
+This answers: is the Ma spectrum economical (few ghosts)
 or over-predictive (many ghosts)?
 """
 
@@ -19,8 +19,8 @@ from collections import defaultdict
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 
-from lib.t6_solver import self_consistent_metric
-from lib.t6 import (
+from lib.ma_solver import self_consistent_metric
+from lib.ma import (
     mode_energy, mode_charge, mode_spin,
     M_P_MEV, M_E_MEV, M_N_MEV,
 )
@@ -91,7 +91,7 @@ def main():
     L = sc['L']
 
     # ── Section 1: Enumerate all modes below E_MAX ────────────────────
-    section(1, f"All T⁶ modes below {E_MAX:.0f} MeV")
+    section(1, f"All Ma modes below {E_MAX:.0f} MeV")
 
     all_modes = []
     n_max = 10
@@ -222,19 +222,19 @@ def main():
     # ── Section 7: Summary ────────────────────────────────────────────
     section(7, "Summary")
 
-    print(f"  T⁶ modes below {E_MAX:.0f} MeV: {len(modes_list)}")
+    print(f"  Ma modes below {E_MAX:.0f} MeV: {len(modes_list)}")
     print(f"  Matched to known particles: {len(matched)}")
     print(f"  Ghost modes:                {len(ghosts)}")
     print(f"  Ghost fraction:             {len(ghosts)/len(modes_list)*100:.0f}%")
     print()
     if len(ghosts) > len(matched):
-        print("  The T⁶ spectrum OVER-PREDICTS: more ghost modes than")
+        print("  The Ma spectrum OVER-PREDICTS: more ghost modes than")
         print("  matched particles.  This is expected for a geometry that")
         print("  supports many oscillation patterns — most are off-resonance")
         print("  excitations that decay quickly or don't manifest as")
         print("  observable particles.")
     else:
-        print("  The T⁶ spectrum is ECONOMICAL: fewer ghost modes than")
+        print("  The Ma spectrum is ECONOMICAL: fewer ghost modes than")
         print("  matched particles.")
 
 
