@@ -74,49 +74,56 @@ torus aspect ratios and cannot be used to infer r.
 
 ## Track 2b — Aspect ratio selection
 
-### F7. Two independent constraints select r ≈ 0.53
+### F7. Constrained energy minimisation selects r ≈ 0.50 (broad)
 
-The alpha curve (R19 charge integral):
+After substituting the L₁ equilibrium (F3), the total energy
+along the alpha curve reduces to:
 
-    alpha_kk(r, s) = 1/137
+    E_total(r) ∝ μ(r, s(r))^(2/3) × r^(1/3)
 
-and the isotropic membrane equilibrium (F4):
+where s(r) is fixed by alpha_kk(r,s) = 1/137.  Numerically
+minimising this gives:
 
-    r = 1/(2−s)
+    r ≈ 0.50,  s ≈ 0.120,  α = 1/137  ✓
 
-are independent constraints in the (r, s) plane.  Their
-intersection is the unique point where both the electromagnetic
-coupling and the energy balance are simultaneously satisfied:
+This is a fat torus (ring ≈ 50% of tube).  The minimum is
+**very broad**: r = 0.4 to 0.6 lies within 0.5% of the
+minimum energy, while r = 6.6 is 91% higher — decisively
+ruled out.
 
-    r = 0.5304,  s = 0.1146,  α = 1/137  ✓
-
-This is a fat torus (ring ≈ 53% of tube).  A mirror solution
-exists at r = 0.631, s = 0.415 (large-shear branch, near a
-zero of sin²(2πs) — likely less physical).
-
-This is the first physical mechanism that selects a specific
-point on the alpha curve rather than leaving r as a free
-parameter.
+This is the first physical mechanism that prefers a specific
+region of the alpha curve rather than leaving r as a free
+parameter.  It selects the fat-torus regime (r < 1) but does
+not sharply pin a value.
 
 **Script:** `scripts/track2b_aspect_ratio_selection.py`
 
-### F8. The selected r is in the fat-torus regime, far from 6.6
+### F8. r = 6.6 is decisively ruled out
 
 The historical r = 6.6 (from S2) was always weakly motivated
 and was later flagged as inconsistent by R6.  The membrane
-equilibrium selects r < 1 — a qualitatively different geometry.
+energy minimisation confirms it is far from equilibrium:
 
-At r = 6.6, the membrane equilibrium constraint gives
-r_membrane = 1/(2−0.010) = 0.503, confirming that r = 6.6
-is NOT an energy minimum.  It would require anisotropic
-physics or external constraint.
+    Cost(r=0.50) = 1.556   (minimum)
+    Cost(r=6.6)  = 2.973   (+91%)
 
-### F9. Caveat: isotropic limit only
+The electron is a fat torus (r < 1), not a thin one (r > 1).
 
-The membrane constraint used isotropic surface tension.  The
-actual stress is anisotropic (F1).  With anisotropy included,
-the equilibrium r would shift.  The r = 0.53 result establishes
-the REGIME (fat torus, r < 1) but not the precise value.
+### F9. Anisotropic correction requires the moduli potential
+
+The membrane constraint used isotropic surface tension
+(E_boundary = σ_m × A).  The actual boundary energy depends
+on how the T² shape maps to the vacuum energy of the compact
+manifold — the **moduli potential**.  This is the same deep
+unknown that blocks computing R35's Goldilocks K (F11).
+
+The Casimir energy of the T² is calculable but negligible
+(~10⁻⁹ of the mode energy).  Any stronger anisotropic
+restoring force must come from the full moduli potential,
+which is not derivable within the current framework.
+
+The isotropic result establishes the REGIME (fat torus, r < 1)
+but the precise value of r awaits the moduli potential.
 
 ---
 
@@ -155,9 +162,9 @@ The membrane picture adds no constraint beyond R35.
 | F4 | Isotropic membrane gives r = 1/(2−s) | Yes |
 | F5 | Self-gravity negligible | Yes — consistency check |
 | F6 | Gravity tautological and blind to r | Tautological |
-| **F7** | **Alpha curve ∩ membrane equilibrium → r = 0.53** | **Yes — key result** |
-| F8 | Selected r is fat-torus regime, far from 6.6 | Yes |
-| F9 | Isotropic limit caveat | Honest limitation |
+| **F7** | **Energy min along alpha curve → r ≈ 0.50 (broad)** | **Yes — key result** |
+| F8 | r = 6.6 decisively ruled out (+91% energy) | Yes |
+| F9 | Anisotropic correction requires moduli potential | Honest limitation |
 | F10 | Electron sheet too stiff for R35 coupling | Yes |
 | F11 | ν-sheet stiffness not computable here | Honest negative |
 | F12 | Goldilocks is thermodynamic | Dimensional analysis |

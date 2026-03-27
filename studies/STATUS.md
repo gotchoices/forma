@@ -152,13 +152,15 @@ mass spectrum preservation.
 **Questions:** Q2, Q76  **Type:** theoretical + compute  **Depends on:** R19, R26, R17, R18, R31, R35, R36
 
 12 findings.  Gravity "derivation" (Tracks 2–3) tautological (GR restated).
-KEY RESULT (F7): alpha curve ∩ isotropic membrane equilibrium selects
-r = 0.530, s = 0.115 — the first physical mechanism to pick a specific
-point on the alpha curve.  This is in the fat-torus regime (r < 1), far
-from the historical r = 6.6 (which was weakly motivated and inconsistent
-with membrane equilibrium).  Caveat: isotropic limit; anisotropic correction
-needed.  Other genuine results: computable elastic constants (F2), electron
-sheet ~10⁶× too stiff for R35 coupling (F10), self-gravity negligible (F5).
+KEY RESULT (F7): constrained energy minimisation along the alpha curve
+gives r ≈ 0.50 — a broad minimum (r = 0.4–0.6 within 0.5% of optimal),
+but r = 6.6 is 91% higher, decisively ruling out thin-torus geometries.
+First physical mechanism to prefer a specific region of the alpha curve.
+Anisotropic correction requires the **moduli potential** (the vacuum energy
+of the T² as a function of shape) — the same deep unknown that blocks
+computing R35's Goldilocks K.  Other genuine results: computable elastic
+constants (F2), electron sheet ~10⁶× too stiff for R35 coupling (F10),
+self-gravity negligible (F5).
 
 ### R33. Ghost mode selection — why most T⁶ modes are dark  **Paused**
 **Study:** [`ghost-selection/`](ghost-selection/)
