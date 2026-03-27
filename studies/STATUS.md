@@ -147,20 +147,18 @@ Track 1: tilt formalism and mode projection.  Track 2: mode-mode coupling
 (does 1/r Coulomb emerge?).  Track 3: ghost mode projection.  Track 4:
 mass spectrum preservation.
 
-### R37. Membrane mechanics — gravity, stability, and α from the T²/R³ interface  **Draft**
+### R37. Membrane mechanics — gravity and stability from the T²/R³ interface  **Complete**
 **Study:** [`membrane-mechanics/`](membrane-mechanics/)
-**Questions:** Q2, Q18, Q76  **Type:** theoretical + compute  **Depends on:** R19, R26, R17, R18, R31, R35
+**Questions:** Q2, Q76  **Type:** theoretical + compute  **Depends on:** R19, R26, R17, R18, R31, R35, R36
 
-5 tracks (0 complete).  The confined photon exerts ~10²⁵ Pa radiation pressure
-on the T²/R³ boundary.  Balanced against spacetime stiffness κ = c⁴/(8πG),
-the resulting R³ deformation reproduces the Newtonian potential.  Hypothesis:
-a single elastic membrane simultaneously determines particle stability (force
-balance → Compton wavelength), gravity (normal deformation → Schwarzschild),
-and α (anisotropic shear → lattice tilt → charge).  Track 1: radiation stress
-tensor on T².  Track 2: force balance and equilibrium geometry.  Track 3:
-Israel junction conditions → gravitational field.  Track 4: anisotropic
-stress → shear → α.  Track 5: predicted α/G ratio vs membrane Poisson ratio.
-Connects to R35 Hypothesis I (elastic torus) and universe-as-mode paper.
+12 findings.  Gravity "derivation" (Tracks 2–3) tautological (GR restated).
+KEY RESULT (F7): alpha curve ∩ isotropic membrane equilibrium selects
+r = 0.530, s = 0.115 — the first physical mechanism to pick a specific
+point on the alpha curve.  This is in the fat-torus regime (r < 1), far
+from the historical r = 6.6 (which was weakly motivated and inconsistent
+with membrane equilibrium).  Caveat: isotropic limit; anisotropic correction
+needed.  Other genuine results: computable elastic constants (F2), electron
+sheet ~10⁶× too stiff for R35 coupling (F10), self-gravity negligible (F5).
 
 ### R33. Ghost mode selection — why most T⁶ modes are dark  **Paused**
 **Study:** [`ghost-selection/`](ghost-selection/)

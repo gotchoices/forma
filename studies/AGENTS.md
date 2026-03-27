@@ -44,3 +44,7 @@
   - Questions that can be answered easily are addressed in a qa/Q*.md
   - More extensive projects become a study
 - Scan the INBOX at the end of each study when evaluating possible next subjects to pursue
+
+## Scripts
+- Python scripts should use the lib/*.py resources where helpful
+- Numpy and others available in the virtual environment

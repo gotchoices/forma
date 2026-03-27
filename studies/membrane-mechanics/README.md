@@ -1,6 +1,6 @@
 # R37. Membrane mechanics — gravity and stability from the T²/R³ interface
 
-**Status:** Draft
+**Status:** Complete
 **Questions:** Q2 (curved appearance), Q76 (metric signature)
 **Type:** theoretical + compute
 **Depends on:** R19 (shear-charge), R26 (T⁶), R17 (radiation pressure),
@@ -448,224 +448,99 @@ the T²/R³ boundary.
 
 ### Track 2. Force balance and particle stability
 
+**Status:** Complete — F8–F12
+
 **Goal:** Determine whether a stable equilibrium exists where
-photon radiation pressure balances membrane tension and R³
-stiffness.
+photon radiation pressure balances membrane tension.  Use two
+independent methods:
 
-**Method:**
-1. Model the total energy as a function of torus dimensions
-   (R, a) and normal displacement δn:
+  - **Method A (variational):** E_total = E_photon + E_surface,
+    find ∂E/∂L₁ = 0, check stability via d²E/dL₁².
+  - **Method B (centripetal force):** Confining force
+    F_i = -∂E/∂L_i = E·f_i/L_i, divided by transverse length.
+    These give the same stress tensor as Track 1.
 
-       E_total(R, a, δn) = E_photon(R, a)
-                         + E_surface(R, a)
-                         + E_curvature(R, a, δn)
-
-   where:
-   - E_photon = hc/L_geodesic (decreases with larger torus)
-   - E_surface = σ_m × A_torus (increases with larger torus)
-   - E_curvature = ½ K_n δn² × A_torus (penalty for R³
-     deformation)
-
-2. Find extrema: ∂E/∂R = ∂E/∂a = ∂E/∂(δn) = 0.
-3. Check stability: the Hessian matrix of second derivatives
-   must be positive definite (all eigenvalues > 0).
-4. If a stable equilibrium exists, read off the predicted
-   torus dimensions (R_eq, a_eq) and compare to the known
-   Compton-scale values.
-
-**Success criterion:** An equilibrium exists at R ~ λ̄_C with
-physical values of σ_m and K_n.
+**Results:**
+- Stable equilibrium EXISTS in L₁.  σ_m = P_iso = E/(2A)
+  = 2.65 × 10⁸ J/m².  At equilibrium, E_surface = E_photon/2
+  (virial theorem).  d²E/dL₁² > 0 unconditionally.
+- Isotropic σ_m predicts r = 0.50 (observed: 6.6).  The
+  aspect ratio requires anisotropic physics or external
+  constraint — it is NOT determined by isotropic surface
+  tension alone.
+- Methods A and B give identical results (F10).
+- The Schwarzschild metric follows from confinement alone:
+  photon energy → force on boundary → R³ deformation.
+  The gravity result is robust and model-independent (F11, F12).
 
 **Script:** `scripts/track2_force_balance.py`
 
 
 ### Track 3. Gravity from normal deformation
 
-**Goal:** Compute the R³ metric perturbation produced by the
-membrane's normal displacement.  Check whether it reproduces
-the weak-field Schwarzschild metric.
+**Status:** Complete — F13–F18
 
-**Method:**
-1. Treat the T² surface as a thin shell with stress-energy
-   S_ab determined by Track 1.
-2. Apply the Israel junction conditions to compute the
-   extrinsic curvature jump [K_ab] across the surface.
-3. Match to the exterior Schwarzschild metric at large r:
+**Goal:** Derive the weak-field Schwarzschild metric from
+the confined photon's stress-energy.
 
-       g_00 ≈ −(1 − 2Gm/(rc²))
-       g_rr ≈ 1 + 2Gm/(rc²)
+**Three routes:**
+  - Route A (KK reduction): 6D Einstein → integrate T² → 4D
+  - Route B (centripetal force): confinement → F = E/R → δg
+  - Route C (Israel conditions): S_ab → [K_ab] → exterior metric
 
-4. Check: does the total stress-energy on the T² surface
-   give the correct ADM mass m = m_e?
-
-**Output:**
-- The gravitational field of the electron, derived from
-  membrane mechanics (not postulated).
-- Whether the Newtonian potential Gm/r emerges naturally.
-- The relationship between membrane stiffness K_n and G:
-  is K_n = c⁴/(8πG)?
+**Results:**
+- All three routes give g₀₀ = −(1 − r_S/r) with r_S = 1.35 × 10⁻⁵⁷ m.
+- ADM mass = m_e exactly.  No binding energy correction.
+- Self-gravity at the torus surface: δg₀₀ ~ 10⁻³⁵ — negligible.
+  Validates flat T² metric in Tracks 1–2.
+- Hierarchy ratio K_n/μ_m = 1.1 × 10³² encodes the weakness
+  of gravity vs EM as a ratio of elastic constants.
+- G is an INPUT (not derived).  What IS derived: the Schwarzschild
+  form, the mechanism (confinement → pressure → curvature), and
+  the equivalence M = E/c².
 
 **Script:** `scripts/track3_gravity_from_membrane.py`
 
 
-### Track 4. Shear modulus from α (input) and anisotropic stress
+### Track 4. (Cancelled — subsumed by Track 1 F2–F3)
 
-**Goal:** Given α = 1/137 as input, extract the membrane's
-shear modulus μ_m from the anisotropic stress computed in
-Track 1.  Compare μ_m to K_n (from Track 3) to quantify the
-gravitational hierarchy in mechanical terms.
-
-**Method:**
-1. From Track 1, extract the anisotropic stress ΔP(θ,φ)
-   on the T² surface.
-2. From the R19 charge formula, the known α fixes the
-   required shear: s_eq ≈ 0.0116 (at r = 6.6).
-3. Extract the shear modulus:
-
-       μ_m = ΔP / s_eq
-
-4. From Track 3: K_n = c⁴/(8πG) determines G.
-5. Compute the hierarchy ratio:
-
-       K_n / μ_m = ?
-
-   If this ratio reproduces the known gravitational
-   hierarchy (~10¹⁴ or similar large number), the hierarchy
-   problem has a mechanical interpretation: the T²/R³
-   boundary is extremely rigid against normal deformation
-   (weak gravity) but compliant to tangential shear
-   (appreciable charge).
-
-**Key point:** K_n and μ_m involve deformation in different
-directions (normal into R³ vs. tangential on T²).  These
-probe different sectors of the total geometry, so the ratio
-is NOT constrained by 2D isotropic elasticity (no Poisson
-ratio applies).  A large ratio would be a feature, not a bug.
-
-**Output:**
-- μ_m in natural units
-- K_n/μ_m ratio
-- Whether the ratio matches the known hierarchy
-- Physical interpretation: what property of the T²/R³
-  interface makes it rigid normally but soft tangentially?
-
-**Script:** `scripts/track4_shear_from_stress.py`
+μ_m extraction and hierarchy ratio were already computed in
+Track 1.  No separate script needed.
 
 
-### Track 5. The hierarchy in mechanical terms
+### Track 5. Synthesis — R37 ↔ R35 connection
 
-**Goal:** Synthesize Tracks 2–4 into a coherent mechanical
-picture of the gravitational hierarchy.
+**Status:** Complete — F8–F10
 
-**Method:**
-1. From Track 3: K_n = c⁴/(8πG) ≈ 4.8 × 10⁴² N.
-2. From Track 4: μ_m = ΔP/s_eq (computable once Track 1
-   gives ΔP).
-3. Compute the hierarchy ratio K_n/μ_m.  If it matches the
-   known gravitational hierarchy Gm_e²/(ℏc) ≈ 10⁻⁴⁵, then
-   the hierarchy is the statement:
+**Goal:** Test whether R37's membrane constants predict or
+constrain R35's phenomenological compliance K.
 
-       "The T²/R³ boundary is 10¹⁴× more rigid against normal
-       deformation than against tangential shear."
+**Result:** The connection is mostly dimensional analysis.
+One genuine finding: the electron sheet is ~10⁶× too stiff
+for direct molecular coupling (F8), which constrains the
+biological coupling mechanism.  The neutrino sheet stiffness
+is not computable from R37 alone (F9).
 
-4. Ask WHY the normal and tangential responses are so
-   different.  Candidate explanations:
-   - Normal deformation requires deforming ALL of R³
-     (long-range, integrated over infinite volume →
-     enormous effective stiffness).  Tangential shear
-     is LOCAL to the T² surface (finite area → moderate
-     stiffness).
-   - The topology of T² may protect tangential modes
-     (soft directions in the moduli space) while normal
-     modes are fully constrained by the Einstein equations
-     in 10D.
-
-5. Check whether the R35 Goldilocks compliance K ∈
-   [0.043, 0.080] eV⁻¹ is consistent with the membrane
-   parameters.  K from R35 describes the neutrino sheet's
-   geometric compliance; it should be derivable from the
-   same membrane physics applied to T²_ν.
-
-**Output:**
-- K_n/μ_m ratio and whether it matches the hierarchy
-- Physical interpretation of the ratio
-- Connection to R35's Goldilocks K for the neutrino sheet
-- Whether the membrane picture gives a mechanical
-  explanation for why gravity is weak
+**Script:** `scripts/track5_synthesis.py`
 
 
-## What success looks like
+---
 
-- **Strong result:** The confined photon's radiation
-  pressure on the T²/R³ boundary, balanced against
-  spacetime stiffness, produces the weak-field
-  Schwarzschild metric — deriving the Einstein field
-  equation from confinement mechanics.  α remains an
-  input, but G emerges from the same membrane.  The
-  hierarchy K_n/μ_m has a clear mechanical interpretation.
+## Retrospective assessment
 
-- **Moderate result:** The force balance gives a stable
-  equilibrium — particle size is determined — but the
-  gravitational field has the wrong prefactor (G off by
-  orders of magnitude).  This would suggest the membrane
-  picture is qualitatively correct but the elastic model
-  needs refinement (non-linear effects, quantum
-  corrections, or contributions from the other T² sheets).
+The gravity "derivation" (Tracks 2–3) is tautological.
+K_n = c⁴/(8πG) is GR relabeled, and the Schwarzschild metric
+follows for any localised source regardless of geometry.  The
+centripetal force argument is circular — G goes in, G comes out.
 
-- **Null result:** No stable equilibrium exists, or the
-  normal deformation does not propagate into R³ as
-  curvature.  This would rule out the mechanical membrane
-  picture for gravity.
+**Genuine results:**
+- Track 1: computable elastic constants (σ_m, μ_m) from mode
+  geometry + α.  Stress anisotropy, crossover at r ≈ 2.
+- F5 (Track 2): the aspect ratio problem.  Isotropic σ_m
+  predicts r = 0.5, not 6.6.  This is a real constraint.
+- F6 (Track 2): self-gravity negligible — validates flat T².
+- F8 (Track 5): electron sheet too stiff for R35 coupling.
+  Constrains the biological mechanism.
 
-- **Bonus:** The K_n/μ_m ratio, computed from first
-  principles (Track 1 stress + Israel conditions),
-  reproduces the observed gravitational hierarchy
-  ~10⁻⁴⁵ without additional input.  The hierarchy
-  problem becomes: "the membrane is rigid normally
-  because normal deformation costs R³ curvature energy
-  integrated over all space, but soft tangentially
-  because shear is a local T² deformation."
-
-
-## Connection to R35 elastic torus
-
-R35 Track 4 introduced the metric compliance K as the master
-Goldilocks parameter for neutrino-sheet I/O, with the viable
-window K ∈ [0.043, 0.080] eV⁻¹.  F28 noted that computing K
-from first principles requires the moduli potential of the T⁶
-geometry.
-
-The membrane mechanics studied here IS the physics behind K.
-If this study succeeds in computing σ_m, K_n, and μ_m for the
-electron sheet, the same formalism applied to the neutrino
-sheet should yield the neutrino-sheet compliance.  Checking
-consistency with R35's Goldilocks window is a concrete
-falsifiability test (Track 5).
-
-The key difference between sheets: the electron sheet carries
-a charged photon mode (high radiation pressure, large ΔP),
-while the neutrino sheet carries uncharged modes (no EM
-radiation pressure — the confinement mechanism and stress
-pattern may be different).  This asymmetry may explain why
-the neutrino sheet is more compliant (larger K, easier I/O).
-
-
-## Relationship to the universe-as-mode hypothesis
-
-The universe-as-mode thought piece
-([`papers/universe-as-mode.md`](../../papers/universe-as-mode.md))
-proposes that each particle's T⁶ fiber acts as a local
-"frame-of-reference computer" managing energy propagation.
-The membrane mechanics studied here provides the PHYSICS
-behind that picture: the fiber computes by applying the
-membrane's elastic response to incoming field configurations.
-Gravity is the fiber's normal response.  Charge is the
-fiber's shear response.  The "computation" is the physical
-process of membrane equilibration.
-
-If the membrane's elastic constants are ultimately set by
-a self-consistency condition (the T⁶ × R³ × R¹ geometry
-satisfying the 10D Einstein equations), this connects to
-the self-referential closure in section 7 of the thought
-piece: the constants are what they are because no other
-values make the membrane mechanics self-consistent.
+**Open question:** The neutrino sheet stiffness (R35's Goldilocks K)
+requires the T⁶ moduli potential — same open question as R35 F28.

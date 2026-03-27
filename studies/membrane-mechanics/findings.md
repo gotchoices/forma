@@ -2,109 +2,162 @@
 
 Study: [`README.md`](README.md)
 
+**Honesty note:** Tracks 2–3 attempted to "derive" gravity from
+membrane mechanics.  The gravity results are tautological —
+they restate GR in membrane vocabulary.  The genuine, non-trivial
+results are: computable elastic constants (Track 1), the aspect
+ratio selection (Track 2b), and the electron-sheet stiffness
+constraint (Track 5).
+
 ---
 
 ## Track 1 — Radiation stress tensor on the T² surface
 
-### F1. The (1,2) mode stress is highly anisotropic
+### F1. The (1,2) mode stress is anisotropic and uniform
 
-At the canonical aspect ratio r = 6.6, the momentum
-fractions are:
+The momentum fractions on T² are:
 
-    f₁ (tube) = r²/(r² + q₂²) = 0.917
-    f₂ (ring) = q₂²/(r² + q₂²) = 0.083
+    f₁ (tube) = r²/(r² + q₂²)
+    f₂ (ring) = q₂²/(r² + q₂²),   q₂ = 2−s
 
-where q₂ = 2 − s ≈ 1.99.  The anisotropy ratio:
+For a running wave, the energy density ρ = m_e c²/A is constant
+over T² — no spatial pattern, only directional anisotropy.
+The isotropic crossover is at r ≈ 2.  For r < 2 the stress is
+ring-dominated; for r > 2, tube-dominated.
 
-    ΔP/P_iso = f₁ − f₂ = 0.833
+### F2. Elastic constants σ_m and μ_m are computable
 
-The stress is 83% anisotropic.  Physically: the (1,2)
-winding wraps once around the short tube (L₁) and twice
-around the long ring (L₂ = 6.6 L₁).  The tube wavelength
-is much shorter → most momentum is in the tube direction.
+At any point on the alpha curve, α fixes s (via R19), which
+determines the anisotropic stress ΔP = ρ|f₁ − f₂|:
 
-### F2. The stress tensor is UNIFORM across T²
+    μ_m = ΔP / s     (shear modulus — r-dependent)
+    σ_m = ρ/2 = P_iso  (surface energy density — from F4)
 
-For a running wave (circularly polarized photon), the
-energy density is constant:
+These are determined by the mode geometry and α — no free
+parameters.
 
-    ρ = E/A = m_e c² / (L₁ L₂) = 5.29 × 10⁸ J/m²
+---
 
-There is no spatial pattern — only a direction-dependent
-anisotropy (principal stresses p₁ ≠ p₂).  The isotropic
-2D radiation pressure is:
+## Track 2 — Force balance and particle stability
 
-    P_iso = ρ/2 = 2.65 × 10⁸ J/m²
+### F3. Stable equilibrium exists in L₁
 
-### F3. The shear modulus μ_m is determined by α (input)
+E_photon ∝ 1/L₁ balances E_surface ∝ L₁².  At equilibrium:
 
-α = 1/137 fixes the equilibrium shear s_eq = 0.01029
-(via R19).  The anisotropic stress ΔP = 2.20 × 10⁸ J/m²
-drives this shear.  The shear modulus:
+    σ_m = E/(2A) = P_iso,   E_surface = E_photon/2
 
-    μ_m = ΔP / s_eq = 2.14 × 10¹⁰ J/m²
-                     = 0.134 eV/fm²
+d²E/dL₁² > 0 for any σ_m > 0 — unconditionally stable.
 
-This is the membrane's tangential compliance — fixed
-entirely by the mode geometry and the observed α.
+### F4. Isotropic membrane equilibrium gives r = 1/(2−s)
 
-### F4. The hierarchy ΔP/u_grav ≈ 3 × 10⁴⁵ reproduces the known EM/gravity hierarchy
+Setting ∂E/∂r = 0 with isotropic σ_m gives:
 
-The gravitational self-energy density of the electron:
+    μ² = 2/r²  →  (2−s)² = 1/r²  →  r = 1/(2−s)
 
-    u_grav = G m_e² / (R₂ × A) ≈ 7.0 × 10⁻³⁸ J/m²
+This is a second constraint in the (r, s) plane, independent
+of the alpha curve.
 
-The ratio:
+### F5. Self-gravity is negligible
 
-    ΔP / u_grav ≈ 3 × 10⁴⁵
+    δg₀₀(R₂) ≈ 10⁻³⁵
 
-This matches α_EM / α_grav ≈ 4 × 10⁴² to within the
-expected geometric factors.  The hierarchy arises because:
+Validates treating T² as flat in all calculations.
 
-- ΔP ∝ m_e c²/A ∝ 1/R² (radiation pressure — LOCAL
-  surface quantity, independent of G)
-- u_grav ∝ Gm_e²/(R × A) ∝ Gm_e/R³ (gravitational
-  binding — suppressed by an additional factor Gm_e/(Rc²))
+### F6. Gravity is tautological and blind to r
 
-The hierarchy is the ratio of a local surface energy
-density to a global gravitational coupling.  Both live
-on the same T² surface; the enormous ratio is built in
-because G enters only the gravitational term.
+The Schwarzschild metric follows from the equivalence principle
+for any localised energy source.  It depends only on total mass
+m_e c², not on (r, s).  Gravity cannot distinguish different
+torus aspect ratios and cannot be used to infer r.
 
-### F5. Isotropic surface tension cannot balance radiation pressure in both directions
+---
 
-A simple surface energy σ_m gives different equilibrium
-values depending on which direction is balanced:
+## Track 2b — Aspect ratio selection
 
-    σ_m(L₁) = P_iso / r = 4.01 × 10⁷ J/m²
-    σ_m(L₂) = p₂        = 4.41 × 10⁷ J/m²
+### F7. Two independent constraints select r ≈ 0.53
 
-The 9% disagreement means the force balance requires
-anisotropic elastic response — at minimum (σ_m, μ_m).
-A single surface tension is insufficient.  This constrains
-Track 2: the full elastic membrane formalism is required.
+The alpha curve (R19 charge integral):
 
-### F6. The isotropic crossover is at r ≈ 2
+    alpha_kk(r, s) = 1/137
 
-| r regime | Stress character | ΔP sign |
-|----------|-----------------|---------|
-| r < 2 | Ring-dominated (f₂ > f₁) | ΔP < 0 |
-| r ≈ 2 | Isotropic (f₁ ≈ f₂) | ΔP ≈ 0 |
-| r > 2 | Tube-dominated (f₁ > f₂) | ΔP > 0 |
+and the isotropic membrane equilibrium (F4):
 
-The crossover occurs at r = q₂ = 2 − s ≈ 2, where the
-physical wavelengths in both directions match.  The
-canonical r = 6.6 is well into the tube-dominated regime.
+    r = 1/(2−s)
 
-### F7. Physical magnitudes at r = 6.6
+are independent constraints in the (r, s) plane.  Their
+intersection is the unique point where both the electromagnetic
+coupling and the energy balance are simultaneously satisfied:
 
-| Quantity | Value | Units |
-|----------|-------|-------|
-| P_iso (isotropic pressure) | 2.65 × 10⁸ | J/m² |
-| ΔP (anisotropic stress) | 2.20 × 10⁸ | J/m² |
-| μ_m (shear modulus, from α) | 2.14 × 10¹⁰ | J/m² |
-| σ_m (surface energy, approx) | ~4.0 × 10⁷ | J/m² |
-| K_n (spacetime stiffness) | 4.82 × 10⁴² | N |
-| L₁ (tube circumference) | 4842 | fm |
-| L₂ (ring circumference) | 31956 | fm |
-| A (torus area) | 1.55 × 10⁻²² | m² |
+    r = 0.5304,  s = 0.1146,  α = 1/137  ✓
+
+This is a fat torus (ring ≈ 53% of tube).  A mirror solution
+exists at r = 0.631, s = 0.415 (large-shear branch, near a
+zero of sin²(2πs) — likely less physical).
+
+This is the first physical mechanism that selects a specific
+point on the alpha curve rather than leaving r as a free
+parameter.
+
+**Script:** `scripts/track2b_aspect_ratio_selection.py`
+
+### F8. The selected r is in the fat-torus regime, far from 6.6
+
+The historical r = 6.6 (from S2) was always weakly motivated
+and was later flagged as inconsistent by R6.  The membrane
+equilibrium selects r < 1 — a qualitatively different geometry.
+
+At r = 6.6, the membrane equilibrium constraint gives
+r_membrane = 1/(2−0.010) = 0.503, confirming that r = 6.6
+is NOT an energy minimum.  It would require anisotropic
+physics or external constraint.
+
+### F9. Caveat: isotropic limit only
+
+The membrane constraint used isotropic surface tension.  The
+actual stress is anisotropic (F1).  With anisotropy included,
+the equilibrium r would shift.  The r = 0.53 result establishes
+the REGIME (fat torus, r < 1) but not the precise value.
+
+---
+
+## Track 5 — Synthesis and R35 connection
+
+### F10. Electron sheet too stiff for direct molecular coupling
+
+Total shear spring constant of the electron T²:
+
+    k_e = μ_m × A ~ 10⁷ eV  (r-dependent)
+
+R35's Goldilocks window requires ~17 eV stiffness.  The electron
+sheet is ~10⁶× too stiff.  Biological coupling (R35 Hypothesis I)
+cannot go through direct modulation of the electron T².
+
+### F11. Neutrino sheet stiffness not computable from R37
+
+R37's membrane constants characterise the electron sheet only.
+The neutrino sheet stiffness depends on the T⁶ moduli potential
+— the same open question as R35 F28.
+
+### F12. The Goldilocks window is thermodynamic, not geometric
+
+K ∈ [1/F_ATP, 0.1/kT] is set by the ratio F_ATP/kT ≈ 19.
+The membrane picture adds no constraint beyond R35.
+
+---
+
+## Summary table
+
+| Finding | Content | Genuine? |
+|---------|---------|----------|
+| F1 | Anisotropic, uniform stress; crossover at r ≈ 2 | Yes |
+| F2 | σ_m, μ_m computable from mode geometry + α | Yes |
+| F3 | Stable equilibrium in L₁ | Yes |
+| F4 | Isotropic membrane gives r = 1/(2−s) | Yes |
+| F5 | Self-gravity negligible | Yes — consistency check |
+| F6 | Gravity tautological and blind to r | Tautological |
+| **F7** | **Alpha curve ∩ membrane equilibrium → r = 0.53** | **Yes — key result** |
+| F8 | Selected r is fat-torus regime, far from 6.6 | Yes |
+| F9 | Isotropic limit caveat | Honest limitation |
+| F10 | Electron sheet too stiff for R35 coupling | Yes |
+| F11 | ν-sheet stiffness not computable here | Honest negative |
+| F12 | Goldilocks is thermodynamic | Dimensional analysis |
