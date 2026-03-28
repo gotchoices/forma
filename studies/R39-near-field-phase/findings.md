@@ -2,7 +2,8 @@
 
 **Date:** 2026-03-28
 **Scripts:** `track1_field_structure.py`, `track2_interaction_sweep.py`,
-  `track3_near_field_analysis.py`
+  `track3_near_field_analysis.py`, `track5_charge_models.py`,
+  `track6_electromagnetic.py`
 **Library:** `lib/ma_model.py` (v1), `lib/embedded.py`
 
 
@@ -167,14 +168,124 @@ r ~ a ≈ 3.7 fm, so the multipole expansion is only valid for
 d >> a, and even at d = 20 fm the expansion is marginal.
 
 
-## F7. No attraction (Track 2, Track 3)
+## F7. No electrostatic attraction (Track 2, Track 3)
 
-At no sampled point (d, Δφ) does the proton-proton interaction
-become attractive.  The near-field effect is exclusively a
-**reduction of repulsion**, not a generation of attraction.
+At no sampled point (d, Δφ) does the proton-proton electrostatic
+interaction become attractive.  The near-field effect is exclusively
+a **reduction of repulsion**, not a generation of attraction.
 
 The minimum U/U_Coulomb found was ~0.03 (at d = 0.1 fm), still
 positive.
+
+**Caveat**: this finding applies to the electrostatic sector only.
+The magnetic interaction (F8) is not included and could change this
+conclusion.
+
+
+## F8. Charge distribution model is secondary (Track 5)
+
+Track 5 compared three charge models to test whether the Tracks 1–4
+results depend on the assumed charge distribution:
+
+**Model A** — Uniform line charge along the (1,2) geodesic
+(traveling wave / WvM picture).  This is what Tracks 1–4 used.
+
+**Model B** — Standing-wave modulated line charge (cos² along the
+geodesic).  The charge has nodes and antinodes, creating
+concentrated lumps whose positions depend on phase.
+
+**Model C** — Uniform charge on the full 2D torus surface (KK wave
+mechanics: |ψ|² = 1 everywhere).  No geodesic, no phase parameter.
+
+Results at nuclear distances (U/U_Coulomb):
+
+| d (fm) | Model A (avg) | Model B (avg) | Model C | A spread | B spread |
+|--------|---------------|---------------|---------|----------|----------|
+| 0.5    | 0.136         | 0.129         | 0.121   | 0.047    | 0.056    |
+| 1.0    | 0.253         | 0.246         | 0.231   | 0.063    | 0.068    |
+| 2.0    | 0.460         | 0.462         | 0.430   | 0.054    | 0.059    |
+| 3.0    | 0.641         | 0.647         | 0.598   | 0.045    | 0.091    |
+| 5.0    | 0.937         | 0.854         | 0.845   | 0.134    | 0.136    |
+
+Key findings:
+
+1. **All three models agree on the geometric suppression** to
+   within ~20%.  The ~70% barrier reduction at 1 fm is robust
+   and model-independent.
+
+2. **Phase spread is comparable** between Models A and B.  The
+   standing-wave modulation does not dramatically amplify phase
+   effects at nuclear distances.
+
+3. **Model C has zero phase dependence** by construction.  In
+   the KK wave mechanics picture, the charge density |ψ|² = 1
+   is uniform on the surface, and no phase parameter exists.
+
+4. **The overshoot at d ≈ 7 fm** (F5) appears only in Model A.
+   Models B and C stay at or below U_Coulomb at all distances.
+   The overshoot was an artifact of concentrating all charge on
+   a 1D geodesic.
+
+5. **At large d, all models converge** to U/U_Coulomb → 1.0.
+
+
+## F9. Magnetic interaction is same order as electric (Track 6)
+
+The charge circulating on the geodesic at speed c is a current loop.
+For a photon (v = c), the magnetic energy is not a small correction
+— it is the **same order** as the electric energy.
+
+The total electromagnetic interaction per segment pair reduces to:
+
+    U_EM = Σ dq₁ dq₂ (1 − dl̂₁·dl̂₂) / |r₁ − r₂|
+
+where dl̂ is the unit tangent to the geodesic.  The combined factor
+(1 − cos θ) ranges from 0 (parallel currents, complete E/M
+cancellation) to 2 (anti-parallel, double repulsion).
+
+Track 6 computed U_EM for four relative orientations of two
+proton (1,2) modes:
+
+| d (fm) | d/a  | Aligned-z | Aligned-x | Flipped-z | Tilted-90 | Elec-only |
+|--------|------|-----------|-----------|-----------|-----------|-----------|
+| 0.2    | 0.05 | 0.049     | 0.049     | 0.103     | 0.055     | 0.076     |
+| 0.5    | 0.13 | 0.113     | 0.115     | 0.199     | 0.128     | 0.156     |
+| 1.0    | 0.27 | 0.223     | 0.236     | 0.334     | 0.239     | 0.278     |
+| 2.0    | 0.53 | 0.412     | 0.475     | 0.529     | 0.432     | 0.471     |
+| 3.0    | 0.79 | 0.573     | 0.611     | 0.684     | 0.604     | 0.628     |
+| 5.0    | 1.34 | 0.849     | 0.869     | 0.953     | 0.886     | 0.901     |
+
+All values are U_EM / U_Coulomb (point charge).
+
+Key findings:
+
+1. **The magnetic contribution is 20–36% of the electric** at
+   nuclear distances, not a perturbative correction.  This is a
+   direct consequence of v = c.
+
+2. **Aligned tori (pole-to-pole) get the most suppression.**
+   At 1 fm, U_EM/U_C = 0.22 (78% suppression) vs 0.28 for
+   electric-only — magnetism adds 6 percentage points.
+
+3. **Flipped tori (anti-parallel currents) get the least
+   suppression.**  At 1 fm, U_EM/U_C = 0.33 (67% suppression).
+   Both electric and magnetic are repulsive.
+
+4. **Orientation matters: factor of ~2 between best and worst**
+   at d = 0.2 fm (0.049 vs 0.103).  The spinning-top intuition
+   is confirmed — orientation is physically meaningful.
+
+5. **No attraction at any orientation or distance.**  Even with
+   the magnetic interaction, U_EM > 0 everywhere.  The
+   "spin-aligned" N-S attraction from the current loop is real
+   but not strong enough to overcome the (already suppressed)
+   Coulomb repulsion.
+
+6. **At large d, all orientations converge** to U_EM/U_C → 1.0.
+
+**NOTE**: v = c (photon speed) is assumed.  If the mode propagates
+at a different speed v, the magnetic contribution scales as (v/c)²
+and shrinks accordingly.
 
 
 ## Implications
@@ -191,15 +302,29 @@ nuclear binding.  This study found:
 2. **The dominant effect is geometric suppression** (F3), not phase-
    dependent cancellation.  The Coulomb barrier is naturally reduced
    to ~0.3 MeV at nuclear distances, simply because the charge is
-   spread over a torus of radius ~3.7 fm.
+   spread over a torus of radius ~3.7 fm.  This result is robust
+   across all three charge distribution models (F8).
 
 3. **Phase modulation is secondary** (F4): ~3–13% of the interaction,
    depending on distance.  Quadrature (Δφ = π/2) gives less repulsion
    than in-phase (Δφ = 0) at short range.
 
-4. **No attraction** (F7): the near-field effect alone cannot bind
-   nuclei.  An attractive mechanism (e.g., the R29 F6 gauge boson)
-   is still needed.
+4. **No electromagnetic attraction** (F7, F9): even with the magnetic
+   interaction at v = c, no orientation produces a net attractive
+   potential.  The magnetic N-S attraction from aligned current loops
+   adds ~6 percentage points of suppression (bringing 1 fm from 74%
+   to 78%) but does not flip the sign.
+
+5. **Orientation is physically meaningful** (F9): aligned tori
+   (pole-to-pole) repel 50% less than flipped tori at close range.
+   This creates a strong orientational preference that could influence
+   nuclear structure.
+
+6. **An attractive mechanism beyond classical EM is still needed.**
+   The R29 F6 gauge boson remains the leading candidate for nuclear
+   binding.  The geometric + magnetic suppression (~78%) lowers the
+   Coulomb barrier to ~0.3 MeV at 1 fm, which the gauge boson only
+   needs to overcome — not the full 1.4 MeV.
 
 ### For α constraint (Q88 §4)
 
@@ -228,25 +353,39 @@ alignment.
 The barrier in physical units is ~0.3 MeV at nuclear distances,
 compared to ~1.4 MeV for point charges.  This reduction is
 meaningful but does not by itself enable cold fusion — the
-barrier is still positive and requires quantum tunneling.
+electrostatic barrier is still positive.
+
+Track 6 computed the full electromagnetic interaction (electric +
+magnetic at v = c).  The magnetic attraction from aligned current
+loops adds ~6 percentage points of additional suppression at 1 fm,
+bringing the total barrier to ~0.3 MeV.  This is still positive —
+no classical EM cold-fusion mechanism exists at the (1,2) mode
+level.  However, the 78% barrier reduction is substantial and
+would lower the threshold for any non-EM binding mechanism.
 
 
 ## Open questions
 
-1. **Other winding numbers**: The (1,2) mode has a special symmetry
+1. **Full orientation sweep**: Track 6 tested four discrete
+   orientations.  A systematic sweep over Euler angles (θ, ψ)
+   could find the true minimum-energy configuration and determine
+   whether there are orientations not yet tested that produce
+   stronger suppression or attraction.
+
+2. **Non-photon speed**: If the mode propagation speed is v < c,
+   the magnetic contribution scales as (v/c)² and diminishes.
+   What speed is physical for the proton mode?
+
+3. **Other winding numbers**: The (1,2) mode has a special symmetry
    (Δφ=0 ≡ Δφ=π).  Do higher modes (2,3), (1,3), etc. break this
    symmetry and allow genuine phase-dependent effects?
 
-2. **Mixed-mode interactions**: Two different modes (e.g., proton +
-   proton with different quantum numbers) do not share the same
-   torus symmetry and might have richer phase dependence.
-
-3. **Self-intersecting torus validity**: The proton torus has a/R ≈ 9,
+4. **Self-intersecting torus validity**: The proton torus has a/R ≈ 9,
    meaning it self-intersects severely.  The 3D embedding is
    unphysical (the torus passes through itself).  Should we instead
    use the intrinsic flat-torus distance, bypassing 3D embedding?
 
-4. **Multipole convergence**: The d⁻² power law (F6) instead of d⁻⁵
+5. **Multipole convergence**: The d⁻² power law (F6) instead of d⁻⁵
    suggests the multipole expansion is not converging well.  A
    different analytical approach may be needed for the self-
    intersecting regime.

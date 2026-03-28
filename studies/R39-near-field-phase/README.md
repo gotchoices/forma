@@ -181,6 +181,28 @@ the electron sheet.
   nuclear binding, partially explain it, or is it negligible?
 
 
+### Track 5. Charge distribution model comparison
+
+Compare three charge models — uniform geodesic (A), standing-wave
+geodesic (B), uniform surface (C) — to test robustness of
+geometric suppression.  See `findings.md` F8.
+
+
+### Track 6. Full electromagnetic interaction
+
+Compute the combined electric + magnetic interaction using the
+Neumann formula.  The charge circulates at speed c (photon), so
+the magnetic energy is the same order as the electric.
+
+The total EM interaction per segment pair is:
+
+    U_EM = Σ dq₁ dq₂ (1 − dl̂₁·dl̂₂) / |r₁ − r₂|
+
+Four orientations tested: aligned-z (pole-to-pole), aligned-x
+(equator-to-equator), flipped-z (anti-parallel currents), and
+tilted-90 (perpendicular).  See `findings.md` F9.
+
+
 ## What we learn either way
 
 **If the near-field correction is large (> 10% of Coulomb at

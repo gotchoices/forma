@@ -27,15 +27,19 @@ solutions — every r > ~2 has a self-consistent s.  Nothing currently selects r
 **Questions:** [Q88](../qa/Q88-phase-dependent-nuclear-force.md), [Q82](../qa/Q82-entanglement-as-ma-geometry.md)  **Type:** compute  **Depends on:** R7, R19, R26–R29
 
 Do two identical Ma modes interact differently depending on their
-relative phase?  **Result:** Yes, but the dominant effect is
-geometric, not phase-dependent.  The proton's extended charge
-distribution (a ≈ 3.8 fm) suppresses the Coulomb barrier by
-74% at 1 fm and 55% at 2 fm — a built-in feature of the torus
-geometry.  Phase modulation adds ~3–14% variation on top.
-The (1,2) mode has Δφ → Δφ+π symmetry, so "anti-phase" is
-identical to "in-phase" — Q88's anti-phase cancellation
-hypothesis is falsified for this mode.  No attractive regime
-found.  See `findings.md` (F1–F7).
+relative phase?  **Result:** The dominant effect is geometric
+suppression — the proton's extended charge distribution
+(a ≈ 3.7 fm) reduces the Coulomb barrier by 74% at 1 fm,
+robust across three charge models (F8).  Phase modulation adds
+~3–14% variation.  The (1,2) mode has Δφ → Δφ+π symmetry, so
+"anti-phase" ≡ "in-phase" — Q88's anti-phase cancellation is
+falsified for this winding (F2).  Track 6 added the magnetic
+interaction (Neumann formula, v = c): magnetism is same order as
+electric but adds only ~6 pp of extra suppression for aligned
+tori (F9).  No electromagnetic attraction at any orientation.
+Total barrier at 1 fm: ~0.3 MeV (78% suppression).  Nuclear
+binding requires a non-EM mechanism (R29 F6 gauge boson).
+See `findings.md` (F1–F9).
 
 ### R27. Ma (the six-dimensional material space) oscillation patterns — particles, atoms, and nuclei
 **Study:** [`R27-bound-states/`](R27-bound-states/)
