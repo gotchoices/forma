@@ -1,0 +1,488 @@
+# ma_model.py — Design Spec
+
+Next-generation Ma model engine.  Lives alongside `ma.py`
+(unchanged) in `lib/`.  Old scripts keep working; new scripts
+can import from either.
+
+
+## Motivation
+
+`ma.py` is correct and tested but architecturally primitive:
+
+- **Brute-force scan.** `scan_modes` and `find_modes` enumerate
+  (2n+1)⁶ modes.  At n_max = 5 this is 1.8M; at n_max = 10
+  it is 350M.  Most are immediately discarded by the energy
+  ceiling.
+
+- **No state.**  Every function takes the full parameter set.
+  Rebuild the metric, recompute L, re-invert G̃ on every call.
+
+- **No decomposition.**  The energy is computed as a single
+  scalar.  There is no way to ask "how much comes from Ma_e
+  vs Ma_p vs cross-coupling?"
+
+- **No sensitivity.**  No Jacobian, no gradient.  Parameter
+  searches use `differential_evolution` (black-box optimizer)
+  wrapping the brute-force scan.
+
+- **No true inverse.**  "Going backwards" (masses → geometry)
+  requires brute-force sweeps of the parameter space.
+
+The mathematical structure — a quadratic form on a lattice —
+supports far better algorithms.  This spec describes what
+`ma_model.py` will provide.
+
+
+## Non-goals
+
+- Replace `ma.py`.  All existing scripts keep their imports.
+- Change the physics.  Same metric, same energy formula, same
+  charge and spin rules.
+- Be framework-heavy.  No PyTorch, no JAX.  NumPy + SciPy only.
+
+
+## Architecture
+
+```
+┌──────────────────────────────────────────────┐
+│  Ma  (the model object)                      │
+│                                              │
+│  State:                                      │
+│    r_e, r_ν, r_p     aspect ratios           │
+│    s₁₂, s₃₄, s₅₆    within-plane shears     │
+│    σ_ep, σ_eν, σ_νp  cross-plane shears      │
+│    L[6]              circumferences (fm)      │
+│    G̃[6,6]           dimensionless metric     │
+│    G̃⁻¹[6,6]         inverse metric           │
+│    M[6,6]            energy-space kernel      │
+│    Chol[6,6]         Cholesky of M (for scan) │
+│                                              │
+│  Core:                                       │
+│    energy(n)         mode energy (MeV)        │
+│    charge(n)         electric charge          │
+│    spin(n)           spin-½ count             │
+│    energy_decomp(n)  energy by sheet + cross   │
+│    jacobian(n)       ∂E/∂params               │
+│                                              │
+│  Scan:                                       │
+│    modes(E_max, charge, spin, ...)            │
+│      → fast ellipsoid enumeration             │
+│                                              │
+│  Inverse:                                    │
+│    fit(targets)      masses+modes → params    │
+│    sensitivity(n)    which params matter?     │
+│                                              │
+│  I/O:                                        │
+│    to_dict() / from_dict()                   │
+│    summary()         human-readable printout  │
+│                                              │
+│  Compat:                                     │
+│    from_ma_py(Gti, L)  wrap legacy outputs    │
+│    to_ma_py()          export for legacy code  │
+│                                              │
+└──────────────────────────────────────────────┘
+```
+
+
+## Feature 1: Stateful geometry object
+
+### What
+
+A single `Ma` instance holds the full geometry state.
+Construction computes and caches everything downstream.
+
+### Interface
+
+```python
+m = Ma(r_e=6.6, r_nu=5.0, r_p=8.906, sigma_ep=-0.0906)
+
+m.L          # ndarray(6,) — circumferences in fm
+m.Gt         # ndarray(6,6) — G̃
+m.Gti        # ndarray(6,6) — G̃⁻¹
+m.s12        # float — electron within-plane shear
+m.params     # dict of all parameters
+```
+
+### Construction options
+
+```python
+# From aspect ratios (derives L, s, builds metric)
+Ma(r_e=6.6, r_nu=5.0, r_p=8.906)
+
+# With cross-shears
+Ma(r_e=6.6, r_nu=5.0, r_p=8.906,
+   sigma_ep=-0.0906, sigma_enu=0.0, sigma_nup=0.0)
+
+# With asymmetric cross-shears (12 independent entries)
+Ma(r_e=6.6, r_nu=5.0, r_p=8.906,
+   cross_shears={(0,4): -0.08, (0,5): -0.10, ...})
+
+# Self-consistent (iterate L until m_e, m_p exact)
+Ma(r_e=6.6, r_nu=5.0, r_p=8.906,
+   sigma_ep=-0.0906, self_consistent=True)
+
+# Wrap legacy ma.py output
+Ma.from_legacy(Gtilde_inv=Gti, L=L)
+```
+
+### Mutability
+
+Immutable after construction.  To explore a different geometry,
+create a new `Ma`.  This avoids stale-cache bugs and makes it
+safe to pass instances across functions.
+
+To make parameter sweeps ergonomic:
+
+```python
+m2 = m.with_params(sigma_ep=-0.10)   # new Ma, one param changed
+m3 = m.with_params(r_p=9.0)          # new Ma, different r_p
+```
+
+`with_params` returns a new `Ma` with the specified parameters
+changed and everything re-derived.
+
+
+## Feature 2: Fast mode enumeration
+
+### Problem
+
+The energy bound E ≤ E_max defines an ellipsoid in integer-
+lattice space:
+
+    nᵀ M n ≤ R²
+
+where M_ij = G̃⁻¹_ij / (L_i L_j) and R = E_max / (2πℏc).
+
+The brute-force approach scans a hypercube of side 2n+1 and
+tests each point.  The ellipsoid occupies a tiny fraction of the
+cube when the scale hierarchy is large (L_ν/L_e ~ 10⁸).
+
+### Algorithm: Fincke–Pohst enumeration
+
+1. Cholesky-decompose M = LLᵀ.
+2. Enumerate lattice points inside the ellipsoid dimension by
+   dimension, using the Cholesky rows to bound each coordinate
+   given the others.
+3. At each level, compute the residual radius and only recurse
+   if the remaining budget is positive.
+
+This visits only points inside the ellipsoid.  For a 6D lattice
+with ~14,000 modes below 10 GeV, the algorithm visits ~14,000
+points instead of ~1.8M (at n_max = 5) or ~900M (at n_max = 15).
+
+### Interface
+
+```python
+modes = m.modes(E_max_MeV=10000)
+# Returns: list of Mode namedtuples, sorted by energy
+
+modes = m.modes(E_max_MeV=2000, charge=-1, spin=1)
+# Filtered: only Q = -1, spin-½
+```
+
+### Mode object
+
+```python
+Mode = namedtuple('Mode', ['n', 'E_MeV', 'charge', 'spin_halves'])
+```
+
+Lightweight, sortable, hashable.  No back-reference to the `Ma`
+instance (keeps it cheap to store thousands).
+
+
+## Feature 3: Energy decomposition
+
+### What
+
+Break the total E² into contributions from each sheet and each
+cross-coupling.  The quadratic form decomposes naturally:
+
+    E² = E²_e + E²_ν + E²_p + 2·E²_eν + 2·E²_ep + 2·E²_νp
+
+where E²_e = (2πℏc)² ñ_e^T [G̃⁻¹]_{ee} ñ_e  (the 2×2 electron
+block), and E²_ep = (2πℏc)² ñ_e^T [G̃⁻¹]_{ep} ñ_p  (the cross
+block), etc.
+
+### Interface
+
+```python
+d = m.energy_decomp(n=(0, -2, 1, 0, 0, 2))
+# d.total       938.3 MeV
+# d.e_sheet      23.1 MeV²  (fraction of E²)
+# d.nu_sheet      0.0 MeV²
+# d.p_sheet     912.5 MeV²
+# d.ep_cross      2.7 MeV²
+# d.enu_cross     0.0 MeV²
+# d.nup_cross     0.0 MeV²
+# d.fractions   {'e': 0.025, 'nu': 0.0, 'p': 0.973, ...}
+```
+
+This tells you immediately that the neutron is 97% proton-sheet,
+2.5% electron-sheet, and the cross-coupling provides the mass
+splitting from the proton.
+
+
+## Feature 4: Analytical Jacobian
+
+### What
+
+Compute ∂E/∂θ for any mode, where θ is any geometry parameter
+(r_e, r_ν, r_p, σ_ep, s₁₂, etc.).
+
+### Math
+
+Since E² = (2πℏc)² ñᵀ G̃⁻¹ ñ:
+
+    ∂E/∂θ = (2πℏc)² / (2E) · ñᵀ (∂G̃⁻¹/∂θ) ñ
+
+For cross-shears, ∂G̃⁻¹/∂σ is computed via the matrix identity:
+
+    ∂A⁻¹/∂θ = −A⁻¹ (∂A/∂θ) A⁻¹
+
+Since ∂G̃/∂σ_ep has only four nonzero entries (the e-p block),
+the full Jacobian is a rank-4 perturbation — cheap to compute.
+
+For aspect ratios, the chain is longer (r → L → G̃ → G̃⁻¹) but
+still analytical.
+
+### Interface
+
+```python
+J = m.jacobian(n=(0, -2, 1, 0, 0, 2))
+# J['r_e']       ∂E/∂r_e   (MeV per unit r_e)
+# J['r_p']       ∂E/∂r_p
+# J['sigma_ep']  ∂E/∂σ_ep
+# ...
+
+# Vectorized: Jacobian for multiple modes at once
+J_matrix = m.jacobian_matrix(modes, params=['r_e', 'r_p', 'sigma_ep'])
+# shape: (len(modes), 3)
+```
+
+### Use cases
+
+- **Sensitivity analysis:** Which parameters does the neutron
+  mass depend on?  (Answer: mostly σ_ep and r_p.)
+- **Error propagation:** If r_e is uncertain by ±0.1, how much
+  does the electron mass move?
+- **Gradient-based fitting:** Replace `differential_evolution`
+  with Gauss–Newton or Levenberg–Marquardt.
+
+
+## Feature 5: Inverse solver (fit)
+
+### What
+
+Given a set of target particles (mass, mode assignment), find
+the geometry parameters that best reproduce them.
+
+### Interface
+
+```python
+targets = [
+    Target(n=(1, 2, 0, 0, 0, 0),   mass_MeV=0.511),     # electron
+    Target(n=(0, 0, 0, 0, 1, 2),   mass_MeV=938.272),    # proton
+    Target(n=(0, -2, 1, 0, 0, 2),  mass_MeV=939.565),    # neutron
+    Target(n=(-1, 5, 0, 0, -2, 0), mass_MeV=105.658),    # muon
+]
+
+result = Ma.fit(
+    targets,
+    free_params=['r_e', 'r_p', 'sigma_ep'],
+    fixed_params={'r_nu': 5.0},
+)
+# result.params    {'r_e': 6.600, 'r_p': 8.906, 'sigma_ep': -0.0906}
+# result.residuals [0.000, 0.000, 0.001, 0.832]  (MeV errors)
+# result.ma        Ma instance at the optimal point
+# result.jacobian  Jacobian at the solution
+# result.cov       Parameter covariance matrix
+```
+
+### Algorithm
+
+1. Start from initial guess (or current Ma state).
+2. At each iteration:
+   a. Compute energies for all target modes.
+   b. Compute Jacobian (Feature 4).
+   c. Levenberg–Marquardt step on the residual vector.
+3. Converge when residuals are below tolerance.
+
+Because the energy formula is smooth and the Jacobian is cheap,
+this should converge in ~5–20 iterations for well-conditioned
+problems (fewer free parameters than targets).
+
+### Degeneracies
+
+When free parameters > targets, the problem is underdetermined.
+The solver should detect this and report the null space (which
+parameter combinations leave all targets unchanged).
+
+
+## Feature 6: Sensitivity report
+
+### What
+
+For a given mode, report which parameters it depends on and how
+strongly.  Wraps the Jacobian into a human-readable format.
+
+### Interface
+
+```python
+m.sensitivity(n=(0, -2, 1, 0, 0, 2))
+# Neutron (0,−2,+1,0,0,+2)  E = 939.6 MeV
+#   r_e:        ∂E/∂r_e  = −0.02 MeV/unit   (weak)
+#   r_p:        ∂E/∂r_p  = −48.3 MeV/unit   (strong)
+#   sigma_ep:   ∂E/∂σ_ep = −14.2 MeV/unit   (strong)
+#   r_nu:       ∂E/∂r_ν  =  0.00 MeV/unit   (negligible)
+```
+
+
+## Feature 7: Spectrum queries
+
+### What
+
+Rich filtering and grouping over the enumerated mode spectrum.
+
+### Interface
+
+```python
+# All charge −1 fermions below 2 GeV, grouped by spin
+spec = m.spectrum(E_max_MeV=2000, charge=-1, spin=1)
+
+# Count modes by charge
+m.mode_count(E_max_MeV=10000, by='charge')
+# {-2: 45, -1: 14312, 0: 98021, 1: 14312, 2: 45}
+
+# Nearest mode to a target mass
+m.nearest(mass_MeV=1776.86, charge=-1, spin=1)
+# Mode(n=(-1,5,0,0,-2,-4), E_MeV=1876.4, ...)
+```
+
+
+## Feature 8: Serialization
+
+### What
+
+Save/load a geometry to/from a plain dict (JSON-compatible).
+Useful for recording the exact geometry used in a study.
+
+### Interface
+
+```python
+d = m.to_dict()
+# {'r_e': 6.6, 'r_nu': 5.0, 'r_p': 8.906,
+#  'sigma_ep': -0.0906, 'sigma_enu': 0.0, 'sigma_nup': 0.0,
+#  'self_consistent': True, 'L': [4.396, 0.666, ...], ...}
+
+m2 = Ma.from_dict(d)
+assert m2.energy((1,2,0,0,0,0)) == m.energy((1,2,0,0,0,0))
+```
+
+
+## Feature 9: Compatibility layer
+
+### What
+
+Interoperate with legacy `ma.py` / `ma_solver.py` code without
+any changes to those files.
+
+### Interface
+
+```python
+# Import a legacy metric into the new model
+from lib.ma import build_scaled_metric
+Gt, Gti, L, info = build_scaled_metric(r_e=6.6, r_nu=5.0, r_p=6.6)
+m = Ma.from_legacy(Gtilde_inv=Gti, L=L)
+
+# Export for use with legacy functions
+Gti, L = m.to_legacy()
+from lib.ma import mode_energy
+E = mode_energy((1,2,0,0,0,0), Gti, L)  # same as m.energy(...)
+```
+
+
+## Implementation plan
+
+### Phase 1: Core (minimum viable)
+
+1. `Ma` class with construction from aspect ratios + shears.
+2. `energy()`, `charge()`, `spin()` — delegating to `ma.py`
+   functions internally at first.
+3. `to_dict()` / `from_dict()` / `from_legacy()`.
+4. `summary()` printout.
+5. `with_params()` for immutable updates.
+
+Validates: all existing study results reproduce exactly.
+
+### Phase 2: Fast scan
+
+6. Implement `M` (energy-space kernel) and its Cholesky.
+7. Fincke–Pohst lattice enumeration.
+8. `modes()` with filtering.
+9. Benchmark against `scan_modes` — should be 100–1000× faster
+   at n_max ≥ 5.
+
+### Phase 3: Decomposition + Jacobian
+
+10. `energy_decomp()` from block partition of G̃⁻¹.
+11. Analytical `∂G̃/∂θ` for all parameters.
+12. `jacobian()` and `jacobian_matrix()`.
+13. `sensitivity()` wrapper.
+
+### Phase 4: Inverse solver
+
+14. `Target` dataclass.
+15. `Ma.fit()` using Gauss–Newton with the analytical Jacobian.
+16. Degeneracy detection (null space of the Jacobian).
+17. Parameter covariance from the Fisher information matrix.
+
+### Phase 5: Spectrum queries
+
+18. `spectrum()` with grouping.
+19. `mode_count()` with `by` parameter.
+20. `nearest()` for quick lookups.
+
+
+## Testing strategy
+
+Every phase must pass:
+
+1. **Regression:** For the standard geometry (r_e=6.6, r_ν=5.0,
+   r_p=8.906, σ_ep=−0.0906), the new code must reproduce the
+   same energies as `ma.py` to machine precision.
+
+2. **Known particles:** Electron, proton, neutron, muon masses
+   must match PDG values to the documented error (< 1.2%).
+
+3. **Self-consistency:** `Ma(..., self_consistent=True)` must
+   give E(electron) = 0.511 MeV, E(proton) = 938.272 MeV to
+   12 digits.
+
+4. **Roundtrip:** `Ma.from_dict(m.to_dict())` reproduces all
+   outputs exactly.
+
+5. **Speed:** `modes(E_max_MeV=10000)` at effective n_max ≥ 10
+   completes in < 1 second (vs hours for brute force).
+
+
+## Dependencies
+
+- `numpy` (already used by `ma.py`)
+- `scipy.linalg` for Cholesky decomposition
+- `scipy.optimize` for Levenberg–Marquardt (Phase 4)
+- No new external dependencies
+
+
+## File layout after completion
+
+```
+lib/
+  index.md          ← you are here (library guide)
+  ma-model.md       ← this file (design spec)
+  constants.py      unchanged
+  wvm.py            unchanged
+  series.py         unchanged
+  ma.py             unchanged
+  ma_solver.py      unchanged
+  ma_model.py       NEW — the model engine
+```
