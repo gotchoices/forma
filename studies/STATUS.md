@@ -22,6 +22,24 @@ energy and topology alone.
 **Open sub-problem:** the formula α(r,s) produces a one-parameter family of
 solutions — every r > ~2 has a self-consistent s.  Nothing currently selects r.
 
+### R40. Self-consistent dynamic torus — COMPLETE
+**Study:** [`R40-dynamic-torus/`](R40-dynamic-torus/)
+**Questions:** Q90, Q77, Q34, Q86  **Type:** compute  **Depends on:** R17, R18, R19, R33, R37
+
+Does the photon's radiation pressure deform the torus into a self-
+consistent shape that filters ghost modes?  **Result:** The pressure
+is non-uniform (26%, k=2 dominant) and *would* produce mode-dependent
+shapes if the restoring force were weak (Tracks 1–5).  However, the
+Clairaut geodesic does not exist for any known particle (a/R > 1),
+blocking the "3D embedding = physics" premise (Track 6, F20–F22).
+Treating r as a free parameter does not help — the eigenvalue minimum
+falls at r ≈ 5, still self-intersecting (Track 8, F23).  The decisive
+result: Einstein's spatial stiffness c⁴/(8πG) ≈ 4.8 × 10⁴² N makes
+the photon's radiation pressure 10⁴⁰ times too weak to deform the
+torus (F24).  Deformation is ~10⁻⁴⁰ of the tube radius — negligible.
+The flat-torus model used in R1–R39 is vindicated.  Ghost suppression
+must come from a different mechanism.  See `findings.md` (F1–F24).
+
 ### R39. Phase-dependent near-field interaction — COMPLETE
 **Study:** [`R39-near-field-phase/`](R39-near-field-phase/)
 **Questions:** [Q88](../qa/Q88-phase-dependent-nuclear-force.md), [Q82](../qa/Q82-entanglement-as-ma-geometry.md)  **Type:** compute  **Depends on:** R7, R19, R26–R29

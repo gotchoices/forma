@@ -1,32 +1,66 @@
 # R40. Self-consistent dynamic torus — shape from force balance
 
-**Status:** Active — framing
+**Status:** COMPLETE — Dynamic Ma deformation negligible (F24); flat torus vindicated
 **Depends on:** R17 (radiation pressure), R18 (torus stiffness),
   R19 (shear-charge / α formula), R33 (ghost modes), R37 (membrane mechanics)
 **Motivates:** Q90 (ephemeral mode decomposition / dynamic torus),
   Q77 (ghost selection), Q34 (α derivation), Q86 (three generations)
 
 
+## Premise: Dynamic Ma
+
+**This study departs from the flat-torus Ma used in R26–R39.**
+
+Studies R1–R39 treat each material sheet as an intrinsically flat
+torus T² with metric G̃.  Modes are plane waves exp(i n·θ), and the
+3D embedding is a visualization tool, not the physics.
+
+This study takes the opposite view: **the 3D embedding IS the
+physics.**  The torus is a real surface in 3D space, shaped by the
+balance between two forces:
+
+1. **Outward:** the photon circulating on the geodesic exerts
+   radiation pressure against the tube wall (centrifugal force from
+   the curved 3D path).
+2. **Inward:** the rigidity of the compact spatial dimension pushes
+   back — likely with both a normal component (resistance to
+   stretching) and a surface tension component (resistance to
+   bending).
+
+The photon's pressure is non-uniform around the tube.  If space is
+rigid but finite, the surface deforms until a balance is reached.
+**The equilibrium shape is not a perfect torus** — it is a warped
+surface of revolution whose cross-section depends on the mode.
+
+This is the "containment force" that Williamson and van der Mark
+identified as necessary but could not specify.  The premise is:
+energy bends spacetime (GR), so energy bends MaSt too.  The mode's
+energy density creates a non-uniform stress on the compact geometry,
+and the geometry responds.
+
+### What this changes
+
+- The mode and the geometry are **mutually determined** — a nonlinear
+  eigenvalue problem.  The shape depends on the mode, and the mode
+  depends on the shape.
+- The geodesic on the deformed surface differs from the flat-torus
+  geodesic.  The path, the mode energy, and the charge integral all
+  shift.
+- Different modes deform the surface differently.  Each particle
+  lives on its own self-consistent shape.
+- The deformation may act as a **band filter**, suppressing modes
+  whose pressure patterns are incompatible with the equilibrium
+  (ghost suppression).
+
+
 ## Question
 
-All Ma studies model the material sheet as a perfect torus — circular
-cross-section, uniform geometry.  The photon mode is computed on this
-fixed shape.  But the confined photon exerts radiation pressure outward
-on the surface, and something must push back.
-
-Don't assume what the restoring force is.  Just compute the outward
-radiation pressure from the (1,2) mode at each surface element, then
-ask: **what inward pressure profile would balance it?**  Whatever that
-profile is, it defines the physics of the confining medium.
-
-If the required inward pressure is non-uniform (it will be, because
-the mode amplitude is non-uniform), then either:
-- The surface deforms until the balance is restored (dynamic torus), or
-- The confining medium supplies a non-uniform restoring force (rigid
-  but shaped space)
-
-Either way, the result is a non-circular cross-section.  The shape and
-the mode must be self-consistent.
+Given a (1,2) photon mode on an embedded torus:
+1. What is the radiation pressure profile on the tube wall?
+2. What cross-section shape balances it?
+3. Which other modes can live on this shape?
+4. Does the shape flexibility act as a low-pass (or band) filter
+   on the mode spectrum?
 
 
 ## Why this matters
@@ -53,6 +87,34 @@ the mode must be self-consistent.
    energy as a function of shape as the critical unknown blocking
    progress.  This study computes it directly.
 
+5. **Cross-sheet filtering (future study).**  The three material
+   sheets (Ma_e, Ma_ν, Ma_p) are coupled by cross-shears (σ_ep,
+   σ_eν, σ_νp).  Shape deformations on one sheet could leak to
+   another.  Low-frequency components on the electron sheet might
+   drain into the neutrino sheet (which has larger circumferences
+   and lower mode energies).  High-frequency components might leak
+   upward to the proton sheet, producing phase shifts.  This
+   cross-sheet filtering is a separate mechanism from the within-
+   sheet band filter studied here, but could combine with it to
+   further constrain the physical mode spectrum.  See Q87, Q89.
+
+
+## Caveats
+
+**Self-intersection.**  The proton sheet has a/R = 8.906.  The 3D
+embedding self-intersects: the tube passes through itself at the
+inner equator (ρ = R + a cos θ₁ < 0 for most θ₁).  The surface
+normal, outward pressure, and cross-section deformation are all
+ill-defined in the self-intersection zone.  Tracks 1–5 handle this
+by using |ρ|, which is mathematically stable but geometrically
+questionable.  Results should be validated on a non-self-intersecting
+torus (r ~ 2–5, the electron sheet range).
+
+**Geodesic approximation.**  Tracks 1–5 use the flat-torus geodesic
+(θ₁ = n₁t, θ₂ = n₂t) on the deformed surface.  On a deformed
+surface of revolution, the actual geodesic follows Clairaut's
+relation and is a different path.  Track 6 should correct this.
+
 
 ## Approach
 
@@ -78,34 +140,26 @@ by requiring that the total energy (mode + surface) is stationary:
 
 1. **Parameterize** the cross-section as a Fourier series:
 
-       r(θ₁) = a₀ + Σₖ aₖ cos(kθ₁) + bₖ sin(kθ₁)
+       r(θ₁) = a₀ + Σₖ aₖ cos(kθ₁)
 
    Circular cross-section: a₀ = a (minor radius), all others zero.
-   Truncate at k_max = 8 (~16 shape parameters).
 
-2. **Constraint:** Fix the total path length of the (1,2) geodesic
+2. **Constraint:** Fix the total path length of the geodesic
    to λ_C (the Compton wavelength).  This is the photon confinement
    condition — the energy is fixed.
 
-3. **Solve the wave equation** on the current surface for the (1,2)
+3. **Solve the wave equation** on the current surface for the (n₁,n₂)
    mode.  Sturm-Liouville in θ₁ with the metric factor from the
    parameterized surface (R21 Track 1 already solved this for
    the embedded torus).
 
 4. **Compute the radiation pressure** at each θ₁ from the mode's
-   energy density:
+   energy density — centrifugal force from the photon's curved
+   3D path, projected onto the surface normal.
 
-       P_rad(θ₁) ∝ |ψ(θ₁)|² × (local curvature correction)
-
-   R17 Track 4 computed the force decomposition — the centrifugal
-   force from the photon's curved 3D path.  Extend this to the
-   general surface.
-
-5. **Find the equilibrium shape** by minimizing the total energy
+5. **Find the equilibrium shape** by minimizing the mode energy
    over the Fourier coefficients, subject to the path-length
-   constraint.  The shape that minimizes energy is the one where
-   the mode sits most comfortably — i.e., where the pressure is
-   most uniformly distributed.
+   constraint.
 
 6. **Read off P_in** from the converged shape:  P_in(θ₁) = P_rad(θ₁)
    at equilibrium.  Examine its structure.
@@ -113,138 +167,123 @@ by requiring that the total energy (mode + surface) is stationary:
 
 ## Tracks
 
-### Track 1. Outward pressure profile on a circular torus
+### Track 1. Outward pressure profile on a circular torus [DONE]
 
-Before deforming anything, compute P_rad(θ₁) on the standard circular
-cross-section.  This is the baseline — how non-uniform is the pressure
-even before the shape responds?
+Compute P_rad(θ₁) on the standard circular cross-section.
+Script: `scripts/track1_pressure_profile.py`
 
-**Method:**
-1. Build the (1,2) mode on the proton-sheet torus (r_p = 8.906,
-   geometry from R27).
-2. Solve the Sturm-Liouville eigenvalue problem for ψ(θ₁) on the
-   embedded torus (as in R21 Track 1).
-3. Compute |ψ(θ₁)|² — the energy density vs tube angle.
-4. Compute the outward radiation pressure at each θ₁:
-   - Centrifugal: P_cent = E × κ_normal (curvature of the 3D path
-     projected onto the surface normal).  R17 Track 4 computed this.
-   - Electromagnetic: P_EM = ε₀ E² / 2 (Maxwell stress).
-5. Plot P_rad(θ₁).  Decompose into Fourier modes.
+**Result:** Pressure is highly non-uniform.  Dominated by k=2
+(elliptical) harmonic.  The circular torus is not in force balance
+(F2).  See findings.md F1–F4.
 
-**Deliverables:**
-- P_rad(θ₁) profile on the undeformed torus
-- Fourier spectrum of the pressure (which harmonics dominate?)
-- Ratio of pressure variation to mean pressure (how non-uniform?)
-- The inward pressure profile P_in(θ₁) that would be needed to
-  hold this shape in equilibrium
+### Track 2. Self-consistent shape (energy minimization) [DONE]
 
-**Key question answered:** How far from uniform is the force balance
-on the circular torus?  If the pressure is nearly uniform, the
-circular shape is nearly self-consistent and deformation is small.
-If the pressure has large harmonics, the torus must deform
-significantly.
+Find the cross-section that minimizes mode energy for the (1,2)
+mode, subject to path-length constraint.
+Script: `scripts/track2_self_consistent_shape.py`
 
+**Result:** Equilibrium is a 4-lobed (a₂-dominated) shape with
+14.5% lower energy than the circular torus (F5, F6).
 
-### Track 2. Self-consistent shape (energy minimization)
+**Known issue:** Uses the flat-torus geodesic on the deformed
+surface.  The actual geodesic on a surface of revolution follows
+Clairaut's relation and is a different path.  Track 6 should fix
+this.  The 14.5% energy shift may change.
 
-Find the cross-section that minimizes total energy subject to the
-path-length constraint.
+### Track 3. Mode spectrum on the self-consistent shape [DONE]
 
-**Method:**
-1. Parameterize cross-section: Fourier coefficients a₀, a₁...a₈,
-   b₁...b₈ (~17 parameters).
-2. For each shape candidate:
-   a. Build the surface of revolution.
-   b. Compute the (1,2) geodesic path length on this surface.
-   c. Scale the surface so path length = λ_C (Compton constraint).
-   d. Solve the Sturm-Liouville problem for the (1,2) mode.
-   e. Compute the mode energy (eigenvalue).
-3. Minimize the mode energy over the shape parameters.
-   (The shape that minimizes mode energy is the one where the
-   photon is most stable — lowest radiation pressure, best balance.)
-4. Use SciPy minimize with the Compton constraint enforced via
-   a Lagrange multiplier or penalty term.
+Which modes can live on the (1,2)-optimized shape?
+Script: `scripts/track3_mode_spectrum.py`
 
-**Deliverables:**
-- The self-consistent cross-section shape (Fourier coefficients)
-- Visualization: overlay the deformed cross-section on the circle
-- How much does the mode energy shift from the circular-torus value?
-- The equilibrium P_in(θ₁) profile — what does it look like?
-- Does a specific aspect ratio r emerge from the minimization?
+**Result:** Most modes are energetically lowered.  A bandpass
+filter on n₂ (ring winding) is observed: modes with n₂ ≈ 2
+benefit most, high-n₂ modes are penalized.  The (1,2) shape
+acts as a band filter, not a simple low-pass (F10–F14).
 
-**This is the core computation of the study.**
+### Track 4. Per-mode optimal shapes [DONE]
 
+Each mode optimized independently — does every mode want the
+same shape, or different shapes?
+Script: `scripts/track4_per_mode_shapes.py`
 
-### Track 3. Mode spectrum on the self-consistent shape
+**Result:** Different modes want dramatically different shapes
+(F13).  Ghost suppression works through shape incompatibility:
+the (1,2) mode's equilibrium shape penalizes high-n₂ modes.
+Shape competition creates barriers between distinct particle
+configurations (F15).
 
-Which modes can live on the deformed torus?
+### Track 5. Surface tension as restoring model [DONE]
 
-**Method:**
-1. Take the converged shape from Track 2.
-2. Solve the wave equation for modes (n₁, n₂) with n₁ = 0..6,
-   n₂ = 0..6.
-3. For each mode, compute the radiation pressure profile on the
-   Track 2 shape.
-4. Check: is the mode's pressure profile compatible with the Track 2
-   shape?  (A mode is "compatible" if its pressure profile is close
-   to the equilibrium P_in from Track 2.  A mode is "incompatible"
-   if its pressure profile would require a very different shape.)
-5. Compare to the flat-torus spectrum.
+Test whether surface tension can provide the restoring force.
+Script: `scripts/track5_surface_tension.py`
 
-**Deliverables:**
-- Mode energies: flat torus vs self-consistent shape
-- Compatibility score for each mode (how well does its pressure
-  match the equilibrium shape?)
-- Ghost filter: how many charged modes are compatible vs incompatible?
-- Whether the (1,1) spin-1 mode is stabilized or destabilized
+**Result:** Surface tension is not a consistent restoring model —
+the tension needed is inconsistent across harmonics (F16).
+However, a tension-like term does suppress high-k deformations,
+making shapes smoother (F17).
 
+### Track 6. Clairaut geodesic on embedded torus [DONE]
 
-### Track 4. Physical consequences
+Compute the true geodesic (Clairaut's relation) on the embedded
+surface and compare to the flat-torus approximation.
+Script: `scripts/track6_clairaut_geodesic.py`
 
-**Deliverables:**
-- Does the self-consistent shape select r_e?  (Currently free.)
-- Does the equilibrium α differ from the flat-torus α(r, s)?
-- What is the moduli potential E(shape parameters)?
-- Is there a natural Q-factor (bandwidth) for the cavity?
-- What does P_in(θ₁) tell us about the physics of the confining
-  medium?  Does it match any known model (surface tension, elastic,
-  gravitational)?
+**Result:** For non-self-intersecting tori (a/R < 1), the embedded
+geodesic is 34–58% shorter than the flat-torus path (F19).  Shape
+optimization naturally reduces this discrepancy to 3–6% (F21).
+For self-intersecting tori (a/R > 1), the Clairaut geodesic does
+not exist — ρ passes through zero, creating a metric singularity
+that blocks all (n₂ ≠ 0) closed geodesics (F20).
 
+**Critical implication:** All known MaSt particles have a/R > 1.
+The "3D embedding = physics" premise breaks down for all of them
+(F22).
 
-## What we learn either way
+### Track 7. Non-self-intersecting control [SUPERSEDED]
 
-**If the pressure is nearly uniform on the circular torus (Track 1):**
-- The circular shape is already near equilibrium
-- Deformation is perturbative — Track 2 gives small corrections
-- The flat-torus approximation is validated for existing studies
-- Ghost suppression must come from elsewhere
+Originally planned to run Tracks 1–2 on a non-self-intersecting
+torus (r ~ 2–5).  Track 6's analysis of the Clairaut geodesic
+across all r values, and Track 8's free-r sweep, cover this ground
+more thoroughly.
 
-**If the pressure is highly non-uniform:**
-- The torus must deform significantly to reach equilibrium
-- Track 2 gives a qualitatively different shape
-- Mode spectrum changes (Track 3) — potential ghost filter
-- The form of P_in(θ₁) reveals new physics about the confining medium
-- Ephemeral particles become plausible (Q90)
+### Track 8. Free-r optimization [DONE]
+
+Treat the aspect ratio r = a/R as a free parameter (not imported
+from the static model) and sweep across r to find the embedded
+eigenvalue minimum.
+Script: `scripts/track8_free_r_optimization.py`
+
+**Result:** The Compton constraint alone does not determine r (F23).
+The eigenvalue minimum falls at r ≈ 5 (self-intersecting), and with
+shape optimization remains in the r > 1 regime.  A second constraint
+(restoring force, α condition, or cross-sheet coupling) is needed
+to pin r.
+
+### Closing analysis: Einstein stiffness [in findings.md, F24]
+
+Computed the ratio of the photon's radiation pressure to the
+restoring pressure implied by GR's spatial stiffness c⁴/(8πG).
+The photon is 10⁴⁰ times too weak to deform the torus.  Dynamic
+Ma deformation is negligible.
 
 
-## Computational cost
+## Outcome
 
-- Track 1: seconds (one eigenvalue solve + force decomposition)
-- Track 2: minutes (optimization over ~17 parameters, each step
-  is one eigenvalue solve)
-- Track 3: minutes (~36 eigenvalue solves on a fixed shape)
-- Track 4: analysis
+The radiation pressure is non-uniform (26%), but the spatial
+stiffness makes the resulting deformation ~10⁻⁴⁰ of the tube
+radius.  The flat-torus model used in R1–R39 is vindicated: the
+mode is a perturbation on a rigid geometric background.
 
-Total: well under an hour.
+Ghost suppression via shape deformation does not work.  Alternative
+mechanisms to investigate: coupling form factors (R33), cavity
+Q-factors (R38), moduli potentials (R37), cross-sheet filtering.
 
 
 ## Tools
 
 - **Sturm-Liouville solver** for ψ(θ₁) on a surface of revolution
-  with arbitrary cross-section.  Extend R21 Track 1's solver.
-- **lib/embedded.py** — torus geometry (extend for non-circular
-  cross-sections if needed).
+  with arbitrary cross-section.  Extended from R21 Track 1.
+- **lib/embedded.py** — torus geometry.
 - **lib/ma_model.py** — flat-torus spectrum for comparison.
 - **SciPy minimize** — shape optimization with constraints.
-- **R17 Track 4** — centrifugal force decomposition (adapt to
-  general surface).
+- **R17 Track 4** — centrifugal force decomposition.
