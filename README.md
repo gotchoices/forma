@@ -38,7 +38,7 @@ expertise are welcome to examine, challenge, or extend the
 work.
 
 
-## The MaSt framework
+## The MaSt Continuum
 
 **MaSt** = **Ma**terial – **S**pace – **t**ime.
 
