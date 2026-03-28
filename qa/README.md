@@ -34,14 +34,17 @@ For questions that need a computational model, see [`studies/`](../studies/).
 | [Q31](Q31-discrete-torus-digital-counter.md) | Is the compact space a discrete digital counter? | Open — conceptual |
 | [Q32](Q32-energy-geometry-fundamentals.md) | Energy and geometry as the only fundamentals | Open — framing |
 | [Q33](Q33-gravity-vs-charge.md) | Can gravity and charge both arise from photons? | Answered |
-| Q34 | The charge mechanism problem (8 candidate paths) | Open — in [INBOX](INBOX.md); Path 5 → R16, Path 7 → R15, Paths 4+5 → R17 |
-| Q47 | Geometric interpretation of the running of α | Open — in [INBOX](INBOX.md) |
+| [Q34](Q34-charge-mechanism.md) | The charge mechanism problem (8 candidate paths) | Open — Path 7 → R15, Path 5 → R16, Paths 4+5 → R17 |
+| [Q47](Q47-alpha-running.md) | Geometric interpretation of the running of α | Open |
 | Q48 | Why does E point outward and not B? | Open — in [INBOX](INBOX.md) |
 | Q49 | Natural units ↔ geometry+energy premise | Noted — in [INBOX](INBOX.md) |
 | Q50 | Shared compact space (single T³ vs. per-particle) | Open — in [INBOX](INBOX.md) |
-| Q51 | Non-torus embeddings and mode coupling route to α | Open — → R17; in [INBOX](INBOX.md) |
-| Q52 | Dimensional assignment constrains the aspect ratio | Open — r = 1/2 checked; in [INBOX](INBOX.md) |
-| Q53 | Does the model predict the anomalous magnetic moment? | Open — in [INBOX](INBOX.md) |
+| [Q51](Q51-non-torus-embeddings.md) | Non-torus embeddings and mode-coupling route to α | Open — → R17 |
+| [Q52](Q52-dimensional-assignment.md) | Dimensional assignment constrains the aspect ratio | Open — r = 1/2 checked |
+| [Q53](Q53-anomalous-magnetic-moment.md) | Does the model predict the anomalous magnetic moment? | Open |
+| [Q56](Q56-natural-units-analysis.md) | Natural-units analysis of the photon-knot model | Open — variational approach |
+| [Q57](Q57-t3-phi-symmetry.md) | Does T³ break the φ-symmetry that protects zero charge? | Open — promising |
+| [Q58](Q58-shear-charge-mechanism.md) | Shear breaks φ-symmetry and produces charge | → R19 |
 | [Q76](Q76-origin-of-metric-signature.md) | What makes time temporal? Origin of metric signature and 6+3+1 split | Open — deepest structural question |
 | [Q77](Q77-alpha-as-impedance.md) | Is α the impedance mismatch between Ma and S? | Open — reframes α derivation |
 | [Q78](Q78-neutrino-sheet-access.md) | How does a biological cell access the neutrino sheet? | Open — two candidate mechanisms |
