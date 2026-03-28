@@ -493,27 +493,37 @@ def multi_target_optimize(targets, r_e=6.6, r_nu=5.0, r_p=6.6,
     else:
         _, Gti, L, _ = build_scaled_metric(r_e, r_nu, r_p, s_ep, s_enu, s_nup)
 
+    # Find best mode for each target using the already-built metric
     matches = []
     used = set()
+    rng = range(-n_max, n_max + 1)
     for t in targets:
-        best = find_modes(
-            t['mass_MeV'],
-            target_charge=t.get('charge'),
-            target_spin_halves=t.get('spin_halves'),
-            r_e=r_e, r_nu=r_nu, r_p=r_p,
-            sigma_ep=s_ep, sigma_enu=s_enu, sigma_nup=s_nup,
-            n_max=n_max, mass_tolerance_MeV=t['mass_MeV'] * 0.5,
-            self_consistent=self_consistent, max_results=10,
-        )
-        matched = None
-        for m in best:
-            if m['n'] not in used:
-                matched = m
-                used.add(m['n'])
-                break
+        best_err = float('inf')
+        best_mode = None
+        for n in iproduct(rng, repeat=6):
+            if all(ni == 0 for ni in n):
+                continue
+            if n in used:
+                continue
+            if t.get('charge') is not None and mode_charge(n) != t['charge']:
+                continue
+            if t.get('spin_halves') is not None and mode_spin(n) != t['spin_halves']:
+                continue
+            E = mode_energy(n, Gti, L)
+            err = abs(E - t['mass_MeV'])
+            if err < t['mass_MeV'] * 0.5 and err < best_err:
+                best_err = err
+                best_mode = {
+                    'n': n, 'E_MeV': E,
+                    'charge': mode_charge(n),
+                    'spin_halves': mode_spin(n),
+                    'mass_error_MeV': err,
+                }
+        if best_mode is not None:
+            used.add(best_mode['n'])
         matches.append({
             'target': t,
-            'match': matched,
+            'match': best_mode,
         })
 
     return {

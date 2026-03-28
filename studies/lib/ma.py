@@ -362,7 +362,11 @@ def mode_energy(n, Gtilde_inv, L, hbar_c=hbar_c_MeV_fm):
     n = np.asarray(n, dtype=float)
     ntilde = n / L
     E2 = (2 * math.pi * hbar_c)**2 * ntilde @ Gtilde_inv @ ntilde
-    return math.sqrt(max(E2, 0.0))
+    if E2 < 0:
+        raise ValueError(
+            f"Negative E² = {E2:.4e} for mode {tuple(n.astype(int))}. "
+            "Check that the metric is positive-definite.")
+    return math.sqrt(E2)
 
 
 def mode_charge(n):

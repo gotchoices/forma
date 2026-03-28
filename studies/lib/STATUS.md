@@ -7,13 +7,10 @@ can re-export legacy interfaces where useful.
 
 ---
 
-## Bugs to fix in legacy code
+## Bugs fixed in legacy code
 
-These are correctness issues that should be patched in place since
-they affect any script that hits them, old or new.
-
-- [ ] **ma.py:361** — `mode_energy` silently clamps negative E² to zero (`max(E2, 0.0)`).  Should raise `ValueError` so metric bugs don't hide as zero-energy modes.
-- [ ] **ma_solver.py:499-507** — `multi_target_optimize` rebuilds the metric and re-scans for each target at the end, even though the optimal-point metric is already in scope.  Wasted work; pass through the existing Gti/L instead.
+- [x] **ma.py** — `mode_energy` silently clamped negative E² to zero; now raises `ValueError`
+- [x] **ma_solver.py** — `multi_target_optimize` rebuilt the metric per target at the end; now reuses the already-computed Gti/L
 
 ### Done
 
@@ -27,7 +24,7 @@ they affect any script that hits them, old or new.
 
 ## Unit tests
 
-- [ ] Create `test_lib.py` — pin regression values for the standard geometry (r_e=6.6, r_ν=5.0, r_p=8.906, σ_ep=−0.0906) so that new modules can be validated against current outputs.  Use `unittest` (no pytest in venv).  Run with `python -m unittest lib.test_lib` from `studies/`.
+- [x] `test_lib.py` — 52 tests covering constants, series, wvm, alpha formula, metric construction, mode energy/charge/spin, scan, self-consistent solver, find_modes, epstein zeta.  Run: `python -m unittest lib.test_lib` from `studies/`.
 
 ---
 
