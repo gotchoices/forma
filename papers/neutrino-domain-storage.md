@@ -27,8 +27,9 @@
 The neutrino sheet (Ma_ν, the six-dimensional material space's
 neutrino subplane) is not located inside a neutrino particle.
 It is a structural feature of spacetime — two material
-dimensions (θ₃, θ₄) that exist at every point in ordinary
-3D space.  A neutrino particle is a
+dimensions (φ_ν and θ_ν, the ring and tube axes of the
+neutrino sheet) that exist at every point in ordinary
+3D space (S).  A neutrino particle is a
 specific standing-wave excitation on this geometry, the way a
 specific note is a vibration of a guitar string.  The string is
 there whether or not anyone is playing.
@@ -50,6 +51,25 @@ except through cross-dimensional coupling.  To write energy into
 the hall, or read it back, something must bridge the gap between
 ordinary 3D space (S) and the neutrino sheet.  That bridge is the
 neutron (section 4).
+
+### 1.4 Why the neutrino sheet — and not the others
+
+The Ma framework has three material sheets, but sub-threshold
+energy storage is viable only on Ma_ν.  On the electron and
+proton sheets (Ma_e, Ma_p), the mode ladder is sparse: the spin
+filter (R33 F3) kills most internal excitations, leaving only a
+handful of modes separated by MeV–GeV gaps.  Energy below those
+gaps produces standard quantum jumps, not continuous accumulation.
+
+On Ma_ν, the situation is different.  If the aspect ratio r_ν is
+large, thousands of modes fit within the energy window
+[m_ν, 2m_ν], making the ladder so dense that individual steps
+are unresolvable — a quasi-continuum.  The "continuous" feel of
+threshold absorption is what mode-hopping looks like when the
+rungs are packed tightly enough.  This conclusion comes from
+[R35](../studies/R35-threshold-coupling/README.md) and Q85 §11,
+which found that threshold detection and storage are specifically
+neutrino-sheet phenomena.
 
 
 ## 2. The address space: frequency-indexed storage
@@ -163,7 +183,7 @@ energy.
 
 The Ma metric contains cross-shear parameters that couple every
 pair of material-sheet subplanes.  The neutron's mode directly involves the
-electron–proton coupling (σ_ep ≈ 0.038).  But the metric also
+electron–proton coupling (σ_ep = −0.091; R27 F10).  But the metric also
 contains electron–neutrino coupling (σ_eν) and proton–neutrino
 coupling (σ_νp).  A neutron — a physical excitation that already
 bridges two material-sheet subplanes — provides a local coupling

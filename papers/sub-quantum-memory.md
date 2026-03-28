@@ -156,11 +156,12 @@ inside them.
 ### 2.2 The torus: a surface that wraps around on itself
 
 The specific geometry used in the Ma model is a *torus*.  A
-two-dimensional torus (written T²) is the surface you get by
-taking a flat rectangle and gluing opposite edges together: glue
-the top to the bottom to make a tube, then bend the tube into
-a ring and glue the ends together.  The result is the familiar
-donut shape.
+two-dimensional torus is the surface you get by taking a flat
+rectangle and gluing opposite edges together: glue the top to
+the bottom to make a tube, then bend the tube into a ring and
+glue the ends together.  The result is the familiar donut shape.
+In the MaSt framework, each such torus is called a **material
+sheet**.
 
 A simpler way to visualize it: the screen in the classic video
 game *Asteroids*.  Fly off the right edge and you reappear on
@@ -352,6 +353,33 @@ storage medium that is invisible to casual measurement is a
 storage medium that resists accidental erasure.  You can read it
 only if you know how to probe below the quantum floor — a
 requirement that functions as a natural access control.
+
+### 3.5 Viability depends on which material sheet
+
+Subsequent computational work
+([R35](../studies/R35-threshold-coupling/README.md), Q85 §11)
+has clarified that threshold-style continuous absorption is
+**not viable on the electron and proton sheets**.  On those
+sheets the mode ladder is sparse — the spin filter (R33 F3)
+kills most internal excitations, leaving only a handful of
+modes separated by MeV–GeV gaps.  Energy that arrives below
+those gaps has nowhere to go and is emitted into spatial
+momentum (ordinary quantum jumps and nuclear resonances).
+
+On the **neutrino sheet**, the picture is different.  If the
+aspect ratio r_ν is large (r_ν ≫ 1), thousands of modes fit
+within the energy window [m_ν, 2m_ν], making the mode ladder
+so dense that individual energy steps are unresolvable.
+Threshold "continuity" is what mode-hopping looks like when the
+ladder is quasi-continuous.  The neutrino sheet's neutrality
+(no electromagnetic radiation losses during mode transitions),
+its meV energy scale (matching biology), and its large spatial
+extent (~42–200 μm, matching the cell) all favor it as the
+natural home for sub-threshold storage.
+
+The rest of this paper therefore applies primarily to the
+neutrino sheet Ma_ν — not to the electron or proton sheets,
+which contribute conventional discrete physics.
 
 
 ## 4. The synthesis: material dimensions as analog memory
@@ -1552,15 +1580,17 @@ This paper is a chain of reasoning, and a chain is only as
 strong as its weakest link.  Each link has a known status:
 
 **The Ma model** reproduces electron and proton masses from
-geometry, derives the fine-structure constant from torus shear,
-predicts neutrino mass-squared splittings that match experiment,
-and produces the neutron as an emergent cross-sheet mode with
-zero charge, correct mass, and natural instability.  However,
-it has not been derived from a fundamental Lagrangian, it has
-not been peer-reviewed, and several internal tensions remain
-(the aspect ratios of the three tori are unconstrained, and the
-spin composition of the cross-sheet neutron mode requires a
-six-dimensional spinor analysis that has not been completed).
+geometry, connects the fine-structure constant to material-sheet
+lattice shear, predicts neutrino mass-squared splittings that
+match experiment, and produces the neutron as an emergent
+cross-sheet mode with zero charge, correct mass, and natural
+instability.  However, it has not been derived from a
+fundamental Lagrangian, it has not been peer-reviewed, and
+several internal tensions remain (the electron and neutrino
+aspect ratios r_e and r_ν are unconstrained — the model has
+two effective free parameters — and the spin composition of
+the cross-sheet neutron mode requires a six-dimensional spinor
+analysis that has not been completed).
 
 **Threshold theory** is based on experiments by a single
 researcher (Eric Reiter) that have not been independently
@@ -1569,6 +1599,14 @@ the "unquantum effect" claims.  The theoretical framework
 (continuous absorption, threshold emission) is internally
 consistent and has historical precedent (Planck's second theory,
 1911), but it remains outside the scientific consensus.
+Furthermore, R35 and Q85 §11 found that continuous absorption
+is **not viable on the electron and proton sheets** — their
+mode ladders are too sparse (the spin filter kills most
+internal excitations).  The threshold picture survives only on
+the **neutrino sheet**, where the mode density can be high
+enough (if r_ν is large) for mode-hopping to appear continuous.
+This narrows the storage hypothesis to Ma_ν specifically (see
+§3.5).
 
 **The biological connection** is the most speculative layer.
 It rests on three numerical coincidences that may be exactly
