@@ -162,6 +162,17 @@ computing R35's Goldilocks K.  Other genuine results: computable elastic
 constants (F2), electron sheet ~10⁶× too stiff for R35 coupling (F10),
 self-gravity negligible (F5).
 
+### R38. Fourth-generation search — does MaSt predict exactly three?
+**Study:** [`R38-fourth-generation/`](R38-fourth-generation/)
+**Questions:** Q86  **Type:** compute  **Depends on:** R26, R27
+
+Two-track enumeration.  Track 1: count charge −1, spin ½ Ma modes
+above the tau (~1876 MeV) to 45 GeV — determines whether a 4th
+charged lepton exists.  Track 2: count |n₃| = 1 modes on Ma_ν above
+ν₃ — determines whether additional light weakly-charged neutrinos
+exist (Z width constrains N_ν = 3.00 ± 0.01).  Both use existing
+libraries; no new parameters.
+
 ### R33. Ghost mode selection — why most Ma modes are dark  **Paused**
 **Study:** [`R33-ghost-selection/`](R33-ghost-selection/)
 **Questions:** Q77, Q34  **Type:** compute + theoretical  **Depends on:** R19, R27, R28, R31, R32
