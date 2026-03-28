@@ -22,6 +22,19 @@ energy and topology alone.
 **Open sub-problem:** the formula α(r,s) produces a one-parameter family of
 solutions — every r > ~2 has a self-consistent s.  Nothing currently selects r.
 
+### R39. Phase-dependent near-field interaction
+**Study:** [`R39-near-field-phase/`](R39-near-field-phase/)
+**Questions:** [Q88](../qa/Q88-phase-dependent-nuclear-force.md), [Q82](../qa/Q82-entanglement-as-ma-geometry.md)  **Type:** compute  **Depends on:** R7, R19, R26–R29
+
+Do two identical Ma modes interact differently depending on their
+relative phase?  At r >> L, all modes look like point charges
+(Coulomb).  At r ~ L, the internal charge distribution matters.
+Computes the 3D E-field of modes on an embedded torus, decomposes
+into multipoles, and measures the phase-dependent interaction
+energy.  4 tracks: single-mode field structure, two-mode
+interaction sweep, near-field correction characterization, and
+proton-scale nuclear force assessment.
+
 ### R27. Ma (the six-dimensional material space) oscillation patterns — particles, atoms, and nuclei
 **Study:** [`R27-bound-states/`](R27-bound-states/)
 **Questions:** Q16, Q28, Q32  **Type:** compute/analytical  **Depends on:** R26, R19, R15

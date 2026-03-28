@@ -57,5 +57,6 @@ For questions that need a computational model, see [`studies/`](../studies/).
 | [Q85](Q85-harmonic-ladder-and-threshold.md) | The harmonic ladder — energy levels, threshold theory, and digital counting on material sheet | Open — quantitative framework |
 | [Q86](Q86-three-generations.md) | Why three generations? Accommodated but not predicted; reduces to ghost problem | Open |
 | [Q87](Q87-cross-shear-phase-coupling.md) | Can cross-shear couple energy between sheets and modify mode phase? | Open — conceptual |
+| [Q88](Q88-phase-dependent-nuclear-force.md) | Does mode phase determine near-field interactions? Nuclear binding and cold fusion implications | Open — highly speculative |
 
 Unprocessed and brief questions live in [`INBOX.md`](INBOX.md).
