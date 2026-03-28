@@ -13,7 +13,7 @@
 | **Inputs** | m_e, m_p, Δm²₂₁ (three masses fix three torus scales) |
 | **Pinned by observation** | r_p = 8.906 (muon), σ_ep = −0.091 (neutron), s₃₄ = 0.022 (ν oscillations) |
 | **Free parameters at MeV scale** | 0 |
-| **Outputs** | 7 particle masses to < 1.2% with no adjustment |
+| **Outputs** | 7 particle masses to < 1.2% with no adjustment; three generations of fermions |
 | **Failures** | τ (5.6%), π (14%), Ω⁻ (structurally forbidden) |
 | **Testable** | Σm_ν ≈ 117 meV, normal ordering, sub-50 μm gravity deviation |
 
@@ -64,7 +64,21 @@ s₃₄ = 0.022 gives R = 33.6 (experiment: 33.6 ± 0.9).
 Σm_ν ≈ 117 meV (below cosmological bound ~120 meV).
 Normal mass ordering predicted.
 
-### 6. Predictions and failures
+### 6. Three generations
+
+The Standard Model contains three generations of fermions
+with no explanation for why.  The Ma spectrum produces three
+charge −1, spin ½ modes (e, μ, τ) as single-sheet and
+cross-sheet modes at increasing energy, and three neutrino
+modes on Ma_ν matching the observed Δm² ratio.  All six
+members of each generation share identical quantum numbers
+except mass — a direct consequence of charge depending only
+on |n₁| = 1, not on the remaining quantum numbers.  The tau
+is 5.6% off (structural gap on the proton energy ladder).
+Whether exactly three modes exist below ~45 GeV is a
+calculable open question.
+
+### 7. Predictions and failures
 
 Full table: kaon (1.2%), eta (0.6%), lambda (0.9%),
 sigma (0.3%), eta-prime (0.3%), phi (0.8%).
@@ -72,7 +86,7 @@ Specific failures with geometric explanations.
 Predictive horizon: spectrum too dense above ~2 GeV;
 W/Z/Higgs match trivially (any mass would).
 
-### 7. Open problems
+### 8. Open problems
 
 α not derived from first principles.  r_e ≈ 0.50
 preferred (membrane energy minimisation) but broad.

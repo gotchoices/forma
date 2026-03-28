@@ -462,6 +462,41 @@ the proton-antiproton threshold.  The model may be predicting
 that the tau and proton-antiproton system are related.
 
 
+### F20a. Three generations of charged leptons
+
+Findings F17–F20 collectively establish that the Ma spectrum
+produces the Standard Model's three-generation pattern for
+charged leptons.  Three charge −1, spin ½ modes exist at
+widely separated masses:
+
+| Generation | Particle | Mode | Mass | Mechanism |
+|------------|----------|------|------|-----------|
+| 1 | e⁻ | (1, 2, 0, 0, 0, 0) | 0.511 MeV | Single-sheet (Ma_e) |
+| 2 | μ⁻ | (−1, +5, 0, 0, −2, 0) | 105.658 MeV | Cross-sheet (Ma_e × Ma_p) |
+| 3 | τ⁻ | (−1, +5, 0, 0, −2, −4) | ~1876 MeV | Cross-sheet (Ma_e × Ma_p) |
+
+All three share |n₁| = 1 (same charge) and an odd number of
+odd ring windings (same spin).  They are "identical except for
+mass" because electromagnetic coupling depends only on charge,
+not on internal quantum numbers.
+
+The generational hierarchy has a geometric origin:  the electron
+is a single-sheet mode, the muon adds a proton-ring winding,
+and the tau adds proton-tube windings on top of that.  Each
+step accesses shorter length scales and higher energies.
+
+Combined with R26's three neutrino modes on Ma_ν, MaSt
+reproduces all six members of the Standard Model's three
+generations.  The mechanism is not "three copies of one
+blueprint" but three solutions to the same constraints
+(charge −1, spin ½) at increasing energy on the Ma geometry.
+
+**Open:** Whether the spectrum produces exactly three such
+modes (and not a fourth) below the Z width bound (~45 GeV)
+is a calculable question that would constitute a genuine
+prediction.  See Q86 for full discussion.
+
+
 ### F21. Summary of particle matches at the golden parameter point
 
     Particle         Observed    Predicted    Error    Status

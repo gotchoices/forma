@@ -325,7 +325,7 @@ create a bound excitation at energy ΔE.  The physical
 meaning of these near-degeneracies remains open.
 
 
-### F17. Muon and tau as "hot electrons"
+### F17. Muon and tau as "hot electrons" — the three-generation pattern
 
 The muon and tau have the same quantum numbers as the electron
 (spin 1/2, charge −e) but higher mass.  In the harmonic model,
@@ -349,6 +349,22 @@ The stability pattern is explained by charge conservation:
 Muon/tau decay is "harmonic evaporation" — the same mechanism
 as neutron decay, but simpler (one fundamental, no charge
 cancellation needed).
+
+**Three generations of charged leptons.**  This finding is the
+first identification of the Standard Model's three-generation
+pattern within the Ma framework.  The electron, muon, and tau
+are three modes sharing charge −1 and spin ½ — "identical
+except for mass," exactly as observed.  The question "who
+ordered that?" (Rabi, on the muon's discovery) has a geometric
+answer: the Ma spectrum admits multiple charge −1, spin ½
+solutions at increasing energy levels.
+
+**Note:** R27 F17 later refined this picture.  The muon is not
+a generic "electron + harmonics" but a specific cross-sheet mode
+(−1, +5, 0, 0, −2, 0) with definite quantum numbers and a
+precisely calculable mass.  The "hot electron" language remains
+qualitatively correct but understates the specificity of the
+mode assignment.  See Q86 for a full treatment.
 
 
 ### F18. Neutrino identity remains open
