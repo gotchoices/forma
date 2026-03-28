@@ -22,28 +22,7 @@ Full audit of all 37 studies (S1-S3, R1-R38) performed in chronological order.
 Only errors the findings themselves were blind to are listed.
 Studies not listed had no blind errors found.
 
----
-
-## Shared library (studies/lib/)
-
-### 1. mode_charge docstring contradicts code (ma.py:364-392)
-
-The docstring says "odd tube windings" contribute charge, implying even
-windings contribute zero.  The code implements `Q = -n[0] + n[4]` with no
-parity check -- n1 = 2 would give Q = -2, not 0.  The **code is correct**
-per the KK formula; the **docstring describes the older WvM mechanism**
-that was superseded.  Any reader trusting the docstring would misunderstand
-the charge rule.
-
-### 2. compute_scales crashes on small r (ma.py:218-219)
-
-`solve_shear_for_alpha(r)` returns `None` for r < ~0.25.
-`compute_scales` passes this to `mu_12(r, None)`, which raises an opaque
-`TypeError`.  No guard or meaningful error message.
-
-### 3. geometric_sum(1.0, n) returns NaN (series.py:10)
-
-Division by zero when r = 1.0.  Correct result is n + 1.
+Items 1-3 (lib doc/edge-case bugs) fixed directly.
 
 ---
 

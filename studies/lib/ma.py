@@ -20,8 +20,8 @@ The six dimensions are organized in three pairs:
     Indices 2, 3  →  Ma_ν  (θ₃ = tube, θ₄ = ring)
     Indices 4, 5  →  Ma_p  (θ₅ = tube, θ₆ = ring)
 
-Each pair has a "tube" direction (odd index: 0, 2, 4) and a
-"ring" direction (even index: 1, 3, 5).  Spin and charge are
+Each pair has a "tube" direction (even index: 0, 2, 4) and a
+"ring" direction (odd index: 1, 3, 5).  Spin and charge are
 determined by tube windings only.
 
 
@@ -38,7 +38,7 @@ The Ma geometry is specified by:
                           s₃₄ = 0.02199 from neutrino Δm² ratio)
 
   3 cross-plane shears:  σ_ep, σ_eν, σ_νp  (coupling between
-                         material sheets; σ_ep ≈ 0.038 from
+                         material sheets; σ_ep ≈ −0.0906 from
                          neutron mass, others unconstrained)
 
   6 circumferences:  L₁, ..., L₆  (derived from masses and aspect
@@ -216,7 +216,11 @@ def compute_scales(r_e, r_nu, r_p):
     s56 : float — proton within-plane shear (from α)
     """
     s12 = solve_shear_for_alpha(r_e)
+    if s12 is None:
+        raise ValueError(f"No shear solution for r_e = {r_e} (need r > ~0.25)")
     s56 = solve_shear_for_alpha(r_p)
+    if s56 is None:
+        raise ValueError(f"No shear solution for r_p = {r_p} (need r > ~0.25)")
     s34 = S34
 
     mu_e = mu_12(r_e, s12)
@@ -255,7 +259,7 @@ def build_scaled_metric(r_e, r_nu, r_p,
     sigma_ep : float, optional
         Electron–proton cross-shear (default 0).  Positive-definite
         metric requires |σ_ep| < ~0.535.  The neutron mass matches
-        at |σ_ep| ≈ 0.038 (R26 F67).
+        at σ_ep ≈ −0.0906 (R27 F15–F18).
     sigma_enu : float, optional
         Electron–neutrino cross-shear (default 0).  Neutrino mass
         ratio constrains |σ_eν| ≲ 0.05 (R26 F72).
@@ -365,12 +369,13 @@ def mode_charge(n):
     """
     Net electric charge of a Ma mode, in units of e.
 
-    Charge arises from odd tube windings:
-      n₁ (index 0, electron tube):  odd → contributes −sign(n₁) × e
-      n₅ (index 4, proton tube):    odd → contributes +sign(n₅) × e
+    Charge is quantized compact momentum (KK formula):
 
-    Even tube windings and all ring windings (n₂, n₄, n₆) do not
-    contribute to charge.
+      Q = −n₁ + n₅
+
+    where n₁ (index 0) is the electron tube winding and n₅ (index 4)
+    is the proton tube winding.  All six quantum numbers are integers;
+    charge is always an integer multiple of e.
 
     Parameters
     ----------

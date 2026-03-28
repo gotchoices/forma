@@ -7,11 +7,15 @@ def geometric_sum(r, n):
     """Sum of finite geometric series: Σᵢ₌₀ⁿ rⁱ = (1 − r^(n+1)) / (1 − r)."""
     if abs(r) < 1e-15:
         return 1.0
+    if abs(r - 1.0) < 1e-15:
+        return float(n + 1)
     return (1 - r ** (n + 1)) / (1 - r)
 
 
 def infinite_sum(r):
     """Sum of infinite geometric series: 1 / (1 − r), for |r| < 1."""
+    if abs(r - 1.0) < 1e-15:
+        return float('inf')
     return 1 / (1 - r)
 
 
