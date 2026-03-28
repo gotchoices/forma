@@ -52,5 +52,7 @@ For questions that need a computational model, see [`studies/`](../studies/).
 | [Q83](Q83-neutrino-sheet-coherence.md) | Can quantum coherence persist on the neutrino sheet at biological temperatures? | Open — quantitative estimates |
 | [Q84](Q84-mast-terminology.md) | MaST Universe — terminology and naming conventions (U¹⁰ = M⁶ × S³ × T¹) | Draft — terminology proposal |
 | [Q85](Q85-harmonic-ladder-and-threshold.md) | The harmonic ladder — energy levels, threshold theory, and digital counting on material sheet | Open — quantitative framework |
+| [Q86](Q86-three-generations.md) | Why three generations? Accommodated but not predicted; reduces to ghost problem | Open |
+| [Q87](Q87-cross-shear-phase-coupling.md) | Can cross-shear couple energy between sheets and modify mode phase? | Open — conceptual |
 
 Unprocessed and brief questions live in [`INBOX.md`](INBOX.md).
