@@ -451,12 +451,13 @@ continuous — the phase-advance mechanism (Hypothesis F)
 becomes the ONLY channel.
 
 **Non-orientable alternatives ruled out.** R30 Track 3
-investigated the Klein bottle (T² with twisted edge
-identification).  It kills charge (Gauss's law breaks;
-gauge becomes Z₂, not U(1)) and kills spin-½ (no odd
-tube windings on closed geodesics).  Findings F15–F17
-confirm T² is the unique compact orientable 2D surface
-with the required winding structure.
+investigated the Klein bottle (a material sheet with a
+twisted edge identification).  It kills charge (Gauss's
+law breaks; gauge becomes Z₂, not U(1)) and kills spin-½
+(no odd tube windings on closed geodesics).  Findings
+F15–F17 confirm the material sheet (flat torus) is the
+unique compact orientable 2D surface with the required
+winding structure.
 
 
 ## 7. Continuous energy and S momentum
@@ -692,9 +693,9 @@ different internal state.
 
 Yes, in multiple ways:
 
-1. **Radiation pressure on a T² cavity:** a standing wave
-   (n₃, n₄) on a rectangular T² with side lengths L₃, L₄
-   exerts pressure P₃ = −∂E/∂L₃ and P₄ = −∂E/∂L₄.
+1. **Radiation pressure on a material-sheet cavity:** a standing
+   wave (n₃, n₄) on a rectangular material sheet with side
+   lengths L₃, L₄ exerts pressure P₃ = −∂E/∂L₃ and P₄ = −∂E/∂L₄.
    If the torus has elastic modulus K (energy per unit
    strain), the equilibrium deformation is:
 
@@ -773,8 +774,8 @@ The hypotheses above suggest specific computations:
    spin for general (n₁, n₂) from the WvM confined-photon
    picture.  Is spin = n₁/n₂, or is it ½ per active sheet?
    Compute the angular momentum of the EM field for modes
-   (1,1), (1,2), (1,3) on a sheared T² and determine the
-   effective spin quantum number.  If spin = n₁/n₂, most
+   (1,1), (1,2), (1,3) on a sheared material sheet and determine
+   the effective spin quantum number.  If spin = n₁/n₂, most
    ghost modes are eliminated by spin-statistics alone.
 
 3. **Neutrino ladder density (new computation):** count the
@@ -783,23 +784,23 @@ The hypotheses above suggest specific computations:
    WvM spin.  Plot mode density vs r_ν.  Determine the
    minimum r_ν needed for N bits of storage capacity.
 
-4. **Elastic torus radiation pressure (Hypothesis I):**
+4. **Elastic material-sheet radiation pressure (Hypothesis I):**
    compute the radiation pressure exerted by a (1, 2)
-   standing wave on a T² with given aspect ratio r.
+   standing wave on a material sheet with given aspect ratio r.
    For a parameterized stiffness K, solve for the
    equilibrium deformation r(E) as energy increases from
    m₀ to 2m₀.  Does the level spacing decrease
    geometrically?  What K gives the binary series?
    Apply to the neutrino sheet.
 
-5. **Phase evolution on fixed T² (Hypothesis F test):**
+5. **Phase evolution on fixed material sheet (Hypothesis F test):**
    can the (1, 2) mode carry energy E > m_e on a fixed
-   torus?  Solve the wave equation with a source term or
+   material sheet?  Solve the wave equation with a source term or
    initial amplitude > 1 quantum.  Does the solution
    remain in the (1, 2) sector or leak into other modes?
 
 6. **Anharmonic correction (Hypothesis G):** solve for
-   the T² mode spectrum including first-order backreaction
+   the material-sheet mode spectrum including first-order backreaction
    from the mode's own energy.  Does the spectrum soften
    (gaps decrease) or stiffen (gaps increase)?  Related to
    Hypothesis I but without the elastic degree of freedom —

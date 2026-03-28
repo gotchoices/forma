@@ -35,7 +35,7 @@ to LEP at 200 GeV) span this transition.
 
 ## Proposed study
 
-1. Write α running in 4+2D or 4+3D KK on Ma_e/T³.
+1. Write α running in 4+2D KK on Ma_e (single material sheet) and in 4+6D KK on the full Ma.
 2. Compare to standard 4D formula.
 3. Check if material dims modify the β coefficient consistently
    with experiment.

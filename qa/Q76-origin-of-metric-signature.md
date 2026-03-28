@@ -223,8 +223,8 @@ arbitrary:
   than 6 material dimensions cannot simultaneously produce
   neutral fermions (spin ½, charge 0 — the neutrino) and
   the full particle mass ladder (proton-sheet energy
-  steps).  T³ fails structurally.  Ma = 3 × T² is the
-  minimum.
+  steps).  A single 3D compact space fails structurally.
+  Ma = 3 material sheets is the minimum.
 
 If these constraints are all necessary, then 1+3+6 = 10
 is the ONLY way to split the dimensions that simultaneously
@@ -285,7 +285,7 @@ Possible directions:
 
 *Connects to: Q27 (foundational axioms), Q32 (energy and
 geometry as fundamentals), Q75 (contingency vs necessity),
-R30 F7/F20 (T² as unique minimal geometry), R31 F23
+R30 F7/F20 (material sheet as unique minimal geometry), R31 F23
 (dynamics needed for parameter selection)*
 
 *Status: open — possibly the deepest structural question
