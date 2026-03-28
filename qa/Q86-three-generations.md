@@ -14,9 +14,8 @@ to the same geometric constraints at different energy levels.
 
 ## Charged leptons
 
-Each charged lepton is a mode on Ma with |n₁| = 1 (giving
-charge ±1) and an odd count of odd ring windings (giving
-spin ½).  The three observed modes:
+Each charged lepton is a mode on Ma with charge Q = −n₁ + n₅ = −1
+and spin ½.  The three observed modes:
 
 | Particle | Mode | Energy | Sheet content | Status |
 |----------|------|--------|---------------|--------|
@@ -29,11 +28,10 @@ only in their quantum numbers on the material sheets and
 consequently in mass.
 
 **Why they behave identically except for mass:**  Charge is
-determined by n₁ alone (the electron ring winding), and all
-three modes have |n₁| = 1.  The coupling to photons depends
-on charge, not on the internal quantum numbers n₂…n₆.
-Electromagnetic experiments therefore cannot distinguish
-them except by inertia — exactly as observed.
+Q = −n₁ + n₅, and all three modes have Q = −1.  The coupling
+to photons depends on charge, not on the internal quantum
+numbers n₂…n₆.  Electromagnetic experiments therefore cannot
+distinguish them except by inertia — exactly as observed.
 
 
 ## The muon: not just a "hot electron"
@@ -93,39 +91,37 @@ between modes as it propagates, exactly as observed.
 
 ## Why three and not more?
 
-The Standard Model offers no explanation for why there are
-three generations.  In MaSt, the question becomes: how many
-charge −1, spin ½ modes exist on Ma below some energy
-cutoff?
+R38 investigated this.  The Ma spectrum contains ~14,000 charge −1,
+spin ½ energy levels below 10 GeV and ~1,000 weakly-charged neutrino
+species below the Z mass.  The model does not naturally produce
+"exactly three" — the question reduces to the ghost mode problem
+(R33): why are most Ma modes with valid quantum numbers unoccupied?
 
-At the R27 parameter point (r_p = 8.906, σ_ep = −0.091):
+R38 Track 5 tests the **resonance capture hypothesis**: Ma acts as
+a resonant cavity.  A photon must exceed 2m_e to enter (pair
+production), but can only couple stably to modes within the cavity's
+resonance bandwidth.  The tau's 5.6% off-resonance gap (99.6 MeV
+detuning from the nearest cavity mode) implies that a cavity Q ≈ 30
+would place the tau at the edge of capture and exclude the 4th
+generation (R38 F8).  The R27 lifetime-gap power law (τ ∝ |gap|^(−2.7))
+predicts a 4th lepton with 15% gap would live only ~2 × 10⁻¹⁴ s —
+too short and too weakly captured to be observed (R38 F9).
 
-- **Electron** (0.511 MeV): the lightest charge −1 mode
-- **Muon** (105.7 MeV): the next charge −1, spin ½ mode
-- **Tau candidate** (~1876 MeV): the third
+The hypothesis is viable but underdetermined: the cavity Q cannot
+yet be computed from first principles (R38 F10).
 
-The mode spectrum above the tau is dense, but the next
-charge −1, spin ½ mode is at significantly higher energy,
-and no fourth generation has been observed experimentally
-below ~45 GeV (from Z boson width measurements).
-
-**Open question:** A systematic search of the Ma spectrum
-for charge −1, spin ½ modes above 1877 MeV would determine
-whether the model predicts exactly three generations or
-allows more.  If MaSt produces no fourth mode below the
-Z width constraint (~45 GeV), this is a genuine prediction.
-If it does predict a fourth, the framework must explain its
-absence.
+**Status:** Three generations are **accommodated** (masses matched)
+but **not predicted**.  Solving the ghost mode problem or deriving
+the Ma-S coupling bandwidth (cavity Q) would resolve the count.
 
 
 ## Connection to the "hot electron" picture
 
 R20 F17 introduced the language "muon and tau as hot
 electrons."  This remains qualitatively correct: all three
-charged leptons share the same charge and spin because they
-share the same underlying topology (|n₁| = 1).  The heavier
+charged leptons share Q = −1 and spin ½.  The heavier
 leptons are "hotter" in the sense of carrying more energy
-via additional quantum numbers.
+via additional quantum numbers on the proton sheet.
 
 The refinement from R27 is that the excited states are not
 generic thermal excitations but specific modes with definite
@@ -139,7 +135,7 @@ object with a precise mass.
 | Feature | Standard Model | MaSt |
 |---------|---------------|------|
 | Three charged leptons | Assumed (three copies) | Derived (three modes) |
-| Identical except mass | Unexplained | Same |n₁| = 1 → same charge/spin |
+| Identical except mass | Unexplained | Same Q = −n₁ + n₅ = −1 → same charge/spin |
 | Mass hierarchy | Yukawa couplings (free parameters) | Mode energies (geometric) |
 | Three neutrinos | Assumed | Three modes on Ma_ν |
 | ν oscillation | PMNS matrix (free parameters) | Mode near-degeneracy |
@@ -152,3 +148,5 @@ object with a precise mass.
 - R26: neutrino mass splittings and oscillation
 - R27 F17–F20: muon mode identification and tau near-miss
 - R27 F21: particle scorecard with all three charged leptons
+- R33: ghost mode selection (the underlying problem)
+- R38: fourth-generation search (this question, resolved)

@@ -86,8 +86,8 @@ the material dimensions.
 | Parameter | Symbols | What it controls | Known values |
 |-----------|---------|------------------|--------------|
 | **Circumferences** | L_φ, L_θ per sheet | Physical size; sets energy scale | L_θe → m_e; L_θp → m_p |
-| **Aspect ratio** | r_e, r_ν, r_p | Shape of each sheet | r_p = 8.906 (pinned); r_e free; r_ν ≥ 3.2 |
-| **Within-plane shear** | s_e, s_ν, s_p | Lattice skew; rectangle → parallelogram | s_e ≈ 0.010 → α; s_ν = 0.022 → Δm²; s_p free |
+| **Aspect ratio** | r_e, r_ν, r_p | Shape of each sheet | r_p = 8.906 (pinned by neutron + muon, R27 F18); r_e free; r_ν ≥ 3.2 |
+| **Within-plane shear** | s_e, s_ν, s_p | Lattice skew; rectangle → parallelogram | All constrained: s_e by α (given r_e); s_ν = 0.022 by Δm²; s_p by α (given r_p) |
 | **Energy scale** | E₀ | Fundamental mode energy ℏc/L | E₀(ν) ~ meV; E₀(e) ~ MeV; E₀(p) ~ GeV |
 
 ### 3.2 Inter-sheet parameters
@@ -102,6 +102,29 @@ with quantum numbers on more than one sheet.  The neutron
 
 Each cross-shear has four components (e.g., σ_φeφp, σ_φeθp,
 σ_θeφp, σ_θeθp).  Only the aggregate σ_ep has been constrained.
+
+### 3.2.1 Parameter census (R26 F59)
+
+The flat Ma metric has 21 independent components.
+
+| Category | Count | Status |
+|----------|------:|--------|
+| Ring scales (L_θe, L_θp, L_θν) | 3 | Set by m_e, m_p, Δm²₂₁ (inputs) |
+| Within-plane shears (s_e, s_ν, s_p) | 3 | All constrained: s_e by α (given r_e), s_p by α (given r_p), s_ν by Δm² ratio |
+| Aspect ratios (r_e, r_ν, r_p) | 3 | r_p and σ_ep jointly pinned by neutron + muon (R27 F18); **r_e free**; **r_ν ≥ 3.2** |
+| Aggregate cross-shear σ_ep | 1 | Pinned jointly with r_p (R27 F18) |
+| Other cross-shear components | 11 | All zero; shown irrelevant to MeV-scale observables (R28 F1/F4) |
+| **Total constrained** | **8** | 6 from experimental data + 2 from particle fits |
+| **Formally free** | **13** | r_e, r_ν, 11 cross-shear components |
+| **Effective free** | **2** | **r_e** (unconstrained), **r_ν** (≥ 3.2) |
+
+Note: s_e and s_p are each determined by the α formula once
+their sheet's aspect ratio is known.  Since r_p is pinned
+(R27 F18), s_p is fully determined.  Since r_e is free, the
+(r_e, s_e) pair counts as one free parameter.  The 11
+remaining cross-shear components are formally free but have
+no measurable effect on any tested observable — the effective
+free parameter count is 2.
 
 ### 3.3 Embedding parameters
 
@@ -179,21 +202,25 @@ These particles pin the geometric parameters.
 | **Neutron** | (1, 2, 0, 0, 1, 2) | 939.6 MeV | Ma_e × Ma_p | σ_ep = −0.091 |
 | **Muon** | (−1, 5, 0, 0, −2, 0) | 105.7 MeV | Ma_e × Ma_p | r_p = 8.906 |
 
-The neutron and muon together pin the two remaining free
-parameters (σ_ep and r_p), leaving **zero free parameters**
-for all subsequent predictions at the MeV scale.
+The neutron and muon together pin σ_ep and r_p (R27 F18).
+The model has **2 effective free parameters** (r_e and r_ν;
+see §3) — the 11 remaining cross-shear components are formally
+free but irrelevant.  The MeV-scale hadron predictions below
+are insensitive to r_e and r_ν as well — they depend almost
+entirely on r_p and σ_ep.  In this sense the predictions are
+parameter-free.
 
-### 5.2 Parameter-free predictions
+### 5.2 Predictions insensitive to free parameters
 
 | Particle | Mode | Predicted (MeV) | Observed (MeV) | Error |
 |----------|------|----------------:|---------------:|------:|
-| Kaon K± | (1,2,0,0,3,4) | 487.7 | 493.7 | 1.2% |
-| K⁰ | (0,0,0,0,3,4) | 503.4 | 497.6 | 1.2% |
-| Eta η | (0,0,0,0,3,4) | 544.0 | 547.9 | 0.6% |
-| Eta′ η′ | (0,0,0,0,3,6) | 960.0 | 957.8 | 0.3% |
-| Phi φ | (0,0,0,0,3,8) | 1011.4 | 1019.5 | 0.8% |
-| Lambda Λ | (1,2,0,0,3,6) | 1105.9 | 1115.7 | 0.9% |
-| Sigma⁺ Σ⁺ | (1,2,0,0,5,8) | 1186.2 | 1189.4 | 0.3% |
+| K⁺ | (−4,−8,+1,0,−3,−1) | 488.0 | 493.7 | 1.2% |
+| K⁰ | (−3,−8, 0,0,−3,+1) | 503.7 | 497.6 | 1.2% |
+| η | (−5,−8, 0,0,−5,+1) | 551.2 | 547.9 | 0.6% |
+| η′ | (−3,−8, 0,0,−3,+2) | 961.1 | 957.8 | 0.3% |
+| φ | (−7,−8, 0,0,−7,+2) | 1028.0 | 1019.5 | 0.8% |
+| Λ | (−12,−15,+1,0,−12,−2) | 1105.9 | 1115.7 | 0.9% |
+| Σ⁺ | (−14,−15, 0,0,−13,+2) | 1193.4 | 1189.4 | 0.3% |
 
 ### 5.3 Neutrino mass eigenstates
 
@@ -292,7 +319,8 @@ efficient axial projection of B.
 
 | Problem | Status | Studies |
 |---------|--------|---------|
-| **The α problem** | What sets shear s_e ≈ 0.01? Multiple mechanisms tested, none successful. | R15, R19, R31, R32, R34 |
+| **Under-determination** | 21 metric components, 8 constrained → 13 formally free, but 11 are irrelevant cross-shears → **2 effective free** (r_e, r_ν). r_e is completely unconstrained; r_ν only lower-bounded (≥ 3.2). | R26 F59–F62, R27 F18, R28 F1/F4 |
+| **The α problem** | What sets shear s_e ≈ 0.01? Multiple mechanisms tested, none successful. Coupled to r_e: s_e is not unique until r_e is fixed. | R15, R19, R31, R32, R34 |
 | **Ghost modes** | ~900 valid modes below 2 GeV vs ~40 known particles; ~10⁵ suppression needed | R33 |
 | **Aspect ratio r_e** | Free parameter; not pinned by any data | R19, R31 |
 | **Three generations** | Accommodated but not predicted; reduces to ghost problem | R38, Q86 |

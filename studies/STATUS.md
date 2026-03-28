@@ -162,16 +162,21 @@ computing R35's Goldilocks K.  Other genuine results: computable elastic
 constants (F2), electron sheet ~10⁶× too stiff for R35 coupling (F10),
 self-gravity negligible (F5).
 
-### R38. Fourth-generation search — does MaSt predict exactly three?
+### R38. Fourth-generation search — does MaSt predict exactly three?  **Complete**
 **Study:** [`R38-fourth-generation/`](R38-fourth-generation/)
 **Questions:** Q86  **Type:** compute  **Depends on:** R26, R27
 
-Two-track enumeration.  Track 1: count charge −1, spin ½ Ma modes
-above the tau (~1876 MeV) to 45 GeV — determines whether a 4th
-charged lepton exists.  Track 2: count |n₃| = 1 modes on Ma_ν above
-ν₃ — determines whether additional light weakly-charged neutrinos
-exist (Z width constrains N_ν = 3.00 ± 0.01).  Both use existing
-libraries; no new parameters.
+10 findings across 5 tracks.  MaSt does NOT predict exactly three
+generations.  The charge −1, spin ½ spectrum has ~14,000 distinct
+energy levels below 10 GeV (not 3).  Ma_ν has ~1,000 weakly-charged
+neutrino species (not 3), creating a 140σ tension with the Z width.
+Both are instances of the ghost mode problem (R33).  Three generations
+are **accommodated but not predicted**.  Track 5 tests the resonance
+capture hypothesis: if Ma cavity bandwidth limits which modes can
+stably capture a photon, the generation count may be naturally gated.
+At Q ≈ 30 the tau sits at the edge of capture and the 4th generation
+is excluded.  The hypothesis is viable but underdetermined — requires
+a first-principles model of Ma-S coupling to compute Q.
 
 ### R33. Ghost mode selection — why most Ma modes are dark  **Paused**
 **Study:** [`R33-ghost-selection/`](R33-ghost-selection/)
@@ -268,4 +273,4 @@ Studies in chronological order of completion. Key result only — see each study
 | 21 | **R23. Neutrino from harmonic beating** [`R23-neutrino-beating/`](R23-neutrino-beating/) | Δm² ratio 33.6 achievable by many triplets — not selective (T1).  θ₂-momentum conservation blocks phonon mechanism (T2).  R22 F5 closes last rescue path (backreaction preserves θ₂).  Single-sheet neutrino ruled out.  Neutrino mechanism remains open. |
 | 22 | **R24. Torus dynamics** [`R24-torus-dynamics/`](R24-torus-dynamics/) | 3-torus neutrinos: modes (0,0,n₃) uncharged, mass ratio 33.63 from integers alone (0.03σ), Σm = 72 meV, system over-determined → r predicted (T1 F1–F7).  Wave dynamics: defocusing nonlinearity does not select modes (T2 F8–F12).  r-selection via dynamics pre-empted (T3).  Critical open: spin of (0,0,n₃) → R25. |
 | 23 | **R25. Neutrino spin** [`R25-neutrino-spin/`](R25-neutrino-spin/) | Charge-spin linkage (F4): both charge (n₁ = ±1) and spin-½ (n₁ odd) are controlled by tube winding n₁.  "Uncharged" and "fermion" are mutually exclusive — WvM cannot produce neutrinos.  3-torus kinematic success (R24 T1) blocked at spin gate.  PMNS path to r-selection closed.  Neutrino mechanism remains the central open problem. |
-| 24 | **R26. Three tori — Ma** [`R26-neutrino-t4/`](R26-neutrino-t4/) | Ma = the three material sheets (electron, neutrino, proton).  Neutrino mass ratio Δm²₃₁/Δm²₂₁ = 33.6 from shear s₃₄ = 0.022 (exact, r-independent).  Charge-neutral neutron mode (1,2,0,0,1,2) reproduces m_n at |σ_ep| ≈ 0.038.  Parameter census: 21 total, 15 free (3 aspect ratios + 12 cross-shears) — under-determined.  Casimir–mass tension (F73): vacuum energy wants maximal coupling, mass spectrum wants minimal — first candidate for a self-selecting principle.  75 findings across 4 tracks. |
+| 24 | **R26. Three tori — Ma** [`R26-neutrino-t4/`](R26-neutrino-t4/) | Ma = the three material sheets (electron, neutrino, proton).  Neutrino mass ratio Δm²₃₁/Δm²₂₁ = 33.6 from shear s₃₄ = 0.022 (exact, r-independent).  Charge-neutral neutron mode (0,−2,+1,0,0,+2) reproduces m_n at σ_ep = −0.091 (R27 F15–F18; supersedes the R26 candidate (1,2,0,0,1,2) at |σ_ep| ≈ 0.038).  Parameter census: 21 total, 15 free (3 aspect ratios + 12 cross-shears) — under-determined.  Casimir–mass tension (F73): vacuum energy wants maximal coupling, mass spectrum wants minimal — first candidate for a self-selecting principle.  75 findings across 4 tracks. |

@@ -5,12 +5,13 @@
 The author is an electrical engineer, not a trained physicist.  This started
 as a hobby — a "what if" exploration of a 1997 paper that
 proposed the electron is a confined photon.  It has since
-produced results I did not expect: parameter-free
-predictions of particle masses at percent-level accuracy,
-an emergent neutron from pure geometry, nuclei that
-appear as standing-wave modes rather than bound collections
-of particles, and a neutrino mass-squared ratio that
-matches experiment from integer mode numbers alone.
+produced results I did not expect: predictions of particle
+masses at percent-level accuracy using only four inputs
+and two fit particles, an emergent neutron from pure
+geometry, nuclei that appear as standing-wave modes
+rather than bound collections of particles, and a
+neutrino mass-squared ratio that matches experiment from
+integer mode numbers alone.
 
 Because I am not expert in theoretical physics, I have
 worked more as an architect and project manager than as a
@@ -23,9 +24,10 @@ that can be inspected and re-run.
 I do not claim that this model is correct.  It may turn out
 to be a mathematical coincidence, an elaborate numerology,
 or a useful approximation to something deeper.  What I do
-claim is that it is *interesting*: a model that starts from
-three axioms and derives percent-level particle masses with
-no free parameters is, at minimum, worth understanding why
+claim is that it is *interesting*: a model with four
+experimental inputs and two fit particles that then
+produces percent-level mass predictions for a half-dozen
+additional hadrons is, at minimum, worth understanding why
 it works as well as it does — and worth understanding
 precisely where and why it fails.
 
@@ -99,26 +101,51 @@ for discussion.
 
 ## Key results
 
+### Parameter accounting
+
+The Ma geometry has 21 independent metric components (R26 F57).
+Eight constraints from experimental data and particle fits leave
+13 formally free — but 11 of these are cross-shear components
+that are all zero and shown irrelevant to every observable tested
+(R28 F1/F4).  The **effective free parameters are 2: r_e and r_ν**.
+
+| What | Count | Details |
+|------|------:|---------|
+| Ma metric components | 21 | Flat 6×6 symmetric metric |
+| Set by experimental inputs | 6 | 3 ring scales (m_e, m_p, Δm²₂₁); 3 within-plane shears (α → s_e given r_e, α → s_p given r_p, Δm² ratio → s_ν) |
+| Pinned by particle fits | 2 | r_p = 8.906 and σ_ep = −0.091 (jointly by neutron + muon, R27 F18) |
+| Cross-shears (irrelevant) | 11 | All set to 0; shown insensitive to MeV-scale spectrum (R28) |
+| **Effective free** | **2** | **r_e** (unconstrained), **r_ν** (≥ 3.2) |
+
+The MeV-scale hadron predictions (below) are insensitive to both
+remaining free parameters — they depend almost entirely on r_p
+and σ_ep.  In this sense the predictions are parameter-free.
+The model as a whole has 2 undetermined shape parameters: r_e
+has no known observable to pin it, and r_ν is only lower-bounded
+(r_ν ≥ 3.2 from the cosmological Σm_ν bound).
+
+See R26 F57–F63 and [`studies/Taxonomy.md`](studies/Taxonomy.md) §3
+for the full census.
+
 ### Electron (R2, R19, R26)
 The (1,2) mode on Ma_e reproduces spin ½ (exact, topological),
-mass m_e (resonance condition), charge e (shear mechanism),
-g-factor ≈ 2 (energy partition), and magnetic moment (axial B
-projection) — with zero free continuous parameters once
-topology + e + m_e are given.
+mass m_e (input), charge e (shear mechanism, requires α as
+input given free r_e), g-factor ≈ 2 (energy partition), and
+magnetic moment (axial B projection).
 
 ### Particle spectrum (R27, R28)
-With r_p = 8.906 and σ_ep = −0.091 pinned by the neutron and
-muon, the model has **zero free parameters** at the MeV scale.
-Parameter-free predictions:
+With r_p and σ_ep pinned by the neutron and muon (R27 F18),
+the MeV-scale predictions are insensitive to both remaining
+free parameters (r_e, r_ν).  Predictions:
 
-| Particle | Ma mode | Error |
-|----------|---------|-------|
-| Kaon (K±) | (1,2,0,0,3,4) | 1.2% |
-| Eta (η) | (0,0,0,0,3,4) | 0.6% |
-| Eta prime (η') | (0,0,0,0,3,6) | 0.3% |
-| Phi (φ) | (0,0,0,0,3,8) | 0.8% |
-| Lambda (Λ) | (1,2,0,0,3,6) | 0.9% |
-| Sigma+ (Σ⁺) | (1,2,0,0,5,8) | 0.3% |
+| Particle | Ma mode | Error | Source |
+|----------|---------|------:|--------|
+| Kaon (K⁺) | (−4,−8,+1,0,−3,−1) | 1.2% | R27 F31 |
+| Eta (η) | (−5,−8, 0,0,−5,+1) | 0.6% | R27 F31 |
+| Eta prime (η′) | (−3,−8, 0,0,−3,+2) | 0.3% | R27 F31 |
+| Phi (φ) | (−7,−8, 0,0,−7,+2) | 0.8% | R27 F31 |
+| Lambda (Λ) | (−12,−15,+1,0,−12,−2) | 0.9% | R28 F10 |
+| Sigma+ (Σ⁺) | (−14,−15, 0,0,−13,+2) | 0.3% | R28 F14 |
 
 Lifetime-gap correlation r = −0.84 (p = 0.009) for weak
 decays supports the off-resonance hypothesis: unstable
@@ -127,15 +154,17 @@ mode predicts the lifetime.
 
 ### Neutrino masses (R26)
 The neutrino mass-squared ratio Δm²₃₁/Δm²₂₁ = 33.6 is
-reproduced **exactly** from integer mode numbers on Ma_ν with
-a single shear parameter s_ν = 0.022.  The result is
-independent of the aspect ratio r_ν.
+reproduced from integer mode numbers on Ma_ν with a single
+shear parameter s_ν = 0.022.  The ratio is independent of r_ν,
+which remains free (lower-bounded by cosmological Σm_ν).
+Individual neutrino masses depend weakly on r_ν.
 
-### Emergent neutron (R26)
-The neutron appears as a cross-plane mode spanning Ma_e × Ma_p
-with mode numbers (1,2,0,0,1,2).  Charge = −1+1 = 0 (exact),
-mass reproduced at |σ_ep| ≈ 0.091.  It was not put in — it
-was found by the Ma solver as a mode nobody looked for.
+### Emergent neutron (R26, R27)
+The neutron appears as a three-sheet mode (0,−2,+1,0,0,+2)
+spanning Ma_e × Ma_ν × Ma_p (R27 F15).  Charge Q = −n₁ + n₅ = 0
+(exact, both zero).  Spin ½ from neutrino ring winding (n₃ = 1).
+Mass reproduced at σ_ep = −0.091 (R27 F18).  It was not put
+in — it was found by the Ma solver as a mode nobody looked for.
 
 ### Nuclear scaling law (R29)
 Nuclei are Ma_p modes, not multi-particle bound states.

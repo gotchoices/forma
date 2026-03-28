@@ -66,13 +66,50 @@ N_ν > 3, contradicting the Z width measurement.
 - If N_ν = 3 exactly: explain the geometric mechanism
 
 
-### Track 3. Interpretation
+### Track 3. Interpretation and gating hypothesis
 
 Combine Tracks 1–2 into a verdict:
 - Does MaSt predict exactly 3 generations?
-- If so, this is a genuine prediction with no SM counterpart.
-- If not, what physics is needed to reconcile?
-- Update Q86 and white-paper outline accordingly.
+- If not, what physics could gate the generation count?
+
+**Resonance capture hypothesis:** A photon must exceed 2m_e to enter
+the Ma domain (pair production).  But a photon far above a cavity's
+natural resonance cannot couple stably — it re-radiates.  If the
+capture cross-section depends on the detuning between the photon
+energy and the cavity mode, the generation count could be bounded
+by the mode at which the detuning becomes too large for stable
+capture.  The tau is already 5.6% off-resonance; the gap may grow
+faster than the mode spacing above the 3rd generation.
+
+
+### Track 5. Resonance capture
+
+The resonance capture hypothesis: Ma acts as a cavity.  A photon
+must exceed 2m_e to enter (pair production), but can only couple
+to modes within the cavity's resonance bandwidth.  If the capture
+cross-section depends on detuning, there is a natural stability
+boundary that could gate the generation count.
+
+**Deliverables:**
+- Proton-ring energy ladder and Compton wavelengths vs cavity dimensions
+- Cavity Q estimated from the tau's 5.6% off-resonance gap
+- Lorentzian capture model: what Q gates the 4th generation?
+- Lifetime-gap extrapolation (R27 F33 power law) to 4th generation
+
+**Tools:** `lib/ma_solver.py` (self-consistent metric), R27 parameters.
+
+
+### Note: Charge formula history
+
+The early WvM model used a Gauss-law integral on an embedded torus,
+which selects |n₁| = 1 per sheet (basis for R33's ghost suppression).
+The current model uses the full wave function on a sheared flat
+geometry, where charge is KK compact momentum: Q = −n₁ + n₅.  The
+KK formula gives correct integer charges for all R27 matches; the
+WvM integral gives the muon fractional charge (−0.40).  KK is the
+current formula.  Its weakness is the ghost problem: ~14,000 modes
+carry valid charge.  See `scripts/track4_charge_integral_6d.py` for
+the detailed comparison.
 
 
 ## Parameters (all pre-determined)
