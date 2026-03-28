@@ -13,11 +13,10 @@ rather than bound collections of particles, and a
 neutrino mass-squared ratio that matches experiment from
 integer mode numbers alone.
 
-Because I am not expert in theoretical physics, I have
-worked more as an architect and project manager than as a
-traditional researcher.  The computational modeling,
+Because I am not in expert in theoretical physics, I have
+had to be more of a strategist and project manager.  The research, computational modeling,
 mathematical derivations, and literature comparisons have
-been performed collaboratively with AI (Claude).  Every
+been performed with a lot of help from AI (Claude).  Every
 numerical result is produced by scripts in this repository
 that can be inspected and re-run.
 

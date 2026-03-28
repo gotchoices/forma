@@ -98,8 +98,12 @@ Einstein's spacetime produces electromagnetism from pure
 geometry: the electromagnetic potential is the off-diagonal
 component of the five-dimensional metric.  Momentum in the
 compact direction appears as electric charge in four
-dimensions.  The idea was elegant but seemed to stall: one
-compact dimension gives electromagnetism but not the rest
+dimensions.  The result was profound — charge and
+magnetism emerged from geometry alone — but it had a gap:
+KK still required pre-existing particles to carry the
+momentum.  The geometry explained the *force* between
+charged objects, but not the objects themselves.  And one
+compact dimension gave electromagnetism but not the rest
 of particle physics.
 
 In 1997, J. G. Williamson and M. B. van der Mark united
@@ -122,13 +126,24 @@ composed of point-like quarks, was radical enough to be
 worth pushing as far as it would go.
 
 The model described in this paper takes these ideas
-seriously and extends them.  We combine de Broglie's
-particle-as-wave with Kaluza-Klein's geometry-as-force and
-WvM's topology-as-spin, and push the synthesis from a single
-particle to the full spectrum.  We state three axioms and
-attempt to derive everything else — mass, charge, spin, the
-particle spectrum, nuclear binding — from the geometry of
-material extra dimensions.
+seriously and extends them.  Where KK added one compact
+dimension and still needed particles, MaSt goes a level
+deeper: it uses a resonant *photon* as the circulating
+entity — eliminating the need for pre-existing matter —
+but requires two compact dimensions (a material sheet)
+per particle family to support standing-wave modes.  Three
+stable families (electron, neutrino, proton) on three
+sheets gives 3 × 2 = 6 material dimensions, plus 3 spatial
++ 1 time = 10 total — the same dimensionality as string
+theory, though at vastly larger scales (femtometers to
+micrometers, not the Planck length).
+
+We combine de Broglie's particle-as-wave with Kaluza-Klein's
+geometry-as-force and WvM's topology-as-spin, and push the
+synthesis from a single particle to the full spectrum.  We
+state three axioms and attempt to derive everything else —
+mass, charge, spin, the particle spectrum, nuclear binding —
+from the geometry of material extra dimensions.
 
 
 ### 1.1 Three axioms
