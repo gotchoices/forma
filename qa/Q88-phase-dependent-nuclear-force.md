@@ -1,12 +1,23 @@
 # Q88: Does mode phase determine near-field interactions? Implications for nuclear binding and cold fusion.
 
-**Status:** Open — highly speculative
+**Status:** Partially falsified by R39 — superseded by [Q89](Q89-fusion-as-mode-transition.md)
 **Related:**
   [Q82](Q82-entanglement-as-ma-geometry.md) (entanglement as phase locking),
   [Q87](Q87-cross-shear-phase-coupling.md) (cross-sheet phase coupling),
+  [Q89](Q89-fusion-as-mode-transition.md) (fusion as mode transition — the successor framing),
   [Q29](Q29-variational-principle-alpha.md) (variational principle for α),
   R7 F4 (near-field/far-field energy split),
-  R29 F6 (proton-tube gauge boson as nuclear force candidate)
+  R29 F6 (proton-tube gauge boson as nuclear force candidate),
+  R39 (near-field phase study — tested and partially falsified this question)
+
+**R39 results (summary):**
+- The (1,2) mode has Δφ → Δφ+π symmetry: "anti-phase" ≡ "in-phase" (F2) — §2.2's force profile is wrong
+- Geometric suppression is real (78% at 1 fm with magnetic interaction) but phase-independent (F3, F9)
+- Phase modulation is 3–14%, not the dominant effect hypothesized here (F4)
+- No electromagnetic attraction at any orientation (F7, F9)
+- The near-field suppression picture (§2–3) is qualitatively right but quantitatively insufficient
+- The cold fusion mechanism (§5) based on anti-phase barrier reduction is falsified
+- Q89 reframes fusion as a mode transition, bypassing the Coulomb barrier entirely
 
 ---
 
