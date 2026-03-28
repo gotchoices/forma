@@ -56,9 +56,16 @@ mode count.  The hierarchy:
 
 | Sheet | Size L | E₀ | Modes at 300K |
 |-------|--------|----|---------------|
-| Ma_p (proton sheet) | ~fm | ~GeV | ~1 (frozen) |
-| Ma_e (electron sheet) | ~pm | ~MeV | ~1 (frozen) |
+| Ma_p (proton sheet) | ~fm | ~GeV | ~1 (frozen at 300K) |
+| Ma_e (electron sheet) | ~pm | ~MeV | ~1 (frozen at 300K) |
 | Ma_ν (neutrino sheet) | ~μm–mm | ~meV | Many (thermally active) |
+
+"Frozen" means the thermal energy at room temperature
+(~25 meV) is far below the mode spacing on that sheet
+(MeV for Ma_e, GeV for Ma_p), so thermal fluctuations
+cannot excite higher modes.  Ma_ν's mode spacing is at
+the meV scale — comparable to thermal energy — so its
+modes are thermally accessible.
 
 The neutrino sheet's richness — many accessible modes,
 thermally coupled to biology — is a direct consequence of
@@ -108,18 +115,27 @@ IS the universe's information.
 
 ## 3. The fiber computer
 
-### 3.1 The Kaluza-Klein fiber bundle
+### 3.1 The fiber-bundle structure
 
-In Kaluza-Klein theory, each point in S (the three spatial
-dimensions) carries its own copy of the material space — a
-"fiber."  The fibers are not isolated; they are connected
-by the bundle connection, which IS the gauge field
-(electromagnetism, gravity in Kaluza-Klein theory).
+In the original Kaluza-Klein theory, each point in ordinary
+space carries a copy of a compact extra dimension, and a
+pre-existing particle's momentum along that dimension
+appears as electric charge.  MaSt borrows the mathematical
+framework — each point in S carries its own copy of Ma,
+forming a fiber bundle — but fills it with different
+physics.  In MaSt, there are no pre-existing particles:
+the "fiber" at each point is the six-dimensional material
+space, and a particle is a standing electromagnetic wave
+(a confined photon) on that fiber.  Charge comes from
+shear-induced E-field asymmetry (R19), not from compact-
+direction momentum.
 
-Each particle is a mode excitation on its local fiber.
-The particle's quantum numbers (mass, charge, spin) are
-properties of the fiber's vibration, not of a point
-object.
+The fibers are not isolated; they are connected by the
+bundle connection, which is the emergent gauge field
+(R36 F8–F9).  Each particle is a mode excitation on its
+local fiber.  The particle's quantum numbers (mass,
+charge, spin) are properties of the fiber's vibration,
+not of a point object.
 
 ### 3.2 The fiber as a local processor
 
@@ -349,10 +365,15 @@ with sufficiently deep surveys.
 
 If α = 1/137.036 is the fixed point of a self-referential
 geometry, it should be derivable from the topology alone.
-The R31-alpha-derivation study has already shown α emerges
-from the material-sheet lattice shear — a purely geometric quantity.
-In the self-referential picture, the shear is not a free
-parameter; it is the unique value that closes the loop.
+The R19 shear mechanism and R31 alpha-derivation study
+have shown that α is *related to* the material-sheet
+lattice shear — a geometric quantity — via the formula
+α(r, s) = 1/137.  But what *sets* s ≈ 0.01 remains the
+central open problem (the "α problem"; see Taxonomy §8).
+In the self-referential picture, the shear would not be a
+free parameter; it would be the unique value that closes
+the loop — potentially resolving the α problem from
+topology rather than from local physics.
 
 ### 9.2 Mass ratios
 
