@@ -19,6 +19,27 @@
 
 ---
 
+## Notation
+
+| Symbol | Meaning |
+|--------|---------|
+| Ma | Material space — the compact 6D manifold (three 2-tori) |
+| Ma_e, Ma_ν, Ma_p | Electron, neutrino, and proton sheets (each a flat 2-torus) |
+| S | Ordinary 3D space (ℝ³) |
+| n = (n₁,…,n₆) | Mode quantum numbers (integer winding numbers on Ma) |
+| n₁, n₃, n₅ | Tube windings on Ma_e, Ma_ν, Ma_p |
+| n₂, n₄, n₆ | Ring windings on Ma_e, Ma_ν, Ma_p |
+| L₁,…,L₆ | Circumferences of the six compact dimensions (fm) |
+| r_e, r_ν, r_p | Aspect ratios: r = L_tube / L_ring for each sheet |
+| s₁₂, s₃₄, s₅₆ | Within-plane shear: skew angle of each torus lattice |
+| σ_ep | Cross-plane shear: off-diagonal metric coupling between Ma_e and Ma_p |
+| G̃ | Dimensionless 6×6 metric on Ma (G̃_ij = G^phys_ij / (L_i L_j)) |
+| ñ | Scaled winding vector: ñ_i = n_i / L_i |
+| μ₁₂(r,s) | Dimensionless energy of the (1,2) mode: √(1/r² + (2−s)²) |
+| Q | Electric charge in units of e |
+| α | Fine-structure constant (≈ 1/137) |
+
+
 ## 1. Model and results
 
 The model is free electromagnetism on a ten-dimensional manifold.
@@ -108,10 +129,9 @@ free parameters are **2: r_e and r_ν**.
 
 ## 3. Spin, charge, and mass
 
-**Spin** is topological.  A photon circulating on a (p, q) geodesic
-of a torus carries angular momentum proportional to the winding
-ratio.  The relevant directions are the tube dimensions (indices
-1, 3, 5 in the six-vector n).  Each odd tube winding contributes
+**Spin** is topological.  A photon circulating on a torus carries
+angular momentum set by its winding numbers.  The tube dimensions
+(n₁, n₃, n₅) determine spin: each odd tube winding contributes
 spin ½.  The electron mode (1, 2) has one odd tube winding
 (n₁ = 1), giving spin ½.  The proton mode (0, 0, 0, 0, 1, 2)
 likewise has n₅ = 1 (odd), giving spin ½.  Modes with zero or
@@ -342,16 +362,3 @@ reach ~50 μm with no deviation seen — barely compatible.  If
 gravity does not propagate in Ma_ν (e.g., only Ma_p at fm scale
 is gravitationally active), the constraint is satisfied but the
 mechanism must be explained.
-
-
----
-
-## Notes on tone and strategy
-
-- Lead with numbers, not philosophy.
-- State the Lagrangian explicitly (it's one line).
-- Every derivation must be reproducible by a skeptic.
-- Do not claim Theory of Everything.
-- Do not criticize the Standard Model.
-- Address failures before the reader finds them.
-- Target length: 10–12 pages.
