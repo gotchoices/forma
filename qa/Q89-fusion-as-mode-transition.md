@@ -236,9 +236,123 @@ rises (neutrino mass is small, so this is negligible for energy
 but may matter for phase space).
 
 
-## 6. What's computable
+## 6. The neutrino-triggered mechanism
 
-### 6.1 Transition energy landscape
+### 6.1 The scenario
+
+1. A neutrino mode on Ma_ν at some S location is pumped to
+   just below 2× its fundamental energy (the threshold
+   hypothesized in Q85 where a mode becomes unstable).
+2. A proton and electron occupy the same S location — a
+   hydrogen atom, or a lattice site in a metal.
+3. The neutrino is pushed over the 2× threshold and its mode
+   configuration becomes catastrophically unstable.
+4. Through cross-sheet coupling (σ_eν, σ_νp), the
+   reconfiguration propagates to Ma_e and Ma_p.
+5. If the proton and electron modes have the right phase
+   relationship at that instant, all three sheets snap into
+   the neutron configuration (0,−2,odd,n₄,0,+2).
+
+### 6.2 Why this is more than a trigger
+
+The neutrino isn't just a catalyst — it is a **structural
+component** of the neutron.  The neutron mode requires
+n₃ = odd (neutrino ring winding).  When the neutrino crosses
+its threshold, it doesn't merely dump energy — it reconfigures
+its quantum numbers.  If it reconfigures into the specific
+(n₃=odd, n₄) pattern that the neutron requires, it provides
+both the missing quantum numbers AND a violent phase
+perturbation that can lock the other two sheets into the
+neutron configuration.
+
+### 6.3 The phase sledgehammer
+
+The 2× threshold transition is not a small perturbation.
+Q88 §4.1 estimated that a ~keV perturbation shifts a proton's
+phase by π in ~7 attoseconds.  A catastrophic mode
+reconfiguration is vastly larger — it restructures the
+cross-sheet coupling landscape entirely.  The proton and
+electron modes, which were almost-but-not-quite in the neutron
+phase conjunction, get violently shoved into the nearest basin
+of attraction.  If they are pre-correlated (co-located in a
+hydrogen atom), the neutron basin IS the nearest one.
+
+### 6.4 The energy problem and virtual intermediates
+
+The neutron is 0.782 MeV heavier than p + e + ν.  This energy
+must come from somewhere.  Options:
+
+**A. The neutrino's pumped energy supplies it.**  This requires
+the neutrino mode at 2× threshold to carry ≥ 0.782 MeV.  The
+neutrino sheet dimensions are not precisely known, so this
+cannot be ruled out.
+
+**B. Virtual intermediate state.**  The neutron is a virtual
+intermediate that "borrows" 0.782 MeV via energy-time
+uncertainty (ΔE × Δt ≳ ℏ).  The virtual neutron survives for
+Δt ~ ℏ/(0.782 MeV) ~ 8 × 10⁻²² s.  If a second proton is
+within ~1 fm, the deuteron forms in this time, releasing
+2.2 MeV of binding energy — more than enough to pay back the
+loan.  The full reaction:
+
+    p + p + e + ν → d + ν'    (releases 1.44 MeV net)
+
+is exothermic.  The virtual neutron need only survive long
+enough for the second proton to join.
+
+**C. The threshold IS the mass gap.**  If the neutrino's 2×
+threshold energy is comparable to the 0.782 MeV mass gap,
+then the neutrino mode at threshold naturally carries the
+right amount of energy for neutron formation.  This would
+be a remarkable coincidence — or a sign that the neutrino
+sheet dimensions are constrained by nuclear physics.
+
+### 6.5 Connection to electron capture
+
+This mechanism is the MaSt reframe of **electron capture**
+(p + e → n + ν_e), a well-established process in proton-rich
+nuclei.  In standard physics, the electron must have enough
+energy to supply the mass deficit, and the weak interaction
+mediates the conversion.  In MaSt:
+
+- "Electron energy" → kinetic energy + neutrino pump energy
+- "Weak interaction" → cross-sheet coupling σ_ep, σ_eν, σ_νp
+- "Neutrino emission" → the neutrino mode reconfigures
+  (it was already present; it doesn't need to be created)
+
+### 6.6 Requirements
+
+For this mechanism to work:
+
+1. **σ_eν and σ_νp must be nonzero.**  R27 F14 found them
+   approximately zero, but with limited precision.  Even
+   small values (10⁻³) could suffice if the perturbation
+   is large (threshold explosion).
+
+2. **The 2× threshold must exist.**  Q85 hypothesizes this
+   from harmonic ladder theory; Q90 suggests the dynamic
+   torus provides the instability mechanism.  Not derived.
+
+3. **Pre-correlation helps but may not be required.**  In a
+   hydrogen atom, the electron and proton wave functions
+   already overlap at the nucleus.  In a metal lattice,
+   conduction electrons screen the proton.  Either provides
+   the spatial co-location needed for the three-sheet
+   conjunction.
+
+
+## 7. What's computable
+
+### 7.1 Neutrino sheet energy scale
+
+Determine the fundamental mode energy on Ma_ν.  If the (1,0)
+neutrino mode energy is in the meV range, the 2× threshold is
+too low to supply the neutron mass gap.  If it is in the keV–MeV
+range, the §6.4C threshold mechanism becomes viable.  This
+depends on L₃ and L₄ (neutrino sheet circumferences), which
+are weakly constrained.
+
+### 7.2 Transition energy landscape
 
 Using ma_model.py, compute the energy of the Ma mode spectrum
 as a function of a "mixing parameter" that interpolates between:
@@ -251,21 +365,21 @@ there is a smooth path without an energy maximum above the
 threshold, the transition is energetically downhill (given
 sufficient input energy).
 
-### 6.2 Transition rate from σ_ep
+### 7.3 Transition rate from σ_ep
 
 Compute the matrix element ⟨neutron | H_σ | proton + e + ν⟩
 where H_σ is the cross-sheet coupling Hamiltonian arising from
 σ_ep ≠ 0 in the Ma metric.  Compare the resulting rate with
 the measured neutron lifetime (880 s) as a consistency check.
 
-### 6.3 Deuteron formation rate
+### 7.4 Deuteron formation rate
 
 Compute the matrix element for the full process:
 proton + neutron → deuteron.  This is a within-sheet transition
 (both are proton-sheet modes, one wound once and one wound
 twice).  The rate should be fast (strong-scale, not weak-scale).
 
-### 6.4 Alternative pathways
+### 7.5 Alternative pathways
 
 Search the Ma mode spectrum for intermediate states between
 "two protons + electron + neutrino" and "deuteron + neutrino."
@@ -273,7 +387,7 @@ Are there lower-energy pathways that bypass the 0.782 MeV
 neutron threshold?
 
 
-## 7. Falsifiability
+## 8. Falsifiability
 
 1. **Neutron lifetime from σ_ep**: if the MaSt transition rate
    (using σ_ep = 0.09) does not reproduce the 880-second neutron
@@ -292,8 +406,15 @@ neutron threshold?
    << 0.782 MeV would require either a different pathway or a
    flaw in the threshold calculation.
 
+4. **Neutrino-triggered fusion rate**: if the §6 mechanism
+   is correct, the fusion rate should depend on the local
+   neutrino flux and energy spectrum.  Environments with
+   higher neutrino density or more energetic neutrinos
+   should show enhanced electron capture rates — testable
+   near nuclear reactors or in astrophysical environments.
 
-## 8. Relationship to Q88 and R39
+
+## 9. Relationship to Q88 and R39
 
 Q88 hypothesized that phase-dependent near-field effects could
 reduce the pp Coulomb barrier, enabling fusion.  R39 tested
@@ -317,7 +438,7 @@ picture.
 
 ---
 
-## 9. Caution
+## 10. Caution
 
 This entry builds on:
 
@@ -326,10 +447,15 @@ This entry builds on:
 3. R39 electromagnetic results (established, quantitative)
 4. Mode transition rates from σ_ep (NOT computed — conjectural)
 5. Phase conjunction probability (NOT computed — conjectural)
-6. Cold fusion implications (highly speculative)
+6. Neutrino trigger mechanism §6 (NOT computed — speculative)
+7. Cold fusion implications (highly speculative)
 
-Items 1–3 are on solid ground.  Items 4–6 are conceptual
-extrapolations.  The key testable claim is item 4: that σ_ep
-determines the transition rate and should reproduce the
-neutron lifetime.  This is computable and would be the
-first target for a follow-up study.
+Items 1–3 are on solid ground.  Items 4–7 are conceptual
+extrapolations.  The key testable claims are:
+
+- Item 4: σ_ep determines the transition rate and should
+  reproduce the neutron lifetime (880 s).  Computable.
+- Item 6: the neutrino-triggered mechanism requires nonzero
+  σ_eν/σ_νp and a specific relationship between the neutrino
+  2× threshold energy and the neutron mass gap.  Partially
+  computable (energy scales from Ma metric).
