@@ -10,33 +10,63 @@
 
 ## 1. The idea
 
-When two particles occupy the same S location (S being the
-three spatial dimensions) and share a mode on one of the
-material sheets, they are not "sharing" the mode — they ARE
-the same mode.  A standing wave on the material sheet at
-that S point does not belong to particle A or particle B.
-It is a single geometric vibration of the material space,
-and both particles are excitations of it.
+Each material sheet fiber at an S point is a superposition
+of all the modes (particles) that exist on it.  The sheet
+is always vibrating with many modes simultaneously — an
+electron mode, possibly proton-sheet modes, neutrino modes,
+all coexisting on the same compact geometry.
 
-When the particles separate in S, each moves to a new
-fiber of the material space.  But Ma (the six-dimensional
-material space) is a smooth manifold — the material
-dimensions at point A are continuously connected to those
-at point B through the metric.  The mode was a single
-thing.  It has been stretched across two S locations, but
-the underlying geometric continuity means the mode
-structures at the two locations were seeded by the same
-original configuration.
+When two modes' phases are uncorrelated — random relative
+phase, random relative orientation — they are **separate
+particles**.  Each evolves independently.  The sheet carries
+both, but they don't "know about" each other.
 
-**Hypothesis:** Quantum entanglement is the persistence of
-shared Ma mode structure across S separation.  Two
-particles are "entangled" when their Ma modes were
-established by co-location and retain geometric correlation
-after separation.
+When two modes **phase-lock** — acquire a definite, fixed
+phase relationship and correlated orientations (tilts) —
+they become aspects of a single coherent wave structure.
+This is **entanglement**.
+
+Phase locking happens naturally when particles interact
+or are co-located: at the same S point, the modes exist
+on the same fiber, and the geometry forces a definite
+phase and tilt relationship between them.  When the
+particles separate in S, the fiber bundle connection
+(which IS the gauge field in KK theory) preserves the
+phase relationship across the separation.
+
+**Hypothesis:** Quantum entanglement is phase locking
+between Ma modes.  Two particles are "entangled" when
+their modes have a definite phase and orientation
+relationship, established by co-location or interaction,
+and maintained by the continuity of the material manifold.
+Decoherence is the loss of phase lock through
+environmental perturbation.
 
 This is a claim about all entanglement — electrons,
 photons, protons, any particle.  It is independent of
 biological applications or the neutrino sheet specifically.
+
+### 1.1 Why phase locking, not "being the same mode"
+
+An earlier version of this hypothesis said entangled
+particles ARE the same mode.  This is too strong.
+Entangled particles can have different quantum numbers
+(e.g., an electron and a positron in a singlet state).
+They are not the same mode — they are different modes
+whose phases and orientations are locked together.
+
+The spectrum of entanglement follows naturally:
+
+| Phase relationship | Physical state |
+|-------------------|----------------|
+| Random (uncorrelated) | Separate particles |
+| Partially locked | Partially entangled |
+| Fully locked | Maximally entangled |
+| Lock broken | Decohered |
+
+This also explains why entanglement is fragile: phase
+lock on a compact manifold is sensitive to perturbation
+by other modes (the environment).
 
 ---
 
@@ -55,39 +85,39 @@ point.  They are a continuous fabric.  A standing wave
 on the material sheet at point A is connected to the
 standing wave at adjacent point B by this continuity.
 
-### 2.2 Co-location establishes a shared mode
+### 2.2 Co-location establishes phase lock
 
-When two particles are at the same S point, their Ma
-modes are literally the same geometric structure.  There
-is no distinction between "A's mode" and "B's mode" — there
-is only "the mode at this point."  Both particles are
-excitations of it.
+When two particles are at the same S point, their modes
+live on the same fiber — the same compact geometry.  The
+fiber enforces a definite geometric relationship between
+any modes on it: their phases and orientations are
+determined relative to the same coordinate system.
 
-This is not an abstract mathematical statement.  It is a
-physical one: the material dimensions at that point are
-vibrating, and both particles are aspects of that vibration.
+Interaction at co-location can lock these phases together.
+The modes don't merge into one — they retain their own
+quantum numbers — but they acquire a fixed phase and tilt
+relationship that neither had before the interaction.
 
-### 2.3 Separation preserves the correlation
+### 2.3 The bundle connection preserves the lock
 
-When the particles separate, the field is continuous.  The
-mode structure at A's new location was seeded by the mode
-at the original co-location point.  Similarly for B.  The
-two locations' mode structures are correlated because they
-share a common geometric origin.
+When the particles separate, each moves to a different
+fiber.  The bundle connection (= gauge field) defines how
+to compare phases between fibers at different S locations.
+A phase relationship established at co-location is
+transported along the separation path by this connection.
 
-No signal needs to travel from A to B.  The correlation
-is embedded in the fabric — it was built in when the
-particles were co-located.
+No signal needs to travel from A to B.  The phase lock
+is embedded in the geometric fabric — maintained by the
+same connection that defines electromagnetism.
 
 ### 2.4 Measurement reveals, does not create
 
 In standard QM, measuring particle A seems to
 "instantaneously" determine particle B's state.  In the
-Ma picture, nothing is transmitted.  B's mode was always
-correlated with A's because they are opposite ends of the
-same continuous geometric structure.  Measurement at A
-reveals the state of a shared structure — it does not
-create or transmit anything.
+Ma picture, nothing is transmitted.  B's mode phase was
+always locked to A's through the fiber bundle connection.
+Measurement at A resolves the phase of a shared coherent
+structure — it does not create or transmit anything.
 
 ---
 
@@ -152,9 +182,9 @@ quantum mechanics.
 
 ## 5. What entanglement looks like on each sheet
 
-If entanglement is shared Ma mode structure, then the
-character of entanglement depends on which material sheet
-carries the shared mode:
+If entanglement is phase locking between Ma modes, then
+the character of entanglement depends on which material
+sheet carries the locked modes:
 
 | Sheet | Mode energy | Entanglement character |
 |-------|-------------|----------------------|
@@ -178,19 +208,20 @@ properties (→ Q83).
 
 ## 6. Implications for the measurement problem
 
-If entanglement is geometric, then "wavefunction collapse"
-also has a geometric interpretation.  Measurement is an
-interaction that localizes the shared Ma mode — forcing
-the extended geometric correlation to resolve into a
-definite configuration at each location.
+If entanglement is phase locking, then "wavefunction
+collapse" is the resolution of a phase-locked structure
+into definite individual phases.  Measurement is an
+interaction that breaks the coherent structure — forcing
+each mode to take a definite phase, with the outcomes
+correlated by the lock that existed before resolution.
 
 This does not solve the measurement problem, but it
 reframes it: instead of asking "why does the wavefunction
-collapse?", we ask "why does the continuous material
-geometry resolve into definite mode configurations upon
-interaction?"  This may be more tractable because the Ma
-geometry has specific topological and metric properties
-that constrain how modes can be excited and resolved.
+collapse?", we ask "what determines which definite phase
+each mode takes when the lock resolves?"  This may be
+more tractable because the Ma geometry has specific
+topological and metric properties that constrain the
+allowed phase configurations.
 
 ---
 
@@ -203,10 +234,12 @@ that constrain how modes can be excited and resolved.
    measurements on entangled electrons).
 
 2. **How does decoherence work geometrically?**  If
-   entanglement is shared Ma mode structure, decoherence
-   is the loss of that structure through interaction with
-   the environment.  What determines the rate?  (→ Q83
-   for the neutrino-sheet case.)
+   entanglement is phase locking, decoherence is the
+   randomization of that lock through coupling to
+   environmental modes.  What determines the rate?
+   Likely the density and energy scale of environmental
+   modes on the relevant sheet.  (→ Q83 for the
+   neutrino-sheet case.)
 
 3. **Does entanglement require co-location?**  In
    standard QM, entanglement can be created at a distance
@@ -232,8 +265,13 @@ that constrain how modes can be excited and resolved.
 ## 8. Caution
 
 This is among the most speculative hypotheses in the
-project.  Bell's theorem constraints have not been
-formally addressed, and the geometric mechanism proposed
-here has not been shown to reproduce known quantum
-correlations.  It is recorded as a conceptual direction,
-not a proven result.
+project.  The phase-lock picture is physically motivated
+(it maps onto the density matrix formalism — off-diagonal
+coherences ARE phase relationships), but Bell's theorem
+constraints have not been formally addressed.  Classical
+phase correlations alone cannot violate Bell inequalities;
+the question is whether phase locking on a compact
+manifold connected by a gauge-field bundle produces
+stronger-than-classical correlations.  This has not been
+calculated.  The hypothesis is recorded as a conceptual
+direction, not a proven result.
