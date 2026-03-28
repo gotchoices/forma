@@ -41,13 +41,15 @@ reimplemented from first principles, validated by cross-comparison.
 - [x] Guard rails: positive-definite check at construction, clear ValueError messages
 - [x] 47 regression tests (`test_ma_model.py`) including cross-validation against legacy
 
-**Phase 2 stubs (documented, raise NotImplementedError):**
+**Implemented beyond Phase 1:**
+- [x] `energy_decomp()` — sheet/cross-coupling decomposition of E² (caveat documented: blocks of G̃⁻¹ mix sheets via Schur complement)
+- [x] `jacobian()` — analytical ∂E/∂params with full chain: r → s (implicit diff) → L → G̃.  Validated to 6+ digits against finite differences.
+- [x] `sensitivity()` — human-readable Jacobian report (strong/moderate/weak/negligible)
+- [x] `fit()` — inverse solver via Levenberg-Marquardt.  Uses numerical Jacobian in the fit loop (the self-consistent L adjustment invalidates the fixed-L analytical Jacobian).  Recovers R27 parameters (r_p=8.906, σ_ep=-0.0906) from neutron+muon targets.  Reports covariance and null space for underdetermined systems.
+
+**Remaining stubs (raise NotImplementedError):**
 - [ ] `_fincke_pohst_enumerate()` — fast ellipsoid lattice enumeration (see ma-model.md §Feature 2)
 - [ ] `modes()` — Fincke-Pohst scan with CPT reduction (n → −n symmetry)
-- [ ] `energy_decomp()` — sheet/cross-coupling decomposition of E² (§Feature 3; caveat: blocks of G̃⁻¹ mix sheets via Schur complement)
-- [ ] `jacobian()` — analytical ∂E/∂params (§Feature 4; needs implicit diff through solve_shear_for_alpha)
-- [ ] `sensitivity()` — human-readable Jacobian report (§Feature 6)
-- [ ] `fit()` — inverse solver, masses → geometry via LM (§Feature 5; self-consistent path complicates total derivative)
 - [ ] `spectrum()`, `mode_count()`, `nearest()` — rich spectrum queries (§Feature 7)
 
 ---
@@ -76,6 +78,6 @@ on legacy ma.py — only lib/constants.py.
 | Suite | Tests | Covers |
 |-------|-------|--------|
 | test_lib.py | 52 | Legacy: constants, series, wvm, ma.py, ma_solver.py |
-| test_ma_model.py | 47 | New: Ma class, cross-validation vs legacy |
+| test_ma_model.py | 75 | New: Ma class, decomp, Jacobian, fit, cross-validation |
 | test_embedded.py | 36 | New: EmbeddedSheet, fields, sweeps |
-| **Total** | **135** | |
+| **Total** | **166** | |

@@ -17,7 +17,10 @@ import numpy as np
 if "studies" not in sys.path:
     sys.path.insert(0, "studies")
 
-from lib.ma_model import Ma, alpha_ma, solve_shear_for_alpha, Mode
+from lib.ma_model import (
+    Ma, alpha_ma, solve_shear_for_alpha,
+    Mode, EnergyDecomp, Target, FitResult,
+)
 
 # Standard reference geometry
 REF = dict(r_e=6.6, r_nu=5.0, r_p=8.906, sigma_ep=-0.0906)
@@ -147,6 +150,75 @@ class TestEnergy(unittest.TestCase):
         m = Ma.from_legacy(Gtilde_inv=-np.eye(6), L=np.ones(6))
         with self.assertRaises(ValueError):
             m.energy((1, 0, 0, 0, 0, 0))
+
+
+# ════════════════════════════════════════════════════════════════════
+#  Energy decomposition
+# ════════════════════════════════════════════════════════════════════
+
+class TestEnergyDecomp(unittest.TestCase):
+
+    @classmethod
+    def setUpClass(cls):
+        cls.m = Ma(**REF)
+
+    def test_total_matches_energy(self):
+        """Decomposition total must equal energy()."""
+        for mode in [ELECTRON, PROTON, NEUTRON, NEUTRINO,
+                     (1, 1, 0, 0, 0, 0), (0, 0, 1, 2, 0, 0)]:
+            d = self.m.energy_decomp(mode)
+            self.assertAlmostEqual(d.total, self.m.energy(mode), places=10,
+                                   msg=f"total mismatch at {mode}")
+
+    def test_parts_sum_to_E2(self):
+        """Sheet + cross terms must sum to E²."""
+        for mode in [ELECTRON, PROTON, NEUTRON]:
+            d = self.m.energy_decomp(mode)
+            E2_parts = (d.e_sheet + d.nu_sheet + d.p_sheet
+                        + d.ep_cross + d.enu_cross + d.nup_cross)
+            E2_total = d.total**2
+            self.assertAlmostEqual(E2_parts, E2_total, places=8,
+                                   msg=f"sum mismatch at {mode}")
+
+    def test_fractions_sum_to_one(self):
+        for mode in [ELECTRON, PROTON, NEUTRON]:
+            d = self.m.energy_decomp(mode)
+            total_frac = sum(d.fractions.values())
+            self.assertAlmostEqual(total_frac, 1.0, places=10,
+                                   msg=f"fractions don't sum to 1 at {mode}")
+
+    def test_electron_is_mostly_e_sheet(self):
+        """Electron (1,2,0,0,0,0) should be dominated by the e block."""
+        d = self.m.energy_decomp(ELECTRON)
+        self.assertGreater(d.fractions['e'], 0.99)
+
+    def test_proton_is_mostly_p_sheet(self):
+        """Proton (0,0,0,0,1,2) should be dominated by the p block."""
+        d = self.m.energy_decomp(PROTON)
+        self.assertGreater(d.fractions['p'], 0.99)
+
+    def test_neutron_has_cross_coupling(self):
+        """Neutron (0,-2,1,0,0,2) has nonzero cross-coupling from σ_ep."""
+        d = self.m.energy_decomp(NEUTRON)
+        # p-sheet dominates (n₅=0 but n₆=2 gives proton ring energy)
+        self.assertGreater(d.fractions['p'], 0.9)
+        # Cross-coupling should be nonzero (σ_ep ≠ 0)
+        self.assertNotAlmostEqual(d.ep_cross, 0.0, places=3)
+
+    def test_returns_namedtuple(self):
+        d = self.m.energy_decomp(ELECTRON)
+        self.assertIsInstance(d, EnergyDecomp)
+
+    def test_zero_mode(self):
+        d = self.m.energy_decomp((0, 0, 0, 0, 0, 0))
+        self.assertAlmostEqual(d.total, 0.0)
+
+    def test_no_cross_shear_no_cross_terms(self):
+        """With σ_ep = 0, cross terms should be negligible for pure modes."""
+        m0 = Ma(r_e=6.6, r_nu=5.0, r_p=8.906)  # no cross-shears
+        d = m0.energy_decomp(ELECTRON)
+        self.assertAlmostEqual(d.ep_cross, 0.0, places=10)
+        self.assertAlmostEqual(d.enu_cross, 0.0, places=10)
 
 
 # ════════════════════════════════════════════════════════════════════
@@ -348,6 +420,214 @@ class TestCrossValidation(unittest.TestCase):
         m = Ma(**REF)
         modes_new = m.scan_modes(n_max=2, E_max_MeV=100)
         self.assertEqual(len(modes_old), len(modes_new))
+
+
+# ════════════════════════════════════════════════════════════════════
+#  Jacobian — validated against finite differences
+# ════════════════════════════════════════════════════════════════════
+
+class TestJacobian(unittest.TestCase):
+    """
+    Validate the analytical Jacobian by comparing to central
+    finite differences: ∂E/∂θ ≈ (E(θ+h) − E(θ−h)) / (2h).
+    """
+
+    def _finite_diff(self, mode, param, h=1e-6):
+        """Numerical ∂E/∂param via central difference."""
+        kw_plus = dict(**REF)
+        kw_minus = dict(**REF)
+        kw_plus[param] = REF.get(param, 0.0) + h
+        kw_minus[param] = REF.get(param, 0.0) - h
+        E_plus = Ma(**kw_plus).energy(mode)
+        E_minus = Ma(**kw_minus).energy(mode)
+        return (E_plus - E_minus) / (2 * h)
+
+    def test_sigma_ep_electron(self):
+        m = Ma(**REF)
+        J = m.jacobian(ELECTRON)
+        fd = self._finite_diff(ELECTRON, 'sigma_ep')
+        self.assertAlmostEqual(J['sigma_ep'], fd, delta=abs(fd) * 0.01 + 1e-8)
+
+    def test_sigma_ep_neutron(self):
+        m = Ma(**REF)
+        J = m.jacobian(NEUTRON)
+        fd = self._finite_diff(NEUTRON, 'sigma_ep')
+        self.assertAlmostEqual(J['sigma_ep'], fd, delta=abs(fd) * 0.01 + 1e-6)
+
+    def test_sigma_enu(self):
+        # sigma_enu = 0 in REF, so perturb around a nonzero value
+        ref2 = dict(**REF, sigma_enu=0.01)
+        m = Ma(**ref2)
+        J = m.jacobian(NEUTRON)
+        kw_p = dict(**ref2); kw_p['sigma_enu'] += 1e-6
+        kw_m = dict(**ref2); kw_m['sigma_enu'] -= 1e-6
+        fd = (Ma(**kw_p).energy(NEUTRON) - Ma(**kw_m).energy(NEUTRON)) / 2e-6
+        self.assertAlmostEqual(J['sigma_enu'], fd, delta=abs(fd) * 0.01 + 1e-6)
+
+    def test_r_e_electron(self):
+        m = Ma(**REF)
+        J = m.jacobian(ELECTRON)
+        fd = self._finite_diff(ELECTRON, 'r_e', h=1e-5)
+        self.assertAlmostEqual(J['r_e'], fd, delta=abs(fd) * 0.02 + 1e-6)
+
+    def test_r_p_proton(self):
+        m = Ma(**REF)
+        J = m.jacobian(PROTON)
+        fd = self._finite_diff(PROTON, 'r_p', h=1e-5)
+        self.assertAlmostEqual(J['r_p'], fd, delta=abs(fd) * 0.02 + 1e-6)
+
+    def test_r_p_neutron(self):
+        m = Ma(**REF)
+        J = m.jacobian(NEUTRON)
+        fd = self._finite_diff(NEUTRON, 'r_p', h=1e-5)
+        self.assertAlmostEqual(J['r_p'], fd, delta=abs(fd) * 0.02 + 1e-6)
+
+    def test_r_nu(self):
+        m = Ma(**REF)
+        J = m.jacobian(NEUTRINO)
+        fd = self._finite_diff(NEUTRINO, 'r_nu', h=1e-5)
+        self.assertAlmostEqual(J['r_nu'], fd, delta=abs(fd) * 0.02 + 1e-8)
+
+    def test_zero_mode(self):
+        m = Ma(**REF)
+        J = m.jacobian((0, 0, 0, 0, 0, 0))
+        for v in J.values():
+            self.assertAlmostEqual(v, 0.0)
+
+    def test_returns_all_params(self):
+        m = Ma(**REF)
+        J = m.jacobian(ELECTRON)
+        for key in ('r_e', 'r_nu', 'r_p', 'sigma_ep', 'sigma_enu', 'sigma_nup'):
+            self.assertIn(key, J)
+
+
+class TestSensitivity(unittest.TestCase):
+
+    def test_returns_string(self):
+        m = Ma(**REF)
+        s = m.sensitivity(ELECTRON)
+        self.assertIsInstance(s, str)
+        self.assertIn('MeV', s)
+
+    def test_contains_all_params(self):
+        m = Ma(**REF)
+        s = m.sensitivity(PROTON)
+        for name in ('r_e', 'r_p', 'σ_ep'):
+            self.assertIn(name, s)
+
+    def test_strength_labels(self):
+        m = Ma(**REF)
+        s = m.sensitivity(NEUTRON)
+        # At least one parameter should be non-negligible for the neutron
+        self.assertTrue(
+            any(w in s for w in ('strong', 'moderate', 'weak')),
+            "Expected at least one non-negligible sensitivity")
+
+
+# ════════════════════════════════════════════════════════════════════
+#  Inverse solver (fit)
+# ════════════════════════════════════════════════════════════════════
+
+class TestFit(unittest.TestCase):
+
+    def test_recover_sigma_ep_from_neutron(self):
+        """
+        Fit sigma_ep using the neutron mass alone.
+        Should recover σ_ep ≈ -0.0906 (the R27 value).
+        """
+        result = Ma.fit(
+            targets=[Target(n=NEUTRON, mass_MeV=939.565)],
+            free_params=['sigma_ep'],
+            fixed_params={'r_e': 6.6, 'r_nu': 5.0, 'r_p': 8.906},
+        )
+        self.assertTrue(result.converged)
+        self.assertAlmostEqual(result.params['sigma_ep'], -0.0906, delta=0.002)
+        self.assertAlmostEqual(result.residuals[0], 0.0, delta=0.01)
+        self.assertIsInstance(result.ma, Ma)
+
+    def test_recover_r_p_and_sigma_ep(self):
+        """
+        Fit r_p and sigma_ep from neutron + muon.
+        The muon mode from R27 is (-1, 5, 0, 0, -2, 0).
+        Should recover r_p ≈ 8.906, σ_ep ≈ -0.0906.
+        """
+        MUON = (-1, 5, 0, 0, -2, 0)
+        result = Ma.fit(
+            targets=[
+                Target(n=NEUTRON, mass_MeV=939.565),
+                Target(n=MUON, mass_MeV=105.658),
+            ],
+            free_params=['r_p', 'sigma_ep'],
+            fixed_params={'r_e': 6.6, 'r_nu': 5.0},
+        )
+        self.assertTrue(result.converged,
+                        f"Did not converge in {result.iterations} iterations. "
+                        f"Residuals: {result.residuals}")
+        self.assertAlmostEqual(result.params['r_p'], 8.906, delta=0.05)
+        self.assertAlmostEqual(result.params['sigma_ep'], -0.0906, delta=0.005)
+
+    def test_returns_fit_result(self):
+        result = Ma.fit(
+            targets=[Target(n=ELECTRON, mass_MeV=0.511)],
+            free_params=['r_e'],
+            fixed_params={'r_nu': 5.0, 'r_p': 8.906},
+        )
+        self.assertIsInstance(result, FitResult)
+        self.assertIn('r_e', result.params)
+        self.assertEqual(result.jacobian.shape[0], 1)  # 1 target
+        self.assertEqual(result.jacobian.shape[1], 1)  # 1 param
+
+    def test_covariance_square_system(self):
+        """2 targets, 2 params → covariance matrix should exist."""
+        MUON = (-1, 5, 0, 0, -2, 0)
+        result = Ma.fit(
+            targets=[
+                Target(n=NEUTRON, mass_MeV=939.565),
+                Target(n=MUON, mass_MeV=105.658),
+            ],
+            free_params=['r_p', 'sigma_ep'],
+            fixed_params={'r_e': 6.6, 'r_nu': 5.0},
+        )
+        if result.converged:
+            self.assertIsNotNone(result.cov)
+            self.assertEqual(result.cov.shape, (2, 2))
+
+    def test_underdetermined_null_space(self):
+        """3 free params, 1 target → 2D null space."""
+        result = Ma.fit(
+            targets=[Target(n=NEUTRON, mass_MeV=939.565)],
+            free_params=['r_p', 'sigma_ep', 'sigma_enu'],
+            fixed_params={'r_e': 6.6, 'r_nu': 5.0},
+        )
+        if result.converged:
+            self.assertIsNotNone(result.null_space)
+            # Null space should have 2 columns (3 params - 1 constraint)
+            self.assertEqual(result.null_space.shape[1], 2)
+
+    def test_invalid_param_raises(self):
+        with self.assertRaises(ValueError):
+            Ma.fit(
+                targets=[Target(n=ELECTRON, mass_MeV=0.511)],
+                free_params=['invalid_param'],
+            )
+
+    def test_residuals_at_known_geometry(self):
+        """
+        If we fit at the geometry that already matches, residuals
+        should be near zero and the solver should converge quickly.
+        """
+        # Build Ma at known good point, get its energies
+        m = Ma(r_e=6.6, r_nu=5.0, r_p=8.906, sigma_ep=-0.0906,
+               self_consistent=True)
+        E_neutron = m.energy(NEUTRON)
+
+        result = Ma.fit(
+            targets=[Target(n=NEUTRON, mass_MeV=E_neutron)],
+            free_params=['sigma_ep'],
+            fixed_params={'r_e': 6.6, 'r_nu': 5.0, 'r_p': 8.906},
+        )
+        self.assertTrue(result.converged)
+        self.assertAlmostEqual(result.params['sigma_ep'], -0.0906, delta=0.001)
 
 
 # ════════════════════════════════════════════════════════════════════

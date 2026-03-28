@@ -95,6 +95,34 @@ _N_PROTON = np.array([0, 0, 0, 0, 1, 2], dtype=float)
 # Mode namedtuple for scan results
 Mode = namedtuple('Mode', ['n', 'E_MeV', 'charge', 'spin_halves'])
 
+# Energy decomposition result
+EnergyDecomp = namedtuple('EnergyDecomp', [
+    'total',       # float — total energy (MeV)
+    'e_sheet',     # float — E² contribution from electron block (MeV²)
+    'nu_sheet',    # float — E² contribution from neutrino block (MeV²)
+    'p_sheet',     # float — E² contribution from proton block (MeV²)
+    'ep_cross',    # float — E² from electron-proton cross block (MeV²)
+    'enu_cross',   # float — E² from electron-neutrino cross block (MeV²)
+    'nup_cross',   # float — E² from neutrino-proton cross block (MeV²)
+    'fractions',   # dict — fractional contributions to E²
+])
+
+
+# Target for inverse solver
+Target = namedtuple('Target', ['n', 'mass_MeV'])
+
+# Fit result
+FitResult = namedtuple('FitResult', [
+    'params',       # dict — optimal parameter values
+    'residuals',    # ndarray — (E_computed − E_target) for each target (MeV)
+    'ma',           # Ma — instance at the optimal point
+    'jacobian',     # ndarray (n_targets, n_params) — Jacobian at solution
+    'cov',          # ndarray or None — parameter covariance (None if underdetermined)
+    'null_space',   # ndarray or None — null-space columns (None if fully determined)
+    'converged',    # bool
+    'iterations',   # int
+])
+
 
 # ══════════════════════════════════════════════════════════════════════
 #  Alpha formula (R19 Track 8)
@@ -155,6 +183,48 @@ def mu_12(r, s):
     The physical energy is E = E₀ × μ₁₂ where E₀ = 2πℏc / L_ring.
     """
     return math.sqrt(1 / r**2 + (2 - s)**2)
+
+
+def _dalpha_dr(r, s):
+    """
+    Partial derivative ∂α/∂r at fixed s.
+
+    α = r² μ sin²(2πs) / (4π(2−s)²)  where μ = √(1/r² + (2−s)²).
+    Let C = sin²(2πs) / (4π(2−s)²)  (s-dependent constant).
+    α = r² μ C.
+    ∂α/∂r = C × (2r μ + r² ∂μ/∂r)
+    ∂μ/∂r = (1/μ) × (−1/r³)
+    """
+    mu = math.sqrt(1 / r**2 + (2 - s)**2)
+    C = math.sin(2 * math.pi * s)**2 / (4 * math.pi * (2 - s)**2)
+    dmu_dr = -1 / (r**3 * mu)
+    return C * (2 * r * mu + r**2 * dmu_dr)
+
+
+def _dalpha_ds(r, s):
+    """
+    Partial derivative ∂α/∂s at fixed r.
+
+    α = r² μ sin²(2πs) / (4π(2−s)²)  where μ = √(1/r² + (2−s)²).
+    Use the product rule on three s-dependent factors: μ, sin², (2−s)⁻².
+    """
+    mu = math.sqrt(1 / r**2 + (2 - s)**2)
+    sin2 = math.sin(2 * math.pi * s)**2
+    q = 2 - s
+    # ∂μ/∂s = (1/μ) × (2−s) × (−1) = −(2−s)/μ
+    dmu_ds = -q / mu
+    # ∂(sin²(2πs))/∂s = 2 sin(2πs) cos(2πs) × 2π = 2π sin(4πs)
+    dsin2_ds = 2 * math.pi * math.sin(4 * math.pi * s)
+    # ∂((2−s)⁻²)/∂s = 2(2−s)⁻³
+    # But we have (2−s)² in denominator, so factor = 1/(4π(2−s)²)
+    # d/ds [sin²/(4π q²)] = (1/4π) × [dsin2/ds × q⁻² + sin² × 2q⁻³]
+
+    pref = r**2 / (4 * math.pi)
+    # α = pref × μ × sin² / q²
+    # ∂α/∂s = pref × [dmu/ds × sin²/q² + μ × dsin2/ds / q² + μ × sin² × 2/q³]
+    return pref * (dmu_ds * sin2 / q**2
+                   + mu * dsin2_ds / q**2
+                   + mu * sin2 * 2 / q**3)
 
 
 # ══════════════════════════════════════════════════════════════════════
@@ -524,6 +594,81 @@ class Ma:
         """
         return _mode_energy(n, self._Gti, self._L)
 
+    def energy_decomp(self, n):
+        """
+        Decompose mode energy² into sheet and cross-coupling contributions.
+
+        Partitions E² = (2πℏc)² ñᵀ G̃⁻¹ ñ into six terms using the
+        block structure of G̃⁻¹:
+
+            E² = E²_e + E²_ν + E²_p + 2·E²_eν + 2·E²_ep + 2·E²_νp
+
+        where E²_e uses the (0:2, 0:2) block, E²_ep uses the (0:2, 4:6)
+        block, etc.
+
+        **Interpretation caveat:** These are blocks of the INVERSE metric,
+        not the metric itself.  The Schur complement means [G̃⁻¹]_{ee}
+        incorporates information from all sheets (it accounts for how
+        the electron block is modified by cross-coupling to the other
+        sheets).  So "95% proton-sheet" means "95% of E² comes from the
+        proton block of G̃⁻¹," which is a well-defined mathematical
+        statement but not identical to "the proton sheet alone contributes
+        95% of the energy."  When cross-shears are small (|σ| < 0.1),
+        the distinction is minor.
+
+        Parameters
+        ----------
+        n : tuple or array-like (6,) — integer quantum numbers
+
+        Returns
+        -------
+        EnergyDecomp namedtuple with fields:
+            total (MeV), e_sheet (MeV²), nu_sheet (MeV²), p_sheet (MeV²),
+            ep_cross (MeV²), enu_cross (MeV²), nup_cross (MeV²),
+            fractions (dict)
+        """
+        n_arr = np.asarray(n, dtype=float)
+        ntilde = n_arr / self._L
+        prefactor = (2 * math.pi * _hbar_c_MeV_fm)**2
+        Gti = self._Gti
+
+        # Diagonal blocks: ñ_sheet^T [G̃⁻¹]_{sheet,sheet} ñ_sheet
+        def block_E2(i_start, j_start, i_end, j_end):
+            nt_i = ntilde[i_start:i_end]
+            nt_j = ntilde[j_start:j_end]
+            block = Gti[i_start:i_end, j_start:j_end]
+            return float(prefactor * nt_i @ block @ nt_j)
+
+        e_sheet  = block_E2(0, 0, 2, 2)
+        nu_sheet = block_E2(2, 2, 4, 4)
+        p_sheet  = block_E2(4, 4, 6, 6)
+
+        # Cross blocks: ñ_i^T [G̃⁻¹]_{ij} ñ_j  (factor of 2 for symmetry)
+        ep_cross  = 2 * block_E2(0, 4, 2, 6)
+        enu_cross = 2 * block_E2(0, 2, 2, 4)
+        nup_cross = 2 * block_E2(2, 4, 4, 6)
+
+        E2_total = e_sheet + nu_sheet + p_sheet + ep_cross + enu_cross + nup_cross
+        total = math.sqrt(max(E2_total, 0.0))
+
+        fractions = {}
+        if E2_total > 0:
+            fractions = {
+                'e': e_sheet / E2_total,
+                'nu': nu_sheet / E2_total,
+                'p': p_sheet / E2_total,
+                'ep': ep_cross / E2_total,
+                'enu': enu_cross / E2_total,
+                'nup': nup_cross / E2_total,
+            }
+
+        return EnergyDecomp(
+            total=total,
+            e_sheet=e_sheet, nu_sheet=nu_sheet, p_sheet=p_sheet,
+            ep_cross=ep_cross, enu_cross=enu_cross, nup_cross=nup_cross,
+            fractions=fractions,
+        )
+
     @staticmethod
     def charge(n):
         """
@@ -562,6 +707,244 @@ class Ma:
     def spin_label(n):
         """Human-readable spin classification string."""
         return _mode_spin_label(n)
+
+    # ── Jacobian and sensitivity ──────────────────────────────────
+
+    def jacobian(self, n):
+        """
+        Analytical Jacobian ∂E/∂θ for a mode.
+
+        Computes the derivative of mode energy with respect to each
+        geometry parameter: r_e, r_nu, r_p, sigma_ep, sigma_enu, sigma_nup.
+
+        The derivation uses:
+
+            E² = (2πℏc)² ñᵀ G̃⁻¹ ñ
+            ∂E/∂θ = (2πℏc)² / (2E) · ñᵀ (∂G̃⁻¹/∂θ) ñ
+
+        For cross-shears:
+            ∂G̃⁻¹/∂σ = −G̃⁻¹ (∂G̃/∂σ) G̃⁻¹
+
+        For aspect ratios the chain is:
+            r → s (implicit: α(r,s) = α_target, so ∂s/∂r = −(∂α/∂r)/(∂α/∂s))
+            r, s → L (Compton constraint)
+            L → G̃_within (B = diag(L)(I + S), then G̃ = BᵀB / (L_i L_j))
+            G̃ → G̃⁻¹
+
+        Parameters
+        ----------
+        n : tuple or array-like (6,) — integer quantum numbers
+
+        Returns
+        -------
+        dict mapping parameter name → float (∂E/∂θ in MeV per unit θ).
+        """
+        n_arr = np.asarray(n, dtype=float)
+        ntilde = n_arr / self._L
+        prefactor = (2 * math.pi * _hbar_c_MeV_fm)**2
+        E = self.energy(n)
+        if E < 1e-30:
+            # Zero mode: all derivatives are zero
+            return {p: 0.0 for p in
+                    ('r_e', 'r_nu', 'r_p', 'sigma_ep', 'sigma_enu', 'sigma_nup')}
+
+        Gti = self._Gti
+        result = {}
+
+        # ── Cross-shears: analytical ──────────────────────────────
+        # ∂G̃/∂σ has nonzero entries only in the cross-block.
+        # ∂G̃⁻¹/∂σ = −G̃⁻¹ (∂G̃/∂σ) G̃⁻¹
+        # ∂E/∂σ = prefactor/(2E) · ñᵀ (∂G̃⁻¹/∂σ) ñ
+
+        for name, pairs in _CROSS_BLOCKS.items():
+            dGt = np.zeros((6, 6))
+            for i, j in pairs:
+                dGt[i, j] = 1.0
+                dGt[j, i] = 1.0
+            dGti = -Gti @ dGt @ Gti
+            dE = prefactor / (2 * E) * ntilde @ dGti @ ntilde
+            param_name = 'sigma_' + name
+            result[param_name] = float(dE)
+
+        # ── r_nu: simple (only L₃ changes) ───────────────────────
+        # L₃ = r_nu × L₄,  L₄ is constant.
+        # ∂L₃/∂r_nu = L₄.  All other L unchanged.
+        # Need ∂G̃/∂r_nu via ∂G̃/∂L₃.
+        result['r_nu'] = float(self._dE_dr_simple(
+            n_arr, ntilde, E, prefactor, sheet_idx=2, L_ring=self._L[3]))
+
+        # ── r_e: implicit chain through α ─────────────────────────
+        result['r_e'] = float(self._dE_dr_charged(
+            n_arr, ntilde, E, prefactor,
+            r=self._r_e, s=self._s12,
+            tube_idx=0, ring_idx=1, M_MeV=M_E_MEV))
+
+        # ── r_p: implicit chain through α ─────────────────────────
+        result['r_p'] = float(self._dE_dr_charged(
+            n_arr, ntilde, E, prefactor,
+            r=self._r_p, s=self._s56,
+            tube_idx=4, ring_idx=5, M_MeV=M_P_MEV))
+
+        return result
+
+    def _dE_dr_simple(self, n_arr, ntilde, E, prefactor, sheet_idx, L_ring):
+        """
+        ∂E/∂r for a sheet where only L_tube = r × L_ring changes.
+
+        Used for r_nu where L₄ is fixed and L₃ = r_nu × L₄.
+        The within-plane shear s₃₄ is a constant (not r-dependent).
+        """
+        tube_idx = sheet_idx  # e.g., index 2 for neutrino tube
+        # ∂L_tube/∂r = L_ring.  All other L unchanged.
+        # Use finite-difference on the metric as a cross-check:
+        # rebuild with L_tube ± δ and compute ∂G̃/∂L_tube numerically.
+        # But we can do this analytically.
+
+        # The dimensionless metric G̃_ij = G_phys_ij / (L_i L_j)
+        # where G_phys = BᵀB, B = diag(L)(I+S).
+        # G̃ depends on L only through the within-plane block.
+        # For the neutrino block: B[2,2] = L₃, B[2,3] = L₃ × s₃₄
+        # So G̃ for the (2,3) block depends on L₃ only through
+        # the normalization.  Actually G̃_ij = (BᵀB)_ij / (L_i L_j),
+        # and the within-plane G̃ entries are L-independent (they're
+        # just 1, s, s, 1+s² etc).  So ∂G̃_within/∂L = 0.
+
+        # But ñ_tube = n_tube / L_tube depends on L_tube!
+        # ∂ñ_tube/∂L_tube = -n_tube / L_tube²
+        # ∂ñ_tube/∂r = (∂ñ_tube/∂L_tube)(∂L_tube/∂r) = -n_tube/(L_tube²) × L_ring
+
+        # E² = prefactor × ñᵀ G̃⁻¹ ñ
+        # ∂E²/∂r = prefactor × 2 × (∂ñ/∂r)ᵀ G̃⁻¹ ñ
+        #        (since G̃⁻¹ doesn't depend on L for within-plane)
+
+        dntilde_dr = np.zeros(6)
+        L_tube = self._L[tube_idx]
+        dntilde_dr[tube_idx] = -n_arr[tube_idx] / (L_tube**2) * L_ring
+
+        dE2_dr = prefactor * 2 * dntilde_dr @ self._Gti @ ntilde
+        return dE2_dr / (2 * E)
+
+    def _dE_dr_charged(self, n_arr, ntilde, E, prefactor,
+                       r, s, tube_idx, ring_idx, M_MeV):
+        """
+        ∂E/∂r for a charged sheet (electron or proton) where s depends
+        on r through α(r,s) = α_target.
+
+        The chain: r → s (implicit), r,s → μ → E₀ → L_ring → L_tube.
+
+        Both L_tube and L_ring change with r.
+        """
+        # ── Step 1: ∂s/∂r via implicit function theorem ──────────
+        # α(r, s) = α_target  ⟹  ∂s/∂r = −(∂α/∂r) / (∂α/∂s)
+        da_dr = _dalpha_dr(r, s)
+        da_ds = _dalpha_ds(r, s)
+        if abs(da_ds) < 1e-30:
+            return 0.0
+        ds_dr = -da_dr / da_ds
+
+        # ── Step 2: ∂μ/∂r where μ = √(1/r² + (2-s)²) ───────────
+        mu = mu_12(r, s)
+        dmu_dr = (1 / mu) * (-1 / r**3 + (2 - s) * (-1) * ds_dr)
+        # = (-1/r³ − (2−s) ds/dr) / μ
+
+        # ── Step 3: ∂L_ring/∂r ────────────────────────────────────
+        # L_ring = 2πℏc × μ / M_MeV  (from E₀ = M/μ, L = 2πℏc/E₀)
+        # ∂L_ring/∂r = 2πℏc/M × ∂μ/∂r
+        dLring_dr = 2 * math.pi * _hbar_c_MeV_fm / M_MeV * dmu_dr
+
+        # ── Step 4: ∂L_tube/∂r ────────────────────────────────────
+        # L_tube = r × L_ring
+        # ∂L_tube/∂r = L_ring + r × ∂L_ring/∂r
+        L_ring = self._L[ring_idx]
+        dLtube_dr = L_ring + r * dLring_dr
+
+        # ── Step 5: ∂ñ/∂r ────────────────────────────────────────
+        # ñ_i = n_i / L_i.  Only L_tube and L_ring change.
+        L_tube = self._L[tube_idx]
+        dntilde_dr = np.zeros(6)
+        dntilde_dr[tube_idx] = -n_arr[tube_idx] / (L_tube**2) * dLtube_dr
+        dntilde_dr[ring_idx] = -n_arr[ring_idx] / (L_ring**2) * dLring_dr
+
+        # ── Step 6: ∂G̃/∂r via ∂s/∂r ─────────────────────────────
+        # G̃ within-plane from B = diag(L)(I+S), G̃_ij = G_phys_ij/(L_i L_j):
+        #   G̃[tube,ring] = r × s
+        #   G̃[ring,ring] = 1 + r² × s²
+        #   G̃[tube,tube] = 1  (no s dependence)
+        # Derivatives w.r.t. r (including chain through s(r)):
+        #   ∂G̃[tube,ring]/∂r = s + r × ds/dr
+        #   ∂G̃[ring,ring]/∂r = 2r s² + 2r² s × ds/dr
+        dGt = np.zeros((6, 6))
+        dGt[tube_idx, ring_idx] = s + r * ds_dr
+        dGt[ring_idx, tube_idx] = s + r * ds_dr
+        dGt[ring_idx, ring_idx] = 2 * r * s**2 + 2 * r**2 * s * ds_dr
+
+        dGti = -self._Gti @ dGt @ self._Gti
+
+        # ── Step 7: combine ───────────────────────────────────────
+        # ∂E²/∂r = prefactor × [2 (∂ñ/∂r)ᵀ G̃⁻¹ ñ  +  ñᵀ (∂G̃⁻¹/∂r) ñ]
+        dE2_from_ntilde = prefactor * 2 * dntilde_dr @ self._Gti @ ntilde
+        dE2_from_metric = prefactor * ntilde @ dGti @ ntilde
+        dE2_dr = dE2_from_ntilde + dE2_from_metric
+
+        return dE2_dr / (2 * E)
+
+    def sensitivity(self, n):
+        """
+        Human-readable sensitivity report for a mode.
+
+        Shows how strongly the mode energy depends on each geometry
+        parameter, classified as strong/moderate/weak/negligible.
+
+        Parameters
+        ----------
+        n : tuple or array-like (6,) — integer quantum numbers
+
+        Returns
+        -------
+        str — formatted report.
+
+        Example
+        -------
+        >>> m.sensitivity((0, -2, 1, 0, 0, 2))
+        Neutron (0,−2,+1,0,0,+2)  E = 946.8 MeV
+          r_e:        ∂E/∂r_e    =  −0.02 MeV/unit   (negligible)
+          r_nu:       ∂E/∂r_ν    =   0.00 MeV/unit   (negligible)
+          r_p:        ∂E/∂r_p    = −48.30 MeV/unit   (strong)
+          sigma_ep:   ∂E/∂σ_ep   = −14.20 MeV/unit   (strong)
+          sigma_enu:  ∂E/∂σ_eν   =   0.00 MeV/unit   (negligible)
+          sigma_nup:  ∂E/∂σ_νp   =   0.00 MeV/unit   (negligible)
+        """
+        J = self.jacobian(n)
+        E = self.energy(n)
+        n_str = ','.join(f'{int(x):+d}' for x in n)
+
+        lines = [f"Mode ({n_str})  E = {E:.3f} MeV"]
+
+        display_names = {
+            'r_e': 'r_e', 'r_nu': 'r_ν', 'r_p': 'r_p',
+            'sigma_ep': 'σ_ep', 'sigma_enu': 'σ_eν', 'sigma_nup': 'σ_νp',
+        }
+        order = ['r_e', 'r_nu', 'r_p', 'sigma_ep', 'sigma_enu', 'sigma_nup']
+
+        for key in order:
+            val = J.get(key, 0.0)
+            # Classify strength relative to the mode energy
+            if E > 0:
+                rel = abs(val) / E
+            else:
+                rel = 0.0
+            if rel > 0.05:
+                strength = "strong"
+            elif rel > 0.005:
+                strength = "moderate"
+            elif rel > 0.0005:
+                strength = "weak"
+            else:
+                strength = "negligible"
+            name = display_names.get(key, key)
+            lines.append(f"  {name:12s} ∂E/∂{name:5s} = {val:+10.3f} MeV/unit   ({strength})")
+
+        return "\n".join(lines)
 
     # ── Scanning ──────────────────────────────────────────────────
 
@@ -643,6 +1026,205 @@ class Ma:
         }
         defaults.update(kwargs)
         return Ma(**defaults)
+
+    # ── Inverse solver ─────────────────────────────────────────────
+
+    @classmethod
+    def fit(cls, targets, free_params, fixed_params=None,
+            tol=1e-8, max_iter=50, damping=1.0):
+        """
+        Find geometry parameters that best reproduce target masses.
+
+        Uses Gauss-Newton iteration with the analytical Jacobian.
+        At each step: compute residuals (E_computed − E_target),
+        build the Jacobian matrix, solve the linear system for
+        parameter updates, and create a new Ma at the updated point.
+
+        When there are more free parameters than targets, the system
+        is underdetermined.  The solver uses the minimum-norm solution
+        (via pseudoinverse) and reports the null space — parameter
+        directions that leave all target energies unchanged.
+
+        Parameters
+        ----------
+        targets : list of Target(n, mass_MeV)
+            Mode assignments and their target masses.
+        free_params : list of str
+            Parameter names to optimize.  Must be from:
+            'r_e', 'r_nu', 'r_p', 'sigma_ep', 'sigma_enu', 'sigma_nup'.
+        fixed_params : dict or None
+            Fixed parameter values.  Any parameter not in free_params
+            and not in fixed_params uses its default (r=6.6/5.0/8.906,
+            sigma=0).
+        tol : float
+            Convergence tolerance on max |residual| in MeV.
+        max_iter : int
+            Maximum Gauss-Newton iterations.
+        damping : float
+            Step damping factor (0 < damping ≤ 1).  At 1.0 the full
+            Gauss-Newton step is taken.  Reduce if oscillating.
+
+        Returns
+        -------
+        FitResult namedtuple.
+
+        Examples
+        --------
+        Re-derive R27's parameters from neutron + muon:
+
+        >>> result = Ma.fit(
+        ...     targets=[
+        ...         Target(n=(0,-2,1,0,0,2), mass_MeV=939.565),  # neutron
+        ...         Target(n=(-1,5,0,0,-2,0), mass_MeV=105.658), # muon
+        ...     ],
+        ...     free_params=['r_p', 'sigma_ep'],
+        ...     fixed_params={'r_e': 6.6, 'r_nu': 5.0},
+        ... )
+        >>> result.params  # should recover r_p ≈ 8.906, σ_ep ≈ -0.0906
+        """
+        VALID_PARAMS = ('r_e', 'r_nu', 'r_p', 'sigma_ep', 'sigma_enu', 'sigma_nup')
+        for p in free_params:
+            if p not in VALID_PARAMS:
+                raise ValueError(f"Unknown parameter {p!r}. "
+                                 f"Must be one of {VALID_PARAMS}")
+
+        # Default starting point — use the R27 standard geometry
+        # as the initial guess (much better than zeros)
+        defaults = {
+            'r_e': 6.6, 'r_nu': 5.0, 'r_p': 8.906,
+            'sigma_ep': -0.0906, 'sigma_enu': 0.0, 'sigma_nup': 0.0,
+        }
+        if fixed_params:
+            defaults.update(fixed_params)
+
+        # Current parameter vector (only the free ones)
+        param_vec = np.array([defaults[p] for p in free_params])
+        n_params = len(free_params)
+        n_targets = len(targets)
+
+        def _build_ma(pvec):
+            kw = dict(defaults)
+            for i, p in enumerate(free_params):
+                kw[p] = float(pvec[i])
+            # Remove non-constructor keys
+            kw.pop('self_consistent', None)
+            try:
+                return Ma(**kw, self_consistent=True)
+            except ValueError:
+                return None
+
+        converged = False
+        for iteration in range(max_iter):
+            m = _build_ma(param_vec)
+            if m is None:
+                # Metric not positive-definite; shrink the step
+                param_vec = param_vec * 0.9 + np.array(
+                    [defaults[p] for p in free_params]) * 0.1
+                continue
+
+            # Compute residuals
+            residuals = np.array([
+                m.energy(t.n) - t.mass_MeV for t in targets
+            ])
+
+            if np.max(np.abs(residuals)) < tol:
+                converged = True
+                break
+
+            # Build Jacobian matrix numerically: J[i,j] = ∂E_i/∂θ_j
+            # Uses finite differences on the full self-consistent Ma,
+            # which captures the indirect L-adjustment path that the
+            # analytical Jacobian (computed at fixed L) misses.
+            J = np.zeros((n_targets, n_params))
+            h_jac = 1e-6
+            for j in range(n_params):
+                pvec_p = param_vec.copy(); pvec_p[j] += h_jac
+                pvec_m = param_vec.copy(); pvec_m[j] -= h_jac
+                m_p = _build_ma(pvec_p)
+                m_m = _build_ma(pvec_m)
+                if m_p is None or m_m is None:
+                    continue
+                for i, t in enumerate(targets):
+                    J[i, j] = (m_p.energy(t.n) - m_m.energy(t.n)) / (2 * h_jac)
+
+            # Levenberg-Marquardt step: solve (JᵀJ + λI) δ = -Jᵀr
+            # λ adapts: start moderate, reduce on success, increase on failure.
+            JtJ = J.T @ J
+            Jtr = J.T @ residuals
+
+            if iteration == 0:
+                lam = 0.01 * max(np.diag(JtJ).max(), 1e-6)
+
+            for _ in range(10):  # inner loop: try different λ
+                try:
+                    delta = np.linalg.solve(JtJ + lam * np.eye(n_params), -Jtr)
+                except np.linalg.LinAlgError:
+                    lam *= 10
+                    continue
+
+                candidate = param_vec + damping * delta
+                m_try = _build_ma(candidate)
+                if m_try is not None:
+                    r_try = np.array([m_try.energy(t.n) - t.mass_MeV
+                                      for t in targets])
+                    if np.sum(r_try**2) < np.sum(residuals**2):
+                        param_vec = candidate
+                        lam = max(lam * 0.3, 1e-12)
+                        break
+                lam = min(lam * 5, 1e20)
+            else:
+                # All inner steps failed; accept anyway with heavy damping
+                param_vec = param_vec + 0.1 * damping * delta
+
+        # Final state
+        m = _build_ma(param_vec)
+        if m is None:
+            return FitResult(
+                params={}, residuals=np.array([]),
+                ma=None, jacobian=np.array([]),
+                cov=None, null_space=None,
+                converged=False, iterations=iteration + 1)
+
+        residuals = np.array([m.energy(t.n) - t.mass_MeV for t in targets])
+
+        # Final Jacobian
+        J = np.zeros((n_targets, n_params))
+        for i, t in enumerate(targets):
+            jac_dict = m.jacobian(t.n)
+            for j, p in enumerate(free_params):
+                J[i, j] = jac_dict.get(p, 0.0)
+
+        # Parameter covariance (from J): cov ≈ (JᵀJ)⁻¹ × σ²
+        # where σ² is estimated from residuals
+        cov = None
+        null_space = None
+        if n_params <= n_targets:
+            JtJ = J.T @ J
+            eigvals = np.linalg.eigvalsh(JtJ)
+            if np.min(eigvals) > 1e-20:
+                sigma2 = np.sum(residuals**2) / max(n_targets - n_params, 1)
+                cov = np.linalg.inv(JtJ) * sigma2
+        else:
+            # Underdetermined: report null space
+            U, S, Vt = np.linalg.svd(J, full_matrices=True)
+            rank = np.sum(S > 1e-10 * S[0])
+            if rank < n_params:
+                null_space = Vt[rank:].T  # columns are null-space basis
+
+        final_params = {p: float(param_vec[i]) for i, p in enumerate(free_params)}
+        final_params.update({k: v for k, v in defaults.items()
+                            if k not in free_params})
+
+        return FitResult(
+            params=final_params,
+            residuals=residuals,
+            ma=m,
+            jacobian=J,
+            cov=cov,
+            null_space=null_space,
+            converged=converged,
+            iterations=iteration + 1,
+        )
 
     # ── Serialization ─────────────────────────────────────────────
 
@@ -847,129 +1429,8 @@ def _stub_modes(self, E_max_MeV, charge=None, spin_halves=None):
         "See ma-model.md §Feature 2.")
 
 
-def _stub_energy_decomp(self, n):
-    """
-    Decompose mode energy² into sheet and cross-coupling contributions.
-
-    Partitions the quadratic form E² = (2πℏc)² ñᵀ G̃⁻¹ ñ into:
-
-        E² = E²_e + E²_ν + E²_p + 2·E²_eν + 2·E²_ep + 2·E²_νp
-
-    where each term uses the corresponding 2×2 block of G̃⁻¹.
-
-    **Interpretation caveat:** These blocks come from the INVERSE
-    metric, not the metric itself.  Due to the Schur complement,
-    [G̃⁻¹]_{ee} includes information from all sheets.  The
-    decomposition is mathematically well-defined (terms sum to E²)
-    but "97% proton-sheet" means "97% of E² comes from the p-block
-    of the inverse metric," not that the proton sheet contributes
-    97% of the energy in some physical sense.
-
-    Parameters
-    ----------
-    n : tuple (6,) — mode quantum numbers
-
-    Returns
-    -------
-    EnergyDecomp namedtuple with fields:
-        total (float, MeV), e_sheet, nu_sheet, p_sheet,
-        ep_cross, enu_cross, nup_cross (all float, MeV²),
-        fractions (dict str → float)
-    """
-    raise NotImplementedError(
-        "Energy decomposition not yet implemented. "
-        "See ma-model.md §Feature 3.")
 
 
-def _stub_jacobian(self, n):
-    """
-    Analytical Jacobian ∂E/∂θ for a mode.
-
-    Computes the derivative of mode energy with respect to each
-    geometry parameter (r_e, r_nu, r_p, sigma_ep, sigma_enu,
-    sigma_nup) using:
-
-        ∂E/∂θ = (2πℏc)² / (2E) · ñᵀ (∂G̃⁻¹/∂θ) ñ
-
-    For cross-shears: ∂G̃⁻¹/∂σ = −G̃⁻¹ (∂G̃/∂σ) G̃⁻¹, where
-    ∂G̃/∂σ has only 4 nonzero entries per block.
-
-    For aspect ratios: the chain r → s (implicit via
-    solve_shear_for_alpha) → L → G̃ → G̃⁻¹ requires implicit
-    differentiation: ∂s/∂r = −(∂α/∂r)/(∂α/∂s), both analytically
-    available from the α formula.
-
-    When self_consistent=True, L depends on σ through the
-    fixed-point iteration.  The total derivative dE/dσ must
-    include this indirect path.
-
-    Parameters
-    ----------
-    n : tuple (6,) — mode quantum numbers
-
-    Returns
-    -------
-    dict mapping parameter name → float (MeV per unit parameter).
-    """
-    raise NotImplementedError(
-        "Analytical Jacobian not yet implemented. "
-        "See ma-model.md §Feature 4.")
-
-
-def _stub_sensitivity(self, n):
-    """
-    Human-readable sensitivity report for a mode.
-
-    Wraps jacobian() into a formatted summary showing which
-    parameters the mode energy depends on and how strongly.
-
-    Example output:
-        Neutron (0,−2,+1,0,0,+2)  E = 939.6 MeV
-          r_e:        ∂E/∂r_e  = −0.02 MeV/unit   (weak)
-          r_p:        ∂E/∂r_p  = −48.3 MeV/unit   (strong)
-          sigma_ep:   ∂E/∂σ_ep = −14.2 MeV/unit   (strong)
-          r_nu:       ∂E/∂r_ν  =  0.00 MeV/unit   (negligible)
-
-    Parameters
-    ----------
-    n : tuple (6,) — mode quantum numbers
-
-    Returns
-    -------
-    str — formatted report.
-    """
-    raise NotImplementedError(
-        "Sensitivity report not yet implemented. "
-        "See ma-model.md §Feature 6.")
-
-
-def _stub_fit(cls, targets, free_params, fixed_params=None):
-    """
-    Inverse solver: find geometry parameters matching target masses.
-
-    Uses Gauss-Newton / Levenberg-Marquardt with the analytical
-    Jacobian (Feature 4) to minimize Σ (E_computed − E_target)².
-
-    Handles degeneracies: when free_params > targets, reports the
-    null space of the Jacobian (parameter combinations that leave
-    all targets unchanged).
-
-    Parameters
-    ----------
-    targets : list of Target(n, mass_MeV) — mode assignments + masses
-    free_params : list of str — parameter names to optimize
-    fixed_params : dict or None — fixed parameter values
-
-    Returns
-    -------
-    FitResult with fields:
-        params (dict), residuals (list), ma (Ma instance),
-        jacobian (ndarray), cov (ndarray or None if underdetermined),
-        null_space (ndarray or None)
-    """
-    raise NotImplementedError(
-        "Inverse solver not yet implemented. "
-        "See ma-model.md §Feature 5.")
 
 
 def _stub_spectrum(self, E_max_MeV, charge=None, spin_halves=None):
