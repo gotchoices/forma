@@ -15,7 +15,8 @@ if "studies" not in sys.path:
 
 from lib.embedded import (
     EmbeddedSheet, field_at, field_at_points, potential_at,
-    field_energy, interaction_energy,
+    field_energy, interaction_energy, interaction_force,
+    interaction_sweep, near_field_correction,
 )
 
 
@@ -218,6 +219,104 @@ class TestInteraction(unittest.TestCase):
         U_ab = interaction_energy(pos1, dq1, pos2_shifted, dq2)
         U_ba = interaction_energy(pos2_shifted, dq2, pos1, dq1)
         self.assertAlmostEqual(U_ab, U_ba, places=10)
+
+
+class TestSweep(unittest.TestCase):
+
+    def test_sweep_shape(self):
+        d_vals = np.array([10.0, 20.0, 30.0])
+        phi_vals = np.array([0.0, math.pi])
+        result = interaction_sweep(
+            THIN_SHEET, THIN_SHEET, n1=1, n2=2, N=50,
+            Q1=1.0, Q2=1.0,
+            d_values=d_vals, phi_values=phi_vals)
+        self.assertEqual(result.U.shape, (3, 2))
+        self.assertEqual(result.U_coulomb.shape, (3,))
+        self.assertEqual(result.ratio.shape, (3, 2))
+
+    def test_sweep_coulomb_limit(self):
+        """At large d, all phases should give ~Q1*Q2/d."""
+        d_vals = np.array([500 * THIN_SHEET.R])
+        phi_vals = np.array([0.0, math.pi / 2, math.pi])
+        result = interaction_sweep(
+            THIN_SHEET, THIN_SHEET, n1=1, n2=2, N=100,
+            Q1=1.0, Q2=-1.0,
+            d_values=d_vals, phi_values=phi_vals)
+        for j in range(len(phi_vals)):
+            self.assertAlmostEqual(result.ratio[0, j], 1.0, delta=0.02)
+
+    def test_sweep_periodicity(self):
+        """U(d, φ) = U(d, φ+2π) — period 2π in phase."""
+        d_vals = np.array([5.0])
+        phi_vals = np.array([0.7, 0.7 + 2 * math.pi])
+        result = interaction_sweep(
+            UNIT_SHEET, UNIT_SHEET, n1=1, n2=2, N=200,
+            Q1=1.0, Q2=1.0,
+            d_values=d_vals, phi_values=phi_vals)
+        self.assertAlmostEqual(result.U[0, 0], result.U[0, 1], places=10)
+
+    def test_sweep_mixed_sheets(self):
+        """Sweep should work with two different sheets."""
+        d_vals = np.array([20.0])
+        phi_vals = np.array([0.0])
+        result = interaction_sweep(
+            THIN_SHEET, UNIT_SHEET, n1=1, n2=2, N=50,
+            Q1=-1.0, Q2=1.0,
+            d_values=d_vals, phi_values=phi_vals)
+        # Should be negative (opposite charges attract)
+        self.assertLess(result.U[0, 0], 0)
+
+
+class TestForce(unittest.TestCase):
+
+    def test_repulsive_like_charges(self):
+        """Same-sign charges should repel (positive force along axis)."""
+        pos1, dq1 = THIN_SHEET.charge_segments(1, 2, N=100, Q=1.0)
+        pos2, dq2 = THIN_SHEET.charge_segments(1, 2, N=100, Q=1.0)
+        d = 50 * THIN_SHEET.R
+        pos2_shifted = pos2.copy()
+        pos2_shifted[:, 2] += d
+        F = interaction_force(pos1, dq1, pos2_shifted, dq2, axis=2)
+        self.assertGreater(F, 0)
+
+    def test_attractive_opposite_charges(self):
+        """Opposite charges should attract (negative force along axis)."""
+        pos1, dq1 = THIN_SHEET.charge_segments(1, 2, N=100, Q=1.0)
+        pos2, dq2 = THIN_SHEET.charge_segments(1, 2, N=100, Q=-1.0)
+        d = 50 * THIN_SHEET.R
+        pos2_shifted = pos2.copy()
+        pos2_shifted[:, 2] += d
+        F = interaction_force(pos1, dq1, pos2_shifted, dq2, axis=2)
+        self.assertLess(F, 0)
+
+
+class TestNearField(unittest.TestCase):
+
+    def test_near_field_extraction(self):
+        d_vals = np.array([5.0, 10.0])
+        phi_vals = np.linspace(0, 2 * math.pi, 8, endpoint=False)
+        result = interaction_sweep(
+            UNIT_SHEET, UNIT_SHEET, n1=1, n2=2, N=50,
+            Q1=1.0, Q2=1.0,
+            d_values=d_vals, phi_values=phi_vals)
+        nf = near_field_correction(result)
+        self.assertEqual(nf.U_avg.shape, (2,))
+        self.assertEqual(nf.delta_U.shape, (2, 8))
+        self.assertEqual(nf.delta_U_pi.shape, (2,))
+        self.assertEqual(nf.barrier_factor.shape, (2,))
+
+    def test_delta_averages_to_zero(self):
+        """Phase deviations should average to zero by definition."""
+        d_vals = np.array([5.0, 10.0, 20.0])
+        phi_vals = np.linspace(0, 2 * math.pi, 12, endpoint=False)
+        result = interaction_sweep(
+            UNIT_SHEET, UNIT_SHEET, n1=1, n2=2, N=80,
+            Q1=1.0, Q2=1.0,
+            d_values=d_vals, phi_values=phi_vals)
+        nf = near_field_correction(result)
+        for i in range(len(d_vals)):
+            self.assertAlmostEqual(
+                np.mean(nf.delta_U[i, :]), 0.0, places=10)
 
 
 if __name__ == '__main__':

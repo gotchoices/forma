@@ -38,6 +38,10 @@ TYPICAL USAGE
 
 import math
 import numpy as np
+from lib.constants import hbar, c, e as _eV_J
+
+# ℏc in MeV·fm (e in constants.py is elementary charge in C = 1 eV in J)
+_hbar_c_MeV_fm = hbar * c / (_eV_J * 1e6) * 1e15   # ≈ 197.3 MeV·fm
 
 
 # ══════════════════════════════════════════════════════════════════════
@@ -146,8 +150,7 @@ class EmbeddedSheet:
         scale_MeV : float
             Energy scale E₀ such that L_ring = 2πℏc / E₀.
         """
-        from lib.ma import hbar_c_MeV_fm
-        L_ring = 2 * math.pi * hbar_c_MeV_fm / scale_MeV
+        L_ring = 2 * math.pi * _hbar_c_MeV_fm / scale_MeV
         L_tube = r * L_ring
         return cls(L_tube, L_ring)
 
@@ -464,3 +467,197 @@ def interaction_energy(pos1, dq1, pos2, dq2):
     dist = np.sqrt(np.sum(dr**2, axis=2))         # (N1, N2)
     # dq1[i] * dq2[j] / dist[i, j], summed
     return float(np.einsum('i,j,ij->', dq1, dq2, 1.0 / dist))
+
+
+# ══════════════════════════════════════════════════════════════════════
+#  Interaction sweep and force
+# ══════════════════════════════════════════════════════════════════════
+
+class SweepResult:
+    """
+    Result of an interaction energy sweep over distance and phase.
+
+    Attributes
+    ----------
+    d_values : ndarray (Nd,) — separation distances (fm)
+    phi_values : ndarray (Nphi,) — phase offsets (radians)
+    U : ndarray (Nd, Nphi) — interaction energy at each (d, Δφ)
+        in units of e²/(4πε₀ fm)
+    U_coulomb : ndarray (Nd,) — point-charge Coulomb energy Q1*Q2/d
+    ratio : ndarray (Nd, Nphi) — U / U_coulomb
+    """
+
+    __slots__ = ('d_values', 'phi_values', 'U', 'U_coulomb', 'ratio')
+
+    def __init__(self, d_values, phi_values, U, U_coulomb):
+        self.d_values = d_values
+        self.phi_values = phi_values
+        self.U = U
+        self.U_coulomb = U_coulomb
+        with np.errstate(divide='ignore', invalid='ignore'):
+            self.ratio = np.where(U_coulomb[:, None] != 0,
+                                  U / U_coulomb[:, None],
+                                  np.nan)
+
+
+def interaction_sweep(sheet1, sheet2, n1, n2, N, Q1, Q2,
+                      d_values, phi_values, axis=2):
+    """
+    Sweep interaction energy over separation and relative phase.
+
+    Computes U(d, Δφ) for all combinations.  Particle 1 is at the
+    origin with phase φ=0.  Particle 2 is displaced by d along the
+    specified axis with phase Δφ.
+
+    Uses the phase-reuse optimization: precompute trig arrays once,
+    then for each Δφ use angle-addition identities instead of
+    recomputing the full geodesic.
+
+    Parameters
+    ----------
+    sheet1, sheet2 : EmbeddedSheet
+        Geometry for particles 1 and 2 (may be different sheets).
+    n1, n2 : int
+        Winding numbers (same for both particles).
+    N : int
+        Number of charge segments per particle.
+    Q1, Q2 : float
+        Total charges (units of e).
+    d_values : array-like (Nd,)
+        Separation distances (fm).
+    phi_values : array-like (Nphi,)
+        Relative phase offsets (radians).
+    axis : int (0, 1, or 2)
+        Separation axis: 0=x, 1=y, 2=z (default z).
+
+    Returns
+    -------
+    SweepResult
+    """
+    d_values = np.asarray(d_values, dtype=float)
+    phi_values = np.asarray(phi_values, dtype=float)
+
+    # Particle 1: fixed at origin, phase 0
+    pos1, dq1 = sheet1.charge_segments(n1, n2, N, phi=0.0, Q=Q1)
+
+    # Precompute trig bases for particle 2 phase rotation
+    t = np.linspace(0, 2 * math.pi, N, endpoint=False)
+    n1t = n1 * t
+    cos_n1t = np.cos(n1t)
+    sin_n1t = np.sin(n1t)
+    cos_n2t = np.cos(n2 * t)
+    sin_n2t = np.sin(n2 * t)
+
+    Nd = len(d_values)
+    Nphi = len(phi_values)
+    U = np.empty((Nd, Nphi))
+
+    for j, phi in enumerate(phi_values):
+        # Angle-addition: cos(n1*t + phi), sin(n1*t + phi)
+        cos_phi = math.cos(phi)
+        sin_phi = math.sin(phi)
+        cos_th1 = cos_n1t * cos_phi - sin_n1t * sin_phi
+        sin_th1 = sin_n1t * cos_phi + cos_n1t * sin_phi
+
+        # Build particle 2 positions at this phase
+        rho2 = sheet2.R + sheet2.a * cos_th1
+        x2 = rho2 * cos_n2t
+        y2 = rho2 * sin_n2t
+        z2 = sheet2.a * sin_th1
+        pos2 = np.stack([x2, y2, z2], axis=-1)       # (N, 3)
+        dq2 = np.full(N, Q2 / N)
+
+        for i, d in enumerate(d_values):
+            pos2_shifted = pos2.copy()
+            pos2_shifted[:, axis] += d
+            U[i, j] = interaction_energy(pos1, dq1, pos2_shifted, dq2)
+
+    U_coulomb = Q1 * Q2 / d_values
+
+    return SweepResult(d_values, phi_values, U, U_coulomb)
+
+
+def interaction_force(pos1, dq1, pos2, dq2, axis=2, eps_d=0.01):
+    """
+    Force between two charge distributions along an axis.
+
+    F(d) = −∂U/∂d, computed by central finite difference.
+
+    Parameters
+    ----------
+    pos1, dq1 : source particle 1
+    pos2, dq2 : source particle 2 (at current separation)
+    axis : int — axis along which to compute force (0=x, 1=y, 2=z)
+    eps_d : float — finite difference step (fm)
+
+    Returns
+    -------
+    float — force in units of e²/(4πε₀ fm²).  Positive = repulsive
+            (pushes particle 2 further along axis).
+    """
+    pos2_plus = np.array(pos2, dtype=float)
+    pos2_minus = np.array(pos2, dtype=float)
+    pos2_plus[:, axis] += eps_d
+    pos2_minus[:, axis] -= eps_d
+    U_plus = interaction_energy(pos1, dq1, pos2_plus, dq2)
+    U_minus = interaction_energy(pos1, dq1, pos2_minus, dq2)
+    return -(U_plus - U_minus) / (2 * eps_d)
+
+
+# ══════════════════════════════════════════════════════════════════════
+#  Near-field correction extraction
+# ══════════════════════════════════════════════════════════════════════
+
+class NearFieldResult:
+    """
+    Near-field correction extracted from a sweep.
+
+    Attributes
+    ----------
+    U_avg : ndarray (Nd,)
+        Phase-averaged interaction energy ⟨U⟩_φ at each distance.
+    delta_U : ndarray (Nd, Nphi)
+        Deviation from phase average: U(d, Δφ) − ⟨U⟩_φ(d).
+    delta_U_pi : ndarray (Nd,) or None
+        delta_U at the Δφ closest to π (if π is in the sweep).
+    barrier_factor : ndarray (Nd,)
+        U at Δφ nearest π, divided by U_coulomb.  Values < 1 mean
+        the anti-phase configuration reduces the Coulomb barrier.
+    """
+
+    __slots__ = ('U_avg', 'delta_U', 'delta_U_pi', 'barrier_factor')
+
+    def __init__(self, U_avg, delta_U, delta_U_pi, barrier_factor):
+        self.U_avg = U_avg
+        self.delta_U = delta_U
+        self.delta_U_pi = delta_U_pi
+        self.barrier_factor = barrier_factor
+
+
+def near_field_correction(result):
+    """
+    Extract phase-dependent near-field corrections from a sweep.
+
+    Parameters
+    ----------
+    result : SweepResult
+
+    Returns
+    -------
+    NearFieldResult
+    """
+    U_avg = np.mean(result.U, axis=1)                     # (Nd,)
+    delta_U = result.U - U_avg[:, None]                    # (Nd, Nphi)
+
+    # Find the phi index closest to π
+    idx_pi = int(np.argmin(np.abs(result.phi_values - math.pi)))
+    delta_U_pi = delta_U[:, idx_pi]                        # (Nd,)
+
+    U_at_pi = result.U[:, idx_pi]
+    with np.errstate(divide='ignore', invalid='ignore'):
+        barrier_factor = np.where(
+            result.U_coulomb != 0,
+            U_at_pi / result.U_coulomb,
+            np.nan)
+
+    return NearFieldResult(U_avg, delta_U, delta_U_pi, barrier_factor)
