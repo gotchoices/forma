@@ -123,6 +123,35 @@ class TestChargeDistribution(unittest.TestCase):
         self.assertGreater(np.max(np.abs(pos0 - pos1)), 0.1)
 
 
+class TestChargeDensity(unittest.TestCase):
+
+    def test_integrates_to_Q(self):
+        """∫∫ σ(θ₁,θ₂) × (R + a cos θ₁) × a dθ₁ dθ₂ ≈ Q."""
+        Q = 2.5
+        sigma = THIN_SHEET.charge_density(n1=1, n2=2, Q=Q)
+        N = 200
+        th1 = np.linspace(0, 2 * math.pi, N, endpoint=False)
+        th2 = np.linspace(0, 2 * math.pi, N, endpoint=False)
+        TH1, TH2 = np.meshgrid(th1, th2, indexing='ij')
+        S = sigma(TH1, TH2)
+        jacobian = (THIN_SHEET.R + THIN_SHEET.a * np.cos(TH1)) * THIN_SHEET.a
+        dA = (2 * math.pi / N)**2
+        integral = np.sum(S * jacobian) * dA
+        self.assertAlmostEqual(integral, Q, delta=Q * 0.05)
+
+    def test_returns_callable(self):
+        sigma = UNIT_SHEET.charge_density(n1=1, n2=2)
+        val = sigma(0.0, 0.0)
+        self.assertIsInstance(float(val), float)
+
+    def test_vectorized(self):
+        sigma = UNIT_SHEET.charge_density(n1=1, n2=2)
+        th1 = np.array([0.0, 1.0, 2.0])
+        th2 = np.array([0.0, 0.5, 1.0])
+        vals = sigma(th1, th2)
+        self.assertEqual(vals.shape, (3,))
+
+
 class TestFields(unittest.TestCase):
 
     def test_coulomb_far_field(self):

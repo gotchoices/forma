@@ -237,6 +237,63 @@ class EmbeddedSheet:
             dq = Q * weights / weights.sum()
         return pos, dq
 
+    def charge_density(self, n1, n2, Q=1.0, phi=0.0):
+        """
+        Continuous charge density on the torus surface.
+
+        Returns a callable σ(θ₁, θ₂) giving the surface charge
+        density at any point on the torus.  The charge is
+        concentrated along the (n₁, n₂) geodesic as a delta
+        function; this implementation approximates it as a narrow
+        Gaussian ridge of width ~ 2π/N_eff along the geodesic.
+
+        More precisely, the (n₁, n₂) geodesic is the locus
+        θ₂ = (n₂/n₁)(θ₁ − φ) (mod 2π) for n₁ ≠ 0.  The charge
+        density is:
+
+            σ(θ₁, θ₂) = (Q / A_geo) × Σ_k δ_w(θ₂ − (n₂/n₁)(θ₁ − φ) − 2πk)
+
+        where δ_w is a Gaussian of width w, A_geo is a normalization
+        ensuring ∫∫ σ dA = Q, and the sum over k handles periodicity.
+
+        Parameters
+        ----------
+        n1, n2 : int — winding numbers
+        Q : float — total charge (units of e)
+        phi : float — phase offset (radians)
+
+        Returns
+        -------
+        callable σ(theta1, theta2) → float or ndarray
+            Surface charge density in units of e/fm².
+            Accepts scalar or array arguments.
+        """
+        R, a = self._R, self._a
+        w = 0.05  # Gaussian width in radians (~3% of 2π)
+
+        def sigma(theta1, theta2):
+            theta1 = np.asarray(theta1, dtype=float)
+            theta2 = np.asarray(theta2, dtype=float)
+            # Distance from geodesic in θ₂ direction
+            if n1 != 0:
+                theta2_geo = (n2 / n1) * (theta1 - phi)
+            else:
+                theta2_geo = n2 * theta1  # degenerate: ring-only mode
+            delta = theta2 - theta2_geo
+            # Wrap to [-π, π]
+            delta = (delta + math.pi) % (2 * math.pi) - math.pi
+            # Gaussian ridge
+            profile = np.exp(-0.5 * (delta / w)**2) / (w * math.sqrt(2 * math.pi))
+            # Normalization: ∫∫ σ × (R + a cos θ₁) a dθ₁ dθ₂ = Q
+            # The Gaussian integrates to 1 over θ₂, so we need
+            # ∫ norm(θ₁) × (R + a cos θ₁) a dθ₁ = Q
+            # With uniform norm: norm = Q / (a × 2π × R) = Q / (2πaR)
+            # (using ∫(R + a cos θ₁) dθ₁ = 2πR)
+            norm = Q / (2 * math.pi * a * R)
+            return norm * profile
+
+        return sigma
+
     # ── Multipoles ────────────────────────────────────────────────
 
     def monopole(self, pos, dq):
