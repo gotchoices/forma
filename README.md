@@ -1,5 +1,7 @@
 # Theory of the Universe
 
+A project of [GotChoices.org](https://gotchoices.org)
+
 ## About this project
 
 The author is an electrical engineer, not a trained physicist.  This started
@@ -274,3 +276,13 @@ sheet to three (3Ma = Ma_e × Ma_ν × Ma_p), yielding Ma (R26).
 | [`labs/README.md`](labs/README.md) | Proposed physical experiments to test model predictions |
 | [`reference/WvM-summary.md`](reference/WvM-summary.md) | Living summary of the foundational WvM paper |
 | [`viz/index.html`](viz/index.html) | Browser launcher for all interactive visualizations |
+
+
+## License
+
+This work is licensed under
+[Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/).
+You are free to share and adapt this material for any purpose, including
+commercial, provided you give appropriate credit to
+[GotChoices.org](https://gotchoices.org) and distribute any derivative
+works under the same license.  See [LICENSE](LICENSE) for details.
