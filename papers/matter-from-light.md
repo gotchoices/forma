@@ -75,27 +75,60 @@ fine-structure constant α from first principles.
 
 ## 1. The premise
 
-In 1997, J. G. Williamson and M. B. van der Mark proposed
-a radical idea: the electron is a single photon, trapped in
-a loop.  Specifically, they modeled it as a photon
-traveling along a (1,2) torus knot — a path that winds once
-around the short way (the "tube") for every two times
-around the long way (the "ring").  The idea was not widely
-adopted, partly because the paper left open what mechanism
-could confine a photon, and partly because its charge
-prediction was approximate: Q ≈ 0.91e, about 9% too low.
+The idea that particles are waves — not merely described by
+waves, but *are* waves — is as old as quantum mechanics.
+
+In 1924, Louis de Broglie proposed that every particle has
+an associated wavelength, λ = h/p, and that the wave is not
+a mathematical convenience but a physical reality.  Two years
+later, Erwin Schrödinger built a wave equation to describe
+these matter waves, and originally interpreted his
+wavefunction as a real physical oscillation — not a
+probability amplitude.  Born's statistical interpretation
+prevailed, but Schrödinger spent the rest of his life
+defending the physical reality of the wave.  His discovery
+of *zitterbewegung* — a trembling motion at the Compton
+scale, predicted by the Dirac equation — suggested that
+something really is oscillating inside the electron, at a
+frequency of ~10²¹ Hz and a radius of ~10⁻¹³ m.
+
+In parallel, Theodor Kaluza (1921) and Oskar Klein (1926)
+showed that adding a single compact extra dimension to
+Einstein's spacetime produces electromagnetism from pure
+geometry: the electromagnetic potential is the off-diagonal
+component of the five-dimensional metric.  Momentum in the
+compact direction appears as electric charge in four
+dimensions.  The idea was elegant but seemed to stall: one
+compact dimension gives electromagnetism but not the rest
+of particle physics.
+
+In 1997, J. G. Williamson and M. B. van der Mark united
+these threads.  They proposed that the electron is a single
+photon, trapped in a loop — specifically, a photon traveling
+along a (1,2) torus knot, winding once around the tube for
+every two circuits of the ring.  This is de Broglie's matter
+wave made literal: the wave IS the particle, confined by
+topology.  The zitterbewegung IS the photon circulating on
+the torus.  The model reproduces spin ½ (exact, from the 1:2
+winding ratio) and charge ≈ 0.91e (approximate, from the
+field geometry).  It was not widely adopted, partly because
+the paper left open what mechanism could confine a photon,
+and partly because the charge prediction was 9% too low.
 
 But the core claim — that spin ½ is topological, emerging
-from the 1:2 winding ratio — was exact.  And the idea that
+from the winding ratio — was exact.  And the idea that
 matter might *be* light, shaped by geometry rather than
 composed of point-like quarks, was radical enough to be
 worth pushing as far as it would go.
 
-The model described in this paper takes the WvM idea
-seriously and extends it.  We state three axioms and attempt
-to derive everything else — mass, charge, spin, the particle
-spectrum, nuclear binding — from the geometry of material
-extra dimensions.
+The model described in this paper takes these ideas
+seriously and extends them.  We combine de Broglie's
+particle-as-wave with Kaluza-Klein's geometry-as-force and
+WvM's topology-as-spin, and push the synthesis from a single
+particle to the full spectrum.  We state three axioms and
+attempt to derive everything else — mass, charge, spin, the
+particle spectrum, nuclear binding — from the geometry of
+material extra dimensions.
 
 
 ### 1.1 Three axioms
