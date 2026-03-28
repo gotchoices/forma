@@ -106,6 +106,26 @@ provide an object-oriented `Ma` class with efficient algorithms,
 energy decomposition, Jacobian, and inverse solving — without
 breaking any existing scripts.
 
+**Scope:** Intrinsic geometry.  Mode spectrum on the flat torus.
+"What modes exist and what are their energies?"
+
+
+### embedded.py — Embedded torus near-field (planned)
+
+See [`embedded.md`](embedded.md) for the design spec.  Computes
+how Ma modes project into 3D space: charge distributions along
+geodesics, E-fields, multipole decomposition, and interaction
+energies between particles at specified separations and phase
+offsets.  First use: R39 (phase-dependent near-field interaction).
+
+**Scope:** Extrinsic geometry.  How modes look from outside.
+"What forces do particles exert on each other at close range?"
+
+**Relationship to ma_model.py:** Separate module.  Uses the
+same geometry parameters (L₁–L₆) but adds the embedding
+(R, a) and 3D field calculations.  Does not depend on
+ma_model.py — only on ma.py for circumferences and constants.
+
 
 ## Charge formula history
 
