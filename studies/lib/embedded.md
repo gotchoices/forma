@@ -50,10 +50,22 @@ with:
     R = L_ring / (2π)     major radius (ring)
     a = L_tube / (2π)     minor radius (tube)
 
-A mode (n₁, n₂) traces a geodesic on this surface — the
-(n₁, n₂) torus knot.  In the WvM picture, charge is
-distributed along this geodesic.  The phase φ determines the
-rotational offset of the charge pattern on the torus surface.
+A mode (n₁, n₂) traces a path on this surface — the (n₁, n₂)
+torus knot.  **Important:** this module uses the *flat-torus
+geodesic* (uniform angular velocity in θ₁, θ₂) projected onto
+the embedded surface, NOT the true geodesic of the torus of
+revolution (which follows Clairaut's relation and has non-uniform
+angular velocity; see R12 Track 2).  On a flat torus the two
+are identical; on the embedded torus they differ, with the
+discrepancy growing with a/R.  At r_e = 6.6 (a >> R), the
+deviation is significant.  This is a modeling choice: the flat
+geodesic is the physically meaningful path (the photon sees flat
+space internally), while the embedded surface is a visualization
+aid.
+
+In the WvM picture, charge is distributed along this path.
+The phase φ determines the rotational offset of the charge
+pattern on the torus surface.
 
 The 3D E-field of this charge distribution has:
 - A monopole moment Q (= total charge, phase-independent)
@@ -88,22 +100,22 @@ EmbeddedSheet
 │   └── charge_density(n1, n2, phi)
 │           → callable σ(θ₁, θ₂)    continuous form
 │
-├── Fields
-│   ├── field_at(charges, point)     → (Ex, Ey, Ez)
-│   ├── potential_at(charges, point) → V
-│   └── field_energy(charges, grid)  → U_E (total field energy)
-│
-├── Multipoles
-│   ├── multipoles(charges, l_max)   → q_lm array
-│   ├── monopole(charges)            → Q
-│   ├── dipole(charges)              → (dx, dy, dz)
-│   └── quadrupole(charges)          → Q_ij (3×3)
-│
-└── Interaction
-    ├── interaction_energy(dist1, dist2)           → U_int
-    ├── interaction_force(dist1, dist2, axis)      → F
-    └── interaction_sweep(dist1, dist2, d_range, phi_range)
-            → 2D array of U_int(d, Δφ)
+└── Multipoles (methods — use torus center as origin)
+    ├── multipoles(pos, dq, l_max)  → q_lm array
+    ├── monopole(pos, dq)           → Q
+    ├── dipole(pos, dq)             → (dx, dy, dz)
+    └── quadrupole(pos, dq)         → Q_ij (3×3)
+
+Free functions (work on any pos/dq arrays, including mixed sheets):
+
+field_at(pos, dq, point, eps=0)        → (Ex, Ey, Ez)
+potential_at(pos, dq, point, eps=0)    → V
+field_energy(pos, dq, eps)             → U_E (self-energy)
+interaction_energy(pos1, dq1, pos2, dq2)         → U_int
+interaction_force(pos1, dq1, pos2, dq2, axis)    → F
+interaction_sweep(sheet1, sheet2, n1, n2, N,
+                  Q1, Q2, d_values, phi_values)
+        → SweepResult(U, U_coulomb, ratio)
 ```
 
 
@@ -180,10 +192,24 @@ pos, dq = e_sheet.charge_segments(n1=1, n2=2, N=500, phi=0.0, Q=1.0)
 pos2, dq2 = e_sheet.charge_segments(n1=1, n2=2, N=500, phi=math.pi)
 ```
 
+### Charge weighting convention
+
+Charge is distributed with **uniform weight per parameter step
+dt**, not per arc length on the embedded surface.  On the
+embedded torus, arc length per dt varies as
+ds/dt = √((n₁ a)² + (n₂(R + a cos(n₁t + φ)))²), so uniform-dt
+sampling places more charge per unit 3D length on the inner
+equator (where R + a cos θ₁ is small) than the outer.  This
+matches the flat-torus convention (uniform energy density on
+the intrinsic manifold).
+
+If a different weighting is needed (e.g., uniform arc-length
+distribution), pass a `weights` array to `charge_segments`.
+
 ### Charge conservation
 
-Total charge Σ dq = Q regardless of φ, n₁, n₂.  The phase
-changes WHERE the charge sits, not HOW MUCH.
+Total charge Σ dq = Q regardless of φ, n₁, n₂, and weighting.
+The phase changes WHERE the charge sits, not HOW MUCH.
 
 
 ## Feature 3: E-field and potential
@@ -210,11 +236,17 @@ E = field_at_points(pos, dq, points)  # (M, 3) array
 
 Direct Coulomb summation:
 
-    E(P) = Σ_i  dq_i (P − r_i) / |P − r_i|³
+    E(P) = Σ_i  dq_i (P − r_i) / (|P − r_i|² + ε²)^{3/2}
 
-with a softening parameter ε to avoid self-energy divergence
-at the source locations.  The softening scale should be much
-smaller than the torus dimensions (~0.01 × a).
+The softening parameter `eps` (default 0) regularizes the
+self-energy divergence at source locations.  It should ONLY be
+used for self-energy calculations (`field_energy`); for
+inter-particle fields and interaction energies, set `eps = 0`
+(no divergence when source and field points are on different
+particles).
+
+When needed, use eps ~ 0.01 × a (much smaller than torus
+dimensions, large enough to smooth the point-charge singularity).
 
 Units: E in e/(4πε₀ fm²), V in e/(4πε₀ fm).  Dimensionless
 internally; physical units via constants.py when needed.
@@ -280,11 +312,22 @@ ratio = U / U_coulomb
 
 ```python
 # Full (d, Δφ) sweep — the main R39 computation
+# Same-sheet (e-e):
 result = interaction_sweep(
-    sheet=e_sheet, n1=1, n2=2, N=500, Q=1.0,
+    sheet1=e_sheet, sheet2=e_sheet,
+    n1=1, n2=2, N=500, Q1=-1.0, Q2=-1.0,
     d_values=np.linspace(0.1, 50.0, 100),   # fm
     phi_values=np.linspace(0, 2*np.pi, 24),
 )
+
+# Mixed sheets (e-p for hydrogen):
+result_ep = interaction_sweep(
+    sheet1=e_sheet, sheet2=p_sheet,
+    n1=1, n2=2, N=500, Q1=-1.0, Q2=+1.0,
+    d_values=np.linspace(0.1, 50.0, 100),
+    phi_values=np.linspace(0, 2*np.pi, 24),
+)
+
 # result.U[i, j]  — interaction energy at d_values[i], phi_values[j]
 # result.U_coulomb[i] — point-charge Coulomb at d_values[i]
 # result.ratio[i, j]  — U / U_coulomb
@@ -359,8 +402,20 @@ nf = near_field_correction(result)
 
 8. Vectorize the pairwise sum using broadcasting
    (pos1[:, None, :] − pos2[None, :, :]).
-9. Optional: precompute charge distribution once, reuse for
-   all Δφ by rotating the phase analytically.
+9. Phase-reuse optimization: compute the geodesic at φ = 0
+   once, then for each new φ recompute positions via:
+
+       x(t; φ) = (R + a cos(n₁t + φ)) cos(n₂t)
+       y(t; φ) = (R + a cos(n₁t + φ)) sin(n₂t)
+       z(t; φ) = a sin(n₁t + φ)
+
+   This is NOT a rigid rotation of the full distribution — φ
+   rotates the charge pattern around the tube at each θ₂ slice
+   independently.  Precompute sin(n₁t), cos(n₁t), sin(n₂t),
+   cos(n₂t) once (4 arrays of size N), then for each φ use
+   angle-addition identities to get sin(n₁t + φ) and
+   cos(n₁t + φ) with 2 multiplies + 1 add per element.
+   Avoids recomputing N trig calls per phase step.
 
 
 ## Testing
