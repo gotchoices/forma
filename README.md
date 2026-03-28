@@ -236,8 +236,9 @@ sheet to three (3Ma = Ma_e × Ma_ν × Ma_p), yielding Ma (R26).
 | File | Purpose |
 |------|---------|
 | [`STATUS.md`](STATUS.md) | Where we are: objectives, results, active front, open problems |
+| [`studies/Taxonomy.md`](studies/Taxonomy.md) | **MaSt framework reference:** dimensions, geometry, particle catalog, mechanisms, open problems |
 | [`studies/STATUS.md`](studies/STATUS.md) | Study-by-study registry: active, backlog, done |
-| [`qa/Q84-mast-terminology.md`](qa/Q84-mast-terminology.md) | MaSt terminology and naming conventions |
+| [`qa/Q84-mast-terminology.md`](qa/Q84-mast-terminology.md) | MaSt naming conventions and migration guide |
 | [`qa/README.md`](qa/README.md) | Index of answered and open physics questions |
 | [`qa/INBOX.md`](qa/INBOX.md) | Capture queue for new questions |
 | [`papers/README.md`](papers/README.md) | Papers: matter-from-light, sub-quantum memory, atoms-from-geometry, universe-as-mode |
