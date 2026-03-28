@@ -23,7 +23,7 @@ framework that once threatened the model.
 |---|---------|-----------------|
 | 1 | Introduction | From particles to systems: what changes when you add space? |
 | 2 | Nine dimensions | Ma × S: material geometry for identity, spatial dimensions for position. |
-| 3 | Coulomb from geometry | The gauge field IS the off-diagonal metric. α = 1/137 derived, not assumed. |
+| 3 | Coulomb from geometry | Gauge fields emerge from the wave equation on Ma × S. α from shear, Coulomb from geometry. |
 | 4 | Hydrogen from first principles | E₁ = −13.6 eV, a₀ = 0.53 Å — the full chain from Ma to the hydrogen atom. |
 | 5 | Six gauge fields | Ma predicts 6 U(1) forces, not just one. Nuclear force candidates at 52 and 467 MeV. |
 | 6 | The Yukawa crisis | Kaluza-Klein boson corrections 10⁴× too large. The boson-mediation picture fails. |
@@ -76,16 +76,35 @@ are *where they are* because of S.
 
 ## 3. Coulomb from geometry
 
-### 3.1 The Kaluza-Klein gauge mechanism
-In Kaluza-Klein theory, gauge fields are not added to the
-geometry — they ARE the geometry.  The off-diagonal metric
-components g_{μi} (mixing spatial and material dimensions)
-are the gauge potentials.  Ma has 6 material dimensions, so
-the Kaluza-Klein decomposition yields 6 independent U(1) gauge fields.
+### 3.1 How forces emerge from material dimensions
+
+In MaSt, particles are standing electromagnetic waves on
+material sheets — confined photons, not point particles
+moving through compact dimensions.  This is different from
+the original Kaluza-Klein picture, where a pre-existing
+particle carries momentum along a compact direction and
+that momentum appears as electric charge.
+
+But the mathematical structure is shared.  R36 (geometric
+tilt) showed that when you solve the wave equation on the
+full Ma × S geometry, off-diagonal metric components
+g_{μi} — mixing spatial (S) and material (Ma) dimensions —
+emerge as gauge potentials (R36 F8–F9).  They are not
+imposed; they fall out of the wave equation.  With 6
+material dimensions, 6 independent U(1) gauge fields
+appear.
+
+The physical origin of charge is different from KK:
+charge arises from shear-induced E-field asymmetry on the
+material sheet (R19), not from compact-direction momentum.
+But the long-range Coulomb force between two charged modes
+is correctly described by the emergent gauge field — the
+mathematical tool works even though the physical mechanism
+underneath is geometry, not particle motion.
 
 ### 3.2 Electromagnetism identified
 The electromagnetic field is the specific combination
-A^EM = −A¹ + A⁵ (mixing the electron tube and proton tube
+A^EM = −A¹ + A⁵ (mixing the electron-tube and proton-tube
 gauge fields).  This gives charge Q = −n₁ + n₅, matching
 the charge formula used throughout Paper 1.
 
@@ -98,8 +117,8 @@ particles.
 
 ### 3.4 The Coulomb potential
 A charged mode at position x₀ in S produces a 1/r
-potential through the zero-mode Kaluza-Klein gauge field.  The
-result: V(r) = −α ℏc / r = −1.440/r MeV·fm.
+potential through the zero-mode of the emergent gauge field.
+The result: V(r) = −α ℏc / r = −1.440/r MeV·fm.
 
 
 ## 4. Hydrogen from first principles
@@ -120,10 +139,10 @@ consequence of the geometry that defines the particles.
 ## 5. Six gauge fields: beyond electromagnetism
 
 ### 5.1 The gauge sector census
-Ma predicts 6 U(1) gauge fields, one per material dimension.
-Only one combination (A^EM) is the electromagnetic force.
-The other five are additional forces predicted by the
-geometry.
+The Ma × S wave equation produces 6 U(1) gauge fields,
+one per material dimension (R36 F8).  Only one combination
+(A^EM) is the electromagnetic force.  The other five are
+additional forces predicted by the geometry.
 
 ### 5.2 Nuclear force candidates
 Two gauge bosons have nuclear-scale properties:
@@ -147,9 +166,9 @@ nuclear physics.
 ### 6.1 The boson approach to nuclear binding
 The conventional strategy is: derive forces from geometry,
 then compute bound states.  Section 3 extracted the Coulomb
-force successfully.  The natural next step is to push the
-Kaluza-Klein framework further — the massive gauge bosons (section 5)
-should mediate short-range forces between nucleons.
+force successfully.  The natural next step is to push further — the massive
+gauge bosons (section 5) should mediate short-range forces
+between nucleons.
 
 ### 6.2 It fails spectacularly
 Each material dimension contributes a tower of massive gauge
@@ -166,9 +185,9 @@ shear mechanism threshold (r_e > 0.26) and the
 spectroscopic constraint (r_e < 0.001).
 
 ### 6.3 The failure is in the intermediate theory
-The boson-mediation picture assumed that the Ma material
-space generates gauge bosons (Kaluza-Klein mechanism), which mediate
-forces between particles, which bind nuclei.  The leading-
+The boson-mediation picture assumed that the gauge fields
+emergent from the geometry mediate forces between
+particles, which bind nuclei.  The leading-
 order Coulomb term works perfectly.  But the massive boson
 tower produces unphysical corrections.  This looks like it
 could be fatal to the entire framework.
@@ -256,21 +275,21 @@ nuclear mode.
 
 ### 11.1 The boson picture was wrong, not the geometry
 The Yukawa tension (section 6) arose from an intermediate
-theory: we assumed that Kaluza-Klein gauge bosons mediate forces
-between particles, then computed corrections from those
-bosons.  The corrections were unphysically large.
+theory: we assumed that the emergent gauge bosons mediate
+forces between particles, then computed corrections from
+those bosons.  The corrections were unphysically large.
 
 But sections 7–10 show that the intermediate theory was
 unnecessary.  Nuclei are not particles bound by exchanged
 bosons — they are single Ma modes.  The deuteron is not a
-proton and neutron exchanging a pion (or a Kaluza-Klein gauge boson).
-It is one standing wave.  No mediator is needed because
-there is nothing to mediate between.
+proton and neutron exchanging a pion (or a massive gauge
+boson).  It is one standing wave.  No mediator is needed
+because there is nothing to mediate between.
 
 ### 11.2 What this means for atomic physics
-The zero-mode Kaluza-Klein gauge field — the Coulomb potential —
+The zero-mode gauge field — the Coulomb potential —
 correctly reproduces hydrogen (section 4).  The massive
-Kaluza-Klein tower produces large corrections if you assume it
+gauge tower produces large corrections if you assume it
 couples with the same strength.  But the nuclear result
 shows that the boson-mediation picture is not how Ma
 physics works at short range.  The geometry speaks
@@ -283,12 +302,13 @@ the answer (direct modes).
 
 ### 11.3 The residual question
 What remains open is the detailed coupling structure of
-the massive Kaluza-Klein tower.  If the shear-based charge mechanism
-(R19) does not couple to the massive modes in the same way
-as the zero mode, the Yukawa corrections would be naturally
-suppressed — consistent with both the hydrogen spectrum and
-the nuclear mode picture.  This is an active theoretical
-question, but it is no longer a crisis.
+the massive gauge tower.  If the shear-based charge
+mechanism (R19) does not couple to the massive modes in
+the same way as the zero mode, the Yukawa corrections
+would be naturally suppressed — consistent with both the
+hydrogen spectrum and the nuclear mode picture.  This is
+an active theoretical question, but it is no longer a
+crisis.
 
 
 ## 12. Two-tier structure
@@ -549,9 +569,9 @@ requires ~20 inputs to match.
 The electron aspect ratio remains unconstrained.  Nuclear
 masses are insensitive to it (electron material dimensions
 contribute energy at the keV scale, 10⁴–10⁵× smaller than
-the proton-sheet contributions).  It must be pinned by electron-scale
-observables — possibly through the Kaluza-Klein coupling structure
-or through the R19-shear-charge formula.
+the proton-sheet contributions).  It must be pinned by
+electron-scale observables — possibly through the gauge
+coupling structure or through the R19 shear-charge formula.
 
 ### 15.2 The 8 MeV/A residual
 Heavy nuclei show a systematic residual of ~8 MeV per
