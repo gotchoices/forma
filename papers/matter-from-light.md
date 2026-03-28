@@ -13,12 +13,12 @@ Paper 3: [The Nine-Dimensional Atom](atoms-from-geometry.md) (rough outline).
 |---|---------|------------|-----------------|
 | 1 | The premise | Setup | Three axioms: energy, geometry, Maxwell. Everything else follows. |
 | 2 | Why topology? | Setup | Gravity and nonlinear EM can't trap a photon. A closed surface can. |
-| 3 | The flat torus | Setup | T² as a resonant cavity. Standing waves, mode spectrum, the Asteroids analogy. |
+| 3 | The flat torus | Setup | A material sheet as a resonant cavity. Standing waves, mode spectrum, the Asteroids analogy. |
 | 4 | The electron | Payoff | The (1,2) mode gives spin ½, charge e, g ≈ 2 — with zero free parameters. |
 | 5 | The energy gap | Payoff | A hard mass floor at 245 keV. Below it: classical EM. Above it: particles. |
 | 6 | Heavier particles | Extension | Harmonics add mass without charge → proton, neutron, beta decay. |
 | 7 | The neutrino crisis | Crisis | Lightest uncharged mode is 10⁵× too heavy. Charge-spin linkage blocks all fixes. |
-| 8 | Three tori on Ma | Resolution | Each particle family gets its own material sheet. The crisis is resolved by architecture. |
+| 8 | The MaSt architecture | Resolution | Each particle family gets its own material sheet. The crisis is resolved by architecture. |
 | 9 | The neutrino resolved | Resolution | Mass-squared splittings from the neutrino sheet, matching experiment. |
 | 10 | The emergent neutron | Surprise | A cross-sheet mode nobody looked for: charge 0, correct mass, natural decay. |
 | 11 | The particle zoo | Payoff | Parameter-free predictions: kaon 1.2%, lambda 0.9%, eta-prime 0.3%. |
@@ -29,29 +29,31 @@ Paper 3: [The Nine-Dimensional Atom](atoms-from-geometry.md) (rough outline).
 
 ### Abstract
 
-We explore a model in which all matter is electromagnetic
-radiation confined to material extra dimensions.  The model
-begins with three axioms — energy exists, material
-dimensions exist, and Maxwell's equations govern propagation
-— and derives particle properties from geometry alone.
+We explore a model — MaSt (Material-Space-time) — in which
+all matter is electromagnetic radiation confined to material
+extra dimensions.  The model begins with three axioms —
+energy exists, material dimensions exist, and Maxwell's
+equations govern propagation — and derives particle
+properties from geometry alone.
 
-On a single flat torus (T²), the simplest nontrivial mode
+On a single material sheet, the simplest nontrivial mode
 reproduces the electron: spin ½ from the winding topology,
 charge e from the shear of the lattice, and the g-factor
 g ≈ 2 from the ratio of photon to fermion angular momentum.
-The torus imposes a hard mass floor at ~245 keV, below
+The sheet imposes a hard mass floor at ~245 keV, below
 which no material-dimension modes exist, providing a
-geometric origin for the quantum-classical boundary.
+geometric origin for the particle-creation threshold.
 
 A structural crisis forces the architecture beyond one
-torus: the neutrino — uncharged, spin ½, and 10⁵ times
+sheet: the neutrino — uncharged, spin ½, and 10⁵ times
 lighter than the mass floor — is impossible on any single
-T² because a charge-spin linkage ties both properties to
-the same quantum number.  The resolution is Ma, the six-
-dimensional material space, composed of three material sheets, one
-per stable particle family.  On this geometry, the neutrino
-mass-squared splitting ratio Δm²₃₁/Δm²₂₁ = 33.6 is
-reproduced exactly from a single shear parameter.
+material sheet because a charge-spin linkage ties both
+properties to the same quantum number.  The resolution is
+Ma, the six-dimensional material space, composed of three
+sheets (3Ma), one per stable particle family.  On this
+geometry, the neutrino mass-squared splitting ratio
+Δm²₃₁/Δm²₂₁ = 33.6 is reproduced exactly from a single
+shear parameter.
 
 Ma generates an emergent neutron as a cross-sheet mode
 whose charge, mass, and decay products follow from the
@@ -115,6 +117,14 @@ or weak forces are assumed (they will emerge from the
 geometry).  No particle masses are assumed (they will emerge
 from the mode spectrum).  The axioms say only that photons
 propagate on material surfaces according to Maxwell.
+
+The framework they define is called **MaSt** —
+**Ma**terial-**S**pace-**t**ime — after its three
+ingredients.  Einstein fused space and time into spacetime;
+MaSt adds a foundational layer beneath it.  Energy does not
+merely move through spacetime — it moves through the full
+Ma × S × t continuum, and what we call "matter" is energy
+whose motion is confined to the material dimensions (Ma).
 
 
 ### 1.2 Natural units: everything reduces to energy and length
@@ -183,9 +193,9 @@ in stages.  Each stage is motivated by what the previous
 stage could not explain.  We begin with a single flat torus
 and show that it produces an electron with the correct
 spin, charge, and g-factor.  We then encounter a crisis —
-the neutrino is structurally impossible on any single torus
-— which forces the model into a six-dimensional material
-geometry (Ma).  On this larger geometry, the neutrino is
+the neutrino is structurally impossible on any single
+material sheet — which forces the model into a six-
+dimensional material geometry (Ma).  On this larger geometry, the neutrino is
 accommodated, the neutron emerges unbidden as a cross-sheet
 mode, and the model generates parameter-free predictions
 for the masses of unstable particles.
@@ -262,8 +272,8 @@ the particles we observe?
 
 ## 3. The flat torus
 
-The simplest compact 2D surface is the flat torus, T².
-To build one, start with a rectangle and identify opposite
+The simplest compact 2D surface is a flat torus — a
+material sheet.  To build one, start with a rectangle and identify opposite
 edges: the left edge is the same as the right edge, and the
 top is the same as the bottom.  A photon traveling off the
 right side reappears on the left.  One traveling off the
@@ -541,22 +551,28 @@ pair creation thresholds, stable ground states — all appear
 as consequences of the geometry.
 
 
-### 5.4 The quantum-classical boundary
+### 5.4 The particle-creation threshold
 
-The energy gap provides a physical, geometric origin for
-the boundary between quantum and classical physics.  It is
-not imposed as a philosophical postulate ("observation
-collapses the wave function") or a mathematical axiom
-("operators on Hilbert space").  It is derived from the
-periodic boundary conditions of a finite compact surface.
+The energy gap provides a physical, geometric origin for the
+threshold of particle creation.  Below 245 keV, the material
+dimensions are inert: no modes can be excited, no particles
+can be created, and physics is purely electromagnetic.
+Above 245 keV, the discrete mode spectrum activates: pair
+creation becomes possible, energy is quantized, and the
+material dimensions become observable.
 
-Below the gap: continuous, classical, deterministic.
-Above the gap: discrete, quantum, statistical.
-The boundary between them is set by the size of the material
-dimensions — which is set by the mass of the lightest
-particle.
+This threshold is not imposed by hand.  It is derived from
+the periodic boundary conditions of a finite compact
+surface — the smallest wavelength that fits around the
+material sheet sets the minimum excitation energy.
 
-Quantization is a consequence of geometry.
+Note that this is the threshold for *particle creation*, not
+for quantum mechanics in general.  Quantum effects at atomic
+scales (eV) — discrete spectra, entanglement,
+superconductivity — arise from the spatial dimensions and
+the Coulomb potential, not from material-dimension modes.
+The gap separates material-mode physics (MeV) from ordinary
+electromagnetism (eV and below).
 
 
 ## 6. Heavier particles: harmonics on the torus
@@ -696,7 +712,8 @@ The neutrino is the ghost of the particle zoo: nearly
 massless (< 0.1 eV), electrically neutral, and barely
 interacting with anything.  It has spin ½, so it is a
 fermion.  These three properties — light, uncharged, spin ½
-— turn out to be mutually incompatible on any single torus.
+— turn out to be mutually incompatible on any single
+material sheet.
 
 This is not a minor technical issue.  It is a structural
 impossibility that forces the model into a fundamentally
@@ -726,7 +743,7 @@ course of studies R23–R25.  All failed.
 
 **Beating between high modes (R23).**  On Ma_e,
 near-degenerate mode pairs exist with energy differences in
-the sub-eV range — tantalizing close to neutrino mass
+the sub-eV range — tantalizingly close to neutrino mass
 splittings.  The ratio Δm²₃₁/Δm²₂₁ = 33.6 can be
 reproduced by many triplets.  But a beat between two modes
 is an oscillation frequency, not a rest mass.  The neutrino
@@ -736,17 +753,16 @@ gives the right oscillation rate but the wrong physical
 interpretation.
 
 **Third compact dimension (R24).**  Adding a third compact
-dimension (making the space T³ instead of T²) introduces
+axis (extending one sheet to three dimensions) introduces
 modes (0, 0, n₃) that propagate purely along the new axis.
 With n₁ = n₂ = 0, these modes are automatically uncharged.
 The mass-squared ratio Δm²₃₁/Δm²₂₁ depends only on integer
 mode numbers, and the triplet (7, 10, 42) matches the
 experimental value 33.6 to 0.03σ — a remarkable result.
 
-But these modes have spin 0.  On a product space T² × S¹,
-modes with n₁ = n₂ = 0 have no tube winding and therefore
-no angular momentum.  They are bosons, not fermions.  The
-neutrino must be spin ½.
+But these modes have spin 0.  Modes with n₁ = n₂ = 0 have
+no tube winding and therefore no angular momentum.  They
+are bosons, not fermions.  The neutrino must be spin ½.
 
 **The charge-spin linkage (R25).**  The root cause of the
 failure is a structural constraint on the WvM spin
@@ -771,26 +787,26 @@ quantum number.
 This is not a technical failure that might be fixed by a
 cleverer calculation, a different mode assignment, or a
 modest extension of the model.  The charge-spin linkage is
-a mathematical fact about the torus geometry: on any single
-T² (or T³), the WvM spin mechanism ties fermionic spin to
-tube winding, and tube winding is the same quantum number
-that produces charge.  The neutrino — uncharged, fermionic
-— falls in a category that the mechanism structurally
-cannot produce.
+a mathematical fact about the sheet geometry: on any single
+material sheet, the WvM spin mechanism ties fermionic spin
+to tube winding, and tube winding is the same quantum
+number that produces charge.  The neutrino — uncharged,
+fermionic — falls in a category that the mechanism
+structurally cannot produce.
 
 Either the model is wrong, or the neutrino lives somewhere
 else entirely.
 
 
-## 8. Three tori on Ma
+## 8. The MaSt architecture
 
 The neutrino crisis has an architectural resolution.
 
-Instead of trying to fit all particles onto a single T² (or
-T³), we give each stable particle family its own material
-sheet within a shared six-dimensional torus.  The
-resulting material space is Ma — a product of three material
-sheets.
+Instead of trying to fit all particles onto a single
+material sheet, we give each stable particle family its own
+sheet within a shared six-dimensional material space.  The
+result is **Ma** — the material space of the MaSt framework,
+composed of three material sheets (3Ma).
 
 | Particle | Dimensions | Material sheet |
 |----------|-----------|-------------|
@@ -806,10 +822,10 @@ The neutrino is a mode on (θ₃, θ₄) with n₃ odd (for spin
 ½) and n₁ = n₅ = 0 (for zero charge).
 
 
-### 8.1 How Ma resolves the crisis
+### 8.1 How 3Ma resolves the crisis
 
 The charge-spin linkage depended on charge and spin being
-tied to the same quantum number on the same torus.  On Ma,
+tied to the same quantum number on the same sheet.  On Ma,
 they are decoupled:
 
 - **Charge** comes from the electron sheet: Q = −n₁ + n₅.
@@ -828,8 +844,8 @@ different dimensions of the material space.
 
 ### 8.2 The three scales
 
-The three material sheets have vastly different sizes, set by the
-masses of their resident particles:
+The three sheets of 3Ma have vastly different sizes, set by
+the masses of their resident particles:
 
 | Particle | Material sheet | Circumferences | Energy scale |
 |----------|------------|----------------|-------------|
@@ -855,9 +871,9 @@ sits right at the edge of experimental sensitivity.
 
 ### 8.3 Cross-shear coupling
 
-The three material sheets are not perfectly independent.  The
-full Ma metric can include off-diagonal terms that tilt one
-sheet relative to another.  These tilts are parameterized
+The three sheets are not perfectly independent.  The full Ma
+metric can include off-diagonal terms that tilt one sheet
+relative to another.  These tilts are parameterized
 by **cross-shears** (σ_ep, σ_eν, σ_νp) — small angles
 between the subplanes.
 
@@ -870,7 +886,7 @@ neutron — that nobody put in and nobody expected.
 With three sheets, three within-sheet shears (s₁₂, s₃₄,
 s₅₆), three aspect ratios (r_e, r_ν, r_p), three
 circumferences (L₂, L₄, L₆), and three cross-shears
-(σ_ep, σ_eν, σ_νp), Ma has 12 geometric parameters in
+(σ_ep, σ_eν, σ_νp), the Ma geometry has 12 parameters in
 total.  How many are determined by observation is the
 subject of section 12.
 
@@ -1193,17 +1209,32 @@ self-consistent at every point on this family — the
 electron's mass, spin, charge, and g-factor are all correct
 simultaneously.
 
-But nothing selects where on the family the electron sits.
 The aspect ratio r_e is invisible to all MeV-scale
 observables: it enters no mode energy at any precision we
-can currently probe.  Without a geometric principle that
-fixes r_e, the model cannot predict α from first
-principles.
+can currently probe.
 
-This is the central open problem.  A solution would likely
-complete the model: if r_e is determined, then s₁₂ follows
-from the charge formula, and the entire Ma geometry is
-fully specified.
+A partial result narrows the range.  Treating the material
+sheet as an elastic membrane with isotropic surface tension,
+the total energy (photon mode plus boundary) has a minimum
+along the α curve at r_e ≈ 0.50 — a "fat torus" where the
+ring circumference is about half the tube.  The minimum is
+broad (r = 0.4 to 0.6 within 0.5% of optimal), but the
+historical value r = 6.6 is 91% higher in energy and
+decisively ruled out.
+
+The remaining uncertainty is the anisotropic correction:
+the actual boundary energy depends on the **moduli
+potential** — the vacuum energy of the material sheet as a
+function of its shape — which is not yet derivable within
+the framework.  This is the same deep unknown that blocks
+computing the neutrino sheet's stiffness.
+
+The α problem is thus partially resolved (regime selected,
+thin torus excluded) but not closed (precise r_e awaits the
+moduli potential).  A full solution would complete the
+model: if r_e is determined, then s₁₂ follows from the
+charge formula, and the entire Ma geometry is fully
+specified.
 
 
 ### 12.3 Ghost modes
