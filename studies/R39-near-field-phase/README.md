@@ -1,6 +1,6 @@
 # R39. Phase-dependent near-field interaction
 
-**Status:** Active — framing
+**Status:** Complete — see `findings.md`
 **Depends on:** R7 (torus field energy), R19 (shear-charge mechanism),
   R26–R28 (Ma metric, mode spectrum), R29 F6 (gauge boson nuclear
   force candidate)
@@ -76,7 +76,7 @@ Compute the 3D E-field and multipole decomposition of a single
 Ma mode on an embedded torus.
 
 **Method:**
-1. From ma.py: get L₁, L₂ (electron sheet circumferences) at
+1. From ma_model.py: get L₁, L₂ (electron sheet circumferences) at
    the standard geometry (r_e = 6.6).
 2. Embed: R = L₂/(2π), a = L₁/(2π).  The (1,2) geodesic winds
    once around the tube and twice around the ring.
@@ -220,10 +220,11 @@ module of the new library (see `lib/ma-model.md`).
 These build on R7's `torus_charge.py` but are generalized and
 reusable.
 
-### Existing: lib/ma.py
+### Existing: lib/ma_model.py
 
 Used to get circumferences L₁–L₆ and shears at the standard
-geometry.  No changes needed.
+geometry via `Ma(r_e=..., self_consistent=True).L`.  No changes
+needed.
 
 
 ## Computational cost estimate
