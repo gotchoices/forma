@@ -534,6 +534,8 @@ class TestFit(unittest.TestCase):
         """
         Fit sigma_ep using the neutron mass alone.
         Should recover σ_ep ≈ -0.0906 (the R27 value).
+        Note: r_e=6.6 is used here as a test fixture, not a physics claim.
+        r_e is free (R30 F11); r_p=8.906 is pinned (R27).
         """
         result = Ma.fit(
             targets=[Target(n=NEUTRON, mass_MeV=939.565)],

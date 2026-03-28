@@ -22,18 +22,20 @@ energy and topology alone.
 **Open sub-problem:** the formula α(r,s) produces a one-parameter family of
 solutions — every r > ~2 has a self-consistent s.  Nothing currently selects r.
 
-### R39. Phase-dependent near-field interaction
+### R39. Phase-dependent near-field interaction — COMPLETE
 **Study:** [`R39-near-field-phase/`](R39-near-field-phase/)
 **Questions:** [Q88](../qa/Q88-phase-dependent-nuclear-force.md), [Q82](../qa/Q82-entanglement-as-ma-geometry.md)  **Type:** compute  **Depends on:** R7, R19, R26–R29
 
 Do two identical Ma modes interact differently depending on their
-relative phase?  At r >> L, all modes look like point charges
-(Coulomb).  At r ~ L, the internal charge distribution matters.
-Computes the 3D E-field of modes on an embedded torus, decomposes
-into multipoles, and measures the phase-dependent interaction
-energy.  4 tracks: single-mode field structure, two-mode
-interaction sweep, near-field correction characterization, and
-proton-scale nuclear force assessment.
+relative phase?  **Result:** Yes, but the dominant effect is
+geometric, not phase-dependent.  The proton's extended charge
+distribution (a ≈ 3.8 fm) suppresses the Coulomb barrier by
+74% at 1 fm and 55% at 2 fm — a built-in feature of the torus
+geometry.  Phase modulation adds ~3–14% variation on top.
+The (1,2) mode has Δφ → Δφ+π symmetry, so "anti-phase" is
+identical to "in-phase" — Q88's anti-phase cancellation
+hypothesis is falsified for this mode.  No attractive regime
+found.  See `findings.md` (F1–F7).
 
 ### R27. Ma (the six-dimensional material space) oscillation patterns — particles, atoms, and nuclei
 **Study:** [`R27-bound-states/`](R27-bound-states/)

@@ -35,13 +35,16 @@ TYPICAL USAGE
 
     from lib.ma_model import Ma
 
-    m = Ma(r_e=6.6, r_nu=5.0, r_p=8.906, sigma_ep=-0.0906)
+    # r_p = 8.906 and σ_ep = -0.0906 are pinned by R27 (neutron + muon).
+    # r_e and r_nu are FREE — values below are starting guesses.
+    # R37 F7 prefers r_e ≈ 0.5 (energy minimization); 6.6 is historical.
+    m = Ma(r_e=0.5, r_nu=5.0, r_p=8.906, sigma_ep=-0.0906)
     m.energy((1, 2, 0, 0, 0, 0))       # electron energy (MeV)
     m.charge((1, 2, 0, 0, 0, 0))       # -1
     m.L                                  # circumferences (fm)
 
     # Self-consistent (m_e, m_p exact):
-    m = Ma(r_e=6.6, r_nu=5.0, r_p=8.906, sigma_ep=-0.0906,
+    m = Ma(r_e=0.5, r_nu=5.0, r_p=8.906, sigma_ep=-0.0906,
            self_consistent=True)
 
     # Parameter sweep:
@@ -1078,7 +1081,7 @@ class Ma:
         ...         Target(n=(-1,5,0,0,-2,0), mass_MeV=105.658), # muon
         ...     ],
         ...     free_params=['r_p', 'sigma_ep'],
-        ...     fixed_params={'r_e': 6.6, 'r_nu': 5.0},
+        ...     fixed_params={'r_e': 0.5, 'r_nu': 5.0},  # r_e is free; 0.5 is a guess
         ... )
         >>> result.params  # should recover r_p ≈ 8.906, σ_ep ≈ -0.0906
         """
@@ -1088,10 +1091,14 @@ class Ma:
                 raise ValueError(f"Unknown parameter {p!r}. "
                                  f"Must be one of {VALID_PARAMS}")
 
-        # Default starting point — use the R27 standard geometry
-        # as the initial guess (much better than zeros)
+        # Default starting point.
+        #   r_p = 8.906, σ_ep = -0.0906: pinned by R27 (neutron + muon)
+        #   r_e, r_nu: FREE parameters — these are starting guesses only.
+        #     r_e = 0.5 follows R37 F7 (energy minimization prefers fat torus).
+        #     r_nu = 5.0 is a conventional starting point (unconstrained).
+        #   Callers should set these explicitly via fixed_params when known.
         defaults = {
-            'r_e': 6.6, 'r_nu': 5.0, 'r_p': 8.906,
+            'r_e': 0.5, 'r_nu': 5.0, 'r_p': 8.906,
             'sigma_ep': -0.0906, 'sigma_enu': 0.0, 'sigma_nup': 0.0,
         }
         if fixed_params:
