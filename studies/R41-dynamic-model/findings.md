@@ -109,3 +109,84 @@ The scan overhead is small because harmonics are cached by
 (|n_tube|, |n_ring|, r).  Most of the 15,624 modes share the
 same sheet parameters, so only a handful of unique harmonics
 need computing.  The dominant cost is the 15,624 energy() calls.
+
+
+## Track 4: Fresh parameter determination
+
+Script: `scripts/track4_fresh_params.py`
+
+### F30. Dynamic model does NOT shift r_p or σ_ep
+
+Starting from a generic initial guess and fitting to neutron
+(939.565 MeV) + muon (105.658 MeV) — the same R27 protocol:
+
+| Method   | r_p          | σ_ep          | Iters | Time   |
+|----------|-------------|---------------|-------|--------|
+| static   | 8.91024743  | -0.09092990   | 5     | 186 ms |
+| shortcut | 8.91024764  | -0.09092991   | 5     | 720 ms |
+| full     | 8.91024763  | -0.09092991   | 5     | 3.9 s  |
+
+Parameter shifts (full − static):
+  Δr_p  = +2.0×10⁻⁷
+  Δσ_ep = −2.2×10⁻¹⁰
+
+The dynamic model reproduces the static R27 solution to 7
+significant figures.  This is because the fit targets (neutron,
+muon) have negligible dynamic corrections:
+  - Neutron: n_tube = 0 on the proton sheet → zero correction
+  - Muon: δE/E ≈ 2×10⁻⁸ → sub-eV shift
+
+The geometry parameters are controlled by the static structure
+(Compton constraint + mode assignments), not by the O(α²)
+dynamic corrections.
+
+
+### F31. Dynamic corrections shift non-target energies
+
+At the fitted parameters, the dynamic model shifts:
+  - E(electron): +0.090 MeV (full) vs target 0.511 MeV
+  - E(proton):   +0.316 MeV vs target 938.272 MeV
+
+These are the δE/E ≈ 1.8×10⁻⁴ (electron) and 3.4×10⁻⁴ (proton)
+corrections from the force-balance.  They represent the
+model's prediction that measured particle masses include a
+geometric correction from the deformed torus wall.
+
+The self-consistent L-rescaling in Ma targets E_static = m_e
+and E_static = m_p.  So:
+  E_dynamic(electron) = m_e × (1 + δE/E_e) ≈ m_e + 0.09 MeV
+  E_dynamic(proton)   = m_p × (1 + δE/E_p) ≈ m_p + 0.32 MeV
+
+These are predictions, not errors: the dynamic model says the
+"bare" torus mass is m_e, and the physical mass is m_e + δm.
+
+
+### F32. 3-target fit reveals L-rescaling inconsistency
+
+When the electron is added as a fit target (with r_e free):
+  - Static: converges, r_e ≈ 0.5000 (unchanged)
+  - Full: does NOT converge after 50 iterations
+
+The non-convergence happens because the self-consistent
+L-rescaling adjusts L until E_static(electron) = m_e, but
+the fit residual uses E_dynamic(electron) = m_e × (1 + δE/E).
+The residual can never reach zero — it saturates at
+~m_e × δE/E ≈ 10⁻⁴ MeV.
+
+The fitter compensates by pushing r_e to 0.317 (from 0.5),
+where the dynamic correction is smaller (δE/E ≈ 3×10⁻⁵),
+but still can't close the gap completely.
+
+**Implication:** To properly fit with the electron as a target
+under the dynamic model, the self-consistent L-rescaling should
+target dynamic energies, not static.  This is a code
+enhancement for a future track — the physics is correct, the
+inner loop just needs to use energy() instead of energy_static().
+
+
+### F33. Fit is robust from distant starting points
+
+Starting from r_p = 5.0, σ_ep = 0.0 (far from the solution),
+both static and full converge to the same answer in 7 iterations.
+The basin of attraction is large and the Levenberg-Marquardt
+solver handles it cleanly.

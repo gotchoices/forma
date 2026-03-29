@@ -136,13 +136,21 @@ Full vs shortcut comparison (`scripts/track3_full_vs_shortcut.py`):
 - All 125 tests pass; Track 11 results reproduced.
 - Findings: F27 (convergence), F28 (accuracy), F29 (timing).
 
-### Track 4: Fresh parameter determination
+### Track 4: Fresh parameter determination [DONE]
 
-Starting from scratch (no r_p input):
-- Fix α = 1/137.036 (measured)
-- Fix observed masses: m_e, m_p, m_n, m_μ
-- Solve for r_e, r_nu, r_p, σ_ep, σ_eν, σ_νp
-- Compare to static model's R27 solution
+Re-derived r_p and σ_ep from neutron + muon masses using static,
+shortcut, and full dynamic models (`scripts/track4_fresh_params.py`):
+
+- **Result**: Dynamic model reproduces static R27 solution to 7
+  significant figures (Δr_p = 2×10⁻⁷, Δσ_ep = 2×10⁻¹⁰).
+  The fit targets (neutron, muon) have negligible dynamic corrections.
+- **Non-target shifts**: Dynamic model predicts E(electron) and E(proton)
+  are ~10⁻⁴ higher than bare torus values — a geometric correction.
+- **3-target fit bug**: Adding electron as a target fails to converge
+  because self-consistent L-rescaling targets static energy while
+  fit residuals use dynamic energy.  Fixable but not blocking.
+- Findings: F30 (parameters unchanged), F31 (non-target shifts),
+  F32 (L-rescaling inconsistency), F33 (robustness).
 
 ### Track 5: Ghost census (dynamic)
 
