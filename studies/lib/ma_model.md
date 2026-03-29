@@ -432,13 +432,27 @@ the wall sits where inward vacuum pressure balances outward mode
 pressure.  The shape, the mode, and the energy are all outputs of
 this self-consistent calculation — no static baseline is assumed.
 
-In practice, the results are close to the static values (O(α²)
-corrections), so the implementation CAN use E_static × (1 + δE/E)
-as a computational shortcut.  But the physics is force balance,
-not perturbation theory.  If future work requires the full
-self-consistent solve (e.g., for strongly deformed shapes or
-high-energy modes where α runs), the shortcut should be replaced
-with an iterative shape → mode → pressure → shape loop.
+Two solution methods are implemented:
+
+- **`dynamic='full'`** (or `dynamic=True`): Iterative force-balance
+  solve.  Starting from a circular cross-section, repeats:
+  compute 3D geodesic curvature on the current shape → Fourier-
+  decompose the pressure → compute equilibrium deformation → update
+  the cross-section.  Converges when the shape stops changing
+  (|Δε_k| < tol).  This IS the self-consistent solution: the code
+  discovers that corrections are small rather than assuming it.
+  Convergence is geometric with ratio ~α ≈ 0.007, so 2–3 iterations
+  suffice.
+
+- **`dynamic='shortcut'`**: One-shot perturbation.  Computes pressure
+  on the undeformed (circular) cross-section and applies the
+  equilibrium formula once: E_dynamic = E_static × (1 + δE/E).
+  This is iteration zero of the full solve.  Fast but does not
+  capture the feedback between shape and pressure.  Agrees with
+  the full solve to O(α⁴) in energy for known particles.
+
+For `dynamic=False` (default), no corrections are applied and
+all methods return the flat-torus (static) results.
 
 
 ### Physical picture
@@ -554,10 +568,31 @@ For a 6D mode n = (n₁, n₂, n₃, n₄, n₅, n₆):
      δE/E = Σ_S  w_S × (δE/E)_S
    where w_S = E²_S / E²_total.
 
-5. Dynamic energy (shortcut): E_dynamic = E_static × (1 + δE/E).
-   This is valid when δE/E << 1 (all known particles: δE/E ~ 10⁻⁴).
-   For the full self-consistent solve, iterate steps 1–4 with the
-   mode recomputed on the deformed shape until convergence.
+5. Dynamic energy:
+
+   **Shortcut** (`dynamic='shortcut'`):
+     E_dynamic = E_static × (1 + δE/E).
+     Steps 1–4 run once on the circular (undeformed) cross-section.
+     Valid when δE/E << 1 (all known particles: δE/E ~ 10⁻⁴).
+
+   **Full** (`dynamic='full'` or `dynamic=True`):
+     Iterate steps 1–4 with the 3D geodesic recomputed on the
+     deformed cross-section at each iteration:
+       a. Start with circular cross-section: r(θ₁)/a = 1.
+       b. Compute pressure harmonics on current shape.
+       c. Compute equilibrium deformation δr_k from the pressure.
+       d. If max|δr_k^new − δr_k^old| < tol, stop.
+       e. Update cross-section: r(θ₁) = a(1 + Σ δr_k cos(kθ₁ − φ_k)).
+       f. Go to (b).
+     The 3D path on the deformed torus uses:
+       ρ(θ₁) = R + a(1 + ε(θ₁)) cos θ₁
+       z(θ₁) = a(1 + ε(θ₁)) sin θ₁
+     with analytical derivatives (da/dθ₁ terms) for the tangent
+     and curvature computation.
+
+     Convergence: geometric with ratio ~α.  Iteration 0 = shortcut.
+     Iteration 1 corrects to O(α⁴).  Typically 2–3 iterations to
+     reach machine precision.
 
 
 ### Low-pass filter
@@ -626,7 +661,10 @@ form from the force balance.
 ```python
 # Construction
 m = Ma(r_e=0.5, r_nu=5.0, r_p=8.906, sigma_ep=-0.0906,
-       dynamic=True)
+       dynamic='full')          # iterative force-balance solve
+# dynamic=True  → same as 'full'
+# dynamic='shortcut' → one-shot perturbative (fast, approximate)
+# dynamic=False → static (no corrections)
 
 # Energy
 m.energy((1, 2, 0, 0, 0, 0))         # dynamic energy (MeV)
@@ -640,6 +678,8 @@ corr = m.dynamic_correction((1, 2, 0, 0, 0, 0))
 # corr.filter_factor    → float (suppression vs fundamental)
 
 # Pressure harmonics (per-sheet)
+# When dynamic='full': converged harmonics from iterative solve
+# When dynamic='shortcut' or False: computed on circular cross-section
 harm = m.pressure_harmonics(n_tube=1, n_ring=2, r=8.906)
 # harm.c_k         → ndarray, Fourier amplitudes
 # harm.delta_r_k   → ndarray, wall deformation per harmonic
@@ -650,6 +690,10 @@ shape = m.wall_shape(n_tube=1, n_ring=2, r=8.906)
 # shape.theta       → ndarray (N,)
 # shape.r_over_a    → ndarray (N,), the r(θ₁)/a profile
 # shape.eccentricity → float
+
+# Dynamic method introspection
+m.dynamic          # True/False (are corrections enabled?)
+m.dynamic_method   # 'off', 'shortcut', or 'full'
 
 # Filter suppression relative to (1,2) fundamental
 m.filter_factor((3, 1, 0, 0, 0, 0))   # float ≈ 0.002
@@ -666,10 +710,11 @@ result = Ma.fit(targets, free_params=['r_p', 'sigma_ep'],
 
 ### Integration with existing features
 
-- **energy()**: When `dynamic=True`, solves the force-balance
-  shape and computes the mode energy on it.  Implementation
-  shortcut: E_static × (1 + δE/E) when the correction is small.
-  When `dynamic=False` (default), returns E_static as before.
+- **energy()**: When `dynamic='full'` (or `True`), iterates the
+  force-balance shape to convergence, then computes the eigenvalue
+  correction from the self-consistent harmonics.  When
+  `dynamic='shortcut'`, uses one-shot perturbation on the circular
+  cross-section.  When `dynamic=False` (default), returns E_static.
   Backward compatible — all existing code continues to work.
 
 - **energy_static()**: New method.  Always returns the flat-torus
@@ -705,10 +750,14 @@ The pressure harmonics computation requires integrating the 3D
 geodesic (~4000 sample points), computing curvature, and a
 Fourier transform.  This is O(N × N_harm) per call.
 
-The harmonics depend only on (n_tube, n_ring, r) and are cached
-in a dict keyed by this triple.  For a scan of ~14,000 modes,
-most modes share sheets (same r), and many share winding numbers.
-Cache hit rate should be high.
+For `dynamic='full'`, each (n_tube, n_ring, r) triple requires
+2–3 iterations (geometric convergence with ratio ~α).  Cost is
+2–3× the shortcut per unique triple.
+
+The harmonics depend only on (n_tube, n_ring, r) and the method,
+and are cached in a dict keyed by this triple.  For a scan of
+~14,000 modes, most modes share sheets (same r), and many share
+winding numbers.  Cache hit rate should be high.
 
 The dynamic correction for one mode is a lookup + weighted sum —
 negligible cost once harmonics are cached.

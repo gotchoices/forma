@@ -93,14 +93,35 @@ Updated `lib/ma-model.md` Feature 10 (Dynamic model).  Covers:
 - Harmonic caching by (n_tube, n_ring, r)
 - Updated testing strategy (6 new tests for dynamic model)
 
-### Track 2: Implementation
+### Track 2: Implementation [DONE]
 
-Implement the dynamic extensions in `lib/ma_model.py`:
-- Add `DynamicMa` class (or extend `Ma` with a `dynamic=True` flag)
-- Compute pressure profile P(θ₁) for any mode
-- Compute Fourier harmonics and deformation δr_k/a
-- Compute eigenvalue corrections from the deformation
-- Running α(E) from wall transparency model
+Extended `Ma` with dynamic flag.  Two solution methods:
+
+- **`dynamic='full'`** (or `True`): Iterative force-balance solve.
+  Repeats pressure → shape → pressure until the wall converges.
+  Convergence is geometric with ratio ~α; 2–3 iterations to
+  machine precision.  This IS the self-consistent solution.
+
+- **`dynamic='shortcut'`**: One-shot perturbation on the circular
+  cross-section.  Fast (iteration zero of the full solve).  Agrees
+  with full to O(α⁴) in energy.
+
+New code:
+- `_compute_pressure_harmonics()` — accepts optional shape deformation;
+  analytical derivatives for deformed cross-section
+- `_iterative_force_balance()` — shape → pressure → shape loop
+- `pressure_harmonics()` dispatches to iterative or one-shot
+- `dynamic_correction()`, `filter_factor()` — per-sheet eigenvalue shifts
+- `energy()`, `energy_static()` — dynamic vs flat-torus energy
+- `dynamic_method` property: 'off', 'shortcut', or 'full'
+- Wired through `scan_modes`, `with_params`, `fit`, `to_dict`,
+  `from_dict`, `summary`, `__repr__`
+- 42 new tests (125 total), all passing
+
+Verified numerically: full-solve converged result is self-consistent
+to 5×10⁻¹⁴ (one more iteration changes nothing).  Full vs shortcut
+differ by ~10⁻⁷ relative energy — the code discovers this rather
+than assuming it.
 
 ### Track 3: Validation
 

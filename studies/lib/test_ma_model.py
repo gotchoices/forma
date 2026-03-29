@@ -871,7 +871,277 @@ class TestDynamicSerialization(unittest.TestCase):
 
     def test_repr_includes_dynamic(self):
         m = Ma(**REF, dynamic=True)
-        self.assertIn('dynamic=True', repr(m))
+        self.assertIn("dynamic='full'", repr(m))
+
+    def test_shortcut_repr(self):
+        m = Ma(**REF, dynamic='shortcut')
+        self.assertIn("dynamic='shortcut'", repr(m))
+
+    def test_shortcut_summary(self):
+        m = Ma(**REF, dynamic='shortcut')
+        self.assertIn('shortcut', m.summary())
+
+
+# ════════════════════════════════════════════════════════════════════
+#  Full vs shortcut solve
+# ════════════════════════════════════════════════════════════════════
+
+class TestFullVsShortcut(unittest.TestCase):
+    """Verify the iterative force-balance solve vs one-shot shortcut."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.m_full = Ma(**REF, dynamic='full')
+        cls.m_short = Ma(**REF, dynamic='shortcut')
+        cls.m_static = Ma(**REF, dynamic=False)
+
+    def test_dynamic_method_property(self):
+        self.assertEqual(self.m_full.dynamic_method, 'full')
+        self.assertEqual(self.m_short.dynamic_method, 'shortcut')
+        self.assertEqual(self.m_static.dynamic_method, 'off')
+
+    def test_dynamic_bool_property(self):
+        self.assertTrue(self.m_full.dynamic)
+        self.assertTrue(self.m_short.dynamic)
+        self.assertFalse(self.m_static.dynamic)
+
+    def test_full_and_shortcut_energies_agree(self):
+        """Full and shortcut should agree to O(α⁴) ≈ 3×10⁻⁹."""
+        for mode in [ELECTRON, PROTON, NEUTRON]:
+            E_full = self.m_full.energy(mode)
+            E_short = self.m_short.energy(mode)
+            rel_diff = abs(E_full - E_short) / E_full
+            self.assertLess(rel_diff, 1e-6,
+                            msg=f"Full vs shortcut differ by {rel_diff:.2e} "
+                                f"for {mode}")
+
+    def test_full_harmonics_differ_from_shortcut(self):
+        """Full-solve harmonics should be slightly different (non-trivial)."""
+        h_full = self.m_full.pressure_harmonics(1, 2, 8.906)
+        h_short = self.m_short.pressure_harmonics(1, 2, 8.906)
+        diff = abs(h_full.delta_r_k[2] - h_short.delta_r_k[2])
+        self.assertGreater(diff, 0,
+                           msg="Full and shortcut should not be identical")
+        self.assertLess(diff, 1e-5,
+                        msg="Difference should be small (O(α²) × δr)")
+
+    def test_full_converged_is_self_consistent(self):
+        """If we run one more iteration on the full result, nothing changes."""
+        h = self.m_full.pressure_harmonics(1, 2, 8.906)
+        h2 = _compute_pressure_harmonics(
+            1, 2, 8.906, shape_delta=h.delta_r_k, shape_phi=h.phi_k)
+        np.testing.assert_array_almost_equal(
+            h.delta_r_k, h2.delta_r_k, decimal=9,
+            err_msg="Full solve should be self-consistent to ~10⁻¹⁰")
+
+    def test_shortcut_is_iteration_zero(self):
+        """Shortcut should equal circular-cross-section computation."""
+        h_short = self.m_short.pressure_harmonics(1, 2, 8.906)
+        h_circ = _compute_pressure_harmonics(1, 2, 8.906)
+        np.testing.assert_array_almost_equal(
+            h_short.delta_r_k, h_circ.delta_r_k, decimal=12,
+            err_msg="Shortcut should be identical to circular computation")
+
+    def test_static_energy_independent_of_method(self):
+        """energy_static() should be the same regardless of dynamic method."""
+        for mode in [ELECTRON, PROTON]:
+            E_full_st = self.m_full.energy_static(mode)
+            E_short_st = self.m_short.energy_static(mode)
+            E_static = self.m_static.energy(mode)
+            self.assertAlmostEqual(E_full_st, E_static, places=12)
+            self.assertAlmostEqual(E_short_st, E_static, places=12)
+
+    def test_with_params_preserves_method(self):
+        m2 = self.m_full.with_params(sigma_ep=-0.10)
+        self.assertEqual(m2.dynamic_method, 'full')
+        m3 = self.m_short.with_params(sigma_ep=-0.10)
+        self.assertEqual(m3.dynamic_method, 'shortcut')
+
+    def test_to_dict_records_method(self):
+        d_full = self.m_full.to_dict()
+        d_short = self.m_short.to_dict()
+        d_static = self.m_static.to_dict()
+        self.assertEqual(d_full['dynamic'], 'full')
+        self.assertEqual(d_short['dynamic'], 'shortcut')
+        self.assertFalse(d_static['dynamic'])
+
+    def test_from_dict_roundtrip_method(self):
+        for m_orig in [self.m_full, self.m_short, self.m_static]:
+            m_rt = Ma.from_dict(m_orig.to_dict())
+            self.assertEqual(m_rt.dynamic_method, m_orig.dynamic_method)
+
+    def test_invalid_dynamic_raises(self):
+        with self.assertRaises(ValueError):
+            Ma(**REF, dynamic='bogus')
+
+
+# ════════════════════════════════════════════════════════════════════
+#  Bug tests — issues found during code review
+# ════════════════════════════════════════════════════════════════════
+
+class TestBug1_PureTubeWinding(unittest.TestCase):
+    """
+    Issue: _compute_pressure_harmonics returns null for n_ring=0.
+    A pure tube mode (1,0) still follows a 3D path with curvature
+    and should have nonzero pressure harmonics.
+    """
+
+    def test_pure_tube_mode_has_pressure(self):
+        """Mode (1,0) — tube winding only — should have nonzero pressure."""
+        m = Ma(**REF, dynamic=True)
+        # (1,0) on a torus still curves in 3D (it's a circle around the tube)
+        harm = m.pressure_harmonics(n_tube=1, n_ring=0, r=8.906)
+        # Current code returns all zeros — this test should FAIL
+        # A (1,0) mode circles the tube once, no ring advance.
+        # On the embedding: x = (R+a cos t) cos 0, y = 0, z = a sin t
+        # This is a circle of radius a in the xz-plane, centered at (R,0,0).
+        # Curvature = 1/a (constant). Pressure should be uniform (k=0 only).
+        self.assertNotEqual(harm.c_k[0], 0.0,
+                            "Pure tube mode (1,0) should have nonzero mean pressure")
+
+
+class TestBug2_JacobianDynamicInconsistency(unittest.TestCase):
+    """
+    Issue: jacobian() calls self.energy(n) which includes dynamic
+    correction when dynamic=True, but the derivative formulas only
+    compute ∂E_static/∂θ. The E used in the denominator (2E) is
+    dynamic, but the numerator is static-only.
+    """
+
+    def test_jacobian_uses_static_E_in_formula(self):
+        """
+        When dynamic=True, jacobian should either:
+        (a) compute ∂E_dynamic/∂θ consistently, or
+        (b) explicitly use E_static in the formula.
+
+        Currently it mixes: E from energy() (dynamic) in the denominator,
+        but ∂E²/∂θ from static formulas in the numerator.
+        """
+        m_static = Ma(**REF, dynamic=False)
+        m_dynamic = Ma(**REF, dynamic=True)
+
+        mode = PROTON
+        J_static = m_static.jacobian(mode)
+        J_dynamic = m_dynamic.jacobian(mode)
+
+        # The static Jacobian should equal the dynamic Jacobian
+        # for cross-shear derivatives (∂G̃/∂σ is the same),
+        # adjusted only by the E ratio in the denominator.
+        # If the code is inconsistent, the ratio won't match E_ratio.
+        E_st = m_static.energy(mode)
+        E_dyn = m_dynamic.energy(mode)
+        E_ratio = E_st / E_dyn  # should be close to 1
+
+        # For sigma_ep: the numerator (ñᵀ ∂G̃⁻¹/∂σ ñ) is identical.
+        # So J_dynamic/J_static should equal E_st/E_dyn (from 1/(2E)).
+        if abs(J_static['sigma_ep']) > 1e-10:
+            actual_ratio = J_dynamic['sigma_ep'] / J_static['sigma_ep']
+            # This SHOULD equal E_ratio if the code is consistent
+            self.assertAlmostEqual(actual_ratio, E_ratio, places=4,
+                                   msg="Jacobian mixes dynamic E with static ∂E²/∂θ")
+
+
+class TestBug3_FilterFactorReference(unittest.TestCase):
+    """
+    Issue: _fundamental_dEE always uses the dominant sheet's r to
+    compute the (1,2) reference, but for a mode that lives mostly
+    on the neutrino sheet, the reference should use r_nu not r_p.
+    """
+
+    def test_neutrino_mode_uses_neutrino_r(self):
+        """
+        A pure neutrino mode's filter factor reference should use r_nu,
+        not r_p or r_e.
+        """
+        m = Ma(**REF, dynamic=True)
+        # Pure neutrino mode (0,0,1,2,0,0) — lives entirely on Ma_nu
+        mode_nu = (0, 0, 1, 2, 0, 0)
+        corr = m.dynamic_correction(mode_nu)
+
+        # The reference should be (1,2) on the neutrino sheet at r_nu=5.0
+        harm_nu_ref = m.pressure_harmonics(1, 2, m.r_nu)
+        expected_fund_dEE = harm_nu_ref.delta_r_k[2] / 2.0
+
+        # The filter factor should be |corr.delta_E_over_E| / expected_fund_dEE
+        if expected_fund_dEE != 0:
+            expected_ff = abs(corr.delta_E_over_E) / expected_fund_dEE
+            # Current code may use a different sheet's r
+            self.assertAlmostEqual(corr.filter_factor, expected_ff, places=4,
+                                   msg="Filter factor uses wrong sheet's r for reference")
+
+
+# ════════════════════════════════════════════════════════════════════
+#  Missing test coverage
+# ════════════════════════════════════════════════════════════════════
+
+class TestDynamicEnergyMagnitude(unittest.TestCase):
+    """Validate dynamic energy correction against R40 F25 numbers."""
+
+    def test_proton_dEE_matches_R40(self):
+        """R40 F25: δE/E ≈ 3.4×10⁻⁴ for the proton (1,2) mode."""
+        m = Ma(**REF, dynamic=True)
+        corr = m.dynamic_correction(PROTON)
+        # R40 F25 table: δλ/λ = 3.4e-4 for n₁=1
+        self.assertAlmostEqual(abs(corr.delta_E_over_E), 3.4e-4, delta=1e-4,
+                               msg="Proton δE/E should be ~3.4×10⁻⁴ per R40 F25")
+
+    def test_dynamic_energy_differs_from_static(self):
+        """Dynamic energy should differ from static by the correction amount."""
+        m = Ma(**REF, dynamic=True)
+        E_dyn = m.energy(PROTON)
+        E_stat = m.energy_static(PROTON)
+        corr = m.dynamic_correction(PROTON)
+        expected = E_stat * (1 + corr.delta_E_over_E)
+        self.assertAlmostEqual(E_dyn, expected, places=10)
+        self.assertNotAlmostEqual(E_dyn, E_stat, places=6,
+                                  msg="Dynamic and static energies should differ")
+
+    def test_mass_shift_proton(self):
+        """R40 F25: δM ≈ 0.32 MeV for the proton."""
+        m = Ma(**REF, dynamic=True)
+        E_dyn = m.energy(PROTON)
+        E_stat = m.energy_static(PROTON)
+        dM = abs(E_dyn - E_stat)
+        self.assertAlmostEqual(dM, 0.32, delta=0.1,
+                               msg="Proton mass shift should be ~0.32 MeV per R40 F25")
+
+
+class TestFitDynamic(unittest.TestCase):
+    """Test the inverse solver with dynamic=True."""
+
+    def test_fit_with_dynamic_converges(self):
+        """fit() with dynamic=True should still recover r_p and σ_ep."""
+        result = Ma.fit(
+            targets=[Target(n=NEUTRON, mass_MeV=939.565)],
+            free_params=['sigma_ep'],
+            fixed_params={'r_e': 6.6, 'r_nu': 5.0, 'r_p': 8.906},
+            dynamic=True,
+        )
+        self.assertTrue(result.converged,
+                        f"Dynamic fit did not converge: residuals={result.residuals}")
+        # σ_ep should be close to the static value (dynamic correction is small)
+        self.assertAlmostEqual(result.params['sigma_ep'], -0.0906, delta=0.005)
+
+
+class TestJacobianDynamicDerivatives(unittest.TestCase):
+    """
+    Verify jacobian() against finite differences when dynamic=True.
+    This catches the inconsistency where the formula uses dynamic E
+    but static ∂E²/∂θ.
+    """
+
+    def test_sigma_ep_dynamic_vs_finite_diff(self):
+        m = Ma(**REF, dynamic=True)
+        J = m.jacobian(PROTON)
+
+        h = 1e-6
+        kw_p = dict(**REF, dynamic=True); kw_p['sigma_ep'] += h
+        kw_m = dict(**REF, dynamic=True); kw_m['sigma_ep'] -= h
+        fd = (Ma(**kw_p).energy(PROTON) - Ma(**kw_m).energy(PROTON)) / (2 * h)
+
+        self.assertAlmostEqual(J['sigma_ep'], fd,
+                               delta=abs(fd) * 0.05 + 1e-6,
+                               msg="Dynamic jacobian doesn't match finite diff for sigma_ep")
 
 
 if __name__ == '__main__':

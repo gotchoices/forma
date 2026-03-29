@@ -264,6 +264,7 @@ _N_SAMPLES_DEFAULT = 4000
 _N_WALL_PTS = 360
 
 def _compute_pressure_harmonics(n_tube, n_ring, r,
+                                shape_delta=None, shape_phi=None,
                                 n_samples=_N_SAMPLES_DEFAULT,
                                 n_harm=_N_HARM_DEFAULT):
     """
@@ -274,8 +275,12 @@ def _compute_pressure_harmonics(n_tube, n_ring, r,
     the 3D embedding.  The Clairaut geodesic does not exist for a/R > 1
     (R40 F19-F22); the flat-torus path is physically correct.
 
+    When shape_delta/shape_phi are provided, the cross-section is
+    deformed: r_wall(θ₁) = a × (1 + Σ δr_k cos(kθ₁ − φ_k)).
+    When None, uses a circular cross-section (standard case).
+
     Returns PressureHarmonics namedtuple.  Harmonics depend only on
-    (|n_tube|, |n_ring|, r), not on absolute scale or sign.
+    (|n_tube|, |n_ring|, r) and the shape, not on absolute scale or sign.
     """
     zeros = np.zeros(n_harm + 1)
     null = PressureHarmonics(c_k=zeros.copy(), delta_r_k=zeros.copy(),
@@ -283,11 +288,11 @@ def _compute_pressure_harmonics(n_tube, n_ring, r,
                              B_k=zeros.copy())
     n1 = abs(n_tube)
     n2 = abs(n_ring)
-    if n1 == 0 or n2 == 0:
+    if n1 == 0:
         return null
 
     R_val = 1.0
-    a_val = r
+    a_base = r
 
     N = n_samples
     t = np.linspace(0, 2 * math.pi, N, endpoint=False)
@@ -295,17 +300,36 @@ def _compute_pressure_harmonics(n_tube, n_ring, r,
 
     theta1 = n1 * t
     theta2 = n2 * t
-    rho = R_val + a_val * np.cos(theta1)
 
+    # Cross-section: a_local(θ₁) = a_base × (1 + ε(θ₁)), with analytical da/dθ₁
+    if shape_delta is not None:
+        r_frac = np.ones(N)
+        dr_frac = np.zeros(N)
+        for k in range(1, min(len(shape_delta), n_harm + 1)):
+            ph = shape_phi[k] if (shape_phi is not None
+                                  and k < len(shape_phi)) else 0.0
+            r_frac += shape_delta[k] * np.cos(k * theta1 - ph)
+            dr_frac -= k * shape_delta[k] * np.sin(k * theta1 - ph)
+        a_local = a_base * r_frac
+        da_dtheta1 = a_base * dr_frac
+    else:
+        a_local = np.full(N, a_base)
+        da_dtheta1 = np.zeros(N)
+
+    rho = R_val + a_local * np.cos(theta1)
+
+    # 3D path
     x = rho * np.cos(theta2)
     y = rho * np.sin(theta2)
-    z = a_val * np.sin(theta1)
+    z = a_local * np.sin(theta1)
 
-    dx = (-n1 * a_val * np.sin(theta1) * np.cos(theta2)
-          - n2 * rho * np.sin(theta2))
-    dy = (-n1 * a_val * np.sin(theta1) * np.sin(theta2)
-          + n2 * rho * np.cos(theta2))
-    dz = n1 * a_val * np.cos(theta1)
+    # Analytical derivatives via chain rule (θ₁ = n₁t, θ₂ = n₂t)
+    drho_dt = n1 * (da_dtheta1 * np.cos(theta1)
+                    - a_local * np.sin(theta1))
+    dx = drho_dt * np.cos(theta2) - n2 * rho * np.sin(theta2)
+    dy = drho_dt * np.sin(theta2) + n2 * rho * np.cos(theta2)
+    dz = n1 * (da_dtheta1 * np.sin(theta1)
+               + a_local * np.cos(theta1))
     speed = np.sqrt(dx**2 + dy**2 + dz**2)
 
     T_hat = np.stack([dx, dy, dz], axis=-1) / speed[:, None]
@@ -362,6 +386,55 @@ def _compute_pressure_harmonics(n_tube, n_ring, r,
 
     return PressureHarmonics(c_k=c_k, delta_r_k=delta_r_k,
                              phi_k=phi_k, A_k=A_k, B_k=B_k)
+
+
+_FORCE_BALANCE_TOL = 1e-10
+_FORCE_BALANCE_MAX_ITER = 20
+
+
+def _iterative_force_balance(n_tube, n_ring, r,
+                             n_samples=_N_SAMPLES_DEFAULT,
+                             n_harm=_N_HARM_DEFAULT):
+    """
+    Self-consistent force-balance solve.
+
+    Iterates: pressure on current shape → equilibrium deformation →
+    update shape → recompute pressure, until the wall shape converges.
+
+    Iteration 0 is identical to the one-shot shortcut.  Subsequent
+    iterations capture the feedback between shape and pressure.
+    Convergence is geometric with ratio ~α ≈ 0.007.
+
+    Returns PressureHarmonics for the converged shape.
+    """
+    n1 = abs(n_tube)
+    n2 = abs(n_ring)
+    if n1 == 0:
+        # No tube winding = no pressure = no iteration needed
+        return _compute_pressure_harmonics(n1, n2, r, n_samples=n_samples,
+                                           n_harm=n_harm)
+    if n2 == 0:
+        # Pure tube mode: pressure is uniform, one pass converges
+        return _compute_pressure_harmonics(n1, n2, r, n_samples=n_samples,
+                                           n_harm=n_harm)
+
+    delta_r_k = np.zeros(n_harm + 1)
+    phi_k = np.zeros(n_harm + 1)
+
+    for _ in range(_FORCE_BALANCE_MAX_ITER):
+        harm = _compute_pressure_harmonics(
+            n1, n2, r,
+            shape_delta=delta_r_k, shape_phi=phi_k,
+            n_samples=n_samples, n_harm=n_harm)
+
+        change = np.max(np.abs(harm.delta_r_k - delta_r_k))
+        delta_r_k = harm.delta_r_k.copy()
+        phi_k = harm.phi_k.copy()
+
+        if change < _FORCE_BALANCE_TOL:
+            break
+
+    return harm
 
 
 def _compute_wall_shape(harm):
@@ -595,7 +668,16 @@ class Ma:
         self._r_nu = float(r_nu)
         self._r_p = float(r_p)
         self._self_consistent = bool(self_consistent)
-        self._dynamic = bool(dynamic)
+        if dynamic is True:
+            self._dynamic = 'full'
+        elif dynamic is False:
+            self._dynamic = 'off'
+        elif dynamic in ('full', 'shortcut', 'off'):
+            self._dynamic = dynamic
+        else:
+            raise ValueError(
+                f"dynamic must be False, True, 'shortcut', or 'full'; "
+                f"got {dynamic!r}")
         self._harm_cache = {}
 
         # Compute circumferences and within-plane shears
@@ -716,6 +798,11 @@ class Ma:
     @property
     def dynamic(self):
         """Whether dynamic (α-impedance) corrections are enabled."""
+        return self._dynamic != 'off'
+
+    @property
+    def dynamic_method(self):
+        """Dynamic solution method: 'off', 'shortcut', or 'full'."""
         return self._dynamic
 
     @property
@@ -727,7 +814,7 @@ class Ma:
             'sigma_enu': self.sigma_enu,
             'sigma_nup': self.sigma_nup,
             'self_consistent': self._self_consistent,
-            'dynamic': self._dynamic,
+            'dynamic': self._dynamic if self._dynamic != 'off' else False,
         }
         # Include any individual cross-shear entries
         for key, val in self._cross_shears.items():
@@ -741,9 +828,10 @@ class Ma:
         """
         Mode energy in MeV.
 
-        When dynamic=True, returns the force-balance energy (via the
-        perturbative shortcut E_static × (1 + δE/E)).  When
-        dynamic=False (default), returns the flat-torus energy.
+        When dynamic='full' or 'shortcut', returns E_static × (1 + δE/E)
+        where the correction comes from the force-balance (full iterative
+        solve or one-shot shortcut, respectively).  When dynamic=False
+        (default), returns the flat-torus energy.
 
         Parameters
         ----------
@@ -755,7 +843,7 @@ class Ma:
         float — energy in MeV.
         """
         E_st = _mode_energy(n, self._Gti, self._L)
-        if not self._dynamic:
+        if self._dynamic == 'off':
             return E_st
         corr = self.dynamic_correction(n)
         return E_st * (1 + corr.delta_E_over_E)
@@ -860,11 +948,18 @@ class Ma:
         Pressure harmonics for mode (n_tube, n_ring) on a torus with
         aspect ratio r = a/R.  Cached by (|n_tube|, |n_ring|, r).
 
+        When dynamic='full', returns the converged harmonics from the
+        iterative force-balance solve.  Otherwise, computes on the
+        circular (undeformed) cross-section.
+
         Returns PressureHarmonics namedtuple.
         """
         key = (abs(n_tube), abs(n_ring), r)
         if key not in self._harm_cache:
-            self._harm_cache[key] = _compute_pressure_harmonics(*key)
+            if self._dynamic == 'full':
+                self._harm_cache[key] = _iterative_force_balance(*key)
+            else:
+                self._harm_cache[key] = _compute_pressure_harmonics(*key)
         return self._harm_cache[key]
 
     def wall_shape(self, n_tube, n_ring, r):
@@ -1274,7 +1369,7 @@ class Ma:
             if E_max_MeV is not None and E > E_max_MeV:
                 continue
             dE = None
-            if self._dynamic:
+            if self._dynamic != 'off':
                 E_st = _mode_energy(n, self._Gti, self._L)
                 dE = E - E_st
             modes.append(Mode(n=n, E_MeV=E,
@@ -1316,7 +1411,7 @@ class Ma:
             'sigma_enu': self.sigma_enu,
             'sigma_nup': self.sigma_nup,
             'self_consistent': self._self_consistent,
-            'dynamic': self._dynamic,
+            'dynamic': self._dynamic if self._dynamic != 'off' else False,
         }
         defaults.update(kwargs)
         return Ma(**defaults)
@@ -1540,7 +1635,7 @@ class Ma:
             'sigma_enu': self.sigma_enu,
             'sigma_nup': self.sigma_nup,
             'self_consistent': self._self_consistent,
-            'dynamic': self._dynamic,
+            'dynamic': self._dynamic if self._dynamic != 'off' else False,
             # Derived (for reference, not used in reconstruction)
             's12': self._s12, 's34': self._s34, 's56': self._s56,
             'L': self._L.tolist(),
@@ -1600,7 +1695,7 @@ class Ma:
         obj._s56 = Gt[4, 5] / Gt[4, 4] if Gt[4, 4] != 0 else 0.0
         obj._cross_shears = {}
         obj._self_consistent = False
-        obj._dynamic = False
+        obj._dynamic = 'off'
         obj._harm_cache = {}
         obj._converged = None
         obj._iterations = None
@@ -1620,7 +1715,10 @@ class Ma:
 
     def summary(self):
         """Human-readable summary of the geometry."""
-        label = "Ma geometry (dynamic)" if self._dynamic else "Ma geometry"
+        if self._dynamic == 'off':
+            label = "Ma geometry"
+        else:
+            label = f"Ma geometry (dynamic={self._dynamic})"
         lines = [
             label,
             f"  r_e = {self._r_e:.4f}   r_ν = {self._r_nu:.4f}   r_p = {self._r_p:.4f}",
@@ -1635,7 +1733,7 @@ class Ma:
         E_p = self.energy(_N_PROTON)
         lines.append(f"  E(electron) = {E_e:.6f} MeV")
         lines.append(f"  E(proton)   = {E_p:.3f} MeV")
-        if self._dynamic:
+        if self._dynamic != 'off':
             corr_e = self.dynamic_correction(_N_ELECTRON)
             corr_p = self.dynamic_correction(_N_PROTON)
             lines.append(f"  δE/E(electron) = {corr_e.delta_E_over_E:.6e}")
@@ -1644,7 +1742,7 @@ class Ma:
 
     def __repr__(self):
         sc = ", self_consistent=True" if self._self_consistent else ""
-        dyn = ", dynamic=True" if self._dynamic else ""
+        dyn = f", dynamic='{self._dynamic}'" if self._dynamic != 'off' else ""
         return (f"Ma(r_e={self._r_e}, r_nu={self._r_nu}, r_p={self._r_p}, "
                 f"sigma_ep={self.sigma_ep}{sc}{dyn})")
 
