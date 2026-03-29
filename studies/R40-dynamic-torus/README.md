@@ -228,6 +228,11 @@ Results:
 - Area unchanged at O(α²) ≈ 2 × 10⁻⁷.
 - α runs with energy because wall transparency increases —
   geometric realization of vacuum polarization.
+- **r is still free** (F26): the equilibrium determines
+  V_compact from r, not the reverse.  All key results
+  (low-pass filter, α interpretation, running of α) hold
+  regardless of r.  See Q91 for the open problem of
+  deriving V_compact independently.
 
 
 ## Tools

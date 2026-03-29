@@ -48,3 +48,6 @@
 ## Scripts
 - Python scripts should use the lib/*.py resources where helpful
 - Numpy and others available in the virtual environment
+
+## Nomenclature
+- See ./Taxonomy.md

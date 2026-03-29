@@ -955,6 +955,66 @@ consistent zeroth-order solution.  Dynamic Ma is a fine-structure
 correction.
 
 
+## F26. Tube radius from force balance — constraint counting
+
+### The dynamic picture
+
+Imagine a torus with ring radius R and tube radius a starting
+at zero.  The photon mode is concentrated in the tiny tube — huge
+energy density, outward pressure.  As a increases:
+
+- **Outward pressure** (mode energy density): P_out ∝ E/a²
+  — decreasing
+- **Inward pressure** (compressed vacuum "spring"): P_in ∝ a
+  — increasing
+
+These cross exactly once → unique equilibrium a*.  The non-uniform
+field density on the sheet means the equilibrium differs by θ₁,
+giving the elliptical cross-section from F25.
+
+### What determines a?
+
+Given the equilibrium a, the Compton constraint gives R:
+
+    λ_C = 2π√(a² + 4R²)  →  R = √((λ_C/2π)² − a²) / 2
+
+If this R is unreachable (negative, or incompatible with the sheet),
+the mode cannot exist.  This is a **selection rule**.
+
+### Constraint counting
+
+In the dynamic model WITHOUT the static model's cross-sheet coupling:
+
+| Unknowns | Equations | Net |
+|----------|-----------|-----|
+| r (= a/R) | Compton: μ(r)·ℏc/R = m | 1 eqn |
+| V_compact | Equilibrium: V_torus = (1−α)·V_compact | defines V_compact from r |
+
+**Result: r is still free.**  The equilibrium determines V_compact
+from r, not the other way around.  To pin r from the dynamic model,
+V_compact would need an independent source (e.g., from the 6D
+compact geometry).  This is an open problem (see Q91).
+
+### What does NOT depend on r
+
+The low-pass filter and the α-impedance model are valid regardless
+of r:
+
+1. **Elliptical cross-section** — the mode's pressure is non-uniform
+   at any r.  The 3D embedding curvature always produces a k=2
+   dominant deformation.
+2. **1/k² elastic filter** — the thin-shell response suppresses
+   high harmonics at any r.  Mode n₁ couples to wall harmonic
+   k = 2n₁, giving ~(2n₁)⁻² suppression.
+3. **α = wall transparency** — independent of r.
+4. **α runs with energy** — independent of r.
+
+These are the main deliverables of R40.  The aspect ratio r remains
+a free parameter to be determined by the cross-sheet coupling
+(static model, R27) or by an independent determination of V_compact
+(future work).
+
+
 ---
 
 ## Summary of R40
@@ -1002,14 +1062,21 @@ Inside: 136/137 of the energy (confined mode).  Outside: 1/137
 3. **Free-r result (F23).**  Compton alone doesn't fix r.
 
 4. **The α-impedance model (F25).**  The torus wall is the (1−α)
-   energy contour.  On the flat torus, the wall is a perfect circle.
-   The 3D embedding adds a 0.067% elliptical deformation (k=2).
-   The elastic 1/k² response provides a low-pass filter in n₁:
+   energy contour.  136/137 of the mode energy is confined; 1/137
+   leaks as the external EM field.  The 3D embedding produces an
+   elliptical deformation (k=2 dominant, δr/a ~ 7×10⁻⁴).  The
+   elastic 1/k² response provides a **low-pass filter** in n₁:
    40× suppression from n₁=1 to n₁=2, 450× to n₁=3.
 
 5. **α runs with energy** because the wall transparency increases
    with photon energy — geometric vacuum polarization.
 
-6. **Dynamic Ma is perturbative** (corrections ∝ α² ≈ 5×10⁻⁵).
+6. **r is still free** in the dynamic model (F26).  The equilibrium
+   determines V_compact from r, not the reverse.  To pin r
+   independently, V_compact needs a source outside MaSt (Q91).
+   However, all key results (low-pass filter, α interpretation,
+   running of α) are **independent of r**.
+
+7. **Dynamic Ma is perturbative** (corrections ∝ α² ≈ 5×10⁻⁵).
    The static flat-torus model is the correct zeroth-order
    approximation.  Dynamic effects are fine-structure corrections.
