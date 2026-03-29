@@ -190,3 +190,168 @@ Starting from r_p = 5.0, σ_ep = 0.0 (far from the solution),
 both static and full converge to the same answer in 7 iterations.
 The basin of attraction is large and the Levenberg-Marquardt
 solver handles it cleanly.
+
+
+## Track 5: Ghost census
+
+Script: `scripts/track5_ghost_census.py`
+
+### F34. 117,648 modes below 2 GeV; dynamic model changes nothing
+
+With n_max=3, both static and dynamic models produce exactly
+117,648 modes below 2 GeV.  No modes cross the threshold —
+energy shifts are O(10⁻⁴) relative, max |δE| = 0.62 MeV.
+
+Of these, 7,434 (6.3%) match known particles within 5%;
+110,214 (93.7%) are ghosts.  The dynamic model does not
+change these counts.
+
+
+### F35. The (1,1) ghost is NOT suppressed by the low-pass filter
+
+The critical remaining ghost from R33 — the (1,1) charged
+spin-1 boson at half the electron mass — has filter factor
+FF ≈ 0.46.  This means its eigenvalue shift is about half
+the electron's, not zero.
+
+| Mode           | E (MeV) | δE/E       | FF    | Q  |
+|----------------|---------|------------|-------|-----|
+| e-sheet (1,1)  | 0.259   | 1.59×10⁻⁴ | 0.46  | −1 |
+| e-sheet (1,2)  | 0.515   | 3.43×10⁻⁴ | 1.00  | −1 |
+| p-sheet (1,1)  | 473.6   | 1.57×10⁻⁴ | 0.47  | +1 |
+| p-sheet (1,2)  | 945.5   | 3.37×10⁻⁴ | 1.00  | +1 |
+
+The (1,1) has the same tube winding (n_tube=1) as the
+fundamental, so both couple to the k=2 harmonic.  The FF < 1
+comes from the different ring winding: (1,1) produces less
+curvature variation than (1,2), giving a smaller |c₂/c₀|.
+
+**The dynamic model does NOT solve the (1,1) ghost problem.**
+The ghost persists with slightly reduced (but nonzero)
+dynamic correction.
+
+
+### F36. Higher tube windings ARE effectively suppressed
+
+The low-pass filter works as designed for |n_tube| ≥ 2:
+
+| |n_tube|_max | Count   | Median FF  | Suppression |
+|-------------|---------|-----------|-------------|
+| 0           | 342     | 0         | ∞ (no corr) |
+| 1           | 8,918   | 0.47      | 2×          |
+| 2           | 33,614  | 0.005     | 200×        |
+| 3           | 74,774  | 0.0002    | 5,000×      |
+
+This reinforces R33's n₁ = ±1 charge selection rule: modes
+with |n_tube| ≥ 2 are both charge-suppressed (R33 F1) and
+eigenvalue-shifted less (dynamic filter).  The two mechanisms
+are complementary but target the same modes — the critical
+(1,1) ghost escapes both.
+
+Some cross-sheet modes (e.g., (-1,-3,-2,0,0,0)) achieve
+FF > 1 because their multi-sheet corrections combine to
+exceed the single-sheet fundamental.  These are all ghosts.
+
+
+### F37. The ghost problem is unchanged by the dynamic model
+
+The dynamic model's contribution to ghost suppression is:
+1. A soft eigenvalue shift (not a hard cutoff)
+2. Strongest for high tube windings (already killed by R33)
+3. Weak for the critical (1,1) ghost (FF ≈ 0.46)
+4. Zero for ring-only modes (n_tube=0)
+
+The ghost problem remains as characterized in R33: ~4 survivors
+per charged sheet after the charge and spin filters, with the
+(1,1) boson as the critical tension.  The dynamic model adds
+no new suppression mechanism for this mode.
+
+
+## Track 5c: Three-category census with generation identification
+
+Script: `scripts/track5c_generation_census.py`
+
+The n_max=3 census in Track 5 missed the muon and tau (both
+require n_max ≥ 5).  This track redoes the census with n_max=5
+and proper mode taxonomy.
+
+### F38. Three charged lepton generations confirmed
+
+All three generations appear in the n_max=5 spectrum:
+
+| Particle | Mode                    | E_static | E_target | Error  | FF     |
+|----------|------------------------|----------|----------|--------|--------|
+| electron | (1, 2, 0, 0, 0, 0)     | 0.515    | 0.511    | +0.8%  | 1.0000 |
+| muon     | (−1, 5, 0, 0, −2, 0)   | 106.468  | 105.658  | +0.8%  | 0.0002 |
+| tau      | (−1, 5, 0, 0, −2, −4)  | 1890.812 | 1776.86  | +6.4%  | 0.0250 |
+
+The low-pass filter naturally distinguishes them:
+- **Electron**: e-sheet only (n_tube=1), couples to k=2. FF = 1.0.
+- **Muon**: cross-sheet mode with n₅=−2 on p-sheet. The p-sheet
+  couples to k=4, suppressed 40× relative to k=2.  The muon's
+  δE/E ≈ 8×10⁻⁸ is 4,300× smaller than the electron's.
+- **Tau**: same tube windings as muon, but n₆=−4 ring winding
+  gives an intermediate p-sheet correction. FF = 0.025.
+
+The FF ordering (e > τ > μ) means the dynamic model predicts
+different wall distortion for each generation — a geometric
+origin for the generation hierarchy.
+
+
+### F39. Three-category taxonomy: 131,769 families below 2 GeV
+
+The 1,449,458 modes from n_max=5 collapse into 131,769 families
+when only n₄ (neutrino ring winding) is treated as degenerate.
+Each family has 11 copies (n₄ = −5 to +5).
+
+Classification:
+
+| Category | Description                  | Families | Modes     |
+|----------|------------------------------|----------|-----------|
+| A        | Match known particle (10%)   | 8,633    | 94,963    |
+| B        | High harmonics, |n_tube|≥ 2  | 120,863  | 1,329,493 |
+| C        | Unmatched resonances         | 2,273    | 25,002    |
+
+**Category A** matches 14 particle types (e±, μ±, τ±, p, p̄, n,
+K⁰, η′, φ, Ξ⁰, Ξ⁻ within a generous 10% window).  Most families
+have |n_tube| ≥ 2 (due to neutrino tube winding dressing).
+
+**Category B** is 92% of all families.  These are killed by both
+the low-pass filter (FF ≤ 0.03 for |n_tube| ≥ 2) and R33's
+charge selection rule.
+
+**Category C** (2,273 families) are the genuine problem modes:
+|n_tube| ≤ 1, no known particle match.  All have n₅ = n₆ = 0
+(electron-sheet-only energy), dressed with various n₃ values.
+The (1,1) boson variants (n₁=1, n₂=1, n₃ = 0/±1) persist at
+FF ≈ 0.46.
+
+
+### F40. Only n₄ is truly degenerate; n₃ creates distinct modes
+
+The neutrino sheet's n₃ (tube winding) changes charge and spin:
+- (1, 1, 0, 0, 0): Q = −1, spin = ½
+- (1, 1, 1, 0, 0): Q = −2, spin = 1
+- (1, 1, −1, 0, 0): Q = 0, spin = 1
+
+These are physically distinct particles at the same mass
+(~0.259 MeV), not copies.  Only n₄ produces true degeneracy
+(11-fold, negligible energy contribution ~meV).
+
+
+### F41. Some unmatched resonances have FF > 1
+
+Modes with high ring winding on the electron sheet have larger
+dynamic corrections than the fundamental:
+
+| Mode family         | E (MeV) | FF    | Note                 |
+|---------------------|---------|-------|----------------------|
+| (±1, ±3, *, 0, 0)  | 0.772   | 1.302 | 3rd ring harmonic    |
+| (±1, ±2, *, 0, 0)  | 0.515   | 1.000 | = electron (same k)  |
+| (±1, ±1, *, 0, 0)  | 0.259   | 0.464 | (1,1) boson          |
+| (±1, 0, *, 0, 0)   | 0.039   | 0.000 | pure tube, no ring   |
+| (0, *, *, 0, 0)     | varies  | 0.000 | ring-only, no tube   |
+
+FF > 1 for ring overtones means the dynamic model makes these
+modes MORE shifted (not less).  The low-pass filter only works
+for increasing tube harmonic number, not ring harmonics.

@@ -152,12 +152,39 @@ shortcut, and full dynamic models (`scripts/track4_fresh_params.py`):
 - Findings: F30 (parameters unchanged), F31 (non-target shifts),
   F32 (L-rescaling inconsistency), F33 (robustness).
 
-### Track 5: Ghost census (dynamic)
+### Track 5: Ghost census (dynamic) [DONE]
 
-- Enumerate modes with E < 10 GeV on all three sheets
-- For each: compute dynamic suppression factor
-- Compare ghost count: static model vs dynamic model
-- Identify modes that are dynamically forbidden but statically allowed
+Enumerated 117,648 modes below 2 GeV (`scripts/track5_ghost_census.py`):
+
+- **No change in mode count**: Energy shifts are O(10⁻⁴); no modes
+  cross the 2 GeV threshold.  93.7% remain ghosts.
+- **The (1,1) ghost persists**: FF ≈ 0.46 — only 2× suppressed vs
+  the electron. Same tube winding → same coupling harmonic.
+- **High-tube suppression works**: |n_tube|=2 modes have median
+  FF ≈ 0.005 (200× suppressed), |n_tube|=3 → 0.0002 (5000×).
+  Reinforces R33's charge selection rule but targets the same modes.
+- **Verdict**: Dynamic model does NOT solve the ghost problem.
+  The (1,1) boson remains the critical tension.
+- Findings: F34–F37.
+
+### Track 5c: Three-category census & generation identification [DONE]
+
+The n_max=3 census (Track 5) missed the muon and tau.  Redone
+with n_max=5 (1.45M modes → 131,769 families, collapsing only
+the degenerate n₄).  Proper taxonomy replaces blunt "ghost" label:
+
+- **Cat A** (known matches): 8,633 families → 14 particle types
+  including all 3 charged lepton generations (e, μ, τ).
+- **Cat B** (high harmonics): 120,863 families → killed by
+  low-pass filter + R33 charge rule.  92% of all families.
+- **Cat C** (unmatched resonances): 2,273 families → the real
+  problem.  The (1,1) boson persists (FF ≈ 0.46).
+
+Generation structure: the low-pass filter distinguishes
+generations via their tube windings.  FF ordering:
+electron (1.00) > tau (0.025) > muon (0.0002).
+
+Findings: F38–F41.
 
 ### Track 6: Generation structure
 
