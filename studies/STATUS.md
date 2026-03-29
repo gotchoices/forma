@@ -7,6 +7,18 @@ See [`../qa/`](../qa/) for open physics questions and detailed problem analysis.
 
 ## Active
 
+### R41. Dynamic torus model — full implementation
+**Study:** [`R41-dynamic-model/`](R41-dynamic-model/)
+**Questions:** Q34, Q77, Q86, Q91  **Type:** compute  **Depends on:** R40, R27, R15, R19, R33
+
+Refactor `lib/ma_model.py` around the dynamic model from R40:
+α-impedance energy partition, force balance for equilibrium tube
+radius, low-pass filter eigenvalue corrections, running α(E).
+Re-derive the full particle spectrum from scratch with no static
+model inputs.  Check whether r_p = 8.906 re-emerges, whether
+ghosts are suppressed, whether three electron generations appear.
+Compile a complete particle table and compare dynamic vs static.
+
 ### R15. Forward charge calculation — deriving α
 **Study:** [`R15-forward-charge/`](R15-forward-charge/)
 **Questions:** [Q18](../qa/Q18-deriving-alpha.md), Q34 Path 7  **Type:** compute  **Depends on:** R7, R13
@@ -39,7 +51,9 @@ wall response provides a **low-pass filter** in tube winding number
 (corrections ∝ α² ≈ 5×10⁻⁵); the static flat-torus model is the
 correct zeroth-order approximation.  α runs with energy because
 wall transparency increases — geometric vacuum polarization.
-See `findings.md` (F1–F25).
+See `findings.md` (F1–F26).  Note: r remains free in the
+dynamic model (F26); all key results hold regardless of r.
+See Q91 for the open problem of deriving V_compact.
 
 ### R39. Phase-dependent near-field interaction — COMPLETE
 **Study:** [`R39-near-field-phase/`](R39-near-field-phase/)
