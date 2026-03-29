@@ -1,6 +1,6 @@
 # R40. Self-consistent dynamic torus — shape from force balance
 
-**Status:** COMPLETE — Dynamic Ma deformation negligible (F24); flat torus vindicated
+**Status:** COMPLETE (Phase 2)
 **Depends on:** R17 (radiation pressure), R18 (torus stiffness),
   R19 (shear-charge / α formula), R33 (ghost modes), R37 (membrane mechanics)
 **Motivates:** Q90 (ephemeral mode decomposition / dynamic torus),
@@ -167,116 +167,67 @@ by requiring that the total energy (mode + surface) is stationary:
 
 ## Tracks
 
-### Track 1. Outward pressure profile on a circular torus [DONE]
+### Phase 1: Exploratory (Tracks 1–8)
 
-Compute P_rad(θ₁) on the standard circular cross-section.
-Script: `scripts/track1_pressure_profile.py`
+Phase 1 established the radiation pressure profile, explored shape
+optimization, and tested two stiffness models (surface tension,
+Einstein bulk stiffness).  **Track 1 is reliable.  Tracks 2–5
+used invalid inputs** (static model's r_p on a self-intersecting
+geometry with flat-torus geodesic) — qualitative insights only.
+Tracks 6 and 8 are reliable independent analyses.
 
-**Result:** Pressure is highly non-uniform.  Dominated by k=2
-(elliptical) harmonic.  The circular torus is not in force balance
-(F2).  See findings.md F1–F4.
+Phase 1 ended with F24: bulk stiffness c⁴/(8πG) gives 10⁻⁴⁰
+deformation.  But this compared EM radiation pressure against
+gravitational stiffness — mixing two different sectors.  The
+photon is an EM phenomenon; the restoring force should be EM too.
 
-### Track 2. Self-consistent shape (energy minimization) [DONE]
+| Track | Question | Status | Reliable? |
+|-------|----------|--------|-----------|
+| 1 | Radiation pressure profile | DONE | Yes |
+| 2 | Energy-minimizing shape | DONE | No — invalid inputs |
+| 3 | Mode spectrum on (1,2) shape | DONE | No — built on Track 2 |
+| 4 | Per-mode optimal shapes | DONE | No — built on Track 2 |
+| 5 | Surface tension as restoring model | DONE | No — built on Track 2 |
+| 6 | Clairaut geodesic | DONE | Yes |
+| 7 | Non-self-intersecting control | SUPERSEDED | — |
+| 8 | Free-r optimization | DONE | Yes |
 
-Find the cross-section that minimizes mode energy for the (1,2)
-mode, subject to path-length constraint.
-Script: `scripts/track2_self_consistent_shape.py`
-
-**Result:** Equilibrium is a 4-lobed (a₂-dominated) shape with
-14.5% lower energy than the circular torus (F5, F6).
-
-**Known issue:** Uses the flat-torus geodesic on the deformed
-surface.  The actual geodesic on a surface of revolution follows
-Clairaut's relation and is a different path.  Track 6 should fix
-this.  The 14.5% energy shift may change.
-
-### Track 3. Mode spectrum on the self-consistent shape [DONE]
-
-Which modes can live on the (1,2)-optimized shape?
-Script: `scripts/track3_mode_spectrum.py`
-
-**Result:** Most modes are energetically lowered.  A bandpass
-filter on n₂ (ring winding) is observed: modes with n₂ ≈ 2
-benefit most, high-n₂ modes are penalized.  The (1,2) shape
-acts as a band filter, not a simple low-pass (F10–F14).
-
-### Track 4. Per-mode optimal shapes [DONE]
-
-Each mode optimized independently — does every mode want the
-same shape, or different shapes?
-Script: `scripts/track4_per_mode_shapes.py`
-
-**Result:** Different modes want dramatically different shapes
-(F13).  Ghost suppression works through shape incompatibility:
-the (1,2) mode's equilibrium shape penalizes high-n₂ modes.
-Shape competition creates barriers between distinct particle
-configurations (F15).
-
-### Track 5. Surface tension as restoring model [DONE]
-
-Test whether surface tension can provide the restoring force.
-Script: `scripts/track5_surface_tension.py`
-
-**Result:** Surface tension is not a consistent restoring model —
-the tension needed is inconsistent across harmonics (F16).
-However, a tension-like term does suppress high-k deformations,
-making shapes smoother (F17).
-
-### Track 6. Clairaut geodesic on embedded torus [DONE]
-
-Compute the true geodesic (Clairaut's relation) on the embedded
-surface and compare to the flat-torus approximation.
-Script: `scripts/track6_clairaut_geodesic.py`
-
-**Result:** For non-self-intersecting tori (a/R < 1), the embedded
-geodesic is 34–58% shorter than the flat-torus path (F19).  Shape
-optimization naturally reduces this discrepancy to 3–6% (F21).
-For self-intersecting tori (a/R > 1), the Clairaut geodesic does
-not exist — ρ passes through zero, creating a metric singularity
-that blocks all (n₂ ≠ 0) closed geodesics (F20).
-
-**Critical implication:** All known MaSt particles have a/R > 1.
-The "3D embedding = physics" premise breaks down for all of them
-(F22).
-
-### Track 7. Non-self-intersecting control [SUPERSEDED]
-
-Originally planned to run Tracks 1–2 on a non-self-intersecting
-torus (r ~ 2–5).  Track 6's analysis of the Clairaut geodesic
-across all r values, and Track 8's free-r sweep, cover this ground
-more thoroughly.
-
-### Track 8. Free-r optimization [DONE]
-
-Treat the aspect ratio r = a/R as a free parameter (not imported
-from the static model) and sweep across r to find the embedded
-eigenvalue minimum.
-Script: `scripts/track8_free_r_optimization.py`
-
-**Result:** The Compton constraint alone does not determine r (F23).
-The eigenvalue minimum falls at r ≈ 5 (self-intersecting), and with
-shape optimization remains in the r > 1 regime.  A second constraint
-(restoring force, α condition, or cross-sheet coupling) is needed
-to pin r.
-
-### Closing analysis: Einstein stiffness [in findings.md, F24]
-
-Computed the ratio of the photon's radiation pressure to the
-restoring pressure implied by GR's spatial stiffness c⁴/(8πG).
-The photon is 10⁴⁰ times too weak to deform the torus.  Dynamic
-Ma deformation is negligible.
+Detailed results: see findings.md F1–F24.
 
 
-## Outcome
+### Phase 2: α-impedance model (Tracks 9–11)
 
-The radiation pressure is non-uniform (26%), but the spatial
-stiffness makes the resulting deformation ~10⁻⁴⁰ of the tube
-radius.  The flat-torus model used in R1–R39 is vindicated: the
-mode is a perturbation on a rigid geometric background.
+Phase 1's F24 compared EM radiation pressure against gravitational
+stiffness c⁴/(8πG) — mixing two different sectors.  Phase 2
+replaced the gravitational restoring force with an EM model.
 
-Ghost suppression via shape deformation does not work.  Alternative
-mechanisms to investigate: coupling form factors (R33), cavity
-Q-factors (R38), moduli potentials (R37), cross-sheet filtering.
+#### Track 9+10. Required stiffness and EM impedance [DONE]
+
+Computed the mean radiation pressure P₀ = 4.04 MeV/fm³ in
+physical units.  Found P₀ = E/(A×a) (a geometric identity).
+Compared against EM impedance constants μ₀, ε₀.  Conclusion:
+μ₀ and ε₀ are conversion factors, not independent restoring
+forces.  The required fields (~9000× Schwinger) are in the
+deep non-perturbative QED regime.
+
+#### Track 11. α-impedance shape [DONE]
+
+The torus wall is the (1−α) energy contour of the photon mode.
+Inside the wall: 136/137 of the energy (confined mode).
+Outside: 1/137 (the particle's external EM field).
+
+Results:
+- On the flat torus (intrinsic geometry), the contour is a
+  perfect circle.  No deformation.
+- The 3D embedding introduces a k=2 (elliptical) deformation
+  at δr/a = 6.7 × 10⁻⁴ (0.067%).
+- The elastic 1/k² wall response provides a **low-pass filter**
+  in tube winding number n₁: 40× suppression from n₁=1 to
+  n₁=2, 450× to n₁=3.
+- Mass shift for proton: δM ≈ 0.32 MeV (0.034%).
+- Area unchanged at O(α²) ≈ 2 × 10⁻⁷.
+- α runs with energy because wall transparency increases —
+  geometric realization of vacuum polarization.
 
 
 ## Tools

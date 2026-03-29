@@ -1,12 +1,13 @@
 # R40. Self-consistent dynamic torus — Findings
 
-**Date:** 2026-03-28 (Tracks 1–5), 2026-03-01 (Tracks 6–8)
-**Status:** COMPLETE — Dynamic Ma deformation is negligible (F23)
-**Scripts:** `track1_pressure_profile.py`, `track2_self_consistent_shape.py`,
-  `track3_mode_spectrum.py`, `track4_per_mode_shapes.py`,
-  `track5_surface_tension.py`, `track6_clairaut_geodesic.py`,
-  `track8_free_r_optimization.py`
+**Date:** 2026-03-28 (Tracks 1–5), 2026-03-01 (Tracks 6–11)
+**Status:** Active — Phase 2 (α-impedance model)
+**Scripts:** `track1_pressure_profile.py`, `track6_clairaut_geodesic.py`,
+  `track8_free_r_optimization.py`, `track9_em_stiffness.py`,
+  `track11_alpha_shape.py`
 **Library:** `lib/ma_model.py`, `lib/embedded.py`
+**Tossed:** `track2_*.py` through `track5_*.py` (used invalid inputs;
+  F5–F18 retracted, see Phase 1 notes)
 
 
 ## Geometry
@@ -743,150 +744,272 @@ condition, or a re-derived cross-sheet constraint.
 
 The R40 study deliberately left the restoring force unspecified:
 "The restoring force is an OUTPUT of the calculation, not an input."
-Tracks 1–5 computed the photon's radiation pressure on the tube
-wall and found the shapes that would balance it IF the restoring
-force were zero or weak.
+This section closes that question by estimating the restoring force
+from known physics.
 
-But space has a known stiffness.  In general relativity, the
-Einstein field equation relates stress-energy to spacetime
+### Two notions of stiffness
+
+There are two ways to frame the restoring force:
+
+1. **Bulk spatial stiffness** — the cost of curving 3+1D spacetime.
+   This is c⁴/(8πG) ≈ 4.8 × 10⁴² N: the Einstein stiffness.
+
+2. **Sheet deformation stiffness** — the cost of deforming a 2D
+   membrane (stretching, bending) within the compact space.  A 2D
+   sheet has tension σ (energy per unit area change) and bending
+   modulus κ (energy per unit curvature-squared change).  These are
+   distinct from the bulk stiffness and could in principle be much
+   softer.
+
+We analyze both.
+
+### Case 1: Bulk stiffness (c⁴/8πG)
+
+The Einstein field equation relates stress-energy to spacetime
 curvature:
 
     G_μν = (8πG/c⁴) T_μν
 
-The factor c⁴/(8πG) ≈ 4.8 × 10⁴² N is the stiffness of
-spacetime — the force required to produce unit curvature.  If the
-compact Ma dimensions are part of spacetime (as in Kaluza-Klein),
-their stiffness is governed by the same constant.
+If the compact Ma dimensions are part of spacetime (as in
+Kaluza-Klein), their stiffness is governed by the same constant.
 
-### The photon's radiation pressure
-
-The (1,2) photon has energy E = m_p c² = 938 MeV and follows a
-curved 3D geodesic on the embedded torus.  Its centrifugal force
-against the tube wall:
+**The photon's radiation pressure.**  The (1,2) photon has energy
+E = m_p c² = 938 MeV.  Its centrifugal force against the tube wall:
 
     F = E × κ_radial
 
-where κ_radial ≈ 0.27 fm⁻¹ (Track 1) is the outward radial
-curvature.  This gives:
+where κ_radial is the outward radial curvature.  For a torus at
+the Compton scale, F ~ 10⁴ N.  Distributed over the torus surface
+area A ~ 60 fm² = 6 × 10⁻²⁹ m²:
 
-    F ≈ 938 MeV × 0.27 fm⁻¹ ≈ 253 MeV/fm ≈ 4 × 10⁴ N
+    P_photon ~ 10³² Pa     (order of magnitude)
 
-The force is distributed over the torus surface area
-A = 4π²Ra ≈ 62 fm² = 6.2 × 10⁻²⁹ m²:
+**The restoring pressure.**  The Gaussian curvature of the torus
+K ~ 1/(aR) ~ 10²⁹ m⁻².  The pressure associated with maintaining
+this curvature in Einstein gravity:
 
-    P_photon ≈ F / A ≈ 6.5 × 10³² Pa
+    P_space ~ K × c⁴/(8πG) ~ 10²⁹ × 10⁴² ~ 10⁷¹ Pa
 
-### The restoring pressure from spatial rigidity
+**The ratio:**
 
-The Gaussian curvature of the torus surface is
-K ~ 1/(aR) ≈ 0.64 fm⁻² = 6.4 × 10²⁹ m⁻².
+    P_photon / P_space ~ 10⁻⁴⁰
 
-In Einstein gravity, the pressure associated with maintaining
-this curvature is:
+The photon is **40 orders of magnitude** too weak to deform bulk
+spacetime at the torus scale.  Deformation δa/a ~ 10⁻⁴⁰.
 
-    P_space ~ K × c⁴/(8πG) ≈ 6.4 × 10²⁹ × 4.8 × 10⁴² ≈ 3 × 10⁷² Pa
+### Case 2: Sheet stiffness (membrane model)
 
-### The ratio
+The sheet is a 2D surface, not the bulk.  Its elastic properties
+(tension σ, bending modulus κ) depend on the microscopic theory of
+what the sheet IS:
 
-    P_photon / P_space ≈ 10⁻⁴⁰
+- If a D-brane: σ_brane ~ 1/(2πα'), typically at the string/Planck
+  scale.  Still extremely stiff — same conclusion as Case 1.
+- If a topological locus in a compact manifold: the stiffness comes
+  from the moduli potential, which is model-dependent.
+- If set by cross-sheet shear couplings: related to coupling
+  constants like α, potentially much softer.
 
-The photon's radiation pressure is **40 orders of magnitude** weaker
-than the spatial rigidity.  The deformation it produces is:
+**What sheet stiffness would be needed?**  For the photon's
+radiation pressure to produce order-unity deformation of the
+cross-section, the effective sheet tension would need to be:
 
-    δa/a ~ P_photon / P_space ~ 10⁻⁴⁰
+    σ_required ~ P_photon × a ~ 10³² Pa × 10⁻¹⁵ m ~ 10¹⁷ N/m
 
-This is zero for all practical purposes.  The 26% non-uniformity
-of the radiation pressure (F2) is real, but the surface deformation
-it drives is 10⁻⁴⁰ of the tube radius — undetectable by any
-measurement and without physical consequence.
+    (equivalently, ~ 10¹⁷ J/m² ~ 600 GeV/fm²)
 
-### Implications
+For comparison:
+- QCD string tension: ~ 1 GeV/fm (1D), ~ 1000 MeV/fm² (2D)
+- Bulk GR stiffness projected to the sheet: ~ 10⁴³ MeV/fm²
 
-1. **The circular cross-section IS the equilibrium** (to 10⁻⁴⁰
-   precision).  Tracks 2–5 computed shapes that would arise if the
-   restoring force were weak or absent.  With Einstein stiffness,
-   those deformations do not occur.
+So the sheet would need to be about as stiff as QCD confinement
+for order-unity deformation — which is not absurd, but cannot be
+derived from within MaSt as currently formulated.
 
-2. **Ghost suppression via shape deformation does not work.**
-   The band-filter mechanism (F10, F15) requires the torus to
-   deform into a mode-dependent shape.  At 10⁻⁴⁰ deformation,
-   no mode-dependent filtering occurs.
+**However, this estimate is itself unreliable.**  The required
+stiffness depends on the mode energy landscape — how much the
+eigenvalue changes per unit deformation.  Tracks 2–5 computed
+this landscape, but used the static model's r_p = 8.906 and the
+flat-torus geodesic on a self-intersecting surface.  Both inputs
+are invalid (F20, F22).  The true energy landscape on a physically
+valid (non-self-intersecting) geometry has not been computed.
 
-3. **The Dynamic Ma hypothesis is falsified** (in its current form).
-   The premise was: the photon's radiation pressure deforms the
-   torus, creating a self-consistent shape that filters modes.  If
-   spatial rigidity is c⁴/(8πG), the photon cannot deform its
-   cavity.
+### Conclusion
 
-4. **An escape hatch exists** if the compact Ma dimensions have a
-   stiffness much lower than c⁴/(8πG) — for instance, if they are
-   stabilized by flux, brane tension, or some other mechanism with
-   a characteristic scale far below the Planck scale.  This would
-   require theoretical justification: why would the compact
-   dimensions be 10⁴⁰ times softer than ordinary spacetime?
+At bulk stiffness (c⁴/8πG), deformation is negligible: 10⁻⁴⁰.
 
-5. **The flat-torus model is vindicated.**  The rigidity result
-   supports the assumption made in R1–R39: the torus geometry is
-   fixed, and the mode is a perturbation on a rigid background.
-   Whatever sets the torus shape (moduli stabilization, vacuum
-   energy), it is not the photon's radiation pressure.
+At sheet stiffness, the answer depends on the microscopic theory.
+The sheet tension needed for order-unity deformation (~600 GeV/fm²)
+is plausible but not derivable.  And the mode energy landscape
+needed to pin it down has not been reliably computed — the Track
+2–5 results used invalid inputs (self-intersecting geometry,
+flat-torus geodesic on an embedded surface).
+
+**The strongest statement R40 can make:** if the compact dimensions
+have GR-scale stiffness, Dynamic Ma is dead.  If they are much
+softer (by ~10⁴⁰), it remains open but requires a microscopic
+theory that explains why compact dimensions are so much softer
+than ordinary spacetime.
+
+
+## F25. The α-impedance model: the torus wall is the (1−α) energy contour (Track 11)
+
+### The model
+
+The photon mode fills the torus and has an evanescent tail beyond
+the wall.  The torus "boundary" is not a hard wall but the contour
+that encloses (1 − α) ≈ 136/137 of the mode's energy.  Beyond
+this contour, the remaining fraction α ≈ 1/137 leaks out as the
+particle's external EM field — its charge, its Coulomb interaction,
+everything the outside world can measure.
+
+The fine-structure constant α, already derived from the torus
+geometry in MaSt, plays a new role: it sets the wall's
+transparency.  The torus wall is a partially reflecting boundary
+with reflectivity (1 − α).
+
+### Force balance
+
+The mode's radiation pressure pushes outward at all tube angles.
+But only the fraction α of the energy that crosses the wall exerts
+a net deforming force — the (1 − α) fraction that reflects back
+cancels out.
+
+    P_deform(θ₁) = α × P_rad(θ₁)
+
+The external pressure (vacuum EM impedance, through ε₀ ∝ 1/α)
+pushes inward.  At equilibrium, the wall sits where:
+
+    P_in(θ₁) = P_out(θ₁)
+
+The deformation is of order:
+
+    δa/a ~ α² ≈ 5.3 × 10⁻⁵
+
+This is a ~0.005% perturbation to the circular cross-section.
+
+### Why α runs with energy
+
+At higher photon energy, the mode hits the wall harder.  More
+energy leaks through — the wall becomes more transparent.  α
+increases.  This is geometrically identical to QED vacuum
+polarization: "virtual pairs screen the bare charge at large
+distances" becomes "the torus wall transmits a larger fraction
+at higher energy."
+
+### Shape from the mode's energy contour
+
+The mode's energy density is not uniform around the tube
+(Track 1: ~10% variation).  The (1 − α) contour therefore has
+a non-circular cross-section: it bulges where the energy density
+is higher and contracts where it's lower.  The shape IS the mode's
+fingerprint — different modes give different shapes, no free
+parameters.
+
+### Track 11 results
+
+**Cross-section shape:** On the flat torus, the (1−α) contour is
+a perfect circle (|ψ|² = const → no θ₁ dependence).  The 3D
+embedding introduces non-uniformity through centrifugal curvature.
+The deformation has Fourier harmonics decaying as 1/k²:
+
+| k | |c_k|/c₀ | δr_k/a | physical meaning |
+|---|----------|--------|-----------------|
+| 2 | 0.369 | 6.73 × 10⁻⁴ | elliptical (dominant) |
+| 4 | 0.036 | 1.66 × 10⁻⁵ | square |
+| 6 | 0.007 | 1.51 × 10⁻⁶ | hexagonal |
+| 8 | 0.002 | 2.19 × 10⁻⁷ | octagonal |
+
+Odd harmonics (k = 1, 3, 5, 7) are negligible (~10⁻⁶), consistent
+with the cos(2θ₁) symmetry of the (1,2) mode.
+
+The cross-section bulges at the outer and inner equators (θ₁ = 0, π)
+and contracts at top and bottom (θ₁ = π/2, 3π/2).  RMS deformation:
+δr/a = 6.73 × 10⁻⁴ (0.067%).
+
+**Low-pass filter:** The elastic 1/k² response provides a low-pass
+filter in tube winding number n₁.  Mode n₁ couples to wall harmonic
+k = 2n₁ through the overlap ⟨cos²(n₁θ₁)|cos(2n₁θ₁)⟩ = ½.
+Suppression ratios relative to n₁ = 1:
+
+| n₁ | k = 2n₁ | ε_k | ε_k/ε₂ | δλ/λ | δM (MeV) |
+|-----|---------|-----|--------|------|----------|
+| 1 | 2 | 6.73e-4 | 1.0 | 3.4e-4 | 0.316 |
+| 2 | 4 | 1.66e-5 | 0.025 | 8.3e-6 | 0.008 |
+| 3 | 6 | 1.51e-6 | 0.0022 | 7.5e-7 | 7.1e-4 |
+| 4 | 8 | 2.19e-7 | 0.0003 | 1.1e-7 | 1.0e-4 |
+
+The n₁ = 1 mode sees a deformation 40× larger than n₁ = 2 and
+450× larger than n₁ = 3.  This IS a low-pass filter.
+
+**Area:** Unchanged at O(α²) ≈ 2 × 10⁻⁷.  No over-constraint.
+
+**Mass shift:** For the proton (1,2) mode, δM ≈ 0.32 MeV (0.034%).
+
+**Energy partition:** 931.4 MeV confined (99.27%), 6.85 MeV external
+(0.73%).  The external fraction IS the Coulomb field.
+
+**Self-consistency:** The deformation-induced energy shift (0.034%)
+is much smaller than α (0.73%).  The flat-torus static model is a
+consistent zeroth-order solution.  Dynamic Ma is a fine-structure
+correction.
 
 
 ---
 
 ## Summary of R40
 
-### Track inventory
+### Phase 1 (Tracks 1–8): exploration and dead ends
 
-| Track | Question | Result |
-|-------|----------|--------|
-| 1 | Radiation pressure on circular torus | 26% non-uniform, k=2 dominant (F1–F4) |
-| 2 | Energy-minimizing shape at fixed path length | 4-lobed, 14.5% lower energy (F5–F7) |
-| 3 | Mode spectrum on (1,2)-optimal shape | Band filter on n₂, crossover at n₂ ≈ 3 (F8–F11) |
-| 4 | Per-mode optimal shapes | Every mode finds a stabilizing shape; shapes differ dramatically (F12–F15) |
-| 5 | Surface tension as restoring model | Inconsistent; not the right functional form (F16–F18) |
-| 6 | Clairaut geodesic on embedded torus | 34–58% shorter than flat geodesic; undefined for a/R > 1 (F19–F22) |
-| 8 | Free-r optimization (no static-model input) | Eigenvalue prefers r ≈ 5 (self-intersecting); r undetermined by Compton alone (F23) |
-| — | Einstein stiffness as restoring force | Deformation is 10⁻⁴⁰ — negligible; Dynamic Ma falsified in current form (F24) |
+| Track | Question | Result | Status |
+|-------|----------|--------|--------|
+| 1 | Radiation pressure on circular torus | ~10% non-uniform, P₀ = 4.04 MeV/fm³ (F1–F4) | **Sound** |
+| 2–5 | Shape optimization, mode spectrum, surface tension | Various (F5–F18) | **Tossed** — invalid inputs |
+| 6 | Clairaut geodesic | Undefined for a/R > 1 (F19–F22) | **Sound** |
+| 8 | Free-r optimization | Eigenvalue prefers r > 1 (F23) | **Sound** |
+| 9+10 | Required stiffness, EM impedance | P₀ = E/(A×a), GR stiffness → 10⁻⁴⁰ (F24) | **Partially sound** |
 
-### What this study established
+**Tossed (F5–F18):** Tracks 2–5 used the static model's r_p = 8.906
+on a self-intersecting geometry with the flat-torus geodesic.  Both
+inputs were later invalidated (F20, F22).  All quantitative results
+from these tracks are retracted.
 
-1. **The photon exerts real, non-uniform radiation pressure** on the
-   torus wall (F1–F4).  The pressure profile is computable and
-   mode-dependent.  This is solid physics regardless of the
-   restoring force.
+**Lesson from F24:** The GR stiffness comparison (c⁴/8πG vs photon
+pressure) mixed EM and gravity — wrong sectors.  The photon is EM;
+the restoring force should be EM.  The bulk GR number (10⁻⁴⁰) is
+a valid upper bound on deformation IF the compact dimensions have
+gravitational stiffness, but this is not the only possibility.
 
-2. **IF the restoring force were weak**, the equilibrium shape would
-   be non-circular, mode-dependent, and create a band filter on the
-   mode spectrum (F5–F15).  These are conditional results — valid
-   only if the stiffness is low enough for deformation to occur.
+### Phase 2 (Tracks 9–11): α-impedance model
 
-3. **The embedded geodesic does not exist** for any known particle
-   (a/R > 1 for all).  The self-intersection problem is structural,
-   not an artifact of the static model's r value.  Even with r as
-   a free parameter, the embedded metric prefers r > 1 (F19–F23).
+The torus wall is the (1−α) energy contour of the photon mode.
+Inside: 136/137 of the energy (confined mode).  Outside: 1/137
+(the particle's external EM field).
 
-4. **Einstein's spatial stiffness kills the deformation hypothesis**
-   (F24).  The photon's pressure is 10⁴⁰ times too weak to deform
-   a compact dimension governed by c⁴/(8πG).  The torus shape is
-   set by whatever mechanism stabilizes the compact geometry
-   (moduli, vacuum energy), not by the photon.
+| Track | Question | Result | Status |
+|-------|----------|--------|--------|
+| 9+10 | Required stiffness = E/(A×a); EM impedance comparison | P₀ = 4.04 MeV/fm³ | DONE |
+| 11 | Dynamic shape from α-impedance model | See F25 | **DONE** |
 
-### Conclusion
+### Key results
 
-Dynamic Ma — the hypothesis that the photon's radiation pressure
-shapes its own cavity — does not survive quantitative analysis.
-The idea is physically well-motivated (energy does curve spacetime),
-but the numbers are off by 40 orders of magnitude.  The torus is
-rigid.
+1. **Track 1 pressure profile (F1–F4).**  The photon exerts real,
+   non-uniform radiation pressure.  Reliable input for all tracks.
 
-The flat-torus model used in R1–R39 is the correct approximation:
-the mode is a perturbation on a fixed geometric background.  Ghost
-suppression, if it exists, must come from a different mechanism —
-perhaps the coupling form factor (R33), the cavity Q-factor (R38),
-or a moduli potential (R37) that only supports specific geometries
-in the first place.
+2. **Clairaut geodesic (F19–F22).**  The embedded geodesic
+   does not exist for a/R > 1.  The flat-torus geodesic is correct.
 
-The cross-sheet filtering idea (deformation modes leaking between
-sheets via cross-shears) remains viable as a separate hypothesis,
-but would need its own restoring-force analysis before proceeding.
+3. **Free-r result (F23).**  Compton alone doesn't fix r.
+
+4. **The α-impedance model (F25).**  The torus wall is the (1−α)
+   energy contour.  On the flat torus, the wall is a perfect circle.
+   The 3D embedding adds a 0.067% elliptical deformation (k=2).
+   The elastic 1/k² response provides a low-pass filter in n₁:
+   40× suppression from n₁=1 to n₁=2, 450× to n₁=3.
+
+5. **α runs with energy** because the wall transparency increases
+   with photon energy — geometric vacuum polarization.
+
+6. **Dynamic Ma is perturbative** (corrections ∝ α² ≈ 5×10⁻⁵).
+   The static flat-torus model is the correct zeroth-order
+   approximation.  Dynamic effects are fine-structure corrections.

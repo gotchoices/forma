@@ -26,19 +26,20 @@ solutions — every r > ~2 has a self-consistent s.  Nothing currently selects r
 **Study:** [`R40-dynamic-torus/`](R40-dynamic-torus/)
 **Questions:** Q90, Q77, Q34, Q86  **Type:** compute  **Depends on:** R17, R18, R19, R33, R37
 
-Does the photon's radiation pressure deform the torus into a self-
-consistent shape that filters ghost modes?  **Result:** The pressure
-is non-uniform (26%, k=2 dominant) and *would* produce mode-dependent
-shapes if the restoring force were weak (Tracks 1–5).  However, the
-Clairaut geodesic does not exist for any known particle (a/R > 1),
-blocking the "3D embedding = physics" premise (Track 6, F20–F22).
-Treating r as a free parameter does not help — the eigenvalue minimum
-falls at r ≈ 5, still self-intersecting (Track 8, F23).  The decisive
-result: Einstein's spatial stiffness c⁴/(8πG) ≈ 4.8 × 10⁴² N makes
-the photon's radiation pressure 10⁴⁰ times too weak to deform the
-torus (F24).  Deformation is ~10⁻⁴⁰ of the tube radius — negligible.
-The flat-torus model used in R1–R39 is vindicated.  Ghost suppression
-must come from a different mechanism.  See `findings.md` (F1–F24).
+Does the photon's radiation pressure deform the torus?  Phase 1
+(Tracks 1–8) established the pressure profile and showed GR bulk
+stiffness gives 10⁻⁴⁰ deformation (mixing EM and gravity).  Phase
+2 introduced the α-impedance model: the torus wall is the (1−α)
+energy contour of the mode, with 136/137 of the energy confined
+and 1/137 leaking as the external EM field.  **Result:** on the
+flat torus the contour is circular (no deformation).  The 3D
+embedding adds a 0.067% elliptical perturbation.  The elastic 1/k²
+wall response provides a **low-pass filter** in tube winding number
+(40× suppression per step in n₁).  Dynamic Ma is perturbative
+(corrections ∝ α² ≈ 5×10⁻⁵); the static flat-torus model is the
+correct zeroth-order approximation.  α runs with energy because
+wall transparency increases — geometric vacuum polarization.
+See `findings.md` (F1–F25).
 
 ### R39. Phase-dependent near-field interaction — COMPLETE
 **Study:** [`R39-near-field-phase/`](R39-near-field-phase/)
