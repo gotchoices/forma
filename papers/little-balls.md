@@ -131,7 +131,7 @@ What if matter is not made of smaller and smaller balls, but of light itself —
 
 If this is true, then everything reduces to two things: **light** — energy, the raw material — and **geometry** — the shape, the structure, the design of the dimensions that give energy its form.
 
-The framework that emerges has ten dimensions.  Remarkably, string theory arrived at the same number from a completely different direction.  Within these dimensions, particle masses emerge from the geometry — most of the structure is computable, not assumed.
+The framework that emerges — called MaSt, for Material-Space-Time — has ten dimensions.  Remarkably, string theory arrived at the same number from a completely different direction.  Within these dimensions, particle masses emerge from the geometry — most of the structure is computable, not assumed.
 
 But α — the mystery Feynman despaired of — has still not yielded.  The geometry needs it but cannot derive it.  And the Omega baryon, the last entry in the particle catalog, is the one particle the geometry has not yet been able to accommodate.
 
