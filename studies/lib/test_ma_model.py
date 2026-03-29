@@ -644,5 +644,235 @@ class TestStubs(unittest.TestCase):
             _fincke_pohst_enumerate(np.eye(6), 1.0)
 
 
+# ════════════════════════════════════════════════════════════════════
+#  Dynamic model (α-impedance) — Phase 6 tests
+# ════════════════════════════════════════════════════════════════════
+
+from lib.ma_model import (
+    PressureHarmonics, WallShape, DynamicCorrection,
+    _compute_pressure_harmonics,
+)
+
+
+class TestDynamicBackwardCompat(unittest.TestCase):
+    """dynamic=False must produce identical results to pre-dynamic code."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.m_static = Ma(**REF)
+        cls.m_dynamic_off = Ma(**REF, dynamic=False)
+
+    def test_energy_identical(self):
+        for mode in [ELECTRON, PROTON, NEUTRON, NEUTRINO]:
+            self.assertAlmostEqual(
+                self.m_static.energy(mode),
+                self.m_dynamic_off.energy(mode),
+                places=12, msg=f"mismatch at {mode}")
+
+    def test_dynamic_flag_false_by_default(self):
+        self.assertFalse(self.m_static.dynamic)
+
+    def test_scan_delta_none_when_static(self):
+        modes = self.m_static.scan_modes(n_max=1, E_max_MeV=100)
+        for m in modes:
+            self.assertIsNone(m.delta_E_MeV)
+
+
+class TestPressureHarmonics(unittest.TestCase):
+
+    def test_returns_namedtuple(self):
+        m = Ma(**REF, dynamic=True)
+        h = m.pressure_harmonics(1, 2, 8.906)
+        self.assertIsInstance(h, PressureHarmonics)
+
+    def test_r40_track11_match(self):
+        """Proton (1,2) at r=8.906 must match Track 11 results."""
+        m = Ma(**REF, dynamic=True)
+        h = m.pressure_harmonics(1, 2, 8.906)
+        c0 = h.c_k[0]
+        self.assertGreater(c0, 0)
+        rel_c2 = h.c_k[2] / c0
+        self.assertAlmostEqual(rel_c2, 0.37, delta=0.02,
+                               msg="|c₂/c₀| should be ≈0.37")
+        self.assertGreater(h.delta_r_k[2], 0)
+        self.assertAlmostEqual(h.delta_r_k[2], 6.7e-4, delta=1e-4,
+                               msg="δr₂/a should be ≈6.7×10⁻⁴")
+
+    def test_k2_dominant(self):
+        """k=2 should be the dominant harmonic for (1,2) mode."""
+        m = Ma(**REF, dynamic=True)
+        h = m.pressure_harmonics(1, 2, 8.906)
+        for k in range(3, len(h.delta_r_k)):
+            self.assertGreater(h.delta_r_k[2], h.delta_r_k[k],
+                               msg=f"k=2 should dominate over k={k}")
+
+    def test_zero_for_no_tube_winding(self):
+        h = _compute_pressure_harmonics(0, 2, 8.906)
+        for k in range(len(h.delta_r_k)):
+            self.assertAlmostEqual(h.delta_r_k[k], 0.0)
+
+    def test_zero_for_no_ring_winding(self):
+        h = _compute_pressure_harmonics(1, 0, 8.906)
+        for k in range(len(h.delta_r_k)):
+            self.assertAlmostEqual(h.delta_r_k[k], 0.0)
+
+    def test_caching(self):
+        """Same (n_tube, n_ring, r) should return cached result."""
+        m = Ma(**REF, dynamic=True)
+        h1 = m.pressure_harmonics(1, 2, 8.906)
+        h2 = m.pressure_harmonics(1, 2, 8.906)
+        self.assertIs(h1, h2)
+
+    def test_sign_invariance(self):
+        """Harmonics should be the same for ±n_tube, ±n_ring."""
+        m = Ma(**REF, dynamic=True)
+        h1 = m.pressure_harmonics(1, 2, 8.906)
+        h2 = m.pressure_harmonics(-1, 2, 8.906)
+        h3 = m.pressure_harmonics(1, -2, 8.906)
+        np.testing.assert_array_almost_equal(h1.delta_r_k, h2.delta_r_k)
+        np.testing.assert_array_almost_equal(h1.delta_r_k, h3.delta_r_k)
+
+
+class TestWallShape(unittest.TestCase):
+
+    def test_returns_namedtuple(self):
+        m = Ma(**REF, dynamic=True)
+        s = m.wall_shape(1, 2, 8.906)
+        self.assertIsInstance(s, WallShape)
+
+    def test_nearly_circular(self):
+        """Wall should be close to r/a = 1 everywhere."""
+        m = Ma(**REF, dynamic=True)
+        s = m.wall_shape(1, 2, 8.906)
+        self.assertTrue(np.all(s.r_over_a > 0.999))
+        self.assertTrue(np.all(s.r_over_a < 1.001))
+
+    def test_eccentricity_small(self):
+        m = Ma(**REF, dynamic=True)
+        s = m.wall_shape(1, 2, 8.906)
+        self.assertLess(s.eccentricity, 0.001)
+        self.assertGreater(s.eccentricity, 0.0)
+
+
+class TestDynamicCorrection(unittest.TestCase):
+
+    @classmethod
+    def setUpClass(cls):
+        cls.m = Ma(**REF, dynamic=True)
+
+    def test_returns_namedtuple(self):
+        corr = self.m.dynamic_correction(PROTON)
+        self.assertIsInstance(corr, DynamicCorrection)
+
+    def test_proton_correction_magnitude(self):
+        """δE/E for proton should be ≈3.4×10⁻⁴ (from R40 Track 11)."""
+        corr = self.m.dynamic_correction(PROTON)
+        self.assertAlmostEqual(corr.delta_E_over_E, 3.4e-4, delta=1e-4)
+
+    def test_perturbative_bound(self):
+        """All corrections should be < α ≈ 0.0073."""
+        from lib.constants import alpha
+        for mode in [ELECTRON, PROTON, NEUTRON]:
+            corr = self.m.dynamic_correction(mode)
+            self.assertLess(abs(corr.delta_E_over_E), alpha,
+                            msg=f"|δE/E| > α for mode {mode}")
+
+    def test_no_tube_winding_zero_correction(self):
+        """Modes with n_tube=0 on all sheets → zero correction."""
+        mode = (0, 2, 0, 0, 0, 2)
+        corr = self.m.dynamic_correction(mode)
+        self.assertAlmostEqual(corr.delta_E_over_E, 0.0)
+
+    def test_cpt_symmetry(self):
+        """n and -n should have identical |δE/E|."""
+        n_pos = (1, 2, 0, 0, 0, 0)
+        n_neg = (-1, -2, 0, 0, 0, 0)
+        c1 = self.m.dynamic_correction(n_pos)
+        c2 = self.m.dynamic_correction(n_neg)
+        self.assertAlmostEqual(abs(c1.delta_E_over_E),
+                               abs(c2.delta_E_over_E), places=10)
+
+    def test_per_sheet_dict(self):
+        corr = self.m.dynamic_correction(PROTON)
+        self.assertIn('p', corr.per_sheet)
+        self.assertIn('e', corr.per_sheet)
+        self.assertAlmostEqual(corr.per_sheet['e'], 0.0)
+        self.assertGreater(corr.per_sheet['p'], 0.0)
+
+    def test_dominant_k(self):
+        """Proton (0,0,0,0,1,2): dominant k = 2|n₅| = 2."""
+        corr = self.m.dynamic_correction(PROTON)
+        self.assertEqual(corr.dominant_k, 2)
+
+
+class TestDynamicEnergy(unittest.TestCase):
+
+    @classmethod
+    def setUpClass(cls):
+        cls.m = Ma(**REF, dynamic=True)
+
+    def test_dynamic_differs_from_static(self):
+        E_dyn = self.m.energy(PROTON)
+        E_st = self.m.energy_static(PROTON)
+        self.assertNotAlmostEqual(E_dyn, E_st, places=6)
+        self.assertAlmostEqual(E_dyn, E_st, delta=1.0)
+
+    def test_energy_static_unchanged(self):
+        """energy_static() should match Ma(dynamic=False).energy()."""
+        m_off = Ma(**REF, dynamic=False)
+        self.assertAlmostEqual(
+            self.m.energy_static(PROTON),
+            m_off.energy(PROTON), places=12)
+
+    def test_scan_populates_delta(self):
+        modes = self.m.scan_modes(n_max=1, E_max_MeV=1000)
+        has_delta = any(m.delta_E_MeV is not None for m in modes)
+        self.assertTrue(has_delta)
+
+
+class TestFilterFactor(unittest.TestCase):
+
+    @classmethod
+    def setUpClass(cls):
+        cls.m = Ma(**REF, dynamic=True)
+
+    def test_fundamental_near_one(self):
+        """(1,2) fundamental should have filter_factor ≈ 1."""
+        ff = self.m.filter_factor(PROTON)
+        self.assertAlmostEqual(ff, 1.0, delta=0.01)
+
+    def test_higher_mode_suppressed(self):
+        """Mode with higher tube winding should have ff < 1."""
+        ff = self.m.filter_factor((0, 0, 0, 0, 3, 1))
+        self.assertLess(ff, 0.1)
+
+
+class TestDynamicSerialization(unittest.TestCase):
+
+    def test_roundtrip_preserves_dynamic(self):
+        m1 = Ma(**REF, dynamic=True)
+        d = m1.to_dict()
+        self.assertTrue(d['dynamic'])
+        m2 = Ma.from_dict(d)
+        self.assertTrue(m2.dynamic)
+        self.assertAlmostEqual(
+            m1.energy(PROTON), m2.energy(PROTON), places=8)
+
+    def test_with_params_preserves_dynamic(self):
+        m1 = Ma(**REF, dynamic=True)
+        m2 = m1.with_params(sigma_ep=-0.10)
+        self.assertTrue(m2.dynamic)
+
+    def test_summary_includes_dynamic(self):
+        m = Ma(**REF, dynamic=True)
+        s = m.summary()
+        self.assertIn('dynamic', s)
+        self.assertIn('δE/E', s)
+
+    def test_repr_includes_dynamic(self):
+        m = Ma(**REF, dynamic=True)
+        self.assertIn('dynamic=True', repr(m))
+
+
 if __name__ == '__main__':
     unittest.main()

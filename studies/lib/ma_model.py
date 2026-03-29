@@ -96,7 +96,8 @@ _N_ELECTRON = np.array([1, 2, 0, 0, 0, 0], dtype=float)
 _N_PROTON = np.array([0, 0, 0, 0, 1, 2], dtype=float)
 
 # Mode namedtuple for scan results
-Mode = namedtuple('Mode', ['n', 'E_MeV', 'charge', 'spin_halves'])
+Mode = namedtuple('Mode', ['n', 'E_MeV', 'charge', 'spin_halves', 'delta_E_MeV'])
+Mode.__new__.__defaults__ = (None,)
 
 # Energy decomposition result
 EnergyDecomp = namedtuple('EnergyDecomp', [
@@ -110,6 +111,30 @@ EnergyDecomp = namedtuple('EnergyDecomp', [
     'fractions',   # dict — fractional contributions to E²
 ])
 
+
+# Pressure harmonics result (per-sheet, per-mode)
+PressureHarmonics = namedtuple('PressureHarmonics', [
+    'c_k',        # ndarray — Fourier amplitudes |c_k| for k=0..n_harm
+    'delta_r_k',  # ndarray — wall deformation δr_k/a per harmonic
+    'phi_k',      # ndarray — phases atan2(B_k, A_k)
+    'A_k',        # ndarray — cosine Fourier coefficients
+    'B_k',        # ndarray — sine Fourier coefficients
+])
+
+# Wall cross-section shape
+WallShape = namedtuple('WallShape', [
+    'theta',        # ndarray (N,) — tube angles [0, 2π)
+    'r_over_a',     # ndarray (N,) — wall radius / tube radius
+    'eccentricity', # float — (max-min)/(max+min)
+])
+
+# Dynamic correction for a 6D mode
+DynamicCorrection = namedtuple('DynamicCorrection', [
+    'delta_E_over_E',  # float — total δE/E (weighted across sheets)
+    'per_sheet',       # dict: 'e'→float, 'nu'→float, 'p'→float
+    'dominant_k',      # int — coupling harmonic on dominant sheet
+    'filter_factor',   # float — suppression vs (1,2) fundamental
+])
 
 # Target for inverse solver
 Target = namedtuple('Target', ['n', 'mass_MeV'])
@@ -228,6 +253,126 @@ def _dalpha_ds(r, s):
     return pref * (dmu_ds * sin2 / q**2
                    + mu * dsin2_ds / q**2
                    + mu * sin2 * 2 / q**3)
+
+
+# ══════════════════════════════════════════════════════════════════════
+#  Dynamic model: pressure harmonics (R40 Track 11)
+# ══════════════════════════════════════════════════════════════════════
+
+_N_HARM_DEFAULT = 8
+_N_SAMPLES_DEFAULT = 4000
+_N_WALL_PTS = 360
+
+def _compute_pressure_harmonics(n_tube, n_ring, r,
+                                n_samples=_N_SAMPLES_DEFAULT,
+                                n_harm=_N_HARM_DEFAULT):
+    """
+    Speed-weighted pressure harmonics for mode (n_tube, n_ring) on a
+    torus with aspect ratio r = a/R.
+
+    Uses the flat-torus geodesic (θ₁ = n₁ t, θ₂ = n₂ t) projected onto
+    the 3D embedding.  The Clairaut geodesic does not exist for a/R > 1
+    (R40 F19-F22); the flat-torus path is physically correct.
+
+    Returns PressureHarmonics namedtuple.  Harmonics depend only on
+    (|n_tube|, |n_ring|, r), not on absolute scale or sign.
+    """
+    zeros = np.zeros(n_harm + 1)
+    null = PressureHarmonics(c_k=zeros.copy(), delta_r_k=zeros.copy(),
+                             phi_k=zeros.copy(), A_k=zeros.copy(),
+                             B_k=zeros.copy())
+    n1 = abs(n_tube)
+    n2 = abs(n_ring)
+    if n1 == 0 or n2 == 0:
+        return null
+
+    R_val = 1.0
+    a_val = r
+
+    N = n_samples
+    t = np.linspace(0, 2 * math.pi, N, endpoint=False)
+    dt = t[1] - t[0]
+
+    theta1 = n1 * t
+    theta2 = n2 * t
+    rho = R_val + a_val * np.cos(theta1)
+
+    x = rho * np.cos(theta2)
+    y = rho * np.sin(theta2)
+    z = a_val * np.sin(theta1)
+
+    dx = (-n1 * a_val * np.sin(theta1) * np.cos(theta2)
+          - n2 * rho * np.sin(theta2))
+    dy = (-n1 * a_val * np.sin(theta1) * np.sin(theta2)
+          + n2 * rho * np.cos(theta2))
+    dz = n1 * a_val * np.cos(theta1)
+    speed = np.sqrt(dx**2 + dy**2 + dz**2)
+
+    T_hat = np.stack([dx, dy, dz], axis=-1) / speed[:, None]
+
+    dT = np.zeros_like(T_hat)
+    for j in range(3):
+        dT[:, j] = np.gradient(T_hat[:, j], dt)
+    kappa_vec = dT / speed[:, None]
+
+    e_r = np.stack([
+        np.cos(theta1) * np.cos(theta2),
+        np.cos(theta1) * np.sin(theta2),
+        np.sin(theta1),
+    ], axis=-1)
+
+    kappa_radial_raw = np.sum(kappa_vec * e_r, axis=1)
+    kappa_outward = -kappa_radial_raw
+
+    N_BINS = 256
+    theta1_bins = np.linspace(0, 2 * math.pi, N_BINS, endpoint=False)
+    kout_speed_binned = np.zeros(N_BINS)
+    counts = np.zeros(N_BINS)
+
+    theta1_mod = theta1 % (2 * math.pi)
+    for i in range(N):
+        idx = int(theta1_mod[i] / (2 * math.pi) * N_BINS) % N_BINS
+        kout_speed_binned[idx] += kappa_outward[i] * speed[i]
+        counts[idx] += 1
+
+    mask = counts > 0
+    kout_speed_binned[mask] /= counts[mask]
+
+    th = theta1_bins[mask]
+    signal = kout_speed_binned[mask]
+
+    A_k = np.zeros(n_harm + 1)
+    B_k = np.zeros(n_harm + 1)
+    A_k[0] = np.mean(signal)
+    for k in range(1, n_harm + 1):
+        A_k[k] = 2 * np.mean(signal * np.cos(k * th))
+        B_k[k] = 2 * np.mean(signal * np.sin(k * th))
+
+    c0 = abs(A_k[0])
+    c_k = np.zeros(n_harm + 1)
+    c_k[0] = c0
+    phi_k = np.zeros(n_harm + 1)
+    delta_r_k = np.zeros(n_harm + 1)
+
+    for k in range(1, n_harm + 1):
+        c_k[k] = math.sqrt(A_k[k]**2 + B_k[k]**2)
+        phi_k[k] = math.atan2(B_k[k], A_k[k])
+        if c0 > 0:
+            delta_r_k[k] = ALPHA * (c_k[k] / c0) / k**2
+
+    return PressureHarmonics(c_k=c_k, delta_r_k=delta_r_k,
+                             phi_k=phi_k, A_k=A_k, B_k=B_k)
+
+
+def _compute_wall_shape(harm):
+    """Reconstruct the wall cross-section from pressure harmonics."""
+    theta = np.linspace(0, 2 * math.pi, _N_WALL_PTS, endpoint=False)
+    r_wall = np.ones_like(theta)
+    for k in range(1, len(harm.delta_r_k)):
+        r_wall += harm.delta_r_k[k] * np.cos(k * theta - harm.phi_k[k])
+    rmin, rmax = r_wall.min(), r_wall.max()
+    ecc = (rmax - rmin) / (rmax + rmin) if (rmax + rmin) > 0 else 0.0
+    return WallShape(theta=theta, r_over_a=r_wall, eccentricity=ecc)
 
 
 # ══════════════════════════════════════════════════════════════════════
@@ -436,18 +581,22 @@ class Ma:
         '_r_e', '_r_nu', '_r_p',
         '_s12', '_s34', '_s56',
         '_cross_shears',
-        '_self_consistent',
+        '_self_consistent', '_dynamic',
         '_L', '_Gt', '_Gti',
         '_converged', '_iterations',
+        '_harm_cache',
     )
 
     def __init__(self, r_e, r_nu, r_p, *,
                  sigma_ep=0.0, sigma_enu=0.0, sigma_nup=0.0,
-                 cross_shears=None, self_consistent=False):
+                 cross_shears=None, self_consistent=False,
+                 dynamic=False):
         self._r_e = float(r_e)
         self._r_nu = float(r_nu)
         self._r_p = float(r_p)
         self._self_consistent = bool(self_consistent)
+        self._dynamic = bool(dynamic)
+        self._harm_cache = {}
 
         # Compute circumferences and within-plane shears
         L, s12, s34, s56 = _compute_scales(r_e, r_nu, r_p)
@@ -565,6 +714,11 @@ class Ma:
         return self._iterations
 
     @property
+    def dynamic(self):
+        """Whether dynamic (α-impedance) corrections are enabled."""
+        return self._dynamic
+
+    @property
     def params(self):
         """Dict of all input parameters."""
         d = {
@@ -573,6 +727,7 @@ class Ma:
             'sigma_enu': self.sigma_enu,
             'sigma_nup': self.sigma_nup,
             'self_consistent': self._self_consistent,
+            'dynamic': self._dynamic,
         }
         # Include any individual cross-shear entries
         for key, val in self._cross_shears.items():
@@ -586,6 +741,10 @@ class Ma:
         """
         Mode energy in MeV.
 
+        When dynamic=True, returns the force-balance energy (via the
+        perturbative shortcut E_static × (1 + δE/E)).  When
+        dynamic=False (default), returns the flat-torus energy.
+
         Parameters
         ----------
         n : tuple or array-like (6,) — integer quantum numbers
@@ -594,6 +753,24 @@ class Ma:
         Returns
         -------
         float — energy in MeV.
+        """
+        E_st = _mode_energy(n, self._Gti, self._L)
+        if not self._dynamic:
+            return E_st
+        corr = self.dynamic_correction(n)
+        return E_st * (1 + corr.delta_E_over_E)
+
+    def energy_static(self, n):
+        """
+        Flat-torus mode energy in MeV (always, regardless of dynamic flag).
+
+        Parameters
+        ----------
+        n : tuple or array-like (6,) — integer quantum numbers.
+
+        Returns
+        -------
+        float — static energy in MeV.
         """
         return _mode_energy(n, self._Gti, self._L)
 
@@ -671,6 +848,114 @@ class Ma:
             ep_cross=ep_cross, enu_cross=enu_cross, nup_cross=nup_cross,
             fractions=fractions,
         )
+
+    # ── Dynamic model (α-impedance) ─────────────────────────────────
+
+    _SHEET_R_MAP = {'e': '_r_e', 'nu': '_r_nu', 'p': '_r_p'}
+    _SHEET_TUBE = {'e': 0, 'nu': 2, 'p': 4}
+    _SHEET_RING = {'e': 1, 'nu': 3, 'p': 5}
+
+    def pressure_harmonics(self, n_tube, n_ring, r):
+        """
+        Pressure harmonics for mode (n_tube, n_ring) on a torus with
+        aspect ratio r = a/R.  Cached by (|n_tube|, |n_ring|, r).
+
+        Returns PressureHarmonics namedtuple.
+        """
+        key = (abs(n_tube), abs(n_ring), r)
+        if key not in self._harm_cache:
+            self._harm_cache[key] = _compute_pressure_harmonics(*key)
+        return self._harm_cache[key]
+
+    def wall_shape(self, n_tube, n_ring, r):
+        """
+        Wall cross-section r(θ₁)/a for mode (n_tube, n_ring) at aspect
+        ratio r.
+
+        Returns WallShape namedtuple with theta, r_over_a, eccentricity.
+        """
+        harm = self.pressure_harmonics(n_tube, n_ring, r)
+        return _compute_wall_shape(harm)
+
+    def dynamic_correction(self, n):
+        """
+        Dynamic (α-impedance) eigenvalue correction for a 6D mode.
+
+        Computes the per-sheet corrections weighted by E² fractions.
+        Only sheets with nonzero tube winding contribute.
+
+        Returns DynamicCorrection namedtuple.
+        """
+        n_arr = np.asarray(n, dtype=int)
+        per_sheet = {}
+        dominant_k = 0
+        dominant_weight = 0.0
+
+        decomp = self.energy_decomp(n)
+        E2_total = decomp.total**2
+        sheet_frac_keys = {'e': 'e', 'nu': 'nu', 'p': 'p'}
+
+        delta_total = 0.0
+        for sheet in ('e', 'nu', 'p'):
+            nt = int(n_arr[self._SHEET_TUBE[sheet]])
+            nr = int(n_arr[self._SHEET_RING[sheet]])
+            if nt == 0:
+                per_sheet[sheet] = 0.0
+                continue
+
+            r = getattr(self, self._SHEET_R_MAP[sheet])
+            harm = self.pressure_harmonics(nt, nr, r)
+            k_coupling = 2 * abs(nt)
+            if k_coupling < len(harm.delta_r_k):
+                eps_k = harm.delta_r_k[k_coupling]
+            else:
+                eps_k = 0.0
+            dEE_sheet = eps_k / 2.0
+            per_sheet[sheet] = dEE_sheet
+
+            w = decomp.fractions.get(sheet, 0.0)
+            delta_total += w * dEE_sheet
+
+            if w > dominant_weight:
+                dominant_weight = w
+                dominant_k = k_coupling
+
+        fund_dEE = self._fundamental_dEE(dominant_k, dominant_weight,
+                                         decomp, n_arr)
+        ff = abs(delta_total / fund_dEE) if fund_dEE != 0 else 0.0
+
+        return DynamicCorrection(
+            delta_E_over_E=delta_total,
+            per_sheet=per_sheet,
+            dominant_k=dominant_k,
+            filter_factor=ff,
+        )
+
+    def _fundamental_dEE(self, dominant_k, dominant_weight, decomp, n_arr):
+        """δE/E for the (1,2) fundamental on the dominant sheet."""
+        best_sheet = None
+        best_w = 0.0
+        for sheet in ('e', 'nu', 'p'):
+            w = decomp.fractions.get(sheet, 0.0)
+            if w > best_w:
+                best_w = w
+                best_sheet = sheet
+        if best_sheet is None:
+            return 0.0
+        r = getattr(self, self._SHEET_R_MAP[best_sheet])
+        fund_harm = self.pressure_harmonics(1, 2, r)
+        if len(fund_harm.delta_r_k) > 2:
+            return fund_harm.delta_r_k[2] / 2.0
+        return 0.0
+
+    def filter_factor(self, n):
+        """
+        Low-pass filter suppression factor for mode n.
+
+        Returns |δE/E(n)| / |δE/E(fundamental)| on the dominant sheet.
+        Values < 1 mean this mode is suppressed relative to (1,2).
+        """
+        return self.dynamic_correction(n).filter_factor
 
     @staticmethod
     def charge(n):
@@ -985,12 +1270,17 @@ class Ma:
                 continue
             if spin_halves is not None and _mode_spin(n) != spin_halves:
                 continue
-            E = _mode_energy(n, self._Gti, self._L)
+            E = self.energy(n)
             if E_max_MeV is not None and E > E_max_MeV:
                 continue
+            dE = None
+            if self._dynamic:
+                E_st = _mode_energy(n, self._Gti, self._L)
+                dE = E - E_st
             modes.append(Mode(n=n, E_MeV=E,
                               charge=_mode_charge(n),
-                              spin_halves=_mode_spin(n)))
+                              spin_halves=_mode_spin(n),
+                              delta_E_MeV=dE))
         modes.sort(key=lambda m: m.E_MeV)
         return modes
 
@@ -1026,6 +1316,7 @@ class Ma:
             'sigma_enu': self.sigma_enu,
             'sigma_nup': self.sigma_nup,
             'self_consistent': self._self_consistent,
+            'dynamic': self._dynamic,
         }
         defaults.update(kwargs)
         return Ma(**defaults)
@@ -1034,7 +1325,7 @@ class Ma:
 
     @classmethod
     def fit(cls, targets, free_params, fixed_params=None,
-            tol=1e-8, max_iter=50, damping=1.0):
+            tol=1e-8, max_iter=50, damping=1.0, dynamic=False):
         """
         Find geometry parameters that best reproduce target masses.
 
@@ -1116,7 +1407,7 @@ class Ma:
             # Remove non-constructor keys
             kw.pop('self_consistent', None)
             try:
-                return Ma(**kw, self_consistent=True)
+                return Ma(**kw, self_consistent=True, dynamic=dynamic)
             except ValueError:
                 return None
 
@@ -1249,6 +1540,7 @@ class Ma:
             'sigma_enu': self.sigma_enu,
             'sigma_nup': self.sigma_nup,
             'self_consistent': self._self_consistent,
+            'dynamic': self._dynamic,
             # Derived (for reference, not used in reconstruction)
             's12': self._s12, 's34': self._s34, 's56': self._s56,
             'L': self._L.tolist(),
@@ -1270,6 +1562,7 @@ class Ma:
             sigma_enu=d.get('sigma_enu', 0.0),
             sigma_nup=d.get('sigma_nup', 0.0),
             self_consistent=d.get('self_consistent', False),
+            dynamic=d.get('dynamic', False),
         )
 
     # ── Legacy interop ────────────────────────────────────────────
@@ -1307,6 +1600,8 @@ class Ma:
         obj._s56 = Gt[4, 5] / Gt[4, 4] if Gt[4, 4] != 0 else 0.0
         obj._cross_shears = {}
         obj._self_consistent = False
+        obj._dynamic = False
+        obj._harm_cache = {}
         obj._converged = None
         obj._iterations = None
         return obj
@@ -1325,8 +1620,9 @@ class Ma:
 
     def summary(self):
         """Human-readable summary of the geometry."""
+        label = "Ma geometry (dynamic)" if self._dynamic else "Ma geometry"
         lines = [
-            "Ma geometry",
+            label,
             f"  r_e = {self._r_e:.4f}   r_ν = {self._r_nu:.4f}   r_p = {self._r_p:.4f}",
             f"  s₁₂ = {self._s12:.6f}  s₃₄ = {self._s34:.5f}  s₅₆ = {self._s56:.6f}",
             f"  σ_ep = {self.sigma_ep:.4f}  σ_eν = {self.sigma_enu:.4f}  σ_νp = {self.sigma_nup:.4f}",
@@ -1339,12 +1635,18 @@ class Ma:
         E_p = self.energy(_N_PROTON)
         lines.append(f"  E(electron) = {E_e:.6f} MeV")
         lines.append(f"  E(proton)   = {E_p:.3f} MeV")
+        if self._dynamic:
+            corr_e = self.dynamic_correction(_N_ELECTRON)
+            corr_p = self.dynamic_correction(_N_PROTON)
+            lines.append(f"  δE/E(electron) = {corr_e.delta_E_over_E:.6e}")
+            lines.append(f"  δE/E(proton)   = {corr_p.delta_E_over_E:.6e}")
         return "\n".join(lines)
 
     def __repr__(self):
         sc = ", self_consistent=True" if self._self_consistent else ""
+        dyn = ", dynamic=True" if self._dynamic else ""
         return (f"Ma(r_e={self._r_e}, r_nu={self._r_nu}, r_p={self._r_p}, "
-                f"sigma_ep={self.sigma_ep}{sc})")
+                f"sigma_ep={self.sigma_ep}{sc}{dyn})")
 
 
 # ══════════════════════════════════════════════════════════════════════

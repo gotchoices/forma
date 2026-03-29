@@ -36,6 +36,14 @@ supports far better algorithms.  This spec describes what
 ## Non-goals
 
 - Replace `ma.py`.  All existing scripts keep their imports.
+- Change the static model's physics.  Same metric, same energy
+  formula, same charge and spin rules.  The dynamic model (Feature
+  10) solves for the torus shape from scratch using force balance
+  — it is a self-consistent calculation, not a perturbation.  The
+  static flat-torus model emerges as the α → 0 limit (perfectly
+  reflecting wall).  Results happen to be close to the static
+  values (corrections are O(α²)), but this is an output of the
+  calculation, not an assumption baked in.
 - Be framework-heavy.  No PyTorch, no JAX.  NumPy + SciPy only.
 
 
@@ -419,8 +427,18 @@ the mode: the wall IS the (1−α) energy contour.  This introduces
 mode-dependent cross-section shapes, eigenvalue corrections, and
 a natural low-pass filter.
 
-Static Ma is the zeroth-order approximation.  Dynamic corrections
-are O(α²) ≈ 5×10⁻⁵ — perturbative, but physically meaningful.
+The dynamic model solves for the torus shape from first principles:
+the wall sits where inward vacuum pressure balances outward mode
+pressure.  The shape, the mode, and the energy are all outputs of
+this self-consistent calculation — no static baseline is assumed.
+
+In practice, the results are close to the static values (O(α²)
+corrections), so the implementation CAN use E_static × (1 + δE/E)
+as a computational shortcut.  But the physics is force balance,
+not perturbation theory.  If future work requires the full
+self-consistent solve (e.g., for strongly deformed shapes or
+high-energy modes where α runs), the shortcut should be replaced
+with an iterative shape → mode → pressure → shape loop.
 
 
 ### Physical picture
@@ -481,7 +499,12 @@ on the mode's winding numbers and the sheet's aspect ratio:
 For a mode with tube winding n₁ and ring winding n₂ on a sheet
 with aspect ratio r = a/R:
 
-1. Parameterize the 3D geodesic:
+1. Parameterize the 3D geodesic using the flat-torus path
+   (θ₁ = n₁t, θ₂ = n₂t) projected onto the embedding.  R40 F19-F22
+   established that the Clairaut (surface-intrinsic) geodesic does
+   not exist for a/R > 1 (all known particles).  The flat-torus
+   geodesic is the physically correct path — the photon sees flat
+   space internally.
      x(t) = ρ cos(n₂t),  y(t) = ρ sin(n₂t),  z(t) = a sin(n₁t)
    where ρ(t) = R + a cos(n₁t).
 
@@ -523,13 +546,18 @@ For a 6D mode n = (n₁, n₂, n₃, n₄, n₅, n₆):
 
 3. The eigenvalue shift from sheet S:
      (δE/E)_S = ε_{2|n_tube|} / 2
-   where ε_k = δr_k/a.
+   where ε_k = δr_k/a.  The factor of 1/2 comes from first-order
+   perturbation theory: δλ = ⟨ψ|δV|ψ⟩ and the overlap integral
+   ⟨cos²(n₁θ₁)|cos(2n₁θ₁)⟩ = 1/2.
 
 4. Weight by the sheet's E² fraction (from energy_decomp):
      δE/E = Σ_S  w_S × (δE/E)_S
    where w_S = E²_S / E²_total.
 
-5. Dynamic energy: E_dynamic = E_static × (1 + δE/E).
+5. Dynamic energy (shortcut): E_dynamic = E_static × (1 + δE/E).
+   This is valid when δE/E << 1 (all known particles: δE/E ~ 10⁻⁴).
+   For the full self-consistent solve, iterate steps 1–4 with the
+   mode recomputed on the deformed shape until convergence.
 
 
 ### Low-pass filter
@@ -551,6 +579,33 @@ soft low-pass filter — it shifts eigenvalues rather than imposing
 a hard cutoff.  Whether this constitutes "ghost suppression"
 depends on the magnitude of the shift relative to observational
 constraints.
+
+
+### Per-tile wave function (future refinement)
+
+The current model uses the flat-torus mode (|ψ|² = const) as the
+energy density.  The non-uniformity comes entirely from the 3D
+curvature weighting.
+
+A more refined approach: solve the wave equation per tile of area
+on the deformed cross-section.  On a deformed surface, the mode
+IS non-uniform — energy concentrates where the cross-section is
+wider (lower effective potential) and rarefies where it narrows.
+This creates a feedback loop: the energy density shapes the wall,
+and the wall shapes the energy density.
+
+For the fundamental (1,2) mode this is a small correction (the
+flat-torus mode is uniform by definition, and the deformation is
+O(α²)).  For higher harmonics, especially those with large n₁
+where the tube winding drives strong θ₁ dependence, the per-tile
+solution could differ significantly from the flat-torus
+approximation.
+
+Implementation: solve the Sturm-Liouville problem on the deformed
+cross-section using the α-impedance wall shape from R40 F25 as the
+boundary.  The Sturm-Liouville solver from R21 Track 1 handles
+arbitrary cross-sections.  The extension is to iterate:
+shape → mode → pressure → shape until self-consistent.
 
 
 ### Running α(E)
@@ -611,7 +666,9 @@ result = Ma.fit(targets, free_params=['r_p', 'sigma_ep'],
 
 ### Integration with existing features
 
-- **energy()**: When `dynamic=True`, returns E_static × (1 + δE/E).
+- **energy()**: When `dynamic=True`, solves the force-balance
+  shape and computes the mode energy on it.  Implementation
+  shortcut: E_static × (1 + δE/E) when the correction is small.
   When `dynamic=False` (default), returns E_static as before.
   Backward compatible — all existing code continues to work.
 
@@ -625,6 +682,11 @@ result = Ma.fit(targets, free_params=['r_p', 'sigma_ep'],
 - **fit()**: Accepts a `dynamic=True` kwarg.  When set, the
   residuals and finite-difference Jacobian use dynamic energies.
   The self-consistency iteration targets dynamic m_e and m_p.
+  This is the reverse solver: given observed masses and mode
+  assignments, find the geometry parameters that reproduce them
+  using the full force-balance model.  The static fit provides
+  a good starting point — the dynamic fit solves self-consistently
+  from there.
 
 - **jacobian()**: When `dynamic=True`, includes ∂(δE)/∂r
   contributions.  The dynamic correction depends on r through
@@ -738,8 +800,10 @@ Phase 6 (dynamic model) additionally requires:
    Fourier coefficients (|c₂/c₀| ≈ 0.37, dominant k=2).
    `dynamic_correction` must give δE/E ≈ 3.4×10⁻⁴.
 
-8. **Perturbative check:** For all modes below 10 GeV,
-   |δE/E| < α ≈ 0.0073.  Dynamic corrections are perturbative.
+8. **Magnitude check:** For all modes below 10 GeV,
+   |δE/E| < α ≈ 0.0073.  The force-balance solution produces
+   corrections of this order — confirming the static model is a
+   good zeroth-order approximation, not assuming it.
 
 9. **Symmetry:** Modes related by CPT (n → −n) must have
    identical |δE/E| (same magnitude, possibly different sign).
