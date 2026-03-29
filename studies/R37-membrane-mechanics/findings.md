@@ -129,7 +129,7 @@ but the precise value of r awaits the moduli potential.
 
 ## Track 5 — Synthesis and R35 connection
 
-### F10. Electron sheet too stiff for direct molecular coupling
+### F10. Electron sheet too stiff for sub-Compton external coupling
 
 Total shear spring constant of Ma_e:
 
@@ -138,6 +138,17 @@ Total shear spring constant of Ma_e:
 R35's Goldilocks window requires ~17 eV stiffness.  The electron
 sheet is ~10⁶× too stiff.  Biological coupling (R35 Hypothesis I)
 cannot go through direct modulation of Ma_e.
+
+**Scope of this result:** k_e governs resistance to external
+deformation of the sheet geometry — relevant for IR photons,
+thermal noise (~meV), and molecular forces (~eV).  It does not
+apply when the incoming energy is at or above the Compton scale
+(~0.511 MeV for Ma_e, ~938 MeV for Ma_p).  At those energies the
+stiffness barrier is cleared; the relevant filter becomes the
+Compton window coupling factor W (see Q94), not k_e.  Threshold
+theory on Ma_e and Ma_p therefore remains viable in the high-energy
+(accelerator physics) regime even though it is blocked at the
+biological/thermal scale.
 
 ### F11. Neutrino sheet stiffness not computable from R37
 

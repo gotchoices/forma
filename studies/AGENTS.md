@@ -45,9 +45,9 @@
   - More extensive projects become a study
 - Scan the INBOX at the end of each study when evaluating possible next subjects to pursue
 
-## Scripts
-- Python scripts should use the lib/*.py resources where helpful
-- Numpy and others available in the virtual environment
+## Scripting
+- Python scripts should use the shared lib/*.py resources where helpful
+- Numpy and others available throut the virtual environment (venv)
 
 ## Nomenclature
 - See ./Taxonomy.md

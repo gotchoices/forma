@@ -204,6 +204,17 @@ If the thermal-to-neutrino pathway must go through the
 electron sheet, the storage lifetime is exponentially longer
 than the naive model — potentially geological or longer.
 
+**Scope of this suppression:** the exp(−MeV/meV) factor is
+specific to low-energy (sub-Compton) perturbations — thermal
+phonons, IR photons, and biological-scale forces.  Photons at
+or above the electron Compton energy (~0.511 MeV) carry enough
+energy to directly excite Ma_e modes; the thermal Boltzmann
+argument does not apply.  In that high-energy regime, threshold
+theory on Ma_e is not ruled out by this finding — the governing
+constraint shifts to the Compton window coupling factor W (see
+Q94).  This study addresses the sub-Compton, biologically
+relevant regime only.
+
 Possible alternative pathways:
 
 (a) Phonon-metric coupling: atomic vibrations modulate the
