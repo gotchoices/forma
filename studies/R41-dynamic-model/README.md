@@ -123,11 +123,18 @@ to 5×10⁻¹⁴ (one more iteration changes nothing).  Full vs shortcut
 differ by ~10⁻⁷ relative energy — the code discovers this rather
 than assuming it.
 
-### Track 3: Validation
+### Track 3: Validation [DONE]
 
-- Regression: all existing `test_ma_model.py` tests still pass
-- New tests: dynamic corrections match Track 11 results for proton
-- Cross-check: dynamic energy ≈ static energy + O(α²) perturbation
+Full vs shortcut comparison (`scripts/track3_full_vs_shortcut.py`):
+
+- **Convergence**: 3–4 iterations, ratio ≈ 0.003 (geometric, ~α²/2).
+  Self-consistent to 217× machine epsilon.
+- **Accuracy**: Full and shortcut agree to O(α⁴) in energy.
+  Proton difference: 8.7×10⁻⁴ MeV (10⁻⁷ relative).
+- **Speed**: Full costs ~4.5× per unique harmonic (~20 ms vs ~4.5 ms).
+  scan_modes is only ~15% slower (caching amortizes the cost).
+- All 125 tests pass; Track 11 results reproduced.
+- Findings: F27 (convergence), F28 (accuracy), F29 (timing).
 
 ### Track 4: Fresh parameter determination
 
