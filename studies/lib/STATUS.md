@@ -23,53 +23,84 @@ Run all tests from `studies/`:
 
 ---
 
-## ma_model.py — Phase 1 complete
+## ma_model.py
 
-Replaces all ma.py + ma_solver.py functionality with an immutable
-stateful `Ma` class.  No dependency on legacy ma.py — all physics
-reimplemented from first principles, validated by cross-comparison.
+Immutable `Ma` class with static flat-torus model and dynamic
+α-impedance model.  No dependency on legacy code.
 
-**Implemented:**
-- [x] `Ma` class with construction from aspect ratios + shears
-- [x] `energy()`, `charge()`, `spin()`, `spin_label()` — static where possible
-- [x] `scan_modes()` — brute-force hypercube scan with charge/spin filters
+### Static model (complete)
+
+- [x] `Ma(r_e, r_nu, r_p, sigma_ep=, ...)` — construction from aspect ratios + shears
+- [x] `energy()`, `energy_static()` — mode energy (MeV)
+- [x] `charge()`, `spin()`, `spin_label()` — KK charge and tube-winding spin
+- [x] `energy_decomp()` — E² decomposition by sheet and cross-coupling
+- [x] `jacobian()` — analytical ∂E/∂params (r, σ) with implicit differentiation through α
+- [x] `sensitivity()` — human-readable Jacobian report
+- [x] `scan_modes()` — brute-force hypercube scan with charge/spin/energy filters
+- [x] `fit()` — inverse solver (Levenberg-Marquardt with numerical Jacobian); given target masses + mode assignments, finds geometry parameters.  Reports covariance and null space.
 - [x] Self-consistent iteration (`self_consistent=True`)
-- [x] `with_params()` — immutable parameter updates
+- [x] `with_params()` — immutable parameter sweep
 - [x] `to_dict()` / `from_dict()` — serialization
 - [x] `from_legacy()` / `to_legacy()` — interop with legacy ma.py
 - [x] `summary()` — human-readable printout
-- [x] Guard rails: positive-definite check at construction, clear ValueError messages
-- [x] 47 regression tests (`test_ma_model.py`) including cross-validation against legacy
 
-**Implemented beyond Phase 1:**
-- [x] `energy_decomp()` — sheet/cross-coupling decomposition of E² (caveat documented: blocks of G̃⁻¹ mix sheets via Schur complement)
-- [x] `jacobian()` — analytical ∂E/∂params with full chain: r → s (implicit diff) → L → G̃.  Validated to 6+ digits against finite differences.
-- [x] `sensitivity()` — human-readable Jacobian report (strong/moderate/weak/negligible)
-- [x] `fit()` — inverse solver via Levenberg-Marquardt.  Uses numerical Jacobian in the fit loop (the self-consistent L adjustment invalidates the fixed-L analytical Jacobian).  Recovers R27 parameters (r_p=8.906, σ_ep=-0.0906) from neutron+muon targets.  Reports covariance and null space for underdetermined systems.
+### Dynamic model (complete, from R40)
 
-**Remaining stubs (raise NotImplementedError):**
-- [ ] `_fincke_pohst_enumerate()` — fast ellipsoid lattice enumeration (see ma-model.md §Feature 2)
-- [ ] `modes()` — Fincke-Pohst scan with CPT reduction (n → −n symmetry)
+The torus wall is the (1−α) energy contour of the mode.  Inside:
+136/137 of the energy (confined).  Outside: 1/137 (the external
+EM field).  The wall shape responds to the mode's radiation
+pressure, balanced by elastic restoring force (1/k² per harmonic).
+
+Two solver modes:
+
+- **`dynamic='full'`** (or `True`): Iterative force-balance.
+  Computes pressure on the current shape, derives the equilibrium
+  deformation, updates the shape, and repeats until converged.
+  Convergence is geometric with ratio ~α ≈ 0.007.  This is the
+  self-consistent solve — no static baseline assumed.
+
+- **`dynamic='shortcut'`**: One-shot perturbation on the circular
+  cross-section.  Equivalent to iteration 0 of the full solve.
+  ~0.3% less accurate than full, ~2× faster.
+
+Both produce identical results to within 0.3% of the correction
+(which is itself O(α²) ≈ 5×10⁻⁵ of the total energy).
+
+Implemented:
+
+- [x] `pressure_harmonics(n_tube, n_ring, r)` — 3D geodesic curvature → Fourier decomposition of radiation pressure.  Cached by (|n_tube|, |n_ring|, r).
+- [x] `wall_shape(n_tube, n_ring, r)` — cross-section r(θ₁)/a from pressure harmonics
+- [x] `dynamic_correction(n)` — per-sheet eigenvalue shifts weighted by E² fractions
+- [x] `filter_factor(n)` — low-pass suppression relative to (1,2) fundamental
+- [x] `energy()` with `dynamic='full'` or `'shortcut'` — force-balance energy
+- [x] `energy_static()` — always returns flat-torus energy
+- [x] `fit()` with `dynamic=True` — reverse solver using dynamic energies
+- [x] `scan_modes()` respects dynamic flag; Mode namedtuple includes delta_E_MeV
+- [x] `to_dict()` / `from_dict()` preserve dynamic flag
+- [x] `summary()` reports dynamic corrections when enabled
+
+### Remaining stubs
+
+- [ ] `_fincke_pohst_enumerate()` — fast ellipsoid lattice enumeration (ma_model.md §Feature 2)
+- [ ] `modes()` — Fincke-Pohst scan with CPT reduction
 - [ ] `spectrum()`, `mode_count()`, `nearest()` — rich spectrum queries (§Feature 7)
 
 ---
 
-## embedded.py — Phases 1-3 complete
+## embedded.py — complete
 
 Embedded torus geometry and near-field calculations.  No dependency
-on legacy ma.py — only lib/constants.py.
+on legacy code — only lib/constants.py.
 
-**Implemented:**
-- [x] `EmbeddedSheet` class — immutable, three constructors, geometry properties
-- [x] `geodesic()`, `charge_segments()` — with optional custom weights
-- [x] `monopole()`, `dipole()`, `quadrupole()`, `multipoles(l_max)` — full spherical harmonic expansion
+- [x] `EmbeddedSheet` — immutable, three constructors, geometry properties
+- [x] `geodesic()`, `charge_segments()`, `charge_density()` — with optional custom weights
+- [x] `monopole()`, `dipole()`, `quadrupole()`, `multipoles(l_max)` — spherical harmonic expansion
 - [x] `field_at()`, `field_at_points()`, `potential_at()` — Coulomb with configurable softening
 - [x] `field_energy()` — self-energy with required softening
 - [x] `interaction_energy()` — pairwise sum, vectorized
-- [x] `interaction_sweep()` — (d, Δφ) sweep with phase-reuse trig optimization
+- [x] `interaction_sweep()` — (d, Δφ) sweep with phase-reuse optimization
 - [x] `interaction_force()` — finite-difference force along any axis
 - [x] `near_field_correction()` — phase-averaged and anti-phase extraction
-- [x] 36 regression tests (`test_embedded.py`)
 
 ---
 
@@ -78,6 +109,6 @@ on legacy ma.py — only lib/constants.py.
 | Suite | Tests | Covers |
 |-------|-------|--------|
 | test_lib.py | 52 | Legacy: constants, series, wvm, ma.py, ma_solver.py |
-| test_ma_model.py | 75 | New: Ma class, decomp, Jacobian, fit, cross-validation |
-| test_embedded.py | 36 | New: EmbeddedSheet, fields, sweeps |
-| **Total** | **166** | |
+| test_ma_model.py | 125 | Ma class: static, dynamic, decomp, Jacobian, fit, cross-validation, R40 validation |
+| test_embedded.py | 39 | EmbeddedSheet, fields, sweeps, charge density |
+| **Total** | **216** | |

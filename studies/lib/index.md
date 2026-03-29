@@ -99,32 +99,49 @@ enumeration internally.  At n_max = 15, this is impractical
 the inner loop with ellipsoid-based lattice enumeration.
 
 
-### ma_model.py — Next-generation model (planned)
+### ma_model.py — Ma model engine (implemented)
 
-See [`ma-model.md`](ma-model.md) for the design spec.  Will
-provide an object-oriented `Ma` class with efficient algorithms,
-energy decomposition, Jacobian, and inverse solving — without
-breaking any existing scripts.
+See [`ma_model.md`](ma_model.md) for the design spec.  Provides
+an immutable `Ma` class with two operating modes:
 
-**Scope:** Intrinsic geometry.  Mode spectrum on the flat torus.
-"What modes exist and what are their energies?"
+**Static model** (`dynamic=False`, default): Flat-torus spectrum.
+Mode energies from the 6×6 metric quadratic form.  Energy
+decomposition by sheet.  Analytical Jacobian.  Inverse solver
+(`Ma.fit()`) recovers geometry from target masses via
+Levenberg-Marquardt.  All R26–R39 results reproducible.
+
+**Dynamic model** (`dynamic='full'` or `'shortcut'`): α-impedance
+model from R40.  The torus wall is the (1−α) energy contour.
+Shape determined by force balance between radiation pressure
+(outward) and elastic restoring force (inward, 1/k² per
+harmonic).  Two methods: `'full'` iterates to self-consistency;
+`'shortcut'` uses a one-shot approximation (~0.3% less accurate).
+Provides a low-pass filter in tube winding number (40×
+suppression from n₁=1 to n₁=2) and a physical interpretation
+of α as wall transparency.
+
+**Scope:** Intrinsic geometry + dynamic shape.  "What modes
+exist, what are their energies, and how does each mode shape
+its own torus?"
+
+No dependency on legacy ma.py.  216 regression tests.
 
 
-### embedded.py — Embedded torus near-field (planned)
+### embedded.py — Embedded torus near-field (implemented)
 
 See [`embedded.md`](embedded.md) for the design spec.  Computes
 how Ma modes project into 3D space: charge distributions along
 geodesics, E-fields, multipole decomposition, and interaction
 energies between particles at specified separations and phase
-offsets.  First use: R39 (phase-dependent near-field interaction).
+offsets.  Used by R39 (phase-dependent near-field interaction).
 
 **Scope:** Extrinsic geometry.  How modes look from outside.
 "What forces do particles exert on each other at close range?"
 
 **Relationship to ma_model.py:** Separate module.  Uses the
-same geometry parameters (L₁–L₆) but adds the embedding
-(R, a) and 3D field calculations.  Does not depend on
-ma_model.py — only on ma.py for circumferences and constants.
+same geometry parameters (L₁–L₆) but adds the 3D embedding
+(R, a) and field calculations.  No dependency on legacy code —
+only lib/constants.py.
 
 
 ## Charge formula history
@@ -219,3 +236,5 @@ in R38 for the detailed numerical comparison.
 | Sheared torus | R14–R19 | Ray optics | WvM + α | 2D/3D sheared | α from geometry, shear-induced charge |
 | Three tori (Ma) | R20–R25 | Transitional | WvM | 6D product | Proton, neutrino, muon as modes |
 | Ma + KK | R26–R38 | Wave mechanics | KK | 6D flat + σ | Particles as eigenmodes, full spectrum |
+| Near-field | R39 | Wave + embedded | KK | 6D flat + 3D | Phase-dependent interaction, geometric suppression |
+| Dynamic Ma | R40 | Force balance | KK | 6D + α-wall | Torus shape from mode pressure; α = wall transparency; low-pass filter |
