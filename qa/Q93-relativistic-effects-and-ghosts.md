@@ -146,67 +146,25 @@ tracking all 8 polarizations.  Compute the spectrum for each
 polarization sector separately.
 
 
-## Path 6: Ghost modes as dark matter candidates
+## Path 6: Ghost modes as dark matter / energy reservoir
 
-The ghost mode problem might not be a bug but a feature.
+**Moved to [Q94](Q94-compton-window-and-dark-modes.md).**
 
-If ghost modes exist as valid eigenmodes of Ma but couple weakly to
-ordinary 3D space (Path 2), they would have mass but no (or very
-weak) electromagnetic interaction — exactly the defining properties
-of dark matter.
-
-The Ma spectrum below 2 GeV contains ~900 modes at physical charges
-versus ~40 observed particles.  If the ~860 "missing" modes are dark
-matter candidates, several predictions follow:
-
-**Mass spectrum:** Dark matter would not be a single particle but a
-forest of states with a specific, computable mass spectrum.  The
-lightest would be sub-eV modes on the neutrino sheet (Ma_ν).  The
-heaviest stable dark modes below 2 GeV would be on the proton sheet.
-
-**Total abundance:** The ratio of dark to visible modes is ~860/40
-≈ 20×.  The observed dark-to-visible matter ratio is ~5:1 by mass.
-These are order-of-magnitude compatible if the average dark mode is
-lighter than the average visible mode (plausible, since most ghosts
-are low-winding number modes at low mass).
-
-**Interactions:** Dark modes would interact gravitationally (they
-have mass and therefore curve spacetime).  They would NOT interact
-electromagnetically IF the coupling-to-S factor (Path 2) is
-sufficiently small.  But "sufficiently small" needs quantification —
-even a tiny residual EM coupling would show up in direct detection
-experiments.
-
-**Self-interactions:** Dark modes on the same Ma sheet share the
-compact geometry, so they could interact with each other via mode-
-mode coupling on Ma.  This would give dark matter self-interactions
-— a feature that some astrophysical observations seem to require
-(cusp-core problem, diversity problem).
-
-**Key questions:**
-1. What is the total mass density of all ghost modes if they are
-   populated thermally?
-2. Does the coupling-to-S factor (Path 2) give a cross-section
-   below current direct-detection bounds?
-3. Are the lightest ghosts (neutrino-sheet modes) consistent with
-   warm/cold dark matter constraints?
-
-**Testable:** If dark matter IS ghost modes, its mass spectrum is
-completely determined by the Ma geometry — no new parameters.  The
-spectrum is discrete and computable.  A detection of dark matter at
-a mass matching a predicted ghost mode (and not matching any known
-particle mode) would be a strong confirmation.
+Q94 develops the "Compton window" hypothesis: the Ma sheet dimensions
+define a resonant aperture into S, and modes that don't fit the window
+have mass but are invisible — dark matter candidates AND a threshold
+energy reservoir (connecting to Q85 and R35).  Ghost modes may be a
+feature, not a bug.
 
 ---
 
 ## Priority
 
-1. **Path 2** (projection factor) — most concrete, uses existing
-   tools (R19 charge integral extended), directly addresses both
-   ghost suppression and dark matter viability.
-2. **Path 1** (holonomy) — clean selection rule, computable now.
-3. **Path 6** (dark matter) — speculative but testable; depends on
-   Path 2 results.
+1. **Path 6** (dark modes / dark matter) — reframes the ghost
+   problem as a prediction; see [Q94](Q94-compton-window-and-dark-modes.md).
+2. **Path 2** (projection factor) — most concrete computation;
+   directly quantifies the Compton window for Q94.
+3. **Path 1** (holonomy) — clean selection rule, computable now.
 4. **Path 3** (self-energy) — needs QFT machinery not yet built.
 5. **Path 4** (decay channels) — needs QFT but kinematics alone
    might be informative.

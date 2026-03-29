@@ -60,4 +60,10 @@ For questions that need a computational model, see [`studies/`](../studies/).
 | [Q88](Q88-phase-dependent-nuclear-force.md) | Does mode phase determine near-field interactions? Nuclear binding and cold fusion implications | Partially falsified by R39; superseded by Q89 |
 | [Q89](Q89-fusion-as-mode-transition.md) | Is fusion a mode transition on Ma rather than a particle collision? | Open — reframes fusion; testable via neutron lifetime |
 
+| [Q90](Q90-ephemeral-mode-decomposition.md) | Can a mode temporarily decompose into quark-like sub-modes? | Open — speculative |
+| [Q91](Q91-compact-volume.md) | Can the compact volume V_compact be derived independently? | Open |
+| [Q92](Q92-neutrino-sheet-as-bath.md) | Does the neutrino sheet act as a dissipative bath for low-energy excitations? | Open — testable |
+| [Q93](Q93-relativistic-effects-and-ghosts.md) | Unexplored relativistic effects — ghost suppression and accuracy | Open |
+| [Q94](Q94-compton-window-and-dark-modes.md) | The Compton window — dark modes as dark matter and energy reservoir | Open — testable |
+
 Unprocessed and brief questions live in [`INBOX.md`](INBOX.md).

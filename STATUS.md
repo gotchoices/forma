@@ -3,101 +3,199 @@
 **Mission:** Build a geometric model of fundamental particles from pure EM
 energy — no fundamental charges, no point particles. See [`README.md`](README.md).
 
-**Studies roadmap:** [`studies/STATUS.md`](studies/STATUS.md)  
+**Studies roadmap:** [`studies/STATUS.md`](studies/STATUS.md)
 **Open questions:** [`qa/INBOX.md`](qa/INBOX.md) — [`qa/README.md`](qa/README.md) for index
-
----
-
-## Electron objectives
-
-| # | Objective | Status |
-|---|-----------|--------|
-| 1 | Spin ½ | **SOLVED** — exact, topological; (1,2) winding on the material sheet |
-| 2 | Mass m_e | **SOLVED** (as input) — path length = λ_C fixes scale |
-| 3 | Charge e | **OPEN — strong lead** — mechanism understood; q still free |
-| 4 | Magnetic moment | **SOLVED** — net axial projection of B on the material sheet |
-| 5 | g-factor ≈ 2.0023 | **SOLVED** — WvM energy-partition argument |
-| 6 | Zero free parameters | **ESTABLISHED** — topology + e + m_e fully determines geometry |
-
-**What remains for the electron:** determine what selects q (≈ 1/α ≈ 137) —
-equivalently, what fixes the shear δ of the material sheet. This is the α problem.
 
 ---
 
 ## What has been established
 
-- Spin ½ is topological and exact — not an approximation, not an input.
-  The (1,2) winding number on a flat material sheet forces it.
-- Charge e is emergent: the time-averaged field of a photon on a (1,2)
-  geodesic projects into 3+1D as a Coulomb field. No fundamental charge
-  is introduced.
-- Mass is confined photon energy. The resonance condition (path = λ_C)
-  fixes the scale.
-- Magnetic moment and g-factor follow from WvM's energy-partition argument
-  (co-rotating vs. non-rotating field components).
-- Zero continuous free parameters: given (1,2) topology + e + m_e, the
-  geometry is fully determined.
-- The material space must be intrinsically flat (a material sheet, not an embedded donut).
-  Curved-torus geodesics give wrong results (R12).
-- KK gravitational charge is ~10⁻²² × e at the Compton scale — ruled out
-  as the charge mechanism (R1).
-- The 9% charge deficit in WvM's original formula is an artifact of
-  geometric approximations, not a real target (S1).
-- Three material dimensions (T³) are required — a single material sheet cannot support
-  topological linking needed for hadrons (R14 Track 0).
-- m_p = 3 × 612 × m_e to 0.008% (R14 Track 0 result).
+### The framework (R2, R14, R26)
+
+- **Material Space (Ma)** is a 6D compact manifold composed of three
+  flat periodic sheets: Ma_e (electron), Ma_ν (neutrino), Ma_p (proton).
+  Full arena: Ma × S × t (6+3+1 = 10 dimensions).
+- Particles are standing electromagnetic waves — photons confined to
+  closed geodesics on Ma.  Mass = confined energy, spin = winding
+  topology, charge = shear-induced symmetry breaking.
+- Three sheets are required: a single sheet cannot support both
+  uncharged fermions (neutrinos) and charged particles (R14, R25).
+- The material space is intrinsically flat; particles see Cartesian
+  geometry internally.  The 3D embedding adds curvature that matters
+  for charge projection but not for mass or spin (R12).
+
+### Electron properties (R2, R19)
+
+| Property | Status |
+|----------|--------|
+| Spin ½ | Exact — topological, from (1,2) winding number |
+| Mass m_e | Input — Compton path-length condition fixes scale |
+| Charge e | Emergent — shear mechanism produces Coulomb field; α still requires one input |
+| g-factor ≈ 2.0023 | Derived — WvM energy-partition argument |
+| Magnetic moment | Derived — axial projection of B on Ma_e |
+| Free parameters | Zero continuous — topology + e + m_e fully determines geometry |
+
+### Particle spectrum (R27, R28)
+
+A computational Ma solver searches for modes matching known particles.
+The neutron and muon jointly pin the two geometry parameters r_p = 8.906
+and σ_ep = −0.091 (R27 F18), after which the MeV-scale predictions
+are insensitive to the remaining free parameters.
+
+| Particle | Error | Source |
+|----------|------:|--------|
+| Kaon (K⁺) | 1.2% | R27 F31 |
+| Eta (η) | 0.6% | R27 F31 |
+| Eta prime (η′) | 0.3% | R27 F31 |
+| Phi (φ) | 0.8% | R27 F31 |
+| Lambda (Λ) | 0.9% | R28 F10 |
+| Sigma⁺ (Σ⁺) | 0.3% | R28 F14 |
+
+Lifetime-gap correlation r = −0.84 (p = 0.009) for weak decays:
+unstable particles sit between eigenmodes, and the gap predicts
+the lifetime.
+
+### Neutrino masses (R24, R26)
+
+Δm²₃₁/Δm²₂₁ = 33.6 reproduced from integer mode numbers on Ma_ν
+with a single shear parameter s_ν = 0.022.  The ratio is exact
+and independent of r_ν.
+
+### Emergent neutron (R26, R27)
+
+The neutron was not put in — it was found by the solver as a
+three-sheet mode (0,−2,+1,0,0,+2) spanning Ma_e × Ma_ν × Ma_p.
+Charge Q = 0 (exact, topological).  Spin ½ from neutrino winding.
+Mass reproduced at σ_ep = −0.091.
+
+### Nuclear scaling law (R29)
+
+Nuclei are Ma_p modes, not multi-particle bound states.  The law
+n_φp = A, n_θp = 2A (A = mass number) matches all nuclei from
+deuteron to ⁵⁶Fe at < 1%.  Nuclear spins predicted correctly for
+9/11 tested nuclei.  Free neutron ≠ nuclear neutron (explains
+nuclear stability).
+
+### Charge mechanism (R15, R19)
+
+Shear of the material sheet lattice breaks azimuthal symmetry,
+producing a net Coulomb monopole from a delocalized wave.  The
+formula α(r, s) gives a one-parameter family of solutions — every
+aspect ratio r > ~2 has a self-consistent shear s.  The electron
+is the lightest charged particle (R19 F31).
+
+### Dynamic torus model (R40, R41)
+
+The α-impedance model: the torus wall is the (1−α) energy contour,
+with 136/137 of the photon energy confined and 1/137 leaking as the
+external field.  The 3D embedding produces a 0.067% elliptical
+perturbation with an elastic 1/k² wall response that acts as a
+low-pass filter in tube winding number (40× suppression per step).
+Dynamic corrections are O(α²) ≈ 5×10⁻⁵ — the static flat-torus
+model is the correct zeroth-order approximation.  All three lepton
+generations (e, μ, τ) are confirmed as distinct geometric modes
+with filter-factor ordering FF(e) > FF(τ) > FF(μ).
+
+### Predictive horizon (R28)
+
+Above ~2 GeV, the Ma mode spectrum becomes too dense (band spacing
+< 5 MeV) for mass-matching to be discriminating.  Below ~2 GeV,
+the model is predictive.  W/Z/Higgs match trivially — not a test.
+
+### Parameter accounting (R26, R28)
+
+| What | Count |
+|------|------:|
+| Ma metric components (total) | 21 |
+| Set by experimental inputs | 6 |
+| Pinned by particle fits (neutron + muon) | 2 |
+| Cross-shears (all zero, shown irrelevant) | 11 |
+| **Effective free** | **2** |
+
+The two free parameters are r_e (unconstrained) and r_ν (≥ 3.2).
+The MeV-scale hadron predictions are insensitive to both.
+
+### Computational infrastructure
+
+- `lib/ma_model.py` — 1,900-line Ma model engine with four-level
+  dynamic hierarchy (flat, elliptical, shortcut, full iterative).
+  125 unit tests.
+- `lib/ma_solver.py` — mode discovery engine for particle search.
+- 41 completed studies (S1–S3, R1–R41), ~500 findings recorded.
+- White paper draft (`papers/white-paper.md`).
 
 ---
 
-## Active front
+## What remains open
 
-Three studies are currently open:
+### The α problem (Q18, Q34)
 
-**R8. Multi-winding electron** ([`studies/R8-multi-winding/`](studies/R8-multi-winding/))  
-Finding the torus geometry that self-consistently produces charge, mass,
-spin, and magnetic moment. A sheared material sheet with q ≈ 1/α major orbits and
-local 1:2 ratio resolves the Compton path-length constraint. R/r_e ≈ 0.989
-is robust. q remains a free parameter — this is still the open edge.
+What determines the shear s ≈ 0.01 of the electron sheet?
+Equivalently, what fixes α?  The formula α(r, s) produces a
+continuous family of solutions.  Multiple studies have
+constrained but not solved this (R15, R19, R31, R32, R34, R36).
+The shear is currently reverse-engineered from α, not
+independently determined.  This is the single most important
+open problem.
 
-**R13. KK charge from flat T³** ([`studies/R13-kk-charge-t3/`](studies/R13-kk-charge-t3/))  
-Compute the 4D effective charge of a photon on a flat T³ geodesic via
-Kaluza-Klein field decomposition. The goal: derive apparent charge from
-field geometry alone, without using e as input. If the self-energy
-constraint (= m_e c²/2) determines the T³ geometry, α becomes a
-prediction, not an input.
+### Ghost modes (Q77, Q86, Q93)
 
-**R14. Universal geometry — shared T³** ([`studies/R14-universal-geometry/`](studies/R14-universal-geometry/))  
-Can a single material T³ host all particles? Track 0 established that T³
-is necessary (a single material sheet lacks the topological linking dimension). Three linking
-planes map to three color charges. Proton mass checks out. Pending R13.
+The Ma spectrum below 2 GeV contains ~900 modes at physical
+charges versus ~40 observed particles.  Selection rules
+(|n₁| = 1, spin-statistics) kill most, but ~4 per charged sheet
+survive as unexplained — most critically the (1,1) boson at half
+the electron mass.  The dynamic model's low-pass filter eliminates
+92% of modes but does not suppress the (1,1) ghost (FF = 0.46).
+
+Possible resolutions include relativistic effects (geometric
+holonomy, coupling asymmetry to S, 10D polarization structure)
+and reinterpretation as dark matter via the Compton window
+hypothesis (see Q94).  Ghost modes may be a feature, not a bug.
+
+### What selects r_e? (Q34)
+
+The electron sheet aspect ratio r_e is unconstrained by any
+observable.  Constrained energy minimisation along the α curve
+gives r ≈ 0.5 (R37 F7) — far from the phenomenological range
+(r ≈ 4–9).  Resolving this requires the moduli potential (the
+vacuum energy of Ma as a function of shape), which is not yet
+computable.
+
+### Nuclear binding mechanism (R29, R39)
+
+Nuclear binding cannot arise from electromagnetic interactions
+alone.  Direct Ma mode search shows nuclei ARE modes (scaling
+law works), but the physical mechanism that makes a nucleus more
+stable than separated nucleons is not yet identified.  A gauge
+boson mediating Ma-S coupling is one candidate (R29 F6).
+
+### Neutrino spin (R25)
+
+Charge-spin linkage (charge requires n₁ = ±1; spin ½ requires
+odd n₁) means "uncharged fermion" is impossible in WvM.  The
+three-sheet architecture (R26) accommodates neutrino mass but
+the spin mechanism for neutrino-sheet modes with n₁ = 0 is
+unresolved.
+
+### Deriving G from geometry (R37)
+
+Gravity should emerge from the same Ma × S framework.  R37
+showed self-gravity is negligible at Compton scale and the
+membrane-mechanics derivation was tautological (GR restated).
+A genuine derivation of G from Ma geometry has not been achieved.
 
 ---
 
-## The central unsolved problem
+## Possible future investigations
 
-**What selects q?**
-
-The shear δ of the material sheet determines q (number of major orbits per Compton
-cycle) and hence α = δ/R. The model currently takes q ≈ 137 from the
-measured charge — this is circular (R11). Ruled-out mechanisms: EM
-self-force, KK gravitational back-reaction, Berry phase. The remaining
-lead is R13: derive the charge and self-energy entirely from the KK
-field decomposition on flat T³, without using e as input. If that
-constrains the geometry, α becomes a geometric prediction.
-
----
-
-## Long-horizon goals
-
-- **Hadrons from photon knots.** Proton and neutron as three photons
-  topologically linked on material T³. Quark confinement = Borromean
-  linking; quarks = per-photon field contributions. (Q26, R14)
-- **Mass spectrum.** Why m_e and not some other value? Quantization
-  condition from periodic boundary conditions? (Q16)
-- **Photon absorption / excited states.** In this model the electron IS
-  a photon on the material sheet. What does absorbing another photon mean? Does it predict
-  discrete spectra? (Q28)
-- **Derive α from geometry.** (Q18, Q32, R13)
-- **Baryogenesis.** Neutral atoms can form directly from photons (total
-  winding zero). No antimatter required. (Q32)
-
+| Area | Key question | Reference |
+|------|-------------|-----------|
+| Geometric phase / holonomy | Does parallel transport on the embedded torus forbid ghost modes? | Q93 Path 1 |
+| Compton window / dark matter | Are ghost modes dark matter? Does the mass ratio match 5.4? | Q94 |
+| Coupling to S | Do ghost modes project weakly into 3D space? (quantifies Q94) | Q93 Path 2 |
+| One-loop self-energy | Do KK mass corrections improve the 1–6% structural errors? | Q93 Path 3 |
+| 10D polarization | Does the 8→2+6 polarization split provide new selection rules? | Q93 Path 5 |
+| Moduli potential | What vacuum energy functional selects the Ma shape (r_e, r_ν)? | Q34, R37 |
+| Fusion as mode transition | Is fusion a geometry change on Ma rather than a particle collision? | Q89 |
+| Biological coupling | Can the neutrino sheet serve as an information substrate? | Q78–Q83 |
+| α from first principles | Can dispersive or geometric arguments derive s ≈ 0.01? | Q18, R34 |
