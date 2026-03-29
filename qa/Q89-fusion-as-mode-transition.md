@@ -3,6 +3,7 @@
 **Status:** Open — reframes nuclear fusion within MaSt
 **Related:**
   [Q88](Q88-phase-dependent-nuclear-force.md) (phase-dependent nuclear force — partially falsified by R39),
+  [Q95](Q95-strong-force-as-internal-em.md) (strong force = internal EM at torus overlap — provides the driving mechanism),
   [Q82](Q82-entanglement-as-ma-geometry.md) (entanglement as phase locking),
   [Q87](Q87-cross-shear-phase-coupling.md) (cross-sheet phase coupling),
   R27 F15–F18 (neutron as three-sheet mode, r_p and σ_ep pinned),

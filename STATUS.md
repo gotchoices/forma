@@ -196,6 +196,7 @@ A genuine derivation of G from Ma geometry has not been achieved.
 | One-loop self-energy | Do KK mass corrections improve the 1–6% structural errors? | Q93 Path 3 |
 | 10D polarization | Does the 8→2+6 polarization split provide new selection rules? | Q93 Path 5 |
 | Moduli potential | What vacuum energy functional selects the Ma shape (r_e, r_ν)? | Q34, R37 |
+| Strong force from internal EM | Is α_s ≈ 1 the full internal field, with α ≈ 1/137 the Compton-window projection? | Q95 |
 | Fusion as mode transition | Is fusion a geometry change on Ma rather than a particle collision? | Q89 |
 | Biological coupling | Can the neutrino sheet serve as an information substrate? | Q78–Q83 |
 | α from first principles | Can dispersive or geometric arguments derive s ≈ 0.01? | Q18, R34 |
