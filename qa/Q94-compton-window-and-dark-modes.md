@@ -246,6 +246,41 @@ a particle can distribute across the dark mode spectrum of its sheet:
 - The distribution of energy across dark modes constitutes the
   "pre-load" state that Reiter's model requires.
 
+### Energy regime distinction: sub-Compton vs. above-Compton
+
+R35 and R37 concluded that threshold theory is not viable on the
+electron or proton sheets because the thermal/biological energy
+scale (~meV–eV) cannot bridge the ~MeV mode spacing on Ma_e.
+That conclusion holds for low-energy perturbations from S.
+
+**The above-Compton regime is different.**  A photon at or above
+the electron Compton energy (~0.511 MeV) clears the energy barrier
+and can in principle excite dark modes on Ma_e directly.  The
+stiffness k_e ~ 10⁷ eV (R37 F10) blocks *geometric deformation*
+of the sheet, not mode excitation at the right energy scale.  Once
+you have enough energy to populate a mode, stiffness is irrelevant.
+
+In this regime the governing filter is the Compton window W — the
+projection integral of the dark mode's field pattern onto the Ma/S
+aperture.  If W is small (as expected for dark modes), only a small
+fraction W of above-Compton photon energy deposits into dark modes;
+the remainder goes into ordinary Compton scattering or pair
+production.  But even a small W, accumulated over many interactions,
+constitutes threshold pre-loading invisible to S.
+
+**Observational signature:** if above-Compton photons deposit a
+fraction W of their energy into dark modes, the electron recoil
+spectrum in Compton scattering would show a systematic energy
+deficit relative to the Klein-Nishina prediction.  The Klein-Nishina
+formula fits current data well, placing an upper bound on W for
+Ma_e dark modes.  This is a computable and potentially falsifiable
+constraint.
+
+The same argument applies to Ma_p, shifted to the GeV scale
+(proton Compton energy ~938 MeV), where deep inelastic scattering
+already shows complex inelastic structure that MaSt's dark modes
+could partially account for.
+
 ### Information storage
 
 If the dark mode spectrum is dense (hundreds of states per sheet),
