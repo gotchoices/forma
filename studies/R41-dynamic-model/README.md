@@ -1,6 +1,6 @@
 # R41. Dynamic torus model — full implementation
 
-**Status:** Active
+**Status:** Done
 **Depends on:** R40 (α-impedance model, low-pass filter),
   R27 (neutron/muon constraint on r_p, σ_ep),
   R15/R19 (α derivation), R33 (ghost census)
@@ -192,11 +192,25 @@ Findings: F38–F41.
 - On the proton sheet: scan for multiple (1,2) equilibria
 - If multiple equilibria exist, do they correspond to generations?
 
-### Track 7: Particle table and verdict
+### Track 7: Particle table and verdict [DONE]
 
-- Compile full table
-- Quantitative comparison: dynamic vs static
-- List of predictions that differ between models
+Compiled full table of all 12 canonical mode assignments — 4 anchors
+(e, p, n, μ), 1 generation (τ), 7 hadron predictions (K±, K⁰, η,
+η′, φ, Λ, Σ⁺) — comparing static vs dynamic energies, filter factors,
+and observed masses (`scripts/track7_particle_table.py`).
+
+**Result**: 0 predictions improved, 2 trivially worsened (e, p shift
++0.03%), 10 unchanged.  Dynamic corrections (O(α²) ≈ 10⁻⁴) are 100×
+smaller than structural errors (1–6%).  Hadrons get zero correction
+(tube windings ≥ 3 → deeply suppressed).
+
+**Verdict**: The dynamic model is a CONCEPTUAL advance (geometry,
+generation hierarchy, 92% mode elimination) but not a QUANTITATIVE
+one (no mass improvement, (1,1) ghost persists, free parameters
+unchanged).  Retain as the correct physical picture; use static
+for practical calculations.
+
+Findings: F42–F43.
 
 
 ## Caveats

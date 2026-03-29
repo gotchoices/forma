@@ -7,18 +7,6 @@ See [`../qa/`](../qa/) for open physics questions and detailed problem analysis.
 
 ## Active
 
-### R41. Dynamic torus model — full implementation
-**Study:** [`R41-dynamic-model/`](R41-dynamic-model/)
-**Questions:** Q34, Q77, Q86, Q91  **Type:** compute  **Depends on:** R40, R27, R15, R19, R33
-
-Refactor `lib/ma_model.py` around the dynamic model from R40:
-α-impedance energy partition, force balance for equilibrium tube
-radius, low-pass filter eigenvalue corrections, running α(E).
-Re-derive the full particle spectrum from scratch with no static
-model inputs.  Check whether r_p = 8.906 re-emerges, whether
-ghosts are suppressed, whether three electron generations appear.
-Compile a complete particle table and compare dynamic vs static.
-
 ### R15. Forward charge calculation — deriving α
 **Study:** [`R15-forward-charge/`](R15-forward-charge/)
 **Questions:** [Q18](../qa/Q18-deriving-alpha.md), Q34 Path 7  **Type:** compute  **Depends on:** R7, R13
@@ -33,6 +21,23 @@ energy and topology alone.
 
 **Open sub-problem:** the formula α(r,s) produces a one-parameter family of
 solutions — every r > ~2 has a self-consistent s.  Nothing currently selects r.
+
+### R41. Dynamic torus model — full implementation  **COMPLETE**
+**Study:** [`R41-dynamic-model/`](R41-dynamic-model/)
+**Questions:** Q34, Q77, Q86, Q91  **Type:** compute  **Depends on:** R40, R27, R15, R19, R33
+
+Refactored `lib/ma_model.py` with the dynamic model from R40.
+7 tracks, 43 findings.  Two solution methods: `dynamic='full'`
+(iterative force balance, 3–4 iterations to machine precision)
+and `dynamic='shortcut'` (one-shot perturbation, O(α⁴) accurate).
+125 unit tests pass.  **Result:** the dynamic model is a CONCEPTUAL
+advance (elliptical cross-section, 92% mode elimination via low-pass
+filter, geometric generation hierarchy with FF ordering e > τ > μ)
+but NOT a quantitative one (mass corrections 100× smaller than
+structural errors, (1,1) ghost persists at FF=0.46, free parameters
+unchanged).  Reproduces static parameters to 7 sig figs.  Retain
+as the correct physical picture; use static for practical work.
+See `findings.md` (F27–F43).
 
 ### R40. Self-consistent dynamic torus — COMPLETE
 **Study:** [`R40-dynamic-torus/`](R40-dynamic-torus/)

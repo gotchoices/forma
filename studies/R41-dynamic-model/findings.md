@@ -1,7 +1,7 @@
 # R41. Dynamic torus model — Findings
 
 **Date:** 2026-03-01
-**Status:** Active
+**Status:** Done
 
 
 ## Track 1: Design spec update
@@ -355,3 +355,74 @@ dynamic corrections than the fundamental:
 FF > 1 for ring overtones means the dynamic model makes these
 modes MORE shifted (not less).  The low-pass filter only works
 for increasing tube harmonic number, not ring harmonics.
+
+
+## Track 7: Particle table and verdict
+
+Script: `scripts/track7_particle_table.py`
+
+
+### F42. Dynamic model does not improve any mass prediction
+
+Full particle table comparing static vs dynamic energies for all
+12 canonical mode assignments (4 anchors + 1 generation + 7 hadron
+predictions):
+
+| Particle | E_static | E_dynamic | E_observed | Err_s  | Err_d  | δE/E       | FF     |
+|----------|----------|-----------|------------|--------|--------|------------|--------|
+| e⁻       | 0.515    | 0.515     | 0.511      | +0.8%  | +0.8%  | 3.43×10⁻⁴ | 1.0000 |
+| p        | 945.5    | 945.8     | 938.3      | +0.8%  | +0.8%  | 3.37×10⁻⁴ | 1.0000 |
+| n        | 946.8    | 946.8     | 939.6      | +0.8%  | +0.8%  | ~0         | 0.0000 |
+| μ⁻       | 106.5    | 106.5     | 105.7      | +0.8%  | +0.8%  | 7.9×10⁻⁸  | 0.0002 |
+| τ⁻       | 1890.8   | 1890.8    | 1776.9     | +6.4%  | +6.4%  | 8.4×10⁻⁶  | 0.0250 |
+| K⁺       | 491.7    | 491.7     | 493.7      | −0.4%  | −0.4%  | ~0         | 0.0000 |
+| K⁰       | 507.6    | 507.6     | 497.6      | +2.0%  | +2.0%  | ~0         | 0.0000 |
+| η        | 555.4    | 555.4     | 547.9      | +1.4%  | +1.4%  | 0          | 0.0000 |
+| η′       | 968.4    | 968.4     | 957.8      | +1.1%  | +1.1%  | ~0         | 0.0000 |
+| φ        | 1035.9   | 1035.9    | 1019.5     | +1.6%  | +1.6%  | 0          | 0.0000 |
+| Λ        | 1114.3   | 1114.3    | 1115.7     | −0.1%  | −0.1%  | ~0         | 0.0000 |
+| Σ⁺       | 1202.5   | 1202.5    | 1189.4     | +1.1%  | +1.1%  | 0          | 0.0000 |
+
+Result: 0 improved, 2 worsened (electron +0.035%, proton +0.034%),
+10 unchanged.  The dynamic corrections (O(α²) ≈ 10⁻⁴) are 100×
+smaller than the structural errors (1–6%).
+
+The hadron predictions (K, η, φ, Λ, Σ) have essentially zero
+dynamic correction because their tube windings on the charged
+sheets are |n_tube| ≥ 3, coupling to k ≥ 6 (deeply suppressed).
+Only single-sheet fundamental modes (electron, proton) receive
+the full correction.
+
+
+### F43. Verdict — conceptual advance, not quantitative improvement
+
+**Dynamic model wins:**
+
+1. Elliptical cross-section from first principles, no free parameters
+2. Low-pass filter kills 92% of mode spectrum (120,863 families
+   with |n_tube| ≥ 2), complementing R33's charge selection rule
+3. Generation hierarchy has geometric origin: the FF ordering
+   e (1.00) > τ (0.025) > μ (0.0002) comes from cross-sheet tube
+   windings coupling to higher Fourier harmonics
+4. Self-consistent force balance converges in 3–4 iterations
+   (ratio ~α²); perturbative nature is OUTPUT not assumption
+5. Reproduces static parameters (r_p, σ_ep) to 7 significant figures
+
+**Static model wins:**
+
+1. Simpler (no iteration needed)
+2. Mass predictions not improved — dynamic shifts are 100× smaller
+   than existing structural errors
+3. Consistent L-rescaling with electron target (dynamic model has
+   a bug here, F32)
+
+**Neither wins:**
+
+1. (1,1) ghost unsuppressed (FF = 0.46)
+2. r_e and r_ν remain free
+3. Tau discrepancy unchanged (5.6% structural gap)
+4. Pion not matched by either model
+
+The dynamic model should be retained as the correct physical
+picture.  For practical calculations, the static model gives
+identical results to 4 decimal places.
