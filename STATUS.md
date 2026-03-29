@@ -191,7 +191,7 @@ A genuine derivation of G from Ma geometry has not been achieved.
 | Area | Key question | Reference |
 |------|-------------|-----------|
 | Geometric phase / holonomy | Does parallel transport on the embedded torus forbid ghost modes? | Q93 Path 1 |
-| Compton window / dark matter | Are ghost modes dark matter? Does the mass ratio match 5.4? | Q94 |
+| **Dark matter from ghost modes** | **Charge cancellation + Compton window → mass ratio 5.4?** | **R42**, Q94 |
 | Coupling to S | Do ghost modes project weakly into 3D space? (quantifies Q94) | Q93 Path 2 |
 | One-loop self-energy | Do KK mass corrections improve the 1–6% structural errors? | Q93 Path 3 |
 | 10D polarization | Does the 8→2+6 polarization split provide new selection rules? | Q93 Path 5 |

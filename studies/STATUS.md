@@ -7,6 +7,20 @@ See [`../qa/`](../qa/) for open physics questions and detailed problem analysis.
 
 ## Active
 
+### R42. Dark matter from ghost modes — charge cancellation and mass census
+**Study:** [`R42-dark-matter/`](R42-dark-matter/)
+**Questions:** Q94, Q93, Q85  **Type:** compute  **Depends on:** R28, R33, R41, R19
+
+Ghost modes are charge-symmetric: for every mode with charge +Q,
+a partner with charge −Q and identical mass exists.  In thermal
+equilibrium, the aggregate is charge-neutral — a gas of mass with
+no net charge.  Combined with the Compton window (Q94), this makes
+ghosts invisible to EM: dark matter.  5 tracks: charge cancellation
+proof, mass ratio under equal/thermal/freeze-out occupations, dark
+spectrum characterization, and window Q factor sensitivity.
+Success criterion: dark/visible mass ratio ≈ 5.4 from a single Q
+consistent with the observed visible particle count (~40) and 1/α.
+
 ### R15. Forward charge calculation — deriving α
 **Study:** [`R15-forward-charge/`](R15-forward-charge/)
 **Questions:** [Q18](../qa/Q18-deriving-alpha.md), Q34 Path 7  **Type:** compute  **Depends on:** R7, R13

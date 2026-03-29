@@ -1,6 +1,7 @@
 # Q94: The Compton window — dark modes as dark matter and energy reservoir
 
 **Status:** Open — testable with existing tools
+**Study:** R42 (dark matter from ghost modes — charge cancellation and mass census)
 **Related:**
   Q93 (relativistic effects — Paths 2 and 6 moved here),
   Q85 (threshold theory / energy accumulation on Ma),
