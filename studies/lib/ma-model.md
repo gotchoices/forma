@@ -36,51 +36,61 @@ supports far better algorithms.  This spec describes what
 ## Non-goals
 
 - Replace `ma.py`.  All existing scripts keep their imports.
-- Change the physics.  Same metric, same energy formula, same
-  charge and spin rules.
 - Be framework-heavy.  No PyTorch, no JAX.  NumPy + SciPy only.
 
 
 ## Architecture
 
 ```
-┌──────────────────────────────────────────────┐
-│  Ma  (the model object)                      │
-│                                              │
-│  State:                                      │
-│    r_e, r_ν, r_p     aspect ratios           │
-│    s₁₂, s₃₄, s₅₆    within-plane shears     │
-│    σ_ep, σ_eν, σ_νp  cross-plane shears      │
-│    L[6]              circumferences (fm)      │
-│    G̃[6,6]           dimensionless metric     │
-│    G̃⁻¹[6,6]         inverse metric           │
-│    M[6,6]            energy-space kernel      │
-│    Chol[6,6]         Cholesky of M (for scan) │
-│                                              │
-│  Core:                                       │
-│    energy(n)         mode energy (MeV)        │
-│    charge(n)         electric charge          │
-│    spin(n)           spin-½ count             │
-│    energy_decomp(n)  energy by sheet + cross   │
-│    jacobian(n)       ∂E/∂params               │
-│                                              │
-│  Scan:                                       │
-│    modes(E_max, charge, spin, ...)            │
-│      → fast ellipsoid enumeration             │
-│                                              │
-│  Inverse:                                    │
-│    fit(targets)      masses+modes → params    │
-│    sensitivity(n)    which params matter?     │
-│                                              │
-│  I/O:                                        │
-│    to_dict() / from_dict()                   │
-│    summary()         human-readable printout  │
-│                                              │
-│  Compat:                                     │
-│    from_ma_py(Gti, L)  wrap legacy outputs    │
-│    to_ma_py()          export for legacy code  │
-│                                              │
-└──────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────┐
+│  Ma  (the model object)                          │
+│                                                  │
+│  State (static — always present):                │
+│    r_e, r_ν, r_p     aspect ratios               │
+│    s₁₂, s₃₄, s₅₆    within-plane shears         │
+│    σ_ep, σ_eν, σ_νp  cross-plane shears          │
+│    L[6]              circumferences (fm)          │
+│    G̃[6,6]           dimensionless metric         │
+│    G̃⁻¹[6,6]         inverse metric               │
+│    M[6,6]            energy-space kernel          │
+│    Chol[6,6]         Cholesky of M (for scan)     │
+│                                                  │
+│  State (dynamic — when dynamic=True):            │
+│    dynamic            bool flag                   │
+│    _harm_cache        {(n_tube,n_ring,r) → harm}  │
+│                                                  │
+│  Core:                                           │
+│    energy(n)         mode energy (MeV)            │
+│                      static or dynamic per flag   │
+│    energy_static(n)  always the flat-torus E      │
+│    charge(n)         electric charge              │
+│    spin(n)           spin-½ count                 │
+│    energy_decomp(n)  energy by sheet + cross       │
+│    jacobian(n)       ∂E/∂params                   │
+│                                                  │
+│  Dynamic:                                        │
+│    pressure_harmonics(n_tube, n_ring, r)          │
+│    wall_shape(n_tube, n_ring, r)                  │
+│    dynamic_correction(n)    δE/E for mode n       │
+│    filter_factor(n)         suppression vs fund.  │
+│                                                  │
+│  Scan:                                           │
+│    modes(E_max, charge, spin, ...)                │
+│      → fast ellipsoid enumeration                 │
+│                                                  │
+│  Inverse:                                        │
+│    fit(targets)      masses+modes → params        │
+│    sensitivity(n)    which params matter?         │
+│                                                  │
+│  I/O:                                            │
+│    to_dict() / from_dict()                       │
+│    summary()         human-readable printout      │
+│                                                  │
+│  Compat:                                         │
+│    from_ma_py(Gti, L)  wrap legacy outputs        │
+│    to_ma_py()          export for legacy code      │
+│                                                  │
+└──────────────────────────────────────────────────┘
 ```
 
 
@@ -401,6 +411,247 @@ E = mode_energy((1,2,0,0,0,0), Gti, L)  # same as m.energy(...)
 ```
 
 
+## Feature 10: Dynamic model (α-impedance)
+
+Established in R40.  The static model treats the torus as a fixed
+flat geometry.  The dynamic model says the torus wall responds to
+the mode: the wall IS the (1−α) energy contour.  This introduces
+mode-dependent cross-section shapes, eigenvalue corrections, and
+a natural low-pass filter.
+
+Static Ma is the zeroth-order approximation.  Dynamic corrections
+are O(α²) ≈ 5×10⁻⁵ — perturbative, but physically meaningful.
+
+
+### Physical picture
+
+A standing wave (mode) on a flat torus has |ψ|² = const — the
+energy density is perfectly uniform.  The (1−α) contour is a
+circle at every tube angle.
+
+On the 3D-embedded torus, the geodesic curvature and path speed
+vary with the tube angle θ₁ because ρ(θ₁) = R + a cos θ₁.
+Where curvature is higher, centrifugal pressure pushes the wall
+outward.  The elastic wall resists with a restoring force that
+scales as k² for the k-th Fourier harmonic (thin-shell elasticity).
+
+Equilibrium: δr_k/a = α × (|c_k|/|c₀|) / k².
+
+The mode with tube winding n₁ couples to wall harmonic k = 2|n₁|
+through the selection rule ⟨ψ|δV_k|ψ⟩ ∝ δ_{k,2|n₁|}.  Higher
+tube-winding modes couple to higher (weaker) harmonics, giving a
+natural low-pass filter in tube winding number.
+
+Energy partition: fraction (1−α) of the mode energy is confined
+inside the wall; fraction α leaks out as the external EM field
+(the particle's Coulomb field).  α runs with energy because
+higher-energy modes push harder against the wall, increasing
+transparency — this is vacuum polarization in geometric language.
+
+
+### Mode-dependent cross-section
+
+The wall shape r(θ₁)/a = 1 + Σ_k δr_k cos(kθ₁ − φ_k) depends
+on the mode's winding numbers and the sheet's aspect ratio:
+
+- **Same n₁, different n₂:** The dominant harmonic is always k=2
+  (from the cos 2θ₁ variation of torus curvature), but the
+  amplitude |c₂/c₀| depends on n₂/n₁ through the speed weighting.
+  Ring-dominated modes (high n₂/n₁) have larger ρ-variation →
+  stronger elliptical deformation.  Tube-dominated modes (high
+  n₁/n₂) are more circular.
+
+  Example on the proton sheet (r=8.906):
+    (1,2): |c₂/c₀| ≈ 0.37  → δr₂/a ≈ 6.7×10⁻⁴
+    (1,4): |c₂/c₀| larger  → more elliptical
+    (3,1): |c₂/c₀| smaller → nearly circular
+
+- **n_tube = 0 (ring-only winding):** The mode has no θ₁
+  dependence → couples to k=0 (DC component) → no eigenvalue
+  correction from this sheet.
+
+- **Cross-sheet modes (e.g., neutron):** Each sheet's torus
+  deforms independently based on that sheet's (n_tube, n_ring).
+  The total correction is a weighted sum over sheets, weighted
+  by E² fractions from energy_decomp().
+
+
+### Pressure harmonics computation
+
+For a mode with tube winding n₁ and ring winding n₂ on a sheet
+with aspect ratio r = a/R:
+
+1. Parameterize the 3D geodesic:
+     x(t) = ρ cos(n₂t),  y(t) = ρ sin(n₂t),  z(t) = a sin(n₁t)
+   where ρ(t) = R + a cos(n₁t).
+
+2. Compute the path speed:
+     v(t) = |dr/dt| = √((n₁a)² sin²(n₁t) + (n₂ρ(t))²  + ...)
+   (full 3D derivative of position).
+
+3. Compute the Frenet curvature vector κ_vec = dT̂/ds and project
+   onto the tube-radial unit vector ê_r.  The centrifugal reaction
+   (outward pressure) is κ_outward = −κ_radial.
+
+4. Speed-weight: P(θ₁) ∝ κ_outward(θ₁) × v(θ₁).  This accounts
+   for the energy flux through each tube angle.
+
+5. Bin P by θ₁ ∈ [0, 2π) and Fourier-decompose:
+     P(θ₁) = c₀ + Σ_k [A_k cos(kθ₁) + B_k sin(kθ₁)]
+   with amplitudes c_k = √(A_k² + B_k²), phases φ_k = atan2(B_k, A_k).
+
+The harmonics depend only on (n₁, n₂, r) — not on absolute scale,
+not on cross-shears, not on the other sheets.  They can be cached.
+
+Symmetry: by the θ₁ → −θ₁ symmetry of the torus, B_k = 0 and
+only even harmonics are non-negligible for the (1,2) fundamental.
+Odd harmonics arise only from numerical noise or symmetry-breaking
+windings.
+
+
+### Eigenvalue correction
+
+For a 6D mode n = (n₁, n₂, n₃, n₄, n₅, n₆):
+
+1. Identify the active sheets (those with non-zero tube winding):
+     electron: n₁ ≠ 0 → (n₁, n₂) on torus with r_e
+     neutrino: n₃ ≠ 0 → (n₃, n₄) on torus with r_ν
+     proton:   n₅ ≠ 0 → (n₅, n₆) on torus with r_p
+
+2. For each active sheet, compute the deformation harmonics
+   δr_k/a = α × (|c_k|/|c₀|) / k² using pressure_harmonics().
+
+3. The eigenvalue shift from sheet S:
+     (δE/E)_S = ε_{2|n_tube|} / 2
+   where ε_k = δr_k/a.
+
+4. Weight by the sheet's E² fraction (from energy_decomp):
+     δE/E = Σ_S  w_S × (δE/E)_S
+   where w_S = E²_S / E²_total.
+
+5. Dynamic energy: E_dynamic = E_static × (1 + δE/E).
+
+
+### Low-pass filter
+
+The filter suppression factor for a mode relative to the
+fundamental (1,2) on the same sheet:
+
+  F(n₁) = ε_{2|n₁|} / ε₂
+
+For the proton sheet (r = 8.906):
+  n₁=1: F = 1.0     (reference)
+  n₁=2: F ≈ 0.025   (40× suppression)
+  n₁=3: F ≈ 0.002   (450× suppression)
+  n₁=4: F ≈ 0.0003  (3000× suppression)
+
+The suppression goes as ~1/(2n₁)² from the elastic response,
+modulated by the harmonic content |c_{2n₁}|/|c₀|.  This is a
+soft low-pass filter — it shifts eigenvalues rather than imposing
+a hard cutoff.  Whether this constitutes "ghost suppression"
+depends on the magnitude of the shift relative to observational
+constraints.
+
+
+### Running α(E)
+
+Wall transparency increases with mode energy.  Higher-energy
+modes push harder against the wall → more energy leaks through
+→ effective α increases.  This is the geometric realization of
+vacuum polarization.
+
+Quantitative formula: TBD.  The self-consistent equation is
+α(E) = α₀ × f(E/E₀) where f encodes the energy-dependent
+penetration depth.  R41 Track 2 should derive the functional
+form from the force balance.
+
+
+### API
+
+```python
+# Construction
+m = Ma(r_e=0.5, r_nu=5.0, r_p=8.906, sigma_ep=-0.0906,
+       dynamic=True)
+
+# Energy
+m.energy((1, 2, 0, 0, 0, 0))         # dynamic energy (MeV)
+m.energy_static((1, 2, 0, 0, 0, 0))  # flat-torus energy (MeV)
+
+# Dynamic correction
+corr = m.dynamic_correction((1, 2, 0, 0, 0, 0))
+# corr.delta_E_over_E   → float (δE/E)
+# corr.per_sheet        → dict: 'e'→δE/E_e, 'p'→δE/E_p, ...
+# corr.dominant_k       → int (coupling harmonic)
+# corr.filter_factor    → float (suppression vs fundamental)
+
+# Pressure harmonics (per-sheet)
+harm = m.pressure_harmonics(n_tube=1, n_ring=2, r=8.906)
+# harm.c_k         → ndarray, Fourier amplitudes
+# harm.delta_r_k   → ndarray, wall deformation per harmonic
+# harm.phi_k       → ndarray, phases
+
+# Wall shape (cross-section at N angles)
+shape = m.wall_shape(n_tube=1, n_ring=2, r=8.906)
+# shape.theta       → ndarray (N,)
+# shape.r_over_a    → ndarray (N,), the r(θ₁)/a profile
+# shape.eccentricity → float
+
+# Filter suppression relative to (1,2) fundamental
+m.filter_factor((3, 1, 0, 0, 0, 0))   # float ≈ 0.002
+
+# Scanning uses dynamic energies when dynamic=True
+modes = m.scan_modes(n_max=3, E_max_MeV=2000)
+# Mode namedtuples include E_MeV (dynamic) and delta_E_MeV
+
+# Fitting uses dynamic energies when dynamic=True
+result = Ma.fit(targets, free_params=['r_p', 'sigma_ep'],
+                dynamic=True)
+```
+
+
+### Integration with existing features
+
+- **energy()**: When `dynamic=True`, returns E_static × (1 + δE/E).
+  When `dynamic=False` (default), returns E_static as before.
+  Backward compatible — all existing code continues to work.
+
+- **energy_static()**: New method.  Always returns the flat-torus
+  energy.  Identical to the current energy() when dynamic=False.
+
+- **scan_modes()**: Uses energy() — so scans use dynamic energies
+  when `dynamic=True`.  The Mode namedtuple gains an optional
+  `delta_E_MeV` field (None when static).
+
+- **fit()**: Accepts a `dynamic=True` kwarg.  When set, the
+  residuals and finite-difference Jacobian use dynamic energies.
+  The self-consistency iteration targets dynamic m_e and m_p.
+
+- **jacobian()**: When `dynamic=True`, includes ∂(δE)/∂r
+  contributions.  The dynamic correction depends on r through
+  the pressure harmonics, so the chain rule extends:
+    ∂E_dynamic/∂r = ∂E_static/∂r × (1 + δ) + E_static × ∂δ/∂r
+
+- **to_dict() / from_dict()**: Records `dynamic` flag.
+
+- **summary()**: Reports dynamic corrections for electron and
+  proton modes when dynamic=True.
+
+
+### Computation cost
+
+The pressure harmonics computation requires integrating the 3D
+geodesic (~4000 sample points), computing curvature, and a
+Fourier transform.  This is O(N × N_harm) per call.
+
+The harmonics depend only on (n_tube, n_ring, r) and are cached
+in a dict keyed by this triple.  For a scan of ~14,000 modes,
+most modes share sheets (same r), and many share winding numbers.
+Cache hit rate should be high.
+
+The dynamic correction for one mode is a lookup + weighted sum —
+negligible cost once harmonics are cached.
+
+
 ## Implementation plan
 
 ### Phase 1: Core (minimum viable)
@@ -442,6 +693,19 @@ Validates: all existing study results reproduce exactly.
 19. `mode_count()` with `by` parameter.
 20. `nearest()` for quick lookups.
 
+### Phase 6: Dynamic model (R41)
+
+21. `pressure_harmonics()` — 3D geodesic curvature, speed-weighted
+    Fourier decomposition.  Cached by (n_tube, n_ring, r).
+22. `wall_shape()` — reconstruct r(θ₁)/a from harmonics.
+23. `dynamic_correction()` — per-sheet eigenvalue shifts, weighted
+    sum for cross-sheet modes.
+24. `filter_factor()` — suppression relative to fundamental.
+25. Wire `dynamic=True` flag through `energy()`, `scan_modes()`,
+    `fit()`, `jacobian()`, `to_dict()`, `summary()`.
+26. `energy_static()` — always returns flat-torus energy.
+27. Self-consistency iteration with dynamic energies.
+
 
 ## Testing strategy
 
@@ -464,6 +728,25 @@ Every phase must pass:
 5. **Speed:** `modes(E_max_MeV=10000)` at effective n_max ≥ 10
    completes in < 1 second (vs hours for brute force).
 
+Phase 6 (dynamic model) additionally requires:
+
+6. **Static backward compat:** `Ma(..., dynamic=False)` produces
+   identical results to the pre-dynamic code.
+
+7. **R40 Track 11 match:** For the proton (1,2) mode at r=8.906,
+   `pressure_harmonics(1, 2, 8.906)` must reproduce Track 11's
+   Fourier coefficients (|c₂/c₀| ≈ 0.37, dominant k=2).
+   `dynamic_correction` must give δE/E ≈ 3.4×10⁻⁴.
+
+8. **Perturbative check:** For all modes below 10 GeV,
+   |δE/E| < α ≈ 0.0073.  Dynamic corrections are perturbative.
+
+9. **Symmetry:** Modes related by CPT (n → −n) must have
+   identical |δE/E| (same magnitude, possibly different sign).
+
+10. **No-tube-winding rule:** Modes with n_tube = 0 on all sheets
+    must have exactly zero dynamic correction.
+
 
 ## Dependencies
 
@@ -484,5 +767,6 @@ lib/
   series.py         unchanged
   ma.py             unchanged
   ma_solver.py      unchanged
-  ma_model.py       NEW — the model engine
+  ma_model.py       the model engine (static + dynamic)
+  test_ma_model.py  regression tests (static + dynamic)
 ```

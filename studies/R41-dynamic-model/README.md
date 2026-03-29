@@ -81,13 +81,17 @@ whether the dynamic model improves on the static one.
 
 ## Approach
 
-### Track 1: Design spec update
+### Track 1: Design spec update [DONE]
 
-Update `lib/ma-model.md` to include the dynamic model physics:
-- Energy partition (1−α inside, α outside)
-- Force balance equation
-- Low-pass filter eigenvalue corrections
-- API: `Ma.dynamic_energy(n)`, `Ma.filter_suppression(n)`, etc.
+Updated `lib/ma-model.md` Feature 10 (Dynamic model).  Covers:
+- Mode-dependent pressure harmonics and cross-section shape
+- Per-sheet eigenvalue corrections weighted by E² fractions
+- Low-pass filter from elastic 1/k² response
+- Running α(E) (qualitative; formula TBD)
+- Full API: `pressure_harmonics`, `wall_shape`, `dynamic_correction`,
+  `filter_factor`, `energy_static`, integration with scan/fit
+- Harmonic caching by (n_tube, n_ring, r)
+- Updated testing strategy (6 new tests for dynamic model)
 
 ### Track 2: Implementation
 
