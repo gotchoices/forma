@@ -24,7 +24,7 @@ solutions — every r > ~2 has a self-consistent s.  Nothing currently selects r
 
 ### R41. Dynamic torus model — full implementation  **COMPLETE**
 **Study:** [`R41-dynamic-model/`](R41-dynamic-model/)
-**Questions:** Q34, Q77, Q86, Q91  **Type:** compute  **Depends on:** R40, R27, R15, R19, R33
+**Questions:** Q34, Q77, Q86, Q91, Q93  **Type:** compute  **Depends on:** R40, R27, R15, R19, R33
 
 Refactored `lib/ma_model.py` with the dynamic model from R40.
 7 tracks, 43 findings.  Two solution methods: `dynamic='full'`
