@@ -426,3 +426,27 @@ the full correction.
 The dynamic model should be retained as the correct physical
 picture.  For practical calculations, the static model gives
 identical results to 4 decimal places.
+
+
+### Plain-language assessment
+
+The dynamic model is not yet ready to feature in a paper.
+
+The mass corrections (O(α²) ≈ 0.03%) are 100× smaller than the
+structural prediction errors (0.1–6%).  No reader could
+distinguish the two models from the particle table.  It does not
+solve any open problem: the (1,1) ghost survives, r_e remains
+free, and the tau gap is unchanged.  The 92% mode elimination
+from the low-pass filter overlaps with R33's charge selection
+rule, which already kills the same modes.  The generation
+hierarchy (FF: e > τ > μ) is geometrically suggestive but does
+not predict mass ratios — it only says different generations
+couple differently to wall deformation.
+
+For the white paper, the static flat-torus model is the story.
+The dynamic model belongs in a single "future directions"
+sentence: "The static model receives O(α²) corrections from
+radiation-pressure deformation of the torus wall (R40–R41);
+these are too small to affect current predictions but provide a
+geometric origin for the generation hierarchy and a natural
+low-pass filter on the mode spectrum."
