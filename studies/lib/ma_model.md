@@ -432,27 +432,41 @@ the wall sits where inward vacuum pressure balances outward mode
 pressure.  The shape, the mode, and the energy are all outputs of
 this self-consistent calculation — no static baseline is assumed.
 
-Two solution methods are implemented:
+Four model levels are implemented, ordered by physical fidelity:
 
-- **`dynamic='full'`** (or `dynamic=True`): Iterative force-balance
-  solve.  Starting from a circular cross-section, repeats:
-  compute 3D geodesic curvature on the current shape → Fourier-
-  decompose the pressure → compute equilibrium deformation → update
-  the cross-section.  Converges when the shape stops changing
-  (|Δε_k| < tol).  This IS the self-consistent solution: the code
-  discovers that corrections are small rather than assuming it.
-  Convergence is geometric with ratio ~α ≈ 0.007, so 2–3 iterations
-  suffice.
+- **`dynamic='flat'`** (or `dynamic=False`): Static flat torus with
+  circular cross-section.  No dynamic corrections.  Fastest.
+  This is the original static model.  Alias: `'off'`.
 
-- **`dynamic='shortcut'`**: One-shot perturbation.  Computes pressure
-  on the undeformed (circular) cross-section and applies the
-  equilibrium formula once: E_dynamic = E_static × (1 + δE/E).
-  This is iteration zero of the full solve.  Fast but does not
-  capture the feedback between shape and pressure.  Agrees with
-  the full solve to O(α⁴) in energy for known particles.
+- **`dynamic='elliptical'`**: Static elliptical tube.  The torus
+  is permanently elliptical with a fixed eccentricity derived from
+  the fundamental mode's (1,2) pressure harmonics.  All modes see
+  the SAME background shape — no mode-specific deformation.  The
+  energy correction is computed once per sheet, then applied
+  uniformly.  Isolates the effect of the elliptical geometry from
+  the mode-specific force balance.
 
-For `dynamic=False` (default), no corrections are applied and
-all methods return the flat-torus (static) results.
+- **`dynamic='shortcut'`**: Mode-specific one-shot perturbation.
+  Each mode computes its own pressure harmonics on the circular
+  cross-section and applies the equilibrium formula once:
+  E_dynamic = E_static × (1 + δE/E).  This is iteration zero of
+  the full solve.  The shape and correction are mode-dependent.
+  Agrees with the full solve to O(α⁴) in energy.
+
+- **`dynamic='full'`** (or `dynamic=True`): Self-consistent
+  iterative force-balance solve.  Starting from a circular cross-
+  section, repeats: compute 3D geodesic curvature on the current
+  shape → Fourier-decompose the pressure → compute equilibrium
+  deformation → update the cross-section.  Converges when the
+  shape stops changing (|Δε_k| < tol).  This IS the self-consistent
+  solution: the code discovers that corrections are small rather
+  than assuming it.  Convergence is geometric with ratio ~α ≈ 0.007,
+  so 2–3 iterations suffice.
+
+Each level adds one physical effect:
+  flat → elliptical: background torus shape
+  elliptical → shortcut: mode-specific deformation
+  shortcut → full: self-consistent iteration
 
 
 ### Physical picture
@@ -570,9 +584,17 @@ For a 6D mode n = (n₁, n₂, n₃, n₄, n₅, n₆):
 
 5. Dynamic energy:
 
+   **Elliptical** (`dynamic='elliptical'`):
+     E_dynamic = E_static × (1 + δE/E_fund).
+     Uses the fundamental (1,2) mode's correction δE/E_fund on each
+     sheet, applied uniformly to ALL modes (regardless of their own
+     winding numbers).  A mode with n₁=3 still gets the (1,2)
+     correction.  This isolates the effect of the background shape.
+
    **Shortcut** (`dynamic='shortcut'`):
      E_dynamic = E_static × (1 + δE/E).
-     Steps 1–4 run once on the circular (undeformed) cross-section.
+     Steps 1–4 run once on the circular (undeformed) cross-section,
+     using each mode's OWN pressure harmonics.  Mode-specific.
      Valid when δE/E << 1 (all known particles: δE/E ~ 10⁻⁴).
 
    **Full** (`dynamic='full'` or `dynamic=True`):
@@ -659,12 +681,15 @@ form from the force balance.
 ### API
 
 ```python
-# Construction
+# Construction — four model levels
 m = Ma(r_e=0.5, r_nu=5.0, r_p=8.906, sigma_ep=-0.0906,
        dynamic='full')          # iterative force-balance solve
-# dynamic=True  → same as 'full'
-# dynamic='shortcut' → one-shot perturbative (fast, approximate)
-# dynamic=False → static (no corrections)
+# dynamic=True       → same as 'full'
+# dynamic='shortcut' → mode-specific one-shot perturbation
+# dynamic='elliptical' → fixed elliptical background (fundamental's shape)
+# dynamic=False      → static flat torus (no corrections)
+# dynamic='flat'     → same as False
+# dynamic='off'      → same as False (legacy alias)
 
 # Energy
 m.energy((1, 2, 0, 0, 0, 0))         # dynamic energy (MeV)
@@ -693,7 +718,7 @@ shape = m.wall_shape(n_tube=1, n_ring=2, r=8.906)
 
 # Dynamic method introspection
 m.dynamic          # True/False (are corrections enabled?)
-m.dynamic_method   # 'off', 'shortcut', or 'full'
+m.dynamic_method   # 'flat', 'elliptical', 'shortcut', or 'full'
 
 # Filter suppression relative to (1,2) fundamental
 m.filter_factor((3, 1, 0, 0, 0, 0))   # float ≈ 0.002

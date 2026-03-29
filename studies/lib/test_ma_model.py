@@ -883,6 +883,116 @@ class TestDynamicSerialization(unittest.TestCase):
 
 
 # ════════════════════════════════════════════════════════════════════
+#  Four-level dynamic hierarchy
+# ════════════════════════════════════════════════════════════════════
+
+class TestFourLevelHierarchy(unittest.TestCase):
+    """Test the flat/elliptical/shortcut/full hierarchy."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.m_flat = Ma(**REF, dynamic='flat')
+        cls.m_ellip = Ma(**REF, dynamic='elliptical')
+        cls.m_short = Ma(**REF, dynamic='shortcut')
+        cls.m_full = Ma(**REF, dynamic='full')
+
+    def test_flat_alias_off(self):
+        """'off' should be accepted as alias for 'flat'."""
+        m = Ma(**REF, dynamic='off')
+        self.assertEqual(m.dynamic_method, 'flat')
+        self.assertFalse(m.dynamic)
+
+    def test_flat_alias_false(self):
+        """False should map to 'flat'."""
+        m = Ma(**REF, dynamic=False)
+        self.assertEqual(m.dynamic_method, 'flat')
+
+    def test_flat_method(self):
+        self.assertEqual(self.m_flat.dynamic_method, 'flat')
+        self.assertFalse(self.m_flat.dynamic)
+
+    def test_elliptical_method(self):
+        self.assertEqual(self.m_ellip.dynamic_method, 'elliptical')
+        self.assertTrue(self.m_ellip.dynamic)
+
+    def test_elliptical_repr(self):
+        self.assertIn("dynamic='elliptical'", repr(self.m_ellip))
+
+    def test_elliptical_summary(self):
+        self.assertIn('elliptical', self.m_ellip.summary())
+
+    def test_flat_energy_equals_static(self):
+        """Flat model should give the same energy as energy_static."""
+        for mode in [ELECTRON, PROTON, NEUTRON]:
+            self.assertEqual(self.m_flat.energy(mode),
+                             self.m_flat.energy_static(mode))
+
+    def test_elliptical_correction_uniform(self):
+        """Elliptical applies the SAME per-sheet correction to all modes."""
+        corr_e = self.m_ellip.dynamic_correction(ELECTRON)
+        corr_11 = self.m_ellip.dynamic_correction((1, 1, 0, 0, 0, 0))
+        self.assertAlmostEqual(corr_e.per_sheet['e'],
+                               corr_11.per_sheet['e'], places=15,
+                               msg="Elliptical should give same e-sheet "
+                                   "correction regardless of mode")
+
+    def test_elliptical_differs_from_shortcut_for_nonstandard_modes(self):
+        """Elliptical and shortcut should differ for modes != (1,2)."""
+        mode_11 = (1, 1, 0, 0, 0, 0)
+        E_ellip = self.m_ellip.energy(mode_11)
+        E_short = self.m_short.energy(mode_11)
+        self.assertNotAlmostEqual(E_ellip, E_short, places=10,
+                                  msg="Elliptical and shortcut should differ "
+                                      "for (1,1) mode")
+
+    def test_elliptical_equals_shortcut_for_fundamental(self):
+        """For the (1,2) fundamental, elliptical = shortcut."""
+        E_ellip = self.m_ellip.energy(ELECTRON)
+        E_short = self.m_short.energy(ELECTRON)
+        self.assertAlmostEqual(E_ellip, E_short, places=12,
+                               msg="Elliptical and shortcut should agree "
+                                   "for the (1,2) fundamental")
+
+    def test_energy_ordering_electron(self):
+        """E_flat < E_elliptical ≈ E_shortcut ≈ E_full for electron."""
+        E_f = self.m_flat.energy(ELECTRON)
+        E_e = self.m_ellip.energy(ELECTRON)
+        E_s = self.m_short.energy(ELECTRON)
+        E_d = self.m_full.energy(ELECTRON)
+        self.assertLess(E_f, E_e)
+        self.assertAlmostEqual(E_e, E_s, places=10)
+        self.assertAlmostEqual(E_s, E_d, places=6)
+
+    def test_elliptical_correction_nonzero_for_ring_only(self):
+        """Ring-only mode (0,1,0,0,0,0) gets correction in elliptical
+        but NOT in shortcut (n_tube=0 → no coupling)."""
+        mode_ring = (0, 1, 0, 0, 0, 0)
+        corr_ellip = self.m_ellip.dynamic_correction(mode_ring)
+        corr_short = self.m_short.dynamic_correction(mode_ring)
+        self.assertGreater(abs(corr_ellip.delta_E_over_E), 1e-6,
+                           msg="Elliptical should correct ring-only modes")
+        self.assertAlmostEqual(corr_short.delta_E_over_E, 0.0, places=15,
+                               msg="Shortcut should NOT correct ring-only modes")
+
+    def test_serialization_roundtrip_elliptical(self):
+        """Elliptical should survive to_dict → Ma(**d)."""
+        d = self.m_ellip.to_dict()
+        constructor_keys = {'r_e', 'r_nu', 'r_p', 'sigma_ep',
+                            'sigma_enu', 'sigma_nup',
+                            'self_consistent', 'dynamic'}
+        m2 = Ma(**{k: v for k, v in d.items() if k in constructor_keys})
+        self.assertEqual(m2.dynamic_method, 'elliptical')
+
+    def test_with_params_preserves_elliptical(self):
+        m2 = self.m_ellip.with_params(r_e=7.0)
+        self.assertEqual(m2.dynamic_method, 'elliptical')
+
+    def test_invalid_dynamic_raises(self):
+        with self.assertRaises(ValueError):
+            Ma(**REF, dynamic='bogus')
+
+
+# ════════════════════════════════════════════════════════════════════
 #  Full vs shortcut solve
 # ════════════════════════════════════════════════════════════════════
 
@@ -898,7 +1008,7 @@ class TestFullVsShortcut(unittest.TestCase):
     def test_dynamic_method_property(self):
         self.assertEqual(self.m_full.dynamic_method, 'full')
         self.assertEqual(self.m_short.dynamic_method, 'shortcut')
-        self.assertEqual(self.m_static.dynamic_method, 'off')
+        self.assertEqual(self.m_static.dynamic_method, 'flat')
 
     def test_dynamic_bool_property(self):
         self.assertTrue(self.m_full.dynamic)

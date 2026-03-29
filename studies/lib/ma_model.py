@@ -671,13 +671,15 @@ class Ma:
         if dynamic is True:
             self._dynamic = 'full'
         elif dynamic is False:
-            self._dynamic = 'off'
-        elif dynamic in ('full', 'shortcut', 'off'):
+            self._dynamic = 'flat'
+        elif dynamic == 'off':
+            self._dynamic = 'flat'
+        elif dynamic in ('flat', 'elliptical', 'shortcut', 'full'):
             self._dynamic = dynamic
         else:
             raise ValueError(
-                f"dynamic must be False, True, 'shortcut', or 'full'; "
-                f"got {dynamic!r}")
+                f"dynamic must be False, True, 'flat', 'elliptical', "
+                f"'shortcut', or 'full'; got {dynamic!r}")
         self._harm_cache = {}
 
         # Compute circumferences and within-plane shears
@@ -798,11 +800,11 @@ class Ma:
     @property
     def dynamic(self):
         """Whether dynamic (α-impedance) corrections are enabled."""
-        return self._dynamic != 'off'
+        return self._dynamic != 'flat'
 
     @property
     def dynamic_method(self):
-        """Dynamic solution method: 'off', 'shortcut', or 'full'."""
+        """Dynamic solution method: 'flat', 'elliptical', 'shortcut', or 'full'."""
         return self._dynamic
 
     @property
@@ -814,7 +816,7 @@ class Ma:
             'sigma_enu': self.sigma_enu,
             'sigma_nup': self.sigma_nup,
             'self_consistent': self._self_consistent,
-            'dynamic': self._dynamic if self._dynamic != 'off' else False,
+            'dynamic': self._dynamic if self._dynamic != 'flat' else False,
         }
         # Include any individual cross-shear entries
         for key, val in self._cross_shears.items():
@@ -843,7 +845,7 @@ class Ma:
         float — energy in MeV.
         """
         E_st = _mode_energy(n, self._Gti, self._L)
-        if self._dynamic == 'off':
+        if self._dynamic == 'flat':
             return E_st
         corr = self.dynamic_correction(n)
         return E_st * (1 + corr.delta_E_over_E)
@@ -977,7 +979,13 @@ class Ma:
         Dynamic (α-impedance) eigenvalue correction for a 6D mode.
 
         Computes the per-sheet corrections weighted by E² fractions.
-        Only sheets with nonzero tube winding contribute.
+        Behavior depends on the dynamic method:
+
+        - 'flat': raises (caller should check; energy() short-circuits)
+        - 'elliptical': uses the fundamental (1,2) correction uniformly
+          on each sheet, regardless of the mode's own winding numbers.
+        - 'shortcut': uses each mode's own pressure harmonics (one-shot).
+        - 'full': uses the converged iterative harmonics.
 
         Returns DynamicCorrection namedtuple.
         """
@@ -987,33 +995,47 @@ class Ma:
         dominant_weight = 0.0
 
         decomp = self.energy_decomp(n)
-        E2_total = decomp.total**2
-        sheet_frac_keys = {'e': 'e', 'nu': 'nu', 'p': 'p'}
 
         delta_total = 0.0
-        for sheet in ('e', 'nu', 'p'):
-            nt = int(n_arr[self._SHEET_TUBE[sheet]])
-            nr = int(n_arr[self._SHEET_RING[sheet]])
-            if nt == 0:
-                per_sheet[sheet] = 0.0
-                continue
+        if self._dynamic == 'elliptical':
+            for sheet in ('e', 'nu', 'p'):
+                r = getattr(self, self._SHEET_R_MAP[sheet])
+                fund_harm = self.pressure_harmonics(1, 2, r)
+                if len(fund_harm.delta_r_k) > 2:
+                    dEE_sheet = fund_harm.delta_r_k[2] / 2.0
+                else:
+                    dEE_sheet = 0.0
+                per_sheet[sheet] = dEE_sheet
 
-            r = getattr(self, self._SHEET_R_MAP[sheet])
-            harm = self.pressure_harmonics(nt, nr, r)
-            k_coupling = 2 * abs(nt)
-            if k_coupling < len(harm.delta_r_k):
-                eps_k = harm.delta_r_k[k_coupling]
-            else:
-                eps_k = 0.0
-            dEE_sheet = eps_k / 2.0
-            per_sheet[sheet] = dEE_sheet
+                w = decomp.fractions.get(sheet, 0.0)
+                delta_total += w * dEE_sheet
+                if w > dominant_weight:
+                    dominant_weight = w
+                    dominant_k = 2
+        else:
+            for sheet in ('e', 'nu', 'p'):
+                nt = int(n_arr[self._SHEET_TUBE[sheet]])
+                nr = int(n_arr[self._SHEET_RING[sheet]])
+                if nt == 0:
+                    per_sheet[sheet] = 0.0
+                    continue
 
-            w = decomp.fractions.get(sheet, 0.0)
-            delta_total += w * dEE_sheet
+                r = getattr(self, self._SHEET_R_MAP[sheet])
+                harm = self.pressure_harmonics(nt, nr, r)
+                k_coupling = 2 * abs(nt)
+                if k_coupling < len(harm.delta_r_k):
+                    eps_k = harm.delta_r_k[k_coupling]
+                else:
+                    eps_k = 0.0
+                dEE_sheet = eps_k / 2.0
+                per_sheet[sheet] = dEE_sheet
 
-            if w > dominant_weight:
-                dominant_weight = w
-                dominant_k = k_coupling
+                w = decomp.fractions.get(sheet, 0.0)
+                delta_total += w * dEE_sheet
+
+                if w > dominant_weight:
+                    dominant_weight = w
+                    dominant_k = k_coupling
 
         fund_dEE = self._fundamental_dEE(dominant_k, dominant_weight,
                                          decomp, n_arr)
@@ -1369,7 +1391,7 @@ class Ma:
             if E_max_MeV is not None and E > E_max_MeV:
                 continue
             dE = None
-            if self._dynamic != 'off':
+            if self._dynamic != 'flat':
                 E_st = _mode_energy(n, self._Gti, self._L)
                 dE = E - E_st
             modes.append(Mode(n=n, E_MeV=E,
@@ -1411,7 +1433,7 @@ class Ma:
             'sigma_enu': self.sigma_enu,
             'sigma_nup': self.sigma_nup,
             'self_consistent': self._self_consistent,
-            'dynamic': self._dynamic if self._dynamic != 'off' else False,
+            'dynamic': self._dynamic if self._dynamic != 'flat' else False,
         }
         defaults.update(kwargs)
         return Ma(**defaults)
@@ -1635,7 +1657,7 @@ class Ma:
             'sigma_enu': self.sigma_enu,
             'sigma_nup': self.sigma_nup,
             'self_consistent': self._self_consistent,
-            'dynamic': self._dynamic if self._dynamic != 'off' else False,
+            'dynamic': self._dynamic if self._dynamic != 'flat' else False,
             # Derived (for reference, not used in reconstruction)
             's12': self._s12, 's34': self._s34, 's56': self._s56,
             'L': self._L.tolist(),
@@ -1695,7 +1717,7 @@ class Ma:
         obj._s56 = Gt[4, 5] / Gt[4, 4] if Gt[4, 4] != 0 else 0.0
         obj._cross_shears = {}
         obj._self_consistent = False
-        obj._dynamic = 'off'
+        obj._dynamic = 'flat'
         obj._harm_cache = {}
         obj._converged = None
         obj._iterations = None
@@ -1715,7 +1737,7 @@ class Ma:
 
     def summary(self):
         """Human-readable summary of the geometry."""
-        if self._dynamic == 'off':
+        if self._dynamic == 'flat':
             label = "Ma geometry"
         else:
             label = f"Ma geometry (dynamic={self._dynamic})"
@@ -1733,7 +1755,7 @@ class Ma:
         E_p = self.energy(_N_PROTON)
         lines.append(f"  E(electron) = {E_e:.6f} MeV")
         lines.append(f"  E(proton)   = {E_p:.3f} MeV")
-        if self._dynamic != 'off':
+        if self._dynamic != 'flat':
             corr_e = self.dynamic_correction(_N_ELECTRON)
             corr_p = self.dynamic_correction(_N_PROTON)
             lines.append(f"  δE/E(electron) = {corr_e.delta_E_over_E:.6e}")
@@ -1742,7 +1764,7 @@ class Ma:
 
     def __repr__(self):
         sc = ", self_consistent=True" if self._self_consistent else ""
-        dyn = f", dynamic='{self._dynamic}'" if self._dynamic != 'off' else ""
+        dyn = f", dynamic='{self._dynamic}'" if self._dynamic != 'flat' else ""
         return (f"Ma(r_e={self._r_e}, r_nu={self._r_nu}, r_p={self._r_p}, "
                 f"sigma_ep={self.sigma_ep}{sc}{dyn})")
 
