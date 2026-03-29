@@ -4,6 +4,38 @@
 
 ---
 
+## Abstract
+
+The masses of elementary particles are among the least understood
+constants in physics.  The Standard Model accommodates them as
+inputs but offers no mechanism that determines their values.  This
+paper presents a model in which particles are standing
+electromagnetic waves on a compact six-dimensional manifold — three
+flat tori, one each for the electron, neutrino, and proton families.
+The Lagrangian is free electromagnetism in ten dimensions; no
+additional fields, sources, or gravity coupling are introduced.
+
+A particle's mass is the eigenfrequency of its mode on the compact
+space.  Its electric charge and spin are determined by the winding
+topology.  Four measured quantities fix the geometry (the electron
+mass, the proton mass, the solar neutrino mass splitting, and the
+fine-structure constant).  Two further calibration points (the
+neutron and muon masses) pin the remaining shape parameters.  After
+this, seven hadron masses — from the kaon to the sigma baryon —
+emerge within 1.2% of their observed values with no further
+adjustment.  The model also reproduces nuclear masses to < 1% via a
+simple scaling law, predicts the neutrino mass hierarchy (normal
+ordering, Σm_ν ≈ 118 meV), and recovers the electron's anomalous
+magnetic moment g = 2(1 + α/2π) from geometry.
+
+The model has significant open problems: roughly 900 predicted
+modes below 2 GeV versus ~40 observed particles (the ghost mode
+problem), a 5.6% structural error on the tau mass, and two free
+parameters (the electron and neutrino aspect ratios) that remain
+undetermined.  These are discussed alongside the results.
+
+---
+
 ### Model card
 
 | | |
