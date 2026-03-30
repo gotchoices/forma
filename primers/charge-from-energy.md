@@ -342,19 +342,297 @@ and charge).
 
 ---
 
+## 10. From the WvM picture to the shear mechanism
+
+The argument so far has been a specific physical story: a
+circularly polarized photon on a (1,2) torus knot, its
+polarization rotation canceling the geometric rotation of the
+surface normal, producing a constant outward E field.  This is
+WvM's insight, and it is the right intuition.  But it has a
+limitation: **it treats the photon as a particle tracing a
+path.**
+
+When the confined photon is modeled as what it actually is — a
+standing wave (eigenmode) on the compact surface — the
+circular-polarization argument does not carry over directly.
+A standing wave does not "travel" along a geodesic; it fills
+the entire surface simultaneously.  The WvM picture gives the
+right answer for the right reason, but only in a
+particle-trajectory approximation.  The full wave treatment
+requires a different mechanism: **shear**.
+
+### What shear means
+
+On the flat rectangle (§3), the two periodic dimensions form
+a perfect grid — vertical lines and horizontal lines at right
+angles.  This is an unsheared lattice.  Now tilt the grid
+slightly: slide the top edge of the rectangle sideways by a
+small amount δ relative to the bottom edge.  The rectangle
+becomes a parallelogram.
+
+```
+Unsheared (s = 0):       Sheared (s > 0):
+
+  +----------+             +----------+
+  |          |            / ←δ→      /
+  |          |           /          /
+  +----------+          +----------+
+```
+
+Mathematically, the fractional shear s is the offset divided
+by the tube circumference: s = δ / L_tube.  It is a small
+dimensionless number — typically a few percent.  The photon
+still winds on the same topology — still (1,2), still one
+wavelength per geodesic loop — but its path is tilted, and so
+is the field pattern it carries.
+
+### Why shear creates charge
+
+On the unsheared torus, the (1,2) mode's E field has a
+symmetric pattern: equal amounts of outward and inward flux
+through any enclosing surface.  The Gauss's law integral is
+zero.  No charge.
+
+Shear breaks this symmetry.  The field pattern's nodes shift
+asymmetrically, and the outward flux no longer cancels the
+inward flux.  The Gauss's law integral becomes:
+
+    Q(s) ∝ sin(2πs) / (2 − s)
+
+At s = 0: sin(0) = 0, so Q = 0.  Any nonzero shear gives
+nonzero charge.  The sin(2πs) factor is the symmetry-breaking
+term — it vanishes when the lattice is orthogonal and grows
+as the lattice tilts.
+
+The full formula for the fine structure constant α (which
+sets the ratio of charge to energy) is:
+
+    α = r² √(1/r² + (2−s)²) × sin²(2πs) / (4π(2−s)²)
+
+where r is the aspect ratio of the material sheet.  This is
+one equation in two unknowns (r and s).  For any aspect ratio
+r > 0.26, there exists a unique shear s that gives exactly
+α = 1/137.036 — the measured value.
+
+### Shear is energetically free
+
+An important result from R19: shearing the material sheet
+does not cost energy.  In fact, it *saves* energy.  When
+the lattice tilts, the (1,2) geodesic gets longer, which
+lowers the photon's frequency and therefore its energy.
+The Coulomb self-energy of the newly created charge adds
+a small positive cost, but the path-length saving is about
+8.6× larger.  The net effect: shear lowers the total energy.
+
+The material sheet does not resist becoming sheared.  It
+welcomes it.  Having charge is "cheap" — the energy cost of
+the Coulomb field is far smaller than the energy saved by
+lengthening the geodesic.
+
+### Connection to the WvM picture
+
+The WvM circular-polarization argument and the shear
+mechanism are not competing explanations — they are two views
+of the same physics.  WvM asks: "what kind of photon produces
+a constant outward E field on a torus?"  Answer: one whose
+circular polarization is synchronized with the geometric
+winding.  The shear mechanism asks: "what geometric
+deformation of the flat torus produces a nonzero E-flux
+integral?"  Answer: any nonzero within-plane shear.
+
+The shear picture is more general.  It gives a clean formula
+for α in terms of geometry.  It applies to any mode on any
+sheet, not just the electron's specific (1,2) configuration.
+And it connects charge to a measurable geometric parameter —
+the lattice angle of the compact dimensions.
+
+Under the shear mechanism, the electron sheet's lattice
+deviates from orthogonal by only a few degrees — the exact
+angle depends on the aspect ratio r_e, which is currently a
+free parameter.  A nearly rectangular lattice, with just
+enough tilt to produce α = 1/137.
+
+
+## 11. Quantum numbers and the mode spectrum
+
+So far we have focused on a single mode — the electron, a
+(1,2) standing wave on a material sheet.  But every closed
+surface supports many standing waves, not just one.  Each is
+a **mode**, labeled by its winding numbers, and each has
+definite physical properties determined entirely by the
+geometry.
+
+### Winding numbers on a single sheet
+
+A material sheet has two periodic dimensions — the tube
+(minor circle) and the ring (major circle), introduced in §2.
+A standing wave on the sheet is specified by two integers:
+
+- **n₁** — the number of wave cycles around the **tube**
+  (this is the quantum number that determines charge and spin)
+- **n₂** — the number of wave cycles around the **ring**
+
+The pair (n₁, n₂) is the mode's **quantum numbers**.  The
+electron is (1, 2): one cycle around the tube, two around the
+ring — the same (1,2) torus knot from §2.  But (1, 3),
+(2, 1), (1, 1), (0, 2), and infinitely many others are also
+valid standing waves on the same surface.
+
+### Mass from winding numbers
+
+Each mode's energy (and therefore its mass, via E = mc²)
+comes from the eigenvalue of the wave equation on the sheet:
+
+    m²c⁴ = (2πℏc)² [(n₁/L₁)² + (n₂/L₂)²]
+
+where L₁ and L₂ are the circumferences of the two dimensions.
+(This is simplified — the full formula includes a shear
+correction — but the essential dependence is clear.)
+
+Higher winding numbers mean shorter wavelengths, higher
+frequencies, and therefore higher mass.  The (1, 2) electron
+mode is relatively light because its winding numbers are
+small.  A (3, 5) mode on the same sheet would be much heavier.
+
+The circumferences L₁ and L₂ set the overall energy scale
+of the sheet.  The electron sheet has circumferences of order
+picometers, giving mode energies in the MeV range.  The
+proton sheet is ~1000× smaller, pushing energies into the
+GeV range.
+
+### Charge from n₁
+
+Charge is determined by a single quantum number: n₁, the
+winding on the charge-determining dimension.  The rule is
+sharp:
+
+| n₁ | Charge behavior |
+|----|----------------|
+| ±1 | Carries charge ±e (the Gauss's law integral is nonzero) |
+| 0 | No winding → no field asymmetry → zero charge |
+| ≥ 2 | Oscillating field pattern integrates to zero → zero charge |
+
+This is the **n₁ = ±1 selection rule**: only modes with
+exactly one winding on the first dimension carry electric
+charge.  It eliminates 88% of all modes below 2 GeV from
+the charged spectrum in a single step.
+
+The electron (1, 2) has n₁ = 1, so it carries charge −1.
+A mode like (0, 2) would have the same mass contribution
+from n₂ but zero charge — it is electrically invisible.  A
+mode like (2, 1) has |n₁| = 2, so its charge integral cancels
+despite having nonzero winding.
+
+### Spin from n₁
+
+Spin also comes from n₁:
+
+- **Odd n₁** → fermion (spin ½).  The wave function picks up
+  a sign flip after one full trip around the dimension — it
+  takes *two* complete circuits to return to its starting
+  value.  This half-integer topology is the origin of spin ½.
+- **Even n₁** (including zero) → boson (spin 0 or 1).  The
+  wave function returns to itself after one circuit.
+
+The electron's n₁ = 1 (odd) makes it a fermion.  A mode
+with n₁ = 2 would be a boson.
+
+### A mode catalog for one sheet
+
+Here are the lowest-energy modes on the electron sheet, with
+their properties:
+
+| Mode (n₁, n₂) | Charge | Spin | Mass (relative) | Identity |
+|----------------|--------|------|-----------------|----------|
+| (1, 1)  | −1 | 1 (vector) | ~0.5× m_e | **Ghost** — no known particle |
+| (1, 2)  | −1 | ½ | m_e (by definition) | **Electron** |
+| (0, 1)  | 0 | 0 (scalar) | ~0.4× m_e | Neutral, invisible |
+| (0, 2)  | 0 | 0 (scalar) | ~m_e | Neutral, invisible |
+| (1, 3)  | −1 | ½ | ~1.5× m_e | Candidate for heavier lepton |
+| (2, 1)  | 0 | 0 (scalar) | ~1.1× m_e | Charge integral cancels |
+
+The (1, 1) mode — lighter than the electron, charged, but
+with spin 1 instead of spin ½ — is the most stubborn "ghost
+mode."  No such particle has ever been observed.  It survived
+five independent attempts to eliminate it, and its eventual
+reinterpretation as dark matter is one of the key developments
+in the MaSt program.
+
+### Three sheets, six quantum numbers
+
+MaSt has three material sheets — electron, neutrino, and
+proton — each with two dimensions.  A mode on the full
+six-dimensional material space is labeled by six integers:
+
+    (n₁, n₂, n₃, n₄, n₅, n₆)
+
+where (n₁, n₂) are windings on the electron sheet, (n₃, n₄)
+on the neutrino sheet, and (n₅, n₆) on the proton sheet.
+
+**Charge** across sheets:
+
+    Q = −n₁ + n₅
+
+The electron sheet's n₁ contributes negative charge; the
+proton sheet's n₅ contributes positive charge.  The neutrino
+sheet contributes nothing to charge.  Some examples:
+
+| Mode | Q | Particle |
+|------|---|----------|
+| (1, 2, 0, 0, 0, 0) | −1 | Electron |
+| (0, 0, 0, 0, 1, 2) | +1 | Proton |
+| (1, 2, 0, 0, 1, 2) | 0 | Neutron |
+| (0, 0, 1, 1, 0, 0) | 0 | Neutrino |
+
+The neutron is a **cross-plane mode** — it has nonzero
+windings on both the electron and proton sheets
+simultaneously.  Its charge is −1 + 1 = 0.  Cross-plane
+modes exist only when the sheets are geometrically coupled
+through a parameter called the cross-shear (σ_ep).
+
+**Spin** across sheets follows the same rule: each odd n₁,
+n₃, or n₅ contributes one unit of spin ½.  The electron has
+one odd winding (n₁ = 1), giving spin ½.  The neutron has
+two (n₁ = 1 and n₅ = 1), which combine to give spin ½ or 0.
+
+**Mass** is computed from the full 6D wave equation, using
+all six winding numbers plus the geometry (circumferences,
+shears, and cross-shears) of the three sheets.
+
+### The particle zoo from geometry
+
+The remarkable feature of this scheme is that every known
+particle can be assigned a specific six-number mode, and
+its mass computed from the geometry — with no new parameters
+beyond those already fixed by the electron, proton, neutron,
+and muon.  Predicted masses for kaons, eta mesons, and
+hyperons match observation to better than 2%.
+
+The same geometry also predicts modes with no known particle
+counterpart — the ghost modes.  Below 2 GeV, there are
+roughly 900 of them, outnumbering known particles ~20 to 1.
+Whether these are artifacts to be eliminated or dark matter
+to be discovered is one of the central open questions of the
+framework — and the subject of a companion paper.
+
+---
+
 ## Summary
 
 | Concept | Mechanism |
 |---------|-----------|
 | Charge | Total E flux from compact surface (Gauss's law) |
-| Mass | Resonance condition: path length = λ_C |
-| Spin ½ | (1,2) topology: double loop → half-integer angular momentum |
+| Mass | Resonance condition: eigenvalue of wave equation on compact geometry |
+| Spin ½ | Odd winding on charge-determining dimension → half-integer topology |
 | Magnetic moment | B tangent to compact surface → net axial dipole |
 | g ≈ 2.0023 | Fraction of energy in external (non-rotating) field |
+| Shear → α | Lattice skew of material sheet controls charge magnitude; sin²(2πs) symmetry breaking |
+| Quantum numbers | Six integers (n₁–n₆) specify any mode; charge, spin, mass all follow from geometry |
 
-All five properties arise from a single photon on a compact
-(1,2) topology.  No fundamental charge.  No point particle.
-Just energy, topology, and geometry.
+All properties arise from electromagnetic energy on a compact
+topology.  No fundamental charge.  No point particle.  Just
+energy, topology, and geometry — extended across three
+material sheets with six compact dimensions.
 
 ---
 
@@ -367,3 +645,7 @@ Just energy, topology, and geometry.
   [`studies/R6-field-profile/findings.md`](../studies/R6-field-profile/findings.md)
 - S2 findings (charge from geometry):
   [`studies/S2-toroid-geometry/findings.md`](../studies/S2-toroid-geometry/findings.md)
+- R19 findings (shear-induced charge):
+  [`studies/R19-shear-charge/findings.md`](../studies/R19-shear-charge/findings.md)
+- Taxonomy (quantum numbers, modes, parameters):
+  [`studies/Taxonomy.md`](../studies/Taxonomy.md)
