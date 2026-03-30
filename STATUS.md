@@ -138,19 +138,24 @@ The shear is currently reverse-engineered from α, not
 independently determined.  This is the single most important
 open problem.
 
-### Ghost modes (Q77, Q86, Q93)
+### Ghost modes → dark matter (R42, Q94)
 
 The Ma spectrum below 2 GeV contains ~900 modes at physical
 charges versus ~40 observed particles.  Selection rules
 (|n₁| = 1, spin-statistics) kill most, but ~4 per charged sheet
-survive as unexplained — most critically the (1,1) boson at half
-the electron mass.  The dynamic model's low-pass filter eliminates
-92% of modes but does not suppress the (1,1) ghost (FF = 0.46).
+survive — most critically the (1,1) boson at half the electron
+mass.
 
-Possible resolutions include relativistic effects (geometric
-holonomy, coupling asymmetry to S, 10D polarization structure)
-and reinterpretation as dark matter via the Compton window
-hypothesis (see Q94).  Ghost modes may be a feature, not a bug.
+R42 established that ghost modes are plausible dark matter
+candidates: exact charge symmetry ensures bulk neutrality,
+the Compton window hypothesis (Q94) explains why they don't
+couple to light, and the mass ratio brackets the observed
+5.4 (range 2.4–12.4, realistic filters give 4.4–4.8).
+
+What remains: the Compton window quality factor Q has not been
+computed from first principles.  Three candidate mechanisms
+are identified (impedance mismatch, multipole suppression,
+evanescent cutoff) but the projection integral is unevaluated.
 
 ### What selects r_e? (Q34)
 
@@ -161,13 +166,16 @@ gives r ≈ 0.5 (R37 F7) — far from the phenomenological range
 vacuum energy of Ma as a function of shape), which is not yet
 computable.
 
-### Nuclear binding mechanism (R29, R39)
+### Nuclear binding / strong force (R29, R39, Q95)
 
-Nuclear binding cannot arise from electromagnetic interactions
-alone.  Direct Ma mode search shows nuclei ARE modes (scaling
-law works), but the physical mechanism that makes a nucleus more
-stable than separated nucleons is not yet identified.  A gauge
-boson mediating Ma-S coupling is one candidate (R29 F6).
+Q95 proposes a plausible mechanism: the strong force is the full
+internal EM interaction between Ma tori when they overlap at
+r ~ λ_C, unattenuated by the Compton window.  This gives
+coupling ~ 1 (vs α ≈ 1/137 externally), short range (~fm),
+attraction for aligned dipoles, spin dependence, and a hard
+core — all qualitative features of the nuclear force.  The
+mechanism is identified but the quantitative nuclear potential
+has not been derived from first principles.
 
 ### Neutrino spin (R25)
 
@@ -188,15 +196,18 @@ A genuine derivation of G from Ma geometry has not been achieved.
 
 ## Possible future investigations
 
-| Area | Key question | Reference |
-|------|-------------|-----------|
-| Geometric phase / holonomy | Does parallel transport on the embedded torus forbid ghost modes? | Q93 Path 1 |
-| **Dark matter from ghost modes** | **Charge cancellation + Compton window → mass ratio 5.4?** | **R42**, Q94 |
-| Coupling to S | Do ghost modes project weakly into 3D space? (quantifies Q94) | Q93 Path 2 |
-| One-loop self-energy | Do KK mass corrections improve the 1–6% structural errors? | Q93 Path 3 |
-| 10D polarization | Does the 8→2+6 polarization split provide new selection rules? | Q93 Path 5 |
-| Moduli potential | What vacuum energy functional selects the Ma shape (r_e, r_ν)? | Q34, R37 |
-| Strong force from internal EM | Is α_s ≈ 1 the full internal field, with α ≈ 1/137 the Compton-window projection? | Q95 |
-| Fusion as mode transition | Is fusion a geometry change on Ma rather than a particle collision? | Q89 |
-| Biological coupling | Can the neutrino sheet serve as an information substrate? | Q78–Q83 |
-| α from first principles | Can dispersive or geometric arguments derive s ≈ 0.01? | Q18, R34 |
+| Area | Key question | Status | Reference |
+|------|-------------|--------|-----------|
+| Geometric phase / holonomy | Does parallel transport on the embedded torus forbid ghost modes? | Open | Q93 Path 1 |
+| Dark matter from ghost modes | Charge cancellation + Compton window → mass ratio 5.4? | **Plausible** — ratio brackets 5.4, mechanism identified | R42, Q94 |
+| Compton window Q factor | Compute the projection integral for the first ~20 modes | Open — needed to close R42 | Q94 |
+| Strong force from internal EM | Is α_s ≈ 1 the full internal field, with α the Compton-window projection? | **Plausible** — qualitative features match | Q95 |
+| Matter–antimatter asymmetry | Does shear chirality provide the CP violation for baryogenesis? | **Plausible** — all Sakharov conditions met geometrically | Q97, Q32 |
+| Force carriers in MaSt | Are W/Z/gluon fundamental or collective Ma excitations? | Open — hypothesis framed | Q96 |
+| Fusion as mode transition | Is fusion a geometry change on Ma rather than a particle collision? | **Plausible** — interactive model built; re-derives solar T | Q89, Q95, viz/fusion |
+| Coupling to S | Do ghost modes project weakly into 3D space? (quantifies Q94) | Open | Q93 Path 2 |
+| One-loop self-energy | Do KK mass corrections improve the 1–6% structural errors? | Open | Q93 Path 3 |
+| 10D polarization | Does the 8→2+6 polarization split provide new selection rules? | Open | Q93 Path 5 |
+| Moduli potential | What vacuum energy functional selects the Ma shape (r_e, r_ν)? | Open | Q34, R37 |
+| Biological coupling | Can the neutrino sheet serve as an information substrate? | Open | Q78–Q83 |
+| α from first principles | Can dispersive or geometric arguments derive s ≈ 0.01? | Open | Q18, R34 |

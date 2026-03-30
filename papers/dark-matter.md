@@ -146,3 +146,24 @@ This is exactly what Reiter's threshold theory requires: a mechanism for sub-thr
 If this connection holds, ghost modes do three jobs simultaneously, with zero new parameters: they explain what dark matter is, they resolve the ghost problem that once threatened the model, and they provide the physical mechanism for threshold-driven pair production.
 
 Three problems.  One geometric answer.
+
+
+## Why there is more matter than antimatter
+
+The same geometry that produces dark matter also addresses the oldest puzzle in cosmology: why is there anything at all?
+
+The universe appears to contain far more matter than antimatter.  The Standard Model has no adequate explanation.  Its CP violation — the asymmetry between matter and antimatter processes — comes from a single phase in the quark mixing matrix.  It is measurable, but roughly ten billion times too small to account for the observed excess.
+
+MaSt provides a different source.  The material sheets have a definite shear — a geometric tilt of the lattice that breaks the symmetry between left-wound and right-wound modes.  This is not a fitted parameter; it is the same shear that produces electric charge in the first place.  Without it, there would be no charged particles at all.
+
+The shear has a direction.  The physics of +s and −s are identical — a universe sheared the other way would work exactly the same, with the labels "matter" and "antimatter" swapped.  Neither direction is preferred.  But once chosen, the chirality is frozen into the geometry.
+
+CPT symmetry — the combined operation of flipping charge, reflecting space, and reversing time — is exact.  Every particle and its antiparticle have precisely the same mass.  In thermal equilibrium, their populations are equal.  Shear creates no thermodynamic bias.
+
+But it does create a kinetic bias.  On a chiral sheet, the topological path from free photons to a wound mode is not mirror-symmetric.  The rate of creating matter differs from the rate of creating antimatter — not because one is energetically cheaper, but because the geometric transition is easier in one direction than the other.
+
+This is CP violation from geometry.  Combined with the framework's natural baryon number non-conservation (total winding number, i.e. electric charge, is the only topological invariant — not baryon or lepton number) and the standard cosmological departure from equilibrium, all three Sakharov conditions for baryogenesis are met.
+
+The Standard Model needs new physics to explain the matter excess.  MaSt needs only a sheared sheet — which it already has, for other reasons.
+
+Four problems.  One geometric answer.

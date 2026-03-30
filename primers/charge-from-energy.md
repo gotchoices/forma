@@ -611,8 +611,11 @@ hyperons match observation to better than 2%.
 The same geometry also predicts modes with no known particle
 counterpart — the ghost modes.  Below 2 GeV, there are
 roughly 900 of them, outnumbering known particles ~20 to 1.
-Whether these are artifacts to be eliminated or dark matter
-to be discovered is one of the central open questions of the
+These modes carry mass but couple weakly to light (suppressed
+by the Compton window, Q94), and their charges cancel exactly
+in any thermal population (R42).  Their predicted mass ratio
+brackets the observed dark-to-visible ratio of 5.4.  Ghost
+modes are now a leading candidate for dark matter within the
 framework — and the subject of a companion paper.
 
 ---

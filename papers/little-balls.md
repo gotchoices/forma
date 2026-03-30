@@ -131,11 +131,17 @@ What if matter is not made of smaller and smaller balls, but of light itself —
 
 If this is true, then everything reduces to two things: **light** — energy, the raw material — and **geometry** — the shape, the structure, the design of the dimensions that give energy its form.
 
-The framework that emerges — called MaSt, for Material-Space-Time — has ten dimensions.  Remarkably, string theory arrived at the same number from a completely different direction.  Within these dimensions, particle masses emerge from the geometry — most of the structure is computable, not assumed.
+The framework that emerges — called MaSt, for Material-Space-Time — has ten dimensions.  Remarkably, string theory arrived at the same number from a completely different direction.  But where string theory remains largely mathematical, MaSt is concrete.  Each particle is a specific vibration — a standing wave on a tiny, closed surface — like a note on a guitar string whose length and shape determine its pitch.  The electron is the simplest note.  The proton is a deeper one, on a smaller surface.  The neutrino hums on a third.
 
-But α — the mystery Feynman despaired of — has still not yielded.  The geometry needs it but cannot derive it.  And the Omega baryon, the last entry in the particle catalog, is the one particle the geometry has not yet been able to accommodate.
+And it works.  From just four measured inputs and two fitted particles, the geometry predicts the masses of a half-dozen more — kaons, eta mesons, hyperons — to better than two percent.  The neutron was not assumed; it emerged as a mode nobody was looking for, spanning two sheets at once, with exactly zero charge.  Nuclei from deuterium to iron follow a single scaling law.  The neutrino mass ratio comes out of integer winding numbers on the third sheet.  Spin, charge, magnetic moment — all computed from the shape of the surface, not put in by hand.
 
-So this new framework explains a great deal.  But so far, not Alpha and Omega.
+But alas, the geometry predicted _too many_ particles.  Twenty times more than nature seemed to have.  Initially this was the model's deepest weakness.  Then the question flipped: what if the extra vibrations are real, but invisible?  What if they are dark matter?  The excess modes carry mass but couple weakly to light — exactly what dark matter does.  Their charges cancel exactly in any thermal population, making them electrically invisible.  Their predicted mass ratio brackets what astronomers observe.  The model's greatest flaw may have been its greatest prediction.
+
+The force that holds nuclei together — the strong force, a hundred times stronger than electromagnetism, with a range of a single femtometer — may not be a separate force at all.  When two vibrations on the material surface overlap, their full electromagnetic fields interact directly, without the geometric attenuation that weakens the force at longer range.  What we call "strong" may simply be "electromagnetic, up close."
+
+And the deepest cosmological puzzle — why is there matter at all, instead of equal parts matter and antimatter? — may have a geometric answer too.  The material surfaces have a handedness, a slight tilt built into their lattice.  This tilt is what produces electric charge in the first place.  It also seems to break the symmetry between matter and antimatter creation — not by making one cheaper, but by making one geometrically easier to form.  The Standard Model's explanation for this asymmetry falls short by a factor of ten billion.  In MaSt, it is a property of the shape itself.
+
+But α, Alpha — the mystery Feynman despaired of — has still not yielded.  The geometry needs it but cannot derive it.  And the Omega baryon, the last entry in the particle catalog, the model does not directly predict.
 
 
 ## Looking inward, one more time

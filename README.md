@@ -15,17 +15,21 @@ rather than bound collections of particles, and a
 neutrino mass-squared ratio that matches experiment from
 integer mode numbers alone.
 
-Because I am not in expert in theoretical physics, I have
-had to be more of a strategist and project manager.  The research, computational modeling,
+Because I lack deep experience in theoretical physics, I have
+served as more of the chief strategist over the project.
+When a theory don't pan out, I present the next round of theories for testing.
+The research, computational modeling,
 mathematical derivations, and literature comparisons have
-been performed with a lot of help from AI (Claude).  Every
-numerical result is produced by scripts in this repository
-that can be inspected and re-run.
+been performed with a lot of help from AI (Claude).
+It has been my job to keep the agents focused and honest but there 
+has admittedly been a certain amount of slop generated.
+Every numerical result is produced by scripts in this repository
+that can be inspected and re-run.  That's what I hope the reader will do.
 
 I do not claim that this model is correct.  It may turn out
-to be a mathematical coincidence, an elaborate numerology,
-or a useful approximation to something deeper.  What I do
-claim is that it is *interesting*: a model with four
+to be a mathematical coincidence, a tautology, an elaborate numerology,
+or, hopefully, a useful approximation to something deeper.
+What I do claim is that it is *interesting*: a model with four
 experimental inputs and two fit particles that then
 produces percent-level mass predictions for a half-dozen
 additional hadrons is, at minimum, worth understanding why
@@ -34,8 +38,9 @@ precisely where and why it fails.
 
 The project is conducted in the open.  The studies, scripts,
 findings, and failures are all here.  Readers with relevant
-expertise are welcome to examine, challenge, or extend the
-work.
+expertise are welcome to examine, challenge, or extend the work.
+
+Please clone this repo and encourage 10 friends to do the same.
 
 
 ## The MaSt Continuum
@@ -179,14 +184,31 @@ spacing < 5 MeV) that matching particles to modes ceases
 to be discriminating.  Below ~2 GeV, the model is predictive.
 W/Z/Higgs match trivially at high energy — not a test.
 
+### Plausible explanations (not yet derived, but geometrically motivated)
+
+Several phenomena that the Standard Model treats as separate
+problems appear to have unified geometric explanations in MaSt.
+These are plausible — the mechanisms are identified and the
+arguments are self-consistent — but the quantitative derivations
+are incomplete.
+
+| Phenomenon | SM status | MaSt explanation | Reference |
+|------------|-----------|-----------------|-----------|
+| Dark matter | Unknown particle(s); no detection after decades of search | Ghost modes on Ma: exact charge symmetry, Compton window suppresses EM coupling, mass ratio brackets 5.4 | R42, Q94 |
+| Strong force | Separate force with fitted coupling α_s | Internal EM between overlapping Ma tori at r ~ λ_C, unattenuated by Compton window; range, strength, and attraction emerge | Q95 |
+| Matter–antimatter asymmetry | Requires CP violation beyond SM (CKM phase too small by ~10¹⁰) | Shear chirality of Ma breaks C and CP geometrically; all three Sakharov conditions met from geometry | Q97, Q32 |
+| Nuclear binding | QCD confinement (non-perturbative, lattice-computed) | Nuclei are Ma_p modes, not multi-particle bound states; binding = mode transition on Ma | R29, Q89, Q95 |
+| Force carriers (W, Z, gluon) | Fundamental gauge bosons | Possibly collective Ma excitations rather than fundamental fields; under investigation | Q96 |
+| Three generations | Unexplained; SM accommodates but does not predict | Successive harmonics on Ma_e; dynamic filter orders them (FF(e) > FF(τ) > FF(μ)) but does not predict exactly three | R41, Q86 |
+
 ### What remains open
 - **The α problem:** what determines the shear s ≈ 0.01
   of the electron sheet?  Multiple studies (R15, R19, R31,
   R32, R34) have constrained but not solved this.
-- **Ghost modes:** ~900 modes at physical charges below
-  2 GeV vs ~40 known particles.  ~10⁵ coupling suppression
-  needed.  Selection rules kill most (R33) but 4 per charged
-  sheet survive.
+- **Ghost mode suppression:** the Compton window hypothesis
+  (Q94) and dark matter reinterpretation (R42) are promising,
+  but the window quality factor Q has not been computed from
+  first principles.
 - **The hierarchy:** why is gravity 10⁴⁰× weaker than
   electromagnetism?  The membrane mechanics study (R37)
   proposes both arise from the same elastic interface.
