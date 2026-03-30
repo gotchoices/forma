@@ -1266,3 +1266,134 @@ sheet contributes to Reiter's threshold channel.  If Track 1
 succeeds in reproducing Re/Rc with a physically motivated
 pre-load distribution, the threshold/storage hypothesis
 gains its first quantitative support from the Ma model.
+
+
+## 15. Non-modal energy and wavepacket reservoirs
+
+Section 14 concluded that the electron sheet's mode ladder
+is too sparse for quasi-continuous threshold accumulation
+(~4 surviving charged modes).  But this analysis counted
+only individual eigenmodes.  A **superposition** of modes —
+a wavepacket — can carry any total energy, even when the
+component modes are widely spaced.
+
+### Wavepackets as continuous reservoirs
+
+On a flat torus, every field configuration decomposes
+exactly into discrete eigenmodes (Fourier analysis on a
+compact space).  There is no "between the modes" energy.
+But a wavepacket — a superposition of several eigenmodes
+with definite amplitudes and phases — has a total energy
+that can take any value:
+
+    E_total = Σ |c_k|² E_k
+
+By adjusting the coefficients {c_k}, the total energy
+varies continuously even though each E_k is discrete.
+This is the same principle as a musical chord: individual
+notes are fixed frequencies, but the chord's total power
+is continuously adjustable.
+
+On the electron sheet, the surviving modes below 2m_e
+include not only charged modes ((1,1), (1,2)) but also
+uncharged modes ((0,1), (0,2), (2,1), ...) which are not
+eliminated by the charge or spin filters.  If internal
+excitations do not require valid free-particle quantum
+numbers (§14, "spin-filter question"), the accessible
+mode count is larger than 4 — potentially dozens of
+neutral modes below 2m_e.
+
+A wavepacket distributed across these modes stores
+energy in a pattern that is:
+
+- **Continuously adjustable** in total energy
+- **Invisible to external EM measurements** (the
+  off-resonance modes couple weakly through the Compton
+  window)
+- **Definite in total energy** (energy is conserved
+  across the superposition)
+
+This may rescue threshold theory on the electron sheet:
+the reservoir is not a single dark mode but a
+superposition distributed across many modes.
+
+### Sub-Compton frequencies on the sheet
+
+Can electromagnetic energy at frequencies below the
+particle's Compton frequency exist on the sheet?  Yes.
+The lowest non-zero modes on a sheet have energies
+~ℏc/L_ring (one winding around the larger dimension).
+For the electron sheet, this is well below m_e:
+
+    E(0,1) ≈ m_e / n₂_eff ≈ 0.4 × m_e
+
+These sub-Compton modes are valid standing waves.  They
+carry mass-energy but (for n₁ = 0) no charge.  Energy
+deposited into them is real but electromagnetically dark.
+
+Non-resonant energy — a propagating disturbance that
+does not match any eigenmode — also decomposes into the
+mode basis, but the transient pattern on the sheet is a
+superposition that does not settle into any single mode.
+It sloshes across the surface, evolving at the beat
+frequencies between its component modes.
+
+### Preferential leakage of non-resonant energy
+
+The particle's standing wave (e.g., the electron's (1,2)
+mode) is stabilized by constructive interference: the
+field pattern reinforces itself on every traversal.
+Non-resonant energy has no such stabilization.  Its
+field components point in random directions relative to
+the sheet's geometry.
+
+The shear of the material sheet defines a preferred
+coupling direction between the compact geometry and 3D
+space (§10 of the charge primer).  A standing wave mode
+whose field pattern is aligned with the shear produces
+stable charge (the particle).  Non-resonant energy, with
+randomly oriented field components, will statistically
+find the leakage direction and couple out.
+
+This suggests a natural hierarchy:
+
+1. **Resonant modes** (standing waves) — stable, long-
+   lived, protected by constructive interference
+2. **Wavepacket excitations** (superpositions) — semi-
+   stable, leak slowly as component modes dephase and
+   individual components find the shear-coupling direction
+3. **Transient non-resonant energy** — unstable, leaks
+   rapidly because nothing stabilizes it
+
+If correct, this explains why particles are stable but
+excess energy dissipates: the standing wave sustains
+itself through constructive interference, while non-modal
+energy has no such protection and escapes through the
+Compton window.
+
+### Open questions
+
+1. **Leakage timescale.** How fast does a wavepacket
+   excitation on the electron sheet decay?  This depends
+   on the Compton window Q factor for each component mode
+   (not yet computed; see Q94 §3).
+
+2. **Coupling to the wavepacket.** When a photon enters
+   through the Compton window, how does it distribute
+   energy across modes?  The overlap integral between the
+   incoming photon's field pattern and each eigenmode
+   determines the decomposition.  This has not been
+   computed.
+
+3. **Capacity.** How much energy can a wavepacket
+   superposition store before the component amplitudes
+   saturate or the system becomes unstable?  The 2m
+   threshold provides a natural ceiling, but the
+   effective capacity depends on how many modes
+   participate and how they couple.
+
+4. **Connection to §14.** The mode-density argument still
+   applies: the electron sheet has fewer modes than the
+   neutrino sheet, so its wavepacket capacity is lower.
+   But it may not be zero — which changes the conclusion
+   that "the electron sheet stores almost nothing."

@@ -3,7 +3,7 @@
 **Status:** COMPLETE (Phase 2)
 **Depends on:** R17 (radiation pressure), R18 (torus stiffness),
   R19 (shear-charge / α formula), R33 (ghost modes), R37 (membrane mechanics)
-**Motivates:** Q90 (ephemeral mode decomposition / dynamic torus),
+**Motivates:** Q90 (quarks as emergent sub-modes / dynamic torus),
   Q77 (ghost selection), Q34 (α derivation), Q86 (three generations)
 
 

@@ -1,8 +1,8 @@
 # Q26: Multi-photon hadrons and knot confinement
 
-**Status:** Open — folded into R14 (draft)  
+**Status:** Superseded by [Q90](Q90-ephemeral-mode-decomposition.md) (quarks as emergent sub-modes)
 **Source:** User question, S3-knot-zoo F3  
-**Related:** [Q13](Q13-three-compact-dimensions.md), [Q32](Q32-energy-geometry-fundamentals.md), [R14](../studies/R14-universal-geometry/)
+**Related:** [Q13](Q13-three-compact-dimensions.md), [Q32](Q32-energy-geometry-fundamentals.md), [R14](../studies/R14-universal-geometry/), [Q90](Q90-ephemeral-mode-decomposition.md)
 
 **Question:** Could protons and neutrons be multi-photon states on a compact geometry,
 rather than bound states of quarks? Three photons topologically linked on compact T³ —

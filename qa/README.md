@@ -26,7 +26,7 @@ For questions that need a computational model, see [`studies/`](../studies/).
 | [Q13](Q13-three-compact-dimensions.md) | Are three compact dimensions required? | Answered (R14 Track 0) |
 | [Q18](Q18-deriving-alpha.md) | Can α be derived from geometry? What selects q? | Open — active front |
 | [Q22](Q22-path-closure.md) | Does exact path closure matter for electron properties? | Largely answered |
-| [Q26](Q26-hadrons-photon-knots.md) | Multi-photon hadrons and knot confinement | Open → R14 |
+| [Q26](Q26-hadrons-photon-knots.md) | Multi-photon hadrons and knot confinement | Superseded → Q90 |
 | [Q27](Q27-foundational-axioms.md) | What are the foundational axioms of the model? | Open — framing |
 | [Q28](Q28-photon-absorption.md) | What does photon absorption mean in this model? | Open — needs computation |
 | [Q29](Q29-variational-principle-alpha.md) | Can a variational principle select α? | Open — partially addressed |
@@ -60,7 +60,7 @@ For questions that need a computational model, see [`studies/`](../studies/).
 | [Q88](Q88-phase-dependent-nuclear-force.md) | Does mode phase determine near-field interactions? Nuclear binding and cold fusion implications | Partially falsified by R39; superseded by Q89 |
 | [Q89](Q89-fusion-as-mode-transition.md) | Is fusion a mode transition on Ma rather than a particle collision? | Open — reframes fusion; testable via neutron lifetime |
 
-| [Q90](Q90-ephemeral-mode-decomposition.md) | Can a mode temporarily decompose into quark-like sub-modes? | Open — speculative |
+| [Q90](Q90-ephemeral-mode-decomposition.md) | Quarks as emergent sub-modes on the material sheet | Open — hypothesis (quantifiable) |
 | [Q91](Q91-compact-volume.md) | Can the compact volume V_compact be derived independently? | Open |
 | [Q92](Q92-neutrino-sheet-as-bath.md) | Does the neutrino sheet act as a dissipative bath for low-energy excitations? | Open — testable |
 | [Q93](Q93-relativistic-effects-and-ghosts.md) | Unexplored relativistic effects — ghost suppression and accuracy | Open |
