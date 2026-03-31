@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="totu-viz.css">
 <style>
 #modes-panel {
-  position: absolute; top: 0; right: 0; width: 280px; height: 100%;
+  position: absolute; top: 0; right: 0; width: 290px; height: 100%;
   background: rgba(14,14,18,0.92); border-left: 1px solid var(--border);
   overflow-y: auto; z-index: 10; font-size: 11px;
   backdrop-filter: blur(8px);
@@ -17,26 +17,26 @@
 .mp-head { padding: 8px 12px; display: flex; align-items: center; gap: 6px;
   border-bottom: 1px solid var(--border); }
 .mp-head h2 { font-size: 12px; margin: 0; flex: 1; }
-.mode-slot {
-  border-bottom: 1px solid var(--border); padding: 6px 12px;
-}
+.mode-slot { border-bottom: 1px solid var(--border); padding: 6px 12px; }
 .mode-slot .ms-top { display: flex; align-items: center; gap: 6px; margin-bottom: 4px; }
-.mode-slot .ms-top .ms-color {
+.mode-slot .ms-color {
   -webkit-appearance: none; border: none; width: 18px; height: 18px;
   border-radius: 3px; cursor: pointer; padding: 0; background: none;
 }
-.mode-slot .ms-top .ms-color::-webkit-color-swatch-wrapper { padding: 0; }
-.mode-slot .ms-top .ms-color::-webkit-color-swatch { border: none; border-radius: 2px; }
+.mode-slot .ms-color::-webkit-color-swatch-wrapper { padding: 0; }
+.mode-slot .ms-color::-webkit-color-swatch { border: none; border-radius: 2px; }
 .mode-slot .ms-row { display: flex; align-items: center; gap: 6px; margin: 2px 0; }
-.mode-slot .ms-lbl { color: #888; min-width: 18px; }
+.mode-slot .ms-lbl { color: #888; min-width: 18px; font-size: 10px; }
 .mode-slot input[type=number] {
-  width: 42px; background: var(--surface); border: 1px solid var(--border);
-  color: var(--fg); border-radius: 3px; padding: 1px 4px; font-size: 11px;
+  width: 42px; background: #111; border: 1px solid var(--border);
+  color: var(--text); border-radius: 3px; padding: 1px 4px; font-size: 11px;
 }
-.mode-slot .ms-info { color: #666; font-size: 10px; margin-top: 2px; }
+.mode-slot .ms-info { color: #555; font-size: 10px; margin-top: 3px; font-family: monospace; }
 .preset-row { padding: 6px 12px; border-bottom: 1px solid var(--border); }
-.preset-row select { font-size: 10px; background: var(--surface); color: var(--fg);
-  border: 1px solid var(--border); border-radius: 3px; padding: 2px 4px; }
+.preset-row select {
+  font-size: 10px; background: #111; color: var(--text);
+  border: 1px solid var(--border); border-radius: 3px; padding: 2px 4px;
+}
 </style>
 </head>
 <body>
@@ -44,29 +44,42 @@
 <div class="top-bar">
   <h1>Torus Modes</h1><div class="sep"></div>
   <div class="cg">
-    <label>ε (a/R)</label>
-    <input type="range" id="sl-eps" min="0.01" max="0.95" step="0.01" value="0.30">
-    <span class="val" id="v-eps">0.30</span>
+    <label>a/R</label>
+    <input type="range" id="sl-eps" min="0" max="1" step="0.001" value="0.5">
+    <span class="val" id="v-eps">6.60</span>
   </div>
-  <div class="cg">
-    <label>shear s</label>
-    <input type="range" id="sl-s" min="0" max="0.5" step="0.001" value="0.165">
-    <span class="val" id="v-s">0.165</span>
-  </div><div class="sep"></div>
-  <div class="cg">
-    <label>shell α</label>
-    <input type="range" id="sl-shell" min="0" max="1" step="0.02" value="0.12">
-    <span class="val" id="v-shell">0.12</span>
+  <div class="cg" style="gap:3px">
+    <button class="btn" data-ar="0.50">Ring</button>
+    <button class="btn" data-ar="1.00">Horn</button>
+    <button class="btn" data-ar="5.28">Horizon</button>
+    <button class="btn" data-ar="6.60">q=e</button>
+    <button class="btn" data-ar="7.26">WvM</button>
   </div>
+  <div class="sep"></div>
+  <div class="cg">
+    <label>shear</label>
+    <input type="range" id="sl-s" min="0" max="0.5" step="0.001" value="0.157">
+    <span class="val" id="v-s">0.157</span>
+  </div>
+  <div class="cg" style="gap:3px">
+    <button class="btn" data-sh="0">0</button>
+    <button class="btn" data-sh="0.157">α</button>
+    <button class="btn" data-sh="0.25">¼</button>
+    <button class="btn" data-sh="0.5">½</button>
+  </div>
+  <div class="sep"></div>
+  <div class="cg">
+    <label>opacity</label>
+    <input type="range" id="sl-shell" min="0" max="1" step="0.02" value="0.5">
+    <span class="val" id="v-shell">0.50</span>
+  </div>
+  <div class="cg tog"><label><input type="checkbox" id="cb-geo" checked> geodesics</label></div>
   <div class="cg tog"><label><input type="checkbox" id="cb-wire"> wire</label></div>
-  <div class="cg tog"><label>grid</label>
-    <button class="btn" id="btn-grid" style="font-size:10px;min-width:40px">3D</button>
-  </div>
   <div class="sep"></div>
   <button class="btn" id="btn-reset">Reset</button>
 </div>
 
-<div class="view-full" id="view" style="margin-right:280px">
+<div class="view-full" id="view" style="margin-right:290px">
   <div class="info-line" id="info"></div>
 </div>
 
@@ -75,9 +88,10 @@
     <select id="sel-preset">
       <option value="">— presets —</option>
       <option value="electron">Electron (1,2)</option>
+      <option value="ghost">Ghost (1,1)</option>
       <option value="r21trio">R21 trio</option>
       <option value="harmonics">Harmonics 1–3</option>
-      <option value="lighter">R20 lighter charged</option>
+      <option value="chargefamily">Charge family</option>
     </select>
   </div>
   <div class="mp-head">
@@ -94,60 +108,50 @@
 }}
 </script>
 <script type="module">
-import { THREE, createScene, autoResize, animLoop, buildTorusGeom, torusMaterials } from './totu-viz.js';
+import { THREE, createScene, autoResize, animLoop } from './totu-viz.js';
 
 const $ = id => document.getElementById(id);
 const TAU = 2 * Math.PI;
 
+/* ── Non-linear a/R slider (same mapping as torus-studio) ──
+   Lower half [0, 0.5] → a/R [0.01, 1]   (ring / horn range)
+   Upper half [0.5, 1] → a/R [1,   10]   (spindle / WvM range)
+   Horn (a/R = 1) falls exactly at slider = 0.5.            */
+function sliderToAR(v) {
+  return v <= 0.5 ? 0.01 + (v / 0.5) * 0.99 : 1 + ((v - 0.5) / 0.5) * 9;
+}
+function arToSlider(r) {
+  return r <= 1 ? ((r - 0.01) / 0.99) * 0.5 : 0.5 + ((r - 1) / 9) * 0.5;
+}
+
 /* ── State ─────────────────────────────────────────── */
 
-const KEY = 'torus-modes';
+const KEY = 'torus-modes-v2';
 const MODE_COLORS = ['#ff6e40','#4fc3f7','#66bb6a','#ab47bc','#fdd835','#e05050','#26c6da','#ff7043'];
 const DEFAULTS = {
-  eps: 0.30, shear: 0.165, shellAlpha: 0.12, wire: false,
-  gridMode: 'arc',
-  modes: [{ n1: 1, n2: 2, parity: 'even', color: '#ff6e40', brightness: 0.8, visible: true }],
+  eps: 0.50, shear: 0.157, shellAlpha: 0.5, wire: false, geodesics: true,
+  modes: [{ n1: 1, n2: 2, parity: 'even', color: '#ff6e40',
+            brightness: 0.8, visible: true, showGeodesic: true }],
 };
 
 function load() {
   try {
     const r = localStorage.getItem(KEY);
-    if (r) {
-      const parsed = JSON.parse(r);
-      if (!parsed.gridMode) parsed.gridMode = 'arc';
-      return parsed;
-    }
+    if (r) return JSON.parse(r);
   } catch {}
   return structuredClone(DEFAULTS);
 }
 let S = load();
 function save() { localStorage.setItem(KEY, JSON.stringify(S)); }
 
-/* ── Eigensolver ───────────────────────────────────── */
+/* ── Eigensolver (unchanged) ───────────────────────── */
 
 const NFOURIER = 16;
 
-/**
- * Solve the poloidal Sturm-Liouville equation in a Fourier basis.
- * Returns { eigenvalues: Float64Array, eigenvectors: Float64Array[] }
- * sorted ascending by eigenvalue.
- *
- * parity = 'even': basis cos(0θ), cos(1θ), ..., cos(Nθ)  (N+1 functions)
- * parity = 'odd':  basis sin(1θ), sin(2θ), ..., sin(Nθ)  (N functions)
- */
 function solveEigenmodes(eps, qeff, parity) {
   const N = NFOURIER;
   const isEven = parity === 'even';
   const dim = isEven ? N + 1 : N;
-
-  /* Build matrix H where H v = λ v.
-   *
-   * The SL equation in standard form:
-   *   -d/dθ[(1+ε cosθ) df/dθ] + ε²q²/(1+ε cosθ) f = λ (1+ε cosθ) f
-   *
-   * Multiply through by 1/(1+ε cosθ) and rearrange:
-   * We work with the weak form ⟨φ_i, operator, φ_j⟩ using numerical quadrature.
-   */
   const NQ = 512;
   const dth = TAU / NQ;
   const H = new Float64Array(dim * dim);
@@ -159,7 +163,6 @@ function solveEigenmodes(eps, qeff, parity) {
     const p = 1 + eps * ct;
     const pot = eps * eps * qeff * qeff / p;
     const w = p;
-
     const phi = new Float64Array(dim);
     const dphi = new Float64Array(dim);
     if (isEven) {
@@ -173,24 +176,16 @@ function solveEigenmodes(eps, qeff, parity) {
         dphi[n] = (n + 1) * Math.cos((n + 1) * th);
       }
     }
-
     for (let i = 0; i < dim; i++) {
       for (let j = i; j < dim; j++) {
         const hij = (p * dphi[i] * dphi[j] + pot * phi[i] * phi[j]) * dth;
         const mij = (w * phi[i] * phi[j]) * dth;
-        H[i * dim + j] += hij;
-        M[i * dim + j] += mij;
-        if (j !== i) {
-          H[j * dim + i] += hij;
-          M[j * dim + i] += mij;
-        }
+        H[i * dim + j] += hij; M[i * dim + j] += mij;
+        if (j !== i) { H[j * dim + i] += hij; M[j * dim + i] += mij; }
       }
     }
   }
 
-  /* Solve generalized eigenproblem H v = λ M v via Cholesky: M = L Lᵀ,
-   * then solve L⁻¹ H L⁻ᵀ u = λ u, v = L⁻ᵀ u.
-   * Since M is SPD (weight function > 0), Cholesky is safe. */
   const L = new Float64Array(dim * dim);
   for (let i = 0; i < dim; i++) {
     for (let j = 0; j <= i; j++) {
@@ -199,8 +194,6 @@ function solveEigenmodes(eps, qeff, parity) {
       L[i * dim + j] = i === j ? Math.sqrt(Math.max(sum, 1e-30)) : sum / L[j * dim + j];
     }
   }
-
-  /* A = L⁻¹ H L⁻ᵀ */
   const Linv = new Float64Array(dim * dim);
   for (let i = 0; i < dim; i++) {
     Linv[i * dim + i] = 1 / L[i * dim + i];
@@ -210,7 +203,6 @@ function solveEigenmodes(eps, qeff, parity) {
       Linv[j * dim + i] = sum / L[j * dim + j];
     }
   }
-
   const A = new Float64Array(dim * dim);
   const tmp = new Float64Array(dim * dim);
   for (let i = 0; i < dim; i++)
@@ -226,18 +218,16 @@ function solveEigenmodes(eps, qeff, parity) {
       A[i * dim + j] = s;
     }
 
-  /* Jacobi eigenvalue algorithm */
   const V = new Float64Array(dim * dim);
   for (let i = 0; i < dim; i++) V[i * dim + i] = 1;
   const evals = new Float64Array(dim);
   for (let i = 0; i < dim; i++) evals[i] = A[i * dim + i];
 
   for (let iter = 0; iter < 200; iter++) {
-    let offDiag = 0;
+    let off = 0;
     for (let i = 0; i < dim; i++)
-      for (let j = i + 1; j < dim; j++) offDiag += A[i * dim + j] ** 2;
-    if (offDiag < 1e-24) break;
-
+      for (let j = i + 1; j < dim; j++) off += A[i * dim + j] ** 2;
+    if (off < 1e-24) break;
     for (let i = 0; i < dim; i++)
       for (let j = i + 1; j < dim; j++) {
         const aij = A[i * dim + j];
@@ -247,11 +237,9 @@ function solveEigenmodes(eps, qeff, parity) {
         if (Math.abs(diff) < 1e-30) t = 1;
         else { const tau = diff / (2 * aij); t = Math.sign(tau) / (Math.abs(tau) + Math.sqrt(1 + tau * tau)); }
         const c = 1 / Math.sqrt(1 + t * t), s2 = t * c;
-
         evals[i] -= t * aij; evals[j] += t * aij;
         A[i * dim + j] = 0; A[j * dim + i] = 0;
         A[i * dim + i] = evals[i]; A[j * dim + j] = evals[j];
-
         for (let k = 0; k < dim; k++) {
           if (k === i || k === j) continue;
           const aki = A[k * dim + i], akj = A[k * dim + j];
@@ -266,11 +254,7 @@ function solveEigenmodes(eps, qeff, parity) {
       }
   }
 
-  /* Sort by eigenvalue ascending */
-  const order = Array.from({ length: dim }, (_, i) => i);
-  order.sort((a, b) => evals[a] - evals[b]);
-
-  /* Transform back: v = L⁻ᵀ u */
+  const order = Array.from({ length: dim }, (_, i) => i).sort((a, b) => evals[a] - evals[b]);
   const evecs = [];
   const sortedEvals = new Float64Array(dim);
   for (let idx = 0; idx < dim; idx++) {
@@ -286,14 +270,11 @@ function solveEigenmodes(eps, qeff, parity) {
     }
     evecs.push(v);
   }
-
   return { eigenvalues: sortedEvals, eigenvectors: evecs };
 }
 
-/**
- * Evaluate eigenfunction f(θ₁) from Fourier coefficients.
- * Returns Float64Array of |f(θ₁)|² on nSamples grid.
- */
+const DENSITY_SAMPLES = 256;
+
 function evalDensity(coeffs, parity, nSamples) {
   const isEven = parity === 'even';
   const out = new Float64Array(nSamples);
@@ -309,225 +290,253 @@ function evalDensity(coeffs, parity, nSamples) {
     }
     out[i] = f * f;
   }
-  /* Normalize so max = 1 */
   let mx = 0;
   for (let i = 0; i < nSamples; i++) if (out[i] > mx) mx = out[i];
   if (mx > 0) for (let i = 0; i < nSamples; i++) out[i] /= mx;
   return out;
 }
 
+// C = ∫ f(θ₁) cosθ₁ (1 + ε cosθ₁) dθ₁  (charge overlap integral)
+function computeChargeOverlap(coeffs, parity, eps) {
+  const NQ = 512, dth = TAU / NQ;
+  let c = 0, norm = 0;
+  for (let q = 0; q < NQ; q++) {
+    const th = (q + 0.5) * dth;
+    const ct = Math.cos(th);
+    const isEven = parity === 'even';
+    let f = 0;
+    if (isEven) {
+      for (let n = 0; n < coeffs.length; n++)
+        f += coeffs[n] * (n === 0 ? 1 : Math.cos(n * th));
+    } else {
+      for (let n = 0; n < coeffs.length; n++)
+        f += coeffs[n] * Math.sin((n + 1) * th);
+    }
+    const w = 1 + eps * ct;
+    c    += f * ct * w * dth;
+    norm += f * f * w * dth;
+  }
+  return norm > 0 ? c / Math.sqrt(norm) : 0;
+}
+
 /* ── Scene ─────────────────────────────────────────── */
 
 const { scene, camera, renderer, controls } = createScene($('view'), {
-  camPos: [3.0, 2.0, 3.5], far: 200, maxDistance: 50,
+  camPos: [3.0, 2.0, 3.5], far: 300, maxDistance: 80,
 });
 autoResize(renderer, camera, $('view'));
 
-/* Torus shell */
 const R_MAJOR = 2.0;
-let torusGeom, torusMesh, torusWire;
+
+/* ── Torus mesh with per-vertex θ₁ ──────────────────── */
+
+function buildColoredTorusGeom(R, a, segU, segV) {
+  const nv = (segU + 1) * (segV + 1);
+  const pos = new Float32Array(nv * 3);
+  const col = new Float32Array(nv * 3); // RGB, initially black
+  const theta1s = new Float32Array(nv);  // θ₁ per vertex
+  const idx = [];
+  let vi = 0, ci = 0, ti = 0;
+  for (let i = 0; i <= segU; i++) {
+    const th = (i / segU) * TAU;
+    const ct = Math.cos(th), st = Math.sin(th);
+    for (let j = 0; j <= segV; j++) {
+      const ph = (j / segV) * TAU;
+      const rr = R + a * ct;
+      pos[vi++] = rr * Math.cos(ph);
+      pos[vi++] = a * st;
+      pos[vi++] = rr * Math.sin(ph);
+      col[ci++] = 0; col[ci++] = 0; col[ci++] = 0;
+      theta1s[ti++] = th;
+    }
+  }
+  for (let i = 0; i < segU; i++)
+    for (let j = 0; j < segV; j++) {
+      const a_ = i * (segV + 1) + j, b_ = a_ + segV + 1;
+      idx.push(a_, b_, a_ + 1, b_, b_ + 1, a_ + 1);
+    }
+  const g = new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
+  g.setAttribute('color',    new THREE.Float32BufferAttribute(col, 3));
+  g.setIndex(idx);
+  g.computeVertexNormals();
+  g.userData.theta1s = theta1s;
+  return g;
+}
+
+// Base dark shell (Phong, for depth/shape)
 const shellMat = new THREE.MeshPhongMaterial({
-  color: 0x4488aa, transparent: true, opacity: S.shellAlpha,
-  side: THREE.DoubleSide, depthWrite: false, shininess: 60,
+  color: 0x0d1520, transparent: true, opacity: S.shellAlpha * 0.4,
+  side: THREE.DoubleSide, depthWrite: false, shininess: 50,
 });
+// Additive vertex-color glow layer
+const glowMat = new THREE.MeshBasicMaterial({
+  vertexColors: true, transparent: true, opacity: S.shellAlpha,
+  side: THREE.DoubleSide, depthWrite: false,
+  blending: THREE.AdditiveBlending,
+});
+// Wireframe overlay
 const wireMat = new THREE.MeshBasicMaterial({
-  color: 0x4488aa, wireframe: true, transparent: true, opacity: 0.05,
+  color: 0x334455, wireframe: true, transparent: true, opacity: 0.07,
   side: THREE.DoubleSide,
 });
 
+let torusGeom = null, shellMesh = null, glowMesh = null, wireMesh = null;
+
 function rebuildTorus() {
+  if (shellMesh) { scene.remove(shellMesh, glowMesh, wireMesh); }
+  if (torusGeom) torusGeom.dispose();
+
   const a = S.eps * R_MAJOR;
-  if (torusMesh) { scene.remove(torusMesh); torusGeom.dispose(); }
-  if (torusWire) scene.remove(torusWire);
-  torusGeom = buildTorusGeom(R_MAJOR, a, 48, 96);
-  torusMesh = new THREE.Mesh(torusGeom, shellMat);
-  torusWire = new THREE.Mesh(torusGeom, wireMat);
-  torusWire.visible = S.wire;
-  scene.add(torusMesh);
-  scene.add(torusWire);
+  const segU = 64, segV = 128;
+  torusGeom = buildColoredTorusGeom(R_MAJOR, a, segU, segV);
+
+  shellMesh = new THREE.Mesh(torusGeom, shellMat);
+  glowMesh  = new THREE.Mesh(torusGeom, glowMat);
+  wireMesh  = new THREE.Mesh(torusGeom, wireMat);
+  wireMesh.visible = S.wire;
+  scene.add(shellMesh, glowMesh, wireMesh);
+
+  // Auto-fit camera
+  const bound = R_MAJOR + a + 0.2;
+  const dist = bound * 2.5;
+  camera.position.set(dist * 0.50, dist * 0.65, dist * 0.68);
+  controls.target.set(0, 0, 0);
+  controls.update();
 }
 
-/* ── Mode cloud management ─────────────────────────── */
+/* ── Vertex color update ─────────────────────────────── */
 
-const MAX_PARTICLES = 40000;
-const GRID_TARGET   = 15000;
-const DENSITY_SAMPLES = 256;
+function updateVertexColors() {
+  if (!torusGeom) return;
+  const theta1s = torusGeom.userData.theta1s;
+  const nv = theta1s.length;
+  const colAttr = torusGeom.attributes.color;
+  const arr = colAttr.array;
 
-const modeClouds = []; // parallel to S.modes: { points, density, eigenvalue }
-
-/**
- * Generate a structured dot grid inside the torus tube.
- *
- * gridMode = 'arc':     constant arc-length spacing in θ₁ and θ₂ →
- *                        uniform 3D density (what a 3D camera sees)
- * gridMode = 'angular': constant angular spacing in θ₁ and θ₂ →
- *                        uniform coordinate density (Ma intrinsic view)
- *
- * Radial (ρ) spacing is constant in both modes.
- */
-function generateGridPositions(eps, gridMode) {
-  const a = eps * R_MAJOR;
-  const positions = new Float32Array(MAX_PARTICLES * 3);
-  const thetas    = new Float32Array(MAX_PARTICLES);
-  const radFracs  = new Float32Array(MAX_PARTICLES);
-  let count = 0;
-
-  if (a < 1e-6) return { positions, thetas, radFracs, count: 0 };
-
-  if (gridMode === 'arc') {
-    /* Derive isotropic arc spacing from target count.
-     * Total ≈ 2π²R a² / s³  (when Δρ = s), so s = (2π²Ra²/T)^(1/3). */
-    const s = Math.cbrt(2 * Math.PI * Math.PI * R_MAJOR * a * a / GRID_TARGET);
-    const nRho = Math.max(3, Math.min(12, Math.round(a / s)));
-    const dRho = a / nRho;
-
-    for (let ir = 1; ir <= nRho && count < MAX_PARTICLES; ir++) {
-      const rho = (ir - 0.5) * dRho;
-      const nTh1 = Math.max(6, Math.min(64, Math.round(TAU * rho / s)));
-      for (let it1 = 0; it1 < nTh1 && count < MAX_PARTICLES; it1++) {
-        const th1 = (it1 / nTh1) * TAU;
-        const circ = R_MAJOR + rho * Math.cos(th1);
-        const nTh2 = Math.max(6, Math.min(400, Math.round(TAU * circ / s)));
-        for (let it2 = 0; it2 < nTh2 && count < MAX_PARTICLES; it2++) {
-          const th2 = (it2 / nTh2) * TAU;
-          const rr = R_MAJOR + rho * Math.cos(th1);
-          positions[count * 3]     = rr * Math.cos(th2);
-          positions[count * 3 + 1] = rho * Math.sin(th1);
-          positions[count * 3 + 2] = rr * Math.sin(th2);
-          thetas[count]   = th1;
-          radFracs[count] = rho / a;
-          count++;
-        }
-      }
+  for (let vi = 0; vi < nv; vi++) {
+    const th1 = theta1s[vi];
+    const si = Math.floor(((th1 / TAU + 1) % 1) * DENSITY_SAMPLES) % DENSITY_SAMPLES;
+    let r = 0, g = 0, b = 0;
+    for (let mi = 0; mi < S.modes.length; mi++) {
+      const m = S.modes[mi];
+      if (!m.visible) continue;
+      const md = modeData[mi];
+      if (!md || !md.density) continue;
+      const d = md.density[si];
+      const col = md.color3;
+      r += col.r * d * m.brightness;
+      g += col.g * d * m.brightness;
+      b += col.b * d * m.brightness;
     }
-  } else {
-    /* Angular mode: constant angle spacing in both θ₁ and θ₂. */
-    const nRho = 8;
-    const nTh1 = 32;
-    const nTh2 = Math.max(6, Math.round(GRID_TARGET / (nRho * nTh1)));
-    const dRho = a / nRho;
-
-    for (let ir = 1; ir <= nRho && count < MAX_PARTICLES; ir++) {
-      const rho = (ir - 0.5) * dRho;
-      for (let it1 = 0; it1 < nTh1 && count < MAX_PARTICLES; it1++) {
-        const th1 = (it1 / nTh1) * TAU;
-        for (let it2 = 0; it2 < nTh2 && count < MAX_PARTICLES; it2++) {
-          const th2 = (it2 / nTh2) * TAU;
-          const rr = R_MAJOR + rho * Math.cos(th1);
-          positions[count * 3]     = rr * Math.cos(th2);
-          positions[count * 3 + 1] = rho * Math.sin(th1);
-          positions[count * 3 + 2] = rr * Math.sin(th2);
-          thetas[count]   = th1;
-          radFracs[count] = rho / a;
-          count++;
-        }
-      }
-    }
+    arr[vi * 3]     = Math.min(1, r);
+    arr[vi * 3 + 1] = Math.min(1, g);
+    arr[vi * 3 + 2] = Math.min(1, b);
   }
-
-  return { positions, thetas, radFracs, count };
+  colAttr.needsUpdate = true;
 }
 
-let sharedPositions = null;
-let sharedThetas    = null;
-let sharedRadFracs  = null;
-let sharedCount     = 0;
+/* ── Mode data (density + geodesic mesh) ─────────────── */
 
-function ensureParticles() {
-  const data = generateGridPositions(S.eps, S.gridMode);
-  sharedPositions = data.positions;
-  sharedThetas    = data.thetas;
-  sharedRadFracs  = data.radFracs;
-  sharedCount     = data.count;
-}
+// modeData[i] = { density, eigenvalue, chargeOverlap, color3, geodesicMesh }
+const modeData = [];
 
-function makeCloud(modeIdx) {
-  const m = S.modes[modeIdx];
-  const geometry = new THREE.BufferGeometry();
-  geometry.setAttribute('position', new THREE.Float32BufferAttribute(sharedPositions.slice(), 3));
-  const colors = new Float32Array(MAX_PARTICLES * 4);
-  geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 4));
-  geometry.setDrawRange(0, sharedCount);
+function gcd(a, b) { return b === 0 ? Math.abs(a) : gcd(b, a % b); }
 
-  const material = new THREE.PointsMaterial({
-    size: 0.035,
-    sizeAttenuation: true,
-    vertexColors: true,
-    transparent: true,
-    depthWrite: false,
-    blending: THREE.AdditiveBlending,
-  });
-
-  const points = new THREE.Points(geometry, material);
-  points.visible = m.visible;
-  scene.add(points);
-  return { points, density: null, eigenvalue: 0 };
-}
-
-function updateCloudColors(modeIdx) {
-  const cloud = modeClouds[modeIdx];
-  const m = S.modes[modeIdx];
-  if (!cloud || !cloud.density) return;
-
-  const col = new THREE.Color(m.color);
-  const colors = cloud.points.geometry.attributes.color;
-  const arr = colors.array;
-
-  for (let i = 0; i < sharedCount; i++) {
-    const th1 = sharedThetas[i];
-    const sampleIdx = Math.floor((th1 / TAU) * DENSITY_SAMPLES) % DENSITY_SAMPLES;
-    const d = cloud.density[sampleIdx];
-    const radFade = 1 - 0.5 * sharedRadFracs[i] * sharedRadFracs[i];
-    const alpha = d * m.brightness * radFade;
-
-    arr[i * 4]     = col.r;
-    arr[i * 4 + 1] = col.g;
-    arr[i * 4 + 2] = col.b;
-    arr[i * 4 + 3] = alpha;
+function buildGeodesicMesh(m) {
+  const n1 = m.n1, n2 = m.n2;
+  const a = S.eps * R_MAJOR;
+  if (a < 1e-6) return null;
+  const nSeg = Math.max(200, (Math.abs(n1) + Math.abs(n2)) * 60);
+  const pts = [];
+  for (let i = 0; i <= nSeg; i++) {
+    const t = (i / nSeg) * TAU;
+    const th1 = n1 * t, ph = n2 * t;
+    const rr = R_MAJOR + a * Math.cos(th1);
+    pts.push(new THREE.Vector3(rr * Math.cos(ph), a * Math.sin(th1), rr * Math.sin(ph)));
   }
-  colors.needsUpdate = true;
+  const curve  = new THREE.CatmullRomCurve3(pts, true);
+  const tubeR  = Math.max(0.007, Math.min(0.025, 0.012 / Math.max(1, S.eps * 0.5)));
+  const geo    = new THREE.TubeGeometry(curve, nSeg, tubeR, 6, true);
+  const mat    = new THREE.MeshBasicMaterial({ color: new THREE.Color(m.color) });
+  const mesh   = new THREE.Mesh(geo, mat);
+  mesh.visible = S.geodesics && m.showGeodesic && m.visible;
+  return mesh;
 }
 
-function computeModeDensity(modeIdx) {
-  const m = S.modes[modeIdx];
+function computeOneModeData(mi) {
+  const m = S.modes[mi];
   const qeff = m.n2 - S.shear * m.n1;
   const result = solveEigenmodes(S.eps, qeff, m.parity);
-
-  /* Pick the eigenfunction with |n₁| nodes. For the ground state (n1=0 even),
-   * it's the first (lowest λ). For n1=1 even, it's the second. etc. */
   const absN1 = Math.abs(m.n1);
-  const eigIdx = m.parity === 'even' ? absN1 : Math.max(0, absN1 - 1);
-  const clampedIdx = Math.min(eigIdx, result.eigenvectors.length - 1);
-
-  const cloud = modeClouds[modeIdx];
-  cloud.density = evalDensity(result.eigenvectors[clampedIdx], m.parity, DENSITY_SAMPLES);
-  cloud.eigenvalue = result.eigenvalues[clampedIdx];
+  const eigIdx = Math.min(
+    m.parity === 'even' ? absN1 : Math.max(0, absN1 - 1),
+    result.eigenvectors.length - 1
+  );
+  const coeffs = result.eigenvectors[eigIdx];
+  const density = evalDensity(coeffs, m.parity, DENSITY_SAMPLES);
+  const eigenvalue = result.eigenvalues[eigIdx];
+  const chargeOverlap = computeChargeOverlap(coeffs, m.parity, S.eps);
+  const color3 = new THREE.Color(m.color);
+  return { density, eigenvalue, chargeOverlap, color3 };
 }
 
-function rebuildAllClouds() {
-  for (const c of modeClouds) {
-    if (c.points) { scene.remove(c.points); c.points.geometry.dispose(); c.points.material.dispose(); }
-  }
-  modeClouds.length = 0;
-  ensureParticles();
-  for (let i = 0; i < S.modes.length; i++) {
-    modeClouds.push(makeCloud(i));
-    computeModeDensity(i);
-    updateCloudColors(i);
+function addModeData(mi) {
+  const m = S.modes[mi];
+  const data = computeOneModeData(mi);
+  const geoMesh = buildGeodesicMesh(m);
+  if (geoMesh) scene.add(geoMesh);
+  modeData[mi] = { ...data, geodesicMesh: geoMesh };
+}
+
+function removeModeData(mi) {
+  const md = modeData[mi];
+  if (!md) return;
+  if (md.geodesicMesh) {
+    scene.remove(md.geodesicMesh);
+    md.geodesicMesh.geometry.dispose();
+    md.geodesicMesh.material.dispose();
   }
 }
 
-function refreshDensities() {
-  for (let i = 0; i < S.modes.length; i++) {
-    computeModeDensity(i);
-    updateCloudColors(i);
+function rebuildAllModeData() {
+  for (let i = 0; i < modeData.length; i++) removeModeData(i);
+  modeData.length = 0;
+  for (let i = 0; i < S.modes.length; i++) addModeData(i);
+  updateVertexColors();
+}
+
+function refreshOneModeData(mi) {
+  const md = modeData[mi];
+  const newData = computeOneModeData(mi);
+  // Rebuild geodesic if winding/eps changed
+  if (md.geodesicMesh) {
+    scene.remove(md.geodesicMesh);
+    md.geodesicMesh.geometry.dispose();
+    md.geodesicMesh.material.dispose();
   }
+  const geoMesh = buildGeodesicMesh(S.modes[mi]);
+  if (geoMesh) scene.add(geoMesh);
+  modeData[mi] = { ...newData, geodesicMesh: geoMesh };
+}
+
+function refreshAllDensities() {
+  for (let i = 0; i < S.modes.length; i++) refreshOneModeData(i);
+  updateVertexColors();
 }
 
 /* ── Info panel ────────────────────────────────────── */
 
 function updateInfo() {
-  const parts = [`ε=${S.eps.toFixed(2)}`, `s=${S.shear.toFixed(3)}`, `${S.modes.length} mode${S.modes.length !== 1 ? 's' : ''}`];
+  const parts = [
+    `ε=${S.eps.toFixed(2)}`,
+    `s=${S.shear.toFixed(3)}`,
+    `${S.modes.length} mode${S.modes.length !== 1 ? 's' : ''}`,
+  ];
+  if (modeData[0]) {
+    const qeff = (S.modes[0].n2 - S.shear * S.modes[0].n1).toFixed(3);
+    parts.push(`q_eff=${qeff}  λ=${modeData[0].eigenvalue.toFixed(4)}`);
+  }
   $('info').textContent = parts.join('   ');
 }
 
@@ -537,10 +546,13 @@ function renderModeList() {
   const list = $('mode-list');
   list.innerHTML = '';
   S.modes.forEach((m, idx) => {
+    const md = modeData[idx];
+    const qeff = (m.n2 - S.shear * m.n1).toFixed(3);
+    const lam  = md ? md.eigenvalue.toFixed(4) : '—';
+    const C    = md ? md.chargeOverlap.toFixed(3) : '—';
+
     const div = document.createElement('div');
     div.className = 'mode-slot';
-    const qeff = m.n2 - S.shear * m.n1;
-    const lam = modeClouds[idx] ? modeClouds[idx].eigenvalue : 0;
     div.innerHTML = `
       <div class="ms-top">
         <input type="color" class="ms-color" value="${m.color}" data-i="${idx}">
@@ -554,157 +566,197 @@ function renderModeList() {
         <input type="number" class="ms-n1" data-i="${idx}" value="${m.n1}" min="-5" max="5" step="1">
         <span class="ms-lbl">n₂</span>
         <input type="number" class="ms-n2" data-i="${idx}" value="${m.n2}" min="-10" max="10" step="1">
-        <button class="btn ms-parity" data-i="${idx}" style="font-size:10px;min-width:36px">${m.parity}</button>
+        <button class="btn ms-parity" data-i="${idx}">${m.parity}</button>
       </div>
       <div class="ms-row">
         <span class="ms-lbl">☀</span>
         <input type="range" class="ms-bright" data-i="${idx}" min="0" max="1" step="0.05" value="${m.brightness}">
-        <span class="val">${m.brightness.toFixed(2)}</span>
+        <span class="val ms-bval">${m.brightness.toFixed(2)}</span>
+        <label style="font-size:10px;margin-left:4px"><input type="checkbox" class="ms-geo" data-i="${idx}" ${m.showGeodesic ? 'checked' : ''}> geo</label>
       </div>
-      <div class="ms-info">q_eff=${qeff.toFixed(3)}  λ=${lam.toFixed(4)}</div>
+      <div class="ms-info">q_eff=${qeff}  λ=${lam}  C=${C}</div>
     `;
     list.appendChild(div);
   });
 
-  /* Wire events */
   list.querySelectorAll('.ms-n1').forEach(el => el.onchange = function () {
     const i = +this.dataset.i;
     S.modes[i].n1 = +this.value;
-    computeModeDensity(i); updateCloudColors(i);
-    save(); renderModeList();
+    refreshOneModeData(i); updateVertexColors();
+    save(); renderModeList(); updateInfo();
   });
   list.querySelectorAll('.ms-n2').forEach(el => el.onchange = function () {
     const i = +this.dataset.i;
     S.modes[i].n2 = +this.value;
-    computeModeDensity(i); updateCloudColors(i);
-    save(); renderModeList();
+    refreshOneModeData(i); updateVertexColors();
+    save(); renderModeList(); updateInfo();
   });
   list.querySelectorAll('.ms-parity').forEach(el => el.onclick = function () {
     const i = +this.dataset.i;
     S.modes[i].parity = S.modes[i].parity === 'even' ? 'odd' : 'even';
-    computeModeDensity(i); updateCloudColors(i);
-    save(); renderModeList();
+    refreshOneModeData(i); updateVertexColors();
+    save(); renderModeList(); updateInfo();
   });
   list.querySelectorAll('.ms-color').forEach(el => el.oninput = function () {
     const i = +this.dataset.i;
     S.modes[i].color = this.value;
-    updateCloudColors(i); save();
+    if (modeData[i]) {
+      modeData[i].color3.set(this.value);
+      if (modeData[i].geodesicMesh)
+        modeData[i].geodesicMesh.material.color.set(this.value);
+    }
+    updateVertexColors(); save();
   });
   list.querySelectorAll('.ms-bright').forEach(el => el.oninput = function () {
     const i = +this.dataset.i;
     S.modes[i].brightness = +this.value;
-    this.nextElementSibling.textContent = (+this.value).toFixed(2);
-    updateCloudColors(i); save();
+    this.closest('.ms-row').querySelector('.ms-bval').textContent = (+this.value).toFixed(2);
+    updateVertexColors(); save();
   });
   list.querySelectorAll('.ms-vis').forEach(el => el.onchange = function () {
     const i = +this.dataset.i;
     S.modes[i].visible = this.checked;
-    modeClouds[i].points.visible = this.checked;
+    const md = modeData[i];
+    if (md && md.geodesicMesh)
+      md.geodesicMesh.visible = S.geodesics && this.checked && S.modes[i].showGeodesic;
+    updateVertexColors(); save();
+  });
+  list.querySelectorAll('.ms-geo').forEach(el => el.onchange = function () {
+    const i = +this.dataset.i;
+    S.modes[i].showGeodesic = this.checked;
+    const md = modeData[i];
+    if (md && md.geodesicMesh)
+      md.geodesicMesh.visible = S.geodesics && this.checked && S.modes[i].visible;
     save();
   });
   list.querySelectorAll('.ms-del').forEach(el => el.onclick = function () {
     const i = +this.dataset.i;
-    scene.remove(modeClouds[i].points);
-    modeClouds[i].points.geometry.dispose();
-    modeClouds[i].points.material.dispose();
-    modeClouds.splice(i, 1);
+    removeModeData(i);
+    modeData.splice(i, 1);
     S.modes.splice(i, 1);
-    save(); renderModeList(); updateInfo();
+    updateVertexColors(); save(); renderModeList(); updateInfo();
   });
 }
 
+function mkMode(n1, n2, parity = 'even', color = null) {
+  return {
+    n1, n2, parity,
+    color: color || MODE_COLORS[S.modes.length % MODE_COLORS.length],
+    brightness: 0.8, visible: true, showGeodesic: true,
+  };
+}
+
 function addMode(n1 = 0, n2 = 1, parity = 'even', color = null) {
-  const c = color || MODE_COLORS[S.modes.length % MODE_COLORS.length];
-  S.modes.push({ n1, n2, parity, color: c, brightness: 0.8, visible: true });
+  S.modes.push(mkMode(n1, n2, parity, color));
   const idx = S.modes.length - 1;
-  modeClouds.push(makeCloud(idx));
-  computeModeDensity(idx);
-  updateCloudColors(idx);
+  addModeData(idx);
+  updateVertexColors();
   save(); renderModeList(); updateInfo();
 }
 
 /* ── Presets ────────────────────────────────────────── */
 
 function applyPreset(name) {
-  for (const c of modeClouds) {
-    scene.remove(c.points); c.points.geometry.dispose(); c.points.material.dispose();
-  }
-  modeClouds.length = 0;
+  rebuildAllModeData(); // removes all existing
+  modeData.length = 0;
   S.modes = [];
 
-  if (name === 'electron') {
-    S.modes.push({ n1: 1, n2: 2, parity: 'even', color: '#ff6e40', brightness: 0.8, visible: true });
-  } else if (name === 'r21trio') {
-    S.modes.push({ n1: 0, n2: 2, parity: 'even', color: '#4fc3f7', brightness: 0.8, visible: true });
-    S.modes.push({ n1: 1, n2: 2, parity: 'even', color: '#ff6e40', brightness: 0.8, visible: true });
-    S.modes.push({ n1: 1, n2: 2, parity: 'odd', color: '#66bb6a', brightness: 0.8, visible: true });
-  } else if (name === 'harmonics') {
-    S.modes.push({ n1: 1, n2: 2, parity: 'even', color: '#ff6e40', brightness: 0.8, visible: true });
-    S.modes.push({ n1: 2, n2: 4, parity: 'even', color: '#4fc3f7', brightness: 0.8, visible: true });
-    S.modes.push({ n1: 3, n2: 6, parity: 'even', color: '#66bb6a', brightness: 0.8, visible: true });
-  } else if (name === 'lighter') {
-    S.modes.push({ n1: 1, n2: 2, parity: 'even', color: '#ff6e40', brightness: 0.8, visible: true });
-    S.modes.push({ n1: -1, n2: 1, parity: 'even', color: '#4fc3f7', brightness: 0.8, visible: true });
-    S.modes.push({ n1: 1, n2: 1, parity: 'even', color: '#66bb6a', brightness: 0.8, visible: true });
-  }
+  const sets = {
+    electron:    [mkMode(1, 2, 'even', '#ff6e40')],
+    ghost:       [mkMode(1, 1, 'even', '#fdd835')],
+    r21trio:     [mkMode(0, 2, 'even', '#4fc3f7'),
+                  mkMode(1, 2, 'even', '#ff6e40'),
+                  mkMode(1, 2, 'odd',  '#66bb6a')],
+    harmonics:   [mkMode(1, 2, 'even', '#ff6e40'),
+                  mkMode(2, 4, 'even', '#4fc3f7'),
+                  mkMode(3, 6, 'even', '#66bb6a')],
+    chargefamily:[mkMode(1, 1, 'even', '#fdd835'),
+                  mkMode(1, 2, 'even', '#ff6e40'),
+                  mkMode(1, 3, 'even', '#4fc3f7')],
+  };
 
-  for (let i = 0; i < S.modes.length; i++) {
-    modeClouds.push(makeCloud(i));
-    computeModeDensity(i);
-    updateCloudColors(i);
-  }
+  S.modes = sets[name] || [mkMode(1, 2)];
+  for (let i = 0; i < S.modes.length; i++) addModeData(i);
+  updateVertexColors();
   save(); renderModeList(); updateInfo();
 }
 
 /* ── Global controls ───────────────────────────────── */
 
-$('sl-eps').value = S.eps;
-$('v-eps').textContent = S.eps.toFixed(2);
-$('sl-s').value = S.shear;
-$('v-s').textContent = S.shear.toFixed(3);
+function setEps(val) {
+  S.eps = val;
+  $('sl-eps').value = arToSlider(val).toFixed(4);
+  $('v-eps').textContent = val.toFixed(2);
+  // Highlight matching preset button
+  document.querySelectorAll('[data-ar]').forEach(b =>
+    b.classList.toggle('on', Math.abs(+b.dataset.ar - val) < 0.005));
+}
+
+function setShear(val) {
+  S.shear = val;
+  $('sl-s').value = val.toFixed(3);
+  $('v-s').textContent = val.toFixed(3);
+  document.querySelectorAll('[data-sh]').forEach(b =>
+    b.classList.toggle('on', Math.abs(+b.dataset.sh - val) < 0.001));
+}
+
+// Init slider/readout from state
+setEps(S.eps);
+setShear(S.shear);
 $('sl-shell').value = S.shellAlpha;
 $('v-shell').textContent = S.shellAlpha.toFixed(2);
 $('cb-wire').checked = S.wire;
 
 $('sl-eps').oninput = function () {
-  S.eps = +this.value;
-  $('v-eps').textContent = S.eps.toFixed(2);
+  setEps(sliderToAR(+this.value));
   rebuildTorus();
-  rebuildAllClouds();
-  renderModeList();
-  updateInfo();
-  save();
+  rebuildAllModeData();
+  renderModeList(); updateInfo(); save();
 };
 
+document.querySelectorAll('[data-ar]').forEach(btn => {
+  btn.onclick = () => {
+    setEps(+btn.dataset.ar);
+    rebuildTorus(); rebuildAllModeData();
+    renderModeList(); updateInfo(); save();
+  };
+});
+
 $('sl-s').oninput = function () {
-  S.shear = +this.value;
-  $('v-s').textContent = S.shear.toFixed(3);
-  refreshDensities();
-  renderModeList();
-  updateInfo();
-  save();
+  setShear(+this.value);
+  refreshAllDensities();
+  renderModeList(); updateInfo(); save();
 };
+
+document.querySelectorAll('[data-sh]').forEach(btn => {
+  btn.onclick = () => {
+    setShear(+btn.dataset.sh);
+    refreshAllDensities();
+    renderModeList(); updateInfo(); save();
+  };
+});
 
 $('sl-shell').oninput = function () {
   S.shellAlpha = +this.value;
   $('v-shell').textContent = S.shellAlpha.toFixed(2);
-  shellMat.opacity = S.shellAlpha;
+  shellMat.opacity = S.shellAlpha * 0.4;
+  glowMat.opacity  = S.shellAlpha;
+  save();
+};
+
+$('cb-geo').checked = S.geodesics;
+$('cb-geo').onchange = function () {
+  S.geodesics = this.checked;
+  modeData.forEach((md, i) => {
+    if (md && md.geodesicMesh)
+      md.geodesicMesh.visible = S.geodesics && S.modes[i].showGeodesic && S.modes[i].visible;
+  });
   save();
 };
 
 $('cb-wire').onchange = function () {
   S.wire = this.checked;
-  torusWire.visible = S.wire;
-  save();
-};
-
-const gridBtn = $('btn-grid');
-gridBtn.textContent = S.gridMode === 'arc' ? '3D' : 'Ma';
-gridBtn.onclick = () => {
-  S.gridMode = S.gridMode === 'arc' ? 'angular' : 'arc';
-  gridBtn.textContent = S.gridMode === 'arc' ? '3D' : 'Ma';
-  rebuildAllClouds();
-  renderModeList();
+  if (wireMesh) wireMesh.visible = S.wire;
   save();
 };
 
@@ -714,23 +766,24 @@ $('sel-preset').onchange = function () {
 };
 
 $('btn-reset').onclick = () => {
+  for (let i = 0; i < modeData.length; i++) removeModeData(i);
+  modeData.length = 0;
   localStorage.removeItem(KEY);
   S = structuredClone(DEFAULTS);
-  $('sl-eps').value = S.eps; $('v-eps').textContent = S.eps.toFixed(2);
-  $('sl-s').value = S.shear; $('v-s').textContent = S.shear.toFixed(3);
+  setEps(S.eps); setShear(S.shear);
   $('sl-shell').value = S.shellAlpha; $('v-shell').textContent = S.shellAlpha.toFixed(2);
+  $('cb-geo').checked = S.geodesics;
   $('cb-wire').checked = S.wire;
-  gridBtn.textContent = S.gridMode === 'arc' ? '3D' : 'Ma';
-  rebuildTorus();
-  rebuildAllClouds();
-  renderModeList();
-  updateInfo();
+  shellMat.opacity = S.shellAlpha * 0.4;
+  glowMat.opacity  = S.shellAlpha;
+  rebuildTorus(); rebuildAllModeData();
+  renderModeList(); updateInfo();
 };
 
 /* ── Init ──────────────────────────────────────────── */
 
 rebuildTorus();
-rebuildAllClouds();
+rebuildAllModeData();
 renderModeList();
 updateInfo();
 animLoop(() => {}, { renderer, scene, camera, controls });

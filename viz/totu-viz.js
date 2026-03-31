@@ -35,7 +35,7 @@ export function createScene(container, opts = {}) {
   );
   camera.position.set(...(opts.camPos ?? [2.5, 1.8, 3.5]));
 
-  const renderer = new THREE.WebGLRenderer({ antialias: true });
+  const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
   renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
   renderer.setSize(container.clientWidth, container.clientHeight);
   container.appendChild(renderer.domElement);
@@ -55,6 +55,7 @@ export function createScene(container, opts = {}) {
     scene.add(fill);
   }
 
+  if (opts.capture !== false) _initCapturePanel(container, renderer);
   return { scene, camera, renderer, controls, clock: new THREE.Clock() };
 }
 
@@ -149,4 +150,145 @@ export function torusMaterials(opts = {}) {
       opacity: opts.wireOpacity ?? 0.06, side: THREE.DoubleSide,
     }),
   };
+}
+
+/* ── Capture panel (auto-injected by createScene) ─────── */
+
+function _initCapturePanel(container, renderer) {
+  const panel = document.createElement('div');
+  panel.className = 'totu-cap';
+  panel.innerHTML = `
+    <div class="totu-cap-rec" hidden>REC</div>
+    <button class="totu-cap-btn" title="Capture screenshot / recording">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round">
+        <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+        <circle cx="12" cy="13" r="4"/>
+      </svg>
+    </button>
+    <div class="totu-cap-menu" hidden>
+      <button class="totu-cap-item" id="_tcap-png">PNG</button>
+      <button class="totu-cap-item" id="_tcap-gif">GIF  ●</button>
+      <button class="totu-cap-item" id="_tcap-webm">WebM ●</button>
+    </div>`;
+  container.appendChild(panel);
+
+  const capBtn   = panel.querySelector('.totu-cap-btn');
+  const menu     = panel.querySelector('.totu-cap-menu');
+  const recBadge = panel.querySelector('.totu-cap-rec');
+  const pngBtn   = panel.querySelector('#_tcap-png');
+  const gifBtn   = panel.querySelector('#_tcap-gif');
+  const webmBtn  = panel.querySelector('#_tcap-webm');
+
+  capBtn.onclick  = e => { e.stopPropagation(); menu.hidden = !menu.hidden; };
+  menu.onclick    = e => e.stopPropagation();
+  document.addEventListener('click', () => { menu.hidden = true; });
+
+  /* ── PNG ────────────────────────────────────────────── */
+  pngBtn.onclick = () => {
+    menu.hidden = true;
+    _dlURL(renderer.domElement.toDataURL('image/png'), `totu-${_ts()}.png`);
+  };
+
+  /* ── GIF (gifenc, pure-JS encoder, no worker needed) ── */
+  const GIF_FPS = 12, GIF_MAX_W = 640;
+  let gifActive = false, gifFrames = [], gifTimer = null;
+
+  gifBtn.onclick = async () => {
+    if (!gifActive) {
+      gifActive = true;
+      gifFrames = [];
+      gifBtn.textContent = '⏹ Stop (GIF)';
+      gifBtn.classList.add('totu-active');
+      recBadge.hidden = false;
+      menu.hidden = true;
+      gifTimer = setInterval(() => {
+        const f = _grabFrame(renderer.domElement, GIF_MAX_W);
+        if (f) gifFrames.push(f);
+      }, 1000 / GIF_FPS);
+    } else {
+      clearInterval(gifTimer);
+      gifActive = false;
+      recBadge.hidden = true;
+      gifBtn.textContent = '⏳ Encoding…';
+      gifBtn.disabled = true;
+      try {
+        const blob = await _encodeGif(gifFrames, GIF_FPS);
+        _dlURL(URL.createObjectURL(blob), `totu-${_ts()}.gif`, true);
+      } catch (err) {
+        console.error('GIF encode failed', err);
+        alert('GIF encoding failed:\n' + err.message);
+      }
+      gifBtn.textContent = 'GIF  ●';
+      gifBtn.disabled = false;
+      gifBtn.classList.remove('totu-active');
+    }
+  };
+
+  /* ── WebM (native MediaRecorder, no deps) ───────────── */
+  let recorder = null, recChunks = [];
+
+  webmBtn.onclick = () => {
+    if (!recorder) {
+      const stream = renderer.domElement.captureStream(30);
+      const mime = MediaRecorder.isTypeSupported('video/webm;codecs=vp9')
+        ? 'video/webm;codecs=vp9' : 'video/webm';
+      recorder = new MediaRecorder(stream, { mimeType: mime });
+      recChunks = [];
+      recorder.ondataavailable = e => { if (e.data.size > 0) recChunks.push(e.data); };
+      recorder.onstop = () => {
+        _dlURL(URL.createObjectURL(new Blob(recChunks, { type: 'video/webm' })),
+               `totu-${_ts()}.webm`, true);
+        recorder = null;
+      };
+      recorder.start();
+      webmBtn.textContent = '⏹ Stop (WebM)';
+      webmBtn.classList.add('totu-active');
+      recBadge.hidden = false;
+      menu.hidden = true;
+    } else {
+      recorder.stop();
+      webmBtn.textContent = 'WebM ●';
+      webmBtn.classList.remove('totu-active');
+      recBadge.hidden = true;
+    }
+  };
+}
+
+function _grabFrame(canvas, maxW) {
+  const scale = Math.min(1, maxW / canvas.width);
+  const w = Math.max(2, Math.round(canvas.width  * scale));
+  const h = Math.max(2, Math.round(canvas.height * scale));
+  const tmp = document.createElement('canvas');
+  tmp.width = w; tmp.height = h;
+  tmp.getContext('2d').drawImage(canvas, 0, 0, w, h);
+  return { data: tmp.getContext('2d').getImageData(0, 0, w, h), w, h };
+}
+
+async function _encodeGif(frames, fps) {
+  // gifenc: pure-JS GIF encoder, no worker required.
+  // Delay unit in GIF spec is centiseconds (1/100 s).
+  const { GIFEncoder, quantize, applyPalette } =
+    await import('https://esm.sh/gifenc@0.1.3');
+  const delay = Math.round(100 / fps);   // centiseconds per frame
+  const { w, h } = frames[0];
+  const enc = GIFEncoder();
+  for (const { data, w: fw, h: fh } of frames) {
+    const rgba    = data.data;
+    const palette = quantize(rgba, 256);
+    const index   = applyPalette(rgba, palette);
+    enc.writeFrame(index, fw, fh, { palette, delay });
+  }
+  enc.finish();
+  return new Blob([enc.bytesView()], { type: 'image/gif' });
+}
+
+function _dlURL(url, name, revoke = false) {
+  const a = document.createElement('a');
+  a.href = url; a.download = name; a.click();
+  if (revoke) setTimeout(() => URL.revokeObjectURL(url), 8000);
+}
+
+function _ts() {
+  return new Date().toISOString().slice(0, 19).replace(/[T:]/g, '-');
 }

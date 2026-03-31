@@ -102,25 +102,33 @@ function tubeRadii(R, k) {
 
 /* ── Axis & center helpers ─────────────────────────── */
 
+// Even levels (2, 4): Y-axis — ring in XZ, hole along Y.
+// Odd levels (3, 5): Z-axis — ring in XY, hole along Z.
+// Each level's tube threads through the previous level's hole.
 function isYAxis(k) { return k % 2 === 0; }
 
 // Center of level k's ring.
-// C[2] = origin.  For k ≥ 3, C[k] = C[k−1] − offset(k).
-// At φ_k = 0, tube center = C[k] + offset(k) = C[k−1].
+// C[2] = origin.  For k ≥ 3, C[k] = C[k−1] − (R[k], 0, 0).
+// All centers lie along the −X axis.
+// At φ_k = 0, tube center = C[k] + (R[k], 0, 0) = C[k−1].
+// Tangent at that point:
+//   Y-axis (even k) at φ=0: tangent = Z → threads Z-hole of odd level
+//   Z-axis (odd k)  at φ=0: tangent = Y → threads Y-hole of even level
 function computeCenters(R) {
   const C = [null, null];
   C[2] = new THREE.Vector3(0, 0, 0);
   for (let k = 3; k <= 5; k++) {
     C[k] = C[k - 1].clone();
-    if (isYAxis(k)) C[k].x -= R[k];
-    else            C[k].y -= R[k];
+    C[k].x -= R[k];
   }
   return C;
 }
 
-/* ── X-axis torus geometry ──────────────────────────── */
+/* ── Z-axis torus geometry ──────────────────────────── */
 
-function buildXTorusGeom(Rmaj, atube, segU = 32, segV = 64) {
+// Ring in XY plane, axis Z.
+// x = (R + a cosθ) cosφ,  y = (R + a cosθ) sinφ,  z = a sinθ
+function buildZTorusGeom(Rmaj, atube, segU = 32, segV = 64) {
   const nv = (segU + 1) * (segV + 1);
   const pos = new Float32Array(nv * 3);
   const nor = new Float32Array(nv * 3);
@@ -133,10 +141,11 @@ function buildXTorusGeom(Rmaj, atube, segU = 32, segV = 64) {
     for (let j = 0; j <= segV; j++) {
       const ph = (j / segV) * Math.PI * 2;
       const cp = Math.cos(ph), sp = Math.sin(ph);
+      const rr = Rmaj + atube * ct;
+      pos[vi++] = rr * cp;
+      pos[vi++] = rr * sp;
       pos[vi++] = atube * st;
-      pos[vi++] = (Rmaj + atube * ct) * cp;
-      pos[vi++] = (Rmaj + atube * ct) * sp;
-      nor[ni++] = st; nor[ni++] = ct * cp; nor[ni++] = ct * sp;
+      nor[ni++] = ct * cp; nor[ni++] = ct * sp; nor[ni++] = st;
       uv[ui++] = i / segU; uv[ui++] = j / segV;
     }
   }
@@ -159,7 +168,7 @@ function torusGeomForLevel(levelK, Rmaj, atube, R2) {
   const sv = Math.max(32, Math.min(128, Math.round(64 * Rmaj / Math.max(R2, 0.01))));
   return isYAxis(levelK)
     ? buildTorusGeom(Rmaj, atube, su, sv)
-    : buildXTorusGeom(Rmaj, atube, su, sv);
+    : buildZTorusGeom(Rmaj, atube, su, sv);
 }
 
 /* ── Scene ──────────────────────────────────────────── */

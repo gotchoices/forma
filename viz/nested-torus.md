@@ -32,30 +32,31 @@ center at φ₂ = 0 — and remains visible as a highlighted ring there.
   - L1 circle at: **(r₂, 0, 0)** — the φ₂ = 0 cross-section
 
 **Level 3 — Torus of torus.**
-Sweep the level-2 torus around an X-axis ring of radius r₃.  The ring
-must pass through the L2 center (origin).  Therefore the L3 ring center
-is displaced from origin by r₃:
+Sweep the level-2 torus around a Z-axis ring of radius r₃.  The ring
+must pass through the L2 center (origin) AND thread through L2's hole
+(which is along Y).  A Z-axis ring has tangent Y at φ = 0, so it
+threads the Y-hole correctly.  The ring center is displaced in −X:
 
-  - L3 center: **(0, −r₃, 0)**
-  - At φ₃ = 0: tube center = (0, −r₃ + r₃, 0) = **(0, 0, 0)** = L2 center ✓
+  - L3 center: **(−r₃, 0, 0)**
+  - At φ₃ = 0: tube center = (−r₃ + r₃, 0, 0) = **(0, 0, 0)** = L2 center ✓
+  - Tangent at φ₃ = 0: **(0, r₃, 0) = +Y** → through L2's Y-hole ✓
 
 The L2 torus at origin sits exactly at the φ₃ = 0 cross-section of L3.
 The L3 boundary envelopes the L2 torus there — no manufactured replica
 needed.  The L2 torus itself IS the cross-section ghost.
 
 In 3D, the L3 boundary consists of TWO standard tori (outer tube
-r₂ + r₁, inner tube r₂ − r₁), both X-axis with major radius r₃,
-centered at (0, −r₃, 0).
+r₂ + r₁, inner tube r₂ − r₁), both Z-axis with major radius r₃,
+centered at (−r₃, 0, 0).
 
 **Level 4 — and beyond.**
-Each level adds another sweep.  The ring center is offset from the
-previous level's center so the tube passes through it:
+Each level adds another sweep.  The ring center is always offset in −X:
 
-  - L4 center: L3 center − (r₄, 0, 0) = **(−r₄, −r₃, 0)**
-  - At φ₄ = 0: (−r₄ + r₄, −r₃, 0) = (0, −r₃, 0) = L3 center ✓
+  - L4 center: L3 center − (r₄, 0, 0) = **(−r₃ − r₄, 0, 0)**
+  - Tangent at φ₄ = 0: Z → through L3's Z-hole ✓
 
-  - L5 center: L4 center − (0, r₅, 0) = **(−r₄, −r₃ − r₅, 0)**
-  - At φ₅ = 0: (−r₄, −r₃ − r₅ + r₅, 0) = (−r₄, −r₃, 0) = L4 center ✓
+  - L5 center: L4 center − (r₅, 0, 0) = **(−r₃ − r₄ − r₅, 0, 0)**
+  - Tangent at φ₅ = 0: Y → through L4's Y-hole ✓
 
 The boundary tori double at each step (2^(k−2) tori at level k ≥ 2).
 The previous level's tori always serve as the visible cross-section.
@@ -66,26 +67,29 @@ The center of level k's ring, C_k:
 
     C_1 = (not applicable — L1 is a circle, not a ring)
     C_2 = (0, 0, 0)
-    C_k = C_{k−1} − offset_k    (k ≥ 3)
+    C_k = C_{k−1} − (r_k, 0, 0)    (k ≥ 3)
 
-where offset_k displaces in the ring-start direction:
+All centers lie along the −X axis:
 
-| Level k | Axis  | Ring plane | offset_k      | C_k                          |
-|---------|-------|------------|---------------|-------------------------------|
-| 2       | Y     | XZ         | —             | (0, 0, 0)                     |
-| 3       | X     | YZ         | (0, r₃, 0)   | (0, −r₃, 0)                   |
-| 4       | Y     | XZ         | (r₄, 0, 0)   | (−r₄, −r₃, 0)                 |
-| 5       | X     | YZ         | (0, r₅, 0)   | (−r₄, −r₃ − r₅, 0)            |
+| Level k | Axis  | Ring plane | Hole axis | C_k                          |
+|---------|-------|------------|-----------|-------------------------------|
+| 2       | Y     | XZ         | Y         | (0, 0, 0)                     |
+| 3       | Z     | XY         | Z         | (−r₃, 0, 0)                   |
+| 4       | Y     | XZ         | Y         | (−r₃ − r₄, 0, 0)              |
+| 5       | Z     | XY         | Z         | (−r₃ − r₄ − r₅, 0, 0)         |
 
-Pattern: even k (Y-axis) offsets in X; odd k ≥ 3 (X-axis) offsets in Y.
+At φ_k = 0, the tube center is at C_k + (r_k, 0, 0) = C_{k−1}.  The
+tangent there is:
+- Y-axis ring (even k): tangent = Z → threads the Z-hole of level k−1
+- Z-axis ring (odd k):  tangent = Y → threads the Y-hole of level k−1
 
-At φ_k = 0, the tube center is at C_k + offset_k = C_{k−1}.  This is
-exactly where the previous level's structure lives.
+This means each level's tube passes through the previous level's donut
+hole, not just through its center.
 
 ### Axis rotation
 
-Even levels (2, 4) use Y-axis (ring in XZ).
-Odd levels ≥ 3 (3, 5) use X-axis (ring in YZ).
+Even levels (2, 4) use Y-axis (ring in XZ, hole along Y).
+Odd levels ≥ 3 (3, 5) use Z-axis (ring in XY, hole along Z).
 
 ### Boundary formula
 
@@ -178,11 +182,11 @@ Each boundary torus uses the level-k axis (Y for even k, X for odd k ≥ 3),
     y = C_k.y + a sin θ
     z = C_k.z + (R + a cos θ) sin φ
 
-**X-axis torus** (levels 3, 5, …) — ring in YZ plane, centered at C_k:
+**Z-axis torus** (levels 3, 5, …) — ring in XY plane, centered at C_k:
 
-    x = C_k.x + a sin θ
-    y = C_k.y + (R + a cos θ) cos φ
-    z = C_k.z + (R + a cos θ) sin φ
+    x = C_k.x + (R + a cos θ) cos φ
+    y = C_k.y + (R + a cos θ) sin φ
+    z = C_k.z + a sin θ
 
 where R = r_k (major radius), a = tube radius from the boundary formula,
 θ = tube angle, φ = ring angle.
@@ -192,9 +196,9 @@ The tube cross-section is a circle of radius `a` centered at C_{k−1}.
 For the outermost boundary (a = r_{k−1} + r_{k−2} + … + r₁), this circle
 envelopes the entire level-(k−1) structure.
 
-Do NOT use `buildTorusGeom` for all levels — it only builds Y-axis tori
-centered at the origin.  Either translate after building, or build from
-parametric vertex generation.
+Do NOT use `buildTorusGeom` for all levels — it only builds Y-axis tori.
+Use `buildZTorusGeom` for odd levels (ring in XY).  Translate by setting
+the group position to C_k.
 
 Segment counts: scale with tube-to-major ratio.  Minimum 12 tube segments,
 minimum 32 ring segments.
