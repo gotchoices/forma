@@ -289,6 +289,7 @@ sheet to three (3Ma = Ma_e × Ma_ν × Ma_p), yielding Ma (R26).
 |------|---------|
 | [`STATUS.md`](STATUS.md) | Where we are: objectives, results, active front, open problems |
 | [`studies/Taxonomy.md`](studies/Taxonomy.md) | **MaSt framework reference:** dimensions, geometry, particle catalog, mechanisms, open problems |
+| [`grid/README.md`](grid/README.md) | **GRID** — substrate layer: derives Maxwell + G from a discrete lattice |
 | [`studies/STATUS.md`](studies/STATUS.md) | Study-by-study registry: active, backlog, done |
 | [`qa/Q84-mast-terminology.md`](qa/Q84-mast-terminology.md) | MaSt naming conventions and migration guide |
 | [`qa/README.md`](qa/README.md) | Index of answered and open physics questions |
