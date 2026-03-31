@@ -100,6 +100,11 @@ Summarize what GRID establishes and what remains open.  Bridge to MaSt.
 
 **Phases 1–3 complete.**  Next: Phase 4 (stiffness analysis).
 
+**Parallel track:** [lattice-geometry.md](lattice-geometry.md) —
+investigating whether ζ follows from packing geometry.  Leading
+candidate: 4D simplicial (pentachoron), with (1,3)-split
+simplicial as the main alternative.
+
 ---
 
 ## Dependencies
@@ -119,3 +124,4 @@ Summarize what GRID establishes and what remains open.  Bridge to MaSt.
 | 2026-03-31 | Created as `grid/`, not a study | GRID is foundational — upstream of MaSt, not a focused investigation within it |
 | 2026-03-31 | Variable ζ for resolution (not q) | q is overloaded in MaSt studies (charge, winding number) |
 | 2026-03-31 | Two free parameters: ζ and α | Minimal set.  Whether they reduce to one is an open question, not an assumption |
+| 2026-03-31 | 4D simplicial as leading packing candidate | Pentachoron is the minimal 4D polytope; geometry may determine ζ.  (1,3)-split simplicial kept as alternative (matches BH factor 1/4) |
