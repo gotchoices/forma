@@ -43,21 +43,26 @@ cleanly and without importing any electrodynamics.
 
 **Deliverable:** [maxwell.md](maxwell.md)
 
-### Phase 3: Deriving G
+### Phase 3: Deriving G ✅
 
 Derive Newton's gravitational constant from the resolution
-parameter ζ, in both natural and SI units.  No circular reasoning.
+parameter ζ via Jacobson's thermodynamic argument.
 
-- [ ] Entropy bound from ζ: S = ζ · A (Planck units)
-- [ ] Unruh temperature: T = ℏa/(2πck) for accelerating observers
-- [ ] Jacobson's argument: δQ = TdS on local Rindler horizons
-- [ ] Energy flux: ∫ T_μν ξ^μ dΣ^ν through the horizon
-- [ ] Einstein equations emerge as thermodynamic equation of state
-- [ ] Read off G = 1/(4ζ) = 1 in natural units
-- [ ] Full SI restoration: G = ℏc³/(4ζk_B) → dimensional analysis
-- [ ] Verify: G = 6.674 × 10⁻¹¹ m³ kg⁻¹ s⁻² from ζ = 1/4
-- [ ] Spacetime stiffness: c⁴/(8πG) ≈ 4.8 × 10⁴² N
-- [ ] Connection to EM stiffness (ε₀, μ₀) through shared lattice
+- [x] State axioms used (A1, A2, A5) and additional inputs
+- [x] Local Rindler horizons from causal structure
+- [x] Entropy bound from ζ: δS = ζ δA
+- [x] Unruh temperature: T = κ/(2π) (flagged as additional input)
+- [x] Energy flux through horizon: ∫ T_ab k^a k^b κλ dλ dA
+- [x] Area change from Raychaudhuri equation (kinematic, not GR)
+- [x] Clausius relation combines energy flux with entropy change
+- [x] Null-vector identity → T_ab = −(ζ/2π) R_ab + f g_ab
+- [x] Conservation + Bianchi identity → fixes f, gives Λ for free
+- [x] Einstein equations emerge: G_ab + Λg_ab = (2π/ζ) T_ab
+- [x] Read off G = 1/(4ζ) = 1 in natural units
+- [x] Spacetime stiffness: c⁴/(8πG) = ζ/(2π) = 1/(8π)
+- [x] SI restoration (note: G_SI consistent but not independently predicted)
+- [x] Honesty check: circularity, Unruh, Raychaudhuri
+- [ ] Connection to EM stiffness through shared lattice (deferred to stiffness.md)
 
 **Deliverable:** [gravity.md](gravity.md)
 
@@ -93,7 +98,7 @@ Summarize what GRID establishes and what remains open.  Bridge to MaSt.
 
 ## Current focus
 
-**Phases 1–2 complete.**  Next: Phase 3 (deriving G).
+**Phases 1–3 complete.**  Next: Phase 4 (stiffness analysis).
 
 ---
 
