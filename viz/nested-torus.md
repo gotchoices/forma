@@ -1,48 +1,131 @@
 # Nested Torus — Spec
 
-Visualize how periodic dimensions build on each other: a circle becomes a torus, a torus becomes a torus-of-a-torus, and so on. Each level wraps the previous structure around a new circle, producing a recursively nested surface in 3D.
+Visualize how periodic dimensions build on each other: a circle becomes a
+torus, a torus becomes a torus-of-a-torus, and so on.  Each level sweeps the
+previous structure around a new ring, producing a recursively nested surface
+in 3D.
 
-This visualizer is broken--not yet working.
+---
 
-## Levels
+## Progressive sweep construction
 
-The visualizer supports 1 to 4 nesting levels, selectable at runtime. Adding a level wraps the existing structure — it does not destroy previous geometry.
+The visualizer builds its geometry step by step.  Each level sweeps the
+previous structure around a new ring whose axis is rotated 90° from the last.
 
-| Level | Internal dim | What you see |
-|-------|-------------|--------------|
-| 1 | L₁ | Circle of radius r₁ |
-| 2 | L₁ × L₂ | Standard torus — tube r₁, major r₂ |
-| 3 | L₁ × L₂ × L₃ | Major r₃, tube boundaries at r₂ ± r₁ (2 tori, hollow tube) |
-| 4 | … | Major r₄, tubes r₃ ± r₂ ± r₁ (4 boundary tori) |
+The key constraint: **each level's ring passes through the previous level's
+center.**  This means the new level's ring center is offset from the old
+center, and the previous level's boundary tori sit naturally at the
+cross-section position — no separate highlight copy is needed.
 
-### Sweep rule
+### Step by step
 
-At each new level *k*, the ring (major circle) of the previous torus becomes part of the tube cross-section of the new torus. The new torus sweeps the entire previous structure around a new circle of radius r_k, with the rotation axis shifted 90° from the previous sweep.
+**Level 1 — Circle.**
+A circle of radius r₁.  This is the innermost structure: one periodic
+dimension.  Drawn as a thin tube so it is visible.
 
-Concretely: the level-k torus has major radius r_k. Its tube contains the level-(k−1) structure as a cross-section.
+**Level 2 — Torus.**
+Sweep the level-1 circle around a Y-axis ring of radius r₂.  Ring center
+is at the origin.  The level-1 circle sits at (r₂, 0, 0) — the tube
+center at φ₂ = 0 — and remains visible as a highlighted ring there.
 
-Example:
-- Ring for level 1 (circle) is in xz axis
-- Ring for level 2 is in xy axis
-- Ring for level 3 is in yz axis
-- Ring for level 4 is in xz axis
+  - L2 center: **(0, 0, 0)**
+  - L1 circle at: **(r₂, 0, 0)** — the φ₂ = 0 cross-section
+
+**Level 3 — Torus of torus.**
+Sweep the level-2 torus around an X-axis ring of radius r₃.  The ring
+must pass through the L2 center (origin).  Therefore the L3 ring center
+is displaced from origin by r₃:
+
+  - L3 center: **(0, −r₃, 0)**
+  - At φ₃ = 0: tube center = (0, −r₃ + r₃, 0) = **(0, 0, 0)** = L2 center ✓
+
+The L2 torus at origin sits exactly at the φ₃ = 0 cross-section of L3.
+The L3 boundary envelopes the L2 torus there — no manufactured replica
+needed.  The L2 torus itself IS the cross-section ghost.
+
+In 3D, the L3 boundary consists of TWO standard tori (outer tube
+r₂ + r₁, inner tube r₂ − r₁), both X-axis with major radius r₃,
+centered at (0, −r₃, 0).
+
+**Level 4 — and beyond.**
+Each level adds another sweep.  The ring center is offset from the
+previous level's center so the tube passes through it:
+
+  - L4 center: L3 center − (r₄, 0, 0) = **(−r₄, −r₃, 0)**
+  - At φ₄ = 0: (−r₄ + r₄, −r₃, 0) = (0, −r₃, 0) = L3 center ✓
+
+  - L5 center: L4 center − (0, r₅, 0) = **(−r₄, −r₃ − r₅, 0)**
+  - At φ₅ = 0: (−r₄, −r₃ − r₅ + r₅, 0) = (−r₄, −r₃, 0) = L4 center ✓
+
+The boundary tori double at each step (2^(k−2) tori at level k ≥ 2).
+The previous level's tori always serve as the visible cross-section.
+
+### Center-offset formula
+
+The center of level k's ring, C_k:
+
+    C_1 = (not applicable — L1 is a circle, not a ring)
+    C_2 = (0, 0, 0)
+    C_k = C_{k−1} − offset_k    (k ≥ 3)
+
+where offset_k displaces in the ring-start direction:
+
+| Level k | Axis  | Ring plane | offset_k      | C_k                          |
+|---------|-------|------------|---------------|-------------------------------|
+| 2       | Y     | XZ         | —             | (0, 0, 0)                     |
+| 3       | X     | YZ         | (0, r₃, 0)   | (0, −r₃, 0)                   |
+| 4       | Y     | XZ         | (r₄, 0, 0)   | (−r₄, −r₃, 0)                 |
+| 5       | X     | YZ         | (0, r₅, 0)   | (−r₄, −r₃ − r₅, 0)            |
+
+Pattern: even k (Y-axis) offsets in X; odd k ≥ 3 (X-axis) offsets in Y.
+
+At φ_k = 0, the tube center is at C_k + offset_k = C_{k−1}.  This is
+exactly where the previous level's structure lives.
+
+### Axis rotation
+
+Even levels (2, 4) use Y-axis (ring in XZ).
+Odd levels ≥ 3 (3, 5) use X-axis (ring in YZ).
 
 ### Boundary formula
 
-At depth d, level k (k ≥ 2) renders 2^(k−2) standard tori. Each has major radius r_k. Tube radii are all combinations of r_{k−1} ± r_{k−2} ± … ± r₁ (r_{k−1} always positive, remaining signs vary). Combinations yielding tube ≤ 0 are skipped.
+At level k (k ≥ 2), the boundary consists of 2^(k−2) standard tori.  All
+share the same ring axis (from the table above) and major radius r_k,
+**centered at C_k** (NOT at origin).  Tube radii are all sign combinations
+of r_{k−1} ± r_{k−2} ± … ± r₁ (r_{k−1} always positive, remaining
+signs vary).  Skip any combination where tube radius ≤ 0.
+
+### Cross-section highlighting
+
+For k ≥ 3, no separate highlight mesh is needed.  The level-(k−1)
+boundary tori, already rendered at C_{k−1}, sit at the φ_k = 0
+cross-section of level k.  They ARE the highlight.
+
+When depth = d, levels 1 through d−1 should switch to wireframe
+rendering (they are now "ghosts" showing cross-sections of the
+outermost level's sweep path).  Only level d renders as a solid shell.
+
+The one exception is the **level 2 highlight for level 1**: the L1 circle
+at (r₂, 0, 0) is still needed as a separate object since L1 is a circle,
+not a torus.
 
 ### Radius convention
 
-r₀ = 1 is an abstract reference unit (not rendered). Each level has a ratio factor:
+r₀ = 1 is an abstract reference unit (not rendered).  Each level has a ratio:
 
     r₁ = ratio₁ × r₀
     r_k = ratio_k × r_{k−1}    (k ≥ 2)
 
-With ratio > 1, each successive radius grows — the level-k torus is a bigger ring than level-(k−1). With ratio < 1, the structure shrinks inward. For non-self-intersection at all levels, ratio ≳ φ ≈ 1.618 (golden ratio), but self-intersecting configurations are valid and interesting to explore.
+With ratio > 1, each successive radius grows.  For non-self-intersection at
+all levels, ratio ≳ φ ≈ 1.618 (golden ratio), but self-intersecting
+configurations are valid and interesting to explore.
 
-### Rendering by level
+### Opacity principle
 
-All levels 1 through d are rendered simultaneously as separate groups, each with its own color, opacity, render mode, and visibility. With ratio > 1, inner levels appear as smaller rings nested concentrically. With translucency you can see all layers.
+Inner levels are more opaque; outer levels are more transparent.  Each
+successive level should be visibly lighter so you can see the layers inside.
+Default: level 1 at 0.8, each subsequent level ×0.5 (so 0.4, 0.2, 0.1, …).
+The user can override per level.
 
 ## Per-level controls
 
@@ -51,7 +134,7 @@ Each active level *k* (1 ≤ k ≤ depth) has its own control row:
 | Control | Applies to | Range | Default | Notes |
 |---------|-----------|-------|---------|-------|
 | Ratio r_k/r_{k−1} | all | slider, 0.1–10 | 2.5 | Values > 1 grow outward, < 1 shrink inward. Cascades to deeper levels. |
-| Opacity α_k | all | slider, 0–1 | L1: 0.8, rest: 0.25 | Surface translucency |
+| Opacity α_k | all | slider, 0–1 | L1: 0.8, L2: 0.4, L3: 0.2, L4: 0.1, L5: 0.05 | Outer levels more transparent (see §Opacity principle) |
 | Render mode | k ≥ 2 | shell / wire toggle | shell | Wire makes it easy to see inside |
 | Visible | all | toggle | on | Hides this level only. Other levels unaffected. |
 
@@ -78,13 +161,63 @@ All configuration saved to `localStorage` key `nested-torus`. Restored on page l
 
 ## Geometry
 
-Level 1: `TubeGeometry` circle of radius r₁ in the XZ plane (thin tube so it's visible).
+### Level 1 — circle
 
-Level k ≥ 2: standard torus meshes via `buildTorusGeom(r_k, tubeR)` for each tube radius in the boundary set. Each level k has its own major radius r_k. Segment counts scale with tube-to-major ratio.
+`TubeGeometry` circle of radius r₁.  Position: centered at the level-2
+cross-section center (C₂ + (r₂, 0, 0) = (r₂, 0, 0)), lying in the XY
+plane.  If depth = 1, center at origin in XZ plane instead.
+
+### Level k ≥ 2 — boundary tori
+
+Each boundary torus uses the level-k axis (Y for even k, X for odd k ≥ 3),
+**centered at C_k** (see center-offset formula).
+
+**Y-axis torus** (levels 2, 4, …) — ring in XZ plane, centered at C_k:
+
+    x = C_k.x + (R + a cos θ) cos φ
+    y = C_k.y + a sin θ
+    z = C_k.z + (R + a cos θ) sin φ
+
+**X-axis torus** (levels 3, 5, …) — ring in YZ plane, centered at C_k:
+
+    x = C_k.x + a sin θ
+    y = C_k.y + (R + a cos θ) cos φ
+    z = C_k.z + (R + a cos θ) sin φ
+
+where R = r_k (major radius), a = tube radius from the boundary formula,
+θ = tube angle, φ = ring angle.
+
+Verify: at φ = 0 on level k, the tube center is at C_k + offset_k = C_{k−1}.
+The tube cross-section is a circle of radius `a` centered at C_{k−1}.
+For the outermost boundary (a = r_{k−1} + r_{k−2} + … + r₁), this circle
+envelopes the entire level-(k−1) structure.
+
+Do NOT use `buildTorusGeom` for all levels — it only builds Y-axis tori
+centered at the origin.  Either translate after building, or build from
+parametric vertex generation.
+
+Segment counts: scale with tube-to-major ratio.  Minimum 12 tube segments,
+minimum 32 ring segments.
+
+### Why no separate highlight geometry for k ≥ 3
+
+The level-(k−1) boundary tori are already positioned at C_{k−1}.  At
+φ_k = 0, the level-k tube center passes through C_{k−1}.  So the
+level-(k−1) tori naturally appear at the cross-section — they ARE the
+highlighted profile.
+
+When depth increases, inner levels should switch to wireframe so they
+read as "ghost" profiles.  This is controlled by the per-level render
+mode (shell/wire toggle) and opacity.
+
+The only separate highlight is the L1 circle at L2's cross-section
+position.
 
 ## Camera
 
-- Auto-fit: bounding radius = r_d + max(tube radii at depth d), where d is current depth. Camera distance set to fit.
+- Auto-fit: compute bounding box of all visible geometry (which now
+  extends in different directions at each level).  Camera distance set
+  to encompass the bounding box.
 - OrbitControls for manual navigation.
 - maxDistance large enough for depth-5 structures.
 
@@ -93,7 +226,7 @@ Level k ≥ 2: standard torus meshes via `buildTorusGeom(r_k, tubeR)` for each t
 Bottom center:
 - Depth d
 - r₁ through r_d values
-- Bounding radius
+- C_d center coordinates
 - Total torus count
 
 ## Future features

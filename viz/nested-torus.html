@@ -54,15 +54,15 @@ import { THREE, createScene, autoResize, animLoop, buildTorusGeom } from './totu
 
 const $ = id => document.getElementById(id);
 
-const KEY = 'nested-torus-v2';
+const KEY = 'nested-torus-v4';
 const DEFAULTS = {
   depth: 2,
-  ratios: [2.5, 2.5, 2.5, 2.5, 2.5],
-  opacities: [0.8, 0.25, 0.25, 0.25, 0.25],
-  modes: ['shell', 'shell', 'shell', 'shell', 'shell'],
-  visible: [true, true, true, true, true],
-  colors: ['#4fc3f7', '#ff8a50', '#66bb6a', '#ab47bc', '#ef5350'],
-  autoFit: true,
+  ratios:    [2.5, 2.5, 2.5, 2.5, 2.5],
+  opacities: [0.8, 0.4, 0.2, 0.1, 0.05],
+  modes:     ['shell', 'shell', 'shell', 'shell', 'shell'],
+  visible:   [true, true, true, true, true],
+  colors:    ['#4fc3f7', '#ff8a50', '#66bb6a', '#ab47bc', '#ef5350'],
+  autoFit:   true,
 };
 
 function load() {
@@ -81,11 +81,6 @@ function save() { localStorage.setItem(KEY, JSON.stringify(S)); }
 
 /* ── Radii ──────────────────────────────────────────── */
 
-/**
- * r₀ = 1 (implicit reference).
- * r₁ = ratio₁ × r₀,  r_k = ratio_k × r_{k−1}.
- * Returns R[0..5] where R[0]=0 (unused), R[k]=r_k.
- */
 function computeRadii() {
   const R = [0];
   R[1] = S.ratios[0];
@@ -93,13 +88,6 @@ function computeRadii() {
   return R;
 }
 
-/**
- * Boundary tube radii at level k.
- * Level k torus has major = r_k.
- * Tube radii = all ± combinations of r_{k−1} ± r_{k−2} ± … ± r₁
- * (r_{k−1} always +, remaining signs vary).
- * Returns sorted array of positive values.
- */
 function tubeRadii(R, k) {
   if (k < 2) return [];
   if (k === 2) return [R[1]];
@@ -112,6 +100,68 @@ function tubeRadii(R, k) {
   return out.sort((a, b) => b - a);
 }
 
+/* ── Axis & center helpers ─────────────────────────── */
+
+function isYAxis(k) { return k % 2 === 0; }
+
+// Center of level k's ring.
+// C[2] = origin.  For k ≥ 3, C[k] = C[k−1] − offset(k).
+// At φ_k = 0, tube center = C[k] + offset(k) = C[k−1].
+function computeCenters(R) {
+  const C = [null, null];
+  C[2] = new THREE.Vector3(0, 0, 0);
+  for (let k = 3; k <= 5; k++) {
+    C[k] = C[k - 1].clone();
+    if (isYAxis(k)) C[k].x -= R[k];
+    else            C[k].y -= R[k];
+  }
+  return C;
+}
+
+/* ── X-axis torus geometry ──────────────────────────── */
+
+function buildXTorusGeom(Rmaj, atube, segU = 32, segV = 64) {
+  const nv = (segU + 1) * (segV + 1);
+  const pos = new Float32Array(nv * 3);
+  const nor = new Float32Array(nv * 3);
+  const uv  = new Float32Array(nv * 2);
+  const idx = [];
+  let vi = 0, ni = 0, ui = 0;
+  for (let i = 0; i <= segU; i++) {
+    const th = (i / segU) * Math.PI * 2;
+    const ct = Math.cos(th), st = Math.sin(th);
+    for (let j = 0; j <= segV; j++) {
+      const ph = (j / segV) * Math.PI * 2;
+      const cp = Math.cos(ph), sp = Math.sin(ph);
+      pos[vi++] = atube * st;
+      pos[vi++] = (Rmaj + atube * ct) * cp;
+      pos[vi++] = (Rmaj + atube * ct) * sp;
+      nor[ni++] = st; nor[ni++] = ct * cp; nor[ni++] = ct * sp;
+      uv[ui++] = i / segU; uv[ui++] = j / segV;
+    }
+  }
+  for (let i = 0; i < segU; i++) {
+    for (let j = 0; j < segV; j++) {
+      const a = i * (segV + 1) + j, b = (i + 1) * (segV + 1) + j;
+      idx.push(a, b, b + 1, a, b + 1, a + 1);
+    }
+  }
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
+  geo.setAttribute('normal',   new THREE.Float32BufferAttribute(nor, 3));
+  geo.setAttribute('uv',       new THREE.Float32BufferAttribute(uv,  2));
+  geo.setIndex(idx);
+  return geo;
+}
+
+function torusGeomForLevel(levelK, Rmaj, atube, R2) {
+  const su = Math.max(12, Math.min(48, Math.round(48 * atube / Math.max(Rmaj, 0.01))));
+  const sv = Math.max(32, Math.min(128, Math.round(64 * Rmaj / Math.max(R2, 0.01))));
+  return isYAxis(levelK)
+    ? buildTorusGeom(Rmaj, atube, su, sv)
+    : buildXTorusGeom(Rmaj, atube, su, sv);
+}
+
 /* ── Scene ──────────────────────────────────────────── */
 
 const { scene, camera, renderer, controls } = createScene($('view'), {
@@ -119,8 +169,15 @@ const { scene, camera, renderer, controls } = createScene($('view'), {
 });
 autoResize(renderer, camera, $('view'));
 
-const groups = [];
-for (let k = 0; k <= 5; k++) { const g = new THREE.Group(); groups.push(g); scene.add(g); }
+const groups   = [];
+const hlGroup2 = new THREE.Group();  // only L2 gets a highlight (L1 circle)
+scene.add(hlGroup2);
+for (let k = 0; k <= 5; k++) {
+  const g = new THREE.Group(); groups.push(g); scene.add(g);
+}
+
+const levelMats = {};
+let hlMat2 = null;
 
 function clearGroup(g) {
   const disposed = new Set();
@@ -141,86 +198,143 @@ function makeMat(k) {
   });
 }
 
+const N_CIRCLE = 128;
+
 function rebuild() {
   const R = computeRadii();
-  for (let k = 1; k <= 5; k++) clearGroup(groups[k]);
+  const C = computeCenters(R);
+  for (let k = 1; k <= 5; k++) { clearGroup(groups[k]); groups[k].position.set(0, 0, 0); }
+  clearGroup(hlGroup2);
 
-  const N = 128;
-
-  /* Level 1: circle of radius r₁ */
-  const pts = [];
-  if (S.depth === 1) {
-    for (let i = 0; i <= N; i++) {
-      const a = (i / N) * Math.PI * 2;
-      pts.push(new THREE.Vector3(R[1] * Math.cos(a), 0, R[1] * Math.sin(a)));
+  /* ── Level 1: circle of radius r₁ ─────────────────── */
+  {
+    const pts = [];
+    if (S.depth === 1) {
+      for (let i = 0; i <= N_CIRCLE; i++) {
+        const a = (i / N_CIRCLE) * Math.PI * 2;
+        pts.push(new THREE.Vector3(R[1] * Math.cos(a), 0, R[1] * Math.sin(a)));
+      }
+    } else {
+      for (let i = 0; i <= N_CIRCLE; i++) {
+        const a = (i / N_CIRCLE) * Math.PI * 2;
+        pts.push(new THREE.Vector3(R[2] + R[1] * Math.cos(a), R[1] * Math.sin(a), 0));
+      }
     }
-  } else {
-    /* Depth ≥ 2: tube cross-section at φ=0 on L2 torus (major R[2], tube R[1]) */
-    for (let i = 0; i <= N; i++) {
-      const a = (i / N) * Math.PI * 2;
-      pts.push(new THREE.Vector3(R[2] + R[1] * Math.cos(a), R[1] * Math.sin(a), 0));
-    }
+    const curve = new THREE.CatmullRomCurve3(pts, true);
+    const tubeW = Math.max(0.008, 0.012 * R[1]);
+    const mat = makeMat(1);
+    levelMats[1] = mat;
+    groups[1].add(new THREE.Mesh(new THREE.TubeGeometry(curve, N_CIRCLE, tubeW, 8, true), mat));
   }
-  const curve = new THREE.CatmullRomCurve3(pts, true);
-  const tubeW = Math.max(0.008, 0.012 * R[1]);
-  groups[1].add(new THREE.Mesh(new THREE.TubeGeometry(curve, N, tubeW, 8, true), makeMat(1)));
 
-  /* Levels 2..depth: each level k has major = r_k */
+  /* ── Levels 2..depth: boundary tori at C[k] ───────── */
   for (let k = 2; k <= S.depth; k++) {
     const trs = tubeRadii(R, k);
     const mat = makeMat(k);
+    levelMats[k] = mat;
+
     for (const tR of trs) {
-      const su = Math.max(12, Math.min(48, Math.round(48 * tR / Math.max(R[k], 0.01))));
-      const sv = Math.max(32, Math.min(128, Math.round(64 * R[k] / Math.max(R[2], 0.01))));
-      groups[k].add(new THREE.Mesh(buildTorusGeom(R[k], tR, su, sv), mat));
+      groups[k].add(new THREE.Mesh(torusGeomForLevel(k, R[k], tR, R[2]), mat));
     }
+    groups[k].position.copy(C[k]);
+
+    // L2 highlight: the L1 circle at the φ₂=0 cross-section
+    if (k === 2) {
+      hlMat2 = new THREE.MeshPhongMaterial({
+        color: new THREE.Color(S.colors[0]),
+        transparent: true, opacity: Math.min(1, S.opacities[0] * 2),
+        side: THREE.DoubleSide, depthWrite: false, shininess: 60,
+        wireframe: true,
+      });
+      const pts = [];
+      for (let i = 0; i <= N_CIRCLE; i++) {
+        const a = (i / N_CIRCLE) * Math.PI * 2;
+        pts.push(new THREE.Vector3(R[2] + R[1] * Math.cos(a), R[1] * Math.sin(a), 0));
+      }
+      const curve = new THREE.CatmullRomCurve3(pts, true);
+      const tubeW = Math.max(0.009, 0.015 * R[1]);
+      hlGroup2.add(new THREE.Mesh(
+        new THREE.TubeGeometry(curve, N_CIRCLE, tubeW, 8, true), hlMat2));
+    }
+    // For k ≥ 3: no highlight — the level-(k−1) boundary at C[k−1]
+    // naturally sits at the φ_k = 0 cross-section.
   }
 
-  for (let k = 1; k <= 5; k++) groups[k].visible = k <= S.depth && S.visible[k - 1];
-  if (S.autoFit) fitCamera(R);
-  updateInfo(R);
+  for (let k = 1; k <= 5; k++) {
+    groups[k].visible = k <= S.depth && S.visible[k - 1];
+  }
+  hlGroup2.visible = S.depth >= 2 && S.visible[0];
+  if (S.autoFit) fitCamera(R, C);
+  updateInfo(R, C);
   save();
 }
 
 function updateMats() {
   for (let k = 1; k <= 5; k++) {
-    if (!groups[k].children.length) continue;
-    const mat = groups[k].children[0].material;
-    if (!mat) continue;
-    mat.color.set(S.colors[k - 1]);
-    mat.opacity = S.opacities[k - 1];
-    mat.wireframe = S.modes[k - 1] === 'wire';
+    if (levelMats[k]) {
+      levelMats[k].color.set(S.colors[k - 1]);
+      levelMats[k].opacity = S.opacities[k - 1];
+      levelMats[k].wireframe = S.modes[k - 1] === 'wire';
+      levelMats[k].needsUpdate = true;
+    }
+  }
+  if (hlMat2) {
+    hlMat2.color.set(S.colors[0]);
+    hlMat2.opacity = Math.min(1, S.opacities[0] * 2);
+    hlMat2.needsUpdate = true;
   }
   save();
 }
 
 function updateVis() {
-  for (let k = 1; k <= 5; k++) groups[k].visible = k <= S.depth && S.visible[k - 1];
+  for (let k = 1; k <= 5; k++) {
+    groups[k].visible = k <= S.depth && S.visible[k - 1];
+  }
+  hlGroup2.visible = S.depth >= 2 && S.visible[0];
   save();
 }
 
-function fitCamera(R) {
+function fitCamera(R, C) {
   R = R || computeRadii();
+  C = C || computeCenters(R);
   const d = S.depth;
-  const tr = tubeRadii(R, d);
-  const bound = (d >= 2 ? R[d] : R[1]) + (tr.length ? Math.max(...tr) : 0) + 0.1;
-  const dist = bound * 3.0;
-  camera.position.set(dist * 0.55, dist * 0.4, dist * 0.72);
-  controls.target.set(0, 0, 0);
+
+  const lo = new THREE.Vector3(Infinity, Infinity, Infinity);
+  const hi = new THREE.Vector3(-Infinity, -Infinity, -Infinity);
+
+  function expand(cx, cy, cz, r) {
+    lo.x = Math.min(lo.x, cx - r); lo.y = Math.min(lo.y, cy - r); lo.z = Math.min(lo.z, cz - r);
+    hi.x = Math.max(hi.x, cx + r); hi.y = Math.max(hi.y, cy + r); hi.z = Math.max(hi.z, cz + r);
+  }
+
+  if (d === 1) {
+    expand(0, 0, 0, R[1]);
+  } else {
+    expand(R[2], 0, 0, R[1]);
+    for (let k = 2; k <= d; k++) {
+      const tr = tubeRadii(R, k);
+      const ext = R[k] + (tr.length ? Math.max(...tr) : 0);
+      expand(C[k].x, C[k].y, C[k].z, ext);
+    }
+  }
+
+  const center = lo.clone().add(hi).multiplyScalar(0.5);
+  const sz = hi.clone().sub(lo);
+  const bound = Math.max(sz.x, sz.y, sz.z) * 0.5;
+  const dist = bound * 2.8;
+  camera.position.set(center.x + dist * 0.55, center.y + dist * 0.4, center.z + dist * 0.72);
+  controls.target.copy(center);
   controls.update();
 }
 
-function updateInfo(R) {
+function updateInfo(R, C) {
   R = R || computeRadii();
+  C = C || computeCenters(R);
   const SUB = '\u2080\u2081\u2082\u2083\u2084\u2085';
   const p = [`depth ${S.depth}`];
   for (let k = 1; k <= S.depth; k++) p.push(`r${SUB[k]}=${R[k].toFixed(2)}`);
-  const d = S.depth;
-  const tr = tubeRadii(R, d);
-  const bound = (d >= 2 ? R[d] : R[1]) + (tr.length ? Math.max(...tr) : 0);
-  p.push(`bound=${bound.toFixed(1)}`);
   let total = 0;
-  for (let k = 2; k <= d; k++) total += tubeRadii(R, k).length;
+  for (let k = 2; k <= S.depth; k++) total += tubeRadii(R, k).length;
   if (total) p.push(`${total} tori`);
   $('info').textContent = p.join('  ');
 }
