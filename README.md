@@ -43,6 +43,38 @@ expertise are welcome to examine, challenge, or extend the work.
 Please clone this repo and encourage 10 friends to do the same.
 
 
+## The big picture
+
+This project attempts a unified geometric account of
+fundamental physics — including gravity — from two free
+parameters and a discrete lattice.
+
+The work is organized in two layers:
+
+**[GRID](grid/README.md)** (Geometric Relational Interaction
+Domain) is the substrate: a minimal 4D causal lattice whose
+phase dynamics produce Maxwell's equations and whose
+information density produces Einstein's field equations and
+the gravitational constant G.  GRID derives both long-range
+forces from six axioms without importing either one.  See
+[`grid/synthesis.md`](grid/synthesis.md) for what has been
+established.
+
+**MaSt** (Material – Space – time) is the architecture built
+on that substrate: six compact dimensions where particles are
+standing electromagnetic waves.  MaSt takes Maxwell's equations
+(now derived by GRID) and the coupling constant α as inputs,
+then produces the particle spectrum, masses, charges, nuclear
+structure, and plausible mechanisms for the strong force (Q95)
+and matter–antimatter asymmetry (Q97).  Quantum behavior in
+MaSt is not postulated — it emerges from wave mechanics on
+compact geometry: quantized energy levels are standing-wave
+modes, uncertainty is the Fourier bandwidth limit, and spin
+is winding topology.
+
+Together, GRID + MaSt attempt to unify general relativity with
+quantum field theory through a common geometric substrate.
+
 ## The MaSt Continuum
 
 **MaSt** = **Ma**terial – **S**pace – **t**ime.
@@ -97,7 +129,8 @@ topology is exact.
 The only true inputs are: (1) the existence of energy
 (photons), (2) the existence and shape of material
 dimensions (Ma), and (3) the rules of propagation (Maxwell's
-equations).  Everything else — the particle zoo, their
+equations — now derived by [GRID](grid/README.md) from a
+discrete lattice).  Everything else — the particle zoo, their
 properties, their interactions — should follow.
 
 See [`qa/Q27-foundational-axioms.md`](qa/Q27-foundational-axioms.md) and
@@ -204,15 +237,18 @@ are incomplete.
 ### What remains open
 - **The α problem:** what determines the shear s ≈ 0.01
   of the electron sheet?  Multiple studies (R15, R19, R31,
-  R32, R34) have constrained but not solved this.
+  R32, R34) have constrained but not solved this.  α is
+  the single most important unsolved parameter.
 - **Ghost mode suppression:** the Compton window hypothesis
   (Q94) and dark matter reinterpretation (R42) are promising,
   but the window quality factor Q has not been computed from
   first principles.
-- **The hierarchy:** why is gravity 10⁴⁰× weaker than
-  electromagnetism?  The membrane mechanics study (R37)
-  proposes both arise from the same elastic interface.
-- **Deriving G and α from geometry** (R37).
+- **The hierarchy:** why is gravity ~10⁴⁰× weaker than EM?
+  GRID explains the mechanism — EM is local phase dynamics,
+  gravity is collective thermodynamics — but the precise ratio
+  depends on ζ and α, whose relationship (if any) is unknown.
+- **Weak force mechanism:** are W/Z collective Ma excitations
+  or something else? (Q96)
 
 
 ## Foundation
@@ -267,19 +303,22 @@ sheet to three (3Ma = Ma_e × Ma_ν × Ma_p), yielding Ma (R26).
 
 ## Structure
 
-- `reference/` — Source material by others and recorded conversations.
-- `primers/` — Self-contained tutorials on topics needed to follow
-  the studies.  See [`primers/README.md`](primers/README.md).
-- `papers/` — Authored documents presenting theories, results, and
-  proofs.  See [`papers/README.md`](papers/README.md).
-- `qa/` — Physics questions answered by logic and existing theory
-  (no computation).  See [`qa/README.md`](qa/README.md).
+- `grid/` — **GRID** (Geometric Relational Interaction Domain):
+  the substrate layer.  Derives Maxwell + Einstein from a discrete
+  lattice.  See [`grid/README.md`](grid/README.md).
 - `studies/` — Questions that require a computational model to answer.
   See [`studies/STATUS.md`](studies/STATUS.md) for the registry.
+- `qa/` — Physics questions answered by logic and existing theory
+  (no computation).  See [`qa/README.md`](qa/README.md).
+- `papers/` — Authored documents presenting theories, results, and
+  proofs.  See [`papers/README.md`](papers/README.md).
+- `primers/` — Self-contained tutorials on topics needed to follow
+  the studies.  See [`primers/README.md`](primers/README.md).
 - `labs/` — Proposed physical experiments to test predictions of the
   model.  See [`labs/README.md`](labs/README.md).
 - `viz/` — Interactive browser-based visualizations.
   See [`viz/index.html`](viz/index.html).
+- `reference/` — Source material by others and recorded conversations.
 - `lib/` — Shared Python code (Ma solver, mode search, metrics).
 
 

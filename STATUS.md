@@ -186,18 +186,19 @@ three-sheet architecture (R26) accommodates neutrino mass but
 the spin mechanism for neutrino-sheet modes with n₁ = 0 is
 unresolved.
 
-### Deriving G from geometry (R37 → GRID)
+### Deriving G from geometry (R37 → GRID) ✅
 
-Gravity should emerge from the same Ma × S framework.  R37
-showed self-gravity is negligible at Compton scale and the
+R37 showed self-gravity is negligible at Compton scale and the
 membrane-mechanics derivation was tautological (GR restated).
-A genuine derivation of G from Ma geometry has not been achieved.
 
-**New approach:** the [GRID sub-project](grid/README.md) attacks this
-from below — deriving G from the information resolution ζ = 1/4 of
-a discrete lattice, via Jacobson's thermodynamic argument.  GRID also
-derives Maxwell's equations from the same lattice, unifying the
-electromagnetic and gravitational foundations.
+**Resolved by GRID:** the [GRID sub-project](grid/README.md)
+derives both Maxwell's equations and Einstein's field equations
+from a minimal discrete lattice with two free parameters (ζ, α).
+G = 1/(4ζ) in natural units.  The lattice geometry investigation
+([`grid/lattice-geometry.md`](grid/lattice-geometry.md)) explores
+whether ζ itself follows from packing geometry (leading candidate:
+ζ = 1/6 from 4D simplicial lattice).  See
+[`grid/synthesis.md`](grid/synthesis.md) for the full summary.
 
 ---
 
