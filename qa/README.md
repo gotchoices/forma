@@ -68,5 +68,6 @@ For questions that need a computational model, see [`studies/`](../studies/).
 | [Q95](Q95-strong-force-as-internal-em.md) | The strong force as internal EM coupling through Ma | Open — quantifiable |
 | [Q96](Q96-force-carriers-in-mast.md) | Do force-carrying bosons exist in MaSt? | Open — hypothesis |
 | [Q97](Q97-shear-chirality-and-cp-violation.md) | Does shear chirality bias matter over antimatter? | Open — conceptual |
+| [Q98](Q98-quark-generations-vs-lepton-generations.md) | Are quark generations real or a labeling convention? | Resolved — structural |
 
 Unprocessed and brief questions live in [`INBOX.md`](INBOX.md).
