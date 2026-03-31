@@ -12,7 +12,7 @@
   border-left: 1px solid rgba(255,255,255,0.08);
   display: none;
 }
-#view-2d.show { display: block; }
+#view-2d.show { display: block; flex: 0 0 40%; }
 #flat-canvas { display: block; width: 100%; height: 100%; }
 
 .view-label {
@@ -101,7 +101,7 @@ input.wn::-webkit-inner-spin-button { -webkit-appearance: none; }
     <label>p (tube)</label>
     <div class="spinner">
       <button class="spin-btn" data-tgt="p" data-d="-1">▼</button>
-      <input type="number" class="wn" id="wind-p" value="1" min="1" max="12">
+      <input type="number" class="wn" id="wind-p" value="1" min="0" max="12">
       <button class="spin-btn" data-tgt="p" data-d="1">▲</button>
     </div>
   </div>
@@ -172,6 +172,8 @@ input.wn::-webkit-inner-spin-button { -webkit-appearance: none; }
   <div><span class="lbl">a/R </span><span class="v" id="i-ar">6.60</span></div>
   <span id="i-type" class="badge b-spindle">SPINDLE</span>
   <div><span class="lbl">Knot </span><span class="v" id="i-knot">(1,2)</span></div>
+  <div><span class="lbl">Charge </span><span class="v" id="i-charge">±e</span></div>
+  <div><span class="lbl">Spin </span><span class="v" id="i-spin">½ fermion</span></div>
   <div class="sep" style="height:12px"></div>
   <div><span class="lbl">Outer </span><span class="v" id="i-out">—</span><span class="lbl"> λ</span></div>
   <div><span class="lbl">V<sub>tor</sub>/V<sub>sph</sub> </span><span class="v" id="i-vr">—</span></div>
@@ -230,7 +232,7 @@ const S = {
 /* ── 3D scene ─────────────────────────────────────────── */
 
 const { scene, camera, renderer, controls, clock } =
-  createScene($('view-3d'), { maxDistance: 80 });
+  createScene($('view-3d'), { maxDistance: 80, camPos: [4, 2.5, 5] });
 autoResize(renderer, camera, $('view-3d'));
 
 const world = new THREE.Group();
@@ -391,6 +393,13 @@ function updateInfo() {
   if      (aR < 0.999) { ty.textContent = 'RING';    ty.className = 'badge b-ring'; }
   else if (aR < 1.001) { ty.textContent = 'HORN';    ty.className = 'badge b-horn'; }
   else                 { ty.textContent = 'SPINDLE'; ty.className = 'badge b-spindle'; }
+
+  // Charge: only |p|=1 produces net Gauss's-law flux
+  const chargeLabel = (p === 1) ? '±e' : '0';
+  $('i-charge').textContent = chargeLabel;
+  // Spin: odd p → fermion (half-integer topology); even p → boson
+  const spinLabel = (p % 2 === 1) ? '½ fermion' : '0,1 boson';
+  $('i-spin').textContent = spinLabel;
 
   const vr = 3 * aR * aR / (16 * Math.PI * Math.PI);
   $('i-out').textContent   = ((1 + aR) / (4 * Math.PI)).toFixed(4);
@@ -604,7 +613,8 @@ $('sl-op').oninput = e => {
 
 // Winding spinners
 function setWinding(key, val) {
-  val = Math.max(1, Math.min(12, Math.round(val)));
+  const lo = key === 'p' ? 0 : 1;
+  val = Math.max(lo, Math.min(12, Math.round(val)));
   if (val === S[key]) return;
   S[key] = val;
   $('wind-' + key).value = val;

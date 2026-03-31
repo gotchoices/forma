@@ -182,9 +182,9 @@ The page has three zones:
 └─────────────────────────────────────────────────────────────────┘
 ```
 
-When the 2D pane is hidden, the 3D view fills the full width.  When it is
-shown, the window splits 50/50.  Both views share the same animated photon
-and respond to the same controls.
+When the 2D pane is hidden, the 3D view fills the full width.  When shown,
+the 3D view takes 60% and the 2D pane takes 40%.  Both views share the same
+animated photon and respond to the same controls.
 
 ---
 
@@ -216,11 +216,25 @@ surface.
 
 ### Winding
 
-**p spinner** and **q spinner** — integer inputs with ▲/▼ arrow buttons
-(range 1–12).  These set the tube and ring winding numbers respectively.
-Changing them rebuilds the geodesic path instantly.  Direct numeric entry is
-also accepted.  There are no preset buttons for windings — any integer pair
-works.
+**p spinner** (tube, range **0–12**) and **q spinner** (ring, range 1–12) —
+integer inputs with ▲/▼ arrow buttons.  Direct numeric entry also accepted.
+
+Special case p = 0: the geodesic collapses to a circle at θ = 0, tracing
+the outer equator of the torus q times.  This is a pure ring mode — no tube
+winding, no poloidal phase.
+
+**Charge** and **spin** are shown in the info bar and depend only on p:
+
+| p | Charge | Spin | Classification |
+|---|--------|------|----------------|
+| 0 | 0 | 0 (scalar) | Neutral boson |
+| 1 | ±e | ½ | Fermion (electron family) |
+| even ≥ 2 | 0 (cancels) | 0 or 1 | Neutral boson |
+| odd ≥ 3  | ±e | ½ | Fermion |
+
+Only |p| = 1 carries net charge; for |p| ≥ 2 the Gauss's-law integral over
+the compact surface cancels.  Odd p gives half-integer topology (spin ½);
+even p (including 0) returns to its starting value after one circuit (boson).
 
 ### Shear
 
@@ -358,6 +372,8 @@ A single strip at the bottom shows live values:
 | Outer edge | The outermost circle of the torus in units of λ_C: (R+a)/(2π·R) |
 | Vtor/Vsph | Ratio of torus volume to the volume of a sphere with r = λ_C/2 |
 | q/e | Charge proxy from the WvM energy balance: 0.910 / √(Vtor/Vsph) |
+| Charge | ±e if p = 1, 0 otherwise (Gauss's-law selection rule) |
+| Spin | ½ (fermion) if p odd; 0/1 (boson) if p even or zero |
 | Path | Geodesic length in units of λ_C: √((q+sp)² + (p·a/R)²).  Uses (q+sp), not qEff. |
 | Slope | Ratio p·(a/R) / q — the visual slope of the geodesic in both 2D and 3D.  Does not change with shear. |
 | s | Fractional shear |
@@ -386,6 +402,10 @@ It complements but does not replace:
 ## Implementation notes (for the developer)
 
 - Single HTML file, shared `totu-viz.css` + `totu-viz.js`, Three.js 0.163.0.
+- Initial camera at `[4, 2.5, 5]` (distance ≈ 6.9, elevation ≈ 21°, azimuth ≈ 38°).
+  With auto-fit and FIT = 2.2, the torus occupies ~70% of the viewport,
+  leaving a moderate border gap on all sides.
+- 2D panel: `flex: 0 0 40%`; 3D panel: `flex: 1` (takes remainder).
 - Use `animLoop()` from `totu-viz.js` (not an inline rAF loop).
 - Use `torusMaterials()` from `totu-viz.js` for the surface and wire meshes.
 - The 2D canvas lives in the right-hand flex pane; its resize handler fires
