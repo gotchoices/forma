@@ -101,4 +101,5 @@ See [STATUS.md](STATUS.md) for the roadmap and progress.
 | [maxwell.md](maxwell.md) | Maxwell derivation from lattice *(planned)* |
 | [gravity.md](gravity.md) | G derivation in natural + SI units *(planned)* |
 | [stiffness.md](stiffness.md) | Spacetime stiffness and EM–gravity link *(planned)* |
+| [lattice-geometry.md](lattice-geometry.md) | Open investigation: can ζ = 1/4 be derived from simplicial packing? |
 | [synthesis.md](synthesis.md) | Unification summary, open questions *(planned)* |

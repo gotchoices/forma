@@ -19,22 +19,27 @@ Establish the axiom set, notation, and free parameters.
 
 **Deliverable:** [foundations.md](foundations.md)
 
-### Phase 2: Maxwell from the lattice
+### Phase 2: Maxwell from the lattice ✅
 
 Derive all four of Maxwell's equations from axioms A1–A4 and A6,
 cleanly and without importing any electrodynamics.
 
-- [ ] Continuum limit of phase field → scalar wave equation
-- [ ] Gauge invariance demands compensating connection A_μ
-- [ ] Covariant derivative D_μ = ∂_μ − ieA_μ
-- [ ] Field tensor F_μν = ∂_μA_ν − ∂_νA_μ from plaquette holonomy
-- [ ] Electromagnetic action from coupling constant κ = 1/(4πα)
-- [ ] Euler-Lagrange → inhomogeneous Maxwell: ∂_μ F^μν = J^ν
-- [ ] Bianchi identity → homogeneous Maxwell: ∂_{[μ} F_{νρ]} = 0
-- [ ] Decompose F_μν into E and B using (1,3) signature
-- [ ] Write out all four equations explicitly (Gauss, Faraday, Ampère, ∇·B=0)
-- [ ] Restore SI units: identify ε₀, μ₀, verify μ₀ε₀ = 1/c²
-- [ ] Charge quantization from phase periodicity (topological vortices)
+- [x] Continuum limit of phase field → gradient ∂_μθ
+- [x] Gauge invariance demands compensating connection A_μ
+- [x] Covariant derivative D_μθ = ∂_μθ − eA_μ
+- [x] Field tensor F_μν = ∂_μA_ν − ∂_νA_μ from plaquette holonomy
+- [x] Decompose F_μν into E and B using (1,3) signature
+- [x] Electromagnetic action from coupling constant κ = 1/(4πα)
+- [x] Euler-Lagrange → inhomogeneous Maxwell: ∂_μ F^μν = J^ν
+  - [x] ν = 0 → Gauss's law: ∇·E = ρ
+  - [x] ν = j → Ampère's law: ∇×B − ∂E/∂t = J
+- [x] Bianchi identity → homogeneous Maxwell: ∂_{[μ} F_{νρ]} = 0
+  - [x] One time index → Faraday's law: ∇×E + ∂B/∂t = 0
+  - [x] Three spatial → No monopoles: ∇·B = 0
+- [x] Charge quantization from phase periodicity (topological vortices)
+- [x] Charge conservation ∂_μ J^μ = 0 as theorem
+- [x] Axiom audit: which axioms did what
+- [ ] SI restoration (deferred — working in natural units)
 
 **Deliverable:** [maxwell.md](maxwell.md)
 
@@ -88,7 +93,7 @@ Summarize what GRID establishes and what remains open.  Bridge to MaSt.
 
 ## Current focus
 
-**Phase 1 complete.**  Next: Phase 2 (Maxwell derivation).
+**Phases 1–2 complete.**  Next: Phase 3 (deriving G).
 
 ---
 

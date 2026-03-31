@@ -18,6 +18,10 @@ Interaction Domain.
 defining the length scale.  The Planck length is the grain size,
 not a derived quantity.
 
+**Convention:** all GRID derivations work in natural units.  SI
+conversions are deferred to the end and clearly marked when they
+appear.
+
 ---
 
 ## The axioms
@@ -84,11 +88,14 @@ must remain the same — provided I simultaneously adjust the
 **connection** between cells to compensate.
 
 This compensating connection, in the continuum limit, is the
-electromagnetic four-potential A_μ.  It lives on the **links**
-between cells, not on the cells themselves.  It is not an
-independent degree of freedom — it is the continuum description
-of the pattern of phase differences already present in the
-lattice (see [maxwell.md](maxwell.md) for the full derivation).
+electromagnetic four-potential A_μ.  It is part of the grid's
+state, stored on the **links** between cells (not on the cells
+themselves).  A_μ is not a new parameter — it is dynamic memory
+on each link, determined by the equations of motion.  Its
+existence is *forced* by gauge invariance; its dynamics produce
+the electromagnetic field.  A propagating disturbance in the
+link states is a photon
+(see [maxwell.md](maxwell.md) for the full derivation).
 
 *This axiom gives us: the gauge field A_μ, from which the
 electromagnetic field tensor F_μν is constructed.*
