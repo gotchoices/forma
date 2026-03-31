@@ -94,4 +94,5 @@ See [STATUS.md](STATUS.md) for the roadmap and progress.
 | [maxwell.md](maxwell.md) | Full derivation: lattice → Maxwell's equations |
 | [gravity.md](gravity.md) | Full derivation: lattice → Einstein's equations + G |
 | [lattice-geometry.md](lattice-geometry.md) | Open investigation: can ζ be derived from simplicial packing? |
+| [compact-dimensions.md](compact-dimensions.md) | Hypothesis: MaSt sheets as wrapped 2D triangular lattices; can wrapping constrain α? |
 | [synthesis.md](synthesis.md) | What GRID proves, what it doesn't, and where it leads |

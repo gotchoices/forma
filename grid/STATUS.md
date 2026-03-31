@@ -104,9 +104,16 @@ does not derive anything new.
 
 **Phases 1–4 complete.**  Core GRID work is done.
 
-**Parallel track:** [lattice-geometry.md](lattice-geometry.md) —
-investigating whether ζ follows from packing geometry.  Leading
-candidate: 4D simplicial (pentachoron, ζ = 1/6).
+**Parallel tracks:**
+- [lattice-geometry.md](lattice-geometry.md) — can ζ follow
+  from packing geometry?  Leading candidate: 4D simplicial
+  (pentachoron, ζ = 1/6), or 2D sheets give ζ = 1/4.
+- [compact-dimensions.md](compact-dimensions.md) — **complete** —
+  2D triangular lattices wrapped into tori produce a discrete
+  but dense α spectrum.  Conclusion: α is a designer's choice
+  within available discrete steps; the lattice geometry does
+  not uniquely determine it.  Noteworthy: weak coupling
+  (1/α > 100) requires a minimum of 3 cells (6 triangles).
 
 ---
 

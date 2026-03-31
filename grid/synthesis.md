@@ -135,6 +135,59 @@ graviton-like excitations is an open question.
 
 ---
 
+## Constants inventory
+
+What has GRID derived, what is input, and what remains?
+
+### Derived from the lattice
+
+| Constant / relation | How it emerges | Derivation |
+|---------------------|----------------|------------|
+| Maxwell's equations (all 4) | Gauge invariance + least action | [maxwell.md](maxwell.md) |
+| Einstein field equations | Thermodynamics of information | [gravity.md](gravity.md) |
+| G = 1/(4ζ) | Coefficient in Einstein equations | [gravity.md](gravity.md) |
+| Λ (cosmological constant) | Integration constant from Bianchi identity | [gravity.md](gravity.md) |
+| Spacetime stiffness c⁴/(8πG) = ζ/(2π) | Rearrangement of G | [gravity.md](gravity.md) |
+| e = √(4πα) | Charge from coupling constant | [maxwell.md](maxwell.md) |
+| Charge quantization | Phase periodicity → topological winding | [maxwell.md](maxwell.md) |
+| Charge conservation (∂_μJ^μ = 0) | Antisymmetry of F^μν | [maxwell.md](maxwell.md) |
+| E = ℏω (energy ∝ frequency) | Quadratic action → wave equation | Implicit in [maxwell.md](maxwell.md) |
+| λ = h/p (de Broglie) | Fourier relation on the lattice | Implicit in wave mechanics |
+| ε₀ = μ₀ = 1 (natural units) | Single coupling α unifies them | [foundations.md](foundations.md) |
+
+### Input parameters (not derived)
+
+| Constant | Role in GRID | Status |
+|----------|-------------|--------|
+| α ≈ 1/137 | Coupling strength (A6) | Measured input — the single unsolved number |
+| ζ | Information resolution (A5) | Free parameter; may follow from packing geometry ([lattice-geometry.md](lattice-geometry.md)) |
+
+### Unit-system constants (definitional, not physical)
+
+| Constant | What it means in the lattice |
+|----------|------------------------------|
+| c | One cell per tick — defines the relationship between length and time units |
+| ℏ | One phase cycle per Planck energy — defines energy units in terms of frequency |
+| k_B | One bit per Planck temperature — defines temperature units |
+| L (Planck length) | Grain size = 1 by definition |
+
+These are not "derived" or "unexplained" — they are unit
+conversions between human-scale SI and the lattice's natural
+scales.  Their SI values (c = 3×10⁸ m/s, etc.) reflect the
+ratio between human units and Planck units.
+
+### What remains unexplained
+
+| Mystery | Status |
+|---------|--------|
+| Why α ≈ 1/137 | Open — the single most important unsolved parameter |
+| Why ζ = 1/4 (or 1/6) | Exploratory — may follow from packing geometry |
+| Why 4 dimensions | Assumed (A1) |
+| Why (1,3) signature | Assumed (A2) |
+| Value of Λ | Appears as free integration constant — not predicted |
+
+---
+
 ## The energy budget question
 
 If every cell computes a new state every Planck tick, what
@@ -210,6 +263,15 @@ fundamental physics from two free parameters:
 
 **Shared open question:** what determines α?
 
+The compact-dimensions investigation
+([compact-dimensions.md](compact-dimensions.md)) showed that
+wrapping 2D triangular sheets into tori discretizes α but does
+not uniquely determine it — the lattice spectrum is dense
+enough that essentially any coupling constant is achievable.
+Conclusion: **α is a designer's choice within the available
+discrete steps.**  A selection principle (energy minimization,
+topological constraint, or something else) remains unknown.
+
 If the strong force mechanism (Q95) is confirmed quantitatively
 and the weak force finds a geometric explanation within MaSt,
 then GRID + MaSt would constitute a complete geometric account
@@ -269,9 +331,12 @@ geometric account of fundamental physics from two numbers
 and a lattice.
 
 What remains: fixing the two free parameters (ζ from geometry,
-α from unknown), confirming the strong force mechanism
-quantitatively, finding a weak force mechanism, and connecting
-to quantum mechanics.  The lattice geometry investigation
-offers a path to reducing ζ from a free parameter to a
-geometric consequence, which would leave α as the single
-unexplained number in all of fundamental physics.
+α from a selection principle or measurement), confirming the
+strong force mechanism quantitatively, finding a weak force
+mechanism, and connecting to quantum mechanics.  The lattice
+geometry investigation offers a path to reducing ζ from a free
+parameter to a geometric consequence.  The compact-dimensions
+study showed that α, while discretized by the lattice, is
+not uniquely constrained — it remains a free parameter whose
+value must be set by additional physics or taken from
+experiment.
