@@ -38,8 +38,22 @@ These will all emerge.
 
 ## Additional inputs beyond the axioms
 
-This derivation uses two results from outside the GRID axioms.
+This derivation uses four results from outside the GRID axioms.
 They are flagged here rather than smuggled in:
+
+**A smooth continuum limit.** The GRID lattice (A1) is discrete.
+This derivation operates entirely in smooth differential
+geometry: a metric g_ab, the Ricci tensor R_ab, covariant
+derivatives, null congruences, and affine parameters.  We
+assume the lattice admits a continuum limit in which all of
+these structures are well-defined.  For gauge fields, lattice
+gauge theory provides strong evidence that the continuum limit
+works.  For gravity — for the metric *itself* to emerge
+smoothly from discrete structure — this remains an open
+problem in quantum gravity.  We take it as a working
+assumption: the lattice is fine-grained enough that the
+continuum description is valid at the scales where the
+derivation operates.
 
 **The Unruh effect.** An observer accelerating at rate a through
 the vacuum perceives thermal radiation at temperature:
@@ -56,6 +70,21 @@ produces Maxwell (classical EM), and lattice gauge theories
 are known to reproduce QFT when quantized.  But we have not
 explicitly derived it here from A1–A6.  We take it as
 established physics.
+
+**Thermodynamic equilibrium of horizons.** Steps 3 and 6 apply
+the Clausius relation δQ = TδS to a local Rindler horizon.
+The Clausius relation is equilibrium thermodynamics — it
+holds for quasi-static processes in systems with a well-defined
+temperature and entropy at every instant.  We assume that
+local Rindler horizons satisfy this condition: the entropy-area
+relation holds instantaneously as energy flows through the
+horizon.  Jacobson flagged this as the key physical assumption
+in his original (1995) paper and refined it in later work
+(2015, "Entanglement Equilibrium and the Einstein Equation").
+If the horizon is far from equilibrium, the Clausius relation
+fails and Einstein's equations may only hold as a near-
+equilibrium approximation — which could itself be physically
+significant.
 
 **The Raychaudhuri equation.** The expansion θ of a bundle
 (congruence) of light rays satisfies:
@@ -74,6 +103,20 @@ Lorentzian geometry (A2), before imposing any dynamics.  It
 is purely about how the cross-sectional area of a light
 beam changes as it propagates through curved spacetime.
 
+**Energy-momentum conservation.** Step 7 uses ∇^a T_ab = 0
+to fix the undetermined function f and produce the full
+Einstein equation (including Λ).  In standard physics, this
+follows from diffeomorphism invariance of the matter action —
+the principle that the laws of physics are the same in all
+coordinate systems.  GRID's axioms (A1–A6) do not explicitly
+assert diffeomorphism invariance; they describe a discrete
+lattice.  We take energy-momentum conservation as an
+additional physical requirement, motivated by the expectation
+that the continuum limit of a regular lattice respects
+coordinate freedom.  Without this input, the derivation would
+stop at Step 6 (T_ab related to R_ab for null vectors) and
+could not uniquely determine the Einstein tensor.
+
 ---
 
 ## The derivation
@@ -89,10 +132,13 @@ never receive signals from (analogous to the cosmological
 horizon, but local and observer-dependent).
 
 Near any point in spacetime, for a sufficiently short time
-interval, the geometry looks flat (this is the equivalence
-principle — a consequence of A2's smooth Lorentzian structure).
-So every point has a family of local Rindler horizons, one for
-each possible acceleration direction.
+interval, the geometry looks flat.  This is the equivalence
+principle — a consequence of the smooth continuum limit
+(any differentiable manifold is locally flat) combined with
+A2's Lorentzian signature (which gives the local patch
+Minkowski structure).  So every point has a family of local
+Rindler horizons, one for each possible acceleration
+direction.
 
 These horizons are real causal boundaries.  Information on one
 side cannot reach the other.
@@ -109,12 +155,24 @@ $$
 
 where δA is the area of a small patch of the horizon.
 
-This is the key physical content of A5: the lattice has a finite
-information density, and a causal boundary of area A stores ζA
-bits.  The entropy is not a property of what's behind the
-horizon — it is a property of the boundary itself, counting the
-number of lattice configurations consistent with the macroscopic
-state.
+This is the key physical content of A5: any causal boundary of
+area A stores ζA bits of entropy.  The entropy is not a
+property of what's behind the horizon — it is a property of
+the boundary itself, counting the number of lattice
+configurations consistent with the macroscopic state.
+
+**How strong is A5?**  The innocuous phrasing "each cell
+contributes ζ bits" understates what A5 actually asserts.  The
+derivation requires that **every causal horizon, at every
+point, in every null direction, obeys an area-entropy law**.
+This is the **holographic principle** — the claim that
+information in a region is bounded by its boundary area, not
+its volume.  A5 encodes this principle directly, and it does
+most of the heavy lifting in this derivation.  The Jacobson
+argument is essentially: *if holographic entropy holds, then
+Einstein's equations follow*.  The lattice provides a concrete
+substrate for the holographic bound, but A5 is a much stronger
+axiom than "1/4 bit per cell."
 
 ### Step 3: Heat flow and the Clausius relation
 
@@ -221,8 +279,8 @@ where f is an undetermined scalar function.
 
 ### Step 7: Fixing f from conservation
 
-The stress-energy tensor is conserved (energy-momentum is
-neither created nor destroyed):
+Energy-momentum conservation (an additional input, see above)
+requires:
 
 <!-- ∇^a T_ab = 0 -->
 $$
@@ -338,12 +396,9 @@ defined in terms of G, so the SI value of G cannot be
 "predicted" from ζ alone — it also requires knowing the grain
 size in meters.
 
-What the derivation establishes is the **relationship**:
-
-<!-- G = ℏc³ / (4ζ k_B × (k_B T_P²)...) -->
-
-Actually, the clean statement in SI is: the Bekenstein-Hawking
-entropy in SI units is:
+What the derivation establishes is the **relationship** between
+G and ζ.  The cleanest way to see the SI connection: the
+Bekenstein-Hawking entropy in SI units is:
 
 <!-- S = k_B c³ A / (4ℏG) -->
 $$
@@ -375,7 +430,7 @@ fundamental constant.
 
 | Result | Expression | From |
 |--------|-----------|------|
-| Einstein field equations | G_ab + Λg_ab = (2π/ζ)T_ab | Clausius + Unruh + Raychaudhuri + A5 |
+| Einstein field equations | G_ab + Λg_ab = (2π/ζ)T_ab | A5 + Unruh + Raychaudhuri + Clausius + conservation + continuum limit + horizon equilibrium |
 | Newton's constant | G = 1/(4ζ) | Coefficient matching |
 | Cosmological constant | Λ appears as integration constant | Conservation law |
 | Spacetime stiffness | c⁴/(8πG) = ζ/(2π) | Rearrangement |
@@ -388,12 +443,14 @@ fundamental constant.
 |-------|------------------|--------|
 | A1 (4D lattice) | Spacetime arena, causal structure | Axiom |
 | A2 (signature 1,3) | Rindler horizons, null rays, Raychaudhuri | Axiom |
-| A5 (ζ = 1/4) | Entropy bound δS = ζ δA | Axiom |
-| Unruh effect | Temperature T = κ/(2π) | Established physics (QFT theorem) |
-| Raychaudhuri equation | δA from R_ab | Kinematic identity (not a field equation) |
+| A5 (ζ = 1/4) | Holographic entropy δS = ζ δA | Axiom (encodes holographic principle) |
+| Smooth continuum limit | Metric, R_ab, covariant derivatives | Additional input (not derived from A1–A6) |
+| Unruh effect | Temperature T = κ/(2π) | Additional input (QFT theorem) |
+| Horizon equilibrium | Clausius relation applies to horizons | Additional input (not derived from A1–A6) |
+| Energy conservation | ∇^a T_ab = 0 | Additional input (diffeomorphism invariance) |
+| Raychaudhuri equation | δA from R_ab | Kinematic identity (follows from continuum limit) |
 | Clausius relation | δQ = TδS | Basic thermodynamics |
-| Contracted Bianchi identity | Fixes f, gives Λ | Geometric identity |
-| Energy conservation | ∇^a T_ab = 0 | Physical requirement |
+| Contracted Bianchi identity | Fixes f, gives Λ | Geometric identity (follows from continuum limit) |
 
 **Not used:** A3 (phase), A4 (gauge invariance), A6 (α).
 Gravity is completely independent of electromagnetism in this
@@ -441,9 +498,42 @@ field equation is assumed.  The Einstein equation is what
 *comes out* — the Raychaudhuri equation is just the geometric
 machinery that connects area change to curvature.
 
-**What IS assumed that goes beyond A1–A6?**  The Unruh effect.
-It requires quantized fields on the lattice, not just classical
-fields.  Our Maxwell derivation is classical.  The implicit
-assumption is that the lattice, when quantized, produces
-standard QFT — which is the well-established claim of lattice
-gauge theory, but we have not derived it explicitly within GRID.
+**Is ζ = 1/4 an independent input or calibrated from GR?**
+The relation G = 1/(4ζ) holds for any ζ — the derivation is
+valid regardless of its value.  But the specific choice
+ζ = 1/4 was historically motivated by the Bekenstein-Hawking
+entropy S = A/(4G), which is itself a result of GR + QFT.
+We are using a value learned from the theory we are deriving.
+The logical chain is not circular (postulate ζ → derive
+Einstein → recover BH as a self-consistency check), but the
+motivation for the numerical value is.  An independent
+geometric derivation of ζ — e.g., from lattice packing
+(see [lattice-geometry.md](lattice-geometry.md)) — would
+remove this concern.  Until then, ζ = 1/4 should be
+understood as **calibrated to match known physics**, not
+predicted from first principles.
+
+**Does this derivation apply to all matter, or just EM?**
+Step 4 uses T_ab for "whatever matter is present," but GRID
+has only derived one type of matter field: the electromagnetic
+field (from A3, A4, A6).  The derivation implicitly assumes
+that any matter field has a well-defined stress-energy tensor
+that couples to the horizon thermodynamics.  This is expected
+on general grounds (T_ab exists for any Lagrangian field
+theory), but it extends the claim beyond what A1–A6 alone
+establish.
+
+**What IS assumed that goes beyond A1–A6?**  Four things,
+all flagged in the "Additional inputs" section above:
+
+1. A smooth continuum limit (the lattice produces a
+   differentiable manifold with well-defined curvature)
+2. The Unruh effect (requires quantized fields, not just
+   classical — our Maxwell derivation is classical, and the
+   implicit assumption is that the quantized lattice produces
+   standard QFT, which lattice gauge theory supports but we
+   have not derived within GRID)
+3. Thermodynamic equilibrium of horizons (the Clausius
+   relation applies to local Rindler horizons)
+4. Energy-momentum conservation (∇^a T_ab = 0, from
+   diffeomorphism invariance of the matter action)
