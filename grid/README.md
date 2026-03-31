@@ -97,4 +97,6 @@ See [STATUS.md](STATUS.md) for the roadmap and progress.
 | [compact-dimensions.md](compact-dimensions.md) | Hypothesis: MaSt sheets as wrapped 2D triangular lattices; can wrapping constrain α? |
 | [synthesis.md](synthesis.md) | What GRID proves, what it doesn't, and where it leads |
 | [dual-bubbles.md](dual-bubbles.md) | The Compton-Schwarzschild conservation law and the embedding mechanism (framing) |
+| [sim-gravity/](sim-gravity/) | Planned simulation: does embedding a rigid body produce 1/r deformation? |
+| [sim-maxwell/](sim-maxwell/) | Planned simulation: can the lattice propagate directional waves? |
 | [INBOX.md](INBOX.md) | Raw ideas and open threads not yet formalized |

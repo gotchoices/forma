@@ -158,3 +158,47 @@ Core idea: the flat Ma torus forces the ambient S lattice to
 deform (→ gravity), and the product λ_C × r_s = 2L_P² =
 1/(2ζ) is a conservation law linking internal compactness to
 external curvature.
+
+---
+
+## 2026-03-31: Two planned simulation studies
+
+Both are substantial enough to warrant their own folders
+inside `grid/`.  Design notes below; execution is future
+work.
+
+### Study A: Gravity from embedding (`sim-gravity/`)
+
+**Question:** does embedding a rigid flat structure in a
+relaxed lattice produce a deformation field that falls off
+as 1/r?
+
+See [dual-bubbles.md](dual-bubbles.md) for motivation.
+Detailed design in [sim-gravity/README.md](sim-gravity/README.md).
+
+### Study B: Wave propagation on the lattice (`sim-maxwell/`)
+
+**Question:** can a small triangular lattice support
+directional wave propagation and superposition — the
+minimum conditions for hosting Maxwell's equations?
+
+Two candidate approaches:
+1. **Standard lattice gauge theory** — use the Wilson
+   action equations of motion as the update rule.  This is
+   proven to work (it's how lattice QCD is done), but it
+   imports formalism rather than testing the "processor"
+   picture from scratch.
+2. **String-register model** — each node holds a circular
+   standing wave (phase state), each edge holds a linear
+   standing wave (link state), and the update rule is local
+   superposition at junctions.  This tests whether the
+   processor/string picture from the INBOX entry above is
+   *functional* or merely *conceptual*.
+
+Approach 2 is riskier but more informative.  If it works
+(supports directional propagation, not just diffusion), it
+validates the micro-instruction picture.  If it fails
+(energy sloshes isotropically), it tells us the string
+picture needs more structure.
+
+Detailed design in [sim-maxwell/README.md](sim-maxwell/README.md).

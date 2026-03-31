@@ -67,6 +67,17 @@ variable — a point on a circle.
 The phase is not directly observable.  Only **phase differences**
 between neighboring cells have physical meaning.
 
+**Phase oscillates freely.**  Time always advances (A2), but
+the phase at each cell can increase or decrease on any given
+tick.  This back-and-forth oscillation is the wave content of
+the lattice — without it, there are no oscillating fields and
+no wave propagation.  The time derivative of phase (θ̇) is
+the electric field in the temporal gauge; its oscillation
+between positive and negative values produces the alternating
+E and B of an electromagnetic wave.  When phase accumulates
+past 2π and wraps, this topological carry is the microscopic
+mechanism of charge quantization.
+
 *This axiom gives us: U(1) symmetry (the circle group), and the
 seed from which electromagnetic gauge structure will grow.*
 
