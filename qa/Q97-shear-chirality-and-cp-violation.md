@@ -163,6 +163,13 @@ could have gone either way.  Once the choice was made
 into the geometry and every subsequent particle inherited
 the same convention.
 
+This means the question "is our shear in the direction
+that favors matter?" is circular.  The shear creates a
+kinetic bias for one winding direction over the other
+(§3).  Whichever direction wins, we call "matter."  The
+word is a name for the winner, not a pre-existing category
+that the shear either matches or doesn't.
+
 
 ## 6. Implications for dark matter
 
