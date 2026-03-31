@@ -8,6 +8,7 @@ browser, no server required.
 
 | File | Tag | Description |
 |------|-----|-------------|
+| [`torus-studio.html`](torus-studio.html) | STUDIO | Unified torus explorer: 3D shape morphing, arbitrary (p,q) spinners, lattice shear (primer-correct tube-tilt orientation), optional 2D flat-sheet panel, full physics info bar. Supersedes torus-explorer and dual-torus. |
 | [`dual-torus.html`](dual-torus.html) | R3 | Side-by-side 3D torus and 2D flat rectangle with a synchronized photon on a (1,2) geodesic. |
 | [`torus-explorer.html`](torus-explorer.html) | S2 | Interactive 3D torus with a/R slider. Morph from thin ring through horn torus to sphere-like blob. |
 | [`R8-multi-winding.html`](R8-multi-winding.html) | R8 | Multi-winding electron geometry. Many-orbit photon paths, winding number vs torus size. |

@@ -77,7 +77,7 @@ right angles (θ and φ).  Shear slightly tilts this lattice: the rectangle
 becomes a parallelogram.
 
 Physically, shear means: as you complete one full circuit around the **tube**
-(θ: 0 → 2π), your position in the **ring** direction (φ) shifts by δ = s · 2π.
+(θ: 0 → 2π), your position in the **ring** direction shifts by δ = s · 2π.
 The tube lines in the flat picture lean; the ring lines stay horizontal.
 
 ```
@@ -94,9 +94,75 @@ involves `sin(2πs)`, so a tiny shear gives a tiny charge.  The fine structure
 constant α ≈ 1/137 corresponds to a shear of about s ≈ 0.157 (an α preset is
 provided).
 
-The effective ring winding seen in 3D becomes qEff = q − p·s — the path
-advances slightly less around the ring per tube circuit when the lattice tilts.
-For the electron: qEff = 2 − s.
+#### Coordinate transform: flat → embedding
+
+The flat torus has two coordinate systems that matter for this tool:
+
+1. **Flat coordinates** (φ_flat, θ) — aligned with the lattice.  The tube
+   identification maps (φ_flat, 0) → (φ_flat + 2πs, 2π).  A geodesic with
+   winding (p, q) traces a straight line from (0,0) to (2π(q + sp), 2πp) in
+   the universal cover.
+
+2. **Embedding coordinates** (φ_emb, θ) — aligned with the 3D torus surface.
+   Both identifications are standard: period 2π in each direction independently.
+
+The transform between them is:
+
+    φ_emb = φ_flat − s · θ
+    θ_emb = θ
+
+This absorbs the shear offset so that both identifications close properly in
+the embedding.
+
+#### The geodesic does NOT change in 3D
+
+A geodesic with winding (p, q) in flat coordinates has:
+
+    φ_flat(t) = (q + sp) · t        θ(t) = p · t
+
+Applying the transform:
+
+    φ_emb(t) = (q + sp)·t − s·p·t = q · t
+    θ(t) = p · t
+
+This is the standard (p, q) torus knot — it does not depend on s.  At t = 2π:
+φ_emb = 2πq, θ = 2πp — both integer multiples of 2π.  The path closes. ✓
+
+Shear changes the **metric** (affecting physical quantities like path length,
+energy, and charge) but not the **topology**.  The 3D torus embedding shows
+topology.  Therefore the 3D geodesic path is identical for all values of s.
+
+#### Where shear IS visible in 3D
+
+Shear is visible through the **tube reference lines**.  A constant-φ_flat line
+(a "tube line") maps to φ_emb = φ₀ − s·θ in the embedding — a helix that
+leans as θ increases.  The tube lines tilt while the geodesic stays fixed.
+The changing angle between the geodesic and the lattice lines is the visual
+manifestation of shear in 3D.
+
+Note: constant-φ_flat lines do NOT close in the embedding for non-integer s
+(the start and end differ by 2πs in φ_emb).  For physical shear values (s ≈
+0.16), the gap is about 1/6 of a full circle — visible.  The seam should be
+placed at the **inner equator** (start the tube line at θ = π, end at θ = 3π).
+For spindle tori (a/R > 1), the inner equator is hidden inside the
+self-intersection; for ring tori, it is the least prominent part of the
+surface.  The ring reference lines (constant θ) are unaffected by shear and
+always close.
+
+#### Physical quantities from shear
+
+**Effective winding** qEff = q − s·p.  This appears in the wave equation
+eigenvalue (energy formula): E² ∝ p²/a² + qEff²/R².  It determines mass
+and charge.  It is NOT the number of ring circuits visible in 3D — that is
+always q.
+
+**Path length** (physical, in the flat metric):
+L/(2πR) = √((q + sp)² + (p·a/R)²).  Note: uses (q + sp), NOT qEff.  The
+geodesic gets LONGER with shear because it follows the tilted lattice
+diagonal.
+
+**Lattice angle**: arctan(s · a/R), the deviation from 90° of the tube lines
+relative to the ring lines on the physical surface.
 
 ---
 
@@ -126,9 +192,20 @@ and respond to the same controls.
 
 ### Shape
 
-**a/R slider** (range 0.05–12, step 0.01) — sets the tube/ring ratio.  The
-torus rebuilds immediately.  The auto-fit option keeps it centered in view as
-the shape changes.
+**a/R slider** — sets the tube/ring ratio with a two-segment non-linear scale
+so that the interesting region near the horn (a/R = 1) gets full precision
+while the full physically relevant range remains reachable.
+
+The slider runs from 0 to 1 internally.  The mapping is piecewise linear:
+
+| Slider position | a/R range |
+|-----------------|-----------|
+| 0 → 0.5 (lower half) | 0.01 → 1  (ring through horn) |
+| 0.5 → 1 (upper half) | 1 → 10   (spindle, WvM sphere, and beyond) |
+
+The horn torus (a/R = 1) falls exactly at the slider midpoint.  The torus
+rebuilds immediately.  The auto-fit option keeps it centered in view as the
+shape changes.
 
 **Presets** — five buttons that jump to the physically significant values above.
 Clicking a preset highlights it; dragging the slider clears the highlight.
@@ -191,22 +268,41 @@ The torus sits in the XZ plane with axis Y.  A point on the surface is:
     y = a sin θ
     z = (R + a cos θ) sin φ
 
-The geodesic path with shear traces:
+### Geodesic (orange tube)
+
+The geodesic path traces:
 
     θ(t) = p · t
-    φ(t) = (q − s·p) · t     ← ring winding reduced by shear
+    φ(t) = q · t              ← always q, never qEff
 
-The photon follows this path continuously; its animation period is one full
-q-circuit (t: 0 → 2π·q / speed).
+This is the standard (p, q) torus knot.  It does NOT depend on shear.
+See "The geodesic does NOT change in 3D" in the shear section above for
+the derivation.
 
-**Ring lines** (red): each is a standard circle at a fixed θ — a horizontal
-slice through the surface.  These are not affected by shear.
+The photon follows this same path; its animation period is one full tube
+circuit (t: 0 → 2π).
 
-**Tube lines** (blue): each starts at a fixed φ_flat, but as θ increases the
-embedding shifts in the ring direction: φ_emb = φ_flat − s·θ.  At s = 0 these
-are the standard meridional circles.  At s > 0 they spiral, leaning in the
-−φ direction — exactly the tilted vertical edges of the parallelogram in the
-flat picture.
+**IMPORTANT**: the previous formula `φ = (q − s·p) · t` was incorrect.
+It mapped flat coordinates to embedding without applying the coordinate
+transform, producing a path that does not close at t = 2π.  The correct
+formula is `φ = q · t`.
+
+### Ring lines (red)
+
+Each is a standard circle at a fixed θ — a horizontal slice through the
+surface.  These are not affected by shear.
+
+### Tube lines (blue)
+
+Each starts at a fixed φ_flat, but as θ increases the embedding shifts in
+the ring direction: φ_emb = φ₀ − s·θ.  At s = 0 these are the standard
+meridional circles.  At s > 0 they spiral, leaning in the −φ direction —
+exactly the tilted vertical edges of the parallelogram in the flat picture.
+
+The tube lines are where shear becomes visible in 3D.  As s increases,
+the tube lines tilt while the geodesic stays fixed.  The angle between
+the geodesic and the tube lines changes — this is the visual representation
+of the lattice deformation that produces charge.
 
 The **rotation horizon sphere** is a faint green wireframe sphere of radius
 λ_C/2 = 2πR (in model units with R=1, radius = 2π ≈ 6.28).  It marks the
@@ -232,8 +328,14 @@ sheared) with its two periodic boundary directions labeled.
   lattice angle deviation from 90°
 
 **Path:** the (p,q) geodesic appears as a straight orange diagonal crossing
-the flat rectangle.  It wraps at the edges.  Slope = p·Lθ / (q−s·p)·Lφ.
+the flat rectangle.  It wraps at the edges.  The 2D view uses embedding
+coordinates (φ_emb, θ), so the geodesic goes from (0,0) in direction (q, p)
+— same diagonal regardless of shear.  Slope = p·Lθ / q·Lφ.
 For the (1,2) electron: two ring-crossings per tube-crossing.
+
+The visual effect of shear in 2D is the tube grid lines leaning while the
+geodesic stays at a fixed angle.  The changing relationship between the
+geodesic and the tilted lattice is what produces charge.
 
 **Photon:** a yellow dot moves along the diagonal, synchronized with the 3D
 photon.
@@ -256,8 +358,8 @@ A single strip at the bottom shows live values:
 | Outer edge | The outermost circle of the torus in units of λ_C: (R+a)/(2π·R) |
 | Vtor/Vsph | Ratio of torus volume to the volume of a sphere with r = λ_C/2 |
 | q/e | Charge proxy from the WvM energy balance: 0.910 / √(Vtor/Vsph) |
-| Path | Geodesic length in units of λ_C: √(q² + (p·a/R)²) |
-| Slope | Ratio p·(a/R) / (q − s·p) — the path angle in the flat sheet |
+| Path | Geodesic length in units of λ_C: √((q+sp)² + (p·a/R)²).  Uses (q+sp), not qEff. |
+| Slope | Ratio p·(a/R) / q — the visual slope of the geodesic in both 2D and 3D.  Does not change with shear. |
 | s | Fractional shear |
 | δ/a | Shift per tube circuit: 2π·s |
 | Lattice ∠ | Deviation from 90°: 90° − arctan(s · a/R) |
@@ -291,10 +393,17 @@ It complements but does not replace:
 - The shear orientation is **tube-tilt**: tube lines use `φ_emb = φ₀ − s·θ`;
   ring lines use `θ = θ₀` (not the other way around, as in the current
   `shear-torus.html`).
-- Geodesic: `θ = p·t`, `φ = (q − s·p)·t`.  Photon period: `2π` in t, which
-  corresponds to one full tube circuit (and `q − s·p` ring circuits).
+- Geodesic and photon: `θ = p·t`, `φ = q·t`.  NOT `(q − s·p)·t`.
+  The coordinate transform `φ_emb = φ_flat − s·θ` absorbs the shear, so
+  the 3D curve is always the standard (p,q) torus knot.  Period: `2π` in t.
+- Path length (info bar): `√((q + s·p)² + (p·a/R)²)`.  Uses `(q + s·p)`,
+  not `q` or `qEff`.  The geodesic gets longer with shear.
+- qEff = q − s·p appears ONLY in the info bar as a physical quantity
+  (energy eigenvalue), never in the 3D or 2D curve equations.
 - The p and q spinners use `<input type="number">` with `appearance:textfield`
   and explicit ▼/▲ buttons styled to match the dark theme.
+- Tube lines: sweep θ from π to 3π (not 0 to 2π) so the seam falls at the
+  inner equator, where it is hidden inside the spindle self-intersection.
 - Ring/tube line groups (THREE.Group) are rebuilt only when a/R or s changes.
 - Auto-fit scales the world group: `gs = FIT / (R + a)`.  Photon sphere and
   path tube radius scale inversely so they stay visually constant size.
