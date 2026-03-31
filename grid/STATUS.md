@@ -66,44 +66,47 @@ parameter ζ via Jacobson's thermodynamic argument.
 
 **Deliverable:** [gravity.md](gravity.md)
 
-### Phase 4: Stiffness analysis
-
-Clean up the impedance/stiffness/bubble-radius material from the
-original dialog into a rigorous treatment.
-
-- [ ] EM stiffness: ε₀ and μ₀ as orthogonal spring constants
-- [ ] Gravitational stiffness: c⁴/(8πG) as force
-- [ ] Pressure analysis: gravitational vs stiffness pressure on a sphere
-- [ ] Bubble radius and Schwarzschild connection
-- [ ] Compton wavelength × bubble radius = Planck length² (crossover)
-- [ ] Planck mass as the crossover scale
-- [ ] Both stiffnesses from one lattice: EM (mechanical) vs gravity (statistical)
-
-**Deliverable:** [stiffness.md](stiffness.md)
-
-### Phase 5: Synthesis
+### Phase 4: Synthesis ✅
 
 Summarize what GRID establishes and what remains open.  Bridge to MaSt.
 
-- [ ] Both Maxwell and Einstein from one lattice with two knobs
-- [ ] EM = dynamics of phases; gravity = thermodynamics of configurations
-- [ ] Two knobs, two mechanisms: EM from dynamics, gravity from statistics
-- [ ] The hierarchy between EM and gravity: what ζ and α imply
-- [ ] Interface with MaSt: what GRID provides, what MaSt adds
-- [ ] Open questions and possible future work
+- [x] Both Maxwell and Einstein from one lattice with two knobs
+- [x] EM = dynamics of phases; gravity = thermodynamics of configurations
+- [x] Two knobs, two mechanisms: EM from dynamics, gravity from statistics
+- [x] The hierarchy between EM and gravity: what ζ and α imply
+- [x] Interface with MaSt: what GRID provides, what MaSt adds
+- [x] Open questions and possible future work
+- [x] Energy budget question
+- [x] Honest accounting of what was NOT derived
 
 **Deliverable:** [synthesis.md](synthesis.md)
+
+### Backlog: Stiffness analysis (optional)
+
+Repackage the impedance/stiffness/bubble-radius material from
+the original dialog.  This reinterprets existing results — it
+does not derive anything new.
+
+- [ ] EM stiffness: ε₀ and μ₀ as orthogonal spring constants
+- [ ] Gravitational stiffness: c⁴/(8πG) as force
+- [ ] Bubble radius and Schwarzschild connection
+- [ ] Both stiffnesses from one lattice: EM (mechanical) vs gravity (statistical)
+
+**Deliverable:** [stiffness.md](stiffness.md) *(if needed)*
+
+### Backlog: SI restoration (optional)
+
+- [ ] SI units for Maxwell derivation (maxwell.md)
 
 ---
 
 ## Current focus
 
-**Phases 1–3 complete.**  Next: Phase 4 (stiffness analysis).
+**Phases 1–4 complete.**  Core GRID work is done.
 
 **Parallel track:** [lattice-geometry.md](lattice-geometry.md) —
 investigating whether ζ follows from packing geometry.  Leading
-candidate: 4D simplicial (pentachoron), with (1,3)-split
-simplicial as the main alternative.
+candidate: 4D simplicial (pentachoron, ζ = 1/6).
 
 ---
 

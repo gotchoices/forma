@@ -74,13 +74,6 @@ in natural units.
 **Target:** G expressed in terms of ζ, ℏ, c, k with full
 dimensional analysis.  No circular reasoning.
 
-### 3. The stiffness of spacetime
-
-The quantity c⁴/(8πG) has units of force (newtons) and represents
-the rigidity of spacetime against deformation.  Derive this from
-ζ and show how it connects to the electromagnetic stiffness
-(ε₀, μ₀) through the shared lattice origin.
-
 ## Origin
 
 This sub-project grew from the dialog in
@@ -98,8 +91,7 @@ See [STATUS.md](STATUS.md) for the roadmap and progress.
 | File | Contents |
 |------|----------|
 | [foundations.md](foundations.md) | The six axioms, notation, the two knobs |
-| [maxwell.md](maxwell.md) | Maxwell derivation from lattice *(planned)* |
-| [gravity.md](gravity.md) | G derivation in natural + SI units *(planned)* |
-| [stiffness.md](stiffness.md) | Spacetime stiffness and EM–gravity link *(planned)* |
-| [lattice-geometry.md](lattice-geometry.md) | Open investigation: can ζ = 1/4 be derived from simplicial packing? |
-| [synthesis.md](synthesis.md) | Unification summary, open questions *(planned)* |
+| [maxwell.md](maxwell.md) | Full derivation: lattice → Maxwell's equations |
+| [gravity.md](gravity.md) | Full derivation: lattice → Einstein's equations + G |
+| [lattice-geometry.md](lattice-geometry.md) | Open investigation: can ζ be derived from simplicial packing? |
+| [synthesis.md](synthesis.md) | What GRID proves, what it doesn't, and where it leads |
