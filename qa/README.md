@@ -69,5 +69,6 @@ For questions that need a computational model, see [`studies/`](../studies/).
 | [Q96](Q96-force-carriers-in-mast.md) | Do force-carrying bosons exist in MaSt? | Open — hypothesis |
 | [Q97](Q97-shear-chirality-and-cp-violation.md) | Does shear chirality bias matter over antimatter? | Open — conceptual |
 | [Q98](Q98-quark-generations-vs-lepton-generations.md) | Are quark generations real or a labeling convention? | Resolved — structural |
+| [Q99](Q99-fourth-neutrino-mode.md) | The 4th neutrino mode — hidden partner or Z-width tension? | Open — testable |
 
 Unprocessed and brief questions live in [`INBOX.md`](INBOX.md).
