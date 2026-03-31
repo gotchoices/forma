@@ -117,8 +117,20 @@ Each cell contributes ζ = 1/4 bit to the collective information
 content of the lattice.  Equivalently: it takes 1/ζ = 4 cells to
 encode one bit of physical information.
 
-This is the **Bekenstein-Hawking factor**.  A causal horizon of
-area A (measured in Planck units, L = 1) carries entropy:
+**Geometric origin:** ζ follows from the "self + neighbors"
+counting on the lattice that forms horizon cross-sections.
+A causal horizon is a 2D surface, and a 2D simplicial lattice
+is composed of triangles.  Each triangle has 3 edge-sharing
+neighbors.  Counting the cell itself: self + 3 = 4, giving
+ζ = 1/4.  This matches the Bekenstein-Hawking factor
+independently — the 1/4 is not imported from black hole
+physics but derived from the dimensionality and packing of
+the horizon surface.  (See
+[lattice-geometry.md](lattice-geometry.md) and
+[compact-dimensions.md](compact-dimensions.md) for details.)
+
+A causal horizon of area A (measured in Planck units, L = 1)
+carries entropy:
 
 <!-- S = ζ · A = A/4 -->
 $$
@@ -207,13 +219,8 @@ dynamics that produce Maxwell's equations.*
 These require additional structure beyond the minimal lattice:
 
 - **The value of α** — the coupling is a measured input, not
-  derived.  GRID takes α ≈ 1/137.036 as given.
-
-- **Why ζ = 1/4** — the resolution is a free parameter.  The
-  factor of 4 has been reproduced by multiple independent
-  approaches (string theory, loop quantum gravity, entanglement
-  entropy) but no first-principles derivation from pure
-  combinatorics exists.
+  derived.  GRID takes α ≈ 1/137.036 as given.  This is the
+  sole free parameter of the framework.
 
 - **Non-abelian gauge groups** — the U(1) symmetry of axiom A3
   gives electromagnetism.  The SU(2) × SU(3) structure of the

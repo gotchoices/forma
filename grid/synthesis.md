@@ -9,7 +9,7 @@ what it does not, and where it leads.
 
 Electromagnetism and general relativity share a common geometric
 origin: both emerge from a minimal discrete lattice defined by
-six axioms and two free parameters.
+six axioms and one measured input (α).
 
 This is not a Grand Unified Theory (GUT) in the traditional
 sense — GRID does not touch the weak or strong forces.  It is
@@ -159,8 +159,8 @@ What has GRID derived, what is input, and what remains?
 
 | Constant | Role in GRID | Status |
 |----------|-------------|--------|
-| α ≈ 1/137 | Coupling strength (A6) | Measured input — the single unsolved number |
-| ζ | Information resolution (A5) | Free parameter; may follow from packing geometry ([lattice-geometry.md](lattice-geometry.md)) |
+| α ≈ 1/137 | Coupling strength (A6) | Measured input — the sole free parameter |
+| ζ = 1/4 | Information resolution (A5) | Derived from 2D triangular horizon geometry: self + 3 neighbors = 4 → ζ = 1/4 |
 
 ### Unit-system constants (definitional, not physical)
 
@@ -238,7 +238,8 @@ MaSt (architecture layer)
 ```
 
 Together, the two layers attempt a complete account of
-fundamental physics from two free parameters:
+fundamental physics from one measured parameter (α) and
+one geometrically derived constant (ζ):
 
 | Force | Layer | Mechanism | Status |
 |-------|-------|-----------|--------|
@@ -280,6 +281,97 @@ gravity — from two numbers and a lattice.
 
 ---
 
+## What GRID + MaSt shed light on
+
+### The QM question
+
+Deriving EM and gravity from a common lattice gives both
+forces a shared origin story and a microscopic mechanism
+for G.  But GRID does not claim to resolve the GR/QM
+tension or to replace quantum mechanics.
+
+What the full GRID + MaSt stack does offer is a geometric
+substrate that **motivates** several of QM's foundational
+postulates — postulates that were adopted because they work,
+not because they were derived from anything deeper.  MaSt
+suggests that some of these may have been premature
+assumptions rather than bedrock truths:
+
+| QM postulate | MaSt geometric origin | Reference |
+|--------------------|---------------|-----------|
+| Energy is quantized | Standing-wave modes on compact geometry have discrete frequencies — quantization follows from boundary conditions, not from an axiom | R15, R19 |
+| Observables are operators on Hilbert space | May be a mathematical formalism that *describes* wave behavior on compact geometry, rather than the ground truth | — |
+| Uncertainty principle | The Fourier bandwidth limit on any compact geometry — you cannot localize a wave below its wavelength | R31 |
+| Spin is intrinsic angular momentum | Winding topology on the torus — a geometric property, not a point-particle attribute | R19 |
+| Entanglement is non-local correlation | Phase locking between Ma modes, maintained by fiber-bundle continuity — geometric, not "spooky" | [Q82](../qa/Q82-entanglement-as-ma-geometry.md) |
+| Measurement collapses the wavefunction | Resolution of a phase-locked structure into definite individual phases | [universe-as-mode](../papers/universe-as-mode.md) §5 |
+
+**The claim is not that QM is wrong.**  QM's predictions are
+spectacularly confirmed.  The claim is narrower: some of
+QM's foundational assumptions may be derivable from geometry
+rather than postulated.  If so, we have more light on *why*
+quantum mechanics works, not a replacement for it.
+
+This is a different posture from "solving quantum gravity."
+It does not abolish QM or claim to unify GR and QM into a
+single theory.  It suggests that the two may be less
+fundamentally in conflict than assumed, because the "quantum"
+side turns out to have a classical geometric substrate.
+
+### Bell's theorem
+
+Bell's theorem (1964) proves that no **local hidden-variable**
+theory can reproduce all predictions of QM.  This is often
+read as a hard constraint on any geometric reinterpretation.
+
+Q82 addresses this directly: Ma modes are **not** local hidden
+variables in Bell's sense.  They are extended geometric
+structures — standing waves on material dimensions that exist
+at every point in S and are connected by the fiber-bundle
+structure.  They are "hidden" (below direct measurement) but
+not "local" (they are properties of the global material
+geometry, not of a point).
+
+Whether this is sufficient to reproduce Bell inequality
+violations is an open mathematical question — an important
+one for the program, but not necessarily a make-or-break test.
+
+**An analogy to Gödel's incompleteness theorem** may be
+apt.  Gödel showed that any sufficiently powerful consistent
+formal system is incomplete — there are true statements it
+cannot prove.  This did not invalidate mathematics; it
+revealed an inherent structural limitation.  Bell's theorem
+may play a similar role: not a proof that reality is non-
+local, but a proof that any single-framework description of
+reality has inherent edge cases.  Reality exists in spite of
+Bell's theorem.  A geometric account that reproduces the
+bulk of quantum phenomena while having irreducible rough
+edges at Bell-type limits would be informative, not fatal.
+
+The practical question is not "does MaSt violate Bell's
+theorem?" but "does MaSt reproduce the *experimental*
+correlations to sufficient precision, and does the geometric
+picture add understanding?"
+
+### What this means for the program
+
+| Achievement | Status |
+|-------------|--------|
+| EM and G from common lattice | Done (GRID) |
+| Geometric origins for some QM postulates | Qualitative (MaSt) |
+| Entanglement as fiber-bundle geometry | Hypothesis ([Q82](../qa/Q82-entanglement-as-ma-geometry.md)) |
+| Measurement as phase resolution | Framing ([universe-as-mode](../papers/universe-as-mode.md)) |
+| Formal Bell calculation for Ma geometry | Open — important but not sole criterion |
+
+GRID provides the foundation (lattice → Maxwell + Einstein).
+MaSt provides the architecture (compact geometry → particles
++ quantum-like behavior).  Together they offer a coherent
+geometric picture that sheds light on why both GR and QM
+work — without claiming to have unified them into a single
+formalism or overturned either one.
+
+---
+
 ## Open questions
 
 ### Foundational
@@ -295,8 +387,10 @@ gravity — from two numbers and a lattice.
 
 | Question | Status | Reference |
 |----------|--------|-----------|
+| Can Ma phase locking reproduce Bell violations? | **Critical open question** — determines viability of emergent QM | [Q82](../qa/Q82-entanglement-as-ma-geometry.md) |
 | Can the lattice support non-abelian gauge symmetry? | Open — would need richer cell structure | — |
-| Does lattice quantization reproduce standard QFT? | Expected from lattice gauge theory, not proven within GRID | — |
+| Does the lattice naturally produce wave propagation? | Planned simulation | [sim-maxwell/](sim-maxwell/) |
+| Does embedding a rigid torus produce 1/r deformation? | Planned simulation | [sim-gravity/](sim-gravity/) |
 | What is the graviton in this picture? | Not derived — gravity is thermodynamic, not mechanical | — |
 | How does the lattice handle topology change? | Open — relevant for black hole evaporation | — |
 
@@ -312,8 +406,10 @@ gravity — from two numbers and a lattice.
 
 ## Summary
 
-Six axioms.  Two free parameters.  Two forces from the lattice,
-potentially four from the full stack.
+Six axioms.  One geometric constant (ζ = 1/4, from the 2D
+triangular structure of horizon cross-sections).  One measured
+input (α ≈ 1/137).  Two forces from the lattice, potentially
+four from the full stack.
 
 GRID demonstrates that electromagnetism and general relativity
 share a common origin in a minimal discrete lattice —
@@ -326,17 +422,26 @@ from the same small set of rules.
 MaSt builds on this substrate: confining photons on compact
 geometry to produce particles, masses, and charges — with a
 plausible mechanism for the strong force (Q95) and open work
-on the weak force (Q96).  Together, GRID + MaSt attempt a
-geometric account of fundamental physics from two numbers
-and a lattice.
+on the weak force (Q96).  MaSt also offers geometric origins
+for several quantum-mechanical postulates: quantized energy
+as standing-wave modes, uncertainty as Fourier bandwidth,
+spin as topology, entanglement as phase locking on shared
+fiber geometry.
 
-What remains: fixing the two free parameters (ζ from geometry,
-α from a selection principle or measurement), confirming the
-strong force mechanism quantitatively, finding a weak force
-mechanism, and connecting to quantum mechanics.  The lattice
-geometry investigation offers a path to reducing ζ from a free
-parameter to a geometric consequence.  The compact-dimensions
-study showed that α, while discretized by the lattice, is
-not uniquely constrained — it remains a free parameter whose
-value must be set by additional physics or taken from
-experiment.
+Together, GRID + MaSt provide a coherent geometric picture
+of fundamental physics — not a claim to have unified GR and
+QM or overturned either one, but a substrate that sheds light
+on why both work and suggests that some of QM's foundational
+assumptions may be derivable rather than postulated.
+
+What remains: confirming the strong force mechanism
+quantitatively, finding a weak force mechanism,
+computationally validating the lattice (sim-maxwell,
+sim-gravity), and investigating whether MaSt's geometric
+entanglement mechanism (Q82) can reproduce the experimental
+correlations that standard QM predicts.  ζ = 1/4 follows
+from the 2D triangular geometry of horizon cross-sections
+(self + 3 neighbors = 4 → ζ = 1/4), leaving α as the sole
+measured input.  The framework is complete with α taken
+from experiment — deriving it would be fine, but it is not a
+prerequisite.

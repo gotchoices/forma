@@ -12,7 +12,7 @@
 
 Establish the axiom set, notation, and free parameters.
 
-- [x] Define the two knobs: ζ (resolution) and α (coupling)
+- [x] Define the constants: ζ (resolution, geometrically derived) and α (coupling, measured)
 - [x] Write axioms A1–A6
 - [x] Document what the axioms produce and what they don't
 - [x] Identify open questions at the foundations level
@@ -70,7 +70,7 @@ parameter ζ via Jacobson's thermodynamic argument.
 
 Summarize what GRID establishes and what remains open.  Bridge to MaSt.
 
-- [x] Both Maxwell and Einstein from one lattice with two knobs
+- [x] Both Maxwell and Einstein from one lattice, one geometric constant (ζ), one measured input (α)
 - [x] EM = dynamics of phases; gravity = thermodynamics of configurations
 - [x] Two knobs, two mechanisms: EM from dynamics, gravity from statistics
 - [x] The hierarchy between EM and gravity: what ζ and α imply

@@ -11,23 +11,28 @@ determines α?  And can gravity (G) emerge from the same foundation?
 
 The approach: start from a minimal discrete lattice — cells, phases,
 nearest-neighbor coupling — and derive the continuum physics that MaSt
-assumes.  Two free parameters.  Everything else is emergent.
+assumes.  One geometric constant, one measured input.
+Everything else is emergent.
 
-## The two knobs
+## The two constants
 
-| Symbol | Name | Value | What it controls |
-|--------|------|-------|------------------|
-| ζ | Resolution | 1/4 | Bits per Planck cell — the information density of the substrate.  Determines gravitational coupling G. |
-| α | Coupling | ≈ 1/137.036 | Electromagnetic interaction strength — energy cost of a topological defect relative to the lattice scale.  Determines ε₀, μ₀, e. |
+| Symbol | Name | Value | Status | What it controls |
+|--------|------|-------|--------|------------------|
+| ζ | Resolution | 1/4 | Derived from geometry | Bits per Planck cell — the information density of the substrate.  Determines gravitational coupling G. |
+| α | Coupling | ≈ 1/137.036 | Measured input | Electromagnetic interaction strength — energy cost of a topological defect relative to the lattice scale.  Determines ε₀, μ₀, e. |
 
-**ζ** (zeta) is the Bekenstein-Hawking factor: a horizon of area A
-carries entropy S = ζ · A / L² (in Planck units).  It sets the
-resolution of reality — how many lattice cells constitute one bit
-of physical information.  With ζ = 1/4, four cells encode one bit.
+**ζ** (zeta) follows from the geometry of horizon cross-sections.
+A causal horizon is a 2D surface tiled by triangular cells.  Each
+triangle has 3 edge-sharing neighbors; counting itself gives
+self + 3 = 4, so ζ = 1/(self + neighbors) = 1/4.  This is the
+Bekenstein-Hawking factor: a horizon of area A carries entropy
+S = ζ · A = A/4.  The value is not imported from black hole
+physics — it is derived from the dimensionality and packing of
+the boundary surface.
 
-**α** is a measured input — the single free coupling constant of
-the lattice gauge theory.  MaSt also takes α as input (R15, R19,
-R31–R36).  GRID does not attempt to derive it (at least for the moment).
+**α** is the sole measured input — the single free coupling
+constant of the lattice gauge theory.  MaSt also takes α as
+input (R15, R19, R31–R36).  GRID does not attempt to derive it.
 
 ## Relationship to MaSt
 
@@ -90,7 +95,7 @@ See [STATUS.md](STATUS.md) for the roadmap and progress.
 
 | File | Contents |
 |------|----------|
-| [foundations.md](foundations.md) | The six axioms, notation, the two knobs |
+| [foundations.md](foundations.md) | The six axioms, notation, ζ and α |
 | [maxwell.md](maxwell.md) | Full derivation: lattice → Maxwell's equations |
 | [gravity.md](gravity.md) | Full derivation: lattice → Einstein's equations + G |
 | [lattice-geometry.md](lattice-geometry.md) | Open investigation: can ζ be derived from simplicial packing? |

@@ -41,6 +41,8 @@ findings, and failures are all here.  Readers with relevant
 expertise are welcome to examine, challenge, or extend the work.
 
 Please clone this repo and encourage 10 friends to do the same.
+If you or a friend has the scientific background to review
+some of the studies contained here, please help out!
 
 
 ## The big picture
