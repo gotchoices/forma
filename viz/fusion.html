@@ -224,16 +224,35 @@ function alignFrac(B, T) {
 // ═══════════════════════════════════════════════════════════════
 //  Canvas helpers
 // ═══════════════════════════════════════════════════════════════
+// Per-canvas state: populated by setupCanvas, reused by reuseCanvas.
+const cvCache = {};
+
+// Full resize + context init — call only from update() or on init.
+// Touching canvas.width / style.width on every mousemove causes layout
+// reflows that make getBoundingClientRect() return jittering values,
+// which changes pw and shifts the x-scale while just hovering.
 function setupCanvas(canvas) {
   const rect = canvas.parentElement.getBoundingClientRect();
   const dpr = window.devicePixelRatio || 1;
-  canvas.width  = rect.width  * dpr;
-  canvas.height = rect.height * dpr;
-  canvas.style.width  = rect.width  + 'px';
-  canvas.style.height = rect.height + 'px';
+  const w = Math.round(rect.width);
+  const h = Math.round(rect.height);
+  canvas.width  = w * dpr;
+  canvas.height = h * dpr;
+  canvas.style.width  = w + 'px';
+  canvas.style.height = h + 'px';
   const ctx = canvas.getContext('2d');
   ctx.scale(dpr, dpr);
-  return { ctx, w: rect.width, h: rect.height };
+  cvCache[canvas.id] = { ctx, w, h, dpr };
+  return cvCache[canvas.id];
+}
+
+// Reuse cached context without touching the DOM.
+// Uses setTransform (absolute) to restore DPR scaling safely.
+function reuseCanvas(canvas) {
+  const st = cvCache[canvas.id];
+  if (!st) return setupCanvas(canvas);
+  st.ctx.setTransform(st.dpr, 0, 0, st.dpr, 0, 0);
+  return st;
 }
 
 function fmtSci(v, digits) {
@@ -262,7 +281,7 @@ const POT_PAD = { t:32, r:16, b:44, l:62 };
 
 function drawPotentialChart() {
   const cv = $('cv-pot');
-  const { ctx, w, h } = setupCanvas(cv);
+  const { ctx, w, h } = reuseCanvas(cv);
   const P = POT_PAD;
   const pw = w - P.l - P.r, ph = h - P.t - P.b;
 
@@ -433,7 +452,7 @@ const RATE_PAD = { t:32, r:16, b:44, l:62 };
 
 function drawRateChart() {
   const cv = $('cv-rate');
-  const { ctx, w, h } = setupCanvas(cv);
+  const { ctx, w, h } = reuseCanvas(cv);
   const P = RATE_PAD;
   const pw = w - P.l - P.r, ph = h - P.t - P.b;
 
@@ -621,6 +640,8 @@ function supStr(n) {
 //  Event handlers
 // ═══════════════════════════════════════════════════════════════
 function update() {
+  setupCanvas($('cv-pot'));
+  setupCanvas($('cv-rate'));
   drawPotentialChart();
   drawRateChart();
   updateInfo();

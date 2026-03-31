@@ -9,11 +9,7 @@ browser, no server required.
 | File | Tag | Description |
 |------|-----|-------------|
 | [`torus-studio.html`](torus-studio.html) | STUDIO | Unified torus explorer: 3D shape morphing, arbitrary (p,q) spinners, lattice shear (primer-correct tube-tilt orientation), optional 2D flat-sheet panel, full physics info bar. Supersedes torus-explorer and dual-torus. |
-| [`dual-torus.html`](dual-torus.html) | R3 | Side-by-side 3D torus and 2D flat rectangle with a synchronized photon on a (1,2) geodesic. |
-| [`torus-explorer.html`](torus-explorer.html) | S2 | Interactive 3D torus with a/R slider. Morph from thin ring through horn torus to sphere-like blob. |
-| [`R8-multi-winding.html`](R8-multi-winding.html) | R8 | Multi-winding electron geometry. Many-orbit photon paths, winding number vs torus size. |
 | [`geodesic-curvature.html`](geodesic-curvature.html) | GR | Geodesic/field-line grid around a spherical or toroidal Compton zone. 3D spatial and 2D+T modes. |
-| [`shear-torus.html`](shear-torus.html) | R19 | Shear deformation on the flat material sheet. Ring lines twist into helices; geodesic follows q_eff = m − ns. |
 | [`torus-slice.html`](torus-slice.html) | 4D | Sweeps a cutting plane through the 3D torus, showing the annular cross-section over time. |
 | [`t3-slice.html`](t3-slice.html) | T³ | 3D hyperplane slices of a T³ = T² × S¹ in R⁴. Two tori split and merge as the slice sweeps. Tube-sweep and ring-sweep modes. |
 | [`nested-torus.html`](nested-torus.html) | T^d | Recursive nesting of periodic dimensions (1–5 levels). Each level wraps the previous around a new circle, producing concentric boundary tori. Per-level colour, opacity, wireframe/shell, and visibility. |

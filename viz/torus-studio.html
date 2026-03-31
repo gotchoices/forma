@@ -80,14 +80,14 @@ input.wn::-webkit-inner-spin-button { -webkit-appearance: none; }
   <!-- Shape -->
   <div class="cg">
     <label>a/R</label>
-    <input type="range" id="sl-ar" min="0" max="1" step="0.001" value="0.811">
-    <span class="val" id="v-ar">6.60</span>
+    <input type="range" id="sl-ar" min="0" max="1" step="0.001" value="0.2475">
+    <span class="val" id="v-ar">0.50</span>
   </div>
   <div class="cg" style="gap:3px">
-    <button class="btn"    data-ar="0.50">Ring 0.5</button>
+    <button class="btn on" data-ar="0.50">Ring 0.5</button>
     <button class="btn"    data-ar="1.00">Horn</button>
     <button class="btn"    data-ar="5.28">Horizon</button>
-    <button class="btn on" data-ar="6.60">q = e</button>
+    <button class="btn"    data-ar="6.60">q = e</button>
     <button class="btn"    data-ar="7.26">WvM sphere</button>
   </div>
   <div class="cg">
@@ -169,8 +169,8 @@ input.wn::-webkit-inner-spin-button { -webkit-appearance: none; }
 </div>
 
 <div id="info-bar">
-  <div><span class="lbl">a/R </span><span class="v" id="i-ar">6.60</span></div>
-  <span id="i-type" class="badge b-spindle">SPINDLE</span>
+  <div><span class="lbl">a/R </span><span class="v" id="i-ar">0.50</span></div>
+  <span id="i-type" class="badge b-ring">RING</span>
   <div><span class="lbl">Knot </span><span class="v" id="i-knot">(1,2)</span></div>
   <div><span class="lbl">Charge </span><span class="v" id="i-charge">±e</span></div>
   <div><span class="lbl">Spin </span><span class="v" id="i-spin">½ fermion</span></div>
@@ -222,7 +222,7 @@ function arToSlider(r) {
 /* ── State ────────────────────────────────────────────── */
 
 const S = {
-  aR: 6.60, p: 1, q: 2, shear: 0, speed: 1.0, opacity: 0.45,
+  aR: 0.50, p: 1, q: 2, shear: 0, speed: 1.0, opacity: 0.45,
   playing: true,
   showSurf: true, showWire: false, showGeo: true, showPhoton: true,
   showRing: false, showTube: false, showHorizon: false, showAxis: false,
@@ -232,7 +232,7 @@ const S = {
 /* ── 3D scene ─────────────────────────────────────────── */
 
 const { scene, camera, renderer, controls, clock } =
-  createScene($('view-3d'), { maxDistance: 80, camPos: [4, 2.5, 5] });
+  createScene($('view-3d'), { maxDistance: 80, camPos: [3, 4, 4] });
 autoResize(renderer, camera, $('view-3d'));
 
 const world = new THREE.Group();
