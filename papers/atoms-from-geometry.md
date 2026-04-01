@@ -698,7 +698,7 @@ and r_ν is only lower-bounded by cosmological Σm_ν.
 | | Standard Model | Ma |
 |---|---|---|
 | Inputs to set scales | ~9 masses | 3 masses + α |
-| Coupling constants | 3 (α, α_s, sin²θ_W) | 0 (α is an input) |
+| Coupling constants | 3 (α, α_s, sin²θ_W) | 0 (α is an input; sin²θ_W = 3/13 from geometry, R43) |
 | Mixing parameters | 8 (CKM + PMNS) | 0 |
 | Other | ~6 (Higgs, θ_QCD, ...) | 0 |
 | Free (unconstrained) | ~25 | 2 effective (r_e, r_ν) |
@@ -750,9 +750,11 @@ geometric explanations in Ma:
 
 ### 14.4 What the Standard Model explains that Ma does not
 
-- **Electroweak unification**: the relationship between
-  electromagnetism and the weak force, W/Z/Higgs masses,
-  and the Weinberg angle.  Ma has no analog above ~2 GeV.
+- **Electroweak unification**: W/Z/Higgs absolute masses.
+  The Weinberg angle now has a geometric match:
+  sin²θ_W = 3/13 = N_sheets/(2D+1) to −0.19% (R43), and
+  the weak force is cross-sheet coupling (Q96), but the
+  W mass (80.4 GeV) is not yet derived from Ma geometry.
 
 - **QCD**: asymptotic freedom, confinement, jet production,
   deep inelastic scattering, lattice QCD calculations.
