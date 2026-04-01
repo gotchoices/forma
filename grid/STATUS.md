@@ -114,6 +114,17 @@ does not derive anything new.
   within available discrete steps; the lattice geometry does
   not uniquely determine it.  Noteworthy: weak coupling
   (1/α > 100) requires a minimum of 3 cells (6 triangles).
+- [sim-gravity/](sim-gravity/) — **complete** — embedded
+  rigid body in spring lattice gives edge strain ε ∝ 1/r²
+  (R² = 0.9999).  This is the 2D *elastic* power law
+  (Eshelby), not the 2D *gravitational* power law (1/r).
+  Key finding: mechanical elasticity ≠ gravity; the
+  thermodynamic route (Jacobson) is genuinely necessary.
+  See [sim-gravity/README.md](sim-gravity/README.md).
+- [sim-gravity-2/](sim-gravity-2/) — **design phase** —
+  follow-up: string-register lattice with Monte Carlo
+  sampling, measuring *entropic* force between rigid bodies.
+  Hypothesis: entropy shadow ∝ log(r) → force ∝ 1/r.
 
 ---
 
