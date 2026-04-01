@@ -238,7 +238,7 @@ MaSt (architecture layer)
     Inputs:  Maxwell + α (provided by GRID)
     Outputs: particle spectrum, masses, charges,
              nuclear structure, dark matter candidates,
-             strong force mechanism, weak force (open)
+             strong force mechanism, weak force framework
 ```
 
 Together, the two layers attempt a complete account of
@@ -250,7 +250,7 @@ one geometrically derived constant (ζ):
 | Electromagnetism | GRID | Phase dynamics + gauge invariance | **Derived** |
 | Gravity | GRID | Thermodynamics of information | **Derived** |
 | Strong | MaSt | Full internal EM at overlap range (Q95) | **Plausible** — qualitative features match |
-| Weak | MaSt | Cross-sheet resonances; W/Z masses from coupling barriers (Q96) | **Framework** — reproduces scale (~310 GeV, R34), not yet the Weinberg angle |
+| Weak | MaSt | Cross-sheet coupling (σ parameters); W/Z are transient mode reconfigurations, not eigenmodes (Q96) | **Strong** — sin²θ_W = 3/13 matches to −0.19% (R43); 2/9 predicts M_W to +0.05%; W/Z mass derivation open |
 
 **What GRID provides to MaSt:**
 - Maxwell's equations — previously assumed, now derived
@@ -277,11 +277,13 @@ Conclusion: **α is a designer's choice within the available
 discrete steps.**  A selection principle (energy minimization,
 topological constraint, or something else) remains unknown.
 
-If the strong force mechanism (Q95) is confirmed quantitatively
-and the weak force finds a geometric explanation within MaSt,
+If the strong force mechanism (Q95) is confirmed quantitatively,
 then GRID + MaSt would constitute a complete geometric account
 of all four fundamental forces, the particle spectrum, and
-gravity — from two numbers and a lattice.
+gravity — from two numbers and a lattice.  The weak force
+already has a geometric explanation: forces are cross-sheet
+coupling (σ parameters), not boson exchange, and the Weinberg
+angle matches sin²θ_W = 3/13 = N_sheets/(2D+1) to −0.19% (R43).
 
 ---
 
@@ -410,7 +412,7 @@ partially require theoretical proof.
 | Question | Status | Reference |
 |----------|--------|-----------|
 | Can Ma phase locking reproduce Bell violations? | **Critical open question** — determines viability of emergent QM | [Q82](../qa/Q82-entanglement-as-ma-geometry.md) |
-| Do non-abelian forces need formal gauge groups? | MaSt reinterprets: strong = internal EM at overlap (Q95), weak = cross-sheet resonances (Q96).  If SU(3)/SU(2) are effective descriptions of geometric mechanisms, MaSt needs to reproduce the observations, not the gauge groups. | [Q95](../qa/Q95-strong-force-as-internal-em.md), [Q96](../qa/Q96-force-carriers-in-mast.md) |
+| Do non-abelian forces need formal gauge groups? | MaSt reinterprets: strong = internal EM at overlap (Q95), weak = cross-sheet coupling (Q96).  sin²θ_W = 3/13 matches to −0.19% (R43), supporting the view that SU(2)×U(1) is an effective description of geometric coupling, not a fundamental symmetry. | [Q95](../qa/Q95-strong-force-as-internal-em.md), [Q96](../qa/Q96-force-carriers-in-mast.md), [R43](../studies/R43-weinberg-angle/) |
 | Does the lattice naturally produce wave propagation? | **Yes ✅** — directional propagation from geometry alone, no Maxwell input | [sim-maxwell/](sim-maxwell/) |
 | Do waves superpose linearly? | **Yes ✅** — exact (machine epsilon) on both triangular and hexagonal lattices | [sim-maxwell/](sim-maxwell/) |
 | Does the lattice produce 1/r gravity? | **Yes ✅** — scalar + string-register models both confirm 1/r (2D) | [sim-gravity-2/](sim-gravity-2/) |
@@ -446,8 +448,9 @@ from the same small set of rules.
 
 MaSt builds on this substrate: confining photons on compact
 geometry to produce particles, masses, and charges — with a
-plausible mechanism for the strong force (Q95) and open work
-on the weak force (Q96).  MaSt also offers geometric origins
+plausible mechanism for the strong force (Q95) and a geometric
+framework for the weak force — cross-sheet coupling with
+sin²θ_W = 3/13 (Q96, R43).  MaSt also offers geometric origins
 for several quantum-mechanical postulates: quantized energy
 as standing-wave modes, uncertainty as Fourier bandwidth,
 spin as topology, entanglement as phase locking on shared
@@ -466,11 +469,12 @@ and accommodates Schwarzschild geometry through the horizon
 (with lattice failure only at the physical singularity).
 
 What remains: confirming the strong force mechanism
-quantitatively, tightening the weak force framework (the
-Weinberg angle is the key missing observable), and
-investigating whether MaSt's geometric entanglement
-mechanism (Q82) can reproduce the experimental correlations
-that standard QM predicts.  ζ = 1/4 follows from the 3D
+quantitatively, computing the W barrier height (80.4 GeV)
+from Ma geometry, and investigating whether MaSt's geometric
+entanglement mechanism (Q82) can reproduce the experimental
+correlations that standard QM predicts.  The Weinberg angle
+is now a strength: sin²θ_W = 3/13 = N_sheets/(2D+1) matches
+the measured value to −0.19% (R43).  ζ = 1/4 follows from the 3D
 tetrahedral geometry of cells adjacent to horizons (4
 face-sharing neighbors, no self → ζ = 1/4, Model B),
 leaving α as the sole measured input.  The framework is

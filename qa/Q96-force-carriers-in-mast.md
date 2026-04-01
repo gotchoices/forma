@@ -410,13 +410,18 @@ how that field behaves in that geometry.
    Count the independent coupling degrees of freedom for
    torus-torus interactions across three sheets.
 
-2. **Weinberg angle from geometry:**  Does sin²θ_W ≈ 0.23
-   emerge from the ratio of inter-sheet coupling to the
-   Compton window parameter α?
+2. **Weinberg angle from geometry:**  ✅ **Resolved (R43).**
+   sin²θ_W = 3/13 = N_sheets/(2D+1) matches the measured
+   value 0.23122 to −0.19%.  The fraction 2/9 predicts
+   M_W = 80.420 GeV (+0.051%).  A first-principles
+   derivation of the 3/(2D+1) formula remains open.
 
-3. **W/Z mass ratio:**  Can the geometric relationship
-   between cross-sheet coupling and same-sheet coupling
-   predict m_W / m_Z = cos θ_W?
+3. **W/Z mass ratio:**  Partially resolved.  M_W/M_Z =
+   cos θ_W follows from the Weinberg angle (above).  But
+   computing the *absolute* W mass (80.4 GeV) from Ma
+   geometry remains open — Track 2 of R43 confirmed the W
+   is not a standing-wave eigenmode but a transient
+   cross-sheet reconfiguration state (barrier height).
 
 4. **Higgs mass from moduli potential:**  R40 is computing
    the self-consistent torus shape.  If the moduli potential
