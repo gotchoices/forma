@@ -24,6 +24,18 @@ determines the ratio, not thermodynamics (F6).  The hypothesis is
 viable; next step is computing the projection integral W(n) from
 geometry.  See `findings.md` (F1–F14).
 
+### R43. Weinberg angle from cross-sheet geometry  **FRAMED**
+**Study:** [`R43-weinberg-angle/`](R43-weinberg-angle/)
+**Questions:** Q96 §10.2  **Type:** compute  **Depends on:** R26, R34, R19
+
+Does sin²θ_W ≈ 0.231 emerge from the ratio of cross-sheet
+coupling (σ parameters) to within-sheet EM coupling (α)?  If
+so, the electroweak mixing angle is geometric, SU(2)×U(1) is
+an effective description, and MaSt has one fewer free parameter.
+All inputs are already determined by existing particle mass fits.
+**HIGH VALUE** — this is the key test of whether non-abelian
+gauge structure is fundamental or emergent.
+
 ### R15. Forward charge calculation — deriving α
 **Study:** [`R15-forward-charge/`](R15-forward-charge/)
 **Questions:** [Q18](../qa/Q18-deriving-alpha.md), Q34 Path 7  **Type:** compute  **Depends on:** R7, R13
