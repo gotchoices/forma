@@ -109,5 +109,5 @@ See [STATUS.md](STATUS.md) for the roadmap and progress.
 | [sim-gravity-2/](sim-gravity-2/) | Complete: scalar + string-register both confirm 1/r force (p≈1.01–1.02) |
 | [sim-maxwell/](sim-maxwell/) | Complete: junction scattering produces directional waves (speed ≈ 0.70, no Maxwell input) |
 | [hexagonal.md](hexagonal.md) | Hexagonal (wye) vs triangular (delta) lattice: flexibility, scattering, curvature from defects |
-| [sim-schwarzschild/](sim-schwarzschild/) | Framed: does the hexagonal lattice shear at the Schwarzschild radius? |
+| [sim-schwarzschild/](sim-schwarzschild/) | Complete: horizon is NOT a lattice failure; min BH mass ≈ 0.56 m_P; singularity IS lattice failure |
 | [INBOX.md](INBOX.md) | Raw ideas and open threads not yet formalized |

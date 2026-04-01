@@ -88,13 +88,15 @@ potentially better substrate than the triangular (delta)
 lattice: flexible with fixed edges, lower reflection at
 junctions, curvature from pentagonal defects.
 
-- [ ] **sim-maxwell on hexagonal lattice (N=3)** — compare
-  wave propagation with triangular (N=6).  Expect cleaner
-  results: 11% reflection vs 44%.
-- [ ] **sim-schwarzschild** — does the hexagonal lattice
-  shear at r_s?  Compute max hexagon deformation, critical
-  curvature from pentagon density, and compare to the
-  Schwarzschild radius.
+- [x] **sim-maxwell on hexagonal lattice (N=3)** — single
+  edge pulses propagate forward (dir=0.53 vs 0.24 tri).
+  Speed comparable (0.73 vs 0.71).  Hexagonal is better
+  for single quanta; triangular better for coherent fronts.
+- [x] **sim-schwarzschild** — horizon is NOT a lattice
+  failure (consistent with GR: coordinate singularity).
+  Pentagon density saturates at r_crit = (1.24 r_s)^(1/3).
+  Minimum BH mass ≈ 0.56 Planck masses.  Physical
+  singularity (r=0) IS a lattice failure (K → ∞).
 - [ ] sim-maxwell follow-up: superposition (two crossing
   wavefronts)
 - [ ] sim-maxwell follow-up: plaquette circulation
@@ -108,6 +110,17 @@ junctions, curvature from pentagonal defects.
   lattice (different α spectrum?)
 - [ ] Evaluate whether hexagonal makes A4 (gauge invariance)
   derivable rather than axiomatic
+- [ ] **sim-torus-limits** — is there a min/max radius for
+  rolling a hexagonal sheet into a torus without shearing?
+  If so, this constrains the allowed compact dimension
+  sizes — a geometric bound on particle masses.
+- [ ] **sim-alpha-chord** — can a specific initial excitation
+  pattern on the grid launch a proton+electron pair?  This
+  would be a structured fibration of edge modes that directs
+  photons onto the correct MaSt trajectories.  Requires
+  understanding how to excite the compact dimensions from
+  the ambient 3D lattice (what "orthogonal" means on the
+  hexagonal substrate).  Highly ambitious.
 
 **Deliverables:** [hexagonal.md](hexagonal.md),
 [sim-schwarzschild/](sim-schwarzschild/), updated sim-maxwell
@@ -176,6 +189,22 @@ does not derive anything new.
     by energy conservation + equal impedance
   - This is the first Level 4 result: geometry alone
     (without importing Maxwell) produces wave propagation.
+- [sim-schwarzschild/](sim-schwarzschild/) — **complete** —
+  the hexagonal lattice accommodates the Schwarzschild
+  geometry through the event horizon (consistent with GR):
+  - Hexagon deformation: unbounded aspect ratio → the
+    lattice handles the Schwarzschild coordinate stretch
+    trivially (tautological, not physically meaningful)
+  - Pentagon density: the Gaussian curvature K = r_s/(2r³)
+    requires pentagonal defects.  Saturation at
+    r_crit = (1.24 r_s)^(1/3).
+  - For astrophysical BHs: r_crit << r_s (pentagons
+    saturate deep inside the horizon — no lattice failure
+    at the horizon itself)
+  - Minimum black hole mass: M_min ≈ 0.56 Planck masses
+    (where r_crit = r_s)
+  - Physical singularity at r = 0: curvature diverges,
+    lattice truly fails — consistent with GR
 
 ---
 
