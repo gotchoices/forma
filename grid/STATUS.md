@@ -209,7 +209,14 @@ extensions — none are critical to the framework.
 | Why α ≈ 1/137 | The one unsolved parameter | Not a framework deficiency — α is a measured input, like the speed of light in SI |
 | Value of Λ | Open | Appears as integration constant; the famous "cosmological constant problem" |
 | Particle masses | MaSt's territory | GRID provides the substrate; MaSt provides the compact geometry |
-| Gauge invariance from hex geometry? | High if achievable | Could reduce axiom count — theoretical, not simulation |
+| Gauge invariance from hex geometry? | High if achievable | Could eliminate A4; partially computable (lattice Wilson loops / correlation functions) |
+| Lorentz invariance as theorem? | High if rigorous | Could weaken A2 to A2' (finite causal speed); computable via sim-lorentz (boost a bound state, check γ contraction) |
+
+**If both A2 and A4 can be derived**, GRID reduces from
+six axioms to four — three structural (4D lattice, causal
+speed limit, periodic phase) and one measured input (α).
+ζ is already geometrically derived.  This would make GRID
+a remarkably minimal foundation for EM + gravity.
 
 ---
 

@@ -628,3 +628,245 @@ GRID results.  The "private grid" picture is an interesting
 alternative framing that might connect to the measurement
 problem and relational QM, but has no computational
 consequences yet.
+
+---
+
+## 2026-03-31: Lorentz invariance as a theorem, not an axiom
+
+### The argument
+
+Currently, GRID assumes Lorentz invariance as Axiom A2
+(Lorentzian signature).  But there is a strong argument
+that A2 could be softened — that Lorentz invariance is a
+*consequence* of the lattice structure rather than a
+postulate, once you accept that all observers are built
+from lattice excitations.
+
+The logic chain:
+
+**Step 1: Every observer is made of particles.**
+
+Rulers, clocks, photon detectors, eyeballs, brains — all
+are bound states (standing waves) on the GRID lattice.
+There is no "external" observer looking at the lattice
+from outside.  Every measurement device is a wave pattern
+on the same substrate as the phenomenon being measured.
+
+**Step 2: A moving particle is a boosted wave pattern.**
+
+When a bound state (a standing wave on compact Ma
+geometry) propagates at speed v through the spatial
+lattice, the wave pattern automatically Lorentz-contracts
+along the direction of motion.  This is not imposed as an
+external effect — it is what happens to wave solutions of
+the field equations that GRID derives (Maxwell + Einstein).
+
+Specifically: the field equations are wave equations.  A
+stationary solution (particle at rest) has a certain
+spatial extent.  A moving solution (same particle at speed
+v) has a contracted extent.  This contraction is a
+mathematical property of the wave equation, not an
+additional assumption.
+
+**Step 3: A moving clock runs slower.**
+
+A particle's internal oscillation is its mode frequency in
+the compact dimension.  At rest, all energy is internal:
+E = m (mode frequency = mass).  In motion, energy splits
+between internal oscillation and spatial propagation:
+
+    E² = p² + m²
+    ω_internal = √(E² − p²) = m / γ(v)... 
+
+Wait — more carefully: in the comoving frame, the internal
+frequency is m.  In the lab frame, the internal frequency
+is m/γ (time dilation).  The lab observer sees the moving
+clock tick slower by the factor γ.
+
+This is not imposed — it follows from the dispersion
+relation E² = p² + m², which itself follows from the
+Kaluza-Klein mass mechanism (compact-dimension mode energy
+contributes to the rest mass; spatial momentum contributes
+to kinetic energy).
+
+**Step 4: Moving rulers are shorter and moving clocks are
+slower, by exactly the Lorentz factor γ.**
+
+A ruler is a bound state with a spatial extent determined
+by the standing-wave pattern.  A clock is a bound state
+with an internal oscillation frequency.  Both are
+affected by motion in precisely the same way, because
+both are solutions of the same wave equation.
+
+**Step 5: Therefore, a moving observer cannot detect their
+motion relative to the lattice.**
+
+The observer's ruler contracts by γ.  The distances they
+measure contract by γ.  The observer's clock slows by γ.
+The time intervals they measure slow by γ.  The speed of
+light they measure is:
+
+    c_measured = (distance measured) / (time measured)
+               = (L/γ) / (T/γ)
+               = L/T
+               = c
+
+The γ factors cancel exactly.  The observer measures c
+regardless of their velocity.  This is not a coincidence
+or a conspiracy — it's because the ruler and the light
+are made of the same stuff (lattice excitations) and
+affected by motion in the same way.
+
+**Step 6: Lorentz invariance is observed by all observers.**
+
+No experiment performed by an observer made of lattice
+excitations can detect absolute motion relative to the
+lattice.  This is exactly the content of special
+relativity's postulate — but here it follows from the
+structure of the theory rather than being assumed.
+
+### Historical context
+
+This is essentially the argument of Lorentz, FitzGerald,
+and Poincaré (1892–1905), developed *before* Einstein.
+They showed that if all forces — not just electromagnetic
+— contract rulers and slow clocks in the same way, the
+aether becomes undetectable.  The "Lorentz aether theory"
+is empirically equivalent to special relativity.
+
+Einstein's contribution was to promote this from a
+"conspiracy" (the aether happens to be undetectable
+because all forces conspire to hide it) to a *principle*
+(there IS no preferred frame — the constancy of c is
+fundamental, not derived).
+
+GRID offers a third perspective: the constancy of c is
+*derived*, not fundamental — but the derivation is not a
+conspiracy.  It follows inevitably from the single fact
+that all observers are made of the same lattice as the
+phenomena they observe.  There is no way for a lattice
+excitation to detect the lattice it lives on, because its
+measuring instruments ARE the lattice.
+
+### Why the conspiracy is not a conspiracy
+
+In the classical aether theory, you had to assume that
+ALL forces (EM, gravity, nuclear, etc.) conspired to
+produce the same contraction.  This seemed ad hoc — why
+would unrelated forces all agree?
+
+In GRID, the answer is obvious: **all forces come from
+the same lattice.**  EM is the dynamics of phases on the
+lattice.  Gravity is the thermodynamics of the lattice.
+Of course they produce the same Lorentz contraction —
+they're different aspects of the same substrate.  There
+is no conspiracy because there is only one actor.
+
+This is arguably GRID's most fundamental contribution
+to the aether question: it dissolves the conspiracy
+problem by unifying the forces onto a single substrate.
+
+### The discrete-lattice caveat
+
+At the Planck scale, the discrete lattice DOES break
+Lorentz invariance.  A hexagonal lattice has 60°
+rotational symmetry, not continuous rotational symmetry.
+A wave with wavelength comparable to the lattice spacing
+would "see" the lattice structure and experience
+preferred directions.
+
+Full Lorentz invariance emerges only in the continuum
+limit (wavelengths >> L_P).  Since every known particle
+has a Compton wavelength enormously larger than L_P
+(by factors of 10¹⁹ to 10²⁸), the violation is
+fantastically small.
+
+Experimental bounds from gamma-ray astronomy (Fermi-LAT,
+MAGIC telescopes) constrain Lorentz violation at the
+Planck scale to < 10⁻¹⁹.  No violation has been
+detected.  This is consistent with the GRID picture:
+Lorentz invariance is an excellent approximation for all
+observable physics, broken only at the Planck scale where
+no current experiment can probe.
+
+If Lorentz violation were ever detected at the Planck
+scale, it would be EVIDENCE FOR a discrete lattice
+substrate — and the pattern of the violation (which
+directions are preferred, at what energy scale) would
+constrain the lattice geometry.
+
+### What this means for the axiom set
+
+If this argument is rigorous, A2 (Lorentzian signature)
+could be weakened to:
+
+**A2': The lattice has a causal structure with a finite
+maximum signal speed.**
+
+This is weaker than "Lorentzian signature" because it
+doesn't explicitly assume Lorentz boost symmetry.  The
+full Lorentz group (boosts + rotations) would then be
+a *theorem* rather than an axiom, following from:
+- A2' (finite causal speed) +
+- The wave equation structure of the emergent dynamics +
+- All observers being lattice excitations
+
+This would reduce GRID's axiom count and strengthen the
+claim that special relativity is not an independent
+postulate but a consequence of discrete geometry.
+
+### Remaining questions
+
+1. **Rigor:** the argument above is physical, not
+   mathematical.  A rigorous proof would need to show
+   that the continuum limit of the lattice dynamics is
+   Lorentz-invariant given only A2' (causal speed limit)
+   and not the full A2 (Lorentzian signature).  This may
+   require the emergent dynamics to be "the most general
+   Lorentz-invariant action consistent with the symmetries"
+   — which is a non-trivial result in lattice field theory.
+
+2. **Isotropy:** a hexagonal lattice has discrete rotational
+   symmetry, not continuous.  Does the continuum limit
+   automatically restore isotropy?  In lattice gauge
+   theory, the answer is yes (the lattice artifacts vanish
+   in the continuum limit), but this relies on the specific
+   form of the action.
+
+3. **Connection to the "private grid" hypothesis:** if each
+   particle has its own internal frame (defined by its
+   compact-dimension state), and the internal frame can't
+   detect the lattice, then Lorentz invariance is even more
+   natural.  The particle's internal dynamics are the same
+   regardless of velocity — the "private frame" is always
+   at rest relative to itself.
+
+4. **Testable prediction:** Planck-scale Lorentz violation.
+   The discrete lattice predicts that at sufficiently high
+   energies (E ~ E_Planck), deviations from Lorentz
+   invariance should appear.  The specific pattern (energy
+   dependence, directional dependence) depends on the
+   lattice geometry (hexagonal vs triangular, 3D vs 4D).
+   This is in principle testable with ultra-high-energy
+   cosmic rays or gamma-ray burst observations.
+
+### Assessment
+
+This argument has the potential to reduce GRID's axiom
+count by one (A2 → A2') and provide a mechanical
+explanation for special relativity.  The physical reasoning
+is sound; the mathematical rigor is not yet established.
+This is one of the highest-value theoretical questions on
+the GRID backlog — alongside the question of whether
+gauge invariance (A4) can be derived from the hexagonal
+lattice geometry.
+
+If both A2 and A4 can be derived rather than assumed, GRID
+would have only four axioms:
+- A1: 4D discrete lattice with causal speed limit
+- A3: periodic internal phase
+- A5: information resolution ζ = 1/4
+- A6: coupling constant α ≈ 1/137
+
+And ζ is geometrically derived (not truly free), leaving
+α as the sole input and three structural axioms.

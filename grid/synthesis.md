@@ -385,7 +385,25 @@ formalism or overturned either one.
 | Can ζ be derived from packing geometry? | Leading candidate: ζ = 1/6 from 4D simplex | [lattice-geometry.md](lattice-geometry.md) |
 | Are ζ and α related? | Unknown — treated as independent | [foundations.md](foundations.md), Q2 |
 | Why 4 dimensions? | Assumed (A1), not derived | [foundations.md](foundations.md), Q3 |
-| Why (1,3) signature? | Assumed (A2), not derived | [foundations.md](foundations.md), Q4 |
+| Why (1,3) signature? | Assumed (A2), not derived — but see below | [foundations.md](foundations.md), Q4 |
+| Can Lorentz invariance be derived rather than assumed? | **Promising** — if all observers are lattice excitations, their instruments contract/dilate by exactly γ, making the lattice undetectable.  A2 could weaken to "finite causal speed" (A2'), with full Lorentz symmetry as a theorem.  Physical argument is strong; mathematical rigor not yet established.  Partially computable (sim-lorentz: boost a bound state, check γ contraction). | [INBOX.md](INBOX.md) |
+| Can gauge invariance (A4) be derived from hexagonal geometry? | Open — HIGH VALUE if achievable; would eliminate an axiom.  Partially computable (lattice Wilson loops, correlation functions). | [INBOX.md](INBOX.md), [hexagonal.md](hexagonal.md) |
+
+**Axiom reduction potential:** if both A2 → A2' and A4
+are established, GRID reduces from six axioms to four:
+
+| | Current | Reduced |
+|---|---|---|
+| A1: 4D discrete lattice | Axiom | Axiom |
+| A2: Lorentzian signature | Axiom | **Theorem** (from A2': causal speed limit + observers are lattice excitations) |
+| A3: Periodic internal phase | Axiom | Axiom |
+| A4: Local gauge invariance | Axiom | **Theorem** (from hexagonal geometry) |
+| A5: ζ = 1/4 | Derived | Derived (3D tetrahedral geometry) |
+| A6: α ≈ 1/137 | Measured | Measured (sole free parameter) |
+
+Three structural axioms, one measured input.  Both
+reductions are partially testable by simulation and
+partially require theoretical proof.
 
 ### Physical
 
