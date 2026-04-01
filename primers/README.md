@@ -4,6 +4,7 @@ Self-contained tutorials on topics a reader needs to understand the project's st
 
 ## Contents
 
+- `across-through.md` — Nature's conjugate pattern: how the same across/through duality (voltage/current, pressure/flow, E/B) appears in every energy domain, and why the GRID lattice produces Maxwell's equations by embodying it. No physics background assumed.
 - `charge-from-energy.md` — How a packet of EM energy becomes an apparent electric charge: from photon to charged particle, without introducing fundamental charge. The conceptual framework for the WvM model and how to read it.
 - `kaluza-klein.md` — Introduction to Kaluza-Klein theory: starts from coordinates and distance, ends with electromagnetism emerging from geometry. Assumes calculus, vectors, and matrices.
 - `maxwell-primer.md` — Ground-up review of Maxwell's equations — what EM fields are, how they are described mathematically — building to the four-potential A_μ as a bridge to Kaluza-Klein.
