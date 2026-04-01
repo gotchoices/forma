@@ -7,38 +7,6 @@ See [`../qa/`](../qa/) for open physics questions and detailed problem analysis.
 
 ## Active
 
-### R42. Dark matter from ghost modes — charge cancellation and mass census  **COMPLETE**
-**Study:** [`R42-dark-matter/`](R42-dark-matter/)
-**Questions:** Q94, Q93, Q85  **Type:** compute  **Depends on:** R28, R33, R41, R19
-
-Ghost modes are charge-symmetric: for every mode with charge +Q,
-a partner with charge −Q and identical mass exists.  In thermal
-equilibrium, the aggregate is charge-neutral — a gas of mass with
-no net charge.  6 tracks, 14 findings.  **Result:** charge
-cancellation is exact (F1–F3).  The DM/visible mass ratio under
-physically motivated filters spans 2.4 to 12.4; the Planck value
-5.36 ± 0.05 sits in the middle (F4).  Several simple filters land
-within 20% of 5.4 (|Q| ≤ 2 → 4.41, mt ≤ 1 → 4.77).  Thermal
-weighting does not help — mode selection (which modes couple to S)
-determines the ratio, not thermodynamics (F6).  The hypothesis is
-viable; next step is computing the projection integral W(n) from
-geometry.  See `findings.md` (F1–F14).
-
-### R43. Weinberg angle from cross-sheet geometry  **COMPLETE**
-**Study:** [`R43-weinberg-angle/`](R43-weinberg-angle/)
-**Questions:** Q96 §10.2  **Type:** compute  **Depends on:** R26, R34, R19
-
-**Result:** sin²θ_W matches 3/13 = 0.23077 to −0.19% of
-sin²θ_W(M_Z) = 0.23122.  The fraction 2/9 predicts M_W =
-80.420 GeV (+0.051% of measured).  However, a trace calculation
-on the Ma metric (F10) shows 3/13 is NOT derivable the way
-SU(5)'s 3/8 is — at unified coupling, the structural ratio is
-3/15 = 1/5, not 3/13.  The match is striking but its physical
-origin is unknown.  W/Z confirmed as transient cross-sheet
-reconfigurations, not eigenmodes (F7).  See `findings.md`
-(F1–F10).  The match warrants investigation but is not a
-derivation.
-
 ### R15. Forward charge calculation — deriving α
 **Study:** [`R15-forward-charge/`](R15-forward-charge/)
 **Questions:** [Q18](../qa/Q18-deriving-alpha.md), Q34 Path 7  **Type:** compute  **Depends on:** R7, R13
@@ -53,100 +21,8 @@ energy and topology alone.
 
 **Open sub-problem:** the formula α(r,s) produces a one-parameter family of
 solutions — every r > ~2 has a self-consistent s.  Nothing currently selects r.
-
-### R41. Dynamic torus model — full implementation  **COMPLETE**
-**Study:** [`R41-dynamic-model/`](R41-dynamic-model/)
-**Questions:** Q34, Q77, Q86, Q91, Q93  **Type:** compute  **Depends on:** R40, R27, R15, R19, R33
-
-Refactored `lib/ma_model.py` with the dynamic model from R40.
-7 tracks, 43 findings.  Two solution methods: `dynamic='full'`
-(iterative force balance, 3–4 iterations to machine precision)
-and `dynamic='shortcut'` (one-shot perturbation, O(α⁴) accurate).
-125 unit tests pass.  **Result:** the dynamic model is a CONCEPTUAL
-advance (elliptical cross-section, 92% mode elimination via low-pass
-filter, geometric generation hierarchy with FF ordering e > τ > μ)
-but NOT a quantitative one (mass corrections 100× smaller than
-structural errors, (1,1) ghost persists at FF=0.46, free parameters
-unchanged).  Reproduces static parameters to 7 sig figs.  Retain
-as the correct physical picture; use static for practical work.
-See `findings.md` (F27–F43).
-
-### R40. Self-consistent dynamic torus — COMPLETE
-**Study:** [`R40-dynamic-torus/`](R40-dynamic-torus/)
-**Questions:** Q90, Q77, Q34, Q86  **Type:** compute  **Depends on:** R17, R18, R19, R33, R37
-
-Does the photon's radiation pressure deform the torus?  Phase 1
-(Tracks 1–8) established the pressure profile and showed GR bulk
-stiffness gives 10⁻⁴⁰ deformation (mixing EM and gravity).  Phase
-2 introduced the α-impedance model: the torus wall is the (1−α)
-energy contour of the mode, with 136/137 of the energy confined
-and 1/137 leaking as the external EM field.  **Result:** on the
-flat torus the contour is circular (no deformation).  The 3D
-embedding adds a 0.067% elliptical perturbation.  The elastic 1/k²
-wall response provides a **low-pass filter** in tube winding number
-(40× suppression per step in n₁).  Dynamic Ma is perturbative
-(corrections ∝ α² ≈ 5×10⁻⁵); the static flat-torus model is the
-correct zeroth-order approximation.  α runs with energy because
-wall transparency increases — geometric vacuum polarization.
-See `findings.md` (F1–F26).  Note: r remains free in the
-dynamic model (F26); all key results hold regardless of r.
-See Q91 for the open problem of deriving V_compact.
-
-### R39. Phase-dependent near-field interaction — COMPLETE
-**Study:** [`R39-near-field-phase/`](R39-near-field-phase/)
-**Questions:** [Q88](../qa/Q88-phase-dependent-nuclear-force.md), [Q82](../qa/Q82-entanglement-as-ma-geometry.md)  **Type:** compute  **Depends on:** R7, R19, R26–R29
-
-Do two identical Ma modes interact differently depending on their
-relative phase?  **Result:** The dominant effect is geometric
-suppression — the proton's extended charge distribution
-(a ≈ 3.7 fm) reduces the Coulomb barrier by 74% at 1 fm,
-robust across three charge models (F8).  Phase modulation adds
-~3–14% variation.  The (1,2) mode has Δφ → Δφ+π symmetry, so
-"anti-phase" ≡ "in-phase" — Q88's anti-phase cancellation is
-falsified for this winding (F2).  Track 6 added the magnetic
-interaction (Neumann formula, v = c): magnetism is same order as
-electric but adds only ~6 pp of extra suppression for aligned
-tori (F9).  No electromagnetic attraction at any orientation.
-Total barrier at 1 fm: ~0.3 MeV (78% suppression).  Nuclear
-binding requires a non-EM mechanism (R29 F6 gauge boson).
-See `findings.md` (F1–F9).
-
-### R27. Ma (the six-dimensional material space) oscillation patterns — particles, atoms, and nuclei
-**Study:** [`R27-bound-states/`](R27-bound-states/)
-**Questions:** Q16, Q28, Q32  **Type:** compute/analytical  **Depends on:** R26, R19, R15
-
-Discovery engine (`lib/ma_solver.py`) searches for Ma modes matching known particles.
-7 tracks complete (54 findings).  Neutron and muon pin r_p = 8.906 and σ_ep = −0.0906,
-leaving zero free parameters at MeV scale.  Parameter-free predictions: kaon (1.2%),
-eta (0.6%), eta prime (0.3%), phi (0.8%), kaon neutral (1.2%).  Lifetime-gap correlation
-r = −0.84 (p = 0.009) for weak decays supports off-resonance hypothesis.  Reaction
-energetics: 17/21 decays pass.  Tau at 5.6% (structural gap), pion at 14% (rough).
-Ω⁻ structurally forbidden (spin-3/2 + odd charge).  Hydrogen and nuclear stability
-deferred to future study (requires multi-mode formalism).  **Substantially complete.**
-
-### R28. Ma spectrum refinement  **Complete**
-**Study:** [`R28-particle-spectrum/`](R28-particle-spectrum/)
-**Questions:** Q16, Q32  **Type:** compute  **Depends on:** R27
-
-4 tracks, 22 findings.  σ_eν and σ_νp irrelevant (neutrino sheet decouples).
-~48 energy bands below 2 GeV, ~900 modes at physical charges vs ~40 known
-particles — consistent with off-resonance hypothesis.  **Strange baryon sign
-flips resolved**: extending search range to n_max=15 gives Λ at 0.9%, Σ⁺ at
-0.3%, all 4 sign flips fixed (21/21 reactions).  W/Z/Higgs match trivially
-at high energy — Ma spectrum non-predictive above ~2 GeV (band spacing
-< 5 MeV).  Predictive horizon established.
-
-### R29. Atoms and nuclei — from Ma modes to multi-body physics  **Complete**
-**Study:** [`R29-atoms-and-nuclei/`](R29-atoms-and-nuclei/)
-**Questions:** Q28, Q16  **Type:** theoretical + compute  **Depends on:** R27, R15
-
-4 tracks, 27 findings.  Coulomb potential derived from Ma × S (the three spatial dimensions) (α = 1/137, hydrogen
-E₁ = −13.6 eV).  KK boson approach fails for nuclear binding (Yukawa corrections 10⁴×
-too large).  Pivoted to direct Ma mode search: nuclei ARE Ma modes.  Scaling law
-n₅ = A, n₆ = 2A matches all nuclei d→⁵⁶Fe to < 1%.  Deuteron: 0.02% error, 86% of
-binding captured.  Nuclear spins predicted (9/11).  Free neutron ≠ nuclear neutron
-(explains nuclear stability).  Two-tier physics: Ma = particles + nuclei (MeV);
-S = atoms + stability (eV).  r_e unconstrained by nuclear data.
+The g−2 field fraction (R44) is the most promising route to pinning r_e
+and closing this study.
 
 ### R30. Minimal material geometry — is a material sheet necessary?
 **Study:** [`R30-minimal-geometry/`](R30-minimal-geometry/)
@@ -158,114 +34,20 @@ suggest possible over-parameterization.  Can a circle reproduce particle
 properties?  Is the charge mechanism irreducibly 2D?  What about Klein bottle
 identification?  Hierarchical compactification?  Non-uniform circle?  5 tracks.
 
-### R31. The origin of α and the nature of atomic binding  **Complete**
-**Study:** [`R31-alpha-derivation/`](R31-alpha-derivation/)
-**Questions:** Q34, Q28, Q18  **Type:** theoretical + compute  **Depends on:** R19, R26, R29, R30
+### R44. Anomalous magnetic moment from torus geometry  **Framed**
+**Study:** [`R44-g-minus-2/`](R44-g-minus-2/)
+**Questions:** Q53, Q34  **Type:** compute  **Depends on:** R19, R8, R40
 
-6 tracks, 24 findings.  Hydrogen atom is NOT a Ma mode (spectrum
-2,830× too coarse).  Casimir energy cannot select α (no minimum).
-**Naive KK Yukawa ruled out** — corrections 10³–10⁶× too large for
-Lamb shift, requiring KK massive mode coupling suppressed by ≥10⁵.
-Ma merging always costs energy (neutron 0.78 MeV heavier than H).
-α remains an input; deriving it requires a dynamics/moduli potential
-not yet in the model.  r_e confirmed as a geometric constant, not
-per-electron.
-
-### R32. The running of α and the UV coupling  **Complete**
-**Study:** [`R32-alpha-running/`](R32-alpha-running/)
-**Questions:** Q77, Q18, Q47  **Type:** compute + theoretical  **Depends on:** R19, R27, R28, R31
-
-4 tracks.  Tests the hypothesis that α is the impedance mismatch between Ma
-and S.  **Result:** Moderate-to-null.  Naive KK running is catastrophic
-(157,000× SM), confirming ~10⁵ ghost mode suppression.  Volume dilution gives
-α_bare ≈ 1/5, not 1/24.  The Dedekind η²⁴ is the strongest connection to 24.
-The α formula's 4π IS the 3D solid angle; the shear sin²(2πs) dominates.
-"Why α = 1/137?" reduces to "why s ≈ 0.01?" — the shear is currently reverse-
-engineered from α, not independently determined.  F1–F23.  Track 2: volume
-dilution and the bare UV coupling.  Track 3: why 24? — geometric relationships
-between torus lattices and the number 24 (modular functions, kissing numbers,
-refraction geometry).  Track 4: impedance/transmission coefficient at the
-Ma/S interface via waveguide/cavity QED.
-
-### R34. The midpoint coupling — bidirectional modulation of α  **Complete**
-**Study:** [`R34-midpoint-coupling/`](R34-midpoint-coupling/)
-**Questions:** Q77, Q18  **Type:** compute + theoretical  **Depends on:** R19, R31, R32
-
-4 tracks.  R32 found the weighted gauge partition gives 1/80 = (137+24)/2
-to 99.8%.  Tests whether this is a geometric base coupling with bidirectional
-Kramers-Kronig dispersion: Ma modes as absorption resonances modulate α
-upward (IR → 137) and downward (UV → 24) from the midpoint.  Track 1:
-dispersive integral.  Track 2: locate the resonance scale.  Track 3: derive
-the shear from 1/80 instead of 1/137.  Track 4: clockwise/counterclockwise
-interference on the torus as the bidirectional mechanism.
-
-
-### R35. Threshold detection and material-dimension coupling  **Complete**
-**Study:** [`R35-threshold-coupling/`](R35-threshold-coupling/)
-**Questions:** Q78, Q32  **Type:** compute + theoretical  **Depends on:** R26, R19, R27, R33
-
-4 tracks (all complete, F1–F34).  Motivated by the unified mode-density
-picture (Q85 §14): threshold "continuity" is mode-hopping on the
-neutrino sheet's dense ladder.  Track 1 (F1–F7): Cd-109 Re/Rc = 33
-reproduced via SCA upper-limit mechanism.  Na-22 constrains pre-load.
-Track 2 (F29–F34): reframed around elastic torus (g_EM = 0).  Storage
-10–324 bits/cell.  Write ~70 ps/hop (ATP-driven).  Read ~3 ps
-(passive, SNR ~ 10⁷).  Fidelity > 99.99%.  THz can't directly drive
-ν-modes; revised L01 uses thermal degradation.  Reiter's source
-saturates pre-load (fill/leak ~ 10¹²).
-Track 3 (F8–F21): three-layer protection is direction-independent
-(F15) and symmetric (F16).  Elastic torus resolves I/O (F17).
-Coulomb field = monopole projection of material-dimension structure
-(F19).  Non-uniform voltage on cell membrane (F20) — Levin's Vmem
-is the DC component of a harmonic pattern (F21).
-Track 4 (F22–F28): flat Ma coupling exactly zero (F22).  Elastic
-torus shifts I/O to geometry (F23).  Goldilocks: F_write/kT > 10
-(F24).  ATP opens window K ∈ [0.043, 0.080] eV⁻¹ (F27).  Writing
-REQUIRES metabolic energy.
-
-### R36. Geometric tilt — α from Ma_e/S embedding without KK  **Complete**
-**Study:** [`R36-geometric-tilt/`](R36-geometric-tilt/)
-**Questions:** Q77, Q76, Q18  **Type:** compute + theoretical  **Depends on:** R19, R26, R34
-
-Drops KK entirely.  Ma_e axes are orthogonal internally (s=0), but the Ma_e
-plane is tilted relative to S by angle θ.  The tilt determines how much S
-"sees" of material modes — α = f(θ).  Electromagnetic interaction emerges
-from the S-projection of material-dimension momentum, not from gauge fields.  α may
-be a free "designer's choice" parameter rather than a derivable constant.
-Track 1: tilt formalism and mode projection.  Track 2: mode-mode coupling
-(does 1/r Coulomb emerge?).  Track 3: ghost mode projection.  Track 4:
-mass spectrum preservation.
-
-### R37. Membrane mechanics — gravity and stability from the Ma_e/S interface  **Complete**
-**Study:** [`R37-membrane-mechanics/`](R37-membrane-mechanics/)
-**Questions:** Q2, Q76  **Type:** theoretical + compute  **Depends on:** R19, R26, R17, R18, R31, R35, R36
-
-12 findings.  Gravity "derivation" (Tracks 2–3) tautological (GR restated).
-KEY RESULT (F7): constrained energy minimisation along the alpha curve
-gives r ≈ 0.50 — a broad minimum (r = 0.4–0.6 within 0.5% of optimal),
-but r = 6.6 is 91% higher, decisively ruling out thin-torus geometries.
-First physical mechanism to prefer a specific region of the alpha curve.
-Anisotropic correction requires the **moduli potential** (the vacuum energy
-of Ma_e as a function of shape) — the same deep unknown that blocks
-computing R35's Goldilocks K.  Other genuine results: computable elastic
-constants (F2), electron sheet ~10⁶× too stiff for R35 coupling (F10),
-self-gravity negligible (F5).
-
-### R38. Fourth-generation search — does MaSt predict exactly three?  **Complete**
-**Study:** [`R38-fourth-generation/`](R38-fourth-generation/)
-**Questions:** Q86  **Type:** compute  **Depends on:** R26, R27
-
-10 findings across 5 tracks.  MaSt does NOT predict exactly three
-generations.  The charge −1, spin ½ spectrum has ~14,000 distinct
-energy levels below 10 GeV (not 3).  Ma_ν has ~1,000 weakly-charged
-neutrino species (not 3), creating a 140σ tension with the Z width.
-Both are instances of the ghost mode problem (R33).  Three generations
-are **accommodated but not predicted**.  Track 5 tests the resonance
-capture hypothesis: if Ma cavity bandwidth limits which modes can
-stably capture a photon, the generation count may be naturally gated.
-At Q ≈ 30 the tau sits at the edge of capture and the 4th generation
-is excluded.  The hypothesis is viable but underdetermined — requires
-a first-principles model of Ma-S coupling to compute Q.
+Two concrete mechanisms for g ≠ 2: (1) **Charge-mass separation**
+— the R19 shear makes the charge density σ(θ₁,θ₂) non-uniform
+while energy density stays uniform; charge concentrated at larger
+radii boosts μ relative to L, giving g > 2.  (2) **Torus knot
+wobble** — the (1,2) geodesic embedded in 3D is a helix that
+samples ρ² non-linearly.  Both effects are computable from the
+existing R19 charge distribution — non-tautological because we
+use a distribution fitted to charge to predict a different
+observable (moment).  4 tracks: charge density, charge-weighted
+moment, embedding correction, r_e scan.  **HIGH VALUE.**
 
 ### R33. Ghost mode selection — why most Ma modes are dark  **Paused**
 **Study:** [`R33-ghost-selection/`](R33-ghost-selection/)
@@ -326,18 +108,6 @@ How deep is the analogy? Is the material-sheet model a special case of string co
 on a torus, and does string theory's machinery (modular invariance, T-duality) apply
 or constrain our model?
 
-### Electron g−2 from torus geometry — pin r_e  *(Q53, depends on R19)*
-**Computable.**  QED computes g−2 to 12 digits.  MaSt gives g = 2
-from topology (R8 F9).  The first correction α/(2π) is attributed
-to the non-co-rotating field fraction (WvM).  If this fraction
-depends on r_e, the measured g−2 pins r_e with extraordinary
-precision — and α follows from the R19 shear-charge formula,
-eliminating MaSt's last free parameter for the electron sector.
-**Computation:** solve the EM field distribution on the sheared
-torus at a given r_e, compute the co-rotating vs external energy
-fraction, compare to α/(2π).  Well-posed integral, no conceptual
-gap.  **HIGH VALUE** — most promising route to deriving α.
-
 ### KK gauge coupling on the sheared torus — resolve the Yukawa tension  *(R29 F11–F13, depends on R19)*
 **Computable.**  R29 showed naive KK Yukawa corrections are 10³–10⁶×
 too large for hydrogen spectroscopy.  Five resolutions proposed
@@ -353,8 +123,8 @@ is a genuine problem or an artifact of the naive coupling assumption.
 
 ### W barrier height from mode reconfiguration dynamics  *(R43 F7, Q96)*
 **Partially computable.**  R43 confirmed the W is a transient
-cross-sheet reconfiguration, not an eigenmode, and the Weinberg
-angle is geometric (3/13).  The W mass (80.4 GeV) is the energy
+cross-sheet reconfiguration, not an eigenmode.  The W mass
+(80.4 GeV) is the energy
 threshold for cross-sheet transitions — a barrier height in the
 mode landscape.  **Computation:** model the energy cost of
 continuously deforming a neutron eigenmode (1,2,0,0,1,2) into
@@ -401,3 +171,18 @@ Studies in chronological order of completion. Key result only — see each study
 | 22 | **R24. Torus dynamics** [`R24-torus-dynamics/`](R24-torus-dynamics/) | 3-torus neutrinos: modes (0,0,n₃) uncharged, mass ratio 33.63 from integers alone (0.03σ), Σm = 72 meV, system over-determined → r predicted (T1 F1–F7).  Wave dynamics: defocusing nonlinearity does not select modes (T2 F8–F12).  r-selection via dynamics pre-empted (T3).  Critical open: spin of (0,0,n₃) → R25. |
 | 23 | **R25. Neutrino spin** [`R25-neutrino-spin/`](R25-neutrino-spin/) | Charge-spin linkage (F4): both charge (n₁ = ±1) and spin-½ (n₁ odd) are controlled by tube winding n₁.  "Uncharged" and "fermion" are mutually exclusive — WvM cannot produce neutrinos.  3-torus kinematic success (R24 T1) blocked at spin gate.  PMNS path to r-selection closed.  Neutrino mechanism remains the central open problem. |
 | 24 | **R26. Three tori — Ma** [`R26-neutrino-t4/`](R26-neutrino-t4/) | Ma = the three material sheets (electron, neutrino, proton).  Neutrino mass ratio Δm²₃₁/Δm²₂₁ = 33.6 from shear s₃₄ = 0.022 (exact, r-independent).  Charge-neutral neutron mode (0,−2,+1,0,0,+2) reproduces m_n at σ_ep = −0.091 (R27 F15–F18; supersedes the R26 candidate (1,2,0,0,1,2) at |σ_ep| ≈ 0.038).  Parameter census: 21 total, 15 free (3 aspect ratios + 12 cross-shears) — under-determined.  Casimir–mass tension (F73): vacuum energy wants maximal coupling, mass spectrum wants minimal — first candidate for a self-selecting principle.  75 findings across 4 tracks. |
+| 25 | **R27. Ma oscillation patterns** [`R27-bound-states/`](R27-bound-states/) | Discovery engine finds Ma modes matching particles.  7 tracks, 54 findings.  Neutron and muon pin r_p = 8.906 and σ_ep = −0.0906 — zero free parameters at MeV scale.  Parameter-free predictions: kaon (1.2%), eta (0.6%), eta prime (0.3%), phi (0.8%).  Lifetime-gap correlation r = −0.84 supports off-resonance hypothesis.  Tau 5.6% high (structural gap). |
+| 26 | **R28. Ma spectrum refinement** [`R28-particle-spectrum/`](R28-particle-spectrum/) | 4 tracks, 22 findings.  ~48 energy bands below 2 GeV, ~900 modes vs ~40 known particles — consistent with off-resonance hypothesis.  Strange baryon sign flips resolved at n_max=15.  W/Z/Higgs match trivially at high energy; Ma non-predictive above ~2 GeV.  Predictive horizon established. |
+| 27 | **R29. Atoms and nuclei** [`R29-atoms-and-nuclei/`](R29-atoms-and-nuclei/) | 4 tracks, 27 findings.  Coulomb potential derived from Ma × S (α = 1/137, H E₁ = −13.6 eV).  Nuclei ARE Ma modes: scaling law n₅ = A, n₆ = 2A matches d→⁵⁶Fe to < 1%.  Deuteron 0.02% error.  Nuclear spins predicted (9/11).  Two-tier physics: Ma (MeV) / S (eV). |
+| 28 | **R31. Origin of α** [`R31-alpha-derivation/`](R31-alpha-derivation/) | 6 tracks, 24 findings.  Hydrogen NOT a Ma mode (spectrum 2,830× too coarse).  Casimir energy cannot select α.  Naive KK Yukawa 10³–10⁶× too large for Lamb shift.  α remains an input; deriving it requires a moduli potential not yet in the model. |
+| 29 | **R32. Running of α** [`R32-alpha-running/`](R32-alpha-running/) | 4 tracks.  Naive KK running catastrophic (157,000× SM), confirming ~10⁵ ghost suppression.  Volume dilution gives α_bare ≈ 1/5.  "Why α = 1/137?" reduces to "why s ≈ 0.01?" — shear currently reverse-engineered from α. |
+| 30 | **R34. Midpoint coupling** [`R34-midpoint-coupling/`](R34-midpoint-coupling/) | 4 tracks.  Weighted gauge partition gives 1/80 = (137+24)/2 to 99.8%.  Tests bidirectional Kramers-Kronig dispersion from geometric base coupling.  Ma modes as absorption resonances modulate α upward (IR → 137) and downward (UV → 24). |
+| 31 | **R35. Threshold detection** [`R35-threshold-coupling/`](R35-threshold-coupling/) | 4 tracks, 34 findings.  Threshold "continuity" is mode-hopping on ν-sheet's dense ladder.  Cd-109 Re/Rc = 33 reproduced via SCA.  Storage 10–324 bits/cell, write ~70 ps/hop, read ~3 ps.  Writing REQUIRES metabolic energy (ATP). |
+| 32 | **R36. Geometric tilt** [`R36-geometric-tilt/`](R36-geometric-tilt/) | Drops KK.  Ma_e plane tilted relative to S by angle θ; α = f(θ).  EM emerges from S-projection of material-dimension momentum.  α may be a free "designer's choice" parameter. |
+| 33 | **R37. Membrane mechanics** [`R37-membrane-mechanics/`](R37-membrane-mechanics/) | 12 findings.  Gravity "derivation" tautological.  KEY: constrained energy minimisation gives r ≈ 0.50 (first mechanism preferring a specific r region), decisively ruling out thin-torus geometries (r = 6.6 is 91% worse).  Anisotropic correction requires moduli potential. |
+| 34 | **R38. Fourth generation** [`R38-fourth-generation/`](R38-fourth-generation/) | 5 tracks, 10 findings.  MaSt does NOT predict exactly three generations (~14,000 levels below 10 GeV).  Three generations accommodated not predicted.  Resonance capture hypothesis viable (Q ≈ 30 excludes 4th gen) but underdetermined. |
+| 35 | **R39. Near-field phase** [`R39-near-field-phase/`](R39-near-field-phase/) | 6 tracks, 9 findings.  Proton's extended charge reduces Coulomb barrier by 74% at 1 fm.  Phase modulation adds ~3–14%.  Anti-phase cancellation falsified for (1,2).  No EM attraction at any orientation.  Nuclear binding requires non-EM mechanism. |
+| 36 | **R40. Dynamic torus** [`R40-dynamic-torus/`](R40-dynamic-torus/) | Phase 1: GR bulk stiffness gives 10⁻⁴⁰ deformation.  Phase 2: α-impedance model — wall is (1−α) contour, 136/137 confined.  Elastic 1/k² wall response provides low-pass filter (40× suppression per n₁ step).  Dynamic Ma is perturbative (∝ α²); static model is correct zeroth order. |
+| 37 | **R41. Dynamic model (full)** [`R41-dynamic-model/`](R41-dynamic-model/) | 7 tracks, 43 findings.  Refactored `lib/ma_model.py`.  Dynamic model is a CONCEPTUAL advance (elliptical cross-section, 92% mode elimination, geometric generation hierarchy) but NOT quantitative (corrections 100× smaller than structural errors).  Reproduces static to 7 sig figs.  125 unit tests pass. |
+| 38 | **R42. Dark matter from ghost modes** [`R42-dark-matter/`](R42-dark-matter/) | 6 tracks, 14 findings.  Ghost modes exactly charge-symmetric (F1–F3).  DM/visible mass ratio spans 2.4–12.4 under physical filters; Planck 5.36 in the middle.  Several filters within 20% of 5.4.  Hypothesis viable; next step is projection integral W(n). |
+| 39 | **R43. Weinberg angle** [`R43-weinberg-angle/`](R43-weinberg-angle/) | 4 tracks, 10 findings.  sin²θ_W matches 3/13 to −0.19% of MS-bar value.  2/9 predicts M_W = 80.420 GeV (+0.051%).  However, 3/13 is NOT derivable from Ma metric trace (F10) — at unified coupling the structural ratio is 3/15 = 1/5.  Unexplained numerical match, not a derivation.  W/Z are transient cross-sheet reconfigurations, not eigenmodes (F7). |

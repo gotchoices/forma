@@ -1,8 +1,8 @@
 # Q53. Does the model predict the anomalous magnetic moment (g − 2)?
 
-**Status:** open — needs field-fraction calculation for our geometry
+**Status:** open — concrete computation framed as **R44**
 **Source:** user question
-**Connects to:** R8 Track 3, Q34 (α derivation), Q52 (aspect ratio)
+**Connects to:** R8 Track 3, Q34 (α derivation), Q52 (aspect ratio), **R44** (g−2 study)
 
 ---
 
@@ -16,40 +16,43 @@ works for any torus shape, any winding number, any aspect ratio.
 
 The measured value g ≈ 2.00232 includes the anomalous part
 g − 2 ≈ α/π.  WvM claim this comes from the fraction of field
-energy in the "non-co-rotating (external) component" (the part
-of the EM field that doesn't travel with the photon).  They
-write g = 2(1 + α'/(2π)) where α' = (q/e)²α.  With q = e
-(our current model), α' = α, and this reproduces the Schwinger
-first-order correction exactly.
+energy in the "non-co-rotating (external) component," but this
+was never computed from the geometry — it may be a post-hoc
+match to Schwinger's known result.
 
 ## Key questions
 
 1. **Is the WvM g-factor argument a derivation or a match?**
    WvM's α/(2π) correction predates their model (it's
-   Schwinger's 1948 result).  Did WvM derive it from the
-   field structure, or fit a "field fraction" to match
-   the known answer?
+   Schwinger's 1948 result).  The "field fraction" concept
+   was never rigorously defined or computed.
 
-2. **What does our model predict at leading order?**
-   - g = 1? No — that's the classical current-loop result
-     (R8 F8), known to be wrong.
-   - g = 2? Yes — from topology (R8 F9). This is solid.
-   - g = 2.002...? Plausible but unverified in our framework.
+2. **Does charge-mass separation give g ≠ 2?**
+   The topological g = 2 assumes charge and mass are
+   co-located (classical gyromagnetic ratio μ = eL/2m).
+   The R19 shear mechanism makes charge density σ(θ₁,θ₂)
+   non-uniform while energy density stays uniform.  If
+   charge concentrates at larger radii, the charge-weighted
+   magnetic moment exceeds the mass-weighted angular
+   momentum, giving g > 2.  This is computable and
+   non-tautological — we use a distribution fitted to
+   charge to predict a different observable (moment).
+   **→ R44 Tracks 1–2.**
 
-3. **Should we expect the anomalous correction from geometry?**
-   In QED, g − 2 comes from virtual photon loops (radiative
-   corrections).  In our model, there are no "virtual photons"
-   — but there IS a non-co-rotating external field component.
-   If the energy fraction in this component equals α/(2π),
-   we'd reproduce the Schwinger result.  But we haven't
-   computed this fraction from our geometry.
+3. **Does the (1,2) torus-knot geometry contribute?**
+   The geodesic embedded in 3D is a helix that wobbles
+   above and below the equatorial plane (pitch angle
+   arctan(r/2)).  The non-planar current path samples
+   ρ² non-linearly.  R40 showed the pressure non-uniformity
+   is 26% (F2) with dominant k=2 elliptical harmonic at
+   37% of mean (F3).  **→ R44 Track 3.**
 
-4. **Does r = a/R affect the anomalous correction?**
-   The leading g = 2 is r-independent.  But the correction
-   might depend on r (R8 F11 notes this as open).  If our
-   model gives a specific r (e.g., r = 1/2 from Q52), does
-   the resulting field-fraction calculation reproduce α/(2π)?
+4. **Does r = a/R affect the correction?**
+   Both mechanisms are r-dependent: the charge density
+   from shear and the embedding curvature both depend
+   on the aspect ratio.  If g(r) matches the experimental
+   a_e at a specific r*, it pins r_e.  **→ R44 Track 4.**
 
 5. **Higher-order terms:** QED computes g − 2 to ≈ 12 decimal
-   places.  Does the photon-knot model offer any insight into
-   the higher-order terms (α²/π², etc.)?
+   places.  Does the embedding curvature correction correspond
+   to QED's 2nd-order coefficient −0.3285(α/π)²?
