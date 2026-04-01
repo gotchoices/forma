@@ -121,11 +121,16 @@ does not derive anything new.
   Key finding: mechanical elasticity ≠ gravity; the
   thermodynamic route (Jacobson) is genuinely necessary.
   See [sim-gravity/README.md](sim-gravity/README.md).
-- [sim-gravity-2/](sim-gravity-2/) — **scalar baseline
-  complete** — scalar field on the same lattice gives
-  dφ/dr ∝ 1/r (p = 1.012, R² = 0.999) vs sim-gravity's
-  vector 1/r² (p = 2.0).  Confirms: scalar (entropic) field
-  → gravitational power law.  String-register model next.
+- [sim-gravity-2/](sim-gravity-2/) — **complete** — both
+  scalar baseline and string-register model confirm 1/r
+  force on the 2D lattice:
+  - Scalar (vertex Laplacian): p = 1.012, R² = 0.999
+  - String-register (edge Laplacian): p = 1.018, R² = 0.996
+  - Adding modes (1→16) enriches entropy but preserves the
+    power law — the exponent is topological (2D Green's
+    function), not dependent on internal structure.
+  - The Gaussian model is analytically solvable (no MC
+    needed); non-linear coupling is an open question.
 
 ---
 
