@@ -259,3 +259,372 @@ validates the micro-instruction picture.  If it fails
 picture needs more structure.
 
 Detailed design in [sim-maxwell/README.md](sim-maxwell/README.md).
+
+---
+
+## 2026-03-31: Transverse vs longitudinal — what vibrates?
+
+### The question
+
+The sim-maxwell and sim-gravity-2 models use scalar
+amplitudes on edges (a_fwd, a_bwd).  These are treated as
+"waves on strings," but we never specified in what
+direction the string vibrates.  Is the model secretly
+assuming a transverse wave in a direction normal to the
+lattice sheet — a direction that doesn't exist?
+
+### The answer: the amplitude is internal, not spatial
+
+The scattering rule is:
+
+    outgoing_i = (2/N) × total_incoming − incoming_i
+
+This operates on scalar numbers.  It doesn't know or care
+whether those numbers represent:
+- Transverse displacement (vibration normal to edge)
+- Longitudinal displacement (compression along edge)
+- An abstract internal quantity (phase, field amplitude)
+
+The rule is derived from energy conservation + equal
+impedance.  It's **agnostic about the physical nature of
+the amplitude.**  Longitudinal waves would give identical
+simulation results.
+
+### What the amplitude actually IS
+
+In the theoretical framework (maxwell.md), the relevant
+quantity is the **gauge connection A_μ** — the phase offset
+between adjacent cells.  This is not a displacement in any
+spatial direction.  It is a scalar value associated with
+each link, living in the **internal phase space** of the
+cell (Axiom A3: each cell has a periodic phase θ ∈ [0, 2π)).
+
+This internal phase space is:
+- **Compact** (periodic, like a circle)
+- **1-dimensional** (a single angle)
+- **Not a spatial direction** — it's an independent degree
+  of freedom, inaccessible to observers living on the sheet
+
+This is exactly the Kaluza-Klein picture: the "extra
+dimension" is the internal phase, and gauge fields are the
+connection between phases at neighboring sites.
+
+### Why this is not a cheat
+
+1. **The simulations are correct as-is.**  The scattering
+   rule is scalar and doesn't reference any spatial
+   direction.  No fictitious perpendicular axis is used.
+
+2. **Transverse vs longitudinal is irrelevant.**  Both
+   give the same scattering, propagation, and superposition.
+   The distinction only matters if you model the amplitude as
+   a physical displacement — which we don't need to do.
+
+3. **The "vibration" is in the internal phase space.**  Each
+   edge carries a state value (phase/amplitude) that evolves
+   according to the scattering rule.  This state lives in a
+   compact 1D space — the gauge circle — not in any direction
+   normal to the sheet.
+
+4. **The graphene analogy holds.**  In real graphene, the
+   electronic properties (Dirac equation, conduction) are
+   described by abstract spinor amplitudes, not by physical
+   displacements.  The electron wavefunction on the lattice
+   doesn't vibrate in a direction — its state evolves.
+   Similarly, the GRID lattice edge state evolves; it doesn't
+   deflect.
+
+### Implication for MaSt
+
+The compact dimensions in MaSt (the Ma tori) are made from
+this same lattice.  The "perpendicular" direction that Ma
+occupies relative to Space is not a spatial direction where
+strings vibrate — it's the internal gauge degree of freedom
+of the lattice edges.  The "rolling up" of a hexagonal sheet
+into a Ma torus is a topological identification (periodicity)
+of the internal phase space, not a physical bending into an
+extra spatial dimension.
+
+This means compactification is genuinely "free" (as noted in
+hexagonal.md): the lattice doesn't need to bend in a higher
+dimension; it just identifies phases periodically.  The
+internal state space IS the compact dimension.
+
+---
+
+## 2026-03-31: Lattice scales — spatial vs internal
+
+### c and the lattice
+
+c is not derived from GRID — it's 1 in natural units by
+construction (Axiom A1+A2: Lorentzian causal structure sets
+the speed limit at 1 edge per tick).  The SI value of c
+reflects the arbitrary ratio of human meters to Planck
+lengths.
+
+What IS derived from geometry: the ratio of the EM wave
+propagation speed to the causal limit.  On the triangular
+lattice, waves propagate at ≈ 0.70 edges/tick; on the
+hexagonal, ≈ 0.73.  This geometric factor comes from
+junction scattering (energy reflected at each vertex slows
+the wave below the causal limit).  In the continuum limit,
+this factor is absorbed into the definition of physical
+distance.
+
+### Two independent length scales
+
+The spatial lattice spacing is constrained to L_P by the
+gravity derivation: Bekenstein-Hawking entropy S = A/4
+requires ζ × (A/L_edge²) = A/4, so L_edge = 1 in natural
+units = L_P.  This is not a choice — it's pinned by G.
+
+But the internal string length — the extent of each edge's
+compact dimension — is a separate, free parameter.  It
+determines how many standing-wave modes the edge supports.
+This is the size of the compact Ma dimension.
+
+| | Spatial lattice | Internal string |
+|---|---|---|
+| **What it is** | Distance between nodes in 3D | Extent of compact dimension along edge |
+| **Length** | L_P (fixed by gravity) | L_compact (free, = Compton wavelength) |
+| **Determines** | G, entropy density | Particle mass spectrum |
+| **Constrained by** | Bekenstein-Hawking entropy | Particle masses (empirical) |
+
+The ratio L_compact / L_P = M_Planck / m_particle:
+- Electron: ~10²²
+- Proton: ~10¹⁹
+- Neutrino: ~10²⁸
+
+This naturally explains the hierarchy between the Planck
+scale (gravity) and the Compton scale (particles).
+
+### The internal string length doesn't change c
+
+The internal dimension is orthogonal to space.  Traversing
+it doesn't move you between nodes.  Spatial propagation
+(node to node) takes 1 tick regardless of internal string
+length — like rooms connected by doors where the ceiling
+height doesn't affect walking speed.
+
+What the internal string length DOES affect: the mass of
+particles (nonzero modes).  A massive particle has energy
+bouncing in the compact direction instead of moving forward
+in space.  The spatial speed is:
+
+v = c × √(1 − m²/E²)
+
+This IS special-relativistic kinematics, now understood as
+a geometric effect: part of the energy goes sideways (in
+the compact dimension) instead of forward (in space).
+
+### Why massive particles are slower than light
+
+In this picture, the KK mass mechanism and SR kinematics
+are the same thing seen from different angles:
+
+- A photon (zero mode): all energy goes forward → speed = c
+- An electron (nonzero mode on Ma_e): some energy bounces
+  in the compact direction → speed < c
+- A heavier particle: more energy in compact modes → even
+  slower
+
+This is why E = γmc² — the total energy is the sum of
+rest energy (compact-dimension oscillation) and kinetic
+energy (spatial propagation).
+
+---
+
+## 2026-03-31: The aether question — inertia as lattice reconfiguration
+
+### Is GRID an aether?
+
+Structurally, yes.  GRID is a fixed substrate through
+which EM waves propagate.  That is what "aether" means.
+
+But GRID avoids the problems that killed the classical
+aether:
+
+1. **No preferred frame.**  The GRID lattice has Lorentzian
+   structure (A2).  In the continuum limit, the dynamics
+   are Lorentz-invariant.  There is no "aether wind" — the
+   lattice looks the same in every inertial frame.
+   Michelson-Morley would see nothing.
+
+2. **Not a substance in space.**  GRID is not embedded in a
+   pre-existing space.  It IS space.  You can't move
+   "through" it because there's no outside.  Particles,
+   fields, and observers are all lattice excitations.
+
+3. **No drag at constant velocity.**  Lorentz invariance
+   guarantees that uniform motion costs no energy.  A
+   moving object's lattice configuration is just a Lorentz
+   boost of the stationary configuration — same entropy,
+   same energy (in the comoving frame).
+
+### But there IS a cost to acceleration
+
+When a mass accelerates, its gravitational field (the
+pentagonal defect distribution in the lattice) must
+rearrange.  The curvature pattern — the distribution of
+pentagons and heptagons — must sweep through the lattice,
+redistributing defects to accommodate the mass at each
+new position and velocity.
+
+This rearrangement has a cost.  As v → c:
+- The gravitational field Lorentz-contracts
+- Pentagon defects concentrate into a narrower region
+- The lattice must reconfigure faster and faster
+- At v = c, the reconfiguration must happen at the causal
+  speed limit — which it can't, because you'd need to
+  move defects faster than information travels
+
+**This is why mass can't reach c:** the lattice has a
+finite causal speed for reconfiguration.  The c limit is
+not an imposed rule — it's a consequence of the lattice's
+causal structure.  The energy cost of maintaining the
+contracted curvature pattern diverges as v → c because the
+lattice literally can't rearrange fast enough.
+
+### Inertia = lattice reconfiguration cost
+
+The relativistic kinetic energy E_kin = (γ − 1)mc² can
+be reinterpreted as the energy stored in the lattice
+reconfiguration:
+
+- At rest: the pentagonal defect pattern is symmetric
+  (Schwarzschild curvature, spread over 4π steradians)
+- In motion: the pattern is Lorentz-contracted (concentrated
+  perpendicular to motion, compressed along motion)
+- The energy difference between these configurations is
+  the kinetic energy
+
+Inertia — the resistance to acceleration — is the lattice's
+resistance to having its defect pattern rearranged.  A
+heavier mass (more defects, deeper gravity well) requires
+more rearrangement → more inertia.  This is not metaphor;
+it is the mechanical content of the Jacobson derivation
+applied to moving objects.
+
+### The Unruh connection
+
+An accelerating observer sees thermal radiation at
+temperature T = a/(2π) (Unruh effect).  In the lattice
+picture, this is the thermodynamic signature of forced
+lattice reconfiguration.  The "heat" of the Unruh bath IS
+the entropy production from pushing pentagonal defects
+through the lattice faster than they would naturally
+rearrange.
+
+- Constant velocity: no Unruh radiation, no entropy
+  production, no "friction" (Lorentz symmetry)
+- Acceleration: Unruh radiation, entropy production,
+  energy cost (lattice reconfiguration)
+- The Unruh temperature is the "temperature of the aether
+  friction"
+
+### Is this calculable?
+
+Potentially.  The entropy cost of redistributing
+pentagonal defects around a moving mass could be
+computed from the pentagon density formulas in
+sim-schwarzschild, combined with the Lorentz contraction
+of the Schwarzschild geometry.  The integral would be:
+
+    ΔS = ∫ [S_defect(r, v) − S_defect(r, 0)] dV
+
+where S_defect is the entropy associated with the
+pentagonal defect density at radius r.  If this integral
+reproduces (γ − 1)mc² / T_Unruh, it would provide an
+independent lattice-level derivation of relativistic
+kinetic energy.
+
+This is a potentially significant calculation — it would
+connect the lattice's geometric structure (pentagons) to
+the kinematic structure (Lorentz factor γ) through
+thermodynamics.  Framed as a possible future study:
+**sim-inertia**.
+
+### What's new vs what's restating GR
+
+| Statement | New? |
+|-----------|------|
+| Speed limit c from lattice causality | Gives a mechanical reason for SR; the content is equivalent |
+| Acceleration costs energy | Restates relativistic mechanics; identifies mechanism as lattice reconfiguration |
+| Unruh radiation as aether friction | Known in QFT; lattice interpretation (pentagon redistribution) is new |
+| Inertia from defect rearrangement cost | Potentially calculable and new; connects geometry to kinematics via thermodynamics |
+| γ divergence from causal reconfiguration limit | New framing — the speed limit is the lattice's finite processing speed |
+
+---
+
+## 2026-03-31: One grid or many? Particles and frames
+
+### The question
+
+Do particles move *through* the grid, or does each particle
+have its own grid?
+
+### Current GRID picture (one grid)
+
+As formulated, there is one lattice.  Particles are wave
+patterns propagating across it — like ripples on a pond.
+The ripple doesn't carry water; it propagates through the
+water.  A particle "moving" is just the pattern shifting
+from one set of edges to the next.
+
+### The "private grid" hypothesis (speculative)
+
+An alternative framing: each particle's internal state
+space (its compact-dimension string, its standing-wave
+modes) constitutes its own "quantum address space."  The
+particle doesn't see the grid directly — it sees its own
+internal state evolving.  The grid is the substrate, but
+the particle's experience is mediated entirely by its
+internal modes.
+
+If each particle has its own internal frame defined by its
+compact-dimension state, then:
+- c is constant for every particle because each particle's
+  internal dynamics run at the same rate (one mode update
+  per tick) — the grid's causal speed is the same for all
+- Lorentz invariance doesn't need to be "proven" on the
+  grid as a whole; it follows from each particle's internal
+  state being unable to detect absolute motion through the
+  grid (the internal modes are scalar — they don't know
+  which direction the pattern is moving in space)
+- This connects to MaSt: each particle IS a standing wave
+  on its own compact geometry, and the compact geometry is
+  the particle's "private grid"
+
+### Open questions about this framing
+
+1. **Lorentz invariance is assumed (A2), not derived.**
+   GRID has not proven that the lattice looks the same in
+   every frame.  In lattice gauge theory, Lorentz invariance
+   is recovered in the continuum limit — but exact Lorentz
+   invariance on a discrete lattice is impossible (the
+   lattice picks out preferred directions at the Planck
+   scale).  This is a known issue with all discrete models.
+
+2. **One grid vs many grids is a question about QM
+   foundations.**  In standard QM, all particles share one
+   Hilbert space (one wavefunction for the universe).  In
+   relational QM (Rovelli), each observer has their own
+   perspective.  The "private grid" idea aligns more with
+   the relational view.
+
+3. **Testability:** if the grid has preferred directions
+   at the Planck scale, there could be tiny Lorentz-
+   violating effects.  Gamma-ray astronomy places extremely
+   tight bounds on such effects — no violation detected
+   to date.  This is consistent with GRID (Lorentz
+   invariance recovered in the continuum limit) but does
+   not confirm it.
+
+### Status
+
+Speculative.  The "one grid, particles are patterns on it"
+picture is more conservative and sufficient for all current
+GRID results.  The "private grid" picture is an interesting
+alternative framing that might connect to the measurement
+problem and relational QM, but has no computational
+consequences yet.

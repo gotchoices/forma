@@ -97,30 +97,50 @@ junctions, curvature from pentagonal defects.
   Pentagon density saturates at r_crit = (1.24 r_s)^(1/3).
   Minimum BH mass ≈ 0.56 Planck masses.  Physical
   singularity (r=0) IS a lattice failure (K → ∞).
-- [ ] sim-maxwell follow-up: superposition (two crossing
-  wavefronts)
+- [x] sim-maxwell follow-up: superposition (two crossing
+  wavefronts) — **perfect** on both lattices (residual
+  ~10⁻¹⁵, machine epsilon).  Waves pass through each
+  other with zero distortion.
 - [ ] sim-maxwell follow-up: plaquette circulation
-  measurement (test zigzag-circulation cancellation)
+  measurement (test zigzag-circulation cancellation).
+  *Polish — tests the mechanism behind an already-confirmed
+  result.  Would deepen understanding but doesn't answer
+  any open question.*
 - [ ] sim-maxwell follow-up: E/B field identification in
-  propagating wave
+  propagating wave.  *Polish — would show the wave IS an
+  EM wave (transverse, with B = plaquette circulation).
+  Satisfying but the theoretical derivation in maxwell.md
+  already establishes this.*
 - [ ] sim-maxwell follow-up: dispersion relation (speed vs
-  wavelength)
-- [ ] Update lattice-geometry.md for hexagonal perspective
+  wavelength).  *Low priority — characterizes Planck-scale
+  corrections.  Only matters if we ever make sub-Planck
+  predictions.*
+- [ ] Update lattice-geometry.md for hexagonal perspective.
+  *Documentation — no new results.*
 - [ ] Re-run compact-dimensions wrapping with hexagonal
-  lattice (different α spectrum?)
+  lattice (different α spectrum?).  *Low priority — we
+  already concluded α is a designer's choice.  Hexagonal
+  wrapping would change the discrete steps but not the
+  conclusion.*
 - [ ] Evaluate whether hexagonal makes A4 (gauge invariance)
-  derivable rather than axiomatic
+  derivable rather than axiomatic.  *HIGH VALUE if it works
+  — this is the only remaining item that could reduce the
+  axiom count.  But it is a theoretical argument, not a
+  simulation, and the path is unclear.*
 - [ ] **sim-torus-limits** — is there a min/max radius for
   rolling a hexagonal sheet into a torus without shearing?
-  If so, this constrains the allowed compact dimension
-  sizes — a geometric bound on particle masses.
+  *Probably low value after sim-schwarzschild showed the
+  hexagonal lattice flexes freely without shearing.  The
+  same flexibility that makes the horizon non-special also
+  means torus bending is free.  Only topology (periodicity)
+  would constrain sizes, and that's already covered by
+  compact-dimensions.md.*
 - [ ] **sim-alpha-chord** — can a specific initial excitation
-  pattern on the grid launch a proton+electron pair?  This
-  would be a structured fibration of edge modes that directs
-  photons onto the correct MaSt trajectories.  Requires
-  understanding how to excite the compact dimensions from
-  the ambient 3D lattice (what "orthogonal" means on the
-  hexagonal substrate).  Highly ambitious.
+  pattern on the grid launch a proton+electron pair?
+  *Highly ambitious, long-term.  Requires solving the
+  inverse problem: MaSt particle → lattice excitation.
+  Not tractable until GRID ↔ MaSt interface is much better
+  understood.  Aspirational.*
 
 **Deliverables:** [hexagonal.md](hexagonal.md),
 [sim-schwarzschild/](sim-schwarzschild/), updated sim-maxwell
@@ -131,6 +151,9 @@ Repackage the impedance/stiffness/bubble-radius material from
 the original dialog.  This reinterprets existing results — it
 does not derive anything new.
 
+*Low priority — repackaging, not discovery.  Might be useful
+if writing a paper, but adds no new capability.*
+
 - [ ] EM stiffness: ε₀ and μ₀ as orthogonal spring constants
 - [ ] Gravitational stiffness: c⁴/(8πG) as force
 - [ ] Bubble radius and Schwarzschild connection
@@ -140,71 +163,53 @@ does not derive anything new.
 
 ### Backlog: SI restoration (optional)
 
+*Bookkeeping — no physics content.  Only needed if presenting
+to an SI-focused audience.*
+
 - [ ] SI units for Maxwell derivation (maxwell.md)
 
 ---
 
-## Current focus
+## Current status
 
-**Phases 1–4 complete.**  Core GRID work is done.
+**Phases 1–5 substantially complete.**  Core GRID work is done.
+All major derivations and simulations are finished.  Remaining
+Phase 5 items are polish, confirmation, or speculative
+extensions — none are critical to the framework.
 
-**Parallel tracks:**
-- [lattice-geometry.md](lattice-geometry.md) — can ζ follow
-  from packing geometry?  Leading candidate: 4D simplicial
-  (pentachoron, ζ = 1/6), or 2D sheets give ζ = 1/4.
-- [compact-dimensions.md](compact-dimensions.md) — **complete** —
-  2D triangular lattices wrapped into tori produce a discrete
-  but dense α spectrum.  Conclusion: α is a designer's choice
-  within available discrete steps; the lattice geometry does
-  not uniquely determine it.  Noteworthy: weak coupling
-  (1/α > 100) requires a minimum of 3 cells (6 triangles).
-- [sim-gravity/](sim-gravity/) — **complete** — embedded
-  rigid body in spring lattice gives edge strain ε ∝ 1/r²
-  (R² = 0.9999).  This is the 2D *elastic* power law
-  (Eshelby), not the 2D *gravitational* power law (1/r).
-  Key finding: mechanical elasticity ≠ gravity; the
-  thermodynamic route (Jacobson) is genuinely necessary.
-  See [sim-gravity/README.md](sim-gravity/README.md).
-- [sim-gravity-2/](sim-gravity-2/) — **complete** — both
-  scalar baseline and string-register model confirm 1/r
-  force on the 2D lattice:
-  - Scalar (vertex Laplacian): p = 1.012, R² = 0.999
-  - String-register (edge Laplacian): p = 1.018, R² = 0.996
-  - Adding modes (1→16) enriches entropy but preserves the
-    power law — the exponent is topological (2D Green's
-    function), not dependent on internal structure.
-  - The Gaussian model is analytically solvable (no MC
-    needed); non-linear coupling is an open question.
-- [sim-maxwell/](sim-maxwell/) — **complete** — directional
-  wave propagation confirmed using string junction scattering
-  (no Maxwell input, no gauge invariance):
-  - Coherent wavefronts propagate at speed ≈ 0.70
-    lattice units / tick with minimal spreading
-  - Single edge pulses scatter (backward-biased from
-    -2/3 reflection coefficient) — confirming that
-    Huygens' principle is the mechanism
-  - Point sources produce isotropic radiation (correct)
-  - Speed constant across all wavefront widths
-  - No free parameters — scattering uniquely determined
-    by energy conservation + equal impedance
-  - This is the first Level 4 result: geometry alone
-    (without importing Maxwell) produces wave propagation.
-- [sim-schwarzschild/](sim-schwarzschild/) — **complete** —
-  the hexagonal lattice accommodates the Schwarzschild
-  geometry through the event horizon (consistent with GR):
-  - Hexagon deformation: unbounded aspect ratio → the
-    lattice handles the Schwarzschild coordinate stretch
-    trivially (tautological, not physically meaningful)
-  - Pentagon density: the Gaussian curvature K = r_s/(2r³)
-    requires pentagonal defects.  Saturation at
-    r_crit = (1.24 r_s)^(1/3).
-  - For astrophysical BHs: r_crit << r_s (pentagons
-    saturate deep inside the horizon — no lattice failure
-    at the horizon itself)
-  - Minimum black hole mass: M_min ≈ 0.56 Planck masses
-    (where r_crit = r_s)
-  - Physical singularity at r = 0: curvature diverges,
-    lattice truly fails — consistent with GR
+### Completed studies
+
+| Study | Key result |
+|-------|-----------|
+| [lattice-geometry.md](lattice-geometry.md) | ζ = 1/4 from 3D tetrahedral packing (Model B) |
+| [compact-dimensions.md](compact-dimensions.md) | α is a designer's choice within dense discrete steps |
+| [sim-gravity/](sim-gravity/) | Elastic lattice gives 1/r² (elastic, not gravitational) — confirms Jacobson route is necessary |
+| [sim-gravity-2/](sim-gravity-2/) | Scalar + string-register: both give 1/r force (p ≈ 1.01) — entropic gravity confirmed |
+| [sim-maxwell/](sim-maxwell/) | Directional propagation from geometry alone (speed ≈ 0.70, no Maxwell input) |
+| sim-maxwell (hexagonal) | Single-edge forward propagation (hex dir=0.53 vs tri=0.24) |
+| sim-maxwell (superposition) | Perfect superposition on both lattices (residual ~10⁻¹⁵) |
+| [sim-schwarzschild/](sim-schwarzschild/) | Horizon is NOT a lattice failure; min BH mass ≈ 0.56 m_P; singularity IS |
+| [hexagonal.md](hexagonal.md) | Hexagonal lattice: flexible, lower reflection, curvature from defects |
+
+### What the framework establishes
+
+- **Maxwell's equations** from lattice gauge theory (A1–A4, A6)
+- **Einstein's equations + G** from lattice thermodynamics (A1, A2, A5)
+- **Directional wave propagation** from geometry alone (no Maxwell input)
+- **Linear superposition** exact on both triangular and hexagonal lattices
+- **1/r entropic gravity** on the lattice (2D confirmed)
+- **Event horizon** = coordinate singularity (lattice accommodates it)
+- **Physical singularity** = lattice failure (curvature exceeds pentagon capacity)
+- **Minimum BH mass** ≈ 0.56 Planck masses (geometric prediction)
+
+### Remaining mysteries
+
+| Mystery | Importance | Notes |
+|---------|-----------|-------|
+| Why α ≈ 1/137 | The one unsolved parameter | Not a framework deficiency — α is a measured input, like the speed of light in SI |
+| Value of Λ | Open | Appears as integration constant; the famous "cosmological constant problem" |
+| Particle masses | MaSt's territory | GRID provides the substrate; MaSt provides the compact geometry |
+| Gauge invariance from hex geometry? | High if achievable | Could reduce axiom count — theoretical, not simulation |
 
 ---
 

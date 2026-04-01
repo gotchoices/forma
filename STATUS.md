@@ -193,11 +193,15 @@ membrane-mechanics derivation was tautological (GR restated).
 
 **Resolved by GRID:** the [GRID sub-project](grid/README.md)
 derives both Maxwell's equations and Einstein's field equations
-from a minimal discrete lattice with two free parameters (ζ, α).
-G = 1/(4ζ) in natural units.  The lattice geometry investigation
-([`grid/lattice-geometry.md`](grid/lattice-geometry.md)) explores
-whether ζ itself follows from packing geometry (leading candidate:
-ζ = 1/6 from 4D simplicial lattice).  See
+from a minimal discrete lattice with one geometric constant
+(ζ = 1/4, from 3D tetrahedral packing) and one measured input
+(α).  G = 1/(4ζ) in natural units.  Beyond the theoretical
+derivations, GRID provides a working computational model of
+the lattice fabric: waves propagate directionally with no
+Maxwell input, superpose exactly, and the hexagonal lattice
+accommodates Schwarzschild geometry through the event horizon
+(with lattice failure only at the physical singularity r = 0,
+and a minimum BH mass ≈ 0.56 Planck masses).  See
 [`grid/synthesis.md`](grid/synthesis.md) for the full summary.
 
 ---

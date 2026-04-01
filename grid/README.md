@@ -107,7 +107,7 @@ See [STATUS.md](STATUS.md) for the roadmap and progress.
 | [dual-bubbles.md](dual-bubbles.md) | The Compton-Schwarzschild conservation law and the embedding mechanism (framing) |
 | [sim-gravity/](sim-gravity/) | Complete: spring-lattice elasticity gives ε ∝ 1/r² (elastic), not 1/r (gravitational) |
 | [sim-gravity-2/](sim-gravity-2/) | Complete: scalar + string-register both confirm 1/r force (p≈1.01–1.02) |
-| [sim-maxwell/](sim-maxwell/) | Complete: junction scattering produces directional waves (speed ≈ 0.70, no Maxwell input) |
+| [sim-maxwell/](sim-maxwell/) | Complete: directional waves + perfect superposition (no Maxwell input) |
 | [hexagonal.md](hexagonal.md) | Hexagonal (wye) vs triangular (delta) lattice: flexibility, scattering, curvature from defects |
 | [sim-schwarzschild/](sim-schwarzschild/) | Complete: horizon is NOT a lattice failure; min BH mass ≈ 0.56 m_P; singularity IS lattice failure |
 | [INBOX.md](INBOX.md) | Raw ideas and open threads not yet formalized |

@@ -26,6 +26,16 @@ has admittedly been a certain amount of slop generated.
 Every numerical result is produced by scripts in this repository
 that can be inspected and re-run.  That's what I hope the reader will do.
 
+**A note on reliability:** results backed by runnable scripts
+(studies/, grid/sim-*/) are the most trustworthy — you can
+verify them yourself.  Theoretical derivations (grid/maxwell.md,
+grid/gravity.md) follow established physics (lattice gauge theory,
+Jacobson's argument) and are on solid ground, but should be read
+critically.  Conceptual arguments, speculative hypotheses, and
+prose explanations in qa/ and INBOX files range from well-reasoned
+to AI-assisted brainstorming that may contain errors or
+hallucinations.  When in doubt, look for the script.
+
 I do not claim that this model is correct.  It may turn out
 to be a mathematical coincidence, a tautology, an elaborate numerology,
 or, hopefully, a useful approximation to something deeper.
@@ -58,9 +68,17 @@ Domain) is the substrate: a minimal 4D causal lattice whose
 phase dynamics produce Maxwell's equations and whose
 information density produces Einstein's field equations and
 the gravitational constant G.  GRID derives both long-range
-forces from six axioms without importing either one.  See
-[`grid/synthesis.md`](grid/synthesis.md) for what has been
-established.
+forces from six axioms without importing either one.  Beyond
+the theoretical derivations, GRID provides a functional
+mechanical model of the spacetime fabric: a hexagonal lattice
+where edges carry standing-wave modes, junctions scatter
+energy by impedance matching, and curvature arises from
+pentagonal defects.  Simulations confirm that this lattice
+propagates directional waves (no Maxwell input), superposes
+them exactly, and accommodates Schwarzschild geometry — the
+event horizon is not a lattice failure, but the physical
+singularity is.  See [`grid/synthesis.md`](grid/synthesis.md)
+for what has been established.
 
 **MaSt** (Material – Space – time) is the architecture built
 on that substrate: six compact dimensions where particles are

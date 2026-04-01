@@ -178,13 +178,17 @@ ratio between human units and Planck units.
 
 ### What remains unexplained
 
-| Mystery | Status |
-|---------|--------|
-| Why α ≈ 1/137 | Open — the single most important unsolved parameter |
-| Why ζ = 1/4 (or 1/6) | Exploratory — may follow from packing geometry |
-| Why 4 dimensions | Assumed (A1) |
-| Why (1,3) signature | Assumed (A2) |
-| Value of Λ | Appears as free integration constant — not predicted |
+| Mystery | Status | Importance |
+|---------|--------|------------|
+| Why α ≈ 1/137 | Open — the sole free parameter | High, but not a framework deficiency — α is a measured input like c in SI |
+| Value of Λ | Appears as free integration constant — not predicted | High — the cosmological constant problem, shared with all of physics |
+| Why 4 dimensions | Assumed (A1) | Foundational — but shared with all of physics |
+| Why (1,3) signature | Assumed (A2) | Foundational — but shared with all of physics |
+| Particle masses, generations, mixing angles | Not addressed by GRID — these are MaSt's territory | Important but out of scope |
+
+Note: ζ = 1/4 is no longer "unexplained" — it follows from
+the 3D tetrahedral geometry of horizon-adjacent cells
+(Model B: 4 face-sharing neighbors, no self).
 
 ---
 
@@ -389,9 +393,12 @@ formalism or overturned either one.
 |----------|--------|-----------|
 | Can Ma phase locking reproduce Bell violations? | **Critical open question** — determines viability of emergent QM | [Q82](../qa/Q82-entanglement-as-ma-geometry.md) |
 | Can the lattice support non-abelian gauge symmetry? | Open — would need richer cell structure | — |
-| Does the lattice naturally produce wave propagation? | Planned simulation | [sim-maxwell/](sim-maxwell/) |
-| Does embedding a rigid torus produce 1/r deformation? | Planned simulation | [sim-gravity/](sim-gravity/) |
+| Does the lattice naturally produce wave propagation? | **Yes ✅** — directional propagation from geometry alone, no Maxwell input | [sim-maxwell/](sim-maxwell/) |
+| Do waves superpose linearly? | **Yes ✅** — exact (machine epsilon) on both triangular and hexagonal lattices | [sim-maxwell/](sim-maxwell/) |
+| Does the lattice produce 1/r gravity? | **Yes ✅** — scalar + string-register models both confirm 1/r (2D) | [sim-gravity-2/](sim-gravity-2/) |
+| Does the lattice accommodate the Schwarzschild geometry? | **Yes ✅** — horizon is a coordinate singularity; physical singularity (r=0) is a lattice failure; min BH mass ≈ 0.56 m_P | [sim-schwarzschild/](sim-schwarzschild/) |
 | What is the graviton in this picture? | Not derived — gravity is thermodynamic, not mechanical | — |
+| Is inertia the entropy cost of lattice reconfiguration? | Framed — a moving mass must sweep its pentagonal defect pattern through the lattice; the cost diverges as v → c because defects can't rearrange faster than the causal speed | [INBOX.md](INBOX.md) |
 | How does the lattice handle topology change? | Open — relevant for black hole evaporation | — |
 
 ### Philosophical
@@ -434,15 +441,19 @@ QM or overturned either one, but a substrate that sheds light
 on why both work and suggests that some of QM's foundational
 assumptions may be derivable rather than postulated.
 
+The computational program is substantially complete.  The
+lattice produces directional wave propagation (no Maxwell
+input), exact linear superposition, 1/r entropic gravity,
+and accommodates Schwarzschild geometry through the horizon
+(with lattice failure only at the physical singularity).
+
 What remains: confirming the strong force mechanism
-quantitatively, finding a weak force mechanism,
-computationally validating the lattice (sim-maxwell,
-sim-gravity), and investigating whether MaSt's geometric
-entanglement mechanism (Q82) can reproduce the experimental
-correlations that standard QM predicts.  ζ = 1/4 follows
-from the 3D tetrahedral geometry of cells adjacent to
-horizons (4 face-sharing neighbors, no self → ζ = 1/4,
-Model B), leaving α as the sole
-measured input.  The framework is complete with α taken
-from experiment — deriving it would be fine, but it is not a
-prerequisite.
+quantitatively, finding a weak force mechanism, and
+investigating whether MaSt's geometric entanglement
+mechanism (Q82) can reproduce the experimental correlations
+that standard QM predicts.  ζ = 1/4 follows from the 3D
+tetrahedral geometry of cells adjacent to horizons (4
+face-sharing neighbors, no self → ζ = 1/4, Model B),
+leaving α as the sole measured input.  The framework is
+complete with α taken from experiment — deriving it would
+be fine, but it is not a prerequisite.

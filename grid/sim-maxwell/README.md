@@ -494,25 +494,49 @@ rescales the propagation speed.  In the continuum limit, this
 rescaling defines c — the speed of light is the effective
 group velocity of waves on the lattice substrate.
 
+### Test 5 — Superposition (100×100 tri, 60×60 hex)
+
+Two Gaussian wavefronts at 90° (rightward + upward),
+launched from offset positions so they cross mid-lattice.
+
+**The test:** run A alone, B alone, and A+B together.
+Compare amplitudes: does a_AB = a_A + a_B at every edge?
+
+| Lattice | Max residual | Relative residual |
+|---------|-------------|------------------|
+| Triangular (N=6) | 2.5×10⁻¹⁵ | 1.5×10⁻¹⁵ |
+| Hexagonal (N=3) | 9.0×10⁻¹⁶ | 1.0×10⁻¹⁵ |
+
+**★ PERFECT LINEAR SUPERPOSITION on both lattices.**
+
+Residuals are at machine epsilon (~10⁻¹⁵).  The waves
+pass through each other with **zero distortion** at the
+amplitude level.  This is exact, not approximate — a
+direct consequence of the scattering rule being linear.
+
+The energy cross-terms are non-zero (because E = a², which
+is quadratic), but the physical field amplitudes superpose
+exactly.  This is the correct behavior: superposition
+applies to fields (amplitudes), not to energy densities.
+
+**This confirms the second pillar of classical wave physics:**
+1. Directional propagation ✅ (Test 1)
+2. Linear superposition ✅ (Test 5)
+
 ### What remains to test
 
-1. **Superposition:** launch two wavefronts from different
-   directions and verify they pass through each other
-   unchanged.  (The scattering is linear, so this should
-   work, but worth confirming.)
-
-2. **Polarization:** identify E and B components in the
+1. **Polarization:** identify E and B components in the
    propagating wave.  Are edge amplitudes ⊥ to propagation
    (transverse wave)?  Is plaquette circulation the B field?
 
-3. **Dispersion relation:** measure speed vs wavelength to
+2. **Dispersion relation:** measure speed vs wavelength to
    find where lattice effects become important.
 
-4. **The circulation test:** directly measure plaquette
+3. **The circulation test:** directly measure plaquette
    circulation during propagation to test the zigzag-
    circulation cancellation hypothesis.
 
-5. **Comparison with Wilson action (Level 1):** does the
+4. **Comparison with Wilson action (Level 1):** does the
    Wilson update rule give different speed or directionality?
    If the same, the junction rule IS the physical content
    of Maxwell at the lattice level.
@@ -524,11 +548,18 @@ group velocity of waves on the lattice substrate.
 | File | Purpose |
 |------|---------|
 | `README.md` | This document |
-| `run.py` | Complete simulation: all four tests ✅ |
+| `run.py` | Triangular lattice: all four tests ✅ |
+| `run_hex.py` | Hexagonal lattice: wavefront + single edge + wavelength ✅ |
+| `run_superposition.py` | Superposition test on both lattices ✅ |
 | `output/wavefront.png` | Test 1 plots |
 | `output/single_edge.png` | Test 2 plots |
 | `output/point_source.png` | Test 3 plots |
 | `output/wavelength.png` | Test 4 plots |
+| `output/superposition_tri.png` | Test 5 plots (triangular) |
+| `output/superposition_hex.png` | Test 5 plots (hexagonal) |
+| `output/hex_wavefront.png` | Hexagonal wavefront plots |
+| `output/hex_single_edge.png` | Hexagonal single edge plots |
+| `output/hex_wavelength.png` | Hexagonal wavelength plots |
 
 ---
 
