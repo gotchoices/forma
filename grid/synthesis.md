@@ -250,7 +250,7 @@ one geometrically derived constant (ζ):
 | Electromagnetism | GRID | Phase dynamics + gauge invariance | **Derived** |
 | Gravity | GRID | Thermodynamics of information | **Derived** |
 | Strong | MaSt | Full internal EM at overlap range (Q95) | **Plausible** — qualitative features match |
-| Weak | MaSt | Cross-sheet coupling (σ parameters); W/Z are transient mode reconfigurations, not eigenmodes (Q96) | **Strong** — sin²θ_W = 3/13 matches to −0.19% (R43); 2/9 predicts M_W to +0.05%; W/Z mass derivation open |
+| Weak | MaSt | Cross-sheet coupling (σ parameters); W/Z are transient mode reconfigurations, not eigenmodes (Q96) | **Framework + unexplained match** — sin²θ_W matches 3/13 to −0.19% but origin not derived (R43 F10); 2/9 predicts M_W to +0.05%; W/Z mass derivation open |
 
 **What GRID provides to MaSt:**
 - Maxwell's equations — previously assumed, now derived
@@ -281,9 +281,10 @@ If the strong force mechanism (Q95) is confirmed quantitatively,
 then GRID + MaSt would constitute a complete geometric account
 of all four fundamental forces, the particle spectrum, and
 gravity — from two numbers and a lattice.  The weak force
-already has a geometric explanation: forces are cross-sheet
-coupling (σ parameters), not boson exchange, and the Weinberg
-angle matches sin²θ_W = 3/13 = N_sheets/(2D+1) to −0.19% (R43).
+has a geometric framework: forces are cross-sheet
+coupling (σ parameters), not boson exchange.  sin²θ_W matches
+3/13 to −0.19% (R43), though the origin of this match is not
+yet derived from the metric (R43 F10).
 
 ---
 
@@ -412,7 +413,7 @@ partially require theoretical proof.
 | Question | Status | Reference |
 |----------|--------|-----------|
 | Can Ma phase locking reproduce Bell violations? | **Critical open question** — determines viability of emergent QM | [Q82](../qa/Q82-entanglement-as-ma-geometry.md) |
-| Do non-abelian forces need formal gauge groups? | MaSt reinterprets: strong = internal EM at overlap (Q95), weak = cross-sheet coupling (Q96).  sin²θ_W = 3/13 matches to −0.19% (R43), supporting the view that SU(2)×U(1) is an effective description of geometric coupling, not a fundamental symmetry. | [Q95](../qa/Q95-strong-force-as-internal-em.md), [Q96](../qa/Q96-force-carriers-in-mast.md), [R43](../studies/R43-weinberg-angle/) |
+| Do non-abelian forces need formal gauge groups? | MaSt reinterprets: strong = internal EM at overlap (Q95), weak = cross-sheet coupling (Q96).  sin²θ_W matches 3/13 to −0.19% (R43) but the match is unexplained (F10) — suggestive but not yet a derivation that SU(2)×U(1) is emergent. | [Q95](../qa/Q95-strong-force-as-internal-em.md), [Q96](../qa/Q96-force-carriers-in-mast.md), [R43](../studies/R43-weinberg-angle/) |
 | Does the lattice naturally produce wave propagation? | **Yes ✅** — directional propagation from geometry alone, no Maxwell input | [sim-maxwell/](sim-maxwell/) |
 | Do waves superpose linearly? | **Yes ✅** — exact (machine epsilon) on both triangular and hexagonal lattices | [sim-maxwell/](sim-maxwell/) |
 | Does the lattice produce 1/r gravity? | **Yes ✅** — scalar + string-register models both confirm 1/r (2D) | [sim-gravity-2/](sim-gravity-2/) |
@@ -448,9 +449,9 @@ from the same small set of rules.
 
 MaSt builds on this substrate: confining photons on compact
 geometry to produce particles, masses, and charges — with a
-plausible mechanism for the strong force (Q95) and a geometric
-framework for the weak force — cross-sheet coupling with
-sin²θ_W = 3/13 (Q96, R43).  MaSt also offers geometric origins
+plausible mechanism for the strong force (Q95) and a framework
+for the weak force as cross-sheet coupling (Q96), with an
+unexplained numerical match sin²θ_W ≈ 3/13 (R43).  MaSt also offers geometric origins
 for several quantum-mechanical postulates: quantized energy
 as standing-wave modes, uncertainty as Fourier bandwidth,
 spin as topology, entanglement as phase locking on shared
@@ -473,8 +474,8 @@ quantitatively, computing the W barrier height (80.4 GeV)
 from Ma geometry, and investigating whether MaSt's geometric
 entanglement mechanism (Q82) can reproduce the experimental
 correlations that standard QM predicts.  The Weinberg angle
-is now a strength: sin²θ_W = 3/13 = N_sheets/(2D+1) matches
-the measured value to −0.19% (R43).  ζ = 1/4 follows from the 3D
+is now a tantalizing match: sin²θ_W ≈ 3/13 to −0.19% (R43),
+though the origin of this match is unexplained (F10).  ζ = 1/4 follows from the 3D
 tetrahedral geometry of cells adjacent to horizons (4
 face-sharing neighbors, no self → ζ = 1/4, Model B),
 leaving α as the sole measured input.  The framework is

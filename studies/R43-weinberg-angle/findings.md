@@ -245,6 +245,39 @@ Only 3/13 is within 1%.  No geometric ratio built from
 the continuous parameters (r, s, σ) matched to better than 5%.
 
 
+## F10. 3/13 is NOT a pure structural ratio
+
+Track 4 attempted to derive 3/13 from a trace calculation on
+the Ma metric, analogous to how SU(5) derives 3/8 from the
+trace of hypercharge and isospin generators.
+
+**Result: negative.**  The natural trace ratio
+Tr(S_em²) / (Tr(S_em²) + Tr(S_weak²)) depends on the actual
+coupling values (s and σ), not just on structure.  At unified
+coupling (s = σ), the ratio is **3/15 = 1/5**, reflecting the
+3 EM entries out of 15 total off-diagonal entries in the 6×6
+metric.  This is the Ma analog of SU(5)'s 3/8, and it gives
+the wrong value.
+
+For the trace ratio to equal 3/13, the within-sheet shear
+must satisfy s/σ = √(6/5) ≈ 1.095 — but the actual ratio
+s₁₂/σ_ep = 0.27, far from this value.
+
+**Implication:** the 3/13 match is either:
+
+1. A coincidence with a suggestive but unproven interpretation
+2. The result of a dynamical mechanism (coupling running,
+   threshold matching) rather than a static structural ratio
+3. Arising from a more subtle argument we haven't found
+
+The parameter counting interpretation (3 EM parameters out of
+13 total structural parameters) remains suggestive, but Track 4
+proves it is not derivable from the metric in the way that
+SU(5)'s 3/8 is derivable from group theory.  The honest
+assessment: 3/13 is a strong numerical match (−0.19%) whose
+physical origin remains unknown.
+
+
 ---
 
 ## Summary of findings
@@ -260,6 +293,7 @@ the continuous parameters (r, s, σ) matched to better than 5%.
 | F7. W/Z are not Ma eigenmodes (confirms Q96 transient-state model) | Expected |
 | F8. No continuous geometric ratio matches to < 5% | Negative |
 | F9. Forces = cross-coupling, consistent with all MaSt findings | ★★ |
+| F10. 3/13 cannot be derived from a metric trace (unlike SU(5)'s 3/8) | Negative |
 
 
 ## What this means
@@ -290,8 +324,8 @@ the continuous parameters (r, s, σ) matched to better than 5%.
 | The 13 (denominator) | **Suggestive** — 2D+1 parameter counting is plausible but not derived from first principles |
 | 3/13 = 0.2308 matching 0.2312 | **Fact** — the numerical match is −0.19%, computed |
 | 2/9 predicting M_W to +0.051% | **Fact** — computed from M_Z |
-| F3 interpretation (fraction of metric that is EM) | **Hypothesis** — needs a trace calculation or similar derivation |
-| F4 GUT parallel | **Observation** — structural similarity, not a proof |
+| F3 interpretation (fraction of metric that is EM) | **Unproven** — trace calculation tried (F10), doesn't produce 3/13 |
+| F4 GUT parallel | **Weakened** — GUT's 3/8 IS derivable; MaSt's 3/13 is not (F10) |
 | F7 W/Z are not eigenmodes | **Confirmed** — by computation |
 | F9 forces as cross-coupling | **Consistent** — with all MaSt findings to date |
 

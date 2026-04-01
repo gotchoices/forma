@@ -215,7 +215,7 @@ and a minimum BH mass ≈ 0.56 Planck masses).  See
 | Compton window Q factor | Compute the projection integral for the first ~20 modes | Open — needed to close R42 | Q94 |
 | Strong force from internal EM | Is α_s ≈ 1 the full internal field, with α the Compton-window projection? | **Plausible** — qualitative features match | Q95 |
 | Matter–antimatter asymmetry | Does shear chirality provide the CP violation for baryogenesis? | **Plausible** — all Sakharov conditions met geometrically | Q97, Q32 |
-| Force carriers in MaSt | Are W/Z/gluon fundamental or collective Ma excitations? | **Resolved** — gluons unnecessary (Q95); W/Z are transient cross-sheet reconfigurations, not eigenmodes; sin²θ_W = 3/13 to −0.19% | Q96, R43 |
+| Force carriers in MaSt | Are W/Z/gluon fundamental or collective Ma excitations? | **Partially resolved** — gluons unnecessary (Q95); W/Z are transient cross-sheet reconfigurations, not eigenmodes; sin²θ_W matches 3/13 to −0.19% (unexplained numerical match, not derived) | Q96, R43 |
 | Fusion as mode transition | Is fusion a geometry change on Ma rather than a particle collision? | **Plausible** — interactive model built; re-derives solar T | Q89, Q95, viz/fusion |
 | Coupling to S | Do ghost modes project weakly into 3D space? (quantifies Q94) | Open | Q93 Path 2 |
 | One-loop self-energy | Do KK mass corrections improve the 1–6% structural errors? | Open | Q93 Path 3 |

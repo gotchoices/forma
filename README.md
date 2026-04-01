@@ -220,7 +220,7 @@ are incomplete.
 | Strong force | Separate force with fitted coupling α_s | Internal EM between overlapping Ma tori at r ~ λ_C, unattenuated by Compton window; range, strength, and attraction emerge | Q95 |
 | Matter–antimatter asymmetry | Requires CP violation beyond SM (CKM phase too small by ~10¹⁰) | Shear chirality of Ma breaks C and CP geometrically; all three Sakharov conditions met from geometry | Q97, Q32 |
 | Nuclear binding | QCD confinement (non-perturbative, lattice-computed) | Nuclei are Ma_p modes, not multi-particle bound states; binding = mode transition on Ma | R29, Q89, Q95 |
-| Force carriers (W, Z, gluon) | Fundamental gauge bosons mediating forces | Not fundamental: gluons unnecessary (Q95), W/Z are transient cross-sheet reconfigurations, not eigenmodes; Weinberg angle sin²θ_W = 3/13 matches to −0.19% | Q96, R43 |
+| Force carriers (W, Z, gluon) | Fundamental gauge bosons mediating forces | Not fundamental: gluons unnecessary (Q95), W/Z are transient cross-sheet reconfigurations, not eigenmodes; sin²θ_W matches 3/13 to −0.19% (unexplained match, not derived) | Q96, R43 |
 | Three generations | Unexplained; SM accommodates but does not predict | Successive harmonics on Ma_e; dynamic filter orders them (FF(e) > FF(τ) > FF(μ)) but does not predict exactly three | R41, Q86 |
 
 ### What remains open
@@ -236,9 +236,9 @@ are incomplete.
   GRID explains the mechanism — EM is local phase dynamics,
   gravity is collective thermodynamics — but the precise ratio
   depends on ζ and α, whose relationship (if any) is unknown.
-- **W/Z barrier height:** the Weinberg angle is matched
-  (sin²θ_W = 3/13, R43), but computing the W mass (80.4 GeV)
-  from Ma geometry remains open.
+- **Weak force mechanism:** sin²θ_W matches 3/13 to −0.19% (R43)
+  but the match is unexplained — cannot be derived from the Ma
+  metric (F10).  Computing the W mass (80.4 GeV) also remains open.
 
 
 ## Foundation

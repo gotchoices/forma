@@ -215,7 +215,8 @@ If sin²θ_W emerges from cross-sheet geometry, it means:
 | `scripts/track1_coupling_ratio.py` | Cross-sheet coupling ratio → sin²θ_W |
 | `scripts/track2_wz_masses.py` | W/Z masses from coupling barriers |
 | `scripts/track3_geometric_ratios.py` | Geometric ratio survey |
-| `findings.md` | Results — **3/13 match (−0.19%)** |
+| `scripts/track4_trace_derivation.py` | Trace calculation — can 3/13 be derived? (No) |
+| `findings.md` | Results — **3/13 match (−0.19%), not derivable from metric trace** |
 
 ---
 

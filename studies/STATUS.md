@@ -28,15 +28,16 @@ geometry.  See `findings.md` (F1–F14).
 **Study:** [`R43-weinberg-angle/`](R43-weinberg-angle/)
 **Questions:** Q96 §10.2  **Type:** compute  **Depends on:** R26, R34, R19
 
-**Result:** sin²θ_W = 3/13 = 0.23077 matches sin²θ_W(M_Z) =
-0.23122 to −0.19%.  The formula sin²θ_W = N_sheets / (2D + 1)
-with N=3 sheets and D=6 material dimensions has a structural
-interpretation: 3 electromagnetic degrees of freedom out of 13
-total metric parameters.  Parallel to SU(5) GUT's 3/8 = 3/(2×4).
-The fraction 2/9 predicts M_W = 80.420 GeV (+0.051% of measured).
-W/Z masses not directly derivable from σ_ep.  See `findings.md`
-(F1–F8).  **HIGH VALUE** — strong evidence that the electroweak
-mixing angle is geometric.
+**Result:** sin²θ_W matches 3/13 = 0.23077 to −0.19% of
+sin²θ_W(M_Z) = 0.23122.  The fraction 2/9 predicts M_W =
+80.420 GeV (+0.051% of measured).  However, a trace calculation
+on the Ma metric (F10) shows 3/13 is NOT derivable the way
+SU(5)'s 3/8 is — at unified coupling, the structural ratio is
+3/15 = 1/5, not 3/13.  The match is striking but its physical
+origin is unknown.  W/Z confirmed as transient cross-sheet
+reconfigurations, not eigenmodes (F7).  See `findings.md`
+(F1–F10).  The match warrants investigation but is not a
+derivation.
 
 ### R15. Forward charge calculation — deriving α
 **Study:** [`R15-forward-charge/`](R15-forward-charge/)
@@ -324,6 +325,44 @@ a closed geodesic. Both produce particle properties from winding and harmonics.
 How deep is the analogy? Is the material-sheet model a special case of string compactification
 on a torus, and does string theory's machinery (modular invariance, T-duality) apply
 or constrain our model?
+
+### Electron g−2 from torus geometry — pin r_e  *(Q53, depends on R19)*
+**Computable.**  QED computes g−2 to 12 digits.  MaSt gives g = 2
+from topology (R8 F9).  The first correction α/(2π) is attributed
+to the non-co-rotating field fraction (WvM).  If this fraction
+depends on r_e, the measured g−2 pins r_e with extraordinary
+precision — and α follows from the R19 shear-charge formula,
+eliminating MaSt's last free parameter for the electron sector.
+**Computation:** solve the EM field distribution on the sheared
+torus at a given r_e, compute the co-rotating vs external energy
+fraction, compare to α/(2π).  Well-posed integral, no conceptual
+gap.  **HIGH VALUE** — most promising route to deriving α.
+
+### KK gauge coupling on the sheared torus — resolve the Yukawa tension  *(R29 F11–F13, depends on R19)*
+**Computable.**  R29 showed naive KK Yukawa corrections are 10³–10⁶×
+too large for hydrogen spectroscopy.  Five resolutions proposed
+(R29 F13); the most promising (Resolution B) is that massive KK
+gauge modes couple with suppressed strength on the sheared torus.
+**Computation:** compute the overlap integral of the electron mode
+profile with each KK gauge mode on the sheared Ma_e metric, sum
+the Yukawa series with the correct (non-uniform) coupling
+constants, and compare to measured hydrogen 1S–2S and Lamb shift.
+The r_e value that matches spectroscopy pins r_e independently
+of the g−2 route.  Would also clarify whether the Yukawa tension
+is a genuine problem or an artifact of the naive coupling assumption.
+
+### W barrier height from mode reconfiguration dynamics  *(R43 F7, Q96)*
+**Partially computable.**  R43 confirmed the W is a transient
+cross-sheet reconfiguration, not an eigenmode, and the Weinberg
+angle is geometric (3/13).  The W mass (80.4 GeV) is the energy
+threshold for cross-sheet transitions — a barrier height in the
+mode landscape.  **Computation:** model the energy cost of
+continuously deforming a neutron eigenmode (1,2,0,0,1,2) into
+separate proton + electron + neutrino eigenmodes on the Ma metric,
+tracking the maximum energy along the reconfiguration path.
+The saddle point energy should equal M_W.  Requires a path-integral
+or variational approach on the 6D metric — harder than eigenvalue
+problems but well-defined.
 
 ---
 

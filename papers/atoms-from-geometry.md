@@ -698,7 +698,7 @@ and r_ν is only lower-bounded by cosmological Σm_ν.
 | | Standard Model | Ma |
 |---|---|---|
 | Inputs to set scales | ~9 masses | 3 masses + α |
-| Coupling constants | 3 (α, α_s, sin²θ_W) | 0 (α is an input; sin²θ_W = 3/13 from geometry, R43) |
+| Coupling constants | 3 (α, α_s, sin²θ_W) | 0 (α is an input; sin²θ_W matches 3/13 to −0.19% but origin unexplained, R43) |
 | Mixing parameters | 8 (CKM + PMNS) | 0 |
 | Other | ~6 (Higgs, θ_QCD, ...) | 0 |
 | Free (unconstrained) | ~25 | 2 effective (r_e, r_ν) |

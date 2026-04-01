@@ -410,11 +410,12 @@ how that field behaves in that geometry.
    Count the independent coupling degrees of freedom for
    torus-torus interactions across three sheets.
 
-2. **Weinberg angle from geometry:**  ✅ **Resolved (R43).**
-   sin²θ_W = 3/13 = N_sheets/(2D+1) matches the measured
-   value 0.23122 to −0.19%.  The fraction 2/9 predicts
-   M_W = 80.420 GeV (+0.051%).  A first-principles
-   derivation of the 3/(2D+1) formula remains open.
+2. **Weinberg angle from geometry:**  **Unexplained match (R43).**
+   sin²θ_W matches 3/13 to −0.19%, and 2/9 predicts
+   M_W = 80.420 GeV (+0.051%).  However, the 3/13 ratio
+   cannot be derived from a trace on the Ma metric (F10) —
+   at unified coupling the structural ratio is 3/15, not 3/13.
+   The match is striking but its physical origin is unknown.
 
 3. **W/Z mass ratio:**  Partially resolved.  M_W/M_Z =
    cos θ_W follows from the Weinberg angle (above).  But
