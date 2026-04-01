@@ -81,6 +81,37 @@ Summarize what GRID establishes and what remains open.  Bridge to MaSt.
 
 **Deliverable:** [synthesis.md](synthesis.md)
 
+### Phase 5: Hexagonal lattice & simulations
+
+The hexagonal (honeycomb / wye) lattice has emerged as a
+potentially better substrate than the triangular (delta)
+lattice: flexible with fixed edges, lower reflection at
+junctions, curvature from pentagonal defects.
+
+- [ ] **sim-maxwell on hexagonal lattice (N=3)** — compare
+  wave propagation with triangular (N=6).  Expect cleaner
+  results: 11% reflection vs 44%.
+- [ ] **sim-schwarzschild** — does the hexagonal lattice
+  shear at r_s?  Compute max hexagon deformation, critical
+  curvature from pentagon density, and compare to the
+  Schwarzschild radius.
+- [ ] sim-maxwell follow-up: superposition (two crossing
+  wavefronts)
+- [ ] sim-maxwell follow-up: plaquette circulation
+  measurement (test zigzag-circulation cancellation)
+- [ ] sim-maxwell follow-up: E/B field identification in
+  propagating wave
+- [ ] sim-maxwell follow-up: dispersion relation (speed vs
+  wavelength)
+- [ ] Update lattice-geometry.md for hexagonal perspective
+- [ ] Re-run compact-dimensions wrapping with hexagonal
+  lattice (different α spectrum?)
+- [ ] Evaluate whether hexagonal makes A4 (gauge invariance)
+  derivable rather than axiomatic
+
+**Deliverables:** [hexagonal.md](hexagonal.md),
+[sim-schwarzschild/](sim-schwarzschild/), updated sim-maxwell
+
 ### Backlog: Stiffness analysis (optional)
 
 Repackage the impedance/stiffness/bubble-radius material from

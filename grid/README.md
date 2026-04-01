@@ -108,4 +108,6 @@ See [STATUS.md](STATUS.md) for the roadmap and progress.
 | [sim-gravity/](sim-gravity/) | Complete: spring-lattice elasticity gives ε ∝ 1/r² (elastic), not 1/r (gravitational) |
 | [sim-gravity-2/](sim-gravity-2/) | Complete: scalar + string-register both confirm 1/r force (p≈1.01–1.02) |
 | [sim-maxwell/](sim-maxwell/) | Complete: junction scattering produces directional waves (speed ≈ 0.70, no Maxwell input) |
+| [hexagonal.md](hexagonal.md) | Hexagonal (wye) vs triangular (delta) lattice: flexibility, scattering, curvature from defects |
+| [sim-schwarzschild/](sim-schwarzschild/) | Framed: does the hexagonal lattice shear at the Schwarzschild radius? |
 | [INBOX.md](INBOX.md) | Raw ideas and open threads not yet formalized |
