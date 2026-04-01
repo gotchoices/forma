@@ -4,55 +4,24 @@ A project of [GotChoices.org](https://gotchoices.org)
 
 ## About this project
 
-The author is an electrical engineer, not a trained physicist.  This started
-as a hobby — a "what if" exploration of a 1997 paper that
-proposed the electron is a confined photon.  It has since
-produced results I did not expect: predictions of particle
-masses at percent-level accuracy using only four inputs
-and two fit particles, an emergent neutron from pure
-geometry, nuclei that appear as standing-wave modes
-rather than bound collections of particles, and a
-neutrino mass-squared ratio that matches experiment from
-integer mode numbers alone.
+What started as a hobby — an engineer's "what if" exploration
+of a 1997 paper proposing the electron is a confined photon —
+has yielded some remarkable results: percent-level particle
+mass predictions from geometry alone, an emergent neutron that
+nobody put in by hand, and a neutrino mass ratio that falls
+out of integer winding numbers.
 
-Because I lack deep experience in theoretical physics, I have
-served as more of the chief strategist over the project.
-When a theory don't pan out, I present the next round of theories for testing.
-The research, computational modeling,
-mathematical derivations, and literature comparisons have
-been performed with a lot of help from AI (Claude).
-It has been my job to keep the agents focused and honest but there 
-has admittedly been a certain amount of slop generated.
-Every numerical result is produced by scripts in this repository
-that can be inspected and re-run.  That's what I hope the reader will do.
+I don't claim the model is correct.  It may be coincidence,
+numerology, or something deeper.  But it is *interesting* — and
+it may offer fresh angles on some of physics' unsolved problems,
+from the origin of mass to the nature of dark matter.
 
-**A note on reliability:** results backed by runnable scripts
-(studies/, grid/sim-*/) are the most trustworthy — you can
-verify them yourself.  Theoretical derivations (grid/maxwell.md,
-grid/gravity.md) follow established physics (lattice gauge theory,
-Jacobson's argument) and are on solid ground, but should be read
-critically.  Conceptual arguments, speculative hypotheses, and
-prose explanations in qa/ and INBOX files range from well-reasoned
-to AI-assisted brainstorming that may contain errors or
-hallucinations.  When in doubt, look for the script.
+For background on who built this, how AI was used, and how to
+judge what you're reading, see [DISCLAIMERS](DISCLAIMERS.md).
 
-I do not claim that this model is correct.  It may turn out
-to be a mathematical coincidence, a tautology, an elaborate numerology,
-or, hopefully, a useful approximation to something deeper.
-What I do claim is that it is *interesting*: a model with four
-experimental inputs and two fit particles that then
-produces percent-level mass predictions for a half-dozen
-additional hadrons is, at minimum, worth understanding why
-it works as well as it does — and worth understanding
-precisely where and why it fails.
-
-The project is conducted in the open.  The studies, scripts,
-findings, and failures are all here.  Readers with relevant
-expertise are welcome to examine, challenge, or extend the work.
-
-Please clone this repo and encourage 10 friends to do the same.
-If you or a friend has the scientific background to review
-some of the studies contained here, please help out!
+Please clone this repo and encourage your friends to do the same.
+If you have the scientific background to review some
+of the studies contained here, please help out!
 
 
 ## The big picture
