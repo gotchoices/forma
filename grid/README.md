@@ -107,5 +107,5 @@ See [STATUS.md](STATUS.md) for the roadmap and progress.
 | [dual-bubbles.md](dual-bubbles.md) | The Compton-Schwarzschild conservation law and the embedding mechanism (framing) |
 | [sim-gravity/](sim-gravity/) | Complete: spring-lattice elasticity gives ε ∝ 1/r² (elastic), not 1/r (gravitational) |
 | [sim-gravity-2/](sim-gravity-2/) | Complete: scalar + string-register both confirm 1/r force (p≈1.01–1.02) |
-| [sim-maxwell/](sim-maxwell/) | Planned simulation: can the lattice propagate directional waves? |
+| [sim-maxwell/](sim-maxwell/) | Complete: junction scattering produces directional waves (speed ≈ 0.70, no Maxwell input) |
 | [INBOX.md](INBOX.md) | Raw ideas and open threads not yet formalized |

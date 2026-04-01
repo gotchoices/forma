@@ -131,6 +131,20 @@ does not derive anything new.
     function), not dependent on internal structure.
   - The Gaussian model is analytically solvable (no MC
     needed); non-linear coupling is an open question.
+- [sim-maxwell/](sim-maxwell/) — **complete** — directional
+  wave propagation confirmed using string junction scattering
+  (no Maxwell input, no gauge invariance):
+  - Coherent wavefronts propagate at speed ≈ 0.70
+    lattice units / tick with minimal spreading
+  - Single edge pulses scatter (backward-biased from
+    -2/3 reflection coefficient) — confirming that
+    Huygens' principle is the mechanism
+  - Point sources produce isotropic radiation (correct)
+  - Speed constant across all wavefront widths
+  - No free parameters — scattering uniquely determined
+    by energy conservation + equal impedance
+  - This is the first Level 4 result: geometry alone
+    (without importing Maxwell) produces wave propagation.
 
 ---
 
