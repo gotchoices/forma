@@ -61,7 +61,7 @@ distinguishable macrostates), not the internal state space.
 The cell can have a rich internal life as long as the
 *externally distinguishable* information per cell is ζ.
 
-### The internal dimension as a string
+### The internal dimension as a string (the ℵ-line)
 
 What if the sub-state lives in an **internal 1D space** — a
 tiny periodic dimension attached to each node?
@@ -870,3 +870,163 @@ would have only four axioms:
 
 And ζ is geometrically derived (not truly free), leaving
 α as the sole input and three structural axioms.
+
+---
+
+## 2026-03-31: Planck is the resolution of the grid, not of nature
+
+### The insight
+
+The Planck length L_P is the lattice spacing — the
+distance between adjacent nodes on the hexagonal grid.
+It is set by the gravity derivation (Jacobson's argument
+fixes entropy density at S = A/(4L_P²), which fixes the
+lattice spacing).
+
+But L_P is not the resolution limit of *nature*.  Each
+edge of the lattice carries the ℵ-line (see
+[foundations.md](foundations.md)) — a 1D compact internal
+dimension whose length L_compact can be enormously larger
+than L_P.  For an electron, L_compact ≈ 10¹⁹ L_P (the
+Compton wavelength).  Standing waves on this internal
+string have structure at scales far finer than L_P —
+the internal string supports modes with wavelengths down
+to 2L_compact / n_max, which for high mode numbers can be
+far below the Planck scale in terms of energy resolution.
+
+The hexagonal cell acts as a **built-in low-pass filter**
+that hides all internal structure from the grid-scale
+physics.  A regular hexagon with edge = 1 L_P has a width
+of only 1.822 L_P — already below the Nyquist limit of
+2 L_P.  The cell IS the pixel.  Grid-scale physics (wave
+propagation, scattering, curvature) cannot resolve
+anything happening inside an edge's internal dimension.
+
+This means:
+- The Planck scale is the resolution of the **grid**
+- The internal strings operate **below** the grid's
+  Nyquist frequency
+- Sub-Planck structure is not forbidden — it is
+  **filtered out** by the hexagonal geometry
+- L_P is a derived scale (from ζ and G), not a
+  fundamental minimum length
+
+### Connection to sim-schwarzschild
+
+The hexagon deformation analysis (see
+[sim-schwarzschild](sim-schwarzschild/README.md),
+"Anatomy of the gravity well") makes this concrete:
+under Schwarzschild deformation, hexagons narrow smoothly
+from w = 1.822 L_P to w → 0.  The grid-resolution
+threshold (w = 1 L_P, the decomposition point) and the
+Nyquist threshold (w = 0.5 L_P) are smooth transitions,
+not walls.  If L_P were changed (by changing ζ), all
+thresholds would shift proportionally.  The Planck
+length is the knob that sets where the 2D → 1D
+transition falls, not a hard boundary of nature.
+
+### Implication for the hierarchy problem
+
+This cleanly explains why gravity (Planck scale) and
+particle physics (Compton scale) operate at such
+different scales: they live on different geometric
+structures.  Gravity lives on the grid (spacing L_P).
+Particle masses live on the internal strings (length
+L_compact).  The hexagonal filter ensures the two scales
+don't talk to each other — the grid can't see the string
+internals, and the string internals don't know the grid
+spacing.
+
+---
+
+## 2026-03-31: The truss model — physical picture of the ℵ-line
+
+### The question
+
+What does the ℵ-line (the 1D compact internal dimension
+of each edge) physically "look like"?  How can a standing
+wave exist in a sub-dimension that operates at frequencies
+above the grid's Nyquist limit?
+
+### The truss as a mental model
+
+Imagine each edge of the hexagonal lattice not as a
+simple rod but as a **zig-zag truss** — a chain of tiny
+triangles:
+
+```
+    /\  /\  /\  /\  /\  /\
+   /  \/  \/  \/  \/  \/  \
+  node A                  node B
+  |<----  1 Planck length  ---->|
+```
+
+The truss has these properties:
+
+1. **Rigid total length.**  The truss's end-to-end
+   distance is fixed at 1 L_P (one edge of the hexagon).
+   From the grid's perspective, the edge is a rigid
+   connection between two nodes — nothing more.
+
+2. **Internal path length >> end-to-end length.**  The
+   zig-zag path along the truss is much longer than L_P.
+   This is the internal string length L_compact.  For an
+   electron, the path would zig-zag ~10¹⁹ times within
+   one Planck length of end-to-end distance.
+
+3. **Longitudinal standing waves.**  Compression and
+   tension waves can propagate along the zig-zag path.
+   These are longitudinal — no "extra spatial dimension"
+   is needed for the wave to vibrate into.  The wave
+   travels *along* the truss, not *perpendicular* to it.
+
+4. **Invisible to the grid.**  The truss's total length
+   is fixed, so the grid sees a rigid edge regardless of
+   what standing waves exist inside.  The hexagonal cell
+   (width 1.822 L_P) cannot resolve the internal zig-zag
+   structure.  The truss IS the mechanism by which sub-
+   Planck frequencies are filtered out.
+
+5. **Phase advance and retard.**  An energy wave arriving
+   at node A doesn't just "pass through" to node B.  It
+   enters the truss and propagates along the zig-zag path.
+   The phase of the standing wave inside can be advanced
+   or retarded by the arriving energy — this is how the
+   grid-scale wave interacts with the internal dimension.
+   The scattering rule at the node distributes energy
+   between grid-scale propagation and internal-mode
+   excitation.
+
+### Why this model helps
+
+The truss resolves three conceptual difficulties:
+
+| Problem | How the truss resolves it |
+|---------|--------------------------|
+| "What vibrates?" | Longitudinal compression along the zig-zag — no extra spatial dimension needed |
+| "How can sub-Planck structure exist?" | The zig-zag path is much longer than the end-to-end distance; many wavelengths fit inside one Planck-length edge |
+| "Why is it invisible to the grid?" | The truss presents a fixed-length edge to the hexagonal cell; internal modes are below the grid's Nyquist |
+
+### Connection to sim-alpha-chord
+
+If a particle is launched by exciting the grid, the
+excitation must somehow couple into the internal truss
+modes — the alpha-chord would be injected along the
+zig-zag path, not perpendicular to the grid.  This
+makes the alpha-chord a pattern of longitudinal
+excitations along specific edges' internal trusses,
+organized to produce the standing-wave pattern that
+constitutes a particle.
+
+### Status
+
+Mental model / analogy.  The truss is not derived from
+the axioms — it is a physical picture that makes the
+abstract "internal compact dimension" concrete and
+addresses the "what vibrates?" question.  Whether the
+internal structure is literally a zig-zag truss, a
+smooth compact circle, or something else is not
+determined by any current GRID result.  The key point
+is that *some* internal structure with path length >>
+L_P must exist, and the truss is the simplest mechanical
+realization of that requirement.

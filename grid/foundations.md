@@ -208,6 +208,41 @@ dynamics that produce Maxwell's equations.*
 
 ---
 
+## The ℵ-line (aleph line)
+
+Each edge of the lattice carries a 1D compact internal
+dimension — a sub-Planck degree of freedom orthogonal to
+the 2D spatial grid.  This is the **ℵ-line** (aleph line).
+
+| Property | Value |
+|----------|-------|
+| Dimensionality | 1D (compact, periodic) |
+| Length | L_compact (particle-dependent; for an electron, ≈ 10¹⁹ L_P) |
+| Lowest mode | Phase θ / gauge connection A_μ (axiom A3) |
+| Higher modes | Standing waves that carry entropy and internal state |
+| Visibility to grid | **None** — the hexagonal cell acts as a low-pass filter (width 1.822 L_P < Nyquist 2 L_P) |
+
+The ℵ-line is where particle identity lives.  The grid
+(spatial lattice) handles propagation and curvature; the
+ℵ-line handles mass, charge, and internal quantum numbers.
+The hexagonal cell geometrically filters the ℵ-line from
+the grid scale — the Planck length is the resolution of
+the grid, not of nature.
+
+The ℵ-line is distinct from MaSt's compact dimensions (the
+2D Ma sheets where particles reside as standing waves).  The
+Ma sheets are higher-level structures built from many grid
+edges; the ℵ-line is the internal dimension of each
+individual edge.
+
+A helpful mental model: each edge is a zig-zag truss whose
+end-to-end length is 1 L_P (rigid) but whose internal path
+length is L_compact (much longer).  Longitudinal standing
+waves on the truss are the ℵ-line modes.  See
+[INBOX.md](INBOX.md), "The truss model for internal strings."
+
+---
+
 ## What the axioms produce
 
 | Emergent structure | From which axioms | Where derived |

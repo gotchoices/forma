@@ -356,14 +356,15 @@ own resolution limit: its width (1.822 L_P) is less than
 "see" the hexagon's internal structure.
 
 This means the hexagonal cell is a **built-in low-pass
-filter**.  Each edge carries an internal string with
-standing-wave modes (the phase, gauge connection, and
-higher harmonics from the string-register model in
-[sim-gravity-2](../sim-gravity-2/)).  Those internal
-modes have structure at scales much finer than L_P — the
-internal string length L_compact can be enormously larger
-than L_P (it is the Compton wavelength, which for an
-electron is 10¹⁹ L_P).
+filter**.  Each edge carries standing-wave modes on its
+ℵ-line — the 1D compact internal dimension (see
+[foundations.md](../foundations.md)).  The phase, gauge
+connection, and higher harmonics (the string-register
+model in [sim-gravity-2](../sim-gravity-2/)) all live on
+the ℵ-line.  These modes have structure at scales much
+finer than L_P — the ℵ-line length L_compact can be
+enormously larger than L_P (it is the Compton wavelength,
+which for an electron is 10¹⁹ L_P).
 
 But the grid-scale physics — wave propagation, curvature,
 scattering — cannot resolve any of that internal structure.

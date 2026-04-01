@@ -38,7 +38,9 @@ structure to *have* entropy?
 In Model B (see [lattice-geometry.md](../lattice-geometry.md)
 and [INBOX.md](../INBOX.md)), the cell has **no separate
 internal state**.  The cell IS its edges — vibrating strings
-that carry all the information.  Vertices are coupling
+that carry all the information on the ℵ-line (the 1D
+compact internal dimension of each edge; see
+[foundations.md](../foundations.md)).  Vertices are coupling
 junctions, not state holders.
 
 ### The cell as a triangle of strings (2D)
@@ -47,8 +49,8 @@ In the 2D simulation, each triangular cell is three strings
 forming its boundary.  Each edge is a 1D linear string of
 length 1 (one lattice spacing) with vertices as endpoints.
 
-Each string supports standing-wave modes n = 1, 2, ..., n_max.
-The energy on one edge is:
+Each string supports standing-wave modes on its ℵ-line,
+n = 1, 2, ..., n_max.  The energy on one edge is:
 
 <!-- E_edge = Σ_n ω_n |a_n|² -->
 $$
@@ -60,9 +62,10 @@ complex amplitude of mode n.
 
 - **Lowest mode (n = 1):** carries the gauge connection A_μ
   — the lattice version of the electromagnetic field.
-- **Higher modes (n > 1):** sub-state structure — internal
+- **Higher modes (n > 1):** ℵ-line sub-state structure —
   degrees of freedom that contribute to entropy but are not
-  directly visible at the lattice scale.
+  directly visible at the grid scale (filtered by the
+  hexagonal cell geometry).
 - **Phase θ (axiom A3):** a collective property of the
   cell's three edge modes, not a separate variable.
 
