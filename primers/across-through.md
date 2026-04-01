@@ -69,11 +69,19 @@ In every case:
 
 - **Waves carry both, simultaneously.**  A sound wave is not
   pure pressure or pure air motion — it is both, oscillating
-  together, slightly out of step.  A wave on a rope is not
-  pure tension or pure displacement — it is both.  The two
-  variables take turns leading, 90° out of phase: when one
-  is at maximum, the other is crossing zero.  Energy sloshes
-  back and forth between the two, and the wave moves forward.
+  together, peaking at the same moment.  A wave on a rope is
+  not pure tension or pure displacement — it is both.  In a
+  traveling wave, the two variables rise and fall in lockstep.
+  This is what it means to carry power in one direction:
+  across × through is always positive, so energy flows
+  steadily forward.
+
+  (Standing waves are different — there the two variables
+  ARE 90° out of phase, energy sloshes back and forth, and
+  no net power flows.  This distinction matters later: in
+  the MaSt framework, particles are standing waves — trapped
+  energy oscillating between across and through storage on
+  compact geometry.)
 
 This is not a loose analogy.  The equations governing each
 domain have the same mathematical form.  A sound wave in a
@@ -155,10 +163,13 @@ current.  A thick copper wire with low impedance: small
 voltage drop, large current.
 
 Every rule from §3 applies.  Signals reflect at impedance
-mismatches (every RF engineer knows this).  Waves carry
-both voltage and current, 90° out of phase in a
-transmission line.  Power is delivered only when both V and
-I are nonzero.
+mismatches (every RF engineer knows this).  A traveling wave
+on a transmission line carries voltage and current in phase
+— both peak together — which is how it delivers power
+steadily in one direction.  (In a resonant circuit, V and I
+are 90° out of phase — energy sloshes between capacitor and
+inductor, and no net power is delivered.  Same pattern as
+§2: traveling = in phase, standing = 90° out.)
 
 The point is not to teach circuits — it's to recognize that
 circuits are one instance of the universal pattern.  Kirchhoff's
@@ -211,15 +222,21 @@ medium — and it is, unambiguously, a medium.  It has a
 specific, measured ratio of "across" to "through."  Something
 with no medium has no impedance.  The vacuum has impedance.
 
-E and B take turns, exactly 90° out of phase.  When E is at
-its peak, B is crossing zero, and vice versa.  Energy
-oscillates between the electric field (across) and the
-magnetic field (through), and the wave moves forward.  This
-is exactly what happens in every other domain in the table —
-sound waves alternate between pressure and velocity, waves on
-a string alternate between tension and displacement.  Light
-is doing the same thing, in a medium whose impedance is 377
-ohms.
+In a traveling light wave, E and B peak at the same time
+and place — they are in phase.  The Poynting vector
+(E × H) is always positive, always pointing forward.
+Energy flows steadily in the propagation direction, just as
+a sound wave carries pressure and air velocity in lockstep,
+or a traveling pulse on a rope carries tension and
+displacement together.
+
+When light is trapped — reflected between mirrors, or
+confined on the compact geometry of a MaSt material
+sheet — it becomes a standing wave.  Now E and B are 90°
+out of phase: energy oscillates between electric storage
+and magnetic storage, back and forth, going nowhere.
+That trapped, oscillating energy is what we call a
+particle.  Mass is the frequency of that oscillation.
 
 ---
 
@@ -285,9 +302,9 @@ done), the result is:
   machine precision, ~10⁻¹⁵ residual).
 
 - **Both E-like and B-like excitations.**  Forward-path
-  amplitudes and circulation-loop amplitudes both appear in
-  the propagating wave, 90° out of phase — exactly the
-  across/through structure of an electromagnetic wave.
+   amplitudes and circulation-loop amplitudes both appear in
+   the propagating wave, in phase — exactly the across/through
+   structure of a traveling electromagnetic wave.
 
 These are the defining properties of Maxwell's equations.
 The lattice produces them because it is a medium with
