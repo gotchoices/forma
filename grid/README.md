@@ -106,6 +106,6 @@ See [STATUS.md](STATUS.md) for the roadmap and progress.
 | [synthesis.md](synthesis.md) | What GRID proves, what it doesn't, and where it leads |
 | [dual-bubbles.md](dual-bubbles.md) | The Compton-Schwarzschild conservation law and the embedding mechanism (framing) |
 | [sim-gravity/](sim-gravity/) | Complete: spring-lattice elasticity gives ε ∝ 1/r² (elastic), not 1/r (gravitational) |
-| [sim-gravity-2/](sim-gravity-2/) | Design phase: entropic force via string-register Monte Carlo — testing for 1/r |
+| [sim-gravity-2/](sim-gravity-2/) | Scalar baseline confirms 1/r (p=1.01); string-register MC next |
 | [sim-maxwell/](sim-maxwell/) | Planned simulation: can the lattice propagate directional waves? |
 | [INBOX.md](INBOX.md) | Raw ideas and open threads not yet formalized |

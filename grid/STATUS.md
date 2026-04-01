@@ -121,10 +121,11 @@ does not derive anything new.
   Key finding: mechanical elasticity ≠ gravity; the
   thermodynamic route (Jacobson) is genuinely necessary.
   See [sim-gravity/README.md](sim-gravity/README.md).
-- [sim-gravity-2/](sim-gravity-2/) — **design phase** —
-  follow-up: string-register lattice with Monte Carlo
-  sampling, measuring *entropic* force between rigid bodies.
-  Hypothesis: entropy shadow ∝ log(r) → force ∝ 1/r.
+- [sim-gravity-2/](sim-gravity-2/) — **scalar baseline
+  complete** — scalar field on the same lattice gives
+  dφ/dr ∝ 1/r (p = 1.012, R² = 0.999) vs sim-gravity's
+  vector 1/r² (p = 2.0).  Confirms: scalar (entropic) field
+  → gravitational power law.  String-register model next.
 
 ---
 

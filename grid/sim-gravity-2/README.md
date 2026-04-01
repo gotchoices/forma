@@ -252,10 +252,41 @@ pass, a simpler version captures the essential physics:
 - This is less physically rich than the string model but
   should reproduce the 1/r force and validate the pipeline
 
-The scalar version can serve as a **baseline**, with the
+The scalar version serves as a **baseline**, with the
 full string-register model as the main event.
 
-### What to measure
+### Scalar baseline results ✅
+
+The scalar baseline has been run (`run_scalar.py`).
+Two methods:
+
+**Part 1 — Direct solve (no MC):**  Solve ∇²φ = 0 with
+φ = 1 at defect, φ = 0 at boundary.
+
+| Lattice | φ fit R² | p (dφ/dr ∝ r⁻ᵖ) | R² |
+|---------|---------|-----------------|-----|
+| 100² | 1.000 | 0.979 | 0.983 |
+| 200² | **1.000** | **1.012** | **0.999** |
+
+The scalar field gives **φ ∝ log(r)** and **dφ/dr ∝ 1/r**
+with p = 1.012, R² = 0.999.  This is the 2D gravitational
+force law — compare with sim-gravity's vector field which
+gave p = 2.0 (elastic).
+
+**Part 2 — MC at T = 1.0 (40×40):**  Mean field tracks the
+direct solution (R² = 0.988).  Variance (entropy proxy)
+shows a log(r) trend (R² = 0.80) — positive but noisy due
+to the small lattice.
+
+**Conclusion:** the scalar field on the same triangular
+lattice that gave 1/r² for springs gives **1/r for a scalar
+potential**.  The field type (vector vs scalar) is the
+decisive factor, confirming that gravity requires scalar
+(entropic) degrees of freedom, not vector (elastic) ones.
+
+Plots in `output/scalar_baseline.png`.
+
+### What to measure (string-register model)
 
 | Observable | Expected | Meaning |
 |------------|----------|---------|
