@@ -204,6 +204,19 @@ physically reasonable model, the hypothesis gains credibility.
   (the tail of the antenna pattern) determines the direct-detection
   cross-section.  This is computable and must be below current
   experimental bounds.
+- **Magnetic:** Also dark.  The charge-spin linkage (R25 F4) ties
+  both charge and spin to the tube winding n₁.  Most dark modes
+  have n₁ = 0 (spin 0, no magnetic moment) or |n₁| ≥ 2 (charge
+  integral cancels, and the magnetic dipole moment μ = g(e/2m)S
+  vanishes with e).  The magnetic moment projects through the same
+  Compton window as charge (Q95: "both the external electric and
+  magnetic fields are α-suppressed ... set by the same α-coupling
+  to S").  No charge coupling → no magnetic coupling.  Multi-sheet
+  dark modes could in principle have neutron-like residual magnetic
+  moments from internal structure, but these would be suppressed
+  by σ² (the cross-sheet coupling squared) — negligible.  This is
+  consistent with null results from searches using galactic magnetic
+  fields, CMB polarization, and spin-dependent direct detection.
 - **Self-interaction:** Dark modes on the same Ma sheet share the
   compact geometry and can interact via mode-mode coupling on Ma.
   This gives dark matter self-interactions — a feature that some
