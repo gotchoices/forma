@@ -1,6 +1,6 @@
 # R43: Weinberg angle from cross-sheet geometry
 
-**Status:** Framed — ready to compute.
+**Status:** Complete ✅
 **Questions:** Q96 §10.2
 **Type:** compute
 **Depends on:** R26 (three-sheet architecture, σ parameters),
@@ -212,8 +212,10 @@ If sin²θ_W emerges from cross-sheet geometry, it means:
 | File | Purpose |
 |------|---------|
 | `README.md` | This document |
-| `scripts/` | Computation scripts (to be created) |
-| `findings.md` | Results (to be created) |
+| `scripts/track1_coupling_ratio.py` | Cross-sheet coupling ratio → sin²θ_W |
+| `scripts/track2_wz_masses.py` | W/Z masses from coupling barriers |
+| `scripts/track3_geometric_ratios.py` | Geometric ratio survey |
+| `findings.md` | Results — **3/13 match (−0.19%)** |
 
 ---
 
