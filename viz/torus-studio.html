@@ -142,6 +142,7 @@ input.wn::-webkit-inner-spin-button { -webkit-appearance: none; }
   <div class="tog"><label><input type="checkbox" id="t-phot" checked> Photon</label></div>
   <div class="tog"><label><input type="checkbox" id="t-ring">         Ring lines</label></div>
   <div class="tog"><label><input type="checkbox" id="t-tube">         Tube lines</label></div>
+  <div class="tog"><label><input type="checkbox" id="t-hex">          Hex lattice</label></div>
   <div class="tog"><label><input type="checkbox" id="t-hor">          Horizon</label></div>
   <div class="tog"><label><input type="checkbox" id="t-ax">           Axis</label></div>
   <div class="sep"></div>
@@ -158,6 +159,7 @@ input.wn::-webkit-inner-spin-button { -webkit-appearance: none; }
       <div class="leg"><div class="sw" style="background:#fdd835"></div>Photon</div>
       <div class="leg"><div class="sw" style="background:#e05050"></div>Ring lines</div>
       <div class="leg"><div class="sw" style="background:#50b0e0"></div>Tube lines</div>
+      <div class="leg"><div class="sw" style="background:#bb66cc"></div>Hex lattice</div>
       <div class="leg"><div class="sw" style="background:#66bb6a"></div>Horizon</div>
     </div>
     <div id="note-3d">Drag to rotate · Scroll to zoom · Right-drag to pan</div>
@@ -225,7 +227,7 @@ const S = {
   aR: 0.50, p: 1, q: 2, shear: 0, speed: 1.0, opacity: 0.45,
   playing: true,
   showSurf: true, showWire: false, showGeo: true, showPhoton: true,
-  showRing: false, showTube: false, showHorizon: false, showAxis: false,
+  showRing: false, showTube: false, showHex: false, showHorizon: false, showAxis: false,
   autoFit: true, show2D: false,
 };
 
@@ -248,12 +250,16 @@ const ringMat = new THREE.LineBasicMaterial({
 const tubeMat = new THREE.LineBasicMaterial({
   color: PALETTE.blue, transparent: true, opacity: 0.40,
 });
+const hexMat = new THREE.LineBasicMaterial({
+  color: 0xbb66cc, transparent: true, opacity: 0.55,
+});
 
 let surfMesh, wireMesh, geoMesh;
 
 const gRing = new THREE.Group();
 const gTube = new THREE.Group();
-world.add(gRing, gTube);
+const gHex  = new THREE.Group();
+world.add(gRing, gTube, gHex);
 
 const photon = createPhoton();
 world.add(photon.mesh);
@@ -360,11 +366,86 @@ function buildTubeLines() {
   }
 }
 
+/* ── Hexagonal lattice overlay ────────────────────────────
+   The Ma material sheet is an intrinsically-flat hexagonal
+   lattice closed into a torus by two integer wrapping vectors
+   (nanotube construction, compact-dimensions.md).
+   We generate this in UV parameter space (u = θ₁/2π, v = φ/2π)
+   and push it through the torus embedding.
+
+   EXACT CLOSURE: a hex lattice closes on the rectangular
+   [0,1]×[0,1] torus iff:
+     • nT rows (even) so the tube closes:  nT × rs = 1, rs = 3r_u/2
+     • nR cols (any)  so the ring closes:  nR × cs = 1  (cs independent of r_u)
+   This requires SEPARATE circumradii r_u (tube) and cs/√3 (ring).
+   The hexagons are anisotropic in UV space but close without seams.
+
+   MAPPING: u/v may be slightly outside [0,1] for seam-crossing
+   edges; trig functions are 2π-periodic so no wrapping is needed.
+   Attempting to wrap before mapping was what caused the seam.   */
+function buildHexLattice() {
+  disposeGroup(gHex);
+
+  const a  = S.aR;
+
+  // nT must be EVEN — this is the condition for a hex lattice whose
+  // stagger-row pattern to close on a rectangular torus.
+  // Choose nT and nR so the hexagons are nearly equilateral in UV space
+  // and ~30% smaller edge than the old isotropic nT=10 (r≈0.067→0.048).
+  const nT = 14;   // rows around tube (even, r_u = 2/(3×14) ≈ 0.048)
+  const nR = 12;   // cols around ring  (cs  = 1/12            ≈ 0.083)
+
+  // Exact-closure UV-space dimensions:
+  const r_u = 2 / (3 * nT);   // tube circumradius; nT × (3r_u/2) = 1 ✓
+  const cs  = 1 / nR;         // ring col spacing;  nR × cs       = 1 ✓
+  const rs  = 3 * r_u / 2;   // row spacing = 1/nT
+
+  // Pointy-top hex vertex offsets [du, dv] from center
+  // (tips at ±r_u in u, flat sides at ±cs/2 in v):
+  const HV = [
+    [ r_u,    0    ],   // top
+    [ r_u/2,  cs/2 ],   // upper-right
+    [-r_u/2,  cs/2 ],   // lower-right
+    [-r_u,    0    ],   // bottom
+    [-r_u/2, -cs/2 ],   // lower-left
+    [ r_u/2, -cs/2 ],   // upper-left
+  ];
+
+  const pts = [];
+
+  for (let row = 0; row < nT; row++) {
+    const uc = row * rs;
+    // Odd rows stagger by half a column so adjacent rows share edges.
+    const colOff = (row % 2 !== 0) ? cs * 0.5 : 0;
+    for (let col = 0; col < nR; col++) {
+      const vc = col * cs + colOff;
+      for (let k = 0; k < 6; k++) {
+        const u1 = uc + HV[k][0],         v1 = vc + HV[k][1];
+        const u2 = uc + HV[(k+1)%6][0],   v2 = vc + HV[(k+1)%6][1];
+        // Direct 3D mapping — NO wrapping.  u/v can be slightly outside
+        // [0,1] for edges that cross a seam; sin/cos handle periodicity.
+        const th1 = u1 * TAU, ph1 = v1 * TAU - S.shear * th1;
+        const th2 = u2 * TAU, ph2 = v2 * TAU - S.shear * th2;
+        const rr1 = R + a * Math.cos(th1), rr2 = R + a * Math.cos(th2);
+        pts.push(
+          rr1 * Math.cos(ph1), a * Math.sin(th1), rr1 * Math.sin(ph1),
+          rr2 * Math.cos(ph2), a * Math.sin(th2), rr2 * Math.sin(ph2),
+        );
+      }
+    }
+  }
+
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.Float32BufferAttribute(new Float32Array(pts), 3));
+  gHex.add(new THREE.LineSegments(geo, hexMat));
+}
+
 function rebuildAll() {
   rebuildSurface();
   rebuildGeodesic();
   buildRingLines();
   buildTubeLines();
+  buildHexLattice();
   syncVis();
   updateInfo();
 }
@@ -376,6 +457,7 @@ function syncVis() {
   photon.mesh.visible = S.showPhoton;
   gRing.visible       = S.showRing;
   gTube.visible       = S.showTube;
+  gHex.visible        = S.showHex;
   horizonMesh.visible = S.showHorizon;
   axisMesh.visible    = S.showAxis;
 }
@@ -634,7 +716,7 @@ $('sl-s').oninput = e => {
   S.shear = +e.target.value;
   $('v-s').textContent = S.shear.toFixed(3);
   document.querySelectorAll('[data-s]').forEach(b => b.classList.remove('on'));
-  rebuildGeodesic(); buildTubeLines(); syncVis(); updateInfo();
+  rebuildGeodesic(); buildTubeLines(); buildHexLattice(); syncVis(); updateInfo();
 };
 document.querySelectorAll('[data-s]').forEach(btn => {
   btn.addEventListener('click', () => {
@@ -642,7 +724,7 @@ document.querySelectorAll('[data-s]').forEach(btn => {
     $('sl-s').value = S.shear; $('v-s').textContent = S.shear.toFixed(3);
     document.querySelectorAll('[data-s]').forEach(b => b.classList.remove('on'));
     btn.classList.add('on');
-    rebuildGeodesic(); buildTubeLines(); syncVis(); updateInfo();
+    rebuildGeodesic(); buildTubeLines(); buildHexLattice(); syncVis(); updateInfo();
   });
 });
 
@@ -667,6 +749,13 @@ $('sl-spd').oninput = e => {
 ].forEach(([id, key]) =>
   $(id).addEventListener('change', e => { S[key] = e.target.checked; syncVis(); })
 );
+
+// Hex lattice toggle (needs a rebuild since gHex is empty until first shown)
+$('t-hex').addEventListener('change', e => {
+  S.showHex = e.target.checked;
+  buildHexLattice();
+  syncVis();
+});
 
 // Auto-fit
 $('t-fit').addEventListener('change', e => { S.autoFit = e.target.checked; rebuildAll(); });
