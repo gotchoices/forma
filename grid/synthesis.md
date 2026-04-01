@@ -160,7 +160,7 @@ What has GRID derived, what is input, and what remains?
 | Constant | Role in GRID | Status |
 |----------|-------------|--------|
 | α ≈ 1/137 | Coupling strength (A6) | Measured input — the sole free parameter |
-| ζ = 1/4 | Information resolution (A5) | Derived from 2D triangular horizon geometry: self + 3 neighbors = 4 → ζ = 1/4 |
+| ζ = 1/4 | Information resolution (A5) | Derived from 3D tetrahedral geometry: horizon cells are tetrahedra with 4 face-sharing neighbors → ζ = 1/4 (Model B, no self) |
 
 ### Unit-system constants (definitional, not physical)
 
@@ -440,8 +440,9 @@ computationally validating the lattice (sim-maxwell,
 sim-gravity), and investigating whether MaSt's geometric
 entanglement mechanism (Q82) can reproduce the experimental
 correlations that standard QM predicts.  ζ = 1/4 follows
-from the 2D triangular geometry of horizon cross-sections
-(self + 3 neighbors = 4 → ζ = 1/4), leaving α as the sole
+from the 3D tetrahedral geometry of cells adjacent to
+horizons (4 face-sharing neighbors, no self → ζ = 1/4,
+Model B), leaving α as the sole
 measured input.  The framework is complete with α taken
 from experiment — deriving it would be fine, but it is not a
 prerequisite.

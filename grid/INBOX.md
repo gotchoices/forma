@@ -161,6 +161,63 @@ external curvature.
 
 ---
 
+## 2026-04-01: Model B — cell = its edges, no self
+
+### The shift
+
+The original "cell as processor" picture (Model A) placed a
+circular string loop at each cell centre with linear strings
+going out to neighbors.  **Model B** eliminates the loop:
+the cell IS its boundary edges.  There is no separate
+internal register.
+
+Two ways to visualise the cell:
+- **Triangle of strings** (2D): 3 edges forming the cell
+  boundary, each shared with one neighbor.  The vertex is
+  a coupling junction, not a state holder.
+- **Node with strings out:** the cell centre sends 3 (half-)
+  strings to neighbors.  Requires defining "half-string"
+  boundary conditions.
+
+The triangle is simpler — no half-strings, no extra objects.
+Each edge is a whole string shared between two cells.
+
+### Impact on ζ counting
+
+Model A: self + D+1 neighbors = D+2 → ζ = 1/(D+2)
+Model B: D+1 neighbors only (no self) → ζ = 1/(D+1)
+
+| Dim | Simplex | Model A | Model B |
+|-----|---------|---------|---------|
+| 2D | Triangle | 1/4 | 1/3 |
+| 3D | Tetrahedron | 1/5 | **1/4** |
+| 4D | Pentachoron | 1/6 | 1/5 |
+
+**Key result:** ζ = 1/4 (Bekenstein-Hawking) now comes from
+the **3D tetrahedron** — the cell type adjacent to horizons.
+A horizon is a 2D surface in 3D space; the cells that vote
+on its entropy are 3D.  This is more physical than the
+previous argument (which used 2D triangles with self-counting).
+
+### Why Model B is preferred
+
+1. No extra objects — the cell is its geometry
+2. Edges carry standing-wave modes → entropy → entropic
+   gravity (needed for sim-gravity-2)
+3. Vertices are junctions (coupling rules), not state holders
+4. BH factor from the right dimension (3D, not 2D)
+5. Consistent with lattice gauge theory where the physical
+   degrees of freedom live on links, not sites
+
+### Status
+
+Adopted as the leading model.  Updated in
+[lattice-geometry.md](lattice-geometry.md) and
+[foundations.md](foundations.md).  The sim-gravity-2 study
+uses Model B's string-register structure.
+
+---
+
 ## 2026-03-31: Two planned simulation studies
 
 Both are substantial enough to warrant their own folders

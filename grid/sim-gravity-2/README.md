@@ -33,75 +33,81 @@ structure to *have* entropy?
 
 ---
 
-## The string-register model
+## The string-register model (Model B)
 
-Each node and edge in the lattice carries a **1D internal
-register** — a short periodic or linear "string" that
-supports standing-wave modes.  This idea originates from
-[INBOX.md](../INBOX.md) ("The cell as a processor on a
-string").
+In Model B (see [lattice-geometry.md](../lattice-geometry.md)
+and [INBOX.md](../INBOX.md)), the cell has **no separate
+internal state**.  The cell IS its edges — vibrating strings
+that carry all the information.  Vertices are coupling
+junctions, not state holders.
 
-### Node register
+### The cell as a triangle of strings (2D)
 
-Each node has a tiny 1D periodic loop (circumference L_node).
-It supports standing waves with mode numbers n = 1, 2, ...,
-n_max.  Each mode has an amplitude and phase.  The total
-energy on the node is:
+In the 2D simulation, each triangular cell is three strings
+forming its boundary.  Each edge is a 1D linear string of
+length 1 (one lattice spacing) with vertices as endpoints.
 
-<!-- E_node = Σ_n ω_n |a_n|² -->
+Each string supports standing-wave modes n = 1, 2, ..., n_max.
+The energy on one edge is:
+
+<!-- E_edge = Σ_n ω_n |a_n|² -->
 $$
-E_{\text{node}} = \sum_{n=1}^{n_{\max}} \omega_n \,|a_n|^2
+E_{\text{edge}} = \sum_{n=1}^{n_{\max}} \omega_n \,|a_n|^2
 $$
 
-where ω_n = 2πn/L_node is the mode frequency and a_n is
-the complex amplitude of mode n.
+where ω_n = nπ/L (fixed-endpoint modes) and a_n is the
+complex amplitude of mode n.
 
-The **phase** θ (axiom A3) is the lowest mode (n = 1).
-Higher modes are sub-state structure — internal degrees of
-freedom that contribute to entropy but are not directly
-visible at the lattice scale.
+- **Lowest mode (n = 1):** carries the gauge connection A_μ
+  — the lattice version of the electromagnetic field.
+- **Higher modes (n > 1):** sub-state structure — internal
+  degrees of freedom that contribute to entropy but are not
+  directly visible at the lattice scale.
+- **Phase θ (axiom A3):** a collective property of the
+  cell's three edge modes, not a separate variable.
 
-### Edge register
+### Vertex coupling
 
-Each edge has a 1D linear string of length 1 (one lattice
-spacing) with fixed endpoints.  Standing-wave modes:
-n = 1, 2, ..., n_max.  The lowest mode carries the gauge
-connection A_μ.  Higher modes are sub-state.
+Each vertex is shared by 6 triangles (in a triangular
+lattice) and 6 edges meet there.  The vertex is a **junction
+rule**, not a state container.  At each clock cycle, the
+vertex:
 
-### Junction coupling
+1. Receives the mode amplitudes from all connected edges
+2. Applies a coupling rule (superposition / energy transfer)
+3. Updates the outgoing mode amplitudes on each edge
 
-Where an edge string meets a node loop, the amplitudes
-couple additively — the wave on the edge and the wave on the
-loop superpose at the junction point.  This is the
-microscopic version of the covariant derivative:
-D_μθ = ∂_μθ − eA_μ.
+This is the microscopic version of the covariant derivative:
+D_μθ = ∂_μθ − eA_μ.  The phase gradient on one edge plus
+the contribution from neighbouring edges combine at the
+junction.
 
-Energy can transfer between modes at each junction on each
-clock cycle.  This is how information propagates through the
-lattice.
+Energy transfers between edges at each vertex on each
+clock cycle.  This is how information propagates through
+the lattice.
 
 ### Entropy
 
-The total number of **accessible microstates** for a node
-depends on how many modes are excited and how energy is
-distributed among them.  For a system with fixed total energy
-E and n_max modes, the number of microstates scales roughly
-as:
+The total number of **accessible microstates** for a cell
+depends on how energy is distributed among the modes on its
+3 edges.  With n_max modes per edge and 3 edges, the cell
+has 3 × n_max oscillator modes.  For a system with fixed
+total energy E and N_modes modes, the microstate count is:
 
-<!-- Ω ~ E^(n_max - 1) / Π ω_n -->
+<!-- Ω ~ E^(N_modes - 1) / Π ω_n -->
 $$
-\Omega \sim \frac{E^{n_{\max}-1}}{\prod_n \omega_n}
+\Omega \sim \frac{E^{N_{\text{modes}}-1}}{\prod_n \omega_n}
 $$
 
-(the microcanonical density of states for a collection of
-harmonic oscillators).  The entropy is S = log Ω.
+(microcanonical density of states for harmonic oscillators).
+The entropy is S = log Ω.
 
-**A rigid body** (frozen node) has its amplitudes fixed —
+**A rigid body** (frozen edges) has its amplitudes fixed —
 no fluctuations, no microstates, S = 0.  Near the rigid
-body, the junction coupling constrains the neighbouring
-nodes' modes, reducing their accessible microstates.  This
-creates a **scalar entropy shadow** that spreads outward
-through the lattice.
+body, the vertex coupling constrains the neighbouring edges'
+modes, reducing their accessible microstates.  This creates
+a **scalar entropy shadow** that spreads outward through the
+lattice.
 
 The correlation function of a scalar field on a 2D lattice
 falls off as log(r).  If the entropy deficit follows the
@@ -112,6 +118,55 @@ same scaling, then:
 
 This is the 2D gravitational force law.
 
+### Connection to ζ
+
+Under Model B, a 2D triangular cell has 3 face-sharing
+neighbors (no self) → ζ = 1/3.  A 3D tetrahedral cell
+has 4 face-sharing neighbors → ζ = 1/4 (Bekenstein-Hawking).
+The 2D simulation uses ζ = 1/3; the physically relevant
+value for horizons (3D cells) is ζ = 1/4.
+
+---
+
+## Standing waves and energy transfer
+
+### Can a standing wave deliver energy at its endpoint?
+
+A textbook standing wave on a rigid-endpoint string delivers
+no net energy — the endpoints don't move, so no work is done.
+But in our lattice the endpoints are *coupled junctions*
+where multiple strings meet.  Each string's mode exerts a
+force at the vertex; the vertex mediates energy transfer
+between strings.  Energy arrives on one string's modes and
+scatters into the other strings' modes.
+
+This is how phonons propagate through a crystal lattice:
+each bond has vibrational modes, and the atoms (vertices) are
+coupling points.  The strings don't have rigid endpoints —
+they have *coupled* endpoints.  The mode spectrum is still
+discrete (standing-wave-like), but energy flows through the
+junctions.
+
+### Is the vertex stationary?
+
+**Yes — in this simulation.**  The vertex is a massless,
+stateless junction.  It has no inertia, no position to
+update, and no state register.  It instantly mediates the
+coupling between connected strings.
+
+Why this choice matters: if we gave vertices mass and let
+them move, we'd reintroduce the *vector displacement field*
+that gave sim-gravity its 1/r² (elastic) result.  By keeping
+vertices fixed and letting only the *mode amplitudes*
+fluctuate, we isolate the **scalar entropy** from the
+**vector elasticity**.  This separation is exactly what we
+need to test whether the entropic force gives 1/r.
+
+The Monte Carlo samples mode amplitudes on edges, not vertex
+positions.  The vertex applies a coupling rule (how energy
+redistributes among connected edges) but does not itself
+contribute degrees of freedom.
+
 ---
 
 ## Why strings give entropy (and springs don't)
@@ -121,25 +176,31 @@ freedom (its 2D position).  A single degree of freedom has
 no internal microstates — it just sits at its energy minimum.
 No entropy, no entropic force.
 
-Strings are different because they have **many modes**.  A
-string with n_max modes has a high-dimensional state space.
+Edge strings are different because they have **many modes**.
+A string with n_max modes has a high-dimensional state space.
 At finite temperature, the string fluctuates among all
 accessible states.  The number of accessible states (entropy)
 depends on the constraints imposed by neighbours and rigid
 bodies.
 
+In Model B, the cell IS its edges.  A triangular cell has
+3 edges × n_max modes = 3 × n_max oscillator degrees of
+freedom.  Even with n_max = 3, that's 9 modes per cell — far
+richer than the 2 degrees of freedom (x, y) in sim-gravity.
+
 Analogy: a single spring has one state (its rest length).
 A polymer chain with 1000 links has an astronomically large
 configuration space — and the entropic force from constraining
-that space is what makes rubber elastic.  Our strings are the
-polymer; our nodes are the monomers.
+that space is what makes rubber elastic.  Our edge strings are
+the polymer; our vertices are the monomers.
 
 Another analogy: graphene.  A graphene sheet is a 2D
 triangular lattice of carbon atoms connected by bonds.  The
 bonds vibrate (phonon modes).  The phonon spectrum gives
 graphene a well-defined entropy, thermal conductivity, and
 thermodynamic behaviour.  Our string-register lattice is
-the Planck-scale version.
+the Planck-scale version — and in Model B, the state lives
+on the bonds (edges), not the atoms (vertices).
 
 ---
 
@@ -207,18 +268,19 @@ full string-register model as the main event.
 
 ## Connection to GRID axioms
 
-| Element | GRID axiom | String-register version |
+| Element | GRID axiom | Model B version |
 |---------|-----------|------------------------|
-| Phase θ | A3 | Lowest node mode (n=1) |
 | Gauge connection A_μ | A4 | Lowest edge mode (n=1) |
-| Entropy density ζ | A5 | S/N per cell, from mode counting |
+| Phase θ | A3 | Collective property of cell's 3 edge lowest modes |
+| Entropy density ζ | A5 | S/N per cell, from mode counting (ζ = 1/3 in 2D, 1/4 in 3D) |
 | Clock cycle | A1 | One MC sweep = one Planck time |
-| Coupling α | A6 | Junction coupling strength |
+| Coupling α | A6 | Vertex coupling strength |
+| Vertex | — | Junction rule (covariant derivative), not a state holder |
 
-The string registers provide the **internal structure** that
-makes axiom A5 (ζ = 1/4 bit per cell) physically concrete:
-the 1/4 bit is the externally accessible entropy from the
-mode spectrum, not an abstract postulate.
+The edge strings provide the **internal structure** that
+makes axiom A5 physically concrete: the externally accessible
+entropy per cell comes from the mode spectrum on its boundary
+edges, not an abstract postulate.
 
 ---
 

@@ -117,17 +117,27 @@ Each cell contributes ζ = 1/4 bit to the collective information
 content of the lattice.  Equivalently: it takes 1/ζ = 4 cells to
 encode one bit of physical information.
 
-**Geometric origin:** ζ follows from the "self + neighbors"
-counting on the lattice that forms horizon cross-sections.
-A causal horizon is a 2D surface, and a 2D simplicial lattice
-is composed of triangles.  Each triangle has 3 edge-sharing
-neighbors.  Counting the cell itself: self + 3 = 4, giving
-ζ = 1/4.  This matches the Bekenstein-Hawking factor
-independently — the 1/4 is not imported from black hole
-physics but derived from the dimensionality and packing of
-the horizon surface.  (See
-[lattice-geometry.md](lattice-geometry.md) and
-[compact-dimensions.md](compact-dimensions.md) for details.)
+**Geometric origin:** ζ follows from the face count of the
+simplicial cells adjacent to a causal horizon.  A horizon is
+a 2D surface in 3D space.  The 3D cells touching the horizon
+are tetrahedra (3-simplices).  Each tetrahedron has 4
+face-sharing neighbors.
+
+In the "cell = its edges" model (Model B in
+[lattice-geometry.md](lattice-geometry.md)), the cell carries
+no separate internal state — its information is entirely
+encoded in the standing-wave modes on its boundary edges.
+There is no "self" to count, only the 4 neighbors:
+
+- 4 face-sharing neighbors → 4 contributors per bit
+- **ζ = 1/4**
+
+This matches the Bekenstein-Hawking factor.  The 1/4 is not
+imported from black hole physics but derived from the
+dimensionality (3D tetrahedra) and packing (simplicial) of the
+cells adjacent to the horizon.  (See also
+[compact-dimensions.md](compact-dimensions.md) for the compact
+dimension perspective.)
 
 A causal horizon of area A (measured in Planck units, L = 1)
 carries entropy:
@@ -137,11 +147,11 @@ $$
 S = \zeta \cdot A = \frac{A}{4}
 $$
 
-No single cell holds a complete bit.  The phase θ is a collective
-variable defined over a minimum patch of ~4 cells — like a pixel
-requiring a 2×2 sub-pixel grid to resolve.  This is an
-anti-aliasing constraint: no excitation can have spatial frequency
-higher than 1/(4L).
+No single cell holds a complete bit.  The bit is a collective
+property of a patch of ~4 cells — like a pixel requiring a
+2×2 sub-pixel grid to resolve.  This is an anti-aliasing
+constraint: no excitation can have spatial frequency higher
+than 1/(4L).
 
 The resolution ζ directly determines the gravitational constant:
 

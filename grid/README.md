@@ -21,14 +21,17 @@ Everything else is emergent.
 | ζ | Resolution | 1/4 | Derived from geometry | Bits per Planck cell — the information density of the substrate.  Determines gravitational coupling G. |
 | α | Coupling | ≈ 1/137.036 | Measured input | Electromagnetic interaction strength — energy cost of a topological defect relative to the lattice scale.  Determines ε₀, μ₀, e. |
 
-**ζ** (zeta) follows from the geometry of horizon cross-sections.
-A causal horizon is a 2D surface tiled by triangular cells.  Each
-triangle has 3 edge-sharing neighbors; counting itself gives
-self + 3 = 4, so ζ = 1/(self + neighbors) = 1/4.  This is the
+**ζ** (zeta) follows from the geometry of the cells adjacent
+to causal horizons.  A horizon is a 2D surface in 3D space.
+The 3D cells touching the horizon are tetrahedra (3-simplices).
+Under Model B — where the cell IS its edges, with no separate
+internal state — each tetrahedron has 4 face-sharing neighbors
+and no "self" to count, giving ζ = 1/4.  This is the
 Bekenstein-Hawking factor: a horizon of area A carries entropy
 S = ζ · A = A/4.  The value is not imported from black hole
-physics — it is derived from the dimensionality and packing of
-the boundary surface.
+physics — it is derived from the dimensionality (3D) and
+packing (simplicial) of the cells adjacent to the horizon.
+See [lattice-geometry.md](lattice-geometry.md) for details.
 
 **α** is the sole measured input — the single free coupling
 constant of the lattice gauge theory.  MaSt also takes α as

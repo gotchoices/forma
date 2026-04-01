@@ -21,145 +21,181 @@ Each cell is a tiny processor that runs one computation per
 A1: disturbances propagate at one cell per tick (c = 1).  The
 Planck time is the clock cycle of the lattice.
 
-Every tick, each cell:
+### Model A (original): node + edges
 
-1. **Reads** its own phase θ and the link states on all its
-   edges (the gauge connections U_j shared with neighbors)
-2. **Computes** its new phase θ_new
-3. **Contributes** to updating the link variable on each of its
-   edges (collaboratively with the neighbor on the other end)
+In the original picture, each cell has its own phase register
+(site variable θ) plus link variables on its edges.  Every
+tick, the cell reads its phase and edge states, computes new
+values, and propagates.
+
+### Model B (current): cell = its edges
+
+In Model B, the cell has **no separate state register**.  The
+cell IS its boundary — D + 1 edges (for a D-simplex), each a
+vibrating string carrying standing-wave modes:
+
+- **Lowest mode** on each edge: the gauge connection A_μ
+  (the link variable from lattice gauge theory)
+- **Higher modes:** sub-state structure contributing to
+  entropy but not directly visible at the lattice scale
+- **Phase θ:** a collective property of the cell's edge
+  modes, not a separate variable
+
+The **vertices** where edges meet are coupling junctions —
+they apply the update rule (covariant derivative), but store
+no state.
+
+Every tick, each edge:
+
+1. **Vibrates** — its standing-wave modes advance
+2. **Exchanges energy** with connected edges at vertex
+   junctions
+3. The junction applies the coupling rule: superposition of
+   incoming modes determines outgoing modes
 
 The result becomes visible to neighbors on the **next** tick.
 The speed of light is the maximum propagation speed because a
-cell can only reach its immediate neighbors in one cycle.
+cell can only reach its face-sharing neighbors in one cycle.
 
-### What a cell knows and what it computes
+### What a cell knows
 
-In lattice gauge theory, two kinds of state live on the lattice:
+All state lives on edges.  In a 3D tetrahedral cell:
 
-- **Cell state (site variable):** the phase θ ∈ [0, 2π) — this
-  is the matter field.
-- **Link state (edge variable):** the gauge connection
-  U_j ∈ U(1) — one per edge, shared between the two endpoint
-  cells.  This is the electromagnetic field (the lattice version
-  of A_μ from [maxwell.md](maxwell.md)).
+| Element | Count | What it stores |
+|---------|-------|---------------|
+| Edges (strings) | 6 | Standing-wave modes; lowest = A_μ |
+| Faces (shared with neighbors) | 4 | Each face's edges define the coupling |
+| Vertices (junctions) | 4 | Coupling rule only — no state |
 
-The link variables are **independent degrees of freedom**, not
-determined by the endpoint phases.  They have their own dynamics
-(the Wilson plaquette action).  The electric and magnetic fields
-(E and B) are encoded in products of link variables around
-closed loops (plaquettes), not in the cell phases.
-
-So each tick, a cell in a pentachoron lattice computes:
-
-| Output | Count | What it represents |
-|--------|-------|--------------------|
-| New phase θ_new | 1 | Matter field update |
-| Contributions to link updates | 5 | Electromagnetic field update (one per neighbor) |
-| **Total** | **6** | **Degrees of freedom processed per cell per tick** |
-
-A propagating disturbance in the cell phases is **charged
-matter**.  A propagating disturbance in the link states is a
-**photon**.
-
-### What a cell communicates
-
-A cell does not "send messages."  Its state (phase + link
-contributions) is simply **visible** to its neighbors through
-the shared links.  The link IS the communication channel:
-
-- The neighbor reads the link variable to learn about the
-  coupling
-- The neighbor reads (indirectly, via the link update rule) the
-  effect of this cell's phase
-
-So each cell communicates **more than its phase**.  It
-communicates its phase AND its half of 5 link updates — totaling
-6 pieces of information per tick.
+The edge variables are the fundamental degrees of freedom.
+Products of edge modes around closed loops (plaquettes) give
+the field tensor F_μν.  A propagating disturbance in the
+edge modes is a **photon**.
 
 ---
 
-## Leading candidate: 4D simplicial lattice (ζ = 1/6)
+## Two counting models
 
-The simplex is the minimal polytope in any dimension — the cell
-with the fewest faces.  In 4D, it is the **pentachoron**
-(5-cell): a "4D pyramid."
+The value of ζ depends on whether the cell has internal
+state beyond its edges.
 
-Properties of the pentachoron:
+### Model A: self + neighbors (original)
 
-- 5 vertices, 10 edges, 10 triangular faces, 5 tetrahedral facets
-- Each cell shares a tetrahedral facet with **5 neighbors**
-- It is the simplest possible 4D cell (fewest facets)
+The cell has its own state register (phase θ) separate from
+the link variables on its edges.  One bit of information is
+a collective property of the cell and its face-sharing
+neighbors:
 
-### The resolution argument
+- D-simplex has D + 1 faces → D + 1 neighbors
+- Self + (D + 1) neighbors = D + 2 contributors per bit
+- **ζ = 1/(D + 2)**
 
-Each tick, the cell processes 6 degrees of freedom: its own
-phase plus 5 link contributions.  The bit of physical
-information at that cell is a collective property of the full
-local patch — **self + neighbors**:
+### Model B: cell = its edges (current leading model)
 
-- 1 cell + 5 neighbors = **6 contributors per bit**
-- Each cell contributes 1/6 of a bit → **ζ = 1/6**
-- G = 1/(4ζ) = 3/2 in natural units
+The cell has **no separate internal state**.  It IS its
+boundary — a collection of strings (edges) that carry all
+the state.  The "node" at each vertex is just a coupling
+junction where strings meet and exchange energy, not a
+state holder.
 
-This counting is reinforced by the computational picture: 6
-outputs per cell per tick maps naturally to 1/6 bit per cell.
+In this picture, each edge of the simplex is a vibrating
+string that stores standing-wave modes.  The lowest mode
+carries the gauge connection A_μ; higher modes are sub-state
+(internal degrees of freedom contributing to entropy).  The
+phase θ is a collective property of the cell's edge modes,
+not a separate variable.
 
-### Why 4D simplicial?
+The bit is computed from the cell's edges alone — no
+additional "self" contribution:
 
-The simplex is the "simplest possible" cell in D dimensions,
-paralleling A3's choice of the "simplest possible" internal
-variable (the phase circle).  This minimality principle — always
-choose the simplest structure — runs through the GRID axioms.
+- D-simplex has D + 1 faces → D + 1 neighbors
+- No separate self → D + 1 contributors per bit
+- **ζ = 1/(D + 1)**
+
+### Comparison
+
+| Dim | Simplex | Faces | Model A: 1/(D+2) | Model B: 1/(D+1) |
+|-----|---------|-------|-------------------|-------------------|
+| 2D | Triangle | 3 | 1/4 | **1/3** |
+| 3D | Tetrahedron | 4 | 1/5 | **1/4** |
+| 4D | Pentachoron | 5 | 1/6 | **1/5** |
+
+### Bekenstein-Hawking and Model B
+
+The BH entropy formula is S = A/4 → ζ = 1/4.  Under
+Model B, this value comes from the **3D tetrahedron**, not
+the 2D triangle.
+
+This is physically appropriate: a black hole horizon is a 2D
+surface embedded in **3D space**.  The cells that "vote" on
+the entropy of the horizon are the 3D tetrahedral cells
+adjacent to it.  Each tetrahedron has 4 face-sharing
+neighbors → ζ = 1/4.
+
+Under Model A, ζ = 1/4 required either the 2D triangle
+(which felt like choosing the answer) or a different counting
+convention.  Under Model B, ζ = 1/4 falls out naturally
+from the 3D simplex — the right dimensionality for the
+cells surrounding a horizon.
+
+### Why Model B is preferred
+
+1. **No extra objects.**  Model A requires a separate phase
+   register at each cell centre.  Model B uses only the
+   lattice edges — the cell is its geometry, not a point
+   with attachments.
+
+2. **Entropy from strings.**  Model B's edges carry
+   standing-wave modes, giving each cell a rich state space
+   and therefore entropy.  This is essential for the
+   thermodynamic (Jacobson) route to gravity.  Model A's
+   single phase variable has no internal microstates.
+   (See [sim-gravity-2/](sim-gravity-2/).)
+
+3. **Vertices are junctions, not state holders.**  The vertex
+   where edges meet applies the coupling rule (the covariant
+   derivative D_μθ = ∂_μθ − eA_μ) but does not store state.
+   This is simpler and avoids double-counting.
+
+4. **BH from the right dimension.**  ζ = 1/4 from the 3D
+   tetrahedron (the cell type adjacent to horizons) rather
+   than an ad hoc 2D argument.
+
+---
+
+## Leading candidate: 3D simplicial, Model B (ζ = 1/4)
+
+The spatial lattice is tiled by tetrahedra.  Each tetrahedron
+has 4 triangular faces, each shared with one neighbor.  Under
+Model B counting (no self), ζ = 1/4.
+
+This matches the Bekenstein-Hawking factor and gives:
+- G = 1/(4ζ) = 1 in natural units
+- Spacetime stiffness c⁴/(8πG) = 1/(8π)
+
+The full 4D lattice uses a (1,3) split: tetrahedra tile 3D
+space, and time advances as a causal step (one tick = one
+Planck time).  This is consistent with axiom A2's (1,3)
+signature and with causal dynamical triangulations.
+
+### 4D simplicial alternative
+
+If the lattice is fully 4D simplicial (pentachorons), Model B
+gives ζ = 1/5.  This doesn't match BH but could be relevant
+for bulk entropy (as opposed to horizon entropy).
+
+| Geometry | Model B: ζ = 1/(D+1) | G = 1/(4ζ) | BH match? |
+|----------|---------------------|-----------|-----------|
+| **3D tetrahedron** | **1/4** | **1** | **Yes** |
+| 4D pentachoron | 1/5 | 5/4 | No |
 
 ### Tiling
 
-Regular pentachorons do not tile flat 4D space.
-Irregular simplicial complexes do (any manifold can be
-triangulated — this is the basis of finite element methods,
-Regge calculus, and causal dynamical triangulations).  The
-continuum limit smooths out irregularity.
-
----
-
-## Alternative: (1,3)-split simplicial
-
-Instead of a full 4D simplicial lattice, tile the 3D spatial
-dimensions with tetrahedra and handle time separately as a
-causal step.
-
-The tetrahedron (3D simplex) has **4 faces → 4 spatial
-neighbors**.  With the self + neighbors count: ζ = 1/5.
-
-| Geometry | Neighbors (z) | ζ = 1/(z+1) | G = 1/(4ζ) |
-|----------|--------------|-------------|-----------|
-| 4D simplicial (leading) | 5 | **1/6** | 3/2 |
-| 3D simplicial (spatial) | 4 | 1/5 | 5/4 |
-
-**Note on Bekenstein-Hawking:** the traditional BH entropy
-formula S = A/(4G) uses ζ = 1/4.  The (1,3)-split simplicial
-lattice with "neighbors only" counting (ζ = 1/z = 1/4)
-reproduces this.  Under the self + neighbors scheme, no simple
-geometry gives exactly 1/4.  This is a tension worth noting —
-but not necessarily fatal, since BH entropy has never been
-experimentally measured and the "1/4" could reflect a different
-counting convention.
-
----
-
-## Comparison of candidate geometries
-
-All using the self + neighbors counting: ζ = 1/(z+1).
-
-| Lattice type | Dimension | Neighbors (z) | ζ | G = 1/(4ζ) |
-|-------------|-----------|--------------|---|-----------|
-| **4D simplicial** | **4** | **5** | **1/6** | **3/2** |
-| 3D simplicial (spatial) | 3 | 4 | 1/5 | 5/4 |
-| 4D hypercubic | 4 | 8 | 1/9 | 9/4 |
-| 3D cubic (spatial) | 3 | 6 | 1/7 | 7/4 |
-
-The simplicial lattice gives the smallest coordination numbers,
-consistent with the minimality principle.
+Regular tetrahedra do not tile flat 3D space, but irregular
+simplicial complexes do (any 3-manifold can be triangulated).
+The continuum limit smooths out irregularity.  This is the
+basis of Regge calculus, causal dynamical triangulations,
+and finite element methods.
 
 ---
 
@@ -177,37 +213,52 @@ why G has the value it does.
 
 ---
 
-## Why self + neighbors
+## Why Model B (neighbors only, no self)
 
-The cell itself must be included in the tally.  The bit of
-physical information at a cell is not just what the neighbors
-dictate — it is the collective state of the whole local patch:
-the cell's own phase, plus the link states connecting it to
-all neighbors.
+In Model B, the cell IS its edges.  There is no separate
+"self" state to count.  The bit of physical information at
+a cell is the collective state of its boundary strings —
+the edges shared with neighbors.
 
-**The computational argument:** each tick, the cell processes
-6 degrees of freedom (1 phase + 5 link contributions).  These
-6 pieces of information define one bit.  The cell is both a
-participant and a contributor — not a passive recipient.
+**The string argument:** a triangular cell (2D) is three
+vibrating strings forming its boundary.  Each string is
+shared with one neighbor.  The cell's information content
+is fully determined by its 3 edges.  There is no additional
+internal register; the vertex junctions store no state.
+
+**The computational argument:** each tick, the cell's edges
+vibrate, exchange energy at vertices, and advance their
+modes.  The vertex applies the coupling rule (covariant
+derivative), but the state lives on the edges.  In a 3D
+tetrahedron: 4 face-sharing edges, no separate self → 4
+contributors per bit → ζ = 1/4.
 
 **The gauge theory argument:** in lattice gauge theory, the
-physical (gauge-invariant) state at a point depends on both
-the site variable (phase) and the link variables (connections)
-around it.  You cannot define F_μν at a cell without knowing
-the cell's links, and you cannot define the links without
-knowing both endpoints.  The full local patch is the minimal
-gauge-invariant unit.
+physically relevant variables are the **link variables**
+(gauge connections on edges), not site variables.  The
+gauge-invariant content (F_μν) is built from products of
+link variables around plaquettes.  The site variable (phase)
+is gauge-dependent and can be gauged away at any single site.
+The physical information IS on the links — consistent with
+Model B.
+
+**Historical note:** Model A ("self + neighbors") was the
+original counting scheme.  Model B is preferred because it
+eliminates the ad hoc "self" contribution, produces ζ = 1/4
+from the 3D tetrahedron (the right dimension for horizons),
+and is compatible with the string-register picture needed
+for entropic gravity.
 
 ---
 
 ## What needs to be shown
 
-1. **Does the coordination number determine ζ?**
-   The argument "z+1 local degrees of freedom → ζ = 1/(z+1)"
+1. **Does the face count determine ζ?**
+   The argument "D + 1 faces → ζ = 1/(D + 1)" under Model B
    is physically motivated but unproven.  A rigorous
    information-theoretic derivation (Shannon entropy on a
-   graph, gauge-invariant degree-of-freedom count) would
-   promote this from conjecture to theorem.
+   simplicial complex, gauge-invariant degree-of-freedom
+   count) would promote this from conjecture to theorem.
 
 2. **Why simplicial (if simplicial)?**  The simplex is the
    minimal polytope.  Is there a uniqueness or optimality
@@ -215,18 +266,18 @@ gauge-invariant unit.
    (e.g. requiring the lattice to support causal dynamics)
    single out the simplex?
 
-3. **Full 4D or (1,3)-split?**  Does time participate in the
-   packing on equal footing with space, or is the causal
-   dimension handled separately?  The (1,3) signature (A2)
-   suggests time IS different, which favors the split
-   approach — but this is not settled.
+3. **Is ζ dimension-dependent?**  Under Model B, ζ depends
+   on the dimensionality of the relevant cells.  For
+   horizons (2D surfaces in 3D space), the adjacent cells
+   are 3D → ζ = 1/4.  For bulk 4D cells, ζ = 1/5.  Can
+   different ζ values coexist in the same lattice?  Or is
+   only the horizon value physically relevant (via A5)?
 
-4. **Reconciliation with Bekenstein-Hawking.**  The standard
-   BH factor is 1/4.  If the correct value is 1/6, this is
-   a prediction that differs from the theoretical consensus.
-   Either: (a) the counting convention differs, (b) the BH
-   derivation has a convention-dependent factor, or (c) ζ = 1/6
-   is wrong.  This needs investigation.
+4. **String-register validation.**  Model B requires edges
+   to carry multi-mode state (standing waves).  The
+   sim-gravity-2 simulation will test whether this produces
+   the correct entropic force (1/r in 2D).  A positive
+   result would strongly support Model B over Model A.
 
 ---
 
