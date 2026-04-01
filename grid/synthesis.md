@@ -250,7 +250,7 @@ one geometrically derived constant (ζ):
 | Electromagnetism | GRID | Phase dynamics + gauge invariance | **Derived** |
 | Gravity | GRID | Thermodynamics of information | **Derived** |
 | Strong | MaSt | Full internal EM at overlap range (Q95) | **Plausible** — qualitative features match |
-| Weak | MaSt | Collective Ma excitations? (Q96) | **Open** |
+| Weak | MaSt | Cross-sheet resonances; W/Z masses from coupling barriers (Q96) | **Framework** — reproduces scale (~310 GeV, R34), not yet the Weinberg angle |
 
 **What GRID provides to MaSt:**
 - Maxwell's equations — previously assumed, now derived
@@ -382,7 +382,7 @@ formalism or overturned either one.
 
 | Question | Status | Reference |
 |----------|--------|-----------|
-| Can ζ be derived from packing geometry? | Leading candidate: ζ = 1/6 from 4D simplex | [lattice-geometry.md](lattice-geometry.md) |
+| Can ζ be derived from packing geometry? | **Yes** — ζ = 1/4 from 3D tetrahedral packing (Model B: 4 face-sharing neighbors, no self) | [lattice-geometry.md](lattice-geometry.md) |
 | Are ζ and α related? | Unknown — treated as independent | [foundations.md](foundations.md), Q2 |
 | Why 4 dimensions? | Assumed (A1), not derived | [foundations.md](foundations.md), Q3 |
 | Why (1,3) signature? | Assumed (A2), not derived — but see below | [foundations.md](foundations.md), Q4 |
@@ -410,7 +410,7 @@ partially require theoretical proof.
 | Question | Status | Reference |
 |----------|--------|-----------|
 | Can Ma phase locking reproduce Bell violations? | **Critical open question** — determines viability of emergent QM | [Q82](../qa/Q82-entanglement-as-ma-geometry.md) |
-| Can the lattice support non-abelian gauge symmetry? | Open — would need richer cell structure | — |
+| Do non-abelian forces need formal gauge groups? | MaSt reinterprets: strong = internal EM at overlap (Q95), weak = cross-sheet resonances (Q96).  If SU(3)/SU(2) are effective descriptions of geometric mechanisms, MaSt needs to reproduce the observations, not the gauge groups. | [Q95](../qa/Q95-strong-force-as-internal-em.md), [Q96](../qa/Q96-force-carriers-in-mast.md) |
 | Does the lattice naturally produce wave propagation? | **Yes ✅** — directional propagation from geometry alone, no Maxwell input | [sim-maxwell/](sim-maxwell/) |
 | Do waves superpose linearly? | **Yes ✅** — exact (machine epsilon) on both triangular and hexagonal lattices | [sim-maxwell/](sim-maxwell/) |
 | Does the lattice produce 1/r gravity? | **Yes ✅** — scalar + string-register models both confirm 1/r (2D) | [sim-gravity-2/](sim-gravity-2/) |
@@ -466,7 +466,8 @@ and accommodates Schwarzschild geometry through the horizon
 (with lattice failure only at the physical singularity).
 
 What remains: confirming the strong force mechanism
-quantitatively, finding a weak force mechanism, and
+quantitatively, tightening the weak force framework (the
+Weinberg angle is the key missing observable), and
 investigating whether MaSt's geometric entanglement
 mechanism (Q82) can reproduce the experimental correlations
 that standard QM predicts.  ζ = 1/4 follows from the 3D
@@ -475,3 +476,11 @@ face-sharing neighbors, no self → ζ = 1/4, Model B),
 leaving α as the sole measured input.  The framework is
 complete with α taken from experiment — deriving it would
 be fine, but it is not a prerequisite.
+
+Ghost modes (the ~860 Ma eigenstates without EM coupling)
+are reinterpreted as dark matter (Q94, R42): charge-neutral
+by geometric symmetry, with a mass-weighted dark/visible
+ratio that brackets the observed 5.36 under physically
+motivated filters.  This dissolves the ghost suppression
+problem and turns MaSt's largest apparent deficiency into
+a parameter-free dark matter prediction.
