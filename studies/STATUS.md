@@ -48,21 +48,29 @@ is of order −1.6 to −2.4 (wrong sign, ~1400× too large).  Charge-mass
 separation from shear is ruled out as the g − 2 mechanism.
 Tracks 2–4 cancelled (see findings F4–F7).
 
-### R45. Magnetic moments from cross-sheet coupling  **Framed**
+### R45. Magnetic moments from cross-sheet coupling  **On hold**
 **Study:** [`R45-magnetic-moments/`](R45-magnetic-moments/)
 **Questions:** Q53, Q34  **Type:** compute  **Depends on:** R19, R27, R28, R33, R44
 
-R44 ruled out single-sheet geometry for magnetic moments.  R45 proposes
-**geometric orbit tilting**: cross-shear σ_ep = −0.091 makes the 6D
-metric non-block-diagonal, so the proton mode's geodesic tilts into
-Ma_e directions.  Charge stays +e exactly (topological), but the orbit
-sweeps a larger area → amplified moment.  Charge is a 0th moment
-(radius-independent); magnetic moment is a 1st moment (scales with
-radius).  A 0.5% geodesic tilt × 380× radius amplification → g_p ≈ 5.6.
-The neutron (already a cross-mode spanning Ma_e × Ma_p) is the crucial
-test: its negative moment demands partial cancellation between sheets.
-**No free parameters** — σ_ep and r_p are pinned by other observables.
-6 tracks.  **HIGH VALUE.**
+### R46. Electron filter — aperture effects on a toroidal cavity  **Framing**
+**Study:** [`R46-electron-filter/`](R46-electron-filter/)
+**Questions:** Q100, Q53, Q94  **Type:** compute / grid simulation  **Depends on:** R44, R33, R40
+
+**Track 1 (geodesic tilting): DONE — negative result.**  The magnetic
+moment on a static flat torus is a topological invariant: L = ℏn
+depends on winding numbers, not on the metric.  Cross-shear changes
+velocity but not winding numbers → g = 4 independent of σ_ep.  The
+naive current-loop formula gives g ≈ 1092 (unphysical, dominated by
+L² amplification from the Ma_e sheet).  Tracks 2 and 4 are blocked
+by the same topological argument.
+
+**Track 3 (self-consistent dressed particles) remains the primary
+path forward.**  The dressed proton is a composite of the bare
+(0,0,0,0,1,2) mode plus cross-sheet excitations carrying DIFFERENT
+winding numbers.  The total angular momentum of the composite is not
+simply ℏn₆ — it includes contributions from excitations with their
+own winding numbers.  This is a different physics from geodesic tilting.
+6 tracks (1 done, 2 blocked, 3 viable).  **HIGH VALUE — Track 3.**
 
 ### R33. Ghost mode selection — why most Ma modes are dark  **Paused**
 **Study:** [`R33-ghost-selection/`](R33-ghost-selection/)
