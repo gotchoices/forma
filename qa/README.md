@@ -71,4 +71,6 @@ For questions that need a computational model, see [`studies/`](../studies/).
 | [Q98](Q98-quark-generations-vs-lepton-generations.md) | Are quark generations real or a labeling convention? | Resolved — structural |
 | [Q99](Q99-fourth-neutrino-mode.md) | The 4th neutrino mode — hidden partner or Z-width tension? | Open — testable |
 
+| [Q100](Q100-aperture-moment-enhancement.md) | Can a cavity aperture increase the magnetic moment? | Open — hypothesis (simulatable) |
+
 Unprocessed and brief questions live in [`INBOX.md`](INBOX.md).
