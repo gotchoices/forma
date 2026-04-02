@@ -21,8 +21,10 @@ energy and topology alone.
 
 **Open sub-problem:** the formula α(r,s) produces a one-parameter family of
 solutions — every r > ~2 has a self-consistent s.  Nothing currently selects r.
-The g−2 field fraction (R44) is the most promising route to pinning r_e
-and closing this study.
+R44 attempted to pin r_e via the anomalous magnetic moment but produced a
+negative result (charge-mass separation is order 1, not order α).  Pinning
+r_e remains open — candidate routes: Casimir/vacuum energy, tau mass
+constraint, or energy-partition g − 2.
 
 ### R30. Minimal material geometry — is a material sheet necessary?
 **Study:** [`R30-minimal-geometry/`](R30-minimal-geometry/)
@@ -34,20 +36,17 @@ suggest possible over-parameterization.  Can a circle reproduce particle
 properties?  Is the charge mechanism irreducibly 2D?  What about Klein bottle
 identification?  Hierarchical compactification?  Non-uniform circle?  5 tracks.
 
-### R44. Anomalous magnetic moment from torus geometry  **Framed**
+### R44. Anomalous magnetic moment from torus geometry  **Done — negative result**
 **Study:** [`R44-g-minus-2/`](R44-g-minus-2/)
 **Questions:** Q53, Q34  **Type:** compute  **Depends on:** R19, R8, R40
 
-Two concrete mechanisms for g ≠ 2: (1) **Charge-mass separation**
-— the R19 shear makes the charge density σ(θ₁,θ₂) non-uniform
-while energy density stays uniform; charge concentrated at larger
-radii boosts μ relative to L, giving g > 2.  (2) **Torus knot
-wobble** — the (1,2) geodesic embedded in 3D is a helix that
-samples ρ² non-linearly.  Both effects are computable from the
-existing R19 charge distribution — non-tautological because we
-use a distribution fitted to charge to predict a different
-observable (moment).  4 tracks: charge density, charge-weighted
-moment, embedding correction, r_e scan.  **HIGH VALUE.**
+Tested whether R19 charge-mass separation produces g − 2 ≈ α/(2π).
+Track 1 computed σ(θ₁,θ₂) and its magnetic moment on the embedded
+torus.  **Result:** The charge density is an oscillating cos()
+pattern, not a small perturbation.  The correction μ_actual/μ_uniform − 1
+is of order −1.6 to −2.4 (wrong sign, ~1400× too large).  Charge-mass
+separation from shear is ruled out as the g − 2 mechanism.
+Tracks 2–4 cancelled (see findings F4–F7).
 
 ### R33. Ghost mode selection — why most Ma modes are dark  **Paused**
 **Study:** [`R33-ghost-selection/`](R33-ghost-selection/)

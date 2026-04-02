@@ -1,6 +1,6 @@
 # R44: Anomalous magnetic moment from torus geometry
 
-**Status:** Framed
+**Status:** Done — negative result (charge-mass separation is order 1, not order α)
 **Questions:** Q53 (anomalous magnetic moment), Q34 (α derivation)
 **Type:** compute
 **Depends on:** R19 (shear-charge formula, charge density on torus),
@@ -150,65 +150,36 @@ $$
 
 ## Tracks
 
-### Track 1: Charge density on the sheared torus
+### Track 1: Charge density on the sheared torus ✓ DONE
 
-Compute σ(θ₁, θ₂) from R19's charge mechanism.  The shear s breaks
-the φ-symmetry of the (1,2) mode.  The E-field has a non-zero normal
-component at the torus surface that varies with position.
+Computed σ(θ₁, θ₂) from R19's charge mechanism.  Verified ∫σ dA = −e
+to < 1% across the α-curve.  Mapped charge concentration and computed
+the magnetic dipole moment from the actual vs uniform charge distribution.
 
-Verify: ∫ σ dA = e (total charge).
-Map σ(θ₁, θ₂) — where is charge concentrated?  Inner vs outer
-equator, poles vs equator.
+**Result:** The charge-mass separation gives μ_actual/μ_uniform − 1 ≈
+−1.6 to −2.4, an **order-1** effect with the **wrong sign**.  This is
+~1400× larger than the target α/(2π) ≈ 0.00116.  See findings F1–F5.
 
-**Output:** charge density map and its Fourier decomposition.
+The charge density is an oscillating cos() pattern, not a small
+perturbation on a uniform background.  The negative charge concentrates
+at the outer equator (large ρ), dominating the moment integral.
 
-### Track 2: Magnetic moment from charge-weighted current
+### Track 2: Magnetic moment — CANCELLED
 
-Embed the torus in 3D.  Compute the surface current K = σ v and
-the magnetic dipole moment μ_z = (1/2) ∫ (r × K)_z dA.
+Subsumed by Track 1, which already computed the charge-weighted moment.
+The order-1 magnitude and wrong sign make it impossible for the ratio
+μ/L to produce g ≈ 2.002 by this mechanism.
 
-Separately compute L_z from the energy-weighted current.
+### Track 3: Embedding curvature correction — CANCELLED
 
-Extract g(r) across the α-curve (r from 0.54 to ~10).
+This was designed as a perturbative correction to Track 2.  With the
+base mechanism giving order-1 corrections, a perturbative embedding
+correction is irrelevant.
 
-Three possible outcomes:
+### Track 4: Shear scan — CANCELLED
 
-| Outcome | Implication |
-|---------|-------------|
-| g − 2 ≈ α/π, r-dependent | Pins r_e.  The shear that gives charge also gives the anomalous moment. |
-| g − 2 ≈ α/π, r-independent | Valid derivation of Schwinger, but can't pin r_e.  Still major. |
-| g − 2 ≠ α/π | Charge-mass separation is not the mechanism.  Informative negative. |
-
-**Output:** g(r) plot across the α-curve.
-
-### Track 3: Embedding curvature correction
-
-Add the 3D embedding effects.  The embedded torus has non-uniform
-curvature (R40 F1–F4): the radial coordinate ρ = R + a cos θ₁
-varies around the tube.  The current at the outer equator
-(ρ = R + a) encloses more area than the current at the inner
-equator (ρ = R − a), and area enters μ as ρ².
-
-Recompute g(r) with the full embedded geometry.  Compare the
-embedding correction to QED's second-order coefficient:
-
-<!-- a_e^(2) = −0.3285 (α/π)² -->
-$$
-a_e^{(2)} = -0.328\,478\,965\ldots\;\left(\frac{\alpha}{\pi}\right)^2
-$$
-
-**Output:** Δg from embedding vs QED 2nd order.
-
-### Track 4: Shear scan — does g(r) pin r_e?
-
-If Track 2 or 3 shows r-dependence, scan the α-curve to find
-r* where g(r*) matches the experimental value.  Extract s(r*)
-and compute α(r*, s*) from R19.
-
-If r* exists and α comes out right, MaSt derives both g−2 and α
-from geometry with zero free parameters.
-
-**Output:** r* (if it exists), predicted α.
+The correction monotonically decreases from −2.4 (r = 1) toward −1.6
+(r → ∞), never passing through +0.001.  No r* exists.
 
 ---
 
@@ -245,24 +216,27 @@ This flat-vs-embedded mismatch is a source of g ≠ 2.
 
 ---
 
-## What success looks like
+## Outcome
 
-| Outcome | Value |
-|---------|-------|
-| g − 2 ≈ α/π from charge-mass separation | First non-QED derivation of the Schwinger result |
-| r-dependence that pins r_e | Eliminates MaSt's last free electron-sector parameter |
-| Embedding correction matches (α/π)² | Connects torus curvature to QED's 2nd-order term |
+**Informative negative** — the charge-mass separation mechanism is
+ruled out for the anomalous magnetic moment.  See findings F4–F7.
 
-## What failure looks like
+The computation was well-defined and non-tautological.  The R19
+charge distribution was derived from one observable (total charge = e)
+and tested against a different observable (magnetic moment).  It does
+not match — the effect is order 1, not order α.
 
-| Outcome | What it means |
-|---------|--------------|
-| g = 2 exactly (no correction from shear) | Charge distribution too symmetric to shift the moment |
-| g − 2 has wrong sign or wrong order of magnitude | Charge-mass separation is not the mechanism for the anomalous moment |
-| g − 2 correct but r-independent | Still a valid result; r_e must be pinned by another observable |
+**Open directions for g − 2 in MaSt** (not pursued here):
 
-Either way, the computation is well-defined, non-tautological, and
-the result is informative.
+1. **Energy-partition mechanism:** The external Coulomb field carries
+   a fraction α of the total energy.  Its angular momentum has a
+   different gyromagnetic ratio from the confined mode.  This requires
+   computing the angular momentum of the 1/r² field — a 3D volume
+   integral, not a surface integral.
+
+2. **MaSt radiative corrections:** The analog of virtual photon loops
+   in QED, computed perturbatively on the torus background.  This would
+   require developing MaSt's perturbation theory.
 
 ---
 
@@ -272,7 +246,7 @@ the result is informative.
 |------|-------------|
 | `README.md` | This file — study design |
 | `scripts/track1_charge_density.py` | Charge density σ(θ₁,θ₂) from R19 shear mechanism |
-| `scripts/track2_magnetic_moment.py` | Charge-weighted vs mass-weighted moment; g(r) |
-| `scripts/track3_embedding.py` | 3D curvature correction to g |
-| `scripts/track4_pin_r.py` | Scan α-curve for r* matching experimental g−2 |
+| `scripts/track2_magnetic_moment.py` | (cancelled — subsumed by Track 1) |
+| `scripts/track3_embedding.py` | (cancelled — base mechanism wrong order) |
+| `scripts/track4_pin_r.py` | (cancelled — no r* exists) |
 | `findings.md` | Results and interpretation |
