@@ -75,10 +75,46 @@ def geometry_kk(r, s):
 
 
 # ── Vector field: circular polarization on torus ─────────────────
+#
+# Physical picture (unipolar model):
+#
+#   The confined photon's E field always pushes outward from the
+#   2D sheet into 3D.  The radiation pressure at each point is
+#   proportional to E₀(1 + cos(q_eff θ₂)) — always ≥ 0.
+#
+#   The DC component (the "1") is the equilibrium pressure that
+#   maintains the cavity against the membrane's confining force
+#   (R37 force balance).  It does not produce external field.
+#
+#   The AC component (cos(q_eff θ₂)) is the standing-wave
+#   modulation: where cos > 0 the pressure exceeds the mean and
+#   more field leaks through the Compton window; where cos < 0
+#   the pressure is below the mean and less leaks.  Only this
+#   modulation produces external charge.
+#
+#   The opposite knot chirality (positron) has the modulation
+#   reversed in sign, giving charge +e.
 
-def e_normal(T2, q_eff):
-    """Normal component of E for a CP mode with n₁=1.
-    E_n = E₀ cos(q_eff θ₂).  Returns E_n/E₀ (dimensionless)."""
+def e_normal_unipolar(T2, q_eff):
+    """Outward radiation pressure on the sheet, always ≥ 0.
+
+    P_out ∝ E₀(1 + cos(q_eff θ₂))
+
+    Returns dimensionless (1 + cos(q θ₂)), range [0, 2].
+    This is the physical field — no energy passes backward
+    through the sheet.
+    """
+    return 1.0 + np.cos(q_eff * T2)
+
+
+def e_normal_ac(T2, q_eff):
+    """Charge-producing modulation of E_normal.
+
+    The deviation from mean radiation pressure: cos(q_eff θ₂).
+    This is what leaks through the Compton window as external
+    field and integrates to give charge Q = −e.
+    Returns dimensionless cos(q θ₂), range [−1, +1].
+    """
     return np.cos(q_eff * T2)
 
 

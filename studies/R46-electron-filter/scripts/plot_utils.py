@@ -16,13 +16,14 @@ from matplotlib.colors import TwoSlopeNorm
 
 # ── Default style ────────────────────────────────────────────────
 
-FIGSIZE_WIDE = (10, 8)
+FIGSIZE_WIDE = (10, 11)
 FIGSIZE_PAIR = (14, 5)
 FIGSIZE_SINGLE = (10, 5)
 DPI = 150
 SVG_KW = dict(format='svg', dpi=DPI, bbox_inches='tight')
 
 CMAP_DIVERGE = 'RdBu_r'
+CMAP_UNIPOLAR = 'inferno'
 GEODESIC_COLOR = '#222222'
 GEODESIC_LW = 1.2
 GEODESIC_ALPHA = 0.7
@@ -103,10 +104,10 @@ def draw_geodesic(ax, n1, n2, color=None, lw=None,
 # ── Heatmap with geodesic panel ──────────────────────────────────
 
 def plot_field_with_geodesic(field_2d, title, out_dir, filename,
-                             n1, n2, s, r,
+                             n1, n2, s, r, q_eff,
                              field_label=r'$E_n$ (V/m)',
                              cmap=None, extra_geodesics=None):
-    """Two-panel figure: field heatmap (top) + geodesic map (bottom).
+    """Three-panel figure: heatmap + geodesic + resonant waveform.
 
     Parameters
     ----------
@@ -116,40 +117,54 @@ def plot_field_with_geodesic(field_2d, title, out_dir, filename,
     n1, n2 : winding numbers for the primary geodesic
     s : shear
     r : aspect ratio (a/R), used for annotations
+    q_eff : effective ring winding number (n₂ − s), used for
+            the resonant waveform panel
     field_label : colorbar label
     cmap : colormap (default: RdBu_r diverging)
-    extra_geodesics : list of dicts with keys 'n1','n2','s','color',
+    extra_geodesics : list of dicts with keys 'n1','n2','color',
                       'label','ls' for additional geodesics to draw
     """
     if cmap is None:
         cmap = CMAP_DIVERGE
 
-    fig, (ax_field, ax_geo) = plt.subplots(
-        2, 1, figsize=FIGSIZE_WIDE, height_ratios=[1, 1],
-        sharex=True)
+    fig = plt.figure(figsize=FIGSIZE_WIDE)
+    gs = fig.add_gridspec(3, 2, height_ratios=[3, 3, 2],
+                          width_ratios=[1, 0.04], hspace=0.30,
+                          wspace=0.03)
+
+    ax_field = fig.add_subplot(gs[0, 0])
+    ax_cb    = fig.add_subplot(gs[0, 1])
+    ax_geo   = fig.add_subplot(gs[1, 0], sharex=ax_field)
+    ax_wave  = fig.add_subplot(gs[2, 0], sharex=ax_field)
 
     # ── Top panel: field heatmap ──
-    vmax = np.max(np.abs(field_2d))
-    if vmax == 0:
-        vmax = 1.0
-    norm = TwoSlopeNorm(vmin=-vmax, vcenter=0, vmax=vmax)
+    fmin, fmax = np.min(field_2d), np.max(field_2d)
+    unipolar = fmin >= -1e-12 * max(abs(fmax), 1.0)
+    if unipolar:
+        if cmap == CMAP_DIVERGE:
+            cmap = CMAP_UNIPOLAR
+        norm = None
+        vmin_kw = dict(vmin=0, vmax=fmax if fmax > 0 else 1.0)
+    else:
+        vmax = max(abs(fmin), abs(fmax), 1e-30)
+        norm = TwoSlopeNorm(vmin=-vmax, vcenter=0, vmax=vmax)
+        vmin_kw = {}
 
     im = ax_field.imshow(field_2d, origin='lower', aspect='auto',
                          extent=[0, 360, 0, 360], cmap=cmap,
                          norm=norm, interpolation='bilinear',
-                         rasterized=True)
-    fig.colorbar(im, ax=ax_field, label=field_label, shrink=0.9)
+                         rasterized=True, **vmin_kw)
+    fig.colorbar(im, cax=ax_cb, label=field_label)
 
     ax_field.set_ylabel(r'$\theta_1$ (tube, deg)')
     ax_field.set_title(title)
 
-    # ── Bottom panel: geodesic map ──
+    # ── Middle panel: geodesic map ──
     ax_geo.set_xlim(0, 360)
     ax_geo.set_ylim(0, 360)
     ax_geo.set_aspect('auto')
     ax_geo.set_facecolor('#f5f5f0')
 
-    ax_geo.set_xlabel(r'$\theta_2$ (ring, deg)')
     ax_geo.set_ylabel(r'$\theta_1$ (tube, deg)')
 
     draw_geodesic(ax_geo, n1, n2,
@@ -170,7 +185,33 @@ def plot_field_with_geodesic(field_2d, title, out_dir, filename,
                   framealpha=0.8, edgecolor='gray')
     ax_geo.set_title(f'Geodesics on unrolled sheet (r = {r}, s = {s:.4f})')
 
-    fig.tight_layout()
+    # ── Bottom panel: resonant waveform ──
+    t2_deg = np.linspace(0, 360, 1000)
+    t2_rad = np.radians(t2_deg)
+    wave_uni = 1.0 + np.cos(q_eff * t2_rad)
+
+    ax_wave.fill_between(t2_deg, 0, wave_uni,
+                         color='#e8d0a0', alpha=0.5, label='DC (cavity pressure)')
+    ax_wave.fill_between(t2_deg, 1.0, wave_uni,
+                         where=wave_uni >= 1.0,
+                         color='#2060c0', alpha=0.4, label='AC leakage (+)')
+    ax_wave.fill_between(t2_deg, wave_uni, 1.0,
+                         where=wave_uni < 1.0,
+                         color='#c04020', alpha=0.4, label='AC deficit (−)')
+    ax_wave.plot(t2_deg, wave_uni, color='#222222', lw=1.5)
+    ax_wave.axhline(1.0, color='gray', lw=0.8, ls='--')
+    ax_wave.axhline(0.0, color='gray', lw=0.4)
+
+    ax_wave.set_xlim(0, 360)
+    ax_wave.set_ylim(-0.15, 2.25)
+    ax_wave.set_xlabel(r'$\theta_2$ (ring, deg)')
+    ax_wave.set_ylabel(r'$1 + \cos(q_{\rm eff}\,\theta_2)$')
+    ax_wave.set_title(
+        f'Resonant mode  (q_eff = {q_eff:.4f},  '
+        f'{q_eff:.4f} cycles / ring revolution)')
+    ax_wave.legend(loc='upper right', fontsize=7,
+                   framealpha=0.8, edgecolor='gray')
+
     return save_svg(fig, out_dir, filename)
 
 

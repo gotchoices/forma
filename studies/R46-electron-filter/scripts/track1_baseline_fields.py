@@ -4,23 +4,31 @@ R46 Track 1: Baseline EM fields on an unslotted torus.
 Vector model with circular polarization.
 
 For a circularly polarized (n₁=1) mode on the torus, the E-field
-rotation matches the surface-normal rotation.  The result:
+rotation matches the surface-normal rotation.  The field always
+pushes outward from the 2D sheet — it cannot pass backward
+through the sheet to the other side.
 
-    E_n(θ₁, θ₂) = E₀ cos(q_eff θ₂)      (normal to surface)
-    E_t(θ₁, θ₂) = E₀ sin(q_eff θ₂)      (tangent, ⊥ geodesic)
-    B_t(θ₁, θ₂) = (E₀/c) sin(q_eff θ₂)  (tangent, along geodesic)
+The radiation pressure at each point is unipolar:
+
+    P_out ∝ E₀ (1 + cos(q_eff θ₂))     (always ≥ 0)
+
+The DC component maintains the cavity (R37 force balance).
+The AC modulation leaks through the Compton window as external
+field and produces charge:
+
+    E_coupled ∝ E₀ cos(q_eff θ₂)        (charge-producing part)
+    E_t(θ₁, θ₂) = E₀ sin(q_eff θ₂)     (tangent, ⊥ geodesic)
+    B_t(θ₁, θ₂) = (E₀/c) sin(q_eff θ₂) (tangent, along geodesic)
 
 No θ₁ dependence — the tube angle cancels exactly for n₁=1.
-This is the WvM mechanism expressed as a field on the full surface.
 
 The CP model gives a different α formula than R19's scalar model.
 This track derives the new formula, solves for shear, and compares.
 
 Outputs (in ../outputs/):
   track1_data.npz               field arrays for Track 2
-  track1_En_map_electron.svg    E_normal on unrolled sheet
-  track1_En_map_ghost.svg       E_normal for (1,1) ghost
-  track1_charge_profile.svg     charge density vs θ₂
+  track1_En_map_electron.svg    heatmap + geodesic + waveform
+  track1_En_map_ghost.svg       same for (1,1) ghost mode
   track1_alpha_comparison.svg   CP vs scalar α formulas
 
 Conventions:
@@ -36,15 +44,13 @@ import numpy as np
 sys.path.insert(0, os.path.dirname(__file__))
 from torus_model import (
     make_grid, rho_factor, geometry_kk,
-    e_normal, e_tangential,
+    e_normal_unipolar, e_normal_ac, e_tangential,
     field_amplitude_cp, charge_integral_analytic, charge_numerical,
     alpha_cp_kk, alpha_scalar_kk, solve_shear,
     ghost_mass_ratio_kk,
     EPS0, E_CHARGE, ALPHA, M_E, C, LAMBDABAR_C,
 )
-from plot_utils import (
-    plot_field_with_geodesic, plot_dual_profiles, plot_dual_lines,
-)
+from plot_utils import plot_field_with_geodesic, plot_dual_lines
 
 OUT_DIR = os.path.join(os.path.dirname(__file__), '..', 'outputs')
 os.makedirs(OUT_DIR, exist_ok=True)
@@ -129,11 +135,12 @@ def main():
     print()
 
     # ── Section 3: E_n charge distribution ───────────────────────
-    print("SECTION 3: Charge distribution (E_normal vs θ₂)")
+    print("SECTION 3: Charge distribution (unipolar E_normal vs θ₂)")
     print()
-    print("  E_n = E₀ cos(q_eff θ₂)  — NO θ₁ dependence")
-    print("  Charge density σ = ε₀ E_n = ε₀ E₀ cos(q_eff θ₂)")
-    print("  Uniform around tube cross-section at each ring position")
+    print("  Radiation pressure: P ∝ E₀(1 + cos(q_eff θ₂))  always ≥ 0")
+    print("  DC part maintains cavity (R37 force balance)")
+    print("  AC part leaks out → charge density σ = ε₀ E₀ cos(q_eff θ₂)")
+    print("  No θ₁ dependence; uniform around tube cross-section")
     print()
 
     for r, data in electron_data.items():
@@ -204,7 +211,7 @@ def main():
         s = electron_data[r]['s']
         q = electron_data[r]['q_eff']
 
-        En = np.cos(q * theta2)
+        En = e_normal_ac(theta2, q)
         Bt = np.sin(q * theta2)
 
         En_sq_avg = np.mean(En**2)
@@ -245,14 +252,16 @@ def main():
     r_plot = 2.0
     if r_plot in electron_data:
         edata = electron_data[r_plot]
-        En_2d = edata['E0'] * np.cos(edata['q_eff'] * T2)
+        En_uni = edata['E0'] * e_normal_unipolar(T2, edata['q_eff'])
         plot_field_with_geodesic(
-            En_2d,
-            title=(f'Electron (1,2) — E_normal (r={r_plot}, '
-                   f's={edata["s"]:.4f})\n'
-                   f'Horizontal bands: E_n depends only on θ₂, not θ₁'),
+            En_uni,
+            title=(f'Electron (1,2) — outward radiation pressure '
+                   f'(r={r_plot}, s={edata["s"]:.4f})\n'
+                   f'Unipolar: E₀(1+cos(q_eff θ₂)) ≥ 0 everywhere'),
             out_dir=OUT_DIR, filename='track1_En_map_electron.svg',
             n1=1, n2=2, s=edata['s'], r=r_plot,
+            q_eff=edata['q_eff'],
+            field_label=r'$E_0\,(1 + \cos\,q_{\rm eff}\,\theta_2)$ (V/m)',
             extra_geodesics=[
                 dict(n1=1, n2=1,
                      color='#c04020', label='Ghost (1,1)', ls='-.'),
@@ -260,29 +269,18 @@ def main():
 
     if r_plot in ghost_data:
         gdata = ghost_data[r_plot]
-        gEn = gdata['E0'] * np.cos(gdata['q_eff'] * T2)
+        gEn_uni = gdata['E0'] * e_normal_unipolar(T2, gdata['q_eff'])
         plot_field_with_geodesic(
-            gEn,
-            title=(f'Ghost (1,1) — E_normal (r={r_plot}, '
-                   f'q_eff={gdata["q_eff"]:.4f})\n'
+            gEn_uni,
+            title=(f'Ghost (1,1) — outward radiation pressure '
+                   f'(r={r_plot}, q_eff={gdata["q_eff"]:.4f})\n'
                    f'~1 oscillation/revolution vs ~2 for electron'),
             out_dir=OUT_DIR, filename='track1_En_map_ghost.svg',
             n1=1, n2=1,
             s=electron_data[r_plot]['s'] if r_plot in electron_data else 0,
-            r=r_plot)
-
-    # charge profiles
-    e_profiles = {f'r={r:.0f}': np.cos(electron_data[r]['q_eff'] * theta2)
-                  for r in sorted(electron_data)}
-    g_profiles = {f'r={r:.0f}': np.cos(ghost_data[r]['q_eff'] * theta2)
-                  for r in sorted(ghost_data)}
-    plot_dual_profiles(
-        np.degrees(theta2), e_profiles, g_profiles,
-        title_left='Electron (1,2)', title_right='Ghost (1,1)',
-        suptitle='Charge density profiles (proportional to cos(q_eff θ₂))',
-        xlabel=r'$\theta_2$ (ring, degrees)',
-        ylabel=r'$E_n / E_0$',
-        out_dir=OUT_DIR, filename='track1_charge_profile.svg')
+            r=r_plot,
+            q_eff=gdata['q_eff'],
+            field_label=r'$E_0\,(1 + \cos\,q_{\rm eff}\,\theta_2)$ (V/m)')
 
     # alpha / shear comparison
     rs = sorted(shear_data.keys())
@@ -313,7 +311,7 @@ def main():
     save_dict = {
         'theta1': theta1, 'theta2': theta2,
         'r_values': np.array(r_values),
-        'convention': 'KK', 'field_model': 'CP_vector',
+        'convention': 'KK', 'field_model': 'CP_vector_unipolar',
     }
 
     for r in r_values:
@@ -326,7 +324,8 @@ def main():
             save_dict[f'{pfx}_R'] = e['R']
             save_dict[f'{pfx}_a'] = e['a']
             save_dict[f'{pfx}_E0'] = e['E0']
-            save_dict[f'{pfx}_En'] = e['E0'] * np.cos(e['q_eff'] * T2)
+            save_dict[f'{pfx}_En_uni'] = e['E0'] * e_normal_unipolar(T2, e['q_eff'])
+            save_dict[f'{pfx}_En_ac'] = e['E0'] * e_normal_ac(T2, e['q_eff'])
             save_dict[f'{pfx}_Et'] = e['E0'] * np.sin(e['q_eff'] * T2)
 
         if r in ghost_data:
@@ -335,7 +334,8 @@ def main():
             save_dict[f'{pfx}_q_eff'] = g['q_eff']
             save_dict[f'{pfx}_Q'] = g['Q']
             save_dict[f'{pfx}_m_ratio'] = g['m_ratio']
-            save_dict[f'{pfx}_En'] = g['E0'] * np.cos(g['q_eff'] * T2)
+            save_dict[f'{pfx}_En_uni'] = g['E0'] * e_normal_unipolar(T2, g['q_eff'])
+            save_dict[f'{pfx}_En_ac'] = g['E0'] * e_normal_ac(T2, g['q_eff'])
 
     npz_path = os.path.join(OUT_DIR, 'track1_data.npz')
     np.savez_compressed(npz_path, **save_dict)
