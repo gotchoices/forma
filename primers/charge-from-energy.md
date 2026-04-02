@@ -55,12 +55,20 @@ torus surface — outward everywhere, at all times.**
 Verified directly: for left-circular polarization with phase
 synchronized to the geometric angle θ,
 
-    E = E₀[cos θ · n̂(θ) − sin θ · ê_θ(θ)]
+<!-- E = E₀[cos θ · n̂(θ) − sin θ · ê_θ(θ)] -->
+$$
+\mathbf{E} = E_0\bigl[\cos\theta\,\hat{n}(\theta) - \sin\theta\,\hat{e}_\theta(\theta)\bigr]
+$$
 
 Expanding n̂ and ê_θ in 3D cylindrical coordinates:
 
-    E · ρ̂ = E₀(cos²θ + sin²θ) = E₀     (constant, always outward)
-    E · ẑ = 0                             (no vertical component)
+<!-- E · ρ̂ = E₀(cos²θ + sin²θ) = E₀ (constant, always outward); E · ẑ = 0 -->
+$$
+\begin{aligned}
+\mathbf{E} \cdot \hat{\rho} &= E_0(\cos^2\theta + \sin^2\theta) = E_0 && \text{(constant, always outward)} \\
+\mathbf{E} \cdot \hat{z}    &= 0 && \text{(no vertical component)}
+\end{aligned}
+$$
 
 This is WvM's key insight: circular polarization on a closed
 winding path produces a field that never flips.  A photon in
@@ -171,7 +179,10 @@ current loop.
 
 The total E field energy is fixed:
 
-    U_E = hc / (2λ_C) = m_e c² / 2
+<!-- U_E = hc / (2λ_C) = mₑc²/2 -->
+$$
+U_E = \frac{hc}{2\lambda_C} = \frac{m_e c^2}{2}
+$$
 
 This is half the photon's energy, and it doesn't depend on the
 geometry at all.  So why does the charge depend on the torus
@@ -193,10 +204,15 @@ On the flat rectangle (area A = L_φ × L_θ), the E field energy
 fills the rectangle area and extends some distance δ perpendicular
 to it (into 3+1D):
 
-    Energy density:  u = U_E / (A × δ)
-    Field strength:  E = √(2u / ε₀)
-    Total flux:      Φ = E × A
-    Charge:          q = ε₀ Φ = √(2 ε₀ U_E A / δ)
+<!-- u = U_E/(A·δ),  E = √(2u/ε₀),  Φ = E·A,  q = ε₀Φ = √(2ε₀ U_E A/δ) -->
+$$
+\begin{aligned}
+u   &= \frac{U_E}{A \cdot \delta} \\[6pt]
+E   &= \sqrt{\frac{2u}{\varepsilon_0}} \\[6pt]
+\Phi &= E \cdot A \\[6pt]
+q   &= \varepsilon_0\,\Phi = \sqrt{\frac{2\varepsilon_0\,U_E\,A}{\delta}}
+\end{aligned}
+$$
 
 The charge goes as **√A** — the square root of the rectangle
 area.  Same energy, bigger rectangle → weaker field but more
@@ -205,7 +221,10 @@ surface → more total flux → more charge.
 This is why the aspect ratio matters.  The path-length constraint
 fixes a relationship between L_φ and L_θ:
 
-    √(4 L_φ² + L_θ²) = λ_C
+<!-- √(4 L_φ² + L_θ²) = λ_C -->
+$$
+\sqrt{4L_\phi^2 + L_\theta^2} = \lambda_C
+$$
 
 Different aspect ratios give different rectangle areas, different
 flux, and different charge — even though the total energy is
@@ -232,7 +251,10 @@ equations:
 
 **1. Path constraint (determines mass):**
 
-    √(4 L_φ² + L_θ²) = λ_C = h/(m_e c)
+<!-- √(4 L_φ² + L_θ²) = λ_C = h/(mₑc) -->
+$$
+\sqrt{4L_\phi^2 + L_\theta^2} = \lambda_C = \frac{h}{m_e c}
+$$
 
 The photon must resonate — its path length equals one Compton
 wavelength.  This ensures the confined photon has the electron's
@@ -273,7 +295,10 @@ from a compact region.
 Capacitance relates charge to energy: U_E = q²/(2C).  Since both
 U_E and q are known, the required capacitance is determined:
 
-    C = e² / (m_e c²) ≈ 3.13 × 10⁻²⁵ F
+<!-- C = e²/(mₑc²) ≈ 3.13 × 10⁻²⁵ F -->
+$$
+C = \frac{e^2}{m_e c^2} \approx 3.13 \times 10^{-25}\,\text{F}
+$$
 
 Self-capacitance is defined as the capacitance between an object
 and a grounded shell at infinite distance.  In our picture, the
@@ -317,7 +342,10 @@ q = e exactly).
 
 The rigorous alternative is Gauss's law:
 
-    q = ε₀ ∮ E · dA
+<!-- q = ε₀ ∮ E · dA -->
+$$
+q = \varepsilon_0 \oint \mathbf{E} \cdot d\mathbf{A}
+$$
 
 over any closed surface.  No arbitrary volume, no matching
 radius.
@@ -397,7 +425,10 @@ Shear breaks this symmetry.  The field pattern's nodes shift
 asymmetrically, and the outward flux no longer cancels the
 inward flux.  The Gauss's law integral becomes:
 
-    Q(s) ∝ sin(2πs) / (2 − s)
+<!-- Q(s) ∝ sin(2πs) / (2−s) -->
+$$
+Q(s) \propto \frac{\sin(2\pi s)}{2 - s}
+$$
 
 At s = 0: sin(0) = 0, so Q = 0.  Any nonzero shear gives
 nonzero charge.  The sin(2πs) factor is the symmetry-breaking
@@ -407,7 +438,10 @@ as the lattice tilts.
 The full formula for the fine structure constant α (which
 sets the ratio of charge to energy) is:
 
-    α = r² √(1/r² + (2−s)²) × sin²(2πs) / (4π(2−s)²)
+<!-- α = r² √(1/r² + (2−s)²) × sin²(2πs) / (4π(2−s)²) -->
+$$
+\alpha = r^2 \sqrt{\frac{1}{r^2} + (2-s)^2} \cdot \frac{\sin^2(2\pi s)}{4\pi(2-s)^2}
+$$
 
 where r is the aspect ratio of the material sheet.  This is
 one equation in two unknowns (r and s).  For any aspect ratio
@@ -483,7 +517,10 @@ valid standing waves on the same surface.
 Each mode's energy (and therefore its mass, via E = mc²)
 comes from the eigenvalue of the wave equation on the sheet:
 
-    m²c⁴ = (2πℏc)² [(n₁/L₁)² + (n₂/L₂)²]
+<!-- m²c⁴ = (2πℏc)² [(n₁/L₁)² + (n₂/L₂)²] -->
+$$
+m^2 c^4 = (2\pi\hbar c)^2 \left[\left(\frac{n_1}{L_1}\right)^2 + \left(\frac{n_2}{L_2}\right)^2\right]
+$$
 
 where L₁ and L₂ are the circumferences of the two dimensions.
 (This is simplified — the full formula includes a shear
