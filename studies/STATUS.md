@@ -48,6 +48,22 @@ is of order −1.6 to −2.4 (wrong sign, ~1400× too large).  Charge-mass
 separation from shear is ruled out as the g − 2 mechanism.
 Tracks 2–4 cancelled (see findings F4–F7).
 
+### R45. Magnetic moments from cross-sheet coupling  **Framed**
+**Study:** [`R45-magnetic-moments/`](R45-magnetic-moments/)
+**Questions:** Q53, Q34  **Type:** compute  **Depends on:** R19, R27, R28, R33, R44
+
+R44 ruled out single-sheet geometry for magnetic moments.  R45 proposes
+**geometric orbit tilting**: cross-shear σ_ep = −0.091 makes the 6D
+metric non-block-diagonal, so the proton mode's geodesic tilts into
+Ma_e directions.  Charge stays +e exactly (topological), but the orbit
+sweeps a larger area → amplified moment.  Charge is a 0th moment
+(radius-independent); magnetic moment is a 1st moment (scales with
+radius).  A 0.5% geodesic tilt × 380× radius amplification → g_p ≈ 5.6.
+The neutron (already a cross-mode spanning Ma_e × Ma_p) is the crucial
+test: its negative moment demands partial cancellation between sheets.
+**No free parameters** — σ_ep and r_p are pinned by other observables.
+6 tracks.  **HIGH VALUE.**
+
 ### R33. Ghost mode selection — why most Ma modes are dark  **Paused**
 **Study:** [`R33-ghost-selection/`](R33-ghost-selection/)
 **Questions:** Q77, Q34  **Type:** compute + theoretical  **Depends on:** R19, R27, R28, R31, R32

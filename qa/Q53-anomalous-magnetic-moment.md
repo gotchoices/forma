@@ -1,8 +1,9 @@
 # Q53. Does the model predict the anomalous magnetic moment (g − 2)?
 
-**Status:** open — R44 ruled out charge-mass separation; mechanism still unknown
+**Status:** open — R44 ruled out single-sheet; R45 framed (cross-sheet coupling)
 **Source:** user question
-**Connects to:** R8 Track 3, Q34 (α derivation), Q52 (aspect ratio), **R44** (g−2 study)
+**Connects to:** R8 Track 3, Q34 (α derivation), Q52 (aspect ratio),
+**R44** (g−2 study, negative), **R45** (cross-sheet magnetic moments)
 
 ---
 
@@ -40,20 +41,32 @@ match to Schwinger's known result.
    With the base effect at order 1, a perturbative correction
    to it is irrelevant to g − 2.  R44 Tracks 3–4 cancelled.
 
-4. **Energy-partition mechanism (untested):**
+4. **Cross-sheet sympathetic ringing (R45, framed):**
+   The most promising mechanism.  Cross-shear σ_ep = −0.091
+   mixes the proton with cross-modes on Ma_e.  A ~3%
+   amplitude admixture orbiting at the electron-sheet radius
+   (1836× larger) produces μ_p ≈ 2.8 μ_N (g_p ≈ 5.6).
+   The neutron (already a cross-mode) provides a direct test.
+   For the electron, a much weaker coupling σ_eν to the
+   neutrino sheet could produce α/(2π).  **→ R45 Tracks 1–4.**
+
+5. **Dark modes on Ma_p (R45 Track 3):**
+   Uncharged (n₅ = 0) modes on the proton sheet could create
+   3-lobed field patterns (explaining DIS scattering centers)
+   and distort the proton's magnetic moment.  Challenge:
+   dark ring modes are ~466 MeV each (heavy).
+
+6. **Three-sub-mode proton (R45 Track 5):**
+   Neutrino analog — the proton could be a superposition of
+   three modes on a rescaled Ma_p.  Radical departure from
+   current model; would require re-deriving hadron spectrum.
+
+7. **Energy-partition mechanism (untested):**
    The external Coulomb field carries a fraction α of the
    total energy.  Its angular momentum has a different
-   gyromagnetic ratio from the confined mode.  This is
-   closer to WvM's "field fraction" idea but requires
-   computing the angular momentum of the 1/r² field — a
-   3D volume integral, not the surface integral used in R44.
+   gyromagnetic ratio from the confined mode.
 
-5. **MaSt radiative corrections (untested):**
-   The analog of virtual photon loops in QED, computed
-   perturbatively on the torus background.  Would require
-   developing MaSt's perturbation theory.
-
-6. **Higher-order terms:** QED computes g − 2 to ≈ 12 decimal
+8. **Higher-order terms:** QED computes g − 2 to ≈ 12 decimal
    places.  Any viable MaSt mechanism must produce the
    correct leading coefficient α/(2π) before higher-order
    matching is meaningful.
