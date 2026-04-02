@@ -1,6 +1,6 @@
 # R45: Magnetic moments from cross-sheet coupling
 
-**Status:** Framed
+**Status:** On hold — see Q100 (aperture-based moment enhancement)
 **Questions:** Q53 (anomalous magnetic moment), Q34 (α derivation)
 **Type:** compute
 **Depends on:** R19 (charge from shear), R27 (cross-shear σ_ep, proton sheet
@@ -31,198 +31,56 @@ mechanism can explain all three.
 
 ---
 
-## The mechanism: geometric orbit tilting
+## The geodesic tilting hypothesis — REFUTED (Track 1)
 
-### Cross-shear tilts the geodesic into other sheets
+The original hypothesis was that cross-shear σ_ep tilts the
+proton's geodesic onto Ma_e, causing the charge to sweep a larger
+area and amplifying the moment.  This treated the proton as a
+classical charged particle orbiting on the torus.
 
-The cross-shear σ_ep = −0.091 (R27 F18) makes the 6D metric
-non-block-diagonal.  On a block-diagonal metric, the proton mode
-(0,0,0,0,1,2) travels purely in the Ma_p directions (θ₅, θ₆).
-With σ_ep ≠ 0, the geodesic tilts — the photon's velocity acquires
-components in the Ma_e directions (θ₁, θ₂).
+**Track 1 showed this is the wrong picture.**  The proton is a
+standing wave ψ = exp(i(n₅θ₅ + n₆θ₆)) with uniform charge
+density |ψ|² everywhere on the torus.  Nothing orbits.  There is
+no velocity to redistribute between sheets.
 
-The geodesic tangent vector is determined by the inverse metric:
+The magnetic moment of a wave mode comes from its angular momentum:
 
-<!-- v_i ∝ G̃⁻¹_ij n_j -->
+<!-- ⟨L₆⟩ = ℏn₆ -->
 $$
-v_i \propto \tilde{G}^{-1}_{ij}\, n_j
-$$
-
-When G̃⁻¹ has off-diagonal blocks (from σ_ep), the velocity v has
-Ma_e components even for a purely Ma_p mode vector n = (0,0,0,0,1,2).
-The photon physically moves in Ma_e space.
-
-### Charge is topological — moment is geometric
-
-This is the crucial asymmetry that makes the mechanism work:
-
-- **Charge** is set by the winding number n₅ = 1.  It is a
-  topological invariant — you cannot partially wind around the
-  tube.  The proton has charge +e exactly, regardless of σ_ep.
-
-- **Magnetic moment** depends on WHERE that charge orbits in
-  physical 3D space.  If the geodesic tilts onto Ma_e, the
-  charge sweeps through a larger effective area (Ma_e radius
-  is ~400× Ma_p radius).
-
-| Quantity | Depends on | Changes with σ_ep? |
-|----------|-----------|-------------------|
-| Charge Q | Winding number n₅ (topological) | **No** — integer, exact |
-| Energy E | Metric eigenvalue n̄ᵀ G̃⁻¹ n̄ | Yes — continuous |
-| Moment μ | Current × orbit area (geometric) | **Yes** — amplified by R_e/R_p |
-
-A small geometric tilt produces a large moment correction with
-zero charge change.
-
-### The scaling argument
-
-For a charge e orbiting at radius R:
-
-| Quantity | Formula | R-dependence |
-|----------|---------|-------------|
-| Charge   | Q = e   | none |
-| Moment   | μ = e v R / 2 | **linear in R** |
-
-The moment-to-charge ratio scales as R.  The relevant radii:
-
-| Sheet | Orbit radius R | Ratio to R_p |
-|-------|---------------|-------------|
-| Ma_p  | L₆/(2π) ≈ 0.42 fm | 1 |
-| Ma_e (r_e ≈ 1) | L₂/(2π) ≈ 160 fm | **~380** |
-| Ma_ν  | L₄/(2π) ≈ 6.7 μm | **~1.6 × 10⁷** |
-
-If the cross-shear tilts a fraction f of the proton's geodesic
-velocity onto Ma_e, the moment gains:
-
-<!-- Δμ/μ_naked ≈ f × R_e/R_p ≈ f × 380 -->
-$$
-\frac{\Delta\mu}{\mu_\text{naked}} \approx f \times
-\frac{R_e}{R_p} \approx f \times 380
+\langle\hat{L}_6\rangle = \hbar\, n_6
 $$
 
-For g_p ≈ 5.6 (Δμ/μ_naked ≈ 1.8): need **f ≈ 0.5%**.  A
-half-percent tilt of the geodesic.  With σ_ep = −0.091 (~9%
-metric coupling), this is geometrically plausible.
-
-### Self-consistent α
-
-The R19 charge formula was derived for a single sheet (σ_ep = 0).
-With σ_ep ≠ 0, the metric changes and the charge integral gets
-a small correction:
-
-<!-- α(r, s, σ_ep) = α(r, s, 0) + O(σ_ep²) -->
+<!-- μ = (e/2m_p) ℏn₆ = n₆ μ_N -->
 $$
-\alpha(r, s, \sigma_{ep}) = \alpha(r, s, 0) + O(\sigma_{ep}^2)
+\mu = \frac{e}{2m_p}\,\hbar\,n_6 = n_6\,\mu_N
 $$
 
-The measured α already includes this correction.  The within-plane
-shear s adjusts at order σ_ep² to compensate, keeping α = 1/137.036
-exactly.  The code uses the measured α = 7.2973525693 × 10⁻³ (not
-the rounded 1/137).
-
-This means the moment correction from σ_ep is NOT in tension with
-the α value — the model self-consistently absorbs the charge
-correction into the shear.
-
-### Why proton is huge, electron is tiny
-
-| Particle | Couples to | Radius ratio | σ coupling | Expected Δg |
-|----------|-----------|-------------|-----------|------------|
-| Proton   | Ma_e (UP) | R_e/R_p ≈ 380 | σ_ep = 0.091 | ~0.5% × 380 ≈ **large** |
-| Electron | Ma_ν (UP) | R_ν/R_e ≈ 10⁷ | σ_eν ≈ ? | tiny × huge = **tiny** |
-| Electron | Ma_p (DOWN) | R_p/R_e ≈ 1/380 | σ_ep = 0.091 | ~9% × 0.003 = **tiny** |
-
-The proton's anomaly is large because it couples UP to a much
-larger sheet.  The electron's anomaly is tiny because its coupling
-to Ma_ν is extremely weak (σ_eν unconstrained but negligible per
-R28), and its coupling DOWN to Ma_p suppresses the moment instead
-of amplifying it.
-
----
-
-## Can dark modes contribute?
-
-**Directly: no.**  An uncharged mode (n₅ = 0 on Ma_p, or n₁ = 0
-on Ma_e) has no current and cannot produce a magnetic dipole moment.
-μ = (1/2) ∫ (r × J) dV, and J = 0 for uncharged modes.
-
-**Indirectly: possibly.**  Dark modes modify the energy density
-landscape, which could change the effective geometry that the charged
-mode orbits in.  If dark modes create density "bumps" that shift
-the charged mode's orbit to larger or smaller radii, they change
-the moment.  But this is a second-order effect (dark mode amplitude
-× charged mode amplitude × geometry factor) and hasn't been
-computed.
-
-Dark modes are more relevant to **DIS** (three scattering centers)
-than to the magnetic moment.  A 3-fold-symmetric dark mode
-superimposed on the (1,2) proton mode could create lobes visible
-in scattering without directly affecting the moment.
+This depends on the winding number n₆ — a topological integer.
+Cross-shear cannot change n₆.  The geodesic tilting mechanism
+is dead.  See `findings.md` F1.
 
 ---
 
 ## Tracks
 
-### Track 1: Proton moment from geodesic tilting
+### Track 1: Proton moment from geodesic tilting — DEAD
 
-The core computation.  Use the existing 6D metric (ma.py) with
-σ_ep = −0.091 and r_p = 8.906:
+Wrong premise.  See `findings.md` F1.
 
-1. **Build the full metric** G̃ with cross-shear.  Compute G̃⁻¹.
+### Track 2: Neutron moment — DEAD (same premise)
 
-2. **Geodesic velocity** for mode n = (0,0,0,0,1,2):
-   v_i = G̃⁻¹_ij n_j (unnormalized).  Decompose into Ma_e
-   components (v₁, v₂) and Ma_p components (v₅, v₆).
-
-3. **Velocity fraction on Ma_e:** f_e = |v_e|² / |v|² — the
-   fraction of the photon's velocity in the Ma_e directions.
-
-4. **Effective moment:** the charge +e orbits with velocity
-   fraction f_e at radius R_e and fraction (1−f_e) at radius R_p.
-   Compute μ_z from the combined orbit.
-
-5. **Extract g_p** = 2m_p μ_total / (e × ℏ/2).
-
-6. **Compare** to measured g_p = 5.586.
-
-**No free parameters** — σ_ep, r_p, and all sheet dimensions are
-already determined by the neutron mass and α.
-
-**Output:** g_p from the cross-sheared geodesic.
-
-### Track 2: Neutron moment — the crucial test
-
-The neutron IS the cross-mode (1,2,0,0,1,2).  Its geodesic
-inherently spans both Ma_e and Ma_p — no perturbation theory
-needed.
-
-1. **Geodesic velocity** for n = (1,2,0,0,1,2).  Decompose into
-   Ma_e and Ma_p components.
-
-2. **Charge distribution:** the neutron has n₅ − n₁ = 1 − 1 = 0
-   total charge, but the Ma_e component carries charge −1 (n₁ = 1)
-   and the Ma_p component carries charge +1 (n₅ = 1).  These
-   orbit at different radii.
-
-3. **Magnetic moment from partial cancellation:** the Ma_e
-   contribution (charge −1 at large radius) and Ma_p contribution
-   (charge +1 at small radius) partially cancel.  The net moment
-   is negative if the Ma_e term dominates.
-
-4. **Compare** to measured μ_n = −1.913 μ_N.
-
-The **negative sign** is the hardest test — it demands that the
-larger-radius Ma_e orbit dominates despite carrying opposite charge.
-
-**Output:** g_n.  A match validates the entire cross-sheet picture.
+Same error.  The neutron (0,−2,1,0,0,2) has Q = 0, so no
+single-mode magnetic moment exists at all.  The measured
+μ_n = −1.913 μ_N requires composite structure (Track 3).
 
 ### Track 3: Self-consistent multi-sheet solution
 
-The individual tracks (1, 2, 4) compute moments using the FIXED
-metric — σ_ep = −0.091 from R27, shears from α_measured.  But this
-misses the feedback loop: each particle's existence funds
-oscillations on other sheets, which change the environment for
-other particles.
+Track 3 is now the primary path.  Unlike Tracks 1/2/4, it does
+not treat the proton as a single mode on a fixed metric.  Instead,
+it treats the proton as a composite: the bare mode plus cross-sheet
+excitations with their own winding numbers.  The total angular
+momentum — and hence the magnetic moment — depends on the
+superposition, not on any single n₆.
 
 **The cascade:**
 - A proton on Ma_p, through σ_ep, excites oscillations on Ma_e.
@@ -346,32 +204,12 @@ coupled 6D system.  All from geometry — no free parameters beyond
 those already pinned by R27 (which itself would be re-derived in
 the coupled framework).
 
-### Track 4: Electron moment from cross-sheet coupling
-
-Apply geodesic tilting to the electron (1,2,0,0,0,0):
-
-1. **Coupling DOWN to Ma_p** (σ_ep = −0.091): the geodesic
-   tilts into Ma_p directions.  Ma_p has a SMALLER radius, so
-   the moment DECREASES.  This gives g < 2 — **wrong sign**.
-
-2. **Coupling UP to Ma_ν** (σ_eν unknown): the geodesic tilts
-   into Ma_ν directions.  Ma_ν has an ENORMOUS radius, so even
-   a tiny tilt produces a large moment.  Need f_ν × R_ν/R_e ≈
-   α/(2π) ≈ 0.001.  This constrains σ_eν.
-
-3. **Predict σ_eν** from matching α/(2π).  Is the predicted value
-   physical (small enough to be consistent with R28's finding that
-   σ_eν is negligible for MeV-scale physics)?
-
-4. **Sign check:** does coupling UP to Ma_ν give g > 2?
-
-**Output:** σ_eν prediction; viability of cross-sheet mechanism
-for the electron anomaly.
+### Track 4: Electron moment — DEAD (same premise as Track 1)
 
 ### Track 5: Dark mode census on Ma_p — DIS connection
 
-Dark modes can't add magnetic moment (see analysis above), but
-they CAN explain DIS scattering centers.  This track is about
+Dark modes can't add magnetic moment (uncharged → no current),
+but they CAN explain DIS scattering centers.  This track is about
 proton structure, not the moment.
 
 1. Enumerate uncharged (n₅ = 0) modes on Ma_p up to ~2 GeV.
@@ -384,8 +222,8 @@ proton structure, not the moment.
 3. Momentum fractions: if dark modes carry ~50% of proton
    momentum (like gluons in QCD), what modes are required?
 
-**Status:** Secondary to Tracks 1–4.  Worth cataloging for the
-DIS question but doesn't directly address the magnetic moment.
+**Status:** Secondary.  Worth cataloging for the DIS question
+but doesn't directly address the magnetic moment.
 
 ### Track 6: Three-mode proton (neutrino analog) — speculative
 
@@ -403,29 +241,12 @@ currently assumed, hosting three sub-modes at ~313 MeV each
 still produces m_n, m_μ, and the hadron spectrum.  This is a
 major structural change, not a perturbative correction.
 
-**Status:** Speculative.  Park unless Tracks 1–2 fail.
+**Status:** Speculative.  Tracks 1–2 are dead, so this could
+be revisited, but the parameter constraints from R27 are tight.
 
 ---
 
-## Key formulas
-
-**Geodesic velocity** on the 6D sheared torus:
-
-For mode n = (n₁, ..., n₆) on metric G̃ with circumferences L:
-
-<!-- v_i = Σ_j G̃⁻¹_ij (n_j / L_j) -->
-$$
-v_i = \sum_j \tilde{G}^{-1}_{ij}\,\frac{n_j}{L_j}
-$$
-
-The physical velocity in 3D decomposes into sheet contributions.
-The Ma_e velocity fraction:
-
-<!-- f_e = (v₁² L₁² + v₂² L₂²) / Σ(v_i² L_i²) -->
-$$
-f_e = \frac{v_1^2 L_1^2 + v_2^2 L_2^2}
-{\sum_i v_i^2 L_i^2}
-$$
+## Reference data
 
 **Proton sheet geometry** (R27 F18):
 
@@ -437,14 +258,6 @@ $$
 | L₆ (ring) | 2.657 fm |
 | s₅₆       | from α(r_p, s) = α_measured |
 
-**Moment scaling:**
-
-| Sheet | Orbit radius R | Ratio to R_p |
-|-------|---------------|-------------|
-| Ma_p  | L₆/(2π) ≈ 0.42 fm | 1 |
-| Ma_e (r_e ≈ 1) | L₂/(2π) ≈ 160 fm | ~380 |
-| Ma_ν  | L₄/(2π) ≈ 6.7 μm | ~1.6 × 10⁷ |
-
 **Fine-structure constant** (measured, used in code):
 
 α = 7.2973525693 × 10⁻³  (not 1/137)
@@ -455,21 +268,18 @@ $$
 
 | Outcome | Value |
 |---------|-------|
-| g_p ≈ 5.6 from geodesic tilting (T1) | First non-quark derivation of proton moment |
-| g_n ≈ −3.8 from cross-mode structure (T2) | Independent validation; tests sign |
 | Self-consistent solve converges (T3) | Dressed-particle picture is internally coherent |
+| g_p ≈ 5.6 from dressed proton (T3) | First non-quark derivation of proton moment |
+| g_n ≈ −3.8 from dressed neutron (T3) | Independent validation; tests sign |
 | q_ν < 10⁻¹⁵ e from reverse coupling (T3) | Consistency with reactor neutrino bounds |
-| σ_eν prediction from electron g−2 (T4) | Connects anomalous moment to cross-shear |
 
 ## What failure looks like
 
 | Outcome | What it means |
 |---------|--------------|
-| f_e too small → g_p ≈ 2 (T1) | σ_ep doesn't tilt the geodesic enough |
-| g_n wrong sign (T2) | Orbit geometry algebra is wrong |
 | Self-consistent solve diverges or has multiple fixed points (T3) | Dressed-particle picture is underdetermined |
 | q_ν > 10⁻¹⁵ e (T3) | Cross-sheet charge dressing too strong; mechanism falsified |
-| σ_eν must be large (T4) | Would contradict R28; electron anomaly needs different mechanism |
+| g_p wildly wrong from dressed solve (T3) | Cross-sheet excitations don't produce right angular momentum |
 
 ---
 
@@ -478,9 +288,7 @@ $$
 | File | Description |
 |------|-------------|
 | `README.md` | This file — study design |
-| `scripts/track1_proton_moment.py` | Geodesic tilting; g_p from σ_ep |
-| `scripts/track2_neutron_moment.py` | Cross-mode neutron moment; g_n test |
-| `scripts/track3_self_consistent.py` | Full coupled 6D solve; dressed particles |
-| `scripts/track4_electron_moment.py` | Electron g−2 from cross-sheet coupling |
+| `scripts/track1_proton_moment.py` | Track 1 (dead) — kept for reference |
+| `scripts/track3_self_consistent.py` | Track 3 — dressed-particle solve |
 | `scripts/track5_dark_modes.py` | Dark mode census; DIS connection |
 | `findings.md` | Results and interpretation |

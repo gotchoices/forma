@@ -38,3 +38,8 @@ The comment is invisible when rendered but readable in raw source. The `$$` bloc
 This project uses [tess](tess/) for AI-driven ticket management.
 Read and follow the ticket workflow rules in tess/agent-rules/tickets.md.
 Tickets are in the [tickets/](tickets/) directory.
+
+## Editorial Comments
+The user may edit comments into markdown files for agent consumption using the form:
+<!--EC -->
+When present, follow the enclosed instructions and/or integrate relevant content into the document where appropriate and then remove the comment.
