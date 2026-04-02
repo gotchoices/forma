@@ -107,7 +107,7 @@ this picture.
 
 **Q: How many variables? (lines 41–43)**
 Geometric parameters for a torus + one vertical slot: aspect ratio
-r = R/a (1), shear s (1), slot ring-position θ₂ (1), slot height h
+r = a/R (1), shear s (1), slot ring-position θ₂ (1), slot height h
 in tube direction (1), slot width w in ring direction (1) = **5
 parameters**.  Compton wavelength is an input from measurement.
 Measured constraints: charge = e (1), g − 2 = α/(2π) (1) = **2
@@ -127,6 +127,18 @@ directly on Maxwell's equations for apertures in conducting walls
 and does not depend on MaSt-specific assumptions.  Caveat: Bethe
 assumes a ≪ λ; if the slot is not small compared to the wavelength,
 the scaling changes and must be computed numerically.
+
+
+## Shared code
+
+This study uses local shared code (`scripts/torus_model.py`) rather
+than `lib/*.py`.  The local model is built from first principles —
+Maxwell's equations on a torus surface with periodic boundary
+conditions — without importing MaSt-specific assumptions.
+
+Each track produces both **SVG plots** for visual inspection and
+**data files** (`.npz`) with computed field arrays, so downstream
+tracks can load results without re-running.
 
 
 ## Tracks
