@@ -18,9 +18,9 @@
 .cpanel { flex: 1; min-height: 90px; border-top: 1px solid var(--border); position: relative; }
 .cpanel canvas { display: block; width: 100%; height: 100%; }
 .lp-sec { border-bottom: 1px solid var(--border); padding: 8px 12px; }
-.lp-sec h3 { font-size: 12px; margin: 0 0 6px 0; color: #666; text-transform: uppercase; letter-spacing: 0.05em; }
+.lp-sec h3 { font-size: 12px; margin: 0 0 6px 0; color: #aaa; text-transform: uppercase; letter-spacing: 0.05em; }
 .lp-row { display: flex; align-items: center; gap: 6px; margin: 3px 0; flex-wrap: wrap; }
-.lp-lbl { color: #777; font-size: 12px; min-width: 22px; }
+.lp-lbl { color: #aaa; font-size: 12px; min-width: 22px; }
 .lp-val { color: var(--accent); font-size: 12px; font-family: monospace; }
 .lp-input {
   width: 56px; background: #111; border: 1px solid var(--border);
@@ -34,7 +34,7 @@ select.lp-input { width: auto; font-size: 12px; }
 }
 .nc-swatch { width: 8px; height: 16px; border-radius: 2px; flex-shrink: 0; }
 #status-bar {
-  height: 24px; padding: 2px 14px; font-size: 12px; color: #555;
+  height: 24px; padding: 2px 14px; font-size: 12px; color: #aaa;
   border-top: 1px solid var(--border); background: var(--surface);
   display: flex; align-items: center; flex-shrink: 0;
 }
@@ -457,6 +457,7 @@ function rebuildGeodesics() {
   if (!S.geodesics) return;
   const a = S.eps * R_MAJOR;
   if (a < 1e-6) return;
+  const anchor = getAnchor();
   const configs = [];
   const sel = modeData[S.selectedModeIdx];
   if (sel) configs.push({ n1: sel.n1, n2: sel.n2, color: '#ff6e40' });
@@ -465,8 +466,11 @@ function rebuildGeodesics() {
   for (const cfg of configs) {
     const nSeg = Math.max(200, (cfg.n1+cfg.n2)*60);
     const pts = [];
+    const off1 = anchor ? anchor.theta1 * PI / 180 : 0;
+    const off2 = anchor ? anchor.theta2 * PI / 180 : 0;
     for (let i = 0; i <= nSeg; i++) {
-      const t = (i/nSeg)*TAU, th1 = cfg.n1*t, ph = cfg.n2*t;
+      const t = (i/nSeg)*TAU;
+      const th1 = cfg.n1*t + off1, ph = cfg.n2*t + off2;
       const rr = R_MAJOR + a*Math.cos(th1);
       pts.push(new THREE.Vector3(rr*Math.cos(ph), a*Math.sin(th1), rr*Math.sin(ph)));
     }
@@ -506,34 +510,36 @@ function drawSheet() {
   else { ph = avH; pw = ph / realAR; }
   const ox = pad.l + (avW - pw) / 2;
   const oy = pad.t + (avH - ph) / 2;
-  const ipw = Math.ceil(pw), iph = Math.ceil(ph);
   const anchor = getAnchor();
-  // 2D heatmap via ImageData
-  const img = ctx.createImageData(ipw, iph);
-  for (let py = 0; py < iph; py++) {
+  // 2D heatmap — draw pixel-by-pixel using fillRect to respect canvas transform
+  for (let py = 0; py < Math.ceil(ph); py++) {
     const th1 = (py / ph) * 360;
     const d1 = densityAt(md.density, th1);
-    for (let px = 0; px < ipw; px++) {
-      const th2 = (px / pw) * 360;
-      const d = anchor ? d1 * Math.sin(md.qeff * (th2 - anchor.theta2) * PI / 180) ** 2 : d1;
-      const off = (py * ipw + px) * 4;
-      img.data[off]   = d * 255 * 0.7;
-      img.data[off+1] = d * 120 * 0.7;
-      img.data[off+2] = d * 40 * 0.3;
-      img.data[off+3] = 255;
+    if (!anchor) {
+      const r = Math.floor(d1*255*0.7), g = Math.floor(d1*120*0.7), b = Math.floor(d1*40*0.3);
+      ctx.fillStyle = `rgb(${r},${g},${b})`;
+      ctx.fillRect(ox, oy+py, pw, 1);
+    } else {
+      const step = Math.max(1, Math.floor(pw / 200));
+      for (let px = 0; px < Math.ceil(pw); px += step) {
+        const th2 = (px / pw) * 360;
+        const d = d1 * Math.sin(md.qeff * (th2 - anchor.theta2) * PI / 180) ** 2;
+        const r = Math.floor(d*255*0.7), g = Math.floor(d*120*0.7), b = Math.floor(d*40*0.3);
+        ctx.fillStyle = `rgb(${r},${g},${b})`;
+        ctx.fillRect(ox+px, oy+py, step, 1);
+      }
     }
   }
-  ctx.putImageData(img, Math.round(ox), Math.round(oy));
-  // Geodesics
-  const drawGeo = (n1, n2, color) => {
+  // Geodesics — launch from anchor node, or drift if none
+  const drawGeo = (n1, n2, color, off1, off2) => {
     ctx.strokeStyle = color; ctx.lineWidth = 1.5; ctx.globalAlpha = 0.7;
     const steps = 800;
     let prevX = null, prevY = null;
     ctx.beginPath();
     for (let i = 0; i <= steps; i++) {
       const t = i / steps;
-      const t1 = (((n1 * t * 360) % 360) + 360) % 360;
-      const t2 = (((n2 * t * 360) % 360) + 360) % 360;
+      const t1 = (((n1 * t * 360 + off1) % 360) + 360) % 360;
+      const t2 = (((n2 * t * 360 + off2) % 360) + 360) % 360;
       const y = (t1 / 360) * ph + oy;
       const x = (t2 / 360) * pw + ox;
       if (prevX !== null) {
@@ -546,9 +552,26 @@ function drawSheet() {
     }
     ctx.stroke(); ctx.globalAlpha = 1;
   };
-  drawGeo(md.n1, md.n2, '#ff6e40');
-  const gi = ghostIdx();
-  if (gi >= 0 && gi !== S.selectedModeIdx) { const gm = modeData[gi]; drawGeo(gm.n1, gm.n2, '#fdd835'); }
+  if (S.geodesics) {
+    const now = performance.now() * 0.001;
+    if (anchor) {
+      drawGeo(md.n1, md.n2, '#ff6e40', anchor.theta1, anchor.theta2);
+      const gi = ghostIdx();
+      if (gi >= 0 && gi !== S.selectedModeIdx) {
+        const gm = modeData[gi];
+        drawGeo(gm.n1, gm.n2, '#fdd835', anchor.theta1, anchor.theta2);
+      }
+    } else {
+      const eOff1 = (now * 11.0) % 360, eOff2 = (now * 7.3 + 137) % 360;
+      drawGeo(md.n1, md.n2, '#ff6e40', eOff1, eOff2);
+      const gi = ghostIdx();
+      if (gi >= 0 && gi !== S.selectedModeIdx) {
+        const gm = modeData[gi];
+        const gOff1 = (now * 5.7 + 83) % 360, gOff2 = (now * 9.1 + 211) % 360;
+        drawGeo(gm.n1, gm.n2, '#fdd835', gOff1, gOff2);
+      }
+    }
+  }
   // Node constraints as dots
   for (const nc of S.nodes) {
     if (!nc.enabled) continue;
@@ -561,16 +584,16 @@ function drawSheet() {
   ctx.strokeStyle = '#333'; ctx.lineWidth = 1;
   ctx.strokeRect(ox, oy, pw, ph);
   // Axes
-  ctx.fillStyle = '#666'; ctx.font = '11px monospace';
+  ctx.fillStyle = '#bbb'; ctx.font = '11px monospace';
   ctx.fillText('0°', ox-2, oy+ph+14);
   ctx.fillText('360°', ox+pw-22, oy+ph+14);
   ctx.save(); ctx.translate(ox-18, oy+ph/2); ctx.rotate(-PI/2);
   ctx.fillText('θ₁', -6, 0); ctx.restore();
-  ctx.fillStyle = '#555'; ctx.font = '10px monospace';
+  ctx.fillStyle = '#aaa'; ctx.font = '10px monospace';
   ctx.fillText('θ₂ →', ox+pw/2-14, oy+ph+14);
-  ctx.fillStyle = '#444'; ctx.font = '9px monospace';
+  ctx.fillStyle = '#999'; ctx.font = '9px monospace';
   ctx.fillText(`${S.eps.toFixed(2)}:1`, ox+pw-30, oy-3);
-  if (anchor) { ctx.fillStyle = '#555'; ctx.fillText('phase-locked', ox+2, oy-3); }
+  if (anchor) { ctx.fillStyle = '#8cf'; ctx.fillText('phase-locked', ox+2, oy-3); }
 }
 
 /* ── Spectrum ─────────────────────────────────────── */
@@ -678,7 +701,7 @@ function drawSpectrum() {
     // Labels
     const forceLabel = isSel || isElectron || isGhost;
     if (forceLabel || (charged && x - lastLabelX > 40)) {
-      ctx.fillStyle = forceLabel ? '#bbb' : '#555'; ctx.font = '9px monospace';
+      ctx.fillStyle = forceLabel ? '#ddd' : '#888'; ctx.font = '9px monospace';
       const lbl = isElectron ? 'e⁻' : (isGhost ? 'ghost' : `${m.n1},${m.n2}`);
       const survTxt = hasConstraints && isKey ? ` ${(m.survival*100).toFixed(0)}%` : '';
       ctx.fillText(lbl + survTxt, x - ctx.measureText(lbl + survTxt).width/2, y - r - 4);
@@ -687,7 +710,7 @@ function drawSpectrum() {
   }
 
   // ── Y axis grid ──
-  ctx.fillStyle = '#666'; ctx.font = '10px monospace';
+  ctx.fillStyle = '#bbb'; ctx.font = '10px monospace';
   for (const v of [0.5, 1, 2, 5, 10]) {
     if (v < minRatio || v > maxRatio) continue;
     const y = yOf(v);
@@ -695,7 +718,7 @@ function drawSpectrum() {
     ctx.strokeStyle = '#1a1a2a'; ctx.lineWidth = 0.5;
     ctx.beginPath(); ctx.moveTo(pad.l, y); ctx.lineTo(pad.l+pw, y); ctx.stroke();
   }
-  ctx.fillStyle = '#555'; ctx.font = '10px sans-serif';
+  ctx.fillStyle = '#aaa'; ctx.font = '10px sans-serif';
   ctx.fillText('m/mₑ', 2, pad.t-3);
 
   // ── Legend (bottom-right) ──
@@ -716,10 +739,10 @@ function drawSpectrum() {
   ly += 14;
   ctx.fillStyle = '#4fc3f733'; ctx.strokeStyle = '#4fc3f755'; ctx.lineWidth = 1;
   ctx.beginPath(); ctx.arc(lgX+5, ly, 4, 0, TAU); ctx.fill(); ctx.stroke();
-  ctx.fillStyle = '#888'; ctx.fillText('charged, spin-filtered (R33)', lgX+16, ly+3);
+  ctx.fillStyle = '#999'; ctx.fillText('charged, spin-filtered (R33)', lgX+16, ly+3);
   ly += 14;
   ctx.fillStyle = '#33333366'; ctx.beginPath(); ctx.arc(lgX+5, ly, 3, 0, TAU); ctx.fill();
-  ctx.fillStyle = '#666'; ctx.fillText('dark / uncharged', lgX+16, ly+3);
+  ctx.fillStyle = '#888'; ctx.fillText('dark / uncharged', lgX+16, ly+3);
 }
 
 /* ── 1D Profile ───────────────────────────────────── */
@@ -767,10 +790,10 @@ function drawProfile() {
     }
   }
   // Axes
-  ctx.fillStyle = '#666'; ctx.font = '11px monospace';
+  ctx.fillStyle = '#bbb'; ctx.font = '11px monospace';
   ctx.fillText('0°', pad.l-2, pad.t+ph+14);
   ctx.fillText('360°', pad.l+pw-22, pad.t+ph+14);
-  ctx.fillStyle = '#555'; ctx.font = '10px sans-serif';
+  ctx.fillStyle = '#aaa'; ctx.font = '10px sans-serif';
   ctx.fillText('θ₁ →', pad.l+pw/2-12, pad.t+ph+14);
   ctx.fillText('|f|²', 2, pad.t+10);
   // Legend
@@ -1014,7 +1037,7 @@ function updateStatus() {
   const a = alphaFormula(S.eps, S.shear);
   const ok = Math.abs(1/a - 137.036) < 0.01;
   $('status-bar').textContent = `α = 1/${(1/a).toFixed(3)}${ok ? ' ✓' : '  ⚠ not solved'}  ·  ε = ${S.eps.toFixed(3)}  ·  s = ${S.shear.toFixed(6)}  ·  ${modeData.length} modes`;
-  $('status-bar').style.color = ok ? '#4a4' : '#a84';
+  $('status-bar').style.color = ok ? '#6c6' : '#da6';
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -1030,7 +1053,13 @@ syncControls();
 rebuildTorus();
 fullRecompute();
 refreshProfileList();
-animLoop(() => {}, { renderer, scene, camera, controls });
+let _lastSheetTick = 0;
+animLoop(() => {
+  if (S.geodesics && !getAnchor()) {
+    const now = performance.now();
+    if (now - _lastSheetTick > 50) { _lastSheetTick = now; drawSheet(); }
+  }
+}, { renderer, scene, camera, controls });
 </script>
 </body>
 </html>
