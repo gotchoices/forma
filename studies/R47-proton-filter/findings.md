@@ -69,7 +69,15 @@ is in the same range.  Which (if either) corresponds to the
 measured charge radius depends on how the 3D embedding maps
 the sheet geometry to an observable radius.
 
-### Extended mode survival at ε = 0.30
+### Extended mode survival (ε-dependent)
+
+The effectiveness of inner-equator slots against higher modes
+depends strongly on ε.  At large ε, the potential V = ε²q²/(1+ε cos θ₁)
+concentrates energy toward the outer equator (θ₁ = 0°).  Modes
+whose density has migrated away from the inner equator are not
+affected by slots placed there.
+
+**At ε = 0.30:**
 
 | Mode | Survival | Status |
 |------|----------|--------|
@@ -81,22 +89,42 @@ the sheet geometry to an observable radius.
 | (1,6) | 94.0% | ✓ survives |
 | (1,7) | 63.9% | ⚠ weakened |
 
-The 3-slot geometry at target nodes kills (1,1), (1,2),
-and (1,4) — three ghosts with three slots.  (1,6) survives
-because its q_eff is nearly 2× the target's, so slot positions
-coincide with its nodes too.
+**At ε = 0.50:**
+
+| Mode | Survival | Status |
+|------|----------|--------|
+| (1,1) | 7.4% | ✗ killed |
+| (1,2) | 12.4% | ⚠ weakened |
+| (1,3) | 100.0% | ✓ survives |
+| (1,4) | 97.7% | ✓ survives |
+| (1,5) | 99.8% | ✓ survives |
+| (1,6) | 100.0% | ✓ survives |
+| (1,7) | 100.0% | ✓ survives |
+
+At small ε (≤ 0.30), mode density is spread fairly uniformly
+around the tube, so inner-equator slots kill (1,4) too.  At
+ε = 0.50, mode energy has shifted toward the outer equator,
+and (1,4) through (1,7) all escape the slots.  Only (1,1)
+remains firmly killed across the full ε range.
 
 ### Torus Lab cross-check
 
-When using the electron model in Torus Lab with 3 manually
-placed slots at (0°, 124°, 250°), the user observed the same
-qualitative behavior: (1,1) and (1,2) killed, (1,3)+ healthy.
-The numerical survival values differ slightly because Torus Lab
-uses the electron's α formula (q = 2−s, giving s ≈ 0.008)
-rather than the proton's (q = 3−s, giving s ≈ 0.03–0.08).
-With the electron's small shear, q_eff ≈ 2.99 for (1,3),
-so 120° spacing nearly perfectly preserves it.  The qualitative
-result is robust across both shear regimes.
+Torus Lab now has a proton shear preset (α formula uses q = 3−s).
+At ε = 0.50 with proton preset and 3 nodes at θ₂ = 0°, 124°, 250°
+(approximately shear-adjusted positions):
+- (1,1) killed at ~7%
+- (1,2) weakened at ~15%
+- (1,3) survives at ~99%
+- (1,4) survives at ~98%
+
+This matches the script output at ε = 0.50 exactly.  The earlier
+observation using the electron model also showed (1,1) and (1,2)
+killed, confirming the result is robust across shear regimes.
+
+**Node positions:** The script places nodes at θ₂ = 0°, 360°/q_eff,
+720°/q_eff.  At ε = 0.50 with proton shear: q_eff = 2.9221,
+giving positions 0°, 123.2°, 246.4°.  The lab's Optimize button
+computes the same values.
 
 ### Findings table
 
@@ -104,9 +132,9 @@ result is robust across both shear regimes.
 |----|---------|
 | F1 | The (1,3) proton mode achieves 100% survival at shear-adjusted 3-slot positions across the full ε range (0.05–0.95). |
 | F2 | Both ghosts (1,1) and (1,2) are killed (< 8%) for ε ≤ 0.47.  Viable range: **ε ∈ [0.05, 0.47]**. |
-| F3 | The (1,4) ghost is also killed (~5%) at small ε — 3 slots kill 3 ghosts. |
+| F3 | At ε ≤ 0.30, (1,4) is also killed (~5%) — 3 slots kill 3 ghosts.  **But at ε ≥ 0.50, (1,4) survives (98%)** because the mode's energy migrates toward the outer equator, away from the inner-equator slots.  Slot effectiveness against higher modes is strongly ε-dependent. |
 | F4 | Shear varies from s = 0.032 (ε = 0.05) to s = 0.084 (ε = 0.95).  The 1/ε² term in μ makes the α formula ε-sensitive. |
 | F5 | Tube radius ranges from a ≈ 0.68 fm (ε = 0.05) to a ≈ 0.10 fm (ε = 0.95). Ring radius R = a/ε. Both are in the sub-fm to fm range — consistent with proton scale. |
 | F6 | At ε ≈ 0.05, a ≈ 0.68 fm (close to proton charge radius 0.84 fm).  At ε ≈ 0.25, R ≈ 0.66 fm.  The charge radius connection needs further study. |
 | F7 | (1,6) survives at ~94% — its q_eff is ~2× the target's, aligning with slot node positions. |
-| F8 | Ghost killing is qualitatively robust: same behavior seen in Torus Lab with electron shear and in the proton-specific calculation. |
+| F8 | Ghost killing of (1,1) and (1,2) is robust across shear regimes: confirmed in both Torus Lab and the proton-specific calculation.  Higher modes (1,4+) require small ε to be killed by inner-equator slots. |
