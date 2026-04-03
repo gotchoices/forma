@@ -62,7 +62,7 @@ select.lp-input { width: auto; font-size: 12px; }
   </div>
   <button class="btn" id="btn-solve" title="Auto-solve shear s so α matches the fine-structure constant 1/137.036">Solve α</button>
   <div class="sep"></div>
-  <div class="cg tog"><label title="Show photon paths (torus knot geodesics) for the selected mode and ghost on the 3D torus and 2D sheet"><input type="checkbox" id="cb-geo" checked> geodesics</label></div>
+  <div class="cg tog"><label title="Show photon paths (torus knot geodesics) for the selected mode on the 3D torus and 2D sheet"><input type="checkbox" id="cb-geo" checked> geodesics</label></div>
   <div class="cg tog"><label title="Show wireframe mesh on the 3D torus surface"><input type="checkbox" id="cb-wire"> wire</label></div>
 </div>
 
@@ -70,14 +70,19 @@ select.lp-input { width: auto; font-size: 12px; }
 <div id="left-panel">
 
   <div class="lp-sec">
-    <h3 title="Select which material sheet (particle type) to analyze. Sets the reference mass for physical dimensions.">Particle</h3>
-    <div class="lp-row">
-      <select class="lp-input" id="sel-particle" title="Electron: Ma_e sheet. Proton: Ma_p sheet. Custom: arbitrary mass.">
+    <h3 title="Shear preset: which mode's q_eff to use in the α formula. Determines shear when you click Solve α.">Shear preset</h3>
+    <div class="lp-row" style="gap:3px">
+      <button class="btn on" id="btn-preset-e" data-n2="2" title="Electron: α formula uses q = 2−s">e⁻ (1,2)</button>
+      <button class="btn" id="btn-preset-p" data-n2="3" title="Proton: α formula uses q = 3−s">p (1,3)</button>
+    </div>
+    <div class="lp-row" style="margin-top:2px">
+      <span class="lp-lbl">mass</span>
+      <select class="lp-input" id="sel-particle" style="width:auto">
         <option value="electron">Electron</option>
         <option value="proton">Proton</option>
         <option value="custom">Custom</option>
       </select>
-      <input type="number" class="lp-input" id="in-mass" style="width:80px;display:none" step="any" title="Custom particle mass in kg">
+      <input type="number" class="lp-input" id="in-mass" style="width:70px;display:none" step="any" title="Custom mass in kg">
     </div>
   </div>
 
@@ -90,7 +95,7 @@ select.lp-input { width: auto; font-size: 12px; }
     <h3 title="Node constraints force f(θ₁)=0 at specified tube positions — like touching a guitar string. Modes with a natural node there survive; modes with an antinode there are killed.">Node Constraints</h3>
     <div class="lp-row" style="margin-bottom:4px;gap:4px">
       <button class="btn" id="btn-add-nc" title="Add a node constraint at a tube position θ₁">+ Add Node</button>
-      <button class="btn" id="btn-optimize" title="Auto-place nodes at electron's θ₂ nodes (where electron survives and ghost is maximally exposed). Uses q_eff difference from shear.">Optimize</button>
+      <button class="btn" id="btn-optimize" title="Adjust θ₂ of enabled nodes to land on the target mode's standing-wave nodes. Preserves the anchor's position.">Optimize</button>
     </div>
     <div id="nc-list"></div>
   </div>
@@ -118,8 +123,8 @@ select.lp-input { width: auto; font-size: 12px; }
 <div id="main-area">
   <div id="view-3d" title="3D torus with energy density (orange glow) and geodesic paths. Click and drag to orbit; scroll to zoom."></div>
   <div class="cpanel" title="Unrolled torus surface: θ₂ (ring) horizontal, θ₁ (tube) vertical. Proportional to real circumferences. Orange heat = selected mode energy density. Lines = photon geodesics. Horizontal lines = node constraints."><canvas id="cv-sheet"></canvas></div>
-  <div class="cpanel" title="Mode spectrum: all resonant modes sorted by mass (m/mₑ). Click a dot to select that mode and see its profile. Orange = electron, Yellow = ghost, Dim blue = charged but spin-filtered, Gray = dark/uncharged."><canvas id="cv-spectrum"></canvas></div>
-  <div class="cpanel" title="Tube cross-section profile: |f(θ₁)|² shows where energy concentrates around the tube (0° = outer equator, 180° = inner equator). Orange = selected mode, Dashed yellow = ghost. Vertical lines = node constraint positions. Place nodes where the ghost is strong but the electron is weak."><canvas id="cv-profile"></canvas></div>
+  <div class="cpanel" title="Mode spectrum: all resonant modes sorted by mass. Click a dot to select that mode. Orange = selected/rendered, Blue = charged, Gray = dark/uncharged."><canvas id="cv-spectrum"></canvas></div>
+  <div class="cpanel" title="Tube cross-section profile: |f(θ₁)|² for the selected mode. Vertical lines = node constraints."><canvas id="cv-profile"></canvas></div>
 </div>
 </div>
 
@@ -161,6 +166,7 @@ function arToSlider(r) { return r <= 1 ? ((r-0.01)/0.99)*0.5 : 0.5+((r-1)/9)*0.5
    ═══════════════════════════════════════════════════════ */
 const S = {
   eps: 0.5, shear: 0.068, particle: 'electron', customMass: M_E,
+  targetN2: 2,
   nodes: [], selectedModeIdx: -1,
   shellAlpha: 0.5, geodesics: true, wire: false,
 };
@@ -297,8 +303,9 @@ function chargeOverlap(coeffs, parity, eps) {
 /* ═══════════════════════════════════════════════════════
    Physics helpers
    ═══════════════════════════════════════════════════════ */
-function alphaFormula(eps, s) {
-  const q = 2 - s;
+function alphaFormula(eps, s, n2) {
+  if (n2 === undefined) n2 = S.targetN2;
+  const q = n2 - s;
   if (q <= 0) return 0;
   const sn = Math.sin(TAU * s);
   if (Math.abs(sn) < 1e-15) return 0;
@@ -306,11 +313,12 @@ function alphaFormula(eps, s) {
   return mu * sn*sn / (4*PI*q*q);
 }
 
-function solveShear(eps) {
+function solveShear(eps, n2) {
+  if (n2 === undefined) n2 = S.targetN2;
   let lo = 0.001, hi = 0.499;
   for (let i = 0; i < 80; i++) {
     const mid = (lo+hi)/2;
-    if (alphaFormula(eps, mid) > ALPHA) hi = mid; else lo = mid;
+    if (alphaFormula(eps, mid, n2) > ALPHA) hi = mid; else lo = mid;
   }
   return (lo+hi)/2;
 }
@@ -357,9 +365,8 @@ function sweepModes() {
     }
   }
   modeData.sort((a, b) => a.mu - b.mu);
-  const elIdx = modeData.findIndex(m => m.n1===1 && m.n2===2 && m.parity==='even');
-  if (S.selectedModeIdx < 0 || S.selectedModeIdx >= modeData.length) S.selectedModeIdx = Math.max(0, elIdx);
   computeSurvival();
+  S.selectedModeIdx = lowestSurvivorIdx();
 }
 
 function computeSurvival() {
@@ -376,8 +383,17 @@ function computeSurvival() {
   }
 }
 
-function electronIdx() { return modeData.findIndex(m => m.n1===1 && m.n2===2 && m.parity==='even'); }
-function ghostIdx() { return modeData.findIndex(m => m.n1===1 && m.n2===1 && m.parity==='even'); }
+function targetIdx() { return modeData.findIndex(m => m.n1===1 && m.n2===S.targetN2 && m.parity==='even'); }
+
+function lowestSurvivorIdx() {
+  const hasNC = S.nodes.some(nc => nc.enabled);
+  if (!hasNC) return targetIdx();
+  for (let i = 0; i < modeData.length; i++) {
+    const m = modeData[i];
+    if (m.n1 === 1 && m.parity === 'even' && m.survival > 0.5) return i;
+  }
+  return targetIdx();
+}
 
 /* ═══════════════════════════════════════════════════════
    3D Scene
@@ -465,8 +481,6 @@ function rebuildGeodesics() {
   const configs = [];
   const sel = modeData[S.selectedModeIdx];
   if (sel) configs.push({ n1: sel.n1, n2: sel.n2, color: '#ff6e40' });
-  const gi = ghostIdx();
-  if (gi >= 0 && gi !== S.selectedModeIdx) configs.push({ n1: 1, n2: 1, color: '#fdd835' });
   for (const cfg of configs) {
     const nSeg = Math.max(200, (cfg.n1+cfg.n2)*60);
     const pts = [];
@@ -560,20 +574,9 @@ function drawSheet() {
     const now = performance.now() * 0.001;
     if (anchor) {
       drawGeo(md.n1, md.n2, '#ff6e40', anchor.theta1, anchor.theta2);
-      const gi = ghostIdx();
-      if (gi >= 0 && gi !== S.selectedModeIdx) {
-        const gm = modeData[gi];
-        drawGeo(gm.n1, gm.n2, '#fdd835', anchor.theta1, anchor.theta2);
-      }
     } else {
       const eOff1 = (now * 11.0) % 360, eOff2 = (now * 7.3 + 137) % 360;
       drawGeo(md.n1, md.n2, '#ff6e40', eOff1, eOff2);
-      const gi = ghostIdx();
-      if (gi >= 0 && gi !== S.selectedModeIdx) {
-        const gm = modeData[gi];
-        const gOff1 = (now * 5.7 + 83) % 360, gOff2 = (now * 9.1 + 211) % 360;
-        drawGeo(gm.n1, gm.n2, '#fdd835', gOff1, gOff2);
-      }
     }
   }
   // Node constraints — draw slot ellipses (true size with minimum visibility)
@@ -613,7 +616,7 @@ function drawSpectrum() {
   const { ctx, w, h } = fitCanvas($('cv-spectrum'));
   ctx.fillStyle = '#0a0a10'; ctx.fillRect(0,0,w,h);
   if (modeData.length === 0) return;
-  const eIdx = electronIdx(), eMu = eIdx >= 0 ? modeData[eIdx].mu : 1;
+  const eIdx = targetIdx(), eMu = eIdx >= 0 ? modeData[eIdx].mu : 1;
   const pad = { l:48, r:15, t:16, b:22 };
   const pw = w-pad.l-pad.r, ph = h-pad.t-pad.b;
   const maxRatio = Math.min(20, Math.max(5, modeData[modeData.length-1].mu/eMu*1.1));
@@ -621,36 +624,16 @@ function drawSpectrum() {
   const logMin = Math.log10(minRatio), logMax = Math.log10(maxRatio);
   const yOf = ratio => { const lr = Math.log10(Math.max(ratio, minRatio)); return pad.t + ph*(1 - (lr-logMin)/(logMax-logMin)); };
 
-  // ── Generation markers (triangles on Y-axis) ──
-  const GEN = [
-    { name: 'e⁻', ratio: 1.0, color: '#ff6e40' },
-    { name: 'μ⁻', ratio: 206.768, color: '#66bb6a' },
-    { name: 'τ⁻', ratio: 3477.23, color: '#ab47bc' },
-  ];
-  for (const g of GEN) {
-    if (g.ratio <= maxRatio) {
-      const y = yOf(g.ratio);
-      ctx.fillStyle = g.color;
-      ctx.beginPath(); ctx.moveTo(pad.l-1, y-6); ctx.lineTo(pad.l+7, y); ctx.lineTo(pad.l-1, y+6); ctx.fill();
-      ctx.font = '11px sans-serif';
-      ctx.fillText(g.name, 4, y+4);
-      ctx.strokeStyle = g.color + '44'; ctx.lineWidth = 1; ctx.setLineDash([3,3]);
-      ctx.beginPath(); ctx.moveTo(pad.l, y); ctx.lineTo(pad.l+pw, y); ctx.stroke();
-      ctx.setLineDash([]);
-    } else {
-      ctx.fillStyle = g.color; ctx.font = '10px sans-serif';
-      ctx.beginPath(); ctx.moveTo(pad.l-1, pad.t+2); ctx.lineTo(pad.l+5, pad.t-4); ctx.lineTo(pad.l-1, pad.t-4); ctx.fill();
-    }
-  }
-  // Off-chart generation labels at top
-  let offX = pad.l + 10;
-  ctx.font = '10px sans-serif';
-  for (const g of GEN) {
-    if (g.ratio <= maxRatio) continue;
-    ctx.fillStyle = g.color;
-    const lbl = `↑ ${g.name} ${g.ratio.toFixed(0)}×`;
-    ctx.fillText(lbl, offX, pad.t + 10);
-    offX += ctx.measureText(lbl).width + 14;
+  // ── Target mode marker (triangle on Y-axis at ratio=1) ──
+  {
+    const y = yOf(1.0);
+    ctx.fillStyle = '#ff6e40';
+    ctx.beginPath(); ctx.moveTo(pad.l-1, y-6); ctx.lineTo(pad.l+7, y); ctx.lineTo(pad.l-1, y+6); ctx.fill();
+    ctx.font = '11px sans-serif';
+    ctx.fillText(`(1,${S.targetN2})`, 2, y+4);
+    ctx.strokeStyle = '#ff6e4044'; ctx.lineWidth = 1; ctx.setLineDash([3,3]);
+    ctx.beginPath(); ctx.moveTo(pad.l, y); ctx.lineTo(pad.l+pw, y); ctx.stroke();
+    ctx.setLineDash([]);
   }
 
   // ── Build visible list ──
@@ -674,12 +657,12 @@ function drawSpectrum() {
     const ratio = m.mu / eMu;
     const x = pad.l + (vi + 0.5) * colW;
     const y = yOf(ratio);
-    const isElectron = i === eIdx, isGhost = i === ghostIdx(), isSel = i === S.selectedModeIdx;
+    const isTarget = i === eIdx, isSel = i === S.selectedModeIdx;
     const charged = isChargedMode(m);
     const killed = hasConstraints && m.survival < 0.1;
     const weakened = hasConstraints && m.survival < 0.5 && !killed;
 
-    const isKey = isElectron || isGhost || isSel;
+    const isKey = isTarget || isSel;
     const r = isKey ? 7 : (charged ? 5 : 3.5);
 
     ctx.globalAlpha = killed ? 0.15 : (weakened ? 0.4 : 1);
@@ -687,22 +670,15 @@ function drawSpectrum() {
     if (isSel) {
       ctx.fillStyle = '#ff6e40'; ctx.strokeStyle = '#fff'; ctx.lineWidth = 2;
       ctx.beginPath(); ctx.arc(x, y, r, 0, TAU); ctx.fill(); ctx.stroke();
-    } else if (isElectron) {
-      ctx.fillStyle = '#ff6e40'; ctx.strokeStyle = '#ff6e40'; ctx.lineWidth = 1.5;
-      ctx.beginPath(); ctx.arc(x, y, r, 0, TAU); ctx.fill(); ctx.stroke();
-    } else if (isGhost) {
-      ctx.fillStyle = '#fdd835'; ctx.strokeStyle = '#fdd835'; ctx.lineWidth = 1.5;
-      ctx.beginPath(); ctx.arc(x, y, r, 0, TAU); ctx.fill(); ctx.stroke();
     } else if (charged) {
-      ctx.fillStyle = '#4fc3f733'; ctx.strokeStyle = '#4fc3f755'; ctx.lineWidth = 1;
+      ctx.fillStyle = '#4fc3f7'; ctx.strokeStyle = '#4fc3f788'; ctx.lineWidth = 1;
       ctx.beginPath(); ctx.arc(x, y, r, 0, TAU); ctx.fill(); ctx.stroke();
     } else {
       ctx.fillStyle = '#33333366'; ctx.strokeStyle = '#44444466'; ctx.lineWidth = 0.5;
       ctx.beginPath(); ctx.arc(x, y, r, 0, TAU); ctx.fill(); ctx.stroke();
     }
 
-    // X through killed modes
-    if (killed && isKey) {
+    if (killed && charged) {
       ctx.strokeStyle = '#f44'; ctx.lineWidth = 1.5;
       ctx.beginPath(); ctx.moveTo(x-r, y-r); ctx.lineTo(x+r, y+r); ctx.stroke();
       ctx.beginPath(); ctx.moveTo(x+r, y-r); ctx.lineTo(x-r, y+r); ctx.stroke();
@@ -710,12 +686,11 @@ function drawSpectrum() {
 
     ctx.globalAlpha = 1;
 
-    // Labels
-    const forceLabel = isSel || isElectron || isGhost;
+    const lbl = `${m.n1},${m.n2}`;
+    const forceLabel = isSel || isTarget;
     if (forceLabel || (charged && x - lastLabelX > 40)) {
       ctx.fillStyle = forceLabel ? '#ddd' : '#888'; ctx.font = '9px monospace';
-      const lbl = isElectron ? 'e⁻' : (isGhost ? 'ghost' : `${m.n1},${m.n2}`);
-      const survTxt = hasConstraints && isKey ? ` ${(m.survival*100).toFixed(0)}%` : '';
+      const survTxt = hasConstraints && charged ? ` ${(m.survival*100).toFixed(0)}%` : '';
       ctx.fillText(lbl + survTxt, x - ctx.measureText(lbl + survTxt).width/2, y - r - 4);
       lastLabelX = x;
     }
@@ -731,10 +706,10 @@ function drawSpectrum() {
     ctx.beginPath(); ctx.moveTo(pad.l, y); ctx.lineTo(pad.l+pw, y); ctx.stroke();
   }
   ctx.fillStyle = '#aaa'; ctx.font = '10px sans-serif';
-  ctx.fillText('m/mₑ', 2, pad.t-3);
+  ctx.fillText('μ/μ₀', 2, pad.t-3);
 
   // ── Legend (bottom-right) ──
-  const lgW = 175, lgH = 64;
+  const lgW = 160, lgH = 50;
   const lgX = pad.l + pw - lgW + 4, lgY = pad.t + ph - lgH + 4;
   ctx.globalAlpha = 0.9;
   ctx.fillStyle = '#0a0a10dd'; ctx.fillRect(lgX-4, lgY-4, lgW, lgH);
@@ -744,14 +719,10 @@ function drawSpectrum() {
   ctx.font = '9px sans-serif';
   let ly = lgY + 6;
   ctx.fillStyle = '#ff6e40'; ctx.beginPath(); ctx.arc(lgX+5, ly, 5, 0, TAU); ctx.fill();
-  ctx.fillStyle = '#bbb'; ctx.fillText('electron (1,2)', lgX+16, ly+3);
+  ctx.fillStyle = '#bbb'; ctx.fillText('selected / rendered', lgX+16, ly+3);
   ly += 14;
-  ctx.fillStyle = '#fdd835'; ctx.beginPath(); ctx.arc(lgX+5, ly, 5, 0, TAU); ctx.fill();
-  ctx.fillStyle = '#bbb'; ctx.fillText('ghost (1,1) — unobserved', lgX+16, ly+3);
-  ly += 14;
-  ctx.fillStyle = '#4fc3f733'; ctx.strokeStyle = '#4fc3f755'; ctx.lineWidth = 1;
-  ctx.beginPath(); ctx.arc(lgX+5, ly, 4, 0, TAU); ctx.fill(); ctx.stroke();
-  ctx.fillStyle = '#999'; ctx.fillText('charged, spin-filtered (R33)', lgX+16, ly+3);
+  ctx.fillStyle = '#4fc3f7'; ctx.beginPath(); ctx.arc(lgX+5, ly, 4, 0, TAU); ctx.fill();
+  ctx.fillStyle = '#999'; ctx.fillText('charged (n₁=1, even)', lgX+16, ly+3);
   ly += 14;
   ctx.fillStyle = '#33333366'; ctx.beginPath(); ctx.arc(lgX+5, ly, 3, 0, TAU); ctx.fill();
   ctx.fillStyle = '#888'; ctx.fillText('dark / uncharged', lgX+16, ly+3);
@@ -764,9 +735,6 @@ function drawProfile() {
   const pad = { l:35, r:10, t:12, b:18 };
   const pw = w-pad.l-pad.r, ph = h-pad.t-pad.b;
   const sel = modeData[S.selectedModeIdx];
-  const gi = ghostIdx();
-  const ghost = gi >= 0 ? modeData[gi] : null;
-  // Draw profile curves
   const drawCurve = (density, color, dash) => {
     ctx.strokeStyle = color; ctx.lineWidth = 2; ctx.setLineDash(dash);
     ctx.beginPath();
@@ -779,7 +747,6 @@ function drawProfile() {
     ctx.stroke(); ctx.setLineDash([]);
   };
   if (sel) drawCurve(sel.density, '#ff6e40', []);
-  if (ghost && ghost !== sel) drawCurve(ghost.density, '#fdd835', [6,3]);
   // Node constraint lines (on profile, θ₁ only — θ₂ modulation shown on sheet)
   const anchor = getAnchor();
   for (const nc of S.nodes) {
@@ -793,12 +760,7 @@ function drawProfile() {
     if (sel) {
       const d = density2D(sel.density, sel.qeff, nc.theta1, nc.theta2, anchor);
       ctx.fillStyle = d < 0.1 ? '#4a4' : '#f44'; ctx.font = '10px monospace';
-      ctx.fillText(`e:${d.toFixed(2)}`, xc+4, pad.t+12);
-    }
-    if (ghost) {
-      const d = density2D(ghost.density, ghost.qeff, nc.theta1, nc.theta2, anchor);
-      ctx.fillStyle = d < 0.1 ? '#4a4' : '#f44'; ctx.font = '10px monospace';
-      ctx.fillText(`g:${d.toFixed(2)}`, xc+4, pad.t+24);
+      ctx.fillText(`ρ:${d.toFixed(2)}`, xc+4, pad.t+12);
     }
   }
   // Axes
@@ -810,8 +772,10 @@ function drawProfile() {
   ctx.fillText('|f|²', 2, pad.t+10);
   // Legend
   ctx.font = '10px sans-serif';
-  ctx.fillStyle = '#ff6e40'; ctx.fillText('● selected', pad.l+pw-68, pad.t+12);
-  if (ghost) { ctx.fillStyle = '#fdd835'; ctx.fillText('- - ghost', pad.l+pw-68, pad.t+24); }
+  if (sel) {
+    ctx.fillStyle = '#ff6e40';
+    ctx.fillText(`● (${sel.n1},${sel.n2})`, pad.l+pw-68, pad.t+12);
+  }
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -821,7 +785,7 @@ $('cv-spectrum').addEventListener('click', e => {
   const rect = e.target.getBoundingClientRect();
   const x = e.clientX - rect.left;
   const padL = 48, pw = rect.width - padL - 15;
-  const eIdx2 = electronIdx(), eMu2 = eIdx2 >= 0 ? modeData[eIdx2].mu : 1;
+  const eIdx2 = targetIdx(), eMu2 = eIdx2 >= 0 ? modeData[eIdx2].mu : 1;
   const maxR = Math.min(20, Math.max(5, modeData.length > 0 ? modeData[modeData.length-1].mu/eMu2*1.1 : 5));
   const vis = [];
   for (let i = 0; i < modeData.length; i++) { const r2 = modeData[i].mu/eMu2; if (r2 >= 0.3 && r2 <= maxR) vis.push(i); }
@@ -860,7 +824,7 @@ function renderConstraints() {
   list.querySelectorAll('[data-del]').forEach(el => el.onclick = function() { S.nodes.splice(+this.dataset.del, 1); onNCChange(); renderConstraints(); });
 }
 
-function onNCChange() { computeSurvival(); fullRedraw(); }
+function onNCChange() { computeSurvival(); S.selectedModeIdx = lowestSurvivorIdx(); fullRedraw(); }
 
 $('btn-add-nc').onclick = () => {
   S.nodes.push({
@@ -871,16 +835,13 @@ $('btn-add-nc').onclick = () => {
 };
 
 $('btn-optimize').onclick = () => {
-  const eIdx = electronIdx();
-  if (eIdx < 0) return;
+  const tIdx = targetIdx();
+  if (tIdx < 0) return;
   const enabled = S.nodes.filter(nc => nc.enabled);
   if (enabled.length < 2) return;
-  const eQ = modeData[eIdx].qeff;
-  // Keep the first enabled node (anchor) as-is; adjust θ₂ of subsequent
-  // enabled nodes to land on electron's standing-wave nodes:
-  //   sin²(eQ · Δθ₂) = 0  →  Δθ₂ = k·π/eQ
+  const tQ = modeData[tIdx].qeff;
   const anchorTh2 = enabled[0].theta2;
-  const nodeSpacing = 180 / eQ;
+  const nodeSpacing = 180 / tQ;
   for (let i = 1; i < enabled.length; i++) {
     enabled[i].theta2 = +((anchorTh2 + i * nodeSpacing) % 360).toFixed(2);
   }
@@ -894,8 +855,8 @@ function updateDerived() {
   const a = alphaFormula(S.eps, S.shear);
   const m = particleMass();
   const lambdaBar = HBAR / (m * CC);
-  const eIdx = electronIdx();
-  const eMu = eIdx >= 0 ? modeData[eIdx].mu : 1;
+  const tIdx = targetIdx();
+  const eMu = tIdx >= 0 ? modeData[tIdx].mu : 1;
   const R = lambdaBar * eMu;
   const aPhys = S.eps * R;
   const html = [
@@ -931,30 +892,24 @@ function updateMetrics() {
       const sc = m.survival > 0.9 ? '#4a4' : (m.survival < 0.1 ? '#f44' : '#da4');
       return `<div class="lp-row"><span class="lp-lbl" style="color:${col}">${label}</span><span class="lp-val" style="color:${sc}">${pct}% ${status}</span></div>`;
     };
-    const eIdx2 = electronIdx(), gi2 = ghostIdx();
     const keyModes = [];
     for (let i = 0; i < modeData.length; i++) {
       const m = modeData[i];
       const charged = m.n1 === 1 && m.parity === 'even';
       if (!charged) continue;
-      let label, col;
-      if (i === eIdx2) { label = 'e⁻ (1,2)'; col = '#ff6e40'; }
-      else if (i === gi2) { label = 'ghost (1,1)'; col = '#fdd835'; }
-      else { label = `(${m.n1},${m.n2})`; col = '#4fc3f7'; }
-      keyModes.push({ m, label, col });
+      const isSel = i === S.selectedModeIdx;
+      const col = isSel ? '#ff6e40' : '#4fc3f7';
+      keyModes.push({ m, label: `(${m.n1},${m.n2})`, col });
     }
     for (const km of keyModes) lines.push(fmtSurv(km.m, km.label, km.col));
-    // Per-constraint density for electron and ghost
     const anc = getAnchor();
-    const el = eIdx2 >= 0 ? modeData[eIdx2] : null;
-    const gh = gi2 >= 0 ? modeData[gi2] : null;
+    const selM = modeData[S.selectedModeIdx];
     for (const nc of S.nodes) {
       if (!nc.enabled) continue;
       const isAnc = nc === anc;
-      const de = el ? density2D(el.density, el.qeff, nc.theta1, nc.theta2, anc).toFixed(2) : '-';
-      const dg = gh ? density2D(gh.density, gh.qeff, nc.theta1, nc.theta2, anc).toFixed(2) : '-';
+      const ds = selM ? density2D(selM.density, selM.qeff, nc.theta1, nc.theta2, anc).toFixed(2) : '-';
       const lbl = `(${nc.theta1.toFixed(0)},${nc.theta2.toFixed(0)})${isAnc?' ⚓':''}`;
-      lines.push(`<div class="lp-row" style="color:${nc.color}"><span class="lp-lbl">${lbl}</span><span class="lp-val" style="font-size:10px">e:${de} g:${dg}</span></div>`);
+      lines.push(`<div class="lp-row" style="color:${nc.color}"><span class="lp-lbl">${lbl}</span><span class="lp-val" style="font-size:10px">ρ:${ds}</span></div>`);
     }
   } else {
     lines.push('<div class="lp-row"><span class="lp-val" style="color:#555">Add nodes to see survival</span></div>');
@@ -988,7 +943,7 @@ $('btn-save-prof').onclick = () => {
   const name = inp.value.trim();
   if (!name) { inp.focus(); return; }
   const profs = getProfiles();
-  profs[name] = { eps: S.eps, shear: S.shear, particle: S.particle, customMass: S.customMass, nodes: structuredClone(S.nodes) };
+  profs[name] = { eps: S.eps, shear: S.shear, particle: S.particle, customMass: S.customMass, targetN2: S.targetN2, nodes: structuredClone(S.nodes) };
   saveProfiles(profs); refreshProfileList();
   $('sel-profile').value = name;
   inp.style.display = 'none'; $('btn-save-prof').textContent = 'Save current…';
@@ -1005,6 +960,7 @@ $('btn-load-prof').onclick = () => {
   const p = profs[name]; if (!p) return;
   S.eps = p.eps; S.shear = p.shear; S.particle = p.particle;
   S.customMass = p.customMass || M_E;
+  S.targetN2 = p.targetN2 || 2;
   S.nodes = structuredClone(p.nodes || p.slotGroups || []);
   S.selectedModeIdx = -1;
   syncControls(); rebuildTorus(); fullRecompute();
@@ -1031,6 +987,8 @@ function syncControls() {
   $('cb-wire').checked = S.wire;
   document.querySelectorAll('[data-ar]').forEach(b =>
     b.classList.toggle('on', Math.abs(+b.dataset.ar - S.eps) < 0.01));
+  document.querySelectorAll('[data-n2]').forEach(b =>
+    b.classList.toggle('on', +b.dataset.n2 === S.targetN2));
 }
 
 function fullRecompute() {
@@ -1071,6 +1029,15 @@ $('btn-solve').onclick = () => {
   syncControls(); fullRecompute();
 };
 
+document.querySelectorAll('[data-n2]').forEach(btn => {
+  btn.onclick = () => {
+    S.targetN2 = +btn.dataset.n2;
+    document.querySelectorAll('[data-n2]').forEach(b => b.classList.toggle('on', +b.dataset.n2 === S.targetN2));
+    S.shear = solveShear(S.eps);
+    syncControls(); rebuildTorus(); fullRecompute();
+  };
+});
+
 $('sel-particle').onchange = function() {
   S.particle = this.value;
   $('in-mass').style.display = S.particle === 'custom' ? '' : 'none';
@@ -1087,7 +1054,9 @@ $('cb-wire').onchange = function() { S.wire = this.checked; if (wireMesh) wireMe
 function updateStatus() {
   const a = alphaFormula(S.eps, S.shear);
   const ok = Math.abs(1/a - 137.036) < 0.01;
-  $('status-bar').textContent = `α = 1/${(1/a).toFixed(3)}${ok ? ' ✓' : '  ⚠ not solved'}  ·  ε = ${S.eps.toFixed(3)}  ·  s = ${S.shear.toFixed(6)}  ·  ${modeData.length} modes`;
+  const sel = modeData[S.selectedModeIdx];
+  const selLbl = sel ? `(${sel.n1},${sel.n2})` : '—';
+  $('status-bar').textContent = `α = 1/${(1/a).toFixed(3)}${ok ? ' ✓' : '  ⚠ not solved'}  ·  ε = ${S.eps.toFixed(3)}  ·  s = ${S.shear.toFixed(6)}  ·  target (1,${S.targetN2})  ·  showing ${selLbl}  ·  ${modeData.length} modes`;
   $('status-bar').style.color = ok ? '#6c6' : '#da6';
 }
 
