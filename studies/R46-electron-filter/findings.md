@@ -220,6 +220,301 @@ q_eff is not exactly an integer).
 
 ---
 
+## Track 2. Slot placement — three candidate plans
+
+Script: [`scripts/track2_slot_placement.py`](scripts/track2_slot_placement.py)
+(table-driven — runs all plans in a single invocation)
+
+
+### Shear-induced field shift
+
+All field features (pressure maxima, B zeros, etc.) are shifted
+from their "no-shear" positions because q_eff = n₂ − s ≈ 1.932,
+not exactly 2.  The second pressure maximum, which would be at
+θ₂ = 180° for q = 2, lands at θ₂ = 360°/q_eff = **186.3°**.
+The shift of 6.3° is a direct, measurable consequence of the
+shear s ≈ 0.068.  Every feature shifts proportionally.
+
+
+### 2.1  Plan A — 4 slots at exact pressure minima (shear-corrected)
+
+Four 2° × 50° (width × height) slots between the (1,2) geodesic
+crossings, placed at the electron's exact radiation-pressure minima
+(where cos(q_eff θ₂) = −1, P = 0):
+
+| Slot | θ₂      | θ₁    | h     |
+|------|---------|-------|-------|
+| 1    | 93.2°   | 137°  | 50°   |
+| 2    | 93.2°   | 317°  | 50°   |
+| 3    | 279.5°  | 230°  | 50°   |
+| 4    | 279.5°  | 50°   | 50°   |
+
+These are the shear-corrected positions (not 90° and 270°).
+
+
+### 2.2  Plan B — 3 slots at exact field maxima (shear-corrected)
+
+One tall slot at θ₂ = 186.3° (exact second pressure peak), plus
+two half-height charge-only adjusters at θ₂ = 0° (B = 0 exactly):
+
+| Slot | θ₂      | θ₁    | h     | Role |
+|------|---------|-------|-------|------|
+| 1    | 186.3°  | 183°  | 100°  | Moment + charge |
+| 2    | 0°      | 90°   | 50°   | Charge-only (B = 0) |
+| 3    | 0°      | 270°  | 50°   | Charge-only (B = 0) |
+
+The tall slot is at the shear-corrected peak (not 180°).
+
+
+### 2.3  Plan C — 4 slots at B-field maxima (pure moment, zero charge)
+
+Four 2° × 50° slots at the exact θ₂ positions where
+|sin(q_eff θ₂)| = 1 and cos(q_eff θ₂) = 0.  Because the charge
+integrand is proportional to cos(q θ₂), **charge leakage is
+identically zero** at these positions.  B is at its peak.
+
+| Slot | θ₂      | θ₁    | B_e/B₀ | P_g   |
+|------|---------|-------|--------|-------|
+| 1    | 46.6°   | 113°  | +1.00  | 1.73  |
+| 2    | 139.7°  | 160°  | −1.00  | 0.35  |
+| 3    | 232.9°  | 206°  | +1.00  | 0.20  |
+| 4    | 326.1°  | 253°  | −1.00  | 1.56  |
+
+At all four positions: P_e = 1.000 exactly (midway between min
+and max), AC_e = 0.000, Δμ/ΔQ → ∞.
+
+Ghost pressure ranges from 0.20 to 1.73 — moderate discrimination.
+Ghost B ranges from 0.60 to 0.83 (strong ghost B also leaks, but
+we care about the electron's moment, not the ghost's).
+
+
+---
+
+### F7. Field values at slot positions — all plans
+
+| Plan | θ₂      | P_e   | AC_e  | B_e/B₀ | P_g   | AC_g  | B_g/B₀ | P_g/P_e |
+|------|---------|-------|-------|--------|-------|-------|--------|---------|
+| A    | 93.2°   | 0.000 | −1.00 | 0.00   | 1.055 | +0.06 | +1.00  | ∞       |
+| A    | 279.5°  | 0.000 | −1.00 | 0.00   | 0.835 | −0.17 | −0.99  | ∞       |
+| B    | 186.3°  | 2.000 | +1.00 | 0.00   | 0.006 | −0.99 | +0.11  | 0.003×  |
+| B    | 0°      | 2.000 | +1.00 | 0.00   | 2.000 | +1.00 | 0.00   | 1.0×    |
+| C    | 46.6°   | 1.000 | 0.00  | +1.00  | 1.726 | +0.73 | +0.69  | 1.7×    |
+| C    | 139.7°  | 1.000 | 0.00  | −1.00  | 0.354 | −0.65 | +0.76  | 0.4×    |
+| C    | 232.9°  | 1.000 | 0.00  | +1.00  | 0.202 | −0.80 | −0.60  | 0.2×    |
+| C    | 326.1°  | 1.000 | 0.00  | −1.00  | 1.558 | +0.56 | −0.83  | 1.6×    |
+
+Key observations (fixed-phase, assuming standard orientation):
+
+- **Plan A** now sits at exact electron pressure zeros (P = 0.000,
+  B = 0.000).  Ghost is fully exposed (P_g/P_e → ∞).
+
+- **Plan B** now sits at the exact second pressure peak (P = 2.000).
+  Ghost is near-zero at the tall slot (P_g = 0.006).
+
+- **Plan C** sits at P_e = 1.000 exactly, AC_e = 0, |B_e| = 1.
+
+**However**, see F14 below: the fixed-phase ratios are misleading.
+Phase degeneracy on a symmetric torus means both modes can
+freely rotate.  Only Plan C survives as a genuine filter.
+
+
+### F7b. Phase degeneracy — the real discrimination test
+
+On a perfectly symmetric (unslotted) torus, a mode's field
+pattern cos(q θ₂ + φ₀) can freely rotate (any φ₀ gives the
+same physics).  A slot breaks this symmetry and pins each mode
+to its lowest-loss orientation.  To evaluate ghost filtering,
+we must compare **phase-optimized** residuals: each mode picks
+the φ₀ that minimizes its exposure to the slots.
+
+The electron has 4 charge zeros per revolution (separated by
+π/q_e ≈ 93.2°).  The ghost has 2 (separated by π/q_g ≈ 193.1°).
+
+| Plan | Distinct θ₂ | Electron min|cos| | Ghost min|cos| | Discrimination |
+|------|-------------|-------------------|----------------|----------------|
+| A    | 2           | 0.107             | 0.107          | **1.0×**       |
+| B    | 2           | 0.107             | 0.107          | **1.0×**       |
+| C    | 4           | 0.001             | 0.726          | **610×**       |
+
+**Plans A and B provide no phase-independent discrimination.**
+Both modes dodge 2 slots equally well.  The fixed-phase ratios
+(194×, 14×) assume a specific orientation that isn't guaranteed.
+
+**Plan C achieves 610× discrimination** because:
+1. The 4 slot positions ARE the electron's charge zeros
+   (cos(q_e θ₂) = 0 at all four).  The electron is transparent.
+2. The ghost has only 2 zeros — it can zero at most 2 of 4
+   slots.  The remaining 2 always see |ghost| ≈ 0.65–0.73.
+3. The zero-spacing mismatch (93.2° vs 193.1°) is structural
+   and cannot be circumvented by any phase choice.
+
+This is the waveguide mode-filter principle: place absorbing
+features at the desired mode's zeros.  The desired mode passes
+through unperturbed; unwanted modes with different zero counts
+or spacings cannot dodge all features simultaneously.
+
+
+### F8. Charge leakage through a rectangular slot
+
+For a narrow slot (width w, height h) at position θ₂_c on
+the unrolled sheet, the charge deficit from removing that
+surface patch is:
+
+    ΔQ = −ε₀ E₀ cos(q_eff θ₂_c) · a R · w_rad · h_eff
+
+where h_eff = h_rad + r [sin(θ₁_hi) − sin(θ₁_lo)] accounts
+for the torus metric ρ = R(1 + r cos θ₁).
+
+**Charge scales linearly with both width and height (area-driven).**
+
+At Plan A positions (cos ≈ −1): removing negative-charge patches
+→ total Q becomes less negative (slot adds positive charge).
+
+At Plan B positions (cos ≈ +1): removing positive-charge patches
+→ total Q becomes more negative (slot adds negative charge).
+
+This sign difference is important for the fitting strategy (F11).
+
+
+### F9. Magnetic moment from a slot — height vs. width
+
+The tangential B field at a slot fringes through the gap
+into external 3D space.  The moment contribution depends on
+how the slot dimensions interact with the fringing field:
+
+**Direct flux** through the slot: the tangential B crossing
+the slot width produces magnetic flux
+
+    ΔΦ_B ∝ B_⊥ × w × h
+
+where B_⊥ is the B component *across* the slot (perpendicular
+to the slot's tall axis).  This flux extends a distance ~w
+beyond the slot surface, forming a fringing current loop.
+
+**Moment from the fringing loop:**
+
+    Δμ ∝ B_⊥(θ₂_c) × h × w × Δr
+
+where Δr ≈ w is the fringing depth.  Combining:
+
+    Δμ_slot ∝ sin(q_eff θ₂_c) × h × w²
+
+The **height** appears linearly (longer slot = longer magnetic
+current source).  The **width** appears *squared* because a wider
+slot both captures more flux *and* the fringing extends further.
+
+Compare with charge, which scales as w × h (area):
+
+    Δμ/ΔQ ∝ [sin(q θ₂) × h × w²] / [cos(q θ₂) × w × h]
+           = [sin(q θ₂)/cos(q θ₂)] × w
+           = tan(q θ₂) × w
+
+**The moment-to-charge ratio scales with the slot width w.**
+Wider slots produce more moment per unit charge leaked.  But
+the dominant knob is the *position* — tan(q θ₂) diverges at
+the B maxima (where cos = 0), and is zero at the pressure
+maxima (where sin = 0).
+
+
+### F10. B-field direction and slot orientation
+
+For the (1,2) mode with circular polarization, B is tangential
+to the surface and perpendicular to the geodesic propagation
+direction.  On the physical surface (at r = 2), the geodesic
+runs at ≈ 45° to the θ₂ axis, so B also runs at ≈ 45° — roughly
+equal components in θ₁ and θ₂.
+
+Our tall, narrow slots (θ₁ direction) intercept the B_θ₂
+component (across the slot width) effectively.  The B_θ₁
+component (along the slot height) flows parallel to the slot
+and barely interacts.  For r = 2, roughly half the B field
+crosses the slot.
+
+Horizontal slots (wide in θ₂, narrow in θ₁) would intercept
+B_θ₁ instead — a future option if the orientation matters.
+
+
+### F11. Fitting strategy — moment then charge
+
+**Step 1 — Fit the moment.**  Choose the tall slot at θ₂ = 180°
+(Plan B) or at the B maxima (θ₂ ≈ 47° or 140°, see below).
+Adjust the slot height h and/or width w until:
+
+    Δμ_slot = (α/2π) × μ_Bohr ≈ 0.00116 × μ_B
+
+The slot height linearly increases Δμ.  The slot width
+increases Δμ quadratically (from the fringing depth), so
+width is the more powerful lever per unit area.
+
+**Step 2 — Compensate the charge.**  The moment-producing slot
+at θ₂ = 180° also leaks charge (AC ≈ +0.98, positive charge
+removed → Q becomes more negative).  Adjust shear s to
+restore Q = −e.  Because charge depends on s through the
+α(r,s) formula, a small shear change can absorb the slot's
+charge perturbation.
+
+Alternatively (or in addition), the two charge-only slots at
+θ₂ = 0° can be resized to add or remove charge without
+affecting the moment (B = 0 there).  This gives two
+independent levers: s for global charge, θ₂=0° slots for
+local charge trimming.
+
+**Step 3 — Verify ghost discrimination.**  With the new s and
+slot positions, recheck that the ghost mode is sufficiently
+suppressed.  Plan B's θ₂ = 180° slot drains the electron
+87× more than the ghost — opposite to Plan A.  Ghost
+filtering may require additional Plan A-type slots or may
+be naturally adequate if the ghost's total energy budget is
+unfavorable.
+
+
+### F12. Plan C — best on every metric
+
+Plan C places slots at the exact θ₂ where sin(q_eff θ₂) = ±1
+and cos(q_eff θ₂) = 0.  These four positions are simultaneously:
+
+1. **The electron's charge zeros** → ΔQ = 0 exactly
+2. **The electron's B-field maxima** → maximum moment coupling
+3. **Phase-locked to the electron** → the electron is
+   structurally transparent to these slots (F7b)
+4. **Incommensurate with the ghost's zeros** → ghost can't
+   dodge all four (only has 2 zeros per revolution)
+
+Fitting is uniquely clean:
+1. Set slot dimensions to produce Δμ = (α/2π) μ_B
+2. Charge is automatically preserved (ΔQ = 0)
+3. No shear adjustment, no charge-trimming slots
+4. Ghost filtering is 610× (phase-independent)
+
+
+### F13. Shear-induced field shift
+
+The second pressure maximum of the electron field falls at
+θ₂ = 360°/q_eff = 186.3°, not at 180°.  If there were no
+shear (s = 0, q_eff = 2), it would land at exactly 180°.
+The 6.3° shift is a direct consequence of q_eff = 1.932
+stretching the wavelength.  All field features — zeros,
+B maxima, pressure minima — shift by the same proportion.
+
+This effect also means Plan B's slot at θ₂ = 180° is
+6.3° short of the true pressure peak, placing it at
+P_e = 1.977 instead of the theoretical maximum P = 2.
+For Plan C, the script computes exact B-maximum positions
+from q_eff, so no such offset occurs.
+
+
+---
+
+### Track 2 outputs
+
+| File | Contents |
+|------|----------|
+| `outputs/track2_all_electron.svg` | 3-panel (E + B + geodesic), all plans overlaid, electron |
+| `outputs/track2_all_ghost.svg`    | 3-panel, all plans overlaid, ghost |
+
+
+---
+
 ## Summary table
 
 | # | Finding |
@@ -230,3 +525,11 @@ q_eff is not exactly an integer).
 | F4 | Unipolar pressure, no θ₁ dependence — horizontal bands on sheet |
 | F5 | Ghost (1,1) discrimination persists; ~1 vs ~2 oscillations per revolution |
 | F6 | B tangential, 90° out of phase with E_n; CP equipartition confirmed |
+| F7 | Field values at all slot positions for Plans A, B, C (table) |
+| F7b | **Phase degeneracy**: Plans A, B give 1× discrimination; Plan C gives 610× |
+| F8 | Charge leakage ΔQ ∝ cos(q θ₂) × w × h — area-driven, linear in both |
+| F9 | Moment Δμ ∝ sin(q θ₂) × h × w² — width squared from fringing depth |
+| F10 | B direction at ≈45° to slot; roughly half of B crosses the slot |
+| F11 | Fitting strategy: set slot dims for moment, then adjust s for charge |
+| F12 | **Plan C wins all metrics**: ΔQ=0, |B|=1, 610× ghost discrimination |
+| F13 | Shear shifts all field features by 6.3° from their q=2 positions |

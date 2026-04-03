@@ -215,6 +215,234 @@ def plot_field_with_geodesic(field_2d, title, out_dir, filename,
     return save_svg(fig, out_dir, filename)
 
 
+# ── Slot rendering ────────────────────────────────────────────────
+
+def draw_slot(ax, theta2_center, theta1_center, width, height,
+              color='#ff4400', lw=2.0, label='slot'):
+    """Draw a rectangular slot on an axis with extent [0,360]².
+
+    Parameters
+    ----------
+    theta2_center, theta1_center : slot center in degrees
+    width  : slot width in θ₂ direction (degrees)
+    height : slot height in θ₁ direction (degrees)
+    """
+    from matplotlib.patches import Rectangle
+
+    t2_lo = theta2_center - width / 2
+    t1_lo = theta1_center - height / 2
+    rect = Rectangle((t2_lo, t1_lo), width, height,
+                      linewidth=lw, edgecolor=color,
+                      facecolor=color, alpha=0.35, label=label)
+    ax.add_patch(rect)
+
+
+def plot_field_with_slot(field_2d, title, out_dir, filename,
+                         n1, n2, s, r, slots,
+                         field_label=r'$E_n$ (V/m)',
+                         cmap=None, extra_geodesics=None):
+    """Two-panel figure: field heatmap (top) + geodesic with slots (bottom).
+
+    Parameters
+    ----------
+    field_2d : 2D array (N1 × N2), plotted on [0,360] × [0,360]
+    title : str, figure title
+    out_dir, filename : output path
+    n1, n2 : winding numbers for the primary geodesic
+    s : shear
+    r : aspect ratio (a/R)
+    slots : list of dicts, each with keys 'theta2', 'theta1',
+            'width', 'height' (all in degrees).
+            Also accepts a single dict for backwards compatibility.
+    field_label : colorbar label
+    cmap : colormap (default auto-detected)
+    extra_geodesics : list of dicts for additional geodesics
+    """
+    if isinstance(slots, dict):
+        slots = [slots]
+    if cmap is None:
+        cmap = CMAP_DIVERGE
+
+    fig = plt.figure(figsize=(10, 8))
+    gs = fig.add_gridspec(2, 2, height_ratios=[1, 1],
+                          width_ratios=[1, 0.04], hspace=0.25,
+                          wspace=0.03)
+
+    ax_field = fig.add_subplot(gs[0, 0])
+    ax_cb    = fig.add_subplot(gs[0, 1])
+    ax_geo   = fig.add_subplot(gs[1, 0], sharex=ax_field)
+
+    # ── Top panel: field heatmap with slot outlines ──
+    fmin, fmax = np.min(field_2d), np.max(field_2d)
+    unipolar = fmin >= -1e-12 * max(abs(fmax), 1.0)
+    if unipolar:
+        if cmap == CMAP_DIVERGE:
+            cmap = CMAP_UNIPOLAR
+        norm = None
+        vmin_kw = dict(vmin=0, vmax=fmax if fmax > 0 else 1.0)
+    else:
+        vmax = max(abs(fmin), abs(fmax), 1e-30)
+        norm = TwoSlopeNorm(vmin=-vmax, vcenter=0, vmax=vmax)
+        vmin_kw = {}
+
+    im = ax_field.imshow(field_2d, origin='lower', aspect='auto',
+                         extent=[0, 360, 0, 360], cmap=cmap,
+                         norm=norm, interpolation='bilinear',
+                         rasterized=True, **vmin_kw)
+    fig.colorbar(im, cax=ax_cb, label=field_label)
+
+    for sl in slots:
+        draw_slot(ax_field, sl['theta2'], sl['theta1'],
+                  sl['width'], sl['height'],
+                  color='#ff4400', lw=2.5, label=None)
+
+    ax_field.set_ylabel(r'$\theta_1$ (tube, deg)')
+    ax_field.set_title(title)
+
+    # ── Bottom panel: geodesic map with slots ──
+    ax_geo.set_xlim(0, 360)
+    ax_geo.set_ylim(0, 360)
+    ax_geo.set_aspect('auto')
+    ax_geo.set_facecolor('#f5f5f0')
+
+    ax_geo.set_xlabel(r'$\theta_2$ (ring, deg)')
+    ax_geo.set_ylabel(r'$\theta_1$ (tube, deg)')
+
+    draw_geodesic(ax_geo, n1, n2,
+                  color='#2060c0', lw=1.8, alpha=0.85,
+                  label=f'({n1},{n2}) geodesic')
+
+    if extra_geodesics:
+        for eg in extra_geodesics:
+            draw_geodesic(ax_geo,
+                          eg.get('n1', 1), eg.get('n2', 1),
+                          color=eg.get('color', '#c04020'),
+                          lw=eg.get('lw', 1.4),
+                          alpha=eg.get('alpha', 0.7),
+                          ls=eg.get('ls', '-'),
+                          label=eg.get('label', None))
+
+    for i, sl in enumerate(slots):
+        draw_slot(ax_geo, sl['theta2'], sl['theta1'],
+                  sl['width'], sl['height'],
+                  color='#ff4400', lw=2.5,
+                  label=('Slots' if i == 0 else None))
+
+    ax_geo.legend(loc='upper right', fontsize=7,
+                  framealpha=0.8, edgecolor='gray')
+    ax_geo.set_title(f'Geodesics + {len(slots)} slots (r = {r}, s = {s:.4f})')
+
+    return save_svg(fig, out_dir, filename)
+
+
+# ── Three-panel: E heatmap + B heatmap + geodesic ────────────────
+
+# Slot-plan colors for multi-plan overlays
+PLAN_COLORS = {
+    'A': '#ff4400',   # red-orange
+    'B': '#2277cc',   # blue
+    'C': '#22aa44',   # green
+}
+
+
+def plot_3panel_slots(field_e, field_b, title, out_dir, filename,
+                      n1, n2, s, r,
+                      slot_groups,
+                      label_e=r'$E_0\,(1 + \cos\,q\,\theta_2)$ (V/m)',
+                      label_b=r'$B_t / B_0 = \sin(q\,\theta_2)$',
+                      extra_geodesics=None):
+    """Three-panel figure: E heatmap + B heatmap + geodesic, all with slots.
+
+    Parameters
+    ----------
+    field_e : 2D array – radiation pressure (unipolar, ≥ 0)
+    field_b : 2D array – tangential B field (signed)
+    slot_groups : list of dicts, each with:
+        'label': str  – legend label (e.g. 'Plan A')
+        'color': str  – slot outline/fill color
+        'slots': list of slot dicts (theta2, theta1, width, height)
+    extra_geodesics : list of dicts for ghost geodesic etc.
+    """
+    fig = plt.figure(figsize=(10, 12))
+    gs = fig.add_gridspec(3, 2, height_ratios=[1, 1, 1],
+                          width_ratios=[1, 0.04], hspace=0.28,
+                          wspace=0.03)
+
+    ax_e  = fig.add_subplot(gs[0, 0])
+    ax_cb_e = fig.add_subplot(gs[0, 1])
+    ax_b  = fig.add_subplot(gs[1, 0], sharex=ax_e)
+    ax_cb_b = fig.add_subplot(gs[1, 1])
+    ax_geo = fig.add_subplot(gs[2, 0], sharex=ax_e)
+
+    extent = [0, 360, 0, 360]
+
+    # ── Panel 1: E / pressure heatmap ──
+    fmax_e = np.max(field_e)
+    im_e = ax_e.imshow(field_e, origin='lower', aspect='auto',
+                       extent=extent, cmap=CMAP_UNIPOLAR,
+                       vmin=0, vmax=fmax_e if fmax_e > 0 else 1.0,
+                       interpolation='bilinear', rasterized=True)
+    fig.colorbar(im_e, cax=ax_cb_e, label=label_e)
+    ax_e.set_ylabel(r'$\theta_1$ (tube, deg)')
+    ax_e.set_title(title)
+
+    # ── Panel 2: B heatmap ──
+    bmax = max(abs(np.min(field_b)), abs(np.max(field_b)), 1e-30)
+    norm_b = TwoSlopeNorm(vmin=-bmax, vcenter=0, vmax=bmax)
+    im_b = ax_b.imshow(field_b, origin='lower', aspect='auto',
+                       extent=extent, cmap=CMAP_DIVERGE,
+                       norm=norm_b, interpolation='bilinear',
+                       rasterized=True)
+    fig.colorbar(im_b, cax=ax_cb_b, label=label_b)
+    ax_b.set_ylabel(r'$\theta_1$ (tube, deg)')
+    ax_b.set_title('Tangential B field')
+
+    # ── Draw slots on both heatmaps ──
+    for group in slot_groups:
+        for sl in group['slots']:
+            for ax in [ax_e, ax_b]:
+                draw_slot(ax, sl['theta2'], sl['theta1'],
+                          sl['width'], sl['height'],
+                          color=group['color'], lw=2.0, label=None)
+
+    # ── Panel 3: geodesic + all slots ──
+    ax_geo.set_xlim(0, 360)
+    ax_geo.set_ylim(0, 360)
+    ax_geo.set_aspect('auto')
+    ax_geo.set_facecolor('#f5f5f0')
+    ax_geo.set_xlabel(r'$\theta_2$ (ring, deg)')
+    ax_geo.set_ylabel(r'$\theta_1$ (tube, deg)')
+
+    draw_geodesic(ax_geo, n1, n2,
+                  color='#2060c0', lw=1.8, alpha=0.85,
+                  label=f'({n1},{n2}) geodesic')
+
+    if extra_geodesics:
+        for eg in extra_geodesics:
+            draw_geodesic(ax_geo,
+                          eg.get('n1', 1), eg.get('n2', 1),
+                          color=eg.get('color', '#c04020'),
+                          lw=eg.get('lw', 1.4),
+                          alpha=eg.get('alpha', 0.7),
+                          ls=eg.get('ls', '-'),
+                          label=eg.get('label', None))
+
+    for group in slot_groups:
+        first = True
+        for sl in group['slots']:
+            draw_slot(ax_geo, sl['theta2'], sl['theta1'],
+                      sl['width'], sl['height'],
+                      color=group['color'], lw=2.0,
+                      label=(group['label'] if first else None))
+            first = False
+
+    ax_geo.legend(loc='upper right', fontsize=7,
+                  framealpha=0.8, edgecolor='gray')
+    ax_geo.set_title(f'Geodesics + all plans (r = {r}, s = {s:.4f})')
+
+    return save_svg(fig, out_dir, filename)
+
+
 # ── Side-by-side profiles ────────────────────────────────────────
 
 def plot_dual_profiles(theta_deg, profiles_left, profiles_right,

@@ -171,37 +171,80 @@ quantities.
 **Depends on:** Nothing — this is the starting point.
 
 
-### Track 2: Slot coupling — E flux through a rectangular aperture
+### Track 2: Slot placement — ghost filtering and moment enhancement
 
-**Goal:** For the field maps from Track 1, compute what happens
-when a rectangular slot of dimensions h × w is placed at various
-positions on the torus surface.
+**Goal:** Evaluate three complementary slot strategies:
+- **Plan A** — slots at pressure minima (ghost filtering)
+- **Plan B** — slots at field maxima (moment + charge)
+- **Plan C** — slots at B-field maxima (pure moment, zero charge)
 
-**Method:**
-- At each candidate slot position (θ₁_center, θ₂_center), extract
-  the local E_normal and B_tangential from Track 1
-- Integrate E_normal over the slot area → effective charge leakage
-  ΔQ for that slot
-- Estimate the moment contribution from the fringing Poynting
-  vector at the slot (this may require an approximation for the
-  fringing field depth — flag if so)
-- Compute the same for the (1,1) ghost mode → ghost leakage ΔQ_ghost
-- Define a discrimination ratio: ΔQ_ghost / ΔQ_electron — higher
-  means the slot filters the ghost more than it affects the electron
+The script is table-driven: all plans run side by side.
 
-**Outputs:**
-- Maps of ΔQ(θ₁, θ₂) and discrimination ratio across the torus
-  surface, for several slot sizes
-- Identification of "sweet spots" where the ghost leaks heavily
-  but the electron is minimally affected
-- SVG plots showing slot position vs. charge leakage and ghost
-  discrimination
+**Plan A — 4 slots at exact pressure minima (shear-corrected):**
 
-**Inputs:** Track 1 field maps, slot dimensions h × w (swept).
+| Slot | θ₂      | θ₁   | h   | P_e   | B_e  | P_g/P_e |
+|------|---------|------|-----|-------|------|---------|
+| 1–2  | 93.2°   | —    | 50° | 0.000 | 0.00 | ∞       |
+| 3–4  | 279.5°  | —    | 50° | 0.000 | 0.00 | ∞       |
+
+E and B are exactly zero → zero perturbation to the electron.
+Ghost is fully exposed.
+
+**Plan B — 3 slots at exact field maxima (shear-corrected):**
+
+| Slot | θ₂      | θ₁   | h    | B_e   | Role |
+|------|---------|------|------|-------|------|
+| 1    | 186.3°  | 183° | 100° | 0.00  | Moment + charge |
+| 2–3  | 0°      | —    | 50°  | 0.00  | Charge-only (B = 0) |
+
+The tall slot is at the exact shear-corrected second pressure peak.
+θ₂ = 0° slots trim charge without affecting moment.
+
+**Plan C — 4 slots at B-field maxima (pure moment, zero charge):**
+
+| Slot | θ₂      | θ₁   | h   | B_e   | AC_e | P_g  |
+|------|---------|------|-----|-------|------|------|
+| 1    | 46.6°   | 113° | 50° | +1.00 | 0.00 | 1.73 |
+| 2    | 139.7°  | 160° | 50° | −1.00 | 0.00 | 0.35 |
+| 3    | 232.9°  | 206° | 50° | +1.00 | 0.00 | 0.20 |
+| 4    | 326.1°  | 253° | 50° | −1.00 | 0.00 | 1.56 |
+
+At these positions, cos(q θ₂) = 0 exactly: **ΔQ = 0**.
+|B| = 1 (maximum): strongest possible moment coupling.
+No shear adjustment needed.
+
+**Aperture coupling — height vs. width:**
+
+- Charge: ΔQ ∝ cos(q θ₂) × w × h (area-driven)
+- Moment: Δμ ∝ sin(q θ₂) × h × w² (width² from fringing)
+- Ratio: Δμ/ΔQ ∝ tan(q θ₂) × w (diverges at Plan C positions)
+
+**Fitting strategy (Plan B):**
+1. Set tall-slot dimensions for Δμ = (α/2π) μ_B
+2. Adjust s and/or θ₂=0° slots to compensate charge
+
+**Fitting strategy (Plan C):**
+1. Set slot dimensions for Δμ = (α/2π) μ_B
+2. Charge automatically preserved (ΔQ = 0)
+
+**Outputs:** Combined 3-panel SVGs
+(E heatmap + B heatmap + geodesic, all plans color-coded).
 
 **Depends on:** Track 1.
 
 
+### Track 3: Interactive eigenmode lab
+
+**Goal:** An HTML/JavaScript tool for exploring eigenmodes on an
+arbitrary torus in real time.  Select a particle mass to set the
+scale, choose modes, place and edit aperture slots, and observe how
+slot placement affects ghost filtering and moment coupling — all
+interactively.  This will serve the electron analysis now and
+extend to the proton later.
+
+**Spec:** See [detail-lab.md](detail-lab.md) for the full specification.
+
+**Depends on:** Tracks 1–2 (physics model and field formulas).
 
 
 ---
