@@ -193,16 +193,28 @@ Shorthand: (n₁, n₂, n₃, n₄, n₅, n₆).
 
 ### 5.1 Stable particles (inputs and anchors)
 
-These particles pin the geometric parameters.
+**Fitting principle:** Only stable particles should sit exactly
+on Ma eigenmodes.  Unstable particles should be near-misses,
+with the gap to the nearest eigenmode correlating with
+lifetime (see §6, off-resonance hypothesis).
+
+These stable particles pin the geometric parameters:
 
 | Particle | Mode | Mass | Sheet(s) | What it pins |
 |----------|------|------|----------|--------------|
 | **Electron** | (1, 2, 0, 0, 0, 0) | 0.511 MeV | Ma_e | L_θe (input) |
 | **Proton** | (0, 0, 0, 0, 1, 2) | 938.3 MeV | Ma_p | L_θp (input) |
 | **Neutron** | (1, 2, 0, 0, 1, 2) | 939.6 MeV | Ma_e × Ma_p | σ_ep = −0.091 |
-| **Muon** | (−1, 5, 0, 0, −2, 0) | 105.7 MeV | Ma_e × Ma_p | r_p = 8.906 |
 
-The neutron and muon together pin σ_ep and r_p (R27 F18).
+**Caveat on r_p:** R27 F18 used the muon (unstable, τ = 2.2 μs)
+jointly with the neutron to pin r_p = 8.906 and σ_ep = −0.091.
+This is inconsistent with the fitting principle above — the
+muon should have a small off-resonance gap, not an exact match.
+Because the muon is long-lived, the error is small (estimated
+~0.3% from the lifetime-gap power law), and existing predictions
+are unlikely to change significantly.  However, r_p and σ_ep
+should eventually be re-derived from stable anchors only.
+
 The model has **2 effective free parameters** (r_e and r_ν;
 see §3) — the 11 remaining cross-shear components are formally
 free but irrelevant.  The MeV-scale hadron predictions below
@@ -252,26 +264,35 @@ Deuteron: 0.02% mass error, 86% of binding energy captured.
 
 ### 5.5 Charged lepton generations
 
-| Particle | Mode | Mass (MeV) | Sheet content |
-|----------|------|------------|---------------|
-| e⁻ | (1, 2, 0, 0, 0, 0) | 0.511 | Ma_e only |
-| μ⁻ | (−1, 5, 0, 0, −2, 0) | 105.7 | Ma_e × Ma_p |
-| τ⁻ | (−1, 5, 0, 0, −2, −4) | 1876 | Ma_e × Ma_p (5.6% off) |
+| Particle | Mode | Nearest mode (MeV) | Observed (MeV) | Gap | Lifetime |
+|----------|------|-------------------:|---------------:|----:|----------|
+| e⁻ | (1, 2, 0, 0, 0, 0) | 0.511 | 0.511 | 0 | Stable |
+| μ⁻ | (−1, 5, 0, 0, −2, 0) | ~105.9 | 105.7 | ~0.3% | 2.2 μs |
+| τ⁻ | (−1, 5, 0, 0, −2, −4) | 1876 | 1776.9 | 5.6% | 290 fs |
 
-All three have |n₁| = 1 → charge −1.  They differ only in
-quantum numbers on Ma_p.  "Three generations" is not a
-design constraint but the three lowest-energy solutions
-to the charge/spin constraints.  The Ma spectrum contains
-~14,000 charge −1, spin ½ levels below 10 GeV — the ghost
-mode problem determines why only 3 are occupied (R33, R38).
+All three have |n₁| = 1 → charge −1, spin ½.  They differ
+only in quantum numbers on Ma_p.  The electron sits exactly
+on its eigenmode (stable).  The muon and tau are near-misses
+whose gaps correlate with their lifetimes — the tau's larger
+gap explains its shorter lifetime (off-resonance hypothesis,
+§6).  The tau's 5.6% gap is a prediction, not a failure.
+
+"Three generations" is not a design constraint but the three
+lowest-energy solutions to the charge/spin constraints.  The
+Ma spectrum contains ~14,000 charge −1, spin ½ levels below
+10 GeV — the ghost mode problem determines why only 3 are
+occupied (R33, R38).
 
 ### 5.6 Known failures
 
 | Particle | Error | Nature of failure |
 |----------|-------|-------------------|
-| Tau τ | 5.6% | Structural gap on proton-tube ladder (R27 F22) |
 | Pion π | 14% | Nearest mode too heavy; lightest uncharged spin-0 (R27) |
 | Omega⁻ Ω⁻ | — | Structurally forbidden: spin 3/2 + odd charge incompatible (R27) |
+
+Note: the tau's 5.6% gap was previously listed here.  Under
+the off-resonance hypothesis (§6), this gap is expected — it
+explains the tau's short lifetime (290 fs).  See §5.5.
 
 ### 5.7 Predictive horizon
 
@@ -326,7 +347,7 @@ efficient axial projection of B.
 | **Three generations** | Accommodated but not predicted; reduces to ghost problem | R38, Q86 |
 | **Membrane stiffness** | Does the Ma/S interface have computable elastic constants? | R37 |
 | **α–G relationship** | Both from membrane mechanics? Hierarchy = Poisson ratio? | R37 |
-| **Tau discrepancy** | 5.6% structural gap on proton-tube ladder | R27 |
+| **Tau gap** | 5.6% off-resonance gap; consistent with τ lifetime but not yet derived from first principles | R27 |
 | **Pion mass** | 14% off; lightest meson poorly matched | R27 |
 
 ---

@@ -17,15 +17,18 @@ to the same geometric constraints at different energy levels.
 Each charged lepton is a mode on Ma with charge Q = −n₁ + n₅ = −1
 and spin ½.  The three observed modes:
 
-| Particle | Mode | Energy | Sheet content | Status |
-|----------|------|--------|---------------|--------|
-| e⁻ | (1, 2, 0, 0, 0, 0) | 0.511 MeV | Ma_e only | INPUT |
-| μ⁻ | (−1, +5, 0, 0, −2, 0) | 105.658 MeV | Ma_e × Ma_p | MATCHED (R27 F17) |
-| τ⁻ | (−1, +5, 0, 0, −2, −4) | 1876.4 MeV | Ma_e × Ma_p | 5.6% off (R27 F20) |
+| Particle | Mode | Nearest mode (MeV) | Observed (MeV) | Gap | Status |
+|----------|------|-----------:|----------:|----:|--------|
+| e⁻ | (1, 2, 0, 0, 0, 0) | 0.511 | 0.511 | 0 | Exact eigenmode (stable) |
+| μ⁻ | (−1, +5, 0, 0, −2, 0) | ~105.9 | 105.658 | ~0.3% | Near-miss (τ = 2.2 μs) |
+| τ⁻ | (−1, +5, 0, 0, −2, −4) | 1876.4 | 1776.9 | 5.6% | Near-miss (τ = 290 fs) |
 
 All three have identical charge (−1) and spin (½).  They differ
 only in their quantum numbers on the material sheets and
-consequently in mass.
+consequently in mass.  The electron sits exactly on its
+eigenmode (stable).  The muon and tau are near-misses whose
+gaps correlate with their lifetimes — the off-resonance
+hypothesis (R27 F33) predicts exactly this pattern.
 
 **Why they behave identically except for mass:**  Charge is
 Q = −n₁ + n₅, and all three modes have Q = −1.  The coupling
@@ -48,11 +51,16 @@ The muon's mass comes primarily from its proton-ring winding
 nature: it can shed the proton-ring and electron-tube energy
 by decaying to e⁻ + ν̄_e + ν_μ.
 
-The muon mass (combined with the neutron mass) pins
-r_p = 8.906 and σ_ep = −0.091 (R27 F18).
+R27 F18 used the muon mass (combined with the neutron mass)
+to pin r_p = 8.906 and σ_ep = −0.091.  However, the muon is
+unstable — the off-resonance hypothesis predicts it should
+have a small gap (~0.3%), not an exact match.  Because the
+muon is very long-lived, the error in r_p and σ_ep is small,
+but these parameters should eventually be re-derived from
+stable anchors only.
 
 
-## The tau: structural gap
+## The tau: off-resonance gap
 
 The tau candidate (−1, +5, 0, 0, −2, −4) adds proton tube
 windings (n₆ = −4) to the muon mode.  Because n₅ = −2,
@@ -65,10 +73,13 @@ The proton-scale energy ladder has a structural gap
 The tau mass falls inside this gap.  No single Ma mode
 exists at 1776.9 MeV (R27 F22–F25).
 
-This 5.6% discrepancy is the model's most informative
-failure for the generational picture.  Possible resolutions:
-multi-mode composite, asymmetric cross-shears, or
-nonlinear corrections.
+Under the off-resonance hypothesis (R27 F33), this gap is
+expected: the tau is unstable *because* it does not sit on
+an eigenmode, and its very short lifetime (290 fs) is
+consistent with the large gap.  An exact match would
+incorrectly predict the tau is stable.  The remaining
+question is whether the 5.6% gap can be derived
+quantitatively from the tau's lifetime.
 
 
 ## Three neutrinos

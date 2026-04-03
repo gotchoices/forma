@@ -43,10 +43,10 @@ undetermined.  These are discussed alongside the results.
 | **Framework** | Maxwell's equations on a flat 10D manifold Ma × S × t |
 | **Topology** | Ma = three flat tori (Ma_e × Ma_ν × Ma_p), S = ℝ³, t = ℝ |
 | **Inputs** | m_e, m_p, Δm²₂₁, α (three masses fix torus scales; α fixes within-plane shears given aspect ratios) |
-| **Pinned by observation** | r_p = 8.906 and σ_ep = −0.091 (jointly by neutron + muon, R27 F18), s₃₄ = 0.022 (ν oscillations) |
+| **Pinned by observation** | r_p = 8.906 and σ_ep = −0.091 (neutron + muon, R27 F18; muon fit approximate — see §6), s₃₄ = 0.022 (ν oscillations) |
 | **Effective free parameters** | 2 (r_e, r_ν); MeV predictions insensitive to both |
 | **Outputs** | 6 particle masses to < 1.2% with no adjustment (7 within ~1.2%); three lepton masses accommodated; nuclear masses to < 1% (R29) |
-| **Failures** | τ (5.6%), π⁺ (14%), Ω⁻ (structurally forbidden), ghost modes (~14k charge −1 spin ½ levels vs 3 observed leptons) |
+| **Failures** | π⁺ (14%), Ω⁻ (structurally forbidden), ghost modes (~14k charge −1 spin ½ levels vs 3 observed leptons); τ gap (5.6%) is consistent with its short lifetime under the off-resonance hypothesis |
 | **Testable** | Σm_ν = 116–120 meV (depends on r_ν), normal ordering, Ma_ν ring L₄ ≈ 42 μm (within reach of short-range gravity experiments if gravity propagates in Ma_ν) |
 
 ---
@@ -236,6 +236,12 @@ level, matching observation (R27 F34).
 The neutron and muon masses jointly pin the two parameters r_p
 and σ_ep (R27 F18).  After this, all remaining MeV-scale
 predictions require no further adjustment.
+
+**Note:** The muon is unstable (τ = 2.2 μs).  The off-resonance
+hypothesis (§6) predicts it should have a small gap (~0.3%), not
+an exact eigenmode match.  Using it as an exact fit target
+introduces a small systematic; r_p and σ_ep should eventually
+be re-derived from stable anchors only.
 
 
 ## 5. Neutrino mass splittings

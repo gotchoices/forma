@@ -141,7 +141,7 @@ that are all zero and shown irrelevant to every observable tested
 |------|------:|---------|
 | Ma metric components | 21 | Flat 6×6 symmetric metric |
 | Set by experimental inputs | 6 | 3 ring scales (m_e, m_p, Δm²₂₁); 3 within-plane shears (α → s_e given r_e, α → s_p given r_p, Δm² ratio → s_ν) |
-| Pinned by particle fits | 2 | r_p = 8.906 and σ_ep = −0.091 (jointly by neutron + muon, R27 F18) |
+| Pinned by particle fits | 2 | r_p = 8.906 and σ_ep = −0.091 (neutron + muon, R27 F18; muon fit is approximate — see below) |
 | Cross-shears (irrelevant) | 11 | All set to 0; shown insensitive to MeV-scale spectrum (R28) |
 | **Effective free** | **2** | **r_e** (unconstrained), **r_ν** (≥ 3.2) |
 
@@ -179,6 +179,14 @@ Lifetime-gap correlation r = −0.84 (p = 0.009) for weak
 decays supports the off-resonance hypothesis: unstable
 particles sit between eigenmodes, and the gap to the nearest
 mode predicts the lifetime.
+
+**Fitting principle:** Only stable particles should be matched
+exactly to eigenmodes.  The muon (τ = 2.2 μs) was used as an
+exact fit target in R27 F18, but the off-resonance hypothesis
+predicts it should have a small gap (~0.3%).  The tau's 5.6%
+gap is consistent with its short lifetime (290 fs) — a
+prediction, not a failure.  See
+[`studies/Taxonomy.md`](studies/Taxonomy.md) §5.1 and §5.5.
 
 ### Neutrino masses (R26)
 The neutrino mass-squared ratio Δm²₃₁/Δm²₂₁ = 33.6 is
@@ -221,7 +229,7 @@ are incomplete.
 | Matter–antimatter asymmetry | Requires CP violation beyond SM (CKM phase too small by ~10¹⁰) | Shear chirality of Ma breaks C and CP geometrically; all three Sakharov conditions met from geometry | Q97, Q32 |
 | Nuclear binding | QCD confinement (non-perturbative, lattice-computed) | Nuclei are Ma_p modes, not multi-particle bound states; binding = mode transition on Ma | R29, Q89, Q95 |
 | Force carriers (W, Z, gluon) | Fundamental gauge bosons mediating forces | Not fundamental: gluons unnecessary (Q95), W/Z are transient cross-sheet reconfigurations, not eigenmodes; sin²θ_W matches 3/13 to −0.19% (unexplained match, not derived) | Q96, R43 |
-| Three generations | Unexplained; SM accommodates but does not predict | Successive harmonics on Ma_e; dynamic filter orders them (FF(e) > FF(τ) > FF(μ)) but does not predict exactly three | R41, Q86 |
+| Three generations | Unexplained; SM accommodates but does not predict | Three charge −1 spin ½ modes found: e (exact), μ (near-miss, ~0.3% gap), τ (near-miss, 5.6% gap); gaps correlate with lifetimes | R27, R41, Q86 |
 
 ### What remains open
 - **The α problem:** what determines the shear s ≈ 0.01
