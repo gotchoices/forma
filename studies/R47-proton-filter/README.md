@@ -1,6 +1,6 @@
 # R47: Proton filter — (1,3) mode hypothesis with 3-slot geometry
 
-**Status:** Active (Track 0)
+**Status:** Active (Track 3)
 **Questions:** [Q90](../../qa/Q90-ephemeral-mode-decomposition.md) (quarks as sub-modes),
   [Q53](../../qa/Q53-anomalous-magnetic-moment.md) (g − 2)
 **Type:** compute / interactive
@@ -174,6 +174,127 @@ aspect ratios ε.  Determine what ε values give viable physics.
 **Depends on:** Track 0 (Torus Lab proton support).
 
 **Findings:** See [findings.md](findings.md), Track 1.
+
+
+### Track 2: Torus Lab generalization
+
+**Status:** Complete
+
+**Goal:** Strip particle-specific terminology from Torus Lab and make
+it work with any target mode — not just electron (1,2).
+
+**Changes made:**
+- Replaced particle dropdown with shear-preset push buttons:
+  `e⁻ (1,2)` and `p (1,3)`, each wiring the correct n₂ into the
+  α formula.  Mass selector remains separate.
+- `alphaFormula(ε, s, n₂)` and `solveShear(ε, n₂)` now accept n₂
+  as a parameter (defaults to `S.targetN2`).
+- `electronIdx()` / `ghostIdx()` replaced by `targetIdx()` and
+  `lowestSurvivorIdx()`.  The latter finds the lowest-μ charged
+  even mode with survival > 0.5, so the 3D/2D renders always show
+  the surviving mode — not a hardcoded (1,2).
+- All labels switched from "electron / ghost" to generic
+  (n₁, n₂) notation.  Spectrum Y axis reads `μ/μ₀` instead of
+  `m/mₑ`.
+- Optimize button aligns nodes with the *target* mode's
+  antinodes, not hardcoded electron antinodes.
+
+**Depends on:** Track 0.
+
+**Findings:** Verified interactively; no script output.  The lab
+now correctly renders proton (1,3) geometry with 3-slot 120°
+nodes and automatically selects the surviving mode.
+
+
+### Track 3: Proton slot geometry
+
+**Status:** Active
+
+**Goal:** Determine the physical slot dimensions (height × width)
+for the proton torus.  Verify that the resulting apertures:
+(a) preserve the (1,3) target, (b) kill (1,1) and (1,2), and
+(c) do not grossly perturb charge.
+
+**Context — where does the proton's anomalous moment come from?**
+
+The electron's anomalous magnetic moment is tiny:
+δμ/μ = α/(2π) ≈ 1.16 × 10⁻³.  In R46 Track 4, this was fully
+attributed to fringing fields at the 4 elliptical slots, and the
+slot area was sized accordingly.
+
+The proton's anomaly is enormous by comparison:
+κ_p = μ_p/μ_N − 1 = 1.793.  This is roughly 1500× larger than
+α/(2π).  It is extremely unlikely that a small set of apertures
+(covering < 1% of the sheet) can produce an anomaly of order 1.
+Prior study R45 attributed the large proton moment to cross-sheet
+coupling (σ_ep tilting the geodesic onto the Ma_e sheet, whose
+much larger area amplifies the magnetic loop).  Slots may provide
+an additional small correction.
+
+This track therefore examines **two scenarios**:
+
+| Scenario | Target δμ/μ     | Physical interpretation |
+|----------|-----------------|------------------------|
+| A        | α/(2π) ≈ 0.116% | Slot correction only — same prescription as electron |
+| B        | κ_p = 1.793     | Slots carry full anomaly (exploratory — are they physically reasonable?) |
+
+Scenario A is the baseline.  Scenario B is computed for
+comparison and to test whether large slots (≈ 30% of sheet area)
+could relate to quark confinement geometry.
+
+**Method:**
+
+1. Pick representative ε values from Track 1 (0.30 and 0.50).
+
+2. At each ε, compute:
+   - Shear s from α(ε, s) = 1/137.036 with q = 3 − s
+   - q_eff = 3 − s
+   - 3 slot positions at shear-corrected 120° intervals:
+     θ₂ = k × 360°/(3 × q_eff), for k = 0, 1, 2
+   - Absolute dimensions: tube circumference L_θ, ring
+     circumference L_φ, total sheet area A = L_θ × L_φ
+
+3. For each scenario:
+   - Pin total 3-slot area to δμ/μ × A.
+   - Each slot is an ellipse with semi-axes h (tube direction,
+     centered on inner equator θ₁ = 180°) and w (ring direction).
+   - Sweep h/w from 0.1 (flat slit) to 10 (tall narrow slot).
+   - At each h/w, compute:
+     - Individual slot area = π·h·w/4
+     - Required h and w to match the target total area
+     - Charge leakage ΔQ (integrate charge density through the
+       slot aperture)
+     - Moment increment δμ (fringing-field formula from R46)
+   - Identify optimal h/w that minimizes |ΔQ|.
+
+4. Survival check: verify that survival scores for (1,1), (1,2),
+   (1,3) are unchanged from the point-node model (Track 1) at
+   the chosen slot sizes.  Small slots should not perturb the
+   filtering significantly.
+
+5. Report physical slot dimensions in fm for both scenarios.
+
+**Outputs:**
+- Slot dimension table: h, w, area per slot (°² and fm²) at
+  each ε for both scenarios
+- Charge leakage vs h/w sweep plot
+- Moment vs slot area verification (linearity check)
+- Comparison table: electron (R46) vs proton slot dimensions
+
+**Key questions:**
+- Do proton slots scale predictably from electron slots, or does
+  the different q_eff change the fringing-field geometry?
+- In scenario B (full anomaly), how large are the slots?  Do they
+  start to overlap, violating the small-aperture approximation?
+- Does the 3-fold symmetry of the proton slots interact differently
+  with mode density than the electron's 4-fold arrangement?
+
+**Script:** `scripts/track3_slot_geometry.py`
+
+**Depends on:** Track 1 (geometry and survival data), Track 2
+(Torus Lab verification capability).
+
+**Findings:** See [findings.md](findings.md), Track 3.
 
 
 ---

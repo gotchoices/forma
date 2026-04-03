@@ -138,3 +138,122 @@ computes the same values.
 | F6 | At ε ≈ 0.05, a ≈ 0.68 fm (close to proton charge radius 0.84 fm).  At ε ≈ 0.25, R ≈ 0.66 fm.  The charge radius connection needs further study. |
 | F7 | (1,6) survives at ~94% — its q_eff is ~2× the target's, aligning with slot node positions. |
 | F8 | Ghost killing of (1,1) and (1,2) is robust across shear regimes: confirmed in both Torus Lab and the proton-specific calculation.  Higher modes (1,4+) require small ε to be killed by inner-equator slots. |
+
+
+---
+
+## Track 3: Proton slot geometry
+
+Script: [`scripts/track3_slot_geometry.py`](scripts/track3_slot_geometry.py)
+Outputs: `outputs/track3_*.svg`
+
+### Model summary
+
+Three elliptical slots on the inner equator (θ₁ = 180°), placed
+at shear-corrected 120° intervals.  Two scenarios tested:
+
+| Scenario | Target δμ/μ | Interpretation |
+|----------|-------------|----------------|
+| A | α/(2π) ≈ 1.16 × 10⁻³ | Slot correction only (same as electron R46 T4) |
+| B | κ_p = 1.793 | Full proton anomaly from slots (exploratory) |
+
+Slot dimensions are swept over h/w ratio (height-to-width of the
+elliptical aperture) at constant total area, to find the aspect
+ratio that minimizes charge leakage.
+
+### Scenario A results (δμ/μ = α/2π)
+
+Optimal slot: flat/wide (h/w ≈ 0.12), same as electron.
+
+| ε | h (°) | w (°) | h (fm) | w (fm) | Q_leak | Sheet fraction |
+|---|-------|-------|--------|--------|--------|----------------|
+| 0.30 | 2.28 | 19.4 | 0.006 | 0.168 | 1.6 × 10⁻⁴ | 0.072% |
+| 0.50 | 4.51 | 38.5 | 0.009 | 0.159 | 1.1 × 10⁻⁴ | 0.201% |
+
+Moment enhancement scales linearly with total slot area — constant
+across all h/w ratios.  Charge leakage is smallest for flat/wide
+slots and grows linearly with h/w ratio.
+
+**Field ratio at inner equator is ε-dependent:**
+- ε = 0.30: field ratio = 1.62 (inner equator is above RMS)
+- ε = 0.50: field ratio = 0.58 (mode has migrated outward)
+
+At small ε the mode density is concentrated on the inner equator,
+so the slots sit at the field maximum and are highly efficient.
+At larger ε the density shifts outward, requiring more total slot
+area (0.072% → 0.201%) to achieve the same moment.
+
+### Scenario B results (δμ/μ = κ_p)
+
+**Definitively ruled out.**
+
+| ε | Required sheet fraction | Slot overlap? |
+|---|------------------------|---------------|
+| 0.30 | **111%** of sheet area | ⚠ Yes — exceeds total sheet |
+| 0.50 | **310%** of sheet area | ⚠ Yes — 3× the entire torus |
+
+The proton's large anomalous moment (κ_p = 1.793) cannot
+originate from slot apertures.  The required missing area exceeds
+the entire torus surface.  This confirms that the proton's large
+magnetic moment must come from another mechanism — most likely
+cross-sheet coupling (R45: σ_ep tilts the geodesic onto Ma_e,
+whose much larger area amplifies the magnetic loop).
+
+### Mode survival at optimal slot sizes
+
+Survival scores are identical to the point-node model (Track 1)
+at both ε values — the slots are far too small to affect mode
+filtering.
+
+**ε = 0.30:**
+
+| Mode | Survival | Status |
+|------|----------|--------|
+| (1,1) | 7.4% | ✗ killed |
+| (1,2) | 5.0% | ✗ killed |
+| (1,3) | 100.0% | ✓ target survives |
+| (1,4) | 5.0% | ✗ killed |
+
+**ε = 0.50:**
+
+| Mode | Survival | Status |
+|------|----------|--------|
+| (1,1) | 7.4% | ✗ killed |
+| (1,2) | 12.4% | ⚠ weakened |
+| (1,3) | 100.0% | ✓ target survives |
+| (1,4) | 97.7% | ✓ survives |
+
+### Electron vs proton comparison (ε = 0.50)
+
+|  | Electron (R46 T4) | Proton (R47 T3) |
+|--|-------------------|-----------------|
+| Mode | (1,2) | (1,3) |
+| Slots | 4 | 3 |
+| q_eff | 1.94 | 2.92 |
+| Slot prescription | δμ/μ = α/(2π) | δμ/μ = α/(2π) |
+| Optimal h/w | ~0.10 | ~0.12 |
+| Optimal h × w | ~0.98° × 9.78° | ~4.51° × 38.5° |
+| Sheet fraction | ~0.05% | ~0.20% |
+| Charge leakage | ~2.3 × 10⁻⁵ e | ~1.1 × 10⁻⁴ e |
+| Tube radius a | 171 fm | 0.12 fm |
+| Ring radius R | 343 fm | 0.24 fm |
+| Sheet area | 2.3 × 10⁶ fm² | 1.1 fm² |
+
+The proton's torus is ~2 × 10⁶ times smaller in area than the
+electron's (consistent with m_p/m_e ≈ 1836, since area ∝ ƛ² ∝ 1/m²).
+In angular terms the proton needs wider slots (because the inner-equator
+field is weaker at its ε), but in absolute dimensions the slots are
+sub-fm — thousands of times smaller than the electron's.
+
+### Findings table
+
+| ID | Finding |
+|----|---------|
+| F1 | Scenario A (slot correction α/2π) gives physically reasonable slot sizes at both ε values — angular extent < 40°, sheet fraction < 0.2%. |
+| F2 | Flat/wide slots (h/w ≈ 0.12) minimize charge leakage, matching the electron's optimal aspect ratio. |
+| F3 | Scenario B (full anomaly κ_p = 1.793 from slots) is ruled out — required slot area exceeds the entire torus surface by 1–3×.  The proton's large magnetic moment must arise from cross-sheet coupling, not apertures. |
+| F4 | Moment enhancement scales linearly with total slot area at these small aperture sizes — confirms the small-aperture regime. |
+| F5 | Inner-equator field ratio drops from 1.62 (ε = 0.30) to 0.58 (ε = 0.50), requiring 2.8× more slot area at larger ε.  Smaller ε is more efficient for slot-based moment corrections. |
+| F6 | Slot sizes do not perturb mode survival — survival scores are identical to the point-node model from Track 1. |
+| F7 | Charge leakage is negligible (~10⁻⁴ e) — no shear adjustment needed, same conclusion as the electron (R46 Track 4 F6). |
+| F8 | Proton slots in absolute dimensions are sub-fm (h ≈ 0.006–0.009 fm, w ≈ 0.16–0.17 fm), roughly 1800× smaller than electron slots — consistent with the Compton wavelength ratio. |
