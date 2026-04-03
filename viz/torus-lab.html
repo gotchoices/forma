@@ -7,8 +7,8 @@
 <style>
 .main-wrap { display: flex; flex: 1; overflow: hidden; }
 #left-panel {
-  width: 290px; overflow-y: auto; border-right: 1px solid var(--border);
-  background: rgba(14,14,18,0.95); font-size: 11px;
+  width: 300px; overflow-y: auto; border-right: 1px solid var(--border);
+  background: rgba(14,14,18,0.95); font-size: 13px;
   flex-shrink: 0;
 }
 #left-panel::-webkit-scrollbar { width: 4px; }
@@ -17,30 +17,30 @@
 #view-3d { flex: 2; min-height: 160px; position: relative; }
 .cpanel { flex: 1; min-height: 90px; border-top: 1px solid var(--border); position: relative; }
 .cpanel canvas { display: block; width: 100%; height: 100%; }
-.lp-sec { border-bottom: 1px solid var(--border); padding: 8px 10px; }
-.lp-sec h3 { font-size: 10px; margin: 0 0 5px 0; color: #666; text-transform: uppercase; letter-spacing: 0.05em; }
-.lp-row { display: flex; align-items: center; gap: 5px; margin: 2px 0; flex-wrap: wrap; }
-.lp-lbl { color: #777; font-size: 10px; min-width: 20px; }
-.lp-val { color: var(--accent); font-size: 10px; font-family: monospace; }
+.lp-sec { border-bottom: 1px solid var(--border); padding: 8px 12px; }
+.lp-sec h3 { font-size: 12px; margin: 0 0 6px 0; color: #666; text-transform: uppercase; letter-spacing: 0.05em; }
+.lp-row { display: flex; align-items: center; gap: 6px; margin: 3px 0; flex-wrap: wrap; }
+.lp-lbl { color: #777; font-size: 12px; min-width: 22px; }
+.lp-val { color: var(--accent); font-size: 12px; font-family: monospace; }
 .lp-input {
-  width: 52px; background: #111; border: 1px solid var(--border);
-  color: var(--text); border-radius: 3px; padding: 1px 4px; font-size: 10px;
+  width: 56px; background: #111; border: 1px solid var(--border);
+  color: var(--text); border-radius: 3px; padding: 2px 5px; font-size: 12px;
 }
-select.lp-input { width: auto; }
+select.lp-input { width: auto; font-size: 12px; }
 .sg-row {
-  border: 1px solid var(--border); border-radius: 4px; padding: 5px 7px;
+  border: 1px solid var(--border); border-radius: 4px; padding: 6px 8px;
   margin: 4px 0; background: rgba(20,20,30,0.6);
 }
-.sg-head { display: flex; align-items: center; gap: 5px; margin-bottom: 3px; }
+.sg-head { display: flex; align-items: center; gap: 6px; margin-bottom: 4px; }
 .sg-color {
-  -webkit-appearance: none; border: none; width: 16px; height: 16px;
+  -webkit-appearance: none; border: none; width: 18px; height: 18px;
   border-radius: 3px; cursor: pointer; padding: 0; background: none;
 }
 .sg-color::-webkit-color-swatch-wrapper { padding: 0; }
 .sg-color::-webkit-color-swatch { border: none; border-radius: 2px; }
-.sg-name { flex: 1; font-weight: 600; color: #ccc; font-size: 10px; }
+.sg-name { flex: 1; font-weight: 600; color: #ccc; font-size: 12px; }
 #status-bar {
-  height: 22px; padding: 2px 14px; font-size: 10px; color: #555;
+  height: 24px; padding: 2px 14px; font-size: 12px; color: #555;
   border-top: 1px solid var(--border); background: var(--surface);
   display: flex; align-items: center; flex-shrink: 0;
 }
@@ -52,13 +52,13 @@ select.lp-input { width: auto; }
   <h1>Torus Lab</h1><div class="sep"></div>
   <div class="cg">
     <label>a/R</label>
-    <input type="range" id="sl-eps" min="0" max="1" step="0.001" value="0.555">
-    <span class="val" id="v-eps">2.00</span>
+    <input type="range" id="sl-eps" min="0" max="1" step="0.001" value="0.500">
+    <span class="val" id="v-eps">1.00</span>
   </div>
   <div class="cg" style="gap:3px">
     <button class="btn" data-ar="0.50">Ring</button>
-    <button class="btn" data-ar="1.00">Horn</button>
-    <button class="btn on" data-ar="2.00">r=2</button>
+    <button class="btn on" data-ar="1.00">Horn</button>
+    <button class="btn" data-ar="2.00">r=2</button>
   </div>
   <div class="sep"></div>
   <div class="cg">
@@ -70,6 +70,7 @@ select.lp-input { width: auto; }
   <div class="sep"></div>
   <div class="cg tog"><label><input type="checkbox" id="cb-geo" checked> geodesics</label></div>
   <div class="cg tog"><label><input type="checkbox" id="cb-wire"> wire</label></div>
+  <div class="cg tog"><label><input type="checkbox" id="cb-anti"> anti-particles</label></div>
 </div>
 
 <div class="main-wrap">
@@ -162,9 +163,9 @@ function arToSlider(r) { return r <= 1 ? ((r-0.01)/0.99)*0.5 : 0.5+((r-1)/9)*0.5
    State
    ═══════════════════════════════════════════════════════ */
 const S = {
-  eps: 2.0, shear: 0.068, particle: 'electron', customMass: M_E,
+  eps: 1.0, shear: 0.068, particle: 'electron', customMass: M_E,
   slotGroups: [], selectedModeIdx: -1,
-  shellAlpha: 0.5, geodesics: true, wire: false,
+  shellAlpha: 0.5, geodesics: true, wire: false, showAnti: false,
 };
 let modeData = [];
 
@@ -329,14 +330,16 @@ function densityAt(density, theta1Deg) {
    ═══════════════════════════════════════════════════════ */
 function sweepModes() {
   modeData = [];
+  const n1Min = S.showAnti ? -3 : 0;
   for (let n2 = 1; n2 <= 6; n2++) {
-    for (let n1 = 0; n1 <= 3; n1++) {
+    for (let n1 = n1Min; n1 <= 3; n1++) {
       for (const parity of ['even', 'odd']) {
         if (parity === 'odd' && n1 === 0) continue;
         const qeff = n2 - S.shear * n1;
         if (qeff <= 0.01) continue;
+        const absN1 = Math.abs(n1);
         const result = solveEigenmodes(S.eps, qeff, parity);
-        const eigIdx = parity === 'even' ? n1 : Math.max(0, n1-1);
+        const eigIdx = parity === 'even' ? absN1 : Math.max(0, absN1-1);
         if (eigIdx >= result.eigenvectors.length) continue;
         const coeffs = result.eigenvectors[eigIdx];
         const ev = result.eigenvalues[eigIdx];
@@ -344,7 +347,8 @@ function sweepModes() {
         const density = evalDensity(coeffs, parity, DENSITY_N);
         const C = chargeOverlap(coeffs, parity, S.eps);
         const mu = modeMu(S.eps, qeff);
-        modeData.push({ n1, n2, parity, qeff, eigenvalue: ev, coeffs, density, chargeOverlap: C, mu, coupling: 0 });
+        modeData.push({ n1, n2, parity, qeff, eigenvalue: ev, coeffs, density,
+          chargeOverlap: C, mu, coupling: 0, anti: n1 < 0 });
       }
     }
   }
@@ -508,16 +512,31 @@ function drawSheet() {
     ctx.fillStyle = `rgb(${r},${g},${b})`;
     ctx.fillRect(pad.l, pad.t+y, pw, 1);
   }
-  // Geodesics
+  // Geodesics — break the line when it wraps across an edge
   const drawGeo = (n1, n2, color) => {
-    ctx.strokeStyle = color; ctx.lineWidth = 1; ctx.globalAlpha = 0.7;
+    ctx.strokeStyle = color; ctx.lineWidth = 1.5; ctx.globalAlpha = 0.7;
+    const steps = 800;
+    let prevX = null, prevY = null;
     ctx.beginPath();
-    const steps = 500;
     for (let i = 0; i <= steps; i++) {
-      const t = i/steps;
-      const t1 = ((n1*t*360)%360)/360*ph + pad.t;
-      const t2 = ((n2*t*360)%360)/360*pw + pad.l;
-      if (i===0) ctx.moveTo(t2,t1); else ctx.lineTo(t2,t1);
+      const t = i / steps;
+      const t1 = (((n1 * t * 360) % 360) + 360) % 360;
+      const t2 = (((n2 * t * 360) % 360) + 360) % 360;
+      const y = (t1 / 360) * ph + pad.t;
+      const x = (t2 / 360) * pw + pad.l;
+      if (prevX !== null) {
+        const dx = Math.abs(x - prevX), dy = Math.abs(y - prevY);
+        if (dx > pw * 0.4 || dy > ph * 0.4) {
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(x, y);
+        } else {
+          ctx.lineTo(x, y);
+        }
+      } else {
+        ctx.moveTo(x, y);
+      }
+      prevX = x; prevY = y;
     }
     ctx.stroke(); ctx.globalAlpha = 1;
   };
@@ -537,13 +556,13 @@ function drawSheet() {
     }
   }
   // Axes
-  ctx.fillStyle = '#555'; ctx.font = '9px monospace';
-  ctx.fillText('0°', pad.l-2, pad.t+ph+12);
-  ctx.fillText('360°', pad.l+pw-16, pad.t+ph+12);
-  ctx.save(); ctx.translate(8, pad.t+ph/2); ctx.rotate(-PI/2);
+  ctx.fillStyle = '#666'; ctx.font = '11px monospace';
+  ctx.fillText('0°', pad.l-2, pad.t+ph+14);
+  ctx.fillText('360°', pad.l+pw-22, pad.t+ph+14);
+  ctx.save(); ctx.translate(10, pad.t+ph/2); ctx.rotate(-PI/2);
   ctx.fillText('θ₁', -6, 0); ctx.restore();
-  ctx.fillStyle = '#444'; ctx.font = '8px monospace';
-  ctx.fillText('θ₂ →', pad.l+pw/2-12, pad.t+ph+12);
+  ctx.fillStyle = '#555'; ctx.font = '10px monospace';
+  ctx.fillText('θ₂ →', pad.l+pw/2-14, pad.t+ph+14);
 }
 
 /* ── Spectrum ─────────────────────────────────────── */
@@ -552,38 +571,74 @@ function drawSpectrum() {
   ctx.fillStyle = '#0a0a10'; ctx.fillRect(0,0,w,h);
   if (modeData.length === 0) return;
   const eIdx = electronIdx(), eMu = eIdx >= 0 ? modeData[eIdx].mu : 1;
-  const pad = { l:45, r:15, t:14, b:16 };
+  const pad = { l:48, r:15, t:16, b:18 };
   const pw = w-pad.l-pad.r, ph = h-pad.t-pad.b;
   const maxRatio = Math.min(20, Math.max(5, modeData[modeData.length-1].mu/eMu*1.1));
   const minRatio = 0.3;
   const logMin = Math.log10(minRatio), logMax = Math.log10(maxRatio);
   const yOf = ratio => { const lr = Math.log10(Math.max(ratio, minRatio)); return pad.t + ph*(1 - (lr-logMin)/(logMax-logMin)); };
-  // Reference lines
+  // Reference lines (on-chart)
   for (const [name, ratio] of Object.entries(REF_MASS_RATIO)) {
     if (ratio > maxRatio) continue;
     const y = yOf(ratio);
     ctx.strokeStyle = '#333'; ctx.lineWidth = 1; ctx.setLineDash([4,4]);
     ctx.beginPath(); ctx.moveTo(pad.l, y); ctx.lineTo(pad.l+pw, y); ctx.stroke();
     ctx.setLineDash([]);
-    ctx.fillStyle = '#555'; ctx.font = '8px sans-serif';
-    ctx.fillText(name, pad.l+pw-ctx.measureText(name).width-2, y-2);
+    ctx.fillStyle = '#666'; ctx.font = '10px sans-serif';
+    ctx.fillText(name, pad.l+pw-ctx.measureText(name).width-2, y-3);
+  }
+  // Off-chart reference masses (three generations)
+  let offX = pad.l + 4;
+  ctx.font = '10px sans-serif';
+  for (const [name, ratio] of Object.entries(REF_MASS_RATIO)) {
+    if (ratio <= maxRatio) continue;
+    ctx.fillStyle = '#555';
+    const lbl = `↑ ${name} ${ratio.toFixed(0)}×`;
+    ctx.fillText(lbl, offX, pad.t + 10);
+    offX += ctx.measureText(lbl).width + 12;
   }
   // Electron reference line
   const yE = yOf(1);
   ctx.strokeStyle = '#ff6e4066'; ctx.lineWidth = 1; ctx.setLineDash([2,2]);
   ctx.beginPath(); ctx.moveTo(pad.l, yE); ctx.lineTo(pad.l+pw, yE); ctx.stroke();
   ctx.setLineDash([]);
-  // Mode dots — spread across x using mass (log) on y, index on x
-  const visible = [];
+  ctx.fillStyle = '#ff6e4088'; ctx.font = '10px sans-serif';
+  ctx.fillText('electron', pad.l+2, yE-3);
+  // Pairing lines: connect (n1, n2, p) with (-n1, n2, p) if both visible
+  if (S.showAnti) {
+    ctx.strokeStyle = '#ffffff18'; ctx.lineWidth = 1; ctx.setLineDash([2,3]);
+    const visible = [];
+    for (let i = 0; i < modeData.length; i++) {
+      const ratio = modeData[i].mu / eMu;
+      if (ratio >= minRatio && ratio <= maxRatio) visible.push(i);
+    }
+    const colW0 = visible.length > 0 ? pw / visible.length : pw;
+    for (let vi = 0; vi < visible.length; vi++) {
+      const m = modeData[visible[vi]];
+      if (m.n1 <= 0) continue;
+      const pi2 = visible.findIndex(vj => {
+        const mp = modeData[visible[vj]];
+        return mp.n1 === -m.n1 && mp.n2 === m.n2 && mp.parity === m.parity;
+      });
+      if (pi2 >= 0) {
+        const x1 = pad.l + (vi+0.5)*colW0, y1 = yOf(m.mu/eMu);
+        const x2 = pad.l + (pi2+0.5)*colW0, y2 = yOf(modeData[visible[pi2]].mu/eMu);
+        ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(x2,y2); ctx.stroke();
+      }
+    }
+    ctx.setLineDash([]);
+  }
+  // Mode dots
+  const visible2 = [];
   for (let i = 0; i < modeData.length; i++) {
     const ratio = modeData[i].mu / eMu;
-    if (ratio >= minRatio && ratio <= maxRatio) visible.push(i);
+    if (ratio >= minRatio && ratio <= maxRatio) visible2.push(i);
   }
-  const colW = visible.length > 0 ? pw / visible.length : pw;
+  const colW = visible2.length > 0 ? pw / visible2.length : pw;
   const maxCoupling = Math.max(1e-12, ...modeData.map(m => m.coupling));
   let lastLabelX = -Infinity;
-  for (let vi = 0; vi < visible.length; vi++) {
-    const i = visible[vi];
+  for (let vi = 0; vi < visible2.length; vi++) {
+    const i = visible2[vi];
     const m = modeData[i];
     const ratio = m.mu / eMu;
     const x = pad.l + (vi + 0.5) * colW;
@@ -591,35 +646,57 @@ function drawSpectrum() {
     const damped = m.coupling / maxCoupling;
     const alpha = Math.max(0.15, 1 - damped * 0.85);
     const isElectron = i === eIdx, isGhost = i === ghostIdx(), isSel = i === S.selectedModeIdx;
-    const r = (isSel || isElectron || isGhost) ? 4.5 : 3;
+    const isAnti = m.anti;
+    const r = (isSel || isElectron || isGhost) ? 7 : 5;
     ctx.globalAlpha = alpha;
     if (isSel) { ctx.fillStyle = '#ff6e40'; ctx.strokeStyle = '#fff'; ctx.lineWidth = 2; }
-    else if (isElectron) { ctx.fillStyle = '#ff6e40'; ctx.strokeStyle = '#ff6e40'; ctx.lineWidth = 1; }
-    else if (isGhost) { ctx.fillStyle = '#fdd835'; ctx.strokeStyle = '#fdd835'; ctx.lineWidth = 1; }
-    else { ctx.fillStyle = m.parity === 'even' ? '#4fc3f7' : 'transparent'; ctx.strokeStyle = '#4fc3f7'; ctx.lineWidth = 1; }
+    else if (isElectron) { ctx.fillStyle = '#ff6e40'; ctx.strokeStyle = '#ff6e40'; ctx.lineWidth = 1.5; }
+    else if (isGhost) { ctx.fillStyle = '#fdd835'; ctx.strokeStyle = '#fdd835'; ctx.lineWidth = 1.5; }
+    else if (isAnti) { ctx.fillStyle = '#9c27b0'; ctx.strokeStyle = '#ce93d8'; ctx.lineWidth = 1.5; }
+    else { ctx.fillStyle = m.parity === 'even' ? '#4fc3f7' : 'transparent'; ctx.strokeStyle = '#4fc3f7'; ctx.lineWidth = 1.5; }
     ctx.beginPath(); ctx.arc(x, y, r, 0, TAU);
     if (m.parity === 'even' || isSel || isElectron || isGhost) ctx.fill();
     ctx.stroke();
+    if (isAnti) {
+      ctx.strokeStyle = '#ce93d8'; ctx.lineWidth = 1.5;
+      ctx.beginPath(); ctx.moveTo(x-r*0.6, y); ctx.lineTo(x+r*0.6, y); ctx.stroke();
+    }
     ctx.globalAlpha = 1;
     const forceLabel = isSel || isElectron || isGhost;
-    if (forceLabel || x - lastLabelX > 28) {
-      ctx.fillStyle = forceLabel ? '#999' : '#555'; ctx.font = '7px monospace';
+    if (forceLabel || x - lastLabelX > 36) {
+      ctx.fillStyle = forceLabel ? '#aaa' : '#666'; ctx.font = '9px monospace';
+      const sign = m.n1 < 0 ? '' : '';
       const lbl = `${m.n1},${m.n2}${m.parity === 'odd' ? 'o' : ''}`;
-      ctx.fillText(lbl, x - ctx.measureText(lbl).width/2, y - r - 3);
+      ctx.fillText(lbl, x - ctx.measureText(lbl).width/2, y - r - 4);
       lastLabelX = x;
     }
   }
   // Y axis labels
-  ctx.fillStyle = '#555'; ctx.font = '8px monospace';
+  ctx.fillStyle = '#666'; ctx.font = '10px monospace';
   for (const v of [0.5, 1, 2, 5, 10]) {
     if (v < minRatio || v > maxRatio) continue;
     const y = yOf(v);
-    ctx.fillText(v.toString(), 2, y+3);
+    ctx.fillText(v.toString(), 2, y+4);
     ctx.strokeStyle = '#1a1a2a'; ctx.lineWidth = 0.5;
     ctx.beginPath(); ctx.moveTo(pad.l, y); ctx.lineTo(pad.l+pw, y); ctx.stroke();
   }
-  ctx.fillStyle = '#444'; ctx.font = '8px sans-serif';
-  ctx.fillText('m/mₑ', 2, pad.t-2);
+  ctx.fillStyle = '#555'; ctx.font = '10px sans-serif';
+  ctx.fillText('m/mₑ', 2, pad.t-3);
+  // Legend
+  const lgX = pad.l + pw - 120, lgY = pad.t + ph - 42;
+  ctx.globalAlpha = 0.85;
+  ctx.fillStyle = '#0a0a10cc'; ctx.fillRect(lgX-4, lgY-10, 124, 50);
+  ctx.globalAlpha = 1;
+  ctx.font = '9px sans-serif';
+  ctx.fillStyle = '#4fc3f7'; ctx.beginPath(); ctx.arc(lgX+4, lgY, 4, 0, TAU); ctx.fill();
+  ctx.fillStyle = '#999'; ctx.fillText('even parity', lgX+14, lgY+3);
+  ctx.strokeStyle = '#4fc3f7'; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(lgX+4, lgY+14, 4, 0, TAU); ctx.stroke();
+  ctx.fillStyle = '#999'; ctx.fillText('odd parity', lgX+14, lgY+17);
+  if (S.showAnti) {
+    ctx.fillStyle = '#9c27b0'; ctx.beginPath(); ctx.arc(lgX+4, lgY+28, 4, 0, TAU); ctx.fill();
+    ctx.strokeStyle = '#ce93d8'; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(lgX+1, lgY+28); ctx.lineTo(lgX+7, lgY+28); ctx.stroke();
+    ctx.fillStyle = '#999'; ctx.fillText('anti-particle', lgX+14, lgY+31);
+  }
 }
 
 /* ── 1D Profile ───────────────────────────────────── */
@@ -633,7 +710,7 @@ function drawProfile() {
   const ghost = gi >= 0 ? modeData[gi] : null;
   // Draw profile curves
   const drawCurve = (density, color, dash) => {
-    ctx.strokeStyle = color; ctx.lineWidth = 1.5; ctx.setLineDash(dash);
+    ctx.strokeStyle = color; ctx.lineWidth = 2; ctx.setLineDash(dash);
     ctx.beginPath();
     for (let i = 0; i <= DENSITY_N; i++) {
       const si = i % DENSITY_N;
@@ -656,25 +733,26 @@ function drawProfile() {
     // Annotations
     if (sel) {
       const d = densityAt(sel.density, grp.theta1);
-      ctx.fillStyle = '#ff6e40'; ctx.font = '8px monospace';
-      ctx.fillText(`e:${d.toFixed(2)}`, xc+3, pad.t+10);
+      ctx.fillStyle = '#ff6e40'; ctx.font = '10px monospace';
+      ctx.fillText(`e:${d.toFixed(2)}`, xc+4, pad.t+12);
     }
     if (ghost) {
       const d = densityAt(ghost.density, grp.theta1);
-      ctx.fillStyle = '#fdd835'; ctx.font = '8px monospace';
-      ctx.fillText(`g:${d.toFixed(2)}`, xc+3, pad.t+20);
+      ctx.fillStyle = '#fdd835'; ctx.font = '10px monospace';
+      ctx.fillText(`g:${d.toFixed(2)}`, xc+4, pad.t+24);
     }
   }
   // Axes
-  ctx.fillStyle = '#555'; ctx.font = '9px monospace';
-  ctx.fillText('0°', pad.l-2, pad.t+ph+12);
-  ctx.fillText('360°', pad.l+pw-18, pad.t+ph+12);
-  ctx.fillStyle = '#444'; ctx.font = '8px sans-serif';
-  ctx.fillText('θ₁ →', pad.l+pw/2-10, pad.t+ph+12);
-  ctx.fillText('|f|²', 2, pad.t+8);
+  ctx.fillStyle = '#666'; ctx.font = '11px monospace';
+  ctx.fillText('0°', pad.l-2, pad.t+ph+14);
+  ctx.fillText('360°', pad.l+pw-22, pad.t+ph+14);
+  ctx.fillStyle = '#555'; ctx.font = '10px sans-serif';
+  ctx.fillText('θ₁ →', pad.l+pw/2-12, pad.t+ph+14);
+  ctx.fillText('|f|²', 2, pad.t+10);
   // Legend
-  ctx.fillStyle = '#ff6e40'; ctx.fillText('● selected', pad.l+pw-55, pad.t+10);
-  if (ghost) { ctx.fillStyle = '#fdd835'; ctx.fillText('- - ghost', pad.l+pw-55, pad.t+20); }
+  ctx.font = '10px sans-serif';
+  ctx.fillStyle = '#ff6e40'; ctx.fillText('● selected', pad.l+pw-68, pad.t+12);
+  if (ghost) { ctx.fillStyle = '#fdd835'; ctx.fillText('- - ghost', pad.l+pw-68, pad.t+24); }
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -683,7 +761,7 @@ function drawProfile() {
 $('cv-spectrum').addEventListener('click', e => {
   const rect = e.target.getBoundingClientRect();
   const x = e.clientX - rect.left;
-  const padL = 45, pw = rect.width - padL - 15;
+  const padL = 48, pw = rect.width - padL - 15;
   const eIdx2 = electronIdx(), eMu2 = eIdx2 >= 0 ? modeData[eIdx2].mu : 1;
   const maxR = Math.min(20, Math.max(5, modeData.length > 0 ? modeData[modeData.length-1].mu/eMu2*1.1 : 5));
   const vis = [];
@@ -757,9 +835,19 @@ function updateDerived() {
   ];
   const sel = modeData[S.selectedModeIdx];
   if (sel) {
-    html.push(`<div class="lp-row"><span class="lp-lbl">sel</span><span class="lp-val">(${sel.n1},${sel.n2}) ${sel.parity[0]}</span></div>`);
+    const antiTag = sel.anti ? ' (anti)' : '';
+    html.push(`<div class="lp-row"><span class="lp-lbl">sel</span><span class="lp-val">(${sel.n1},${sel.n2}) ${sel.parity[0]}${antiTag}</span></div>`);
+    html.push(`<div class="lp-row"><span class="lp-lbl">μ</span><span class="lp-val">${sel.mu.toFixed(4)}</span></div>`);
     html.push(`<div class="lp-row"><span class="lp-lbl">q_eff</span><span class="lp-val">${sel.qeff.toFixed(4)}</span></div>`);
     html.push(`<div class="lp-row"><span class="lp-lbl">C</span><span class="lp-val">${sel.chargeOverlap.toFixed(4)}</span></div>`);
+    if (S.showAnti && sel.n1 !== 0) {
+      const pairN1 = -sel.n1;
+      const partner = modeData.find(m => m.n1 === pairN1 && m.n2 === sel.n2 && m.parity === sel.parity);
+      if (partner) {
+        const split = Math.abs(partner.mu - sel.mu) / Math.min(partner.mu, sel.mu) * 100;
+        html.push(`<div class="lp-row"><span class="lp-lbl">pair</span><span class="lp-val">(${pairN1},${sel.n2}) Δm=${split.toFixed(2)}%</span></div>`);
+      }
+    }
   }
   $('derived-vals').innerHTML = html.join('');
 }
@@ -845,6 +933,7 @@ function syncControls() {
   $('in-mass').style.display = S.particle === 'custom' ? '' : 'none';
   $('cb-geo').checked = S.geodesics;
   $('cb-wire').checked = S.wire;
+  $('cb-anti').checked = S.showAnti;
   document.querySelectorAll('[data-ar]').forEach(b =>
     b.classList.toggle('on', Math.abs(+b.dataset.ar - S.eps) < 0.01));
 }
@@ -896,6 +985,7 @@ $('in-mass').onchange = function() { S.customMass = +this.value; fullRedraw(); }
 
 $('cb-geo').onchange = function() { S.geodesics = this.checked; rebuildGeodesics(); };
 $('cb-wire').onchange = function() { S.wire = this.checked; if (wireMesh) wireMesh.visible = S.wire; };
+$('cb-anti').onchange = function() { S.showAnti = this.checked; S.selectedModeIdx = -1; fullRecompute(); };
 
 /* ═══════════════════════════════════════════════════════
    Status bar
@@ -903,7 +993,7 @@ $('cb-wire').onchange = function() { S.wire = this.checked; if (wireMesh) wireMe
 function updateStatus() {
   const a = alphaFormula(S.eps, S.shear);
   const ok = Math.abs(1/a - 137.036) < 0.01;
-  $('status-bar').textContent = `α = 1/${(1/a).toFixed(3)}${ok ? ' ✓' : '  ⚠ not solved'}  |  ε = ${S.eps.toFixed(3)}  |  s = ${S.shear.toFixed(6)}`;
+  $('status-bar').textContent = `α = 1/${(1/a).toFixed(3)}${ok ? ' ✓' : '  ⚠ not solved'}  ·  ε = ${S.eps.toFixed(3)}  ·  s = ${S.shear.toFixed(6)}  ·  ${modeData.length} modes`;
   $('status-bar').style.color = ok ? '#4a4' : '#a84';
 }
 
