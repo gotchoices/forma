@@ -1,6 +1,6 @@
 # R46: Electron filter — aperture effects on a toroidal cavity
 
-**Status:** Framing
+**Status:** Active (Track 4)
 **Questions:** [Q100](../../qa/Q100-aperture-moment-enhancement.md) (aperture moment enhancement),
   [Q53](../../qa/Q53-anomalous-magnetic-moment.md) (g − 2),
   [Q94](../../qa/Q94-compton-window-and-dark-modes.md) (Compton window / ghost filtering)
@@ -187,12 +187,11 @@ field magnitude.  Scripts and outputs are retained for reference.
 
 ### Track 3: Interactive eigenmode lab
 
-**Status:** Active — replaces Tracks 1–2 with corrected model.
+**Status:** Complete — key findings below.
 
 **Goal:** An interactive tool that sweeps all resonant modes of
 a toroidal cavity, shows the full eigenvalue spectrum, and lets
-the user place slot groups to observe how they filter modes and
-modify charge and moment.
+the user place node constraints to observe how they filter modes.
 
 **Key corrections from Tracks 1–2:**
 
@@ -203,24 +202,116 @@ modify charge and moment.
 2. **Medium-as-polarizer** — E normal, B tangential.  A sheet
    property, not derived from a vector wave equation.
 
-3. **Random phase, uniform in θ₂** — |e^{iq θ₂}|² = 1, so field
-   magnitude depends only on θ₁.  Slot θ₂ position is irrelevant
-   to coupling magnitude.
+3. **Phase-locked standing waves** — the first node constraint
+   pins the phase of every mode, producing a 2D density pattern
+   ρ(θ₁,θ₂) = |f(θ₁)|² · sin²(q_eff · (θ₂ − θ₂_anchor)).
+   Subsequent nodes filter based on this 2D pattern.
 
-4. **Surface coupling** — initially ~1/α, but treated as flexible
-   (may be combination of impedance, shear, and slot geometry).
+4. **Mode sweep** — the tool derives all resonant modes and shows
+   which survive the node constraints via a survival score.
 
-5. **Mode sweep, not mode selection** — the tool derives all
-   resonant modes and shows which survive the slots.
+**Implementation:** `viz/torus-lab.html` (self-contained).
 
-6. **Slot groups** — each group defines a slot shape at a tube
-   position (θ₁) with N clones equally spaced around the ring.
+**Findings:**
 
-**Implementation:** New visualizer `viz/torus-lab.html`.
+- **F1: Ghost can be selectively killed.** Placing nodes at the
+  electron's standing-wave nodes (θ₂ spacing = 180°/q_eff_electron)
+  achieves 100% electron survival while reducing the ghost (1,1) to
+  < 1% survival.  This works because q_eff differs between modes
+  due to shear: q_eff_electron ≈ 1.94, q_eff_ghost ≈ 0.94.  The
+  electron's nodes land on the ghost's antinodes.
 
-**Spec:** See [`viz/torus-lab.md`](../../viz/torus-lab.md).
+- **F2: Shear-adjusted spacing matters.** Naïve equal spacing
+  (0°, 90°, 180°, 270°) yields ~91% electron survival.
+  Shear-optimized spacing (92.65° intervals at ε = 0.5) achieves
+  100%.  The difference is ≈ 2.65° per interval.
+
+- **F3: Higher harmonics are largely preserved.** With the
+  optimized 3-node configuration: (1,2) electron 100%, (1,3)
+  85.8%, (1,4) 100%, (1,5) 99.9%, (1,6) 100%.  Only (1,3) is
+  partially weakened.
+
+- **F4: Physical realization.** The node constraints correspond to
+  physical slots (apertures) in the torus surface.  Placing slots
+  at the computed θ₂ positions forces the standing wave to anchor
+  nodes there — modes that cannot accommodate nodes at those
+  locations are suppressed.
 
 **Depends on:** Nothing — self-contained with correct physics.
+
+
+### Track 4: Slot geometry and anomalous moment
+
+**Status:** Planning
+
+**Goal:** Determine the physical slot dimensions (height × width)
+that produce the observed anomalous magnetic moment, then verify
+that charge is not grossly perturbed.
+
+**Premise from Track 3:**
+Four elliptical slots on the inner equator (θ₁ = 180°), equally
+spaced around the ring but adjusted for shear.  In practice this
+means placing them at θ₂ = 0°, 92.65°, 185.31°, 277.96° (at
+ε = 0.5) — i.e., the same shear-corrected intervals that Torus
+Lab's Optimize button computes.  The slots are identical in size
+and shape; the shear adjustment is purely a positional offset.
+
+**Method:**
+
+1. **Parameterize the slot** as an ellipse with semi-axes h (tube
+   direction, along θ₁) and w (ring direction, along θ₂), both in
+   radians.  Physical area A = π·h·w·a² (in the tube metric).
+
+2. **Pin area to anomalous moment.**  The anomalous magnetic moment
+   is g/2 − 1 = α/(2π) ≈ 1.161 × 10⁻³.  In the MaSt picture, this
+   enhancement comes from E-field bulging through the slot, extending
+   the effective current loop.  The fractional moment increase
+   δμ/μ ≈ (slot area / surface area) × (geometric coupling factor).
+   Set δμ/μ = α/(2π) and solve for the required total slot area
+   (4 slots × A_each).
+
+3. **Sweep aspect ratio h/w** at constant area.  For each ratio,
+   compute:
+   - Charge leakage through the slot (E_normal flux integral over
+     the slot area, using the eigensolver's f(θ₁) profile)
+   - Moment enhancement (extended loop area from Poynting vector)
+   - Survival scores for all modes (do the slots still kill the
+     ghost and preserve the electron?)
+
+4. **Minimize charge perturbation.**  Find the h/w ratio that
+   produces the target moment with minimal additional charge leakage.
+   Tall-narrow slots (h ≫ w) expose less ring circumference;
+   wide-short slots (w ≫ h) average over more of the tube profile.
+
+5. **Shear adjustment (if needed).**  If the slot introduces excess
+   charge, adjust shear s slightly from its α-derived value to
+   compensate.  This changes q_eff for all modes, so re-verify
+   ghost suppression and mode survival after adjustment.
+
+**Inputs:**
+- ε = a/R (free, default 0.5)
+- s from α = 1/137.036 relation
+- Anomalous moment target: g/2 − 1 = α/(2π)
+- Slot count: 4 (from Track 3 F1–F2)
+- Slot positions: shear-adjusted equal spacing on inner equator
+
+**Outputs:**
+- Required slot area A for target moment
+- Optimal h/w ratio minimizing charge perturbation
+- Mode survival table at the chosen geometry
+- Charge and moment as functions of h/w (sweep plot)
+- Revised shear if needed
+
+**Key questions:**
+- Is the moment-area relationship linear at these scales, or does
+  Bethe's (a/λ)⁴ scaling apply?
+- Does the inner equator placement (θ₁ = 180°) help or hurt?
+  The mode density is lower there (f(θ₁) smaller at inner equator
+  for even modes), which should reduce charge leakage.
+- Can we get exact α/(2π) moment enhancement without changing
+  the net charge by more than a few percent?
+
+**Depends on:** Track 3 (node positions, eigenmode data).
 
 
 ---
