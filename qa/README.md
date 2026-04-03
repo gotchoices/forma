@@ -72,5 +72,6 @@ For questions that need a computational model, see [`studies/`](../studies/).
 | [Q99](Q99-fourth-neutrino-mode.md) | The 4th neutrino mode — hidden partner or Z-width tension? | Open — testable |
 
 | [Q100](Q100-aperture-moment-enhancement.md) | Can a cavity aperture increase the magnetic moment? | Open — hypothesis (simulatable) |
+| [Q101](Q101-ghost-modes-as-excited-states.md) | Are ghost modes excited states of the electron? Reframes (1,n≥3) ladder as internal energy levels | Open — hypothesis (computable) |
 
 Unprocessed and brief questions live in [`INBOX.md`](INBOX.md).
