@@ -15,6 +15,7 @@ browser, no server required.
 | [`nested-torus.html`](nested-torus.html) | T^d | Recursive nesting of periodic dimensions (1–5 levels). Each level wraps the previous around a new circle, producing concentric boundary tori. Per-level colour, opacity, wireframe/shell, and visibility. |
 | [`fusion.html`](fusion.html) | Q95 | Proton-proton fusion: nuclear potential (Coulomb + MaSt strong), fusion rate vs temperature, WKB tunneling, B-field alignment, scenario analysis. |
 | [`torus-modes.html`](torus-modes.html) | R21 | Standing-wave eigenmodes on the curved embedded torus. Probability density |f(θ₁)|² rendered as glowing particle clouds inside a translucent shell. Multiple simultaneous modes, presets (electron, R21 trio, harmonics). Adjustable ε, shear. |
+| [`torus-lab.html`](torus-lab.html) | R46 | Eigenmode workbench: sweeps all (n₁,n₂) modes, displays energy-level spectrum with known particle masses. Slot group placement for mode filtering and moment/charge analysis. 3D density, 2D sheet, 1D profiles. Profile save/load. |
 
 ## Launch
 

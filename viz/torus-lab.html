@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Torus Lab — totu viz</title>
+<link rel="stylesheet" href="totu-viz.css">
+<style>
+.main-wrap { display: flex; flex: 1; overflow: hidden; }
+#left-panel {
+  width: 290px; overflow-y: auto; border-right: 1px solid var(--border);
+  background: rgba(14,14,18,0.95); font-size: 11px;
+  flex-shrink: 0;
+}
+#left-panel::-webkit-scrollbar { width: 4px; }
+#left-panel::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
+#main-area { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+#view-3d { flex: 2; min-height: 160px; position: relative; }
+.cpanel { flex: 1; min-height: 90px; border-top: 1px solid var(--border); position: relative; }
+.cpanel canvas { display: block; width: 100%; height: 100%; }
+.lp-sec { border-bottom: 1px solid var(--border); padding: 8px 10px; }
+.lp-sec h3 { font-size: 10px; margin: 0 0 5px 0; color: #666; text-transform: uppercase; letter-spacing: 0.05em; }
+.lp-row { display: flex; align-items: center; gap: 5px; margin: 2px 0; flex-wrap: wrap; }
+.lp-lbl { color: #777; font-size: 10px; min-width: 20px; }
+.lp-val { color: var(--accent); font-size: 10px; font-family: monospace; }
+.lp-input {
+  width: 52px; background: #111; border: 1px solid var(--border);
+  color: var(--text); border-radius: 3px; padding: 1px 4px; font-size: 10px;
+}
+select.lp-input { width: auto; }
+.sg-row {
+  border: 1px solid var(--border); border-radius: 4px; padding: 5px 7px;
+  margin: 4px 0; background: rgba(20,20,30,0.6);
+}
+.sg-head { display: flex; align-items: center; gap: 5px; margin-bottom: 3px; }
+.sg-color {
+  -webkit-appearance: none; border: none; width: 16px; height: 16px;
+  border-radius: 3px; cursor: pointer; padding: 0; background: none;
+}
+.sg-color::-webkit-color-swatch-wrapper { padding: 0; }
+.sg-color::-webkit-color-swatch { border: none; border-radius: 2px; }
+.sg-name { flex: 1; font-weight: 600; color: #ccc; font-size: 10px; }
+#status-bar {
+  height: 22px; padding: 2px 14px; font-size: 10px; color: #555;
+  border-top: 1px solid var(--border); background: var(--surface);
+  display: flex; align-items: center; flex-shrink: 0;
+}
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <h1>Torus Lab</h1><div class="sep"></div>
+  <div class="cg">
+    <label>a/R</label>
+    <input type="range" id="sl-eps" min="0" max="1" step="0.001" value="0.555">
+    <span class="val" id="v-eps">2.00</span>
+  </div>
+  <div class="cg" style="gap:3px">
+    <button class="btn" data-ar="0.50">Ring</button>
+    <button class="btn" data-ar="1.00">Horn</button>
+    <button class="btn on" data-ar="2.00">r=2</button>
+  </div>
+  <div class="sep"></div>
+  <div class="cg">
+    <label>shear</label>
+    <input type="range" id="sl-s" min="0" max="0.5" step="0.0001" value="0.068">
+    <span class="val" id="v-s">0.0680</span>
+  </div>
+  <button class="btn" id="btn-solve" title="Solve shear for α = 1/137">Solve α</button>
+  <div class="sep"></div>
+  <div class="cg tog"><label><input type="checkbox" id="cb-geo" checked> geodesics</label></div>
+  <div class="cg tog"><label><input type="checkbox" id="cb-wire"> wire</label></div>
+</div>
+
+<div class="main-wrap">
+<div id="left-panel">
+
+  <div class="lp-sec">
+    <h3>Particle</h3>
+    <div class="lp-row">
+      <select class="lp-input" id="sel-particle">
+        <option value="electron">Electron</option>
+        <option value="proton">Proton</option>
+        <option value="custom">Custom</option>
+      </select>
+      <input type="number" class="lp-input" id="in-mass" style="width:80px;display:none" step="any">
+    </div>
+  </div>
+
+  <div class="lp-sec" id="sec-derived">
+    <h3>Derived</h3>
+    <div id="derived-vals"></div>
+  </div>
+
+  <div class="lp-sec">
+    <h3>Slot Groups</h3>
+    <div id="slot-list"></div>
+    <button class="btn" id="btn-add-slot" style="margin-top:4px">+ Add Group</button>
+  </div>
+
+  <div class="lp-sec">
+    <h3>Profiles</h3>
+    <div class="lp-row">
+      <select class="lp-input" id="sel-profile" style="flex:1"><option value="">— none —</option></select>
+      <button class="btn" id="btn-load-prof">Load</button>
+      <button class="btn" id="btn-del-prof">Del</button>
+    </div>
+    <div class="lp-row" style="margin-top:3px">
+      <button class="btn" id="btn-save-prof">Save current…</button>
+    </div>
+  </div>
+
+  <div class="lp-sec">
+    <h3>Metrics</h3>
+    <div id="metrics-vals"></div>
+  </div>
+
+</div>
+
+<div id="main-area">
+  <div id="view-3d"></div>
+  <div class="cpanel"><canvas id="cv-sheet"></canvas></div>
+  <div class="cpanel"><canvas id="cv-spectrum"></canvas></div>
+  <div class="cpanel"><canvas id="cv-profile"></canvas></div>
+</div>
+</div>
+
+<div id="status-bar"></div>
+
+<script type="importmap">
+{"imports":{
+  "three":"https://cdn.jsdelivr.net/npm/three@0.163.0/build/three.module.js",
+  "three/addons/":"https://cdn.jsdelivr.net/npm/three@0.163.0/examples/jsm/"
+}}
+</script>
+<script type="module">
+import { THREE, createScene, autoResize, animLoop } from './totu-viz.js';
+
+const $ = id => document.getElementById(id);
+const TAU = 2 * Math.PI;
+const PI = Math.PI;
+
+/* ═══════════════════════════════════════════════════════
+   Constants
+   ═══════════════════════════════════════════════════════ */
+const ALPHA = 7.2973525693e-3;
+const M_E = 9.1093837015e-31;
+const M_P = 1.67262192e-27;
+const HBAR = 1.054571817e-34;
+const CC = 299792458;
+const PARTICLE_MASS = { electron: M_E, proton: M_P };
+const REF_MASS_RATIO = { muon: 206.768, tau: 3477.23, proton: 1836.15 };
+const SLOT_COLORS = ['#ff4400','#2277cc','#22aa44','#cc44cc','#ddaa00','#00aacc','#cc6600','#8844cc'];
+
+/* ═══════════════════════════════════════════════════════
+   Non-linear a/R slider (same as torus-modes)
+   ═══════════════════════════════════════════════════════ */
+function sliderToAR(v) { return v <= 0.5 ? 0.01 + (v/0.5)*0.99 : 1 + ((v-0.5)/0.5)*9; }
+function arToSlider(r) { return r <= 1 ? ((r-0.01)/0.99)*0.5 : 0.5+((r-1)/9)*0.5; }
+
+/* ═══════════════════════════════════════════════════════
+   State
+   ═══════════════════════════════════════════════════════ */
+const S = {
+  eps: 2.0, shear: 0.068, particle: 'electron', customMass: M_E,
+  slotGroups: [], selectedModeIdx: -1,
+  shellAlpha: 0.5, geodesics: true, wire: false,
+};
+let modeData = [];
+
+function particleMass() {
+  return S.particle === 'custom' ? S.customMass : (PARTICLE_MASS[S.particle] || M_E);
+}
+
+/* ═══════════════════════════════════════════════════════
+   Eigensolver (from torus-modes.html)
+   ═══════════════════════════════════════════════════════ */
+const NFOURIER = 16;
+
+function solveEigenmodes(eps, qeff, parity) {
+  const N = NFOURIER;
+  const isEven = parity === 'even';
+  const dim = isEven ? N + 1 : N;
+  const NQ = 512;
+  const dth = TAU / NQ;
+  const H = new Float64Array(dim * dim);
+  const M = new Float64Array(dim * dim);
+  for (let q = 0; q < NQ; q++) {
+    const th = (q + 0.5) * dth;
+    const ct = Math.cos(th);
+    const p = 1 + eps * ct;
+    const pot = eps * eps * qeff * qeff / p;
+    const w = p;
+    const phi = new Float64Array(dim);
+    const dphi = new Float64Array(dim);
+    if (isEven) {
+      for (let n = 0; n <= N; n++) { phi[n] = n === 0 ? 1 : Math.cos(n * th); dphi[n] = n === 0 ? 0 : -n * Math.sin(n * th); }
+    } else {
+      for (let n = 0; n < N; n++) { phi[n] = Math.sin((n+1) * th); dphi[n] = (n+1) * Math.cos((n+1) * th); }
+    }
+    for (let i = 0; i < dim; i++)
+      for (let j = i; j < dim; j++) {
+        const hij = (p * dphi[i] * dphi[j] + pot * phi[i] * phi[j]) * dth;
+        const mij = (w * phi[i] * phi[j]) * dth;
+        H[i*dim+j] += hij; M[i*dim+j] += mij;
+        if (j !== i) { H[j*dim+i] += hij; M[j*dim+i] += mij; }
+      }
+  }
+  const L = new Float64Array(dim * dim);
+  for (let i = 0; i < dim; i++)
+    for (let j = 0; j <= i; j++) {
+      let sum = M[i*dim+j];
+      for (let k = 0; k < j; k++) sum -= L[i*dim+k] * L[j*dim+k];
+      L[i*dim+j] = i === j ? Math.sqrt(Math.max(sum, 1e-30)) : sum / L[j*dim+j];
+    }
+  const Linv = new Float64Array(dim * dim);
+  for (let i = 0; i < dim; i++) {
+    Linv[i*dim+i] = 1 / L[i*dim+i];
+    for (let j = i+1; j < dim; j++) {
+      let sum = 0;
+      for (let k = i; k < j; k++) sum -= L[j*dim+k] * Linv[k*dim+i];
+      Linv[j*dim+i] = sum / L[j*dim+j];
+    }
+  }
+  const A = new Float64Array(dim * dim);
+  const tmp = new Float64Array(dim * dim);
+  for (let i = 0; i < dim; i++)
+    for (let j = 0; j < dim; j++) { let s = 0; for (let k = 0; k < dim; k++) s += Linv[i*dim+k]*H[k*dim+j]; tmp[i*dim+j] = s; }
+  for (let i = 0; i < dim; i++)
+    for (let j = 0; j < dim; j++) { let s = 0; for (let k = 0; k < dim; k++) s += tmp[i*dim+k]*Linv[j*dim+k]; A[i*dim+j] = s; }
+  const V = new Float64Array(dim * dim);
+  for (let i = 0; i < dim; i++) V[i*dim+i] = 1;
+  const evals = new Float64Array(dim);
+  for (let i = 0; i < dim; i++) evals[i] = A[i*dim+i];
+  for (let iter = 0; iter < 200; iter++) {
+    let off = 0;
+    for (let i = 0; i < dim; i++) for (let j = i+1; j < dim; j++) off += A[i*dim+j]**2;
+    if (off < 1e-24) break;
+    for (let i = 0; i < dim; i++)
+      for (let j = i+1; j < dim; j++) {
+        const aij = A[i*dim+j]; if (Math.abs(aij) < 1e-15) continue;
+        const diff = evals[j] - evals[i];
+        let t; if (Math.abs(diff) < 1e-30) t = 1;
+        else { const tau = diff/(2*aij); t = Math.sign(tau)/(Math.abs(tau)+Math.sqrt(1+tau*tau)); }
+        const c = 1/Math.sqrt(1+t*t), s2 = t*c;
+        evals[i] -= t*aij; evals[j] += t*aij;
+        A[i*dim+j] = 0; A[j*dim+i] = 0; A[i*dim+i] = evals[i]; A[j*dim+j] = evals[j];
+        for (let k = 0; k < dim; k++) { if (k===i||k===j) continue;
+          const aki=A[k*dim+i],akj=A[k*dim+j];
+          A[k*dim+i]=A[i*dim+k]=c*aki-s2*akj; A[k*dim+j]=A[j*dim+k]=s2*aki+c*akj; }
+        for (let k = 0; k < dim; k++) { const vki=V[k*dim+i],vkj=V[k*dim+j];
+          V[k*dim+i]=c*vki-s2*vkj; V[k*dim+j]=s2*vki+c*vkj; }
+      }
+  }
+  const order = Array.from({length:dim},(_,i)=>i).sort((a,b)=>evals[a]-evals[b]);
+  const evecs = [], sortedEvals = new Float64Array(dim);
+  for (let idx = 0; idx < dim; idx++) {
+    const oi = order[idx]; sortedEvals[idx] = evals[oi];
+    const u = new Float64Array(dim);
+    for (let k = 0; k < dim; k++) u[k] = V[k*dim+oi];
+    const v = new Float64Array(dim);
+    for (let i = dim-1; i >= 0; i--) { let s = u[i]; for (let k = i+1; k < dim; k++) s -= L[k*dim+i]*v[k]; v[i] = s/L[i*dim+i]; }
+    evecs.push(v);
+  }
+  return { eigenvalues: sortedEvals, eigenvectors: evecs };
+}
+
+const DENSITY_N = 256;
+
+function evalDensity(coeffs, parity, nSamples) {
+  const isEven = parity === 'even';
+  const out = new Float64Array(nSamples);
+  for (let i = 0; i < nSamples; i++) {
+    const th = (i / nSamples) * TAU;
+    let f = 0;
+    if (isEven) { for (let n = 0; n < coeffs.length; n++) f += coeffs[n] * (n === 0 ? 1 : Math.cos(n*th)); }
+    else { for (let n = 0; n < coeffs.length; n++) f += coeffs[n] * Math.sin((n+1)*th); }
+    out[i] = f * f;
+  }
+  let mx = 0; for (let i = 0; i < nSamples; i++) if (out[i] > mx) mx = out[i];
+  if (mx > 0) for (let i = 0; i < nSamples; i++) out[i] /= mx;
+  return out;
+}
+
+function chargeOverlap(coeffs, parity, eps) {
+  const NQ = 512, dth = TAU / NQ;
+  let c = 0, norm = 0;
+  for (let q = 0; q < NQ; q++) {
+    const th = (q+0.5)*dth, ct = Math.cos(th);
+    let f = 0;
+    if (parity === 'even') { for (let n = 0; n < coeffs.length; n++) f += coeffs[n]*(n===0?1:Math.cos(n*th)); }
+    else { for (let n = 0; n < coeffs.length; n++) f += coeffs[n]*Math.sin((n+1)*th); }
+    const w = 1 + eps*ct;
+    c += f*ct*w*dth; norm += f*f*w*dth;
+  }
+  return norm > 0 ? c/Math.sqrt(norm) : 0;
+}
+
+/* ═══════════════════════════════════════════════════════
+   Physics helpers
+   ═══════════════════════════════════════════════════════ */
+function alphaFormula(eps, s) {
+  const q = 2 - s;
+  if (q <= 0) return 0;
+  const sn = Math.sin(TAU * s);
+  if (Math.abs(sn) < 1e-15) return 0;
+  const mu = Math.sqrt(1/(eps*eps) + q*q);
+  return mu * sn*sn / (4*PI*q*q);
+}
+
+function solveShear(eps) {
+  let lo = 0.001, hi = 0.499;
+  for (let i = 0; i < 80; i++) {
+    const mid = (lo+hi)/2;
+    if (alphaFormula(eps, mid) > ALPHA) hi = mid; else lo = mid;
+  }
+  return (lo+hi)/2;
+}
+
+function modeMu(eps, qeff) { return Math.sqrt(1/(eps*eps) + qeff*qeff); }
+
+function densityAt(density, theta1Deg) {
+  const idx = Math.floor(((theta1Deg / 360 % 1 + 1) % 1) * density.length) % density.length;
+  return density[idx];
+}
+
+/* ═══════════════════════════════════════════════════════
+   Mode sweep
+   ═══════════════════════════════════════════════════════ */
+function sweepModes() {
+  modeData = [];
+  for (let n2 = 1; n2 <= 6; n2++) {
+    for (let n1 = 0; n1 <= 3; n1++) {
+      for (const parity of ['even', 'odd']) {
+        if (parity === 'odd' && n1 === 0) continue;
+        const qeff = n2 - S.shear * n1;
+        if (qeff <= 0.01) continue;
+        const result = solveEigenmodes(S.eps, qeff, parity);
+        const eigIdx = parity === 'even' ? n1 : Math.max(0, n1-1);
+        if (eigIdx >= result.eigenvectors.length) continue;
+        const coeffs = result.eigenvectors[eigIdx];
+        const ev = result.eigenvalues[eigIdx];
+        if (ev < 0) continue;
+        const density = evalDensity(coeffs, parity, DENSITY_N);
+        const C = chargeOverlap(coeffs, parity, S.eps);
+        const mu = modeMu(S.eps, qeff);
+        modeData.push({ n1, n2, parity, qeff, eigenvalue: ev, coeffs, density, chargeOverlap: C, mu, coupling: 0 });
+      }
+    }
+  }
+  modeData.sort((a, b) => a.mu - b.mu);
+  const elIdx = modeData.findIndex(m => m.n1===1 && m.n2===2 && m.parity==='even');
+  if (S.selectedModeIdx < 0 || S.selectedModeIdx >= modeData.length) S.selectedModeIdx = Math.max(0, elIdx);
+  computeSlotCoupling();
+}
+
+function computeSlotCoupling() {
+  for (const m of modeData) {
+    let tot = 0;
+    for (const grp of S.slotGroups) {
+      const d = densityAt(m.density, grp.theta1);
+      tot += d * (grp.width * PI/180) * (grp.height * PI/180) * grp.count;
+    }
+    m.coupling = tot;
+  }
+}
+
+function electronIdx() { return modeData.findIndex(m => m.n1===1 && m.n2===2 && m.parity==='even'); }
+function ghostIdx() { return modeData.findIndex(m => m.n1===1 && m.n2===1 && m.parity==='even'); }
+
+/* ═══════════════════════════════════════════════════════
+   3D Scene
+   ═══════════════════════════════════════════════════════ */
+const R_MAJOR = 2.0;
+const { scene, camera, renderer, controls } = createScene($('view-3d'), { camPos: [3,2,3.5], far: 300, maxDistance: 80 });
+autoResize(renderer, camera, $('view-3d'));
+
+const shellMat = new THREE.MeshPhongMaterial({ color: 0x0d1520, transparent: true, opacity: 0.2, side: THREE.DoubleSide, depthWrite: false, shininess: 50 });
+const glowMat = new THREE.MeshBasicMaterial({ vertexColors: true, transparent: true, opacity: 0.8, side: THREE.DoubleSide, depthWrite: false, blending: THREE.AdditiveBlending });
+const wireMat = new THREE.MeshBasicMaterial({ color: 0x334455, wireframe: true, transparent: true, opacity: 0.07, side: THREE.DoubleSide });
+
+let torusGeom = null, shellMesh = null, glowMesh = null, wireMesh = null;
+let geoMeshes = [];
+
+function buildTorusGeom(R, a, segU, segV) {
+  const nv = (segU+1)*(segV+1);
+  const pos = new Float32Array(nv*3), col = new Float32Array(nv*3);
+  const th1s = new Float32Array(nv), th2s = new Float32Array(nv);
+  const idx = [];
+  let vi=0,ci=0,ti=0;
+  for (let i = 0; i <= segU; i++) {
+    const th = (i/segU)*TAU, ct = Math.cos(th), st = Math.sin(th);
+    for (let j = 0; j <= segV; j++) {
+      const ph = (j/segV)*TAU, rr = R+a*ct;
+      pos[vi++]=rr*Math.cos(ph); pos[vi++]=a*st; pos[vi++]=rr*Math.sin(ph);
+      col[ci++]=0; col[ci++]=0; col[ci++]=0;
+      th1s[ti]=th; th2s[ti]=ph; ti++;
+    }
+  }
+  for (let i = 0; i < segU; i++) for (let j = 0; j < segV; j++) {
+    const a_=i*(segV+1)+j, b_=a_+segV+1;
+    idx.push(a_,b_,a_+1, b_,b_+1,a_+1);
+  }
+  const g = new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.Float32BufferAttribute(pos,3));
+  g.setAttribute('color', new THREE.Float32BufferAttribute(col,3));
+  g.setIndex(idx); g.computeVertexNormals();
+  g.userData = { th1s, th2s };
+  return g;
+}
+
+function rebuildTorus() {
+  if (shellMesh) scene.remove(shellMesh, glowMesh, wireMesh);
+  if (torusGeom) torusGeom.dispose();
+  const a = S.eps * R_MAJOR;
+  torusGeom = buildTorusGeom(R_MAJOR, a, 64, 128);
+  shellMesh = new THREE.Mesh(torusGeom, shellMat);
+  glowMesh = new THREE.Mesh(torusGeom, glowMat);
+  wireMesh = new THREE.Mesh(torusGeom, wireMat);
+  wireMesh.visible = S.wire;
+  scene.add(shellMesh, glowMesh, wireMesh);
+  const bound = R_MAJOR + a + 0.2, dist = bound * 2.5;
+  camera.position.set(dist*0.5, dist*0.65, dist*0.68);
+  controls.target.set(0,0,0); controls.update();
+}
+
+function updateVertexColors() {
+  if (!torusGeom) return;
+  const { th1s, th2s } = torusGeom.userData;
+  const nv = th1s.length, arr = torusGeom.attributes.color.array;
+  const md = modeData[S.selectedModeIdx];
+  const modeCol = new THREE.Color('#ff6e40');
+  for (let vi = 0; vi < nv; vi++) {
+    if (!md) { arr[vi*3]=0; arr[vi*3+1]=0; arr[vi*3+2]=0; continue; }
+    const si = Math.floor(((th1s[vi]/TAU+1)%1)*DENSITY_N) % DENSITY_N;
+    const d = md.density[si];
+    let inSlot = false;
+    for (const grp of S.slotGroups) {
+      const t1c = grp.theta1*PI/180, hh = grp.height*PI/180/2, hw = grp.width*PI/180/2;
+      for (let k = 0; k < grp.count; k++) {
+        const t2c = k*TAU/grp.count;
+        const dt1 = Math.abs(((th1s[vi]-t1c+PI)%TAU+TAU)%TAU - PI);
+        const dt2 = Math.abs(((th2s[vi]-t2c+PI)%TAU+TAU)%TAU - PI);
+        if (dt1 < hh && dt2 < hw) { inSlot = true; break; }
+      }
+      if (inSlot) break;
+    }
+    if (inSlot) { arr[vi*3]=0.02; arr[vi*3+1]=0; arr[vi*3+2]=0; }
+    else { arr[vi*3]=modeCol.r*d*0.8; arr[vi*3+1]=modeCol.g*d*0.8; arr[vi*3+2]=modeCol.b*d*0.8; }
+  }
+  torusGeom.attributes.color.needsUpdate = true;
+}
+
+function rebuildGeodesics() {
+  for (const m of geoMeshes) { scene.remove(m); m.geometry.dispose(); m.material.dispose(); }
+  geoMeshes = [];
+  if (!S.geodesics) return;
+  const a = S.eps * R_MAJOR;
+  if (a < 1e-6) return;
+  const configs = [];
+  const sel = modeData[S.selectedModeIdx];
+  if (sel) configs.push({ n1: sel.n1, n2: sel.n2, color: '#ff6e40' });
+  const gi = ghostIdx();
+  if (gi >= 0 && gi !== S.selectedModeIdx) configs.push({ n1: 1, n2: 1, color: '#fdd835' });
+  for (const cfg of configs) {
+    const nSeg = Math.max(200, (cfg.n1+cfg.n2)*60);
+    const pts = [];
+    for (let i = 0; i <= nSeg; i++) {
+      const t = (i/nSeg)*TAU, th1 = cfg.n1*t, ph = cfg.n2*t;
+      const rr = R_MAJOR + a*Math.cos(th1);
+      pts.push(new THREE.Vector3(rr*Math.cos(ph), a*Math.sin(th1), rr*Math.sin(ph)));
+    }
+    const curve = new THREE.CatmullRomCurve3(pts, true);
+    const tubeR = Math.max(0.007, Math.min(0.025, 0.012/Math.max(1, S.eps*0.5)));
+    const geo = new THREE.TubeGeometry(curve, nSeg, tubeR, 6, true);
+    const mat = new THREE.MeshBasicMaterial({ color: new THREE.Color(cfg.color) });
+    const mesh = new THREE.Mesh(geo, mat);
+    scene.add(mesh); geoMeshes.push(mesh);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════
+   Canvas helpers
+   ═══════════════════════════════════════════════════════ */
+function fitCanvas(cv) {
+  const p = cv.parentElement, w = p.clientWidth, h = p.clientHeight;
+  const dpr = Math.min(devicePixelRatio, 2);
+  cv.width = w*dpr; cv.height = h*dpr;
+  cv.style.width = w+'px'; cv.style.height = h+'px';
+  const ctx = cv.getContext('2d');
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+  return { ctx, w, h };
+}
+
+/* ── 2D Sheet ─────────────────────────────────────── */
+function drawSheet() {
+  const { ctx, w, h } = fitCanvas($('cv-sheet'));
+  ctx.fillStyle = '#0a0a10'; ctx.fillRect(0,0,w,h);
+  const md = modeData[S.selectedModeIdx];
+  if (!md) return;
+  const pad = { l:35, r:10, t:12, b:18 };
+  const pw = w-pad.l-pad.r, ph = h-pad.t-pad.b;
+  for (let y = 0; y < ph; y++) {
+    const th1 = (y/ph) * 360;
+    const si = Math.floor(((th1/360)%1)*DENSITY_N) % DENSITY_N;
+    const d = md.density[si];
+    const r = Math.floor(d*255*0.7), g = Math.floor(d*120*0.7), b = Math.floor(d*40*0.3);
+    ctx.fillStyle = `rgb(${r},${g},${b})`;
+    ctx.fillRect(pad.l, pad.t+y, pw, 1);
+  }
+  // Geodesics
+  const drawGeo = (n1, n2, color) => {
+    ctx.strokeStyle = color; ctx.lineWidth = 1; ctx.globalAlpha = 0.7;
+    ctx.beginPath();
+    const steps = 500;
+    for (let i = 0; i <= steps; i++) {
+      const t = i/steps;
+      const t1 = ((n1*t*360)%360)/360*ph + pad.t;
+      const t2 = ((n2*t*360)%360)/360*pw + pad.l;
+      if (i===0) ctx.moveTo(t2,t1); else ctx.lineTo(t2,t1);
+    }
+    ctx.stroke(); ctx.globalAlpha = 1;
+  };
+  drawGeo(md.n1, md.n2, '#ff6e40');
+  const gi = ghostIdx();
+  if (gi >= 0 && gi !== S.selectedModeIdx) { const gm = modeData[gi]; drawGeo(gm.n1, gm.n2, '#fdd835'); }
+  // Slots
+  for (const grp of S.slotGroups) {
+    ctx.fillStyle = grp.color + '44'; ctx.strokeStyle = grp.color; ctx.lineWidth = 1.5;
+    const y0 = ((grp.theta1 - grp.height/2)/360)*ph + pad.t;
+    const yh = (grp.height/360)*ph;
+    const xw = (grp.width/360)*pw;
+    for (let k = 0; k < grp.count; k++) {
+      const t2 = (k*360/grp.count);
+      const x0 = ((t2 - grp.width/2 + 360)%360/360)*pw + pad.l;
+      ctx.fillRect(x0, y0, xw, yh); ctx.strokeRect(x0, y0, xw, yh);
+    }
+  }
+  // Axes
+  ctx.fillStyle = '#555'; ctx.font = '9px monospace';
+  ctx.fillText('0°', pad.l-2, pad.t+ph+12);
+  ctx.fillText('360°', pad.l+pw-16, pad.t+ph+12);
+  ctx.save(); ctx.translate(8, pad.t+ph/2); ctx.rotate(-PI/2);
+  ctx.fillText('θ₁', -6, 0); ctx.restore();
+  ctx.fillStyle = '#444'; ctx.font = '8px monospace';
+  ctx.fillText('θ₂ →', pad.l+pw/2-12, pad.t+ph+12);
+}
+
+/* ── Spectrum ─────────────────────────────────────── */
+function drawSpectrum() {
+  const { ctx, w, h } = fitCanvas($('cv-spectrum'));
+  ctx.fillStyle = '#0a0a10'; ctx.fillRect(0,0,w,h);
+  if (modeData.length === 0) return;
+  const eIdx = electronIdx(), eMu = eIdx >= 0 ? modeData[eIdx].mu : 1;
+  const pad = { l:45, r:15, t:14, b:16 };
+  const pw = w-pad.l-pad.r, ph = h-pad.t-pad.b;
+  const maxRatio = Math.min(20, Math.max(5, modeData[modeData.length-1].mu/eMu*1.1));
+  const minRatio = 0.3;
+  const logMin = Math.log10(minRatio), logMax = Math.log10(maxRatio);
+  const yOf = ratio => { const lr = Math.log10(Math.max(ratio, minRatio)); return pad.t + ph*(1 - (lr-logMin)/(logMax-logMin)); };
+  // Reference lines
+  for (const [name, ratio] of Object.entries(REF_MASS_RATIO)) {
+    if (ratio > maxRatio) continue;
+    const y = yOf(ratio);
+    ctx.strokeStyle = '#333'; ctx.lineWidth = 1; ctx.setLineDash([4,4]);
+    ctx.beginPath(); ctx.moveTo(pad.l, y); ctx.lineTo(pad.l+pw, y); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = '#555'; ctx.font = '8px sans-serif';
+    ctx.fillText(name, pad.l+pw-ctx.measureText(name).width-2, y-2);
+  }
+  // Electron reference line
+  const yE = yOf(1);
+  ctx.strokeStyle = '#ff6e4066'; ctx.lineWidth = 1; ctx.setLineDash([2,2]);
+  ctx.beginPath(); ctx.moveTo(pad.l, yE); ctx.lineTo(pad.l+pw, yE); ctx.stroke();
+  ctx.setLineDash([]);
+  // Mode dots — spread across x using mass (log) on y, index on x
+  const visible = [];
+  for (let i = 0; i < modeData.length; i++) {
+    const ratio = modeData[i].mu / eMu;
+    if (ratio >= minRatio && ratio <= maxRatio) visible.push(i);
+  }
+  const colW = visible.length > 0 ? pw / visible.length : pw;
+  const maxCoupling = Math.max(1e-12, ...modeData.map(m => m.coupling));
+  let lastLabelX = -Infinity;
+  for (let vi = 0; vi < visible.length; vi++) {
+    const i = visible[vi];
+    const m = modeData[i];
+    const ratio = m.mu / eMu;
+    const x = pad.l + (vi + 0.5) * colW;
+    const y = yOf(ratio);
+    const damped = m.coupling / maxCoupling;
+    const alpha = Math.max(0.15, 1 - damped * 0.85);
+    const isElectron = i === eIdx, isGhost = i === ghostIdx(), isSel = i === S.selectedModeIdx;
+    const r = (isSel || isElectron || isGhost) ? 4.5 : 3;
+    ctx.globalAlpha = alpha;
+    if (isSel) { ctx.fillStyle = '#ff6e40'; ctx.strokeStyle = '#fff'; ctx.lineWidth = 2; }
+    else if (isElectron) { ctx.fillStyle = '#ff6e40'; ctx.strokeStyle = '#ff6e40'; ctx.lineWidth = 1; }
+    else if (isGhost) { ctx.fillStyle = '#fdd835'; ctx.strokeStyle = '#fdd835'; ctx.lineWidth = 1; }
+    else { ctx.fillStyle = m.parity === 'even' ? '#4fc3f7' : 'transparent'; ctx.strokeStyle = '#4fc3f7'; ctx.lineWidth = 1; }
+    ctx.beginPath(); ctx.arc(x, y, r, 0, TAU);
+    if (m.parity === 'even' || isSel || isElectron || isGhost) ctx.fill();
+    ctx.stroke();
+    ctx.globalAlpha = 1;
+    const forceLabel = isSel || isElectron || isGhost;
+    if (forceLabel || x - lastLabelX > 28) {
+      ctx.fillStyle = forceLabel ? '#999' : '#555'; ctx.font = '7px monospace';
+      const lbl = `${m.n1},${m.n2}${m.parity === 'odd' ? 'o' : ''}`;
+      ctx.fillText(lbl, x - ctx.measureText(lbl).width/2, y - r - 3);
+      lastLabelX = x;
+    }
+  }
+  // Y axis labels
+  ctx.fillStyle = '#555'; ctx.font = '8px monospace';
+  for (const v of [0.5, 1, 2, 5, 10]) {
+    if (v < minRatio || v > maxRatio) continue;
+    const y = yOf(v);
+    ctx.fillText(v.toString(), 2, y+3);
+    ctx.strokeStyle = '#1a1a2a'; ctx.lineWidth = 0.5;
+    ctx.beginPath(); ctx.moveTo(pad.l, y); ctx.lineTo(pad.l+pw, y); ctx.stroke();
+  }
+  ctx.fillStyle = '#444'; ctx.font = '8px sans-serif';
+  ctx.fillText('m/mₑ', 2, pad.t-2);
+}
+
+/* ── 1D Profile ───────────────────────────────────── */
+function drawProfile() {
+  const { ctx, w, h } = fitCanvas($('cv-profile'));
+  ctx.fillStyle = '#0a0a10'; ctx.fillRect(0,0,w,h);
+  const pad = { l:35, r:10, t:12, b:18 };
+  const pw = w-pad.l-pad.r, ph = h-pad.t-pad.b;
+  const sel = modeData[S.selectedModeIdx];
+  const gi = ghostIdx();
+  const ghost = gi >= 0 ? modeData[gi] : null;
+  // Draw profile curves
+  const drawCurve = (density, color, dash) => {
+    ctx.strokeStyle = color; ctx.lineWidth = 1.5; ctx.setLineDash(dash);
+    ctx.beginPath();
+    for (let i = 0; i <= DENSITY_N; i++) {
+      const si = i % DENSITY_N;
+      const x = pad.l + (i/DENSITY_N)*pw;
+      const y = pad.t + ph*(1 - density[si]);
+      if (i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+    }
+    ctx.stroke(); ctx.setLineDash([]);
+  };
+  if (sel) drawCurve(sel.density, '#ff6e40', []);
+  if (ghost && ghost !== sel) drawCurve(ghost.density, '#fdd835', [6,3]);
+  // Slot bars
+  for (const grp of S.slotGroups) {
+    const x0 = pad.l + ((grp.theta1 - grp.height/2)/360)*pw;
+    const xw = (grp.height/360)*pw;
+    ctx.fillStyle = grp.color + '33'; ctx.fillRect(x0, pad.t, xw, ph);
+    ctx.strokeStyle = grp.color; ctx.lineWidth = 1;
+    const xc = pad.l + (grp.theta1/360)*pw;
+    ctx.beginPath(); ctx.moveTo(xc, pad.t); ctx.lineTo(xc, pad.t+ph); ctx.stroke();
+    // Annotations
+    if (sel) {
+      const d = densityAt(sel.density, grp.theta1);
+      ctx.fillStyle = '#ff6e40'; ctx.font = '8px monospace';
+      ctx.fillText(`e:${d.toFixed(2)}`, xc+3, pad.t+10);
+    }
+    if (ghost) {
+      const d = densityAt(ghost.density, grp.theta1);
+      ctx.fillStyle = '#fdd835'; ctx.font = '8px monospace';
+      ctx.fillText(`g:${d.toFixed(2)}`, xc+3, pad.t+20);
+    }
+  }
+  // Axes
+  ctx.fillStyle = '#555'; ctx.font = '9px monospace';
+  ctx.fillText('0°', pad.l-2, pad.t+ph+12);
+  ctx.fillText('360°', pad.l+pw-18, pad.t+ph+12);
+  ctx.fillStyle = '#444'; ctx.font = '8px sans-serif';
+  ctx.fillText('θ₁ →', pad.l+pw/2-10, pad.t+ph+12);
+  ctx.fillText('|f|²', 2, pad.t+8);
+  // Legend
+  ctx.fillStyle = '#ff6e40'; ctx.fillText('● selected', pad.l+pw-55, pad.t+10);
+  if (ghost) { ctx.fillStyle = '#fdd835'; ctx.fillText('- - ghost', pad.l+pw-55, pad.t+20); }
+}
+
+/* ═══════════════════════════════════════════════════════
+   Spectrum click → select mode
+   ═══════════════════════════════════════════════════════ */
+$('cv-spectrum').addEventListener('click', e => {
+  const rect = e.target.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const padL = 45, pw = rect.width - padL - 15;
+  const eIdx2 = electronIdx(), eMu2 = eIdx2 >= 0 ? modeData[eIdx2].mu : 1;
+  const maxR = Math.min(20, Math.max(5, modeData.length > 0 ? modeData[modeData.length-1].mu/eMu2*1.1 : 5));
+  const vis = [];
+  for (let i = 0; i < modeData.length; i++) { const r2 = modeData[i].mu/eMu2; if (r2 >= 0.3 && r2 <= maxR) vis.push(i); }
+  const cw = vis.length > 0 ? pw / vis.length : pw;
+  const vi = Math.floor((x - padL) / cw);
+  if (vi >= 0 && vi < vis.length) { S.selectedModeIdx = vis[vi]; fullRedraw(); }
+});
+
+/* ═══════════════════════════════════════════════════════
+   Slot group UI
+   ═══════════════════════════════════════════════════════ */
+function renderSlotList() {
+  const list = $('slot-list');
+  list.innerHTML = '';
+  S.slotGroups.forEach((grp, idx) => {
+    const div = document.createElement('div');
+    div.className = 'sg-row';
+    div.innerHTML = `
+      <div class="sg-head">
+        <input type="color" class="sg-color" value="${grp.color}" data-i="${idx}">
+        <span class="sg-name">${grp.name}</span>
+        <button class="btn" data-del="${idx}" title="Remove">✕</button>
+      </div>
+      <div class="lp-row">
+        <span class="lp-lbl">θ₁</span><input type="number" class="lp-input sg-t1" data-i="${idx}" value="${grp.theta1}" min="0" max="360" step="1">
+        <span class="lp-lbl">h</span><input type="number" class="lp-input sg-h" data-i="${idx}" value="${grp.height}" min="1" max="180" step="1">
+      </div>
+      <div class="lp-row">
+        <span class="lp-lbl">w</span><input type="number" class="lp-input sg-w" data-i="${idx}" value="${grp.width}" min="1" max="90" step="1">
+        <span class="lp-lbl">×</span><input type="number" class="lp-input sg-cnt" data-i="${idx}" value="${grp.count}" min="1" max="12" step="1">
+      </div>`;
+    list.appendChild(div);
+  });
+  list.querySelectorAll('.sg-color').forEach(el => el.oninput = function() { S.slotGroups[+this.dataset.i].color = this.value; fullRedraw(); });
+  list.querySelectorAll('.sg-t1').forEach(el => el.onchange = function() { S.slotGroups[+this.dataset.i].theta1 = +this.value; onSlotChange(); });
+  list.querySelectorAll('.sg-h').forEach(el => el.onchange = function() { S.slotGroups[+this.dataset.i].height = +this.value; onSlotChange(); });
+  list.querySelectorAll('.sg-w').forEach(el => el.onchange = function() { S.slotGroups[+this.dataset.i].width = +this.value; onSlotChange(); });
+  list.querySelectorAll('.sg-cnt').forEach(el => el.onchange = function() { S.slotGroups[+this.dataset.i].count = +this.value; onSlotChange(); });
+  list.querySelectorAll('[data-del]').forEach(el => el.onclick = function() { S.slotGroups.splice(+this.dataset.del, 1); onSlotChange(); renderSlotList(); });
+}
+
+function onSlotChange() { computeSlotCoupling(); fullRedraw(); }
+
+$('btn-add-slot').onclick = () => {
+  S.slotGroups.push({
+    name: `Group ${S.slotGroups.length+1}`,
+    theta1: 180, height: 50, width: 2, count: 2,
+    color: SLOT_COLORS[S.slotGroups.length % SLOT_COLORS.length],
+  });
+  renderSlotList(); onSlotChange();
+};
+
+/* ═══════════════════════════════════════════════════════
+   Derived values + Metrics
+   ═══════════════════════════════════════════════════════ */
+function updateDerived() {
+  const a = alphaFormula(S.eps, S.shear);
+  const m = particleMass();
+  const lambdaBar = HBAR / (m * CC);
+  const eIdx = electronIdx();
+  const eMu = eIdx >= 0 ? modeData[eIdx].mu : 1;
+  const R = lambdaBar * eMu;
+  const aPhys = S.eps * R;
+  const html = [
+    `<div class="lp-row"><span class="lp-lbl">α</span><span class="lp-val">1/${(1/a).toFixed(3)}</span></div>`,
+    `<div class="lp-row"><span class="lp-lbl">s</span><span class="lp-val">${S.shear.toFixed(6)}</span></div>`,
+    `<div class="lp-row"><span class="lp-lbl">R</span><span class="lp-val">${(R*1e15).toFixed(2)} fm</span></div>`,
+    `<div class="lp-row"><span class="lp-lbl">a</span><span class="lp-val">${(aPhys*1e15).toFixed(2)} fm</span></div>`,
+    `<div class="lp-row"><span class="lp-lbl">modes</span><span class="lp-val">${modeData.length}</span></div>`,
+  ];
+  const sel = modeData[S.selectedModeIdx];
+  if (sel) {
+    html.push(`<div class="lp-row"><span class="lp-lbl">sel</span><span class="lp-val">(${sel.n1},${sel.n2}) ${sel.parity[0]}</span></div>`);
+    html.push(`<div class="lp-row"><span class="lp-lbl">q_eff</span><span class="lp-val">${sel.qeff.toFixed(4)}</span></div>`);
+    html.push(`<div class="lp-row"><span class="lp-lbl">C</span><span class="lp-val">${sel.chargeOverlap.toFixed(4)}</span></div>`);
+  }
+  $('derived-vals').innerHTML = html.join('');
+}
+
+function updateMetrics() {
+  const eIdx2 = electronIdx(), gi2 = ghostIdx();
+  const el = eIdx2 >= 0 ? modeData[eIdx2] : null;
+  const gh = gi2 >= 0 ? modeData[gi2] : null;
+  const lines = [];
+  if (el && S.slotGroups.length > 0) {
+    for (const grp of S.slotGroups) {
+      const de = densityAt(el.density, grp.theta1);
+      const dg = gh ? densityAt(gh.density, grp.theta1) : 0;
+      const D = de > 1e-6 ? dg / de : Infinity;
+      lines.push(`<div class="lp-row" style="color:${grp.color}">
+        <span class="lp-lbl">${grp.name}</span>
+        <span class="lp-val">e:${de.toFixed(3)} g:${dg.toFixed(3)} D:${D.toFixed(1)}</span></div>`);
+    }
+    lines.push(`<div class="lp-row"><span class="lp-lbl">e γ</span><span class="lp-val">${el.coupling.toFixed(4)}</span></div>`);
+    if (gh) lines.push(`<div class="lp-row"><span class="lp-lbl">g γ</span><span class="lp-val">${gh.coupling.toFixed(4)}</span></div>`);
+    if (el && gh && el.coupling > 1e-12) {
+      lines.push(`<div class="lp-row"><span class="lp-lbl">D_tot</span><span class="lp-val">${(gh.coupling/el.coupling).toFixed(2)}×</span></div>`);
+    }
+  } else {
+    lines.push('<div class="lp-row"><span class="lp-val" style="color:#555">Add slots to see metrics</span></div>');
+  }
+  $('metrics-vals').innerHTML = lines.join('');
+}
+
+/* ═══════════════════════════════════════════════════════
+   Profiles (save / load)
+   ═══════════════════════════════════════════════════════ */
+const PROF_KEY = 'torus-lab-profiles';
+function getProfiles() { try { return JSON.parse(localStorage.getItem(PROF_KEY) || '{}'); } catch { return {}; } }
+function saveProfiles(p) { localStorage.setItem(PROF_KEY, JSON.stringify(p)); }
+
+function refreshProfileList() {
+  const sel = $('sel-profile'), profs = getProfiles();
+  sel.innerHTML = '<option value="">— none —</option>';
+  for (const name of Object.keys(profs).sort()) {
+    const o = document.createElement('option'); o.value = name; o.textContent = name;
+    sel.appendChild(o);
+  }
+}
+
+$('btn-save-prof').onclick = () => {
+  const name = prompt('Profile name:');
+  if (!name) return;
+  const profs = getProfiles();
+  profs[name] = { eps: S.eps, shear: S.shear, particle: S.particle, customMass: S.customMass, slotGroups: structuredClone(S.slotGroups) };
+  saveProfiles(profs); refreshProfileList();
+  $('sel-profile').value = name;
+};
+
+$('btn-load-prof').onclick = () => {
+  const name = $('sel-profile').value;
+  if (!name) return;
+  const profs = getProfiles();
+  const p = profs[name]; if (!p) return;
+  S.eps = p.eps; S.shear = p.shear; S.particle = p.particle;
+  S.customMass = p.customMass || M_E;
+  S.slotGroups = structuredClone(p.slotGroups || []);
+  S.selectedModeIdx = -1;
+  syncControls(); rebuildTorus(); fullRecompute();
+};
+
+$('btn-del-prof').onclick = () => {
+  const name = $('sel-profile').value;
+  if (!name) return;
+  const profs = getProfiles();
+  delete profs[name]; saveProfiles(profs); refreshProfileList();
+};
+
+/* ═══════════════════════════════════════════════════════
+   Controls
+   ═══════════════════════════════════════════════════════ */
+function syncControls() {
+  $('sl-eps').value = arToSlider(S.eps).toFixed(4);
+  $('v-eps').textContent = S.eps.toFixed(2);
+  $('sl-s').value = S.shear.toFixed(4);
+  $('v-s').textContent = S.shear.toFixed(4);
+  $('sel-particle').value = S.particle;
+  $('in-mass').style.display = S.particle === 'custom' ? '' : 'none';
+  $('cb-geo').checked = S.geodesics;
+  $('cb-wire').checked = S.wire;
+  document.querySelectorAll('[data-ar]').forEach(b =>
+    b.classList.toggle('on', Math.abs(+b.dataset.ar - S.eps) < 0.01));
+}
+
+function fullRecompute() {
+  sweepModes(); renderSlotList(); fullRedraw();
+}
+
+function fullRedraw() {
+  updateVertexColors(); rebuildGeodesics();
+  drawSheet(); drawSpectrum(); drawProfile();
+  updateDerived(); updateMetrics(); updateStatus();
+}
+
+$('sl-eps').addEventListener('input', function() {
+  S.eps = sliderToAR(+this.value);
+  $('v-eps').textContent = S.eps.toFixed(2);
+  document.querySelectorAll('[data-ar]').forEach(b =>
+    b.classList.toggle('on', Math.abs(+b.dataset.ar - S.eps) < 0.01));
+});
+$('sl-eps').addEventListener('change', function() {
+  rebuildTorus(); fullRecompute();
+});
+
+document.querySelectorAll('[data-ar]').forEach(btn => {
+  btn.onclick = () => {
+    S.eps = +btn.dataset.ar;
+    syncControls(); rebuildTorus(); fullRecompute();
+  };
+});
+
+$('sl-s').addEventListener('input', function() {
+  S.shear = +this.value;
+  $('v-s').textContent = S.shear.toFixed(4);
+});
+$('sl-s').addEventListener('change', function() { fullRecompute(); });
+
+$('btn-solve').onclick = () => {
+  S.shear = solveShear(S.eps);
+  syncControls(); fullRecompute();
+};
+
+$('sel-particle').onchange = function() {
+  S.particle = this.value;
+  $('in-mass').style.display = S.particle === 'custom' ? '' : 'none';
+  fullRedraw();
+};
+$('in-mass').onchange = function() { S.customMass = +this.value; fullRedraw(); };
+
+$('cb-geo').onchange = function() { S.geodesics = this.checked; rebuildGeodesics(); };
+$('cb-wire').onchange = function() { S.wire = this.checked; if (wireMesh) wireMesh.visible = S.wire; };
+
+/* ═══════════════════════════════════════════════════════
+   Status bar
+   ═══════════════════════════════════════════════════════ */
+function updateStatus() {
+  const a = alphaFormula(S.eps, S.shear);
+  const ok = Math.abs(1/a - 137.036) < 0.01;
+  $('status-bar').textContent = `α = 1/${(1/a).toFixed(3)}${ok ? ' ✓' : '  ⚠ not solved'}  |  ε = ${S.eps.toFixed(3)}  |  s = ${S.shear.toFixed(6)}`;
+  $('status-bar').style.color = ok ? '#4a4' : '#a84';
+}
+
+/* ═══════════════════════════════════════════════════════
+   Resize handling
+   ═══════════════════════════════════════════════════════ */
+window.addEventListener('resize', () => { drawSheet(); drawSpectrum(); drawProfile(); });
+
+/* ═══════════════════════════════════════════════════════
+   Init
+   ═══════════════════════════════════════════════════════ */
+S.shear = solveShear(S.eps);
+syncControls();
+rebuildTorus();
+fullRecompute();
+refreshProfileList();
+animLoop(() => {}, { renderer, scene, camera, controls });
+</script>
+</body>
+</html>

@@ -134,6 +134,11 @@ tangential B crossing a narrow slot).
 | Shear s | free slider, or solve α = 1/137 | User controls |
 | α(ε,s) | μ sin²(2πs) / (4π q²) | CP vector formula |
 
+Note: a/R (= ε) is expected to remain a free variable — the tube
+radius is unlikely to be independently solvable from current
+constraints.  If additional constraints emerge that pin ε, the
+slider can be locked to a computed value.
+
 ### 1.6. Ghost discrimination
 
 The electron (1,2 even, q_eff ≈ 1.93) and ghost (1,1 even,
