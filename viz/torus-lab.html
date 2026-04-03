@@ -51,78 +51,77 @@ select.lp-input { width: auto; font-size: 12px; }
 <div class="top-bar">
   <h1>Torus Lab</h1><div class="sep"></div>
   <div class="cg">
-    <label>a/R</label>
-    <input type="range" id="sl-eps" min="0" max="1" step="0.001" value="0.500">
-    <span class="val" id="v-eps">1.00</span>
+    <label title="Aspect ratio ε = tube radius / ring radius. Controls the shape of the torus cross-section. Small values make a thin ring; large values make a fat donut.">a/R</label>
+    <input type="range" id="sl-eps" min="0" max="1" step="0.001" value="0.248" title="Drag to set aspect ratio ε = a/R">
+    <span class="val" id="v-eps">0.50</span>
   </div>
   <div class="cg" style="gap:3px">
-    <button class="btn" data-ar="0.50">Ring</button>
-    <button class="btn on" data-ar="1.00">Horn</button>
-    <button class="btn" data-ar="2.00">r=2</button>
+    <button class="btn on" data-ar="0.50" title="Ring: ε=0.50 — thin ring torus">Ring</button>
+    <button class="btn" data-ar="1.00" title="Horn: ε=1.00 — tube radius equals ring radius">Horn</button>
+    <button class="btn" data-ar="2.00" title="Fat: ε=2.00 — self-intersecting geometry">r=2</button>
   </div>
   <div class="sep"></div>
   <div class="cg">
-    <label>shear</label>
-    <input type="range" id="sl-s" min="0" max="0.5" step="0.0001" value="0.068">
+    <label title="Shear s = helical offset per tube revolution. Relates tube and ring coordinates; determines charge via α formula. Units: fraction of tube circumference.">shear</label>
+    <input type="range" id="sl-s" min="0" max="0.5" step="0.0001" value="0.068" title="Drag to set shear parameter s">
     <span class="val" id="v-s">0.0680</span>
   </div>
-  <button class="btn" id="btn-solve" title="Solve shear for α = 1/137">Solve α</button>
+  <button class="btn" id="btn-solve" title="Auto-solve shear s so α matches the fine-structure constant 1/137.036">Solve α</button>
   <div class="sep"></div>
-  <div class="cg tog"><label><input type="checkbox" id="cb-geo" checked> geodesics</label></div>
-  <div class="cg tog"><label><input type="checkbox" id="cb-wire"> wire</label></div>
-  <div class="cg tog"><label><input type="checkbox" id="cb-anti"> anti-particles</label></div>
+  <div class="cg tog"><label title="Show photon paths (torus knot geodesics) for the selected mode and ghost on the 3D torus and 2D sheet"><input type="checkbox" id="cb-geo" checked> geodesics</label></div>
+  <div class="cg tog"><label title="Show wireframe mesh on the 3D torus surface"><input type="checkbox" id="cb-wire"> wire</label></div>
 </div>
 
 <div class="main-wrap">
 <div id="left-panel">
 
   <div class="lp-sec">
-    <h3>Particle</h3>
+    <h3 title="Select which material sheet (particle type) to analyze. Sets the reference mass for physical dimensions.">Particle</h3>
     <div class="lp-row">
-      <select class="lp-input" id="sel-particle">
+      <select class="lp-input" id="sel-particle" title="Electron: Ma_e sheet. Proton: Ma_p sheet. Custom: arbitrary mass.">
         <option value="electron">Electron</option>
         <option value="proton">Proton</option>
         <option value="custom">Custom</option>
       </select>
-      <input type="number" class="lp-input" id="in-mass" style="width:80px;display:none" step="any">
+      <input type="number" class="lp-input" id="in-mass" style="width:80px;display:none" step="any" title="Custom particle mass in kg">
     </div>
   </div>
 
   <div class="lp-sec" id="sec-derived">
-    <h3>Derived</h3>
+    <h3 title="Values computed from current settings: α = fine-structure constant from shear formula; R = ring radius; a = tube radius; modes = total resonant modes found.">Derived</h3>
     <div id="derived-vals"></div>
   </div>
 
   <div class="lp-sec">
-    <h3>Slot Groups</h3>
+    <h3 title="Aperture slots cut into the torus surface. Slots let EM energy leak out, coupling the cavity to the external field. Place them to selectively damp the ghost mode while preserving the electron.">Slot Groups</h3>
     <div id="slot-list"></div>
-    <button class="btn" id="btn-add-slot" style="margin-top:4px">+ Add Group</button>
+    <button class="btn" id="btn-add-slot" style="margin-top:4px" title="Add a new slot group with default parameters">+ Add Group</button>
   </div>
 
   <div class="lp-sec">
-    <h3>Profiles</h3>
+    <h3 title="Save and restore complete configurations (ε, shear, slots) to browser localStorage.">Profiles</h3>
     <div class="lp-row">
       <select class="lp-input" id="sel-profile" style="flex:1"><option value="">— none —</option></select>
-      <button class="btn" id="btn-load-prof">Load</button>
-      <button class="btn" id="btn-del-prof">Del</button>
+      <button class="btn" id="btn-load-prof" title="Load selected profile">Load</button>
+      <button class="btn" id="btn-del-prof" title="Delete selected profile">Del</button>
     </div>
     <div class="lp-row" style="margin-top:3px">
-      <button class="btn" id="btn-save-prof">Save current…</button>
+      <button class="btn" id="btn-save-prof" title="Save current settings as a named profile">Save current…</button>
     </div>
   </div>
 
   <div class="lp-sec">
-    <h3>Metrics</h3>
+    <h3 title="Slot interaction metrics. e = electron density at slot center; g = ghost density; D = selectivity ratio (ghost/electron). Higher D means the slot preferentially damps the ghost.">Metrics</h3>
     <div id="metrics-vals"></div>
   </div>
 
 </div>
 
 <div id="main-area">
-  <div id="view-3d"></div>
-  <div class="cpanel"><canvas id="cv-sheet"></canvas></div>
-  <div class="cpanel"><canvas id="cv-spectrum"></canvas></div>
-  <div class="cpanel"><canvas id="cv-profile"></canvas></div>
+  <div id="view-3d" title="3D torus with energy density (orange glow) and geodesic paths. Click and drag to orbit; scroll to zoom."></div>
+  <div class="cpanel" title="Unrolled torus surface: θ₂ (ring) horizontal, θ₁ (tube) vertical. Proportional to real circumferences. Orange heat = selected mode energy density. Lines = photon geodesics. Colored rectangles/ellipses = slots."><canvas id="cv-sheet"></canvas></div>
+  <div class="cpanel" title="Mode spectrum: all resonant modes sorted by mass (m/mₑ). Click a dot to select that mode and see its profile. Orange = electron, Yellow = ghost, Dim blue = charged but spin-filtered, Gray = dark/uncharged."><canvas id="cv-spectrum"></canvas></div>
+  <div class="cpanel" title="Tube cross-section profile: |f(θ₁)|² shows where energy concentrates around the tube (0° = outer equator, 180° = inner equator). Orange = selected mode, Dashed yellow = ghost. Colored bands = slot positions. Use this to place slots where the ghost is strong but the electron is weak."><canvas id="cv-profile"></canvas></div>
 </div>
 </div>
 
@@ -163,9 +162,9 @@ function arToSlider(r) { return r <= 1 ? ((r-0.01)/0.99)*0.5 : 0.5+((r-1)/9)*0.5
    State
    ═══════════════════════════════════════════════════════ */
 const S = {
-  eps: 1.0, shear: 0.068, particle: 'electron', customMass: M_E,
+  eps: 0.5, shear: 0.068, particle: 'electron', customMass: M_E,
   slotGroups: [], selectedModeIdx: -1,
-  shellAlpha: 0.5, geodesics: true, wire: false, showAnti: false,
+  shellAlpha: 0.5, geodesics: true, wire: false,
 };
 let modeData = [];
 
@@ -330,16 +329,14 @@ function densityAt(density, theta1Deg) {
    ═══════════════════════════════════════════════════════ */
 function sweepModes() {
   modeData = [];
-  const n1Min = S.showAnti ? -3 : 0;
   for (let n2 = 1; n2 <= 6; n2++) {
-    for (let n1 = n1Min; n1 <= 3; n1++) {
+    for (let n1 = 0; n1 <= 3; n1++) {
       for (const parity of ['even', 'odd']) {
         if (parity === 'odd' && n1 === 0) continue;
         const qeff = n2 - S.shear * n1;
         if (qeff <= 0.01) continue;
-        const absN1 = Math.abs(n1);
         const result = solveEigenmodes(S.eps, qeff, parity);
-        const eigIdx = parity === 'even' ? absN1 : Math.max(0, absN1-1);
+        const eigIdx = parity === 'even' ? n1 : Math.max(0, n1-1);
         if (eigIdx >= result.eigenvectors.length) continue;
         const coeffs = result.eigenvectors[eigIdx];
         const ev = result.eigenvalues[eigIdx];
@@ -348,7 +345,7 @@ function sweepModes() {
         const C = chargeOverlap(coeffs, parity, S.eps);
         const mu = modeMu(S.eps, qeff);
         modeData.push({ n1, n2, parity, qeff, eigenvalue: ev, coeffs, density,
-          chargeOverlap: C, mu, coupling: 0, anti: n1 < 0 });
+          chargeOverlap: C, mu, coupling: 0 });
       }
     }
   }
@@ -362,8 +359,12 @@ function computeSlotCoupling() {
   for (const m of modeData) {
     let tot = 0;
     for (const grp of S.slotGroups) {
+      if (grp.enabled === false) continue;
       const d = densityAt(m.density, grp.theta1);
-      tot += d * (grp.width * PI/180) * (grp.height * PI/180) * grp.count;
+      const area = grp.shape === 'round'
+        ? PI * (grp.width*PI/360) * (grp.height*PI/360)
+        : (grp.width * PI/180) * (grp.height * PI/180);
+      tot += d * area * grp.count;
     }
     m.coupling = tot;
   }
@@ -440,12 +441,17 @@ function updateVertexColors() {
     const d = md.density[si];
     let inSlot = false;
     for (const grp of S.slotGroups) {
+      if (grp.enabled === false) continue;
       const t1c = grp.theta1*PI/180, hh = grp.height*PI/180/2, hw = grp.width*PI/180/2;
       for (let k = 0; k < grp.count; k++) {
         const t2c = k*TAU/grp.count;
         const dt1 = Math.abs(((th1s[vi]-t1c+PI)%TAU+TAU)%TAU - PI);
         const dt2 = Math.abs(((th2s[vi]-t2c+PI)%TAU+TAU)%TAU - PI);
-        if (dt1 < hh && dt2 < hw) { inSlot = true; break; }
+        if (grp.shape === 'round') {
+          if ((dt1/hh)**2 + (dt2/hw)**2 <= 1) { inSlot = true; break; }
+        } else {
+          if (dt1 < hh && dt2 < hw) { inSlot = true; break; }
+        }
       }
       if (inSlot) break;
     }
@@ -503,16 +509,24 @@ function drawSheet() {
   const md = modeData[S.selectedModeIdx];
   if (!md) return;
   const pad = { l:35, r:10, t:12, b:18 };
-  const pw = w-pad.l-pad.r, ph = h-pad.t-pad.b;
-  for (let y = 0; y < ph; y++) {
+  const avW = w-pad.l-pad.r, avH = h-pad.t-pad.b;
+  // Tube circumference / ring circumference = a/R = ε
+  const realAR = Math.max(0.05, S.eps);
+  let pw, ph;
+  if (avH / avW > realAR) { pw = avW; ph = pw * realAR; }
+  else { ph = avH; pw = ph / realAR; }
+  const ox = pad.l + (avW - pw) / 2;
+  const oy = pad.t + (avH - ph) / 2;
+  // Heatmap
+  for (let y = 0; y < Math.ceil(ph); y++) {
     const th1 = (y/ph) * 360;
     const si = Math.floor(((th1/360)%1)*DENSITY_N) % DENSITY_N;
     const d = md.density[si];
     const r = Math.floor(d*255*0.7), g = Math.floor(d*120*0.7), b = Math.floor(d*40*0.3);
     ctx.fillStyle = `rgb(${r},${g},${b})`;
-    ctx.fillRect(pad.l, pad.t+y, pw, 1);
+    ctx.fillRect(ox, oy+y, pw, 1);
   }
-  // Geodesics — break the line when it wraps across an edge
+  // Geodesics
   const drawGeo = (n1, n2, color) => {
     ctx.strokeStyle = color; ctx.lineWidth = 1.5; ctx.globalAlpha = 0.7;
     const steps = 800;
@@ -522,8 +536,8 @@ function drawSheet() {
       const t = i / steps;
       const t1 = (((n1 * t * 360) % 360) + 360) % 360;
       const t2 = (((n2 * t * 360) % 360) + 360) % 360;
-      const y = (t1 / 360) * ph + pad.t;
-      const x = (t2 / 360) * pw + pad.l;
+      const y = (t1 / 360) * ph + oy;
+      const x = (t2 / 360) * pw + ox;
       if (prevX !== null) {
         const dx = Math.abs(x - prevX), dy = Math.abs(y - prevY);
         if (dx > pw * 0.4 || dy > ph * 0.4) {
@@ -545,24 +559,37 @@ function drawSheet() {
   if (gi >= 0 && gi !== S.selectedModeIdx) { const gm = modeData[gi]; drawGeo(gm.n1, gm.n2, '#fdd835'); }
   // Slots
   for (const grp of S.slotGroups) {
+    if (grp.enabled === false) continue;
     ctx.fillStyle = grp.color + '44'; ctx.strokeStyle = grp.color; ctx.lineWidth = 1.5;
-    const y0 = ((grp.theta1 - grp.height/2)/360)*ph + pad.t;
+    const yc = (grp.theta1/360)*ph + oy;
     const yh = (grp.height/360)*ph;
     const xw = (grp.width/360)*pw;
     for (let k = 0; k < grp.count; k++) {
       const t2 = (k*360/grp.count);
-      const x0 = ((t2 - grp.width/2 + 360)%360/360)*pw + pad.l;
-      ctx.fillRect(x0, y0, xw, yh); ctx.strokeRect(x0, y0, xw, yh);
+      const xc = (t2/360)*pw + ox;
+      if (grp.shape === 'round') {
+        ctx.beginPath(); ctx.ellipse(xc, yc, xw/2, yh/2, 0, 0, TAU);
+        ctx.fill(); ctx.stroke();
+      } else {
+        ctx.fillRect(xc - xw/2, yc - yh/2, xw, yh);
+        ctx.strokeRect(xc - xw/2, yc - yh/2, xw, yh);
+      }
     }
   }
+  // Border
+  ctx.strokeStyle = '#333'; ctx.lineWidth = 1;
+  ctx.strokeRect(ox, oy, pw, ph);
   // Axes
   ctx.fillStyle = '#666'; ctx.font = '11px monospace';
-  ctx.fillText('0°', pad.l-2, pad.t+ph+14);
-  ctx.fillText('360°', pad.l+pw-22, pad.t+ph+14);
-  ctx.save(); ctx.translate(10, pad.t+ph/2); ctx.rotate(-PI/2);
+  ctx.fillText('0°', ox-2, oy+ph+14);
+  ctx.fillText('360°', ox+pw-22, oy+ph+14);
+  ctx.save(); ctx.translate(ox-18, oy+ph/2); ctx.rotate(-PI/2);
   ctx.fillText('θ₁', -6, 0); ctx.restore();
   ctx.fillStyle = '#555'; ctx.font = '10px monospace';
-  ctx.fillText('θ₂ →', pad.l+pw/2-14, pad.t+ph+14);
+  ctx.fillText('θ₂ →', ox+pw/2-14, oy+ph+14);
+  // Dimension label
+  ctx.fillStyle = '#444'; ctx.font = '9px monospace';
+  ctx.fillText(`${S.eps.toFixed(2)}:1`, ox+pw-30, oy-3);
 }
 
 /* ── Spectrum ─────────────────────────────────────── */
@@ -571,74 +598,62 @@ function drawSpectrum() {
   ctx.fillStyle = '#0a0a10'; ctx.fillRect(0,0,w,h);
   if (modeData.length === 0) return;
   const eIdx = electronIdx(), eMu = eIdx >= 0 ? modeData[eIdx].mu : 1;
-  const pad = { l:48, r:15, t:16, b:18 };
+  const pad = { l:48, r:15, t:16, b:22 };
   const pw = w-pad.l-pad.r, ph = h-pad.t-pad.b;
   const maxRatio = Math.min(20, Math.max(5, modeData[modeData.length-1].mu/eMu*1.1));
   const minRatio = 0.3;
   const logMin = Math.log10(minRatio), logMax = Math.log10(maxRatio);
   const yOf = ratio => { const lr = Math.log10(Math.max(ratio, minRatio)); return pad.t + ph*(1 - (lr-logMin)/(logMax-logMin)); };
-  // Reference lines (on-chart)
-  for (const [name, ratio] of Object.entries(REF_MASS_RATIO)) {
-    if (ratio > maxRatio) continue;
-    const y = yOf(ratio);
-    ctx.strokeStyle = '#333'; ctx.lineWidth = 1; ctx.setLineDash([4,4]);
-    ctx.beginPath(); ctx.moveTo(pad.l, y); ctx.lineTo(pad.l+pw, y); ctx.stroke();
-    ctx.setLineDash([]);
-    ctx.fillStyle = '#666'; ctx.font = '10px sans-serif';
-    ctx.fillText(name, pad.l+pw-ctx.measureText(name).width-2, y-3);
+
+  // ── Generation markers (triangles on Y-axis) ──
+  const GEN = [
+    { name: 'e⁻', ratio: 1.0, color: '#ff6e40' },
+    { name: 'μ⁻', ratio: 206.768, color: '#66bb6a' },
+    { name: 'τ⁻', ratio: 3477.23, color: '#ab47bc' },
+  ];
+  for (const g of GEN) {
+    if (g.ratio <= maxRatio) {
+      const y = yOf(g.ratio);
+      ctx.fillStyle = g.color;
+      ctx.beginPath(); ctx.moveTo(pad.l-1, y-6); ctx.lineTo(pad.l+7, y); ctx.lineTo(pad.l-1, y+6); ctx.fill();
+      ctx.font = '11px sans-serif';
+      ctx.fillText(g.name, 4, y+4);
+      ctx.strokeStyle = g.color + '44'; ctx.lineWidth = 1; ctx.setLineDash([3,3]);
+      ctx.beginPath(); ctx.moveTo(pad.l, y); ctx.lineTo(pad.l+pw, y); ctx.stroke();
+      ctx.setLineDash([]);
+    } else {
+      ctx.fillStyle = g.color; ctx.font = '10px sans-serif';
+      ctx.beginPath(); ctx.moveTo(pad.l-1, pad.t+2); ctx.lineTo(pad.l+5, pad.t-4); ctx.lineTo(pad.l-1, pad.t-4); ctx.fill();
+    }
   }
-  // Off-chart reference masses (three generations)
-  let offX = pad.l + 4;
+  // Off-chart generation labels at top
+  let offX = pad.l + 10;
   ctx.font = '10px sans-serif';
-  for (const [name, ratio] of Object.entries(REF_MASS_RATIO)) {
-    if (ratio <= maxRatio) continue;
-    ctx.fillStyle = '#555';
-    const lbl = `↑ ${name} ${ratio.toFixed(0)}×`;
+  for (const g of GEN) {
+    if (g.ratio <= maxRatio) continue;
+    ctx.fillStyle = g.color;
+    const lbl = `↑ ${g.name} ${g.ratio.toFixed(0)}×`;
     ctx.fillText(lbl, offX, pad.t + 10);
-    offX += ctx.measureText(lbl).width + 12;
+    offX += ctx.measureText(lbl).width + 14;
   }
-  // Electron reference line
-  const yE = yOf(1);
-  ctx.strokeStyle = '#ff6e4066'; ctx.lineWidth = 1; ctx.setLineDash([2,2]);
-  ctx.beginPath(); ctx.moveTo(pad.l, yE); ctx.lineTo(pad.l+pw, yE); ctx.stroke();
-  ctx.setLineDash([]);
-  ctx.fillStyle = '#ff6e4088'; ctx.font = '10px sans-serif';
-  ctx.fillText('electron', pad.l+2, yE-3);
-  // Pairing lines: connect (n1, n2, p) with (-n1, n2, p) if both visible
-  if (S.showAnti) {
-    ctx.strokeStyle = '#ffffff18'; ctx.lineWidth = 1; ctx.setLineDash([2,3]);
-    const visible = [];
-    for (let i = 0; i < modeData.length; i++) {
-      const ratio = modeData[i].mu / eMu;
-      if (ratio >= minRatio && ratio <= maxRatio) visible.push(i);
-    }
-    const colW0 = visible.length > 0 ? pw / visible.length : pw;
-    for (let vi = 0; vi < visible.length; vi++) {
-      const m = modeData[visible[vi]];
-      if (m.n1 <= 0) continue;
-      const pi2 = visible.findIndex(vj => {
-        const mp = modeData[visible[vj]];
-        return mp.n1 === -m.n1 && mp.n2 === m.n2 && mp.parity === m.parity;
-      });
-      if (pi2 >= 0) {
-        const x1 = pad.l + (vi+0.5)*colW0, y1 = yOf(m.mu/eMu);
-        const x2 = pad.l + (pi2+0.5)*colW0, y2 = yOf(modeData[visible[pi2]].mu/eMu);
-        ctx.beginPath(); ctx.moveTo(x1,y1); ctx.lineTo(x2,y2); ctx.stroke();
-      }
-    }
-    ctx.setLineDash([]);
-  }
-  // Mode dots
-  const visible2 = [];
+
+  // ── Build visible list ──
+  const visible = [];
   for (let i = 0; i < modeData.length; i++) {
     const ratio = modeData[i].mu / eMu;
-    if (ratio >= minRatio && ratio <= maxRatio) visible2.push(i);
+    if (ratio >= minRatio && ratio <= maxRatio) visible.push(i);
   }
-  const colW = visible2.length > 0 ? pw / visible2.length : pw;
+  const colW = visible.length > 0 ? pw / visible.length : pw;
   const maxCoupling = Math.max(1e-12, ...modeData.map(m => m.coupling));
+
+  // R33 F1: only |n₁|=1 modes carry charge from WvM integral
+  // R21: only even parity has nonzero charge overlap C
+  const isChargedMode = m => m.n1 === 1 && m.parity === 'even';
+
+  // ── Draw mode dots ──
   let lastLabelX = -Infinity;
-  for (let vi = 0; vi < visible2.length; vi++) {
-    const i = visible2[vi];
+  for (let vi = 0; vi < visible.length; vi++) {
+    const i = visible[vi];
     const m = modeData[i];
     const ratio = m.mu / eMu;
     const x = pad.l + (vi + 0.5) * colW;
@@ -646,32 +661,44 @@ function drawSpectrum() {
     const damped = m.coupling / maxCoupling;
     const alpha = Math.max(0.15, 1 - damped * 0.85);
     const isElectron = i === eIdx, isGhost = i === ghostIdx(), isSel = i === S.selectedModeIdx;
-    const isAnti = m.anti;
-    const r = (isSel || isElectron || isGhost) ? 7 : 5;
+    const charged = isChargedMode(m);
+
+    // Key modes: electron + ghost are bright; everything else dim
+    const isKey = isElectron || isGhost || isSel;
+    const r = isKey ? 7 : (charged ? 5 : 3.5);
+
     ctx.globalAlpha = alpha;
-    if (isSel) { ctx.fillStyle = '#ff6e40'; ctx.strokeStyle = '#fff'; ctx.lineWidth = 2; }
-    else if (isElectron) { ctx.fillStyle = '#ff6e40'; ctx.strokeStyle = '#ff6e40'; ctx.lineWidth = 1.5; }
-    else if (isGhost) { ctx.fillStyle = '#fdd835'; ctx.strokeStyle = '#fdd835'; ctx.lineWidth = 1.5; }
-    else if (isAnti) { ctx.fillStyle = '#9c27b0'; ctx.strokeStyle = '#ce93d8'; ctx.lineWidth = 1.5; }
-    else { ctx.fillStyle = m.parity === 'even' ? '#4fc3f7' : 'transparent'; ctx.strokeStyle = '#4fc3f7'; ctx.lineWidth = 1.5; }
-    ctx.beginPath(); ctx.arc(x, y, r, 0, TAU);
-    if (m.parity === 'even' || isSel || isElectron || isGhost) ctx.fill();
-    ctx.stroke();
-    if (isAnti) {
-      ctx.strokeStyle = '#ce93d8'; ctx.lineWidth = 1.5;
-      ctx.beginPath(); ctx.moveTo(x-r*0.6, y); ctx.lineTo(x+r*0.6, y); ctx.stroke();
+
+    if (isSel) {
+      ctx.fillStyle = '#ff6e40'; ctx.strokeStyle = '#fff'; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.arc(x, y, r, 0, TAU); ctx.fill(); ctx.stroke();
+    } else if (isElectron) {
+      ctx.fillStyle = '#ff6e40'; ctx.strokeStyle = '#ff6e40'; ctx.lineWidth = 1.5;
+      ctx.beginPath(); ctx.arc(x, y, r, 0, TAU); ctx.fill(); ctx.stroke();
+    } else if (isGhost) {
+      ctx.fillStyle = '#fdd835'; ctx.strokeStyle = '#fdd835'; ctx.lineWidth = 1.5;
+      ctx.beginPath(); ctx.arc(x, y, r, 0, TAU); ctx.fill(); ctx.stroke();
+    } else if (charged) {
+      ctx.fillStyle = '#4fc3f733'; ctx.strokeStyle = '#4fc3f755'; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.arc(x, y, r, 0, TAU); ctx.fill(); ctx.stroke();
+    } else {
+      ctx.fillStyle = '#33333366'; ctx.strokeStyle = '#44444466'; ctx.lineWidth = 0.5;
+      ctx.beginPath(); ctx.arc(x, y, r, 0, TAU); ctx.fill(); ctx.stroke();
     }
+
     ctx.globalAlpha = 1;
+
+    // Labels — only for key modes, or widely spaced charged ones
     const forceLabel = isSel || isElectron || isGhost;
-    if (forceLabel || x - lastLabelX > 36) {
-      ctx.fillStyle = forceLabel ? '#aaa' : '#666'; ctx.font = '9px monospace';
-      const sign = m.n1 < 0 ? '' : '';
-      const lbl = `${m.n1},${m.n2}${m.parity === 'odd' ? 'o' : ''}`;
+    if (forceLabel || (charged && x - lastLabelX > 40)) {
+      ctx.fillStyle = forceLabel ? '#bbb' : '#555'; ctx.font = '9px monospace';
+      const lbl = isElectron ? 'e⁻' : (isGhost ? 'ghost' : `${m.n1},${m.n2}`);
       ctx.fillText(lbl, x - ctx.measureText(lbl).width/2, y - r - 4);
       lastLabelX = x;
     }
   }
-  // Y axis labels
+
+  // ── Y axis grid ──
   ctx.fillStyle = '#666'; ctx.font = '10px monospace';
   for (const v of [0.5, 1, 2, 5, 10]) {
     if (v < minRatio || v > maxRatio) continue;
@@ -682,21 +709,29 @@ function drawSpectrum() {
   }
   ctx.fillStyle = '#555'; ctx.font = '10px sans-serif';
   ctx.fillText('m/mₑ', 2, pad.t-3);
-  // Legend
-  const lgX = pad.l + pw - 120, lgY = pad.t + ph - 42;
-  ctx.globalAlpha = 0.85;
-  ctx.fillStyle = '#0a0a10cc'; ctx.fillRect(lgX-4, lgY-10, 124, 50);
+
+  // ── Legend (bottom-right) ──
+  const lgW = 175, lgH = 64;
+  const lgX = pad.l + pw - lgW + 4, lgY = pad.t + ph - lgH + 4;
+  ctx.globalAlpha = 0.9;
+  ctx.fillStyle = '#0a0a10dd'; ctx.fillRect(lgX-4, lgY-4, lgW, lgH);
+  ctx.strokeStyle = '#333'; ctx.lineWidth = 0.5;
+  ctx.strokeRect(lgX-4, lgY-4, lgW, lgH);
   ctx.globalAlpha = 1;
   ctx.font = '9px sans-serif';
-  ctx.fillStyle = '#4fc3f7'; ctx.beginPath(); ctx.arc(lgX+4, lgY, 4, 0, TAU); ctx.fill();
-  ctx.fillStyle = '#999'; ctx.fillText('even parity', lgX+14, lgY+3);
-  ctx.strokeStyle = '#4fc3f7'; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(lgX+4, lgY+14, 4, 0, TAU); ctx.stroke();
-  ctx.fillStyle = '#999'; ctx.fillText('odd parity', lgX+14, lgY+17);
-  if (S.showAnti) {
-    ctx.fillStyle = '#9c27b0'; ctx.beginPath(); ctx.arc(lgX+4, lgY+28, 4, 0, TAU); ctx.fill();
-    ctx.strokeStyle = '#ce93d8'; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(lgX+1, lgY+28); ctx.lineTo(lgX+7, lgY+28); ctx.stroke();
-    ctx.fillStyle = '#999'; ctx.fillText('anti-particle', lgX+14, lgY+31);
-  }
+  let ly = lgY + 6;
+  ctx.fillStyle = '#ff6e40'; ctx.beginPath(); ctx.arc(lgX+5, ly, 5, 0, TAU); ctx.fill();
+  ctx.fillStyle = '#bbb'; ctx.fillText('electron (1,2)', lgX+16, ly+3);
+  ly += 14;
+  ctx.fillStyle = '#fdd835'; ctx.beginPath(); ctx.arc(lgX+5, ly, 5, 0, TAU); ctx.fill();
+  ctx.fillStyle = '#bbb'; ctx.fillText('ghost (1,1) — unobserved', lgX+16, ly+3);
+  ly += 14;
+  ctx.fillStyle = '#4fc3f733'; ctx.strokeStyle = '#4fc3f755'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.arc(lgX+5, ly, 4, 0, TAU); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = '#888'; ctx.fillText('charged, spin-filtered (R33)', lgX+16, ly+3);
+  ly += 14;
+  ctx.fillStyle = '#33333366'; ctx.beginPath(); ctx.arc(lgX+5, ly, 3, 0, TAU); ctx.fill();
+  ctx.fillStyle = '#666'; ctx.fillText('dark / uncharged', lgX+16, ly+3);
 }
 
 /* ── 1D Profile ───────────────────────────────────── */
@@ -724,13 +759,13 @@ function drawProfile() {
   if (ghost && ghost !== sel) drawCurve(ghost.density, '#fdd835', [6,3]);
   // Slot bars
   for (const grp of S.slotGroups) {
+    if (grp.enabled === false) continue;
     const x0 = pad.l + ((grp.theta1 - grp.height/2)/360)*pw;
     const xw = (grp.height/360)*pw;
     ctx.fillStyle = grp.color + '33'; ctx.fillRect(x0, pad.t, xw, ph);
     ctx.strokeStyle = grp.color; ctx.lineWidth = 1;
     const xc = pad.l + (grp.theta1/360)*pw;
     ctx.beginPath(); ctx.moveTo(xc, pad.t); ctx.lineTo(xc, pad.t+ph); ctx.stroke();
-    // Annotations
     if (sel) {
       const d = densityAt(sel.density, grp.theta1);
       ctx.fillStyle = '#ff6e40'; ctx.font = '10px monospace';
@@ -778,29 +813,39 @@ function renderSlotList() {
   const list = $('slot-list');
   list.innerHTML = '';
   S.slotGroups.forEach((grp, idx) => {
+    if (grp.enabled === undefined) grp.enabled = true;
+    if (!grp.shape) grp.shape = 'rect';
+    const dis = grp.enabled ? '' : ' style="opacity:0.4"';
     const div = document.createElement('div');
     div.className = 'sg-row';
     div.innerHTML = `
       <div class="sg-head">
+        <input type="checkbox" class="sg-en" data-i="${idx}" ${grp.enabled ? 'checked' : ''} title="Enable/disable this slot group">
         <input type="color" class="sg-color" value="${grp.color}" data-i="${idx}">
         <span class="sg-name">${grp.name}</span>
-        <button class="btn" data-del="${idx}" title="Remove">✕</button>
+        <button class="btn" data-del="${idx}" title="Remove group">✕</button>
       </div>
-      <div class="lp-row">
-        <span class="lp-lbl">θ₁</span><input type="number" class="lp-input sg-t1" data-i="${idx}" value="${grp.theta1}" min="0" max="360" step="1">
-        <span class="lp-lbl">h</span><input type="number" class="lp-input sg-h" data-i="${idx}" value="${grp.height}" min="1" max="180" step="1">
+      <div class="lp-row"${dis}>
+        <span class="lp-lbl" title="Tube position (center, 0°=outer equator)">θ₁</span><input type="number" class="lp-input sg-t1" data-i="${idx}" value="${grp.theta1}" min="0" max="360" step="0.1">
+        <span class="lp-lbl" title="Slot height along tube axis (degrees)">h</span><input type="number" class="lp-input sg-h" data-i="${idx}" value="${grp.height}" min="0.1" max="180" step="0.1">
       </div>
-      <div class="lp-row">
-        <span class="lp-lbl">w</span><input type="number" class="lp-input sg-w" data-i="${idx}" value="${grp.width}" min="1" max="90" step="1">
-        <span class="lp-lbl">×</span><input type="number" class="lp-input sg-cnt" data-i="${idx}" value="${grp.count}" min="1" max="12" step="1">
+      <div class="lp-row"${dis}>
+        <span class="lp-lbl" title="Slot width along ring axis (degrees)">w</span><input type="number" class="lp-input sg-w" data-i="${idx}" value="${grp.width}" min="0.1" max="90" step="0.1">
+        <span class="lp-lbl" title="Number of equally-spaced copies around the ring">×</span><input type="number" class="lp-input sg-cnt" data-i="${idx}" value="${grp.count}" min="1" max="12" step="1">
+        <select class="lp-input sg-shape" data-i="${idx}" title="Slot shape: rectangular or round (elliptical)">
+          <option value="rect"${grp.shape==='rect'?' selected':''}>▬</option>
+          <option value="round"${grp.shape==='round'?' selected':''}>⬭</option>
+        </select>
       </div>`;
     list.appendChild(div);
   });
+  list.querySelectorAll('.sg-en').forEach(el => el.onchange = function() { S.slotGroups[+this.dataset.i].enabled = this.checked; onSlotChange(); renderSlotList(); });
   list.querySelectorAll('.sg-color').forEach(el => el.oninput = function() { S.slotGroups[+this.dataset.i].color = this.value; fullRedraw(); });
   list.querySelectorAll('.sg-t1').forEach(el => el.onchange = function() { S.slotGroups[+this.dataset.i].theta1 = +this.value; onSlotChange(); });
   list.querySelectorAll('.sg-h').forEach(el => el.onchange = function() { S.slotGroups[+this.dataset.i].height = +this.value; onSlotChange(); });
   list.querySelectorAll('.sg-w').forEach(el => el.onchange = function() { S.slotGroups[+this.dataset.i].width = +this.value; onSlotChange(); });
   list.querySelectorAll('.sg-cnt').forEach(el => el.onchange = function() { S.slotGroups[+this.dataset.i].count = +this.value; onSlotChange(); });
+  list.querySelectorAll('.sg-shape').forEach(el => el.onchange = function() { S.slotGroups[+this.dataset.i].shape = this.value; onSlotChange(); });
   list.querySelectorAll('[data-del]').forEach(el => el.onclick = function() { S.slotGroups.splice(+this.dataset.del, 1); onSlotChange(); renderSlotList(); });
 }
 
@@ -810,6 +855,7 @@ $('btn-add-slot').onclick = () => {
   S.slotGroups.push({
     name: `Group ${S.slotGroups.length+1}`,
     theta1: 180, height: 50, width: 2, count: 2,
+    shape: 'rect', enabled: true,
     color: SLOT_COLORS[S.slotGroups.length % SLOT_COLORS.length],
   });
   renderSlotList(); onSlotChange();
@@ -835,18 +881,15 @@ function updateDerived() {
   ];
   const sel = modeData[S.selectedModeIdx];
   if (sel) {
-    const antiTag = sel.anti ? ' (anti)' : '';
-    html.push(`<div class="lp-row"><span class="lp-lbl">sel</span><span class="lp-val">(${sel.n1},${sel.n2}) ${sel.parity[0]}${antiTag}</span></div>`);
+    const charged = sel.n1 === 1 && sel.parity === 'even';
+    const tag = charged ? ' ⚡' : ' (dark)';
+    html.push(`<div class="lp-row"><span class="lp-lbl">sel</span><span class="lp-val">(${sel.n1},${sel.n2}) ${sel.parity[0]}${tag}</span></div>`);
     html.push(`<div class="lp-row"><span class="lp-lbl">μ</span><span class="lp-val">${sel.mu.toFixed(4)}</span></div>`);
     html.push(`<div class="lp-row"><span class="lp-lbl">q_eff</span><span class="lp-val">${sel.qeff.toFixed(4)}</span></div>`);
     html.push(`<div class="lp-row"><span class="lp-lbl">C</span><span class="lp-val">${sel.chargeOverlap.toFixed(4)}</span></div>`);
-    if (S.showAnti && sel.n1 !== 0) {
-      const pairN1 = -sel.n1;
-      const partner = modeData.find(m => m.n1 === pairN1 && m.n2 === sel.n2 && m.parity === sel.parity);
-      if (partner) {
-        const split = Math.abs(partner.mu - sel.mu) / Math.min(partner.mu, sel.mu) * 100;
-        html.push(`<div class="lp-row"><span class="lp-lbl">pair</span><span class="lp-val">(${pairN1},${sel.n2}) Δm=${split.toFixed(2)}%</span></div>`);
-      }
+    if (charged) {
+      const spin = `${sel.n1}/${sel.n2}`;
+      html.push(`<div class="lp-row"><span class="lp-lbl">spin</span><span class="lp-val">${spin}</span></div>`);
     }
   }
   $('derived-vals').innerHTML = html.join('');
@@ -933,7 +976,6 @@ function syncControls() {
   $('in-mass').style.display = S.particle === 'custom' ? '' : 'none';
   $('cb-geo').checked = S.geodesics;
   $('cb-wire').checked = S.wire;
-  $('cb-anti').checked = S.showAnti;
   document.querySelectorAll('[data-ar]').forEach(b =>
     b.classList.toggle('on', Math.abs(+b.dataset.ar - S.eps) < 0.01));
 }
@@ -985,7 +1027,6 @@ $('in-mass').onchange = function() { S.customMass = +this.value; fullRedraw(); }
 
 $('cb-geo').onchange = function() { S.geodesics = this.checked; rebuildGeodesics(); };
 $('cb-wire').onchange = function() { S.wire = this.checked; if (wireMesh) wireMesh.visible = S.wire; };
-$('cb-anti').onchange = function() { S.showAnti = this.checked; S.selectedModeIdx = -1; fullRecompute(); };
 
 /* ═══════════════════════════════════════════════════════
    Status bar
