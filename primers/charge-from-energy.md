@@ -97,9 +97,24 @@ Flipping either one (reversing the polarization, or mirroring
 the material-dimension orientation) flips the charge — this is
 charge conjugation (C).
 
-The dimensional orientation is axiomatic — it's part of how the
-universe is wired, like the perpendicularity of x and y.  The
-photon's handedness is a degree of freedom within that structure.
+Put more simply: **charge polarity is wrapping direction.**
+The photon wraps onto the material sheet, and the direction
+of the wrap determines which face of the surface the E field
+exits from.  One direction → inward flux → negative charge.
+The other direction → outward flux → positive charge.
+
+There is no fundamental charge — only geometry.  Charge
+quantization (always ±1e, never ½e) follows because wrapping
+direction is a discrete topological choice: clockwise or
+counterclockwise, with nothing in between.  Charge
+conservation follows because topology is conserved — you
+cannot continuously deform a clockwise wrap into a
+counterclockwise one without unwinding and rewinding.
+
+Annihilation is topological cancellation: when an electron
+and positron meet, their opposite wraps unwind each other,
+releasing the trapped photon energy back into free
+propagation.
 
 ## 3. The flat-rectangle picture
 
@@ -636,6 +651,78 @@ two (n₁ = 1 and n₅ = 1), which combine to give spin ½ or 0.
 all six winding numbers plus the geometry (circumferences,
 shears, and cross-shears) of the three sheets.
 
+### Why the electron sheet gives − and the proton sheet gives +
+
+The charge formula Q = −n₁ + n₅ encodes the relative
+orientation of the two sheets in the 6D material space.
+Ma_e and Ma_p are both made of GRID fabric — the same
+lattice, the same scattering rules — but they are oriented
+in opposite senses relative to the spatial dimensions.
+The tube winding n₁ on Ma_e couples to the outward E-field
+with one sign; the tube winding n₅ on Ma_p couples with
+the other.
+
+This means the mode physics on both sheets is identical.
+The same eigensolver, the same shear mechanics, the same
+α formula, the same slot geometry — all work with positive
+magnitudes.  The charge sign is determined by which sheet
+the mode lives on, not by anything in the calculation.
+Both sheets must independently satisfy α = 1/137 (since
+their charged modes interact with the same electromagnetic
+field), but since they have different aspect ratios ε,
+their shear values differ.
+
+The neutrino sheet (Ma_ν) is oriented orthogonally to the
+charge-determining direction — its windings (n₃, n₄) do
+not contribute to Q at all.
+
+### Matter, antimatter, and shear chirality
+
+The true antiparticle of any mode is its CPT conjugate:
+flip all winding numbers.  Electron (1, 2) → positron
+(−1, −2).  Their energies are identical because
+q_eff² = (n₂ − s·n₁)² = (−n₂ + s·n₁)².
+CPT is exact — every particle has an antiparticle of
+precisely equal mass.
+
+But charge conjugation alone — flipping only the tube
+winding — gives a different energy:
+
+| Mode | q_eff | E² ∝ |
+|------|-------|------|
+| (1, 2) electron | 2 − s | 1/ε² + (2−s)² |
+| (−1, −2) positron (CPT) | −(2−s) | 1/ε² + (2−s)² |
+| (−1, 2) charge conjugate | 2 + s | 1/ε² + (2+s)² |
+
+The charge conjugate is heavier.  The spectrum is
+C-asymmetric but CPT-symmetric — exactly as observed in
+nature.
+
+Each material sheet has a definite shear direction
+(s > 0) — a geometric chirality, or handedness.  On a
+chiral sheet, the topology of the path from free photons
+to a wound mode differs for one wrapping direction versus
+the other.  The transition amplitudes are not equal.
+This is a kinetic CP violation: the rate of matter
+creation differs from the rate of antimatter creation,
+even though the equilibrium populations would be equal.
+
+On an unsheared sheet (s = 0), the charge formula gives
+zero for all modes — no charged particles, no atoms, no
+chemistry.  The sheet must be sheared, but the sign of
+shear is arbitrary: a universe built on −s would have the
+same particles and forces, with "matter" and "antimatter"
+labels swapped.  The shear sign is a spontaneous symmetry
+breaking — once set when the GRID first formed, it froze
+into the geometry and every subsequent particle inherited
+the same convention.
+
+Antiparticles can always be produced (CPT guarantees it),
+but the chiral sheet makes their production kinetically
+disfavored.  Nature winds with the grain.  Whichever
+direction wins, we call "matter."  See Q97 for the full
+baryogenesis argument and Sakharov conditions.
+
 ### The particle zoo from geometry
 
 The remarkable feature of this scheme is that every known
@@ -662,12 +749,15 @@ framework — and the subject of a companion paper.
 | Concept | Mechanism |
 |---------|-----------|
 | Charge | Total E flux from compact surface (Gauss's law) |
+| Charge sign | Wrapping direction on the material sheet — purely geometric polarity |
+| Charge quantization | Discrete topological choice (clockwise vs counterclockwise) — no fractional wraps |
 | Mass | Resonance condition: eigenvalue of wave equation on compact geometry |
 | Spin ½ | Odd winding on charge-determining dimension → half-integer topology |
 | Magnetic moment | B tangent to compact surface → net axial dipole |
 | g ≈ 2.0023 | Fraction of energy in external (non-rotating) field |
 | Shear → α | Lattice skew of material sheet controls charge magnitude; sin²(2πs) symmetry breaking |
 | Quantum numbers | Six integers (n₁–n₆) specify any mode; charge, spin, mass all follow from geometry |
+| Matter vs antimatter | Shear chirality creates kinetic bias for one wrapping direction; CPT exact, C broken |
 
 All properties arise from electromagnetic energy on a compact
 topology.  No fundamental charge.  No point particle.  Just
