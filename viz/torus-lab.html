@@ -88,8 +88,11 @@ select.lp-input { width: auto; font-size: 12px; }
 
   <div class="lp-sec">
     <h3 title="Node constraints force f(θ₁)=0 at specified tube positions — like touching a guitar string. Modes with a natural node there survive; modes with an antinode there are killed.">Node Constraints</h3>
+    <div class="lp-row" style="margin-bottom:4px;gap:4px">
+      <button class="btn" id="btn-add-nc" title="Add a node constraint at a tube position θ₁">+ Add Node</button>
+      <button class="btn" id="btn-optimize" title="Auto-place nodes at electron's θ₂ nodes (where electron survives and ghost is maximally exposed). Uses q_eff difference from shear.">Optimize</button>
+    </div>
     <div id="nc-list"></div>
-    <button class="btn" id="btn-add-nc" style="margin-top:4px" title="Add a node constraint at a tube position θ₁">+ Add Node</button>
   </div>
 
   <div class="lp-sec">
@@ -99,7 +102,8 @@ select.lp-input { width: auto; font-size: 12px; }
       <button class="btn" id="btn-load-prof" title="Load selected profile">Load</button>
       <button class="btn" id="btn-del-prof" title="Delete selected profile">Del</button>
     </div>
-    <div class="lp-row" style="margin-top:3px">
+    <div class="lp-row" style="margin-top:3px" id="save-row">
+      <input class="lp-input" id="in-prof-name" placeholder="profile name" style="flex:1;display:none">
       <button class="btn" id="btn-save-prof" title="Save current settings as a named profile">Save current…</button>
     </div>
   </div>
@@ -858,6 +862,23 @@ $('btn-add-nc').onclick = () => {
   renderConstraints(); onNCChange();
 };
 
+$('btn-optimize').onclick = () => {
+  const eIdx = electronIdx();
+  if (eIdx < 0) return;
+  const enabled = S.nodes.filter(nc => nc.enabled);
+  if (enabled.length < 2) return;
+  const eQ = modeData[eIdx].qeff;
+  // Keep the first enabled node (anchor) as-is; adjust θ₂ of subsequent
+  // enabled nodes to land on electron's standing-wave nodes:
+  //   sin²(eQ · Δθ₂) = 0  →  Δθ₂ = k·π/eQ
+  const anchorTh2 = enabled[0].theta2;
+  const nodeSpacing = 180 / eQ;
+  for (let i = 1; i < enabled.length; i++) {
+    enabled[i].theta2 = +((anchorTh2 + i * nodeSpacing) % 360).toFixed(2);
+  }
+  renderConstraints(); onNCChange();
+};
+
 /* ═══════════════════════════════════════════════════════
    Derived values + Metrics
    ═══════════════════════════════════════════════════════ */
@@ -939,13 +960,24 @@ function refreshProfileList() {
 }
 
 $('btn-save-prof').onclick = () => {
-  const name = prompt('Profile name:');
-  if (!name) return;
+  const inp = $('in-prof-name');
+  if (inp.style.display === 'none') {
+    inp.style.display = ''; inp.value = ''; inp.focus();
+    $('btn-save-prof').textContent = 'Save';
+    return;
+  }
+  const name = inp.value.trim();
+  if (!name) { inp.focus(); return; }
   const profs = getProfiles();
   profs[name] = { eps: S.eps, shear: S.shear, particle: S.particle, customMass: S.customMass, nodes: structuredClone(S.nodes) };
   saveProfiles(profs); refreshProfileList();
   $('sel-profile').value = name;
+  inp.style.display = 'none'; $('btn-save-prof').textContent = 'Save current…';
 };
+$('in-prof-name').addEventListener('keydown', e => {
+  if (e.key === 'Enter') $('btn-save-prof').click();
+  if (e.key === 'Escape') { $('in-prof-name').style.display = 'none'; $('btn-save-prof').textContent = 'Save current…'; }
+});
 
 $('btn-load-prof').onclick = () => {
   const name = $('sel-profile').value;
