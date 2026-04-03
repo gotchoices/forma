@@ -72,7 +72,16 @@ circle) and a **tube** (poloidal, minor circle).
 | Ma_p | φ_p | θ_p |
 
 The ring circumference L_φ ≥ tube circumference L_θ.  Their
-ratio is the **aspect ratio** r = L_φ / L_θ.
+ratio defines the **aspect ratio**:
+
+    ε = a/R = L_θ / L_φ     (tube ÷ ring, always ≤ 1 for ring tori)
+
+Per-particle values: ε_e, ε_p, ε_ν.
+
+**Legacy notation:** Earlier studies and library code use `r_e`, `r_p`,
+`r_ν` for the same quantity (ε).  A few studies (R21–R24) used
+`r = 1/ε` (ring ÷ tube) alongside ε; those tables list both columns
+for clarity.  New studies (R46+) use ε exclusively.
 
 ---
 
@@ -174,7 +183,7 @@ Shorthand: (n₁, n₂, n₃, n₄, n₅, n₆).
 
 | Property | How determined | Formula |
 |----------|--------------|---------|
-| **Mass** | Eigenvalue of Ma wave equation | m² = E₀² μ², where μ = √((n_φ/r)² + (n_θ − n_φ·s)²) per sheet, plus cross-shear corrections |
+| **Mass** | Eigenvalue of Ma wave equation | m² = E₀² μ², where μ = √((n_φ·ε)² + (n_θ − n_φ·s)²) per sheet, plus cross-shear corrections |
 | **Charge** | Ring windings on charged sheets | Q = −n₁ + n₅ (in units of e) |
 | **Spin** | Tube winding number | s = ½ for odd n_θ (fermion); s = 0 or 1 for even n_θ (boson) |
 
@@ -307,7 +316,7 @@ energy — these are not meaningful tests (R28).
 
 | Mechanism | Description | Reference |
 |-----------|-------------|-----------|
-| **Shear-induced charge** | Within-plane shear s ≠ 0 breaks φ-symmetry of mode wavefunctions; net E-flux asymmetry = electric charge; α = f(r, s) | R19 |
+| **Shear-induced charge** | Within-plane shear s ≠ 0 breaks φ-symmetry of mode wavefunctions; net E-flux asymmetry = electric charge; α = f(ε, s) | R19 |
 | **Axial B-field projection** | B tangent to T² surface → net axial component along spin axis → magnetic dipole moment; g ≈ 2 from (1,2) topology | R2, primer |
 | **Cross-shear coupling** | Inter-sheet shear σ ≠ 0 allows modes spanning multiple sheets; neutron, muon, and hadrons are cross-plane modes | R26 |
 | **KK gauge field emergence** | Off-diagonal metric between Ma and S; fluctuations in S propagate as EM field; emerges from the wave equation, not imposed | R36 F8–F9 |

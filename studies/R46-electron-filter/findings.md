@@ -533,3 +533,57 @@ from q_eff, so no such offset occurs.
 | F11 | Fitting strategy: set slot dims for moment, then adjust s for charge |
 | F12 | **Plan C wins all metrics**: ΔQ=0, |B|=1, 610× ghost discrimination |
 | F13 | Shear shifts all field features by 6.3° from their q=2 positions |
+
+
+## Track 3. Interactive eigenmode lab — phase-locked node constraints
+
+Tool: [`viz/torus-lab.html`](../../viz/torus-lab.html)
+
+### Model summary
+
+Track 3 replaced the vector field model of Tracks 1–2 with the
+scalar Sturm-Liouville eigensolver.  The equation
+−d/dθ₁[p(θ₁) df/dθ₁] + V(θ₁)f = λ w(θ₁)f gives the tube profile
+f(θ₁) for each mode, with curvature effects handled correctly.
+
+The key innovation is **phase-locked standing waves**: the first
+node constraint pins the phase of every mode, producing a 2D
+density pattern ρ(θ₁,θ₂) = |f(θ₁)|² · sin²(q_eff · (θ₂ − θ₂_anchor)).
+Subsequent nodes filter based on this pattern.  A mode's survival
+score is ∏(1 − ρ) over all non-anchor constraints.
+
+### Findings
+
+| ID | Finding |
+|----|---------|
+| F1 | Ghost can be selectively killed.  Placing nodes at the electron's standing-wave nodes (θ₂ spacing = 180°/q_eff_e) achieves 100% electron survival while reducing ghost (1,1) to < 1%. |
+| F2 | Shear-adjusted spacing matters.  Naïve 90° intervals give ~91% electron survival; shear-optimized 92.65° intervals give 100%.  The ~2.65° correction comes from q_eff = n₂ − s·n₁. |
+| F3 | Higher harmonics preserved.  (1,2) 100%, (1,3) 85.8%, (1,4) 100%, (1,5) 99.9%, (1,6) 100%.  Only (1,3) partially weakened. |
+| F4 | Physical realization: node constraints correspond to slots (apertures) in the torus surface that force standing-wave nodes at those positions. |
+
+
+## Track 4. Slot geometry and anomalous moment
+
+Script: [`scripts/track4_slot_geometry.py`](scripts/track4_slot_geometry.py)
+Outputs: `outputs/track4_*.svg`
+
+### Model summary
+
+Four elliptical slots on the inner equator (θ₁ = 180°), equally
+spaced at shear-corrected intervals (θ₂ = 0°, 92.65°, 185.31°,
+277.96° at ε = 0.5).  Each slot has semi-axes h (tube direction)
+and w (ring direction).  Total slot area is pinned to produce
+δμ/μ = α/(2π) ≈ 1.161 × 10⁻³, then h/w is swept to minimize
+charge leakage.
+
+### Findings
+
+| ID | Finding |
+|----|---------|
+| F1 | Target moment δμ/μ = α/(2π) achievable at all h/w ratios — moment scales linearly with slot area at these small aperture sizes. |
+| F2 | Flat/wide slots (h/w ≈ 0.1) minimize charge leakage: Q_leak = 2.3 × 10⁻⁵ e.  Tall/narrow slots (h/w = 10) give 12× more leakage but still < 0.03% of e. |
+| F3 | Optimal slot: h ≈ 0.98° × w ≈ 9.78° (ring-direction slit).  Physical size at ε = 0.5: h ≈ 9.2 fm × w ≈ 183 fm. |
+| F4 | Ghost (1,1) remains killed (0.0% survival) at all slot aspect ratios — positions from Track 3 are robust. |
+| F5 | Electron (1,2) survives at 100% everywhere.  (1,3) weakened to ~74%, (1,4)–(1,6) all > 99%. |
+| F6 | Charge perturbation negligible — no shear adjustment needed.  The circularity concern (slots perturb charge → new shear → slots move) is moot. |
+| F7 | Field intensity at inner equator is 1.25× RMS average — lower than outer equator peak (~1.8×), reducing coupling as desired. |

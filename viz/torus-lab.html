@@ -576,13 +576,21 @@ function drawSheet() {
       }
     }
   }
-  // Node constraints as dots
+  // Node constraints — draw slot ellipses (true size with minimum visibility)
+  // Track 4 optimal: h ≈ 0.98° (tube), w ≈ 9.78° (ring)
+  const SLOT_H_DEG = 0.98, SLOT_W_DEG = 9.78;
   for (const nc of S.nodes) {
     if (!nc.enabled) continue;
     const nx = (nc.theta2 / 360) * pw + ox;
     const ny = (nc.theta1 / 360) * ph + oy;
-    ctx.fillStyle = nc.color; ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.5;
-    ctx.beginPath(); ctx.arc(nx, ny, 5, 0, TAU); ctx.fill(); ctx.stroke();
+    const rw = Math.max(4, (SLOT_W_DEG / 360) * pw);
+    const rh = Math.max(4, (SLOT_H_DEG / 360) * ph);
+    ctx.save();
+    ctx.translate(nx, ny);
+    ctx.beginPath(); ctx.ellipse(0, 0, rw, rh, 0, 0, TAU);
+    ctx.fillStyle = nc.color + '44'; ctx.fill();
+    ctx.strokeStyle = nc.color; ctx.lineWidth = 1.5; ctx.stroke();
+    ctx.restore();
   }
   // Border
   ctx.strokeStyle = '#333'; ctx.lineWidth = 1;

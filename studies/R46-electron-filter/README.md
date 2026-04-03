@@ -1,6 +1,6 @@
 # R46: Electron filter — aperture effects on a toroidal cavity
 
-**Status:** Active (Track 4)
+**Status:** Pending (electron complete through Track 4; proton moved to R47)
 **Questions:** [Q100](../../qa/Q100-aperture-moment-enhancement.md) (aperture moment enhancement),
   [Q53](../../qa/Q53-anomalous-magnetic-moment.md) (g − 2),
   [Q94](../../qa/Q94-compton-window-and-dark-modes.md) (Compton window / ghost filtering)
@@ -212,158 +212,32 @@ the user place node constraints to observe how they filter modes.
 
 **Implementation:** `viz/torus-lab.html` (self-contained).
 
-**Findings:**
-
-- **F1: Ghost can be selectively killed.** Placing nodes at the
-  electron's standing-wave nodes (θ₂ spacing = 180°/q_eff_electron)
-  achieves 100% electron survival while reducing the ghost (1,1) to
-  < 1% survival.  This works because q_eff differs between modes
-  due to shear: q_eff_electron ≈ 1.94, q_eff_ghost ≈ 0.94.  The
-  electron's nodes land on the ghost's antinodes.
-
-- **F2: Shear-adjusted spacing matters.** Naïve equal spacing
-  (0°, 90°, 180°, 270°) yields ~91% electron survival.
-  Shear-optimized spacing (92.65° intervals at ε = 0.5) achieves
-  100%.  The difference is ≈ 2.65° per interval.
-
-- **F3: Higher harmonics are largely preserved.** With the
-  optimized 3-node configuration: (1,2) electron 100%, (1,3)
-  85.8%, (1,4) 100%, (1,5) 99.9%, (1,6) 100%.  Only (1,3) is
-  partially weakened.
-
-- **F4: Physical realization.** The node constraints correspond to
-  physical slots (apertures) in the torus surface.  Placing slots
-  at the computed θ₂ positions forces the standing wave to anchor
-  nodes there — modes that cannot accommodate nodes at those
-  locations are suppressed.
+**Findings:** See [findings.md](findings.md), Track 3.
 
 **Depends on:** Nothing — self-contained with correct physics.
 
 
 ### Track 4: Slot geometry and anomalous moment
 
-**Status:** Planning
+**Status:** Complete
 
 **Goal:** Determine the physical slot dimensions (height × width)
 that produce the observed anomalous magnetic moment, then verify
 that charge is not grossly perturbed.
 
-**Premise from Track 3:**
-Four elliptical slots on the inner equator (θ₁ = 180°), equally
-spaced around the ring but adjusted for shear.  In practice this
-means placing them at θ₂ = 0°, 92.65°, 185.31°, 277.96° (at
-ε = 0.5) — i.e., the same shear-corrected intervals that Torus
-Lab's Optimize button computes.  The slots are identical in size
-and shape; the shear adjustment is purely a positional offset.
+**Premise:** Four elliptical slots on the inner equator (θ₁ = 180°),
+shear-adjusted spacing (θ₂ = 0°, 92.65°, 185.31°, 277.96° at
+ε = 0.5).  Slot area pinned to δμ/μ = α/(2π); h/w swept to
+minimize charge leakage.
 
 **Note on circularity:** Shear determines slot positions (via
 q_eff), but if the slots perturb charge, shear may need
-adjustment, which moves the slots.  In practice the perturbation
-is expected to be small (slot area ≪ surface area), so one
-iteration should converge.  If not, iterate: solve s → place
-slots → measure charge → adjust s → re-place slots.
-
-**Method:**
-
-1. **Parameterize the slot** as an ellipse with semi-axes h (tube
-   direction, along θ₁) and w (ring direction, along θ₂), both in
-   radians.  Physical area A = π·h·w·a² (in the tube metric).
-
-2. **Pin area to anomalous moment.**  The anomalous magnetic moment
-   is g/2 − 1 = α/(2π) ≈ 1.161 × 10⁻³.  In the MaSt picture, this
-   enhancement comes from E-field bulging through the slot, extending
-   the effective current loop.  The fractional moment increase
-   δμ/μ ≈ (slot area / surface area) × (geometric coupling factor).
-   Set δμ/μ = α/(2π) and solve for the required total slot area
-   (4 slots × A_each).
-
-3. **Sweep aspect ratio h/w** at constant area.  For each ratio,
-   compute:
-   - Charge leakage through the slot (E_normal flux integral over
-     the slot area, using the eigensolver's f(θ₁) profile)
-   - Moment enhancement (extended loop area from Poynting vector)
-   - Survival scores for all modes (do the slots still kill the
-     ghost and preserve the electron?)
-
-4. **Minimize charge perturbation.**  Find the h/w ratio that
-   produces the target moment with minimal additional charge leakage.
-   Tall-narrow slots (h ≫ w) expose less ring circumference;
-   wide-short slots (w ≫ h) average over more of the tube profile.
-
-5. **Shear adjustment (if needed).**  If the slot introduces excess
-   charge, adjust shear s slightly from its α-derived value to
-   compensate.  This changes q_eff for all modes, so re-verify
-   ghost suppression and mode survival after adjustment.
-
-**Inputs:**
-- ε = a/R (free, default 0.5)
-- s from α = 1/137.036 relation
-- Anomalous moment target: g/2 − 1 = α/(2π)
-- Slot count: 4 (from Track 3 F1–F2)
-- Slot positions: shear-adjusted equal spacing on inner equator
-
-**Outputs:**
-- Required slot area A for target moment
-- Optimal h/w ratio minimizing charge perturbation
-- Mode survival table at the chosen geometry
-- Charge and moment as functions of h/w (sweep plot)
-- Revised shear if needed
-
-**Key questions:**
-- Is the moment-area relationship linear at these scales, or does
-  Bethe's (a/λ)⁴ scaling apply?
-- Does the inner equator placement (θ₁ = 180°) help or hurt?
-  The mode density is lower there (f(θ₁) smaller at inner equator
-  for even modes), which should reduce charge leakage.
-- Can we get exact α/(2π) moment enhancement without changing
-  the net charge by more than a few percent?
-
-**Depends on:** Track 3 (node positions, eigenmode data).
+adjustment, which moves the slots.  Track 4 F6 shows this is
+moot — charge perturbation is < 0.03% of e.
 
 **Script:** `scripts/track4_slot_geometry.py`
 
-**Findings:**
-
-- **F1: Target moment achieved for all aspect ratios.**  The moment
-  enhancement δμ/μ = α/(2π) ≈ 1.161 × 10⁻³ is achievable at every
-  h/w ratio by holding the total slot area constant.  This is
-  because δμ/μ scales linearly with slot area at these small
-  aperture sizes (slot ≪ surface).
-
-- **F2: Flat/wide slots minimize charge leakage.**  At h/w = 0.1
-  (tall in ring direction, short in tube direction — effectively a
-  ring-shaped slit), charge leakage is only 2.3 × 10⁻⁵ of the total
-  charge.  At h/w = 10 (tall in tube, narrow in ring), leakage rises
-  to 2.8 × 10⁻⁴.  The ratio is ~12×.  This is because a wider slot
-  (in θ₂) averages over more of the tube profile, while a taller
-  slot (in θ₁) samples more of the field gradient — and at the inner
-  equator, the field f(θ₁) rises steeply away from the minimum.
-
-- **F3: Optimal slot geometry.**  h/w ≈ 0.1: each slot is a
-  ring-direction slit ~0.98° tall × ~9.78° wide.  Physical
-  dimensions at ε = 0.5: h ≈ 9.2 fm, w ≈ 183 fm (for R ≈ 1077 fm,
-  a ≈ 538 fm).
-
-- **F4: Ghost remains killed at all ratios.**  Ghost (1,1) survival
-  is 0.0% across the entire h/w sweep — the slot positions from
-  Track 3 continue to suppress it regardless of slot shape.
-
-- **F5: Electron survives at all ratios.**  Electron (1,2) survival
-  is 100.0% everywhere.  The (1,3) mode is weakened to ~74%, which
-  may be physically desirable (it is a higher harmonic that has not
-  been observed).  (1,4) through (1,6) all survive at > 99%.
-
-- **F6: Charge perturbation is negligible.**  Even in the worst case
-  (h/w = 10), the charge leakage is < 0.03% of e.  No shear
-  adjustment is needed.  The circularity concern (slots perturb
-  charge → need new shear → slots move) is moot: the perturbation
-  is too small to matter.
-
-- **F7: Field ratio at inner equator.**  The field intensity at
-  θ₁ = 180° is 1.25× the RMS average.  This is lower than the
-  outer equator peak (~1.8×), confirming that inner equator
-  placement reduces coupling — a feature, not a bug, since we want
-  minimal charge disturbance.
+**Findings:** See [findings.md](findings.md), Track 4.
 
 
 ---
