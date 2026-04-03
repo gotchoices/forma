@@ -914,9 +914,6 @@ function updateDerived() {
 }
 
 function updateMetrics() {
-  const eIdx2 = electronIdx(), gi2 = ghostIdx();
-  const el = eIdx2 >= 0 ? modeData[eIdx2] : null;
-  const gh = gi2 >= 0 ? modeData[gi2] : null;
   const hasNC = S.nodes.some(nc => nc.enabled);
   const lines = [];
   if (hasNC) {
@@ -926,16 +923,30 @@ function updateMetrics() {
       const sc = m.survival > 0.9 ? '#4a4' : (m.survival < 0.1 ? '#f44' : '#da4');
       return `<div class="lp-row"><span class="lp-lbl" style="color:${col}">${label}</span><span class="lp-val" style="color:${sc}">${pct}% ${status}</span></div>`;
     };
-    if (el) lines.push(fmtSurv(el, 'e⁻', '#ff6e40'));
-    if (gh) lines.push(fmtSurv(gh, 'ghost', '#fdd835'));
+    const eIdx2 = electronIdx(), gi2 = ghostIdx();
+    const keyModes = [];
+    for (let i = 0; i < modeData.length; i++) {
+      const m = modeData[i];
+      const charged = m.n1 === 1 && m.parity === 'even';
+      if (!charged) continue;
+      let label, col;
+      if (i === eIdx2) { label = 'e⁻ (1,2)'; col = '#ff6e40'; }
+      else if (i === gi2) { label = 'ghost (1,1)'; col = '#fdd835'; }
+      else { label = `(${m.n1},${m.n2})`; col = '#4fc3f7'; }
+      keyModes.push({ m, label, col });
+    }
+    for (const km of keyModes) lines.push(fmtSurv(km.m, km.label, km.col));
+    // Per-constraint density for electron and ghost
     const anc = getAnchor();
+    const el = eIdx2 >= 0 ? modeData[eIdx2] : null;
+    const gh = gi2 >= 0 ? modeData[gi2] : null;
     for (const nc of S.nodes) {
       if (!nc.enabled) continue;
       const isAnc = nc === anc;
       const de = el ? density2D(el.density, el.qeff, nc.theta1, nc.theta2, anc).toFixed(2) : '-';
       const dg = gh ? density2D(gh.density, gh.qeff, nc.theta1, nc.theta2, anc).toFixed(2) : '-';
       const lbl = `(${nc.theta1.toFixed(0)},${nc.theta2.toFixed(0)})${isAnc?' ⚓':''}`;
-      lines.push(`<div class="lp-row" style="color:${nc.color}"><span class="lp-lbl">${lbl}</span><span class="lp-val">e:${de} g:${dg}</span></div>`);
+      lines.push(`<div class="lp-row" style="color:${nc.color}"><span class="lp-lbl">${lbl}</span><span class="lp-val" style="font-size:10px">e:${de} g:${dg}</span></div>`);
     }
   } else {
     lines.push('<div class="lp-row"><span class="lp-val" style="color:#555">Add nodes to see survival</span></div>');
