@@ -256,6 +256,13 @@ means placing them at θ₂ = 0°, 92.65°, 185.31°, 277.96° (at
 Lab's Optimize button computes.  The slots are identical in size
 and shape; the shear adjustment is purely a positional offset.
 
+**Note on circularity:** Shear determines slot positions (via
+q_eff), but if the slots perturb charge, shear may need
+adjustment, which moves the slots.  In practice the perturbation
+is expected to be small (slot area ≪ surface area), so one
+iteration should converge.  If not, iterate: solve s → place
+slots → measure charge → adjust s → re-place slots.
+
 **Method:**
 
 1. **Parameterize the slot** as an ellipse with semi-axes h (tube
@@ -312,6 +319,51 @@ and shape; the shear adjustment is purely a positional offset.
   the net charge by more than a few percent?
 
 **Depends on:** Track 3 (node positions, eigenmode data).
+
+**Script:** `scripts/track4_slot_geometry.py`
+
+**Findings:**
+
+- **F1: Target moment achieved for all aspect ratios.**  The moment
+  enhancement δμ/μ = α/(2π) ≈ 1.161 × 10⁻³ is achievable at every
+  h/w ratio by holding the total slot area constant.  This is
+  because δμ/μ scales linearly with slot area at these small
+  aperture sizes (slot ≪ surface).
+
+- **F2: Flat/wide slots minimize charge leakage.**  At h/w = 0.1
+  (tall in ring direction, short in tube direction — effectively a
+  ring-shaped slit), charge leakage is only 2.3 × 10⁻⁵ of the total
+  charge.  At h/w = 10 (tall in tube, narrow in ring), leakage rises
+  to 2.8 × 10⁻⁴.  The ratio is ~12×.  This is because a wider slot
+  (in θ₂) averages over more of the tube profile, while a taller
+  slot (in θ₁) samples more of the field gradient — and at the inner
+  equator, the field f(θ₁) rises steeply away from the minimum.
+
+- **F3: Optimal slot geometry.**  h/w ≈ 0.1: each slot is a
+  ring-direction slit ~0.98° tall × ~9.78° wide.  Physical
+  dimensions at ε = 0.5: h ≈ 9.2 fm, w ≈ 183 fm (for R ≈ 1077 fm,
+  a ≈ 538 fm).
+
+- **F4: Ghost remains killed at all ratios.**  Ghost (1,1) survival
+  is 0.0% across the entire h/w sweep — the slot positions from
+  Track 3 continue to suppress it regardless of slot shape.
+
+- **F5: Electron survives at all ratios.**  Electron (1,2) survival
+  is 100.0% everywhere.  The (1,3) mode is weakened to ~74%, which
+  may be physically desirable (it is a higher harmonic that has not
+  been observed).  (1,4) through (1,6) all survive at > 99%.
+
+- **F6: Charge perturbation is negligible.**  Even in the worst case
+  (h/w = 10), the charge leakage is < 0.03% of e.  No shear
+  adjustment is needed.  The circularity concern (slots perturb
+  charge → need new shear → slots move) is moot: the perturbation
+  is too small to matter.
+
+- **F7: Field ratio at inner equator.**  The field intensity at
+  θ₁ = 180° is 1.25× the RMS average.  This is lower than the
+  outer equator peak (~1.8×), confirming that inner equator
+  placement reduces coupling — a feature, not a bug, since we want
+  minimal charge disturbance.
 
 
 ---
