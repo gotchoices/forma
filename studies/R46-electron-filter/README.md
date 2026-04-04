@@ -1,6 +1,6 @@
 # R46: Electron filter — aperture effects on a toroidal cavity
 
-**Status:** Pending (electron complete through Track 4; proton moved to R47)
+**Status:** Complete through Track 5 (proton moved to R47)
 **Questions:** [Q100](../../qa/Q100-aperture-moment-enhancement.md) (aperture moment enhancement),
   [Q53](../../qa/Q53-anomalous-magnetic-moment.md) (g − 2),
   [Q94](../../qa/Q94-compton-window-and-dark-modes.md) (Compton window / ghost filtering)
@@ -240,9 +240,9 @@ moot — charge perturbation is < 0.03% of e.
 **Findings:** See [findings.md](findings.md), Track 4.
 
 
-### Track 5: Ring-circumference mode filter
+### Track 5: Mode filtering — assessment and working assumption
 
-**Status:** Framing
+**Status:** Complete — see [findings.md](findings.md), Track 5
 
 **Goal:** Test whether the ring circumference acts as a
 half-wavelength filter that determines which modes can

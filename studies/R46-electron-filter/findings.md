@@ -587,3 +587,130 @@ charge leakage.
 | F5 | Electron (1,2) survives at 100% everywhere.  (1,3) weakened to ~74%, (1,4)–(1,6) all > 99%. |
 | F6 | Charge perturbation negligible — no shear adjustment needed.  The circularity concern (slots perturb charge → new shear → slots move) is moot. |
 | F7 | Field intensity at inner equator is 1.25× RMS average — lower than outer equator peak (~1.8×), reducing coupling as desired. |
+
+
+## Track 5. Mode filtering — assessment and working assumption
+
+### Summary
+
+Multiple candidate mechanisms can eliminate the (1,1) ghost
+mode and select (1,2) as the lowest charged mode on the
+electron sheet.  This track assesses their status and
+establishes a working assumption for future modeling.
+
+### What has been tested
+
+**Slot filtering (Tracks 3–4): proven.**  Four phase-locked
+nodes on the inner equator kill (1,1) to 0.0% survival while
+preserving (1,2) at 100%.  The slot geometry is physically
+reasonable (~10 fm × ~180 fm at ε = 0.5) and produces the
+measured anomalous magnetic moment δμ/μ = α/(2π) as a
+byproduct.  This mechanism works.  It requires assuming the
+slots exist and have the right positions.
+
+### What has been proposed but not tested
+
+**Waveguide cutoff from tube diameter.**  If the photon
+fills the tube volume (the WvM 3D picture) rather than
+living on the 2D surface (the MaSt simplification), the
+tube cross-section acts as a waveguide.  Modes whose
+transverse wavelength exceeds the tube diameter are
+evanescent — they cannot propagate.  This would impose a
+minimum n₂ set by the tube geometry.
+
+Key insight: the waveguide cutoff and slot filtering are
+the **same physics in different descriptions**.  A waveguide
+cutoff exists because the tube walls force the field to zero
+at the boundary — the walls ARE nodes.  The 3D picture gives
+you the nodes automatically from the tube geometry.  The 2D
+picture needs them placed explicitly because it has
+abstracted away the walls.
+
+This means the slots found in Tracks 3–4 may not be
+independent features placed on an otherwise smooth surface.
+They may be the 2D projection of what the tube walls do
+naturally when the full 3D field structure is considered.
+If so, the slot positions and dimensions are determined by
+the tube geometry, not by a separate design choice.
+
+**Helicity constraint (Q104).**  The photon's circular
+polarization traces a helix along the propagation direction.
+On the torus, this helix maps onto the surface with both
+normal and tangential components.  The normal component
+(charge) syncs with the tube's geometric rotation.  The
+tangential component (moment) projects onto the ring
+direction.  If this helical structure forces n₂ = 2n₁ for
+all charged modes, then (1,1) is forbidden by the
+polarization geometry — it simply cannot produce net
+outward E flux.  This would be the most fundamental
+explanation: not a filter that removes (1,1), but a
+selection rule that prevents it from carrying charge in
+the first place.
+
+### Assessment
+
+| Mechanism | Status | Ghost killed? | Fixes geometry? |
+|-----------|--------|---------------|-----------------|
+| Slot filtering | Proven (Tracks 3–4) | Yes (0.0%) | Partially (slot positions, not torus dimensions) |
+| Waveguide cutoff | Proposed, untested | Expected yes | Yes (tube diameter → ε) |
+| Helicity constraint | Proposed, untested | Expected yes (dark, not absent) | Possibly (if n₂ = 2n₁ forced) |
+
+The three mechanisms are not mutually exclusive.  They may
+all be active simultaneously — slots, waveguide cutoff, and
+helicity selection could each contribute to (1,1)
+suppression.  Redundancy would indicate that ghost
+elimination is a robust geometric property of the torus,
+not a fine-tuned feature.
+
+### Possible directions for further modeling
+
+1. **3D eigenmode calculation.**  Solve for the EM field
+   inside the torus volume (not just on the surface).
+   Identify the transverse mode structure and determine
+   the cutoff n₂ as a function of ε.  Compare to the 2D
+   surface eigenvalues.
+
+2. **Helicity decomposition (Q104).**  Compute the normal
+   and tangential projections of a helical E field on a
+   (p, q) geodesic of a torus.  Determine whether
+   n₂ = 2n₁ is forced for charge-producing modes.
+
+3. **Slot-from-geometry derivation.**  If the waveguide
+   cutoff is confirmed, compute the implied slot positions
+   and dimensions on the 2D surface and compare to the
+   Track 3–4 results.  Agreement would unify the 2D and 3D
+   pictures.
+
+4. **Proton comparison (R47 Track 7).**  Apply the same
+   analysis to the proton sheet.  If the proton is (3,6),
+   the waveguide cutoff must sit at a different n₂ than
+   the electron, implying a different ε.
+
+### Working assumption
+
+For subsequent modeling, we assume that **a filter mechanism
+exists** that eliminates (1,1) and selects (1,2) as the
+lowest charged mode on the electron sheet.  The specific
+mechanism — slots, waveguide cutoff, helicity, or a
+combination — is not yet determined.
+
+This assumption is justified by:
+- The phenomenological fact that no (1,1) particle has been
+  observed, despite being predicted lighter than the electron
+- At least one proven mechanism (slots) that achieves the
+  filtering
+- Two additional plausible mechanisms that may provide the
+  same filtering from pure geometry
+
+The geometry implied by this assumption:
+- Electron torus aspect ratio ε ≈ 0.5 (if the filter fixes
+  the tube-to-ring ratio)
+- (1,2) is the lowest charged mode
+- (1,1) is dark or absent
+- Higher harmonics (2,4), (3,6), ... exist as excited states
+
+This working assumption does not commit to a mechanism.  It
+commits to a result — the (1,1) ghost is gone — and proceeds
+with the geometric consequences.  The mechanism will be
+resolved when one of the proposed directions (above) produces
+a testable distinction.
