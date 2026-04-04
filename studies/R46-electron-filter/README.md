@@ -240,6 +240,71 @@ moot — charge perturbation is < 0.03% of e.
 **Findings:** See [findings.md](findings.md), Track 4.
 
 
+### Track 5: Ring-circumference mode filter
+
+**Status:** Framing
+
+**Goal:** Test whether the ring circumference acts as a
+half-wavelength filter that determines which modes can
+carry charge — eliminating the (1,1) ghost without
+explicit slot placement.
+
+**Hypothesis:**
+
+The ring circumference L_ring must equal an integer number
+of half-wavelengths for a standing wave to persist in the
+ring direction.  For the electron's (1,2) mode, n₂ = 2
+means two half-wavelengths fit around the ring, giving
+L_ring = λ.  The (1,1) mode has n₂ = 1, meaning only one
+half-wavelength fits — the ring circumference is λ/2.
+
+If a half-wavelength in the ring is the minimum resonant
+condition, then the ring size sets the lowest allowed n₂.
+For the electron sheet, if the ring is tuned so that the
+lowest resonance is n₂ = 2, then:
+
+- (1,1) is **below cutoff** — it cannot resonate and is
+  dark.  The ghost is eliminated by geometry, not by slots.
+- (1,2) is the **first charged mode**.  This is the electron.
+- (1,3), (1,4), ... are higher harmonics (heavier leptons
+  or excited states).
+
+This would fix epsilon: if n₂ = 2 is the first mode, then
+ε = L_tube / L_ring = 0.5 for the electron sheet.  This
+has not been established from first principles before.
+
+**Method:**
+
+1. Compute the standing wave eigenvalues on the torus as
+   a function of ring circumference, identifying the
+   minimum n₂ that sustains a resonance.
+
+2. Determine the cutoff condition: at what L_ring does the
+   (1,1) mode become evanescent?
+
+3. Verify that the surviving mode spectrum (with the cutoff
+   applied) matches the known electron sheet modes.
+
+4. Compute the predicted ε from the cutoff condition and
+   compare to existing MaSt estimates.
+
+5. Check whether the anomalous magnetic moment changes
+   under this filtering (does the cutoff affect the mode
+   shape in a way that modifies g − 2?).
+
+**Key question:** Is this a waveguide cutoff (frequency-based,
+from the tube acting as a waveguide cross-section — see R47
+Track 6 open question) or a standing-wave resonance condition
+(geometry-based, from the ring circumference)?  The two give
+the same selection but through different physics.
+
+**Related:** Q103 (anomalous moment from defect cost),
+R47 Track 7 (same test on proton sheet).
+
+**Depends on:** Track 3 (eigenmode lab), Track 4 (slot results
+for comparison).
+
+
 ---
 
 ## Notes
