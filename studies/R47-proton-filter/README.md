@@ -1,6 +1,6 @@
-# R47: Proton filter — (1,3) mode hypothesis with 3-slot geometry
+# R47: Proton geometry — mode, slots, and anomalous moment
 
-**Status:** Active (Track 3)
+**Status:** Active (Tracks 4–6)
 **Questions:** [Q90](../../qa/Q90-ephemeral-mode-decomposition.md) (quarks as sub-modes),
   [Q53](../../qa/Q53-anomalous-magnetic-moment.md) (g − 2)
 **Type:** compute / interactive
@@ -15,49 +15,27 @@ eigensolver on the torus surface, phase-locked standing waves, and
 elliptical slots that kill the ghost while preserving the desired
 mode and producing the anomalous magnetic moment.
 
-The proton is the next target.  Prior studies (R26, R27) assumed the
-proton is a **(1,2) mode on Ma_p**, mirroring the electron on Ma_e.
-This study tests a different hypothesis:
+The proton is the next target.
 
-**The proton is a (1,3) mode.**
+### Mode hypothesis history
 
-### Why (1,3)?
+**Tracks 1–3 explored the (1,3) hypothesis** — motivated by
+three-fold quark symmetry and clean 3-slot ghost-killing geometry.
+However, the WvM spin formula gives spin = n₁/n₂ = 1/3 for (1,3).
+The proton has spin ½.  Quarks have fractional charge (⅓, ⅔),
+not fractional spin — quarks all have spin ½.  The (1,3) hypothesis
+is therefore **abandoned**.  Tracks 1 and 3 are nullified; Tracks 0
+and 2 remain valid as tool infrastructure.
 
-1. **Three-fold symmetry is natural.**  A (1,3) standing wave has
-   3 antinodes around the ring — three energy concentrations at
-   0°, 120°, 240°.  These form a scaffold more natural for quarks.  A (1,2) mode has 2-fold
-   symmetry, which never naturally produces three domains.
+**Track 4 returns to (1,2)** — the proton is a (1,2) mode on Ma_p,
+same topology as the electron on Ma_e.  Spin = n₁/n₂ = ½. ✓
 
-2. **Three slots at 120° kill both ghosts.**  With q_eff ≈ 3 for
-   the target mode:
-   - (1,1): sin²(1 × 120°) = 0.75 → **killed**
-   - (1,2): sin²(2 × 120°) = 0.75 → **killed**
-   - (1,3): sin²(3 × 120°) = 0.00 → **survives**
+The proton's anomalous magnetic moment (κ_p = 1.793, g_p = 5.586)
+is explored through a **spindle torus** hypothesis: the proton has
+ε > 1, causing the torus to self-intersect.  The self-intersecting
+surface cannot project charge outward, but the photon's current
+loop is unaffected — enhancing μ/Q.
 
-   The electron needed 4 shear-corrected slots to kill one ghost.
-   The proton's geometry kills two ghosts with only 3 slots at
-   exact 120° spacing — simpler and more symmetric.
-
-3. **Quark decomposition.**  Q90 proposed quarks as ephemeral
-   sub-modes.  For (1,3), three (1,9) sub-modes tile the ring
-   in thirds (3 × 3 = 9 ring windings each occupying 120°).
-   The slots sit at the boundaries between quark domains.
-
-
-## Ground rules
-
-This study returns to fundamentals.  We do **not** assume:
-- r_p = 8.906 (from R27 — derived under (1,2) assumption)
-- Any prior proton geometry from R26/R27
-- Any MaSt-derived values except the eigensolver framework (R46)
-
-We **do** assume:
-- The proton is a standing wave on a 2D periodic sheet (Ma_p)
-- The scalar Sturm-Liouville eigensolver from R46 Track 3
-- The phase-locked node constraint model from R46
-- α = 1/137.036 determines shear given ε
-- Compton wavelength = h/(m_p c) determines absolute scale
-- the _real_ quark is a (1,3) excitation. This means the old "size" of the proton sheet was wrong.
 
 ## Deriving particle geometry from known inputs
 
@@ -67,7 +45,7 @@ what can we determine — and what remains free?
 **Known inputs:**
 - Particle mass m → reduced Compton wavelength ƛ = ℏ/(mc)
 - Fine structure constant α = 1/137.036
-- Mode winding numbers (n₁, n₂) — for the proton hypothesis: (1, 3)
+- Mode winding numbers (n₁, n₂) = (1, 2) for the proton
 
 **Derivation chain:**
 
@@ -77,7 +55,7 @@ what can we determine — and what remains free?
    So s = s(ε).
 
 2. **Mass gives the eigenvalue.**  The dimensionless eigenvalue
-   μ = √((n₁·ε)² + (n₂ − n₁·s)²) depends only on ε (since s is
+   μ = √(1/ε² + q_eff²) depends only on ε (since s is
    determined by step 1).
 
 3. **Compton wavelength + eigenvalue → tube circumference.**
@@ -89,212 +67,319 @@ what can we determine — and what remains free?
 5. **Absolute dimensions.**  Tube radius a = L_θ/(2π),
    ring radius R = L_φ/(2π), sheet area = L_θ × L_φ.
 
-**What is determined:**  Given ε, everything follows — shear,
-circumferences, absolute radii, area.  All are computable
-functions of the single free parameter ε.
-
-**What is NOT determined:**  ε itself.  Mass alone does not
-pin the aspect ratio.  The electron illustrates this: we know
-m_e, we know (1,2), we know α, yet ε_e remains unconstrained.
-Some additional physics must select ε — ghost-killing
-constraints, charge overlap requirements, or a future
-energy-minimization principle.
-
-This is why Track 1 sweeps ε: we are searching for the
-constraint that nature uses to pick the proton's aspect ratio.
-
 ---
 
 ## Tracks
 
 ### Track 0: Torus Lab support for proton mode
 
-**Status:** Complete (verified interactively)
-
-**Goal:** Extend Torus Lab so it can work with arbitrary target
-modes, not just the hardcoded electron (1,2).
-
-**Current limitations:**
-- `alphaFormula` hardcodes q = 2 − s (electron's n₂ = 2)
-- `electronIdx` / `ghostIdx` hardcode (1,2) and (1,1)
-- Optimize button assumes electron mode
-- Spectrum labels, metrics, derived panel all say "electron"
-
-**Required changes:**
-- When particle = "proton", use q = 3 − s in `alphaFormula`
-  (the α formula relates to the *target mode's* n₂, since that
-  mode's charge must equal e)
-- Make `targetIdx` and `ghostIdx` (plural — there may be multiple
-  ghosts) depend on the selected particle
-- Optimize button: place nodes at target mode's standing-wave
-  nodes (180°/q_eff_target spacing)
-- Labels and metrics: show survival for the target and all ghosts
-
-**Depends on:** Nothing.
+**Status:** Complete — tool infrastructure, still valid.
 
 
 ### Track 1: Proton (1,3) mode analysis
 
-**Status:** Complete
+**Status:** Null — (1,3) gives spin ⅓, not ½.  Proton has spin ½.
 
-**Goal:** Characterize the (1,3) proton mode across a range of
-aspect ratios ε.  Determine what ε values give viable physics.
-
-**Method:**
-1. Sweep ε from 0.1 to 10
-2. At each ε, solve shear from α(ε, s) = 1/137.036 using
-   q = 3 − s (proton's n₂ = 3)
-3. Compute all resonant modes and their properties:
-   - Mass spectrum (relative to the (1,3) fundamental)
-   - Charge overlap C for each mode
-   - Mode density f(θ₁) at inner equator
-4. Place 3 nodes at 120° (shear-adjusted: 180°/q_eff)
-5. Compute survival scores for all modes
-6. Identify which ε values:
-   - Kill both ghosts (1,1) and (1,2)
-   - Preserve the (1,3) target
-   - Have reasonable charge overlap values
-
-**Outputs:**
-- Survival of (1,3), (1,2), (1,1) vs ε (sweep plot)
-- Shear vs ε curve
-- Charge overlap vs ε
-- Absolute dimensions vs ε: tube radius a, ring radius R, sheet area
-- Recommended ε range for Torus Lab exploration
-
-**Key questions:**
-- Does the shear correction at 120° matter as much as it did
-  for the electron?  (For q_eff ≈ 3, spacing = 60° per node,
-  and 120° is exactly 2 nodes — should be exact at s = 0)
-- At what ε does the (1,3) mode localize toward the outer
-  equator?  Does this affect slot placement?
-- Are there any ε values where additional charged modes
-  (1,4), (1,5), etc. are also killed by the 3-slot geometry?
-
-**Depends on:** Track 0 (Torus Lab proton support).
-
-**Findings:** See [findings.md](findings.md), Track 1.
+**Findings:** See [findings.md](findings.md), Track 1.  The mode
+survival computations are mathematically correct but physically
+inapplicable since the proton cannot be (1,3).
 
 
 ### Track 2: Torus Lab generalization
 
-**Status:** Complete
+**Status:** Complete — tool infrastructure, still valid.
 
-**Goal:** Strip particle-specific terminology from Torus Lab and make
-it work with any target mode — not just electron (1,2).
-
-**Changes made:**
-- Replaced particle dropdown with shear-preset push buttons:
-  `e⁻ (1,2)` and `p (1,3)`, each wiring the correct n₂ into the
-  α formula.  Mass selector remains separate.
-- `alphaFormula(ε, s, n₂)` and `solveShear(ε, n₂)` now accept n₂
-  as a parameter (defaults to `S.targetN2`).
-- `electronIdx()` / `ghostIdx()` replaced by `targetIdx()` and
-  `lowestSurvivorIdx()`.  The latter finds the lowest-μ charged
-  even mode with survival > 0.5, so the 3D/2D renders always show
-  the surviving mode — not a hardcoded (1,2).
-- All labels switched from "electron / ghost" to generic
-  (n₁, n₂) notation.  Spectrum Y axis reads `μ/μ₀` instead of
-  `m/mₑ`.
-- Optimize button aligns nodes with the *target* mode's
-  antinodes, not hardcoded electron antinodes.
-
-**Depends on:** Track 0.
-
-**Findings:** Verified interactively; no script output.  The lab
-now correctly renders proton (1,3) geometry with 3-slot 120°
-nodes and automatically selects the surviving mode.
+The lab now supports arbitrary target modes via shear presets and
+`lowestSurvivorIdx()`.  Works for (1,2) proton just as well.
 
 
-### Track 3: Proton slot geometry
+### Track 3: Proton (1,3) slot geometry
+
+**Status:** Null — depends on (1,3) hypothesis (Track 1).
+
+**Findings:** See [findings.md](findings.md), Track 3.  Slot
+sizing computations correct but physically inapplicable.
+
+
+### Track 4: Spindle torus and proton anomalous moment
 
 **Status:** Active
 
-**Goal:** Determine the physical slot dimensions (height × width)
-for the proton torus.  Verify that the resulting apertures:
-(a) preserve the (1,3) target, (b) kill (1,1) and (1,2), and
-(c) do not grossly perturb charge.
+**Goal:** Test whether a spindle torus (ε > 1) can explain the
+proton's anomalous magnetic moment through geometric charge
+obscuration.
 
-**Context — where does the proton's anomalous moment come from?**
+**Hypothesis:**
 
-The electron's anomalous magnetic moment is tiny:
-δμ/μ = α/(2π) ≈ 1.16 × 10⁻³.  In R46 Track 4, this was fully
-attributed to fringing fields at the 4 elliptical slots, and the
-slot area was sized accordingly.
+The proton is a **(1,2) mode** on Ma_p (spin ½, same topology
+as the electron).  Its torus has aspect ratio **ε = a/R > 1** —
+a spindle configuration where the tube radius exceeds the ring
+radius and the surface self-intersects.
 
-The proton's anomaly is enormous by comparison:
-κ_p = μ_p/μ_N − 1 = 1.793.  This is roughly 1500× larger than
-α/(2π).  It is extremely unlikely that a small set of apertures
-(covering < 1% of the sheet) can produce an anomaly of order 1.
-Prior study R45 attributed the large proton moment to cross-sheet
-coupling (σ_ep tilting the geodesic onto the Ma_e sheet, whose
-much larger area amplifies the magnetic loop).  Slots may provide
-an additional small correction.
+In the self-intersecting region (near the inner equator, where
+1 + ε cos θ₁ < 0), the surface normal flips.  We hypothesize
+that this hidden surface **cannot project charge outward** — it
+is geometrically obscured.  However, the photon's energy still
+circulates around the full loop, generating magnetic moment from
+the entire current path.
 
-This track therefore examines **two scenarios**:
+The result: charge is reduced (hidden surface excluded from
+charge integral), but moment is not proportionally reduced
+(current uses full loop).  The ratio μ/Q is enhanced, producing
+an anomalous magnetic moment.
 
-| Scenario | Target δμ/μ     | Physical interpretation |
-|----------|-----------------|------------------------|
-| A        | α/(2π) ≈ 0.116% | Slot correction only — same prescription as electron |
-| B        | κ_p = 1.793     | Slots carry full anomaly (exploratory — are they physically reasonable?) |
+**Target:**
 
-Scenario A is the baseline.  Scenario B is computed for
-comparison and to test whether large slots (≈ 30% of sheet area)
-could relate to quark confinement geometry.
+| Quantity | Value |
+|----------|-------|
+| g_Dirac | 2 (spin-½ Dirac prediction) |
+| g_proton | 5.5856 (measured: 2 × μ_p/μ_N) |
+| Required enhancement | g_p / g_Dirac = 2.793 |
+| Visible surface fraction | f = g_Dirac / g_p = 0.358 |
 
 **Method:**
 
-1. Pick representative ε values from Track 1 (0.30 and 0.50).
+1. Sweep ε from 0.5 through ε > 1 (spindle regime).
 
 2. At each ε, compute:
-   - Shear s from α(ε, s) = 1/137.036 with q = 3 − s
-   - q_eff = 3 − s
-   - 3 slot positions at shear-corrected 120° intervals:
-     θ₂ = k × 360°/(3 × q_eff), for k = 0, 1, 2
-   - Absolute dimensions: tube circumference L_θ, ring
-     circumference L_φ, total sheet area A = L_θ × L_φ
+   - Shear s from α(ε, s) = 1/137.036 with q = 2 − s
+   - The visible region: {θ₁ : 1 + ε cos θ₁ ≥ 0}
+   - The charge integral over visible surface only (using
+     flat-torus mode shape f(θ₁) = cos θ₁ as first approx)
+   - The charge integral over full surface (for comparison)
+   - The visible fraction by various metrics (area-weighted,
+     charge-weighted)
+   - Absolute dimensions from proton mass
 
-3. For each scenario:
-   - Pin total 3-slot area to δμ/μ × A.
-   - Each slot is an ellipse with semi-axes h (tube direction,
-     centered on inner equator θ₁ = 180°) and w (ring direction).
-   - Sweep h/w from 0.1 (flat slit) to 10 (tall narrow slot).
-   - At each h/w, compute:
-     - Individual slot area = π·h·w/4
-     - Required h and w to match the target total area
-     - Charge leakage ΔQ (integrate charge density through the
-       slot aperture)
-     - Moment increment δμ (fringing-field formula from R46)
-   - Identify optimal h/w that minimizes |ΔQ|.
+3. Determine whether there exists an ε where the visible
+   charge fraction matches the target f = 0.358.
 
-4. Survival check: verify that survival scores for (1,1), (1,2),
-   (1,3) are unchanged from the point-node model (Track 1) at
-   the chosen slot sizes.  Small slots should not perturb the
-   filtering significantly.
-
-5. Report physical slot dimensions in fm for both scenarios.
-
-**Outputs:**
-- Slot dimension table: h, w, area per slot (°² and fm²) at
-  each ε for both scenarios
-- Charge leakage vs h/w sweep plot
-- Moment vs slot area verification (linearity check)
-- Comparison table: electron (R46) vs proton slot dimensions
+4. At that ε, verify:
+   - Shear can be adjusted to give Q_visible = +e
+   - 4 slots on inner equator (like electron) are hidden
+     in the self-intersecting region → no charge leakage
+   - Absolute dimensions are physically reasonable
 
 **Key questions:**
-- Do proton slots scale predictably from electron slots, or does
-  the different q_eff change the fringing-field geometry?
-- In scenario B (full anomaly), how large are the slots?  Do they
-  start to overlap, violating the small-aperture approximation?
-- Does the 3-fold symmetry of the proton slots interact differently
-  with mode density than the electron's 4-fold arrangement?
+- Does the direction of the effect work as hypothesized?
+  The hidden inner-equator surface contributes negatively
+  to the charge integral — hiding it might INCREASE net
+  charge rather than decrease it.  The script must check.
+- Can the eigensolver be extended to ε > 1, or must we use
+  a flat-torus mode approximation in the spindle regime?
+- What happens to mode survival (ghost killing) when ε > 1?
 
-**Script:** `scripts/track3_slot_geometry.py`
+**Script:** `scripts/track4_spindle_moment.py`
 
-**Depends on:** Track 1 (geometry and survival data), Track 2
-(Torus Lab verification capability).
+**Depends on:** Nothing — fresh approach.
 
-**Findings:** See [findings.md](findings.md), Track 3.
+**Findings:** See [findings.md](findings.md), Track 4.
+
+
+### Track 5: Quark model moment check
+
+**Status:** Framing
+
+**Goal:** Verify the standard constituent-quark prediction
+for the proton's magnetic moment using MaSt parameters.
+
+This is a **calculation**, not a sheet-design hypothesis.
+We treat the three quarks as independent Dirac particles
+with their own charges and masses, combine their moments
+using SU(6) spin-flavor weights, and compare to experiment.
+
+**Preliminary result:**
+
+For constituent quarks (mass m_p/3, charges +2e/3 and −e/3,
+each with Dirac g = 2):
+
+| Quark | Charge | Mass | μ_Dirac |
+|-------|--------|------|---------|
+| u | +2e/3 | m_p/3 | +2 μ_N |
+| d | −e/3 | m_p/3 | −1 μ_N |
+
+SU(6) combination for proton (uud, spin ↑):
+
+μ_p = (4/3) μ_u − (1/3) μ_d = 8/3 + 1/3 = **3 μ_N**
+
+Measured: **2.793 μ_N** (93% match).
+
+To match exactly: g_q = 1.862 (slightly below Dirac).
+
+**Method:**
+
+1. Compute the SU(6) moment sum for proton and neutron.
+2. Compare residuals: proton 7% high, neutron (udd)
+   predicts −2 μ_N vs measured −1.913 μ_N (~4% high).
+3. Explore whether the residual comes from binding
+   corrections, slot apertures, or ε-dependent effects.
+
+**Key distinction from Track 6:** This track treats quarks
+as given entities and checks the moment arithmetic.  It
+does not explain why quarks exist, why they have mass m_p/3,
+or why they're confined.  Track 6 addresses those questions
+through sheet design.
+
+**Depends on:** Track 4 (spindle results for context).
+
+**Findings:** See [findings.md](findings.md), Track 5.
+
+
+### Track 6: Proton as (3,6) mode — confinement from filtering
+
+**Status:** Framing
+
+**Goal:** Test whether the proton's sheet is designed for a
+(1,2) particle at **1/3 the proton mass**, with nodes that
+block the (1,2) fundamental so that the first surviving
+mode is **(3,6)** — requiring 3× the energy (a proton's
+worth) to excite.
+
+**Sheet design:**
+
+The proton sheet (Ma_p) is sized so that a (1,2) mode has
+mass m_p/3 ≈ 313 MeV (= constituent quark mass).  The
+mode spectrum on this sheet:
+
+| Mode | Eigenvalue | Mass | Identity |
+|------|-----------|------|----------|
+| (1,1) | μ₁₁ | ~m_p/6 | ghost |
+| (1,2) | μ₁₂ | m_p/3 | quark |
+| (2,4) | 2μ₁₂ | 2m_p/3 | ghost |
+| (3,6) | 3μ₁₂ | m_p | **proton** |
+
+Nodes (apertures) kill everything below (3,6).  The proton
+is the **lowest surviving charged mode** — it takes 3× the
+fundamental energy to make the sheet ring.
+
+**Why (3,6)?**
+
+- **Spin** = n₁/n₂ = 3/6 = **½** ✓
+- **Topology:** gcd(3,6) = 3, so (3,6) is not a single
+  strand — it is three phase-separated (1,2) geodesics,
+  offset by 120°.  Each strand is a quark.
+- **Magnetic moment** ≈ 3 μ_N (from 3× the ring radius of
+  the fundamental (1,2) mode).  Measured: 2.793 μ_N (93%).
+- **Constituent quark mass** = m_p/3 falls out of the sheet
+  sizing — not an input.
+
+**Confinement from filtering:**
+
+This is the central prediction.  The same nodes that select
+(3,6) as the surviving mode also **kill (1,2) quarks** when
+they try to exist independently:
+
+1. The sheet has nodes tuned to kill all modes below (3,6),
+   including (1,2).
+2. A high-energy probe decomposes (3,6) → 3 × (1,2) quarks.
+3. Each (1,2) quark is a **ghost on this sheet** — it hits
+   the node grid and dissipates.
+4. Quarks exist briefly as part of the coherent (3,6) pattern
+   (the nodes sit at the boundaries between quark domains
+   and don't destroy the composite).  Once separated, each
+   (1,2) fragment is destroyed by the same nodes.
+
+This is the Q90 "destructive interference" confinement picture,
+now with a concrete mechanism: the proton's aperture structure.
+
+**Comparison to Track 5:**
+
+Track 5 checks the quark-model moment arithmetic — it takes
+quarks as given and computes their combined moment.
+
+Track 6 explains **why quarks exist** (they are (1,2) modes
+on a sheet sized for m_p/3), **why they have mass m_p/3**
+(it's the sheet's fundamental), **why the proton has mass
+m_p** (it's the 3rd harmonic), and **why quarks are confined**
+(the nodes that select the proton kill individual quarks).
+
+Both give ~3 μ_N.  Track 6 provides the physical mechanism.
+
+**Method:**
+
+1. Determine the node geometry that kills all charged modes
+   below (3,6).  How many nodes are needed?  What is the
+   spacing?
+
+2. Verify that (3,6) survives these nodes (standing-wave
+   pattern passes through nodes at zero crossings).
+
+3. Compute the (3,6) moment:
+   - Current-loop formula with 3× ring radius
+   - Compare to (1,2) on the same sheet
+   - Check whether g = 6 (from 3× winding enhancement)
+     or some other value
+
+4. Test confinement: compute survival scores for (1,2)
+   sub-modes (quarks) on the (3,6)-filtered sheet.
+   They should be killed.
+
+5. Compute (3,6) charge: does the WvM polarization
+   picture (E always outward) give charge e regardless
+   of n₁, or does the scalar n₁ = ±1 selection rule
+   suppress it?
+
+6. Check the neutron: can a different spin alignment of
+   the three (1,2) strands produce μ_n ≈ −2 μ_N?
+
+**Key questions:**
+- What node geometry filters for (3,6)?  How many
+  apertures, and at what positions?
+- Does the WvM charge mechanism work for n₁ = 3, or
+  does the scalar n₁ = ±1 selection rule apply?
+- Is the (3,6) moment exactly 3× the (1,2) moment,
+  or does the winding structure modify it?
+- How fast do separated (1,2) quarks dissipate on the
+  node grid?  Does the timescale match hadronic physics?
+- Can energy enter the sheet at the (1,2) level (quark
+  creation in collisions) and then self-organize into
+  (3,6) when enough energy is present?
+
+**Open question — Waveguide cutoff as mode-selection
+mechanism:**
+
+The torus tube may act as a waveguide with a frequency
+cutoff: modes whose wavelength exceeds the tube
+circumference cannot propagate, becoming evanescent.
+For a tube-to-ring ratio ε ≈ 1/3, the cutoff sits
+near n₂ ≈ 6, which would make (3,6) the lowest
+surviving mode — exactly the Track 6 hypothesis.
+
+The original WvM paper supports this picture.  WvM
+model the photon's energy as filling a 3D toroidal
+**volume**, not just a surface (§4, Fig. 2).  Poynting
+vector streamlines trace (1,2) geodesics on nested
+toroidal shells, and the radial field profile is
+explicitly called "transverse mode structure" — the
+same language used for waveguide modes.  Nothing
+propagates radially; the cross-section pattern is a
+standing wave, while energy flows along the ring.
+This is precisely how waveguide cutoff works: the
+tube cross-section constrains which transverse
+patterns can be sustained.
+
+Our MaSt framework simplified the WvM picture to a
+2D surface, which captures topology but drops the
+transverse mode structure — and with it, the
+waveguide cutoff.  The key unresolved tension:
+
+- **2D view (photon on the sheet):** no tube wall,
+  no cutoff.  All integer (p,q) modes are allowed.
+  Mode selection requires explicit nodes / apertures.
+- **3D view (WvM volume model):** tube cross-section
+  enforces a waveguide cutoff.  Mode selection is
+  automatic from geometry.  No hand-placed nodes
+  needed.
+
+If the 3D waveguide cutoff naturally selects (3,6)
+at ε ≈ 1/3, it would be the most economical version
+of the Track 6 hypothesis — confinement from geometry
+alone, with no separate filtering mechanism.
+
+**Depends on:** Track 4 (spindle/WvM charge model),
+Track 5 (quark moment check for comparison).
+
+**Findings:** See [findings.md](findings.md), Track 6.
 
 
 ---

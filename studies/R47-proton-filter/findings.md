@@ -257,3 +257,112 @@ sub-fm — thousands of times smaller than the electron's.
 | F6 | Slot sizes do not perturb mode survival — survival scores are identical to the point-node model from Track 1. |
 | F7 | Charge leakage is negligible (~10⁻⁴ e) — no shear adjustment needed, same conclusion as the electron (R46 Track 4 F6). |
 | F8 | Proton slots in absolute dimensions are sub-fm (h ≈ 0.006–0.009 fm, w ≈ 0.16–0.17 fm), roughly 1800× smaller than electron slots — consistent with the Compton wavelength ratio. |
+
+
+---
+
+## Track 4: Spindle torus and proton anomalous moment
+
+Script: [`scripts/track4_spindle_moment.py`](scripts/track4_spindle_moment.py)
+
+### Context
+
+Tracks 1 and 3 assumed the proton is a **(1,3) mode**.  The WvM
+spin formula gives spin = n₁/n₂ = ⅓ for (1,3) — wrong for the
+proton (spin ½).  Tracks 1 and 3 are **nullified**.
+
+Track 4 returns to **(1,2)** (spin ½) and tests whether a spindle
+torus (ε > 1, self-intersecting) could explain the proton's large
+anomalous magnetic moment (g_p = 5.586, κ_p = 1.793).
+
+### Charge model: scalar vs WvM polarization
+
+Two charge models were tested.  The choice matters for sign.
+
+**Scalar model** (wrong physics):
+Integrand = cos²(θ₁) × (1 + ε cos θ₁).  The mode shape
+cos(θ₁) oscillates, creating positive and negative "charge"
+regions.  In the spindle regime, the hidden surface contributed
+negatively — hiding it *increased* the visible charge.
+**Wrong direction** for g_p > 2.
+
+**WvM polarization model** (correct physics):
+The circularly polarized photon has E always along the outward
+surface normal.  There is no oscillating mode shape — σ > 0
+everywhere.  Integrand = cos(θ₁) × (1 + ε cos θ₁), where
+cos(θ₁) is purely the far-field projection factor.
+Q_full = πε (analytic).
+
+In the spindle, the hidden region has both cos(θ₁) < 0 and
+(1 + ε cos θ₁) < 0, so their product is *positive*.  Hiding
+it **reduces** Q_vis.  **Correct direction** for g_p > 2.
+
+### Spindle charge-hiding — correct direction, geometric ceiling
+
+With the WvM model, spindle hiding reduces Q as desired:
+
+| ε | Q_vis | Q_full | f = Q_vis/Q_full | g_eff = 2/f |
+|---|-------|--------|------------------|-------------|
+| 1.05 | 3.278 | 3.299 | 0.994 | 2.01 |
+| 2.0 | 5.20 | 6.28 | 0.828 | 2.42 |
+| 5.0 | 9.84 | 15.71 | 0.627 | 3.19 |
+| 10.0 | 17.7 | 31.4 | 0.563 | 3.55 |
+| 50.0 | 80.5 | 157.1 | 0.513 | 3.90 |
+
+**Geometric ceiling:** As ε → ∞, the visible region is
+θ₁ ∈ [0, π/2] ∪ [3π/2, 2π] — exactly half the tube.
+The charge fraction f → 0.500 from above.
+
+Maximum achievable g ≈ **4.0**.  Target g_p = **5.586**.
+
+The spindle mechanism works in the right direction but hits
+a geometric ceiling at half the tube circumference.  The
+target f = 0.358 (= 2/g_p) requires hiding 64% of the
+surface, but geometry limits hiding to 50%.
+
+### Current-loop g-factor — INTERESTING RESULT
+
+As an alternative, we computed the naive classical current-loop
+magnetic moment: μ = e·c·R/2, giving g = μ_dimless/(π·ε).
+
+This formula matches g_p = 5.586 at **ε = 0.2520**:
+
+| Quantity | Value |
+|----------|-------|
+| ε | 0.2520 |
+| shear s | 0.04541 |
+| q_eff | 1.9546 |
+| μ_dimless | 4.4229 |
+| g_loop | 5.5857 (exact match) |
+| α check | 1/137.036 ✓ |
+| R (ring radius) | 0.587 fm |
+| a (tube radius) | 0.148 fm |
+| R/ƛ_p | 2.7928 |
+
+The ring radius R ≈ 0.59 fm is 70% of the experimental
+proton charge radius (0.84 fm) — the right order.
+
+**Important caveat:** This formula does NOT reproduce the
+electron's g = 2 either (it gives g = 1.775 at ε = 0.5).
+The Dirac g-factor is a relativistic quantum result, not a
+classical current loop.  The current-loop formula is
+semi-classical at best.
+
+However, the relationship R/ƛ_p = 2.7928 = μ_p/μ_N is
+an identity: g = 2R/ƛ, so R = g·ƛ/2 = μ_p/μ_N × ƛ_p.
+The content of the result is that α = 1/137 and the
+current-loop formula are simultaneously satisfied at
+a specific ε ≈ 0.252, yielding a physically reasonable
+proton ring radius.
+
+### Findings table
+
+| ID | Finding |
+|----|---------|
+| F1 | Scalar model (mode shape cos θ₁) gets the direction wrong: hiding inner surface *increases* Q.  WvM polarization model (E always outward, σ > 0 everywhere) gives the correct direction: hiding inner surface *reduces* Q. |
+| F2 | With the WvM model, spindle charge fraction f = Q_vis/Q_full monotonically decreases from 1.0 (at ε = 1) toward 0.500 (as ε → ∞).  Geometric ceiling: the hidden region can never exceed half the tube circumference. |
+| F3 | Maximum achievable g_eff ≈ 4.0 (at ε → ∞).  Target g_p = 5.586 requires f = 0.358 — unreachable.  The spindle alone cannot explain the proton's full anomalous moment. |
+| F4 | Classical current-loop g = μ/(πε) matches g_p = 5.586 at ε = 0.2520, with α = 1/137 simultaneously satisfied. |
+| F5 | At ε = 0.252: R = 0.587 fm (ring radius), a = 0.148 fm (tube radius).  R is 70% of the proton charge radius 0.84 fm. |
+| F6 | The relationship R/ƛ_p = μ_p/μ_N = 2.793 is an identity from g = 2R/ƛ.  The non-trivial content is that the α constraint selects a specific ε. |
+| F7 | The current-loop formula is semi-classical and does NOT reproduce g = 2 for the electron.  The proton result should be interpreted as suggestive, not definitive. |

@@ -72,17 +72,18 @@ simply ℏn₆ — it includes contributions from excitations with their
 own winding numbers.  This is a different physics from geodesic tilting.
 6 tracks (1 done, 2 blocked, 3 viable).  **HIGH VALUE — Track 3.**
 
-### R47. Proton filter — (1,3) mode hypothesis  **Track 3**
+### R47. Proton geometry — mode, slots, and anomalous moment  **Track 4**
 **Study:** [`R47-proton-filter/`](R47-proton-filter/)
 **Questions:** Q90, Q53  **Type:** compute / interactive  **Depends on:** R46
 
-Tests the hypothesis that the proton is a **(1,3) mode** on Ma_p.
-Three slots at 120° kill both ghosts (1,1) and (1,2) with simpler
-geometry than the electron's 4-slot arrangement.  Track 0–1: Torus
-Lab proton support and ε sweep (complete).  Track 2: Lab
-generalization (complete).  **Track 3 (active):** slot sizing —
-scenario A (α/2π) gives sub-fm slots; scenario B (full κ_p = 1.793)
-ruled out (requires > 100% of sheet area).
+Tracks 0–2: Torus Lab tool infrastructure (complete, still valid).
+**Tracks 1, 3: Null** — (1,3) hypothesis abandoned (spin ⅓ ≠ ½).
+**Track 4 (active):** spindle torus (ε > 1) hypothesis for the
+proton's anomalous moment.  Proton returns to (1,2) mode (spin ½).
+Result: spindle charge-hiding runs in wrong direction (hiding inner
+surface increases charge).  Side finding: current-loop g-factor
+matches g_p = 5.586 at ε = 0.252 (R = 0.587 fm, 70% of charge
+radius), but this formula doesn't give g = 2 for the electron.
 
 ### R33. Ghost mode selection — why most Ma modes are dark  **Paused**
 **Study:** [`R33-ghost-selection/`](R33-ghost-selection/)
