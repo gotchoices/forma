@@ -1,5 +1,53 @@
 # Charge from Energy
 
+<!--EC
+- I'm not sure this tutorial gets it totally right about which particles are charged and which are dark
+- We should review rules for spin, charge, moment, mass (not sure if we deal with mass in here or not)
+- The article is boring and a difficult read getting up to section 10 where we're supposed to be using the _real model_
+- The article frames it like this:
+  - Here's the Wvm model which is easy to understand but doesn't quite get it right; and
+  - Here's the version based on the actual wave function integration which gives the whole picture
+- But with what we now know from grid, I think WvM might have not been so far off afterall
+- and we made certain assumptions about the wave function integration that might not have been entirely accurate
+- Here's my current theory (which I'd like the agent to assess):
+  - The torus is a wave guide of sorts
+  - It is also a polarizer
+  - A rotationally polarized photon will find resonance (or the surface forces circular?)
+  - 1 trip around the tube gives quantum unit charge (as long as the dimensions are within range)
+  - 1 trip around the ring gives us magnetic moment (why is this not quantum exact?)
+  - The ratio of tube to ring gives spin
+  - 2 trips around the tube cancel (not sure I fully understand why with a circular polarized wave assumption)
+  - so odd trips around the tube produces charge, even trips give no charge, a dark particle
+  - The wave is really standing in three directions: the tube, the ring, and the diagonal (start to finish)
+  - The circumference of the ring probably has to be a half wave in length for our first resonant wave.
+    I think this cancels the 1,1 mode ghost we were trying to get rid of (which does only 1/2 turn?)
+  - So the ring size tells us which is the lowest mode that will appear
+    For electron this is 1,2 so I think epsilon is probably 0.5 for the electron.
+    We haven't been able to establish epsilon before.  This could be a breakthrough.
+    Do we need a study to support this premise or does it stand to reason?
+  - I think the proton's first mode needs to be 3,6 as this will likely lead to quark behavior (more than the 1,2 premise)
+    So we need the tube to be tuned to a higher harmonic where 3 waves fit in the tube (have I got that correct?)
+  - There should be a harmonic series above the first mode:
+    Electron: 1,2 2,4 3,6 4,8
+    Proton: 3,6 6,12, etc
+  - I'm hoping the corresponds to a particle in an "excited state".
+    Not sure that exists for a proton.
+    But I think it is reasonable to assume that an electron in an atom could literally be excited internally, not simply farther from the nucleus or traveling faster.
+    Not sure if this is a new take on things, but I think it describes atomic quantum energy levels pretty well.
+  - We need to make sure that all other winding combinations are dark.
+    Will 1,3 be dark simply because of the odd windings on the ring?
+    Seems like there is a symmetry concept in there predicting the integral to go to zero.  
+- What is the best arc for the revised version?
+  - Do we do WvM vs wave function; or
+  - Start with grid, reference WvM and wave analysis when and as we need it?
+- I'd like the article to be pleasant and engaging reading, provoking discovery, curiosity  
+- An agent consulting this document should also be able to correctly predict torus standing wave nodes
+- We should reference old studies both when they got it righ and when they were wrong.
+- Various approximations have predicted too many charged particles
+- But it seems like the recent grid foundation, plus the idea of tuning the ring to an even wave interval, should hopefully solve the problem
+--->
+
+
 How does a packet of electromagnetic energy become an apparent
 electric charge?  This primer develops the physical picture
 step by step, starting from a photon and ending with a charged
