@@ -51,77 +51,151 @@ Any other critical points we should address?
 
 <!--EC PLANNED REWRITE
 The sections below are the old version.  The intended rewrite
-follows this outline, starting from GRID foundations rather than
-the WvM energy-balance approach.
+starts from GRID foundations rather than the WvM energy-balance
+approach.  Keep the circular polarization picture (WvM §2) —
+it's the field-level view of what the topological winding IS.
+Drop the energy-balance/self-capacitance derivation (old §5-9)
+— superseded by the defect cost picture.
+
+Shear (old §10) needs rethinking.  GRID says charge comes from
+topology (2π winding), not from broken symmetry of a field
+integral.  Shear may still matter for the mode spectrum (masses,
+mode selection) but probably not for charge production.  The
+α(r,s) formula may be a consistency condition between geometry
+and the substrate coupling, not the charge mechanism itself.
+Present shear cautiously — as open rather than settled.
 
 ## Proposed outline
 
 1. **The question** — A photon has no charge.  An electron is
    (we claim) a photon.  How does confinement create charge?
 
-2. **The torus as waveguide** — Confine a photon to a 2D sheet
-   wrapped as a torus.  Three standing directions: tube, ring,
-   diagonal.  The torus acts as a polarizer — circular
-   polarization finds resonance.
+2. **The torus as waveguide and polarizer** — Confine a photon
+   to a 2D sheet wrapped as a torus.  Three standing directions:
+   tube, ring, diagonal.  The torus geometry selects circular
+   polarization — the tube's rotating surface normal syncs with
+   the photon's helical E-field.  Linear polarization integrates
+   to zero flux (dark mode).  Circular polarization produces
+   constant outward E (charged mode).  The torus is a polarizer:
+   it doesn't create charge — it selects the field configuration
+   that GRID's topology reads as charge.  (Retains the WvM §2
+   insight in GRID language.)
 
 3. **Charge from winding** — One 2π trip through the tube = one
-   unit charge.  This is GRID's topological quantization (phase
-   periodicity), seen concretely: the winding creates a net E
-   flux that Gauss's law reads as charge.  Direction of winding
-   = charge sign.  Charge is universal across sheets because it
-   is topological (winding number), not geometric (sheet size).
+   unit charge.  GRID's topological quantization (phase
+   periodicity): the winding creates a net E flux that Gauss's
+   law reads as charge.  Direction of winding = charge sign.
+   Charge is universal across sheets (electron and proton both
+   carry exactly ±e) because it is topological (winding number),
+   not geometric (sheet size).
 
 4. **Magnetic moment from the ring** — Windings around the ring
    produce an axial B field.  The electron's 2 ring windings
    give moment ~2.  The ratio tube/ring = 1/2 = spin.
+   Open question (Q104): does the helicity force n₂ = 2n₁?  If
+   so, spin = 1/2 is a consequence of the photon's polarization
+   structure, not an independent quantum number.  The factor of
+   2 ring oscillations per Compton wavelength may emerge from
+   the helical E-field geometry on the (1,2) geodesic.
 
 5. **The defect cost** — The standing wave carries mc².  The 2π
    winding is a topological defect in the ambient 3D lattice.
    The Coulomb field energy = αmc².  Alpha is the impedance
    mismatch between the 2D sheet and the 3D grid (from GRID).
-   Not mysterious — inherited from the substrate.
+   Not mysterious — inherited from the substrate.  The defect
+   cost is a thermodynamic energy partition, not a geometric
+   coincidence rate (sim-impedance finding).
 
 6. **Why the moment isn't exact** — The defect cost back-reacts
    on the circulating wave.  Leading correction: α/(2π) ≈
-   0.00116.  Same α, same junction physics, different
+   0.00116 (Q103).  Same α, same junction physics, different
    observable.  For the proton, the correction is large
-   (non-perturbative regime on a smaller sheet).
+   (non-perturbative regime on a smaller, more tightly coupled
+   sheet).
 
-7. **Which modes are charged?** — The ring must be tuned to an
-   even half-wavelength interval.  The (1,1) mode sees a half-
-   turn that cancels — it's dark.  The (1,2) mode is the first
-   charged mode on the electron sheet.  Odd tube windings carry
-   charge; even cancel.  This should eliminate the ghost problem.
-   Ring circumference as a filter → epsilon from ring size.
+7. **Which modes carry charge?** — The ring must sustain an
+   integer number of half-wavelengths for a standing wave to
+   persist.  The (1,1) mode has n₂ = 1 — only half a
+   wavelength in the ring.  If the ring circumference is tuned
+   so the minimum resonance is n₂ = 2, then (1,1) is below
+   cutoff and dark.  The (1,2) mode is the first charged mode
+   on the electron sheet.  This eliminates the ghost problem
+   geometrically — no slots needed.  Ring circumference as a
+   filter → epsilon from ring size (R46 Track 5).
+   Alternatively, Q104: the helicity itself may force n₂ = 2,
+   making the ring filter redundant for charged modes.
 
 8. **The mode spectrum** — Six quantum numbers across three
    sheets.  Mass from the eigenvalue equation.  Charge from
    Q = −n₁ + n₅.  The particle zoo from geometry.  Harmonic
    series: (1,2), (2,4), (3,6)... as excited/internal states.
+   Excited states may correspond to internal excitation of the
+   particle (higher harmonics on the same sheet), not just
+   higher orbital levels.
 
-9. **The proton sheet** — Open question: is the proton's lowest
-   mode (1,2) or (3,6)?  The (3,6) hypothesis: three tube
-   windings → three quarks, tube tuned to third harmonic.
-   The (1,2) hypothesis: same structure as electron, different
-   sheet size.  Both are consistent with charge = +1e.  The
-   proton's anomalous moment (~2.793 vs bare prediction) is
-   evidence for strong internal coupling regardless of mode.
-   Studies R46/R47 test the ring-circumference filter on both
-   sheets.
+9. **The proton sheet** — The proton is believed to be a (3,6)
+   mode: three tube windings → three quarks, tube tuned to
+   third harmonic.  gcd(3,6) = 3 means the mode decomposes
+   into three phase-separated (1,2) strands at 120°, each
+   carrying mass m_p/3 ≈ 313 MeV (constituent quark mass).
+   Confinement: individual (1,2) quarks are below the ring
+   cutoff and cannot exist as free particles.
+   Alternative: proton could be (1,2) like the electron, with
+   quarks requiring a separate explanation.  Both hypotheses
+   give charge = +1e and spin = 1/2.  The proton's anomalous
+   moment (2.793 μ_N) is evidence for strong internal coupling
+   regardless of mode.  R47 Tracks 6-7 test both hypotheses.
 
-10. **Shear: how α enters the geometry** — The flat torus with
-    shear.  The sin²(2πs) formula.  Shear is energetically free.
-    Connection to GRID: the shear IS the geometric realization
-    of the impedance mismatch between the sheet and the ambient
-    lattice.
+10. **Shear as embedding angle** — Shear is not an internal
+    deformation of the sheet.  It is the angle at which the 2D
+    sheet is embedded in the 3D ambient lattice — how the
+    sheet's periodicity axes align with the ambient grid.  The
+    internal (x,y) tilt on the unrolled sheet and the embedding
+    angle in 3D are the same parameter viewed from two sides.
+    This embedding angle determines three things:
+
+    (a) **Matter/antimatter preference.**  The embedding breaks
+    the symmetry between clockwise and counterclockwise
+    winding.  One direction is energetically cheaper.  Photons
+    entering the torus from the ambient lattice preferentially
+    wind in the cheap direction → more matter than antimatter.
+    The shear sign is a geometric chirality frozen into the
+    sheet when the lattice formed.  CPT is exact (particle and
+    antiparticle have equal mass); C is broken (one winding
+    direction is favored).  See Q97 for the baryogenesis
+    argument.
+
+    (b) **The impedance mismatch (α).**  The embedding angle
+    determines how efficiently the phase winding on the sheet
+    couples energy into the ambient lattice.  The α(r,s) formula
+    from R19 may express this coupling as a function of the
+    embedding geometry.  Whether this formula computes α from
+    the embedding or merely provides a consistency condition
+    between the geometry and the substrate α (axiom A6) is an
+    open question.
+
+    (c) **The mode spectrum.**  Shear changes the eigenvalues
+    (masses) and mode shapes.  Different embedding angles
+    produce different mass hierarchies.
+
+    Present shear as real and important (especially for
+    matter/antimatter), but note the open question of whether
+    it determines α or is constrained by it.
 
 11. **Dark particles, antimatter, and the neutrino** — Ghost
-    modes as dark matter candidates.  CPT vs C violation from
-    shear chirality.  The neutrino sheet: too large for charge?
-    (Q102 — resolution threshold hypothesis).
+    modes (dark modes with no EM coupling) as dark matter
+    candidates.  The neutrino sheet: too large for charge?
+    (Q102 — the lattice resolution may impose a maximum sheet
+    size for charge coupling).  All three sheets on the same
+    GRID substrate; the same α governs all junctions.  The
+    matter/antimatter story from §10 applies to all sheets —
+    each has a definite shear chirality, and the universe
+    inherits whichever direction was frozen in.
 
 12. **Summary** — Table of concept → mechanism.  One photon, one
-    topology, one α.
+    topology, one α.  Charge is topological (winding).  Mass is
+    geometric (eigenvalue).  α is the energy tax (impedance
+    mismatch).  The moment correction is the tax's back-reaction.
 --->
 
 
