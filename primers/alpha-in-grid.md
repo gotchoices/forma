@@ -33,10 +33,13 @@ A few ways to think about what α measures:
   rest energy mc² of the particle.  It measures "how much does
   charge energy matter compared to mass energy?"
 
-- **Topological defect cost:** in the GRID lattice (see below),
-  α sets the energy cost of a vortex — a region where the
-  collective phase of the lattice winds through a full 2π cycle.
-  Higher α means cheaper vortices, stronger EM coupling.
+- **Defect energy fraction:** in the GRID lattice (see below),
+  a charged particle is a topological defect — a region where
+  the phase winds through a full 2π cycle.  The defect's total
+  energy is the standing wave (mc²), but only a fraction α of
+  that energy leaks into the surrounding lattice as Coulomb
+  field.  The rest stays internal as mass.  Alpha is the
+  energy tax that the ambient lattice levies on the defect.
 
 
 ## 2. What is GRID?
@@ -137,7 +140,7 @@ geometry and topology alone.
 | Elementary charge e | e = √(4πα) |
 | Coupling constant κ | κ = 1/(4πα) ≈ 1722 |
 | Photon-matter interaction strength | Proportional to α |
-| Vortex (charge) creation energy | Proportional to 1/α |
+| Defect field energy (Coulomb) | Fraction α of the wave's total energy mc² |
 | ε₀ and μ₀ (SI units) | Emerge from α + unit conversions |
 
 In natural units, ε₀ = μ₀ = 1 and the vacuum impedance Z₀ = 1.
