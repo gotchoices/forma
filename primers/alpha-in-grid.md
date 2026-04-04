@@ -261,7 +261,126 @@ If such a relation existed, the free-parameter count would drop
 to zero.  This is noted but not assumed.
 
 
-## 7. What α controls downstream (via MaSt)
+## 7. Alpha as impedance mismatch: the bridge from GRID to MaSt
+
+The discussion so far has treated α as an abstract coupling
+constant — a number in an equation.  This section gives it a
+physical picture by connecting the GRID substrate to the MaSt
+particle model.
+
+### Particles as topological defects
+
+In MaSt, a particle is not a point.  It is a **photon confined
+to a 2D sheet** (a triangular lattice) that is wrapped into a
+torus and embedded in the 3D spatial lattice.  The electron, for
+example, is a circularly polarized standing wave circulating on
+a torus whose minor radius is at the Compton scale (~10⁻¹³ m).
+
+This torus is a **topological defect** in the 3D lattice.  The
+phase of the standing wave winds through a full 2π cycle as it
+goes once through the tube of the torus.  From the perspective
+of the ambient 3D lattice, that 2π winding cannot be smoothed
+away — it is a permanent twist in the phase field.  Gauss's law
+detects this twist as electric charge.  The winding number (how
+many times the phase wraps) is the charge quantum number: +1
+for a positron, −1 for an electron, 0 for a neutrino.
+
+The torus also carries a second independent winding — twice
+around the ring — which produces the magnetic moment.  The
+ratio of tube windings (1) to ring windings (2) gives the
+particle's spin: 1/2.
+
+So a single confined photon on a torus, through topology alone,
+generates charge, magnetic moment, and spin.  No additional
+properties need to be attached to the particle.
+
+### Two grids, one junction
+
+Now consider what happens at the boundary where the 2D sheet
+meets the 3D ambient lattice.  These are **two different grid
+fabrics** with different structures:
+
+| Property | 2D sheet (Ma) | 3D ambient (S) |
+|----------|---------------|-----------------|
+| Lattice type | Triangular | Tetrahedral |
+| Neighbors per cell | 3 | 4 |
+| Resolution ζ | 1/4 | 1/4 (or 1/5) |
+| What it carries | Standing wave (particle mass) | Coulomb field, gravitational field |
+
+The standing wave on the sheet carries the particle's full
+rest energy mc².  But the 3D lattice doesn't see all of that
+energy.  It sees only what **couples through the junction**
+between the two grids — and what couples through is the
+topological winding, which appears as a static electric field.
+
+This is an **impedance mismatch**.  When a wave encounters a
+boundary between two media of different structure, only a
+fraction of the energy transmits; the rest stays internal.
+The same principle applies here: the 2D sheet and the 3D
+lattice are two different media, and the winding on the sheet
+projects into the ambient lattice with a coupling efficiency
+that is less than unity.
+
+### The exact energy ratio
+
+The numbers bear this out precisely.  For a particle of mass m:
+
+- **Internal energy** (on the sheet): E_wave = mc², the full
+  rest energy of the standing wave.  This is the Compton energy,
+  related to the Compton wavelength by E = ℏc/ƛ_C.
+
+- **External energy** (in the 3D Coulomb field, evaluated at
+  the Compton scale): E_Coulomb = e²/(4πε₀ƛ_C) = α mc².
+
+The ratio is exact:
+
+<!-- E_Coulomb / E_wave = α -->
+$$
+\frac{E_{\text{Coulomb}}}{E_{\text{wave}}} = \alpha
+$$
+
+Only a fraction α ≈ 1/137 of the wave's energy appears in the
+ambient lattice as Coulomb field energy.  The remaining 136/137
+stays on the sheet — circulating as the standing wave that
+constitutes the particle's mass, invisible to the 3D lattice
+except through its gravitational effect.
+
+This is what α *is* in the GRID + MaSt picture: **the
+transmission coefficient at the junction between the 2D
+material sheet and the 3D spatial lattice**.  It measures how
+efficiently a topological winding on the sheet couples energy
+into the ambient grid.
+
+### Why this matters
+
+In standard physics, α is a measured constant with no known
+origin — it appears in the Lagrangian and that's that.  The
+impedance-mismatch picture changes the question:
+
+- **Old framing:** "Why does α have the value 1/137?  Where
+  does this number come from?"
+
+- **New framing:** "Two lattices of different dimensionality
+  and structure interface at a junction.  What is the geometric
+  transmission coefficient?"
+
+Alpha is not an independent property of the particle.  It is
+**inherited from the substrate** — a consequence of how the
+2D sheet and the 3D lattice couple at their boundary.  The
+electron doesn't "have" a coupling constant; it lives on a
+sheet whose geometry determines how its internal winding
+projects into ambient space.
+
+GRID does not yet predict the value of α from this picture.
+The junction geometry depends on the lattice structures, the
+embedding, and possibly the wrapping integers of the torus —
+all of which are under investigation.  But the conceptual
+shift is significant: α stops being a mysterious free
+parameter of nature and becomes a **geometric property of
+the interface between two grid fabrics**.
+
+
+## 8. What α controls downstream (via MaSt)
 
 GRID derives the field equations.  MaSt takes those equations plus
 α and builds particles from confined photons on compact geometry.
@@ -294,7 +413,7 @@ traces back through MaSt to α.  GRID provides the stage; α sets
 the lighting.
 
 
-## 8. Summary
+## 9. Summary
 
 | Question | Answer |
 |----------|--------|
