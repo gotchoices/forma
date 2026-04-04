@@ -54,9 +54,9 @@ energy appears externally as a Coulomb field).
 
 ## 2. The torus as waveguide and polarizer
 
-Take a flat, 2D triangular lattice — a sheet of equilateral
-triangles, like graphene at the Planck scale.  Wrap it into
-a torus by identifying opposite edges.  The result is a
+Take a flat, 2D hexagonal lattice — a sheet of tiny
+hexagons, like graphene at the Planck scale.  Wrap it into
+a torus by matching up opposite edges.  The result is a
 closed surface with two independent directions:
 
 - **The tube** — the small circle (minor circumference)
