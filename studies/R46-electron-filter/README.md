@@ -244,65 +244,50 @@ moot — charge perturbation is < 0.03% of e.
 
 **Status:** Complete — see [findings.md](findings.md), Track 5
 
-**Goal:** Test whether the ring circumference acts as a
-half-wavelength filter that determines which modes can
-carry charge — eliminating the (1,1) ghost without
-explicit slot placement.
+**Goal:** Assess all candidate mechanisms for eliminating
+the (1,1) ghost mode and selecting (1,2) as the lowest
+charged mode on the electron sheet.  Establish a working
+assumption for future modeling.
 
-**Hypothesis:**
+**Context:**
 
-The ring circumference L_ring must equal an integer number
-of half-wavelengths for a standing wave to persist in the
-ring direction.  For the electron's (1,2) mode, n₂ = 2
-means two half-wavelengths fit around the ring, giving
-L_ring = λ.  The (1,1) mode has n₂ = 1, meaning only one
-half-wavelength fits — the ring circumference is λ/2.
+The (1,1) ghost mode is lighter than the electron, carries
+charge, and has never been observed.  Something kills it.
+Three candidate mechanisms have been identified:
 
-If a half-wavelength in the ring is the minimum resonant
-condition, then the ring size sets the lowest allowed n₂.
-For the electron sheet, if the ring is tuned so that the
-lowest resonance is n₂ = 2, then:
+1. **Slot filtering** (Tracks 3–4) — proven.  Four
+   phase-locked nodes on the inner equator kill (1,1)
+   to 0.0% survival.  Requires assuming the slots exist.
 
-- (1,1) is **below cutoff** — it cannot resonate and is
-  dark.  The ghost is eliminated by geometry, not by slots.
-- (1,2) is the **first charged mode**.  This is the electron.
-- (1,3), (1,4), ... are higher harmonics (heavier leptons
-  or excited states).
+2. **Waveguide cutoff from tube diameter** — proposed,
+   untested.  If the photon fills the tube volume (WvM
+   3D picture), modes whose transverse wavelength exceeds
+   the tube diameter become evanescent.  This would
+   impose a minimum n₂ from tube geometry alone.
 
-This would fix epsilon: if n₂ = 2 is the first mode, then
-ε = L_tube / L_ring = 0.5 for the electron sheet.  This
-has not been established from first principles before.
+3. **Helicity constraint (Q104)** — proposed, untested.
+   If the photon's circular polarization forces n₂ = 2n₁
+   for charged modes, then (1,1) cannot carry charge.
 
-**Method:**
+**Key insight:** the waveguide cutoff and slot filtering
+may be the same physics in different descriptions.  A
+waveguide cutoff exists because tube walls force the field
+to zero at the boundary — the walls ARE nodes.  The 3D
+picture provides nodes automatically; the 2D picture needs
+them placed explicitly because it has abstracted away the
+walls.
 
-1. Compute the standing wave eigenvalues on the torus as
-   a function of ring circumference, identifying the
-   minimum n₂ that sustains a resonance.
-
-2. Determine the cutoff condition: at what L_ring does the
-   (1,1) mode become evanescent?
-
-3. Verify that the surviving mode spectrum (with the cutoff
-   applied) matches the known electron sheet modes.
-
-4. Compute the predicted ε from the cutoff condition and
-   compare to existing MaSt estimates.
-
-5. Check whether the anomalous magnetic moment changes
-   under this filtering (does the cutoff affect the mode
-   shape in a way that modifies g − 2?).
-
-**Key question:** Is this a waveguide cutoff (frequency-based,
-from the tube acting as a waveguide cross-section — see R47
-Track 6 open question) or a standing-wave resonance condition
-(geometry-based, from the ring circumference)?  The two give
-the same selection but through different physics.
+**Working assumption:** A filter mechanism exists that
+eliminates (1,1) and selects (1,2).  The specific
+mechanism is not yet determined, but at least one (slots)
+is proven.  This implies ε ≈ 0.5 if the filter fixes
+the tube-to-ring ratio.
 
 **Related:** Q103 (anomalous moment from defect cost),
-R47 Track 7 (same test on proton sheet).
+Q104 (helicity constraint), R47 Track 7 (proton sheet).
 
-**Depends on:** Track 3 (eigenmode lab), Track 4 (slot results
-for comparison).
+**Depends on:** Track 3 (eigenmode lab), Track 4 (slot
+results for comparison).
 
 
 ---

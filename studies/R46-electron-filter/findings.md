@@ -618,21 +618,6 @@ transverse wavelength exceeds the tube diameter are
 evanescent — they cannot propagate.  This would impose a
 minimum n₂ set by the tube geometry.
 
-Key insight: the waveguide cutoff and slot filtering are
-the **same physics in different descriptions**.  A waveguide
-cutoff exists because the tube walls force the field to zero
-at the boundary — the walls ARE nodes.  The 3D picture gives
-you the nodes automatically from the tube geometry.  The 2D
-picture needs them placed explicitly because it has
-abstracted away the walls.
-
-This means the slots found in Tracks 3–4 may not be
-independent features placed on an otherwise smooth surface.
-They may be the 2D projection of what the tube walls do
-naturally when the full 3D field structure is considered.
-If so, the slot positions and dimensions are determined by
-the tube geometry, not by a separate design choice.
-
 **Helicity constraint (Q104).**  The photon's circular
 polarization traces a helix along the propagation direction.
 On the torus, this helix maps onto the surface with both
@@ -662,29 +647,194 @@ suppression.  Redundancy would indicate that ghost
 elimination is a robust geometric property of the torus,
 not a fine-tuned feature.
 
+### The waveguide picture
+
+The 2D and 3D pictures are not competing models — they are
+two levels of abstraction for the same physics.
+
+**In the 2D picture (MaSt):** the sheet is flat.  The
+standing wave lives on the surface.  Eigenvalues (masses)
+are computed from the scalar wave equation on a flat
+rectangle with periodic boundary conditions.  This is
+computationally simple and has been productive for mass
+predictions.  But it has no "inside" — the tube is a
+coordinate on the surface, not a volume.
+
+**In the 3D picture (physical):** when the flat sheet is
+embedded in 3D as a torus, it bounds a volume.  The
+standing wave's EM fields fill this volume — the photon's
+energy is not a surface phenomenon but a 3D oscillation
+inside the tube.  The tube cross-section is the waveguide,
+and the torus surface is the waveguide wall.
+
+This resolves how the energy partitions:
+
+- **Inside the torus** (~136/137 of mc²): the standing wave
+  oscillating in the waveguide volume.  This is the
+  particle's mass-energy.  It is inaccessible to the
+  outside world except through the wall (the impedance
+  mismatch).
+
+- **Outside the torus** (~1/137 of mc²): the Coulomb field
+  radiating outward.  This is the fraction α of the wave's
+  energy that couples through the torus wall into the
+  ambient 3D lattice.  It is the only part the outside
+  world accesses electromagnetically.
+
+From outside, the interior oscillation is invisible at
+macroscopic distances — the torus is ~10⁻¹³ m across.
+You see only the monopole Coulomb field (charge) and the
+dipole magnetic field (moment).  The particle looks like a
+point not because it is one, but because the waveguide is
+tiny.
+
+The coupling is not one-way.  The Coulomb field outside
+back-reacts on the standing wave inside, slightly
+distorting the current distribution.  This back-reaction
+is the anomalous magnetic moment: the leading correction
+α/(2π) is the defect cost's effect on the circulating
+wave (Track 4, Q103).
+
+This picture clarifies why the waveguide cutoff and slot
+filtering are the **same physics in different descriptions**.
+The torus wall in 3D forces boundary conditions on the
+interior fields — the wall IS the set of nodes.  The 2D
+model abstracts away the wall and must re-introduce the
+nodes as explicit slots.  The slots found in Tracks 3–4
+are the 2D shadow of what the 3D waveguide wall does
+automatically.  If so, the slot positions and dimensions
+are determined by the tube geometry, not by a separate
+design choice.
+
+### Waveguide cutoff — quantitative estimates
+
+The cutoff condition for mode (n₁, n₂) is:
+
+    n₂  >  p'(n₁) / ε
+
+where p'(n₁) is the transverse cutoff parameter for tube
+winding number n₁.  Its value depends on the boundary
+model:
+
+| n₁ | p' (conducting wall) | p' (open/periodic) |
+|----|---------------------|-------------------|
+| 1  | 1.841               | 1                 |
+| 2  | 3.054               | 2                 |
+| 3  | 4.201               | 3                 |
+| 4  | 5.318               | 4                 |
+
+The conducting-wall values are Bessel-function zeros
+(standard circular waveguide TE theory).  The open/
+periodic values (p' = n₁) follow from purely periodic
+boundary conditions — the torus surface has no radial
+confinement.  The GRID material sheet, with reflection
+coefficient ~(1 − α) ≈ 0.993, lies close to the
+conducting limit.
+
+**Minimum ε for each mode to propagate:**
+
+| Mode   | Spin | Charged? | ε_min (conducting) | ε_min (open) |
+|--------|------|----------|--------------------|--------------|
+| (1,1)  | 1    | yes      | 0.920              | 0.500        |
+| (1,2)  | 1/2  | yes      | 0.460              | 0.250        |
+| (2,3)  | 2/3  | no       | 1.018              | 0.667        |
+| (2,4)  | 1/2  | no       | 0.764              | 0.500        |
+| (3,5)  | 3/5  | yes      | 0.840              | 0.600        |
+| (3,6)  | 1/2  | yes      | 0.700              | 0.500        |
+| (4,7)  | 4/7  | no       | 0.760              | 0.571        |
+| (4,8)  | 1/2  | no       | 0.665              | 0.500        |
+
+Reading this table: at ε = 0.5 with open boundaries,
+the lowest surviving mode at each n₁ level is exactly
+the spin-1/2 harmonic — (1,2), (2,4), (3,6), (4,8).
+Everything below that line is killed:
+
+- n₁ = 1: (1,1) killed.  First survivor: **(1,2)**
+- n₁ = 2: (2,1), (2,2), (2,3) killed.  First: **(2,4)**
+- n₁ = 3: (3,1)–(3,5) killed.  First: **(3,6)**
+- n₁ = 4: (4,1)–(4,7) killed.  First: **(4,8)**
+
+The pattern: the cutoff condition n₂ > 2n₁ is equivalent
+to **spin < 1/2**.  All modes with spin > 1/2 are
+evanescent.  The spin-1/2 modes sit exactly at the cutoff
+boundary — they are the lightest survivors at each tube-
+winding level.
+
+Among the survivors, charge requires odd n₁.  So the
+first charged mode at each odd-n₁ level is:
+
+| Level | First charged survivor | Spin | Identity |
+|-------|----------------------|------|----------|
+| n₁=1  | (1,2)                | 1/2  | Electron |
+| n₁=3  | (3,6)                | 1/2  | Proton (on Ma_p) |
+| n₁=5  | (5,10)               | 1/2  | ? |
+
+Modes with n₂ > 2n₁ at the same n₁ also survive —
+e.g. (1,3), (1,4) — but these have spin < 1/2
+(fractional: 1/3, 1/4).  Whether they correspond to
+physical particles or are excluded by another selection
+rule (Q104 helicity, or charge cancellation for non-
+half-integer spin) is an open question.
+
+**Key result:** the waveguide cutoff does not require a
+spindle torus.  (1,1) is evanescent on any torus with
+ε < 1.84 (conducting) or ε < 1 (open).  The electron
+torus needs ε in the range 0.25–0.92 depending on the
+wall model.  All estimates are well below the spindle
+threshold ε > 1.
+
+**Proton cross-check:** on the proton sheet, the (3,6)
+hypothesis requires the cutoff to sit between n₂ = 5
+and n₂ = 6 at n₁ = 3.  The conducting-wall model gives
+ε_p > 0.700 (for (3,6) to propagate) and ε_p < 0.840
+(for (3,5) to be cut off).  The open model gives
+ε_p > 0.500 and ε_p < 0.600.  Both bracket ε ≈ 1/3
+only if the wall is softer than periodic — suggesting
+the proton sheet's effective p' may be sub-unity, or
+that the simple circular-waveguide formula doesn't
+transfer directly to the toroidal geometry.  This
+needs computation (direction 1 below).
+
 ### Possible directions for further modeling
+
+Each direction below includes a failure condition — a
+result that would weaken or falsify the mechanism.
 
 1. **3D eigenmode calculation.**  Solve for the EM field
    inside the torus volume (not just on the surface).
    Identify the transverse mode structure and determine
    the cutoff n₂ as a function of ε.  Compare to the 2D
    surface eigenvalues.
+   *Fails if:* the cutoff n₂ does not land between 1 and 2
+   for any physically reasonable ε, or if the predicted ε
+   conflicts with the α(r,s) impedance relation.
 
 2. **Helicity decomposition (Q104).**  Compute the normal
    and tangential projections of a helical E field on a
    (p, q) geodesic of a torus.  Determine whether
    n₂ = 2n₁ is forced for charge-producing modes.
+   *Fails if:* the helical projection produces net outward
+   flux for (1,1) as well as (1,2) — meaning the
+   polarization geometry does not discriminate between them.
 
 3. **Slot-from-geometry derivation.**  If the waveguide
-   cutoff is confirmed, compute the implied slot positions
-   and dimensions on the 2D surface and compare to the
-   Track 3–4 results.  Agreement would unify the 2D and 3D
+   cutoff is confirmed, compute the implied node positions
+   and boundary conditions on the 2D surface and compare
+   to the Track 3–4 slot results (4 nodes at shear-adjusted
+   93° intervals on the inner equator).
+   *Fails if:* the 3D boundary conditions project onto the
+   2D surface at positions or counts inconsistent with the
+   Track 3–4 slots.  Agreement would unify the 2D and 3D
    pictures.
 
 4. **Proton comparison (R47 Track 7).**  Apply the same
    analysis to the proton sheet.  If the proton is (3,6),
    the waveguide cutoff must sit at a different n₂ than
    the electron, implying a different ε.
+   *Fails if:* the same formula that gives ε_e ≈ 0.5 for
+   the electron does not give ε_p ≈ 1/3 for the proton,
+   since these are the values consistent with each sheet's
+   lowest charged mode.
 
 ### Working assumption
 
