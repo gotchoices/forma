@@ -1,35 +1,13 @@
 # Physics from Fabric
 
-**Status:** Outline
-**Audience:** General engineering background — no assumed knowledge of
-thermodynamics, information theory, quantum physics, or advanced
-mathematics.  Concepts explained as introduced.
+How a discrete lattice at the Planck scale produces both
+electromagnetism and gravity — from one structure, one measured
+constant, and nothing imported.
 
-**Purpose:** How a discrete lattice at the smallest possible scale
-produces both electromagnetism and gravity from first principles.
-No equations of physics are imported — Maxwell's equations and
-Einstein's gravitational constant are derived as outputs.
-
----
-
-## Abstract
-
-Empty space has structure.  GRID (Geometric Relational Interaction
-Domain) models the vacuum as a lattice of identical cells at the
-Planck scale (~10⁻³⁵ m), connected by edges that carry energy.
-Energy scatters at junctions according to a single parameter-free
-rule determined by conservation — and in the continuum limit, the
-resulting wave propagation obeys Maxwell's equations.  Separately,
-counting the lattice's possible configurations produces an entropy
-proportional to surface area, from which the gravitational field
-equation and Newton's constant G emerge.  Electromagnetism is
-mechanical (what the edges carry); gravity is statistical (how many
-ways the edges can be arranged).  Both forces arise from the same
-lattice, governed by two constants: α ≈ 1/137 (coupling strength,
-measured) and ζ = 1/4 (information resolution, likely geometric).
-Computational simulations verify directional wave propagation,
-linear superposition, and the correct gravitational power law —
-all without importing any equation of physics.
+**Audience:** General engineering background.  No assumed
+knowledge of thermodynamics, information theory, quantum
+physics, or advanced mathematics.  Concepts explained as
+introduced.
 
 ---
 
@@ -37,17 +15,16 @@ all without importing any equation of physics.
 
 1. [The question](#1-the-question)
 2. [The fabric](#2-the-fabric)
-3. [How energy propagates](#3-how-energy-propagates)
-4. [What the lattice can't do mechanically](#4-what-the-lattice-cant-do-mechanically)
-5. [Counting states](#5-counting-states)
-6. [What is a quarter-bit?](#6-what-is-a-quarter-bit)
-7. [How edges build up to patterns](#7-how-edges-build-up-to-patterns)
-8. [How counting states produces gravity](#8-how-counting-states-produces-gravity)
-9. [Why hexagons?](#9-why-hexagons)
-10. [Two knobs](#10-two-knobs)
-11. [The two faces of the fabric](#11-the-two-faces-of-the-fabric)
-12. [Connecting to the particle model](#12-connecting-to-the-particle-model)
-13. [What remains open](#13-what-remains-open)
+3. [Clock hands and connections](#3-clock-hands-and-connections)
+4. [From connections to Maxwell](#4-from-connections-to-maxwell)
+5. [What waves can't explain](#5-what-waves-cant-explain)
+6. [Counting arrangements](#6-counting-arrangements)
+7. [The quarter-bit](#7-the-quarter-bit)
+8. [From counting to gravity](#8-from-counting-to-gravity)
+9. [One lattice, two forces](#9-one-lattice-two-forces)
+10. [The defect cost](#10-the-defect-cost)
+11. [Connecting to particles](#11-connecting-to-particles)
+12. [One free parameter](#12-one-free-parameter)
 
 ---
 
@@ -55,362 +32,522 @@ all without importing any equation of physics.
 
 What is empty space made of?
 
-We know how to *describe* electromagnetism (Maxwell's equations)
-and gravity (Newton's G, Einstein's curvature).  But no one has
-explained *why* the vacuum has the properties it does — why
-light travels at c, why gravity is so weak, why electric and
-magnetic fields are coupled in exactly the way they are.
+We know how to *describe* electromagnetism (Maxwell's
+equations) and gravity (Newton's G, Einstein's curvature).
+But no one has explained *why* the vacuum has the properties
+it does — why light travels at c, why gravity is so weak, why
+electric and magnetic fields are coupled in exactly the way
+they are.
 
 This primer describes a model — GRID (Geometric Relational
 Interaction Domain) — that derives both forces from a single
-structure: a lattice of identical cells at the smallest possible
-scale, connected by edges that carry energy.  The electromagnetic
-equations emerge from how energy propagates through this lattice.
+structure: a lattice of identical cells at the smallest
+possible scale, connected by edges.  The electromagnetic
+equations emerge from the phase dynamics of this lattice.
 The gravitational constant emerges from counting the lattice's
-possible configurations.  Nothing is imported — both are outputs
-of the lattice's rules.
+possible configurations.  Nothing is imported — both forces
+are outputs of the lattice's rules.
 
 
 ## 2. The fabric
 
-What the lattice is, how big the cells are, and what each
-cell can do.
+Imagine an enormous grid of identical cells filling all of
+space.  Each cell is unimaginably small — about 10⁻³⁵ meters
+across, a length called the **Planck length**.  To put that
+in perspective: a Planck length is to an atom as an atom is
+to the observable universe.
 
-- Cells at the Planck scale (~10⁻³⁵ m).  How small is that?
-  (Scale analogies.)
-- Each cell is connected to its neighbors by edges.  Each edge
-  carries energy.
-- Energy hops from cell to cell, one step per tick.  This
-  hopping speed IS the speed of light: c = one cell per tick.
-- Cells interact only with their immediate neighbors.  There is
-  no action at a distance.
-- The full rule set (six axioms, stated in plain language):
-  1. Four-dimensional grid of identical cells
-  2. One dimension is time (causal ordering); three are space
-  3. Each edge carries energy
-  4. Energy is conserved at every junction
-  5. Each cell contributes a fixed fraction of one bit of
-     information (the resolution ζ — explained in §6)
-  6. The coupling strength between edges is set by a single
-     constant α
+Each cell is connected to its neighbors by edges.  Nothing
+else exists — no background, no container.  The lattice IS
+space.
 
+GRID rests on six axioms — minimal assumptions about this
+lattice:
 
-## 3. How energy propagates
+1. **Four-dimensional grid of identical cells.**  Three
+   dimensions of space, one of time.  Disturbances hop from
+   cell to cell, one step per tick.  This hopping speed IS
+   the speed of light.
 
-From edges to electromagnetic waves.
+2. **One dimension is time.**  Time flows forward only.
+   Information moves from past to future, never the reverse.
+   This is what makes one dimension special — it carries a
+   causal ordering that the spatial dimensions do not.
 
-- Each edge carries energy.  When energy arrives at a junction,
-  it scatters into the outgoing edges according to a simple
-  rule: outgoing_i = (2/N) × total − incoming_i, where N is
-  the number of edges meeting at the junction
-- This rule has no free parameters — it is uniquely determined
-  by energy conservation at equal-impedance junctions.  It is
-  the same principle as a pipe junction or a beam splitter.
-- A single pulse hitting one junction mostly reflects backward.
-  But a coherent wavefront — many edges excited in phase —
-  propagates forward, because the scattered wavelets from
-  neighboring junctions constructively interfere in the forward
-  direction and cancel sideways.  This is how wavelets at each
-  junction combine to maintain a directed wave.
-- Simulations confirm this.  A broad wavefront propagates at
-  ~0.7 lattice units per tick, barely spreading.  A point
-  source radiates in all directions, like a pebble in a pond.
-  Both behaviors emerge from the same parameter-free rule.
-- Two wavefronts crossing each other pass through and
-  recombine unchanged — superposition, verified to ~10⁻¹⁵
-  residual error.
-- In the continuum limit (many cells, long wavelengths),
-  this propagation obeys Maxwell's equations.  No Maxwell was
-  put in — the equations fell out of the scattering rule.
-- Charge quantization also emerges: if the energy on edges
-  has a periodic (cyclic) character, the winding number
-  around a loop is an integer.  Charge comes in integer
-  multiples for free.
+3. **Each cell carries a phase.**  Think of a tiny clock hand
+   glued to each cell, pointing in some direction on a circle.
+   The clock hand can swing freely — forward or backward on
+   each tick — but the physical content is not where any one
+   clock hand points.  Only the *differences* between
+   neighboring clock hands matter.
 
+4. **Relabeling doesn't change the physics.**  You can reset
+   every cell's clock hand by a different amount, and the
+   physics stays the same — provided you adjust the
+   connections between cells to compensate.  This principle,
+   called gauge invariance, turns out to force the lattice to
+   carry additional information on its edges.  That additional
+   information is the electromagnetic field.
 
-## 4. What the lattice can't do mechanically
+5. **Each cell contributes a quarter-bit of information.**
+   One cell alone cannot encode a full yes/no answer.  It
+   takes four cells working together to register one bit of
+   physical information.  This resolution, ζ = 1/4, sets the
+   information density of the lattice.
 
-The same scattering rule that propagates light does NOT
-produce gravity.
+6. **The coupling strength is α ≈ 1/137.**  A single
+   dimensionless number — the fine-structure constant — sets
+   how strongly the phase field couples to the connection
+   field.  This is the one number GRID takes from experiment.
 
-- A lattice with energy on edges naturally produces wave
-  equations (that's how we got electromagnetism above)
-- But what about gravity?  Try biasing the edges — increase
-  the energy in a region to simulate a massive object
-- Result: the disturbance field falls off as 1/r² (in 2D).
-  This is elastic behavior — like stretching a rubber sheet.
-- Gravity's force falls off as 1/r (in 2D) — a different
-  power law.
-- Simulation proof: a lattice of springs matches elasticity
-  exactly (R² ≈ 0.9999) but does NOT match gravity at any
-  parameter setting.
-- However, a scalar field on the same lattice — where each
-  cell holds a single value rather than a position — DOES
-  produce the 1/r force (R² ≈ 0.999).  The difference:
-  elasticity is about how edges move in space (a vector
-  field); gravity is about how edges are *configured* (a
-  scalar field).  Same lattice, different physics.
-- The conclusion: gravity comes from counting configurations,
-  not from mechanical distortion.  This leads us to counting
-  states.
+That's it.  Six rules.  Everything else — Maxwell's equations,
+the gravitational constant, charge quantization, the speed of
+light — is derived.
 
 
-## 5. Counting states
+## 3. Clock hands and connections
 
-Why the number of possible arrangements matters.
+Axioms 3 and 4 are the engine of electromagnetism.  Here is
+how they work.
 
-- Each edge in the lattice can hold many different values.
-  The total number of distinct arrangements in a region is
-  called the entropy of that region.
-- Example: a shuffled deck of cards has high entropy (many
-  arrangements look "random"); a sorted deck has low entropy
-  (only one arrangement).  Nothing about heat — just counting.
-- Systems drift toward arrangements with more possibilities,
-  not because of a force, but because there are simply more
-  ways to be in a high-entropy state than a low-entropy one
-- Temperature is the exchange rate between energy and entropy:
-  how much energy must you pay to rearrange one bit's worth
-  of the lattice
-- On the GRID lattice: the energy values on edges in a region
-  define its entropy.  A region with more edges in excited
-  states has higher entropy.  This counting is what produces
-  gravity.
+Each cell has a phase — a clock hand pointing somewhere on a
+circle.  The phase at cell A might read "45°" and at
+neighboring cell B "50°."  The difference (5°) is the
+physically meaningful quantity.  The absolute angles are
+arbitrary — if someone secretly added 30° to every clock in
+the universe, nothing would change.
 
+Now here is the key step.  Axiom 4 says you can add *different*
+amounts to different cells and the physics still doesn't change.
+Add 10° to cell A and 25° to cell B.  The old difference was
+5°.  The new phases are 55° and 75°, with a difference of 20°.
+That's different — so something must compensate.
 
-## 6. What is a quarter-bit?
+The compensating quantity lives on the **edge** between A
+and B.  Call it the **connection**.  It adjusts whenever you
+relabel, so that the combination "phase difference minus
+connection" is always the same regardless of how you relabel.
+This combination is the gauge-invariant, physically real
+quantity.
 
-The information content of a single cell.
+The connection is not something we added to the lattice by
+hand.  It is *forced to exist* by the relabeling rule.  If
+you demand that arbitrary local relabeling doesn't change the
+physics, you must have a connection on every edge.  There is
+no choice.
 
-- A "bit" is one yes/no answer — the smallest unit of
-  information (0 or 1)
-- How much information does one cell of the lattice carry?
-  Information theory sets a lower bound: the information
-  content of any region of space is proportional to its
-  surface area, not its volume, and the density works out to
-  about 1 bit per 4 Planck-area cells.  Each cell contributes
-  roughly ¼ of a bit.
-- A quarter-bit is a "fractional bit" — one cell alone
-  cannot encode a full yes/no answer, but four cells together
-  can.  Analogy: one pixel alone can't make a recognizable
-  image, but a 2×2 block can encode one meaningful symbol.
-- We take ζ = 1/4 as a working hypothesis and ask: how do you
-  actually construct a quarter-bit?  A cell needs four
-  connections — four edges leading into it — so that each
-  edge carries 1/4 of the cell's information to one neighbor.
-  In 3D space, this means cells with four faces (tetrahedra).
-  On a 2D sheet, adapt to three connections per cell — which
-  leads directly to hexagons (§9).
-- This number ζ = 1/4 is one of GRID's two constants.  It
-  determines the strength of gravity.  Unlike α, it may
-  follow from the lattice geometry itself rather than being
-  a free parameter (see §10).
+The lattice now holds two kinds of state:
+
+| Where | What | What it becomes |
+|-------|------|-----------------|
+| On cells (nodes) | Phase (clock hand) | Matter field |
+| On edges (links) | Connection | Electromagnetic field |
+
+Both are part of the lattice's memory.  Both update on every
+tick.  A propagating ripple in the connection states IS a
+photon — a traveling disturbance in the electromagnetic
+field.  The clock-hand phases are the matter; the connections
+are the light.
 
 
-## 7. How edges build up to patterns
+## 4. From connections to Maxwell
 
-From fractional bits to the rich structure of physics.
+Now zoom out.  Instead of individual cells, look at the
+lattice from a great distance — many cells across, many ticks
+long.  The discrete phases and connections blur into smooth
+fields.  This is the **continuum limit**, like zooming out
+from individual pixels until you see a photograph.
 
-- Each cell holds ¼ bit, but describing the full state of
-  the lattice at a point (direction, magnitude, and rate of
-  change of energy) requires ~1000 bits
-- A sliding window of ~4000 cells is needed to encode one
-  complete local description — like reading a sentence from
-  a stream of individual letters
-- The information is holographic: it lives on surfaces (2D
-  boundaries), not in volumes (3D bulk).  The bulk is
-  redundant — you can reconstruct the interior from the
-  boundary.
-- Patterns of edge values across many cells ARE the physical
-  fields.  A smooth wave across many cells is a light wave.
-  A systematic gradient in entropy is a gravitational field.
+In this limit, the connection field becomes the electromagnetic
+potential A_μ — the standard object from which E and B fields
+are computed.  The physically real quantity — the part that
+doesn't change under relabeling — is the **curl** of A around
+a closed loop.  This curl is the electromagnetic field tensor
+F_μν, which packages all six components of E and B into one
+object.
 
+To get equations of motion, we need a rule for how the lattice
+evolves.  The rule is the **principle of least action**: among
+all possible evolutions, the lattice follows the one that
+extremizes a single number (the action).  The form of the
+action is uniquely fixed by three requirements that come
+directly from the axioms:
 
-## 8. How counting states produces gravity
+- Gauge-invariant (only depends on the curl, not on the
+  relabeling-dependent potential)
+- Lorentz-invariant (same for all observers)
+- Local (depends on fields at a point, not at a distance)
 
-From information density to the gravitational constant.
+There is exactly one action that satisfies all three.  Varying
+it produces **all four of Maxwell's equations**:
 
-- Start with the lattice and its resolution: each cell
-  contributes ζ = 1/4 bit.  The total information in a
-  region is proportional to its surface area (not volume).
-- When energy flows through a region, it changes the values
-  on the edges it crosses — it changes the entropy.
-- The amount of entropy change is: δS = ζ × δA (change in
-  information = resolution × change in area)
-- Energy and entropy are linked by temperature:
-  δQ = T × δS (energy deposited = temperature × entropy
-  change)
-- The lattice has a causal structure — a time direction.
-  Any observer accelerating through the lattice encounters
-  a causal horizon (a boundary beyond which information
-  cannot reach them).  That horizon has a temperature
-  proportional to the acceleration: T = a/(2π) in natural
-  units.
-- Combining these: energy flow through a region changes
-  area, mediated by temperature and resolution.  The
-  relationship between energy content and geometric change
-  IS the gravitational field equation.
-- The gravitational constant falls out directly:
-  G = 1/(4ζ) = 1/(4 × ¼) = 1 in natural units.
-  Converting to SI units recovers the measured value
-  G = 6.674 × 10⁻¹¹ m³ kg⁻¹ s⁻².
-- Simulation verification: on the same lattice where
-  mechanical springs gave the wrong power law (§4), a
-  scalar field with entropy-driven dynamics gives the
-  right one (1/r in 2D, R² ≈ 0.999).
+| Equation | Name | What it says |
+|----------|------|-------------|
+| ∇ · **E** = ρ | Gauss's law | Charge creates diverging electric field |
+| ∇ × **B** − ∂**E**/∂t = **J** | Ampère's law | Current and changing E create curling B |
+| ∇ × **E** + ∂**B**/∂t = 0 | Faraday's law | Changing B creates curling E |
+| ∇ · **B** = 0 | No monopoles | Magnetic field lines have no endpoints |
 
+The first two come from varying the action.  The last two
+are automatic — they are geometric identities that hold for
+any field defined as a curl.  No Maxwell was imported.  The
+equations fell out of the lattice structure.
 
-## 9. Why hexagons?
+**Charge quantization** also emerges for free.  The phase is
+periodic — it wraps around every 2π.  A closed loop of cells
+where the phase winds through a full 2π cycle is a
+**topological vortex**.  You cannot have half a vortex.  The
+winding number must be an integer: 0, ±1, ±2, ...  Each
+integer is a unit of charge.  Charge comes in discrete
+packets because the clock hand is a circle, not a line.
 
-The shape of the fabric and why it matters.
-
-- The quarter-bit (§6) tells us a 2D cell needs three
-  connections.  A lattice where every junction has three
-  edges is a hexagonal mesh.
-- But there are two more independent reasons hexagons win.
-- **Wave propagation.**  On a triangular lattice, each
-  junction has 6 edges.  When a wave hits a 6-way junction,
-  ~44% of its energy bounces back.  On a hexagonal lattice,
-  each junction has only 3 edges — reflection drops to ~11%.
-  Simulations confirm cleaner propagation: on the hexagonal
-  lattice, even a single pulse propagates forward (53%
-  directionality vs 33% isotropic).  On the triangular
-  lattice, single pulses scatter backward.
-- **Flexibility.**  Triangles with fixed-length edges are
-  rigid — they cannot deform.  Hexagons with fixed-length
-  edges can flex, bend, and curve without breaking.  A
-  soccer ball uses pentagons to bend an otherwise flat hex
-  mesh into a sphere.
-- Pentagon = curvature defect.  A region with extra pentagons
-  is curved inward.  The density of pentagon defects maps
-  directly to gravitational curvature around a massive object.
-- A wave propagating on the hexagonal lattice cannot detect
-  bending.  The scattering rule depends only on N (the number
-  of edges) and their amplitudes — not on angles or
-  curvature.  Locally, every junction looks the same.  Only
-  topological defects (a junction with 2 edges instead of 3)
-  are detectable.  This is the equivalence principle at the
-  lattice level: gravity is invisible locally.
-- 2D hex mesh: works for the flat material sheets where
-  particles live as standing waves
-- 3D extension: the spatial dimensions use an analogous
-  structure.  How the hex dual generalizes to 3D is an
-  active area of work.
+Simulations verify the key predictions: directional wave
+propagation emerges from the lattice geometry alone, and two
+crossing wavefronts pass through each other unchanged
+(superposition verified to ~10⁻¹⁵ residual error).
 
 
-## 10. Two knobs
+## 5. What waves can't explain
 
-The entire model has two constants.
+The same lattice that produces electromagnetic waves does
+NOT produce gravity — at least not mechanically.
 
-- **α ≈ 1/137** — the coupling strength.  Sets how strongly
-  edges interact at junctions.  Determines the strength of
-  electromagnetism.  This is the one number GRID takes from
-  experiment.
-- **ζ = 1/4** — the resolution.  Sets how much information
-  each cell contributes.  Determines the strength of gravity
-  through G = 1/(4ζ).  Unlike α, ζ may be derived from the
-  lattice geometry: in 3D, a simplicial cell (tetrahedron)
-  has four face-neighbors, giving ζ = 1/4 as a geometric
-  consequence rather than a free parameter.
-- If ζ follows from geometry, α is the sole measured input.
-- Everything else — the speed of light, Planck's constant,
-  the vacuum permittivity and permeability, Boltzmann's
-  constant — turns out to be unit conversion, not physics.
-  They are artifacts of measuring length in meters, time in
-  seconds, and energy in joules.
-- Why is gravity so much weaker than electromagnetism?
-  Because α and ζ are very different numbers.  Whether they
-  are fundamentally related is an open question — answering
-  it would reduce the model to zero free parameters.
+Try it: put energy into a region of the lattice and let the
+wave equation propagate the disturbance outward.  The
+resulting field falls off as 1/r² (in 2D simulations).  This
+is elastic behavior — like poking a rubber sheet.  The
+displacement spreads according to elasticity theory, which
+predicts 1/r².
 
+But gravity's force falls off as 1/r (in 2D) — a
+fundamentally different power law.
 
-## 11. The two faces of the fabric
+Simulations confirm this cleanly.  A lattice of springs
+matches elasticity theory to R² ≈ 0.9999 but does NOT match
+gravity at any parameter setting.  The mechanical approach
+gives the wrong answer.
 
-How one lattice produces two different forces.
+However, a **scalar field** on the same lattice — where each
+cell holds a single number representing its configuration
+count, rather than a displacement vector — DOES produce the
+1/r force (R² ≈ 0.999).  The difference: elasticity is about
+how edges move in space (a vector field); gravity is about
+how edges are *configured* (a scalar counting field).
 
-- **Electromagnetism** is mechanical.  Energy scatters at
-  junctions → waves propagate → Maxwell's equations emerge
-  in the continuum limit.  Direct, dynamic, deterministic.
-  No state-counting required.
-- **Gravity** is statistical.  Counting edge arrangements →
-  entropy proportional to area → geometry adjusts to
-  accommodate energy flow → the gravitational field equation
-  emerges.  Collective and emergent.
-- Same lattice, different physics.  Electromagnetism is what
-  the edges *carry*.  Gravity is what the edges *are* (how
-  many ways they can be arranged).
-- This explains the hierarchy: scattering at a single
-  junction is local and strong.  Statistical effects require
-  collective behavior of enormous numbers of cells and are
-  correspondingly gentle.  Gravity is weak because it is a
-  crowd effect, not a local interaction.
+The conclusion: gravity comes from counting configurations,
+not from mechanical distortion.  This leads us to entropy.
 
 
-## 12. Connecting to the particle model
+## 6. Counting arrangements
 
-How GRID feeds into MaSt.
+**Entropy** is a count of possibilities.
 
-- MaSt (Material–Space–time) is the particle model built
-  on top of GRID.  It takes the electromagnetic wave
-  equation and the coupling constant α — both derived by
-  GRID — and constructs particles as standing waves on
-  compact (periodic) geometry.
-- The material sheets (Ma) are 2D regions of the lattice
-  where the mesh is flat and periodic — standing waves
-  on these sheets are the particles of nature
-- Rolling a hexagonal sheet into a torus costs nothing.
-  A wave propagating on the torus cannot detect the bending
-  — the scattering rule is the same whether the sheet is
-  flat or rolled.  Curvature appears only in the surrounding
-  3D lattice, which must rearrange (introducing pentagonal
-  defects) to accommodate the torus.  The rearrangement IS
-  the particle's gravitational field.
-- The spatial dimensions (S) are the 3D bulk lattice where
-  the mesh can curve — curvature is gravity
-- Particles are energy patterns on flat lattice.  Gravity is
-  the statistical behavior of curved lattice.  Both arise
-  from the same cells and edges.
+Each edge in the lattice can hold many different values.  The
+total number of distinct arrangements in a region is the
+entropy of that region.  Nothing about heat — just counting.
+
+A shuffled deck of cards has high entropy: many arrangements
+look "random."  A sorted deck has low entropy: only one
+arrangement qualifies.  Nobody pushes the deck toward
+disorder — there are simply more disordered arrangements than
+ordered ones.  Systems drift toward higher entropy because
+there are more ways to be there.
+
+**Temperature** is the exchange rate between energy and
+entropy: how much energy must you pay to rearrange one bit of
+the lattice.  High temperature means rearrangements are cheap.
+Low temperature means they are expensive.
+
+On the GRID lattice: the values on edges in a region define
+its entropy.  A region with more excited edges has more
+possible configurations, hence higher entropy.  This counting
+is what produces gravity.
 
 
-## 13. What remains open
+## 7. The quarter-bit
 
-- Can α be derived from ζ (or vice versa)?  This would
-  reduce the model to zero free parameters.
-- The gravity derivation currently bridges from the discrete
-  lattice to a smooth continuum.  Making this bridge
-  rigorous — proving that discrete cell-counting produces
-  smooth curvature — is unfinished.
-- Does the hexagonal lattice generalize cleanly to 3D?
-  The 2D hex mesh and its pentagon defects work beautifully;
-  the 3D analog is under development.
-- Can the lattice's junction rules reproduce quantum
-  mechanics, or does something additional need to be added?
-  MaSt offers a geometric account of several quantum
-  phenomena (quantized energy levels, uncertainty, spin)
-  that emerge from wave mechanics on compact geometry
-  rather than being postulated.
-- Every observer is built from lattice excitations.
-  Because all forces come from the same lattice, all
-  measuring instruments transform the same way under
-  motion — which may explain why no observer can detect
-  the lattice itself.
-- What is the specific energy pattern on the lattice that
-  becomes a confined standing wave — a particle?  Finding
-  this initial condition (the "alpha chord") would connect
-  GRID directly to the particle spectrum.
+A **bit** is one yes/no answer — the smallest unit of
+information (0 or 1).
 
+How much information does one cell of the lattice carry?
+There is a deep result from information theory: the
+information content of any region of space is proportional
+to its **surface area**, not its volume.  This is called the
+**holographic principle** — the interior of a region is
+redundant; all the information lives on the boundary.
+
+The density works out to about 1 bit per 4 Planck-area
+cells.  Each cell contributes roughly **¼ of a bit**.
+
+A quarter-bit is a fractional bit — one cell alone cannot
+encode a full yes/no answer, but four cells together can.
+Think of it as an anti-aliasing constraint: no excitation
+can have spatial frequency higher than 1/(4L), where L is
+the cell size.
+
+Where does 1/4 come from?  In 3D space, the simplest cell
+shape is a tetrahedron — a triangular pyramid with four
+faces.  Each face borders one neighbor.  Under the counting
+scheme where the cell has no separate internal state — its
+information is entirely encoded in its boundary relationships
+— each cell contributes one share to four neighbors, giving
+ζ = 1/4.  The value follows from the packing geometry of the
+lattice, not from an external measurement.
+
+This number ζ = 1/4 is one of GRID's two constants.  It
+determines the strength of gravity.
+
+
+## 8. From counting to gravity
+
+Here is how counting arrangements produces the gravitational
+field equation.
+
+Start with the lattice and its resolution: each cell
+contributes ζ = 1/4 bit.  The total information on any
+surface of area A is:
+
+> S = ζ × A = A/4
+
+When energy flows through a region, it changes the values on
+the edges it crosses — it changes the entropy.  Energy and
+entropy are linked by temperature through the **Clausius
+relation**:
+
+> δQ = T × δS
+
+(energy deposited = temperature × entropy change).  This is
+basic thermodynamics, not a gravitational assumption.
+
+Now the lattice's causal structure (axiom 2) enters.  Any
+observer accelerating through the lattice encounters a
+**causal horizon** — a boundary beyond which information
+cannot reach them.  This horizon has a temperature
+proportional to the acceleration:
+
+> T = a / (2π)
+
+This is the **Unruh effect** — a result from quantum field
+theory on flat spacetime.  It connects acceleration (geometry)
+to temperature (thermodynamics).
+
+Combining these: energy flowing through a horizon changes the
+horizon's area.  The rate of area change is related to the
+curvature of spacetime through a kinematic identity (the
+Raychaudhuri equation — no gravitational assumption, just
+geometry).  Plugging everything together:
+
+> Energy content at a point determines the curvature at
+> that point.
+
+This IS the gravitational field equation.  The gravitational
+constant falls out directly:
+
+> G = 1/(4ζ) = 1  (in natural units)
+
+Converting to SI units recovers the measured value:
+G = 6.674 × 10⁻¹¹ m³ kg⁻¹ s⁻².
+
+The cosmological constant Λ also appears, for free, as an
+integration constant — it is not put in by hand.
+
+**Why does spacetime bend around mass?**  Because energy
+flowing through causal horizons changes their entropy, and
+entropy is proportional to area.  The geometry must adjust
+to accommodate the entropy change.  Spacetime bends because
+information flow forces geometric change.
+
+Simulation verification: on the same lattice where mechanical
+springs gave the wrong power law (§5), an entropy-driven
+scalar field gives the right one (1/r in 2D, R² ≈ 0.999).
+
+
+## 9. One lattice, two forces
+
+The lattice produces two forces through two completely
+different mechanisms:
+
+| | Electromagnetism | Gravity |
+|--|------------------|---------|
+| **Mechanism** | Dynamics — phase oscillations propagate as waves | Thermodynamics — entropy of configurations determines geometry |
+| **What it uses** | Phases on cells, connections on edges, gauge symmetry | Information density, causal horizons, entropy-area law |
+| **Free parameter** | α ≈ 1/137 (coupling strength) | ζ = 1/4 (information resolution) |
+| **Nature** | Local, mechanical, deterministic | Collective, statistical, emergent |
+
+Electromagnetism is what the edges *carry*.  Gravity is how
+the edges *are arranged*.
+
+This explains the **hierarchy** — why gravity is so vastly
+weaker than electromagnetism.  Phase interactions happen at
+every junction, every tick.  They are local and immediate.
+Entropy effects require the collective behavior of enormous
+numbers of cells.  You need ~10⁶⁰ cells' worth of area
+before the statistical effect becomes significant.  Gravity
+is weak because it is a crowd effect, not a local interaction.
+
+
+## 10. The defect cost
+
+We now have electromagnetism (from phase dynamics) and gravity
+(from entropy).  But what is a charged particle in this
+picture?  And where does α show up physically?
+
+In the companion framework MaSt (Material Space), a particle
+is a **photon confined to a 2D sheet** that is wrapped into a
+torus and embedded in the 3D spatial lattice.  The standing
+wave circulates on the torus, and its phase winds through a
+full 2π cycle going once through the tube.
+
+From the ambient 3D lattice's perspective, this 2π winding
+is a **topological defect** — an irreducible twist in the
+phase field that cannot be smoothed away.  Gauss's law
+detects it as electric charge.
+
+The standing wave on the sheet carries the particle's full
+rest energy mc² — this is the particle's mass.  But the
+ambient 3D lattice must also store energy to accommodate
+the topological twist.  This accommodation energy is the
+**Coulomb field** — the static electric field radiating
+outward from the charge.
+
+The energy partition is exact:
+
+| Where | Energy | What it is |
+|-------|--------|------------|
+| On the 2D sheet | mc² | The standing wave — mass |
+| In the 3D ambient lattice | αmc² | The Coulomb field — the cost of the twist |
+
+The fraction of total energy that leaks into the ambient
+lattice is:
+
+> E_Coulomb / E_wave = α ≈ 1/137
+
+Only 1/137 of the wave's energy appears externally as
+Coulomb field.  The remaining 136/137 stays on the sheet,
+circulating as the standing wave that constitutes the
+particle's mass.
+
+This is what α *is* in the GRID picture: the **energy tax**
+that the ambient lattice levies on a topological defect.  It
+is an impedance mismatch — the 2D sheet and the 3D lattice
+are two different fabrics, and energy crosses between them
+at a rate set by their structural coupling.
+
+Alpha is not a mysterious constant attached to the particle.
+It is a property of the **junction** between two grid fabrics
+of different dimensionality.  The particle inherits it from
+the substrate — it doesn't generate it.
+
+
+## 11. Connecting to particles
+
+GRID provides the substrate.  MaSt (Material–Space–time)
+builds particles on top of it.
+
+MaSt takes the electromagnetic wave equation and the coupling
+constant α — both provided by GRID — and constructs particles
+as standing waves on compact (periodic) 2D sheets.
+
+The material sheets (Ma) are regions of the lattice where the
+mesh is flat and periodic.  A 2D triangular lattice (like a
+sheet of graphene) wrapped into a torus creates a closed
+surface with no boundary.  Standing waves on this torus are
+the particles of nature.
+
+The torus topology produces quantum numbers for free:
+
+- **Charge:** the winding number through the tube (how many
+  times the phase wraps through 2π).  Integer-valued by
+  topology.
+- **Magnetic moment:** winding around the ring (2 turns for
+  the electron).
+- **Spin:** the ratio of tube windings to ring windings
+  (1/2 for the electron).
+
+The sheet itself stays flat — all triangles remain
+equilateral, all edges remain one Planck length.  It is the
+*ambient 3D lattice* that must rearrange to accommodate the
+torus.  This rearrangement IS the particle's gravitational
+field.  The flat sheet carries mass.  The warped ambient
+lattice carries gravity.  Both arise from the same cells and
+edges.
+
+
+## 12. One free parameter
+
+The entire framework has two constants:
+
+**ζ = 1/4** — the information resolution.  Likely derived
+from the lattice geometry (tetrahedral cells in 3D have four
+face-neighbors, giving ζ = 1/4 as a geometric consequence).
+Determines the strength of gravity through G = 1/(4ζ).
+
+**α ≈ 1/137** — the coupling strength.  Measured from
+experiment.  Determines the strength of electromagnetism —
+the energy cost of a topological defect, the impedance
+mismatch at the junction between 2D sheets and 3D space.
+
+If ζ follows from geometry, **α is the sole free parameter**.
+
+Everything else that appears in physics textbooks as a
+"fundamental constant" turns out to be either derived or
+definitional:
+
+| Constant | What it really is |
+|----------|-------------------|
+| c (speed of light) | One cell per tick — defines the ratio of length to time units |
+| ℏ (Planck's constant) | One phase cycle per Planck energy — defines energy units |
+| k_B (Boltzmann's constant) | One bit per Planck temperature — defines temperature units |
+| ε₀, μ₀ (vacuum permittivity/permeability) | Both equal 1 in natural units — they encode α in SI disguise |
+| G (gravitational constant) | 1/(4ζ) — derived from information resolution |
+
+The SI values of these constants (c = 3 × 10⁸ m/s, etc.) are
+not deep — they just reflect the ratio between human-scale
+units and Planck-scale units.
+
+**What remains open:**
+
+- **The continuum limit.**  The gravity derivation bridges
+  from a discrete lattice to smooth differential geometry.
+  Making this bridge rigorous is unfinished — it is an open
+  problem shared with all of quantum gravity.
+
+- **3D lattice structure.**  The 2D sheet geometry is well
+  understood (triangular lattice, torus wrapping).  How the
+  3D spatial lattice generalizes — its cell shapes, its
+  defect structure — is under development.
+
+- **Quantum mechanics.**  GRID does not derive QM from
+  scratch.  MaSt offers geometric origins for several quantum
+  phenomena (quantized energy as standing-wave modes,
+  uncertainty as Fourier bandwidth, spin as winding topology),
+  but a full derivation of quantum mechanics from the lattice
+  is not claimed.
+
+- **Why α ≈ 1/137.**  The value of α is a free parameter.
+  The lattice permits a wide range of coupling strengths
+  (verified computationally).  What selects the observed
+  value is unknown.  GRID explains what α *means* — the
+  impedance mismatch at a dimensional junction — but not
+  why it has the value it does.
+
+---
 
 ## References
 
-- GRID technical documents: `grid/foundations.md`,
-  `grid/maxwell.md`, `grid/gravity.md`, `grid/synthesis.md`
-- Primer: `across-through.md` — the conjugate pattern
-  underlying wave propagation on the lattice
-- Primer: `charge-from-energy.md` — how geometry produces
-  particles (the MaSt layer above GRID)
+GRID technical documents:
+- [`grid/foundations.md`](../grid/foundations.md) — the six axioms
+- [`grid/maxwell.md`](../grid/maxwell.md) — full Maxwell derivation
+- [`grid/gravity.md`](../grid/gravity.md) — full gravity derivation
+- [`grid/synthesis.md`](../grid/synthesis.md) — what GRID proves and doesn't
+
+Related primers:
+- [`alpha-in-grid.md`](alpha-in-grid.md) — deep dive on the role of α
+- [`across-through.md`](across-through.md) — the conjugate pattern underlying wave propagation
+- [`charge-from-energy.md`](charge-from-energy.md) — how geometry produces particles (the MaSt layer)
 
 Historical context (these works arrived at compatible results
 from different starting points; GRID does not import them):
-- Jacobson (1995): derived gravity from thermodynamics on
-  horizons
-- Bekenstein (1973), Hawking (1975): discovered the 1/4
-  information density from black hole physics
+- Jacobson (1995): derived gravity from thermodynamics on horizons
+- Bekenstein (1973), Hawking (1975): discovered the 1/4 information density from black hole physics
+- Wilson (1974): lattice gauge theory — gauge fields on discrete lattices
