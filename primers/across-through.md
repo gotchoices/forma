@@ -319,6 +319,28 @@ produce wave equations**.  The specific wave equations depend
 on the geometry.  For a hexagonal lattice with the GRID
 axioms, the specific equations that emerge are Maxwell's.
 
+### A note on α
+
+The vacuum impedance Z₀ = 377 Ω (= 1 in natural units) is
+the impedance of the 3D spatial lattice itself — the ratio
+of E to H in a traveling wave.  But there is a second
+impedance in the GRID framework: the **junction impedance**
+between a 2D material sheet and the 3D lattice.
+
+When a standing wave on a compact 2D sheet (a particle)
+couples energy into the surrounding 3D lattice, only a
+fraction α ≈ 1/137 of its energy transmits through the
+junction.  This is an impedance mismatch between two grid
+fabrics of different dimensionality — the same phenomenon
+as a signal reflecting at a mismatched cable junction (§3),
+but between a 2D and a 3D medium rather than two cables.
+
+The across/through pattern runs all the way down: Z₀ governs
+how waves propagate within the 3D lattice; α governs how
+energy crosses from the 2D sheet into it.  Both are impedance
+ratios.  See [`alpha-in-grid.md`](alpha-in-grid.md) for the
+full story.
+
 ---
 
 ## 7. The elephant in the room: the aether
@@ -470,9 +492,11 @@ toward understanding it.
 
 ## References
 
-- GRID hexagonal lattice: [grid/hexagonal.md](../grid/hexagonal.md)
+- GRID foundations: [grid/foundations.md](../grid/foundations.md)
+- Hexagonal lattice investigation: [grid/hexagonal.md](../grid/hexagonal.md)
 - Wave propagation simulation: [grid/sim-maxwell/](../grid/sim-maxwell/)
 - Maxwell derivation from lattice: [grid/maxwell.md](../grid/maxwell.md)
+- Alpha as impedance mismatch: [alpha-in-grid.md](alpha-in-grid.md)
 - Natural units and impedance: [natural-units-and-alpha.md](natural-units-and-alpha.md)
 - GRID as aether: [grid/INBOX.md §aether](../grid/INBOX.md)
 - Lorentz invariance as theorem: [grid/INBOX.md §lorentz](../grid/INBOX.md)
