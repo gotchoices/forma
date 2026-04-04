@@ -351,10 +351,38 @@ S = -\frac{1}{4}\int F_{\mu\nu}F^{\mu\nu}\,d^4x
     \;+\; e\int j^\mu A_\mu\,d^4x
 $$
 
-The coupling constant α enters through e = √(4πα).  It does
-not appear in the free-field term — the normalization of F is
-fixed by convention.  The single physical parameter α controls
-how strongly charges couple to the field.
+The coupling constant α enters through e = √(4πα).  The single
+physical parameter α controls how strongly charges couple to
+the field.
+
+**Why e² = 4πα and not some other relationship.**  The
+−1/4 normalization of the free-field action is not arbitrary —
+it is fixed by requiring that the energy density of the
+electromagnetic field takes the standard form u = ½(E² + B²)
+per unit volume.  Given this normalization, the only
+dimensionless coupling that appears at a charge-field vertex
+is e, and the dimensionless strength of the force between two
+charges (the quantity that appears in scattering amplitudes
+and in the Coulomb force law F = αq₁q₂/r²) is:
+
+<!-- α = e² / (4π) -->
+$$
+\alpha = \frac{e^2}{4\pi}
+$$
+
+The 4π arises from the solid angle of a sphere in three
+spatial dimensions — it is the geometric factor in Gauss's
+law.  No other relationship is consistent with the action
+structure: the quadratic free term fixes the field
+normalization, and the linear source term then fixes how e
+relates to the physical coupling α.
+
+This is a standard result of U(1) gauge theory — it appears
+in any quantum field theory reference.  GRID does not add a
+new relationship here; it arrives at the same one from more
+primitive assumptions (the lattice axioms A1–A4 produce the
+U(1) gauge structure from which e² = 4πα follows).  The
+derivation is independent of GRID's specific framework.
 
 ---
 
