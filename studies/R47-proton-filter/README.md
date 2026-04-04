@@ -384,7 +384,7 @@ Track 5 (quark moment check for comparison).
 
 ### Track 7: (1,2) vs (3,6) — testing against quark phenomenology
 
-**Status:** Framing
+**Status:** Complete
 
 **Goal:** Determine whether (1,2) or (3,6) better explains
 the proton's experimentally observed quark structure.

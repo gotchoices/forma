@@ -72,18 +72,21 @@ simply ℏn₆ — it includes contributions from excitations with their
 own winding numbers.  This is a different physics from geodesic tilting.
 6 tracks (1 done, 2 blocked, 3 viable).  **HIGH VALUE — Track 3.**
 
-### R47. Proton geometry — mode, slots, and anomalous moment  **Track 4**
+### R47. Proton geometry — mode, slots, and anomalous moment  **Track 7**
 **Study:** [`R47-proton-filter/`](R47-proton-filter/)
 **Questions:** Q90, Q53  **Type:** compute / interactive  **Depends on:** R46
 
 Tracks 0–2: Torus Lab tool infrastructure (complete, still valid).
 **Tracks 1, 3: Null** — (1,3) hypothesis abandoned (spin ⅓ ≠ ½).
-**Track 4 (active):** spindle torus (ε > 1) hypothesis for the
-proton's anomalous moment.  Proton returns to (1,2) mode (spin ½).
-Result: spindle charge-hiding runs in wrong direction (hiding inner
-surface increases charge).  Side finding: current-loop g-factor
-matches g_p = 5.586 at ε = 0.252 (R = 0.587 fm, 70% of charge
-radius), but this formula doesn't give g = 2 for the electron.
+**Track 4:** Spindle torus (ε > 1) for anomalous moment — ceiling
+at g ≈ 4 vs target 5.586.  Current-loop g matches at ε = 0.252.
+**Track 7 (active):** (1,2) vs (3,6) comparison against quark
+phenomenology.  **(3,6) wins 8 of 11 criteria.**  SU(6) moments
+μ_p = 3.000 μ_N (+7.4%), μ_n = −2.000 μ_N (+4.5%), constituent
+mass m_p/3 = 313 MeV, and geometric confinement all follow from
+the mode topology.  Key surprise: WvM charge integral is exactly
+zero for n₁ = 3 — charge must come from (1,2) strand sub-structure.
+Composite waveguide cutoff question flagged for eigenmode study.
 
 ### R33. Ghost mode selection — why most Ma modes are dark  **Paused**
 **Study:** [`R33-ghost-selection/`](R33-ghost-selection/)

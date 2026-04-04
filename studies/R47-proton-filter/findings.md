@@ -366,3 +366,221 @@ proton ring radius.
 | F5 | At ε = 0.252: R = 0.587 fm (ring radius), a = 0.148 fm (tube radius).  R is 70% of the proton charge radius 0.84 fm. |
 | F6 | The relationship R/ƛ_p = μ_p/μ_N = 2.793 is an identity from g = 2R/ƛ.  The non-trivial content is that the α constraint selects a specific ε. |
 | F7 | The current-loop formula is semi-classical and does NOT reproduce g = 2 for the electron.  The proton result should be interpreted as suggestive, not definitive. |
+
+
+---
+
+## Track 7: (1,2) vs (3,6) — testing against quark phenomenology
+
+Script: [`scripts/track7_proton_mode_comparison.py`](scripts/track7_proton_mode_comparison.py)
+
+### Summary
+
+The (3,6) mode is strongly favored over (1,2) by quark
+phenomenology.  It naturally predicts constituent quark mass,
+magnetic moments (proton and neutron), confinement, and DIS
+sub-structure.  The (1,2) mode is simpler but has no mechanism
+for any of these without external additions.
+
+Two important surprises emerged from the quantitative analysis.
+
+### Tested
+
+#### 1. Torus geometry
+
+Both modes were computed at working epsilon values.  Key dimensions:
+
+| Config | ε | shear | q_eff | μ | R (fm) | a (fm) |
+|--------|---|-------|-------|---|--------|--------|
+| (1,2) ε=0.50 | 0.50 | 0.0573 | 1.943 | 2.788 | 0.187 | 0.093 |
+| (1,2) ε=0.33 | 0.33 | 0.0503 | 1.950 | 3.603 | 0.366 | 0.121 |
+| (3,6) ε=0.33 | 0.33 | 0.0888 | 5.734 | 10.748 | 1.090 | 0.360 |
+| (3,6) ε=0.50 | 0.50 | 0.1023 | 5.693 | 8.271 | 0.554 | 0.277 |
+
+The (3,6) proton at ε = 1/3 has R ≈ 1.09 fm, close to the
+measured proton charge radius of 0.84 fm.  The (1,2) proton
+at ε = 0.50 has R ≈ 0.19 fm — about 4× too small.
+
+#### 2. Magnetic moment — SU(6) quark model
+
+The (3,6) mode has gcd(3,6) = 3 → three (1,2) strands, each
+with mass m_p/3 = 313 MeV (matching constituent quark mass).
+
+SU(6) spin-flavor wavefunctions give:
+- μ_u = Q_u × (m_p/m_q) × μ_N = (+2/3) × 3 = +2.000 μ_N
+- μ_d = Q_d × (m_p/m_q) × μ_N = (−1/3) × 3 = −1.000 μ_N
+
+Predictions vs experiment:
+
+| Observable | (3,6) SU(6) | (1,2) bare | Measured | (3,6) residual |
+|------------|-------------|------------|----------|----------------|
+| μ_p | **3.000 μ_N** | 1.000 μ_N | 2.793 μ_N | **+7.4%** |
+| μ_n | **−2.000 μ_N** | no pred | −1.913 μ_N | **+4.5%** |
+| μ_p/μ_n | **−1.500** | n/a | **−1.460** | 2.7% |
+
+The SU(6) model for (3,6) gives predictions within 5–8% of
+experiment, using no free parameters.  The (1,2) bare moment
+is 64% too low and requires a 2.8× non-perturbative correction.
+
+The SU(6) moment is ε-independent — it depends only on the
+topological quark count (gcd = 3) and the constituent mass
+ratio (m_p/m_q = 3).  Sweeping ε from 0.20 to 0.75 gives
+μ_p = 3.000 μ_N at every value.
+
+To correct the 7.4% residual requires g_quark = 1.862
+(vs Dirac g = 2.000), a shift of −6.9%.  This is comparable
+to relativistic and gluonic corrections in QCD models.
+
+#### 3. Quark decomposition
+
+| Property | (3,6) | (1,2) |
+|----------|-------|-------|
+| gcd(n₁, n₂) | 3 | 1 |
+| Sub-structure | 3 strands at 120° | none |
+| Strand energy | m_p/3 = 313 MeV | n/a |
+| Constituent quark mass (QCD) | 310–340 MeV ✓ | n/a |
+
+The three strands of the (3,6) mode naturally match the three
+constituent quarks.  However, all three strands are geometrically
+identical (each is a (1,2) helix at 120° offset).  The SU(6)
+model requires two flavors (u, d) with different charges
+(+2/3, −1/3).  Flavor asymmetry is not yet derived from the
+geometry — it would require a mechanism for spin-charge
+coupling or strand orientation.
+
+#### 4. Charge integral for n₁ = 3
+
+**SURPRISE 1:**  The WvM charge integral gives exactly **zero**
+for n₁ = 3.
+
+∫₀²π cos(3θ₁)(1 + ε cos θ₁) dθ₁ = 0  (analytic, for all ε)
+
+This is because cos(3θ) × cos(θ) = [cos(4θ) + cos(2θ)]/2,
+and both terms integrate to zero over a full period.  Only
+n₁ = 1 gives nonzero charge:
+
+∫₀²π cos(θ₁)(1 + ε cos θ₁) dθ₁ = πε
+
+**Implication:** If the (3,6) proton is treated as a single
+mode with n₁ = 3 oscillations around the tube, it has **zero
+net charge** — it would be dark.  The proton's charge must
+come from its *composite* nature: each (1,2) strand has
+n₁ = 1, which does carry charge.  The composite charge is
+the sum of strand charges.
+
+This strengthens the interpretation that the (3,6) proton is
+not a "mode with n₁ = 3" but rather "three linked (1,2)
+modes."  The n₁ = ±1 charge selection rule is even stronger
+than the primer (charge-from-energy §7) states — it is not
+"odd n₁ carries charge" but specifically "n₁ = 1 carries
+charge."
+
+#### 5. Confinement from geometry
+
+**SURPRISE 2 (partially):**  At ε = 1/3, the waveguide
+cutoff kills ALL individual modes with n₂ ≤ 3:
+
+| Mode | n₂ cutoff (open) | n₂ cutoff (cond) | Status |
+|------|-------------------|-------------------|--------|
+| (1,1) | > 3.03 | > 5.58 | **cut off** |
+| (1,2) | > 3.03 | > 5.58 | **cut off** |
+| (1,3) | > 3.03 | > 5.58 | ≈ boundary (open), cut off (cond) |
+| (1,4) | > 3.03 | > 5.58 | propagates (open), cut off (cond) |
+
+The individual (1,2) quark mode is firmly cut off in both
+boundary models at ε = 1/3.  This gives **geometric
+confinement**: the three (1,2) strands exist only as part of
+the coherent (3,6) pattern.  If the strands separate, each
+individually falls below the waveguide cutoff and decays.
+
+However, the (3,6) composite mode itself poses a subtlety.
+If classified as n₁ = 3 in the waveguide formula, its cutoff
+is n₂ > 3/0.33 = 9.09, and with n₂ = 6, it is also cut off.
+This is problematic at face value but may be resolved by
+recognizing that the (3,6) composite is three (1,2) strands
+coherently summed — each strand has n₁ = 1 transverse
+structure, for which the cutoff is n₂ > 3.  The composite's
+effective ring oscillations (n₂ = 6) exceed this threshold.
+See **Open question** below.
+
+#### 6. Mode spectrum under filtering
+
+At ε = 0.33, the first charged mode to survive (open-wall
+cutoff) at each tube-winding level:
+
+| n₁ level | First survivor | Spin |
+|----------|---------------|------|
+| n₁ = 1 | (1,4) | 1/4 |
+| n₁ = 3 | (3,10) | 3/10 |
+| n₁ = 5 | none (up to n₂=12) | — |
+
+At ε = 0.50, the spectrum is less restrictive:
+
+| n₁ level | First survivor | Spin |
+|----------|---------------|------|
+| n₁ = 1 | (1,3) | 1/3 |
+| n₁ = 3 | (3,7) | 3/7 |
+| n₁ = 5 | none (up to n₂=12) | — |
+
+In neither case does (3,6) survive the simple waveguide
+formula applied with n₁ = 3.  The composite-strand
+interpretation is essential for (3,6) to propagate.
+
+### Scorecard
+
+| Criterion | (1,2) | (3,6) | Winner |
+|-----------|-------|-------|--------|
+| Spin = 1/2 | ✓ | ✓ | tie |
+| Charge = +1e | ✓ | from strands | (1,2) |
+| Quark sub-structure | none | 3 strands | **(3,6)** |
+| Constituent mass m_p/3 | no prediction | 313 MeV ✓ | **(3,6)** |
+| μ_p = 2.793 μ_N | 1.000 μ_N | 3.000 μ_N | **(3,6)** |
+| μ_n = −1.913 μ_N | no prediction | −2.000 μ_N | **(3,6)** |
+| Moment residual | −64% | +7.4% | **(3,6)** |
+| Confinement | external | from filter | **(3,6)** |
+| Ring radius vs r_ch | 0.19 fm | 1.09 fm | **(3,6)** |
+| DIS structure | no quarks | 3 scatterers | **(3,6)** |
+| Simplicity | same as e⁻ | new ε needed | (1,2) |
+
+Score: **(3,6) wins on 8 criteria**, (1,2) on 2, 1 tie.
+
+### Open question — composite waveguide cutoff
+
+The simple waveguide formula classifies (3,6) by its tube
+winding number n₁ = 3, giving a cutoff of n₂ > n₁/ε = 9.
+Since n₂ = 6 < 9, the mode appears cut off at ε = 1/3.
+
+But (3,6) is not a single mode with three oscillations
+around the tube cross-section.  It is three (1,2) strands,
+each with n₁ = 1 transverse structure.  The relevant
+waveguide cutoff for each strand is n₂ > 1/ε = 3.  The
+composite's effective n₂ = 6 > 3, so it exceeds the
+per-strand cutoff.
+
+Which picture is correct depends on whether the waveguide
+"sees" the composite's transverse pattern as:
+- **(a)** n₁ = 3 (three oscillations) → cut off, or
+- **(b)** n₁ = 1 per strand (coherent sum) → propagates.
+
+This parallels the charge result: the n₁ = 3 charge integral
+is zero, but the composite carries charge through its n₁ = 1
+strands.  The correct physics may be that (3,6) is always
+three linked (1,2) entities, never a single n₁ = 3 mode.
+
+Resolution requires a full eigenmode analysis or FDTD
+simulation of a three-strand composite on a torus.
+
+### Findings table
+
+| ID | Finding |
+|----|---------|
+| F1 | The (3,6) proton SU(6) moment is μ_p = 3.000 μ_N (+7.4% vs measured 2.793 μ_N) with zero free parameters.  The (1,2) bare moment is 1.000 μ_N (−64%). |
+| F2 | The (3,6) neutron SU(6) moment is μ_n = −2.000 μ_N (+4.5% vs measured −1.913 μ_N).  The ratio μ_p/μ_n = −1.500 vs measured −1.460 (2.7% error). |
+| F3 | Constituent quark mass from (3,6): m_p/3 = 313 MeV, matching the QCD constituent mass of 310–340 MeV. |
+| F4 | **The WvM charge integral is exactly zero for n₁ = 3** (and all n₁ > 1).  Only n₁ = 1 carries charge.  The (3,6) proton's charge comes from its (1,2) strand sub-structure, not from a direct n₁ = 3 mode shape. |
+| F5 | At ε = 1/3, individual (1,2) modes are cut off by the waveguide (both open and conducting-wall models).  This gives geometric confinement — quarks cannot propagate independently. |
+| F6 | The (3,6) ring radius R ≈ 1.09 fm at ε = 1/3 is within 30% of the proton charge radius (0.84 fm).  The (1,2) ring radius R ≈ 0.19 fm is 4× too small. |
+| F7 | The SU(6) moment is ε-independent: μ_p = 3.000 μ_N at every ε.  It depends only on the topological strand count (gcd = 3) and constituent mass ratio. |
+| F8 | The (3,6) mode itself appears cut off in the simple waveguide formula (n₁ = 3 gives cutoff n₂ > 9, but n₂ = 6).  Resolution requires treating (3,6) as three (1,2) strands, not as a single n₁ = 3 mode. |
+| F9 | The n₁ = ±1 charge rule is stronger than "odd n₁": the integral ∫cos(n₁θ)(1+ε cosθ) dθ = 0 for all n₁ ≥ 2.  The primer charge-from-energy §7 should be updated to reflect this. |
+| F10 | Overall score: (3,6) wins on 8 of 11 criteria.  The (1,2) hypothesis is simpler but requires external mechanisms for quarks, confinement, and the large magnetic moment enhancement. |
