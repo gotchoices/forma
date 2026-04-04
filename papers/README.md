@@ -14,4 +14,4 @@ Authored documents presenting theories, results, and proofs arising from one or 
 | `universe-as-mode.md` | The Universe as a Mode | Outline (thought piece) |
 | `dark-matter.md` | The Ghost in the Machine | Draft |
 | `little-balls.md` | Little Balls of Light | Draft |
-| `ancients.md` | Ancient Geometric Knowledge: Genesis and the GRID+MaSt Hierarchy | Outline |
+| `ancients.md` | Ancient Geometric Structure: Genesis and the GRID+MaSt Hierarchy | Outline |
