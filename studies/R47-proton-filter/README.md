@@ -382,92 +382,122 @@ Track 5 (quark moment check for comparison).
 **Findings:** See [findings.md](findings.md), Track 6.
 
 
-### Track 7: Ring-circumference mode filter on the proton sheet
+### Track 7: (1,2) vs (3,6) — testing against quark phenomenology
 
 **Status:** Framing
 
-**Goal:** Test whether the proton sheet's ring circumference
-determines the lowest allowed n₂, and whether this selects
-(1,2) or (3,6) as the first charged mode.
+**Goal:** Determine whether (1,2) or (3,6) better explains
+the proton's experimentally observed quark structure.
+Assume a high-pass filter mechanism exists (waveguide
+cutoff, slots, or equivalent — see R46 Track 5) and test
+what each mode predicts.
 
-**Hypothesis:**
+**Premise:**
 
-The same ring-circumference filter proposed for the electron
-(R46 Track 5) applies to the proton sheet, but with different
-tuning.  The proton sheet is ~1000× smaller than the electron
-sheet.  If the ring is tuned so that:
+R46 Track 5 established that a filter mechanism exists on
+the electron sheet (proven for slots, plausible for
+waveguide cutoff).  We assume the same class of mechanism
+is available on the proton sheet without committing to
+which one.  The question is not HOW modes are filtered,
+but WHAT the surviving mode predicts about quarks.
 
-- **Case A (proton = (1,2)):** The lowest ring resonance is
-  n₂ = 2, giving ε ≈ 0.5 as for the electron.  The proton
-  sheet is simply a scaled-down electron sheet.  Quarks would
-  need a different explanation.
-
-- **Case B (proton = (3,6)):** The ring is tuned to a higher
-  cutoff: the lowest resonance is n₂ = 6 (or equivalently,
-  the tube is tuned to the third harmonic with n₁ = 3).  This
-  requires ε ≈ 1/3 (tube circumference = 1/3 of ring).  The
-  three (1,2) sub-modes that compose (3,6) are quarks; they
-  are individually below cutoff and cannot exist as free
-  particles (confinement from filtering — see Track 6).
-
-**What distinguishes the two cases:**
+**The two candidates:**
 
 | Property | (1,2) proton | (3,6) proton |
 |----------|-------------|-------------|
-| ε | ~0.5 | ~1/3 |
+| ε (working) | ~0.5 | ~1/3 |
 | Spin | ½ ✓ | ½ ✓ |
-| Charge | +1e ✓ | +1e (if n₁=3 still couples) — needs verification |
-| Bare magnetic moment | 2 μ_N | 6 μ_N |
+| Charge | +1e ✓ | needs verification (n₁=3) |
+| Bare moment | 2 μ_N | ~3 μ_N |
 | Measured moment | 2.793 μ_N | 2.793 μ_N |
-| Anomaly direction | +40% (enhancement) | −53% (suppression) |
-| Quark structure | Not natural | Falls out (3 strands at 120°) |
-| Confinement | Needs separate mechanism | From ring cutoff |
+| Anomaly direction | +40% enhancement | ~−7% suppression |
+| Quark structure | not natural | 3 strands at 120° |
+| Confinement | separate mechanism needed | from filtering |
+| Constituent quark mass | no prediction | m_p/3 ≈ 313 MeV ✓ |
 
 **Method:**
 
-1. Compute the standing wave spectrum on the proton torus
-   as a function of ε, identifying the cutoff n₂.
+1. **Quark decomposition test.**  The (3,6) mode has
+   gcd(3,6) = 3, so it decomposes into three phase-
+   separated (1,2) strands.  Compute:
+   - Does each strand carry 1/3 of the total energy?
+   - Does each strand carry 1/3 of the total charge?
+   - Can the fractional quark charges (+2/3, −1/3) be
+     extracted from the strand geometry or orientation?
+   Compare to (1,2), which has no natural sub-structure.
 
-2. For ε ≈ 1/3: verify that (3,6) is the lowest surviving
-   charged mode and that (1,2) is below cutoff.
+2. **Confinement test.**  If the filter kills all modes
+   below (3,6), compute survival scores for individual
+   (1,2) sub-modes on the filtered sheet.  They should
+   be killed — quarks cannot exist independently.
+   Determine the dissipation timescale and compare to
+   the hadronic timescale (~10⁻²³ s).
 
-3. For ε ≈ 0.5: verify that (1,2) survives and check which
-   modes are filtered.
+3. **Magnetic moment.**  Compute the magnetic moment for
+   both modes using the current-loop formula.  For (3,6),
+   the prediction is ~3 μ_N (Track 5 SU(6) check gave
+   the same number from a different route).  For (1,2),
+   the prediction is 2 μ_N.  Measured: 2.793 μ_N.  The
+   (3,6) residual (~7%) is perturbative; the (1,2)
+   residual (~40%) requires strong corrections.
 
-4. Compute the magnetic moment in both cases and compare to
-   measured 2.793 μ_N.
+4. **Neutron cross-check.**  For the (3,6) proton, the
+   neutron would be a different spin alignment of the
+   same three (1,2) strands (udd instead of uud).
+   The SU(6) prediction gives μ_n = −2 μ_N; measured
+   is −1.913 μ_N (~4% residual).  For a (1,2) neutron,
+   the moment must come from cross-sheet coupling — a
+   much more complex mechanism.
 
-5. For the (3,6) case: verify that the (1,2) charge mechanism
-   (n₁ = ±1 selection rule) extends to n₁ = 3, or whether
-   the WvM circular-polarization argument gives charge
-   independently of the scalar selection rule.
+5. **Charge for n₁ = 3.**  Verify whether the WvM
+   circular-polarization charge mechanism works for
+   n₁ = 3 (odd → should carry charge) or whether the
+   higher tube winding modifies the projection.  If
+   n₁ = 3 gives charge +1e, the (3,6) proton matches
+   experiment.
 
-6. Check whether the (3,6) mode has internal structure
-   consistent with three quarks (three phase-separated (1,2)
-   strands at 120°), and whether the quark charges (+2/3,
-   −1/3) can be extracted from the strand geometry.
+6. **Deep inelastic scattering.**  In DIS experiments,
+   the proton appears to contain three point-like
+   constituents at high momentum transfer.  The (3,6)
+   mode has three strands — does the scattering cross-
+   section of a (3,6) mode match the Bjorken scaling
+   behavior?  The (1,2) mode has no sub-structure to
+   scatter off.
 
-**Key question:** Do quarks fall out better from (3,6)?
+**Working epsilon values:**
 
-Yes, in principle.  gcd(3,6) = 3 means the (3,6) mode
-decomposes into 3 identical (1,2) strands offset by 120° in
-the ring direction.  Each strand carries 1/3 of the total
-energy (mass m_p/3 ≈ 313 MeV = constituent quark mass) and
-1/3 of the total charge.  The fractional charges (+2/3, −1/3)
-would need to come from the relative orientations of the
-strands — this is not yet derived but is geometrically
-plausible.
+For this track, adopt working values:
+- Electron sheet: ε_e ≈ 0.5 (from R46 Track 5)
+- Proton sheet: ε_p ≈ 1/3 (if (3,6)), or ε_p ≈ 0.5
+  (if (1,2))
 
-If the (1,2) hypothesis is correct, quarks require a separate
-explanation (perhaps as excitation sub-modes, Q90).  The model
-supports both possibilities for now.  This track aims to
-determine which is more consistent with observation.
+These are provisional.  The waveguide cutoff analysis
+(R46 Track 5, direction 1) may revise them.  The α(r,s)
+impedance relation constrains shear at each ε.  Results
+should be checked for sensitivity to ε by sweeping a
+range (e.g. 0.25–0.75 for the electron, 0.2–0.5 for
+the proton).
 
-**Related:** Q103 (anomalous moment), R46 Track 5 (same test
-on electron sheet), R47 Track 6 (3,6 confinement hypothesis).
+**Success criteria:**
 
-**Depends on:** Track 4 (spindle results), Track 6 (3,6 mode
-analysis).
+The (3,6) hypothesis is preferred if it:
+- Predicts constituent quark mass (m_p/3)
+- Predicts quark confinement (filtered sub-modes)
+- Gives a magnetic moment closer to 2.793 μ_N
+- Produces a neutron moment near −1.913 μ_N
+- Explains DIS structure functions
+
+The (1,2) hypothesis is preferred if it:
+- Gives a simpler, more economical description
+- Does not require explaining why ε_p ≠ ε_e
+- Can account for quarks through another mechanism (Q90)
+
+**Related:** Track 5 (quark moment arithmetic), Track 6
+(3,6 confinement hypothesis), R46 Track 5 (filter
+mechanism assessment).
+
+**Depends on:** Track 5 (SU(6) moment check), Track 6
+(3,6 framing).
 
 
 ---
