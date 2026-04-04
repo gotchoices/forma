@@ -45,6 +45,83 @@
 - We should reference old studies both when they got it righ and when they were wrong.
 - Various approximations have predicted too many charged particles
 - But it seems like the recent grid foundation, plus the idea of tuning the ring to an even wave interval, should hopefully solve the problem
+- We might allude to the fact that some 'particles' we observe are actually compount resonances on different sheets (neutron)
+Any other critical points we should address?
+--->
+
+<!--EC PLANNED REWRITE
+The sections below are the old version.  The intended rewrite
+follows this outline, starting from GRID foundations rather than
+the WvM energy-balance approach.
+
+## Proposed outline
+
+1. **The question** — A photon has no charge.  An electron is
+   (we claim) a photon.  How does confinement create charge?
+
+2. **The torus as waveguide** — Confine a photon to a 2D sheet
+   wrapped as a torus.  Three standing directions: tube, ring,
+   diagonal.  The torus acts as a polarizer — circular
+   polarization finds resonance.
+
+3. **Charge from winding** — One 2π trip through the tube = one
+   unit charge.  This is GRID's topological quantization (phase
+   periodicity), seen concretely: the winding creates a net E
+   flux that Gauss's law reads as charge.  Direction of winding
+   = charge sign.  Charge is universal across sheets because it
+   is topological (winding number), not geometric (sheet size).
+
+4. **Magnetic moment from the ring** — Windings around the ring
+   produce an axial B field.  The electron's 2 ring windings
+   give moment ~2.  The ratio tube/ring = 1/2 = spin.
+
+5. **The defect cost** — The standing wave carries mc².  The 2π
+   winding is a topological defect in the ambient 3D lattice.
+   The Coulomb field energy = αmc².  Alpha is the impedance
+   mismatch between the 2D sheet and the 3D grid (from GRID).
+   Not mysterious — inherited from the substrate.
+
+6. **Why the moment isn't exact** — The defect cost back-reacts
+   on the circulating wave.  Leading correction: α/(2π) ≈
+   0.00116.  Same α, same junction physics, different
+   observable.  For the proton, the correction is large
+   (non-perturbative regime on a smaller sheet).
+
+7. **Which modes are charged?** — The ring must be tuned to an
+   even half-wavelength interval.  The (1,1) mode sees a half-
+   turn that cancels — it's dark.  The (1,2) mode is the first
+   charged mode on the electron sheet.  Odd tube windings carry
+   charge; even cancel.  This should eliminate the ghost problem.
+   Ring circumference as a filter → epsilon from ring size.
+
+8. **The mode spectrum** — Six quantum numbers across three
+   sheets.  Mass from the eigenvalue equation.  Charge from
+   Q = −n₁ + n₅.  The particle zoo from geometry.  Harmonic
+   series: (1,2), (2,4), (3,6)... as excited/internal states.
+
+9. **The proton sheet** — Open question: is the proton's lowest
+   mode (1,2) or (3,6)?  The (3,6) hypothesis: three tube
+   windings → three quarks, tube tuned to third harmonic.
+   The (1,2) hypothesis: same structure as electron, different
+   sheet size.  Both are consistent with charge = +1e.  The
+   proton's anomalous moment (~2.793 vs bare prediction) is
+   evidence for strong internal coupling regardless of mode.
+   Studies R46/R47 test the ring-circumference filter on both
+   sheets.
+
+10. **Shear: how α enters the geometry** — The flat torus with
+    shear.  The sin²(2πs) formula.  Shear is energetically free.
+    Connection to GRID: the shear IS the geometric realization
+    of the impedance mismatch between the sheet and the ambient
+    lattice.
+
+11. **Dark particles, antimatter, and the neutrino** — Ghost
+    modes as dark matter candidates.  CPT vs C violation from
+    shear chirality.  The neutrino sheet: too large for charge?
+    (Q102 — resolution threshold hypothesis).
+
+12. **Summary** — Table of concept → mechanism.  One photon, one
+    topology, one α.
 --->
 
 
