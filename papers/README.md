@@ -91,6 +91,6 @@ depend on it — and the science does not depend on them.
 | `dark-matter.md` | The Ghost in the Machine | Draft |
 | `neutrino-domain-storage.md` | The Neutrino-Domain Memory | Outline (companion to sub-quantum-memory) |
 | `universe-as-mode.md` | The Universe as a Mode | Outline (thought piece) |
-| `white-paper.md` | Particle Spectrum from Flat Extra Dimensions | Draft |
+| `white-paper.md` | Matter from Light: A Geometric Particle Spectrum | Draft |
 | `signature.md` | 137: The Divine Signature | Draft |
 | `ancients.md` | Ancient Geometric Structure: Genesis and the GRID+MaSt Hierarchy | Outline |

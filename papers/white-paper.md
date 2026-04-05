@@ -1,4 +1,4 @@
-# Particle Spectrum from Flat Extra Dimensions
+# Matter from Light: A Geometric Particle Spectrum
 
 **Status:** draft
 
@@ -28,11 +28,26 @@ simple scaling law, predicts the neutrino mass hierarchy (normal
 ordering, Σm_ν ≈ 118 meV), and recovers the electron's anomalous
 magnetic moment g = 2(1 + α/2π) from geometry.
 
-The model has significant open problems: roughly 900 predicted
-modes below 2 GeV versus ~40 observed particles (the ghost mode
-problem), a 5.6% structural error on the tau mass, and two free
-parameters (the electron and neutrino aspect ratios) that remain
-undetermined.  These are discussed alongside the results.
+The electromagnetic field equations used here are not imported —
+they are derived from a discrete lattice at the Planck scale
+(the GRID framework), which also derives the gravitational
+constant G from the lattice's information density.  The particle
+model (MaSt) takes these field equations as input and constructs
+the spectrum from compact geometry.
+
+The model has open problems.  The tau mass sits 5.6% from the
+nearest eigenmode — consistent with its short lifetime under
+the off-resonance interpretation (unstable particles are
+predicted to sit near but not on resonances).  The aspect
+ratios of the electron and neutrino tori are not yet fully
+determined, though they may be constrained by the filtering
+requirement: the torus geometry must eliminate the (1,1) ghost
+mode, which likely pins the aspect ratio.  A large number of
+predicted modes below 2 GeV are mostly electrically neutral
+and have been reinterpreted as dark matter candidates, with a
+predicted mass-weighted ratio that brackets the observed
+dark-to-visible ratio of 5.4.  These are discussed alongside
+the results.
 
 ---
 
@@ -46,7 +61,8 @@ undetermined.  These are discussed alongside the results.
 | **Pinned by observation** | r_p = 8.906 and σ_ep = −0.091 (neutron + muon, R27 F18; muon fit approximate — see §6), s₃₄ = 0.022 (ν oscillations) |
 | **Effective free parameters** | 2 (r_e, r_ν); MeV predictions insensitive to both |
 | **Outputs** | 6 particle masses to < 1.2% with no adjustment (7 within ~1.2%); three lepton masses accommodated; nuclear masses to < 1% (R29) |
-| **Failures** | π⁺ (14%), Ω⁻ (structurally forbidden), ghost modes (~14k charge −1 spin ½ levels vs 3 observed leptons); τ gap (5.6%) is consistent with its short lifetime under the off-resonance hypothesis |
+| **Failures** | π⁺ (14%), Ω⁻ (structurally forbidden), τ gap (5.6%) consistent with off-resonance hypothesis |
+| **Ghost modes** | Most are electrically neutral → dark matter candidates (R42); lightest charged ghost (1,1) eliminated by filter mechanism (R46 Track 5); residual ghost count under active investigation |
 | **Testable** | Σm_ν = 116–120 meV (depends on r_ν), normal ordering, Ma_ν ring L₄ ≈ 42 μm (within reach of short-range gravity experiments if gravity propagates in Ma_ν) |
 
 ---
@@ -169,9 +185,14 @@ spin ½.  The electron mode (1, 2) has one odd tube winding
 likewise has n₅ = 1 (odd), giving spin ½.  Modes with zero or
 two odd tube windings are bosons.
 
-**Charge** arises from compact momentum in the Kaluza–Klein sense.
-The electromagnetic U(1) is identified with the difference of
-tube momenta between the electron and proton sheets:
+**Charge** is topological.  In the GRID lattice, each cell carries
+a periodic phase θ ∈ [0, 2π).  A standing wave whose phase winds
+through a full 2π around the tube of a torus creates a topological
+defect — an irreducible twist that the ambient lattice detects as
+electric charge.  The winding number is quantized (integers only,
+by phase periodicity) and universal (independent of sheet size).
+
+The charge formula across sheets is:
 
     Q / e = −n₁ + n₅
 
@@ -180,9 +201,23 @@ the proton (n₁ = 0, n₅ = 1), and Q = 0 for the neutron
 (n₁ = 0, n₅ = 0).  The formula produces correct integer charges
 for all matched particles (R27 F31).
 
-**The fine-structure constant** connects charge strength to
-geometry.  The shear-induced charge integral on an embedded
-torus gives (R19 F35):
+The n₁ = ±1 selection rule — only modes with exactly one tube
+winding carry charge — has been derived from the circular
+polarization geometry of the confined photon: the CP rotation
+rate must match the tube's geometric rotation rate for the
+normal E-field component to be constant (R48 F1).
+
+**The fine-structure constant** α ≈ 1/137 is the sole measured
+input of the framework.  In the GRID picture, α is the impedance
+mismatch between the 2D material sheet and the 3D spatial lattice
+— the fraction of the standing wave's energy that couples through
+the junction as Coulomb field.  A particle of mass m has internal
+energy mc² on the sheet and external Coulomb energy αmc² in the
+ambient lattice.
+
+The shear parameter s — the angle at which the sheet is embedded
+in the ambient lattice — provides a geometric consistency
+condition linking α to the torus shape (R19 F35):
 
     α(r, s) = r² μ₁₂(r,s) sin²(2πs) / [4π (2−s)²]
 
@@ -192,19 +227,26 @@ determines s_e(r_e) and s_p(r_p).  Since r_p = 8.906 is known,
 s_p is fully determined.  Since r_e is free, s_e varies with it —
 but the product s_e(r_e) always gives α = 1/137.
 
+The shear also breaks the symmetry between clockwise and
+counterclockwise circulation on the torus, determining the
+matter/antimatter preference (CPT is exact; C is broken by
+the embedding chirality).
+
 **Mass** is the mode eigenfrequency.  No additional mechanism is
 needed: the photon's rest energy on Ma is the particle's mass.
 
 **g-factor.**  The electron's magnetic moment arises from the
 circulating photon's angular momentum projected along its spin
-axis.  A fraction α/(2π) of the photon's energy resides in
-the external Coulomb field (non-rotating), shifting the ratio
-of magnetic moment to angular momentum:
+axis.  The Coulomb field (energy αmc²) back-reacts on the
+circulating wave, slightly distorting the current distribution.
+The leading correction is the defect cost's back-reaction:
 
     g = 2(1 + α/(2π)) ≈ 2.00232
 
-This reproduces the leading QED correction from geometry alone
-(R2 Property 4).
+The same α that sets the charge (impedance mismatch) also
+produces the anomalous moment (back-reaction of the mismatch
+on the source wave).  This reproduces the leading QED
+correction from geometry (R2 Property 4, Q103).
 
 
 ## 4. The neutron
@@ -321,32 +363,41 @@ systematic catalog at n_max = 8.  The Λ and Σ⁺ matches improved
 from 5.8% and 11.6% to 0.9% and 0.3% when the search was
 extended to n_max = 15 (R28 F10–F14).
 
-The lifetime-gap correlation provides an independent test.  Among
-15 unstable particles, the Pearson correlation between log|gap|
-and log(lifetime) is r = −0.61; for weak charged-current decays
-alone (8 particles), r = −0.84 (p = 0.009) with a power law
-τ ∝ |gap|^(−2.7) (R27 F33/F39).  Particles farther from a Ma
-eigenmode decay faster — exactly as the off-resonance hypothesis
-predicts.
+### Ephemeral particles (predicted, not failures)
 
-### Failures
+Particles that do not sit exactly on a Ma eigenmode are not
+stable standing waves — they are transient excitations, a
+"ringing" of the torus near but not on a resonance.  The gap
+between the observed mass and the nearest eigenmode predicts
+the particle's instability: larger gap → faster decay.
 
-- **Tau (5.6%):** The nearest mode is locked at ~2m_p ≈ 1876 MeV
-  by the self-consistency constraint.  No mode exists within
-  100 MeV of the observed 1776.9 MeV (R27 F20–F22).
+- **Tau (5.6% gap):** The nearest mode is locked at ~2m_p ≈
+  1876 MeV.  The tau at 1776.9 MeV is off-resonance, consistent
+  with its short lifetime (2.9 × 10⁻¹³ s).
 
-- **Pion (14%):** The lightest meson; its mass may be sensitive to
-  nonlinear corrections or within-plane shear details not yet
-  modeled.
+- **Pion (14% gap):** The lightest meson, far from its nearest
+  eigenmode.  Its relatively long lifetime among hadrons
+  (2.6 × 10⁻⁸ s) reflects that it decays via the weak force,
+  not by geometric dissipation alone.
+
+- **Vector mesons (ρ⁰, ω — ~20% gap):** Extremely short-lived
+  (10⁻²³ s).  These sit far from any eigenmode — the large
+  gap correctly predicts the rapid decay.
+
+The lifetime-gap correlation provides a quantitative test.
+Among 15 unstable particles, the Pearson correlation between
+log|gap| and log(lifetime) is r = −0.61; for weak
+charged-current decays alone (8 particles), r = −0.84
+(p = 0.009) with a power law τ ∝ |gap|^(−2.7) (R27
+F33/F39).  The model predicts both the approximate mass AND
+the instability from the same geometry.
+
+### Structural exclusion
 
 - **Omega baryon (Ω⁻):** Structurally forbidden.  Spin 3/2
   requires three odd tube windings, forcing charge Q = −n₁ + n₅
   to be even.  Charge −1, spin 3/2 cannot exist as a single Ma
   mode (R27 F35).
-
-- **Vector mesons (ρ⁰, ω):** 20% off; short-lived (10⁻²³ s).
-  These sit far from any eigenmode and are consistent with the
-  off-resonance interpretation.
 
 ### Nuclear scaling law
 
@@ -366,27 +417,59 @@ is not a test of the model.
 
 ## 8. Open problems
 
-**The α problem.**  The fine-structure constant enters as an input
-that fixes the within-plane shears.  A self-selecting mechanism
-would eliminate one free parameter (r_e) by determining it from
-α alone.  Membrane energy minimisation prefers r_e ≈ 0.50 (R37 F7)
-but the minimum is broad.  No moduli potential has been derived.
+**The value of α.**  The fine-structure constant is the sole
+measured input.  GRID identifies its physical meaning — the
+impedance mismatch between the 2D material sheet and the 3D
+spatial lattice — but does not predict its value.  The
+compact-dimensions study (grid/compact-dimensions.md) showed
+that a triangular lattice wrapped into a torus can accommodate
+any coupling strength; the solution space is dense enough that
+α ≈ 1/137 is achievable but not uniquely selected.  Alpha is a
+free parameter: the lattice provides the menu, something else
+picks the dish.
 
-**Ghost modes.**  The model predicts ~900 modes with physical
-charges below 2 GeV; nature has ~40 particles in this range
-(R28 F5–F6).  Selection rules from the R19 charge integral reduce
-ghosts to ~4 per charged sheet (R33 F1), but this integral (WvM)
-applies to embedded tori, while the current metric is a flat
-quotient space where charge arises from KK momentum.  Reconciling
-the two — or finding an alternative suppression mechanism — is the
-central open problem.
+**Ghost modes and dark matter.**  The model predicts many more
+modes below 2 GeV than there are observed particles.  This was
+originally framed as the central open problem.  It has since
+been substantially reinterpreted:
 
-**Three generations.**  The charged lepton count could be gated by
-resonance capture (R38 Track 5): at cavity Q ≈ 30 the tau is
-barely captured and the 4th generation is excluded.  But the
-neutrino overcounting (~1,000 species vs 3 observed) and the
-broader ghost problem (14,000 charged lepton modes vs 3) require
-a different or more general mechanism.
+- **Most ghosts are electrically neutral** (even tube winding
+  n₁ = 0 or 2, giving zero charge by the n₁ = ±1 selection
+  rule).  These modes carry mass but no electromagnetic
+  signature — they are invisible to EM experiments.  They are
+  dark matter candidates.  The predicted mass-weighted ratio
+  of dark to visible modes brackets the observed dark-to-visible
+  ratio of 5.4 (R42, Q94).
+
+- **The (1,1) ghost** — the lightest charged mode, lighter than
+  the electron and never observed — is eliminated by a filter
+  mechanism.  R46 proved that slot apertures on the torus
+  surface kill (1,1) to 0.0% survival while preserving (1,2)
+  at 100%.  The waveguide cutoff hypothesis (tube cross-section
+  as a filter) provides the same elimination from pure geometry.
+  Both mechanisms are equivalent: the tube walls ARE the nodes
+  (R46 Track 5).
+
+- **Residual charged ghosts** above the (1,1) threshold remain
+  under investigation.  The off-resonance hypothesis (§6)
+  accounts for some: modes far from exact eigenvalues decay
+  rapidly and are not observed as stable particles.
+
+**The proton mode.**  This paper assumes the proton is a (1,2)
+mode on Ma_p.  An alternative — the proton as a (3,6) mode,
+decomposing into three phase-separated (1,2) strands (quarks)
+— is under investigation (R47 Tracks 6–7).  The (3,6)
+hypothesis naturally produces quark structure (three strands at
+120°), constituent quark mass (m_p/3 ≈ 313 MeV), and
+confinement (individual (1,2) quarks are below the filter
+cutoff).  Both hypotheses give charge = +1e and spin = 1/2.
+The mass predictions in §1 are insensitive to this choice.
+
+**Three generations.**  The charged lepton count could be gated
+by resonance capture (R38 Track 5): at cavity Q ≈ 30 the tau is
+barely captured and the 4th generation is excluded.  The neutrino
+generation count is addressed in R49, which investigates mode
+selection on Ma_ν.
 
 **No QFT formulation.**  Decay rates, running couplings, and
 scattering amplitudes require a quantized field theory on
@@ -396,7 +479,56 @@ the quantum theory is needed for everything else.
 **Gravity.**  Ma_ν has circumference L₄ ≈ 42 μm.  If gravity
 propagates in this dimension, short-range gravity experiments
 would detect deviations from 1/r² at this scale.  Current bounds
-reach ~50 μm with no deviation seen — barely compatible.  If
-gravity does not propagate in Ma_ν (e.g., only Ma_p at fm scale
-is gravitationally active), the constraint is satisfied but the
-mechanism must be explained.
+reach ~50 μm with no deviation seen — barely compatible.  GRID
+derives G from the lattice's information density (ζ = 1/4),
+independently of the compact dimensions.  Whether gravity
+propagates in Ma_ν or only in the 3D spatial lattice is an open
+question with testable consequences.
+
+---
+
+## 9. The substrate: GRID
+
+This paper takes Maxwell's equations as given and constructs
+particles from them.  The GRID framework (Geometric Relational
+Interaction Domain) goes one level deeper: it derives Maxwell's
+equations and the gravitational constant G from a discrete
+lattice at the Planck scale.
+
+GRID rests on six axioms — a 4D causal lattice with periodic
+phase, local gauge invariance, information resolution ζ = 1/4,
+and coupling strength α ≈ 1/137.  From these:
+
+- Maxwell's equations emerge from phase dynamics and gauge
+  invariance (grid/maxwell.md)
+- Einstein's field equations emerge from the thermodynamics
+  of the lattice's information content (grid/gravity.md)
+- G = 1/(4ζ) = 1 in natural units — derived, not postulated
+- Charge quantization follows from phase periodicity
+- The cosmological constant Λ appears as an integration constant
+
+The relationship between the two layers:
+
+```
+GRID (substrate)
+    Derives: Maxwell's equations, G, Λ, charge quantization
+    Input: α ≈ 1/137 (sole free parameter)
+         │
+         ▼
+MaSt (this paper)
+    Takes: Maxwell + α (from GRID)
+    Constructs: particle spectrum, masses, charges, spins
+    Input: m_e, m_p, Δm²₂₁ (three scales that set torus sizes)
+```
+
+GRID provides the rules.  MaSt plays by them.  Together, they
+attempt a complete geometric account of fundamental physics
+from one measured constant and three measured scales.
+
+For the full GRID derivation, see
+[grid/foundations.md](../grid/foundations.md),
+[grid/maxwell.md](../grid/maxwell.md),
+[grid/gravity.md](../grid/gravity.md), and
+[grid/synthesis.md](../grid/synthesis.md).
+For an accessible introduction, see
+[primers/physics-from-fabric.md](../primers/physics-from-fabric.md).
