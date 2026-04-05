@@ -375,5 +375,5 @@ first 3, but close.
 |----|---------|
 | F14 | The literal first 3 propagating modes above waveguide cutoff never match the Δm² ratio at any (ε, s).  The mass spacing of the lowest modes is too uniform. |
 | F15 | Matches at indices (0,1,5) exist at ε ≈ 2–3 with (0,1),(1,1),(0,2) — but ν₁ = (0,1) has spin 1, not spin ½, ruling out this assignment. |
-| F16 | After excluding n₃ = 0 modes (wrong spin) and identifying ±n₃ as particle/antiparticle pairs, the "first distinct modes above cutoff" concept becomes viable but has not yet been confirmed quantitatively.  R26 Assignment A (1,1),(−1,1),(1,2) sits near the cutoff floor at ε ≈ 2–5. |
+| F16 | After excluding n₃ = 0 modes (wrong spin) and identifying ±n₃ as C-conjugate pairs (see [Q105](../../qa/Q105-majorana-from-c-conjugate-mixing.md)), the "first distinct modes above cutoff" concept becomes viable but has not yet been confirmed quantitatively.  R26 Assignment A (1,1),(−1,1),(1,2) sits near the cutoff floor at ε ≈ 2–5.  The ±n₃ pairing means Assignment A places C-conjugates in the same triplet — the WvM realization of Majorana neutrinos. |
 | F17 | The waveguide cutoff floor is at ε ≈ 1 for (1,1) and ε ≈ 0.5 for (1,2).  Below ε ≈ 1, no n₃ = ±1 modes propagate — setting a firm lower bound on ε if these modes are to exist. |
