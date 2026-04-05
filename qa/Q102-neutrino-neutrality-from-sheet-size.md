@@ -242,7 +242,68 @@ postulating a structural difference) but worth noting.
   This is a different mechanism from what Q100 proposes
   for neutrinos.
 
-## 7. Summary
+## 7. Experimental status: is neutrino charge exactly zero?
+
+Science has not measured neutrino charge to be exactly zero.
+It has placed an upper bound that is very small:
+
+| Method | Bound on |q_ν| | Source |
+|--------|---------|--------|
+| Charge neutrality of matter | < ~10⁻²¹ e | If q_ν ≠ 0, neutron decay (n → p + e⁻ + ν̄) violates charge conservation unless q_p − q_e − q_ν = 0 exactly.  Tested to ~10⁻²¹ e. |
+| Stellar cooling | < ~10⁻¹⁵ e | A charged neutrino would couple to stellar magnetic fields, altering energy loss rates.  Stellar models constrain this. |
+| Laboratory (reactor) | < ~10⁻¹² e | Direct scattering measurements. |
+
+The Standard Model predicts exactly zero from gauge group
+assignments and anomaly cancellation.  But this is a
+structural assumption, not a derived result — physics beyond
+the Standard Model could allow tiny nonzero charge.
+
+### What the two MaSt mechanisms predict
+
+The two candidate explanations for neutrino neutrality make
+different predictions about whether the charge is exactly
+zero or merely extremely small:
+
+**Mechanism (a): Sheet too large (resolution threshold).**
+The phase gradient is below the lattice's ability to detect.
+The winding exists mathematically but is physically
+invisible.  Prediction: **charge is exactly zero**.  The
+coupling doesn't happen at all — there is no residual.
+
+**Mechanism (b): Zero or near-zero shear.**  No circulation
+symmetry breaking, so no net traveling wave, so no charge.
+But if the shear is extremely small rather than exactly zero,
+there would be a tiny net circulation and a correspondingly
+tiny charge.  Prediction: **charge could be nonzero at an
+extremely small level**, proportional to the shear.  For a
+shear of ~10⁻²⁰ (compared to ~0.01 for the electron sheet),
+the charge might be ~10⁻²⁰ e — consistent with experimental
+bounds.
+
+This is a testable distinction in principle:
+- If neutrino charge is measured at any nonzero level
+  (even ~10⁻²¹ e), mechanism (a) is excluded and
+  mechanism (b) is favored.
+- If neutrino charge is pushed below ~10⁻²⁵ e (far below
+  current sensitivity), mechanism (b) with naturally small
+  shear becomes strained, favoring mechanism (a).
+
+Current experiments cannot distinguish "exactly zero" from
+"10⁻²¹ e."  But the two mechanisms make structurally
+different predictions — one gives a hard zero, the other
+gives a soft zero — and future precision measurements could
+in principle separate them.
+
+A nonzero neutrino charge would also imply nonzero shear
+on Ma_ν, which would produce matter/antimatter asymmetry
+in neutrino production — a form of CP violation.  Current
+hints of CP violation in neutrino oscillation (δ_CP ≈ −π/2
+from T2K, 2–3σ) could be related, though the connection
+between oscillation CP violation and sheet shear has not
+been derived.
+
+
+## 8. Summary
 
 Neutrino neutrality MAY follow from the combination of
 large sheet size and finite lattice resolution, but a clean
