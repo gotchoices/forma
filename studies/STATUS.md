@@ -88,18 +88,24 @@ the mode topology.  Key surprise: WvM charge integral is exactly
 zero for n₁ = 3 — charge must come from (1,2) strand sub-structure.
 Composite waveguide cutoff question flagged for eigenmode study.
 
-### R49. Neutrino sheet — filtering, oscillation, and mode spectrum  **Framing**
+### R49. Neutrino sheet — filtering, oscillation, and mode spectrum  **Active — Track 1 complete**
 **Study:** [`R49-neutrino-filter/`](R49-neutrino-filter/)
 **Questions:** Q85, Q94, Q99  **Type:** compute / theoretical  **Depends on:** R24, R25, R26, R46, R47
 
-Neutrino sheet (Ma_ν) characterization: mode spectrum, filtering
-assessment, oscillation mechanism, and connection to information
-storage.  Working model: R26 Assignment A — ν₁=(1,1), ν₂=(−1,1),
-ν₃=(1,2) at ε_ν ≈ 5, s₃₄ = 0.022.  Key questions: does the
-neutrino sheet need filtering (instinct: less than e/p sheets)?
-Is oscillation pure phase evolution or energy redistribution
-among modes?  Are the three mass eigenstates uniquely selected?
-6 tracks planned.
+Neutrino sheet (Ma_ν) characterization: mode spectrum, filtering,
+oscillation mechanism, and information storage.  Track 1 swept
+(ε_ν, s₃₄) parameter space — result: **broadly viable**, not
+tightly constrained.  22 unique triplets match Δm² data across
+ε = 0.1–5.0, clustering into three families:
+- **A** (R26 Assignment A): ε = 5, s = 0.022, Σm = 118 meV
+  (tight), 26 steriles, spins ≈ 0.36 (marginal)
+- **B** (thin torus): ε = 0.1, perfect spin, 120+ steriles
+  (problematic), waveguide kills all modes
+- **C** (mixed): ε = 0.2, intermediate steriles, marginal spin
+
+Key finding: oscillation data alone does NOT pin the mode
+assignment.  Sterile count and waveguide cutoff are the strongest
+discriminators.  5 tracks remaining.
 
 ### R33. Ghost mode selection — why most Ma modes are dark  **Paused**
 **Study:** [`R33-ghost-selection/`](R33-ghost-selection/)

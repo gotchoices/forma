@@ -1,6 +1,6 @@
 # R49: Neutrino sheet — filtering, oscillation, and mode spectrum
 
-**Status:** Framing
+**Status:** Active — Track 1 complete
 **Questions:** Q85, Q94, Q99
 **Type:** compute / theoretical
 **Depends on:** R46, R47
@@ -311,7 +311,7 @@ may be genuinely shearless.
 
 ### Track 1: Constraints on ε_ν
 
-**Status:** Planned
+**Status:** Complete
 
 **Goal:** Map out what ε_ν values are compatible with
 the experimental data.  This is foundational — everything
@@ -350,6 +350,43 @@ else depends on it.
 - Map of viable (ε_ν, s₃₄) parameter space
 - Identified mode triplets at each point
 - Whether ε_ν is bounded from above, below, or both
+
+### Track 1a: Can many modes mimic three-flavor oscillations?
+
+**Status:** Complete
+
+**Goal:** Track 1 found 26–120+ modes between ν₁ and ν₃.
+If many of these participate in oscillations, does the signal
+still look like exactly three mass eigenstates?  Or would the
+extra modes produce detectable signatures?
+
+**Method:**
+1. Take the full mode spectrum at representative (ε, s) points
+   from each Track 1 family.
+2. Assign coupling weights (uniform, exponential decay, etc.)
+   to all modes in the ν₁–ν₃ window.
+3. Compute the oscillation probability P(ν_e → ν_μ) vs L/E.
+4. Fit the multi-mode signal with a standard 3-flavor model.
+5. Check: does the 3-flavor fit succeed?  What residuals remain?
+
+### Track 1b: First-above-cutoff triplet
+
+**Status:** Complete
+
+**Goal:** Track 1a showed that sharp mode selection is required.
+The simplest explanation: the waveguide cutoff IS the selection
+mechanism.  If the first 3 propagating modes above cutoff form
+a triplet matching the Δm² ratio, no additional filtering is
+needed.
+
+**Method:**
+1. For each ε (fine sweep), compute the waveguide cutoff for
+   every mode: propagates if n₄ > |n₃|/ε.
+2. Collect all propagating modes, sort by mass.
+3. Take the first 3 as the candidate triplet.
+4. Check: does Δm²₃₁/Δm²₂₁ match 33.6?
+5. Scan s₃₄ to fine-tune.  Report the (ε, s) where the
+   first-above-cutoff triplet matches.
 
 ### Track 2: Mode spectrum and filtering assessment
 
