@@ -439,7 +439,574 @@ picture.
 
 ---
 
-## 10. Caution
+## 11. The loading pathway (threshold theory)
+
+Sections 5–6 treat the 0.782 MeV neutron threshold as a
+hard wall: the energy must be delivered in a single quantum
+or borrowed virtually.  Threshold theory
+([primers/threshold-theory.md](../primers/threshold-theory.md))
+offers a third possibility: **sub-threshold accumulation**.
+
+### 11.1 Loading, not quantized delivery
+
+In the threshold/loading picture (Planck 1911, Reiter 2014),
+energy absorption is continuous.  A system can accumulate
+energy gradually in its mode spectrum — distributing it
+across non-fundamental modes as a "pre-loaded state" — until
+the total crosses a threshold and the system pops into the
+target mode.
+
+Applied to the neutron formation step:
+
+1. Energy arrives at Ma_p through some coupling channel
+   (see §12 below) in small increments — meV per photon.
+2. The energy distributes across non-fundamental modes on
+   the proton sheet.  No single mode has enough energy to
+   form a neutron — but the total accumulates.
+3. When the total stored energy exceeds 0.782 MeV, the
+   modes cascade (§5.3 of the threshold primer): energy
+   reorganizes from many distributed modes into the neutron
+   configuration.
+4. The transition is sharp — topological quantization means
+   the neutron mode is either fully occupied or not.  There
+   is no gradual turning-on.
+
+This removes the requirement for a single 0.782 MeV quantum.
+The energy can arrive over many interactions, each far below
+threshold, provided the pre-loaded state persists long enough
+for the total to accumulate.
+
+### 11.2 The linearity constraint
+
+The torus boundary (the junction between the 2D sheet and
+the 3D lattice) couples at 1/α ≈ 1/137.  This coupling is
+**linear** — double the wave energy, double the Coulomb
+field energy.  There is no nonlinear frequency mixing at
+the boundary (sim-impedance finding).
+
+This means the frequency-mixing pathway proposed by some
+(inject two low frequencies, mix nonlinearly to produce a
+high frequency) does not work.  The boundary is a linear
+beam splitter, not a nonlinear mixer.
+
+However, linearity does NOT prevent loading.  Loading is
+not frequency conversion — it is energy accumulation across
+many modes, followed by a topological cascade.  Each
+individual deposit is linear.  The nonlinearity is in the
+final step — the pop from distributed energy to coherent
+mode — which is topological (winding number changes
+discontinuously), not electromagnetic.
+
+### 11.3 The pre-loaded lifetime question
+
+For loading to work, the pre-loaded state (energy
+distributed across non-fundamental modes) must persist
+long enough for the total to reach threshold.  If the
+modes dissipate faster than energy arrives, the pre-loaded
+state never accumulates.
+
+The dissipation rate depends on how strongly the
+non-fundamental modes couple to the 3D lattice (leak
+energy outward).  Each mode leaks at rate α — the same
+impedance mismatch.  For a mode with energy E, the leak
+rate is ~αE per coupling time.  If the pump rate exceeds
+the leak rate, the pre-loaded state grows.
+
+This is quantitatively analogous to laser physics:
+pumping must exceed losses for population inversion
+(threshold) to be reached.  The "cavity Q" of the proton
+torus determines the minimum pump power.
+
+
+## 12. The bootstrap: accessing the proton sheet
+
+### 12.1 The problem
+
+The proton's Compton window is at ~1.3 fm wavelength —
+deep gamma-ray territory.  You cannot directly pump the
+proton sheet with accessible radiation.  The neutrino
+Compton window at ~42 μm (mid-infrared) is accessible,
+but the bare proton has no neutrino-sheet component.
+There is no handle to grip.
+
+This is the bootstrap problem: to open the neutrino
+window on a proton, you need a neutrino-sheet component;
+to create a neutrino-sheet component, you need to access
+the proton through some coupling channel.
+
+### 12.2 The virtual fluctuation resolution
+
+In quantum field theory, every particle has a cloud of
+virtual excitations.  The proton constantly fluctuates
+between its ground state and higher configurations,
+including states with cross-sheet components.  In MaSt
+terms: the cross-sheet coupling σ_νp, even if very small,
+gives the proton a nonzero amplitude on the neutrino
+sheet.
+
+If σ_νp ≠ 0 — even at 10⁻⁶ — then every proton has an
+ephemeral neutrino-sheet component.  This component
+flickers in and out of existence as a quantum fluctuation.
+It is not a stable excitation; it is a virtual tail of the
+proton's wave function extending onto Ma_ν.
+
+**IR pumping at ~42 μm could resonantly enhance this
+fluctuation.**  By driving the neutrino-sheet component
+at its natural frequency (~7 THz), the fluctuation is
+sustained — its lifetime is extended from a virtual blip
+to a quasi-stable excitation.  This opens the Compton
+window.
+
+Once the window is open, additional energy can be loaded
+through it onto the proton sheet.  Each IR photon delivers
+~30 meV through the sustained neutrino-sheet coupling.
+The energy accumulates in pre-loaded modes on Ma_p.
+
+### 12.3 The value of σ_νp
+
+R27 F14 found σ_eν and σ_νp to be approximately zero,
+but with limited precision.  The neutron and muon fits
+constrain σ_ep = −0.091 but leave the other cross-shears
+weakly bounded.
+
+The question "is σ_νp exactly zero or merely very small?"
+is critical.  If exactly zero, the bootstrap is closed and
+the only pathway is through deuterium (which already has
+a neutron component — see §12.5).  If nonzero, every
+proton is a potential seed.
+
+This is constrainable from the Ma metric.  A dedicated
+study could bound σ_νp by checking whether any known
+observables (neutrino-proton scattering cross-sections,
+proton charge radius corrections) are sensitive to it.
+
+### 12.4 The hydrogen-to-helium pathway
+
+If the bootstrap works (σ_νp ≠ 0, IR pumping sustains the
+neutrino window), the full fusion pathway is:
+
+**Step 1 — Open the window.**  Pump hydrogen gas (or
+hydrogen in a metal lattice) with ~42 μm IR radiation.
+This resonantly enhances the proton's virtual
+neutrino-sheet component, opening the Compton window.
+
+**Step 2 — Load the proton sheet.**  Continue pumping.
+Energy accumulates on Ma_p through the sustained
+neutrino coupling, distributing across pre-loaded modes.
+
+**Step 3 — Neutron formation (the pop).**  When the
+accumulated energy exceeds 0.782 MeV (the neutron mass
+deficit), the pre-loaded state cascades into the neutron
+mode.  The nearby electron is captured (providing the
+Ma_e component).  A neutrino is emitted (the Ma_ν
+component reconfigures).  The proton has become a
+neutron.
+
+**Step 4 — Coulomb barrier bypassed.**  The neutron is
+electrically neutral.  No Coulomb repulsion with
+neighboring protons.
+
+**Step 5 — Magnetic alignment.**  An external DC magnetic
+field aligns the neutron's magnetic moment.  Nearby
+protons are also aligned.  The magnetic dipole-dipole
+interaction, though weak, provides a gentle attractive
+force between aligned neutral and charged particles at
+close range.
+
+**Step 6 — Nuclear assembly.**  The neutron, now adjacent
+to a proton with no electrostatic barrier, merges into a
+deuteron via a Ma_p mode transition (fast, strong-scale
+coupling).  Further assembly: d + d → He-4 or d + p → He-3.
+
+**Step 7 — Energy release.**  The fusion products have
+less total mass than the inputs.  The mass deficit emerges
+as kinetic energy of the products, photons, and neutrinos.
+Net energy gain: ~24 MeV per helium-4 nucleus formed.
+
+**Step 8 — Cascade.**  Each new neutron formed in Step 3
+provides another neutrino window (the neutron has n₃ = 1).
+This window can assist neighboring protons in their own
+loading process, potentially creating a chain reaction
+that is self-sustaining once initiated.
+
+### 12.5 The deuterium seed alternative
+
+If σ_νp = 0 (exactly zero), the virtual fluctuation
+pathway is closed.  But natural hydrogen contains 0.015%
+deuterium, and each deuterium nucleus already has a
+neutron — which has the neutrino window.
+
+The deuterium seed pathway:
+
+1. IR at ~42 μm pumps the deuterium's neutron neutrino
+   component
+2. The loaded energy stays local to the deuterium nucleus
+   (it does not reach neighboring bare protons — the modes
+   are localized on Ma_p at the fm scale)
+3. Additional energy converts the deuterium's proton to a
+   second neutron, producing a dineutron
+4. The dineutron, fully neutral, can approach a neighboring
+   proton without Coulomb barrier → tritium
+5. Tritium + deuterium → helium + neutron (known DT fusion,
+   but now at lower temperature because Step 3-4 bypass the
+   barrier)
+
+This pathway is more constrained (requires deuterium, which
+is rare) and does not bootstrap bare hydrogen.  It is the
+fallback if σ_νp = 0.
+
+### 12.6 Specific experimental parameters
+
+If the loading pathway is viable, the experimental
+requirements are specific and testable:
+
+| Parameter | Value | Source |
+|-----------|-------|--------|
+| Pump wavelength | ~42 μm | Neutrino Compton window (Ma_ν circumference) |
+| Pump frequency | ~7 THz | c / 42 μm |
+| Photon energy | ~30 meV | hf at 7 THz |
+| Photons to threshold | ~26,000 | 0.782 MeV / 30 meV |
+| Target medium | H₂ gas, or H in Pd/Ni lattice | Standard LENR substrates |
+| DC magnetic field | ~1–10 T | Alignment of nuclear moments |
+| Expected signature | Neutron emission, then helium accumulation | Standard nuclear detection |
+
+The pump wavelength (~42 μm) is in the mid-infrared,
+accessible with CO₂ laser harmonics, free-electron lasers,
+or quantum cascade lasers.  The total energy per neutron
+conversion is 0.782 MeV (delivered as ~26,000 IR photons),
+with a net gain of ~24 MeV per helium-4 — an energy
+multiplication factor of ~30.
+
+
+---
+
+## 14. Energy accounting and self-sustaining cascade
+
+### 14.1 The energy budget
+
+The overall reaction (4 hydrogen → 1 helium) is the same
+as the Sun's pp chain.  The endpoints are identical, so the
+total energy release is identical regardless of pathway.
+The question is whether the loading pathway is net
+exothermic after accounting for the pump energy.
+
+| Step | Reaction | Energy in | Energy out | Net |
+|------|----------|----------|------------|-----|
+| 1 | p → n (loaded via IR pump) | 1.804 MeV | — | −1.804 MeV |
+| 2 | n + p → d | — | 2.224 MeV | +2.224 MeV |
+| 3 | p → n (second conversion) | 1.804 MeV | — | −1.804 MeV |
+| 4 | d + d → He-4 (or d+n→t, t+d→He-4) | — | ~23.8 MeV | +23.8 MeV |
+| | **Total: 4p + 2e → He-4 + 2ν** | **3.608 MeV** | **~26.0 MeV** | **+22.4 MeV** |
+
+Energy multiplication factor: **~7.2×**.
+
+This is not a hypothesis — the nuclear masses are measured
+to high precision and the energy balance follows from
+mass-energy equivalence.  The only question is whether the
+loading pathway can deliver the 3.6 MeV input efficiently
+enough for the 22.4 MeV output to be harvested.
+
+### 14.2 Where does the output energy go?
+
+- **Kinetic energy of fusion products** — the helium nucleus
+  and any ejected neutrons carry MeV-scale kinetic energy.
+  In a solid or liquid medium, this thermalizes as heat.
+  Harvestable.
+- **Gamma rays** from nuclear de-excitation — harvestable
+  by absorption in shielding material (also becomes heat).
+- **Neutrino kinetic energy** — lost.  Neutrinos escape the
+  apparatus.  In the Sun's pp chain, ~2% of the total energy
+  escapes as neutrinos.  A similar fraction applies here.
+
+### 14.3 Does one fusion enable the next?
+
+Yes — through the **neutrino window cascade**, not through
+energy feedback.
+
+**What cascades (the window):**
+
+Step 1 converts a proton to a neutron.  The neutron has a
+neutrino-sheet component (n₃ = 1).  This component provides
+a neutrino Compton window at ~42 μm.
+
+Before Step 1, if σ_νp = 0 and no deuterium seed is
+available, no proton has a neutrino window.  The bootstrap
+problem is in effect.
+
+After Step 1, the newly formed neutron (or the deuteron it
+joins in Step 2) has a neutrino window.  This window can
+assist the NEXT proton's loading process — the neutron's
+Ma_ν component couples to neighboring protons through
+whatever cross-sheet pathway exists.
+
+Each subsequent neutron formation opens another window.
+The number of available loading channels grows with each
+reaction.  This is a cascade in accessibility, not in
+energy.
+
+**What does NOT cascade (the energy):**
+
+The 2.224 MeV gamma from deuteron formation (Step 2)
+does not efficiently reload the next proton.  The gamma
+is a 3D lattice photon.  To load a proton sheet mode, it
+must couple through the α junction (3D → Ma_p).  The
+coupling efficiency is ~1/137 per hop, delivering only
+~16 keV to Ma_p — well below the 0.782 MeV threshold.
+
+Even if the gamma first couples to Ma_ν (3D → Ma_ν at
+the neutrino Compton window) and then cross-couples to
+Ma_p (Ma_ν → Ma_p via σ_νp), the two-hop efficiency is
+α × σ_νp — extremely small.
+
+**Conclusion:** the IR pump must stay on.  The reactions
+are exothermic (7× energy gain), but the pump provides
+the activation energy for each proton-to-neutron
+conversion.  The system is analogous to a catalytic
+reactor: the catalyst (neutrino window) cascades and
+grows, but the feedstock (IR pump energy) must be
+continuously supplied.
+
+### 14.4 Self-sustaining vs pump-sustained
+
+| Property | Fission (for comparison) | This pathway |
+|----------|------------------------|-------------|
+| Energy source | Nuclear binding energy | Nuclear binding energy |
+| Chain mechanism | Each fission releases neutrons that trigger more fissions | Each neutron opens a neutrino window that enables more conversions |
+| Self-sustaining? | Yes — neutrons carry the chain energy | No — windows enable access but don't carry the loading energy |
+| External input | None after ignition (critical mass) | Continuous IR pump (~42 μm) |
+| Control | Control rods absorb excess neutrons | Pump power controls reaction rate |
+| Runaway risk | Yes (bomb) | No — turn off the pump, reactions stop |
+
+The absence of runaway risk is a safety feature.  The
+reaction rate is controlled by the pump power, not by a
+chain reaction.  There is no critical mass.  Turning off the
+IR laser stops the loading process immediately.  Any
+neutrons already formed will either merge with nearby
+protons (releasing energy) or decay back to protons (880 s
+half-life) — both are safe.
+
+### 14.5 Engineering viability (rough estimate)
+
+The pump delivers 0.782 MeV per neutron as ~26,000 IR
+photons at ~30 meV each.  The fusion output is ~22.4 MeV
+per He-4 (requiring 2 neutron conversions, so 1.564 MeV
+pump input per He-4).
+
+The net gain per He-4: 22.4 − 1.6 = **20.8 MeV**.
+
+If the IR-to-neutrino-window coupling efficiency is η
+(the fraction of pump photons that actually deposit energy
+on Ma_p through the neutrino channel), then the effective
+pump cost is 1.6 / η MeV per He-4.
+
+Break-even requires:
+
+> η > 1.6 / 22.4 ≈ **7.1%**
+
+If more than 7.1% of the IR pump energy reaches the
+proton sheet, the process is net energy-positive.  Below
+7.1%, the pump costs more than the fusion yields.
+
+The coupling efficiency η depends on:
+- σ_νp (the cross-sheet coupling — the most important
+  unknown)
+- The resonant enhancement from driving at the Compton
+  frequency
+- The geometry of the pump (focused vs diffuse, pulse
+  vs CW)
+- The medium (gas phase vs metal lattice — lattice
+  coherence may enhance coupling)
+
+Whether η exceeds 7.1% is not known.  It is the
+engineering question that determines practical viability.
+
+
+## 16. Output harvesting and system design
+
+### 16.1 Heat output
+
+When a helium nucleus forms with ~20 MeV of kinetic energy,
+it collides with surrounding atoms and thermalizes — sharing
+its energy with the medium until everything reaches the same
+temperature.  In a gas, the gas heats up.  In a metal
+lattice (palladium loaded with hydrogen), the metal heats up.
+
+The heat can be harvested at various scales:
+
+| Method | Efficiency | Complexity | Scale |
+|--------|-----------|------------|-------|
+| Thermoelectric (Seebeck) junction | ~5–10% | No moving parts | Tabletop to small appliance |
+| Stirling engine | ~20–30% | Sealed, no consumables | Residential to industrial |
+| Steam turbine | ~33–40% | Full infrastructure | Power plant |
+| Direct heat (no conversion) | ~95% | Minimal | Home heating, process heat |
+
+Thermoelectric junctions work the way RTGs (radioisotope
+thermoelectric generators) power deep-space probes:
+temperature difference across a bimetallic junction
+generates electricity directly.  Low efficiency but extreme
+simplicity and reliability.
+
+### 16.2 Gamma output
+
+The 2.224 MeV gamma from deuteron formation is ionizing
+radiation — dangerous to biological tissue.  It must be
+absorbed, not vented.
+
+**Shielding converts gamma to heat.**  Dense material (lead,
+tungsten, or water) surrounds the reaction chamber.  Gammas
+interact with the shielding atoms via Compton scattering,
+pair production, and photoelectric absorption, depositing
+their energy as heat in the shielding material.  The gamma
+becomes heat in the wall.
+
+Shielding thickness for 2.224 MeV gammas:
+- ~10 cm of lead → ~1000× attenuation
+- ~50 cm of water → ~1000× attenuation
+
+**Water shielding is particularly elegant.**  A water jacket
+around the reaction chamber absorbs gammas AND neutrons (see
+§16.3), heats up, and the hot water is directly useful for
+heating or steam generation.  Water is cheap, self-healing
+(no cumulative radiation damage), and provides shielding,
+neutron moderation, and heat transport in one medium.
+
+### 16.3 Neutron output
+
+Some fusion pathways produce free neutrons (e.g.,
+d + d → He-3 + n).  Free neutrons are ionizing radiation
+and harder to shield than gammas — they pass through dense
+materials because they have no charge.
+
+Hydrogen-rich materials (water, polyethylene) are the best
+neutron shields.  The hydrogen atoms have the same mass as
+neutrons, so they absorb kinetic energy efficiently — like
+billiard balls of equal mass.  Each collision transfers
+roughly half the neutron's energy.
+
+A water jacket handles both gammas and neutrons.  This is
+the standard approach in nuclear engineering and is well
+understood.
+
+### 16.4 Waste products
+
+| Output | Nature | Handling |
+|--------|--------|---------|
+| Helium | Inert gas, non-toxic, non-radioactive | Vent or collect (commercially valuable) |
+| Neutrinos | Pass through everything | No handling needed (escape harmlessly) |
+| Heat | Thermal energy in medium and shielding | Harvest via thermoelectric, Stirling, steam, or direct use |
+| Gammas | Ionizing radiation, 2.224 MeV | Absorbed by water jacket → becomes heat |
+| Neutrons | Ionizing radiation, MeV-scale | Absorbed by water jacket → becomes heat |
+
+No carbon emissions.  No long-lived radioactive waste
+(unlike fission — no transuranics, no spent fuel rods, no
+geological storage).  The only radioactive outputs are the
+transient neutrons and gammas, which are fully absorbed by
+the water jacket during operation.  When the pump is turned
+off, radiation stops immediately (no residual radioactivity
+beyond any activated shielding material, which is minimal
+for water).
+
+### 16.5 Reaction control
+
+The system has **two independent control inputs**:
+
+**1. IR pump power (the throttle).**  More pump power → more
+protons loaded to threshold → more neutrons formed → more
+fusion.  Turn off the pump → loading stops → no new neutrons
+→ reaction ceases.  Existing neutrons either fuse with
+nearby protons (releasing energy, safe) or decay back to
+protons (880 s half-life, safe).  The pump is the gas pedal.
+
+**2. Hydrogen flow (the fuel line).**  No hydrogen → nothing
+to fuse.  But hydrogen without the pump is inert — the
+protons sit there doing nothing until loaded.  Hydrogen flow
+controls the fuel supply; the pump controls the reaction
+rate.
+
+The reaction rate is:
+
+> R = (pump power) × (coupling efficiency η) × (hydrogen
+> density in reaction zone)
+
+All three factors are independently controllable.  There is
+no critical mass.  There is no chain reaction.  There is no
+runaway risk.  The system is inherently stable: any loss of
+pump power or fuel flow stops the reaction immediately.
+
+### 16.6 Hydrogen from hydrolysis (no storage)
+
+Stored hydrogen is explosive.  An alternative: electrolyze
+water on demand to produce hydrogen, and feed it directly
+into the reaction chamber.  No hydrogen storage, no
+explosion risk.
+
+The electrolysis energy cost is ~237 kJ/mol of H₂O split.
+The fusion energy output is ~2.17 × 10⁹ kJ/mol of He-4
+produced.  The electrolysis cost is ~0.01% of the fusion
+output — negligible.
+
+### 16.7 System schematic
+
+A self-contained system:
+
+```
+Water in → Electrolyzer → H₂ gas
+                            ↓
+              Reaction chamber ← IR pump (42 μm laser)
+              (H₂ in magnetic field)
+                            ↓
+              Fusion products (He, n, γ, ν, heat)
+                            ↓
+              Water jacket (shielding + heat capture)
+              - Absorbs gammas → heat
+              - Absorbs neutrons → heat
+              - Contains all radiation
+                            ↓
+              Hot water
+                            ↓
+    ┌─────────────┬─────────────┬──────────────┐
+    ↓             ↓             ↓              ↓
+ Direct heat  Thermoelectric  Stirling     Steam turbine
+ (simplest)   (no moving      (moderate)   (highest η)
+              parts)
+                            ↓
+              Electricity + waste heat
+              He gas vented or collected
+```
+
+**Inputs:** water, electricity (for electrolyzer and IR
+pump).
+**Outputs:** electricity (net positive if η > 7.1%), heat,
+helium.
+**Waste:** none that requires long-term management.
+
+### 16.8 Scale considerations
+
+The system could in principle operate at any scale:
+
+| Scale | Pump source | Heat harvest | Application |
+|-------|------------|-------------|-------------|
+| Benchtop | QCL or FEL at 42 μm | Thermoelectric | Research demonstration |
+| Residential | Tuned IR laser array | Stirling engine | Home power + heating |
+| Industrial | High-power FEL | Steam turbine | Grid power |
+| Portable | Miniature QCL | Thermoelectric | Remote/mobile power |
+
+The key engineering challenge at every scale is the same:
+coupling the 42 μm pump into the neutrino window efficiently
+enough to exceed the 7.1% break-even threshold.
+
+**The giant caveat remains:** this entire system depends on
+the loading pathway working — which requires σ_νp ≠ 0 and
+η > 7.1%.  If either fails, the system produces nothing but
+warm hydrogen and wasted IR photons.  The output physics
+(nuclear masses, energy balance, shielding requirements) is
+established.  The input physics (loading through the
+neutrino window) is the unproven link.
+
+
+---
+
+## 17. Caution (final)
 
 This entry builds on:
 
@@ -450,13 +1017,64 @@ This entry builds on:
 5. Phase conjunction probability (NOT computed — conjectural)
 6. Neutrino trigger mechanism §6 (NOT computed — speculative)
 7. Cold fusion implications (highly speculative)
+8. Threshold/loading theory (§11 — theoretically grounded in
+   Planck 1911 and Reiter 2014, but loading on nuclear mode
+   spectra is undemonstrated)
+9. Virtual neutrino-sheet fluctuation on proton (§12.2 —
+   physically motivated by QFT, but σ_νp value unknown)
+10. The hydrogen-to-helium pathway (§12.4 — logically coherent,
+    entirely speculative, no computation performed)
+11. Linearity of the 1/α coupling (sim-impedance — established;
+    eliminates nonlinear frequency mixing but permits loading)
+12. Energy budget (§14.1 — established from measured nuclear
+    masses; the 7.2× multiplication is not speculative)
+13. Window cascade vs energy cascade distinction (§14.3 —
+    logically sound; the gamma-to-Ma_p coupling calculation
+    is straightforward but the conclusion depends on it)
+14. Break-even efficiency threshold η > 7.1% (§14.5 —
+    derived from the energy budget; whether η exceeds this
+    depends on σ_νp and resonant enhancement, both unknown)
+15. Output harvesting and shielding (§16 — established
+    nuclear engineering; water jacket, thermoelectric, etc.
+    are standard technology, not speculative)
+16. System schematic and control (§16.5–16.7 — engineering
+    design, contingent on the loading pathway working but
+    using only known technology for the output side)
+17. No runaway risk (§14.4, §16.5 — follows logically from
+    pump-sustained vs self-sustaining; no critical mass)
 
-Items 1–3 are on solid ground.  Items 4–7 are conceptual
-extrapolations.  The key testable claims are:
+**Confidence tiers:**
 
-- Item 4: σ_ep determines the transition rate and should
-  reproduce the neutron lifetime (880 s).  Computable.
-- Item 6: the neutrino-triggered mechanism requires nonzero
-  σ_eν/σ_νp and a specific relationship between the neutrino
-  2× threshold energy and the neutron mass gap.  Partially
-  computable (energy scales from Ma metric).
+| Tier | Items | Status |
+|------|-------|--------|
+| Established physics | 1, 2, 3, 11, 12, 15 | Measured, computed, or standard engineering |
+| Computable but not yet computed | 4, 5, 9, 13 | Could be resolved by a study |
+| Theoretically motivated, undemonstrated | 6, 8 | Require new physics or new experiments |
+| Logically coherent, fully speculative | 7, 10, 14, 16 | Depend on all prior items being correct |
+| Follows from the design | 17 | No runaway risk if pump-sustained (not chain) |
+
+**The three critical unknowns:**
+
+1. **σ_νp** — determines whether the bootstrap works at all.
+   If zero, only the deuterium seed pathway remains.
+   Constrainable from the Ma metric.
+
+2. **Loading viability** — can sub-threshold energy
+   accumulate on nuclear mode spectra long enough to reach
+   the 0.782 MeV threshold?  Depends on the Q factor of
+   proton-sheet modes (how fast they leak energy back to 3D).
+   Potentially computable from the lattice model.
+
+3. **Coupling efficiency η** — what fraction of 42 μm IR
+   pump energy actually reaches Ma_p through the neutrino
+   channel?  Must exceed 7.1% for net energy gain.  Depends
+   on σ_νp, resonant enhancement, and medium properties.
+   Not currently computable without σ_νp.
+
+**The pathway is a chain of "ifs."**  If σ_νp ≠ 0, and if
+loading works on nuclear mode spectra, and if η > 7.1%, then
+the process is a net energy source with a 7× multiplication
+factor controlled by pump power (no runaway risk).  Each "if"
+is physically motivated but unproven.  The most economical
+next step is determining σ_νp from the Ma metric — this
+resolves the first "if" and constrains the third.
