@@ -74,83 +74,183 @@ A _Light_ Descent into Numerology and Symbolism
 - Editorial thought: This paper is kind of the sybolic/intuitive side of the across-through paper.
 -->
 
-<!--EC THIN OUTLINE — sequential arc
+<!--EC EXPANDED OUTLINE — all brainstorming points placed in arc
 
 1. AN INVITATION (NOT A CLAIM)
-   - This paper is not science.  It is pattern-noticing.
-   - The patterns fell out of the science — they didn't drive it
-   - A counter-melody in a symphony; a geometric pattern in a snowflake
+   - The author is not predisposed to numerology
+   - But the repeating patterns are staggering — can't ignore them
+   - This paper records observations without claiming causation
+   - It doesn't drive the science — it falls out of the science
+   - A counter-melody in a symphony
+   - A geometric pattern discovered in a snowflake, a diamond, a snail shell
    - If you are a logical thinker, this paper may repel you
      — just as the physics white paper may repel an intuitive thinker
    - Both responses are valid.  Both papers describe the same structure.
      One speaks in equations, the other in symbols.
+   - If you find it meaningful, great
+   - If not, think of it as a poem — and skip ahead
    - Take what resonates.  Leave what doesn't.
 
 2. THE DUALITY
    - Nature organizes in complementary pairs: yin and yang
-   - Not male/female — a set of orthogonal traits (see across-through)
-   - Every domain has this pairing:
-     1 and 0 — the atoms of information
-     Alpha and Omega — beginning and end
-     Diameter and circumference — their ratio is π, infinite, irrational
-     E field (directed, unipolar) and B field (circulating, balanced)
-     Each carries exactly 1/2 the energy
-   - The shape of the symbols tells the story:
-     1 — sharp, directed, singular
-     0 — round, eternal, encompassing
+   - Not male/female in the gendered sense
+     A set of traits that are complementary, orthogonal
+     Each person has (or develops) a varying degree of both
+     Some of the greatest people have achieved a healthy balance
+   - The pairing appears everywhere:
+
+   a. 1 and 0
+      - The atoms of information — the most fundamental building blocks
+      - The shape of the symbols tells the story:
+        1 — sharp, directed, singular, aggressive
+        0 — round, eternal, encompassing
+
+   b. Alpha and Omega
+      - Beginning and end — bookends
+      - Alpha: leadership, unity, singularity, action — Atom, Adam
+      - Omega: symbol of the womb (cradle of new life), intuition, empathy, love, eternal increase, propagation, 
+
+   c. Diameter and circumference
+      - Overlay 1 (the diameter, a line) and 0 (the circumference, a circle)
+      - Their ratio is π — the mysterious number
+      - Eternally descending, irrational, never resolving — on the yin side
+
+   d. E field and B field
+      - E: straight, arrow, directed, unipolar — yang
+      - B: round, circulating, balanced (N/S) — yin
+      - Each manages an exact 1/2 of the total energy
+      - Both are required for a wave to propagate
+
+   e. Positive and negative
+      - The assignment of + and − is an arbitrary historical artifact
+      - The duality itself is not arbitrary — it is structural
+
+   f. Science and intuition
+      - Two orthogonal ways to pursue truth
+      - Science: yang — directed, analytical, reductionist
+      - Intuition: yin — holistic, integrative, pattern-sensing
+      - Right brain vs left brain — the duality in the organ of thought itself
 
 3. THE DUALITY IN THE LATTICE
-   - Delta (triangle) and Wye — conjugate duals in electrical engineering
-   - The hexagonal lattice contains both:
-     Triangles = delta (edge-defined, across)
-     Three-way junctions = wye (node-defined, through)
-   - Edges: like a 1 — communication, transmission, directed
-   - Nodes: like a 0 — integration, consensus, mediation
-   - Six edges + six nodes form a hexagonal cell
-     A larger "0" built from 1s and 0s
-     An O that interconnects seamlessly, tiles the plane, scales up
-   - Science (yang) and Intuition (yin) — two orthogonal paths to truth
-     This paper walks the yin path through the same landscape
+   - The GRID lattice embodies the duality structurally
+
+   a. Delta and Wye
+      - Triangle (delta) and wye — conjugate duals in electrical engineering
+      - The hexagonal lattice contains both:
+        Triangles = delta (edge-defined, line-to-line, across)
+        Three-way junctions = wye (node-defined, line-to-neutral, through)
+      - Not an analogy — the same mathematics, the same topology
+
+   b. Edges and nodes
+      - Edges: like a 1 — communication, executive, transmission, directed
+      - Nodes: like a 0 — community, integration, consensus, mediation
+      - The edge carries the signal; the node integrates it
+
+   c. The hexagonal cell
+      - 6 edges (six 1s) + 6 nodes (six 0s)
+      - Together they form a larger "0" — the hexagon
+      - A type of O that can interconnect seamlessly
+      - Holographic: tiles the plane, scales up
+      - Builds the foundation for material planes (the Ma sheets)
+
+   d. Triangle as symbol
+      - V + line (_): yin — the V (vev, chalice, another feminine symbol)
+        plus the line (the ground, the horizon)
+      - V + line (|): yang — the V inverted, forming a wye
+        the line becomes the trunk, the V becomes the branches
+
+   e. Proton and electron
+      - In electrical engineering, single-phase and three-phase
+        are the two fundamental power configurations
+      - Single-phase: one winding, simple, direct — yang
+      - Three-phase: three windings at 120°, self-balancing — yin
+      - The proton may be a (3,6) mode: three strands at 120°
+        — three-phase power on a torus
+      - The electron is a (1,2) mode: one strand — single-phase
+      - 1 and 3 — the simplest odd numbers after unity
+      - (The proton mode is an open question — see R47 Track 7)
 
 4. THE NUMBER
-   - Alpha, the one free variable: 137.036
-   - To the left of the decimal: 137 — the expanse from 1 to infinity
-     Macro.  Look up.  Stars, galaxies, the large-scale universe.
-   - To the right: .036 — the expanse from 1 to 0
-     Micro.  Look down.  Particles, lattice, the Planck scale.
-   - Equal in range.  Complementary.  Inverse.
-   - The Planck mass mirrors this: Compton size vs Schwarzschild size
-     Quantum world above, gravitational world below, crossing at the Planck scale
+   - Alpha (α ≈ 1/137.036): the one free variable, the single knob
+
+   a. The decimal as mirror
+      - To the left: 137 — the expanse from 1 to infinity
+        Macro.  Look up.  Stars, galaxies, the observable universe.
+      - To the right: .036 — the expanse from 1 to 0
+        Micro.  Look down.  Particles, lattice, the Planck scale.
+      - Equal in range.  Complementary.  Inverse.
+      - We tend to pay attention to the big side (137) —
+        it leads in our minds
+      - But the small side is more eternal —
+        it appears to go on like π (does it?)
+
+   b. The Planck mass mirrors this
+      - Above the Planck mass: Compton size dominates (quantum world)
+      - Below the Planck mass: Schwarzschild size dominates (gravitational world)
+      - They cross at the Planck scale — mass/charge duality
+      - The same complementary structure, in physical units
 
 5. 137 — THE YANG SIDE
    - Finite.  Definite.  Three digits.
-   - 1: the micro dimension beneath the grid (the aleph-line)
-     Also: c = 1, L = 1 in natural units — unity, singularity
-   - 3: three particle sheets form MaSt (Ma_e, Ma_ν, Ma_p)
-     1 + 3 = 4 — the four compact dimensions beneath spacetime
-   - 7: three particle + four spacetime = seven
-     1 + 3 + 7 = 11 — the full dimensionality (M-theory also finds 11)
-   - Digits sum to 11.  Dimensions total 11.  Coincidence or echo.
+   - Physical reality — the measurable, the countable
+
+   a. 1
+      - The micro dimension beneath the grid (the aleph-line)
+      - c = 1, L = 1 in natural units — unity, singularity
+      - Yang: one, singular, the beginning
+
+   b. 3
+      - Three particle sheets form MaSt (Ma_e, Ma_ν, Ma_p)
+      - 1 + 3 = 4 — the four compact dimensions beneath spacetime
+      - Three spatial dimensions
+      - Three is the first number that forms a closed shape (triangle)
+
+   c. 7
+      - Three particle + four spacetime = seven
+      - 1 + 3 + 7 = 11 — the full dimensionality
+      - M-theory also finds 11 dimensions
+      - Digits sum to 11.  Dimensions total 11.  Coincidence or echo.
 
 6. .036 — THE YIN SIDE
-   - Infinite.  The actual value is 137.035999177...
-   - .036 is what we see by rounding — the surface
-   - The true value goes on, unknowable in its entirety
-     Like π.  Like the reals between 0 and 1.  Infinite depth.
-   - 0: yin — eternal, formless, the void from which structure emerges
-   - 36: natural divisions of a circle (360°)
-     The number with the most common divisors in its neighborhood
-     6 edges × 6 nodes = 36 — the lattice cell's internal count
-   - The yang side (137) is what we measure
-   - The yin side (.036...) is what we cannot fully know
-   - The reader may find their own meaning here
+   - Infinite.  Underlying reality.  Information.  Truth.
+
+   a. The surface and the depth
+      - The actual value is 137.035999177...
+      - .036 is what we see by rounding — the surface, the approximation
+      - The true value goes on, unknowable in its entirety
+      - Like π — infinite, non-repeating, never resolving
+      - Like counting the real numbers between 0 and 1 — infinite depth
+      - Reinforces the yin nature: the unknowable, the eternal
+
+   b. 0
+      - Yin — eternal, formless
+      - The void from which structure emerges
+      - The circle, the womb, the Omega
+
+   c. 36
+      - Natural divisions of a circle: 360° = 10 × 36
+      - 36 has the most common divisors in its neighborhood
+      - GRID: 6 edges × 6 nodes = 36 — the cell's internal count
+      - I have found my own deeply spiritual interpretation
+      - The reader may find their own
+
+   d. The asymmetry
+      - The yang side (137) is what we measure — finite, known, definite
+      - The yin side (.036...) is what we cannot fully know
+      - We grasp the structure; the depth eludes us
 
 7. CLOSING
    - The same complementary duality, at every scale:
-     1 and 0, E and B, delta and wye, 137 and .036
-     Science and intuition, logic, intuition
+     1 and 0
+     E and B
+     Delta and wye
+     Edge and node
+     137 and .036
+     Science and intuition
+     Logic and feeling
    - Neither half is complete without the other
-   - Both describe the same pattern.  One proves it.  The other feels it.
-   - It requires both to arrive at Truth
+   - Both describe the same pattern
+   - One proves it.  The other feels it.
+   - It requires both to arrive at Truth.
 
 -->
