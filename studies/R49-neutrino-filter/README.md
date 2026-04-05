@@ -388,9 +388,26 @@ needed.
 5. Scan s₃₄ to fine-tune.  Report the (ε, s) where the
    first-above-cutoff triplet matches.
 
-### Track 2: Mode spectrum and filtering assessment
+### Track 2a: High-winding modes and the electron mass
 
-**Status:** Planned
+**Status:** Complete
+
+**Goal:** Determine whether neutrino sheet modes extend
+to the electron mass scale, and whether energy-matched
+modes on different sheets could couple.
+
+**Result:** Neutrino modes reach m_e at winding N ≈ 17.5M.
+Mode density at that scale is ~367 million.  The spatial
+wavelength on the sheet matches the electron Compton
+wavelength (383 vs 386 fm) — a prerequisite for cross-sheet
+resonance.  Gradual energy accumulation is not feasible
+(17.5M steps), but single-event cross-sheet coupling
+(β-decay) involves modes that are energy- and
+wavelength-matched.
+
+### Track 2: Weak coupling selection rule
+
+**Status:** Planned (revised from original "mode spectrum")
 
 **Goal:** At representative ε_ν values (from Track 1),
 characterize the full mode spectrum.  Determine whether

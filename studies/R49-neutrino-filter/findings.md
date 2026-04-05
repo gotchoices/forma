@@ -377,3 +377,201 @@ first 3, but close.
 | F15 | Matches at indices (0,1,5) exist at ε ≈ 2–3 with (0,1),(1,1),(0,2) — but ν₁ = (0,1) has spin 1, not spin ½, ruling out this assignment. |
 | F16 | After excluding n₃ = 0 modes (wrong spin) and identifying ±n₃ as C-conjugate pairs (see [Q105](../../qa/Q105-majorana-from-c-conjugate-mixing.md)), the "first distinct modes above cutoff" concept becomes viable but has not yet been confirmed quantitatively.  R26 Assignment A (1,1),(−1,1),(1,2) sits near the cutoff floor at ε ≈ 2–5.  The ±n₃ pairing means Assignment A places C-conjugates in the same triplet — the WvM realization of Majorana neutrinos. |
 | F17 | The waveguide cutoff floor is at ε ≈ 1 for (1,1) and ε ≈ 0.5 for (1,2).  Below ε ≈ 1, no n₃ = ±1 modes propagate — setting a firm lower bound on ε if these modes are to exist. |
+
+---
+
+## Track 2a: High-winding modes and the electron mass
+
+Script: [`scripts/track2a_high_winding_spectrum.py`](scripts/track2a_high_winding_spectrum.py)
+
+### Questions
+
+1. Do neutrino sheet modes reach the electron mass?
+2. How does mass grow with winding number?
+3. Could a neutrino accumulate energy in high-winding
+   modes that could eventually excite an electron mode?
+
+### Results
+
+At Assignment A parameters (ε = 5, s = 0.022, E₀ = 29.25
+meV), mass grows linearly with winding number:
+
+| Winding N | Mode | Mass |
+|-----------|------|------|
+| 1 | (1,1) | 29 meV |
+| 10 | (10,10) | 292 meV |
+| 100 | (100,100) | 2.9 eV |
+| 1,000 | (1000,1000) | 29 eV |
+| 10,000 | (10000,10000) | 292 eV |
+| **17,500,000** | **(17.5M, 17.5M)** | **511 keV = m_e** |
+
+**Yes, neutrino modes reach the electron mass** — at winding
+number N ≈ 17.5 million around both tube and ring.
+
+### Mode density at the electron scale
+
+At μ ≈ 17.5 million, modes lie on an ellipse in (n₃, n₄)
+space with semi-axes ~87M (n₃) and ~17.5M (n₄).  The mode
+density is enormous:
+
+- ~367 million modes on a thin shell at m = m_e
+- ~7.3 million modes in a ±1% mass window around m_e
+
+This means the neutrino sheet has a *dense forest* of modes
+at any energy scale — including the electron mass.
+
+### Wavelength convergence
+
+The script initially reported a "spatial scale mismatch"
+between neutrino modes at m_e and the electron itself.
+**This was wrong.**  A neutrino mode at winding N = 17.5M
+has ring wavelength L₄/N = 6.7 μm / 17.5M ≈ **383 fm**,
+which matches the electron Compton wavelength (**386 fm**)
+to within 1%.
+
+This is guaranteed by construction: any mode with mass m
+has Compton wavelength ℏ/(mc), regardless of which sheet
+it lives on.  **When the energies match, the spatial scales
+match automatically.**
+
+### Energy accumulation: is it feasible?
+
+Reaching m_e from ν₁ requires ~17.5 million quanta of
+neutrino energy.  This rules out a slow step-by-step
+ladder.  But that's not what happens in nature either.
+
+In β-decay (n → p + e⁻ + ν̄_e), the energy comes from
+the neutron-proton mass difference (~1.3 MeV), not from
+slowly accumulating neutrino energy.  The relevant
+question is not "can a neutrino climb to m_e?" but
+rather **"do modes on different sheets couple when their
+energies match?"**
+
+The wavelength convergence result suggests they could:
+at the crossing energy, a high-winding neutrino mode has
+the same spatial wavelength as the electron mode.  If the
+sheets are coupled (through the Compton window or the
+ambient 3D lattice), energy-matched modes on different
+sheets could resonate.
+
+### What this means for the model
+
+The neutrino sheet is not an isolated low-energy system.
+It has modes at every energy scale up to and far beyond
+the electron mass.  The key question for inter-sheet
+physics is not whether modes exist at the right energy
+(they do, abundantly) but what coupling mechanism allows
+energy to transfer between sheets — and that coupling is
+what the weak force IS.
+
+### Findings table
+
+| ID | Finding |
+|----|---------|
+| F18 | Neutrino sheet modes reach the electron mass at winding N ≈ 17.5 million.  Mass grows linearly with winding: m ≈ E₀ × N for diagonal modes (N,N). |
+| F19 | Mode density at the electron scale is enormous: ~367 million modes on a thin shell at m = m_e, ~7.3 million in a ±1% window.  The neutrino sheet has dense mode coverage at all energy scales. |
+| F20 | At the energy crossing, the neutrino mode's wavelength on the sheet (383 fm) matches the electron Compton wavelength (386 fm) to within 1%.  Energy-matched modes have matched spatial scales — a prerequisite for resonant cross-sheet coupling. |
+| F21 | Reaching m_e by accumulating ν₁ quanta requires ~17.5 million steps — not feasible as a slow ladder.  Cross-sheet energy transfer (β-decay) is a single high-energy event, not gradual accumulation. |
+
+---
+
+## Track 2a (continued): Compton window overlap and collective coupling
+
+### Observation
+
+The neutrino Compton wavelength is vastly larger than atomic
+spacing, creating a regime where the Compton windows of
+neighboring atoms overlap massively:
+
+| Particle | Mass | Compton wavelength λ̄_C |
+|----------|------|------------------------|
+| Proton | 938 MeV | 0.21 fm |
+| Electron | 511 keV | 386 fm |
+| Neutrino (ν₁) | ~30 meV | **6.6 μm** |
+| Atomic spacing (C) | — | 150 pm = 150,000 fm |
+
+The electron and proton windows are far smaller than the
+distance between atoms — each particle's Compton window is
+isolated, coupling only to its own atom's 3D field.
+
+The neutrino window is **44,000× larger** than the atomic
+spacing.  In three dimensions, a single neutrino's Compton
+window encompasses:
+
+> (6.6 μm / 0.15 nm)³ ≈ (44,000)³ ≈ **8.5 × 10¹³ atoms**
+
+Every neutron in a chunk of carbon has neutrino modes
+whose Compton windows overlap with ~85 trillion neighbors.
+
+### What this means physically
+
+On the electron and proton sheets, each atom is an island
+— the Compton window doesn't reach the next atom.
+Interactions between atoms happen through the leaked EM
+field (Coulomb, van der Waals), not through direct
+sheet-to-sheet coupling.
+
+On the neutrino sheet, the situation is qualitatively
+different.  The Compton window of atom A's neutrino modes
+floods the region occupied by atoms B, C, D, ... out to
+~6.6 μm.  All ~10¹³ neutrons within this radius are
+bathed in each other's neutrino-sheet fields.  They are
+coupled to a **shared mode substrate** — the dense
+spectrum on Ma_ν (Q85: ~1,100 modes below 1 eV).
+
+This is not pairwise coupling (atom A talks to atom B
+through a virtual neutrino exchange, as in the standard
+"neutrino force" calculation).  It is collective coupling:
+10¹³ atoms coupled to the same dense resonator.  The
+geometry is closer to a **quantum bus** than to a set of
+pairwise links.
+
+### Entanglement feasibility
+
+**In favor:**
+- Spatial overlap is a prerequisite for coupling, and
+  it exists in overwhelming abundance (~10¹³ atoms)
+- Collective effects with N coherent partners can scale
+  as √N or N, depending on geometry
+- The dense mode spectrum on Ma_ν provides a shared
+  substrate — coupling into one mode simultaneously
+  correlates all atoms coupled to that mode
+- The 6.6 μm scale is biologically relevant: it is
+  comparable to the size of a cell nucleus (~5–10 μm)
+
+**Against:**
+- Thermal decoherence: at body temperature (~300 K ≈
+  26 meV), thermal energy is comparable to the neutrino
+  mass (~30 meV).  Entanglement typically requires the
+  coupling energy to exceed thermal noise.
+- Individual coupling strength: the neutrino-neutrino
+  interaction is mediated by the weak force (G_F² ≈
+  10⁻¹⁰ in natural units) — spectacularly weak per pair
+- Standard physics predicts a "neutrino force" at this
+  range (~6.6 μm), but it is far too weak to detect
+  with current technology
+
+**The WvM difference:**
+Standard physics treats the neutrino force as a pairwise
+Yukawa potential mediated by virtual neutrino exchange.
+The WvM picture adds the dense shared mode substrate on
+Ma_ν.  If this substrate acts as a coherent resonator
+(rather than a bath of incoherent modes), the coupling
+could be qualitatively different from the standard
+calculation — not 10¹³ independent weak couplings, but
+10¹³ atoms collectively driving a shared standing wave.
+
+Whether this collective mode is protected against
+thermal decoherence depends on the mode structure and
+coupling geometry — a question that requires further
+analysis but is in principle computable from the torus
+parameters.
+
+### Findings table
+
+| ID | Finding |
+|----|---------|
+| F22 | The neutrino Compton window (~6.6 μm) is 44,000× larger than atomic spacing, encompassing ~10¹³ atoms in condensed matter.  This is qualitatively different from the electron and proton windows, which are smaller than atomic spacing. |
+| F23 | All neutrons within ~6.6 μm share overlapping neutrino Compton windows, coupling them to the same dense mode substrate on Ma_ν.  The geometry is a collective quantum bus, not a set of pairwise links. |
+| F24 | The 6.6 μm Compton scale is comparable to the cell nucleus diameter (~5–10 μm), making this coupling channel potentially relevant to biological information processing. |
+| F25 | Individual neutrino-neutrino coupling is weak (G_F²), but 10¹³ coherent partners and a shared resonator substrate could produce collective effects not captured by the standard pairwise neutrino force calculation.  This is an open question requiring further analysis. |
