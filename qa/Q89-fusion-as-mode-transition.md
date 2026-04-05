@@ -1004,9 +1004,166 @@ established.  The input physics (loading through the
 neutrino window) is the unproven link.
 
 
+## 18. MHD direct conversion to electricity
+
+### 18.1 The opportunity
+
+The fusion products include He-4 nuclei — charge +2e,
+kinetic energy ~20 MeV, moving at ~7% of the speed of
+light.  These are charged particles moving through the
+DC magnetic field that is already present in the system
+(for nuclear magnetic alignment, §12.4 Step 5).
+
+A charged particle moving through a magnetic field
+experiences the Lorentz force, which deflects it
+perpendicular to both its velocity and the field.  If
+electrodes are placed on opposite walls of the reaction
+chamber (perpendicular to both B and the particle flow),
+the Lorentz force pushes positive ions to one electrode
+and electrons to the other.  Current flows through the
+external circuit.  This is **magnetohydrodynamic (MHD)
+direct conversion** — electricity from moving charges
+in a magnetic field, with no turbine, no steam, no
+moving parts.
+
+### 18.2 Why this fits the system naturally
+
+The magnetic field is already there — it's required for
+Step 5 (alignment).  The fast charged particles are
+already there — they're the fusion products.  Adding
+MHD extraction requires only electrodes on the chamber
+walls.  No new hardware beyond what the reaction already
+needs.
+
+MHD theoretical efficiency is ~60–70%, far higher than
+thermal conversion (33–40% for steam, 5–10% for
+thermoelectric).  The challenge in conventional MHD
+research has been sustaining a plasma.  This system
+does not have a plasma — it has individual fusion events
+producing fast alphas in a gas.  Lower power density
+than plasma MHD, but far simpler.
+
+### 18.3 Self-powering hybrid
+
+The most elegant configuration: MHD provides direct
+electricity that powers the IR pump and the electrolyzer.
+If the MHD electrical output exceeds the pump + electrolyzer
+input, the system is **electrically self-sustaining** — it
+powers its own activation from its own output.
+
+The thermal energy (absorbed in the water jacket from
+gammas, neutrons, and thermalized kinetic energy) is then
+the **net product** — available for heating, steam
+generation, or additional electrical conversion.
+
+Energy flow in the hybrid:
+
+```
+    MHD electrodes ──→ Electricity
+         ↓                 ↓
+    Powers IR pump    Powers electrolyzer
+         ↓                 ↓
+    Loads protons     Produces H₂
+         ↓                 ↓
+    Fusion ─────────→ Fast He-4 ions
+         ↓                 ↓
+    Gammas + neutrons → Water jacket → Heat (net output)
+         ↓
+    Back to MHD (cycle)
+```
+
+Break-even for the MHD self-powering loop:
+
+> MHD efficiency × fusion output > pump input + electrolysis
+
+At 60% MHD efficiency: 0.6 × 22.4 MeV = 13.4 MeV of
+electricity per He-4.  Pump input is 1.6/η MeV.
+Electrolysis is negligible (~0.002 MeV).  Self-powering
+requires:
+
+> 13.4 > 1.6/η → η > 1.6/13.4 ≈ **12%**
+
+So with MHD self-powering, break-even for η rises from
+7.1% (thermal harvest) to ~12% (electrical self-sustain).
+Still a modest threshold.  If η exceeds 12%, the system
+runs itself and produces net heat.
+
+### 18.4 Comparison of direct conversion mechanisms
+
+| Mechanism | How it works | Efficiency | Viability for this system |
+|-----------|-------------|-----------|--------------------------|
+| MHD | Fast He-4 ions in B field → Lorentz EMF | ~60–70% | Best fit — uses existing B field |
+| Betavoltaic | Beta electrons on semiconductor junction | ~2–5% | Wrong reaction — this pathway consumes electrons |
+| Alphavoltaic | Alpha particles on wide-gap semiconductor | ~10–20% | Possible but radiation damage limits lifetime |
+| Direct charge collection | Alphas deposit charge on collector | ~high V, ~nA | Impractical — tiny current |
+| Photoelectric from gammas | 2.2 MeV gamma ejects electrons | < 1% | Terrible efficiency, material damage |
+| IR photocatalysis (chemical) | Tuned IR lowers activation energy | N/A | Different technology — chemical, not nuclear |
+
+MHD is the clear winner for this application.
+
+
+## 19. Containment details
+
+### 19.1 Water jacket thickness
+
+Water shielding attenuation for 2.224 MeV gammas:
+
+| Water thickness | Attenuation | Adequate for |
+|----------------|-------------|-------------|
+| 15 cm (6") | ~10× | Reduced dose, not eliminated |
+| 30 cm (12") | ~100× | Short-term proximity |
+| 50 cm (20") | ~1,000× | Continuous occupancy nearby |
+| 75 cm (30") | ~10,000× | Essentially zero dose at surface |
+
+For a residential unit, a 75 cm (30") water jacket around
+a small reaction chamber makes the exterior surface
+radiation-free for all practical purposes.  The unit would
+be roughly the size of a water heater — and it IS a water
+heater, functionally.
+
+For a benchtop research device at low power (low reaction
+rate = fewer gammas per second), thinner shielding suffices
+because the dose rate is proportional to the reaction rate.
+
+### 19.2 Labyrinth containment
+
+Gamma rays travel in straight lines.  They cannot turn
+corners.  A **labyrinth** (zigzag entrance) for plumbing
+penetrations ensures no gamma has a straight-line path from
+the reaction zone to the exterior.
+
+The design principle: if you cannot see the reaction chamber
+by looking through the entrance (no line of sight), then
+gammas cannot reach you.  Each bend in the labyrinth
+absorbs gammas in the wall material.
+
+This is standard nuclear engineering — reactor facilities
+use labyrinth corridors for personnel access.  No door is
+needed for radiation containment.  The bends do the work.
+
+For this system: crooked pipes for hydrogen input and
+helium output contain all gammas.  Water-filled walls at
+each bend handle neutrons (which can scatter around
+corners but lose energy at each bounce).  Two to three
+bends with water-filled walls provide complete containment.
+
+### 19.3 Monitoring
+
+Water shielding can be self-monitoring.  A small amount of
+scintillating dye added to the water jacket causes the
+water to emit visible light when absorbing radiation.  The
+intensity of the glow is proportional to the radiation
+level.  You can literally see whether the shielding is
+working — and whether the reaction is running — by looking
+at the water.
+
+A photodetector on the water jacket provides continuous,
+passive radiation monitoring with no additional equipment.
+
+
 ---
 
-## 17. Caution (final)
+## 20. Caution (final)
 
 This entry builds on:
 
@@ -1034,23 +1191,33 @@ This entry builds on:
 14. Break-even efficiency threshold η > 7.1% (§14.5 —
     derived from the energy budget; whether η exceeds this
     depends on σ_νp and resonant enhancement, both unknown)
-15. Output harvesting and shielding (§16 — established
-    nuclear engineering; water jacket, thermoelectric, etc.
-    are standard technology, not speculative)
+15. Output harvesting and shielding (§16, §19 — established
+    nuclear engineering; water jacket, thermoelectric,
+    labyrinth containment are standard technology)
 16. System schematic and control (§16.5–16.7 — engineering
     design, contingent on the loading pathway working but
     using only known technology for the output side)
 17. No runaway risk (§14.4, §16.5 — follows logically from
     pump-sustained vs self-sustaining; no critical mass)
+18. MHD direct conversion (§18 — established physics of
+    charged particles in magnetic fields; the Lorentz force
+    is not speculative, but the power density in this
+    application is unknown)
+19. Self-powering hybrid (§18.3 — engineering design;
+    requires η > 12% for electrical self-sustaining, or
+    η > 7.1% with external electrical input)
+20. Containment geometry (§19 — labyrinth, water thickness,
+    scintillating dye monitoring — all standard nuclear
+    engineering)
 
 **Confidence tiers:**
 
 | Tier | Items | Status |
 |------|-------|--------|
-| Established physics | 1, 2, 3, 11, 12, 15 | Measured, computed, or standard engineering |
+| Established physics | 1, 2, 3, 11, 12, 15, 18, 20 | Measured, computed, or standard engineering |
 | Computable but not yet computed | 4, 5, 9, 13 | Could be resolved by a study |
 | Theoretically motivated, undemonstrated | 6, 8 | Require new physics or new experiments |
-| Logically coherent, fully speculative | 7, 10, 14, 16 | Depend on all prior items being correct |
+| Logically coherent, fully speculative | 7, 10, 14, 16, 19 | Depend on all prior items being correct |
 | Follows from the design | 17 | No runaway risk if pump-sustained (not chain) |
 
 **The three critical unknowns:**
@@ -1067,14 +1234,17 @@ This entry builds on:
 
 3. **Coupling efficiency η** — what fraction of 42 μm IR
    pump energy actually reaches Ma_p through the neutrino
-   channel?  Must exceed 7.1% for net energy gain.  Depends
-   on σ_νp, resonant enhancement, and medium properties.
-   Not currently computable without σ_νp.
+   channel?  Must exceed 7.1% for net energy gain (thermal
+   harvest) or 12% for electrical self-sustaining (MHD
+   hybrid).  Depends on σ_νp, resonant enhancement, and
+   medium properties.  Not currently computable without σ_νp.
 
 **The pathway is a chain of "ifs."**  If σ_νp ≠ 0, and if
 loading works on nuclear mode spectra, and if η > 7.1%, then
 the process is a net energy source with a 7× multiplication
-factor controlled by pump power (no runaway risk).  Each "if"
-is physically motivated but unproven.  The most economical
-next step is determining σ_νp from the Ma metric — this
-resolves the first "if" and constrains the third.
+factor controlled by pump power (no runaway risk).  If
+η > 12%, the MHD hybrid self-powers and the net output is
+thermal.  Each "if" is physically motivated but unproven.
+The most economical next step is determining σ_νp from the
+Ma metric — this resolves the first "if" and constrains the
+third.
