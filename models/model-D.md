@@ -1,0 +1,388 @@
+# Model: model-D (Filtered model — `ma_model_c.py`) ⟵ ACTIVE
+
+**Status:** In progress — foundational studies complete, particle census pending  
+**Code / implementation:** [`studies/lib/ma_model_c.py`](../studies/lib/ma_model_c.py) (planned; see [R50 README](../studies/R50-filtered-particle-search/README.md))  
+**Study range:** **R45 (catalyst) → R46, R47, R48, R49, R50** (see [`studies/STATUS.md`](../studies/STATUS.md))  
+**Supersedes:** [model-C](model-C.md) (`ma_model.py`, R39–R44)
+
+---
+
+## Summary
+
+Model-D is a **deliberate restart from first principles**. Rather than
+inheriting model-C's pinned geometry (r_p = 8.906, σ_ep = −0.091 from
+R27) and adding corrections, model-D goes back to the three
+fundamental particles — electron, proton, neutrino — and rebuilds
+each from scratch, asking what the torus geometry actually requires.
+
+The key motivations for the restart:
+
+1. **R45 showed** that single-sheet geodesic-tilting cannot explain
+   proton or neutron magnetic moments — the proton's g = 5.586 needs
+   multi-component or composite structure, not parameter tweaks.
+2. **R46 discovered** waveguide cutoff on toroidal cavities: a hard
+   mode-selection rule that model-C entirely lacks. This eliminates
+   the (1,1) ghost at the physics level, not by ad hoc filtering.
+3. **R47 found** that the proton is better modeled as a **(3,6)
+   composite** (three (1,2) strands) rather than a single (1,2) mode.
+   This wins 8 of 11 criteria against (1,2), gives SU(6) magnetic
+   moments within ~7%, constituent mass m_p/3 = 313 MeV, and
+   geometric confinement.
+4. **R49 revealed** that finite-ε spin deviates significantly from
+   the thin-torus formula s = n₁/n₂ used throughout models B and C.
+   At large ε the deviation is qualitative, not just perturbative.
+
+These are not incremental improvements — they change the foundations.
+The old parameter pinning (r_p from neutron + muon) was **premature**:
+it assumed (1,2) proton, thin-torus spin, and no waveguide filtering.
+Model-D retracts those pins and treats them as predictions to be
+recovered (or not) from the new physics.
+
+Model-D is also the first model to **incorporate GRID** as more than
+background.  In models A–C, Maxwell's equations were assumed as
+inputs; GRID was developed in parallel but did not feed back into
+MaSt physics.  Model-D closes that loop:
+
+- **Charge as topological winding** (R48 F5): a traveling wave
+  circling the tube advances its phase by 2π — this IS the GRID
+  topological winding (axiom A3).  Standing waves carry zero net
+  circulation and therefore zero charge (R48 F4).
+- **Waveguide boundary from GRID** (R46 T5): the torus wall is a
+  physical structure with GRID reflection coefficient ~(1−α) ≈ 0.993,
+  close to the conducting limit.  This turns mode filtering from an
+  ad hoc selection rule into a consequence of the substrate.
+- **Shear chirality ↔ circulation imbalance** (R48 F5): charge
+  requires more energy flowing one way around the tube than the
+  other.  The embedding shear provides this asymmetry — unifying
+  the R19 shear mechanism with GRID's phase-winding picture.
+
+**Root-level documentation** ([`README.md`](../README.md),
+[`STATUS.md`](../STATUS.md), [`Taxonomy.md`](../studies/Taxonomy.md))
+currently describes model-C's state. It will be updated to reflect
+model-D once the particle census (R50) establishes new quantitative
+benchmarks.
+
+---
+
+## Outcomes
+
+*Model-D is evolving. This section records established results. It
+will be augmented as R50 (the particle census) produces quantitative
+predictions. Inherited results from models B/C that remain valid
+under model-D's assumptions are noted as such.*
+
+### What model-D has established so far
+
+#### Electron sheet (R46)
+
+- **Waveguide cutoff** eliminates the (1,1) ghost — the most
+  problematic mode in models B/C (charged boson at half m_e,
+  unobserved). The (1,2) electron is the **first surviving mode**
+  above cutoff for n₁ = 1 on the electron sheet.
+- **Aperture / slot mechanism** can produce δμ/μ = α/(2π) (the
+  anomalous magnetic moment) with charge perturbation < 0.03%.
+  Optimal slot geometry: h ≈ 0.98° × w ≈ 9.78° at ε = 0.5.
+- **Phase-locked node filtering**: ghost (1,1) drops to < 1%
+  survival; electron (1,2) retains ~100% with shear-adjusted
+  slot spacing (~92.65°).
+- **CP shear formula**: α_CP = μ sin²(2πs) / (4π q²), which
+  relates to the R19 scalar formula as α_CP = α_R19 / r² — a
+  unified charge–α relation across representations.
+- **Energy partition** confirmed: ~48.5% E-field / ~51.5% B-field
+  (close to 50/50, consistent with WvM).
+- **Working assumption**: ε_e ≈ 0.5 if the waveguide filter fixes
+  the tube-to-ring ratio. This is new — model-C left r_e
+  unconstrained.
+
+#### Proton sheet (R47)
+
+- **(3,6) composite wins 8 of 11 criteria** vs (1,2):
+
+  | Criterion | (1,2) | (3,6) |
+  |-----------|-------|-------|
+  | Magnetic moment μ_p | 1.000 μ_N (−64%) | 3.000 μ_N (+7.4%) |
+  | Neutron moment μ_n | — | −2.000 μ_N (+4.5%) |
+  | Moment ratio μ_p/μ_n | — | −1.500 vs −1.460 (2.7%) |
+  | Constituent mass | — | m_p/3 = 313 MeV (matches QCD) |
+  | Proton radius R | 0.19 fm | 1.09 fm (vs r_ch ≈ 0.84 fm) |
+  | Ghost filtering | ε-dependent | Waveguide at ε = 1/3 cuts (1,2) ghosts |
+  | Quark structure | None | Three (1,2) strands = three quarks |
+
+- **Charge mechanism for (3,6)**: WvM charge integral is **exactly
+  zero** for n₁ = 3. Charge must come from the three (1,2) strand
+  sub-structure, each carrying e/3, summing to e. This is consistent
+  with fractional quark charges.
+- **(1,3) hypothesis abandoned**: spin = n₁/n₂ = 1/3, not ½.
+- **Spindle torus (ε > 1)** for anomalous moment: ceiling at g ≈ 4
+  vs target g_p = 5.586 — ruled out as sole mechanism.
+- **Slot-only κ_p ruled out**: producing κ_p = 1.793 requires
+  > 100% of the sheet area as slot — physically impossible. The
+  proton's anomalous moment must come from composite / cross-sheet
+  structure.
+
+#### Neutrino sheet (R49)
+
+- **ε_ν broadly viable** across 0.1–5+ from oscillation data alone.
+  Three solution families identified:
+  - **Family A** (R26 assignment): (1,1), (−1,1), (1,2) at ε = 5.0,
+    s = 0.022. Σm = 117.8 meV. 26 sterile modes.
+  - **Family B**: ε = 0.1, Σm ≈ 65 meV. 120–128 sterile modes.
+  - **Family C**: ε = 0.2, s = 0.3–0.4, Σm ≈ 63 meV. 73–82 steriles.
+- **Oscillation data does not uniquely pin ε_ν** — extra physics
+  (production rules, topology, weak selection) is needed.
+- **Waveguide cutoff** on Ma_ν: at ε ≤ 0.2 nothing propagates (in
+  the open-boundary model). Sets a floor but does not select exactly
+  3 modes.
+- **Finite-ε spin**: deviates from n₁/n₂ at large ε. Family A spins
+  ~0.36–0.37 (deviation from ½); Family B has mixed spins (0.50 and
+  0.40). Spin tolerance is a significant filter.
+- **Mode density to m_e**: ~17.5 × 10⁶ modes on Ma_ν reach m_e
+  energy (N ≈ 17.5M diagonal modes). Compton window λ̄_C ≈ 6.6 μm
+  encompasses ~10¹³ atoms — relevant for neutrino-domain storage
+  hypothesis (Q85).
+- **Assignment A implies Majorana neutrinos** via C-conjugate mixing
+  (Q105). Testable prediction: 0νββ at |m_ββ| ≈ 10–30 meV.
+
+#### Helicity and charge (R48)
+
+- **n₁ = ±1 derived geometrically** from circular polarization tube
+  synchronization: only n₁ = ±1 gives a non-oscillating tube factor
+  in the traveling-wave Gauss flux.
+- **Helicity does NOT discriminate (1,1) vs (1,2)** — both carry
+  identical charge in this model. Q104 answered negatively. Ghost
+  elimination requires waveguide or slot filtering, not helicity.
+- **(3,6) proton charge**: for n₁ = 3, the tube factor cos(2θ₁)
+  oscillates → no direct charge. Charge comes from three (1,2)
+  strands with gcd(3,6) = 3, each carrying e/3.
+
+#### GRID integration (R46, R48)
+
+Previous models treated Maxwell's equations as an assumed input.
+Model-D is the first to use GRID results as active physics:
+
+- **Charge = topological winding** (R48 F5): the 2π phase advance
+  of a traveling wave around the tube is GRID axiom A3 made
+  concrete.  This replaces the R19 field-integral picture with a
+  topological one — charge is exact because topology is exact.
+- **Torus wall = GRID lattice boundary** (R46 T5): the material
+  sheet has reflection coefficient ~(1−α) ≈ 0.993. This makes
+  waveguide cutoff a consequence of the substrate, not an ad hoc
+  filter.  Modes below cutoff cannot propagate — they are
+  evanescent on the lattice.
+- **Standing waves carry zero charge** (R48 F4): the Gauss integral
+  is exactly zero for any standing-wave mode with n₂ ≠ 0.  Charge
+  requires net circulation (a traveling-wave component), which is
+  provided by shear chirality.  This unifies WvM (circulating CP
+  wave), GRID (topological winding), and the shear mechanism
+  (broken circulation symmetry) into a single picture.
+
+#### Magnetic moments (R45 — catalyst for model-D)
+
+- **Geodesic tilting via σ_ep dead**: standing wave |ψ|² is uniform
+  → no classical orbit. ⟨L₆⟩ = ℏn₆ → μ = n₆ μ_N → g = 4 for
+  (1,2), not 5.586. Cross-shear cannot change n₆. Tracks 1, 2,
+  4 dead.
+- **Surviving direction**: Track 3 — self-consistent dressed /
+  multi-sheet composite angular momentum.
+- **Implication**: explaining g_p, μ_n, and g_e − 2 requires
+  composite or aperture physics, not single-mode adjustments.
+
+### Retracted from models B/C
+
+| What | Old value | Why retracted |
+|------|-----------|---------------|
+| **r_p = 8.906** | Pinned by neutron + muon (R27 F18) | Assumed (1,2) proton, thin-torus spin, no waveguide. Model-D treats r_p (now ε_p) as swept. |
+| **σ_ep = −0.091** | Pinned jointly with r_p | Same — premature pinning. Model-D treats σ_ep as swept. |
+| **Proton as (1,2)** | Model-B/C assumption | (3,6) composite wins 8/11 criteria (R47 Track 7). |
+| **Thin-torus spin s = n₁/n₂** | Used for all predictions | Finite-ε spin deviates significantly (R49). |
+| **Muon as exact fit target** | R27 F18 | Off-resonance hypothesis says muon should have ~0.3% gap. Using it as exact target was inconsistent. |
+
+### Particle inventory *(placeholder — to be filled by R50)*
+
+*R50 will perform the first joint 6D census under model-D rules.
+The table below will be populated when results are available.*
+
+| Particle | Ma mode | Predicted (MeV) | Observed (MeV) | Error | Source |
+|----------|---------|----------------:|---------------:|------:|--------|
+| Electron | (1,2,0,0,0,0) | 0.511 | 0.511 | input | — |
+| Proton | (3,6,0,0,0,0) composite | 938.3 | 938.3 | input | — |
+| Neutron | *TBD — prediction* | — | 939.6 | — | R50 |
+| Muon | *TBD — near-miss* | — | 105.7 | — | R50 |
+| *...* | | | | | |
+
+### Neutrino predictions *(to be refined by R50)*
+
+| Property | Model-D range | Model-C value | Experiment |
+|----------|--------------|---------------|------------|
+| Σm_ν | 63–118 meV (family-dependent) | 117.8 meV | < 120 meV (Planck 95% CL) |
+| Δm²₃₁/Δm²₂₁ | 33.6 ± 0.9 (all families) | 33.6 (exact) | 33.6 ± 0.9 |
+| Ordering | Normal (all families) | Normal | Favored |
+| Majorana? | Yes (Assignment A, Q105) | Not addressed | 0νββ testable |
+| |m_ββ| | ~10–30 meV | — | Next-gen experiments |
+
+---
+
+## Goals
+
+- **Rebuild from scratch**: model electron, proton, neutrino
+  individually with their own waveguide and geometric constraints
+  before coupling them via cross-shears.
+- **No premature pinning**: all geometry parameters (ε_e, ε_p, ε_ν,
+  s, σ) are **swept**, not fixed from model-B/C's R27. The neutron
+  is a **prediction**, not a calibration target.
+- **Waveguide-filtered census** (R50): joint 6D mode search under
+  the new rules. Compare against the full particle spectrum below
+  ~2 GeV. Do the old model-B/C successes (kaon, eta, lambda, etc.)
+  survive? Do new successes appear? Do ghost modes decrease?
+- **Proton internal structure**: understand (3,6) as three confined
+  (1,2) strands. Derive quark charges (e/3), confinement, and DIS
+  structure from geometry.
+- **Anomalous moments**: aperture / slot mechanism for electron
+  (R46); composite / cross-sheet mechanism for proton and neutron
+  (R45 Track 3, R47).
+- **Pin ε_ν**: use physics beyond oscillation data (weak coupling,
+  waveguide, sterile bounds) to select among the three families.
+
+---
+
+## Assumptions
+
+Model-D deliberately makes **fewer** assumptions than its predecessors:
+
+- **GRID provides the substrate** — Maxwell's equations and the
+  lattice structure are derived, not assumed. The torus wall is a
+  GRID boundary with reflection coefficient ~(1−α). Charge is
+  topological winding (GRID axiom A3). This is new to model-D.
+- **Three flat periodic sheets** (Ma_e, Ma_ν, Ma_p) — inherited,
+  unchanged.
+- **Particles are standing EM waves** on Ma — inherited, but
+  refined: charge requires a **traveling-wave** (circulating)
+  component, not a pure standing wave (R48 F4).
+- **Charge from shear + topology** — the shear provides a
+  circulation imbalance (more energy going one way than the other),
+  which produces the GRID topological winding. For the (3,6)
+  proton, charge comes from strand sub-structure (three (1,2)
+  with e/3 each).
+- **Aspect ratio ε is physically meaningful** and may be constrained
+  by waveguide cutoff (new). Working assumptions: ε_e ~ 0.5,
+  ε_p ~ 1/3 (from (3,6) geometry), ε_ν uncertain (0.1–5+).
+- **Proton is (3,6) composite**, not a fundamental (1,2) mode (new).
+- **No pinned cross-sheet parameters**: σ_ep, σ_eν, σ_νp are swept
+  in the census (new).
+- **Waveguide cutoff** applies on each sheet: n_tube > |n_ring| / ε
+  in the open-boundary model (new).
+
+### What is NOT assumed (unlike models B/C)
+
+- r_p = 8.906 (retracted)
+- σ_ep = −0.091 (retracted)
+- Thin-torus spin s = n₁/n₂ (replaced by finite-ε spin)
+- Muon as exact fit target (replaced by near-miss philosophy)
+- Proton as (1,2) single mode (replaced by (3,6) composite)
+
+---
+
+## Strategies / approach
+
+| Study | Focus | Status |
+|-------|-------|--------|
+| **R45** | Magnetic moments — found single-sheet geodesic tilting dead; motivated composite / aperture direction | On hold (catalyst) |
+| **R46** | Electron filter — waveguide cutoff, slot mechanism for g−2, ghost elimination, CP shear formula | Complete (T1–T5) |
+| **R47** | Proton geometry — (1,3) abandoned, (1,2) vs (3,6) comparison, spindle explored, SU(6) moments | Track 7 complete |
+| **R48** | Helicity and charge — n₁ = ±1 derived geometrically, helicity doesn't discriminate ghosts | Complete (T1–T2) |
+| **R49** | Neutrino sheet — ε_ν sweep, three families, waveguide, spin at finite ε, Majorana prediction | Tracks 1–2a complete, on hold |
+| **R50** | **Filtered multi-sheet mode search** — joint 6D census under all new rules | **Framing** — next major milestone |
+
+### R50 design (the census)
+
+R50 is the integration study where model-D produces its first
+quantitative particle predictions. Key design choices:
+
+- **One system**: Ma treated as a single coupled 6D metric, not
+  three independent sheet catalogs.
+- **Joint metric**: E² = Σᵢⱼ G̃ⁱʲ nᵢnⱼ × (ℏc/L_ref)², with
+  cross-shear blocks active.
+- **Per-sheet filters**: waveguide cutoff on Ma_e, Ma_ν, Ma_p;
+  n₁ = ±1 for charged EM modes on Ma_e; (3,6) composite treatment
+  for Ma_p.
+- **Charge**: Q = −(n₁ + n₅) in units of e. (Note: sign convention
+  and (3,6) strand bookkeeping TBD.)
+- **Parameters swept**: ε_e, ε_p, ε_ν, s₁₂, s₃₄, s₅₆, σ_ep, σ_eν,
+  σ_νp — with α and particle masses as constraints.
+- **Neutron as prediction**: not used to pin parameters. Success
+  criterion: does a neutron-like mode (Q = 0, spin ½, m ≈ 939.6 MeV)
+  appear without being forced?
+- **Targets**: electron (input), proton (input), then — as
+  predictions — neutron, muon, kaon, eta, eta prime, phi, lambda,
+  sigma, neutrino triplet, nuclei (R29 scaling law).
+
+---
+
+## Limitations
+
+*These are the known limitations of model-D as currently understood.
+Some may be resolved by the R50 census or follow-on studies.*
+
+- **No quantitative particle predictions yet** — R50 is in framing.
+  The model has established mechanisms and constraints but has not
+  run the joint census.
+- **α still circular**: shear s is still reverse-engineered from α,
+  not derived from geometry. The CP shear formula (R46) unifies
+  representations but does not break the circularity.
+- **(3,6) composite mechanics**: how three (1,2) strands bind into a
+  (3,6) composite is described but not derived from first principles.
+  The waveguide cutoff at ε = 1/3 is suggestive but the eigenmode
+  structure of a composite toroidal cavity is unresolved.
+- **Flavor (u/d quarks)**: the model produces three strands with
+  e/3 charge but does not yet explain two quark flavors or the
+  u/d mass splitting.
+- **Finite-ε spin**: the deviation from n₁/n₂ is characterized but
+  the correct spin formula at arbitrary ε is not yet settled. This
+  affects which modes pass the spin-½ filter.
+- **ε_ν not pinned**: three solution families remain viable. More
+  physics is needed to select.
+- **Sterile neutrino tension**: all families predict 15–128 sterile
+  modes on Ma_ν, but N_eff = 3 from cosmology requires sharp weak
+  coupling to suppress them. Mechanism not yet modeled.
+- **Inherited open problems**: α from first principles, ghost mode
+  suppression details, Compton window Q factor, hierarchy problem,
+  moduli potential — all unchanged from model-C.
+- **Root documentation lag**: README.md, STATUS.md, and Taxonomy.md
+  still describe model-C. Will be updated after R50 establishes
+  benchmarks.
+
+---
+
+## Notation changes from model-C
+
+| model-C | model-D | Reason |
+|---------|---------|--------|
+| r_e, r_p, r_ν (aspect ratio = a/R, can be > 1) | ε_e, ε_p, ε_ν (same quantity, new symbol) | Align with Taxonomy §2.1; ε ≤ 1 for ring tori, avoids overloading "r" |
+| Proton mode (1,2) | Proton mode (3,6) composite | R47 Track 7 |
+| r_p = 8.906 (pinned) | ε_p swept (working value ~1/3) | Premature pinning retracted |
+| σ_ep = −0.091 (pinned) | σ_ep swept | Premature pinning retracted |
+| spin = n₁/n₂ | spin from finite-ε formula | R49 |
+
+---
+
+## References
+
+- **Studies (model-D era):**
+  [R45](../studies/R45-magnetic-moments/README.md) (catalyst),
+  [R46](../studies/R46-electron-filter/README.md),
+  [R47](../studies/R47-proton-filter/README.md),
+  [R48](../studies/R48-helicity-charge/README.md),
+  [R49](../studies/R49-neutrino-filter/README.md),
+  [R50](../studies/R50-filtered-particle-search/README.md)
+
+- **Predecessor:** [model-C.md](model-C.md) (R39–R44, `ma_model.py`)
+
+- **Code (planned):**
+  [`studies/lib/ma_model_c.py`](../studies/lib/ma_model_c.py)
+
+- **Key QA:**
+  [Q100 (aperture moment)](../qa/Q100-aperture-moment-enhancement.md),
+  [Q104 (helicity and charge)](../qa/Q104-helicity-forces-n2.md),
+  [Q105 (Majorana from C-conjugate)](../qa/Q105-majorana-from-c-conjugate-mixing.md),
+  [Q102 (neutrino neutrality)](../qa/Q102-neutrino-neutrality-from-sheet-size.md),
+  [Q103 (anomalous moment from defect)](../qa/Q103-anomalous-magnetic-moment-from-defect-cost.md)

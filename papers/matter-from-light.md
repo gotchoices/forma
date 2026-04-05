@@ -1,6 +1,11 @@
 # Matter from Light and Geometry
 
 **Status:** draft
+**Model era:** [model-C](../models/model-C.md). Specific parameters
+(r_p = 8.906, σ_ep = −0.091, proton as (1,2)) have been retracted in
+[model-D](../models/model-D.md), which replaces the proton with a (3,6)
+composite and sweeps all geometry parameters. Particle predictions in
+this paper remain valid as model-C results.
 
 **Paper 1 of 3.**  Paper 2: [Sub-Quantum Memory](sub-quantum-memory.md).
 Paper 3: [The Nine-Dimensional Atom](atoms-from-geometry.md) (rough outline).

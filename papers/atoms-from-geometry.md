@@ -1,6 +1,8 @@
 # The Nine-Dimensional Atom
 
 **Status:** draft
+**Model era:** [model-C](../models/model-C.md). Parameter pinning
+(r_p, σ_ep) retracted in [model-D](../models/model-D.md).
 
 **Paper 3 of 3.**  Paper 1: [Matter from Light](matter-from-light.md).
 Paper 2: [Sub-Quantum Memory](sub-quantum-memory.md).

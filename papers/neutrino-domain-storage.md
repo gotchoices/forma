@@ -1,6 +1,8 @@
 # The Neutrino-Domain Memory: Architecture, Capacity, and Mobility
 
 **Status:** outline
+**Model era:** [model-C](../models/model-C.md). Cross-shear values
+cited here (σ_ep = −0.091) are retracted in [model-D](../models/model-D.md).
 **Companion to:** [Sub-Quantum Memory](sub-quantum-memory.md)
 
 ---

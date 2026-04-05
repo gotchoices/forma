@@ -127,126 +127,40 @@ See [`qa/Q27-foundational-axioms.md`](qa/Q27-foundational-axioms.md) and
 for discussion.
 
 
-## Key results
+## Models
 
-### Parameter accounting
+The MaSt model has evolved through four generations.  The
+**current model is model-D** (in progress — foundational studies
+complete, particle census pending).  The most recent model with
+full quantitative predictions is **model-C**.
 
-The Ma geometry has 21 independent metric components (R26 F57).
-Eight constraints from experimental data and particle fits leave
-13 formally free — but 11 of these are cross-shear components
-that are all zero and shown irrelevant to every observable tested
-(R28 F1/F4).  The **effective free parameters are 2: r_e and r_ν**.
+| Model | Era | Key idea | Status |
+|-------|-----|----------|--------|
+| [model-A](models/model-A.md) | S1–R25 | WvM / single-sheet electron | Superseded |
+| [model-B](models/model-B.md) | R26–R38 | Three tori / `ma.py` — first particle predictions | Superseded |
+| [model-C](models/model-C.md) | R39–R44 | Generalized model / `ma_model.py` — dynamic torus, dark matter, electroweak | Superseded |
+| [model-D](models/model-D.md) | R45–R50+ | Filtered model / `ma_model_c.py` — waveguide cutoff, (3,6) proton, GRID integration | **Active** |
 
-| What | Count | Details |
-|------|------:|---------|
-| Ma metric components | 21 | Flat 6×6 symmetric metric |
-| Set by experimental inputs | 6 | 3 ring scales (m_e, m_p, Δm²₂₁); 3 within-plane shears (α → s_e given r_e, α → s_p given r_p, Δm² ratio → s_ν) |
-| Pinned by particle fits | 2 | r_p = 8.906 and σ_ep = −0.091 (neutron + muon, R27 F18; muon fit is approximate — see below) |
-| Cross-shears (irrelevant) | 11 | All set to 0; shown insensitive to MeV-scale spectrum (R28) |
-| **Effective free** | **2** | **r_e** (unconstrained), **r_ν** (≥ 3.2) |
+**Headline results** (model-C; see [`models/model-C.md`](models/model-C.md)
+for full tables, mode assignments, parameter accounting, and limitations):
 
-The MeV-scale hadron predictions (below) are insensitive to both
-remaining free parameters — they depend almost entirely on r_p
-and σ_ep.  In this sense the predictions are parameter-free.
-The model as a whole has 2 undetermined shape parameters: r_e
-has no known observable to pin it, and r_ν is only lower-bounded
-(r_ν ≥ 3.2 from the cosmological Σm_ν bound).
+- Six MeV-scale hadron masses predicted at 0.3–1.2% from 2 effective
+  free parameters (both insensitive to the predictions).
+- Neutrino mass-squared ratio Δm²₃₁/Δm²₂₁ = 33.6 from integer
+  winding numbers (exact, parameter-free).
+- Emergent neutron — a three-sheet mode nobody put in, found by
+  the solver.
+- Nuclear scaling law: nuclei as Ma_p modes match d → ⁵⁶Fe at < 1%.
+- Plausible geometric mechanisms for dark matter, the strong force,
+  and matter–antimatter asymmetry.
 
-See R26 F57–F63 and [`studies/Taxonomy.md`](studies/Taxonomy.md) §3
-for the full census.
-
-### Electron (R2, R19, R26)
-The (1,2) mode on Ma_e reproduces spin ½ (exact, topological),
-mass m_e (input), charge e (shear mechanism, requires α as
-input given free r_e), g-factor ≈ 2 (energy partition), and
-magnetic moment (axial B projection).
-
-### Particle spectrum (R27, R28)
-With r_p and σ_ep pinned by the neutron and muon (R27 F18),
-the MeV-scale predictions are insensitive to both remaining
-free parameters (r_e, r_ν).  Predictions:
-
-| Particle | Ma mode | Error | Source |
-|----------|---------|------:|--------|
-| Kaon (K⁺) | (−4,−8,+1,0,−3,−1) | 1.2% | R27 F31 |
-| Eta (η) | (−5,−8, 0,0,−5,+1) | 0.6% | R27 F31 |
-| Eta prime (η′) | (−3,−8, 0,0,−3,+2) | 0.3% | R27 F31 |
-| Phi (φ) | (−7,−8, 0,0,−7,+2) | 0.8% | R27 F31 |
-| Lambda (Λ) | (−12,−15,+1,0,−12,−2) | 0.9% | R28 F10 |
-| Sigma+ (Σ⁺) | (−14,−15, 0,0,−13,+2) | 0.3% | R28 F14 |
-
-Lifetime-gap correlation r = −0.84 (p = 0.009) for weak
-decays supports the off-resonance hypothesis: unstable
-particles sit between eigenmodes, and the gap to the nearest
-mode predicts the lifetime.
-
-**Fitting principle:** Only stable particles should be matched
-exactly to eigenmodes.  The muon (τ = 2.2 μs) was used as an
-exact fit target in R27 F18, but the off-resonance hypothesis
-predicts it should have a small gap (~0.3%).  The tau's 5.6%
-gap is consistent with its short lifetime (290 fs) — a
-prediction, not a failure.  See
-[`studies/Taxonomy.md`](studies/Taxonomy.md) §5.1 and §5.5.
-
-### Neutrino masses (R26)
-The neutrino mass-squared ratio Δm²₃₁/Δm²₂₁ = 33.6 is
-reproduced from integer mode numbers on Ma_ν with a single
-shear parameter s_ν = 0.022.  The ratio is independent of r_ν,
-which remains free (lower-bounded by cosmological Σm_ν).
-Individual neutrino masses depend weakly on r_ν.
-
-### Emergent neutron (R26, R27)
-The neutron appears as a three-sheet mode (0,−2,+1,0,0,+2)
-spanning Ma_e × Ma_ν × Ma_p (R27 F15).  Charge Q = −n₁ + n₅ = 0
-(exact, both zero).  Spin ½ from neutrino ring winding (n₃ = 1).
-Mass reproduced at σ_ep = −0.091 (R27 F18).  It was not put
-in — it was found by the Ma solver as a mode nobody looked for.
-
-### Nuclear scaling law (R29)
-Nuclei are Ma_p modes, not multi-particle bound states.
-The scaling law n_φp = A, n_θp = 2A (where A = mass number)
-matches all nuclei from deuteron to ⁵⁶Fe at < 1% error.
-Nuclear spins predicted correctly for 9 of 11 tested nuclei.
-
-### Predictive horizon (R28)
-Above ~2 GeV, the Ma mode spectrum becomes so dense (band
-spacing < 5 MeV) that matching particles to modes ceases
-to be discriminating.  Below ~2 GeV, the model is predictive.
-W/Z/Higgs match trivially at high energy — not a test.
-
-### Plausible explanations (not yet derived, but geometrically motivated)
-
-Several phenomena that the Standard Model treats as separate
-problems appear to have unified geometric explanations in MaSt.
-These are plausible — the mechanisms are identified and the
-arguments are self-consistent — but the quantitative derivations
-are incomplete.
-
-| Phenomenon | SM status | MaSt explanation | Reference |
-|------------|-----------|-----------------|-----------|
-| Dark matter | Unknown particle(s); no detection after decades of search | Ghost modes on Ma: exact charge symmetry, Compton window suppresses EM coupling, mass ratio brackets 5.4 | R42, Q94 |
-| Strong force | Separate force with fitted coupling α_s | Internal EM between overlapping Ma tori at r ~ λ_C, unattenuated by Compton window; range, strength, and attraction emerge | Q95 |
-| Matter–antimatter asymmetry | Requires CP violation beyond SM (CKM phase too small by ~10¹⁰) | Shear chirality of Ma breaks C and CP geometrically; all three Sakharov conditions met from geometry | Q97, Q32 |
-| Nuclear binding | QCD confinement (non-perturbative, lattice-computed) | Nuclei are Ma_p modes, not multi-particle bound states; binding = mode transition on Ma | R29, Q89, Q95 |
-| Force carriers (W, Z, gluon) | Fundamental gauge bosons mediating forces | Not fundamental: gluons unnecessary (Q95), W/Z are transient cross-sheet reconfigurations, not eigenmodes; sin²θ_W matches 3/13 to −0.19% (unexplained match, not derived) | Q96, R43 |
-| Three generations | Unexplained; SM accommodates but does not predict | Three charge −1 spin ½ modes found: e (exact), μ (near-miss, ~0.3% gap), τ (near-miss, 5.6% gap); gaps correlate with lifetimes | R27, R41, Q86 |
-
-### What remains open
-- **The α problem:** what determines the shear s ≈ 0.01
-  of the electron sheet?  Multiple studies (R15, R19, R31,
-  R32, R34) have constrained but not solved this.  α is
-  the single most important unsolved parameter.
-- **Ghost mode suppression:** the Compton window hypothesis
-  (Q94) and dark matter reinterpretation (R42) are promising,
-  but the window quality factor Q has not been computed from
-  first principles.
-- **The hierarchy:** why is gravity ~10⁴⁰× weaker than EM?
-  GRID explains the mechanism — EM is local phase dynamics,
-  gravity is collective thermodynamics — but the precise ratio
-  depends on ζ and α, whose relationship (if any) is unknown.
-- **Weak force mechanism:** sin²θ_W matches 3/13 to −0.19% (R43)
-  but the match is unexplained — cannot be derived from the Ma
-  metric (F10).  Computing the W mass (80.4 GeV) also remains open.
+**What model-D changes** (see [`models/model-D.md`](models/model-D.md)):
+model-D retracts model-C's pinned proton geometry (r_p = 8.906,
+σ_ep = −0.091) as premature, replaces the (1,2) proton with a
+(3,6) composite, introduces waveguide cutoff (which eliminates the
+(1,1) ghost mode), and is the first model to incorporate GRID
+results as active physics (charge as topological winding, torus wall
+as GRID lattice boundary).  Particle census is pending (R50).
 
 
 ## Foundation
@@ -301,6 +215,9 @@ sheet to three (3Ma = Ma_e × Ma_ν × Ma_p), yielding Ma (R26).
 
 ## Structure
 
+- `models/` — **Model documentation**: versioned writeups of each
+  MaSt model generation (A through D).
+  See [`models/README.md`](models/README.md).
 - `grid/` — **GRID** (Geometric Relational Interaction Domain):
   the substrate layer.  Derives Maxwell + Einstein from a discrete
   lattice.  See [`grid/README.md`](grid/README.md).
@@ -324,8 +241,11 @@ sheet to three (3Ma = Ma_e × Ma_ν × Ma_p), yielding Ma (R26).
 
 | File | Purpose |
 |------|---------|
-| [`STATUS.md`](STATUS.md) | Where we are: objectives, results, active front, open problems |
-| [`studies/Taxonomy.md`](studies/Taxonomy.md) | **MaSt framework reference:** dimensions, geometry, particle catalog, mechanisms, open problems |
+| [`models/model-D.md`](models/model-D.md) | **Current model** (active) — filtered model with waveguide cutoff and (3,6) proton |
+| [`models/model-C.md`](models/model-C.md) | **Latest quantitative predictions** — particle tables, parameter census, full results |
+| [`models/README.md`](models/README.md) | Model index: all four generations (A–D) |
+| [`STATUS.md`](STATUS.md) | Project-level status: mission, active front, open problems |
+| [`studies/Taxonomy.md`](studies/Taxonomy.md) | **MaSt framework reference:** dimensions, geometry, particle catalog, mechanisms |
 | [`grid/README.md`](grid/README.md) | **GRID** — substrate layer: derives Maxwell + G from a discrete lattice |
 | [`studies/STATUS.md`](studies/STATUS.md) | Study-by-study registry: active, backlog, done |
 | [`qa/Q84-mast-terminology.md`](qa/Q84-mast-terminology.md) | MaSt naming conventions and migration guide |

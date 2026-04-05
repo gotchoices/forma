@@ -2,6 +2,9 @@
 ### How a theory of matter accidentally predicted dark matter
 
 **Status:** draft
+**Model era:** [model-C](../models/model-C.md). Ghost mode census
+uses model-C geometry. [Model-D](../models/model-D.md) adds waveguide
+cutoff that eliminates the (1,1) ghost; updated census pending (R50).
 
 
 ## The dark matter problem
