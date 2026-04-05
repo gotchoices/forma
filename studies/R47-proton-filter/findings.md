@@ -450,30 +450,34 @@ coupling or strand orientation.
 
 #### 4. Charge integral for n₁ = 3
 
-**SURPRISE 1:**  The WvM charge integral gives exactly **zero**
-for n₁ = 3.
+**SURPRISE 1:**  Using a sinusoidal E-field model
+(cos(n₁θ₁) integrand), the charge integral gives exactly
+**zero** for n₁ = 3:
 
 ∫₀²π cos(3θ₁)(1 + ε cos θ₁) dθ₁ = 0  (analytic, for all ε)
 
-This is because cos(3θ) × cos(θ) = [cos(4θ) + cos(2θ)]/2,
-and both terms integrate to zero over a full period.  Only
-n₁ = 1 gives nonzero charge:
+Only n₁ = 1 gives nonzero charge in this model:
 
 ∫₀²π cos(θ₁)(1 + ε cos θ₁) dθ₁ = πε
 
-**Implication:** If the (3,6) proton is treated as a single
-mode with n₁ = 3 oscillations around the tube, it has **zero
-net charge** — it would be dark.  The proton's charge must
-come from its *composite* nature: each (1,2) strand has
-n₁ = 1, which does carry charge.  The composite charge is
-the sum of strand charges.
+**Important caveat:** The cos(n₁θ₁) integrand is a model
+choice, not a first-principles result for n₁ > 1.  The WvM
+model predicts a circularly polarized photon whose E-field
+is *always* pointing outward (not sinusoidal).  For n₁ = 1,
+this works: the E-field rotates once per tube circuit,
+synchronized with the surface normal, giving E·n̂ = constant.
+For n₁ = 3, the E-field would rotate 3× per tube circuit
+while the normal rotates once — but the actual field
+structure of higher-n₁ modes has not been derived from
+first principles.
 
-This strengthens the interpretation that the (3,6) proton is
-not a "mode with n₁ = 3" but rather "three linked (1,2)
-modes."  The n₁ = ±1 charge selection rule is even stronger
-than the primer (charge-from-energy §7) states — it is not
-"odd n₁ carries charge" but specifically "n₁ = 1 carries
-charge."
+**The robust conclusion** is independent of this modeling
+question: the (3,6) proton is a composite of three (1,2)
+strands, and each strand carries charge by the well-understood
+n₁ = 1 circular-polarization mechanism (E always outward).
+Whether a hypothetical standalone n₁ = 3 mode would also
+carry charge is an open question that does not affect the
+(3,6) proton's charge.
 
 #### 5. Confinement from geometry
 
@@ -577,10 +581,10 @@ simulation of a three-strand composite on a torus.
 | F1 | The (3,6) proton SU(6) moment is μ_p = 3.000 μ_N (+7.4% vs measured 2.793 μ_N) with zero free parameters.  The (1,2) bare moment is 1.000 μ_N (−64%). |
 | F2 | The (3,6) neutron SU(6) moment is μ_n = −2.000 μ_N (+4.5% vs measured −1.913 μ_N).  The ratio μ_p/μ_n = −1.500 vs measured −1.460 (2.7% error). |
 | F3 | Constituent quark mass from (3,6): m_p/3 = 313 MeV, matching the QCD constituent mass of 310–340 MeV. |
-| F4 | **The WvM charge integral is exactly zero for n₁ = 3** (and all n₁ > 1).  Only n₁ = 1 carries charge.  The (3,6) proton's charge comes from its (1,2) strand sub-structure, not from a direct n₁ = 3 mode shape. |
+| F4 | Under a sinusoidal E-field model (cos(n₁θ) integrand), the charge integral is zero for n₁ = 3.  However, the WvM circular-polarization model (E always outward) has not been derived for n₁ > 1, so the standalone n₁ = 3 charge question is open.  The (3,6) proton's charge comes from its (1,2) strands, each carrying charge by the proven n₁ = 1 mechanism. |
 | F5 | At ε = 1/3, individual (1,2) modes are cut off by the waveguide (both open and conducting-wall models).  This gives geometric confinement — quarks cannot propagate independently. |
 | F6 | The (3,6) ring radius R ≈ 1.09 fm at ε = 1/3 is within 30% of the proton charge radius (0.84 fm).  The (1,2) ring radius R ≈ 0.19 fm is 4× too small. |
 | F7 | The SU(6) moment is ε-independent: μ_p = 3.000 μ_N at every ε.  It depends only on the topological strand count (gcd = 3) and constituent mass ratio. |
 | F8 | The (3,6) mode itself appears cut off in the simple waveguide formula (n₁ = 3 gives cutoff n₂ > 9, but n₂ = 6).  Resolution requires treating (3,6) as three (1,2) strands, not as a single n₁ = 3 mode. |
-| F9 | The n₁ = ±1 charge rule is stronger than "odd n₁": the integral ∫cos(n₁θ)(1+ε cosθ) dθ = 0 for all n₁ ≥ 2.  The primer charge-from-energy §7 should be updated to reflect this. |
+| F9 | The sinusoidal charge integral ∫cos(n₁θ)(1+ε cosθ) dθ = 0 for all n₁ ≥ 2 — but this uses a model (cos(n₁θ) E-field profile) that is only derived for n₁ = 1.  Whether higher odd-n₁ modes carry charge under the full WvM circular-polarization model remains open.  The primer's "odd n₁ carries charge" statement should not be revised until the n₁ > 1 field structure is worked out. |
 | F10 | Overall score: (3,6) wins on 8 of 11 criteria.  The (1,2) hypothesis is simpler but requires external mechanisms for quarks, confinement, and the large magnetic moment enhancement. |
