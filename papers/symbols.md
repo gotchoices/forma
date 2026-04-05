@@ -243,7 +243,11 @@ is the pattern at the large scale.
 
 These hexagonal cells, tiled into flat sheets, are what our
 model proposes as the material planes — the surfaces on
-which particles exist as standing waves.
+which particles exist as standing waves.  And when a sheet
+wraps into a torus — the shape of a particle — it becomes
+yet another O.  A circle of circles.  The pattern scales up:
+0 at the node, 0 at the hexagon, 0 at the torus.  Each
+level is a closed form built from the structures below it.
 
 ### The triangle as symbol
 
@@ -398,8 +402,12 @@ shape — three lines make a triangle, the simplest polygon.
 In the model, there are three material sheets — the three
 compact 2D surfaces on which particles exist as standing
 waves.  One for the electron, one for the neutrino, one for
-the proton.  Together with the 1 from the aleph-line, they
-form four compact dimensions beneath spacetime: 1 + 3 = 4.
+the proton.  Each sheet has two dimensions, so three sheets
+contribute six compact material dimensions.
+
+Together with the 1 from the aleph-line, the non-spatial
+dimensions total 1 + 6 = **7** — seven hidden dimensions
+beneath the visible world.
 
 Three is also the number of spatial dimensions, the number
 of generations of matter, and the number of quarks in a
@@ -407,8 +415,14 @@ proton.
 
 ### 7
 
-The third digit.  Three particle dimensions plus four
-spacetime dimensions equals seven.
+The third digit.  It appears twice in the dimension count:
+
+- Three particle sheets + four spacetime dimensions = **7**
+- One aleph-line + six material dimensions = **7**
+
+Different groupings, same number.  The visible world (3
+space + 1 time + 3 sheets = 7) and the hidden world (1
+sub-Planck + 6 compact = 7) both sum to seven.
 
 And 1 + 3 + 7 = 11.  The total number of dimensions in
 the model.
