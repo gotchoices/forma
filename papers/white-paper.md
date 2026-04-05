@@ -59,9 +59,10 @@ the results.
 | **Topology** | Ma = three flat tori (Ma_e × Ma_ν × Ma_p), S = ℝ³, t = ℝ |
 | **Inputs** | m_e, m_p, Δm²₂₁, α (three masses fix torus scales; α fixes within-plane shears given aspect ratios) |
 | **Pinned by observation** | r_p = 8.906 and σ_ep = −0.091 (neutron + muon, R27 F18; muon fit approximate — see §6), s₃₄ = 0.022 (ν oscillations) |
-| **Effective free parameters** | 2 (r_e, r_ν); MeV predictions insensitive to both |
+| **Effective free parameters** | 2 (r_e, r_ν); may be constrained by the (1,1) filter requirement (R46 Track 5); MeV predictions insensitive to both |
 | **Outputs** | 6 particle masses to < 1.2% with no adjustment (7 within ~1.2%); three lepton masses accommodated; nuclear masses to < 1% (R29) |
-| **Failures** | π⁺ (14%), Ω⁻ (structurally forbidden), τ gap (5.6%) consistent with off-resonance hypothesis |
+| **Ephemeral particles** | π⁺ (14% gap), τ (5.6% gap), ρ/ω (~20% gap) — gaps predict instability; lifetime-gap correlation r = −0.84 (R27 F33) |
+| **Structural exclusion** | Ω⁻ (charge −1, spin 3/2 geometrically forbidden as single Ma mode) |
 | **Ghost modes** | Most are electrically neutral → dark matter candidates (R42); lightest charged ghost (1,1) eliminated by filter mechanism (R46 Track 5); residual ghost count under active investigation |
 | **Testable** | Σm_ν = 116–120 meV (depends on r_ν), normal ordering, Ma_ν ring L₄ ≈ 42 μm (within reach of short-range gravity experiments if gravity propagates in Ma_ν) |
 
@@ -173,6 +174,18 @@ within-plane shears (α, Δm² ratio), and two from the neutron +
 muon fit (r_p, σ_ep).  Of the 13 formally free, 11 are cross-shear
 components that are all zero and shown irrelevant.  The effective
 free parameters are **2: r_e and r_ν**.
+
+These may not remain free.  The torus geometry must eliminate the
+(1,1) ghost mode — a lighter-than-electron charged particle that
+has never been observed.  If the aspect ratio determines the
+filter cutoff (via waveguide cross-section or equivalent
+mechanism), then the requirement to kill (1,1) while preserving
+(1,2) constrains r_e.  Similarly, r_ν may be constrained by the
+requirement that exactly three neutrino mass eigenstates are
+observed.  If both aspect ratios are pinned by filtering, the
+effective free parameter count drops to **zero** — the geometry
+is fully determined by the inputs (m_e, m_p, Δm²₂₁, α) plus the
+requirement that the mode spectrum matches observation.
 
 
 ## 3. Spin, charge, and mass
