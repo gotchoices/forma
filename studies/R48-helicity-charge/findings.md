@@ -117,3 +117,81 @@ A follow-up track could compute the Gauss integral for a
 traveling (circulating) CP wave on the torus, which should
 give nonzero Q for the circulating direction and test whether
 the result depends on n₂.
+
+
+## Track 2. Traveling-wave CP — corrected ρ̂ projection
+
+Script: [`scripts/track2_traveling_wave.py`](scripts/track2_traveling_wave.py)
+
+### Correction from Track 1
+
+Track 1 computed E · n̂_surface (normal to the torus surface).
+The WvM charge argument uses E · ρ̂ (cylindrical radial,
+outward from the torus axis).  These are different: n̂_surface
+rotates with θ₁ (it's the local surface normal), while ρ̂ is
+fixed in the xy-plane at each θ₂.  The WvM synchronization
+gives constant E · ρ̂, not constant E · n̂_surface.
+
+### Model
+
+For a CP wave synchronized with the tube geometry, the
+E · ρ̂ component factorizes:
+
+> E · ρ̂ = cos((n₁ − 1)θ₁) × ring_factor
+
+The **tube factor** cos((n₁ − 1)θ₁) comes from the
+interference between the CP rotation rate (n₁ per tube
+circuit) and the geometric rotation rate (1 per tube circuit).
+When n₁ = 1, these cancel and the tube factor is constant.
+
+The **ring factor** depends on the wave type:
+- Standing wave: cos(n₂θ₂) — oscillates, integrates to zero
+- Traveling wave: |e^(in₂θ₂)| = 1 — constant magnitude
+
+### Findings
+
+| ID | Finding |
+|----|---------|
+| F1 | **The n₁ = ±1 selection rule is derived from CP synchronization.**  Only n₁ = 1 gives a non-oscillating tube factor: cos((1−1)θ₁) = 1.  For n₁ = 0, 2, 3, ..., the tube factor oscillates and integrates to zero.  This is the charge selection rule, emerging from the geometry of circular polarization on a torus — not postulated. |
+| F2 | **The charge does NOT depend on n₂.**  For traveling (circulating) waves with n₁ = 1, the Gauss flux is identical for n₂ = 0, 1, 2, 3, 4, 5, 6 — all give Q = 4π² = 39.478 (in normalized units).  The ring winding number is invisible to the charge mechanism. |
+| F3 | **Q104 is answered: NEGATIVE.**  Helicity does not force n₂ = 2n₁.  The CP synchronization selects n₁ = 1 (tube) but is completely blind to n₂ (ring).  Both (1,1) and (1,2) produce identical charge.  The (1,1) ghost is NOT eliminated by the polarization geometry. |
+| F4 | **Standing waves carry zero charge.**  For any mode with n₂ ≠ 0, the standing-wave Gauss integral is exactly zero (confirmed analytically and numerically in Track 1).  Charge requires net circulation — a traveling-wave component. |
+| F5 | **Charge = net circulation = topological winding.**  A traveling wave going once around the tube advances its phase by 2π.  This IS the GRID topological winding.  The CP synchronization (E · ρ̂ = constant) is the field-level manifestation.  Standing waves have zero net circulation, zero winding, zero charge.  A charged particle must have a circulation imbalance — more energy going one way than the other — which is provided by shear chirality (the embedding angle). |
+| F6 | **The proton (3,6) question.**  For n₁ = 3, the tube factor is cos(2θ₁), which oscillates and integrates to zero.  In this model, (3,6) does NOT carry charge directly.  If the proton is (3,6), charge must come from a different mechanism — perhaps from the three (1,2) sub-strands, each of which individually satisfies n₁ = 1 and carries charge. |
+
+### Implications
+
+**For ghost elimination:** helicity cannot kill (1,1).  The
+only proven mechanism remains slot filtering (R46 Tracks 3–4).
+The waveguide cutoff hypothesis (R46 Track 5) is still viable
+but untested.
+
+**For the proton:** if (3,6) doesn't carry charge directly
+(F6), but each of its three (1,2) sub-strands does, this
+strengthens the quark picture — the proton's charge comes
+from three individually charged sub-modes, not from the
+composite (3,6) topology.  The composite has gcd(3,6) = 3,
+meaning it decomposes into three (1,2) strands at 120°.
+Each strand has n₁ = 1 → charge 1/3 of e (by the strand's
+share of the total energy).  Total: 3 × e/3 = e.
+
+**For the charge mechanism:** charge requires circulation,
+not just topology.  A pure standing wave on a torus has zero
+charge regardless of winding numbers.  The shear chirality
+(embedding angle) breaks the circulation symmetry, giving
+net traveling-wave character and therefore charge.  This
+connects directly to the matter/antimatter asymmetry: the
+preferred circulation direction IS the matter direction.
+
+### Update to Q104
+
+Q104 is **closed — negative result**.  Helicity selects
+n₁ = 1 (the tube selection rule) but does not constrain n₂.
+The (1,1) ghost must be eliminated by another mechanism.
+
+However, the study produced two positive results not
+originally anticipated:
+1. A clean derivation of the n₁ = ±1 charge selection rule
+   from CP geometry
+2. The proof that charge requires circulation (traveling
+   wave), connecting charge to the shear chirality mechanism

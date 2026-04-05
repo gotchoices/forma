@@ -1,6 +1,6 @@
 # R48: Does circular polarization helicity select charged modes?
 
-**Status:** Active — Track 1
+**Status:** Complete — Tracks 1-2.  Q104 answered: negative.
 **Questions:** [Q104](../../qa/Q104-helicity-forces-n2.md) (helicity forces n₂)
 **Type:** compute
 **Depends on:** R46 Track 5 (mode filtering assessment)
