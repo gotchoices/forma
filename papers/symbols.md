@@ -71,5 +71,86 @@ A _Light_ Descent into Numerology and Symbolism
       I have found my own deeply spiritual interpretation
       The reader may find their own
 
-- This paper is kind of the sybolic/intuitive side of the across-through paper.
+- Editorial thought: This paper is kind of the sybolic/intuitive side of the across-through paper.
+-->
+
+<!--EC THIN OUTLINE — sequential arc
+
+1. AN INVITATION (NOT A CLAIM)
+   - This paper is not science.  It is pattern-noticing.
+   - The patterns fell out of the science — they didn't drive it
+   - A counter-melody in a symphony; a geometric pattern in a snowflake
+   - If you are a logical thinker, this paper may repel you
+     — just as the physics white paper may repel an intuitive thinker
+   - Both responses are valid.  Both papers describe the same structure.
+     One speaks in equations, the other in symbols.
+   - Take what resonates.  Leave what doesn't.
+
+2. THE DUALITY
+   - Nature organizes in complementary pairs: yin and yang
+   - Not male/female — a set of orthogonal traits (see across-through)
+   - Every domain has this pairing:
+     1 and 0 — the atoms of information
+     Alpha and Omega — beginning and end
+     Diameter and circumference — their ratio is π, infinite, irrational
+     E field (directed, unipolar) and B field (circulating, balanced)
+     Each carries exactly 1/2 the energy
+   - The shape of the symbols tells the story:
+     1 — sharp, directed, singular
+     0 — round, eternal, encompassing
+
+3. THE DUALITY IN THE LATTICE
+   - Delta (triangle) and Wye — conjugate duals in electrical engineering
+   - The hexagonal lattice contains both:
+     Triangles = delta (edge-defined, across)
+     Three-way junctions = wye (node-defined, through)
+   - Edges: like a 1 — communication, transmission, directed
+   - Nodes: like a 0 — integration, consensus, mediation
+   - Six edges + six nodes form a hexagonal cell
+     A larger "0" built from 1s and 0s
+     An O that interconnects seamlessly, tiles the plane, scales up
+   - Science (yang) and Intuition (yin) — two orthogonal paths to truth
+     This paper walks the yin path through the same landscape
+
+4. THE NUMBER
+   - Alpha, the one free variable: 137.036
+   - To the left of the decimal: 137 — the expanse from 1 to infinity
+     Macro.  Look up.  Stars, galaxies, the large-scale universe.
+   - To the right: .036 — the expanse from 1 to 0
+     Micro.  Look down.  Particles, lattice, the Planck scale.
+   - Equal in range.  Complementary.  Inverse.
+   - The Planck mass mirrors this: Compton size vs Schwarzschild size
+     Quantum world above, gravitational world below, crossing at the Planck scale
+
+5. 137 — THE YANG SIDE
+   - Finite.  Definite.  Three digits.
+   - 1: the micro dimension beneath the grid (the aleph-line)
+     Also: c = 1, L = 1 in natural units — unity, singularity
+   - 3: three particle sheets form MaSt (Ma_e, Ma_ν, Ma_p)
+     1 + 3 = 4 — the four compact dimensions beneath spacetime
+   - 7: three particle + four spacetime = seven
+     1 + 3 + 7 = 11 — the full dimensionality (M-theory also finds 11)
+   - Digits sum to 11.  Dimensions total 11.  Coincidence or echo.
+
+6. .036 — THE YIN SIDE
+   - Infinite.  The actual value is 137.035999177...
+   - .036 is what we see by rounding — the surface
+   - The true value goes on, unknowable in its entirety
+     Like π.  Like the reals between 0 and 1.  Infinite depth.
+   - 0: yin — eternal, formless, the void from which structure emerges
+   - 36: natural divisions of a circle (360°)
+     The number with the most common divisors in its neighborhood
+     6 edges × 6 nodes = 36 — the lattice cell's internal count
+   - The yang side (137) is what we measure
+   - The yin side (.036...) is what we cannot fully know
+   - The reader may find their own meaning here
+
+7. CLOSING
+   - The same complementary duality, at every scale:
+     1 and 0, E and B, delta and wye, 137 and .036
+     Science and intuition, logic, intuition
+   - Neither half is complete without the other
+   - Both describe the same pattern.  One proves it.  The other feels it.
+   - It requires both to arrive at Truth
+
 -->
