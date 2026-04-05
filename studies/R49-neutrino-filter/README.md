@@ -407,7 +407,7 @@ wavelength-matched.
 
 ### Track 2: Weak coupling selection rule
 
-**Status:** Planned (revised from original "mode spectrum")
+**Status:** On hold — requires weak force model in WvM terms
 
 **Goal:** At representative ε_ν values (from Track 1),
 characterize the full mode spectrum.  Determine whether
@@ -441,7 +441,7 @@ and how filtering operates.
 
 ### Track 3: Oscillation — phase evolution baseline
 
-**Status:** Planned
+**Status:** On hold — standard phase model confirmed by construction
 
 **Goal:** Implement the standard quantum-mechanical
 oscillation model using Ma_ν eigenmodes.  Verify that
@@ -468,7 +468,7 @@ the torus mass eigenvalues reproduce observed oscillation.
 
 ### Track 4: Oscillation — energy redistribution hypothesis
 
-**Status:** Planned
+**Status:** On hold — requires coupling model
 
 **Goal:** Test whether oscillation could involve actual
 energy transfer between modes on Ma_ν, rather than (or
@@ -506,7 +506,7 @@ in addition to) pure phase evolution.
 
 ### Track 5: Uniqueness of the oscillation triplet
 
-**Status:** Planned
+**Status:** On hold — partly addressed by Track 1 (F2, F10)
 
 **Goal:** Determine whether the three neutrino mass
 eigenstates are uniquely selected among all possible
@@ -541,7 +541,7 @@ mode triplets on Ma_ν.
 
 ### Track 6: Connection to information storage
 
-**Status:** Planned
+**Status:** On hold — partly addressed by Track 2a (F22–F25)
 
 **Goal:** Quantify how the mode spectrum on Ma_ν relates
 to the information storage hypothesis (Q85, R35).

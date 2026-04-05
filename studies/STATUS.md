@@ -88,24 +88,34 @@ the mode topology.  Key surprise: WvM charge integral is exactly
 zero for n₁ = 3 — charge must come from (1,2) strand sub-structure.
 Composite waveguide cutoff question flagged for eigenmode study.
 
-### R49. Neutrino sheet — filtering, oscillation, and mode spectrum  **Active — Track 1 complete**
+### R50. Filtered multi-sheet mode search  **Framing**
+**Study:** [`R50-filtered-particle-search/`](R50-filtered-particle-search/)
+**Questions:** Q16  **Type:** compute  **Depends on:** R29, R46, R47, R49
+
+Joint 6D search on the **coupled** three-sheet metric (not
+independent per-sheet catalogs).  Builds `lib/ma_model_c.py`
+(R46–R49 filters, no hard-coded legacy pinning).  Nuclei
+reprised from R29 Track 3 / F16 as richer mode combinations
+under the new rules.  Philosophy: one system, near-misses
+for unstable states, neutron not a calibration target.
+Proton as (3,6) composite (R47).  Five tracks.
+
+### R49. Neutrino sheet — filtering, oscillation, and mode spectrum  **On hold — Tracks 1–2a complete**
 **Study:** [`R49-neutrino-filter/`](R49-neutrino-filter/)
 **Questions:** Q85, Q94, Q99  **Type:** compute / theoretical  **Depends on:** R24, R25, R26, R46, R47
 
-Neutrino sheet (Ma_ν) characterization: mode spectrum, filtering,
-oscillation mechanism, and information storage.  Track 1 swept
-(ε_ν, s₃₄) parameter space — result: **broadly viable**, not
-tightly constrained.  22 unique triplets match Δm² data across
-ε = 0.1–5.0, clustering into three families:
-- **A** (R26 Assignment A): ε = 5, s = 0.022, Σm = 118 meV
-  (tight), 26 steriles, spins ≈ 0.36 (marginal)
-- **B** (thin torus): ε = 0.1, perfect spin, 120+ steriles
-  (problematic), waveguide kills all modes
-- **C** (mixed): ε = 0.2, intermediate steriles, marginal spin
+Neutrino sheet characterization.  Completed tracks:
+- **Track 1**: ε broadly viable (0.1–5+), 3 solution families,
+  not uniquely constrained by oscillation data alone
+- **Track 1a**: Extra modes can't hide — sharp selection required
+- **Track 1b**: Waveguide cutoff sets floor but doesn't select
+  exactly 3; Assignment A near floor at ε ≈ 2–5
+- **Track 2a**: Modes reach m_e at N ≈ 17.5M; Compton window
+  (6.6 μm) encompasses ~10¹³ atoms in condensed matter
+- **Q105**: Assignment A implies Majorana neutrinos via
+  C-conjugate mixing; predicts 0νββ at |m_ββ| ≈ 10–30 meV
 
-Key finding: oscillation data alone does NOT pin the mode
-assignment.  Sterile count and waveguide cutoff are the strongest
-discriminators.  5 tracks remaining.
+Remaining tracks (2–6) on hold pending weak coupling model.
 
 ### R33. Ghost mode selection — why most Ma modes are dark  **Paused**
 **Study:** [`R33-ghost-selection/`](R33-ghost-selection/)
