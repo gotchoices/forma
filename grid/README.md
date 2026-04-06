@@ -82,14 +82,6 @@ in natural units.
 **Target:** G expressed in terms of ζ, ℏ, c, k with full
 dimensional analysis.  No circular reasoning.
 
-## Origin
-
-This sub-project grew from the dialog in
-[`dialogs/the-grid.md`](../dialogs/the-grid.md) — an exploration
-starting from electromagnetic impedance and arriving at a two-knob
-lattice model.  That dialog contains the intuition; these files
-contain the clean formulation.
-
 ## Status
 
 See [STATUS.md](STATUS.md) for the roadmap and progress.
