@@ -38,17 +38,16 @@ reader will do.
 
 ## What I claim and don't claim
 
-I do not claim that this model is correct.  It may turn out to
-be a mathematical coincidence, a tautology, an elaborate
-numerology, or, hopefully, a useful approximation to something
-deeper.
+I do **not** claim that this model is correct.  It may turn out to
+be a mathematical coincidence, a tautology, or an elaborate exercise in
+numerology.  I expect only one out of 137 physicists to take a serious
+look at it.
 
-What I do claim is that it is *interesting*: a model with four
-experimental inputs and two fit particles that then produces
-percent-level mass predictions for a half-dozen additional
-hadrons is, at minimum, worth understanding why it works as
-well as it does — and worth understanding precisely where and
-why it fails.
+What I do claim is that it is *interesting*: a model with a few
+experimental inputs and two calibration particles that then produces
+percent-level mass accommodation for virtually all observed particles
+is, at minimum, worth understanding better — why it works as
+well as it does, and precisely where and why it fails.
 
 
 ## Openness and invitation
