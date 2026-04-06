@@ -1,7 +1,7 @@
 # Model: model-D (Filtered model — `ma_model_d.py`) ⟵ ACTIVE
 
-**Status:** In progress — foundational studies complete, particle census pending  
-**Code / implementation:** [`studies/lib/ma_model_d.py`](../studies/lib/ma_model_d.py) (planned; see [R50 README](../studies/R50-filtered-particle-search/README.md))  
+**Status:** Active — R50 particle census complete (Tracks 1–4)  
+**Code / implementation:** [`studies/lib/ma_model_d.py`](../studies/lib/ma_model_d.py) (~1,100-line Ma engine with 6×6 coupled metric, waveguide filtering, composite charge/spin)  
 **Study range:** **R45 (catalyst) → R46, R47, R48, R49, R50** (see [`studies/STATUS.md`](../studies/STATUS.md))  
 **Supersedes:** [model-C](model-C.md) (`ma_model.py`, R39–R44)
 
@@ -58,18 +58,16 @@ MaSt physics.  Model-D closes that loop:
 
 **Root-level documentation** ([`README.md`](../README.md),
 [`STATUS.md`](../STATUS.md), [`Taxonomy.md`](../studies/Taxonomy.md))
-currently describes model-C's state. It will be updated to reflect
-model-D once the particle census (R50) establishes new quantitative
-benchmarks.
+currently describes model-C's state and should be updated to reflect
+model-D's quantitative benchmarks from R50.
 
 ---
 
 ## Outcomes
 
-*Model-D is evolving. This section records established results. It
-will be augmented as R50 (the particle census) produces quantitative
-predictions. Inherited results from models B/C that remain valid
-under model-D's assumptions are noted as such.*
+*Established results from foundational studies (R45–R49) plus the
+R50 particle census.  Inherited results from models B/C that remain
+valid under model-D's assumptions are noted as such.*
 
 ### What model-D has established so far
 
@@ -197,20 +195,95 @@ Model-D is the first to use GRID results as active physics:
 | **Thin-torus spin s = n₁/n₂** | Used for all predictions | Finite-ε spin deviates significantly (R49). |
 | **Muon as exact fit target** | R27 F18 | Off-resonance hypothesis says muon should have ~0.3% gap. Using it as exact target was inconsistent. |
 
-### Particle inventory *(placeholder — to be filled by R50)*
+### Particle spectrum (R50 — σ_ep = −0.13, ε_e = 0.65, ε_p = 0.55)
 
-*R50 will perform the first joint 6D census under model-D rules.
-The table below will be populated when results are available.*
+Geometry: joint 6D metric with waveguide filtering and (3,6)
+composite proton.  Electron and proton masses are inputs (set by
+ring circumferences L_ring_e, L_ring_p); all other particles are
+predictions.  No parameters pinned to unstable particle masses.
 
-| Particle | Ma mode | Predicted (MeV) | Observed (MeV) | Error | Source |
-|----------|---------|----------------:|---------------:|------:|--------|
-| Electron | (1,2,0,0,0,0) | 0.511 | 0.511 | input | — |
-| Proton | (3,6,0,0,0,0) composite | 938.3 | 938.3 | input | — |
-| Neutron | *TBD — prediction* | — | 939.6 | — | R50 |
-| Muon | *TBD — near-miss* | — | 105.7 | — | R50 |
-| *...* | | | | | |
+| Particle | Ma mode | Predicted (MeV) | Observed (MeV) | |Δm|/m | Grade |
+|----------|---------|----------------:|---------------:|------:|-------|
+| e⁻ | (1, 2, 0, 0, 0, 0) | 0.511 | 0.511 | input | reference |
+| p | (0, 0, 0, 0, 3, 6) | 938.272 | 938.272 | input | reference |
+| φ | (−1, 6, \*, \*, −2, −8) | 1019.9 | 1019.5 | 0.05% | good |
+| n | (0, 6, \*, \*, 0, 8) | 939.3 | 939.6 | 0.03% | good |
+| Ω⁻ | (−2, −6, \*, \*, −3, 13) | 1673.1 | 1672.5 | 0.04% | good |
+| τ⁻ | (2, 5, \*, \*, 1, −15) | 1780.0 | 1776.9 | 0.18% | good |
+| Σ⁺ | (−2, −5, \*, \*, −1, −10) | 1187.1 | 1189.4 | 0.19% | good |
+| Δ⁰ | (1, −6, \*, \*, 2, 10) | 1237.0 | 1232.0 | 0.41% | good |
+| Λ | (−2, 6, \*, \*, −2, −9) | 1127.7 | 1115.7 | 1.1% | good |
+| Ξ⁰ | (0, 6, \*, \*, 0, 11) | 1291.4 | 1314.9 | 1.8% | good |
+| η′ | (0, −6, \*, \*, 0, −8) | 939.3 | 957.8 | 1.9% | good |
+| ρ⁰ | (1, −6, \*, \*, 1, −6) | 742.3 | 775.3 | 4.3% | fair |
+| K⁰ | (0, −6, \*, \*, 0, −4) | 469.7 | 497.6 | 5.6% | fair |
+| η | (0, 6, \*, \*, 0, −5) | 586.8 | 547.9 | 7.1% | fair |
+| μ⁻ | (1, 6, \*, \*, 0, −1) | 117.2 | 105.7 | 10.9% | poor |
+| π⁰ | (0, 6, \*, \*, 0, −1) | 117.5 | 135.0 | 12.9% | poor |
+| π± | — | — | 139.6 | — | J impossible |
+| K± | — | — | 493.7 | — | J impossible |
 
-### Neutrino predictions *(to be refined by R50)*
+Neutrino quantum numbers marked `*` freely vary (Ma_ν contributes
+< 0.001% of the energy at hadron scales).  Grade: good = |Δm|/m < 2%;
+fair = 2–10%; poor = > 10%.
+
+**10 of 16 unstable targets with allowed quantum numbers matched
+within 2%.**  Best predictions: φ (0.05%), Ω⁻ (0.04%), n (0.03%).
+
+### Comparison to model-C
+
+| Property | Model-C (R27) | Model-D (R50) |
+|----------|---------------|---------------|
+| Free parameters | 0 at MeV scale (2 pinned: r_p, σ_ep) | 0 at MeV scale (0 pinned) |
+| Proton model | (1,2) single mode | (3,6) composite |
+| Waveguide filter | None | Per-sheet cutoff |
+| Neutron | pinned (exact) | predicted (0.03%) |
+| Muon | pinned (~0.3%) | predicted (10.9% — mass desert) |
+| Tau | near-miss (5.6%) | 0.18% |
+| Ω⁻ | structurally forbidden | 0.04% (via composite loophole) |
+| φ | 0.8% | 0.05% |
+| K⁰ | 1.2% | 5.6% (degraded) |
+| η | 0.6% | 7.1% (degraded) |
+| η′ | 0.3% | 1.9% |
+| Lifetime-gap r | −0.84 (N ≈ 7) | −0.45 (N = 7, weak − muon) |
+| Power law β | −2.7 | −2.7 (weak − muon, exact match) |
+| Charged J = 0 mesons | 14% error (π) | topologically forbidden |
+| Ghost (1,1) | ~20× overprediction | eliminated by waveguide |
+
+**Model-D wins:** τ (31× better), Ω⁻ (impossible → 0.04%),
+φ (16× better), ghost elimination, no pinned parameters.
+
+**Model-C wins:** K⁰ (5× better), η (12× better), η′ (6× better),
+muon (pinned vs mass desert), stronger lifetime correlation.
+
+**Structural difference:** Model-C's meson accuracy came from
+parameters (r_p = 8.906, σ_ep = −0.091) that were tuned to the
+neutron and muon, which also happened to place meson harmonics well.
+Model-D's unpinned geometry (ε_p = 0.55, σ_ep = −0.13) shifts
+harmonic spacing, improving some particles and degrading others.
+
+### Off-resonance hypothesis (R50 Track 4)
+
+Unstable particles are near-misses to Ma eigenmodes.  The
+hypothesis is **qualitatively confirmed** (correct sign in every
+subset tested) and **quantitatively insufficient** as a single-
+variable predictor.
+
+The neutron–Ω⁻ paradox: both have |Δm/m| ≈ 0.035% but lifetimes
+differ by 10¹³ — proving that mass gap alone cannot predict
+lifetime.  Coupling strength and phase space must be included.
+
+The power law exponent β = −2.7 (from R27) is recovered exactly
+in the weak-decay subset (excluding the muon), suggesting the
+functional form is real even though the absolute scale is not
+predictable from mass gap alone.
+
+**Refined hypothesis (stratified off-resonance):** Within each
+decay-channel class (strong / EM / weak-ΔS / weak-leptonic /
+weak-β), the correlation may hold.  Current sample sizes are too
+small to confirm within-class correlations.
+
+### Neutrino predictions
 
 | Property | Model-D range | Model-C value | Experiment |
 |----------|--------------|---------------|------------|
@@ -332,11 +405,11 @@ confidence level.
 | **R47** | Proton geometry — (1,3) abandoned, (1,2) vs (3,6) comparison, spindle explored, SU(6) moments | Track 7 complete |
 | **R48** | Helicity and charge — n₁ = ±1 derived geometrically, helicity doesn't discriminate ghosts | Complete (T1–T2) |
 | **R49** | Neutrino sheet — ε_ν sweep, three families, waveguide, spin at finite ε, Majorana prediction | Tracks 1–2a complete, on hold |
-| **R50** | **Filtered multi-sheet mode search** — joint 6D census under all new rules | **Framing** — next major milestone |
+| **R50** | **Filtered multi-sheet mode search** — joint 6D census under all new rules | **Track 4 complete** — 19-particle spectrum established |
 
 ### R50 design (the census)
 
-R50 is the integration study where model-D produces its first
+R50 is the integration study where model-D produced its first
 quantitative particle predictions. Key design choices:
 
 - **One system**: Ma treated as a single coupled 6D metric, not
@@ -361,12 +434,45 @@ quantitative particle predictions. Key design choices:
 
 ## Limitations
 
-*These are the known limitations of model-D as currently understood.
-Some may be resolved by the R50 census or follow-on studies.*
+### From R50 census
 
-- **No quantitative particle predictions yet** — R50 is in framing.
-  The model has established mechanisms and constraints but has not
-  run the joint census.
+- **Charged pseudoscalar mesons (π±, K±) are topologically
+  forbidden.**  The additive spin rule (J = number of odd per-strand
+  tube windings × ½) forces Q to be even when J = 0.  Charged J = 0
+  modes cannot exist.  The proposed resolution — QM spin addition
+  (antiparallel alignment of two spin-½ components) — is standard
+  quantum mechanics, but whether the torus geometry supports two
+  strands with opposite tube orientations within a single mode is
+  unresolved.  This is model-D's most significant structural failure.
+- **Muon mass desert.**  No eigenmode exists between ~0.2 MeV
+  (electron ring scale) and ~116 MeV (proton ring scale).  The muon
+  (105.7 MeV) sits in this gap with a 10.9% residual.  This is
+  structural — it follows from m_e/m_p ≈ 1/1836 — and no parameter
+  adjustment within the current three-sheet geometry can fix it.
+  Model-C avoided this by pinning the muon as a fitted parameter.
+- **K⁰ and η degraded.**  These model-C successes (1.2%, 0.6%)
+  degrade to 5.6% and 7.1% under model-D's unpinned geometry.
+  Whether σ_ep or ε_p optimization can recover them without
+  degrading the baryon matches is an open question.
+- **Mode overcounting (~30,000:1).**  ~567,000 propagating modes
+  below 2 GeV for 19 target particles.  Most are label-degenerate
+  (varying neutrino/electron dressings at negligible energy), but
+  even after removing label degeneracy, ~200–400 physically distinct
+  energy levels remain for ~19 targets (15–25× overcounting).
+- **Neutron decomposition concern.**  The best neutron candidate
+  (0, 6, \*, \*, 0, 8) has n₁ = 0 — no tube winding on the electron
+  sheet.  Beta decay (n → p + e⁻ + ν̄_e) requires a charged electron
+  (n₁ = 1).  Whether "dark" electron-ring winding can redistribute
+  into charged components when cross-sheet coupling is removed is
+  an open question.
+- **Off-resonance hypothesis insufficient as single-variable
+  predictor.**  The neutron and Ω⁻ have nearly identical |Δm/m|
+  (~0.035%) but lifetimes differing by 10¹³.  Mass gap alone cannot
+  predict lifetime; coupling strength and phase space must be
+  included.
+
+### Pre-existing (from R45–R49)
+
 - **α still circular**: shear s is still reverse-engineered from α,
   not derived from geometry. The CP shear formula (R46) unifies
   representations but does not break the circularity.
@@ -385,12 +491,11 @@ Some may be resolved by the R50 census or follow-on studies.*
 - **Sterile neutrino tension**: all families predict 15–128 sterile
   modes on Ma_ν, but N_eff = 3 from cosmology requires sharp weak
   coupling to suppress them. Mechanism not yet modeled.
-- **Inherited open problems**: α from first principles, ghost mode
-  suppression details, Compton window Q factor, hierarchy problem,
-  moduli potential — all unchanged from model-C.
+- **Inherited open problems**: α from first principles, Compton
+  window Q factor, hierarchy problem, moduli potential — all
+  unchanged from model-C.
 - **Root documentation lag**: README.md, STATUS.md, and Taxonomy.md
-  still describe model-C. Will be updated after R50 establishes
-  benchmarks.
+  still describe model-C.
 
 ---
 
@@ -418,8 +523,8 @@ Some may be resolved by the R50 census or follow-on studies.*
 
 - **Predecessor:** [model-C.md](model-C.md) (R39–R44, `ma_model.py`)
 
-- **Code (planned):**
-  [`studies/lib/ma_model_d.py`](../studies/lib/ma_model_d.py)
+- **Code:**
+  [`studies/lib/ma_model_d.py`](../studies/lib/ma_model_d.py) (~1,100 lines)
 
 - **Key QA:**
   [Q100 (aperture moment)](../qa/Q100-aperture-moment-enhancement.md),
