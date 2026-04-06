@@ -23,6 +23,13 @@ Please clone this repo and encourage your friends to do the same.
 If you have the scientific background to review some
 of the studies contained here, please help out!
 
+**New here?** The [`papers/`](papers/README.md) folder offers three
+entry paths — scientific, intuitive, and reflective — depending on
+how you like to learn.  Start with
+[What If?](papers/whatif.md) for the core idea in plain language, or
+[Matter from Light](papers/matter-from-light.md) for the full
+technical story.
+
 
 ## The big picture
 
@@ -122,9 +129,10 @@ equations — now derived by [GRID](grid/README.md) from a
 discrete lattice).  Everything else — the particle zoo, their
 properties, their interactions — should follow.
 
-See [`qa/Q27-foundational-axioms.md`](qa/Q27-foundational-axioms.md) and
-[`qa/Q32-energy-geometry-fundamentals.md`](qa/Q32-energy-geometry-fundamentals.md)
-for discussion.
+GRID's six axioms ([`grid/foundations.md`](grid/foundations.md))
+now derive both Maxwell's equations and gravity from this
+principle.  See [`studies/Taxonomy.md`](studies/Taxonomy.md) §6
+for the full mechanism catalog.
 
 
 ## Models
