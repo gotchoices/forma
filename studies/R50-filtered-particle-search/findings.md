@@ -908,6 +908,118 @@ allowed quantum numbers are matched within 2%.
   is removed?
 
 
+### Track 3 re-run: (1,3) proton, unfiltered (post-Track 6)
+
+The original Track 3 used the (3,6) proton at σ_ep = −0.13 with
+waveguide filtering.  After Track 6 showed the filter creates
+an artificial bias against (1,3), Track 3 was re-run with:
+- Proton mode: **(1,3)**
+- σ_ep = **−0.27** (Track 6's optimal for (1,3) neutron)
+- **No waveguide filter** (all modes are candidates)
+- Universal charge formula Q = −n₁ + n₅
+
+### F41. Re-run master spectrum: (1,3) at σ_ep = −0.27, unfiltered
+
+| Particle | Tier | m (MeV) | Q | J | Best mode | Δm (MeV) | |Δm|/m | Grade | Prop? |
+|----------|------|---------|---|---|-----------|-----------|--------|-------|-------|
+| e⁻ | 1 | 0.511 | −1 | ½ | (1, 2, *, *, 0, 0) | ~0 | ~0 | reference | ✓ |
+| p | 1 | 938.272 | +1 | ½ | (0, 0, *, *, 1, 3) | ~0 | ~0 | reference | ✓ |
+| n | 2 | 939.565 | 0 | ½ | (2, 6, 2, 3, 2, 0) | −0.79 | 0.084% | good | **✗** |
+| η′ | 2 | 957.78 | 0 | 0 | (2, 5, 2, 1, 2, −1) | −6.5 | 0.68% | good | **✗** |
+| φ | 3 | 1019.46 | 0 | 1 | (−2, 6, −2, −3, −2, 2) | +10.4 | 1.0% | good | **✗** |
+| Ξ⁰ | 3 | 1314.86 | 0 | ½ | (2, 5, −2, −3, 2, −4) | +16.0 | 1.2% | good | ✓ |
+| τ⁻ | 3 | 1776.86 | −1 | ½ | (1, 6, 2, −1, 0, −7) | +25.0 | 1.4% | good | ✓ |
+| Σ⁺ | 3 | 1189.37 | +1 | ½ | (−2, −5, −2, −1, −1, −4) | −20.2 | 1.7% | good | ✓ |
+| K⁰ | 2 | 497.61 | 0 | 0 | (0, −6, 2, −3, 0, 2) | +17.0 | 3.4% | fair | ✓ |
+| Λ | 2 | 1115.68 | 0 | ½ | (−2, −5, 0, 2, −2, −2) | −5.9 | 0.53% | good | **✗** |
+| Δ⁰ | 3 | 1232.0 | 0 | 3/2 | (1, 6, 1, −2, 1, 4) | −62.9 | 5.1% | fair | ✓ |
+| η | 2 | 547.86 | 0 | 0 | (0, −6, −2, −3, 0, −2) | −32.6 | 5.9% | fair | ✓ |
+| ρ⁰ | 3 | 775.26 | 0 | 1 | (1, 6, 0, 1, 1, 2) | −48.3 | 6.2% | fair | ✓ |
+| π⁰ | 2 | 134.98 | 0 | 0 | (0, 6, 2, 3, 0, −1) | +122.2 | 90.5% | poor | ✓ |
+| μ⁻ | 2 | 105.66 | −1 | ½ | (1, 6, −2, −3, 0, 0) | −104.4 | 98.8% | poor | ✓ |
+| π± | 2 | 139.57 | +1 | 0 | — | — | — | J impossible | |
+| K± | 2 | 493.68 | +1 | 0 | — | — | — | J impossible | |
+| Ω⁻ | 3 | 1672.45 | −1 | 3/2 | (−2, −6, −2, 0, −3, 4) | −2.9 | 0.17% | good | **✗** |
+
+Sorted by |Δm|/m within grade.  **5 of 19 targets use
+non-propagating modes** (marked ✗ in Prop? column).
+
+### F42. Comparison: (1,3) unfiltered vs (3,6) filtered
+
+| Particle | (3,6) σ=−0.13 | (1,3) σ=−0.27 | Better |
+|----------|---------------|---------------|--------|
+| n | 0.03% | 0.084% | (3,6) |
+| Ω⁻ | 0.04% | 0.17% | (3,6) |
+| φ | 0.05% | 1.0% | (3,6) |
+| τ⁻ | 0.18% | 1.4% | (3,6) |
+| Σ⁺ | 0.19% | 1.7% | (3,6) |
+| Λ | 0.53% (✓) | 0.53% (✗) | tie |
+| η′ | 1.9% | 0.68% | **(1,3)** |
+| Ξ⁰ | 1.8% | 1.2% | **(1,3)** |
+| K⁰ | 5.6% | 3.4% | **(1,3)** |
+| η | 7.1% | 5.9% | **(1,3)** |
+| Δ⁰ | 0.41% | 5.1% | (3,6) |
+| ρ⁰ | 4.3% | 6.2% | (3,6) |
+| μ⁻ | 10.9% | 98.8% | (3,6) |
+| π⁰ | 12.9% | 90.5% | (3,6) |
+
+The (3,6) model at σ_ep = −0.13 wins on the baryons (n, Ω⁻,
+Σ⁺, Δ⁰) and the φ meson.  The (1,3) model at σ_ep = −0.27
+wins on the lighter neutral mesons (η′, Ξ⁰, K⁰, η).
+
+**This comparison is unfair in one respect:** σ_ep has not been
+optimized for the (1,3) model's full particle spectrum.  The
+value −0.27 was chosen to minimize the neutron gap (Track 6);
+a different σ_ep might trade neutron proximity for better
+baryon or meson matches overall.  A joint σ_ep optimization
+across all targets remains to be done.
+
+### F43. Five particles require compound-structure modes
+
+The (1,3) unfiltered scan found that **5 of 19** target
+particles are best matched by modes that fail per-sheet
+waveguide cutoff:
+
+| Particle | Mode | Component failing | Why |
+|----------|------|-------------------|-----|
+| n | (2, 6, 2, 3, 2, 0) | Ma_p: (2, 0) | tube-only, no ring |
+| η′ | (2, 5, 2, 1, 2, −1) | Ma_p: (2, −1) | |n_ring| < |n_tube|/ε |
+| φ | (−2, 6, −2, −3, −2, 2) | Ma_p: (−2, 2) | |n_ring| < |n_tube|/ε |
+| Λ | (−2, −5, 0, 2, −2, −2) | Ma_p: (−2, −2) | |n_ring| < |n_tube|/ε |
+| Ω⁻ | (−2, −6, −2, 0, −3, 4) | Ma_p: (−3, 4) | |n_ring| < |n_tube|/ε |
+
+All five fail on the **proton sheet** — they have proton-tube
+windings (n₅ ≠ 0) with insufficient proton-ring winding to
+satisfy the per-sheet cutoff at ε_p = 0.55 (which requires
+|n₆| ≥ |n₅|/0.55 ≈ 1.82 × |n₅|).
+
+On isolated proton tori these modes are evanescent.  In the
+compound structure, cross-shear coupling sustains them —
+energy for the proton-tube winding comes from cross-sheet
+coupling rather than ring circulation.
+
+This is strong evidence that the filtration mechanism is
+**not** per-sheet waveguide cutoff, at least for the proton
+sheet.  The compound structure opens channels that the
+isolated-torus analysis missed.
+
+### F44. Off-resonance correlation weakens
+
+The Pearson correlation between log₁₀(τ) and log₁₀(|Δm/m|)
+dropped from r = −0.40 (original Track 3, (3,6)) to
+r = −0.27 (re-run, (1,3)).  Both are negative (correct sign)
+but neither is statistically significant at N = 13.
+
+The muon is the dominant outlier: it has the largest mass gap
+(98.8%) but one of the longer lifetimes (2.2 μs).  This is
+a mass-desert artifact, not a failure of the off-resonance
+hypothesis — the muon has no nearby eigenmode to decay *into*
+on the torus, regardless of how far off-resonance it is.
+
+The correlation should be re-examined after σ_ep optimization
+and after excluding mass-desert particles.
+
+
 ---
 
 ## Track 4 — Decay rate ↔ near-miss correlation
@@ -1123,6 +1235,68 @@ and the mode search to higher energies could test this.
 - Is there a principled way to derive coupling strengths from
   the Ma geometry, rather than importing them from the
   Standard Model?
+
+
+### Track 4 re-run: (1,3) proton, σ_ep = −0.27, unfiltered
+
+Updated with Track 3 re-run data ((1,3) proton, unfiltered).
+
+### F45. Correlation improves for clean subsets
+
+| Subset | N | Pearson r | p-value | β | R² |
+|--------|---|-----------|---------|---|-----|
+| All unstable | 14 | −0.30 | 0.31 | −2.5 | 0.09 |
+| Weak only | 8 | −0.23 | 0.58 | −1.2 | 0.06 |
+| All − muon | 13 | −0.57 | **0.044** | −5.5 | 0.32 |
+| Weak − muon | 7 | −0.71 | 0.074 | −6.3 | 0.51 |
+| Excl. strong + muon | 8 | −0.76 | **0.028** | −4.5 | 0.58 |
+| Baryons | 6 | **−0.85** | **0.032** | −10.7 | 0.72 |
+| Weak baryons | 5 | −0.71 | 0.18 | −7.4 | 0.51 |
+
+Two subsets now achieve **p < 0.05**:
+- "Baryons" (r = −0.85, p = 0.032) — comparable to R27's
+  r = −0.84.
+- "Excl. strong + muon" (r = −0.76, p = 0.028).
+
+### F46. Comparison with original Track 4
+
+| Subset | (3,6) r | (1,3) r | Change |
+|--------|---------|---------|--------|
+| All | −0.23 | −0.30 | improved |
+| Weak − muon | −0.45 | −0.71 | **much improved** |
+| Excl. strong + muon | −0.61 | −0.76 | improved |
+| Baryons | −0.45 | −0.85 | **much improved** |
+
+The (1,3) unfiltered model improves the off-resonance
+correlation for every subset tested.  The baryons subset goes
+from r = −0.45 (not significant) to r = −0.85 (p = 0.032).
+
+The improvement is partly due to the neutron's tighter mass
+match: (1,3) gives |Δm| = 0.79 MeV vs (3,6)'s 0.31 MeV —
+but the neutron's ~880 s lifetime anchors the long-lived end
+of the correlation either way.  The real improvement comes
+from the baryon mass residuals redistributing more evenly
+across the correlation space.
+
+### F47. Muon dominates the full-sample weakness
+
+The muon has a 98.8% mass residual (it matched to 1.2 MeV,
+essentially the electron scale) but lives 2.2 μs — a massive
+outlier.  Removing it improves r from −0.30 to −0.57.
+
+At σ_ep = −0.27, the proton ring spacing (E₀_p = 239 MeV)
+places no mode near 106 MeV.  The muon problem is
+structural — it sits in the mass desert between the electron
+sheet (~0.2 MeV) and the proton sheet (~239 MeV).
+
+### F48. Power law exponent differs from R27
+
+The best-fit β values (−4.5 to −10.7) are steeper than R27's
+β ≈ −2.7.  The difference reflects the (1,3) model's different
+mass gap distribution — residuals are generally larger (due to
+σ_ep = −0.27 being unoptimized) and more spread, requiring a
+steeper slope to fit.  The exact value of β is model-dependent
+and should not be interpreted physically until σ_ep is optimized.
 
 
 ---

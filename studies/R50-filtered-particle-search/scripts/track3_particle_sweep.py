@@ -1,9 +1,13 @@
 """
-R50 Track 3: Full joint mode sweep — particle spectrum at σ_ep ≈ −0.13
+R50 Track 3: Full joint mode sweep — particle spectrum
 
-At the preferred cross-shear from Track 2 (σ_ep = −0.13), scans the
-full 6D mode space up to ~2 GeV and matches against the tier 1–4
-particle targets from the R50 README.
+Scans the full 6D mode space up to ~2 GeV and matches against the
+tier 1–4 particle targets from the R50 README.
+
+Updated post-Track 6: uses (1,3) proton at σ_ep = −0.27, with NO
+waveguide cutoff filter (compound-structure approach).  The per-sheet
+filter artificially excluded modes that the coupled three-sheet
+system can sustain.
 
 KEY PHYSICS:
 The topological spin rule (J = number_of_odd_tube_windings × ½)
@@ -41,8 +45,10 @@ from lib.ma_model_d import (
 M_NEUTRON = 939.565
 EPS_E, EPS_NU, EPS_P = 0.65, 5.0, 0.55
 S_NU_DEFAULT = 0.022
-SIGMA_EP = -0.13
+SIGMA_EP = -0.27  # Track 6 best for (1,3) proton
 E_MAX = 2000.0  # MeV
+
+N_P = (1, 3)  # Leading proton hypothesis (Track 5/6)
 
 # ── Target particles ──────────────────────────────────────────────
 # (name, mass_MeV, charge, spin, lifetime_s, tier)
@@ -71,7 +77,8 @@ TARGETS = [
 
 # ── Model builder (from Track 2) ─────────────────────────────────
 
-def build_corrected_model(sigma_ep=0.0, sigma_enu=0.0, sigma_nup=0.0):
+def build_corrected_model(sigma_ep=0.0, sigma_enu=0.0, sigma_nup=0.0,
+                          n_p=N_P):
     """Build MaD with L_ring adjusted for cross-shear effects on G̃⁻¹."""
     s_e = solve_shear_for_alpha(EPS_E)
     s_p = solve_shear_for_alpha(EPS_P)
@@ -92,7 +99,7 @@ def build_corrected_model(sigma_ep=0.0, sigma_enu=0.0, sigma_nup=0.0):
     mu_eff_e = math.sqrt(float(n_e_d @ Gti @ n_e_d))
     L_ring_e = _TWO_PI_HC * mu_eff_e / M_E_MEV
 
-    n_p_d = np.array([0, 0, 0, 0, 3.0 / EPS_P, 6.0])
+    n_p_d = np.array([0, 0, 0, 0, float(n_p[0]) / EPS_P, float(n_p[1])])
     mu_eff_p = math.sqrt(float(n_p_d @ Gti @ n_p_d))
     L_ring_p = _TWO_PI_HC * mu_eff_p / M_P_MEV
 
@@ -105,6 +112,7 @@ def build_corrected_model(sigma_ep=0.0, sigma_enu=0.0, sigma_nup=0.0):
             s_e=s_e, s_nu=s_nu, s_p=s_p,
             L_ring_e=L_ring_e, L_ring_nu=L_ring_nu, L_ring_p=L_ring_p,
             sigma_ep=sigma_ep, sigma_enu=sigma_enu, sigma_nup=sigma_nup)
+        model._n_p = n_p
     except ValueError:
         return None, {}
 
@@ -116,13 +124,14 @@ def build_corrected_model(sigma_ep=0.0, sigma_enu=0.0, sigma_nup=0.0):
 # ── Helpers ───────────────────────────────────────────────────────
 
 def generate_candidates(n_ranges, charge_target=None, spin_target=None):
-    """Generate 6-tuples, optionally filtered by charge and/or spin."""
+    """Generate 6-tuples, optionally filtered by charge and/or spin.
+    No waveguide filter — all modes are candidates (Track 6 methodology)."""
     ranges = [range(lo, hi + 1) for lo, hi in n_ranges]
     out = []
     for n in iproduct(*ranges):
         if all(ni == 0 for ni in n):
             continue
-        if charge_target is not None and MaD.charge_composite(n) != charge_target:
+        if charge_target is not None and MaD.charge(n) != charge_target:
             continue
         if spin_target is not None and MaD.spin_total(n) != spin_target:
             continue
@@ -142,12 +151,12 @@ def is_qs_possible(Q, spin):
     Check if (Q, spin) is topologically realizable.
 
     The number of odd per-strand tube windings k determines spin J = k/2.
-    Charge Q = −n₁ + n₅/gcd.  Both n₁ and n₅/gcd are tube windings
-    (on charged sheets), so:
+    Charge Q = −n₁ + n₅.  Both n₁ and n₅ are tube windings on charged
+    sheets, so:
       k = 0: both even → Q even
       k = 1: one odd tube, can be on ν (no charge) → any Q
       k = 2: two odd tubes, one can be on ν → any Q
-      k = 3: all three odd, n₁ and n₅/gcd both odd → Q even
+      k = 3: all three odd, n₁ and n₅ both odd → Q even
     """
     k = int(2 * spin)
     if k == 0 or k == 3:
@@ -162,18 +171,21 @@ def main():
     print("=" * 72)
 
     # ── Phase 0: Build model ──────────────────────────────────────
-    print(f"\nPhase 0: Model at σ_ep = {SIGMA_EP}")
+    print(f"\nPhase 0: Model at σ_ep = {SIGMA_EP}, proton = {N_P}")
     model, info = build_corrected_model(sigma_ep=SIGMA_EP)
     E_e = model.energy((1, 2, 0, 0, 0, 0))
-    E_p = model.energy((0, 0, 0, 0, 3, 6))
+    n_p_full = (0, 0, 0, 0, N_P[0], N_P[1])
+    E_p = model.energy(n_p_full)
     E0_p = _TWO_PI_HC / info['L_ring_p']
     E0_e = _TWO_PI_HC / info['L_ring_e']
 
+    print(f"  Proton mode: {N_P}")
     print(f"  E(electron) = {E_e:.6f} MeV  (target {M_E_MEV:.6f})")
     print(f"  E(proton)   = {E_p:.3f} MeV  (target {M_P_MEV:.3f})")
+    print(f"  L_ring_p = {info['L_ring_p']:.4f} fm")
     print(f"  E₀_p (proton ring unit) = {E0_p:.2f} MeV")
     print(f"  E₀_e (electron ring unit) = {E0_e:.4f} MeV")
-    print(f"  Mass desert: {E0_e:.2f} – {E0_p:.0f} MeV (no modes here)")
+    print(f"  No waveguide filter applied (Track 6 methodology)")
 
     N_RANGES = [
         (-3, 3),     # n₁  electron tube
@@ -194,9 +206,9 @@ def main():
     print(f"{'=' * 72}")
     print("""
   Additive spin rule: J = (# odd per-strand tubes) × ½
-  Charge:             Q = −n₁ + n₅/gcd(|n₅|,|n₆|)
+  Charge:             Q = −n₁ + n₅  (universal formula)
 
-  Both n₁ and n₅/gcd are tube windings on charged sheets.
+  Both n₁ and n₅ are tube windings on charged sheets.
   When ALL tubes are even (J = 0) or ALL are odd (J = 3/2),
   both charged-sheet tubes share the same parity → Q is even.
 
@@ -230,33 +242,32 @@ def main():
 
     for Q, J in sorted(qs_needed):
         cands = generate_candidates(N_RANGES, charge_target=Q, spin_target=J)
-        prop = [n for n in cands if model.propagates(n)]
-        if not prop:
-            print(f"  (Q={Q:+d}, J={J}): {len(cands)} raw, 0 propagating")
+        if not cands:
+            print(f"  (Q={Q:+d}, J={J}): 0 candidates")
             continue
-        arr = np.array(prop, dtype=float)
+        n_prop = sum(1 for n in cands if model.propagates(n))
+        arr = np.array(cands, dtype=float)
         E = batch_energies(arr, model.L, model.metric_inv)
         mask = E <= E_MAX
         cand_data[(Q, J)] = (
-            [prop[i] for i in range(len(prop)) if mask[i]],
+            [cands[i] for i in range(len(cands)) if mask[i]],
             E[mask],
         )
-        print(f"  (Q={Q:+d}, J={J:.1f}): {len(cands):>6d} raw → "
-              f"{len(prop):>5d} prop → {int(mask.sum()):>5d} ≤ {E_MAX:.0f} MeV")
+        print(f"  (Q={Q:+d}, J={J:.1f}): {len(cands):>6d} total "
+              f"({n_prop} prop) → {int(mask.sum()):>5d} ≤ {E_MAX:.0f} MeV")
 
     for Q in sorted(relaxed_charges):
         cands = generate_candidates(N_RANGES, charge_target=Q)
-        prop = [n for n in cands if model.propagates(n)]
-        if not prop:
+        if not cands:
             continue
-        arr = np.array(prop, dtype=float)
+        arr = np.array(cands, dtype=float)
         E = batch_energies(arr, model.L, model.metric_inv)
         mask = E <= E_MAX
         cand_data[('relax', Q)] = (
-            [prop[i] for i in range(len(prop)) if mask[i]],
+            [cands[i] for i in range(len(cands)) if mask[i]],
             E[mask],
         )
-        print(f"  Relaxed Q={Q:+d} (any J): {len(prop):>5d} prop → "
+        print(f"  Relaxed Q={Q:+d} (any J): {len(cands):>6d} total → "
               f"{int(mask.sum()):>5d} ≤ {E_MAX:.0f} MeV")
 
     # ── Phase 3: Match targets ────────────────────────────────────
@@ -300,11 +311,12 @@ def main():
         bdm = bE - mass
         bJ = MaD.spin_total(bn)
         bsh = model.active_sheets(bn)
+        bprop = model.propagates(bn)
 
         results.append(dict(
             name=name, mass=mass, Q=Q, spin=spin, tau=tau, tier=tier,
             best_n=bn, best_E=bE, best_dm=bdm,
-            relaxed=relaxed, best_J=bJ, sheets=bsh,
+            relaxed=relaxed, best_J=bJ, sheets=bsh, propagates=bprop,
         ))
 
         tag = ""
@@ -315,10 +327,11 @@ def main():
               f"Q = {Q:+d}, J = {spin}){tag}")
 
         hdr = (f"  {'#':>2s}  {'Mode':>30s}  {'E (MeV)':>10s}  "
-               f"{'Δm (MeV)':>10s}  {'|Δm|/m':>8s}  {'J':>4s}  {'Sheets':>10s}")
+               f"{'Δm (MeV)':>10s}  {'|Δm|/m':>8s}  {'J':>4s}  "
+               f"{'Prop':>4s}  {'Sheets':>10s}")
         print(hdr)
         print(f"  {'─' * 2}  {'─' * 30}  {'─' * 10}  {'─' * 10}  "
-              f"{'─' * 8}  {'─' * 4}  {'─' * 10}")
+              f"{'─' * 8}  {'─' * 4}  {'─' * 4}  {'─' * 10}")
 
         for rank, idx in enumerate(top5, 1):
             n = modes[idx]
@@ -326,9 +339,11 @@ def main():
             dm = E - mass
             J = MaD.spin_total(n)
             sh = model.active_sheets(n)
+            pflag = '✓' if model.propagates(n) else '✗'
             mark = " ←" if rank == 1 else ""
             print(f"  {rank:2d}  {str(n):>30s}  {E:10.3f}  {dm:+10.3f}  "
-                  f"{abs(dm) / mass * 100:7.3f}%  {J:4.1f}  {sh:>10s}{mark}")
+                  f"{abs(dm) / mass * 100:7.3f}%  {J:4.1f}  "
+                  f"{pflag:>4s}  {sh:>10s}{mark}")
 
     # ── Phase 4: Master table ─────────────────────────────────────
     print(f"\n{'=' * 72}")
@@ -337,15 +352,15 @@ def main():
 
     print(f"  {'Particle':>8s}  {'T':>1s}  {'m (MeV)':>10s}  {'Q':>3s}  "
           f"{'J':>4s}  {'Best mode':>30s}  {'Δm (MeV)':>10s}  "
-          f"{'|Δm|/m':>8s}  {'J_mode':>6s}  {'Note':>10s}")
+          f"{'|Δm|/m':>8s}  {'J_m':>4s}  {'P':>1s}  {'Note':>10s}")
     print(f"  {'─' * 8}  {'─'}  {'─' * 10}  {'─' * 3}  {'─' * 4}  "
-          f"{'─' * 30}  {'─' * 10}  {'─' * 8}  {'─' * 6}  {'─' * 10}")
+          f"{'─' * 30}  {'─' * 10}  {'─' * 8}  {'─' * 4}  {'─'}  {'─' * 10}")
 
     for r in results:
         if r['best_n'] is None:
             print(f"  {r['name']:>8s}  {r['tier']:1d}  {r['mass']:10.3f}  "
                   f"{r['Q']:+3d}  {r['spin']:4.1f}  {'— none —':>30s}  "
-                  f"{'':>10s}  {'':>8s}  {'':>6s}  {'no match':>10s}")
+                  f"{'':>10s}  {'':>8s}  {'':>4s}  {' ':1s}  {'no match':>10s}")
             continue
 
         frac = abs(r['best_dm']) / r['mass']
@@ -364,10 +379,12 @@ def main():
         if r['best_J'] != r['spin']:
             Jstr += "!"
 
+        pflag = '✓' if r.get('propagates', True) else '✗'
+
         print(f"  {r['name']:>8s}  {r['tier']:1d}  {r['mass']:10.3f}  "
               f"{r['Q']:+3d}  {r['spin']:4.1f}  {str(r['best_n']):>30s}  "
               f"{r['best_dm']:+10.3f}  {frac * 100:7.3f}%  "
-              f"{Jstr:>6s}  {note:>10s}")
+              f"{Jstr:>4s}  {pflag:1s}  {note:>10s}")
 
     # ── Phase 5: Off-resonance correlation ────────────────────────
     print(f"\n{'=' * 72}")
@@ -418,16 +435,19 @@ def main():
 
     # ── Phase 6: Mode census ──────────────────────────────────────
     print(f"\n{'=' * 72}")
-    print("Phase 6: Mode census (all propagating modes ≤ 2 GeV)")
+    print("Phase 6: Mode census (all modes ≤ 2 GeV, unfiltered)")
     print(f"{'=' * 72}")
 
     print("\n  Enumerating modes in chunks by (n₅, n₆)...")
 
+    count_total = 0
     count_prop = 0
+    count_nonprop = 0
     qs_census = defaultdict(int)
     dark_count = 0
     e_bins = defaultdict(int)
     dark_examples = []
+    nonprop_examples = []
 
     n5_range = range(N_RANGES[4][0], N_RANGES[4][1] + 1)
     n6_range = range(N_RANGES[5][0], N_RANGES[5][1] + 1)
@@ -453,10 +473,15 @@ def main():
                 if E[i] > E_MAX:
                     continue
                 n = chunk[i]
-                if not model.propagates(n):
-                    continue
-                count_prop += 1
-                Q = MaD.charge_composite(n)
+                count_total += 1
+                prop = model.propagates(n)
+                if prop:
+                    count_prop += 1
+                else:
+                    count_nonprop += 1
+                    if len(nonprop_examples) < 10:
+                        nonprop_examples.append((n, float(E[i])))
+                Q = MaD.charge(n)
                 J = MaD.spin_total(n)
                 qs_census[(Q, J)] += 1
                 ebin = int(E[i] / 200) * 200
@@ -466,8 +491,10 @@ def main():
                     if len(dark_examples) < 10:
                         dark_examples.append((n, float(E[i])))
 
-    print(f"\n  Total propagating modes ≤ {E_MAX:.0f} MeV: {count_prop}")
-    print(f"  Fully dark (n₁ = n₅ = 0):              {dark_count}")
+    print(f"\n  Total modes ≤ {E_MAX:.0f} MeV: {count_total}")
+    print(f"    Propagating (per-sheet):    {count_prop}")
+    print(f"    Non-propagating:            {count_nonprop}")
+    print(f"  Fully dark (n₁ = n₅ = 0):    {dark_count}")
 
     print(f"\n  By (Q, J):")
     for (Q, J) in sorted(qs_census.keys()):
@@ -506,6 +533,9 @@ def main():
                  and r['tau'] != float('inf')
                  and abs(r['best_dm']) / r['mass'] >= 0.10)
     n_impossible = sum(1 for r in results if r['relaxed'])
+    n_nonprop_match = sum(1 for r in results
+                         if r['best_n'] is not None
+                         and not r.get('propagates', True))
 
     print(f"\n  {len(TARGETS)} target particles:")
     print(f"    Reference (exact by construction): {n_ref}")
@@ -513,22 +543,22 @@ def main():
     print(f"    Fair match (2–10%):                 {n_fair}")
     print(f"    Poor match (> 10%):                 {n_poor}")
     print(f"    J topologically impossible:         {n_impossible}")
-    print(f"\n  Mode census:")
-    print(f"    Total propagating ≤ 2 GeV:    {count_prop}")
+    print(f"    Best match is non-propagating:      {n_nonprop_match}")
+    print(f"\n  Mode census (unfiltered):")
+    print(f"    Total modes ≤ 2 GeV:          {count_total}")
+    print(f"      Propagating (per-sheet):    {count_prop}")
+    print(f"      Non-propagating:            {count_nonprop}")
     print(f"    Fully dark (EM invisible):    {dark_count}")
     print(f"    Overcounting ratio:           "
-          f"{count_prop}:{len(TARGETS)} = {count_prop / len(TARGETS):.0f}:1")
+          f"{count_total}:{len(TARGETS)} = {count_total / len(TARGETS):.0f}:1")
 
     print(f"\n  Key structural findings:")
     print(f"    1. Charged J=0 (π±, K±) and odd-Q J=3/2 (Ω⁻, Δ±)")
     print(f"       are topologically forbidden by additive spin rule.")
-    print(f"       Resolution: allow QM spin addition (antiparallel alignment).")
-    print(f"    2. Mass desert from ~{E0_e:.1f} MeV to ~{E0_p:.0f} MeV — the")
-    print(f"       muon ({TARGETS[4][1]:.1f} MeV) sits below the first")
-    print(f"       proton-ring harmonic with no nearby eigenmode.")
-    print(f"    3. Mode overcounting: {count_prop} propagating modes for")
-    print(f"       {len(TARGETS)} targets. Most are degenerate clusters")
-    print(f"       (same proton winding, varying e/ν labels).")
+    print(f"    2. Proton mode: {N_P}, σ_ep = {SIGMA_EP}")
+    print(f"    3. Non-propagating modes used: {n_nonprop_match} of "
+          f"{len(TARGETS)} targets")
+    print(f"       (These require compound-structure coupling to exist.)")
 
     print(f"\n{'=' * 72}")
     print("Track 3 complete.")

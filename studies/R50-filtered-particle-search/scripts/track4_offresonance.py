@@ -2,8 +2,10 @@
 R50 Track 4: Decay rate ↔ near-miss correlation
 
 Quantifies the relationship between mass residual (distance from
-nearest eigenmode) and measured lifetime, using Track 3 results
-at σ_ep = −0.13.
+nearest eigenmode) and measured lifetime, using Track 3 results.
+
+Updated post-Track 6: uses (1,3) proton at σ_ep = −0.27 with
+NO waveguide filter (compound-structure approach).
 
 KEY HYPOTHESIS (off-resonance):
 Unstable particles are near-misses to Ma eigenmodes.  Closer
@@ -11,9 +13,8 @@ near-misses are more stable (longer τ).  The correlation
 log₁₀(τ) vs log₁₀(|Δm/m|) should be negative.
 
 R27 (model-C) found: r = −0.84 (p = 0.009), power law exponent
-β ≈ −2.7.  Track 3 found r = −0.40 (N = 9).  This track
-deepens the analysis: fits the power law, tests subsets,
-predicts lifetimes, and compares to the R27 result.
+β ≈ −2.7.  This track deepens the analysis: fits the power law,
+tests subsets, predicts lifetimes, and compares to the R27 result.
 
 DELIVERABLES:
   - Power law fit: log₁₀(τ) = A + β × log₁₀(|Δm/m|)
@@ -27,7 +28,7 @@ import math
 import numpy as np
 
 
-# ── Track 3 results (σ_ep = −0.13) ───────────────────────────────
+# ── Track 3 results: (1,3) proton, σ_ep = −0.27, unfiltered ──────
 # Each entry: (name, mass_MeV, best_E_MeV, delta_m_MeV, tau_s,
 #              decay_type, tier)
 # decay_type: 'weak', 'em', 'strong', 'stable'
@@ -35,20 +36,20 @@ import numpy as np
 DATA = [
     ('e⁻',    0.511,    0.511,      -1.05e-6,  float('inf'), 'stable',  1),
     ('p',     938.272,  938.272,     +1.14e-13, float('inf'), 'stable',  1),
-    ('n',     939.565,  939.256,     -0.309,    879.4,        'weak',    2),
-    ('μ⁻',   105.658,  117.212,     +11.554,   2.197e-6,     'weak',    2),
-    ('π⁰',   134.977,  117.541,     -17.436,   8.43e-17,     'em',      2),
-    ('K⁰',   497.611,  469.702,     -27.909,   8.954e-11,    'weak',    2),
-    ('η',    547.862,  586.799,     +38.937,   5.02e-19,     'strong',  2),
-    ('η′',   957.78,   939.256,     -18.524,   3.32e-21,     'strong',  2),
-    ('φ',   1019.461, 1019.945,     +0.484,    1.55e-22,     'strong',  3),
-    ('Λ',    1115.683, 1127.654,    +11.971,   2.632e-10,    'weak',    2),
-    ('Σ⁺',  1189.37,  1187.065,    -2.305,    8.018e-11,    'weak',    3),
-    ('Ξ⁰',  1314.86,  1291.422,    -23.438,   2.90e-10,     'weak',    3),
-    ('Ω⁻',  1672.45,  1673.066,    +0.616,    8.21e-11,     'weak',    3),
-    ('Δ⁰',  1232.0,   1237.035,    +5.035,    5.63e-24,     'strong',  3),
-    ('ρ⁰',   775.26,   742.306,    -32.954,   4.51e-24,     'strong',  3),
-    ('τ⁻',  1776.86,  1779.997,    +3.137,    2.903e-13,    'weak',    3),
+    ('n',     939.565,  938.772,     -0.793,    879.4,        'weak',    2),
+    ('μ⁻',   105.658,    1.229,   -104.429,    2.197e-6,     'weak',    2),
+    ('π⁰',   134.977,  257.154,   +122.177,    8.43e-17,     'em',      2),
+    ('K⁰',   497.611,  514.625,    +17.014,    8.954e-11,    'weak',    2),
+    ('η',    547.862,  515.268,    -32.594,     5.02e-19,     'strong',  2),
+    ('η′',   957.78,   951.231,     -6.549,    3.32e-21,     'strong',  2),
+    ('φ',   1019.461, 1029.841,    +10.380,    1.55e-22,     'strong',  3),
+    ('Λ',    1115.683, 1109.797,    -5.886,    2.632e-10,    'weak',    2),
+    ('Σ⁺',  1189.37,  1169.149,   -20.221,    8.018e-11,    'weak',    3),
+    ('Ξ⁰',  1314.86,  1330.899,   +16.039,    2.90e-10,     'weak',    3),
+    ('Ω⁻',  1672.45,  1669.542,    -2.908,    8.21e-11,     'weak',    3),
+    ('Δ⁰',  1232.0,   1169.112,   -62.888,    5.63e-24,     'strong',  3),
+    ('ρ⁰',   775.26,   726.967,   -48.293,    4.51e-24,     'strong',  3),
+    ('τ⁻',  1776.86,  1801.904,   +25.044,    2.903e-13,    'weak',    3),
 ]
 
 
