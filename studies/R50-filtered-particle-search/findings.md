@@ -474,12 +474,270 @@ candidate), constrained (not pinned) by the neutron mass.
 Future tracks will provide additional constraints that may
 prefer a slightly different value.
 
-**Open questions for Track 3:**
-- Do the same σ values that produce the neutron also produce
-  other known particles (muon, pion, kaon)?
-- The neutron near-miss distance (0.36 MeV) implies a quality
-  factor Q ≈ m/Δm ≈ 2600.  Is this consistent with the
-  neutron's 879-second lifetime under the off-resonance
-  hypothesis?
-- Does the mode (0, 0, 2, 2, 0, −8) correspond to any known
-  particle, or is it a dark-matter candidate?
+**Open questions:** Addressed in Track 3 below.
+
+---
+
+## Track 3: Full joint mode sweep — particle spectrum
+
+**Script:** [`scripts/track3_particle_sweep.py`](scripts/track3_particle_sweep.py)
+
+### Setup
+
+At σ_ep = −0.13 (preferred neutron cross-shear from Track 2),
+scans all 6D modes up to 2 GeV across the tier 1–3 particle
+targets.  Search ranges: n₁ ∈ [−3,3], n₂ ∈ [−6,6], n₃ ∈ [−3,3],
+n₄ ∈ [−3,3], n₅ ∈ [−6,6], n₆ ∈ [−16,16] — 1.9 M 6-tuples.
+Proton ring energy unit at this σ: E₀_p ≈ 115.7 MeV.
+
+### F17. Topological spin-charge constraint
+
+The additive spin rule (J = number of odd per-strand tube windings
+× ½) constrains which (Q, J) combinations are realizable as
+eigenmodes.
+
+**The parity rule (fundamental modes).** Each charged sheet
+contributes charge from its tube winding: Q = −n₁ + n₅/gcd.
+When all tube windings are even (J = 0), charge must be even.
+When all three are odd (J = 3/2), both n₁ and n₅/gcd are odd,
+so their sum is even → Q is even.
+
+| J   | Allowed Q parity | Reason |
+|-----|------------------|--------|
+| 0   | even only        | all tubes even → both charge contributions even |
+| ½   | any              | one odd tube can be on Ma_ν (neutral) |
+| 1   | any              | one odd can be on Ma_ν |
+| 3/2 | even only (fundamental) | all three odd → Q even |
+
+This means **charged pseudoscalar mesons (π±, K±) are
+topologically impossible** — they need Q = ±1 with J = 0, but
+J = 0 requires all tubes even, forcing Q even.
+
+**Composite loophole (J = 3/2).**  The initial analysis predicted
+that Q = ±1, J = 3/2 is also impossible.  This was wrong.
+Electron-sheet composites create a loophole: n₁ = −2 with n₂ = −6
+gives gcd = 2, strand (−1, −3), strand tube = 1 (odd).  The raw
+charge is Q_e = −(−2) = +2 (even), but the per-strand tube is
+odd → spin ½.  Combined with odd tubes on Ma_ν and Ma_p, this
+gives J = 3/2 with Q = +2 + (−3) = −1 (odd).
+
+The Ω⁻ (Q = −1, J = 3/2) was found via this mechanism — see F22.
+The revised constraint: only J = 0 with odd Q is truly forbidden.
+
+### F18. Master spectrum at σ_ep = −0.13
+
+| Particle | Tier | m (MeV) | Q | J | Best mode | Δm (MeV) | |Δm|/m | Grade |
+|----------|------|---------|---|---|-----------|-----------|--------|-------|
+| e⁻ | 1 | 0.511 | −1 | ½ | (1, 2, 0, 0, 0, 0) | ~0 | ~0 | reference |
+| p | 1 | 938.272 | +1 | ½ | (0, 0, 0, 0, 3, 6) | ~0 | ~0 | reference |
+| n | 2 | 939.565 | 0 | ½ | (0, 6, *, *, 0, 8) | −0.31 | 0.03% | good |
+| Σ⁺ | 3 | 1189.37 | +1 | ½ | (−2,−5,*,*,−1,−10) | −2.3 | 0.19% | good |
+| τ⁻ | 3 | 1776.86 | −1 | ½ | (2, 5, *, *, 1, −15) | +3.1 | 0.18% | good |
+| Δ⁰ | 3 | 1232.0 | 0 | 3/2 | (1,−6,*,*, 2, 10) | +5.0 | 0.41% | good |
+| Ω⁻ | 3 | 1672.45 | −1 | 3/2 | (−2,−6,*,*,−3, 13) | +0.6 | 0.04% | good |
+| Λ | 2 | 1115.68 | 0 | ½ | (−2, 6, *, *,−2,−9) | +12.0 | 1.1% | good |
+| Ξ⁰ | 3 | 1314.86 | 0 | ½ | (0, 6, *, *, 0, 11) | −23.4 | 1.8% | good |
+| ρ⁰ | 3 | 775.26 | 0 | 1 | (1,−6,*,*, 1,−6) | −33.0 | 4.3% | fair |
+| μ⁻ | 2 | 105.66 | −1 | ½ | (1, 6, *, *, 0, −1) | +11.6 | 10.9% | poor |
+| π⁰ | 2 | 134.98 | 0 | 0 | (0, 6, *, *, 0, −1) | −17.4 | 12.9% | poor |
+| π± | 2 | 139.57 | +1 | 0 | — | — | — | J impossible |
+| K± | 2 | 493.68 | +1 | 0 | — | — | — | J impossible |
+
+Neutrino quantum numbers marked `*` are freely varying
+(Ma_ν contributes < 0.001% of the energy at hadron scales).
+
+**Grade definitions:** reference = exact by construction;
+good = |Δm/m| < 2%; fair = 2–10%; poor = > 10%.
+
+Seven of twelve unstable targets are matched within 2%.
+The Ω⁻ match (0.04%) is particularly striking — a tier 3
+particle not used in any parameter fit, matched to within
+0.6 MeV at 1672 MeV.
+
+### F19. Mass desert and the muon problem
+
+The model has two energy scales separated by a large gap:
+
+| Scale | Source | E₀ |
+|-------|--------|-----|
+| Electron sheet | 2πℏc / L_ring_e | 0.20 MeV |
+| Proton sheet | 2πℏc / L_ring_p | 115.7 MeV |
+
+No eigenmode exists between ~2 MeV and ~116 MeV.  The muon
+(105.7 MeV) sits in this desert, with its nearest eigenmode
+at ~117 MeV (proton ring n₆ = 1).  The 10.9% residual is the
+model's largest for any fermion target.
+
+The pion (135/140 MeV) also falls in a gap between proton-ring
+harmonics n₆ = 1 (~116 MeV) and n₆ = 2 (~231 MeV), giving a
+12–16% miss.
+
+This is a structural issue: the electron–proton mass ratio
+(m_e/m_p ≈ 1/1836) maps to a length ratio L_e/L_p ≈ 571,
+leaving a three-decade desert in the energy spectrum.
+Intermediate-mass particles (muon, pion) cannot be accommodated
+without either:
+
+1. An additional sheet at an intermediate scale,
+2. A mechanism that creates sub-harmonic modes (fractional n₆),
+3. Aspect-ratio or shear adjustments that compress proton-ring
+   spacing below 116 MeV, or
+4. The muon and pion being composite states (multi-mode
+   superpositions rather than single eigenmodes).
+
+### F20. Mode overcounting and label degeneracy
+
+The scan found **567,470 propagating modes** below 2 GeV — an
+overcounting ratio of ~38,000:1 relative to the 15 targets.
+
+Most of this overcounting is **label degeneracy**: different
+neutrino quantum numbers (n₃, n₄) have negligible effect on
+the energy at hadron scales.  For example, the neutron cluster
+(0, 6, *, *, 0, 8) has dozens of modes at E ≈ 939.26 MeV that
+differ only in neutrino labels.  Similarly, electron ring
+windings contribute < 1 MeV at the proton scale.
+
+The physically distinct mode count is much smaller — roughly
+one per unique (n₅, n₆) pair that passes waveguide cutoff.
+With n₅ ∈ [−6, 6] and n₆ ∈ [−16, 16], this is ~200–400
+distinct energy levels below 2 GeV.
+
+The label degeneracy may be physical (internal quantum numbers
+analogous to flavor) or may indicate that neutrino/electron
+labels should be integrated out when predicting the hadron
+spectrum.
+
+### F21. Off-resonance correlation
+
+The correlation between lifetime and mass residual, using only
+targets with exact (Q, J) matches:
+
+| Particle | τ (s) | |Δm| (MeV) | |Δm|/m | log₁₀ τ | log₁₀ |Δm/m| |
+|----------|-------|-----------|--------|---------|-------------|
+| n | 8.79 × 10² | 0.309 | 3.3 × 10⁻⁴ | 2.94 | −3.48 |
+| μ⁻ | 2.20 × 10⁻⁶ | 11.55 | 0.109 | −5.66 | −0.96 |
+| Ξ⁰ | 2.90 × 10⁻¹⁰ | 23.44 | 0.018 | −9.54 | −1.75 |
+| Λ | 2.63 × 10⁻¹⁰ | 11.97 | 0.011 | −9.58 | −1.97 |
+| Σ⁺ | 8.02 × 10⁻¹¹ | 2.31 | 0.002 | −10.10 | −2.71 |
+| τ⁻ | 2.90 × 10⁻¹³ | 3.14 | 0.002 | −12.54 | −2.75 |
+| π⁰ | 8.43 × 10⁻¹⁷ | 17.44 | 0.129 | −16.07 | −0.89 |
+| Δ⁰ | 5.63 × 10⁻²⁴ | 5.04 | 0.004 | −23.25 | −2.39 |
+| ρ⁰ | 4.51 × 10⁻²⁴ | 32.95 | 0.043 | −23.35 | −1.37 |
+
+**Pearson r = −0.40** (N = 9).  The sign is correct (shorter
+lifetime → larger residual), consistent with the off-resonance
+hypothesis.  The magnitude is weaker than R27's r = −0.84, but
+the sample is different (R27 used model-C at different σ) and
+includes particles (Δ, ρ) not in the original R27 analysis.
+
+Notable: the Σ⁺ and τ⁻ have among the smallest |Δm/m| values
+(~0.2%) but moderate lifetimes (10⁻¹¹ to 10⁻¹³ s).  The π⁰
+has a large |Δm/m| (13%) and a very short lifetime (10⁻¹⁷ s),
+fitting the pattern.  The muon is an outlier — large |Δm/m|
+(11%) but relatively long lifetime (2.2 μs) — likely because
+it sits in the mass desert where the nearest mode is far away.
+
+### F22. Ω⁻ via composite electron winding
+
+The Ω⁻ match is the most surprising result of Track 3:
+
+| Property | Value |
+|----------|-------|
+| Mode | (−2, −6, −1, 2, −3, 13) |
+| Energy | 1673.07 MeV |
+| Residual | +0.62 MeV (0.04%) |
+| Q | −1 |
+| J | 3/2 |
+
+This was initially believed to be topologically impossible
+(Q = −1, J = 3/2 requires all three per-strand tubes odd, which
+should force Q even).  The resolution: the electron sheet forms
+a **composite** — n₁ = −2 with n₂ = −6 gives gcd(2, 6) = 2,
+strand = (−1, −3).  The per-strand tube is 1 (odd → spin ½),
+but the raw charge contribution is Q_e = −(−2) = +2 (even).
+
+| Sheet | Raw | gcd | Strand | Strand tube | Spin | Charge |
+|-------|-----|-----|--------|-------------|------|--------|
+| Ma_e | (−2, −6) | 2 | (−1, −3) | 1 (odd) | ½ | +2 (raw) |
+| Ma_ν | (−1, 2) | 1 | (−1, 2) | 1 (odd) | ½ | 0 |
+| Ma_p | (−3, 13) | 1 | (−3, 13) | 3 (odd) | ½ | −3 |
+| **Total** | | | | | **3/2** | **−1** |
+
+The key insight: the charge formula uses **raw** n₁ for the
+electron sheet but **per-strand** n₅/gcd for the proton sheet.
+When the electron sheet forms a composite, raw n₁ can be even
+(giving even charge) while strand tube is odd (giving spin ½).
+This breaks the simple parity argument and allows Q = odd
+with J = 3/2.
+
+The Ω⁻ is a tier 3 particle with no parameter fitted to it,
+yet the model matches its mass to within 0.6 MeV at 1672 MeV.
+Its mode structure — composites on all three sheets, n₆ = 13
+proton ring — is complex and unpredictable from simple scaling.
+
+### F23. Dark mode census
+
+Modes with n₁ = n₅ = 0 (no tube winding on either charged
+sheet) have Q = 0 and are electromagnetically invisible.
+The scan found **18,446 such modes** below 2 GeV.
+
+These dark modes get mass from ring windings (n₂, n₄, n₆)
+and/or neutrino tube windings (n₃).  They interact only
+gravitationally — natural dark-matter candidates.
+
+The dark-mode density grows with energy (more (n₆) values
+available at higher mass).  At 1–2 GeV there are ~5,000
+dark modes.  Whether these correspond to physical dark
+particles or are artifacts of the label degeneracy (F20)
+remains open.
+
+### F24. Improved neutron at wider scan
+
+With the expanded n₂ range (±6 vs ±4 in Track 2), the best
+neutron candidate improved:
+
+| Source | Mode | Δm (MeV) | n₂ |
+|--------|------|-----------|-----|
+| Track 2 F12 | (0, 4, 1, −2, 0, 8) | +0.358 | 4 |
+| Track 3 | (0, 6, *, *, 0, 8) | −0.309 | 6 |
+
+The Track 3 candidate has n₆ = 8 (same proton ring winding)
+but higher electron ring winding (n₂ = 6 vs 4).  Still n₁ = 0
+— the decomposition concern from F11 persists.  The electron
+ring winding is dark (no charge, no spin) but couples to
+the proton sheet via σ_ep, which is what shifts the energy
+toward the neutron mass.
+
+### Track 3 summary
+
+At σ_ep = −0.13, the model produces a recognizable particle
+spectrum.  Seven of twelve unstable targets are matched within
+2%, including the Ω⁻ (0.04%), Σ⁺ (0.19%), and τ⁻ (0.18%).
+
+**Structural successes:**
+- Baryons (n, Λ, Σ⁺, Ξ⁰, Ω⁻, Δ⁰) are all matched within
+  2%, with the correct Q and J.
+- The τ lepton is matched at 0.18%, suggesting it may be a
+  higher proton-ring harmonic (n₆ = 15).
+- The off-resonance correlation is negative (r = −0.40),
+  consistent with the hypothesis that unstable particles are
+  near-misses to eigenmodes.
+
+**Structural challenges:**
+- Charged pseudoscalar mesons (π±, K±) are topologically
+  forbidden by the additive spin rule.  This is the most
+  significant failure and points to a needed refinement:
+  allowing QM spin addition (two spin-½ combining to J = 0
+  as well as J = 1) would resolve it.
+- The muon sits in a mass desert between the electron and
+  proton energy scales, with a 10.9% residual.
+- Mode overcounting (38,000:1) is dominated by label degeneracy
+  (neutrino/electron dressings that barely affect energy).
+
+**Open questions for Track 4:**
+- Does the off-resonance power law (R27 F33: τ ∝ |Δm|^−2.7)
+  quantitatively match the Track 3 residuals?
+- Can the spin rule be refined to allow antiparallel alignment,
+  enabling charged J = 0 modes?
+- The muon problem: is there a parameter regime (different ε_p)
+  that places the first proton harmonic near 105.7 MeV?

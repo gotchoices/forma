@@ -1,6 +1,6 @@
 # R50: Filtered multi-sheet mode search
 
-**Status:** Active — Track 2 complete
+**Status:** Active — Track 3 complete
 **Questions:** Q16 (mass spectrum)
 **Type:** compute
 **Depends on:** R29 (nuclei as Ma modes), R46 (electron filter),
@@ -263,7 +263,7 @@ verified as a byproduct — not a separate track.
 
 ### Track 3: Full joint mode sweep
 
-**Status:** Planned
+**Status:** Complete
 
 **Goal:** At viable parameter sets from Track 2, scan **6D** modes
 up to ~2 GeV (and nuclear mass targets as needed) and match against

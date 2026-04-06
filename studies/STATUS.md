@@ -88,7 +88,7 @@ the mode topology.  Key surprise: WvM charge integral is exactly
 zero for n₁ = 3 — charge must come from (1,2) strand sub-structure.
 Composite waveguide cutoff question flagged for eigenmode study.
 
-### R50. Filtered multi-sheet mode search  **Active — Track 2 complete**
+### R50. Filtered multi-sheet mode search  **Active — Track 3 complete**
 **Study:** [`R50-filtered-particle-search/`](R50-filtered-particle-search/)
 **Questions:** Q16  **Type:** compute  **Depends on:** R29, R46, R47, R49
 
