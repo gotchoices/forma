@@ -2,7 +2,7 @@
 
 **Code / implementation:** [`studies/lib/ma_model.py`](../studies/lib/ma_model.py) (1,900-line Ma engine with four-level dynamic hierarchy; 125 unit tests), [`studies/lib/ma_solver.py`](../studies/lib/ma_solver.py)  
 **Study range (approximate):** **R39 through R44** (see [`studies/STATUS.md`](../studies/STATUS.md)), plus all phenomena and infrastructure inherited from R26–R38.  
-**Supersedes / superseded by:** Supersedes [model-B](model-B.md) (`ma.py`, R26–R38). Superseded by **model-D** ([`model-D.md`](model-D.md)) starting at R46, where waveguide filtering, finite-ε spin, (3,6) proton composite, and a new code stack (`ma_model_c.py`) replace this model's assumptions.
+**Supersedes / superseded by:** Supersedes [model-B](model-B.md) (`ma.py`, R26–R38). Superseded by **model-D** ([`model-D.md`](model-D.md)) starting at R46, where waveguide filtering, finite-ε spin, (3,6) proton composite, and a new code stack (`ma_model_d.py`) replace this model's assumptions.
 
 ---
 
@@ -200,7 +200,7 @@ Model-D begins at **R46** (electron filter). The key developments that force a n
 2. **Finite-ε spin** (R49): spin deviates significantly from ½ at large ε; the thin-torus spin formula used throughout model-C is qualitatively wrong for Assignment B and large-ε regimes.
 3. **Proton as (3,6) composite** (R47): wins 8 of 11 criteria vs (1,2); SU(6) moments, constituent mass m_p/3 = 313 MeV, and geometric confinement all follow. This overturns model-C's single-mode (1,2) proton.
 4. **No premature pinning philosophy** (R50): model-D treats the neutron as a prediction, not a calibration target. r_p and σ_ep are **swept**, not fixed from R27.
-5. **New code stack**: `ma_model_c.py` replaces `ma_model.py` with joint-metric APIs and per-sheet waveguide filters.
+5. **New code stack**: `ma_model_d.py` replaces `ma_model.py` with joint-metric APIs and per-sheet waveguide filters.
 
 See [`model-D.md`](model-D.md).
 

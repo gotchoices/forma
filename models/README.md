@@ -10,4 +10,4 @@ provides a blank structure for new writeups.
 - [`model-A.md`](model-A.md) — WvM / single-sheet (S1–S3, R1–R25)
 - [`model-B.md`](model-B.md) — Three tori / `ma.py` (R26–R38)
 - [`model-C.md`](model-C.md) — Generalized model / `ma_model.py` (R39–R44)
-- [`model-D.md`](model-D.md) — **Active** — Filtered model / `ma_model_c.py` (R45–R50+)
+- [`model-D.md`](model-D.md) — **Active** — Filtered model / `ma_model_d.py` (R45–R50+)

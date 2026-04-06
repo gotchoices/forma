@@ -1,7 +1,7 @@
-# Model: model-D (Filtered model — `ma_model_c.py`) ⟵ ACTIVE
+# Model: model-D (Filtered model — `ma_model_d.py`) ⟵ ACTIVE
 
 **Status:** In progress — foundational studies complete, particle census pending  
-**Code / implementation:** [`studies/lib/ma_model_c.py`](../studies/lib/ma_model_c.py) (planned; see [R50 README](../studies/R50-filtered-particle-search/README.md))  
+**Code / implementation:** [`studies/lib/ma_model_d.py`](../studies/lib/ma_model_d.py) (planned; see [R50 README](../studies/R50-filtered-particle-search/README.md))  
 **Study range:** **R45 (catalyst) → R46, R47, R48, R49, R50** (see [`studies/STATUS.md`](../studies/STATUS.md))  
 **Supersedes:** [model-C](model-C.md) (`ma_model.py`, R39–R44)
 
@@ -305,8 +305,8 @@ quantitative particle predictions. Key design choices:
 - **Per-sheet filters**: waveguide cutoff on Ma_e, Ma_ν, Ma_p;
   n₁ = ±1 for charged EM modes on Ma_e; (3,6) composite treatment
   for Ma_p.
-- **Charge**: Q = −(n₁ + n₅) in units of e. (Note: sign convention
-  and (3,6) strand bookkeeping TBD.)
+- **Charge**: Q = −n₁ + n₅ (fundamental); Q = −n₁ + n₅/gcd(n₅,n₆)
+  for composites like (3,6) proton (R47 F4).
 - **Parameters swept**: ε_e, ε_p, ε_ν, s₁₂, s₃₄, s₅₆, σ_ep, σ_eν,
   σ_νp — with α and particle masses as constraints.
 - **Neutron as prediction**: not used to pin parameters. Success
@@ -378,7 +378,7 @@ Some may be resolved by the R50 census or follow-on studies.*
 - **Predecessor:** [model-C.md](model-C.md) (R39–R44, `ma_model.py`)
 
 - **Code (planned):**
-  [`studies/lib/ma_model_c.py`](../studies/lib/ma_model_c.py)
+  [`studies/lib/ma_model_d.py`](../studies/lib/ma_model_d.py)
 
 - **Key QA:**
   [Q100 (aperture moment)](../qa/Q100-aperture-moment-enhancement.md),

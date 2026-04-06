@@ -88,12 +88,12 @@ the mode topology.  Key surprise: WvM charge integral is exactly
 zero for n₁ = 3 — charge must come from (1,2) strand sub-structure.
 Composite waveguide cutoff question flagged for eigenmode study.
 
-### R50. Filtered multi-sheet mode search  **Framing**
+### R50. Filtered multi-sheet mode search  **Active — Track 1 complete**
 **Study:** [`R50-filtered-particle-search/`](R50-filtered-particle-search/)
 **Questions:** Q16  **Type:** compute  **Depends on:** R29, R46, R47, R49
 
 Joint 6D search on the **coupled** three-sheet metric (not
-independent per-sheet catalogs).  Builds `lib/ma_model_c.py`
+independent per-sheet catalogs).  Builds `lib/ma_model_d.py`
 (R46–R49 filters, no hard-coded legacy pinning).  Nuclei
 reprised from R29 Track 3 / F16 as richer mode combinations
 under the new rules.  Philosophy: one system, near-misses

@@ -1,6 +1,6 @@
 # R50: Filtered multi-sheet mode search
 
-**Status:** Framing
+**Status:** Active — Track 1 complete
 **Questions:** Q16 (mass spectrum)
 **Type:** compute
 **Depends on:** R29 (nuclei as Ma modes), R46 (electron filter),
@@ -93,9 +93,9 @@ rules.
    framework — as in R29 Track 3, now revisited with R46–R49 filters.
 
 
-## New library: `ma_model_c`
+## New library: `ma_model_d`
 
-Implement as `studies/lib/ma_model_c.py`.  The name pairs with the
+Implement as `studies/lib/ma_model_d.py`.  The name pairs with the
 **mast_c** model line in [`models/README.md`](../../models/README.md)
 (supersedes `studies/lib/ma_model.py` from the mast_b-era stack for new
 work).  Same role as before: code for the joint filtered metric
@@ -150,8 +150,8 @@ aspect ratios and shears.  The metric is block-diagonal
 
 ### Charge and spin
 
-- Charge Q = −(n₁ + n₅) in units of e (tube windings on
-  charged sheets)
+- Charge Q = −n₁ + n₅ in units of e; for composites,
+  Q = (−n₁ + n₅/gcd(n₅,n₆)) (R47 Track 7 F4)
 - Spin: L_z/ℏ = S(ε)/q for each sheet, using the finite-ε
   path integral formula
 
@@ -201,11 +201,11 @@ remain good fits when R46–R49 rules are enforced on **n**.
 
 ## Tracks
 
-### Track 1: Build `ma_model_c`
+### Track 1: Build `ma_model_d`
 
-**Status:** Planned
+**Status:** Complete
 
-**Goal:** Implement `studies/lib/ma_model_c.py` with filtering built in.
+**Goal:** Implement `studies/lib/ma_model_d.py` with filtering built in.
 No scipy dependency.  **All** energy/charge/spin APIs take full
 **n** ∈ ℤ⁶; there is no public “single-sheet spectrum” API that
 could be mistaken for a separate search space.
@@ -277,7 +277,7 @@ If the off-resonance hypothesis is correct:
 - The Δ(1232) (τ ~ 10⁻²⁴ s) should be a distant near-miss
 
 
-## Design notes for `ma_model_c`
+## Design notes for `ma_model_d`
 
 ### What NOT to carry over from `ma_model.py`
 
@@ -292,7 +292,7 @@ If the off-resonance hypothesis is correct:
 
 - 6×6 metric construction from (ε, s, σ)
 - Energy from metric: E² = nᵢ G̃ⁱʲ nⱼ × scale²
-- Charge formula: Q = −(n₁ + n₅)
+- Charge formula: Q = −n₁ + n₅ (composite: divide by gcd)
 - Brute-force mode scan with energy ceiling
 
 ### What to add (new)

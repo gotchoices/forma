@@ -1,6 +1,6 @@
 # Model: [short id, e.g. model-D]
 
-**Code / implementation:** [e.g. `studies/lib/ma_model_c.py` — or “none yet”]  
+**Code / implementation:** [e.g. `studies/lib/ma_model_d.py` — or “none yet”]  
 **Study range (approximate):** [e.g. R46–…]  
 **Supersedes / superseded by:** [link to other `models/*.md` when relevant]
 
