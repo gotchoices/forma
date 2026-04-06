@@ -627,6 +627,56 @@ axiom.
 
 ---
 
+## What produces charge vs magnetic moment
+
+The field tensor F_μν has six independent components (Step 4).
+The Lorentzian signature (A2) splits them into two groups with
+fundamentally different physical roles:
+
+**Time-space components (F₀ᵢ = Eᵢ):** these are the electric
+field.  Their divergence is charge (Gauss's law, Step 6):
+
+> ∇ · **E** = ρ
+
+A phase winding that produces a net E-field divergence produces
+charge.  Charge is the source of E.
+
+**Space-space components (Fᵢⱼ → Bₖ):** these are the magnetic
+field.  Their circulation is current (Ampère's law, Step 6):
+
+> ∇ × **B** = **J** + ∂**E**/∂t
+
+A phase winding that produces net B-field circulation produces
+a magnetic dipole moment.  Magnetic moment is the source of B.
+
+**The distinction is forced by the signature — it is not a
+choice.**  The one timelike dimension creates a natural split:
+time-space twists are electric (they create charge), space-space
+twists are magnetic (they create moment).
+
+### Implications for compact geometry
+
+On a compact surface (such as a torus), a mode can wind in
+multiple directions simultaneously.  Which direction produces
+charge and which produces moment depends on how the winding
+maps onto the time-space vs space-space components of F_μν.
+
+GRID determines the field equations and the E/B split.  GRID
+does NOT determine how a specific compact geometry maps its
+internal directions onto spacetime.  That mapping is the bridge
+between GRID and any particle model built on compact geometry.
+
+The charge quantization theorem (§Charge quantization above)
+establishes that the winding number n is an integer and that
+Q = ne for a point vortex on the bulk lattice.  On a compact
+surface, the relationship between winding number and externally
+observable charge depends on the mode's field pattern — how
+the winding projects through the compact surface into the
+ambient space.  This projection is geometry-dependent and is
+not determined by GRID's axioms alone.
+
+---
+
 ## Axiom audit
 
 The derivation used five of the six axioms.  Here is what each
