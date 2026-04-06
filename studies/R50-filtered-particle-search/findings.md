@@ -243,9 +243,9 @@ n₅ ∈ [−6,6], n₆ ∈ [−10,10].  Of these, 2,556 pass the waveguide
 propagation filter.  Energies are computed in vectorized batches
 (numpy) for each σ value.
 
-### F11. Neutron candidate found at σ_νp ≈ −0.13
+### F11. Best mass match: (0, 0, 2, 2, 0, −8) at σ_νp ≈ −0.13
 
-**Best candidate across all sweeps:**
+The numerically closest Q = 0, spin-½ mode to the neutron mass:
 
 | Property | Value |
 |----------|-------|
@@ -264,15 +264,27 @@ has odd tube winding → spin ½.  The proton sheet carries (0, −8)
 — pure ring winding, no tube — so it contributes mass but no
 charge or spin.
 
-The neutron's spin comes from the neutrino sheet, and its mass
-comes from the proton ring.  This is structurally different from
-model-C's neutron mode (0, −2, 1, 0, 0, 2), which used all three
-sheets and derived its proton-scale mass from a mode-C proton at
-(1, 2) with r_p = 8.906.
+**Decomposition concern (open):** The real neutron decays via
+n → p + e⁻ + ν̄_e.  Intuitively, a neutron mode should contain
+an electron-sheet component that can "unravel" into the decay
+electron.  Mode (0, 0, 2, 2, 0, −8) has **no Ma_e winding**,
+which raises the question of where the electron comes from.
 
-### F12. σ_ep also produces a neutron candidate
+However, we do not have proof that a mode on one sheet cannot
+produce decay products on a different sheet.  Energy arriving
+along one axis can depart along another (a baseball hit in x
+can leave in y).  Cross-sheet coupling (σ ≠ 0) already shows
+that sheets are not independent — the same coupling that shifts
+mode energies may also allow cross-sheet decay channels.
 
-A second candidate appears in the σ_ep sweep:
+**Status:** Flagged as a concern, not a disqualification.  The
+F12 candidate (below) avoids this issue entirely by spanning all
+three sheets.  Both candidates should be carried forward.
+
+### F12. Three-sheet neutron: (0, 4, 1, −2, 0, 8) at σ_ep ≈ −0.13
+
+A three-sheet candidate that naturally decomposes into proton +
+electron + neutrino components:
 
 | Property | Value |
 |----------|-------|
@@ -282,11 +294,84 @@ A second candidate appears in the σ_ep sweep:
 | Cross-shear | σ_ep ≈ −0.130 |
 | Sheets active | Ma_e + Ma_ν + Ma_p |
 
-This three-sheet mode gets its spin from Ma_ν (n₃ = 1, odd tube),
-its mass from Ma_p ring (n₆ = 8), and its σ_ep coupling from
-Ma_e ring winding (n₂ = 4).  The electron ring winding is what
-allows σ_ep to shift the energy — without it, the electron-proton
-cross-term vanishes.
+This mode spans all three sheets: Ma_e ring (n₂ = 4) provides
+the electron component, Ma_ν (n₃ = 1, n₄ = −2) provides spin ½
+and the neutrino component, and Ma_p ring (n₆ = 8) provides the
+mass.  The σ_ep cross-shear shifts its energy through the
+electron–proton coupling — the electron ring winding is what
+enables this coupling.
+
+**Structural parallel to model-C neutron:**
+
+| Property | Model-C neutron | F12 candidate |
+|----------|----------------|---------------|
+| Mode | (0, −2, 1, 0, 0, +2) | (0, 4, 1, −2, 0, 8) |
+| Ma_e winding | n₂ = −2 | n₂ = 4 |
+| Ma_ν winding | n₃ = 1 | n₃ = 1, n₄ = −2 |
+| Ma_p winding | n₆ = +2 | n₆ = 8 |
+| Spin source | Ma_ν (n₃ = 1) | Ma_ν (n₃ = 1) |
+| Cross-shear | σ_ep = −0.091 | σ_ep ≈ −0.130 |
+| Mass residual | 0 (pinned) | 0.358 MeV (near-miss) |
+| Beta decay | ✓ (has e winding) | ✓ (has e winding) |
+
+Both get spin from Ma_ν (n₃ = 1, odd tube winding).  Both have
+electron-sheet winding enabling beta decay.  The model-D
+candidate has higher winding numbers throughout (n₂ = 4 vs −2,
+n₆ = 8 vs 2), reflecting the different proton geometry — (3,6)
+composite at ε_p = 0.55 vs (1,2) at r_p = 8.906.
+
+The n₆ = 8 proton-ring winding is notably higher than the
+proton's n₆ = 6.  The neutron winds the proton ring at a higher
+harmonic than the proton itself.
+
+The 0.358 MeV residual is consistent with the neutron being a
+near-miss (it is unstable, τ = 879 s).  Whether this gap maps
+to 879 s under the off-resonance power law (τ ∝ |gap|^−2.7
+from R27 F33) should be checked in Track 4.
+
+### F12a. σ_νp is physically nonzero
+
+Although F11's specific mode is not the neutron, the σ_νp sweep
+reveals that modes near the neutron mass appear at σ_νp ≈ ±0.13.
+This constrains σ_νp to be nonzero and of substantial magnitude
+— important for the fusion bootstrap pathway (Q89 §12.2), which
+requires σ_νp ≠ 0 so that protons have virtual neutrino-sheet
+fluctuations that can be pumped by IR at 42 μm.
+
+If the physical neutron is produced by σ_ep (F12), then σ_νp
+remains unconstrained by the neutron mass.  Both cross-shears
+may be nonzero — they come from independent sweeps and need not
+be exclusive.
+
+### F12b. Dark windings — mass without charge
+
+A "dark winding" is any component of a mode that contributes
+energy (mass) without contributing charge.  The model already
+handles these naturally:
+
+- **Ring windings** on any sheet (n₂, n₄, n₆) contribute to E²
+  through the metric but never enter the charge formula
+  Q = −n₁ + n₅.  A mode can carry GeV-scale mass from pure
+  ring winding and still be electrically neutral.
+
+- **All windings on Ma_ν** are dark — the neutrino sheet has no
+  charge channel (Q102: neutrino neutrality from sheet size).
+
+- **Even-tube composites** on charged sheets can also be dark:
+  a (2, 4) composite on Ma_p has strand (1, 2) with charge
+  contribution n₅/gcd = 1, but a pure ring mode (0, n₆) has
+  zero tube winding and zero charge.
+
+Both neutron candidates make heavy use of dark windings:
+the proton ring winding n₆ = 8 provides ~954 MeV of mass
+with zero charge.  This is not a defect — it may be exactly
+how neutral massive particles carry their mass in the model.
+
+The mode scan already detects and catalogs dark-winding modes.
+No filter change is needed.  Track 3 should watch for modes
+that are ALL dark windings (no tube winding on any charged
+sheet) — these would be completely invisible to electromagnetism
+and are natural dark-matter candidates.
 
 ### F13. σ_eν has zero effect on proton-scale modes
 
@@ -366,20 +451,35 @@ Schur complement modifies the proton block of G̃⁻¹, which
 shifts proton-ring modes relative to the proton reference mass
 when L_ring_p is adjusted.
 
-Two viable candidates exist:
-- (0, 0, 2, 2, 0, −8) at σ_νp ≈ −0.13  (Δ = 0.25 MeV)
-- (0, 4, 1, −2, 0, 8) at σ_ep ≈ −0.13  (Δ = 0.36 MeV)
+Two neutron candidates survive, carried forward with different
+confidence levels:
 
-Both get their spin from the neutrino sheet and their mass from
-the proton ring.  The proton tube plays no role in the neutron,
-consistent with the neutron having zero charge (no tube winding
-on charged sheets).
+- **(0, 4, 1, −2, 0, 8)** at σ_ep ≈ −0.13 (Δ = 0.36 MeV) —
+  **preferred**.  Spans all three sheets.  Electron-sheet ring
+  winding (n₂ = 4) provides a natural decomposition channel for
+  beta decay.  Parallels model-C's neutron structurally.
+
+- **(0, 0, 2, 2, 0, −8)** at σ_νp ≈ −0.13 (Δ = 0.25 MeV) —
+  **flagged**.  Better mass match but no electron-sheet winding.
+  Decomposition to p + e⁻ + ν̄ is not obvious (though
+  cross-sheet energy transfer has not been ruled out).  May
+  correspond to a dark or exotic neutral fermion.
+
+Both share key structural features: spin from the neutrino
+sheet, mass from the proton ring (n₆ = 8), and no proton tube
+winding — consistent with the neutron having zero charge.
+
+**Constraint from Track 2:** σ_ep ≈ −0.13 (from the preferred
+candidate), constrained (not pinned) by the neutron mass.
+Future tracks will provide additional constraints that may
+prefer a slightly different value.
 
 **Open questions for Track 3:**
 - Do the same σ values that produce the neutron also produce
   other known particles (muon, pion, kaon)?
-- Is σ_νp or σ_ep the physically preferred coupling?
-- The neutron near-miss distance (0.25–0.36 MeV) implies a
-  quality factor Q ≈ m/Δm ≈ 3700.  Is this consistent with
-  the neutron's 879-second lifetime under the off-resonance
+- The neutron near-miss distance (0.36 MeV) implies a quality
+  factor Q ≈ m/Δm ≈ 2600.  Is this consistent with the
+  neutron's 879-second lifetime under the off-resonance
   hypothesis?
+- Does the mode (0, 0, 2, 2, 0, −8) correspond to any known
+  particle, or is it a dark-matter candidate?
