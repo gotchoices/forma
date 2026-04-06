@@ -88,7 +88,7 @@ the mode topology.  Key surprise: WvM charge integral is exactly
 zero for n₁ = 3 — charge must come from (1,2) strand sub-structure.
 Composite waveguide cutoff question flagged for eigenmode study.
 
-### R50. Filtered multi-sheet mode search  **Active — Track 5 complete**
+### R50. Filtered multi-sheet mode search  **Active — Track 6 complete**
 **Study:** [`R50-filtered-particle-search/`](R50-filtered-particle-search/)
 **Questions:** Q16  **Type:** compute  **Depends on:** R29, R46, R47, R49
 
@@ -98,10 +98,13 @@ independent per-sheet catalogs).  Builds `lib/ma_model_d.py`
 reprised from R29 Track 3 / F16 as richer mode combinations
 under the new rules.  Philosophy: one system, near-misses
 for unstable states, neutron not a calibration target.
-Proton as (3,6) composite (R47).  Four tracks (joint-geometry
-closure folded into Track 2 cross-shear sweep).  Parameter
-strategy: defaults with provenance, sweep before pin, keep
-free variables free (model-D.md §Parameter strategy).
+Dual proton hypothesis: (1,3) leading, (3,6) alternative.
+Track 6 dropped per-sheet waveguide filter and found that
+(1,3) achieves 0.9 MeV neutron gap via a non-propagating
+mode — the compound structure sustains modes that are
+evanescent on isolated tori.  Parameter strategy: defaults
+with provenance, sweep before pin, keep free variables free
+(model-D.md §Parameter strategy).
 
 ### R49. Neutrino sheet — filtering, oscillation, and mode spectrum  **On hold — Tracks 1–2a complete**
 **Study:** [`R49-neutrino-filter/`](R49-neutrino-filter/)

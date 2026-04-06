@@ -347,6 +347,62 @@ Two nuclei (³He, ⁷Li) cannot be matched under strict R29
 scaling due to topological spin parity constraints (F36).
 
 
+### Track 6: Unfiltered neutron search — compound-structure approach
+
+**Status:** Complete
+
+**Motivation:** Tracks 2 and 5 created a tension: the (1,3) proton
+wins on nuclear charge formulae but its coarse proton-ring mode
+spacing (275 MeV) prevents any integer mode from landing near
+the neutron mass.  The (3,6) proton has finer spacing (119 MeV)
+and places a mode close to the neutron, but fails on nuclear
+charges.
+
+This tension arises because Tracks 1–5 imposed the **waveguide
+cutoff filter** (`propagates()`) — a per-sheet mechanism designed
+on isolated tori.  Track 6 drops this assumption.
+
+**Key insight:** The ghost-elimination mechanism may not operate
+on each torus in isolation.  When tori are coupled via cross-shears
+(σ ≠ 0), energy can flow between sheets.  A "ghost" mode on one
+sheet need not be destroyed by a slot — it may drain into a dark
+mode on another sheet (e.g. the (1,1) electron ghost falling into
+a neutrino-sheet dark winding, invisible to electromagnetism).
+
+**Approach:**
+
+1. **No waveguide filter.**  All Q = 0, spin-½ six-tuples are
+   candidates, including modes that fail single-torus propagation.
+   We assume a filtration mechanism exists but defer its form.
+
+2. **All three proton modes on the table.**  (1,2), (1,3), and
+   (3,6) each define a different L_ring_p (derived from
+   E(proton_mode) = 938.272 MeV).  All are searched.
+
+3. **Cross-shear sweep.**  σ_ep swept over [−0.3, +0.3] for
+   each proton mode.  The compound structure is where the
+   interesting physics happens.
+
+4. **Catalog-first.**  Rather than filtering modes to match a
+   theory of elimination, we find what modes are needed to
+   explain the neutron.  If a successful candidate requires a
+   mode that would fail single-torus propagation, that
+   constrains the filter mechanism (it cannot be per-sheet).
+
+**Deliverables:**
+- Best neutron candidate for each proton mode (with and without
+  waveguide filter, for comparison)
+- Mode spacing and nearest-mode analysis per proton hypothesis
+- Cross-shear landscape for unfiltered candidates
+- Assessment of whether unfiltered modes resolve the Track 2
+  tension
+
+**Depends on:** Track 2 (original results for comparison),
+Track 5 (charge formula constraints).
+
+**Script:** `scripts/track6_unfiltered_neutron.py`
+
+
 ## Design notes for `ma_model_d`
 
 ### What NOT to carry over from `ma_model.py`

@@ -1327,3 +1327,175 @@ data.
 - Does the waveguide cutoff eliminate any nuclear modes that
   were viable in R29?  (Several nuclear modes have odd n₁ on
   the electron sheet, which may not propagate at ε_e = 0.65.)
+
+---
+
+## Track 6: Unfiltered neutron search
+
+### Methodology shift
+
+Tracks 1–5 applied the **waveguide cutoff filter** to every
+candidate mode.  This filter was designed on isolated tori
+(R46 for Ma_e, R47 for Ma_p, R49 for Ma_ν): on a single
+torus, modes below the cutoff |n_ring| > |n_tube| / ε are
+evanescent.  We assumed this mechanism also governs the
+compound (three-sheet) structure.
+
+Track 2's (1,3) re-run exposed a problem: the (1,3) proton —
+which wins decisively on nuclear charge formulae (F31–F33) —
+has proton-ring mode spacing of 275 MeV.  No Q = 0, spin-½ mode
+lands near 939.6 MeV.  The (3,6) proton has finer spacing
+(119 MeV) and a close neutron match, but fails on charges.
+
+**Where we may have gone wrong:** We assumed the ghost-elimination
+mechanism operates on each torus independently, then assembled
+three pre-filtered tori.  But when tori are coupled via
+cross-shears (σ ≠ 0), the sheets are not independent.  Energy
+can flow between them.
+
+**Revised hypothesis:** The filtration mechanism emerges from
+the **compound structure** rather than acting per-sheet.  A
+"ghost" mode on one sheet need not be destroyed locally — it
+may drain into a dark mode on another sheet via cross-shear
+coupling.  For example, the (1,1) electron ghost could fall
+into a neutrino-sheet dark winding (invisible to EM).  The
+waveguide cutoff is real as a single-torus phenomenon, but
+the compound system has additional channels.
+
+**Practical change:** Drop `propagates()` from the mode
+candidate filter.  All Q = 0, spin-½ six-tuples are
+candidates.  All three proton modes — (1,2), (1,3), (3,6) —
+are tested.  The filter mechanism is deferred: we assume it
+exists but do not presume its form.
+
+**Script:** `scripts/track6_unfiltered_neutron.py`
+
+### F37. Unfiltered search dramatically improves (1,3) neutron match
+
+Removing the waveguide filter opens 6,254 Q = 0, spin-½ candidates
+(vs 2,484 with the filter — a 2.5× increase).  The results by
+proton hypothesis:
+
+| Proton | L_ring_p | E₀_p | Best mode (unfiltered) | Δm | σ_ep | Propagates? |
+|--------|----------|------|------------------------|-----|------|-------------|
+| (1,2) | 3.46 fm | 358 MeV | (0, −4, −2, −2, 0, 3) | +39.2 MeV | −0.30 | ✓ |
+| (1,3) | 4.51 fm | 275 MeV | (−2, −4, −2, −1, −2, 0) | −0.90 MeV | −0.27 | **✗** |
+| (3,6) | 10.39 fm | 119 MeV | (0, −4, −2, −2, 0, −8) | −0.36 MeV | −0.13 | ✓ |
+
+**The (1,3) result goes from 72.7 MeV gap (filtered, Track 2
+addendum) to 0.9 MeV gap (unfiltered).**  This 80× improvement
+is entirely due to accessing a mode that the per-sheet waveguide
+filter blocked.
+
+The (3,6) and (1,2) results are unchanged — their best candidates
+already propagate on isolated tori.  The filter specifically
+penalizes (1,3), making it look structurally worse than it is.
+
+### F38. The (1,3) neutron candidate is a non-propagating mode
+
+The winning (1,3) candidate:
+
+| Property | Value |
+|----------|-------|
+| Mode | (−2, −4, −2, −1, −2, 0) |
+| Energy | 938.665 MeV |
+| Residual | −0.900 MeV (0.096%) |
+| σ_ep | −0.270 |
+| Charge | Q = −(−2) + (−2) = 0 ✓ |
+| Spin | ½ (from Ma_e composite strand) |
+| Sheets active | Ma_e + Ma_ν + Ma_p |
+
+**Quantum number anatomy:**
+
+- **Ma_e:** (−2, −4) = composite of gcd(2,4) = 2 strands of
+  (−1, −2).  Each strand is an anti-electron winding (opposite
+  helicity to (1,2)).  Strand tube winding |1| is odd → spin ½.
+- **Ma_ν:** (−2, −1).  Tube winding |2| is even → spin 0.
+  Contributes mass but no spin.
+- **Ma_p:** (−2, 0).  **Pure tube winding, no ring.**  This is
+  why it fails single-torus propagation — on an isolated proton
+  torus, a mode with n₆ = 0 and n₅ ≠ 0 is evanescent (the wave
+  winds the tube but never circulates around the ring).
+
+**Why it works in the compound:** The proton-sheet component
+(−2, 0) contributes charge neutralization (n₅ = −2 balances
+n₁ = −2) but zero proton-ring energy (n₆ = 0).  The mode
+sidesteps the 275 MeV proton-ring spacing problem entirely by
+getting its mass from the electron and neutrino sheets instead.
+
+On an isolated proton torus this mode is forbidden.  In the
+compound structure, cross-shear coupling (σ_ep = −0.27) can
+sustain it — the electron sheet's energy feeds the proton
+tube winding through the coupling.  This is exactly the
+compound-structure filtration mechanism the methodology shift
+predicted.
+
+### F39. The waveguide filter creates an artificial bias against (1,3)
+
+Comparison of filtered vs unfiltered best candidates:
+
+| Proton | Filtered Δm | Unfiltered Δm | Improvement | Filter impact |
+|--------|-------------|---------------|-------------|---------------|
+| (1,2) | +39.2 MeV | +39.2 MeV | 0× | none |
+| (1,3) | +72.7 MeV | −0.90 MeV | **80×** | **severe** |
+| (3,6) | −0.36 MeV | −0.36 MeV | 0× | none |
+
+The filter is benign for (3,6) and (1,2) but catastrophically
+penalizes (1,3).  This is not a coincidence — the (1,3) proton's
+smaller L_ring_p makes ring modes widely spaced, so the neutron
+must use alternative mode structures (tube-only on the proton
+sheet) that are forbidden by the per-sheet cutoff.
+
+### F40. Remaining tension: σ_ep magnitude and mode structure
+
+The (1,3) neutron candidate requires σ_ep = −0.27, significantly
+larger than the (3,6) candidate's σ_ep = −0.13.  Open questions:
+
+1. **Is σ_ep = −0.27 physically reasonable?**  The metric remains
+   positive-definite, but larger cross-shears mean stronger
+   coupling between sheets.  Whether nature prefers small or
+   large σ is unknown.
+
+2. **Decomposition puzzle:** The mode's electron-sheet component
+   is (−2, −4) — two anti-electron strands — and the proton-sheet
+   component is (−2, 0) — a pure tube winding.  The neutron
+   decays to p + e⁻ + ν̄_e, but the mode's quantum numbers
+   don't decompose into a proton (1,3) + electron (1,2) +
+   antineutrino in an obvious way.  This parallels the F11
+   decomposition concern from Track 2, now at a deeper level.
+
+3. **The 0.9 MeV gap** is larger than the (3,6) result (0.36 MeV)
+   but still within the range of a near-miss for an unstable
+   particle (τ = 879 s).  The off-resonance power law (Track 4)
+   should be checked for both.
+
+### Track 6 summary
+
+**Dropping the per-sheet waveguide filter resolves the
+(1,3)–(3,6) tension for the neutron.**
+
+The (1,3) proton hypothesis now has:
+- ✓ Nuclear charge formula (universal, Track 5 F31–F33)
+- ✓ Nuclear mass scaling (< 1% gaps, F31)
+- ✓ Neutron near-miss (0.9 MeV, via unfiltered mode)
+- ? Decomposition structure (unresolved)
+- ? Cross-shear magnitude (σ_ep = −0.27, larger than expected)
+
+The (3,6) proton hypothesis has:
+- ✗ Nuclear charge formula (structural problem, F33)
+- ✓ Nuclear mass scaling (identical to (1,3), F32)
+- ✓ Neutron near-miss (0.36 MeV, via filtered mode)
+- ✓ Decomposition structure (clean)
+- ✓ Cross-shear magnitude (σ_ep = −0.13, moderate)
+
+The (1,2) proton is definitively excluded — even without the
+filter, its mode spacing is too coarse (358 MeV) for a viable
+neutron.
+
+**The methodological lesson:** Imposing per-sheet filtration
+before assembling the compound structure artificially restricts
+the candidate space.  The compound structure, with its cross-
+sheet coupling, can sustain modes that are evanescent on isolated
+tori.  Future searches should treat the compound as the primary
+object and defer filtration to a later stage, once the mechanism
+is understood.

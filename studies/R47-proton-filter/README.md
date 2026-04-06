@@ -532,4 +532,51 @@ mechanism assessment).
 
 ---
 
+## Methodological note: compound-structure filtration (post-R50)
+
+The R47 study — and R46 (electron filter) before it — worked from
+a specific assumption: the ghost-elimination mechanism operates on
+each torus **in isolation**.  Each sheet has its own ε, its own slot
+geometry, and its own waveguide cutoff.  We designed the filter on
+the lone torus and then assembled three filtered tori into the
+compound MaSt structure.
+
+R50 Track 2 (neutron search) exposed a tension with this approach.
+The (1,3) proton — which wins decisively on nuclear charge formulae
+(Track 5) — has a structural neutron problem: its proton-ring mode
+spacing is too coarse (275 MeV) for any integer mode to land near
+the neutron mass (939.6 MeV).  The (3,6) proton places a mode much
+closer but fails on nuclear charges.
+
+**Revised working hypothesis:** The filtration mechanism may emerge
+from the **compound structure** rather than operating on isolated
+tori.  When tori are coupled via cross-shears (σ ≠ 0), energy can
+flow between sheets.  A "ghost" mode on one sheet need not be
+destroyed by a slot on that sheet — it may instead drain into a
+dark mode on another sheet (e.g. the (1,1) electron ghost falling
+into a neutrino-sheet dark mode, invisible to electromagnetism).
+
+**Practical consequence for future tracks:** The waveguide cutoff
+filter (`propagates()`) should not be applied during the compound-
+mode search.  All Q = 0, spin-½ modes — including those that fail
+single-torus propagation — are legitimate neutron (and other
+particle) candidates.  The filter mechanism is deferred: we assume
+it exists but do not yet know its form.
+
+This shifts the methodology from "filter first, search second" to
+"search first, constrain the filter from what works."  If a
+successful neutron candidate requires a mode that fails single-
+torus propagation, that tells us the filter cannot operate as
+previously assumed — and may point toward its true mechanism.
+
+All three proton sheet sizes — (1,2), (1,3), (3,6) — are back on
+the table for the compound-mode search.  The single-torus filter
+results (Tracks 1, 3, 4, 6) remain valid as constraints on what
+*would* propagate if the filter were per-sheet, but they no longer
+gate the compound-mode candidate list.
+
+See R50 Track 6 for the unfiltered neutron search.
+
+---
+
 ## Notes
