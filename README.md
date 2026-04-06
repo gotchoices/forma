@@ -74,8 +74,8 @@ material sheets — where particles are standing waves of
 confined electromagnetic energy.  The full arena is
 **Ma × S × t** (6 + 3 + 1 = 10 dimensions).
 
-See [`qa/Q84-mast-terminology.md`](qa/Q84-mast-terminology.md)
-for the full terminology specification.
+See [`studies/Taxonomy.md`](studies/Taxonomy.md)
+for the full framework reference.
 
 | Symbol | Name | Dimensions | What it is |
 |--------|------|:----------:|------------|
