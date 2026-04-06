@@ -1043,6 +1043,53 @@ does not have a plasma — it has individual fusion events
 producing fast alphas in a gas.  Lower power density
 than plasma MHD, but far simpler.
 
+The electrodes serve **triple duty**:
+
+1. **Electrical** — collect Lorentz-separated charges,
+   carry current to external circuit
+2. **Gamma shielding** — dense metal (tungsten or copper)
+   provides excellent gamma attenuation on the two faces
+   that receive the most particle bombardment (the
+   Lorentz force drives all fast alphas toward the
+   electrodes).  A few cm of tungsten attenuates gammas
+   comparably to lead.
+3. **Structural** — form two walls of the reaction chamber
+
+The remaining four faces still need the water jacket.
+The electrode faces are self-shielding for gammas and
+charged particles.
+
+**Neutrons pass through the electrodes.**  Neutrons have
+no charge — the Lorentz force does not affect them and
+they interact minimally with heavy nuclei (a ping-pong
+ball bouncing off a bowling ball barely slows down).
+Neutrons that pass through the electrodes are caught by
+the water jacket behind them.  This is a clean separation
+of labor:
+
+| Component | Stops gammas | Stops charged particles | Stops neutrons |
+|-----------|-------------|------------------------|---------------|
+| Metal electrodes (2 faces) | Yes | Yes | No — transparent |
+| Water jacket (behind electrodes + 4 other faces) | Yes | Yes | Yes |
+
+**Neutron activation.** Neutrons hitting electrode nuclei
+can produce radioactive isotopes through neutron capture.
+Tungsten has a relatively small capture cross-section, so
+this is a low-rate process, but over extended operation
+the electrodes could become mildly radioactive.  This is
+a maintenance concern (periodic replacement or
+monitoring), not a safety concern (the activation levels
+are low and the isotopes are short-lived).  Copper has
+lower activation risk but lower density (weaker gamma
+shielding).  The electrode material is an engineering
+tradeoff between density, conductivity, and activation.
+
+Heat from the electrodes (both from absorbed gammas and
+from alpha particle impacts) can be extracted through
+cooling channels on the back face, adding to the thermal
+output.  This heat can feed into the same water circuit
+as the jacket, keeping the thermal design simple.
+
 ### 18.3 Self-powering hybrid
 
 The most elegant configuration: MHD provides direct
@@ -1159,6 +1206,47 @@ at the water.
 
 A photodetector on the water jacket provides continuous,
 passive radiation monitoring with no additional equipment.
+
+### 19.4 Neutron fate in the water jacket
+
+Neutrons entering the water jacket undergo two steps:
+
+**Moderation.**  The fast neutron (~MeV) collides with
+hydrogen nuclei (protons) in the water.  Each collision
+transfers roughly half the neutron's energy — equal-mass
+billiard balls.  After ~20 collisions, the neutron has
+thermalized (kinetic energy ~0.025 eV, matching water
+temperature).  The recoiling protons deposit their kinetic
+energy as heat.
+
+**Capture.**  The thermal neutron is captured by a hydrogen
+nucleus:
+
+> n + ¹H → ²H + γ (2.224 MeV)
+
+The hydrogen becomes **deuterium**.  The 2.224 MeV gamma
+is absorbed by the surrounding water as heat.  Both
+products (deuterium, gamma-heated water) are stable and
+non-radioactive.  Oxygen capture (n + ¹⁶O → ¹⁷O + γ) has
+a cross-section ~1700× smaller and is negligible.
+
+**The water jacket produces deuterium.**  This is a
+secondary effect worth noting: the shielding water
+slowly enriches itself with deuterium over time.
+Deuterium is the fusion fuel discussed in §12.5 — it
+already has a neutron component with a neutrino Compton
+window.
+
+At low reaction rates (benchtop), the accumulation is
+negligible.  At industrial rates sustained over months
+or years, the deuterium concentration in the jacket water
+would grow measurably.  In principle, this enriched water
+could eventually be cycled back as fuel — the shielding
+becomes a slow fuel enrichment system.  This is not a
+near-term design feature, but it is a pleasant
+closed-loop property of the system: the waste product
+from shielding (deuterium) is the feedstock for easier
+fusion (deuterium already has the neutrino window).
 
 
 ---
