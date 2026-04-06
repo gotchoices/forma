@@ -280,7 +280,94 @@ and molecular geometries should follow from the Ma_e
 mode spectrum coupled to the nuclear modes on Ma_p.
 
 
-## 7. What this predicts
+## 7. Binding energy as shear-boundary loss
+
+### The mass defect is real
+
+Atoms weigh LESS than the sum of their parts:
+
+| System | Sum of parts | Actual mass | Deficit |
+|--------|-------------|-------------|---------|
+| Hydrogen | 938.783 MeV | 938.783 − 0.0000136 MeV | 13.6 eV |
+| Helium-4 | 3755.674 MeV | 3727.379 MeV | 28.3 MeV |
+| Iron-56 | 55,618.6 MeV | 55,526.5 MeV | 492.3 MeV |
+
+The "missing" mass is the binding energy — radiated away
+as photons when the system assembled.  E = mc²: less
+energy = less mass.  This is measured, not theoretical.
+
+### The shear-boundary hypothesis
+
+When two modes couple across sheets through σ_ep, energy
+must cross the shear boundary.  The shear boundary is an
+impedance mismatch — the same kind of junction physics
+that gives us α at the 2D/3D torus-space boundary.
+
+Energy crossing a mismatched boundary doesn't all
+transmit.  The energy "lost" at the boundary radiates
+into the 3D lattice as photons when the cross-sheet mode
+forms.  This lost energy IS the binding energy.
+
+The chain:
+
+1. Electron mode and proton mode begin uncoupled
+   (separate modes on separate sheets, total energy =
+   sum of parts)
+2. Cross-sheet coupling σ_ep activates (the modes enter
+   the same spatial region)
+3. Energy crosses the shear boundary to form the coupled
+   cross-sheet mode
+4. Transmission loss at the boundary — some energy
+   doesn't make it across
+5. The lost energy radiates through the torus surface
+   into 3D space as photons
+6. The coupled mode has less energy than the uncoupled
+   sum — the atom is lighter than its parts
+
+### What the eigenvalue solver can and cannot check
+
+The model (`ma_model_d.py`) can compute
+E(coupled mode) − E(sum of uncoupled parts).  If this
+difference matches the measured binding energy, the
+metric algebra reproduces the right number.
+
+But the model cannot explain WHY the number is right.
+It computes eigenvalues (kinematics — what states exist
+at what energy), not transition dynamics (how the system
+reaches that state, where the energy goes).  The
+"shear-boundary loss" is a physical interpretation of the
+math, not something the eigenvalue solver validates.
+
+The computation tests the prediction.  The mechanism
+remains a hypothesis until a dynamical model (time
+evolution, transition amplitudes, boundary physics) is
+built.
+
+### Harmonic mass scaling
+
+If 4 electrons = the (4,8) harmonic on Ma_e, how does
+the electron-component mass scale with Z?
+
+On a single torus: E(Z, 2Z) = Z × E(1,2).  Mass grows
+**linearly** with Z.  Four electrons contribute exactly
+4 × m_e = 2.044 MeV — and indeed, the electron-mass
+contribution to an atom IS Z × m_e (minus binding energy).
+
+But the binding energy does NOT grow linearly with Z.
+Total ionization energies scale roughly as Z^(7/3) for
+heavy atoms (Thomas-Fermi scaling).  This nonlinearity
+must come from the cross-sheet coupling — either from
+the mode geometry (how Z strands couple to the nuclear
+mode at the shear boundary) or from the details of the
+boundary impedance at each shell.
+
+If the eigenvalue solver reproduces both the linear
+electron-mass scaling AND the nonlinear binding energy
+scaling, that would be strong evidence that the
+cross-sheet mode picture captures the right physics.
+
+
+## 8. Predictions
 
 ### Testable against known data
 
@@ -328,7 +415,7 @@ mode spectrum coupled to the nuclear modes on Ma_p.
    electron shell structure.
 
 
-## 8. Electron shielding as evidence
+## 9. Electron shielding as evidence
 
 A striking feature of atomic physics supports the modal
 picture: **filled electron shells screen the nuclear
@@ -385,7 +472,7 @@ not be "ghost particles" in this context — they would be
 structural components of atomic shells.
 
 
-## 9. Relationship to existing work
+## 10. Relationship to existing work
 
 ### Supporting
 
@@ -476,7 +563,7 @@ structural components of atomic shells.
   is genuinely open — not settled by R31 as claimed.
 
 
-## 10. Caution
+## 11. Caution
 
 This is a **foundational reinterpretation**, not a
 computed result.  Nothing in this Q file has been
