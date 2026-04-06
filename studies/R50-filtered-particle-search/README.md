@@ -403,6 +403,54 @@ Track 5 (charge formula constraints).
 **Script:** `scripts/track6_unfiltered_neutron.py`
 
 
+### Track 7: σ_ep landscape — full-spectrum optimization
+
+**Status:** Complete
+
+**Motivation:** Tracks 2–6 each chose σ_ep based on a single
+criterion: the neutron mass gap.  This gave σ_ep = −0.13 for (3,6)
+and σ_ep = −0.27 for (1,3).  But neither value has been tested
+against the **full particle spectrum**.  A different σ_ep might
+trade a slightly worse neutron for significantly better mesons or
+baryons — or vice versa.  Without this landscape, comparisons
+between (1,3) and (3,6) are biased by the choice of σ_ep.
+
+**Approach:**
+
+1. **Both hypotheses, side by side.**  (1,3) and (3,6), both
+   unfiltered (Track 6 methodology).  Each defines its own
+   L_ring_p from E(proton_mode) = 938.272 MeV.
+
+2. **σ_ep sweep.**  For each hypothesis, sweep σ_ep over
+   [−0.3, +0.3] at fine resolution.  At each σ_ep value, run
+   the full Track 3 target-matching against all 19 particles.
+
+3. **Landscape metrics.**  At each σ_ep, report:
+   - Mean |Δm/m| across all targets with allowed quantum numbers
+   - Number of "good" matches (< 2%)
+   - Neutron gap specifically
+   - Best and worst individual matches
+   This produces a landscape showing how each σ_ep trades off
+   different particles.
+
+4. **σ_ep remains free.**  Report the optimal σ_ep for each
+   hypothesis as a "constrained by spectrum" value with a width,
+   not a pinned constant.  Future data (nuclei, higher-energy
+   particles) may prefer a different value.
+
+**Deliverables:**
+- σ_ep landscape plots (metric vs σ_ep) for both hypotheses
+- Optimal σ_ep for each hypothesis with width/sensitivity
+- Fair side-by-side comparison at each hypothesis's best σ_ep
+- Assessment of how many particles drive the optimum vs how
+  many are insensitive to σ_ep
+
+**Depends on:** Track 3 (target list and methodology),
+Track 6 (unfiltered approach).
+
+**Script:** `scripts/track7_sigma_landscape.py`
+
+
 ## Design notes for `ma_model_d`
 
 ### What NOT to carry over from `ma_model.py`

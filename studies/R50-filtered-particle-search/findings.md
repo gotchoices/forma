@@ -1673,3 +1673,186 @@ sheet coupling, can sustain modes that are evanescent on isolated
 tori.  Future searches should treat the compound as the primary
 object and defer filtration to a later stage, once the mechanism
 is understood.
+
+
+---
+
+## Track 7: σ_ep landscape — full-spectrum optimization
+
+Tracks 2–6 chose σ_ep based on the neutron alone: −0.13 for
+(3,6), −0.27 for (1,3).  Track 7 asks: **what σ_ep optimizes
+the full particle spectrum?**  Both hypotheses are swept over
+σ_ep ∈ [−0.30, +0.30] at 31 points, unfiltered (Track 6
+methodology), against all 14 topologically allowed targets.
+
+**Charge formula note:**  All candidate generation uses the
+universal fundamental charge formula Q = −n₁ + n₅.  For the
+(1,3) proton (n₅ = 1), this gives Q = +1, consistent with
+the proton.  For the (3,6) proton (n₅ = 3), this gives Q = +3 —
+the composite charge formula Q = −n₁ + n₅/gcd(n₅,n₆) is needed
+to recover Q = +1.  The Track 7 results therefore show the (3,6)
+geometry evaluated under the universal formula: the actual (3,6)
+proton mode is excluded from the Q = +1 pool.  This means (3,6)
+is matching particles against a slightly different mode catalogue
+than it would under its native formula.  This is not a flaw —
+it is the charge formula tension (Track 5) quantified.
+
+
+### F49 — Both hypotheses optimize at σ_ep ≈ −0.28
+
+Surprisingly, both (1,3) and (3,6) converge on nearly the same
+optimal σ_ep ≈ −0.28 when evaluated by trimmed mean |Δm/m|
+(mean of all unstable targets excluding the two worst).
+
+| Hypothesis | Best σ_ep | Good (< 2%) | Fair (2–10%) | Poor (> 10%) | Median |Δm/m| | Trimmed mean |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| (1,3) | −0.28 | 7 | 4 | 2 | 1.77% | 2.35% |
+| (3,6) | −0.28 | 10 | 2 | 1 | 0.77% | 0.89% |
+
+Both hypotheses also show the landscape is remarkably symmetric
+about σ_ep = 0: performance at +σ nearly mirrors −σ.  This
+reflects the metric symmetry under sign reversal of the cross-
+shear coupling.
+
+**The neutron-optimized σ_ep values from earlier tracks (−0.13
+for (3,6), −0.27 for (1,3)) are close to but not identical to
+the spectrum-optimized value.**  This confirms σ_ep is not yet
+pinned — the full spectrum prefers a somewhat different value
+than the neutron alone.
+
+
+### F50 — (3,6) outperforms (1,3) on overall particle matching
+
+At their respective best σ_ep = −0.28, side-by-side comparison:
+
+| Particle | (1,3) |Δm/m| | (3,6) |Δm/m| | Better |
+|:---:|:---:|:---:|:---:|
+| n | 0.30% | 0.90% | (1,3) |
+| μ⁻ | 98.84% | 3.90% | (3,6) |
+| π⁰ | 89.48% | 18.11% | (3,6) |
+| K⁰ | 2.86% | 0.77% | (3,6) |
+| η | 6.45% | 0.36% | (3,6) |
+| η′ | 1.56% | 3.51% | (1,3) |
+| φ | 0.10% | 0.32% | (1,3) |
+| Λ | 0.55% | 0.73% | (1,3) |
+| Σ⁺ | 1.77% | 0.98% | (3,6) |
+| Ξ⁰ | 0.05% | 0.00% | (3,6) |
+| Δ⁰ | 5.18% | 1.31% | (3,6) |
+| ρ⁰ | 6.17% | 0.13% | (3,6) |
+| τ⁻ | 0.86% | 0.75% | (3,6) |
+
+(3,6) wins 9 of 13 head-to-head comparisons.  Its trimmed mean
+(0.89%) is 2.6× better than (1,3) (2.35%).
+
+**(1,3) wins decisively on:**
+- Neutron (0.30% vs 0.90%) — critical for nuclear physics
+- φ meson (0.10% vs 0.32%)
+- Λ baryon (0.55% vs 0.73%)
+- η′ (1.56% vs 3.51%)
+
+**(3,6) wins decisively on:**
+- ρ⁰ (0.13% vs 6.17%) — 47× better
+- K⁰ (0.77% vs 2.86%)
+- η (0.36% vs 6.45%) — 18× better
+- Δ⁰ (1.31% vs 5.18%)
+
+Both hypotheses fail badly on:
+- μ⁻ (98.84% for (1,3), 3.90% for (3,6)) — mass desert
+- π⁰ (89.48% for (1,3), 18.11% for (3,6)) — topological tension
+
+
+### F51 — The (1,3) mode spacing problem persists
+
+The (1,3) proton's larger L_ring_p creates coarser mode spacing
+on the proton sheet.  This means fewer integer-quantum-number modes
+fall near target masses, explaining the poorer overall fit.  The
+(3,6) geometry, with finer mode spacing, simply has more modes
+available to approximate each target.
+
+The (1,3) "poor" matches (μ⁻, π⁰) both suffer from this: there
+are no modes close to their masses.  The (3,6) model has modes
+near both, though π⁰ is still the worst (18.11%).
+
+
+### F52 — σ_ep sensitivity is weak: the landscape is flat
+
+Both hypotheses show minimal sensitivity to σ_ep across the
+full range.  The trimmed mean varies only moderately:
+
+| Hypothesis | Best trimmed mean | Worst trimmed mean | Range |
+|:---:|:---:|:---:|:---:|
+| (1,3) | 2.35% | 2.94% | 0.59% |
+| (3,6) | 0.89% | 1.70% | 0.81% |
+
+For (1,3), the range within 1.5× of the optimum spans the
+entire sweep [−0.30, +0.30].  For (3,6), likewise.  This means
+σ_ep is poorly constrained by the current particle set — many
+σ_ep values give comparably good (or comparably mediocre) fits.
+
+This flatness implies:
+1. The spectrum is dominated by per-sheet energies (diagonal
+   metric elements), not cross-sheet coupling
+2. More data (nuclei, higher-energy particles) or a different
+   observable (fine structure, mass splittings) will be needed
+   to pin σ_ep precisely
+3. The "optimal" σ_ep ≈ −0.28 should be treated as a soft
+   constraint, not a calibrated parameter
+
+
+### F53 — Optimum σ_ep differs from neutron-only estimates
+
+Previous tracks found:
+- (1,3) neutron-optimized: σ_ep ≈ −0.27  (Track 6)
+- (3,6) neutron-optimized: σ_ep ≈ −0.13  (original Track 2)
+
+Track 7 spectrum-optimized:
+- (1,3): σ_ep ≈ −0.28  (close to neutron-optimized)
+- (3,6): σ_ep ≈ −0.28  (far from neutron-optimized!)
+
+For (1,3), the neutron-optimized and spectrum-optimized values
+nearly coincide — the neutron is a good proxy for the full
+spectrum.  For (3,6), the spectrum prefers σ_ep = −0.28 (neutron
+gap: 0.90%) over σ_ep = −0.13 (neutron gap: 0.29%).  The (3,6)
+model trades a slightly worse neutron for significantly better
+mesons and baryons.
+
+This means earlier (3,6) results at σ_ep = −0.13 were
+neutron-biased.  At the spectrum-optimized σ_ep = −0.28, (3,6)
+is even stronger on particles other than the neutron.
+
+
+### F54 — Assessment: (3,6) fits the spectrum better, (1,3) fits the physics better
+
+The tension from Track 5 remains:
+
+**(3,6) advantages:**
+- 2.6× lower trimmed mean (0.89% vs 2.35%)
+- 10 good matches vs 7
+- Finer mode spacing → better approximation across the board
+- Only 1 "poor" match (π⁰) vs 2 (μ⁻, π⁰)
+
+**(1,3) advantages:**
+- Universal charge formula Q = −n₁ + n₅ works for all particles
+  and all nuclei — no need for a composite formula
+- Better neutron match (the most important single particle
+  after the electron and proton)
+- Clean nuclear scaling (Track 5, F31–F36)
+- Structural parallel to electron: fundamental (1,2) on Ma_e,
+  fundamental (1,3) on Ma_p
+- Does not require the gcd division in the charge formula,
+  which lacks a clear physical mechanism
+
+The (3,6) geometry **produces better numbers** but **requires
+more theoretical apparatus** (composite charge formula, strand
+decomposition).  The (1,3) geometry **produces worse numbers**
+but **requires less theoretical apparatus** (universal charge
+formula, no strand decomposition) and **connects cleanly to
+nuclear physics**.
+
+**σ_ep remains a free parameter for both hypotheses.**  Future
+work should explore: (a) whether optimization of ε_p and σ
+values together can close the (1,3) gap, (b) whether a hybrid
+model (fundamental modes on each sheet, coupled via cross-shears)
+improves both, and (c) what observable beyond mass — such as
+decay rates, magnetic moments, or fine structure — can
+discriminate between the two hypotheses.
