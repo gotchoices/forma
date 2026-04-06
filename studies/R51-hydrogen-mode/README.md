@@ -177,7 +177,7 @@ Derived quantities:
 
 ### Track 1: Energy cost of adding an electron to a proton
 
-**Status:** Planned
+**Status:** Complete
 
 **Goal:** Map ΔE_add(σ) and I.E.(σ) as functions of σ_ep
 for both proton hypotheses.  Determine whether either
