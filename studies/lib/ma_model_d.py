@@ -445,6 +445,7 @@ class MaD:
         '_eps', '_s', '_L_ring', '_L',
         '_sigma_ep', '_sigma_enu', '_sigma_nup',
         '_Gt', '_Gti',
+        '_n_p',
     )
 
     def __init__(self, *,
@@ -476,6 +477,7 @@ class MaD:
                 "Reduce cross-shear magnitudes.")
         self._Gt = Gt
         self._Gti = Gti
+        self._n_p = None  # set by from_physics(); None for raw construction
 
     # ── Convenience constructors ──────────────────────────────────
 
@@ -483,7 +485,7 @@ class MaD:
     def from_physics(cls, *,
                      eps_e=0.65, eps_nu=5.0, eps_p=0.55,
                      s_nu=None,
-                     n_e=(1, 2), n_p=(3, 6), n_nu=(1, 1),
+                     n_e=(1, 2), n_p=(1, 3), n_nu=(1, 1),
                      sigma_ep=0.0, sigma_enu=0.0, sigma_nup=0.0):
         """
         Construct from physical constraints.
@@ -504,10 +506,10 @@ class MaD:
                        0.1 to 5+ (R49 F2).  Confidence: LOW — three
                        neutrino families remain viable.
 
-        eps_p = 0.55   Must be ≥ 0.5 for (3,6) proton strands to
-                       propagate.  R47 explored 1/3 (for confinement)
-                       but that cuts everything (R50 F3).  Raised to
-                       0.55 for 10% margin.  Confidence: LOW.
+        eps_p = 0.55   For (1,3): must be > 1/3 so the (1,2) ghost is
+                       cut and (1,3) is the first surviving mode.  0.55
+                       gives good margin.  For (3,6): must be ≥ 0.5 for
+                       strands to propagate.  Confidence: LOW.
 
         s_e, s_p       Derived from α(ε, s) = 1/137.036 (R19).
                        Confidence: HIGH — α is precisely measured and
@@ -519,8 +521,20 @@ class MaD:
         n_e = (1,2)    Electron mode.  Confidence: HIGH — established
                        since model-A, waveguide-validated (R46).
 
-        n_p = (3,6)    Proton composite.  Confidence: HIGH — wins 8/11
-                       criteria vs (1,2) (R47 Track 7).
+        n_p = (1,3)    Leading candidate.  Fundamental mode — gcd = 1,
+                       so charge formula is universal (no composite
+                       exception needed).  Spin ½ from topological rule
+                       (odd tube).  Bare moment ~3 μ_N (−7% correction
+                       needed).  Nuclear scaling: n₅ = A, n₆ = 3A.
+                       Parallels the electron: first surviving charged
+                       mode after (1,2) ghost is killed by waveguide.
+                       Confidence: MEDIUM — under active testing (R50
+                       Track 5).
+                       Alternative: (3,6) composite.  Gives quark
+                       substructure (gcd = 3 → three strands) but
+                       requires composite charge formula that breaks
+                       for nuclear modes (R50 review).  Still viable
+                       if charge formula tension is resolved.
 
         n_nu = (1,1)   Neutrino ν₁ (Assignment A).  Confidence: MEDIUM
                        — depends on neutrino family selection.
@@ -569,12 +583,14 @@ class MaD:
         # Simplifies to: L_ring_nu = 2πℏc / E0_nu
         L_ring_nu = _TWO_PI_HC / E0_nu_MeV
 
-        return cls(
+        inst = cls(
             eps_e=eps_e, eps_nu=eps_nu, eps_p=eps_p,
             s_e=s_e, s_nu=s_nu, s_p=s_p,
             L_ring_e=L_ring_e, L_ring_nu=L_ring_nu, L_ring_p=L_ring_p,
             sigma_ep=sigma_ep, sigma_enu=sigma_enu, sigma_nup=sigma_nup,
         )
+        inst._n_p = n_p
+        return inst
 
     # ── Properties ────────────────────────────────────────────────
 
@@ -609,6 +625,21 @@ class MaD:
     @property
     def sigma_nup(self):
         return self._sigma_nup
+
+    @property
+    def proton_mode(self):
+        """Proton reference mode (n_tube, n_ring), e.g. (1,3) or (3,6).
+
+        None if constructed via raw __init__ without from_physics().
+        """
+        return self._n_p
+
+    @property
+    def is_composite_proton(self):
+        """True if proton mode has gcd > 1 (e.g. (3,6) → 3 strands)."""
+        if self._n_p is None:
+            return False
+        return math.gcd(abs(self._n_p[0]), abs(self._n_p[1])) > 1
 
     @property
     def metric(self):
@@ -695,8 +726,10 @@ class MaD:
         Q = +1).  The neutrino sheet (n₃) does not contribute
         — see Q102 (neutrino neutrality from sheet size).
 
-        For composite modes like the (3,6) proton, use
-        charge_composite() instead.
+        Under the (1,3) proton hypothesis, this is the only charge
+        formula needed (gcd(1,3) = 1 → no composite correction).
+        Under the (3,6) proton hypothesis, use charge_composite()
+        for modes with gcd > 1.
 
         Parameters
         ----------
@@ -715,12 +748,19 @@ class MaD:
 
         Q = (−n₁ + n₅) / gcd(|n₅|, |n₆|)    [proton sheet composite]
 
-        The (3,6) proton is a composite of gcd(3,6) = 3 strands.
-        Each strand carries charge e/3 (fractional quark charge).
-        Total charge: 3 × (e/3) = e → Q = +1.
+        Only relevant under the (3,6) proton hypothesis.  The (3,6)
+        proton is a composite of gcd(3,6) = 3 strands; each strand
+        carries charge e/3 (fractional quark charge).  Total charge:
+        3 × (e/3) = e → Q = +1.
 
-        Falls back to charge() when gcd = 1 (fundamental mode) or
-        when n₅ = n₆ = 0 (no proton sheet winding).
+        Falls back to charge() when gcd = 1 (fundamental mode,
+        including the (1,3) proton) or when n₅ = n₆ = 0 (no proton
+        sheet winding).
+
+        WARNING: This formula gives incorrect results for nuclear
+        modes under the R29 scaling law (n₅ = A, n₆ = 2A), because
+        gcd(A, 2A) = A collapses the proton contribution.  See
+        R50 Track 5 for details.
 
         See R47 Track 7 F4 for derivation.
 
@@ -775,7 +815,8 @@ class MaD:
         Total inferred spin from topology (exact half-integer).
 
         For composite modes (gcd > 1), uses per-strand tube winding.
-        The (3,6) proton has strand (1,2); n_tube = 1 is odd → ½.
+        E.g. (3,6) proton → strand (1,2); n_tube = 1 is odd → ½.
+        For the (1,3) proton, n_tube = 1 is directly odd → ½.
 
         Parameters
         ----------
@@ -839,11 +880,12 @@ class MaD:
           n_ring >= |n_tube| / ε
 
         For composite modes (gcd(n_tube, n_ring) > 1), checks
-        per-strand propagation.  The (3,6) composite is three (1,2)
-        strands; each strand must individually propagate.  This
-        resolves the issue where the single-mode formula cuts (3,6)
-        at ε = 1/3 (cutoff = 9 > 6), while the per-strand check
-        uses (1,2) (cutoff = 3 vs n_ring = 2).
+        per-strand propagation.  E.g. a (3,6) composite is three
+        (1,2) strands; each strand must individually propagate.
+
+        For the (1,3) proton (gcd = 1), the mode is fundamental
+        and the standard cutoff applies: n_ring ≥ n_tube/ε → 3 ≥ 1/ε
+        → ε ≥ 1/3.  With ε_p = 0.55 this easily propagates.
 
         A mode with pure n_ring winding (n_tube = 0) always propagates.
         The zero mode (all zeros) does not propagate.
@@ -1056,9 +1098,10 @@ class MaD:
 
         # Reference energies (single-sheet, no cross-coupling)
         print(f"\n  Reference modes (single-sheet energies):")
+        n_p = self._n_p or (1, 3)
         for label, n6, name in [
             ('electron', (1, 2, 0, 0, 0, 0), 'e⁻'),
-            ('proton',   (0, 0, 0, 0, 3, 6), 'p'),
+            ('proton',   (0, 0, 0, 0, n_p[0], n_p[1]), 'p'),
             ('ν₁ (A)',   (0, 0, 1, 1, 0, 0), 'ν₁'),
         ]:
             E = self.energy(n6)
@@ -1076,7 +1119,7 @@ class MaD:
 
     def to_dict(self):
         """Serialize to dict."""
-        return {
+        d = {
             'eps_e': self._eps[0], 'eps_nu': self._eps[1], 'eps_p': self._eps[2],
             's_e': self._s[0], 's_nu': self._s[1], 's_p': self._s[2],
             'L_ring_e': self._L_ring[0], 'L_ring_nu': self._L_ring[1],
@@ -1084,8 +1127,15 @@ class MaD:
             'sigma_ep': self._sigma_ep, 'sigma_enu': self._sigma_enu,
             'sigma_nup': self._sigma_nup,
         }
+        if self._n_p is not None:
+            d['n_p'] = list(self._n_p)
+        return d
 
     @classmethod
     def from_dict(cls, d):
         """Reconstruct from dict."""
-        return cls(**d)
+        d2 = {k: v for k, v in d.items() if k != 'n_p'}
+        inst = cls(**d2)
+        if 'n_p' in d:
+            inst._n_p = tuple(d['n_p'])
+        return inst

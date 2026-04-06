@@ -267,13 +267,18 @@ Script: [`scripts/track4_spindle_moment.py`](scripts/track4_spindle_moment.py)
 
 ### Context
 
-Tracks 1 and 3 assumed the proton is a **(1,3) mode**.  The WvM
-spin formula gives spin = n₁/n₂ = ⅓ for (1,3) — wrong for the
-proton (spin ½).  Tracks 1 and 3 are **nullified**.
+Tracks 1 and 3 assumed the proton is a **(1,3) mode**.  Originally
+nullified because the WvM spin ratio rule gives n₁/n₂ = 1/3.
+**Reinstated**: Model-D's topological spin rule (odd tube winding →
+spin ½) gives the (1,3) mode spin ½, which is the correct physical
+rule for half-integer spin assignment.  The (1,3) hypothesis is now
+the **leading candidate** (see R50 Track 5 and the hypothesis status
+section below).
 
-Track 4 returns to **(1,2)** (spin ½) and tests whether a spindle
-torus (ε > 1, self-intersecting) could explain the proton's large
-anomalous magnetic moment (g_p = 5.586, κ_p = 1.793).
+Track 4 tested the **(1,2)** hypothesis (spin ½ from the ratio rule)
+via a spindle torus (ε > 1, self-intersecting) to explain the
+proton's large anomalous magnetic moment (g_p = 5.586, κ_p = 1.793).
+The spindle mechanism was ruled out (geometric ceiling at g ≈ 4).
 
 ### Charge model: scalar vs WvM polarization
 
@@ -588,3 +593,75 @@ simulation of a three-strand composite on a torus.
 | F8 | The (3,6) mode itself appears cut off in the simple waveguide formula (n₁ = 3 gives cutoff n₂ > 9, but n₂ = 6).  Resolution requires treating (3,6) as three (1,2) strands, not as a single n₁ = 3 mode. |
 | F9 | The sinusoidal charge integral ∫cos(n₁θ)(1+ε cosθ) dθ = 0 for all n₁ ≥ 2 — but this uses a model (cos(n₁θ) E-field profile) that is only derived for n₁ = 1.  Whether higher odd-n₁ modes carry charge under the full WvM circular-polarization model remains open.  The primer's "odd n₁ carries charge" statement should not be revised until the n₁ > 1 field structure is worked out. |
 | F10 | Overall score: (3,6) wins on 8 of 11 criteria.  The (1,2) hypothesis is simpler but requires external mechanisms for quarks, confinement, and the large magnetic moment enhancement. |
+
+
+---
+
+## Proton hypothesis status (updated post-R50)
+
+Three proton mode candidates have been tested across R47 and R50.
+The assessment below incorporates the topological spin rule
+(Model-D), nuclear mode scaling (R29/R50), and the full particle
+census (R50 Tracks 1–4).
+
+### (1,2) — abandoned
+
+| Criterion | Assessment |
+|-----------|------------|
+| Spin | ½ ✓ (from WvM ratio rule) |
+| Charge | +1 ✓ |
+| Anomalous moment | Spindle mechanism ruled out — ceiling at g ≈ 4 vs target 5.586 (Track 4 F3) |
+| Quark structure | None — no substructure, no confinement mechanism |
+| Magnetic moment | Bare μ = 1.000 μ_N, 64% below measured 2.793 μ_N |
+| Track 7 scorecard | Loses 8/11 criteria vs (3,6) |
+| **Verdict** | **Abandoned.** Lacks quark phenomenology, moment mechanism fails. |
+
+### (3,6) composite — viable alternative
+
+| Criterion | Assessment |
+|-----------|------------|
+| Spin | ½ ✓ (per-strand: odd tube winding) |
+| Charge | +1 via composite formula Q = −n₁ + n₅/gcd |
+| Quark structure | 3 strands at 120°, constituent mass m_p/3 = 313 MeV ✓ |
+| Magnetic moment | SU(6) μ_p = 3.000 μ_N (+7.4%), μ_n = −2.000 μ_N (+4.5%) |
+| Confinement | Geometric — individual (1,2) strands cut off at ε = 1/3 |
+| DIS | 3 scatterers ✓ |
+| **Problem** | Composite charge formula breaks for nuclei: gcd(A, 2A) = A collapses Q to 1 − N for all nuclei (R50 Track 5). Either nuclei use a different formula, or the composite approach has a structural flaw. |
+| **Verdict** | **Still viable** if charge formula tension can be resolved. Strong quark phenomenology. |
+
+### (1,3) fundamental — leading candidate
+
+| Criterion | Assessment |
+|-----------|------------|
+| Spin | ½ ✓ (topological rule: n₁ = 1 is odd → ½) |
+| Charge | +1 via universal formula Q = −n₁ + n₅ |
+| Charge formula | Universal — works for all particles AND nuclei (no composite exception) |
+| Nuclear scaling | n₅ = A, n₆ = 3A (ring ratio matches proton n₆/n₅ = 3) |
+| Ghost killing | Parallels electron: (1,2) ghost killed by waveguide, (1,3) is first survivor |
+| Magnetic moment | Bare μ ≈ 3 μ_N (from ring symmetry, −7% correction needed) |
+| Ring radius | R ≈ 0.59 fm at ε ≈ 0.25 (70% of charge radius 0.84 fm) |
+| Quark explanation | DIS probes 3-fold ring symmetry of (1,3) mode, not physical substructure; quarks are degenerate ringings when proton is disrupted |
+| **Problem** | No explicit quark sub-modes — must explain DIS, jets, and constituent mass through ring symmetry rather than physical decomposition |
+| **Verdict** | **Leading candidate.** Solves the charge formula problem, gives clean nuclear scaling, parallels the electron, and Occam-favored. Under active testing (R50 Track 5). |
+
+### Key discriminators for future tracks
+
+1. **Nuclear masses (R50 Track 5):** If (1,3) reproduces R29
+   benchmarks (d through ⁵⁶Fe, all < 1%), it removes the
+   primary advantage of (3,6) — which has the unresolved
+   charge formula problem for nuclei.
+
+2. **DIS structure functions:** Can the 3-fold ring symmetry
+   of (1,3) reproduce Bjorken scaling and the measured
+   structure functions F₂(x)?  If yes, explicit quark
+   sub-modes are unnecessary.
+
+3. **Jet production:** High-energy collisions produce 3-jet
+   events.  The (3,6) mode naturally fragments into 3
+   strands.  The (1,3) mode would need to show that its
+   3-fold ring pattern produces the same final states.
+
+4. **Anomalous moment mechanism:** Both candidates need a
+   mechanism for the −7% correction from the bare 3 μ_N
+   prediction.  Cross-sheet coupling (σ_ep) is the leading
+   candidate in either case.

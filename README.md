@@ -139,7 +139,7 @@ full quantitative predictions is **model-C**.
 | [model-A](models/model-A.md) | S1–R25 | WvM / single-sheet electron | Superseded |
 | [model-B](models/model-B.md) | R26–R38 | Three tori / `ma.py` — first particle predictions | Superseded |
 | [model-C](models/model-C.md) | R39–R44 | Generalized model / `ma_model.py` — dynamic torus, dark matter, electroweak | Superseded |
-| [model-D](models/model-D.md) | R45–R50+ | Filtered model / `ma_model_d.py` — waveguide cutoff, (3,6) proton, GRID integration | **Active** |
+| [model-D](models/model-D.md) | R45–R50+ | Filtered model / `ma_model_d.py` — waveguide cutoff, (1,3) proton (leading) / (3,6) alternative, GRID integration | **Active** |
 
 **Headline results** (model-C; see [`models/model-C.md`](models/model-C.md)
 for full tables, mode assignments, parameter accounting, and limitations):
@@ -160,7 +160,10 @@ model-D retracts model-C's pinned proton geometry (r_p = 8.906,
 (3,6) composite, introduces waveguide cutoff (which eliminates the
 (1,1) ghost mode), and is the first model to incorporate GRID
 results as active physics (charge as topological winding, torus wall
-as GRID lattice boundary).  Particle census is pending (R50).
+as GRID lattice boundary).  R50 particle census (Tracks 1–5) complete:
+19-particle spectrum, nuclear modes tested.  The (1,3) proton is the
+leading hypothesis — it solves the charge formula problem and reproduces
+R29 nuclear benchmarks to < 1%.
 
 
 ## Foundation

@@ -1044,3 +1044,207 @@ and the mode search to higher energies could test this.
 - Is there a principled way to derive coupling strengths from
   the Ma geometry, rather than importing them from the
   Standard Model?
+
+
+---
+
+## Track 5: Nuclear modes under model-D geometry
+
+Script: [`scripts/track5_nuclear_modes.py`](scripts/track5_nuclear_modes.py)
+
+
+### F31. The (1,3) proton reproduces R29 nuclear masses
+
+At σ_ep = 0 (where the proton mass is exact by calibration),
+the (1,3) proton hypothesis with nuclear scaling n₅ = A,
+n₆ = 3A reproduces R29's nuclear mass matches almost exactly:
+
+| Nucleus | A | Z | Mass (MeV) | (1,3) gap | R29 gap |
+|---------|---|---|------------|-----------|---------|
+| d | 2 | 1 | 1875.6 | 0.05% | 0.02% |
+| ⁴He | 4 | 2 | 3727.4 | 0.69% | 0.67% |
+| ⁶Li | 6 | 3 | 5601.5 | — | 0.49% |
+| ⁷Li | 7 | 3 | 6533.8 | — | 0.51% |
+| ⁹Be | 9 | 4 | 8392.8 | — | 0.61% |
+| ¹²C | 12 | 6 | 11174.9 | 0.76% | 0.75% |
+| ¹⁴N | 14 | 7 | 13040.2 | — | 0.73% |
+| ¹⁶O | 16 | 8 | 14895.1 | — | 0.78% |
+| ⁵⁶Fe | 56 | 26 | 52089.8 | 0.87% | 0.87% |
+
+The small differences from R29 arise because R29 used model-C
+parameters (r_p = 8.906, σ_ep = −0.091) and optimized n₂
+(electron ring winding) freely.  Model-D's metric is slightly
+different, but the nuclear mass matching is preserved.
+
+At σ_ep = −0.13 (the working value from R50 Tracks 1–4), all
+gaps inflate uniformly by ~3% because cross-shear coupling
+shifts all proton-sheet energies by the same fraction.  This is
+a systematic effect, not a failure of the nuclear scaling law.
+
+
+### F32. Energy identity: (1,3) and (3,6) give identical nuclear energies
+
+When quantum numbers are scaled proportionally to each proton
+mode — (1,3) → n₆ = 3A; (3,6) → n₅ = 3A, n₆ = 6A — the
+nuclear energies are **exactly identical**:
+
+| Nucleus | (1,3) mode | E₁₃ (MeV) | (3,6) mode | E₃₆ (MeV) | ΔE |
+|---------|-----------|----------|-----------|----------|-----|
+| p | (0,0,0,0,1,3) | 938.3 | (0,0,0,0,3,6) | 938.3 | 0.000 |
+| d | (1,0,0,0,2,6) | 1876.5 | (1,0,0,0,6,12) | 1876.5 | 0.000 |
+| ⁴He | (2,0,0,0,4,12) | 3753.1 | (2,0,0,0,12,24) | 3753.1 | 0.000 |
+| ¹²C | (6,0,0,0,12,36) | 11259.3 | (6,0,0,0,36,72) | 11259.3 | 0.000 |
+| ⁵⁶Fe | (30,0,0,0,56,168) | 52543.2 | (30,0,0,0,168,336) | 52543.2 | 0.000 |
+
+This identity holds because L_ring_p is calibrated to the proton
+mass: L_ring_p × μ(proton) = constant.  When all quantum numbers
+scale by the same factor, the energy ratio E(nucleus)/E(proton)
+depends only on the ratio of μ values, which is the same for both
+hypotheses (μ scales linearly in quantum numbers).
+
+**The two hypotheses are energetically equivalent for nuclei.**
+The only discriminator is the charge formula.
+
+
+### F33. Charge formula decisively favors (1,3)
+
+The fundamental charge formula Q = −n₁ + n₅ gives correct
+nuclear charge for **all nuclei** under the (1,3) hypothesis:
+
+| Nucleus | n₁ (=N) | n₅ (=A) | Q = −N + A | Z | Correct? |
+|---------|---------|---------|-----------|---|----------|
+| d | 1 | 2 | +1 | +1 | ✓ |
+| ⁴He | 2 | 4 | +2 | +2 | ✓ |
+| ¹²C | 6 | 12 | +6 | +6 | ✓ |
+| ⁵⁶Fe | 30 | 56 | +26 | +26 | ✓ |
+
+Under (1,3), gcd(n₅, n₆) = gcd(A, 3A) = A for even A, but since
+n₅/gcd = 1 and the (1,3) mode has gcd(1,3) = 1 (fundamental),
+the composite formula **falls back** to the fundamental formula.
+There is no composite correction — one charge formula works
+for everything.
+
+Under the (3,6) hypothesis with direct scaling (n₅ = 3A, n₆ = 6A):
+
+| Nucleus | n₅ | n₆ | gcd | Q_fund | Q_comp | Z | Fund? | Comp? |
+|---------|----|----|-----|--------|--------|---|-------|-------|
+| d | 6 | 12 | 6 | +5 | 0 | +1 | ✗ | ✗ |
+| ⁴He | 12 | 24 | 12 | +10 | −1 | +2 | ✗ | ✗ |
+| ¹²C | 36 | 72 | 36 | +30 | −5 | +6 | ✗ | ✗ |
+| ⁵⁶Fe | 168 | 336 | 168 | +138 | −29 | +26 | ✗ | ✗ |
+
+**Neither charge formula works** for (3,6) with proportional
+scaling.  The fundamental formula overcounts (every unit of A
+contributes 3 to n₅), and the composite formula collapses all
+nuclear charges to −N + 1.
+
+The (3,6) hypothesis can only match nuclear charges by using the
+per-strand scaling (n₅ = A, n₆ = 2A) with the fundamental charge
+formula.  But this per-strand scaling gives **65% mass errors**
+because L_ring_p is calibrated for (3,6), not (1,2) strands.
+
+**Verdict:** The charge formula problem for (3,6) is structural
+and cannot be resolved by any consistent scaling law.  The (1,3)
+proton hypothesis eliminates this problem entirely.
+
+
+### F34. (3,6) per-strand scaling catastrophically fails
+
+Using the per-strand nuclear scaling (n₅ = A, n₆ = 2A) on the
+(3,6) model gives mass errors of ~65% for all nuclei.  This
+happens because the (3,6) model's L_ring_p is calibrated so that
+the (3,6) mode (with its larger μ value) matches the proton mass.
+Modes with smaller quantum numbers (like A, 2A) map to much
+lower energies:
+
+| Nucleus | (3,6) E_mode (MeV) | M_obs (MeV) | Gap |
+|---------|-------------------|------------|------|
+| d | 645.8 | 1875.6 | 65.6% |
+| ⁴He | 1290.9 | 3727.4 | 65.4% |
+| ¹²C | 3871.3 | 11174.9 | 65.4% |
+| ⁵⁶Fe | 18063.4 | 52089.8 | 65.3% |
+
+The per-strand scaling is the (3,6) model's only option for
+correct charges, but it destroys mass accuracy.  This is a
+fundamental incompatibility.
+
+
+### F35. Cross-shear systematically shifts nuclear gaps
+
+The cross-shear σ_ep shifts all proton-sheet mode energies by
+a uniform fraction.  The nuclear scaling pattern is preserved
+but the absolute energies shift:
+
+| σ_ep | p gap | d gap | ⁴He gap | ¹²C gap | ⁵⁶Fe gap |
+|------|-------|-------|---------|---------|----------|
+| 0.00 | 0.00% | 0.05% | 0.69% | 0.76% | 0.87% |
+| −0.05 | 0.42% | 0.47% | 1.11% | 1.18% | 1.29% |
+| −0.10 | 1.70% | 1.75% | 2.41% | 2.47% | 2.59% |
+| −0.13 | 2.93% | 2.99% | 3.65% | 3.71% | 3.83% |
+
+Each row is the proton gap plus a small, A-dependent residual
+(reflecting the nuclear binding energy deficit).  The binding
+energy residual per nucleon grows from ~0.15 MeV (deuteron) to
+~8 MeV (iron), consistent with R29's observation.
+
+This means σ_ep must eventually be optimized jointly for
+particles and nuclei.  At σ_ep = −0.13, the proton is 2.9% too
+heavy and nuclei inherit the same shift.  At σ_ep = 0, nuclear
+masses match R29 exactly.
+
+
+### F36. Spin parity prevents strict scaling for some nuclei
+
+Two nuclei from the R29 benchmark set — ³He (spin ½) and ⁷Li
+(spin 3/2) — cannot be matched under the strict R29 scaling
+law (n₁ = N, n₅ = A) because the topological spin constraint
+is unsatisfiable:
+
+| Nucleus | N | A | n₁ parity | n₅ parity | Base odd | Need | Possible? |
+|---------|---|---|-----------|-----------|----------|------|-----------|
+| ³He | 1 | 3 | odd (1) | odd (1) | 2 | 1 | No |
+| ⁷Li | 4 | 7 | even (0) | odd (1) | 1 | 3 | No |
+
+For ³He: n₁ = 1 and n₅ = 3 are both odd, giving base 2 spin-half
+contributions.  Adding n₃ yields total = 2 or 3, never 1 (spin ½).
+
+For ⁷Li: n₁ = 4 is even, n₅ = 7 is odd.  Base = 1.  Adding n₃
+yields total = 1 or 2, never 3 (spin 3/2).
+
+This is not specific to the (1,3) proton — the same parity
+constraint applies for (3,6) with n₅ = A.  R29 resolved this by
+searching freely over all quantum numbers; the strict scaling law
+n₁ = N, n₅ = A was an observed pattern, not a hard constraint.
+Some nuclei may use slightly different quantum number assignments.
+
+
+### Track 5 summary
+
+**The (1,3) proton hypothesis passes the nuclear mode test.**
+It reproduces R29's mass benchmarks (all < 1% at σ_ep = 0) with
+the natural nuclear scaling n₅ = A, n₆ = 3A, using the universal
+charge formula Q = −n₁ + n₅.  No composite formula exception is
+needed.
+
+**The (3,6) hypothesis has a structural charge problem for nuclei**
+that cannot be resolved by any consistent scaling law:
+- Proportional scaling (n₅ = 3A, n₆ = 6A) gives identical
+  energies to (1,3) but wrong charges with both formulas
+- Per-strand scaling (n₅ = A, n₆ = 2A) gives correct charges
+  with the fundamental formula but 65% mass errors
+
+**The charge formula is the decisive discriminator** between the
+two hypotheses.  Since the energies are identical under
+proportional scaling, and (1,3) gives correct charges while (3,6)
+does not, the (1,3) proton is strongly favored by nuclear mode
+data.
+
+**Open questions:**
+- Can ³He and ⁷Li be matched with modified quantum numbers
+  (relaxing n₁ = N), and do those matches preserve the mass
+  accuracy?
+- What value of σ_ep optimizes both particle masses (R50 Tracks
+  1–4) and nuclear masses simultaneously?
+- Does the waveguide cutoff eliminate any nuclear modes that
+  were viable in R29?  (Several nuclear modes have odd n₁ on
+  the electron sheet, which may not propagate at ε_e = 0.65.)

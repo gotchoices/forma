@@ -298,6 +298,44 @@ differ by 10¹³) proves that mass gap alone cannot predict
 lifetime.  Refined hypothesis: stratified off-resonance,
 where the correlation holds within each decay-channel class.
 
+### Track 5: Nuclear modes under model-D geometry
+
+**Status:** Complete
+
+**Goal:** Test both proton hypotheses — (1,3) fundamental and
+(3,6) composite — against R29's nuclear benchmark set (d through
+⁵⁶Fe).  Resolve the charge formula tension identified in the
+Track 5 framing.
+
+**Results (F31–F36):**
+
+The (1,3) proton hypothesis passes the nuclear test decisively:
+
+- At σ_ep = 0, the nuclear scaling n₅ = A, n₆ = 3A reproduces
+  R29's mass benchmarks to < 1% (d: 0.05%, ⁴He: 0.69%,
+  ¹²C: 0.76%, ⁵⁶Fe: 0.87%).
+- The fundamental charge formula Q = −n₁ + n₅ = −N + A = Z
+  gives correct charge for ALL nuclei — no composite exception
+  needed.
+- At σ_ep = −0.13, all gaps inflate by ~3% due to uniform
+  cross-shear shift — a systematic effect, not a nuclear failure.
+
+The (3,6) hypothesis has a **structural charge problem**:
+
+- Proportional scaling (n₅ = 3A, n₆ = 6A) gives identical
+  energies to (1,3) but wrong charges with both formulas.
+- Per-strand scaling (n₅ = A, n₆ = 2A) gives correct
+  fundamental charges but 65% mass errors.
+- No consistent scaling law works for both charge and mass.
+
+**Key finding (F32):** The two hypotheses give **exactly
+identical** nuclear energies when quantum numbers scale
+proportionally.  The charge formula is the sole discriminator,
+and it decisively favors (1,3).
+
+Two nuclei (³He, ⁷Li) cannot be matched under strict R29
+scaling due to topological spin parity constraints (F36).
+
 
 ## Design notes for `ma_model_d`
 

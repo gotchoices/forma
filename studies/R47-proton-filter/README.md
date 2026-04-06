@@ -1,6 +1,6 @@
 # R47: Proton geometry — mode, slots, and anomalous moment
 
-**Status:** Active (Tracks 4–6)
+**Status:** Active — (1,3) leading hypothesis, (3,6) viable alternative
 **Questions:** [Q90](../../qa/Q90-ephemeral-mode-decomposition.md) (quarks as sub-modes),
   [Q53](../../qa/Q53-anomalous-magnetic-moment.md) (g − 2)
 **Type:** compute / interactive
@@ -19,22 +19,44 @@ The proton is the next target.
 
 ### Mode hypothesis history
 
-**Tracks 1–3 explored the (1,3) hypothesis** — motivated by
-three-fold quark symmetry and clean 3-slot ghost-killing geometry.
-However, the WvM spin formula gives spin = n₁/n₂ = 1/3 for (1,3).
-The proton has spin ½.  Quarks have fractional charge (⅓, ⅔),
-not fractional spin — quarks all have spin ½.  The (1,3) hypothesis
-is therefore **abandoned**.  Tracks 1 and 3 are nullified; Tracks 0
-and 2 remain valid as tool infrastructure.
+Three proton mode candidates have been investigated:
 
-**Track 4 returns to (1,2)** — the proton is a (1,2) mode on Ma_p,
-same topology as the electron on Ma_e.  Spin = n₁/n₂ = ½. ✓
+**The (1,2) hypothesis** — same topology as the electron.  Gives
+spin ½ from the WvM ratio rule n₁/n₂.  However, Track 4 showed
+the spindle mechanism (ε > 1 for anomalous moment) hits a
+geometric ceiling at g ≈ 4 — short of the measured g_p = 5.586.
+Track 7 showed (1,2) loses 8/11 criteria against (3,6): no quark
+substructure, no confinement mechanism, bare moment 64% too low.
+**Status: effectively abandoned.**
 
-The proton's anomalous magnetic moment (κ_p = 1.793, g_p = 5.586)
-is explored through a **spindle torus** hypothesis: the proton has
-ε > 1, causing the torus to self-intersect.  The self-intersecting
-surface cannot project charge outward, but the photon's current
-loop is unaffected — enhancing μ/Q.
+**The (3,6) composite hypothesis** — three (1,2) strands at 120°
+offsets.  gcd(3,6) = 3 → natural quark substructure with
+constituent mass m_p/3 ≈ 313 MeV.  SU(6) moment prediction
+μ_p = 3.000 μ_N (+7% residual, zero free parameters).  Geometric
+confinement from waveguide cutoff.  However, the composite charge
+formula Q = −n₁ + n₅/gcd(|n₅|,|n₆|) breaks for nuclear modes
+under the R29 scaling law (R50 Track 5).  **Status: still viable,
+but charge formula tension is unresolved.**
+
+**The (1,3) fundamental hypothesis** — originally explored in
+Tracks 1 and 3, then abandoned because the WvM spin ratio rule
+gives n₁/n₂ = 1/3.  **Reinstated** when Model-D's topological
+spin rule (odd tube winding → ½) was recognized as the correct
+physical rule (R50 review).  Under this rule, n₁ = 1 is odd →
+spin ½.  The (1,3) mode is a fundamental mode (gcd = 1), so the
+universal charge formula Q = −n₁ + n₅ works for both particles
+and nuclei — no composite exception needed.  Nuclear scaling
+becomes n₅ = A, n₆ = 3A (matching the proton's ring winding
+ratio).  Structural parallel to the electron: on Ma_e the (1,1)
+ghost is killed by the waveguide and (1,2) is the first surviving
+charged mode; on Ma_p the (1,2) ghost is killed and (1,3) is
+the first surviving charged mode.  Bare SU(6)-style moment
+μ_p ≈ 3 μ_N (from 3-fold ring symmetry probed in DIS, not from
+physical substructure).  **Status: leading candidate — under
+active testing in R50 Track 5.**
+
+Tracks 1 and 3 (originally nullified) are **reinstated** as
+valid under the topological spin rule.
 
 
 ## Deriving particle geometry from known inputs
@@ -78,11 +100,14 @@ what can we determine — and what remains free?
 
 ### Track 1: Proton (1,3) mode analysis
 
-**Status:** Null — (1,3) gives spin ⅓, not ½.  Proton has spin ½.
+**Status:** Complete — **reinstated**.  Originally nullified because
+the WvM ratio rule gives spin 1/3 for (1,3).  Under Model-D's
+topological spin rule (odd tube winding → ½), the (1,3) mode has
+spin ½.  The mode survival results are physically valid.
 
-**Findings:** See [findings.md](findings.md), Track 1.  The mode
-survival computations are mathematically correct but physically
-inapplicable since the proton cannot be (1,3).
+**Findings:** See [findings.md](findings.md), Track 1.  Key result:
+(1,3) achieves 100% survival at shear-adjusted 3-slot positions,
+with both ghosts (1,1) and (1,2) killed for ε ≤ 0.47.
 
 
 ### Track 2: Torus Lab generalization
@@ -95,15 +120,20 @@ The lab now supports arbitrary target modes via shear presets and
 
 ### Track 3: Proton (1,3) slot geometry
 
-**Status:** Null — depends on (1,3) hypothesis (Track 1).
+**Status:** Complete — **reinstated** (depends on Track 1).
 
-**Findings:** See [findings.md](findings.md), Track 3.  Slot
-sizing computations correct but physically inapplicable.
+**Findings:** See [findings.md](findings.md), Track 3.  Slot sizing
+computations are physically applicable again.  Key result: scenario A
+(slot correction α/2π) gives reasonable slot sizes; scenario B (full
+κ_p from slots) is ruled out — the proton's large anomalous moment
+must arise from cross-sheet coupling.
 
 
 ### Track 4: Spindle torus and proton anomalous moment
 
-**Status:** Active
+**Status:** Complete — ruled out.  Spindle mechanism hits geometric
+ceiling at g ≈ 4.0, short of target g_p = 5.586.  The (1,2) proton
+hypothesis is effectively dead.
 
 **Goal:** Test whether a spindle torus (ε > 1) can explain the
 proton's anomalous magnetic moment through geometric charge
