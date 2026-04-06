@@ -665,3 +665,122 @@ census (R50 Tracks 1–4).
    mechanism for the −7% correction from the bare 3 μ_N
    prediction.  Cross-sheet coupling (σ_ep) is the leading
    candidate in either case.
+
+
+---
+
+## Strand decomposition: (3,6) = 3 × (1,2)  (post-R50 Track 7)
+
+### Topological relationship between the proton candidates
+
+The (3,6) mode is not an independent hypothesis — it is the
+(1,2) hypothesis tripled.  This section documents the exact
+relationship and its consequences for the (1,3) vs (3,6)
+comparison.
+
+**Knot vs link.**  A torus mode (n₅, n₆) traces a curve on
+the torus surface.  When gcd(n₅, n₆) = 1, the curve is a
+single connected *torus knot* — an irreducible topological
+object.  When gcd(n₅, n₆) = g > 1, the curve separates into
+g disconnected strands, each tracing the reduced knot
+(n₅/g, n₆/g).  This is a *torus link*.
+
+| Mode | gcd | Topology | Decomposes into |
+|:---:|:---:|:---|:---|
+| (1,2) | 1 | Torus knot (irreducible) | — |
+| (1,3) | 1 | Torus knot (irreducible) | — |
+| (2,6) | 2 | 2-component link | 2 × (1,3) |
+| (3,6) | 3 | 3-component link | 3 × (1,2) |
+
+So (3,6) is literally three interleaved copies of the (1,2)
+torus knot, equally spaced around the torus.  The (1,3) mode,
+by contrast, is a single irreducible curve — topologically
+distinct and not decomposable into simpler pieces.
+
+*Note:* (2,6) — two copies of (1,3) — has n₅ = 2 (even),
+giving spin 0 under the topological spin rule.  It cannot be
+the proton but could serve as a meson-like excitation.
+
+### Energy and sheet size
+
+Because all quantum numbers scale by 3:
+
+<!-- E(3,6) = 3 × E(1,2) on the same torus -->
+$$
+E(3,6,\,L) \;=\; 3\,\times\,E(1,2,\,L)
+$$
+
+To calibrate both to the proton mass (938.272 MeV):
+- L_ring_p(3,6) = 3 × L_ring_p(1,2)
+- The (3,6) torus has exactly 3× the ring circumference
+
+The (3,6) proton IS a (1,2) proton on a sheet 3× larger.
+Its finer mode spacing — the primary reason it matches the
+particle spectrum better (R50 Track 7 F50: trimmed mean 0.89%
+vs 2.35% for (1,3)) — comes entirely from this larger sheet.
+More modes per unit energy means more chances to land near a
+target mass.
+
+On the (3,6)-sized torus, the fundamental (1,2) mode has
+energy M_p/3 ≈ 313 MeV — roughly the constituent quark mass.
+
+### Spin and the quark parallel
+
+A spin-½ composite from (1,2) strands requires an *odd* number
+of strands (each strand has n₅ = 1, odd → spin ½):
+
+| Composite | Strands | Spin options | Proton? |
+|:---:|:---:|:---|:---:|
+| (1,2) | 1 | ½ | ✓ but abandoned |
+| (2,4) | 2 | 0, 1 | ✗ (no ½) |
+| (3,6) | 3 | ½, ½, 3/2 | ✓ |
+| (4,8) | 4 | 0, 1, 1, 2 | ✗ (no ½) |
+
+The minimum viable composite is (3,6): three spin-½ objects
+combining to total spin ½.  This is the quark model in torus
+language — three spin-½ constituents at ~313 MeV each,
+combining to make a spin-½ baryon at ~938 MeV.
+
+### What the tension really is
+
+The (1,3) vs (3,6) comparison is not between two arbitrary mode
+hypotheses.  It is between two fundamentally different pictures
+of the proton:
+
+| | (3,6) = 3 × (1,2) | (1,3) |
+|:---|:---|:---|
+| Structure | Composite (3 strands) | Fundamental (1 strand) |
+| Torus size | 3× larger | 1× (fundamental) |
+| Spectrum fit | Better (finer spacing) | Worse (coarser spacing) |
+| Charge formula | Composite: Q = n₅/gcd | Universal: Q = −n₁ + n₅ |
+| Nuclear scaling | Fails (Track 5) | Works (Track 5) |
+| DIS / jets | Natural: 3 strands fragment | Must invoke ring symmetry |
+| Quark mass | ~313 MeV per strand | No substructure |
+| Analogy | Quarks | Fundamental particle |
+
+The (3,6) spectrum advantage and its charge formula disadvantage
+are both consequences of the *same thing*: strand multiplication.
+You cannot have the finer mode spacing without also buying the
+composite charge formula.  Conversely, you cannot have the
+universal charge formula without accepting the coarser mode
+spacing of a fundamental-sized torus.
+
+### Assessment
+
+Both hypotheses remain viable (R50 Track 7).  The choice between
+them is the question of whether the proton is *composite* (three
+(1,2) strands = three "quarks") or *fundamental* (one (1,3)
+knot whose 3-fold ring symmetry mimics quarks in scattering).
+This is not yet resolved by the available data — spectrum fitting
+favors (3,6), charge and nuclear physics favor (1,3).
+
+Future discriminators beyond those listed above:
+- **ε_p optimization:** The (1,3) mode spacing depends on ε_p.
+  A different ε_p (currently 0.55) could narrow the spectrum
+  gap without affecting the charge formula.
+- **Higher composites:** If (3,6) is correct, do (5,10) =
+  5 × (1,2) composites exist?  These would be "pentaquarks"
+  in torus language.
+- **Strand interaction:** If (3,6), what couples the strands?
+  Cross-shear acts between sheets, not within a sheet.  The
+  intra-sheet strand binding mechanism is unspecified.
