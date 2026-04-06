@@ -5,6 +5,7 @@ photon with toroidal topology?", *Annales de la Fondation Louis de
 Broglie*, Vol. 22 No. 2, 1997.
 
 **Full text:** `WvM.pdf` in this folder.
+**Video overview:** [YouTube — WvM premise explained](https://www.youtube.com/watch?v=hYyrgDEJLOA&t=1690s)
 
 This is a living summary. It records our current understanding of
 what the paper claims, what it demonstrates, and where we have

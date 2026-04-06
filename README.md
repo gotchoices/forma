@@ -139,7 +139,7 @@ full quantitative predictions is **model-C**.
 | [model-A](models/model-A.md) | S1–R25 | WvM / single-sheet electron | Superseded |
 | [model-B](models/model-B.md) | R26–R38 | Three tori / `ma.py` — first particle predictions | Superseded |
 | [model-C](models/model-C.md) | R39–R44 | Generalized model / `ma_model.py` — dynamic torus, dark matter, electroweak | Superseded |
-| [model-D](models/model-D.md) | R45–R50+ | Filtered model / `ma_model_c.py` — waveguide cutoff, (3,6) proton, GRID integration | **Active** |
+| [model-D](models/model-D.md) | R45–R50+ | Filtered model / `ma_model_d.py` — waveguide cutoff, (3,6) proton, GRID integration | **Active** |
 
 **Headline results** (model-C; see [`models/model-C.md`](models/model-C.md)
 for full tables, mode assignments, parameter accounting, and limitations):
@@ -198,9 +198,9 @@ gauge field is not an assumption imposed on the model — it
 *emerges* from solving the wave equation on compact × non-compact
 space.
 
-**Williamson and van der Mark (1997)** ([PDF][wvm]) proposed
-the specific mechanism: an electron is a single photon
-confined to a (1,2) torus knot.  The model reproduces spin ½
+**Williamson and van der Mark (1997)** ([PDF][wvm],
+[video overview][wvm-video]) proposed the specific mechanism:
+an electron is a single photon confined to a (1,2) torus knot.  The model reproduces spin ½
 (exact, topological) and charge ≈ 0.91e (approximate,
 geometric).  This project extends WvM into the MaSt
 framework: the photon lives on a flat material sheet
@@ -211,6 +211,7 @@ on a single sheet (R25) — forced the architecture from one
 sheet to three (3Ma = Ma_e × Ma_ν × Ma_p), yielding Ma (R26).
 
 [wvm]: https://fondationlouisdebroglie.org/AFLB-222/MARK.TEX2.pdf
+[wvm-video]: https://www.youtube.com/watch?v=hYyrgDEJLOA&t=1690s
 
 
 ## Structure
