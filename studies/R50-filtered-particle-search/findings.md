@@ -214,3 +214,172 @@ mode is "the electron" or "the proton."  The `from_physics()`
 constructor is a convenience wrapper that makes assumptions
 (electron = (1,2), proton = (3,6), neutrino = (1,1)) but the
 core `MaD` class is assumption-free.
+
+---
+
+## Track 2: Cross-shear sweep — neutron as first cross-sheet test
+
+**Script:** [`scripts/track2_cross_shear_sweep.py`](scripts/track2_cross_shear_sweep.py)
+
+### Setup
+
+Sweeps each cross-shear parameter (σ_ep, σ_eν, σ_νp) independently
+over the range −0.3 to +0.3, searching for Q = 0, spin-½ modes
+within striking distance of the neutron mass (939.565 MeV).
+
+**Self-consistent L_ring adjustment.**  When σ ≠ 0, the Schur
+complement modifies the diagonal blocks of G̃⁻¹, changing the
+effective dimensionless energy μ_eff of reference modes.  Ring
+circumferences must be re-derived so that E(electron) = 0.511 MeV
+and E(proton) = 938.272 MeV remain exact.  A key insight from
+Track 2: the dimensionless metric G̃ depends only on (ε, s, σ),
+NOT on the absolute circumferences L.  This means L_ring can be
+derived analytically from G̃⁻¹ and the target mass — no iteration
+is needed (unlike model-C's iterative scheme).
+
+**Search space.**  7,800 Q = 0, spin-½ mode 6-tuples generated
+from n₁ ∈ [−3,3], n₂ ∈ [−4,4], n₃ ∈ [−2,2], n₄ ∈ [−2,2],
+n₅ ∈ [−6,6], n₆ ∈ [−10,10].  Of these, 2,556 pass the waveguide
+propagation filter.  Energies are computed in vectorized batches
+(numpy) for each σ value.
+
+### F11. Neutron candidate found at σ_νp ≈ −0.13
+
+**Best candidate across all sweeps:**
+
+| Property | Value |
+|----------|-------|
+| Mode | (0, 0, 2, 2, 0, −8) |
+| Energy | 939.819 MeV |
+| Residual | +0.254 MeV (0.03%) |
+| Cross-shear | σ_νp = −0.130 |
+| Charge | Q = 0 |
+| Spin | ½ (from Ma_ν composite strand) |
+| Sheets active | Ma_ν + Ma_p |
+
+**Quantum number anatomy:** This mode has no electron-sheet
+winding (n₁ = n₂ = 0).  The neutrino sheet carries (2, 2), which
+is a composite of gcd(2, 2) = 2 strands of (1, 1).  Each strand
+has odd tube winding → spin ½.  The proton sheet carries (0, −8)
+— pure ring winding, no tube — so it contributes mass but no
+charge or spin.
+
+The neutron's spin comes from the neutrino sheet, and its mass
+comes from the proton ring.  This is structurally different from
+model-C's neutron mode (0, −2, 1, 0, 0, 2), which used all three
+sheets and derived its proton-scale mass from a mode-C proton at
+(1, 2) with r_p = 8.906.
+
+### F12. σ_ep also produces a neutron candidate
+
+A second candidate appears in the σ_ep sweep:
+
+| Property | Value |
+|----------|-------|
+| Mode | (0, 4, 1, −2, 0, 8) |
+| Energy | ~939.2 MeV (varies with σ_ep) |
+| Minimum residual | 0.358 MeV |
+| Cross-shear | σ_ep ≈ −0.130 |
+| Sheets active | Ma_e + Ma_ν + Ma_p |
+
+This three-sheet mode gets its spin from Ma_ν (n₃ = 1, odd tube),
+its mass from Ma_p ring (n₆ = 8), and its σ_ep coupling from
+Ma_e ring winding (n₂ = 4).  The electron ring winding is what
+allows σ_ep to shift the energy — without it, the electron-proton
+cross-term vanishes.
+
+### F13. σ_eν has zero effect on proton-scale modes
+
+The electron–neutrino cross-shear produces no energy shift at
+the proton mass scale.  The best candidate is stuck at 954.3 MeV
+(Δ = +14.7 MeV) regardless of σ_eν.
+
+This is expected: σ_eν couples Ma_e (L ~ 6000 fm) to Ma_ν
+(L ~ 10¹⁰ fm), neither of which carries significant energy at
+the proton scale (L ~ 10 fm).
+
+### F14. Cross-shear mechanism: indirect, not direct
+
+The cross-shear effect on proton-scale mode energies operates
+through an **indirect** mechanism:
+
+1. **Direct cross-terms are negligible.**  The energy cross-term
+   involves (n_e/L_e)(n_p/L_p), which is suppressed by the scale
+   ratio L_p/L_e ≈ 1.75 × 10⁻³.  For the ν–p coupling the
+   suppression is L_p/L_ν ≈ 2.45 × 10⁻¹⁰.
+
+2. **The Schur complement modifies [G̃⁻¹]_pp.**  When σ ≠ 0,
+   the inverse metric's proton-proton block changes through the
+   Schur complement:
+   [G̃⁻¹]_pp → [G̃_pp − G̃_pe G̃_ee⁻¹ G̃_ep]⁻¹.
+   This correction is O(σ²), meaning the energy shift is
+   **quadratic** in σ, not linear.  The first derivative ∂E/∂σ
+   at σ = 0 is exactly zero for all candidates.
+
+3. **L_ring_p adjusts to keep the proton mass fixed.**  The Schur
+   complement shifts the proton's effective μ, so L_ring_p must
+   be rescaled.  At σ_ep = 0.1, L_ring_p shifts by 1.81%.  This
+   rescaling is what moves non-reference modes relative to the
+   proton.
+
+4. **Different modes shift differently.**  The Schur complement
+   correction is a rank-1 (or low-rank) perturbation to [G̃⁻¹]_pp.
+   It shifts different directions in mode space by different amounts.
+   The ratio E(0,0,1,1,0,8)/E(proton) changes from 1.0171 at σ = 0
+   to 1.0075 at σ_ep = 0.1 — a 0.94% relative shift, corresponding
+   to ~9 MeV.  Over the full sweep range (σ up to ±0.3), the shift
+   reaches ~50 MeV.
+
+### F15. Mode spacing limits resolution
+
+The proton sheet's energy unit is E₀_p = 2πℏc / L_ring_p ≈ 119 MeV.
+This sets the spacing between adjacent proton-ring modes.
+
+The neutron–proton mass difference (1.293 MeV) is only **1.08%**
+of one mode spacing unit.  No integer quantum number on Ma_p can
+land within 1.3 MeV of the proton by itself.  The neutron must
+be tuned by cross-shear adjustment of L_ring_p (which shifts the
+entire proton mode spectrum by a continuous amount).
+
+This reinforces the parameter discipline from model-D: σ_νp
+(or σ_ep) is **constrained** by the neutron mass, not pinned.
+The constraint is: "the cross-shear must be in the range where
+a Q = 0, spin-½ mode passes through 939.565 MeV."
+
+### F16. Reference mass stability
+
+The self-consistent L_ring adjustment keeps reference masses
+exact to numerical precision across the entire σ sweep:
+
+| Reference | Stability across σ_ep = ±0.3 |
+|-----------|------------------------------|
+| Electron (0.511 MeV) | shift < 10⁻¹⁶ MeV |
+| Proton (938.272 MeV) | shift < 10⁻¹² MeV |
+
+This confirms that the L_ring derivation from G̃⁻¹ is exact.
+
+### Track 2 summary
+
+Cross-shears CAN produce a neutron-like mode (Q = 0, spin ½,
+m ≈ 939.6 MeV) in model-D.  The mechanism is indirect — the
+Schur complement modifies the proton block of G̃⁻¹, which
+shifts proton-ring modes relative to the proton reference mass
+when L_ring_p is adjusted.
+
+Two viable candidates exist:
+- (0, 0, 2, 2, 0, −8) at σ_νp ≈ −0.13  (Δ = 0.25 MeV)
+- (0, 4, 1, −2, 0, 8) at σ_ep ≈ −0.13  (Δ = 0.36 MeV)
+
+Both get their spin from the neutrino sheet and their mass from
+the proton ring.  The proton tube plays no role in the neutron,
+consistent with the neutron having zero charge (no tube winding
+on charged sheets).
+
+**Open questions for Track 3:**
+- Do the same σ values that produce the neutron also produce
+  other known particles (muon, pion, kaon)?
+- Is σ_νp or σ_ep the physically preferred coupling?
+- The neutron near-miss distance (0.25–0.36 MeV) implies a
+  quality factor Q ≈ m/Δm ≈ 3700.  Is this consistent with
+  the neutron's 879-second lifetime under the off-resonance
+  hypothesis?

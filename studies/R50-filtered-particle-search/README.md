@@ -1,6 +1,6 @@
 # R50: Filtered multi-sheet mode search
 
-**Status:** Active — Track 1 complete
+**Status:** Active — Track 2 complete
 **Questions:** Q16 (mass spectrum)
 **Type:** compute
 **Depends on:** R29 (nuclei as Ma modes), R46 (electron filter),
@@ -229,7 +229,7 @@ could be mistaken for a separate search space.
 
 ### Track 2: Cross-shear sweep — neutron as first cross-sheet test
 
-**Status:** Planned
+**Status:** Complete
 
 **Goal:** Sweep cross-shear parameters (σ_ep, σ_eν, σ_νp) and find
 where modes near the neutron mass (939.565 MeV) appear.  Geometry
