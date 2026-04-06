@@ -88,6 +88,36 @@ the mode topology.  Key surprise: WvM charge integral is exactly
 zero for n₁ = 3 — charge must come from (1,2) strand sub-structure.
 Composite waveguide cutoff question flagged for eigenmode study.
 
+### R51. Hydrogen as compound torus mode  **Active — Track 1c complete**
+**Study:** [`R51-hydrogen-mode/`](R51-hydrogen-mode/)
+**Questions:** Q16  **Type:** compute / theoretical  **Depends on:** R29, R50
+
+Tests whether atoms (starting with hydrogen) are pure compound
+eigenmodes of the three tori — no spatial electron-nucleus
+relation, no Bohr model.  "Adding an electron" means adding
+energy quanta to Ma_e; shell filling is mode saturation
+overflowing into dark Ma_ν modes.
+
+- **Track 1**: σ_ep coupling crosses 13.6 eV only at σ_ep ≈ 0
+  (effectively zero coupling); at particle-fitted σ_ep ≈ −0.28,
+  ΔE_add balloons to ~261 keV.
+- **Track 1a**: Systematically closed the σ_ep pathway.  Shears
+  are O(0.1) not O(α), Schur complement shifts are MeV/keV
+  scale, structural barrier from proton MeV scale.  Identified
+  σ_eν as the remaining plausible path (F14).
+- **Track 1b**: σ_eν pathway also fails.  The eν cross-term
+  is ~10⁻⁵ eV at small neutrino quantum numbers — six orders
+  of magnitude too small.  Root cause: both electron and
+  neutrino sheets are large (L ~ 10³–10¹⁰ fm), making their
+  n/L products doubly suppressed.
+- **Track 1c**: Multi-mode picture (separate nuclear and
+  electron modes coupled through shared neutrino quantum
+  numbers) also fails.  Neutrino mode degeneracies are
+  uniformly 2 (no shell structure).  Anti-correlated ν
+  numbers give correct sign for binding but only −0.004 eV
+  (3,400× too small).  All bilinear metric pathways closed.
+  Two-tier physics (R29) appears structurally necessary.
+
 ### R50. Filtered multi-sheet mode search  **Active — Track 7 complete**
 **Study:** [`R50-filtered-particle-search/`](R50-filtered-particle-search/)
 **Questions:** Q16  **Type:** compute  **Depends on:** R29, R46, R47, R49

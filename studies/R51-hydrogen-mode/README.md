@@ -291,9 +291,174 @@ L_ring to expose the raw diagonal shift.
 (identification of the α² question).
 
 
+### Track 1b: Neutrino-mediated binding
+
+**Status:** Complete
+
+**Motivation:** Track 1a (F13–F14) showed that the ep
+cross-sheet coupling is structurally locked to the MeV scale
+because n_p/L_p ∝ m_p.  But the neutrino sheet (Ma_ν) has
+L_ring_ν ≈ 4.2 × 10¹⁰ fm — nine orders of magnitude larger
+than L_ring_p.  Cross-terms involving n_ν/L_ν are
+correspondingly tiny, potentially placing the eν coupling
+at the eV scale needed for atomic binding.
+
+The physical picture: the electron mode (1,2) on Ma_e couples
+to the proton mode (n₅,n₆) on Ma_p not directly (that gives
+keV) but THROUGH the neutrino sheet (Ma_ν).  The hydrogen
+atom is a three-sheet compound mode (1,2,n₃,n₄,n₅,n₆) where
+the neutrino quantum numbers (n₃,n₄) are the mediator.
+σ_eν provides the eV-scale coupling.
+
+**Key tension to resolve:** the neutrino diagonal energy
+E²_ν also grows with n₃, n₄.  Large neutrino quantum numbers
+increase the eν cross-term but also add diagonal energy to
+the compound mode.  There may be a sweet spot — or the
+cross-term may always be overwhelmed by the diagonal cost.
+This is what the computation must determine.
+
+**Method:**
+
+1. **Scale verification.**  At σ_eν values from 0 to −0.3,
+   with σ_ep = −0.28, compute the eν contribution to E² for
+   the compound mode (1,2,n₃,n₄,1,3) with small neutrino
+   quantum numbers (n₃,n₄ = 0 to 5).  Report E²_eν in eV.
+   Verify whether the eν cross-term is in the eV range as
+   predicted.
+
+2. **Diagonal vs cross-term trade-off.**  For each (n₃,n₄),
+   compute both:
+   - E²_ν (diagonal neutrino contribution, always positive)
+   - E²_eν (cross-term, can be positive or negative)
+   Report the net effect on ΔE_add.  Identify whether any
+   (n₃,n₄) produces a net DECREASE in ΔE_add toward 13.6 eV.
+
+3. **Large-n₄ sweep.**  The eν cross-term scales linearly
+   with n₃, n₄, but so does the diagonal E_ν.  At what
+   (n₃,n₄) does the cross-term contribute ~13.6 eV to the
+   energy?  And at that (n₃,n₄), how large is the diagonal
+   E_ν?  If E_ν ≫ 13.6 eV, the neutrino contribution
+   dominates and the mode has "too much neutrino" to be
+   hydrogen.
+
+4. **Pure eν test.**  Set σ_ep = 0, σ_νp = 0, vary σ_eν
+   only.  The compound mode energy is then:
+   E² = E²_e + E²_ν + E²_p + E²_eν
+   with no direct proton-electron coupling.  Compute
+   ΔE_add = E(compound) − E(proton) and check if σ_eν
+   alone can match 13.6 eV.
+
+5. **Neutrino quantum numbers as atomic quantum numbers.**
+   If any combination works, check: do n₃ and n₄ map to
+   principal and angular momentum quantum numbers (n, ℓ)?
+   Does changing (n₃,n₄) produce the hydrogen energy
+   levels (−13.6/n² eV)?
+
+**Success criteria:**
+- If eν cross-term is ~eV scale AND diagonal E_ν is small:
+  the neutrino-mediated picture works.  Proceed to Track 2
+  with three-sheet compound modes.
+- If eν cross-term is ~eV but E_ν overwhelms it: the
+  mechanism exists but is masked by diagonal cost.  Explore
+  whether the diagonal contribution could be the "kinetic
+  energy" of the atomic electron.
+- If eν cross-term is ≪ eV (μeV or smaller): the neutrino
+  sheet is too weakly coupled to produce atomic binding.
+  The compound-mode picture for atoms needs a different
+  mechanism.
+
+**Depends on:** Track 1a (F13 structural barrier, F14
+neutrino pathway).
+
+
+### Track 1c: Multi-mode atom — neutrino-mediated coupling
+
+**Status:** Complete
+
+**Motivation:** Tracks 1–1b tested whether hydrogen is a
+*single* compound eigenvalue of the 6×6 metric.  It is not
+(F20).  But the failure is specific to the single-eigenvalue
+approach.  A different picture: the atom consists of
+*multiple coexisting modes* on the same torus, each a
+separate excitation, coupled through the neutrino sheet.
+
+The physical picture:
+
+- The nucleus is a mode — lives primarily on Ma_p with
+  neutrino quantum numbers (n₃_nuc, n₄_nuc) that give it
+  spatial extent through the S-manifold.
+- Each electron shell is a separate mode — lives primarily
+  on Ma_e with its own neutrino quantum numbers (n₃_e, n₄_e).
+- Both modes share the same neutrino sheet (Ma_ν).  The
+  neutrino participation is what binds them in 3D: two
+  excitations on a common medium, like two oscillators
+  coupled through a shared spring.
+
+This differs from R51 Tracks 1–1b in a fundamental way:
+instead of computing E² = n · G̃⁻¹ · n for a single 6-tuple,
+we compute E_nuc and E_shell separately and look at how
+their neutrino quantum numbers interact.
+
+**Why the neutrino sheet is the right mediator:**
+
+- L_ring_ν ≈ 4.2 × 10¹⁰ fm — macroscopic, easily spans
+  the Bohr radius (~5.3 × 10⁴ fm).
+- Neutrino modes are extremely dense (meV spacing) —
+  many available states for mediating.
+- The neutrino sheet is the lightest, most spatially
+  extended, and most mode-dense of the three sheets.
+
+**Method:**
+
+1. **Neutrino mode census.**  Count lattice points (n₃, n₄)
+   on the ε_ν = 5.0 neutrino torus, grouped by energy level.
+   The energy of a neutrino mode on its own sheet is:
+   E²_ν ∝ (n₃/L₃)² + (n₄/L₄)² + cross-terms from s_ν.
+   Group modes by equal E_ν, count the degeneracy of each
+   level.  Compare to electron shell capacities:
+   - s: 2 states
+   - p: 6 states
+   - d: 10 states
+   - f: 14 states
+   - Per principal quantum number: 2, 8, 18, 32
+   The factor of 2 may come from ±n₃ or ±n₄ symmetry.
+
+2. **Two-mode energy splitting.**  Compute the energy of
+   the nuclear mode and the electron mode independently,
+   each with their own neutrino quantum numbers:
+   - E_nuc(n₃_nuc, n₄_nuc): proton mode (0,0,n₃,n₄,1,3)
+   - E_shell(n₃_e, n₄_e): electron mode (1,2,n₃,n₄,0,0)
+   - E_sum = E_nuc + E_shell
+   Vary the neutrino assignments and check:
+   - Is the energy difference between assignments eV-scale?
+   - Does the minimum-energy assignment correspond to
+     "bound" (n₃_nuc = n₃_e) vs "unbound" (independent)?
+
+3. **Coupling through shared neutrino.**  If both modes
+   must share the same physical neutrino sheet, the total
+   neutrino contribution is constrained.  Test whether:
+   - Correlated neutrino numbers (n₃_nuc = n₃_e) give lower
+     total energy than uncorrelated
+   - The energy difference is at the eV scale
+   - The optimal correlation depends on nuclear charge Z
+
+**Success criteria:**
+- If neutrino mode degeneracies match shell capacities:
+  strong evidence for the multi-mode picture.  Reframe
+  Track 2 around multi-mode helium.
+- If two-mode energy splittings are eV-scale: mechanism
+  for binding exists.  Proceed to full multi-mode formalism.
+- If both fail: the multi-mode picture also doesn't work
+  at the bilinear metric level.  Wrap R51 as a complete
+  negative result.
+
+**Depends on:** Track 1b (F20 — closure of single-eigenvalue
+pathways).
+
+
 ### Track 2: Adding a second electron — helium
 
-**Status:** Planned (contingent on Track 1a)
+**Status:** Planned (contingent on Track 1b)
 
 **Goal:** Model helium as a compound mode by adding a second
 electron quantum to a Z=2 nucleus.
@@ -457,3 +622,5 @@ m_p), but the σ-dependence will differ.
 | File | Contents |
 |------|----------|
 | [findings.md](findings.md) | Results and interpretation |
+| [scripts/track1b_neutrino_mediated.py](scripts/track1b_neutrino_mediated.py) | Track 1b: neutrino-mediated binding |
+| [scripts/track1c_multimode.py](scripts/track1c_multimode.py) | Track 1c: multi-mode atom |

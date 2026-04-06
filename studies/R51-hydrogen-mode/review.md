@@ -348,6 +348,180 @@ If this works, it would mean:
   carrying the least mass
 
 
-## Track 2: Helium
+## Track 1b findings review
 
-*(Not yet reviewed — contingent on Track 1a/1b results.)*
+**Verdict:** Clean negative. The eν pathway is closed at the
+bilinear metric level. F15-F19 are thorough and the root
+cause analysis (F19) is definitive.
+
+### The structural barrier is real
+
+The bilinear energy formula E² = n G̃⁻¹ n requires the
+product (nᵢ/Lᵢ)(nⱼ/Lⱼ) for every cross-term. The three
+possible cross-sheet pairings:
+
+| Pairing | n/L product | Cross-term scale | Problem |
+|---------|------------|-----------------|---------|
+| ep | 10⁻³ × 1 | ~260 keV | Too large (×10⁷) |
+| eν | 10⁻³ × 10⁻¹⁰ | ~10⁻⁵ eV | Too small (×10⁻⁶) |
+| νp | 10⁻¹⁰ × 1 | ~meV | Wrong sheets for hydrogen |
+
+There is no "Goldilocks" pairing that produces eV-scale
+cross-terms at small quantum numbers. The compact proton
+sheet (L ~ fm) produces MeV cross-terms. The large sheets
+(L ~ pm and μm) produce sub-eV cross-terms. No combination
+hits eV.
+
+### Is Track 2 blocked?
+
+**For Track 2 as currently framed (helium as a compound
+eigenmode of the 6×6 metric): yes, blocked.**
+
+The bilinear E² formula is the same for all elements. If
+it can't produce 13.6 eV for hydrogen, it can't produce
+24.6 eV for helium. The structural barrier is element-
+independent.
+
+### What survives
+
+**The compound-eigenmode picture of atoms is ruled out at
+the bilinear metric level.** Three tracks, three pathways
+tested (σ_ep, Schur complement, σ_eν), all closed.
+
+This does NOT rule out atoms as tori phenomena generally.
+It rules out the specific mechanism: same metric, same E²
+formula, atoms as single eigenvalues.
+
+**F20's open avenues remain.** The most promising:
+
+**Avenue 5 (emergent Coulomb potential):** the Paper 3
+two-tier picture may be correct after all — particles
+are Ma modes, atoms are particles interacting through the
+3D Coulomb potential that GRID derives. The Coulomb
+interaction is V(r) = −α/r, which IS derived from the
+lattice gauge field (grid/maxwell.md → atoms-from-geometry
+§3-4). The binding energy 13.6 eV = ½α²m_e follows from
+this potential without requiring atoms to be Ma eigenmodes.
+
+**The neutrino-as-glue insight survives in a different
+form.** The metric cross-terms are too weak, but the
+neutrino sheet could mediate interactions through a
+different mechanism:
+
+- **Shared mode occupation.** Two atoms in the same
+  spatial region both couple to the same neutrino-sheet
+  modes through the Compton window (~42 μm). The shared
+  mode produces an effective attraction — not through the
+  metric bilinear form but through mode-mode coupling on
+  the shared neutrino substrate. This is analogous to
+  phonon-mediated electron pairing in superconductors.
+
+- **Neutrino sheet as dielectric.** The large neutrino
+  sheet may modify the effective Coulomb potential at
+  scales below ~42 μm. If the neutrino sheet has
+  dielectric-like properties (modes that screen or
+  enhance the Coulomb field at specific distances),
+  atomic and molecular binding could depend on Ma_ν
+  even though the binding is fundamentally Coulomb.
+
+- **Molecular bonds specifically.** Even if atomic
+  binding is 3D Coulomb (Paper 3), MOLECULAR bonds
+  between atoms might involve neutrino-sheet shared
+  modes. The bond length (~1 Å) is well within a single
+  neutrino wavelength. Two atoms sharing a neutrino
+  mode would have correlated electron distributions —
+  which is exactly what a covalent bond IS in standard
+  QM (shared electron density between nuclei).
+
+### Where this leaves R51
+
+The compound-eigenmode approach is exhausted at the
+bilinear level. The study should pivot:
+
+- **Track 2 as framed (helium eigenmode): defer.** The
+  mechanism doesn't work for hydrogen, so helium won't
+  help.
+
+- **Possible new track: neutrino-mediated mode-mode
+  coupling.** Instead of atoms as single eigenmodes,
+  model the interaction between two separate particle
+  modes (electron, proton) mediated by a shared
+  neutrino-sheet mode. This is a three-body problem
+  on the sheets, not a single eigenvalue problem.
+
+- **Possible new track: verify Paper 3.** Compute the
+  hydrogen binding energy using the atoms-from-geometry
+  approach (Coulomb from gauge field, Schrödinger with
+  V = −α/r) at model-D parameters. If it still gives
+  13.6 eV exactly, the two-tier picture is confirmed
+  under model-D and the compound-mode pursuit is closed.
+
+The honest conclusion: R51 Tracks 1-1b conducted a
+systematic, well-designed test of the compound-mode
+hypothesis and produced a clean negative result. The
+bilinear metric does not have the right structure for
+atomic binding. This is a valuable finding — it
+eliminates one interpretation of Q105 and redirects
+future work toward either the two-tier picture or
+non-bilinear mechanisms.
+
+
+## Track 1c: Multi-mode atom
+
+### Review of findings
+
+Track 1c tested the hypothesis that atoms are multiple
+coexisting modes (nuclear + electron shell) coupled
+through shared neutrino quantum numbers.  Conceptually
+different from Tracks 1–1b (single compound eigenvalue)
+but the result is the same: binding does not emerge.
+
+**F21 is the most decisive single result.**  The uniform
+degeneracy of 2 on the neutrino torus means shell structure
+(2, 6, 10, 14) CANNOT emerge from neutrino mode counting.
+A 2-torus has U(1) × U(1) symmetry, not SO(3).  The
+2ℓ+1 angular degeneracy of hydrogen requires 3D rotational
+invariance — a property of the S-manifold, not the
+material sheets.  No choice of ε_ν can produce [2, 6, 10, 14]
+from a rectangular lattice.  Shell structure requires
+spatial geometry.
+
+**F23–F24 find the correct sign but wrong scale.**
+Anti-correlated neutrino numbers (electron and nucleus
+with opposite ν quantum numbers) give a small energy
+decrease — the only correct-sign binding in all of R51.
+At −0.004 eV, it is 3,400× too small.  The n_ν/L_ν
+suppression from Track 1b (F19) applies identically.
+
+### R51 consolidated assessment
+
+Four tracks have exhausted the bilinear metric framework:
+
+| Track | Mechanism            | Scale     | Status |
+|-------|---------------------|-----------|--------|
+| 1     | σ_ep single mode    | ~260 keV  | Closed |
+| 1a    | Schur complement    | ~keV      | Closed |
+| 1b    | σ_eν single mode    | ~10⁻⁵ eV | Closed |
+| 1c    | Multi-mode shared ν | ~10⁻³ eV | Closed |
+
+The conclusion is robust: E² = n · G̃⁻¹ · n, whether
+computed as one eigenvalue or a sum of two, cannot produce
+13.6 eV.  The problem is the bilinear form itself.  Cross-
+terms are products of n/L ratios, and no pair of sheets
+has the right combination of scales.
+
+### Implications for Track 2
+
+Track 2 (helium) as currently framed — adding electron
+quanta to compound eigenmodes — cannot succeed within the
+bilinear framework.  Options:
+
+1. **Close R51** as a complete negative result establishing
+   that atoms require two-tier physics (Ma eigenmodes +
+   S-manifold spatial structure, as in R29).
+
+2. **Reframe** to investigate how the emergent Coulomb
+   potential from R29 produces shell structure using torus
+   geometry as the source of α and nuclear modes, but the
+   S-manifold for spatial binding.  This would be a new
+   study, not R51's premise.
