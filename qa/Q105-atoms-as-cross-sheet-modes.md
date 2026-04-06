@@ -453,6 +453,28 @@ structural components of atomic shells.
   **Neither position is conceded.**  Both need the
   cross-sheet eigenvalue computation to be resolved.
 
+  **Critical gap in R31's argument:** R31 searched for a
+  single Ma mode AT the hydrogen mass (938.783 MeV).  It
+  found none within 661 keV.  But Q105 does not propose a
+  mode at that mass.  Q105 proposes a cross-sheet mode
+  where the coupling σ_ep produces a perturbative splitting
+  — the binding energy (13.6 eV) would be the DIFFERENCE
+  between the coupled and uncoupled eigenvalues, not a new
+  mode at a specific total mass.
+
+  The analogy: the neutron mass is not "proton + electron."
+  It is a cross-sheet eigenvalue modified by σ_ep.  The
+  neutron-proton mass difference (1.293 MeV) comes from the
+  cross-coupling.  R31 should have computed the eigenvalue
+  of the coupled mode (1,2,0,0,1,2) at nonzero σ_ep and
+  checked whether the splitting from the uncoupled sum is
+  ~13.6 eV.  It did not do this.  It searched for the wrong
+  thing (a mode at a specific mass) instead of the right
+  thing (a perturbative splitting from cross-sheet coupling).
+
+  This does not prove Q105 is right.  It means the question
+  is genuinely open — not settled by R31 as claimed.
+
 
 ## 10. Caution
 

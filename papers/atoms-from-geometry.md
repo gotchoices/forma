@@ -4,6 +4,19 @@
 **Model era:** [model-C](../models/model-C.md). Parameter pinning
 (r_p, σ_ep) retracted in [model-D](../models/model-D.md).
 
+**Note:** The central conclusion — "atoms are not Ma modes" — is
+challenged by [Q105](../qa/Q105-atoms-as-cross-sheet-modes.md),
+which proposes atoms ARE cross-sheet modes (electron + proton as
+components of one coupled mode on the Ma sheets).  The R31 Track 1
+computation that established the two-tier picture searched for a
+Ma mode at the hydrogen total mass but did not compute the
+cross-sheet eigenvalue splitting at nonzero σ_ep — which is the
+quantity Q105 identifies as the binding energy.  The question is
+genuinely open pending a model-D cross-sheet eigenvalue
+calculation.  The paper's computations (hydrogen spectrum, nuclear
+scaling law) remain valid regardless of which interpretation is
+correct.
+
 **Paper 3 of 3.**  Paper 1: [Matter from Light](matter-from-light.md).
 Paper 2: [Sub-Quantum Memory](sub-quantum-memory.md).
 
