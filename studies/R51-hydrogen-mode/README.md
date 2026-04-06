@@ -213,9 +213,87 @@ quantity can match 13.6 eV.
   scale of ΔE_add at R50 σ values.
 
 
+### Track 1a: Per-sheet energy decomposition and the α² question
+
+**Status:** Complete
+
+**Motivation:** Track 1 showed that the total eigenvalue
+approach can't match 13.6 eV at particle-fitted σ_ep.  But
+it asked the wrong question.  The right question is not "what
+is the total E?" but "what does the cross-sheet coupling
+COST, and does α² appear in that cost?"
+
+The hydrogen ionization energy has a precise form:
+
+<!-- E₁ = ½ α² m_e c² = 13.6 eV -->
+$$
+E_1 = \tfrac{1}{2}\,\alpha^2\,m_e\,c^2 = 13.6\;\text{eV}
+$$
+
+The shear parameter s is derived FROM α in the model.  If
+the cross-sheet term in E² inherits α² from the shear
+geometry, the eV scale would emerge from the metric itself —
+not from σ fine-tuning but from α-dependence already built
+into the model.
+
+Track 1 also recalibrated L_ring at each σ, which absorbs
+any Schur complement correction to the diagonal metric
+blocks.  This is exactly where a second-order binding effect
+would live.  Track 1a runs a second computation with FIXED
+L_ring to expose the raw diagonal shift.
+
+**Method:**
+
+1. **Analytical cross-term.**  At σ_ep = −0.28, write out
+   the cross-sheet contribution to E² explicitly:
+
+   <!-- E²_cross = 2 × Σᵢⱼ (G̃⁻¹)ᵢⱼ × (nᵢ/Lᵢ) × (nⱼ/Lⱼ) -->
+   $$
+   E^2_{\text{cross}} = 2\sum_{i \in e,\; j \in p}
+   \tilde{G}^{ij}\,\frac{n_i}{L_i}\,\frac{n_j}{L_j}
+   $$
+
+   Write this in terms of σ_ep, the shears s_e and s_p,
+   the ε values, and the winding numbers.  Determine
+   whether α² appears naturally in the coefficient.
+
+2. **Compare to ½ α² m_e.**  If E²_cross / (2E) ≈ ½ α² m_e
+   (or any recognizable combination of α, m_e, m_p), report
+   the match.  If not, report what the actual functional
+   form is.
+
+3. **Fixed-L computation.**  Fix L_ring_e and L_ring_p at
+   their σ = 0 values.  Turn on σ_ep and observe:
+   - How much does E(electron mode) shift?
+   - How much does E(proton mode) shift?
+   - How much does E(compound mode) shift?
+   The shift in the bare electron eigenvalue is the Schur
+   complement correction — the diagonal binding contribution
+   that recalibration absorbs.
+
+4. **Mode-winding comparison.**  Compare the cross-term for
+   the hydrogen mode (1,2,0,0,1,3) vs the neutron best
+   candidate.  The neutron has large windings on both sheets;
+   hydrogen has minimal windings.  Quantify the ratio.
+
+**Success criteria:**
+- If E²_cross contains α² as a natural factor: strong
+  evidence that the metric produces hydrogen binding.
+  Proceed to Track 2.
+- If the fixed-L diagonal shift is ~eV scale: the Schur
+  complement produces binding.  Understand why recalibration
+  hides it.
+- If neither α² nor eV-scale diagonal shifts appear: the
+  compound-mode picture lacks the right scale.  Reassess
+  before Track 2.
+
+**Depends on:** Track 1 (numerical baseline), review.md
+(identification of the α² question).
+
+
 ### Track 2: Adding a second electron — helium
 
-**Status:** Planned (contingent on Track 1)
+**Status:** Planned (contingent on Track 1a)
 
 **Goal:** Model helium as a compound mode by adding a second
 electron quantum to a Z=2 nucleus.
