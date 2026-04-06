@@ -98,7 +98,10 @@ independent per-sheet catalogs).  Builds `lib/ma_model_d.py`
 reprised from R29 Track 3 / F16 as richer mode combinations
 under the new rules.  Philosophy: one system, near-misses
 for unstable states, neutron not a calibration target.
-Proton as (3,6) composite (R47).  Five tracks.
+Proton as (3,6) composite (R47).  Four tracks (joint-geometry
+closure folded into Track 2 cross-shear sweep).  Parameter
+strategy: defaults with provenance, sweep before pin, keep
+free variables free (model-D.md §Parameter strategy).
 
 ### R49. Neutrino sheet — filtering, oscillation, and mode spectrum  **On hold — Tracks 1–2a complete**
 **Study:** [`R49-neutrino-filter/`](R49-neutrino-filter/)

@@ -276,9 +276,50 @@ Model-D deliberately makes **fewer** assumptions than its predecessors:
 
 - r_p = 8.906 (retracted)
 - σ_ep = −0.091 (retracted)
-- Thin-torus spin s = n₁/n₂ (replaced by finite-ε spin)
+- Thin-torus spin s = n₁/n₂ (replaced by topological spin)
 - Muon as exact fit target (replaced by near-miss philosophy)
 - Proton as (1,2) single mode (replaced by (3,6) composite)
+
+### Parameter strategy
+
+Model-C's failure mode was **premature pinning**: r_p = 8.906 and
+σ_ep = −0.091 were locked from a single neutron+muon fit (R27 F18),
+then treated as known constants in all subsequent work.  When the
+proton model changed from (1,2) to (3,6), those pins became wrong
+but had already propagated into dozens of calculations.
+
+Model-D's parameter discipline:
+
+1. **Defaults, not pins.**  Every parameter in `ma_model_d.py` has
+   a default value, but defaults are working assumptions — not
+   measured constants.  Each default has a documented *reason* and
+   a stated *confidence*.
+
+2. **Provenance.**  Every default records WHERE it came from (which
+   study, which finding) so that when the source is revised, the
+   downstream consequences are traceable.
+
+3. **Free variables stay free.**  When a parameter is constrained
+   by one data point (e.g., σ_ep from the neutron mass), record
+   it as "constrained by X" — not "determined."  A second data
+   point might prefer a slightly different value, and the model
+   should accommodate that tension rather than break.
+
+4. **Sweep before pin.**  Before treating any parameter as fixed,
+   sweep it across a range and look at the sensitivity landscape.
+   If the landscape is flat (many values work equally well), the
+   parameter is not actually constrained.  If it's steep, the
+   constraint is real — but record the width, not just the peak.
+
+5. **Ephemeral targets are near-misses.**  Unstable particles
+   should NOT sit on exact eigenmodes.  Using them to pin
+   parameters forces exact agreement where nature gives a near-
+   miss.  Decay rate ∝ distance from resonance; pinning to zero
+   distance contradicts the model's own prediction.
+
+This strategy is implemented in `ma_model_d.py`'s `from_physics()`
+constructor, where each default is documented with its source and
+confidence level.
 
 ---
 

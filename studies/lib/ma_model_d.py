@@ -488,21 +488,54 @@ class MaD:
         """
         Construct from physical constraints.
 
-        Derives within-plane shears s_e, s_p from α = 1/137 (R19 formula)
-        and ring circumferences from reference mode masses.
+        Derives within-plane shears s_e, s_p from α = 1/137 (R19
+        formula) and ring circumferences from reference mode masses.
 
-        If s_nu is None, derives it from the neutrino mass-squared
-        splitting ratio Δm²₃₁/Δm²₂₁ for the given ε_ν (using the
-        Assignment A formula: s₃₄ = Δm²₂₁ / (4 × E₀²_ν × μ_scale)).
-        This is a convenience default, not a hard constraint.
+        PARAMETER PROVENANCE (see model-D.md §Parameter strategy)
+        ─────────────────────────────────────────────────────────
+        These are defaults, not pins.  Each can be overridden.
+
+        eps_e = 0.65   Working value.  Must be > 0.5 for electron
+                       (1,2) to clear waveguide cutoff.  R46 suggested
+                       ~0.5; raised to 0.65 for 30% margin (R50 F3).
+                       Confidence: LOW — not independently constrained.
+
+        eps_nu = 5.0   R49 Assignment A value.  Broadly viable from
+                       0.1 to 5+ (R49 F2).  Confidence: LOW — three
+                       neutrino families remain viable.
+
+        eps_p = 0.55   Must be ≥ 0.5 for (3,6) proton strands to
+                       propagate.  R47 explored 1/3 (for confinement)
+                       but that cuts everything (R50 F3).  Raised to
+                       0.55 for 10% margin.  Confidence: LOW.
+
+        s_e, s_p       Derived from α(ε, s) = 1/137.036 (R19).
+                       Confidence: HIGH — α is precisely measured and
+                       the R19 formula is validated.
+
+        s_nu = 0.022   From R49 Assignment A: Δm²₂₁/(4·Δm²₃₁/ratio).
+                       Confidence: MEDIUM — depends on neutrino family.
+
+        n_e = (1,2)    Electron mode.  Confidence: HIGH — established
+                       since model-A, waveguide-validated (R46).
+
+        n_p = (3,6)    Proton composite.  Confidence: HIGH — wins 8/11
+                       criteria vs (1,2) (R47 Track 7).
+
+        n_nu = (1,1)   Neutrino ν₁ (Assignment A).  Confidence: MEDIUM
+                       — depends on neutrino family selection.
+
+        sigma_*= 0.0   Cross-shears.  Confidence: N/A — these are the
+                       primary FREE parameters for the particle search.
+                       Sweep, don't pin.
 
         Parameters
         ----------
         eps_e, eps_nu, eps_p : float — aspect ratios
         s_nu : float or None — neutrino shear (None = derive from Δm²)
-        n_e : tuple(2,) — electron reference mode (default (1,2))
-        n_p : tuple(2,) — proton reference mode (default (3,6))
-        n_nu : tuple(2,) — neutrino reference mode (default (1,1))
+        n_e : tuple(2,) — electron reference mode
+        n_p : tuple(2,) — proton reference mode
+        n_nu : tuple(2,) — neutrino reference mode
         sigma_ep, sigma_enu, sigma_nup : float — cross-shears
 
         Returns

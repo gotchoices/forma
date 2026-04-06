@@ -12,7 +12,7 @@ R47 (proton filter), R49 (neutrino filter)
 
 Ma is **one** six-dimensional material space: Ma_e, Ma_ν, and Ma_p are
 three coupled sheets, not three independent laboratories.  A physical
-mode is always a full six-tuple **n** = (n₁, …, n₆); “single-sheet”
+mode is always a full six-tuple **n** = (n₁, …, n₆); "single-sheet"
 stories are projections for intuition, not separate search spaces.
 **This study models the joint system** — parameters, metric, and
 searches are over **coupled** modes only.
@@ -23,7 +23,7 @@ searched for Ma modes matching nuclei from the deuteron through
 heavier benchmarks (see findings **F16**, nuclear scaling
 n₅ = A, n₆ = 2A).  A neutron mode and a deuteron mode are the same
 kind of object — **more complex windings on the same unified torus**,
-not a different theory of “particles” vs “nuclei.”
+not a different theory of "particles" vs "nuclei."
 
 R27 produced a zero-parameter particle catalog that matched
 5 particles within 1.5% and showed a lifetime-gap correlation
@@ -72,9 +72,9 @@ rules.
 
 4. **Filtered modes only.**  Waveguide cutoff, finite-ε spin, and
    (where applicable) charge rules are applied to **full modes** (each
-   rule inspects the relevant sheet’s components of **n**).  Ghost
-   modes that don’t survive filtering are excluded from the candidate
-   list.
+   rule names the sheet whose winding pair must satisfy the inequality).
+   Ghost modes that don't survive filtering are excluded from the
+   candidate list.
 
 5. **The neutron is not a calibration target.**  R27 used the
    neutron to pin r_p and σ_ep.  This study treats the neutron
@@ -91,6 +91,16 @@ rules.
    model can represent a free neutron, it must admit **richer**
    six-tuples for bound systems (e.g. deuteron, α) in the same
    framework — as in R29 Track 3, now revisited with R46–R49 filters.
+
+8. **Defaults, not pins** (model-D.md §Parameter strategy).
+   Every geometry parameter has a documented default with a stated
+   source and confidence level.  When a single data point constrains
+   a parameter (e.g. σ_ep from the neutron mass), record the
+   constraint with a width — don't lock the value.  Keep free
+   variables free: later data points may prefer a slightly different
+   value, and the model should accommodate the tension rather than
+   break.  See `ma_model_d.py` `from_physics()` for the full
+   provenance table.
 
 
 ## New library: `ma_model_d`
@@ -207,7 +217,7 @@ remain good fits when R46–R49 rules are enforced on **n**.
 
 **Goal:** Implement `studies/lib/ma_model_d.py` with filtering built in.
 No scipy dependency.  **All** energy/charge/spin APIs take full
-**n** ∈ ℤ⁶; there is no public “single-sheet spectrum” API that
+**n** ∈ ℤ⁶; there is no public "single-sheet spectrum" API that
 could be mistaken for a separate search space.
 
 **Deliverables:**
@@ -217,42 +227,45 @@ could be mistaken for a separate search space.
 - Mode scan with filtering over **joint** modes
 - Parameter sweep utilities
 
-### Track 2: Joint geometry closure
+### Track 2: Cross-shear sweep — neutron as first cross-sheet test
 
 **Status:** Planned
 
-**Goal:** Verify that a swept parameter set yields a positive-definite
-coupled metric and self-consistent circumferences such that **full**
-reference modes (electron, proton, neutrino assignment) sit at the
-right mass scales — **one** geometry, not three unrelated fits.
+**Goal:** Sweep cross-shear parameters (σ_ep, σ_eν, σ_νp) and find
+where modes near the neutron mass (939.565 MeV) appear.  Geometry
+closure (positive-definite metric, reference masses preserved) is
+verified as a byproduct — not a separate track.
 
-**Non-goal:** Independent per-sheet catalog searches or “validate
-Ma_e alone, then Ma_p alone.”
+**Parameter discipline** (see model-D.md §Parameter strategy):
 
-### Track 3: Multi-sheet composites — neutron → light nuclei
+- Set default cross-shears at zero; document why (no prior data,
+  sheets decouple, provides a clean baseline).
+- Sweep each σ independently first, then jointly, over a generous
+  range.  Record the **landscape** (how energy varies with σ), not
+  just the best-fit point.
+- If a cross-shear value that places the neutron near 939.565 MeV
+  exists, record it as "constrained by neutron mass" with a width
+  (sensitivity δm/δσ), NOT as a determined constant.
+- Do **not** pin σ_ep from this single data point.  Future tracks
+  will provide additional constraints (muon, pion, etc.) that may
+  prefer a slightly different value.  Keep σ_ep as a free parameter
+  in the model; treat the neutron constraint as one input into a
+  later joint fit.
+- The neutron is NOT stable (τ = 879 s).  It should be a near-miss,
+  not an exact eigenmode.  If the sweep places it exactly on a mode,
+  verify — something may be over-constrained.
+
+**Deliverables:**
+- σ landscape plots for each cross-shear
+- Neutron candidate mode(s) with mass residual and quantum numbers
+- Metric health check at candidate parameter values
+- Sensitivity table: δm/δσ for each parameter
+
+### Track 3: Full joint mode sweep
 
 **Status:** Planned
 
-**Goal:** Treat cross-sheet and high-winding modes as the main event.
-
-1. **Neutron:** Nonzero windings on more than one sheet; **without**
-   pinning σ_ep from the neutron mass, sweep cross-shears and find
-   where a mode near 939.565 MeV appears; mass residual vs τ ≈ 879 s.
-
-2. **Nuclei:** Repeat the spirit of **R29 Track 3** — deuteron,
-   α, and selected heavier nuclei from the F16 target list — using the
-   **filtered** model.  If a free neutron is a near-miss, n+p-type
-   states are **more complex six-tuples** in the same system, not a
-   separate atomic-modeling study.
-
-**Caution:** The free neutron is not stable.  It should NOT be an
-exact eigenmode.  If it is, something is wrong.
-
-### Track 4: Full joint mode sweep
-
-**Status:** Planned
-
-**Goal:** At viable parameter sets from Track 3, scan **6D** modes
+**Goal:** At viable parameter sets from Track 2, scan **6D** modes
 up to ~2 GeV (and nuclear mass targets as needed) and match against
 the tier lists.
 
@@ -263,7 +276,7 @@ the tier lists.
 - Mode overcounting: how many predicted modes have no
   known physical interpretation?
 
-### Track 5: Decay rate ↔ near-miss correlation
+### Track 4: Decay rate ↔ near-miss correlation
 
 **Status:** Planned
 
