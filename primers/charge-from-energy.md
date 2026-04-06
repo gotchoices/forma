@@ -382,62 +382,105 @@ The neutron is a **cross-sheet mode** — it has nonzero
 windings on both the electron and proton sheets.  Its
 charges cancel: −1 + 1 = 0.
 
-**Harmonic series.**  Above the fundamental mode, each sheet
-supports higher harmonics: (1,2), (2,4), (3,6), (4,8), ...
-These are progressively heavier versions of the same winding
-pattern — like overtones on a vibrating string.  An electron
-in an excited state may be literally vibrating at a higher
-internal harmonic, not simply orbiting farther from the
-nucleus.  Whether this corresponds to known excited states
-(muon, tau?) is an active question.
+### Charge and harmonics
+
+GRID's charge quantization theorem (grid/maxwell.md) says
+Q = ne for any integer n.  The phase is periodic (2π), so
+vortex windings come in integer multiples.  On the bulk
+lattice, a vortex with winding n = 2 carries charge 2e.
+This is topological — no restriction to n = ±1.
+
+**Harmonics as shorter wavelengths.**  The (1,2) geodesic
+has a fixed path length — one Compton wavelength for the
+electron.  The photon traverses this path at c, always.
+A higher harmonic does not go around the path more times
+— it fits more wave cycles into the same path.
+
+Like a guitar string: the fundamental has one half-
+wavelength fitting in the string length.  The second
+harmonic has two half-wavelengths in the same string.
+The string doesn't vibrate faster by "going around twice"
+— the wavelength halves, the frequency doubles, and the
+energy doubles.  Same path, shorter wave.
+
+The (2,4) mode fits two complete wave cycles into the
+same (1,2) geodesic.  Each cycle is one 2π phase winding.
+Two cycles = two windings = charge 2e.
+
+| Mode | Cycles on geodesic | Charge | Energy | Identity |
+|------|--------------------|--------|--------|----------|
+| (1,2) | 1 | −1e | m_e | Electron |
+| (2,4) | 2 | −2e | ~2m_e | 2 electrons (He shell) |
+| (3,6) | 3 | −3e | ~3m_e | 3 electrons (Li shell) |
+| (Z,2Z) | Z | −Ze | ~Zm_e | Z electrons |
+
+This assumption is consistent with GRID topology (Q = ne)
+and with the observation that atoms with Z electrons carry
+charge −Ze.  It means the (Z,2Z) harmonic on Ma_e IS the
+Z-electron configuration — not Z separate particles, but
+one mode with Z laps on the same geodesic.
+
+**Status:** this is a working hypothesis.  The detailed
+mechanism — how each lap's CP synchronization produces
+one charge quantum on a torus — is not fully resolved
+(the R48 computation gives ambiguous results for n > 1
+due to the torus area weighting; see R48 review).  The
+hypothesis will be tested by whether the harmonic model
+correctly predicts nuclear charges and atomic binding
+energies (R50, R51).
+
+**Dark modes** still exist: modes that do NOT fit the
+(n, kn) harmonic pattern of the fundamental knot — modes
+with winding patterns that are not integer multiples of
+the fundamental — may not produce charge.  The details of
+which modes are dark and which are charged at higher
+harmonics remains under investigation.
 
 
 ## 9. The proton sheet
 
-The electron is well-established as a (1,2) mode on Ma_e.
-The proton is more complex.
+The electron is the (1,2) mode on Ma_e — the first
+surviving charged mode after the (1,1) ghost is killed by
+the waveguide filter.
 
-**The (3,6) hypothesis** (currently favored): the proton is
-a (3,6) mode on Ma_p — three windings around the tube, six
-around the ring.  This has several appealing features:
+The proton is the **(1,3) mode on Ma_p** — the first
+surviving charged mode on the proton sheet, after the (1,1)
+and (1,2) ghosts are killed by the waveguide filter at
+ε_p ≈ 0.33.
 
-- **Spin** = 3/6 = 1/2 ✓
-- **Internal structure.** gcd(3,6) = 3, so the (3,6) mode
-  decomposes into three phase-separated (1,2) strands,
-  offset by 120° around the ring.  Each strand is a
-  **quark** — carrying 1/3 of the total energy (mass m_p/3
-  ≈ 313 MeV, the constituent quark mass) and 1/3 of the
-  total charge.
-- **Confinement from filtering.**  If the proton sheet's
-  ring is tuned so that (3,6) is the first surviving mode,
-  then individual (1,2) quarks are below the ring cutoff.
-  They exist as part of the coherent (3,6) pattern but
-  cannot survive independently — they are killed by the
-  same filter that selected (3,6).  This is quark
-  confinement from geometry, without a separate mechanism.
-- **Constituent quark mass** = m_p/3 falls out of the sheet
-  geometry, not as an input.
+| Property | Electron | Proton |
+|----------|----------|--------|
+| Sheet | Ma_e | Ma_p |
+| Mode | (1,2) | (1,3) |
+| Ghost killed | (1,1) | (1,1) and (1,2) |
+| Charge | −1 (from n₁ = 1) | +1 (from n₅ = 1) |
+| Spin | ½ (n₁ odd) | ½ (n₅ odd) |
+| Ring windings | 2 | 3 |
+| Bare moment | ~2 Bohr magnetons | ~3 nuclear magnetons |
+| Measured moment | 2.00232 | 2.793 μ_N |
 
-**The (1,2) alternative:** the proton could be a (1,2) mode
-on Ma_p, same topology as the electron but on a ~1000×
-smaller sheet.  This is simpler but does not naturally
-explain quarks or confinement.  Both hypotheses give charge
-= +1e and spin = 1/2.
+The same pattern on both sheets: the waveguide kills the
+lowest modes, and the first surviving mode with odd tube
+winding (spin ½, charged) becomes the stable particle.
+The electron sheet passes n₂ ≥ 2.  The proton sheet passes
+n₆ ≥ 3.  Different cutoffs, same mechanism.
 
-The proton's anomalous magnetic moment (2.793 nuclear
-magnetons, far from the bare prediction of either 2 or 6)
-is evidence for strong internal coupling regardless of which
-mode is correct.  R47 Tracks 6-7 test both hypotheses
-through ring-circumference filtering and moment calculations.
+**Quarks from the standing wave.**  The (1,3) mode has three
+ring windings, producing three energy antinodes at 0°, 120°,
+and 240° around the ring.  A high-energy probe (DIS) with
+wavelength shorter than the torus resolves these three peaks
+as three separate scattering centers — quarks.
 
-**Why does the proton sheet favor a higher harmonic?**  The
-tube circumference of Ma_p may be tuned to the third harmonic
-— three wavelengths fit in the tube, requiring ε ≈ 1/3.
-Alternatively, the tube cross-section may act as a waveguide
-with a frequency cutoff that naturally selects (3,6) as the
-lowest mode.  This echoes the WvM paper's treatment of the
-photon filling a toroidal volume with transverse mode
-structure.
+Each antinode carries ~m_p/3 ≈ 313 MeV (one-third of the
+proton's mass) and ~1/3 of the charge (the charge density
+has three-fold symmetry on the ring).  The total charge is
++1 from the fundamental formula Q = −n₁ + n₅ = 0 + 1 = +1.
+No composite charge formula needed.
+
+Confinement is automatic: the antinodes are features of one
+standing wave, not independent sub-modes.  You cannot
+separate an antinode from its wave.  There is no "free quark"
+because there is no free antinode.
 
 
 ## 10. Shear as embedding angle
@@ -556,21 +599,44 @@ involving multiple sheets rather than single-sheet modes.
 
 ## 12. Summary
 
-| Concept | Mechanism |
-|---------|-----------|
-| Charge | 2π phase winding through the tube — topological, quantized, universal |
-| Charge sign | Winding direction — clockwise vs counterclockwise |
-| Charge magnitude (e) | Set by α, the substrate impedance mismatch |
-| Mass | Eigenvalue of the wave equation on the torus — energy of the standing wave |
-| Spin 1/2 | Ratio of tube to ring windings: n₁/n₂ = 1/2 |
-| Magnetic moment ~2 | Two ring windings produce an axial B dipole |
-| g − 2 ≈ α/(2π) | Back-reaction of the Coulomb field (defect cost) on the circulating wave |
-| α ≈ 1/137 | Impedance mismatch between the 2D sheet and 3D ambient lattice — energy tax on the defect |
-| Mode selection | Ring-circumference filter and/or helicity constraint eliminates ghosts |
-| Matter/antimatter | Shear chirality of the embedding favors one winding direction |
-| Quarks (if 3,6) | Three phase-separated (1,2) strands; confinement from ring cutoff |
-| Dark matter | Ghost modes — standing waves with even n₁ or below cutoff |
-| Neutrino neutrality | Sheet too large for the winding to couple (Q102) |
+### The recipe
+
+How a confined photon produces each particle property:
+
+| Property | What determines it | Rule | Example |
+|----------|--------------------|------|---------|
+| **Charge** | Wave cycles on geodesic | Q = ne: each 2π cycle on the knot path contributes ±e.  The (Z,2Z) harmonic has Z cycles → charge Ze. | 1 cycle = ±e.  4 cycles = ±4e (beryllium shell). |
+| **Charge sign** | Winding direction | Clockwise vs counterclockwise on the tube | Direction set by shear chirality |
+| **Charge magnitude** | α (impedance mismatch) | e = √(4πα); same for all charged particles on all sheets | α ≈ 1/137 → e ≈ 0.303 (natural units) |
+| **Mass** | Mode eigenvalue | E² ∝ (n_tube/L_tube)² + (n_ring/L_ring)² | Electron (1,2): 0.511 MeV.  Proton (1,3): 938.3 MeV. |
+| **Spin** | Tube winding parity | Odd n_tube → spin ½ (fermion).  Even → spin 0 or 1 (boson). | n₁=1 (odd) → ½.  n₁=2 (even) → 0. |
+| **Magnetic moment** | Ring windings | Bare moment ∝ n_ring (number of ring windings) | Electron: n₂=2 → ~2μ_B.  Proton: n₆=3 → ~3μ_N. |
+| **Anomalous moment** | Defect cost back-reaction | Leading correction = α/(2π) ≈ 0.00116 | Electron: 2.00232.  Proton: 2.793 (non-perturbative). |
+| **Dark/charged** | Winding pattern | Harmonics of fundamental knot (n, kn) → charged.  Non-harmonic patterns → dark (under investigation). | (2,4) = 2 laps of (1,2) → charged.  Non-knot modes → dark. |
+| **Mode selection** | Waveguide cutoff | Ring winding must exceed tube/ε for the mode to propagate | ε_e ≈ 0.65 kills (1,1), passes (1,2) |
+| **Quarks** | Ring antinodes | n_ring = 3 → three antinodes at 120° = three quarks | Proton (1,3): 3 peaks, each ~313 MeV |
+| **Confinement** | Antinodes ≠ modes | Peaks of one wave cannot separate — no free quarks | Automatic for (1,3); no extra mechanism |
+| **Matter/antimatter** | Shear chirality | Embedding angle breaks CW/CCW symmetry; one direction is cheaper | CPT exact (equal masses); C broken (unequal rates) |
+| **Neutrino neutrality** | Sheet size | Phase gradient too gentle for lattice to detect (Q102) | Ma_ν circumference ~10²⁹ L |
+
+### The charge rule
+
+**Each wave cycle on the geodesic contributes one quantum
+of charge.**
+
+GRID says Q = ne — charge is the winding number times the
+elementary charge.  On a torus, the (1,2) or (1,3) knot is
+the fundamental geodesic.  Higher harmonics fit more wave
+cycles into the same path — shorter wavelength, higher
+frequency, higher energy.  Each cycle is one complete 2π
+phase winding, one unit of charge.
+
+This is how atoms carry charge −Ze from a single mode on
+the electron sheet, and how nuclei carry charge +Ze from
+a single mode on the proton sheet.  The charge is additive
+because the cycles are additive — and quantized because
+each cycle is a complete 2π winding (no fractional cycles,
+because the phase is periodic).
 
 One photon.  One topology.  One α.
 
