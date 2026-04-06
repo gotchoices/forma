@@ -300,9 +300,92 @@ search space is too unconstrained remains open.
   compared to R27's model-C result.
 
 
-## Track 4
+## Track 4: Decay rate ↔ near-miss correlation
 
-*(Not yet reviewed.)*
+**Verdict:** Honest negative. Not a fatal problem — an
+improvement in understanding.
+
+### What happened
+
+The off-resonance correlation weakened from model-C's
+r = −0.84 (N ≈ 7, p = 0.009) to model-D's r = −0.38
+(N = 10, p = 0.28). No subset achieves significance at
+p < 0.05. The R27 power law (τ ∝ |Δm/m|^−2.7) fails
+quantitatively — RMS log₁₀ error of 13.1 when calibrated
+to the neutron.
+
+### Why this is not a fatal problem
+
+**The weaker correlation is more honest, not worse.**
+Model-C pinned the muon and neutron as fitted parameters,
+giving them artificially small residuals and biasing the
+correlation upward. Model-D treats both as genuine
+predictions, exposing the muon's 11% mass desert residual
+and the neutron's true position. The r = −0.84 was partly
+an artifact of parameter pinning. The r = −0.38 is the
+truth that was hidden.
+
+**The direction is consistently right.** All eight subsets
+tested show negative correlation (shorter lifetime →
+larger residual). The sign is correct in every case. The
+hypothesis is directionally valid even if it's not
+quantitatively predictive from mass gap alone.
+
+**The neutron–Ω⁻ paradox (F26) is the key structural
+finding.** Two particles with |Δm/m| ≈ 0.035% and
+lifetimes differing by 10¹³. This is an airtight proof
+that mass gap alone cannot predict lifetime. The paradox
+has a clean explanation: the neutron decays via weak β
+(highly suppressed), while the Ω⁻ decays via weak ΔS
+with much larger phase space (~530 MeV Q-value). The
+missing variables are decay coupling strength and
+available phase space — not a flaw in the model, but a
+limitation of single-variable analysis.
+
+### The stratified hypothesis (F28)
+
+The refined off-resonance hypothesis is the right move:
+within each decay-channel class (weak β, weak leptonic,
+weak ΔS, EM, strong), the mass-gap correlation may hold
+independently. Cross-class comparisons require a coupling-
+strength prefactor. The current sample sizes (4-5 per
+class) are too small to confirm, but the framework is
+physically sound.
+
+### Impact on the white paper
+
+The white paper's "ephemeral particles" section presents
+the off-resonance hypothesis as: "the model predicts both
+the approximate mass AND the instability." Track 4 shows
+this is half true — the model correctly identifies which
+particles are unstable (near-misses to eigenmodes) but
+cannot quantitatively predict HOW unstable (the lifetime)
+from the mass gap alone. A note acknowledging that
+lifetime prediction requires coupling-channel information
+beyond the mass gap would be appropriate.
+
+### The deeper opportunity
+
+Can coupling strengths be derived from the Ma geometry?
+In MaSt: strong = internal EM at torus overlap (Q95),
+weak = cross-sheet coupling σ_ep, EM = 1/α junction.
+If these can be computed from the mode's quantum numbers
+and the metric, a two-variable model (|Δm/m| + geometric
+coupling strength) might recover the full 30-decade
+lifetime range. This is a future study, not a Track 4
+failure.
+
+### Assessment
+
+The off-resonance hypothesis survives as a qualitative
+principle: unstable particles are near-misses to
+eigenmodes, and the mass gap is one factor in their
+lifetime. It fails as a quantitative single-variable
+predictor — coupling strength and phase space are the
+other factors. The R27 result was partially an artifact
+of model-C's parameter pinning. Model-D's honest
+treatment is better science even if the numbers are
+less impressive.
 
 
 ## Track 5

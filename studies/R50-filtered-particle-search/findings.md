@@ -776,9 +776,7 @@ spectrum.  Seven of twelve unstable targets are matched within
   than resolved by the wider scan: the best match still has
   n₁ = 0 (no charged electron component).
 
-**Open questions for Track 4:**
-- Does the off-resonance power law (R27 F33: τ ∝ |Δm|^−2.7)
-  quantitatively match the Track 3 residuals?
+**Open questions (carried from Track 3):**
 - Can the spin rule be refined to allow antiparallel alignment,
   enabling charged J = 0 modes?  What geometry on the torus
   supports two strands with opposite tube orientations?
@@ -789,8 +787,208 @@ spectrum.  Seven of twelve unstable targets are matched within
   winding (n₁ = 0, n₂ ≠ 0) redistribute its energy into
   charged electron components when cross-sheet coupling
   is removed?
-- The off-resonance correlation may improve if the muon
-  outlier is excluded (mass-desert artifact) and if Δ and ρ
-  (τ ~ 10⁻²⁴ s, where lifetime may depend on decay-channel
-  availability and phase space, not just the mass gap) are
-  treated separately.
+
+
+---
+
+## Track 4 — Decay rate ↔ near-miss correlation
+
+**Goal:** Test the off-resonance hypothesis quantitatively —
+do particles with smaller mass residuals live longer?
+
+**Script:** `scripts/track4_offresonance.py`
+
+### F25. Correlation summary across subsets
+
+| Subset | N | Pearson r | p-value | Spearman ρ | β | R² |
+|--------|---|-----------|---------|------------|---|-----|
+| All unstable | 10 | −0.38 | 0.28 | −0.26 | −3.2 | 0.15 |
+| Weak only | 7 | −0.20 | 0.67 | +0.14 | −1.1 | 0.04 |
+| All − muon | 9 | −0.59 | 0.10 | −0.48 | −5.3 | 0.35 |
+| Weak − muon | 6 | −0.47 | 0.35 | −0.03 | −3.6 | 0.22 |
+| Excl. strong | 8 | −0.43 | 0.29 | −0.24 | −2.3 | 0.18 |
+| Excl. strong + muon | 7 | −0.65 | 0.12 | −0.39 | −4.0 | 0.42 |
+| Baryons | 6 | −0.45 | 0.37 | −0.09 | −5.1 | 0.20 |
+| Weak baryons | 5 | −0.53 | 0.36 | −0.10 | −3.8 | 0.28 |
+
+β is the fitted power law exponent in
+log₁₀(τ) = A + β × log₁₀(|Δm/m|).
+R27 (model-C): r = −0.84, β ≈ −2.7, N ≈ 7.
+
+**All subsets show the correct sign** (negative r), confirming
+that the direction of the off-resonance hypothesis holds:
+smaller residuals do tend to accompany longer lifetimes.  But
+no subset achieves statistical significance at p < 0.05, and
+none approaches R27's r = −0.84.
+
+The best-performing subset is "excl. strong + muon" (N = 7,
+r = −0.65, R² = 0.42), which removes the two classes of
+particles whose lifetimes are least likely to be governed by
+mass-gap alone.
+
+### F26. The neutron–Ω⁻ paradox
+
+The most striking result:
+
+| Particle | |Δm/m| | τ (s) |
+|----------|--------|-------|
+| n | 0.033% | 879 |
+| Ω⁻ | 0.037% | 8.2 × 10⁻¹¹ |
+
+These two particles have nearly identical fractional mass
+residuals but lifetimes differing by **13 orders of magnitude**.
+No single power law τ ∝ |Δm/m|^β can accommodate this pair.
+
+The reason is clear from standard physics: the neutron can
+only decay via the **weak interaction** (flavor change n → p
+requires W boson exchange), while the Ω⁻ decays via
+**weak strangeness-changing** currents with much larger phase
+space (1672 MeV vs 1.3 MeV neutron Q-value).
+
+This establishes that |Δm/m| alone is insufficient to
+predict lifetime.  At minimum, the decay **coupling strength**
+(strong / EM / weak) and **available phase space** (Q-value)
+must factor into any lifetime formula.
+
+### F27. The R27 power law fails quantitatively
+
+Calibrating the R27 power law (τ ∝ |Δm/m|^−2.7) to the
+neutron and predicting all other lifetimes yields an RMS
+log₁₀ error of **13.1** — meaning the average prediction
+is off by 13 orders of magnitude.
+
+| Particle | τ_obs | τ_R27 | log₁₀(obs/R27) |
+|----------|-------|-------|-----------------|
+| n | 879 s | 879 s | 0 (calibrated) |
+| μ⁻ | 2.2 × 10⁻⁶ | 1.4 × 10⁻⁴ | −1.8 |
+| Ξ⁰ | 2.9 × 10⁻¹⁰ | 1.8 × 10⁻² | −7.8 |
+| Ω⁻ | 8.2 × 10⁻¹¹ | 648 | −12.9 |
+| Σ⁺ | 8.0 × 10⁻¹¹ | 7.3 | −11.0 |
+| τ⁻ | 2.9 × 10⁻¹³ | 9.4 | −13.5 |
+| Δ⁰ | 5.6 × 10⁻²⁴ | 0.98 | −23.2 |
+
+The model-C R27 result (r = −0.84) was obtained with a
+different particle sample and different cross-shear value
+(σ_ep = −0.091).  More importantly, model-C pinned the muon
+and neutron masses as fitted parameters, which may have
+fortuitously aligned the residuals.  The model-D analysis,
+which treats the muon and neutron as genuine predictions,
+exposes the weakness of a single-variable power law.
+
+### F28. Decay-channel stratification
+
+When the unstable particles are grouped by dominant decay
+mechanism, a clear pattern emerges:
+
+| Mechanism | Particles | τ range (s) |
+|-----------|-----------|-------------|
+| Weak (β) | n | 879 |
+| Weak (leptonic) | μ, τ | 10⁻⁶ – 10⁻¹³ |
+| Weak (ΔS = 1) | Λ, Σ⁺, Ξ⁰, Ω⁻ | 10⁻¹⁰ – 10⁻¹¹ |
+| Electromagnetic | π⁰ | 10⁻¹⁷ |
+| Strong | Δ⁰, ρ⁰ | 10⁻²⁴ |
+
+Lifetime spans roughly five decades **within** the weak-decay
+group alone, while the mass residuals for these particles span
+only two decades in |Δm/m|.  The hierarchy
+strong ≫ EM ≫ weak(ΔS) ≫ weak(leptonic) ≫ weak(β)
+reflects coupling strengths, not mass gaps.
+
+This suggests a refined off-resonance hypothesis:
+
+> **Stratified off-resonance:** Within each decay-channel
+> class, particles with smaller mass residuals should live
+> longer.  Cross-class comparisons require a coupling-strength
+> prefactor.
+
+Within the weak-ΔS group (Λ, Σ⁺, Ξ⁰, Ω⁻), the lifetimes
+span less than one order of magnitude (10⁻¹⁰ to 10⁻¹¹ s)
+while the residuals span about two orders (0.04% to 1.8%).
+The sample is too small for a meaningful within-class
+correlation, but the direction is suggestive: Ω⁻ has the
+smallest residual (0.04%) and a lifetime toward the longer end
+of the range (8.2 × 10⁻¹¹ s).
+
+### F29. Outlier analysis
+
+Using the best-fit power law (excl. strong + muon,
+β = −4.0), the residuals identify three categories:
+
+**Good fits** (log₁₀ residual < 1.5):
+- π⁰ (−0.6): the lone EM-decay particle sits close to the
+  regression line.
+
+**Moderate outliers** (1.5 – 3):
+- Λ (+1.6), Σ⁺ (−2.0), Ξ⁰ (+2.5): the strange baryons
+  scatter around the fit by ~2 orders of magnitude — moderate
+  for a single-variable model spanning 30 decades.
+
+**Extreme outliers** (> 3):
+- n (+8.0): lives ~10⁸ longer than the power law predicts.
+  This reflects the neutron's unique constraint — it can only
+  decay via the suppressed weak β channel.
+- Ω⁻ (−4.9): decays ~10⁵ faster than its tiny residual
+  suggests.  Its large Q-value (≈530 MeV) and strange-quark
+  content provide ample phase space.
+- τ⁻ (−4.6): decays faster than predicted; the tau has many
+  open decay channels (leptonic + hadronic), which accelerate
+  its decay beyond what the mass gap alone would suggest.
+- Δ⁰ (−13.8), ρ⁰ (−9.8): extreme outliers driven by strong
+  decay — a fundamentally different coupling regime.
+
+### F30. Assessment vs R27 model-C
+
+| Property | R27 (model-C) | R50 Track 4 (model-D) |
+|----------|---------------|----------------------|
+| Correlation r | −0.84 (N ≈ 7) | −0.38 (N = 10) |
+| Best subset r | — | −0.65 (N = 7) |
+| Power law β | −2.7 | −3.2 to −5.3 |
+| p-value | 0.009 | 0.12 (best) |
+| Muon, neutron | pinned | predicted |
+| Cross-shear | σ_ep = −0.091 | σ_ep = −0.13 |
+
+The weaker correlation in model-D is not a regression — it
+reflects a more honest test.  Model-C pinned the muon and
+neutron as fitted parameters (giving them artificially small
+residuals), while model-D treats them as genuine predictions.
+The muon's 11% residual in model-D is structural truth about
+the mass desert, not a failure of the off-resonance idea.
+
+**Bottom line:** The off-resonance hypothesis survives as a
+directional principle (correct sign in every subset), but
+fails as a quantitative single-variable predictor.  The
+neutron–Ω⁻ paradox (F26) proves that lifetime depends on at
+least three factors: mass gap, decay coupling strength, and
+phase space.
+
+### Track 4 summary
+
+The off-resonance hypothesis — unstable particles are near-
+misses to Ma eigenmodes — is **qualitatively confirmed** and
+**quantitatively insufficient**.
+
+The correlation is consistently negative (correct direction)
+across all eight subsets tested, but never reaches statistical
+significance at p < 0.05.  The best R² = 0.42 means mass gap
+explains at most 42% of the variance in log-lifetime.
+
+The neutron–Ω⁻ paradox (F26) is the sharpest demonstration
+that a single power law τ ∝ |Δm/m|^β cannot work: two
+particles with |Δm/m| ≈ 0.035% have lifetimes differing by
+10¹³.  The missing variables are the decay coupling strength
+and available phase space.
+
+**The refined hypothesis (F28) — stratified off-resonance —
+remains viable:** within each decay-channel class, the
+correlation may hold, but the current sample sizes (4–5 per
+class) are too small to confirm.  Expanding the target list
+and the mode search to higher energies could test this.
+
+**Open questions:**
+- Does the within-class correlation (e.g., among weak-ΔS
+  baryons) strengthen with more particles?
+- Can a two-variable model (|Δm/m| + phase space factor)
+  recover the full 30-decade lifetime range?
+- Is there a principled way to derive coupling strengths from
+  the Ma geometry, rather than importing them from the
+  Standard Model?

@@ -278,7 +278,7 @@ the tier lists.
 
 ### Track 4: Decay rate ↔ near-miss correlation
 
-**Status:** Planned
+**Status:** Complete
 
 **Goal:** Quantify the relationship between mass residual
 (distance from nearest eigenmode) and measured lifetime.
@@ -288,6 +288,15 @@ If the off-resonance hypothesis is correct:
 - Stable particles (e, p) should sit on exact eigenmodes
 - The neutron (τ = 879 s) should be a very close near-miss
 - The Δ(1232) (τ ~ 10⁻²⁴ s) should be a distant near-miss
+
+**Results (F25–F30):**
+Correlation is consistently negative (correct direction)
+across all 8 subsets tested, but never significant at p < 0.05.
+Best subset r = −0.65 (excl. strong + muon, N = 7).  The
+neutron–Ω⁻ paradox (both at |Δm/m| ≈ 0.035%, lifetimes
+differ by 10¹³) proves that mass gap alone cannot predict
+lifetime.  Refined hypothesis: stratified off-resonance,
+where the correlation holds within each decay-channel class.
 
 
 ## Design notes for `ma_model_d`
