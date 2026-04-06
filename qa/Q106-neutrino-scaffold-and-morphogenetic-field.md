@@ -452,3 +452,147 @@ around biological tissue that survives partial tissue
 destruction.  Whether that "something" is the neutrino
 scaffold, residual moisture, or another physical effect
 is not resolved.
+
+
+## 9. Experimental detection: membrane voltage mapping
+
+### What the scaffold predicts
+
+The neutrino scaffold's near-field produces a spatially
+structured voltage pattern on the cell membrane.  The
+pattern reflects the mode structure of the neutrino
+cluster — specifically, the antinode pattern of the
+dominant (n₃, n₄) modes.
+
+For a neutrino with a few ring windings (n₄ ~ 3–5), the
+angular structure produces ~3–5 voltage peaks around the
+cell circumference (~42 μm).  The spatial period would be
+~8–14 μm — well within the resolution of existing
+voltage-imaging technologies.
+
+**The specific prediction:** the membrane voltage map has
+a regular angular pattern (3-fold, 5-fold, etc.) that:
+- Persists across cell division (the scaffold, not the
+  membrane, carries the pattern)
+- Does NOT correlate with visible membrane structures
+  (ion channel clusters, cytoskeleton attachment points)
+- Is the SAME pattern on neighboring cells (they share
+  the same scaffold region)
+- Survives partial tissue destruction (the scaffold is
+  dark and unaffected by EM damage)
+
+### Available technologies
+
+**Current (sufficient resolution for the prediction):**
+
+| Technology | Resolution | Sensitivity | Invasive? | Suitable? |
+|-----------|-----------|------------|-----------|-----------|
+| Voltage-sensitive dyes (VSDs) | ~1 μm | ~1 mV | No (membrane-bound) | **Yes** — resolution sufficient for ~10 μm patterns |
+| Voltage-sensitive fluorescent proteins (GEVIs) | ~1 μm | ~1 mV | No (genetically encoded) | **Yes** — same resolution, no chemical loading |
+| Scanning ion conductance microscopy (SICM) | ~100 nm | ~mV (indirect) | No (non-contact) | Yes — higher resolution but slow scanning |
+| Patch clamp | ~1 μm per patch | ~μV (single channel) | Yes (pipette contact) | One patch at a time — not a map |
+
+**Emerging (higher resolution):**
+
+| Technology | Resolution | Status | Notes |
+|-----------|-----------|--------|-------|
+| NV-center nanodiamonds | ~10–50 nm | Experimental | Diamond nanocrystals on membrane; E-field shifts NV fluorescence |
+| NV-center arrays on diamond substrate | ~10 nm | Research | Cell cultured on dense NV array; thousands of simultaneous readings |
+| Graphene FET arrays | ~1–10 μm per element | Demonstrated | Measures basal membrane only (cell sits on sensor) |
+| Nanoelectrode arrays | ~1 μm spacing | Demonstrated | Invasive (nanowires penetrate membrane); ~1000 electrodes |
+| NSOM + voltage dyes | ~50–100 nm | Experimental | Sub-diffraction optical + VSD; slow scanning |
+
+### The experiment
+
+**Using current technology (VSDs or GEVIs):**
+
+1. Culture cells on a flat substrate (standard
+   fluorescence microscopy setup)
+2. Load with voltage-sensitive dye or express GEVI
+3. Image the membrane voltage at ~1 μm resolution across
+   the full cell surface
+4. Look for spatially structured voltage patterns:
+   - Regular angular periodicity (3-fold, 5-fold)
+   - Persistence across cell division cycles
+   - Absence of correlation with known membrane structures
+   - Consistency across neighboring cells in the same
+     tissue region
+
+5. **Control:** compare cells in normal tissue to cells
+   in isolation (dissociated culture).  If the scaffold
+   is a collective phenomenon, isolated cells should show
+   weaker or absent patterns.
+
+6. **Perturbation:** expose the tissue to 42 μm
+   mid-infrared radiation (the neutrino Compton frequency).
+   If the scaffold is neutrino-based, this should disrupt
+   the voltage pattern.  Compare to control exposure at
+   other wavelengths.
+
+**Using emerging technology (NV arrays):**
+
+The NV-center diamond array would provide the definitive
+test.  A cell cultured on a dense NV array would yield a
+~10 nm resolution voltage map of the entire basal membrane
+surface — potentially tens of thousands of voltage readings
+from a single cell.  The neutrino mode pattern, if present,
+would appear as a smooth, slowly varying angular modulation
+superimposed on the noisy background of ion channel
+activity.
+
+### Existing data that may already contain the signal
+
+Levin's group has published extensive voltage-sensitive
+dye images of:
+- Planaria (flatworms) during regeneration
+- Frog embryos during development
+- Xenopus tadpole tails during regrowth
+
+These images show spatially structured bioelectric
+patterns that guide morphogenesis.  The patterns have
+been interpreted as cell-level membrane potentials
+(each cell having a single voltage value).
+
+**The scaffold prediction adds a layer:** within each
+cell, the voltage should have SUBSTRUCTURE — a smooth
+angular pattern from the neutrino modes, distinct from
+the cell-level pattern.  This substructure would be
+visible at ~1 μm resolution (within a ~40 μm cell) and
+would persist even when the cell is quiescent (no active
+ion channel dynamics).
+
+Re-analyzing Levin's existing high-resolution VSD
+images for WITHIN-CELL voltage substructure — smooth
+angular modulations at the ~10 μm scale — could provide
+the first test without any new experiments.  The data
+may already contain the signal; no one has looked for
+this specific pattern because no theory predicted it.
+
+### What would constitute evidence
+
+**Positive evidence:**
+- Regular angular voltage pattern on the membrane at
+  ~10 μm periodicity
+- Pattern persists across cell division
+- Pattern is consistent across cells in the same tissue
+  region
+- Pattern is disrupted by 42 μm IR exposure but not by
+  other wavelengths
+- Pattern is present in intact tissue but absent in
+  dissociated cells
+
+**Negative evidence:**
+- No angular substructure beyond ion channel noise
+- Voltage patterns correlate entirely with known
+  membrane structures
+- 42 μm IR has no effect on any detectable pattern
+- Dissociated cells show the same patterns as tissue
+  (no collective effect)
+
+**Ambiguous:**
+- Patterns exist but correlate with cytoskeleton
+  (could be mechanical, not scaffold-based)
+- Patterns exist but at wrong spatial scale (too fine
+  or too coarse for neutrino modes)
+- Patterns are present but not angular (radial,
+  random, or cell-shape-dependent)
