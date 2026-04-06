@@ -525,3 +525,81 @@ bilinear framework.  Options:
    geometry as the source of α and nuclear modes, but the
    S-manifold for spatial binding.  This would be a new
    study, not R51's premise.
+
+### The lingering question: shells feel like Ma
+
+R51's computational result is clear: the bilinear metric
+can't produce atomic binding.  But the PHENOMENOLOGY of
+electron shells has features that look more like Ma mode
+physics than 3D Coulomb physics:
+
+- **Quantized in integer steps.**  Adding one electron is
+  adding one quantum — discrete, all-or-nothing, like a
+  mode number incrementing.  The Coulomb picture explains
+  this through QM (Schrödinger eigenvalues), but the
+  discreteness feels more natural as a winding number on
+  a sheet.
+
+- **Universal charge per step.**  Every electron adds
+  exactly −e, everywhere, on every atom.  This is
+  topological (GRID: one winding = one charge quantum).
+  The Coulomb picture doesn't explain universality — it
+  assumes it.
+
+- **Shell closures at specific numbers.**  The capacities
+  2, 8, 18, 32 = 2n² look like a geometric constraint,
+  not a dynamical accident.  They come from angular
+  momentum degeneracies in 3D (2ℓ+1 states per ℓ,
+  summed and doubled by spin), which is elegant — but
+  it requires 3D rotational symmetry.  F21 showed that
+  the 2-torus can't reproduce this.  However, F21 tested
+  a FLAT 2-torus.  The torus embedded in 3D has the full
+  SO(3) symmetry of the embedding space.  Could the
+  angular degeneracies come from the EMBEDDING rather
+  than the intrinsic sheet geometry?
+
+- **Screening is nearly perfect.**  Filled shells screen
+  nuclear charge to < 1% of Z.  In the mode picture,
+  a matched harmonic (Z electrons, Z protons) is a
+  neutral compound — exact cancellation by topology.
+  In the Coulomb picture, screening is a dynamical
+  equilibrium that happens to be nearly exact.  The
+  topological explanation is cleaner.
+
+The bilinear metric can't do binding.  But binding might
+not be the right question.  What if the Ma sheets
+determine the MODE STRUCTURE (which quantum numbers exist,
+how they're spaced, what their degeneracies are) and the
+3D Coulomb potential determines the ENERGY (binding
+strength, ionization energies)?
+
+In this hybrid picture:
+- **Ma determines:** which electron harmonics exist, their
+  winding numbers, their charge (±e per winding), their
+  spin, and possibly their degeneracy pattern
+- **S (3D Coulomb) determines:** how tightly each harmonic
+  is bound to the nucleus, the ionization energy, the
+  spatial distribution of the electron mode
+
+This would mean the periodic table is a JOINT product of
+Ma geometry (mode spectrum) and S geometry (Coulomb
+binding) — not purely one or the other.  The "two-tier"
+label from R29 would be correct but incomplete: it's not
+just "Ma for particles, S for atoms" but "Ma for mode
+identity, S for mode binding."
+
+This is not a testable hypothesis yet — it's a direction
+for future thinking.  The specific test: can the angular
+degeneracies (2ℓ+1) of atomic physics be derived from the
+torus embedded in 3D, rather than from the 3D Schrödinger
+equation?  If so, the shell structure would be a geometric
+property of the torus-in-S system, combining Ma and S in
+a way that neither can produce alone.
+
+**Recommendation:** put R51 on hold.  The bilinear metric
+avenue is exhausted.  The hybrid Ma+S picture is worth
+exploring but needs a new conceptual framework — probably
+how the torus's SO(3) embedding symmetry maps onto the
+angular quantum numbers of atomic physics.  This is a
+theoretical question, not a computational one, and it
+may benefit from time to develop.
