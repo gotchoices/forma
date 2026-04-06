@@ -66,6 +66,99 @@ model-D's quantitative benchmarks from R50.
 
 ---
 
+## Parameter scorecard
+
+**Total metric parameters:** 21 (symmetric 6×6 metric on Ma)
+
+**Philosophy:** no premature pinning.  Parameters are swept,
+constrained by data, or derived from inputs — never locked
+from a single particle fit.
+
+#### Measured inputs (from experiment — not derived)
+
+| # | Parameter | Value | What it sets |
+|---|-----------|-------|-------------|
+| 1 | m_e | 0.511 MeV | L₂ (electron ring circumference) |
+| 2 | m_p | 938.272 MeV | L₆ (proton ring circumference) |
+| 3 | Δm²₂₁ | 7.53 × 10⁻⁵ eV² | L₄ (neutrino ring circumference) |
+| 4 | α | 1/137.036 | s₁₂ and s₅₆ (within-plane shears, given ε values) |
+
+Same four inputs as model-C.
+
+#### Derived from inputs (no additional measurement needed)
+
+| # | Parameter | Derived from | Status |
+|---|-----------|-------------|--------|
+| 5 | s₁₂ | α + ε_e | Determined once ε_e is set |
+| 6 | s₅₆ | α + ε_p | Determined once ε_p is set |
+| 7 | s₃₄ | Δm²₃₁/Δm²₂₁ = 33.6 | 0.022 (Family A); other values for other families |
+| 8 | L₂ | m_e + μ(ε_e, s₁₂) | Varies with ε_e |
+| 9 | L₄ | Δm²₂₁ + μ(ε_ν, s₃₄) | Varies with ε_ν |
+| 10 | L₆ | m_p + μ(ε_p, s₅₆) | Varies with ε_p |
+| 11–13 | L₁, L₃, L₅ | ε × L_ring for each sheet | Varies with ε |
+
+#### Constrained by data (not pinned — swept with documented width)
+
+| # | Parameter | Working value | Constraint source | Range | Confidence |
+|---|-----------|--------------|-------------------|-------|------------|
+| 14 | σ_ep | −0.13 | Neutron mass (R50 T2) | ±0.01 | Constrained |
+| 15 | ε_e | 0.65 | Waveguide: must kill (1,1), pass (1,2) | ~0.5–0.8 | Working |
+| 16 | ε_p | 0.55 | Waveguide: must kill (1,1)+(1,2), pass (1,3) | ~0.33–0.6 | Working |
+
+#### Open — under active investigation
+
+| # | Parameter | Working value | Status | Studies |
+|---|-----------|--------------|--------|---------|
+| 17 | ε_ν | 5.0 (Family A) | Broadly viable 0.1–5+; 22 solutions | R49 |
+| 18 | σ_νp | 0 (default) | R50 F11 suggests ~−0.13 may be nonzero | R50 T2, Q89 |
+| 19 | Proton mode | (1,3) | Leading; (3,6) viable alternative | R47, R50 |
+
+#### Set to zero (default — not tested beyond R50 T2)
+
+| # | Parameters | Count | Justification |
+|---|-----------|-------|---------------|
+| 20 | σ_eν | 1 | R50 F13: zero effect on proton-scale modes |
+| 21–28 | Remaining cross-shear components | 8 | No prior data; default zero baseline |
+
+#### Genuinely free
+
+| # | Parameter | Constraint | Note |
+|---|-----------|-----------|------|
+| — | r_e (= ε_e) | May be fixed by waveguide filter | If filter pins ε_e, this drops to zero free |
+| — | r_ν (= ε_ν) | Cosmological Σm_ν < 120 meV | 22 viable solutions remain |
+
+#### Pinned from unstable particles
+
+**None.**  This is model-D's key philosophical difference from
+model-C.  The neutron and muon are predictions, not calibration
+targets.  No parameter is locked to a specific unstable particle
+mass.
+
+#### Summary
+
+| Category | Count | Change from model-C |
+|----------|------:|:-------------------:|
+| Measured from experiment | 4 | Same |
+| Derived from inputs | 9 | Same |
+| Constrained (swept with width) | 3 | **New** (was 0 in model-C) |
+| Open / under investigation | 3 | **New** |
+| Set to zero | 9 | Reduced from 11 (σ_ep now constrained) |
+| Pinned from unstable particles | **0** | **Was 2** (r_p, σ_ep from neutron + muon) |
+| Genuinely free | 0–2 | Same range, but may reach 0 if filters constrain ε |
+
+**Effective free parameters:** 0 if waveguide cutoff pins both
+aspect ratios, or 2 if it doesn't.  Either way, no parameters
+are fitted to unstable particle masses — all MeV-scale
+predictions are genuine.
+
+**Proton mode:** (1,3) fundamental — leading candidate.
+Universal charge formula Q = −n₁ + n₅ works for particles
+AND nuclei.  (3,6) composite remains a viable alternative
+but requires a different charge formula that breaks for
+nuclear modes.
+
+---
+
 ## Outcomes
 
 *Established results from foundational studies (R45–R49) plus the

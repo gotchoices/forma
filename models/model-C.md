@@ -25,17 +25,72 @@ This is the model described in the project's root-level files ([`README.md`](../
 - **Energy and geometry are the only fundamentals.** Conservation laws are exact because they are topological: charge = winding number, spin = geodesic topology.
 - The KK gauge field **emerges** from the wave equation on compact × non-compact space (R36 F8–F9); it is not imposed.
 
-### Parameter accounting
+### Parameter scorecard
 
-| What | Count | Details |
-|------|------:|---------|
-| Ma metric components | 21 | Flat 6×6 symmetric metric |
-| Set by experimental inputs | 6 | m_e, m_p, Δm²₂₁ → 3 ring scales; α → s_e(r_e), s_p(r_p); Δm² ratio → s_ν = 0.022 |
-| Pinned by particle fits | 2 | r_p = 8.906 and σ_ep = −0.091 (neutron + muon, R27 F18) |
-| Cross-shears (irrelevant) | 11 | All zero; shown insensitive to MeV-scale spectrum (R28 F1/F4) |
-| **Effective free** | **2** | **r_e** (unconstrained), **r_ν** (≥ 3.2 from cosmological Σm_ν bound) |
+**Total metric parameters:** 21 (symmetric 6×6 metric on Ma)
 
-MeV-scale hadron predictions are insensitive to both remaining free parameters.
+#### Measured inputs (from experiment — not derived)
+
+| # | Parameter | Value | What it sets |
+|---|-----------|-------|-------------|
+| 1 | m_e | 0.511 MeV | L₂ (electron ring circumference) |
+| 2 | m_p | 938.272 MeV | L₆ (proton ring circumference) |
+| 3 | Δm²₂₁ | 7.53 × 10⁻⁵ eV² | L₄ (neutrino ring circumference) |
+| 4 | α | 1/137.036 | s₁₂ and s₅₆ (within-plane shears, given aspect ratios) |
+
+#### Derived from inputs (no additional measurement needed)
+
+| # | Parameter | Derived from | Value |
+|---|-----------|-------------|-------|
+| 5 | s₁₂ | α + r_e | s_e(r_e) — varies with r_e but always gives α = 1/137 |
+| 6 | s₅₆ | α + r_p | s_p(8.906) = determined |
+| 7 | s₃₄ | Δm²₃₁/Δm²₂₁ = 33.6 | 0.02199 |
+| 8 | L₂ | m_e + μ₁₂(r_e, s_e) | ~4880 fm (varies with r_e) |
+| 9 | L₄ | Δm²₂₁ + μ₃₄(r_ν, s₃₄) | ~42 μm (varies with r_ν) |
+| 10 | L₆ | m_p + μ₅₆(r_p, s_p) | ~2.66 fm |
+| 11 | L₁ | r_e × L₂ | varies with r_e |
+| 12 | L₃ | r_ν × L₄ | varies with r_ν |
+| 13 | L₅ | r_p × L₆ | 23.7 fm |
+
+#### Pinned from specific unstable particles
+
+| # | Parameter | Value | Pinned by | Concern |
+|---|-----------|-------|-----------|---------|
+| 14 | r_p | 8.906 | Neutron + muon mass (R27 F18) | Muon is unstable; using it as calibration hides the mass desert |
+| 15 | σ_ep | −0.0906 | Neutron mass (R27 F18) | Neutron is unstable; should be a near-miss, not exact |
+
+#### Set to zero (assumed, not tested)
+
+| # | Parameters | Count | Justification |
+|---|-----------|-------|---------------|
+| 16–26 | σ_eν, σ_νp, and 9 other cross-shear components | 11 | Shown insensitive to MeV-scale spectrum (R28 F1/F4) |
+
+#### Genuinely free
+
+| # | Parameter | Constraint | Sensitivity |
+|---|-----------|-----------|-------------|
+| 27 | r_e | None | MeV predictions insensitive |
+| 28 | r_ν | ≥ 3.2 (cosmological Σm_ν < 120 meV) | MeV predictions insensitive |
+
+#### Summary
+
+| Category | Count |
+|----------|------:|
+| Measured from experiment | 4 |
+| Derived from inputs | 9 |
+| Pinned from unstable particles | 2 |
+| Set to zero | 11 |
+| Genuinely free | 2 |
+| **Total** | **28** (21 metric + 6 circumferences + proton mode choice) |
+| **Effective free** | **2** |
+
+MeV-scale hadron predictions are insensitive to both
+remaining free parameters.  The 7 particle masses matched
+within ~1.2% (R27, R28) required no adjustment beyond the
+4 inputs and 2 pinned values.
+
+**Proton mode:** (1,2) — assumed, not derived.  This choice
+is embedded in the pinning of r_p from the neutron + muon.
 
 ### Electron properties (R2, R19)
 
