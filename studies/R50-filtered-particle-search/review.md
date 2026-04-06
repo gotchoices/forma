@@ -164,9 +164,140 @@ F12 is the correct identification.
   about the cross-coupling.
 
 
-## Track 3
+## Track 3: Full joint mode sweep — particle spectrum
 
-*(Not yet reviewed.)*
+**Verdict:** Strong results with two significant structural
+issues. No fatal errors in computation.
+
+### Highlights
+
+**The Ω⁻ (F22) is the standout result.** Model-C listed it
+as "structurally forbidden." Model-D finds it at 0.04%
+(0.6 MeV at 1672 MeV) through the composite electron-sheet
+mechanism — n₁ = −2 with gcd = 2 gives a per-strand tube
+of 1 (odd → spin ½) while raw charge contribution is even.
+This breaks the simple parity argument and enables Q = −1
+with J = 3/2. The mode structure is complex (composites on
+all three sheets, n₆ = 13) and could not have been guessed
+from simple scaling. A genuine prediction improvement over
+model-C.
+
+**Seven of twelve unstable targets within 2%** at a single
+σ_ep = −0.13. The same cross-shear that produces the
+neutron (Track 2) also produces Σ⁺ (0.19%), τ⁻ (0.18%),
+Λ (1.1%), Ξ⁰ (1.8%), and Δ⁰ (0.41%). One parameter, many
+outputs.
+
+**The spin-charge parity rule (F17)** is a derived
+structural constraint, not imposed. The discovery that J = 0
+with odd Q is topologically forbidden is important — it
+explains WHY charged pseudoscalar mesons are problematic,
+rather than just noting they don't match.
+
+### Significant issues
+
+**Issue 1: Charged pseudoscalar mesons are topologically
+forbidden.**
+
+π± and K± — among the most common, well-measured particles
+— cannot exist as single eigenmodes under the additive spin
+rule. J = 0 requires all tube windings even, which forces
+Q = even. This is not a mass miss or a parameter problem. It
+is a structural impossibility.
+
+The identified resolution — allowing antiparallel spin
+alignment (two spin-½ combining to J = 0 via QM addition
+rather than simple counting) — would fix it. But this is a
+change to the spin rule. Whether the torus geometry supports
+antiparallel alignment within a single mode is an open
+question. It may require two strands on the same sheet with
+opposite tube orientations, which is geometrically different
+from the current picture of phase-separated identical
+strands.
+
+This is the most significant structural failure and should
+be prioritized. If π± cannot be accommodated, the model has
+a gap at the most basic level of the meson spectrum.
+
+**Issue 2: The muon sits in a mass desert.**
+
+The gap between the electron sheet energy scale (~0.2 MeV)
+and the proton sheet energy scale (~116 MeV) contains no
+eigenmodes. The muon (105.7 MeV) and pion (135-140 MeV)
+both fall in this desert. The 10.9% muon residual is the
+largest fermion miss.
+
+This is structural, not parametric — it follows from the
+electron-proton mass ratio (1:1836). No parameter
+adjustment fixes it. The findings correctly identify four
+possible resolutions (intermediate sheet, sub-harmonics,
+aspect-ratio compression, composite states). None has been
+tested.
+
+In model-C, the muon was a calibration target (pinned
+exactly), which hid this issue. Model-D's philosophy of
+treating the muon as a prediction rather than an input
+correctly exposes it.
+
+### Continuing concerns
+
+**The neutron decomposition problem persists (F24).** The
+improved neutron candidate (0, 6, *, *, 0, 8) still has
+n₁ = 0 — no electron tube winding. It has electron RING
+winding (n₂ = 6), which is dark (no charge, no spin from
+Ma_e). The electron in beta decay needs charge −1 (n₁ = 1)
+and spin ½ (odd tube). Neither is present in the neutron's
+electron-sheet component. The wider scan sharpened this
+concern rather than resolving it.
+
+The question remains: can a dark electron-ring winding
+"unravel" into a physical charged electron during beta
+decay? Or must the neutron mode contain an explicit charged
+electron component (n₁ ≠ 0)?
+
+**The off-resonance correlation weakened (F21).** Pearson
+r = −0.40 (N = 9) vs model-C's r = −0.84. The sign is
+correct (shorter lifetime → larger residual). The
+weakening may reflect the different parameter set and
+extended particle sample (including Δ and ρ, which are
+extremely short-lived). The muon is an outlier — large
+residual but relatively long lifetime — likely because it
+sits in the mass desert where the nearest mode is far
+away regardless.
+
+If the correlation doesn't strengthen with parameter
+optimization (Track 4), the off-resonance hypothesis may
+need refinement — perhaps lifetime depends on something
+beyond the mass gap alone (decay channel availability,
+phase space, quantum number conservation).
+
+**Mode overcounting (F20).** 567,470 propagating modes
+below 2 GeV vs ~15 targets. Most is label degeneracy
+(neutrino/electron dressings at negligible energy).
+Physically distinct modes (~200-400) still overcount by
+15-25×. Whether the excess modes are dark matter
+candidates, mathematical artifacts, or a sign that the
+search space is too unconstrained remains open.
+
+### Notes for downstream tracks
+
+- The charged meson problem (F17) is the top priority
+  for Track 4. Can the spin rule be refined to permit
+  antiparallel alignment?
+
+- The muon problem (F19) may need a dedicated
+  investigation — either an intermediate-scale sheet or
+  a sub-harmonic mechanism.
+
+- The neutron decomposition concern should be tested:
+  compute what happens when a mode with dark electron-
+  ring winding (n₁ = 0, n₂ ≠ 0) loses its cross-sheet
+  coupling. Does the energy redistribute into a charged
+  electron mode, or does it disperse?
+
+- The off-resonance correlation should be recomputed at
+  optimized parameters (if Track 4 produces them) and
+  compared to R27's model-C result.
 
 
 ## Track 4

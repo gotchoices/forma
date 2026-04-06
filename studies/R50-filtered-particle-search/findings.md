@@ -637,6 +637,14 @@ fitting the pattern.  The muon is an outlier — large |Δm/m|
 (11%) but relatively long lifetime (2.2 μs) — likely because
 it sits in the mass desert where the nearest mode is far away.
 
+The weaker correlation compared to R27 may partly reflect
+the extended particle sample: the Δ and ρ (τ ~ 10⁻²⁴ s)
+are resonances where lifetime depends on decay-channel
+availability and phase space, not just the mass gap.  If the
+off-resonance hypothesis needs refinement, it may be that
+τ depends on |Δm| AND the number of available decay channels
+(review note).
+
 ### F22. Ω⁻ via composite electron winding
 
 The Ω⁻ match is the most surprising result of Track 3:
@@ -675,6 +683,11 @@ yet the model matches its mass to within 0.6 MeV at 1672 MeV.
 Its mode structure — composites on all three sheets, n₆ = 13
 proton ring — is complex and unpredictable from simple scaling.
 
+**Comparison to model-C:** Model-C listed the Ω⁻ as
+structurally forbidden (see review notes).  Model-D finds
+it through the composite-electron mechanism — a genuine
+prediction improvement over the prior model.
+
 ### F23. Dark mode census
 
 Modes with n₁ = n₅ = 0 (no tube winding on either charged
@@ -708,6 +721,21 @@ ring winding is dark (no charge, no spin) but couples to
 the proton sheet via σ_ep, which is what shifts the energy
 toward the neutron mass.
 
+**Sharpened concern (from review):** The electron in beta
+decay needs charge −1 (n₁ = 1) and spin ½ (odd tube).
+Neither is present in this neutron candidate's electron-sheet
+component — its Ma_e winding is purely ring (n₁ = 0, n₂ = 6).
+The wider scan improved the mass match but sharpened rather
+than resolved the decomposition question.
+
+**Testable question:** If the neutron mode loses its cross-
+sheet coupling (σ_ep → 0), does the energy stored in the
+dark electron-ring winding redistribute into a charged
+electron mode (n₁ = 1, n₂ = 2)?  Or does it simply raise
+the mode's energy away from the neutron mass?  This could
+distinguish between the "cross-sheet decay channel" picture
+and the requirement for explicit charged-electron content.
+
 ### Track 3 summary
 
 At σ_ep = −0.13, the model produces a recognizable particle
@@ -726,18 +754,43 @@ spectrum.  Seven of twelve unstable targets are matched within
 **Structural challenges:**
 - Charged pseudoscalar mesons (π±, K±) are topologically
   forbidden by the additive spin rule.  This is the most
-  significant failure and points to a needed refinement:
-  allowing QM spin addition (two spin-½ combining to J = 0
-  as well as J = 1) would resolve it.
+  significant structural failure.  The proposed fix — QM spin
+  addition (two spin-½ combining to J = 0) — is standard
+  quantum mechanics, but whether the torus geometry supports
+  antiparallel alignment within a single mode is an open
+  question.  It may require two strands on the same sheet
+  with opposite tube orientations, which is geometrically
+  different from the current picture of phase-separated
+  identical strands (review note).
 - The muon sits in a mass desert between the electron and
-  proton energy scales, with a 10.9% residual.
-- Mode overcounting (38,000:1) is dominated by label degeneracy
-  (neutrino/electron dressings that barely affect energy).
+  proton energy scales, with a 10.9% residual.  This is
+  structural (follows from m_e/m_p), not parametric — no
+  parameter adjustment within the current three-sheet
+  geometry can fix it.
+- Mode overcounting (38,000:1) is dominated by label
+  degeneracy (neutrino/electron dressings at negligible
+  energy).  Even after removing label degeneracy, the
+  ~200–400 physically distinct energy levels still overcount
+  by 15–25× (review note).
+- The neutron decomposition concern (F24) sharpened rather
+  than resolved by the wider scan: the best match still has
+  n₁ = 0 (no charged electron component).
 
 **Open questions for Track 4:**
 - Does the off-resonance power law (R27 F33: τ ∝ |Δm|^−2.7)
   quantitatively match the Track 3 residuals?
 - Can the spin rule be refined to allow antiparallel alignment,
-  enabling charged J = 0 modes?
+  enabling charged J = 0 modes?  What geometry on the torus
+  supports two strands with opposite tube orientations?
 - The muon problem: is there a parameter regime (different ε_p)
-  that places the first proton harmonic near 105.7 MeV?
+  that places the first proton harmonic near 105.7 MeV?  Or
+  does an intermediate-scale sheet resolve it?
+- Neutron decomposition: does a mode with dark electron-ring
+  winding (n₁ = 0, n₂ ≠ 0) redistribute its energy into
+  charged electron components when cross-sheet coupling
+  is removed?
+- The off-resonance correlation may improve if the muon
+  outlier is excluded (mass-desert artifact) and if Δ and ρ
+  (τ ~ 10⁻²⁴ s, where lifetime may depend on decay-channel
+  availability and phase space, not just the mass gap) are
+  treated separately.
