@@ -229,12 +229,22 @@ could be mistaken for a separate search space.
 
 ### Track 2: Cross-shear sweep — neutron as first cross-sheet test
 
-**Status:** Complete
+**Status:** Complete — re-run under (1,3) proton reveals structural tension
 
 **Goal:** Sweep cross-shear parameters (σ_ep, σ_eν, σ_νp) and find
 where modes near the neutron mass (939.565 MeV) appear.  Geometry
 closure (positive-definite metric, reference masses preserved) is
 verified as a byproduct — not a separate track.
+
+**Re-run note (post-Track 5):** After the (1,3) proton became
+the leading hypothesis, Track 2 was re-run.  The (1,3) proton's
+smaller L_ring_p (4.51 fm vs 10.39 fm) creates a 275 MeV mode
+spacing on the proton ring — 2.3× coarser than (3,6).  No integer
+mode lands near the neutron mass.  The best (1,3) candidate is
+13.6 MeV off at extreme σ_ep and unphysically high electron ring
+winding (n₂ = 200).  This creates an unresolved tension:
+(1,3) wins on nuclear charge formulae (Track 5) but (3,6) wins
+on neutron proximity.  See findings F11–F16 addendum for details.
 
 **Parameter discipline** (see model-D.md §Parameter strategy):
 

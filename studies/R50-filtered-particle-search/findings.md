@@ -476,6 +476,85 @@ prefer a slightly different value.
 
 **Open questions:** Addressed in Track 3 below.
 
+
+### Track 2 addendum: Re-run under (1,3) proton hypothesis
+
+The original Track 2 results above used the (3,6) composite
+proton.  After Track 5 established (1,3) as the leading proton
+hypothesis, Track 2 was re-run to assess the neutron under (1,3).
+
+**The (1,3) proton creates a structural neutron problem.**
+
+The proton ring circumference changes dramatically:
+
+| | (3,6) proton | (1,3) proton |
+|---|---|---|
+| L_ring_p | 10.39 fm | 4.51 fm |
+| Ring energy unit E₀_p | ~119 MeV | ~275 MeV |
+| Ring mode spacing | 119 MeV | 275 MeV |
+
+The neutron mass (939.6 MeV) falls between proton-ring modes
+n₆ = 3 (825 MeV) and n₆ = 4 (1100 MeV) — a 275 MeV gap with
+no integer mode close by.  Under (3,6), mode n₆ = 8 landed at
+954 MeV, only 14.7 MeV from the neutron.
+
+**Spin parity blocks the proton's own winding.**  For Q = 0
+with spin ½, the constraint is n₁ = n₅ (both even), n₃ odd.
+The proton mode itself has n₅ = 1 (odd), so adding n₁ = 1 for
+charge neutrality gives two odd tube windings — base spin
+contribution = 2, which cannot reach spin ½ (only spin 1 or
+3/2).  The neutron cannot contain the proton's tube winding.
+
+**Cross-shear and electron ring cannot close the gap.**
+
+| σ_ep | Best mode | E (MeV) | Gap |
+|------|-----------|---------|-----|
+| 0.00 | (0, 0, 1, 0, 0, 3) | 824.6 | 115 MeV |
+| −0.13 | (0, 30, 1, −5, 0, 3) | 842.9 | 97 MeV |
+| −0.30 | (0, 200, 1, −5, 0, 3) | 926.0 | 14 MeV |
+
+Even extreme electron ring winding (n₂ = 200) at the maximum
+σ_ep only closes the gap to ~14 MeV (1.4%).  The electron ring
+contributes ~0.21 MeV per unit — too small to bridge a 115 MeV
+gap.  Cross-shear sensitivity is ~0.7 MeV per unit σ — also
+too small.
+
+**Comparison of best neutron candidates:**
+
+| Property | (3,6) result | (1,3) result |
+|----------|-------------|-------------|
+| Best mode | (0, 4, 1, −2, 0, 8) | (0, 200, 1, −5, 0, 3) |
+| Energy | 939.2 MeV | 926.0 MeV |
+| Gap | 0.36 MeV (0.04%) | 13.6 MeV (1.4%) |
+| σ_ep | −0.13 | −0.30 |
+| Electron ring | n₂ = 4 | n₂ = 200 |
+| Physical? | yes — moderate winding | questionable — extreme winding |
+
+**Assessment.** The (1,3) proton hypothesis has a structural
+neutron problem.  The coarser proton-ring mode spacing (275 MeV
+vs 119 MeV) means no integer mode lands near 939.6 MeV.  The
+(3,6) model's larger L_ring_p naturally places n₆ = 8 close to
+the neutron mass.
+
+This creates a tension with Track 5's charge formula finding:
+- **(1,3) wins** on nuclear charge formula and scaling (F31–F33)
+- **(3,6) wins** on neutron mass proximity (F11, F12)
+
+The two hypotheses each solve one fundamental problem while
+creating another.  This tension is unresolved and should inform
+the design of R51.
+
+**Possible resolutions (not yet tested):**
+1. A different ε_p could change L_ring_p and shift the mode
+   spectrum — but ε_p is constrained by the waveguide cutoff
+   (needs ε > 1/3 for (1,3) to propagate).
+2. The neutron may require a mechanism beyond simple mode
+   matching — e.g., a dynamical cross-sheet resonance that
+   doesn't correspond to a single eigenmode.
+3. A hybrid model where the proton is (1,3) but the nuclear
+   scaling uses a different L_ring might resolve both problems,
+   though this adds complexity.
+
 ---
 
 ## Track 3: Full joint mode sweep — particle spectrum

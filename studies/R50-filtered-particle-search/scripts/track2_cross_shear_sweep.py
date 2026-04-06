@@ -47,9 +47,13 @@ M_NEUTRON = 939.565  # MeV (PDG 2022)
 EPS_E, EPS_NU, EPS_P = 0.65, 5.0, 0.55
 S_NU_DEFAULT = 0.022  # R49 Assignment A
 
+# Proton reference mode: (1,3) leading hypothesis
+N_P = (1, 3)
+
 
 def build_corrected_model(sigma_ep=0.0, sigma_enu=0.0, sigma_nup=0.0,
-                          eps_e=EPS_E, eps_nu=EPS_NU, eps_p=EPS_P):
+                          eps_e=EPS_E, eps_nu=EPS_NU, eps_p=EPS_P,
+                          n_p=N_P):
     """
     Build MaD with L_ring adjusted for cross-shear effects on G̃⁻¹.
 
@@ -80,12 +84,11 @@ def build_corrected_model(sigma_ep=0.0, sigma_enu=0.0, sigma_nup=0.0,
     if Gt is None:
         return None, {'reason': 'not positive definite'}
 
-    # Effective μ for reference modes (from full 6×6 inverse)
     n_e_d = np.array([1.0/eps_e, 2.0, 0, 0, 0, 0])
     mu_eff_e = math.sqrt(float(n_e_d @ Gti @ n_e_d))
     L_ring_e = _TWO_PI_HC * mu_eff_e / M_E_MEV
 
-    n_p_d = np.array([0, 0, 0, 0, 3.0/eps_p, 6.0])
+    n_p_d = np.array([0, 0, 0, 0, float(n_p[0])/eps_p, float(n_p[1])])
     mu_eff_p = math.sqrt(float(n_p_d @ Gti @ n_p_d))
     L_ring_p = _TWO_PI_HC * mu_eff_p / M_P_MEV
 
@@ -98,6 +101,7 @@ def build_corrected_model(sigma_ep=0.0, sigma_enu=0.0, sigma_nup=0.0,
             s_e=s_e, s_nu=s_nu, s_p=s_p,
             L_ring_e=L_ring_e, L_ring_nu=L_ring_nu, L_ring_p=L_ring_p,
             sigma_ep=sigma_ep, sigma_enu=sigma_enu, sigma_nup=sigma_nup)
+        model._n_p = n_p
     except ValueError:
         return None, {'reason': 'model construction failed'}
 
@@ -121,7 +125,7 @@ def generate_candidates(n_ranges, charge_target=0, spin_target=0.5):
     for n in iproduct(*ranges):
         if all(ni == 0 for ni in n):
             continue
-        if MaD.charge_composite(n) != charge_target:
+        if MaD.charge(n) != charge_target:
             continue
         if MaD.spin_total(n) != spin_target:
             continue
@@ -163,7 +167,7 @@ def sweep_one_sigma(name, kwarg_name, sigma_range,
             continue
 
         E_e = m.energy((1, 2, 0, 0, 0, 0))
-        E_p = m.energy((0, 0, 0, 0, 3, 6))
+        E_p = m.energy((0, 0, 0, 0, N_P[0], N_P[1]))
 
         energies = batch_energies(cand_arr, m.L, m.metric_inv)
         diffs = np.abs(energies - M_NEUTRON)
@@ -191,7 +195,9 @@ def main():
     print("\nPhase 0: Baseline model (all σ = 0)")
     m0, info0 = build_corrected_model()
     E_e0 = m0.energy((1, 2, 0, 0, 0, 0))
-    E_p0 = m0.energy((0, 0, 0, 0, 3, 6))
+    n_p_full = (0, 0, 0, 0, N_P[0], N_P[1])
+    E_p0 = m0.energy(n_p_full)
+    print(f"  Proton mode: {N_P}")
     print(f"  Electron: {E_e0:.6f} MeV (target {M_E_MEV:.6f})")
     print(f"  Proton:   {E_p0:.3f} MeV (target {M_P_MEV:.3f})")
     print(f"  L_ring_e = {info0['L_ring_e']:.2f} fm")
@@ -403,17 +409,18 @@ def main():
         print(f"    At σ_ep = 0.1: L_ring_p shifts by {delta_Lp:.4f}%")
         print(f"    All Ma_p modes rescale ≈ {delta_Lp:.4f}% in energy")
         # But the RELATIVE shift between different modes matters
-        E_08 = m_test.energy((0, 0, 1, 1, 0, 8))
-        E_36 = m_test.energy((0, 0, 0, 0, 3, 6))
-        ratio_test = E_08 / E_36
-        E_08_0 = m0.energy((0, 0, 1, 1, 0, 8))
-        ratio_0 = E_08_0 / E_p0
-        print(f"    Ratio E(0,0,1,1,0,8)/E(proton):")
+        test_mode = (0, 0, 1, 1, 0, 6)
+        E_tm = m_test.energy(test_mode)
+        E_pt = m_test.energy(n_p_full)
+        ratio_test = E_tm / E_pt
+        E_tm_0 = m0.energy(test_mode)
+        ratio_0 = E_tm_0 / E_p0
+        print(f"    Ratio E{test_mode}/E(proton):")
         print(f"      σ = 0:   {ratio_0:.6f}")
         print(f"      σ = 0.1: {ratio_test:.6f}  "
               f"(δ = {(ratio_test-ratio_0)/ratio_0*100:+.4f}%)")
-        print(f"    Absolute shift of (0,0,1,1,0,8): "
-              f"{E_08 - E_08_0:+.4f} MeV")
+        print(f"    Absolute shift of {test_mode}: "
+              f"{E_tm - E_tm_0:+.4f} MeV")
 
     # ── Phase 5: Summary ──────────────────────────────────────────────
     print(f"\n{'='*72}")
