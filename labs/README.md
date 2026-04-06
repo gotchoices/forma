@@ -33,3 +33,4 @@ These are designs, not results.  None have been performed.
 |-----|-------|--------|
 | [L00](L00-reiter-replication.md) | Independent replication of Reiter's beam-split coincidence experiments (γ-ray and α-ray) | Proposed — prerequisite |
 | [L01](L01-thz-write-read.md) | Can energy be written into and read from Ma_ν modes via THz radiation? | Proposed |
+| [L02](L02-threshold-nuclear-loading.md) | Can IR at ~42 μm load energy through the neutrino Compton window to trigger nuclear events in deuterium? | Proposed |
