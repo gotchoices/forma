@@ -1,4 +1,4 @@
-# Track 3: Discrete embedding — hexagonal rings on a 3D lattice
+# Track 3: Discrete edge alignment — 2D wye meets 3D jack
 
 **Status:** Framing
 
@@ -6,174 +6,274 @@
 
 ## Premise
 
-Track 2 treats the lattice as a continuum with smooth
-angular dependence.  Track 3 goes to the foundation:
-everything is discrete at the Planck scale.  Every edge
-is exactly L.  There is no tolerance δ — either two nodes
+At the Planck scale, everything is discrete.  Every edge
+is exactly L.  There is no tolerance — either two nodes
 are one Planck length apart or they aren't connected.
 
-The question: at what DISCRETE angles can a 2D hexagonal
-structure share nodes with a 3D lattice, when all edges
-are constrained to length exactly L?
+The 2D GRID lattice is a hexagonal mesh.  Each node is a
+**wye** (Y): three edges at 120° in a plane.
+
+The 3D GRID lattice is a diamond-type structure.  Each
+node is a **jack**: four edges at tetrahedral angles
+(109.47° between any pair).
+
+The question: when a 2D hexagonal lattice (all edges L)
+is embedded as a plane in a 3D diamond lattice (all edges
+L), at what orientations do edges from one lattice align
+exactly with edges from the other?
+
+"Align" means: the edge direction from one lattice is
+exactly parallel to an edge direction in the other, AND
+both endpoints land on lattice nodes at distance exactly L.
+An aligned edge can transmit phase information between
+the two lattices — it is a coupling channel.
 
 ---
 
-## The angle mismatch
+## The two primitives
 
-In the 3D lattice (diamond cubic or truncated octahedral
-vertex graph), each node has 4 edges at tetrahedral angles
-(109.47° between any pair).  In the 2D hexagonal lattice,
-each node has 3 edges at 120°.
+**The wye (2D node):**
+- 3 edges in a plane
+- 120° between any pair
+- All edges length L
 
-These angles are DIFFERENT (109.47° vs 120°).  At "magic
-angle 0" (a hexagonal face of the truncated octahedron),
-the 2D and 3D hexagons align perfectly — all 6 nodes
-coincide, all edges match.  An arbitrarily small rotation
-away from this angle gives ZERO coupling — not "weak"
-coupling, but exactly zero, because at the Planck scale
-there is no "almost aligned."
+**The jack (3D node):**
+- 4 edges in 3D
+- 109.47° between any pair (tetrahedral)
+- All edges length L
 
-But at some specific FINITE rotation, a new alignment
-occurs: at least one edge in lattice A lies exactly on top
-of an edge in lattice B.  This is the "first angle" —
-the smallest rotation from magic angle 0 where any
-coupling occurs.  It won't be a full 6-edge hexagonal
-match — it might be just 1 or 2 shared nodes.  But it's
-nonzero.
+At "magic angle 0" — the plane coincides with a face of
+the tetrahedron — three of the four jack edges project
+into the plane at exactly 120° separation.  These three
+projections match the three wye directions.  All three
+edges can carry phase.  This is perfect coupling.
+
+At a generic angle — zero wye edges match jack edges.
+Zero coupling.
+
+At specific intermediate angles — one or two edges may
+align.  These are partial coupling orientations.
+
+The set of allowed orientations is DISCRETE because both
+lattices are discrete.  An edge either lands on a node or
+it doesn't.  There is no "almost."
+
+---
+
+## Parameters
+
+A plane in 3D is described by two angles:
+
+- **θ (tilt):** angle between the plane normal and a
+  reference axis (e.g., [001] of the diamond lattice)
+- **φ (azimuth):** rotation of the normal around the
+  reference axis
+
+Once the plane is oriented, the hexagonal lattice on it
+has one additional degree of freedom:
+
+- **ψ (twist):** rotation of the hexagonal lattice within
+  its own plane
+
+On a torus, ψ is not free — it varies continuously as
+you go around the torus (determined by the geodesic
+direction).  For the flat-plane analysis, ψ is a third
+parameter.
+
+The full search space is (θ, φ, ψ).  But the discrete
+constraint (edges must land on lattice nodes) means only
+specific (θ, φ, ψ) triples produce any alignment at all.
+The goal is to enumerate these triples and count the
+coupling level at each.
 
 ---
 
 ## The coupling staircase
 
-A discrete staircase of coupling levels:
+At each valid orientation, some number of edges align
+(from 0 to the maximum for the patch size).  The levels:
 
-| Coupling level | Shared nodes | Description |
-|---------------|-------------|-------------|
-| 0 | 0 | Generic angle — zero coupling, the sheets are decoupled |
-| 1 | 1 edge (2 nodes) | First angle — minimal partial coupling |
-| 2 | 2 edges (3 nodes) | Second angle — partial coupling |
-| 3 | 3 edges (forming a triangle) | Half-hexagon coupling |
-| ... | ... | ... |
-| 6 | Full hexagon (6 edges, 6 nodes) | Magic angle — perfect coupling |
+| Level | Shared edges | What it means |
+|-------|-------------|---------------|
+| 0 | None | Decoupled — no phase can transfer |
+| 1 | 1 edge (2 nodes) | Minimal coupling — one phase channel |
+| 2 | 2 edges | Two channels |
+| 3 | 3 edges (one complete wye) | One full node coupled |
+| N | N edges | N phase channels |
+| max | All edges in patch | Perfect coupling (magic angle) |
 
-The angles at which each level occurs are FIXED by the
-lattice geometry.  They are not tunable.  And crucially:
-the number of angles at each level and the energy cost
-per level may determine α.
-
-**The hypothesis:** α is the ratio of "partially coupled
-angles" to "total possible angles" on the discrete lattice.
-Or equivalently: α is the probability that a random
-discrete orientation has at least one shared edge between
-the 2D and 3D lattices.
+The number of orientations at each level, and the
+distribution of levels, is the coupling spectrum.  If
+low-coupling levels (1-2 edges) vastly outnumber high-
+coupling levels, the average coupling fraction may be
+small — possibly 1/137.
 
 ---
 
-## Sub-tracks
+## Steps
 
-### Track 3a: Single hexagonal ring
+### Step 1: Single-node analysis (analytical)
 
-Can a hexagonal ring of 6 edges (length L each) embed in
-the 3D lattice?  At how many orientations?
+Place one diamond jack and one hexagonal wye at the same
+origin.  The jack has 4 edge directions (the tetrahedral
+vertices).  The wye has 3 edge directions in the (θ, φ, ψ)
+plane.
 
-**Method:** enumerate all sets of 6 lattice nodes in the 3D
-lattice that form a regular hexagon of edge length L.
-Count the distinct orientations.  These are the magic
-angles.
+For a wye edge to align with a jack edge, the unit vectors
+must be parallel:
 
-This is a pure combinatorial search on a small region of
-the 3D lattice (~10³ nodes).  Hours of computation at most.
+> ê_wye(θ, φ, ψ, k) = ê_jack(j)
+
+where k ∈ {1,2,3} labels the wye edges and j ∈ {1,2,3,4}
+labels the jack edges.
+
+The four jack directions (tetrahedral vertices,
+normalized):
+
+```
+d₁ = (+1, +1, +1) / √3
+d₂ = (+1, −1, −1) / √3
+d₃ = (−1, +1, −1) / √3
+d₄ = (−1, −1, +1) / √3
+```
+
+The three wye directions in a plane with normal
+n̂(θ, φ), rotated by twist ψ, are computed from the
+120°-separated unit vectors in the plane.
+
+**The computation:** for each pair (k, j), solve for
+(θ, φ, ψ) where ê_wye = ê_jack.  This gives exact
+equations (no numerical search needed for single-edge
+alignment).
 
 **Deliverables:**
-- Number of distinct hexagonal ring orientations in each
-  3D lattice type (diamond cubic, truncated-octahedral
-  vertex graph)
-- The actual angles (in spherical coordinates)
-- Whether the two lattice types give the same or different
-  results
+- The complete set of (θ, φ, ψ) where at least one
+  wye-jack edge alignment occurs
+- How many edges align at each orientation (1, 2, or 3)
+- The angular spacing between successive alignment
+  orientations
+- Whether the alignment set is finite, countably infinite,
+  or dense
 
-### Track 3b: Partial matches — the coupling staircase
+**This step is fast (analytical) and determines whether
+Steps 2-3 are worth doing.**  If no alignments exist
+except at the trivial magic angles (plane on a tetrahedral
+face), the discrete coupling hypothesis fails at the most
+basic level.
 
-For each possible relative orientation of the two lattices
-(discretized by the 3D lattice geometry), count how many
-node-node coincidences exist within a patch of ~100 cells.
+### Step 2: Extended lattice (computational)
 
-**Record at each discrete angle:**
-- How many nodes from the 2D hexagonal lattice coincide
-  with 3D lattice nodes?
-- How many shared edges (pairs of coincident nodes that
-  are also L apart)?
-- How many complete hexagons (all 6 nodes shared)?
+Build a patch of diamond lattice (~10³ nodes, edge
+length L = 1).  Build a hexagonal lattice on a plane at
+each magic orientation from Step 1.  For each:
 
-**Map the coupling staircase.  Identify:**
-- The first angle (minimum nonzero coupling — 1 shared edge)
-- The spacing between successive coupling levels
-- How many angles produce 1, 2, 3, 4, 5, 6 shared edges
-- Whether the low-coupling angles (1-2 shared edges)
-  outnumber the high-coupling angles (5-6 shared edges)
-  by a factor related to α
-- Whether there is a periodic or quasi-periodic pattern
-  in the staircase (repeating at some characteristic
-  angular interval)
+- Count how many hexagonal-lattice edges have BOTH
+  endpoints coinciding with diamond-lattice nodes
+  (exact match — integer coordinates or equivalent)
+- Record the spatial pattern of shared edges: are they
+  periodic?  Random?  Clustered?
+- Determine the repeat distance (if periodic): how far
+  apart are successive shared edges?  This is the
+  "superlattice" of coupling points.
 
-### Track 3c: Small tori — convergence to α
+**What this reveals:** Step 1 tells you that a single
+edge CAN align.  Step 2 tells you how MANY edges align
+in an extended patch — whether the single-node alignment
+extends to a repeating pattern across the lattice.
 
-Build the smallest possible torus from discrete edges
-(a hexagonal tube ring + connecting edges) and attempt to
-embed it in the 3D lattice at each valid orientation from
-Track 3b.
+If the shared edges form a periodic superlattice, the
+coupling density (shared edges per unit area) is a
+well-defined geometric constant.
 
-At each torus size (measured in Planck edges), count:
-- M(N) = number of valid embedding orientations
-- T(N) = total number of discrete orientations attempted
+### Step 3: Coupling ratio and α
 
-The ratio M(N)/T(N) is a discrete approximation to the
-coupling fraction.  As N grows (larger torus, more
-possible angles), the discrete set grows denser and
-M/T should converge to a limit.
+Count:
+- **N_coupled:** total number of (θ, φ, ψ) orientations
+  (from Steps 1-2) where at least 1 edge aligns
+- **N_total:** total number of discrete orientations
+  sampled (the full discrete orientation space)
+- **Coupling fraction:** N_coupled / N_total
 
-**The prediction:** M(N)/T(N) → α = 1/137 as N → ∞.
+Also compute the WEIGHTED coupling: instead of counting
+orientations (binary: coupled or not), weight each
+orientation by the number of shared edges per unit area.
+The weighted coupling fraction accounts for partial
+coupling at intermediate angles.
 
-If this converges, α is derived from the discrete
-geometry of hexagonal structures embedded in the
-3D truncated-octahedral (or diamond cubic) lattice.
-No free parameters.  No measured inputs.  Pure
-combinatorial geometry.
+**Compare to 1/137.**
 
----
-
-## Why this might be the most fundamental computation
-
-Track 1 failed because 2D-in-2D has no preferred angles.
-Track 2 (continuum) introduces preferred angles from the
-3D lattice but works in the smooth approximation.  Track 3
-works at the actual Planck-discrete level where the lattice
-lives.
-
-If α emerges from Track 3, it is the MOST fundamental
-derivation possible: a pure integer-geometry ratio from
-the way hexagons fit into the 3D lattice.  No physics,
-no dynamics, no fields — just counting.
+If the coupling fraction (or its weighted version) equals
+1/137 at the diamond lattice's natural parameters (no
+adjustable inputs), α has a discrete geometric origin.
 
 ---
 
-## The diamond lattice alternative
+## Connection to the torus
 
-The truncated octahedron describes the CELLS.  But GRID
-is defined by EDGES (links carrying the gauge connection).
-The relevant structure may be the edge graph — the diamond
-cubic lattice, where each node has 4 edges at tetrahedral
-angles (109.47°) with all edges equal length.
+The flat-plane analysis gives C(θ, φ, ψ) — the coupling
+at each orientation.  A torus traces a specific closed
+path through (θ, φ, ψ) space as you go around it.  The
+path is determined by the torus geometry (aspect ratio ε
+and embedding orientation).
 
-The diamond lattice and the truncated-octahedral vertex
-graph are closely related (both are 4-connected with all
-edges equal).  Track 3a should test BOTH: embed hexagonal
-rings in the diamond lattice and in the truncated-
-octahedral vertex graph.  If they give different results,
-the choice of 3D lattice matters.  If they agree, the
-specific cell shape is irrelevant — only the vertex
-connectivity counts.
+The torus coupling is:
+
+> α_torus = (1/circumference) ∮ C(θ(s), φ(s), ψ(s)) ds
+
+where s is the arc length parameter along the torus.
+
+If C is discrete (zero-or-nonzero at specific angles),
+then α_torus counts how many times the torus path passes
+through a coupling orientation, weighted by dwell time.
+
+This connects Track 3 (discrete) to Track 2 (continuum):
+Track 3 provides the exact C(θ, φ, ψ).  Track 2's torus
+integral evaluates it along a specific path.
 
 ---
 
-**Script:** `track3_discrete_embedding.py` (planned)
+## What would kill this hypothesis
+
+- **Step 1 finds no alignments** except the trivial magic
+  angles (plane on tetrahedral face).  This means the
+  angular mismatch (120° vs 109.47°) prevents ANY
+  partial coupling.  The only coupling is perfect or
+  nothing.  Track 3 reduces to Track 2 with just 4 magic
+  directions.
+
+- **Step 2 shows aligned edges don't extend** beyond the
+  origin.  A single-node alignment that doesn't repeat
+  in the extended lattice means the coupling is
+  infinitesimal (one edge out of infinitely many).
+
+- **Step 3 gives a ratio far from 1/137.**  The ratio
+  might be 1/10 or 1/10000 — either way, it's not α.
+
+Any of these would close Track 3.  But each failure is
+informative: it narrows the space of possible geometric
+origins for α.
+
+---
+
+## Notes
+
+- We deliberately ignore the truncated octahedron as a
+  cell shape.  The 3D lattice is defined by its EDGES
+  (the diamond graph), not by an enclosing polyhedron.
+  GRID lives on edges and nodes, not on cells.
+
+- The diamond lattice has "chair" hexagons (6-cycles
+  with 3 vertices lifted out of plane, angles warped
+  from 120° to 109.47°).  These are NOT regular hexagons.
+  We do NOT search for regular hexagons in the diamond
+  lattice — we search for individual EDGE alignments
+  between the flat 2D wye and the 3D jack.
+
+- The 120° vs 109.47° angular mismatch (~10.5°) is the
+  fundamental tension.  Every coupling event requires
+  this mismatch to be accommodated at the shared node.
+  How the lattice accommodates it (which edges bend,
+  which break, which find alternative paths) determines
+  the coupling strength.
+
+**Script:** `scripts/track3_discrete_embedding.py` (planned)
