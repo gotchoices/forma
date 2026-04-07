@@ -13,4 +13,4 @@ the triangular lattice).
 - Whether any peak or characteristic rate lands near 1/137
 - The spatial pattern of coincidences (superlattice structure)
 
-**Script:** [`track1_planar_rotation.py`](track1_planar_rotation.py)
+**Script:** [`scripts/track1_planar_rotation.py`](scripts/track1_planar_rotation.py)
