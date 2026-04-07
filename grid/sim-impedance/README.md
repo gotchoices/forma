@@ -25,7 +25,9 @@ origin in the lattice structures themselves.
 | **1** | 2D-in-2D: two triangular lattices rotated in the same plane | Complete — negative (rate ~1/20, not 1/137) | [T1](T1-planar-rotation.md), [F1](F1-planar-rotation.md) |
 | **2** | 2D-in-3D continuum: hexagonal sheet in truncated-octahedral lattice, sweeping orientation | Framing | [T2](T2-3d-lattice.md) |
 | **3** | 2D-in-3D discrete: hexagonal rings on a Planck-scale 3D lattice, exact edge matching | Framing | [T3](T3-discrete-embedding.md) |
-| ~~4~~ | Rational-angle coincidence site lattices (CSL) | Abandoned | — |
+| **4** | Projection coupling: what fraction of 2D signal projects onto 3D edges? | Framing | [T4](T4-projection-coupling.md) |
+| **5** | Wavefront transfer: coherent signal coupling through a shared 2D/3D node (projection matrix, SVD, directional efficiency) | Framing | [T5](T5-wavefront-transfer.md) |
+| ~~6~~ | Rational-angle coincidence site lattices (CSL) | Abandoned | — |
 
 **Track 1** established that 2D-in-2D coincidence counting
 gives a smooth, featureless coupling rate dominated by
