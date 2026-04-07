@@ -27,7 +27,7 @@ origin in the lattice structures themselves.
 | **3** | 2D-in-3D discrete: hexagonal rings on a Planck-scale 3D lattice, exact edge matching | Framing | [T3](T3-discrete-embedding.md) |
 | **4** | Projection coupling: what fraction of 2D signal projects onto 3D edges? | Framing | [T4](T4-projection-coupling.md) |
 | **5** | Wavefront transfer: coherent signal coupling through a shared 2D/3D node (projection matrix, SVD, directional efficiency) | Framing | [T5](T5-wavefront-transfer.md) |
-| **6** | 4D Lorentzian lattice: node coincidence of 2D hexagonal in a D4 diamond lattice with Minkowski signature | Step 0 complete | [T6](T6-4d-lorentzian-lattice.md), [F6.0](F6-step0-euclidean4d.md) |
+| **6** | 4D Lorentzian lattice: node coincidence of 2D hexagonal in 4D simplex lattice | Steps 0-1 complete | [T6](T6-4d-lorentzian-lattice.md), [F6.0](F6-step0-euclidean4d.md), [F6.1](F6-step1-lorentzian.md) |
 | ~~7~~ | Rational-angle coincidence site lattices (CSL) | Abandoned | — |
 
 **Track 1** established that 2D-in-2D coincidence counting
@@ -99,6 +99,8 @@ thermodynamic partition ratio has a geometric origin.
 | [scripts/track3_step1_fine.py](scripts/track3_step1_fine.py) | Track 3 Step 1 (fine resolution) script |
 | [F5-wavefront-transfer.md](F5-wavefront-transfer.md) | Track 5 findings |
 | [scripts/track5_wavefront_transfer.py](scripts/track5_wavefront_transfer.py) | Track 5 script |
-| [F6-step0-euclidean4d.md](F6-step0-euclidean4d.md) | Track 6 Step 0 findings |
+| [F6-step0-euclidean4d.md](F6-step0-euclidean4d.md) | Track 6 Step 0 findings (Euclidean 4D coincidence) |
+| [F6-step1-lorentzian.md](F6-step1-lorentzian.md) | Track 6 Step 1 findings (Lorentzian per-junction) |
 | [scripts/track6_step0_euclidean4d.py](scripts/track6_step0_euclidean4d.py) | Track 6 Step 0 script |
+| [scripts/track6_step1_lorentzian.py](scripts/track6_step1_lorentzian.py) | Track 6 Step 1 script |
 | [output/](output/) | Plots and data |
