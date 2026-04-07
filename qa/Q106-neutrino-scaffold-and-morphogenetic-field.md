@@ -596,3 +596,290 @@ this specific pattern because no theory predicted it.
   or too coarse for neutrino modes)
 - Patterns are present but not angular (radial,
   random, or cell-shape-dependent)
+
+
+## 10. Detection of the naked scaffold (cells absent)
+
+### The scenario
+
+A leaf is cut in half.  A salamander limb is severed.
+The charged tissue is gone — no cell membranes, no ion
+channels, no cytoplasm.  If the neutrino scaffold
+persists (§5), it occupies the empty volume where the
+tissue was: a coherent cluster of dark-mode neutrinos
+ringing a common chord, with no charged matter to couple
+to.
+
+The membrane-based detection of §9 is unavailable (no
+membrane).  We must detect the scaffold directly.
+
+### What the naked scaffold produces
+
+- **Oscillating E field at ~7 THz** from the leaked
+  near-field (§8).  AC only — no DC component (Q = 0).
+- **Narrowband.**  The scaffold's coherent neutrino modes
+  oscillate at specific frequencies determined by (n₃,n₄)
+  on Ma_ν.  This is NOT thermal emission (broadband) —
+  it is a coherent oscillation at one or a few discrete
+  frequencies.
+- **Spatially structured.**  The field has the scaffold's
+  antinode pattern — a 3D map of the tissue that was once
+  there.
+- **No thermal signature.**  The scaffold is a quantum
+  coherent state, not a thermal ensemble.  It has no
+  temperature.  A thermal IR camera sees nothing.
+- **No gravitational signature.**  ~10³ neutrinos at
+  ~30 meV each → total mass ~30 eV.  Schwarzschild
+  radius ~10⁻⁵⁹ m.  Undetectable.
+
+### The smoking gun
+
+**A narrowband 7 THz signal coming from empty space.**
+
+Thermal background at 42 μm is broadband (spread across
+all frequencies).  The scaffold signal is narrowband
+(one or a few mode frequencies).  A frequency-selective
+detector can distinguish the two.
+
+If a 7 THz signal is detected from the volume where a
+limb was severed — and that signal is NOT present in
+a control volume that never had tissue — the scaffold
+is real.
+
+### Detection methods
+
+**1. Heterodyne THz detection (best candidate).**
+
+A heterodyne receiver mixes the incoming signal with a
+local oscillator (e.g., a quantum cascade laser) at a
+nearby frequency.  The output is the beat note — measured
+with extreme frequency precision (~MHz resolution).  This
+technique routinely detects signals far below the thermal
+noise floor (radio astronomers use it for molecular
+emission lines from distant galaxies).
+
+Setup:
+1. Sever a leaf or salamander limb
+2. Point a 7 THz heterodyne receiver at the empty volume
+3. Scan spatially across the wound site
+4. Look for narrowband emission at ~7 THz from the volume
+   where tissue is absent
+5. Control: scan the same receiver across a volume that
+   never contained tissue
+6. Time series: repeat scans over minutes to hours to map
+   the scaffold's persistence (or decay)
+
+Sensitivity: a heterodyne receiver with 1 MHz bandwidth,
+1 second integration, at 7 THz has noise-equivalent power
+~10⁻²⁰ W.  A coherent scaffold of N ~ 100 neutrinos
+produces ~10⁻²⁰ W — right at the detection threshold.
+N ~ 1000 gives 10× margin.
+
+**2. SNSPD at 42 μm (single-photon counting).**
+
+A superconducting nanowire single-photon detector
+(cryogenic, ~1 K) pointed at the wound site.  Counts
+individual 42 μm photons.  Builds up a spatial map of
+emission from the empty volume over time.
+
+Advantage: ultimate sensitivity — if ANY 42 μm photons
+come from the scaffold, the detector sees them.  Time
+stamps on each photon allow frequency analysis from
+arrival statistics.
+
+Challenge: distinguishing scaffold photons from thermal
+42 μm photons emitted by warm tissue at the wound edge.
+Must isolate the empty volume spatially (aperture or
+lens to exclude the wound margin).
+
+**3. Capacitive plate sensor (simplest).**
+
+Two parallel metal plates (~42 μm spacing) placed in the
+empty volume.  The scaffold's oscillating E field induces
+an AC voltage between the plates.  A lock-in amplifier at
+7 THz extracts the signal.
+
+Sensitivity: lock-in amplifiers detect ~10⁻¹⁵ V/√Hz.
+At 7 THz with 1000 seconds integration: detectable
+voltage ~10⁻¹³ V.  Whether N coherent neutrinos produce
+more than this depends on N and the coupling geometry.
+
+Advantage: simple, room-temperature, no cryogenics.
+Disadvantage: the plates must be in the scaffold volume
+(possibly disrupting it), and 7 THz is at the edge of
+electronic lock-in capability (most operate below GHz —
+would need optical heterodyne rather than electronic).
+
+**4. Near-field probe with dielectric film.**
+
+Place a thin dielectric film (~μm thick) across the wound
+site.  The scaffold's near-field induces a polarization
+pattern on the film.  Scan with an s-SNOM tip to read the
+polarization at ~10 nm resolution.
+
+Advantage: maps the scaffold's spatial structure directly.
+Disadvantage: the film may perturb the scaffold; scanning
+is slow (minutes per image); passive signal is very weak.
+
+**5. Kirlian photography (already attempted).**
+
+Apply high-voltage, high-frequency field across the wound
+site and photograph the corona discharge pattern.  The
+ghost leaf effect may be detecting the scaffold's field
+modification of the corona.
+
+Advantage: already demonstrated (controversial).
+Disadvantage: many confounds (moisture, residue,
+experimental artifacts).  Not frequency-specific — can't
+confirm 7 THz.
+
+### Ranking
+
+| Method | Frequency specific? | Spatial resolution | Sensitivity | Practicality |
+|--------|:------------------:|:-----------------:|:-----------:|:------------:|
+| Heterodyne THz | **Yes** (MHz resolution at 7 THz) | ~42 μm (diffraction) | ~100 neutrinos | Lab setup |
+| SNSPD | Via photon statistics | ~1–10 μm | Single photon | Cryogenic |
+| Capacitive plates | Marginal (lock-in at 7 THz is hard) | Plate size (~mm) | Unknown | Simple |
+| s-SNOM + film | Broadband (not frequency-specific) | ~10 nm | Unknown passive | Experimental |
+| Kirlian | No | ~mm | Demonstrated (?) | Easiest |
+
+**Recommended approach:**
+
+Start with **heterodyne THz detection** — it's the only
+method that provides frequency specificity at 7 THz,
+which is the smoking gun.  A narrowband signal at the
+exact neutrino mode frequency, coming from an empty
+volume where tissue once was, would be extremely
+difficult to explain by any conventional mechanism.
+
+### Persistence and decay
+
+A critical measurement: HOW LONG does the scaffold
+persist after tissue removal?
+
+If cells maintain the scaffold's coherence (refreshing
+phase relationships through the Compton window), the
+naked scaffold may dephase without them.  The decay
+timescale would reveal:
+
+- **Seconds:** scaffold is tightly coupled to cells —
+  loses coherence almost immediately.  Detection window
+  is narrow.
+- **Minutes to hours:** scaffold has intrinsic coherence
+  (the N² binding holds it together) but slowly dephases
+  without cellular reinforcement.  Matches Levin's
+  regeneration timescale.
+- **Days or longer:** scaffold is self-sustaining — the
+  coherent neutrino cluster maintains itself indefinitely.
+  The "ghost" is permanent until something disrupts it.
+
+The time-series heterodyne measurement (scanning
+repeatedly over hours after severing) would directly map
+this decay curve.  An exponential decay suggests
+dephasing.  A plateau suggests self-sustaining coherence.
+Immediate disappearance rules out the scaffold.
+
+### Up-conversion: photographing the scaffold in visible light
+
+Heterodyne detection is a down-converter — it shifts the
+7 THz signal to a low-frequency beat note for electronic
+measurement.  The opposite approach — **up-conversion** —
+shifts the signal INTO the visible spectrum, where it can
+be imaged with a standard camera.
+
+**The technique (sum-frequency generation):**
+
+A strong pump laser and the incoming 7 THz signal
+co-propagate through a nonlinear crystal (GaP, GaSe,
+lithium niobate, or DAST).  The crystal produces photons
+at the sum frequency:
+
+> f_out = f_pump + f_signal
+
+With a 1 μm pump (300 THz): output at 307 THz (977 nm,
+near-IR).  With a 500 nm pump (600 THz): output at
+607 THz (494 nm, blue-green, visible to the eye).
+
+The up-converted photon preserves the SPATIAL information
+of the original THz field.  Imaging the output with a
+standard camera produces a PICTURE of the 7 THz emission
+— at ~42 μm resolution but detected with a visible-light
+sensor.
+
+**This technique is established.**  THz up-conversion
+imaging has been demonstrated in multiple labs for
+characterizing THz laser beams and imaging through
+opaque materials.  The physics is routine nonlinear
+optics.
+
+**For the scaffold:**
+
+The scaffold signal is extremely weak (~10⁻²⁰ W for
+N ~ 100 coherent neutrinos).  Up-conversion efficiency
+is low (~10⁻⁶ to 10⁻³ per photon).  The visible-band
+output would be ~10⁻²³ to 10⁻²⁶ W.
+
+At ~3 × 10⁻¹⁹ J per visible photon, this is ~10⁻⁴
+photons per second per pixel — roughly 0.4 photons per
+hour.  Marginal but nonzero.  At N = 1000 coherent
+neutrinos: ~4 photons per hour per pixel.  Detectable
+with single-photon cameras.
+
+**Available single-photon cameras:**
+
+| Camera type | Dark current | Sensitivity | Suitability |
+|------------|-------------|-------------|-------------|
+| Cooled CCD | ~0.001 e⁻/pixel/s | Single photon with long integration | Good for hours-long exposures |
+| EMCCD (electron-multiplying) | ~0.01 e⁻/pixel/s | Single photon, real-time | Good for time-series |
+| ICCD (intensified) | Low | Single photon, gated | Good for time-resolved imaging |
+| SPAD array | ~Hz dark rate | Single photon, time-stamped | Good for photon statistics |
+
+With a cooled CCD integrating for several hours, a
+scaffold of N ~ 1000 neutrinos would produce a faint
+but detectable image — each pixel accumulating a few
+photons from the up-converted scaffold emission.
+
+**The dream experiment:**
+
+1. Sever a leaf or salamander limb
+2. Direct a pump laser (500 nm, moderate power) through
+   the empty volume where the tissue was
+3. Place a nonlinear crystal (GaSe or DAST) behind the
+   volume
+4. Image the sum-frequency output with a cooled EMCCD
+   camera
+5. Integrate for hours
+6. Result: a faint blue-green image appears in the shape
+   of the missing tissue — the scaffold's 7 THz emission,
+   up-converted to visible light
+
+This would be literally **photographing the ghost** — a
+visible-light image of a dark-matter structure that has
+no mass, no charge, and no thermal emission, made
+visible by converting its coherent THz oscillation to
+blue-green photons.
+
+**Practical challenges:**
+
+- The pump laser must be stable over hours of integration
+- Scattered pump light must be filtered (spectral
+  filtering of the sum-frequency output, which is shifted
+  by exactly 7 THz from the pump)
+- The nonlinear crystal must be large enough to capture
+  the full scaffold volume (~cm scale)
+- Background: any other source of 7 THz in the lab
+  (thermal, electronic) would produce false signal.  The
+  control (no tissue ever present) establishes the
+  baseline.
+- The scaffold's coherence must persist long enough for
+  the integration.  If it decays in minutes, the image
+  is too faint.  If it persists for hours, the experiment
+  is feasible.
+
+**The frequency specificity is the key advantage** over
+Kirlian photography.  Kirlian captures ALL electrical
+phenomena (moisture, residual charge, corona artifacts).
+Up-conversion captures ONLY photons at f_pump + 7 THz —
+a spectral line that has no conventional source in empty
+space above a severed leaf.  If the image appears at this
+specific frequency and nowhere else, the scaffold is real.
