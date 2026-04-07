@@ -85,14 +85,337 @@ site lattices), but the raw rate is too high by ~6× to match α.
 Conclusion: a purely mechanical/geometric coincidence count in
 2D-to-2D does not produce α.  See output/ for plots and data.
 
-### Track 2: 2D sheet in 3D lattice (abandoned)
+### Track 2: 2D hexagonal sheet in 3D truncated-octahedral lattice
 
-The physical geometry: a 2D triangular lattice (Ma sheet)
-embedded in a 3D close-packed lattice (spatial S), with
-two orientation angles (tilt and twist).  More expensive
-but closer to the real MaSt architecture.
+**Status:** Framing
 
-### Track 3: Rational-angle coincidence site lattices (abandoned)
+The 3D GRID lattice is hypothesized to be the truncated
+octahedral honeycomb — the Voronoi tessellation of the BCC
+lattice.  It is the only Archimedean solid that tiles 3D by
+itself, with all edges constant length.  Each cell has 14
+faces (8 regular hexagons + 6 squares), **36 edges**, and
+24 vertices.  Each vertex has 4 edges meeting.
+
+The hexagonal faces are oriented perpendicular to the four
+⟨111⟩ body diagonals of the underlying cube.  These define
+**four discrete face families** — four preferred orientations
+for hexagonal cross-sections through the 3D lattice.
+
+A 2D hexagonal material sheet (Ma_e, Ma_p, or Ma_ν)
+embedded in this lattice at an arbitrary orientation will
+align with the 3D hexagonal faces at specific "magic angles"
+and misalign at all other angles.
+
+**What to compute:**
+
+1. **Coincidence rate vs orientation.**  Generate the 3D
+   truncated-octahedral lattice vertices.  Generate a 2D
+   hexagonal lattice on a plane at orientation (θ, φ).  For
+   each hexagonal face in the 3D lattice, check if its 6
+   vertices coincide with 2D lattice vertices within δ.
+   Sweep (θ, φ) over the full sphere.
+
+2. **Identify the magic angles.**  The perfect-coupling
+   orientations are where the 2D sheet lies exactly on a
+   ⟨111⟩ hexagonal face family:
+   - 4 tilt directions (the ⟨111⟩ normals)
+   - 6 twist angles each (hexagonal rotational symmetry)
+   - 24 magic orientations (reduced by symmetry)
+
+   At magic angles: every hexagon on the sheet corresponds
+   to a hexagonal face of the 3D lattice (perfect coupling).
+   Away from magic angles: coincidence drops (partial or
+   zero coupling).
+
+3. **The torus integral.**  A torus embedded in the 3D
+   lattice has a curved surface.  Different patches face
+   different directions.  As you go around the torus, the
+   surface normal sweeps continuously through orientations.
+   Some patches pass near magic angles (strong coupling),
+   most don't (weak or zero coupling).
+
+   The total coupling is the integral over the torus surface:
+
+   > α_eff = (1/A) ∮ C(θ(s), φ(s)) dA
+
+   where C(θ, φ) is the local coincidence rate and the
+   integral runs over the torus surface A.
+
+   If C(θ, φ) has sharp peaks at the 24 magic angles and
+   is near-zero elsewhere, α_eff measures the fraction of
+   torus surface area that passes near a magic angle.  This
+   fraction depends on the torus geometry (aspect ratio ε
+   and embedding orientation).
+
+   **The hypothesis:** there exists an ε where α_eff = 1/137.
+   If so, the fine-structure constant is determined by the
+   torus geometry fitting into the 3D lattice — a purely
+   geometric origin for α.
+
+### The probability framing
+
+For exact coincidence (δ → 0), C(θ,φ) is zero everywhere
+EXCEPT at the magic angles, where it's 1.  There is no
+intermediate coupling — a hexagonal face either aligns or
+it doesn't.  C(θ,φ) is a sum of delta functions on the
+orientation sphere.
+
+At finite tolerance δ_angle (the angular width within
+which we count as "coupled"), each magic angle becomes a
+small cap on the unit sphere.  The 24 magic caps cover a
+total solid angle:
+
+> Ω_magic = 24 × π(δ_angle)²
+
+The probability that a random surface element has its
+normal within a magic cap is:
+
+> P_magic = Ω_magic / (4π) = 6 × (δ_angle)²
+
+For P_magic = α = 1/137:
+
+> **δ_angle ≈ 0.035 radians ≈ 2.0°**
+
+This is a specific geometric statement: if "good coupling"
+means the surface normal is within ~2° of a ⟨111⟩
+direction, the probability of coupling at any random
+surface point is 1/137.
+
+### The torus is not random — it's a specific trajectory
+
+A torus embedded in the 3D lattice has a normal vector
+that traces a specific closed curve on the unit sphere
+as you go around the tube.  The curve depends on:
+
+- **ε (aspect ratio):** a thin torus (ε → 0) traces a
+  narrow band on the sphere.  A fat torus (ε → 1) traces
+  a wide band covering more orientations.
+- **Embedding orientation:** how the torus axis is aligned
+  relative to the ⟨111⟩ directions.
+
+The torus normal crosses through some number of magic caps
+as it sweeps around.  The **number of crossings** is an
+integer (0, 1, 2, 3, or 4 — one per ⟨111⟩ direction the
+trajectory passes near).  The **dwell time** at each
+crossing (how long the normal stays inside the cap) is a
+smooth function of ε.
+
+This gives α a structure:
+
+> **α = N_crossings × f(ε)**
+
+where N_crossings is discrete (integer: which magic angles
+the torus trajectory crosses) and f(ε) is continuous (how
+long the normal dwells near each magic angle).
+
+The angles between the four ⟨111⟩ directions are fixed by
+the cubic geometry:
+- Between any two ⟨111⟩ directions: 70.53° or 109.47°
+  (the tetrahedral angle and its supplement)
+- These are NOT adjustable — they are set by the truncated
+  octahedral lattice geometry
+
+For a torus whose axis is near a ⟨111⟩ direction, the
+tube normal sweeps a great circle that passes near the
+other three ⟨111⟩ directions at specific angular distances.
+Whether it enters their magic caps depends on ε (which sets
+the sweep width).
+
+### What the computation should determine
+
+1. **Map C(θ,φ)** on the orientation sphere.  Confirm the
+   24 magic peaks and measure their angular width (the
+   intrinsic δ_angle from the lattice geometry, not a
+   chosen tolerance).
+
+2. **Compute the torus normal trajectory** for various ε
+   and embedding orientations.
+
+3. **Count crossings and dwell times.**  For each (ε,
+   orientation), how many magic caps does the trajectory
+   enter?  What fraction of the circumference is inside
+   a cap?
+
+4. **Find the ε where the magic fraction = 1/137.**  If
+   it exists, α is a geometric output.  If it exists at
+   an ε consistent with the electron sheet (~0.5–0.65)
+   or the proton sheet (~0.33–0.55), the connection to
+   particle physics is direct.
+
+**Why this differs from Track 1:**
+
+Track 1 (2D-in-2D) had no preferred angles — two copies of
+the same lattice produce a smooth coincidence function with
+no features.  This track has DISCRETE preferred angles (from
+the 4 hexagonal face families of the truncated octahedron).
+The integral-over-a-torus converts these discrete angles
+into a continuous coupling fraction that depends on geometry.
+
+**Why this might work:**
+
+- The coincidence peaks at magic angles are sharp (exact
+  crystallographic alignment), not broad (geometric
+  probability)
+- The torus sweeps through many orientations, sampling the
+  peaks in proportion to its surface area at each angle
+- The result is geometry-dependent (different ε gives
+  different surface-angle distribution) but not tunable
+  (the magic angles are fixed by the lattice)
+- If α = 1/137 falls out at a specific ε, that ε is a
+  PREDICTION, not an input
+
+**Script:** `track2_3d_lattice.py` (planned)
+
+
+### Track 3: Discrete embedding — hexagonal rings on a 3D lattice
+
+**Status:** Framing
+
+Track 2 treats the lattice as a continuum with smooth
+angular dependence.  Track 3 goes to the foundation:
+everything is discrete at the Planck scale.  Every edge
+is exactly L.  There is no tolerance δ — either two nodes
+are one Planck length apart or they aren't connected.
+
+The question: at what DISCRETE angles can a 2D hexagonal
+structure share nodes with a 3D lattice, when all edges
+are constrained to length exactly L?
+
+#### The premise
+
+In the 3D lattice (diamond cubic or truncated octahedral
+vertex graph), each node has 4 edges at tetrahedral angles
+(109.47° between any pair).  In the 2D hexagonal lattice,
+each node has 3 edges at 120°.
+
+These angles are DIFFERENT (109.47° vs 120°).  At "magic
+angle 0" (a hexagonal face of the truncated octahedron),
+the 2D and 3D hexagons align perfectly — all 6 nodes
+coincide, all edges match.  An arbitrarily small rotation
+away from this angle gives ZERO coupling — not "weak"
+coupling, but exactly zero, because at the Planck scale
+there is no "almost aligned."
+
+But at some specific FINITE rotation, a new alignment
+occurs: at least one edge in lattice A lies exactly on top
+of an edge in lattice B.  This is the "first angle" —
+the smallest rotation from magic angle 0 where any
+coupling occurs.  It won't be a full 6-edge hexagonal
+match — it might be just 1 or 2 shared nodes.  But it's
+nonzero.
+
+#### What the discrete picture predicts
+
+A discrete staircase of coupling levels:
+
+| Coupling level | Shared nodes | Description |
+|---------------|-------------|-------------|
+| 0 | 0 | Generic angle — zero coupling, the sheets are decoupled |
+| 1 | 1 edge (2 nodes) | First angle — minimal partial coupling |
+| 2 | 2 edges (3 nodes) | Second angle — partial coupling |
+| 3 | 3 edges (forming a triangle) | Half-hexagon coupling |
+| ... | ... | ... |
+| 6 | Full hexagon (6 edges, 6 nodes) | Magic angle — perfect coupling |
+
+The angles at which each level occurs are FIXED by the
+lattice geometry.  They are not tunable.  And crucially:
+the number of angles at each level and the energy cost
+per level may determine α.
+
+**The hypothesis:** α is the ratio of "partially coupled
+angles" to "total possible angles" on the discrete lattice.
+Or equivalently: α is the probability that a random
+discrete orientation has at least one shared edge between
+the 2D and 3D lattices.
+
+#### Tracks 3a–3c
+
+**Track 3a: Single hexagonal ring.**  Can a hexagonal ring
+of 6 edges (length L each) embed in the 3D lattice?  At
+how many orientations?
+
+Method: enumerate all sets of 6 lattice nodes in the 3D
+lattice that form a regular hexagon of edge length L.
+Count the distinct orientations.  These are the magic
+angles.
+
+This is a pure combinatorial search on a small region of
+the 3D lattice (~10³ nodes).  Hours of computation at most.
+
+**Track 3b: Partial matches.**  For each possible relative
+orientation of the two lattices (discretized by the 3D
+lattice geometry), count how many node-node coincidences
+exist within a patch of ~100 cells.
+
+Record: at each discrete angle, how many nodes from the
+2D hexagonal lattice coincide with 3D lattice nodes?
+How many shared edges?  How many complete hexagons?
+
+Map the "coupling staircase" — the discrete set of angles
+and their coupling levels.  Identify:
+- The first angle (minimum nonzero coupling — 1 shared edge)
+- The spacing between successive coupling levels
+- How many angles produce 1, 2, 3, 4, 5, 6 shared edges
+- Whether the low-coupling angles (1-2 shared edges)
+  outnumber the high-coupling angles (5-6 shared edges)
+  by a factor related to α
+
+**Track 3c: Small tori.**  Build the smallest possible
+torus from discrete edges (a hexagonal tube ring +
+connecting edges) and attempt to embed it in the 3D
+lattice at each valid orientation from Track 3b.
+
+At each torus size (measured in Planck edges), count:
+- M(N) = number of valid embedding orientations
+- T(N) = total number of discrete orientations attempted
+
+The ratio M(N)/T(N) is a discrete approximation to the
+coupling fraction.  As N grows (larger torus, more
+possible angles), the discrete set grows denser and
+M/T should converge to a limit.
+
+**The prediction:** M(N)/T(N) → α = 1/137 as N → ∞.
+
+If this converges, α is derived from the discrete
+geometry of hexagonal structures embedded in the
+3D truncated-octahedral (or diamond cubic) lattice.
+No free parameters.  No measured inputs.  Pure
+combinatorial geometry.
+
+#### Why this might be the most fundamental computation
+
+Track 1 failed because 2D-in-2D has no preferred angles.
+Track 2 (continuum) introduces preferred angles from the
+3D lattice but works in the smooth approximation.  Track 3
+works at the actual Planck-discrete level where the lattice
+lives.
+
+If α emerges from Track 3, it is the MOST fundamental
+derivation possible: a pure integer-geometry ratio from
+the way hexagons fit into the 3D lattice.  No physics,
+no dynamics, no fields — just counting.
+
+#### The diamond lattice alternative
+
+The truncated octahedron describes the CELLS.  But GRID
+is defined by EDGES (links carrying the gauge connection).
+The relevant structure may be the edge graph — the diamond
+cubic lattice, where each node has 4 edges at tetrahedral
+angles (109.47°) with all edges equal length.
+
+The diamond lattice and the truncated-octahedral vertex
+graph are closely related (both are 4-connected with all
+edges equal).  Track 3a should test BOTH: embed hexagonal
+rings in the diamond lattice and in the truncated-
+octahedral vertex graph.  If they give different results,
+the choice of 3D lattice matters.  If they agree, the
+specific cell shape is irrelevant — only the vertex
+connectivity counts.
+
+**Script:** `track3_discrete_embedding.py` (planned)
+
+
+### Track 4: Rational-angle coincidence site lattices (abandoned)
 
 For specific rational rotation angles, exact coincidences
 form a periodic superlattice (the CSL).  Enumerate the CSL
