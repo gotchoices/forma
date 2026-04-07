@@ -90,5 +90,8 @@ thermodynamic partition ratio has a geometric origin.
 | [F1-planar-rotation.md](F1-planar-rotation.md) | Track 1 findings |
 | [T2-3d-lattice.md](T2-3d-lattice.md) | Track 2 framing (continuum 3D) |
 | [T3-discrete-embedding.md](T3-discrete-embedding.md) | Track 3 framing (discrete 3D) |
+| [F3-step1-single-node.md](F3-step1-single-node.md) | Track 3 Step 1 findings |
 | [scripts/track1_planar_rotation.py](scripts/track1_planar_rotation.py) | Track 1 script |
-| [output/](output/) | Track 1 plots and data |
+| [scripts/track3_step1_single_node.py](scripts/track3_step1_single_node.py) | Track 3 Step 1 (coarse) script |
+| [scripts/track3_step1_fine.py](scripts/track3_step1_fine.py) | Track 3 Step 1 (fine resolution) script |
+| [output/](output/) | Plots and data |
