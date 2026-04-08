@@ -2,8 +2,8 @@
 
 ## Summary
 
-Two tracks completed (1, 8), one killed (7), five deferred
-(2–6).  15 findings.
+Three tracks completed (1, 8, 9), one killed (7), five
+deferred (2–6).  20 findings.
 
 **The ghost problem is reduced from ~860 modes to ~4 per
 charged sheet** by two complementary mechanisms:
@@ -24,6 +24,17 @@ is model-dependent (F14).
 
 **The neutrino sheet is not a ghost problem** — its dense
 mode spectrum is the hypothesized storage medium (Q85 §8).
+
+**Harmonic modes (n, 2n) don't exist as free particles**
+(Track 9): Coulomb self-energy makes them unstable to fission
+(F17), and the gcd criterion (F20) shows they are reducible
+into separable strands.  The charge formula question (F16) is
+not settled — KK gives charge −n, WvM gives 0 — but fission
+instability applies regardless.  The proton (1,3) avoids
+fission: gcd = 1 makes it irreducible (antinodes, not
+strands), and its internal coupling is at the full Ma field
+strength (Q95).  Multi-electron states exist only in atoms
+where nuclear confinement provides external binding (F19).
 
 **Open for future work:**
 - Track 6 (spin derivation): could change the entire filter
@@ -202,3 +213,221 @@ is better described by:
 This is the deepest open question in the ghost selection
 program.  A QFT-level calculation of the material sheet mode / S photon
 vertex would resolve it definitively.
+
+
+## Track 9 — Coulomb fission of harmonic electron modes
+
+Script: `scripts/track9_harmonic_fission.py`
+
+Tracks 1–8 address modes with different winding *ratios*.
+Track 9 asks about the harmonic series: modes (n, 2n) with
+the same ratio as the electron (1:2) but at higher winding
+numbers.  Why don't (2,4), (3,6), ... exist as free particles?
+
+### F15. Harmonic mode masses are exactly n × m_e
+
+On the sheared electron torus (r_e = 6.6, s_e = 0.0103),
+the dimensionless energy μ(n, 2n) = n × μ(1, 2) exactly.
+The shear cross-term (−n₁ × s) cancels when both quantum
+numbers are scaled by the same factor.
+
+| Mode | μ | Mass (MeV) | Mass / m_e |
+|:---:|:---:|:---:|:---:|
+| (1, 2) | 1.995 | 0.511 | 1.000 |
+| (2, 4) | 3.991 | 1.022 | 2.000 |
+| (3, 6) | 5.986 | 1.533 | 3.000 |
+| (5, 10) | 9.977 | 2.555 | 5.000 |
+| (10, 20) | 19.955 | 5.110 | 10.000 |
+
+The (n, 2n) harmonic has exactly n times the electron's rest
+energy — indistinguishable (in mass) from n electrons at rest.
+
+
+### F16. Charge of (n, 2n) harmonics — formula-dependent, not settled
+
+The charge of harmonic modes depends on which charge formula
+is correct, and this is NOT settled:
+
+- **KK formula (Q = −n₁):** the (n, 2n) mode carries charge
+  −n.  Each tube winding contributes one unit of charge.  A
+  (2,4) mode is two quanta of charge-carrying energy — charge
+  −2, mass 2m_e.
+
+- **WvM integral (F1, Track 1):** the θ₁ integral selects
+  |n₁| = 1 only, giving Q = 0 for all |n₁| ≥ 2.  Under this
+  formula, (2,4) would be dark/uncharged.
+
+**Tension with nuclear modes:** The R29 nuclear scaling law
+models nuclei as (A, 3A) or (A, 2A) modes on Ma_p, where
+n₅ = A.  Helium would be (2, 6), carbon (6, 18), etc.  If the
+WvM selection rule applied to these modes, every nucleus
+heavier than hydrogen would be uncharged — obviously wrong.
+Either the WvM integral does not apply to multi-quantum modes
+in the same way, or nuclei are not (A, 3A) modes in the WvM
+sense.
+
+**For this track, the charge formula does not matter.**  Under
+KK charge (Q = −n), the Coulomb fission argument (F17) shows
+the composite is unstable.  Under WvM charge (Q = 0), the mode
+is dark and unobservable.  Either way, free (n, 2n) electron
+modes with n ≥ 2 do not appear as stable particles.  The
+Coulomb fission argument is the more robust of the two because
+it does not depend on the charge formula.
+
+
+### F17. Coulomb self-energy makes composites unstable
+
+Under the KK charge formula (Q = −n), the (n, 2n) mode
+carries n units of like charge.  The Coulomb self-energy of
+these n charges at the mode's Compton radius makes the
+composite strictly higher-energy than n separated (1,2)
+electrons.
+
+Using the reduced Compton wavelength ƛ_C/n as the confinement
+radius (characteristic size of the composite):
+
+| n | r_conf (fm) | E_self (keV) | E_self / m_e |
+|:---:|:---:|:---:|:---:|
+| 2 | 193 | 7.5 | 0.015 |
+| 3 | 129 | 33.6 | 0.066 |
+| 5 | 77 | 186 | 0.365 |
+| 10 | 39 | 1,678 | 3.28 |
+
+The fission energy ΔE = E_self is always positive (repulsive)
+and grows rapidly — roughly as n²(n−1)/2 × α × m_e.
+
+No confining force exists on Ma_e.  The only internal coupling
+is electromagnetic (strength α ≈ 1/137), which is repulsive
+for like charges.  There is no mechanism analogous to the
+strong force's linear confinement that could bind electrons
+into a composite.
+
+Therefore: the separated state (n free electrons) is always
+energetically favored over the composite (n, 2n) mode.
+
+
+### F18. Proton (1,3) is stable — irreducibility + full Ma coupling
+
+The same fission analysis applied to the proton sheet gives the
+*opposite* conclusion, for two independent reasons.
+
+**Reason 1: Irreducibility.**  Under the (1,3) proton
+hypothesis, gcd(1, 3) = 1 — the mode is irreducible.  Its
+three-fold structure (three energy antinodes at 0°, 120°,
+240° around the ring) consists of features of one standing
+wave, not independent sub-modes.  There are no "strands" to
+separate.  You cannot peel an antinode off a wave, so the
+fission pathway does not exist.
+
+Compare to the electron harmonics:
+
+| Mode | gcd | Structure | Fission? |
+|:---:|:---:|:---|:---:|
+| (1,3) proton | 1 | 3 antinodes (one wave) | impossible |
+| (2,4) electron | 2 | 2 strands of (1,2) | always |
+| (3,6) electron | 3 | 3 strands of (1,2) | always |
+
+**Reason 2: Internal coupling strength (Q95).**  The "strong
+force" is not an S-physics concept separate from EM — it IS
+the electromagnetic field seen from inside Ma, without the
+Compton-window attenuation.  At distances r >> λ_C, only the
+α-projected field leaks into S (electromagnetism).  At
+r ~ λ_C (torus overlap), particles couple through the full
+internal Ma field at strength ~1, not ~1/137.
+
+The ratio α_s / α ≈ 137 = 1/α is this attenuation factor.
+It is not a coincidence — it IS 1/α.
+
+The proton sheet's internal coupling is at the full field
+strength because the mode's own internal fields never pass
+through the Compton window.  The electron sheet has the same
+internal field strength, but electron-electron repulsion
+(between separate (1,2) modes at r >> λ_C) goes through S
+and is α-attenuated.
+
+| | Ma_e composites | Ma_p (1,3) |
+|:---|:---:|:---:|
+| Internal fields | ~1 (same) | ~1 (same) |
+| Inter-mode coupling | α ≈ 1/137 (through S) | n/a (one mode) |
+| Self-interaction | repulsive (same charge) | irreducible |
+| Net stability | unstable | stable |
+
+The proton is stable because (a) it cannot fission (irreducible)
+and (b) its internal coupling is at the full Ma field strength.
+Neither reason involves S-physics or the "strong force" as a
+separate fundamental interaction.
+
+
+### F19. Atoms provide external confinement — the two-tier picture
+
+Multi-electron configurations DO exist in nature: atoms.  But
+they are stable only because the nucleus provides external
+Coulomb confinement.  Measured total ionization energies exceed
+the electron self-repulsion at the Bohr radius by 2.5–5×:
+
+| Z | E_ee at a₀ (eV) | Measured I.E. (eV) | Ratio |
+|:---:|:---:|:---:|:---:|
+| 2 | 27 | 79 | 2.9 |
+| 6 | 408 | 1,030 | 2.5 |
+| 10 | 1,225 | 3,952 | 3.2 |
+| 26 | 8,844 | 42,944 | 4.9 |
+
+Remove the nucleus and the electrons fly apart — the self-
+repulsion has no counterbalance.
+
+This validates the "two-tier picture":
+- **Ma (material space)** defines particle identity: the
+  electron is (1,2) on Ma_e, the proton is a mode on Ma_p.
+- **S (spatial lattice)** defines binding: atoms are spatially
+  bound configurations where nuclear attraction confines
+  electrons.  The 3D Coulomb potential is S-physics, not
+  Ma-physics.
+
+Free (n, 2n) harmonics on Ma_e are Coulomb-unstable (ΔE > 0)
+regardless of the charge formula.  They are n quanta of
+electron energy that fission into n separate electrons in S.
+Multi-electron states exist only in atoms, where nuclear
+attraction provides the missing confinement.
+
+
+### F20. The irreducibility criterion — gcd determines fission
+
+The deepest selection rule for harmonic stability is the
+greatest common divisor of the winding numbers.
+
+A mode (n₁, n₂) with gcd(n₁, n₂) = g > 1 decomposes into g
+copies of the reduced mode (n₁/g, n₂/g) at g evenly-spaced
+phases.  Each copy is a valid, independently-propagating mode
+(a "strand").  The composite's stability then depends on
+whether inter-strand forces are attractive or repulsive.
+
+A mode with gcd = 1 is irreducible.  Its internal structure
+consists of antinodes (energy peaks of one standing wave),
+not strands.  Antinodes cannot separate — destroying one
+destroys the entire mode.  Fission is topologically forbidden.
+
+| Particle | Mode | gcd | Structure | Fission? |
+|:---|:---:|:---:|:---|:---:|
+| Electron | (1, 2) | 1 | irreducible | n/a |
+| 2 electrons | (2, 4) | 2 | 2 × (1,2) strands | YES |
+| 3 electrons | (3, 6) | 3 | 3 × (1,2) strands | YES |
+| Proton (1,3 hyp.) | (1, 3) | 1 | irreducible | NO |
+| Proton (3,6 hyp.) | (3, 6) | 3 | 3 × (1,2) strands | needs confinement |
+
+Under the (1,3) proton hypothesis, confinement is automatic:
+three "quarks" are antinodes of one wave.  Under (3,6), an
+external mechanism (waveguide cutoff) must prevent the strands
+from separating — a known tension (R47 review, R50 F3).
+
+For the electron sheet, all (n, 2n) harmonics with n ≥ 2 have
+gcd = n ≥ 2 → reducible → strands → Coulomb fission.  The
+only stable free mode on Ma_e is the fundamental (1, 2).
+
+This is also why the "3-phase" character of the proton matters.
+The (1,3) mode distributes energy in a three-fold symmetric
+pattern around the ring — like 3-phase AC power with no zero
+crossings.  The three phases are locked by the standing-wave
+constraint; they cannot desynchronize or separate.  The
+electron's (1,2) two-fold pattern is similarly locked, but
+multi-electron composites (2,4), (3,6)... break this lock
+because each strand has its own independent phase.

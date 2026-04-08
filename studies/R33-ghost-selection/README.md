@@ -2,7 +2,7 @@
 
 **Questions:** Q77 (coupling suppression), Q34 (charge mechanism)
 **Type:** compute + theoretical  **Depends on:** R19, R27, R28, R31, R32
-**Status:** Paused (2 tracks complete, 1 dead, 5 deferred)
+**Status:** Paused (3 tracks complete, 1 dead, 5 deferred)
 
 
 ## Motivation
@@ -421,6 +421,106 @@ to the Ma/S coupling requires a QFT vertex calculation.
 See findings F9–F14.
 
 
+### Track 9 — Coulomb fission of harmonic electron modes
+
+**Note:** Track 9 was added after R51 (atoms as compound
+tori modes), where the question of multi-electron mode
+stability arose naturally from the atomic shell discussion.
+
+Tracks 1–8 address modes with different winding ratios:
+(1,1), (1,3), etc.  Track 9 asks a complementary question
+about the *harmonic series* — modes (n, 2n) for n ≥ 2 that
+have the same tube-to-ring ratio as the electron but at
+higher winding numbers.  These are "(2,4) = two electrons
+wound together," "(3,6) = three," etc.
+
+**Why they don't exist as free particles:**
+
+1. **Coulomb fission:**
+   A (n, 2n) mode carries n quanta of electron energy.
+   Under KK charge (Q = -n), the Coulomb self-energy of n
+   like charges confined to the mode's Compton radius makes
+   the composite strictly higher-energy than n separated
+   (1,2) modes.  No confining force exists on Ma_e (only EM
+   at strength α ≈ 1/137), so the composite fissions into
+   individual electrons.
+
+2. **Reducibility (the deeper reason):**
+   The (n, 2n) mode has gcd(n, 2n) = n, so it decomposes
+   into n copies of the (1,2) electron at different phases
+   (strands).  Each strand is a valid, independently
+   propagating mode.  There is nothing to prevent separation
+   — and Coulomb repulsion actively drives it.
+
+**Note on the charge formula (F16):**
+The WvM integral (F1) gives Q = 0 for |n₁| ≥ 2, which would
+make these modes dark.  But the KK formula gives Q = -n, and
+the R29 nuclear scaling law uses modes with n₅ >> 1 on Ma_p
+(nuclei) that clearly carry charge.  The charge formula for
+multi-quantum modes is not settled.  The Coulomb fission
+argument does not depend on this — it applies under either
+charge assignment.
+
+**Contrast with the proton (1,3) on Ma_p:**
+The proton mode (1,3) has gcd(1, 3) = 1 — it is irreducible.
+Its three-fold structure (three antinodes at 0°, 120°, 240°)
+consists of features of one standing wave, not independent
+sub-modes.  You cannot peel an antinode off a wave.  This
+is why confinement is automatic for (1,3): there are no
+strands to separate.
+
+Additionally, the proton sheet's internal coupling is at the
+full EM field strength (~1), not the α-attenuated coupling
+(~1/137) seen through the Compton window in S (Q95).  The
+"strong force" is the internal Ma field seen at torus-overlap
+distance — Ma-physics, not S-physics.
+
+| | Electron harmonics | Proton (1,3) |
+|:---|:---:|:---:|
+| Mode | (n, 2n), n ≥ 2 | (1, 3) |
+| gcd | n (reducible) | 1 (irreducible) |
+| Sub-parts | n strands of (1,2) | 3 antinodes |
+| Strands separable? | YES | NO (not modes) |
+| Internal coupling | α ≈ 1/137 (repulsive) | ~1 (Q95, attractive) |
+| Fission? | Always (Coulomb wins) | Never (no strands) |
+
+**Contrast with atoms:**
+Multi-electron configurations exist in atoms because the
+nucleus provides external Coulomb confinement.  Remove the
+nucleus and the electrons fly apart.  This is precisely the
+3D spatial physics of the "two-tier picture": Ma defines
+particle identity, S defines spatial binding.
+
+**Compute:**
+
+a) Mode mass of (n, 2n) harmonics: verify E(n,2n) = n × m_e
+   (exact for proportional windings on a sheared torus).
+
+b) Coulomb self-energy at the reduced Compton wavelength
+   ƛ_C/n: E_self = n(n-1)/2 × α ℏc / (ƛ_C/n).
+
+c) Energy balance: ΔE = E_self > 0 for all n ≥ 2 (separated
+   state is always lower energy).
+
+d) Proton contrast: irreducibility argument + internal coupling
+   strength (Q95: strong force = internal Ma field).
+
+e) Atomic contrast: measured total ionization energies vs
+   electron self-repulsion at Bohr radius.
+
+**Output**: Tables of mode mass, self-energy, energy balance.
+Mode reducibility analysis.  Atomic confinement ratios.
+
+**Result (Complete):** Both mechanisms independently prevent
+free (n, 2n) harmonics.  Coulomb fission energy grows as
+~n³ × α m_e — from 7.5 keV at n=2 to 1.7 MeV at n=10.
+The proton (1,3) is stable because it is irreducible (gcd = 1)
+and its internal coupling is at the full Ma field strength, not
+the α-attenuated Coulomb.  Atoms are stable because nuclear
+attraction exceeds electron self-repulsion by 2.5–5×.
+See findings F15–F20.
+
+
 ### Track 7 — Aspect ratio scan for the prediction minimum  **DEAD (F8)**
 
 The spin filter (Track 6) leaves a dangerous survivor:
@@ -549,6 +649,10 @@ turn r_e from a free parameter into a prediction.
 - **Track 8** (wave-optics): 6 findings (F9–F14).
   ω⁴ Larmor suppression gives (1,1) ~1/8× electron coupling.
   Classical caveat remains.
+- **Track 9** (harmonic fission): 6 findings (F15–F20).
+  (n, 2n) harmonics are both dark (by F1) and Coulomb-unstable.
+  No free multi-electron modes.  Proton (1,3) stable by
+  irreducibility (gcd = 1) + full Ma coupling (Q95).
 
 ### Dead
 - **Track 7** (r_e scan): killed by F8.  Q(1,1) ≠ 0 for all s.
