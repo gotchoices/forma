@@ -1,6 +1,6 @@
 # sim-impedance: Lattice junction coupling
 
-**Status:** Track 1 complete.  Tracks 2-3 framing.
+**Status:** Tracks 1, 5, 6, 7 complete.  Tracks 2-4 framing only.
 
 **Question:** when two lattices of different structure or
 orientation interface, what determines the coupling between
@@ -28,7 +28,7 @@ origin in the lattice structures themselves.
 | **4** | Projection coupling: what fraction of 2D signal projects onto 3D edges? | Framing | [T4](T4-projection-coupling.md) |
 | **5** | Wavefront transfer: coherent signal coupling through a shared 2D/3D node (projection matrix, SVD, directional efficiency) | Framing | [T5](T5-wavefront-transfer.md) |
 | **6** | 4D Lorentzian lattice: node coincidence of 2D hexagonal in 4D simplex lattice | Steps 0-1 complete | [T6](T6-4d-lorentzian-lattice.md), [F6.0](F6-step0-euclidean4d.md), [F6.1](F6-step1-lorentzian.md) |
-| ~~7~~ | Rational-angle coincidence site lattices (CSL) | Abandoned | — |
+| **7** | The ε → 0 limit: do exact coincidences exist? | Complete — negative (rate → 0; no exact coincidences) | [T7](T7-epsilon-limit.md), [F7](F7-epsilon-limit.md) |
 
 **Track 1** established that 2D-in-2D coincidence counting
 gives a smooth, featureless coupling rate dominated by
@@ -51,37 +51,57 @@ grows.  If so, α is a pure integer-geometry ratio.
 
 ---
 
-## What we learned (from Track 1)
+## What we learned
 
-### The mechanical picture doesn't work (in 2D)
+### Junction geometry does not produce α
 
-Track 1 tested the most direct version of the hypothesis:
-count how often two lattices can physically interconnect, and
-see if the rate is 1/137.  The answer is no — the coincidence
-rate is ~1/20 of intact coordination, dominated by simple
-geometric probability.  A mechanical linkage — counting which
-nodes CAN connect — asks the wrong question in 2D.
+The study systematically tested every static geometric
+relationship between a 2D hexagonal lattice and a 3D/4D
+simplex lattice:
 
-### The right question may be thermodynamic
+- **Coincidence counting** (Tracks 1, 3, 6.0, 7): the
+  coincidence rate depends entirely on an arbitrary tolerance
+  parameter ε.  As ε → 0, the rate goes to zero — the
+  lattices are incommensurate and share no exact node or edge
+  coincidences at generic orientations.  The value 1/137
+  appears at a different ε for each test, with no common
+  geometric origin.
 
-The phrase "defect cost" is thermodynamics language.  GRID
-derives the defect cost from the lattice action with coupling
-constant κ = 1/(4πα) ≈ 1722.  The energy stored in a minimal
-vortex (one 2π phase winding) is proportional to 1/α.
+- **Per-junction coupling** (Tracks 4, 5, 6.1): the spherical
+  2-design theorem proves that all quadratic coupling measures
+  (cos², projection, SVD, transfer efficiency) are exactly
+  constant at all orientations for any regular simplex lattice
+  in any Euclidean dimension.  The η² = I identity extends
+  this to Lorentzian reinterpretation.
 
-Alpha is a **thermodynamic partition ratio** — the fraction of
-a topological defect's total energy that the ambient medium
-must store to accommodate the twist.  The Coulomb field
-carries energy αmc², while the wave itself carries mc².
+**No static geometric property of the lattice junction
+produces a non-trivial, parameter-free coupling fraction.**
 
-### But geometry may underlie the thermodynamics
+### The tolerance has no geometric justification
 
-Tracks 2 and 3 ask whether the REASON α has the value 1/137
-is geometric: the fraction of orientations at which a 2D
-hexagonal lattice couples to a 3D lattice with tetrahedral
-coordination.  If the coupling fraction (from magic-angle
-counting on the discrete lattice) converges to 1/137, the
-thermodynamic partition ratio has a geometric origin.
+Track 7 is the capstone result.  Earlier tracks noted that
+1/137 appeared "at ε ≈ X" — but Track 7 shows this is
+not meaningful.  The coincidence rate is a smooth monotonic
+function of ε that passes through every positive value.
+Selecting the ε that gives 1/137 is circular — it assumes
+the answer to derive the answer.  Without a first-principles
+derivation of "how close is close enough," coincidence
+counting cannot constrain α.
+
+### Viable pathways remain
+
+The sim-impedance study tested junction geometry, not all
+possible mechanisms.  See [F7](F7-epsilon-limit.md) §F6 for
+the full list.  The approaches that remain open:
+
+1. **Internal sheet geometry** — α from the wrapping/shear
+   of the triangular lattice on the torus (MaSt R15, R19)
+2. **Topological defect energy** — α from the lattice action
+   cost of a minimal vortex (GRID A6)
+3. **Dynamic wave scattering** — α from the transmission
+   amplitude of waves at sheet-lattice junctions
+4. **Multi-junction collective effects** — interference or
+   coherence across extended interfaces
 
 ---
 
@@ -103,4 +123,7 @@ thermodynamic partition ratio has a geometric origin.
 | [F6-step1-lorentzian.md](F6-step1-lorentzian.md) | Track 6 Step 1 findings (Lorentzian per-junction) |
 | [scripts/track6_step0_euclidean4d.py](scripts/track6_step0_euclidean4d.py) | Track 6 Step 0 script |
 | [scripts/track6_step1_lorentzian.py](scripts/track6_step1_lorentzian.py) | Track 6 Step 1 script |
+| [T7-epsilon-limit.md](T7-epsilon-limit.md) | Track 7 framing |
+| [F7-epsilon-limit.md](F7-epsilon-limit.md) | Track 7 findings |
+| [scripts/verify_epsilon_to_zero.py](scripts/verify_epsilon_to_zero.py) | Track 7 script |
 | [output/](output/) | Plots and data |
