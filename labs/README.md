@@ -35,3 +35,4 @@ These are designs, not results.  None have been performed.
 | [L01](L01-thz-write-read.md) | Can energy be written into and read from Ma_ν modes via THz radiation? | Proposed |
 | [L02](L02-threshold-nuclear-loading.md) | Can IR at ~42 μm load energy through the neutrino Compton window to trigger nuclear events in deuterium? | Proposed |
 | [L03](L03-scaffold-detection.md) | Can a neutrino scaffold (morphogenetic field) be detected by up-converting its 7 THz emission to visible light? | Proposed |
+| [L04](L04-beta-decay-thz-resonance.md) | Can THz radiation at predicted neutrino mode frequencies modify beta decay rates? | Proposed |
