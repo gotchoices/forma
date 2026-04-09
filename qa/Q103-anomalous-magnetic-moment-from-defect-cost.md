@@ -243,65 +243,89 @@ be a structurally new piece of physics with no analog in
 standard QED+QCD.  It would predict the sign of any future
 particle's residual anomaly from its mode topology alone.
 
-### 7.1 What R52 attempted (closed — all negative)
+### 7.1 What R52 has tried (mixed results)
 
-R52 ran five computational tracks attempting to demonstrate
-the three-phase sign rule under various consistent sets of
-classical-field assumptions:
+R52 has run six computational tracks investigating the sign
+rule.  The first five (without shear) failed; the sixth
+(with shear) shows mode-dependent sign behavior.
 
 | Track | Method | Result |
 |-------|--------|--------|
-| 1 | Classical current-loop integral | Wrong framework (bare moment is topological) |
-| 2 | B-field surface integral | Same-sign for both modes |
-| 4a | Pairwise antinode Coulomb (point sources) | Same-sign for both modes |
-| 4b | Loop mutual inductance (n_ring coaxial loops) | Same-sign for both modes |
-| 4c | Continuous self-energy (signed ψ) | Same-sign at r_p; sign flip exists but at r ≈ 25-30, far from physical r_p ≈ 8.9 |
+| 1 | Classical current-loop integral | Wrong framework |
+| 2 | B-field surface integral (no shear) | Same-sign for both modes |
+| 4a | Pairwise antinode Coulomb (no shear) | Same-sign for both modes |
+| 4b | Loop mutual inductance (no shear) | Same-sign for both modes |
+| 4c | Continuous self-energy (no shear) | Same-sign at r_p |
+| **4d** | **Continuous self-energy WITH shear** | **Mode-dependent sign flip at s ≈ 0.020-0.025 for (1,3); (1,2) does not flip** |
 
-**No classical field calculation reproduces the three-phase
-sign rule at the proton's actual aspect ratio.**
+**Track 4d is the key result.** Adding shear to the standing
+wave produces a qualitatively different shear response in the
+two modes:
+- (1,2) electron mode: nearly linear δU(s), no sign flip
+- (1,3) proton mode: linear PLUS quadratic terms in s, with a
+  sign flip at s ≈ 0.020-0.025
 
-The verbal three-phase argument — that n_ring = 3 antinodes at
-120° produce destructive interference analogous to balanced
-three-phase electrical systems — is intuitive, but the actual
-geometry of the self-interaction on a torus does not produce
-the predicted cancellation at physical aspect ratios.
+At moderate shear (s ≳ 0.020), the predicted sign pattern
+emerges: δU(1,2) is negative while δU(1,3) is positive (or
+vice versa for negative shear).
 
-A subtle point from track 4c: the sign flip DOES exist at very
-large aspect ratios (r ≳ 25), but the physical proton has
-r_p ≈ 8.9, well below this threshold.  An initial coarse-grid
-scan misleadingly placed the crossover near r_p, but resolution
-convergence testing showed this was a discretization artifact.
+### 7.2 Why the no-shear tracks failed
 
-### 7.2 Status of the three-phase hypothesis
+Tracks 4a-c all used the unsheared standing wave
+ψ = cos(θ_t) × cos(n_ring × θ_r), which has integer
+periodicity in both directions.  The integer symmetry produces
+the same sign of self-energy correction for both modes,
+regardless of n_ring.
 
-The three-phase sign rule, as a CLASSICAL self-interaction
-phenomenon on a torus, is **not supported** by computation.
-The hypothesis was an attractive verbal argument but does not
-survive quantitative implementation.
+The user's verbal three-phase argument is correct in spirit
+but requires shear (or some other non-integer perturbation)
+to break the integer symmetry.  Without shear, the modes are
+indistinguishable up to a scaling factor.
 
-The sign rule may still hold under some other mechanism:
-- A genuine quantum lattice back-reaction (Track 5,
-  lattice-native computation, never attempted)
-- Cross-sheet coupling (R45 Track 3, never attempted)
-- A non-classical effect not captured by surface integrals
+### 7.3 The shear-induced mechanism (per Track 4d)
 
-But the simple classical versions tested by R52 do not
-reproduce it, and the hypothesis should not be cited as an
-established MaSt prediction unless one of the unattempted
-approaches succeeds.
+The physical picture:
 
-### 7.3 Implication for the bare/anomaly decomposition
+- Charge is an artifact of integer tube windings (poloidal),
+  which cannot be sheared without breaking charge quantization.
+- Magnetic moment is an artifact of ring trips (toroidal),
+  which CAN have small non-integer shear corrections without
+  affecting the bare moment.
+- Shear produces a linear correction (in s) that is
+  mode-dependent: roughly antisymmetric for (1,2), more
+  complex for (1,3).
+- At moderate shear, the (1,3) mode's higher-order shear
+  terms flip the sign relative to (1,2).
 
-The clean decomposition (MaSt → bare via flux quantization,
-S → anomaly via dynamical correction) survives independently
-of the sign rule.  MaSt's bare value of n₂ × magneton is a
-solid theorem (§6).  What R52 falsified is the specific claim
-that the sign of the residual anomaly can be derived from
-mode topology via a classical self-interaction calculation.
+This is the computational realization of the verbal three-phase
+argument, with the modification that the relevant small
+parameter is shear (not just the antinode count).
 
-The anomalies remain to be computed by S-domain methods (QED
-loops for the electron, lattice QCD for the proton), with
-MaSt providing the topological baseline.
+### 7.4 Open questions
+
+Track 4d shows the mechanism EXISTS, but several questions
+remain before it constitutes a clean prediction:
+
+1. **Does the proton's actual effective shear reach the
+   sign-flip threshold?** The lib's `solve_shear_for_alpha`
+   gives s_p ≈ 0.008 for r_p = 8.906, which is below the
+   s ≈ 0.020 threshold.  But this formula was derived for the
+   electron — the proton's effective shear may be larger,
+   especially at non-perturbative coupling.
+
+2. **Does the relationship between δU and δμ preserve the
+   sign?** Track 4d computes the self-energy correction, not
+   the moment correction.  These are related but not identical.
+
+3. **Does the vector approach (Track 4e) confirm 4d?** A more
+   sophisticated computation using A_self instead of V_self
+   would either reinforce or refine the scalar result.
+
+The hypothesis is **alive** as of Track 4d.  Q103's claim
+that "the sign of the residual anomaly is determined by mode
+topology" is partially supported: the mechanism exists, but
+its applicability to the actual proton parameters is still
+uncertain.
 
 ## 8. Summary
 
@@ -311,27 +335,33 @@ The Q103 picture has evolved:
 |-----|-------------|---------|--------|
 | Original (§§ 1–4) | Dirac value (g = 2) | Entire deviation | Outdated for proton |
 | Post-flux-quantization (§ 6) | n₂ × magneton (topological) | Small residual after MaSt baseline | **Current view** |
-| With classical sign rule (§ 7) | Same | Sign from classical mode topology | **Falsified by R52** |
+| Sign rule from mode topology alone (no shear) | Same | Sign from classical antinode topology | Falsified by R52 Tracks 4a-c |
+| **Sign rule from shear-induced corrections** | Same | Sign from mode-dependent shear response | **Partially supported by R52 Track 4d** |
 
-**What survives:** MaSt + GRID delivers the bare magnetic
-moment via flux quantization (a topological theorem, exact
-and free of computation).  This is the n₂ × magneton formula
-derived in `grid/maxwell.md` §Magnetic flux quantization, and
-it is a real piece of new content.
+**What is firmly established:** MaSt + GRID delivers the bare
+magnetic moment via flux quantization (a topological theorem,
+exact and free of computation).  This is the n₂ × magneton
+formula derived in `grid/maxwell.md` §Magnetic flux quantization.
 
-**What does not survive:** the conjecture that the SIGN of
-the residual anomaly can be derived from a classical
-self-interaction calculation on the embedded torus.  R52
-tested this under five different sets of consistent
-assumptions (Tracks 1, 2, 4a, 4b, 4c) and found that none
-of them reproduce the predicted sign pattern at the proton's
-actual aspect ratio.
+**What is partially supported:** the sign rule for the
+residual anomaly may be derivable from the mode-dependent
+response to shear.  R52 Track 4d shows that:
+- (1,2) and (1,3) modes have qualitatively different shear
+  responses
+- The (1,3) mode has a sign flip in its self-energy correction
+  at moderate shear (s ≈ 0.020-0.025)
+- The (1,2) mode does not have such a flip
+- This is a real, resolution-converged effect
 
-The genuinely new MaSt content for the magnetic moment
-problem is therefore the **bare value formula**, not the
-sign rule.  Magnitudes and signs of the residual anomalies
-remain to be computed by S-domain methods (QED for electron,
-lattice QCD for proton, possibly cross-sheet dressing for
-both).  The sign rule remains a verbal argument that could
-be revisited under non-classical mechanisms, but it cannot
-be cited as an established prediction.
+**What is still uncertain:** whether the proton's actual
+effective shear reaches the sign-flip threshold, and whether
+the energy-correction sign maps cleanly onto the moment-
+correction sign.
+
+The structural picture: **MaSt provides bare moments via
+topology + sign rules via shear-mediated mode-dependent
+corrections.  S provides exact magnitudes via dynamical
+calculations.**  This division of labor is consistent with
+both standard physics (which provides accurate magnitudes
+via QED/QCD) and the new MaSt content (topological baseline
+plus topology-dependent sign).

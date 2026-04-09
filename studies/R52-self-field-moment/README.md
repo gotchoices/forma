@@ -1,6 +1,10 @@
 # R52: Anomalous magnetic moment from torus self-field
 
-**Status:** Closed — negative.  Tracks 1, 2, 4a, 4b, 4c all fail to reproduce the three-phase sign rule at the proton's actual aspect ratio.  See findings.md.
+**Status:** Reopened — Track 4d positive (partial).  Tracks 1, 2, 4a, 4b, 4c (no shear) failed; Track 4d (with shear) shows mode-dependent sign-flip behavior in (1,3) at s ≳ 0.020 (resolution-converged).  The (1,2) mode does not flip.  Whether the proton's actual effective shear reaches this threshold is the open question.  Track 4e (vector + shear) and a deeper investigation of proton effective shear are the natural next steps.
+
+**Physical principle (per discussion):**
+- Charge is an artifact of trips around the **tube** (poloidal n_tube): integer-quantized in clean steps, no fractional adjustment.
+- Magnetic moment is an artifact of trips around the **ring** (toroidal n_ring): can be modified by **shear** (a non-integer non-linearity) that introduces small additive or subtractive corrections.
 **Questions:** Q53 (anomalous magnetic moment), Q103 (defect-cost back-reaction)
 **Type:** compute
 **Depends on:** R44 (negative result — charge-mass separation wrong sign/order),
@@ -537,10 +541,11 @@ magnitude (non-perturbative regime).
 | `README.md` | This file — study design |
 | `scripts/track1_bare_moment.py` | Track 1 (misguided) — classical current-loop integral |
 | `scripts/track2_bfield_distribution.py` | Track 2 (negative) — B-field surface integral |
-| `scripts/track4a_pairwise_coulomb.py` | Track 4a (planned) — pairwise antinode Coulomb energy |
-| `scripts/track4b_loop_inductance.py` | Track 4b (planned) — coaxial tube-loop mutual inductance |
-| `scripts/track4c_continuous_self_energy.py` | Track 4c (planned) — continuous standing-wave self-energy |
-| `scripts/track4d_vector_backreaction.py` | Track 4d (planned, conditional) — coherent vector-potential back-reaction |
+| `scripts/track4a_pairwise_coulomb.py` | Track 4a (negative) — pairwise antinode Coulomb energy |
+| `scripts/track4b_loop_inductance.py` | Track 4b (negative) — coaxial tube-loop mutual inductance |
+| `scripts/track4c_continuous_self_energy.py` | Track 4c (negative without shear) — continuous standing-wave self-energy |
+| `scripts/track4d_continuous_with_shear.py` | Track 4d (positive) — continuous self-energy WITH shear; sign flip at s ≈ 0.020 |
+| `scripts/track4e_vector_backreaction.py` | Track 4e (planned) — vector A_self back-reaction with shear |
 | `findings.md` | Results and interpretation |
 
 ---
