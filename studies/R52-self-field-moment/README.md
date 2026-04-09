@@ -1,6 +1,6 @@
 # R52: Anomalous magnetic moment from torus self-field
 
-**Status:** Tracks 1–2 completed (both negative); Tracks 3–4 suspended
+**Status:** Tracks 1–2 negative; Track 4a–b negative; Track 4c partial (sign rule emerges at r ≳ 10, crossover near proton's r_p ≈ 8.9); Track 4d available as follow-up
 **Questions:** Q53 (anomalous magnetic moment), Q103 (defect-cost back-reaction)
 **Type:** compute
 **Depends on:** R44 (negative result — charge-mass separation wrong sign/order),
