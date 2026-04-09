@@ -243,54 +243,65 @@ be a structurally new piece of physics with no analog in
 standard QED+QCD.  It would predict the sign of any future
 particle's residual anomaly from its mode topology alone.
 
-### 7.1 What R52 has tried so far
+### 7.1 What R52 attempted (closed — all negative)
 
-R52 has attempted two computational approaches to test this
-hypothesis, both negative:
+R52 ran five computational tracks attempting to demonstrate
+the three-phase sign rule under various consistent sets of
+classical-field assumptions:
 
-- **Track 1** (classical 3D current-loop integral): wrong
-  framework.  Track 1 demonstrated that the bare moment is
-  topological, not derivable from a classical current loop.
-  This vindicated the flux quantization picture but did not
-  test the sign rule.
+| Track | Method | Result |
+|-------|--------|--------|
+| 1 | Classical current-loop integral | Wrong framework (bare moment is topological) |
+| 2 | B-field surface integral | Same-sign for both modes |
+| 4a | Pairwise antinode Coulomb (point sources) | Same-sign for both modes |
+| 4b | Loop mutual inductance (n_ring coaxial loops) | Same-sign for both modes |
+| 4c | Continuous self-energy (signed ψ) | Same-sign at r_p; sign flip exists but at r ≈ 25-30, far from physical r_p ≈ 8.9 |
 
-- **Track 2** (B-field surface integral, both traveling-wave
-  and standing-wave formulations): both formulations give
-  positive (additive) corrections for ALL (1, n₂) modes.
-  The sign difference does NOT emerge from quadratic
-  measures of the field on the torus surface.
+**No classical field calculation reproduces the three-phase
+sign rule at the proton's actual aspect ratio.**
 
-The negative Track 2 result is significant: it confirms that
-quadratic field integrals (|B|² over the surface) cannot
-produce the sign-dependence needed.  Any successful test
-must use a COHERENT (non-quadratic) measure that is sensitive
-to phase relationships between antinodes.
+The verbal three-phase argument — that n_ring = 3 antinodes at
+120° produce destructive interference analogous to balanced
+three-phase electrical systems — is intuitive, but the actual
+geometry of the self-interaction on a torus does not produce
+the predicted cancellation at physical aspect ratios.
 
-### 7.2 What the right computation would look like
+A subtle point from track 4c: the sign flip DOES exist at very
+large aspect ratios (r ≳ 25), but the physical proton has
+r_p ≈ 8.9, well below this threshold.  An initial coarse-grid
+scan misleadingly placed the crossover near r_p, but resolution
+convergence testing showed this was a discretization artifact.
 
-A successful sign-rule test must:
+### 7.2 Status of the three-phase hypothesis
 
-1. Compute the field amplitude (not |amplitude|²) at each
-   antinode location, with sign and phase preserved.
-2. Sum contributions from all antinodes coherently.
-3. Extract the back-reaction on the angular momentum
-   expectation value (which gives the moment correction).
+The three-phase sign rule, as a CLASSICAL self-interaction
+phenomenon on a torus, is **not supported** by computation.
+The hypothesis was an attractive verbal argument but does not
+survive quantitative implementation.
 
-The simplest concrete realization: compute A_self via
-Biot-Savart from the (1, n₂) mode's current density, then
-compute the back-reaction angular momentum
+The sign rule may still hold under some other mechanism:
+- A genuine quantum lattice back-reaction (Track 5,
+  lattice-native computation, never attempted)
+- Cross-sheet coupling (R45 Track 3, never attempted)
+- A non-classical effect not captured by surface integrals
 
-> δL = ⟨ψ | r × A_self | ψ⟩
+But the simple classical versions tested by R52 do not
+reproduce it, and the hypothesis should not be cited as an
+established MaSt prediction unless one of the unattempted
+approaches succeeds.
 
-and the corresponding moment correction
+### 7.3 Implication for the bare/anomaly decomposition
 
-> δμ = (e / 2m) × δL
+The clean decomposition (MaSt → bare via flux quantization,
+S → anomaly via dynamical correction) survives independently
+of the sign rule.  MaSt's bare value of n₂ × magneton is a
+solid theorem (§6).  What R52 falsified is the specific claim
+that the sign of the residual anomaly can be derived from
+mode topology via a classical self-interaction calculation.
 
-Plot δμ as a function of n₂ and look for sign changes.  The
-prediction is δμ > 0 for n₂ = 2 and δμ < 0 for n₂ = 3.
-
-This is described in detail as a candidate Track 4 in R52
-(see [`R52/README.md`](../studies/R52-self-field-moment/README.md)).
+The anomalies remain to be computed by S-domain methods (QED
+loops for the electron, lattice QCD for the proton), with
+MaSt providing the topological baseline.
 
 ## 8. Summary
 
@@ -299,13 +310,28 @@ The Q103 picture has evolved:
 | Era | Bare moment | Anomaly | Status |
 |-----|-------------|---------|--------|
 | Original (§§ 1–4) | Dirac value (g = 2) | Entire deviation | Outdated for proton |
-| Post-flux-quantization (§ 6) | n₂ × magneton (topological) | Small residual after MaSt baseline | Current view |
-| With sign rule (§ 7) | Same | Sign predicted by mode topology | Conjecture; computation pending |
+| Post-flux-quantization (§ 6) | n₂ × magneton (topological) | Small residual after MaSt baseline | **Current view** |
+| With classical sign rule (§ 7) | Same | Sign from classical mode topology | **Falsified by R52** |
 
-The clean version of the hypothesis: **MaSt + GRID delivers
-the bare moment via flux quantization (a topological theorem,
-exact and free of computation).  S coupling delivers the small
-residual via dynamical back-reaction.  The sign of the residual
-is determined by the mode's phase structure.**  All three
-claims need to be verified, but only the third is genuinely
-new content beyond standard physics.
+**What survives:** MaSt + GRID delivers the bare magnetic
+moment via flux quantization (a topological theorem, exact
+and free of computation).  This is the n₂ × magneton formula
+derived in `grid/maxwell.md` §Magnetic flux quantization, and
+it is a real piece of new content.
+
+**What does not survive:** the conjecture that the SIGN of
+the residual anomaly can be derived from a classical
+self-interaction calculation on the embedded torus.  R52
+tested this under five different sets of consistent
+assumptions (Tracks 1, 2, 4a, 4b, 4c) and found that none
+of them reproduce the predicted sign pattern at the proton's
+actual aspect ratio.
+
+The genuinely new MaSt content for the magnetic moment
+problem is therefore the **bare value formula**, not the
+sign rule.  Magnitudes and signs of the residual anomalies
+remain to be computed by S-domain methods (QED for electron,
+lattice QCD for proton, possibly cross-sheet dressing for
+both).  The sign rule remains a verbal argument that could
+be revisited under non-classical mechanisms, but it cannot
+be cited as an established prediction.
