@@ -575,3 +575,70 @@ parameters.
 | F23 | All neutrons within ~6.6 μm share overlapping neutrino Compton windows, coupling them to the same dense mode substrate on Ma_ν.  The geometry is a collective quantum bus, not a set of pairwise links. |
 | F24 | The 6.6 μm Compton scale is comparable to the cell nucleus diameter (~5–10 μm), making this coupling channel potentially relevant to biological information processing. |
 | F25 | Individual neutrino-neutrino coupling is weak (G_F²), but 10¹³ coherent partners and a shared resonator substrate could produce collective effects not captured by the standard pairwise neutrino force calculation.  This is an open question requiring further analysis. |
+
+---
+
+## Structural assessment: the neutrino sheet needs no filter
+
+### Observation
+
+Family A places the three neutrino mass eigenstates at modes
+**(1,1), (−1,1), (1,2)** on a torus with aspect ratio ε = 5
+and shear s_ν = 0.022.  These are the three lowest-energy
+spin-½ modes that exist on such a torus.  Combined with the
+findings above, a striking structural picture emerges:
+
+1. **No waveguide filtering** (F5).  At ε = 5, every mode
+   propagates — the waveguide cutoff condition n₄ > |n₃|/ε
+   is satisfied for all |n₃| ≤ n₄.  The neutrino sheet has
+   no ghost modes to eliminate.
+
+2. **Ground-floor modes** (F3).  The (1,1) and (−1,1) modes
+   have the smallest possible non-zero tube winding (|n₃| = 1)
+   combined with the smallest ring winding (n₄ = 1).  The
+   (1,2) mode is the next step up: same tube winding, one
+   additional ring loop.  There is nothing simpler on the
+   torus that carries spin ½.
+
+3. **One free parameter** (F9).  The shear s_ν = 0.022 is
+   the sole free parameter.  Once set, the dimensionless
+   energy ratio μ₃²/μ₁² of these three modes reproduces
+   the experimental mass-squared splitting ratio
+   Δm²₃₁/Δm²₂₁ = 33.6 exactly (R26 F33).  The three
+   absolute masses then follow from fixing the energy
+   scale E₀ to match Δm²₂₁.
+
+### Contrast with the electron and proton sheets
+
+The electron sheet (ε_e = 0.65) and proton sheet
+(ε_p = 0.55) both require a filtering mechanism to
+eliminate lower-energy ghost modes — without it, the
+electron is not the lightest charged mode on Ma_e, and
+the proton is not the lightest mode on Ma_p.  Ghost
+selection is a major open problem (R33).
+
+The neutrino sheet faces no such problem.  Its large
+aspect ratio means everything propagates, and its observed
+particles simply *are* the ground floor.  The only role
+of s_ν is to split the near-degenerate (1,1)/(−1,1) pair
+away from (1,2), producing the solar oscillation scale.
+
+### Significance
+
+This is a structural economy argument: of the three
+material sheets, the neutrino sheet is the simplest.
+It requires no mode selection, no ghost elimination,
+no waveguide cutoff.  The three neutrino flavors are
+the three things that exist at lowest energy on an
+unfiltered torus.  The fact that this minimal
+configuration reproduces the oscillation ratio with a
+single parameter (s_ν) is the strongest internal
+consistency check the model possesses.
+
+### Findings table
+
+| ID | Finding |
+|----|---------|
+| F26 | Family A places the three neutrino mass eigenstates at modes (1,1), (−1,1), (1,2) — the three lowest spin-½ modes on a torus with ε = 5.  At this aspect ratio the waveguide cutoff is inoperative (F5): every mode propagates.  The neutrino sheet requires no ghost-elimination mechanism; the observed neutrinos are simply the ground-floor modes of an unfiltered torus. |
+| F27 | With one free parameter (shear s_ν = 0.022), this simplest-possible configuration reproduces the experimental oscillation ratio Δm²₃₁/Δm²₂₁ = 33.6 exactly.  This is the strongest internal consistency check in the model: the minimal sheet yields the correct spectrum with minimal tuning. |
+| F28 | The neutrino sheet contrasts structurally with Ma_e and Ma_p, which both require an as-yet-unidentified filtering mechanism (R33) to eliminate ghost modes below the electron and proton.  The neutrino sheet's large aspect ratio (ε = 5) makes filtering unnecessary — a qualitative difference that may constrain the nature of ghost selection on the other sheets. |
