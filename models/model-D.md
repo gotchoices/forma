@@ -214,6 +214,16 @@ Three hypotheses have been tested.  Current status:
   ringings of the 3-fold ring symmetry, probed in DIS — not
   physical substructure.  Under active testing (R50 Track 5).
 
+  **Irreducibility argument (R33 Track 9, Q109):** gcd(1,3) = 1,
+  so the mode is irreducible — its three antinodes are features of
+  one standing wave, not separable sub-modes.  Confinement is
+  automatic (no free quarks because there are no free antinodes).
+  This contrasts with (3,6) where gcd = 3 → three separable (1,2)
+  strands that require an external confinement mechanism.  The same
+  criterion explains why (n, 2n) electron harmonics don't exist as
+  free particles: gcd = n → n separable (1,2) strands → Coulomb
+  fission.
+
   | Criterion | (1,2) | (3,6) | (1,3) |
   |-----------|-------|-------|-------|
   | Spin | ½ ✓ | ½ ✓ | ½ ✓ |
@@ -598,7 +608,10 @@ quantitative particle predictions. Key design choices:
   composite (viable, strong quark phenomenology).  For (3,6), how
   three (1,2) strands bind is described but not derived from first
   principles.  The waveguide cutoff at ε = 1/3 is suggestive but the eigenmode
-  structure of a composite toroidal cavity is unresolved.
+  structure of a composite toroidal cavity is unresolved.  R33 Track 9
+  adds a structural argument for (1,3): its irreducibility
+  (gcd = 1) makes confinement automatic, while (3,6) (gcd = 3)
+  requires an external mechanism to prevent strand separation (Q109).
 - **Flavor (u/d quarks)**: the model produces three strands with
   e/3 charge but does not yet explain two quark flavors or the
   u/d mass splitting.
@@ -650,4 +663,5 @@ quantitative particle predictions. Key design choices:
   [Q104 (helicity and charge)](../qa/Q104-helicity-forces-n2.md),
   [Q105 (Majorana from C-conjugate)](../qa/Q105-majorana-from-c-conjugate-mixing.md),
   [Q102 (neutrino neutrality)](../qa/Q102-neutrino-neutrality-from-sheet-size.md),
-  [Q103 (anomalous moment from defect)](../qa/Q103-anomalous-magnetic-moment-from-defect-cost.md)
+  [Q103 (anomalous moment from defect)](../qa/Q103-anomalous-magnetic-moment-from-defect-cost.md),
+  [Q109 (mode stability and fission)](../qa/Q109-mode-stability-and-composite-fission.md)
