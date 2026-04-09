@@ -7,6 +7,44 @@
 
 ---
 
+## Assumptions
+
+1. **GRID** — a discrete causal lattice with internal phase. Gives Maxwell's equations, gravity, charge quantization, and α as its sole free coupling constant.
+2. **Three flat periodic sheets** in six compact material dimensions. Particles are the standing electromagnetic waves on these sheets.
+
+Everything else — charge from topology, spin from winding parity, waveguide mode selection, which mode is which particle — follows from these two assumptions and four measured constants (m_e, m_p, Δm²₂₁, α). The neutron is a prediction, not an input.
+
+## Results
+
+### Predictions
+
+- Particle masses from geometry alone — stable particles match closely, unstable particles miss by an amount that predicts their instability
+- The neutron emerges as a three-sheet mode; its near-miss predicts its decay
+- Nuclear masses from deuterium to iron at < 1%
+- Neutrino mass-squared ratio Δm²₃₁/Δm²₂₁ = 33.6 — exact match
+- Dark matter candidates in roughly observed abundance
+- Electric charge and spin derived from topology
+- Quark confinement from mode irreducibility (gcd = 1)
+- Unobserved low-mass particles eliminated by waveguide cutoff
+- Strong force explained as internal electromagnetism at full coupling
+- Total dimensions Material-Space-Time: 11
+
+### Accommodations
+
+- Anomalous magnetic moments — correct sign for electron and proton (R52)
+- Particle lifetimes correlate with distance from resonance (r = −0.85 for baryons)
+- CP violation from shear chirality — mechanism identified, magnitude pending
+
+### Unresolved
+
+- Muon sits in a mass desert between electron and proton energy scales
+- Charged spin-zero mesons (π±, K±) not yet geometrically realized
+- Neutrino sheet geometry not uniquely determined (three families viable)
+
+*Full details: [Particle spectrum](#particle-spectrum-r50--σ_ep---013-ε_e--065-ε_p--055) · [Outcomes](#outcomes) · [Limitations](#limitations)*
+
+---
+
 ## Summary
 
 Model-D is a **deliberate restart from first principles**. Rather than
@@ -443,7 +481,7 @@ small to confirm within-class correlations.
 
 ---
 
-## Assumptions
+## Assumptions (detailed)
 
 Model-D deliberately makes **fewer** assumptions than its predecessors:
 
