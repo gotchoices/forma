@@ -3,9 +3,10 @@
 **Status:** Open — framing
 **Related:**
   [`grid/sim-impedance/`](../grid/sim-impedance/) (α as defect cost),
+  [`grid/maxwell.md`](../grid/maxwell.md) (flux quantization → bare moment),
   [`primers/alpha-in-grid.md`](../primers/alpha-in-grid.md) (α as impedance mismatch),
   [Q102](Q102-neutrino-neutrality-from-sheet-size.md) (charge threshold),
-  R46 (electron filter), R47 (proton filter)
+  R46 (electron filter), R47 (proton filter), R52 (self-field moment)
 
 ---
 
@@ -132,6 +133,179 @@ different regime.
   this result from the torus geometry, that would be a
   significant validation.
 
-- **R47 (proton filter)** may help determine whether the
-  proton is (1,2) or (3,6), which would fix the bare
-  moment and clarify the direction of the anomaly.
+- **R47 (proton filter)** identified (1,3) as the leading
+  proton mode hypothesis, which fixes the bare moment via
+  the flux quantization theorem (see §6) at 3 μ_N.  The
+  measured value 2.793 μ_N is then a small (−6.9%) residual
+  rather than a +179% deviation from Dirac.
+
+## 6. The bare/anomaly decomposition (revised picture)
+
+The original framing of Q103 (§§ 1–4) treated the entire
+deviation from the Dirac value g = 2 as the "anomaly" to be
+explained by defect-cost back-reaction.  The discovery of the
+flux quantization theorem in [`grid/maxwell.md`](../grid/maxwell.md)
+(§Magnetic flux quantization) reorganizes this picture into
+a cleaner two-part decomposition:
+
+### 6.1 The bare moment is topological (from MaSt + GRID)
+
+GRID's flux quantization theorem (the dual of charge
+quantization) says that a closed spatial winding of order n₂
+encloses n₂ magnetic flux quanta.  The resulting bare
+magnetic moment is:
+
+> μ_bare = n₂ × (eℏ / 2m) = n₂ × magneton
+
+This is **derived**, not postulated.  It is the spatial-loop
+version of the same gauge holonomy rule that produces charge
+quantization.  For the (1,2) electron, n₂ = 2 → 2 μ_B.  For
+the (1,3) proton, n₂ = 3 → 3 μ_N.  No calculation, no
+geometry parameters — just one integer.
+
+This means MaSt absorbs into its "bare" value what standard
+physics calls "internal substructure correction."  The proton's
++179% deviation from Dirac is not an anomaly in MaSt — it is
+the n₂ = 3 winding, exact and topological.
+
+### 6.2 The anomaly is dynamical (from S coupling via α)
+
+The remaining residual — the deviation from the topological
+bare value — is the genuine "anomaly":
+
+| Particle | Mode | Bare (topological) | Measured | Residual |
+|----------|------|-------------------|----------|----------|
+| Electron | (1,2) | 2 μ_B | 2.00232 μ_B | +0.116% |
+| Proton | (1,3) | 3 μ_N | 2.793 μ_N | −6.9% |
+
+This residual is what S (the GRID lattice) needs to explain.
+It is the back-reaction of the defect cost on the circulating
+wave — the original Q103 picture, but now applied only to the
+small residual rather than to the entire deviation from Dirac.
+
+The electron's residual matches QED's α/(2π) ≈ +0.116%
+to the precision of measurement.  The proton's residual
+(−6.9%) is at non-perturbative coupling and would need a
+much harder lattice calculation.
+
+### 6.3 Standard physics comparison
+
+For the electron, MaSt's "bare = 2 μ_B + S correction =
+α/(2π)" is essentially identical to standard QED's
+"Dirac = 2 + loop corrections = α/(2π)."  These are two
+languages for the same physical process: a charged wave
+emitting and reabsorbing field disturbances at coupling α.
+MaSt does not add new content for the electron.
+
+For the proton, the comparison is structurally different.
+Standard physics computes the proton's full moment via QCD,
+treating the deviation from Dirac as evidence of internal
+quark/gluon substructure.  MaSt's flux quantization theorem
+gets to the same result (within 7%) from a single integer
+n₂ = 3.  This is an enormous economy if it is correct.
+
+**The two pictures agree on the answer but disagree on the
+mechanism:**
+
+- Standard: three quarks + sea quarks + pion clouds + ...
+  → ~2.79 μ_N via lattice QCD
+- MaSt: n₂ = 3 closed spatial winding → 3 μ_N exactly,
+  with a small residual handled by S coupling
+
+Whether MaSt's mechanism is "correct" depends on whether the
+7% residual can actually be derived from the lattice S
+coupling at the proton's effective α.
+
+## 7. The three-phase sign hypothesis
+
+The two residuals (electron +0.116%, proton −6.9%) have
+opposite signs.  This is unexplained in standard physics —
+the electron's anomaly is computed by QED loops, the proton's
+by QCD machinery, and there is no general rule connecting
+their signs.
+
+R52's central conjecture is that **the sign of the residual
+is determined by the topology of the mode's spatial winding**:
+
+- **n₂ = 2 (two-phase mode):** two antinodes 180° apart.  The
+  self-field back-reaction is constructive (the fields from
+  the two antinodes reinforce at each other's locations).
+  Net effect: additive correction (electron +0.12%).
+
+- **n₂ = 3 (three-phase mode):** three antinodes at 120°.
+  The self-fields from any two antinodes partially cancel
+  at the third's location (analogous to the zero-neutral-
+  current property of balanced three-phase electrical
+  systems).  Net effect: subtractive correction (proton −7%).
+
+If this rule is real and derivable from MaSt + GRID, it would
+be a structurally new piece of physics with no analog in
+standard QED+QCD.  It would predict the sign of any future
+particle's residual anomaly from its mode topology alone.
+
+### 7.1 What R52 has tried so far
+
+R52 has attempted two computational approaches to test this
+hypothesis, both negative:
+
+- **Track 1** (classical 3D current-loop integral): wrong
+  framework.  Track 1 demonstrated that the bare moment is
+  topological, not derivable from a classical current loop.
+  This vindicated the flux quantization picture but did not
+  test the sign rule.
+
+- **Track 2** (B-field surface integral, both traveling-wave
+  and standing-wave formulations): both formulations give
+  positive (additive) corrections for ALL (1, n₂) modes.
+  The sign difference does NOT emerge from quadratic
+  measures of the field on the torus surface.
+
+The negative Track 2 result is significant: it confirms that
+quadratic field integrals (|B|² over the surface) cannot
+produce the sign-dependence needed.  Any successful test
+must use a COHERENT (non-quadratic) measure that is sensitive
+to phase relationships between antinodes.
+
+### 7.2 What the right computation would look like
+
+A successful sign-rule test must:
+
+1. Compute the field amplitude (not |amplitude|²) at each
+   antinode location, with sign and phase preserved.
+2. Sum contributions from all antinodes coherently.
+3. Extract the back-reaction on the angular momentum
+   expectation value (which gives the moment correction).
+
+The simplest concrete realization: compute A_self via
+Biot-Savart from the (1, n₂) mode's current density, then
+compute the back-reaction angular momentum
+
+> δL = ⟨ψ | r × A_self | ψ⟩
+
+and the corresponding moment correction
+
+> δμ = (e / 2m) × δL
+
+Plot δμ as a function of n₂ and look for sign changes.  The
+prediction is δμ > 0 for n₂ = 2 and δμ < 0 for n₂ = 3.
+
+This is described in detail as a candidate Track 4 in R52
+(see [`R52/README.md`](../studies/R52-self-field-moment/README.md)).
+
+## 8. Summary
+
+The Q103 picture has evolved:
+
+| Era | Bare moment | Anomaly | Status |
+|-----|-------------|---------|--------|
+| Original (§§ 1–4) | Dirac value (g = 2) | Entire deviation | Outdated for proton |
+| Post-flux-quantization (§ 6) | n₂ × magneton (topological) | Small residual after MaSt baseline | Current view |
+| With sign rule (§ 7) | Same | Sign predicted by mode topology | Conjecture; computation pending |
+
+The clean version of the hypothesis: **MaSt + GRID delivers
+the bare moment via flux quantization (a topological theorem,
+exact and free of computation).  S coupling delivers the small
+residual via dynamical back-reaction.  The sign of the residual
+is determined by the mode's phase structure.**  All three
+claims need to be verified, but only the third is genuinely
+new content beyond standard physics.
