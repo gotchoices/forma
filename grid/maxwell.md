@@ -540,6 +540,19 @@ Equations 3–4 are **topological** — they are identities that
 follow from F = dA and hold regardless of the dynamics.  They
 have no free parameters.
 
+In addition to the four field equations, the periodicity of
+the matter phase (axiom A3) produces two **quantization
+theorems** as duals of each other:
+
+| Theorem | Statement | Section |
+|---------|-----------|---------|
+| Charge quantization | Q = ne, where e = √(4πα) | §Charge quantization |
+| Magnetic flux quantization | Φ = m × (h/e), giving μ = m × magneton | §Magnetic flux quantization |
+
+Both follow from the same gauge holonomy ∮ A_μ dx^μ ∈ (2π/e)ℤ,
+applied to spacetime loops (giving charge) or spatial loops
+(giving flux/moment).
+
 ---
 
 ## What was used
@@ -627,6 +640,160 @@ axiom.
 
 ---
 
+## Magnetic flux quantization
+
+Charge quantization (above) is one consequence of the periodic
+phase axiom (A3) and the gauge structure (A4).  There is a
+second, dual consequence: **magnetic flux is also quantized**,
+in units determined by the same elementary charge e.
+
+The two quantizations come from applying the same gauge
+holonomy ∮ A_μ dx^μ to two different kinds of loops:
+
+| Loop type | Encloses | Quantization |
+|-----------|----------|--------------|
+| Spacetime loop linking a worldline | Electric charge | Q = ne |
+| Purely spatial loop bounding a surface | Magnetic flux | Φ = mΦ₀ |
+
+Both follow from the requirement that the matter wavefunction
+be single-valued: as you transport a charged particle around
+any closed path, the accumulated phase must be a multiple of 2π.
+
+### The flux rule
+
+For a closed loop C in pure space (a 1D path at a single
+instant in time), Stokes' theorem gives:
+
+<!-- ∮_C A · dl = ∫∫_S B · dA = Φ_B -->
+$$
+\oint_C \mathbf{A}\cdot d\mathbf{l}
+  \;=\; \iint_S \mathbf{B}\cdot d\mathbf{A}
+  \;=\; \Phi_B
+$$
+
+where S is any surface bounded by C and Φ_B is the magnetic
+flux through that surface.
+
+For the matter wavefunction to remain single-valued as a
+charged particle is transported around C, the accumulated
+phase must satisfy:
+
+<!-- e · ∮_C A · dl = 2πm,  m ∈ ℤ -->
+$$
+e \,\oint_C \mathbf{A}\cdot d\mathbf{l} \;=\; 2\pi m,
+\qquad m \in \mathbb{Z}
+$$
+
+Combining these two equations:
+
+<!-- Φ_B = (2π/e) m = m Φ₀ -->
+$$
+\boxed{\;\Phi_B \;=\; \frac{2\pi}{e}\, m \;=\; m\,\Phi_0\;}
+$$
+
+where Φ₀ = 2π/e = h/e is the **magnetic flux quantum**.
+Magnetic flux through a closed loop is quantized in integer
+units of Φ₀, just as charge is quantized in integer units
+of e.
+
+The factor 2π/e is the same one that appeared in charge
+quantization — it is the period of the gauge field A_μ
+under large gauge transformations.  The two rules are dual
+applications of the same compactness.
+
+### Comparison with charge quantization
+
+| Property | Charge | Magnetic flux |
+|----------|--------|---------------|
+| Loop type | Spacetime, links a worldline | Pure space, bounds a surface |
+| Topological object | 1D vortex line (worldline) | 2D vortex surface (or 1D vortex line viewed in 2D) |
+| Quantum unit | e = √(4πα) | Φ₀ = 2π/e = h/e |
+| Source equation | ∇ · E = ρ | ∮ A · dl = Φ |
+| Relevant component of F | F_{0i} (time-space) | F_{ij} (space-space) |
+| Conservation | ∂_μ J^μ = 0 (continuity) | ∇ · B = 0 (Bianchi) |
+
+The two are not independent phenomena — they are the
+time-space and space-space halves of the same underlying
+gauge topology.
+
+### Magnetic moment as quantized flux
+
+A current loop carrying charge Q with enclosed magnetic flux
+Φ has magnetic moment μ = (1/2) Q × (loop area) × (current
+frequency).  For a quantum mechanical orbit at angular
+frequency ω with period T = 2π/ω, the current is I = Q/T,
+and the moment is μ = (1/2) I × A = QωA/(4π).
+
+For an electron in a Bohr orbit of angular momentum ℏ, the
+relation L = mωA gives ωA = ℏ/m, so:
+
+<!-- μ = (e ℏ) / (2 m) -->
+$$
+\mu = \frac{e\hbar}{2m}
+$$
+
+This is the **Bohr magneton**.  It is the natural unit of
+magnetic moment, set entirely by the charge quantum e and
+the angular momentum quantum ℏ.
+
+A standing wave on a compact geometry that wraps n₂ times
+around a closed spatial direction encloses n₂ flux quanta
+(via the flux quantization rule above), and the resulting
+magnetic moment is:
+
+<!-- μ = n₂ × (eℏ / 2m) = n₂ × magneton -->
+$$
+\boxed{\;\mu \;=\; n_2 \times \frac{e\hbar}{2m}
+                \;=\; n_2 \times \text{magneton}\;}
+$$
+
+The integer n₂ is determined by the topology of the spatial
+winding, just as the integer n in Q = ne is determined by
+the topology of the worldline winding.
+
+**Both formulae have the same logical status**: they are
+consequences of the U(1) compactness (axiom A3), applied to
+different types of loops.
+
+### Why no magnetic monopoles
+
+The Bianchi identity ∇ · B = 0 (Step 7) says that magnetic
+flux through a closed 2-surface is always zero — magnetic
+field lines have no endpoints.  This is independent of the
+flux quantization rule above.
+
+Flux quantization applies to loops bounding open surfaces
+(disks).  The flux through such a disk can be any integer
+multiple of Φ₀.  Different disks bounded by the same loop
+give the same flux mod Φ₀ (you can deform one into the other
+without crossing any flux source).
+
+The Bianchi identity says: if you take a CLOSED 2-surface
+(a sphere with no boundary), the total flux through it is
+zero.  No magnetic monopoles exist as bulk objects in the
+GRID lattice.
+
+Flux quantization and the absence of monopoles are
+compatible: flux is quantized through any open surface, but
+the total flux out of any closed surface is exactly zero.
+
+### Where flux quantization shows up experimentally
+
+| Phenomenon | What it measures |
+|------------|------------------|
+| Aharonov-Bohm effect | Φ₀ in interference patterns |
+| Superconducting flux quantum | h/(2e) — the factor of 2 comes from Cooper pairing |
+| Magnetic moment of elementary particles | μ = n × magneton (with corrections) |
+| Quantum Hall effect | Plateau resistance R_K = h/e² |
+| Josephson effect | Frequency-voltage relation involves h/(2e) |
+
+All of these are direct consequences of the same U(1)
+compactness that produces charge quantization.  GRID predicts
+all of them from a single axiom (A3) plus the gauge structure
+(A4).
+
+---
+
 ## What produces charge vs magnetic moment
 
 The field tensor F_μν has six independent components (Step 4).
@@ -666,14 +833,28 @@ does NOT determine how a specific compact geometry maps its
 internal directions onto spacetime.  That mapping is the bridge
 between GRID and any particle model built on compact geometry.
 
-The charge quantization theorem (§Charge quantization above)
-establishes that the winding number n is an integer and that
-Q = ne for a point vortex on the bulk lattice.  On a compact
-surface, the relationship between winding number and externally
-observable charge depends on the mode's field pattern — how
-the winding projects through the compact surface into the
-ambient space.  This projection is geometry-dependent and is
-not determined by GRID's axioms alone.
+Two quantization theorems are available (§Charge quantization
+and §Magnetic flux quantization above):
+
+- **Charge quantization:** the worldline-linking winding
+  number n_charge is an integer, and Q = n_charge × e.
+- **Flux quantization:** the spatial-loop winding number
+  n_flux is an integer, and Φ = n_flux × (h/e), giving
+  μ = n_flux × magneton for an orbital mode of mass m.
+
+For a torus mode with two independent winding directions
+(n₁, n₂), one of these directions projects onto a worldline-
+like (time-space) embedding in spacetime and produces charge,
+while the other projects onto a spatial-loop embedding and
+produces magnetic moment.  Which winding plays which role
+depends on how the compact surface is oriented in spacetime —
+a geometric question that GRID's axioms do not settle.
+
+The two quantization rules are universal: any compact
+geometry will have integer charge in units of e and integer
+magnetic moment in units of the magneton.  The mapping
+between the geometry's intrinsic (n₁, n₂) and the externally
+observable (Q, μ) is geometry-specific.
 
 ---
 
