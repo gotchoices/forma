@@ -1,6 +1,6 @@
 # R52: Anomalous magnetic moment from torus self-field
 
-**Status:** Framed — ready to compute
+**Status:** Tracks 1–2 completed (both negative); Tracks 3–4 suspended
 **Questions:** Q53 (anomalous magnetic moment), Q103 (defect-cost back-reaction)
 **Type:** compute
 **Depends on:** R44 (negative result — charge-mass separation wrong sign/order),
@@ -25,13 +25,24 @@ mode has never been computed in this project.**
 
 Meanwhile, a striking observation about the (1,3) proton hypothesis:
 
-| Particle | Mode | Bare moment | Measured | Anomaly |
-|----------|------|-------------|----------|---------|
+| Particle | Mode | MaSt bare | Measured | Residual |
+|----------|------|-----------|----------|----------|
 | Electron | (1,2) | 2 μ_B | 2.00232 μ_B | **+0.12%** |
 | Proton   | (1,3) | 3 μ_N | 2.793 μ_N   | **−6.9%** |
 
-The electron anomaly is **additive** (moment larger than bare).
-The proton anomaly is **subtractive** (moment smaller than bare).
+The electron residual is **additive** (moment larger than bare).
+The proton residual is **subtractive** (moment smaller than bare).
+
+> **Baseline note.**  The MaSt bare moment is μ = n₂ × magneton —
+> a framework-specific prediction from angular momentum
+> quantization on the torus.  For the electron this happens to
+> match the Dirac value (g = 2), so MaSt and standard physics
+> agree on the baseline AND on the anomaly to explain.  For the
+> proton, MaSt predicts 3 μ_N (from n₂ = 3) while standard physics
+> predicts 1 μ_N (Dirac for a point particle).  The standard
+> proton "anomaly" relative to Dirac is +179%; the MaSt residual
+> relative to 3 μ_N is −6.9%.  R52 is computing the deviation
+> from MaSt's own baseline, not the standard anomaly.
 
 **Hypothesis:** the sign of the anomaly is determined by the mode's
 **phase structure**:
@@ -107,120 +118,345 @@ partially cancelling the constructive effect → net subtractive.
 
 ---
 
+## Bare moment — what is known
+
+The bare magnetic moment is a quantum result from angular momentum
+quantization: μ = eℏn₂/(2m) = n₂ × magneton.  For the electron,
+g = 2 (from the Dirac equation / WvM spin-statistics); for the (1,3)
+proton, μ = 3μ_N (from the three-fold ring winding).  These values
+are topological — they depend only on the winding numbers and
+charge-to-mass ratio, not on the torus geometry.
+
+No surface integral or B-field computation is needed for the bare
+moment.  (Track 1 attempted this and confirmed that classical
+current-loop integrals on the embedded torus give geometry-dependent
+answers 10–100× larger than the quantum prediction.  See findings.)
+
+
 ## Tracks
 
-### Track 1: Bare magnetic moment from torus-knot geometry
+### Track 1: Classical current-loop integral — MISGUIDED
 
-**Goal:** Verify that the 3D embedding of the (n₁, n₂) torus knot
-current gives the expected bare magnetic moments: 2μ_B for the electron,
-3μ_N for the proton.
+Script: `scripts/track1_bare_moment.py` (kept for reference)
+
+Attempted to verify bare moments from the 3D current-loop integral
+∮ r × dl.  Found this integral scales as R² (torus area), giving
+results 8–800× larger than the quantum prediction.  This confirmed
+that the bare moment is purely quantum (angular momentum quantization),
+not derivable from a classical field integral on the embedded torus.
+See findings F1–F2.
+
+**The computation was valid but the goal was misguided** — there is
+no non-trivial "bare moment computation" to perform.  The bare values
+(g = 2 for electron, 3μ_N for proton) are axiomatic inputs from the
+Dirac equation / winding-number quantization.  The interesting physics
+is the self-field CORRECTION, which is the subject of Tracks 2–4.
+
+
+### Track 2: B-field surface integral — NEGATIVE RESULT
+
+Script: `scripts/track2_bfield_distribution.py`
+
+Adapted the R48 E-field charge integral technique to the B field,
+computing B at every point on the torus surface for both traveling-
+wave and standing-wave CP models.
+
+**Result: NEGATIVE.**  Both formulations give corrections that are
+the same sign (positive/additive) for all (1, n₂) modes:
+
+- Traveling wave: B_z = −n₂ρ/|k| is constant in θ₂ (no +/−
+  cancellation).  The Poynting angular momentum integral gives
+  δμ/μ ≈ +ε²(1 − 1/n₂²)/2 — always positive.
+
+- Standing wave: B has +/− regions from sin(q_eff θ₂), but the
+  θ₂ integral is killed by orthogonality except for a shear
+  residual ∝ s²/n₂.  The residual is positive for both modes
+  (2.2×10⁻⁴ for (1,2), 1.7×10⁻⁴ for (1,3) at s = 0.01).
+
+The sign difference between g − 2 > 0 (electron) and μ − 3μ_N < 0
+(proton) does NOT emerge from the single-sheet B-field integral.
+See findings F3–F6.
+
+
+### Track 3: Perturbative moment correction — ABANDONED
+
+**Goal (original):** Compute first-order correction to the magnetic
+moment from the self-potential V via standard quantum perturbation
+theory.
+
+**Why abandoned:** Tracks 1 and 2 together demonstrate that the
+problem is structural, not computational:
+
+1. Track 1 showed that the bare moment is purely topological
+   (μ = n₂ × magneton from flux quantization), with no role for
+   classical 3D current loops.
+2. Track 2 showed that quadratic field measures (|B|² over the
+   surface) cannot produce sign-dependence between (1,2) and (1,3).
+3. Standard quantum perturbation theory of "particle in its own
+   self-potential" is not how QED computes g − 2 — that
+   calculation uses loop diagrams, not self-potential
+   perturbations, and the naive perturbation approach
+   double-counts the self-interaction.
+
+Track 3 would have been a borrowed application of standard QM
+machinery to MaSt's geometry — a consistency check that, even if
+positive, would not constitute a genuine MaSt derivation.  Given
+that Track 2 has already shown the fundamental obstacle (quadratic
+measures can't produce sign-dependence), running Track 3 would
+burn computational effort on a calculation that cannot test the
+central hypothesis.
+
+**Replacement:** the central question (does the sign of the
+residual anomaly correlate with mode topology?) is moved to
+Track 4, which uses a coherent (non-quadratic) field calculation
+specifically designed to be sensitive to the predicted phase
+structure.
+
+
+### Track 4: Sign rule test (multiple sub-experiments)
+
+**Goal:** Find any consistent set of assumptions under which
+the self-interaction calculation reproduces the sign pattern
+observed in nature: additive correction for n₂ = 2 (electron)
+and subtractive correction for n₂ = 3 (proton).
+
+**Hypothesis under test (from Q103 §7):**
+
+> The sign of the residual anomaly is determined by the
+> n₂-fold spatial winding structure of the mode:
+>
+> - **n₂ = 2 (two-phase):** two-fold winding → constructive
+>   self-field overlap → additive correction (δμ > 0)
+>
+> - **n₂ = 3 (three-phase):** three-fold winding → 120°-offset
+>   self-field overlap → destructive interference → subtractive
+>   correction (δμ < 0)
+
+**Scope statement.**
+
+We are NOT trying to derive the exact magnitude of the
+anomalous moment.  That is an S-domain calculation (textbook
+QED for the electron, lattice QCD for the proton) and MaSt is
+unlikely to add value to those existing computations.
+
+We ARE trying to show that **the sign of the correction is
+predictable from the mode's tube-winding topology** — a
+structurally new piece of physics that has no analog in
+standard QED+QCD.  If we can demonstrate this with a simple,
+defensible calculation, that alone is a significant result.
+Magnitudes and exact derivations can come later.
+
+**Why sub-experiments.**
+
+The self-interaction of a torus mode can be modeled in
+several inequivalent ways.  Each makes different assumptions
+about what the "self-interaction function" is and how the
+antinodes contribute.  We don't know in advance which model
+is the physically correct one for MaSt — and the simpler
+models may or may not produce the predicted sign pattern.
+
+Rather than guessing, Track 4 runs multiple sub-experiments,
+each with a clearly stated set of assumptions, and checks
+whether any of them reproduces the sign pattern.  A positive
+result in ANY sub-experiment is informative; a negative
+result in ALL of them effectively falsifies the three-phase
+rule.
+
+**Common assumptions across all sub-experiments:**
+
+1. **Standing wave basis.** ψ(θ₁, θ₂) = cos(n₁θ₁) × cos(n₂θ₂),
+   real-valued.  This is a basis choice — the flat torus has
+   a 4-dimensional eigenspace (cos·cos, cos·sin, sin·cos,
+   sin·sin) that is degenerate in energy.  We pick cos·cos
+   and document it.  An "antinode" at θ_k means a maximum
+   of |ψ| at that location; adjacent antinodes alternate
+   sign.
+
+2. **Antinode positions.** For the (1, n₂) mode, the antinodes
+   in the tube direction are at θ₂_k = k × π/n₂ for
+   k = 0, 1, ..., 2n₂ − 1.  Adjacent antinodes have signs
+   s_k = (−1)^k.  So a (1,2) mode has 4 antinodes with
+   signs ++−− around the tube; a (1,3) mode has 6 antinodes
+   with signs +−+−+−.
+
+3. **Embedded geometry.** The torus is embedded in 3D with
+   major radius R, minor radius a = r × R.  Inter-antinode
+   distances are computed as **chord distances** through 3D
+   space, not along the surface (the field from one antinode
+   to another propagates through space).
+
+4. **Aspect ratio.** For the electron, scan r_e ∈ [0.5, 20].
+   For the proton, use r_p = 8.906 (pinned by R27).
+
+5. **Output format.** For each sub-experiment, report:
+   - Total self-interaction quantity for n₂ = 2 and n₂ = 3
+   - SIGN of each
+   - Whether the sign pattern matches the prediction (+ for
+     n₂ = 2, − for n₂ = 3)
+   - Optionally: same calculation for n₂ = 1, 4, 5, 6 to
+     test generalization
+
+#### Sub-track 4a: Pairwise antinode Coulomb energy
+
+**Hypothesis.** The antinode self-interaction is captured by
+treating each antinode as a point charge with sign equal to
+the local sign of ψ, and summing pairwise Coulomb energies.
 
 **Computation:**
-1. Construct `EmbeddedSheet` for electron and proton at their respective
-   parameters (r_e, r_p, masses).
-2. Generate the (1,2) and (1,3) geodesic current paths using
-   `sheet.geodesic()`.
-3. Compute the magnetic dipole moment μ_z = ½ ∮ (r × dl)_z × I, where
-   I is the effective current from the circulating charge.
-4. Compare μ with the topological prediction μ = n₂ × (eℏ/2m).
-5. Scan across aspect ratio ε = a/R to verify the moment is topological
-   (ε-independent in the intrinsic formula).
 
-**Output:** bare μ_e, μ_p, and any ε-dependence of the 3D path integral.
+1. Place 2n₂ point charges at antinode positions
+   θ₂_k = k × π/n₂, on a representative tube cross-section
+   (θ₁ = 0).
+2. Assign each charge sign s_k = (−1)^k.
+3. Compute pairwise Coulomb sum:
 
+   > U = ½ Σ_{i ≠ j} (s_i × s_j) / d_{ij}
 
-### Track 2: Coulomb self-potential on the torus surface
+   where d_{ij} is the chord distance through 3D space.
+4. Compare U(n₂ = 2) and U(n₂ = 3).
 
-**Goal:** Compute V(θ₁, θ₂) — the Coulomb potential at every point on
-the torus surface due to the mode's own charge distribution.
+**Estimated complexity:** very low (~50 lines, runs in seconds).
 
-**Computation:**
-1. Distribute charge uniformly along the (n₁, n₂) geodesic using
-   `charge_segments(N=2000)`.
-2. For a grid of surface points (θ₁, θ₂), compute:
-   V(θ₁, θ₂) = Σ dq_i / |r(θ₁, θ₂) − r_i|
-   using `potential_at()` with softening ε > 0 to handle the
-   self-potential singularity.
-3. Decompose V into 2D Fourier components:
-   V = Σ V_{k₁,k₂} exp(i(k₁θ₁ + k₂θ₂))
-4. Identify the dominant harmonics.
-5. Compute for both (1,2) on Ma_e and (1,3) on Ma_p.
+**Risk:** the simplest pairwise picture is dominated by
+nearest-neighbor opposite-sign pairs, which gives same-sign
+(negative) U for both modes.  This sub-track may need
+refinement (weighting pairs by 1/d^k for different k) before
+it differentiates them.
 
-**Key prediction:** The dominant perturbation is V_{1,0} (cos θ₁ from
-inner/outer asymmetry), but the ring-dependent components V_{0,k₂} may
-differ structurally between the two modes.
+#### Sub-track 4b: Coaxial tube-loop mutual inductance
 
-**Output:** Fourier spectrum of V(θ) for each mode and aspect ratio.
-
-
-### Track 3: Perturbative moment correction — electron (1,2)
-
-**Goal:** Compute the first-order correction to the magnetic moment from
-the self-potential V.
+**Hypothesis.** Each "tube winding" is a current loop in 3D
+space.  The n₂ loops sit at different positions around the
+ring direction.  The mutual inductance between loops
+determines whether their fields reinforce (additive) or
+oppose (subtractive).
 
 **Computation:**
-1. On the flat torus, modes are ψ_{n₁,n₂} = exp(i(n₁θ₁ + n₂θ₂))/(2π)
-   with energies E_{n₁,n₂} = (ℏc/L)√(n₁²/r² + n₂²).
-2. The perturbation Hamiltonian is H' = −eV(θ₁, θ₂).
-3. First-order correction to the wavefunction:
-   |δψ⟩ = Σ_{(m₁,m₂)≠(1,2)} ⟨m|H'|1,2⟩ / (E_{1,2} − E_{m₁,m₂}) × |m⟩
-4. The perturbed state mixes in modes with winding numbers shifted by
-   the Fourier components of V.
-5. Compute the modified angular momentum:
-   ⟨L₂⟩' = ⟨ψ + δψ | L̂₂ | ψ + δψ⟩
-6. Extract δμ/μ = (⟨L₂⟩' − n₂ℏ) / (n₂ℏ).
-7. Compare with α/(2π) = 0.001 161.
 
-**Critical question:** does the perturbation give δg > 0 (correct sign)?
+1. Treat the n₂ tube loops as closed circular current loops
+   in 3D, each at a different ring angle θ₁_k = k × 2π/n₂.
+2. All loops carry the same current direction (they all
+   contribute to the bare angular momentum in the same sense).
+3. Compute the n₂ × n₂ mutual inductance matrix using
+   Neumann's formula:
 
-**Output:** δg(r_e) across the r_e family.  Target: δg ≈ +α/(2π).
+   > M_{ij} = (μ₀ / 4π) ∮∮ (dl_i · dl_j) / |r_i − r_j|
 
+4. Total inductance is L = Σ_i M_{ii} + Σ_{i ≠ j} M_{ij}.
+   The off-diagonal sum is the inter-loop interaction.
+5. Compute the ratio of off-diagonal to diagonal contribution
+   for n₂ = 2 and n₂ = 3.
 
-### Track 4: Perturbative moment correction — proton (1,3)
+**Estimated complexity:** low (~100 lines, scipy elliptic
+integrals for loop-loop inductance).
 
-**Goal:** Same computation as Track 3, but for the (1,3) proton mode
-on Ma_p.
+**Risk:** mutual inductance of identical co-circulating loops
+is always positive, so this sub-track will likely give
+same-sign for both modes unless circulation directions
+encode mode parity.  Useful as a baseline showing what the
+naive classical picture predicts.
 
-**Computation:**
-1. Use proton sheet parameters (r_p = 8.906, mass 938.3 MeV).
-2. Repeat the perturbation theory for (1,3).
-3. The mode mixes with (0,3), (2,3), (1,2), (1,4), etc.
-4. The three-fold ring symmetry means the Fourier structure of V differs
-   from the (1,2) case — specifically, V_{0,3} and V_{0,6} components
-   create inter-antinode self-coupling.
-5. Extract δμ/μ.
+#### Sub-track 4c: Continuous standing-wave self-energy
 
-**Critical question:** does the perturbation give δg < 0 (correct sign)?
-
-**Caveat:** the proton is in the non-perturbative regime (Q103 §3).
-First-order perturbation theory may underestimate the magnitude.  But
-getting the correct **sign** from mode topology alone would be a
-significant result.
-
-**Output:** δg(r_p).  Target: δg < 0, ideally in the direction of
-the measured −6.9%.
-
-
-### Track 5: Phase-structure analysis and sign mechanism
-
-**Goal:** Provide an analytical understanding of WHY (1,2) gives
-additive and (1,3) gives subtractive corrections.
+**Hypothesis.** The self-interaction is captured by treating
+ψ(θ₁, θ₂) as a real-valued classical charge density (with
+SIGNED values, not |ψ|²) and computing its Coulomb self-
+energy by integration over the torus surface.
 
 **Computation:**
-1. Decompose the self-potential into mode-symmetric and mode-antisymmetric
-   parts with respect to the n₂-fold rotational symmetry.
-2. Analyze which mixing channels (which Fourier components of V)
-   contribute to increasing vs decreasing the angular momentum.
-3. For n₂ = 2: show that the dominant mixing preserves or increases
-   L₂ → constructive.
-4. For n₂ = 3: show that the three-fold cross-coupling between antinodes
-   introduces destructive interference → subtractive.
-5. Generalize: predict the sign for arbitrary (1, n₂) modes.
-6. Check whether the sign rule matches the known magnetic moments of
-   other particles (neutron as composite, muon as excited electron).
 
-**Output:** analytical sign rule relating mode topology to moment
-anomaly direction.
+1. Charge density: ρ(θ₁, θ₂) = q × cos(n₁θ₁) × cos(n₂θ₂),
+   normalized so ∫|ρ| dA = total charge.
+2. Compute self-energy by double integral over the embedded
+   torus:
+
+   > U_self = (1/2) ∫∫ ρ(r) ρ(r′) / |r − r′| dA dA′
+
+   where r and r′ are 3D positions on the embedded surface,
+   |r − r′| is the chord distance, and the integration is
+   over both surface elements.
+3. Use a softening length ε ~ 0.01a to handle the diagonal
+   singularity at r = r′.
+4. Compute U_self for (1,2) and (1,3) modes.
+
+**Why this is different from 4a.** Instead of n discrete
+antinodes, the entire continuous wave contributes.  The sign
+comes from the cos·cos structure, which has + regions and
+− regions of differing sizes for different n₂.
+
+**Caveat.** "ρ = signed wavefunction" is a non-standard
+choice — in QM, the charge density is |ψ|² × q (always
+non-negative).  This sub-track is implicitly treating ψ as a
+classical real field, not a quantum wavefunction.  The
+verbal "function with + and − halves" argument implicitly
+uses this picture.
+
+**Estimated complexity:** moderate (~200 lines, double
+integral over (θ₁, θ₂, θ₁′, θ₂′); can use Monte Carlo or
+quadrature).
+
+#### Sub-track 4d: Coherent vector-potential back-reaction (most ambitious)
+
+**Hypothesis.** The back-reaction on the magnetic moment
+comes from the angular momentum imparted by the self vector
+potential A_self acting on the wavefunction.  This is the
+closest classical analog to QED's vertex correction.
+
+**Computation:**
+
+1. Compute the polarization current ∂P/∂t for the standing
+   wave ψ(θ₁, θ₂) cos(ωt).  A standing wave has zero net DC
+   current, but its time-derivative has nonzero spatial
+   structure with antinodes at the same locations as the
+   charge density.
+2. Compute A_self via Biot-Savart from the polarization
+   current.
+3. Compute the back-reaction angular momentum:
+
+   > δL = ∫ ψ*(r) (r × A_self(r)) ψ(r) dA
+
+4. Time-average over the oscillation cycle.
+5. Moment correction: δμ = (e / 2m) × δL.
+6. Compute δμ for (1,2) and (1,3).
+
+**Why most ambitious.** It most closely tracks what a real
+QED-like calculation would do.  But it requires careful
+handling of the time-averaging and the curved-surface
+Biot-Savart integral.
+
+**Run only if 4a–4c are inconclusive.**
+
+**Estimated complexity:** high (~500 lines; numerical
+integration of vector fields on a curved surface).
+
+#### Track 4 success criteria
+
+The sub-experiments should be run in order of complexity:
+4a → 4b → 4c → 4d (4d only if needed).  After each, evaluate:
+
+| Outcome | Meaning |
+|---------|---------|
+| **Strong success:** any sub-experiment shows predicted sign pattern (+ for n₂=2, − for n₂=3) | Document the assumptions, stop sub-experiments.  This is the meaningful result. |
+| **Weak success:** opposite signs but reversed (+ for n₂=3, − for n₂=2) | Topology determines sign with opposite convention.  Investigate basis-choice variants. |
+| **Failure:** all sub-experiments give same-sign for both | Three-phase rule does not hold under simple classical models.  Either the rule is wrong, or it requires the lattice-native Track 5 to demonstrate.  Close R52. |
+
+
+### Track 5: Lattice-native back-reaction (future)
+
+**Status:** Not yet attempted; deferred to a possible follow-up
+study.
+
+If Track 4 produces the correct sign rule, the natural next
+step is the lattice-native computation: propagate a (1, n₂)
+mode on a discrete torus embedded in the GRID 4D Lorentzian
+lattice, allow the wave to interact with its own radiated phase
+field through the scattering rule, and measure the resulting
+moment correction.  This would be a genuine first-principles
+MaSt+GRID derivation, with no borrowed QM machinery.
+
+This is a major computational project (likely more than R52
+itself) and would constitute a separate study.  Track 4 is the
+preliminary test that would justify undertaking it.
 
 ---
 
@@ -228,19 +464,30 @@ anomaly direction.
 
 | Outcome | Significance |
 |---------|-------------|
-| δg > 0 for (1,2), δg < 0 for (1,3) | **Sign confirmed** — phase structure determines anomaly direction |
-| δg(1,2) ≈ α/(2π) at some r_e | **Magnitude match** — self-field is the right mechanism for the electron |
-| δg(1,3) ≈ −0.07 at r_p = 8.906 | **Proton anomaly from geometry** — first non-QCD path to μ_p |
-| Sign rule generalizes cleanly | **New selection criterion** — connects to R33 ghost selection |
+| Any sub-experiment gives δg > 0 for (1,2) and δg < 0 for (1,3) | **Sign rule demonstrated** — phase structure determines anomaly direction.  Document the assumptions and stop. |
+| Sign rule reproduced AND generalizes to n₂ = 4, 5, 6 | **Topological selection rule** for anomaly signs; predicts sign for any future particle from its mode topology |
+| Bonus: magnitude of δg(1,2) is in the same order as α/(2π) | Suggests the classical model captures the right physics, not just the sign |
+
+> **What MaSt is and is not claiming.**  MaSt does not need to
+> reproduce the EXACT magnitude of g − 2 from first principles —
+> standard QED already does that for the electron, and lattice
+> QCD does it for the proton.  MaSt's contribution is to predict
+> the SIGN of the residual anomaly from the mode's spatial
+> topology, which neither QED nor QCD does.  If MaSt can supply
+> a clean topological sign rule, the magnitude can be computed
+> using existing S-domain tools (with MaSt providing the
+> baseline μ = n₂ × magneton via flux quantization).  This is
+> the structural division of labor: MaSt provides bare moment
+> + sign rule from topology; S provides exact magnitudes from
+> dynamics.
 
 ## What failure looks like
 
 | Outcome | What it means |
 |---------|--------------|
-| Wrong sign for either particle | Self-field mechanism is not the dominant effect; cross-sheet dressing (R45 Track 3) is likely responsible |
-| Correct signs but wildly wrong magnitudes | Self-field sets the direction but not the scale; coupling strength enters through a different channel |
-| V(θ₁, θ₂) is too uniform to perturb | The flat-torus limit kills the effect; curvature or shear is required |
-| Perturbation theory diverges for proton | Expected (non-perturbative regime); signals need for full self-consistent solve (R45 Track 3) |
+| All sub-experiments give same-sign δμ for n₂ = 2 and n₂ = 3 | Three-phase rule does not hold under simple classical models; either the rule is wrong, or it requires the lattice-native Track 5; close R52 |
+| Sign rule holds for n₂ ∈ {2,3} but breaks for n₂ ∈ {4,5,6} | Two-particle coincidence rather than a general topological rule; weakly informative |
+| Sign rule reverses (+ for n₂=3, − for n₂=2) | Sign convention is opposite expected; investigate basis-choice variants before declaring failure |
 
 ---
 
@@ -288,11 +535,12 @@ magnitude (non-perturbative regime).
 | File | Description |
 |------|-------------|
 | `README.md` | This file — study design |
-| `scripts/track1_bare_moment.py` | Bare magnetic moment from 3D torus-knot current |
-| `scripts/track2_self_potential.py` | Coulomb self-potential V(θ₁,θ₂) on torus surface |
-| `scripts/track3_electron_correction.py` | Perturbative moment correction for (1,2) |
-| `scripts/track4_proton_correction.py` | Perturbative moment correction for (1,3) |
-| `scripts/track5_phase_analysis.py` | Analytical sign rule from mode symmetry |
+| `scripts/track1_bare_moment.py` | Track 1 (misguided) — classical current-loop integral |
+| `scripts/track2_bfield_distribution.py` | Track 2 (negative) — B-field surface integral |
+| `scripts/track4a_pairwise_coulomb.py` | Track 4a (planned) — pairwise antinode Coulomb energy |
+| `scripts/track4b_loop_inductance.py` | Track 4b (planned) — coaxial tube-loop mutual inductance |
+| `scripts/track4c_continuous_self_energy.py` | Track 4c (planned) — continuous standing-wave self-energy |
+| `scripts/track4d_vector_backreaction.py` | Track 4d (planned, conditional) — coherent vector-potential back-reaction |
 | `findings.md` | Results and interpretation |
 
 ---
