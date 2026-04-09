@@ -243,42 +243,40 @@ The (n, 2n) harmonic has exactly n times the electron's rest
 energy — indistinguishable (in mass) from n electrons at rest.
 
 
-### F16. Charge of (n, 2n) harmonics — formula-dependent, not settled
+### F16. Charge of (n, 2n) harmonics: n units from GRID's 2π rule
 
-The charge of harmonic modes depends on which charge formula
-is correct, and this is NOT settled:
+GRID's charge quantization (A3, charge-from-energy §3) derives
+charge from the topology of the standing wave: each 2π tube
+winding contributes one unit of charge (±e).  A mode with n₁
+tube windings carries charge |Q| = n₁.  This is stated
+explicitly for harmonic modes:
 
-- **KK formula (Q = −n₁):** the (n, 2n) mode carries charge
-  −n.  Each tube winding contributes one unit of charge.  A
-  (2,4) mode is two quanta of charge-carrying energy — charge
-  −2, mass 2m_e.
+> "The (Z, 2Z) harmonic has Z cycles → charge Ze."
+> — charge-from-energy §11
 
-- **WvM integral (F1, Track 1):** the θ₁ integral selects
-  |n₁| = 1 only, giving Q = 0 for all |n₁| ≥ 2.  Under this
-  formula, (2,4) would be dark/uncharged.
+A (2,4) electron mode therefore carries charge −2e and mass
+2m_e — two quanta of electron energy and charge on the same
+torus.  A (3,6) mode carries −3e, etc.
 
-**Tension with nuclear modes:** The R29 nuclear scaling law
-models nuclei as (A, 3A) or (A, 2A) modes on Ma_p, where
-n₅ = A.  Helium would be (2, 6), carbon (6, 18), etc.  If the
-WvM selection rule applied to these modes, every nucleus
-heavier than hydrogen would be uncharged — obviously wrong.
-Either the WvM integral does not apply to multi-quantum modes
-in the same way, or nuclei are not (A, 3A) modes in the WvM
-sense.
+On the proton sheet, the same rule gives nuclei their charge:
+a (Z, 3Z) proton mode (under the (1,3) hypothesis) has Z tube
+windings → charge +Ze.  Helium (2, 6) has charge +2, carbon
+(6, 18) has charge +6, etc.  This is consistent with the R29
+nuclear scaling law.
 
-**For this track, the charge formula does not matter.**  Under
-KK charge (Q = −n), the Coulomb fission argument (F17) shows
-the composite is unstable.  Under WvM charge (Q = 0), the mode
-is dark and unobservable.  Either way, free (n, 2n) electron
-modes with n ≥ 2 do not appear as stable particles.  The
-Coulomb fission argument is the more robust of the two because
-it does not depend on the charge formula.
+The WvM charge integral (F1, Track 1) gives a different result
+for |n₁| ≥ 2: Q_WvM = 0.  This may reflect coupling
+*strength* (how efficiently the mode radiates into S) rather
+than topological charge.  The distinction between "carries
+charge" and "couples to photons" is not yet resolved but does
+not affect this track — the Coulomb fission argument (F17)
+applies directly from the GRID charge assignment.
 
 
 ### F17. Coulomb self-energy makes composites unstable
 
-Under the KK charge formula (Q = −n), the (n, 2n) mode
-carries n units of like charge.  The Coulomb self-energy of
+By GRID's 2π charge rule, the (n, 2n) mode carries n units
+of like charge (−ne on Ma_e).  The Coulomb self-energy of
 these n charges at the mode's Compton radius makes the
 composite strictly higher-energy than n separated (1,2)
 electrons.

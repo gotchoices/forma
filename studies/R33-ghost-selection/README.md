@@ -437,13 +437,14 @@ wound together," "(3,6) = three," etc.
 **Why they don't exist as free particles:**
 
 1. **Coulomb fission:**
-   A (n, 2n) mode carries n quanta of electron energy.
-   Under KK charge (Q = -n), the Coulomb self-energy of n
-   like charges confined to the mode's Compton radius makes
-   the composite strictly higher-energy than n separated
-   (1,2) modes.  No confining force exists on Ma_e (only EM
-   at strength α ≈ 1/137), so the composite fissions into
-   individual electrons.
+   By GRID's 2π charge rule (A3), each tube winding
+   contributes one unit of charge.  A (n, 2n) mode has n
+   windings → charge −ne, mass n × m_e.  The Coulomb
+   self-energy of n like charges at the mode's Compton
+   radius makes the composite strictly higher-energy than n
+   separated (1,2) modes.  No confining force exists on Ma_e
+   (only EM at strength α ≈ 1/137), so the composite
+   fissions into individual electrons.
 
 2. **Reducibility (the deeper reason):**
    The (n, 2n) mode has gcd(n, 2n) = n, so it decomposes
@@ -451,15 +452,6 @@ wound together," "(3,6) = three," etc.
    (strands).  Each strand is a valid, independently
    propagating mode.  There is nothing to prevent separation
    — and Coulomb repulsion actively drives it.
-
-**Note on the charge formula (F16):**
-The WvM integral (F1) gives Q = 0 for |n₁| ≥ 2, which would
-make these modes dark.  But the KK formula gives Q = -n, and
-the R29 nuclear scaling law uses modes with n₅ >> 1 on Ma_p
-(nuclei) that clearly carry charge.  The charge formula for
-multi-quantum modes is not settled.  The Coulomb fission
-argument does not depend on this — it applies under either
-charge assignment.
 
 **Contrast with the proton (1,3) on Ma_p:**
 The proton mode (1,3) has gcd(1, 3) = 1 — it is irreducible.

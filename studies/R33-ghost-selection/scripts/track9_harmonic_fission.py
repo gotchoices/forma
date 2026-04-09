@@ -11,7 +11,8 @@ electron (1,2).  Why don't they appear as free particles?
 Two mechanisms are tested:
 
 1.  COULOMB FISSION:
-    Under KK charge (Q = -n_tube), the (n, 2n) mode carries charge -n.
+    By GRID's 2pi charge rule (A3), each tube winding contributes
+    one unit of charge.  A (n, 2n) mode has n windings -> charge -ne.
     The Coulomb self-energy of n like charges confined to the mode's
     spatial extent makes the composite strictly higher-energy than n
     separated (1,2) electrons.  No confining force exists on Ma_e to
@@ -130,7 +131,7 @@ def main():
     # ── Test 1: Mode mass of (n, 2n) harmonics ─────────────────────
     print("\n\n── Test 1: Mode mass of (n, 2n) harmonics on Ma_e ──")
     print("  E(n, 2n) = n × m_e  (exact for proportional windings)")
-    print("  Q_KK = -n  (charge formula for multi-quantum modes not settled)\n")
+    print("  Q = -n  (GRID 2π rule: each tube winding = one unit of charge)\n")
 
     r_e = 6.6
     s_e = solve_shear_for_alpha(r_e)
@@ -138,7 +139,7 @@ def main():
     mu_e = mode_energy_2d(1, 2, r_e, s_e)
     print(f"  Using r_e = {r_e}, s_e = {s_e:.6f}, μ(1,2) = {mu_e:.6f}\n")
     print(f"  {'Mode':>8s}  {'μ':>10s}  {'μ/μ(1,2)':>9s}  {'Mass (MeV)':>11s}"
-          f"  {'Mass/m_e':>8s}  {'Q_KK':>5s}")
+          f"  {'Mass/m_e':>8s}  {'Q':>5s}")
     print("  " + "─" * 55)
 
     for n in range(1, 11):
@@ -294,7 +295,7 @@ def main():
     print("=" * 72)
     print("""
   The (n, 2n) harmonic is n quanta of electron energy on the
-  same torus — charge -n under KK, mass n × m_e.  Two
+  same torus — charge -ne (GRID 2π rule), mass n × m_e.  Two
   mechanisms prevent it from existing as a free particle:
 
   1. COULOMB FISSION:
@@ -330,22 +331,16 @@ def main():
      the nucleus holds it together.  Remove the nucleus and the
      composite fissions into Z free electrons.
 
-  NOTE ON CHARGE:
-     The WvM integral (F1) gives Q = 0 for |n₁| ≥ 2.  But
-     the KK formula gives Q = -n, and R29 nuclear scaling uses
-     modes with n₅ >> 1 that clearly carry charge.  The charge
-     formula for multi-quantum modes is not settled.  The
-     Coulomb fission argument applies under EITHER assignment.
-
   CONCLUSION:
      Free (n, 2n) electron modes with n ≥ 2 are n quanta of
-     electron energy that are unstable to fission into n
-     separate electrons.  The same mechanism on the proton
-     sheet produces nuclei — but there, the irreducible mode
-     structure (1,3) and full Ma coupling prevent fission.
-     Multi-electron configurations exist only in atoms, where
-     nuclear Coulomb attraction provides confinement — the
-     3D spatial physics of the "two-tier picture."
+     electron energy (charge -ne, mass n × m_e) that are
+     unstable to fission into n separate electrons.  The same
+     mechanism on the proton sheet produces nuclei — but there,
+     the irreducible mode structure (1,3) and full Ma coupling
+     prevent fission.  Multi-electron configurations exist only
+     in atoms, where nuclear Coulomb attraction provides
+     confinement — the 3D spatial physics of the "two-tier
+     picture."
 """)
 
 
