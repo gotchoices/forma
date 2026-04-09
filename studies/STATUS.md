@@ -157,6 +157,19 @@ Neutrino sheet characterization.  Completed tracks:
 
 Remaining tracks (2–6) on hold pending weak coupling model.
 
+### R52. Anomalous moment from torus self-field  **Framed — ready to compute**
+**Study:** [`R52-self-field-moment/`](R52-self-field-moment/)
+**Questions:** Q53, Q103  **Type:** compute  **Depends on:** R44, R45, R46, R47, R33
+
+Computes the Coulomb self-potential of a charged mode embedded as a
+torus knot in 3D and uses it to perturbatively correct the magnetic
+moment.  Tests the hypothesis that the **sign** of the anomaly is
+determined by mode phase structure: single-phase (1,2) → additive
+(g > 2), three-phase (1,3) → subtractive (μ < 3μ_N).  Five tracks:
+bare moment verification, self-potential computation, electron
+correction (target: +α/2π), proton correction (target: −7%), and
+analytical sign rule.  Uses existing `lib/embedded.py` infrastructure.
+
 ### R33. Ghost mode selection — why most Ma modes are dark  **Paused**
 **Study:** [`R33-ghost-selection/`](R33-ghost-selection/)
 **Questions:** Q77, Q34  **Type:** compute + theoretical  **Depends on:** R19, R27, R28, R31, R32
