@@ -22,7 +22,7 @@ Everything else — charge from topology, spin from winding parity, waveguide mo
 - Particle masses from geometry alone — stable particles match closely, unstable particles miss by an amount consistent with their instability
 - The neutron emerges as a three-sheet mode; its near-miss predicts its decay
 - Nuclear masses from deuterium to iron at < 1%
-- Neutrino mass-squared ratio Δm²₃₁/Δm²₂₁ = 33.6 — exact match
+- Neutrino oscillation predicted by three base modes on the neutrino sheet — mass-squared ratio Δm²₃₁/Δm²₂₁ = 33.6 exact, normal ordering, Majorana nature
 - Dark matter candidates in roughly observed abundance
 - Electric charge and spin derived from topology
 - Quark confinement from mode irreducibility (gcd = 1)
@@ -41,7 +41,7 @@ Everything else — charge from topology, spin from winding parity, waveguide mo
 - **Shear sign branch (positive vs negative) not uniquely determined** — both branches solve α = 1/137, with different magnitudes.  (−,−) wins on stability correlation (R50 F26); (+,+) was the historical default.  Lib supports both via `solve_shear_for_alpha_signed`.  Studies should test both until a single observable selects.
 - **Muon sits in a mass desert** between electron and proton energy scales
 - **Charged spin-zero mesons (π±, K±)** not yet geometrically realized
-- **Neutrino sheet geometry** not uniquely determined (three families viable)
+- **Neutrino sheet geometry** — Family A (ε = 5) strongly favored (waveguide rules out ε ≤ 0.2; sterile count lowest at 26); precise ε not yet pinned
 
 *Full details: [Particle spectrum](#particle-spectrum-r50--σ_ep---013-ε_e--065-ε_p--055) · [Outcomes](#outcomes) · [Limitations](#limitations)*
 
