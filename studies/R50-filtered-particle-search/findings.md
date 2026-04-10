@@ -2749,3 +2749,152 @@ it can lift one of the (1, 1, …) or (1, 2, …) candidates from
 Result: 16/20 viable, muon NOT viable, tau viable.  This is the
 first systematic viability sweep of the inventory under the
 corrected mode-aware shear formula and all four sign branches.
+
+---
+
+## Track 9: Paired-mode meson search
+
+Track 8 (F58) showed that π± and K± are forbidden as single 6-tuples
+because Q = ±1 forces spin ≥ ½ topologically.  In the standard model,
+mesons are quark-antiquark pairs in a spin-singlet configuration:
+two spin-½ objects coupled antisymmetrically to give total spin 0.
+Track 9 tests whether **two MaD spin-½ modes**, each with its own
+charge, can pair such that the charges sum to ±1 (or 0) and the
+masses sum to the meson target.  In angular momentum coupling,
+½ ⊗ ½ = 0 ⊕ 1, so any two spin-½ modes CAN couple to spin 0.
+
+The search enumerates pairs of single-mode candidates sorted by
+mass for each charge bucket, matching pair sums against each
+target mass.  Run across 4 sign branches × 11 σ_eν grid points.
+
+### F61. Charged kaons are viable as spin-singlet pairs
+
+| Particle | Target | Best pair sum | Δm/m | Decomposition | Branch |
+|----------|--------|--------------|-------|---------------|--------|
+| **K⁺** | **493.677** | **497.283** | **0.730%** | Q=0 (248.64) + Q=+1 (248.64) | −− |
+| **K⁻** | **493.677** | **497.283** | **0.730%** | Q=−1 (248.64) + Q=0 (248.64) | −− |
+
+The K⁺ decomposes into two modes of nearly identical mass:
+
+- **Mode A:** (0, 0, 1, 1, 0, −1) — Q = 0, spin ½, ν+p sheets, 248.641 MeV
+- **Mode B:** (−1, 1, 2, 3, 0, 1) — Q = +1, spin ½, e+ν+p sheets, 248.642 MeV
+
+Both modes sit at the **spectral floor**: they are the lightest
+non-trivial modes in their respective charge buckets, at the bottom
+of the 200–300 MeV histogram bin identified in F56.  Their sum
+(497.283 MeV) lands within 0.73% of the kaon mass.
+
+The K⁰ (already excellent as a single mode in F55 at 0.065%)
+also works as a pair at 0.062% via Q = −2 + Q = +2, each at
+~248.65 MeV.  The neutral kaon does not *need* the pair trick
+because it has no topological forbiddance, but the fact that it
+also decomposes naturally into two ~249 MeV components is a
+consistency check.
+
+The kaon mass ≈ 2 × spectral floor is **not** a coincidence in
+retrospect: the spectral floor is the lightest energy that any
+non-trivial mode can reach in the linear spectrum.  If two such
+modes bind into a spin singlet, their sum is twice the floor.
+The kaon IS twice the floor.
+
+### F62. Charged pions remain not viable, even as pairs
+
+| Particle | Target | Best pair sum | Δm/m | Decomposition | Branch |
+|----------|--------|--------------|-------|---------------|--------|
+| **π⁺** | **139.570** | **248.642** | **78.148%** | Q=0 (~0) + Q=+1 (248.64) | −− |
+| **π⁻** | **139.570** | **248.642** | **78.148%** | Q=−1 (248.64) + Q=0 (~0) | −− |
+| **π⁰** | **134.977** | **248.641** | **84.210%** | Q=0 (~0) + Q=0 (248.64) | +− |
+
+The best pair for the charged pion is a nearly-massless neutral mode
+(~0 MeV, the ν-sheet (−1, 0, 0, 0, 0, 0) remnant) plus the
+lightest Q = +1 spin-½ mode at the 248 MeV spectral floor.  This
+sum (~249 MeV) is stuck well above the pion mass.
+
+The arithmetic explains why.  Below the spectral floor (~248 MeV),
+the only available modes are anomalously light ones in the 0–5 MeV
+cluster.  Any pair made from two modes below 5 MeV sums to ≤ 10 MeV
+— far too light.  Any pair containing one 248-MeV mode sums to
+≥ 248 MeV — far too heavy.  There is no combination that reaches
+the 134–140 MeV pion mass.
+
+**The pion lives squarely in the desert — for both single modes
+and pairs.**  The same spectral gap that kills the muon as a single
+mode also kills the pion as a two-mode composite.  This is a
+sharper statement than F58: the spin-charge constraint was the
+*formal* reason single pions were forbidden, but even if that
+constraint were relaxed, the *mass gap* below the spectral floor
+independently forbids the pion.
+
+### F63. The muon remains not viable as a pair
+
+| Particle | Target | Best pair sum | Δm/m |
+|----------|--------|--------------|-------|
+| **muon** | **105.658** | **4.354** | **95.879%** |
+
+Best pair: a Q = −2 mode at 2.22 MeV plus a Q = +1 mode at
+2.13 MeV, summing to 4.35 MeV.  Both components come from the
+anomalously light 0–5 MeV cluster; the sum is still deep in the
+desert.  Going up, the next Q = −1 pair involves a 248-MeV
+component and overshoots.
+
+**The muon is unreachable by both single modes and pairs.**
+This strengthens the F56 result: the 5–200 MeV desert is not
+merely a single-mode gap that pairs could bridge by combining
+sub-floor components.  It is a fundamental spectral void in the
+linear MaD picture.
+
+### F64. The "spectral floor" at ~248 MeV is a key structural feature
+
+Across all four sign branches, the lightest non-trivial spin-½
+mode with any charge (aside from the anomalous 0–5 MeV cluster)
+sits at approximately 248 MeV.  This mass scale sets a hard lower
+bound on what the linear ℤ⁶ spectrum can accommodate:
+
+- **Single modes:** only above 248 MeV (or in the anomalous 0–5 band).
+- **Pair sums:** only above ~248 MeV (one heavy + one near-zero) or
+  ~497 MeV (two heavy).  No intermediate sums available.
+
+The particles that fall in the **unreachable range** are precisely
+the light mesons and the muon:
+
+| Particle | Mass | Single mode | Pair sum | Status |
+|----------|------|-------------|----------|--------|
+| muon | 105.66 | NO MATCH | NO MATCH | **desert** |
+| π⁰ | 134.98 | NO MATCH | NO MATCH | **desert** |
+| π± | 139.57 | forbidden | NO MATCH | **desert** |
+| K± | 493.68 | forbidden | **0.730%** | **rescued by 2× floor** |
+| K⁰ | 497.61 | 0.065% | 0.062% | viable both ways |
+
+The desert inhabitants (muon, all three pions) ALL sit between
+the anomalous light cluster and the spectral floor.  Everything
+at or above 2× the floor (kaon and up) is reachable.
+
+### F65. Assessment and next steps
+
+Track 9 adds one genuine rescue to the inventory: **K± is viable
+as a pair at 0.73%, having been forbidden as a single mode.**  The
+MaD geometry CAN host charged kaons, just not as a single 6-tuple.
+
+But the three lightest desert-dwellers (muon, π±, π⁰) remain
+completely unreachable by either single modes or pairs.  The
+spectral floor at ~248 MeV is a hard barrier for both approaches.
+
+**Implication:** anything in the standard model with mass below
+the spectral floor (~248 MeV) and which is not in the anomalous
+light cluster (electron, neutrinos) requires physics beyond the
+linear ℤ⁶ formalism.  The three candidates are:
+
+1. **Muon** (105.66 MeV) — spin ½, Q = −1
+2. **Pion** (135–140 MeV) — spin 0, Q = 0, ±1
+3. Nothing else — all other inventory particles above 200 MeV
+
+This narrows the problem: whatever ingredient the MaD picture is
+missing (back-reaction, chiral pairing, a fourth sheet, …), it
+must specifically bridge the **100–200 MeV gap** between the
+anomalous light cluster and the spectral floor.
+
+### Track 9 status
+
+**Complete.**  Script: `scripts/track9_paired_meson.py`.
+Result: K± rescued at 0.73% via paired modes; muon, π±, π⁰ all
+remain unreachable.

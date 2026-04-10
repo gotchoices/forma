@@ -545,6 +545,33 @@ discovery).
 **Script:** `scripts/track8_lepton_viability.py`
 
 
+### Track 9: Paired-mode meson search — can spin-singlet pairs rescue π± and K±?
+
+**Status:** Complete
+
+**Motivation:** Track 8 (F58) showed that Q = ±1, spin 0 particles
+cannot be a single 6-tuple.  Mesons in the standard model are
+quark-antiquark pairs in a spin singlet: two spin-½ objects coupled
+antisymmetrically to total spin 0.  Track 9 tests whether two
+MaD spin-½ modes can pair such that charges sum to ±1 and masses
+sum to the meson target.
+
+**Results (F61–F65):**
+
+- **K± RESCUED** at 0.73% via two ~249 MeV modes in a spin singlet.
+  The kaon mass ≈ 2× the spectral floor (the lightest non-trivial
+  mode in the linear spectrum).
+- **π± and π⁰ NOT rescued:** best pair sum is ~249 MeV, stuck above
+  the 135–140 MeV target because the spectral floor prohibits
+  intermediate-mass partners.
+- **Muon NOT rescued by pairs either:** best sum 4.35 MeV (95.9% off).
+- The ~248 MeV spectral floor is a hard barrier for both single
+  modes and pair sums.  Everything below it (muon, all pions) is
+  unreachable in the linear ℤ⁶ picture.
+
+**Script:** `scripts/track9_paired_meson.py`
+
+
 ## Design notes for `ma_model_d`
 
 ### What NOT to carry over from `ma_model.py`
