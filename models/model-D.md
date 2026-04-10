@@ -19,7 +19,7 @@ Everything else — charge from topology, spin from winding parity, waveguide mo
 
 ### Predictions
 
-- Particle masses from geometry alone — stable particles match closely, unstable particles miss by an amount that predicts their instability
+- Particle masses from geometry alone — stable particles match closely, unstable particles miss by an amount consistent with their instability
 - The neutron emerges as a three-sheet mode; its near-miss predicts its decay
 - Nuclear masses from deuterium to iron at < 1%
 - Neutrino mass-squared ratio Δm²₃₁/Δm²₂₁ = 33.6 — exact match
