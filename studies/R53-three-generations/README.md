@@ -1,6 +1,6 @@
 # R53: Three generations from in-sheet shear
 
-**Status:** Active — Tracks 1, 4 complete (solutions found for leptons and quarks)
+**Status:** Active — Tracks 1, 4, 5 complete; Tracks 6–7 pending
 **Questions:** Q115 (three generations and metric structure)
 **Type:** compute / theoretical
 **Depends on:** R50 (Tracks 8–11, mass desert, high ring-winding),

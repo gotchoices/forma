@@ -368,10 +368,116 @@ top quarks are its chirality partner and 3× harmonic living on
 the SAME sheet at the SAME geometry.  This connects directly
 to model-D without requiring a radical ε change.
 
+---
+
+## Track 5: Precision reference values
+
+### F22. Authoritative single-sheet solutions
+
+Three solutions confirmed at full Decimal precision (50 digits):
+
+**Lepton Solution B — (1,3) electron, chirality pair:**
+
+| | Mode | Ring detuning |
+|---|---|---|
+| electron | **(1, 3)** | −0.00384 |
+| muon | **(3, 8)** | −1.01152 |
+| tau | **(3, −8)** | −17.01152 |
+
+> **s = 3.003841567653168**
+> **ε = 330.1098030956**
+
+**Lepton Solution D — (1,2) electron preserved:**
+
+| | Mode | Ring detuning |
+|---|---|---|
+| electron | **(1, 2)** | −0.00420 |
+| muon | **(−3, −5)** | +1.01260 |
+| tau | **(−7, 3)** | +17.02940 |
+
+> **s = 2.004200258381445**
+> **ε = 397.0740310657**
+
+This solution keeps the established (1,2) electron from model-D.
+The muon and tau have negative tube windings (opposite chirality
+from the electron).
+
+**Down-type quark solution — (5,4)/(1,1)/(5,−5):**
+
+| | Mode | Ring detuning |
+|---|---|---|
+| down | **(5, 4)** | +0.00492 |
+| strange | **(1, 1)** | +0.20098 |
+| bottom | **(5, −5)** | −8.99508 |
+
+> **s = 0.799016905294566**
+> **ε = 570.4280509178**
+
+**Neutrino sheet (from R26/R49, unchanged):**
+- Modes: (1,1), (−1,1), (1,2)
+- s_ν = 0.02199, ε_ν = 5.0
+
+### F23. Up-type quarks have NO real single-sheet solution
+
+Every tested up-type triple — including (1,3)/(−1,3)/(3,9) and
+all variants — has x = 1/ε² < 0 at Decimal precision.  The fast
+float scan's "8,704 solutions" from F20 were false positives at
+the x ≈ 0 boundary.
+
+**The up-type mass ratios (1 : 588 : 80,000) are too extreme for
+the shear-resonance mechanism on a single sheet** with modes
+in the tested range (|n_t| ≤ 7, |n_r| ≤ 50).
+
+Possible resolutions:
+1. Up-type quarks need higher quantum numbers (outside the
+   search range)
+2. Up-type quarks arise from compound T⁶ modes (cross-sheet),
+   not single-sheet modes
+3. Quark masses are emergent (from confinement), not fundamental
+   sheet eigenfrequencies
+4. The proton is the fundamental mode; quarks are its internal
+   structure, not separate modes
+
+Resolution 4 aligns with the project's priority: the proton at
+938 MeV is the target, not individual quarks.
+
+### F24. The α diagnostic confirms relocation is needed
+
+All three confirmed solutions give α >> 1 (not 1/137):
+
+| Solution | α at (ε, s) | 1/α |
+|----------|-------------|-----|
+| Lepton B (s = 3.004) | 1,675 | 0.0006 |
+| Lepton D (s = 2.004) | 2,425 | 0.0004 |
+| Down-type (s = 0.799) | 9,780,135 | ~0 |
+
+α = 1/137 must come from a different metric component — confirmed.
+
+### F25. Precision reference table for R54 handoff
+
+| Sheet | Family | ε | s | Modes | Confidence |
+|-------|--------|---|---|-------|------------|
+| **Ma_e** | **leptons (B)** | **330.110** | **3.003842** | (1,3), (3,8), (3,−8) | **high** |
+| **Ma_e** | **leptons (D)** | **397.074** | **2.004200** | (1,2), (−3,−5), (−7,3) | **high** |
+| Ma_ν | neutrinos | 5.0 | 0.02199 | (1,1), (−1,1), (1,2) | high (R49) |
+| Ma_p | down quarks | 570.428 | 0.799017 | (5,4), (1,1), (5,−5) | medium |
+| Ma_p | up quarks | — | — | no solution found | **open** |
+
+**R54 inherits two lepton solutions** (B and D) as alternatives.
+The choice between them may be resolved by which one produces a
+better proton/neutron when combined with the p-sheet via cross-
+coupling.
+
+### Track 5 status
+
+**Complete.** Precision values established for 3 confirmed
+solutions.  Up-type quarks remain open (no single-sheet solution).
+
 ### Track 1 status (revised)
 
 **Complete.** The three-generation hypothesis is confirmed for
-all three fermion families with strictly real ε.  Key results:
+leptons and down-type quarks.  Up-type quarks do NOT have a
+real single-sheet solution in the tested mode range.
 
 - Leptons: 153K solutions; Solution B confirmed; new candidates
   with smaller quantum numbers found
