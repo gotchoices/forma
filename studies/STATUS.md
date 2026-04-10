@@ -88,7 +88,7 @@ the mode topology.  Key surprise: WvM charge integral is exactly
 zero for n₁ = 3 — charge must come from (1,2) strand sub-structure.
 Composite waveguide cutoff question flagged for eigenmode study.
 
-### R53. Three generations from in-sheet shear  **Active — Track 1 complete**
+### R53. Three generations from in-sheet shear  **Active — Tracks 1, 4 complete**
 **Study:** [`R53-three-generations/`](R53-three-generations/)
 **Questions:** Q115  **Type:** compute / theoretical  **Depends on:** R50, R49, R19
 
