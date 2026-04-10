@@ -88,6 +88,22 @@ the mode topology.  Key surprise: WvM charge integral is exactly
 zero for n₁ = 3 — charge must come from (1,2) strand sub-structure.
 Composite waveguide cutoff question flagged for eigenmode study.
 
+### R53. Three generations from in-sheet shear  **Active — Track 1 complete**
+**Study:** [`R53-three-generations/`](R53-three-generations/)
+**Questions:** Q115  **Type:** compute / theoretical  **Depends on:** R50, R49, R19
+
+Tests whether the three charged lepton masses (e, μ, τ) emerge
+from three low-order modes on the electron sheet when in-sheet
+shear s_e is freed from the α = 1/137 constraint and treated as
+a generation-structure parameter (paralleling the neutrino sheet's
+s₃₄ = 0.022 which gives three ν mass eigenstates).  Track 1
+solves for (ε_e, s_e) from mass ratios; Track 2 counts ghosts;
+Track 3 checks α; Track 4 applies the method to the proton sheet
+for quarks.  Motivated by R50 Track 11's finding that (1, 506)
+matches the muon at 0.049% but creates ~500 ghost modes —
+suggesting the muon is a low-order mode at a different shear,
+not a high harmonic at the current shear.
+
 ### R51. Hydrogen as compound torus mode  **Active — Track 1c complete**
 **Study:** [`R51-hydrogen-mode/`](R51-hydrogen-mode/)
 **Questions:** Q16  **Type:** compute / theoretical  **Depends on:** R29, R50
