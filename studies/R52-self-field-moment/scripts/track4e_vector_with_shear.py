@@ -274,7 +274,7 @@ def main():
 
     # MaSt shear values
     try:
-        from lib.ma import solve_shear_for_alpha
+        from lib.ma_model_d import solve_shear_for_alpha
         print("\nComparison: vector W threshold vs MaSt shear at α=1/137:")
         print("  r       MaSt s    s_(1,3)    s_(1,2)    in window?")
         print("  " + "─" * 60)

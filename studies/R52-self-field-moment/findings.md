@@ -723,6 +723,172 @@ with both interpretations.  The user's request to "stay open"
 on this question is well supported — the data don't
 discriminate.
 
+---
+
+## Open questions and next steps
+
+The Track 4f result is the strongest positive finding R52 has
+produced, but it raises several open questions that need
+follow-up work:
+
+### Q1. Should `solve_shear_for_alpha` return signed shear?
+
+The lib function bisects in [0.001, 0.499] and returns only
+positive shear.  The α_ma formula is sign-asymmetric, so "the
+shear that gives α = 1/137" actually has two solutions (positive
+and negative) with different magnitudes.  The opposite-sign
+convention discovered in F21 suggests that the electron and
+proton naturally take opposite signs.
+
+A signed version of `solve_shear_for_alpha` would need:
+- A way to specify which sign branch is wanted (e.g., a `sign`
+  parameter that defaults to the current behavior)
+- Verification that all existing callers still work
+- A clear convention for which sign each particle takes
+
+This is a foundational change to the lib that would propagate
+to many studies.  See the lib audit (separate from R52) for
+which scripts depend on the function.
+
+### Q2. What is the relationship between δU and δμ?
+
+R52 has been computing δU (the shear-induced change in scalar
+self-energy) and treating its sign as a proxy for δμ (the
+magnetic moment correction).  The signs match observation in
+F21, but we have not derived the magnitude relationship.
+
+A clean derivation would tell us:
+- Whether δU and δμ have exactly the same sign or opposite signs
+- The proportionality constant (or whether it depends on mode)
+- Whether the predicted magnitude matches the observed +α/(2π)
+  for the electron and −7% for the proton
+
+Without this, R52 can claim sign-rule success but not
+quantitative success.
+
+### Q3. Does the opposite-sign convention generalize to other particles?
+
+If the electron has negative shear and the proton has positive
+shear, what about:
+- Muon, tau (same charge as electron): negative shear?
+- Antiproton, positron (opposite charges): opposite signs?
+- Neutron (neutral): zero shear?  Or specific value from internal
+  structure?
+- Neutrino (neutral): zero shear?  Or related to lepton number?
+
+A consistent convention would need to specify which particles
+take which sign.  The simplest rule is "shear sign = charge
+sign" (with some scaling for fractional charges if applicable).
+
+### Q4. Does (3,6)'s 10× weaker response distinguish it from (1,3)?
+
+The magnitude difference between (1,3) and (3,6) shear responses
+is striking (~12×).  If we could derive δμ magnitudes, this might
+favor one interpretation over the other:
+- The measured proton residual is −7%
+- (1,3) predicts a relatively large δμ (good if the residual is
+  truly 7%)
+- (3,6) predicts a small δμ (good if the residual is closer to
+  zero — but it's not)
+
+This is a candidate way to break the (1,3) vs (3,6) tie if the
+magnitude calibration can be done.
+
+### Q5. Should σ_ep still be included?
+
+Track 4f tested σ_ep and found that:
+- With opposite-sign within-plane shears alone, the sign pattern
+  emerges
+- Adding σ_ep on top can either preserve or destroy the pattern
+  depending on how it's weighted
+
+σ_ep is a real parameter in model-D (R50 T2 derived it from the
+neutron mass).  The question is how it interacts with the
+within-plane shear physically.  If σ_ep is mostly orthogonal to
+the within-plane shear (different geometric direction), it could
+add to the calculation without disturbing the sign rule.  If it's
+parallel, it would shift the result.
+
+### Q6. Does Track 4e (vector approach) confirm the opposite-sign result?
+
+Track 4f used the scalar Coulomb formulation (Track 4d).  We
+should rerun with the vector approach (Track 4e) using opposite
+signs, to verify the result is robust.
+
+### Q7. Should we test the lattice-native back-reaction (Track 5)?
+
+Tracks 4d-f are all classical scalar/vector field calculations.
+The "real" MaSt test would be a lattice-native computation
+propagating waves on the discrete GRID lattice.  If the
+classical result holds (positive electron δU, negative proton
+δU), the lattice version should reinforce it — otherwise the
+classical approximation is missing something important.
+
+This is the major unattempted study (~months of work) that
+would either definitively confirm or refute the sign rule.
+
+---
+
+## Library audit and fix (Q114 §11)
+
+After Track 4f's discovery of the sign-rule issue, all model-D
+scripts using `solve_shear_for_alpha` were audited.  Findings:
+
+### What was checked
+
+11 model-D scripts in R50, R51, R52, plus `lib/ma_model_d.py`
+itself.
+
+### What was found
+
+**No substantive errors in non-R52 model-D scripts.**  All R50
+and R51 scripts use the lib's positive shear convention
+uniformly (s_e and s_p both positive), passed into MaD
+construction or `_build_metric`.  The mass calibration absorbs
+this convention.  All particle masses, charges, energies,
+filtering decisions, and cross-shear sweeps are correct
+**within the positive convention**.
+
+The sign issue is **specific to R52 Track 4f** — the only place
+where the sign of the shear directly affects a predicted
+observable (the sign of the magnetic moment correction).
+
+### The fix (model-D only — model-C/A/B untouched)
+
+A new function `solve_shear_for_alpha_signed(eps, alpha_target,
+sign=±1)` was added to `lib/ma_model_d.py`.  The original
+`solve_shear_for_alpha` is unchanged for backward compatibility.
+
+R52 Tracks 4d, 4e, 4f have been migrated to import from
+`lib.ma_model_d` instead of the legacy `lib.ma` (model-C).
+
+### Studies that may need follow-up
+
+**R52 only.**  No R50 or R51 study needs to be reopened based
+on the sign issue.  Their conclusions are correct within the
+positive-shear convention they used.
+
+### Separate issue: mode hardcoding in α formula
+
+A separate foundational issue was identified during the audit:
+both versions of `solve_shear_for_alpha` use `alpha_from_geometry`,
+which is hardcoded for the (1,2) mode (uses `(2−s)²`).  When
+called for the proton, the function returns the shear that
+would give α = 1/137 if the proton were ALSO a (1,2) mode.
+
+For the actual proton mode (1,3) or (3,6), a generalized
+formula would be needed:
+> α(ε, s, n_t, n_r) = ε² × μ × sin²(2π s) / (4π × (n_r − n_t·s)²)
+
+This affects all R50/R51 scripts that compute s_p, but the
+mass calibration absorbs the discrepancy (L_ring is tuned to
+give the right proton mass regardless).  Whether OTHER
+predictions (filtering, sterile counts, etc.) are sensitive to
+the (1,2) vs (1,3) formula is an open question for a separate
+investigation.
+
+**This is documented in Q114 §11.5 but not fixed in this round.**
+
 
 ### F20. The (3,6) proton has 10× weaker shear response than (1,3)
 

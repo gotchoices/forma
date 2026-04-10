@@ -274,3 +274,128 @@ at it" captures the ambiguity exactly.  Both views are
 mathematically valid; the experimental observation (g = 5.585)
 is the same in both cases.  The question is which MaSt
 interpretation is physically correct.
+
+---
+
+## 11. Audit of `solve_shear_for_alpha` callers (post-Track 4f)
+
+After R52 Track 4f's discovery that the lib's positive-only
+shear convention may be physically incomplete, an audit was
+performed of all model-D scripts using `solve_shear_for_alpha`.
+
+### 11.1 Scripts audited (model-D only)
+
+| Script | Usage | Sign-relevance |
+|--------|-------|----------------|
+| `lib/ma_model_d.py` (internal) | Used in `MaD.from_physics` to derive s_e and s_p | Positive convention; calibrates the metric.  Sign is BAKED IN. |
+| `R50-filtered-particle-search/scripts/track1_validate.py` | Validation only — checks α = 1/137 | Sign-irrelevant |
+| `R50/track2_cross_shear_sweep.py` | Computes s_e, s_p; sweeps σ_ep | Uses positive uniformly; sweeps cross-shear |
+| `R50/track3_particle_sweep.py` | Same pattern | Uses positive uniformly |
+| `R50/track6_unfiltered_neutron.py` | Same pattern | Uses positive uniformly |
+| `R50/track7_sigma_landscape.py` | Same pattern | Uses positive uniformly |
+| `R51/track1_electron_addition.py` | Same pattern | Uses positive uniformly |
+| `R51/track1a_decomposition.py` | Same pattern | Uses positive uniformly |
+| `R51/track1b_neutrino_mediated.py` | Same pattern | Uses positive uniformly |
+| `R51/track1c_multimode.py` | Same pattern | Uses positive uniformly |
+| `R52/scripts/track4d_*.py` | Computes shear-dependent self-energy | Sign-relevant — has been the focus of R52 |
+| `R52/scripts/track4e_*.py` | Same | Sign-relevant |
+| `R52/scripts/track4f_*.py` | Tests opposite-sign convention explicitly | Sign-relevant |
+
+### 11.2 Substantive errors found
+
+**None in non-R52 model-D scripts.**
+
+All R50 and R51 scripts use the function uniformly: compute
+s_e and s_p with the same (positive) sign convention, pass them
+into MaD construction or `_build_metric`.  The mass calibration
+in MaD is internally consistent with this convention.  All
+particle masses, charges, and energies computed by these
+scripts are correct WITHIN the positive-shear convention.
+
+The R50 and R51 conclusions about particle filtering, cross-
+shear sweeps, neutron mass, hydrogen modes, etc., **do not
+depend on the shear sign convention**.  They depend on shear
+magnitudes and the relative geometry, which the positive
+convention handles correctly.
+
+**No R50/R51 study needs to be reopened** based on the sign
+issue.
+
+### 11.3 The R52-only impact
+
+The sign-relevance issue is confined to R52, specifically the
+shear-induced magnetic moment correction analysis.  R52 Track 4f
+is the only place where:
+- The sign of the shear directly affects the predicted observable
+  (the sign of the magnetic moment correction δμ)
+- The hypothesis that opposite-charge particles have opposite-
+  sign shears is being tested
+
+R52 has its own findings F19-F23 documenting this.  No other
+study makes claims that depend on the sign convention.
+
+### 11.4 The fix
+
+A new function `solve_shear_for_alpha_signed` has been added to
+`lib/ma_model_d.py` (NOT to the legacy `lib/ma.py` for model-C).
+This function takes an additional `sign=±1` parameter to select
+the positive or negative branch of the α formula.
+
+**The original `solve_shear_for_alpha` is unchanged** — all
+existing scripts continue to work and produce the same results.
+New scripts (R52 Track 4f and successors) can use the signed
+version when sign matters.
+
+### 11.5 Mode-hardcoding limitation (separate from sign)
+
+Both `solve_shear_for_alpha` and `solve_shear_for_alpha_signed`
+use `alpha_from_geometry`, which is hardcoded for the (1,2) mode
+formula: it has `(2−s)²` in the denominator and the μ formula
+uses `(2−s)²` in the squared term.
+
+This means: when the function is called for the proton's aspect
+ratio (e.g., ε_p = 0.55), it returns the shear that would give
+α = 1/137 IF the proton were a (1,2) mode.  For the actual
+proton mode (1,3) or (3,6), the formula would have to be
+generalized:
+
+> α(ε, s, n_t, n_r) = ε² × μ × sin²(2π s) / (4π × (n_r − n_t·s)²)
+> where μ = √((n_t/ε)² + (n_r − n_t·s)²)
+
+Setting (n_t, n_r) = (1, 2) recovers the existing formula.
+
+This is a **separate** foundational issue from the sign question.
+It affects the same R50/R51 scripts that compute s_p — they're
+all using the (1,2) formula for the proton even though model-D
+treats the proton as (1,3).
+
+**Confirmed manifestation:** R50 Track 1 validation
+(`R50-filtered-particle-search/scripts/track1_validate.py`)
+fails its proton-mass assertion when computing the proton via
+the (3,6) mode:
+
+> `AssertionError: Proton energy off: 2162.0003 (expected ~938.272)`
+
+This error is **pre-existing**, not introduced by the audit.
+It surfaces because Track 1 explicitly tries to compute the
+proton energy with the (3,6) mode using a metric calibrated
+via `solve_shear_for_alpha` (which assumes (1,2)).  The mass
+comes out 2.3× too high.
+
+For the (1,3) proton hypothesis, the same problem exists in
+principle but is less severe (the (1,3) shear is closer to the
+(1,2) shear at the same ε).
+
+**Recommendation:** flag this as a known limitation.  The
+mode-hardcoding fix would require:
+1. A generalized `alpha_from_geometry(eps, s, n_tube, n_ring)`
+2. A generalized `solve_shear_for_alpha(eps, n_tube, n_ring,
+   alpha_target, sign)`
+3. Re-running R50/R51 to check whether their conclusions hold
+   with the corrected formula
+4. Possibly reopening studies whose proton-related conclusions
+   depend on the precise s_p value
+
+This is a **separate, larger investigation** that should not
+be attempted as part of the current sign-issue fix.  It is
+documented here so that future work can address it deliberately.

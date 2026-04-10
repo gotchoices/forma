@@ -1,6 +1,15 @@
 # R52: Anomalous magnetic moment from torus self-field
 
-**Status:** Reopened — POSITIVE result.  Track 4f with the **opposite-sign shear convention** (electron has negative within-plane shear, proton has positive — tracking the opposite charge signs of the particles) reproduces the predicted sign pattern at model-D's natural shear magnitudes WITHOUT needing σ_ep.  Both proton mode interpretations (1,3) and (3,6) give the right sign; only the magnitude differs.  The lib's positive-only `solve_shear_for_alpha` convention has been masking this sign relationship.  See findings F19-F23.
+**Status:** Reopened — POSITIVE result.  Track 4f with the **opposite-sign shear convention** (electron has negative within-plane shear, proton has positive — tracking the opposite charge signs of the particles) reproduces the predicted sign pattern at model-D's natural shear magnitudes WITHOUT needing σ_ep.  Both proton mode interpretations (1,3) and (3,6) give the right sign; only the magnitude differs.  The lib's positive-only `solve_shear_for_alpha` convention has been masking this sign relationship.  See findings F19-F23 and the "Open questions and next steps" section in findings.md.
+
+**Open questions** (see findings.md for full discussion):
+1. Should `solve_shear_for_alpha` return signed shear?
+2. What is the relationship between δU and δμ (sign and magnitude)?
+3. Does the opposite-sign convention generalize to other particles?
+4. Does (3,6)'s 10× weaker response distinguish it from (1,3)?
+5. Should σ_ep be included on top of opposite-sign shear?
+6. Does the vector approach (Track 4e) confirm the opposite-sign result?
+7. Lattice-native back-reaction (Track 5) — major future test.
 
 **Physical principle (per discussion):**
 - Charge is an artifact of trips around the **tube** (poloidal n_tube): integer-quantized in clean steps, no fractional adjustment.

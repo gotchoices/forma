@@ -127,6 +127,11 @@ def solve_shear_for_alpha(eps, alpha_target=ALPHA, n_scan=3000):
 
     Uses a coarse scan followed by bisection (no scipy).
 
+    **Returns the POSITIVE branch (magnitude only).**  The α formula
+    is sign-asymmetric, so two solution branches exist.  This function
+    returns only the positive one.  For the signed alternative, see
+    `solve_shear_for_alpha_signed`.
+
     Parameters
     ----------
     eps : float — aspect ratio
@@ -138,6 +143,89 @@ def solve_shear_for_alpha(eps, alpha_target=ALPHA, n_scan=3000):
     float or None — shear s ∈ (0, 0.5), or None if no solution exists.
     """
     s_scan = np.linspace(0.001, 0.49, n_scan)
+    a_scan = np.array([alpha_from_geometry(eps, s) for s in s_scan])
+
+    for i in range(len(s_scan) - 1):
+        if (a_scan[i] - alpha_target) * (a_scan[i + 1] - alpha_target) < 0:
+            lo, hi = s_scan[i], s_scan[i + 1]
+            for _ in range(60):
+                mid = (lo + hi) / 2
+                if (alpha_from_geometry(eps, mid) - alpha_target) * \
+                   (alpha_from_geometry(eps, lo) - alpha_target) < 0:
+                    hi = mid
+                else:
+                    lo = mid
+            return (lo + hi) / 2
+    return None
+
+
+def solve_shear_for_alpha_signed(eps, alpha_target=ALPHA, sign=+1, n_scan=3000):
+    """
+    Signed variant of `solve_shear_for_alpha`.
+
+    The α_from_geometry formula is **NOT symmetric in s** — at the
+    same aspect ratio ε, α(ε, +s) ≠ α(ε, −s).  Two solution branches
+    therefore exist:
+
+    - **Positive branch (sign=+1):** s ∈ (0, 0.5), small magnitude.
+      This is what `solve_shear_for_alpha` (the unsigned version)
+      returns.  All existing model-D scripts use this branch.
+
+    - **Negative branch (sign=−1):** s ∈ (−0.5, 0), magnitude
+      typically 3–10× larger than the positive branch at the same ε.
+      Different μ value, hence different particle mass at the same
+      L_ring calibration.  Used by R52 Track 4f to test the
+      "opposite sign for opposite charge" conjecture (Q114 §7).
+
+    The two branches are PHYSICALLY DISTINCT — they correspond to
+    different (ε, s) calibrations and would give different particle
+    masses if substituted into existing scripts without rescaling
+    L_ring.  The unsigned function preserves the existing
+    calibration; this signed version is for exploration of alternate
+    conventions.
+
+    Parameters
+    ----------
+    eps : float — aspect ratio
+    alpha_target : float — target α (default: measured α ≈ 1/137.036)
+    sign : int — +1 (positive branch, default) or −1 (negative branch)
+    n_scan : int — number of scan points
+
+    Returns
+    -------
+    float or None — signed shear s, or None if no solution exists on
+    the requested branch.
+
+    Raises
+    ------
+    ValueError — if sign is not +1 or −1.
+
+    Notes
+    -----
+    Like `solve_shear_for_alpha`, this function uses the (1,2) mode
+    α formula (`alpha_from_geometry`).  When called for the proton's
+    aspect ratio with the actual proton mode being (1,3) or (3,6),
+    the result is the shear that would give α = 1/137 IF the proton
+    were a (1,2) mode.  See Q114 §3 for discussion of this
+    mode-hardcoding limitation.
+
+    Convention adopted by R52 Track 4f:
+        - Electron (negative charge): sign = −1
+        - Proton (positive charge):   sign = +1
+    The physical justification for this convention is the user's
+    intuition that within-plane shear sign should track the charge
+    sign of the particle (since both originate from the same tube
+    winding direction).  This is documented but not derived; see
+    Q114 §7.
+    """
+    if sign not in (+1, -1):
+        raise ValueError(f"sign must be +1 or -1, got {sign}")
+
+    if sign == +1:
+        s_scan = np.linspace(0.001, 0.49, n_scan)
+    else:
+        s_scan = np.linspace(-0.49, -0.001, n_scan)
+
     a_scan = np.array([alpha_from_geometry(eps, s) for s in s_scan])
 
     for i in range(len(s_scan) - 1):

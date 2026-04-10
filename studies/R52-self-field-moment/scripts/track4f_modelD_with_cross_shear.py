@@ -64,7 +64,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-from lib.ma import solve_shear_for_alpha
+from lib.ma_model_d import solve_shear_for_alpha, solve_shear_for_alpha_signed
 
 
 # Model-D working values

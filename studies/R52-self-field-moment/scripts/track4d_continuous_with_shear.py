@@ -45,7 +45,7 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-from lib.ma import alpha_ma, solve_shear_for_alpha
+from lib.ma_model_d import alpha_from_geometry as alpha_ma, solve_shear_for_alpha
 
 
 # ── Surface discretization (same as 4c) ────────────────────────────
