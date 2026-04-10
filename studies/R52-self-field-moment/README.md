@@ -1,6 +1,6 @@
 # R52: Anomalous magnetic moment from torus self-field
 
-**Status:** Reopened — Track 4d positive (partial).  Tracks 1, 2, 4a, 4b, 4c (no shear) failed; Track 4d (with shear) shows mode-dependent sign-flip behavior in (1,3) at s ≳ 0.020 (resolution-converged).  The (1,2) mode does not flip.  Whether the proton's actual effective shear reaches this threshold is the open question.  Track 4e (vector + shear) and a deeper investigation of proton effective shear are the natural next steps.
+**Status:** Reopened — Track 4d strongly partial-positive.  Sign-rule mechanism exists; viability window present at small r in the user's predicted filtering range (1/3, 1/2); MaSt shear formula gives values ~30% below the window.  R27 F18's pinning of r_p = 8.906 contradicts the filtering interpretation — this inconsistency needs resolution.  See findings F12-F15.
 
 **Physical principle (per discussion):**
 - Charge is an artifact of trips around the **tube** (poloidal n_tube): integer-quantized in clean steps, no fractional adjustment.

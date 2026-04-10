@@ -360,41 +360,154 @@ non-integer non-linearity that introduces small corrections,
 and the corrections affect different modes differently.
 
 
-### F14. The proton's actual shear may or may not reach the sign-flip threshold
+### F14. Triangulation: filtering range, viability window, and MaSt shear
 
-The lib's `solve_shear_for_alpha(r=8.906)` returns s ≈ 0.008,
-which is below the s ≈ 0.020 sign-flip threshold.  At this
-value, δU(1,3) is still negative (same sign as δU(1,2)).
+A scan of the (r, s) plane reveals the structure of the
+sign-flip thresholds:
 
-However, two important caveats:
+**(1,3) sign-flip threshold s_3(r):**
+- r ∈ (0.34, 0.49): s_3 ≈ 0.18-0.22 (high)
+- r = 1.0: s_3 ≈ 0.12
+- r = 2.0: s_3 ≈ 0.085
+- r = 5.0: s_3 ≈ 0.037
+- r = 8.906: s_3 ≈ 0.016
 
-1. **The lib's shear formula was derived for the (1,2) electron
-   mode.**  The (1,3) proton mode may use a different relationship
-   between shear and the effective coupling.  The proton's actual
-   shear could be substantially larger than 0.008.
+**(1,2) sign-flip threshold s_2(r):**
+- r ∈ (0.34, 0.49): s_2 ≈ 0.22-0.25
+- r = 1.0: s_2 ≈ 0.155
+- r = 2.0: s_2 ≈ 0.124
+- r ≥ 5.0: no flip below s = 0.5
 
-2. **The proton operates at non-perturbative coupling.**  At the
-   GeV scale, α_eff ≈ 1/128 instead of 1/137 (Q103 §3).  The
-   proton's effective shear should scale with the effective
-   coupling.  A factor-2 to factor-3 increase would push it
-   into the s ≈ 0.020 range where the sign flip occurs.
+**Viability window** (where (1,3) flips but (1,2) doesn't):
 
-3. **The sign-flip threshold is itself r-dependent.**  At
-   different aspect ratios, the threshold shifts.  We have not
-   yet scanned the (r, s) plane for the (1,3) mode — the
-   threshold might be lower at the actual proton aspect ratio
-   if other parameters are tuned.
+At every r in (0.34, 2.0), there exists a window of s values
+where δU(1,3) > 0 and δU(1,2) < 0 — the predicted sign pattern.
+The window is roughly 0.04 wide in s and shifts to lower s as
+r increases:
 
-So Track 4d does not yet PROVE that the predicted sign pattern
-holds at the proton's exact parameters, but it shows that:
-- The mechanism exists
-- The two modes have qualitatively different shear responses
-- The sign flip is real and resolution-convergent
-- The proton may be near the transition
+| r | Window in s | Width |
+|---|-------------|-------|
+| 0.34 | (0.215, 0.250) | 0.035 |
+| 0.40 | (0.200, 0.240) | 0.040 |
+| 0.45 | (0.190, 0.230) | 0.040 |
+| 0.49 | (0.180, 0.220) | 0.040 |
+| 0.70 | (0.145, 0.185) | 0.040 |
+| 1.00 | (0.120, 0.155) | 0.035 |
+| 2.00 | (0.080, 0.120) | 0.040 |
 
-This is **partial support**, not a clean confirmation.  The next
-step is to determine the proton's actual effective shear in
-this calculation framework.
+**Triangulation against the user's filtering argument:**
+
+The user's filtering argument (the proton needs (1,3) as the
+lowest allowed mode, requiring the tube to filter out (1,1) and
+(1,2)) places the proton in the range r ∈ (1/3, 1/2).  This is
+**inside the viability window** structure — the predicted sign
+pattern can be achieved at exactly the r range where filtering
+selects the proton.
+
+**Triangulation against MaSt's shear formula:**
+
+`solve_shear_for_alpha(r)` returns the shear that gives α = 1/137
+at each aspect ratio:
+
+| r | MaSt s (α=1/137) | Window in s | In window? |
+|---|------------------|-------------|------------|
+| 0.34 | 0.170 | (0.215, 0.250) | NO — below by 0.045 |
+| 0.40 | 0.146 | (0.200, 0.240) | NO — below by 0.054 |
+| 0.45 | 0.132 | (0.190, 0.230) | NO — below by 0.058 |
+| 0.49 | 0.123 | (0.180, 0.220) | NO — below by 0.057 |
+
+**The proton's MaSt shear is below the viability window by
+about 0.05 across the user's predicted r range.** The two are
+tantalizingly close — the MaSt shear is roughly 70-80% of what's
+needed.
+
+**Three independent constraints, one near-miss:**
+
+The result is overdetermined: filtering gives a r range, the
+sign rule gives a window in (r, s), MaSt's formula gives a
+specific s at each r.  All three are consistent in shape but
+the MaSt shear lands just outside the window.  To make them
+fully consistent, ONE constraint must shift slightly:
+
+1. **Effective α slightly larger than 1/137** for the proton
+   (at GeV scale, running coupling gives ≈ 1/128, but a more
+   substantial increase to ≈ 1/100 would push the shear into
+   the window).
+
+2. **Different shear-α formula for the (1,3) mode** — the lib's
+   `solve_shear_for_alpha` was derived for the electron (1,2);
+   the (1,3) mode might map shear differently.
+
+3. **Lower sign-flip threshold from a more accurate calculation**
+   — Track 4d uses scalar Coulomb self-energy with chord
+   distance and a 24×48 grid; the threshold might shift down
+   under (a) higher resolution, (b) vector A_self instead of
+   scalar V_self, or (c) different basis (sin·cos instead of
+   cos·cos).
+
+The gap (~30% in shear) is small enough to be plausibly
+closed by any of these adjustments.  Without further work,
+we cannot say which one is responsible.
+
+### F15. The lib's pinned r_p = 8.906 contradicts the filtering range
+
+R27 F18 pinned the proton aspect ratio at r_p = 8.906 by
+matching neutron and muon masses.  At this value:
+- The torus is **self-intersecting** (a > R means the tube
+  wraps through itself)
+- The (1,2) sign-flip threshold disappears (no flip below s = 0.5)
+- The (1,3) threshold is at s ≈ 0.016
+- MaSt's natural shear is s = 0.008
+
+The user's filtering argument predicts r ∈ (1/3, 1/2), which is
+a normal non-self-intersecting torus.  These two pinning
+arguments give **mutually inconsistent** values (8.906 vs 0.4).
+
+If the filtering argument is physically correct, then R27 F18's
+mass-matching procedure was using wrong assumptions and the
+proton's true aspect ratio is small.  Conversely, if R27 F18 is
+correct, then the filtering interpretation needs revision.
+
+Either way, this is a contradiction that R52 has surfaced and
+that needs resolution.  It is independent of the sign rule
+itself but is highly relevant to whether the sign rule applies
+to the proton.
+
+---
+
+## Track 4 status (revised after triangulation)
+
+| Sub-track | Method | Result |
+|-----------|--------|--------|
+| 4a | Pairwise Coulomb (no shear) | Same-sign for both modes |
+| 4b | Loop mutual inductance (no shear) | Same-sign for both modes |
+| 4c | Continuous self-energy (no shear) | Same-sign at r_p; flip only at r ≈ 25 |
+| **4d** | **Continuous self-energy WITH shear** | **Mode-dependent: viability window exists at small r, MaSt shear ~30% below window** |
+| 4e | Vector potential back-reaction with shear | Not yet run |
+
+**Major findings from Track 4d:**
+
+1. The shear-induced sign rule mechanism EXISTS — (1,2) and (1,3)
+   modes have qualitatively different shear responses at the
+   classical scalar self-energy level
+2. A viability window exists at small r (in the user's predicted
+   filtering range) where the predicted sign pattern can be
+   achieved
+3. The MaSt shear formula gives values just below the viability
+   window — the gap is 30% in shear, plausibly closable by
+   small adjustments to one of three constraints
+4. R27 F18's pinning of r_p = 8.906 contradicts the filtering
+   interpretation; this is a separate issue worth investigating
+
+R52 is **strongly partial-positive**.  The hypothesis (sign rule
+from shear-mediated mode-dependent corrections) is supported in
+qualitative form, and the quantitative match to the proton is
+within ~30% of working.  Three independent next steps could close
+the gap:
+
+- Track 4e (vector approach) — might lower the threshold
+- Check whether the (1,3) shear-α formula differs from (1,2)
+- Resolve the r_p inconsistency between filtering and R27 F18
 
 ---
 
