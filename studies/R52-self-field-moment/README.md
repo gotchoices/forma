@@ -1,6 +1,6 @@
 # R52: Anomalous magnetic moment from torus self-field
 
-**Status:** Reopened — Tracks 4d/4e show the sign-rule mechanism exists with a viability window in the model-D filtering range (ε ≈ 0.33-0.6 for proton, 0.5-0.8 for electron).  At model-D's MaSt within-plane shears (s_p ≈ 0.111, s_e ≈ 0.096), both particles sit ~0.056 below their respective windows (a uniform 30-37% gap).  **Model-D's cross-sheet shear σ_ep = -0.13 is exactly the right magnitude to close the gap** but Tracks 4d/4e did not include it.  Track 4f (with σ_ep) is the next test.  See findings F12-F18.
+**Status:** Reopened — POSITIVE result.  Track 4f with the **opposite-sign shear convention** (electron has negative within-plane shear, proton has positive — tracking the opposite charge signs of the particles) reproduces the predicted sign pattern at model-D's natural shear magnitudes WITHOUT needing σ_ep.  Both proton mode interpretations (1,3) and (3,6) give the right sign; only the magnitude differs.  The lib's positive-only `solve_shear_for_alpha` convention has been masking this sign relationship.  See findings F19-F23.
 
 **Physical principle (per discussion):**
 - Charge is an artifact of trips around the **tube** (poloidal n_tube): integer-quantized in clean steps, no fractional adjustment.

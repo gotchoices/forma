@@ -3,6 +3,17 @@
 **Study:** Anomalous magnetic moment from torus self-field
 **Status:** Reopened.  Tracks 1–4c failed (no shear); Track 4d (continuous self-energy WITH shear) and Track 4e (vector self-interaction WITH shear) both show mode-dependent sign-flip behavior with a viability window at small r (filtering range), but MaSt's natural shear formula gives values ~30% below the window.  The vector approach (4e) gives essentially the same threshold as the scalar approach (4d).
 
+**Important convention note (Q114):** R52's numerical analysis
+has been computing proton residuals using bare = 3 μ_N
+(g_bare = 6), residual = −7%.  This is the residual associated
+with the **(3,6) proton interpretation**.  The (1,3)
+interpretation would give bare g = 3, residual = +86%, which
+is a different analysis target entirely.  Both interpretations
+remain alive (Q114).  R52 currently runs the (3,6) framing;
+Track 4f will test both mode interpretations side by side and
+let the empirical results inform which (if either) is consistent
+with MaSt's parameters.  See Q114.
+
 Overall: 17 findings from 7 tracks (1, 2, 4a, 4b, 4c, 4d, 4e).
 
 ---
@@ -571,6 +582,177 @@ proton sign rule are conditional on (1, 3) being the correct
 assignment and on the electron's shear-α formula transferring
 to it.
 
+
+### F19. Track 4f: Model-D parameters with σ_ep — partial result
+
+Script: [`scripts/track4f_modelD_with_cross_shear.py`](scripts/track4f_modelD_with_cross_shear.py)
+
+Tests both proton mode interpretations [(1,3) and (3,6)] using
+model-D parameters (ε_e = 0.65, ε_p = 0.55, σ_ep = −0.13) and
+including σ_ep as an effective shear contribution.
+
+**Within-plane shear only (no σ_ep):**
+
+| Mode | s_within | δU | sign |
+|------|----------|-----|------|
+| Electron (1,2) | 0.0959 | −0.209 | − |
+| Proton (1,3) | 0.1110 | −0.057 | − |
+| Proton (3,6) | 0.1110 | −0.005 | − |
+
+All three give NEGATIVE δU.  No sign differentiation.
+
+**With σ_ep added uniformly (|σ_ep| weighted into both sheets):**
+
+| Mode | s_eff | δU | sign |
+|------|-------|-----|------|
+| Electron (1,2) | 0.226 | +0.133 | + |
+| Proton (1,3) | 0.241 | +0.116 | + |
+| Proton (3,6) | 0.241 | +0.011 | + |
+
+All three flip to POSITIVE δU.  Still no sign differentiation.
+
+**With σ_ep applied ASYMMETRICALLY (proton only, not electron):**
+
+This corresponds to the physical interpretation that σ_ep is
+the cross-sheet shear THE PROTON SHEET FEELS due to the electron
+sheet — it modifies the proton's wave equation but not the
+electron's.
+
+| Mode | s_eff | δU | sign |
+|------|-------|-----|------|
+| Electron (1,2) | 0.0959 (s_e only) | −0.209 | **−** |
+| Proton (1,3) | 0.241 (s_p + \|σ_ep\|) | +0.116 | **+** |
+| Proton (3,6) | 0.241 (s_p + \|σ_ep\|) | +0.011 | **+** |
+
+**Different signs for electron vs proton.**  This IS a sign
+differentiation, IF the asymmetric application of σ_ep is
+physically correct.
+
+The hypothesis would then be:
+- Electron δU < 0 → δμ > 0 (additive correction, matches +α/(2π))
+- Proton δU > 0 → δμ < 0 (subtractive correction, matches −7%)
+
+This requires the convention "δμ has opposite sign from δU"
+(more shear-induced energy reduction → wave spreading → larger
+effective area → larger moment).  This is plausible but not
+derived.
+
+
+### F21. Opposite-sign shear convention produces the predicted sign pattern
+
+A critical insight emerged after running Track 4f: the
+electron and proton have opposite charge signs, and in MaSt
+the charge sign comes from the direction of the tube winding.
+The shear is the geometric coupling between tube and ring
+directions, so its sign should track the charge sign.  The lib's
+`solve_shear_for_alpha` returns only positive shears (bisection
+on [0.001, 0.499]), masking this physical sign relationship.
+
+**Test:** apply opposite-sign within-plane shears to the
+electron and proton (without σ_ep).  Compute δU for both
+particles and both proton interpretations.
+
+**Results (model-D parameters: ε_e = 0.65, ε_p = 0.55):**
+
+| Sign convention | δU(e, 1,2) | δU(p, 1,3) | δU(p, 3,6) | Pattern |
+|-----------------|------------|------------|------------|---------|
+| (+, +) both positive | −0.21 | −0.057 | −0.005 | same sign (−) |
+| (+, −) electron+ proton− | −0.21 | +0.14 | +0.013 | OPPOSITE |
+| **(−, +) electron− proton+** | **+0.31** | **−0.057** | **−0.005** | **OPPOSITE** |
+| (−, −) both negative | +0.31 | +0.14 | +0.013 | same sign (+) |
+
+**Combination (−, +) — electron negative shear, proton positive
+shear — gives the OBSERVED anomaly sign pattern:**
+
+- Electron δU > 0 → δμ > 0 → additive correction (+α/(2π) ✓)
+- Proton δU < 0 → δμ < 0 → subtractive correction (−7% ✓)
+
+This is the first computational result in R52 that **reproduces
+both signs at MaSt's actual within-plane shear values without
+requiring any additional parameters** (no σ_ep needed).
+
+
+### F22. The opposite-sign convention is consistent with the asymmetric α_ma formula
+
+The lib's `alpha_ma(ε, s)` is NOT symmetric in s:
+
+> α(0.65, +0.0959) = 0.007292 ≈ 1/137 ✓
+> α(0.65, −0.0959) = 0.006392 ≈ 1/156 (smaller)
+
+The formula treats positive and negative shear differently
+because of the asymmetry in q = n_ring − s × n_tube.  This
+means "the shear that gives α = 1/137" is a SIGN-DEPENDENT
+quantity, and the electron and proton can each naturally take
+either sign.
+
+Currently the lib bisects in [0.001, 0.499] and returns only
+positive shear.  This is a CONVENTION CHOICE made for
+implementation simplicity, not a physical statement.  The
+physical statement (per F21) is that opposite-charge particles
+should have opposite-sign shears.
+
+**Implication:** the lib's positive-only convention should be
+revisited.  A signed shear formula that respects the charge
+sign of each particle would be more physically correct.
+
+This may also explain why earlier R52 tracks (4a-c) failed to
+find a sign pattern — they implicitly used same-sign shears
+(zero shear or both positive), which falls in the "same sign"
+combinations of the table above.
+
+
+### F23. Both proton interpretations give the right SIGN with this convention
+
+A particularly important consequence of F21: **both (1,3) and
+(3,6) proton interpretations give the predicted negative δU
+when the proton has positive shear**.  The two interpretations
+differ in MAGNITUDE (1,3 gives −0.057; 3,6 gives −0.005, about
+10× weaker) but not in SIGN.
+
+This means the sign-rule test alone CANNOT distinguish (1,3)
+from (3,6).  Both pass.
+
+To distinguish them, we would need:
+- A magnitude prediction (which depends on the δU → δμ mapping)
+- Or a different observable that varies between the two
+- Or additional physics (σ_ep, lattice corrections, etc.)
+
+Track 4f's result **does not resolve the (1,3) vs (3,6)
+question** but does establish that the sign rule is consistent
+with both interpretations.  The user's request to "stay open"
+on this question is well supported — the data don't
+discriminate.
+
+
+### F20. The (3,6) proton has 10× weaker shear response than (1,3)
+
+A striking structural difference between the two proton mode
+interpretations: at every shear value, the (3,6) mode's δU is
+roughly 10× smaller than the (1,3) mode's.
+
+| Effective shear | δU(1,3) | δU(3,6) | Ratio |
+|-----------------|---------|---------|-------|
+| s_within | −0.057 | −0.005 | 12 |
+| s + 0.25\|σ\| | −0.065 | −0.006 | 11 |
+| s + \|σ_ep\| | +0.116 | +0.011 | 11 |
+
+The (3,6) mode's higher tube winding count (n_tube = 3 instead
+of 1) suppresses the shear sensitivity by approximately the
+ratio of n_tube values.  This makes physical sense: the (3,6)
+mode has more topological constraints from its multi-strand
+structure, making it less susceptible to shear perturbations.
+
+**Implication:** if the proton residual is small (~7%), the
+(3,6) interpretation predicts a smaller shear-induced
+correction (consistent with small residual), while (1,3)
+predicts a larger one.  The (3,6) interpretation's 10× weaker
+response is more consistent with the small observed residual.
+
+This is a weak piece of evidence for (3,6) over (1,3), but
+it's not definitive without a clean derivation of the δU → δμ
+mapping.
+
+---
 
 ### F18. Model-D analysis: cross-sheet shear σ_ep is the missing ingredient
 

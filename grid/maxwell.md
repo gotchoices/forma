@@ -755,6 +755,29 @@ the topology of the worldline winding.
 consequences of the U(1) compactness (axiom A3), applied to
 different types of loops.
 
+> **Notation warning: this formula gives the g-factor, not
+> the moment in magnetons.**  The cleaner reading is:
+>
+> > g_bare = n_ring  (the closed spatial winding number)
+>
+> with the moment then μ_bare = (g_bare/2) × magneton, since
+> the spin-1/2 factor is conventionally absorbed into the
+> definition.  Examples:
+>
+> | Mode | n_ring | g_bare = n_ring | Measured g | Match? |
+> |------|--------|-----------------|------------|--------|
+> | Electron (1,2) | 2 | 2 | 2.0023 | YES (within α/2π) |
+> | Proton (1,3) | 3 | 3 | 5.585 | NO (off by ~2×) |
+> | Proton (3,6) | 6 | 6 | 5.585 | YES (within 7%) |
+>
+> The formula is consistent with the **(1,2) electron** and the
+> **(3,6) proton**, but **not the (1,3) proton**.  Model-D's
+> "leading" assignment of (1,3) for the proton conflicts with
+> the formula derived here.  See
+> [Q114](../qa/Q114-bare-magnetic-moment-convention.md) for the
+> full discussion.  This is a real foundational tension that
+> remains unresolved.
+
 ### Why no magnetic monopoles
 
 The Bianchi identity ∇ · B = 0 (Step 7) says that magnetic
