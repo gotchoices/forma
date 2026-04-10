@@ -19,13 +19,14 @@ Everything else — charge from topology, spin from winding parity, waveguide mo
 
 ### Predictions
 
-- Particle masses from geometry alone — stable particles match closely, unstable particles miss by an amount consistent with their instability
+- 11 of 16 particle masses within 2% from geometry alone — stable particles match closely, unstable particles miss by an amount consistent with their instability
 - The neutron emerges as a three-sheet mode; its near-miss predicts its decay
 - Nuclear masses from deuterium to iron at < 1%
 - Neutrino oscillation predicted by three base modes on the neutrino sheet — mass-squared ratio Δm²₃₁/Δm²₂₁ = 33.6 exact, normal ordering, Majorana nature
 - Dark matter candidates in roughly observed abundance
 - Electric charge and spin derived from topology
 - Quark confinement from mode irreducibility (gcd = 1)
+- Charged kaons (K±) rescued as spin-singlet pairs at 0.73% — kaon mass = 2× spectral floor (R50 F61)
 - Unobserved low-mass particles eliminated by waveguide cutoff
 - Strong force explained as internal electromagnetism at full coupling
 - Total dimensions Material-Space-Time: 11
@@ -39,8 +40,8 @@ Everything else — charge from topology, spin from winding parity, waveguide mo
 
 - **Anomalous magnetic moment sign rule** — R52 explored classical scalar / vector self-energy under all four shear sign branches (Tracks 4d–4f, with Q114 §11.5 mode-aware fix); none reproduce δμ(e) > 0 vs δμ(p) < 0.  R52 stays open with leads in cross-sheet and lattice-native back-reaction; classical sign rule retracted.
 - **Shear sign branch (positive vs negative) not uniquely determined** — both branches solve α = 1/137, with different magnitudes.  (−,−) wins on stability correlation (R50 F26); (+,+) was the historical default.  Lib supports both via `solve_shear_for_alpha_signed`.  Studies should test both until a single observable selects.
-- **Muon sits in a mass desert** between electron and proton energy scales
-- **Charged spin-zero mesons (π±, K±)** not yet geometrically realized
+- **Muon sits in a structural mass desert** — zero Q = −1 spin-½ modes between 5 and 200 MeV across all sign branches, σ_eν values, and 3 M candidate 6-tuples (R50 Track 8, F56).  Cross-shear σ_eν boosts e-sheet mass in principle (2.5× before singularity; need 207×).  Richer metric coupling or multi-parameter back-reaction needed (R50 F69 paths A–C).
+- **Pions (π±, π⁰)** — all three in the same 5–200 MeV desert; π± additionally forbidden by spin-charge constraint (R50 F58, F62)
 - **Neutrino sheet geometry** — Family A (ε = 5) strongly favored (waveguide rules out ε ≤ 0.2; sterile count lowest at 26); precise ε not yet pinned
 
 *Full details: [Particle spectrum](#particle-spectrum-r50--σ_ep---013-ε_e--065-ε_p--055) · [Outcomes](#outcomes) · [Limitations](#limitations)*
@@ -392,15 +393,17 @@ predictions.  No parameters pinned to unstable particle masses.
 | η | (0, 6, \*, \*, 0, −5) | 586.8 | 547.9 | 7.1% | fair |
 | μ⁻ | (1, 6, \*, \*, 0, −1) | 117.2 | 105.7 | 10.9% | poor |
 | π⁰ | (0, 6, \*, \*, 0, −1) | 117.5 | 135.0 | 12.9% | poor |
-| π± | — | — | 139.6 | — | J impossible |
-| K± | — | — | 493.7 | — | J impossible |
+| π± | — | — | 139.6 | — | desert |
+| K± | Q=0 (248.6) + Q=±1 (248.6) pair | 497.3 | 493.7 | 0.73% | good (pair) |
 
 Neutrino quantum numbers marked `*` freely vary (Ma_ν contributes
 < 0.001% of the energy at hadron scales).  Grade: good = |Δm|/m < 2%;
 fair = 2–10%; poor = > 10%.
 
-**10 of 16 unstable targets with allowed quantum numbers matched
-within 2%.**  Best predictions: φ (0.05%), Ω⁻ (0.04%), n (0.03%).
+**11 of 16 unstable targets matched within 2%** (10 as single
+modes, 1 as spin-singlet pair).  Best: φ (0.05%), Ω⁻ (0.04%),
+n (0.03%).  K± rescued at 0.73% via paired ~249 MeV modes (R50
+Track 9, F61); π± remains in the mass desert.
 
 ### Comparison to model-C
 
@@ -419,11 +422,13 @@ within 2%.**  Best predictions: φ (0.05%), Ω⁻ (0.04%), n (0.03%).
 | η′ | 0.3% | 1.9% |
 | Lifetime-gap r | −0.84 (N ≈ 7) | −0.45 (N = 7, weak − muon) |
 | Power law β | −2.7 | −2.7 (weak − muon, exact match) |
-| Charged J = 0 mesons | 14% error (π) | topologically forbidden |
+| K± | 1.2% (single mode) | 0.73% (spin-singlet pair) |
+| π± | 14% error | desert (single + pair) |
 | Ghost (1,1) | ~20× overprediction | eliminated by waveguide |
 
 **Model-D wins:** τ (31× better), Ω⁻ (impossible → 0.04%),
-φ (16× better), ghost elimination, no pinned parameters.
+φ (16× better), K± (rescued as pair at 0.73%), ghost elimination,
+no pinned parameters.
 
 **Model-C wins:** K⁰ (5× better), η (12× better), η′ (6× better),
 muon (pinned vs mass desert), stronger lifetime correlation.
@@ -473,7 +478,7 @@ small to confirm within-class correlations.
 - **Anomalous moment sign rule** — pursue R52's surviving leads (lattice-native back-reaction, cross-sheet coupling)
 - **Pin ε_ν** — use physics beyond oscillation data (weak coupling, sterile bounds) to select among the three neutrino families
 - **Proton internal structure** — explain DIS and jets from the (1,3) 3-fold ring symmetry; reconcile with the (3,6) viability question
-- **Charged J=0 mesons** — find a topology that allows π±, K± (currently forbidden by the additive spin rule)
+- **Muon and pions** — bridge the 5–200 MeV desert; cross-shear σ_eν is the correct mechanism but needs richer parameterization (R50 F69 paths A–F); K± already rescued as spin-singlet pair
 
 ---
 
@@ -531,7 +536,7 @@ Model-D's discipline: defaults rather than pins; provenance tracking; sweep befo
 | **R47** | Proton geometry — (1,2) abandoned, (1,3) leading, (3,6) viable, SU(6) moments | Complete |
 | **R48** | Helicity and charge — n₁ = ±1 derived geometrically | Complete |
 | **R49** | Neutrino sheet — ε_ν sweep, three families, waveguide, Majorana prediction | On hold |
-| **R50** | Filtered multi-sheet mode search — joint 6D census | **Partially reopened** post-Q114 §11.5 audit — F11/F12 invalidated, re-search under (−,−) underway |
+| **R50** | Filtered multi-sheet mode search — joint 6D census | **Partially reopened** — Tracks 8–10 complete: viability sweep (16/20 particles viable), muon desert confirmed structural (F56), K± rescued as pair (F61), cross-shear boost mechanism identified but insufficient (F67), paths A–F documented (F69) |
 | **R52** | Self-field magnetic moment — classical sign-rule retracted (F25); leads in cross-sheet and lattice-native back-reaction | Open with leads |
 
 ---
@@ -540,8 +545,8 @@ Model-D's discipline: defaults rather than pins; provenance tracking; sweep befo
 
 **Structural failures:**
 
-- **Charged J=0 mesons (π±, K±) are topologically forbidden** by the additive spin rule (odd number of odd per-strand tube windings → odd Q).  Most significant structural failure.
-- **Muon mass desert** — no eigenmode exists between ~0.2 MeV (electron ring scale) and ~116 MeV (proton ring scale).  Follows from m_e/m_p ≈ 1/1836; no parameter adjustment in the current three-sheet geometry fixes it.
+- **Muon mass desert** — zero Q = −1 spin-½ modes between 5 and 200 MeV; exhaustively confirmed across all sign branches, σ_eν grids, pair sums, and decay-product compositions (R50 Tracks 8–10, F56/F62/F63/F66).  Cross-shear boost confirmed as correct mechanism but insufficient (2.5× vs 207× needed, F67).  Richer metric parameterization is leading path (F69).
+- **Pions (π±, π⁰)** — all three pions in the same desert.  π± additionally topologically forbidden as single modes (charge forces spin ≥ ½, F58).  K± rescued as spin-singlet pair (F61), but pions below spectral floor.
 - **Mode overcounting (~30,000:1)** before label-degeneracy removal; ~200–400 physically distinct energy levels for ~19 targets after.
 
 **Quantitative degradations from model-C:**
