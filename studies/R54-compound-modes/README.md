@@ -120,6 +120,45 @@ Identify which metric component produces α = 1/137.  Candidates:
 - A derived quantity from the modular parameter τ = s + iε
 
 
+## Design decision: all 15 off-diagonal entries, not 6
+
+The 6×6 symmetric metric has 21 independent components — 6
+diagonal (circumferences) and 15 off-diagonal (shears).  Model-D
+collapsed the 15 into 6: three within-sheet shears (s_e, s_ν, s_p)
+and three scalars (σ_ep, σ_eν, σ_νp), each scalar controlling a
+2×2 cross-block uniformly.
+
+**R54 works with all 15 individually.**  The consolidation was an
+artifact of the three-sheet view (Q116 §2).  There is no physical
+reason for σ₁₅ (e-tube ↔ p-tube) to equal σ₂₆ (e-ring ↔ p-ring).
+The directional selectivity of individual entries is likely what
+differentiates compound modes (e.g., up vs down quarks).
+
+The full metric structure:
+
+```
+         e_tube  e_ring  ν_tube  ν_ring  p_tube  p_ring
+e_tube  [ L₁²     s_e     σ₁₃     σ₁₄     σ₁₅     σ₁₆  ]
+e_ring  [  ·      L₂²     σ₂₃     σ₂₄     σ₂₅     σ₂₆  ]
+ν_tube  [  ·       ·      L₃²     s_ν     σ₃₅     σ₃₆  ]
+ν_ring  [  ·       ·       ·      L₄²     σ₄₅     σ₄₆  ]
+p_tube  [  ·       ·       ·       ·      L₅²     s_p   ]
+p_ring  [  ·       ·       ·       ·       ·      L₆²   ]
+```
+
+Lower-left is symmetric (G_ij = G_ji).  The dots represent the
+mirror of the upper-right entries.
+
+| Category | Count | Entries |
+|----------|-------|---------|
+| Diagonal (circumferences) | 6 | L₁²…L₆² |
+| Within-sheet shears | 3 | s_e, s_ν, s_p |
+| e↔ν cross entries | 4 | σ₁₃, σ₁₄, σ₂₃, σ₂₄ |
+| e↔p cross entries | 4 | σ₁₅, σ₁₆, σ₂₅, σ₂₆ |
+| ν↔p cross entries | 4 | σ₃₅, σ₃₆, σ₄₅, σ₄₆ |
+| **Total independent** | **21** | |
+
+
 ## Philosophy
 
 R54 treats the 6 compact dimensions as **one T⁶** (per Q116),
