@@ -2494,3 +2494,258 @@ preserved.  R50's specific quantitative results (mode tuples,
 wrong proton shear and need to be re-derived.  This study
 should be **partially reopened** for a fresh particle search
 under the corrected geometry.
+
+---
+
+## Track 8: Lepton viability search
+
+Track 8 was added in 2026-04 with a deliberately weaker bar than
+Tracks 1–7.  Earlier tracks asked "what is the *best* match for each
+particle?".  Track 8 asks the much weaker question: **"does the
+linear ℤ⁶ spectrum admit *any* candidate within Δm/m ≤ 5% with the
+correct charge and topological spin?"**  The motivation is to settle
+whether the muon mass desert reported in F19 / F23–F28 is robust
+under the corrected mode-aware shear formula and across all four
+sign branches when the search is given wide winding ranges and a
+σ_eν cross-shear grid.
+
+A "viable" candidate does **not** mean we have identified the
+particle.  It means the geometry can host *something* with the right
+quantum numbers near the right mass.  If even this weak bar fails for
+a particle, we have a structural argument that the linear picture is
+incomplete and a compound back-reaction engine is needed (Engine B
+in the user's terminology — see Q114 §11.7 / R52 discussion).
+
+### Setup
+
+- **Search ranges:** n₁ ∈ [−3, 3], n₂ ∈ [−10, 10], n₃ ∈ [−3, 3],
+  n₄ ∈ [−3, 3], n₅ ∈ [−6, 6], n₆ ∈ [−16, 16].
+  3,090,087 total 6-tuples in the grid.
+- **Filters:** charge match, topological spin match (where
+  applicable).  *No* waveguide cutoff (per Track 6 methodology).
+- **Sign branches:** all four (s_e ∈ {+, −}) × (s_p ∈ {+, −}),
+  with electron and proton calibrated to their measured masses on
+  *each* branch using the `build_corrected_model` self-consistent
+  L_ring derivation.
+- **σ_eν grid:** 21 points in [−0.20, +0.20].  σ_eν is the cross
+  shear most naturally interpreted as electron + ν compound coupling.
+- **Inventory:** 20 particles spanning leptons, mesons, baryons,
+  and resonances (electron, proton, muon, neutron, pions, kaons,
+  Λ, η, η′, Σ, Ξ, τ, ρ, Δ⁺, Ω⁻).
+
+### F55. Sixteen of twenty inventory particles are viable
+
+The search produced viable candidates (Δm/m ≤ 5%) for 16 of 20
+inventory particles, with 9 reaching "excellent" (≤ 1%):
+
+| Particle | Mass (MeV) | Best Δm/m | Mode | Branch | σ_eν | Verdict |
+|----------|-----------|-----------|------|--------|------|---------|
+| electron | 0.511 | 0.000% | (1, 2, −2, 3, 0, 0) | ++ | 0.00 | **excellent** |
+| proton | 938.272 | 0.000% | (0, −2, 2, 3, 1, 3) | +− | −0.20 | **excellent** |
+| K⁰ | 497.611 | 0.065% | (0, −10, −2, −3, 0, −2) | +− | 0.00 | **excellent** |
+| Λ | 1115.683 | 0.093% | (−2, 9, −2, −3, −2, −2) | ++ | 0.00 | **excellent** |
+| Δ⁺ | 1232.0 | 0.287% | (1, −1, −3, −3, 2, −4) | −− | −0.20 | **excellent** |
+| Σ⁺ | 1189.37 | 0.598% | (0, −10, −2, −3, 1, 4) | ++ | 0.00 | **excellent** |
+| τ | 1776.86 | 0.656% | (0, 0, −2, −3, −1, 6) | ++ | −0.20 | **excellent** |
+| Σ⁰ | 1192.642 | 0.734% | (−2, 1, 2, 3, −2, 2) | −+ | −0.20 | **excellent** |
+| Ω⁻ | 1672.45 | 0.029% | (−2, 10, −3, −3, −3, −3) | ++ | 0.00 | **excellent** |
+| Σ⁻ | 1197.449 | 1.269% | (0, −10, −2, −3, −1, −4) | ++ | 0.00 | viable |
+| ρ | 775.26 | 1.438% | (0, 0, −3, −3, 1, −2) | ++ | −0.20 | viable |
+| η | 547.862 | 1.625% | (0, 0, −2, −3, 0, −2) | ++ | −0.20 | viable |
+| neutron | 939.565 | 2.410% | (−2, 10, −2, −3, −2, 0) | +− | 0.00 | viable |
+| Ξ⁻ | 1321.71 | 2.622% | (−2, 1, 2, 3, −3, 1) | −− | −0.20 | viable |
+| Ξ⁰ | 1314.86 | 3.060% | (−2, 10, −2, −3, −2, −3) | +− | 0.00 | viable |
+| η′ | 957.78 | 3.275% | (−2, 1, 2, 3, −2, −1) | −− | −0.20 | viable |
+| **muon** | **105.658** | **97.982%** | (1, −10, −2, −3, 0, 0) | ++ | 0.00 | **NO MATCH** |
+| **π⁰** | **134.977** | **84.210%** | (0, 0, −2, −3, 0, −1) | +− | −0.20 | **NO MATCH** |
+| π± | 139.570 | — | — | — | — | **forbidden** |
+| K± | 493.677 | — | — | — | — | **forbidden** |
+
+Quantum-number meaning of the columns:
+- **Mode** is the 6-tuple (n₁, …, n₆) — windings on (e-tube,
+  e-ring, ν-tube, ν-ring, p-tube, p-ring).
+- **Branch** encodes the signs (s_e, s_p) of the within-plane shears
+  on the electron and proton sheets, both calibrated to α = 1/137.
+- **σ_eν** is the chosen cross-shear value at the best match.
+
+### F56. The muon mass desert is structural under the linear search
+
+The muon's best candidate across all 84 (branch × σ) configurations
+sits at 2.13 MeV — 97.98% off the 105.658 MeV target.  Going *up*
+the spectrum, the next Q = −1, spin-½ mode is at ~250 MeV (also
+> 100% off).  The 5–200 MeV window is **completely empty** of
+Q = −1, spin-½ modes on every sign branch.
+
+The histogram of Q = −1, spin-½ modes from the same 3 M-mode search
+(at σ_eν = 0):
+
+| Branch | 0–1 | 1–5 | 5–20 | 20–50 | 50–100 | 100–150 | 150–200 | 200–300 | 300–500 | 500–750 | 750–1000 |
+|--------|----:|----:|-----:|------:|-------:|--------:|--------:|--------:|--------:|--------:|---------:|
+| ++ | 153 | 204 | **0** | **0** | **0** | **0** | **0** | 714 | 0 | 2890 | 1802 |
+| +− | 153 | 204 | **0** | **0** | **0** | **0** | **0** | 714 | 1802 | 2346 | 3944 |
+| −+ | 170 | 187 | **0** | **0** | **0** | **0** | **0** | 714 | 0 | 2890 | 1802 |
+| −− | 170 | 187 | **0** | **0** | **0** | **0** | **0** | 714 | 1802 | 2346 | 3944 |
+
+All four branches show the same desert: there are 150–200 modes
+below 5 MeV (anomalously light high-n₂ modes whose mass cancels via
+ν cross-coupling), then **zero** modes between 5 and 200 MeV, then
+714 modes in the 200–300 MeV bin.  The σ_eν grid does not change
+this structure on any branch.
+
+**Interpretation.**  The muon is *structurally* absent from the
+linear ℤ⁶ spectrum.  The argument no longer leans on a coarse n-range
+or one parameter point.  It is robust to:
+
+- the 4 sign branches of (s_e, s_p);
+- the 21-point σ_eν grid in [−0.20, +0.20];
+- the inclusion of (1,1), (1,2), (1,3), …, (1,10) electron base
+  modes;
+- ν dressings up to (n₃, n₄) ∈ [−3, 3]² and proton dressings up to
+  (n₅, n₆) ∈ [−6, 6] × [−16, 16].
+
+If the muon exists in MaD geometry at all, it is **not** an integer
+6-tuple in the linear picture.  It must be a state that requires
+back-reaction (the geometry itself is modified by the muon's
+presence), or a different spin/charge formalism, or some other
+ingredient the current MaD engine does not model.
+
+This is the *negative* outcome the track was designed to detect.
+It is not a refutation of MaD — the linear spectrum hosts 16 of 20
+inventory particles, including the tau — but it is a sharp signal
+that the linear picture is incomplete and that a compound back-
+reaction engine ("Engine B" in the user/Q114 framing) is the
+natural next step.
+
+### F57. The tau is viable, propagating, and almost purely ν+p
+
+The tau lands at 1788.522 MeV — only 0.656% above the 1776.86 MeV
+target — on mode **(0, 0, −2, −3, −1, 6)**, branch ++, σ_eν = −0.20.
+
+Notable features of this candidate:
+
+1. **No electron-sheet component.**  n₁ = n₂ = 0.  The tau
+   candidate lives entirely on the ν and p sheets.  This is striking
+   because the tau is "the heavy electron" in the standard model;
+   here it has no winding on the electron sheet at all.  The
+   electronic charge enters via the proton-sheet contribution
+   (n₅ = −1 → Q = −1).
+2. **Propagating.**  Both the (n₃ = −2, n₄ = −3) ν winding and the
+   (n₅ = −1, n₆ = 6) p winding satisfy single-sheet waveguide
+   cutoff at the chosen aspect ratios.
+3. **Branch-stable.**  The same mode is the best on both ++ and −+
+   branches; on the +− and −− branches the best slips to a
+   different mode at 1.82% off.  So the tau identification is robust
+   across the s_e sign choice but mildly dependent on the s_p sign.
+4. **σ-driven.**  The 0.656% match requires σ_eν = −0.20, near the
+   edge of the explored grid.  This means the tau "wants" a
+   non-trivial cross-shear; whether σ_eν ≈ −0.20 is consistent
+   with other constraints (e.g. neutron F11) is left for a future
+   joint fit.
+
+The tau finding is consistent with R52's intuition that ν-sheet
+windings can supply heavy lepton mass without requiring an
+electron-sheet base.  It is *inconsistent* with the naive picture
+where the muon and tau are simply "heavier electrons" sitting on
+larger n₂ rings — the tau here is not on the electron sheet at all.
+
+### F58. The charged π and K are forbidden by the topological spin–charge constraint
+
+The script attempts to find candidates for π⁺/⁻ (Q = ±1, spin 0)
+and K⁺/⁻ (same quantum numbers), but produces zero candidates from
+3 M 6-tuples.  This is not a numerical artifact: it follows
+necessarily from the framework's quantum number formulae.
+
+**The constraint:** charge is Q = −n₁ + n₅, so |Q| odd ⇒ exactly
+one of n₁, n₅ is odd.  Topological spin counts odd tube windings
+across (n₁, n₃, n₅), each contributing ½.  If exactly one of n₁
+and n₅ is odd, the count from those two is odd; n₃ contributes 0
+or ½; **the total is always at least ½**.  Therefore there is no
+6-tuple in the entire integer lattice with |Q| = 1 and spin 0.
+
+This is the same constraint identified in F17 as a feature of the
+formalism, now exhibited at the level of an actual exhaustive
+search.  The π± and K± are not failures of Track 8; they are
+**structurally excluded** from the spin/charge formalism currently
+used in MaD and require a different quantum number assignment
+(e.g. chiral pair states that are not single ℤ⁶ modes).
+
+The neutral pion (π⁰, Q = 0, spin 0) is *allowed* by this
+constraint but still misses badly: best candidate at 248 MeV vs
+135 MeV target (84% off).  The closest spin-0 Q-0 modes sit far
+from the pion mass.  Pions appear to be a more general challenge
+for the linear picture — neutral and charged alike — pointing the
+same direction as the muon: a missing physics ingredient near the
+~100 MeV scale on the e-sheet.
+
+### F59. Many viable matches use non-propagating components
+
+Several "excellent" matches in F55 carry the propagation ✗ flag,
+meaning at least one sheet's winding pair fails the single-sheet
+waveguide cutoff condition n_ring > |n_tube|/ε.  Specifically the
+following best matches are non-propagating:
+
+- Λ (0.093% off) — non-propagating
+- Σ⁰ (0.734% off) — non-propagating
+- Ξ⁰ (3.060% off) — non-propagating
+- Ξ⁻ (2.622% off) — non-propagating
+- Δ⁺ (0.287% off) — non-propagating
+- Ω⁻ (0.029% off) — non-propagating
+- η′ (3.275% off) — non-propagating
+
+This is the same phenomenon documented in F38 (the (1,3) neutron
+candidate) and F39 (the waveguide filter creates an artificial bias
+against (1,3)): the *best mass matches* are mostly non-propagating
+under per-sheet waveguide cutoff.  Track 8's wide search makes this
+quantitative across the inventory, not just one particle.
+
+If we believe the per-sheet cutoff is the *physical* propagation
+condition, these excellent matches are excluded and the inventory
+viability count drops dramatically.  If we believe Track 6's
+hypothesis that ghost elimination operates at the *compound*
+(cross-sheet) level rather than per-sheet, these matches are
+admissible and Track 8 is a strong inventory result.  The track
+does not resolve which view is correct — it just shows that the
+inventory is highly sensitive to the choice.
+
+### F60. Assessment: where are we?
+
+Track 8 settles three questions and opens one.
+
+**Settled:**
+
+1. The muon mass desert is a real, robust feature of the linear
+   ℤ⁶ spectrum under the corrected shear formula.  It is not an
+   artifact of n-range, σ choice, or sign branch.  (F56)
+2. The tau is geometrically viable, with a clean candidate at
+   0.656% off on a purely ν+p mode.  (F57)
+3. Charged pions and kaons cannot exist as single 6-tuples in the
+   current spin/charge formalism — this is a structural feature,
+   not a search failure.  (F58)
+
+**Opened:**
+
+4. *Propagation status of the best matches* — most "excellent"
+   matches in the inventory are non-propagating under per-sheet
+   waveguide cutoff.  Whether to accept them depends on which
+   filter mechanism is correct (F59).  This is the same question
+   left open by Tracks 6 and 7; Track 8 makes it quantitative.
+
+**Implication for next steps.**  Track 8's negative result for the
+muon is the most informative single finding.  It motivates building
+a **compound back-reaction engine** (Engine B in Q114 §11.7) that
+allows the geometry parameters (ε, s, σ) to depend on which mode
+is present, rather than treating them as fixed inputs.  In the
+linear ℤ⁶ picture, the muon does not exist at any branch, σ, or
+winding combination tested.  Either the muon requires back-reaction
+or it requires a fundamentally different formalism than the one
+MaD currently provides.  The next study should build the iterative
+fixed-point compound solver outlined in Q114 §11.7 and test whether
+it can lift one of the (1, 1, …) or (1, 2, …) candidates from
+~0–5 MeV up to 105.658 MeV self-consistently.
+
+### Track 8 status
+
+**Complete.** Script: `scripts/track8_lepton_viability.py`.
+Result: 16/20 viable, muon NOT viable, tau viable.  This is the
+first systematic viability sweep of the inventory under the
+corrected mode-aware shear formula and all four sign branches.

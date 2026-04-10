@@ -1,6 +1,6 @@
 # R50: Filtered multi-sheet mode search
 
-**Status:** Active — Track 3 complete
+**Status:** Active — Track 8 in progress (Tracks 1–7 complete)
 **Questions:** Q16 (mass spectrum)
 **Type:** compute
 **Depends on:** R29 (nuclei as Ma modes), R46 (electron filter),
@@ -449,6 +449,100 @@ between (1,3) and (3,6) are biased by the choice of σ_ep.
 Track 6 (unfiltered approach).
 
 **Script:** `scripts/track7_sigma_landscape.py`
+
+
+### Track 8: Lepton viability search — does the geometry support the muon?
+
+**Status:** Active
+
+**Motivation:** Tracks 1–7 of R50 (and R52) all left an open question:
+under the corrected mode-aware shear formula and the four sign branches,
+**is there any 6-tuple in the linear ℤ⁶ spectrum that could plausibly
+be the muon?**  Earlier full-inventory sweeps (F23–F28) reported a "mass
+desert": zero Q = −1, spin-½ modes between 5 and 200 MeV at the default
+σ = 0.  But those sweeps were not focused on the muon — they swept
+parameter sets and used a single coarse n-range.  We have not yet
+asked the *focused* question: with broad winding ranges, all four sign
+branches, and a σ grid, **can the linear spectrum reach 105.658 MeV
+with the right quantum numbers at all?**
+
+This is a different bar from Tracks 1–7.  Those tracks tried to find
+*good* mass matches.  Track 8 asks the much weaker question: **does
+the geometry admit any candidate at all, even a loose one?**  The
+answer matters because:
+
+1. If a viable candidate exists (Δm/m ≲ 5%, correct Q and spin), then
+   the muon is geometrically possible in the linear picture.  We can
+   move on without needing a compound-mode back-reaction engine.
+2. If no viable candidate exists for the muon at any sign branch / σ
+   value with reasonable winding ranges, then the linear ℤ⁶ spectrum
+   is structurally unable to host the muon.  That is a hard result
+   pointing to a missing physics ingredient — most likely a back-reaction
+   ("compound mode" in the user's sense) that the current MaD engine
+   does not model.  The next study would build that engine.
+
+Either outcome is informative.  This track exists to settle which one
+we are in.
+
+**Philosophy: viable ≠ exact.**  R50's existing philosophy already
+treats unstable particles as near-misses (point 3 of the philosophy
+list above).  Track 8 takes that one step further: for the muon and
+tau (and for completeness, the full inventory), we do **not** require
+a precise match.  We require only that **at least one** mode in the
+search space lands within a stated tolerance.  A 3% miss is a
+"viable candidate".  A 30% miss is "no candidate".  Anything in
+between we report and let the reader judge.
+
+**Approach:**
+
+1. **Wide candidate generation.**  6-tuples over a generous integer
+   range allowing (1,1), (1,2), and (1,3) base modes on each sheet.
+   Filter only by charge and spin — no waveguide filter (per Track 6
+   methodology).
+
+2. **All four sign branches.**  s_e ∈ {+, −}, s_p ∈ {+, −}.  At
+   each branch, the calibration via `build_corrected_model` ensures
+   the electron and proton stay pinned to their measured masses.
+
+3. **σ_eν grid.**  Cross-shear σ_eν is the most physically natural
+   coupling for a "compound mode" picture (electron base + ν dressing).
+   Sweep σ_eν over a generous range; record the best candidate at
+   each σ value.
+
+4. **Per-particle search.**  For each target in the inventory
+   (muon, tau, π±, π⁰, K±, η, η′, ρ, etc.) record the best candidate
+   *across all branches and σ values*.  Tag with: mode, energy,
+   Δm/m, branch, σ, propagation flag, active sheets.
+
+5. **Verdict per particle.**  Apply a tolerance ladder
+   (≤1% = excellent, ≤5% = viable, ≤10% = marginal, > 10% = no
+   candidate).  Report a single viability table for the inventory.
+
+**What this track does NOT do:**
+
+- Does not claim the chosen modes are *the* correct identification
+  of these particles — only that the geometry can host them.
+- Does not score lifetime/stability correlation (R50 Track 4
+  handles that, and mixing it in here would muddy the goal).
+- Does not implement back-reaction.  If the linear spectrum fails
+  to host a particle, we report that as a finding and defer the
+  back-reaction engine to a future study.
+
+**Deliverables:**
+
+- Per-particle viability table (one row per inventory entry, one
+  column per sign branch, plus an overall verdict).
+- Best mode for the muon and tau, with full diagnostics.
+- Histogram of Q = −1, spin-½ modes in the 5–500 MeV window
+  (does the desert hold up under the wider search?).
+- Honest assessment: are we in the "linear spectrum is sufficient"
+  world or the "we need a compound engine" world?
+
+**Depends on:** Track 6 (unfiltered methodology, build_corrected_model
+pattern), Track 7 (σ landscape understanding), R52 (sign branch
+discovery).
+
+**Script:** `scripts/track8_lepton_viability.py`
 
 
 ## Design notes for `ma_model_d`

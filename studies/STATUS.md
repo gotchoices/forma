@@ -118,7 +118,7 @@ overflowing into dark Ma_ν modes.
   (3,400× too small).  All bilinear metric pathways closed.
   Two-tier physics (R29) appears structurally necessary.
 
-### R50. Filtered multi-sheet mode search  **Active — Track 7 complete**
+### R50. Filtered multi-sheet mode search  **Active — Track 8 complete**
 **Study:** [`R50-filtered-particle-search/`](R50-filtered-particle-search/)
 **Questions:** Q16  **Type:** compute  **Depends on:** R29, R46, R47, R49
 
@@ -137,6 +137,14 @@ full particle spectrum: both hypotheses optimize at σ_ep ≈ −0.28;
 (3,6) fits the spectrum better (trimmed mean 0.89% vs 2.35%)
 but (1,3) fits the physics better (universal charge formula,
 nuclear scaling).  σ_ep remains a free parameter.
+**Track 8** ran a viability sweep over the full inventory across
+all four sign branches and a σ_eν grid: 16 of 20 particles
+viable (≤ 5%), 9 excellent (≤ 1%), tau viable at 0.656% on a
+purely ν+p mode.  **Muon NOT viable** (97.98% off, mass desert
+real and structural across every branch); π±/K± topologically
+forbidden as single 6-tuples; π⁰ also fails (84% off).  Negative
+result on the muon motivates building a compound back-reaction
+engine in a future study.
 Parameter strategy: defaults with provenance, sweep before pin,
 keep free variables free (model-D.md §Parameter strategy).
 
