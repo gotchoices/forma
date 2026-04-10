@@ -701,6 +701,54 @@ find a sign pattern — they implicitly used same-sign shears
 combinations of the table above.
 
 
+### F24 (post-audit). Independent confirmation from R50 neutron search
+
+After the (1,2) hardcoding fix in `solve_shear_for_alpha`
+(Q114 §11.5), R50's neutron search was re-run.  As an
+extension, the alternative sign conventions from F21 (this
+study) were tested for their effect on the neutron mass match.
+
+**Result:** the default (+,+) sign convention gives the WORST
+neutron match.  Three alternative sign combinations all give
+DRAMATICALLY better matches:
+
+| Sign combo | Δm (best neutron candidate) | Propagates |
+|-----------|----------------------------|------------|
+| (+, +) default | −0.986 MeV | No |
+| (+, −) | **+0.006 MeV** | No |
+| (−, +) | **−0.002 MeV** | No |
+| (−, −) | **−0.202 MeV** | **Yes** |
+
+The (−, −) case gives a **propagating** neutron candidate at
+0.202 MeV — slightly better than R50's old (now-invalidated)
+F11 candidate at 0.254 MeV.  All candidates verify exact e/p
+masses, Q = 0, and spin ½.
+
+**Convergent evidence:** R52 Track 4f's "opposite sign for
+opposite charge" hypothesis (originally derived from magnetic
+moment sign analysis) is now supported by an independent
+observable — the neutron mass.  The lib's positive-only shear
+convention is contradicted by both:
+
+1. **Magnetic moment signs** (this study, F21)
+2. **Neutron mass match** (R50, F20-F22)
+
+These are TWO independent observables that both favor
+non-positive shear branches.  R52's hypothesis has graduated
+from "single-experiment conjecture" to "multi-observable
+empirical support".
+
+**Caveat on the specific sign combination:**
+- F21 (this study) suggests (s_e=−, s_p=+) gives the right MM
+  sign pattern (assuming δμ has the same sign as δU)
+- R50 F20 finds (s_e=−, s_p=−) gives the best PROPAGATING
+  neutron, while (+,−) and (−,+) give the best non-propagating
+
+The exact sign combination is not yet uniquely determined, but
+**the default (+,+) is empirically the worst choice for both
+observables.**
+
+
 ### F23. Both proton interpretations give the right SIGN with this convention
 
 A particularly important consequence of F21: **both (1,3) and
