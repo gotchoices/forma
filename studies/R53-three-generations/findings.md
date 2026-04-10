@@ -199,6 +199,105 @@ not imposed — it fell out of the algebra.
 - Track 4: Apply the same method to the proton sheet for quarks
 - Study C: Relocate α to Ma-S cross terms
 
+### F10. Runner-up solutions: the (1, 2) electron family
+
+The (1, 2) electron also works — and its most fundamental solution
+is even more compact (max |n_r| = 5 vs 8 for the (1, 3) family):
+
+| Electron | Muon | Tau | ε | s | max |n_r| |
+|----------|------|-----|---|---|-----------|
+| **(1, 2)** | **(3, 5)** | **(7, 3)** | **397** | **2.004** | **5** |
+| (1, 2) | (3, 7) | (7, 3) | 269 | 1.997 | 7 |
+| (1, 2) | (3, 5) | (5, 7) | 357 | 2.004 | 7 |
+| **(1, 3)** | **(3, 8)** | **(3, −8)** | **330** | **3.004** | **8** |
+| (1, 3) | (3, 8) | (5, 2) | 357 | 3.004 | 8 |
+
+**The s ≈ 2 family with (1, 2) electron** has max |n_r| = 5 —
+even smaller quantum numbers than the (1, 3) family.  The most
+compact triple is:
+
+> **e = (1, 2), μ = (3, 5), τ = (7, 3)** at ε = 397, s = 2.004
+
+This is arguably the most fundamental solution overall: all
+ring windings ≤ 5, all tube windings are odd primes (1, 3, 7),
+and the s ≈ 2 resonance makes the (1, 2) electron anomalously
+light — exactly the established electron mode from model-D.
+
+The mechanism is the same as F2: the electron's ring winding
+(n_r = 2) nearly matches s ≈ 2, creating the cancellation.
+The muon (3, 5) has ring detuning 5 − 3 × 2.004 = −1.012.
+The tau (7, 3) has ring detuning 3 − 7 × 2.004 = −11.028.
+
+**Charge implications for the (1, 2) family:**
+
+| Lepton | e-sheet Q | p-sheet n₅ needed | Total Q |
+|--------|-----------|-------------------|---------|
+| electron | −1 | 0 (pure e-sheet) | −1 |
+| muon | −3 | 2 | −1 |
+| tau | −7 | 6 | −1 |
+
+The tau requires n₅ = 6 on the p-sheet — more compensation
+than the (1, 3) family (which needed n₅ = 4).  Whether this
+is an advantage or disadvantage depends on the proton sheet
+geometry.
+
+### F11. Pattern across all solutions
+
+Every solution shares the same structural features:
+
+1. **s ≈ n_r(electron) / n_t(electron)** — the shear matches
+   the electron's ratio, creating the resonance cancellation.
+   For (1, 2): s ≈ 2.  For (1, 3): s ≈ 3.  For (1, 5): s ≈ 5.
+   This is universal.
+
+2. **ε >> 1** (fat torus) — needed so the tube contribution
+   (n_t/ε)² is small compared to the ring detuning.  All
+   solutions have ε ≈ 250–400.  This is a radical change
+   from model-D's ε_e = 0.65.
+
+3. **The muon always has n_t = 3** (in the most compact
+   solutions).  Across both families, the muon's tube winding
+   is 3 — the next odd number after 1.
+
+4. **The tau uses higher tube windings** — n_t = 5 or 7 in
+   the most compact solutions, or n_t = 3 with opposite ring
+   sign (the chirality partner).
+
+5. **Sign variants are equivalent** — (1, 2) and (−1, −2)
+   give the same physics (just flip the torus orientation).
+   What matters is the absolute values and the n_r sign relative
+   to the shear.
+
+### F12. Two leading candidates to carry forward
+
+| | Solution A (s ≈ 2) | Solution B (s ≈ 3) |
+|---|---|---|
+| **Electron** | **(1, 2)** | **(1, 3)** |
+| **Muon** | **(3, 5)** | **(3, 8)** |
+| **Tau** | **(7, 3)** | **(3, −8)** |
+| **ε** | **397** | **330** |
+| **s** | **2.004** | **3.004** |
+| **max n_r** | **5** | **8** |
+| **Tau n₅ needed** | 6 | 2 |
+| **Special feature** | Electron = model-D mode | Tau = muon chirality partner |
+| **Electron parallels proton?** | Different: e=(1,2), p=(1,3) | Same: e=(1,3), p=(1,3) |
+
+Both are exact (mass ratios match to machine precision).
+Both require ε >> 1 and α relocation.
+
+**Solution A** preserves the (1, 2) electron from model-D and
+has the smallest quantum numbers.  But the tau needs 6 units of
+p-sheet compensation.
+
+**Solution B** has the elegant chirality-partner structure for
+muon/tau and mirrors the proton's (1, 3) topology.  The tau
+only needs 2 units of p-sheet compensation.
+
+The choice between them may be decided by Track 3 (p-sheet
+energy correction) or Track 4 (quark generations).
+
 ### Track 1 status
 
-**Complete.** The three-generation hypothesis is confirmed.
+**Complete.** The three-generation hypothesis is confirmed with
+multiple solution families.  Two leading candidates identified:
+(1,2)/(3,5)/(7,3) at s ≈ 2, and (1,3)/(3,8)/(3,−8) at s ≈ 3.
