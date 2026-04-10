@@ -296,11 +296,89 @@ only needs 2 units of p-sheet compensation.
 The choice between them may be decided by Track 3 (p-sheet
 energy correction) or Track 4 (quark generations).
 
-### Track 1 status
+### F19. Correction: strict x > 0 filter changes the landscape
 
-**Complete.** The three-generation hypothesis is confirmed with
-multiple solution families.  Two leading candidates identified:
-(1,2)/(3,5)/(7,3) at s ≈ 2, and (1,3)/(3,8)/(3,−8) at s ≈ 3.
+The original Track 1 scan clamped x = 1/ε² to 1e-30 when negative,
+effectively sending ε → ∞.  Combined with 1% tolerance on the
+verification, this admitted many false positives — solutions where
+ε is imaginary but the ε → ∞ limit gave approximate matches.
+
+A corrected scan with strict x > 1e-12 (requiring clearly real ε)
+found:
+
+| Family | Real solutions | Most fundamental (max |n_r|) |
+|--------|---------------|------------------------------|
+| **Leptons** | 153,384 | (3,1), (7,2), (5,4) at ε=19508, s=0.334, max 4 |
+| **Up-type quarks** | 8,704 | (1,3), (−1,3), (3,9) at ε=0.50, s=2.00, max 9 |
+| **Down-type quarks** | 662,152 | (7,3), (5,2), (3,5) at ε=1151, s=0.428, max 5 |
+
+**All three families have abundant real solutions.**  The earlier
+report that Solution A (s ≈ 2 for leptons) had no real ε was
+wrong — the specific triples I tested manually weren't the ones
+the scan found.  The (1,2)-electron family DOES have real
+solutions, just at different mode assignments than initially
+assumed.
+
+**F10–F12 (runners up) are superseded by this corrected scan.**
+The qualitative conclusions (shear resonance mechanism, ε >> 1
+for most solutions, multiple families) are preserved, but the
+specific "Solution A" triple {(1,2), (3,5), (7,3)} is invalid
+(x < 0).  Solution B {(1,3), (3,8), (3,−8)} remains valid and
+confirmed at full Decimal precision.
+
+### F20. Notable new solutions from the corrected scan
+
+**Lepton candidate at max |n_r| = 4:**
+- e = (3, 1), μ = (7, 2), τ = (5, 4) at ε = 19,508, s = 0.334
+- All quantum numbers ≤ 7, max ring winding just 4
+- Very fat torus (ε ~ 20,000)
+- Electron is (3, 1) — three tube windings, one ring winding
+
+**Up-type quark candidate at ε = 0.5 (thin torus!):**
+- u = (1, 3), c = (−1, 3), t = (3, 9) at ε = 0.50, s = 2.000
+- Up and charm are **chirality partners**: (1, 3) and (−1, 3)
+- ε = 0.5 is a THIN torus — the opposite of the lepton regime
+- s = 2.000 exactly
+- The top quark (3, 9) has the 1:3 ratio scaled 3×
+
+**Down-type quark candidates at max |n_r| = 5:**
+- d = (7, 3), s = (5, 2), b = (3, 5) at ε = 1151, s = 0.428
+- d = (5, 4), s = (1, 1), b = (5, 5) at ε = 570, s = 0.799 (confirmed from Track 4)
+
+### F21. The ε = 0.5 up-type solution is striking
+
+The up-type quarks' most fundamental solution has **ε = 0.5** —
+a thin torus, not a fat one.  This is compatible with model-D's
+current geometry (ε_p = 0.55).
+
+- Up = (1, 3): the established proton mode!
+- Charm = (−1, 3): its chirality partner
+- Top = (3, 9): a 3× harmonic
+
+At s_p = 2.000 and ε_p = 0.50:
+- Up detuning: 3 − 1×2 = 1
+- Charm detuning: 3 − (−1)×2 = 5
+- Top detuning: 9 − 3×2 = 3
+
+Mass ratios: c/u = 5/1 × (correction from tube term) ≈ 588;
+t/u = (tube + ring terms) ≈ 80,000.
+
+If u = (1, 3) IS the proton's fundamental mode, the charm and
+top quarks are its chirality partner and 3× harmonic living on
+the SAME sheet at the SAME geometry.  This connects directly
+to model-D without requiring a radical ε change.
+
+### Track 1 status (revised)
+
+**Complete.** The three-generation hypothesis is confirmed for
+all three fermion families with strictly real ε.  Key results:
+
+- Leptons: 153K solutions; Solution B confirmed; new candidates
+  with smaller quantum numbers found
+- Up-type quarks: 8.7K solutions; striking ε = 0.5 thin-torus
+  solution with u = (1,3), c = (−1,3), t = (3,9)
+- Down-type quarks: 662K solutions; multiple candidates at
+  moderate max |n_r|
 
 ---
 

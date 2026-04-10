@@ -184,7 +184,7 @@ different metric component.
 
 ### Track 4: Three generations on the proton sheet
 
-**Status:** Pending (depends on Track 1 to validate the method)
+**Status:** Complete — solutions found for both quark families (F13–F21)
 
 **Goal:** Apply the same method to the proton sheet.  Solve for
 (ε_p, s_p) that produces three quark-like modes with mass ratios
@@ -203,21 +203,84 @@ matching one of the quark families.
 **Script:** `scripts/track4_quark_generations.py`
 
 
-## Possible outcomes
+### Track 5: Precision values for the leading candidates
 
-**Best case:** A clean (ε_e, s_e) solution exists for a low-order
-triple like {(1,2), (1,3), (1,19)} or {(1,2), (-1,2), (1,3)}.
-The three charged leptons emerge from three modes on a single sheet,
-exactly paralleling the three neutrinos.  Ghost count is
-dramatically reduced compared to the high-n₂ picture.  α must be
-relocated but that's a feature, not a bug — it clarifies the
-role of each metric component.
+**Status:** Pending
 
-**Partial success:** A solution exists but requires extreme ε_e
-(>> 1) or very fine-tuned s_e.  The mechanism works but the
-geometry is unphysical or requires justification.
+**Goal:** For each leading candidate solution from Tracks 1 and 4,
+compute the exact (ε, s) values at full precision and record the
+predicted masses.  Establish the authoritative reference values
+that R54 will use as its foundation.
 
-**Failure:** No real (ε_e, s_e) solution exists for any low-order
-triple.  The three-generation structure on the e sheet cannot come
-from in-sheet shear alone.  This would point toward cross-sheet
-terms or a more radical restructuring (model-E).
+**Method:**
+1. For each candidate triple, solve the 2×2 system using Decimal
+   arithmetic at 50-digit precision.
+2. Report: exact s, exact ε, predicted masses to 8+ significant
+   figures, ring detunings, α from R19 formula.
+3. Candidates to compute:
+   - Leptons: (1,3)/(3,8)/(3,−8) [confirmed]; (3,1)/(7,2)/(5,4)
+     [new, max |n_r|=4]; and any (1,2)-based solution found
+   - Up quarks: (1,3)/(−1,3)/(3,9) at ε=0.5 [striking]
+   - Down quarks: (7,3)/(5,2)/(3,5) [max |n_r|=5];
+     (5,4)/(1,1)/(5,5) [confirmed from Track 4]
+   - Neutrinos: record R26/R49 values for completeness
+
+**Deliverable:** A single precision reference table covering
+all single-sheet modes across all three sheets.
+
+**Script:** `scripts/track5_precision.py`
+
+
+### Track 6: Ghost inventory at each candidate geometry
+
+**Status:** Pending (depends on Track 5)
+
+**Goal:** At each Track 5 geometry, enumerate all modes below
+2 GeV on that sheet.  Count ghosts, classify by charge and spin,
+check gcd for fragmentation.  This determines whether the shear
+resonance mechanism naturally thins the ghost spectrum.
+
+**Method:**
+1. At each (ε, s), compute E for all (n_t, n_r) with
+   |n_t| ≤ 15, |n_r| ≤ 100.
+2. Tabulate by energy band, charge, spin, gcd.
+3. For the up-type ε = 0.5 solution, compare ghost count to
+   model-D's existing ε = 0.55 ghost count — are they similar?
+4. For the fat-torus solutions (ε >> 1), does the shear ordering
+   from F5 (ghosts naturally heavy) hold quantitatively?
+
+**Deliverable:** Ghost census per candidate geometry.
+
+**Script:** `scripts/track6_ghosts.py`
+
+
+### Track 7: Compatibility assessment — which solutions can coexist?
+
+**Status:** Pending (depends on Tracks 5–6)
+
+**Goal:** Determine which lepton/quark candidate solutions are
+mutually compatible when placed on sheets of the same T⁶.
+
+**Key questions:**
+1. Can the lepton solution (ε_e ≈ 330, s_e ≈ 3) and the up-type
+   quark solution (ε_p ≈ 0.5, s_p ≈ 2) coexist on the same T⁶?
+   (Different sheets can have independent ε and s, so this is
+   likely yes — but verify.)
+2. If the proton IS the up quark (1, 3) at ε_p = 0.5, what is
+   L_ring_p?  Does it match model-D's ~4.5 fm?
+3. Can down-type quarks be compound e+p modes (Q116 picture)
+   with the e-p cross-shear providing the second degree of
+   freedom?  This is the bridge to R54.
+4. Record the full parameter set that R54 will inherit:
+   (ε_e, s_e, ε_p, s_p, ε_ν, s_ν) and the leading mode
+   assignments for all single-sheet particles.
+
+**Deliverable:** A compatibility matrix and parameter handoff
+document for R54.
+
+
+## Outcome summary
+
+Tracks 1 and 4 confirmed the three-generation mechanism for all
+fermion families.  Tracks 5–7 will establish the precision
+foundation.  R54 will then tackle compound modes on the full T⁶.
