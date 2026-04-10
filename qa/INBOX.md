@@ -14,6 +14,9 @@ Raw capture queue. Add questions here as they arise, tagged with source.
 
 ## Open
 
+Q115. **Three generations, metric structure, and the muon problem.** → [Q115-three-generations-and-metric-structure.md](Q115-three-generations-and-metric-structure.md)
+*Source: R50 Tracks 8–11 session, 2026-04-09/10. Working plan for next studies: three-generation solve on e/p sheets from in-sheet shear, ghost inventory, α relocation to Ma-S terms.  Contains 8 user observations and 4 study outlines.*
+
 Q5. **Size and independence.** → [Q05-orthogonality-and-size.md](Q05-orthogonality-and-size.md) *(answered)*
 
 Q11. **Why only q = 1 and q = 2?** → [Q11-spin-statistics-filter.md](Q11-spin-statistics-filter.md) *(answered)*
