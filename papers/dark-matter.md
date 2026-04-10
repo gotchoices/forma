@@ -2,9 +2,10 @@
 ### How a theory of matter accidentally predicted dark matter
 
 **Status:** draft
-**Model era:** [model-C](../models/model-C.md). Ghost mode census
-uses model-C geometry. [Model-D](../models/model-D.md) adds waveguide
-cutoff that eliminates the (1,1) ghost; updated census pending (R50).
+**Model era:** [model-D](../models/model-D.md). Ghost mode census
+updated for waveguide cutoff (R46), charge selection (R48), and
+gcd fission (Q109). See [`model-D.md`](../models/model-D.md) for
+the current Assumptions / Results card.
 
 
 ## The dark matter problem
@@ -30,110 +31,100 @@ MaSt — Material-Space-Time — is a framework that proposes matter is not made
 
 The electron, in this picture, is a (1,2) mode — one winding around the tube of the sheet, two around the ring — on a surface roughly the size of the electron's Compton wavelength.  The proton is a mode on a different sheet.  The neutrino, on a third.
 
-The framework works surprisingly well.  Particle masses are computable from the geometry.  Charge emerges from the field pattern of each mode.  Spin comes from the winding ratio.  The hydrogen atom's binding energy comes out right.  Nuclear masses follow a simple scaling law across the periodic table.
+The framework works surprisingly well.  Particle masses are computable from the geometry.  Charge emerges from the topological winding of each mode.  Spin comes from the parity of the tube winding number.  Nuclear masses follow a simple scaling law across the periodic table.
 
-But there is a problem.
+But there is a question.
 
 
 ## The ghost problem
 
 When you solve the wave equation on a closed surface, you do not get one solution.  You get all of them.
 
-A rectangular surface with two dimensions supports every combination of winding numbers: (1,1), (1,2), (1,3), (2,1), (2,3), and on and on.  Each is a valid standing wave with a definite energy.  MaSt has three sheets with two dimensions each, and the mode count explodes: below 2 GeV, the model predicts roughly 900 modes with definite mass, charge, and spin.
+A rectangular surface with two dimensions supports every combination of winding numbers: (1,1), (1,2), (1,3), (2,1), (2,3), and on and on.  Each is a valid standing wave with a definite energy.  MaSt has three sheets with two dimensions each, and the mode count explodes: below 2 GeV, the model predicts roughly 200–400 modes with definite mass, charge, and spin.
 
-Nature has about 40 known particles in that energy range.
+Nature has about 19 observed particles in that energy range.
 
-The ratio is approximately 20 to 1.  For every particle that exists, MaSt predicts about twenty that don't — or at least, that have never been observed.  These were called **ghost modes**: mathematically valid solutions with no apparent physical counterpart.
+The ratio is roughly 10–20 to 1.  For every particle that exists, the geometry produces many that have never been observed.  These were called **ghost modes**: mathematically valid solutions with no apparent physical counterpart.
 
-For years, the ghost problem was the model's central embarrassment.  It worked too well.  The geometry produced everything it was supposed to, plus twenty times more.
+The ghost problem was the model's first hard question.  The geometry produced everything it was supposed to, plus a large surplus.
 
 
-## Trying to kill the ghosts
+## Killing the charged ghosts
 
-A series of studies attacked the problem systematically, each one applying a new filter and peeling away another layer of excess.  Each one succeeded partially.  None finished the job.
+A series of studies attacked the problem systematically.  Each one applied a new filter and peeled away another layer of excess.  Together, they finished the job for charged modes.
 
-The first insight came from studying how charge works.  In MaSt, charge is not a label attached to a particle — it arises from a specific integral over the mode's electromagnetic field pattern on the material sheet.  When you compute this integral for different modes, a striking pattern emerges: only modes with tube winding number |n₁| = 1 produce a nonzero result.  Modes with |n₁| = 0 have no variation around the tube — nothing to integrate.  Modes with |n₁| ≥ 2 oscillate so rapidly that positive and negative contributions cancel.  They carry mass, but no charge.
+The first insight came from studying how charge works.  In MaSt, charge is not a label attached to a particle — it is a topological invariant: the number of times the wave's phase winds around the tube of the torus.  The GRID lattice can only detect this winding when the tube winding number is exactly |n₁| = 1.  Modes with |n₁| = 0 have no net circulation.  Modes with |n₁| ≥ 2 oscillate so rapidly that positive and negative contributions cancel (R48).  They carry mass, but no charge.
 
-This single rule eliminated 88% of ghost modes.  The charged population dropped from roughly 900 to about 34 per sheet.
+This single rule eliminated the vast majority of ghost modes.
 
-A second filter came from spin.  The spin of a mode depends on its winding ratio, and only certain combinations produce the spin-½ or spin-0 values that correspond to known particles.  This killed most of the remaining survivors.  On each sheet, only about four charged modes survived with the right quantum numbers: the (1,1) and (1,2) modes, plus their antiparticles.
+A second filter came from spin.  Spin ½ arises when the tube winding number is odd — a topological fact, not a dynamical rule.  Only modes with odd tube winding on exactly one charged sheet produce the spin-½ fermions that match known particles.
 
-The electron IS the (1,2) mode.  But the (1,1) mode — lighter, charged, spin-1 — has no known counterpart in the Standard Model.
+These two filters left only a handful of charged modes per sheet.  The electron IS the (1,2) mode.  But the (1,1) mode — lighter, charged — has no known counterpart.
 
-It refused to die.
+The (1,1) was eliminated by **waveguide cutoff** (R46).  Each torus is a physical cavity: modes below a frequency threshold cannot propagate and are evanescent.  The (1,1) sits below this cutoff.  The (1,2) electron sits above it.  The geometry itself selects which modes can exist as stable standing waves.  This is not a fitted parameter — it is a consequence of the GRID substrate's reflection coefficient (~0.993, close to a conducting wall).
 
-The (1,1) became the poster child of the ghost problem.  It sits at roughly half the electron mass, about 0.26 MeV.  It has charge ±1 and spin 1.  No such particle has ever been detected.  One study computed its radiation efficiency and found it suppressed to about 1/16 of the electron's — weak, but not zero.  Another tried to find a value of the sheet's aspect ratio that would make the (1,1) charge integral vanish.  It failed: the integral has no zero for any finite shear.
+A further mechanism addresses modes with higher winding numbers.  The **irreducibility criterion** (Q109, R33): a mode (n₁, n₂) with gcd(n₁, n₂) > 1 decomposes into gcd copies of a simpler mode, which then repel each other via Coulomb repulsion and fly apart.  Only modes with gcd = 1 are stable.  On the electron sheet, this means only (1,2) and its antiparticle survive — exactly the electron and positron.  All other charged modes either fail the waveguide cutoff, fission via Coulomb repulsion, or carry the wrong spin.
 
-The problem scaled up.  If MaSt matches the electron, muon, and tau as successive modes on the same sheet, why doesn't it predict a fourth generation?  A fifth?  The answer: it does.  Below 10 GeV, the model produces over 14,000 modes with the same quantum numbers as the electron.  Three generations were accommodated.  They were not predicted.  The ghost problem and the generation problem turned out to be the same problem at different scales.
-
-One more attempt.  A study of the dynamic behavior of the material sheets — treating them as elastic surfaces rather than rigid ones — introduced a natural low-pass filter.  Modes with high tube winding numbers were suppressed by factors of 200 to 5,000.  This eliminated 92% of mode families.  But the (1,1) ghost, with its modest winding number, received only about 2× suppression.  Not enough.
-
-Five studies.  Four independent filters.  The (1,1) still stood.
+The charged ghost problem is solved.
 
 
 ## The pivot
 
-The question had always been: how do we get rid of the ghosts?
+With charged ghosts eliminated, the remaining surplus is entirely **electrically neutral modes** — valid standing waves that carry mass but have no tube winding on either charged sheet (n₁ = 0, n₅ = 0).  They cannot radiate, absorb, or scatter electromagnetically.  They are invisible to every detector that relies on electric charge.
 
-Then someone asked the opposite question: what if we shouldn't?
+The question shifts: are these neutral ghosts a problem, or a prediction?
 
-What if ghost modes are not a failure of the model but a prediction?  What if they are dark matter?
+They are dark matter.
 
 
-## Why ghosts look like dark matter
+## Why neutral modes are dark matter
 
-Consider what a ghost mode actually is.  It is a valid eigenstate of the wave equation on the material sheets — a real standing wave with a definite, computable mass-energy.  This is not assumed or tuned; it follows directly from the geometry.  A collection of ghost modes gravitates.  It curves spacetime.  It would show up in galaxy rotation curves.
+Consider what a neutral ghost mode actually is.  It is a valid eigenstate of the wave equation on the material sheets — a real standing wave with a definite, computable mass-energy.  This is not assumed or tuned; it follows directly from the geometry.  A collection of such modes gravitates.  It curves spacetime.  It would show up in galaxy rotation curves.
 
-Now consider why ghost modes are invisible.  The same filters that failed to suppress them explain why they don't interact with light.
+And it is invisible, by construction.  Charge is topological winding on the tube dimension.  A mode with n₁ = 0 and n₅ = 0 has zero winding on both charged sheets.  It does not interact electromagnetically.  It does not radiate, absorb, or scatter light.  No photon-based detector can see it.
 
-Each material sheet has physical dimensions that define a resonant aperture — a Compton window — between the compact material dimensions and the three spatial dimensions we observe.  A mode whose field pattern matches this aperture couples efficiently to the electromagnetic field.  It radiates, absorbs, scatters — it behaves like a particle.  A mode whose pattern does not match couples weakly or not at all.
+The analogy is an antenna.  An antenna radiates efficiently at wavelengths close to its own physical size and poorly at all others.  The material sheet IS the antenna.  Charged modes fit the aperture and couple to the electromagnetic field.  Neutral modes do not — they interact only gravitationally.
 
-The analogy is an antenna.  An antenna radiates efficiently at wavelengths close to its own physical size and poorly at all others.  The material sheet IS the antenna.  The electron's (1,2) mode fits the aperture.  The (1,1) ghost does not.
+Modes with mass but no electromagnetic interaction.  That is the definition of dark matter.
 
-Dark modes have mass but negligible electromagnetic interaction.  That is the definition of dark matter.
+Neutrality is not merely statistical.  It is exact.  These modes carry zero charge by topology (n₁ = n₅ = 0), not by cancellation of positive and negative contributions.  Every dark mode is individually neutral, not just neutral in aggregate.
 
-There is a further requirement: dark matter must be electrically neutral in bulk.  Charged dark matter would have been detected long ago.  Ghost modes pass this test by an exact geometric symmetry.  For every mode with quantum numbers (n₁, n₂, n₃, n₄, n₅, n₆) and charge Q, there exists a partner with (−n₁, n₂, n₃, n₄, −n₅, n₆), charge −Q, and identical mass.  This is not a statistical tendency — it is a mathematical consequence of the mode structure.  In any thermal or random population, equal numbers of positive and negative charges are produced.  The dark mode gas is macroscopically neutral to arbitrary precision.
-
-Then there is the mass ratio.  The observed dark-to-visible ratio is 5.36 ± 0.05.  The raw mode count ratio of ~20:1 is too high, but mode count is not the same as mass ratio.  Visible matter is dominated by the proton at 938 MeV.  Many dark modes are lighter — the average dark mode mass is about 1,071 MeV versus 1,231 MeV for visible modes.  When you weight by mass rather than count, and apply physically motivated coupling filters, the computed ratio spans 2.4 to 12.4.  The most realistic filters land between 4.4 and 4.8 — within 20% of the observed value.  A simple resonant window model with quality factor Q ≈ 350 gives 5.54.
+Then there is the mass ratio.  The observed dark-to-visible ratio is 5.36 ± 0.05.  The raw mode count ratio overstates the problem, because mode count is not the same as mass-weighted density.  Visible matter is dominated by the proton at 938 MeV.  Many dark modes are lighter.  When you weight by mass and apply physically motivated coupling filters, the computed ratio spans a range that brackets the observed value.  A simple resonant window model with quality factor Q ≈ 350 gives 5.54 (R42).
 
 The ratio has not been derived from first principles.  But it has been shown to be achievable, and the bracket squarely contains 5.4.
 
 
-## What the ghosts predict
+## What the dark modes predict
 
-If ghost modes are dark matter, several things follow immediately — all computable, none requiring new parameters.
+If neutral ghost modes are dark matter, several things follow immediately — all computable, none requiring new parameters.
 
-Dark matter is not a single mystery particle.  It is a forest of discrete states spanning the full energy range from sub-eV (neutrino sheet modes) through tens of keV (electron sheet modes) to roughly 2 GeV (proton sheet modes).  The lightest stable dark modes on the electron sheet sit at about 39 keV — comfortably above the warm dark matter lower bound set by observations of the intergalactic medium.
+Dark matter is not a single mystery particle.  It is a forest of discrete states spanning the full energy range from sub-eV (neutrino sheet modes) through tens of keV (electron sheet modes) to roughly 2 GeV (proton sheet modes).  Every candidate mass is computable from the geometry.  Every spin is fixed by the winding numbers.
 
-The spectrum is roughly half fermions, half bosons.  Ninety-three percent of dark mode families have high tube winding numbers — exactly the modes that the dynamic low-pass filter naturally suppresses.  The Compton window and the elastic filter are complementary: they independently select against the same population.
-
-Dark modes on the same material sheet share a common compact geometry and can interact with each other through mode-mode coupling — energy exchange internal to the compact space, invisible to external observers.  This gives dark matter self-interactions, a feature that some astrophysical observations actually seem to require.  Galaxy rotation curves in certain dwarf galaxies show flat central density profiles ("cores") rather than the sharp peaks ("cusps") that collisionless dark matter simulations predict.  Self-interacting dark matter resolves this.  Ghost modes provide it naturally.
+Dark modes on the same material sheet share a common compact geometry and can interact with each other through mode-mode coupling — energy exchange internal to the compact space, invisible to external observers.  This gives dark matter self-interactions, a feature that some astrophysical observations actually seem to require.  Galaxy rotation curves in certain dwarf galaxies show flat central density profiles ("cores") rather than the sharp peaks ("cusps") that collisionless dark matter simulations predict.  Self-interacting dark matter resolves this.  Dark modes provide it naturally.
 
 
 ## What remains to be done
 
 The hypothesis passes its first quantitative tests, but several pieces remain open.
 
-The Compton window quality factor Q has not been computed from first principles.  Three candidate mechanisms have been identified — impedance mismatch at the material sheet boundary (suggesting Q ~ 1/α ≈ 137), multipole suppression of higher-order field patterns, and evanescent cutoff for modes below the aperture scale — but the actual projection integral has not been evaluated.  Computing it for the first twenty or so modes would distinguish the mechanisms and either confirm or falsify the window hypothesis.
+**The dark mode census.**  R50 catalogs ~200–400 modes below 2 GeV, but the definitive neutral-mode inventory under the (−,−) shear branch and full waveguide filtering has not been compiled.  A clean census — listing every stable neutral mode, its mass, and its spin — is the next concrete step.
 
-Dark mode stability is unanalyzed.  Some modes may decay to lighter dark modes through internal coupling, altering the spectrum over cosmological time.  The stable endpoint spectrum could differ significantly from the initial one.
+**Dark mode stability.**  Some neutral modes may decay to lighter dark modes through internal coupling, altering the spectrum over cosmological time.  The stable endpoint spectrum could differ significantly from the initial one.  The gcd fission criterion applies to charged modes; whether an analogous instability exists for neutral modes is unexplored.
 
-The cosmological production history is unmodeled.  How ghost modes are populated in the early universe — whether through direct coupling to the hot plasma or through internal Ma processes — determines their relic abundance and velocity distribution.  The required abundance per species is modest: each dark species needs only about 1% of the baryon number density under the tightest filters.
+**The cosmological production history.**  How dark modes are populated in the early universe — whether through direct coupling to the hot plasma or through internal Ma processes — determines their relic abundance and velocity distribution.
 
-Direct detection constraints must be confronted.  The residual electromagnetic coupling through the tail of the Compton window sets a scattering cross-section.  This must fall below the limits established by experiments like LUX-ZEPLIN and XENONnT — limits that have already excluded many conventional dark matter candidates.
+**Direct detection constraints.**  Neutral modes interact only gravitationally, but any residual coupling through the tail of the Compton window sets a scattering cross-section.  This must fall below the limits established by experiments like LUX-ZEPLIN and XENONnT.
 
-And the ratio 5.4 itself has not been derived — only shown to be bracketable.  The derivation requires the full mode-dependent coupling function W(n), replacing the ad hoc filters with geometry.
+**The ratio 5.4.**  The dark-to-visible mass ratio has been shown to be bracketable but has not been derived from first principles.  The derivation requires the full mode-dependent coupling function W(n), replacing ad hoc filters with geometry.
 
 
 ## The irony
 
-For years, the ghost problem was treated as the model's greatest weakness.  It was the first objection any critic would raise: your theory predicts twenty times too many particles.  Every study tried to make the ghosts go away.  Each one peeled off a layer.  None could finish.
+At first glance, the ghost problem looks like the model's greatest weakness: the geometry predicts too many particles.  The natural impulse is to find ways to eliminate them.
 
-The (1,1) ghost survived five independent attacks — charge filtering, spin filtering, radiation suppression, aspect ratio tuning, and elastic dynamics.  It simply would not disappear.
+But the charged ghosts — the genuinely problematic ones — have been eliminated by the physics itself.  Waveguide cutoff, charge topology, and Coulomb fission leave only the known charged particles.  No ad hoc filters were required.
 
-The reason it survived is that it was never supposed to.
-
-Ghost modes are not a bug in the geometry.  They are a prediction.  A prediction of a specific, discrete, parameter-free dark matter spectrum that no other theoretical framework has produced.  Every candidate mass is computable.  Every charge is determined.  Every spin is fixed by the winding numbers.  If dark matter is ever detected at a mass that matches a predicted ghost mode — and does not match any known particle — it would be confirmation of a kind that no free-parameter model can offer.  Conversely, detection at a mass that matches no Ma mode would falsify the hypothesis cleanly.
+What remains is the neutral surplus.  And a neutral surplus of massive modes with no electromagnetic interaction is not a problem.  It is a prediction — of a specific, discrete, parameter-free dark matter spectrum that no other theoretical framework has produced.  Every candidate mass is computable.  Every spin is fixed by the winding numbers.  If dark matter is ever detected at a mass that matches a predicted neutral mode — and does not match any known particle — it would be confirmation of a kind that no free-parameter model can offer.  Conversely, detection at a mass that matches no Ma mode would falsify the hypothesis cleanly.
 
 The model does not predict too many particles.  It predicts the right number of visible particles, plus the dark matter.
 
@@ -146,7 +137,7 @@ A visible particle struck by a photon at or above its Compton energy can, in pri
 
 This is exactly what Reiter's threshold theory requires: a mechanism for sub-threshold energy accumulation in degrees of freedom that are invisible to standard quantum measurements.  Energy builds up in dark modes, distributed across the spectrum, until the total reaches twice the particle's rest mass — the threshold for pair production.  The dark mode spectrum provides the substrate.  The Compton window governs how much energy can enter.  The pair-production threshold provides the ceiling.
 
-If this connection holds, ghost modes do three jobs simultaneously, with zero new parameters: they explain what dark matter is, they resolve the ghost problem that once threatened the model, and they provide the physical mechanism for threshold-driven pair production.
+If this connection holds, neutral dark modes do three jobs simultaneously, with zero new parameters: they explain what dark matter is, they provide the physical mechanism for threshold-driven pair production, and their existence is not optional — the geometry demands them.
 
 Three problems.  One geometric answer.
 
