@@ -2076,7 +2076,25 @@ old F11 candidate (0.254 MeV) in absolute terms.  This means a
 clean, propagating neutron candidate exists if the convention
 allows non-positive shear branches.
 
-### F21 (new). Convergent evidence for non-default shear branches
+### F21 (RETRACTED — see addendum). Convergent evidence for non-default shear branches
+
+[**RETRACTED 2026-04 (later in the same audit):** This finding
+claimed convergent evidence between R50's neutron search and
+R52 Track 4f's magnetic moment sign rule.  Subsequent
+re-testing of R52 Track 4f with PROPER mode-aware signed
+shears (R52 F25, F26) found that the original R52 result
+(F21) was an artifact of using inconsistent shear values.
+With the corrected calculation, all four sign conventions
+give same-sign (negative) δU for both electron and proton —
+the magnetic moment sign rule is NOT supported by any
+convention.
+
+R50's stability-correlation finding (F26 below) remains
+valid as an independent observation about particle physics.
+But the LINK to R52's magnetic moment hypothesis is broken.
+The two studies do NOT converge on the same answer.
+
+The original F21 text is preserved below for traceability.]
 
 **R52 Track 4f** found that the magnetic moment sign rule for
 the electron/proton anomaly is reproduced when opposite-sign
@@ -2087,22 +2105,8 @@ non-default sign conventions dramatically improve the neutron
 mass match, with the best propagating candidate at 0.202 MeV
 (vs 0.986 MeV for the default).
 
-These are **two independent observables converging on the
-same conclusion**: the lib's positive-only shear convention is
-likely wrong, and at least one of the particles should use
-the negative branch.
-
-**Caveat:** R52 and R50 may favor DIFFERENT specific sign
-combinations:
-- R52 Track 4f's "predicted pattern" maps δU sign to δμ sign
-  (assuming the same sign), suggesting (s_e=−, s_p=+).
-- R50's BEST PROPAGATING candidate is at (s_e=−, s_p=−).
-- R50's two best NON-PROPAGATING candidates are at (s_e=+, s_p=−)
-  and (s_e=−, s_p=+) — both with sub-keV match.
-
-The exact sign combination is not uniquely determined by these
-observations, but **the default (+,+) is clearly disfavored**
-for both magnetic moments AND neutron mass matching.
+[Original claim of convergence retracted; the R52 side was
+an artifact.]
 
 ### F22 (new). Implications
 

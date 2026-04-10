@@ -701,7 +701,112 @@ find a sign pattern — they implicitly used same-sign shears
 combinations of the table above.
 
 
-### F24 (post-audit). Independent confirmation from R50 neutron search
+### F25 (post-audit, post-mode-fix). F21 RETRACTED — the opposite-sign result was an artifact
+
+After Q114 §11.5's fix to make `solve_shear_for_alpha`
+mode-aware (returning the correct shear for the actual proton
+mode (1,3) instead of the (1,2) hardcoded default),
+**Track 4f's δU calculation was re-run** with proper signed
+shears.
+
+**Result:** all four sign conventions now give NEGATIVE δU
+for both the electron (1,2) and the proton (1,3).  None give
+the predicted opposite-sign pattern.
+
+| Convention | s_e (proper) | s_p (proper, (1,3)) | δU(e) | δU(p) | Same sign? |
+|------------|-------------:|--------------------:|------:|------:|:----------:|
+| (+,+) | +0.0959 | +0.1620 | −0.209 | **−0.006** | yes |
+| (+,−) | +0.0959 | −0.3067 | −0.209 | −0.298 | yes |
+| (−,+) | −0.3854 | +0.1620 | −1.420 | −0.006 | yes |
+| (−,−) | −0.3854 | −0.3067 | −1.420 | −0.298 | yes |
+
+**Why F21 was wrong:** Track 4f's original (−,−) test used
+`s_p = −0.111` — just flipping the sign of the (1,2)-formula
+shear value at ε=0.55.  But:
+
+- The (1,2) shear at ε=0.55 (s = 0.111) is the WRONG
+  formula for the (1,3) proton (Q114 §11.5)
+- The PROPER (1,3) negative-branch shear at ε=0.55 is
+  s = −0.307 (3× larger magnitude)
+- Using the wrong sign-flipped value, Track 4f got
+  δU(p) ≈ +0.14 (positive)
+- Using the proper negative branch, δU(p) = −0.30 (negative)
+
+**The opposite-sign appearance in Track 4f was a numerical
+artifact** of using inconsistent shear values, not a real
+physical effect.
+
+### F26 (revised conclusion). The classical sign-rule hypothesis is dead
+
+With the corrected calculation, **none of the four sign
+conventions reproduces the predicted opposite-sign pattern**
+between the electron and proton magnetic moment corrections.
+δU is negative for both particles in every case.
+
+This means:
+
+1. **R52's central hypothesis is NOT supported by the
+   classical scalar self-energy calculation.**  Track 4f
+   produces same-sign δU regardless of how the within-plane
+   shears are oriented.
+
+2. **The "opposite sign for opposite charge" intuition was
+   appealing but does not survive the corrected formula.**
+   The user predicted this re-test would not help, and was
+   correct.
+
+3. **The convergence with R50 (claimed in F24) was illusory.**
+   R50's stability correlation finding (F26 in R50) is
+   independent and stands on its own.  But the LINK to R52's
+   sign rule was based on F21 which is now retracted.
+
+4. **R52 should be re-closed as negative.**  All five
+   computational approaches (Tracks 1, 2, 4a, 4b, 4c, 4d, 4e,
+   4f with corrected formula) fail to reproduce the magnetic
+   moment sign rule from classical scalar/vector self-energy
+   calculations.
+
+### F27 (open). What might still work
+
+The classical scalar self-interaction is dead.  What's left
+for explaining the magnetic moment sign difference:
+
+1. **Vector quantum back-reaction** (not just classical
+   self-energy).  This would be a proper QED-style
+   calculation, possibly via lattice methods.
+
+2. **Cross-sheet coupling at the proton sheet**, similar to
+   R50's neutron candidates that involve all three sheets.
+   The proton's magnetic moment may not be a single-sheet
+   effect.
+
+3. **A mode-dependent factor we haven't identified.**  The
+   (1,3) proton's δU is essentially zero (−0.006) at the
+   default, suggesting the proton mode has structural
+   properties that decouple it from shear in a way the
+   (1,2) electron doesn't.  This is itself an interesting
+   observation that wasn't visible before the mode fix.
+
+4. **Standard physics is correct.**  QED predicts the
+   electron's anomaly cleanly, QCD predicts the proton's.
+   MaSt may not need to provide a separate mechanism.
+
+### F24 (post-audit, RETRACTED — see F25). Apparent convergence with R50
+
+[**RETRACTED:** This finding claimed convergent evidence
+between R52 (magnetic moment sign rule) and R50 (neutron mass
+search) for non-default shear conventions.  The R52 side of
+this convergence (F21) was an artifact of using wrong shear
+values; see F25 and F26 for the corrected analysis.
+
+R50's stability-correlation finding (R50 F26 favoring (−,−))
+remains valid as an independent observation.  But the LINK
+between R50 and R52 is broken — there is no convergent
+evidence from these two studies for any specific sign
+convention being "correct" for the magnetic moment.
+
+The original F24 text is preserved below for historical
+record, but its conclusion is no longer supported.]
 
 After the (1,2) hardcoding fix in `solve_shear_for_alpha`
 (Q114 §11.5), R50's neutron search was re-run.  As an
@@ -724,29 +829,10 @@ The (−, −) case gives a **propagating** neutron candidate at
 F11 candidate at 0.254 MeV.  All candidates verify exact e/p
 masses, Q = 0, and spin ½.
 
-**Convergent evidence:** R52 Track 4f's "opposite sign for
-opposite charge" hypothesis (originally derived from magnetic
-moment sign analysis) is now supported by an independent
-observable — the neutron mass.  The lib's positive-only shear
-convention is contradicted by both:
-
-1. **Magnetic moment signs** (this study, F21)
-2. **Neutron mass match** (R50, F20-F22)
-
-These are TWO independent observables that both favor
-non-positive shear branches.  R52's hypothesis has graduated
-from "single-experiment conjecture" to "multi-observable
-empirical support".
-
-**Caveat on the specific sign combination:**
-- F21 (this study) suggests (s_e=−, s_p=+) gives the right MM
-  sign pattern (assuming δμ has the same sign as δU)
-- R50 F20 finds (s_e=−, s_p=−) gives the best PROPAGATING
-  neutron, while (+,−) and (−,+) give the best non-propagating
-
-The exact sign combination is not yet uniquely determined, but
-**the default (+,+) is empirically the worst choice for both
-observables.**
+[Original claim of convergence with F21 retracted; R50's
+stability-correlation finding (R50 F26) remains valid as an
+independent observation about the neutron and the broader
+inventory.]
 
 
 ### F23. Both proton interpretations give the right SIGN with this convention
