@@ -2,6 +2,21 @@
 
 Study: [`README.md`](README.md)
 
+> **2026-04 addendum:** R50's specific quantitative results (mode
+> tuples, σ_ep values, F11/F12 neutron candidates) were affected by
+> the (1,2)-hardcoding bug in `solve_shear_for_alpha` (Q114 §11.5).
+> The proton shear was being computed as if the proton were a (1,2)
+> mode, giving s_p = 0.111 instead of the correct s_p = 0.162 for
+> (1,3).  After the fix, the F11/F12 neutron candidates are
+> **invalidated** (they were artifacts of the wrong shear), but the
+> qualitative findings (universal charge formula, (1,3) preference,
+> waveguide filtering) are **preserved**.  See the addendum at the
+> bottom of this file for the full impact analysis.  R50 should be
+> **partially reopened** to redo the cross-shear search with the
+> corrected geometry.  Also: the (3,6) interpretation **cannot be
+> evaluated at ε_p = 0.55** because the (3,6) shear formula has no
+> solution there — it requires ε_p ≥ 0.60.
+
 ---
 
 ## Track 1: Build `ma_model_d.py`
@@ -1856,3 +1871,157 @@ model (fundamental modes on each sheet, coupled via cross-shears)
 improves both, and (c) what observable beyond mass — such as
 decay rates, magnetic moments, or fine structure — can
 discriminate between the two hypotheses.
+
+---
+
+## Addendum (2026-04): Re-run after the (1,2) hardcoding fix (Q114 §11.5)
+
+### What changed in the lib
+
+In April 2026, R52 Track 4f surfaced a foundational issue with
+`lib.ma_model_d.solve_shear_for_alpha`: the function was
+hardcoded for the (1,2) electron mode formula
+(`alpha_from_geometry` used `(2−s)²`) and silently returned the
+(1,2) shear regardless of which mode the caller intended.
+
+When R50 scripts called `solve_shear_for_alpha(EPS_P)` for the
+proton (1,3) at ε_p = 0.55, they got s_p = 0.111 — the shear
+that would give α=1/137 if the proton were a (1,2) mode.  The
+correct shear for the actual (1,3) proton at ε_p = 0.55 is
+**s_p = 0.162** — about 46% larger.
+
+The lib was generalized to take optional `(n_tube, n_ring)`
+parameters with default `(1, 2)` (preserving backward
+compatibility), and `MaD.from_physics` and the R50 scripts
+were updated to pass the correct mode through.
+
+### Impact on R50 findings
+
+**Tracks 2, 3, 6, 7 all use the lib's `solve_shear_for_alpha`
+to compute proton shear.**  Re-running with the corrected
+formula shows substantive changes:
+
+#### Track 2 (cross-shear sweep, F11/F12 neutron candidates)
+
+The old F11 candidate `(0, 0, 2, 2, 0, −8)` at σ_νp ≈ −0.13
+gave 939.819 MeV (Δ = +0.254 MeV).  With the corrected (1,3)
+shear, this same mode gives **2256 MeV** (Δ = +1317 MeV) at
+the same σ.
+
+The old F12 candidate `(0, 4, 1, −2, 0, 8)` at σ_ep ≈ −0.13
+gave ~939.2 MeV (Δ = +0.358 MeV).  With the corrected shear,
+this same mode gives **2258 MeV** (Δ = +1319 MeV).
+
+**The F11 and F12 results were artifacts of the wrong proton
+shear.**  They were finding delicate cancellations between
+neutrino-sheet and proton-sheet contributions that depended
+on the specific (incorrect) value s_p = 0.111.  With the
+correct s_p = 0.162, those cancellations don't exist.
+
+The re-run of Track 2 (with the corrected shear) now finds:
+- Best candidate: `(0, 4, 2, 2, 0, −4)` at σ_ep = −0.300
+- E = 1025 MeV (Δ = +85.9 MeV, 9.15%)
+
+This is a much WORSE match than the old F11/F12 (which were
+sub-MeV).  The conclusion is that **R50's previous neutron
+candidates are tainted** and the search needs to be redone
+with the corrected formula.
+
+#### Track 3 (full particle sweep)
+
+Re-run results:
+- Best σ_ep = **−0.27** (was −0.13 in old findings)
+- Reference matches: 3 good, 6 fair, 5 poor + 2 J-impossible
+  (was: similar counts but at different σ_ep)
+- Mode count: 450k vs ~486k previously (slight reduction)
+- Ω⁻, Σ, Ξ, Δ matches still found, with similar quality
+
+The qualitative picture (Track 3's main conclusions) is
+preserved: most particles match within ~5%, and Λ/Σ/Ξ/Δ
+have specific mode assignments.  But the **specific σ_ep
+value and mode tuples have shifted**, meaning Track 3's
+detailed mode catalog needs re-validation.
+
+#### Track 6 (unfiltered neutron, F11 vs F12)
+
+Re-run results:
+- (1,2): Δm = 39.205 MeV (poor) — unchanged (uses (1,2) formula correctly)
+- (1,3): Δm = **2.216 MeV** (was 0.900 MeV) — slightly worse
+- (3,6): **NO SOLUTION** — the (3,6) shear does not exist at ε_p = 0.55
+
+The qualitative finding ("(1,3) gives the best neutron match,
+the filter HIDES it") is preserved.  The (3,6) hypothesis
+**cannot even be evaluated** at ε_p = 0.55 because there's no
+valid shear — the (3,6) mode requires ε ≥ 0.60 to have a
+shear solution.
+
+#### Track 7 (sigma landscape)
+
+Re-run results:
+- (1,3): Best σ_ep = −0.280 (was −0.13)
+- (3,6): **CRASHES** — no valid sigma points (because no shear
+  solution at ε_p = 0.55)
+
+The Track 7 ranking of (1,3) vs (3,6) cannot be done at the
+working ε_p = 0.55.  To compare them properly, ε_p would need
+to be ≥ 0.60.
+
+### Impact on the (3,6) viability question
+
+A new finding: **the (3,6) proton interpretation is incompatible
+with model-D's working ε_p = 0.55.**  The shear formula has no
+solution for (3,6) at ε ≤ 0.55.  The (3,6) mode requires
+ε ≥ 0.60 to have a positive shear that gives α = 1/137.
+
+This is a real geometric constraint that emerges from the
+corrected formula.  It is NOT a flaw of the (3,6) hypothesis
+per se — only that the working ε_p value chosen for the (1,3)
+hypothesis is incompatible with (3,6).  A separate study could
+test (3,6) at ε_p ≥ 0.60.
+
+### What R50 needs to do (recommended)
+
+1. **Re-run the full Track 2 cross-shear sweep with the
+   corrected shear.**  The old F11/F12 candidates are
+   invalidated.  A fresh search may or may not find new
+   candidates that match the neutron mass.
+
+2. **Re-run Track 3 to update the particle catalog.**  The
+   detailed mode tuples and σ_ep values shift; verify that
+   the qualitative conclusions (most particles match within
+   ~5%) survive.
+
+3. **Track 6's neutron-as-(1,3) result is preserved
+   qualitatively** but the magnitude (2.216 MeV vs 0.900 MeV)
+   is slightly worse.  This is still excellent.
+
+4. **The (3,6) hypothesis cannot be tested at ε_p = 0.55.**
+   Either:
+   - Increase ε_p to ≥ 0.60 to test (3,6) (and re-derive
+     all (3,6)-dependent results)
+   - Or commit to (1,3) as the proton mode and drop (3,6)
+     comparisons
+
+5. **The qualitative findings** (waveguide filtering,
+   universal charge formula, structural parallels to the
+   electron) **are preserved** by the fix.  Only the
+   quantitative mode-by-mode predictions need re-validation.
+
+### Summary of impact
+
+| Track | Status | Impact |
+|-------|--------|--------|
+| 1 (validate) | Pre-existing failure (script bug, tests (3,6) at ε=0.55) | Not affected by fix |
+| 2 (cross-shear) | F11/F12 invalidated; new search needed | **Substantive change** |
+| 3 (particle sweep) | Shifted parameters, qualitative picture preserved | **Quantitative change** |
+| 5 (nuclear modes) | Uses MaD.from_physics — auto-corrected | Re-run recommended |
+| 6 (unfiltered neutron) | (1,3) preserved, (3,6) no longer viable | **Qualitative change for (3,6)** |
+| 7 (sigma landscape) | (1,3) shifted, (3,6) crashes | **(3,6) hypothesis cannot be tested at ε_p=0.55** |
+
+**Bottom line:** R50's central qualitative findings (universal
+charge formula, (1,3) preference, waveguide filtering) are
+preserved.  R50's specific quantitative results (mode tuples,
+σ_ep values, neutron candidates F11/F12) are tainted by the
+wrong proton shear and need to be re-derived.  This study
+should be **partially reopened** for a fresh particle search
+under the corrected geometry.

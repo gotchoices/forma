@@ -96,99 +96,79 @@ NearMiss = namedtuple('NearMiss', [
 
 
 # ══════════════════════════════════════════════════════════════════
-#  Alpha formula (R19 Track 8)
+#  Alpha formula (R19 Track 8) — generalized over (n_tube, n_ring)
 # ══════════════════════════════════════════════════════════════════
 
-def alpha_from_geometry(eps, s):
+def alpha_from_geometry(eps, s, n_tube=1, n_ring=2):
     """
-    Fine-structure constant from sheared torus geometry.
+    Fine-structure constant from sheared torus geometry, generalized
+    over the mode (n_tube, n_ring).
 
-    α(ε, s) = ε² μ sin²(2πs) / (4π(2−s)²)
+    α(ε, s, n_t, n_r) = ε² × μ × sin²(2π s) / (4π × (n_r − n_t·s)²)
 
-    where μ = √(1/ε² + (2−s)²) is the dimensionless (1,2) mode energy
-    on a sheet with aspect ratio ε and shear s.
+    where μ = √((n_t/ε)² + (n_r − n_t·s)²) is the dimensionless mode
+    energy on a sheet with aspect ratio ε and shear s.
+
+    For backward compatibility, the default mode is (1,2) — the
+    electron mode.  All existing model-D scripts that called
+    `alpha_from_geometry(eps, s)` continue to work and return the
+    (1,2) value.
+
+    For the proton, model-D uses either (1,3) [leading] or (3,6)
+    [viable alternative].  Pass the appropriate (n_tube, n_ring) to
+    compute the proton's α correctly.  See Q114 §11.5 for discussion
+    of why the (1,2)-only convention causes errors when applied to
+    the proton.
 
     Parameters
     ----------
     eps : float — aspect ratio (tube circumference / ring circumference)
-    s : float — within-plane shear, 0 < s < 0.5
+    s : float — within-plane shear (signed)
+    n_tube : int — tube winding number (default 1, electron)
+    n_ring : int — ring winding number (default 2, electron)
 
     Returns
     -------
     float — predicted fine-structure constant
     """
-    mu = math.sqrt(1 / eps**2 + (2 - s)**2)
-    return eps**2 * mu * math.sin(_TWO_PI * s)**2 / (4 * math.pi * (2 - s)**2)
+    q = n_ring - n_tube * s
+    mu = math.sqrt((n_tube / eps)**2 + q**2)
+    return eps**2 * mu * math.sin(_TWO_PI * s)**2 / (4 * math.pi * q**2)
 
 
-def solve_shear_for_alpha(eps, alpha_target=ALPHA, n_scan=3000):
+def solve_shear_for_alpha_signed(eps, alpha_target=ALPHA, sign=+1,
+                                  n_tube=1, n_ring=2, n_scan=3000):
     """
-    Find the shear s that produces a target α for a given aspect ratio ε.
+    Find the shear s such that α(ε, s, n_t, n_r) = α_target on a
+    chosen sign branch.
 
-    Uses a coarse scan followed by bisection (no scipy).
+    The α formula is **NOT symmetric in s** — at the same aspect
+    ratio ε, α(ε, +s) ≠ α(ε, −s).  Two solution branches therefore
+    exist:
 
-    **Returns the POSITIVE branch (magnitude only).**  The α formula
-    is sign-asymmetric, so two solution branches exist.  This function
-    returns only the positive one.  For the signed alternative, see
-    `solve_shear_for_alpha_signed`.
+    - **Positive branch (sign=+1):** small s > 0, the canonical
+      branch used by all existing model-D scripts.
+    - **Negative branch (sign=−1):** s < 0, magnitude typically
+      3–10× larger.  Used by R52 Track 4f to test the
+      opposite-sign-for-opposite-charge conjecture (Q114 §7).
 
-    Parameters
-    ----------
-    eps : float — aspect ratio
-    alpha_target : float — target α (default: measured α ≈ 1/137.036)
-    n_scan : int — number of scan points
-
-    Returns
-    -------
-    float or None — shear s ∈ (0, 0.5), or None if no solution exists.
-    """
-    s_scan = np.linspace(0.001, 0.49, n_scan)
-    a_scan = np.array([alpha_from_geometry(eps, s) for s in s_scan])
-
-    for i in range(len(s_scan) - 1):
-        if (a_scan[i] - alpha_target) * (a_scan[i + 1] - alpha_target) < 0:
-            lo, hi = s_scan[i], s_scan[i + 1]
-            for _ in range(60):
-                mid = (lo + hi) / 2
-                if (alpha_from_geometry(eps, mid) - alpha_target) * \
-                   (alpha_from_geometry(eps, lo) - alpha_target) < 0:
-                    hi = mid
-                else:
-                    lo = mid
-            return (lo + hi) / 2
-    return None
-
-
-def solve_shear_for_alpha_signed(eps, alpha_target=ALPHA, sign=+1, n_scan=3000):
-    """
-    Signed variant of `solve_shear_for_alpha`.
-
-    The α_from_geometry formula is **NOT symmetric in s** — at the
-    same aspect ratio ε, α(ε, +s) ≠ α(ε, −s).  Two solution branches
-    therefore exist:
-
-    - **Positive branch (sign=+1):** s ∈ (0, 0.5), small magnitude.
-      This is what `solve_shear_for_alpha` (the unsigned version)
-      returns.  All existing model-D scripts use this branch.
-
-    - **Negative branch (sign=−1):** s ∈ (−0.5, 0), magnitude
-      typically 3–10× larger than the positive branch at the same ε.
-      Different μ value, hence different particle mass at the same
-      L_ring calibration.  Used by R52 Track 4f to test the
-      "opposite sign for opposite charge" conjecture (Q114 §7).
+    Like `alpha_from_geometry`, this function takes (n_tube, n_ring)
+    parameters with default (1,2).  When called with non-default
+    (n_tube, n_ring), the result is the shear for THAT specific mode
+    on a sheet with aspect ratio ε.  This is what allows the proton
+    sheet to be computed correctly when its mode is (1,3) or (3,6).
 
     The two branches are PHYSICALLY DISTINCT — they correspond to
     different (ε, s) calibrations and would give different particle
     masses if substituted into existing scripts without rescaling
-    L_ring.  The unsigned function preserves the existing
-    calibration; this signed version is for exploration of alternate
-    conventions.
+    L_ring.
 
     Parameters
     ----------
     eps : float — aspect ratio
     alpha_target : float — target α (default: measured α ≈ 1/137.036)
     sign : int — +1 (positive branch, default) or −1 (negative branch)
+    n_tube, n_ring : int — mode quantum numbers (default 1, 2)
     n_scan : int — number of scan points
 
     Returns
@@ -202,21 +182,13 @@ def solve_shear_for_alpha_signed(eps, alpha_target=ALPHA, sign=+1, n_scan=3000):
 
     Notes
     -----
-    Like `solve_shear_for_alpha`, this function uses the (1,2) mode
-    α formula (`alpha_from_geometry`).  When called for the proton's
-    aspect ratio with the actual proton mode being (1,3) or (3,6),
-    the result is the shear that would give α = 1/137 IF the proton
-    were a (1,2) mode.  See Q114 §3 for discussion of this
-    mode-hardcoding limitation.
-
     Convention adopted by R52 Track 4f:
         - Electron (negative charge): sign = −1
         - Proton (positive charge):   sign = +1
-    The physical justification for this convention is the user's
-    intuition that within-plane shear sign should track the charge
-    sign of the particle (since both originate from the same tube
-    winding direction).  This is documented but not derived; see
-    Q114 §7.
+    The physical justification is the user's intuition that
+    within-plane shear sign should track the charge sign of the
+    particle (since both originate from the same tube winding
+    direction).  This is documented but not derived; see Q114 §7.
     """
     if sign not in (+1, -1):
         raise ValueError(f"sign must be +1 or -1, got {sign}")
@@ -226,20 +198,60 @@ def solve_shear_for_alpha_signed(eps, alpha_target=ALPHA, sign=+1, n_scan=3000):
     else:
         s_scan = np.linspace(-0.49, -0.001, n_scan)
 
-    a_scan = np.array([alpha_from_geometry(eps, s) for s in s_scan])
+    a_scan = np.array([alpha_from_geometry(eps, s, n_tube, n_ring)
+                       for s in s_scan])
+
+    def _alpha(s):
+        return alpha_from_geometry(eps, s, n_tube, n_ring)
 
     for i in range(len(s_scan) - 1):
         if (a_scan[i] - alpha_target) * (a_scan[i + 1] - alpha_target) < 0:
             lo, hi = s_scan[i], s_scan[i + 1]
             for _ in range(60):
                 mid = (lo + hi) / 2
-                if (alpha_from_geometry(eps, mid) - alpha_target) * \
-                   (alpha_from_geometry(eps, lo) - alpha_target) < 0:
+                if (_alpha(mid) - alpha_target) * \
+                   (_alpha(lo) - alpha_target) < 0:
                     hi = mid
                 else:
                     lo = mid
             return (lo + hi) / 2
     return None
+
+
+def solve_shear_for_alpha(eps, alpha_target=ALPHA, n_tube=1, n_ring=2, n_scan=3000):
+    """
+    Find the positive-branch shear s that produces a target α.
+
+    Thin wrapper around `solve_shear_for_alpha_signed` with sign=+1.
+    Returns the magnitude (always positive).  This is the historical
+    behavior — all existing callers continue to work.
+
+    For the signed version (with explicit sign branch selection),
+    use `solve_shear_for_alpha_signed`.
+
+    Parameters
+    ----------
+    eps : float — aspect ratio
+    alpha_target : float — target α (default: measured α ≈ 1/137.036)
+    n_tube, n_ring : int — mode quantum numbers (default 1, 2 = electron)
+    n_scan : int — number of scan points
+
+    Returns
+    -------
+    float or None — positive shear s, or None if no solution exists.
+
+    Notes
+    -----
+    With default (n_tube, n_ring) = (1, 2), this function reproduces
+    the original behavior exactly.  When called for the proton with
+    n_ring != 2, it returns the shear for THAT mode (not the (1,2)
+    shear at the proton's ε).  See Q114 §11.5 for the discussion of
+    why the previous (1,2)-hardcoded behavior caused errors.
+    """
+    s = solve_shear_for_alpha_signed(eps, alpha_target, sign=+1,
+                                       n_tube=n_tube, n_ring=n_ring,
+                                       n_scan=n_scan)
+    return abs(s) if s is not None else None
 
 
 def mu_mode(n_tube, n_ring, eps, s):
@@ -644,12 +656,20 @@ class MaD:
         -------
         MaD instance
         """
-        s_e = solve_shear_for_alpha(eps_e)
+        # NOTE: previous versions called solve_shear_for_alpha(eps_p)
+        # without specifying the proton mode, which silently used the
+        # (1,2) formula even when n_p = (1,3) or (3,6).  The result
+        # was an inconsistent calibration: shear for (1,2) but
+        # L_ring for the actual mode.  Fixed in 2026-04 to pass the
+        # mode through.  See Q114 §11.5 and R52 findings F25.
+        s_e = solve_shear_for_alpha(eps_e, n_tube=n_e[0], n_ring=n_e[1])
         if s_e is None:
-            raise ValueError(f"No shear solution for eps_e = {eps_e}")
-        s_p = solve_shear_for_alpha(eps_p)
+            raise ValueError(
+                f"No shear solution for eps_e = {eps_e}, mode {n_e}")
+        s_p = solve_shear_for_alpha(eps_p, n_tube=n_p[0], n_ring=n_p[1])
         if s_p is None:
-            raise ValueError(f"No shear solution for eps_p = {eps_p}")
+            raise ValueError(
+                f"No shear solution for eps_p = {eps_p}, mode {n_p}")
 
         L_ring_e = ring_circumference_fm(M_E_MEV, eps_e, s_e, n_e[0], n_e[1])
         L_ring_p = ring_circumference_fm(M_P_MEV, eps_p, s_p, n_p[0], n_p[1])

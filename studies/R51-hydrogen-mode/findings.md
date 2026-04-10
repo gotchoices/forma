@@ -2,6 +2,15 @@
 
 Study: [`README.md`](README.md)
 
+> **2026-04 addendum:** R51 was affected by the (1,2)-hardcoding bug
+> in `solve_shear_for_alpha` (Q114 §11.5).  The proton shear was
+> being computed as if the proton were a (1,2) mode.  After the fix,
+> the σ=0 hydrogen result is unchanged (it depends only on the
+> particle masses), and the σ≠0 numerics shift but the qualitative
+> conclusion (R51 negative — bilinear cross-coupling cannot produce
+> hydrogen binding) is **preserved**.  See the addendum at the
+> bottom of this file for details.
+
 ---
 
 ## Track 1: Energy cost of adding an electron to a proton
@@ -695,3 +704,72 @@ The two-tier physics of R29 — Ma eigenmodes for MeV-scale
 particles, emergent Coulomb potential in S for eV-scale
 binding — appears to be structurally necessary, not an
 approximation that can be unified away.
+
+---
+
+## Addendum (2026-04): Re-run after the (1,2) hardcoding fix (Q114 §11.5)
+
+R52 Track 4f surfaced a foundational issue with
+`solve_shear_for_alpha`: the function was hardcoded for the
+(1,2) electron mode formula and silently returned the (1,2)
+shear regardless of the mode the caller intended.
+
+**R51 was affected** because all four tracks compute
+`s_p = solve_shear_for_alpha(EPS_P)` without specifying the
+proton mode.  At ε_p = 0.55, the lib was returning s_p = 0.111
+(the (1,2) shear) instead of the correct s_p = 0.162 for (1,3).
+
+### Re-run results
+
+The R51 build_model functions were updated to pass the proton
+mode through.  Re-running:
+
+#### (1,3) hypothesis at σ_ep = 0
+
+**Unchanged.** ΔE_add = 139.149 eV, I.E. = 510,860 eV.
+
+The σ = 0 result is invariant to the proton shear because
+there is no cross-coupling at σ_ep = 0.  The energy reduces
+to the quadrature √(m_e² + m_p²) − m_p, which depends only
+on the proton mass (preserved by L_ring calibration) and
+the electron mass.
+
+#### (1,3) hypothesis at nonzero σ_ep
+
+The optimal σ_ep shifts from −0.13 (old) to −0.28 (new), with
+correspondingly different ΔE_add values.  But the qualitative
+conclusion (the cross-coupling cannot reduce ΔE_add to 13.6 eV)
+is **preserved**.  R51's main conclusion — that hydrogen
+binding is NOT a cross-sheet bilinear effect — survives the
+fix.
+
+#### (3,6) hypothesis
+
+**Cannot be evaluated.** The (3,6) shear has no solution at
+ε_p = 0.55 (the formula α(ε, s, 3, 6) = 1/137 has no positive
+root in the (0, 0.5) range at this aspect ratio).  All R51
+scripts that test (3,6) at the working ε_p crash with a
+"no shear solution" error.  The (3,6) interpretation requires
+ε_p ≥ 0.60 to have a valid shear.
+
+### Impact on R51 conclusions
+
+| Conclusion | Status |
+|------------|--------|
+| Hydrogen is not a single-mode (1,3) compound eigenvalue | **Preserved** (σ=0 result unchanged) |
+| Cross-shear σ_ep cannot reduce ΔE_add to 13.6 eV | **Preserved** (just at different optimal σ value) |
+| Neutrino-mediated coupling fails (Track 1b) | **Preserved** (similar reasoning) |
+| Multi-mode shared-ν decomposition fails (Track 1c) | **Preserved** |
+| (3,6) interpretation results | **Invalidated** — cannot be computed at ε_p = 0.55 |
+| Two-tier physics is structurally necessary | **Preserved** |
+
+**Bottom line:** R51's main qualitative conclusion (the bilinear
+G̃⁻¹ formulation cannot produce hydrogen binding) is **robust**
+to the shear fix.  The result that the energy gap is ~10× the
+target survives because the σ=0 limit is shear-independent.
+The numerical details for σ ≠ 0 cases shift but the
+"insurmountable gap" conclusion is preserved.
+
+R51 does **not** need to be reopened.  The fix is documented
+here for traceability but the study's verdict (negative) is
+unchanged.

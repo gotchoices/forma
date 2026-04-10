@@ -346,56 +346,100 @@ existing scripts continue to work and produce the same results.
 New scripts (R52 Track 4f and successors) can use the signed
 version when sign matters.
 
-### 11.5 Mode-hardcoding limitation (separate from sign)
+### 11.5 Mode-hardcoding fix (April 2026)
 
-Both `solve_shear_for_alpha` and `solve_shear_for_alpha_signed`
-use `alpha_from_geometry`, which is hardcoded for the (1,2) mode
-formula: it has `(2−s)²` in the denominator and the μ formula
-uses `(2−s)²` in the squared term.
+**Original problem:** `alpha_from_geometry` was hardcoded for
+the (1,2) electron mode formula: it had `(2−s)²` in both the
+denominator and the μ expression.  Calling
+`solve_shear_for_alpha(eps_p)` for the proton returned the
+shear that would give α = 1/137 IF the proton were a (1,2)
+mode — silently wrong for the (1,3) or (3,6) proton.
 
-This means: when the function is called for the proton's aspect
-ratio (e.g., ε_p = 0.55), it returns the shear that would give
-α = 1/137 IF the proton were a (1,2) mode.  For the actual
-proton mode (1,3) or (3,6), the formula would have to be
-generalized:
+**Fix applied** (lib/ma_model_d.py): both functions
+generalized to take optional `(n_tube, n_ring)` parameters
+with default `(1, 2)` for backward compatibility.  The new
+formula:
 
 > α(ε, s, n_t, n_r) = ε² × μ × sin²(2π s) / (4π × (n_r − n_t·s)²)
 > where μ = √((n_t/ε)² + (n_r − n_t·s)²)
 
-Setting (n_t, n_r) = (1, 2) recovers the existing formula.
+Setting `(n_t, n_r) = (1, 2)` recovers the original behavior
+exactly.  All existing callers using the default still work.
 
-This is a **separate** foundational issue from the sign question.
-It affects the same R50/R51 scripts that compute s_p — they're
-all using the (1,2) formula for the proton even though model-D
-treats the proton as (1,3).
+**`MaD.from_physics` updated** to pass the proton mode
+through, so it now computes the correct shear for whichever
+mode is being used (default n_p = (1,3)).
 
-**Confirmed manifestation:** R50 Track 1 validation
-(`R50-filtered-particle-search/scripts/track1_validate.py`)
-fails its proton-mass assertion when computing the proton via
-the (3,6) mode:
+**R50/R51 scripts updated** to pass the proton mode through:
+- R50: track2_cross_shear_sweep, track3_particle_sweep,
+  track6_unfiltered_neutron, track7_sigma_landscape
+- R51: track1_electron_addition, track1a_decomposition,
+  track1b_neutrino_mediated, track1c_multimode
 
-> `AssertionError: Proton energy off: 2162.0003 (expected ~938.272)`
+**`solve_shear_for_alpha` is now a thin wrapper** around
+`solve_shear_for_alpha_signed(sign=+1)` — one source of truth.
 
-This error is **pre-existing**, not introduced by the audit.
-It surfaces because Track 1 explicitly tries to compute the
-proton energy with the (3,6) mode using a metric calibrated
-via `solve_shear_for_alpha` (which assumes (1,2)).  The mass
-comes out 2.3× too high.
+### 11.6 Re-run results: which studies were affected
 
-For the (1,3) proton hypothesis, the same problem exists in
-principle but is less severe (the (1,3) shear is closer to the
-(1,2) shear at the same ε).
+**Critical empirical finding:**
 
-**Recommendation:** flag this as a known limitation.  The
-mode-hardcoding fix would require:
-1. A generalized `alpha_from_geometry(eps, s, n_tube, n_ring)`
-2. A generalized `solve_shear_for_alpha(eps, n_tube, n_ring,
-   alpha_target, sign)`
-3. Re-running R50/R51 to check whether their conclusions hold
-   with the corrected formula
-4. Possibly reopening studies whose proton-related conclusions
-   depend on the precise s_p value
+| ε_p = 0.55 | Old shear (1,2 default) | New shear (correct) | Change |
+|------------|------------------------|--------------------|--------:|
+| Proton (1,3) | 0.111 | **0.162** | +46% |
+| Proton (3,6) | 0.111 | **NO SOLUTION** | — |
 
-This is a **separate, larger investigation** that should not
-be attempted as part of the current sign-issue fix.  It is
-documented here so that future work can address it deliberately.
+The (3,6) interpretation **has no positive shear solution at
+ε_p ≤ 0.55**.  It requires ε_p ≥ 0.60 to be viable.  This is
+a hard geometric constraint that the (1,2)-hardcoding had been
+hiding.
+
+**R50 impact (full re-run):**
+- F11 candidate `(0,0,2,2,0,−8)` at σ_νp ≈ −0.13:
+  - OLD: E = 939.819 MeV (Δ = +0.254 MeV) ★ apparent neutron
+  - NEW: E = 2256 MeV (Δ = +1317 MeV) — invalidated
+- F12 candidate `(0,4,1,−2,0,8)` at σ_ep ≈ −0.13:
+  - OLD: E ≈ 939.2 MeV (Δ = +0.358 MeV) ★ apparent neutron
+  - NEW: E = 2258 MeV (Δ = +1319 MeV) — invalidated
+- New best Track 2 candidate: `(0,4,2,2,0,−4)` at
+  σ_ep = −0.300, E = 1025 MeV (Δ = +85.9 MeV) — much worse
+- Track 3 best σ_ep shifts from −0.13 to −0.27
+- Track 6 (1,3) result: 0.900 → 2.216 MeV (slightly worse, still excellent)
+- Track 6 (3,6) result: NO SOLUTION at ε_p = 0.55
+- Track 7 (3,6) hypothesis: CRASHES (no shear solution)
+
+**R50 conclusion:** the qualitative findings (universal charge
+formula, (1,3) preference, waveguide filtering) are
+**preserved**.  The quantitative results (F11/F12 neutron
+candidates, specific mode tuples, σ_ep values) are
+**substantively invalidated** and need to be re-derived.  R50
+should be **partially reopened** for a fresh particle search.
+
+**R51 impact (full re-run):**
+- (1,3) at σ_ep = 0: ΔE_add = 139.149 eV (UNCHANGED — σ=0 is
+  shear-independent)
+- (1,3) at nonzero σ_ep: optimal σ shifts from −0.13 to −0.28,
+  but same qualitative conclusion (cannot reduce gap to 13.6 eV)
+- (3,6): cannot be evaluated at ε_p = 0.55
+
+**R51 conclusion:** the central qualitative conclusion (R51
+NEGATIVE — bilinear cross-coupling cannot produce hydrogen
+binding) is **preserved** because the σ=0 result is
+shear-independent.  R51 does **not** need to be reopened.
+
+### 11.7 Pre-existing R50 Track 1 failure
+
+R50 Track 1 (`scripts/track1_validate.py`) has been failing
+since the model-D default proton mode was changed from (3,6)
+to (1,3).  The script tests `n_p = (0,0,0,0,3,6)` but
+`from_physics()` calibrates with `n_p = (1,3)`, so the
+computed energy is for a different mode at the (1,3)
+calibration.
+
+This is a **pre-existing script bug**, not caused by the
+audit fix.  The fix doesn't repair it — track1_validate
+needs to either:
+- Test with `n_p = (1,3)` consistent with the default, or
+- Pass `n_p = (3,6)` to from_physics (which now requires
+  ε_p ≥ 0.60 since (3,6) has no shear solution at 0.55)
+
+This is documented but not fixed here.

@@ -44,7 +44,9 @@ MEV_TO_EV = 1e6
 def build_model(n_p, sigma_ep=0.0):
     """Build MaD with L_ring derived self-consistently."""
     s_e = solve_shear_for_alpha(EPS_E)
-    s_p = solve_shear_for_alpha(EPS_P)
+    # NOTE (Q114 §11.5): pass proton mode through; previous version
+    # silently used the (1,2) shear for the proton.
+    s_p = solve_shear_for_alpha(EPS_P, n_tube=n_p[0], n_ring=n_p[1])
     s_nu = S_NU_DEFAULT
 
     if s_e is None or s_p is None:

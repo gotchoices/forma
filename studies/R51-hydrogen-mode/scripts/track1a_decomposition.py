@@ -34,7 +34,8 @@ PROTON_MODES = [(1, 3), (3, 6)]
 def build_model(n_p, sigma_ep=0.0):
     """Build MaD with self-consistent L_ring (recalibrated)."""
     s_e = solve_shear_for_alpha(EPS_E)
-    s_p = solve_shear_for_alpha(EPS_P)
+    # NOTE (Q114 §11.5): pass proton mode through.
+    s_p = solve_shear_for_alpha(EPS_P, n_tube=n_p[0], n_ring=n_p[1])
     s_nu = S_NU_DEFAULT
     if s_e is None or s_p is None:
         return None, s_e, s_p
@@ -166,7 +167,9 @@ def step2_alpha_scaling(n_p, sigma_ep=-0.28):
     for factor in alpha_factors:
         alpha_test = ALPHA * factor
         s_e = solve_shear_for_alpha(EPS_E, alpha_target=alpha_test)
-        s_p = solve_shear_for_alpha(EPS_P, alpha_target=alpha_test)
+        # NOTE (Q114 §11.5): pass proton mode through.
+        s_p = solve_shear_for_alpha(EPS_P, alpha_target=alpha_test,
+                                     n_tube=n_p[0], n_ring=n_p[1])
         if s_e is None or s_p is None:
             print(f"  {factor:6.2f}  — no solution —")
             continue

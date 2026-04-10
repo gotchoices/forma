@@ -69,7 +69,10 @@ def build_corrected_model(sigma_ep=0.0, sigma_enu=0.0, sigma_nup=0.0,
     Returns (model, info_dict) or (None, info_dict) if metric fails.
     """
     s_e = solve_shear_for_alpha(eps_e)
-    s_p = solve_shear_for_alpha(eps_p)
+    # NOTE (Q114 §11.5): pass proton mode through so the shear is for
+    # the actual mode (1,3), not the (1,2) default.  Earlier versions
+    # of this script silently used the (1,2) shear for the proton.
+    s_p = solve_shear_for_alpha(eps_p, n_tube=n_p[0], n_ring=n_p[1])
     s_nu = S_NU_DEFAULT
 
     if s_e is None or s_p is None:
