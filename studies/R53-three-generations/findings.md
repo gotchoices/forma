@@ -473,6 +473,58 @@ coupling.
 **Complete.** Precision values established for 3 confirmed
 solutions.  Up-type quarks remain open (no single-sheet solution).
 
+---
+
+## Track 6: Ghost inventory
+
+### F26. Shear ordering eliminates the sub-electron ghost problem
+
+| Geometry | Lepton-like ghosts (Q=±1, spin ½, irred) | Lightest ghost | (1,1) mass |
+|----------|------------------------------------------|----------------|------------|
+| **Model-D** (ε=0.65) | 82 | 0.32 MeV **(lighter than e!)** | 0.37 MeV |
+| **Solution B** (ε=330) | 78 | **104 MeV (muon region)** | **209 MeV** |
+| **Solution D** (ε=397) | 78 | **104 MeV (muon region)** | **209 MeV** |
+
+In model-D, the (1,1) ghost at 0.37 MeV is lighter than the
+electron (0.511 MeV) and requires waveguide cutoff to eliminate.
+In the R53 geometries, the electron IS the lightest mode — the
+(1,1) "ghost" is at 209 MeV, heavier than the muon.  No filter
+needed.
+
+### F27. The 20 lightest modes are all fragmentable harmonics
+
+At the R53 geometry, the lightest non-electron modes are (2,6),
+(3,9), (4,12), (5,15)... — integer multiples of the electron
+(1,3).  All have gcd > 1 and can fragment into copies of the
+electron.  They are NOT stable particles; they are unstable
+harmonics that decay.
+
+The first IRREDUCIBLE (gcd=1) mode above the electron is (1,4)
+or (1,2) at ~104 MeV — the muon region.  This is exactly what
+the three-generation mechanism predicts: the muon is the first
+non-electron stable-topology mode.
+
+### F28. Ghost count is comparable but distribution is transformed
+
+The total lepton-like ghost count (~78) is similar to model-D's
+(~82).  But the distribution is radically different:
+
+- Model-D: 82 ghosts crammed below 10 MeV (dense, problematic)
+- R53: 78 ghosts spread from 104 to 2000 MeV (sparse, with the
+  electron cleanly isolated at the bottom)
+
+The shear-resonance geometry doesn't eliminate ghosts — it
+REORDERS them so the electron is at the bottom and everything
+else is far above.  The ghost "problem" becomes a ghost
+"feature": the 78 modes are candidates for the muon, tau,
+and heavier particles.
+
+### Track 6 status
+
+**Complete.** The ghost problem is transformed, not eliminated.
+No sub-electron ghosts exist.  The electron is naturally the
+lightest charged mode at the R53 geometry.
+
 ### Track 1 status (revised)
 
 **Complete.** The three-generation hypothesis is confirmed for
