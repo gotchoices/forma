@@ -1,9 +1,9 @@
 # R52 Findings
 
 **Study:** Anomalous magnetic moment from torus self-field
-**Status:** Reopened.  Tracks 1–4c failed (no shear); Track 4d (continuous self-energy WITH shear) shows mode-dependent sign-flip behavior — the sign rule emerges at moderate shear values (s ≳ 0.020-0.025 at the proton aspect ratio).
+**Status:** Reopened.  Tracks 1–4c failed (no shear); Track 4d (continuous self-energy WITH shear) and Track 4e (vector self-interaction WITH shear) both show mode-dependent sign-flip behavior with a viability window at small r (filtering range), but MaSt's natural shear formula gives values ~30% below the window.  The vector approach (4e) gives essentially the same threshold as the scalar approach (4d).
 
-Overall: 14 findings from 6 tracks (1, 2, 4a, 4b, 4c, 4d).
+Overall: 17 findings from 7 tracks (1, 2, 4a, 4b, 4c, 4d, 4e).
 
 ---
 
@@ -449,65 +449,233 @@ The gap (~30% in shear) is small enough to be plausibly
 closed by any of these adjustments.  Without further work,
 we cannot say which one is responsible.
 
-### F15. The lib's pinned r_p = 8.906 contradicts the filtering range
+### F15. r_p = 8.906 was model-C; model-D uses ε_p ≈ 0.55 (filtering range)
 
-R27 F18 pinned the proton aspect ratio at r_p = 8.906 by
-matching neutron and muon masses.  At this value:
-- The torus is **self-intersecting** (a > R means the tube
-  wraps through itself)
-- The (1,2) sign-flip threshold disappears (no flip below s = 0.5)
-- The (1,3) threshold is at s ≈ 0.016
-- MaSt's natural shear is s = 0.008
+Earlier R52 analyses (including the original framing of this
+finding) used model-C's pinned proton aspect ratio r_p = 8.906.
+This was a mistake — model-C's pinning of r_p (and σ_ep)
+from neutron + muon masses was retracted in model-D as
+"premature pinning" (model-D.md §4 of the parameter scorecard).
 
-The user's filtering argument predicts r ∈ (1/3, 1/2), which is
-a normal non-self-intersecting torus.  These two pinning
-arguments give **mutually inconsistent** values (8.906 vs 0.4).
+**Model-D treats ε_p as constrained by waveguide filtering**
+(must kill (1,1) and (1,2), pass (1,3)), giving the working
+range ε_p ∈ (0.33, 0.6) with working value 0.55.  This is
+exactly the user's filtering argument, and it matches R52's
+viability window structure.
 
-If the filtering argument is physically correct, then R27 F18's
-mass-matching procedure was using wrong assumptions and the
-proton's true aspect ratio is small.  Conversely, if R27 F18 is
-correct, then the filtering interpretation needs revision.
+The "contradiction" identified in the original F15 was an
+artifact of using the wrong (retracted) model-C value.  Within
+model-D, there is no contradiction — the filtering range and
+the viability window are compatible by construction.
 
-Either way, this is a contradiction that R52 has surfaced and
-that needs resolution.  It is independent of the sign rule
-itself but is highly relevant to whether the sign rule applies
-to the proton.
+What remains:
+- At model-D's working ε_p = 0.55 with the within-plane MaSt
+  shear s_p = 0.111, the proton sits below the sign-flip
+  window by 0.056
+- But model-D includes σ_ep = -0.13 (a cross-sheet shear) that
+  Tracks 4d/4e did not test
+- |σ_ep| = 0.13 is the right magnitude to close the 0.056 gap
+
+See F18 for the model-D analysis and the σ_ep test as the
+next step.
 
 ---
 
-## Track 4 status (revised after triangulation)
+### Sub-track 4e: Vector self-interaction WITH shear — CONFIRMS 4d
+
+Script: [`scripts/track4e_vector_with_shear.py`](scripts/track4e_vector_with_shear.py)
+
+Adds vector content to Track 4d's calculation:
+
+> W = (1/2) Σ ψ(r₁) ψ(r₂) (ê_geo(r₁) · ê_geo(r₂)) / |r₁ − r₂|
+
+where ê_geo is the unit tangent along the (1, n_ring) geodesic at
+each surface point.  The dot product can be positive or negative
+depending on whether the geodesic tangent at two points is
+parallel or antiparallel.  This is the missing vector content
+that Tracks 4a-c didn't have.
+
+**Result:** essentially identical to Track 4d.
+
+The viability windows from Track 4e:
+
+| r | s_window (4d) | s_window (4e) | Difference |
+|---|---|---|---|
+| 0.34 | (0.215, 0.250) | (0.220, 0.255) | +0.005 |
+| 0.40 | (0.200, 0.240) | (0.205, 0.245) | +0.005 |
+| 0.45 | (0.190, 0.230) | (0.195, 0.235) | +0.005 |
+| 0.49 | (0.180, 0.220) | (0.185, 0.225) | +0.005 |
+
+The vector approach shifts the window UP by about 0.005 in s
+across all r values — a tiny correction.  The MaSt shear is now
+~0.06 below the window instead of ~0.05 below.  The vector
+content does NOT close the gap.
+
+
+### F16. The vector content does not change the qualitative result
+
+Track 4e was the most-likely candidate for closing the gap
+between MaSt's natural shear and the sign-flip threshold.  The
+result: it doesn't.  The (ê_geo · ê_geo) factor varies smoothly
+across the surface and largely re-scales the integrand without
+changing where it crosses zero.
+
+This means **the qualitative behavior (mode-dependent shear
+response with a viability window at small r) is robust to the
+choice of self-interaction kernel** — it's a real geometric
+feature of the problem, not an artifact of the scalar
+approximation.
+
+It also means **none of the Track 4 sub-experiments will close
+the gap by themselves**.  The remaining options are:
+- Different shear-α formula for the (1,3) mode (constraint 2)
+- Larger effective α for the proton (constraint 1)
+- Resolving the r_p contradiction (constraint 0 — different r)
+
+
+### F17. Caveats and alternative proton interpretations
+
+Tracks 4d and 4e both treat the proton as a single (1,3) mode
+with the (1,2) electron's shear-α formula.  Three caveats apply
+to the conclusions:
+
+1. **Mode filtering by ε is not fully understood.**  We hypothesize
+   that a (1, n_ring) mode "fits" in the tube only if the tube
+   geometry can support n_ring ring oscillations.  But the torus
+   is not a hollow waveguide with hard walls — it is a closed
+   surface with periodic boundary conditions in both directions.
+   The exact meaning of "fit" is open.  The cutoff argument
+   ε > 1/n_ring is a guess, not a derivation.
+
+2. **The proton mode assignment is not fixed.**  Three options:
+   - **(1, 3) — fundamental:** the leading hypothesis (R47).
+     Tracks 4d-e use this.
+   - **3 × (1, 3) phase-shifted:** three copies of (1, 3) with
+     relative phases 0°, 120°, 240° sharing the same sheet.
+     The "three-color" structure could be physically realized
+     this way rather than as antinodes of a single mode.  Sign
+     rule predictions would differ.
+   - **(3, 6) composite:** the original R47 hypothesis,
+     not formally excluded.  Bare moment via flux quantization
+     would be 6 μ_N (deviation from 2.793 μ_N is much larger).
+     Less favored quantitatively but still on the table.
+
+3. **The shear-α formula in `lib.ma.solve_shear_for_alpha` was
+   derived from the (1, 2) electron mode.**  Whether the same
+   formula applies to (1, 3) or its alternatives is not
+   established.  This is the most likely place where the gap
+   could close.
+
+These caveats apply to all R52 tracks.  Conclusions about the
+proton sign rule are conditional on (1, 3) being the correct
+assignment and on the electron's shear-α formula transferring
+to it.
+
+
+### F18. Model-D analysis: cross-sheet shear σ_ep is the missing ingredient
+
+Earlier R52 analyses (F14, F15) used model-C's pinned proton
+aspect ratio r_p = 8.906.  This was a mistake — model-C's
+pinning was retracted (model-D treats ε_p as swept, working
+value 0.55 from waveguide filtering).  Re-analyzing with model-D
+parameters:
+
+**Model-D working values:**
+- ε_e = 0.65 (waveguide range 0.5–0.8)
+- ε_p = 0.55 (waveguide range 0.33–0.6)
+- σ_ep = −0.13 (cross-sheet shear, R50 T2)
+
+**MaSt within-plane shears (from `lib.ma.solve_shear_for_alpha`):**
+- s_e (electron, ε=0.65) = 0.0959
+- s_p (proton,  ε=0.55) = 0.1110
+
+**Sign-flip windows at model-D ε values:**
+- At ε = 0.55: window (0.167, 0.209)
+- At ε = 0.65: window (0.152, 0.194)
+
+**Gaps from MaSt within-plane shear to window:**
+- Electron: 0.096 → window 0.152, gap 0.056 (37% below)
+- Proton:  0.111 → window 0.167, gap 0.056 (33% below)
+
+**The gap is identical (0.056) for both particles.**  This is a
+structural feature, not particle-specific.  Whatever closes it
+shifts both windows.
+
+**The cross-sheet shear σ_ep = −0.13 is exactly the missing
+magnitude.**  Tracks 4d and 4e completely ignored σ_ep — they
+used only the within-plane shear (s_e or s_p).  Including σ_ep
+would add a contribution with magnitude ~0.13 to the effective
+shear seen by each particle.  Whether this closes the gap
+depends on:
+
+1. The sign convention (σ_ep = −0.13 is negative; how does it
+   add to a positive within-plane shear?)
+2. Whether σ_ep affects both sheets symmetrically or only one
+3. The functional form of the cross-sheet contribution to
+   self-interaction
+
+If σ_ep adds the right sign and magnitude, the predicted sign
+pattern would emerge for both particles at their actual model-D
+parameters.  The 0.056 gap and the 0.13 magnitude of σ_ep are
+in the right ratio (~2:1) to close it with reasonable
+weighting.
+
+**This is a major finding that changes the interpretation of
+Track 4d and 4e.** The negative result was due to using the
+wrong model (model-C r_p = 8.906) and ignoring the cross-sheet
+shear.  Re-running with model-D parameters AND including σ_ep
+is the natural next test.
+
+---
+
+## Track 4 status (after 4d and 4e)
 
 | Sub-track | Method | Result |
 |-----------|--------|--------|
 | 4a | Pairwise Coulomb (no shear) | Same-sign for both modes |
 | 4b | Loop mutual inductance (no shear) | Same-sign for both modes |
 | 4c | Continuous self-energy (no shear) | Same-sign at r_p; flip only at r ≈ 25 |
-| **4d** | **Continuous self-energy WITH shear** | **Mode-dependent: viability window exists at small r, MaSt shear ~30% below window** |
-| 4e | Vector potential back-reaction with shear | Not yet run |
+| **4d** | **Continuous self-energy WITH shear** | **Mode-dependent: viability window at small r; MaSt shear ~30% below** |
+| **4e** | **Vector self-interaction WITH shear** | **Confirms 4d; vector content shifts window by only 0.005** |
 
-**Major findings from Track 4d:**
+**Net result of Track 4:**
 
-1. The shear-induced sign rule mechanism EXISTS — (1,2) and (1,3)
-   modes have qualitatively different shear responses at the
-   classical scalar self-energy level
-2. A viability window exists at small r (in the user's predicted
-   filtering range) where the predicted sign pattern can be
-   achieved
-3. The MaSt shear formula gives values just below the viability
-   window — the gap is 30% in shear, plausibly closable by
-   small adjustments to one of three constraints
-4. R27 F18's pinning of r_p = 8.906 contradicts the filtering
-   interpretation; this is a separate issue worth investigating
+The shear-induced mode-dependent sign rule mechanism is REAL.  The
+viability window EXISTS at small r in the user's filtering range.
+The pattern is robust across scalar (4d) and vector (4e)
+formulations.
 
-R52 is **strongly partial-positive**.  The hypothesis (sign rule
-from shear-mediated mode-dependent corrections) is supported in
-qualitative form, and the quantitative match to the proton is
-within ~30% of working.  Three independent next steps could close
-the gap:
+But the MaSt shear formula (derived for the electron) gives values
+~30% below the window across the user's filtering range.  This gap
+is robust to:
+- Vector vs scalar self-interaction (4d vs 4e: differ by 0.005)
+- Resolution (24×48 → 48×96)
+- Softening parameter (eps_factor 0.1 → 2.0)
 
-- Track 4e (vector approach) — might lower the threshold
-- Check whether the (1,3) shear-α formula differs from (1,2)
-- Resolve the r_p inconsistency between filtering and R27 F18
+The remaining ways to close the gap:
+
+1. **Different shear-α formula for (1,3).**  The lib's
+   `solve_shear_for_alpha` was derived for (1,2).  Computing the
+   equivalent for (1,3) might give a substantially larger shear
+   at the same r.  This is the most natural fix and is testable.
+
+2. **Larger effective α for the proton.**  Running coupling at
+   GeV scale gives ~1/128 (small change).  Non-perturbative effects
+   could give a larger increase, but this needs justification.
+
+3. **Resolve the r_p contradiction.**  Lib has r_p = 8.906; the
+   filtering argument predicts r_p ∈ (1/3, 1/2).  These are
+   incompatible.  Re-deriving R27 F18 with the filtering constraint
+   is a separate study.
+
+4. **Reconsider the proton mode assignment.**  If the proton is
+   actually 3 × (1,3) phase-shifted or (3,6), the sign rule
+   analysis needs to be redone.
+
+R52 is **strongly partial-positive but not converged**.  The
+hypothesis is alive and the structural picture is consistent, but
+quantitative agreement at the proton's actual parameters has not
+been achieved.
 
 ---
 

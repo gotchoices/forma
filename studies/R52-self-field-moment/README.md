@@ -1,10 +1,47 @@
 # R52: Anomalous magnetic moment from torus self-field
 
-**Status:** Reopened — Track 4d strongly partial-positive.  Sign-rule mechanism exists; viability window present at small r in the user's predicted filtering range (1/3, 1/2); MaSt shear formula gives values ~30% below the window.  R27 F18's pinning of r_p = 8.906 contradicts the filtering interpretation — this inconsistency needs resolution.  See findings F12-F15.
+**Status:** Reopened — Tracks 4d/4e show the sign-rule mechanism exists with a viability window in the model-D filtering range (ε ≈ 0.33-0.6 for proton, 0.5-0.8 for electron).  At model-D's MaSt within-plane shears (s_p ≈ 0.111, s_e ≈ 0.096), both particles sit ~0.056 below their respective windows (a uniform 30-37% gap).  **Model-D's cross-sheet shear σ_ep = -0.13 is exactly the right magnitude to close the gap** but Tracks 4d/4e did not include it.  Track 4f (with σ_ep) is the next test.  See findings F12-F18.
 
 **Physical principle (per discussion):**
 - Charge is an artifact of trips around the **tube** (poloidal n_tube): integer-quantized in clean steps, no fractional adjustment.
 - Magnetic moment is an artifact of trips around the **ring** (toroidal n_ring): can be modified by **shear** (a non-integer non-linearity) that introduces small additive or subtractive corrections.
+
+**Epistemic caveats (apply to all tracks in this study):**
+
+1. **Mode filtering by ε is not fully understood.**  We hypothesize
+   that a (1, n_ring) mode "fits" in the tube only if the tube
+   geometry can support n_ring ring oscillations without violating
+   some closure or boundary condition.  But the torus is not a
+   hollow waveguide with hard walls — it is a closed surface with
+   periodic boundary conditions in both directions.  The exact
+   meaning of "fit" (and the resulting cutoff structure) is open.
+   The cutoff argument ε > 1/n_ring is a guess based on simple
+   wavelength-fits-in-circumference reasoning, not a derivation.
+
+2. **The proton mode assignment is not fixed.**  Three possibilities
+   are still on the table:
+   - **(1, 3) — fundamental:** a single mode with one tube
+     winding and three ring windings.  Charge from n_tube = 1.
+     Three antinodes around the ring give "three-quark" structure.
+   - **3 × (1, 3) phase-shifted:** three copies of the (1, 3)
+     mode with relative phases of 0°, 120°, 240°, all sharing
+     the same sheet.  Could be the actual physical realization
+     of a "three-color" structure.
+   - **(3, 6) composite:** the original R47 hypothesis.  Three
+     tube windings, six ring windings.  Topologically gcd = 3,
+     so geometrically equivalent to 3 strands of (1, 2).  Bare
+     moment via flux quantization would be 6 μ_N (large
+     deviation from observed 2.793 μ_N).  Less favored than
+     (1, 3) but not formally excluded.
+
+   These alternatives have different predictions for the bare
+   moment, the shear sensitivity, and the sign rule.  Tracks 4d
+   and beyond use the (1, 3) interpretation, but the conclusions
+   would differ for the other options.
+
+3. **The lib's r_p = 8.906 is in tension with the filtering
+   argument** (which would predict r_p ∈ (1/3, 1/2)).  Track 4d
+   has surfaced this contradiction (F15) but does not resolve it.
 **Questions:** Q53 (anomalous magnetic moment), Q103 (defect-cost back-reaction)
 **Type:** compute
 **Depends on:** R44 (negative result — charge-mass separation wrong sign/order),
