@@ -1,9 +1,10 @@
 # Model: model-D (Filtered model — `ma_model_d.py`) ⟵ ACTIVE
 
-**Status:** Active — R50 particle census complete (Tracks 1–4)  
-**Code / implementation:** [`studies/lib/ma_model_d.py`](../studies/lib/ma_model_d.py) (~1,100-line Ma engine with 6×6 coupled metric, waveguide filtering, dual proton hypothesis support — (1,3) default, (3,6) via `n_p` parameter)  
-**Study range:** **R45 (catalyst) → R46, R47, R48, R49, R50** (see [`studies/STATUS.md`](../studies/STATUS.md))  
-**Supersedes:** [model-C](model-C.md) (`ma_model.py`, R39–R44)
+**Status:** Active — R50 partially reopened post-Q114 §11.5 audit (R50 F19–F29); R52 open with leads after F25 sign-rule retraction  
+**Code / implementation:** [`studies/lib/ma_model_d.py`](../studies/lib/ma_model_d.py) — Ma engine with 6×6 coupled metric, waveguide filtering, mode-aware (n_tube, n_ring) shear formula, signed branch selection (`solve_shear_for_alpha_signed`)  
+**Study range:** **R45 (catalyst) → R46, R47, R48, R49, R50, R52** (see [`studies/STATUS.md`](../studies/STATUS.md))  
+**Supersedes:** [model-C](model-C.md) (`ma_model.py`, R39–R44)  
+**Leading proton mode:** (1,3) — fundamental, universal charge formula; (3,6) viable but requires ε_p ≥ 0.60 (no shear solution at the working ε_p = 0.55 under positive branch)
 
 ---
 
@@ -31,15 +32,16 @@ Everything else — charge from topology, spin from winding parity, waveguide mo
 
 ### Accommodations
 
-- Anomalous magnetic moments — correct sign for electron and proton (R52)
-- Particle lifetimes correlate with distance from resonance (r = −0.85 for baryons)
+- Particle masses track stability (Spearman ρ = +0.55 between log lifetime and −log mass-gap, R50 F26 under (−,−) shear branch)
 - CP violation from shear chirality — mechanism identified, magnitude pending
 
 ### Unresolved
 
-- Muon sits in a mass desert between electron and proton energy scales
-- Charged spin-zero mesons (π±, K±) not yet geometrically realized
-- Neutrino sheet geometry not uniquely determined (three families viable)
+- **Anomalous magnetic moment sign rule** — R52 explored classical scalar / vector self-energy under all four shear sign branches (Tracks 4d–4f, with Q114 §11.5 mode-aware fix); none reproduce δμ(e) > 0 vs δμ(p) < 0.  R52 stays open with leads in cross-sheet and lattice-native back-reaction; classical sign rule retracted.
+- **Shear sign branch (positive vs negative) not uniquely determined** — both branches solve α = 1/137, with different magnitudes.  (−,−) wins on stability correlation (R50 F26); (+,+) was the historical default.  Lib supports both via `solve_shear_for_alpha_signed`.  Studies should test both until a single observable selects.
+- **Muon sits in a mass desert** between electron and proton energy scales
+- **Charged spin-zero mesons (π±, K±)** not yet geometrically realized
+- **Neutrino sheet geometry** not uniquely determined (three families viable)
 
 *Full details: [Particle spectrum](#particle-spectrum-r50--σ_ep---013-ε_e--065-ε_p--055) · [Outcomes](#outcomes) · [Limitations](#limitations)*
 
@@ -127,13 +129,15 @@ Same four inputs as model-C.
 
 | # | Parameter | Derived from | Status |
 |---|-----------|-------------|--------|
-| 5 | s₁₂ | α + ε_e | Determined once ε_e is set |
-| 6 | s₅₆ | α + ε_p | Determined once ε_p is set |
+| 5 | s₁₂ | α + ε_e + n_e mode + sign branch | Determined once ε_e and branch chosen |
+| 6 | s₅₆ | α + ε_p + n_p mode + sign branch | Determined once ε_p and branch chosen |
 | 7 | s₃₄ | Δm²₃₁/Δm²₂₁ = 33.6 | 0.022 (Family A); other values for other families |
-| 8 | L₂ | m_e + μ(ε_e, s₁₂) | Varies with ε_e |
+| 8 | L₂ | m_e + μ(ε_e, s₁₂) | Varies with ε_e and branch |
 | 9 | L₄ | Δm²₂₁ + μ(ε_ν, s₃₄) | Varies with ε_ν |
-| 10 | L₆ | m_p + μ(ε_p, s₅₆) | Varies with ε_p |
+| 10 | L₆ | m_p + μ(ε_p, s₅₆) | Varies with ε_p and branch |
 | 11–13 | L₁, L₃, L₅ | ε × L_ring for each sheet | Varies with ε |
+
+> **Shear sign branches (Q114 §11.5–11.7):** the α formula has TWO solutions for each (ε, mode) pair — a positive-branch shear and a negative-branch shear with different magnitudes.  The lib's positive-only convention was empirically wrong: stability-correlation favors the negative branch globally (R50 F26).  Both branches are now supported via `lib.ma_model_d.solve_shear_for_alpha_signed(eps, sign=±1, n_tube, n_ring)`.  Working assumption: **both shears on the negative branch** (s_e ≈ −0.385, s_p ≈ −0.307 at default ε), but the positive default is preserved for backward compatibility.
 
 #### Constrained by data (not pinned — swept with documented width)
 
@@ -148,8 +152,9 @@ Same four inputs as model-C.
 | # | Parameter | Working value | Status | Studies |
 |---|-----------|--------------|--------|---------|
 | 17 | ε_ν | 5.0 (Family A) | Broadly viable 0.1–5+; 22 solutions | R49 |
-| 18 | σ_νp | 0 (default) | R50 F11 suggests ~−0.13 may be nonzero | R50 T2, Q89 |
-| 19 | Proton mode | (1,3) | Leading; (3,6) viable alternative | R47, R50 |
+| 18 | σ_νp | 0 (default) | Weak evidence for non-zero from neutron search | R50 T2, Q89 |
+| 19 | Proton mode | (1,3) | Leading; (3,6) viable but no shear solution at ε_p = 0.55 (needs ε_p ≥ 0.60) | R47, R50, Q114 |
+| 20 | Shear sign branch | (+,+) by default; (−,−) preferred by stability | Lib supports both via signed solver; no single observable selects | R50 F26, R52 F25, Q114 |
 
 #### Set to zero (default — not tested beyond R50 T2)
 
@@ -316,35 +321,17 @@ Three hypotheses have been tested.  Current status:
 
 #### GRID integration (R46, R48)
 
-Previous models treated Maxwell's equations as an assumed input.
-Model-D is the first to use GRID results as active physics:
+Model-D is the first to use GRID results as active physics rather than treating Maxwell as input:
 
-- **Charge = topological winding** (R48 F5): the 2π phase advance
-  of a traveling wave around the tube is GRID axiom A3 made
-  concrete.  This replaces the R19 field-integral picture with a
-  topological one — charge is exact because topology is exact.
-- **Torus wall = GRID lattice boundary** (R46 T5): the material
-  sheet has reflection coefficient ~(1−α) ≈ 0.993. This makes
-  waveguide cutoff a consequence of the substrate, not an ad hoc
-  filter.  Modes below cutoff cannot propagate — they are
-  evanescent on the lattice.
-- **Standing waves carry zero charge** (R48 F4): the Gauss integral
-  is exactly zero for any standing-wave mode with n₂ ≠ 0.  Charge
-  requires net circulation (a traveling-wave component), which is
-  provided by shear chirality.  This unifies WvM (circulating CP
-  wave), GRID (topological winding), and the shear mechanism
-  (broken circulation symmetry) into a single picture.
+- **Charge = topological winding** (R48 F5) — the 2π phase advance of a traveling wave around the tube IS GRID axiom A3.
+- **Torus wall = GRID lattice boundary** (R46 T5) — reflection coefficient ~(1−α) ≈ 0.993 makes waveguide cutoff a substrate consequence, not an ad hoc filter.
+- **Standing waves carry zero charge** (R48 F4) — the Gauss integral is exactly zero; charge requires the traveling-wave component provided by shear chirality.
 
-#### Magnetic moments (R45 — catalyst for model-D)
+#### Magnetic moments (R45 + R52, both negative for the sign rule)
 
-- **Geodesic tilting via σ_ep dead**: standing wave |ψ|² is uniform
-  → no classical orbit. ⟨L₆⟩ = ℏn₆ → μ = n₆ μ_N → g = 4 for
-  (1,2), not 5.586. Cross-shear cannot change n₆. Tracks 1, 2,
-  4 dead.
-- **Surviving direction**: Track 3 — self-consistent dressed /
-  multi-sheet composite angular momentum.
-- **Implication**: explaining g_p, μ_n, and g_e − 2 requires
-  composite or aperture physics, not single-mode adjustments.
+- **R45**: single-sheet geodesic tilting via σ_ep is dead — standing wave |ψ|² is uniform, no classical orbit, cross-shear cannot change n₆.  Surviving direction: cross-sheet / aperture / composite mechanisms.
+- **R52** (Tracks 1, 2, 4a–4f): tested classical scalar and vector self-energy under all four shear sign branches with mode-aware formula.  **No combination reproduces the observed sign pattern** (electron δμ > 0 vs proton δμ < 0).  R52 F25 retracted the earlier "opposite-signs work" finding, which was an artifact of the (1,2)-hardcoded shear bug.  Bare moment formula μ = n₂ × magneton (from flux quantization, Q114 §6) survives as a topological prediction; the sign of the residual remains unexplained within MaSt.
+- **R52 still open** with leads in: lattice-native back-reaction, cross-sheet coupling, and the structural observation that the (1,3) proton's δU is essentially zero at default — a mode-dependent decoupling that wasn't visible before the fix.
 
 ### Retracted from models B/C
 
@@ -357,6 +344,29 @@ Model-D is the first to use GRID results as active physics:
 | **Muon as exact fit target** | R27 F18 | Off-resonance hypothesis says muon should have ~0.3% gap. Using it as exact target was inconsistent. |
 
 ### Particle spectrum (R50 — σ_ep = −0.13, ε_e = 0.65, ε_p = 0.55)
+
+> **2026-04 audit note:** The table below reflects R50's
+> original census, which used the lib's (1,2)-hardcoded
+> `solve_shear_for_alpha` for the proton — implicitly assigning
+> the proton a shear of 0.111 instead of the correct 0.162 for
+> mode (1,3).  After the Q114 §11.5 fix, the original best
+> neutron candidates (F11/F12) are invalidated.  A re-search
+> under the four shear sign branches found:
+>
+> - **(−,−) branch** is the empirical winner under the
+>   stability-correlation metric (R50 F26, ρ = +0.55), with
+>   a propagating neutron candidate at 0.202 MeV
+> - **Default (+,+) branch** has the lowest stability
+>   correlation (ρ = +0.07, essentially random) — many
+>   "lucky matches" of short-lived resonances
+> - The full inventory under (−,−) gives different specific
+>   mode tuples than the table below, but the qualitative
+>   pattern (most particles match within ~5%, charged J=0
+>   topologically forbidden, muon mass desert) is preserved
+>
+> R50 should be re-run end-to-end under (−,−) with new mode
+> assignments before the table below is treated as canonical.
+> See R50 findings F19–F29 for the full re-search.
 
 Geometry: joint 6D metric with waveguide filtering and (1,3)
 proton (leading) or (3,6) composite (alternative).  Electron and
@@ -457,27 +467,13 @@ small to confirm within-class correlations.
 
 ---
 
-## Goals
+## Open goals
 
-- **Rebuild from scratch**: model electron, proton, neutrino
-  individually with their own waveguide and geometric constraints
-  before coupling them via cross-shears.
-- **No premature pinning**: all geometry parameters (ε_e, ε_p, ε_ν,
-  s, σ) are **swept**, not fixed from model-B/C's R27. The neutron
-  is a **prediction**, not a calibration target.
-- **Waveguide-filtered census** (R50): joint 6D mode search under
-  the new rules. Compare against the full particle spectrum below
-  ~2 GeV. Do the old model-B/C successes (kaon, eta, lambda, etc.)
-  survive? Do new successes appear? Do ghost modes decrease?
-- **Proton internal structure**: under the (1,3) hypothesis, explain
-  DIS and jets from 3-fold ring symmetry.  Under (3,6), understand
-  as three confined (1,2) strands.  Derive quark charges, confinement, and DIS
-  structure from geometry.
-- **Anomalous moments**: aperture / slot mechanism for electron
-  (R46); composite / cross-sheet mechanism for proton and neutron
-  (R45 Track 3, R47).
-- **Pin ε_ν**: use physics beyond oscillation data (weak coupling,
-  waveguide, sterile bounds) to select among the three families.
+- **Resolve shear sign branch** — re-run the inventory under (−,−) end-to-end and compare to (+,+); identify a single observable that selects between branches
+- **Anomalous moment sign rule** — pursue R52's surviving leads (lattice-native back-reaction, cross-sheet coupling)
+- **Pin ε_ν** — use physics beyond oscillation data (weak coupling, sterile bounds) to select among the three neutrino families
+- **Proton internal structure** — explain DIS and jets from the (1,3) 3-fold ring symmetry; reconcile with the (3,6) viability question
+- **Charged J=0 mesons** — find a topology that allows π±, K± (currently forbidden by the additive spin rule)
 
 ---
 
@@ -520,152 +516,48 @@ Model-D deliberately makes **fewer** assumptions than its predecessors:
 
 ### Parameter strategy
 
-Model-C's failure mode was **premature pinning**: r_p = 8.906 and
-σ_ep = −0.091 were locked from a single neutron+muon fit (R27 F18),
-then treated as known constants in all subsequent work.  When the
-proton model changed from (1,2) to (1,3)/(3,6), those pins became
-wrong but had already propagated into dozens of calculations.
+Model-C's failure mode was **premature pinning** — r_p and σ_ep were locked from a single neutron+muon fit, then propagated.  When the proton model changed, those pins were wrong but already entrenched.
 
-Model-D's parameter discipline:
-
-1. **Defaults, not pins.**  Every parameter in `ma_model_d.py` has
-   a default value, but defaults are working assumptions — not
-   measured constants.  Each default has a documented *reason* and
-   a stated *confidence*.
-
-2. **Provenance.**  Every default records WHERE it came from (which
-   study, which finding) so that when the source is revised, the
-   downstream consequences are traceable.
-
-3. **Free variables stay free.**  When a parameter is constrained
-   by one data point (e.g., σ_ep from the neutron mass), record
-   it as "constrained by X" — not "determined."  A second data
-   point might prefer a slightly different value, and the model
-   should accommodate that tension rather than break.
-
-4. **Sweep before pin.**  Before treating any parameter as fixed,
-   sweep it across a range and look at the sensitivity landscape.
-   If the landscape is flat (many values work equally well), the
-   parameter is not actually constrained.  If it's steep, the
-   constraint is real — but record the width, not just the peak.
-
-5. **Ephemeral targets are near-misses.**  Unstable particles
-   should NOT sit on exact eigenmodes.  Using them to pin
-   parameters forces exact agreement where nature gives a near-
-   miss.  Decay rate ∝ distance from resonance; pinning to zero
-   distance contradicts the model's own prediction.
-
-This strategy is implemented in `ma_model_d.py`'s `from_physics()`
-constructor, where each default is documented with its source and
-confidence level.
+Model-D's discipline: defaults rather than pins; provenance tracking; sweep before pin; record constraint widths not just peaks; treat unstable particles as near-misses, not calibration targets.  Implemented in `ma_model_d.py`'s `from_physics()` constructor, where each default is documented with source and confidence.
 
 ---
 
-## Strategies / approach
+## Studies
 
 | Study | Focus | Status |
 |-------|-------|--------|
-| **R45** | Magnetic moments — found single-sheet geodesic tilting dead; motivated composite / aperture direction | On hold (catalyst) |
-| **R46** | Electron filter — waveguide cutoff, slot mechanism for g−2, ghost elimination, CP shear formula | Complete (T1–T5) |
-| **R47** | Proton geometry — (1,2) abandoned, (1,3) reinstated as leading, (3,6) viable alternative, spindle ruled out, SU(6) moments | Track 7 complete |
-| **R48** | Helicity and charge — n₁ = ±1 derived geometrically, helicity doesn't discriminate ghosts | Complete (T1–T2) |
-| **R49** | Neutrino sheet — ε_ν sweep, three families, waveguide, spin at finite ε, Majorana prediction | Tracks 1–2a complete, on hold |
-| **R50** | **Filtered multi-sheet mode search** — joint 6D census under all new rules | **Track 4 complete** — 19-particle spectrum established |
-
-### R50 design (the census)
-
-R50 is the integration study where model-D produced its first
-quantitative particle predictions. Key design choices:
-
-- **One system**: Ma treated as a single coupled 6D metric, not
-  three independent sheet catalogs.
-- **Joint metric**: E² = Σᵢⱼ G̃ⁱʲ nᵢnⱼ × (ℏc/L_ref)², with
-  cross-shear blocks active.
-- **Per-sheet filters**: waveguide cutoff on Ma_e, Ma_ν, Ma_p;
-  n₁ = ±1 for charged EM modes on Ma_e.
-- **Charge**: Q = −n₁ + n₅ (fundamental — used for (1,3) proton and
-  all nuclear modes).  Q = −n₁ + n₅/gcd(n₅,n₆) for composites like
-  (3,6) proton (R47 F4), but this formula breaks for nuclei.
-- **Parameters swept**: ε_e, ε_p, ε_ν, s₁₂, s₃₄, s₅₆, σ_ep, σ_eν,
-  σ_νp — with α and particle masses as constraints.
-- **Neutron as prediction**: not used to pin parameters. Success
-  criterion: does a neutron-like mode (Q = 0, spin ½, m ≈ 939.6 MeV)
-  appear without being forced?
-- **Targets**: electron (input), proton (input), then — as
-  predictions — neutron, muon, kaon, eta, eta prime, phi, lambda,
-  sigma, neutrino triplet, nuclei (R29 scaling law).
+| **R45** | Magnetic moments — single-sheet geodesic tilting dead; motivated composite / aperture direction | On hold (catalyst) |
+| **R46** | Electron filter — waveguide cutoff, slot mechanism for g−2, ghost elimination | Complete |
+| **R47** | Proton geometry — (1,2) abandoned, (1,3) leading, (3,6) viable, SU(6) moments | Complete |
+| **R48** | Helicity and charge — n₁ = ±1 derived geometrically | Complete |
+| **R49** | Neutrino sheet — ε_ν sweep, three families, waveguide, Majorana prediction | On hold |
+| **R50** | Filtered multi-sheet mode search — joint 6D census | **Partially reopened** post-Q114 §11.5 audit — F11/F12 invalidated, re-search under (−,−) underway |
+| **R52** | Self-field magnetic moment — classical sign-rule retracted (F25); leads in cross-sheet and lattice-native back-reaction | Open with leads |
 
 ---
 
 ## Limitations
 
-### From R50 census
+**Structural failures:**
 
-- **Charged pseudoscalar mesons (π±, K±) are topologically
-  forbidden.**  The additive spin rule (J = number of odd per-strand
-  tube windings × ½) forces Q to be even when J = 0.  Charged J = 0
-  modes cannot exist.  The proposed resolution — QM spin addition
-  (antiparallel alignment of two spin-½ components) — is standard
-  quantum mechanics, but whether the torus geometry supports two
-  strands with opposite tube orientations within a single mode is
-  unresolved.  This is model-D's most significant structural failure.
-- **Muon mass desert.**  No eigenmode exists between ~0.2 MeV
-  (electron ring scale) and ~116 MeV (proton ring scale).  The muon
-  (105.7 MeV) sits in this gap with a 10.9% residual.  This is
-  structural — it follows from m_e/m_p ≈ 1/1836 — and no parameter
-  adjustment within the current three-sheet geometry can fix it.
-  Model-C avoided this by pinning the muon as a fitted parameter.
-- **K⁰ and η degraded.**  These model-C successes (1.2%, 0.6%)
-  degrade to 5.6% and 7.1% under model-D's unpinned geometry.
-  Whether σ_ep or ε_p optimization can recover them without
-  degrading the baryon matches is an open question.
-- **Mode overcounting (~30,000:1).**  ~567,000 propagating modes
-  below 2 GeV for 19 target particles.  Most are label-degenerate
-  (varying neutrino/electron dressings at negligible energy), but
-  even after removing label degeneracy, ~200–400 physically distinct
-  energy levels remain for ~19 targets (15–25× overcounting).
-- **Neutron decomposition concern.**  The best neutron candidate
-  (0, 6, \*, \*, 0, 8) has n₁ = 0 — no tube winding on the electron
-  sheet.  Beta decay (n → p + e⁻ + ν̄_e) requires a charged electron
-  (n₁ = 1).  Whether "dark" electron-ring winding can redistribute
-  into charged components when cross-sheet coupling is removed is
-  an open question.
-- **Off-resonance hypothesis insufficient as single-variable
-  predictor.**  The neutron and Ω⁻ have nearly identical |Δm/m|
-  (~0.035%) but lifetimes differing by 10¹³.  Mass gap alone cannot
-  predict lifetime; coupling strength and phase space must be
-  included.
+- **Charged J=0 mesons (π±, K±) are topologically forbidden** by the additive spin rule (odd number of odd per-strand tube windings → odd Q).  Most significant structural failure.
+- **Muon mass desert** — no eigenmode exists between ~0.2 MeV (electron ring scale) and ~116 MeV (proton ring scale).  Follows from m_e/m_p ≈ 1/1836; no parameter adjustment in the current three-sheet geometry fixes it.
+- **Mode overcounting (~30,000:1)** before label-degeneracy removal; ~200–400 physically distinct energy levels for ~19 targets after.
 
-### Pre-existing (from R45–R49)
+**Quantitative degradations from model-C:**
 
-- **α still circular**: shear s is still reverse-engineered from α,
-  not derived from geometry. The CP shear formula (R46) unifies
-  representations but does not break the circularity.
-- **Proton mode selection**: two hypotheses remain — (1,3)
-  fundamental (leading, solves charge formula problem) and (3,6)
-  composite (viable, strong quark phenomenology).  For (3,6), how
-  three (1,2) strands bind is described but not derived from first
-  principles.  The waveguide cutoff at ε = 1/3 is suggestive but the eigenmode
-  structure of a composite toroidal cavity is unresolved.  R33 Track 9
-  adds a structural argument for (1,3): its irreducibility
-  (gcd = 1) makes confinement automatic, while (3,6) (gcd = 3)
-  requires an external mechanism to prevent strand separation (Q109).
-- **Flavor (u/d quarks)**: the model produces three strands with
-  e/3 charge but does not yet explain two quark flavors or the
-  u/d mass splitting.
-- **Finite-ε spin**: the deviation from n₁/n₂ is characterized but
-  the correct spin formula at arbitrary ε is not yet settled. This
-  affects which modes pass the spin-½ filter.
-- **ε_ν not pinned**: three solution families remain viable. More
-  physics is needed to select.
-- **Sterile neutrino tension**: all families predict 15–128 sterile
-  modes on Ma_ν, but N_eff = 3 from cosmology requires sharp weak
-  coupling to suppress them. Mechanism not yet modeled.
-- **Inherited open problems**: α from first principles, Compton
-  window Q factor, hierarchy problem, moduli potential — all
-  unchanged from model-C.
-- **Root documentation lag**: README.md, STATUS.md, and Taxonomy.md
-  still describe model-C.
+- **K⁰ and η** matched at 1.2% and 0.6% under model-C's pinned geometry; degrade to 5.6% and 7.1% under model-D's unpinned (+,+) geometry.  May or may not improve under (−,−) — see R50 re-search.
+- **Off-resonance hypothesis is qualitatively right but quantitatively insufficient**: neutron and Ω⁻ have similar |Δm/m| but lifetimes differ by 10¹³.  Mass gap alone cannot predict lifetime; coupling strength and phase space matter too.
+
+**Open theory questions:**
+
+- **α still circular** — shear is reverse-engineered from α, not derived from geometry.
+- **Proton mode selection** between (1,3) and (3,6) not uniquely settled.  R33 Track 9 / Q109 argues (1,3)'s irreducibility (gcd = 1) makes confinement automatic; (3,6) (gcd = 3) requires an external binding mechanism.
+- **Flavor (u/d quarks)** not explained — model produces three strands with e/3 charge but no flavor splitting.
+- **Finite-ε spin formula** characterized but not settled at arbitrary ε.
+- **Sterile neutrino tension** — all families predict 15–128 sterile modes; N_eff = 3 from cosmology requires sharp weak suppression.
+- **Inherited from model-C** — α from first principles, Compton window Q factor, hierarchy problem, moduli potential.
+- **Root documentation lag** — README.md, STATUS.md, and Taxonomy.md still describe model-C.
 
 ---
 
