@@ -113,12 +113,12 @@ is likely what differentiates compound modes.
 
 | Particle | Mass (MeV) | Q | Spin | Mode | Status |
 |----------|-----------|---|------|------|--------|
-| **muon** | 105.658 | −1 | ½ | (3, 8, ?, ?, ?, ?) | **R53 e-sheet; compound TBD** |
-| **tau** | 1776.86 | −1 | ½ | (3, −8, ?, ?, ?, ?) | **R53 e-sheet; compound TBD** |
-| **pi±** | 139.570 | ±1 | 0 | — | **open — spin-charge constraint** |
-| **pi⁰** | 134.977 | 0 | 0 | TBD | pending |
-| **K±** | 493.677 | ±1 | 0 | pair at 2×249 MeV | R50 — viable (pair) |
-| **K⁰** | 497.611 | 0 | 0 | TBD | pending |
+| **muon** | 105.658 | −1 | ½ | (1, 1, −2, −2, 0, 0) | **R54 Track 1c — 0.83% (e+ν compound)** |
+| **tau** | 1776.86 | −1 | ½ | (3, −6, 2, −2, 2, 3) | **R54 Track 1c — 0.05% (e+ν+p compound)** |
+| **pi±** | 139.570 | ±1 | 0 | (−1, n₂, ±1, n₄, 0, 0) | **spin-charge SOLVED (e+ν dual tube); mass at 104.8 MeV (25% off)** |
+| **pi⁰** | 134.977 | 0 | 0 | (0, −1, 0, n₄, 0, 0) | **104.3 MeV (23% off); 30% boost needed from cross-shears** |
+| **K⁺** | 493.677 | +1 | — | (−1, −6, −2, 2, 0, 1) | **R54 Track 1c — 1.77%** |
+| **K⁰** | 497.611 | 0 | 0 | (0, −4, −2, 2, 0, 1) | **R54 Track 1c — 1.04%** |
 
 ### Tier 3: Would like to match (broader inventory)
 
@@ -158,4 +158,8 @@ is likely what differentiates compound modes.
 | 2026-04-10 | R54: down quarks may be compound e+p modes | Cross-shear provides 2nd degree of freedom (Q116) |
 | 2026-04-10 | R54: σ₁₅, σ₁₆ go singular at R53 geometry | e-tube too large (L₁ ≈ 4700 fm); only σ₂₅, σ₂₆ are active e-p entries |
 | 2026-04-10 | R54: neutron = (−1,−2,ν,ν,−1,−3) at 0.012 MeV off | e+ν+p compound = electron + neutrino + proton fused; decays to its components |
-| 2026-04-10 | R54: proton-neutron tension | σ₂₅, σ₂₆ that nail neutron also shift proton by +1.3 MeV; need finer optimization |
+| 2026-04-10 | R54: proton-neutron tension | σ₂₅, σ₂₆ that nail neutron also shift proton by +1.3 MeV; resolved by using ν-p entries instead |
+| 2026-04-10 | R54: ν-p entries decouple p from n | σ₄₅, σ₄₆ move neutron without moving proton (proton has no ν content) |
+| 2026-04-10 | R54: 15/20 particles within 2% | Full inventory at σ₄₅=−0.18, σ₄₆=+0.10; Λ, η′, proton essentially exact |
+| 2026-04-10 | R54: π± spin-charge constraint SOLVED | Two odd tube windings (e+ν sheets) give spin_count=2→spin 0 with Q=±1; mass still at 104.8 MeV (25% off target) |
+| 2026-04-10 | R54: pion mass gap = 30% boost needed | All pion candidates at ~104 MeV (1× e-ring quantum); need cross-shear to reach 135 MeV |
