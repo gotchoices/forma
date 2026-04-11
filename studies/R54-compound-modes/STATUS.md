@@ -1,6 +1,6 @@
 # R54 Status and Scorecard
 
-**Study status:** Framed — waiting for R53 Tracks 5–7
+**Study status:** Active — Tracks 1, 1b, 1c complete
 
 ---
 
@@ -94,7 +94,52 @@ is likely what differentiates compound modes.
 | **Total metric parameters** | **40** | |
 | **Active in R54** | **22** | 4 fixed + 6 from R53 + 12 free |
 | **Soft-constrained** | **2** | σ₂₅ ~ −0.06, σ₂₆ ~ −0.03 — region where neutron near-miss exists. NOT pinned: neutron is unstable (τ = 880 s) so it SHOULD be slightly off-eigenmode. These values indicate the neighborhood, not the address. |
-| **Note** | The neutron constrains a REGION of (σ₂₅, σ₂₆) space, not a point. Stable particles (proton, electron) should provide hard pins. Other constraints (e.g., Λ baryon, Σ, hadron spectrum) may tighten the region later. |
+| **Note** | The neutron constrains a REGION, not a point. Proton and electron are the only hard pins. The 12 cross entries have 6 active and 6 inactive (large-dimension singularity). |
+
+---
+
+## Assessment
+
+### Hits, misses, fails
+
+| Category | Count | Particles |
+|----------|------:|-----------|
+| **Exact eigenmode (stable)** | 2 | proton (0.00%), electron (0.00%) |
+| **Near-miss ≤ 0.1%** | 5 | Λ, η′, Σ⁻, Σ⁺, Ξ⁻ |
+| **Near-miss ≤ 0.5%** | 3 | τ, φ, neutron |
+| **Near-miss ≤ 1%** | 3 | Ω⁻, Δ⁺, Ξ⁰, muon, ρ |
+| **Near-miss ≤ 2%** | 3 | K⁰, K±, η |
+| **Large miss (predicted)** | 2 | π⁰ (23%), π± (25%) |
+| **Total fails** | **0** | — |
+
+**Every particle has a credible mode.** No total fails.
+
+### Lifetime-gap correlation
+
+Not a simple single-variable correlation (Spearman ρ = +0.14
+overall).  Stratified by decay mechanism:
+
+- **Strong decays** (coupling ~1): fast regardless of gap
+- **Weak decays** (coupling ~10⁻⁵): gap predicts relative lifetime
+- **EM decays**: intermediate
+
+The gap predicts lifetime WITHIN each decay class, not across
+classes.  The η′ at 0.00% gap with τ = 10⁻²¹ is not a
+contradiction — it decays via strong interaction.
+
+### What's pinned, what's open
+
+| Parameter | Value | Status | Confidence |
+|-----------|-------|--------|------------|
+| m_e, m_p, Δm²₂₁, α | measured | **hard pin** | absolute |
+| ε_e = 397.07, s_e = 2.00420 | R53 Sol D | **soft pin** | high — gives 3 leptons |
+| ε_ν = 5.0, s_ν = 0.02199 | R49 | **soft pin** | medium — Family A |
+| ε_p = 0.55, s_p = 0.16204 | model-D | **working** | will change when α relocates |
+| σ₄₅ ≈ −0.18, σ₄₆ ≈ +0.10 | R54 T1c | **soft** | neutron neighborhood |
+| σ₂₃, σ₂₄ | 0 (or ~−0.3/+0.5 for π⁰) | **exploring** | pion lever |
+| σ₂₅, σ₂₆ | 0 | **open** | neutron alt lever |
+| σ₁₃, σ₁₄, σ₁₅, σ₁₆ | 0 | **inactive** | e-tube too large |
+| σ₃₅, σ₃₆ | 0 | **inactive** | ν-tube too large |
 
 ---
 

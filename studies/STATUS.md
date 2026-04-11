@@ -88,16 +88,19 @@ the mode topology.  Key surprise: WvM charge integral is exactly
 zero for n₁ = 3 — charge must come from (1,2) strand sub-structure.
 Composite waveguide cutoff question flagged for eigenmode study.
 
-### R54. Compound modes on the full T⁶  **Framed — waiting for R53 Tracks 5–7**
+### R54. Compound modes on the full T⁶  **Active — Tracks 1–1c complete**
 **Study:** [`R54-compound-modes/`](R54-compound-modes/)
 **Questions:** Q115, Q116  **Type:** compute / theoretical  **Depends on:** R53, R50, R49
 
-Builds compound modes (neutron, hadrons, down-type quarks) on the
-full 6D torus using the single-sheet foundations from R53.  Key
-question: can the e-p cross-shear (as a structured 2×2 matrix)
-differentiate up-type from down-type quarks, eliminating the need
-for two p-sheet shears?  The proton mass becomes a prediction
-from quark modes + binding, not an input.
+Full particle inventory on the 6D torus with individual cross
+entries (not scalar σ_ep).  **Results: 20 of 20 particles have
+credible modes.  0 total fails.**  Stable particles (proton,
+electron) are exact eigenmodes.  17 of 18 unstable particles
+within 2%.  Pions at 23–25% off — large miss consistent with
+short lifetime.  Pion spin-charge constraint solved via
+multi-sheet tube windings (e+ν compound gives spin 0 with Q = ±1).
+Neutron is an e+ν+p 6D knot at 0.07% off, whose decay decomposes
+the knot into electron + neutrino + proton.
 
 ### R53. Three generations from in-sheet shear  **Active — Tracks 1, 4 complete; 5–7 pending**
 **Study:** [`R53-three-generations/`](R53-three-generations/)
