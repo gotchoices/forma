@@ -2,6 +2,75 @@
 
 All values for the model-E geometry.
 
+## Visual layout
+
+The 9×9 symmetric metric.  Lower-left mirrors upper-right.
+Each cell shows the entry name, its physics role, and value/status.
+
+```
+                e-tube    e-ring    ν-tube    ν-ring    p-tube    p-ring    S_x       S_y       S_z
+              ┌─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┐
+   e-tube     │ L₁²     │         │         │         │         │         │         │         │         │
+              │ 4717 fm │  s_e    │    0    │    0    │    0    │    0    │    0    │    0    │    0    │
+              │         │ GEN     │ inact.  │ inact.  │ inact.  │ inact.  │ inact.  │ inact.  │ inact.  │
+              ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
+   e-ring     │         │ L₂²     │         │         │         │         │         │         │         │
+              │         │ 11.9 fm │  σ₂₃   │  σ₂₄   │  σ₂₅   │  σ₂₆   │  −σ_α  │  −σ_α  │  −σ_α  │
+              │         │         │ OPEN    │ OPEN    │ NEUTRON │ NEUTRON │  CHARGE │  CHARGE │  CHARGE │
+              ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
+   ν-tube     │         │         │ L₃²     │         │         │         │         │         │         │
+              │         │         │ 2e11 fm │  s_ν   │    0    │    0    │    0    │    0    │    0    │
+              │         │         │         │ GEN     │ inact.  │ inact.  │ inact.  │ inact.  │ inact.  │
+              ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
+   ν-ring     │         │         │         │ L₄²     │         │         │         │         │         │
+              │         │         │         │ 4e10 fm │  σ₄₅   │  σ₄₆   │    0    │    0    │    0    │
+              │         │         │         │         │ NEUTRON │ NEUTRON │ NEUTRAL │ NEUTRAL │ NEUTRAL │
+              ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
+   p-tube     │         │         │         │         │ L₅²     │         │         │         │         │
+              │         │         │         │         │ 2.45 fm │  s_p   │  +σ_α  │  +σ_α  │  +σ_α  │
+              │         │         │         │         │         │ GEN+α  │  CHARGE │  CHARGE │  CHARGE │
+              ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
+   p-ring     │         │         │         │         │         │ L₆²     │         │         │         │
+              │         │         │         │         │         │ 4.45 fm │  +σ_α  │  +σ_α  │  +σ_α  │
+              │         │         │         │         │         │         │  CHARGE │  CHARGE │  CHARGE │
+              ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
+   S_x        │         │         │         │         │         │         │    1    │         │         │
+              │         │         │         │         │         │         │  flat   │    0    │    0    │
+              ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
+   S_y        │         │         │         │         │         │         │         │    1    │         │
+              │         │         │         │         │         │         │         │  flat   │    0    │
+              ├─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┼─────────┤
+   S_z        │         │         │         │         │         │         │         │         │    1    │
+              │         │         │         │         │         │         │         │         │  flat   │
+              └─────────┴─────────┴─────────┴─────────┴─────────┴─────────┴─────────┴─────────┴─────────┘
+```
+
+**Legend:**
+
+| Label | Meaning | Count |
+|---|---|---|
+| **GEN** | In-sheet shear → generation structure | 3 |
+| **GEN+α** | s_p: generation structure + α consistency at small ε | 1 |
+| **NEUTRON** | Cross-sheet → compound modes (neutron, hadrons) | 4 active |
+| **OPEN** | Active cross-sheet, not yet constrained | 2 |
+| **CHARGE −** | Ma-S coupling, negative sign → negative charge | 3 |
+| **CHARGE +** | Ma-S coupling, positive sign → positive charge | 6 |
+| **NEUTRAL** | Zero Ma-S coupling → electrically dark | 3 |
+| **inact.** | Dimension too large → entry ≈ 0 | 12 |
+| **flat** | Flat 3D space | 6 |
+
+**Reading the layout:**
+
+- **Diagonal** (top-left to bottom-right): circumferences L₁–L₆ and flat S
+- **GEN entries** (just off diagonal within each sheet): s_e, s_ν, s_p
+- **NEUTRON cluster**: where e-ring row and ν-ring row cross the p columns
+- **CHARGE columns** (rightmost 3): the Ma-S block, with **−** signs in the e rows and **+** signs in the p rows
+- **NEUTRAL row**: ν-ring → S is zero (neutrinos don't couple to EM)
+- **Inactive L-shape**: e-tube row and ν-tube row are almost entirely zero (dimensions too large to couple)
+- The active physics lives in 4 dimensions: **e-ring, ν-ring, p-tube, p-ring**
+
+---
+
 ## Diagonal entries (9)
 
 | # | Dimension | L (fm) | L² (fm²) | Source |
