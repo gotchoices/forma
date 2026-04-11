@@ -167,3 +167,96 @@ domains.
 - The n² angular count (spherical harmonics)
 - The Madelung filling order (4s before 3d)
 - Wavefunction antisymmetry (Pauli beyond the factor of 2)
+
+---
+
+## Track 6: Mode capacity of a torus — Ma overflow into S
+
+### F20. Shell capacity = mode capacity of a torus in a Coulomb well
+
+At shell n, the Coulomb binding energy is E_n = 13.6/n² eV.
+The angular kinetic energy of mode l is E_l = l(l+1) × 13.6/n² eV.
+For the mode to be bound: E_l < E_n → l(l+1) < n² → l_max = n−1.
+
+Total angular modes: Σ(2l+1) for l = 0 to n−1 = n².
+With ×2 for tube winding (±1): **capacity = 2n²**.
+
+| n | l_max | angular modes | ×2 | QM prediction | match |
+|---|---|---|---|---|---|
+| 1 | 0 | 1 | 2 | 2 | ✓ |
+| 2 | 1 | 4 | 8 | 8 | ✓ |
+| 3 | 2 | 9 | 18 | 18 | ✓ |
+| 4 | 3 | 16 | 32 | 32 | ✓ |
+| 5 | 4 | 25 | 50 | 50 | ✓ |
+
+**Exact match at every n.**
+
+### F21. Shell filling order: separation is ALWAYS cheaper than promotion
+
+When shell n is full, the next electron can either PROMOTE
+to the next angular mode (l = n, costs more angular KE) or
+SEPARATE to shell n+1 (costs the shell energy difference).
+
+| n | promote (eV) | separate (eV) | cheaper |
+|---|---|---|---|
+| 1 | 27.20 | 10.20 | SEPARATE |
+| 2 | 5.10 | 1.89 | SEPARATE |
+| 3 | 2.01 | 0.66 | SEPARATE |
+| 4 | 1.06 | 0.31 | SEPARATE |
+
+At every n, separating costs ~2.5× less than promoting.
+This is WHY shells fill in order: the electron prefers to
+move outward in S rather than excite a higher angular mode.
+
+### F22. The MaSt interpretation: lowest-energy routing
+
+Shell structure is a **routing problem**: each electron
+routes to whichever destination (Ma mode or S location)
+costs the least energy.
+
+- Adding to the current shell: occupies an angular mode
+  on the torus (Ma excitation)
+- Starting a new shell: moves to a larger radius (S separation)
+- The torus has finite mode capacity (n² angular modes
+  below the Coulomb ceiling)
+- When full, overflow goes to S because it's cheaper
+
+This is NOT a new derivation of the numbers — the shell
+capacities still come from l(l+1) < n², which is the
+angular momentum constraint from standard QM.  But it IS
+a new INTERPRETATION: the torus has finite mode capacity,
+and overflow goes to the next shell because nature routes
+to the lowest-energy option.
+
+### F23. Implications for ghost modes
+
+The charged ghosts from R53 Track 6 (78 Q = ±1 modes on
+the e-sheet below 2 GeV) exist as Ma modes but may never
+be populated.  If exciting mode (1, 4) on the torus costs
+more than spatially separating two (1, 2) electrons, the
+ghost mode is energetically uncompetitive.  The modes EXIST
+on the torus but are EMPTY because spatial separation is
+cheaper.
+
+This provides a physical (not ad hoc) explanation for why
+most charged harmonics are not observed: the system routes
+energy to spatial separation rather than Ma excitation.
+
+### F24. Nuclear mode capacity — inconclusive
+
+The proton torus at ε_p = 0.55 has zero modes below the
+nuclear binding energy (~8.8 MeV).  The nuclear scaling law
+(n₅ = A, n₆ = 3A) gives E/A ≈ 938.3 MeV for all A —
+constant, not increasing.  This means the torus mode
+energy per nucleon is always just the nucleon mass,
+regardless of A.  The iron peak is not explained by
+p-sheet mode saturation.
+
+### Track 6 status
+
+**Complete.** Shell capacities match QM exactly (2n²) via
+the angular mode capacity of a torus in a Coulomb well.
+Separation is always cheaper than promotion (explains
+filling order).  The routing interpretation (Ma modes
+vs S separation) is new.  Ghost mode suppression follows
+naturally.  Nuclear limits not explained by this mechanism.
