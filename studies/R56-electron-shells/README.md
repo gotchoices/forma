@@ -1,6 +1,6 @@
 # R56: Electron shell structure from geometric packing
 
-**Status:** Framed
+**Status:** Active — Track 1 complete (negative), Tracks 2–4 framed
 **Questions:** Can distributed-charge electrons, packed around a
 nucleus by energy minimization, reproduce the 2, 8, 18 shell
 structure without invoking the Pauli exclusion principle?
