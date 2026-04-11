@@ -41,6 +41,21 @@
    the tube winding; positive vs negative charge is which sheet
    the winding lives on.
 
+## Parameter count
+
+| Category | Count | Examples |
+|----------|------:|---------|
+| **Measured inputs** | **7** | α, m_e, m_p, Δm²₂₁, m_μ/m_e, m_τ/m_e, Δm² ratio |
+| — of which dimensional (scales) | 3 | m_e, m_p, Δm²₂₁ |
+| — of which dimensionless | 4 | α, m_μ/m_e, m_τ/m_e, Δm² ratio |
+| **Derived from inputs** | 10+ | s_e, ε_e, s_p, s_ν, L₁–L₆, Ma-S signs |
+| **Constrained by physics** | 2 | ε_p (waveguide), ε_ν (Family A) |
+| **Soft (neutron neighborhood)** | 2 | σ₄₅, σ₄₆ |
+| **Open cross-sheet** | 4 | σ₂₃, σ₂₄, σ₂₅, σ₂₆ |
+
+The Standard Model has ~19 dimensionless free parameters.
+Model-E has **4** (or 3 if GRID derives α).
+
 ## Results
 
 ### Predictions

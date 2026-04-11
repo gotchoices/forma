@@ -16,6 +16,36 @@ numerology, or something deeper.  But it is *interesting* — and
 it may offer fresh angles on some of physics' unsolved problems,
 from the origin of mass to the nature of dark matter.
 
+**This project does not compete with the Standard Model.**
+The Standard Model works — its predictions are confirmed to
+extraordinary precision.  But it requires ~25 free parameters
+(particle masses, coupling constants, mixing angles) that are
+measured, not explained.  MaSt/GRID attempt to derive those
+parameters from a simpler starting point: the geometry of a
+compact six-dimensional space.
+
+Model-E uses **7 measured inputs** to derive the rest:
+
+| Input | What it sets |
+|-------|-------------|
+| α = 1/137 | Ma-S coupling strength |
+| m_e | electron ring scale |
+| m_p | proton ring scale |
+| Δm²₂₁ | neutrino ring scale |
+| m_μ / m_e | e-sheet aspect ratio and shear |
+| m_τ / m_e | (same — two ratios fix two parameters) |
+| Δm²₃₁ / Δm²₂₁ | neutrino shear |
+
+Of these, 3 are dimensional scales (every theory needs units)
+and **4 are dimensionless** (α, m_μ/m_e, m_τ/m_e, Δm² ratio).
+The Standard Model has ~19 dimensionless parameters.  Model-E
+reduces this to 4 — and if GRID derives α from the lattice,
+potentially **3**.
+
+From these inputs, model-E derives: 20 particle masses, nuclear
+masses from deuterium to iron, three lepton generations, charge
+quantization, neutrino oscillation, and ghost-mode elimination.
+
 For background on who built this, how AI was used, and how to
 judge what you're reading, see [DISCLAIMERS](DISCLAIMERS.md).
 
@@ -166,16 +196,16 @@ structure and compound modes on 20 of 20 surveyed particles.
 - Plausible geometric mechanisms for dark matter, the strong force,
   and matter–antimatter asymmetry.
 
-**What model-D changes** (see [`models/model-D.md`](models/model-D.md)):
-model-D retracts model-C's pinned proton geometry (r_p = 8.906,
-σ_ep = −0.091) as premature, replaces the (1,2) proton with a
-(3,6) composite, introduces waveguide cutoff (which eliminates the
-(1,1) ghost mode), and is the first model to incorporate GRID
-results as active physics (charge as topological winding, torus wall
-as GRID lattice boundary).  R50 particle census (Tracks 1–5) complete:
-19-particle spectrum, nuclear modes tested.  The (1,3) proton is the
-leading hypothesis — it solves the charge formula problem and reproduces
-R29 nuclear benchmarks to < 1%.
+**What model-E changes** (see [`models/model-E.md`](models/model-E.md)):
+model-E treats the six compact dimensions as one T⁶ (not three
+independent sheets), with a 9×9 metric whose off-diagonal entries
+serve four distinct roles: in-sheet shears for generation structure,
+cross-sheet entries for compound modes, Ma-S entries for α coupling,
+and flat space.  Three lepton generations emerge from shear resonance.
+The (1,1) ghost is eliminated by shear ordering, not waveguide cutoff.
+Charged pion spin barrier broken via multi-sheet tube windings.
+Charge sign originates from opposite Ma-S coupling: e-sheet → S is
+negative, p-sheet → S is positive.
 
 
 ## Foundation
