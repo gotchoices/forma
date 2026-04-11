@@ -56,8 +56,8 @@ p_ring  [                                          ·    ]
 |---|-------|---------|-------|--------|
 | 15 | σ₁₅ | e-tube ↔ p-tube | 0 | **free** |
 | 16 | σ₁₆ | e-tube ↔ p-ring | 0 | **free** |
-| 17 | σ₂₅ | e-ring ↔ p-tube | 0 | **free** |
-| 18 | σ₂₆ | e-ring ↔ p-ring | 0 | **free** |
+| 17 | σ₂₅ | e-ring ↔ p-tube | ≈ −0.06 | **soft — neutron is near-miss, not a pin** |
+| 18 | σ₂₆ | e-ring ↔ p-ring | ≈ −0.03 | **soft — neutron is near-miss, not a pin** |
 
 **ν ↔ p coupling (4 entries):**
 
@@ -93,7 +93,8 @@ is likely what differentiates compound modes.
 | Ma-S coupling | 18 | unexplored (default 0) |
 | **Total metric parameters** | **40** | |
 | **Active in R54** | **22** | 4 fixed + 6 from R53 + 12 free |
-| **Constrained by particles** | **TBD** | proton + neutron constrain ≤ 2 of the 12 |
+| **Soft-constrained** | **2** | σ₂₅ ~ −0.06, σ₂₆ ~ −0.03 — region where neutron near-miss exists. NOT pinned: neutron is unstable (τ = 880 s) so it SHOULD be slightly off-eigenmode. These values indicate the neighborhood, not the address. |
+| **Note** | The neutron constrains a REGION of (σ₂₅, σ₂₆) space, not a point. Stable particles (proton, electron) should provide hard pins. Other constraints (e.g., Λ baryon, Σ, hadron spectrum) may tighten the region later. |
 
 ---
 
@@ -103,9 +104,9 @@ is likely what differentiates compound modes.
 
 | Particle | Mass (MeV) | Q | Spin | Mode | Status |
 |----------|-----------|---|------|------|--------|
-| **electron** | 0.511 | −1 | ½ | (1, 3, 0, 0, 0, 0) | **R53 — input** |
-| **proton** | 938.272 | +1 | ½ | TBD compound | **R54 — pending** |
-| **neutron** | 939.565 | 0 | ½ | TBD compound | **R54 — pending** |
+| **electron** | 0.511 | −1 | ½ | (1, 2, 0, 0, 0, 0) | **R53 Sol D — input** |
+| **proton** | 938.272 | +1 | ½ | (0, 0, 0, 0, 1, 3) | **R54 — match at σ=0 (input); shifts +1.3 MeV at neutron-optimized σ** |
+| **neutron** | 939.565 | 0 | ½ | (−1, −2, ν, ν, −1, −3) | **R54 — near-miss at ~939.6 MeV in σ₂₅/σ₂₆ neighborhood; SHOULD be off-eigenmode (unstable)** |
 | **ν₁, ν₂, ν₃** | ~meV | 0 | ½ | (1,1), (−1,1), (1,2) on ν | R49 — match |
 
 ### Tier 2: Should match (unstable leptons, light hadrons)
@@ -155,3 +156,6 @@ is likely what differentiates compound modes.
 | 2026-04-10 | R53: up quark = (1,3) at ε=0.5, s=2 | Thin-torus solution; u and proton share mode (F21) |
 | 2026-04-10 | R54: proton mass is the primary test | Proton/neutron are the proof; quarks are the mechanism |
 | 2026-04-10 | R54: down quarks may be compound e+p modes | Cross-shear provides 2nd degree of freedom (Q116) |
+| 2026-04-10 | R54: σ₁₅, σ₁₆ go singular at R53 geometry | e-tube too large (L₁ ≈ 4700 fm); only σ₂₅, σ₂₆ are active e-p entries |
+| 2026-04-10 | R54: neutron = (−1,−2,ν,ν,−1,−3) at 0.012 MeV off | e+ν+p compound = electron + neutrino + proton fused; decays to its components |
+| 2026-04-10 | R54: proton-neutron tension | σ₂₅, σ₂₆ that nail neutron also shift proton by +1.3 MeV; need finer optimization |
