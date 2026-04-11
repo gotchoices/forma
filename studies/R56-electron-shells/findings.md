@@ -1,5 +1,10 @@
 # R56: Electron shell structure — Findings
 
+See [README.md](README.md) for track framing, prior work, and
+open directions.
+
+---
+
 ## Track 1: Classical packing of distributed-charge electrons
 
 ### F1. Shell structure does NOT emerge from geometric packing
@@ -8,172 +13,157 @@ Energy minimization of Compton-scale charged spheres around a
 point nucleus produces a smooth energy landscape with no
 discontinuities at 2, 8, or 18 electrons.
 
-| Shell 1 (polar) | ΔE per electron (keV) |
+| N | ΔE per electron (keV), model A |
 |---|---|
-| N=1 | −38.4 |
-| N=2 | −36.7 |
-| N=3 | −35.5 |
-| N=4 | −33.8 |
-| N=5 | −8.1 |
+| 1 | −38.4 |
+| 2 | −36.7 |
+| 3 | −35.5 |
+| 4 | −33.8 |
+| 5 | −8.1 |
 
-No sharp closure at N=2.  The cost decreases smoothly.
-
-| Shell 2 (equatorial ring) | ΔE per pair (keV) |
-|---|---|
-| N_ring=2 | −70.6 |
-| N_ring=4 | −64.5 |
-| N_ring=6 | −59.3 |
-| N_ring=8 | −53.4 |
-| N_ring=10 | −47.5 |
-
-No discontinuity at 8.  Smooth diminishing returns.
-
-Both electron size models (R = 751 fm and R = 386 fm) give
-the same qualitative result: smooth energy decrease, no shell
-closure.
+No sharp closure at N=2.  Both size models (R = 751 fm and
+R = 386 fm) give the same qualitative result.
 
 ### F2. Why classical packing fails
 
 The distributed charge makes close-range repulsion SOFTER,
 which makes packing EASIER — the opposite of what's needed
-for shell closure.  In a purely classical model, there's no
-mechanism to make one specific electron count per shell
-energetically special.  The 2, 8, 18 structure requires:
-
-1. **Quantized angular momentum** — discrete orbital shapes
-   (s, p, d, f) limiting configurations per energy level
-2. **Pauli exclusion** — at most 2 electrons per orbital
-
-Both are quantum rules absent from classical packing.
+for shell closure.  No mechanism in classical packing makes
+one specific electron count per shell energetically special.
 
 ### F3. Conclusion: shell structure is genuinely quantum
 
 The MaSt insight (electrons have Compton-scale spatial extent)
 is real but insufficient to derive shell structure.  The Pauli
 exclusion principle is not a geometric consequence of packing.
-This is a negative result — and it's informative: it marks the
-boundary between what geometry alone explains (particle masses,
-charge, spin) and what requires quantum mechanics (multi-
-particle state counting).
-
-### Track 1 status
-
-**Complete — negative result.**  Classical packing of
-distributed-charge electrons does not reproduce 2, 8, 18.
 
 ---
 
-## Open: MaSt interpretation of Pauli exclusion
+## Track 2: Couplet packing
 
-Track 1 showed that classical packing fails.  But MaSt is not
-purely classical — its particles are standing waves with
-quantized winding numbers.  The Pauli exclusion principle, in
-standard QM, says "no two identical fermions can occupy the
-same quantum state."  What does this mean in MaSt language?
+### F4. Electron couplets: charge −2, spin 0, no magnetic moment
 
-### The quantum numbers and their MaSt analogs
+Two electrons at the same S coordinate with opposite tube
+winding (+1 and −1) form a couplet:
 
-In standard QM, an electron in an atom has four quantum numbers:
+| Property | Couplet | Single electron |
+|----------|---------|----------------|
+| Charge | −2e | −e |
+| Spin | 0 | ½ |
+| Magnetic moment | 0 (dipoles cancel) | ±μ_B |
 
-| QM number | Values | Meaning | MaSt analog? |
-|-----------|--------|---------|-------------|
-| **n** (principal) | 1, 2, 3, ... | Energy level / shell | Distance from nucleus in S? Or mode number in Ma? |
-| **l** (angular momentum) | 0 to n−1 | Orbital shape (s, p, d, f) | Winding pattern around nucleus? |
-| **m** (magnetic) | −l to +l | Orbital orientation in space | Orientation of winding axis in S? |
-| **s** (spin) | +½ or −½ | Intrinsic angular momentum | Tube winding sign: n₁ = +1 or −1 |
+### F5. The first couplet encloses the nucleus
 
-The Pauli principle: no two electrons can share all four.
-
-### The "2" in 2n²: two tube orientations in Ma
-
-In MaSt, the electron is mode (1, 0) on the e-sheet (in the
-s ≈ 0 frame).  The tube winding n₁ = +1 gives spin +½; the
-opposite winding n₁ = −1 gives spin −½.  These are NOT two
-different particles — they are two orientations of the SAME
-mode on the SAME torus.
-
-**Hypothesis:** two electrons with opposite tube winding
-(+1 and −1) can coexist at the same location in S because
-their Ma structures are complementary — they "interleave"
-on the torus without conflicting.  They are counter-rotating
-standing waves on the same resonator.  A third electron would
-need the same tube winding as one of the first two, creating
-a conflict on Ma — a resonance that destructively interferes.
-
-This gives the factor of **2** in 2n² — two electrons per
-spatial orbital, one for each tube orientation.
-
-### What about l, m, n?  The spatial quantum numbers
-
-The remaining quantum numbers (n, l, m) describe how the
-electron distributes itself in S around the nucleus.  In MaSt:
-
-- **n (principal):** the radial distance from the nucleus.
-  Each shell is a different distance, set by the balance
-  between nuclear attraction and electron-electron repulsion.
-  This IS a spatial (S) phenomenon.
-
-- **l (angular momentum):** the shape of the electron's
-  spatial distribution.  l = 0 is spherical (s orbital);
-  l = 1 has two lobes (p orbital); l = 2 has four lobes (d).
-  In MaSt, these might correspond to the electron torus's
-  ORIENTATION relative to the nucleus — a torus can be
-  oriented with its axis pointing radially (l = 0?), or
-  tangentially (l = 1?), or at various angles.
-
-- **m (magnetic):** the orientation of l relative to an
-  external axis.  For l = 1: three orientations (m = −1, 0, +1)
-  corresponding to the three spatial directions.
-
-### Possible hypotheses for further tracks
-
-**Hypothesis A: The "2" is topological, the rest is spatial.**
-Two electrons fit per orbital because of tube winding
-complementarity (Ma phenomenon).  The number of orbitals per
-shell (1, 3, 5, 7 for s, p, d, f) is the number of distinct
-spatial orientations of the electron torus around the nucleus
-(S phenomenon).  Shell structure = Ma constraint (×2) times
-S constraint (number of orientations).
-
-**Hypothesis B: Torus orientation quantization.**
-The electron torus at Compton scale (~5 pm) orbiting a nucleus
-at Bohr scale (~50 pm) has a discrete set of stable orientations,
-like a gyroscope in a gravitational field.  The number of stable
-orientations at distance n from the nucleus is n² (from the
-geometry of orientations on a sphere of radius n × a₀).  Each
-orientation holds 2 electrons (tube winding ±1).  Total per
-shell: 2n².
-
-**Hypothesis C: Standing-wave quantization in S.**
-The electron's Coulomb interaction with the nucleus creates a
-potential well in S.  Standing waves in this well (the
-Schrödinger solutions) have discrete angular patterns — the
-spherical harmonics.  The number of angular patterns at
-principal quantum number n is n².  This is standard QM, but
-with the MaSt reinterpretation: the "wave" that has standing
-modes is not an abstract probability amplitude but the
-electromagnetic field of the electron torus as it distributes
+At Z = 10, a single couplet optimizes at r = 1.66 pm — INSIDE
+its own effective radius of 7.51 pm.  The electron bubble wraps
 around the nucleus.
 
-**Hypothesis D: Interference exclusion.**
-Two electron tori with the same tube winding at the same
-position in S would create destructive interference in their
-Ma fields — the standing waves cancel.  Opposite tube windings
-don't cancel (they're orthogonal modes).  This is Pauli
-exclusion as destructive interference on the Ma torus, not as
-an abstract quantum rule.
+### F6. Couplet packing shows weak structure, not clean shells
 
-### Recommended next tracks
+At Z = 18 free packing: ΔE at N=7 and N=9 shows some
+structure, but results are noisy.  All couplets sit at nearly
+the same radius (~7.5 pm).  Not definitive.
 
-| Track | Hypothesis | Approach |
-|-------|-----------|----------|
-| 2 | A (topological ×2, spatial rest) | Count stable torus orientations around a Coulomb center at each shell radius |
-| 3 | B (orientation quantization) | Compute the classical orientational modes of a gyroscopic torus in a 1/r potential |
-| 4 | D (interference exclusion) | Model two co-located electron tori on Ma and show same-winding modes destructively interfere |
+### F7. The core+ring assumption was the problem (see Track 3b)
 
-Track 4 (interference exclusion) is the most distinctively
-MaSt — it would derive Pauli exclusion from the standing-wave
-nature of particles, rather than postulating it.  If two
-same-spin electrons at the same location produce destructive
-interference on Ma, the exclusion principle follows from wave
-physics, not from an axiom.
+---
+
+## Track 3: Diameter sweep
+
+### F8. The marginal energy ratio is exactly 0.50 — independent of R_eff
+
+For the ring-around-core geometry, ΔE_5 / ΔE_4 = 0.50 at
+EVERY electron diameter tested, from 10 fm to 15,000 fm.
+This is a geometric identity, not a function of electron size.
+
+### F9. Shell 2 closure at 5 ring couplets (ΔE_6 goes positive)
+
+The 6th ring couplet costs energy.  Geometric ring capacity =
+5 couplets (10 electrons).  Close to but not exactly 8.
+
+### F10. The electron's EM diameter does NOT affect shell structure
+
+The marginal energy fractions are purely geometric.  Shell
+structure comes from Coulomb geometry in S, not from the
+electron's internal structure on Ma.
+
+### F11. The core+ring assumption is WRONG
+
+A comparison of 5-couplet configurations at Z = 10:
+
+| Configuration | Energy (keV) | Rank |
+|---|---|---|
+| 2 polar + 3 equatorial (bipyramid) | −142.03 | **1 (best)** |
+| 1 core + 4 ring (Track 3 assumption) | −131.67 | **5 (worst)** |
+
+The core couplet migrates out to join the ring.  All couplets
+prefer equal distance from the nucleus.
+
+---
+
+## Track 4: Free 3D couplet packing
+
+### F12. All couplets collapse to one shell at R_eff
+
+With free 3D optimization, all couplets settle at the SAME
+radius (~7.5 pm = R_eff).  No second shell forms.  The shell
+theorem (constant potential inside a uniform sphere) erases
+radial differentiation.
+
+### F13. ΔE decreases smoothly — no shell closure
+
+At Z = 18, the marginal energy per couplet decreases from
+−54.9 keV (N=4) to −12.4 keV (N=11) with no sharp
+discontinuity.
+
+### F14. The uniform-sphere model may be too soft
+
+A ring or torus of charge (rather than a uniform sphere) has
+non-constant interior potential and might produce different
+packing physics.  Not yet tested.
+
+### F15. Bimodal structure appears at small Z
+
+At Z = 2N (neutral atoms), N = 4 (Z=8) and N = 5 (Z=10)
+show bimodal radius distributions — some couplets closer,
+some farther.  At N = 6+ this collapses to one shell.
+
+---
+
+## Track 5: Torus standing waves and orientation packing
+
+### F16. Shell radii ARE the Bohr radii — same physics, physical object
+
+The standing-wave condition 2πr = nλ_dB gives r = n² a₀/Z.
+In MaSt: the electron is a physical torus fitting integer
+wavelengths around the nucleus, not a point with an abstract
+wave property.  At n=1, ~70 torus diameters fit around the
+orbit.
+
+### F17. Solid-angle packing does NOT give n²
+
+A torus at the Bohr radius subtends ~6×10⁻⁴ sr.  Maximum
+non-overlapping count is ~20,000 at n=1 — vastly more than
+n² = 1.  Physical packing does not constrain the angular count.
+
+### F18. The n² IS a closure condition — same as Ma quantization
+
+The constraint l < n (angular nodes < radial wavelengths) is
+the SAME closure condition that quantizes modes on the Ma
+torus: the pattern must return to its starting point.  On Ma →
+particle masses.  In S → shell structure.  One mechanism, two
+domains.
+
+### F19. Summary: what MaSt explains and what it doesn't
+
+**Derived from MaSt:**
+- The factor of 2 (tube winding topology: n₁ = ±1)
+- The Bohr radii (standing-wave closure of a physical torus)
+- The l < n constraint (angular closure = Ma closure in S)
+- Unification: Ma quantization and S shell quantization are
+  the same mechanism
+
+**Not derived from MaSt (standard QM, reinterpreted):**
+- The n² angular count (spherical harmonics)
+- The Madelung filling order (4s before 3d)
+- Wavefunction antisymmetry (Pauli beyond the factor of 2)

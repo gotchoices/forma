@@ -1,172 +1,144 @@
 # R56: Electron shell structure from geometric packing
 
-**Status:** Active — Track 1 complete (negative), Tracks 2–4 framed
-**Questions:** Can distributed-charge electrons, packed around a
-nucleus by energy minimization, reproduce the 2, 8, 18 shell
-structure without invoking the Pauli exclusion principle?
-**Type:** compute
-**Depends on:** R53 (electron Compton scale), model-E (electron
-as near-spherical torus)
+**Status:** Active — Tracks 1–5 complete
+**Questions:** Can MaSt explain WHY electron shells have the
+capacities they do (2, 8, 18, 32)?
+**Type:** compute + theoretical
+**Depends on:** R53 (electron Compton scale), model-E
 
 ---
 
 ## Motivation
 
-Standard quantum mechanics derives the shell structure 2, 8, 18,
-32 from the degeneracy of spherical harmonics in a 1/r Coulomb
-potential, combined with the Pauli exclusion principle (no two
-electrons share the same quantum state).  The exclusion principle
-is an axiom — it is not derived from anything deeper.
+Standard quantum mechanics derives shell capacities from
+spherical harmonics and the Pauli exclusion principle.  Both
+are axiomatic — the QM formalism says WHAT the numbers are
+but not WHY.  MaSt provides a physical electron (a Compton-
+scale torus, not a point) and topological quantum numbers
+(tube winding = spin).  Can these produce shell structure
+from geometry?
 
-Model-E provides a different starting point.  The electron is not
-a point particle — it is a nearly-spherical torus with tube
-circumference ≈ Compton wavelength (~4,700 fm ≈ 4.7 pm).  At
-ε = 397, the torus hole is negligible and the charge distribution
-is effectively a spherical shell.  The electron's spatial extent
-is a significant fraction of the Bohr radius (53 pm):
+## Prior work
 
-> R_electron / R_Bohr ≈ 0.75 pm / 53 pm ≈ 1/70
+**LaFave (2014)** showed that the Thomson problem (minimizing
+energy of N point charges on a fixed sphere) produces energy
+irregularities matching the periodic table's shell-filling
+pattern.  The key: discrete symmetry changes when going from
+N to N+1 charges produce energy jumps at noble gas
+configurations.  See [arXiv:1403.2591](https://arxiv.org/abs/1403.2591).
 
-This means electrons in an atom are not points orbiting far from
-each other — they are extended objects that overlap significantly
-in the inner shells.
+**Knot Physics** (knotphysics.net) derives Pauli exclusion from
+the topology of fermion knots — same-winding knots
+geometrically prevent co-occupation.  Structurally parallel
+to MaSt's tube-winding picture.
 
-**Hypothesis:** the shell structure (2, 8, 18) may emerge from
-the geometric packing of distributed-charge spheres around a
-point nucleus, minimized for total energy, without requiring
-the Pauli exclusion principle as a separate axiom.  The
-exclusion principle would then be a CONSEQUENCE of geometry:
-only so many extended electrons fit in each shell before it's
-energetically cheaper to start a new one.
-
-
-## The electron's spatial size
-
-At ε = 397, the electron torus is almost spherical.  Two
-candidate radii for the effective charge sphere:
-
-| Model | R_eff | Diameter | Source |
-|-------|-------|----------|--------|
-| A | 751 fm (0.75 pm) | 1.50 pm | L_tube / 2π (model-E) |
-| B | 386 fm (0.39 pm) | 0.77 pm | ℏ / m_e c (reduced Compton) |
-
-Both will be tested.  They differ by ~2× because L_tube ≈ 2λ_C.
-The shell-closing numbers (2, 8, 18) are expected to be robust
-to this choice; the exact energy minima may differ.
+LaFave takes shell radii as given from QM and has no
+explanation for the factor of 2 (spin degeneracy).  Neither
+framework derives shell structure from particle geometry.
 
 
-## Approach: shell-by-shell energy minimization
+## Tracks
 
-Rather than throwing N electrons at a nucleus and hoping shells
-emerge, we build up shell by shell and test whether energy
-minima occur at the observed electron counts.
+### Track 1: Classical packing of distributed-charge electrons
 
-### Shell 1: the polar pair
+**Status:** Complete — negative
 
-Place N electrons around a +Ze nucleus with Z large enough to
-bind them.  Model each electron as a spherical shell of charge
-−e at radius R_eff.
+Model each electron as a uniform spherical shell of charge −e
+at the Compton radius.  Place N around a nucleus and minimize
+total energy.  Two electron sizes tested (R = 751 fm from
+model-E; R = 386 fm from reduced Compton).
 
-- N = 1: one electron at distance r from nucleus.  Trivial.
-- N = 2: two electrons settle on opposite sides (north/south
-  poles).  This is the lowest-energy configuration for any
-  repulsive pair around an attractor.
-- N = 3, 4: test whether adding a third/fourth electron to the
-  polar region costs more energy than starting a new shell.
+**Result:** smooth energy landscape, no shell closure at 2, 8,
+or 18.  Classical packing of distributed-charge electrons does
+not produce shells.
 
-**Expected minimum: N = 2** (helium configuration).  The "groove"
-between the two polar electrons is the equatorial plane.
+### Track 2: Couplet packing
 
-### Shell 2: the equatorial ring
+**Status:** Complete — weak positive, not definitive
 
-Fix 2 electrons on the poles (shell 1 full).  Place additional
-electrons in the equatorial ring.  The ring radius adjusts
-to balance nuclear attraction against polar + mutual repulsion.
+An electron couplet = two electrons with opposite tube winding
+(+1 and −1) at the same S coordinate.  Properties: charge −2e,
+spin 0, magnetic moment 0 (a boson).  Pack couplets around a
+nucleus with one couplet fixed at the origin as a core.
 
-- Vary N_ring = 2, 4, 6, 8, 10, 12
-- At each N_ring, minimize total energy over: ring radius,
-  angular positions around the ring
-- Look for an energy minimum per additional electron
+**Result:** weak structure in the energy progression; the
+computation was noisy (optimizer issues).  The core+ring
+geometry was later invalidated by Track 3b.
 
-**Expected minimum: N_ring = 8** (neon = 2 + 8 = 10).  The
-equatorial ring at ~8 electrons should be energetically stable
-because adding a 9th is more expensive than starting shell 3.
+### Track 3: Diameter sweep
 
-### Shell 3: the groove rings
+**Status:** Complete — clean data, false premise
 
-Fix 2 polar + 8 equatorial.  The resulting geometry creates
-two groove rings at roughly ±45° latitude (between the polar
-caps and the equatorial belt).
+Fix 1 core couplet at origin, place N ring couplets around it.
+Use analytic equal-spaced ring (no optimizer noise).  Sweep
+electron effective radius R_eff from 10 fm to 15,000 fm.
 
-- Place N electrons in each groove ring (symmetric above/below)
-- Vary N_groove = 2, 3, 4, 5, 6 per ring (total = 2 × N_groove)
-- Minimize total energy
+**Result:** the ratio ΔE_5/ΔE_4 = 0.50 at EVERY R_eff — a
+geometric identity independent of electron size.  Shell closure
+(6th couplet costs energy) occurs at 5 ring couplets = 10 ring
+electrons.  But the core+ring assumption was shown to be wrong
+by a 5-couplet configuration comparison: all couplets prefer
+the same radius (triangular bipyramid), not a 1+4 layered
+structure.
 
-**Expected minimum: N_groove = 4 per ring → 8 total**
-(argon = 2 + 8 + 8 = 18).
+### Track 4: Free 3D couplet packing
 
-Note: the standard shell 3 holds 18 electrons (2 + 6 + 10 in
-s + p + d orbitals), but chemical shell closing occurs at 8
-(the noble gas configuration).  The geometric packing model
-should reproduce the CHEMICAL shell closing (8, not 18) if it's
-driven by spatial packing rather than angular momentum degeneracy.
+**Status:** Complete — shells do not emerge
 
+Free 3D basin-hopping optimization of N couplets around a
++2Ne nucleus (neutral atoms).  No assumed geometry.
 
-## Computational model
+**Result:** all couplets collapse to the same radius (~R_eff)
+in polyhedral arrangements.  No two-shell structure.  The
+uniform-sphere charge model has constant interior potential
+(shell theorem), which erases radial differentiation.
 
-Each electron is a uniform spherical shell of charge −e at
-radius R_eff, centered at position **r_i** in 3D space.
-The nucleus is a point charge +Ze at the origin.
+### Track 5: Torus standing waves and orientation packing
 
-### Energy terms
+**Status:** Complete — partial success
 
-**Electron-nucleus attraction:**
-For a shell of charge at distance d from a point charge,
-the interaction is the same as point-point if d > R_eff
-(shell theorem), and modified if d < R_eff (electron
-"encloses" the nucleus).
+Reframe the question: instead of packing physical objects,
+analyze standing waves of a torus orbiting a nucleus.
 
-**Electron-electron repulsion:**
-For two spherical shells at separation d:
-- d > 2R_eff: same as point-point (shell theorem)
-- d < 2R_eff: shells overlap; the repulsion is SOFTER than
-  point-point.  Computed by integrating the Coulomb kernel
-  over both shells.
+**Part A:** the Bohr quantization condition (2πr = nλ_dB)
+gives the shell radii.  This is the same formula as standard
+QM but reinterpreted: the electron is a physical torus fitting
+integer wavelengths around the nucleus.
 
-The soft repulsion at overlap is what makes this different
-from the point-charge Thomson problem.  It's the MaSt
-contribution: the electron has physical extent.
+**Part B:** solid-angle packing of torus orientations at the
+Bohr radius gives ~20,000 possible orientations at n=1 (vs
+QM count of 1).  The torus is too small relative to the orbit
+for physical packing to constrain the angular count.
 
-### Optimization
+**Part C:** the angular count n² comes from standing-wave
+closure on a sphere — the constraint l < n (angular nodes
+cannot exceed radial wavelengths).  This is the SAME closure
+condition that quantizes modes on the Ma torus.
 
-At each shell configuration:
-1. Parameterize electron positions (radii + angles)
-2. Compute E_total analytically or by numerical integration
-3. Minimize over all free parameters
-4. Record equilibrium energy per electron
+**Result — what MaSt adds:**
+1. The factor of 2: derived from tube winding topology (±1)
+2. The Bohr radii: physical torus fitting, not abstract wave
+3. Unified closure condition: Ma quantization and S shell
+   quantization are the same mechanism in different domains
 
-### Deliverables
-
-- Energy per electron vs N for each shell
-- Equilibrium configurations (coordinates) at each N
-- Clear identification of energy minima (shell closures)
-- Comparison: do minima occur at 2, 8, 8 (matching noble gases)?
-- Sensitivity to R_eff (model A vs B)
-- Visualization: top and side views of each configuration
+**Result — what MaSt does not yet add:**
+1. The n² angular count (spherical harmonics on S)
+2. The Madelung filling order (4s before 3d)
 
 
-## What success looks like
+## Other directions not yet pursued
 
-**Strong success:** energy minima at exactly N = 2 (shell 1),
-8 (shell 2), 8 (shell 3 chemical), reproducing He, Ne, Ar
-configurations from pure geometry + energy minimization.
+**Thin-ring charge model:** A thin ring or torus of charge has
+non-constant interior potential (unlike the uniform sphere)
+and might produce radial differentiation in packing.  Deferred.
 
-**Moderate success:** minima at approximately the right numbers
-(e.g., 2, 6–10, 6–10) showing that shell structure EMERGES
-from packing but doesn't exactly reproduce QM.
+**Interference exclusion (Pauli from wave physics):** Two
+co-located electron tori with the same tube winding might
+destructively interfere on Ma, preventing co-occupation.
+This would derive Pauli exclusion from standing-wave physics
+rather than postulating it.  Theoretical, not yet attempted.
 
-**Failure:** no clear minima, or minima at wrong numbers.  This
-would mean shell structure is NOT a packing phenomenon and
-genuinely requires the Pauli principle as an independent axiom.
-
-Any of these outcomes is informative.
+**Torus orientation quantization:** The electron torus at the
+Bohr radius might have discrete stable orientations (like a
+gyroscope in a gravitational field) that give the 1, 3, 5, 7
+orbital counts.  Not yet modeled.
