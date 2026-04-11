@@ -112,12 +112,41 @@ Compute their masses from the full 6×6 metric.  Compare to 938
 and 939.6 MeV.  This is the ultimate test of the compound
 picture: can the proton mass emerge from quark modes + binding?
 
-### Track 4: α from the full metric
+### Track 3: α from the Ma-S coupling
 
-Identify which metric component produces α = 1/137.  Candidates:
-- A Ma-S cross term (g(e-tube, S-x))
-- A specific combination of the 6×6 entries
-- A derived quantity from the modular parameter τ = s + iε
+**Status:** Pending
+
+**Goal:** Derive the Ma-S cross terms (the 6×3 block of the
+9×9 metric) such that α = 1/137 emerges as the impedance
+mismatch between Ma modes and 3D space.
+
+**Physical picture:** α is the fraction of a mode's internal
+energy (on Ma) that leaks into the spatial lattice (S) as
+Coulomb field.  The leakage depends on how the mode's energy
+distribution in Ma projects onto the S directions through the
+Ma-S cross terms.  The internal Ma shears (s_e, s_p, σ's)
+affect this projection by changing how energy is distributed
+across the Ma dimensions.
+
+**Method:**
+1. Compute the electron mode's energy distribution across
+   the 6 Ma dimensions at the R54 geometry.
+2. Impose isotropy in S (coupling to S_x = S_y = S_z)
+   and zero coupling for inactive dimensions (e-tube, ν-tube).
+3. Solve for the remaining Ma-S entries such that the total
+   coupling² / E² = α for the electron.
+4. Verify: does the same set of Ma-S entries give α = 1/137
+   for the proton and other charged particles?
+
+**Key question:** Is α universal — one set of Ma-S entries
+gives the same coupling for all charged modes?  If yes, the
+framework is self-consistent.  If different particles need
+different Ma-S values, the coupling mechanism is more complex.
+
+**Deliverable:** The 6×3 Ma-S block values, or a formula
+relating them to α and the internal Ma metric.
+
+**Script:** `scripts/track3_alpha.py`
 
 
 ## Design decision: all 15 off-diagonal entries, not 6

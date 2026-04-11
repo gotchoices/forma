@@ -1,6 +1,6 @@
 # R54 Status and Scorecard
 
-**Study status:** Active — Tracks 1, 1b, 1c, 2 complete
+**Study status:** Active — Tracks 1, 1b, 1c, 2, 3 complete
 
 ---
 
@@ -140,7 +140,7 @@ contradiction — it decays via strong interaction.
 | m_e, m_p, Δm²₂₁, α | measured | **hard pin** | absolute |
 | ε_e = 397.07, s_e = 2.00420 | R53 Sol D | **soft pin** | high — gives 3 leptons |
 | ε_ν = 5.0, s_ν = 0.02199 | R49 | **soft pin** | medium — Family A |
-| ε_p = 0.55, s_p = 0.16204 | model-D | **working** | will change when α relocates |
+| ε_p = 0.55, s_p = 0.16204 | R19 + waveguide | **derived** | s_p from α=1/137 at ε_p; ε_p from waveguide (Track 3: self-consistent) |
 | σ₄₅ ≈ −0.18, σ₄₆ ≈ +0.10 | R54 T1c | **soft** | neutron neighborhood |
 | σ₂₃, σ₂₄ | 0 (or ~−0.3/+0.5 for π⁰) | **exploring** | pion lever |
 | σ₂₅, σ₂₆ | 0 | **open** | neutron alt lever |
@@ -214,3 +214,6 @@ contradiction — it decays via strong interaction.
 | 2026-04-10 | R54: 15/20 particles within 2% | Full inventory at σ₄₅=−0.18, σ₄₆=+0.10; Λ, η′, proton essentially exact |
 | 2026-04-10 | R54: π± spin-charge constraint SOLVED | Two odd tube windings (e+ν sheets) give spin_count=2→spin 0 with Q=±1; mass still at 104.8 MeV (25% off target) |
 | 2026-04-10 | R54: pion mass gap = 30% boost needed | All pion candidates at ~104 MeV (1× e-ring quantum); need cross-shear to reach 135 MeV |
+| 2026-04-10 | R54: α resolution | α is GRID constant; R19 constrains s_p at small ε; s_e freed at large ε; no Ma-S terms needed |
+| 2026-04-10 | R54: p-sheet self-consistent | s_p = 0.162 derived from α=1/137 at ε_p=0.55; NOT borrowed — same physics as model-D, now understood |
+| 2026-04-10 | R54: nuclear test passed | d through ⁵⁶Fe at ≤ 1.1%; matches model-D quality; charge formula universal |

@@ -189,6 +189,25 @@ quality matching or exceeding model-D.
 
 ## Track 1c addendum: pion mechanism (continued)
 
+---
+
+## Track 3: α from the Ma-S coupling
+
+See [findings_track3.md](findings_track3.md) for full derivation.
+
+### F16–F20 summary
+
+The R19 formula cannot produce α = 1/137 at large ε (e-sheet at
+ε = 397).  But the p-sheet at ε = 0.55 gives α = 1/137 exactly —
+it was self-consistent all along.  Resolution: α is a GRID constant
+(property of the lattice junction), and R19 is a consistency
+condition that constrains s at small ε but FREES it at large ε.
+No Ma-S cross terms needed.  All parameters self-consistent.
+
+---
+
+## Track 1c addendum: pion mechanism (continued)
+
 ### F11. The π⁰ can be boosted to exact by e-ν cross-shears
 
 At σ₂₃ = −0.32, σ₂₄ = +0.50, the neutral pion candidate

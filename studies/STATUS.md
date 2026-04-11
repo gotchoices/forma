@@ -88,7 +88,7 @@ the mode topology.  Key surprise: WvM charge integral is exactly
 zero for n₁ = 3 — charge must come from (1,2) strand sub-structure.
 Composite waveguide cutoff question flagged for eigenmode study.
 
-### R54. Compound modes on the full T⁶  **Active — Tracks 1–2 complete**
+### R54. Compound modes on the full T⁶  **Active — Tracks 1–3 complete**
 **Study:** [`R54-compound-modes/`](R54-compound-modes/)
 **Questions:** Q115, Q116  **Type:** compute / theoretical  **Depends on:** R53, R50, R49
 
