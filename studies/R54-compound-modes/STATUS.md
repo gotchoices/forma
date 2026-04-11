@@ -214,6 +214,6 @@ contradiction — it decays via strong interaction.
 | 2026-04-10 | R54: 15/20 particles within 2% | Full inventory at σ₄₅=−0.18, σ₄₆=+0.10; Λ, η′, proton essentially exact |
 | 2026-04-10 | R54: π± spin-charge constraint SOLVED | Two odd tube windings (e+ν sheets) give spin_count=2→spin 0 with Q=±1; mass still at 104.8 MeV (25% off target) |
 | 2026-04-10 | R54: pion mass gap = 30% boost needed | All pion candidates at ~104 MeV (1× e-ring quantum); need cross-shear to reach 135 MeV |
-| 2026-04-10 | R54: α resolution | α is GRID constant; R19 constrains s_p at small ε; s_e freed at large ε; no Ma-S terms needed |
-| 2026-04-10 | R54: p-sheet self-consistent | s_p = 0.162 derived from α=1/137 at ε_p=0.55; NOT borrowed — same physics as model-D, now understood |
+| 2026-04-10 | R54: α conceptually resolved | Charge = topological (GRID). α = Ma-S coupling (separate from internal shears). R19 conflated the two. Quantitative derivation open. |
+| 2026-04-10 | R54: four metric roles identified | Internal shears → generations; cross-sheet → compounds; Ma-S → α; within-S → flat space |
 | 2026-04-10 | R54: nuclear test passed | d through ⁵⁶Fe at ≤ 1.1%; matches model-D quality; charge formula universal |

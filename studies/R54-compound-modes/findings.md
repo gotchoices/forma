@@ -197,12 +197,21 @@ See [findings_track3.md](findings_track3.md) for full derivation.
 
 ### F16–F20 summary
 
-The R19 formula cannot produce α = 1/137 at large ε (e-sheet at
-ε = 397).  But the p-sheet at ε = 0.55 gives α = 1/137 exactly —
-it was self-consistent all along.  Resolution: α is a GRID constant
-(property of the lattice junction), and R19 is a consistency
-condition that constrains s at small ε but FREES it at large ε.
-No Ma-S cross terms needed.  All parameters self-consistent.
+R19 conflated two mechanisms: charge creation (topological, from
+GRID) and α coupling (geometric, from Ma-S junction).  In the
+GRID picture, charge exists from tube winding alone — no shear
+needed.  α is controlled by the Ma-S block of the 9×9 metric,
+not by in-sheet shears.  R19 used internal shear as a proxy
+for the Ma-S coupling; it gave the right answer at model-D
+(where s_e ≈ 0.096 ≈ Ma-S coupling) but the wrong answer at
+R53 (where s_e = 2.004 does a different job: generations).
+
+**The α question is conceptually resolved but quantitatively
+open.** The framework (Ma-S shears determine α, independently
+of internal shears) is clear.  The computation (derive the α
+formula in the 9×9 context, solve for Ma-S entries, verify
+universality) is deferred to model-E.  See
+[findings_track3.md](findings_track3.md) for full analysis.
 
 ---
 

@@ -1,94 +1,130 @@
-# R54 Track 3: α from the Ma-S coupling — Findings
+# R54 Track 3: α and the Ma-S coupling — Findings
 
-### F16. The R19 formula cannot produce α = 1/137 at the R53 e-sheet geometry
+### F16. R19 conflated two mechanisms
 
-At ε_e = 397.074, the R19 formula gives α > 0.25 for ANY shear
-value.  The ε² dependence overwhelms everything:
+The R19 formula α = ε²μ sin²(2πs)/(4π(n_r−n_t·s)²) used the
+in-sheet shear s to do two jobs simultaneously:
 
-| s_e | α (R19) | 1/α |
-|-----|---------|-----|
-| 0.001 | 0.248 | 4.0 |
-| 0.096 | 2,121 | 0.0005 |
-| 0.490 | 32.8 | 0.03 |
+1. **Create charge** — the shear breaks symmetry between
+   clockwise and counterclockwise circulation, generating net
+   charge from a standing wave
+2. **Couple to space** — the same shear controls how much of
+   the mode's energy leaks into 3D space as Coulomb field
 
-No solution exists.  The R19 formula was derived for ε ~ O(1)
-and breaks down at ε >> 1.
+GRID (developed after R19) separates these:
 
-### F17. The p-sheet ALREADY gives α = 1/137
+1. **Charge is topological.** A tube winding n₁ = 1 sweeps the
+   GRID phase through 2π.  This IS one unit of charge.  No shear
+   is needed.  The charge exists because of the winding number,
+   period.  (R48 F5, GRID axiom A3)
 
-At ε_p = 0.55, s_p = 0.162:
+2. **α coupling is geometric.** How much of the mode's energy
+   appears as Coulomb field in S depends on the coupling between
+   Ma and S — the Ma-S block of the 9×9 metric.  This is a
+   separate set of entries from the internal shears.
 
-> **α = 0.007297, 1/α = 137.04**
+R19 predated GRID.  It used internal shear as a proxy for the
+Ma-S coupling because both were unmeasured and the formula
+happened to give α = 1/137 at model-D's geometry.  But they
+are physically distinct:
 
-This is exact — the p-sheet geometry from model-D naturally
-produces the correct α via R19.  No relocation needed for
-the p-sheet.
+- **Internal shears** (s_e, s_p, s_ν): set generation structure
+  and mode energies within Ma.  These live in the 6×6 Ma block.
+- **Ma-S shears**: control how strongly modes couple to 3D space.
+  These live in the 6×3 Ma-S block of the 9×9 metric.
 
-### F18. Resolution: α is a GRID constant, not a metric entry
+### F17. The R19 formula gives wrong α at R53 — as expected
 
-The cleanest interpretation:
+At ε_e = 397, s_e = 2.004: R19 gives α ≈ 2425.
+At ε_p = 0.55, s_p = 0.162: R19 gives α = 1/137.
 
-1. **α = 1/137 is a property of the GRID lattice junction** —
-   the impedance mismatch between any 2D material sheet and
-   the 3D spatial lattice.  It's a constant of the substrate,
-   like the speed of light.
+This is NOT a problem with the e-sheet geometry.  R19 was
+computing the wrong thing — it was evaluating the internal
+shear's effect on circulation, which is NOT what determines α
+in the GRID picture.  The p-sheet gives 1/137 "accidentally"
+because its internal shear (0.162) happens to be close to the
+actual Ma-S coupling value.
 
-2. **The R19 formula is a consistency condition, not a derivation.**
-   On each sheet, R19 relates (ε, s, α) for the reference mode.
-   At ε ~ O(1) (the p-sheet), R19 constrains s:
-   > s_p = 0.162 is determined by α = 1/137 at ε_p = 0.55
-   
-   At ε >> 1 (the e-sheet), R19 has no solution — but this
-   doesn't mean α is wrong; it means R19 doesn't apply in
-   this regime.
+### F18. The four roles of off-diagonal metric entries
 
-3. **The in-sheet shear has two regimes:**
-   - At small ε (p-sheet, ν-sheet): R19 constrains s from α
-   - At large ε (e-sheet): s is FREE and set by generations (R53)
+The 9×9 metric (Ma₆ × S₃) has off-diagonal entries that serve
+four distinct physical roles:
 
-4. **No Ma-S cross terms are needed.** α is not a metric entry
-   to be solved for — it's an external constant from the GRID
-   substrate.  The 6×6 Ma metric handles internal physics
-   (masses, generations, compound modes).  α handles the
-   coupling to space.  They're separate.
+| Entries | Count | Role |
+|---------|-------|------|
+| Internal shears (s_e, s_ν, s_p) | 3 | Generation structure, mode energies |
+| Cross-sheet (σ_ep, σ_eν, σ_νp blocks) | 12 | Compound modes (neutron, hadrons) |
+| Ma-S coupling | 18 | α = charge → Coulomb field coupling |
+| Within S | 3 | Spatial isotropy (= 0 for flat space) |
 
-### F19. What this means for model-E
+These are independent entries in one symmetric matrix.  They
+don't interfere with each other because they live in different
+blocks.  The internal shears set the physics WITHIN Ma.  The
+Ma-S shears set the physics BETWEEN Ma and S.
 
-The α question is RESOLVED, but not the way we expected:
+### F19. The Ma-S shears determine α
 
-- We don't need to "relocate" α to Ma-S cross terms
-- α stays as a measured input (from GRID), same as model-D
-- The R19 formula applies on sheets with ε ~ O(1) (p-sheet)
-   and constrains their shear
-- On the e-sheet (ε >> 1), the in-sheet shear is unconstrained
-   by α and free to set the generation structure
-- The R19 formula's breakdown at large ε is a FEATURE: it frees
-   the shear for a different role (generations)
+The charge on a mode exists because of topological winding
+(GRID).  The STRENGTH of the Coulomb field depends on how
+much of that charge's energy projects from Ma into S.  The
+projection is controlled by the Ma-S block.
 
-This eliminates one of the two remaining gaps for model-E.
-The p-sheet geometry is no longer "borrowed" from model-D —
-it's self-consistent: α = 1/137 fixes s_p = 0.162 at ε_p = 0.55,
-which is exactly model-D's value, derived from the same physics.
+At zero Ma-S coupling (σ_MaS = 0), a charged mode has charge
+but NO Coulomb field — the charge is "trapped" on Ma and
+doesn't extend into S.  At nonzero σ_MaS, the charge's field
+leaks into S.  The fraction that leaks is α.
 
-### F20. Parameter self-consistency
+The Ma-S shears are small (presumably ~O(0.01–0.1)) because
+α is small (1/137 ≈ 0.0073).  The exact values depend on which
+Ma dimensions couple to which S dimensions, and on the mode's
+energy distribution across Ma.
 
-| Parameter | Source | Status |
-|-----------|--------|--------|
-| α = 1/137 | GRID (input) | **self-consistent** |
-| s_p = 0.162 | R19 at (ε_p=0.55, α) | **derived** (not borrowed) |
-| s_e = 2.004 | R53 generations | **derived** (freed by large ε) |
-| s_ν = 0.022 | Δm² ratio | **derived** |
-| ε_e = 397 | R53 generations | **derived** |
-| ε_p = 0.55 | waveguide cutoff | **constrained** |
-| ε_ν = 5.0 | Family A selection | **constrained** |
+### F20. What needs to be computed (open)
 
-Every parameter is now either derived or constrained.  None is
-"borrowed" or ad hoc.  The two regimes (small ε: α constrains s;
-large ε: s free for generations) are complementary, not
-contradictory.
+The specific computation for model-E:
+
+1. Derive the formula for α in terms of the Ma-S block entries
+   and the mode's winding pattern.  This replaces R19 with a
+   formula that uses the RIGHT metric entries.
+
+2. Solve for the Ma-S entries such that α = 1/137 for the
+   electron mode (1,2,0,0,0,0) at the R54 internal geometry.
+
+3. Verify universality: do the SAME Ma-S entries give α = 1/137
+   for the proton mode (0,0,0,0,1,3)?  If yes, α is universal.
+   If not, something is wrong.
+
+4. Compute the Coulomb self-energy at the R54 geometry with the
+   derived Ma-S entries and verify U = αmc².
+
+Steps 1–3 are algebra (derivation of the coupling formula in the
+9×9 context).  Step 4 is a numerical field integral.  Both are
+substantial but well-defined.
+
+**This is the most important open theory question for model-E.**
+The particle matching, nuclear results, and generation structure
+are all solid.  The α mechanism is the remaining gap.
+
+### F21. Separation of concerns is the key insight
+
+The user's observation that internal shears and Ma-S shears
+are independent and compensating is the structural resolution.
+R19 wasn't wrong — it was computing a real geometric quantity.
+But it attributed that quantity to the wrong metric entries.
+
+In model-E:
+- s_e = 2.004 does its job (three lepton generations)
+- σ_MaS ≈ small does its job (α = 1/137)
+- They don't conflict because they're in different blocks
+
+The R19 formula, reinterpreted, may still give the relationship
+between σ_MaS and α — just applied to the Ma-S entries instead
+of the internal shears.  This is the computation in F20.
 
 ### Track 3 status
 
-**Complete.** α resolution found: GRID constant + R19 consistency
-at small ε.  No Ma-S cross terms needed.  All parameters self-
-consistent.
+**Partially complete.** The conceptual framework is established:
+charge is topological (GRID), α comes from Ma-S coupling (not
+internal shear), and the four types of off-diagonal entries serve
+independent roles.  The quantitative derivation (α formula in
+terms of Ma-S entries) is open and deferred to model-E.
