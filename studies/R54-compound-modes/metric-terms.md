@@ -73,11 +73,11 @@ contribute negligibly, leaving 4 effective Ma-S entries:
 | # | Entry | Couples | Estimated | Status |
 |---|-------|---------|-----------|--------|
 | 25–27 | σ(e-tube, S) | e-tube → S_{x,y,z} | ≈ 0 | inactive (L₁ huge) |
-| 28–30 | σ(e-ring, S) | e-ring → S_{x,y,z} | ~ O(α) | **working assumption** |
+| 28–30 | σ(e-ring, S) | e-ring → S_{x,y,z} | ~ **−**O(α) | **working assumption (NEGATIVE sign → negative charge)** |
 | 31–33 | σ(ν-tube, S) | ν-tube → S_{x,y,z} | ≈ 0 | inactive (L₃ huge) |
-| 34–36 | σ(ν-ring, S) | ν-ring → S_{x,y,z} | ~ O(α) | **working assumption** |
-| 37–39 | σ(p-tube, S) | p-tube → S_{x,y,z} | ~ O(α) | **working assumption** |
-| 40–42 | σ(p-ring, S) | p-ring → S_{x,y,z} | ~ O(α) | **working assumption** |
+| 34–36 | σ(ν-ring, S) | ν-ring → S_{x,y,z} | ≈ 0 | **zero (neutrinos electrically neutral)** |
+| 37–39 | σ(p-tube, S) | p-tube → S_{x,y,z} | ~ **+**O(α) | **working assumption (POSITIVE sign → positive charge)** |
+| 40–42 | σ(p-ring, S) | p-ring → S_{x,y,z} | ~ **+**O(α) | **working assumption (POSITIVE sign → positive charge)** |
 
 ## Off-diagonal: within S (3)
 

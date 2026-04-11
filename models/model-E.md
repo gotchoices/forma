@@ -31,6 +31,16 @@
    - Ma-S entries → α coupling (charge → Coulomb field)
    - Within-S → flat space (zero)
 
+5. **Charge sign comes from Ma-S coupling sign.** The charge
+   formula Q = −n₁ + n₅ encodes that the e-sheet couples to S
+   with NEGATIVE sign and the p-sheet with POSITIVE sign.  The
+   magnitudes are equal (|σ_eS| = |σ_pS| ∝ α), giving equal
+   coupling strength; the signs are opposite, giving opposite
+   charge.  The ν-sheet has zero Ma-S coupling (neutrinos are
+   electrically neutral).  Matter vs antimatter is the sign of
+   the tube winding; positive vs negative charge is which sheet
+   the winding lives on.
+
 ## Results
 
 ### Predictions
