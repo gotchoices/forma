@@ -88,6 +88,17 @@ the mode topology.  Key surprise: WvM charge integral is exactly
 zero for n₁ = 3 — charge must come from (1,2) strand sub-structure.
 Composite waveguide cutoff question flagged for eigenmode study.
 
+### R55. α consistency — Ma-S coupling derivation  **Framed**
+**Study:** [`R55-alpha-consistency/`](R55-alpha-consistency/)
+**Questions:** Q115, Q116  **Type:** theoretical + compute  **Depends on:** R54, R19, R48
+
+Derive the formula connecting Ma-S metric entries to α = 1/137.
+R19 conflated charge creation (topological, GRID) with spatial
+coupling (geometric, Ma-S).  R55 separates them and derives
+α from the Ma-S block of the 9×9 metric.  Includes universality
+check (same Ma-S entries → same α for electron and proton) and
+Coulomb self-energy verification.
+
 ### R54. Compound modes on the full T⁶  **Active — Tracks 1–3 complete**
 **Study:** [`R54-compound-modes/`](R54-compound-modes/)
 **Questions:** Q115, Q116  **Type:** compute / theoretical  **Depends on:** R53, R50, R49

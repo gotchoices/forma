@@ -1,4 +1,4 @@
-# Model: model-D (Filtered model — `ma_model_d.py`) ⟵ ACTIVE
+# Model: model-D (Filtered model — `ma_model_d.py`) — Superseded by [model-E](model-E.md)
 
 **Status:** Active — R50 partially reopened post-Q114 §11.5 audit (R50 F19–F29); R52 open with leads after F25 sign-rule retraction  
 **Code / implementation:** [`studies/lib/ma_model_d.py`](../studies/lib/ma_model_d.py) — Ma engine with 6×6 coupled metric, waveguide filtering, mode-aware (n_tube, n_ring) shear formula, signed branch selection (`solve_shear_for_alpha_signed`)  

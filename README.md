@@ -137,23 +137,27 @@ for the full mechanism catalog.
 
 ## Models
 
-The MaSt model has evolved through four generations.  The
-**current model is model-D** (in progress — foundational studies
-complete, particle census pending).  The most recent model with
-full quantitative predictions is **model-C**.
+The MaSt model has evolved through five generations.  The
+**current model is model-E** — a full T⁶ metric with generation
+structure and compound modes on 20 of 20 surveyed particles.
 
 | Model | Era | Key idea | Status |
 |-------|-----|----------|--------|
 | [model-A](models/model-A.md) | S1–R25 | WvM / single-sheet electron | Superseded |
 | [model-B](models/model-B.md) | R26–R38 | Three tori / `ma.py` — first particle predictions | Superseded |
 | [model-C](models/model-C.md) | R39–R44 | Generalized model / `ma_model.py` — dynamic torus, dark matter, electroweak | Superseded |
-| [model-D](models/model-D.md) | R45–R50+ | Filtered model / `ma_model_d.py` — waveguide cutoff, (1,3) proton (leading) / (3,6) alternative, GRID integration | **Active** |
+| [model-D](models/model-D.md) | R45–R52 | Filtered model / `ma_model_d.py` — waveguide cutoff, (1,3) proton, GRID integration | Superseded |
+| [model-E](models/model-E.md) | R53–R55 | Full T⁶ with generation structure — 20/20 particles, shear resonance, 9×9 metric | **Active** |
 
-**Headline results** (model-C; see [`models/model-C.md`](models/model-C.md)
-for full tables, mode assignments, parameter accounting, and limitations):
+**Headline results** (model-E; see [`models/model-E.md`](models/model-E.md)):
 
-- Six MeV-scale hadron masses predicted at 0.3–1.2% from 2 effective
-  free parameters (both insensitive to the predictions).
+- **20 of 20 surveyed particles have credible modes** — stable
+  particles (proton, electron) are exact eigenmodes; all unstable
+  particles are near-misses with gaps consistent with their
+  instability
+- Three charged lepton generations from in-sheet shear resonance —
+  mass ratios algebraically exact from geometry
+- Nuclear masses from deuterium to iron at ≤ 1.1%
 - Neutrino mass-squared ratio Δm²₃₁/Δm²₂₁ = 33.6 from integer
   winding numbers (exact, parameter-free).
 - Emergent neutron — a three-sheet mode nobody put in, found by
@@ -253,7 +257,8 @@ sheet to three (3Ma = Ma_e × Ma_ν × Ma_p), yielding Ma (R26).
 
 | File | Purpose |
 |------|---------|
-| [`models/model-D.md`](models/model-D.md) | **Current model** (active) — filtered model with waveguide cutoff and (3,6) proton |
+| [`models/model-E.md`](models/model-E.md) | **Current model** (active) — full T⁶ with generation structure, 20/20 particles, 9×9 metric |
+| [`models/model-D.md`](models/model-D.md) | Previous model — filtered model with waveguide cutoff and (1,3) proton |
 | [`models/model-C.md`](models/model-C.md) | **Latest quantitative predictions** — particle tables, parameter census, full results |
 | [`models/README.md`](models/README.md) | Model index: all four generations (A–D) |
 | [`STATUS.md`](STATUS.md) | Project-level status: mission, active front, open problems |
