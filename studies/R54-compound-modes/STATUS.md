@@ -1,6 +1,6 @@
 # R54 Status and Scorecard
 
-**Study status:** Active — Tracks 1, 1b, 1c complete
+**Study status:** Active — Tracks 1, 1b, 1c, 2 complete
 
 ---
 
@@ -99,6 +99,12 @@ is likely what differentiates compound modes.
 ---
 
 ## Assessment
+
+### Nuclear validation (Track 2)
+
+All nuclei d through ⁵⁶Fe match at ≤ 1.1% (scaling law) or
+≤ 0.05% (free search).  Charge formula universal.  R54
+geometry passes nuclear test — matches model-D quality.
 
 ### Hits, misses, fails
 

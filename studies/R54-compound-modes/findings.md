@@ -171,6 +171,24 @@ The π± candidate (−1, −1, −2, −2, 0, 0) is an e+ν compound
 with this structure.  At 104.8 MeV, it's 25% below the target
 139.6 MeV — a large miss consistent with the pion's instability.
 
+---
+
+## Track 2: Nuclear analysis
+
+See [findings_track2.md](findings_track2.md) for full results.
+
+### F12–F15 summary
+
+All nuclei from deuteron to ⁵⁶Fe match at ≤ 1.1% under the R29
+scaling law (n₅ = A, n₆ = 3A).  Charge formula Q = −n₁ + n₅ = Z
+universal.  Free search finds even better matches (deuteron 0.029%,
+tritium 0.007%).  **R54 geometry passes the nuclear test** with
+quality matching or exceeding model-D.
+
+---
+
+## Track 1c addendum: pion mechanism (continued)
+
 ### F11. The π⁰ can be boosted to exact by e-ν cross-shears
 
 At σ₂₃ = −0.32, σ₂₄ = +0.50, the neutral pion candidate
