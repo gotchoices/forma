@@ -88,6 +88,17 @@ the mode topology.  Key surprise: WvM charge integral is exactly
 zero for n₁ = 3 — charge must come from (1,2) strand sub-structure.
 Composite waveguide cutoff question flagged for eigenmode study.
 
+### R56. Electron shell structure from geometric packing  **Framed**
+**Study:** [`R56-electron-shells/`](R56-electron-shells/)
+**Type:** compute  **Depends on:** R53 (electron Compton scale), model-E
+
+Can distributed-charge electrons (spheres of Compton diameter),
+packed around a nucleus by energy minimization, reproduce the
+2, 8, 18 shell structure without the Pauli exclusion principle?
+Shell-by-shell approach: test shell 1 (expect minimum at 2),
+shell 2 equatorial ring (expect 8), shell 3 groove rings (expect
+4+4 = 8).  Two electron size models tested (L_tube/2π vs ℏ/mc).
+
 ### R55. α consistency — Ma-S coupling derivation  **Framed**
 **Study:** [`R55-alpha-consistency/`](R55-alpha-consistency/)
 **Questions:** Q115, Q116  **Type:** theoretical + compute  **Depends on:** R54, R19, R48
