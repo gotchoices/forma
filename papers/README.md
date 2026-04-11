@@ -22,12 +22,19 @@ predictions, start here:
    model with one free parameter.  Accessible to any reader;
    no equations.
 
-2. **[Matter from Light](matter-from-light.md)** — The
-   particle model.  How confined photons on compact
-   geometry produce mass, charge, spin, and the particle
-   spectrum.  (Paper 1 of the technical series.)
+2. **[Matter from Light: A Geometric Particle Spectrum](white-paper.md)**
+   — The white paper.  Full model-E spectrum (20 of 20
+   particles with credible modes), T⁶ geometry, three
+   generations from shear resonance, nuclear scaling, and
+   open problems.  Start here for the current state of the
+   science.
 
-3. **[The Ghost in the Machine](dark-matter.md)** — Dark
+3. **[Matter from Light](matter-from-light.md)** — The
+   particle model in narrative form.  How confined photons
+   on compact geometry produce mass, charge, spin, and the
+   particle spectrum.  (Paper 1 of the technical series.)
+
+4. **[The Ghost in the Machine](dark-matter.md)** — Dark
    matter as the uncharged majority of the same standing
    waves that produce visible particles.
 

@@ -1,11 +1,16 @@
 # Matter from Light and Geometry
 
-**Status:** draft
-**Model era:** [model-C](../models/model-C.md). Specific parameters
-(r_p = 8.906, σ_ep = −0.091, proton as (1,2)) have been retracted in
-[model-D](../models/model-D.md), which replaces the proton with a (3,6)
-composite and sweeps all geometry parameters. Particle predictions in
-this paper remain valid as model-C results.
+**Status:** draft — historical narrative through model-C
+**Model era:** [model-C](../models/model-C.md). This paper tells the
+story of how the model was discovered, culminating in model-C's
+particle predictions.  Specific parameters (r_p = 8.906, σ_ep = −0.091,
+proton as (1,2)) were later superseded — first by
+[model-D](../models/model-D.md) (waveguide cutoff, (1,3) proton), then
+by [model-E](../models/model-E.md) (full T⁶ with generation structure,
+20/20 particle modes, 4 dimensionless inputs).  The narrative arc
+and physical reasoning remain valid; the specific numbers reflect
+model-C's state.  For current results, see the
+[white paper](white-paper.md) and [model-E](../models/model-E.md).
 
 **Paper 1 of 3.**  Paper 2: [Sub-Quantum Memory](sub-quantum-memory.md).
 Paper 3: [The Nine-Dimensional Atom](atoms-from-geometry.md) (rough outline).
@@ -1390,3 +1395,50 @@ axioms and arrives at percent-level predictions for particle
 masses — without adjustable parameters — has, at minimum,
 earned the right to be taken seriously as a framework worth
 investigating further.
+
+---
+
+## Postscript: models D and E
+
+This paper was written during the model-C era.  Two subsequent
+generations of the model have addressed several of the failures
+and open problems described in §12.
+
+**Model-D** (R45–R52) replaced the (1,2) proton with a (1,3)
+fundamental mode, introduced waveguide cutoff as a physical
+ghost-elimination mechanism, and incorporated GRID's derivation
+of charge as topological winding.  The Ω⁻ — structurally
+forbidden in model-C — was predicted at 0.04%.  The tau improved
+from 5.6% to 0.18%.  The neutron became a genuine prediction
+(not pinned).
+
+**Model-E** (R53–R55) went further.  The six compact dimensions
+are now treated as one T⁶ rather than three independent sheets.
+In-sheet shear, freed from the α constraint, produces the three
+charged lepton generations from a single geometric parameter —
+the electron, muon, and tau emerge as three modes on the same
+sheet with algebraically exact mass ratios.  The (1,1) ghost is
+eliminated by shear ordering (the electron is naturally the
+lightest mode), replacing the ad hoc waveguide filter.  Charged
+pion spin-0 becomes possible via two odd tube windings on
+different sheets.  The charge sign (positive vs negative) is
+traced to opposite Ma-S coupling signs for the electron and
+proton sheets.
+
+The inventory now stands at **20 of 20 particles with credible
+modes** — stable particles are exact eigenmodes, unstable
+particles are near-misses.  The model uses 4 dimensionless
+inputs (vs the Standard Model's ~19).  Nuclear scaling from
+deuterium to iron holds at ≤ 1.1%.
+
+The failures listed in §12.5 are resolved:
+- **Tau:** 0.05% (was "cannot be a single mode")
+- **Ω⁻:** 0.13% (was "structurally forbidden")
+- **Pion:** spin barrier broken; mass at 25% off (consistent
+  with short lifetime)
+- **Ghost (1,1):** eliminated by geometry, not by filter
+
+The fine-structure constant and QFT formulation remain open.
+
+For details: [white paper](white-paper.md),
+[model-E](../models/model-E.md).

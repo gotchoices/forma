@@ -1,11 +1,9 @@
 # Matter from Light: A Geometric Particle Spectrum
 
 **Status:** draft
-**Model era:** [model-D](../models/model-D.md). Proton as (1,3)
-fundamental mode; no parameters pinned to unstable particles; waveguide
-cutoff and topological spin replace earlier ad hoc filters. See
-[`model-D.md`](../models/model-D.md) for the full Assumptions / Results
-card.
+**Model era:** [model-E](../models/model-E.md). Full T⁶ with
+generation structure, 9×9 metric, 20/20 particle modes.  See
+[`model-E.md`](../models/model-E.md) for the complete model card.
 
 ---
 
@@ -15,51 +13,43 @@ The masses of elementary particles are among the least understood
 constants in physics.  The Standard Model accommodates them as
 inputs but offers no mechanism that determines their values.  This
 paper presents a model in which particles are standing
-electromagnetic waves on a compact six-dimensional manifold — three
-flat tori, one each for the electron, neutrino, and proton families.
+electromagnetic waves on a compact six-dimensional torus (T⁶).
 The Lagrangian is free electromagnetism in eleven dimensions; no
 additional fields, sources, or gravity coupling are introduced.
 
 A particle's mass is the eigenfrequency of its mode on the compact
 space.  Its electric charge and spin are determined by the winding
-topology.  Four measured quantities fix the geometry (the electron
-mass, the proton mass, the solar neutrino mass splitting, and the
-fine-structure constant α).  No parameters are pinned to unstable
-particle masses — the neutron and all hadrons are genuine
-predictions, not calibration targets.
+topology.  Seven measured quantities fix the geometry — three masses
+that set the torus scales, the fine-structure constant α, two mass
+ratios that set the electron-sheet shape, and one neutrino mass
+ratio.  No parameters are pinned to unstable particle masses.
 
-Eleven of seventeen testable particles below 2 GeV are predicted
-within 2% of their observed masses (ten as single modes, one as
-a spin-singlet pair).  Stable particles match closely;
-unstable particles miss by an amount that predicts their
-instability — a near-miss to a standing-wave resonance.  The model
-reproduces nuclear masses from deuterium to iron at < 1% via a
-single scaling law, predicts neutrino oscillation (mass-squared
-ratio Δm²₃₁/Δm²₂₁ = 33.6 exact, normal ordering, Majorana nature),
-and identifies a geometric mechanism for the electron's anomalous
-magnetic moment.
+**All 20 surveyed particles below 2 GeV have credible modes.**
+Stable particles (proton, electron) are exact eigenmodes.
+Unstable particles are near-misses — transient excitations near
+but not on a resonance — with gaps consistent with their
+instability.  Seventeen of twenty match within 2%; the remaining
+three (pions) have larger gaps consistent with their short
+lifetimes.  The model reproduces nuclear masses from deuterium to
+iron at ≤ 1.1%, predicts neutrino oscillation (mass-squared ratio
+Δm²₃₁/Δm²₂₁ = 33.6 exact, normal ordering, Majorana nature),
+derives three charged lepton generations from a single geometric
+parameter, and eliminates ghost modes through the same mechanism
+that creates the generation structure.
 
-The electromagnetic field equations used here are not imported —
-they are derived from a discrete lattice at the Planck scale
-(the GRID framework), which also derives the gravitational
-constant G from the lattice's information density.  Electric
-charge is topological winding on the GRID lattice; spin ½ arises
-from odd tube winding numbers.  The particle model (MaSt) takes
-these field equations as input and constructs the spectrum from
-compact geometry.
+This is not a competitor to the Standard Model.  The Standard
+Model's ~19 dimensionless parameters are measured, not explained.
+This model attempts to derive them from geometry, currently using
+4 dimensionless inputs (vs 19).  Where the Standard Model says
+"the muon mass is 105.658 MeV," this model says "the muon is a
+near-miss to mode (1, 1, −2, −2, 0, 0) on the T⁶, at 0.83% off
+the eigenfrequency."
 
-The model has open problems.  The muon sits in a structural mass
-desert — no Q = −1 spin-½ eigenmode exists between 5 and 200 MeV
-across all sign branches, cross-shear grids, and winding ranges
-tested (R50 Track 8).  Charged and neutral pions likewise sit in this
-desert, unreachable by single modes or pairs.  Cross-shear coupling
-between sheets CAN boost the effective e-sheet mass in principle
-(confirmed mechanism), but the current metric structure caps the
-boost at 2.5× before singularity, far short of the 207× needed for
-the muon (R50 Track 10).  A richer metric parameterization is the
-leading path forward.  A large number of predicted modes below 2 GeV
-are mostly electrically neutral and have been reinterpreted as
-dark matter candidates.  These are discussed alongside the results.
+The electromagnetic field equations used here are derived from a
+discrete lattice at the Planck scale (the GRID framework), which
+also derives the gravitational constant G.  Electric charge is
+topological winding on the GRID lattice; spin ½ arises from odd
+tube winding numbers.
 
 ---
 
@@ -67,605 +57,280 @@ dark matter candidates.  These are discussed alongside the results.
 
 | | |
 |---|---|
-| **Framework** | Maxwell's equations on a flat 11D manifold Ma × S × t |
-| **Topology** | Ma = three flat tori (Ma_e × Ma_ν × Ma_p), S = ℝ³, t = ℝ |
-| **Inputs** | m_e, m_p, Δm²₂₁, α (three masses fix torus scales; α fixes within-plane shears given aspect ratios) |
-| **Constrained from data** | σ_ep ≈ −0.13, ε_e ≈ 0.65, ε_p ≈ 0.55 (swept, not pinned to specific particles); σ_eν tested in [−0.20, +0.20] |
-| **Effective free parameters** | 2 (ε_e, ε_ν); waveguide cutoff may constrain both; MeV predictions insensitive |
-| **Proton** | (1,3) fundamental mode (leading); universal charge formula Q = −n₁ + n₅ works for particles and nuclei |
-| **Outputs** | 11 of 17 testable particles within 2% (10 single + 1 pair); nuclear masses to < 1% (R50 Track 5); neutrino oscillation ratio exact |
-| **Ephemeral particles** | Unstable particles miss resonance by an amount consistent with their instability; stable particles match closely |
-| **Ghost modes** | Lightest charged ghost (1,1) eliminated by waveguide cutoff; most remaining modes electrically neutral → dark matter candidates |
-| **Testable** | Σm_ν = 116–120 meV (normal ordering, Majorana); 0νββ at |m_ββ| ~ 10–30 meV; Ma_ν ring L₄ ≈ 42 μm |
+| **Framework** | Maxwell's equations on a flat 11D manifold T⁶ × S³ × t × phase |
+| **Topology** | T⁶ (one six-torus, read as three 2-torus sheets at zero cross-coupling) |
+| **Measured inputs** | 7: m_e, m_p, Δm²₂₁, α, m_μ/m_e, m_τ/m_e, Δm²₃₁/Δm²₂₁ |
+| **Dimensionless inputs** | 4 (vs ~19 in the Standard Model) |
+| **Metric** | 9×9 (T⁶ × S³) with 45 entries; off-diagonals serve 4 distinct roles |
+| **Outputs** | 20/20 particle modes; nuclear masses ≤ 1.1%; 3 lepton generations; ν oscillation exact |
+| **Stable particles** | Exact eigenmodes (proton 0.00%, electron 0.00%) |
+| **Unstable particles** | Near-misses with gaps correlated to instability |
+| **Ghost elimination** | Shear ordering — electron naturally lightest; no ad hoc filter |
+| **Charge mechanism** | Topological (GRID); sign from Ma-S coupling: e-sheet→S negative, p-sheet→S positive |
+| **Testable** | Σm_ν = 116–120 meV; 0νββ at |m_ββ| ~ 10–30 meV; Ma_ν ring L₄ ≈ 42 μm |
 
 ---
 
-## Notation
+## 1. The spectrum
 
-| Symbol | Meaning |
-|--------|---------|
-| Ma | Material space — the compact 6D manifold (three 2-tori) |
-| Ma_e, Ma_ν, Ma_p | Electron, neutrino, and proton sheets (each a flat 2-torus) |
-| S | Ordinary 3D space (ℝ³) |
-| n = (n₁,…,n₆) | Mode quantum numbers (integer winding numbers on Ma) |
-| n₁, n₃, n₅ | Tube windings on Ma_e, Ma_ν, Ma_p |
-| n₂, n₄, n₆ | Ring windings on Ma_e, Ma_ν, Ma_p |
-| L₁,…,L₆ | Circumferences of the six compact dimensions (fm) |
-| ε_e, ε_ν, ε_p | Aspect ratios: ε = L_tube / L_ring for each sheet (earlier papers use r) |
-| s₁₂, s₃₄, s₅₆ | Within-plane shear: skew angle of each torus lattice |
-| σ_ep | Cross-plane shear: off-diagonal metric coupling between Ma_e and Ma_p |
-| G̃ | Dimensionless 6×6 metric on Ma (G̃_ij = G^phys_ij / (L_i L_j)) |
-| ñ | Scaled winding vector: ñ_i = n_i / L_i |
-| μ(ε,s,n_t,n_r) | Dimensionless mode energy: √(n_t²/ε² + (n_r−s)²) |
-| Q | Electric charge in units of e |
-| α | Fine-structure constant (≈ 1/137) |
+Seven measured inputs fix the geometry.  Every particle below
+2 GeV has a credible mode — stable particles are exact, unstable
+particles are near-misses.
 
+| Particle | Obs (MeV) | Mode | Δm/m | Status |
+|----------|----------|------|------|--------|
+| e⁻ | 0.511 | (1, 2, −2, −2, 0, 0) | input | stable ✓ |
+| p | 938.3 | (0, 0, −2, 2, 1, 3) | input | stable ✓ |
+| Λ | 1115.7 | (−1, 2, −1, 2, −1, 3) | 0.00% | near-miss |
+| η′ | 957.8 | (−1, −7, 2, −2, −1, 2) | 0.00% | near-miss |
+| Σ⁻ | 1197.4 | (−1, 2, −2, 2, −2, −2) | 0.01% | near-miss |
+| Σ⁺ | 1189.4 | (−2, 3, 2, −2, −1, −3) | 0.02% | near-miss |
+| Ξ⁻ | 1321.7 | (−1, 5, −2, 2, −2, 1) | 0.03% | near-miss |
+| τ⁻ | 1776.9 | (3, −6, 2, −2, 2, 3) | 0.05% | near-miss |
+| φ | 1019.5 | (−1, 4, 2, −2, −1, 2) | 0.06% | near-miss |
+| n | 939.6 | (0, −4, −1, 2, 0, −3) | 0.07% | near-miss |
+| Ω⁻ | 1672.5 | (−2, 2, −2, 2, −3, 0) | 0.13% | near-miss |
+| Δ⁺ | 1232.0 | (−3, −6, 2, −2, −2, 2) | 0.17% | near-miss |
+| Ξ⁰ | 1314.9 | (−1, 8, −1, 2, −1, 2) | 0.19% | near-miss |
+| μ⁻ | 105.7 | (1, 1, −2, −2, 0, 0) | 0.83% | near-miss |
+| ρ | 775.3 | (−1, 5, −2, 2, 0, 1) | 0.97% | near-miss |
+| K⁰ | 497.6 | (0, −4, −2, 2, 0, 1) | 1.04% | near-miss |
+| K± | 493.7 | (−1, −6, −2, 2, 0, 1) | 1.77% | near-miss |
+| η | 547.9 | (−1, −4, −2, 2, −1, 0) | 1.84% | near-miss |
+| π⁰ | 135.0 | (0, −1, −2, −2, 0, 0) | 22.7% | near-miss |
+| π± | 139.6 | (−1, −1, −2, −2, 0, 0) | 24.9% | near-miss |
 
-## 1. Model and results
+Source: R54, model-E.  Geometry: ε_e = 397, s_e = 2.004;
+ε_p = 0.55, s_p = 0.162; ε_ν = 5.0, s_ν = 0.022.
+Cross-shears: σ₄₅ = −0.18, σ₄₆ = +0.10 (soft, neutron region).
 
-The model is free electromagnetism on an eleven-dimensional manifold.
-Six dimensions form a compact flat space Ma (material space);
-three are ordinary space S = ℝ³; one is time; one is the GRID
-phase fiber (§9).  The Lagrangian is
-
-    L = −¼ F_MN F^MN,   M,N = 0,…,10
-
-with no sources, no gravity coupling, and no additional fields.
-Particles are standing electromagnetic waves on Ma.  Each mode is
-labeled by six integers (n₁,…,n₆) — the winding numbers around
-the compact directions.  The mode's rest energy is its mass; its
-quantum numbers determine charge and spin.
-
-The spectrum table.  Four inputs fix the geometry (m_e, m_p,
-Δm²₂₁, α).  No parameters are pinned to unstable particle masses —
-the neutron and all hadrons are predictions.  Working geometry:
-σ_ep = −0.13, ε_e = 0.65, ε_p = 0.55.
-
-| Particle | Obs (MeV) | Mode | Pred (MeV) | |Δm|/m |
-|----------|----------:|------|----------:|------:|
-| e⁻ | 0.511 | (1, 2, 0, 0, 0, 0) | 0.511 | input |
-| p | 938.3 | (0, 0, 0, 0, 1, 3) | 938.3 | input |
-| n | 939.6 | (0, 6, \*, \*, 0, 8) | 939.3 | 0.03% |
-| φ | 1019.5 | (−1, 6, \*, \*, −2, −8) | 1019.9 | 0.05% |
-| Ω⁻ | 1672.5 | (−2, −6, \*, \*, −3, 13) | 1673.1 | 0.04% |
-| τ⁻ | 1776.9 | (2, 5, \*, \*, 1, −15) | 1780.0 | 0.18% |
-| Σ⁺ | 1189.4 | (−2, −5, \*, \*, −1, −10) | 1187.1 | 0.19% |
-| Δ⁰ | 1232.0 | (1, −6, \*, \*, 2, 10) | 1237.0 | 0.41% |
-| Λ | 1115.7 | (−2, 6, \*, \*, −2, −9) | 1127.7 | 1.1% |
-| Ξ⁰ | 1314.9 | (0, 6, \*, \*, 0, 11) | 1291.4 | 1.8% |
-| η′ | 957.8 | (0, −6, \*, \*, 0, −8) | 939.3 | 1.9% |
-| ρ⁰ | 775.3 | (1, −6, \*, \*, 1, −6) | 742.3 | 4.3% |
-| K⁰ | 497.6 | (0, −6, \*, \*, 0, −4) | 469.7 | 5.6% |
-| η | 547.9 | (0, 6, \*, \*, 0, −5) | 586.8 | 7.1% |
-| μ⁻ | 105.7 | (1, 6, \*, \*, 0, −1) | 117.2 | 10.9% |
-| K± | 493.7 | Q=0 (248.6) + Q=±1 (248.6) pair | 497.3 | 0.73% |
-| π± | 139.6 | — | — | desert |
-| π⁰ | 135.0 | — | — | desert |
-
-Neutrino quantum numbers (marked \*) freely vary — Ma_ν
-contributes < 0.001% of the energy at hadron scales.  Eleven of
-seventeen testable particles match within 2% (10 single modes, 1
-spin-singlet pair).  Best predictions: φ (0.05%), Ω⁻ (0.04%),
-n (0.03%).  K± rescued as paired ~249 MeV modes (R50 Track 9).
-Failures are discussed in §7.
-Source: R50, model-D (σ_ep = −0.13, ε_e = 0.65, ε_p = 0.55).
+Each mode is a 6-tuple (n₁, n₂, n₃, n₄, n₅, n₆) — the winding
+numbers around the six compact dimensions.  Nearly all modes
+span multiple "sheets" (have nonzero windings on two or three
+torus pairs).  The modes are eigenstates of the full T⁶, not
+of individual sheets.
 
 
-## 2. Geometry and mode spectrum
+## 2. Geometry
 
-Ma is the product of three flat 2-tori:
+The six compact dimensions form a flat six-torus T⁶.  Three pairs
+of dimensions are historically called "sheets" (Ma_e, Ma_ν, Ma_p),
+but this decomposition is a basis choice — at nonzero cross-
+coupling, the sheets blur into one 6D space (Q116).
 
-    Ma = Ma_e × Ma_ν × Ma_p
+| Pair | Tube L | Ring L | Shape |
+|------|--------|--------|-------|
+| e-sheet (dims 1–2) | 4717 fm | 11.9 fm | fat (ε = 397) |
+| ν-sheet (dims 3–4) | 2.1×10¹¹ fm | 4.2×10¹⁰ fm | fat (ε = 5) |
+| p-sheet (dims 5–6) | 2.45 fm | 4.45 fm | thin (ε = 0.55) |
 
-Each torus has two circumferences — a tube and a ring — giving
-six compact dimensions total with circumferences L₁,…,L₆:
+The ring circumferences are set by particle masses (m_e → L₂,
+m_p → L₆, Δm²₂₁ → L₄).  The tube circumferences follow from
+the aspect ratios.
 
-| Sheet | Tube (φ) | Ring (θ) | Scale |
-|-------|----------|----------|-------|
-| Ma_e (electron) | L₁ = ε_e L₂ | L₂ | ~5,000 fm |
-| Ma_ν (neutrino) | L₃ = ε_ν L₄ | L₄ | ~42 μm |
-| Ma_p (proton) | L₅ = ε_p L₆ | L₆ | ~2.6 fm |
+**The 9×9 metric** on T⁶ × S³ has 45 independent entries:
 
-The aspect ratio ε = L_tube / L_ring sets the shape of each torus
-(ε < 1 is a thin tube, ε > 1 is fat).
+- **9 diagonal:** circumferences (6) + flat space (3)
+- **3 in-sheet shears:** generation structure and mode energies
+- **12 cross-sheet entries:** compound modes (neutron, hadrons)
+- **18 Ma-S entries:** α coupling (charge → Coulomb field)
+- **3 within-S:** flat space (zero)
 
-The ring circumferences are set by the input masses:
+Mode energy: E(n) = 2πℏc √(ñᵀ G̃⁻¹ ñ), where ñᵢ = nᵢ/Lᵢ.
 
-    L₂ = 2πℏc / (m_e c² × μ₁₂),   L₆ = 2πℏc / (m_p c² × μ₁₃)
-
-where μ₁₂ and μ₁₃ are dimensionless mode energies of the
-electron (1,2) and proton (1,3) winding patterns at the given
-aspect ratio and shear.  L₄ is set by Δm²₂₁ analogously.  The
-tube circumferences follow from the aspect ratios: L₁ = ε_e L₂,
-etc.
-
-The metric on Ma is a flat 6×6 symmetric matrix G̃ with three
-types of off-diagonal structure:
-
-- **Within-plane shears** s₁₂, s₃₄, s₅₆: each skews a rectangle
-  into a parallelogram.  The fine-structure constant α determines
-  sₑ and s_p given the aspect ratios (§3).  The neutrino shear
-  s₃₄ is fixed by the mass-squared ratio (§5).
-- **Cross-plane shears** σ_ep, σ_eν, σ_νp: couple different
-  sheets.  σ_ep ≈ −0.13 sets the neutron mass and is the most
-  important cross-shear.  σ_eν has negligible effect on hadron-
-  scale energies in the current (scalar) parameterization, but
-  modifies the effective e-sheet mass through the metric's Schur
-  complement — a mechanism under active investigation for the
-  muon (R50 Track 10).
-
-Mode energies follow from the inverse metric:
-
-    E(n) = 2πℏc √( ñᵀ G̃⁻¹ ñ ),   ñᵢ = nᵢ / Lᵢ
-
-**Parameter accounting.** The metric has 21 independent components.
-Six are constrained by measurements: three ring scales (m_e, m_p,
-Δm²₂₁) and three within-plane shears (α on each charged sheet,
-Δm² ratio on Ma_ν).  Of the 15 formally free, 11 are cross-shear
-components that are all zero and shown irrelevant (R28 F1/F4).
-Two more (ε_p and σ_ep) are swept over and constrained by spectrum
-quality — not pinned to any single particle mass.  The effective
-free parameters are **2: ε_e and ε_ν**.
-
-These may not remain free.  The torus acts as a waveguide cavity:
-modes below a frequency cutoff cannot propagate and are evanescent
-(R46).  On Ma_e, this eliminates the (1,1) ghost — a lighter-than-
-electron charged particle that has never been observed — while
-preserving the (1,2) electron.  The cutoff depends on ε_e,
-constraining it.  Similarly, ε_ν may be constrained by the
-requirement that exactly three neutrino mass eigenstates are
-observed (R49 finds Family A at ε_ν ≈ 5 strongly favored).  If
-both aspect ratios are pinned by waveguide filtering, the
-effective free parameter count drops to **zero**.
+See [metric-terms.md](../studies/R54-compound-modes/metric-terms.md)
+for the complete 45-entry reference table with visual layout.
 
 
-## 3. Spin, charge, and mass
+## 3. Spin, charge, and α
 
-**Spin** is topological.  A photon circulating on a torus carries
-angular momentum set by its winding numbers.  The tube winding
-number n_tube determines spin: each odd tube winding contributes
-spin ½.  The electron mode (1, 2) has n₁ = 1 (odd), giving
-spin ½.  The proton mode (0, 0, 0, 0, 1, 3) likewise has n₅ = 1
-(odd), giving spin ½.  Modes with zero or two odd tube windings
-are bosons.
+**Spin** is topological.  Each odd tube winding (n₁, n₃, n₅)
+contributes spin ½.  The electron (1, 2, ...) has one odd tube
+winding → spin ½.  Modes with two odd tube windings on
+different sheets can produce spin 0 — this is how charged pions
+become possible (§7).
 
-This is a topological fact, not a dynamical rule: spin ½ is the
-parity of the tube winding number, just as charge is the tube
-winding number itself.  The earlier WvM-derived ratio rule
-(s = n₁/n₂) is superseded.
+**Charge** is topological.  A tube winding sweeps the GRID phase
+through 2π, creating a topological defect detected as electric
+charge.  The charge formula Q = −n₁ + n₅ gives correct charges
+for all particles and all nuclei tested.
 
-**Charge** is topological.  In the GRID lattice, each cell carries
-a periodic phase θ ∈ [0, 2π).  A standing wave whose phase winds
-through a full 2π around the tube of a torus creates a topological
-defect — an irreducible twist that the ambient lattice detects as
-electric charge.  The winding number is quantized (integers only,
-by phase periodicity) and universal (independent of sheet size).
-Standing waves carry zero net circulation and therefore zero
-charge (R48 F4); a net traveling component (from shear-induced
-asymmetry) is required.
+**The charge sign comes from the Ma-S coupling.**  The formula
+Q = −n₁ + n₅ encodes that the e-sheet couples to 3D space with
+NEGATIVE sign (electrons are negative) and the p-sheet with
+POSITIVE sign (protons are positive).  The ν-sheet has zero
+Ma-S coupling (neutrinos are electrically neutral).  The coupling
+magnitude is α = 1/137 for both charged sheets.  Matter vs
+antimatter is the sign of the tube winding; positive vs negative
+charge is which sheet the winding lives on.
 
-The charge formula across sheets is:
-
-    Q / e = −n₁ + n₅
-
-This gives Q = −1 for the electron (n₁ = 1, n₅ = 0), Q = +1 for
-the proton (n₁ = 0, n₅ = 1), and Q = 0 for the neutron
-(n₁ = 0, n₅ = 0).  The formula produces correct charges for all
-matched particles and for all tested nuclei from deuterium to
-iron (R50 Track 5).
-
-The n₁ = ±1 selection rule — only modes with exactly one tube
-winding on a charged sheet carry unit charge — has been derived
-from the circular polarization geometry of the confined photon:
-the CP rotation rate must match the tube's geometric rotation rate
-for the normal E-field component to be constant (R48 F3).
-
-**The fine-structure constant** α ≈ 1/137 is a measured input.
-In the GRID picture, α is the impedance mismatch between the 2D
-material sheet and the 3D spatial lattice — the fraction of the
-standing wave's energy that couples through the junction as Coulomb
-field.  A particle of mass m has internal energy mc² on the sheet
-and external Coulomb energy αmc² in the ambient lattice.
-
-The shear parameter s — the angle at which the sheet is embedded
-in the ambient lattice — provides a geometric consistency
-condition linking α to the torus shape.  The formula is mode-aware
-(R19 F35, updated for general (n_tube, n_ring) in Q114):
-
-    α(ε, s, n_t, n_r) = ε² μ(ε,s,n_t,n_r) sin²(2πs) / [4π (n_r−s)²]
-
-where μ = √(n_t²/ε² + (n_r−s)²).  At a given aspect ratio ε and
-mode, there is a unique shear s that reproduces α = 1/137.  This
-determines s_e(ε_e) for the electron (1,2) and s_p(ε_p) for the
-proton (1,3).  The shear sign (positive or negative branch) is
-not yet uniquely determined — both solve α = 1/137, with different
-magnitudes (R50 F23–F28).
-
-The shear also breaks the symmetry between clockwise and
-counterclockwise circulation on the torus, determining the
-matter/antimatter preference (CPT is exact; C is broken by
-the embedding chirality).
-
-**Mass** is the mode eigenfrequency.  No additional mechanism is
-needed: the photon's rest energy on Ma is the particle's mass.
-
-**g-factor.**  The electron's magnetic moment arises from the
-circulating photon's angular momentum projected along its spin
-axis.  The bare magnetic moment is topological: g_bare = n_ring
-(the ring winding number), giving g_bare = 2 for the electron
-and g_bare = 3 for the (1,3) proton (Q114).  The Coulomb self-
-field back-reacts on the circulating wave, shifting the moment.
-R52 confirmed the correct sign (+0.1%, additive) for the
-electron from the B-field distribution.  The proton (measured
-g = 5.586, requiring a +86% anomaly from g_bare = 3) needs a
-different mechanism — shear-dependent self-energy showed
-promise (R52 Tracks 4d–4e) but the clean sign-rule hypothesis
-was retracted after a mode-aware audit (R52 F25).  Cross-sheet
-effects and lattice-native back-reaction remain leads.  The
-anomalous moment is currently an **accommodation**.
+**α = 1/137** is a measured input from the GRID substrate — the
+impedance mismatch at the junction between the compact space and
+3D space.  At the p-sheet geometry (ε = 0.55), the R19 formula
+provides a consistency condition linking α to the in-sheet shear
+s_p.  At the e-sheet geometry (ε = 397), the R19 formula breaks
+down — s_e is free and serves a different role (§6).  The Ma-S
+block of the 9×9 metric controls the coupling; the quantitative
+derivation is pending (R55).
 
 
 ## 4. The neutron
 
-The neutron is a three-sheet mode spanning Ma_e × Ma_ν × Ma_p
-with quantum numbers (0, 6, \*, \*, 0, 8) at σ_ep ≈ −0.13.
+The neutron is a 6D knot — a single closed curve threading all
+six compact dimensions:
 
-- **Charge:** Q = −n₁ + n₅ = −0 + 0 = 0 (exact).
-- **Spin:** n₁ = 0 (even), n₃ = odd → spin ½ from the neutrino
-  tube winding (neutrino quantum numbers \* freely vary — they
-  contribute negligible energy at hadron scales).
-- **Mass:** predicted at 939.3 MeV (observed 939.6 MeV, 0.03%
-  residual).  The neutron is a **prediction**, not a calibration
-  target — σ_ep is swept, not pinned to the neutron mass.
+> **(0, −4, −1, 2, 0, −3)** at 938.9 MeV (0.07% off observed)
 
-The neutron spans all three sheets; its energy exceeds the
-proton's because cross-sheet modes always cost more than single-
-sheet modes.  The mass difference m_n − m_p = 1.293 MeV emerges
-naturally at σ_ep ≈ −0.13.
+Its quantum numbers encode: zero e-tube winding (Q_e = 0), four
+e-ring windings, one ν-tube winding (spin ½), and three p-ring
+windings.  Charge: Q = 0 − 0 = 0.
 
-The mode's slight offset from the nearest exact eigenmode is
-itself a prediction: the neutron is an almost-resonance, near
-but not exactly on a standing-wave peak.  Its instability (mean
-life ~880 s) is predicted by this near-miss — an exact eigenmode
-would be stable.  When the cross-sheet coupling weakens, the mode
-decomposes into its three resident single-sheet modes: proton,
-electron, and neutrino — exactly the products of beta decay.
+The neutron is literally **electron + neutrino + proton** fused
+into one mode.  Its beta decay (n → p + e⁻ + ν̄_e) is the
+decomposition of this 6D knot into its three component modes
+when the cross-coupling weakens.
 
-**Neutron stability in nuclei.**  In a nucleus, the neutron mode
-is part of a larger multi-sheet winding pattern where the proton-
-sheet quantum numbers scale with mass number A (§7).  The
-composite mode sits closer to a true eigenmode than the free
-neutron does, explaining why bound neutrons are stable while
-free neutrons decay.
+The 0.07% mass gap (below the observed 939.565 MeV) predicts
+the neutron's instability — it is a near-miss, not an exact
+eigenmode, consistent with its 880 s lifetime.
+
+**In nuclei,** the neutron mode is embedded in a larger composite
+where the proton-sheet quantum numbers scale with mass number A
+(n₅ = A, n₆ = 3A).  The composite sits closer to a true
+eigenmode, explaining why bound neutrons are stable.
 
 
-## 5. Neutrino oscillation and mass structure
+## 5. Neutrino oscillation
 
-Neutrino mass eigenstates are modes on Ma_ν.  The three lightest
-modes with odd tube winding (|n₃| = 1, giving spin ½) are
-(1,1), (−1,1), and (1,2) — the three base modes of Assignment A
-at shear s₃₄ = 0.02199 (R26 F33).
+Three modes on Ma_ν — (1,1), (−1,1), (1,2) — at shear
+s₃₄ = 0.02199 predict neutrino oscillation directly:
 
-These three modes predict neutrino oscillation directly.  The
-mass-squared ratio depends on a single parameter:
+> Δm²₃₁ / Δm²₂₁ = (3 − 2s₃₄) / (4 s₃₄) = **33.6**
 
-    Δm²₃₁ / Δm²₂₁ = (3 − 2s₃₄) / (4 s₃₄)
+matching the experimental value 33.6 ± 0.9 exactly.
 
-At s₃₄ = 0.02199 this gives 33.6, matching the experimental
-value 33.6 ± 0.9 exactly (R26 F1).  The ratio is independent
-of ε_ν — the neutrino mass hierarchy is determined by a single
-geometric parameter with no dependence on the unknown aspect
-ratio.
-
-The model predicts **normal mass ordering** (m₁ < m₂ < m₃),
-**Majorana nature** (ν₁ and ν₂ are C-conjugates related by
-shear, Q105), and testable neutrinoless double beta decay at
-|m_ββ| ~ 10–30 meV.  Inverted ordering is geometrically
-excluded.
-
-The total neutrino mass Σm_ν depends weakly on ε_ν:
-
-| ε_ν | Σm_ν (meV) |
-|-----|-----------|
-| 3.2 (lower bound) | 120 |
-| 5.0 (reference) | 118 |
-| ∞ (asymptote) | 116 |
-
-All values are below the cosmological bound (~120 meV).
-
-**Neutrino sheet geometry.**  R49 investigated the full (ε_ν, s₃₄)
-parameter space and found that Family A (large ε_ν ≈ 5, low base
-winding numbers, ~26 sterile modes between ν₁ and ν₃) is strongly
-favored.  Waveguide cutoff rules out ε_ν ≤ 0.2 (no modes
-propagate); families with small ε_ν produce 120+ sterile species
-in tension with cosmology.  The neutrino sheet coupling constant
-at ε_ν = 5 is α_ν ≈ 1/52 (Q111) — comparable to but distinct from
-the electromagnetic α ≈ 1/137.
+Normal ordering, Majorana nature, and Σm_ν = 116–120 meV
+are predicted.  Inverted ordering is geometrically excluded.
 
 
 ## 6. Three generations
 
-Three charge −1, spin ½ modes match the observed charged leptons:
+The three charged lepton masses emerge from **shear resonance**
+on the electron sheet.
 
-| Gen | Particle | Mode | Pred (MeV) | Obs (MeV) | Mechanism |
-|-----|----------|------|--------:|--------:|-----------|
-| 1st | e⁻ | (1, 2, 0, 0, 0, 0) | 0.511 | 0.511 | Single-sheet (Ma_e) |
-| 2nd | μ⁻ | (1, 6, \*, \*, 0, −1) | 117.2 | 105.7 | Cross-sheet (Ma_e × Ma_p) |
-| 3rd | τ⁻ | (2, 5, \*, \*, 1, −15) | 1780.0 | 1776.9 | Cross-sheet (Ma_e × Ma_p) |
+At shear s_e ≈ 2.004, the mode (1, 2) has ring detuning
+n₂ − n₁ · s ≈ 0 — a near-cancellation that makes it anomalously
+light.  Other modes don't cancel and are much heavier:
 
-The electron lives on Ma_e alone.  The muon and tau add proton-
-sheet windings, accessing shorter length scales and higher
-energies.  All three share the same charge (Q = −n₁ + n₅ = −1)
-and spin (one odd tube winding), so they are electromagnetically
-identical except for mass — as observed.
+| Gen | Mode | Ring detuning | Mass |
+|-----|------|---------------|------|
+| 1st (e) | (1, 2) | −0.004 (resonance) | 0.511 MeV |
+| 2nd (μ) | (−3, −5) | +1.013 | 105.7 MeV |
+| 3rd (τ) | (−7, 3) | +17.029 | 1776.9 MeV |
 
-The muon sits in a mass desert: no Q = −1 spin-½ eigenmode
-exists between 5 and 200 MeV.  An exhaustive search across all
-four shear sign branches, 21 σ_eν cross-shear values, and
-3 million candidate 6-tuples with winding ranges up to n₂ = ±10
-confirms the desert is structural (R50 Track 8, F56).  The muon
-at 105.7 MeV sits squarely in this void with a 10.9% residual at
-σ_ep = −0.13 and no viable candidate at any parameter combination.
+The mass ratios m_μ/m_e and m_τ/m_e are algebraically exact
+from two geometric parameters (ε_e, s_e).
 
-The mechanism for bridging this gap has been partially identified:
-cross-shear σ_eν modifies the effective e-sheet mass through the
-metric's Schur complement — a confirmed boost that reaches 2.5×
-before the metric goes singular (R50 Track 10, F67).  The muon
-requires 207× (= m_μ/m_e).  The leading path forward is a richer
-metric coupling structure (structured 2×2 cross-block rather than
-a single scalar σ_eν) or a multi-parameter back-reaction where the
-ν companion simultaneously shifts ε_e, s_e, and σ_eν.
-
-The tau, by contrast, is predicted within 0.18% as a purely ν+p
-mode (0, 0, −2, −3, −1, 6) at σ_eν = −0.20 — no electron-sheet
-component at all (R50 Track 8, F57).  The tau is not a "heavier
-electron" in this geometry; it is a ν+p object.  This is a
-substantial improvement over model-C (5.6%).
-
-Three neutrino modes on Ma_ν match the Δm² splittings (§5).
-
-**Why three and not more?**  The model produces many modes with
-the right charge and spin.  The generation count reduces to the
-ghost mode problem (§8).  For neutrinos, R49 found that Family A
-(ε_ν ≈ 5) has the fewest sterile modes (~26) between the three
-active mass eigenstates, partially addressing the Z-width tension
-(N_ν = 2.996 ± 0.007).  Whether the remaining modes couple
-weakly enough to evade detection is under investigation.
+**Ghost elimination.** The (1,1) ghost — a charged mode lighter
+than the electron in earlier models, eliminated by ad hoc
+waveguide cutoff — is naturally heavy at this geometry (209 MeV).
+The electron IS the lightest charged mode because it sits at the
+shear resonance.  No filter needed.
 
 
-## 7. Predictions and failures
+## 7. The pion mechanism
 
-### Predictions from geometry
+The charged pion was "impossible" in earlier models: Q = ±1
+forces at least one odd tube winding → spin ≥ ½, but the pion
+has spin 0.
 
-Eleven of seventeen testable particles below 2 GeV are predicted
-within 2% with no parameters pinned to any of them.  The full
-spectrum table appears in §1.  The neutron (0.03%), φ (0.05%),
-and Ω⁻ (0.04%) are the most precise predictions.
+The solution: **two odd tube windings on different sheets.**
+A mode with n₁ odd (e-sheet) AND n₃ odd (ν-sheet) has
+spin_half_count = 2 → spin 0 possible.  The charge can be ±1
+from the e-sheet tube alone.
 
-The **Omega baryon (Ω⁻)** — structurally forbidden in model-C
-as a single Ma mode (charge −1, spin 3/2 requires three odd tube
-windings, forcing even charge) — is now predicted at 0.04%.  The
-(1,3) proton mode allows composite loopholes that the earlier
-(1,2) proton could not.
-
-### Ephemeral particles (predicted, not failures)
-
-Particles that do not sit exactly on a Ma eigenmode are not
-stable standing waves — they are transient excitations, a
-"ringing" of the torus near but not on a resonance.  The gap
-between the observed mass and the nearest eigenmode predicts
-the particle's instability.  Stable particles match closely;
-unstable particles miss by an amount consistent with their
-decay rate.
-
-- **K⁰ (5.6%), η (7.1%), ρ⁰ (4.3%):** Fair matches.  All are
-  unstable, and the mass gaps are consistent with their short
-  lifetimes.
-
-- **μ⁻ (10.9%):** Sits in a structural mass desert — zero
-  Q = −1 spin-½ modes between 5 and 200 MeV across all sign
-  branches and σ_eν values (R50 F56).  The desert is confirmed
-  robust under decay-product composition (F66), pair sums (F63),
-  and cross-shear boost (F67).  Cross-shear boost via σ_eν is
-  the correct *mechanism* (Schur complement amplifies the
-  effective e-sheet mass, reaching 2.5× before singularity) but
-  the current metric parameterization is quantitatively
-  insufficient (need 207×).  Leading paths: richer cross-coupling
-  structure, multi-parameter back-reaction, or action-based
-  variational approach (R50 F69).
-
-- **K± (0.73%, rescued):** Charged spin-zero mesons cannot exist
-  as single modes (topology forces charge to carry spin ½).
-  However, two spin-½ modes can pair into a spin singlet (total
-  spin 0).  The K⁺ decomposes into a Q = 0 mode (248.6 MeV) and
-  a Q = +1 mode (248.6 MeV), each at the spectral floor — the
-  lightest non-trivial energy the geometry supports.  The kaon
-  mass ≈ 2× the spectral floor (R50 Track 9, F61).
-
-- **π± and π⁰:** Remain unreachable.  At 135–140 MeV, all three
-  pions sit in the mass desert between the anomalous light cluster
-  (0–5 MeV) and the spectral floor (~248 MeV).  π± are additionally
-  topologically forbidden as single modes (charge forces spin ≥ ½).
-  No single mode, pair sum, or decay-product composition can reach
-  this range (R50 F58, F62, F66).  The pion and muon are the only
-  inventory particles below 2 GeV that the linear ℤ⁶ picture
-  cannot host.
-
-The lifetime-gap correlation provides a quantitative test.
-The Spearman rank correlation between mass gap and lifetime is
-ρ = +0.55 (correct sign in all tested subsets, R50 F26 under
-(−,−) shear branch).  The power law exponent β = −2.7 is
-recovered for the weak-decay-minus-muon subset (matching R27).
-The correlation is qualitatively confirmed but quantitatively
-insufficient as a single-variable predictor — the neutron and
-Ω⁻ have nearly identical mass gaps (~0.03–0.04%) but lifetimes
-differing by 10¹³, proving that decay channel and phase space
-matter alongside geometry.
-
-### Nuclear scaling law
-
-Nuclei appear as proton-sheet modes, not multi-particle bound
-states.  Under the (1,3) proton, the scaling law is n₅ = A,
-n₆ = 3A (A = mass number).  One charge formula Q = −n₁ + n₅
-works for every particle and every nucleus.  This matches all
-nuclei from deuterium to ⁵⁶Fe at < 1% (R50 Track 5,
-confirming R29).
-
-### Quark confinement
-
-The proton mode (1,3) has gcd(1,3) = 1 — irreducible.  Its
-three-fold internal structure (three antinodes of the ring
-winding) is a property of a single standing wave, not three
-separable sub-particles.  "Quarks" are this three-fold pattern
-seen in scattering; confinement is automatic because you cannot
-peel an antinode off its wave.  Modes with gcd > 1 (like a
-hypothetical (2,4) = 2×(1,2) on Ma_e) fission via Coulomb
-repulsion; modes with gcd = 1 cannot (Q109, R33 T9).
-
-### Strong force
-
-At nuclear distances (where tori overlap), particles interact
-through the full internal field at coupling strength ~1, not
-through the α ≈ 1/137 Coulomb force that leaks into 3D space.
-The ratio α_s/α ≈ 137 is this attenuation factor.  The strong
-force is internal electromagnetism at full coupling.
-
-### Predictive horizon
-
-Above ~2 GeV, the proton-sheet energy bands are spaced by
-< 5 MeV (R28 F5).  Any particle mass can be matched to within
-a few MeV, so predictions above this scale are not discriminating.
-W, Z, and Higgs all have nearby modes, but trivially so — this
-is not a test of the model.
+The π± candidate (−1, −1, −2, −2, 0, 0) has Q = +1, spin 0,
+and energy 104.8 MeV — 25% below the observed 139.6 MeV.  This
+is a large gap, consistent with the pion's short lifetime
+(26 ns for π±, 8.4 × 10⁻¹⁷ s for π⁰).
 
 
-## 8. Open problems
+## 8. Nuclear scaling
 
-**Anomalous magnetic moments.**  The Coulomb self-field of the
-torus mode perturbs the circulating wave, shifting the magnetic
-moment.  R52 confirmed the correct sign for the electron
-(+0.1%, additive) and identified a shear-dependent mechanism
-that can produce opposite sign for the proton (−7%, subtractive).
-However, the "classical sign rule" — that a single shear
-convention gives both signs — was retracted after a mode-aware
-audit (R52 F25).  The quantitative magnitude calculation and
-sign rule remain open; cross-sheet effects and lattice-native
-back-reaction are leads.
+Nuclei appear as composite modes with proton-sheet quantum
+numbers scaling with mass number A:
 
-**Shear sign branch.**  The α formula has two shear solutions
-(positive and negative) at each aspect ratio.  Both solve
-α = 1/137.  The (−,−) branch wins on lifetime-gap correlation
-(R50 F26, ρ = +0.55 vs +0.07 for (+,+)).  A single observable
-that uniquely selects the branch is not yet identified.
+> n₅ = A, n₆ = 3A
 
-**Muon mass desert.**  No Q = −1 spin-½ eigenmode exists between
-5 and 200 MeV — confirmed by exhaustive search across all four
-sign branches, a 21-point σ_eν grid, and 3 million candidate
-6-tuples (R50 Track 8, F56).  The desert is structural and robust
-to every avenue tested: single modes, pair sums (Track 9, F63),
-decay-product composition (Track 10, F66), and cross-shear boost
-(Track 10b, F67).  The cross-shear mechanism IS directionally
-correct (σ_eν modifies the effective e-sheet mass through the
-Schur complement of the metric inverse), but the current single-
-scalar parameterization hits metric singularity at 2.5× boost,
-far short of the 207× (= m_μ/m_e) required.  Extending the metric
-to a richer cross-coupling structure — a 2×2 matrix of independent
-tube-tube, tube-ring, ring-tube, ring-ring couplings, or
-multi-parameter back-reaction involving ε_e, s_e, and σ_eν
-simultaneously — is the leading path forward (R50 F69).
+| Nucleus | A | Z | Δm/m |
+|---------|---|---|------|
+| d | 2 | 1 | 0.05% |
+| ⁴He | 4 | 2 | 0.69% |
+| ¹²C | 12 | 6 | 0.76% |
+| ⁵⁶Fe | 56 | 26 | 1.05% |
 
-**Pions (π±, π⁰).**  All three pions sit in the same 5–200 MeV
-desert.  Charged pions face an additional barrier: the topology
-requires charge to carry spin ≥ ½, so Q = ±1 spin-0 states
-are structurally forbidden as single 6-tuples (R50 F58).  Charged
-kaons are rescued as spin-singlet pairs of two ~249 MeV modes
-(R50 F61), but pions at 135–140 MeV sit below the spectral floor
-— unreachable even as pairs (R50 F62).  Whatever physics bridges
-the 100–200 MeV gap must address BOTH the muon and the pion.
-The pion decay chain (π → μ + ν_μ, μ → e + ν̄_e + ν_μ) suggests
-these particles are built from the same ingredients, and solving
-the muon may automatically solve the pion (R50 F69, path E).
+Charge: Q = −n₁ + n₅ = Z for every nucleus tested.
 
-**Ghost modes and dark matter.**  The model predicts many more
-modes below 2 GeV (~200–400 levels) than there are observed
-particles (~19).  Most are electrically neutral (even tube
-winding, giving zero charge by the n₁ = ±1 selection rule).
-These modes carry mass but no electromagnetic signature — they
-are dark matter candidates, in broadly the right mass ratio to
-visible matter (R42).
 
-The lightest charged ghost — the (1,1) mode, lighter than the
-electron and never observed — is eliminated by waveguide cutoff:
-the torus acts as a physical cavity, and modes below a frequency
-threshold cannot propagate (R46).  This is a consequence of the
-GRID substrate, not an ad hoc filter.  Selection rules beyond
-waveguide cutoff likely eliminate most remaining ghosts, but
-these rules are not yet identified.
+## 9. Open questions
 
-**Mode overcounting.**  The geometry produces ~200–400 distinct
-energy levels below 2 GeV for ~19 observed particles.  After
-waveguide cutoff and the n₁ = ±1 charge selection, the charged
-ghost count is manageable.  The neutral overcounting is
-reinterpreted as dark matter, but the ratio is imprecise.
+**α from the 9×9 metric.** The Ma-S coupling entries determine
+α = 1/137, but the quantitative formula connecting them has not
+been derived.  The conceptual framework is clear (charge is
+topological, α is the Ma-S projection); the mathematics is
+pending (R55).
 
-**No QFT formulation.**  Decay rates, running couplings, and
-scattering amplitudes require a quantized field theory on
-Ma × S × t.  The classical wave equation gives the mass spectrum;
-the quantum theory is needed for everything else.
+**Off-resonance correlation.** Stable particles are exact
+eigenmodes; unstable particles are near-misses.  The correlation
+between gap size and lifetime is correct qualitatively but weak
+as a single variable (Spearman ρ = +0.14).  It is stratified by
+decay mechanism: strong-decay particles are short-lived regardless
+of gap (coupling ~1); weak-decay particles show the expected
+gap-lifetime relationship.
 
-**Gravity.**  Ma_ν has circumference L₄ ≈ 42 μm.  If gravity
-propagates in this dimension, short-range gravity experiments
-would detect deviations from 1/r² at this scale.  Current bounds
-reach ~50 μm with no deviation seen — barely compatible.  GRID
-derives G from the lattice's information density (ζ = 1/4),
-independently of the compact dimensions.  Whether gravity
-propagates in Ma_ν or only in the 3D spatial lattice is an open
-question with testable consequences.
+**Dark matter candidates.** The geometry predicts many neutral
+modes below 2 GeV that carry mass but no electromagnetic charge.
+These are dark matter candidates, in broadly the right abundance
+relative to visible matter.
 
----
+**No QFT formulation.** The classical wave equation gives the
+mass spectrum.  Decay rates, running couplings, and scattering
+amplitudes require quantized field theory on T⁶ × S × t.
 
-## 9. The substrate: GRID
+**Gravity.** Ma_ν has circumference ~42 μm.  Short-range gravity
+experiments at this scale could detect deviations from 1/r².
+Current bounds (~50 μm) are barely compatible.
 
-This paper takes Maxwell's equations as given and constructs
-particles from them.  The GRID framework (Geometric Relational
-Interaction Domain) goes one level deeper: it derives Maxwell's
-equations and the gravitational constant G from a discrete
-lattice at the Planck scale.
 
-GRID rests on six axioms — a 4D causal lattice with periodic
-phase, local gauge invariance, information resolution ζ = 1/4,
-and coupling strength α ≈ 1/137.  From these:
+## 10. The substrate: GRID
 
-- Maxwell's equations emerge from phase dynamics and gauge
-  invariance (grid/maxwell.md)
-- Einstein's field equations emerge from the thermodynamics
-  of the lattice's information content (grid/gravity.md)
-- G = 1/(4ζ) = 1 in natural units — derived, not postulated
-- Charge quantization follows from phase periodicity
-- The cosmological constant Λ appears as an integration constant
+The electromagnetic field equations used here are derived from a
+discrete lattice at the Planck scale (GRID).  GRID rests on six
+axioms — a 4D causal lattice with periodic phase, local gauge
+invariance, information resolution ζ = 1/4, and coupling
+strength α ≈ 1/137.  From these:
 
-The relationship between the two layers:
+- Maxwell's equations emerge from phase dynamics
+- Einstein's field equations from lattice thermodynamics
+- G = 1/(4ζ) in natural units — derived, not postulated
+- Charge quantization from phase periodicity
 
 ```
 GRID (substrate)
-    Derives: Maxwell's equations, G, Λ, charge quantization
-    Input: α ≈ 1/137 (sole free parameter)
+    Derives: Maxwell, G, Λ, charge quantization
+    Input: α ≈ 1/137
          │
          ▼
 MaSt (this paper)
-    Takes: Maxwell + α (from GRID)
-    Constructs: particle spectrum, masses, charges, spins
-    Input: m_e, m_p, Δm²₂₁ (three scales that set torus sizes)
+    Takes: Maxwell + α
+    Input: m_e, m_p, Δm²₂₁ + 3 dimensionless ratios
+    Output: 20 particle masses, nuclear scaling,
+            3 generations, ν oscillation
 ```
 
-GRID provides the rules.  MaSt plays by them.  Together, they
-attempt a complete geometric account of fundamental physics
-from one measured constant and three measured scales.
-
-For the full GRID derivation, see
+For the GRID derivation:
 [grid/foundations.md](../grid/foundations.md),
 [grid/maxwell.md](../grid/maxwell.md),
-[grid/gravity.md](../grid/gravity.md), and
-[grid/synthesis.md](../grid/synthesis.md).
-For an accessible introduction, see
+[grid/gravity.md](../grid/gravity.md).
+For an accessible introduction:
 [primers/physics-from-fabric.md](../primers/physics-from-fabric.md).

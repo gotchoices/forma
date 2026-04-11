@@ -1,8 +1,9 @@
 # The Nine-Dimensional Atom
 
-**Status:** draft
-**Model era:** [model-C](../models/model-C.md). Parameter pinning
-(r_p, σ_ep) retracted in [model-D](../models/model-D.md).
+**Status:** draft — model-C era analysis
+**Model era:** [model-C](../models/model-C.md). Parameters superseded
+by [model-D](../models/model-D.md), then [model-E](../models/model-E.md).
+For current results see [model-E](../models/model-E.md).
 
 **Note:** The central conclusion — "atoms are not Ma modes" — is
 challenged by [Q105](../qa/Q105-atoms-as-cross-sheet-modes.md),

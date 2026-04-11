@@ -1,11 +1,13 @@
 # The Ghost in the Machine
 ### How a theory of matter accidentally predicted dark matter
 
-**Status:** draft
+**Status:** draft — model-D era analysis
 **Model era:** [model-D](../models/model-D.md). Ghost mode census
-updated for waveguide cutoff (R46), charge selection (R48), and
-gcd fission (Q109). See [`model-D.md`](../models/model-D.md) for
-the current Assumptions / Results card.
+based on waveguide cutoff (R46) and charge selection (R48).
+[Model-E](../models/model-E.md) eliminates ghosts differently —
+by shear ordering rather than waveguide cutoff — but the dark
+matter picture (neutral modes carrying mass without charge) is
+preserved.  For current results see [model-E](../models/model-E.md).
 
 
 ## The dark matter problem
