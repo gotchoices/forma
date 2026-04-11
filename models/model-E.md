@@ -143,11 +143,23 @@ Cross-shears: σ₄₅ = −0.18, σ₄₆ = +0.10 (soft, neutron region).
 | π⁰ | 135.0 | (0, −1, −2, −2, 0, 0) | 22.7% | near-miss ✓ |
 | π± | 139.6 | (−1, −1, −3, −3, 0, 0) | 24.9% | near-miss ✓ (sh=2, spin correct) |
 
-**18 of 20 spin-correct.  2 forbidden (Δ⁺, Ω⁻: Q odd + J=3/2).**
-Stable particles are exact eigenmodes.  Unstable particles are
-near-misses with gaps consistent with their decay rates.  The two
-forbidden particles are extremely short-lived resonances whose
-instability is consistent with having no allowed eigenmode.
+**18 of 20 spin-correct.  2 resonances (Δ⁺, Ω⁻) interpreted
+differently.**  Stable particles are exact eigenmodes.  Unstable
+particles are near-misses with gaps consistent with their decay
+rates.
+
+Δ⁺ and Ω⁻ have Q-odd with spin 3/2 — topologically forbidden
+as ground-state modes (sh = 3 forces Q even).  However, both are
+extremely short-lived (Δ at 10⁻²⁴ s, Ω⁻ at 10⁻¹¹ s) and are
+understood in the standard model as excited states, not
+fundamental particles.  In MaSt, the Δ⁺ is the (1, 3) proton
+mode at higher internal excitation: the three-antinode pattern
+carries collective angular momentum J = 3/2 as an overtone, not
+as a topological invariant.  Its mass (1232 MeV ≈ proton + one
+p-ring energy quantum of 278 MeV) and its 10⁻²⁴ s lifetime
+(the natural decay time for an internal excitation) support this
+picture.  The spin 3/2 is the resonance spin of the excited
+pattern, distinct from the topological spin of the ground state.
 
 ## Nuclear scaling
 
