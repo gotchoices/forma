@@ -88,16 +88,21 @@ the mode topology.  Key surprise: WvM charge integral is exactly
 zero for n₁ = 3 — charge must come from (1,2) strand sub-structure.
 Composite waveguide cutoff question flagged for eigenmode study.
 
-### R56. Electron shell structure from geometric packing  **Framed**
+### R56. Electron shell structure  **Active — Tracks 1–6 complete**
 **Study:** [`R56-electron-shells/`](R56-electron-shells/)
-**Type:** compute  **Depends on:** R53 (electron Compton scale), model-E
+**Type:** compute + theoretical  **Depends on:** R53, model-E
 
-Can distributed-charge electrons (spheres of Compton diameter),
-packed around a nucleus by energy minimization, reproduce the
-2, 8, 18 shell structure without the Pauli exclusion principle?
-Shell-by-shell approach: test shell 1 (expect minimum at 2),
-shell 2 equatorial ring (expect 8), shell 3 groove rings (expect
-4+4 = 8).  Two electron size models tested (L_tube/2π vs ℏ/mc).
+Shell structure as a lowest-energy routing problem: the Ma
+torus at each Bohr radius has finite angular mode capacity
+(n² from the closure condition l(l+1) < n²).  When full,
+the next electron routes to S (next shell) because separation
+is ~2.5× cheaper than promoting to the next harmonic.  Shell
+capacities 2n² reproduced exactly with the factor of 2 from
+tube winding topology.  Ghost mode suppression follows from
+the same routing: higher harmonics exist but are energetically
+uncompetitive with spatial separation.  Classical packing
+(Tracks 1–4) failed; mode capacity (Track 6) succeeded.
+Prior work: LaFave (2014) Thomson problem correspondence.
 
 ### R55. α consistency — Ma-S coupling derivation  **Framed**
 **Study:** [`R55-alpha-consistency/`](R55-alpha-consistency/)

@@ -78,6 +78,17 @@ Model-E has **4** (or 3 if GRID derives α).
   is naturally the lightest charged mode.  No waveguide filter needed
 - Charged pion spin-charge barrier broken: two odd tube windings
   on different sheets (e + ν) give spin 0 with Q = ±1
+- **Electron shell structure** explained as a lowest-energy
+  routing problem: the Ma torus at each Bohr radius has finite
+  mode capacity (n² angular modes from the closure condition
+  l(l+1) < n²); when full, the next electron routes to S
+  (next shell) because spatial separation costs ~2.5× less
+  than promoting to the next angular harmonic.  Shell
+  capacities 2n² = 2, 8, 18, 32 reproduced exactly, with
+  the factor of 2 derived from tube winding topology (R56)
+- **Ghost mode suppression** follows from the same routing:
+  higher Ma harmonics exist but are never populated because
+  spatial separation is energetically cheaper (R56 F23)
 - Strong force, quark confinement, dark matter candidates — all
   inherited from model-D
 
@@ -191,6 +202,7 @@ cross-sheet entries open.
 | R53 | Three generations from in-sheet shear | Tracks 1, 4, 5, 6 complete |
 | R54 | Compound modes on the full T⁶ | Tracks 1–3 complete |
 | R55 | α consistency — Ma-S coupling derivation | Framed |
+| R56 | Electron shell structure from geometric packing | Tracks 1–6 complete |
 
 ## References
 
