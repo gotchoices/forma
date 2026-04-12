@@ -1,6 +1,6 @@
 # R57: Energy routing between Ma and S
 
-**Status:** Framed
+**Status:** Complete — Tracks 1–5
 **Questions:** When energy is added to a system, does it
 accumulate in Ma (higher modes, dark modes) or forge new
 particles (separation in S)?  Can Ma-domain energy accumulation

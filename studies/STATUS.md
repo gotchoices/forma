@@ -104,7 +104,7 @@ uncompetitive with spatial separation.  Classical packing
 (Tracks 1–4) failed; mode capacity (Track 6) succeeded.
 Prior work: LaFave (2014) Thomson problem correspondence.
 
-### R57. Energy routing between Ma and S  **Framed**
+### R57. Energy routing between Ma and S  **Complete — Tracks 1–5**
 **Study:** [`R57-energy-routing/`](R57-energy-routing/)
 **Type:** theoretical + compute  **Depends on:** R56, R54, R49, model-E
 
