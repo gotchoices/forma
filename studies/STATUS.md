@@ -104,6 +104,21 @@ uncompetitive with spatial separation.  Classical packing
 (Tracks 1–4) failed; mode capacity (Track 6) succeeded.
 Prior work: LaFave (2014) Thomson problem correspondence.
 
+### R57. Energy routing between Ma and S  **Framed**
+**Study:** [`R57-energy-routing/`](R57-energy-routing/)
+**Type:** theoretical + compute  **Depends on:** R56, R54, R49, model-E
+
+Generalized routing engine: given input energy and a starting
+mode configuration, predict whether energy accumulates in Ma
+(dark modes, higher harmonics) or forges new particles in S.
+Key application: proton-to-neutron transition via Ma pathway
+(mode rearrangement) vs S pathway (Coulomb barrier).  If the
+Ma route is cheaper, it provides a theoretical mechanism for
+LENR/cold fusion: dark mode accumulation on the ν-sheet builds
+to the 1.3 MeV p→n threshold without spatial collision.
+Companion to L04 (THz neutrino experiment) and L02 (threshold
+nuclear loading).
+
 ### R55. α consistency — Ma-S coupling derivation  **Framed**
 **Study:** [`R55-alpha-consistency/`](R55-alpha-consistency/)
 **Questions:** Q115, Q116  **Type:** theoretical + compute  **Depends on:** R54, R19, R48
