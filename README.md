@@ -169,7 +169,8 @@ for the full mechanism catalog.
 
 The MaSt model has evolved through five generations.  The
 **current model is model-E** — a full T⁶ metric with generation
-structure and compound modes on 20 of 20 surveyed particles.
+structure and compound modes on 18 of 20 surveyed particles
+(2 resonances interpreted as excited states).
 
 | Model | Era | Key idea | Status |
 |-------|-----|----------|--------|
@@ -177,14 +178,16 @@ structure and compound modes on 20 of 20 surveyed particles.
 | [model-B](models/model-B.md) | R26–R38 | Three tori / `ma.py` — first particle predictions | Superseded |
 | [model-C](models/model-C.md) | R39–R44 | Generalized model / `ma_model.py` — dynamic torus, dark matter, electroweak | Superseded |
 | [model-D](models/model-D.md) | R45–R52 | Filtered model / `ma_model_d.py` — waveguide cutoff, (1,3) proton, GRID integration | Superseded |
-| [model-E](models/model-E.md) | R53–R55 | Full T⁶ with generation structure — 20/20 particles, shear resonance, 9×9 metric | **Active** |
+| [model-E](models/model-E.md) | R53–R56 | Full T⁶ with generation structure — 18/20 spin-correct, shear resonance, 9×9 metric | **Active** |
 
 **Headline results** (model-E; see [`models/model-E.md`](models/model-E.md)):
 
-- **20 of 20 surveyed particles have credible modes** — stable
-  particles (proton, electron) are exact eigenmodes; all unstable
-  particles are near-misses with gaps consistent with their
-  instability
+- **18 of 20 surveyed particles have spin-correct credible
+  modes** — stable particles (proton, electron) are exact
+  eigenmodes; unstable particles are near-misses with gaps
+  consistent with their instability.  Two extremely short-lived
+  resonances (Δ⁺, Ω⁻) are topologically forbidden as ground-state
+  modes but interpreted as excited-state overtones of the proton
 - Three charged lepton generations from in-sheet shear resonance —
   mass ratios algebraically exact from geometry
 - Nuclear masses from deuterium to iron at ≤ 1.1%
@@ -287,7 +290,7 @@ sheet to three (3Ma = Ma_e × Ma_ν × Ma_p), yielding Ma (R26).
 
 | File | Purpose |
 |------|---------|
-| [`models/model-E.md`](models/model-E.md) | **Current model** (active) — full T⁶ with generation structure, 20/20 particles, 9×9 metric |
+| [`models/model-E.md`](models/model-E.md) | **Current model** (active) — full T⁶ with generation structure, 18/20 spin-correct, 9×9 metric |
 | [`models/model-D.md`](models/model-D.md) | Previous model — filtered model with waveguide cutoff and (1,3) proton |
 | [`models/model-C.md`](models/model-C.md) | **Latest quantitative predictions** — particle tables, parameter census, full results |
 | [`models/README.md`](models/README.md) | Model index: all four generations (A–D) |

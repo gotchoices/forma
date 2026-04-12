@@ -120,8 +120,8 @@ Coulomb self-energy verification.
 **Questions:** Q115, Q116  **Type:** compute / theoretical  **Depends on:** R53, R50, R49
 
 Full particle inventory on the 6D torus with individual cross
-entries (not scalar σ_ep).  **Results: 20 of 20 particles have
-credible modes.  0 total fails.**  Stable particles (proton,
+entries (not scalar σ_ep).  **Results: 18 of 20 spin-correct modes
+(2 resonances: Δ⁺, Ω⁻ as excited-state overtones).**  Stable particles (proton,
 electron) are exact eigenmodes.  17 of 18 unstable particles
 within 2%.  Pions at 23–25% off — large miss consistent with
 short lifetime.  Pion spin-charge constraint solved via

@@ -9,7 +9,7 @@
 
 ## Motivation
 
-R54 established a complete particle inventory (20/20 credible modes)
+R54 established a particle inventory (18/20 spin-correct modes)
 and identified the 9×9 metric structure with four types of off-
 diagonal entries serving distinct physical roles.  The Ma-S coupling
 block (18 entries, reduced to ~4 effective by isotropy and inactive

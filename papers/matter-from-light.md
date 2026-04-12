@@ -7,7 +7,8 @@ particle predictions.  Specific parameters (r_p = 8.906, σ_ep = −0.091,
 proton as (1,2)) were later superseded — first by
 [model-D](../models/model-D.md) (waveguide cutoff, (1,3) proton), then
 by [model-E](../models/model-E.md) (full T⁶ with generation structure,
-20/20 particle modes, 4 dimensionless inputs).  The narrative arc
+18/20 spin-correct particle modes, 4 dimensionless inputs).
+The narrative arc
 and physical reasoning remain valid; the specific numbers reflect
 model-C's state.  For current results, see the
 [white paper](white-paper.md) and [model-E](../models/model-E.md).
@@ -1425,8 +1426,9 @@ different sheets.  The charge sign (positive vs negative) is
 traced to opposite Ma-S coupling signs for the electron and
 proton sheets.
 
-The inventory now stands at **20 of 20 particles with credible
-modes** — stable particles are exact eigenmodes, unstable
+The inventory now stands at **18 of 20 particles with spin-correct
+credible modes** (Δ⁺ and Ω⁻ are topologically forbidden as
+ground-state modes but interpreted as excited-state resonances) — stable particles are exact eigenmodes, unstable
 particles are near-misses.  The model uses 4 dimensionless
 inputs (vs the Standard Model's ~19).  Nuclear scaling from
 deuterium to iron holds at ≤ 1.1%.

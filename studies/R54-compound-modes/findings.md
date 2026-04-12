@@ -52,7 +52,14 @@ involving the ν-tube (L₃ ≈ 2 × 10¹¹ fm) are inactive.
 
 ## Track 1c: Full particle inventory
 
-### F5. 17 of 20 particles matched within 2%
+### F5. 15 of 18 spin-correct particles matched within 2%
+
+**Note (review response):** The original F5 claimed 17/20 using
+modes found without spin constraints.  With spin enforced, Δ⁺
+and Ω⁻ have no single-mode candidates (Q odd + J=3/2 is
+topologically forbidden).  They are interpreted as excited-state
+resonances.  See [findings_review_response.md](findings_review_response.md)
+for the corrected inventory.  The count below uses the corrected modes.
 
 At the Track 1c geometry (σ₄₅ = −0.18, σ₄₆ = +0.10, all others
 zero):
@@ -94,28 +101,35 @@ e+ν compound with two odd tube windings.  The π± candidate at
 104.8 MeV has this structure.  Its 25% mass gap is consistent
 with the pion's short lifetime.
 
-### F7. Assessment: hits, misses, and fails
+### F7. Assessment: hits, misses, and resonances
 
-**Hits (exact or near-exact eigenmodes — stable particles):**
+**Hits (exact eigenmodes — stable particles):**
 - Proton: 0.00% ✓
 - Electron: 0.00% ✓
 
-**Credible near-misses (unstable, gap ≤ 2%):**
+**Credible near-misses (unstable, spin-correct, gap ≤ 2%):**
 - Neutron (880 s): 0.07%
 - Muon (2.2 μs): 0.83%
-- Λ, Σ±, Ξ±, Ω⁻ (10⁻¹⁰–10⁻¹¹ s): 0.00–0.19%
+- Λ, Σ±, Ξ± (10⁻¹⁰–10⁻¹¹ s): 0.00–0.19%
 - τ (290 fs): 0.05%
 - φ, η′ (10⁻²¹–10⁻²² s): 0.00–0.06%
-- Δ⁺, ρ (10⁻²⁴ s): 0.17–0.97%
+- ρ (10⁻²⁴ s): 0.97%
 - K⁰, K± (10⁻⁸ s): 1.0–1.8%
 - η (5×10⁻¹⁹ s): 1.84%
 
-All 18 unstable particles have a near-miss within 2% or a
-large miss consistent with short lifetime.  **No total fails.**
-
 **Large misses (explained by short lifetime):**
-- π⁰ (8.4×10⁻¹⁷ s): 22.7% — far from eigenmode, decays fast
-- π± (2.6×10⁻⁸ s): 24.9% — far from eigenmode, decays fast
+- π⁰ (8.4×10⁻¹⁷ s): 22.7%
+- π± (2.6×10⁻⁸ s): 24.9% (spin-correct: sh=2 ✓)
+
+**Resonances (topologically forbidden as ground-state modes):**
+- Δ⁺ (5.6×10⁻²⁴ s): Q odd + J=3/2 → no single-mode candidate
+- Ω⁻ (8.2×10⁻¹¹ s): Q odd + J=3/2 → no single-mode candidate
+
+Interpreted as excited-state overtones of the proton's
+three-fold internal pattern (collective J=3/2 from the
+three-antinode mode, not topological spin).
+
+**18 of 20 spin-correct.  2 resonances.**
 
 ### F8. Off-resonance correlation
 

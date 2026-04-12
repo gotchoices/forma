@@ -97,8 +97,8 @@ Exact values pending R55 derivation.
 | τ | 1776.9 | 1777.8 | 0.05% | (3,−6,2,−2,2,3) | near-miss ✓ |
 | φ | 1019.5 | 1018.9 | 0.06% | (−1,4,2,−2,−1,2) | near-miss ✓ |
 | neutron | 939.6 | 938.9 | 0.07% | (0,−4,−1,2,0,−3) | **near-miss (880 s)** ✓ |
-| Ω⁻ | 1672.5 | 1674.7 | 0.13% | (−2,2,−2,2,−3,0) | near-miss ✓ |
-| Δ⁺ | 1232.0 | 1229.9 | 0.17% | (−3,−6,2,−2,−2,2) | near-miss ✓ |
+| Ω⁻ | 1672.5 | — | — | — | **resonance** (Q odd + J=3/2; excited-state overtone) |
+| Δ⁺ | 1232.0 | — | — | — | **resonance** (Q odd + J=3/2; excited-state overtone) |
 | Ξ⁰ | 1314.9 | 1317.3 | 0.19% | (−1,8,−1,2,−1,2) | near-miss ✓ |
 | muon | 105.7 | 104.8 | 0.83% | (1,1,−2,−2,0,0) | near-miss ✓ |
 | ρ | 775.3 | 782.8 | 0.97% | (−1,5,−2,2,0,1) | near-miss ✓ |
@@ -108,7 +108,10 @@ Exact values pending R55 derivation.
 | π⁰ | 135.0 | 104.3 | 22.7% | (0,−1,−2,−2,0,0) | near-miss ✓ |
 | π± | 139.6 | 104.8 | 24.9% | (−1,−1,−2,−2,0,0) | near-miss ✓ |
 
-**20/20 credible modes.  0 fails.** Stable = eigenmode.  Unstable = near-miss.
+**18/20 spin-correct.  2 resonances (Δ⁺, Ω⁻: excited-state overtones).**
+Stable = eigenmode.  Unstable = near-miss.  See
+[findings_review_response.md](findings_review_response.md) for corrected
+inventory with spin enforced.
 
 ### Nuclear validation
 

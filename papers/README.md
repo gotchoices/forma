@@ -23,8 +23,8 @@ predictions, start here:
    no equations.
 
 2. **[Matter from Light: A Geometric Particle Spectrum](white-paper.md)**
-   — The white paper.  Full model-E spectrum (20 of 20
-   particles with credible modes), T⁶ geometry, three
+   — The white paper.  Full model-E spectrum (18 of 20
+   spin-correct modes, 2 resonances), T⁶ geometry, three
    generations from shear resonance, nuclear scaling, and
    open problems.  Start here for the current state of the
    science.

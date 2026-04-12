@@ -2,7 +2,7 @@
 
 **Status:** draft
 **Model era:** [model-E](../models/model-E.md). Full T⁶ with
-generation structure, 9×9 metric, 20/20 particle modes.  See
+generation structure, 9×9 metric, 18/20 spin-correct modes.  See
 [`model-E.md`](../models/model-E.md) for the complete model card.
 
 ---
@@ -24,13 +24,16 @@ that set the torus scales, the fine-structure constant α, two mass
 ratios that set the electron-sheet shape, and one neutrino mass
 ratio.  No parameters are pinned to unstable particle masses.
 
-**All 20 surveyed particles below 2 GeV have credible modes.**
-Stable particles (proton, electron) are exact eigenmodes.
-Unstable particles are near-misses — transient excitations near
-but not on a resonance — with gaps consistent with their
-instability.  Seventeen of twenty match within 2%; the remaining
-three (pions) have larger gaps consistent with their short
-lifetimes.  The model reproduces nuclear masses from deuterium to
+**18 of 20 surveyed particles below 2 GeV have spin-correct
+credible modes.**  Stable particles (proton, electron) are exact
+eigenmodes.  Unstable particles are near-misses with gaps
+consistent with their instability.  Fifteen of eighteen match
+within 2%; the pions have larger gaps consistent with their
+short lifetimes.  Two particles (Δ⁺, Ω⁻) are topologically
+forbidden as ground-state modes (Q-odd + spin-3/2 requires all
+three tube windings odd, forcing Q even) but interpreted as
+excited-state resonances of the proton's three-fold internal
+pattern.  The model reproduces nuclear masses from deuterium to
 iron at ≤ 1.1%, predicts neutrino oscillation (mass-squared ratio
 Δm²₃₁/Δm²₂₁ = 33.6 exact, normal ordering, Majorana nature),
 derives three charged lepton generations from a single geometric
@@ -62,7 +65,7 @@ tube winding numbers.
 | **Measured inputs** | 7: m_e, m_p, Δm²₂₁, α, m_μ/m_e, m_τ/m_e, Δm²₃₁/Δm²₂₁ |
 | **Dimensionless inputs** | 4 (vs ~19 in the Standard Model) |
 | **Metric** | 9×9 (T⁶ × S³) with 45 entries; off-diagonals serve 4 distinct roles |
-| **Outputs** | 20/20 particle modes; nuclear masses ≤ 1.1%; 3 lepton generations; ν oscillation exact |
+| **Outputs** | 18/20 spin-correct particle modes (2 resonances interpreted as excited states); nuclear masses ≤ 1.1%; 3 lepton generations; ν oscillation exact |
 | **Stable particles** | Exact eigenmodes (proton 0.00%, electron 0.00%) |
 | **Unstable particles** | Near-misses with gaps correlated to instability |
 | **Ghost elimination** | Shear ordering — electron naturally lightest; no ad hoc filter |
@@ -89,8 +92,8 @@ particles are near-misses.
 | τ⁻ | 1776.9 | (3, −6, 2, −2, 2, 3) | 0.05% | near-miss |
 | φ | 1019.5 | (−1, 4, 2, −2, −1, 2) | 0.06% | near-miss |
 | n | 939.6 | (0, −4, −1, 2, 0, −3) | 0.07% | near-miss |
-| Ω⁻ | 1672.5 | (−2, 2, −2, 2, −3, 0) | 0.13% | near-miss |
-| Δ⁺ | 1232.0 | (−3, −6, 2, −2, −2, 2) | 0.17% | near-miss |
+| Ω⁻ | 1672.5 | — | — | resonance (Q odd + J=3/2) |
+| Δ⁺ | 1232.0 | — | — | resonance (Q odd + J=3/2) |
 | Ξ⁰ | 1314.9 | (−1, 8, −1, 2, −1, 2) | 0.19% | near-miss |
 | μ⁻ | 105.7 | (1, 1, −2, −2, 0, 0) | 0.83% | near-miss |
 | ρ | 775.3 | (−1, 5, −2, 2, 0, 1) | 0.97% | near-miss |
