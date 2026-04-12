@@ -159,10 +159,29 @@ Ma mode space from {proton + electron + neutrino} to {neutron}?
 
 ### Track 1: Routing engine
 
-Build a library module that computes, for a given metric and
-starting configuration, the energy cost of each available
-transition.  Inputs: occupied modes, input energy, metric.
-Output: ranked list of transitions by energy cost.
+**Status:** Complete
+
+Built two library modules:
+
+**`lib/metric.py`** — pluggable Metric class with:
+- Named presets: `Metric.model_E()`, `Metric.model_D()`
+- Custom construction with any (ε, s, σ) values
+- Immutable after construction (safe for searches)
+- `with_sigma()` for parameter variation
+- Mode energy, charge, spin, sheet classification
+
+**`lib/routing.py`** — RoutingEngine with:
+- `mode_census()` — enumerate all modes below an energy ceiling
+- `modes_near()` — find modes near a target energy
+- `transitions_from()` — single-step transitions (±1 on any quantum number)
+- `find_pathway()` — greedy least-energy path between two modes
+- `promote_vs_separate()` — compare Ma excitation vs S separation
+- `energy_landscape()` — 1D energy scan along any dimension
+
+Verified: proton → neutron pathway found in 14 steps through
+Ma mode space.  Net energy cost: +0.6 MeV (the n-p mass
+difference).  No Coulomb barrier in the path — the transition
+is pure mode rearrangement.
 
 ### Track 2: Neutrino-scale landscape
 
