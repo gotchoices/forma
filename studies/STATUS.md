@@ -104,6 +104,19 @@ uncompetitive with spatial separation.  Classical packing
 (Tracks 1–4) failed; mode capacity (Track 6) succeeded.
 Prior work: LaFave (2014) Thomson problem correspondence.
 
+### R58. Phonon material search for neutrino frequency matching  **Active — Track 1 complete**
+**Study:** [`R58-phonon-material-search/`](R58-phonon-material-search/)
+**Type:** compute  **Depends on:** R49, L05, Q119
+
+Systematic search for materials whose optical phonon frequencies
+match MaSt-predicted neutrino frequencies (all 4 families, 12
+targets).  Sub-1% matches found for 8 of 12 frequencies.  Best:
+BaS at 7.45 THz (Family D ν₂, 0.0%), DCl at 13.99 THz (Family D
+ν₃, 0.0%), CaSe at 7.36 THz (Family A ν₂, 0.1%).  These materials
+could serve as precision resonant filters in L05, converting
+optical beats into real phonon oscillations at neutrino frequencies.
+Tracks 2–4 (deuterides, molecular vibrations, DFT validation) pending.
+
 ### R57. Energy routing between Ma and S  **Complete — Tracks 1–5**
 **Study:** [`R57-energy-routing/`](R57-energy-routing/)
 **Type:** theoretical + compute  **Depends on:** R56, R54, R49, model-E
