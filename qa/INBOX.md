@@ -14,6 +14,12 @@ Raw capture queue. Add questions here as they arise, tagged with source.
 
 ## Open
 
+Q119. **The PdD phonon / neutrino frequency coincidence.** → [Q119-palladium-deuteride-phonon-neutrino-coincidence.md](Q119-palladium-deuteride-phonon-neutrino-coincidence.md)
+*The optical phonon modes of deuterated palladium (8.3, 15.3, 20.4 THz) overlap with MaSt's predicted neutrino frequencies (ν₁ = 7.06, ν₃ = 14.07 THz).  Letts/Cravens/Hagelstein observed reproducible excess heat in PdD when dual lasers beat at exactly these phonon frequencies (2003–2014).  MaSt provides the missing mechanism: the PdD lattice acts as a resonant downconverter, converting the optical beat into real phonon oscillations at the neutrino frequency, coupling through Ma-S into ν dark modes, accumulating to the p→n threshold.  Potentially the first experimental evidence for MaSt neutrino physics.*
+
+Q118. **Optical beating, dark mode coupling, and fusion energy balance.** → [Q118-optical-beating-and-dark-mode-coupling.md](Q118-optical-beating-and-dark-mode-coupling.md)
+*Does an optical beat at 7 THz produce a real THz field? (No — it's an intensity modulation.) Does it matter? (Depends on whether Ma-S coupling is linear or quadratic in E.) Is the sum frequency a problem? (No — too fast to couple.) Energy balance: laser is a trigger (624 keV accumulated dark modes), fusion provides the output (2,224 keV from nuclear binding, 3.6× gain per event).*
+
 Q117. **Relativistic effects from velocity partition between Ma and S.** → [Q117-relativistic-effects-from-velocity-partition.md](Q117-relativistic-effects-from-velocity-partition.md)
 *The particle's photon shares its velocity c between Ma circulation (rest mass) and S translation (momentum).  Time dilation, Lorentz contraction, and E² = m²c⁴ + p²c² all follow as the Pythagorean theorem on this velocity partition.  Einstein's light clock thought experiment becomes the literal physical mechanism.  No new predictions — but a mechanical explanation for WHY relativity works.*
 
