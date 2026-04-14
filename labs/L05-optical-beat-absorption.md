@@ -177,20 +177,34 @@ high sensitivity to narrow absorption features.
 | Dips at Family B frequencies but not Family A | Family B is correct; neutrino masses are ~5/10/50 meV |
 
 
-## 7. Caveat: field vs intensity coupling
+## 7. Why the beat should work: medium coupling, not antenna coupling
 
-The beat produces an INTENSITY modulation at f_beat, not a
-propagating electric field.  If dark modes couple to the
-field amplitude (linear in E), the beat may not work — a
-real THz source (L04) would be needed instead.
+The beat produces an intensity modulation at f_beat, not an
+oscillating E-field.  Initially this seemed like a limitation.
+On closer analysis (Q118), it's not — because the Ma-S
+coupling is a medium-to-medium energy transfer, not an
+antenna phenomenon.
 
-If dark modes couple to the energy density (quadratic in E,
-as in stimulated Raman scattering), the beat works.
+**The beat HAS a wavelength.** The intensity modulation
+travels through space as a wave at f_beat = 7.06 THz with
+spatial wavelength λ = c/f_beat = 42.5 μm — the SAME
+wavelength as a real THz photon.  This matches the ν-sheet
+ring circumference (L_ring_ν ≈ 42 μm for Family A).
 
-**We don't know which is correct.**  L05 tests the
-intensity-coupling hypothesis at low cost.  If it fails,
-L04 tests the field-coupling hypothesis at higher cost.
-Running L05 first is the pragmatic approach.
+**The coupling is through the metric, not through free
+charges.**  The Ma-S junction connects to the energy-momentum
+tensor T_μν, whose 00-component is the energy density.  The
+beat modulates the energy density at exactly the right
+frequency and wavelength.  We are coupling S light into Ma
+light at frequency match, with impedance mismatch α.
+
+**This is NOT an antenna problem** (where an E-field must
+push charges).  It IS a medium-coupling problem (where energy
+at the right frequency transmits through a junction).  The
+beat is a legitimate energy source for this purpose.
+
+See [Q118](../qa/Q118-optical-beating-and-dark-mode-coupling.md)
+for the full analysis.
 
 
 ## 8. Equipment and cost
