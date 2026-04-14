@@ -221,6 +221,39 @@ of two integers on a donut.
 No point particles.  No fundamental charge.  No new forces.
 Just energy, topology, and shape.
 
+But this argument has a gap: *why does trapped energy
+resist being pushed?*  Mass isn't just energy at rest — it's
+inertia: the harder you push something, the more it pushes
+back.  Where does the pushback come from?
+
+Think about what happens when you push the torus through
+space.  The photon inside must now do two things: circulate
+on the torus AND move through space.  But the photon's total
+speed is c — it can't go faster.  Moving through space steals
+velocity from the internal circulation:
+
+> (circulation speed)² + (spatial speed)² = c²
+
+Push harder, and more of the photon's velocity goes to space.
+The internal circulation slows down.  The photon takes longer
+per circuit.  The internal clock — the very oscillation that
+gives the particle its identity — runs slower.
+
+This slowdown IS inertia.  The particle resists acceleration
+because accelerating it forces its internal photon to slow
+down.  More energy in the photon means more internal
+circulation to slow down, which means more resistance.
+That's why mass = energy/c²: the more internal energy, the
+more inertia.
+
+And there's a bonus: the slowing of the internal clock when
+the particle moves IS time dilation.  Einstein's famous light
+clock thought experiment — a photon bouncing between mirrors
+that runs slower when the mirrors move — is not just a
+teaching device.  In this model it's literally what every
+particle is.  The particle IS a light clock.  Special
+relativity is a photon running out of velocity budget.
+
 This is admittedly a big jump.  We are jettisoning our
 tether to the familiar idea that things are made of things.
 But the question is not whether it feels natural.  The

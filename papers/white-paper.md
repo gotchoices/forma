@@ -74,7 +74,62 @@ tube winding numbers.
 
 ---
 
-## 1. The spectrum
+## 1. The core idea: how light becomes matter
+
+A photon in free space has energy (E = hf) and momentum
+(p = E/c) but no mass.  It has no mass because it never
+sits still — it moves at c in every reference frame.
+"Mass" means "energy at rest," and a photon is never at rest.
+
+Now confine that photon to a closed surface — a torus.  The
+photon still travels at c on the torus surface, but the torus
+itself can sit still in 3D space.  The photon goes around and
+around; the center of the torus doesn't move.  There is now
+a rest frame: the frame where the center is stationary.
+
+In that rest frame, the only energy present is the photon's
+circulation energy E₀ = hf.  By Einstein's E = mc² (which
+follows from the Lorentz transformation, not from any
+assumption about what matter is made of), a system with rest
+energy E₀ has mass m = E₀/c².  The confined photon's
+circulation frequency therefore IS the particle's mass:
+m = hf/c².
+
+This is not yet the full argument.  Mass means resistance
+to acceleration — inertia.  Why does confining a photon
+produce inertia?
+
+Push the torus (accelerate it in 3D space).  The photon
+inside must now also move through space — in ADDITION to
+circulating on the torus.  But the photon's total speed is
+still c (it's a photon — it can't go faster).  The velocity
+must be shared:
+
+> v²(circulation) + v²(spatial) = c²
+
+Moving through space steals velocity from the internal
+circulation.  Slower circulation means the photon takes
+longer per circuit — the internal clock slows down.  This
+is time dilation, and it IS inertia: the system resists
+acceleration because accelerating it requires slowing down
+its internal photon.  The more energy in the photon (higher f),
+the more internal circulation there is to slow, the harder
+it is to accelerate.  That is why m = hf/c² — more internal
+energy means more inertia.
+
+Every particle in this model is a photon whose motion is
+partitioned between internal circulation (which gives mass)
+and spatial translation (which gives momentum).  The
+energy-momentum relation E² = (mc²)² + (pc)² is the
+Pythagorean theorem on this velocity partition.  Massless
+particles (photons in free space) put all their velocity into
+spatial motion.  Massive particles reserve some for internal
+circulation and can never reach c — there is always some
+frequency left, some rest mass, some velocity budget used
+internally.
+
+
+## 2. The spectrum
 
 Seven measured inputs fix the geometry.  Every particle below
 2 GeV has a credible mode — stable particles are exact, unstable
@@ -114,7 +169,7 @@ torus pairs).  The modes are eigenstates of the full T⁶, not
 of individual sheets.
 
 
-## 2. Geometry
+## 3. Geometry
 
 The six compact dimensions form a flat six-torus T⁶.  Three pairs
 of dimensions are historically called "sheets" (Ma_e, Ma_ν, Ma_p),
@@ -145,7 +200,7 @@ See [metric-terms.md](../studies/R54-compound-modes/metric-terms.md)
 for the complete 45-entry reference table with visual layout.
 
 
-## 3. Spin, charge, and α
+## 4. Spin, charge, and α
 
 **Spin** is topological.  Each odd tube winding (n₁, n₃, n₅)
 contributes spin ½.  The electron (1, 2, ...) has one odd tube
@@ -177,7 +232,7 @@ block of the 9×9 metric controls the coupling; the quantitative
 derivation is pending (R55).
 
 
-## 4. The neutron
+## 5. The neutron
 
 The neutron is a 6D knot — a single closed curve threading all
 six compact dimensions:
@@ -203,7 +258,7 @@ where the proton-sheet quantum numbers scale with mass number A
 eigenmode, explaining why bound neutrons are stable.
 
 
-## 5. Neutrino oscillation
+## 6. Neutrino oscillation
 
 Three modes on Ma_ν — (1,1), (−1,1), (1,2) — at shear
 s₃₄ = 0.02199 predict neutrino oscillation directly:
@@ -216,7 +271,7 @@ Normal ordering, Majorana nature, and Σm_ν = 116–120 meV
 are predicted.  Inverted ordering is geometrically excluded.
 
 
-## 6. Three generations
+## 7. Three generations
 
 The three charged lepton masses emerge from **shear resonance**
 on the electron sheet.
@@ -241,7 +296,7 @@ The electron IS the lightest charged mode because it sits at the
 shear resonance.  No filter needed.
 
 
-## 7. The pion mechanism
+## 8. The pion mechanism
 
 The charged pion was "impossible" in earlier models: Q = ±1
 forces at least one odd tube winding → spin ≥ ½, but the pion
@@ -258,7 +313,7 @@ is a large gap, consistent with the pion's short lifetime
 (26 ns for π±, 8.4 × 10⁻¹⁷ s for π⁰).
 
 
-## 8. Nuclear scaling
+## 9. Nuclear scaling
 
 Nuclei appear as composite modes with proton-sheet quantum
 numbers scaling with mass number A:
@@ -275,7 +330,7 @@ numbers scaling with mass number A:
 Charge: Q = −n₁ + n₅ = Z for every nucleus tested.
 
 
-## 9. Open questions
+## 10. Open questions
 
 **α from the 9×9 metric.** The Ma-S coupling entries determine
 α = 1/137, but the quantitative formula connecting them has not
@@ -305,7 +360,7 @@ experiments at this scale could detect deviations from 1/r².
 Current bounds (~50 μm) are barely compatible.
 
 
-## 10. The substrate: GRID
+## 11. The substrate: GRID
 
 The electromagnetic field equations used here are derived from a
 discrete lattice at the Planck scale (GRID).  GRID rests on six
