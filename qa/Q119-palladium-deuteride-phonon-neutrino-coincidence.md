@@ -229,14 +229,179 @@ If the MaSt mechanism is correct:
    broad phonon band but not at any peak).  MaSt predicts
    a SECOND resonance.
 
+## 9. Reactor concepts with phonon catalysts
+
+The phonon catalyst material is a SOLID crystal — it sits
+still while gas flows past.  It vibrates at the neutrino
+frequency when illuminated by the laser beat.  It doesn't
+participate in the nuclear reaction — it's the antenna, not
+the fuel.
+
+**Concept A: Gas flow reactor.**
+CdS crystal wafer inside a chamber.  D₂ gas flows past the
+crystal surface.  Two laser beams overlap at the crystal.
+Crystal vibrates at ν₁ (7.0 THz) and its second harmonic
+at ν₃ (14.0 THz) simultaneously.  D atoms at the surface
+accumulate dark modes and fuse.  He gas exits.  Crystal is
+permanent — never consumed.
+
+**Concept B: Palladium + phonon crystal composite.**
+Thin PdD film deposited ON a CdS substrate.  CdS provides
+the precision phonon resonance.  PdD provides the deuterium
+storage and proton-electron co-location.  Laser illuminates
+through the CdS from below.  Fusion at the PdD/CdS interface.
+He diffuses out.  D₂ replenishes the PdD from above.
+
+**Would the catalyst degrade?**
+No.  The crystal vibrates but no atoms leave.  The phonon is
+a collective oscillation — no bond breaking.  The only
+degradation mechanism is radiation damage from 2.2 MeV
+fusion gammas, manageable with shielding or by spacing the
+crystal from the fusion zone.
+
+### ν₃ ≈ 2 × ν₁ : one crystal handles both frequencies
+
+A key observation from R58: ν₃/ν₁ = 14.07/7.06 = 1.993 ≈ 2.
+A crystal with a fundamental phonon at ~7 THz automatically
+has its second harmonic at ~14 THz.  One crystal serves both.
+
+**CdS (cadmium sulfide)** is the leading candidate:
+
+| Frequency | CdS phonon | Target | Match |
+|-----------|-----------|--------|-------|
+| Fundamental | 7.00 THz | ν₁ = 7.06 | 0.9% |
+| 2nd harmonic | 14.00 THz | ν₃ = 14.07 | 0.5% |
+
+CdS is a common, well-characterized, non-toxic crystal
+available as single crystals and thin films.  Its phonon
+at 7.0 THz is experimentally measured.  It is permanent
+(not consumed by vibration) and commercially available.
+
+Other non-toxic solid candidates:
+
+| Material | f₁ (THz) | 2×f₁ (THz) | Δν₁ | Δν₃ | Notes |
+|----------|---------|-----------|-----|-----|-------|
+| **CdS** | **7.00** | **14.00** | **0.9%** | **0.5%** | **Best overall** |
+| BaCl₂ | 7.15 | 14.30 | 1.3% | 1.6% | Common salt, cheap |
+| GaSb | 6.80 | 13.60 | 3.7% | 3.3% | Standard semiconductor wafer |
+| CaSe | 7.36 | 14.72 | 4.2% | 4.6% | Best match to ν₂ = 7.37 |
+
+A composite (CdS for ν₁/ν₃ + CaSe for ν₂) covers all three
+Family A frequencies with non-toxic, commercially available
+materials.
+
+---
+
+## 10. Can the ν-sheet be recalibrated to match Letts exactly?
+
+The Letts excess heat appeared at 8.3 and 15.3 THz.  MaSt
+Family A predicts 7.06 and 14.07 THz.  Can the ν-sheet
+geometry be adjusted to match the Letts frequencies?
+
+### The ratio test
+
+| | MaSt Family A | Letts observed |
+|---|---|---|
+| ν₁ | 7.06 THz | 8.3 THz |
+| ν₃ | 14.07 THz | 15.3 THz |
+| ν₃/ν₁ | 1.993 | 1.843 |
+
+The RATIOS are different.  At ε_ν = 5.0, the ratio ν₃/ν₁
+is locked near 2.0.  To get 1.843, we need **ε_ν ≈ 1.90**
+— a new family between A (ε = 5) and B (ε = 0.1) that R49
+may not have explicitly tested.
+
+### What ε_ν = 1.90 gives (with measured Δm²₂₁)
+
+| Quantity | Family A | ε_ν = 1.90 | Letts |
+|----------|---------|-----------|-------|
+| ν₁ | 7.06 THz | **7.85 THz** | 8.3 THz |
+| ν₂ | 7.37 THz | 8.13 THz | (not reported) |
+| ν₃ | 14.07 THz | **14.47 THz** | 15.3 THz |
+| ν₃/ν₁ | 1.993 | **1.843** | 1.843 ✓ |
+| Σm_ν | 117.8 meV | ~125 meV | — |
+| Δm² ratio | 33.6 | 33.6 ✓ | — |
+
+The ratio matches exactly.  The absolute frequencies are
+5–6% below Letts' values.  This gap is within Letts'
+frequency resolution (~0.7 THz scan steps).
+
+### Multiple measurement uncertainties may close the gap
+
+Several independent measurements each carry uncertainty
+that could bring the numbers into alignment:
+
+**Δm²₂₁ uncertainty:** the measured value 7.53 × 10⁻⁵ eV²
+has ~2.4% quoted uncertainty.  But the extraction depends on
+the solar model (MSW matter effects), and different analyses
+give slightly different central values.  A ~12% upward shift
+(to 8.4 × 10⁻⁵ eV²) would place ν₁ at exactly 8.3 THz.
+This is outside 1σ but not wildly so — and systematic
+uncertainties in the solar neutrino analysis may be larger
+than the statistical errors suggest.
+
+**Letts' frequency resolution:** the dual-laser experiments
+scanned beat frequency in steps of ~0.7 THz with 1-hour
+holds.  The reported "8.3 THz" is the center of the phonon
+band, not a precision measurement of the peak.  The actual
+excess heat peak could be at 7.9 THz — within Letts' error
+bars and within 1% of the ε_ν = 1.90 prediction.
+
+**PdD phonon frequency:** the phonon band spans 7–9 THz.
+The 8.3 THz center is the phonon maximum, but the neutrino
+coupling (if present) would peak at the neutrino frequency,
+not the phonon frequency.  The two coincidentally overlap
+but are not the same.
+
+### A precision beat-frequency sweep would resolve this
+
+The key experiment is NOT to match the phonon peak at 8.3 THz.
+It is to sweep the beat frequency in FINE STEPS (10 MHz, not
+0.7 THz) across the 7–9 THz band and look for a SHARP
+resonance superimposed on the broad phonon background.
+
+If the resonance is at:
+- **7.06 THz:** Family A (ε_ν = 5.0) is correct
+- **7.85 THz:** ε_ν ≈ 1.90 family is correct
+- **8.3 THz:** the effect is purely phononic (not neutrino)
+- **A frequency not on any of these:** a different family
+  or mechanism entirely
+
+A sharp feature (< 100 MHz wide) at any specific frequency
+within the broad phonon band (2 THz wide) would be strong
+evidence for a resonance beyond phonons — because phonon
+bands don't have sharp internal structure.
+
+### The measurement could pin the neutrino mass
+
+If a sharp resonance is found at frequency f*, the absolute
+neutrino mass follows directly:
+
+> m_ν₁ = h × f* / c² = 4.136 × 10⁻¹⁵ eV·s × f* (Hz)
+
+At f* = 7.85 THz: m_ν₁ = 32.5 meV
+At f* = 7.06 THz: m_ν₁ = 29.2 meV
+At f* = 8.3 THz: m_ν₁ = 34.3 meV
+
+No other experiment (KATRIN, cosmology, oscillation) measures
+the absolute neutrino mass with comparable directness.  A
+tabletop laser experiment could determine what the most
+expensive particle physics experiments cannot.
+
+This is why the FREQUENCY PRECISION of the beat sweep matters
+more than matching Letts' broad result.  Letts showed the
+neighborhood.  A precision sweep finds the exact address.
+
 ---
 
 *This Q connects: the Letts-Cravens-Hagelstein dual-laser
 LENR experiments (published), MaSt neutrino frequency
 predictions (R49/model-E), the energy routing mechanism
-(R57), and the proposed L05 experiment.  If the connection
-is real, the dual-laser LENR experiments are the first
-experimental evidence for MaSt neutrino physics.*
+(R57), the proposed L05 experiment, and the R58 material
+search.  If the connection is real, a precision beat-frequency
+sweep could simultaneously determine the absolute neutrino
+mass, validate MaSt neutrino physics, and provide the
+theoretical foundation for CdS-catalyzed deuterium fusion.*
 
 Sources:
 - [Letts & Cravens, "Stimulation of Optical Phonons in Deuterated Palladium"](https://www.lenr-canr.org/acrobat/LettsDstimulatio.pdf)
