@@ -14,6 +14,9 @@ Raw capture queue. Add questions here as they arise, tagged with source.
 
 ## Open
 
+Q117. **Relativistic effects from velocity partition between Ma and S.** → [Q117-relativistic-effects-from-velocity-partition.md](Q117-relativistic-effects-from-velocity-partition.md)
+*The particle's photon shares its velocity c between Ma circulation (rest mass) and S translation (momentum).  Time dilation, Lorentz contraction, and E² = m²c⁴ + p²c² all follow as the Pythagorean theorem on this velocity partition.  Einstein's light clock thought experiment becomes the literal physical mechanism.  No new predictions — but a mechanical explanation for WHY relativity works.*
+
 Q115. **Three generations, metric structure, and the muon problem.** → [Q115-three-generations-and-metric-structure.md](Q115-three-generations-and-metric-structure.md)
 *Source: R50 Tracks 8–11 session, 2026-04-09/10. Working plan for next studies: three-generation solve on e/p sheets from in-sheet shear, ghost inventory, α relocation to Ma-S terms.  Contains 8 user observations and 4 study outlines.*
 
