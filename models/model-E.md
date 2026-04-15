@@ -74,8 +74,25 @@ Model-E has **4** (or 3 if GRID derives α).
 - Nuclear masses from deuterium to iron at ≤ 1.1% via the
   R29 scaling law (n₅ = A, n₆ = 3A), with universal charge
   formula Q = −n₁ + n₅ = Z
-- Neutrino oscillation: Δm²₃₁/Δm²₂₁ = 33.6 exact, normal
-  ordering, Majorana nature (R26/R49, unchanged from model-D)
+- **Neutrino mass eigenstates** (R26/R49, unchanged from model-D).
+  From the ν-sheet geometry (ε_ν = 5.0, s_ν = 0.02199), with
+  Δm²₂₁ as the sole measured input, the model predicts three
+  masses and their corresponding Compton frequencies (Family A):
+
+  | Eigenstate | Mode | Mass (meV) | Frequency (THz) |
+  |-----------|------|-----------|-----------------|
+  | ν₁ | (1, 1) | 29.2 | 7.06 |
+  | ν₂ | (−1, 1) | 30.5 | 7.37 |
+  | ν₃ | (1, 2) | 58.2 | 14.07 |
+  | **Σm_ν** | | **117.8** | |
+
+  The oscillation ratio Δm²₃₁/Δm²₂₁ = 33.6 is exact (derived
+  algebraically from the shear: (3 − 2s)/(4s)).  Normal mass
+  ordering (m₁ < m₂ < m₃) and Majorana nature follow from the
+  geometry.  The sum Σm_ν = 118 meV sits just below the current
+  cosmological bound (~120 meV) — a testable prediction.
+  The frequencies are the direct targets for L05 (optical beat
+  absorption experiment)
 - The (1,1) ghost is eliminated by shear ordering — the electron
   is naturally the lightest charged mode.  No waveguide filter needed
 - Charged pion spin-charge barrier broken: two odd tube windings
@@ -122,6 +139,9 @@ Cross-shears: σ₄₅ = −0.18, σ₄₆ = +0.10 (soft, neutron region).
 
 | Particle | Obs (MeV) | Mode | Δm/m | Stable? |
 |----------|----------|------|------|---------|
+| ν₁ | 2.92 × 10⁻⁸ | (0, 0, 0, 0, 1, 1) | predicted | stable ✓ |
+| ν₂ | 3.05 × 10⁻⁸ | (0, 0, 0, 0, −1, 1) | predicted | stable ✓ |
+| ν₃ | 5.82 × 10⁻⁸ | (0, 0, 0, 0, 1, 2) | predicted | stable ✓ |
 | electron | 0.511 | (1, 2, −2, −2, 0, 0) | input | stable ✓ |
 | proton | 938.3 | (0, 0, −2, 2, 1, 3) | input | stable ✓ |
 | neutron | 939.6 | (0, −4, −1, 2, 0, −3) | 0.07% | near-miss ✓ |
@@ -143,10 +163,11 @@ Cross-shears: σ₄₅ = −0.18, σ₄₆ = +0.10 (soft, neutron region).
 | π⁰ | 135.0 | (0, −1, −2, −2, 0, 0) | 22.7% | near-miss ✓ |
 | π± | 139.6 | (−1, −1, −3, −3, 0, 0) | 24.9% | near-miss ✓ (sh=2, spin correct) |
 
-**18 of 20 spin-correct.  2 resonances (Δ⁺, Ω⁻) interpreted
-differently.**  Stable particles are exact eigenmodes.  Unstable
-particles are near-misses with gaps consistent with their decay
-rates.
+**18 of 20 charged/hadronic particles spin-correct.  2 resonances
+(Δ⁺, Ω⁻) interpreted differently.**  Three neutrino mass
+eigenstates predicted from ν-sheet geometry (Family A).  Stable
+particles are exact eigenmodes.  Unstable particles are near-misses
+with gaps consistent with their decay rates.
 
 Δ⁺ and Ω⁻ have Q-odd with spin 3/2 — topologically forbidden
 as ground-state modes (sh = 3 forces Q even).  However, both are
