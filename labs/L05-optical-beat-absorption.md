@@ -383,3 +383,99 @@ illumination at all three frequencies.
 Tests ν₁ and ν₃ only (skips ν₂ which is close to ν₁).
 No lock-in — relies on direct power measurement.
 Proof-of-concept only; upgrade if signal found.
+
+
+## 11. Track 5: Water as target medium
+
+### Motivation
+
+Phases 1–4 use transparent solids and air to test for
+material-independent absorption.  This track asks a different
+question: what happens when the beat frequency is delivered
+into water — specifically, into the hydrogen atoms that are
+bonded to oxygen?
+
+The reasoning, from the MaSt perspective:
+
+**Oxygen provides a local neutrino-sheet environment.**
+Oxygen-16 has 8 neutrons.  In MaSt, each neutron is a
+compound mode with an active neutrino-sheet component.  A
+bare hydrogen atom (proton + electron, no neutron) has
+neutrino-sheet winding numbers (0,0) — no neutrino mode
+active.  But the hydrogen atoms in water sit ~1 Å from an
+oxygen nucleus carrying 8 neutrino-sheet excitations.  If
+cross-sheet coupling falls off with distance (as all field
+couplings do), the oxygen's bound neutrino modes are vastly
+more coupled to the adjacent hydrogen protons than any
+passing free neutrino.  The hydrogen in water is bathed in
+neutrino-sheet activity that free H₂ gas lacks entirely.
+
+**Water self-moderates.**  If any fusion events occur
+(however unlikely at these powers), the water thermalizes
+stray neutrons within centimeters.  Thermalized neutrons
+captured by hydrogen (n + p → d + γ, 2.2 MeV) make
+deuterium — the fuel breeds itself.  The water is
+simultaneously target, moderator, shield, and breeding
+medium.
+
+**Water absorbs gamma rays.**  Gammas from neutron capture
+or fusion products are absorbed within tens of centimeters
+of water.  No external shielding needed at the power levels
+of this experiment.
+
+### Challenge: THz absorption in water
+
+Water is an extremely strong absorber at THz frequencies.
+The optical beat at 7–14 THz would be absorbed within
+micrometers of the focal volume.  This is a limitation
+(no penetration depth) but also a feature: the energy
+density at the focus is extremely high, concentrated in a
+tiny volume.  The absorption length is comparable to the
+neutrino Compton wavelength (~42 μm for Family A ν₁),
+which may actually be the relevant scale.
+
+Water's own vibrational modes overlap the region of interest:
+librational modes at 12–25 THz, hindered translations at
+5–6 THz.  These could cause background absorption that masks
+the signal.  The material-independence test (Phase 2) is
+essential as a control: any feature that appears in water
+but not in silicon or diamond is likely water's own
+spectroscopy, not a neutrino signal.
+
+### Protocol
+
+This track runs AFTER Phases 1–4 produce results:
+
+1. **If material-independent absorption is found** in
+   Phases 1–2: repeat the measurement with a thin water
+   cell (path length ~100 μm, set by THz absorption depth).
+   Compare the absorption strength in water to that in
+   silicon — any enhancement in water above the universal
+   baseline could indicate oxygen-mediated coupling.
+
+2. **If NO absorption is found** in Phases 1–4: try water
+   anyway.  The oxygen proximity effect might provide enough
+   coupling enhancement to produce a signal that transparent
+   solids lacked.
+
+3. In either case, monitor for:
+   - Anomalous heat (calorimetry on the water cell)
+   - Tritium production (liquid scintillation counting on
+     the water sample post-exposure)
+   - Deuterium enrichment (mass spectrometry on the water
+     sample post-exposure)
+
+   At L05 laser powers (10–50 mW), none of these are
+   expected.  But the measurements are cheap and the water
+   is already there.
+
+### Equipment additions
+
+| Item | Spec | Cost |
+|------|------|------|
+| Thin water cell | ~100 μm path, CaF₂ windows | $200–500 |
+| Thermocouple / RTD | monitor water temperature | $50–100 |
+| Water samples | deionized H₂O, D₂O for comparison | $50 |
+
+Total addition: < $1K.  Uses the same lasers and detectors
+as the main experiment.
