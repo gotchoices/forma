@@ -73,5 +73,26 @@ For questions that need a computational model, see [`studies/`](../studies/).
 
 | [Q100](Q100-aperture-moment-enhancement.md) | Can a cavity aperture increase the magnetic moment? | Open — hypothesis (simulatable) |
 | [Q101](Q101-ghost-modes-as-excited-states.md) | Are ghost modes excited states of the electron? Reframes (1,n≥3) ladder as internal energy levels | Open — hypothesis (computable) |
+| [Q102](Q102-neutrino-neutrality-from-sheet-size.md) | Is neutrino neutrality a consequence of sheet size? | Open — framing |
+| [Q103](Q103-anomalous-magnetic-moment-from-defect-cost.md) | Anomalous magnetic moment as defect-cost back-reaction | Open — framing |
+| [Q104](Q104-helicity-forces-n2.md) | Does circular polarization helicity force n₂ = 2? | Open — calculable |
+| [Q105a](Q105-majorana-from-c-conjugate-mixing.md) | Does Assignment A predict Majorana neutrinos? | Open — hypothesis with testable prediction |
+| [Q105b](Q105-atoms-as-cross-sheet-modes.md) | Are atoms cross-sheet modes? Electrons as harmonics, shells from crowding | Open — foundational reinterpretation |
+| [Q106](Q106-neutrino-scaffold-and-morphogenetic-field.md) | Neutrino scaffold: coherent dark-mode structure as morphogenetic field | Open — speculative |
+| [Q107](Q107-wave-translation-of-atomic-physics.md) | Wave translation of atomic physics: Ma for identity, S for arrangement | Open — conceptual framework |
+| [Q108](Q108-shell-capacity-from-knot-saturation.md) | Shell capacity from knot saturation on torus geodesics | Open — observational hypothesis |
+| [Q109](Q109-mode-stability-and-composite-fission.md) | Mode stability and composite fission: when does a torus mode survive? | Open — principled framework |
+| [Q110](Q110-entanglement-via-aleph-fiber.md) | Entanglement via the ℵ compactified dimension | Open — speculative |
+| [Q111](Q111-neutrino-coupling-constant.md) | Does the neutrino sheet have its own coupling constant? | Open — α_ν ≈ 1/52 |
+| [Q112](Q112-nuclei-as-multistrand-torus-modes.md) | Nuclei as multi-strand torus modes | Open — speculative |
+| [Q113](Q113-neutrino-modes-in-thermal-equilibrium.md) | Do bound neutrino modes participate in thermal equilibrium? | Open — quantitative implications |
+| [Q114](Q114-bare-magnetic-moment-convention.md) | Bare magnetic moment convention and the proton mode question | Open — foundational |
+| [Q115](Q115-three-generations-and-metric-structure.md) | Three generations, metric structure, and the muon problem | Open — working plan |
+| [Q116](Q116-three-sheets-vs-one-six-torus.md) | Are three sheets the same thing as one six-torus? | Open — structural insight |
+| [Q117](Q117-relativistic-effects-from-velocity-partition.md) | Relativistic effects from velocity partition between Ma and S | Answered — mechanism for known effects |
+| [Q118](Q118-optical-beating-and-dark-mode-coupling.md) | Optical beating, dark mode coupling, and fusion energy balance | Open — experimental mechanism |
+| [Q119](Q119-palladium-deuteride-phonon-neutrino-coincidence.md) | The PdD phonon / neutrino frequency coincidence | Open — potentially key experimental connection |
 
 Unprocessed and brief questions live in [`INBOX.md`](INBOX.md).
+
+**Note:** Q105 has two files (duplicate numbering) — `Q105-majorana-from-c-conjugate-mixing.md` and `Q105-atoms-as-cross-sheet-modes.md`. Listed as Q105a and Q105b pending renumbering.
