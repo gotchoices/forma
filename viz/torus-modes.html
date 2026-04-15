@@ -112,6 +112,7 @@ import { THREE, createScene, autoResize, animLoop } from './totu-viz.js';
 
 const $ = id => document.getElementById(id);
 const TAU = 2 * Math.PI;
+const PREG = 1e-3; // spindle cusp regularization: |p| clamped above this
 
 /* ── Non-linear a/R slider (same mapping as torus-studio) ──
    Lower half [0, 0.5] → a/R [0.01, 1]   (ring / horn range)
@@ -144,7 +145,7 @@ function load() {
 let S = load();
 function save() { localStorage.setItem(KEY, JSON.stringify(S)); }
 
-/* ── Eigensolver (unchanged) ───────────────────────── */
+/* ── Eigensolver (spindle-safe: uses |p| for ε > 1) ── */
 
 const NFOURIER = 16;
 
@@ -160,7 +161,7 @@ function solveEigenmodes(eps, qeff, parity) {
   for (let q = 0; q < NQ; q++) {
     const th = (q + 0.5) * dth;
     const ct = Math.cos(th);
-    const p = 1 + eps * ct;
+    const p = Math.max(Math.abs(1 + eps * ct), PREG);
     const pot = eps * eps * qeff * qeff / p;
     const w = p;
     const phi = new Float64Array(dim);
@@ -312,7 +313,7 @@ function computeChargeOverlap(coeffs, parity, eps) {
       for (let n = 0; n < coeffs.length; n++)
         f += coeffs[n] * Math.sin((n + 1) * th);
     }
-    const w = 1 + eps * ct;
+    const w = Math.max(Math.abs(1 + eps * ct), PREG);
     c    += f * ct * w * dth;
     norm += f * f * w * dth;
   }
@@ -333,21 +334,30 @@ const R_MAJOR = 2.0;
 function buildColoredTorusGeom(R, a, segU, segV) {
   const nv = (segU + 1) * (segV + 1);
   const pos = new Float32Array(nv * 3);
-  const col = new Float32Array(nv * 3); // RGB, initially black
-  const theta1s = new Float32Array(nv);  // θ₁ per vertex
+  const nrm = new Float32Array(nv * 3);
+  const col = new Float32Array(nv * 3);
+  const theta1s = new Float32Array(nv);
   const idx = [];
-  let vi = 0, ci = 0, ti = 0;
+  let vi = 0, ti = 0;
   for (let i = 0; i <= segU; i++) {
     const th = (i / segU) * TAU;
     const ct = Math.cos(th), st = Math.sin(th);
     for (let j = 0; j <= segV; j++) {
       const ph = (j / segV) * TAU;
       const rr = R + a * ct;
-      pos[vi++] = rr * Math.cos(ph);
-      pos[vi++] = a * st;
-      pos[vi++] = rr * Math.sin(ph);
-      col[ci++] = 0; col[ci++] = 0; col[ci++] = 0;
+      const cp = Math.cos(ph), sp = Math.sin(ph);
+      pos[vi]     = rr * cp;
+      pos[vi + 1] = a * st;
+      pos[vi + 2] = rr * sp;
+      const s = rr >= 0 ? 1 : -1;
+      nrm[vi]     = s * ct * cp;
+      nrm[vi + 1] = s * st;
+      nrm[vi + 2] = s * ct * sp;
+      col[vi]     = 0;
+      col[vi + 1] = 0;
+      col[vi + 2] = 0;
       theta1s[ti++] = th;
+      vi += 3;
     }
   }
   for (let i = 0; i < segU; i++)
@@ -357,9 +367,9 @@ function buildColoredTorusGeom(R, a, segU, segV) {
     }
   const g = new THREE.BufferGeometry();
   g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
+  g.setAttribute('normal',   new THREE.Float32BufferAttribute(nrm, 3));
   g.setAttribute('color',    new THREE.Float32BufferAttribute(col, 3));
   g.setIndex(idx);
-  g.computeVertexNormals();
   g.userData.theta1s = theta1s;
   return g;
 }
