@@ -168,7 +168,7 @@ Q105b pending renumbering.
 | Q98 | [Q98](Q98-quark-generations-vs-lepton-generations.md) | Are quark generations real or labeling convention? | Resolved |
 | Q99 | [Q99](Q99-fourth-neutrino-mode.md) | The 4th neutrino mode — hidden or Z-width tension? | Open — testable |
 
-### Model D era (Q100–Q119)
+### Model D/E era (Q100–Q120)
 
 | # | File | Question | Status |
 |---|------|----------|--------|
@@ -193,3 +193,4 @@ Q105b pending renumbering.
 | Q117 | [Q117](Q117-relativistic-effects-from-velocity-partition.md) | Relativistic effects from velocity partition (Ma vs. S) | Answered |
 | Q118 | [Q118](Q118-optical-beating-and-dark-mode-coupling.md) | Optical beating, dark mode coupling, fusion energy | Open |
 | Q119 | [Q119](Q119-palladium-deuteride-phonon-neutrino-coincidence.md) | PdD phonon / neutrino frequency coincidence | Open |
+| Q120 | [Q120](Q120-neutrino-sheet-generator-mode-transmutation.md) | Neutrino sheet "generator mode" — draining nuclear energy for transmutation | Open — speculative |
