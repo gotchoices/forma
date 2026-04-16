@@ -1,9 +1,10 @@
 # R55: α consistency check — Ma-S coupling derivation
 
-**Status:** Track 1 complete — initial results
-**Questions:** Q115 (metric structure), Q116 (T⁶ vs sheets)
+**Status:** Track 1 complete; Track 2 framed
+**Questions:** Q115 (metric structure), Q116 (T⁶ vs sheets), Q102 (neutrino neutrality)
 **Type:** theoretical + compute
-**Depends on:** R54 (particle inventory, metric terms), R19 (original α formula), R48 (charge mechanism)
+**Depends on:** R54 (particle inventory, metric terms), R19 (original α formula),
+  R48 (charge mechanism), GRID (charge-from-energy primer, physics-from-fabric primer)
 
 ---
 
@@ -130,24 +131,162 @@ system nearly or over-determined.
 | Multiple B solutions | Need additional constraint to select the physical one |
 | α_eff depends on mode regardless of B | Universality fails — model has a problem |
 
-### Track 2: Analytical consistency (theoretical, follow-up)
+### Track 2: Charge vs coupling — GRID-informed Ma-S analysis
 
-If Track 1 finds a solution:
-1. Examine the Ma-S values — do they have a pattern?
-2. Check whether the Coulomb self-energy U = α_eff × mc² holds
-3. Check the hydrogen binding energy (13.6 eV)
-4. Compare the proton charge radius prediction
+#### Background: what Track 1 revealed
 
-If Track 1 finds no solution:
-1. Diagnose why — which modes break universality?
-2. Consider whether the linear transfer-function picture needs
-   nonlinear corrections (field profile in S, backreaction)
-3. Revisit the KK analytical derivation for the specific failing case
+Track 1 (Schur complement) showed that per-mode energy
+fractions are inherently mode-dependent on the e-sheet.  The
+off-diagonal ratio of the 2×2 sheet metric is |s|/√(1+s²),
+which depends only on the internal shear s — not on ε.  Since
+three generations require s ≥ 1, no e-sheet geometry exists
+that gives universal per-mode coupling.  The Schur complement
+is the wrong tool for computing α.
+
+#### The GRID insight: charge and coupling are independent
+
+A detailed review of the GRID charge mechanism (R19, R48,
+charge-from-energy primer, Q102) reveals that **charge** and
+**EM coupling** are distinct phenomena:
+
+**Charge** is a topological/resolution phenomenon:
+- A 2π phase winding around the tube of the torus creates a
+  net E-field flux detectable by the surrounding S lattice
+  (Gauss's law: ∮ E·n̂ dA ≠ 0)
+- The tube winding must be odd (n_tube = 1, 3, 5...) —
+  even windings produce alternating flux that cancels
+- The 2π twist, spread over the tube circumference, must have
+  a phase gradient per lattice cell ABOVE the GRID resolution
+  threshold (~ζ = 1/4 bit per cell)
+- The ν-tube is ~10²⁹ Planck lengths: its phase gradient is
+  ~10⁻²⁸ rad/cell — far below resolution.  The winding
+  exists topologically but is physically undetectable.  This
+  is why the neutrino has no charge.  It's a SIZE argument
+  (Q102), not a coupling argument
+
+**EM coupling** (energy transfer between Ma and S) is a
+geometric/metric phenomenon:
+- Each sheet is embedded in the ambient S lattice at some
+  tilt angle — the Ma-S shear in the 9×9 metric
+- Energy flows between Ma and S through this tilt
+- The tilt does NOT require a resolvable phase gradient — it
+  is a bulk property of the embedding geometry
+- A large tube (ν-sheet) can have an unresolvable phase
+  gradient (no charge) while still being tilted relative to S
+  (energy flows)
+
+**Therefore:** all three sheets can couple to S
+electromagnetically (energy transfer through the metric tilt)
+even though only two of them (e, p) produce observable charge
+(resolvable 2π phase winding on the tube).
+
+This resolves the L05 premise: the laser beat at neutrino
+Compton frequencies couples energy into the ν-sheet through
+the Ma-S tilt, even though the ν-sheet carries no charge.
+
+#### Applicability of the R19 formula
+
+R19 derived α(ε, s) — a formula for coupling strength as a
+function of aspect ratio and shear — for a single sheet.  It
+was derived pre-GRID, using a geodesic projection argument:
+the fraction of a mode's velocity that projects into the
+"charge direction" determines the coupling.
+
+**Concerns about applying R19 to the current context:**
+
+1. **R19 conflated charge and coupling.**  It computed a single
+   quantity that was simultaneously "charge creation" and
+   "spatial coupling strength."  GRID separates these: charge
+   is topological (tube winding + resolution), coupling is
+   geometric (Ma-S tilt).  The R19 formula may describe
+   one, the other, or a mixture.
+
+2. **R19 used internal shear, not Ma-S shear.**  The formula
+   α(ε, s) uses the in-sheet shear s (tube↔ring) as its
+   argument.  But we now understand that internal shears
+   control generation structure while Ma-S entries control
+   spatial coupling.  Applying R19's formula to the Ma-S
+   context requires re-interpreting which shear it refers to.
+
+3. **R19 was validated only at ε ~ O(1).**  The formula works
+   at the p-sheet (ε = 0.55) but was never tested at the
+   e-sheet (ε = 397) or ν-sheet (ε = 5).
+
+4. **R19 predates the T⁶ picture.**  It was derived for a
+   single 2D sheet embedded in 3D, not for a 6D manifold
+   with cross-sheet couplings.  The full T⁶ may have
+   interference effects between sheets.
+
+These concerns do not invalidate R19 — they flag it as
+possibly incomplete.  Track 2 should treat R19 as a
+candidate formula to test, not as established truth.
+
+#### Proposed computation
+
+**Step 1: Identify what R19's formula actually computes.**
+
+Re-derive R19's α(ε, s) in the GRID framework.  The original
+derivation computed the fraction of a geodesic's velocity in
+the direction perpendicular to the torus surface — which the
+ambient lattice detects as electric field.  In GRID terms, this
+is the phase gradient projected onto S.  Determine whether
+this is:
+- (a) The charge magnitude (topological — should be integer)
+- (b) The coupling strength (geometric — should be α)
+- (c) The Coulomb self-energy fraction (energetic — should be α)
+
+**Step 2: Compute the Ma-S tilt for each sheet.**
+
+If R19-type physics applies to the Ma-S embedding:
+- For each sheet, the Ma-S tilt angle determines the coupling
+  to S
+- The tilt is an independent degree of freedom from the
+  in-sheet shear
+- Solve: what Ma-S tilt gives α = 1/137 for the e-sheet?
+  For the p-sheet?  For the ν-sheet?
+- Are the three tilt values consistent with a single T⁶?
+
+**Step 3: Test whether GRID resolution explains charge.**
+
+For each sheet at the solved Ma-S tilt:
+- Compute the phase gradient per GRID cell on the tube
+- Compare to the resolution threshold ζ = 1/4
+- e-tube (L₁ = 4718 fm ≈ 10¹⁷ L_Planck): should be above
+  threshold → charge
+- p-tube (L₅ = 2.45 fm ≈ 10⁵ L_Planck): should be above
+  threshold → charge
+- ν-tube (L₃ = 2×10¹¹ fm ≈ 10²⁹ L_Planck): should be below
+  threshold → no charge
+
+If all three checks pass, we have a complete, self-consistent
+picture: coupling from Ma-S tilt, charge from resolution,
+no free parameters remaining in the Ma-S block.
+
+**Step 4: Check whether ν-sheet coupling differs from α.**
+
+Q111 found α_ν ≈ 1/52 using the R19 formula with ν-sheet
+parameters.  If the Ma-S tilt for the ν-sheet gives a
+different coupling than 1/137, this has implications:
+- For L05 (the coupling strength determines signal strength)
+- For the weak force (α_ν might be the weak coupling, not α)
+- For dark matter (neutral modes couple at α_ν, not α)
+
+#### Possible outcomes
+
+| Result | Meaning |
+|--------|---------|
+| R19 formula applies; all sheets give α = 1/137 via Ma-S tilt | Universal EM coupling; charge/no-charge from resolution only |
+| R19 applies; e and p give α, ν gives α_ν ≈ 1/52 | Two coupling strengths; ν-sheet has its own force |
+| R19 doesn't apply to Ma-S context | Need a new formula; the GRID mechanism is different from R19's projection |
+| Phase gradient resolution correctly predicts which sheets carry charge | Strong confirmation of GRID + MaSt picture |
 
 ## Deliverables
 
-- The α_eff transfer function as a computable function of
-  Ma-S entries and mode winding numbers
-- Numerical Ma-S values for α = 1/137 (if they exist)
-- Universality check (electron, proton, muon, neutrino)
-- Assessment: is α determined by the geometry or still free?
+- Clear separation of charge (topological/resolution) from
+  coupling (geometric/tilt) in the GRID framework
+- Ma-S tilt values for each sheet, either from R19 or a new
+  formula
+- Phase gradient resolution check for each sheet's tube
+- Assessment: is α determined by the geometry, or still free?
+- If ν-sheet coupling differs from α: implications for L05
+  and the weak force
