@@ -1,6 +1,6 @@
 # Track 8: Aperture coupling — E-field leakage from bending
 
-**Status:** Framed — ready to compute.
+**Status:** Complete — see [F8-aperture-coupling.md](F8-aperture-coupling.md).
 
 **Premise:** when a flat 2D hexagonal lattice is bent into a
 torus, the edge directions change in 3D even though the intrinsic
