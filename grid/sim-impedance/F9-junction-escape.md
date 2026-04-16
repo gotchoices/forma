@@ -1,8 +1,10 @@
 # F9 — Junction escape fraction: findings
 
 **Track:** [T9-junction-escape.md](T9-junction-escape.md)
-**Script:** [scripts/track9_junction_escape.py](scripts/track9_junction_escape.py)
-**Status:** Complete
+**Scripts:** [scripts/track9_junction_escape.py](scripts/track9_junction_escape.py),
+[scripts/track9b_total_escape.py](scripts/track9b_total_escape.py),
+[scripts/track9_10_equal_edge.py](scripts/track9_10_equal_edge.py) (corrected lattice)
+**Status:** Complete — revised with equal-edge lattice
 
 ---
 
@@ -14,7 +16,24 @@ Y-junction — is a well-defined, nonzero quantity on a torus.
 However, it does **not** yield a parameter-free derivation
 of α.  The escape fraction depends on the lattice resolution
 N (cells per direction) and decreases toward zero as N → ∞.
-There is no distinguished value of N at which f_esc = α.
+
+### Lattice quality note
+
+The initial computation used a conformal mapping (regular
+angular grid), which produces wildly unequal edge lengths
+(up to 4:1 ratio) and extreme junction angles (as narrow as
+16° and as wide as 176°).  This was corrected using spring
+relaxation to equalize edge lengths.
+
+**Key constraint:** a regular honeycomb with fixed connectivity
+(same N₂ nodes per ring) cannot have all edges exactly equal
+on a torus, because the ring circumference varies by a factor
+of (1+ε)/(1−ε).  The relaxation reduces the edge length ratio
+from ~4:1 to ~1.5:1, but cannot eliminate it entirely.  The
+junction angles remain spread (std ~50°) due to the curvature.
+
+The qualitative conclusions are unchanged with the corrected
+lattice; quantitative values differ moderately.
 
 ---
 
@@ -34,15 +53,13 @@ curvature (ε = a/R) and lattice resolution (N).
 
 ### F2. f_esc decreases with N — it is a lattice-spacing effect
 
-The central result.  Sample data (conformal mapping):
+The central result.  Data with equal-edge relaxed lattice:
 
 | ε   | N=4   | N=10  | N=20  | N=40  |
 |-----|-------|-------|-------|-------|
-| 0.1 | 0.099 | 0.029 | 0.017 | 0.009 |
-| 0.3 | 0.166 | 0.098 | 0.032 | 0.008 |
-| 0.5 | 0.223 | 0.108 | 0.030 | 0.008 |
-| 0.7 | 0.250 | 0.142 | 0.036 | 0.009 |
-| 1.0 | 0.258 | 0.178 | 0.053 | 0.014 |
+| 0.3 | 0.148 | 0.075 | 0.033 | 0.010 |
+| 0.5 | 0.179 | 0.087 | 0.033 | 0.016 |
+| 0.7 | 0.256 | 0.135 | 0.042 | 0.019 |
 
 As N increases (finer lattice), the edge directions approach
 the continuum tangent vectors, the three edges become
@@ -58,36 +75,37 @@ the N that gives f_esc = α is circular.
 
 ### F3. The ratio f_esc/α passes through 1 — but not uniquely
 
-For several ε values, the f_esc curve crosses α near N ≈ 40:
+For several ε values, the f_esc curve crosses α near N ≈ 40–60:
 
 | ε   | N=40 f_esc/α |
 |-----|-------------|
-| 0.3 | 1.13        |
-| 0.5 | 1.06        |
-| 0.7 | 1.25        |
-| 1.0 | 1.85        |
+| 0.3 | 1.40        |
+| 0.5 | 2.15        |
+| 0.7 | 2.67        |
 
-At ε = 0.5, N = 40, f_esc ≈ α to within 6%.  But this is
-simply the curve f_esc(N) crossing through α on its way to
-zero.  Every ε curve crosses α at some N.  There is no
-reason to prefer one (ε, N) pair over another.
+The f_esc curve crosses through α at some N for each ε.
+But there is no reason to prefer one (ε, N) pair over
+another — the curve simply passes through every positive
+value on its way to zero.
 
-### F4. Methods A and B give identical results
+### F4. Equal-edge lattice changes numbers but not conclusions
 
-Both lattice mapping methods (conformal and equal-edge) used
-the same angular coordinates for node placement.  The 3D
-positions differ by the torus metric, but the angular
-separations between neighbors — and therefore the edge
-directions — are identical.
+The initial computation used identical conformal mapping for
+both methods.  This was corrected using spring relaxation to
+minimize edge length variance.
 
-A truly distinct "equal edge length" method would require
-adjusting node coordinates so that all edges have the same
-3D arc length.  This would distort the angular distribution,
-placing nodes closer together angularly near the inner equator
-(where curvature compresses space).  The escape fractions
-would differ, but f_esc would still depend on N and go to
-zero as N → ∞ for the same fundamental reason: finer
-resolution → more coplanar edges.
+With the relaxed lattice, quantitative values differ
+moderately from the conformal results (mean f_esc changes
+by up to ~50%), but the scaling with N is unchanged.  The
+fundamental reason remains: finer resolution → more coplanar
+edges → less escape.
+
+A key structural constraint: a regular honeycomb with fixed
+connectivity cannot have all edges exactly equal on a torus.
+The relaxation reduces the edge ratio from ~4:1 (conformal)
+to ~1.5:1, but some variation is unavoidable.  Truly equal
+edges would require variable connectivity (fewer nodes on
+the inner equator), which is a different lattice topology.
 
 ### F5. Edge direction matters — junction symmetry is broken
 
@@ -202,30 +220,37 @@ parameter and passes through every positive value.
 
 ---
 
-### F8. Total escape (Σ f_esc) converges — but not to α
+### F8. Total escape (Σ f_esc) — convergence depends on lattice
 
-Follow-up script: `scripts/track9b_total_escape.py`
+Follow-up scripts: `scripts/track9b_total_escape.py`,
+`scripts/track9_10_equal_edge.py`
 
-Even though the per-node f_esc goes to zero, the total over
-all M = 2N² nodes converges to a finite value because
-f_esc ~ 1/N² and M ~ N²:
+Even though per-node f_esc goes to zero, the total over all
+M = 2N² nodes may converge.  Results depend on the lattice:
+
+**Conformal mapping** — Σ f_esc converges cleanly:
 
 | ε   | Σ f_esc (N=60) |
 |-----|----------------|
-| 0.1 | 29.0           |
 | 0.3 | 26.4           |
 | 0.5 | 25.0           |
 | 0.7 | 29.2           |
-| 1.0 | 43.9           |
 
-Convergence is clear: < 1% change between N=40 and N=60 for
-all ε ≤ 0.7.
+**Equal-edge relaxed lattice** — Σ f_esc for ε=0.3 appears
+to converge (~32.6 at both N=30 and N=40), but for ε=0.5
+and 0.7, the total is still growing at N=40:
 
-**However, these converged values are ~25–44, not α ≈ 0.0073.**
-The total escape is a geometric integral of squared curvature
-over the torus, of order 1, not order 1/137.  It depends on ε
-(stronger curvature → more total escape), so it is not a
-topological invariant either.
+| ε   | N=20  | N=30  | N=40  |
+|-----|-------|-------|-------|
+| 0.3 | 26.4  | 32.6  | 32.6  |
+| 0.5 | 26.3  | 36.1  | 50.1  |
+| 0.7 | 33.9  | 47.2  | 62.2  |
+
+The non-convergence at high ε reflects the residual edge
+length variation (~1.5:1) in the relaxed lattice.  With
+a truly equal-edge lattice (requiring variable connectivity),
+Σ f_esc would likely converge, but to ε-dependent values
+of order 10–60, not to α ≈ 0.0073.
 
 ### F9. Escape is almost entirely surface-normal
 

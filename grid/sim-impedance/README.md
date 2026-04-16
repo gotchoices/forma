@@ -1,6 +1,6 @@
 # sim-impedance: Lattice junction coupling
 
-**Status:** Tracks 1, 5, 6, 7, 8 complete.  Tracks 2-4 framing only.
+**Status:** Tracks 1, 5–10 complete.  Tracks 2-4 framing only.
 
 **Question:** when two lattices of different structure or
 orientation interface, what determines the coupling between
@@ -31,6 +31,7 @@ origin in the lattice structures themselves.
 | **7** | The ε → 0 limit: do exact coincidences exist? | Complete — negative (rate → 0; no exact coincidences) | [T7](T7-epsilon-limit.md), [F7](F7-epsilon-limit.md) |
 | **8** | Aperture coupling: E-field leakage from bending a hexagonal lattice into a torus | Complete — confirms charge selection rule; does not derive α | [T8](T8-aperture-coupling.md), [F8](F8-aperture-coupling.md) |
 | **9** | Junction escape fraction: geometric energy leakage at a single curved node | Complete — f_esc depends on lattice resolution; does not derive α | [T9](T9-junction-escape.md), [F9](F9-junction-escape.md) |
+| **10** | Propagation leakage: iterative signal propagation with normal escape at each junction | Complete — normal fraction still ~1/N²; does not derive α | [T10](T10-propagation-leakage.md), [F10](F10-propagation-leakage.md) |
 
 **Track 1** established that 2D-in-2D coincidence counting
 gives a smooth, featureless coupling rate dominated by
@@ -131,4 +132,8 @@ the full list.  The approaches that remain open:
 | [T9-junction-escape.md](T9-junction-escape.md) | Track 9 framing |
 | [F9-junction-escape.md](F9-junction-escape.md) | Track 9 findings |
 | [scripts/track9_junction_escape.py](scripts/track9_junction_escape.py) | Track 9 script |
+| [scripts/track9b_total_escape.py](scripts/track9b_total_escape.py) | Track 9b follow-up script |
+| [T10-propagation-leakage.md](T10-propagation-leakage.md) | Track 10 framing |
+| [F10-propagation-leakage.md](F10-propagation-leakage.md) | Track 10 findings |
+| [scripts/track10_propagation_leakage.py](scripts/track10_propagation_leakage.py) | Track 10 script |
 | [output/](output/) | Plots and data |
