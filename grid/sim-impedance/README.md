@@ -1,6 +1,6 @@
 # sim-impedance: Lattice junction coupling
 
-**Status:** Tracks 1, 5, 6, 7 complete.  Tracks 2-4 framing only.
+**Status:** Tracks 1, 5, 6, 7, 8 complete.  Tracks 2-4 framing only.
 
 **Question:** when two lattices of different structure or
 orientation interface, what determines the coupling between
@@ -30,6 +30,7 @@ origin in the lattice structures themselves.
 | **6** | 4D Lorentzian lattice: node coincidence of 2D hexagonal in 4D simplex lattice | Steps 0-1 complete | [T6](T6-4d-lorentzian-lattice.md), [F6.0](F6-step0-euclidean4d.md), [F6.1](F6-step1-lorentzian.md) |
 | **7** | The ε → 0 limit: do exact coincidences exist? | Complete — negative (rate → 0; no exact coincidences) | [T7](T7-epsilon-limit.md), [F7](F7-epsilon-limit.md) |
 | **8** | Aperture coupling: E-field leakage from bending a hexagonal lattice into a torus | Complete — confirms charge selection rule; does not derive α | [T8](T8-aperture-coupling.md), [F8](F8-aperture-coupling.md) |
+| **9** | Junction escape fraction: geometric energy leakage at a single curved node | Complete — f_esc depends on lattice resolution; does not derive α | [T9](T9-junction-escape.md), [F9](F9-junction-escape.md) |
 
 **Track 1** established that 2D-in-2D coincidence counting
 gives a smooth, featureless coupling rate dominated by
@@ -127,4 +128,7 @@ the full list.  The approaches that remain open:
 | [T7-epsilon-limit.md](T7-epsilon-limit.md) | Track 7 framing |
 | [F7-epsilon-limit.md](F7-epsilon-limit.md) | Track 7 findings |
 | [scripts/verify_epsilon_to_zero.py](scripts/verify_epsilon_to_zero.py) | Track 7 script |
+| [T9-junction-escape.md](T9-junction-escape.md) | Track 9 framing |
+| [F9-junction-escape.md](F9-junction-escape.md) | Track 9 findings |
+| [scripts/track9_junction_escape.py](scripts/track9_junction_escape.py) | Track 9 script |
 | [output/](output/) | Plots and data |
