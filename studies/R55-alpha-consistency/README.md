@@ -1,6 +1,6 @@
 # R55: α consistency check — Ma-S coupling derivation
 
-**Status:** Framed — not yet started
+**Status:** Track 1 complete — initial results
 **Questions:** Q115 (metric structure), Q116 (T⁶ vs sheets)
 **Type:** theoretical + compute
 **Depends on:** R54 (particle inventory, metric terms), R19 (original α formula), R48 (charge mechanism)
@@ -67,32 +67,87 @@ both directions through the same entries.
 
 ## Proposed approach
 
-### Phase 1: Derive the α formula (theoretical)
+### Track 1: Numerical Ma-S transfer function (computational)
 
-Re-derive the R19 result in the 9×9 context:
-1. Write the mode's electromagnetic field on the 9D manifold
-2. The Ma-S entries determine how the field extends from Ma into S
-3. Integrate the field energy in S → this is U_Coulomb
-4. U_Coulomb / E_mode = α → formula for α in terms of Ma-S entries
+**Concept:** Build the full 9×9 metric (Ma + S), inject a mode
+perturbation into Ma, and compute what fraction of the mode's
+energy "makes it" into S.  The Ma-S shear entries are free
+parameters; sweep them to find values where the effective
+coupling equals α = 1/137.
 
-### Phase 2: Solve for Ma-S entries (algebraic)
+**Why this works:** The 9×9 metric in block form is:
 
-Given the formula from Phase 1:
-1. Set α = 1/137 for the electron mode (1,2,0,0,0,0)
-2. Solve for the Ma-S entries
-3. Check universality: same entries → same α for proton (0,0,0,0,1,3)
+```
+G = | A    B  |      A = 6×6 Ma metric (known)
+    | Bᵀ   C  |      C = 3×3 S metric (identity, flat)
+                      B = 6×3 Ma-S coupling (unknown)
+```
 
-### Phase 3: Consistency check (computational)
+A mode at rest in S has winding vector ñ = (n₁/L₁,...,n₆/L₆, 0, 0, 0).
+Its energy in the full 9D metric is:
 
-With the derived Ma-S entries:
-1. Compute the Coulomb self-energy of the electron → should be αmc²
-2. Compute the Coulomb self-energy of the proton → should be αMc²
-3. Compute the hydrogen binding energy → should be 13.6 eV
-4. Check the proton charge radius prediction
+```
+E² ∝ ñ_Maᵀ [G⁻¹]_Ma,Ma ñ_Ma
+```
+
+where [G⁻¹]_Ma,Ma = (A − B C⁻¹ Bᵀ)⁻¹ is the effective Ma
+metric with S coupling included.  Without coupling (B = 0),
+this reduces to A⁻¹.  The difference between the coupled and
+uncoupled energies measures how much energy the Ma-S entries
+divert into S — i.e., the Coulomb coupling.
+
+**Method:**
+
+1. Build the 6×6 Ma metric A from model-E parameters (known:
+   ε_e, s_e, ε_p, s_p, ε_ν, s_ν, all cross-sheet σ)
+2. Build the 6×3 Ma-S block B parameterized by 4 effective
+   entries (e-ring→S, p-tube→S, p-ring→S, ν-ring→S = 0).
+   Spatial isotropy means each Ma dimension has a single
+   coupling to all three S directions.  Inactive dimensions
+   (e-tube, ν-tube) are 0.  Sign convention: e-ring negative,
+   p-tube and p-ring positive.
+3. Compute E²_bare = ñᵀ A⁻¹ ñ (Ma only, no S coupling)
+4. Compute E²_coupled = ñᵀ (A − B C⁻¹ Bᵀ)⁻¹ ñ (with S coupling)
+5. Define α_eff(mode) from the energy fraction
+6. Sweep the Ma-S parameters to find values where α_eff = 1/137
+
+**Key constraint: universality.** The same Ma-S entries must
+give α_eff = 1/137 for ALL charged modes simultaneously:
+- Electron (1, 2, 0, 0, 0, 0) — e-sheet, ε = 397
+- Proton (0, 0, −2, 2, 1, 3) — p-sheet, ε = 0.55
+- Muon (1, 1, −2, −2, 0, 0) — e-sheet, different winding
+- Neutrino (0, 0, 0, 0, 1, 1) — must give α_eff = 0
+
+Universality with 4 unknowns and 4+ constraints leaves the
+system nearly or over-determined.
+
+**Possible outcomes:**
+
+| Result | Meaning |
+|--------|---------|
+| One B solution with universal α = 1/137 | α is geometrically determined by Ma-S entries |
+| No B works for all modes | Energy-fraction picture incomplete; Ma-S coupling is more subtle |
+| Multiple B solutions | Need additional constraint to select the physical one |
+| α_eff depends on mode regardless of B | Universality fails — model has a problem |
+
+### Track 2: Analytical consistency (theoretical, follow-up)
+
+If Track 1 finds a solution:
+1. Examine the Ma-S values — do they have a pattern?
+2. Check whether the Coulomb self-energy U = α_eff × mc² holds
+3. Check the hydrogen binding energy (13.6 eV)
+4. Compare the proton charge radius prediction
+
+If Track 1 finds no solution:
+1. Diagnose why — which modes break universality?
+2. Consider whether the linear transfer-function picture needs
+   nonlinear corrections (field profile in S, backreaction)
+3. Revisit the KK analytical derivation for the specific failing case
 
 ## Deliverables
 
-- The α formula in terms of Ma-S metric entries
-- Numerical Ma-S values for α = 1/137
-- Universality check (electron, proton, muon)
-- The complete 45-entry metric with no free parameters
+- The α_eff transfer function as a computable function of
+  Ma-S entries and mode winding numbers
+- Numerical Ma-S values for α = 1/137 (if they exist)
+- Universality check (electron, proton, muon, neutrino)
+- Assessment: is α determined by the geometry or still free?
