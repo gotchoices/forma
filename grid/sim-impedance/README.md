@@ -29,6 +29,7 @@ origin in the lattice structures themselves.
 | **5** | Wavefront transfer: coherent signal coupling through a shared 2D/3D node (projection matrix, SVD, directional efficiency) | Framing | [T5](T5-wavefront-transfer.md) |
 | **6** | 4D Lorentzian lattice: node coincidence of 2D hexagonal in 4D simplex lattice | Steps 0-1 complete | [T6](T6-4d-lorentzian-lattice.md), [F6.0](F6-step0-euclidean4d.md), [F6.1](F6-step1-lorentzian.md) |
 | **7** | The ε → 0 limit: do exact coincidences exist? | Complete — negative (rate → 0; no exact coincidences) | [T7](T7-epsilon-limit.md), [F7](F7-epsilon-limit.md) |
+| **8** | Aperture coupling: E-field leakage from bending a hexagonal lattice into a torus | Framed — ready to compute | [T8](T8-aperture-coupling.md) |
 
 **Track 1** established that 2D-in-2D coincidence counting
 gives a smooth, featureless coupling rate dominated by
