@@ -483,90 +483,169 @@ The F4 sign problem is resolved (F22).  Key findings:
    give correct mass direction
 
 
-## Track 3 (rebuilt): Spatial field from the coupling
+## Track 3 (rebuilt): Shear architecture test bed
 
-### F28. R19 gives α at the p-sheet but fails at the e-sheet
+The earlier Track 3 attempts (narrative analogies and analytic
+comparisons) were replaced by a systematic test bed:
+[track3_testbed.py](scripts/track3_testbed.py).  For each of nine
+architectures, the same procedure runs:
 
-The R19 formula α(ε, s) = ε² × μ × sin²(2πs) / (4π q²):
+1. Build the full N×N metric (N = 10, or 11 with ℵ) starting
+   from model-E's 6×6 Ma block, flat S, Lorentzian t, and
+   optional ℵ.
+2. Overlay the architecture's shears at specified entries.
+3. Check metric signature (exactly one negative eigenvalue).
+4. Compute the particle-root mass for the electron mode
+   (1,2,0,0,0,0) and proton mode (0,0,-2,2,1,3).
+5. Extract α_eff three ways:
+   - (a) mass-shell shift: (E_particle − E_bare)/E_bare
+   - (b) inverse-metric gauge: σ_eff² from g^{Ma,t} in the
+     upper-indexed metric, the natural KK gauge-field extraction
+   - (c) spatial coefficient |C|² from the 1/r coefficient of
+     δg_{Ma,t}(r) at large r
+6. Report.
 
-| Sheet | ε | s | α(R19) | ratio to α |
-|-------|---|---|--------|-----------|
-| p-sheet | 0.55 | 0.162 | 7.30×10⁻³ | **1.000** ✓ |
-| e-sheet | 397 | 2.004 | 2,425 | 332,333 ✗ |
+No tuning.  Each architecture's α_eff is a deterministic output
+of the input shears and model-E's existing geometry.
 
-R19 was derived for ε ~ O(1).  At ε = 397, the formula
-gives a nonsensical value — 330,000× too large.
+### F28. Four of nine architectures break the Lorentzian signature
 
-**This means the model-C approach (internal shear → α) only
-ever worked at the p-sheet.**  The e-sheet was never tested
-independently — its shear was set for generation structure
-(R53), not for α.  The implicit assumption that "α from R19
-works for all sheets" was never validated at the e-sheet.
+Setting a shear of magnitude α at the following locations produces
+a metric with **two** negative eigenvalues instead of one — i.e.,
+a timelike+spacelike metric becomes doubly timelike:
 
-### F29. Standard KK gives α ≈ 10⁻⁴² — 40 orders too small
+| Arch | Where | Result |
+|------|-------|--------|
+| 1 | Ma_e-tube ↔ Ma_p-tube (internal cross) | 2 neg eigs |
+| 2 | Ma_tube ↔ S (direct spatial) | 2 neg eigs |
+| 3 | Ma↔ℵ=1, ℵ↔S=α (ℵ-mediated to S) | 2 neg eigs |
+| 4 | Ma↔ℵ=1, ℵ↔t=α (ℵ-mediated to t, unit Ma-ℵ) | 2 neg eigs |
 
-Any localized energy source in 3D space produces a 1/r
-potential perturbation at distances r >> source size.  This
-follows from the Green's function of the 3D Laplacian:
+Model-E's Ma metric is close to the positive-definite boundary:
+its smallest positive eigenvalue is ~10⁻³ (a consequence of the
+large e-sheet shear s_e = 2.004 with ε_e = 397).  Adding cross-
+couplings at tube entries, Ma-S entries, or large Ma-ℵ entries
+perturbs this near-zero eigenvalue past the boundary.
 
-> ∇²φ = -4πρ  →  φ(r) = ∫ ρ(r') / |r - r'| d³r'
+**This is a real geometric obstruction**, not a bug.  The
+architectures "put α at this cross-entry" that look simple on
+paper are actively unphysical on the existing model-E geometry.
 
-For a point source: φ = const / r → F = const / r².
-For a torus source: same at r >> L_ring (Compton scale).
-
-**The 1/r Coulomb profile is a property of S (3D space),
-not of the coupling mechanism.**  Any Ma-t coupling that
-produces a localized perturbation in S will give 1/r
-at macroscopic distances.
-
-
-### F29. Standard KK gives α ≈ 10⁻⁴² — 40 orders too small
-
-The standard KK coupling is α_KK = 4 L_P² / L₅², where L₅
-is the compact circumference and L_P is the Planck length.
-
-For L₅ = L_ring_e = 11.88 fm:
-> α_KK = 4 × (1.6 × 10⁻²⁰)² / 11.88² = 7.4 × 10⁻⁴²
-
-This is 10³⁹× below the observed α.  Standard KK requires
-the compact dimensions at the Planck scale; ours are at the
-Compton scale, ~10²⁰× larger.
-
-**Standard KK does not apply to MaSt's geometry.**
-
-
-### F30. Track 1's ΔE/E = α is tuned, not the Coulomb self-energy
-
-The classical Coulomb self-energy of a charge distributed on
-a ring of radius R is:
-
-> U_self / mc² = α × λ_C / R ≈ α × 1283 ≈ 9.4
-
-This is ~1300× larger than Track 1's ΔE/E = α.
-
-Track 1's mass-shell shift is a DIFFERENT quantity from the
-Coulomb self-energy.  Tuning σ to give ΔE/E = α does not
-establish that the spatial Coulomb field has strength α.
+Track 1b's ℵ architecture avoided this by using smaller Ma-ℵ
+entries (±1/(2π) ≈ 0.16 rather than ±1).  Arch 4's breakdown is
+a warning that "Ma↔ℵ = 1" is too strong for this geometry.
 
 
-### F31. Three numbers that all claim to be α
+### F29. Only Ma–t (ring) architectures survive signature AND spectrum
 
-| Source | Value | Ratio to α |
-|--------|-------|-----------|
-| Observed α | 7.30 × 10⁻³ | 1.0 |
-| R19 (p-sheet, ε=0.55) | 7.30 × 10⁻³ | 1.0 ✓ |
-| R19 (e-sheet, ε=397) | 2,425 | 332,333 ✗ |
-| KK standard | 7.4 × 10⁻⁴² | 10⁻³⁹ ✗ |
-| Track 1 ΔE/E | 7.30 × 10⁻³ | 1.0 (tuned) |
-| Coulomb self-energy/mc² | 9.4 | 1,283 |
+The five architectures that keep a valid Lorentzian signature:
 
-Only R19 at the p-sheet DERIVES α from geometry.  Track 1
-matches α by tuning.  All other numbers disagree wildly.
+| Arch | Where | Spectrum dev | Notes |
+|------|-------|--------------|-------|
+| 0 | Baseline (model-E only) | 0% | No α coupling (sanity check) |
+| 5 | Ma_tube ↔ t = α | 988% / 490% | Catastrophic — F2 tube saturation |
+| 6 | Ma_tube ↔ t = √α | 12,500% / 6,700% | Worse catastrophe |
+| 7 | Ma_ring ↔ t = α | 0.63% / 0.62% | Spectrum preserved |
+| 8 | Ma_ring ↔ t = √α | 8.1% / 7.9% | Spectrum broken |
 
-The relationship between these quantities is unresolved.
-A proper derivation of α from the metric would produce the
-observed value WITHOUT tuning — either from R19's geometry
-(extended to work at all ε) or from a new mechanism.
+Ma-tube architectures (5, 6) blow up for the same reason R55 F8
+found: the e-tube sits near the positive-definite boundary from
+s_e, so any additional Ma-tube coupling saturates the metric.
+
+**Only Arch 7 passes both tests:** valid signature + spectrum
+preservation.  This is essentially Track 1's architecture.
+
+
+### F30. α_eff measures disagree — none is unambiguously "the Coulomb α"
+
+For the surviving architectures, the three measures give different
+numbers for the same metric:
+
+| Arch | α_eff (a) mass-shell | α_eff (b) inverse-metric |
+|------|---------------------|--------------------------|
+| 7 (σ=α) | 6.3×10⁻³ (0.87α) | 3.9×10⁻⁵ (0.0054α) |
+| 8 (σ=√α) | 8.1×10⁻² (11α) | 5.3×10⁻³ (0.73α) |
+
+Measure (a) scales as σ; measure (b) scales as σ².  They agree only
+accidentally when σ happens to satisfy σ = σ², which is only σ=0 or
+σ=1.
+
+**What this means:**
+
+- If α is identified with measure (a) — the mass-shell splitting —
+  then σ = α gives α_eff ≈ α (Arch 7, Track 1's result).
+- If α is identified with measure (b) — the inverse-metric gauge
+  coupling, i.e., the classical KK extraction — then σ = √α gives
+  α_eff ≈ α (Arch 8).
+
+These are different physical quantities:
+- (a) is a self-energy-like shift in the mode's own rest mass
+- (b) is a coupling strength between a source and a test charge
+  at distance r
+
+Without a spatial field computation in S, there is no way to
+distinguish which is "the α of Coulomb's law."  A proper test
+would compute δg_{Ma,t}(r) at r ≫ L_Ma directly and extract the
+coefficient.  The current test bed does not do this solve — it
+works at the single-point mass-shell level.
+
+
+### F31. Arch 7 reproduces Track 1 without tuning
+
+With σ = α (not tuned, just plugged in):
+
+| Mode | E_bare (MeV) | E_particle (MeV) | Δ/E | Ratio to α |
+|------|--------------|------------------|------|-----------|
+| electron | 0.5110 | 0.5142 | 0.63% | 0.865 |
+| proton | 938.27 | 944.09 | 0.62% | 0.849 |
+
+Universality: |α_e − α_p| / α ≈ 1.8%, matching Track 1's
+1.83% result.
+
+**This is the positive result of the test bed:** the user's
+"put α at a shear entry and measure what comes out" strategy
+does produce a result ≈ α without tuning, *provided*:
+- The entry is Ma_ring ↔ t (not tube, not S, not ℵ-mediated
+  with unit Ma-ℵ, not cross-sheet internal)
+- α is identified with measure (a) — the mass-shell shift, not
+  the inverse-metric gauge coupling
+
+The ~13% deficit (0.87α instead of α) is a geometric factor
+from model-E's specific aspect ratios.  Track 1 compensated by
+tuning σ to 0.00843 instead of α = 0.00730 to hit α_eff = α
+exactly.
+
+
+### F32. Signature-breakage rules out shear-only α via Ma-S or internal
+
+The user's first three test configurations — internal cross
+shear, direct Ma-S, ℵ-mediated to S — all fail signature.  This
+is the cleanest negative result of the test bed: **the shear
+entry cannot simply be relocated** to any of those blocks
+without disrupting the metric's causal structure.
+
+The only working block is Ma-t (and only on rings, not tubes).
+This reproduces R55's conclusion from a different angle: if a
+single small shear is to carry α, Ma-t ring entries are the
+only place it fits.
+
+
+### F33. What the test bed did NOT test
+
+The test bed measures α_eff from local metric quantities at a
+single spatial point.  It does **not**:
+
+- Solve the linearized 10D Einstein equations for δg(r) in S
+- Compute the force between two test charges at distance r
+- Integrate field energy |E(r)|² outside the source
+- Distinguish between mass-shell self-energy and Coulomb coupling
+
+These are the pieces needed to definitively identify α_eff as
+the Coulomb coupling.  The disagreement between measures (a)
+and (b) is a direct indicator that a spatial-field computation
+is required to settle the interpretation.  This is the next
+step, and it's numerical rather than narrative — a genuine PDE
+solve in S.
 
 
 ## R59 overall status
@@ -603,34 +682,42 @@ observed value WITHOUT tuning — either from R19's geometry
 
 ### The honest picture
 
-R59 added time to the metric and found a mechanism that
-produces a charge-dependent mass splitting tunable to α,
-with 1.8% universality and correct sign.  But Track 3
-revealed that this mass splitting is NOT the same as the
-Coulomb coupling — they differ by ~1300×.
+The rebuilt Track 3 test bed establishes:
 
-The only mechanism that ever DERIVED α = 1/137 from geometry
-is R19's internal shear formula, and that works only at the
-p-sheet (ε ~ O(1)).  No mechanism works at the e-sheet or
-across all sheets simultaneously.
+- **Most architectures are unphysical** (F28): putting a shear
+  in internal cross, Ma-S, or strong Ma-ℵ blocks breaks the
+  Lorentzian signature on model-E's geometry.
+- **Only Ma_ring ↔ t works** (F29): the single architecture that
+  preserves both signature and spectrum is Track 1's original
+  Ma-ring-to-t coupling.
+- **The "plug in α, get α out" test passes** in the mass-shell
+  measure (F31): with σ = α, the electron and proton mass-shell
+  shifts are 0.87α and 0.85α, universal to 1.8 %.
+- **But three α measures disagree** (F30): mass-shell (a) scales
+  linearly with σ while inverse-metric gauge (b) scales as σ².
+  Without a spatial-field solve, there is no way to identify
+  which quantity is the "Coulomb α."
 
 ### Possible paths forward
 
-1. **Extend R19 to all ε:** The R19 formula fails at large ε
-   because it was derived for a specific 3D embedding.  A
-   generalized formula (or a different derivation) that gives
-   α at all aspect ratios would unify the p-sheet and e-sheet.
+1. **Spatial-field PDE solve.**  The one test the test bed did
+   not perform: place a mode at origin in S, solve the linearized
+   10D equations for δg_{Ma,t}(r), extract the 1/r coefficient
+   at large r, compare to α.  This is the only test that can
+   distinguish measures (a) and (b) — and it is the test the
+   user originally proposed (E_Coulomb / E_total = α).
 
-2. **Understand what ΔE/E measures:** If ΔE/E ≠ α (the Coulomb
-   coupling), what IS it?  It might be a renormalized coupling,
-   a running coupling at the Compton scale, or a different
-   physical quantity entirely.
+2. **Resolve the σ↔α scaling convention.**  If measure (a) is
+   the right reading, σ = α directly gives α_eff ≈ α.  If
+   measure (b), σ = √α gives α_eff ≈ α but at the cost of
+   spectrum preservation (Arch 8 breaks spectrum by 8 %).
+   Only a first-principles KK derivation or spatial-field
+   solve can decide between them.
 
-3. **Compute the spatial field numerically:** Place the mode at
-   the origin, solve the Green's function at various r, and
-   read off the coefficient.  This directly tests whether the
-   Ma-t coupling produces a Coulomb field of strength α.
-   (Requires probing at r >> R_tube ≈ 751 fm for the e-sheet.)
+3. **Extend R19 to all ε.**  R19 derived α from internal shear
+   and 3D embedding, but only at the p-sheet (ε ~ O(1)).  A
+   generalization valid at ε = 397 would be an independent
+   route to α.
 
 
 ## Track 1d: Two sheets (electron + proton) — universality
