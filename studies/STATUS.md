@@ -132,7 +132,7 @@ to the 1.3 MeV p→n threshold without spatial collision.
 Companion to L04 (THz neutrino experiment) and L02 (threshold
 nuclear loading).
 
-### R59. Clifford torus — EM as geometry in 4D  **Framed**
+### R59. Self-consistent metric with time  **Framed**
 **Study:** [`R59-clifford-torus/`](R59-clifford-torus/)
 **Type:** theoretical + compute + visualization
 **Depends on:** R55, R54, R53, sim-impedance, GRID

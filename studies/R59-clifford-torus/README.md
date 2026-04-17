@@ -1,4 +1,4 @@
-# R59: Clifford torus — EM as spacetime geometry
+# R59: A self-consistent metric with time
 
 **Status:** Framed
 **Background:** [background.md](background.md)
@@ -10,61 +10,82 @@
 
 ---
 
-## Core question
+## Goal
 
-Einstein showed: gravity is not a force — it's curvature of
-spacetime (St).  Mass bends St, causing geodesic convergence
-(objects "fall" toward each other).
+Find a single metric that simultaneously:
 
-**Could electromagnetism work the same way?**  In the KK
-picture, a charge (compact winding on Ma) SOURCES a field in
-St.  The field curves geodesics in St — specifically in the
-S-t plane (electric force) and S-S plane (magnetic force).
-The force is experienced in St, not in Ma.
+1. **Predicts the known particle spectrum** (model-E already
+   does this with the flat 6D Ma metric + internal shears)
+2. **Models the Ma-St coupling correctly** at strength α = 1/137
+   (R55 partially achieved this with ℵ mediation, 3.6% gap)
 
-**Hypothesis (to be tested in Tracks 2 and 5):** the sign of
-the force comes from the sign of the Ma winding:
-- Opposite windings → fields cancel between charges →
+The key new element: **add the time dimension to the metric.**
+Model-E and R55 used a purely spatial metric (6 Ma + 3 S, or
++1 ℵ).  Without time, the only coupling mechanism available was
+the 3D bending of the torus surface (R19, sim-impedance) or
+ℵ-mediation (R55).  Adding time opens the Kaluza-Klein coupling
+mechanism: off-diagonal metric entries between Ma and t produce
+the electromagnetic potential directly.
+
+## Strategy
+
+1. Start with the model-E flat Ma metric (which gives the
+   correct particle spectrum)
+2. Add time to the metric, making it (6 Ma + 3 S + 1 t = 10D),
+   or 11D if ℵ is included
+3. Introduce Ma-t off-diagonal entries (the KK coupling)
+4. Determine whether these entries can be set to produce
+   α = 1/137 universally — for electron, proton, and all
+   charged modes
+5. Check that the particle spectrum is not disrupted
+
+If a single Ma-t entry (or a small number of entries) sets α
+without disturbing the particle spectrum, we have a self-
+consistent metric.  If ℵ is needed, it adds one row/column.
+If it's not needed, the metric is simpler.
+
+## The coupling question (open)
+
+Whether the coupling goes through ℵ (R55 approach), through
+direct Ma-t entries (KK approach), or both, is an open question.
+This study tests the time-based approach.  If it works without
+ℵ, that's the simpler solution.  If ℵ is still needed, the
+time dimension may still improve the 3.6% universality gap
+from R55.
+
+## EM as spacetime geometry (hypothesis)
+
+A secondary question, tested in Tracks 2 and 5: if the Ma-t
+coupling produces the electromagnetic field in St, does the
+resulting force reproduce the Coulomb law via geodesic
+deviation?  Specifically:
+
+- Opposite Ma windings → fields cancel between charges →
   geodesics converge → **attraction**
-- Same windings → fields reinforce →
+- Same Ma windings → fields reinforce →
   geodesics diverge → **repulsion**
 
-The coupling α determines how strongly a Ma winding sources
-the St field.  In KK theory, it appears in the off-diagonal
-metric entries between Ma and St.
+This would geometrize EM the same way Einstein geometrized
+gravity.  It is a hypothesis, not an assertion.  Tracks 2
+and 5 test it.
 
 ---
 
-## Why the Clifford torus
+## Note on the flat metric (Clifford torus)
 
-The Ma sheets have been embedded in 3D space (S) throughout
-R1–R58.  This causes problems:
-- Self-intersection (proton sheet)
-- Metric saturation (e-sheet nearly singular, R55 F8)
-- Inner/outer asymmetry (complicates charge analysis)
-- No mechanism for signed curvature
+Model-E's particle spectrum uses a flat 2-torus metric for
+each sheet.  This is intrinsically the Clifford torus — no
+bending, no self-intersection, any aspect ratio valid.
 
-A 2-torus needs at least 4 dimensions for a flat embedding.
-The **Clifford torus** is a flat 2-torus: two circles in
-orthogonal planes.  No bending, no self-intersection, any
-aspect ratio valid.  Model-E's particle spectrum uses a
-flat metric (matching the Clifford form), but its charge
-and α mechanisms (R19, R48, sim-impedance) explicitly use
-3D embedding with bending.  R59 proposes to replace those
-3D-dependent mechanisms with KK-based coupling on the
-intrinsically flat geometry.
+Model-E's charge and α mechanisms (R19, R48, sim-impedance)
+use 3D embedding with bending.  This study proposes to
+replace those with the KK mechanism (Ma-t coupling), which
+works on the flat metric directly.  If successful, the 3D
+embedding becomes a visualization aid, not physics.
 
-The compact dimensions don't occupy room in S.  They are
-internal dimensions at each point of St.  The six Ma dimensions
-form T⁶ = T² × T² × T² — three Clifford tori, each a pair
-of orthogonal circles.  They all embed flatly because they
-are ADDITIONAL dimensions, orthogonal to S and to each other.
-
-The question is not "where does the torus fit in space" but
-"how does the internal winding on Ma couple to the external
-field in St."  That coupling is α, and it appears in the
-off-diagonal metric between Ma and St (specifically Ma and t
-for the electric field).
+See [background.md](background.md) for detailed discussion
+of the Clifford torus, the 3D embedding problems, and the
+relationship to model-E.
 
 ---
 

@@ -305,10 +305,12 @@ v_{Ma}^2 + v_S^2 = c^2
 $$
 
 This is the velocity form of Einstein's energy-momentum relation
-E² = (mc²)² + (pc)².  Dividing by (mc)² gives c² = (c/γ)² + v²,
-which is the same partition with v_Ma = c/γ and v_S = v.  The internal circulation
-(which we call mass) competes with spatial motion (which we
-call momentum) for the photon's fixed total speed.
+E² = (mc²)² + (pc)².  With E = γmc² and p = γmv, the relation
+becomes γ² − γ²(v/c)² = 1, i.e. (1/γ)² + (v/c)² = 1.  Multiplying
+through by c² gives (c/γ)² + v² = c², which is the same partition
+with v_Ma = c/γ and v_S = v.  The internal circulation (which we
+call mass) competes with spatial motion (which we call momentum)
+for the photon's fixed total speed.
 
 ### Time dilation as slowed internal circulation
 
