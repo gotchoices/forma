@@ -1030,3 +1030,74 @@ determined by any current GRID result.  The key point
 is that *some* internal structure with path length >>
 L_P must exist, and the truss is the simplest mechanical
 realization of that requirement.
+
+---
+
+## 2026-04-16: Future avenues for α from junction geometry
+
+From sim-impedance Tracks 8–12.  The bending mechanism for
+charge is established, but the coupling magnitude (α) was not
+derived.  These avenues remain open:
+
+### A. Variable-connectivity lattice
+
+A honeycomb with fixed connectivity cannot have equal edge
+lengths on a torus (ring circumference varies).  A lattice
+with adaptive connectivity — fewer hexagons per row at the
+inner equator, more at the outer — would produce truly
+equal edges and might give cleaner d₁ convergence.  This
+is an engineering problem, not a conceptual one.
+
+### B. Analytical d�� of hexagon distortion
+
+Bypass the discrete lattice entirely.  Compute the d₁ Fourier
+harmonic of the hexagon aspect ratio analytically as a
+function of ε = a/R.  On a torus with equal-edge hexagons,
+the hexagon shape at latitude θ₁ is determined by the local
+metric factor p = 1 + ε cos θ₁.  The d₁ of f(p) might be
+computable in closed form.
+
+### C. Consistency condition: ζ = 1/4 → α?
+
+GRID has two free parameters: ζ (A5, resolution) and α (A6,
+coupling).  If the junction leakage depends on both — ζ sets
+the grain size, α sets the coupling — there might be a
+self-consistency condition where one determines the other.
+Specifically: if the leakage per junction depends on ζ (through
+the lattice coordination number), and the total leakage must
+equal α, then α = f(ζ).  For the honeycomb (N=3), this would
+be α = f(1/4).
+
+### D. Alternative junction geometries
+
+The honeycomb (N=3) is not unique.  N=4 (diamond/tetrahedral)
+and N=6 (triangular) also produce Maxwell.  Each has different
+leakage invariants.  If one geometry's invariant equals α,
+that's significant — it would mean the lattice structure
+selects α.  But without a reason to prefer one geometry,
+this is selection bias.
+
+### E. Topological defect action (distinct from junction leakage)
+
+The junction leakage approach (Tracks 8–12) computes how
+much energy ESCAPES the surface at each junction.  A different
+approach: compute the lattice ACTION COST of creating a 2π
+vortex (the topological defect that IS charge).  The action
+involves κ = 1/(4πα), so α is an input — but if the action
+cost can be related to a geometric invariant of the torus
+(like the ones found in Tracks 11–12), the relationship
+might constrain α.
+
+### F. The leakage as impedance ratio
+
+If the 2D lattice has an intrinsic impedance Z_2D (determined
+by coordination number and edge structure) and the 3D space
+has impedance Z_3D (= 1 in natural units), then the coupling
+fraction is:
+
+> α = 4 Z_2D Z_3D / (Z_2D + Z_3D)²
+
+This is the standard impedance matching formula for a junction
+between two transmission lines.  For a Y-junction with N=3
+edges, the junction impedance relates to 1/N.  Whether this
+gives 1/137 for any specific lattice geometry is unknown.

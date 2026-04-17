@@ -100,6 +100,8 @@ See [STATUS.md](STATUS.md) for the roadmap and progress.
 | [sim-gravity/](sim-gravity/) | Complete: spring-lattice elasticity gives ε ∝ 1/r² (elastic), not 1/r (gravitational) |
 | [sim-gravity-2/](sim-gravity-2/) | Complete: scalar + string-register both confirm 1/r force (p≈1.01–1.02) |
 | [sim-maxwell/](sim-maxwell/) | Complete: directional waves + perfect superposition (no Maxwell input) |
+| [fields.md](fields.md) | E on edges, B at junctions — why the simplicial lattice forces Maxwell coupling |
+| [charge-emergence.md](charge-emergence.md) | How charge emerges from bending a 2D lattice: junction leakage, CP synchronization, n₁=1 selection, bidirectional coupling |
 | [hexagonal.md](hexagonal.md) | Hexagonal (wye) vs triangular (delta) lattice: flexibility, scattering, curvature from defects |
 | [sim-schwarzschild/](sim-schwarzschild/) | Complete: horizon is NOT a lattice failure; min BH mass ≈ 0.56 m_P; singularity IS lattice failure |
 | [INBOX.md](INBOX.md) | Raw ideas and open threads not yet formalized |
