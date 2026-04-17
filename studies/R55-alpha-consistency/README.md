@@ -1,6 +1,6 @@
 # R55: α consistency check — Ma-S coupling derivation
 
-**Status:** Track 1 complete; Track 2 framed
+**Status:** Tracks 1, 3 complete; Track 2 framed
 **Questions:** Q115 (metric structure), Q116 (T⁶ vs sheets), Q102 (neutrino neutrality)
 **Type:** theoretical + compute
 **Depends on:** R54 (particle inventory, metric terms), R19 (original α formula),
@@ -280,13 +280,222 @@ different coupling than 1/137, this has implications:
 | R19 doesn't apply to Ma-S context | Need a new formula; the GRID mechanism is different from R19's projection |
 | Phase gradient resolution correctly predicts which sheets carry charge | Strong confirmation of GRID + MaSt picture |
 
+### Track 3: The ℵ-mediated coupling (10×10 metric)
+
+#### The problem Track 3 solves
+
+Track 1 showed that direct Ma-S coupling (off-diagonal entries
+in the 9×9 metric) is mode-dependent — different modes on the
+same sheet get different α_eff.  This is because the Schur
+complement depends on the internal metric A (which has large
+shears on the e-sheet), making the coupling inherently
+non-universal.
+
+Track 2 identified that charge and coupling are independent
+phenomena (charge = topological winding + resolution; coupling
+= geometric tilt), but didn't resolve how to express the tilt
+in the metric without contaminating the particle spectrum.
+
+Track 3 proposes: **the Ma-S coupling does not go directly
+between Ma and S dimensions.  It goes through the ℵ-line —
+the sub-Planck internal dimension on every lattice edge.**
+
+#### The ℵ-line in the metric
+
+GRID's ℵ-line ([foundations.md](../../grid/foundations.md)) is
+a 1D compact dimension living on each lattice edge.  Every
+node in the GRID lattice has access to ℵ — it is the common
+substrate beneath both Ma and S.
+
+Adding ℵ to the metric expands from 9×9 to 10×10:
+
+```
+          Ma₁  Ma₂  Ma₃  Ma₄  Ma₅  Ma₆   ℵ    Sx   Sy   Sz
+    Ma₁ [ L₁²   s_e   0    0    0    0   σ₁ℵ   0    0    0  ]
+    Ma₂ [ s_e   L₂²  σ₂₃  σ₂₄  σ₂₅  σ₂₆  σ₂ℵ   0    0    0  ]
+    Ma₃ [  0   σ₂₃   L₃²  s_ν   0    0   σ₃ℵ   0    0    0  ]
+    Ma₄ [  0   σ₂₄   s_ν  L₄²  σ₄₅  σ₄₆  σ₄ℵ   0    0    0  ]
+    Ma₅ [  0   σ₂₅   0   σ₄₅   L₅²  s_p  σ₅ℵ   0    0    0  ]
+    Ma₆ [  0   σ₂₆   0   σ₄₆   s_p  L₆²  σ₆ℵ   0    0    0  ]
+     ℵ  [ σ₁ℵ  σ₂ℵ  σ₃ℵ  σ₄ℵ  σ₅ℵ  σ₆ℵ   1   σℵx  σℵy  σℵz ]
+    Sx  [  0    0    0    0    0    0   σℵx   1    0    0  ]
+    Sy  [  0    0    0    0    0    0   σℵy   0    1    0  ]
+    Sz  [  0    0    0    0    0    0   σℵz   0    0    1  ]
+```
+
+Key structural features:
+
+- **Ma-S block is ZERO.**  There are no direct Ma-to-S entries.
+  All coupling between Ma and S goes through ℵ.
+
+- **ℵ diagonal = 1.**  The ℵ-line scale is the Planck length
+  (L_P = 1 in natural units).  This is the lattice grain size
+  itself — it introduces no new scale and does not disturb the
+  Ma particle spectrum.
+
+- **Ma-ℵ entries (σ₁ℵ...σ₆ℵ):**  How each Ma dimension connects
+  to the ℵ-line.  Every lattice edge has an ℵ-line, so every
+  Ma dimension has access.  These entries may be ±1 (direct
+  access, with sign encoding charge) or may involve the
+  sheet scale (σᵢℵ ∝ 1/Lᵢ or similar).
+
+- **ℵ-S entries (σℵx, σℵy, σℵz):**  How the ℵ-line connects
+  to spatial dimensions.  By spatial isotropy: σℵx = σℵy = σℵz
+  ≡ σℵS.  This single number is the coupling strength of the
+  lattice substrate to 3D space.  **This is where α lives.**
+
+- **S-S block = 0.**  Flat space, as before.
+
+#### How α emerges
+
+Integrating out ℵ (Schur complement on the ℵ dimension) gives
+an effective Ma-S coupling:
+
+> Ma-S_effective = (Ma-ℵ) × (ℵ-ℵ)⁻¹ × (ℵ-S)
+>                = σᵢℵ × 1 × σℵS
+>                = σᵢℵ × σℵS
+
+The effective coupling for Ma dimension i to S is the PRODUCT
+of two numbers: how well that dimension accesses ℵ, and how
+well ℵ accesses S.
+
+The energy coupling (which is what α measures) is the square:
+
+> α_eff = (σᵢℵ × σℵS)²
+
+For this to equal α for ALL charged dimensions:
+
+> σᵢℵ × σℵS = √α    for every i that carries charge
+
+If σᵢℵ = ±1 (direct access, sign = charge sign) and σℵS = √α:
+
+> effective coupling = ±1 × √α = ±√α
+> α_eff = (√α)² = α    ✓
+
+**This is automatically universal.**  The coupling doesn't
+depend on which sheet, which mode, or which winding numbers.
+It depends only on σℵS — a property of the lattice substrate,
+not of any particular particle.
+
+#### Why this solves Track 1's problems
+
+| Track 1 problem | How ℵ solves it |
+|-----------------|-----------------|
+| Mode-dependent coupling | Coupling goes through ℵ, which is mode-independent |
+| e-sheet universality failure (s = 2.004) | Internal shear s doesn't appear — it's in the Ma-Ma block, not the Ma-ℵ block |
+| Ma-S entries contaminate particle spectrum | Ma-S is ZERO; coupling goes through ℵ-mediated path |
+| Different sheets need different σ | All sheets access ℵ equally; differences come only from charge sign |
+
+#### What σᵢℵ should be
+
+**Hypothesis A: σᵢℵ = ±1 (direct access).**
+Every Ma dimension connects to ℵ with unit strength (every
+edge has an ℵ-line).  The sign encodes charge: negative for
+e-sheet tube (dimension 0), positive for p-sheet tube
+(dimension 4), and the ring dimensions may be zero or ±1.
+
+With this hypothesis: α_eff = σℵS² for all charged modes.
+Setting σℵS = √α gives α_eff = α.
+
+**Hypothesis B: σᵢℵ = 1/Lᵢ (scaled by dimension size).**
+Larger dimensions have weaker coupling to ℵ (the ℵ-line is
+one Planck length; a dimension of 10¹⁷ Planck lengths
+"dilutes" the connection).  Then σᵢℵ = 1/Lᵢ.
+
+This would make the effective coupling dimension-dependent:
+α_eff(i) = (σℵS / Lᵢ)².  Different dimensions would couple
+at different strengths — the electron sheet (L₂ = 12 fm)
+would couple ~100× more strongly than the proton sheet
+(L₆ = 4.5 fm) if using ring dimensions.  But if using tube
+dimensions: L₁ = 4718 fm (e-tube) vs L₅ = 2.45 fm (p-tube),
+the coupling would differ by (4718/2.45)² ≈ 3.7×10⁶.
+
+This is NOT universal.  So hypothesis B requires σℵS to
+compensate, giving σℵS(i) = √α × Lᵢ.  This moves the
+dimension-dependence into ℵ-S, which is supposed to be
+universal.  Hypothesis B doesn't work cleanly.
+
+**Hypothesis C: σᵢℵ is nonzero only for tube dimensions.**
+Only the tube dimensions (0, 2, 4) connect to ℵ, because
+the tube winding is what creates the topological defect
+(charge).  Ring dimensions (1, 3, 5) have σᵢℵ = 0.  This
+matches the charge formula Q = −n₁ + n₅ (tube windings only).
+
+With hypothesis C:
+- σ₀ℵ = −1 (e-tube, negative charge)
+- σ₂ℵ = 0 or ±1 (ν-tube, no charge but may couple)
+- σ₄ℵ = +1 (p-tube, positive charge)
+- σ₁ℵ = σ₃ℵ = σ₅ℵ = 0 (ring dimensions, no tube winding)
+- σℵS = √α
+
+Then:
+- Electron: effective coupling = (−1) × √α = −√α → α_eff = α ✓
+- Proton: effective coupling = (+1) × √α = +√α → α_eff = α ✓
+- Neutrino: depends on σ₂ℵ. If σ₂ℵ = 0: zero coupling
+  (neutrino is dark). If σ₂ℵ = ±1: couples at α (L05
+  prediction).
+
+#### Proposed computation
+
+**Step 1: Build the 10×10 metric.**
+
+Take the model-E 6×6 Ma metric (known), add:
+- Row/column 6: ℵ dimension (diagonal = 1)
+- Rows/columns 7-9: S dimensions (diagonal = 1)
+- Ma-ℵ entries: test hypotheses A, B, C
+- ℵ-S entries: σℵS = √α
+- Ma-S entries: ZERO (coupling goes through ℵ)
+
+**Step 2: Verify the particle spectrum is unchanged.**
+
+Compute mode energies for all 18 model-E particles on the
+10×10 metric.  They should match the 6×6 results to within
+numerical precision, because ℵ at Planck scale (L = 1) is
+far below any Ma dimension and introduces negligible energy
+corrections.
+
+**Step 3: Compute the effective Ma-S coupling.**
+
+Integrate out ℵ using the Schur complement.  The resulting
+9×9 effective metric should have Ma-S entries that are:
+- Universal (same for all modes on the same sheet)
+- Equal to ±√α for charged dimensions
+- Zero for uncharged dimensions (hypothesis C)
+
+**Step 4: Verify α universality.**
+
+Compute α_eff for electron, proton, muon, neutrino, and
+other modes.  All charged modes should give α = 1/137.
+This is the test Track 1 failed.
+
+**Step 5: Check the ν-sheet.**
+
+Under hypothesis C, the ν-tube coupling σ₂ℵ determines
+whether neutrinos couple to S through ℵ.  If σ₂ℵ = 0:
+neutrinos are completely dark (no EM coupling at all).
+If σ₂ℵ ≠ 0: neutrinos couple, relevant for L05.
+
+The ν-tube is at Planck scale × 10²⁹.  The phase gradient
+resolution argument (Q102) says the winding is below
+detection threshold, so charge = 0.  But the coupling
+through ℵ might still exist if σ₂ℵ ≠ 0.
+
+#### Possible outcomes
+
+| Result | Meaning |
+|--------|---------|
+| All charged modes give α = 1/137; spectrum unchanged | ℵ-mediated coupling works; α enters once via σℵS |
+| Spectrum shifts slightly with ℵ | Need to adjust ℵ scale or coupling values |
+| Mode-dependent coupling persists | ℵ doesn't fully decouple Ma internal shears from coupling |
+| Hypothesis C matches charge formula exactly | Strong confirmation of the ℵ-mediated picture |
+
 ## Deliverables
 
 - Clear separation of charge (topological/resolution) from
   coupling (geometric/tilt) in the GRID framework
-- Ma-S tilt values for each sheet, either from R19 or a new
-  formula
-- Phase gradient resolution check for each sheet's tube
-- Assessment: is α determined by the geometry, or still free?
-- If ν-sheet coupling differs from α: implications for L05
-  and the weak force
+- The 10×10 metric with ℵ dimension
+- Effective Ma-S coupling from integrating out ℵ
+- Universality check: α = 1/137 for all charged modes
+- ν-sheet coupling assessment: implications for L05
+- Assessment: is α determined by σℵS, with everything else
+  geometric?

@@ -155,3 +155,135 @@ construction.
 for a sheared compact space.  The shear mixes compact
 dimensions, which could modify the gauge field normalization.
 Track 2 would compute this correction.
+
+
+## Track 3: ℵ-mediated coupling (10×10 metric)
+
+### F8. The e-tube is at PD saturation — no room for Ma-S coupling
+
+The e-tube ↔ e-ring off-diagonal ratio in the 6×6 metric is
+0.999999 — exactly at the positive-definiteness boundary.
+The e-sheet's large internal shear (s_e = 2.004) has consumed
+ALL of the e-tube's off-diagonal budget.  Any additional
+coupling on dimension 0 (e-tube) makes the metric invalid.
+
+This is why hypotheses A and C (which couple tube dimensions
+to ℵ) fail positive-definiteness: the e-tube can't support
+any additional off-diagonal entries.
+
+
+### F9. Hypothesis F (ring-only coupling) works
+
+Coupling through the RING dimensions (not tubes) avoids the
+PD saturation.  The e-ring diagonal is 633,324 — a coupling
+of 0.16 is negligible relative to it.
+
+Ma-ℵ entries: [0, −1/(2π), 0, +1/(2π), 0, +1/(2π)]
+(ring dimensions only, at ±1/(2π) = ±0.1592)
+
+This is physically motivated: ℵ as an angular coordinate
+(radians), with the Ma-ℵ coupling converting between length
+and angle at the rate of 1/(2π) per full rotation.
+
+
+### F10. σℵS = 0.2902 gives exact α for the electron
+
+Binary search finds σℵS = 0.29019 such that α_eff(electron)
+= α = 1/137.036 to 6 decimal places.
+
+The effective product (1/2π) × σℵS = 0.0462, which is
+0.541 × √α.  This is NOT exactly √α — the Schur complement
+introduces corrections from the internal Ma metric structure.
+
+
+### F11. Near-universal α across e-sheet and p-sheet
+
+At the optimal σℵS:
+- Electron: α_eff = 1.000α (exact, by tuning)
+- Proton: α_eff = 0.964α (3.6% low)
+- All nuclei (d, He, C, Fe): α_eff = 0.964α (identical to proton)
+- Σ⁻: α_eff = 0.955α (4.5% low)
+
+The 3.6% gap between e-sheet and p-sheet is the residual
+non-universality.  It comes from the different internal
+shears on each sheet affecting the Schur complement when ℵ
+is integrated out.
+
+This is the FIRST approach that achieves near-universal
+coupling across both sheets.  Track 1's best result had 30%+
+spread.
+
+
+### F12. Neutrino couples at 1.07α — nonzero
+
+The ν-ring couples to ℵ at +1/(2π), giving the ν-sheet a
+nonzero coupling to S of 1.07α.  This is close to the
+charged-particle coupling, supporting the L05 premise that
+neutrino Compton frequencies can be excited by electromagnetic
+energy.
+
+
+### F13. Spectrum shifts are ~1.3% — manageable
+
+The ℵ-mediated coupling shifts mode energies:
+- Proton: 938.3 → 950.6 MeV (+1.3%)
+- Electron: 0.511 → 0.518 MeV (+1.4%)
+
+These shifts are small enough to be compensated by re-tuning
+ε_p and ε_e by ~1%.  The particle ZOO structure (which modes
+match which particles) is unchanged.
+
+
+### F14. Compound particles show wider α spread
+
+Multi-sheet modes (with complex winding numbers) show α_eff
+values from 0.26α (Ξ⁻) to 2.30α (K±).  This reflects the
+non-trivial interaction of cross-sheet shears with the
+ℵ-mediated coupling.  The universality holds for fundamental
+single-sheet modes and their nuclear composites, but not for
+all compound baryons and mesons.
+
+
+### F15. Charge and coupling are now fully separated
+
+| Phenomenon | Mechanism | Where in metric |
+|------------|-----------|-----------------|
+| Charge sign | Tube winding (n₁, n₅) | Topology (winding numbers) |
+| Charge quantization | 2π periodicity on tube | Compactness |
+| Charge magnitude | ℵ-S coupling × Ma-ℵ | Off-diagonal: ℵ row/column |
+| Generation structure | Internal shear (s_e, s_p) | Ma-Ma off-diagonal |
+| Compound modes | Cross-sheet shears (σ₄₅...) | Ma-Ma off-diagonal |
+| ν neutrality | ν-tube resolution below threshold | Size argument (Q102) |
+| ν coupling | ν-ring → ℵ → S | Same Ma-ℵ mechanism as charged sheets |
+
+The ℵ dimension cleanly separates all five types of
+off-diagonal physics.  No entry serves double duty.
+
+
+## Track 3 status
+
+**Complete.**  The ℵ-mediated coupling (hypothesis F) achieves
+near-universal α (3.6% spread vs Track 1's 30%+), preserves
+the particle spectrum to ~1.3%, and provides nonzero ν coupling
+consistent with L05.
+
+## Open for future work
+
+1. **Close the 3.6% gap:**  The e-p universality gap may close
+   with a more sophisticated Ma-ℵ coupling (not exactly 1/2π
+   for all rings) or with corrections from the cross-sheet
+   entries.
+
+2. **Re-tune ε_p, ε_e** to compensate the ~1.3% spectrum shift.
+   This is a parameter adjustment, not a structural change.
+
+3. **Derive σℵS from GRID.**  Currently tuned to give α.  If
+   the sim-impedance junction leakage mechanism determines σℵS,
+   it would derive α from geometry.
+
+4. **Time dimension.**  The 10×10 metric is spatial.  Adding
+   time would give 11×11 and might be needed for dynamic
+   processes (decay, scattering).
+
+See [metric-terms.md](metric-terms.md) for the full 10×10
+reference table.
