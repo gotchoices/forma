@@ -15,16 +15,17 @@
 
 ## Findings
 - When a study is complete, perform the writeup:
-- State the bare results
+- State the bare results in an understandable way
+- Also explain how each result affects the applicable hypothesis (helps or hurts)
 - Review meaning of variables, terminology where appropriate
-- Interpret the results as best possible
+- Interpret the results as can be done without guessing
 - Don't rely on the reader to remember all meanings, implications
 - Keep an open mind about possible errors:
-  - The study was framed incorrectly
-  - The approach was wrong
-  - The implementation was wrong
+  - The study might have been framed incorrectly
+  - The approach might have been wrong
+  - The implementation might have been wrong
 - This means to not be overconfidence about either positive or negative results
-- Summarize results in plain language: What does this mean for the study
+- Summarize results in plain language: What does this mean for the study hypotheses
 - Project next possible steps: Where do we go from here
 
 ## Repo Management
