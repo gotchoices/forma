@@ -263,3 +263,56 @@ rather than a directional threat to the hypothesis).  The
 corrections are mostly textual, but the ν‑coupling hand‑coding
 and the α_eff / α identification are substantive and should be
 addressed before Track 2 builds on them.
+
+### Suggested Track 1b: ℵ‑mediated time coupling
+
+Track 1 implicitly decided the ℵ‑vs‑t question by omission: the
+metric has no ℵ, so t had to couple directly to Ma, which forced
+the hand‑coded six‑entry `b_Ma_t` ansatz.  A cleaner architecture
+worth testing:
+
+- 11D metric = 6 Ma + 3 S + 1 t + 1 ℵ
+- Keep R55's Ma‑ℵ block at its tuned values (don't re‑fit)
+- Set all direct Ma‑t entries to zero
+- Introduce a **single** off‑diagonal entry σ_{ℵt}
+- Solve the mass‑shell condition for each mode
+
+In this architecture the effective Ma‑t coupling emerges at
+leading order as g(Ma,t)_{eff} ≈ g(Ma,ℵ) g(ℵ,t) / g(ℵℵ), so the
+single σ_{ℵt} multiplies R55's existing Ma‑ℵ structure to produce
+the whole family of induced Ma‑t entries.  Relative magnitudes
+and signs across species are then **inherited** from R55's
+geometry, not stipulated by hand — which addresses two of the
+Track 1 script flaws directly (hand‑coded signs; ν‑ring coupling
+chosen by the author rather than emerging).
+
+Benefits:
+
+- One knob (σ_{ℵt}), not six.
+- Sign structure determined by geometry, not by ansatz.
+- Matches the GRID picture of ℵ as the lattice substrate
+  through which all couplings propagate.
+- The ℵ block is Euclidean, so only the final ℵ–t link carries
+  Lorentzian signature — R55's Schur machinery stays valid on
+  the ℵ side, and mass‑shell is applied only to the one
+  Lorentzian leg.
+
+Caveats:
+
+- Routing the gauge potential through ℵ is not textbook KK; the
+  reduction to A_μ needs to be re‑derived on the 11D metric to
+  confirm the induced object is the right one and that α comes
+  out cleanly.
+- If R55's Ma‑ℵ entries assign the ν‑ring a nonzero value, this
+  architecture inherits the same neutrino coupling issue F8 has.
+  Not worse than Track 1, but not automatically fixed either.
+- Adds one parameter relative to Track 1's one knob; total
+  parameters are R55's Ma‑ℵ entries plus σ_{ℵt}.  The trade‑off
+  is buying physical structure (emergent signs, inherited
+  universality) in exchange for the extra degree of freedom.
+
+Pass criterion: σ_{ℵt} alone (with no direct Ma‑t) matches or
+beats Track 1's 1.9 % universality gap with signs inherited from
+R55 rather than hand‑coded.  A positive result would be stronger
+than Track 1's current claim; a negative one would justify the
+direct Ma‑t architecture on its merits.
