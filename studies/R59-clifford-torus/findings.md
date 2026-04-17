@@ -374,6 +374,231 @@ Key findings:
    both remain open approaches
 
 
+## Track 1e: F4 diagnostics — mass-direction puzzle RESOLVED
+
+### F22. The F4 sign problem was a ROOT SELECTION ERROR
+
+The mass-shell quadratic gives two roots with signed
+frequencies:
+- ω > 0: particle (positive energy)
+- ω < 0: antiparticle (negative energy in Feynman picture)
+
+All Track 1 computations took min(|E₁|, |E₂|) — the root
+with SMALLER absolute energy.  This is the antiparticle root
+(ω < 0).  The particle root (ω > 0) has LARGER energy.
+
+For D1 (direct ring-t, σ = 0.00855):
+- Antiparticle (ω < 0): E = 0.5073 MeV (DOWN from bare) ← what we reported
+- **Particle (ω > 0): E = 0.5148 MeV (UP from bare)** ← correct
+
+The Coulomb self-energy ADDS to the particle mass — which
+is what the positive-ω root shows.  F4 is resolved.
+
+
+### F23. BOTH D1 and D2 give correct mass direction
+
+When the positive-ω root is used:
+- D1 (direct): E = 0.5148, ΔE/E = +0.74% = **1.01α** (UP)
+- D2 (ℵ-mediated): E = 0.5147, ΔE/E = +0.73% = **1.00α** (UP)
+
+Both increase the mass.  The D1/D2 sign dichotomy (F14) was
+entirely due to wrong root selection.  With the correct root,
+the approaches are EQUALLY valid for mass direction.
+
+
+### F24. The splitting IS the coupling
+
+The two roots are:
+- E_particle = E_bare + δE  (mass increased by coupling)
+- E_antiparticle = E_bare − δE  (mass decreased)
+
+The splitting 2δE is proportional to the Ma-t coupling
+strength.  This is the charge-mass coupling: a charged
+particle is slightly heavier than its antiparticle (or vice
+versa, depending on the sign convention of the charge).
+
+For the electron at σ = 0.00855:
+- Splitting = 0.0075 MeV
+- δE/E_bare = 0.74% ≈ α
+
+The splitting IS α.  This is not |ΔE/E| as a proxy — it's
+the physical particle-antiparticle mass difference caused by
+the charge's interaction with the time dimension.
+
+
+### F25. Signature convention doesn't matter
+
+Flipping from mostly-plus (+,+,...,−) to mostly-minus
+(−,−,...,+) gives identical |E₁| and |E₂|.  The sign of
+the mass shift depends on which root is the particle, not
+on the metric signature convention.  F4 was not a signature
+artifact.
+
+
+### F26. Recomputed universality on the particle root
+
+All universality gaps from Tracks 1-1d used min(|E|) — the
+antiparticle root.  Recomputation on the particle root:
+
+For D1 (direct ring-t), σ = 0.00843:
+
+| Mode | E_bare | E_particle | ΔE/E | α_eff/α |
+|------|--------|-----------|------|---------|
+| electron | 0.5110 | 0.5147 | +α | 1.000 (tuned) |
+| proton | 938.27 | 945.00 | +0.982α | 0.982 |
+
+**Gap: 1.81%** (vs 1.84% on antiparticle root — essentially
+unchanged).  The gap is structural and independent of root
+selection.
+
+Mass direction: **UP for both** (correct Coulomb self-energy).
+
+The particle-antiparticle splitting is 2α × mc²:
+- Electron: 0.0074 MeV
+- Proton: 13.3 MeV
+
+
+### F27. The gap is symmetric across roots
+
+The ~1.8% gap between electron and proton appears on BOTH
+roots (particle and antiparticle) because the splitting is
+nearly symmetric around the bare mass.  The gap comes from
+the different sheet geometries (ε_e = 397 vs ε_p = 0.55),
+not from root selection or coupling architecture.
+
+
+## Track 1 series final status
+
+**Tracks 1, 1b, 1c, 1d, 1e complete.**
+
+The F4 sign problem is resolved (F22).  Key findings:
+1. Ring coupling works; tube coupling doesn't
+2. Mass-shell gives TWO roots; the positive-ω root is the particle
+3. The particle root gives mass INCREASE (correct Coulomb sign)
+   for BOTH D1 and D2
+4. The D1/D2 sign dichotomy was a root selection artifact
+5. Coupling doesn't touch particle-spectrum entries
+6. Universality gap needs recomputation with correct root (Track 2)
+7. Whether ℵ is needed remains open — both architectures now
+   give correct mass direction
+
+
+## Track 3: Does the metric produce a Coulomb field?
+
+### F28. The 1/r spatial dependence is guaranteed by 3D geometry
+
+Any localized energy source in 3D space produces a 1/r
+potential perturbation at distances r >> source size.  This
+follows from the Green's function of the 3D Laplacian:
+
+> ∇²φ = -4πρ  →  φ(r) = ∫ ρ(r') / |r - r'| d³r'
+
+For a point source: φ = const / r → F = const / r².
+For a torus source: same at r >> L_ring (Compton scale).
+
+**The 1/r Coulomb profile is a property of S (3D space),
+not of the coupling mechanism.**  Any Ma-t coupling that
+produces a localized perturbation in S will give 1/r
+at macroscopic distances.
+
+
+### F29. The coupling STRENGTH is not the Coulomb self-energy
+
+Track 1 found ΔE/E = α ≈ 0.73%.  But the classical Coulomb
+self-energy of a charge distributed on a ring of radius R is:
+
+> U_self / mc² ≈ α × (λ_C / R)
+
+For the electron: R ≈ L_ring/(2π) ≈ 1.9 fm, λ_C ≈ 2426 fm:
+
+> U_self / mc² ≈ α × 1283 ≈ 9.4
+
+This is ~1300× larger than the Track 1 result (ΔE/E = α).
+
+**The Track 1 mass shift is NOT the Coulomb self-energy.**
+The Coulomb self-energy involves the spatial field profile
+(the 1/r potential integrated over the charge distribution).
+The mass-shell shift involves the Ma-t coupling in the
+METRIC (a global property, not a spatial integral).
+
+These are different quantities.  Tuning σ to give ΔE/E = α
+does not mean the spatial Coulomb field has strength α.  The
+relationship between σ and α requires a computation that
+connects the metric coupling to the spatial field — which
+has not been done.
+
+
+### F30. The sign structure IS correct
+
+Despite the quantitative uncertainty (F29), the sign
+structure from the metric is correct:
+
+- Positive winding (n₁ = +1) produces positive Ma-t
+  perturbation
+- Negative winding (n₁ = -1) produces negative perturbation
+- Same-sign sources reinforce → repulsion
+- Opposite-sign sources cancel → attraction
+
+This follows from the linearized gravity argument: the
+Ma-t perturbation is proportional to n₁ × σ × M, which
+changes sign with n₁.
+
+
+### F31. What Track 3 establishes and doesn't
+
+**Established:**
+- 1/r spatial dependence (from 3D geometry) ✓
+- Correct sign (attraction/repulsion from winding sign) ✓
+- Localized source produces Coulomb-like field ✓
+
+**NOT established:**
+- Whether ΔE/E = α corresponds to α in Coulomb's law
+- The exact relationship between σ (metric entry) and α
+- Whether the standing-wave source gives the same result as
+  a KK point-particle source
+
+**The gap:** we have the right qualitative behavior but the
+quantitative link between the metric coupling and Coulomb's
+law requires either (a) a full standing-wave KK reduction or
+(b) a numerical computation of the spatial field from the
+mode's energy distribution.
+
+
+## R59 overall status
+
+**Tracks 1 series (1, 1b, 1c, 1d, 1e) and Track 3 complete.**
+
+### What R59 established
+
+1. Adding time to the metric produces a charge-dependent
+   energy splitting: E_particle = E_bare(1+δ),
+   E_anti = E_bare(1-δ), where δ ≈ α (tuned)
+2. The splitting has the correct sign (particle heavier)
+   when the positive-frequency root is used (F22)
+3. Ring coupling works; tube coupling doesn't (F2)
+4. The coupling doesn't touch particle-spectrum entries (F15)
+5. Generation structure is preserved (F17)
+6. Universality gap ≈ 1.8% across e and p sheets (F26)
+7. 1/r spatial dependence guaranteed by 3D geometry (F28)
+8. Correct attraction/repulsion from winding sign (F30)
+9. Both direct (D1) and ℵ-mediated (D2) approaches give
+   correct mass direction when the particle root is used
+
+### What R59 did NOT establish
+
+10. Whether ΔE/E = α IS the Coulomb coupling α (F29)
+11. The exact σ-to-α relationship for standing waves
+12. Whether ℵ is needed (both approaches work comparably)
+13. How the ~1.8% universality gap can be closed
+
+### Recommended next steps
+
+- Derive the spatial field profile from the standing-wave
+  source (numerical Green's function computation)
+- Or accept ΔE/E = α as an operational proxy and proceed
+  to the full particle inventory
+
+
 ## Track 1d: Two sheets (electron + proton) — universality
 
 ### F19. Two-sheet results match single-sheet — no cross-sheet interference

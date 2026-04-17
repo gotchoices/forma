@@ -409,3 +409,186 @@ Track 1 family is drifting — each sub‑track is a variation on
 an objective that has not been validated.  One move toward
 Track 3, or one hard push on F4, would produce more signal
 than three more Track‑1 variants.
+
+---
+
+## Track 3 review
+
+Review of [findings.md](findings.md) §Track 3 (F28–F31) and
+[scripts/track3_coulomb_field.py](scripts/track3_coulomb_field.py).
+
+**Track 3 was the critical next step.**  Its job, per
+[README.md:184-188](README.md), was to perform the KK reduction
+on the 10D/11D metric and show that the Ma‑t off‑diagonal
+entries produce A_μ with gauge coupling α.  This would validate
+Track 1's α_eff / α identification and close the proxy concern
+that's been hanging over every prior track.
+
+**It did not do that job.**  The track as written is a
+narrative/analogy exercise, not a derivation.  Rebuilding it is
+warranted.
+
+### What went wrong
+
+1. **Scope mismatch — narrative substituted for computation.**
+   *Serious.*  The script computes ~4 scalar ratios (σ/√α,
+   σ²/α, R/λ_C, U_Coulomb/mc²) and wraps them in several
+   pages of prose.  There is no integration over Ma, no
+   extraction of A_μ from the metric, no force computation
+   between two charged modes.  The KK reduction named in the
+   README was not performed.
+
+2. **F28 is vacuous as evidence.**  *Serious.*  *"The 1/r
+   spatial dependence is guaranteed by 3D geometry"* — true,
+   but it's true for **any** localized source: Newtonian
+   gravity, Yukawa at short range, heat flow, static pressure.
+   The 1/r profile is a property of the 3D Laplacian's Green's
+   function, not evidence that the mechanism is EM.  The
+   **coefficient** (= α) is the entire content of Coulomb's
+   law, and F28 does not produce it.
+
+3. **F29 is a concession, not a resolution.**  *Serious.*  It
+   correctly computes the classical Coulomb self‑energy on a
+   ring (U/mc² ≈ α × λ_C/R ≈ 9.4 for the electron) and
+   compares it to Track 1's ΔE/E ≈ α ≈ 0.0073 — a factor of
+   ~1300× discrepancy.  It then concludes *"the Track 1 mass
+   shift is NOT the Coulomb self‑energy — it's something else
+   that happens to equal α."*  This is an admission that the
+   α_eff / α identification was never physical; tuning one
+   knob to α does not make that knob α.  The R59 status
+   summary then lists F28–F30 as positive achievements without
+   weighting the F29 concession — the scorecard is skewed.
+
+4. **F30 ("correct sign structure") is imported, not
+   derived.**  *Moderate.*  The claim *"positive winding
+   produces positive Ma‑t perturbation"* is asserted from
+   linearized gravity with a charge‑like sign stuck on by
+   hand.  A proper KK reduction would derive the sign from
+   the winding's phase structure.  Track 3 does not.
+
+5. **The standing‑wave ↔ compact‑momentum gap is flagged and
+   then dropped.**  *Serious.*  Part 4 of the script notes
+   that textbook KK works for compact momentum p₅ = n/R,
+   while MaSt uses standing waves.  The script says *"the
+   question remains: does our δ = α produce the correct
+   spatial field?"* and then moves on.  This is exactly the
+   gap Track 3 was supposed to cross.
+
+6. **Linearized gravity is invoked in a way that begs the
+   question.**  *Moderate.*  The script writes
+   *T_{Ma,t} ∝ σ × Mc²* and *δg_{Ma,t} ∝ σ × GM/(c²r)* as if
+   these follow from linearized Einstein — but T_{Ma,t} is
+   not a piece of the usual stress‑energy tensor.  To source
+   an off‑diagonal metric perturbation you need an off‑diagonal
+   stress‑energy, which in KK comes from a *current* on the
+   compact dimension (∂_μ θ for a winding mode), not from a
+   rest‑mass term.  The argument elides this and then claims
+   the result (*"F = n₁ × σ² × GM/r²"*) matches Coulomb when
+   *σ² × GM = α*.  That's dimensional juggling, not a
+   derivation — GM has units of length (c = 1) but σ is
+   dimensionless in Track 1, so the equation doesn't close
+   without further assumptions.
+
+### How to rebuild Track 3
+
+The rebuild should be a **computation**, not a narrative.  Two
+honest routes exist; I'd recommend running **both** in parallel
+for cross‑validation, since they probe the same question from
+different angles.
+
+**Route A — Proper KK reduction for standing waves (analytical).**
+
+Scope:
+1. Start from the 10D action for a massless scalar (or the
+   Ma-standing-wave mode) on the metric produced by Track 1
+   (include the Ma‑t off‑diagonal).
+2. Decompose the field into modes with winding **n** on Ma and
+   spatial dependence in S: ψ(x, θ) = Σ_n ψ_n(x) e^(i n·θ).
+3. Integrate the action over Ma (θ coordinates).  The off‑
+   diagonal g(Ma, t) produces cross terms of the form
+   A_μ(x) × ∂^μψ_n × (winding factor).
+4. Identify A_μ(x) as the 4D gauge field.  Read off its
+   normalization from the g_tt factor and the compact volumes.
+5. Derive the effective 4D charge q_n of a mode with winding
+   **n**.  Compute q_e² / (4π ε₀ ℏc) and check whether it
+   equals α.
+
+Expected output: a closed‑form expression q_n = f(**n**, L_i,
+σ) and a numerical value for q_e²/(4π ε₀ ℏc).  A successful
+rebuild either (a) produces α without further tuning — in
+which case R59's central claim is validated — or (b) produces a
+different number, which falsifies the α‑from‑σ hypothesis.
+Either result is publishable.
+
+This is the textbook move but adapted to windings, not
+compact momenta.  References: Appelquist–Chodos, Overduin–
+Wesson "Kaluza‑Klein Gravity" (Physics Reports 1997),
+Polchinski Vol. 1 §8.1–8.4 on T‑duality for the
+momentum↔winding exchange.
+
+**Route B — Numerical 10D Green's function (computational).**
+
+Scope:
+1. Place a source mode (e.g. electron, n = (1,2,0,0,0,0)) at
+   the origin in S.  Construct T_μν from the mode's energy
+   distribution on Ma × S.
+2. Solve the linearized 10D Einstein equations for δg_μν on
+   the full 10D manifold.
+3. Extract δg_{Ma,t}(r) in S at distances r from Compton scale
+   out to 10² × L_ring.
+4. Fit δg_{Ma,t}(r) to C/r and extract C.
+5. Compute C / (α × m × some‑geometric‑factor) and report the
+   coefficient.
+
+Expected output: a numerical coefficient.  If ≈ 1 at large r,
+the Coulomb identification holds.  If not, the discrepancy
+tells you exactly how far off the σ‑to‑α map is.
+
+This is heavier numerically but has no analytical pitfalls —
+the sign, magnitude, and spatial dependence all come out of
+one solve.
+
+### Acceptance criteria for the rebuild
+
+A rebuilt Track 3 should meet **all** of:
+
+- Produces A_μ explicitly (Route A) or δg_{Ma,t}(r) on a
+  grid (Route B).
+- Extracts a **number** that plays the role of α from the
+  geometry (not a ratio chosen to equal α by construction).
+- States whether that number equals α, and by how much it
+  deviates.
+- Derives the charge sign from mode structure, not from hand
+  insertion in `b`.
+- If it fails to produce α, it diagnoses **which step**
+  produces the wrong number — the normalization, the geometric
+  factor, the standing‑wave kinematics, etc.
+
+### Fallback if the rebuild also fails
+
+If both Route A and Route B produce numbers that do not equal
+α, that is a substantive negative result and worth reporting
+cleanly.  It would mean:
+
+- The Ma‑t off‑diagonal is *not* the seat of α.
+- The α coupling lives in a different metric quantity — possibly
+  a ratio of geometric scales (e.g. L_p / L_e as in R31/R36),
+  or the compactification volume (as in standard KK), or some
+  GRID‑lattice property.
+- The Track 1 α_eff = α match is geometric coincidence from
+  one‑parameter tuning, not physics.
+
+That outcome would redirect the whole study but is itself
+a valid scientific conclusion.  The worst outcome would be
+another narrative track that neither derives α nor cleanly
+rules out the mechanism.
+
+### Net
+
+Track 3 as delivered does not answer its framing question.
+The failure is in scope and method, not in honesty — F29
+correctly names the 1300× discrepancy.  A rebuild along
+Route A or Route B (ideally both) is the next critical piece
+of R59.  Until that rebuild lands, the Track 1 family's
+"universality," "correct sign," and "Coulomb from geometry"
+claims all rest on an unvalidated identification.
