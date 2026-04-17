@@ -1,63 +1,95 @@
-# R59: Clifford torus — EM as geometry in 4D
+# R59: Clifford torus — EM as spacetime geometry
 
 **Status:** Framed
 **Background:** [background.md](background.md)
 **Type:** theoretical + compute + visualization
-**Depends on:** R55 (ℵ-mediated coupling, 10×10 metric),
-  R54 (particle inventory), R53 (generations),
-  sim-impedance Tracks 8–12 (charge from bending),
-  GRID (lattice substrate, charge-emergence.md)
-**Motivates:** model-F (if successful), unified EM-gravity
-  geometric picture
+**Depends on:** R55 (ℵ-mediated coupling), R54 (particle inventory),
+  R53 (generations), sim-impedance (charge from bending),
+  GRID (lattice substrate)
 
 ---
 
-## Premise
+## Core question
 
-The MaSt compact dimensions have been embedded in 3D
-throughout studies R1–R58.  This causes problems:
-- Self-intersection (proton sheet, a > R)
-- Metric saturation (e-sheet, s = 2.004 nearly singular)
-- Asymmetric distortion (inner/outer equator)
-- No mechanism for opposite-sign curvature (attraction/repulsion)
+Einstein showed: gravity is not a force — it's curvature of
+spacetime (St).  Mass bends the spatial-time (S-t) plane,
+causing geodesic convergence (objects "fall" toward each other).
 
-A 2-torus does not require 3D.  Its natural home is 4D,
-where it can be embedded as a **Clifford torus** — the
-product of two circles in orthogonal planes.  The Clifford
-torus is flat (no inner/outer asymmetry), non-self-intersecting
-(any aspect ratio valid), and lives naturally in S³ (the
-3-sphere).
+**Could electromagnetism work the same way?**  If charges bend
+the compact-time (Ma-t) plane — with a sign that depends on
+the winding direction — then:
+- Opposite charges → curvatures cancel between them →
+  geodesics converge → **attraction**
+- Like charges → curvatures reinforce between them →
+  geodesics diverge → **repulsion**
 
-This study asks: **if the Ma sheets are Clifford tori in 4D
-(or 4+1D with time), does the geometry provide:**
-
-1. **Signed curvature** for EM attraction/repulsion
-   (opposite windings → opposite curvature → geodesic
-   convergence/divergence)
-
-2. **Universal α** without the 3.6% gap from R55
-   (the metric saturation problem disappears in 4D)
-
-3. **A single geometric origin for α** via the ℵ-time
-   off-diagonal metric entry in the Lorentzian version
-
-4. **Magnetic moments and radiation** from the time
-   component (the 10×10 spatial metric handles static
-   coupling but not dynamics)
+The Coulomb force would be geodesic deviation in the Ma-t
+plane, just as gravitational "force" is geodesic deviation
+in the S-t plane.
 
 ---
 
-## What changes from the 3D picture
+## Why the Clifford torus
 
-| Feature | 3D torus | Clifford torus (4D) |
-|---------|----------|-------------------|
-| Extrinsic curvature | Nonzero (inner/outer) | **Zero** (flat embedding) |
-| Self-intersection | a > R fails | **Any aspect ratio valid** |
-| Tube-ring mixing | cos(θ₁) factor | **Zero** (orthogonal planes) |
-| Metric saturation | e-sheet at PD limit | **No saturation** |
-| Signed curvature | Not available in 3D | **Available in 4D** (S³ curvature) |
-| Visualization | Direct | **Requires projection or dim reduction** |
-| Time integration | Separate | **Natural** (4th dim can be Lorentzian) |
+The Ma sheets have been embedded in 3D space (S) throughout
+R1–R58.  This causes problems:
+- Self-intersection (proton sheet)
+- Metric saturation (e-sheet nearly singular, R55 F8)
+- Inner/outer asymmetry (complicates charge analysis)
+- No mechanism for signed curvature
+
+A 2-torus needs at least 4 dimensions for a flat embedding.
+The **Clifford torus** embeds in 4D as two circles in
+orthogonal planes: no bending, no self-intersection, any
+aspect ratio valid.  The model-E flat-torus metric has been
+implicitly assuming a Clifford embedding all along.
+
+The physical question: which 4 dimensions?
+- 4 spatial (pure math, no forces) — incomplete
+- 3 spatial + time (spacetime) — the KK picture, gives forces
+- 2 compact + 1 spatial + 1 time — a hybrid
+
+The study investigates all options, with emphasis on the
+spacetime embedding where the Ma-t coupling provides the
+electromagnetic force.
+
+---
+
+## What changes from 3D
+
+| Feature | 3D torus | Clifford torus |
+|---------|----------|---------------|
+| Extrinsic curvature | Nonzero (inner/outer) | Zero (flat) |
+| Self-intersection | Fails when a > R | Any aspect ratio valid |
+| Tube-ring mixing | cos(θ₁) factor | Zero (orthogonal) |
+| Metric saturation | e-sheet at PD limit | No saturation |
+| EM as geometry | No signed curvature | Signed curvature from Ma-t |
+| Time integration | Separate (bolt-on) | Natural (part of the 4D) |
+
+---
+
+## Open questions (not asserted)
+
+1. **Does the Clifford embedding need ℵ?**  R55 Track 3 used
+   ℵ to mediate Ma-S coupling (3.6% universality gap).  If
+   the time dimension provides the coupling via KK reduction,
+   ℵ may be redundant — or it may be the microscopic
+   mechanism that the time-based coupling implements at the
+   lattice scale.  To be determined.
+
+2. **Which circle couples to time?**  If the torus embeds in
+   spacetime, one circle is spatial and one involves time.
+   Is it the tube (charge direction) or the ring (mass/frequency
+   direction)?  The KK picture suggests the tube couples to t
+   (producing the electric potential g₅₀).  But the ring might
+   also couple (producing the magnetic potential).
+
+3. **Where does α appear?**  In KK theory, α comes from the
+   ratio of the compact dimension's size to the Planck length.
+   In the Clifford-spacetime picture, it might come from the
+   Ma-t off-diagonal metric entry directly.  A single entry
+   setting α (as the user proposed) would be the cleanest
+   result.
 
 ---
 
@@ -66,164 +98,123 @@ This study asks: **if the Ma sheets are Clifford tori in 4D
 ### Track 1: The Clifford torus metric
 
 Derive the induced metric, extrinsic curvature, and geodesics
-for a Clifford torus T² = S¹(r₁) × S¹(r₂) in R⁴ and in S³.
+for the Clifford torus T² = S¹(r₁) × S¹(r₂).
 
-Deliverables:
-- The 2D induced metric (should be diagonal: ds² = r₁²dθ₁² + r₂²dθ₂²)
-- Extrinsic curvature tensor (should be zero in R⁴, nonzero in S³)
-- Geodesic equations on the Clifford torus
-- Comparison to the 3D torus metric (the cos θ₁ factor should vanish)
-- Show that the flat-torus model-E metric IS the Clifford metric
+- In R⁴ (4 spatial dimensions)
+- In S³ (the 3-sphere)
+- Comparison to the 3D torus metric
+- Prove: the model-E flat-torus metric IS the Clifford metric
 
-**Visualization:** project the Clifford torus into 3D via
-stereographic projection.  Show how the "distortion" in 3D is
-a projection artifact, not real curvature.
+**Viz:** Stereographic projection S³ → R³ showing the
+Clifford torus as the familiar 3D torus (a projection,
+not the true geometry).
 
-### Track 2: Signed curvature from winding modes
+### Track 2: Signed curvature from windings
 
-A standing-wave mode on the Clifford torus with winding numbers
-(n₁, n₂) carries energy distributed on the surface.  This
-energy curves the ambient space (4D or S³).
+Compute the curvature produced by a mode with winding (n₁, n₂)
+on the Clifford torus.
 
-Questions:
-- What is the curvature tensor produced by a (1, 2) mode?
-- How does the sign of n₁ (tube winding = charge sign) affect
-  the curvature?
-- Place two modes (opposite signs) at a spatial separation.
-  Do geodesics between them converge (attraction)?
-- Place two modes (same sign) at a separation.  Do geodesics
-  diverge (repulsion)?
+- Does the sign of n₁ produce opposite curvature?
+- Place two opposite-sign modes at separation r in S.
+  Do geodesics converge (attraction)?
+- Place two same-sign modes.  Do geodesics diverge (repulsion)?
 
-This is the key test: does the Clifford torus geometry
-reproduce the Coulomb force law from geodesic effects?
+**Viz:** 2D spatial surface (S compressed to 2D) with compact
+dimension as height.  Show geodesic convergence for opposite
+charges, divergence for like charges.
 
-**Visualization:** reduce S from 3D to 2D.  Show the geodesic
-curvature surface (like viz/geodesic-curvature) with the
-compact dimension as height.  Animate geodesic convergence
-(attraction) and divergence (repulsion).
+### Track 3: Spacetime metric with compact dimensions
 
-### Track 3: The 4+1D Lorentzian metric
+Build the metric for a Clifford torus embedded in spacetime
+(R^{3,1}) or in an extended spacetime with compact dimensions.
 
-Extend the spatial Clifford torus to Lorentzian signature.
-The full metric becomes 11-dimensional:
-- 6 compact Ma dimensions (three Clifford tori)
-- 1 ℵ dimension (Planck scale)
-- 3 spatial S dimensions
-- 1 time dimension
+Full metric dimensions:
+- 6 compact (Ma) — three Clifford tori
+- 3 spatial (S)
+- 1 time (t)
+- 1 ℵ (open — include if needed, omit if not)
 
-Or equivalently, embed the Clifford torus in a 4+1D spacetime
-where the 4 spatial dimensions are the Clifford R⁴ and the
-5th is time.
+Derive the KK reduction:
+- Which off-diagonal entries produce A_μ (EM potential)?
+- Does the electric potential (φ = g₅₀) give the Coulomb force?
+- Does the magnetic potential (A = g₅ᵢ) give magnetic effects?
+- Where does α appear?  Is it a single metric entry?
 
-Questions:
-- Does the time component provide the magnetic field
-  (the time-space component of the EM field tensor in KK)?
-- Is the ℵ-time off-diagonal entry the seat of α?
-- Does the Lorentzian metric give propagating EM waves
-  (photons) naturally?
+**Mathematical emphasis:** derivation-heavy, following the
+standard KK procedure but for our specific geometry.  Show
+each step.
 
-**Mathematical emphasis:** This track is primarily analytical.
-Derive the KK reduction of the Clifford metric with time,
-show the emergence of the EM potential A_μ, and identify
-where α appears.
+### Track 4: Particle spectrum
 
-### Track 4: Particle spectrum on the Clifford torus
+Verify the model-E particle inventory on the Clifford metric.
 
-Recompute the model-E particle inventory using the Clifford
-metric instead of the 3D-embedded metric.
-
-Questions:
-- Does the Clifford metric reproduce the model-E particle
-  spectrum exactly?  (It should — the flat-torus metric IS
-  the Clifford metric by construction.)
-- Does the ℵ coupling work better on the Clifford torus?
-  (The metric saturation problem should vanish.)
+- The flat-torus spectrum should be identical (by construction)
+- Add the Ma-t coupling and check for spectrum shifts
+- If ℵ is included: compare to R55 Track 3 results
+- Does the metric saturation problem (R55 F8) disappear?
 - Does the 3.6% α universality gap close?
-- Do the cross-sheet shears (neutron, baryons) need
-  re-derivation?
 
 ### Track 5: Coulomb's law from geodesics
 
-The quantitative test: derive the 1/r² Coulomb force law
-from geodesic deviation in the Clifford-torus-curved spacetime.
+Derive F ∝ e²/r² from geodesic deviation.
 
-Given:
-- Two particles (Clifford tori) with opposite tube windings
-  (charges +e, −e)
-- Separated by distance r in the spatial dimensions
+Given two charged Clifford tori at separation r:
+- Compute the metric perturbation (linearized gravity + KK)
+- Solve the geodesic deviation equation
+- Extract the effective force vs r
+- Verify: 1/r² law, correct sign, coefficient gives α
 
-Compute:
-- The metric perturbation produced by each particle's
-  energy-momentum tensor (linearized gravity in 4+1D)
-- The geodesic deviation equation for a test particle
-- The effective force as a function of r
-
-Expected result:
-- F ∝ e²/r² (Coulomb law)
-- The coefficient gives α from the geometry
-- The sign (attractive for opposite, repulsive for like)
-  comes from the signed curvature in compact dimensions
-
-This is the most ambitious track and may require techniques
-from linearized KK gravity.
+This is the most ambitious track.  It tests whether the
+Clifford-spacetime picture reproduces the quantitative
+Coulomb law, not just the qualitative attraction/repulsion.
 
 ---
 
 ## Visualization strategy
 
-Since 4D geometry cannot be directly visualized, every track
-will include dimension-reduced visualizations:
+**The problem:** 4+ dimensional geometry cannot be directly
+seen.  The study must rely on mathematical rigor first, then
+illustration.
 
-**Method A: Dimensional compression.**  Replace 3D space with
-2D (a plane or surface), making the compact/time dimensions
-visible.  This is how viz/geodesic-curvature works for
-gravity.  The "missing" spatial dimension is acceptably lost
-because the physics is spherically symmetric.
+**Method A: Dimensional compression.**  Compress S from 3D to
+2D, freeing one visual axis for the compact or time dimension.
+Based on the approach in viz/geodesic-curvature.  Show:
+- Spatial surface with compact dimension visible (height/color)
+- Time as animation
+- Geodesic paths showing convergence/divergence
 
-**Method B: Stereographic projection.**  Project S³ → R³ via
-stereographic projection.  The Clifford torus projects to the
-familiar 3D torus — but now understood as a projection artifact.
-Curvature and geodesics in the projected picture correspond to
-(distorted) curvature and geodesics in the true 4D picture.
+**Method B: Stereographic projection.**  S³ → R³.  The
+Clifford torus projects to the familiar 3D torus — distorted
+but topologically correct.  Mark the distortions as projection
+artifacts.
 
-**Method C: Slice visualization.**  Show 2D slices of the 4D
-geometry at fixed values of one coordinate.  Animate over the
-sliced coordinate to give a sense of the full structure.
+**Method C: 2D slices.**  Fix one coordinate, show the
+remaining 2D cross-section.  Animate over the fixed coordinate.
 
-All key results will be derived mathematically FIRST, then
-illustrated visually.  The mathematics is primary; the
-visualizations are aids to intuition, not substitutes for rigor.
-
----
-
-## Mathematical prerequisites
-
-The study requires:
-- Riemannian geometry in dimensions > 3 (metrics, curvature
-  tensors, geodesics on product manifolds)
-- Kaluza-Klein reduction (deriving gauge fields from
-  higher-dimensional metrics)
-- Linearized gravity (metric perturbations from stress-energy,
-  geodesic deviation)
-- Lorentzian signature (timelike/spacelike distinction,
-  causal structure)
-
-Where these concepts are used, they will be derived from
-first principles with enough detail for a reader with
-college-level engineering mathematics.  The aim is to be
-rigorous but not opaque.
+**Rule:** Derive everything analytically first.  Only then
+visualize.  If the math says convergence, show convergence.
+Don't rely on the picture to discover physics — use it to
+confirm and communicate.
 
 ---
 
-## Relationship to prior work
+## Mathematical approach
 
-| Study | What it provides | What R59 adds |
-|-------|-----------------|--------------|
-| R54/model-E | Particle inventory on flat T⁶ | Clifford embedding; unchanged spectrum |
-| R55 | ℵ-mediated coupling (10×10) | 11×11 with time; no metric saturation |
-| sim-impedance | Charge from bending | Bending in 4D (S³ curvature, not 3D inner/outer) |
-| charge-emergence | Mechanism of charge | Signed curvature → attraction/repulsion |
-| GRID | Lattice substrate, α as input | α from ℵ-time geometry (if Track 3 succeeds) |
+The study requires Riemannian/Lorentzian geometry beyond what
+prior studies used.  Each new concept will be derived from
+scratch with enough detail for a reader with college-level
+engineering math:
+
+- **Product manifolds:** how the metric of T² = S¹ × S¹ comes
+  from the metrics of the two circles
+- **Extrinsic curvature:** how a surface curves in its
+  ambient space (second fundamental form)
+- **KK reduction:** how a (D+1)-dimensional metric with one
+  compact dimension produces D-dimensional gravity + gauge field
+- **Linearized gravity:** how small metric perturbations from
+  a source produce geodesic deviation (the "force")
+- **Lorentzian signature:** how time differs from space in the
+  metric (−dt² vs +dx²) and what this means for geodesics
 
 ---
 

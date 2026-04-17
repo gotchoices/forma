@@ -1,4 +1,25 @@
-# R59 Background: From 3D Embedding to 4D Geometry
+# R59 Background: From 3D Embedding to Spacetime Geometry
+
+## Terminology
+
+Throughout this document and study:
+
+| Symbol | Meaning |
+|--------|---------|
+| **S** | The three spatial dimensions (x, y, z) |
+| **t** | The time dimension |
+| **St** | Spacetime: S + t (3+1 dimensions, Lorentzian signature) |
+| **Ma** | The six compact material dimensions (three 2-tori) |
+| **ℵ** | The sub-Planck internal edge dimension (GRID) — an open hypothesis, not asserted |
+| **R⁴** | Four-dimensional Euclidean space (four spatial dims, NO time) |
+| **R^{3,1}** | Minkowski spacetime (3 spatial + 1 time, Lorentzian) |
+| **S³** | The 3-sphere — a 3D surface embedded in R⁴ (spatial, no time) |
+
+"4D" is ambiguous.  This study distinguishes carefully:
+- 4 spatial dimensions (R⁴) — used for the mathematical Clifford torus
+- 3+1 spacetime (R^{3,1}) — the physical arena
+- Whether the Clifford torus embeds in pure space or in spacetime is an open question
+
 
 ## The lesson physics learned from gravity — and didn't apply to EM
 
@@ -9,307 +30,281 @@ gravity became an effect: mass warps spacetime, and other
 masses follow the straightest possible paths (geodesics) through
 the warped geometry.  Spacetime tells mass how to fall.
 
+The key insight: gravity is strongest in the TIME direction.
+In the spatial dimensions (S), mass bends geodesics gently —
+producing slow orbital curvature.  In the time dimension (t),
+mass bends geodesics steeply — producing the acceleration we
+call "falling."  When you stand on Earth, you're not being
+pulled down by a force.  Your geodesic through spacetime is
+curved in the t direction by Earth's mass, and that curvature
+manifests as the sensation of weight.
+
 Physics fully accepted this for gravity.  But for electro-
 magnetism, the pre-Einstein picture persists: charged particles
 exert forces on each other through fields.  The electromagnetic
-field is a physical entity (the photon field, described by
-quantum electrodynamics), and forces are mediated by virtual
-photon exchange.
+field is a physical entity (the photon field), and forces are
+mediated by virtual photon exchange.
 
 This isn't because no one tried to geometrize EM.  Einstein
 himself spent thirty years (1925–1955) on unified field theory.
 Kaluza (1921) showed that adding a fifth dimension to spacetime
-causes the off-diagonal metric components between the 5th
-dimension and ordinary spacetime to behave exactly like the
-electromagnetic potential A_μ.  Klein (1926) compactified the
-5th dimension to explain why we don't see it directly.  In
-Kaluza-Klein theory, **electromagnetism IS spacetime curvature**
-— just in a dimension we can't directly perceive.
+(a compact spatial dimension beyond S) causes the off-diagonal
+metric components between the 5th dimension and St to behave
+exactly like the electromagnetic potential A_μ.  Specifically:
 
-But the gauge theory program (Yang-Mills, 1954; Glashow-
-Weinberg-Salam, 1960s; QCD, 1970s) proved so successful for
-the weak and strong forces that the geometric approach was
-set aside.  The Standard Model treats EM as a gauge field
-living ON spacetime, not a deformation OF spacetime.
+- The compact-**time** off-diagonal (g₅₀) = the electric
+  potential φ → Coulomb force
+- The compact-**spatial** off-diagonals (g₅ᵢ) = the vector
+  potential **A** → magnetic force
 
-MaSt/GRID sits on the Einstein/Kaluza-Klein side.  The
-compact Ma dimensions ARE the extra dimensions of KK theory.
-The Ma-S coupling IS the gauge field.  We are doing what
-Einstein attempted — geometrizing electromagnetism — but with
-the advantage of six compact dimensions (enough for the full
-particle spectrum) and a discrete lattice substrate (GRID)
-that provides the microscopic mechanism.
+In Kaluza-Klein theory, **electromagnetism IS spacetime
+curvature** — in a compact dimension coupled to St.  The
+electric force, like gravity, is curvature in the time
+direction.  The magnetic force is curvature in the spatial
+directions.  The only difference from gravity is that the
+compact-dimension curvature can have a SIGN (from the winding
+direction), while the gravitational curvature from mass is
+always positive.
 
-
-## The problem of signed curvature
-
-Gravity warps spacetime monotonically.  Mass always curves
-spacetime inward (positive energy density → positive curvature
-in the time-time component of the Ricci tensor).  Every mass
-attracts every other mass.  There is no "negative gravity."
-
-Electromagnetism requires **signed** interaction.  Opposite
-charges attract; like charges repel.  If EM is spacetime
-curvature, the curvature must have a SIGN — positive charges
-curve space one way, negative charges curve it the opposite way.
-
-In ordinary 4D spacetime, the metric is symmetric (g_μν = g_νμ)
-and the curvature from a point source is always the same sign
-(Schwarzschild geometry for gravity, Reissner-Nordström for
-charged sources).  A positive charge and a negative charge both
-produce the same gravitational curvature.  The EM contribution
-to spacetime curvature is always positive (it's proportional to
-E² + B², which is positive-definite).  There is no room in 4D
-for "repulsive curvature."
-
-But in HIGHER dimensions — specifically, in the compact
-dimensions of KK theory — curvature CAN have a sign.  A mode
-with tube winding n₁ = +1 curves the compact dimension one way
-(winding clockwise).  A mode with n₁ = −1 curves it the other
-way (winding counterclockwise).  These are genuine, distinct
-geometric configurations — not just labels.
-
-When two opposite-sign windings are near each other, their
-curvatures partially cancel in the region between them.  The
-geodesic distance between the particles (through the compact
-dimensions) becomes shorter than it would be in flat space.
-Objects on geodesics converge — this is attraction.
-
-When two same-sign windings are near each other, their
-curvatures reinforce.  The geodesic distance between them
-increases.  Objects on geodesics diverge — this is repulsion.
-
-**This is exactly the mechanism of gravitational attraction**
-(geodesic convergence near a mass), but applied to the compact
-dimensions with signed curvature.  Electromagnetism, in this
-picture, is gravity in the compact space — with the crucial
-addition that the compact curvature can have either sign.
+MaSt/GRID sits on the Einstein/Kaluza-Klein side.  The compact
+Ma dimensions ARE the extra dimensions of KK theory.  We are
+doing what Einstein attempted — geometrizing electromagnetism —
+with the advantage of six compact dimensions and a discrete
+lattice substrate.
 
 
-## What MaSt has established
+## How gravity bends spacetime — and how EM might do the same
 
-The MaSt model (studies R1–R58, model-E) treats particles as
-standing electromagnetic waves on a six-dimensional compact
-torus (T⁶).  The key results relevant to this study:
+### Gravity: mass bends the S-t plane
 
-1. **Charge is topological.**  A 2π phase winding around the
-   tube of the torus creates a net E-field flux visible to 3D
-   observers.  The winding number is an integer → charge is
-   quantized.  The sign of the winding determines the sign of
-   the charge (GRID A3, R48, sim-impedance Tracks 8-12).
+A mass M sits at the origin.  In the Schwarzschild solution:
 
-2. **Coupling is from bending.**  When a flat 2D lattice is
-   bent into a torus, the Y-junctions distort, producing
-   E-field components normal to the surface.  This is the
-   microscopic mechanism by which the 2D field couples to 3D
-   space (sim-impedance Track 8 F1-F6, charge-emergence.md).
+- **Spatial curvature:** geodesics in S curve gently around
+  the mass.  An orbiting planet follows a nearly circular
+  spatial path.  The spatial curvature is proportional to
+  M/r — small at large distances.
 
-3. **The coupling goes through ℵ.**  The ℵ-line (sub-Planck
-   internal dimension on each lattice edge) mediates the
-   Ma-S coupling.  Adding ℵ to the metric (10×10) achieves
-   near-universal α (3.6% e-p gap) with no direct Ma-S entries
-   (R55 Track 3).
+- **Time curvature:** geodesics in the S-t plane curve
+  steeply.  A dropped object follows a parabolic worldline in
+  the S-t plane — accelerating toward the mass.  The time
+  curvature (g₀₀ component) is proportional to M/r and is
+  the dominant effect of gravity.
 
-4. **The 3D embedding has problems.**  A torus in 3D
-   self-intersects when the tube radius exceeds the ring
-   radius (a > R), which is the case for the proton sheet.
-   The inner equator is compressed and the outer is stretched,
-   producing asymmetric junction distortions.  The e-sheet
-   (ε = 397) is extremely elongated, nearly singular in the
-   metric.
+The reason gravity feels like a force is that time is
+always passing — you're always moving through t.  The
+curvature of t near a mass deflects your worldline, causing
+acceleration.  You can avoid the spatial curvature (by
+staying still), but you can never avoid the time curvature.
+
+### EM: charge bends the Ma-t plane (KK picture)
+
+A charge Q sits at the origin.  In the KK picture, the charge
+is a mode with winding number n on the compact dimension.
+The winding produces curvature in the compact-t plane:
+
+- **Compact-time curvature (g₅₀):** geodesics in the
+  compact-t plane curve proportionally to Q/r.  This is the
+  electrostatic potential φ.  Another charged particle (with
+  its own compact winding) experiences this curvature as a
+  force — attractive if the windings are opposite (curvatures
+  cancel between the charges), repulsive if the windings are
+  the same (curvatures reinforce).
+
+- **Compact-spatial curvature (g₅ᵢ):** a MOVING charge
+  produces curvature in the compact-spatial planes.  This is
+  the magnetic vector potential **A**.  The resulting geodesic
+  deviation is the magnetic force.
+
+The parallel to gravity is exact:
+- Gravity: mass bends the S-t plane → objects accelerate (fall)
+- EM: charge bends the Ma-t plane → charges accelerate (attract/repel)
+
+The crucial difference: gravity bends S-t with one sign (always
+attractive, because mass is always positive).  EM bends Ma-t
+with either sign (attractive or repulsive, because winding can
+be clockwise or counterclockwise).
 
 
-## The 3D torus as a simplification
+## The problem of signed curvature in 3D
 
-We have been embedding the 2-torus in 3D because it's
-visualizable.  But a 2-torus does NOT require 3D to exist.
-In fact, the natural home for a flat 2-torus is 4D.
+In MaSt studies R1–R58, the compact Ma dimensions have been
+embedded in 3D (ordinary space S).  A 2-torus in 3D has an
+inner equator and an outer equator.  The curvature changes
+sign between them — but this sign change is an artifact of
+the 3D embedding, not a property of the charge.
 
-A torus in 3D must bend: the inner equator has negative
-Gaussian curvature, the outer has positive.  The intrinsic
-geometry is flat, but the extrinsic geometry is curved.  This
-bending is what causes charge coupling (sim-impedance) but also
-causes problems (self-intersection, asymmetric distortion,
-e-sheet metric saturation).
+In 3D, both positive and negative charges produce the SAME
+bending of the torus surface (same curvature at each point).
+The charge sign comes from the winding direction (clockwise
+vs counterclockwise), not from the curvature.  There is no
+geometric mechanism in 3D for opposite charges to curve
+space in opposite directions.
 
-A torus in 4D — specifically, a **Clifford torus** — can be
-both intrinsically flat AND extrinsically flat.  No bending.
-No self-intersection.  No inner/outer asymmetry.  The tube and
-ring are perfectly symmetric.
+For EM as true spacetime geometry, we need curvature that
+depends on the SIGN of the charge.  This requires the compact
+dimensions to couple to time — not just to space.
+
+
+## The 3D torus as a simplification with real problems
+
+Embedding a 2-torus in 3D causes specific problems:
+
+1. **Self-intersection.**  When the tube radius exceeds the
+   ring radius (a > R, i.e., ε < 1), the torus intersects
+   itself in 3D.  The proton sheet (ε_p = 0.55) has this
+   problem.
+
+2. **Metric saturation.**  The e-sheet's internal shear
+   (s_e = 2.004) pushes the 2×2 metric to the positive-
+   definiteness boundary (off-diagonal ratio = 0.9999).
+   No additional coupling can be added without breaking
+   the metric (R55 Track 3, F8).
+
+3. **Inner/outer asymmetry.**  The 3D embedding stretches
+   the outer equator and compresses the inner equator.
+   The junction distortions are nonuniform, complicating the
+   leakage analysis (sim-impedance Tracks 11–12).
+
+4. **Tube-ring mixing.**  In 3D, the ring circumference
+   varies with tube position: 2π(R + a cos θ₁).  The tube
+   and ring directions are not independent.  The flat-torus
+   metric (model-E) assumes they are — which is only true
+   for the Clifford embedding, not the 3D embedding.
 
 
 ## The Clifford torus
 
-### Definition
+### What it is
 
-The Clifford torus is the product of two circles in 4D:
+The Clifford torus is a 2-torus embedded in R⁴ (four spatial
+dimensions) as the product of two circles in orthogonal planes:
 
-<!-- T² = S¹(r₁) × S¹(r₂) embedded in R⁴ -->
+<!-- T² = S¹(r₁) × S¹(r₂) ⊂ R⁴ -->
 $$
 T^2 = S^1(r_1) \times S^1(r_2) \subset \mathbb{R}^4
 $$
 
 Parameterized by two angles (θ₁, θ₂):
 
-<!-- x₁ = r₁ cos θ₁,  x₂ = r₁ sin θ₁,  x₃ = r₂ cos θ₂,  x₄ = r₂ sin θ₂ -->
+<!-- x₁ = r₁ cos θ₁, x₂ = r₁ sin θ₁, x₃ = r₂ cos θ₂, x₄ = r₂ sin θ₂ -->
 $$
 \begin{aligned}
-x_1 &= r_1 \cos\theta_1 \\
-x_2 &= r_1 \sin\theta_1 \\
-x_3 &= r_2 \cos\theta_2 \\
-x_4 &= r_2 \sin\theta_2
+x_1 &= r_1 \cos\theta_1, \quad x_2 = r_1 \sin\theta_1 \\
+x_3 &= r_2 \cos\theta_2, \quad x_4 = r_2 \sin\theta_2
 \end{aligned}
 $$
 
 The tube circle (θ₁) lies in the (x₁, x₂) plane.  The ring
 circle (θ₂) lies in the (x₃, x₄) plane.  The two planes are
-ORTHOGONAL — they share no spatial direction.
+orthogonal — they share no direction.
 
 ### Key properties
 
-**1. Extrinsically flat.**  The Clifford torus has zero
-extrinsic curvature in R⁴.  Every point on the surface has
-the same local geometry — there is no "inner equator" or
-"outer equator."  The induced metric is:
+**Extrinsically flat.**  The Clifford torus has zero extrinsic
+curvature in R⁴.  Every point on the surface has the same
+local geometry.  The induced metric is:
 
 <!-- ds² = r₁² dθ₁² + r₂² dθ₂² -->
 $$
 ds^2 = r_1^2\, d\theta_1^2 + r_2^2\, d\theta_2^2
 $$
 
-This is the metric of a flat rectangle — no cross terms, no
-curvature, completely uniform.
+This is diagonal — no cross terms, no curvature, completely
+uniform.  There is no inner/outer equator.
 
-**2. No self-intersection.**  In 3D, a torus self-intersects
-when a > R (tube larger than ring).  In 4D, the two circles
-live in orthogonal planes and never interfere.  ANY aspect
-ratio r₁/r₂ is valid, including r₁ >> r₂ (the proton sheet's
-regime).
+**No self-intersection.**  The two circles live in orthogonal
+planes.  They never interfere, regardless of r₁/r₂.  Any
+aspect ratio is valid.
 
-**3. Lives naturally in S³.**  The Clifford torus can be
-embedded in S³ (the 3-sphere, the boundary of a 4D ball):
-
-<!-- x₁² + x₂² + x₃² + x₄² = r₁² + r₂² -->
-$$
-x_1^2 + x_2^2 + x_3^2 + x_4^2 = r_1^2 + r_2^2
-$$
-
-When r₁ = r₂, the Clifford torus divides S³ into two
-equal solid tori — the Heegaard splitting.  This is a
-deep topological fact with potential physical significance.
-
-**4. The two circles are truly independent.**  On a 3D torus,
-the tube and ring directions mix (the ring circumference varies
-with θ₁ because of the 3D bending).  On the Clifford torus,
-the two circles are in orthogonal planes — completely
-independent.  A mode on the tube circle has no effect on the
-ring circle and vice versa.  This is the geometry that the
-"flat torus" metric (model-E's 2×2 diagonal blocks) ASSUMES
-but that the 3D embedding VIOLATES.
+**The flat-torus metric IS the Clifford metric.**  The 2×2
+diagonal metric ds² = L₁²dθ₁² + L₂²dθ₂² that model-E uses
+for each sheet IS the induced metric of the Clifford torus.
+The model-E metric has been implicitly assuming a Clifford
+embedding all along — it just didn't know it.
 
 
-## What the Clifford torus does for MaSt
+## The physical question: which "4D" is physical?
 
-### Resolves the self-intersection problem
+The Clifford torus mathematically requires 4 dimensions.
+But which 4?
 
-The proton sheet (ε_p = 0.55, meaning a/R = 1/0.55 ≈ 1.82)
-self-intersects in 3D.  The electron sheet (ε_e = 397, meaning
-r_tube/r_ring = 397) would be a grotesquely elongated tube
-in 3D.  In 4D, both are simple products of two circles with
-the appropriate radii.  No pathology.
+### Option A: Four spatial dimensions
 
-### Eliminates the metric saturation problem
+The torus sits in R⁴ — pure space, no time.  This is
+mathematically clean but physically incomplete.  It resolves
+self-intersection and metric saturation but doesn't connect
+to forces (which require time curvature).
 
-The e-sheet metric saturation (R55 Track 3, F8: off-diagonal
-ratio = 0.9999 at the PD boundary) occurs because the 3D
-embedding mixes the tube and ring directions through the
-cos(θ₁) curvature factor.  On the Clifford torus, there IS
-no mixing — the metric is perfectly diagonal.  The off-diagonal
-ratio is zero.  There is unlimited room for Ma-ℵ coupling
-without hitting the PD boundary.
+### Option B: Three spatial + time (spacetime, St)
 
-### Provides signed curvature for EM attraction/repulsion
+The torus sits in R^{3,1} — Minkowski spacetime.  One circle
+is spatial; the other involves the time direction.  This is
+the KK picture: the compact dimension couples to time, and
+the Coulomb force IS curvature in the compact-time plane.
 
-If each particle is a Clifford torus in 4D space, the tube
-winding (charge) curves the ambient 4D space in the (x₁, x₂)
-plane.  A positive charge curves it one way; a negative charge
-curves it the other.  Between opposite charges, the curvatures
-partially cancel → geodesics converge → attraction.  Between
-like charges, curvatures reinforce → geodesics diverge →
-repulsion.
+If the TUBE circle is in a spatial plane and the RING circle
+involves time, then:
+- The tube winding (charge) is a spatial pattern
+- The ring winding (which sets mass via frequency) couples
+  to time
+- The Ma-t coupling produces the electric field
+- The combination gives both charge quantization (from
+  spatial topology) and electromagnetic force (from time
+  curvature)
 
-This is the gravitational mechanism applied to compact
-dimensions with signed curvature.
+### Option C: Ma space + ℵ or time
 
-### Naturally incorporates time
+The tube and ring are both in compact (Ma) dimensions.  The
+"4th dimension" that the Clifford torus needs is either ℵ
+or time or a combination.  This is the R55 picture extended
+to 4D embedding.
 
-The Clifford torus lives in R⁴.  If one of the four dimensions
-is timelike (Lorentzian signature), the torus lives in R^{3,1}
-— Minkowski spacetime.  The tube circle could be spacelike
-(compact spatial dimension) while the ring wraps in the spatial
-plane.  Or the embedding could be in a 4+1D spacetime where
-the extra spatial dimension is the ℵ-line.
-
-The time dimension enters naturally in the Lorentzian version
-and could provide the single off-diagonal entry (ℵ-time) that
-sets α.
+The study should investigate all three options.  The
+physically correct answer may be that the "4 dimensions"
+are 2 compact (Ma) + 1 spatial (S) + 1 time (t), or some
+other combination.
 
 
-## Questions this study addresses
+## The ℵ hypothesis — open, not asserted
 
-From work/alpha-time.md:
+R55 Track 3 introduced the ℵ-line as the mediator of Ma-S
+coupling, achieving near-universal α (3.6% gap).  This study
+does NOT assume ℵ is the correct mechanism.  Instead, it
+asks:
 
-1. **Did physics cling to "EM is forces" after accepting
-   "gravity is geometry"?**  Yes — the gauge theory program
-   succeeded too well.  But KK theory (and MaSt) offer the
-   geometric alternative.
+- Does the Clifford torus embedding in spacetime (with time)
+  provide the coupling mechanism BY ITSELF?
+- If so, is ℵ redundant?
+- Or does ℵ still play a role as the microscopic (lattice-scale)
+  implementation of the time-based coupling?
 
-2. **Is there a way charge could warp spacetime in a polarized
-   way?**  Yes — signed curvature in compact dimensions.
-   Opposite windings → opposite curvature → attraction.
-   Same windings → reinforcing curvature → repulsion.
-
-3. **Is ℵ the common link to spacetime (not just space)?**
-   Potentially.  If ℵ connects to the time dimension as well
-   as the spatial dimensions, it mediates both static (Coulomb)
-   and dynamic (magnetic, radiative) EM coupling.
-
-4. **Do we need the time dimension in the metric?**  Probably
-   yes, for a complete picture.  The 10×10 spatial metric
-   (R55) handles static coupling (α), but magnetic moments,
-   radiation, and the propagation of EM waves require the
-   time component.
-
-5. **Could a single ℵ-time off-diagonal term set α?**
-   This is the sharpest version of the question and is
-   testable.  In KK theory, the coupling constant is related
-   to the compact-time off-diagonal metric component.
+The relationship between the ℵ-mediated picture (R55) and the
+spacetime-geometry picture (this study) is an open question.
 
 
 ## The visualization challenge
 
-The Clifford torus lives in 4D.  We cannot directly visualize
-4D geometry.  Two approaches:
+The Clifford torus lives in 4 dimensions (whichever 4 they
+are).  We cannot directly visualize 4D geometry.  Two
+strategies:
 
-**Dimensional reduction.**  Compress S from 3D to 2D (or 1D),
-making room to show the extra dimension.  The existing
-viz/geodesic-curvature program does this for gravitational
-curvature — it shows a 2D surface with curvature representing
-the effect of mass on spacetime.  An analogous visualization
-for the Clifford torus would show a 2D spatial surface with
-the compact dimension visible as height or color, and time
-as animation.
+**Dimensional compression.**  Replace 3D space with 2D,
+freeing a visual axis for the compact or time dimension.
+The existing viz/geodesic-curvature program does this for
+gravity — it shows a 2D spatial surface with curvature.
+An analogous tool for EM would show:
+- A 2D spatial surface (x, z) with the compact dimension
+  as height or color
+- Time as animation (evolving the curvature)
+- Geodesic convergence (attraction) and divergence
+  (repulsion) as paths on the surface
 
-**Projection.**  Project the 4D Clifford torus into 3D (just
-as we project 3D objects onto 2D screens).  The projection
-introduces apparent distortions (like a Mercator map), but
-the topology and key geometric relationships are preserved.
-Stereographic projection of S³ into R³ maps the Clifford
-torus to a standard torus — recovering the familiar 3D
-picture but now understood as a projection artifact.
+**Stereographic projection.**  Project S³ → R³, mapping the
+Clifford torus to the familiar 3D torus.  The 3D picture is
+now understood as a projection of the true 4D geometry, not
+the geometry itself.  Distortions in the 3D picture (inner/
+outer asymmetry) are projection artifacts.
 
-The study will use both approaches, with emphasis on
-mathematical rigor where visualization fails.  All key
-results will be derived analytically before being visualized,
-so the mathematics is the primary tool and the visualizations
-are aids to intuition.
+All results will be derived mathematically first.  The
+visualizations are aids to intuition, not substitutes for
+the mathematics.
