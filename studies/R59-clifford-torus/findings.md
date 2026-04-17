@@ -296,14 +296,79 @@ coupling values (not exactly ±1/(2π)) or combining direct
 Ma-t entries with ℵ mediation.
 
 
+## Track 1c: Minimal electron sheet + ℵ + S + t
+
+### F15. Neither coupling approach touches particle-spectrum entries
+
+On the minimal system (one electron sheet + S + t ± ℵ),
+both coupling approaches (direct ring-t and ℵ-mediated)
+achieve |Δm|/m = α without modifying:
+- The tube dimension (any entry in row/column 0)
+- The internal shear (s_e = 2.004, the tube-ring off-diagonal)
+- The tube-ring metric structure that sets the particle spectrum
+
+The coupling lives entirely on the ring-t (or ring-ℵ + ℵ-t)
+entries.  The tube and shear entries remain free for particle
+spectrum tuning when proton and neutrino sheets are added.
+
+
+### F16. Two approaches, same α, opposite mass direction
+
+| Approach | Parameter | Mass direction | Entry touched |
+|----------|-----------|---------------|--------------|
+| D1 (direct ring-t) | σ = 0.00855 | DOWN (wrong) | G̃[ring, t] |
+| D2 (ℵ-mediated) | σ_ℵt = 0.258 | **UP (correct)** | G̃[ring, ℵ] + G̃[ℵ, t] |
+
+D2 gets the sign right because the coupling goes through ℵ
+(Euclidean, +1 diagonal) before reaching t (Lorentzian, -1).
+The double hop flips the sign relative to D1.
+
+
+### F17. Generation structure is preserved
+
+All modes on the electron sheet shift by the same fractional
+amount (~0.5-0.9%), so mass RATIOS are preserved:
+
+| Mode | Bare ratio to (1,2) | D2 coupled ratio |
+|------|-------------------|-----------------|
+| (1,1) | 205.0 | 206.0 |
+| (1,3) | 203.3 | 204.3 |
+| (3,5) | 206.8 | 207.8 |
+
+The muon-range candidates remain in the right range.  The
+generation mechanism (shear resonance) is unaffected because
+the coupling is on the ring, not the shear.
+
+
+### F18. The ℵ-mediated approach has structural advantages
+
+D2 (ℵ-mediated) is cleaner than D1 (direct) because:
+1. Mass goes UP (correct for Coulomb self-energy)
+2. The ℵ-t entry is SHARED across all sheets (one parameter
+   for universality, not one per sheet)
+3. Each sheet adds only its own ring-ℵ entry (sign = charge)
+4. ℵ can be "switched off" by setting all Ma-ℵ entries to zero
+   (ℵ diagonal remains but is inert)
+
+However, ℵ remains an open question.  D1 (direct) is simpler
+(no extra dimension) even though the mass sign is wrong.  The
+mass sign issue might resolve when the full KK reduction is
+done (Track 3) — the sign may depend on whether we're
+computing a self-energy or a coupling constant.
+
+
 ## Track 1 overall status
 
-**Tracks 1 and 1b complete.**
+**Tracks 1, 1b, 1c complete.**
 
-Key findings across both:
+Key findings:
 1. Ring coupling works; tube coupling doesn't (F2)
 2. Mass-shell condition is the correct Lorentzian tool (F3)
-3. Direct Ma-t gives better universality but wrong mass sign (F4, F6)
-4. ℵ-mediated Ma-t gives correct mass sign but worse gap (F9, F10)
-5. The coupling parameter σ ≈ 0.009 (Track 1) or σ_{ℵt} ≈ 0.26 (Track 1b)
-6. Particle/antiparticle splitting is a physical feature (F5)
+3. Direct Ma-t: 1.83% universality gap but mass DECREASES (F4, F6)
+4. ℵ-mediated: mass INCREASES (correct) but wider gap (F9, F10)
+5. On the minimal electron sheet: coupling doesn't touch particle
+   entries (F15) — proton/neutrino can be added without conflict
+6. Generation structure preserved under coupling (F17)
+7. The coupling parameter: σ ≈ 0.009 (direct) or σ_ℵt ≈ 0.26 (ℵ)
+8. ℵ gives correct mass direction; direct gives better universality;
+   both remain open approaches
