@@ -32,6 +32,7 @@ origin in the lattice structures themselves.
 | **8** | Aperture coupling: E-field leakage from bending a hexagonal lattice into a torus | Complete — confirms charge selection rule; does not derive α | [T8](T8-aperture-coupling.md), [F8](F8-aperture-coupling.md) |
 | **9** | Junction escape fraction: geometric energy leakage at a single curved node | Complete — f_esc depends on lattice resolution; does not derive α | [T9](T9-junction-escape.md), [F9](F9-junction-escape.md) |
 | **10** | Propagation leakage: iterative signal propagation with normal escape at each junction | Complete — normal fraction still ~1/N²; does not derive α | [T10](T10-propagation-leakage.md), [F10](F10-propagation-leakage.md) |
+| **11** | Vector energy deficit: proper leakage fraction from non-coplanar junctions; four scattering models (GRID S-matrix, equal split, angle-weighted, pure geometry); iterative walk on actual lattice | Complete — convergent invariants found (N²×f → const); resolution-dependent; α not derived | [T11](T11-vector-energy-deficit.md), [F11](F11-vector-energy-deficit.md) |
 
 **Track 1** established that 2D-in-2D coincidence counting
 gives a smooth, featureless coupling rate dominated by
