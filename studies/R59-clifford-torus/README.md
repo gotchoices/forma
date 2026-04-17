@@ -1,7 +1,9 @@
 # R59: A self-consistent metric with time
 
-**Status:** Framed
+**Status:** Complete — negative result (Track 3b falsifies Ma-t = Coulomb)
 **Background:** [background.md](background.md)
+**Findings:** [findings.md](findings.md) — see §Track 3b and §R59 overall status
+**Review:** [review.md](review.md)
 **Type:** theoretical + compute + visualization
 **Depends on:** R55 (ℵ-mediated coupling), R54 (particle inventory),
   R53 (generations),
@@ -192,51 +194,92 @@ Tests:
   (The flat metric has no saturation; but Ma-t entries
   add new off-diagonal load.)
 
-### Track 3: Spatial field from the coupling (computation)
+### Track 3: Shear architecture test bed (complete)
 
 Track 1 tuned σ so that ΔE/E = α.  But ΔE/E is a global
-(integrated) quantity — it doesn't tell us about the spatial
-field profile in S.  Track 3 computes the actual field.
+(integrated) quantity and the earlier Track 3 attempts did
+not establish that this mass-shell shift IS the Coulomb
+coupling.  The rebuilt Track 3 is a systematic **test bed**
+over nine shear architectures.
 
-**Approach:** Start with a single electron sheet (model-C
-style).  Compute the spatial field in S from TWO mechanisms:
+**Approach:** For each architecture, build the full 10D (or
+11D) metric from model-E's Ma block plus flat S, Lorentzian
+t, and optional ℵ.  Overlay the architecture's shears at the
+specified entries.  Then check:
 
-A. **R19 mechanism (internal shear):** the mode's energy on
-   the 3D-embedded torus has a component that extends into S.
-   The R19 formula computes this.  Measure the field at
-   various distances r.  This is the mechanism we trusted in
-   model-C.
+1. **Metric signature** (exactly one negative eigenvalue for
+   Lorentzian).  A broken signature disqualifies.
+2. **Spectrum preservation** (electron and proton particle-
+   root masses within 1% of model-E).
+3. **α_eff extraction** via three complementary measures:
+   - (a) mass-shell shift (E_particle − E_bare)/E_bare
+   - (b) inverse-metric gauge extraction (KK-textbook)
+   - (c) spatial coefficient of δg_{Ma,t}(r) at large r
 
-B. **Ma-t mechanism (time coupling):** the off-diagonal Ma-t
-   entry produces a perturbation in S through the mass-shell.
-   Compute the field at various distances r using the
-   linearized 10D Green's function.
+No tuning — each architecture's α_eff is determined by its
+input shears and model-E's geometry.
 
-**Compare A and B:** do they give the same spatial profile
-(1/r) and the same coefficient (α)?  If yes, the two
-mechanisms are equivalent and we understand the coupling.
-If not, we learn which one produces the actual Coulomb field.
+**Architectures tested:** internal cross shear, Ma-S, ℵ-
+mediated to S, ℵ-mediated to t, direct Ma-tube ↔ t, direct
+Ma-ring ↔ t (two magnitudes each).
 
-**Acceptance criteria:**
-- Produce a number that plays the role of α (not tuned to α)
-- Show 1/r spatial dependence with the correct coefficient
-- Derive the charge sign from mode structure
-- If it fails: diagnose which step gives the wrong number
+**Key results:**
+- Four of nine architectures break signature (F28).  The
+  model-E metric is near the PD boundary; many cross-couplings
+  push it over.
+- Only Ma-ring ↔ t architectures preserve both signature and
+  spectrum (F29).
+- With σ = α at that slot, α_eff ≈ 0.87α for electron and
+  0.85α for proton — universal to 1.8%, **without tuning**
+  (F31).  This reproduces Track 1's result from a different
+  angle.
+- Measures (a) and (b) scale differently in σ (F30): (a) ~ σ,
+  (b) ~ σ².  Cannot both be "the Coulomb α" — distinguishing
+  them requires the spatial-field solve (Track 3b).
 
-### Track 4: Comparison and assessment
+Track 3 thus narrows the mechanism to one surviving
+architecture and defines the remaining ambiguity.
 
-Compare results to R55 and model-E:
+### Track 3b: Spatial field solve — the Coulomb test (complete)
 
-| Criterion | Model-E | R55 (ℵ) | R59 (time) |
-|-----------|---------|---------|-----------|
-| Particle spectrum | ✓ | ~1.3% shift | ? |
-| α universality | N/A (assumed) | 3.6% gap | ? |
-| ν coupling | not modeled | 1.07α | ? |
-| Charge mechanism | 3D bending | ℵ mediation | Ma-t coupling? |
-| Free parameters | 4 | 5 (+ σℵS) | ? |
+The one test the test bed did not run: directly compute the
+spatial field δg_{Ma,t}(r) in S sourced by a mode at origin,
+and verify whether the coefficient of 1/r at r ≫ L_Ma
+matches α × (source charge).
 
-Decision: does this become a model-E update, a model-F,
-or a dead end?
+**Result: NEGATIVE.**  With Arch 7's σ = α plugged in, the
+resulting α_Coulomb extracted from the 1/r coefficient is
+~10⁻⁵ × α (electron) and ~10⁻⁴ × α (proton) — five to four
+orders of magnitude too weak for observed Coulomb.  The 1/r
+profile is confirmed at large r (F34), but the coefficient
+is wrong (F35).  Universality also fails at the spatial level
+(F36): α_e / α_p = 0.06 vs the mass-shell's 0.87.
+
+To match observed α from the spatial solve requires σ ≈ 1.8
+(F37), which breaks both signature and spectrum — the classical
+KK hierarchy problem at Compton-scale compact dimensions.
+
+**Implication for R59:** the mass-shell shift ΔE/E ≈ α from
+Track 1 is not the Coulomb coupling.  It is a self-energy-like
+mode shift that happens to equal α numerically when σ = α, but
+does not produce Coulomb force at strength α in S.  R59's
+central claim (Ma-t produces Coulomb α) is falsified (F38).
+
+### Track 4: Closing and next steps
+
+Given Track 3b's negative result, Track 4 does not proceed as
+a "comparison and assessment" to build toward model-F.  Instead,
+the study closes as a negative result with three possible
+follow-on directions:
+
+1. Accept the negative; move focus to other α mechanisms
+   (extended R19, GRID-level, moduli potential).
+2. Check whether a missed normalization factor in the spatial
+   extraction could recover α (focused follow-up).
+3. Treat Ma-t as providing sign structure only, with α strength
+   from a different mechanism (hybrid, loose).
+
+See findings.md §R59 overall status for the current state.
 
 ---
 

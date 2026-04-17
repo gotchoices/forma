@@ -641,11 +641,120 @@ single spatial point.  It does **not**:
 - Distinguish between mass-shell self-energy and Coulomb coupling
 
 These are the pieces needed to definitively identify α_eff as
-the Coulomb coupling.  The disagreement between measures (a)
-and (b) is a direct indicator that a spatial-field computation
-is required to settle the interpretation.  This is the next
-step, and it's numerical rather than narrative — a genuine PDE
-solve in S.
+the Coulomb coupling.  Track 3b addresses them directly.
+
+
+## Track 3b: Spatial field solve — the Coulomb test
+
+Script: [track3b_spatial_solve.py](scripts/track3b_spatial_solve.py).
+
+The question Track 3 left open: is the mass-shell α_eff ≈ α from
+Arch 7 (Ma_ring ↔ t = α) actually the Coulomb coupling, or is it
+a different quantity?  Track 3b resolves this by computing the
+spatial Coulomb-like field in S directly.
+
+Procedure:
+1. Build Arch 7 metric from Track 3.
+2. Place a localized source mode at origin in S (Gaussian of width
+   L_ring/2π, the mode's natural scale).
+3. Extract source strength Q_src from the metric's Ma-t entries
+   contracted with the mode's winding vector n/L.
+4. Solve Poisson's equation ∇²φ = −ρ analytically (3D Laplacian
+   Green's function) for φ(r) on a logarithmic radial grid from
+   0.1 × w_src to 1000 × w_src.
+5. Fit φ(r) = C/(4πr) at large r, extract C.
+6. Compute α_Coulomb = C² / (4π) and compare to observed α.
+7. Cross-check with force between two modes at various r.
+
+
+### F34. The 1/r spatial profile is confirmed
+
+At r > 10 × w_src, the field matches C/(4πr) to 10⁻¹⁶ residual
+(floating-point precision).  The 3D Laplacian Green's function
+works as expected — whatever source strength the metric gives,
+it falls off as 1/r at large r.
+
+This confirms the **qualitative** Coulomb profile from the Ma-t
+mechanism.  What remains is the coefficient.
+
+
+### F35. The coefficient is wrong by ~5 orders of magnitude
+
+With σ = α at the ring entries (Arch 7, the only surviving
+architecture from Track 3):
+
+| Source | C (direct) | α_Coulomb = C²/(4π) | Ratio to α |
+|--------|-----------|---------------------|-----------|
+| electron | +1.23 × 10⁻³ | 1.20 × 10⁻⁷ | 1.6 × 10⁻⁵ |
+| proton | −4.92 × 10⁻³ | 1.92 × 10⁻⁶ | 2.6 × 10⁻⁴ |
+
+The computed Coulomb coupling is **60,000× too weak for the
+electron, 3,800× too weak for the proton**.
+
+Force between electron source and proton test charge
+(F = computed / F_Coulomb_expected): ~10⁻⁴, constant across
+r from 19 fm to 19,000 fm.  The 1/r² shape is correct; the
+magnitude is not.
+
+
+### F36. Universality also fails at the spatial level
+
+At the mass-shell level (Track 3 measure a), α_eff was universal
+across electron and proton to 1.8%.  At the spatial level,
+α_e / α_p = 0.06 — a factor-of-16 disagreement between the two
+modes.
+
+The reason: the direct source strength depends on n_ring/L_ring,
+which differs between modes (electron 2/11.88 = 0.168, proton
+3/4.45 = 0.674).  At the mass-shell level, these contribute in
+combination with the bare Ma metric in a way that partially
+cancels; at the spatial level, the bare factor of n/L survives
+unmitigated.
+
+**The mass-shell universality and the spatial universality
+measure different things.**  Only the spatial universality
+is what real Coulomb interactions would show.
+
+
+### F37. To get α = 1/137 we'd need σ ≈ 1.8 — metric-breaking
+
+Inverting Track 3b's calculation: to match α at the spatial
+level, the Ma-t entry σ must satisfy:
+
+  σ² × (n_e n_p) / (L_e L_p) = α
+
+Solving: σ ≈ 1.8.  At that magnitude, the metric catastrophically
+breaks signature (Track 3 Arch 6 at σ = √α ≈ 0.085 already broke
+spectrum at 8%; σ = 1.8 is 20× larger still).
+
+This is the classical **KK hierarchy problem** surfacing:
+standard KK requires σ ~ O(1) with compact dimensions at the
+Planck scale (L ~ L_P ≈ 10⁻²⁰ fm).  MaSt's compact dimensions
+are at the Compton scale (L ~ 10 fm), so the naturally-sized σ
+gives α that's suppressed by roughly (L_P/L)² ~ 10⁻⁴⁰.  Plugging
+σ = α directly recovers ~5 orders of magnitude but not the full
+~40 needed.
+
+**Conclusion of Track 3b:** the Ma-t coupling mechanism, even
+with σ optimized to preserve the metric, cannot produce α of
+observed strength at the spatial level in S.
+
+
+### F38. The Track 1 family's α identification was operational, not physical
+
+The chain:
+1. Track 1 tuned σ so ΔE/E = α (mass-shell shift).
+2. Track 3 confirmed this works without tuning at σ = α.
+3. Track 3b shows the resulting spatial field is 10⁻⁵ × α, not α.
+
+So the mass-shell quantity ΔE/E is not the Coulomb coupling.  It
+is a self-energy-like shift in the mode's rest mass.  The two
+are related but differ by geometric factors that depend on
+mode extent and compact volumes.
+
+Track 1's "1.8% universality" at the mass-shell level does not
+carry over to the spatial level.  The Ma-t mechanism is not a
+working derivation of α.
 
 
 ## R59 overall status
@@ -682,42 +791,60 @@ solve in S.
 
 ### The honest picture
 
-The rebuilt Track 3 test bed establishes:
+Track 3b delivers the clean negative result that Track 1's
+success was hiding:
 
-- **Most architectures are unphysical** (F28): putting a shear
-  in internal cross, Ma-S, or strong Ma-ℵ blocks breaks the
-  Lorentzian signature on model-E's geometry.
-- **Only Ma_ring ↔ t works** (F29): the single architecture that
-  preserves both signature and spectrum is Track 1's original
-  Ma-ring-to-t coupling.
-- **The "plug in α, get α out" test passes** in the mass-shell
-  measure (F31): with σ = α, the electron and proton mass-shell
-  shifts are 0.87α and 0.85α, universal to 1.8 %.
-- **But three α measures disagree** (F30): mass-shell (a) scales
-  linearly with σ while inverse-metric gauge (b) scales as σ².
-  Without a spatial-field solve, there is no way to identify
-  which quantity is the "Coulomb α."
+- **Mass-shell α_eff ≈ α (Track 1, Arch 7) is not the Coulomb
+  coupling.**  It is a mode-specific mass shift that matches α
+  numerically when σ = α is plugged in, but produces a spatial
+  field that is ~10⁻⁵ times weaker than observed α.
+- **The spatial Coulomb field from Ma-t coupling is ~10⁻⁵ × α**
+  for the electron, ~10⁻⁴ × α for the proton, and non-universal
+  (F35, F36).
+- **Matching observed α would require σ ≈ 1.8**, which breaks
+  both signature and spectrum (F37).  This is the KK hierarchy
+  problem at Compton-scale compact dimensions.
+
+**R59's central claim — that adding time to the metric produces
+the Coulomb coupling at strength α — is falsified by Track 3b.**
+
+What R59 did produce:
+- A systematic test bed narrowing the viable architecture to
+  Arch 7 (F29)
+- A clean falsification of the claim "Ma-t coupling = Coulomb
+  coupling" at the spatial level (F35–F38)
+- A reproducible derivation chain showing the mass-shell vs
+  Coulomb distinction (F30, F38)
+
+These are negative but useful: they rule out a mechanism that
+looked promising for multiple tracks.
+
 
 ### Possible paths forward
 
-1. **Spatial-field PDE solve.**  The one test the test bed did
-   not perform: place a mode at origin in S, solve the linearized
-   10D equations for δg_{Ma,t}(r), extract the 1/r coefficient
-   at large r, compare to α.  This is the only test that can
-   distinguish measures (a) and (b) — and it is the test the
-   user originally proposed (E_Coulomb / E_total = α).
+1. **Accept the negative result.**  The cleanest path.  R59
+   concludes as a negative: Ma-t direct coupling at Compton-scale
+   compact dimensions does not produce α.  Focus shifts to
+   mechanisms that live elsewhere — GRID-level, extended R19,
+   or a moduli potential.
 
-2. **Resolve the σ↔α scaling convention.**  If measure (a) is
-   the right reading, σ = α directly gives α_eff ≈ α.  If
-   measure (b), σ = √α gives α_eff ≈ α but at the cost of
-   spectrum preservation (Arch 8 breaks spectrum by 8 %).
-   Only a first-principles KK derivation or spatial-field
-   solve can decide between them.
+2. **Revisit the extraction normalization.**  Possibly the
+   source-strength formula Q = n · g(Ma,t) misses a factor
+   (compactification volume, harmonic weight, or similar) that
+   would recover α.  A focused follow-up could check this, but
+   the factor required (~10⁵) is suspiciously large and unlikely
+   to come from standard normalization.
 
-3. **Extend R19 to all ε.**  R19 derived α from internal shear
+3. **Extend R19 to all ε.**  R19 derives α from internal shear
    and 3D embedding, but only at the p-sheet (ε ~ O(1)).  A
    generalization valid at ε = 397 would be an independent
-   route to α.
+   route to α — entirely separate from R59's mechanism.
+
+4. **Hybrid interpretation.**  Perhaps Ma-t provides the
+   topological sign structure (charge sign from winding), while
+   α strength comes from a different mechanism (GRID, extended
+   R19, moduli potential).  This is the physics-loose version;
+   it would need the other mechanism to be made concrete.
 
 
 ## Track 1d: Two sheets (electron + proton) — universality
