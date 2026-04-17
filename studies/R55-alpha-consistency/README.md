@@ -1,6 +1,6 @@
 # R55: α consistency check — Ma-S coupling derivation
 
-**Status:** Tracks 1, 3 complete; Track 2 framed
+**Status:** Tracks 1, 3 complete; Track 2 framed; Track 4 paused
 **Questions:** Q115 (metric structure), Q116 (T⁶ vs sheets), Q102 (neutrino neutrality)
 **Type:** theoretical + compute
 **Depends on:** R54 (particle inventory, metric terms), R19 (original α formula),

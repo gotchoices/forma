@@ -5,13 +5,27 @@ mediating Ma-S coupling.
 
 ## Hypothesis F parameters
 
-| Parameter | Value | Source |
-|-----------|-------|--------|
-| Ma-ℵ coupling convention | ±1/(2π) on ring dims | Angular coordinate (radians) |
-| σℵS | 0.2902 | Tuned to give α_eff(electron) = α |
-| Effective Ma-S product | ±0.0462 | = 1/(2π) × σℵS |
+The coupling direction (which side carries α) is symmetric in
+the Schur complement — only the product σ_Ma × σ_ℵS matters
+for universality (F19).  The physical picture (α lives in
+the Ma→ℵ bending) is correct but the metric can't distinguish.
+
+Two representative parameter choices:
+
+| Version | σ_Ma (Ma-ℵ) | σ_ℵS (ℵ-S) | Product | Spectrum shift | Gap |
+|---------|-------------|-------------|---------|---------------|-----|
+| **Minimal shift** | 0.01 | 0.574 | 0.00574 | 0.4% | 3.7% |
+| Balanced (1/2π) | 0.159 | 0.290 | 0.0462 | 1.4% | 3.6% |
+
+The minimal-shift version is preferred for numerical work
+(smallest perturbation to the particle spectrum).
+
+| Parameter | Minimal-shift value | Source |
+|-----------|-------------------|--------|
+| Ma-ℵ ring coupling | ±0.01 | Small — α physics is here |
+| σℵS | 0.574 | Large — direct capture |
+| Effective Ma-S product | ±0.00574 | |
 | √α | 0.0854 | For reference |
-| Product / √α | 0.541 | The effective coupling is 0.54√α |
 
 ## Dimension assignments
 

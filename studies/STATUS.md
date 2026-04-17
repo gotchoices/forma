@@ -132,16 +132,18 @@ to the 1.3 MeV p→n threshold without spatial collision.
 Companion to L04 (THz neutrino experiment) and L02 (threshold
 nuclear loading).
 
-### R55. α consistency — Ma-S coupling derivation  **Framed**
+### R55. α consistency — Ma-S coupling derivation  **Tracks 1,3 done; Track 4 paused**
 **Study:** [`R55-alpha-consistency/`](R55-alpha-consistency/)
-**Questions:** Q115, Q116  **Type:** theoretical + compute  **Depends on:** R54, R19, R48
+**Questions:** Q115, Q116, Q102  **Type:** theoretical + compute  **Depends on:** R54, R19, R48, GRID
 
-Derive the formula connecting Ma-S metric entries to α = 1/137.
-R19 conflated charge creation (topological, GRID) with spatial
-coupling (geometric, Ma-S).  R55 separates them and derives
-α from the Ma-S block of the 9×9 metric.  Includes universality
-check (same Ma-S entries → same α for electron and proton) and
-Coulomb self-energy verification.
+Track 1: Direct Ma-S coupling (Schur complement) gives
+mode-dependent α — fails universality (30%+ spread on e-sheet).
+Track 3: ℵ-mediated 10×10 metric with ring-only Ma-ℵ coupling
+achieves near-universal α (3.6% e-p gap), nonzero ν coupling,
+and 0.4% spectrum shift.  The coupling direction (which side
+carries α) is symmetric in the metric.  Track 4 (self-consistent
+parameter re-derivation) paused — preliminary scans show
+adjusting scale preserves generations.
 
 ### R54. Compound modes on the full T⁶  **Active — Tracks 1–3 complete**
 **Study:** [`R54-compound-modes/`](R54-compound-modes/)

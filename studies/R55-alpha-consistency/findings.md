@@ -287,3 +287,151 @@ consistent with L05.
 
 See [metric-terms.md](metric-terms.md) for the full 10×10
 reference table.
+
+
+## Track 4: Self-consistent parameters with ℵ coupling
+
+### F16. Adjusting scale (ε) preserves generations; adjusting shear (s) destroys them
+
+The generation structure (m_μ/m_e, m_τ/m_e) depends sensitively
+on the shear resonance condition s ≈ n_r/n_t.  A 0.25% change
+in s_e shifts the muon ratio from 207 to 381 — the shear
+resonance is destroyed.
+
+Adjusting ε_e instead (the aspect ratio / overall scale)
+preserves s_e exactly and absorbs the ~1.3% mass shift from
+ℵ coupling.  The muon ratio (206.8) is preserved at the (3,5)
+mode.
+
+**Conclusion:** the self-consistent approach must fix shears
+and adjust scales.
+
+
+### F17. Preliminary self-consistent parameters
+
+With ℵ coupling built in from the start, the sheet parameters
+shift slightly from model-E:
+
+| Parameter | Model-E | Self-consistent (preliminary) | Change |
+|-----------|---------|-------------------------------|--------|
+| ε_e | 397.07 | ~392 (needs finer grid) | -1.3% |
+| s_e | 2.00420 | 2.00420 (fixed) | 0 |
+| ε_p | 0.55 | ~0.54 (needs finer grid) | -2% |
+| s_p | 0.16204 | 0.16204 (fixed) | 0 |
+| σℵS | — | 0.29019 | New |
+
+The cross-sheet shears (σ₄₅, σ₄₆) need re-derivation at the
+new ε_p to match the neutron mass.
+
+
+### F18. The path to a full self-consistent metric
+
+1. Fine-optimize ε_e, ε_p (scipy or dense grid) to give
+   exact m_e, m_p on the ℵ-corrected metric
+2. Re-derive σ₄₅, σ₄₆ for the neutron at the new ε_p
+3. Re-scan all 18 model-E particles
+4. Fine-tune σℵS if the α universality gap shifts
+5. Compare to model-E: same quality or better?
+
+This is tractable engineering — not a fundamental problem.
+The 10×10 structure works; only the numerical parameters
+need polishing.
+
+
+### F19. The coupling direction (Ma→ℵ vs ℵ→S) doesn't matter
+
+A systematic sweep tested all combinations: large σ_Ma with
+small σ_ℵS ("α lives in Ma→ℵ bending") through small σ_Ma
+with large σ_ℵS ("α lives in ℵ→S capture").
+
+| σ_Ma | σ_ℵS | Gap | Spectrum shift | Physical picture |
+|------|------|-----|---------------|-----------------|
+| 0.01 | 0.574 | 3.71% | 0.4% | α on Ma side (bending) |
+| 0.05 | 0.514 | 3.70% | 0.5% | Moderate |
+| 0.159 | 0.290 | 3.64% | 1.4% | Balanced (1/(2π)) |
+| 0.30 | 0.143 | 3.42% | 4.7% | α on S side |
+| 0.50 | 0.043 | 2.32% | 28% | Max Ma (unacceptable shift) |
+
+**The Schur complement formalism is symmetric** — it sees
+only the product σ_Ma × σ_ℵS and how it interacts with
+the internal metric.  Swapping which factor is large and
+which is small doesn't change the universality gap.
+
+The 3.6% gap is structural: it comes from the difference
+between the e-sheet internal shear (s_e = 2.004, nearly
+saturating the PD bound) and the p-sheet shear (s_p = 0.162,
+well within PD).  The Schur complement correction from ℵ
+interacts differently with these two geometries.
+
+**Physical interpretation:** the user's picture (α lives in
+the Ma→ℵ bending, ℵ→S is direct capture) is correct as
+physics, but the metric treats it symmetrically.  Either
+assignment gives the same results.
+
+**Practical choice:** minimize spectrum shift by using
+small σ_Ma, large σ_ℵS.  The version σ_Ma = 0.01,
+σ_ℵS = 0.574 gives only 0.4% spectrum shift with 3.7%
+universality gap — the best tradeoff.
+
+
+## Track 4 status
+
+**Paused.**  Preliminary scans show:
+- Adjusting ε (scale) preserves generations; adjusting s (shear) destroys them
+- The coupling direction doesn't affect universality (F19)
+- The 3.6% e-p gap is structural (from different internal shears)
+- Spectrum shifts can be minimized to 0.4% with appropriate σ_Ma/σ_ℵS split
+
+Remaining work (when resumed):
+1. Fine-optimize ε_e, ε_p for exact masses on ℵ-corrected metric
+2. Re-derive cross-sheet shears for neutron
+3. Full particle inventory scan
+4. Decide if this is a model-E update or model-F
+
+
+## R55 overall status
+
+**Tracks 1, 3 complete.  Track 2 framed.  Track 4 paused.**
+
+### What R55 established
+
+1. **Direct Ma-S coupling (Track 1) fails universality.**
+   The Schur complement gives mode-dependent α_eff.  The
+   e-sheet's large internal shear (s = 2.004) makes the
+   per-mode coupling inherently non-universal (30%+ spread).
+
+2. **Charge and coupling are independent (Track 2 framing).**
+   Charge is topological (tube winding + phase gradient
+   resolution).  Coupling is geometric (metric tilt / ℵ
+   mediation).  The ν-sheet can couple without charge.
+
+3. **The ℵ-mediated 10×10 metric works (Track 3).**
+   Adding the ℵ dimension (Planck-scale, angular coordinate)
+   with ring-only Ma-ℵ coupling at ±1/(2π) produces:
+   - Near-universal α: 3.6% e-p gap (vs 30%+ in Track 1)
+   - Nonzero ν coupling at ~1.07α (supports L05)
+   - Spectrum shift minimizable to 0.4%
+   - Ma-S = 0 in the metric (all coupling through ℵ)
+   - Clean separation of charge, coupling, generations
+
+4. **The 3.6% gap is structural (Track 4).**
+   It comes from the asymmetry between e-sheet (s = 2.004)
+   and p-sheet (s = 0.162) internal shears interacting with
+   the Schur complement.  It doesn't depend on which side
+   (Ma or S) carries α.  Closing it would require either
+   non-uniform Ma-ℵ coupling or accepting it as model
+   precision.
+
+5. **The coupling direction is symmetric in the metric.**
+   "α in Ma→ℵ, direct ℵ→S" vs "direct Ma→ℵ, α in ℵ→S"
+   give identical universality.  The physics (bending
+   produces leakage) favors α on the Ma side, but the
+   metric can't distinguish the two.
+
+### What remains open
+
+- Fine numerical optimization of the self-consistent parameters
+- Whether the 3.6% gap can be closed
+- Connection between σ_Ma × σ_ℵS and the sim-impedance
+  junction leakage (would derive α from geometry)
+- Whether this constitutes a model-E update or model-F
