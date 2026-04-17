@@ -192,27 +192,36 @@ Tests:
   (The flat metric has no saturation; but Ma-t entries
   add new off-diagonal load.)
 
-### Track 3: EM force from the metric (hypothesis test)
+### Track 3: Spatial field from the coupling (computation)
 
-If Track 1 succeeds (Ma-t entries produce the EM potential):
-test whether the resulting field reproduces the Coulomb force.
+Track 1 tuned σ so that ΔE/E = α.  But ΔE/E is a global
+(integrated) quantity — it doesn't tell us about the spatial
+field profile in S.  Track 3 computes the actual field.
 
-Questions:
-- Does the sign of the tube winding (n₁) produce opposite
-  fields?
-- Place two opposite-winding modes at separation r in S.
-  Do they attract?  With the correct 1/r² law?
-- Place two same-winding modes.  Do they repel?
-- Does the coefficient give α?
+**Approach:** Start with a single electron sheet (model-C
+style).  Compute the spatial field in S from TWO mechanisms:
 
-This is a hypothesis test — not guaranteed by Track 1.
-Track 1 may produce the correct EM potential without the
-force derivation being straightforward for standing-wave
-modes (as opposed to KK point particles).
+A. **R19 mechanism (internal shear):** the mode's energy on
+   the 3D-embedded torus has a component that extends into S.
+   The R19 formula computes this.  Measure the field at
+   various distances r.  This is the mechanism we trusted in
+   model-C.
 
-**Viz:** Compress S to 2D.  Show geodesic convergence
-(attraction) and divergence (repulsion) on a surface with
-the Ma-sourced curvature visible.
+B. **Ma-t mechanism (time coupling):** the off-diagonal Ma-t
+   entry produces a perturbation in S through the mass-shell.
+   Compute the field at various distances r using the
+   linearized 10D Green's function.
+
+**Compare A and B:** do they give the same spatial profile
+(1/r) and the same coefficient (α)?  If yes, the two
+mechanisms are equivalent and we understand the coupling.
+If not, we learn which one produces the actual Coulomb field.
+
+**Acceptance criteria:**
+- Produce a number that plays the role of α (not tuned to α)
+- Show 1/r spatial dependence with the correct coefficient
+- Derive the charge sign from mode structure
+- If it fails: diagnose which step gives the wrong number
 
 ### Track 4: Comparison and assessment
 

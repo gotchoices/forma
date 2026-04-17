@@ -483,9 +483,27 @@ The F4 sign problem is resolved (F22).  Key findings:
    give correct mass direction
 
 
-## Track 3: Does the metric produce a Coulomb field?
+## Track 3 (rebuilt): Spatial field from the coupling
 
-### F28. The 1/r spatial dependence is guaranteed by 3D geometry
+### F28. R19 gives α at the p-sheet but fails at the e-sheet
+
+The R19 formula α(ε, s) = ε² × μ × sin²(2πs) / (4π q²):
+
+| Sheet | ε | s | α(R19) | ratio to α |
+|-------|---|---|--------|-----------|
+| p-sheet | 0.55 | 0.162 | 7.30×10⁻³ | **1.000** ✓ |
+| e-sheet | 397 | 2.004 | 2,425 | 332,333 ✗ |
+
+R19 was derived for ε ~ O(1).  At ε = 397, the formula
+gives a nonsensical value — 330,000× too large.
+
+**This means the model-C approach (internal shear → α) only
+ever worked at the p-sheet.**  The e-sheet was never tested
+independently — its shear was set for generation structure
+(R53), not for α.  The implicit assumption that "α from R19
+works for all sheets" was never validated at the e-sheet.
+
+### F29. Standard KK gives α ≈ 10⁻⁴² — 40 orders too small
 
 Any localized energy source in 3D space produces a 1/r
 potential perturbation at distances r >> source size.  This
@@ -502,66 +520,53 @@ produces a localized perturbation in S will give 1/r
 at macroscopic distances.
 
 
-### F29. The coupling STRENGTH is not the Coulomb self-energy
+### F29. Standard KK gives α ≈ 10⁻⁴² — 40 orders too small
 
-Track 1 found ΔE/E = α ≈ 0.73%.  But the classical Coulomb
-self-energy of a charge distributed on a ring of radius R is:
+The standard KK coupling is α_KK = 4 L_P² / L₅², where L₅
+is the compact circumference and L_P is the Planck length.
 
-> U_self / mc² ≈ α × (λ_C / R)
+For L₅ = L_ring_e = 11.88 fm:
+> α_KK = 4 × (1.6 × 10⁻²⁰)² / 11.88² = 7.4 × 10⁻⁴²
 
-For the electron: R ≈ L_ring/(2π) ≈ 1.9 fm, λ_C ≈ 2426 fm:
+This is 10³⁹× below the observed α.  Standard KK requires
+the compact dimensions at the Planck scale; ours are at the
+Compton scale, ~10²⁰× larger.
 
-> U_self / mc² ≈ α × 1283 ≈ 9.4
-
-This is ~1300× larger than the Track 1 result (ΔE/E = α).
-
-**The Track 1 mass shift is NOT the Coulomb self-energy.**
-The Coulomb self-energy involves the spatial field profile
-(the 1/r potential integrated over the charge distribution).
-The mass-shell shift involves the Ma-t coupling in the
-METRIC (a global property, not a spatial integral).
-
-These are different quantities.  Tuning σ to give ΔE/E = α
-does not mean the spatial Coulomb field has strength α.  The
-relationship between σ and α requires a computation that
-connects the metric coupling to the spatial field — which
-has not been done.
+**Standard KK does not apply to MaSt's geometry.**
 
 
-### F30. The sign structure IS correct
+### F30. Track 1's ΔE/E = α is tuned, not the Coulomb self-energy
 
-Despite the quantitative uncertainty (F29), the sign
-structure from the metric is correct:
+The classical Coulomb self-energy of a charge distributed on
+a ring of radius R is:
 
-- Positive winding (n₁ = +1) produces positive Ma-t
-  perturbation
-- Negative winding (n₁ = -1) produces negative perturbation
-- Same-sign sources reinforce → repulsion
-- Opposite-sign sources cancel → attraction
+> U_self / mc² = α × λ_C / R ≈ α × 1283 ≈ 9.4
 
-This follows from the linearized gravity argument: the
-Ma-t perturbation is proportional to n₁ × σ × M, which
-changes sign with n₁.
+This is ~1300× larger than Track 1's ΔE/E = α.
+
+Track 1's mass-shell shift is a DIFFERENT quantity from the
+Coulomb self-energy.  Tuning σ to give ΔE/E = α does not
+establish that the spatial Coulomb field has strength α.
 
 
-### F31. What Track 3 establishes and doesn't
+### F31. Three numbers that all claim to be α
 
-**Established:**
-- 1/r spatial dependence (from 3D geometry) ✓
-- Correct sign (attraction/repulsion from winding sign) ✓
-- Localized source produces Coulomb-like field ✓
+| Source | Value | Ratio to α |
+|--------|-------|-----------|
+| Observed α | 7.30 × 10⁻³ | 1.0 |
+| R19 (p-sheet, ε=0.55) | 7.30 × 10⁻³ | 1.0 ✓ |
+| R19 (e-sheet, ε=397) | 2,425 | 332,333 ✗ |
+| KK standard | 7.4 × 10⁻⁴² | 10⁻³⁹ ✗ |
+| Track 1 ΔE/E | 7.30 × 10⁻³ | 1.0 (tuned) |
+| Coulomb self-energy/mc² | 9.4 | 1,283 |
 
-**NOT established:**
-- Whether ΔE/E = α corresponds to α in Coulomb's law
-- The exact relationship between σ (metric entry) and α
-- Whether the standing-wave source gives the same result as
-  a KK point-particle source
+Only R19 at the p-sheet DERIVES α from geometry.  Track 1
+matches α by tuning.  All other numbers disagree wildly.
 
-**The gap:** we have the right qualitative behavior but the
-quantitative link between the metric coupling and Coulomb's
-law requires either (a) a full standing-wave KK reduction or
-(b) a numerical computation of the spatial field from the
-mode's energy distribution.
+The relationship between these quantities is unresolved.
+A proper derivation of α from the metric would produce the
+observed value WITHOUT tuning — either from R19's geometry
+(extended to work at all ε) or from a new mechanism.
 
 
 ## R59 overall status
@@ -579,24 +584,53 @@ mode's energy distribution.
 4. The coupling doesn't touch particle-spectrum entries (F15)
 5. Generation structure is preserved (F17)
 6. Universality gap ≈ 1.8% across e and p sheets (F26)
-7. 1/r spatial dependence guaranteed by 3D geometry (F28)
-8. Correct attraction/repulsion from winding sign (F30)
-9. Both direct (D1) and ℵ-mediated (D2) approaches give
+7. Both direct (D1) and ℵ-mediated (D2) approaches give
    correct mass direction when the particle root is used
 
 ### What R59 did NOT establish
 
-10. Whether ΔE/E = α IS the Coulomb coupling α (F29)
-11. The exact σ-to-α relationship for standing waves
-12. Whether ℵ is needed (both approaches work comparably)
-13. How the ~1.8% universality gap can be closed
+8. **Whether ΔE/E = α IS the Coulomb coupling α.** Track 3
+   showed that ΔE/E = α (Track 1) is NOT the Coulomb self-
+   energy α × λ_C/R (which is ~1300× larger).  They are
+   different quantities.  (F30)
+9. **A derivation of α from the metric.**  Track 1 tunes σ
+   to give ΔE/E = α — this is a fit, not a derivation.
+   R19 derives α only at the p-sheet (ε ~ O(1)); it fails
+   at the e-sheet (ε = 397).  Standard KK gives α ≈ 10⁻⁴²
+   — 40 orders too small.  (F28, F29, F31)
+10. Whether ℵ is needed (both approaches work comparably)
+11. How the ~1.8% universality gap can be closed
 
-### Recommended next steps
+### The honest picture
 
-- Derive the spatial field profile from the standing-wave
-  source (numerical Green's function computation)
-- Or accept ΔE/E = α as an operational proxy and proceed
-  to the full particle inventory
+R59 added time to the metric and found a mechanism that
+produces a charge-dependent mass splitting tunable to α,
+with 1.8% universality and correct sign.  But Track 3
+revealed that this mass splitting is NOT the same as the
+Coulomb coupling — they differ by ~1300×.
+
+The only mechanism that ever DERIVED α = 1/137 from geometry
+is R19's internal shear formula, and that works only at the
+p-sheet (ε ~ O(1)).  No mechanism works at the e-sheet or
+across all sheets simultaneously.
+
+### Possible paths forward
+
+1. **Extend R19 to all ε:** The R19 formula fails at large ε
+   because it was derived for a specific 3D embedding.  A
+   generalized formula (or a different derivation) that gives
+   α at all aspect ratios would unify the p-sheet and e-sheet.
+
+2. **Understand what ΔE/E measures:** If ΔE/E ≠ α (the Coulomb
+   coupling), what IS it?  It might be a renormalized coupling,
+   a running coupling at the Compton scale, or a different
+   physical quantity entirely.
+
+3. **Compute the spatial field numerically:** Place the mode at
+   the origin, solve the Green's function at various r, and
+   read off the coefficient.  This directly tests whether the
+   Ma-t coupling produces a Coulomb field of strength α.
+   (Requires probing at r >> R_tube ≈ 751 fm for the e-sheet.)
 
 
 ## Track 1d: Two sheets (electron + proton) — universality
