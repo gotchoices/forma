@@ -132,6 +132,19 @@ to the 1.3 MeV p→n threshold without spatial collision.
 Companion to L04 (THz neutrino experiment) and L02 (threshold
 nuclear loading).
 
+### R59. Clifford torus — EM as geometry in 4D  **Framed**
+**Study:** [`R59-clifford-torus/`](R59-clifford-torus/)
+**Type:** theoretical + compute + visualization
+**Depends on:** R55, R54, R53, sim-impedance, GRID
+
+Embed Ma sheets as Clifford tori in 4D (not 3D).  Resolves
+self-intersection, metric saturation, and inner/outer asymmetry.
+Tests whether signed curvature in 4D provides the mechanism for
+EM attraction/repulsion (opposite windings → geodesic convergence,
+same windings → divergence).  5 tracks: Clifford metric, signed
+curvature, Lorentzian 4+1D with time, particle spectrum, and
+Coulomb law from geodesics.
+
 ### R55. α consistency — Ma-S coupling derivation  **Tracks 1,3 done; Track 4 paused**
 **Study:** [`R55-alpha-consistency/`](R55-alpha-consistency/)
 **Questions:** Q115, Q116, Q102  **Type:** theoretical + compute  **Depends on:** R54, R19, R48, GRID
