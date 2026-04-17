@@ -207,7 +207,103 @@ The 10D Lorentzian metric with Ma-t ring coupling achieves a
    physical answer.
 
 Track 2 should address:
-- The mass-decrease sign problem (F4)
-- Whether re-tuning ε compensates the 0.7% spectrum shift
+- Whether re-tuning ε compensates the spectrum shift
 - Whether the particle/antiparticle splitting (F5) is physical
 - The tube-charge / ring-coupling gap (F2 open question)
+
+
+## Track 1b: ℵ-mediated time coupling (11D)
+
+### F9. Masses INCREASE — correct direction
+
+Track 1b routes the coupling Ma → ℵ → t.  The ℵ link is
+Euclidean (+1 diagonal); only the final ℵ-t leg is Lorentzian.
+The double indirection flips the sign relative to Track 1.
+
+Result: all masses INCREASE by ~0.7%.  This is the correct
+direction for Coulomb self-energy (charge adds energy to the
+rest mass).  **Track 1b resolves the F4 sign problem.**
+
+
+### F10. Universality gap is 5.24% — worse than Track 1
+
+| Mode | α_eff/α |
+|------|---------|
+| electron | 1.000 (tuned) |
+| proton | 1.044 |
+| deuteron | 1.044 |
+| Σ⁻ | 1.055 |
+
+Gap: 5.24% (vs Track 1's 1.83%, R55's 3.6%).
+
+The gap is wider because the coupling goes through two hops
+(Ma-ℵ and ℵ-t), and the Ma-ℵ entries (±1/(2π)) interact
+non-trivially with the internal shears in the Schur complement.
+
+
+### F11. Signs are inherited from R55 geometry
+
+The effective Ma-t entries (from integrating out ℵ) are:
+- e-ring → t: +0.041
+- ν-ring → t: −0.041
+- p-ring → t: −0.041
+
+These signs emerge from R55's Ma-ℵ geometry × σ_{ℵt}, not
+from hand-coding.  However, the sign convention is reversed
+relative to the charge convention (e-ring positive, p-ring
+negative).  Whether this is physically correct (the coupling
+sign may differ from the charge sign) or an error in the
+geometry needs investigation.
+
+
+### F12. Neutrino couples at 0.92α — inherited from R55
+
+The ν-ring was coupled at +1/(2π) in R55's Ma-ℵ block.
+Through the ℵ-t chain, this produces α_eff(ν₁) = 0.92α.
+This is inherited from R55's choice, not emergent.  If the
+ν-ring Ma-ℵ entry were zero, the neutrino coupling would be
+purely indirect (through cross-sheet leakage).
+
+
+### F13. The bare 11D metric has a 1% baseline shift
+
+Even at σ_{ℵt} = 0, the 11D metric produces masses ~1%
+higher than model-E.  This is because R55's Ma-ℵ entries
+(±1/(2π)) perturb the Ma metric when ℵ is present.  The
+tuning of σ_{ℵt} acts ON TOP of this baseline shift,
+which complicates the comparison with Track 1.
+
+
+### F14. Comparison: Track 1 vs Track 1b
+
+| Property | Track 1 (direct Ma-t) | Track 1b (ℵ→t) |
+|----------|----------------------|-----------------|
+| Dimensions | 10D (no ℵ) | 11D (with ℵ) |
+| Knobs | 1 (σ) + 6 hand-coded entries | 1 (σ_{ℵt}) + R55 entries |
+| Signs | Hand-coded | Inherited from R55 |
+| Mass direction | Decrease (WRONG) | **Increase (CORRECT)** |
+| Universality gap | **1.83%** | 5.24% |
+| Baseline shift | None | 1% from R55 Ma-ℵ |
+| ν coupling | 0.127α (indirect) | 0.92α (from R55) |
+
+**Track 1 wins on universality (1.83% vs 5.24%).**
+**Track 1b wins on mass direction and sign inheritance.**
+
+Neither is fully satisfactory.  The ideal would combine
+Track 1b's correct sign structure with Track 1's tighter
+universality.  This might require adjusting the Ma-ℵ
+coupling values (not exactly ±1/(2π)) or combining direct
+Ma-t entries with ℵ mediation.
+
+
+## Track 1 overall status
+
+**Tracks 1 and 1b complete.**
+
+Key findings across both:
+1. Ring coupling works; tube coupling doesn't (F2)
+2. Mass-shell condition is the correct Lorentzian tool (F3)
+3. Direct Ma-t gives better universality but wrong mass sign (F4, F6)
+4. ℵ-mediated Ma-t gives correct mass sign but worse gap (F9, F10)
+5. The coupling parameter σ ≈ 0.009 (Track 1) or σ_{ℵt} ≈ 0.26 (Track 1b)
+6. Particle/antiparticle splitting is a physical feature (F5)
