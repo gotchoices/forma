@@ -316,3 +316,96 @@ beats Track 1's 1.9 % universality gap with signs inherited from
 R55 rather than hand‑coded.  A positive result would be stronger
 than Track 1's current claim; a negative one would justify the
 direct Ma‑t architecture on its merits.
+
+---
+
+## Tracks 1b, 1c, 1d review
+
+Review of the ℵ‑mediated track (1b), the minimal single‑sheet
+track (1c), and the two‑sheet track (1d) as reported in
+[findings.md](findings.md) F9–F21.
+
+### What's going well
+
+- Writeup now routinely flags "one‑parameter fit," "hand‑coded
+  signs," and "proxy α_eff" — a real improvement over the
+  original Track 1 text.
+- F4 (mass decrease) is named as a threat; F9 (mass increase
+  through ℵ) partially resolves it.
+- Structural decomposition via 1c/1d confirms that coupling
+  entries don't touch the particle‑spectrum entries (F15) and
+  that generation structure is preserved (F17).  These are
+  genuinely reassuring.
+- The R55 comparison is re‑framed honestly (F7) rather than
+  claiming a straightforward "halved gap."
+
+### What's concerning
+
+- **Still tuning a proxy.**  *Serious.*  Every sub‑track tunes
+  σ until α_eff ≡ |ΔE/E| matches α.  The F6 caveat that this
+  identification needs Track 3 to validate is still
+  outstanding.  The entire 1/1b/1c/1d family is optimizing
+  against an objective function whose physical meaning is
+  deferred.
+- **Sign dichotomy is not a benign tradeoff.**  *Serious.*  F14
+  frames D1 and D2 as complementary (D1 wins universality, D2
+  wins sign), but a mechanism that produces the *wrong sign*
+  of a self‑energy correction is not a variant of a right
+  mechanism — it is a different mechanism.  That the α_eff
+  quantity is insensitive to this distinction is another
+  symptom that α_eff ≠ α.
+- **Inherited signs in 1b are reversed.**  *Serious.*  F11
+  reports e‑ring +, p‑ring − — backwards relative to observed
+  charge — and waves it off as *"may differ from charge sign."*
+  Inherited signs in Track 1b come from R55's *fit*, not from
+  an independent derivation, so "emergent" oversells what is
+  happening.
+- **F21 non‑monotonicity is a red flag.**  *Moderate.*  α_eff
+  passing through zero means the tuning surface has two
+  branches with different physics; the 4.23 % gap depends on
+  which branch.  A quantity with zero‑crossings is not a
+  coupling strength but a residual of competing contributions.
+- **1 % baseline shift from ℵ (F13) silently re‑tunes.**
+  *Moderate.*  Model‑E was tuned with ℵ absent.  Turning ℵ on
+  shifts masses 1 % before any σ_{ℵt} is applied.  The final
+  gap attribution to the coupling is blurred by this baseline.
+- **"Structural gap" claim only half established.**  *Editorial.*
+  F20 asserts the gap is a geometric property of aspect ratios
+  but doesn't test it by varying L_p/L_e etc.  Either show the
+  gap tracks aspect ratios (confirming the ceiling), or drop
+  the claim.
+
+### Strategic advice
+
+1. **Pause Track 1 variants; do Track 3.**  Track 3's KK
+   reduction is what turns α_eff into an actual Coulomb
+   coupling.  Each possible outcome of Track 3 (|ΔE/E| equals
+   α, is proportional to α, or is unrelated) directly decides
+   whether D1, D2, or neither is the physical architecture.
+   Without that decision, more variants are moves on a board
+   whose rules aren't fixed.
+
+2. **If Track 3 has to wait, resolve F4 first.**  Three
+   concrete diagnostics for the mass‑direction puzzle:
+   - Decide whether F5's low root or high root is "the
+     particle" under a consistent charge‑sign definition.
+   - Compute standard KK Coulomb self‑energy for a (1,2)
+     winding and compare magnitude to 0.7 %.
+   - Flip the metric signature convention and see whether
+     the sign of ΔE/E follows — if so, F4 is a signature
+     artifact, not a physics failure.
+
+3. **Hold Track 1e (neutrino sheet).**  F8 and F12 both
+   depend on whether the ν‑ring Ma‑ℵ entry is 0 or nonzero.
+   That is a framing choice, not something another numerical
+   track can settle.  Adding a third sheet before the D1/D2
+   question is decided multiplies parameter space without
+   progress on the hypothesis.
+
+### Net
+
+Methodologically the work has improved.  Strategically the
+Track 1 family is drifting — each sub‑track is a variation on
+an objective that has not been validated.  One move toward
+Track 3, or one hard push on F4, would produce more signal
+than three more Track‑1 variants.

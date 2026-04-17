@@ -372,3 +372,71 @@ Key findings:
 7. The coupling parameter: σ ≈ 0.009 (direct) or σ_ℵt ≈ 0.26 (ℵ)
 8. ℵ gives correct mass direction; direct gives better universality;
    both remain open approaches
+
+
+## Track 1d: Two sheets (electron + proton) — universality
+
+### F19. Two-sheet results match single-sheet — no cross-sheet interference
+
+Adding the proton sheet to the minimal metric does not
+change the electron's coupling or vice versa.  The gaps
+are essentially identical to the single-sheet (Track 1c)
+and full model-E (Track 1) results:
+
+| Approach | 1-sheet gap | 2-sheet gap | Full model-E gap |
+|----------|-----------|-----------|-----------------|
+| D1 (direct) | N/A | 1.84% | 1.83% |
+| D2 (ℵ-med) | N/A | 4.23% | 5.24% |
+
+The two sheets are independent: each has its own ring entry,
+and the coupling for one sheet doesn't affect the other.
+This confirms F15 — the coupling entries don't conflict with
+the particle spectrum entries.
+
+
+### F20. The tradeoff is structural
+
+| Property | D1 (direct ring-t) | D2 (ℵ-mediated) |
+|----------|-------------------|-----------------|
+| Gap | **1.84%** | 4.23% |
+| Mass direction | DOWN (wrong) | **UP (correct)** |
+| Parameters | 1 per sheet (ring-t) | 1 per sheet (ring-ℵ) + 1 shared (ℵ-t) |
+| Signs | Hand-coded | Inherited |
+
+Neither approach alone gives both tight universality AND
+correct mass direction.  The gap is a geometric property of
+the sheet aspect ratios and shears — it doesn't change with
+the coupling architecture.
+
+
+### F21. The D2 coupling is non-monotonic
+
+The ℵ-mediated α_eff passes through a minimum near σ_ℵt ≈ 0.10
+(where α_eff ≈ 0.09α for both sheets).  Below this, the
+coupling increases with decreasing σ_ℵt.  Above it, the
+coupling increases with increasing σ_ℵt.
+
+This means the Schur complement through ℵ (Euclidean) and
+through t (Lorentzian) partially cancel at intermediate
+values, producing a near-zero coupling.  The electron and
+proton pass through zero at slightly different σ_ℵt values,
+which creates the universality gap.
+
+
+## Track 1 series status
+
+**Tracks 1, 1b, 1c, 1d complete.**
+
+The bottom-up approach (1c → 1d) confirmed the top-down
+results (1, 1b):
+- Ring coupling works; tube coupling doesn't
+- Direct Ma-t gives ~1.8% gap but wrong mass sign
+- ℵ-mediated gives correct mass sign but ~4-5% gap
+- Coupling doesn't touch particle-spectrum entries
+- Generation structure is preserved
+- The gap is structural (from sheet geometry), not
+  from the coupling architecture
+
+Next: add neutrino sheet (Track 1e) and/or investigate
+whether the mass-sign issue in D1 is a real physical
+problem or an artifact of the α_eff definition.
