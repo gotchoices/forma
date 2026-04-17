@@ -4,7 +4,8 @@
 **Background:** [background.md](background.md)
 **Type:** theoretical + compute + visualization
 **Depends on:** R55 (ℵ-mediated coupling), R54 (particle inventory),
-  R53 (generations), sim-impedance (charge from bending),
+  R53 (generations),
+  [sim-impedance](../../grid/sim-impedance/) (charge from bending, Tracks 8–12),
   GRID (lattice substrate)
 
 ---
@@ -12,20 +13,25 @@
 ## Core question
 
 Einstein showed: gravity is not a force — it's curvature of
-spacetime (St).  Mass bends the spatial-time (S-t) plane,
-causing geodesic convergence (objects "fall" toward each other).
+spacetime (St).  Mass bends St, causing geodesic convergence
+(objects "fall" toward each other).
 
-**Could electromagnetism work the same way?**  If charges bend
-the compact-time (Ma-t) plane — with a sign that depends on
-the winding direction — then:
-- Opposite charges → curvatures cancel between them →
+**Could electromagnetism work the same way?**  In the KK
+picture, a charge (compact winding on Ma) SOURCES a field in
+St.  The field curves geodesics in St — specifically in the
+S-t plane (electric force) and S-S plane (magnetic force).
+The force is experienced in St, not in Ma.
+
+**Hypothesis (to be tested in Tracks 2 and 5):** the sign of
+the force comes from the sign of the Ma winding:
+- Opposite windings → fields cancel between charges →
   geodesics converge → **attraction**
-- Like charges → curvatures reinforce between them →
+- Same windings → fields reinforce →
   geodesics diverge → **repulsion**
 
-The Coulomb force would be geodesic deviation in the Ma-t
-plane, just as gravitational "force" is geodesic deviation
-in the S-t plane.
+The coupling α determines how strongly a Ma winding sources
+the St field.  In KK theory, it appears in the off-diagonal
+metric entries between Ma and St.
 
 ---
 
@@ -39,32 +45,44 @@ R1–R58.  This causes problems:
 - No mechanism for signed curvature
 
 A 2-torus needs at least 4 dimensions for a flat embedding.
-The **Clifford torus** embeds in 4D as two circles in
-orthogonal planes: no bending, no self-intersection, any
-aspect ratio valid.  The model-E flat-torus metric has been
-implicitly assuming a Clifford embedding all along.
+The **Clifford torus** is a flat 2-torus: two circles in
+orthogonal planes.  No bending, no self-intersection, any
+aspect ratio valid.  Model-E's particle spectrum uses a
+flat metric (matching the Clifford form), but its charge
+and α mechanisms (R19, R48, sim-impedance) explicitly use
+3D embedding with bending.  R59 proposes to replace those
+3D-dependent mechanisms with KK-based coupling on the
+intrinsically flat geometry.
 
-The physical question: which 4 dimensions?
-- 4 spatial (pure math, no forces) — incomplete
-- 3 spatial + time (spacetime) — the KK picture, gives forces
-- 2 compact + 1 spatial + 1 time — a hybrid
+The compact dimensions don't occupy room in S.  They are
+internal dimensions at each point of St.  The six Ma dimensions
+form T⁶ = T² × T² × T² — three Clifford tori, each a pair
+of orthogonal circles.  They all embed flatly because they
+are ADDITIONAL dimensions, orthogonal to S and to each other.
 
-The study investigates all options, with emphasis on the
-spacetime embedding where the Ma-t coupling provides the
-electromagnetic force.
+The question is not "where does the torus fit in space" but
+"how does the internal winding on Ma couple to the external
+field in St."  That coupling is α, and it appears in the
+off-diagonal metric between Ma and St (specifically Ma and t
+for the electric field).
 
 ---
 
-## What changes from 3D
+## What changes from model-E's 3D embedding
 
-| Feature | 3D torus | Clifford torus |
-|---------|----------|---------------|
-| Extrinsic curvature | Nonzero (inner/outer) | Zero (flat) |
-| Self-intersection | Fails when a > R | Any aspect ratio valid |
-| Tube-ring mixing | cos(θ₁) factor | Zero (orthogonal) |
-| Metric saturation | e-sheet at PD limit | No saturation |
-| EM as geometry | No signed curvature | Signed curvature from Ma-t |
-| Time integration | Separate (bolt-on) | Natural (part of the 4D) |
+Model-E's particle spectrum uses a flat metric, but its charge
+and coupling mechanisms use 3D embedding.  R59 proposes to move
+everything to the intrinsic flat geometry + KK coupling.
+The table compares the two approaches.
+
+| Feature | 3D visualization | Intrinsic (Clifford) | Type of change |
+|---------|-----------------|---------------------|----------------|
+| Extrinsic curvature | Nonzero (inner/outer) | Zero (flat) | Artifact removed |
+| Self-intersection | Fails when a > R | Any aspect ratio valid | Artifact removed |
+| Tube-ring mixing | cos(θ₁) factor | Zero | Artifact removed |
+| Metric saturation | e-sheet at PD limit | No saturation | Artifact removed |
+| EM from curvature | Not available | Hypothesis: Ma-St coupling → Coulomb | **New physics (R59)** |
+| Time in metric | Absent | Included via KK | **New physics (R59)** |
 
 ---
 
@@ -86,9 +104,9 @@ electromagnetic force.
 
 3. **Where does α appear?**  In KK theory, α comes from the
    ratio of the compact dimension's size to the Planck length.
-   In the Clifford-spacetime picture, it might come from the
-   Ma-t off-diagonal metric entry directly.  A single entry
-   setting α (as the user proposed) would be the cleanest
+   In the Ma-St picture, it might come from the Ma-t
+   off-diagonal metric entry directly.  A single entry
+   setting α would be the cleanest
    result.
 
 ---
@@ -109,30 +127,38 @@ for the Clifford torus T² = S¹(r₁) × S¹(r₂).
 Clifford torus as the familiar 3D torus (a projection,
 not the true geometry).
 
-### Track 2: Signed curvature from windings
+### Track 2: Signed St curvature from Ma windings
 
-Compute the curvature produced by a mode with winding (n₁, n₂)
-on the Clifford torus.
+A mode with winding (n₁, n₂) on Ma sources a field in St
+through the Ma-St off-diagonal coupling.  The field curves
+geodesics in St.
 
-- Does the sign of n₁ produce opposite curvature?
+- Does the sign of n₁ produce opposite St curvature?
 - Place two opposite-sign modes at separation r in S.
-  Do geodesics converge (attraction)?
-- Place two same-sign modes.  Do geodesics diverge (repulsion)?
+  Do St geodesics converge (attraction)?
+- Place two same-sign modes.  Do St geodesics diverge
+  (repulsion)?
+- Derive the St metric perturbation from a single charged
+  mode (linearized KK gravity)
 
-**Viz:** 2D spatial surface (S compressed to 2D) with compact
-dimension as height.  Show geodesic convergence for opposite
-charges, divergence for like charges.
+**Viz:** 2D spatial surface (S compressed to 2D) with the
+St curvature shown as surface warping.  Geodesic paths
+showing convergence (attraction) and divergence (repulsion).
 
-### Track 3: Spacetime metric with compact dimensions
+### Track 3: The full Ma + St metric with time
 
-Build the metric for a Clifford torus embedded in spacetime
-(R^{3,1}) or in an extended spacetime with compact dimensions.
+Build the metric for T⁶ (three Clifford tori) coupled to
+St (3+1 spacetime).  This is the KK framework applied to
+our specific geometry.
 
 Full metric dimensions:
-- 6 compact (Ma) — three Clifford tori
-- 3 spatial (S)
-- 1 time (t)
+- 6 compact (Ma) — three Clifford tori, flat, internal
+- 3 spatial (S) — flat (Minkowski)
+- 1 time (t) — Lorentzian signature
 - 1 ℵ (open — include if needed, omit if not)
+
+Total: 6 Ma + 3 S + 1 t = 10 dimensions, plus ℵ = 11
+if needed.
 
 Derive the KK reduction:
 - Which off-diagonal entries produce A_μ (EM potential)?
@@ -144,15 +170,27 @@ Derive the KK reduction:
 standard KK procedure but for our specific geometry.  Show
 each step.
 
-### Track 4: Particle spectrum
+### Track 4: Particle spectrum with Ma-St coupling
 
-Verify the model-E particle inventory on the Clifford metric.
+The model-E particle spectrum uses the flat-torus (Clifford)
+metric — it is already correct.  R59 does NOT change this.
 
-- The flat-torus spectrum should be identical (by construction)
-- Add the Ma-t coupling and check for spectrum shifts
-- If ℵ is included: compare to R55 Track 3 results
-- Does the metric saturation problem (R55 F8) disappear?
-- Does the 3.6% α universality gap close?
+What R59 changes is HOW the Ma-St coupling enters.  R55 used
+ℵ-mediated coupling on the spatial metric (10×10, no time),
+hitting a 3.6% universality gap partly caused by the e-sheet
+metric saturation (F8).  Track 3 of R59 derives the coupling
+from the KK reduction WITH time.
+
+Track 4 tests:
+- Does the KK-derived Ma-St coupling produce spectrum shifts?
+  (If so, how large, and can they be compensated?)
+- Does the universality gap improve vs R55's 3.6%?
+  (The mechanism is different — Ma-t coupling vs ℵ mediation
+  — so the gap may be different.)
+- Is the R55 F8 saturation problem relevant?
+  (The flat-torus metric has no saturation; it was a 3D
+  embedding artifact.  But the Ma-t off-diagonal entries
+  may introduce their own PD constraints.)
 
 ### Track 5: Coulomb's law from geodesics
 
@@ -208,7 +246,9 @@ engineering math:
 - **Product manifolds:** how the metric of T² = S¹ × S¹ comes
   from the metrics of the two circles
 - **Extrinsic curvature:** how a surface curves in its
-  ambient space (second fundamental form)
+  ambient space (second fundamental form).  For the Clifford
+  torus this is zero by construction — the concept is needed
+  only to contrast with the 3D donut embedding
 - **KK reduction:** how a (D+1)-dimensional metric with one
   compact dimension produces D-dimensional gravity + gauge field
 - **Linearized gravity:** how small metric perturbations from
