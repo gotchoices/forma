@@ -123,159 +123,141 @@ The table compares the two approaches.
    (producing the electric potential g₅₀).  But the ring might
    also couple (producing the magnetic potential).
 
-3. **Where does α appear?**  In KK theory, α comes from the
-   ratio of the compact dimension's size to the Planck length.
-   In the Ma-St picture, it might come from the Ma-t
-   off-diagonal metric entry directly.  A single entry
-   setting α would be the cleanest
-   result.
+3. **Where does α appear?**  In KK theory (compact momentum
+   model), α comes from the ratio of the compact dimension's
+   size to the Planck length.  Whether this carries over to
+   MaSt (standing-wave model) is unknown.  α might come from
+   a Ma-t off-diagonal entry, from the ℵ-t entry, or from a
+   different mechanism entirely.  A single entry setting α
+   would be the cleanest result.
 
 ---
 
 ## Tracks
 
-### Track 1: The Clifford torus metric
+### Track 1: Build the metric with time
 
-Derive the induced metric, extrinsic curvature, and geodesics
-for the Clifford torus T² = S¹(r₁) × S¹(r₂).
-
-- In R⁴ (4 spatial dimensions)
-- In S³ (the 3-sphere)
-- Comparison to the 3D torus metric
-- Prove: the model-E flat-torus metric IS the Clifford metric
-
-**Viz:** Stereographic projection S³ → R³ showing the
-Clifford torus as the familiar 3D torus (a projection,
-not the true geometry).
-
-### Track 2: Signed St curvature from Ma windings
-
-A mode with winding (n₁, n₂) on Ma sources a field in St
-through the Ma-St off-diagonal coupling.  The field curves
-geodesics in St.
-
-- Does the sign of n₁ produce opposite St curvature?
-- Place two opposite-sign modes at separation r in S.
-  Do St geodesics converge (attraction)?
-- Place two same-sign modes.  Do St geodesics diverge
-  (repulsion)?
-- Derive the St metric perturbation from a single charged
-  mode (linearized KK gravity)
-
-**Viz:** 2D spatial surface (S compressed to 2D) with the
-St curvature shown as surface warping.  Geodesic paths
-showing convergence (attraction) and divergence (repulsion).
-
-### Track 3: The full Ma + St metric with time
-
-Build the metric for T⁶ (three Clifford tori) coupled to
-St (3+1 spacetime).  This is the KK framework applied to
-our specific geometry.
+The core track.  Extend the model-E 6D Ma metric to include
+St (3+1 spacetime), optionally ℵ.
 
 Full metric dimensions:
-- 6 compact (Ma) — three Clifford tori, flat, internal
-- 3 spatial (S) — flat (Minkowski)
-- 1 time (t) — Lorentzian signature
+- 6 compact (Ma) — flat, internal, unchanged from model-E
+- 3 spatial (S) — flat
+- 1 time (t) — Lorentzian signature (−dt²)
 - 1 ℵ (open — include if needed, omit if not)
 
-Total: 6 Ma + 3 S + 1 t = 10 dimensions, plus ℵ = 11
-if needed.
+Total: 10D (or 11D with ℵ).
 
-Derive the KK reduction:
-- Which off-diagonal entries produce A_μ (EM potential)?
-- Does the electric potential (φ = g₅₀) give the Coulomb force?
-- Does the magnetic potential (A = g₅ᵢ) give magnetic effects?
-- Where does α appear?  Is it a single metric entry?
+**Preliminary step:** verify that the model-E 6D Ma metric
+(flat, with internal shears) produces the correct particle
+spectrum before any coupling is added.  This is a sanity
+check, not a derivation — the flat metric is known to work.
 
-**Mathematical emphasis:** derivation-heavy, following the
-standard KK procedure but for our specific geometry.  Show
-each step.
+**The new element:** Ma-t off-diagonal entries.
 
-### Track 4: Particle spectrum with Ma-St coupling
+In standard KK theory (which uses compact MOMENTUM, not
+standing waves), the off-diagonal entries between a compact
+dimension and t produce the electromagnetic potential.
+Whether the same mechanism applies to MaSt's standing-wave
+picture is unknown and is what this track tests.
 
-The model-E particle spectrum uses the flat-torus (Clifford)
-metric — it is already correct.  R59 does NOT change this.
+Approach:
+1. Write the general 10D metric with Ma-t entries
+2. Derive the effective St equations of motion for a mode
+   on Ma (our standing-wave particle, not a KK point particle)
+3. Identify which entries produce the EM potential — if any
+4. Determine where α appears and whether it can be set by
+   a single entry (or a small number of entries)
 
-What R59 changes is HOW the Ma-St coupling enters.  R55 used
-ℵ-mediated coupling on the spatial metric (10×10, no time),
-hitting a 3.6% universality gap partly caused by the e-sheet
-metric saturation (F8).  Track 3 of R59 derives the coupling
-from the KK reduction WITH time.
+If KK applies directly: α comes from the off-diagonal
+Ma-t normalization.  If it doesn't: we learn what's
+different about standing waves vs compact momentum, and
+adjust.
 
-Track 4 tests:
-- Does the KK-derived Ma-St coupling produce spectrum shifts?
-  (If so, how large, and can they be compensated?)
+### Track 2: Particle spectrum with Ma-St coupling
+
+Verify that adding the Ma-St coupling doesn't break the
+particle spectrum.
+
+Model-E's spectrum uses the flat 6D Ma metric — it is
+already correct.  Adding Ma-t entries perturbs this.
+
+Tests:
+- How large are the spectrum shifts from the Ma-t entries?
+- Can they be compensated by small adjustments to ε_e, ε_p
+  (as in R55 Track 4)?
 - Does the universality gap improve vs R55's 3.6%?
-  (The mechanism is different — Ma-t coupling vs ℵ mediation
-  — so the gap may be different.)
-- Is the R55 F8 saturation problem relevant?
-  (The flat-torus metric has no saturation; it was a 3D
-  embedding artifact.  But the Ma-t off-diagonal entries
-  may introduce their own PD constraints.)
+  (Different coupling mechanism — may give different gap.)
+- What PD constraints do the Ma-t entries introduce?
+  (The flat metric has no saturation; but Ma-t entries
+  add new off-diagonal load.)
 
-### Track 5: Coulomb's law from geodesics
+### Track 3: EM force from the metric (hypothesis test)
 
-Derive F ∝ e²/r² from geodesic deviation.
+If Track 1 succeeds (Ma-t entries produce the EM potential):
+test whether the resulting field reproduces the Coulomb force.
 
-Given two charged Clifford tori at separation r:
-- Compute the metric perturbation (linearized gravity + KK)
-- Solve the geodesic deviation equation
-- Extract the effective force vs r
-- Verify: 1/r² law, correct sign, coefficient gives α
+Questions:
+- Does the sign of the tube winding (n₁) produce opposite
+  fields?
+- Place two opposite-winding modes at separation r in S.
+  Do they attract?  With the correct 1/r² law?
+- Place two same-winding modes.  Do they repel?
+- Does the coefficient give α?
 
-This is the most ambitious track.  It tests whether the
-Clifford-spacetime picture reproduces the quantitative
-Coulomb law, not just the qualitative attraction/repulsion.
+This is a hypothesis test — not guaranteed by Track 1.
+Track 1 may produce the correct EM potential without the
+force derivation being straightforward for standing-wave
+modes (as opposed to KK point particles).
+
+**Viz:** Compress S to 2D.  Show geodesic convergence
+(attraction) and divergence (repulsion) on a surface with
+the Ma-sourced curvature visible.
+
+### Track 4: Comparison and assessment
+
+Compare results to R55 and model-E:
+
+| Criterion | Model-E | R55 (ℵ) | R59 (time) |
+|-----------|---------|---------|-----------|
+| Particle spectrum | ✓ | ~1.3% shift | ? |
+| α universality | N/A (assumed) | 3.6% gap | ? |
+| ν coupling | not modeled | 1.07α | ? |
+| Charge mechanism | 3D bending | ℵ mediation | Ma-t coupling? |
+| Free parameters | 4 | 5 (+ σℵS) | ? |
+
+Decision: does this become a model-E update, a model-F,
+or a dead end?
 
 ---
 
-## Visualization strategy
+## Visualization
 
-**The problem:** 4+ dimensional geometry cannot be directly
-seen.  The study must rely on mathematical rigor first, then
-illustration.
+The metric has 10+ dimensions.  Visualization requires
+dimensional compression: reduce S from 3D to 2D, showing
+the compact or time dimension as height, color, or animation.
+Based on the approach in viz/geodesic-curvature.
 
-**Method A: Dimensional compression.**  Compress S from 3D to
-2D, freeing one visual axis for the compact or time dimension.
-Based on the approach in viz/geodesic-curvature.  Show:
-- Spatial surface with compact dimension visible (height/color)
-- Time as animation
-- Geodesic paths showing convergence/divergence
+Relevant for Track 3 (geodesic convergence/divergence).
+Not needed for Tracks 1-2 (primarily mathematical/computational).
 
-**Method B: Stereographic projection.**  S³ → R³.  The
-Clifford torus projects to the familiar 3D torus — distorted
-but topologically correct.  Mark the distortions as projection
-artifacts.
-
-**Method C: 2D slices.**  Fix one coordinate, show the
-remaining 2D cross-section.  Animate over the fixed coordinate.
-
-**Rule:** Derive everything analytically first.  Only then
-visualize.  If the math says convergence, show convergence.
-Don't rely on the picture to discover physics — use it to
-confirm and communicate.
+**Rule:** Derive analytically first.  Visualize to confirm
+and communicate.
 
 ---
 
 ## Mathematical approach
 
-The study requires Riemannian/Lorentzian geometry beyond what
-prior studies used.  Each new concept will be derived from
-scratch with enough detail for a reader with college-level
-engineering math:
+New concepts needed (derived from scratch where used):
 
-- **Product manifolds:** how the metric of T² = S¹ × S¹ comes
-  from the metrics of the two circles
-- **Extrinsic curvature:** how a surface curves in its
-  ambient space (second fundamental form).  For the Clifford
-  torus this is zero by construction — the concept is needed
-  only to contrast with the 3D donut embedding
-- **KK reduction:** how a (D+1)-dimensional metric with one
-  compact dimension produces D-dimensional gravity + gauge field
-- **Linearized gravity:** how small metric perturbations from
-  a source produce geodesic deviation (the "force")
 - **Lorentzian signature:** how time differs from space in the
   metric (−dt² vs +dx²) and what this means for geodesics
+- **KK reduction:** how a higher-dimensional metric with compact
+  dimensions produces gravity + gauge field in St.  Standard
+  KK assumes compact momentum; we must check what changes for
+  standing waves
+- **Linearized gravity:** metric perturbations from a source →
+  geodesic deviation → force (for Track 3)
 
 ---
 

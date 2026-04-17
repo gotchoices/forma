@@ -11,9 +11,9 @@
 | **T⁶** | The full compact space: T² × T² × T² (= Ma) |
 | **ℵ** | The sub-Planck internal edge dimension (GRID) — open hypothesis |
 
-The compact dimensions (Ma) do not occupy room in S.  They
+The compact dimensions (Ma) themselves do not occupy room in S.  They
 are INTERNAL dimensions at each point of St — orthogonal to
-S and to each other.  Each point in St has a tiny 6D internal
+S and to each other (at least generally).  Each point in St has a tiny 6D internal
 space (T⁶) attached to it.  A particle is a standing wave
 on this internal space.  The wave's properties (winding numbers,
 frequency) determine what appears in St as mass, charge, and spin.
@@ -21,7 +21,7 @@ frequency) determine what appears in St as mass, charge, and spin.
 
 ## How compact dimensions relate to spatial extent
 
-The standard KK claim is that compact dimensions are "too small
+The standard Kaluza-Klein (KK) claim is that compact dimensions are "too small
 to see" — curled up at each point of S, taking no room.  But in
 MaSt, the Compton wavelength IS the compact dimension size.
 The electron's ring circumference is its Compton wavelength
@@ -162,7 +162,7 @@ standing electromagnetic waves on T⁶.  Key results:
    tube of a torus creates net charge.  Quantized because you
    can't have half a winding on a closed loop (GRID A3, R48).
 
-2. **Coupling is from bending.**  When the 2D lattice bends,
+2. **Coupling is from bending (proposed hypothesis).**  When the 2D lattice bends,
    E-field components leak normal to the surface → coupling
    to the 3D ambient (sim-impedance Tracks 8-12).
 
@@ -172,7 +172,7 @@ standing electromagnetic waves on T⁶.  Key results:
    time dimension provides the same coupling is an open
    question for this study.
 
-4. **The flat-torus metric is correct.**  Model-E uses
+4. **The flat-torus metric works.**  Model-E uses
    diagonal 2×2 blocks for each sheet: ds² = L₁²dθ₁² + L₂²dθ₂².
    This IS the metric of the Clifford torus — a flat torus
    that doesn't bend.  The 3D visualization (with its inner/
@@ -225,11 +225,13 @@ Model-E lives in a split world:
   and matches the Clifford torus metric.
 
 - The **charge mechanism** (R48, sim-impedance Tracks 8-12)
-  explicitly uses a 3D-embedded torus.  Charge arises from
-  bending the 2D lattice — the inner/outer asymmetry, the
-  junction distortion, the normal E-field leakage.  This
-  requires the 3D embedding and does NOT exist on the flat
-  metric.
+  has been modeled using a 3D-embedded torus.  In that
+  picture, charge arises from bending the 2D lattice —
+  inner/outer asymmetry, junction distortion, normal E-field
+  leakage.  Whether bending is the microscopic mechanism
+  that realizes the topological winding, or simply one way
+  to visualize it, is an open question; R59 does not attempt
+  to decide it.
 
 - The **α formula** (R19) derives α from a geodesic projection
   on the 3D-embedded surface.  It uses the cos(θ₁) curvature
@@ -240,18 +242,24 @@ So model-E is NOT "Clifford all along" in a complete sense.
 Its spectrum is flat, but its charge and coupling mechanisms
 are 3D-embedded.
 
-**What R59 proposes:** replace the 3D-dependent mechanisms
-(charge from bending, α from R19 projection) with mechanisms
-that work on the intrinsically flat geometry:
-- Charge from the Ma winding topology (which doesn't require
-  bending — it's a property of the mode, not the embedding)
+**What R59 proposes:** work with mechanisms that live
+directly on the intrinsically flat geometry, without relying
+on a 3D embedding in the arguments:
+- Charge from the Ma winding topology — taken as given.
+  Bending may still be the microscopic mechanism that
+  *explains* why a 2π winding produces charge; R59 simply
+  accepts the topological result and does not depend on the
+  bending picture for its arguments.
 - α from the KK Ma-St coupling (off-diagonal metric between
   compact dimensions and spacetime)
 
-If this works, the 3D embedding becomes purely a visualization
-aid, and all physics lives in the intrinsic geometry + the
-Ma-St coupling.  If it doesn't, the 3D embedding (or something
-like it) may be physically necessary.
+If this works, R59's arguments proceed without reference to
+the 3D embedding — the intrinsic geometry + Ma-St coupling
+is a self-contained description at this level.  The bending/
+embedding picture may still be the correct finer-grained
+account of how a topological winding produces charge; R59
+is agnostic on that.  If the KK-only approach fails, the 3D
+embedding or something like it may be structurally necessary.
 
 The word "Clifford" in this study means: the intrinsically
 flat torus, T⁶ as a Riemannian manifold with product metric.
@@ -354,17 +362,6 @@ observer changes how the photon's circulation on Ma projects
 onto the S and t directions.  The E and B fields are shadows
 of the same internal geometry, cast differently by different
 observers.
-
-### Connection to universe-as-mode.md
-
-The "fiber computer" idea in [papers/universe-as-mode.md](
-../../papers/universe-as-mode.md) (section 3) describes the
-same insight from a different angle: each particle's local Ma
-fiber is a frame-of-reference processor.  "Each fiber computes
-in its own proper time.  There is no master clock."  The R59
-framework puts this on a firmer geometric footing: the fiber
-is a Clifford torus, and the "computation" is the photon's
-velocity partition between Ma and St.
 
 
 ## The visualization challenge
