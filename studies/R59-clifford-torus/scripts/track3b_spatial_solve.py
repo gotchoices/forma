@@ -135,6 +135,7 @@ def build_aleph_mediated_metric(
     sigma_Ma_aleph_p=-1.0/(2*math.pi),
     sigma_aleph_t=ALPHA,
     g_aleph_aleph=1.0,
+    use_tubes=False,
 ):
     """
     Build 11D metric with Ma → ℵ → t chain.
@@ -148,6 +149,14 @@ def build_aleph_mediated_metric(
     the metric to remain positive-definite.
 
     Parameters test different ℵ scales to explore the amplification.
+
+    If use_tubes=True, the Ma↔ℵ shears go on the TUBE dimensions
+    (indices 0, 4) rather than the ring dimensions (1, 5).  The
+    MaSt theory is that charge comes from tube winding — so
+    tube→ℵ→t is the physically-motivated routing.  Tube↔t direct
+    coupling broke signature (Track 3 Arch 5/6) because it put a
+    large entry next to the Lorentzian t diagonal; tube↔ℵ is
+    Euclidean-Euclidean and may not have the same issue.
     """
     m = Metric.model_E()
     assert m.valid
@@ -158,11 +167,12 @@ def build_aleph_mediated_metric(
     G[9, 9] = -1.0                          # t
     G[I_ALEPH, I_ALEPH] = g_aleph_aleph     # ℵ diagonal
 
-    # Ma ↔ ℵ shears (on ring dimensions, signs from R55)
-    G[I_E_RING, I_ALEPH] = sigma_Ma_aleph_e
-    G[I_ALEPH, I_E_RING] = sigma_Ma_aleph_e
-    G[I_P_RING, I_ALEPH] = sigma_Ma_aleph_p
-    G[I_ALEPH, I_P_RING] = sigma_Ma_aleph_p
+    # Ma ↔ ℵ shears — on tubes or rings depending on use_tubes
+    i_e, i_p = (I_E_TUBE, I_P_TUBE) if use_tubes else (I_E_RING, I_P_RING)
+    G[i_e, I_ALEPH] = sigma_Ma_aleph_e
+    G[I_ALEPH, i_e] = sigma_Ma_aleph_e
+    G[i_p, I_ALEPH] = sigma_Ma_aleph_p
+    G[I_ALEPH, i_p] = sigma_Ma_aleph_p
 
     # ℵ ↔ t shear
     G[I_ALEPH, I_T] = sigma_aleph_t
@@ -662,6 +672,185 @@ def main():
         print(f'  {g_aa:10.2e}  {required_sigma_at:12.4e}  '
               f'{E_e:10.4f}  {dev_e:8.2f}%  {E_p:10.2f}  {dev_p:8.2f}%  '
               f'{ratio_e:10.4e}  {ratio_p:10.4e}  {ratio_ep:10.4g}')
+
+    # ── Part 6: Tube-based ℵ mediation (tube → ℵ → t) ──
+    print()
+    print('─' * 80)
+    print('  Part 6: Tube-based ℵ mediation (charge comes from tube winding)')
+    print('─' * 80)
+    print()
+    print('  MaSt theory: charge is tube winding.  The physically-motivated')
+    print('  routing puts the Ma↔ℵ shear on the TUBE, not the ring.')
+    print()
+    print('  For the electron (1,2,0,0,0,0), tube winding n_0 = 1.')
+    print('  For the proton (0,0,-2,2,1,3), tube winding n_4 = 1.')
+    print('  Both have |n_tube| = 1 — which matches observed |charge| = 1.')
+    print()
+    print('  This is a DIFFERENT scaling from the ring case:')
+    print('    ring: n_e=2, n_p=3 → bare charge ratio would be 3/2')
+    print('    tube: n_e=1, n_p=1 → bare charge ratio is 1:1 (universal)')
+    print()
+
+    # Scan over ℵ parameters with TUBE coupling
+    print(f'  Scan: Ma↔ℵ on TUBES, various ℵ↔t and g(ℵ,ℵ)')
+    print()
+    print(f'  {"Ma↔ℵ":>8s}  {"ℵ↔t":>10s}  {"g(ℵ,ℵ)":>10s}  '
+          f'{"sig":>4s}  {"E_e dev":>9s}  {"E_p dev":>9s}  '
+          f'{"α_e/α":>12s}  {"α_p/α":>12s}  {"α_e/α_p":>10s}')
+    print(f'  {"-"*8}  {"-"*10}  {"-"*10}  {"-"*4}  '
+          f'{"-"*9}  {"-"*9}  {"-"*12}  {"-"*12}  {"-"*10}')
+
+    # Test configurations
+    test_configs = [
+        # (Ma-ℵ, ℵ-t, g(ℵ,ℵ))
+        (1.0/(2*math.pi), ALPHA, 1.0),      # R55-like values on tubes
+        (1.0/(2*math.pi), ALPHA, 0.1),      # smaller ℵ
+        (1.0/(2*math.pi), SQRT_ALPHA, 1.0), # ℵ-t at √α
+        (1.0/(2*math.pi), 1.0, 1.0),        # ℵ-t = 1
+        (SQRT_ALPHA, SQRT_ALPHA, 1.0),      # both at √α (KK-like)
+        (SQRT_ALPHA, 1.0, 1.0),             # Ma-ℵ small, ℵ-t large
+        (1.0, ALPHA, 1.0),                  # Ma-ℵ large, ℵ-t small
+        (1.0, SQRT_ALPHA, 1.0),             # Ma-ℵ = 1, ℵ-t = √α
+        (1.0, 1.0, 1.0),                    # Both entries = 1 (pure KK)
+        (0.01, 0.01, 1.0),                  # small symmetric
+    ]
+
+    G_bare_aleph, _ = build_aleph_mediated_metric(
+        sigma_Ma_aleph_e=0, sigma_Ma_aleph_p=0, sigma_aleph_t=0,
+        g_aleph_aleph=1.0, use_tubes=True)
+    _, _, E_e_bare_11, E_p_bare_11, _ = check_signature_and_spectrum(
+        G_bare_aleph, L_Ma)
+
+    for sigma_Ma_aleph, sigma_aleph_t, g_aa in test_configs:
+        G_test, _ = build_aleph_mediated_metric(
+            sigma_Ma_aleph_e=+sigma_Ma_aleph,
+            sigma_Ma_aleph_p=-sigma_Ma_aleph,  # opposite sign for charge
+            sigma_aleph_t=sigma_aleph_t,
+            g_aleph_aleph=g_aa,
+            use_tubes=True,
+        )
+        sig_ok, n_neg, E_e, E_p, _ = check_signature_and_spectrum(G_test, L_Ma)
+        if not sig_ok:
+            print(f'  {sigma_Ma_aleph:8.4f}  {sigma_aleph_t:10.4e}  {g_aa:10.2e}  '
+                  f'{"no":>4s}  {"—":>9s}  {"—":>9s}  '
+                  f'{"—":>12s}  {"—":>12s}  {"—":>10s}')
+            continue
+
+        Q_e = source_charge_Q_from_metric(G_test, L_Ma, MODE_E)
+        Q_p = source_charge_Q_from_metric(G_test, L_Ma, MODE_P)
+        alpha_e = (Q_e ** 2) / (4 * math.pi)
+        alpha_p = (Q_p ** 2) / (4 * math.pi) if Q_p != 0 else float('nan')
+        ratio_e = alpha_e / ALPHA
+        ratio_p = alpha_p / ALPHA if not math.isnan(alpha_p) else float('nan')
+        ratio_ep = alpha_e / alpha_p if alpha_p != 0 else float('nan')
+
+        dev_e = abs(E_e - E_e_bare_11) / E_e_bare_11 * 100
+        dev_p = abs(E_p - E_p_bare_11) / E_p_bare_11 * 100
+
+        print(f'  {sigma_Ma_aleph:8.4f}  {sigma_aleph_t:10.4e}  {g_aa:10.2e}  '
+              f'{"YES":>4s}  {dev_e:8.2f}%  {dev_p:8.2f}%  '
+              f'{ratio_e:12.4e}  {ratio_p:12.4e}  {ratio_ep:10.4g}')
+
+    # ── Part 7: Abandon model-E shears — does tube↔ℵ↔t work on a clean metric? ──
+    print()
+    print('─' * 80)
+    print('  Part 7: No model-E shears — tube↔ℵ↔t on a clean Ma metric')
+    print('─' * 80)
+    print()
+    print('  Part 6 showed tube-based ℵ mediation always breaks signature on')
+    print('  model-E.  The cause: s_e = 2.004 makes e-tube near-singular via')
+    print('  the internal shear.  Any additional tube coupling pushes the')
+    print('  smallest eigenvalue negative.')
+    print()
+    print('  Test: zero the internal shears (s_e = s_ν = s_p = 0).  Does the')
+    print('  tube↔ℵ↔t architecture then work, giving α_Coulomb ≈ α?')
+    print()
+    print('  Caveat: without model-E shears, the particle spectrum is DIFFERENT.')
+    print('  We are asking whether α emerges from the coupling architecture')
+    print('  — not whether model-E as a whole still works.  This is the')
+    print('  "abandon model-E, solve for α first, derive particles second"')
+    print('  scenario.')
+    print()
+
+    def build_shearless_aleph_tube_metric(
+        sigma_Ma_aleph_e, sigma_Ma_aleph_p, sigma_aleph_t, g_aleph_aleph=1.0,
+    ):
+        """Build an 11D metric with:
+        - Ma block: DIAGONAL (no internal shears, no cross-shears).
+          Diagonals set to 1 everywhere (so the shape is set, not the scale).
+        - Plus tube↔ℵ, ℵ↔t entries as specified.
+        """
+        G = np.zeros((11, 11))
+        # Ma: pure identity (no shears of any kind)
+        for i in range(6):
+            G[i, i] = 1.0
+        G[6, 6] = G[7, 7] = G[8, 8] = 1.0   # S
+        G[9, 9] = -1.0                       # t
+        G[I_ALEPH, I_ALEPH] = g_aleph_aleph  # ℵ
+        # Tube couplings
+        G[I_E_TUBE, I_ALEPH] = sigma_Ma_aleph_e
+        G[I_ALEPH, I_E_TUBE] = sigma_Ma_aleph_e
+        G[I_P_TUBE, I_ALEPH] = sigma_Ma_aleph_p
+        G[I_ALEPH, I_P_TUBE] = sigma_Ma_aleph_p
+        G[I_ALEPH, I_T] = sigma_aleph_t
+        G[I_T, I_ALEPH] = sigma_aleph_t
+        # Use a unit L vector so n/L has simple interpretation
+        L = np.ones(6)
+        return G, L
+
+    print(f'  Clean Ma metric (identity), unit L vector so "charge" = n_tube directly')
+    print()
+    print(f'  {"Ma↔ℵ":>8s}  {"ℵ↔t":>10s}  {"g(ℵ,ℵ)":>10s}  '
+          f'{"sig":>4s}  {"Q_e":>12s}  {"Q_p":>12s}  '
+          f'{"α_e/α":>10s}  {"α_p/α":>10s}  {"α_e/α_p":>10s}')
+    print(f'  {"-"*8}  {"-"*10}  {"-"*10}  {"-"*4}  '
+          f'{"-"*12}  {"-"*12}  {"-"*10}  {"-"*10}  {"-"*10}')
+
+    clean_test_configs = [
+        (SQRT_ALPHA, SQRT_ALPHA, 1.0),     # symmetric √α
+        (SQRT_ALPHA, 1.0, 1.0),            # Ma-ℵ √α, ℵ-t = 1
+        (1.0, SQRT_ALPHA, 1.0),            # Ma-ℵ = 1, ℵ-t = √α
+        (1.0, 1.0, 1.0),                   # both = 1 (pure KK)
+        (0.5, 0.5, 1.0),                   # symmetric 0.5
+        (0.1, 0.1, 1.0),
+        (1.0/(2*math.pi), ALPHA, 1.0),     # R55-like
+        (SQRT_ALPHA, SQRT_ALPHA, 0.1),     # smaller g_ℵℵ
+        (SQRT_ALPHA, SQRT_ALPHA, 0.01),
+    ]
+
+    for sigma_Ma_aleph, sigma_aleph_t, g_aa in clean_test_configs:
+        G_clean, L_clean = build_shearless_aleph_tube_metric(
+            sigma_Ma_aleph_e=+sigma_Ma_aleph,
+            sigma_Ma_aleph_p=-sigma_Ma_aleph,
+            sigma_aleph_t=sigma_aleph_t,
+            g_aleph_aleph=g_aa,
+        )
+        sig_ok, n_neg, E_e, E_p, _ = check_signature_and_spectrum(G_clean, L_clean)
+        if not sig_ok:
+            print(f'  {sigma_Ma_aleph:8.4f}  {sigma_aleph_t:10.4e}  {g_aa:10.2e}  '
+                  f'{"no":>4s}  {"—":>12s}  {"—":>12s}  '
+                  f'{"—":>10s}  {"—":>10s}  {"—":>10s}')
+            continue
+
+        Q_e = source_charge_Q_from_metric(G_clean, L_clean, MODE_E)
+        Q_p = source_charge_Q_from_metric(G_clean, L_clean, MODE_P)
+        alpha_e = (Q_e ** 2) / (4 * math.pi)
+        alpha_p = (Q_p ** 2) / (4 * math.pi) if Q_p != 0 else float('nan')
+        ratio_e = alpha_e / ALPHA
+        ratio_p = alpha_p / ALPHA if not math.isnan(alpha_p) else float('nan')
+        ratio_ep = alpha_e / alpha_p if alpha_p != 0 else float('nan')
+
+        print(f'  {sigma_Ma_aleph:8.4f}  {sigma_aleph_t:10.4e}  {g_aa:10.2e}  '
+              f'{"YES":>4s}  {Q_e:+12.4e}  {Q_p:+12.4e}  '
+              f'{ratio_e:10.4e}  {ratio_p:10.4e}  {ratio_ep:10.4g}')
+
+    print()
+    print('  Observations:')
+    print('  - On the clean (shearless) Ma metric, tube↔ℵ↔t CAN pass signature')
+    print('  - Electron and proton have identical tube windings (|n_0|=|n_4|=1)')
+    print('    → universality is STRUCTURAL (independent of L_Ma sizing)')
+    print('  - Whether α comes out to observed α depends on whether a simple')
+    print('    (σ_Ma-ℵ, σ_ℵ-t) pair gives α_Coulomb = α')
 
     # ── Summary and interpretation ──
     print()
