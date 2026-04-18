@@ -132,18 +132,38 @@ to the 1.3 MeV p→n threshold without spatial collision.
 Companion to L04 (THz neutrino experiment) and L02 (threshold
 nuclear loading).
 
-### R59. Self-consistent metric with time  **Framed**
+### R59. Self-consistent metric with time  **Complete**
 **Study:** [`R59-clifford-torus/`](R59-clifford-torus/)
 **Type:** theoretical + compute + visualization
 **Depends on:** R55, R54, R53, sim-impedance, GRID
 
-Embed Ma sheets as Clifford tori in 4D (not 3D).  Resolves
-self-intersection, metric saturation, and inner/outer asymmetry.
-Tests whether signed curvature in 4D provides the mechanism for
-EM attraction/repulsion (opposite windings → geodesic convergence,
-same windings → divergence).  5 tracks: Clifford metric, signed
-curvature, Lorentzian 4+1D with time, particle spectrum, and
-Coulomb law from geodesics.
+Tested whether adding time to the Ma metric produces α via
+Kaluza–Klein coupling on 10D/11D architectures.  Ten tracks
+completed.  Negative on the original claim (direct Ma-t on
+model-E, ring-based ℵ mediation, direct Ma-t on a clean metric
+all fail to reach α at the spatial level).  Positive on a spinout
+architecture: **tube↔ℵ↔t on a clean Ma metric** gives exact
+structural universality (α_e = α_p by |n_tube| = 1) and reaches
+α at a natural-form parameter point (k = 1/(8π), g_aa = 1,
+σ_at = 4πα, σ_ta = √α) within 60 ppm (F59).  Model-E's internal
+shears (s_e = 2.004) saturate the e-tube and block this
+architecture on model-E geometry (F41) — R60 is scoped to find
+whether a modified spectrum mechanism can coexist with it.
+
+### R60. Metric-11 — particle spectrum on R59's α-derivable 11D architecture  **Active — Track 1 complete**
+**Study:** [`R60-metric-11/`](R60-metric-11/)
+**Type:** theoretical + compute
+**Depends on:** R59, R53, R49, R54, model-E
+
+Can a metric configuration be found that simultaneously implements
+R59's α architecture (k = 1/(8π), σ_ta = √α, σ_at = 4πα, g_aa = 1)
+and reproduces the model-E particle spectrum?  Track 1 built the
+solver infrastructure (11D metric builder, signature check, mode
+energy, α_Coulomb extractor, least-squares fitter).  All four
+smoke tests pass: model-E masses reproduced in 11D (F1), R59 F59
+α match verified (F2), F41 signature rejection confirmed (F3),
+single-knob L fit converges (F4).  Next-track pool a–g documented
+in the README.
 
 ### R55. α consistency — Ma-S coupling derivation  **Tracks 1,3 done; Track 4 paused**
 **Study:** [`R55-alpha-consistency/`](R55-alpha-consistency/)

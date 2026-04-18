@@ -20,6 +20,7 @@
   - Strategy: how we expect to accomplish the goals (equations, models, approaches)
   - Tactics: computational approach to the strategy (scripts, functions, mathematics)
 - Frame early track(s) in detail, keep later (dependent) tracks general as things may change
+- A good pattern is to number only the next track, keep future tracks in a pool to pick from as appropriate
 
 ## Findings
 - When a study is complete, perform the writeup:
