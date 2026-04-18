@@ -121,17 +121,109 @@ no changes — that's when the API is stable enough to share.
 
 ---
 
+### Track 2 — Electron sheet viability map
+
+**Goal.**  Characterize the electron sheet by itself, as a 2D
+parameter problem in (ε_e, s_e).  Report:
+
+1. The locus where the electron (1, 2) can be calibrated to m_e
+   (trivial: any (ε_e, s_e) with L_ring_e free).
+2. The region where (1, 2) is the lightest charged e-sheet mode —
+   i.e., where the (1, 1) ghost sits above (1, 2).
+3. The region where the R59 F59 α knobs (k_e = 1/(8π), σ_ta = √α
+   on e-tube, g_aa = 1, σ_at = 4πα) preserve Lorentzian signature.
+4. The overlap of (2) and (3), if any.
+
+Stop here.  Muon and tau are compound in model-E (muon = e+ν,
+tau = e+ν+p) and need the other sheets — they cannot be tested
+before Tracks 3 (ν-sheet) and 4 (p-sheet) are built.
+
+**Background.**  Track 1 T3 showed that R53 Solution D
+(ε_e = 397.074, s_e = 2.004200) breaks signature under the R59
+F59 α knobs.  It is unknown whether (a) a nearby (ε_e, s_e) works,
+(b) the viable region is elsewhere entirely, or (c) no region
+exists.  Track 2 answers this without committing to any
+generation-ratio hypothesis.
+
+**Strategy.**  Two independent constraints evaluated on the same
+(ε_e, s_e) grid:
+
+- **Ghost-order constraint.**  At each (ε_e, s_e), compute the
+  single-sheet mode energies μ(1, 1, ε, s) = √(1/ε² + (1 − s)²)
+  and μ(1, 2, ε, s) = √(1/ε² + (2 − s)²).  Ghost-order favorable
+  iff μ(1, 1) ≥ μ(1, 2).  (Equivalently: |1 − s| ≥ |2 − s|,
+  i.e., s ≥ 1.5.  Independent of ε.  Worth confirming by direct
+  computation anyway.)
+- **Signature constraint.**  Build the full 11D metric with only
+  the electron sheet as the active material block (set ν and p
+  sheets to identity placeholders, uncoupled) and the R59 F59 α
+  knobs on.  Signature OK iff exactly one negative eigenvalue
+  (the t direction).
+
+The overlap of these two regions is the viable zone for Track 2's
+purposes.  Track 2 does **not** test mass ratios, ghost
+suppression beyond simple ordering, or compound modes.
+
+**Tactics.**
+
+1. Scan (ε_e, s_e) on a 2D grid: ε_e ∈ [0.1, 1000] log-spaced,
+   s_e ∈ [−3, 3] linear.  At each point evaluate:
+   (i) μ(1, 1) vs μ(1, 2) on the bare single sheet (fast, closed form).
+   (ii) signature of the 11D metric with R59 F59 α knobs on.
+   (iii) smallest-eigenvalue margin (how close to the signature
+        cliff) at the passing points.
+2. Plot the two regions and their overlap.  Mark the R53 Solution
+   D point (397.074, 2.004200) and the R53 Solution B point
+   (~330, ~3.00) for reference.
+3. Report the overlap region in a form useful for Track 3:
+   bounded box + a handful of representative (ε_e, s_e) points,
+   with signature margin at each.
+
+**Smoke cross-checks before the scan.**
+
+- At (397.074, 2.004200) with α off: μ(1, 2) < μ(1, 1) (ghost OK
+  per R53).
+- At (397.074, 2.004200) with α on: signature fails (reproduces
+  Track 1 T3).
+
+**Deliverables.**
+
+- `scripts/track2_electron_sheet.py` — grid scan + overlap report.
+- findings.md F5 (ghost-order region), F6 (signature-OK region),
+  F7 (overlap and representative points).
+- No plot required unless the overlap is non-obvious; a clear
+  textual description of the boundary is enough if it's a simple
+  inequality in (ε_e, s_e).
+
+**Acceptance criteria.**
+
+- Ghost-order region and signature-OK region both reported over
+  the full scan range.
+- Overlap region identified (empty, bounded, or open).
+- At least three representative (ε_e, s_e) points from the
+  overlap (if nonempty) with signature margin listed, so Track 3
+  has candidates to build on.
+
+**Possible outcomes.**
+
+- **Overlap nonempty.**  Track 3 (ν-sheet) proceeds against one
+  of the candidate points.  We don't commit to a specific
+  (ε_e, s_e) yet — just pick a point with comfortable margin and
+  continue.
+- **Overlap empty.**  R59 F59 α knobs are incompatible with a
+  ghost-ordered e-sheet.  R60 revisits whether the α knobs can
+  be relaxed (e.g., smaller σ_ta, different sign pattern) or
+  whether a different α architecture is needed.  This is the
+  model-F-existence question answered sharply at the first gate.
+
+---
+
 ## Next-track pool
 
-Candidates for the next track after Track 1.  Sequence will be
-decided from Track 1's outcome.  These entries are sketches; the
-chosen one will be elaborated to full-track detail when promoted.
+Candidates after Track 2.  Sequence decided from Track 2's
+outcome.  Sketches only; chosen item gets elaborated when promoted.
 
-**a. Smallest-s_e resonance solution.**  Re-solve R53's generation
-resonance equation (m_μ/m_e, m_τ/m_e exact) with s_e as the
-variable, looking for the smallest |s_e| compatible with the
-tube↔ℵ architecture.  R53 Solution D uses s_e = 2.004 — near the
-PD saturation.  A low-|s_e| solution (if it exists) unblocks R60.
+**a.** (absorbed into Track 2)
 
 **b. Smallest-shear neutrino solution.**  Same exercise for s_ν
 from R49's Δm²₃₁/Δm²₂₁ = 33.6.  R26 Family A uses s_ν = 0.022
