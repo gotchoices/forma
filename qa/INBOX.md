@@ -63,3 +63,56 @@ them can be derived rather than measured.
    selects this T⁶ geometry?  Highest payoff (all parameters
    from one equation) but most speculative — needs a
    theoretical insight we don't currently have.
+
+---
+
+## Nested / warped compactification for sheet scale hierarchy (2026-04-18)
+
+**Context:** The three Ma sheets have vastly different
+scales: L_ν ~ μm, L_e ~ pm, L_p ~ fm — a span of roughly
+10⁶.  Currently these are three independent scale inputs to
+model-E (m_e, m_p, Δm²₂₁).  Could they instead be derived
+from one base scale plus a warp factor, in the style of
+Randall-Sundrum braneworld hierarchies?
+
+**Proposal:** treat the three sheets as a nested fiber
+tower:
+
+    S  ⊃  Ma_ν  ⊃  Ma_e  ⊃  Ma_p
+
+with each Ma factor a warped fiber over the one "above" it
+in the tower.  A single warp factor k and one base scale
+could, in principle, generate the ~10⁶ scale span.  This
+would reduce model-E's dimensional inputs from 3 to 2.
+
+**Empirical hint — adjacency and coupling strength:** The
+proposed nesting order ν-e-p places e and p **adjacent** in
+the tower and ν and p **non-adjacent**.  Observed cross-
+shears: σ_ep = −0.091 is strong (sources the neutron);
+σ_νp and σ_eν are weak or zero.  If coupling strength
+tracks adjacency in the tower, this matches.  Not proof,
+but the pattern is suggestive enough to test.
+
+**Open questions:**
+
+1. Can one base scale plus a single warp factor k
+   reproduce L_ν, L_e, L_p to within a few percent?
+   (Short arithmetic — feasibility check.)
+2. Does warping preserve model-E's particle spectrum?
+   Warped geometries lose separation of variables, so the
+   spectrum would have to be rebuilt from scratch.
+3. Could monodromy in a non-trivial warped bundle turn
+   σ_ep into a topologically determined value instead of a
+   free parameter?
+4. Does non-trivial warping break the entanglement channel
+   (see Q82 §2.5) in a detectable way?  If decoherence
+   depends on the path particles travel through S, that
+   would be a testable signature.
+
+**Triage:** Promote to Q file or study once someone runs
+the arithmetic check in (1).  If one warp factor cannot
+reproduce the three scales, nesting is probably just a
+relabel of the product structure.  If it can, the payoff
+(eliminating 2 dimensional inputs) would justify a full
+study.  Captured 2026-04-18 from R59-clifford-torus
+discussion dialogue.

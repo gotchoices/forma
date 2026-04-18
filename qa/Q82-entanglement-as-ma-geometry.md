@@ -114,10 +114,77 @@ same connection that defines electromagnetism.
 
 In standard QM, measuring particle A seems to
 "instantaneously" determine particle B's state.  In the
-Ma picture, nothing is transmitted.  B's mode phase was
-always locked to A's through the fiber bundle connection.
-Measurement at A resolves the phase of a shared coherent
-structure — it does not create or transmit anything.
+Ma picture, nothing is transmitted.  A and B occupy one
+joint state on a shared Ma, connected by the fiber-bundle
+continuity.  Measurement at A projects this joint state —
+it does not reveal a pre-existing B-phase, and it does
+not create or transmit anything.  The precise geometric
+content of "projects" is spelled out in §4.2.
+
+### 2.5 Bundle triviality: one shared Ma, not twisted nesting
+
+For this picture to work, the material fiber bundle over S
+must be globally trivial — in effect, all S points see the
+same Ma.  A non-trivial bundle with monodromy (traverse a
+loop in S and the fiber returns rotated or sheared) would
+introduce a position-dependent phase twist that breaks the
+shared structure rather than carrying it.  The current MaSt
+framing assumes a flat / trivial bundle, which is precisely
+what allows two particles at different S locations to be
+modes of one Ma wave.
+
+This is a structural constraint, not a free choice.  If
+MaSt ever adopts warped or nested compactification (see
+INBOX: nested-warped hierarchy), such schemes must preserve
+triviality of the Ma → S bundle in the directions relevant
+to entangled modes, or they would disrupt this channel.
+A testable signature of non-trivial monodromy would be
+decoherence that depends on the spatial path the particles
+travel between creation and measurement.
+
+### 2.6 Shear as the generator of structural entanglement
+
+A non-zero off-diagonal metric entry is a **shear** — the
+corresponding basis axes are not orthogonal.  Sheared axes
+are correlated: a state described in one coordinate has
+necessary projections onto the other.  Modes on a sheared
+geometry cannot generally be written as simple products of
+single-axis eigenfunctions — they are intrinsically joint.
+
+This geometric principle is the MaSt-internal version of
+entanglement, and it shows up in three places:
+
+- **Within a particle.**  σ_ep (cross-shear between Ma_e
+  and Ma_p) is precisely what makes the neutron a
+  non-separable joint mode on Ma_e × Ma_p.  Without σ_ep,
+  the sheets are independent and the neutron does not
+  exist as a solution.  With σ_ep ≠ 0, the electron- and
+  proton-direction components of the neutron mode cannot
+  be cleanly separated.
+- **Between Ma and S.**  The Kaluza-Klein gauge field
+  corresponds to off-diagonal entries between Ma and S — a
+  shear between internal and spatial axes.  Motion in Ma
+  projects onto motion in S, which is what makes internal
+  windings source spatial fields (electromagnetism).
+- **Between particles.**  Two particles sharing a joint
+  mode on one Ma (§1.1) is the particle-level analog: the
+  combined state on Ma × Ma is non-separable because the
+  interaction established a joint mode structure.
+
+The same geometric principle — sheared basis → correlated
+coordinates → non-separable states → projection needed for
+measurement — covers all three.  Quantum entanglement is
+the dynamical form; structural non-separability from shear
+is its static geometric cousin.
+
+**Caveat.**  Classical shear produces classical
+correlation.  Bell-violating quantum correlations require
+the shear to act in a Hilbert-space sense — operators that
+do not commute, eigenbases that do not align.  MaSt's Ma
+wave structure is quantum; its shear couplings are not mere
+classical correlations.  But the pedagogical bridge is
+correct: shear is the geometric root of why projection is
+the operation that matters.
 
 ---
 
@@ -177,6 +244,62 @@ inequality violations through shared material-dimension
 modes, it would be a significant theoretical result
 connecting Kaluza-Klein geometry to the foundations of
 quantum mechanics.
+
+### 4.1 Local-in-S vs. nonlocal-in-S
+
+Bell's theorem forbids **local-in-S** hidden variables:
+variables carried by each particle at a definite S
+location, independent of what is measured elsewhere.  Ma
+modes are hidden (below measurement threshold) but not
+local in S — they live on the compact material manifold,
+which is not spatial at all.  Two entangled particles at
+opposite ends of a lab are not separated in Ma; they
+share one mode structure on a single compact geometry.
+
+This satisfies Bell's premise structurally.  A Ma variable
+is nonlocal *in S* but not superluminal in any physical
+sense, because no information propagates through S at all.
+The shared geometry simply does not have an S-separation
+to traverse.  This is the same escape hatch Bohmian pilot
+waves use (guidance through configuration space), recast
+geometrically.
+
+Being not-local-in-S satisfies Bell's *premise*; the actual
+CHSH = 2√2 statistic still has to come out of the Ma
+dynamics, not just be permitted by them.  That calculation
+is the real open problem — see §7.1.
+
+### 4.2 Measurement is projection, not peeking
+
+A tempting but wrong reading of the phase-lock picture says:
+"Measuring A reveals A's pre-existing phase; since B's phase
+was locked to A's, I now know B's phase too."  That IS a
+local hidden variable story — exactly what Bell forbids.
+
+The correct geometric description is **projection**.  The
+joint Ma state of A and B is a vector in a Hilbert space of
+mode configurations.  An observable defines orthogonal
+eigenaxes in that space.  Measurement is one operation that
+simultaneously:
+
+1. Selects an eigenaxis (with probability equal to the
+   squared component of the state along that axis — the
+   Born rule).
+2. Projects the joint state onto that axis (collapse of
+   the coherent structure into the selected eigenstate).
+
+B's outcome is correlated with A's not because B had a
+pre-existing phase, but because the projected joint state
+determines both.  "Reveal" and "create" are the wrong verbs;
+"project" is the right one.  Projection and collapse are
+not two operations — they are one geometric act with two
+descriptions.
+
+The word "projection" in quantum mechanics is both the
+axis-component meaning (geometry) and the state-change
+meaning (collapse) fused.  Bell allows this operation on a
+non-separable joint state; it does not allow it as readout
+of two independent pre-existing values.
 
 ---
 
