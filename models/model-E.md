@@ -143,7 +143,7 @@ Cross-shears: σ₄₅ = −0.18, σ₄₆ = +0.10 (soft, neutron region).
 | ν₂ | 3.05 × 10⁻⁸ | (0, 0, −1, 1, 0, 0) | predicted | stable ✓ |
 | ν₃ | 5.82 × 10⁻⁸ | (0, 0, 1, 2, 0, 0) | predicted | stable ✓ |
 | electron | 0.511 | (1, 2, 0, 0, 0, 0) | input | stable ✓ |
-| proton | 938.3 | (0, 0, −2, 2, 1, 3) | input | stable ✓ |
+| proton | 938.3 | (0, 0, 0, 0, 1, 3) | input | stable ✓ |
 | neutron | 939.6 | (0, −4, −1, 2, 0, −3) | 0.07% | near-miss ✓ |
 | muon | 105.7 | (1, 1, −2, −2, 0, 0) | 0.83% | near-miss ✓ |
 | tau | 1776.9 | (3, −6, 2, −2, 2, 3) | 0.05% | near-miss ✓ |
