@@ -203,8 +203,34 @@ This is the definitive test that distinguishes mass-shell
 α_eff from the Coulomb coupling.
 
 Covers multiple architectures: direct Ma-t, ring-based
-ℵ-mediation, tube-based ℵ-mediation on model-E, and
-tube-based ℵ-mediation on a shearless clean metric.
+ℵ-mediation, tube-based ℵ-mediation on model-E, tube-based
+ℵ-mediation on a shearless clean metric, and a mixed
+architecture (tubes via ℵ + rings direct).
+
+### Track 3c: Precision tune on the clean-metric tube-ℵ-t architecture
+
+Track 3b F42 reported tube-based ℵ mediation on a shearless Ma
+metric giving "α_Coulomb ≈ 0.68α at (σ_ta, σ_at, g_ℵℵ) = (√α, 1, 1)"
+with exact structural universality. Track 3c performs a precision
+parameter sweep to find what values actually give α_Coulomb = α
+and whether those values take a natural form.
+
+Approach:
+1. Fix the architecture (clean Ma + tube↔ℵ, ℵ↔t, symmetric
+   signs for e/p).
+2. Sweep (σ_ta, σ_at, g_ℵℵ) systematically.
+3. Find the combination(s) that give α_Coulomb = α to ≤ 1 %.
+4. Analyze: does the tuned point take a simple expression
+   (pure √α, small integer ratios, etc.) or require arbitrary
+   numerical values?
+
+Acceptance criteria:
+- α_Coulomb = α to within 1 % across electron and proton
+- Metric signature preserved
+- Structural universality (α_e / α_p = 1.000) maintained
+
+Three possible interpretations of the result depending on what
+the sweep finds — see findings.md §Track 3c for outcome.
 
 ---
 

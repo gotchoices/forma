@@ -2,12 +2,22 @@
 
 R59 tests whether adding a time dimension to the Ma metric produces
 the Coulomb coupling α = 1/137 through off-diagonal entries.  The
-study ran seven tracks (1, 1b, 1c, 1d, 1e, 3, 3b).  **Net result:
-negative** — direct Ma-t coupling and ℵ-mediated Ma-ℵ-t both fail
-to produce α at the spatial level on model-E's geometry.  However,
-Track 3b Part 7 found a positive signal from tube-based ℵ mediation
-on a shearless metric, which is the motivation for a possible follow-on
-(R60 / model-F).
+study ran eight tracks (1, 1b, 1c, 1d, 1e, 3, 3b, 3c).  **Net
+result: negative** — direct Ma-t and ℵ-mediated Ma-ℵ-t both fail
+to produce α at the spatial level on model-E's geometry.
+
+**Partial positive:** tube-based ℵ mediation on a *shearless*
+metric gives exact structural universality (α_e/α_p = 1.000 by
+construction, F45).  This is a real finding.  However, α magnitude
+does not emerge naturally — Track 3c's precision tune (F44) shows
+α = 1/137 is obtainable only by tuning to σ_ta ≈ 0.785 near the
+PD boundary, not at a natural value like √α.  An earlier claim
+that α_Coulomb = 0.68α at (√α, 1, 1) was a transcription error —
+the actual value is 0.005α (F44).
+
+The universality structure is worth carrying forward (R60 / model-F),
+but α magnitude itself must come from a mechanism other than
+tube-ℵ-t.
 
 Track index:
 
@@ -19,7 +29,8 @@ Track index:
 | 1d | Two sheets (e + p) | F19–F21 | complete |
 | 1e | Root-selection diagnostics (F4 resolved) | F22–F27 | complete |
 | 3 | Shear architecture test bed (9 architectures) | F28–F33 | complete |
-| 3b | Spatial field solve (Coulomb test) | F34–F42 | complete |
+| 3b | Spatial field solve (Coulomb test) | F34–F43 | complete |
+| 3c | Precision tune of F42's architecture | F44–F47 | complete |
 
 ---
 
@@ -571,7 +582,7 @@ smallest eigenvalue past zero.
 additional couplings.**  This is a real geometric obstruction, not
 a numerical artifact.
 
-### F42. Clean (shearless) metric + tube→ℵ→t: structural universality, approaches α
+### F42. Clean (shearless) metric + tube→ℵ→t: structural universality (α magnitude corrected in F44)
 
 Script Part 7: zero model-E's internal shears (s_e = s_ν = s_p = 0,
 all cross-shears to zero) and test tube-based ℵ mediation on this
@@ -580,13 +591,13 @@ clean metric.
 | (Ma↔ℵ, ℵ↔t, g(ℵ,ℵ)) | Sig | α_e / α | α_e / α_p |
 |--------------------|-----|---------|-----------|
 | (√α, √α, 1) | YES | 5.8×10⁻⁴ | **1.000** |
-| (√α, 1.0, 1) | YES | **0.68** | **1.000** |
+| (√α, 1.0, 1) | YES | 5.0×10⁻³ | **1.000** |
 | (0.5, 0.5, 1) | YES | 54 | **1.000** |
 | (0.1, 0.1, 1) | YES | 1.1×10⁻³ | **1.000** |
 | (√α, √α, 0.1) | YES | 7.9 | **1.000** |
 | (√α, √α, 0.01) | YES | 230 | **1.000** |
 
-**Three findings worth emphasizing:**
+**Two findings worth emphasizing:**
 
 1. **Universality is EXACT** (α_e / α_p = 1.000 to floating-point
    precision).  Both modes have |n_tube| = 1 by the charge
@@ -597,27 +608,169 @@ clean metric.
    specifically because of s_e; without the shear, tubes can carry
    couplings.
 
-3. **α_Coulomb reaches 0.68α** at (σ_Ma-ℵ, σ_ℵ-t, g_ℵℵ) = (√α, 1, 1).
-   Close to observed α, within factor of 1.5, no tuning beyond
-   those natural values.
+**Correction to earlier writing:** An earlier version of this
+finding claimed "α_Coulomb reaches 0.68α at (√α, 1, 1)."  That was
+a transcription error — the actual value is 0.005α (5.0×10⁻³ × α,
+i.e., 0.5% of α).  F44 (Track 3c) explores this rigorously and
+finds the correct picture: the mechanism DOES reach α, but only at
+σ_ta ≈ 0.785 near the PD boundary — not at a natural value like
+√α ≈ 0.085.
 
-**This is the one positive signal in R59's otherwise negative
-outcome.**  It suggests that:
-- Abandoning model-E's specific shears opens a viable route to α
-- Tube-based ℵ mediation is the physically motivated architecture
-  (charge = tube winding)
-- Clifford embedding of the torus in St may provide the geometric
-  structure that fixes the remaining parameters
-
-Significant caveats:
+Significant caveats at time of F42:
 - Spectrum is gone — no generations, no specific masses
-- (√α, 1, 1) is 0.68α not α; exact tuning not yet found
 - "Unit L" simplification used; real dimensions must be reintroduced
+- α strength was significantly overstated (see F44)
+
+### F43. Mixed architecture (tubes via ℵ + rings direct to t) destroys universality
+
+Script Part 8: test whether a split architecture — tube↔ℵ↔t chain
+combined with direct ring↔t coupling — does better than either
+alone.  Physics motivation: tubes carry charge (→ Coulomb), rings
+carry mass/frequency (→ dispersion), each in its natural slot.
+
+**Result:** the combination is worse than pure tube↔ℵ↔t.  Adding
+any ring-t entry breaks the structural α_e/α_p = 1.000 that was
+the key feature of F42.
+
+Representative configurations on the clean Ma metric:
+
+| Architecture | (σ_ta, σ_at, σ_rt) | α_e/α | α_e/α_p |
+|--------------|-------------------|-------|---------|
+| Pure tube↔ℵ↔t (F42 baseline) | (√α, 1, 0) | 4.97×10⁻³ | **1.000** |
+| + small ring-t | (√α, 1, α) | 3.44×10⁻³ | 1.238 |
+| + √α ring-t | (√α, 1, √α) | 4.55×10⁻³ | 0.246 |
+| + moderate ring-t | (√α, 1, 0.1) | 8.17×10⁻³ | 0.282 |
+| Pure ring-t on clean metric | (0, 0, √α) | 0.300 | 0.444 |
+| Opposite-sign ring-t | (√α, 1, −α) | 6.79×10⁻³ | 0.870 |
+
+**Key observation: ring-t coupling is NOT structurally universal.**
+Pure ring-t on a clean metric gives α_e/α_p = 0.44, not 1.0.  Only
+tube-based coupling gives the universality-by-construction result,
+because it's the tube winding (|n_tube| = 1) that matches observed
+unit charge across all fundamental charged particles.  Rings have
+species-dependent n (electron n_ring = 2, proton n_ring = 3), so
+the ring-t source strength differs between modes.
+
+**Conclusion:** rings and tubes are in competition, not in
+complement.  The tube-based mechanism is the right place for α
+coupling; adding ring-t entries only interferes.  This STRENGTHENS
+the case for pure tube↔ℵ↔t as the architecture of choice for a
+follow-on study.
+
+Side finding: opposite-sign ring-t (row 6) gives α_e/α_p = 0.87 —
+better than same-sign but still not unity.  Suggests ring-t
+contributions partially cancel between e and p, leaving mostly the
+tube-ℵ-t signal, but some residual species dependence survives.
 
 **Track 3b status:** Complete.  Direct Ma-t and ring-based ℵ
 mediation both fail at the spatial level (F35, F39).  Tube-based ℵ
-mediation fails on model-E (F41) but shows promise on a clean metric
-(F42).  Motivates a follow-on study (R60 / model-F).
+mediation fails on model-E (F41) but preserves structural
+universality on a clean metric (F42, F44).  Mixed architectures
+don't help — tube-based is the right place for the charge structure,
+by itself (F43).  α magnitude requires fine tuning near PD boundary
+(F44), weakening the "natural α emergence" claim.
+
+---
+
+## Track 3c: Precision tune of the clean-metric tube↔ℵ↔t architecture
+
+**Scope:** Track 3b F42 claimed α_Coulomb ≈ 0.68α at the natural
+parameter point (√α, 1, 1).  That claim turned out to be a
+transcription error.  Track 3c performs a precision parameter
+sweep to find what values actually give α_Coulomb = α, and
+whether those values take a natural form.  Script:
+[track3c_precision_tune.py](scripts/track3c_precision_tune.py).
+
+### F44. F42's "0.68α" claim was a factor-of-130 error; true crossing is at σ_ta ≈ 0.785
+
+The precision sweep along σ_ta (with σ_at = 1, g_aa = 1) gives:
+
+| σ_ta | α_e / α | Note |
+|------|---------|------|
+| √α = 0.085 | 0.0049 | F42 point — correct value |
+| 0.10 | 0.0068 | |
+| 0.15 | 0.0153 | |
+| 0.30 | 0.0601 | |
+| 0.50 | 0.1346 | |
+| 0.70 | 0.0020 | near zero-crossing |
+| 0.71 | 0.0004 | closer to zero-crossing |
+| 0.72 | 0.0089 | past zero-crossing, rising |
+| 0.78 | 0.83 | approaching α |
+| 0.785 (interpolated) | ≈ 1.0 | **α match** |
+| 0.79 | 1.31 | past α |
+| 0.80 | 2.04 | |
+| 0.85 | 16.4 | |
+| 0.90 | 163 | near PD boundary |
+| 0.95 | 4411 | near singular |
+| 1.00 | — | signature breaks |
+
+**Three observations:**
+
+1. **F42's "0.68α" claim was a transcription error.**  At (√α, 1, 1),
+   α_e/α is actually 0.0049, not 0.68.  I misread the output
+   column in the earlier write-up.
+
+2. **There is a parameter point where α_Coulomb = α**, at
+   σ_ta ≈ 0.785.  But this is not a natural value:
+   - Far from √α ≈ 0.085 (factor of 9× larger)
+   - Sitting next to the PD boundary (metric becomes singular at σ_ta = 1.0)
+   - Highly sensitive: α_e/α changes by factor 2 between σ_ta = 0.78
+     and 0.79, and by factor 16 between 0.78 and 0.85.
+
+3. **No natural combination hits α.**  The 2D scan across
+   (σ_at ∈ [1, 2], g_aa ∈ [0.3, 1]) at σ_ta = √α found zero matches
+   within 0.1% of α.  The "natural-form" candidates tested
+   (√α-based, 1-based, π-based combinations) all give α_e/α ≪ 1.
+
+### F45. Structural universality is confirmed independent of tuning
+
+Every parameter combination that preserves signature gives
+α_e / α_p = 1.000000 — floating-point exactness.  This is
+independent of whether α_Coulomb equals observed α or not.
+
+**The universality result in F42 is real and is NOT overturned by
+F44.**  It is a structural consequence of |n_tube| = 1 for the
+electron and proton fundamental charge modes.  The tube-based
+mechanism treats all singly-charged particles identically by
+construction, regardless of the specific σ values.
+
+### F46. The α magnitude comes from tuning near singularity, not from geometry
+
+The α_Coulomb = α point at σ_ta ≈ 0.785 is physically
+suspicious:
+
+- Sitting ~0.2 from the PD boundary (σ_ta = 1.0)
+- Near-zero at σ_ta ≈ 0.71, diverging near 1.0 — a near-pole
+  structure from the determinant crossing zero
+- No simple rational/natural expression for 0.785
+
+**This reverses F42's "reaches α without tuning" claim.**  The
+mechanism can be tuned to α, but it requires arbitrary fine-tuning
+near a singularity, not a natural geometric value.
+
+### F47. Net of Track 3c: universality is structural, α magnitude is not
+
+The clean-metric tube↔ℵ↔t architecture delivers **exact structural
+universality** for free — electron and proton get identical
+coupling strength because both have |n_tube| = 1 (F45).
+
+But the architecture does NOT deliver **α magnitude from natural
+geometric values**.  Finding α = 1/137 requires a tuned parameter
+near the PD boundary (F44, F46).
+
+**Implication for R60 / model-F:**
+
+- **Universality structure** from tube-ℵ-t is a real finding worth
+  carrying forward.  It's a genuine architectural property.
+- **α magnitude** must come from a different mechanism — this
+  architecture does not provide a natural source.  GRID, extended
+  R19, or a moduli potential remain candidates.
+- **Separating concerns:** R60 could use tube-ℵ-t for charge
+  universality but look elsewhere for α strength.
+
+**Track 3c status:** Complete.  F42's positive signal is reduced
+in scope: universality is real (confirmed by F45), α magnitude is
+not (F44, F46).  R59 closes with this more nuanced picture.
 
 ---
 
@@ -648,8 +801,23 @@ from F42 motivates a possible follow-on study.**
 6. Coupling entries on the ring don't disturb particle-spectrum
    entries on the tube (F15); generation structure is preserved (F17).
 7. On a shearless clean Ma metric, tube-based ℵ mediation gives
-   EXACT universality (α_e/α_p = 1.000) and α_Coulomb reaching 0.68α
-   (F42).
+   EXACT structural universality — α_e/α_p = 1.000 to floating-point
+   precision (F42, F45), because both electron and proton have
+   |n_tube| = 1 by the charge quantization.
+8. Tubes and rings are in competition, not complement — pure
+   tube↔ℵ↔t is the right architecture for charge universality (F43).
+   Ring coupling is species-dependent (n_ring varies across particles)
+   and destroys universality when added.
+
+### Correction and qualifier to the positive signal
+
+An earlier version of F42 claimed "α_Coulomb reaches 0.68α at
+(√α, 1, 1)" — a transcription error (F44).  The actual value is
+0.005α, two orders of magnitude smaller.  Track 3c's precision
+tune confirms that while the architecture CAN be tuned to give
+α_Coulomb = α, this requires σ_ta ≈ 0.785 near the PD boundary,
+not a natural geometric value.  **Universality is structural;
+α magnitude is tuning-dependent.**  (F44, F46, F47)
 
 ### The central falsification
 
@@ -658,32 +826,48 @@ model-E's geometry produces the Coulomb coupling at strength α —
 is falsified.**  Both direct and ring-based ℵ architectures fail
 at the spatial level.
 
-### The positive signal
+### The positive signal (narrowed after Track 3c)
 
-**F42 is a real but partial positive result.**  The clean-metric
-tube-ℵ-t mechanism reaches within a factor of 1.5 of α without
-tuning, and delivers structural universality from charge
-quantization.  This is not R59's original claim (that would require
-staying on model-E), but it is a legitimate mechanism for α that
-deserves a follow-on study.
+**F42's universality claim is real; its α-magnitude claim was an
+error.**  The clean-metric tube-ℵ-t mechanism delivers exact
+structural universality (F45) — α_e/α_p = 1.000 for any parameter
+choice, because charge = tube winding = ±1 for every fundamental
+charged particle.
+
+However, Track 3c (F44) shows that α magnitude does NOT emerge
+naturally from this architecture.  Getting α_Coulomb = 1/137 requires
+σ_ta ≈ 0.785 near the PD boundary, a tuning value far from any
+natural geometric expression.  The "0.68α at natural values" claim
+from the earlier F42 write-up was a transcription error.
+
+**What's salvageable for a follow-on:** the universality structure
+is worth carrying forward.  α magnitude itself must come from
+elsewhere (GRID, extended R19, moduli potential), layered on top
+of the tube-ℵ-t universality.
 
 ### Recommended next steps
 
-The positive signal in F42 motivates spinning off a new study
-(R60 or "model-F exploration").  Proposed scope:
+The universality signal in F42/F45 is genuine and worth carrying
+forward.  α magnitude is NOT captured by this architecture (F44,
+F46, F47); a follow-on study would need to split the problem into
+two sub-problems.
 
-1. Precise parameter tuning to find α_Coulomb = α exactly on the
-   clean metric.
-2. Develop the Clifford-torus embedding in St explicitly (tube and
-   ring circles mapped to orthogonal planes in the ambient
-   spacetime).
-3. Reintroduce physical scales (ε ratios, L circumferences) and
-   check whether the mechanism survives.
-4. Rebuild the particle spectrum on the new metric — electron,
-   proton, muon, tau, hadrons, nuclei.
+**Proposed R60 / model-F scope:**
 
-Decision point after step 3: if the mechanism doesn't survive
-physical scaling, the model-F direction dies.  If it does, step 4
-is the real work of a new model.
+1. **Universality mechanism:** accept the tube-ℵ-t architecture
+   as the source of charge quantization and universality.  This
+   gives α_e = α_p = α_q for every particle by construction.
+2. **α magnitude:** look elsewhere.  Candidates:
+   - Extended R19 (generalize the shear formula to all ε)
+   - GRID lattice scale (α from the ratio of lattice spacings)
+   - Moduli potential (α from a minimum of a potential function)
+   - A Clifford-embedding-derived geometric factor that fixes σ_ta
+3. **Physical scales:** reintroduce aspect ratios ε and
+   circumferences L.  Verify tube-ℵ-t universality survives.
+4. **Rebuild particle spectrum** on the new metric.
+
+Decision point after step 2: if no natural α source is found, the
+model-F direction stalls.  If one IS found, steps 3–4 are the real
+work.
 
 R59 itself closes here.

@@ -852,6 +852,119 @@ def main():
     print('  - Whether α comes out to observed α depends on whether a simple')
     print('    (σ_Ma-ℵ, σ_ℵ-t) pair gives α_Coulomb = α')
 
+    # ── Part 8: Mixed architecture — tubes via ℵ + rings direct to t ──
+    print()
+    print('─' * 80)
+    print('  Part 8: Mixed architecture — tubes→ℵ→t AND rings→t direct')
+    print('─' * 80)
+    print()
+    print('  Physics motivation: tubes carry charge (→ Coulomb coupling)')
+    print('  and rings carry mass/frequency (→ direct t coupling for')
+    print('  dispersion).  A split architecture puts each in its natural slot.')
+    print()
+    print('  Clean Ma metric (shearless) + tubes→ℵ→t + rings→t direct.')
+    print()
+
+    def build_mixed_metric(
+        sigma_tube_aleph_e, sigma_tube_aleph_p,
+        sigma_aleph_t,
+        sigma_ring_t_e, sigma_ring_t_p,
+        g_aleph_aleph=1.0,
+    ):
+        """
+        Clean Ma (identity), with both:
+          - Tubes → ℵ → t chain (for α strength / charge structure)
+          - Rings → t direct (for additional coupling structure)
+        """
+        G = np.zeros((11, 11))
+        for i in range(6):
+            G[i, i] = 1.0
+        G[6, 6] = G[7, 7] = G[8, 8] = 1.0   # S
+        G[9, 9] = -1.0                       # t
+        G[I_ALEPH, I_ALEPH] = g_aleph_aleph  # ℵ
+        # Tube → ℵ
+        G[I_E_TUBE, I_ALEPH] = sigma_tube_aleph_e
+        G[I_ALEPH, I_E_TUBE] = sigma_tube_aleph_e
+        G[I_P_TUBE, I_ALEPH] = sigma_tube_aleph_p
+        G[I_ALEPH, I_P_TUBE] = sigma_tube_aleph_p
+        # ℵ → t
+        G[I_ALEPH, I_T] = sigma_aleph_t
+        G[I_T, I_ALEPH] = sigma_aleph_t
+        # Rings → t direct
+        G[I_E_RING, I_T] = sigma_ring_t_e
+        G[I_T, I_E_RING] = sigma_ring_t_e
+        G[I_P_RING, I_T] = sigma_ring_t_p
+        G[I_T, I_P_RING] = sigma_ring_t_p
+        L = np.ones(6)
+        return G, L
+
+    # Baseline for spectrum comparison (clean metric, no couplings)
+    G_baseline_clean, L_clean = build_mixed_metric(0, 0, 0, 0, 0, 1.0)
+    _, _, E_e_base_c, E_p_base_c, _ = check_signature_and_spectrum(
+        G_baseline_clean, L_clean)
+
+    print(f'  Baseline (clean metric, no couplings):')
+    print(f'    E_e = {E_e_base_c:.4f} MeV (not m_e — clean metric has no shear scaling)')
+    print(f'    E_p = {E_p_base_c:.4f} MeV')
+    print()
+    print(f'  Test grid:')
+    print(f'  (t-α = σ_tube_aleph, a-t = σ_aleph_t, r-t = σ_ring_t;'
+          f' opposite signs for e and p)')
+    print()
+    print(f'  {"t-α":>8s}  {"a-t":>8s}  {"r-t":>8s}  '
+          f'{"sig":>4s}  {"E_e dev":>9s}  {"E_p dev":>9s}  '
+          f'{"α_e / α":>10s}  {"α_e/α_p":>10s}')
+    print(f'  {"-"*8}  {"-"*8}  {"-"*8}  {"-"*4}  '
+          f'{"-"*9}  {"-"*9}  {"-"*10}  {"-"*10}')
+
+    mixed_configs = [
+        # (tube-ℵ, ℵ-t, ring-t) — probing various mixtures
+        (SQRT_ALPHA, 1.0, 0.0),                    # tubes only (Part 7 baseline)
+        (SQRT_ALPHA, 1.0, ALPHA),                  # tubes + small ring-t
+        (SQRT_ALPHA, 1.0, SQRT_ALPHA),             # tubes + √α ring-t
+        (SQRT_ALPHA, 1.0, 0.1),                    # tubes + moderate ring-t
+        (0.0, 0.0, SQRT_ALPHA),                    # rings only on clean metric
+        (SQRT_ALPHA, SQRT_ALPHA, SQRT_ALPHA),      # all at √α
+        (0.1, 0.1, 0.1),                           # symmetric small
+        (SQRT_ALPHA, 0.5, 0.0),                    # tube chain weaker, no ring
+        (SQRT_ALPHA, 1.0, -ALPHA),                 # rings with OPPOSITE sign to tubes
+        (0.5, 0.5, 0.5),                           # moderate everything
+    ]
+
+    for s_ta, s_at, s_rt in mixed_configs:
+        G_test, L_t = build_mixed_metric(
+            sigma_tube_aleph_e=+s_ta, sigma_tube_aleph_p=-s_ta,
+            sigma_aleph_t=s_at,
+            sigma_ring_t_e=+s_rt, sigma_ring_t_p=-s_rt,
+            g_aleph_aleph=1.0,
+        )
+        sig_ok, n_neg, E_e, E_p, _ = check_signature_and_spectrum(G_test, L_t)
+        if not sig_ok:
+            print(f'  {s_ta:8.4f}  {s_at:8.4f}  {s_rt:+8.4f}  '
+                  f'{"no":>4s}  {"—":>9s}  {"—":>9s}  '
+                  f'{"—":>10s}  {"—":>10s}')
+            continue
+
+        Q_e = source_charge_Q_from_metric(G_test, L_t, MODE_E)
+        Q_p = source_charge_Q_from_metric(G_test, L_t, MODE_P)
+        alpha_e = (Q_e ** 2) / (4 * math.pi)
+        alpha_p = (Q_p ** 2) / (4 * math.pi) if Q_p != 0 else float('nan')
+        ratio_e = alpha_e / ALPHA
+        ratio_ep = alpha_e / alpha_p if alpha_p != 0 else float('nan')
+
+        dev_e = abs(E_e - E_e_base_c) / E_e_base_c * 100
+        dev_p = abs(E_p - E_p_base_c) / E_p_base_c * 100
+
+        print(f'  {s_ta:8.4f}  {s_at:8.4f}  {s_rt:+8.4f}  '
+              f'{"YES":>4s}  {dev_e:8.2f}%  {dev_p:8.2f}%  '
+              f'{ratio_e:10.4e}  {ratio_ep:10.4g}')
+
+    print()
+    print('  Observations to watch for:')
+    print('  - Does adding ring-t to the tube-ℵ-t architecture improve α?')
+    print('  - Does universality stay at 1.000 when rings are added?')
+    print('  - Do opposite-sign ring-t entries destructively interfere?')
+
     # ── Summary and interpretation ──
     print()
     print('=' * 80)
