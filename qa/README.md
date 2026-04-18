@@ -196,3 +196,4 @@ Q105b pending renumbering.
 | Q120 | [Q120](Q120-neutrino-sheet-generator-mode-transmutation.md) | Neutrino sheet "generator mode" — draining nuclear energy for transmutation | Open — speculative |
 | Q121 | [Q121](Q121-uncertainty-as-ma-phase-ignorance.md) | Quantum uncertainty as ignorance of Ma circulation phase | Open — speculative (Hestenes lineage) |
 | Q122 | [Q122](Q122-why-torus-not-sphere.md) | Why torus and not sphere for compactification? | Answered — sphere structurally unsuitable |
+| Q123 | [Q123](Q123-higgs-mechanism-in-mast.md) | What plays the role of the Higgs mechanism in MaSt? | Open — structural answer; derivation owed |
