@@ -97,6 +97,7 @@ MODE_P = (0, 0, -2, 2, 1, 3)
 I_E_TUBE, I_E_RING = 0, 1
 I_P_TUBE, I_P_RING = 4, 5
 I_T = 9
+I_ALEPH = 10  # only used when use_aleph=True
 
 
 # ═══════════════════════════════════════════════════════════════════
@@ -126,6 +127,51 @@ def build_arch7_metric():
 
 
 # ═══════════════════════════════════════════════════════════════════
+#   Build ℵ-mediated architecture (Ma → ℵ → t chain, 11D)
+# ═══════════════════════════════════════════════════════════════════
+
+def build_aleph_mediated_metric(
+    sigma_Ma_aleph_e=+1.0/(2*math.pi),
+    sigma_Ma_aleph_p=-1.0/(2*math.pi),
+    sigma_aleph_t=ALPHA,
+    g_aleph_aleph=1.0,
+):
+    """
+    Build 11D metric with Ma → ℵ → t chain.
+
+    The effective Ma-t coupling after integrating out ℵ is:
+        σ_eff = g(Ma,ℵ) × g(ℵ,t) / g(ℵ,ℵ)
+
+    With small g(ℵ,ℵ), this amplifies: a tiny ℵ dimension can
+    magnify small individual entries into an effectively large
+    Ma-t coupling, while keeping each entry small enough for
+    the metric to remain positive-definite.
+
+    Parameters test different ℵ scales to explore the amplification.
+    """
+    m = Metric.model_E()
+    assert m.valid
+
+    G = np.zeros((11, 11))
+    G[:6, :6] = m.Gt
+    G[6, 6] = G[7, 7] = G[8, 8] = 1.0      # S
+    G[9, 9] = -1.0                          # t
+    G[I_ALEPH, I_ALEPH] = g_aleph_aleph     # ℵ diagonal
+
+    # Ma ↔ ℵ shears (on ring dimensions, signs from R55)
+    G[I_E_RING, I_ALEPH] = sigma_Ma_aleph_e
+    G[I_ALEPH, I_E_RING] = sigma_Ma_aleph_e
+    G[I_P_RING, I_ALEPH] = sigma_Ma_aleph_p
+    G[I_ALEPH, I_P_RING] = sigma_Ma_aleph_p
+
+    # ℵ ↔ t shear
+    G[I_ALEPH, I_T] = sigma_aleph_t
+    G[I_T, I_ALEPH] = sigma_aleph_t
+
+    return G, m.L
+
+
+# ═══════════════════════════════════════════════════════════════════
 #   Source charge extraction from the metric
 # ═══════════════════════════════════════════════════════════════════
 
@@ -144,10 +190,39 @@ def source_charge_Q_from_metric(G, L_Ma, n6):
     We compute the dimensionless Q_eff = n_tilde · g_{Ma,t}(row) where
     n_tilde = n/L.  The spatial potential at r (in natural units) is
     then A_t(r) = Q_eff / (4π r).
+
+    For ℵ-mediated architectures (11D), we extract via the INVERSE
+    metric, which naturally includes the Schur amplification
+    σ_eff = g(Ma,ℵ) × g(ℵ,t) / g(ℵ,ℵ).
     """
     n_tilde = np.asarray(n6, dtype=float) / L_Ma
-    g_Mat = G[:6, I_T]
-    Q_direct = float(n_tilde @ g_Mat)
+    if G.shape[0] == 10:
+        # Direct reading: upper-indexed Ma-t coupling is just g(Ma,t)
+        # at leading order (since no ℵ path exists).
+        g_Mat = G[:6, I_T]
+        Q_direct = float(n_tilde @ g_Mat)
+    else:
+        # 11D: include ℵ path via inverse metric, which captures Schur
+        # amplification automatically.
+        try:
+            G_inv = np.linalg.inv(G)
+        except np.linalg.LinAlgError:
+            return float('nan')
+        # Upper-indexed g^{Ma,t} includes the ℵ chain contribution
+        g_Mat_upper = G_inv[:6, I_T]
+        # Normalize back to "effective off-diagonal" form.  The inverse
+        # metric's Ma-t block, at leading order in the perturbation, is:
+        #   g^{Ma,t} ≈ -[g(Ma,t) + g(Ma,ℵ) g(ℵ,t) / g(ℵ,ℵ)] / (g_tt · g_Ma)
+        # For a nearly diagonal Ma and g_tt = -1, this simplifies to
+        # +σ_eff / g_Ma(diag) approximately.  We multiply through by
+        # the Ma-diagonal scale to get back the "effective σ."
+        # Simplest clean extraction: use the inverse-metric value
+        # directly as the dimensionless source strength.
+        # Dimensional factor: g_tt = -1 and the Ma diagonals in model-E
+        # are O(1) for rings (except e-ring due to shear); we leave the
+        # extraction as g^{Ma,t} itself.  For symmetry with 10D, also
+        # multiply by -g_tt = +1 (no change).
+        Q_direct = float(n_tilde @ g_Mat_upper) * (-G_inv[I_T, I_T])
     return Q_direct
 
 
@@ -167,6 +242,40 @@ def source_charge_Q_from_inverse(G, L_Ma, n6):
     g_Mat_inv = G_inv[:6, I_T]
     Q_inv = float(n_tilde @ g_Mat_inv)
     return Q_inv
+
+
+def check_signature_and_spectrum(G, L_Ma):
+    """Quick signature check and spectrum preservation test."""
+    eigs = np.linalg.eigvalsh(G)
+    n_neg = int(np.sum(eigs < 0))
+    sig_ok = (n_neg == 1)
+    if not sig_ok:
+        return sig_ok, None, None, None, None
+    # Compute particle-root masses to check spectrum
+    G_inv = np.linalg.inv(G)
+    n_tilde_e = np.zeros(G.shape[0])
+    n_tilde_e[:6] = np.asarray(MODE_E, dtype=float) / L_Ma
+    n_tilde_p = np.zeros(G.shape[0])
+    n_tilde_p[:6] = np.asarray(MODE_P, dtype=float) / L_Ma
+    # Solve mass-shell for each
+    def solve(nt):
+        a = G_inv[I_T, I_T]
+        b = 2.0 * (G_inv[:6, I_T] @ nt[:6])
+        c = nt[:6] @ G_inv[:6, :6] @ nt[:6]
+        if G.shape[0] == 11:
+            # Add ℵ-axis diagonal contribution to dispersion from nt[10]=0
+            # (no additional term since nt_aleph = 0 at rest).
+            pass
+        disc = b * b - 4.0 * a * c
+        if disc < 0:
+            return float('nan')
+        return max(
+            TWO_PI_HC * abs((b - math.sqrt(disc)) / (2.0 * a)),
+            TWO_PI_HC * abs((b + math.sqrt(disc)) / (2.0 * a)),
+        )
+    E_e = solve(n_tilde_e)
+    E_p = solve(n_tilde_p)
+    return sig_ok, n_neg, E_e, E_p, eigs
 
 
 # ═══════════════════════════════════════════════════════════════════
@@ -414,6 +523,145 @@ def main():
             G, L_Ma, MODE_E, MODE_P, source_width_fm=w_e, r_obs_fm=r_obs)
         print(f'  {r_obs:14.3f}  {res["F_numerical"]:14.4e}  '
               f'{res["F_Coulomb_expected"]:14.4e}  {res["ratio"]:10.4f}')
+
+    # ── Part 4: ℵ-mediated architecture scan ──
+    print()
+    print('─' * 80)
+    print('  Part 4: ℵ-mediated architecture — does Schur amplification help?')
+    print('─' * 80)
+    print()
+    print('  Effective Ma-t coupling after integrating out ℵ:')
+    print('    σ_eff ≈ g(Ma,ℵ) × g(ℵ,t) / g(ℵ,ℵ)')
+    print()
+    print('  If g(ℵ,ℵ) is small, σ_eff is amplified.  This could let')
+    print('  small individual entries produce a large effective Ma-t')
+    print('  coupling — potentially hitting the σ_eff ≈ 1.8 we need.')
+    print()
+
+    # Scan g(ℵ,ℵ) from 1 down through sub-Planck scales
+    print(f'  {"g(ℵ,ℵ)":>10s}  {"Ma↔ℵ":>8s}  {"ℵ↔t":>10s}  '
+          f'{"sig":>4s}  {"E_e (MeV)":>10s}  {"E_p (MeV)":>10s}  '
+          f'{"Q_e":>11s}  {"α_e / α":>10s}  {"α_e/α_p":>8s}')
+    print(f'  {"-"*10}  {"-"*8}  {"-"*10}  {"-"*4}  '
+          f'{"-"*10}  {"-"*10}  {"-"*11}  {"-"*10}  {"-"*8}')
+
+    for g_aa in [1.0, 1e-1, 1e-2, 1e-3, 1e-5, 1e-10, 1e-20, 1e-40]:
+        # Use R55's Ma-ℵ value (1/(2π)) and ℵ-t = α as starting point
+        G_aleph, _ = build_aleph_mediated_metric(
+            sigma_Ma_aleph_e=+1.0/(2*math.pi),
+            sigma_Ma_aleph_p=-1.0/(2*math.pi),
+            sigma_aleph_t=ALPHA,
+            g_aleph_aleph=g_aa,
+        )
+        sig_ok, n_neg, E_e, E_p, eigs = check_signature_and_spectrum(G_aleph, L_Ma)
+        if not sig_ok:
+            print(f'  {g_aa:10.2e}  {1/(2*math.pi):8.4f}  {ALPHA:10.4e}  '
+                  f'{"no":>4s}  {"—":>10s}  {"—":>10s}  '
+                  f'{"—":>11s}  {"—":>10s}  {"—":>8s}')
+            continue
+
+        # Extract source charges using inverse metric (picks up ℵ chain)
+        Q_e = source_charge_Q_from_metric(G_aleph, L_Ma, MODE_E)
+        Q_p = source_charge_Q_from_metric(G_aleph, L_Ma, MODE_P)
+
+        alpha_e = (Q_e ** 2) / (4 * math.pi)
+        alpha_p = (Q_p ** 2) / (4 * math.pi) if Q_p != 0 else float('nan')
+
+        ratio_e = alpha_e / ALPHA
+        ratio_ep = alpha_e / alpha_p if alpha_p != 0 else float('nan')
+
+        e_e_str = f'{E_e:10.4f}' if E_e is not None and not math.isnan(E_e) else f'{"—":>10s}'
+        e_p_str = f'{E_p:10.2f}' if E_p is not None and not math.isnan(E_p) else f'{"—":>10s}'
+
+        print(f'  {g_aa:10.2e}  {1/(2*math.pi):8.4f}  {ALPHA:10.4e}  '
+              f'{"YES":>4s}  {e_e_str}  {e_p_str}  '
+              f'{Q_e:+11.4e}  {ratio_e:10.4e}  '
+              f'{ratio_ep:8.4g}')
+
+    print()
+    print('  Now sweep with Ma↔ℵ = 1/(2π), solving for ℵ↔t such that α_Coulomb = α')
+    print('  (asks: what ℵ↔t entry would we NEED?)')
+    print()
+
+    # For the electron-ring mode with n_1 = 2, L_1 = 11.88 fm:
+    # At leading order in perturbation theory, Q_e ≈ (n/L)_e × σ_eff
+    # where σ_eff = g(Ma,ℵ) × g(ℵ,t) / g(ℵ,ℵ) for the 11D case.
+    # For α_Coulomb = Q² / (4π) = α, need Q = √(4πα) ≈ 0.303
+    # So (n/L)_e × σ_eff = 0.303 → σ_eff = 0.303 × 11.88 / 2 = 1.80
+    target_sigma_eff = math.sqrt(4 * math.pi * ALPHA) * L_Ma[I_E_RING] / MODE_E[I_E_RING]
+    print(f'  Target σ_eff (for electron to give α_Coulomb = α): {target_sigma_eff:.4f}')
+    print()
+    print(f'  {"g(ℵ,ℵ)":>10s}  {"required ℵ↔t":>14s}  {"sig with it":>12s}')
+    print(f'  {"-"*10}  {"-"*14}  {"-"*12}')
+    for g_aa in [1.0, 1e-1, 1e-2, 1e-3, 1e-5]:
+        # σ_eff = (1/(2π)) × σ_aleph_t / g_aa
+        # → σ_aleph_t = σ_eff × g_aa × 2π
+        required_sigma_at = target_sigma_eff * g_aa * (2 * math.pi)
+        # Test if this breaks signature
+        G_test, _ = build_aleph_mediated_metric(
+            sigma_Ma_aleph_e=+1.0/(2*math.pi),
+            sigma_Ma_aleph_p=-1.0/(2*math.pi),
+            sigma_aleph_t=required_sigma_at,
+            g_aleph_aleph=g_aa,
+        )
+        sig_ok, n_neg, _, _, _ = check_signature_and_spectrum(G_test, L_Ma)
+        print(f'  {g_aa:10.2e}  {required_sigma_at:14.4e}  '
+              f'{"YES" if sig_ok else f"no ({n_neg} neg eigs)":>12s}')
+
+    # ── Part 5: Verification — do the "required" ℵ↔t values produce α? ──
+    print()
+    print('─' * 80)
+    print('  Part 5: Verify that "required ℵ↔t" architectures give α_Coulomb = α')
+    print('─' * 80)
+    print()
+    print('  For each config that passed signature, compute α_Coulomb explicitly')
+    print('  and check spectrum preservation.')
+    print()
+    print(f'  {"g(ℵ,ℵ)":>10s}  {"ℵ↔t":>12s}  '
+          f'{"E_e (MeV)":>10s}  {"E_e dev":>9s}  {"E_p (MeV)":>10s}  {"E_p dev":>9s}  '
+          f'{"α_e/α":>10s}  {"α_p/α":>10s}  {"α_e/α_p":>10s}')
+    print(f'  {"-"*10}  {"-"*12}  '
+          f'{"-"*10}  {"-"*9}  {"-"*10}  {"-"*9}  '
+          f'{"-"*10}  {"-"*10}  {"-"*10}')
+
+    # Need bare masses for deviation check
+    G_bare, _ = build_arch7_metric()
+    # Remove Arch 7 shears to get truly bare
+    G_bare[I_E_RING, I_T] = 0
+    G_bare[I_T, I_E_RING] = 0
+    G_bare[I_P_RING, I_T] = 0
+    G_bare[I_T, I_P_RING] = 0
+    _, _, E_e_bare, E_p_bare, _ = check_signature_and_spectrum(G_bare, L_Ma)
+
+    for g_aa in [1.0, 1e-1, 1e-2, 1e-3, 1e-5]:
+        required_sigma_at = target_sigma_eff * g_aa * (2 * math.pi)
+        G_test, _ = build_aleph_mediated_metric(
+            sigma_Ma_aleph_e=+1.0/(2*math.pi),
+            sigma_Ma_aleph_p=-1.0/(2*math.pi),
+            sigma_aleph_t=required_sigma_at,
+            g_aleph_aleph=g_aa,
+        )
+        sig_ok, n_neg, E_e, E_p, _ = check_signature_and_spectrum(G_test, L_Ma)
+        if not sig_ok:
+            print(f'  {g_aa:10.2e}  {required_sigma_at:12.4e}  '
+                  f'{"—":>10s}  {"—":>9s}  {"—":>10s}  {"—":>9s}  '
+                  f'{"—":>10s}  {"—":>10s}  {"—":>10s}')
+            continue
+
+        Q_e = source_charge_Q_from_metric(G_test, L_Ma, MODE_E)
+        Q_p = source_charge_Q_from_metric(G_test, L_Ma, MODE_P)
+        alpha_e = (Q_e ** 2) / (4 * math.pi)
+        alpha_p = (Q_p ** 2) / (4 * math.pi) if Q_p != 0 else float('nan')
+        ratio_e = alpha_e / ALPHA
+        ratio_p = alpha_p / ALPHA if not math.isnan(alpha_p) else float('nan')
+        ratio_ep = alpha_e / alpha_p if alpha_p != 0 else float('nan')
+
+        dev_e = abs(E_e - E_e_bare) / E_e_bare * 100
+        dev_p = abs(E_p - E_p_bare) / E_p_bare * 100
+
+        print(f'  {g_aa:10.2e}  {required_sigma_at:12.4e}  '
+              f'{E_e:10.4f}  {dev_e:8.2f}%  {E_p:10.2f}  {dev_p:8.2f}%  '
+              f'{ratio_e:10.4e}  {ratio_p:10.4e}  {ratio_ep:10.4g}')
 
     # ── Summary and interpretation ──
     print()

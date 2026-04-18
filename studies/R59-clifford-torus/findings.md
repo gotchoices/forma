@@ -757,6 +757,79 @@ carry over to the spatial level.  The Ma-t mechanism is not a
 working derivation of α.
 
 
+### F39. ℵ-mediated chain (Ma → ℵ → t) does not rescue the scaling
+
+**Motivation.**  Direct Ma-t gives α_Coulomb ~ 10⁻⁵α (F35).  To
+match α would require σ_eff ≈ 1.8 (F37), which breaks the
+metric.  An ℵ-mediated chain with Schur amplification might in
+principle let small individual entries (metric-preserving)
+produce a large effective coupling:
+
+> σ_eff ≈ g(Ma,ℵ) × g(ℵ,t) / g(ℵ,ℵ)
+
+Small g(ℵ,ℵ) amplifies.  The naive arithmetic suggests this could
+work — e.g., Ma↔ℵ = 1/(2π), ℵ↔t = 1.13, g(ℵ,ℵ) = 0.1 would give
+σ_eff ≈ 1.8 at leading order.
+
+**Test.**  Track 3b Parts 4 and 5 run this explicitly.  Two scans:
+
+1. **R55's values:** Ma↔ℵ = 1/(2π), ℵ↔t = α, varying g(ℵ,ℵ).
+   At g(ℵ,ℵ) = 1: α_Coulomb = 2.0 × 10⁻¹² α (worse than direct).
+   At g(ℵ,ℵ) = 0.1: α_Coulomb = 7.6 × 10⁻¹⁰ α (still worse).
+   At g(ℵ,ℵ) ≤ 10⁻²: signature breaks.
+
+2. **"Required" ℵ↔t:** solve for the ℵ↔t that would give
+   σ_eff = 1.8 at each g(ℵ,ℵ), then test.
+   - g(ℵ,ℵ) = 1, required ℵ↔t = 11.3: signature preserved,
+     but α_Coulomb = 1.4 × 10⁻¹⁴ α (even worse).  Spectrum
+     catastrophically broken (E_e = 6.84 MeV, 1238% deviation;
+     E_p = 12,529 MeV, 1235% deviation).
+   - g(ℵ,ℵ) = 0.1, required ℵ↔t = 1.13: signature preserved,
+     α_Coulomb = 3.4 × 10⁻¹¹ α.  Spectrum broken at 820%.
+   - g(ℵ,ℵ) ≤ 10⁻²: signature breaks.
+
+**Why the Schur-amplification argument fails.**  Two reasons:
+
+(a) The leading-order formula σ_eff = g(Ma,ℵ) × g(ℵ,t) / g(ℵ,ℵ)
+    only holds when the individual entries are small perturbations
+    around a nearly-diagonal metric.  When we push ℵ↔t up to 1.13
+    or higher, we're no longer in that regime; higher-order matrix
+    inversion terms dominate and go the opposite way.
+
+(b) Large ℵ-t or Ma-ℵ entries perturb the Ma-Ma block through the
+    inverse.  The electron and proton bare masses shift by 1000%+.
+    Even when the metric signature stays valid, the spectrum is
+    destroyed.
+
+**Conclusion:** ℵ-mediation does not provide a working route
+to α at the spatial level.  It is strictly worse than direct
+Ma-t coupling, contrary to R55's positive mass-shell result.
+
+This extends the R59 negative to the full class of time-coupled
+architectures: **neither direct Ma-t nor ℵ-mediated Ma-ℵ-t
+produces observed α in S at the spatial level** while preserving
+the metric and spectrum.
+
+
+### F40. S ↔ t coefficients — typically zero, and that's correct
+
+For completeness, a comment on a class of entries the test bed
+did not vary: g(S, t) off-diagonals.  These are left at zero
+throughout.
+
+- In flat Minkowski space, g(S, t) = 0 by construction — S and t
+  are orthogonal coordinates.
+- In GR, g(S, t) can be nonzero in rotating frames (e.g., Kerr's
+  g_{tφ} gives frame dragging).
+- In KK, g(Ma, S) entries produce magnetic potentials, not the
+  electrostatic one.
+
+For R59's static Coulomb problem, g(S, t) = 0 is the correct
+default.  Nonzero g(S, t) would model a rotating frame, which
+is not what we want for a static Coulomb field.  No test is
+missing here.
+
+
 ## R59 overall status
 
 **Tracks 1 series (1, 1b, 1c, 1d, 1e) and Track 3 complete.**
@@ -804,20 +877,31 @@ success was hiding:
 - **Matching observed α would require σ ≈ 1.8**, which breaks
   both signature and spectrum (F37).  This is the KK hierarchy
   problem at Compton-scale compact dimensions.
+- **ℵ-mediated Ma → ℵ → t does not rescue the scaling** (F39).
+  Schur amplification looked promising at leading order but
+  fails when the full 11D inversion is done: amplification
+  either breaks signature (small g(ℵ,ℵ)) or destroys the
+  spectrum by 800–1200% (large ℵ↔t entries).  ℵ-mediation is
+  strictly worse than direct Ma-t at the spatial level.
+- **S ↔ t entries are correctly zero** (F40) — they would
+  describe a rotating frame, not a static Coulomb field.
 
 **R59's central claim — that adding time to the metric produces
-the Coulomb coupling at strength α — is falsified by Track 3b.**
+the Coulomb coupling at strength α — is falsified by Track 3b
+for both direct and ℵ-mediated architectures.**
 
 What R59 did produce:
 - A systematic test bed narrowing the viable architecture to
   Arch 7 (F29)
 - A clean falsification of the claim "Ma-t coupling = Coulomb
-  coupling" at the spatial level (F35–F38)
+  coupling" at the spatial level, for both direct and
+  ℵ-mediated variants (F35–F39)
 - A reproducible derivation chain showing the mass-shell vs
   Coulomb distinction (F30, F38)
 
 These are negative but useful: they rule out a mechanism that
-looked promising for multiple tracks.
+looked promising for multiple tracks, and rule out the naive
+rescue via ℵ mediation.
 
 
 ### Possible paths forward
