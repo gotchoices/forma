@@ -312,6 +312,43 @@ sheet) to keep the document readable.
 The output answers: "What knobs do we have, where, and what's
 already used?"
 
+### Track 3g: Natural-form parameter scan
+
+Track 3f F54 found α_Coulomb = 0.977α at the simple combination
+(k = 0.10, σ_at = 0.5, g_aa = 1, σ_ta = √α).  Section 4 of the
+same script tested several natural-form candidates, with results
+in the 0.5–0.8α range but none exact.  Pre-model-E α derivations
+(R19) used parameters expressed in terms of α, π, and small
+integers — suggesting a natural-form expression for the R59
+architecture's tuning may exist.
+
+This track does a focused search over natural-form combinations
+of the architecture's three knobs (k, σ_at, g_aa) at fixed
+σ_ta = √α, looking for combinations that hit α_Coulomb = α
+exactly.
+
+Approach:
+1. Define a candidate list of "natural" values: 1, 1/2, 1/π,
+   1/(2π), 1/(4π), √α, α, α × π, α × 4π, 4πα, π, 4π, √(4πα),
+   etc.
+2. Test all combinations (k, σ_at, g_aa) from this list
+   against α_Coulomb = α.
+3. Report combinations matching to within 1%.
+4. Test fine-tuning around any near-matches to see if they
+   sharpen.
+
+Acceptance criteria:
+- A combination matches α_Coulomb = α to within 0.1%
+- Each knob has a "natural" closed-form expression
+- Universality and ν neutrality preserved
+
+Outcome possibilities:
+- Clean natural-form match found: R60 starts with this as the
+  exact target.  α is *derived* from geometry, not tuned.
+- No exact natural-form match: R60 starts with F54's approximate
+  target (k ≈ 0.1) and treats the residual ~3% as a refinement
+  problem.
+
 ### Track 3f: Diagonal scaling — does Ma diagonal choice matter?
 
 R59 Tracks 3b–3e found that the tube↔ℵ↔t architecture gives
