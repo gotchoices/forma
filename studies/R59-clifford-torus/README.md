@@ -2,6 +2,7 @@
 
 **Status:** Complete — see [findings.md](findings.md) for outcomes
 **Background:** [background.md](background.md)
+**Metric reference:** [metric-terms.md](metric-terms.md)
 **Review:** [review.md](review.md)
 **Type:** theoretical + compute
 **Depends on:** R55 (ℵ-mediated coupling), R54 (particle inventory),
@@ -229,8 +230,87 @@ Acceptance criteria:
 - Metric signature preserved
 - Structural universality (α_e / α_p = 1.000) maintained
 
-Three possible interpretations of the result depending on what
-the sweep finds — see findings.md §Track 3c for outcome.
+See findings.md §Track 3c for outcome.
+
+### Track 3d: Direct tube↔t on a clean metric (no ℵ)
+
+R59 has not tested the simplest possible architecture for α
+coupling: direct tube↔t off-diagonal on a clean (shearless) Ma
+metric, with no ℵ dimension. Track 3a/3b tested ring↔t direct on
+model-E (failed spatially) and tube↔ℵ↔t (universality real, α
+magnitude needs fine-tuning). The pure tube↔t direct case on a
+clean metric was skipped.
+
+Question this track resolves: **is ℵ in the coupling loop, or out?**
+
+If direct tube↔t on a clean metric gives α_Coulomb = α at a
+natural σ value, ℵ is not needed for the coupling and the
+architecture simplifies. If it fails (signature breaks, or the
+required σ is unnatural), ℵ stays in the loop.
+
+Approach:
+1. Build 10D metric: clean Ma identity + flat S + Lorentzian t.
+2. Add tube↔t entries with ±σ for e/p (no ring entries, no ℵ).
+3. Sweep σ; identify where α_Coulomb = α.
+4. Compare the required σ to natural candidates: √α, √(4πα), 1/(2π),
+   and to the σ found in Track 3c's ℵ-mediated case.
+
+Acceptance criteria:
+- Signature preserved
+- Structural universality α_e/α_p = 1.000 (expected since both
+  tube windings = ±1)
+- α_Coulomb = α at a value that is or is not naturally expressible
+
+### Track 3e: Solve for the natural ℵ scale
+
+If ℵ stays in the loop (Track 3d shows direct tube↔t doesn't
+work cleanly), Track 3c's α_Coulomb scaling problem can be
+inverted: instead of *tuning* σ_ta to hit α at fixed g(ℵ,ℵ) = 1,
+*fix* σ_ta at a natural value (√α) and *solve* for the g(ℵ,ℵ)
+and σ_at that produce α_Coulomb = α.
+
+This treats g(ℵ,ℵ) as a derived quantity — the diagonal of the
+ℵ dimension that we have been assuming is 1. If a natural σ_ta
+combined with some specific g(ℵ,ℵ) gives observed α, that
+specific g(ℵ,ℵ) is the implied scale of the ℵ dimension. It
+might be natural (something like α, 1/(2π), L_P/L_Compton²) or
+arbitrary.
+
+Approach:
+1. Fix σ_ta = √α (natural value).
+2. 2D scan (σ_at, g_aa) to find (g_aa, σ_at) combinations
+   producing α_Coulomb = α.
+3. Identify the simplest combination.
+4. Interpret: what does that g(ℵ,ℵ) value imply about L_ℵ?
+
+Acceptance criteria:
+- α_Coulomb = α to within 1 %
+- Universality preserved (automatic on clean metric)
+- The derived g(ℵ,ℵ) is reported regardless of whether it looks
+  natural
+
+### Track 4: Parameter synthesis and metric-terms.md
+
+Synthesis track. Enumerate all metric coefficients R59 has
+considered (across all 7 prior tracks).  Identify:
+
+- Which entries are CONSTRAINED by model-E's particle spectrum
+  (and thus not available for α coupling without disrupting
+  the spectrum)
+- Which entries are FREE (available without constraint)
+- Which entries R59 has placed values at, and what those values
+  were
+- Where conflicts arise between α coupling and spectrum
+  preservation
+
+Output a single reference document (metric-terms.md) listing
+each metric coefficient, its role, its current value (if any),
+and its constraint status. Use compressed notation where
+appropriate (e.g., S as a single block, Ma as one block per
+sheet) to keep the document readable.
+
+The output answers: "What knobs do we have, where, and what's
+already used?"
 
 ---
 
@@ -272,5 +352,6 @@ New concepts needed (derived from scratch where used):
 | [background.md](background.md) | Detailed motivation and context |
 | README.md | This framing document |
 | [findings.md](findings.md) | Results, summary, and interpretations |
+| [metric-terms.md](metric-terms.md) | Reference: every metric coefficient, value, and constraint |
 | [review.md](review.md) | Review notes on framing and execution |
 | [scripts/](scripts/) | Computation scripts (per track) |

@@ -2,22 +2,35 @@
 
 R59 tests whether adding a time dimension to the Ma metric produces
 the Coulomb coupling α = 1/137 through off-diagonal entries.  The
-study ran eight tracks (1, 1b, 1c, 1d, 1e, 3, 3b, 3c).  **Net
-result: negative** — direct Ma-t and ℵ-mediated Ma-ℵ-t both fail
-to produce α at the spatial level on model-E's geometry.
+study ran ten tracks (1, 1b, 1c, 1d, 1e, 3, 3b, 3c, 3d, 3e, plus
+synthesis Track 4).  **Net result: negative on the original claim,
+mixed positive/negative on the spinout architecture.**
 
-**Partial positive:** tube-based ℵ mediation on a *shearless*
-metric gives exact structural universality (α_e/α_p = 1.000 by
-construction, F45).  This is a real finding.  However, α magnitude
-does not emerge naturally — Track 3c's precision tune (F44) shows
-α = 1/137 is obtainable only by tuning to σ_ta ≈ 0.785 near the
-PD boundary, not at a natural value like √α.  An earlier claim
-that α_Coulomb = 0.68α at (√α, 1, 1) was a transcription error —
-the actual value is 0.005α (F44).
+**Negative:** direct Ma-t and ℵ-mediated Ma-ℵ-t on model-E both
+fail to produce α at the spatial level (F35, F39).  Direct tube↔t
+on a clean metric (no ℵ) caps at α_e/α ≈ 0.57 (F48) — ℵ is needed
+in the loop.
 
-The universality structure is worth carrying forward (R60 / model-F),
-but α magnitude itself must come from a mechanism other than
-tube-ℵ-t.
+**Positive (universality only):** tube-based ℵ mediation on a
+*shearless* metric gives exact structural universality
+(α_e/α_p = 1.000 by construction, F45).  This is real, robust, and
+worth carrying forward.
+
+**Negative (α magnitude):** the architecture cannot produce α
+naturally.  Track 3c found σ_ta ≈ 0.785 (near PD boundary) gives
+α (F44).  Track 3e tested whether g(ℵ,ℵ) treated as a derived
+parameter could rescue the natural-σ scenario — it cannot, no
+natural g(ℵ,ℵ) value emerges (F50–F52).  An earlier claim that
+α_Coulomb = 0.68α at (√α, 1, 1) was a transcription error — actual
+value is 0.005α.
+
+**Conflict identified:** model-E's internal shear s_e = 2.004 makes
+the e-tube near-singular and BLOCKS the tube↔ℵ architecture (F41).
+A follow-on study (R60) must reproduce the particle spectrum
+without internal shears, OR find a different α architecture
+compatible with model-E.
+
+See [metric-terms.md](metric-terms.md) for the parameter map.
 
 Track index:
 
@@ -31,6 +44,9 @@ Track index:
 | 3 | Shear architecture test bed (9 architectures) | F28–F33 | complete |
 | 3b | Spatial field solve (Coulomb test) | F34–F43 | complete |
 | 3c | Precision tune of F42's architecture | F44–F47 | complete |
+| 3d | Direct tube↔t on a clean metric (no ℵ) | F48–F49 | complete |
+| 3e | Solve for natural ℵ scale | F50–F52 | complete |
+| 4 | Metric synthesis ([metric-terms.md](metric-terms.md)) | — | complete |
 
 ---
 
@@ -771,6 +787,134 @@ near the PD boundary (F44, F46).
 **Track 3c status:** Complete.  F42's positive signal is reduced
 in scope: universality is real (confirmed by F45), α magnitude is
 not (F44, F46).  R59 closes with this more nuanced picture.
+
+---
+
+## Track 3d: Direct tube↔t on a clean metric (no ℵ)
+
+**Scope:** Test the simplest possible architecture for α coupling
+— direct tube↔t off-diagonal on a clean Ma metric, no ℵ at all.
+Decides whether ℵ is in the coupling loop or out.  Script:
+[track3d_direct_tube_t.py](scripts/track3d_direct_tube_t.py).
+
+### F48. Direct tube↔t cannot reach observed α — ℵ stays in the loop
+
+Theory at leading order: α_Coulomb = σ²/(4π).  For α = 1/137,
+σ = √(4πα) ≈ 0.303.
+
+The actual full-matrix calculation at σ = 0.303:
+
+| σ | α_e/α | sig | Note |
+|---|------|-----|------|
+| √α = 0.085 | 0.0751 | YES | leading-order regime |
+| 1/(2π) = 0.159 | 0.227 | YES | |
+| √(4πα) = 0.303 (predicted "match") | **0.51** | YES | only half α |
+| 1/π = 0.318 | 0.528 | YES | |
+| 1/2 = 0.5 | 0.539 | YES | near peak |
+| 0.7 | 0.348 | YES | dropping |
+| 1.0 | 0.135 | YES | |
+
+**Three observations:**
+
+1. **The leading-order formula σ = √(4πα) gives only 0.51α**, not
+   α.  Higher-order matrix terms suppress the coupling at this σ.
+2. **Maximum α_e/α achievable is ~0.57** at σ ≈ 0.4.  After the
+   peak, α_e/α DECREASES with increasing σ (also a higher-order
+   effect).
+3. **Signature stays valid throughout the tested range** (up to
+   σ = 1.1 — the only negative eigenvalue is the t diagonal).
+   Universality α_e/α_p = 1.000 exact.
+
+**Conclusion:** direct tube↔t on a clean metric **cannot reach
+observed α**.  The architecture has a structural ceiling at
+α_e/α ≈ 0.57.  The leading-order theory was wrong because it
+ignored matrix-inversion corrections that dominate at σ values
+needed for α.
+
+**Implication: ℵ stays in the coupling loop.**  Direct Ma↔t is
+not enough.
+
+### F49. The "no-ℵ" architecture has structural universality but capped magnitude
+
+Even though α_Coulomb cannot reach α in this architecture,
+universality α_e/α_p = 1.000 holds exactly.  This confirms that
+universality is a property of the **tube structure** (|n_tube| = 1
+for charged particles), not of the ℵ chain.
+
+Whatever mechanism eventually carries α, if it routes through the
+tube, universality is automatic.
+
+**Track 3d status:** Complete.  Direct tube↔t does not reach α
+even on a clean metric.  ℵ-mediation (or some other amplification)
+is structurally required.
+
+---
+
+## Track 3e: Solve for the natural ℵ scale
+
+**Scope:** With σ_ta fixed at the natural value √α, solve for
+(σ_at, g(ℵ,ℵ)) that produce α_Coulomb = α.  Treats g(ℵ,ℵ) as a
+*derived* quantity — the implied scale of the ℵ dimension that
+makes the Coulomb coupling come out right.  Script:
+[track3e_aleph_scale.py](scripts/track3e_aleph_scale.py).
+
+### F50. At natural σ_ta = √α, no natural (σ_at, g_aa) combination produces α
+
+Scan results:
+
+- **At σ_at = 1, g_aa = 1:** α_e/α = 0.005 (Track 3c F44, baseline).
+- **Vary σ_at at g_aa = 1:** peak at σ_at = 0.5 gives 0.008α.
+  Increasing σ_at past 1 monotonically suppresses α_Coulomb (down
+  to 7×10⁻¹⁴ at σ_at = 100).
+- **Vary g_aa at σ_at = 1:** peak at g_aa = 1 gives 0.005α.
+  Smaller g_aa initially suppresses, then near g_aa ≈ 0.02 reaches
+  a region where α matches occur.
+- **2D contour search:** found one match at (σ_at, g_aa) ≈
+  (0.021, 0.020) with α_Coulomb ≈ 1.005α.  Tiny values, near-
+  singular regime.
+
+**Pattern at the contour point:** σ_ta × σ_at / g_aa ≈ 0.089 ≈ √α
+— matching the F44 conclusion that the effective coupling needs
+to be near √α at leading order.  But the actual values needed
+(σ_at = 0.02, g_aa = 0.02) are not natural.
+
+**Bisection failure:** the standard bisection in g_aa (with
+σ_at = 1) does not converge because both bracket endpoints have
+α_e/α < 1 — the maximum achievable in that 1D slice never reaches α.
+
+### F51. The implied L_ℵ derivation does not yield a natural value
+
+If g(ℵ,ℵ) ≈ 0.02 were derived from a physical scale, what would
+that scale imply?  Comparing 0.02 to natural candidates:
+
+| Candidate | Value | Ratio to 0.020 |
+|-----------|-------|----------------|
+| α | 0.0073 | 2.74 |
+| α² | 5.3×10⁻⁵ | 377 |
+| α/(4π) | 5.8×10⁻⁴ | 34.5 |
+| 1/(4π) | 0.080 | 0.25 |
+| 4πα | 0.092 | 0.22 |
+| (L_P/L_Compton)² | ~10⁻⁴⁰ | astronomical |
+
+None of these match 0.020 to better than a factor of 2.  The
+closest is α (factor 2.74).  No natural physical scale predicts
+g(ℵ,ℵ) ≈ 0.02.
+
+### F52. ℵ does not provide a natural-scale rescue
+
+Track 3e tested whether the "scaling problem" of Track 3c could
+be inverted into a "scale derivation" of L_ℵ.  Result: even with
+freedom in g(ℵ,ℵ), no combination at σ_ta = √α produces α at a
+natural g(ℵ,ℵ) value.
+
+The architecture is consistent — α can be obtained — but only
+at parameter values that don't take a recognizable natural form.
+This means R60 cannot use "ℵ provides the scale" as a derivation
+of α; ℵ remains a tunable parameter, not a derived constant.
+
+**Track 3e status:** Complete.  ℵ-scale derivation does not yield
+α naturally.  ℵ stays as a tunable parameter — its diagonal is
+not pinned by any physical principle in R59's framework.
 
 ---
 
