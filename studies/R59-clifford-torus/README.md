@@ -312,6 +312,55 @@ sheet) to keep the document readable.
 The output answers: "What knobs do we have, where, and what's
 already used?"
 
+### Track 3f: Diagonal scaling — does Ma diagonal choice matter?
+
+R59 Tracks 3b–3e found that the tube↔ℵ↔t architecture gives
+exact universality but does NOT naturally produce α — getting
+α requires fine-tuning σ_ta or g_aa near the PD boundary. All
+those tests held the Ma diagonals fixed at the dimensionless
+identity value (1) inherited from the model-E normalization.
+
+The Ma diagonal values themselves come from a normalization
+choice (divide by L_i × L_j), not from physics.  The
+"physical" diagonals are L_i² in fm² — set by the L vector
+chosen to match particle masses.  Skepticism is warranted:
+those values may not be the "right" ones for α coupling.
+
+This track asks: **with the tube↔ℵ↔t architecture at natural σ
+values, can we produce α_Coulomb = α by scaling the Ma diagonals
+alone?**
+
+Approach:
+1. Use the clean (no-internal-shear) Ma metric.
+2. Couple e-tube and p-tube to ℵ at σ_ta = ±√α (natural).
+3. Leave ν-tube uncoupled (neutrinos are charge-neutral, so
+   no tube↔ℵ entry for the ν-sheet).
+4. Treat each sheet's diagonal block as a free scaling factor:
+   k_e, k_p, k_ν.
+5. Treat g_aa and σ_at as free knobs.
+6. Search the parameter space for combinations that produce:
+   - α_Coulomb(electron) = α (within 1%)
+   - α_Coulomb(proton) = α (universality, automatic)
+   - α_Coulomb(neutrino mode) ≈ 0 (charge neutrality preserved)
+   - Metric signature OK
+
+Acceptance criteria:
+- α_e = α to 1%, α_p = α to 1%, α_ν < 0.01α
+- Diagonal scaling values that are "reasonable" (not extreme;
+  not requiring near-singular limits)
+- Configuration documented for R60 follow-up
+
+Three possible interpretations of the result:
+- If a natural diagonal scaling produces α: F44–F46's "tuning
+  is unnatural" conclusion is reversed — the unnatural tuning
+  was a consequence of fixed bad diagonals, not the architecture
+  itself.  R60 has a clean target: find (ε, s) values that
+  produce these diagonals AND match the spectrum.
+- If only an arbitrary scaling works: confirms F44–F46.  R60
+  needs a different α mechanism.
+- If no scaling works: tube↔ℵ↔t cannot produce α regardless of
+  diagonal freedom.  Architectural dead end.
+
 ---
 
 ## Visualization
