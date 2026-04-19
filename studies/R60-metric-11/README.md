@@ -753,6 +753,121 @@ extraction for ν₁/ν₂/ν₃ between base and augmented.
 
 ---
 
+### Track 8 — Compound mode search (μ, τ, neutron)
+
+**Goal.**  With the Track 7d magic-shear baseline established
+(all three sheets calibrated, α universal across sheets and
+modes, ghost ordering on e and p), search for compound modes
+— 6-tuples spanning multiple sheets — whose energies match
+observed muon, tau, and neutron masses.  First pass: no
+cross-sheet σ.  Second pass only if needed.
+
+**Background.**
+
+Model-E's inventory listed the compounds:
+
+| Particle | Observed (MeV) | Model-E 6-tuple | Model-E accuracy |
+|----------|---------------:|:----------------|:-----------------|
+| muon (μ⁻) | 105.658 | (1, 1, −2, −2, 0, 0) | 0.83% |
+| tau (τ⁻) | 1776.86 | (3, −6, 2, −2, 2, 3) | 0.05% |
+| neutron (n) | 939.565 | (0, −4, −1, 2, 0, −3) | 0.07% |
+
+Ordering: `(n_et, n_er, n_νt, n_νr, n_pt, n_pr)`.
+
+Each mode satisfies MaSt constraints:
+- **Charge:** `Q = −n_et + n_pt`  (=−1, −1, 0 above ✓)
+- **Spin-½:** odd total tube-winding parity on at least one sheet
+- **Reality:** metric eigenvalue must be positive (mode is physical)
+
+Model-E used these specific 6-tuples with R19-era α (not the R59
+F59 architecture we have now).  Whether they land at observed
+masses on the Track 7d R60 metric is an open question — the metric
+has changed (magic shear geometry, ring↔ℵ entries, single-k
+symmetry, different L values).  Track 8 tests this empirically.
+
+**Strategy.**
+
+Three phases, gated on results:
+
+**Phase 1 — direct check of model-E tuples.**  Take each
+model-E compound 6-tuple verbatim; compute its mass on the Track
+7d baseline.  If residuals < 5%, compound modes "survive the
+transition" and we have a good story.  If > 5%, Phase 2.
+
+**Phase 2 — search for alternative 6-tuples.**  For each target
+(μ, τ, n), do a bounded brute-force search over 6-tuples `|n_i|
+≤ N_max` satisfying the (Q, spin) constraints.  Report the
+closest-mass candidates and document the best match.  Compare
+to model-E: same mode, different, or no clean match?
+
+**Phase 3 — α audit on compound modes.**  For each compound
+mode that matches a target mass, compute α_Coulomb.  Track 7
+only verified α universality for simple single-sheet modes;
+compound modes span multiple sheets and might have
+mode-dependent α.  Report.
+
+If Phase 3 shows compound modes have α ≠ α universally, this
+tells us whether pool item **h** (cross-sheet α cancellation
+prescription) is needed or whether we accept mode-dependent α
+on compounds as a feature.
+
+**Tactics.**
+
+- Enumerate 6-tuples with `|n_i| ≤ 10` (~2M candidates, tractable)
+- Apply Q and spin filters before computing mass (fast reject)
+- Compute `mode_energy` on the Track 7d metric for filtered
+  candidates
+- Rank by `|E_predicted − E_target| / E_target`
+- Report top-10 per target particle
+- Compute α_Coulomb for the top-1 match; flag if not at α
+
+**Smoke cross-checks before scan.**
+
+- Confirm model-E's tuples load correctly and give the expected
+  charge/spin assignments on our code
+- Confirm Track 7d's stable particles (e, p, ν₁, ν₂, ν₃) still
+  give exact masses + α = α
+
+**Deliverables.**
+
+- `scripts/track8_compound_modes.py` — Phase 1 + Phase 2 search
+  + Phase 3 α audit
+- findings-8.md — results per target particle, best match summary
+- Updated candidate baseline for Track 9 (if compound results
+  indicate pool item h is needed)
+
+**Acceptance criteria.**
+
+- Phase 1 completes: three model-E compound tuples evaluated on
+  Track 7d metric; residuals reported
+- Phase 2 completes: alternative 6-tuple candidates found within
+  5% of each target, or documented as not achievable at current
+  metric
+- Phase 3 completes: α status of each matched compound mode
+  reported (universal at α, or mode-dependent with specific
+  deviation)
+
+**Possible outcomes.**
+
+- **Best case.**  Model-E tuples land within 1% on Track 7d, α
+  universal across compounds.  R60 architecture is validated end
+  to end — the model-E spectrum transfers cleanly.  Promote to
+  model-F candidate.
+- **Mixed.**  Some compounds match, others need different
+  6-tuples.  Catalog the differences; R60 inventory is slightly
+  different from model-E but equally justified.
+- **α mode-dependence on compounds.**  Compounds have α ≠ α.
+  Pool item **h** becomes the natural next track.  Decide
+  between "derive cancellation prescription" and "accept
+  mode-dependent compound α" based on severity.
+- **No compound matches close enough.**  Major issue — would
+  indicate the Track 7d geometry is wrong, or that compound
+  modes in MaSt need a richer mechanism (e.g. cross-sheet σ is
+  not just a correction but is load-bearing).  Significant
+  replanning.
+
+---
+
 ### Track 7d — Magic-shear baseline re-solve (ghost ordering)
 
 **Goal.**  Replace Track 7b's shearless (ε=1, s=0) baseline for
@@ -914,6 +1029,17 @@ cross-sheet σ entries.  Derive (analytically or numerically)
 the counter-entry relationship that cancels cross-sheet
 shear-induced α leakage on the joint metric.  Prerequisite
 for compound-mode search using cross-sheet σ as free knobs.
+
+**Counting argument (Track 7d dialog):** each cross-sheet edge
+creates α leakage on *both* sheets it connects.  To cancel
+leakage on all three sheets simultaneously requires **all three
+edges of the triangle** (e↔p, e↔ν, p↔ν) active at specific
+derived values — a "3-phase" / circular arrangement.  Linear
+chains (only two edges) are structurally underdetermined.
+Model-E used only the p↔ν edge; it sacrificed α universality to
+get neutron placement right.  Under R59 F59's universality
+requirement, partial triangles are incompatible; either full
+triangle with prescription, or zero cross-sheet σ.
 
 **i. Alternative ghost-suppression mechanisms** (raised
 post-Track 7c).  If we don't use magic shear on every sheet,
