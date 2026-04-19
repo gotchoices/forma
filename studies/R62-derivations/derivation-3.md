@@ -520,16 +520,12 @@ of charge and mass, originating in the off-diagonal h^45 of
 the inverse internal metric.
 
 This mixing is the structural origin of MaSt's
-(n_r − s n_t)² combination — the mass formula cares about
-shear-shifted linear combinations of the charge labels.  Pool
-item c will work this out explicitly with MaSt's conventions.
+(n_r − s n_t)² combination: the mass formula depends on
+shear-shifted linear combinations of the charge labels.
 
-### D.3 — Preview of MaSt mass formula (deferred to next derivation)
+### D.3 — Structural form of the MaSt mass formula
 
-> *Purpose: state what the next derivation will accomplish,
-> without reaching across the boundary.*
-
-MaSt's mass formula (model-D, model-E) reads
+MaSt's empirically-found mass formula reads
 
 <!-- μ² = (n_t/ε)² + (n_r - s n_t)² -->
 $$
@@ -544,20 +540,20 @@ contribution shifted by the shear times the tube quantum number.
 This is exactly the kind of quadratic form that B.4's general
 formula produces, with (P_4, P_5) ↔ (n_t, n_r) and the
 internal metric chosen with an aspect ratio ε and a shear s.
-The exact identification — which compact direction is "tube"
-vs "ring," what value of (g_44, g_55) corresponds to ε, and
-what unit conventions reproduce the prefactors — is the work
-of the next derivation (pool item c).
+The structural ingredients are all here:
 
-We do not derive that here.  This derivation establishes only:
+- A quadratic form in the two compact-momentum quanta.
+- A characteristic ratio (the aspect ratio ε) that scales one
+  contribution relative to the other.
+- A linear shift of one quantum by the shear times the other,
+  exactly the "n_r − s n_t" combination.
 
-- The structural form m²c² = h^ab P_a P_b is correct.
-- It produces a Pythagorean spectrum in the canonical (no
-  shear, equal radii) case.
-- It admits a (n − s n)-style cross-term in the general case.
-
-The remaining work is choosing the right parametrization to
-match MaSt notation, and that is delegated to derivation-4.
+The explicit parametrization that maps (g_44, g_55, g_45) to
+(ε, s) and recovers MaSt's prefactors is treated in a
+dedicated derivation.  Here we have shown only the structural
+correspondence: the quadratic form m²c² = h^ab P_a P_b admits
+a (n_r − s n_t) cross-term whenever g_45 ≠ 0, matching MaSt's
+formula in form.
 
 ---
 
@@ -636,12 +632,13 @@ is a **massive charged particle** (electron-like in its
 qualitative features, with mass and charge both quantized
 and the quanta linked to the same integer pair (n_4, n_5)).
 
-This is the "electron from light" picture.  We have not yet
-shown the projected particle has spin = ½ or magnetic moment
-= eℏ/2m (those are pool items f and g).  But the geometric
-framework that should produce them — the sheared 2-torus with
-its U(1)×U(1) gauge structure and its kinematic mass-charge
-mixing — is now established.
+This is the "electron from light" picture.  This derivation
+does not yet show the projected particle has spin = ½ or
+magnetic moment = eℏ/2m; those questions are taken up in
+subsequent derivations.  The geometric framework that should
+produce them — the sheared 2-torus with its U(1)×U(1) gauge
+structure and its kinematic mass-charge mixing — is now
+established.
 
 ### E.3 — A note on the photon's 6D speed
 
@@ -726,29 +723,10 @@ We have shown:
 > argument of derivation-1 A.6 applies unchanged to the
 > 2-torus case.
 
-This lemma is what Program 1 has been building toward.  The
-"electron from light" hypothesis is now equipped with a
-concrete, derived rest-mass formula (F7), a clean canonical
-case showing the **Pythagorean structure** (F8), the
-**mass-charge mixing** mechanism (F9) that connects the
+F7–F10 together equip the "electron from light" hypothesis
+with a concrete, derived rest-mass formula (F7), a clean
+canonical case showing the **Pythagorean structure** (F8),
+the **mass-charge mixing** mechanism (F9) that connects the
 geometry to MaSt's empirically-found mass formula, and the
 **inertia** property (F10) that confirms the projected
 particle behaves as a real massive object.
-
-The remaining pool items can now be addressed in any order:
-
-- Pool item **c**: Recover MaSt's exact formula
-  μ² = (n_t/ε)² + (n_r − s n_t)² by choosing the right
-  parametrization of g_ab in terms of (ε, s).  This is direct
-  algebra on F7 and F9.
-- Pool item **d**: Specify the "tube as charge-carrying" /
-  "ring as mass-carrying" assignment by setting one of A_μ,
-  B_μ to zero in the appropriate sheet of the metric ansatz.
-- Pool item **e**: Replicate the construction across the three
-  MaSt sheets (Ma_e, Ma_ν, Ma_p) using the per-sheet
-  parameters from R49.
-- Pool item **f**: Examine whether the holonomy of parallel
-  transport around the 2-torus cycles produces a half-integer
-  angular-momentum quantization — the geometric origin of spin.
-- Pool item **g**: Magnetic moment as a Lorentz-covariant
-  corollary of charge + spin (F5 + pool item f).

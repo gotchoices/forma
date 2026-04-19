@@ -8,10 +8,9 @@ and characterize the new ingredient — the **internal shear**
 g_45 — that has no analog in 5D KK.
 
 The test particle here is **massive** (timelike geodesic),
-matching the primer's Appendix A.  Replacing it with a photon
-(null trajectory) is the next pool item; this track does the
-geometric/algebraic groundwork so that move can be made
-cleanly.
+matching the primer's Appendix A.  This derivation does the
+geometric/algebraic groundwork; the null-trajectory (photon)
+case is treated separately.
 
 ---
 
@@ -752,8 +751,8 @@ fixed by units and don't affect the structural arguments.
 
 ### D.4 — Charge quantization (brief)
 
-> *Purpose: note the quantization condition without re-deriving
-> it; it is needed in pool item c, not here.*
+> *Purpose: state the quantization condition that follows from
+> compact periodicity.*
 
 The compact coordinates x^4 and x^5 are periodic with periods
 L_4 and L_5.  A wavefunction on the torus must be single-
@@ -769,9 +768,7 @@ $$
 Therefore Q_A and Q_B are quantized integers (or rationals
 with a fixed denominator set by the unit conventions).  This
 is the standard KK derivation of charge quantization — see
-primer §10.  We don't expand it here; we will need it in
-derivation-3 (pool item c) when we recover MaSt's mass
-formula on the standing waves.
+primer §10.
 
 ---
 
@@ -908,10 +905,11 @@ formula.
 
 The full quantitative connection — recovering MaSt's
 μ² = (n_t/ε)² + (n_r − s n_t)² from the 6D mass-shell
-condition with shear — is pool item c (next derivation).
-This track only establishes the mechanism: the shear lives in
-the inverse of the 2×2 internal block, and it shows up
-whenever you convert between conserved P_a and kinetic w^b.
+condition with shear — requires the photon-on-torus mass
+formula and is treated separately.  This derivation only
+establishes the mechanism: the shear lives in the inverse of
+the 2×2 internal block, and it shows up whenever you convert
+between conserved P_a and kinetic w^b.
 
 ### E.4 — Summary of the projected geodesic
 
@@ -984,9 +982,9 @@ These have no 5D KK analog:
   Christoffel level.
 - **Kinematic shear mixing** (E.3).  Pure-Q_A eigenstates have
   nonzero w^5 in proportion to g_45.  Pure-Q_B eigenstates
-  have nonzero w^4 likewise.  This produces the (n_r − s n_t)
-  combination of MaSt's mass formula (formal recovery deferred
-  to next derivation).
+  have nonzero w^4 likewise.  This is the geometric mechanism
+  underlying the (n_r − s n_t) combination in MaSt's mass
+  formula.
 - **Positivity constraint |s| < 1.**  Required by positive-
   definiteness of the 2×2 internal block.  When |s| → 1 the
   internal metric becomes singular — the two compact
@@ -1027,17 +1025,7 @@ We have shown:
 >      nonzero w^5 = −g_45 Q_A / G; pure-Q_B eigenstates
 >      have nonzero w^4 = −g_45 Q_B / G.
 
-This lemma is the geometric and dynamical framework for
-Program 1's remaining tracks.  Pool item **b** will replace
-the massive test particle with a null trajectory (photon),
-using F4–F6 to identify the projected 4D mass with the
-magnitude of the conserved compact momentum vector.  Pool item
-**c** will impose standing-wave quantization on the 2-torus
-and recover MaSt's mass formula μ² = (n_t/ε)² + (n_r − s n_t)²
-explicitly from F6's kinematic mixing.  Pool item **d** will
-specify which compact direction carries electric charge (the
-"tube-as-charge" assignment) by setting one of A_μ, B_μ to
-zero.  Pool item **f** will examine whether the holonomy
-phase of parallel transport around the two cycles of the
-sheared 2-torus produces a half-integer angular-momentum
-quantization — the geometric origin of spin.
+F4–F6 provide the geometric and dynamical framework — 6D
+metric structure, conserved compact momenta, two-charge
+Lorentz force, and kinematic shear-mixing mechanism — used by
+the subsequent derivations of Program 1.

@@ -1,6 +1,6 @@
 # R62: Derivations
 
-**Status:** Tracks 1–2 complete; Track 3 framed (Program 1)
+**Status:** Tracks 1–3 complete; Track 4 framed (Program 1)
 **Type:** theoretical (analytical, no scripts required)
 **Depends on:** [primers/kaluza-klein.md](../../primers/kaluza-klein.md)
   (KK derivation of Lorentz force from 5D metric), R59 (Clifford
@@ -713,6 +713,107 @@ derivation in the same format as derivations 1 and 2.
   with nonzero compact momentum is a 4D massive charged
   particle, not a 4D photon.
 
+**Status.** Complete.  See [derivation-3.md](derivation-3.md);
+lemma F7–F10 stated at the end.
+
+---
+
+#### Track 4 — Recovery of the MaSt mass formula (promoted from pool item **c**)
+
+**Goal.**  Derive MaSt's empirically-found mass formula
+
+<!-- μ² = (n_t/ε)² + (n_r − s n_t)² -->
+$$
+\mu^{2} \;=\; (n_{t}/\varepsilon)^{2}
+        \;+\; (n_{r} - s\,n_{t})^{2}
+$$
+
+from the photon-on-2-torus mass formula m²c² = h^ab P_a P_b
+(F7) by choosing an explicit parametrization of the 2×2
+internal metric in terms of the aspect ratio ε and shear s.
+This closes the loop that started in Track 1 (confined photon
+gives rest mass), passed through Track 2 (KK on a 2-torus
+gives the metric structure), and Track 3 (photon-on-torus gives
+the structural mass formula), by reducing it to the exact form
+that model-D / model-E currently postulate.
+
+This is the central deliverable: the **MaSt mass formula is no
+longer a postulate** — it is a derived consequence of GR with
+two compact dimensions plus the Planck–Einstein relation.
+
+**Strategy.**  The general mass formula h^ab P_a P_b expands
+to a quadratic form in (P_4, P_5) with coefficients set by
+g_44, g_55, g_45.  MaSt's formula has the same structure but
+written in (n_t, n_r) with parameters (ε, s).  Find the
+parametrization of g_ab in terms of (ε, s) that matches MaSt's
+formula identically, term by term, then verify by completing
+the square (or equivalently by direct substitution).  Identify
+which compact direction is "tube" and which is "ring" in the
+process.
+
+**Tactics.**
+
+1. State the two formulas side by side: F7's general
+   (h^ab P_a P_b) and MaSt's empirical (μ²).
+2. Apply standing-wave quantization (P_4 = n_4 h/L_4, etc.) to
+   convert F7 into a function of integer quantum numbers.
+3. Choose the natural parametrization: declare the "tube" to
+   be the smaller compact direction and the "ring" to be the
+   larger; introduce ε ≡ L_ring/L_tube as the aspect ratio.
+   Write g_44, g_55, g_45 in terms of (ε, s).
+4. Substitute into m²c² = h^ab P_a P_b and simplify.
+5. Show the result is exactly MaSt's μ² = (n_t/ε)² +
+   (n_r − s n_t)² up to a unit prefactor that fixes the
+   overall mass scale (the Compton scale of the sheet).
+6. Identify what the shear s "geometrically is" in this
+   picture: it is the off-diagonal entry of the 2×2 internal
+   metric, normalized to be dimensionless.  This was sketched
+   in Track 2; here it is pinned down operationally as the
+   specific number that appears in MaSt's formula.
+7. Tabulate the lowest few mass eigenvalues for an example
+   (ε, s) — e.g., the electron-sheet values from R49 — to
+   verify the formula reproduces the known particle inventory
+   in the right order.
+
+**Deliverable.**  `derivation-4.md` — full step-by-step
+derivation in the same format as derivations 1–3.
+
+**Acceptance criteria.**
+
+- The parametrization g_ab(ε, s) is stated explicitly and
+  motivated geometrically (not pulled from MaSt by reverse
+  engineering).
+- The substitution into m²c² = h^ab P_a P_b yields MaSt's
+  formula identically — every coefficient and every cross-term
+  matches.
+- The unit prefactor (the overall mass scale of the sheet) is
+  identified with a clear physical interpretation (e.g., the
+  Compton momentum of the tube circumference).
+- The "tube" / "ring" naming is fixed by a stated convention
+  (smaller / larger compact direction), not by reverse-
+  engineering from charge identification.
+- A worked numerical example confirms the formula reproduces
+  R49's mass spectra.
+
+**Possible outcomes.**
+
+- **Exact match.**  MaSt's formula falls out cleanly from a
+  natural parametrization.  Model-D / model-E's mass-formula
+  postulate is now derived from first principles.  This is the
+  expected outcome.
+- **Match up to a normalization choice.**  The formula matches
+  in form but with a different overall prefactor than MaSt's
+  empirical fit.  Document the choice and note that the
+  prefactor is degenerate with the choice of length unit
+  (i.e., what we call L_tube).
+- **Form mismatch.**  The natural parametrization gives a
+  quadratic form that does not reduce to MaSt's exact (n_r −
+  s n_t)² combination — it might yield (n_r − s n_t)² /(1−s²)
+  or some other variant.  This would mean MaSt's formula is
+  *almost* but not exactly KK on a 2-torus, and we would need
+  to characterize the discrepancy.  Either way, the result is
+  informative.
+
 ---
 
 ### Next-track pool
@@ -727,14 +828,8 @@ see derivation-2.md.
 **b. ~~Photon-on-torus: 4D mass from compact momentum.~~**
 Promoted to Track 3; see derivation-3.md.
 
-**c. Recovery of the MaSt mass formula.**
-Apply the standing-wave boundary condition (n_tube, n_ring)
-quantization on the 2-torus with aspect ratio ε and shear s.
-Show that the eigenvalue equation reduces to MaSt's mass
-formula μ = √((n_t/ε)² + (n_r − n_t s)²), thereby deriving
-the formula model-E currently postulates. Identify what the
-shear s geometrically *is* in this picture (the off-diagonal
-compact↔compact metric entry from track a).
+**c. ~~Recovery of the MaSt mass formula.~~** Promoted to
+Track 4; see derivation-4.md.
 
 **d. Charge identification: tube as the charge-carrying
 winding.** Specify the Ma–St block structure: declare that the
@@ -905,7 +1000,8 @@ Objectives section above and motivates the sequence
 | README.md | This framing document |
 | derivation-1.md | Track 1 — mass and angular momentum from a confined photon (complete) |
 | derivation-2.md | Track 2 — Kaluza-Klein on a 2-torus (complete) |
-| derivation-3.md | Track 3 — photon on a 2-torus, 4D mass from compact momentum (in progress) |
+| derivation-3.md | Track 3 — photon on a 2-torus, 4D mass from compact momentum (complete) |
+| derivation-4.md | Track 4 — recovery of the MaSt mass formula (in progress) |
 | scripts/ | Optional verification scripts (not expected to be needed for analytical tracks) |
 
 Future programs (Program 2, Program 3, …) will add their own

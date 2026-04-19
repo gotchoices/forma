@@ -619,12 +619,12 @@ single-valuedness condition — only the geometry has changed.
 
 **This is the program's central observation in miniature.**  A
 single compact dimension delivers one output (mass, on the
-linear; mass + angular momentum, on the circle).  Pool item **a**
-generalizes from one compact direction to a 2-torus.  Each
-direction independently delivers its own output via the same
-mechanism, and the cross-coupling between them (the off-diagonal
-2×2 metric entry — what MaSt calls **shear**) is conjectured
-(pool item **f**) to deliver a *third* output: spin.
+linear; mass + angular momentum, on the circle).  Generalizing
+from one compact direction to a 2-torus lets each direction
+independently deliver its own output via the same mechanism,
+and the cross-coupling between them (the off-diagonal 2×2 metric
+entry — what MaSt calls **shear**) is conjectured to deliver a
+*third* output: spin.
 
 The orbital angular momentum L_z = nℏ derived here is
 **integer-valued** for any positive integer n.  It is not yet
@@ -633,10 +633,10 @@ require a more delicate construction (a holonomy phase that is
 half what one would naively expect), and that construction needs
 the cross-coupling that only a 2-torus provides.  Part B
 establishes the *classical-geometric* ingredient (orbital angular
-momentum from confined light); pool item **f** asks whether the
-*topological* ingredient (a 2π rotation that returns the
-wavefunction to its negative) is realizable from the 2×2 sheared
-torus metric.
+momentum from confined light); the *topological* ingredient
+(a 2π rotation that returns the wavefunction to its negative)
+is the question for whether spin is realizable from the 2×2
+sheared torus metric.
 
 ---
 
@@ -669,6 +669,5 @@ We have shown:
 > is the natural setting in which to ask whether mass, charge,
 > and spin can all emerge together from a single photon ansatz.
 
-This lemma is the foundation that pool items **a** through
-**i** of Program 1 will use.  Subsequent derivations may invoke
-"Track 1 lemma" without re-deriving F1–F3.
+F1–F3 are invoked by the subsequent derivations of Program 1
+without re-derivation.
