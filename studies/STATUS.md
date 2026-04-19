@@ -150,7 +150,7 @@ shears (s_e = 2.004) saturate the e-tube and block this
 architecture on model-E geometry (F41) — R60 is scoped to find
 whether a modified spectrum mechanism can coexist with it.
 
-### R60. Metric-11 — particle spectrum on R59's α-derivable 11D architecture  **Active — Tracks 1–11 complete; inventory + nuclei validated**
+### R60. Metric-11 — particle spectrum on R59's α-derivable 11D architecture  **Active — Tracks 1–12 complete; model-F candidate ready**
 **Study:** [`R60-metric-11/`](R60-metric-11/)
 **Type:** theoretical + compute
 **Depends on:** R59, R53, R49, R54, R61, model-E

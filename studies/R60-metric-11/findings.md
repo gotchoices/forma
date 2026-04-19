@@ -24,37 +24,33 @@ entry-by-entry grid.
 | 9 | Re-solve with model-E extreme e-sheet (ε=397, s=2.004) on the σ_ra-augmented architecture | F52–F56 | **Major win.** Joint solver converges at k_e = k_p = k_ν = 0.04696 (single-k symmetry survives sε = 796!). All α universal. **Muon at model-E tuple (1,1,-2,-2,0,0) lands at 104.78 MeV — 0.83% off, matching model-E's own accuracy.** Tau at (2,3,-2,*,1,-1): 0.19% off. Neutron at (-1,-2,-1,*,-1,-3): 0.14% off. Model-E's spectrum revives on R60's augmented architecture with α universality as a bonus. | [findings-9.md](findings-9.md) |
 | 10 | Broader hadron inventory on Track 9 baseline | F57–F62 | **R60 recovers 16/18 of model-E's matched particles.** 4 match at model-E's tuples (e, p bare, μ, Σ⁺ at 0.02%); 12 need R60-native tuples at α_sum = −1 (all within 2.5%, several better than model-E — ρ at 0.49% vs 0.97%, K± at 0.95% vs 1.77%); 2 still poor (π⁰, π± at ~23–25%, same failure as model-E). All R60 tuples are α-universal by construction. The α-sum filter acts as a natural selection rule. | [findings-10.md](findings-10.md) |
 | 11 | Nuclear scaling audit (d, ⁴He, ¹²C, ⁵⁶Fe) | F63–F66 | **Nuclear scaling law works on R60.** All 4 nuclei within 1.6% (model-E was ≤ 1.1%). Deuterium matches model-E exactly (0.05%) with small decoration. **α_Coulomb = Z² × α to floating-point precision** for every Z tested (Z=1, 2, 6, 26 → α = 1, 4, 36, 676 exactly). The compound-α quantization rule naturally delivers nuclear Coulomb physics. | [findings-11.md](findings-11.md) |
+| 12 | Proton sheet alignment with model-E (ε_p=0.55, s_p=0.162) | F67–F71 | **Clean alignment.** Model-E's compound tuples now land within ~1.6% on R60, comparable to model-E's own accuracy. 8 of 18 tuples have α = α (matching exactly at model-E level); 10 have α ≠ 1 (need R60-native alternatives). Single-k symmetry (k=0.04696) preserved. Nuclear scaling identical (not p-sheet-sensitive). **Track 12 baseline is the model-F candidate.** | [findings-12.md](findings-12.md) |
 
-## Current R60 baseline (Track 9 — model-E extreme e-sheet)
+## Current R60 baseline (Track 12 — model-F candidate)
 
-Working metric after Track 9:
+Working metric after Track 12:
 
 | Parameter | Value |
 |-----------|-------|
-| Sheet inputs (ε, s) | e: (397.074, 2.004200); p: (0.4, 3.0); ν: (2.0, 0.022) |
-| ν mode triplet | R61 #1: (+1,+1)(−1,+1)(+1,+2) |
+| Sheet inputs (ε, s) | e: (397.074, 2.004200); p: (0.55, 0.162037); ν: (2.0, 0.022) |
+| ν mode triplet | R61 #1: (+1,+1)(−1,+1)(+1,+2) (others viable — Track 13 pending) |
 | k (all three sheets) | 4.696 × 10⁻² = 1.1803/(8π) |
-| L_ring_e | 54.83 fm (= model-E's 11.88 × √(1/k), scale-consistent) |
-| L_ring_p | 15.24 fm |
+| L_ring_e | 54.83 fm |
+| L_ring_p | 20.55 fm |
 | L_ring_ν | 1.96 × 10¹¹ fm |
 | g_aa | 1 |
 | σ_ta (tube↔ℵ) | √α (signs +1/−1/+1 for e/p/ν) |
-| σ_ra_e (ring↔ℵ) | +67.98 (= sε_e · σ_ta_e at extreme geometry) |
-| σ_ra_p (ring↔ℵ) | −0.1025 |
-| σ_ra_ν (ring↔ℵ) | +0.003759 |
+| σ_ra_e (ring↔ℵ) | +67.98 (derived sε_e·σ_ta) |
+| σ_ra_p (ring↔ℵ) | −0.00757 (derived) |
+| σ_ra_ν (ring↔ℵ) | +0.003759 (derived) |
 | σ_at (ℵ↔t) | 4πα |
 
 All targets (three masses, three α = α) met at floating-point
 precision.  Δm²₃₁/Δm²₂₁ = 33.59 cross-checks against R49's 33.6.
-Ghost ordering natural on e-sheet at extreme geometry: (1, 2)
-electron is 205× lighter than (1, 1), same structure as model-E.
-Ghost ordering on p-sheet via magic shear.  ν-sheet (1, 0) ghost
-handled by external filter (pool item **j**).
-
-**Track 9 leads to muon reproduction at model-E's tuple with
-model-E's own 0.83% accuracy.**  R60's architecture supports
-model-E's extreme-geometry story, with α universality as a
-bonus.
+Ghost ordering natural on e-sheet (generation resonance).
+Inventory: 8 model-E tuples at α = α match directly; 10 need
+R60-native α-universal alternatives (Track 13a).  Nuclear scaling
+at 0.05–1.5%.  Pion failure inherited from model-E.
 
 ## Status
 

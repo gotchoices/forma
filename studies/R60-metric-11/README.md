@@ -753,6 +753,47 @@ extraction for ν₁/ν₂/ν₃ between base and augmented.
 
 ---
 
+### Track 12 — Proton sheet alignment with model-E
+
+**Goal.**  Replace Track 9's magic-shear p-sheet (ε_p = 0.4,
+s_p = 3.0) with model-E's proton geometry (ε_p = 0.55,
+s_p = 0.162) and re-run the joint solve + inventory audits.
+Hypothesis: model-E's p-sheet values are better-tuned for the
+hadron inventory and nuclear scaling; reverting to them should
+tighten Tracks 10 and 11 accuracies toward model-E's numbers.
+
+**Strategy.**
+
+Phase 1 — joint re-solve with the model-E p-sheet.  Same six
+free knobs (L, k per sheet), same six targets.  Check:
+- Signature holds (s_p · ε_p = 0.089, well under any bound)
+- α universality preserved
+- Single-k symmetry preserved (solver should again find
+  k_e = k_p = k_ν)
+
+Phase 2 — inventory re-evaluation.  Plug model-E's compound
+tuples into the new metric.  Many should now match their
+model-E accuracy since the p-sheet is the same.
+
+Phase 3 — nuclear re-audit.  d, ⁴He, ¹²C, ⁵⁶Fe on the new
+metric.
+
+**Expected outcomes.**
+
+- **Clean alignment.**  Track 10 accuracy improves to near
+  model-E levels for the tuples that failed before; nuclear
+  scaling tightens to ≤ 1.1% like model-E.  R60 now matches
+  model-E across the full inventory and nuclei, with α
+  universality as a structural bonus.
+- **Partial alignment.**  Some things improve, some don't.
+  Track 12 identifies which hadron/nuclear fits are sensitive
+  to p-sheet geometry specifically.
+- **Regression.**  p-sheet change breaks something we previously
+  had working (unlikely given the structural architecture holds,
+  but possible).
+
+---
+
 ### Track 11 — Nuclear scaling audit
 
 **Goal.**  Test R29 / model-E's nuclear scaling law (n_5 = A,
