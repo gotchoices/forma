@@ -218,10 +218,122 @@ suppression beyond simple ordering, or compound modes.
 
 ---
 
+### Track 3 — Proton sheet viability map
+
+**Goal.**  Same idea as Track 2 but for the proton sheet.
+Characterize the (ε_p, s_p) range under which the R59 F59 α
+architecture remains signature-OK with the proton sheet active
+alongside an already-fixed electron sheet.  Calibrate L_ring_p
+from m_p inside that range.  Constrain ranges where no single
+preferred value is yet identified.
+
+The proton in model-E is effectively a pure single-sheet (1, 3)
+mode (its ν content is decorative; cross-sheet σ₄₅, σ₄₆ are
+neutron knobs and don't move the proton).  Three quarks are
+"ringings" of the n_pr = 3 ring symmetry — emergent, not separate
+modes.  So the proton sheet can be characterized by its own
+(ε_p, s_p) without invoking the ν or e sheets.
+
+**Use model-E as a guide, not a pin.**  Model-E's (ε_p = 0.55,
+s_p = 0.162) gives s · ε ≈ 0.089 — well inside the 3/√2 ≈ 2.12
+Track 2 boundary, so almost certainly inside the joint
+e+p signature region too.  Track 3 starts there as a smoke
+check, then maps the actual range.
+
+**Note on s_p being free.**  In model-E, s_p was fixed by R19
+(`solve_shear_for_alpha(0.55, 1, 3) = 0.162`) — i.e., s_p was
+the value that made R19 give α at that ε_p.  In R60 the α
+mechanism has moved to Ma↔ℵ↔t coupling (R59 F59), so the R19
+constraint is gone.  s_p is now genuinely free until pinned by
+something else (compound modes, neutron, hadron near-misses —
+all later tracks).
+
+**Strategy.**
+
+1. Fix the electron sheet at a representative Track 2 candidate.
+   Recommended: (ε_e = 1, s_e = 3/2) — the analytic corner of
+   the Track 2 overlap.  L_ring_e calibrated to m_e.
+2. Scan (ε_p, s_p) over a 2D grid with the same span as Track 2.
+3. At each (ε_p, s_p):
+   (i)   Compute L_ring_p so that E(0,0,0,0,1,3) = m_p exactly
+         (closed form, always achievable).
+   (ii)  Build the full 11D metric with e+p sheets active, ν
+         identity placeholder, R59 F59 α knobs on with sign_p
+         = −1 on p-tube.
+   (iii) Check signature.
+   (iv)  Compute α_Coulomb on the proton mode (0,0,0,0,1,3) —
+         universality demands α_p / α_e ≈ 1 by R59 F45.
+4. Report Region C (signature-OK, p-sheet alone) and Region D
+   (signature-OK with e-sheet active at the chosen point).
+   Compare; characterize whether adding the p-sheet meaningfully
+   tightens the signature region or not.
+
+**Tactics.**
+
+- Boundary refinement by bisection in ε_p along several s_p
+  lines, parallel to Track 2's analysis.  Look for an analogous
+  s · ε boundary; it may differ because the joint e+p
+  configuration places more demand on ℵ.
+- Smoke check at model-E (0.55, 0.162): expect signature OK,
+  α_p / α_e ≈ 1 to 60 ppm, mass exact by construction.
+- Compare Region D against several different e-sheet anchors
+  (e.g., also (0.1, 1.5)) to see if the e-sheet choice
+  materially changes the p-sheet viable range.
+
+**Smoke cross-check before scan.**
+
+- Model-E (ε_p, s_p) = (0.55, 0.162) with e-sheet at (1, 3/2):
+  signature OK, α_p / α_e ≈ 1.
+
+**Deliverables.**
+
+- `scripts/track3_proton_sheet.py` — scan + boundary refinement +
+  candidate report.
+- findings.md F11 (smoke), F12 (Region C: p-sheet alone), F13
+  (Region D: joint e+p), F14 (interpretation, candidate range,
+  comparison to model-E).
+
+**Acceptance criteria.**
+
+- Region D characterized over the scan range with a clear
+  bounded form (analytical inequality if it falls out, otherwise
+  a numerical region with representative points).
+- α_Coulomb universality verified on the joint metric: α_p / α_e
+  within 1% across the viable region.
+- At least three representative (ε_p, s_p) points reported,
+  including one near model-E and one with maximum signature
+  margin.
+
+**Scope.**
+
+- Only ε_p and s_p are varied; L_ring_p is derived from m_p.
+- Ghost-ordering on p-sheet is **not** a Track 3 constraint
+  (matches the Track 2 convention; (1,1) ghost suppression is
+  handled by other mechanisms — waveguide, irreducibility, R47
+  Track 7 gcd argument).
+- No quark mass-ratio test (quarks are ringings of n_pr = 3,
+  not separate modes; no R60 lever for them).
+- No compound modes (neutron, mesons) — those are later tracks.
+
+**Possible outcomes.**
+
+- **Region D is wide.**  Proton sheet poses no architectural
+  constraint; model-E's (0.55, 0.162) is comfortably inside.
+  Carry forward and proceed to Track 4 (ν-sheet).
+- **Region D is narrow but nonempty.**  Constrains the proton
+  geometry but lets us pick a comfortable point.  Carry forward.
+- **Region D excludes model-E.**  Proton sheet has a different
+  viable range than model-E used.  Document and carry forward
+  with a new working (ε_p, s_p).
+- **Region D is empty.**  Joint e+p with R59 F59 α is
+  structurally infeasible.  Major problem; revisit α
+  architecture or e-sheet choice.
+
+---
+
 ## Next-track pool
 
-Candidates after Track 2.  Sequence decided from Track 2's
-outcome.  Sketches only; chosen item gets elaborated when promoted.
+Candidates after Track 3.  Sequence decided as we go.
 
 **a.** (absorbed into Track 2)
 
