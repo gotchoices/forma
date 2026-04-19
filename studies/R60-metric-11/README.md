@@ -753,6 +753,28 @@ extraction for ν₁/ν₂/ν₃ between base and augmented.
 
 ---
 
+### Track 7c — Inter-sheet shear compatibility check (post-Track 7b)
+
+**Goal.**  Quick sanity check: does activating Ma cross-sheet σ
+entries (R54's σ₄₅ = −0.18 and σ₄₆ = +0.10, or analogs) break
+Track 7b's clean α universality?
+
+**Strategy.**  Take the Track 7b baseline metric (α universal to
+floating point across all three sheets).  Add cross-sheet σ
+entries at (a) small values (0.01), (b) R54's historical values
+(±0.18, ±0.10), (c) several intermediate values.  At each
+configuration, compute α_e, α_p, α_ν₁/₂/₃ and check signature.
+Optionally re-solve (L, k) to absorb any shift.
+
+**Acceptance.**  If α universality survives activation of
+cross-sheet σ (within tolerance reachable by re-solve), we have
+a usable free knob for compound-mode fine-tuning.  If it breaks,
+we need to extend the structural prescription to cover the
+cross-sheet case (a natural follow-up — likely σ_cross ↔ ℵ
+entries by analogy with σ_ra).
+
+---
+
 ### Track 7b — Re-solve on the augmented metric (magnitude lock)
 
 **Goal.**  Track 7 demonstrated that adding σ_ra entries collapses
