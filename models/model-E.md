@@ -1,6 +1,6 @@
-# Model: model-E (Full T⁶ with generation structure) ⟵ ACTIVE
+# Model: model-E (Full T⁶ with generation structure) — Superseded by [model-F](model-F.md)
 
-**Status:** Active — R53/R54 complete, R55 framed
+**Status:** Superseded — spectrum results inherited by model-F on an α-derivable 11D metric (R60)
 **Code:** [`studies/lib/ma_model_d.py`](../studies/lib/ma_model_d.py) (engine shared with model-D; metric extensions in R54 scripts)
 **Study range:** R53 (generations), R54 (compound modes, nuclei, α), R55 (Ma-S derivation, framed)
 **Supersedes:** [model-D](model-D.md)
