@@ -606,6 +606,9 @@ $$
     \bigl(\partial_b A_d - \partial_d A_b\bigr)
 $$
 
+(The second equality holds because g₄₄ is constant — assumption 1
+in §A.3 — so it factors out of both derivatives.)
+
 The quantity in parentheses is exactly the **electromagnetic field
 tensor** (sometimes called the Faraday tensor):
 
@@ -680,8 +683,10 @@ Substituting the Christoffel symbols from §A.4:
 - Γ^a_{bc} contains the gravitational terms (the 4D Christoffel of
   g_ab, plus small A_a A_b corrections we are not tracking explicitly)
 
-The two mixed terms (4b and b4) are equal, giving a factor of 2
-that cancels the ½:
+The sum over B, C includes both (B=4, C=b) and (B=b, C=4).
+Since Γ^a_{4b} = Γ^a_{b4} (Christoffel symmetry in the lower
+indices), these two terms are equal.  Their sum is
+2 × ½ g₄₄ F_b^a u⁴ u^b, and the 2 cancels the ½:
 
 <!-- d²x^a/dτ² + Γ^a_bc u^b u^c = −g_44 u^4 F_b^a u^b -->
 $$
