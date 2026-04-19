@@ -1,6 +1,6 @@
 # R62: Derivations
 
-**Status:** Track 1 complete; Track 2 framed (Program 1)
+**Status:** Tracks 1–2 complete; Track 3 framed (Program 1)
 **Type:** theoretical (analytical, no scripts required)
 **Depends on:** [primers/kaluza-klein.md](../../primers/kaluza-klein.md)
   (KK derivation of Lorentz force from 5D metric), R59 (Clifford
@@ -613,6 +613,106 @@ step's purpose annotated and key results boxed.
   like correction. If so, flag it as a candidate spin
   precursor for pool item f.
 
+**Status.** Complete.  See [derivation-2.md](derivation-2.md);
+lemma F4–F6 stated at the end.
+
+---
+
+#### Track 3 — Photon on a 2-torus: 4D mass from compact momentum (promoted from pool item **b**)
+
+**Goal.**  Replace Track 2's massive test particle with a null
+trajectory (a photon) in the same 6D geometry.  Apply Track 1's
+lemma — that a confined photon system has rest mass equal to
+its energy divided by c² — to read off the 4D rest mass as the
+magnitude (in the internal metric) of the conserved 6D compact
+momentum vector (P_4, P_5).  In the canonical case (no shear,
+equal-radii 2-torus) the result is the **Pythagorean mass
+formula** m c = (h/L) √(n_4² + n_5²); the general case is a
+quadratic form m²c² = h^ab P_a P_b that is the seed of MaSt's
+mass formula.
+
+**Strategy.**  The 6D null condition G_AB k^A k^B = 0 splits
+into a 4D part g_μν k^μ k^ν and a compact part g_ab w^a w^b.
+The 4D part is exactly the 4D mass-shell relation
+g_μν p^μ p^ν = −m²c² when read with p^μ = ℏ k^μ (the projected
+4-momentum of the particle as seen by a 4D observer).  So the
+projected rest mass squared is the compact-direction quadratic
+form g_ab w^a w^b — and using Track 2's conservation laws
+P_a = g_ab w^b, this becomes h^ab P_a P_b.  The Track 1 lemma
+provides the conceptual bridge: just as a photon between
+mirrors has rest mass = E/c² in the rest frame of the mirrors,
+a photon constrained to the 2-torus has rest mass = (compact
+energy)/c² in the rest frame of the 4D observer.
+
+**Tactics.**
+
+1. State the 6D null condition for a photon: G_AB k^A k^B = 0.
+2. Confirm conservation of P_4 and P_5 still holds for null
+   trajectories (Killing's theorem applies regardless of
+   timelike vs null character).
+3. Decompose the null condition into spacetime + compact +
+   mixed parts using the metric ansatz from Track 2.
+4. Identify the spacetime part with the 4D mass shell
+   g_μν p^μ p^ν = −m²c²; read off m²c² = g_ab w^a w^b.
+5. Convert the kinetic w^a to conserved P_a using
+   w^a = h^ab P_b: m²c² = h^ab P_a P_b (the **general mass
+   formula**).
+6. Specialize to the canonical case (g_ab = δ_ab, no shear):
+   recover the Pythagorean mass m²c² = P_4² + P_5².
+7. Apply standing-wave quantization (P_a = n_a h/L_a from
+   derivation-2 D.4): get the discrete mass spectrum
+   m = (h/Lc)√(n_4² + n_5²).
+8. Apply Track 1's Lorentz-boost argument to confirm the
+   projected rest mass behaves inertially — same as the
+   linear-cavity and 1D-ring cases, with the cavity now being
+   the 2-torus.
+9. Note the connection to the MaSt mass formula
+   μ² = (n_t/ε)² + (n_r − s n_t)² in the general (sheared,
+   asymmetric-radii) case, deferring the full identification
+   to the next pool item.
+10. Discuss interpretation: the projected particle is
+    simultaneously massive and electrically charged in 4D,
+    even though its 6D form is a null trajectory — exactly the
+    "electron from light" picture this program is testing.
+
+**Deliverable.**  `derivation-3.md` — full step-by-step
+derivation in the same format as derivations 1 and 2.
+
+**Acceptance criteria.**
+
+- The 6D null condition is stated explicitly and decomposed
+  cleanly.
+- The mass formula m²c² = h^ab P_a P_b follows from the
+  decomposition with no additional assumptions beyond what
+  Tracks 1 and 2 established.
+- The Pythagorean special case is shown to follow exactly (not
+  as an approximation) when g_ab = δ_ab.
+- The standing-wave quantization gives a discrete mass
+  spectrum on the 2-torus, with explicit formula.
+- The inertial-mass argument from Track 1 is confirmed to
+  apply unchanged in the 2-torus case.
+- The "preview of MaSt formula" subsection states what is
+  derived now and what is deferred to pool item c, with no
+  hand-waving across the boundary.
+
+**Possible outcomes.**
+
+- **Clean derivation.**  The mass formula falls out of one
+  identity (decomposition of G_AB k^A k^B = 0), Pythagorean is
+  a one-line corollary, and the MaSt connection is structural.
+  Pool items c, d, f all proceed with the mass formula in
+  hand.
+- **Sign/normalization subtleties.**  The exact relationship
+  between the conserved Killing momentum and the operationally
+  defined "electric charge" might require a unit choice that
+  affects the prefactor in m²c² = h^ab P_a P_b.  Document any
+  such choice transparently.
+- **The "photon-on-torus = electron" claim is robust.**  This
+  derivation should make the central claim of Program 1 hold
+  up to scrutiny: the 4D projection of a 6D null trajectory
+  with nonzero compact momentum is a 4D massive charged
+  particle, not a 4D photon.
+
 ---
 
 ### Next-track pool
@@ -624,14 +724,8 @@ detail when promoted.
 **a. ~~KK derivation on a 2-torus.~~** Promoted to Track 2;
 see derivation-2.md.
 
-**b. Photon-on-torus: 4D mass from compact momentum.**
-Replace KK's massive test particle with a null trajectory in
-the 4 + 2-torus geometry. Use the Track 1 lemma to identify
-the projected 4D mass as the magnitude of the compact-direction
-momentum. Show that the 4D 4-momentum satisfies
-p^μ p_μ = -m² c² with m = √(p_4² + p_5²) c (in appropriate
-units), giving the **Pythagorean mass formula** for a 2-torus
-standing wave.
+**b. ~~Photon-on-torus: 4D mass from compact momentum.~~**
+Promoted to Track 3; see derivation-3.md.
 
 **c. Recovery of the MaSt mass formula.**
 Apply the standing-wave boundary condition (n_tube, n_ring)
@@ -810,7 +904,8 @@ Objectives section above and motivates the sequence
 |------|---------|
 | README.md | This framing document |
 | derivation-1.md | Track 1 — mass and angular momentum from a confined photon (complete) |
-| derivation-2.md | Track 2 — Kaluza-Klein on a 2-torus (in progress) |
+| derivation-2.md | Track 2 — Kaluza-Klein on a 2-torus (complete) |
+| derivation-3.md | Track 3 — photon on a 2-torus, 4D mass from compact momentum (in progress) |
 | scripts/ | Optional verification scripts (not expected to be needed for analytical tracks) |
 
 Future programs (Program 2, Program 3, …) will add their own

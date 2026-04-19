@@ -131,10 +131,10 @@ $$
 
 The instantaneous *photon* momentum oscillates between ±E/c.  The
 *system* (mirrors + photon) has zero spatial momentum at every
-instant by momentum conservation: the impulse the photon delivers
-to whichever mirror it just bounced off is ±2E/c, exactly
-cancelling its own momentum, so the cavity-photon total spatial
-momentum stays at zero in F.
+instant by momentum conservation: each bounce transfers momentum 2E/c from the photon to the
+mirror (the photon's momentum reverses from +E/c to −E/c),
+keeping the total system momentum (photon + both mirrors)
+at zero in F at every instant.
 
 The system's 4-momentum is therefore
 
@@ -442,9 +442,11 @@ $$
 Check: p^μ p_μ = −(E/c)² + (E/c)² sin²φ + (E/c)² cos²φ + 0 = 0.
 Null, as required.
 
-The energy E is constant in time: an idealized rigid ring does
-no work on a photon orbiting it (the constraint force is
-centripetal, perpendicular to the photon's motion).
+The energy E is constant in time: whatever mechanism confines
+the photon to the ring does no work on it (the constraint force
+is centripetal, perpendicular to the photon's motion).  As in
+A.7, we leave the confining mechanism unspecified — the results
+hold for any geometry that achieves circular confinement.
 
 ### B.3 — Time-averaged spatial momentum is zero
 
