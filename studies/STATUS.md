@@ -150,7 +150,7 @@ shears (s_e = 2.004) saturate the e-tube and block this
 architecture on model-E geometry (F41) — R60 is scoped to find
 whether a modified spectrum mechanism can coexist with it.
 
-### R60. Metric-11 — particle spectrum on R59's α-derivable 11D architecture  **Active — Tracks 1–8 complete; muon blocked**
+### R60. Metric-11 — particle spectrum on R59's α-derivable 11D architecture  **Active — Tracks 1–9 complete; model-E revival**
 **Study:** [`R60-metric-11/`](R60-metric-11/)
 **Type:** theoretical + compute
 **Depends on:** R59, R53, R49, R54, R61, model-E
@@ -178,23 +178,29 @@ fm) consistent with mass hierarchy.  **R60's full architecture
 is now validated** as compatible with the model-E three-sheet
 foundation.
 
-Track 7 added ring↔ℵ structural cancellation entries with
-σ_ra = (sε)·σ_ta per sheet.  **Mode-dependence on the ν-sheet
-collapsed from 28% spread to 0.0000% — universality restored
-across all (n_t, n_r) modes** (F32–F34).  Single-sheet R59
-F45 universality extended to the sheared multi-sheet case.
+Track 7 added ring↔ℵ structural cancellation σ_ra = (sε)·σ_ta
+per sheet.  Mode-dependence on ν collapsed from 28% to 0%.
+Tracks 7b–7d re-solved with the fix across shearless/magic-shear
+geometries — all produced the same emergent single-k symmetry
+k = 0.04696 = 1.1803/(8π).  Track 7c found most cross-sheet σ
+entries break α universality (pool item **h**).
 
-Track 7b re-solved the joint system on the augmented metric.
-**All targets met to floating-point precision; ν₂ and ν₃
-(untargeted) came out at α exactly — confirming Track 7's
-structural prediction.**  Striking emergent symmetry: the
-solver collapsed the three independent per-sheet k knobs
-into a single value k = 0.04696 = 1.1803/(8π) across all
-three sheets (F35–F38).  R60 architecture now fully validated:
-α universal across sheets AND across modes within each sheet.
+Track 8 found compound α exactly quantized:
+`α/α = (n_et − n_pt + n_νt)²`.  On the Track 7d baseline,
+tau and neutron land cleanly but muon is blocked by mass desert.
 
-Recommended next: Track 8 — compound mode search for muon,
-tau, neutron, hadrons on this baseline.
+**Tracks 8b + 9 revival:** confirmed σ_ra lifts Track 2's
+signature bound (tested up to sε = 2000), then re-solved with
+e-sheet at model-E extreme values (ε=397, s=2.004).  Single-k
+symmetry survives even sε ≈ 800.  **Muon at model-E's tuple
+(1,1,−2,−2,0,0) lands at 104.78 MeV — 0.83% off, identical to
+model-E's own accuracy.**  Tau and neutron at alternate tuples
+within 0.2%.  All α universal, ν predictions intact, Δm² ratio
+= 33.59.  R53's generation resonance mechanism working on R60's
+augmented architecture.
+
+Recommended next: Track 10 — broader hadron inventory (Σ, Λ,
+Ξ, Ω, K, π, η, ρ, φ) on this baseline.
 
 ### R55. α consistency — Ma-S coupling derivation  **Tracks 1,3 done; Track 4 paused**
 **Study:** [`R55-alpha-consistency/`](R55-alpha-consistency/)

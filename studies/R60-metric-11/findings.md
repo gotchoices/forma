@@ -20,29 +20,39 @@ entry-by-entry grid.
 | 7c | Inter-sheet shear compatibility check — test whether activating Ma cross-sheet σ entries preserves α universality | F39–F41 | **Negative.** Most cross-sheet activations break signature OR α universality. Track 7's per-sheet fix doesn't extend freely. Cross-sheet σ is not a free knob — pool item **h** would derive an extended prescription if Track 8 needs it. | [findings-7.md](findings-7.md) |
 | 7d | Magic-shear baseline re-solve — use s_e = 2, s_p = 3 to make target modes lightest on each sheet | F42–F45 | **Clean win** on e and p: joint solve converges at same single-k value (1.1803/(8π)); all targets met; α universal across sheets AND across modes; ghost ordering ✓ on e and p. ν-sheet (1, 0) ghost persists (handle via R61 filter, pool item **j**). Track 8 baseline established. | [findings-7.md](findings-7.md) |
 | 8 | Compound mode search (μ, τ, neutron) on Track 7d baseline | F46–F50 | **Mixed.** Discovered compound α is exactly quantized: `α/α = (n_et − n_pt + n_νt)²`. Clean tau match (2,−6,−2,*,1,−1) at 0.37% off with α = α; clean neutron match (−1,6,−1,*,−1,−3) at 0.14% off with α = α. **Muon blocked** by mass desert 50–200 MeV — no low-order compound reaches it on this metric. Model-E tuples don't survive the L-scale transition. | [findings-8.md](findings-8.md) |
+| 8b | Extreme-geometry e-sheet sanity check — does σ_ra lift Track 2's sε bound? | F51 | **Yes, confirmed.** Signature holds at sε = 0.8, 2.25, 10, 100, 795 (model-E), 2000. σ_ra = (sε)·σ_ta makes signature u-independent. Track 2 bound is a property of the un-augmented metric only; augmentation removes it. | [findings-8.md](findings-8.md) |
+| 9 | Re-solve with model-E extreme e-sheet (ε=397, s=2.004) on the σ_ra-augmented architecture | F52–F56 | **Major win.** Joint solver converges at k_e = k_p = k_ν = 0.04696 (single-k symmetry survives sε = 796!). All α universal. **Muon at model-E tuple (1,1,-2,-2,0,0) lands at 104.78 MeV — 0.83% off, matching model-E's own accuracy.** Tau at (2,3,-2,*,1,-1): 0.19% off. Neutron at (-1,-2,-1,*,-1,-3): 0.14% off. Model-E's spectrum revives on R60's augmented architecture with α universality as a bonus. | [findings-9.md](findings-9.md) |
 
-## Current R60 baseline (Track 7d magic-shear)
+## Current R60 baseline (Track 9 — model-E extreme e-sheet)
 
-Working metric for Track 8 (compound modes):
+Working metric after Track 9:
 
 | Parameter | Value |
 |-----------|-------|
-| Sheet inputs (ε, s) | e: (0.4, 2.0); p: (0.4, 3.0); ν: (2.0, 0.022) |
+| Sheet inputs (ε, s) | e: (397.074, 2.004200); p: (0.4, 3.0); ν: (2.0, 0.022) |
 | ν mode triplet | R61 #1: (+1,+1)(−1,+1)(+1,+2) |
 | k (all three sheets) | 4.696 × 10⁻² = 1.1803/(8π) |
-| L_ring_e | 27,990 fm |
+| L_ring_e | 54.83 fm (= model-E's 11.88 × √(1/k), scale-consistent) |
 | L_ring_p | 15.24 fm |
 | L_ring_ν | 1.96 × 10¹¹ fm |
 | g_aa | 1 |
 | σ_ta (tube↔ℵ) | √α (signs +1/−1/+1 for e/p/ν) |
-| σ_ra (ring↔ℵ) | **derived**: σ_ra_x = (sε)_x · σ_ta_x |
+| σ_ra_e (ring↔ℵ) | +67.98 (= sε_e · σ_ta_e at extreme geometry) |
+| σ_ra_p (ring↔ℵ) | −0.1025 |
+| σ_ra_ν (ring↔ℵ) | +0.003759 |
 | σ_at (ℵ↔t) | 4πα |
 
 All targets (three masses, three α = α) met at floating-point
 precision.  Δm²₃₁/Δm²₂₁ = 33.59 cross-checks against R49's 33.6.
-Ghost ordering achieved on e and p sheets (target mode is lightest
-by magic shear); ν-sheet (1, 0) ghost handled by external filter
-(pool item **j**).
+Ghost ordering natural on e-sheet at extreme geometry: (1, 2)
+electron is 205× lighter than (1, 1), same structure as model-E.
+Ghost ordering on p-sheet via magic shear.  ν-sheet (1, 0) ghost
+handled by external filter (pool item **j**).
+
+**Track 9 leads to muon reproduction at model-E's tuple with
+model-E's own 0.83% accuracy.**  R60's architecture supports
+model-E's extreme-geometry story, with α universality as a
+bonus.
 
 ## Status
 
