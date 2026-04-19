@@ -753,6 +753,49 @@ extraction for ν₁/ν₂/ν₃ between base and augmented.
 
 ---
 
+### Track 10 — Broader hadron inventory on Track 9 baseline
+
+**Goal.**  Having reproduced muon, tau, neutron on the Track 9
+extreme-e baseline (Track 9 F54, F55), test R60's coverage of
+model-E's broader inventory: Λ, η′, Σ, Ξ, Ξ⁰, φ, ρ, K, η, π.
+Two questions: (a) do model-E's tuples evaluate well on Track 9
+metric? (b) when they don't, does α-filtered brute force find
+an R60-native alternative close to observed?
+
+**Strategy.**
+
+Phase 1 — verbatim: plug each model-E tuple into the Track 9
+metric, tabulate E_predicted vs observed and α_Coulomb vs α.
+Group by whether tuple matches.
+
+Phase 2 — α-filtered brute-force search for non-matching targets,
+enforcing α_sum = (n_et − n_pt + n_νt) with |α_sum| = 1 for
+unit charge and |α_sum| = 0 for Q = 0 (checking quantization
+pattern on Q=0 hadrons).
+
+Phase 3 — tabulate R60 vs model-E accuracy across the full
+inventory.  Flag near-misses and apparent failures.
+
+**Acceptance.**
+
+- All model-E tuples evaluated on Track 9 baseline
+- α_Coulomb reported per mode
+- For each target, either the model-E tuple matches (within
+  model-E's own accuracy ± small residual) or a Track 9 native
+  tuple is found
+
+**Possible outcomes.**
+
+- **Most model-E tuples survive.**  R60's architecture plus
+  extreme-e revival gives back model-E's spectrum cleanly.
+  Major win.
+- **Split result.**  Some survive, some need R60-native tuples.
+  Document where and why (probably p-sheet geometry difference).
+- **Few survive.**  Track 9's p-sheet magic shear is too
+  different from model-E's; hadrons need a p-sheet re-tune.
+
+---
+
 ### Track 8 — Compound mode search (μ, τ, neutron)
 
 **Goal.**  With the Track 7d magic-shear baseline established
