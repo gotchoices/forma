@@ -1,55 +1,89 @@
-,ℵ,p_t,p_r,e_t,e_r,ν_t,ν_r,S_x,S_y,S_z,t
-ℵ,g=1[P],-T[P],R_p=[D],+T[P],R_e=[D],+T[P],R_ν=[D],0,0,0,A=[P]
-p_t,-T[P],k[F],sε[C],x=[!],x=[?],x=[?],x=[!],0,0,0,k=[!]
-p_r,R_p=[D],sε[C],kR[F],x=[?],x=[?],x=[?],x=[!],0,0,0,k=[!]
-e_t,+T[P],x=[!],x=[?],k[F],sε[C],x=[?],x=[!],0,0,0,k=[!]
-e_r,R_e=[D],x=[?],x=[?],sε[C],kR[F],x=[?],x=[?],0,0,0,k=[!]
-ν_t,+T[P],x=[?],x=[?],x=[?],x=[?],k[F],sε[C],0,0,0,k=[!]
-ν_r,R_ν=[D],x=[!],x=[!],x=[!],x=[?],sε[C],kR[F],0,0,0,k=[!]
-S_x,0,0,0,0,0,0,0,1,0,0,0
-S_y,0,0,0,0,0,0,0,0,1,0,0
-S_z,0,0,0,0,0,0,0,0,0,1,0
-t,A[P],k=[!],k=[!],k=[!],k=[!],k=[!],k=[!],0,0,0,-1
-,,,,,,,,,,,
-Legend — status flags:,,,,,,,,,,,
-[P],Pinned by architecture (R59 F59 natural form) — value fixed,,,,,,,,,,
-[F],Free — solver adjusts (all land at single-k symmetry),,,,,,,,,,
-[D],Derived — structural relationship from other knobs (σ_ra = (sε)·σ_ta),,,,,,,,,,
-[C],Constrained — value follows from other inputs (k × s × ε within sheet block),,,,,,,,,,
-[!],Ruled out — prior work demonstrated breaks signature or α universality,,,,,,,,,,
-[?],Candidate — zero in R60 baseline but not fully tested (reserved for future),,,,,,,,,,
-,,,,,,,,,,,
-Legend — cell symbols:,,,,,,,,,,,
-g,g_aa = 1 — ℵ diagonal,,,,,,,,,,
-+T / -T,σ_ta = sign · √α — tube ↔ ℵ coupling (e = +1; p = −1; ν = +1),,,,,,,,,,
-R_x,σ_ra_x = (sε)_x · σ_ta_x — ring ↔ ℵ (derived Track 7),,,,,,,,,,
-A,σ_at = 4πα — ℵ ↔ t coupling,,,,,,,,,,
-k,k_x = 1.1803/(8π) ≈ 0.04696 — per-sheet Ma diagonal scale (single-k),,,,,,,,,,
-kR,k_x · (1 + (sε)²_x) — ring diagonal in sheet block,,,,,,,,,,
-sε,k_x · s_x · ε_x — in-sheet shear (tube-ring within one sheet),,,,,,,,,,
-x,cross-sheet σ entry — zero in R60 baseline,,,,,,,,,,
-1,identity (spatial diagonals),,,,,,,,,,
--1,Lorentzian (time diagonal),,,,,,,,,,
-0,zero (no coupling of this kind),,,,,,,,,,
-,,,,,,,,,,,
-Model-F baseline (Track 12):,,,,,,,,,,,
-(ε_e / s_e / sε_e),(397.074 / 2.004200 / 795.816),,,,,,,,,,
-(ε_p / s_p / sε_p),(0.55 / 0.162037 / 0.0891),,,,,,,,,,
-(ε_ν / s_ν / sε_ν),(2.0 / 0.022 / 0.044),,,,,,,,,,
-k (all sheets),0.04696442 = 1.1803/(8π),,,,,,,,,,
-σ_ta,√α = 0.08542,,,,,,,,,,
-σ_at,4πα = 0.09170,,,,,,,,,,
-g_aa,1,,,,,,,,,,
-σ_ra_e (derived = sε_e · σ_ta_e),+67.98,,,,,,,,,,
-σ_ra_p (derived = sε_p · (−σ_ta)),-0.00761,,,,,,,,,,
-σ_ra_ν (derived = sε_ν · σ_ta_ν),+0.003759,,,,,,,,,,
-L_ring_e,54.83 fm,,,,,,,,,,
-L_ring_p,20.55 fm,,,,,,,,,,
-L_ring_ν,1.96e+11 fm,,,,,,,,,,
-,,,,,,,,,,,
-Notes:,,,,,,,,,,,
-Metric is symmetric — table shows the full 11×11 with entries above and below the main diagonal equal.,,,,,,,,,,
-Track 7c tested [?] cross-sheet entries — most break signature or α universality.,,,,,,,,,,
-Track 8 found compound-mode α_Coulomb = (n_et − n_pt + n_νt)² × α (quantized).,,,,,,,,,,
-Direct Ma↔t entries [!] ruled out by R59 F2 / F43.,,,,,,,,,,
-Single-k symmetry: solver gets k_e = k_p = k_ν identical across all tested geometries.,,,,,,,,,,
+,ℵ (0),p_t (1),p_r (2),e_t (3),e_r (4),ν_t (5),ν_r (6),S_x (7),S_y (8),S_z (9),t (10)
+ℵ (0),"g_aa = 1
+[P: PINNED R59 F59]","-σ_ta = -√α ≈ -0.0854
+[P: PINNED p-sign]
+pairs with p-tube","σ_ra_p ≈ -0.00761
+[D: DERIVED Track 7]
+= (sε)_p · (-σ_ta)","+σ_ta = +√α ≈ +0.0854
+[P: PINNED e-sign]","σ_ra_e ≈ +67.98
+[D: DERIVED Track 7]
+= (sε)_e · (+σ_ta)
+large from extreme shear","+σ_ta = +√α ≈ +0.0854
+[P: PINNED ν-sign]","σ_ra_ν ≈ +0.003759
+[D: DERIVED Track 7]
+= (sε)_ν · (+σ_ta)","0
+[X: ruled out — ℵ↔S replaced by ℵ↔t in R59 F59]","0
+[X: ℵ↔S ruled out]","0
+[X: ℵ↔S ruled out]","σ_at = 4πα ≈ 0.0917
+[P: PINNED R59 F59]"
+p_t (1),,"k = 0.04696
+[F: single-k symmetry]
+= 1.1803/(8π)","k·sε_p ≈ 0.00419
+[C: s_p·ε_p = 0.0891]
+= k·s_p·ε_p","0
+[X: cross-sheet p↔e broke sig — Arch 1]","0
+[?: untested]","0
+[?: untested]","0
+[R54 used σ₄₅=-0.18 for neutron; zeroed in R60]
+[!: breaks α universality in Track 7c]","0
+[X: Ma↔S not used]","0
+[X: Ma↔S not used]","0
+[X: Ma↔S not used]","0
+[X: Ma↔t direct ruled out — R59 F2]"
+p_r (2),,,"k·(1+(sε)²) = 0.04734
+[F: follows k and sε_p]","0
+[?: untested]","0
+[?: untested]","0
+[?: untested]","0
+[R54 used σ₄₆=+0.10 for neutron; zeroed in R60]
+[!: breaks sig/α in Track 7c]","0
+[X: Ma↔S not used]","0
+[X: Ma↔S not used]","0
+[X: Ma↔S not used]","0
+[X: Ma↔t direct ruled out]"
+e_t (3),,,,"k = 0.04696
+[F: single-k]","k·sε_e ≈ 37.38
+[C: s_e·ε_e = 795.82]
+= k·s_e·ε_e","0
+[?: untested]","0
+[!: breaks α in Track 7c]","0
+[X: Ma↔S not used]","0
+[X: Ma↔S not used]","0
+[X: Ma↔S not used]","0
+[X: Ma↔t direct ruled out]"
+e_r (4),,,,,"k·(1+(sε)²) ≈ 29702
+[F: follows k and sε_e]
+HUGE from extreme shear","0
+[?: untested]","0
+[?: untested]","0
+[X: Ma↔S not used]","0
+[X: Ma↔S not used]","0
+[X: Ma↔S not used]","0
+[X: Ma↔t direct ruled out]"
+ν_t (5),,,,,,"k = 0.04696
+[F: single-k]","k·sε_ν ≈ 0.002067
+[C: s_ν·ε_ν = 0.044]","0
+[X: Ma↔S not used]","0
+[X: Ma↔S not used]","0
+[X: Ma↔S not used]","0
+[X: Ma↔t direct ruled out]"
+ν_r (6),,,,,,,"k·(1+(sε)²) ≈ 0.04705
+[F: follows k and sε_ν]","0
+[X: Ma↔S not used]","0
+[X: Ma↔S not used]","0
+[X: Ma↔S not used]","0
+[X: Ma↔t direct ruled out]"
+S_x (7),,,,,,,,"+1
+[S: flat Minkowski]","0
+[flat S]","0
+[flat S]","0
+[X: S↔t not used — no rotation]"
+S_y (8),,,,,,,,,"+1
+[S: flat Minkowski]","0
+[flat S]","0
+[X: S↔t not used]"
+S_z (9),,,,,,,,,,"+1
+[S: flat Minkowski]","0
+[X: S↔t not used]"
+t (10),,,,,,,,,,,"-1
+[S: Lorentzian time diagonal]"

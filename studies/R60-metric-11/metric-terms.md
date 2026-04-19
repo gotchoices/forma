@@ -1,123 +1,198 @@
-# R60 Metric Terms — variables and definitions
+# R60 Metric Terms — knobs, values, and constraints
 
-Brief reference for the 11D metric parameterization.  The full
-entry-by-entry grid (current values, role, constraint status) is
-in [metric-terms.csv](metric-terms.csv).
+A reference for every entry in the R60 11×11 metric: what it
+controls, what value (if any) has been assigned to it, and its
+constraint status under model-F (Track 12 baseline).
+
+Companion CSV: [metric-terms.csv](metric-terms.csv) — same data,
+spreadsheet-friendly.
+
+---
 
 ## Index ordering
 
-| Index | Symbol | Kind | Scale |
-|------:|:-------|:-----|:------|
-| 0 | ℵ | compact, sub-Planck | smallest (GRID edge) |
-| 1 | p_t | compact (proton tube) | ~fm |
-| 2 | p_r | compact (proton ring) | ~fm |
-| 3 | e_t | compact (electron tube) | ~pm |
-| 4 | e_r | compact (electron ring) | ~pm |
-| 5 | ν_t | compact (neutrino tube) | ~μm to mm |
-| 6 | ν_r | compact (neutrino ring) | ~μm to mm |
-| 7 | S_x | extended (space) | macroscopic |
-| 8 | S_y | extended (space) | macroscopic |
-| 9 | S_z | extended (space) | macroscopic |
-| 10 | t | extended (time, Lorentzian) | macroscopic |
+Dimensions are ordered by physical scale, smallest to largest:
 
-The 7-dim **Material** block spans indices 0–6 (ℵ + 6 Ma).
-The 4-dim **Spacetime** block spans indices 7–10 (3 S + 1 t).
-Within each sheet, **tube index comes before ring index** to
-match the MaSt mode notation `(n_tube, n_ring)`.
+| Index | Symbol | Type | Scale |
+|-------|--------|------|-------|
+| 0 | ℵ | Compact (sub-Planck) | smallest (GRID lattice edge) |
+| 1 | p_t | Compact | ~fm (proton tube) |
+| 2 | p_r | Compact | ~fm (proton ring) |
+| 3 | e_t | Compact | ~pm (electron tube) |
+| 4 | e_r | Compact | ~pm (electron ring) |
+| 5 | ν_t | Compact | ~μm to mm (neutrino tube) |
+| 6 | ν_r | Compact | ~μm to mm (neutrino ring) |
+| 7 | S_x | Extended | macroscopic (3D space) |
+| 8 | S_y | Extended | macroscopic |
+| 9 | S_z | Extended | macroscopic |
+| 10 | t | Extended | time (Lorentzian) |
 
-## Per-sheet metric block (dimensionless)
+Reading order: **ℵ → Material → Space → time**.  The 7×7 Material
+block (indices 0–6) contains ℵ plus the three Ma sheets.  The
+4×4 Spacetime block (indices 7–10) stays diagonal.  Off-diagonal
+entries between them (the (0, 10) and its mirror) are where the
+R60 α-architecture lives.
 
-Each sheet x ∈ {e, p, ν} is a 2×2 block in the Ma subspace:
+Within each sheet, **tube before ring** to match the MaSt mode
+notation `(n_tube, n_ring)`.
 
-    G̃_sheet = k_x · [[1, s_x · ε_x], [s_x · ε_x, 1 + (s_x · ε_x)²]]
+---
 
-- **ε_x** — aspect ratio, ratio of tube to ring circumference
-- **s_x** — in-sheet shear, the (tube, ring) off-diagonal
-- **k_x** — per-sheet diagonal scale (R60 addition to R59 F59's single global k)
+## Visual layout
 
-Mode energy on a sheet (model-E formula):
-`E_mode = (2π ℏc / L_ring) · √((n_t/ε)² + (n_r − s·n_t)²)`.
+The metric is symmetric — only upper triangle + diagonal shown.
+Lower triangle is the mirror image (no unique information).
 
-## α-architecture coefficients
+Notation:
 
-| Symbol | Between | Current value | Role |
-|:-------|:--------|:--------------|:-----|
-| g_aa | ℵ ↔ ℵ (diagonal) | 1 | ℵ self-scale |
-| σ_ta_x | Ma_tube_x ↔ ℵ | sign_x · √α | tube's α channel; signs (+, −, +) for (e, p, ν) |
-| σ_ra_x | Ma_ring_x ↔ ℵ | **(s_x · ε_x) · σ_ta_x** (derived, Track 7) | cancels shear-induced ring-to-t leakage, restoring mode-independent α within a sheet |
-| σ_at | ℵ ↔ t | 4πα | ℵ delivers coupling to time |
+- `1` = identity diagonal (ℵ or S)
+- `k` = per-sheet Ma diagonal scale = **0.04696 = 1.1803/(8π)** (single-k)
+- `k·sε` = in-sheet shear off-diagonal
+- `k·(1+(sε)²)` = ring diagonal of sheet block
+- `.` = zero
+- **Bold** = pinned by R59 F59 natural form (architecture)
+- *Italic* = derived (structural, Track 7 prescription)
+- ~strikethrough~ = tested and ruled out (see notes below)
 
-**Derived rule** (Track 7+7b): `σ_ra_x = (s·ε)_x · σ_ta_x`.  Not
-a free knob — pinned by the geometry.  When s_x = 0 this entry
-is zero (shearless sheet needs no cancellation).
+```
+           ℵ      p_t     p_r     e_t     e_r     ν_t     ν_r     S_x     S_y     S_z     t
+         ┌───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┬───────┐
+   ℵ   0 │ **1** │**-T**│ *R_p* │**+T** │ *R_e* │**+T** │ *R_ν* │   .   │   .   │   .   │ **A** │
+         ├───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┤
+   p_t 1 │       │   k   │ k·sε_p│   .   │   .   │   .   │   .   │   .   │   .   │   .   │   .   │
+         ├───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┤
+   p_r 2 │       │       │k(1+sε²)│  .   │   .   │   .   │   .   │   .   │   .   │   .   │   .   │
+         ├───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┤
+   e_t 3 │       │       │       │   k   │ k·sε_e│   .   │   .   │   .   │   .   │   .   │   .   │
+         ├───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┤
+   e_r 4 │       │       │       │       │k(1+sε²)│  .   │   .   │   .   │   .   │   .   │   .   │
+         ├───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┤
+   ν_t 5 │       │       │       │       │       │   k   │ k·sε_ν│   .   │   .   │   .   │   .   │
+         ├───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┤
+   ν_r 6 │       │       │       │       │       │       │k(1+sε²)│  .   │   .   │   .   │   .   │
+         ├───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┤
+   S_x 7 │       │       │       │       │       │       │       │  +1   │   .   │   .   │   .   │
+         ├───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┤
+   S_y 8 │       │       │       │       │       │       │       │       │  +1   │   .   │   .   │
+         ├───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┤
+   S_z 9 │       │       │       │       │       │       │       │       │       │  +1   │   .   │
+         ├───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┼───────┤
+   t  10 │       │       │       │       │       │       │       │       │       │       │  -1   │
+         └───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┴───────┘
+```
 
-## α extraction formula
+Legend for the ℵ row:
+- **+T** = +σ_ta = +√α (tube↔ℵ coupling, sign for e and ν sheets)
+- **−T** = −σ_ta = −√α (tube↔ℵ coupling, sign for p sheet)
+- *R_p, R_e, R_ν* = σ_ra per sheet = **(s·ε)·σ_ta** (derived, Track 7)
+- **A** = σ_at = 4πα (ℵ↔t coupling, single global)
+- **1** = g_aa (ℵ diagonal, pinned at natural form)
 
-`Q(n_11) = (n_Ma · G⁻¹[Ma, t]) · (−G⁻¹[t, t])`, then
-`α_Coulomb = Q² / (4π)`.  On the ring↔ℵ-augmented metric, Q is
-mode-independent up to the `n_t` factor: for any mode with
-`|n_tube| = 1` on a sheet with architectural σ_ta coupling,
-`Q = σ_ta · n_t` (modulo signature and signs).
+**Reading the structure:**
 
-## Signature condition
+- **ℵ row** is where model-F's α architecture lives.  All
+  non-trivial off-diagonals (tube and ring) connect Ma back to
+  time via the σ_at link.
+- **Sheet blocks** (rows/cols 1-2, 3-4, 5-6) are the Ma 2×2
+  blocks per sheet, each uniformly scaled by `k`.
+- **Cross-sheet** entries (e.g. p_t ↔ e_t, e_r ↔ ν_r) are all
+  zero in R60 baseline.  Most tested cross-entries break
+  signature or α universality (Track 7c F39); cross-sheet use
+  reserved for future work with a proper structural prescription
+  (pool item h).
+- **S↔S and S↔t** block stays diagonal (no frame-dragging).
+- **Direct Ma↔t** entries ruled out by R59 F2 / F43 (catastrophic
+  mass shifts / broken universality).
 
-The 11D metric must have exactly **one negative eigenvalue** (the
-t direction) for the full Lorentzian signature to hold.  Bounds
-on the in-sheet shear product s·ε (empirical, for the R59 F59
-architecture at fixed σ_ta = √α, σ_at = 4πα, g_aa = 1):
+---
 
-- Single-sheet active: `(s·ε)² ≤ 9/2` (exact — see Track 2 F7)
-- Two-sheet active: `(s·ε_1)² + (s·ε_2)² ≤ 7/2` (Track 4 F14)
-- Three-sheet predicted: `Σ (s·ε_x)² ≤ 5/2` (not yet verified)
-  — each active tube costs one unit of the 9/2 budget.
+## Numerical values at model-F baseline (Track 12)
 
-## Length scales
+### Global knobs
 
-| Sheet | L_ring (fm) at model-F baseline (Track 12) | Physical scale |
-|:------|---:|:---|
-| Proton | 20.55 | ~fm |
-| Electron | 54.83 | ~pm scale |
-| Neutrino | 1.96 × 10¹¹ | ~0.2 mm |
-| ℵ | (not directly fit) | sub-Planck, exact scale open |
+| Symbol | Value | Role |
+|--------|-------|------|
+| **g_aa** | 1 | ℵ diagonal, R59 F59 natural |
+| **σ_ta** | √α ≈ 0.08542 | tube↔ℵ magnitude (signs ±1) |
+| **σ_at** | 4πα ≈ 0.09170 | ℵ↔t coupling |
+| **k** | 1.1803/(8π) ≈ 0.04696 | per-sheet diagonal scale (single-k) |
 
-The electron sheet at model-F's extreme geometry (ε = 397, s = 2.004)
-has L_ring_e = 54.83 fm — model-E's L_ring_e of 11.88 fm scaled by
-1/√k ≈ √(8π)/√1.1803 ≈ 4.62×.
+### Per-sheet geometry (inputs)
 
-## α-decoupling locus (Track 5 F22)
+| Sheet | ε | s | sε | L_ring (fm) |
+|-------|--:|--:|--:|---:|
+| e | 397.074 | 2.004200 | 795.82 | 54.83 |
+| p | 0.55 | 0.162037 | 0.0891 | 20.55 |
+| ν | 2.0 | 0.022 | 0.044 | 1.96 × 10¹¹ |
 
-For a single-sheet mode (n_t, n_r), the α extraction Q = 0 iff
+### Derived ring↔ℵ entries
 
-    n_r / n_t = s·ε + 1/(s·ε)
+| Symbol | Formula | Value |
+|--------|---------|------:|
+| σ_ra_e | +(sε)_e · σ_ta | +67.98 |
+| σ_ra_p | −(sε)_p · σ_ta | −0.00761 |
+| σ_ra_ν | +(sε)_ν · σ_ta | +0.003759 |
 
-i.e. `s·ε ∈ {(n_r ± √(n_r² − 4n_t²)) / (2n_t)}` (real roots iff
-n_r² ≥ 4n_t²).  Practical rule:
+---
 
-- (1, 1) mode: never decouples (ν₁, ν₂ are α-safe everywhere)
-- (1, 2) mode: decouples at s·ε = 1 (electron, ν₃)
-- (1, 3) mode: decouples at s·ε ≈ 0.382 or 2.618 (proton)
+## Status flag summary
 
-This locus is *independent of all α-architecture knobs* (k, σ_ta,
-σ_at, g_aa).  Adding ring↔ℵ entries (Track 7) does not remove the
-locus — at the locus the mode has zero α regardless, and this
-persists under the augmentation.  **The locus is a structural
-feature of the mode itself, not of the metric we put around it.**
+| Flag | Meaning | Count |
+|------|---------|------:|
+| **Bold** pinned | R59 F59 natural form, not tunable | 5 (g_aa, σ_at, three σ_ta with signs) |
+| *Italic* derived | Structural from Track 7 prescription | 3 (σ_ra per sheet) |
+| regular (fit) | Free under solver; all converge to single k | 1 (k, shared across sheets) |
+| `.` zero | Unused in R60 baseline | rest of 11×11 |
 
-## Reserved zeros (candidates for future activation)
+---
 
-The 11×11 symmetric metric has 66 independent entries.  We use
-~21 of them (11 diagonals + 10 off-diagonals).  The rest are
-zero, several intentionally and several just unexplored:
+## What each block does
 
-- `Ma_ring_x ↔ S_*` (9 entries): zero by default (see Track 3 F40
-  analog in R59; frame-dragging / rotation on spatial directions
-  not expected).  Not tested in R60.
-- `Ma_x ↔ Ma_y` cross-sheet (12 entries): two used in R54
-  (σ₄₅, σ₄₆ for the neutron region), the rest zero.  Candidates
-  for compound-mode fine-tuning (Track 8).
-- `S_x ↔ t` (3 entries): zero by Minkowski flatness in R60's
-  static picture.
-- `ℵ ↔ S_*` (3 entries): R55 explored these; R59 replaced them
-  with ℵ ↔ t.  Currently zero; could be revived.
+| Block | Role | Controls |
+|-------|------|----------|
+| ℵ diagonal | Reference scale for the α-mediator dimension | g_aa = 1 (assumed natural) |
+| ℵ ↔ tube | α-delivery chain: Ma winding → ℵ | Sets α universality across charged particles |
+| ℵ ↔ ring | **Cancels shear-induced mode-dependence (Track 7)** | Makes α mode-independent within each sheet |
+| ℵ ↔ t | Closes the coupling chain to spacetime | Delivers α to Coulomb coupling in S |
+| Sheet (i,i+1) shear | In-sheet structure — generation resonance, ghost ordering | Sets which mode is lightest on each sheet |
+| Sheet ring diag | 1 + (sε)² — receives the shear contribution | Secondary mass structure |
+| S diagonals | Flat Minkowski spatial | Standard |
+| t diagonal | Lorentzian | Standard |
+| Cross-sheet | Currently zero | Reserved for compound-mode tuning if ever needed |
 
-See [metric-terms.csv](metric-terms.csv) for the full entry-by-entry grid.
+---
+
+## Critical constraints (all satisfied in baseline)
+
+1. **Signature**: exactly one negative eigenvalue (the t direction).
+2. **σ_ra prescription**: σ_ra_x = (s·ε)_x · σ_ta_x per sheet
+   cancels shear-induced mode-dependence in α extraction.
+3. **Single-k symmetry**: k_e = k_p = k_ν emergent from joint
+   solve (verified across 6+ geometries; Track 14).
+4. **α-sum rule**: α_Coulomb/α = (n_et − n_pt + n_νt)² for any
+   compound mode.  For |Q|=1 particles α = α requires
+   |α_sum| = 1.  For Z-nuclei α_sum = −Z gives α = Z²α.
+
+---
+
+## Historical note (ruled-out entries)
+
+Entries that prior studies have tested and ruled out:
+
+| Entries | Status | Reference |
+|---------|--------|-----------|
+| Direct Ma ↔ t (6 entries) | ~breaks signature or spectrum~ | R59 F2, F43 |
+| ℵ ↔ S (3 entries) | ~R55 tested; replaced with ℵ ↔ t~ | R59 F59 chose ℵ↔t |
+| p_t ↔ e_t (internal cross) | ~breaks signature~ | R59 F28 |
+| p_t ↔ ν_r, ν_t ↔ p_t, etc. | mostly break signature or α universality (Track 7c); pool item h would address |
+| Ring ↔ t direct | ~destroys universality~ | R59 F43 |
+
+---
+
+## See also
+
+- [metric-terms.csv](metric-terms.csv) — full entry-by-entry grid
+  with status flags (spreadsheet-friendly)
+- [findings.md](findings.md) — track index with summary results
+- [models/model-F.md](../../models/model-F.md) — the canonical
+  model writeup using these parameters
