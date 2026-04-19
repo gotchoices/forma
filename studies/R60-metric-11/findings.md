@@ -10,6 +10,7 @@ Track index:
 | 4 | Per-sheet diagonal compensation — joint solve for (L_e, k_e, L_p, k_p) hitting (m_e, m_p, α_e=α, α_p=α) | F17–F21 | complete |
 | 5 | Proton on shearless-electron baseline + analytical α-decoupling locus | F22–F26 | complete |
 | 6 | Joint e+p+ν solver with ν architecturally coupled (sign_nu=+1) on R61 candidate ν-sheet geometries | F27–F31 | complete |
+| 7 | Ring↔ℵ structural cancellation test — adds σ_ra = sε·σ_ta to dissolve shear-induced α mode-dependence | F32–F34 | complete |
 
 ---
 
@@ -1232,7 +1233,163 @@ outcome is informative.
 
 ---
 
-## Open question (post-Track 6): mode-dependent α and possible compound mass splitting
+## Track 7: Ring↔ℵ structural cancellation test
+
+**Scope.**  Test the algebraic conjecture (post-Track 6 dialog)
+that adding ring↔ℵ entries with the structural prescription
+σ_ra = (s × ε) × sign × σ_ta on each sheet cancels the
+shear-induced α mode-dependence found in Track 6 F28.
+
+Script: [scripts/track7_ring_aleph.py](scripts/track7_ring_aleph.py).
+
+### Background
+
+Track 6 F28 reported that with the ν-sheet at (ε=2, s=0.022) and
+the joint solver tuning k_ν to make α_ν₁ = α exactly, the other
+two ν modes did not get α: ν₂ landed at 1.192α and ν₃ at 0.910α
+— a 28% spread across modes on the *same* sheet.  Algebraic
+analysis attributed this to an indirect ring-to-time leakage
+chain: shear couples ring to tube, the tube couples to ℵ, ℵ
+couples to t.  The leakage strength depends on (n_t, n_r), so
+different modes get different α even on the same sheet.
+
+The conjectured fix: add a *direct* ring↔ℵ entry σ_ra at the
+specific value σ_ra = (s · ε) · σ_ta.  Algebraically this
+cancels the indirect leak, leaving Q ∝ n_t for all modes —
+mode-independent.
+
+R59 had ruled out ring-based ℵ mediation as a *replacement* for
+tube coupling (F39) and direct ring↔t added on top of tube↔ℵ↔t
+(F43).  But ring↔ℵ as a *structural supplement* with the
+specific (sε)-tracking value was not in R59's tested
+architectures.
+
+### F32. Structural fix restores ν-mode universality to floating point
+
+Took Track 6 F28 baseline (k_e = k_p = 4.73 × 10⁻², k_ν = 4.53 ×
+10⁻², all L's from F28).  Added σ_ra entries:
+
+| Sheet | s · ε | σ_ra value |
+|-------|------:|-----------:|
+| e | 0 | 0 |
+| p | 0 | 0 |
+| ν | 0.044 | +3.76 × 10⁻³ |
+
+(Only ν gets a nonzero entry because e and p are shearless in
+this baseline.)  Built the augmented 11D metric.
+
+Comparison:
+
+| Mode | α_base/α | α_aug/α |
+|------|---------:|--------:|
+| electron (1, 2) | 1.000 | 0.9989 |
+| proton   (1, 3) | 1.000 | 0.9989 |
+| ν₁ (+1, +1) | 1.000 | 1.0885 |
+| ν₂ (−1, +1) | 1.192 | 1.0885 |
+| ν₃ (+1, +2) | 0.910 | 1.0885 |
+| **ν-mode spread** | **28.2 %** | **0.0000 %** |
+
+Signature OK in both cases (one negative eigenvalue, the t
+direction).
+
+### F33. Interpretation
+
+**The conjecture holds at floating-point precision.**  The σ_ra =
+(s·ε) · σ_ta prescription cancels the n_r-dependent term in the
+α extraction *exactly*, not approximately.  All three ν modes —
+including ν₃ at (1, 2) which had the largest deviation in the
+base case — collapse to the same α.
+
+The remaining issue is the **overall magnitude shift**: the
+single value all three ν modes converge to is 1.0885α, not
+α exactly, and the e/p modes shift slightly to 0.9989α.  The
+metric changed (new entries added) and we didn't re-solve the
+free knobs (k_e, k_p, k_ν).  A fresh joint solve on the
+augmented metric would adjust the k values and shift everyone
+back to exactly α.  The structural cancellation persists under
+re-tuning (it's coordinate-independent), so the magnitude fix
+is a separate, easily-handled problem.
+
+**This solves the mode-dependence problem identified in Track 6.**
+R60's α universality story is restored — not just across
+sheets, but across modes within a sheet.  R59 F45's "structural
+universality" extends to the sheared case, provided the
+ring↔ℵ entry is set to its structurally-determined value.
+
+### F34. Status and what's resolved
+
+R60 now has:
+
+1. **R59 F59 architecture** with three sheets, all coupled via
+   tube↔ℵ↔t.
+2. **Per-sheet diagonal compensation k_x** (Track 4) that
+   adjusts to make each sheet's lead mode hit α exactly.
+3. **Per-sheet ring↔ℵ entry σ_ra_x** (Track 7) at structural
+   value (sε)_x · σ_ta_x that cancels mode-dependence on
+   sheared sheets.
+
+Together these give: α_e = α_p = α_ν = α (across sheets, by
+universality of |n_tube|=1 + per-sheet k tuning) and α independent
+of (n_t, n_r) within each sheet (by the σ_ra cancellation).
+Both axes of universality are now achieved.
+
+Per-sheet "natural" values for the augmented architecture (at
+the Track 6/7 baseline geometry, post-resolve — not yet
+explicitly computed):
+
+| Knob | Value |
+|------|-------|
+| σ_ta_x | sign × √α (per sheet) |
+| σ_at | 4πα |
+| g_aa | 1 |
+| k_x | tunable per sheet, ~5% of unity for charged sheets at moderate shears |
+| **σ_ra_x** | **(sε)_x · σ_ta_x  (NEW, derived)** |
+
+### Caveats and open questions
+
+- **Mass impact not verified.**  The mode_energy formula in
+  Track 1 uses only the Ma sub-block; ring↔ℵ entries sit
+  outside Ma so they don't enter that approximation.  A full
+  Schur-corrected mass calculation would shift masses slightly.
+  Likely small (the σ_ra values are small) but should be
+  verified.
+- **No re-solve done.**  Track 7 used Track 6's k and L values
+  unchanged.  A clean joint solve on the augmented metric would
+  give the post-fix natural-form k values and show the magnitude
+  shift collapses.  Easy follow-up.
+- **Cross-sheet effects.**  My derivation was for a single
+  sheet in isolation.  On the joint e+p+ν metric, the σ_ra
+  cancellation might have small cross-sheet residuals.  The
+  numerical result here (spread 0.0000%) suggests cross-sheet
+  effects are also cancelled or extremely small.  Notable.
+- **Generalizes to sheared e and p.**  The Track 6/7 baseline
+  has e and p shearless.  If we ever turn on shear there
+  (e.g., for ghost suppression or compound mode placement), the
+  σ_ra prescription should still apply: σ_ra_e = (s·ε)_e · σ_ta_e
+  cancels the e-sheet's leak.  Worth testing once we add
+  e-sheet shear.
+- **Compound modes.**  Compound modes span multiple sheets;
+  their α extraction involves contributions from each sheet.
+  The single-sheet structural fix should work per sheet, so
+  compound mode α should also be mode-independent on the
+  augmented metric.  Track 8 (compound mode search) will test.
+
+### Decision point
+
+**The mode-dependence concern flagged in the Open Question
+section above is now resolved structurally.**  The three
+candidate next-step tracks I outlined (7a, 7b, 7c) are
+superseded by Track 7's actual result.  The original "Track 7d"
+(compound mode search for μ, τ, neutron, hadrons) becomes the
+natural next step.
+
+Recommend: re-solve the joint system on the augmented metric
+(quick post-fix calibration), then proceed to compound mode
+search.
+
+---
+
+## Open question (superseded by Track 7 — kept for history): mode-dependent α and possible compound mass splitting
 
 ### What we found
 

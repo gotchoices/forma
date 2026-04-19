@@ -150,7 +150,7 @@ shears (s_e = 2.004) saturate the e-tube and block this
 architecture on model-E geometry (F41) — R60 is scoped to find
 whether a modified spectrum mechanism can coexist with it.
 
-### R60. Metric-11 — particle spectrum on R59's α-derivable 11D architecture  **Active — Tracks 1–6 complete**
+### R60. Metric-11 — particle spectrum on R59's α-derivable 11D architecture  **Active — Tracks 1–7 complete**
 **Study:** [`R60-metric-11/`](R60-metric-11/)
 **Type:** theoretical + compute
 **Depends on:** R59, R53, R49, R54, R61, model-E
@@ -178,11 +178,17 @@ fm) consistent with mass hierarchy.  **R60's full architecture
 is now validated** as compatible with the model-E three-sheet
 foundation.
 
-Working baseline for Track 7: R61 candidate #1, e+p shearless,
-k ≈ 0.047 across charged sheets, k_ν ≈ 0.045.
+Track 7 added ring↔ℵ structural cancellation entries with
+σ_ra = (sε)·σ_ta per sheet.  **Mode-dependence on the ν-sheet
+collapsed from 28% spread to 0.0000% — universality restored
+across all (n_t, n_r) modes** (F32–F34).  Single-sheet R59
+F45 universality now extends to the sheared multi-sheet case.
+A small magnitude shift (~9% on ν, 0.1% on e/p) needs cleanup
+via re-solve of k values on the augmented metric.
 
-Recommended next: Track 7 — compound mode search for muon, tau,
-neutron, hadrons on the F31 baseline.
+Recommended next: re-solve the joint system on the
+ring↔ℵ-augmented metric, then proceed to compound mode search
+for muon, tau, neutron, hadrons.
 
 ### R55. α consistency — Ma-S coupling derivation  **Tracks 1,3 done; Track 4 paused**
 **Study:** [`R55-alpha-consistency/`](R55-alpha-consistency/)

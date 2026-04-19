@@ -700,9 +700,62 @@ the right ballpark.
 
 ---
 
+### Track 7 — Ring↔ℵ structural cancellation test
+
+**Goal.**  Test the conjecture (post-Track 6 dialog) that adding
+ring↔ℵ entries with the structural prescription
+σ_ra = sε · σ_ta on each sheet cancels the shear-induced α
+mode-dependence, restoring universality across all (n_t, n_r)
+modes on a sheared sheet.
+
+**Background.**  Track 6 found that on sheared sheets, different
+modes get different α values via an indirect ring-to-t leak
+(ring ↔ tube via shear, tube ↔ ℵ via σ_ta, ℵ ↔ t via σ_at).
+Algebraic derivation suggests the ring↔ℵ entry σ_ra at value
+sε · σ_ta exactly cancels the leak, leaving Q ∝ n_t (mode-
+independent).  R59 ruled out ring-based ℵ mediation as a
+*replacement* for tube coupling (F39, F43) but did NOT test
+ring↔ℵ as a *supplement* with this specific structural relation.
+
+**Strategy.**  Use the Track 6 F28 baseline (R61 #1 ν, e/p
+shearless, k_e = k_p = 4.73 × 10⁻², k_ν = 4.53 × 10⁻²).
+Compute σ_ra per sheet, build the augmented metric, compare α
+extraction for ν₁/ν₂/ν₃ between base and augmented.
+
+**Tactics.**
+
+- σ_ra prescription: σ_ra_x = (s × ε)_x × sign_x × σ_ta
+  - σ_ra_e = 0 (e shearless)
+  - σ_ra_p = 0 (p shearless)
+  - σ_ra_ν = 0.044 × √α ≈ 3.76 × 10⁻³ (the ν-sheet shear
+    is what produces mode-dependence in the first place)
+- Build augmented 11D metric with these new ring↔ℵ entries
+- Verify signature still OK
+- Compute α for electron, proton, ν₁, ν₂, ν₃; report base vs
+  augmented values
+
+**Acceptance criteria.**
+
+- Augmented metric: signature OK preserved
+- α_ν₁ / α_ν₂ / α_ν₃ all equal each other to ≤ 0.1%
+  (Track 6 had spread 0.91× to 1.19× of α — i.e., 28%)
+- α_e and α_p unchanged (their σ_ra = 0)
+
+**Possible outcomes.**
+
+- **Universality restored.**  Architectural fix works.
+  Mode-dependence problem retired.  R60's program proceeds
+  with the augmented architecture.
+- **Universality partially restored.**  First-order cancellation
+  works but residual cross-sheet effects remain.  Refine.
+- **Universality not restored.**  Derivation had a wrinkle.
+  Re-examine.
+
+---
+
 ## Next-track pool
 
-Candidates after Track 5.  Sequence decided as we go.
+Candidates after Track 7.  Sequence decided as we go.
 
 **a.** (absorbed into Track 2)
 
