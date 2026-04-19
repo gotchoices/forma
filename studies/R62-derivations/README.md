@@ -1,6 +1,6 @@
 # R62: Derivations
 
-**Status:** Tracks 1–4 complete; Track 5 framed (Program 1)
+**Status:** Tracks 1–5 complete (Program 1)
 **Type:** theoretical (analytical, no scripts required)
 **Depends on:** [primers/kaluza-klein.md](../../primers/kaluza-klein.md)
   (KK derivation of Lorentz force from 5D metric), R59 (Clifford
@@ -939,6 +939,22 @@ same format as derivations 1–4.
   parameter (the overall coupling strength of the surviving
   U(1)).
 
+**Status.** Complete.  See [derivation-5.md](derivation-5.md);
+lemma F14–F16 stated at the end.  **Outcome: clean derivation.**
+On a single 2-torus, the convention B_μ = 0 reduces F4's
+U(1)×U(1) to a single physical U(1), and the conserved
+Killing momentum P_4 in the tube direction is identified with
+the electric charge: Q = e × n_t with e = h/(L_t e_0).
+Extension to T⁶ gives Q = -n_1 + n_5 mechanically once the
+Ma–S sign assignments (σ_e = -1, σ_ν = 0, σ_p = +1) are
+adopted as empirical inputs.  An unexpected by-product of
+F16: the convention B_μ = 0 does **not** break the
+conservation of the ring-direction Killing momentum P_5 (or
+the analogous P_2, P_4, P_6 on the multi-sheet T⁶); these
+"dark" conserved quantities contribute to mass and to the
+discrete particle spectrum but couple to no 4D field — a
+geometric origin for non-electromagnetic conservation laws.
+
 ---
 
 ### Next-track pool
@@ -1118,7 +1134,7 @@ Objectives section above and motivates the sequence
 | derivation-2.md | Track 2 — Kaluza-Klein on a 2-torus (complete) |
 | derivation-3.md | Track 3 — photon on a 2-torus, 4D mass from compact momentum (complete) |
 | derivation-4.md | Track 4 — recovery of the MaSt mass formula (complete) |
-| derivation-5.md | Track 5 — charge identification: tube as the charge-carrying winding (in progress) |
+| derivation-5.md | Track 5 — charge identification: tube as the charge-carrying winding (complete) |
 | scripts/ | Optional verification scripts (not expected to be needed for analytical tracks) |
 
 Future programs (Program 2, Program 3, …) will add their own
