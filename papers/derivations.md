@@ -53,7 +53,9 @@ the geometry.
 | Photon-on-torus mass formula | D3 (Track 3) | **Complete** |
 | Mass-charge mixing from shear | D3 (Track 3) | **Complete** |
 | MaSt mass formula μ² = (n_t/ε)² + (n_r − s n_t)² | D4 (Track 4) | In progress |
-| Charge = tube compact momentum | *\<future\>* | Planned |
+| Charge = tube compact momentum | D5 (Track 5) | **Complete** |
+| Universal charge formula Q = −n₁ + n₅ | D5 (Track 5) | **Complete** |
+| Dark conservation laws (ring momenta) | D5 (Track 5) | **Complete** |
 | Lorentz force on standing-wave states | *\<future\>* | Planned |
 | Spin from holonomy on sheared torus | *\<future\>* | Planned (high-risk) |
 | Magnetic moment from charge + spin | *\<future\>* | Planned |
@@ -85,8 +87,8 @@ D2: Kaluza-Klein on a 2-torus
 │
 ├──────────────────┬──────────────────┐
 ▼                  ▼                  ▼
-D3: Mass        <future>:         <future>:
-│               Charge             Spin (?)
+D3: Mass        D5: Charge        <future>:
+│                  │               Spin (?)
 ▼                  │                  │
 D4: MaSt μ²        │              <future>:
 │                  │              Mag moment
@@ -293,22 +295,50 @@ by choosing the parametrization g_ab(ε, s).  This closes
 the loop: **the MaSt mass formula is derived, not postulated.**
 
 
-### *\<future\>* — Charge identification: tube as the charge-carrying winding
+### D5 — Charge identification
 
-**Status:** Planned (pool item d)
-**Uses:** D2
+**File:** [`studies/R62-derivations/derivation-5.md`](
+../studies/R62-derivations/derivation-5.md)
+**Status:** Complete
+**Uses:** D2 (F4, F5, F6) + one convention (tube-couples)
 
-Declare that the tube direction couples to spacetime
-(g_μ4 ≠ 0) while the ring does not (g_μ5 = 0).  Show that
-charge Q then equals the compact momentum on the tube
-winding, recovering MaSt's Q = −n₁ + n₅ as a one-time
-convention.
+Adopt one convention: of the two U(1) gauge potentials the
+2-torus generates, only the TUBE potential is physical; the
+ring potential vanishes (B_μ = 0).  This is motivated by the
+empirical observation that only one EM force exists, and it
+can always be arranged by a basis rotation on the compact
+plane.
+
+With this convention, the U(1)×U(1) of D2 collapses to a
+single electromagnetic U(1).  The conserved tube Killing
+momentum P_4 IS the electric charge Q, automatically
+integer-quantized by standing-wave periodicity:
+
+> Q = e × n_t,  where e = h/(L_t e₀)
+
+Extending to MaSt's three sheets (electron, neutrino, proton)
+with per-sheet Ma-S coupling signs (σ_e = −1, σ_ν = 0,
+σ_p = +1) recovers the universal charge formula:
+
+> **Q = −n₁ + n₅**
+
+The ring momenta P_2, P_4, P_6 remain conserved but couple to
+no 4D field — they are "dark" conservation laws.  They
+contribute to mass (via the (n_r − s n_t) term) and to the
+discrete particle spectrum, but are electromagnetically
+invisible.  These are the geometric origin of generation
+labels and non-electromagnetic quantum numbers.
+
+**Key results (F14-F16):**
+- F14: charge = tube Killing momentum, quantized as Q = e × n_t
+- F15: universal formula Q = −n₁ + n₅ on T⁶ (three sheets)
+- F16: ring momenta are conserved but dark (no EM coupling)
 
 
 ### *\<future\>* — Lorentz force on standing-wave states
 
 **Status:** Planned (pool item e)
-**Uses:** D3 + charge derivation
+**Uses:** D3 + D5
 
 Show that the Lorentz force from D2's geodesic projection
 still holds when the test particle is a standing-wave
@@ -418,10 +448,13 @@ that subsequent derivations cite.  The chain:
 | F1 | Linear cavity: m = nh/(2Lc), inertia | D3 |
 | F2 | Ring: m = nh/(Lc), L_z = nℏ | D3 |
 | F3 | 2-torus is the natural next step | D2 framing |
-| F4 | U(1)×U(1) gauge structure | D3, future (charge, spin) |
-| F5 | Two-charge Lorentz force | future (Lorentz on standing waves) |
-| F6 | Shear cross-coupling | D3, D4, future (spin) |
+| F4 | U(1)×U(1) gauge structure | D3, D5, future (spin) |
+| F5 | Two-charge Lorentz force | D5, future (Lorentz on standing waves) |
+| F6 | Shear cross-coupling | D3, D4, D5, future (spin) |
 | F7 | Mass formula m²c² = h^ab P_a P_b | D4, future (compound modes) |
 | F8 | Pythagorean special case | D4 |
 | F9 | Mass-charge mixing from shear | D4, future (spin) |
 | F10 | Inertia on the 2-torus | future (Lorentz on standing waves) |
+| F14 | Charge = tube Killing momentum, Q = e × n_t | future (Lorentz, compound modes) |
+| F15 | Universal charge formula Q = −n₁ + n₅ | future (compound modes, full 6D) |
+| F16 | Ring momenta conserved but dark | future (compound modes) |
