@@ -331,9 +331,126 @@ all later tracks).
 
 ---
 
+### Track 4 — Per-sheet diagonal compensation for α universality
+
+**Goal.**  Test whether allowing the per-sheet diagonal scale to
+differ between sheets (k_e ≠ k_p) can recover both α universality
+(α_e = α_p = α) and α magnitude (= observed α) on a metric with
+internal shears active.  Track 3 showed that R59 F59's identical-k
+assumption is fragile under shear — this track checks whether the
+fragility is the assumption or the architecture.
+
+**Background.**  R59 F59 found that on a *shearless* clean Ma
+metric, `k_e = k_p = 1/(8π)` with σ_ta = √α and σ_at = 4πα gives
+α_Coulomb = α to 60 ppm with α_e = α_p exactly.  R59 F57
+established that universality requires `k_e = k_p` *on that
+metric*.  Track 3 showed that with shears on (s_e ≥ 3/2 from
+ghost order, s_p free) both universality and magnitude break
+even at identical k.  Working hypothesis: identical k was never
+the real symmetry — what's required is *whatever per-sheet k
+makes that sheet's α extraction land on observed α*.  In the
+shearless case, that happens to be 1/(8π) for both sheets; with
+shears, k_e ≠ k_p.
+
+**Strategy.**
+
+For fixed (ε_e, s_e, ε_p, s_p), solve for the four-knob vector
+(L_ring_e, k_e, L_ring_p, k_p) such that:
+
+| Target | Source |
+|--------|--------|
+| E(electron mode) = m_e        | mass calibration |
+| E(proton mode)   = m_p        | mass calibration |
+| α_Coulomb(electron) = α       | α magnitude (e-sheet) |
+| α_Coulomb(proton)   = α       | α magnitude (p-sheet) |
+
+Universality (α_e = α_p) follows automatically when both α
+targets are met.
+
+The solve is a 4×4 nonlinear system with `scipy.optimize.least_squares`
+on the Track 1 solver.  Run in two modes for diagnostic value:
+
+1. **Per-sheet independent.**  Two 2×2 solves: (L_ring_e, k_e)
+   against (m_e, α_e), then (L_ring_p, k_p) against (m_p, α_p),
+   each with the *other* sheet's α coupling turned off (sign = 0).
+   Gives "what each sheet wants in isolation."
+2. **Joint.**  One 4×4 solve with both sheets active.  The
+   "right" answer because in the joint metric each sheet's α
+   extraction depends on the other sheet (via the shared ℵ).
+   Compare to (1) to quantify cross-sheet contamination.
+
+**Tactics.**
+
+1. **Smoke at shearless clean.**  At (ε_e, s_e, ε_p, s_p) =
+   (1, 0, 1, 0), the solver should converge to k_e = k_p = 1/(8π)
+   with both α targets met (R59 F59 reproduction).  Sanity that
+   the joint solve recovers known-good values.
+2. **Smoke at Track 3 best point.**  At (ε_e=0.1, s_e=1.5,
+   ε_p=0.55, s_p=0.162), Track 3 found α_p/α_e = 1.05 already.
+   Joint solver should pull this to exactly 1 with mild k
+   adjustments.
+3. **Stress at Track 3 worst point.**  At (ε_e=1.0, s_e=1.5,
+   ε_p=0.55, s_p=0.162), Track 3 reported α_p/α_e = 8.78.
+   Solver either converges with very different k_e, k_p, or
+   fails — either outcome is informative.
+4. **Pathology check.**  At (ε_e=0.5, s_e=2.0, ε_p=0.55,
+   s_p=0.162), Track 3 reported α_e ≈ 0 (sign-flip cancellation).
+   The α_e target may have no real-k solution; document the
+   failure mode.
+5. **Map k_e/k_p as a function of (ε, s).**  For a small grid of
+   (ε_e, s_e) and (ε_p, s_p) pairs inside the Track 3 viable
+   region, run the joint solve and tabulate the resulting k_e
+   and k_p.  Look for patterns (e.g., does k_x scale with
+   (ε_x · s_x) in a clean way?  Does the ratio k_e/k_p depend
+   only on the difference between sheets?).
+
+**Smoke cross-checks before search.**
+
+- Build the shearless clean metric with the R59 F59 knobs, run
+  `alpha_coulomb` — should give 1.000061×α (matches Track 1 T2).
+- Initial guess for joint solve: k_e = k_p = 1/(8π) and
+  L_ring_x derived from m_x at that k.  At a viable point, the
+  solver should improve from this seed.
+
+**Deliverables.**
+
+- `scripts/track4_diagonal_compensation.py` — independent + joint
+  solves at the four representative points above, plus the (ε, s)
+  map.
+- findings.md F17 (smoke at clean), F18 (per-sheet vs joint
+  diagnostic), F19 (results across representative points), F20
+  (k_e/k_p patterns and what they imply).
+
+**Acceptance criteria.**
+
+- The joint solve converges at the shearless clean point to
+  R59 F59's k = 1/(8π) within solver tolerance.
+- At least one (ε, s) pair inside Track 3's viable region yields
+  α_e = α_p = α to ≤ 1% with a real, signature-OK metric.
+- The solver's failure modes (where they occur) are clearly
+  characterized: sign-flip pathology, no-real-k region,
+  signature breach, etc.
+
+**Possible outcomes.**
+
+- **Clean convergence everywhere.**  Per-sheet k *is* a function
+  of that sheet's (ε, s) — α universality is recovered at the
+  cost of an extra knob per sheet (no longer assumed identical).
+  R59 F59 generalizes cleanly; model-F program is alive.
+  Promote pool item **f** (analytical derivation of k(ε, s)).
+- **Convergence in some regions, failure in others.**  R59 F59
+  is *partially* generalizable.  Model-F is constrained to the
+  regions where Track 4 succeeds.  Map them.
+- **No convergence anywhere with shears.**  R59 F59's natural
+  α-knob set is irretrievably shear-incompatible.  R60 must
+  either accept approximate universality (path a in Track 3
+  decision) or pivot to a different α architecture (pool item g).
+
+---
+
 ## Next-track pool
 
-Candidates after Track 3.  Sequence decided as we go.
+Candidates after Track 4.  Sequence decided as we go.
 
 **a.** (absorbed into Track 2)
 

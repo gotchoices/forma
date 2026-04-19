@@ -150,20 +150,36 @@ shears (s_e = 2.004) saturate the e-tube and block this
 architecture on model-E geometry (F41) — R60 is scoped to find
 whether a modified spectrum mechanism can coexist with it.
 
-### R60. Metric-11 — particle spectrum on R59's α-derivable 11D architecture  **Active — Track 1 complete**
+### R60. Metric-11 — particle spectrum on R59's α-derivable 11D architecture  **Active — Tracks 1–3 complete**
 **Study:** [`R60-metric-11/`](R60-metric-11/)
 **Type:** theoretical + compute
 **Depends on:** R59, R53, R49, R54, model-E
 
 Can a metric configuration be found that simultaneously implements
-R59's α architecture (k = 1/(8π), σ_ta = √α, σ_at = 4πα, g_aa = 1)
-and reproduces the model-E particle spectrum?  Track 1 built the
-solver infrastructure (11D metric builder, signature check, mode
-energy, α_Coulomb extractor, least-squares fitter).  All four
-smoke tests pass: model-E masses reproduced in 11D (F1), R59 F59
-α match verified (F2), F41 signature rejection confirmed (F3),
-single-knob L fit converges (F4).  Next-track pool a–g documented
-in the README.
+R59's α architecture and reproduces the model-E particle spectrum?
+
+Track 1 built solver infrastructure (F1–F4).  Track 2 mapped the
+e-sheet: ghost-order requires s_e ≥ 3/2, signature requires
+s_e · ε_e ≤ 3/√2 (exact identity); overlap is a bounded
+thin-torus triangle (F5–F10).  Track 3 mapped the p-sheet
+analogously and found the joint bound is
+**(s_e ε_e)² + (s_p ε_p)² ≤ 7/2** (each active tube spends one
+unit of the 9/2 single-tube budget).  Model-E's p-sheet
+(0.55, 0.162) sits inside Region D for 3 of 4 e-anchors tested.
+
+**Major negative finding (F15):** R59 F59's α universality
+(α_e = α_p) and α magnitude (= observed α) are properties of the
+*shearless* clean Ma metric.  As soon as the internal shears
+needed for the particle spectrum are turned on, both universality
+and magnitude break — α_p/α_e ranges from 1.05 (best) to 8.78
+(worst) across tested geometries; α magnitudes off by factors
+0.5–12×.  The R59 F59 architecture is not directly shear-compatible.
+
+Three forward paths under discussion: (a) accept approximate
+universality at small (sε); (b) shear-aware retune of the α
+knobs; (c) analytical derivation of the joint bound and the
+universality-breaking formula first.  Paused for strategy
+decision.
 
 ### R55. α consistency — Ma-S coupling derivation  **Tracks 1,3 done; Track 4 paused**
 **Study:** [`R55-alpha-consistency/`](R55-alpha-consistency/)
