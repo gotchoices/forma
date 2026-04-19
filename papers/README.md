@@ -36,7 +36,13 @@ predictions, start here:
    open problems.  Start here for the current state of the
    science.
 
-4. **[Matter from Light](matter-from-light.md)** — The
+4. **[Derivations — From Photon to Particle](derivations.md)**
+   — The formal foundation.  Roadmap and index for the
+   analytical derivations (R62) that prove MaSt's postulates
+   from SR + E = hf + compact geometry.  Links to all
+   completed and planned derivations.
+
+5. **[Matter from Light](matter-from-light.md)** — The
    particle model in narrative form.  How confined photons
    on compact geometry produce mass, charge, spin, and the
    particle spectrum.  (Paper 1 of the technical series.)
@@ -106,6 +112,7 @@ depend on it — and the science does not depend on them.
 | `dark-matter.md` | The Ghost in the Machine | Draft |
 | `neutrino-domain-storage.md` | The Neutrino-Domain Memory | Outline (companion to sub-quantum-memory) |
 | `universe-as-mode.md` | The Universe as a Mode | Outline (thought piece) |
+| `derivations.md` | Derivations — From Photon to Particle | In progress (roadmap + index for R62 derivation chain) |
 | `white-paper.md` | Matter from Light: A Geometric Particle Spectrum | Draft |
 | `signature.md` | 137: The Divine Signature | Draft |
 | `ancients.md` | Ancient Geometric Structure: Genesis and the GRID+MaSt Hierarchy | Outline |
