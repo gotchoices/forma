@@ -466,24 +466,27 @@ $$
        \right).
 $$
 
-The first term ∂_a G_Dν vanishes (cylinder).  The third has
-two pieces depending on whether D is spacetime or compact —
-when D = b (compact), ∂_b vanishes (cylinder); when D = σ
-(spacetime), ∂_σ G_aν = ∂_σ (g_ab A^b_ν) = g_ab ∂_σ A^b_ν.
+Label the three terms in the Christoffel formula as:
+- term 1: ∂_a G_Dν — vanishes (cylinder: ∂_a = 0)
+- term 2: ∂_ν G_Da — survives when D = σ (spacetime)
+- term 3: −∂_D G_aν — survives when D = σ; vanishes when
+  D = b (cylinder)
 
-So:
+Now split the sum G^μD = G^μσ + G^μb.  The G^μb = −A^bμ
+piece contributes nothing: in its terms, term 1 vanishes
+(cylinder), term 2 gives ∂_ν G_ba which is zero (G_ba =
+g_ba is constant by A.4), and term 3 gives −∂_b G_aν
+which is zero (cylinder).
+
+Only the G^μσ = g^μσ piece survives, with terms 2 and 3:
 
 $$
 \Gamma^{\mu}{}_{a\nu}
-\;=\; \tfrac{1}{2}\,G^{\mu\sigma}\!\left(
+\;=\; \tfrac{1}{2}\,g^{\mu\sigma}\!\left(
        \partial_{\nu} G_{\sigma a}
        - \partial_{\sigma} G_{a\nu}
        \right).
 $$
-
-(The G^μb terms drop entirely: the surviving derivatives
-∂_ν G_ba and −∂_b G_aν vanish — the first because G_ba is
-constant by A.4, the second by cylinder.)
 
 Substitute G^μσ = g^μσ, G_σa = g_ab A^b_σ, G_aν = g_ab A^b_ν:
 
@@ -824,7 +827,8 @@ $$
 \;=\; g_{ab}\,F^{b\,\mu}{}_{\nu}\,\dot{x}^{a}\,\dot{x}^{\nu}.
 $$
 
-Use ẋ^a = w^a − A^a_ρ ẋ^ρ from D.2:
+Rearranging D.2's definition w^a = A^a_ν ẋ^ν + ẋ^a gives
+ẋ^a = w^a − A^a_ρ ẋ^ρ.  Substituting:
 
 $$
 g_{ab}\,F^{b\,\mu}{}_{\nu}\,\dot{x}^{a}\,\dot{x}^{\nu}
