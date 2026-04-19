@@ -753,6 +753,41 @@ extraction for ν₁/ν₂/ν₃ between base and augmented.
 
 ---
 
+### Track 13a — R60-native α-universal inventory on Track 12 baseline
+
+**Goal.**  Ten of model-E's 18 compound tuples have α ≠ α on
+Track 12's metric (α_sum ∈ {±2, ±3, ±4}).  For each, search for
+an α-universal alternative (α_sum = ±1) within |n_i| ≤ 6 and
+report mass accuracy.  Produces a clean "model-F canonical
+inventory" ready for the model-F writeup.
+
+**Strategy.**  α-filtered brute force per target, enforcing
+α_sum² = 1 and correct Q and spin.  Report top-3 per target.
+
+**Acceptance.**  Every non-pion compound gets an α-universal
+tuple within reasonable accuracy (say ≤ 5%).  Pion remains a
+known failure (out of scope).
+
+---
+
+### Track 13b — ν-candidate sweep
+
+**Goal.**  Test R61 candidates #1–5 on Track 12 architecture.
+For each: does the joint solve converge?  What inventory
+accuracy does it give?  Nuclear scaling?  Any candidate
+meaningfully better or worse for specific hadrons?
+
+**Strategy.**  For each R61 candidate:
+- Run Track 12-style joint solve with that (ε_ν, s_ν) and
+  ν-triplet
+- Compute inventory accuracy (summary numbers only)
+- Rank candidates by composite
+
+**Outcome.**  Either one candidate clearly wins (pick it for
+model-F) or multiple are viable (model-F documents them all).
+
+---
+
 ### Track 12 — Proton sheet alignment with model-E
 
 **Goal.**  Replace Track 9's magic-shear p-sheet (ε_p = 0.4,
