@@ -313,8 +313,9 @@ m^{2}\,c^{2}
 \;=\; g_{ab}\,(h^{ac}\,P_{c})\,(h^{bd}\,P_{d}).
 $$
 
-Use g_ab h^ac h^bd = δ_b^c h^bd = h^cd (cf. derivation-2 B.3
-verification, case 4):
+First contract over a: g_ab h^ac = δ^c_b (definition of the
+inverse, verified in derivation-2 B.3 case 4).  Then contract
+over b: δ^c_b h^bd = h^cd.  So g_ab h^ac h^bd = h^cd, giving:
 
 <!-- m²c² = h^ab P_a P_b -->
 $$
