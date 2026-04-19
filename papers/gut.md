@@ -1,17 +1,4 @@
 # Good Unification Theory
-- Perhaps "grand" is too much to say since we still have open questions, issues
-- This is a work in progress
-
-## Audience
-- Technical, science, engineer college grad with science background
-- Do _not_ assume expertise in special relativity, advanced physics, quantum theory, string theory, etc
-
-## Scope/depth
-- Should be a relatively brief paper, maybe a 10 minute read
-- Cover relevant points of the arc but don't go down rabbit holes that don't directly aid the narrative
-- The arc should be partly historical but not boring.  Keep it engaging, hitting only relevant historical stops.
-
----
 
 ## Why "Good", not "Grand"
 
