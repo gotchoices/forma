@@ -401,6 +401,152 @@ built into each sheet's geometry.  User-facing analysis pending.
 
 ---
 
+## Track 7d: Magic-shear baseline re-solve
+
+**Scope.**  Replace Track 7b's shearless baseline on e and p
+with magic-shear geometries that give each sheet's target mode
+the lightest μ on that sheet.  Verify Track 7b's α universality
+survives the geometry change.
+
+Script: [scripts/track7d_magic_shear.py](scripts/track7d_magic_shear.py).
+
+### F42. Joint solve converges cleanly at magic-shear baseline
+
+Sheet inputs:
+- e: (ε=0.4, s=2.0), sε = 0.8 — magic shear for target (1, 2)
+- p: (ε=0.4, s=3.0), sε = 1.2 — magic shear for target (1, 3)
+- ν: (ε=2.0, s=0.022) R61 #1 unchanged
+
+Joint signature budget: `Σ(sε)² = 0.64 + 1.44 + 0.002 = 2.082`
+< predicted 5/2 three-tube bound.  Under budget with ~0.4
+headroom.
+
+Solver result:
+
+| Quantity | Value | Notes |
+|----------|-------|-------|
+| Convergence | OK (gtol, cost 10⁻²⁶) | — |
+| k_e = k_p = k_ν | 4.696442 × 10⁻² | Same single-k value as Track 7b F37 |
+| L_ring_e | 27,990 fm | (shifted from Track 7b's 25,035 — accounts for ε, s change) |
+| L_ring_p | 15.24 fm | (shifted from Track 7b's 19.28) |
+| L_ring_ν | 1.96 × 10¹¹ fm | unchanged |
+| σ_ra_e (derived) | +6.83 × 10⁻² | much bigger than Track 7b (was 0 at s_e = 0) |
+| σ_ra_p (derived) | −1.03 × 10⁻¹ | ditto |
+| σ_ra_ν (derived) | +3.76 × 10⁻³ | unchanged |
+| Signature | OK (1 neg eig) | ✓ |
+
+**The emergent single-k symmetry survives the geometry change.**
+Even with very different (ε, s) on each sheet, k_e = k_p = k_ν
+to floating-point precision.  Same value 1.1803/(8π) as Track 7b.
+
+### F43. α universality survives magic shear — on all three sheets and all tested modes
+
+All six targets met to floating-point precision (residuals at
+10⁻¹⁴).  Untargeted ν₂ and ν₃ modes also give α to floating-point:
+
+| Mode | α/α (targeted?) |
+|------|----------------|
+| electron (1, 2) | 1.0000000000 (target) |
+| proton (1, 3) | 1.0000000000 (target) |
+| ν₁ (+1, +1) | 1.0000000000 (target) |
+| ν₂ (−1, +1) | 1.0000000000 (not targeted) |
+| ν₃ (+1, +2) | 1.0000000000 (not targeted) |
+
+ν-mode spread: **0.00e+00**.  Track 7's structural fix works
+cleanly across the geometry change.  Δm²₃₁/Δm²₂₁ = 33.59
+matches R49's 33.6 as before.
+
+### F44. Ghost ordering achieved on e and p — not on ν
+
+At the converged (L, k, σ_ra) values, full-metric mode energies
+for (1, n_r) charged modes:
+
+**e-sheet (target n_r = 2):**
+
+| n_r | E | ratio to electron |
+|----:|--:|------------------:|
+| 0 | 0.654 MeV | 1.28 |
+| 1 | 0.550 MeV | 1.08 |
+| **2** | **0.511 MeV** | **1.00 ← target / lightest ✓** |
+| 3 | 0.550 MeV | 1.08 |
+| 4 | 0.654 MeV | 1.28 |
+
+**p-sheet (target n_r = 3):**
+
+| n_r | E | ratio to proton |
+|----:|--:|----------------:|
+| 0 | 1465.6 MeV | 1.56 |
+| 1 | 1201.6 MeV | 1.28 |
+| 2 | 1010.5 MeV | 1.08 |
+| **3** | **938.27 MeV** | **1.00 ← target / lightest ✓** |
+| 4 | 1010.5 MeV | 1.08 |
+
+**Ghost ordering achieved on e and p sheets.**  The magic shear
+makes the target mode the lightest single-sheet charged mode on
+each, with its neighbors (n_r ± 1) the next closest (~1.08×
+target), and the gap grows fast as n_r departs further.
+
+**ν-sheet (target n_r = 1):**
+
+| n_r | E | ratio to ν₁ |
+|----:|--:|------------:|
+| **0** | **14.63 meV** | **0.456 ← LIGHTEST** |
+| 1 | 32.10 meV | 1.00 (target) |
+| 2 | 59.62 meV | 1.86 (= ν₃) |
+
+The (1, 0) ν-sheet mode is ~46% of ν₁'s mass — a lighter spin-½
+charged-neutral ghost that we do not observe.  Same as noted
+in pool item **j**.  The magic-shear ordering doesn't apply on
+the ν-sheet because (a) R61's Δm²-tuned s_ν = 0.022 is far from
+the magic value s_ν = 1 for (1, 1), and (b) the R61 taxonomy
+expects filter mechanisms (Majorana-pair cancellation, dark
+even-tube modes) to handle ν ghosts, not in-sheet ordering.
+
+### F45. Status and implications for Track 8
+
+**What Track 7d establishes:**
+
+1. **Magic-shear baseline is viable** for e and p.  All targets
+   hit, signature OK, ghost ordering ✓, k-symmetry preserved,
+   α universal.
+2. **σ_ra values grow with sε** (now 0.07 and 0.10 on e and p)
+   but still small enough to preserve signature.
+3. **ν-sheet ghost (1, 0) persists** and must be handled via
+   R61 filter mechanisms (pool item **j** — defer to R61
+   dialogue).
+
+**Working baseline for Track 8:**
+
+| Knob | Value |
+|------|-------|
+| (ε_e, s_e) | (0.4, 2.0) |
+| (ε_p, s_p) | (0.4, 3.0) |
+| (ε_ν, s_ν) | (2.0, 0.022) |
+| ν triplet | R61 #1: (+1,+1)(−1,+1)(+1,+2) |
+| k (all sheets) | 4.696 × 10⁻² = 1.1803/(8π) |
+| L_ring_e | 27,990 fm |
+| L_ring_p | 15.24 fm |
+| L_ring_ν | 1.96 × 10¹¹ fm |
+| g_aa | 1 |
+| σ_ta | √α (signs +1, −1, +1) |
+| σ_ra | (sε)·σ_ta per sheet (derived) |
+| σ_at | 4πα |
+
+All in-sheet architecture now "done."  Track 8 proceeds on this
+baseline.  **Cross-sheet σ entries stay at zero for the first
+Track 8 pass** — compound modes (μ, τ, neutron, hadrons) are
+6-tuples on the existing joint metric, so their masses are
+already determined by the joint inverse without needing σ_cross.
+Pool item **h** (cross-sheet structural prescription) is a
+follow-up only if Track 8's first pass needs fine-tuning.
+
+### Decision point
+
+Track 7d clean.  Ready for Track 8 (compound mode search) on
+the magic-shear baseline above.
+
+---
+
 ## Appendix: the mode-dependent α question (now resolved)
 
 The following analysis was generated post-Track 6 when the α

@@ -17,19 +17,20 @@ entry-by-entry grid.
 | 5 | Proton viability under shearless electron + closed-form α-decoupling locus | F22–F26 | Derived `Q = 0 ⟺ n_r/n_t = sε + 1/(sε)` for any single-sheet mode (validated to 10⁻³¹). Key rules: **(1, 1) modes never decouple**, (1, 2) decouples at sε = 1, (1, 3) at sε ≈ 0.382 or 2.618. With shearless e, proton region is 72.7% viable. | [findings-5.md](findings-5.md) |
 | 6 | Joint e+p+ν solver with ν architecturally coupled (sign_nu = +1) on R61 candidate ν-sheet geometries | F27–F31 | Joint 6×6 solve converges for 3 of 4 R61 candidates at R59 F59 defaults. **But α is mode-dependent within sheared sheets** (ν₁ targeted at α but ν₂ lands at 1.19α, ν₃ at 0.91α — 28% spread). Problem surfaces. | [findings-6.md](findings-6.md) |
 | 7, 7b | Ring↔ℵ structural cancellation (add σ_ra = sε·σ_ta per sheet) + re-solve on augmented metric | F32–F38 | Cancellation works exactly: **ν-mode spread collapses from 28% to 0%**. Re-solve gives all targets at α to floating-point precision with k_e = k_p = k_ν = 0.04696 = 1.1803/(8π). Untargeted ν₂, ν₃ land at α automatically. R60 architecture validated on both axes. | [findings-7.md](findings-7.md) |
-| 7c | Inter-sheet shear compatibility check — test whether activating Ma cross-sheet σ entries preserves α universality | F39–F41 | **Negative.** Most cross-sheet activations break signature OR α universality. Track 7's per-sheet fix doesn't extend freely. Before Track 8 (compound modes), need to decide: extend prescription to cover cross-sheet cases, OR accept mode-dependent compound α. | [findings-7.md](findings-7.md) |
+| 7c | Inter-sheet shear compatibility check — test whether activating Ma cross-sheet σ entries preserves α universality | F39–F41 | **Negative.** Most cross-sheet activations break signature OR α universality. Track 7's per-sheet fix doesn't extend freely. Cross-sheet σ is not a free knob — pool item **h** would derive an extended prescription if Track 8 needs it. | [findings-7.md](findings-7.md) |
+| 7d | Magic-shear baseline re-solve — use s_e = 2, s_p = 3 to make target modes lightest on each sheet | F42–F45 | **Clean win** on e and p: joint solve converges at same single-k value (1.1803/(8π)); all targets met; α universal across sheets AND across modes; ghost ordering ✓ on e and p. ν-sheet (1, 0) ghost persists (handle via R61 filter, pool item **j**). Track 8 baseline established. | [findings-7.md](findings-7.md) |
 
-## Current R60 baseline (from Track 7b)
+## Current R60 baseline (Track 7d magic-shear)
 
 Working metric for Track 8 (compound modes):
 
 | Parameter | Value |
 |-----------|-------|
-| Sheet inputs (ε, s) | e: (1, 0); p: (1, 0); ν: (2, 0.022) |
+| Sheet inputs (ε, s) | e: (0.4, 2.0); p: (0.4, 3.0); ν: (2.0, 0.022) |
 | ν mode triplet | R61 #1: (+1,+1)(−1,+1)(+1,+2) |
 | k (all three sheets) | 4.696 × 10⁻² = 1.1803/(8π) |
-| L_ring_e | 25,035 fm |
-| L_ring_p | 19.28 fm |
+| L_ring_e | 27,990 fm |
+| L_ring_p | 15.24 fm |
 | L_ring_ν | 1.96 × 10¹¹ fm |
 | g_aa | 1 |
 | σ_ta (tube↔ℵ) | √α (signs +1/−1/+1 for e/p/ν) |
@@ -38,6 +39,9 @@ Working metric for Track 8 (compound modes):
 
 All targets (three masses, three α = α) met at floating-point
 precision.  Δm²₃₁/Δm²₂₁ = 33.59 cross-checks against R49's 33.6.
+Ghost ordering achieved on e and p sheets (target mode is lightest
+by magic shear); ν-sheet (1, 0) ghost handled by external filter
+(pool item **j**).
 
 ## Status
 

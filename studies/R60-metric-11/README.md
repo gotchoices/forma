@@ -753,6 +753,71 @@ extraction for ν₁/ν₂/ν₃ between base and augmented.
 
 ---
 
+### Track 7d — Magic-shear baseline re-solve (ghost ordering)
+
+**Goal.**  Replace Track 7b's shearless (ε=1, s=0) baseline for
+the e and p sheets with magic-shear geometries that make each
+sheet's target mode the *lightest* charged mode on that sheet
+— restoring ghost ordering as a built-in structural feature.
+Verify that Track 7b's α universality survives the change.
+
+**Background.**  At Track 7b's (ε=1, s=0) baseline, the mode
+(1, 1) on each charged sheet is lighter than the target mode
+((1, 2) electron, (1, 3) proton) — violating ghost ordering.
+We deferred this to "other mechanisms" but it raises the
+diagnostic complexity of Track 8.  "Magic shear" — setting
+`s_x = n_r / n_t` for each sheet's target — makes the target
+mode have ring energy `(n_r − s·n_t)² = 0` and thus minimal
+μ = 1/ε, lighter than all other (1, *) modes on the same sheet.
+
+**Sheet configuration.**
+
+| Sheet | Target mode | Magic shear | Proposed (ε, s) | sε | Decoupling check |
+|-------|:-----------:|:-----------:|:---------------:|:--:|:----------------:|
+| e | (1, 2) | s_e = 2 | (0.4, 2.0) | 0.8 | off sε = 1 locus ✓ |
+| p | (1, 3) | s_p = 3 | (0.4, 3.0) | 1.2 | off sε ∈ {0.382, 2.618} ✓ |
+| ν | (1, 1) target | s_ν from R49 Δm² | (2.0, 0.022) | 0.044 | (1,1) never decouples ✓ |
+
+Joint signature budget check: `Σ(sε)² = 0.64 + 1.44 + 0.002 =
+2.08` < predicted 5/2 three-tube bound.
+
+**Strategy.**
+
+- Fix the (ε, s) values above.  Free knobs remain (L_e, k_e,
+  L_p, k_p, L_ν, k_ν) as in Track 7b.
+- Architecture: ring↔ℵ structural σ_ra entries active (Track 7
+  prescription).
+- Targets: same six (masses + α universality) as Track 7b.
+- Verify after convergence:
+  1. All targets met to floating-point precision
+  2. Ghost ordering confirmed on each sheet (compute
+     μ(1,1), μ(1,2), μ(1,3) per sheet at final values)
+  3. α universality across modes preserved (α_ν₂, α_ν₃ = α)
+  4. Signature OK (joint three-tube bound respected)
+
+**Deliverables.**
+
+- `scripts/track7d_magic_shear.py` — re-solve + verification +
+  ghost-ordering audit on each sheet
+- findings-7.md §F42–F44 entries
+- Updated baseline numbers for Track 8
+
+**Possible outcomes.**
+
+- **All targets met + ghost ordering + universality preserved.**
+  Magic-shear baseline works.  Track 8 has a cleaner starting
+  configuration.
+- **Signature violation.**  Budget too tight at these (ε, s)
+  values.  Shrink ε further.
+- **α universality breaks.**  Structural fix doesn't survive
+  the geometry change.  Needs investigation (likely ν
+  mode-symmetry interaction we didn't anticipate).
+- **Ghost ordering fails.**  Unexpected — magic shear is
+  algebraically guaranteed to make target mode lightest.
+  Sanity check.
+
+---
+
 ### Track 7c — Inter-sheet shear compatibility check (post-Track 7b)
 
 **Goal.**  Quick sanity check: does activating Ma cross-sheet σ
@@ -842,6 +907,30 @@ the tube↔ℵ↔t architecture cannot coexist with the model-E
 spectrum, investigate an alternative α mechanism compatible with
 the preserved spectrum (extended R19, moduli potential, GRID
 lattice scale).  Only relevant if c fails.
+
+**h. Cross-sheet α cancellation structural prescription.**
+Extend the Track 7 ring↔ℵ σ_ra = (sε)·σ_ta cancellation to
+cross-sheet σ entries.  Derive (analytically or numerically)
+the counter-entry relationship that cancels cross-sheet
+shear-induced α leakage on the joint metric.  Prerequisite
+for compound-mode search using cross-sheet σ as free knobs.
+
+**i. Alternative ghost-suppression mechanisms** (raised
+post-Track 7c).  If we don't use magic shear on every sheet,
+we need other filters for the (1, 1) and (1, 2) ghosts.
+Candidates: (a) R46-style waveguide cutoff at specific ε; (b)
+R61-style Majorana-pair cancellation (requires ±n_tube
+partners for existence); (c) "too heavy" energy-routing
+argument (R56/R57 — spatial separation cheaper than Ma
+stacking).  Document as fallback in case magic-shear geometry
+becomes unworkable elsewhere.
+
+**j. ν-sheet ghost audit.**  At R61 #1 (ε=2, s=0.022), mode
+(1, 0) is lighter than (1, 1) by μ calculation.  Investigate
+whether (1, 0) modes are filtered in R49/R61 taxonomy
+(candidate: modes with n_ring=0 may be structurally excluded
+or absorbed into dark-mode classification).  Required before
+claiming ν₁ is the lightest on that sheet.
 
 **z. Closeout.**  After the chosen pool items execute: if
 viability holds, promote to model-F candidate with a migration
