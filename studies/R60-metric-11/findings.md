@@ -1229,3 +1229,140 @@ Test whether model-E's compound modes (e.g., muon =
 (1, 1, −2, −2, 0, 0)) land on observed masses on the new metric,
 or whether Track 7 finds different compound modes.  Either
 outcome is informative.
+
+---
+
+## Open question (post-Track 6): mode-dependent α and possible compound mass splitting
+
+### What we found
+
+Track 6 surfaced that α_Coulomb is **mode-dependent** on any
+sheared sheet under R59 F59.  The closed-form formula is
+
+    Q(n_t, n_r) ∝ n_t · (1 + u²) − n_r · u   with u = s · ε.
+
+At u = 0 (shearless), Q ∝ n_t — so all |n_tube|=1 modes get
+identical Q regardless of n_r.  At u ≠ 0, the n_r·u term breaks
+this and different (n_t, n_r) on the same sheet get different α.
+
+In our Track 6 baseline this only manifested on the ν-sheet
+(s_ν = 0.022), where ν₁ at α target gave ν₂ at 1.19α and ν₃ at
+0.91α.  e and p sheets are shearless in the baseline so didn't
+exhibit mode-dependence.
+
+### Why this matters
+
+Standard physics has α as a universal constant (1/137 for every
+charged particle).  If the model predicts different α for
+different particles on the same sheet, it is not faithful to
+observation — at least not without reinterpreting what α
+*means* in MaSt.
+
+### Two candidate resolutions
+
+**(a) Reinterpret α as a mode-dependent coupling strength
+modulated by topological charge.**  Integer EM charge in MaSt
+is topological (Q_charge = −n_e_tube + n_p_tube).  Our extracted
+"α_Coulomb = Q²/(4π)" might be a per-mode coupling parameter
+(weak-interaction analog?), not the universal EM coupling.  The
+electron's value happens to equal observed α; other modes have
+related-but-different values.  Physical support: neutrinos *do*
+have different scattering rates per flavor.  But: the standard
+model treats α as universal across charged leptons, and any MaSt
+reinterpretation needs a compensating story for charged modes
+(which we didn't test because e and p stayed shearless).
+
+**(b) Eliminate sheared sheets entirely.**  If no sheet has
+internal shear, mode-dependence vanishes everywhere and α is
+strictly universal across |n_tube|=1 modes.  But this requires
+finding non-shear mechanisms for everything shear currently does.
+
+### What shear currently does in MaSt (load-bearing)
+
+Per user assessment plus review of model-D/E/R49:
+
+1. **Neutrino oscillation matching.**  R26's `s_ν ≈ 0.022` gives
+   `Δm²₃₁/Δm²₂₁ = 33.6` exactly via `(3−2s)/(4s)`.  Without
+   shear, all (n_t, n_r) modes on a shearless sheet have masses
+   determined only by μ = √((n_t/ε)² + n_r²) — a fixed
+   geometric pattern.  Whether *any* shearless ν-sheet
+   geometry gives the right mass triplet 32.1/33.3/59.7 meV is
+   open and unlikely without auxiliary mechanism.
+2. **Generation structure (R53).**  Already retired in R60
+   (Track 4 F19 incompatibility with R59 F59 α).  Replaced by
+   compound modes per model-E inventory.
+3. **Ghost suppression on charged sheets.**  Multiple
+   alternatives exist (R46 waveguide cutoff, R47 gcd
+   irreducibility, R56 mode routing, R61 (1,1) filter on
+   ν-sheet).  Not strictly shear-dependent.
+
+### Compound mass splitting — what it would look like
+
+In the current single-sheet picture, ν₁/ν₂/ν₃ are three
+different (n_t, n_r) on the same (ε_ν, s_ν, L_ring_ν) sheet.
+Mass differences come entirely from the geometric formula at
+nonzero shear.
+
+In a compound picture, ν₁/ν₂/ν₃ would each be a 6-tuple
+spanning multiple sheets:
+
+| Eigenstate | Possible compound mode (illustrative) |
+|------------|---------------------------------------|
+| ν₁ | `(0, 0, 1, 1, 0, 0)` — pure ν-sheet (1, 1) |
+| ν₂ | `(1, 0, 1, 1, 0, 0)` — ν₁ + small e-sheet (1, 0) leak |
+| ν₃ | `(0, 0, 1, 1, 1, 0)` — ν₁ + small p-sheet (1, 0) leak |
+
+Each compound mode's mass comes from `E² ∝ ñ G̃⁻¹ ñ` summing
+across all touched sheets.  Cross-sheet σ entries (which were
+zeroed in the R60 baseline) provide the inter-sheet coupling.
+Different compounds get different masses **even on shearless
+sheets**, because their cross-sheet contributions differ.
+
+### Possible next-step tracks (deferred — R60 paused for analysis)
+
+If R60 resumes after the analysis dialog the user has planned,
+candidate tracks to investigate this question:
+
+**Track 7a — mode-dependence audit.**  Catalog α_Coulomb for a
+representative set of (n_t, n_r) modes on each sheet at the
+Track 6 baseline.  Quantify how big the deviation gets across
+the modes we'd want to label as ν₁/ν₂/ν₃ and across compound
+modes that might represent muon/tau/neutron.  Outcome: a sharp
+characterization of how serious the mode-dependence problem is
+across the whole spectrum.
+
+**Track 7b — shearless ν compound mass splitting attempt.**
+Set s_ν = 0.  Search compound 6-tuples (e + ν, p + ν, e + ν + p
+combinations) whose energies could be assigned to ν₁/ν₂/ν₃.
+Use cross-sheet σ entries (currently zeroed) as the splitting
+mechanism.  Test whether *any* configuration produces
+m_ν₂/m_ν₁ and m_ν₃/m_ν₁ ratios consistent with observed
+oscillation data (Δm²₃₁/Δm²₂₁ = 33.6).  If yes: shear can be
+dropped from ν-sheet, mode-dependence vanishes, R60 program
+strengthens.  If no: shear is genuinely required for ν
+oscillations and we must address mode-dependence on its own
+terms.
+
+**Track 7c — α reinterpretation feasibility.**  Take the
+mode-dependence as physical and ask what it would predict.
+Compute α_e for the electron (1, 2) on the *currently
+shearless* e-sheet (always equals α — no test).  Then add a
+small s_e and recompute α for the (1, 1) ghost mode and (1, 3)
+hypothetical mode to see how mode-dependence behaves on the
+e-sheet.  Compare to standard QED predictions for any related
+observable.  Outcome: indicates whether the mode-dependent α
+could survive as a physical prediction or is incompatible with
+known data.
+
+**Track 7d (the original "Track 7" before this question
+arose) — compound mode search for μ, τ, neutron, hadrons.**
+Resume the F31 baseline and search for compound modes matching
+the model-E inventory.  Defer α universality concerns; just
+check whether mass spectrum reproduces.  Could be useful as
+parallel work even if 7a–c are still in question.
+
+### Status
+
+R60 paused at end of Track 6 for further analysis dialog with
+user.  No commitment to which (if any) of the above tracks to
+pursue; depends on outcome of analysis.
