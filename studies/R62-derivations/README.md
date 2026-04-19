@@ -1,6 +1,6 @@
 # R62: Derivations
 
-**Status:** Tracks 1–3 complete; Track 4 framed (Program 1)
+**Status:** Tracks 1–4 complete (Program 1)
 **Type:** theoretical (analytical, no scripts required)
 **Depends on:** [primers/kaluza-klein.md](../../primers/kaluza-klein.md)
   (KK derivation of Lorentz force from 5D metric), R59 (Clifford
@@ -814,6 +814,18 @@ derivation in the same format as derivations 1–3.
   to characterize the discrepancy.  Either way, the result is
   informative.
 
+**Status.** Complete.  See [derivation-4.md](derivation-4.md);
+lemma F11–F13 stated at the end.  **Outcome: exact match.**
+The parametrization g_44 = ε², g_55 = 1/ε² + s², g_45 = ε s
+(with det g = 1, and the convention 4 = tube, 5 = ring,
+L_5 = ε L_4) reduces F7 identically to MaSt's formula.  An
+unexpected by-product: MaSt's "shear" parameter s is *not*
+the same as derivation-2's dimensionless shear s_geom; they
+are related by s_geom = ε s / √(1 + ε² s²), which means
+s_geom is automatically bounded |s_geom| < 1 for any real
+(ε, s) — the positivity constraint of derivation-2 is
+manifest in this parametrization.
+
 ---
 
 ### Next-track pool
@@ -1001,7 +1013,7 @@ Objectives section above and motivates the sequence
 | derivation-1.md | Track 1 — mass and angular momentum from a confined photon (complete) |
 | derivation-2.md | Track 2 — Kaluza-Klein on a 2-torus (complete) |
 | derivation-3.md | Track 3 — photon on a 2-torus, 4D mass from compact momentum (complete) |
-| derivation-4.md | Track 4 — recovery of the MaSt mass formula (in progress) |
+| derivation-4.md | Track 4 — recovery of the MaSt mass formula (complete) |
 | scripts/ | Optional verification scripts (not expected to be needed for analytical tracks) |
 
 Future programs (Program 2, Program 3, …) will add their own
