@@ -56,7 +56,9 @@ the geometry.
 | Charge = tube compact momentum | D5 (Track 5) | **Complete** |
 | Universal charge formula Q = −n₁ + n₅ | D5 (Track 5) | **Complete** |
 | Dark conservation laws (ring momenta) | D5 (Track 5) | **Complete** |
-| Lorentz force on standing-wave states | *\<future\>* | Planned |
+| Lorentz force on standing-wave states | D6 (Track 6) | **Complete** |
+| Minimal coupling derived (not postulated) | D6 (Track 6) | **Complete** |
+| Shear is mass-only at centroid level | D6 (Track 6) | **Complete** |
 | Spin from holonomy on sheared torus | *\<future\>* | Planned (high-risk) |
 | Magnetic moment from charge + spin | *\<future\>* | Planned |
 | Compound modes from cross-shears | *\<future\>* | Planned |
@@ -94,8 +96,7 @@ D4: MaSt μ²        │              <future>:
 │                  │              Mag moment
 └─────────┬────────┘                  │
           ▼                           │
-       <future>:                      │
-       Lorentz force                  │
+       D6: Lorentz force              │
           │                           │
           └──────────┬────────────────┘
                      ▼
@@ -335,16 +336,52 @@ labels and non-electromagnetic quantum numbers.
 - F16: ring momenta are conserved but dark (no EM coupling)
 
 
-### *\<future\>* — Lorentz force on standing-wave states
+### D6 — Lorentz force on the standing-wave state
 
-**Status:** Planned (pool item e)
-**Uses:** D3 + D5
+**File:** [`studies/R62-derivations/derivation-6.md`](
+../studies/R62-derivations/derivation-6.md)
+**Status:** Complete
+**Uses:** D2 (F4, F5) + D3 (F7) + D4 (F11) + D5 (F14) +
+  6D massless Klein-Gordon equation + weak external field
 
-Show that the Lorentz force from D2's geodesic projection
-still holds when the test particle is a standing-wave
-eigenstate (not a free particle on a single geodesic).
-The cleanest demonstration that mass, charge, and the
-Lorentz force all come from the same geometric source.
+The operational closure of the single-sheet arc.  Place a
+(n_t, n_r) standing-wave eigenstate in a weak external EM
+field A_μ^ext.  In KK, this field IS a metric perturbation
+(the off-diagonal G_μ4 = A_μ^ext).
+
+Separate variables on the 6D massless Klein-Gordon equation.
+The compact-mode wavefunction factors out, leaving a 4D
+effective wave equation for the spacetime envelope ψ:
+
+> D^μ D_μ ψ = (m²c²/ℏ²) ψ
+
+where D_μ = ∂_μ − i(Q/ℏ) A_μ^ext is the gauge-covariant
+derivative, m is the F7 mass, and Q is the F14 charge.
+
+**The minimal-coupling structure D_μ = ∂_μ − i(Q/ℏ)A_μ is
+NOT postulated — it falls out of the 6D separation of
+variables.**  This is one of KK's deepest results, here
+extended to the 2-torus.
+
+Taking the eikonal (WKB) limit of this wave equation yields
+the relativistic Lorentz-force equation for the centroid:
+
+> m d²x^μ/dτ² = Q F^μ_ν^ext ẋ^ν
+
+with the SAME m and Q derived in earlier tracks.  No new
+parameters.
+
+A notable finding: the internal shear g_45 enters only the
+mass formula (which modes have which masses), NOT the
+gauge-covariant derivative.  Shear is a spectrum effect, not
+a force effect.  Mass-charge mixing (F9) determines which
+(n_t, n_r) pairs exist; the Lorentz force acts on the
+resulting (m, Q) values without further shear dependence.
+
+**Key results (F17-F19):**
+- F17: Lorentz force m ẍ = Q F · ẋ with derived m and Q
+- F18: minimal coupling D_μ = ∂_μ − iQA/ℏ is geometric, not postulated
+- F19: shear affects spectrum only, not the centroid force
 
 
 ### *\<future\>* — Spin from holonomy on the sheared 2-torus
@@ -449,7 +486,7 @@ that subsequent derivations cite.  The chain:
 | F2 | Ring: m = nh/(Lc), L_z = nℏ | D3 |
 | F3 | 2-torus is the natural next step | D2 framing |
 | F4 | U(1)×U(1) gauge structure | D3, D5, future (spin) |
-| F5 | Two-charge Lorentz force | D5, future (Lorentz on standing waves) |
+| F5 | Two-charge Lorentz force | D5, D6 |
 | F6 | Shear cross-coupling | D3, D4, D5, future (spin) |
 | F7 | Mass formula m²c² = h^ab P_a P_b | D4, future (compound modes) |
 | F8 | Pythagorean special case | D4 |

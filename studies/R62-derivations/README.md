@@ -1,6 +1,6 @@
 # R62: Derivations
 
-**Status:** Tracks 1–5 complete (Program 1)
+**Status:** Tracks 1–6 complete (Program 1)
 **Type:** theoretical (analytical, no scripts required)
 **Depends on:** [primers/kaluza-klein.md](../../primers/kaluza-klein.md)
   (KK derivation of Lorentz force from 5D metric), R59 (Clifford
@@ -957,6 +957,196 @@ geometric origin for non-electromagnetic conservation laws.
 
 ---
 
+#### Track 6 — Lorentz force on the standing-wave state (promoted from pool item **e**)
+
+**Goal.**  Close the single-sheet "electron from light" loop by
+showing that the standing-wave eigenstate derived in Tracks 3–5
+behaves, under a weak external electromagnetic field, exactly
+like a free 4D particle of mass m (from F11) and charge Q (from
+F14), obeying
+
+<!-- m d²x^μ/dτ² = Q F^μ_ν(ext) ẋ^ν -->
+$$
+m\,\frac{d^{2}x^{\mu}}{d\tau^{2}}
+\;=\; Q\,F^{\mu}{}_{\nu}^{\text{(ext)}}\,\dot{x}^{\nu}
+$$
+
+with **the same m and Q already derived in earlier tracks**, no
+new parameters.  This is the cleanest single statement that
+mass, charge, and the EM coupling are all *the same geometric
+object* — the photon's compact-direction momentum, read out
+along three different operational axes (rest-frame energy,
+conserved Killing momentum, and centroid response to applied
+A_μ).
+
+**Why this is the natural climax of the single-sheet arc.**
+Tracks 1–5 have established mass and charge as separate
+properties of the photon-on-2-torus eigenstate.  But "this
+eigenstate has mass m" and "this eigenstate has charge Q" are
+two declarative statements about the *same* underlying object;
+without Track 6 we have not yet shown that the two numbers
+combine *consistently* under an external field.  Track 6 closes
+that loop by deriving the operational test that defines mass
+and charge in 4D experiment: how the wavepacket centroid
+accelerates when an EM field is turned on.
+
+**Strategy.**  The challenge relative to Track 2's E.2 is that
+Track 2 did the calculation for a *single point particle*
+following a single 6D geodesic.  A standing-wave eigenstate is
+not a single geodesic; it is a superposition of compact-
+momentum eigenstates with definite (n_t, n_r), spread out (in
+principle) over a 4D wavepacket.  We need to show that under a
+weak external A_μ^ext (much weaker than internal scales — so
+perturbative), the *centroid* of such a wavepacket follows the
+4D geodesic of a particle with the m and Q derived earlier.
+
+The cleanest tool is the **eikonal / WKB limit**: for a
+standing-wave eigenstate with definite compact quantum numbers
+(n_t, n_r), the 4D part of the wavefunction is a slowly-varying
+envelope on top of a 4D plane wave with 4-momentum p^μ.  In
+that limit the centroid satisfies the geodesic equation derived
+from the *effective* 4D Hamiltonian.  We compute that effective
+Hamiltonian by integrating the 6D Klein–Gordon-type equation
+over the compact directions, with the compact-mode wavefunction
+fixed to the (n_t, n_r) eigenstate.
+
+The result is a 4D Klein–Gordon equation with effective mass
+squared m²(n_t, n_r) c² (matching F7/F11) and minimal coupling
+to A_μ with charge Q = e n_t (matching F14).  The eikonal limit
+of this equation is the classical 4D geodesic with Lorentz
+force — exactly the form Track 2 produced for the point-
+particle case, but now with m and Q being the *derived*
+quantities of an eigenstate rather than free parameters.
+
+**Tactics.**
+
+1. **Setup.**  Restate the 6D geometry from Track 2 with one
+   modification: the 4D metric carries an *external* weak
+   electromagnetic potential A_μ^ext that lives in the
+   spacetime block g_μν only (it is not part of the internal
+   geometry — it is an applied field, e.g. from a laboratory
+   source).  Distinguish it notationally from the gauge
+   potential A_μ that Track 2 *derived* from the 6D metric:
+   the latter has been zeroed in Track 5's tube-couples
+   convention background, and the former is now switched on
+   as a perturbation.
+2. **Wave equation in 6D.**  Write the 6D massless Klein–
+   Gordon equation G^AB ∂_A ∂_B Ψ = 0 (the wave equation
+   appropriate to a "photon" — the same null-momentum
+   condition as F7, written in field form).  This is the
+   minimum quantum input — a step beyond the geometrical
+   optics of Tracks 1–5 — and is justified by Planck–
+   Einstein E = ℏω (already used).
+3. **Separation of variables.**  Decompose
+   Ψ(x^μ, x^4, x^5) = ψ(x^μ) Φ_(n_t, n_r)(x^4, x^5) with
+   Φ the standing-wave compact-mode eigenfunction labelled by
+   (n_t, n_r).  Substituting and integrating out the compact
+   directions reduces the 6D wave equation to a 4D equation
+   for ψ.
+4. **Effective 4D equation.**  Show that the resulting 4D
+   equation for ψ is the Klein–Gordon equation
+   (□ + m²c²/ℏ²) ψ = 0 with m² = h^ab P_a P_b / c² — exactly
+   F7 — and with the spacetime derivatives ∂_μ replaced by
+   the gauge-covariant derivative D_μ = ∂_μ − iQ A_μ^ext / ℏ
+   when the external field is turned on (this is where minimal
+   coupling appears; show it falls out of the algebra, it is
+   not added by hand).
+5. **Eikonal limit.**  Take ψ ∝ e^(iS/ℏ) with S a slowly-
+   varying eikonal phase.  In the limit |∇S| ≫ |∇ ln(envelope)|
+   (the WKB / geometrical-optics limit), the equation for S
+   reduces to the relativistic Hamilton–Jacobi equation for a
+   particle of mass m and charge Q in field A_μ^ext.
+6. **Geodesic equation with Lorentz force.**  Take ẋ^μ ≡ ∂S/∂p_μ
+   (Hamilton's equations / characteristic curves).  The
+   resulting equation of motion for the centroid is the
+   standard relativistic Lorentz-force equation:
+
+   <!-- m d²x^μ/dτ² = Q F^μ_ν^(ext) ẋ^ν -->
+   $$
+   m\,\frac{d^{2}x^{\mu}}{d\tau^{2}}
+   \;=\; Q\,F^{\mu}{}_{\nu}^{\text{(ext)}}\,\dot{x}^{\nu}
+   $$
+
+   with the **same** m and Q derived in earlier tracks.
+7. **Coupling-charge identity.**  Verify that the charge
+   appearing in the Lorentz force in step 6 (call it Q_force)
+   equals the charge identified in F14 (Q_F14 = e n_t):
+   trace through the algebra of step 4 and confirm that the
+   coupling to A_μ^ext is exactly P_4 / e_0 in the natural
+   units.  This is the key non-trivial check — it must come
+   out of the same Killing-momentum calculation, not require
+   an additional postulate.
+8. **Mass-coupling identity.**  Similarly verify that the m
+   that divides into the Lorentz force in step 6 is the same
+   m that appears as the inertial coefficient in F11
+   (m²c² = h^ab P_a P_b).  Inertial mass and "rest mass" are
+   the same thing — F10 already established this for the free
+   case; step 8 confirms it survives the introduction of A^ext.
+9. **Multi-mode wavepackets.**  Briefly note what happens when
+   the standing-wave state is a superposition of (n_t, n_r)
+   eigenstates rather than a single eigenstate.  The wavepacket
+   will spread (different m → different group velocities), but
+   each pure-(n_t, n_r) component independently obeys the
+   single-particle Lorentz force.  This is the standard
+   linearity of QM applied to an external classical EM field.
+
+**Deliverable.**  `derivation-6.md` — full step-by-step in the
+same format as derivations 1–5.
+
+**Acceptance criteria.**
+
+- The 6D wave equation is the only new ingredient beyond
+  derivations 1–5; everything else is algebra on F4–F16.
+- The minimal-coupling form D_μ = ∂_μ − iQ A_μ^ext/ℏ is
+  *derived* from separation of variables, not postulated.
+- The Q in the Lorentz force is shown to equal F14's
+  Q = e n_t, with no additional choice or unit factor.
+- The m in the Lorentz force is shown to equal F11's
+  m² = h^ab P_a P_b / c², with no additional choice or unit
+  factor.
+- The eikonal limit is taken explicitly (or its applicability
+  is justified explicitly).
+- The result reduces to derivation-2 E.4 (the point-particle
+  Lorentz force) when the wavepacket is taken as
+  arbitrarily localized.
+
+**Possible outcomes.**
+
+- **Clean derivation.**  Mass, charge, and the Lorentz force
+  all come from the same algebra; the standing-wave
+  eigenstate behaves *exactly* like a 4D particle of mass m
+  and charge Q.  Expected.
+- **Hidden cross-coupling.**  If the shear g_45 introduces a
+  kinematic term that couples the wavepacket centroid to the
+  *internal* gauge potential (not just the external one),
+  document it carefully.  This would be a calculable
+  additional physical effect — a "shear-mediated self-
+  coupling" — possibly relevant to anomalous-moment-like
+  corrections.
+- **Higher-order wavepacket effects.**  If finite wavepacket
+  size (extended beyond the eikonal limit) introduces
+  centroid corrections proportional to the envelope curvature,
+  document them.  These would be the analogs of Berry
+  curvature / wavepacket dynamics from condensed matter; in
+  this context they could plausibly seed the spin or
+  magnetic-moment derivations down the line.
+
+**Why this caps the single-sheet picture.**  After Track 6,
+the program has demonstrated that — on a single 2-torus —
+a 6D photon (null trajectory) projects to a 4D *particle* with
+all three of (i) inertial mass, (ii) electric charge, and
+(iii) the standard Lorentz-force coupling between them, with
+all three quantities derived from the *same* underlying
+compact momenta (P_4, P_5).  The single-sheet "electron from
+light" picture is then complete up to spin: nothing remains to
+postulate that is not common to standard 4D classical
+electrodynamics.
+
+**Status.** Complete.  See [derivation-6.md](derivation-6.md);
+lemma F17–F19 stated at the end.
+
+---
+
 ### Next-track pool
 
 Candidates after Track 1. Sequence decided as we go. Each
@@ -975,15 +1165,8 @@ Track 4; see derivation-4.md.
 **d. ~~Charge identification: tube as the charge-carrying
 winding.~~** Promoted to Track 5; see derivation-5.md.
 
-**e. Lorentz force on the standing-wave state.**
-Generalize the primer's Appendix A geodesic projection to the
-case where the test particle is a standing-wave eigenstate
-(not a free particle moving along a single geodesic). Show
-that the Lorentz force still emerges, with the charge q =
-compact momentum in the charge-carrying direction, and the
-mass m = total compact momentum (per pool item c). This is the
-cleanest demonstration that mass, charge, and the Lorentz
-force coupling all come from the same geometric source.
+**e. ~~Lorentz force on the standing-wave state.~~** Promoted
+to Track 6; see derivation-6.md.
 
 **f. Spin from the 2×2 internal torus metric (the cross-coupling
 hypothesis).**
@@ -1135,6 +1318,7 @@ Objectives section above and motivates the sequence
 | derivation-3.md | Track 3 — photon on a 2-torus, 4D mass from compact momentum (complete) |
 | derivation-4.md | Track 4 — recovery of the MaSt mass formula (complete) |
 | derivation-5.md | Track 5 — charge identification: tube as the charge-carrying winding (complete) |
+| derivation-6.md | Track 6 — Lorentz force on the standing-wave state (complete) |
 | scripts/ | Optional verification scripts (not expected to be needed for analytical tracks) |
 
 Future programs (Program 2, Program 3, …) will add their own
