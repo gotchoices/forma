@@ -753,9 +753,36 @@ extraction for ν₁/ν₂/ν₃ between base and augmented.
 
 ---
 
+### Track 7b — Re-solve on the augmented metric (magnitude lock)
+
+**Goal.**  Track 7 demonstrated that adding σ_ra entries collapses
+the ν-mode spread from 28% to 0% — but the converged value drifted
+to 1.0885α (not exactly α) because we used Track 6's k values
+unchanged on a metric that had changed.  Track 7b re-solves the
+joint system on the augmented metric to bring the magnitude back
+to α exactly while preserving the structural universality.
+
+**Strategy.**  Same six free knobs as Track 6 (L_e, k_e, L_p, k_p,
+L_ν, k_ν), same six targets (three masses + α_e = α_p = α_ν₁ = α),
+but with the metric builder modified to include the structural
+σ_ra entries.  The σ_ra values are *not* free knobs — they're
+derived from σ_ra_x = (sε)_x · σ_ta on each sheet.
+
+**Acceptance criteria.**
+
+- Joint solve converges with all six targets met to ≤ 1e-6.
+- α_ν₂ and α_ν₃ (untargeted) come out within 1e-6 of α — i.e.,
+  Track 7's structural universality is preserved at the new
+  k values.
+- Δm²₃₁/Δm²₂₁ ≈ 33.6 cross-check still holds.
+- Final k values are the "natural-form" baseline for the
+  augmented architecture, ready for Track 8 (compound modes).
+
+---
+
 ## Next-track pool
 
-Candidates after Track 7.  Sequence decided as we go.
+Candidates after Track 7b.  Sequence decided as we go.
 
 **a.** (absorbed into Track 2)
 
