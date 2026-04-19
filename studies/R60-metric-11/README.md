@@ -564,24 +564,139 @@ If derivable, the result tells us:
 
 ---
 
-### Planning notes for Track 6 onward (not yet executed)
+### Track 6 — Add the ν-sheet (joint e+p+ν solver)
 
-**ν-sheet must be on equal footing with e and p.**  R59 F59's
-`sign_nu = 0` was a simplification (charge-neutrality shortcut);
-the physical neutrino has nonzero EM coupling (R55 had α_ν =
-0.92α via inherited R55 metric).  Future tracks involving the
-ν-sheet must:
+**Goal.**  Add the ν-sheet on the same architectural footing as
+e and p, then joint-solve for all six free knobs (per-sheet
+L_ring and k) against six targets (three masses, three α's).
+Confirm a working e+p+ν configuration exists.  This is the first
+all-three-sheets test of R60's architecture.
 
-- Include σ_ta = √α on ν-tube with an appropriate sign
-  (probably ±1 like e and p; convention TBD)
-- Add k_ν as a free joint-solver knob
-- Add α_ν target (likely α_ν = α, matching the σ_ta strength —
-  the nonzero result is correct physics, not a bug)
-- Calibrate L_ring_ν against neutrino mass eigenstates (R49
-  Family A or candidates from R61)
+**Background.**
 
-This was omitted in earlier tracks for laziness, not by design,
-and must not be omitted again.
+- **ν architectural coupling.**  Earlier tracks set `sign_nu = 0`
+  (ν-tube uncoupled from ℵ), giving α_ν = 0 by construction.
+  That was a simplification, not a physics statement — R55 had
+  α_ν ≈ 0.92α via inherited geometry, and R61's neutrino
+  taxonomy treats the ν-sheet as architecturally coupled
+  with charge-zero arising from topology (Q_charge = −n_e_tube +
+  n_p_tube = 0 for pure ν modes, regardless of the ν-tube↔ℵ
+  coupling magnitude).  Track 6 turns the architecture on:
+  `sign_nu = +1` (same convention as the electron, per R55).
+- **(1, 1) immunity.**  Track 5 F22 showed (1, 1) modes never
+  decouple — fortunate, because R61's top ν candidates all use
+  (1, 1) for ν₁ and ν₂.  No per-mode pathology to dodge for the
+  light eigenstates.
+- **Wide k ranges expected.**  Sheet ring scales: L_p ~ fm,
+  L_e ~ 10⁴ × L_p, L_ν ~ 10⁴ × L_e, L_ℵ possibly ~10⁻¹⁸ × L_p.
+  In any normalization that respects this, the per-sheet
+  diagonal scales (k) and the ℵ diagonal (g_aa) span many orders
+  of magnitude.  R59 F59's `k = 1/(8π), g_aa = 1` was *one*
+  self-consistent natural-form choice; other configurations
+  involving very different k values are physically reasonable.
+  Solver bounds should be wide.
+
+**Strategy.**
+
+Use Track 4's joint solver, extended to three sheets.  Hold the
+α-architecture global knobs at R59 F59 natural-form values for
+the first attempt, with `sign_nu = +1`.  Free knobs and targets:
+
+| Free knob | Bound (loose) |
+|-----------|---------------|
+| L_ring_e | (10⁻³, 10⁹) fm |
+| L_ring_p | (10⁻³, 10⁹) fm |
+| L_ring_ν | (10⁻³, 10⁹) fm |
+| k_e | (10⁻⁶, 10⁶) |
+| k_p | (10⁻⁶, 10⁶) |
+| k_ν | (10⁻⁶, 10⁶) |
+
+| Target | Source |
+|--------|--------|
+| E(electron mode) = m_e | input |
+| E(proton mode) = m_p | input |
+| E(ν₁ mode) = m_ν₁ | derived from Δm²₂₁ |
+| α_Coulomb(electron) = α | architecture |
+| α_Coulomb(proton) = α | architecture |
+| α_Coulomb(ν₁) = α | architecture (R55-consistent) |
+
+Six knobs, six targets — square system.  ε and s for each sheet
+are *inputs*, chosen from Track 5 baseline (e, p) and R61 (ν).
+
+**Sheet inputs.**
+
+| Sheet | (ε, s) | Mode | Source |
+|-------|--------|------|--------|
+| e | (1, 0) | (1, 2) | Track 5 baseline |
+| p | (1, 0) | (1, 3) | Track 5 baseline |
+| ν | (2, 0.022) | (1, 1) for ν₁ | R61 top candidate (`+1,+1)(-1,+1)(+1,+2)`) |
+
+The ν candidate has s_ν · ε_ν = 0.044 — far from any decoupling
+locus and well within any reasonable signature budget.  ν₂ at
+(−1, 1) and ν₃ at (1, 2) inherit the same (ε_ν, s_ν).
+
+**ν₁ mass target.**  Take m_ν₁ = 32.1 meV from R61 candidate 1
+(calibrated to Δm²₂₁ = 7.53 × 10⁻⁵ eV²).  Δm²₃₁/Δm²₂₁ = 33.6
+should follow automatically from (ε_ν=2, s_ν=0.022) — verify as
+a passive check, don't target.
+
+**Tactics.**
+
+1. **Phase 1: natural-form g_aa.**  Solve at g_aa = 1, R59 F59
+   defaults for σ_ta = √α, σ_at = 4πα.  Wide k bounds.
+2. **Phase 1.5: rescan against other R61 ν candidates.**  If
+   Phase 1 succeeds, also try R61 candidates 2, 3, 4 to see
+   how robust the result is across ν geometry choices.
+3. **Phase 2 (only if Phase 1 fails for all R61 candidates).**
+   Free g_aa as a 7th knob, add a soft target (signature margin
+   ≥ some value) or accept a slight Phase 1 residual to make
+   the system square.  Document any g_aa deviation from 1 as a
+   "natural-form cost."
+4. **Cross-checks.**  At any successful configuration: confirm
+   ν₂ and ν₃ masses come out at predicted values (no separate
+   targeting needed — they share (ε_ν, s_ν)), and confirm
+   Δm²₃₁/Δm²₂₁ ≈ 33.6.
+
+**Smoke check before scan.**
+
+Build the metric with Track 5 baseline + R61 #1 ν, R59 F59 α
+knobs, sign_nu = +1.  Confirm signature OK, all three sheets
+contribute to the inverse metric, no obvious numerical
+breakage.  Report initial (uncalibrated) α_ν to see if it's in
+the right ballpark.
+
+**Deliverables.**
+
+- `scripts/track6_three_sheet_solve.py` — joint solver, smoke
+  + Phase 1 + Phase 1.5; Phase 2 wired but only invoked if
+  Phase 1 fails.
+- findings.md F27 (smoke + Phase 1 result), F28 (R61 candidate
+  rescan), F29 (Phase 2 if needed), F30 (interpretation +
+  candidate config for Track 7).
+
+**Acceptance criteria.**
+
+- Joint solver converges on at least one R61 ν candidate with
+  all six targets met to ≤ 1% (mass) and 1% (α universality).
+- Signature OK at the converged configuration.
+- ν₂, ν₃ masses and the Δm² ratio cross-check correctly.
+- A specific (L_e, k_e, L_p, k_p, L_ν, k_ν) configuration is
+  identified as the working baseline for Track 7 (compound modes).
+
+**Possible outcomes.**
+
+- **Phase 1 succeeds.**  R60 has a clean three-sheet baseline
+  at full natural-form values.  Architecture is fully validated;
+  proceed to Track 7 with confidence.
+- **Phase 1.5 differentiates ν candidates.**  Some R61
+  candidates work, others don't.  Identifies the most viable ν
+  geometry — feeds back into R61.
+- **Phase 2 needed.**  We have to deviate from g_aa = 1 to make
+  it work.  Documents the cost.  Still likely viable, but
+  slightly less elegant.
+- **Phase 2 also fails.**  ν-sheet inclusion at full α coupling
+  is structurally blocked.  Reconsider sign_nu choice or revisit
+  the ν architectural coupling assumption.
 
 ---
 

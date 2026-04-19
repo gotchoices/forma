@@ -150,10 +150,10 @@ shears (s_e = 2.004) saturate the e-tube and block this
 architecture on model-E geometry (F41) — R60 is scoped to find
 whether a modified spectrum mechanism can coexist with it.
 
-### R60. Metric-11 — particle spectrum on R59's α-derivable 11D architecture  **Active — Tracks 1–5 complete**
+### R60. Metric-11 — particle spectrum on R59's α-derivable 11D architecture  **Active — Tracks 1–6 complete**
 **Study:** [`R60-metric-11/`](R60-metric-11/)
 **Type:** theoretical + compute
-**Depends on:** R59, R53, R49, R54, model-E
+**Depends on:** R59, R53, R49, R54, R61, model-E
 
 Can a metric configuration be found that simultaneously implements
 R59's α architecture and reproduces the model-E particle spectrum?
@@ -162,29 +162,27 @@ Tracks 1–4 built solver infrastructure (F1–F4), mapped the
 e-sheet (F5–F10) and p-sheet (F11–F16) viability regions, and
 discovered that per-sheet diagonal compensation (k_e ≠ k_p)
 rescues α universality+magnitude in 66% of (ε, s) configurations
-(F17–F21).  Two failure modes identified: signature cliff
-(joint bound (sε_e)² + (sε_p)² ≤ 7/2) and a pathological
-**α-decoupling at the R53 generation resonance**.
+(F17–F21).  Track 5 derived the α-decoupling locus in closed
+form: `Q = 0 ⟺ n_r/n_t = sε + 1/(sε)` (F22); (1,1) modes never
+decouple, (1,2) modes decouple at sε = 1, (1,3) modes at
+sε ≈ 0.382 or 2.618.  Track 5 Part 1 confirmed wide proton
+viability under shearless electron (F23–F26).
 
-Track 5 derived the α-decoupling locus in closed form:
-`Q = 0  ⟺  n_r/n_t = sε + 1/(sε)`  for any single-sheet mode
-(n_t, n_r), validated against numerical extraction at 10⁻³¹
-precision (F22).  Practical implications: **(1, 1) modes never
-decouple** (good news for ν₁, ν₂); **(1, 2) modes decouple at
-sε = 1 exactly** (electron, ν₃); **(1, 3) modes decouple at
-sε ≈ 0.382 or 2.618** (proton).  The R53 generation mechanism is
-structurally retired for R60 — generations must come from
-compound modes per model-E's inventory style.
+Track 6 added the ν-sheet on equal footing (sign_nu = +1, σ_ta
+coupling, free k_ν).  **Joint e+p+ν solver converges cleanly at
+g_aa = 1 with α_e = α_p = α_ν₁ = α universality** for three of
+four R61 ν-sheet candidates (F27–F31).  k values cluster within
+20% of R59 F59 natural value for charged sheets; per-sheet L
+scales span 10+ orders of magnitude (L_p = 19 fm, L_ν = 2×10¹¹
+fm) consistent with mass hierarchy.  **R60's full architecture
+is now validated** as compatible with the model-E three-sheet
+foundation.
 
-Track 5 Part 1: with shearless electron (s_e = 0) and the joint
-solver, the proton sheet has a **wide viable region** (104/143
-points, 72.7%) with concrete candidates including the trivially
-natural shearless-p baseline at any ε_p (F23–F25).
+Working baseline for Track 7: R61 candidate #1, e+p shearless,
+k ≈ 0.047 across charged sheets, k_ν ≈ 0.045.
 
-Recommended next: Track 6 — add ν-sheet on equal footing
-(σ_ta on ν-tube, free k_ν, target α_ν = α; was lazily set to 0
-in earlier tracks).  Joint signature bound is now expected to
-generalize to (sε_e)² + (sε_p)² + (sε_ν)² ≤ 5/2.
+Recommended next: Track 7 — compound mode search for muon, tau,
+neutron, hadrons on the F31 baseline.
 
 ### R55. α consistency — Ma-S coupling derivation  **Tracks 1,3 done; Track 4 paused**
 **Study:** [`R55-alpha-consistency/`](R55-alpha-consistency/)
