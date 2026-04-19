@@ -753,6 +753,33 @@ extraction for ν₁/ν₂/ν₃ between base and augmented.
 
 ---
 
+### Track 11 — Nuclear scaling audit
+
+**Goal.**  Test R29 / model-E's nuclear scaling law (n_5 = A,
+n_6 = 3A, with n_et = A − Z for charge Z) on the Track 9 augmented
+baseline.  Model-E matched d (0.05%), ⁴He (0.69%), ¹²C (0.76%),
+⁵⁶Fe (1.05%) with this scaling.  Does R60 inherit the result?
+
+**Strategy.**
+
+For each nucleus (d, ⁴He, ¹²C, ⁵⁶Fe):
+- Construct tuple (A − Z, 0, 0, 0, A, 3A)
+- Compute predicted mass on Track 9 metric
+- Compute α_Coulomb — for Z-charged nuclei, should naturally be
+  Z² × α (since α_sum = −Z by construction)
+- Compare to observed nuclear mass
+
+Secondary: vary n_er and n_νr within small range (|n| ≤ 5) to
+see if small decorations improve accuracy.
+
+**Expected.**  If nuclear scaling works, this is another major
+validation of R60's architecture.  Nuclear masses are independent
+of particle-inventory fits (different quantum-number regime, very
+different scale).  Success here means the single scaling law
+covers ~60 stable nuclei from hydrogen to iron.
+
+---
+
 ### Track 10 — Broader hadron inventory on Track 9 baseline
 
 **Goal.**  Having reproduced muon, tau, neutron on the Track 9
