@@ -1,6 +1,6 @@
 # R62: Derivations
 
-**Status:** Tracks 1–4 complete (Program 1)
+**Status:** Tracks 1–4 complete; Track 5 framed (Program 1)
 **Type:** theoretical (analytical, no scripts required)
 **Depends on:** [primers/kaluza-klein.md](../../primers/kaluza-klein.md)
   (KK derivation of Lorentz force from 5D metric), R59 (Clifford
@@ -828,6 +828,119 @@ manifest in this parametrization.
 
 ---
 
+#### Track 5 — Charge identification (promoted from pool item **d**)
+
+**Goal.**  Show that the conserved Killing momentum P_4 of F4
+(the one in the *tube* direction, by Track 4's convention) is
+the **electric charge** Q of the projected 4D particle, when
+the convention
+
+<!-- g_μ4 ≠ 0 (tube couples to spacetime),  g_μ5 = 0 (ring does not) -->
+$$
+g_{\mu 4} \neq 0 \;\;\text{(tube couples to spacetime)},
+\qquad
+g_{\mu 5} = 0 \;\;\text{(ring does not)}
+$$
+
+is adopted.  Show that with standing-wave quantization, Q is
+automatically integer-quantized in units of an elementary charge
+e set by the tube period.  Generalize to MaSt's three-sheet
+T⁶ setup to recover the empirical universal charge formula
+
+<!-- Q = -n_1 + n_5  (electron-sheet tube minus proton-sheet tube; neutrino tube neutral) -->
+$$
+Q \;=\; -n_{1} + n_{5}
+$$
+
+where n_1 = electron-sheet tube winding, n_3 = neutrino-sheet
+tube winding (does not appear because σ_νS = 0), n_5 =
+proton-sheet tube winding.
+
+This is the **charge counterpart** of Track 4 (mass): together,
+the two derivations give the full mass-and-charge picture of
+the electron-from-light hypothesis on a single sheet, and the
+extension across MaSt's three sheets is just bookkeeping with
+sign conventions.
+
+**Strategy.**
+
+1. Start from F4–F6: U(1)×U(1) gauge structure on a 2-torus,
+   two conserved compact momenta P_4 and P_5.
+2. Adopt the **tube-couples convention**: g_μ4 ≠ 0, g_μ5 = 0.
+   This zeros the second gauge potential (B_μ = 0 from F4) and
+   leaves only one physical gauge field A_μ ∝ g_μ4.
+3. Note that P_5 remains conserved by Killing's theorem
+   (independent of whether g_μ5 = 0), but P_5 is now
+   "decoupled from spacetime" — it contributes to mass (via the
+   F11 quadratic form) but not to any 4D Lorentz force.  P_5
+   is a *dark conservation law*: real, but invisible.
+4. Identify Q with P_4.  Apply the F4 D.4 standing-wave
+   quantization to get Q = e × n_t with e the elementary
+   charge unit (set by the tube period L_t).
+5. Generalize to T⁶ = T² × T² × T² (three 2-tori, one per
+   MaSt sheet, no cross-shears for now).  Each sheet has its
+   own (P_tube, P_ring) and its own per-sheet Ma–S coupling
+   sign σ_e, σ_ν, σ_p.
+6. Apply MaSt's empirical sign assignments: σ_νS = 0 (neutrino
+   neutral), σ_eS = −1 (in normalized units), σ_pS = +1.
+   This gives Q = −n_1 + n_5 with n_3 absent.
+
+**Tactics.**
+
+1. Recap F4 D.2 (Killing momenta) and F4 E.2 (Lorentz force
+   from g_μa).
+2. Set g_μ5 = 0 explicitly; show A_μ from F4's expansion
+   reduces to a single gauge potential built from g_μ4 alone.
+3. Show that the Lorentz-force term of F5 reduces from
+   Q_A F^Aμ_ν + Q_B F^Bμ_ν to Q F^μ_ν (single force, single
+   charge).
+4. Apply F4 D.4 (standing-wave quantization) to get
+   Q = (units factor) × n_t.
+5. Identify the units factor as the elementary charge e.
+   Discuss how its value relates to the GRID coupling
+   constant α.
+6. Assemble the three-sheet picture: one (P_tube)_sheet per
+   sheet, summed with sign σ_sheet.  Verify: with σ_e = -1,
+   σ_ν = 0, σ_p = +1, get Q = -n_1 + n_5.
+7. Discuss matter/antimatter as sign(n_t) and particle
+   identity as which sheet's tube is excited.
+
+**Deliverable.**  `derivation-5.md` — full step-by-step in the
+same format as derivations 1–4.
+
+**Acceptance criteria.**
+
+- The tube-couples convention is stated explicitly with its
+  motivation (basis choice + empirical input that there is no
+  second EM force).
+- The reduction U(1)×U(1) → U(1) is shown algebraically.
+- The Killing momentum P_4 → Q identification is unambiguous.
+- The standing-wave quantization Q = e × n_t is derived, not
+  postulated.
+- The generalization to MaSt's Q = -n_1 + n_5 is mechanical
+  given the sign conventions, with σ_e, σ_ν, σ_p called out
+  as one-time choices (not derived).
+- The neutrino's neutrality is shown to follow from σ_νS = 0,
+  not from some intrinsic property of the neutrino sheet.
+
+**Possible outcomes.**
+
+- **Clean derivation.**  Q falls out of P_4 with no additional
+  postulates beyond the tube-couples convention and the
+  per-sheet Ma–S coupling signs.  The expected result.
+- **Sign ambiguities.**  The signs (σ_e < 0, σ_p > 0) might
+  not be derivable from the geometry alone — they may be
+  inherited from MaSt as empirical inputs.  Document this
+  transparently.
+- **Charge unit determination.**  The elementary charge e
+  might or might not be derivable from L_t and the other
+  metric parameters.  If derivable, this connects to GRID's
+  derivation of α.  If not, document e as an additional
+  parameter (the overall coupling strength of the surviving
+  U(1)).
+
+---
+
 ### Next-track pool
 
 Candidates after Track 1. Sequence decided as we go. Each
@@ -843,17 +956,8 @@ Promoted to Track 3; see derivation-3.md.
 **c. ~~Recovery of the MaSt mass formula.~~** Promoted to
 Track 4; see derivation-4.md.
 
-**d. Charge identification: tube as the charge-carrying
-winding.** Specify the Ma–St block structure: declare that the
-**tube** direction on each sheet carries the nonzero off-
-diagonal coupling to spacetime (g_μ4 ≠ 0), while the **ring**
-direction does not (g_μ5 = 0). Show that charge Q then equals
-the compact momentum on the tube winding, recovering MaSt's
-Q = −n_1 + n_5 directly with no per-sheet adjustment. Argue
-that this assignment is a *one-time convention* (which compact
-direction we call "tube" vs "ring") fixed by the requirement
-that mass come from one winding and charge from the other.
-Once made, the convention is universal across all three sheets.
+**d. ~~Charge identification: tube as the charge-carrying
+winding.~~** Promoted to Track 5; see derivation-5.md.
 
 **e. Lorentz force on the standing-wave state.**
 Generalize the primer's Appendix A geodesic projection to the
@@ -1014,6 +1118,7 @@ Objectives section above and motivates the sequence
 | derivation-2.md | Track 2 — Kaluza-Klein on a 2-torus (complete) |
 | derivation-3.md | Track 3 — photon on a 2-torus, 4D mass from compact momentum (complete) |
 | derivation-4.md | Track 4 — recovery of the MaSt mass formula (complete) |
+| derivation-5.md | Track 5 — charge identification: tube as the charge-carrying winding (in progress) |
 | scripts/ | Optional verification scripts (not expected to be needed for analytical tracks) |
 
 Future programs (Program 2, Program 3, …) will add their own
