@@ -1,6 +1,6 @@
 # R62: Derivations
 
-**Status:** Framed — Track 1 ready (Program 1)
+**Status:** Track 1 complete; Track 2 framed (Program 1)
 **Type:** theoretical (analytical, no scripts required)
 **Depends on:** [primers/kaluza-klein.md](../../primers/kaluza-klein.md)
   (KK derivation of Lorentz force from 5D metric), R59 (Clifford
@@ -501,6 +501,118 @@ photon) with the rest-frame energy of a bound system
 as a *consequence* of the standing-wave being the minimum-
 cost steady state, not as a separate postulate.
 
+**Status.** Complete.  See [derivation-1.md](derivation-1.md)
+for the full step-by-step proof; lemma F1–F3 stated at the end.
+
+---
+
+#### Track 2 — Kaluza-Klein on a 2-torus (promoted from pool item **a**)
+
+**Goal.** Generalize the primer's Appendix A derivation from one
+compact dimension (a circle) to two compact dimensions (a
+2-torus). Identify all the new off-diagonal metric entries —
+the eight spacetime↔compact entries g_μ4 and g_μ5 (giving a
+U(1)×U(1) gauge structure with two potentials A_μ and B_μ) and
+the one compact↔compact entry g_45 (the internal shear with no
+analog in 5D KK). Re-derive the Christoffel symbols, the 6D
+geodesic equation, and the projection to 4D. Catalog which
+results generalize cleanly from 5D KK and which are
+structurally new on the 2-torus.
+
+The test particle in this track remains a **massive** particle
+moving along a 6D timelike geodesic, exactly as in the primer.
+Replacing it with a photon (null trajectory) is the next pool
+item; this track does the geometric/algebraic groundwork so
+that move can be made cleanly.
+
+**Strategy.** Mirror the primer's Appendix A structure step by
+step, with one compact dimension replaced by a 2-torus. The
+6×6 metric splits into three blocks:
+
+- A 4×4 spacetime block g_μν.
+- A 2×2 internal block g_ab with a, b ∈ {4, 5}, containing
+  the two compact diagonals g_44, g_55 and one off-diagonal
+  entry g_45 (the shear).
+- A 4×2 mixed block g_μa containing the two gauge potentials.
+
+Apply the cylinder condition (∂_4 = ∂_5 = 0 on all metric
+components), compute the inverse metric, derive Christoffel
+symbols organized by index type, write the 6D geodesic
+equation, and project to 4D. The 5D KK case must be recovered
+as the limit g_55 → 0 (or by setting the second compact
+direction to a single point).
+
+**Tactics.**
+
+1. **Setup.** Coordinates, ranges, the 6×6 metric ansatz with
+   explicit identifications of A_μ, B_μ, and the shear s.
+2. **Inverse metric.** Block-matrix inversion. The 2×2 internal
+   block with off-diagonal g_45 must be inverted in closed
+   form; this is where the shear first contributes
+   nontrivially.
+3. **Cylinder condition.** State and apply ∂_4 = ∂_5 = 0 on
+   all metric components.
+4. **Christoffel symbols.** Compute, organized by index
+   structure:
+   - Pure spacetime Γ^μ_νρ — like 4D GR plus A·A and B·B
+     corrections.
+   - Mixed Γ with one compact index — these are where the
+     field strengths F^A_μν and F^B_μν live.
+   - Mixed Γ with two compact indices — these contain the
+     shear contributions.
+5. **6D geodesic.** Write down d²x^A/dτ² + Γ^A_BC ẋ^B ẋ^C = 0
+   for the massive test particle.
+6. **Conserved compact momenta.** Cylinder condition + Killing
+   directions in x_4 and x_5 → two conserved quantities,
+   identified as charges Q_A and Q_B.
+7. **4D projection.** Project the spacetime components of the
+   geodesic. Recover the Lorentz force from each U(1)
+   independently, plus a shear-induced cross-term coupling
+   the two charges.
+8. **Interpretation of the shear.** Show that g_45 ≠ 0 mixes
+   the two charges at the geodesic level; specifically, an
+   eigenstate of pure-x_4 momentum carries nonzero x_5
+   covariant momentum proportional to s. Connect this to the
+   MaSt mass formula μ² = (n_t/ε)² + (n_r − s n_t)² in
+   advance of pool item c.
+
+**Deliverable.** `derivation-2.md` — full step-by-step
+derivation following the format of derivation-1.md, with each
+step's purpose annotated and key results boxed.
+
+**Acceptance criteria.**
+
+- Each step uses only differential geometry + the cylinder
+  condition. No KK results are *assumed*; the 5D KK case is
+  derivable as a limit.
+- The two U(1) potentials A_μ and B_μ are explicitly
+  identified, and shown to give independent Maxwell-like
+  fields when the shear is zero.
+- The shear g_45 is shown to produce a *specific*, named
+  coupling term in the 4D projection — distinct from anything
+  appearing in 5D KK.
+- The 5D KK limit (drop the second compact direction)
+  reproduces the primer Appendix A result exactly.
+- The "compact momentum = charge" identification from the
+  primer extends naturally to two charges (one per U(1)).
+
+**Possible outcomes.**
+
+- **Clean generalization.** Everything from 5D KK extends
+  term-by-term; the shear contributes one well-defined extra
+  coupling. Pool items b, d, f have a solid metric structure
+  to build on.
+- **Inverse-metric subtleties.** The 2×2 internal block with
+  off-diagonal g_45 has a nontrivial inverse; if this
+  introduces unexpected complications (e.g., singularities
+  when |s| approaches a critical value), document them as
+  constraints on viable shear values.
+- **Shear interpretation surprise.** The g_45 term might
+  produce something other than naive "two-charge mixing" —
+  e.g., an effective topological coupling or a Berry-phase-
+  like correction. If so, flag it as a candidate spin
+  precursor for pool item f.
+
 ---
 
 ### Next-track pool
@@ -509,15 +621,8 @@ Candidates after Track 1. Sequence decided as we go. Each
 entry is a sketch; the chosen one is elaborated to full-track
 detail when promoted.
 
-**a. KK derivation on a 2-torus (one extra 2-torus).**
-Generalize the primer's Appendix A from one compact dimension
-(circle) to two compact dimensions (2-torus). Identify all the
-new off-diagonal metric entries: the four spacetime↔compact
-entries (g_μ4 and g_μ5 — a U(1)×U(1) gauge structure) and the
-one compact↔compact entry (g_45 — internal shear). Re-derive
-the Christoffel symbols, the geodesic equation, and the
-projection to 4D. Catalog which terms generalize cleanly and
-which require new ingredients.
+**a. ~~KK derivation on a 2-torus.~~** Promoted to Track 2;
+see derivation-2.md.
 
 **b. Photon-on-torus: 4D mass from compact momentum.**
 Replace KK's massive test particle with a null trajectory in
@@ -704,10 +809,9 @@ Objectives section above and motivates the sequence
 | File | Purpose |
 |------|---------|
 | README.md | This framing document |
-| track1.md | Track 1 derivation (light clock + spinning photon) — to be written |
-| findings.md | Cumulative results across tracks and programs — created as tracks complete |
+| derivation-1.md | Track 1 — mass and angular momentum from a confined photon (complete) |
+| derivation-2.md | Track 2 — Kaluza-Klein on a 2-torus (in progress) |
 | scripts/ | Optional verification scripts (not expected to be needed for analytical tracks) |
 
-Future programs may add their own track files (e.g.,
-`p2_track1.md`) and findings entries under a clear program
-prefix.
+Future programs (Program 2, Program 3, …) will add their own
+derivation files under a clear prefix when needed.
