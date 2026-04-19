@@ -1,39 +1,55 @@
 ,ℵ,p_t,p_r,e_t,e_r,ν_t,ν_r,S_x,S_y,S_z,t
-ℵ,g=[P],-T=[P],R_p=[D],+T=[P],R_e=[D],+T=[P],R_ν=[D],0,0,0,A=[P]
-p_t,-T=[P],k=[F],sε=[C],x=[!],x=[?],x=[?],x=[!],0,0,0,k=[!]
-p_r,R_p=[D],sε=[C],kR=[F],x=[?],x=[?],x=[?],x=[!],0,0,0,k=[!]
-e_t,+T=[P],x=[!],x=[?],k=[F],sε=[C],x=[?],x=[!],0,0,0,k=[!]
-e_r,R_e=[D],x=[?],x=[?],sε=[C],kR=[F],x=[?],x=[?],0,0,0,k=[!]
-ν_t,+T=[P],x=[?],x=[?],x=[?],x=[?],k=[F],sε=[C],0,0,0,k=[!]
-ν_r,R_ν=[D],x=[!],x=[!],x=[!],x=[?],sε=[C],kR=[F],0,0,0,k=[!]
+ℵ,g=1[P],-T[P],R_p=[D],+T[P],R_e=[D],+T[P],R_ν=[D],0,0,0,A=[P]
+p_t,-T[P],k[F],sε[C],x=[!],x=[?],x=[?],x=[!],0,0,0,k=[!]
+p_r,R_p=[D],sε[C],kR[F],x=[?],x=[?],x=[?],x=[!],0,0,0,k=[!]
+e_t,+T[P],x=[!],x=[?],k[F],sε[C],x=[?],x=[!],0,0,0,k=[!]
+e_r,R_e=[D],x=[?],x=[?],sε[C],kR[F],x=[?],x=[?],0,0,0,k=[!]
+ν_t,+T[P],x=[?],x=[?],x=[?],x=[?],k[F],sε[C],0,0,0,k=[!]
+ν_r,R_ν=[D],x=[!],x=[!],x=[!],x=[?],sε[C],kR[F],0,0,0,k=[!]
 S_x,0,0,0,0,0,0,0,1,0,0,0
 S_y,0,0,0,0,0,0,0,0,1,0,0
 S_z,0,0,0,0,0,0,0,0,0,1,0
-t,A=[P],k=[!],k=[!],k=[!],k=[!],k=[!],k=[!],0,0,0,-1
+t,A[P],k=[!],k=[!],k=[!],k=[!],k=[!],k=[!],0,0,0,-1
 ,,,,,,,,,,,
-Legend symbols,,,,,,,,,,,
-[P],Pinned by architecture — value fixed at natural-form (R59 F59),,,,,,,,,,
-[F],Free — joint solver adjusts per sheet,,,,,,,,,,
-[D],Derived — structural relationship (e.g. σ_ra = sε · σ_ta),,,,,,,,,,
-[C],Constrained — value follows from other knobs within ranges,,,,,,,,,,
-[!],Ruled out by prior work (R59 / Track 7c) — breaks signature or α universality,,,,,,,,,,
-[?],Candidate — zero by default but not fully tested,,,,,,,,,,
+Legend — status flags:,,,,,,,,,,,
+[P],Pinned by architecture (R59 F59 natural form) — value fixed,,,,,,,,,,
+[F],Free — solver adjusts (all land at single-k symmetry),,,,,,,,,,
+[D],Derived — structural relationship from other knobs (σ_ra = (sε)·σ_ta),,,,,,,,,,
+[C],Constrained — value follows from other inputs (k × s × ε within sheet block),,,,,,,,,,
+[!],Ruled out — prior work demonstrated breaks signature or α universality,,,,,,,,,,
+[?],Candidate — zero in R60 baseline but not fully tested (reserved for future),,,,,,,,,,
 ,,,,,,,,,,,
-Cell symbols,,,,,,,,,,,
-g,g_aa — ℵ diagonal (currently 1),,,,,,,,,,
-+T / -T,σ_ta = sign · √α — tube ↔ ℵ (sign per sheet e/p/ν = +/-/+),,,,,,,,,,
+Legend — cell symbols:,,,,,,,,,,,
+g,g_aa = 1 — ℵ diagonal,,,,,,,,,,
++T / -T,σ_ta = sign · √α — tube ↔ ℵ coupling (e = +1; p = −1; ν = +1),,,,,,,,,,
 R_x,σ_ra_x = (sε)_x · σ_ta_x — ring ↔ ℵ (derived Track 7),,,,,,,,,,
-A,σ_at = 4πα — ℵ ↔ t (delivers α to time),,,,,,,,,,
-k,k_x — per-sheet Ma diagonal scale (Track 7b solver finds k_e=k_p=k_ν=0.04696),,,,,,,,,,
+A,σ_at = 4πα — ℵ ↔ t coupling,,,,,,,,,,
+k,k_x = 1.1803/(8π) ≈ 0.04696 — per-sheet Ma diagonal scale (single-k),,,,,,,,,,
 kR,k_x · (1 + (sε)²_x) — ring diagonal in sheet block,,,,,,,,,,
 sε,k_x · s_x · ε_x — in-sheet shear (tube-ring within one sheet),,,,,,,,,,
-x,cross-sheet σ entry (Ma-Ma cross) — zero in R60 baseline,,,,,,,,,,
+x,cross-sheet σ entry — zero in R60 baseline,,,,,,,,,,
 1,identity (spatial diagonals),,,,,,,,,,
 -1,Lorentzian (time diagonal),,,,,,,,,,
 0,zero (no coupling of this kind),,,,,,,,,,
 ,,,,,,,,,,,
-Notes,,,,,,,,,,,
-Metric is symmetric — the table shows the full 11×11 with entries above and below the main diagonal equal.,,,,,,,,,,
-Track 7c tested some [?] cross-sheet entries — most broke signature OR α universality; see findings-7.md.,,,,,,,,,,
-Some [!] entries (like p_t↔ν_r) were tested in Track 7c and confirmed ruled out.,,,,,,,,,,
+Model-F baseline (Track 12):,,,,,,,,,,,
+(ε_e / s_e / sε_e),(397.074 / 2.004200 / 795.816),,,,,,,,,,
+(ε_p / s_p / sε_p),(0.55 / 0.162037 / 0.0891),,,,,,,,,,
+(ε_ν / s_ν / sε_ν),(2.0 / 0.022 / 0.044),,,,,,,,,,
+k (all sheets),0.04696442 = 1.1803/(8π),,,,,,,,,,
+σ_ta,√α = 0.08542,,,,,,,,,,
+σ_at,4πα = 0.09170,,,,,,,,,,
+g_aa,1,,,,,,,,,,
+σ_ra_e (derived = sε_e · σ_ta_e),+67.98,,,,,,,,,,
+σ_ra_p (derived = sε_p · (−σ_ta)),-0.00761,,,,,,,,,,
+σ_ra_ν (derived = sε_ν · σ_ta_ν),+0.003759,,,,,,,,,,
+L_ring_e,54.83 fm,,,,,,,,,,
+L_ring_p,20.55 fm,,,,,,,,,,
+L_ring_ν,1.96e+11 fm,,,,,,,,,,
+,,,,,,,,,,,
+Notes:,,,,,,,,,,,
+Metric is symmetric — table shows the full 11×11 with entries above and below the main diagonal equal.,,,,,,,,,,
+Track 7c tested [?] cross-sheet entries — most break signature or α universality.,,,,,,,,,,
+Track 8 found compound-mode α_Coulomb = (n_et − n_pt + n_νt)² × α (quantized).,,,,,,,,,,
 Direct Ma↔t entries [!] ruled out by R59 F2 / F43.,,,,,,,,,,
+Single-k symmetry: solver gets k_e = k_p = k_ν identical across all tested geometries.,,,,,,,,,,

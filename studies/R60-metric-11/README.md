@@ -753,6 +753,40 @@ extraction for ν₁/ν₂/ν₃ between base and augmented.
 
 ---
 
+### Track 14 — Analytical derivation of k = 1.1803/(8π)
+
+**Goal.**  Derive the single-k value that the joint solver
+finds across all tested geometries.  Is k = 1.1803/(8π) a fixed
+point determined by the solver's target set, or an artifact of
+the initial guess?  If a fixed point, does it have a closed-form
+expression?
+
+**Strategy.**
+
+Phase 1 — **Empirical.**  Rerun the joint solve with different
+initial k values (k_init = 0.5/(8π), 1/(8π), 2/(8π), etc.).  If
+solver always converges to the same k, it's a fixed point.  If
+it depends on init, it's an artifact.
+
+Phase 2 — **Symbolic (sympy).**  With σ_ra = (sε)·σ_ta active,
+the α extraction Q = n_t · σ_ta at structural cancellation.  The
+full formula α_Coulomb = Q²/(4π) · (−G⁻¹[t,t])² gives an implicit
+equation in k at the targeted α_Coulomb = α.  Solve for k
+symbolically.
+
+Phase 3 — **Natural form match.**  Given the solved k value (a
+numeric constant), search for a closed-form expression involving
+α, π, and small integers.
+
+**Acceptance.**
+
+- Phase 1 establishes whether k is a true fixed point
+- Phase 2 produces a closed-form or explicit formula for k
+- Phase 3 either finds a clean natural-form expression or
+  documents that it doesn't exist
+
+---
+
 ### Track 13a — R60-native α-universal inventory on Track 12 baseline
 
 **Goal.**  Ten of model-E's 18 compound tuples have α ≠ α on

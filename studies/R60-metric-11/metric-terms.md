@@ -73,12 +73,16 @@ architecture at fixed σ_ta = √α, σ_at = 4πα, g_aa = 1):
 
 ## Length scales
 
-| Sheet | L_ring (fm) at Track 7b baseline | Physical scale |
+| Sheet | L_ring (fm) at model-F baseline (Track 12) | Physical scale |
 |:------|---:|:---|
-| Proton | 19.28 | ~fm |
-| Electron | 25,035 | ~2.5 × 10⁻¹¹ m (Compton range) |
+| Proton | 20.55 | ~fm |
+| Electron | 54.83 | ~pm scale |
 | Neutrino | 1.96 × 10¹¹ | ~0.2 mm |
 | ℵ | (not directly fit) | sub-Planck, exact scale open |
+
+The electron sheet at model-F's extreme geometry (ε = 397, s = 2.004)
+has L_ring_e = 54.83 fm — model-E's L_ring_e of 11.88 fm scaled by
+1/√k ≈ √(8π)/√1.1803 ≈ 4.62×.
 
 ## α-decoupling locus (Track 5 F22)
 

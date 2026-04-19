@@ -80,9 +80,11 @@ For detailed discussion of each open problem, see
 - **Pion mass desert.**  π⁰ and π± land at ~105 MeV instead of
   135–140 MeV (inherited from model-E).  Structural MaSt
   limitation; candidate for a focused follow-up study (R62).
-- **Single-k analytical derivation.**  The emergent k = 1.1803/(8π)
-  symmetry across all tested geometries is unexplained.  Pool
-  item in R60; deserves its own study.
+- **Single-k analytical derivation.**  R60 Track 14 confirmed
+  k = 1.1803/(8π) is a structural fixed point and derived the
+  single-sheet α_Coulomb equation analytically.  The full
+  multi-sheet closed-form is still open.  Best near-natural
+  candidate: (1+4πα)² (0.97% off).
 - **The hierarchy:** why is gravity ~10⁴⁰× weaker than EM?
 - **Flavor:** two quark flavors (u/d) not yet explained by
   geometry (quarks are "ringings" of the (1,3) proton's 3-fold

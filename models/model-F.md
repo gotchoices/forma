@@ -272,9 +272,17 @@ shear on e+p, extreme e + magic p, extreme e + model-E p, etc.),
 the joint solver with three independent per-sheet k knobs lands
 at k_e = k_p = k_ν = 1.1803/(8π) to floating-point precision.
 
-This is not accident — it's a structural feature of the R60
-architecture.  Analytical derivation pending.  Until then: one
-global k suffices for model-F.
+**R60 Track 14 confirmed k is a structural fixed point** — the
+solver converges to the same k from any initial value at or above
+K_NATURAL = 1/(8π).  Track 14 also derived the single-sheet
+α_Coulomb equation in closed form using sympy, but the full
+multi-sheet derivation that would explain *why* k = 1.1803/(8π)
+specifically is not closed (best near-natural form found:
+(1+4πα)² = 1.19181, off by 0.97%).
+
+So: **k is structurally determined (empirically confirmed); the
+closed-form expression for its specific value remains open.**
+One global k suffices for model-F in practice.
 
 ### α quantization for compound modes
 
@@ -320,8 +328,12 @@ exactly.  Either is fine.
   as muon) instead of observed 135–140 MeV.  Identical failure
   to model-E.  Likely needs chiral dynamics or paired-mode
   physics beyond R60.  Candidate for follow-up study R62.
-- **Single-k symmetry analytical derivation.**  Why k = 1.1803/(8π)?
-  Multiple geometries all land here.  Worth a derivation.
+- **Single-k symmetry analytical derivation.**  R60 Track 14
+  confirmed the value is a structural fixed point (empirical)
+  and derived the single-sheet α_Coulomb equation analytically.
+  The full multi-sheet derivation that would give k in closed
+  form is not yet completed.  Best near-natural-form candidate:
+  (1+4πα)² = 1.19181 (0.97% off the observed 1.18034).
 - **ν-sheet (1, 0) ghost.**  At R61 #1 geometry, the (1, 0) ν
   mode is lighter than (1, 1).  Per R61's own taxonomy, filtered
   by pair-cancellation or dark-mode mechanisms.  External to R60
@@ -416,7 +428,7 @@ observational input.
 | Study | Focus | Status |
 |-------|-------|--------|
 | R59 | Architecture discovery (σ_ta = √α, σ_at = 4πα, g_aa = 1, tube↔ℵ↔t chain) | Complete |
-| R60 | Metric-11 — spectrum validation + σ_ra structural fix + single-k symmetry + inventory audit | Complete (Tracks 1–13) |
+| R60 | Metric-11 — spectrum validation + σ_ra structural fix + single-k symmetry + inventory audit | Complete (Tracks 1–14) |
 | R61 | Neutrino sheet candidates | Complete (taxonomy used here) |
 | R62 (future) | Pion mass resolution study | Proposed, not started |
 
