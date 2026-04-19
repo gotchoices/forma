@@ -448,9 +448,146 @@ on the Track 1 solver.  Run in two modes for diagnostic value:
 
 ---
 
+### Track 5 — Proton on shearless electron + α-decoupling locus
+
+**Goal.**  Two complementary pieces, run together because they
+inform each other:
+
+1. **Numerical: confirm Q1.**  Show that with the electron sheet
+   left shearless (s_e = 0), the proton sheet at any reasonable
+   (ε_p, s_p) inside Track 4's working region can be calibrated
+   to m_p with α_p = α via per-sheet diagonal compensation k_p.
+   The Track 4 Smoke 1 (clean) and Smoke 2 (T3 best) points
+   already suggest this works; Track 5 maps the proton viable
+   region against a fixed shearless-e baseline.
+
+2. **Analytical: derive the α-decoupling locus.**  Track 4 F19
+   discovered that at s_e = n_r/n_t for the electron's reference
+   mode (specifically s_e = 2 for the (1, 2) electron), the α
+   extraction Q_e cancels to zero independent of k_e.  Derive
+   the closed-form condition Q_e = 0 in (ε, s) so we know which
+   curves to avoid in *every* later (ε, s) scan.  This is the
+   pool-item-f analytical complement to the numerical work.
+
+The two pieces share infrastructure (Track 1 solver) and
+context, so combining them keeps the analysis coherent.
+
+**Strategy.**
+
+*Part 1 (numerical).*
+
+Fix the electron sheet at (ε_e = 1, s_e = 0).  This sits inside
+Track 4's confirmed-working region (Smoke 1 reproduces R59 F59
+exactly there).  Vary the proton sheet (ε_p, s_p) over a 2D grid
+spanning Track 3's Region D.  At each grid point:
+
+- Run Track 4's joint solver over (L_ring_e, k_e, L_ring_p, k_p)
+  against (m_e, m_p, α_e=α, α_p=α).
+- Record convergence, signature, residuals, k values.
+- Map the proton viable region under shearless e-sheet.
+
+If the viable region is wide and includes natural starting
+points (e.g., model-E's (0.55, 0.162) or analytically nice
+choices like (1.0, 0.0) or (0.5, 0.5)), Q1 is confirmed and we
+have a clean baseline for Track 6 (ν-sheet).
+
+*Part 2 (analytical).*
+
+Compute Q_e symbolically for the electron mode (1, 2) on the
+e-sheet alone (other sheets uncoupled, sign_e = +1).  The
+expression
+
+    Q_e = (n_e_tube/L_e_tube · G⁻¹[e_t, t]) +
+          (n_e_ring/L_e_ring · G⁻¹[e_r, t])
+
+depends on the inverse metric block.  With the 2×2 sheet block
+`k·[[1, sε], [sε, 1+(sε)²]]`, the e-tube and e-ring entries of
+G⁻¹[:, t] propagate through the (e-tube ↔ ℵ ↔ t) chain.  Find
+the (ε, s) curve where the two terms cancel.
+
+Hypothesis (from F19 evidence): the curve is `s = n_r/n_t = 2`
+for the (1, 2) mode, independent of ε — but we should derive
+this rather than assume.  Generalize for arbitrary (n_t, n_r).
+
+If derivable, the result tells us:
+- Which (ε, s) curves to avoid for *each* sheet (e-sheet, p-sheet,
+  ν-sheet) given that sheet's reference mode.
+- Whether the locus is exactly s = n_r/n_t or has corrections.
+- How "wide" the pathology is (sharp curve vs broad band).
+
+**Tactics.**
+
+- Part 1: extend [scripts/track4_diagonal_compensation.py]
+  with a (ε_p, s_p) grid scan at fixed shearless e.  ~15×15 grid
+  should suffice.
+- Part 2: write `scripts/track5_decoupling_locus.py` that does
+  the symbolic derivation either by hand-derived closed form
+  or via `sympy` for the 11D inverse metric.  Cross-check
+  numerically against the actual Q_e from `alpha_coulomb`.
+
+**Smoke cross-checks.**
+
+- Part 1: at (ε_e=1, s_e=0, ε_p=1, s_p=0), reproduce Track 4
+  Smoke 1 (k_e=k_p=1/(8π), all targets exact).
+- Part 2: at (ε=0.5, s=2.0) the derived Q_e should equal zero
+  (matches Track 4 F19); at (ε=1, s=0) it should be nonzero.
+
+**Deliverables.**
+
+- `scripts/track5_proton_shearless_e.py` — Part 1 grid scan
+- `scripts/track5_decoupling_locus.py` — Part 2 derivation
+- findings F22 (Part 1 results), F23 (Part 2 derivation), F24
+  (combined interpretation: viable proton region + pathological
+  curves)
+
+**Acceptance criteria.**
+
+- Part 1: viable region for (ε_p, s_p) under shearless e is
+  characterized; at least three concrete candidate proton
+  configurations identified.
+- Part 2: closed-form expression for the Q_e = 0 locus on a
+  single sheet with reference mode (n_t, n_r), validated against
+  numerical Q_e from the Track 1 extractor.
+
+**Possible outcomes.**
+
+- **Wide proton region + clean locus formula.**  Best case.  R60
+  has a simple rule for choosing (ε, s) per sheet ("stay off
+  s = n_r/n_t for the reference mode"), and the proton has many
+  options.  Proceed to Track 6 confidently.
+- **Narrow proton region or messy locus.**  Constraints tighter
+  than expected; we need to be more careful about (ε_p, s_p)
+  choice.  Report and proceed.
+- **Empty proton region.**  Surprising; would indicate the
+  shearless-e + compensated-p approach is itself blocked.
+  Pivot needed.
+
+---
+
+### Planning notes for Track 6 onward (not yet executed)
+
+**ν-sheet must be on equal footing with e and p.**  R59 F59's
+`sign_nu = 0` was a simplification (charge-neutrality shortcut);
+the physical neutrino has nonzero EM coupling (R55 had α_ν =
+0.92α via inherited R55 metric).  Future tracks involving the
+ν-sheet must:
+
+- Include σ_ta = √α on ν-tube with an appropriate sign
+  (probably ±1 like e and p; convention TBD)
+- Add k_ν as a free joint-solver knob
+- Add α_ν target (likely α_ν = α, matching the σ_ta strength —
+  the nonzero result is correct physics, not a bug)
+- Calibrate L_ring_ν against neutrino mass eigenstates (R49
+  Family A or candidates from R61)
+
+This was omitted in earlier tracks for laziness, not by design,
+and must not be omitted again.
+
+---
+
 ## Next-track pool
 
-Candidates after Track 4.  Sequence decided as we go.
+Candidates after Track 5.  Sequence decided as we go.
 
 **a.** (absorbed into Track 2)
 

@@ -150,7 +150,7 @@ shears (s_e = 2.004) saturate the e-tube and block this
 architecture on model-E geometry (F41) — R60 is scoped to find
 whether a modified spectrum mechanism can coexist with it.
 
-### R60. Metric-11 — particle spectrum on R59's α-derivable 11D architecture  **Active — Tracks 1–3 complete**
+### R60. Metric-11 — particle spectrum on R59's α-derivable 11D architecture  **Active — Tracks 1–4 complete**
 **Study:** [`R60-metric-11/`](R60-metric-11/)
 **Type:** theoretical + compute
 **Depends on:** R59, R53, R49, R54, model-E
@@ -160,26 +160,27 @@ R59's α architecture and reproduces the model-E particle spectrum?
 
 Track 1 built solver infrastructure (F1–F4).  Track 2 mapped the
 e-sheet: ghost-order requires s_e ≥ 3/2, signature requires
-s_e · ε_e ≤ 3/√2 (exact identity); overlap is a bounded
-thin-torus triangle (F5–F10).  Track 3 mapped the p-sheet
-analogously and found the joint bound is
-**(s_e ε_e)² + (s_p ε_p)² ≤ 7/2** (each active tube spends one
-unit of the 9/2 single-tube budget).  Model-E's p-sheet
-(0.55, 0.162) sits inside Region D for 3 of 4 e-anchors tested.
+s_e · ε_e ≤ 3/√2 (F5–F10).  Track 3 mapped the p-sheet jointly
+with the e-sheet: joint bound **(s_e ε_e)² + (s_p ε_p)² ≤ 7/2**
+(F11–F16).  Critically discovered that R59 F59's α universality
+breaks once internal shears are on (α_p/α_e drifts to ~9× at
+some anchors).
 
-**Major negative finding (F15):** R59 F59's α universality
-(α_e = α_p) and α magnitude (= observed α) are properties of the
-*shearless* clean Ma metric.  As soon as the internal shears
-needed for the particle spectrum are turned on, both universality
-and magnitude break — α_p/α_e ranges from 1.05 (best) to 8.78
-(worst) across tested geometries; α magnitudes off by factors
-0.5–12×.  The R59 F59 architecture is not directly shear-compatible.
+Track 4 tested per-sheet diagonal compensation (k_e ≠ k_p) as a
+rescue: free knobs (L_e, k_e, L_p, k_p), targets (m_e, m_p, α_e=α,
+α_p=α).  **Result: rescue works in 66% of (ε, s) configurations
+tested** with both α targets met exactly and signature OK
+(F17–F20).  Two structural failure modes: (a) joint signature
+breach when s·ε ≈ 2; (b) **α decoupling pathology at the R53
+generation resonance** (s = n_r/n_t for the reference mode), where
+the e-tube and shear-induced e-ring contributions to G⁻¹[:, t]
+cancel and α_e = 0 at any k.  Implication: model-F is viable but
+must avoid both pathologies, and R59 F59's k = 1/(8π) is no longer
+a global constant — it's a per-configuration derived value.
 
-Three forward paths under discussion: (a) accept approximate
-universality at small (sε); (b) shear-aware retune of the α
-knobs; (c) analytical derivation of the joint bound and the
-universality-breaking formula first.  Paused for strategy
-decision.
+Recommended next: pool item **f** (analytical derivation of the
+α-decoupling locus) before proceeding to Track 5 (ν-sheet
+inclusion) so we know which (ε, s) regions to avoid.
 
 ### R55. α consistency — Ma-S coupling derivation  **Tracks 1,3 done; Track 4 paused**
 **Study:** [`R55-alpha-consistency/`](R55-alpha-consistency/)

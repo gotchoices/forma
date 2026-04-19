@@ -25,7 +25,7 @@
 ## Findings
 - When a study is complete, perform the writeup:
 - Keep findings and outputs correlated to their track
-- State the bare results in an understandable way
+- State the results in a clear, simple, understandable way -- no jargon
 - Also explain how each result affects the applicable hypothesis (helps or hurts)
 - Review meaning of variables, terminology where not already obvious
 - Interpret the results as can be done without guessing
