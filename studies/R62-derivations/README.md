@@ -1,6 +1,6 @@
 # R62: Derivations
 
-**Status:** Tracks 1–7 complete (Program 1)
+**Status:** Tracks 1–9 complete (Program 1)
 **Type:** theoretical (analytical, no scripts required)
 **Depends on:** [primers/kaluza-klein.md](../../primers/kaluza-klein.md)
   (KK derivation of Lorentz force from 5D metric), R59 (Clifford
@@ -1572,6 +1572,137 @@ lemmas F25–F28 at the end.
 
 ---
 
+#### Track 9 — Klein quantization at non-Planck scales (promoted from pool item **j**)
+
+**Goal.**  Address (or formally postpone) the mass
+hierarchy issue in MaSt's Kaluza–Klein-style
+derivation.  Document (a) why MaSt's compact tori are
+sized at the Compton scale (giving ~MeV particles)
+rather than at the Planck scale (giving ~10¹⁹ GeV
+particles as in traditional KK), (b) what mathematical
+changes — if any — this entails relative to traditional
+KK, (c) what remains open about the choice of scale
+itself, and (d) how this sits relative to GRID's
+natural Planck-scale lattice.
+
+**Why this is the right next track.**  Tracks 1–6
+established the mass and charge formulas from a photon
+on a 2-torus.  Track 8 extended them to two 2-tori
+with cross-shears.  In every one of these derivations,
+the compact radius R appeared as a **free parameter**
+that sets the overall mass scale.  No derivation in
+Tracks 1–8 places R at the Planck scale.  A reader
+with a traditional KK background may reasonably ask:
+"But KK is supposed to give Planck-scale masses — what
+is different here?"  Track 9 provides the answer.
+
+**Why this is low risk.**  This track does *not*
+attempt to solve the hierarchy problem (why R >>
+ℓ_Planck) or derive R from first principles.  It
+documents the mathematical situation: (i) the
+KK-on-torus machinery of Tracks 2–8 is local and
+scale-independent — it works for any positive R; (ii)
+MaSt's R is an *empirical input* tied to the observed
+particle spectrum, not a Planck-scale consequence;
+(iii) the hierarchy between R and ℓ_Planck is
+documented as an inherited constraint, with pointers
+to the phenomenological mechanisms (large extra
+dimensions, warping, dynamical generation) that might
+eventually produce it.  Likely outcome stated up front:
+documented, not derived.
+
+**Strategy.**
+
+1. **What Klein quantization is.**  Define the compact-
+   momentum quantization rule p_a = n_a ℏ / R_a as the
+   standing-wave condition on a circle of circumference
+   L_a = 2π R_a.  Trace the role of R through Tracks
+   1–8 and show that R enters only as an overall mass
+   scale — specifically, the mass formula F7 scales as
+   m ∝ 1/R for fixed winding numbers.
+
+2. **Why the derivation is local.**  Show explicitly
+   that none of the KK derivations in Tracks 1–8 uses
+   the value of R — they use only (a) periodicity, (b)
+   the metric, and (c) the standing-wave quantization
+   rule.  Klein quantization is a **local effective
+   field theory** on the compact manifold; it is
+   insensitive to the ratio R / ℓ_Planck.
+
+3. **Why traditional KK uses R ~ ℓ_Planck.**  Document
+   the historical reason: in pure gravitational KK, the
+   only dimensional scale available is G_N, so R is
+   set by G_N and produces Planck-mass states.  MaSt
+   does *not* inherit this constraint because it is a
+   bosonic-phase theory on GRID, not a pure
+   gravitational theory; its compact scale is set by
+   the dynamics that produces the tori, not by G_N.
+
+4. **MaSt's empirical scale.**  State the compact radii
+   required to reproduce the electron mass
+   phenomenologically: R_e ~ ℏ / (m_e c) ≈ λ_Compton,
+   which is ~10²² ℓ_Planck.  This is a statement about
+   *inputs*, not a derivation.
+
+5. **UV consistency check.**  Check that KK modes with
+   winding numbers ≲ R / ℓ_Planck remain below the
+   Planck cutoff.  Since R ~ 10²² ℓ_Planck, the KK
+   tower has ~10²² usable modes before UV physics
+   kicks in.  This validates the EFT treatment of
+   Tracks 1–8 for all phenomenologically relevant modes.
+
+6. **The hierarchy question.**  Identify the open
+   problem: what mechanism sets R ~ 10²² ℓ_Planck?
+   Reference (but do not solve) the standard candidates
+   — large extra dimensions, warping, dynamical
+   compactification — and document MaSt's stance:
+   R is inherited from the empirical particle spectrum
+   and will be addressed elsewhere (not in Program 1).
+
+7. **Relation to GRID.**  Explain that GRID's natural
+   scale is the Planck lattice spacing, and MaSt's
+   compact tori are an *emergent* structure at a much
+   larger scale.  The decoupling between GRID's UV
+   scale and MaSt's IR scale is consistent — indeed
+   expected — for any Wilsonian EFT-on-lattice setup.
+   What remains open on the GRID side is the specific
+   dynamical mechanism that produces the tori at the
+   observed scale.
+
+**Deliverable.**  `derivation-9.md` — a documentation
+track in the same format as the earlier derivations,
+with the KK scaling analysis explicit, the empirical
+scale of MaSt's tori identified, the UV consistency
+check performed, and the hierarchy question formally
+documented as open.  One concluding lemma (F29)
+summarizing the scale-invariance of Tracks 1–8.
+
+**Acceptance criteria.**
+
+- The scale-independence of the KK mass formula is
+  made explicit (that no derivation in Tracks 1–8
+  uses R / ℓ_Planck).
+- MaSt's empirical compact scale is stated (Compton,
+  not Planck) and cited against the electron mass.
+- The UV consistency check (mode count below Planck)
+  is performed numerically.
+- The hierarchy question is documented as an open
+  inherited constraint, with pointers to the standard
+  solution candidates (no new claim of solution).
+- The relationship to GRID's Planck-scale lattice is
+  stated, with the decoupling framed as standard EFT.
+- GRID-compatibility throughout (uses only the bosonic
+  KK structure established in Tracks 1–8).
+
+**Dependencies.**  Tracks 1–8 (specifically F7 / F11
+for the mass formula and F25 for its two-torus
+extension).  Independent of Track 7.
+
+**Status.** Complete.  See [derivation-9.md](derivation-9.md);
+lemma F29 at the end.
+
+---
+
 ### Next-track pool
 
 Candidates after Track 1. Sequence decided as we go. Each
@@ -1622,13 +1753,16 @@ unaddressable if f does not. Its difficulty is gated entirely
 by f.
 
 **h. Cross-shears between two 2-tori (4D internal).**
-Extend the geometry from one 2-torus to two 2-tori with
-cross-shears between them. Show that compound modes (modes
-spanning both tori) emerge as eigenstates of the joint metric.
-This is the analytical version of what R54 did numerically.
-Predicts that the structural results (which compound modes
-exist, how cross-shears mediate inter-sheet couplings) follow
-from the metric algebra.
+**→ Promoted to Track 8; see [derivation-8.md](derivation-8.md)
+and lemmas F25–F28.**  Extended the geometry from one 2-torus
+to two 2-tori with cross-shears between them.  Derived the
+generalized mass formula m² c² = h^{ab} p_a p_b on the 4×4
+internal metric, the Schur-complement block-inverse structure,
+the mechanism by which cross-shears produce mass-eigenstate
+mixing between sheets (compound modes), and the recovery of
+Track 2 in the zero-cross-shear limit.  This is the analytical
+version of what R54 did numerically, for two sheets.
+GRID-native.
 
 **i. Full 6D MaSt with three 2-tori and all cross-shears.**
 The final extension: three 2-tori (electron, neutrino, proton
@@ -1639,12 +1773,20 @@ place, but it is the deliverable that proves the program
 reaches all the way to the existing model-E predictions.
 
 **j. Klein quantization at non-Planck scales.**
-Address (or formally postpone) the mass hierarchy issue.
-Document why MaSt's compact dimensions are sized to give ~MeV
-particles rather than ~GeV (Planck) particles, what
-mathematical changes this entails relative to traditional KK,
-and what is still open about the choice. Likely outcome:
-documented as an inherited constraint, not solved here.
+**→ Promoted to Track 9; see [derivation-9.md](derivation-9.md)
+and lemma F29.**  Documented that every derivation in
+Tracks 1–8 is scale-invariant in the compact radius R:
+the dimensionless mass formula μ² depends only on the
+shape parameters (ε, s, cross-shears) and winding
+numbers, so R factors out entirely and works at any
+scale.  The empirical scale R ~ 10²² ℓ_Planck is
+inherited from the observed electron mass, not derived.
+UV consistency check confirms the validity window
+extends ~10²² winding numbers before the Planck cutoff
+is reached.  The hierarchy question itself (why R ≫
+ℓ_Planck) is formally documented as an open GRID-layer
+problem, outside the scope of Program 1.
+GRID-native.
 
 **z. Closeout for Program 1.** Synthesize the tracks. If mass
 + charge + Lorentz force are derived (a–e succeed), promote
@@ -1721,6 +1863,8 @@ Objectives section above and motivates the sequence
 | derivation-7a.md | Track 7a — spin on T² via metric route (Killing vectors + holonomy); result: metric alone does not produce spin-½; GRID-native |
 | derivation-7b.md | Track 7b — spin on T² via CP field-polarization route; result: WvM ratio rule s = n_t/n_r; GRID-native |
 | derivation-7c.md | Track 7c — spin on T² via 6D Dirac KK reduction; result: all matter modes uniformly spin-½; not GRID-native (requires Dirac–Kähler bridge, open) |
+| derivation-8.md | Track 8 — cross-shears between two 2-tori: generalized mass formula m² c² = h^{ab} p_a p_b on 4×4 internal metric, Schur-complement block inverse, compound modes, recovery of Track 2 at zero cross-shear (complete); GRID-native |
+| derivation-9.md | Track 9 — Klein quantization at non-Planck scales: scale-invariance of the KK-on-torus derivations (F29), UV consistency check, hierarchy question documented as inherited open problem (complete); GRID-native |
 | scripts/ | Optional verification scripts (not expected to be needed for analytical tracks) |
 
 Future programs (Program 2, Program 3, …) will add their own
