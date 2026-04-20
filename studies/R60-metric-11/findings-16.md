@@ -332,14 +332,15 @@ The only genuine open question is why the Z₃ mechanism applies
 on p and not on e or ν.  Physical candidates exist; a closed
 derivation is not yet in hand.
 
-## F95. Recommendation — move to model-G
+## F95. Implications for the working model
 
-**Model-G definition** (proposed):
+**The (3, 6) interpretation** — the architectural package that
+Track 16 supports — combines:
 
 - All of model-F's architecture (single-k symmetry, σ_ra
   structural cancellation, natural-form α at σ_ta = √α,
-  σ_at = 4πα, g_aa = 1)
-- **(3, 6) proton** replacing (1, 3) (Track 15 baseline)
+  σ_at = 4πα, g_aa = 1) unchanged
+- **(3, 6) as the primary proton mode** (Track 15 baseline)
 - **Composite α rule**: α_sum = n_et − n_pt/gcd(|n_pt|,|n_pr|) + n_νt
 - **Z₃ selection rule**: free p-sheet modes require n_pt ≡ 0 (mod 3)
 - **Nuclear scaling**: n_pt = 3A, n_pr = 6A, n_et = 1 − Z
@@ -348,12 +349,12 @@ derivation is not yet in hand.
   composite" with gcd-divided α — same predictions as model-F
   but consistent with the Z₃ selection
 - **Open**: derivation of p-sheet-specificity of Z₃ confinement
-  (inherits as pool item, model-G-k)
+  (pool item **k**; Track 17 addresses this)
 
-Model-G's advantages over model-F:
+Advantages over model-F's bare (1, 3) proton reading:
 
 - **Derivation 7b's ratio rule is compatible** (both (3, 6)
-  and (1, 2) have spin ½); model-F's (1, 3) has spin ⅓ under
+  and (1, 2) have spin ½); bare (1, 3) has spin ⅓ under
   the ratio rule, which is wrong for a proton
 - **Quark interpretation** is first-class: (1, 2) quarks are
   confined, (3, 6) is the proton, (6, 12) is the first
@@ -361,25 +362,32 @@ Model-G's advantages over model-F:
 - **Physical magnetic moment and charge radius** can be
   computed from the three-quark structure (Track 15 F86 notes
   R47 Track 7's μ_p ≈ 3.0 μ_N and R ≈ 1.09 fm — much better
-  than model-F's bare values)
+  than bare-mode values)
 - **Nuclear physics** is slightly better on heavy nuclei
   (Track 15 Phase 3)
 - **Open task (Z₃ on p-sheet specifically)** is a single
   physical question, not an architectural unknown
 
-Promotion to model-G would require:
+Adopting the (3, 6) interpretation as the working model would
+require:
 
-1. Writing `models/model-G.md` as a migration document from
-   model-F
+1. Updating `models/model-F.md` (or its successor) with the new
+   proton mode, composite α rule, Z₃ selection rule, and nuclear
+   scaling law
 2. Re-running Tracks 10–13 with the Z₃ selection + composite α
    rule to confirm inventory accuracy is preserved
 3. Addressing R47 Track 7's charge-radius and magnetic-moment
    predictions (which come almost for free from the 3-quark
    interpretation)
 
-None of these are needed *for the Track 16 finding*; they are
-the migration tasks if the user decides to move the working
-model.
+Whether this becomes an in-place update to model-F or a new
+model designation is a naming decision deferred pending the
+outcomes of Tracks 17 (e-sheet exemption proof) and 18 (ν-sheet
+3-phase vs 3-mode investigation).  If those tracks leave the
+rest of the architecture intact, an in-place model-F update is
+natural.  If they uncover genuinely new architectural content
+(e.g., a composite-ν interpretation), a new model designation
+may be warranted.
 
 ## Status
 
@@ -390,5 +398,6 @@ open derivation with physical candidates.
 
 (3, 6) proton has moved from "mechanically viable alternative"
 (Track 15 finding) to "mechanism-backed replacement candidate".
-Model-G promotion is the natural next step pending user
-decision.
+Tracks 17 and 18 are next — they close the remaining open
+questions (e-sheet exemption proof, ν-sheet interpretation)
+before any working-model update is made.

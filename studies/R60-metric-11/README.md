@@ -1180,6 +1180,331 @@ Z₃-compatible alternatives within a tuple-search window
 
 ---
 
+### Track 17 — e-sheet single-phase proof
+
+**Motivation.**  Track 16 closed the Z₃ confinement argument on
+the p-sheet: a single (1, 2) real-field mode has 2ω density
+fluctuation; three copies at 120° offsets cancel it; therefore
+(3, 6) is the minimum free composite.  But the argument is
+*generic* — any real-field KK mode has the 2ω fluctuation.  If
+the rule applied universally, the electron (a (1, 2) mode on
+the e-sheet) would be confined too, which contradicts
+observation.
+
+Track 16 Phase 4 documented three candidate mechanisms that
+could suppress Z₃ confinement specifically on the e-sheet:
+geometry (extreme s·ε), scale suppression, and σ_ta sign
+structure.  Track 17 makes the geometry argument **quantitative**.
+
+**Working hypothesis.**  The Z₃ binding energy U_bind(ε, s) is a
+computable function of the sheet's geometry.  On the p-sheet
+(s·ε ≈ 0.089, near-diagonal) it gives the −3/2 per-triplet
+binding that Track 16 Phase 3 found.  On the e-sheet (s·ε ≈ 795,
+shear-saturated) the 2ω source term is either redirected into
+propagating ring-modes (effectively radiated away) or reduced
+by a factor that scales with 1/(s·ε)^α for some exponent α,
+bringing U_bind to zero at the extreme.
+
+If this picture is right, there is a threshold sheet geometry
+above which Z₃ binding is absent — a "phase boundary" between
+confined and free single-strand modes.  Electrons and neutrinos
+sit on one side, quarks on the other.
+
+**Goal.**  Derive a quantitative expression for U_bind(ε, s) on
+a generic sheet and confirm:
+
+1. U_bind(p-sheet) ≈ −3/2 (or the corresponding back-reaction
+   energy reduction of Track 16 Phase 3)
+2. U_bind(e-sheet) ≈ 0 (or bounded by << p-sheet value)
+3. A clear threshold (sharp or smooth) separates the two
+4. ν-sheet falls on the unconfined side for reasons consistent
+   with observation (free neutrinos)
+
+**Scope — 3 phases, ~half day.**
+
+### Phase 1 — Sheet-dependent 2ω source strength
+
+**Question:** how does the amplitude of the 2ω density
+fluctuation depend on sheet geometry (ε, s)?
+
+**Method:**
+
+1. Generalize Track 16 Phase 1's ρ_Q computation to arbitrary
+   (ε, s).  On a sheared sheet, the (1, 2) mode wavefunction in
+   Fourier form has modified dispersion through the inverse
+   metric G⁻¹.  Compute ρ_Q(t) at the peak spatial point for a
+   (1, 2) mode on a parameterized (ε, s, k) geometry.
+2. Extract the 2ω Fourier amplitude A_2ω(ε, s) as a function.
+   Plot over a grid spanning the three sheets' regimes:
+   - (ε, s) = (0.55, 0.16) [p-sheet]
+   - (ε, s) = (2, 0.022) [ν-sheet]
+   - (ε, s) = (397, 2.004) [e-sheet]
+   - Plus sampled points to show the shape of A_2ω(ε, s)
+3. Report: closed-form or semi-analytic expression for A_2ω(ε, s);
+   numeric values on each of the three sheets.
+
+**Acceptance:** A_2ω is well-defined and sheet-dependent.  The
+e-sheet value is either zero (proven) or dramatically smaller
+than the p-sheet (quantified).
+
+### Phase 2 — Binding energy threshold
+
+**Question:** given the sheet-dependent 2ω source, what is the
+binding energy for three-copy Z₃ configurations on each sheet?
+Where is the confined/free threshold?
+
+**Method:**
+
+1. Extend Track 16 Phase 3's U(φ_1, φ_2) calculation to include
+   the A_2ω(ε, s) weighting.  The penalty becomes
+
+       U_total(ε, s) = (A_2ω(ε, s))² · U_phases({φ_k})
+
+   Under Z₃-symmetric configuration, U_total = −(3/2) ·
+   (A_2ω(ε, s))².
+2. Plot U_bind(ε, s) over the (ε, s) plane.  Identify the
+   threshold contour where U_bind is, say, 1% of the p-sheet
+   value (chosen to be below any reasonable natural-form
+   binding-energy threshold).
+3. Place the three sheets on the plot.  Confirm that
+   p-sheet is in the strongly-binding region; e- and ν-sheets
+   are in the unbinding region (or, for ν, in the suppressed
+   region compatible with free propagation).
+
+**Acceptance:** a clean map of U_bind(ε, s) that places e-sheet
+below threshold, p-sheet above, and ν-sheet in whichever
+region is consistent with free propagation.
+
+### Phase 3 — Mechanism classification
+
+**Question:** of the three candidate mechanisms (geometry,
+scale, sign), which one does the quantitative analysis
+identify as responsible for the e-sheet exemption?
+
+**Method:**
+
+1. Decompose A_2ω(ε, s) into its contributing factors:
+   - Geometric prefactors from the sheet block's inverse-metric
+     entries
+   - Scale factors from L_ring (converting dimensionless mode
+     frequencies to physical ω)
+   - Sign-dependent factors from σ_ta couplings
+2. Identify which factor is responsible for the e-sheet's
+   suppression.  Most likely candidate: the (1 + (s·ε)²) entry
+   in the sheet block, which diverges at large s·ε and absorbs
+   the 2ω source into a spectator mode.
+3. Document: the mechanism is **geometric** (Phase 3 Option 1
+   if that's the answer); or **scale** (Option 2); or **sign**
+   (Option 3); or some mixture.
+
+**Acceptance:** a clear, derivation-level explanation of why
+e-sheet is Z₃-exempt, grounded in the sheet block's functional
+form.
+
+## Implementation plan
+
+**New scripts (under `scripts/` with `track17_` prefix):**
+
+- `track17_phase1_source.py` — A_2ω(ε, s) computation
+- `track17_phase2_binding.py` — U_bind(ε, s) map
+- `track17_phase3_mechanism.py` — decomposition + interpretation
+
+**Reused from existing scripts (no modification):**
+
+- `track1_solver.py` — metric builder
+- `track7b_resolve.py` — augmented metric
+- `track16_*.py` — phase-offset machinery
+
+**Acceptance criteria for Track 17 as a whole:**
+
+- Quantitative U_bind(ε, s) map produced
+- e-sheet confirmed in the unbinding region
+- p-sheet confirmed in the strongly-binding region
+- ν-sheet placed consistent with either free propagation
+  (Track 18 pursues the alternative interpretation)
+- Mechanism classification: geometric / scale / sign identified
+
+**What Track 17 does NOT do:**
+
+- Doesn't resolve the ν-sheet three-phase question
+  (Track 18's job)
+- Doesn't re-run the inventory or update model-F
+  (Track 19 / closeout's job)
+
+---
+
+### Track 18 — ν-sheet 3-phase vs 3-mode investigation
+
+**Motivation.**  Neutrino oscillation phenomenology has a
+strongly 3-phase flavor: three mass eigenstates, PMNS mixing
+matrix with apparent Z₃-like structure, three active flavors.
+Current model-F / R61 treats this as three *separate* modes
+on the ν-sheet: R61 candidate #1 uses the triplet
+(+1, +1)(−1, +1)(+1, +2) — three distinct (n_t, n_r) modes.
+
+A user observation raised the alternative: maybe the three
+neutrino mass eigenstates are three **phase-rotated copies**
+of a single (1, 2) or (1, 1) mode on the ν-sheet, bound at 120°
+Z₃ offsets — the same structure as (3, 6) = three (1, 2)
+quarks on the p-sheet.  Under this reading, neutrinos would be
+"ν-quark" composites rather than fundamental individual modes.
+
+The two pictures are:
+
+- **(a) Composite ν** — three phase-rotated ν-quarks at Z₃
+  offsets.  Single composite tuple (3, ?) on the ν-sheet.  The
+  three mass eigenstates arise from perturbative splittings
+  of the degenerate Z₃ components.
+- **(b) Three-mode ν** — three distinct (n_t, n_r) tuples with
+  different windings.  Current model-F / R61 picture.
+
+Track 18 asks: which picture is favored by neutrino
+phenomenology, and can each be made consistent with observation?
+
+**Goal.**  Determine whether the ν-sheet is Z₃-binding (a) or
+three-mode (b), or both (a degenerate case where the two
+pictures coincide at the observed masses).
+
+**Scope — 4 phases, ~half to full day.**
+
+### Phase 1 — Composite-ν mass and degeneracy check
+
+**Question:** can a single bare (1, 2) Z₃-composite on the
+ν-sheet land near the observed ν mass scale (~0.05 eV)?
+
+**Method:**
+
+1. On Track 12's ν-sheet geometry (ε_ν = 2, s_ν = 0.022,
+   L_ring_ν ≈ 1.96 × 10¹¹ fm), compute the mass of a (1, 2)
+   ν-quark.  Then (3, 6) composite mass = 3 × quark.
+2. Alternative bare modes: (1, 1), (1, 3) ν-quarks.
+3. Check: does the bare composite sit near eV scale?  Or does
+   it need L_ring_ν adjustment, and if so, does the adjustment
+   break the electron / proton sheet symmetry?
+4. Report: which bare ν-quark mode, if any, gives a Z₃-
+   composite at the observed ν mass scale.
+
+**Acceptance:** bare composite mass accessible by reasonable
+geometry adjustment, or ruled out.
+
+### Phase 2 — Mass eigenstate splitting
+
+**Question:** if the three ν mass eigenstates are the
+Z₃-bound phase components of a single composite, what
+perturbation gives them the observed Δm²₂₁ ≈ 7.4 × 10⁻⁵ eV²
+and Δm²₃₁ ≈ 2.5 × 10⁻³ eV²?
+
+**Method:**
+
+1. Model the Z₃ configuration as three degenerate copies
+   perturbed by a weak coupling that lifts the degeneracy.
+   Natural candidates:
+   - **Cross-sheet σ coupling** — pool item **h** structure
+     where ν-sheet couples to e or p sheets, splitting the
+     three copies
+   - **Geometric asymmetry** — small ε or s perturbation
+     breaking Z₃ symmetry (if ε_ν, s_ν are "true" bare values
+     but an effective potential breaks symmetry)
+   - **Mode-dependent back-reaction** — Phase 3 Track 16
+     showed Z₃-bound configurations have zero 2ω fluctuation,
+     but higher harmonics might still couple weakly
+2. For each candidate, compute the predicted Δm² ratio and
+   compare to observed 33.6.
+3. For the composite-ν picture to be viable, at least one
+   perturbation mechanism must produce the observed ratio.
+
+**Acceptance:** either a mechanism produces Δm²₃₁/Δm²₂₁ ≈ 33.6
+under the composite picture, or this is documented as a
+blocker for interpretation (a).
+
+### Phase 3 — PMNS mixing matrix structure
+
+**Question:** does the composite-ν picture naturally produce
+a PMNS-like mixing matrix, or does it predict a specific form
+that conflicts with observation?
+
+**Method:**
+
+1. Under (a), the three Z₃-bound phase components are related
+   by U(1) rotations.  The mass eigenstates (after splitting)
+   are related to the flavor eigenstates by a unitary
+   transformation.  What does Z₃ symmetry say about this
+   matrix?
+2. Observed PMNS has θ₁₂ ≈ 33°, θ₂₃ ≈ 49°, θ₁₃ ≈ 8.5°, CP
+   phase δ_CP ≈ −90° (or −150°, measurement-dependent).
+3. Under pure Z₃ symmetry, the natural ansatz is the
+   "tribimaximal" or "democratic" mixing matrix — which
+   historically predicted θ₁₂ = 35.3°, θ₂₃ = 45°, θ₁₃ = 0.
+   Close for θ₁₂, θ₂₃; wrong for θ₁₃ (which is ≈ 8.5°, not 0).
+4. Under (b) (three-mode picture), PMNS is structurally free
+   and any observed values are accommodatable.
+
+**Acceptance:** either composite picture matches PMNS within
+measurement uncertainty (possibly with perturbative
+corrections), or the mismatch is documented as evidence against
+(a).
+
+### Phase 4 — Verdict and model implications
+
+**Method:** summary table comparing (a) composite-ν and (b)
+three-mode ν on:
+
+- Mass scale (bare composite near 0.05 eV?)
+- Δm² ratio (derivable from a perturbation?)
+- PMNS structure (Z₃-forced vs free)
+- Oscillation phenomenology (can both explain vacuum
+  oscillation probabilities?)
+- Compatibility with R61 candidates (if (a) wins, R61 mode-
+  triplet candidates become redundant; if (b) wins, R61 stays)
+- Compatibility with Track 15 composite α rule (if (a), is
+  there a "ν-composite α" rule analogous to proton's?)
+
+**Acceptance:** clear verdict on which picture is favored,
+with the opposite documented as a viable alternative if not
+ruled out.
+
+## Implementation plan
+
+**New scripts (under `scripts/` with `track18_` prefix):**
+
+- `track18_phase1_mass.py` — composite ν mass check
+- `track18_phase2_splitting.py` — Δm² perturbation analysis
+- `track18_phase3_pmns.py` — PMNS matrix structure
+- `track18_phase4_verdict.py` — summary comparison
+
+**Reused from existing scripts (no modification):**
+
+- `track1_solver.py` — metric builder
+- `track13b_nu_sweep.py` — ν-candidate helpers
+- `track16_*.py` — Z₃ binding machinery
+
+**Acceptance criteria for Track 18 as a whole:**
+
+- Phase 1 determines whether composite ν mass is accessible
+- Phase 2 determines whether Δm² ratio is reproducible
+- Phase 3 determines whether PMNS is compatible
+- Phase 4 renders a verdict: (a) wins / (b) wins / both viable
+
+**What Track 18 does NOT do:**
+
+- Doesn't change model-F
+- Doesn't commit to a new neutrino structure until verdict is
+  in and user approves
+
+**Possible outcomes:**
+
+- **(a) wins:** ν is a Z₃ composite.  Model has genuine new
+  architectural content (Z₃ on two sheets, novel PMNS
+  interpretation).  Strong argument for model-G designation.
+- **(b) wins:** current model-F / R61 ν picture is correct.
+  Only ν-sheet-specific architectural change is that it's
+  Z₃-exempt (Track 17's result).  Update model-F in place.
+- **Both viable:** document as alternative interpretations;
+  pick one as primary based on simplicity.  Probably model-F
+  update with the alternative as a footnote.
+
+---
+
 ### Track 14 — Analytical derivation of k = 1.1803/(8π)
 
 **Goal.**  Derive the single-k value that the joint solver
