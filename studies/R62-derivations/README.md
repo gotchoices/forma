@@ -1,6 +1,6 @@
 # R62: Derivations
 
-**Status:** Tracks 1–9 complete (Program 1)
+**Status:** Tracks 1–10 complete (Program 1)
 **Type:** theoretical (analytical, no scripts required)
 **Depends on:** [primers/kaluza-klein.md](../../primers/kaluza-klein.md)
   (KK derivation of Lorentz force from 5D metric), R59 (Clifford
@@ -26,6 +26,77 @@ geometric machinery.
 
 Future programs (any number) will be added as new sections below
 when needed.
+
+---
+
+## Remaining work (Program 1)
+
+Tracks 1–10 have closed the **kinematic** arc of Program 1:
+mass, charge, Lorentz force, two-torus and three-torus
+extensions, and scale-invariance.  Three items remain, to be
+taken in order:
+
+1. **Resolve the choice of spin mechanism.**  Derivation 7
+   produced three alternatives: 7a (metric route — spin-½
+   not determined by T² metric alone), 7b (WvM CP
+   polarization ratio rule — s = n_t/n_r, rules out
+   (1, 3) as spin-½), 7c (6D Dirac KK reduction —
+   uniformly spin-½, not GRID-native without a Dirac–
+   Kähler bridge).  A fourth GRID-native path via non-
+   abelian closure of cross-sheet Killing generators
+   (hypothesized in 7a F23) is also open but not yet
+   executed.  A discriminator is needed — candidates
+   include the cross-sheet T⁶ fit against R54,
+   direct wave-equation calculation of the rotational
+   transformation properties of a specific compound
+   mode, or an experimental angle (e.g. do (1, 3)
+   proton modes survive the WvM rule?).  Until a
+   discriminator selects, the three alternatives
+   coexist and both 7b-consistent and 7c-consistent
+   phenomenology should be tracked in the R-studies.
+
+2. **Magnetic moment — tree level only (pool g).**  Gated
+   by step 1.  Once a spin mechanism is selected, derive
+   the tree-level g = 2 from the coupling of the
+   selected spin state to an external EM field on the
+   torus geometry of Tracks 2–10.  The structure is
+   constrained by Lorentz covariance: charge + spin →
+   magnetic moment is automatic, and the proportionality
+   coefficient g is determined by the spin-½ coupling.
+   **The anomaly** (g − 2) is a conventional QED
+   radiative-correction calculation that applies as-is
+   in the S-domain and does not need to be rederived in
+   MaSt: it depends only on the 4D particle data
+   (charge e, mass m_e, spin ½), which Tracks 1–10
+   already supply, and uses loop integrals in 4D
+   Minkowski that are indifferent to the geometric
+   origin of the fields.  **A potential MaSt-specific
+   correction** exists in principle: if KK-tower modes
+   below the measurement scale contribute additional
+   loop pieces, the predicted g − 2 could differ from
+   the Standard-Model QED value.  R50/R54 filter
+   constraints make the relevant tower finite and
+   tractable; this is an R-study question
+   (phenomenological test of the MaSt spectrum against
+   the measured electron g − 2), not a Program 1
+   derivation.  It could be added as a follow-on study
+   once pool g is done.
+
+3. **Program 1 closeout (pool z).**  After steps 1 and
+   2, synthesize Tracks 1–10 (+ g) into a primer
+   appendix or standalone primer ("MaSt as photon-on-
+   torus").  Consolidate lemmas F1–F33 (+ g-lemma) with
+   consistent notation, explicitly flag what is
+   derived vs inherited (compact scale, empirical sign
+   vector (σ_e, σ_ν, σ_p), choice of spin mechanism
+   if 7b vs 7c was chosen by fit rather than by
+   derivation), and document the remaining open
+   problems at the GRID layer (emergent compactification
+   producing the tori at the observed scale) that
+   pass to later programs.
+
+Everything in Program 1 downstream of the spin decision
+waits on step 1.  Steps 1–3 are the only items left.
 
 ---
 
@@ -1703,6 +1774,160 @@ lemma F29 at the end.
 
 ---
 
+#### Track 10 — Full 6D MaSt with three 2-tori and all cross-shears (promoted from pool item **i**)
+
+**Goal.**  Carry the photon-on-torus derivation from
+the two-sheet T⁴ of Track 8 to the full **three-sheet
+T⁶** that MaSt's model-E actually uses: three 2-tori
+(electron, neutrino, proton) with all 12 inter-sheet
+cross-shear entries.  The deliverables are (a) the
+mass formula m² c² = h^{ab} p_a p_b on the 6×6
+internal metric, (b) an iterated-Schur-complement form
+of h^{-1} that makes the sheet-by-sheet structure
+explicit, (c) the universal charge formula Q = e(σ_e
+n_1 + σ_ν n_3 + σ_p n_5) recovered as three tube-
+couples conventions acting together, (d) the
+six-term generalized Lorentz force, and (e) a mode
+catalog that connects winding configurations to the
+particles MaSt's model-E predicts.
+
+**Why this is the right next track.**  Tracks 1–9
+close the *kinematic* arc of Program 1 up through two
+sheets and establish scale-invariance.  Track 10
+consolidates to the actual three-sheet geometry MaSt
+uses.  The algebra is a straightforward iteration of
+Track 8 (one more Schur-complement step), so the risk
+is low.  GRID-compatibility is preserved throughout.
+
+**Why this is not gated by spin.**  The kinematic
+content of Track 10 (mass, charge, Lorentz force,
+compound modes) depends only on the bosonic metric
+and Killing-vector machinery already established.
+The spin mechanism (Track 7 trilemma) labels the
+modes but does not enter the mass/charge derivation.
+Whichever of 7a/7b/7c is eventually selected, Track
+10's formulas are unchanged.
+
+**Strategy.**
+
+1. **Setup.**  12D spacetime M⁴ × T_e × T_ν × T_p with
+   MaSt's standard compact-index convention: y^1, y^2
+   = electron (tube, ring), y^3, y^4 = neutrino
+   (tube, ring), y^5, y^6 = proton (tube, ring).
+   Internal metric h_{ab} is 6×6 symmetric, a, b ∈
+   {1, 2, 3, 4, 5, 6}.
+
+2. **Parameter count.**  A 6×6 symmetric matrix has
+   6·7/2 = 21 independent entries.  Decompose as
+   9 intra-sheet (three 2×2 blocks H_e, H_ν, H_p,
+   three entries each) + 12 inter-sheet (three 2×2
+   cross-shear blocks C_{eν}, C_{ep}, C_{νp}, four
+   entries each).  The 12 cross-shear entries are the
+   new degrees of freedom beyond Track 8.
+
+3. **Killing structure.**  Under the cylinder
+   condition on all six compact directions, there are
+   six commuting abelian Killing vectors ξ_a = ∂/∂y^a
+   (a = 1..6) with algebra u(1)⁶.  Their eigenvalues
+   are the six compact winding numbers (n_1, ..., n_6).
+
+4. **Mass formula.**  From the 12D null condition
+   G^{AB} k_A k_B = 0, derive
+   $$m^2 c^2 \;=\; h^{ab}\,p_a\,p_b, \qquad a, b \in \{1, 2, 3, 4, 5, 6\},$$
+   with h^{ab} the 6×6 inverse.  This is F7 / F25
+   with one more block iteration.
+
+5. **Iterated Schur complement.**  Peel off sheet e
+   first, leaving a 4×4 Schur complement on sheets (ν,
+   p); then peel off ν, leaving a 2×2 Schur
+   complement on sheet p.  This produces a
+   hierarchical form of the mass formula in which each
+   sheet contributes with *progressively shifted*
+   momenta.  Structural statement of the same
+   mechanism as D.2.2 of Track 8, one level deeper.
+
+6. **Charge identification.**  Apply the tube-couples
+   convention of F14 to each sheet independently,
+   with sign conventions (σ_e, σ_ν, σ_p) = (−1, 0, +1)
+   as in F15.  The observable 4D electric charge is
+   Q = e(σ_e n_1 + σ_ν n_3 + σ_p n_5) = e(−n_1 +
+   n_5), recovering MaSt's universal charge formula.
+
+7. **Generalized Lorentz force.**  Six KK U(1) gauge
+   potentials A^a_μ descend from the off-block
+   metric components; three (a = 1, 3, 5, the tube
+   directions) become physical EM potentials and
+   three (the rings) become dark.  The Lorentz force
+   has six terms, weighted by the six winding numbers.
+
+8. **Mode catalog.**  Tabulate the lowest-lying
+   winding configurations and identify their
+   particle interpretations: (1, 0, 0, 0, 0, 0) →
+   electron (Q = −e), (0, 0, 0, 0, 1, 0) → proton
+   (Q = +e), single-sheet neutrino modes as dark
+   sheet-ν excitations, compound modes (e.g.
+   electron + neutrino) as specific cross-sheet
+   excitations that R54 catalogs numerically.
+
+9. **Consistency checks.**  Zero the ν sheet's
+   cross-shears → Track 8 recovered for (e, p).  Zero
+   any two sheets' presence → Track 2 recovered.
+   Zero all cross-shears → three independent copies
+   of Track 2.
+
+**Tactics.**
+
+1. **Block decomposition.**  Write h as a 3×3 block
+   matrix with 2×2 entries:
+   $$h = \begin{pmatrix} H_e & C_{e\nu} & C_{ep} \\ C_{e\nu}^\top & H_\nu & C_{\nu p} \\ C_{ep}^\top & C_{\nu p}^\top & H_p \end{pmatrix}.$$
+2. **Iterated Schur.**  Compute h^{-1} by first
+   collapsing the (ν, p) block into its own 4×4
+   matrix, then applying Track 8's two-block formula.
+   This gives a closed-form h^{-1} with three levels
+   of Schur shifts on momenta.
+3. **Charge per Killing.**  Each n_a is the eigenvalue
+   of ξ_a; the observable charge is a linear
+   combination of n_1, n_3, n_5 with MaSt-chosen sign
+   vector (σ_e, σ_ν, σ_p).  The ring momenta n_2, n_4,
+   n_6 are conserved but dark.
+4. **Mode catalog aligned to R54.**  Pick the
+   lowest-|winding| configurations and match against
+   R54's compound-mode inventory.  Full quantitative
+   comparison is deferred to the R54 study; Track 10
+   gives the analytical skeleton that R54's numerics
+   instantiate.
+
+**Deliverable.**  `derivation-10.md` — full step-by-
+step derivation.  Lemma set F30–F33: 6×6 mass formula,
+iterated-Schur structure, universal charge formula,
+consistency limits to Tracks 2 and 8.
+
+**Acceptance criteria.**
+
+- 6×6 mass formula derived cleanly from the 12D null
+  condition, matching F7/F25 in form.
+- Iterated Schur-complement form of h^{-1} written
+  explicitly and shown to reduce to Track 8's form
+  when one sheet is decoupled.
+- Universal charge formula Q = e(−n_1 + n_5)
+  recovered from three independent tube-couples
+  conventions with the (σ_e, σ_ν, σ_p) sign
+  assignments.
+- Lorentz force with six terms matches F17 extended.
+- Tracks 2 and 8 explicitly recovered as sub-cases.
+- No new physical postulate beyond Tracks 1–9.
+  GRID-native.
+
+**Dependencies.**  Tracks 1–9 (in particular F7/F11
+for the mass formula, F14/F15 for charge, F17 for
+Lorentz force, F25/F26 for the two-sheet extension,
+F29 for scale-invariance).  Independent of Track 7.
+
+**Status.** Complete.  See [derivation-10.md](derivation-10.md);
+lemmas F30–F33 at the end.
+
+---
+
 ### Next-track pool
 
 Candidates after Track 1. Sequence decided as we go. Each
@@ -1729,28 +1954,66 @@ hypothesis).~~**  Promoted to Track 7; see derivation-7a.md
 (metric route), derivation-7b.md (CP-polarization route),
 and derivation-7c.md (6D Dirac KK-reduction route).
 
-**g. Magnetic moment as a corollary of charge + spin.**
-Once charge (pool d) and spin (pool f) are derived from the
-same 2-torus geometry, the magnetic moment is essentially
-automatic. The reason is structural, not technical: in 4D
-Minkowski space E and B are unified into a single antisymmetric
-tensor F_μν, and they always come as a matched set under
-Lorentz transformations. A particle with charge **and** angular
-momentum *must* couple to B with a moment proportional to its
-spin — there is no Lagrangian consistent with Lorentz
-covariance that allows charge + spin without a magnetic moment.
+**g. Magnetic moment as a corollary of charge + spin
+(tree level).**
+Once charge (pool d, done in Track 5) and spin (pool f,
+three alternatives in Tracks 7a/7b/7c — pending
+discriminator) are both in place, the magnetic moment
+follows from Lorentz covariance: in 4D Minkowski space E
+and B are unified into a single antisymmetric tensor F_μν
+and always transform as a matched set, so any particle
+with charge **and** intrinsic angular momentum *must*
+couple to B with a moment proportional to its spin.  The
+proportionality coefficient at tree level is g = 2 for
+a spin-½ state (the Dirac-equation minimal-coupling
+result), with no free parameters.
 
-The work in this pool item is therefore mostly bookkeeping:
-take the standing-wave eigenstate from pool b/d/f, apply a
-weak external EM field, and read off the moment coefficient.
-The Dirac-equation analog on the 2-torus should yield g = 2 at
-the lowest order with no free parameters. Anomalous corrections
-(g − 2) might be derivable from higher-mode contributions to
-the standing wave (a stretch goal — connects to R44).
+**The work in this pool item** is:  take the standing-
+wave eigenstate from Tracks 1–10 with whichever spin
+structure is selected in step 1 of *Remaining work*,
+apply a weak external EM field using the generalized
+Lorentz-force machinery of F17 / G.2.1, and read off
+the moment coefficient on the spin-B coupling term.
+The derivation is largely bookkeeping once the spin
+eigenstate is fixed; the main work is verifying that
+no cross-shear correction to the Lorentz-force side of
+the equation of motion shifts g away from 2 at tree
+level.  (F27 and §F.4 of derivation-10 suggest none
+does — cross-shears enter mass but not the coupling
+side — so g = 2 at tree level is the expected result.)
 
-This pool item is *trivial-to-medium* if f succeeds, and
-unaddressable if f does not. Its difficulty is gated entirely
-by f.
+**Anomaly scope (g − 2).**  The anomalous magnetic
+moment is a conventional QED radiative-correction
+calculation (Schwinger 1948 at one loop, subsequent
+multi-loop work).  It uses only the 4D particle data
+(charge e, mass m_e, spin ½) and loop integrals in 4D
+Minkowski — quantities that are indifferent to the
+geometric origin of the fields.  The S-domain result
+therefore applies to MaSt as-is and does **not** need
+to be rederived here.  Pool g is restricted to the
+tree-level statement.
+
+**Potential MaSt-specific piece (phenomenology, not
+derivation).**  If MaSt's KK tower has modes below the
+measurement scale, those would contribute additional
+loop pieces to g − 2 beyond the standard QED value.
+Whether they do depends on the R50/R54 filter
+constraints, the specific mode spectrum of the electron
+sheet, and whether those modes carry non-trivial charge
+and mass at scales where the loop integrals weight
+them.  This is a **potential phenomenological test** —
+does MaSt predict g − 2 consistent with the measured
+value, or does it overshoot? — and belongs to an
+R-study (R44-adjacent), not to Program 1.  This
+caveat connects to R44's earlier work on higher-mode
+contributions to the anomalous moment.
+
+**Gating.**  Pool g is gated by step 1 of *Remaining
+work* (spin resolution).  Without a selected spin
+mechanism, the tree-level moment calculation forks
+three ways (one per 7a/7b/7c outcome); with a selected
+mechanism, the calculation is well-posed and
+straightforward.
 
 **h. Cross-shears between two 2-tori (4D internal).**
 **→ Promoted to Track 8; see [derivation-8.md](derivation-8.md)
@@ -1765,12 +2028,19 @@ version of what R54 did numerically, for two sheets.
 GRID-native.
 
 **i. Full 6D MaSt with three 2-tori and all cross-shears.**
-The final extension: three 2-tori (electron, neutrino, proton
-sheets) with all 12 cross-shear entries. Show that the
-resulting 4 + 6D structure recovers the full MaSt particle
-inventory. This is mostly bookkeeping once tracks a–h are in
-place, but it is the deliverable that proves the program
-reaches all the way to the existing model-E predictions.
+**→ Promoted to Track 10; see [derivation-10.md](derivation-10.md)
+and lemmas F30–F33.**  Extended Tracks 2 and 8 to the full
+10D setup M⁴ × T_e × T_ν × T_p with a 21-parameter 6×6
+internal metric (9 intra-sheet + 12 inter-sheet cross-
+shears).  Derived the mass formula m² c² = h^{ab} p_a p_b
+(F30), its iterated-Schur-complement hierarchical form
+(F31), the universal charge formula Q = e(−n_1 + n_5) as
+three tube-couples conventions with empirical signs
+(σ_e, σ_ν, σ_p) = (−1, 0, +1) (F32), the six-term
+generalized Lorentz force, and explicit recovery of Tracks
+2, 8, 9 as sub-cases (F33).  Provides the analytical
+substrate underlying the R53/R54 numerical model-E fits.
+GRID-native; independent of the Track 7 spin question.
 
 **j. Klein quantization at non-Planck scales.**
 **→ Promoted to Track 9; see [derivation-9.md](derivation-9.md)
@@ -1788,15 +2058,34 @@ is reached.  The hierarchy question itself (why R ≫
 problem, outside the scope of Program 1.
 GRID-native.
 
-**z. Closeout for Program 1.** Synthesize the tracks. If mass
-+ charge + Lorentz force are derived (a–e succeed), promote
-the result to a primer appendix or its own primer ("MaSt as
-photon-on-torus"). If spin also is derived (f succeeds), this
-becomes a substantial theoretical contribution. If spin is
-not derived, document the specific blocking constraint and
-flag the topological-spin rule as still postulated. Either
-way, summarize what model-E now inherits as derived versus
-postulated.
+**z. Closeout for Program 1.**  Synthesize Tracks 1–10 (+ pool g
+once done) into a primer appendix or standalone primer
+("MaSt as photon-on-torus").  Concrete deliverables:
+
+- Consolidate lemmas F1–F33 (+ the pool-g lemma) into a
+  single reference list with consistent notation.
+- Produce a narrative walkthrough (mass → charge →
+  Lorentz force → cross-shears → T⁶ → scale) pointing
+  to the derivation files for the full work.
+- State unambiguously what is **derived** (mass formula,
+  charge formula, Lorentz force, cross-shear mass
+  mixing, scale-invariance) vs **inherited** (the
+  compact scale R itself, the empirical sign vector
+  (σ_e, σ_ν, σ_p), the choice of spin mechanism if
+  fixed by phenomenology rather than by a clean
+  derivation).
+- Document the remaining **open problems at the GRID
+  layer** that pass to later programs — principally
+  the dynamical mechanism by which GRID's Planck-
+  scale phase field produces the emergent compact tori
+  at the observed scale (derivation 9 §F.4).
+
+**Gating.**  Pool z waits on steps 1 and 2 of
+*Remaining work*.  Its difficulty is low (it is a
+writeup / synthesis task), but it is most valuable
+when the spin question and tree-level moment are both
+settled so that the final narrative does not need to
+branch on unresolved alternatives.
 
 ---
 
@@ -1865,6 +2154,7 @@ Objectives section above and motivates the sequence
 | derivation-7c.md | Track 7c — spin on T² via 6D Dirac KK reduction; result: all matter modes uniformly spin-½; not GRID-native (requires Dirac–Kähler bridge, open) |
 | derivation-8.md | Track 8 — cross-shears between two 2-tori: generalized mass formula m² c² = h^{ab} p_a p_b on 4×4 internal metric, Schur-complement block inverse, compound modes, recovery of Track 2 at zero cross-shear (complete); GRID-native |
 | derivation-9.md | Track 9 — Klein quantization at non-Planck scales: scale-invariance of the KK-on-torus derivations (F29), UV consistency check, hierarchy question documented as inherited open problem (complete); GRID-native |
+| derivation-10.md | Track 10 — full 6D MaSt on T⁶ (three 2-tori, 21-parameter internal metric): mass formula m² c² = h^{ab} p_a p_b, iterated-Schur-complement form, universal charge Q = e(−n_1 + n_5), six-term Lorentz force, consistency with Tracks 2, 8, 9 (complete); GRID-native |
 | scripts/ | Optional verification scripts (not expected to be needed for analytical tracks) |
 
 Future programs (Program 2, Program 3, …) will add their own
