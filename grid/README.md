@@ -92,6 +92,7 @@ See [STATUS.md](STATUS.md) for the roadmap and progress.
 |------|----------|
 | [foundations.md](foundations.md) | The six axioms, notation, ζ and α |
 | [maxwell.md](maxwell.md) | Full derivation: lattice → Maxwell's equations |
+| [photon-from-aleph.md](photon-from-aleph.md) | KK-reduction framing: photon as ℵ-line zero mode; unifying principle connecting GRID's photon to MaSt's matter spin |
 | [gravity.md](gravity.md) | Full derivation: lattice → Einstein's equations + G |
 | [lattice-geometry.md](lattice-geometry.md) | Open investigation: can ζ be derived from simplicial packing? |
 | [compact-dimensions.md](compact-dimensions.md) | Hypothesis: MaSt sheets as wrapped 2D triangular lattices; can wrapping constrain α? |
