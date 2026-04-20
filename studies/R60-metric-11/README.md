@@ -913,6 +913,273 @@ adopted."
 
 ---
 
+### Track 16 — Z₃ confinement derivation for (3, 6) proton
+
+**Motivation.**  Track 15 showed that (3, 6) is a mechanically
+viable proton mode on model-F's architecture — mass, α_Coulomb,
+and nuclear scaling all work with a composite (gcd-aware) α
+rule.  What Track 15 did *not* answer is **why (3, 6) should be
+observable as a free particle when (1, 2) and (2, 4), the
+lighter modes on the same ratio ray, are not.**  On a single
+sheet no shear makes (3, 6) lightest — at magic shear s = 2 the
+ratio-2 ray gives μ(1, 2) < μ(2, 4) < μ(3, 6), with (1, 2) one
+third of (3, 6)'s mass.  A confinement mechanism is required:
+a structural reason why (1, 2) exists only as a confined
+constituent ("quark") and (3, 6) as the free composite.
+
+The motivating analogy is three-phase electrical power.  A
+single sinusoidal phase carries instantaneous power that
+oscillates at 2ω — a generator pulsates, a motor chatters.
+Two phases at 180° *reinforce* the pulsation; two phases at
+90° cancel it only by secretly being a 4-phase system.  Three
+phases at 120° are the true minimum count at which the 2ω
+power fluctuation cancels.  Mathematically:
+
+<!-- Σ_{k=0..N−1} cos(2ωt + 4πk/N) = 0  iff  N does not divide 2 -->
+$$
+\sum_{k=0}^{N-1} \cos\!\left(2\omega t + \tfrac{4\pi k}{N}\right)
+\;=\; 0
+\qquad \Longleftrightarrow\qquad
+N \nmid 2,
+$$
+
+so N = 1 and N = 2 fail; N = 3 is the minimum cancelling N.
+
+Porting the same argument to MaSt: if a single (1, 2) standing
+wave on the p-sheet has an energy (or charge) density that
+oscillates at 2ω, then a **lone (1, 2) mode is not a stationary
+state of its own field** — it drives a 2ω back-reaction or
+radiation channel.  Three (1, 2) modes at 120° phase offsets
+have constant total density and *are* stationary.  Pairs cannot
+achieve this, matching the "diquarks are not observed" feature
+of QCD.
+
+If this argument closes rigorously, it derives a **Z₃ selection
+rule on the p-sheet**: free modes require n_t ≡ 0 (mod 3);
+others exist only as confined constituents of a Z₃-singlet
+triplet.  That would give (3, 6) a principled footing, not just
+a phenomenological one.
+
+**Goal.**  Determine whether a physically rigorous Z₃
+confinement mechanism exists on the p-sheet that:
+
+1. Identifies a 2ω density fluctuation associated with a
+   single (1, 2) standing-wave mode
+2. Shows N = 3 is the minimum copy count that cancels that
+   fluctuation under uniform phase offsets
+3. Shows the 120° offsets are dynamically preferred (an
+   energy minimum) rather than postulated
+4. Yields the selection rule `n_t ≡ 0 (mod 3)` for free modes
+   on the p-sheet
+5. Does not impose an equivalent rule on the e-sheet or
+   ν-sheet (so their observed single-strand particles remain
+   free)
+
+If all five hold, (3, 6) is put on solid ground and the
+confinement story for the p-sheet is derived, not postulated.
+If any step fails, document the blocker; (3, 6) stays
+phenomenologically viable but not derived.
+
+**Scope — 4 phases, half-day to full day.**
+
+### Phase 1 — identify the 2ω density fluctuation
+
+**Question:** for a single (1, 2) standing-wave mode on the
+p-sheet (model-F metric, Track 12 geometry: ε_p = 0.55,
+s_p = 0.162), what physical density oscillates at 2ω, and
+what is its coupling to the α channel?
+
+**Method:**
+
+1. Write the mode field on the p-sheet as a real standing
+   wave: ψ_{1,2}(y_t, y_r, t) = A·cos(y_t/R_t)·cos(2 y_r/R_r − ωt)
+   (or the complex rotating equivalent, whichever matches the
+   6D field content assumed in F7 / F11 / R59).
+2. Compute candidate density quantities:
+   - Amplitude squared ψ² (oscillates at 2ω)
+   - Energy density (kinetic + compact-momentum; typically
+     oscillates at 2ω for a real standing wave)
+   - Charge density ρ_Q ∝ n_t · ψ² (the source of the α
+     coupling through the tube↔ℵ channel)
+3. Identify which of these is the *physically relevant* source
+   for the radiation / back-reaction channel.  The charge
+   density ρ_Q is the natural candidate: it couples to the KK
+   gauge potential via minimal coupling (F14), and oscillation
+   of ρ_Q at 2ω produces a 2ω current that sources photon
+   emission in the low-energy limit.
+4. Report: symbolic form of the 2ω-oscillating part of ρ_Q,
+   its amplitude, and its coupling strength to the α sector.
+
+**Acceptance:** an explicit symbolic expression for a 2ω
+oscillating density on a single (1, 2) mode, with a clear
+argument for why it represents a non-stationary state (i.e.,
+the mode is not a self-consistent standing wave against its
+own gauge back-reaction).
+
+### Phase 2 — N-copy cancellation
+
+**Question:** summing N identical (1, 2) modes at uniform
+temporal phase offsets 2πk/N (k = 0, …, N−1), for which N
+does the 2ω density fluctuation cancel?
+
+**Method:**
+
+1. For each N ∈ {1, 2, 3, 4, 5, 6}, compute the total density
+   Σ_{k=0}^{N−1} ρ_Q(t + kT/N) symbolically and decompose
+   into constant + 2ω oscillating parts.
+2. Show that the 2ω oscillating part vanishes iff N does not
+   divide 2 — i.e., for N ∈ {3, 4, 5, 6, …} but not N ∈ {1, 2}.
+3. Highlight the N = 2 case explicitly: two (1, 2) copies at
+   180° offset *do not* cancel — they reinforce the 2ω
+   fluctuation (matching "diquarks are confined" in QCD).
+4. Confirm N = 3 is the minimum cancelling N, and that
+   higher multiples 6, 9, … are also cancelling (predicting
+   (6, 12), (9, 18) as potential resonance states).
+
+**Acceptance:** closed-form proof of the cancellation pattern
+N ∤ 2; numerical verification on the model-F p-sheet geometry
+agrees to floating-point precision.
+
+### Phase 3 — dynamical selection of 120° offsets
+
+**Question:** why do three (1, 2) copies prefer exactly 120°
+offsets?  Is this dynamically selected (an energy minimum) or
+must it be postulated via a p-sheet Z₃ structure?
+
+**Method:**
+
+1. Write the pairwise interaction energy between two (1, 2)
+   modes on the p-sheet.  Natural candidates:
+   - **Coulomb-like self-coupling** through the shared α
+     channel: E_int(φ) ∝ ∫ρ_Q,1(t)·ρ_Q,2(t + φ/ω) dt,
+     which is maximally negative at some specific phase offset.
+   - **Overlap term** through the Ma sheet metric (mode–mode
+     coupling from off-diagonal entries).
+2. For three copies at phase offsets (0, φ_A, φ_B), compute
+   total interaction energy E_int(φ_A, φ_B) and locate its
+   minima.  Expected under 2ω-dominated coupling: minima at
+   (φ_A, φ_B) = (120°, 240°) and cyclic permutations.
+3. If minima are at 120°/240° → dynamically derived.  If not,
+   fall back to postulating Z₃ phase structure on the p-sheet
+   as an architectural axiom (still a valid path, but adds an
+   axiom rather than deriving one).
+4. Document whichever path closes.
+
+**Acceptance:** either (a) a clean dynamical derivation of
+120° offsets from interaction-energy minimization, or (b) a
+well-framed postulate of p-sheet Z₃ structure with
+justification from the sheet's (ε, s) geometry.  Path (a) is
+stronger; path (b) still supports the Z₃ confinement story.
+
+### Phase 4 — selection rule and compatibility with Track 15 + model-F
+
+**Question:** does the selection rule `free p-sheet modes
+require n_t ≡ 0 (mod 3)` preserve all of Track 15's findings
+and model-F's compound-mode inventory?
+
+**Method:**
+
+1. Apply the rule to Track 15's proton inventory:
+   - (3, 6) free ✓
+   - (1, 2), (2, 4) confined (not free particles, consistent
+     with "quark" interpretation) ✓
+   - (6, 12) candidate free resonance — identify as Δ-like if
+     mass matches
+2. Apply to Track 15's nuclear scaling (n_pt = 3A, n_pr = 6A):
+   always divisible by 3 ✓
+3. Apply to model-F's 18-entry compound inventory from
+   Tracks 10 and 12:
+   - Enumerate p-sheet contribution (n_pt, n_pr) for each
+     particle
+   - For entries with n_pt ≢ 0 (mod 3): search for a Z₃-
+     compatible alternative tuple with same charge Q, spin,
+     and α_sum_composite
+   - Report the rule's compatibility fraction
+4. Check e-sheet and ν-sheet: the rule should NOT apply
+   there.  Justification: the Z₃ selection emerges from the
+   p-sheet's specific (ε, s) regime (or from its 3-phase
+   "quark" compactification), not from the KK mechanism
+   generically.  Verify by showing the e-sheet's single-(1, 2)
+   electron does not suffer the same 2ω fluctuation problem,
+   or that the problem is cured differently (e.g., by the
+   parity structure of e-sheet's spin).
+
+**Acceptance:** the n_t ≡ 0 (mod 3) rule is consistent with
+Track 15 and with ≥ 80% of model-F's compound inventory under
+its natural tuple assignments; any incompatible entries have
+Z₃-compatible alternatives within a tuple-search window
+|n_i| ≤ 6.  Clear account of why the rule is p-sheet-specific.
+
+## Implementation plan
+
+**New scripts (under `scripts/` with `track16_` prefix):**
+
+- `track16_phase1_density.py` — single-mode 2ω density
+  computation (partly symbolic via sympy, partly numeric on
+  the p-sheet metric)
+- `track16_phase2_cancellation.py` — N-copy cancellation
+  proof and verification
+- `track16_phase3_dynamics.py` — interaction-energy
+  minimization over phase offsets
+- `track16_phase4_selection.py` — selection-rule consistency
+  check across Track 15 and model-F inventory
+
+**Reused from existing scripts (no modification):**
+
+- `track1_solver.py` — metric builder, mode energy primitives
+- `track7b_resolve.py` — augmented-metric helpers
+- `track15_*.py` — (3, 6) baseline and composite α helpers
+- `track10_hadron_inventory.py` — model-F compound inventory
+  for Phase 4 consistency checks
+
+**Acceptance criteria for Track 16 as a whole:**
+
+- Phase 1 identifies a physically-motivated 2ω density
+  fluctuation for the single (1, 2) mode
+- Phase 2 proves N = 3 is the minimum cancelling N
+  (matching 3-phase power mathematics)
+- Phase 3 either derives the 120° offsets or postulates them
+  with geometric justification
+- Phase 4 demonstrates the selection rule is compatible
+  with Track 15 + model-F
+
+**What Track 16 does NOT do:**
+
+- Doesn't replace derivations 7a/7b/7c.  Track 16 is about
+  *confinement* (which modes exist as free particles), which
+  is orthogonal to *spin* (the SO(1,3) representation content).
+  Any of 7a/7b/7c that makes (1, 2) spin-½ is compatible with
+  the Z₃ confinement derivation.
+- Doesn't promote to model-G.  That would be a separate
+  decision based on (a) Track 16's outcome, (b) a migration
+  plan from model-F's (1, 3) proton and bare α rule, and
+  (c) re-running Tracks 10–13 under the new inventory
+  constraint.
+- Doesn't settle the proton-mode question across the
+  architecture.  Even if Track 16 succeeds, the choice
+  between (3, 6) and (1, 2) as the proton depends on whether
+  the confinement story permits the composite or the simplex.
+
+**If Track 16 succeeds (all 4 phases close):**
+
+- (3, 6) has a principled confinement-based justification
+- Model-G becomes the active candidate for the working model
+  (Track 15 mechanical viability + Track 16 derivation
+  together form its foundation)
+- Pool item **k** below is promoted to "resolved by Track 16"
+
+**If Track 16 fails (Phase 1 or 2 or 3 doesn't close):**
+
+- (3, 6) remains phenomenologically-viable (Track 15) but
+  without a derived confinement mechanism
+- Model-F with (1, 3) stays the working model pending
+  alternative resolution of the spin-rule question
+- Failure mode is documented as a blocker for the model-G
+  candidate, with pool item **k** updated to reflect the
+  specific obstruction
+
+---
+
 ### Track 14 — Analytical derivation of k = 1.1803/(8π)
 
 **Goal.**  Derive the single-k value that the joint solver
@@ -1397,6 +1664,24 @@ whether (1, 0) modes are filtered in R49/R61 taxonomy
 (candidate: modes with n_ring=0 may be structurally excluded
 or absorbed into dark-mode classification).  Required before
 claiming ν₁ is the lightest on that sheet.
+
+**k. Z₃ confinement on the p-sheet.**  Being pursued as
+Track 16.  The motivation: Track 15 left (3, 6) proton
+mechanically viable but without a principled reason why
+(1, 2) and (2, 4) on the same ratio ray should not be
+observable as free particles.  The "three-phase power"
+analogy gives a candidate mechanism — a single (1, 2)
+mode has 2ω density fluctuation that cancels only when
+three copies combine at 120° offsets (mathematically:
+Σ_{k<N} cos(2ωt + 4πk/N) = 0 iff N ∤ 2, so N = 3 is the
+minimum).  If Track 16 closes, the resulting selection
+rule `free p-sheet modes require n_t ≡ 0 (mod 3)` is
+derived rather than postulated, and (3, 6) has a clean
+foundation for model-G.  If Track 16 fails, alternative
+fallbacks are (a) postulate the Z₃ rule as a p-sheet
+architectural axiom, (b) the waveguide-cutoff approach
+of R47 Track 7 / pool item **i**, or (c) abandon (3, 6)
+entirely.
 
 **z. Closeout.**  After the chosen pool items execute: if
 viability holds, promote to model-F candidate with a migration
