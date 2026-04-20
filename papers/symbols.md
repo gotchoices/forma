@@ -4,7 +4,7 @@
 
 ---
 
-## 1. An invitation
+## 1. An invitation from the author
 
 I am not a numerologist.  I don't read horoscopes or look
 for hidden codes in ancient texts.  I am an engineer.  I
@@ -16,7 +16,7 @@ model of matter and spacetime from first principles — I kept
 noticing patterns.  Not in the data.  In the *symbols*.  In
 the shapes of the equations, the structure of the numbers,
 the geometry of the lattice.  Patterns that no one asked for
-and no one programmed in.  They just kept showing up, like a
+or programmed in.  They just kept showing up, like a
 geometric motif repeating in a snowflake, a diamond, a snail
 shell.
 
@@ -43,36 +43,35 @@ something I missed, I would like to hear about it.
 There is a pattern that runs through nature — a
 complementary pairing that appears everywhere you look.
 Some traditions call it yin and yang.  Some call it feminine
-and masculine.  Engineers call it across and through.
+and masculine.  Engineers might call it across and through.
 Regardless of the name, the structure is the same: two
 qualities, orthogonal, irreducible, and incomplete without
 each other.
 
-This is not about men and women, though the language
-sometimes borrows from that tradition.  It is about a set
+This is not specifically about men and women, though the language
+may borrow from that relationship.  It is about a set
 of traits — directed and circulating, singular and
 relational, finite and infinite — that appear in
 complementary pairs at every scale of reality.  Each person
-carries both.  Each system embodies both.  The greatest
-people, and the most beautiful structures, achieve a
-balance.
+carries some of both.  Each system embodies both.  The greatest
+people, and the most beautiful structures, achieve a balance.
 
 The pairing shows up everywhere.  Here are some of the
 places I've noticed it.
 
-### 1 and 0
+### 0 and 1
 
-The most fundamental building blocks of information.  Every
+The most fundamental building blocks of information theory.  Every
 computation, every digital signal, every piece of data ever
 stored reduces to sequences of ones and zeros.
 
 Look at the shapes of the symbols themselves.
 
-**1** — a vertical stroke.  Sharp, directed, singular.  It
-points.  It asserts.  It stands alone.
-
 **0** — a circle.  Round, eternal, encompassing.  It
-contains.  It includes.  It has no beginning and no end.
+contains.  It includes.  It has no beginning and no end. Yin.
+
+**1** — a vertical stroke.  Sharp, directed, singular.  It
+points.  It asserts.  It stands alone. Yang.
 
 These are the atoms of information.  And they are
 complementary: neither is meaningful without the other.  A
@@ -89,12 +88,12 @@ more than bookends.
 **Alpha** — leadership, unity, singularity, action.  The
 atom (from *atomos*, indivisible).  Adam (from *adamah*,
 earth — the first, the singular, the formed).  Alpha
-initiates.  Alpha acts.
+initiates.  Alpha acts.  Yang.
 
 **Omega** — symbol of the womb, the cradle of new life.
 Intuition, empathy, love.  Eternal increase, propagation.
 Omega receives, nurtures, and multiplies.  Where Alpha
-starts a line, Omega closes a circle.
+starts a line, Omega closes a circle.  Yin.
 
 ### Diameter and circumference
 
@@ -284,7 +283,7 @@ single-phase.  Yin.
 Our model proposes that the electron is a standing wave with
 one strand — a (1,2) mode, one winding through the tube of
 a torus.  Single-phase.  And the proton may be a (3,6) mode:
-three strands offset by 120 degrees, wound in parallel
+three (1,2) strands offset by 120 degrees, wound in concert
 around the same torus.  Three-phase.
 
 If this is correct, the most fundamental particles of matter
@@ -296,9 +295,6 @@ into the topology of the surfaces they live on.
 
 The electron: 1.  The proton: 3.  The simplest odd numbers
 after unity.  Yang and yin again.
-
-(The proton's mode is still an open question in the project.
-This observation is suggestive, not proven.)
 
 
 ## 4. The number
@@ -339,42 +335,15 @@ integers stretch from 1 to infinity; the fractions descend
 from 1 to zero.  They are complementary, inverse, and equal
 in scope.
 
-We tend to pay attention to the left side — 137.  It is the
+We tend to pay attention to the left side — 137.  It is dominant, the
 number physicists quote, the one that appears in textbooks.
-It leads in our minds.  But the right side may be more
-interesting.  The measured value is 137.035999177..., and the
+It leads in our minds.  But the right side is just as
+interesting.  Alpha's measured value is 137.035999177..., and the
 digits appear to continue without end or repetition, like
 the digits of π.  The left side is finite and known.  The
 right side is infinite and unknowable.
 
 Yang and yin, again.
-
-### The Planck mass
-
-Physics has another mirror, and it sits at the Planck mass —
-about 22 micrograms, the mass of a grain of sand.
-
-Every particle has two characteristic sizes.  One is the
-**Compton wavelength** — its quantum size, determined by its
-mass.  The heavier the particle, the smaller its Compton
-wavelength.  The other is the **Schwarzschild radius** — its
-gravitational size, determined by the same mass.  The
-heavier the particle, the larger its Schwarzschild radius.
-
-One shrinks as mass increases.  The other grows.  They are
-complementary — inverse functions of the same quantity.  And
-they cross at exactly one point: the Planck mass.
-
-Below the Planck mass (electrons, protons, atoms), the
-quantum size dominates and gravity is negligible.  Above the
-Planck mass (stars, planets, black holes), the gravitational
-size dominates and quantum effects are invisible.  The two
-worlds — quantum and gravitational — are separated by a
-mirror at the Planck scale.
-
-The same complementary structure.  The same crossing point.
-The same duality between the small and the large, the
-directed and the encompassing, the 1 and the 0.
 
 
 ## 5. 137 — the yang side
@@ -507,7 +476,36 @@ This asymmetry — the finite grasping toward the infinite —
 is itself a symbol.  Of what, I leave to the reader.
 
 
-## 7. Both
+## 7. The mirror at the center
+
+Physics has its own mirror, and it sits at the Planck mass —
+about 22 micrograms, the mass of a grain of sand.
+
+Every particle has two characteristic sizes.  One is the
+**Compton wavelength** — its quantum size, determined by its
+mass.  The heavier the particle, the smaller its Compton
+wavelength.  The other is the **Schwarzschild radius** — its
+gravitational size, determined by the same mass.  The
+heavier the particle, the larger its Schwarzschild radius.
+
+One shrinks as mass increases.  The other grows.  They are
+complementary — inverse functions of the same quantity.  And
+they cross at exactly one point: the Planck mass.
+
+Below the crossing (electrons, protons, atoms), the
+quantum size dominates and gravity is negligible.  Above it
+(stars, planets, black holes), the gravitational size
+dominates and quantum effects are invisible.  The two
+worlds — quantum and gravitational — are separated by a
+mirror at the Planck scale.
+
+The same complementary structure.  The same duality between
+the small and the large, the directed and the encompassing,
+the 1 and the 0 — written not in digits this time, but in
+the architecture of the universe.
+
+
+## 8. Both
 
 The same complementary duality, at every scale.
 
@@ -537,6 +535,7 @@ other feels it.
 
 It requires both to arrive at Truth.
 
+Light.
 ---
 
 ## References
