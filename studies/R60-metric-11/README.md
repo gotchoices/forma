@@ -753,6 +753,166 @@ extraction for ν₁/ν₂/ν₃ between base and augmented.
 
 ---
 
+### Track 15 — Sandboxed (3, 6) proton viability test
+
+**Motivation.**  R62 derivation 7b derives the WvM ratio rule
+`s = n_t/n_r` from CP field rotation on the 2-torus, giving spin
+1/3 for the (1, 3) mode model-F currently uses for the proton.
+The parity rule "odd n_t → spin ½" used in R50–R61 was introduced
+without formal derivation.  If the ratio rule is correct, model-F's
+proton assignment is invalid and (3, 6) becomes the natural
+candidate (3 quarks at 120° phase, gcd=3, spin = 3/6 = ½).
+
+A parallel effort (derivation 7c, "always 1/2 for emergent
+particles") may rescue (1, 3) with a different derivation.  Both
+directions need to stay open until one is definitively settled.
+
+Track 15 is a **sandboxed empirical test** of (3, 6) proton
+viability on the existing R60 / model-F architecture.  No
+changes to model-F, no changes to findings-1 through findings-14,
+no changes to any prior scripts.  New scripts use a `track15_`
+prefix.  Binary outcome per option: **viable / not viable**
+under specific architectural tests.  Output: `findings-15.md`.
+
+**Goal.**  Determine whether a (3, 6) proton could be substituted
+for (1, 3) in model-F's architecture without catastrophic
+breakage of the spectrum or nuclear scaling.  Keep both options
+open in parallel with 7c's progress.
+
+**Scope — 5 phases, ~half day of work.**
+
+### Phase 1 — proton mass on (3, 6)
+
+**Question:** can (3, 6) reach m_p = 938.272 MeV on model-F's
+Track 12 baseline (ε_p = 0.55, s_p = 0.162) or does it need
+geometry changes?
+
+**Method:**
+1. Evaluate (0, 0, 0, 0, 3, 6) on existing Track 12 metric
+   (expected result: ~2160 MeV — too heavy by 2.3×).
+2. Recalibrate L_ring_p alone to give 938.272 MeV for (3, 6).
+   Report: new L_ring_p.
+3. Alternative: switch to magic shear for (1, 2) quark base
+   (s_p = 2), pick ε_p such that quark mass = m_p/3 = 313 MeV.
+   Report (ε_p, L_ring_p, k) for this configuration.
+
+**Acceptance:** both options converge to clean mass fit.
+Document the (L_ring_p, possibly ε_p, s_p) values.
+
+### Phase 2 — α_Coulomb for (3, 6) proton
+
+**Question:** does the proton land at α_Coulomb = α under a
+composite interpretation (gcd-aware charge), or does the bare
+α-sum formula give 9α as expected?
+
+**Method:**
+1. Compute bare α_Coulomb for (0, 0, 0, 0, 3, 6) on model-F
+   metric with Phase 1's calibration.  Expected: 9α (R47 Track
+   7 analog confirms the model-F α-sum rule gives 9α for n_pt=3
+   bare).
+2. Propose and test a **composite α-sum rule**:
+   `α_sum = −n_et + n_pt/gcd(n_pt, n_pr) + n_νt` (new rule,
+   gcd-aware).  Compute α_Coulomb under this rule.  Expected
+   for bare (3, 6): α = α.
+3. Verify the composite rule reduces to the current rule for
+   gcd = 1 modes (all of model-F's current inventory).  Should
+   be backward-compatible for existing modes.
+4. For nuclei (A, Z) under the natural (3, 6)-based scaling
+   `n_pt = 3A, n_pr = 6A`: compute α_Coulomb with composite
+   rule.  Expected: α = Z² α for any Z (if the composite rule
+   generalizes correctly).
+
+**Acceptance:** composite α rule gives α = α for proton and
+α = Z²α for Z-nuclei.  Or: document what it gives instead.
+
+### Phase 3 — nuclear scaling on (3, 6) base
+
+**Question:** can nuclear masses still be reproduced under a
+(3, 6)-based scaling law?  This is the historical dealbreaker
+(model-D set aside (3, 6) for this reason).
+
+**Method:**
+1. Define candidate nuclear scaling laws:
+   - Scheme A: `n_pt = 3A, n_pr = 6A, n_et = (something)_Z`
+     — A copies of a 3-quark bundle
+   - Scheme B: `n_pt = A·(3 or custom), n_pr = A·(6 or custom)`
+     — other scalings
+2. Compute d, ⁴He, ¹²C, ⁵⁶Fe masses for each scheme.
+   Compare to Track 11's model-F accuracy (0.05–1.5%).
+3. If no clean scheme works: document the failure mode
+   (same as model-D, or different?).
+
+**Acceptance:** at least one scheme gives ≤ 2% on all four
+nuclei, and α = Z²α under the composite rule.  Or: document
+the blocker.
+
+### Phase 4 — quick comparison with (1, 2) proton alternative
+
+**Question:** is (1, 2) on the p-sheet even cheaper than (3, 6)?
+It's ratio-rule spin ½ and simpler topology.
+
+**Method:** compute (0, 0, 0, 0, 1, 2) on model-F metric with
+recalibrated L_ring_p.  Report mass, α (bare and composite —
+gcd(1,2) = 1 so they should agree), and quick nuclear check.
+
+**Acceptance:** binary viable/not viable finding for (1, 2).
+
+### Phase 5 — three-way verdict
+
+**Question:** across (1, 3), (3, 6), (1, 2) proton candidates,
+which are viable on model-F architecture *without* spin-rule
+commitment?
+
+**Method:** summary table per candidate of:
+- Proton mass fit achievable
+- α = α under applicable formula (bare, composite)
+- Nuclear scaling status
+- Compound mode spin assignments (ratio rule vs 7c if known)
+
+**Output:** findings-15.md with verdicts, plus a short section
+on "what would need to change in model-F if this candidate is
+adopted."
+
+## Implementation plan
+
+**New scripts (under `scripts/` with `track15_` prefix):**
+
+- `track15_baseline_36.py` — Phase 1 (mass fit for 3, 6)
+- `track15_composite_alpha.py` — Phase 2 (composite α rule)
+- `track15_nuclear_36.py` — Phase 3 (nuclear scaling)
+- `track15_alternatives.py` — Phase 4 (1, 2) check
+- `track15_verdict.py` — Phase 5 (summary)
+
+**Reused from existing scripts (no modification):**
+
+- `track1_solver.py` — metric builder, signature, α extraction
+  primitives
+- `track7b_resolve.py` — joint solver helpers, augmented metric
+- `track11_nuclear_scaling.py` — nuclear-mode helpers (may need
+  alternate versions in Phase 3)
+
+**Acceptance criteria for Track 15 as a whole:**
+
+- Phase 1 completes with a concrete (ε_p, s_p, L_ring_p) for
+  each viable proton candidate
+- Phase 2 definitively shows the bare α-sum rule gives 9α and
+  proposes (or rules out) a composite alternative
+- Phase 3 determines whether (3, 6) nuclear scaling can match
+  model-F's Track 11 accuracy
+- Phase 4 checks the (1, 2) alternative
+- Phase 5 gives a three-way verdict table
+
+**What Track 15 does NOT do:**
+
+- Doesn't change `model-F.md`, Track 1–14 findings, or prior
+  scripts
+- Doesn't rework R60's main inventory
+- Doesn't resolve the spin rule question — that's derivation 7c's
+  job
+- Doesn't commit to any replacement; just evaluates viability
+
+---
+
 ### Track 14 — Analytical derivation of k = 1.1803/(8π)
 
 **Goal.**  Derive the single-k value that the joint solver
