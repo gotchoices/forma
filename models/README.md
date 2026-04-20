@@ -12,4 +12,4 @@ provides a blank structure for new writeups.
 - [`model-C.md`](model-C.md) — Generalized model / `ma_model.py` (R39–R44)
 - [`model-D.md`](model-D.md) — Filtered model / `ma_model_d.py` (R45–R50+)
 - [`model-E.md`](model-E.md) — Full T⁶ with generation structure, 18/20 spin-correct (R53–R56)
-- [`model-F.md`](model-F.md) — **Active** — 11D architecture with geometric α-coupling mechanism; α universal across sheets/modes/compounds and = Z²α for nuclei (α value still input) (R59–R61)
+- [`model-F.md`](model-F.md) — **Active** — 11D architecture with geometric α-coupling mechanism, Z₃ confinement on p-sheet, per-sheet Dirac–Kähler spin, Standard Model taxonomy from sheet-count + SU(2) (R59–R62)

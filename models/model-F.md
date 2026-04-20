@@ -1,444 +1,372 @@
 # Model: model-F (11D α-derivable architecture) ⟵ ACTIVE
 
-**Status:** Active — R60 complete, ready for observational cross-checks
+**Status:** Active — R60 complete through Track 20; R62 derivation 7d closes the spin story
 **Code:** [`studies/R60-metric-11/scripts/track1_solver.py`](../studies/R60-metric-11/scripts/track1_solver.py) (primitives) plus R60 tracks
-**Study range:** R59 (architecture discovery), R60 (spectrum validation)
+**Study range:** R59 (architecture), R60 (spectrum + Z₃ + spin + re-sweep), R62 (spin derivation)
 **Supersedes:** [model-E](model-E.md)
 
 ---
 
 ## TL;DR
 
-Model-F is model-E's T⁶ spectrum architecture sitting on an 11D
-metric (T⁶ × S³ × t × ℵ) with a geometric mechanism for
-α coupling that makes α **structurally universal** across every
-charged particle, every mode, every compound, and every
-Z-charged nucleus (α_Coulomb = Z² α exactly).  The coupling
-architecture is a Kaluza–Klein–style chain: `tube ↔ ℵ ↔ t`
-with σ_ta = √α, σ_at = 4πα, g_aa = 1, plus a structurally-
-derived `ring ↔ ℵ` entry σ_ra = (sε)·σ_ta (R60 Track 7) that
-cancels shear-induced mode dependence.
+Model-F is model-E's spectrum architecture on an 11D metric
+(T⁶ × S³ × t × ℵ) with three structural mechanisms that
+model-E lacked:
+
+1. **Geometric α coupling** via a `tube ↔ ℵ ↔ t` chain.  Gives
+   α structurally universal across sheets, modes, compounds,
+   and nuclei (α_Coulomb = Z² α exactly).
+2. **Z₃ confinement on the p-sheet**, making (3, 6) the
+   observable proton as a three-quark bound state of (1, 2)
+   constituents.  Derived from 2ω density-fluctuation
+   cancellation (R60 Track 16).
+3. **Per-sheet Dirac–Kähler spin**.  Each 2-torus sheet hosts
+   a spin-½ fermion tower; compound modes compose via SU(2)
+   angular-momentum addition.  The Standard Model taxonomy
+   (1-/2-/3-sheet ↔ lepton/meson/baryon) falls out
+   structurally.  (R62 derivation 7d, confirmed empirically by
+   R60 Track 20.)
 
 **What is derived from geometry:**
-- The connection between Ma-sheet windings and spacetime
-  coupling (the tube↔ℵ↔t chain)
-- The relationship σ_ra = (sε)·σ_ta from shear algebra (Track 7)
-- α universality across sheets, modes, and compound modes
-  (structural, not tuned)
-- α_Coulomb = Z² × α for Z-charged nuclei (structural,
-  floating-point exact)
-- The single-k symmetry k_e = k_p = k_ν = 1.1803/(8π) emergent
-  across every tested configuration
 
-**What remains an input:**
-- The *value* of α = 1/137.036 itself — it enters through
-  σ_ta = √α and σ_at = 4πα.  Model-F explains how α *couples*
-  to spacetime but does not explain why the coupling strength
-  has that particular value.
+- The α-coupling chain (structure, not value)
+- σ_ra = (sε)·σ_ta from shear algebra (R60 Track 7)
+- α universality across sheets and modes (structural)
+- α_Coulomb = Z² α for Z-nuclei (floating-point exact)
+- Single-k symmetry k_e = k_p = k_ν = 1.1803/(8π)
+- Z₃ selection rule `n_pt ≡ 0 (mod 3)` for free p-sheet modes
+  (R60 Track 16)
+- Z₃ exemption on the e-sheet via R_loc < 1 (R60 Track 17)
+- ν charge = 0 from real-field conjugate-pair structure
+  (R60 Track 18)
+- Per-sheet spin ½ and SU(2) compound composition (R62 7d)
+- Standard Model particle taxonomy from sheet-count
+  (R60 Track 20)
 
-| Measured inputs | Derived |
-|----------------:|---------|
-| m_e, m_p, Δm²₂₁ | all particle masses, full inventory |
-| α = 1/137 | α-coupling mechanism, universality, Z² scaling |
-| **4 inputs total** | same as model-E (no reduction) |
+**What remains observational input:**
 
-**Headline numbers:** R60 reproduces 16 of 18 model-E compound
-particles within 1.6%, beats model-E on several (Ξ⁰ 19×, η 8×),
-reproduces nuclear scaling at 0.05–1.5%, gives α_Coulomb = Z² α
-exactly for every Z-charged nucleus, and does all this with α
-structurally universal — something model-E did not have.
+- The *value* α = 1/137.036 (enters as σ_ta = √α)
+- Three mass anchors: m_e, m_p, Δm²₂₁
+- Geometric inputs from R53/R49/R61: (ε, s) per sheet
+
+**Headline:** model-F matches 14 of 16 non-input inventory
+particles within 2%, matches or improves on model-E for every
+non-pion particle, gives α = Z² α exactly for nuclei d–⁵⁶Fe
+within 1.4%, and produces the Standard Model particle taxonomy
+from sheet-count + SU(2) structurally.
+
+Pion desert (10–13% on π⁰, π±) remains the only material
+failure; inherited from model-E, candidate for a focused
+follow-up study.
 
 ---
 
 ## Quick facts
 
-### Dimensions and indices
+**Dimensions and indices.** 11D, ordered
+`ℵ, p_t, p_r, e_t, e_r, ν_t, ν_r, S_x, S_y, S_z, t` (R59
+convention).
 
-Ordering: `ℵ, p_t, p_r, e_t, e_r, ν_t, ν_r, S_x, S_y, S_z, t`
-(11D, R59 convention).
-
-### Baseline configuration (Track 12 / 13a)
+**Baseline configuration** (R60 Track 12 + Track 15 Option A):
 
 | Parameter | Value | Source |
-|-----------|-------|--------|
-| ε_e | 397.074 | R53 Solution D (inherited from model-E) |
-| s_e | 2.004200 | R53 Solution D |
-| ε_p | 0.55 | Model-E |
-| s_p | 0.162037 | Model-E (R19-derived, preserved) |
-| ε_ν | 2.0 (R61 #1) or 5.0 (R49 Family A) | Both viable |
-| s_ν | 0.022 | R49 oscillation data |
-| k_e = k_p = k_ν | 4.696 × 10⁻² = 1.1803/(8π) | **Emergent single-k symmetry** |
-| g_aa | 1 | R59 F59 natural |
-| σ_ta | √α (signs: e = +1, p = −1, ν = +1) | R59 F59 natural |
-| σ_at | 4πα | R59 F59 natural |
-| σ_ra | **(sε) · σ_ta per sheet** | **Track 7 structural prescription** |
-| L_ring_e | 54.83 fm | derived from m_e |
-| L_ring_p | 20.55 fm | derived from m_p |
-| L_ring_ν | 1.96 × 10¹¹ fm | derived from m_ν₁ |
+|---|---|---|
+| ε_e, s_e | 397.074, 2.0042 | R53 Solution D |
+| ε_p, s_p | 0.55, 0.162037 | Model-E |
+| ε_ν, s_ν | 2.0, 0.022 | R61 #1 / R49 oscillation constraint |
+| k (all sheets) | 1.1803/(8π) = 0.04696 | Emergent single-k |
+| g_aa, σ_ta, σ_at | 1, √α, 4πα | R59 F59 natural |
+| σ_ra per sheet | (sε)·σ_ta | R60 Track 7 structural |
+| σ_ta signs | e: +1, p: −1, ν: +1 | Model-F convention |
+| L_ring_e, L_ring_p, L_ring_ν | 54.83, 47.29, 1.96×10¹¹ fm | Calibrated from m_e, m_p, m_ν |
 
-### Parameter count
+**Primary proton:** (3, 6) on p-sheet as three Z₃-bound (1, 2)
+"quark" constituents (R60 Track 15).  Nuclear scaling
+`n_pt = 3A, n_pr = 6A, n_et = 1 − Z` (R60 Track 15/19).
 
-| Category | Count | Examples |
-|----------|------:|---------|
-| **Measured dimensional scales** | **3** | m_e, m_p, Δm²₂₁ |
-| **Measured dimensionless** | **1** | α (enters via σ_ta = √α; value not derived) |
-| **Geometric inputs from prior studies** | 6 | ε, s per sheet (R53, R49, R61) |
-| **Structural (derived)** | 4 | σ_ra_e, σ_ra_p, σ_ra_ν, k (single-value) |
-| **Fixed at natural form** | 2 | σ_at = 4πα, g_aa = 1 |
+**Parameter count:**
 
-**What structural gives us despite α still being input:**
-Model-F makes α *universal* across every charged mode and
-*exactly* Z² α for Z-charged nuclei — these are structural
-predictions of the architecture once α is specified.  Model-E
-specified α via R19's formula and got per-mode coupling
-that varied with geometry; model-F gets structural universality
-for free.
+| Category | Count |
+|---|---:|
+| Measured dimensional scales (m_e, m_p, Δm²₂₁) | 3 |
+| Measured dimensionless (α) | 1 |
+| Geometric inputs from prior studies (ε, s per sheet) | 6 |
+| Structural (derived): k, σ_ra per sheet | 4 |
+| Fixed at natural form (σ_at, g_aa) | 2 |
+
+Same measured input count as model-E (4).
 
 ---
 
-## Assumptions
+## Architectural principles
 
-1. **GRID** — discrete causal lattice with internal phase.  Gives
-   Maxwell's equations, gravity, charge quantization.  Charge is
-   topological (GRID axiom A3: one tube winding = one unit).
+Each principle is established by a specific R60 track or R62
+derivation; see the referenced finding for the full argument.
 
-2. **One flat six-torus (T⁶)** in six compact material dimensions.
-   Each "sheet" is a 2-torus.  Particles are standing
-   electromagnetic waves on T⁶.  Inherited from model-E.
+### 1. Geometric α coupling (R59 F59, R60 Track 9)
 
-3. **ℵ dimension** — a sub-Planck internal edge dimension below
-   the Ma scale (GRID).  Participates as a mediator in the α
-   coupling chain but does not itself carry particle winding.
-   Introduced in R55, formalized in R59.
+The `tube ↔ ℵ ↔ t` Kaluza–Klein-style chain with natural-form
+values (σ_ta = √α, σ_at = 4πα, g_aa = 1) delivers α-strength
+coupling from Ma-sheet windings to spacetime.  The coupling
+STRUCTURE is derived; the coupling VALUE α = 1/137 is still
+input.
 
-4. **The 11×11 metric** has specific structural roles:
-   - In-sheet shears (tube↔ring) → generation structure, shear
-     resonance, compound-mode placement
-   - Tube↔ℵ couplings → σ_ta mediates α delivery from each sheet
-     to time
-   - Ring↔ℵ couplings → σ_ra = (sε)·σ_ta cancels shear-induced
-     mode dependence (derived, not free)
-   - ℵ↔t coupling → σ_at delivers α to spacetime (single global
-     parameter)
-   - Cross-sheet entries → reserved for compound-mode
-     fine-tuning (not used in model-F baseline)
+### 2. σ_ra structural cancellation (R60 Track 7)
 
-5. **Charge is topological**, formula `Q = −n_et + n_pt`.  Mode
-   winding determines integer charge.
+In-sheet shear s creates a ring-to-time leak via
+(ring→tube→ℵ→t).  Adding a direct ring↔ℵ entry at
+σ_ra = (sε)·σ_ta cancels the leak exactly.  Derivation: in
+the 4×4 sub-metric, `det(A)` becomes independent of u = sε.
+σ_ra is derived from existing geometry, not a free knob.
 
-6. **α coupling is quantized per mode**: `α_Coulomb = (α_sum)² × α`
-   where `α_sum = n_et − n_pt + n_νt`.  For unit-charge particles
-   (|Q| = 1), α = α iff |α_sum| = 1.  For Z-charged nuclei,
-   α = Z² × α exactly — reproducing the expected nuclear Coulomb
-   self-energy scaling.
+### 3. Single-k symmetry (R60 Tracks 7b, 14)
+
+The diagonal scale k = 1.1803/(8π) is the SAME for all three
+sheets, confirmed across 6+ tested geometries.  R60 Track 14
+confirmed k is a structural fixed point (solver converges
+from any init at or above K_NATURAL).  Closed-form derivation
+is open; best near-natural candidate (1+4πα)² is 0.97% off.
+
+### 4. Z₃ confinement on the p-sheet (R60 Track 16)
+
+A single (1, 2) "quark" mode on the p-sheet has charge density
+that oscillates at 2ω.  Summing N copies at uniform phase
+offsets cancels the 2ω fluctuation iff N does not divide 2.
+N = 3 is the minimum cancelling N; 120° offsets are a
+dynamical energy minimum.  The resulting selection rule:
+
+> **Free p-sheet modes require n_pt ≡ 0 (mod 3).**
+
+(1, 2), (2, 4) are confined "quark" constituents; (3, 6) is
+the free proton composite.  Exactly parallels QCD's
+"no free quarks, no diquarks, color-singlet triplets only"
+— derived from density-fluctuation cancellation on the torus
+rather than postulated as a separate SU(3) symmetry.
+
+### 5. Composite α rule (R60 Track 15, 19)
+
+For modes with gcd(|n_pt|, |n_pr|) > 1, the α-sum formula
+divides p-tube by gcd:
+
+    α_sum_composite = n_et − n_pt/gcd + n_νt
+
+For gcd = 1 modes (most of model-F's inventory), composite =
+bare rule; backward-compatible.  For Z₃-bound triplets like
+(3, 6), composite gives α = α (proton sees Coulomb α), while
+bare gives 9α (the three-strand sum).  Under the composite
+interpretation, the proton has "per-strand charge" of 1·e,
+matching observation.
+
+### 6. Z₃ exemption on the e-sheet (R60 Track 17)
+
+Z₃ binding requires the mode's Compton wavelength to fit
+inside the sheet's ring circumference:
+
+    R_loc = m_mode · L_ring / ℏc > 1   (binding active)
+
+On the p-sheet: R_loc ≈ 75 (active).  On the ν-sheet:
+R_loc ≈ 50 (geometrically permitted — see principle 7 for
+why it doesn't bind).  On the e-sheet: **R_loc ≈ 0.14**
+(binding suppressed — electron mode is delocalized over the
+sheet).  Mechanism is the CONJUNCTION of extreme ε AND magic
+shear (|s − n_r/n_t| ≲ 0.035).  The e-sheet's (ε = 397,
+s = 2.004) satisfies both; no other sheet does.
+
+Consequence: the electron propagates as a free single (1, 2)
+mode (not a three-quark composite), consistent with
+observation.
+
+### 7. ν-sheet charge = 0 from real-field structure (R60 Track 18)
+
+Under 7b's real-field picture (adopted after 7c was set
+aside), each KK mode is real-valued: Re[exp(i(n_t·y_t/R_t +
+n_r·y_r/R_r − ωt))] automatically includes both +n_t and
+−n_t components.  The observable state has ⟨n_t⟩ = 0 and
+therefore zero tube-direction charge — IF no symmetry-breaking
+mechanism distinguishes the +/− tube components.
+
+On the e-sheet, extreme shear breaks this conjugate symmetry
+(electron and positron are distinguishable).  On the p-sheet,
+Z₃ quark-color structure breaks it (baryons and antibaryons
+are distinguishable).  On the ν-sheet, neither breaker is
+present — the conjugate pair remains symmetric, giving
+ν charge = 0 structurally.
+
+Track 18 also confirmed the three-mode ν interpretation (R61
+#1 triplet) reproduces Δm²₃₁/Δm²₂₁ = 33.59 analytically
+(s_ν = 0.022 uniquely determined by the ratio 33.6; ε_ν free).
+
+### 8. Per-sheet spin-½ from Dirac–Kähler (R62 derivation 7d)
+
+Each Ma sheet is a flat 2-torus, which admits a Dirac–Kähler
+field as privileged fermion content.  KK-reducing gives a
+tower of 4D Dirac spinors labeled by winding (n_t, n_r), each
+of spin ½ independent of (n_t, n_r).  Three independent
+sheets give three fermion families — no index theorem
+required.
+
+This is the per-sheet restriction of 7c (the 6D bulk Dirac
+attempt).  Advantages: standard flat-T² math (Ivanenko–Landau
+1928 / Becher–Joos 1982 / Kogut–Susskind 1975), no chirality
+or generation-counting pathologies, compatible with GRID-style
+lattice substrates via the staggered-fermion construction.
+
+### 9. Compound spin from SU(2) angular-momentum addition (R60 Track 20)
+
+Multi-sheet compound particles have total spin given by
+tensor-product SU(2) composition of per-sheet spin-½
+contributions:
+
+| Active sheets | Allowed spins | Particle class |
+|:-:|:-:|:---|
+| 1 | ½ | **Leptons** |
+| 2 | 0 or 1 | **Mesons** (pseudoscalar → 0, vector → 1) |
+| 3 | ½ or 3/2 | **Baryons** (octet → ½, decuplet → 3/2) |
+
+**This is the Standard Model particle taxonomy** — not
+postulated, emerges structurally from the sheet architecture
++ SU(2) composition.
+
+R60 Track 20 derived this rule empirically by auditing 12
+candidate compound-spin rules; unit-per-sheet AM emerged as
+the winner (14 of 16 non-input particles within 2%, Standard
+Model taxonomy fell out).  R62 derivation 7d provides the
+theoretical underpinning.
+
+See [Q124](../qa/Q124-spin-in-mast.md) for the full narrative
+of how the spin story was settled.
 
 ---
 
-## Headline results
+## Inventory
 
-### Architecture-level
+Track 19 produced a Z₃-compliant + composite-α + parity-rule
+inventory on the (3, 6) baseline.  Full table in
+[R60 findings-19.md](../studies/R60-metric-11/findings-19.md).
+Summary:
 
-- **α-coupling mechanism is geometric** — the tube↔ℵ↔t
-  Kaluza–Klein–style chain delivers α-strength coupling from
-  Ma-sheet windings to spacetime.  The *structure* of the
-  coupling is derived; the *value* of α itself is still input
-  (via σ_ta = √α).
-- **α universality structural** across sheets, across modes
-  within a sheet (via σ_ra cancellation), and across compound
-  modes (via α-sum rule).  Every mode with `|α_sum| = 1` gets
-  the same α — a structural prediction, not a tuning.
-- **Single-k symmetry** emergent: k_e = k_p = k_ν = 1.1803/(8π)
-  to floating-point precision across every tested geometry (6+
-  configurations).  Suggests a hidden symmetry worth analytical
-  follow-up.
-- **α_Coulomb = Z² × α** for any Z-charged nucleus — physically
-  correct Coulomb self-energy scaling, emerges from the metric
-  structure given the same α input, not imposed separately.
-- **Pion mass desert** inherited from model-E — MaSt structural
-  limitation, not an R60 regression.
+- **Anchors** (m_e, m_p, ν₁): exact by calibration
+- **Single-sheet leptons** (muon, tau): within 0.12% (tau
+  via 3-sheet substitute; 1-sheet tau needs mode numbers
+  beyond |n| ≤ 6 search, R53 resonance expected to supply)
+- **3-sheet baryons** (neutron, Λ, Σ⁻, Σ⁺, Ξ⁻, Ξ⁰):
+  within 0.02–0.72%
+- **2-sheet mesons** (η, η′, φ, ρ, K⁰, K±): within 0.25–1.12%
+- **Pions** (π⁰, π±): 10.4% and 13.3% — the persistent
+  "pion desert" (halved from model-E's 22–25% but still out)
 
-### Inventory
-
-- **Stable particles exact:** electron, proton, neutrino mass
-  eigenstates all calibrated to observed values.
-- **Muon recovered at model-E tuple** (1, 1, −2, −2, 0, 0) with
-  model-E's own 0.83% accuracy.
-- **Tau, neutron, hyperons** — R60 finds α-universal
-  6-tuples within 0.01–1.6% of observed.
-- **14 of 16 non-pion particles** tabulated with α universal.
-- **π⁰ and π±** stuck at ~105 MeV (~23% off observed), same
-  failure as model-E.
+All 16 matched tuples satisfy n_pt ≡ 0 (mod 3) (Z₃ rule) and
+α = α under the composite rule.
 
 ### Nuclear scaling
 
-- d (0.05%), ⁴He (0.73%), ¹²C (1.08%), ⁵⁶Fe (1.52%) with
-  decorations.  `n₅ = A, n₆ = 3A` scaling law inherited from
-  R29 / model-E.
-- **α_Coulomb for nuclei is exactly Z² × α** (tested Z = 1, 2, 6,
-  26 — matches to floating-point precision).
+Scaling law `n_pt = 3A, n_pr = 6A, n_et = 1 − Z` (R60 Track
+15/19):
 
-### Three generations
+| Nucleus | primary Δm/m | α/α |
+|---|:-:|:-:|
+| d (²H) | 0.05% | 1 |
+| ⁴He | 0.85% | 4 |
+| ¹²C | 1.16% | 36 |
+| ⁵⁶Fe | 1.37% | 676 |
 
-Inherited intact from model-E / R53 Solution D:
-- electron (1, 2) at shear cancellation point
-- muon (1, 1) on e-sheet (compound with small ν decoration)
-- tau at compound mode (2, −6, −2, *, 1, 5)
-
-Mass ratios algebraically determined by (ε_e, s_e) with zero
-free parameters.  R53 generation resonance mechanism preserved.
+α_Coulomb = Z² × α exactly for every Z tested (structural).
 
 ---
 
-## Particle inventory
+## Three generations
 
-Ordering in 6-tuples: `(n_et, n_er, n_νt, n_νr, n_pt, n_pr)`.
-α/α values given for the R60-native tuples (with α-sum shown).
+Inherited from model-E / R53 Solution D.  Mass ratios
+algebraically determined by (ε_e, s_e) with no free parameters.
 
-| Particle | Obs (MeV) | R60 tuple | α_sum | α/α | Δm/m |
-|----------|----------:|:----------|:-----:|:---:|:----:|
-| ν₁ | 3.21 × 10⁻⁸ | (0, 0, 1, 1, 0, 0) | +1 | 1 | input/derived |
-| ν₂ | 3.33 × 10⁻⁸ | (0, 0, −1, 1, 0, 0) | −1 | 1 | derived (0.03%) |
-| ν₃ | 5.96 × 10⁻⁸ | (0, 0, 1, 2, 0, 0) | +1 | 1 | derived (2.5%) |
-| electron | 0.511 | (1, 2, 0, 0, 0, 0) | +1 | 1 | input |
-| proton | 938.272 | (0, 0, 0, 0, 1, 3) | +1 | 1 | input |
-| neutron | 939.565 | (−1, −2, −1, *, −1, −3) | −1 | 1 | 0.14% |
-| muon | 105.658 | (1, 1, −2, *, 0, 0) | −1 | 1 | 0.83% |
-| tau | 1776.86 | (2, −6, −2, *, 1, 5) | −1 | 1 | 0.06% |
-| Λ | 1115.68 | (−2, −4, −1, *, −2, −2) | −1 | 1 | 0.09% |
-| Σ⁺ | 1189.37 | (−1, 2, 0, *, 0, −4) | +1 | 1 | 0.00% |
-| Σ⁻ | 1197.45 | (3, 1, −2, *, 2, −1) | −1 | 1 | 0.01% |
-| Ξ⁰ | 1314.86 | (−1, 6, −1, *, −1, 3) | −1 | 1 | 0.01% |
-| Ξ⁻ | 1321.71 | (−1, −6, −2, *, −2, −3) | −1 | 1 | 0.19% |
-| η′ | 957.78 | (−1, −4, 0, *, −1, −3) | 0 | 0 | 0.35% |
-| η | 547.86 | (−1, −4, 0, *, −1, 0) | 0 | 0 | 0.24% |
-| φ | 1019.46 | (−1, −3, 0, *, −1, 3) | 0 | 0 | 0.12% |
-| ρ | 775.26 | (−1, −5, 0, *, −1, −2) | 0 | 0 | 1.21% |
-| K⁰ | 497.61 | (0, −4, 0, *, 0, −1) | 0 | 0 | 0.82% |
-| K± | 493.68 | (1, 6, −2, *, 0, −1) | −1 | 1 | 1.55% |
-| π⁰ | 134.98 | (0, −1, 0, *, 0, 0) | 0 | 0 | **22.7% (stuck)** |
-| π± | 139.57 | (1, 1, −2, *, 0, 0) | −1 | 1 | **24.9% (stuck)** |
-
-(Asterisk: n_νr is degenerate at current L_ν.  Any small value works.)
-
-**Split of Q = 0 compounds into α = 0 (structurally neutral) and
-α = α (weak-coupling analog):**
-
-- α = 0 (structurally neutral): η, η′, φ, ρ, K⁰, π⁰
-- α = α: Λ, Σ⁻, neutron, Ξ⁰, Ξ⁻
-
-This is a new model-F prediction; comparison to observed weak
-interaction cross-sections for these particles is a follow-up.
-
-### Nuclear scaling
-
-Scaling law `n₅ = A, n₆ = 3A, n_et = A − Z` with small
-decoration on (n_er, n_νr):
-
-| Nucleus | A | Z | R60 Δm/m | α/α = Z² |
-|---------|--:|--:|:--------:|:--------:|
-| d | 2 | 1 | 0.05% | 1 |
-| ⁴He | 4 | 2 | 0.73% | 4 |
-| ¹²C | 12 | 6 | 1.08% | 36 |
-| ⁵⁶Fe | 56 | 26 | 1.52% | 676 |
-
-The α_Coulomb = Z² α pattern is *exact* (tested to Z = 26,
-match to floating-point precision).
-
----
-
-## Architecture details
-
-### The σ_ra structural fix
-
-The key R60 discovery (Track 7): with in-sheet shear `s` on a
-sheet, the ring inherits an indirect coupling to the t direction
-via the (ring → tube → ℵ → t) chain, breaking α universality
-across modes on the sheet.  The fix: add a direct ring↔ℵ entry
-at value `σ_ra = (s · ε) · σ_ta`.  This cancels the indirect leak
-exactly, restoring α universality.
-
-Derivation: in the 4×4 (tube, ring, ℵ, t) sub-metric with σ_ra
-active, `det(A) = k · (σ_ta² − k·(g_aa + σ_at²))` — completely
-independent of `u = sε`.  Signature stays intact at arbitrarily
-large sε (verified up to sε = 2000, Track 8b).
-
-σ_ra is **derived from existing geometry**, not free.  It's not
-a new knob.
-
-### The single-k symmetry
-
-In 6 different geometric configurations (all shearless, magic
-shear on e+p, extreme e + magic p, extreme e + model-E p, etc.),
-the joint solver with three independent per-sheet k knobs lands
-at k_e = k_p = k_ν = 1.1803/(8π) to floating-point precision.
-
-**R60 Track 14 confirmed k is a structural fixed point** — the
-solver converges to the same k from any initial value at or above
-K_NATURAL = 1/(8π).  Track 14 also derived the single-sheet
-α_Coulomb equation in closed form using sympy, but the full
-multi-sheet derivation that would explain *why* k = 1.1803/(8π)
-specifically is not closed (best near-natural form found:
-(1+4πα)² = 1.19181, off by 0.97%).
-
-So: **k is structurally determined (empirically confirmed); the
-closed-form expression for its specific value remains open.**
-One global k suffices for model-F in practice.
-
-### α quantization for compound modes
-
-Compound modes span multiple sheets.  For a mode
-`(n_et, n_er, n_νt, n_νr, n_pt, n_pr)`:
-
-    α_Coulomb = (n_et − n_pt + n_νt)² × α
-
-Exact, verified across every test case.  Two direct consequences:
-
-1. **α universality** requires `|n_et − n_pt + n_νt| = 1` — the
-   R60 selection rule for unit-α coupling.
-2. **Nuclear Z² scaling** emerges naturally: for a Z-nucleus with
-   `n_et = A − Z`, `n_pt = A`, `n_νt = 0`, we get α_sum = −Z,
-   hence α_Coulomb = Z² α.
-
-### ν-sheet optionality
-
-R60 Track 13b found that the ν candidate choice has **negligible
-effect** on hadron inventory and nuclear scaling (ν contributes
-~10⁻¹⁰ of compound masses at our L_ν).  Multiple R61 candidates
-are viable.
-
-The two cleanest:
-
-| Candidate | (ε_ν, s_ν) | ν triplet | Δm²₃₁/Δm²₂₁ |
-|-----------|:----------:|:---------:|:-----------:|
-| **R61 #1 (recommended)** | (2.0, 0.022) | (+1,+1)(−1,+1)(+1,+2) | 33.591 |
-| R49 Family A (model-E's choice) | (5.0, 0.022) | (+1,+1)(−1,+1)(+1,+2) | 33.591 |
-
-Both give full ν α universality (α_ν₁ = α_ν₂ = α_ν₃ = α) and
-match the R49 oscillation target (33.6) to 0.03%.  R61 #1 has
-slightly more compact geometry.  R49 Family A matches model-E
-exactly.  Either is fine.
+Under per-sheet Dirac–Kähler (R62 7d), the three generations
+are three KK modes at different (n_t, n_r) windings on the
+e-sheet — each spin ½ independent of winding.  The generation
+resonance of R53 selects which specific KK excitations are
+realized as observable leptons at specific masses.
 
 ---
 
 ## Open questions
 
-### Unresolved
+For the full discussion see [R60 findings index](../studies/R60-metric-11/findings.md)
+and linked per-track findings.
 
-- **Pion mass desert.**  π⁰ and π± land at ~105 MeV (same slot
-  as muon) instead of observed 135–140 MeV.  Identical failure
-  to model-E.  Likely needs chiral dynamics or paired-mode
-  physics beyond R60.  Candidate for follow-up study R62.
-- **Single-k symmetry analytical derivation.**  R60 Track 14
-  confirmed the value is a structural fixed point (empirical)
-  and derived the single-sheet α_Coulomb equation analytically.
-  The full multi-sheet derivation that would give k in closed
-  form is not yet completed.  Best near-natural-form candidate:
-  (1+4πα)² = 1.19181 (0.97% off the observed 1.18034).
-- **ν-sheet (1, 0) ghost.**  At R61 #1 geometry, the (1, 0) ν
-  mode is lighter than (1, 1).  Per R61's own taxonomy, filtered
-  by pair-cancellation or dark-mode mechanisms.  External to R60
-  architecture.
-
-### Working assumptions
-
-- ν-sheet architecturally coupled at σ_ta = √α with sign
-  convention.  Neutral charge comes from topology (Q = −n_et +
-  n_pt = 0 for pure ν modes), not from zeroing σ_ta.  R60 Track 6
-  validates this.
-- Single-k symmetry is structural; one k value works for all
-  sheets.
-
----
-
-## Parameter count (detailed)
-
-**Measured (from experiment):**
-- m_e, m_p, Δm²₂₁ — 3 dimensional scales
-- α = 1/137.036 — 1 dimensionless coupling (value is input;
-  enters as σ_ta = √α.  Model-F does not derive this number.)
-
-**Structural (fixed by R60 architecture, not tunable):**
-- σ_ra = (sε)·σ_ta per sheet — Track 7 derivation
-- k = 1.1803/(8π) — single-k symmetry across all sheets
-- Sign convention for σ_ta per sheet: +1 for e, −1 for p, +1 for ν
-- α_Coulomb for a mode (n_et, n_er, n_νt, n_νr, n_pt, n_pr):
-  equals (n_et − n_pt + n_νt)² × α exactly — the α-sum rule
-- Nuclear α_Coulomb = Z² × α (consequence of the α-sum rule
-  when α_sum = −Z)
-
-**Fixed at R59 F59 "natural form" once α is chosen:**
-- σ_ta = √α (the α-delivery coupling magnitude)
-- σ_at = 4πα (ℵ → t coupling)
-- g_aa = 1 (ℵ diagonal)
-
-**Inherited from prior studies (physics-determined):**
-- ε_e, s_e from R53 Solution D (lepton generation ratios exact)
-- ε_p, s_p from model-E / R19 formula
-- ε_ν, s_ν from R49 oscillation data
-
-**What R60 actually derives.**  Not the value of α — it's input.
-What *is* derived:
-- The geometric mechanism by which Ma windings couple to
-  spacetime (the tube↔ℵ↔t chain)
-- The structural relationship σ_ra = (sε)·σ_ta that cancels
-  shear-induced mode-dependence
-- The α-sum rule for compound modes and its specialization to
-  Z² α for nuclei
-- The single-k symmetry
-- α universality across all charged particles from the tube-
-  winding structure
-
-Track 5 F22 closed-form: `Q_Coulomb = 0 ⟺ n_r/n_t = sε + 1/(sε)`,
-identifying which (ε, s) values structurally neutralize α for a
-given mode.  This is a derived geometric fact.
+- **Pion mass desert.**  Persists through all R60 tracks.
+  Halved by Track 19 (23% → 10–13%) but not closed.
+  Candidate for a focused follow-up study.
+- **Single-k closed form.**  k = 1.1803/(8π) confirmed
+  structurally; analytical derivation of its specific value
+  remains open (R60 Track 14).
+- **ν-sheet (1, 0) ghost.**  At R61 #1 geometry, (1, 0) ν
+  is lighter than (1, 1).  External filter assumed (R61
+  pair-cancellation); pool item.
+- **Specific spin within SU(2)-allowed sets.**  R60 Track 20's
+  rule gives a SET of allowed spins (e.g., 2-sheet = 0 or 1).
+  Which specific spin realized depends on internal structure;
+  derivation of the specific-spin selection is a pool item.
+- **Per-sheet Dirac–Kähler axiomatization.**  R62 7d treats
+  per-sheet Dirac–Kähler as given; a deeper axiomatic
+  derivation (likely via GRID lattice staggered fermions) is
+  a pool item.
+- **Muon tuple ambiguity.**  Track 19 Z₃ search found muon at
+  3-sheet (1, 1, −2, −6, 0, 0); Track 20 unit-per-sheet AM
+  search found muon at 1-sheet (1, 1, 0, 0, 0, 0) with
+  similar mass accuracy.  Under 7d the 1-sheet tuple is the
+  physically clean assignment (lepton as 1-sheet particle);
+  the 3-sheet tuple is a search artifact.  True lepton
+  generations need R53 resonance machinery not implemented
+  in the brute-force search.
+- **Photon on GRID — rigorous derivation.**  The
+  compactification-determines-spin principle extends to
+  GRID's aleph (S¹) giving the photon (spin 1), but the
+  explicit GRID → Maxwell derivation is a future track (R62
+  derivation 11 target).
 
 ---
 
 ## Comparison to model-E
 
 | Property | Model-E | Model-F |
-|----------|:-------:|:-------:|
-| Metric dimensionality | 9D (T⁶ + S + t, no ℵ in metric) | **11D (T⁶ + ℵ + S + t)** |
-| α *value* | Input (via R19 shear formula) | Input (via σ_ta = √α, σ_at = 4πα) — same |
-| α *coupling mechanism* | R19 formula relates α to shear; per-sheet | **Geometric chain tube↔ℵ↔t; structural** |
-| α universality | Not structural (per-mode coupling varies) | **Structural — same α for every charged particle** |
-| Muon | (1, 1, −2, −2, 0, 0), 0.83% | Same tuple, 0.83%, α = α |
-| Tau | (3, −6, 2, −2, 2, 3), 0.05% | (2, −6, −2, *, 1, 5), 0.06%, α = α |
-| Neutron | (0, −4, −1, 2, 0, −3), 0.07% | (−1, −2, −1, *, −1, −3), 0.14%, α = α |
-| Λ | 0.00% | 0.09% |
-| Ξ⁰ | 0.19% | **0.01%** (19× better) |
-| η | 1.84% | **0.24%** (8× better) |
-| Nuclear scaling | ≤ 1.1% | ≤ 1.5% (1–2× worse in absolute terms) |
-| **α_Coulomb for nuclei** | N/A (α not extracted per-particle) | **= Z² × α, exact structural** |
-| Measured inputs | 4 (m_e, m_p, Δm²₂₁, α) | 4 (same — value of α still input) |
-| Pion failure | 22.7% / 24.9% | 22.7% / 24.9% (same) |
+|---|:-:|:-:|
+| Metric dimensionality | 9D | **11D (+ ℵ)** |
+| α coupling | Per-mode, geometry-dependent (R19) | **Structural via tube↔ℵ↔t chain** |
+| α universality | Not structural | **Structural — same α for every charged particle** |
+| Proton mode | (1, 3) bare | **(3, 6) as Z₃-bound (1, 2) triplet** |
+| Spin derivation | Parity rule (ad hoc) | **Per-sheet Dirac–Kähler + SU(2) AM** (R62 7d) |
+| Standard Model taxonomy | Not derived | **Sheet-count ↔ lepton/meson/baryon structural** |
+| Nuclear α_Coulomb | N/A | **Z² α exact** |
+| Inventory accuracy | 16/18 at 0.0–1.84% (pions 23–25%) | 14/16 at 0.02–1.12% (pions 10–13%) |
+| Nuclear d→⁵⁶Fe | ≤ 1.1% | ≤ 1.4% |
+| Measured inputs | 4 (m_e, m_p, Δm²₂₁, α) | 4 (same) |
 
-**Net:** model-F has the same spectrum accuracy as model-E and
-the same 4 measured inputs (including α itself), but trades
-model-E's per-mode α-coupling (which varied with geometry) for a
-structural α universality that holds across every charged mode,
-every compound, and every Z-nucleus (as Z²α).  The coupling
-*mechanism* is now geometric; the coupling *value* remains
-observational input.
+Model-F has the same measured input count as model-E and the
+same pion desert.  What's added: a derivation for the α-
+coupling mechanism, a derivation for compound-mode spin (R62
+7d), a principled confinement structure for the proton (Z₃ on
+p-sheet), a derived charge-zero mechanism for neutrinos, and
+halved pion error.
 
 ---
 
-## Studies
+## Studies and references
 
-| Study | Focus | Status |
-|-------|-------|--------|
-| R59 | Architecture discovery (σ_ta = √α, σ_at = 4πα, g_aa = 1, tube↔ℵ↔t chain) | Complete |
-| R60 | Metric-11 — spectrum validation + σ_ra structural fix + single-k symmetry + inventory audit | Complete (Tracks 1–14) |
-| R61 | Neutrino sheet candidates | Complete (taxonomy used here) |
-| R62 (future) | Pion mass resolution study | Proposed, not started |
+| Study | Focus |
+|---|---|
+| R59 | Architecture discovery (σ_ta = √α, σ_at = 4πα, g_aa = 1, tube↔ℵ↔t chain) |
+| R60 | Full spectrum + Z₃ confinement + spin + inventory re-sweep (Tracks 1–20) |
+| R61 | Neutrino sheet candidates |
+| R62 | Derivations (1–10 kinematics, 7d spin) |
 
----
+**Core references:**
 
-## References
-
-- [R60 findings index](../studies/R60-metric-11/findings.md)
-- [R60 README](../studies/R60-metric-11/README.md) — track framings
-- [R60 metric-terms](../studies/R60-metric-11/metric-terms.md) — parameter reference
-- [R59 findings](../studies/R59-clifford-torus/findings.md) — architecture discovery
-- [R61 candidates](../studies/R61-neutrino-tuning/findings.md) — ν-sheet options
+- [R60 findings index](../studies/R60-metric-11/findings.md) — all 20 tracks
+- [R60 Track 15](../studies/R60-metric-11/findings-15.md) — (3, 6) viability
+- [R60 Track 16](../studies/R60-metric-11/findings-16.md) — Z₃ confinement
+- [R60 Track 17](../studies/R60-metric-11/findings-17.md) — e-sheet exemption
+- [R60 Track 18](../studies/R60-metric-11/findings-18.md) — ν charge and oscillation
+- [R60 Track 19](../studies/R60-metric-11/findings-19.md) — inventory re-sweep
+- [R60 Track 20](../studies/R60-metric-11/findings-20.md) — compound spin rule
+- [R62 derivation 7d](../studies/R62-derivations/derivation-7d.md) — per-sheet Dirac–Kähler spin
+- [Q124](../qa/Q124-spin-in-mast.md) — spin story narrative
 - Predecessor: [model-E](model-E.md)

@@ -197,3 +197,4 @@ Q105b pending renumbering.
 | Q121 | [Q121](Q121-uncertainty-as-ma-phase-ignorance.md) | Quantum uncertainty as ignorance of Ma circulation phase | Open — speculative (Hestenes lineage) |
 | Q122 | [Q122](Q122-why-torus-not-sphere.md) | Why torus and not sphere for compactification? | Answered — sphere structurally unsuitable |
 | Q123 | [Q123](Q123-higgs-mechanism-in-mast.md) | What plays the role of the Higgs mechanism in MaSt? | Open — structural answer; derivation owed |
+| Q124 | [Q124](Q124-spin-in-mast.md) | Where does particle spin come from in MaSt? | Answered — per-sheet Dirac–Kähler (7d) + SU(2) AM composition |

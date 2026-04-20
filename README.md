@@ -42,15 +42,18 @@ The Standard Model has ~19 dimensionless parameters.  Model-F
 does not reduce this count further than model-E, but it derives
 the **structure** of α coupling geometrically (see below).
 
-From these inputs, model-F derives: 16 of 18 compound particle
-masses within ~1.6%, nuclear masses from deuterium to iron with
+From these inputs, model-F derives: 14 of 16 compound particle
+masses within ~1.12%, nuclear masses from deuterium to iron with
 α_Coulomb = Z² × α exactly, three lepton generations via shear
 resonance (inherited from model-E), neutrino oscillation via
 shear, charge quantization via GRID, and — new in model-F —
-**structural α universality**: the coupling mechanism (a
-Kaluza–Klein–style tube↔ℵ↔t chain) makes α the same for every
-charged particle and exactly Z²α for every Z-charged nucleus,
-given α as a single input.
+**structural α universality** (the tube↔ℵ↔t chain makes α the
+same for every charged particle and exactly Z²α for nuclei),
+**Z₃ confinement on the p-sheet** (the proton as three (1, 2)
+"quark" constituents bound at 120° phase offsets, derived from
+density-fluctuation cancellation), and **per-sheet
+Dirac–Kähler spin** giving the Standard Model taxonomy
+(lepton/meson/baryon = 1/2/3-sheet object) structurally.
 
 For background on who built this, how AI was used, and how to
 judge what you're reading, see [DISCLAIMERS](DISCLAIMERS.md).
@@ -174,8 +177,11 @@ for the full mechanism catalog.
 ## Models
 
 The MaSt model has evolved through six generations.  The
-**current model is model-F** — the model-E spectrum architecture
-lifted to an 11D metric that derives α = 1/137 from geometry.
+**current model is model-F** — an 11D architecture that derives
+the α-coupling mechanism geometrically (value still input),
+Z₃ confinement on the proton sheet (making the proton a three-
+quark composite), and the Standard Model particle taxonomy from
+per-sheet Dirac–Kähler spin + SU(2) composition.
 
 | Model | Era | Key idea | Status |
 |-------|-----|----------|--------|
@@ -184,49 +190,42 @@ lifted to an 11D metric that derives α = 1/137 from geometry.
 | [model-C](models/model-C.md) | R39–R44 | Generalized model / `ma_model.py` — dynamic torus, dark matter, electroweak | Superseded |
 | [model-D](models/model-D.md) | R45–R52 | Filtered model / `ma_model_d.py` — waveguide cutoff, (1,3) proton, GRID integration | Superseded |
 | [model-E](models/model-E.md) | R53–R56 | Full T⁶ with generation structure — 18/20 spin-correct, shear resonance, 9×9 metric | Superseded |
-| [model-F](models/model-F.md) | R59–R61 | **11D architecture with geometric α-coupling mechanism — structural α universality across sheets, modes, compounds, and nuclei (α = Z²α)** | **Active** |
+| [model-F](models/model-F.md) | R59–R62 | **11D architecture — geometric α coupling, Z₃ confinement on p-sheet, per-sheet Dirac–Kähler spin, Standard Model taxonomy from sheet-count** | **Active** |
 
-**Headline results** (model-F; see [`models/model-F.md`](models/model-F.md)):
+**Headline results** — for the full architecture, inventory,
+and references, see [`models/model-F.md`](models/model-F.md).
 
-- **Geometric mechanism for α coupling** — the tube↔ℵ↔t
-  Kaluza–Klein-style chain with natural-form parameters
-  σ_ta = √α, σ_at = 4πα, g_aa = 1 (R59 F59, R60 Track 9)
-  derives the *structure* by which Ma-sheet windings couple to
-  spacetime at strength α.  The *value* α = 1/137 is still
-  input (via σ_ta = √α); model-F does not derive it from first
-  principles.
-- **α universal across every charged particle** by construction.
-  The mode-dependent corrections that arise from internal shears
-  are cancelled by a structural ring↔ℵ prescription
-  σ_ra = (sε)·σ_ta (R60 Track 7).  Given α as input, every
-  charged mode feels the same α — structural, not tuned.
-- **α_Coulomb for a Z-charged nucleus is exactly Z² × α** — the
-  Coulomb self-energy scaling of standard physics, emergent from
-  the metric structure given α as input.
-- **16 of 18 compound particles matched within 1.6%** — muon at
-  model-E's tuple (0.83%), tau, neutron, hyperons via R60-native
-  α-universal tuples (several beating model-E by 2–19×).
-- **Three charged lepton generations** inherited from model-E /
-  R53 — mass ratios algebraically exact from (ε_e, s_e).
-- **Nuclear masses from d to ⁵⁶Fe within 1.5%** via R29 scaling
-  law (`n₅ = A, n₆ = 3A`), with α_Coulomb = Z² α exact.
-- **Single-k symmetry** — the diagonal scale `k = 1.1803/(8π)`
-  is the same for all three sheets across every tested geometry.
-  Emergent structural feature of the architecture.
-- **Pion mass desert** persists as in model-E — structural MaSt
-  limitation, candidate for follow-up study.
-
-**What model-F changes** (see [`models/model-F.md`](models/model-F.md)):
-model-F keeps model-E's T⁶ spectrum architecture but adds the
-ℵ dimension (sub-Planck internal edge) plus an explicit S³ × t
-block, giving an 11D metric.  The α coupling goes through a
-structural tube↔ℵ↔t chain, and a derived ring↔ℵ entry
-(`σ_ra = (sε)·σ_ta`) cancels shear-induced mode-dependence, so α
-universality is structural rather than fit.  Three lepton
-generations remain from shear resonance.  The (1,1) ghost is
-eliminated by shear ordering (inherited from model-E).  Charge
-sign originates from opposite tube↔ℵ coupling signs: e-sheet
-tube at +√α, p-sheet tube at −√α.
+- **Geometric α coupling** — the tube↔ℵ↔t chain makes α
+  structurally universal across sheets, modes, compounds, and
+  nuclei.  α_Coulomb = Z² × α exactly for any Z-nucleus.  Value
+  of α still input.
+- **Z₃ confinement on the p-sheet** — (3, 6) proton as a three-
+  quark bound state of (1, 2) constituents; derived from 2ω
+  density-fluctuation cancellation (N = 3 is minimum cancelling
+  copy count).  Selection rule: free p-sheet modes require
+  n_pt ≡ 0 (mod 3).  Nuclear scaling n_pt = 3A, n_pr = 6A.
+- **e-sheet geometric exemption** — localization ratio R_loc =
+  m·L/ℏc < 1 on the e-sheet makes the electron delocalized, so
+  Z₃ binding can't form; electron propagates as a free single
+  mode.  Derived, not postulated.
+- **Per-sheet Dirac–Kähler spin** (R62 derivation 7d) — each
+  flat 2-torus sheet hosts a spin-½ fermion tower; compound
+  modes compose via SU(2) angular-momentum addition.  **Standard
+  Model taxonomy falls out**: 1-sheet ↔ lepton, 2-sheet ↔ meson,
+  3-sheet ↔ baryon.
+- **ν charge = 0 derived** — real-field KK modes are tube-
+  conjugate-symmetric; without a symmetry-breaker the tube
+  charge averages to zero.  e-sheet (extreme shear) and p-sheet
+  (Z₃ quark structure) break this symmetry; ν-sheet doesn't.
+- **14 of 16 compound particles matched within 1.12%** under
+  Z₃-compliant + composite-α search.  Several beating model-E.
+  Pion desert halved (23% → 10–13%) but not closed.
+- **Three charged lepton generations** from R53 Solution D;
+  mass ratios algebraically exact.
+- **Nuclear masses d → ⁵⁶Fe within 1.4%** with α_Coulomb = Z² α
+  exact.
+- **Single-k symmetry** — k = 1.1803/(8π) same for all sheets;
+  structural fixed point (R60 Track 14), closed form open.
 
 
 ## Foundation
@@ -308,7 +307,7 @@ sheet to three (3Ma = Ma_e × Ma_ν × Ma_p), yielding Ma (R26).
 
 | File | Purpose |
 |------|---------|
-| [`models/model-F.md`](models/model-F.md) | **Current model** (active) — 11D architecture with geometric α-coupling mechanism; α universal across sheets/modes/compounds, = Z²α for nuclei (α value still input) |
+| [`models/model-F.md`](models/model-F.md) | **Current model** (active) — 11D architecture, geometric α coupling, Z₃ p-sheet confinement, per-sheet Dirac–Kähler spin + SU(2) compound composition, Standard Model taxonomy from sheet-count |
 | [`models/model-E.md`](models/model-E.md) | Previous model — full T⁶ with generation structure, 18/20 spin-correct, 9×9 metric |
 | [`models/model-D.md`](models/model-D.md) | Filtered model with waveguide cutoff and (1,3) proton |
 | [`models/model-C.md`](models/model-C.md) | Historical — particle tables, parameter census, dynamic torus |

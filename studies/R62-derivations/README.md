@@ -36,24 +36,22 @@ mass, charge, Lorentz force, two-torus and three-torus
 extensions, and scale-invariance.  Three items remain, to be
 taken in order:
 
-1. **Resolve the choice of spin mechanism.**  Derivation 7
-   produced three alternatives: 7a (metric route — spin-½
-   not determined by T² metric alone), 7b (WvM CP
-   polarization ratio rule — s = n_t/n_r, rules out
-   (1, 3) as spin-½), 7c (6D Dirac KK reduction —
-   uniformly spin-½, not GRID-native without a Dirac–
-   Kähler bridge).  A fourth GRID-native path via non-
-   abelian closure of cross-sheet Killing generators
-   (hypothesized in 7a F23) is also open but not yet
-   executed.  A discriminator is needed — candidates
-   include the cross-sheet T⁶ fit against R54,
-   direct wave-equation calculation of the rotational
-   transformation properties of a specific compound
-   mode, or an experimental angle (e.g. do (1, 3)
-   proton modes survive the WvM rule?).  Until a
-   discriminator selects, the three alternatives
-   coexist and both 7b-consistent and 7c-consistent
-   phenomenology should be tracked in the R-studies.
+1. **Spin mechanism — resolved by derivation 7d.**
+   Derivation 7 previously had three alternatives (7a, 7b,
+   7c) that each had issues.  Derivation 7d (added after
+   R60 Track 20) resolves the choice by deriving spin
+   content from per-sheet Dirac–Kähler construction on each
+   flat 2-torus Ma sheet.  Every KK mode on every sheet is
+   spin-½, independent of winding; compound modes follow
+   SU(2) angular-momentum composition across active sheets,
+   yielding exactly the Standard Model taxonomy
+   (1 sheet → lepton, 2 sheets → meson, 3 sheets → baryon).
+   The empirical winner of R60 Track 20 (unit-per-sheet AM
+   rule) matches 7d's derivation exactly.  7a, 7b, 7c are
+   retained as: 7a = negative-result context, 7b = mode-
+   structure rule within its single-sheet domain, 7c =
+   ambitious bulk version of the same idea that 7d cleanly
+   realizes per-sheet.
 
 2. **Magnetic moment — tree level only (pool g).**  Gated
    by step 1.  Once a spin mechanism is selected, derive
