@@ -1,6 +1,6 @@
 # Derivations — From Photon to Particle
 
-**Status:** In progress (3 of ~10 derivations complete)
+**Status:** In progress (6 of ~10 derivations complete; spin under active investigation)
 
 A roadmap and index for the analytical derivations that put
 MaSt on a first-principles foundation.  Each derivation is a
@@ -59,7 +59,7 @@ the geometry.
 | Lorentz force on standing-wave states | D6 (Track 6) | **Complete** |
 | Minimal coupling derived (not postulated) | D6 (Track 6) | **Complete** |
 | Shear is mass-only at centroid level | D6 (Track 6) | **Complete** |
-| Spin from holonomy on sheared torus | *\<future\>* | Planned (high-risk) |
+| Spin quantum number | *\<in progress\>* | Three competing approaches under evaluation (D7a, D7b, D7c) |
 | Magnetic moment from charge + spin | *\<future\>* | Planned |
 | Compound modes from cross-shears | *\<future\>* | Planned |
 | Full 6D particle inventory | *\<future\>* | Planned |
@@ -89,8 +89,9 @@ D2: Kaluza-Klein on a 2-torus
 │
 ├──────────────────┬──────────────────┐
 ▼                  ▼                  ▼
-D3: Mass        D5: Charge        <future>:
-│                  │               Spin (?)
+D3: Mass        D5: Charge        D7a/b/c:
+│                  │               Spin
+│                  │               (in progress)
 ▼                  │                  │
 D4: MaSt μ²        │              <future>:
 │                  │              Mag moment
@@ -384,25 +385,51 @@ resulting (m, Q) values without further shear dependence.
 - F19: shear affects spectrum only, not the centroid force
 
 
-### *\<future\>* — Spin from holonomy on the sheared 2-torus
+### Spin — in progress (three competing approaches)
 
-**Status:** Planned (pool item f) — **highest-risk, highest-reward**
+**Files:**
+[`derivation-7a.md`](../studies/R62-derivations/derivation-7a.md),
+[`derivation-7b.md`](../studies/R62-derivations/derivation-7b.md),
+`derivation-7c.md`
+**Status:** Under active investigation
 **Uses:** D2
 
-The hypothesis: parallel transport around the two cycles of
-the sheared 2-torus produces a holonomy phase.  When this
-phase equals π × (odd integer), the wavefunction changes sign
-under a 2π rotation — the defining property of spin ½.
+Three approaches to deriving the spin quantum number of a
+standing-wave mode on the 2-torus have been explored.  They
+reach different conclusions:
 
-If this works, MaSt's empirical spin rule (odd tube winding
-→ spin ½) is derived from the torus metric.  If it doesn't,
-the spin rule remains a postulate, and the failure tells us
-what extra structure is needed.
+**D7a — Metric structure (Killing vectors, holonomy).**
+Asks whether the flat T² metric can produce spin-½.
+Correctly shows it cannot: the Killing algebra is abelian
+and the holonomy is trivial.  Conclusion: spin-½ is not
+derivable from the metric alone.
+
+**D7b — Field polarization (WvM ratio rule).**  Asks how
+many times the CP electric field vector rotates per ring
+circuit.  Arrives at s = n_t/n_r (the Williamson–van der
+Mark ratio).  For the electron (1,2): spin ½.  For (1,3):
+spin 1/3 — which conflicts with the proton assignment in
+model-E.  Notes that the rotation-counting argument treats
+the photon classically; standing-wave subtleties may modify
+the result.
+
+**D7c** — A third approach currently under evaluation.
+
+The three approaches address different questions (metric
+vs field vs ...) and the correct answer may depend on which
+question is physically relevant for MaSt's standing-wave
+particles.  The project currently uses the "parity rule"
+(odd tube winding → spin ½), which was introduced empirically
+around R50 and has not been formally derived.  Resolution of
+the spin question has implications for the proton mode
+assignment and potentially for the particle inventory.
+
+Which spin rule to adopt is an open question.
 
 
 ### *\<future\>* — Magnetic moment from charge + spin
 
-**Status:** Planned (pool item g, depends on spin derivation)
+**Status:** Planned (pool item g, blocked until spin is resolved)
 
 Once charge and spin are derived from the same geometry, the
 magnetic moment follows from Lorentz covariance — E and B
@@ -491,7 +518,11 @@ that subsequent derivations cite.  The chain:
 | F7 | Mass formula m²c² = h^ab P_a P_b | D4, future (compound modes) |
 | F8 | Pythagorean special case | D4 |
 | F9 | Mass-charge mixing from shear | D4, future (spin) |
-| F10 | Inertia on the 2-torus | future (Lorentz on standing waves) |
+| F10 | Inertia on the 2-torus | D6 |
 | F14 | Charge = tube Killing momentum, Q = e × n_t | future (Lorentz, compound modes) |
 | F15 | Universal charge formula Q = −n₁ + n₅ | future (compound modes, full 6D) |
-| F16 | Ring momenta conserved but dark | future (compound modes) |
+| F16 | Ring momenta conserved but dark | D6, future (compound modes) |
+| F17 | Lorentz force with derived m, Q | future (compound modes, full 6D) |
+| F18 | Minimal coupling is geometric | — (standalone result) |
+| F19 | Shear is mass-only at centroid level | — (standalone result) |
+| F20–F22 | Spin (competing results from D7a/b/c) | In progress — not yet settled |

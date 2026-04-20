@@ -1,6 +1,6 @@
 # R62: Derivations
 
-**Status:** Tracks 1–6 complete (Program 1)
+**Status:** Tracks 1–7 complete (Program 1)
 **Type:** theoretical (analytical, no scripts required)
 **Depends on:** [primers/kaluza-klein.md](../../primers/kaluza-klein.md)
   (KK derivation of Lorentz force from 5D metric), R59 (Clifford
@@ -1147,6 +1147,431 @@ lemma F17–F19 stated at the end.
 
 ---
 
+#### Track 7 — Spin from the 2×2 internal torus metric (promoted from pool item **f**)
+
+**Goal.**  Determine which spin values can be carried by
+standing-wave eigenstates of a photon on the sheared 2-torus
+of Tracks 2–6, and identify the geometric mechanism (if any)
+that produces each.  Specifically: derive spin-1 from the
+U(1)×U(1) Killing-vector structure of T², test whether
+spin-½ can be obtained from T² alone (by holonomy / Berry
+phase / shear-induced effective rotation), and document the
+result either way.
+
+**Why this is the right next track.**  Tracks 1–6 closed the
+single-sheet "electron from light" loop for *mass* and
+*charge*; the only remaining electron quantum number that
+is not yet derived from the photon-on-2-torus geometry is
+intrinsic spin.  Spin is also the prerequisite for the
+magnetic-moment derivation (pool item g): if Track 7
+succeeds, g follows almost mechanically from Lorentz
+covariance; if Track 7 fails, g cannot be addressed without
+a different mechanism.
+
+**Honest framing of the risk.**  Standard physics derives
+spin from spinor representations of the Lorentz group,
+which is a separate algebraic structure from the
+internal-momentum / Killing-vector structure that Tracks
+1–6 have used.  The pool item f hypothesis (Berry-phase /
+holonomy on a sheared T² producing a half-integer character
+on rotation) is a **conjecture**, not a known result.
+There is a topological obstruction to producing spin-½ from
+T² alone — π_1(T²) = ℤ × ℤ is abelian and admits no Z₂
+quotient in the way that π_1(SO(3)) = ℤ₂ requires for the
+SU(2) double cover — and Track 7 should either (a) find a
+mechanism that bypasses this obstruction (which would be a
+genuinely novel contribution), or (b) document the
+obstruction and identify what additional geometric
+structure (beyond a single 2-torus) would be required to
+produce spin-½.  Either outcome is informative.
+
+**Strategic framework and attribution.**  The conceptual
+framework — *charge follows from internal-space symmetry,
+spin follows from spacetime symmetry, both as Killing-vector
+charges* — is due to Horoto & Scholtz (arXiv:2404.05302,
+2024; see `reference/horoto-scholtz-summary.md`).  Their §5
+gives an explicit Killing-vector derivation of spin-1 from
+3D Euclidean rotational isometries and of spin-½ from a
+4D-Euclidean Killing structure on the 3-sphere with Hopf
+coordinates (their Eq. 224–227).  Track 7 adopts this
+framework, applies it to MaSt's 2-torus internal space, and
+asks where it lands.  The application to T² with shear
+(rather than to S³) is the novel part; the strategic frame
+is theirs and is credited as such in the derivation file.
+
+**Strategy.**  Three sub-questions, in order:
+
+1. **Spin-1 on T².**  Show that vector-field eigenstates on
+   T² (the (n_t, n_r) modes of a 6D 1-form A_M) carry
+   spin-1 under 4D Lorentz, exactly as Horoto–Scholtz §5
+   derives for the photon on M⁴ — but now with the
+   *additional* internal U(1)×U(1) phase structure of T²
+   labelling the (n_t, n_r) sector.  This is the easy part:
+   it should fall out cleanly from the metric ansatz of F4
+   plus the standard 4D representation theory of SO(1,3).
+
+2. **Spin-½ via shear-induced holonomy.**  Test whether the
+   off-diagonal metric component g_45 = εs (F11) produces a
+   non-trivial holonomy or Berry phase that, after a closed
+   transport on T², gives a (−1)^{n_t} factor consistent
+   with MaSt's empirical parity-of-tube-windings rule for
+   spin-½.  Examine the spin connection on the sheared T²,
+   the parallel transport of the (n_t, n_r) eigenstate
+   around closed loops, and the action of 4D rotations
+   (which by themselves do not act on the compact
+   coordinates).  This is the high-risk part.
+
+3. **If 2 fails, document the obstruction precisely.**
+   Identify exactly which property of T² blocks the
+   construction (likely: π_1(T²) is abelian, no Z₂
+   subgroup; equivalently, all U(1) flat bundles on T² have
+   integer first Chern class, no half-integer flux without
+   adding new structure).  State what *additional*
+   geometric input would be needed: e.g., extending the
+   internal space from T² to S³ (Horoto–Scholtz's choice),
+   adding cross-sheet coupling (MaSt's three-sheet T⁶
+   geometry), or invoking a Wess–Zumino–Witten topological
+   term.  This makes the negative result actionable for
+   subsequent tracks.
+
+**Tactics.**
+
+1. **Setup.**  Recap the relevant inputs from F4 (U(1)×U(1)
+   gauge structure on T²), F11 (the (ε, s) metric), and
+   the standing-wave eigenstates of F8 (the (n_t, n_r)
+   modes).  State the precise question: under what action
+   does the eigenstate transform as spin-s for some s?
+
+2. **Spin from internal Killing vectors (Horoto–Scholtz
+   framework).**  State Horoto–Scholtz's master equation
+   ξ_i^ν ∂_ν A_μ + ∂_μ ξ_i^ν A_ν = 0 (their Eq. 191) and
+   identify what structure it has on T².  T² has two
+   commuting Killing vectors ξ_4 = ∂_4, ξ_5 = ∂_5; their
+   eigenvalues label the (n_t, n_r) sector.  Show that
+   these are *charge*-type eigenvalues (abelian phases),
+   not *spin*-type (non-abelian rotations).
+
+3. **Spin-1 from 4D Lorentz and 1-form modes.**  Take the
+   field to be a 6D 1-form A_M(x^μ, x^4, x^5) instead of a
+   scalar Ψ.  Decompose A_M into A_μ (4D vector) and
+   A_a = (A_4, A_5) (compact components).  Show that A_μ
+   transforms as a 4-vector under 4D Lorentz, in any fixed
+   (n_t, n_r) sector.  In the rest frame, the spatial
+   components of A_μ form a 3-vector representation of SO(3)
+   — i.e., spin-1.  This recovers Horoto–Scholtz's spin-1
+   result with the additional structure of the internal
+   T² labelling.
+
+4. **The obstruction to spin-½ on T².**  Write down the
+   Horoto–Scholtz spin-½ Killing vectors (their Eq. 224)
+   and check whether they exist on T².  Show that they
+   require at least four spatial dimensions with rotational
+   isometry — a structure T² does not provide.  Specifically:
+   the Lie algebra so(3) requires three Killing vectors with
+   non-vanishing Lie brackets, but T² only admits two
+   commuting Killing vectors.
+
+5. **Holonomy / Berry-phase test for spin-½ on sheared T².**
+   Compute the parallel transport of a generic frame around
+   the two cycles γ_t and γ_r of the 2-torus, in the
+   presence of the shear g_45 = εs (F11).  Use the
+   Levi-Civita connection of the (ε, s) metric to compute
+   the connection 1-forms and the resulting holonomies.
+   Determine whether any closed transport produces a
+   half-integer phase that depends on n_t.
+
+6. **Verdict on the parity-of-n_t rule.**  Compare the
+   computed holonomy (step 5) with MaSt's empirical
+   spin-½ rule (odd n_t → spin-½, even n_t → integer
+   spin).  Either (a) the holonomy reproduces this rule
+   for some specific shear value (success), or (b) the
+   holonomy is integer-valued for all shears (the rule is
+   not derivable from T² geometry alone).
+
+7. **Path forward.**  In either case, document what is
+   pinned down and what remains.  If (a), state the
+   specific shear constraint and check it against MaSt's
+   fitted shear values.  If (b), enumerate the
+   alternative geometric mechanisms — extending the
+   internal space (Horoto–Scholtz's S³ approach), invoking
+   cross-sheet coupling on the full T⁶, or using a
+   Wess–Zumino topological term — and identify the most
+   natural for MaSt to explore in subsequent tracks.
+
+**Deliverable.**  `derivation-7.md` — full step-by-step
+derivation in the same format as derivations 1–6, with
+explicit attribution to Horoto–Scholtz where their
+framework is used and clear identification of the novel
+parts (the application to sheared T² and the resulting
+verdict on MaSt's parity rule).
+
+**Acceptance criteria.**
+
+- Horoto–Scholtz's framework is explicitly cited (arXiv
+  number, year, authors) at the points where it is used —
+  in the framing, in the spin-1 derivation, and in the
+  spin-½ Killing-vector setup.
+- Spin-1 on T² is derived cleanly from the 1-form mode
+  expansion plus 4D Lorentz, with no postulated input
+  beyond what F4 provides.
+- The obstruction to spin-½ via the Killing-vector route
+  on T² is shown rigorously (Lie algebra count, dimension
+  count) — not asserted.
+- The holonomy / Berry-phase calculation for the sheared
+  T² is performed explicitly: connection 1-forms written
+  down, parallel transport integrated around both cycles,
+  resulting phases computed.
+- The verdict on MaSt's parity-of-n_t rule is unambiguous
+  — either derived (with the precise shear condition
+  stated) or shown not to follow from T² alone (with the
+  obstruction identified).
+- The novel contributions (application to sheared T²,
+  verdict on parity rule) are clearly distinguished from
+  the parts borrowed from Horoto–Scholtz.
+
+**Possible outcomes.**
+
+- **A. Spin-½ derived from sheared T² holonomy.**  The
+  shear induces a non-trivial Berry phase that, for a
+  specific value of εs related to MaSt's empirical fit,
+  produces a (−1)^{n_t} factor consistent with the
+  parity-of-tube-windings rule.  This would be the
+  **maximal-success outcome** — a genuinely novel
+  derivation of spin-½ from a topology (T²) that
+  Horoto–Scholtz's framework does not naturally produce.
+  Pool item g (magnetic moment) follows mechanically
+  from this.
+
+- **B. Spin-1 derived; spin-½ obstructed; alternative
+  mechanism identified.**  Spin-1 on T² works exactly as
+  Horoto–Scholtz §5 spin-1 (Eq. 215–220 generalized to
+  T² mode labels).  Spin-½ does not arise from T²
+  holonomy because π_1(T²) is abelian and admits no Z₂
+  cover with non-trivial monodromy.  Document this and
+  identify the most promising alternative for MaSt to
+  pursue:  (a) extending T² to S³ (Horoto–Scholtz's
+  approach, but in tension with MaSt's empirical
+  geometric scaling), (b) using cross-sheet coupling on
+  T⁶ to produce an effective non-abelian holonomy, or
+  (c) introducing a Wess–Zumino topological term.  This
+  is the **most likely outcome** and is *also*
+  informative — it tells the program where the next
+  geometric step needs to happen.
+
+- **C. Spin-1 fails too.**  If the U(1)×U(1) → 4D Lorentz
+  representation theory does not work cleanly (e.g.,
+  some sectoral mixing prevents the (n_t, n_r) modes
+  from carrying sharp 4D spin), document it.  This
+  would be a surprise and would force a major
+  reconsideration of the 1-form mode picture.
+
+**What this caps.**  After Track 7, the single-sheet
+photon-on-2-torus picture is complete to the maximal
+extent the geometry alone supports.  Whatever spin
+outcome is reached becomes an input for pool item g
+(magnetic moment) and for pool items h, i (cross-sheet
+coupling on T⁶ — where the spin question may reopen
+with additional structure).
+
+**Status.** Complete with three alternative derivations.
+Track 7 produced three independent analyses of spin on
+T², each reaching a different (and informative)
+conclusion:
+
+- [derivation-7a.md](derivation-7a.md) — metric route
+  (Killing vectors + Levi-Civita holonomy).  Result:
+  the flat-T² metric alone does not produce spin-½ by
+  either mechanism; spin-½ fields nonetheless live on
+  T² once a spin structure is supplied as an external
+  input.  *GRID-native* (uses only bosonic scalar/1-form
+  content).
+- [derivation-7b.md](derivation-7b.md) — CP
+  field-polarization route.  Result: the Williamson–
+  van der Mark ratio rule s = n_t/n_r, which gives
+  (1,2), (2,4), (3,6) all spin ½ and mode (1,3)
+  spin ⅓.  *GRID-native* (uses only the bosonic CP
+  photon, directly realized by GRID's phase field);
+  aligns with `papers/matter-from-light.md` §4.2.
+- [derivation-7c.md](derivation-7c.md) — 6D Dirac
+  KK-reduction route.  Result: every Dirac KK mode
+  is uniformly spin-½ regardless of (n_t, n_r); spin
+  becomes a field-type label rather than a torus
+  quantum number.  Mass (F7) and charge (F14) are
+  preserved.  **Not GRID-native** — posits a
+  Grassmann (fermionic) Dirac spinor that is not
+  among GRID's bosonic axioms; requires a
+  Dirac–Kähler projection from GRID's p-forms to
+  bridge the gap.  That bridge is well-established
+  in lattice gauge theory on flat tori (staggered
+  fermions) but has not been explicitly constructed
+  for MaSt.  See derivation-7c §F.4 and the lemma F24
+  at the end of that file.
+
+7b and 7c disagree on whether (1, 3) can be a spin-½
+proton (7b forbids it, 7c permits it).  The project
+keeps both alternatives open until a discriminator
+(magnetic moment, cross-sheet T⁶ fit, or full
+wave-equation calculation) selects between them.  For
+7c specifically, the Dirac–Kähler bridge is an
+additional task that must be completed before 7c can be
+regarded as a derivation from GRID rather than as a
+phenomenological 6D alternative.
+
+---
+
+#### Track 8 — Cross-shears between two 2-tori (promoted from pool item **h**)
+
+**Goal.**  Extend the KK-on-2-torus machinery of
+derivations 2–6 from a single 2-torus (4 + 2 = 6D) to
+**two 2-tori with mutual cross-shear couplings** (4 +
+4 = 8D).  Derive the generalized mass formula, identify
+the four conserved compact momenta, show that cross-
+shears produce mass-eigenstate mixing between sheets,
+and check that Track 2 is recovered in the zero-cross-
+shear limit.
+
+**Why this is the right next track.**  Spin is parked
+as an open question (7b vs 7c).  All other derivations
+in the program depend on either the single-torus
+kinematics of Tracks 2–6 or on a richer internal
+manifold.  Pool **h** is the cleanest next step: it
+uses only the metric and Killing-vector machinery
+already established, extends it to the internal space
+that MaSt actually uses (multi-sheet with cross-shears),
+and builds the analytical substrate that pool **i** (full
+T⁶ with three sheets) will need.  It also gives analytical
+form to R54's numerical compound-mode findings.
+
+**Why this is low risk.**  Pure metric algebra.  No
+new physical postulate, no new field content, no spin
+structure.  The only new element is enlarging the 2×2
+internal metric h_{ab} to a 4×4 internal metric — which
+is straightforward matrix work.  GRID-native (uses only
+bosonic metric content).
+
+**Strategy.**
+
+1. **Setup.**  8D spacetime M⁴ × T_A × T_B with
+   coordinates x^μ (μ = 0..3), y^{4,5} for sheet A
+   (tube, ring), y^{6,7} for sheet B.  Metric G_{AB}
+   block-decomposed with internal 4×4 block h_{ab}
+   (a, b = 4..7).
+
+2. **Parameter counting.**  A 4×4 symmetric matrix has
+   10 entries.  Decompose into:  3 intra-sheet A
+   (h_{44}, h_{55}, h_{45}), 3 intra-sheet B
+   (h_{66}, h_{77}, h_{67}), and 4 inter-sheet
+   cross-shears (h_{46}, h_{47}, h_{56}, h_{57}).  The
+   last four are the new degrees of freedom beyond
+   Track 2.
+
+3. **Killing vectors.**  If h is independent of all
+   four y^a (the 8D cylinder condition), there are
+   four abelian Killing vectors ξ_a = ∂/∂y^a.  Their
+   conserved charges are the compact momenta p_a; on
+   compact directions these are quantized:
+   p_a = n_a ℏ / R_a with n_a ∈ ℤ.
+
+4. **8D null condition.**  A photon-like null trajectory
+   (or the massless Klein–Gordon operator) gives
+   G^{AB} k_A k_B = 0, leading to the 4D mass-shell:
+
+   $$
+   m^2 c^2 \;=\; h^{ab}\, p_a\, p_b,
+   \qquad a, b \in \{4, 5, 6, 7\}
+   $$
+
+   where h^{ab} is the 4×4 inverse of the internal
+   metric.  This is the direct generalization of F7 /
+   F11.
+
+5. **Compound modes.**  A mode with non-zero windings
+   on both sheets (e.g. n_4 ≠ 0 AND n_6 ≠ 0) is a
+   *compound* mode.  When cross-shears vanish, h^{ab}
+   is block-diagonal and mass is additive over sheets.
+   When cross-shears are non-zero, h^{ab} has off-block
+   entries and the mass operator couples single-sheet
+   states.
+
+6. **Kinematic mixing.**  Use the Schur-complement form
+   of h^{-1} to show explicitly how cross-shears mediate
+   mass-eigenstate mixing between sheet-A-only and
+   sheet-B-only states.  This is the analytical mechanism
+   behind R54's numerical compound-mode findings.
+
+7. **Generalized Lorentz force.**  Four Killing vectors
+   → four KK U(1) gauge potentials (two per sheet).  The
+   generalized Lorentz force couples each particle to all
+   four with coefficients set by its compact momenta.
+   This generalizes Tracks 2 and 6.
+
+8. **Zero-cross-shear limit.**  Show that setting all
+   four cross-shear entries to zero recovers two
+   independent copies of Track 2, with no inter-sheet
+   coupling.
+
+**Tactics.**
+
+1. **Block decomposition.**  Write h = [[H_A, C], [C^T,
+   H_B]] with H_A, H_B ∈ ℝ^{2×2} the intra-sheet
+   metrics and C ∈ ℝ^{2×2} the cross-shear block.
+2. **Schur complement and inverse.**  Use the standard
+   2×2 block-inverse formula to obtain h^{-1} in terms
+   of H_A⁻¹, H_B⁻¹, and C.  The Schur complement
+   S = H_B − C^T H_A⁻¹ C appears naturally.
+3. **Mass-eigenstate mixing.**  Write mass² as a
+   quadratic form on the 4-vector n = (n_4, n_5, n_6,
+   n_7); show how eigenstates of this form are compound
+   modes in the C ≠ 0 case and single-sheet modes in
+   the C = 0 case.
+4. **Example: minimal non-trivial case.**  Work a simple
+   diagonal-H_A, diagonal-H_B, rank-1 C example to
+   illustrate the mixing mechanism with explicit
+   numbers.
+5. **Contact with R54.**  Cite the R54 findings on
+   compound modes and verify that the analytical
+   structure matches.  Full quantitative comparison is
+   deferred to the T⁶ track (pool i), which has three
+   sheets matching R54's actual geometry.
+
+**Deliverable.**  `derivation-8.md` — full step-by-step
+derivation with the generalized mass formula, the
+compound-mode structure, the generalized Lorentz force,
+and the zero-cross-shear limit check.  Lemma set
+F25–F28 at the end.
+
+**Acceptance criteria.**
+
+- Mass formula m² c² = h^{ab} p_a p_b with 4×4 inverse
+  metric derived cleanly from the 8D null condition.
+- Compound-mode mixing shown explicitly (with the
+  Schur-complement structure) to follow from non-zero
+  cross-shear.
+- Zero-cross-shear limit recovers two decoupled copies
+  of Track 2, with no residual inter-sheet coupling.
+- Track 2's lemmas (F3, F4, F7, F11) are cited at the
+  places where they are being generalized, so the
+  reader can see the direct lineage.
+- No new physical postulate beyond derivations 2–6.
+  GRID-native throughout.
+
+**Dependencies.**  Tracks 2, 3, 4, 5, 6 (single-torus
+KK machinery and mass formula).  Independent of Track
+7 — i.e., independent of the spin question.
+
+**What this enables.**  Pool **i** (full T⁶ with three
+sheets) becomes bookkeeping on top of this track.  Pool
+**g** (magnetic moment) can draw on the generalized
+Lorentz force of Track 8 for a cleaner proton treatment.
+Future reopening of the spin question on T⁶ (where
+non-abelian algebras could in principle arise from
+cross-sheet Killing-vector closures) is also enabled.
+
+**Status.** Complete.  See [derivation-8.md](derivation-8.md);
+lemmas F25–F28 at the end.
+
+---
+
 ### Next-track pool
 
 Candidates after Track 1. Sequence decided as we go. Each
@@ -1168,36 +1593,10 @@ winding.~~** Promoted to Track 5; see derivation-5.md.
 **e. ~~Lorentz force on the standing-wave state.~~** Promoted
 to Track 6; see derivation-6.md.
 
-**f. Spin from the 2×2 internal torus metric (the cross-coupling
-hypothesis).**
-Build the 2×2 metric of the torus alone, apply KK's derivation
-rules, and see whether spin "falls out" as a consistency
-requirement. The rough idea: the torus has an off-diagonal entry
-(the shear s), which by KK's analogy is a U(1) gauge potential
-**internal to the torus**. The holonomy of parallel transport
-around the two cycles of the torus produces a phase that depends
-on the **ratio** of the windings (n_tube and n_ring) and the
-metric coupling between them (s and ε together).
-
-Working hypothesis: for windings where the holonomy phase
-accumulates to π × (odd integer) over a full transport cycle,
-the wavefunction picks up a sign on a 2π rotation — the
-defining property of a spin-½ object. The parity-of-n_tube
-rule that MaSt currently postulates would then be the
-algebraic statement of this condition.
-
-Track 1 Part B (spinning photon on a 1D ring) provides
-classical precedent for "geometric angular momentum" that this
-track builds on: a single-loop standing wave gives integer
-L_z = nℏ; cross-coupling two loops via shear opens the door to
-half-integer values via the holonomy phase.
-
-This pool item is the highest-risk highest-reward item.
-Standard physics derives spin from spinor representations of
-the Lorentz group, which is technical. The cross-coupling idea
-bypasses that route by looking for a topological / metric
-origin of spin. It may work; it may not. Either way, the
-result is informative.
+**f. ~~Spin from the 2×2 internal torus metric (the cross-coupling
+hypothesis).~~**  Promoted to Track 7; see derivation-7a.md
+(metric route), derivation-7b.md (CP-polarization route),
+and derivation-7c.md (6D Dirac KK-reduction route).
 
 **g. Magnetic moment as a corollary of charge + spin.**
 Once charge (pool d) and spin (pool f) are derived from the
@@ -1319,6 +1718,9 @@ Objectives section above and motivates the sequence
 | derivation-4.md | Track 4 — recovery of the MaSt mass formula (complete) |
 | derivation-5.md | Track 5 — charge identification: tube as the charge-carrying winding (complete) |
 | derivation-6.md | Track 6 — Lorentz force on the standing-wave state (complete) |
+| derivation-7a.md | Track 7a — spin on T² via metric route (Killing vectors + holonomy); result: metric alone does not produce spin-½; GRID-native |
+| derivation-7b.md | Track 7b — spin on T² via CP field-polarization route; result: WvM ratio rule s = n_t/n_r; GRID-native |
+| derivation-7c.md | Track 7c — spin on T² via 6D Dirac KK reduction; result: all matter modes uniformly spin-½; not GRID-native (requires Dirac–Kähler bridge, open) |
 | scripts/ | Optional verification scripts (not expected to be needed for analytical tracks) |
 
 Future programs (Program 2, Program 3, …) will add their own

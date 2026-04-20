@@ -10,6 +10,7 @@ Source material by others, and recorded conversations that have informed the pro
 - `claude-photon-knots-particle-structure.md` — Claude conversation starting from single-photon emitters and dipole radiation, ending with a substantive discussion of the refined WvM model: photon knots for electron/proton/neutron (no quarks), the 1/137 fine-structure-constant connection, and suggestions for next steps.
 - `claude-epsilon-mu-alpha.md` — Claude conversation building ε₀ and μ₀ from first principles, through Maxwell's equations in natural units, the derivation and running of the fine structure constant α, coupling constant unification at the GUT scale, and the renormalization group perspective on "which α is fundamental."
 - `losinets-trilogy.md` — Summary of three Losinets papers (Maxwell-from-dynamics, free-photon vortex ring, baryon vortex assemblies) and how they map onto MaSt and GRID as three layers of one architecture. Source PDFs also live in this folder.
+- `horoto-scholtz-summary.md` — Summary of Horoto & Scholtz, *A New Perspective on Kaluza-Klein Theories*, arXiv:2404.05302 (2024). Geometric derivation of charge and spin as Killing-vector eigenvalues of internal vs. external spacetime symmetries, with spin-½ requiring an extra dimension and Hopf coordinates on S³. Directly relevant to R62 Program 1's "electron from light" thesis and to pool item f (spin from internal geometry). Source PDF not committed (arXiv default license — download from arXiv directly).
 
 ## Notes
 
