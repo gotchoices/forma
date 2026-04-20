@@ -1588,6 +1588,130 @@ rule handles any leftover ghost mode concerns.
 
 ---
 
+### Track 19 — Inventory re-sweep under the (3, 6) interpretation
+
+**Goal.**  Confirm that the full model-F inventory (masses,
+α values, nuclear scaling) is preserved when the (3, 6) proton
+interpretation is adopted.  This is a verification pass over
+the work done by Tracks 10–13, using existing scripts against
+the Track 15 Option A calibration (L_ring_p = 47.29 fm).
+
+**Why this track exists.**  Tracks 15–18 derived the (3, 6)
+interpretation as a coherent extension of model-F.  Track 15
+Phase 2 already showed the composite α rule is backward-
+compatible with 17 of 18 model-E inventory tuples.  Track 19
+does the empirical check: does the calibrated architecture
+actually reproduce the observed masses to the same accuracy
+model-F achieved with the (1, 3) reading?
+
+If yes → proceed to model-F update with confidence.
+If no → diagnose the specific tuples that diverge and decide
+whether they need R60-native alternatives or represent a
+blocker.
+
+**Scope — 3 phases, ~2 hours.**
+
+### Phase 1 — Rerun Track 10 inventory on (3, 6) baseline
+
+**Question:** with L_ring_p recalibrated so (3, 6) lands at
+the proton mass, and all other parameters unchanged, does
+the 18-particle inventory still match within the same accuracy
+as Track 10 reported?
+
+**Method:**
+
+1. Build the augmented metric with Track 15 Option A parameters
+   (keep everything from Track 12 baseline except L_ring_p =
+   47.29 fm).
+2. For each of the 18 model-E inventory tuples, compute mass
+   and α_Coulomb on the new metric.
+3. Compare to the Track 10 reported values.  For each particle,
+   note: matches / degrades / improves.
+4. Apply the composite α rule for any tuple where the bare rule
+   would give α ≠ α; confirm the composite rule keeps α = α.
+
+**Acceptance:** all matched particles stay within the same
+accuracy ±0.5% (tight) or ±2% (loose).
+
+### Phase 2 — Rerun Track 11 nuclear scaling
+
+**Question:** does the nuclear scaling law n_pt = 3A, n_pr = 6A,
+n_et = 1 − Z give the Track 11 accuracy (d, ⁴He, ¹²C, ⁵⁶Fe
+within 0.05–1.5%) on the recalibrated baseline?
+
+**Method:**
+
+1. Use the same metric as Phase 1.
+2. Evaluate deuterium, ⁴He, ¹²C, ⁵⁶Fe masses using the
+   (3A, 6A) scaling.
+3. Compare against Track 15 Phase 3's reported accuracies
+   (d 0.05%, ⁴He 0.69%, ¹²C 0.94%, ⁵⁶Fe 1.31%).
+
+**Acceptance:** nuclear masses within Track 15's reported
+accuracies.
+
+### Phase 3 — Re-verify α universality
+
+**Question:** does the single-k symmetry (k = 1.1803/(8π) on
+all three sheets) still hold under the (3, 6) calibration, and
+do the three targeted particles (e, p, ν₁) all land at α = α?
+
+**Method:**
+
+1. Build the augmented metric with Track 15 Option A parameters.
+2. Compute α_Coulomb for (1, 2) electron, (3, 6) proton, and
+   ν₁ = (1, 1) on the ν-sheet.
+3. Verify all three give α_Coulomb = α to floating-point
+   precision (as Track 7 established).
+
+**Acceptance:** α universality preserved.
+
+## Implementation plan
+
+**New scripts (under `scripts/` with `track19_` prefix):**
+
+- `track19_phase1_inventory.py` — rerun Track 10 inventory on
+  (3, 6) baseline
+- `track19_phase2_nuclear.py` — rerun Track 11 nuclear scaling
+- `track19_phase3_universality.py` — α universality check
+
+**Reused from existing scripts (no modification):**
+
+- `track1_solver.py` — solver primitives
+- `track7b_resolve.py` — augmented metric builder
+- `track10_hadron_inventory.py` — inventory and helpers
+- `track11_nuclear_scaling.py` — nuclear helpers
+- `track15_*.py` — (3, 6) calibration helpers
+- `track16_*.py` — Z₃ analysis (for documentation)
+
+**Acceptance criteria for Track 19 as a whole:**
+
+- Phase 1 confirms inventory accuracy within ±2%
+- Phase 2 confirms nuclear scaling accuracy within Track 15's
+  reported values
+- Phase 3 confirms α universality
+
+**What Track 19 does NOT do:**
+
+- Doesn't update model-F yet — that's the next step after
+  Track 19 closes positively.
+- Doesn't derive anything new; purely a verification pass.
+
+**If Track 19 passes:** proceed to model-F update, which
+consists of:
+1. Update `models/model-F.md` with (3, 6) proton, composite
+   α rule, Z₃ confinement, nuclear scaling, ν-sheet derivation
+2. Update R60 STATUS / closeout
+3. Note Tracks 15–18 as the derivation chain backing the
+   revised architecture
+
+**If Track 19 fails on specific tuples:** diagnose, document
+as issues to resolve before model-F update; potentially extend
+Track 19 with a Phase 4 re-sweep using R60-native alternatives
+for the divergent tuples.
+
+---
+
 ### Track 14 — Analytical derivation of k = 1.1803/(8π)
 
 **Goal.**  Derive the single-k value that the joint solver

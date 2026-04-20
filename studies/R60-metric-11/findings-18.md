@@ -243,21 +243,45 @@ as a pool-item backup for other contexts.
   (current model-F / R61 #1) is the natural fit.  Composite
   reading is geometrically permitted but not preferred.
 
-**Open items:**
+**Why each sheet behaves as observed — architecturally
+coherent picture (covered by earlier tracks + Track 18):**
 
-1. A deeper derivation of *why* the e-sheet's shear and the
-   p-sheet's quark structure break conjugate symmetry, while
-   the ν-sheet does not — i.e., a self-consistency argument
-   for the ν-sheet's (ε_ν, s_ν) landing where it does.  This
-   is analogous to Track 17's architectural-coherence result
-   for the e-sheet.  Likely to follow the same logic: ν-sheet
-   parameters are constrained by mass + oscillation + charge-
-   neutrality requirements, all of which land at the same
-   region of parameter space.
-2. The 4-slot rule remains a pool-item derivation target.
-   Not currently invoked.
-3. Cross-sheet σ coupling (pool item **h**) remains open —
-   independent of Track 18's conclusion.
+- **e-sheet breaks conjugate symmetry** via its extreme
+  (ε, s) geometry — the huge aspect ratio and magic-shear
+  proximity push (1, 2) modes into R_loc < 1 territory
+  (Track 17).  The +n_t and −n_t modes sit at very different
+  positions on the mode spectrum (Δμ/μ̄ ≈ 100% for the
+  fundamental pair), so electron and positron are
+  distinguishable.
+- **p-sheet breaks conjugate symmetry** via the Z₃ quark
+  confinement derived in Track 16 — three (1, 2) quarks bind
+  into (3, 6) composites, and the triplet structure itself
+  establishes a preferred direction in tube-winding space.
+  The proton and antiproton then correspond to (3, 6) and
+  (−3, −6) composites, distinct.
+- **ν-sheet has no such symmetry-breaker** — R_loc > 1 permits
+  Z₃ binding geometrically but the neutral modes lack the
+  Coulomb-repulsion driver (Track 18 Phase 3), so no
+  triplet forms.  The sheet's (ε_ν, s_ν) geometry is small-
+  shear, moderate-ε — no extreme-ε asymmetry like the e-sheet.
+  Conjugate-pair splits are small (~3.5%, Phase 1), and no
+  mechanism forces the +/− states apart.  Real-field
+  superposition is the observed configuration → charge = 0.
+
+The ν-sheet's architectural coherence is analogous to the
+e-sheet's: (ε_ν, s_ν) = (2, 0.022) is constrained by mass
+calibration + Δm² oscillation ratio + conjugate-symmetry
+preservation, all landing at the same region.  These are the
+three requirements corresponding to what R53 gave the e-sheet
+(mass + generation resonance + Z₃ exemption) and what Track 16
+gave the p-sheet (mass + Z₃ quark binding + α universality).
+
+**Residual open items (not Track 18-specific):**
+
+- The 4-slot rule remains a pool-item derivation target.
+  Not invoked for model-F.
+- Cross-sheet σ coupling (pool item **h**) remains open,
+  independent of Track 18's conclusion.
 
 ---
 
