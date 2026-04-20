@@ -1333,175 +1333,258 @@ form.
 
 ---
 
-### Track 18 — ν-sheet 3-phase vs 3-mode investigation
+### Track 18 — ν-sheet structure: oscillation and charge = 0
 
-**Motivation.**  Neutrino oscillation phenomenology has a
-strongly 3-phase flavor: three mass eigenstates, PMNS mixing
-matrix with apparent Z₃-like structure, three active flavors.
-Current model-F / R61 treats this as three *separate* modes
-on the ν-sheet: R61 candidate #1 uses the triplet
-(+1, +1)(−1, +1)(+1, +2) — three distinct (n_t, n_r) modes.
+**Reframed scope.**  Track 18 does not try to settle whether
+ν is a Z₃ composite (Track 17's picture (a)) or three separate
+modes (current model-F picture (b)).  Either interpretation is
+acceptable so long as it accommodates the two empirical
+requirements:
 
-A user observation raised the alternative: maybe the three
-neutrino mass eigenstates are three **phase-rotated copies**
-of a single (1, 2) or (1, 1) mode on the ν-sheet, bound at 120°
-Z₃ offsets — the same structure as (3, 6) = three (1, 2)
-quarks on the p-sheet.  Under this reading, neutrinos would be
-"ν-quark" composites rather than fundamental individual modes.
+1. **Neutrino oscillation.**  Three mass eigenstates with
+   Δm²₃₁/Δm²₂₁ ≈ 33.6 and an approximate PMNS mixing matrix.
+2. **Electric charge = 0.**  Neutrinos carry no observable
+   electric charge.
 
-The two pictures are:
+Under model-F's current architecture:
 
-- **(a) Composite ν** — three phase-rotated ν-quarks at Z₃
-  offsets.  Single composite tuple (3, ?) on the ν-sheet.  The
-  three mass eigenstates arise from perturbative splittings
-  of the degenerate Z₃ components.
-- **(b) Three-mode ν** — three distinct (n_t, n_r) tuples with
-  different windings.  Current model-F / R61 picture.
+- Oscillation is handled by R61 triplet (+1,+1)(−1,+1)(+1,+2)
+  on ν-sheet with s_ν = 0.022 and ε_ν = 2, giving
+  Δm²₃₁/Δm²₂₁ = 33.59 (which matches 33.6).
+- Charge = 0 is **definitional** in the sign convention
+  Q = −n_et + n_pt (ν-tube doesn't contribute).
 
-Track 18 asks: which picture is favored by neutrino
-phenomenology, and can each be made consistent with observation?
+Track 18 asks: can we DERIVE the charge-zero property from a
+physical mechanism rather than leaving it definitional?  And
+can the oscillation structure be shown to be compatible with
+either the composite or the three-mode reading?
 
-**Goal.**  Determine whether the ν-sheet is Z₃-binding (a) or
-three-mode (b), or both (a degenerate case where the two
-pictures coincide at the observed masses).
+**Known constraints on ν-sheet geometry.**
+
+- **s_ν = 0.022 is constrained** by the Δm² ratio.  Derivation:
+  for the triplet (+1,+1)(−1,+1)(+1,+2), the ratio
+  Δm²₃₁/Δm²₂₁ = (3 − 2s)/(4s) depends only on s, not ε.
+  Setting this to 33.6 gives s = 0.022 uniquely.
+- **ε_ν is free** from oscillation.  ε and L_ring_ν are
+  jointly constrained only by the absolute ν mass scale
+  (one equation, one free parameter), so ε can be traded
+  for L_ring freely.
+
+This means Track 18 has one dimension of geometric freedom
+(ε_ν) to play with, which invites exploration of small-ε_ν
+regimes for the charge-zero derivation.
+
+**User observations that motivate the approach.**
+
+1. **p-sheet and e-sheet appear architecturally optimized for
+   their respective modes** — each sheet's (ε, s) independently
+   satisfies multiple constraints at one point (Track 17
+   showed this for e-sheet).  A similar self-consistency may
+   be available for the ν-sheet.
+2. **Earlier studies showed that small tube-to-ring ratio
+   (small ε) supports a very dense mode spectrum.**  On a
+   sheet with ε → 0, the number of modes below any fixed μ
+   grows without bound.
+3. **Candidate mechanisms for charge = 0:**
+   (i) **No odd ring-winding modes** admitted on ν-sheet
+   (ii) **Modes appear in (n_t, n_r)(−n_t, n_r) conjugate pairs**
+        that net to zero charge
+   (iii) **Topological obstruction** at the ν-sheet's large scale
+        prevents localized charge structures from forming
+4. **The 4-slot waveguide cutoff from an earlier study** (R46-era)
+   eliminated the (1, 1) ghost by pinning wave nodes at four
+   equatorial locations.  This is phenomenological (what makes
+   the slots?) but available as a backup rule if intrinsic
+   mechanisms don't suffice.
+
+**Goal.**  Produce a coherent ν-sheet architecture that:
+
+1. Gives charge = 0 for observed neutrinos via a physical
+   mechanism (not just the Q formula's definitional omission).
+2. Accommodates observed oscillation phenomenology (Δm² ratio,
+   approximate PMNS) in either the composite or three-mode
+   reading (whichever drops out cleanly).
+3. Fits into model-F's architecture without disrupting the
+   e-sheet, p-sheet, or α structure.
 
 **Scope — 4 phases, ~half to full day.**
 
-### Phase 1 — Composite-ν mass and degeneracy check
+### Phase 1 — conjugate-pair structure at small ε_ν
 
-**Question:** can a single bare (1, 2) Z₃-composite on the
-ν-sheet land near the observed ν mass scale (~0.05 eV)?
-
-**Method:**
-
-1. On Track 12's ν-sheet geometry (ε_ν = 2, s_ν = 0.022,
-   L_ring_ν ≈ 1.96 × 10¹¹ fm), compute the mass of a (1, 2)
-   ν-quark.  Then (3, 6) composite mass = 3 × quark.
-2. Alternative bare modes: (1, 1), (1, 3) ν-quarks.
-3. Check: does the bare composite sit near eV scale?  Or does
-   it need L_ring_ν adjustment, and if so, does the adjustment
-   break the electron / proton sheet symmetry?
-4. Report: which bare ν-quark mode, if any, gives a Z₃-
-   composite at the observed ν mass scale.
-
-**Acceptance:** bare composite mass accessible by reasonable
-geometry adjustment, or ruled out.
-
-### Phase 2 — Mass eigenstate splitting
-
-**Question:** if the three ν mass eigenstates are the
-Z₃-bound phase components of a single composite, what
-perturbation gives them the observed Δm²₂₁ ≈ 7.4 × 10⁻⁵ eV²
-and Δm²₃₁ ≈ 2.5 × 10⁻³ eV²?
+**Question:** does the ν-sheet's geometry naturally produce
+(n_t, n_r)(−n_t, n_r) conjugate pairs that cancel charge, and
+is this amplified by small ε_ν?
 
 **Method:**
 
-1. Model the Z₃ configuration as three degenerate copies
-   perturbed by a weak coupling that lifts the degeneracy.
-   Natural candidates:
-   - **Cross-sheet σ coupling** — pool item **h** structure
-     where ν-sheet couples to e or p sheets, splitting the
-     three copies
-   - **Geometric asymmetry** — small ε or s perturbation
-     breaking Z₃ symmetry (if ε_ν, s_ν are "true" bare values
-     but an effective potential breaks symmetry)
-   - **Mode-dependent back-reaction** — Phase 3 Track 16
-     showed Z₃-bound configurations have zero 2ω fluctuation,
-     but higher harmonics might still couple weakly
-2. For each candidate, compute the predicted Δm² ratio and
-   compare to observed 33.6.
-3. For the composite-ν picture to be viable, at least one
-   perturbation mechanism must produce the observed ratio.
+1. For ν-sheet geometries with ε_ν ∈ {0.01, 0.1, 0.5, 1, 2, 5}
+   at fixed s_ν = 0.022 (oscillation-constrained), enumerate
+   the lightest ~20 modes and identify conjugate-pair
+   degeneracies.
+2. Conjugate pair test: are (n_t, n_r) and (−n_t, n_r) at
+   the same μ?  Check:
+     μ²(n_t, n_r, ε, s) = (n_t/ε)² + (n_r − n_t s)²
+     μ²(−n_t, n_r, ε, s) = (n_t/ε)² + (n_r + n_t s)²
+   These differ by 4 n_r n_t s, so they're equal iff s = 0 or
+   n_r n_t = 0.  At s_ν = 0.022, the pairs are SPLIT by a
+   small amount 4 n_r n_t · 0.022 = 0.088 n_r n_t.
+3. For small n_r n_t, the split is tiny (e.g., 0.088 for
+   n_r = n_t = 1).  The conjugate pair is near-degenerate.
+4. Quantify: for each enumerated ν-sheet geometry, compute
+   the mean absolute conjugate-pair split as fraction of μ.
+   Small fraction → effective conjugate pairing → charge
+   cancellation hypothesis supported.
+5. Also check: does small ε_ν amplify the pairing effect
+   (by pushing μ higher, making the relative split smaller)?
 
-**Acceptance:** either a mechanism produces Δm²₃₁/Δm²₂₁ ≈ 33.6
-under the composite picture, or this is documented as a
-blocker for interpretation (a).
+**Acceptance:** quantitative answer on whether small ε_ν
+favors conjugate pairing; recommend an ε_ν value (if any)
+where pairing is dominant.
 
-### Phase 3 — PMNS mixing matrix structure
+### Phase 2 — mode density at small ε_ν
 
-**Question:** does the composite-ν picture naturally produce
-a PMNS-like mixing matrix, or does it predict a specific form
-that conflicts with observation?
+**Question:** does small ε_ν indeed produce a dense mode
+spectrum as suggested by earlier work?  If so, how do we
+interpret the resulting infinity of ν-like states?
 
 **Method:**
 
-1. Under (a), the three Z₃-bound phase components are related
-   by U(1) rotations.  The mass eigenstates (after splitting)
-   are related to the flavor eigenstates by a unitary
-   transformation.  What does Z₃ symmetry say about this
-   matrix?
-2. Observed PMNS has θ₁₂ ≈ 33°, θ₂₃ ≈ 49°, θ₁₃ ≈ 8.5°, CP
-   phase δ_CP ≈ −90° (or −150°, measurement-dependent).
-3. Under pure Z₃ symmetry, the natural ansatz is the
-   "tribimaximal" or "democratic" mixing matrix — which
-   historically predicted θ₁₂ = 35.3°, θ₂₃ = 45°, θ₁₃ = 0.
-   Close for θ₁₂, θ₂₃; wrong for θ₁₃ (which is ≈ 8.5°, not 0).
-4. Under (b) (three-mode picture), PMNS is structurally free
-   and any observed values are accommodatable.
+1. For the same range of ε_ν values, count modes (n_t, n_r)
+   with μ below various thresholds (e.g., 2, 5, 10, 100).
+2. Extrapolate to ε_ν → 0: does the count diverge?
+3. Identify physical interpretation:
+   - An infinite tower of ν states (KK-like): most are heavy
+     and decouple from low-energy physics; only the lightest
+     three are observed
+   - A continuous band: the ν sector is essentially a
+     continuum of states, and "three flavors" labels only
+     the three lightest pairs
+   - A degenerate spectrum: many modes at nearly-the-same μ
+     that form a superposition observable as a single
+     effective flavor
+4. Report which interpretation is geometrically favored at
+   small ε_ν.
 
-**Acceptance:** either composite picture matches PMNS within
-measurement uncertainty (possibly with perturbative
-corrections), or the mismatch is documented as evidence against
-(a).
+**Acceptance:** clear count vs ε_ν showing the density
+behavior; a physical reading of what "dense spectrum" means
+for neutrino phenomenology.
 
-### Phase 4 — Verdict and model implications
+### Phase 3 — oscillation compatibility under both readings
 
-**Method:** summary table comparing (a) composite-ν and (b)
-three-mode ν on:
+**Question:** under the three-mode reading (current model-F)
+and under the composite reading (Track 17's geometric
+permission), is the observed oscillation phenomenology
+reproducible?
 
-- Mass scale (bare composite near 0.05 eV?)
-- Δm² ratio (derivable from a perturbation?)
-- PMNS structure (Z₃-forced vs free)
-- Oscillation phenomenology (can both explain vacuum
-  oscillation probabilities?)
-- Compatibility with R61 candidates (if (a) wins, R61 mode-
-  triplet candidates become redundant; if (b) wins, R61 stays)
-- Compatibility with Track 15 composite α rule (if (a), is
-  there a "ν-composite α" rule analogous to proton's?)
+**Method:**
 
-**Acceptance:** clear verdict on which picture is favored,
-with the opposite documented as a viable alternative if not
-ruled out.
+1. **Three-mode (model-F current).**
+   - Δm²₃₁/Δm²₂₁ = 33.59 from R61 triplet at s = 0.022.  ✓
+   - PMNS mixing is freely adjustable by R-matrix structure
+     (no internal constraint from ν-sheet).
+   - Report compatibility: high (this is the working model).
+
+2. **Composite (three Z₃-bound copies of one (n_t, n_r) mode).**
+   - The three phase components of a Z₃ composite are
+     initially DEGENERATE.  To match observed Δm², need a
+     perturbation mechanism that splits them by the right
+     amounts.
+   - Candidate perturbations:
+     - Small breaking of Z₃ by residual geometry asymmetry
+     - Cross-sheet σ coupling (pool item **h** structure)
+     - Mode-dependent back-reaction (higher harmonics)
+   - Can any of these reproduce the 33.6 ratio?
+   - What PMNS structure does Z₃ symmetry predict?
+     (Democratic / tribimaximal gives θ₁₂ = 35.3°, θ₂₃ = 45°,
+     θ₁₃ = 0 — the last conflicts with observed 8.5°.)
+
+3. Compare the two readings side by side.
+
+**Acceptance:** document both readings with explicit
+compatibility status.  The three-mode reading is expected to
+win on flexibility; the composite reading is expected to
+struggle with θ₁₃ unless a natural Z₃-breaking perturbation
+provides the 8.5° deviation.
+
+### Phase 4 — charge = 0 derivation and slot fallback
+
+**Question:** can we derive charge = 0 from a structural
+mechanism — or must we accept the Q formula's definitional
+approach, optionally backstopped by the 4-slot waveguide rule?
+
+**Method:**
+
+1. Evaluate the three candidate mechanisms:
+   - **(i) No odd ring modes:** is there a geometric reason
+     (sheet topology, parity) that forbids odd n_r on ν-sheet?
+   - **(ii) Conjugate pairs always form:** does Phase 1's
+     analysis support this at the chosen ε_ν?  What physical
+     mechanism forces the observed ν to always be a pair
+     superposition rather than a single tube-winding?
+   - **(iii) Topological obstruction at large L_ring:** does
+     the macroscopic ring scale prevent localized charge from
+     persisting?  (Compton wavelength / L_ring analog of
+     Track 17's mechanism, in reverse.)
+2. If any of (i)-(iii) closes, it becomes the charge
+   derivation.  If none do cleanly, document the status:
+   Q = 0 is definitional under model-F's sign convention,
+   and that convention is self-consistent without further
+   derivation.
+3. **Slot fallback.**  If (1, 1)-type ghost modes are a concern
+   (i.e., they would otherwise be observable ν states but
+   aren't), document the 4-slot waveguide rule as an
+   available architectural mechanism: pin wave nodes at 4
+   equatorial points, killing (1, 1) by destructive
+   interference.  This is phenomenological but deployable if
+   needed.
+
+**Acceptance:** either a derivation of charge = 0 (preferred),
+or a clean statement that Q = 0 is definitional and the slot
+rule handles any leftover ghost mode concerns.
 
 ## Implementation plan
 
 **New scripts (under `scripts/` with `track18_` prefix):**
 
-- `track18_phase1_mass.py` — composite ν mass check
-- `track18_phase2_splitting.py` — Δm² perturbation analysis
-- `track18_phase3_pmns.py` — PMNS matrix structure
-- `track18_phase4_verdict.py` — summary comparison
+- `track18_phase1_conjugate.py` — conjugate-pair structure vs ε_ν
+- `track18_phase2_density.py` — mode density vs ε_ν
+- `track18_phase3_oscillation.py` — oscillation compatibility
+- `track18_phase4_charge.py` — charge = 0 mechanisms + slot fallback
 
 **Reused from existing scripts (no modification):**
 
 - `track1_solver.py` — metric builder
 - `track13b_nu_sweep.py` — ν-candidate helpers
-- `track16_*.py` — Z₃ binding machinery
+- `track17_phase1_source.py`, `track17_phase2_binding.py`
+  — sheet spectrum helpers and R_loc logic
 
 **Acceptance criteria for Track 18 as a whole:**
 
-- Phase 1 determines whether composite ν mass is accessible
-- Phase 2 determines whether Δm² ratio is reproducible
-- Phase 3 determines whether PMNS is compatible
-- Phase 4 renders a verdict: (a) wins / (b) wins / both viable
+- Phase 1 quantifies conjugate-pair structure at the ν-sheet
+- Phase 2 characterizes the dense-spectrum behavior at small ε_ν
+- Phase 3 documents oscillation compatibility under both readings
+- Phase 4 produces a charge-derivation outcome or a clean
+  fallback statement
 
 **What Track 18 does NOT do:**
 
-- Doesn't change model-F
-- Doesn't commit to a new neutrino structure until verdict is
-  in and user approves
+- Doesn't commit to a composite-ν or three-mode-ν architecture
+  (both are acceptable)
+- Doesn't change model-F yet (that's Track 19 / closeout)
+- Doesn't derive the 4-slot waveguide mechanism from first
+  principles (pool item, acknowledged backup rule)
 
 **Possible outcomes:**
 
-- **(a) wins:** ν is a Z₃ composite.  Model has genuine new
-  architectural content (Z₃ on two sheets, novel PMNS
-  interpretation).  Strong argument for model-G designation.
-- **(b) wins:** current model-F / R61 ν picture is correct.
-  Only ν-sheet-specific architectural change is that it's
-  Z₃-exempt (Track 17's result).  Update model-F in place.
-- **Both viable:** document as alternative interpretations;
-  pick one as primary based on simplicity.  Probably model-F
-  update with the alternative as a footnote.
+- **Clean charge derivation + both readings compatible:** good
+  close.  Ν-sheet architecture is documented with an explicit
+  charge mechanism and an option for the composite vs
+  three-mode interpretation.
+- **Definitional charge + one reading compatible:** Q = 0 stays
+  definitional; the favored reading (likely three-mode) becomes
+  the recommended model-F interpretation for ν.
+- **Slot fallback required:** document the rule as "used" and
+  note it as a pending derivation target (pool item).
 
 ---
 

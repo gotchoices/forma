@@ -165,29 +165,60 @@ suffices.
 
 ---
 
-## F99. Physical picture of the e-sheet exemption
+## F99. Plain-language picture — why e-sheet prefers single phase
 
-On the e-sheet, the (1, 2) mode has:
+The cleanest way to understand the e-sheet's single-phase
+preference is to contrast the two sheets directly.
 
-- **Tube momentum 1/ε_e ≈ 0.0025** — tiny because ε_e ≈ 397 is
-  extreme.
-- **Ring momentum |2 − s_e| ≈ 0.004** — tiny because s_e ≈ 2.004
-  is at the magic-shear cancellation point for mode (1, 2).
+**On the p-sheet:**  the (1, 2) quark is a SMALL WAVE PACKET.
+Its Compton wavelength (0.63 fm) fits 75 times inside the sheet's
+ring circumference (47 fm).  Think of three tiny ripples on a
+big pond — each is a distinguishable entity at a distinct
+location.  Three such ripples can coexist at different spatial
+positions, each carrying its own 120° time-phase.  They combine
+into a bound triplet = (3, 6) proton.  The phase offsets are
+timing differences between three SEPARATE localized particles.
 
-Both components of the mode's effective compact momentum are
-independently suppressed.  The total energy μ ≈ 0.005 gives a
-Compton wavelength (λ_C ≈ 386 fm) that is SEVEN TIMES the sheet's
-ring circumference (L_ring_e ≈ 55 fm).  The mode spans the sheet.
+**On the e-sheet:**  the (1, 2) electron mode has Compton
+wavelength (386 fm) that is SEVEN TIMES the sheet's circumference
+(55 fm).  The mode doesn't fit "inside" the sheet in any local
+sense — it wraps around the entire sheet as a single standing
+wave.  There is no distinct "position" to put three separate
+copies; the mode already occupies every point.
 
-A sheet-wide wave cannot be decomposed into three distinct
-localized "quarks" at 120° phase offsets.  There is no Z₃
-binding configuration to form.  The single mode propagates as
-the observed electron.
+What happens if you try to set up three such copies at 120° time
+offsets?  They are three versions of the same sheet-wide wave,
+shifted in phase by 2π/3.  At every point on the sheet, these
+three amplitudes add up to
 
-On the p-sheet and ν-sheet, the (1, 2) mode has NEITHER
-suppression — its Compton wavelength is well below the sheet
-circumference (λ_C/L ≈ 1/75 on p-sheet, 1/50 on ν-sheet).
-Three localized quarks fit comfortably; Z₃ binding operates.
+<!-- 1 + e^(2πi/3) + e^(-2πi/3) = 0 -->
+$$
+1 + e^{2\pi i/3} + e^{-2\pi i/3} \;=\; 0
+$$
+
+— they cancel identically.  The three-phase configuration is
+not just energetically unfavored; it is **literally not a
+physical state**.  The single mode is the only viable
+configuration.
+
+**The deep contrast:** on the p-sheet, the mode is a LOCALIZED
+WAVE PACKET and three distinct packets can coexist at different
+sheet positions — their phase offsets are meaningful temporal
+distinctions between three entities.  On the e-sheet, the mode
+is a SHEET-WIDE STANDING WAVE and three such copies would all
+occupy the same state — their phase offsets become amplitude
+interference that destroys the superposition.
+
+This is the physical content of R_loc > 1 vs R_loc < 1: it
+distinguishes "three localizable constituents" (R_loc > 1) from
+"one sheet-wide wave" (R_loc < 1).  The threshold sits naturally
+at the place where the mode's wavelength equals the sheet's
+circumference.
+
+On the ν-sheet, (1, 2) mode's wavelength is about 1/50 of the
+sheet's circumference — again, localized like on the p-sheet.
+Z₃ binding is geometrically permitted there too.  Track 18
+addresses what ν-sheet physics actually favors.
 
 ---
 

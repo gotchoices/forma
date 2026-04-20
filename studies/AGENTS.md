@@ -28,7 +28,7 @@
 - State the results in a clear, simple, understandable way -- no jargon
 - Also explain how each result affects the applicable hypothesis (helps or hurts)
 - Review meaning of variables, terminology where not already obvious
-- Interpret the results as can be done without guessing
+- Interpret the results in plain language as can be done without guessing - did the track achieve its goals?
 - Don't rely on the reader to remember all meanings, implications
 - Keep an open mind about execution possible errors:
   - The study might have been framed incorrectly
