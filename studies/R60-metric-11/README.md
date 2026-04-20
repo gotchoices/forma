@@ -1712,6 +1712,102 @@ for the divergent tuples.
 
 ---
 
+### Track 20 — Spin-rule investigation for compound modes
+
+**Motivation.**  Track 19 surfaced an inconsistency: the working
+inventory (original Track 10 / model-F and the new Track 19
+Z₃-compliant version) uses the R50-era **parity rule** ("odd
+count of odd tube windings → spin ½") to filter tuples, but the
+claimed spin derivation is **7b's ratio rule** (spin = n_t/n_r),
+which applies strictly only to single-sheet modes.  Under strict
+7b + any obvious additive composition, only 1–5 of 18 inventory
+tuples satisfy the spin target.
+
+Track 20 investigates which compound-mode spin-composition rule
+(if any) is both **consistent** with observed spins across the
+inventory and **tractable** when used as a search filter.
+
+**Scope — 4 phases + documentation.**  Exploratory, not
+commitment.  Goal is to find a rule that works (or confirm no
+single rule closes cleanly and accept the parity rule as an
+empirical stand-in).
+
+### Phase A — Enumerate candidate rules
+
+Each rule is a function from 6-tuple (n_et, n_er, n_νt, n_νr,
+n_pt, n_pr) to a predicted total spin (compared to the target
+spin for acceptance).
+
+Core candidates:
+
+1. **Strict per-sheet 7b**: every active sheet has n_r = 2·n_t
+2. **Sum-all**: Σᵢ (n_t/n_r)ᵢ = target spin
+3. **e+p additive, ν paired off**: (n_t/n_r)_e + (n_t/n_r)_p
+4. **Parity rule** (current baseline): odd count of odd tube windings
+5. **Vector magnitude**: √(s_e² + s_p² + s_ν²) with per-sheet
+   ratio components (orthogonal-sheet Cartesian picture)
+6. **L-∞ norm**: max(|s_e|, |s_p|, |s_ν|)
+7. **Unit-spin per active sheet**: spin value determined by
+   number of sheets with nonzero content via angular-momentum
+   addition |s_a ± s_b ± s_c|
+8. **Total-winding ratio**: (Σ n_t) / (Σ n_r)
+9. **gcd-reduced per-sheet**: use (n_t/gcd_sheet)/(n_r/gcd_sheet)
+10. **Integer-ratios-null-out**: sheets with integer n_t/n_r
+    contribute 0; only fractional ratios sum
+11. **Fractional-part sum**: Σ (ratio mod 1)
+12. **Tensor-product allowed**: spin is in the set |s_e ⊗ s_p ⊗ s_ν|
+
+### Phase B — Audit existing inventories
+
+Apply each rule to both the original model-E / Track 10
+inventory and the Track 19 Z₃-compliant inventory, marking
+pass/fail per tuple.  Tabulate per-rule pass counts.
+
+### Phase C — Identify tractable rules
+
+Criteria:
+- **Consistency**: no spin-0 tuple passes a rule predicting spin ½ or vice versa
+- **Coverage**: what fraction of inventory passes?
+- **Distinguishability**: rule doesn't give the same prediction
+  for physically distinct spins
+
+### Phase D — Re-search inventory with top rules
+
+For each rule that emerges from Phase B/C as promising, rerun
+the α-filtered brute force with the rule as the spin filter.
+Measure mass accuracy per particle.  A rule is **tractable** if
+most inventory targets match within 2% under its constraint.
+
+### Phase E — Document verdict
+
+Recommend a working rule (or confirm none) and document as
+either:
+- **Derived rule found** → integrate into model-F update
+- **Empirical stand-in** → parity rule documented as such,
+  compound-spin derivation becomes pool item
+
+## Implementation plan
+
+**New scripts (`track20_` prefix):**
+
+- `track20_phase_ab.py` — enumerate rules + audit inventories
+- `track20_phase_d.py` — re-search with top rules
+
+**Reused (no modification):** track1, track7b, track10, track15, track19 helpers.
+
+**Acceptance:** Phase A enumerates ≥ 10 rules; Phase B produces
+audit grid; Phase C identifies top 2-3 rules; Phase D rerun
+reports accuracy per rule; Phase E writes up verdict.
+
+**What Track 20 does NOT do:**
+
+- Doesn't commit to a new rule until user approves.
+- Doesn't re-run Tracks 1–19; it's a spin-analysis add-on.
+- Doesn't derive the winning rule from first principles; that
+  remains a pool-item derivation target if identified.
+
+---
+
 ### Track 14 — Analytical derivation of k = 1.1803/(8π)
 
 **Goal.**  Derive the single-k value that the joint solver
