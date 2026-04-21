@@ -1,4 +1,4 @@
-# Theory of the Universe
+# The Shape of Things
 
 A project of [GotChoices.org](https://gotchoices.org)
 
