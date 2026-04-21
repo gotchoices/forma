@@ -47,6 +47,8 @@ exclude:
   - "present/"
   - "work/"
   - ".claude/"
-  - "AGENTS.md"
-  - "CLAUDE.md"
   - "tess/"
+  - "tickets/"
+  # Agent-only instruction files, at any depth.
+  - "**/AGENTS.md"
+  - "**/CLAUDE.md"
