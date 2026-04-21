@@ -1,6 +1,12 @@
-const PAGES = ['home', 'idea', 'architecture', 'results', 'read', 'about'];
+const PAGES = ['home', 'read', 'about'];
 const DEFAULT_PAGE = 'home';
 const TITLE_PREFIX = 'Forma';
+const LEGACY_PAGE_MAP = {
+  idea: 'home',
+  architecture: 'home',
+  results: 'home',
+  start: 'read'
+};
 
 const hamburger = document.getElementById('hamburger-button');
 const navMenu = document.getElementById('nav-menu');
@@ -9,13 +15,14 @@ const content = document.getElementById('content');
 function titleCase(slug) {
   const titles = {
     home: 'The Shape of Things',
-    idea: 'The Idea',
-    architecture: 'GRID & MaSt',
-    results: 'Results',
-    read: 'Read',
+    read: 'Start Here',
     about: 'About'
   };
   return titles[slug] || slug.charAt(0).toUpperCase() + slug.slice(1);
+}
+
+function resolvePage(page) {
+  return LEGACY_PAGE_MAP[page] || page;
 }
 
 function setupPageLinks() {
@@ -52,6 +59,7 @@ function closeMenu() {
 }
 
 function loadContent(page) {
+  page = resolvePage(page);
   if (!PAGES.includes(page)) page = DEFAULT_PAGE;
 
   fetch(`${page}.html`, { cache: 'no-cache' })
@@ -86,7 +94,7 @@ function loadContent(page) {
 }
 
 function handleHashChange() {
-  const page = (window.location.hash.slice(1) || DEFAULT_PAGE).split('?')[0];
+  const page = resolvePage((window.location.hash.slice(1) || DEFAULT_PAGE).split('?')[0]);
   loadContent(page);
 }
 
