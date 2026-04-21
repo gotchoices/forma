@@ -4,8 +4,8 @@
 **Related:**
   [Q79](Q79-cellular-resonators-and-levin.md) (coupling mechanisms, Levin background),
   [Q78](Q78-neutrino-sheet-access.md) (neutron gateway model),
-  [neutrino-domain-storage](../papers/neutrino-domain-storage.md) (architecture),
-  [sub-quantum-memory](../papers/sub-quantum-memory.md) (storage hypothesis),
+  [sub-quantum-memory](../papers/sub-quantum-memory.md) (storage hypothesis
+  and architecture — §§8–10),
   R26 F1–F9 (neutrino sheet mode spectrum)
 
 ---

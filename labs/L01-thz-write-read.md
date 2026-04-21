@@ -2,8 +2,8 @@
 
 **Status:** Proposed
 **Tests:** Material-dimension storage hypothesis
-  ([sub-quantum-memory](../papers/sub-quantum-memory.md) §5, §7, §13.1;
-   [neutrino-domain-storage](../papers/neutrino-domain-storage.md) §2–4)
+  ([sub-quantum-memory](../papers/sub-quantum-memory.md) §5, §7, §§8–9,
+   §16.1)
 **Related:** R26 F1–F9 (neutrino sheet mode spectrum),
   [Q78](../qa/Q78-neutrino-sheet-access.md) (cell access mechanisms)
 

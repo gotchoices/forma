@@ -1,6 +1,73 @@
 # Sub-Quantum Memory: Information Storage in Material Dimensions
 
-**Status:** Part I draft, Part II outline
+**Status:** Draft.  **Speculative tier: highly speculative.**
+
+> **Caveat emptor.**  This paper is the most speculative document
+> in the forma collection.  It combines two unproven frameworks
+> and asks what would follow if both contain elements of truth.
+> Nothing here is established physics.  Nothing here has been
+> peer-reviewed.  The paper's purpose is to lay out a chain of
+> reasoning clearly enough that each link can be tested — and,
+> where the chain breaks, to make the break easy to see.
+
+### Premises (each must hold for the argument to survive)
+
+The argument stacks speculative premises.  We list them in
+cascading order: a failure at any level collapses the layers
+above it but leaves the layers below intact.
+
+1. **The Ma compact geometry model.**  Fundamental particles
+   are standing waves of light confined on a six-dimensional
+   torus, with mass arising from trapped electromagnetic energy.
+   The model reproduces electron and proton masses and predicts
+   neutrino mass-squared splittings that match experiment, but
+   it has not been derived from a fundamental Lagrangian, has
+   not been peer-reviewed, and leaves the aspect ratios r_e,
+   r_ν as effectively free parameters.
+2. **Reiter's threshold model of absorption.**  Energy
+   absorption is continuous rather than quantized; the
+   discreteness lives in the detector.  The supporting
+   experiments (the "unquantum effect") have been performed by
+   a single researcher and have not been independently
+   replicated.  R35 and Q85 §11 further narrow the hypothesis:
+   continuous absorption is viable only on the neutrino sheet
+   Ma_ν, not on the electron or proton sheets.
+3. **Usable evanescent coupling between ordinary space and
+   material dimensions.**  The Ma model requires some coupling
+   (electromagnetic fields must leak in and out of material
+   dimensions, or particles could not have fields) but the
+   strength is uncomputed.  Storage, writing, and reading all
+   require the coupling to be strong enough to exploit and weak
+   enough to preserve the stored state.
+4. **Neutrons function as gateway nodes to Ma_ν.**  Because
+   every neutron is already a cross-plane standing wave that
+   bridges two material sheets, it provides a local coupling
+   node where ordinary electromagnetic fields can reach Ma_ν via
+   cross-shear.  The per-gateway coupling strength is also
+   uncomputed.  (Part I, §9.)
+5. **The three numerical coincidences are not accidental.**
+   (Part II only.)  The agreement between cell diameters and
+   Ma_ν circumferences (tens to hundreds of micrometers),
+   between membrane-potential energies and Ma_ν mode energies
+   (6–90 meV), and between DNA collective vibrations and Ma_ν
+   mode frequencies (THz band) is treated as evidence of a
+   physical coupling rather than coincidence.
+6. **Levin's bioelectric phenomena resist conventional
+   explanation.**  (Part II only.)  Planarian memory that
+   survives decapitation, trophic memory across complete tissue
+   turnover, and voltage-override of genomic defaults are
+   treated as genuinely unexplained by standard molecular
+   biology.  If conventional mechanisms prove sufficient,
+   material-dimension storage is superfluous for biology
+   (though it may still be real physics).
+
+Readers who reject any single premise can stop reading at the
+point where that premise becomes load-bearing.  Premise 1
+supports everything.  Premise 2 supports the "sub-threshold"
+and "analog" parts of the storage picture.  Premise 3 supports
+reading and writing.  Premise 4 supports mobility and per-cell
+addressing.  Premises 5 and 6 are needed only for the
+biological interpretation in Part II.
 
 ---
 
@@ -26,8 +93,13 @@ standard quantum measurements.
 This paper develops that idea in two layers.  Part I builds the
 physics case in the abstract: how energy could be written into
 material-dimension modes, how it would be retained, and how it
-might be read back.  These mechanisms could, in principle, apply
-to future synthetic technology.
+might be read back.  It then works through the *architecture*
+of such a storage system — the address space, the information
+capacity per cavity, the role of neutrons as cross-plane
+gateways that let ordinary matter reach the neutrino sheet, and
+how the stored state tracks a moving organism.  These
+mechanisms could, in principle, apply to future synthetic
+technology.
 
 Part II asks whether nature got there first.  Three numerical
 coincidences link the model to biology: the neutrino sheet Ma_ν
@@ -112,15 +184,20 @@ intuition needed for everything that follows.
 
 ### 1.4 Road map
 
-The paper is organized in two parts.  Part I (sections 1–8)
+The paper is organized in two parts.  Part I (sections 1–11)
 develops the physics of material-dimension storage in the
 abstract.  It explains the two frameworks, shows how they
 combine, and works through the mechanics of writing, retaining,
-and reading information.  Everything in Part I could, in
+and reading information (sections 1–7), the architecture and
+information capacity of the storage system (section 8), the
+neutron-gateway mechanism that lets ordinary matter reach the
+neutrino sheet (section 9), how the stored state follows moving
+matter (section 10), and the implications for synthetic
+technology (section 11).  Everything in Part I could, in
 principle, apply to synthetic technology — it does not depend
 on biology.
 
-Part II (sections 9–14) brings in the biological evidence.
+Part II (sections 12–17) brings in the biological evidence.
 Three numerical coincidences link the abstract storage mechanism
 to the specific geometry of the biological cell.  The
 experimental program of Michael Levin provides an empirical
@@ -547,7 +624,7 @@ computed.  It depends on the geometry of the material dimensions,
 the polarization structure of the modes, and the nature of the
 evanescent overlap.  This calculation is the single most
 important missing piece in the entire storage hypothesis (see
-section 8.3).  But the *existence* of the coupling is not in
+section 11.3).  But the *existence* of the coupling is not in
 doubt within the Ma framework — without it, particles would
 have no fields and no interactions.
 
@@ -796,11 +873,331 @@ If it cannot be demonstrated despite favorable conditions, it
 provides evidence against the threshold model.
 
 
-## 8. Implications for synthetic technology
+## 8. Architecture: address space, capacity, and scaling
 
-### 8.1 Properties of material-dimension memory
+Sections 4–7 treat a cavity as a single abstract storage cell.
+This section asks the quantitative questions a storage engineer
+would ask: how are individual bits addressed, how many bits does
+one cavity hold, and how does the capacity scale when many
+cavities are packed together?
 
-If the physics described in sections 4–7 is correct, material-
+### 8.1 Frequency as address
+
+Unlike RAM, which addresses memory by physical location on a
+chip, material-dimension memory addresses by frequency.  Each
+standing wave on Ma_ν is labeled by an integer pair (n₃, n₄) —
+the number of wavelengths around each material loop.  The pair
+is the mode's address.  Its energy (and therefore frequency) is
+uniquely determined by the address and the geometry:
+
+    E(n₃, n₄) = E₀ √((n₃/r)² + (n₄ − n₃ s)²)
+
+with E₀ ≈ 29 meV, r ≈ 5, s ≈ 0.022 (R26 Assignment A, model-E
+era; exact numbers will shift as aspect-ratio constraints
+tighten).
+
+Writing to mode (1,0) does not disturb mode (3,2), just as
+tuning a radio to one station does not interfere with another.
+All channels occupy the same physical location simultaneously —
+wavelength-division multiplexing in material dimensions.
+
+### 8.2 One cavity per cell-scale volume
+
+Ma_ν has circumferences L₃ ≈ 200 μm and L₄ ≈ 42 μm.  The
+spatial resolution of material-mode excitations is set by the
+Compton wavelength of the lightest neutrino mode (~42 μm).  Two
+regions of ordinary 3D space closer than ~42 μm share the same
+cavity and cannot store independent information.  The spatial
+grain is one independent cavity per roughly (100 μm)³ — the
+volume of a biological cell.  We return to this coincidence in
+Part II; here it only fixes the addressing grid.
+
+### 8.3 Mode counting
+
+The number of modes below energy E_max on a material sheet with
+aspect ratio r grows roughly as the area of the torus (in units
+of the wavelength squared):
+
+    N(E_max) ≈ π r (E_max / E₀)²
+
+This approximation has been checked against direct simulation
+(R26 F5: r = 1, E_max = 1 eV gives 3,668 modes from the
+formula, 3,670 from the simulation).  For Ma_ν with r ≈ 5, the
+mode counts at representative cutoffs are:
+
+| Energy cutoff | Physical context | Mode count |
+|---|---|---|
+| 100 meV | Biology-relevant (membrane voltages) | ~180 |
+| 300 meV | Sub-eV thermal regime | ~1,650 |
+| 1 eV | Visible-light scale | ~18,000 |
+| 10 eV | Deep UV | ~1.8 million |
+
+The mode count scales quadratically with the energy cutoff, so
+access to higher-frequency probes rapidly expands the
+addressable space.
+
+### 8.4 Bits per mode
+
+Each mode holds a continuously variable amplitude (under the
+threshold model).  The precision is limited by noise — thermal
+leakage, cross-shear coupling, and whatever the true
+evanescent coupling strength turns out to be.  At a ~1% noise
+floor, roughly 100 levels per mode are distinguishable — about
+7 bits per mode, comparable to RAM's 8 bits per address.  A 10%
+noise floor roughly halves the capacity; a 0.1% floor
+roughly increases it by 50%.  These are order-of-magnitude
+estimates; the actual noise floor is among the open
+calculations in section 17.
+
+### 8.5 Capacity per cavity
+
+Combining mode counts with bits per mode gives the information
+capacity of a single cell-scale cavity:
+
+| Cutoff | Modes | Bits | Equivalent |
+|---|---|---|---|
+| 100 meV | 180 | ~1,260 | ~160 bytes |
+| 300 meV | 1,650 | ~11,500 | ~1.4 KB |
+| 1 eV | 18,000 | ~126,000 | ~15 KB |
+
+At the biology-relevant cutoff, each cell-sized cavity holds
+less than a tweet.  That is small by digital standards, but
+large enough to encode a local morphogenetic target — a few
+hundred bytes of "what this tissue should become."
+
+### 8.6 Scaling to biological systems
+
+Because each cell-sized volume is an independent cavity, total
+capacity scales linearly with cell count:
+
+| System | Cells | At 100 meV | At 1 eV |
+|---|---|---|---|
+| Planarian | ~10⁷ | ~1.6 GB | ~150 GB |
+| Human brain | ~2.5 × 10¹¹ | ~40 TB | ~3.7 PB |
+| Human body | ~3.7 × 10¹³ | ~5.9 PB | ~555 PB |
+
+For comparison, laptop RAM is 16–64 GB, high-end servers reach
+1–4 TB, and the digitized Library of Congress is about 15 PB.
+The Ma_ν body capacity at 100 meV (~6 PB) lands in the same
+neighborhood as the Library of Congress.  At 1 eV it exceeds it
+by more than an order of magnitude.
+
+These numbers are not a claim that biology *does* store this
+much information in material dimensions.  They are a bound on
+what the architecture could hold if it exists — a sanity check
+that the proposed storage substrate is not obviously too small
+for the jobs Part II will ask of it.
+
+### 8.7 Storage vs. computation
+
+Storage is not computation.  Even if each cavity holds
+kilobytes, the architecture says nothing about how information
+is combined, compared, or updated — the operations a biological
+morphogenetic system would require.  Those operations would
+depend on mode–mode interactions, inter-cavity coupling through
+gap junctions, and whatever feedback loop connects the stored
+state to cellular behavior.  Section 14 returns to this
+question in the biological setting.
+
+
+## 9. The neutron as gateway to the neutrino sheet
+
+Section 5.3 identified the central open question of the write
+mechanism: how does energy in ordinary 3+1-dimensional space get
+*into* a Ma_ν mode?  The general answer is that the mode has an
+evanescent tail in 3+1D (otherwise confined particles would have
+no fields), but that only tells us coupling exists — not where
+it lives or how to exploit it.  This section proposes a specific
+physical mechanism that turns "coupling exists in principle"
+into "coupling is everywhere that ordinary matter is."
+
+### 9.1 The neutron is a cross-plane standing wave
+
+In the Ma model, the neutron is not a bag of quarks.  It is a
+single cross-plane standing wave: mode (1, 2, 0, 0, 1, 2),
+spanning the electron sheet Ma_e (dimensions 1–2) and the
+proton sheet Ma_p (dimensions 5–6).  Its charge neutrality
+follows from the cancellation of the Ma_e and Ma_p charge
+contributions.  Its mass exceeds the proton's because the
+cross-shear coupling σ_ep adds energy.  Its instability (a
+mean lifetime of ~15 minutes as a free particle) reflects the
+slow leakage of the cross-sheet mode into the separated
+proton–electron–neutrino modes — exactly the cross-shear
+leakage discussed in section 6.2.
+
+For our purposes, the essential point is that the neutron
+already *is* the kind of thing we are trying to couple to:
+a physical excitation that bridges two material-sheet
+subplanes.
+
+### 9.2 Cross-shear couples all three sheets
+
+The Ma metric contains cross-shear parameters that couple every
+pair of material-sheet subplanes.  The neutron mode uses the
+electron–proton coupling directly (σ_ep ≈ −0.091; R27 F10).
+But the metric also contains electron–neutrino coupling (σ_eν)
+and proton–neutrino coupling (σ_νp).  A neutron, already
+bridging Ma_e and Ma_p, provides a local coupling node where
+energy in ordinary EM fields can reach the neutrino sheet via
+the chain:
+
+    EM field → Ma_e → σ_eν → Ma_ν
+    EM field → Ma_p → σ_νp → Ma_ν
+
+The gateway does not create new physics; it exposes physics
+that is already present in the metric.  Without the neutron,
+ordinary electromagnetic fields would have to couple to Ma_ν
+through higher-order processes that are unlikely to produce
+usable effects at cellular energy scales.  With the neutron,
+the same coupling becomes a local, first-order process at the
+location of every neutron in matter.
+
+### 9.3 Every cell has many gateways
+
+Nearly every atom heavier than hydrogen contains neutrons.  A
+typical human cell contains on the order of 10¹⁴ atoms, most
+with one or more neutrons.  Each neutron is a cross-plane
+coupling node — a gateway to Ma_ν at its location in ordinary
+space.  The cell does not need to create or capture a special
+particle to access the neutrino sheet; the gateways are already
+embedded in its ordinary matter, in vast numbers.
+
+This has two immediate consequences.  First, atoms are
+continuously replaced by metabolism — the average atom in a
+human body is replaced every few months to years — but as long
+as replacement atoms also contain neutrons (which they do,
+because chemistry requires them), the gateway population is
+maintained.  The system is intrinsically redundant.  Second,
+neutron-rich tissue (bone: calcium, phosphorus; enzymes: zinc,
+iron, copper) would couple more strongly than hydrogen-rich
+tissue (fat, water).  This is a testable asymmetry.
+
+### 9.4 Many gateways, one cavity per cell
+
+The spatial resolution of Ma_ν is ~42 μm.  All ~10¹⁴ neutrons
+within a cell (10–100 μm diameter) are within one cavity.
+They do not create 10¹⁴ separate address spaces — they are 10¹⁴
+faucets flowing into the same tub.  More gateways means
+stronger aggregate coupling, not more storage.
+
+Between cells (separated by ≳42 μm), neutrons couple to
+different cavities, producing independent address spaces.  The
+one-cavity-per-cell picture from section 8.2 holds.
+
+### 9.5 What is assumed, what is unresolved
+
+The gateway picture depends on two things being true: that
+cross-shear coupling to Ma_ν is non-negligible, and that the
+per-neutron contribution can be meaningfully summed across the
+cell volume.  Neither has been computed from the Ma metric.
+What the picture does accomplish is to move the open problem
+from "does ordinary matter couple to Ma_ν at all?" to
+"how strong is the per-gateway coupling?" — a narrower, more
+tractable calculation that section 17 identifies as a priority.
+
+
+## 10. Mobility: the gateway travels with the matter
+
+If material-dimension storage were tied to fixed locations in
+ordinary space, then an organism walking across a room would
+leave its stored information behind — like writing on the floor
+and then walking away.  Anything that depends on a stable link
+between a cell and its cavity would fail at the first step.
+This section shows that the neutron-gateway picture of section
+9 resolves the mobility problem at no additional cost.
+
+### 10.1 The gateway is bound to matter
+
+Neutrons are bound to atomic nuclei.  Atomic nuclei are bound
+into molecules.  Molecules are bound into cells.  When a cell
+moves through space, its atoms — and their neutrons — move with
+it.  The gateways are physically part of the matter.
+
+The coupling chain from section 9.2 is local: each neutron
+couples to Ma_ν at the neutron's own position in ordinary
+space.  As the neutron moves, it couples to the neutrino sheet
+at its new position.  The stored state is continuously
+refreshed and dragged along by the moving gateway population,
+the way a magnet drags its field pattern through a ferrofluid.
+
+### 10.2 Timescales work
+
+The material-mode excitation must track the cell faster than
+the cell crosses one cavity width.  At walking speed (~1 m/s),
+a cell traverses ~100 μm in ~100 μs.  The gateway coupling
+operates at THz-scale frequencies (picosecond timescales) —
+about 10⁸ times faster than needed.  Even with severe
+evanescent suppression (factors of 10⁶), a comfortable margin
+remains.
+
+### 10.3 The stored state is an attribute of the matter
+
+In this picture, the material-dimension state is not
+"information stored at a location in spacetime."  It is
+"information stored in the matter at that location" — carried
+by the matter's neutron population and refreshed continuously
+through the gateway coupling.  The matter carries its
+neutrino-sheet state the same way it carries its mass, charge,
+and spin: as an attribute of the particles, not of the
+coordinates.
+
+### 10.4 Three regimes
+
+The gateway picture predicts three distinct regimes for how
+stored information survives biological change:
+
+**Cell death within intact tissue.**  When a single cell dies,
+the surrounding tissue retains its atoms and their neutrons.
+The gateway population in the region is temporarily reduced but
+not eliminated.  The neighboring cells' gap-junction-connected
+isopotential fields (section 14.2) maintain the aggregate
+electromagnetic environment that sustains the material-mode
+state.  The stored information survives because both the
+tissue-level field and the gateway population persist.
+
+**Organism locomotion.**  When the organism moves, every
+neutron in every atom moves with the body.  The entire gateway
+population translates as a rigid body.  There is no relative
+displacement between the stored state and the biology.
+
+**Violent disruption.**  Severe trauma destroys tissue
+structure, scatters atoms, and disrupts the electromagnetic
+field.  The gateway population is dispersed and the coupling
+environment is destroyed.  Stored information in the affected
+region degrades or is lost.
+
+This predicts that the boundary between "recoverable" and
+"lost" morphogenetic information correlates with the boundary
+between "intact matter + field structure" and "dispersed
+matter" — not simply with cell viability.  A region whose cells
+have all died but whose atoms and fields remain in place should
+retain its morphogenetic template; a region that has been
+physically dispersed should not.
+
+### 10.5 The Goldilocks coupling
+
+For the overall picture to work, the per-gateway coupling must
+be:
+
+- **Strong enough** to drag the stored state during locomotion
+  and to write and read via membrane voltages.
+- **Weak enough** to preserve stored states against thermal
+  noise and casual electromagnetic interference.
+
+The neutron-gateway aggregation helps with the "strong enough"
+side: ~10¹⁴ gateways per cell provide an aggregate coupling
+much larger than a single evanescent tail would.  Whether the
+aggregate lands inside the Goldilocks window is the
+question on which the whole storage hypothesis turns, and it
+cannot be answered without computing the per-gateway coupling
+strength from the Ma metric.
+
+
+## 11. Implications for synthetic technology
+
+### 11.1 Properties of material-dimension memory
+
+If the physics described in sections 4–10 is correct, material-
 dimension storage has several notable properties:
 
 **High density.**  Each cavity (a location in ordinary space
@@ -834,7 +1231,7 @@ interference, and accidental measurement.
 (section 7.3) and sub-quantum extraction (section 7.4) offer
 paths to reading without erasing.
 
-### 8.2 Comparison with existing technologies
+### 11.2 Comparison with existing technologies
 
 How does material-dimension memory compare to what we have today?
 
@@ -851,13 +1248,17 @@ storage medium is the geometry of spacetime itself.  It does not
 rely on any material substrate that can wear out, demagnetize,
 or chemically degrade.  The information is stored in the
 configuration of standing waves on a fixed geometric structure.
+The architecture is closest to holographic memory (analog,
+frequency-addressed, distributed across many channels in a
+shared physical volume) but without the medium decay that
+limits holographic storage in practice.
 
 This comparison is illustrative, not quantitative.  We have not
 computed the write/read speeds, error rates, or energy costs of
 material-dimension memory, because the coupling strength between
 ordinary space and material dimensions is unknown.
 
-### 8.3 What would be needed to engineer it
+### 11.3 What would be needed to engineer it
 
 The gap between the theoretical possibility described above and
 anything that could be built is vast.  Three things are needed:
@@ -901,12 +1302,12 @@ calculations, not to promise the technology.
 ---
 
 
-## 9. Three numerical coincidences
+## 12. Three numerical coincidences
 
 Part I developed the physics of material-dimension storage in
-the abstract.  Nothing in sections 2–8 requires biology.  The
-write, retain, and read mechanisms apply to any material-
-dimension cavity at any scale.
+the abstract.  Nothing in sections 2–11 requires biology.  The
+write, retain, read, architecture, gateway, and mobility
+arguments apply to any material-dimension cavity at any scale.
 
 Part II asks a different question: is there a physical system
 that already operates at the right scale, the right energy, and
@@ -915,7 +1316,7 @@ the right frequency to couple to material-dimension modes?
 The answer, unexpectedly, is yes.  Three independent numerical
 coincidences point to the same system: the biological cell.
 
-### 9.1 Spatial scale: the neutrino sheet and the eukaryotic cell
+### 12.1 Spatial scale: the neutrino sheet and the eukaryotic cell
 
 The neutrino sheet Ma_ν — the material-dimension sheet where
 neutrino mass eigenstates live — has circumferences L₃ ≈ 200 μm
@@ -935,7 +1336,7 @@ the material dimensions described by the Ma model exist, then
 every biological cell is embedded in a material-dimension cavity
 whose circumferences match the cell's own size.
 
-### 9.2 Energy scale: mode energies and membrane voltages
+### 12.2 Energy scale: mode energies and membrane voltages
 
 The Ma_ν mode spectrum spans roughly 6–90 meV.  These
 are the energies of the standing-wave modes that the neutrino
@@ -968,7 +1369,7 @@ exchange would be resonant — each ion transit carries exactly
 the right energy to excite or de-excite a material-dimension
 mode.
 
-### 9.3 Frequency scale: DNA vibrations and material-dimension mode resonances
+### 12.3 Frequency scale: DNA vibrations and material-dimension mode resonances
 
 The Ma_ν mode energies (6–90 meV) correspond to frequencies in
 the terahertz (THz) band: roughly 1.4–22 THz (since frequency =
@@ -999,7 +1400,7 @@ this picture, would function as an antenna — its collective
 vibrations broadcasting and receiving at the frequencies of the
 material-dimension mode spectrum.
 
-### 9.4 The compound improbability
+### 12.4 The compound improbability
 
 Any single coincidence between a physical model and a biological
 system is unremarkable.  Physical constants span many orders of
@@ -1022,9 +1423,9 @@ constitute a reason to look more carefully.  The rest of Part II
 examines what we find when we look.
 
 
-## 10. Levin's bioelectric field: distributed memory without a brain
+## 13. Levin's bioelectric field: distributed memory without a brain
 
-The numerical coincidences of section 9 suggest that material-
+The numerical coincidences of section 12 suggest that material-
 dimension modes *could* couple to biology.  But coincidences
 alone are circumstantial.  What would strengthen the case is
 evidence that biological systems actually store and retrieve
@@ -1045,9 +1446,9 @@ dimension storage would produce.
 
 We present his key findings here as reported, without
 embellishment or reinterpretation.  The synthesis — the
-connection to our model — comes in sections 11 and 12.
+connection to our model — comes in sections 14 and 15.
 
-### 10.1 The bioelectric code
+### 13.1 The bioelectric code
 
 Every living cell maintains a voltage across its membrane.  This
 is not unique to neurons.  Skin cells, liver cells, bone cells,
@@ -1073,7 +1474,7 @@ stop.  Altering the pattern — by introducing new ion channels,
 applying drugs that change membrane permeability, or injecting
 current — changes the anatomical outcome.
 
-### 10.2 The code is substrate-independent
+### 13.2 The code is substrate-independent
 
 A striking property of the bioelectric code: the information is
 carried by the voltage value, not by the specific molecular
@@ -1099,7 +1500,7 @@ respond to the
 aggregate electromagnetic field (which depends on voltage), they
 are indifferent to which molecular species produced that field.
 
-### 10.3 Memory without a brain
+### 13.3 Memory without a brain
 
 Planarian flatworms are among the most regenerative animals
 known.  Cut a planarian into pieces, and each piece regrows a
@@ -1129,7 +1530,7 @@ are not the same cells that were present during training.
 Whatever stores the memory must be more persistent than any
 single cell or molecular pathway.
 
-### 10.4 Voltage overrides genome
+### 13.4 Voltage overrides genome
 
 If DNA were the sole determinant of body shape, then an organism
 with species A's genome should always build species A's head.
@@ -1149,7 +1550,7 @@ The voltage pattern acts as an instruction set that can
 temporarily override genetic defaults — like loading different
 software onto the same hardware.
 
-### 10.5 Trophic memory: information that outlasts tissue
+### 13.5 Trophic memory: information that outlasts tissue
 
 Some of the most striking examples of biological shape-memory
 come from outside Levin's laboratory.
@@ -1174,7 +1575,7 @@ Whatever stores this spatial information must be more durable
 than any protein, any epigenetic mark, and any cell.  It must
 be stored in something that is *not* the tissue itself.
 
-### 10.6 Xenobots: morphogenesis without a blueprint
+### 13.6 Xenobots: morphogenesis without a blueprint
 
 In 2020, Kriegman, Blackiston, Levin, and colleagues reported
 the creation of *xenobots* — novel living organisms assembled
@@ -1201,7 +1602,7 @@ blueprint for what they build is not in their DNA.
 This is a challenge for any theory of morphogenesis.  Where does
 the morphogenetic information come from, if not the genome?
 
-### 10.7 The stop condition
+### 13.7 The stop condition
 
 Running through all of these findings is a common thread: the
 *stop condition*.
@@ -1234,7 +1635,7 @@ morphology in the first place.
 This is the gap that material-dimension storage addresses.
 
 
-## 11. The bioelectric code as a cavity resonance
+## 14. The bioelectric code as a cavity resonance
 
 Levin's findings and the material-dimension storage model were
 developed completely independently.  Levin has never invoked
@@ -1245,7 +1646,7 @@ In this section, we do not claim that Levin's bioelectric code
 *is* a material-dimension resonance.  We observe that if it
 were, the observed properties would follow naturally.
 
-### 11.1 Substrate independence as material-dimension information
+### 14.1 Substrate independence as material-dimension information
 
 Levin's finding: the bioelectric code "signals by virtue of its
 physiological state, with no 1:1 correspondence to any specific
@@ -1266,7 +1667,7 @@ The substrate independence that Levin observes is exactly the
 behavior predicted by a storage medium that responds to
 aggregate voltage rather than to specific molecular identities.
 
-### 11.2 Isopotential cell fields as coherent cavities
+### 14.2 Isopotential cell fields as coherent cavities
 
 Levin's group has shown that gap junctions — protein channels
 that directly connect the cytoplasm of adjacent cells —
@@ -1291,7 +1692,7 @@ This is precisely the architecture of a distributed memory
 system — many cells, each storing local information, linked
 by communication channels.
 
-### 11.3 Simple trigger, complex outcome as mode cascade
+### 14.3 Simple trigger, complex outcome as mode cascade
 
 One of the most remarkable features of the bioelectric code is
 its economy.  A simple voltage change in a small region of
@@ -1327,13 +1728,13 @@ bioelectric signal is the seed; the material-dimension geometry
 is the supersaturated solution.
 
 
-## 12. A geometric answer to the stop condition
+## 15. A geometric answer to the stop condition
 
 This is the speculative core of the paper.  We make the
 proposal explicit, examine what it explains, and state clearly
 what it does not.
 
-### 12.1 The proposal
+### 15.1 The proposal
 
 We propose that the morphogenetic setpoint — the target shape
 that cells build toward during development and regeneration —
@@ -1366,7 +1767,7 @@ material-dimension modes through evanescent coupling.  When the
 the evanescent projections of all nearby cavities are mutually
 consistent — the error signal drops to zero and growth stops.
 
-### 12.2 What this explains
+### 15.2 What this explains
 
 If the proposal is correct, several of Levin's otherwise
 puzzling findings become natural consequences:
@@ -1409,7 +1810,7 @@ any cell.  Deer antler growth plates can "remember" damage for
 months because the material-dimension state at that location
 outlasts every molecular pathway in the tissue.
 
-### 12.3 What this does not explain
+### 15.3 What this does not explain
 
 Honesty requires stating the limits.
 
@@ -1443,14 +1844,14 @@ want to know where the data lives *physically*, you eventually
 need the hardware layer.
 
 
-## 13. Experimental signatures and falsifiable predictions
+## 16. Experimental signatures and falsifiable predictions
 
 A thought experiment justifies itself by generating testable
 predictions.  The hypothesis developed in this paper makes
 several, each targeting a specific link in the reasoning chain.
 We label each prediction by the component it tests.
 
-### 13.1 THz perturbation of regeneration
+### 16.1 THz perturbation of regeneration
 
 **Tests:** the link between Ma mode spectrum and biology.
 
@@ -1471,9 +1872,9 @@ off-resonance radiation should not.
 THz radiation produce indistinguishable effects on regeneration,
 the mode-specific coupling predicted by the model is absent.
 
-### 13.2 Preferred membrane voltages
+### 16.2 Preferred membrane voltages
 
-**Tests:** the energy coincidence (section 9.2).
+**Tests:** the energy coincidence (section 12.2).
 
 **Experiment:** Survey the published literature on cell
 membrane resting potentials (Vmem) across a wide range of cell
@@ -1489,14 +1890,14 @@ preferred values (peaks) at mode-specific voltages.
 
 **What would falsify it:** If Vmem values are smoothly
 distributed with no preferred values corresponding to the mode
-spectrum, the energy coincidence of section 9.2 is just a
+spectrum, the energy coincidence of section 12.2 is just a
 coincidence.
 
 **Note:** This is the most immediately feasible test.  It
 requires no new experiments — only a careful meta-analysis of
 existing electrophysiology data.
 
-### 13.3 Neutrino mass sum in biological spectra
+### 16.3 Neutrino mass sum in biological spectra
 
 **Tests:** a specific Ma prediction.
 
@@ -1521,7 +1922,7 @@ absorption edge, or spectral feature in biological THz spectra.
 measurement confirming Σm_ν ≈ 117 meV, would indicate that the
 Ma mode spectrum does not couple to biology.
 
-### 13.4 THz shielding of developing organisms
+### 16.4 THz shielding of developing organisms
 
 **Tests:** whether THz fields mediate the coupling between
 ordinary space and material dimensions.
@@ -1546,7 +1947,7 @@ material-dimension mode coupling (or the coupling operates
 through a
 different channel).
 
-### 13.5 Sub-quantum information extraction
+### 16.5 Sub-quantum information extraction
 
 **Tests:** the threshold model specifically (independent of
 biology).
@@ -1572,9 +1973,9 @@ section 7.4 of the storage hypothesis must be abandoned.  The
 remaining mechanisms (sections 7.1–7.3) are unaffected.
 
 
-## 14. Limitations, caveats, and open problems
+## 17. Limitations, caveats, and open problems
 
-### 14.1 Status of the component frameworks
+### 17.1 Status of the component frameworks
 
 This paper is a chain of reasoning, and a chain is only as
 strong as its weakest link.  Each link has a known status:
@@ -1611,10 +2012,10 @@ This narrows the storage hypothesis to Ma_ν specifically (see
 **The biological connection** is the most speculative layer.
 It rests on three numerical coincidences that may be exactly
 that — coincidences with no physical significance.  The
-biological systems described in section 10 have conventional
+biological systems described in section 13 have conventional
 (if incomplete) explanations within molecular biology.
 
-### 14.2 The coupling gap
+### 17.2 The coupling gap
 
 The central missing calculation is the coupling strength between
 3+1D electromagnetic fields and material-dimension modes.  This
@@ -1637,7 +2038,7 @@ configurations.  This is difficult but not impossible with
 current mathematical
 tools.
 
-### 14.3 Levin's own framework is sufficient for his data
+### 17.3 Levin's own framework is sufficient for his data
 
 It is important to acknowledge that Levin's bioelectric code
 explains his experimental results without invoking extra
@@ -1664,7 +2065,7 @@ phenomena are all candidates for durable information storage.
 The material-dimension hypothesis is an unconventional answer to
 a question that may have a conventional solution.
 
-### 14.4 The paper's value as a "what if"
+### 17.4 The paper's value as a "what if"
 
 This paper is a map of implications, not a claim of discovery.
 
@@ -1694,7 +2095,7 @@ history of science suggests that unexpected connections between
 distant fields are worth taking seriously, even when the initial
 evidence is circumstantial.
 
-### 14.5 Catalog of needed work
+### 17.5 Catalog of needed work
 
 We close with a list of the specific tasks needed to advance or
 retire the hypothesis, organized by feasibility.
@@ -1703,9 +2104,9 @@ retire the hypothesis, organized by feasibility.
 
 - Meta-analysis of published Vmem distributions across cell
   types, looking for clustering at Ma_ν mode energies
-  (section 13.2).
+  (section 16.2).
 - Survey of biological THz absorption spectra for features at
-  mode-predicted frequencies (section 13.3).
+  mode-predicted frequencies (section 16.3).
 - Completion of the Ma model's internal program: constraining
   the three aspect ratios, computing the full six-dimensional
   spinor structure, and resolving the neutron spin composition.
@@ -1713,15 +2114,15 @@ retire the hypothesis, organized by feasibility.
 **Requiring modest new experiments:**
 
 - THz perturbation of planarian regeneration at mode-specific
-  frequencies (section 13.1).
-- THz shielding of developing organisms (section 13.4).
+  frequencies (section 16.1).
+- THz shielding of developing organisms (section 16.4).
 - Sub-quantum detection experiments in well-characterized
-  microwave cavities (section 13.5).
+  microwave cavities (section 16.5).
 
 **Requiring theoretical breakthroughs:**
 
 - Computing the 3+1D ↔ material-dimension coupling strength from
-  the Ma metric (section 14.2).
+  the Ma metric (section 17.2).
 - Deriving the Ma model from a fundamental Lagrangian or action
   principle.
 - Developing a quantitative model of how material-dimension mode

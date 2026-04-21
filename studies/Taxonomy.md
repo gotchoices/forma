@@ -373,7 +373,6 @@ see [`STATUS.md`](STATUS.md).
 | File | Title | Status |
 |------|-------|--------|
 | [`matter-from-light.md`](../papers/matter-from-light.md) | Matter from Light and Geometry | Draft (paper 1/3) |
-| [`sub-quantum-memory.md`](../papers/sub-quantum-memory.md) | Sub-Quantum Memory | Part I draft, Part II outline (paper 2/3) |
+| [`sub-quantum-memory.md`](../papers/sub-quantum-memory.md) | Sub-Quantum Memory | Draft — highly speculative (paper 2/3) |
 | [`atoms-from-geometry.md`](../papers/atoms-from-geometry.md) | The Nine-Dimensional Atom | Rough outline (paper 3/3) |
-| [`neutrino-domain-storage.md`](../papers/neutrino-domain-storage.md) | Neutrino-Domain Memory | Outline (companion) |
 | [`universe-as-mode.md`](../papers/universe-as-mode.md) | The Universe as a Mode | Outline (thought piece) |

@@ -5,7 +5,7 @@
   [Q79](Q79-cellular-resonators-and-levin.md) (coupling mechanisms, layered model),
   [Q80](Q80-cancer-as-coupling-failure.md) (cancer as coupling failure),
   [Q78](Q78-neutrino-sheet-access.md) (neutron gateway model),
-  [neutrino-domain-storage](../papers/neutrino-domain-storage.md) (architecture)
+  [sub-quantum-memory](../papers/sub-quantum-memory.md) §§8–10 (architecture, gateway, mobility)
 
 ---
 

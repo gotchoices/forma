@@ -2,9 +2,9 @@
 
 **Status:** Open — two candidate mechanisms, one preferred
 **Source:** Brainstorm session on neutrino-domain storage mobility
-**Related:** [sub-quantum-memory](../papers/sub-quantum-memory.md) (parent
-storage paper), [neutrino-domain-storage](../papers/neutrino-domain-storage.md)
-(architecture paper), R26 F52–F67 (neutron as cross-plane mode),
+**Related:** [sub-quantum-memory](../papers/sub-quantum-memory.md)
+(parent storage paper; see §§8–10 for address space, neutron gateway,
+and mobility), R26 F52–F67 (neutron as cross-plane mode),
 R26 F64–F75 (Ma metric and cross-shear coupling)
 
 ---

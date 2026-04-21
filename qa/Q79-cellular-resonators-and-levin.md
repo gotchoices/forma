@@ -2,8 +2,8 @@
 
 **Status:** Open — hypothesis catalog + literature review
 **Related:**
-  [sub-quantum-memory](../papers/sub-quantum-memory.md) (storage hypothesis),
-  [neutrino-domain-storage](../papers/neutrino-domain-storage.md) (architecture),
+  [sub-quantum-memory](../papers/sub-quantum-memory.md) (storage hypothesis
+  and architecture — §§8–10),
   [Q78](Q78-neutrino-sheet-access.md) (access mechanisms),
   R26 F1–F9 (neutrino sheet mode spectrum)
 
