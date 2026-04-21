@@ -1,6 +1,6 @@
 # R62: Derivations
 
-**Status:** Tracks 1–10 complete (Program 1)
+**Status:** Program 1 complete (Tracks 1–11).  Pool z (closeout primer) deferred — [`papers/derivations.md`](../../papers/derivations.md) serves the role.
 **Type:** theoretical (analytical, no scripts required)
 **Depends on:** [primers/kaluza-klein.md](../../primers/kaluza-klein.md)
   (KK derivation of Lorentz force from 5D metric), R59 (Clifford
@@ -18,83 +18,73 @@ sequence of tracks. New programs can be added over time; tracks
 within each program are added one at a time using the same
 add-as-needed convention as R59/R60/R61.
 
-**Program 1 (active): Electron from light.** Generalize Kaluza-
-Klein theory from a 1D compact dimension to a 2-torus, replace
-the test particle with a photon, and derive the electron's mass,
-charge, spin, and magnetic moment as outputs of the same
-geometric machinery.
+**Program 1 (complete): Electron from light.** Generalized
+Kaluza-Klein theory from a 1D compact dimension to a 2-torus,
+replaced the test particle with a photon, and derived the
+electron's mass, charge, spin, and magnetic moment as outputs
+of the same geometric machinery.  All four quantum numbers are
+now derived (D1–D11).  Proton's four are derived under the
+(3, 6) Z₃-confinement interpretation from R60.
 
 Future programs (any number) will be added as new sections below
 when needed.
 
 ---
 
-## Remaining work (Program 1)
+## Program 1 status — complete
 
-Tracks 1–10 have closed the **kinematic** arc of Program 1:
-mass, charge, Lorentz force, two-torus and three-torus
-extensions, and scale-invariance.  Three items remain, to be
-taken in order:
+Program 1's kinematic arc is **complete.**  All three
+previously-remaining items have closed:
 
 1. **Spin mechanism — resolved by derivation 7d.**
    Derivation 7 previously had three alternatives (7a, 7b,
    7c) that each had issues.  Derivation 7d (added after
-   R60 Track 20) resolves the choice by deriving spin
-   content from per-sheet Dirac–Kähler construction on each
-   flat 2-torus Ma sheet.  Every KK mode on every sheet is
-   spin-½, independent of winding; compound modes follow
-   SU(2) angular-momentum composition across active sheets,
-   yielding exactly the Standard Model taxonomy
-   (1 sheet → lepton, 2 sheets → meson, 3 sheets → baryon).
-   The empirical winner of R60 Track 20 (unit-per-sheet AM
-   rule) matches 7d's derivation exactly.  7a, 7b, 7c are
-   retained as: 7a = negative-result context, 7b = mode-
-   structure rule within its single-sheet domain, 7c =
-   ambitious bulk version of the same idea that 7d cleanly
-   realizes per-sheet.
+   R60 Track 20) resolves the choice by deriving spin content
+   from per-sheet Dirac–Kähler construction on each flat
+   2-torus Ma sheet.  Every KK mode on every sheet is spin-½,
+   independent of winding; compound modes follow SU(2)
+   angular-momentum composition across active sheets,
+   yielding exactly the Standard Model taxonomy (1 sheet →
+   lepton, 2 sheets → meson, 3 sheets → baryon).  The
+   empirical winner of R60 Track 20 (unit-per-sheet AM rule)
+   matches 7d's derivation exactly.  7a, 7b, 7c are retained
+   as: 7a = negative-result context, 7b = mode-structure rule
+   within its single-sheet domain, 7c = ambitious bulk
+   version of the same idea that 7d cleanly realizes
+   per-sheet.
 
-2. **Magnetic moment — tree level only (pool g).**  Gated
-   by step 1.  Once a spin mechanism is selected, derive
-   the tree-level g = 2 from the coupling of the
-   selected spin state to an external EM field on the
-   torus geometry of Tracks 2–10.  The structure is
-   constrained by Lorentz covariance: charge + spin →
-   magnetic moment is automatic, and the proportionality
-   coefficient g is determined by the spin-½ coupling.
-   **The anomaly** (g − 2) is a conventional QED
-   radiative-correction calculation that applies as-is
-   in the S-domain and does not need to be rederived in
-   MaSt: it depends only on the 4D particle data
-   (charge e, mass m_e, spin ½), which Tracks 1–10
-   already supply, and uses loop integrals in 4D
-   Minkowski that are indifferent to the geometric
-   origin of the fields.  **A potential MaSt-specific
-   correction** exists in principle: if KK-tower modes
-   below the measurement scale contribute additional
-   loop pieces, the predicted g − 2 could differ from
-   the Standard-Model QED value.  R50/R54 filter
-   constraints make the relevant tower finite and
-   tractable; this is an R-study question
-   (phenomenological test of the MaSt spectrum against
-   the measured electron g − 2), not a Program 1
-   derivation.  It could be added as a follow-on study
-   once pool g is done.
+2. **Magnetic moment — resolved by derivation 11.**  Pool
+   item g was promoted to Track 11 after D7d's selection
+   unblocked it.  Tree-level results: g_e = 2 for the
+   electron (standard Dirac, Pauli reduction with D7d's
+   single-sheet spinor), g_p = 6 (= 3 μ_N) for the proton
+   under the (3, 6) Z₃-composite interpretation plus
+   Beg–Lee–Pais 1964 SU(6) spin-flavor combinatorics.
+   Observed anomalies (g_e − 2 ≈ 0.23%, g_p − 6 ≈ −6.9%)
+   are radiative / strong-interaction corrections outside
+   Program 1's scope — handled by standard QED (electron,
+   inherited as-is) or deferred to an R-study
+   (proton, higher-order Z₃ corrections).
 
-3. **Program 1 closeout (pool z).**  After steps 1 and
-   2, synthesize Tracks 1–10 (+ g) into a primer
-   appendix or standalone primer ("MaSt as photon-on-
-   torus").  Consolidate lemmas F1–F33 (+ g-lemma) with
-   consistent notation, explicitly flag what is
-   derived vs inherited (compact scale, empirical sign
-   vector (σ_e, σ_ν, σ_p), choice of spin mechanism
-   if 7b vs 7c was chosen by fit rather than by
-   derivation), and document the remaining open
-   problems at the GRID layer (emergent compactification
-   producing the tori at the observed scale) that
-   pass to later programs.
+3. **Closeout primer (pool z) — deferred.**
+   [`papers/derivations.md`](../../papers/derivations.md)
+   already serves the closeout-primer purpose: it
+   consolidates D1–D11 with a narrative walkthrough, lemma
+   index (F1–F36), clear "derived vs inherited" statements,
+   and references to all derivation files.  A separate
+   formal closeout primer would be redundant with the
+   existing paper.  Pool z is deferred indefinitely; it can
+   be reactivated if a publishable standalone artifact is
+   ever needed.
 
-Everything in Program 1 downstream of the spin decision
-waits on step 1.  Steps 1–3 are the only items left.
+**Net:** Program 1's electron-from-light arc is complete.
+All four of the electron's quantum numbers (mass, charge,
+spin, magnetic moment) are derived from the photon-on-torus
+machinery with no free parameters beyond the compact scale.
+The proton's four are derived under the (3, 6) Z₃-confinement
+interpretation from R60, with u/d flavor charges imported
+from the Standard Model (u/d flavor derivation is an open
+pool item).
 
 ---
 
@@ -2319,34 +2309,15 @@ a derivation.
 
 ---
 
-**z. Closeout for Program 1.**  Synthesize Tracks 1–10 (+ pool g
-once done) into a primer appendix or standalone primer
-("MaSt as photon-on-torus").  Concrete deliverables:
-
-- Consolidate lemmas F1–F33 (+ the pool-g lemma) into a
-  single reference list with consistent notation.
-- Produce a narrative walkthrough (mass → charge →
-  Lorentz force → cross-shears → T⁶ → scale) pointing
-  to the derivation files for the full work.
-- State unambiguously what is **derived** (mass formula,
-  charge formula, Lorentz force, cross-shear mass
-  mixing, scale-invariance) vs **inherited** (the
-  compact scale R itself, the empirical sign vector
-  (σ_e, σ_ν, σ_p), the choice of spin mechanism if
-  fixed by phenomenology rather than by a clean
-  derivation).
-- Document the remaining **open problems at the GRID
-  layer** that pass to later programs — principally
-  the dynamical mechanism by which GRID's Planck-
-  scale phase field produces the emergent compact tori
-  at the observed scale (derivation 9 §F.4).
-
-**Gating.**  Pool z waits on steps 1 and 2 of
-*Remaining work*.  Its difficulty is low (it is a
-writeup / synthesis task), but it is most valuable
-when the spin question and tree-level moment are both
-settled so that the final narrative does not need to
-branch on unresolved alternatives.
+**z. ~~Closeout for Program 1.~~**  **Deferred.**
+[`papers/derivations.md`](../../papers/derivations.md) already
+serves this purpose — it consolidates D1–D11 with a narrative
+walkthrough, lemma index (F1–F36), clear "derived vs inherited"
+statements, and references to the full derivation files.  The
+formal closeout primer envisioned in pool z is redundant with
+the existing paper and is deferred indefinitely; if a
+publishable standalone artifact is needed later, this pool
+item can be reactivated.
 
 ---
 
