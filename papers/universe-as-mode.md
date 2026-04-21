@@ -1,27 +1,95 @@
 # The Universe as a Mode
 
-**Status:** outline (thought piece / what-if)
+**Status:** Outline (thought piece / what-if).
+**Speculative tier: highly speculative** — extrapolates the Ma
+hierarchy by many orders of magnitude beyond any regime where
+quantitative predictions have been tested, and adds compactness
+of S (the three large spatial dimensions) as a hypothesis
+*outside* the MaSt axioms.
+**Model era:** Consistent with model-E; the core scaling
+argument is era-independent.
+
+> **Caveat emptor.**  This is the most speculative paper in
+> the forma collection.  It extends the Ma hierarchy far
+> beyond tested scales, assumes structural features of
+> spacetime that are not part of MaSt's axioms, and ends with
+> a self-referential closure claim that has not been shown to
+> have a solution.  Its purpose is to lay out the
+> extrapolation clearly enough that each link can be tested —
+> and to make the speculative steps visible where they occur.
+
 **Depends on:** [Matter from Light](matter-from-light.md) (Ma framework),
-  [Sub-Quantum Memory](sub-quantum-memory.md) (fiber-bundle entanglement),
-  [Q82](../qa/Q82-entanglement-as-ma-geometry.md) (entanglement as geometry),
-  [Q83](../qa/Q83-neutrino-sheet-coherence.md) (neutrino-sheet coherence)
+  [Sub-Quantum Memory](sub-quantum-memory.md) (threshold
+  storage in Ma_ν),
+  [Q72](../qa/Q72-is-s-periodic.md) (is S itself periodic?),
+  [Q82](../qa/Q82-entanglement-as-ma-geometry.md) (entanglement as Ma geometry),
+  [Q83](../qa/Q83-neutrino-sheet-coherence.md) (neutrino-sheet coherence),
+  [Q110](../qa/Q110-entanglement-via-aleph-fiber.md) (entanglement via the ℵ compactified dimension),
+  [Q127](../qa/Q127-orders-of-compactification.md) (three framings of compactification order),
+  [Q128](../qa/Q128-detecting-compact-universe.md) (detecting a compact universe)
 
 ---
 
-### Premise
+### Premises (each must hold for the argument to survive)
+
+The argument stacks speculative premises.  We list them in
+cascading order — a failure at any level collapses the layers
+above it but leaves the layers below intact.
+
+1. **The Ma hierarchy extrapolates linearly.**  The observed
+   pattern "larger compact geometry → richer mode spectrum"
+   (Ma_p → Ma_e → Ma_ν) continues to cosmological scale in
+   the same form.  No derivation requires this; no observation
+   forbids it at scales above the horizon.
+2. **S is compact at cosmological scale.**  This is
+   *outside the MaSt axioms*: MaSt and GRID treat S as
+   non-compact for local physics (Q128).  The paper introduces
+   cosmological compactness as an added hypothesis.  Current
+   observational cosmology has not detected compactness below
+   the horizon scale; the hypothesis is alive only above it.
+3. **Mode counts at cosmic scale reconcile with the Bekenstein
+   bound.**  The naive mode count (~10¹⁸⁰) far exceeds the
+   holographic bound (~10¹²²).  The argument assumes that
+   constraints, symmetries, and degeneracies reduce the
+   independent count to something near the bound; no such
+   reduction has been derived.
+4. **ℵ- or Ma-shared modes can carry Bell-violating
+   correlations.**  Q82, Q83, and Q110 outline candidate
+   mechanisms whereby shared compact-cycle modes produce
+   correlations that are decoupled from S-distance.  None has
+   been shown to reproduce the quantitative Bell violations of
+   standard quantum mechanics.
+5. **A self-consistent fixed point of the recursive geometry
+   exists.**  Section 7 argues for a closure in which the
+   physical constants are the unique solution of a
+   self-referential condition.  Such a fixed point may or may
+   not exist; no proof of existence has been constructed.
+
+Readers who reject any single premise can stop at the point
+where that premise becomes load-bearing.  Premise 1 supports
+the scaling argument of §§1–2.  Premise 2 supports §§6 and 8
+(periodicity and observable consequences).  Premise 3 supports
+the information-theoretic claim of §2.3.  Premise 4 supports
+§5 (entanglement via shared fiber / ℵ).  Premise 5 is specific
+to §§7 and 9 (closure and constant-derivation).
+
+---
+
+### What this paper is
 
 The Ma model (Ma being the six-dimensional material space)
 produces a hierarchy: the larger a material dimension, the
 richer its mode spectrum.  The neutrino sheet Ma_ν (~mm scale)
-already has enough modes to serve as a
-biological information substrate.  This paper follows the
-hierarchy to its logical limit and asks: what if the
-observable universe is itself a mode on a still-larger
-compact geometry — a "cosmic neutrino" whose internal
-structure is rich enough to encode everything we observe?
+already has enough modes to serve as a biological information
+substrate (see [Sub-Quantum Memory](sub-quantum-memory.md)).
+This paper follows the hierarchy to its logical limit and
+asks: what if the observable universe is itself a mode on a
+still-larger compact geometry — a "cosmic" sheet whose
+internal structure is rich enough to encode everything we
+observe?
 
-The paper is a controlled thought experiment in the spirit
-of [Sub-Quantum Memory](sub-quantum-memory.md) — a map of
+The paper is a controlled thought experiment in the spirit of
+[Sub-Quantum Memory](sub-quantum-memory.md) — a map of
 implications, not a claim of discovery.
 
 ---
@@ -77,6 +145,33 @@ scaling law.
 Is there a next step in this hierarchy?  What happens at
 L ~ 10²⁶ m — the scale of the observable universe?
 
+### 1.3 A note on "hierarchy": three framings
+
+There is more than one way to count layers of compactification
+in the MaSt/GRID architecture.  Q127 ("Orders of
+compactification") enumerates three genuinely independent
+framings:
+
+- **Framing A — cycle count:** each additional compact S¹ is
+  one order (ℵ is order 1; adding the ring and tube cycles
+  of a T² sheet brings the order to 3).
+- **Framing B — dimensionality / topology:** each additional
+  compact dimension privileges a particular field type and
+  fixes the 4D spin content (S¹ → photon; T² → spin-½
+  fermion; T³ and above are open).
+- **Framing C — active sheets:** each additional active sheet
+  in a compound mode defines a particle class (1 → lepton,
+  2 → meson, 3 → baryon).
+
+The "hierarchy" this paper follows is implicitly Framing A —
+the sequence of compact-cycle scales from the proton sheet
+upward.  The closure argument of §7 is also a Framing A
+closure.  Readers should be aware that a cosmological
+compactification of the kind proposed here would sit at
+Framing B order 3 (a T³) or higher — currently an open row
+in Q127's table, not a derived architectural feature.  We do
+not claim a single-axis hierarchy is the complete picture.
+
 
 ## 2. The extrapolation
 
@@ -121,14 +216,19 @@ In the original Kaluza-Klein theory, each point in ordinary
 space carries a copy of a compact extra dimension, and a
 pre-existing particle's momentum along that dimension
 appears as electric charge.  MaSt borrows the mathematical
-framework — each point in S carries its own copy of Ma,
-forming a fiber bundle — but fills it with different
-physics.  In MaSt, there are no pre-existing particles:
-the "fiber" at each point is the six-dimensional material
-space, and a particle is a standing electromagnetic wave
-(a confined photon) on that fiber.  Charge comes from
-shear-induced E-field asymmetry (R19), not from compact-
-direction momentum.
+framework — each point in S carries its own copy of the
+compact geometry, forming a fiber bundle — but fills it
+with different physics.
+
+In current GRID / MaSt terminology (Q127), the bundle's
+first compact cycle is **ℵ** (aleph — a single S¹ on each
+lattice edge, GRID axiom A3); the Ma sheets are T²
+compactifications layered above ℵ.  Together, ℵ and the Ma
+sheets constitute the "fiber" at each point of S.  In MaSt
+there are no pre-existing particles: a particle is a
+standing electromagnetic wave (a confined photon) on this
+fiber.  Charge comes from shear-induced E-field asymmetry
+(R19), not from compact-direction momentum.
 
 The fibers are not isolated; they are connected by the
 bundle connection, which is the emergent gauge field
@@ -200,12 +300,16 @@ coupling.
 
 ## 5. Entanglement as shared fiber
 
-### 5.1 Co-location = shared mode (Q82 recap)
+### 5.1 Co-location = shared mode (Q82, Q110 recap)
 
 When two particles occupy the same S location, they
 don't each have "their own" fiber mode — they are
 excitations of the SAME fiber.  One geometric vibration,
-two particles.
+two particles.  In GRID terms (Q110), the ℵ compactified
+dimension is the natural carrier of the shared correlation:
+ℵ is universally accessible at every lattice point and is
+structurally decoupled from S-distance — exactly the
+profile an entanglement mechanism requires.
 
 ### 5.2 Separation preserves the correlation
 
@@ -224,25 +328,43 @@ the mode is a single extended structure, resolution at
 one end resolves the other.  Nothing is transmitted —
 the structure was always one thing.
 
-### 5.4 All fibers are entangled with the whole
+### 5.4 Entanglement as global connectivity
 
 If the universe is a single mode on a larger compact
-geometry, then every fiber is part of one global
-structure.  Local particles are local excitations of a
-global mode.  Entanglement is not the exception (created
-by special preparation) — it is the default state.
-Decoherence is the process of losing access to the global
-correlations, not of creating them.
+geometry, then every fiber is part of one global structure.
+Local particles are local excitations of a global mode.  In
+this picture, entanglement is a local manifestation of a
+globally connected mode structure rather than an effect
+created by special preparation, and decoherence is the
+process of losing access to the global correlations.
+
+The language of "entanglement as the default state" is
+tempting but overstates what has been derived.  Q82, Q83,
+and Q110 outline candidate mechanisms by which ℵ- or
+Ma-mediated connectivity could produce Bell-violating
+correlations; none has been shown to reproduce the full
+quantitative profile of standard quantum entanglement.  The
+claim here is structural (one global geometry supports one
+global mode structure), not quantitative.
 
 
 ## 6. Everything is periodic
 
 ### 6.1 Compact = periodic
 
-A torus is a manifold with periodic boundary conditions.
-That is what "compact" means in this context.  The
-electron sheet Ma_e is periodic with period ~pm.  The
-neutrino sheet Ma_ν is periodic with period ~mm.
+**Caveat before we begin.**  MaSt and GRID axiomatically
+treat S (the three large spatial dimensions) as *non-compact*
+for local physics (Q128).  The 3-space block of the metric is
+kept flat and infinite in the natural-form limit.  The
+proposal in this paper — that S is itself compact at
+cosmological scale — is therefore an *added hypothesis*, not
+a consequence of the MaSt axioms.  The remainder of section 6
+(and section 8) is conditional on this added hypothesis.
+
+With that caveat in hand: a torus is a manifold with periodic
+boundary conditions.  That is what "compact" means in this
+context.  The electron sheet Ma_e is periodic with period
+~pm.  The neutrino sheet Ma_ν is periodic with period ~mm.
 
 If the universe is a mode on a torus of circumference
 ~10²⁶ m, then the universe is periodic with period
@@ -278,12 +400,23 @@ topology would produce:
   multipoles could reflect a preferred direction in the
   compact topology.
 
-These are active observational programs.  The Ma
-framework predicts that they should find a positive
-signal.
+These are active observational programs.  Under the added
+hypothesis of §6.1, the Ma framework *would* predict a
+positive signal in at least one of them.  Matched-circle
+searches in WMAP and Planck have found nothing at high
+significance so far (see §8.1); the low-ℓ anomalies remain
+suggestive but inconclusive.  The hypothesis is alive but
+unconfirmed, and the null results push any compactification
+to scales larger than the observable horizon.
 
 
 ## 7. The self-referential closure
+
+**Framing note.**  The closure proposed in this section is a
+Framing A closure (§1.3): the hierarchy of compact cycles,
+counted as ordered layers of compactification, wraps back on
+itself at the top.  Whether Framings B and C (topology and
+active-sheet count) admit analogous closures is left open.
 
 ### 7.1 The regress problem
 
@@ -328,14 +461,32 @@ either has exactly one solution or none.  It cannot be
 
 ## 8. What periodicity predicts
 
+*This section is conditional on the added hypothesis of §6.1
+(that S is compact at cosmological scale).  None of the
+predictions here follow from the MaSt axioms alone.*
+
 ### 8.1 CMB topology
 
-The Ma framework, extended to cosmological scale,
-predicts a compact spatial topology.  The specific
-prediction depends on whether the cosmological dimensions
-form a T³ (flat torus), a T² × S¹, or some other compact
-manifold.  Each topology has a distinct observational
+Under the added hypothesis, the Ma framework extrapolated to
+cosmological scale predicts a compact spatial topology.  The
+specific prediction depends on whether the cosmological
+dimensions form a T³ (flat torus), a T² × S¹, or some other
+compact manifold.  Each topology has a distinct observational
 signature in the CMB.
+
+**Status of current searches.**  The canonical test is the
+matched-circles signature (Cornish, Spergel, Starkman 2004):
+if a photon can travel around the universe and return, pairs
+of small circles on the sky should show correlated temperature
+patterns.  Searches in WMAP and Planck data have found no
+statistically significant matched circles.  This constrains
+any compactification of S to a scale *larger than the
+observable horizon* (~28 gigaparsecs in comoving distance) —
+it does not rule out the hypothesis, but it pushes the
+signature above what matched-circle searches can reach
+(Q128).  The "low-ℓ" CMB anomalies (suppressed large-angle
+correlations, axis of evil) remain suggestive but have not
+risen to a confident topology detection.
 
 ### 8.2 The cosmological constant
 
@@ -357,6 +508,47 @@ separations approaching L.  Galaxies near the
 "antipodal" point (half the period away) should show
 correlations with local structure.  This is testable
 with sufficiently deep surveys.
+
+### 8.4 α as leakage per cycle: a local signature
+
+Q128 proposes a MaSt-specific reframing of the
+fine-structure constant: α as *the fraction of energy that
+leaks per 2π of compact-cycle traversal*.  This reframing
+is itself speculative — it has not been derived from the
+MaSt axioms — but it is structurally consistent with α's
+existing role as a coupling between compact and non-compact
+dimensions (GRID A6 / σ_ta = √α).
+
+If α really is a leakage rate *and* if it applies at
+cosmological scales, the hypothesis predicts signatures
+that are *local* rather than horizon-crossing — complementing
+the matched-circle searches of §8.1:
+
+- **Direction-dependent phase drifts** in precision atomic
+  clocks over long baselines, correlated with orientation
+  relative to the compactification axes.
+- **Anisotropic light propagation** detectable by precision
+  interferometry if the compactification is anisotropic
+  (e.g., a T³ with unequal radii).
+- **Accumulated phase losses** visible at atomic-clock
+  precision (currently ~10⁻¹⁸/year).
+- **Imprints on cosmological-scale integrated observables**
+  (dark-energy evolution, CMB spectral distortions beyond
+  matched circles) distinct from the ΛCDM baseline.
+
+None of these is quantitatively predicted — we do not have a
+derived magnitude — and current measurement precision may or
+may not be sensitive to the predicted signal.  Per-radian
+leakage under α ≈ 1/137 is ~α/(2π) ≈ 0.00116, suggestively
+close to (but not identical to) the one-loop QED anomaly
+α/π ≈ 0.00232; whether that proximity is significant or
+coincidental is unresolved (Q128 §5).
+
+The point is that a MaSt-flavored compactification does not
+*only* produce horizon-crossing signatures; it would also
+produce local precision-measurement signatures that
+complement, rather than replace, the canonical cosmological
+topology searches.
 
 
 ## 9. What closure predicts
@@ -452,10 +644,15 @@ manifold, not discrete.
    constraints, symmetries, and degeneracies — or the
    comparison fails.
 
-3. **Can fibers reproduce Bell violations?**  Q82's
-   central open question applies here with even more
-   force: shared fiber modes must produce correlations that
-   exceed the Bell bound.
+3. **Can ℵ- or Ma-shared modes reproduce Bell violations?**
+   Q82 and Q110 outline the candidate mechanism: shared
+   compact-cycle modes (ℵ, or the Ma sheets) carry
+   correlations that are decoupled from S-distance.  Neither
+   has been shown to reproduce the quantitative Bell
+   violations of standard quantum mechanics — the "structural
+   reason" to expect the right kind of correlations is not
+   the same as a derivation that they appear with the right
+   magnitudes and angular dependences.
 
 4. **What is the topology?**  Is the cosmological
    compactification T³, T² × S¹, a Poincaré dodecahedral
@@ -468,15 +665,27 @@ manifold, not discrete.
 
 ### 11.2 Honesty
 
-This paper is the most speculative in the series.  It
-builds on the established Ma framework but extends it
-far beyond the regime where quantitative predictions have
-been tested.  It is included because the implications are
-striking and because several of its predictions (CMB
-topology, large-scale correlations, constant derivation)
-are in principle testable — and because the question it
-asks is the one the Ma framework naturally leads to.
+This is the most speculative paper in the forma collection.
+It builds on the established Ma framework but extends it far
+beyond the regime where quantitative predictions have been
+tested, and it adds compactness of S as a hypothesis outside
+the MaSt axioms.  It is included because the implications
+are striking and because several of its predictions — CMB
+topology, large-scale correlations, local α-leakage
+signatures, constant derivation from a closure condition —
+are in principle testable, and because the question the paper
+asks is the one the Ma hierarchy naturally invites once you
+notice that each sheet's richness scales with its size.
 
-The universe is either periodic or it isn't.  The Ma
-model says: periodic is the default.  Aperiodicity would
-be the thing requiring explanation.
+None of this should be mistaken for a claim that the Ma
+framework predicts a compact universe.  MaSt itself is
+agnostic: S is treated as non-compact in the axioms (Q128),
+and current observational cosmology has not detected any
+signature of compactness below the horizon scale.  The
+scaling pattern of Ma_p → Ma_e → Ma_ν *invites* the question
+of whether the pattern continues beyond the horizon; it does
+not *answer* it.  At the level of what has been established,
+aperiodicity remains the default observational stance.  The
+value of this paper — if it has any — is in laying out what
+would follow if the invitation is accepted, and what kinds of
+measurements could in principle decide the question.
