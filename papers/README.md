@@ -102,16 +102,16 @@ depend on it — and the science does not depend on them.
 
 | File | Title | Status |
 |------|-------|--------|
-| `whatif.md` | What If? | Draft |
-| `gut.md` | Good Unification Theory | Draft |
-| `symbols.md` | A Light Descent into Symbols | Draft |
-| `little-balls.md` | Little Balls of Light | Draft |
-| `matter-from-light.md` | Matter from Light and Geometry | Draft (paper 1 of 3) |
-| `sub-quantum-memory.md` | Sub-Quantum Memory: Information Storage in Material Dimensions | Draft — highly speculative (paper 2 of 3) |
-| `atoms-from-geometry.md` | The Nine-Dimensional Atom | Rough outline (paper 3 of 3) |
-| `dark-matter.md` | The Ghost in the Machine | Draft |
-| `universe-as-mode.md` | The Universe as a Mode | Outline (thought piece) |
-| `derivations.md` | Derivations — From Photon to Particle | In progress (roadmap + index for R62 derivation chain) |
-| `white-paper.md` | Matter from Light: A Geometric Particle Spectrum | Draft |
-| `signature.md` | 137: The Divine Signature | Draft |
-| `ancients.md` | Ancient Geometric Structure: Genesis and the GRID+MaSt Hierarchy | Outline |
+| [whatif.md](whatif.md) | What If? | Draft |
+| [gut.md](gut.md) | Good Unification Theory | Draft |
+| [symbols.md](symbols.md) | A Light Descent into Symbols | Draft |
+| [little-balls.md](little-balls.md) | Little Balls of Light | Draft |
+| [matter-from-light.md](matter-from-light.md) | Matter from Light and Geometry | Draft (paper 1 of 3) |
+| [sub-quantum-memory.md](sub-quantum-memory.md) | Sub-Quantum Memory: Information Storage in Material Dimensions | Draft — highly speculative (paper 2 of 3) |
+| [atoms-from-geometry.md](atoms-from-geometry.md) | The Nine-Dimensional Atom | Rough outline (paper 3 of 3) |
+| [dark-matter.md](dark-matter.md) | The Ghost in the Machine | Draft |
+| [universe-as-mode.md](universe-as-mode.md) | The Universe as a Mode | Outline (thought piece) |
+| [derivations.md](derivations.md) | Derivations — From Photon to Particle | In progress (roadmap + index for R62 derivation chain) |
+| [white-paper.md](white-paper.md) | Matter from Light: A Geometric Particle Spectrum | Draft |
+| [signature.md](signature.md) | 137: The Divine Signature | Draft |
+| [ancients.md](ancients.md) | Ancient Geometric Structure: Genesis and the GRID+MaSt Hierarchy | Outline |

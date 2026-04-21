@@ -21,6 +21,7 @@
   - Tactics: computational approach to the strategy (scripts, functions, mathematics)
 - Frame early track(s) in detail, keep later (dependent) tracks general as things may change
 - A good pattern is to number only the next track, keep future tracks in a pool to pick from as appropriate
+- Track framing should contain a hyperlink to the applicable finding file/section where possible
 
 ## Findings
 - When a study is complete, perform the writeup:

@@ -43,3 +43,6 @@ Tickets are in the [tickets/](tickets/) directory.
 The user may edit comments into markdown files for agent consumption using the form:
 <!--EC -->
 When present, follow the enclosed instructions and/or integrate relevant content into the document where appropriate and then remove the comment.
+
+## READMEs
+- README files should contain relevant hyperlinks so that the site is navigable on github pages
