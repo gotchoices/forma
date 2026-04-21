@@ -200,3 +200,5 @@ Q105b pending renumbering.
 | Q124 | [Q124](Q124-spin-in-mast.md) | Where does particle spin come from in MaSt? | Answered — per-sheet Dirac–Kähler (7d) + SU(2) AM composition |
 | Q125 | [Q125](Q125-spin-gated-charge.md) | Could spin-alignment gate α-channel coupling, making non-aligned modes dark? | Open — tenable working hypothesis; pool-item derivation target |
 | Q126 | [Q126](Q126-nuclear-battery-pixel-architecture.md) | Nuclear battery via neutrino-sheet pixel architecture — IC with LED beat + phonon tanks + iron substrate | Open — speculative; depends on L05 |
+| Q127 | [Q127](Q127-orders-of-compactification.md) | What are the "orders of compactification" — three framings (cycles / topology / sheet count) of how compactification promotes information into observable physics? | Open — framing document; unification across framings is an open problem |
+| Q128 | [Q128](Q128-detecting-compact-universe.md) | Could we detect that we live in a compact universe, measure local leakage, and infer its size? | Open — framing document; MaSt-specific signature requires deriving α as leakage rate |
