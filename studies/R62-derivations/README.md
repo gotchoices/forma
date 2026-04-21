@@ -1950,7 +1950,9 @@ to Track 6; see derivation-6.md.
 **f. ~~Spin from the 2×2 internal torus metric (the cross-coupling
 hypothesis).~~**  Promoted to Track 7; see derivation-7a.md
 (metric route), derivation-7b.md (CP-polarization route),
-and derivation-7c.md (6D Dirac KK-reduction route).
+derivation-7c.md (6D Dirac KK-reduction route), and
+**derivation-7d.md (per-sheet Dirac–Kähler — the selected
+derivation)** confirmed by R60 Track 20.
 
 **g. Magnetic moment as a corollary of charge + spin
 (tree level).**
@@ -2055,6 +2057,117 @@ is reached.  The hierarchy question itself (why R ≫
 ℓ_Planck) is formally documented as an open GRID-layer
 problem, outside the scope of Program 1.
 GRID-native.
+
+**k. Photon on GRID — KK reduction on the ℵ-line.**  GRID's
+ℵ-line axiom (foundations.md) places a 1D compact dimension on
+each lattice edge.  KK-reducing a 1-form on M⁴ × S¹ produces
+a 4D 1-form (the photon, spin 1) plus a 4D scalar.  This is
+the photon-sector companion to derivation 7d (matter spin
+from per-sheet Dirac–Kähler).  Together they articulate the
+"compact topology → privileged field type → 4D spin"
+principle as MaSt/GRID's unified spin derivation across both
+photon and matter sectors.
+
+**Status.**  Already drafted as
+[`grid/photon-from-aleph.md`](../../grid/photon-from-aleph.md)
+in the GRID layer rather than R62 (since the photon's
+home is GRID, not MaSt).  Could be elaborated into a formal
+R62 derivation if desired, but the work has been done.
+GRID-native.
+
+---
+
+**The following pool items are MaSt-spectrum derivations
+arising from R60 work that may be promoted to formal R62
+program-2 derivations (proposed scope: "Particle spectrum
+and confinement," following Program 1's "Electron from
+light"):**
+
+**l. σ_ra structural cancellation.**  R60 Track 7 derived the
+result σ_ra = (sε)·σ_ta from shear-cancellation algebra in the
+4×4 (tube, ring, ℵ, t) sub-metric.  With σ_ra active, the
+α-extraction determinant becomes independent of the
+shear-aspect product u = sε, and α universality across modes
+holds structurally.  Derivation lives in
+[`R60 findings-7.md`](../R60-metric-11/findings-7.md).
+Promotable to a formal R62 derivation.
+
+**m. Composite α rule (gcd-aware coupling).**  R60 Track 15
+Phase 2 derived the rule α_sum_composite =
+n_et − n_pt/gcd(|n_pt|, |n_pr|) + n_νt for compound modes
+where the p-tube winding is divisible.  This is the
+"per-strand charge" rule that reduces the bare α-sum for
+Z₃-bound triplets like (3, 6) → α = α (matching observation
+of proton charge).  For nuclei it gives α_Coulomb = Z² × α
+exactly.  Derivation in
+[`R60 findings-15.md`](../R60-metric-11/findings-15.md).
+Promotable.
+
+**n. Z₃ confinement on the p-sheet.**  R60 Track 16 derived
+the (3, 6) proton as a three-quark Z₃-bound composite from
+2ω density-fluctuation cancellation.  Mathematical content:
+N = 3 is the minimum copy count satisfying
+Σ_{k=0..N-1} exp(i·4πk/N) = 0 (since N = 1, 2 do not divide
+2 properly).  120° offsets are a dynamical energy minimum
+(Hessian-positive).  The selection rule "free p-sheet modes
+require n_pt ≡ 0 (mod 3)" is the structural consequence.
+Derivation in
+[`R60 findings-16.md`](../R60-metric-11/findings-16.md).
+Substantial new material; promotable.
+
+**o. e-sheet localization criterion R_loc < 1.**  R60 Track 17
+derived the criterion R_loc = m_mode · L_ring / ℏc > 1 for
+Z₃ binding to be physically active on a sheet.  Below this
+threshold (R_loc < 1), the mode is delocalized over the
+sheet and three distinct quark "copies" cannot coexist as
+separable entities.  Mechanism is the conjunction of
+extreme ε AND magic shear (|s − n_r/n_t| ≲ 0.035), which the
+e-sheet uniquely satisfies among MaSt's three sheets.
+Derivation in
+[`R60 findings-17.md`](../R60-metric-11/findings-17.md).
+Promotable.
+
+**p. ν charge = 0 from real-field conjugate-pair structure.**
+R60 Track 18 derived that real-field KK modes on the ν-sheet
+are automatically tube-conjugate-symmetric.  The observable
+state has ⟨n_νt⟩ = 0 (zero tube-direction charge) without
+needing to set σ_νS = 0 by hand.  e-sheet (extreme shear) and
+p-sheet (Z₃ structure) break this symmetry and acquire
+charge; ν-sheet does not.  Derivation in
+[`R60 findings-18.md`](../R60-metric-11/findings-18.md).
+Promotable.
+
+**q. Compound-mode spin via SU(2) AM composition.**  R60
+Track 20 empirically validated the unit-per-sheet AM rule:
+each active sheet contributes spin ½, and compound spin is
+the SU(2) angular-momentum composition over active sheets.
+This produces the Standard Model particle taxonomy
+(1 sheet ↔ lepton, 2 sheets ↔ meson, 3 sheets ↔ baryon)
+structurally.  The theoretical underpinning is in
+[`derivation-7d.md`](derivation-7d.md) §E.  Could be
+elaborated as a formal stand-alone derivation that
+specifically derives the SU(2) composition + sheet-count
+predictions for spin sets {0, 1} on 2 sheets and {½, 3/2}
+on 3 sheets.  Derivation in
+[`R60 findings-20.md`](../R60-metric-11/findings-20.md).
+Promotable.
+
+**r. Spin-gated charge principle.**  Tentative working
+hypothesis (Q125) that compound modes' coupling to the α
+channel is gated by the validity of their SU(2) spin
+projection — modes with reducible spin content have zero
+α coupling and are therefore dark.  Would unify several
+existing MaSt suppression mechanisms (Z₃ confinement, ν
+conjugate pairing, ghost-mode dismissals).  **Not yet
+derived**; speculative working hypothesis only.  See
+[`Q125`](../../qa/Q125-spin-gated-charge.md) for the full
+formulation, including the orthogonal "energy routing"
+mechanism (which selects whether a mode forms as an Ma
+compound vs as S-separated content) that complements the
+spin-gating filter.  This is a derivation TARGET, not yet
+a derivation.
+
+---
 
 **z. Closeout for Program 1.**  Synthesize Tracks 1–10 (+ pool g
 once done) into a primer appendix or standalone primer

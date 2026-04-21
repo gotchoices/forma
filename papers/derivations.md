@@ -1,9 +1,11 @@
 # Derivations — From Photon to Particle
 
-**Status:** Program 1 kinematic arc complete (9 of 10 derivations done:
-D1–D6, D8, D9, D10).  D7 (spin) has three alternative derivations under
-active investigation pending a discriminator.  The magnetic-moment
-derivation (pool item g) is gated on the spin decision.
+**Status:** Program 1 kinematic arc complete (D1–D10).  D7
+(spin) has four derivations (7a/7b/7c/7d); **D7d — per-sheet
+Dirac–Kähler — is the working selection** based on R60 Track 20
+empirical confirmation and architectural coherence with GRID's
+photon sector.  The magnetic-moment derivation (pool item g)
+is now unblocked in principle.
 
 A roadmap and index for the analytical derivations that put
 MaSt on a first-principles foundation.  Each derivation is a
@@ -62,7 +64,9 @@ the geometry.
 | Lorentz force on standing-wave states | D6 (Track 6) | **Complete** |
 | Minimal coupling derived (not postulated) | D6 (Track 6) | **Complete** |
 | Shear is mass-only at centroid level | D6 (Track 6) | **Complete** |
-| Spin quantum number | D7a / D7b / D7c | *\<in progress\>* — three alternatives under evaluation |
+| Spin quantum number (single-sheet) | D7d (per-sheet Dirac–Kähler) | **Selected** — supersedes 7a/7b/7c |
+| Compound-mode spin (SU(2) AM composition) | D7d + R60 Track 20 | **Derived** (empirically validated) |
+| Standard Model taxonomy (1-/2-/3-sheet ↔ lepton/meson/baryon) | D7d + R60 Track 20 | **Derived structurally** |
 | Compound modes on T⁴ (two sheets, cross-shears) | D8 (Track 8) | **Complete** |
 | Cross-shears preserve abelian Killing structure | D8 (Track 8) | **Complete** |
 | Schur-complement form of mass mixing | D8 (Track 8) | **Complete** |
@@ -426,21 +430,25 @@ resulting (m, Q) values without further shear dependence.
 - F19: shear affects spectrum only, not the centroid force
 
 
-### D7 — Spin *\<in progress\>*
+### D7 — Spin (resolved by D7d)
 
 **Files:**
 [`derivation-7a.md`](../studies/R62-derivations/derivation-7a.md),
 [`derivation-7b.md`](../studies/R62-derivations/derivation-7b.md),
-[`derivation-7c.md`](../studies/R62-derivations/derivation-7c.md)
-**Status:** Three alternative derivations under evaluation; no
-discriminator yet selected.
-**Uses:** D2 (all three), plus D6/D8 machinery (7b, 7c)
+[`derivation-7c.md`](../studies/R62-derivations/derivation-7c.md),
+[`derivation-7d.md`](../studies/R62-derivations/derivation-7d.md) **(selected)**
+**Status:** D7d is the working selection after R60 Track 20
+empirical confirmation.  7a, 7b, 7c remain as historical
+alternatives with specific domains of validity.
+**Uses:** D2 (all four), plus D6/D8 machinery (7b, 7c, 7d)
 
-Three independent approaches to deriving the spin quantum
-number of a standing-wave mode on the 2-torus have been
-executed.  They reach different — and internally consistent —
-conclusions, and the project currently keeps all three open
-until a discriminator settles the question.
+Four derivations of spin on the 2-torus have been executed.
+After extensive empirical evaluation in R60 Track 20 and
+architectural alignment with GRID's photon sector
+([`grid/photon-from-aleph.md`](../grid/photon-from-aleph.md)),
+**D7d is selected as the canonical spin derivation.**  The
+earlier three are retained as context and for specific
+single-mode domain rulings.
 
 **D7a — Metric route (Killing vectors + holonomy).**  Asks
 whether the flat T² metric alone produces spin-½ via a
@@ -471,31 +479,41 @@ the winding numbers exactly as in D3 / D5.  Spin becomes a
 field-type label rather than a torus quantum number — it no
 longer depends on (n_t, n_r).  **Not GRID-native as written:**
 posits a Grassmann (fermionic) Dirac spinor, which is not
-part of GRID's axioms (`grid/foundations.md` A1–A6 are purely
-bosonic).  A Dirac–Kähler projection from GRID's p-forms to
-spinors bridges the gap in principle — well-established in
-lattice gauge theory on flat tori (staggered fermions) — but
-has not yet been constructed for MaSt.  7c should therefore
-be read as a rigorous 6D alternative whose reconciliation
-with GRID is an open task.  Lemmas F20–F24.
+part of GRID's axioms.  Retained as the "ambitious 6D bulk"
+version of the same idea that D7d realizes more cleanly
+per-sheet.  Lemmas F20–F24.
 
-**Disagreement.**  7b and 7c disagree on whether (1, 3) can
-be a spin-½ proton (7b forbids, 7c permits).  A discriminator
-will come from one of: (a) the cross-sheet T⁶ fit against R54
-(does (1, 3) or (3, 6) give better compound-mode masses?),
-(b) a full wave-equation calculation of the rotational
-transformation properties of a specific standing-wave mode,
-or (c) an empirical result distinguishing the two.  Until a
-discriminator is chosen, all three alternatives are
-considered open.
+**D7d — Per-sheet Dirac–Kähler (selected).**  Each flat 2-torus
+Ma sheet admits a Dirac–Kähler field as its privileged fermion
+content.  KK-reducing produces a tower of 4D Dirac spinors
+labeled by winding (n_t, n_r), each spin ½ independent of
+winding.  Three sheets → three fermion families; compound
+particles compose via SU(2) angular-momentum addition
+across active sheets.  The Standard Model taxonomy
+(1-sheet ↔ lepton, 2-sheet ↔ meson, 3-sheet ↔ baryon) emerges
+structurally.  Lemmas F25–F28.
 
-**Empirical fallback.**  The project currently uses the
-"parity rule" (odd tube winding → spin ½), introduced
-empirically around R50.  7a, 7b, and 7c all comment on this
-rule: 7a cannot derive it; 7b replaces it with s = n_t/n_r;
-7c replaces it with "all matter modes uniformly spin ½".
-The parity rule is therefore a postulate until one of 7a/7b/7c
-is selected and its prediction is verified.
+**Why D7d was selected.**  R60 Track 20 evaluated 12 candidate
+compound-spin rules empirically and found that the "unit-per-
+sheet AM addition" rule best fits the observed particle
+inventory (14 of 16 non-input particles within 2%, Standard
+Model taxonomy falls out by sheet count).  D7d is the
+theoretical underpinning of that empirical winner.  D7d also
+parallels GRID's photon derivation ([`grid/photon-from-aleph.md`](
+../grid/photon-from-aleph.md)) — both are instances of the
+same "compact topology → privileged field type → 4D spin"
+principle, applied to different compactifications.
+
+**Status of the alternatives.**  D7a's negative result (no
+spin from the metric alone) is preserved and consistent with
+D7d (spin comes from the field type, not the metric).  D7b's
+ratio rule is demoted from a spin derivation to a mode-
+structure rule within its single-sheet domain (identifying
+(n, 2n) modes as having special CP-polarization properties,
+but not uniquely setting spin).  D7c's bulk Dirac is
+recognized as the "global" version of D7d's cleaner per-sheet
+restriction.  See [`Q124`](../qa/Q124-spin-in-mast.md) for the
+narrative of how the spin question was settled.
 
 
 ### D8 — Two 2-tori with cross-shears (compound modes on T⁴)
@@ -617,7 +635,8 @@ and D9 as sub-cases, confirming D10 is a strict generalization.
 
 ### *\<future\>* — Magnetic moment from charge + spin (pool g)
 
-**Status:** Planned, **gated on D7** (spin resolution)
+**Status:** Planned.  Was gated on D7; **now unblocked** by
+D7d's selection.  Not yet executed.
 
 Once the spin mechanism (D7a / D7b / D7c) is selected, the
 magnetic moment at tree level follows from Lorentz covariance
@@ -642,19 +661,18 @@ test in a separate R-study.
 
 Program 1's remaining work is a short, well-scoped list:
 
-- **D7 — spin (active).**  Three alternative derivations exist
-  (D7a metric, D7b CP-polarization ratio, D7c 6D Dirac KK).
-  They reach different conclusions and at least 7b vs 7c
-  disagree on whether (1, 3) can be a spin-½ proton.  A
-  discriminator — cross-sheet T⁶ fit against R54, direct
-  wave-equation calculation, or experiment — has to be
-  selected before the spin rule can be considered derived
-  rather than postulated.  The parity rule currently in use
-  is empirical.
+- **D7 — spin (resolved).**  D7d (per-sheet Dirac–Kähler) is
+  the working selection, supported by R60 Track 20 empirical
+  evaluation and architectural parallel with the photon
+  derivation in [`grid/photon-from-aleph.md`](../grid/photon-from-aleph.md).
+  D7d gives spin ½ for every single-sheet KK mode and SU(2)
+  composition for compounds, reproducing the Standard Model
+  particle taxonomy structurally.
 
-- **Magnetic moment (gated on D7, pool g).**  Tree-level g = 2
-  from charge + spin, via a KK-on-torus analog of the Dirac
-  calculation.  Blocked on the spin resolution.
+- **Magnetic moment (pool g).**  Was gated on D7; now
+  unblocked by D7d's selection.  Tree-level g = 2 from charge
+  + spin via a KK-on-T² analog of the Dirac calculation.
+  Not yet executed; remains in scope for Program 1 closeout.
 
 - **Program 1 closeout (pool z).**  Synthesis of all
   derivations F1–F33 plus pool g, consolidating lemmas and
@@ -685,11 +703,12 @@ open and are **not** in Program 1's scope:
   coupling) but not rigorously derived.  Their full
   derivation is beyond Program 1.
 
-- **GRID ↔ MaSt reconciliation for spin.**  If D7c is
-  selected, a Dirac–Kähler projection from GRID's p-forms to
-  a 6D Dirac spinor will be required.  This is well-studied
-  in lattice gauge theory on flat tori, but has not yet been
-  constructed for MaSt.
+- **GRID ↔ MaSt reconciliation for spin.**  D7d uses per-sheet
+  Dirac–Kähler on flat T² (Becher-Joos / staggered-fermion
+  construction).  The lattice-level explicit construction in
+  GRID's substrate is well-studied in lattice gauge theory but
+  has not been formalized for MaSt.  This is the open
+  derivation target that 7d's adoption leaves behind.
 
 ---
 
@@ -702,6 +721,8 @@ open and are **not** in Program 1's scope:
 | [`primers/size-matters.md`](../primers/size-matters.md) | The Compton view: mass as frequency, particles as cavities.  D1 proves this. |
 | [`models/model-E.md`](../models/model-E.md) | The working model whose postulates the derivations aim to prove.  D4 derives its mass formula; D10 would reproduce its full inventory. |
 | [`grid/charge-emergence.md`](../grid/charge-emergence.md) | GRID-level charge mechanism (junction leakage from bending).  Complements D5's KK-level derivation. |
+| [`grid/photon-from-aleph.md`](../grid/photon-from-aleph.md) | GRID-level photon derivation as KK mode of the ℵ-line (S¹).  Companion to D7d for the photon sector — same compact-topology-determines-spin principle, applied to the substrate dimension. |
+| [`Q124`](../qa/Q124-spin-in-mast.md) | Spin story narrative consolidating D7a/b/c/d and Track 20's empirical work. |
 | [`papers/gut.md`](gut.md) | The narrative paper ("Good Unification Theory") that tells the story these derivations make rigorous. |
 | [`studies/R62-derivations/`](../studies/R62-derivations/) | The study containing the actual derivation files and the full program framing. |
 
@@ -733,9 +754,10 @@ that subsequent derivations cite.  The chain:
 | F17 | Lorentz force with derived m, Q | D8, D10 |
 | F18 | Minimal coupling is geometric | — (standalone result) |
 | F19 | Shear is mass-only at centroid level | — (standalone result) |
-| F20–F23 | Spin, metric route (D7a): Killing algebra is abelian, holonomy trivial, spin-½ requires external spin structure | Open — not yet selected |
-| F20–F22 | Spin, CP ratio route (D7b): s = n_t/n_r, clashes with parity rule on (1, 3) | Open — not yet selected |
-| F20–F24 | Spin, 6D Dirac KK route (D7c): all matter modes uniformly spin ½, GRID reconciliation pending | Open — not yet selected |
+| F20–F23 | Spin, metric route (D7a): Killing algebra is abelian, holonomy trivial — negative result, consistent with D7d (spin not from metric) | Context for D7d |
+| F20–F22 | Spin, CP ratio route (D7b): s = n_t/n_r — demoted to single-sheet mode-structure rule | Context for D7d |
+| F20–F24 | Spin, 6D Dirac KK route (D7c): bulk Dirac giving uniform spin ½ — superseded by D7d's per-sheet restriction | Context for D7d |
+| F25–F28 | Spin, per-sheet Dirac–Kähler (D7d): each 2-torus hosts spin-½ KK tower; SU(2) AM composition for compounds; Standard Model taxonomy structural | **Selected** — used in pool g (magnetic moment) |
 | F25 | Generalized mass formula on T⁴ (Schur complement) | D10 |
 | F26 | Compound modes from cross-shear | D10 |
 | F27 | Kinematic mass–charge decoupling on T⁴ | D10 |

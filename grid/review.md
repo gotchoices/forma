@@ -331,3 +331,211 @@ behaves consistently.  Whether this narrative can eventually
 generate predictions that distinguish it from standard physics
 is the open question that determines its long-term
 significance.
+
+---
+
+## 8. Post-review rebuttal (April 2026 + R60/R62)
+
+The review above was written in April 2026 and reflects GRID's
+state at that time.  Work performed since — specifically
+MaSt's R60 (metric-11 spectrum study), R62 (particle-physics
+derivations), and the new [photon-from-aleph.md](photon-from-aleph.md)
+framing — provides evidence that GRID's substrate is doing
+more work than the review credits.  The review is not wrong;
+it is evaluating an earlier state of the project.  This
+section rebuts specific undercredits.
+
+Note: MaSt is not GRID.  MaSt is a framework that sits *on
+top* of GRID.  The rebuttals below cite MaSt results only
+where they serve as evidence that GRID — as an underlying
+substrate — does more than the review measured.  MaSt's
+own contributions are outside this review's scope and are
+not the point.
+
+### 8.1 Rebuttal — "Predictions beyond standard physics: None yet"
+
+**Reviewed claim.**  GRID reproduces known results (Maxwell,
+Einstein) and produces no testable predictions distinguishing
+it from standard physics.
+
+**Post-R60/R62 position.**  The claim is technically true for
+GRID in isolation.  It is misleading when applied to what
+GRID's substrate *enables*.  The ℵ-line axiom (foundations.md:
+"Each edge of the lattice carries a 1D compact internal
+dimension") has since been shown to support a specific
+architectural pattern that generates concrete predictions:
+
+- The photon emerges as the lowest Kaluza–Klein mode on the
+  ℵ-line (photon-from-aleph.md, supplementing the standard
+  gauge-invariance derivation of maxwell.md).  Spin 1 is a
+  direct consequence of the ℵ = S¹ compactification.
+- The same compact-topology-determines-field-type principle
+  extends naturally to higher compactifications.  MaSt's
+  R62 derivation 7d uses flat 2-torus sheets (each hosting a
+  Dirac–Kähler field) to derive matter spin ½.
+- Under that extension, the **Standard Model particle
+  taxonomy** (lepton/meson/baryon ↔ 1/2/3 active compact
+  layers) emerges structurally rather than being imposed.
+  MaSt's R60 Track 20 confirmed this taxonomic pattern
+  against the observed particle spectrum by blind search.
+
+The review correctly notes that GRID reproduces Maxwell.
+What it could not anticipate is that the specific axiomatic
+form chosen (ℵ-line as a per-edge internal dimension) was
+the right foundation for further derivations that GRID's
+substrate makes possible.  The ℵ-line was not a notational
+convenience — it is a structural element.
+
+### 8.2 Rebuttal — "The axioms encode the conclusions they produce"
+
+**Reviewed claim.**  A3 + A4 are the defining properties of
+U(1) gauge theory; calling them axioms and then deriving
+Maxwell is tautological packaging of Wilson (1974).
+
+**Post-R60/R62 position.**  A3 + A4 packaged as GRID states
+them do produce Maxwell via Wilson's lattice gauge theory,
+as the review correctly identifies.  However, the specific
+form GRID chose — **phase on cells + connection on links +
+the ℵ-line's compact S¹ structure per edge** — contains more
+information than raw U(1) gauge theory needs.
+
+That extra information has since been shown to support:
+
+- Explicit KK-reduction of the photon as the zero mode of an
+  ℵ-line 1-form (not part of Wilson's framework)
+- Further compactification into 2-torus sheets admitting
+  Dirac–Kähler fermions (MaSt sheets as wrapped sub-lattices,
+  compact-dimensions.md)
+- Topological selection rules (Z₃ confinement from 2ω density
+  cancellation in MaSt R60 Track 16) that do not require a
+  postulated SU(3) color symmetry
+
+A review against April 2026's scope cannot see this extension.
+The axioms *as specified* do more than Wilson requires; they
+were chosen to support a larger architecture that has since
+been built on top.
+
+### 8.3 Rebuttal — "Does not extend to non-abelian gauge groups"
+
+**Reviewed claim.**  GRID produces only U(1) electromagnetism.
+SU(2) × SU(3) requires richer internal structure outside GRID.
+
+**Post-R60 position.**  Partially correct, but overstated.
+Phenomena that are conventionally explained by SU(3) color —
+specifically quark confinement into three-quark singlets —
+have since been derived from GRID's U(1) substrate plus
+MaSt's 2-torus compactification.  Specifically:
+
+- MaSt R60 Track 16 derived the selection rule "free p-sheet
+  modes require n_pt ≡ 0 (mod 3)" from 2ω density-fluctuation
+  cancellation, not from postulating SU(3) color.  The
+  mathematical mechanism (N = 3 is the minimum copy count at
+  which Σ exp(i·4πk/N) = 0) follows from the topology of the
+  2-torus, which itself is a wrapped GRID sub-lattice.
+- The Standard Model's three-fermion-generation structure
+  emerges from three 2-torus sheets, not from a non-abelian
+  index theorem requirement.
+
+GRID still does not produce SU(2) × U(1) electroweak structure
+directly — this limitation stands.  But the specific form of
+"confinement" that SU(3) is usually invoked for has been shown
+to be derivable from GRID's U(1) substrate + compactification.
+The need for non-abelian machinery at GRID's level is
+narrower than the review implied.
+
+### 8.4 Rebuttal — "G = 1/(4ζ) is tautological in natural units"
+
+**Reviewed claim.**  G ≡ 1 in Planck units by definition;
+G = 1/(4ζ) = 1/(4 × 1/4) = 1 is just confirming the
+definition.
+
+**Position unchanged.**  This is a fair critique.  The
+derivation gives G correctly in natural units and correctly
+identifies G = 1/(4ζ), but the SI value of G still requires
+the additional conversion through independently-measured
+Planck units.  R60 and R62 did not alter this; no rebuttal.
+
+### 8.5 Rebuttal — "Simulations confirm internal consistency but do not test against new predictions"
+
+**Reviewed claim.**  GRID's simulations (wave propagation,
+superposition, 1/r gravity, Schwarzschild geometry)
+demonstrate self-consistency but do not distinguish GRID from
+standard physics.
+
+**Post-R60 position.**  Correct at GRID's level.  However,
+the *role* of the simulations has expanded: they are no
+longer just self-consistency checks for Maxwell and Einstein.
+The sim-maxwell result (directional waves from geometry
+alone, no Maxwell input) and sim-gravity-2 (1/r force from
+lattice elasticity) are now evidence that GRID's substrate
+behaves coherently enough to carry the MaSt superstructure
+that has been built on top.  In particular:
+
+- If the lattice did not reliably propagate waves without
+  Maxwell input, the MaSt photon-on-torus picture (which
+  requires propagating EM on compactified geometry) would
+  have no foundation.  The simulations confirm that
+  foundation holds.
+- If the lattice did not produce 1/r gravity in 2D, the
+  claim that α_Coulomb = Z² α for Z-charged nuclei (MaSt
+  R60 Track 11) would have no geometric basis for the 1/r
+  Coulomb field it reproduces.
+
+The simulations have not predicted anything new, but they
+have validated that GRID's substrate supports the further
+derivational work MaSt has built on it.
+
+### 8.6 What the review gets right and remains unchanged
+
+- **Base Maxwell derivation is packaged U(1) lattice gauge
+  theory (Wilson, 1974).**  Correct.  The novelty is in the
+  specific form chosen (which has since supported extensions)
+  rather than in the derivation itself.
+- **Gravity derivation is Jacobson (1995) with flagged
+  imports.**  Correct.  No rebuttal on this.
+- **α is a measured input, not derived.**  Correct.  Still
+  open.
+- **ζ = 1/4 is calibrated to match Bekenstein–Hawking, with
+  geometric justification that gives the value but does not
+  uniquely determine which geometry applies.**  Correct.
+- **Honesty template and documentation practices are
+  exemplary.**  Agreed.
+
+### 8.7 Net effect on novelty assessment
+
+The review's summary row for novelty reads:
+
+> **Novel contribution**: The unified substrate narrative —
+> placing Wilson and Jacobson on the same lattice with a
+> concrete axiom partition.
+> **Predictions beyond standard physics**: None yet.
+
+Updated row, taking the post-R60/R62 evidence into account:
+
+> **Novel contribution (unchanged)**: The unified substrate
+> narrative — placing Wilson and Jacobson on the same
+> lattice with a concrete axiom partition.
+> **Novel contribution (added)**: GRID's specific axiomatic
+> form (ℵ-line as per-edge S¹, U(1) phase on cells,
+> connection on links) has since been shown to support a
+> coherent extension into MaSt's particle architecture —
+> photon as ℵ-line KK mode, matter as 2-torus KK tower,
+> Standard Model particle taxonomy from sheet-count + SU(2)
+> composition, quark confinement from 2ω density
+> cancellation.  These extensions are not part of GRID
+> proper, but they validate that GRID's substrate was
+> structured to support them.
+> **Predictions beyond standard physics**: Still thin in the
+> strict sense.  New architectural content (spin-gated
+> charge principle, information-promotion hierarchy) is
+> hypothesized but not yet derived.  GRID + MaSt remains
+> primarily a derivational-structure project rather than a
+> new-empirical-prediction project.
+
+The net assessment: **GRID is more novel than the original
+review credits, not because GRID itself changed, but because
+the substrate has been shown to support a larger architecture
+than was visible at the time of the review.**  The review's
+specific claims about Maxwell and Einstein derivations remain
+correct; its conclusion on novelty undercredits GRID's
+foundational role in the downstream MaSt architecture.
