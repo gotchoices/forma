@@ -33,7 +33,7 @@ documentation and computational work.
 
 | File | Job |
 |------|-----|
-| `STATUS.md` | Priority-ordered work queue. What to work on next. |
+| [`STATUS.md`](./STATUS.md) | Priority-ordered work queue. What to work on next. |
 | [`../qa/INBOX.md`](../qa/INBOX.md) | Raw capture log. Questions as they arise. |
 | [`../qa/`](../qa/) | Q&A folder — answered and open questions written up individually. |
 | `lib/` | Shared code — physical constants, common utilities. |
