@@ -1926,6 +1926,147 @@ lemmas F30–F33 at the end.
 
 ---
 
+#### Track 11 — Magnetic moment at tree level (promoted from pool item **g**)
+
+**Goal.**  Derive the tree-level magnetic moment of a MaSt
+standing-wave eigenstate from the same geometric machinery that
+produced mass (F7/F11), charge (F14), and spin (F25 of D7d).
+The target values are:
+
+- **Electron (single-sheet):** g_e = 2 exactly, μ_e = e ℏ / (2 m_e) = 1 Bohr magneton.  Standard Dirac result.
+- **Proton (three-quark Z₃ composite under the (3, 6) interpretation):** g_p = 6 (equivalently, μ_p = 3 μ_N in nuclear-magneton units).  Naive SU(6) quark-model tree value.
+
+**Scope clarity.**  Observed values are g_e ≈ 2.00232 (electron
+anomaly 0.00232) and g_p ≈ 5.586 (proton anomaly ≈ 0.414 below
+tree).  These anomalies are radiative / strong-interaction
+corrections and are **explicitly out of scope**:
+
+- Electron anomaly: standard QED Schwinger α/(2π) correction,
+  uses only 4D particle data (e, m_e, spin ½), indifferent to
+  geometric origin.  MaSt inherits this as-is.
+- Proton anomaly: residual strong-interaction corrections
+  (equivalent to QCD corrections in the Standard Model, or
+  higher-order Z₃ dynamics in MaSt beyond tree level).  Outside
+  Program 1's scope.
+
+Track 11 produces the **tree-level** numbers g_e = 2 and
+g_p = 6; comparison to observed anomalies is a phenomenological
+follow-up in an R-study, not a Program 1 derivation.
+
+**Strategy.**  For the electron (1-sheet case) the path is
+standard textbook Dirac physics adapted to KK on a 2-torus:
+
+1. **Single-sheet Dirac spinor from D7d.**  The electron is the
+   (1, 2) mode on the e-sheet's 2-torus, which under per-sheet
+   Dirac–Kähler KK reduction is a 4D Dirac spinor (spin ½).
+2. **Minimal coupling to external EM field.**  From D6's F18
+   result, the 6D wave equation with an external A_μ^ext weak
+   perturbation in the spacetime block reduces to the 4D Dirac
+   equation with gauge-covariant derivative
+   D_μ = ∂_μ − i(Q/ℏ)A_μ^ext, with Q = e·n_t (F14) — same Q as
+   Track 6.
+3. **Pauli reduction.**  Take the non-relativistic limit of the
+   4D Dirac equation with external B field; the Pauli equation
+   that falls out has the standard magnetic-moment term
+   −(Qℏ/2mc)·σ·B.  This identifies g = 2 structurally (the
+   factor of 2 comes from the Dirac representation, not from a
+   free parameter).
+4. **Bohr magneton.**  Express as μ_e = g·Q·ℏ/(4m_e) = eℏ/(2m_e),
+   the Bohr magneton.
+
+For the proton (3-quark Z₃ composite) the path requires one
+additional structural step:
+
+5. **Three-quark composition.**  Under the (3, 6) interpretation
+   (R60 Track 16), the proton is three spin-½ "quark"
+   constituents on the p-sheet at 120° Z₃ phase offsets.  Each
+   contributes its own Dirac magnetic moment per step 3.
+6. **Spin–flavor combinatorics (naive SU(6)).**  The standard
+   Beg–Lee–Pais 1964 calculation: the proton's spin-½ +
+   isospin-½ wavefunction is a specific symmetric combination of
+   the three quarks under SU(6).  Compute the total magnetic
+   moment by summing each quark's intrinsic moment weighted by
+   its fraction in the proton wavefunction.
+7. **u/d flavor assignment.**  The naive model assumes
+   Q_u = +2/3, Q_d = −1/3, with identical constituent mass
+   m_q ≈ m_p/3.  This gives μ_p = 3 μ_N equivalently g_p = 6.
+
+**Tactics.**
+
+1. **§A.** Setup.  Recap per-sheet Dirac–Kähler from D7d (a
+   single Dirac spinor per 2-torus), recall D6's result that
+   minimal coupling to A_μ^ext falls out of the 6D separation of
+   variables.  State the scope (tree level only).
+2. **§B.** Electron case — textbook KK Dirac.  Write the 4D
+   Dirac equation with external A_μ^ext, do the Pauli reduction,
+   read off g_e = 2.  Reference Witten 1981 / Duff-Nilsson-Pope
+   1986 for the KK magnetic-moment standard derivation.  Explicit
+   computation with MaSt's Q = e·n_t = e and m from F11.
+3. **§C.** Proton case — three-quark Z₃ composite.  Recap
+   R60 Track 16's Z₃ binding derivation that gives three (1, 2)
+   quark constituents at 120° phase offsets.  Apply the naive
+   SU(6) Beg–Lee–Pais machinery: per-quark magnetic moment from
+   §B, sum with proton spin-flavor wavefunction, derive
+   μ_p = 3 μ_N and g_p = 6.
+4. **§D.** Anomaly scope — explicit statement that g_e − 2 and
+   g_p − 6 are residual corrections (QED / QCD-analog) outside
+   Program 1.  Point to standard Schwinger QED and (for the
+   proton) R-study follow-up for potential MaSt-specific KK-tower
+   contributions.
+5. **§E.** Cross-shear check — verify that σ_ra (R60 Track 7)
+   and cross-sheet σ entries don't shift g_e or g_p at tree
+   level.  F19 already indicated cross-shears affect mass
+   spectrum only, not the coupling; §E confirms this for the
+   magnetic coupling specifically.  Expected result: no shift
+   at tree level.
+6. **§F.** Results summary — state F34–F36 (or similar) lemmas
+   covering the electron g = 2, proton g = 6, cross-shear
+   invariance.
+
+**Acceptance.**
+
+- g_e = 2 derived at tree level from D7d + D6 minimal coupling,
+  with no free parameters.
+- g_p = 6 derived from three Z₃-bound quarks under naive SU(6),
+  with u/d charges ±2/3 or −1/3 and constituent mass m_q = m_p/3
+  as the only structural inputs.
+- Cross-shear check: σ_ra and cross-sheet σ entries do not shift
+  g_e or g_p at tree level.
+- Explicit scope statement: anomalies (0.23% for electron,
+  ~7% for proton) outside scope.
+- GRID-native for the electron case (standard Dirac-Kähler KK);
+  proton case requires the composite α rule (R60 Track 15) and
+  the Z₃ binding mechanism (R60 Track 16) as additional
+  structural inputs beyond Program 1's Stage-1 axioms.
+
+**Dependencies.**
+
+- D6 (F17, F18, F19) — minimal coupling and Lorentz force
+- D7d (F25–F28) — per-sheet Dirac–Kähler spin content
+- D10 — 6D MaSt architecture as context
+- R60 Track 7 (σ_ra structural cancellation) — for cross-shear
+  invariance check
+- R60 Track 15 (composite α rule) — for proton constituent
+  charges
+- R60 Track 16 (Z₃ confinement) — for the three-quark proton
+  structure
+
+**Attribution.**
+
+- Electron case: Dirac 1928 (Dirac equation); standard KK
+  magnetic moment derivation via Witten 1981 / Duff-Nilsson-Pope
+  1986.
+- Proton case: Beg–Lee–Pais 1964 (SU(6) magnetic moments in the
+  quark model); standard textbook (e.g. Close, "An Introduction
+  to Quarks and Partons," 1979).  Applied here to MaSt's
+  specific Z₃ three-quark structure.
+
+**Status.**  Framed.  Ready for execution.  Pool item g is
+promoted to this Track; see
+[derivation-11.md](derivation-11.md) (to be written).
+
+---
+
 ### Next-track pool
 
 Candidates after Track 1. Sequence decided as we go. Each
@@ -1954,8 +2095,16 @@ derivation-7c.md (6D Dirac KK-reduction route), and
 **derivation-7d.md (per-sheet Dirac–Kähler — the selected
 derivation)** confirmed by R60 Track 20.
 
-**g. Magnetic moment as a corollary of charge + spin
-(tree level).**
+**g. ~~Magnetic moment as a corollary of charge + spin
+(tree level).~~**  **Promoted to Track 11; see Track 11
+framing above.**  Previously pending the spin resolution
+(pool f); now unblocked by D7d's selection.  Target values:
+g_e = 2 (electron, standard Dirac from single-sheet
+Dirac–Kähler KK), g_p = 6 (proton, naive SU(6) from three
+Z₃-bound quark constituents).  Tree-level only; anomalies
+out of scope.
+
+*[Historical framing retained for context:]*
 Once charge (pool d, done in Track 5) and spin (pool f,
 three alternatives in Tracks 7a/7b/7c — pending
 discriminator) are both in place, the magnetic moment
