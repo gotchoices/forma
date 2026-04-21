@@ -2061,9 +2061,10 @@ additional structural step:
   to Quarks and Partons," 1979).  Applied here to MaSt's
   specific Z₃ three-quark structure.
 
-**Status.**  Framed.  Ready for execution.  Pool item g is
-promoted to this Track; see
-[derivation-11.md](derivation-11.md) (to be written).
+**Status.**  Complete.  See
+[derivation-11.md](derivation-11.md); lemmas F34–F36.
+Program 1's kinematic arc is now closed; pool z (closeout
+synthesis) can proceed.
 
 ---
 

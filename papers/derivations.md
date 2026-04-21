@@ -1,11 +1,12 @@
 # Derivations — From Photon to Particle
 
-**Status:** Program 1 kinematic arc complete (D1–D10).  D7
-(spin) has four derivations (7a/7b/7c/7d); **D7d — per-sheet
-Dirac–Kähler — is the working selection** based on R60 Track 20
-empirical confirmation and architectural coherence with GRID's
-photon sector.  The magnetic-moment derivation (pool item g)
-is now unblocked in principle.
+**Status:** Program 1 kinematic arc **complete** (D1–D11).
+D7 resolved by D7d (per-sheet Dirac–Kähler, selected based on
+R60 Track 20 empirical confirmation and architectural coherence
+with GRID's photon sector).  D11 closed the magnetic-moment
+derivation at tree level: g_e = 2 for the electron,
+g_p = 6 (= 3 μ_N) for the proton.  Program 1 closeout
+(pool z: synthesis primer) can now proceed.
 
 A roadmap and index for the analytical derivations that put
 MaSt on a first-principles foundation.  Each derivation is a
@@ -75,7 +76,8 @@ the geometry.
 | Mass formula on full T⁶ (three sheets) | D10 (Track 10) | **Complete** |
 | Iterated-Schur form of 6×6 inverse metric | D10 (Track 10) | **Complete** |
 | Universal charge Q = e(−n_1 + n_5) from three tube-couples conventions | D10 (Track 10) | **Complete** |
-| Magnetic moment from charge + spin (tree level) | *\<future\>* | Planned — pool item g, gated on D7 resolution |
+| Magnetic moment from charge + spin (tree level) — electron | D11 | **Complete** — g_e = 2 at tree level |
+| Magnetic moment — proton (Z₃ three-quark composite) | D11 | **Complete** — g_p = 6 at tree level (= 3 μ_N) |
 
 ---
 
@@ -633,10 +635,55 @@ and D9 as sub-cases, confirming D10 is a strict generalization.
   sub-cases
 
 
-### *\<future\>* — Magnetic moment from charge + spin (pool g)
+### D11 — Magnetic moment at tree level (promoted from pool g)
 
-**Status:** Planned.  Was gated on D7; **now unblocked** by
-D7d's selection.  Not yet executed.
+**File:** [`studies/R62-derivations/derivation-11.md`](
+../studies/R62-derivations/derivation-11.md)
+**Status:** Complete
+**Uses:** D6 (F17, F18, F19), D7d (F25–F28), D10 (F30–F33),
+R60 Tracks 7, 15, 16 (σ_ra, composite α, Z₃ confinement)
+
+The tree-level magnetic-moment derivation for both the
+electron (single-sheet Dirac) and the proton (three-quark
+Z₃ composite).
+
+**Electron.** Under per-sheet Dirac–Kähler (D7d), the electron
+is a 4D Dirac spinor with mass m_e (F11) and charge −e (F14).
+The standard Pauli reduction of the 4D Dirac equation with
+external A_μ^ext gives the magnetic moment term
+−(eℏ/2m_e c)·σ·B, yielding **g_e = 2** exactly at tree level
+— Dirac's 1928 result.  No free parameters, no MaSt-specific
+modifications.
+
+**Proton.** Under the (3, 6) interpretation (R60 Track 15) with
+Z₃ confinement (R60 Track 16), the proton is three (1, 2)
+quark constituents at 120° phase offsets, each with mass
+m_q = m_p/3.  Per-quark magnetic moment from the same Dirac
+calculation as the electron; combine via SU(6) spin-flavor
+wavefunction (Beg–Lee–Pais 1964) with u/d flavor charges
+(+2/3, −1/3) imported from the Standard Model, giving
+**g_p = 6** (equivalently μ_p = 3 μ_N) at tree level.  The
+observed ~7% anomaly (g_p ≈ 5.586) is strong-interaction
+correction analogous to QCD, out of Program 1's scope.
+
+**Cross-shear invariance.** MaSt's internal shears (σ_ra from
+R60 Track 7, cross-sheet σ, in-sheet shear g_45) shift the
+mass spectrum but not the g-factor; tree-level g is robust
+under all MaSt-specific shear perturbations.
+
+**Scope.** Tree-level only.  Observed anomalies handled by
+standard QED (electron; Schwinger 1948) or deferred to
+future R-study (proton; higher-order Z₃ / strong-interaction
+corrections).
+
+**Key results (F34–F36):**
+- F34: g_e = 2 tree-level, Bohr magneton μ_e = eℏ/(2m_e)
+- F35: g_p = 6 tree-level via SU(6) on three Z₃-bound quarks,
+  μ_p = 3 μ_N
+- F36: cross-shear invariance — internal shears don't shift g
+
+**Program 1 closeout unblocked.** With D1–D11 complete,
+pool z (synthesis / primer appendix) can now proceed.
 
 Once the spin mechanism (D7a / D7b / D7c) is selected, the
 magnetic moment at tree level follows from Lorentz covariance
@@ -669,10 +716,12 @@ Program 1's remaining work is a short, well-scoped list:
   composition for compounds, reproducing the Standard Model
   particle taxonomy structurally.
 
-- **Magnetic moment (pool g).**  Was gated on D7; now
-  unblocked by D7d's selection.  Tree-level g = 2 from charge
-  + spin via a KK-on-T² analog of the Dirac calculation.
-  Not yet executed; remains in scope for Program 1 closeout.
+- **Magnetic moment (D11).**  Complete.  Tree-level g_e = 2
+  for the electron; g_p = 6 (= 3 μ_N) for the proton via
+  SU(6) on three Z₃-bound quark constituents.  Observed
+  anomalies (0.23% for electron, ~7% for proton) handled by
+  standard QED (electron, inherited) or deferred to R-study
+  (proton, higher-order Z₃/strong-interaction corrections).
 
 - **Program 1 closeout (pool z).**  Synthesis of all
   derivations F1–F33 plus pool g, consolidating lemmas and
@@ -757,7 +806,10 @@ that subsequent derivations cite.  The chain:
 | F20–F23 | Spin, metric route (D7a): Killing algebra is abelian, holonomy trivial — negative result, consistent with D7d (spin not from metric) | Context for D7d |
 | F20–F22 | Spin, CP ratio route (D7b): s = n_t/n_r — demoted to single-sheet mode-structure rule | Context for D7d |
 | F20–F24 | Spin, 6D Dirac KK route (D7c): bulk Dirac giving uniform spin ½ — superseded by D7d's per-sheet restriction | Context for D7d |
-| F25–F28 | Spin, per-sheet Dirac–Kähler (D7d): each 2-torus hosts spin-½ KK tower; SU(2) AM composition for compounds; Standard Model taxonomy structural | **Selected** — used in pool g (magnetic moment) |
+| F25–F28 | Spin, per-sheet Dirac–Kähler (D7d): each 2-torus hosts spin-½ KK tower; SU(2) AM composition for compounds; Standard Model taxonomy structural | Used in D11 (magnetic moment) |
+| F34 | Electron g_e = 2 at tree level from D7d single-sheet + D6 minimal coupling (D11) | Program 1 closeout (pool z) |
+| F35 | Proton g_p = 6 (μ_p = 3 μ_N) at tree level from three Z₃-bound quarks + SU(6) Beg–Lee–Pais (D11) | Program 1 closeout |
+| F36 | Cross-shear invariance of tree-level g (D11): MaSt's internal shears don't shift g_e or g_p | — (consistency) |
 | F25 | Generalized mass formula on T⁴ (Schur complement) | D10 |
 | F26 | Compound modes from cross-shear | D10 |
 | F27 | Kinematic mass–charge decoupling on T⁴ | D10 |
