@@ -98,3 +98,12 @@ gotchoices.org sites.
 
 Draft 2 — reduced site structure centered on three live pages: Home, Start
 Here, and About.  The repo is now treated explicitly as the main destination.
+
+### Pre-publish checklist
+
+- [ ] User review pass on page content.
+- [ ] Consider a favicon.
+- [ ] Crop / downsize hero images if the current PNGs render too large on
+      mobile.
+- [ ] Smoke-test at `http://localhost:8080/` before first publish.
+- [ ] DNS pointing `formares.org` at the target host (infrastructure task).

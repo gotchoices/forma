@@ -40,7 +40,6 @@ EXCLUDES=(
   --exclude "server.sh"
   --exclude "publish.sh"
   --exclude "README.md"
-  --exclude "STATUS.md"
   --exclude ".DS_Store"
   --exclude "*.swp"
 )
