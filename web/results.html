@@ -1,0 +1,186 @@
+<section class="page-intro">
+  <h1 class="page-title">Results</h1>
+  <p class="page-subtitle">What the geometry predicts — and where it still doesn’t quite fit.</p>
+</section>
+
+<section class="prose">
+  <p>
+    A theory is only worth its predictions. Every number here is produced by
+    code in the
+    <a href="https://github.com/gotchoices/forma" target="_blank" rel="noopener">Forma repository</a>
+    that can be inspected and re-run. We list what falls out, what is
+    tentative, and what remains open.
+  </p>
+</section>
+
+<div class="stats">
+  <div class="stat">
+    <div class="stat-value">14 / 16</div>
+    <div class="stat-label">Compound particle masses within 1.12% (model-F)</div>
+  </div>
+  <div class="stat">
+    <div class="stat-value">≤ 1.4%</div>
+    <div class="stat-label">Nuclear masses, d → ⁵⁶Fe</div>
+  </div>
+  <div class="stat">
+    <div class="stat-value">Z² · α</div>
+    <div class="stat-label">Coulomb scaling — exact, not fitted</div>
+  </div>
+  <div class="stat">
+    <div class="stat-value">~5.4</div>
+    <div class="stat-label">Predicted dark-to-visible ratio (observed ≈ 5.4)</div>
+  </div>
+</div>
+
+<section class="prose">
+
+  <h2>What the geometry produces</h2>
+
+  <h3>Particle spectrum</h3>
+  <p>
+    Under a Z₃-compliant + composite-α mode search, <strong>14 of 16
+    non-input compound particles land within 1.12%</strong> of observed mass
+    (several beating model-E). The three charged lepton generations
+    (electron, muon, tau) come out with algebraically exact mass ratios from a
+    single geometric solution point.
+  </p>
+
+  <h3>Nuclei</h3>
+  <p>
+    Using a single scaling law <code>n_pt = 3A, n_pr = 6A, n_et = 1 − Z</code>,
+    nuclear masses from deuterium to ⁵⁶Fe land within 1.4%. The Coulomb
+    self-energy of a Z-nucleus scales as <em>exactly</em> Z²·α — not imposed,
+    but forced by the tube↔ℵ↔t coupling chain.
+  </p>
+
+  <h3>Neutrinos</h3>
+  <p>
+    The ratio of squared mass splittings
+    <code>Δm²₃₁ / Δm²₂₁ ≈ 33.6</code> is produced analytically from integer
+    winding numbers on the neutrino sheet, with a unique shear
+    <code>s_ν = 0.022</code> fixing it. <strong>Neutrino neutrality is
+    derived</strong>, not postulated: real-field KK modes are tube-conjugate
+    symmetric, and absent a symmetry-breaker (which the electron and proton
+    sheets have, but the neutrino sheet does not) the tube charge averages
+    to zero automatically.
+  </p>
+
+  <h3>Quantum numbers</h3>
+  <ul>
+    <li><strong>Charge quantization</strong> from periodicity of the phase winding. No fractional charges possible on a closed surface.</li>
+    <li><strong>Spin ½</strong> from the (1, 2) winding ratio on a flat 2-torus sheet — not postulated, topological.</li>
+    <li><strong>Electron shell structure (2n²)</strong> from the mode count of confined-wave solutions on the compact geometry.</li>
+    <li><strong>Standard Model taxonomy</strong> (lepton / meson / baryon ↔ 1-, 2-, 3-sheet) from sheet-count + SU(2) composition.</li>
+  </ul>
+
+  <h3>Dark matter as a prediction, not a patch</h3>
+  <p>
+    Most modes on the material sheets have <em>even</em> winding numbers.
+    Their fields oscillate symmetrically, producing zero net charge. They
+    carry mass (standing-wave energy) but couple weakly to light — the exact
+    behavior observed in dark matter. Below 2 GeV there are roughly 900 such
+    modes, outnumbering charged particles ~20 : 1. The predicted mass ratio
+    <strong>brackets the observed dark-to-visible ratio of ~5.4</strong>.
+  </p>
+
+  <h3>Emergent neutron</h3>
+  <p>
+    The neutron was not put in by hand. It emerges as a <em>cross-sheet</em>
+    compound mode spanning the proton and electron sheets, with exactly zero
+    net charge — a prediction, not an input.
+  </p>
+
+  <h3>Z₃ confinement on the proton sheet</h3>
+  <p>
+    The (3, 6) proton is a bound state of three (1, 2) sub-modes — the
+    framework’s version of quarks. Their confinement is geometric: the
+    individual constituents fall below the sheet’s resonance threshold and
+    cannot survive independently. Confinement is not imposed; it is a
+    consequence of the geometry.
+  </p>
+
+  <h2>Guiding inputs</h2>
+  <p>Model-F takes the following measured inputs and derives the rest:</p>
+  <div class="table-wrap">
+    <table class="data">
+      <thead>
+        <tr><th>Input</th><th>What it sets</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>α ≈ 1/137</td><td>Ma ↔ ℵ ↔ t coupling strength (value input, structure geometric)</td></tr>
+        <tr><td>m_e</td><td>Electron ring scale</td></tr>
+        <tr><td>m_p</td><td>Proton ring scale</td></tr>
+        <tr><td>Δm²₂₁</td><td>Neutrino ring scale</td></tr>
+        <tr><td>m_μ / m_e, m_τ / m_e</td><td>Electron-sheet aspect ratio and shear (fixes two parameters)</td></tr>
+        <tr><td>Δm²₃₁ / Δm²₂₁</td><td>Neutrino shear</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    Three of these are dimensional scales (every theory needs units) and
+    four are dimensionless — compared against the Standard Model’s ~19
+    dimensionless parameters.
+  </p>
+
+  <h2>What remains open</h2>
+  <div class="callout note">
+    <p>
+      The project is conducted in the open. These are <em>listed in the
+      repository</em>, not hidden. Anyone with relevant expertise is welcome
+      to examine, challenge, or extend the work.
+    </p>
+  </div>
+
+  <ul>
+    <li><strong>Pion mass desert.</strong> π⁰ and π± land ~10–13% below observed; halved from earlier models but not closed.</li>
+    <li><strong>The value of α.</strong> Its physical meaning has become clearer (an impedance coupling between compact and extended space), but its specific value, 1/137.036, must still be taken from experiment.</li>
+    <li><strong>Single-k closed form.</strong> <code>k = 1.1803/(8π)</code> is a confirmed structural fixed point across all three sheets, but a closed-form derivation of its specific value is open.</li>
+    <li><strong>Flavor (u/d split).</strong> Not yet derived within the (1,2)-quark / (3,6)-proton architecture.</li>
+    <li><strong>Matter–antimatter asymmetry.</strong> A plausible shear-chirality sketch exists; formalization is pending.</li>
+    <li><strong>Gauge-boson sector.</strong> W / Z as transient reconfigurations is a partial picture; sin² θ_W ≈ 3/13 has a provisional derivation.</li>
+    <li><strong>Photon-on-GRID, rigorous derivation.</strong> A planned companion to the per-sheet Dirac–Kähler derivation.</li>
+  </ul>
+
+  <h2>How to judge reliability</h2>
+  <div class="table-wrap">
+    <table class="data">
+      <thead>
+        <tr><th>Content type</th><th>Location in repo</th><th>Reliability</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Runnable computational studies</td>
+          <td><code>studies/</code>, <code>grid/sim-*/</code></td>
+          <td>Highest — verify by running the scripts yourself</td>
+        </tr>
+        <tr>
+          <td>Theoretical derivations</td>
+          <td><code>grid/maxwell.md</code>, <code>grid/gravity.md</code></td>
+          <td>Solid — follows established physics, but read critically</td>
+        </tr>
+        <tr>
+          <td>Q&amp;A and hypotheses</td>
+          <td><code>qa/</code></td>
+          <td>Ranges from well-reasoned to speculative; may contain errors</td>
+        </tr>
+        <tr>
+          <td>INBOX / brainstorming</td>
+          <td><code>*/INBOX.md</code></td>
+          <td>Lowest — unvetted ideas</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p><strong>When in doubt, look for the script.</strong></p>
+
+  <hr>
+
+  <p>
+    Go deeper:
+    <a href="https://github.com/gotchoices/forma/blob/main/STATUS.md" target="_blank" rel="noopener">Project status</a>
+    ·
+    <a href="https://github.com/gotchoices/forma/blob/main/models/model-F.md" target="_blank" rel="noopener">Model-F details</a>
+    ·
+    <a href="https://github.com/gotchoices/forma/blob/main/studies/STATUS.md" target="_blank" rel="noopener">Study-by-study registry</a>
+  </p>
+</section>
