@@ -1,0 +1,52 @@
+title: Forma
+description: A geometric account of fundamental physics (GRID + MaSt)
+url: "https://gotchoices.github.io"
+baseurl: "/forma"
+
+theme: jekyll-theme-cayman
+markdown: kramdown
+
+# Plugins (all supported by GitHub Pages out of the box).
+#
+# - optional-front-matter : render .md files that lack YAML front matter
+# - relative-links        : rewrite *.md links -> *.html at build time
+# - readme-index          : use README.md as a folder's index when present
+# - default-layout        : apply the default layout to front-matter-less pages
+# - titles-from-headings  : derive <title> from the first H1
+plugins:
+  - jekyll-optional-front-matter
+  - jekyll-relative-links
+  - jekyll-readme-index
+  - jekyll-default-layout
+  - jekyll-titles-from-headings
+
+# Ensure every page (including front-matter-less markdown) is wrapped
+# in the theme's default layout.
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: default
+
+# Jekyll ignores these during the build.
+# - web/ is the separate formares.org static site, deployed independently.
+# - present/, work/, .venv/, tess/ are scratch / tooling / subtree content.
+# - Python, build artifacts, and dotfiles are excluded as usual.
+exclude:
+  - "*.py"
+  - "lib/"
+  - "__pycache__/"
+  - ".publish-log.json"
+  - ".venv/"
+  - "Gemfile"
+  - "Gemfile.lock"
+  - "vendor/"
+  - ".gitignore"
+  - "web/"
+  - "present/"
+  - "work/"
+  - ".claude/"
+  - "AGENTS.md"
+  - "CLAUDE.md"
+  - "tess/"

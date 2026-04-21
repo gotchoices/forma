@@ -1,0 +1,21 @@
+<!--
+  Custom <head> additions for the GitHub Pages build.
+  The Cayman theme's default layout includes this file automatically.
+
+  Loads MathJax v3 so inline $...$ and display $$...$$ math in the
+  repository's markdown renders correctly on the published site.
+-->
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true
+    },
+    svg: { fontCache: 'global' },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+  };
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
