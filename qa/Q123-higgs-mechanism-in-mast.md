@@ -205,6 +205,95 @@ self-couplings and VEV-like properties that no
 cross-sheet mode can reproduce, MaSt would need to add
 structure to accommodate it.
 
+### 5.1 Structural sub-hypotheses for the 125 GeV mode
+
+The generic "specific T⁶ mode, likely cross-sheet"
+statement above admits several sharper framings.  Three
+are worth naming explicitly, because each implies a
+different derivation target.
+
+**Hypothesis A — atlas ceiling.**  Under
+[Q129](Q129-discrete-mass-atlas-with-s-separation.md), any
+mode above a critical energy is beaten by split-and-
+separate alternatives in S (multi-particle configurations
+at distinct spatial positions).  The Higgs could sit near
+this threshold — distinguished not as "the biggest mode"
+but as the mass scale at which single-location Ma stacking
+stops being favorable.  Weakness: the ceiling is generic
+above some energy, not a pointer to one specific mode.
+
+**Hypothesis B — all three sheets simultaneously loaded
+at one spatial location.**  The Higgs as the lowest-energy
+configuration in which all three Ma sheets carry nonzero
+winding at once (the minimal "full compound" state at a
+single point in S).  Sharper than §5's generic
+cross-sheet reading: requires simultaneous activity on
+all three sheets, not just two.  Testable by enumerating
+three-sheet 6-tuples with minimal total |n| (subject to
+selection rules) and checking whether the lowest such
+energy lands near 125 GeV.  Intuition: "all tori fully
+loaded at one location" is the natural single-point upper
+envelope before S-separation takes over (joining with
+Hypothesis A above that scale).
+
+**Hypothesis C — lightest eigenmode of the full 9D
+Hessian.**  Treat Ma's geometry around model-F's solved
+ground state as a potential; the Higgs is the lightest
+coherent oscillation of the full 9D internal metric
+around that equilibrium.  This mirrors the SM picture
+cleanly — SM Higgs mass = curvature of V(φ) at its
+minimum — and makes the VEV/boson/stiffness relationship
+concrete:
+
+- VEV (246 GeV) ↔ the characteristic energy scale of
+  model-F's ground-state geometry
+- Higgs boson (125 GeV) ↔ the lowest-eigenvalue coherent
+  oscillation of that geometry
+- Higgs self-coupling λ ↔ higher-order terms in the
+  Hessian expansion
+
+Hypothesis C dovetails with [R43](../studies/R43-weinberg-angle/)
+F7's treatment of W and Z as "transient cross-sheet
+reconfigurations, not eigenmodes" — the Higgs would be a
+lower-order example of the same object type (a saddle or
+restoring-force excitation of the ground-state geometry,
+rather than a particle-like stable mode).
+
+The three hypotheses are not exclusive.  C is the
+stiffness interpretation; B is the topological content of
+that stiffness (which sheets are active in the lowest
+oscillation); A is the upper bound on single-location
+mass beyond which the lowest-excitation picture ceases to
+be well-defined.  A successful MaSt derivation of the
+Higgs likely combines elements of all three.
+
+**Concrete derivation target (from Hypothesis C).**  The
+owed computation is explicit and uses existing
+infrastructure (R60's 9D metric solver):
+
+1. Solve model-F for the ground-state 9D metric.
+2. Compute the Hessian of the action at that minimum.
+3. Diagonalize.  Identify the lightest eigenvalue m_1.
+
+Three possible outcomes:
+
+- **m_1 ≈ 125 GeV** — the Higgs IS the lightest geometric
+  oscillation.  Hypothesis C validated; the SM's
+  "potential curvature at VEV" reading carries over
+  directly.
+- **m_1 ≈ 246 GeV** — the lightest mode IS the VEV scale,
+  and the 125 GeV boson is a sub-excitation within it.
+  Hypothesis C needs refinement (what's the sub-mode?).
+- **m_1 elsewhere** — reject C.  Fall back to B (search
+  for lowest all-three-sheet-active 6-tuple) or treat the
+  Higgs via A + mode-density arguments only.
+
+All three outcomes are informative.  No new framework is
+required — the computation is a Hessian evaluation on a
+metric that R60 already solves.  Whoever runs this
+produces the first MaSt-specific derivation of the 125
+GeV scale.
+
 ## 6. What this changes about the SM parameter count
 
 The SM has ~19 free parameters of which ~12 are Higgs-
@@ -240,7 +329,11 @@ A credible MaSt account of the Higgs must demonstrate:
    decay channels.  Given mode density at this energy,
    this is non-trivial — multiple candidate modes likely
    exist, and discriminating among them requires computing
-   self-coupling and decay rates.
+   self-coupling and decay rates.  See §5.1 for three
+   structural sub-hypotheses (atlas ceiling, all-three-
+   sheets-loaded, lightest 9D Hessian eigenmode) and an
+   explicit Hessian-diagonalization recipe using R60's
+   existing metric solver.
 
 3. **W and Z masses from Ma geometry.**  Currently
    placeholder matches above the predictive horizon.  A
