@@ -24,14 +24,37 @@ above it but leaves the layers below intact.
    it has not been derived from a fundamental Lagrangian, has
    not been peer-reviewed, and leaves the aspect ratios r_e,
    r_ν as effectively free parameters.
-2. **Reiter's threshold model of absorption.**  Energy
-   absorption is continuous rather than quantized; the
-   discreteness lives in the detector.  The supporting
-   experiments (the "unquantum effect") have been performed by
-   a single researcher and have not been independently
-   replicated.  R35 and Q85 §11 further narrow the hypothesis:
-   continuous absorption is viable only on the neutrino sheet
-   Ma_ν, not on the electron or proton sheets.
+2. **A sub-threshold energy state exists on Ma_ν.**  Energy
+   can be deposited on the neutrino sheet in quanta set by the
+   Ma_ν mode ladder (meV scale) rather than the Ma_e ladder
+   (MeV scale) or nuclear transitions (keV–MeV scale).  To
+   ordinary particle-sheet detectors, Ma_ν storage therefore
+   behaves as effectively continuous whether or not it is
+   strictly so.  Two independent mechanisms could produce this
+   behavior, and the paper's storage claims only require one:
+
+   (a) *Sheet hierarchy* (MaSt-native).  The neutrino sheet has
+   a dense mode ladder — thousands of modes in the window
+   [m_ν, 2m_ν] if r_ν ≫ 1 — whose step size is far below the
+   resolution of ordinary detectors.  R35 and Q85 §11 confirm
+   this is precisely the regime in which sub-threshold storage
+   on Ma_ν is viable, and rule it out on Ma_e and Ma_p.  No
+   hypothesis beyond premise 1 is required.
+
+   (b) *Strict continuity* (Reiter's threshold model).  Energy
+   absorption is classically continuous; the discreteness lives
+   entirely in the detector.  The supporting experiments (the
+   "unquantum effect") were performed by a single researcher
+   (Eric Reiter) and have not been independently replicated.
+   If correct, Reiter's framework strengthens mechanism (a) to a
+   true continuum and enables one additional discriminating
+   prediction class — extraction below the Ma_ν mode scale
+   itself (section 7.4).
+
+   Mechanism (a) alone is sufficient for everything in the
+   paper except the strictly-Reiter prediction in section 7.4.
+   Reiter's framework is corroborating evidence if it holds up,
+   not a load-bearing premise.
 3. **Usable evanescent coupling between ordinary space and
    material dimensions.**  The Ma model requires some coupling
    (electromagnetic fields must leak in and out of material
@@ -64,10 +87,11 @@ above it but leaves the layers below intact.
 Readers who reject any single premise can stop reading at the
 point where that premise becomes load-bearing.  Premise 1
 supports everything.  Premise 2 supports the "sub-threshold"
-and "analog" parts of the storage picture.  Premise 3 supports
-reading and writing.  Premise 4 supports mobility and per-cell
-addressing.  Premises 5 and 6 are needed only for the
-biological interpretation in Part II.
+and "fine-grained" parts of the storage picture — mechanism
+(a) suffices; Reiter's mechanism (b) is not required except for
+section 7.4.  Premise 3 supports reading and writing.  Premise
+4 supports mobility and per-cell addressing.  Premises 5 and 6
+are needed only for the biological interpretation in Part II.
 
 ---
 
@@ -75,20 +99,32 @@ biological interpretation in Part II.
 
 What if the extra dimensions of spacetime can store information?
 
-Two developing theoretical frameworks — each speculative on its
-own — combine to imply something neither predicts alone.  The
-Ma compact geometry model (Ma being the six-dimensional material
-space) proposes that fundamental particles are standing waves of
-light confined on a six-dimensional torus,
-where the particle's mass is simply energy trapped in the
-geometry.  Reiter's threshold model proposes that energy
-absorption is continuous, not quantized: systems accumulate
-energy smoothly until a threshold triggers a discrete emission
-event.  If both contain elements of truth, their union implies
-that the material dimensions of spacetime could function as an
-analog information storage medium — one that is frequency-
-addressable, inherently noise-resistant, and invisible to
-standard quantum measurements.
+The Ma compact geometry model (Ma being the six-dimensional
+material space) proposes that fundamental particles are standing
+waves of light confined on a six-dimensional torus, where a
+particle's mass is simply energy trapped in the geometry.  The
+three material sheets span vastly different scales — the
+electron sheet Ma_e (~picometers, ~MeV modes), the proton sheet
+Ma_p (~femtometers, ~GeV), and the neutrino sheet Ma_ν (tens
+to hundreds of micrometers, ~meV).  This hierarchy has a
+consequence: energy deposited into Ma_ν sits in quanta three to
+six orders of magnitude below the resolution of ordinary
+particle-sheet detectors, so to those detectors the Ma_ν storage
+regime is indistinguishable from continuous absorption — a
+natural sub-threshold state, invisible to standard instruments
+and capable of encoding analog information.  Eric Reiter's
+threshold model of absorption — in which absorption is strictly
+continuous, with discreteness living entirely in the detector
+— is a candidate stronger mechanism for the same phenomenon
+and, if it survives replication, adds one distinctive
+experimental signature (section 7.4).  But the paper's storage
+claims rest on the Ma_ν sub-threshold regime alone, which the
+Ma model predicts structurally.
+
+Together these imply that the material dimensions of spacetime
+could function as an analog information storage medium — one
+that is frequency-addressable, inherently noise-resistant, and
+invisible to standard quantum measurements.
 
 This paper develops that idea in two layers.  Part I builds the
 physics case in the abstract: how energy could be written into
@@ -136,20 +172,25 @@ frequencies of the neutrino sheet mode spectrum.
 
 This paper is a "what if."
 
-We take two speculative theoretical frameworks, accept their
-premises for the sake of argument, and ask what follows when
-they are combined.  The answer turns out to be surprising: the
-combination implies that the material dimensions of spacetime could
-function as an information storage medium — a kind of memory
-built into the fabric of space itself.
+We take a speculative theoretical framework — the Ma compact
+geometry model — accept its premises for the sake of argument,
+and trace one of its less obvious consequences: that the
+neutrino sheet Ma_ν is a natural sub-threshold storage regime,
+and therefore a candidate medium for analog information storage
+built into the fabric of space itself.  Along the way we examine
+a second, independent speculative framework — Reiter's threshold
+model — which, if correct, would strengthen this picture and
+add one additional experimental signature, but which the paper
+does not depend on.
 
-Neither framework is proven.  Neither has been accepted by
-mainstream physics.  We are not arguing that they should be.
-What we are arguing is that their *combination* produces
-predictions that neither makes alone, and that some of those
-predictions are testable.  A thought experiment earns its keep
-not by being right, but by pointing to experiments that can
-distinguish right from wrong.
+The Ma model is not proven, and neither the Ma model nor
+Reiter's model is accepted by mainstream physics.  We are not
+arguing that they should be.  What we are arguing is that
+premise 1 alone produces predictions — testable ones — that
+would not otherwise have been asked about, and that premise 2(b)
+(Reiter) supplies one further prediction if it holds up.  A
+thought experiment earns its keep not by being right, but by
+pointing to experiments that can distinguish right from wrong.
 
 ### 1.2 A brief orientation for the reader
 
@@ -166,9 +207,12 @@ intuition needed for everything that follows.
 
 **Claims:**
 
-1. The combination of the Ma compact geometry model and
-   Reiter's threshold model logically implies that material-
-   dimension modes could store analog information.
+1. The Ma compact geometry model, by itself, predicts that
+   the neutrino sheet Ma_ν is a natural sub-threshold storage
+   regime — a medium in which material-dimension modes could
+   hold analog information invisible to ordinary detectors.
+   Reiter's threshold model, if it holds up, strengthens and
+   sharpens this prediction, but is not required for it.
 2. Three quantitative coincidences — in spatial scale, energy
    scale, and frequency — connect this storage mechanism to the
    biological cell.
@@ -177,7 +221,8 @@ intuition needed for everything that follows.
 
 **Does not claim:**
 
-1. That either framework is proven or should be accepted.
+1. That the Ma model or Reiter's threshold model is proven or
+   should be accepted.
 2. That biology uses material dimensions for information storage.
 3. That the coupling mechanism between ordinary space and
    material dimensions has been computed.
@@ -186,8 +231,9 @@ intuition needed for everything that follows.
 
 The paper is organized in two parts.  Part I (sections 1–11)
 develops the physics of material-dimension storage in the
-abstract.  It explains the two frameworks, shows how they
-combine, and works through the mechanics of writing, retaining,
+abstract.  It reviews the Ma model and the two candidate
+mechanisms for sub-threshold storage on Ma_ν, and works through
+the mechanics of writing, retaining,
 and reading information (sections 1–7), the architecture and
 information capacity of the storage system (section 8), the
 neutron-gateway mechanism that lets ordinary matter reach the
@@ -343,7 +389,12 @@ That last number — micrometers — is the scale of a biological
 cell.  We will return to this in Part II.
 
 
-## 3. Foundation: threshold theory — energy below the quantum floor
+## 3. Foundation: sub-threshold storage on Ma_ν
+
+This section explains why the neutrino sheet Ma_ν behaves, to
+ordinary detectors, as a "sub-threshold" storage regime.  Two
+independent mechanisms could produce the phenomenon; the paper
+rests on the first, and treats the second as corroborating.
 
 ### 3.1 The standard quantum picture
 
@@ -365,13 +416,60 @@ experiments and underpins technologies from lasers to
 transistors.  It is one of the most successful principles in
 physics.
 
-### 3.2 Reiter's alternative: continuous filling, sudden release
+### 3.2 Mechanism (a): the MaSt sheet hierarchy
 
-Eric Reiter, an independent physicist, proposes a modification.
-In his *threshold model*, the vending machine has a cup that
-fills gradually.  Energy flows in continuously — a trickle, not
-a lump sum.  The cup accumulates energy over time.  When the
-cup reaches a critical level — the threshold — it tips and
+The Ma model already implies a sub-threshold regime without any
+extra hypothesis.  The reason is scale.
+
+Different material sheets produce quanta at different energies.
+The electron sheet Ma_e has mode energies of order MeV.  The
+proton sheet Ma_p is harder still — mode gaps of order GeV.
+The neutrino sheet Ma_ν, because it is ~10¹⁰ times larger than
+Ma_e, has mode energies in the meV range.  Between the sheets
+the ratio is 10³ to 10⁶.
+
+Ordinary detectors — photomultipliers, Geiger counters,
+bolometers, chemical reactions on a photographic plate — are
+all calibrated to the Ma_e or nuclear scales (eV to MeV).  A
+single quantum on Ma_ν is millions of times smaller than the
+smallest jump such detectors can register.  To those detectors,
+Ma_ν energy deposits are *sub-threshold* by construction,
+whether the deposits are one mode-quantum, ten, or a thousand.
+
+The Ma_ν mode ladder is also dense.  If the aspect ratio r_ν is
+large (r_ν ≫ 1), thousands of modes fit within the energy
+window [m_ν, 2m_ν], so the step size is much smaller even than
+the ordinary noise floor of the devices above.  R35 and Q85 §11
+confirm that this is precisely the regime in which sub-threshold
+storage is viable — a consequence of Ma_ν's dense ladder and
+neutrality — and they rule it out on Ma_e and Ma_p, whose mode
+ladders are sparse (the spin filter, R33 F3, kills most internal
+excitations and leaves only a handful of modes separated by
+MeV–GeV gaps).
+
+In other words: the sheet hierarchy is *already* a fine-grained
+quantization hidden behind a coarse-grained one.  A detector
+tuned to ordinary particle-sheet events cannot tell whether
+Ma_ν is filling in mode-quanta or in truly continuous amounts.
+Either way, it records nothing — until some higher-scale process
+(see section 7) transfers the accumulated energy back into its
+visible range.
+
+Crucially, this mechanism is a structural consequence of
+premise 1 (the Ma model).  It does not require any modification
+of quantum mechanics, any unreplicated experiments, or any
+stance on whether absorption is classically continuous.
+
+### 3.3 Mechanism (b): Reiter's threshold model — a stronger variant
+
+A second, more ambitious mechanism has been proposed
+independently of the Ma framework.  Eric Reiter, an independent
+physicist, argues that absorption is *not* quantized at all.
+
+In his *threshold model*, the vending machine above has a cup
+that fills gradually.  Energy flows in continuously — a trickle,
+not a lump sum.  The cup accumulates energy over time, and when
+it reaches a critical level — the threshold — it tips and
 triggers a detection event: a "click" in a Geiger counter, a
 current pulse in a photomultiplier, a chemical change on a
 photographic plate.
@@ -379,8 +477,8 @@ photographic plate.
 The click is sudden and discrete.  The filling is smooth and
 continuous.  Reiter argues that what we interpret as quantized
 absorption is actually continuous absorption followed by
-threshold-triggered release.  The discreteness lives in the
-detector, not in the energy.
+threshold-triggered release.  The discreteness lives entirely
+in the detector, not in the energy.
 
 This idea is not entirely new.  Max Planck himself proposed
 something similar in 1911 (historians call it "Planck's second
@@ -391,7 +489,16 @@ was explored by several physicists in the early twentieth century
 before the Copenhagen interpretation of quantum mechanics
 became dominant.
 
-### 3.3 The unquantum effect
+Reiter's model goes beyond mechanism (a) in one important way:
+it predicts that energy can accumulate in amounts smaller than
+*any* quantum, including the Ma_ν mode quantum.  Mechanism (a)
+stops at the Ma_ν mode scale; mechanism (b), if correct,
+continues arbitrarily far below it.  The two agree everywhere
+that ordinary detectors probe, and disagree only at scales below
+the finest mode energy on Ma_ν.  Section 7.4 turns that
+disagreement into an experimental test.
+
+### 3.4 The unquantum effect
 
 Reiter claims experimental support.  In his key experiment, a
 gamma ray passes through a beam splitter — a device that, in
@@ -404,26 +511,23 @@ The claim is controversial.  It has not been independently
 replicated.  The mainstream view is that such coincidences can
 be explained by detector artifacts, background radiation, or
 statistical errors.  We take no position on whether Reiter's
-experiments are correct.  For the purposes of this paper, what
-matters is the *theoretical implication* of the threshold model,
-which we adopt as a premise of our thought experiment.
+experiments are correct.  The storage claims in this paper rest
+only on mechanism (a); if mechanism (b) also turns out to be
+correct it strengthens the picture and enables §7.4, but nothing
+in the paper depends on it.
 
-### 3.4 Why this matters for storage
+### 3.5 Why this matters for storage
 
-If absorption is truly continuous, then a physical system can
-hold energy *below* the quantum threshold.  Consider a material-
-dimension mode that normally requires, say, 30 meV to fully
-excite.  In standard quantum mechanics, the mode is either
-excited (30 meV) or not (0 meV).  In the threshold model, the
-mode can hold 5 meV, or 17 meV, or any intermediate value —
-energy that has accumulated but has not yet reached the
-threshold.
-
-This sub-threshold energy would be invisible to any
-measurement device that operates by threshold detection.  In
-Reiter's framework, *all* quantum measurement devices operate by
-threshold detection.  The sub-threshold energy is physically
-real but undetectable by standard instruments.
+Under either mechanism, a physical system on Ma_ν can hold
+energy that is *below* the threshold of ordinary measurement.
+Consider a Ma_ν cavity whose lowest modes sit near 30 meV.
+Under mechanism (a), the cavity fills in mode-quanta of ≲ 30
+meV each — undetectable by any ordinary instrument.  Under
+mechanism (b), the cavity can in addition fill in arbitrarily
+small amounts, including fractions of a single mode quantum.
+In either case, the stored energy is physically real but
+invisible to instruments calibrated to the electron or proton
+scale.
 
 For information storage, this is a feature, not a bug.  A
 storage medium that is invisible to casual measurement is a
@@ -431,32 +535,16 @@ storage medium that resists accidental erasure.  You can read it
 only if you know how to probe below the quantum floor — a
 requirement that functions as a natural access control.
 
-### 3.5 Viability depends on which material sheet
-
-Subsequent computational work
-([R35](../studies/R35-threshold-coupling/README.md), Q85 §11)
-has clarified that threshold-style continuous absorption is
-**not viable on the electron and proton sheets**.  On those
-sheets the mode ladder is sparse — the spin filter (R33 F3)
-kills most internal excitations, leaving only a handful of
-modes separated by MeV–GeV gaps.  Energy that arrives below
-those gaps has nowhere to go and is emitted into spatial
-momentum (ordinary quantum jumps and nuclear resonances).
-
-On the **neutrino sheet**, the picture is different.  If the
-aspect ratio r_ν is large (r_ν ≫ 1), thousands of modes fit
-within the energy window [m_ν, 2m_ν], making the mode ladder
-so dense that individual energy steps are unresolvable.
-Threshold "continuity" is what mode-hopping looks like when the
-ladder is quasi-continuous.  The neutrino sheet's neutrality
-(no electromagnetic radiation losses during mode transitions),
-its meV energy scale (matching biology), and its large spatial
-extent (~42–200 μm, matching the cell) all favor it as the
-natural home for sub-threshold storage.
+### 3.6 Scope of the rest of the paper
 
 The rest of this paper therefore applies primarily to the
 neutrino sheet Ma_ν — not to the electron or proton sheets,
-which contribute conventional discrete physics.
+which contribute conventional discrete physics.  Unless noted
+otherwise, statements about "continuous" or "analog" storage
+should be read as "fine-grained relative to ordinary detectors"
+— a property mechanism (a) delivers by construction.  Where
+the distinction between (a) and (b) matters — essentially only
+in §7.4 and §16.5 — it is called out explicitly.
 
 
 ## 4. The synthesis: material dimensions as analog memory
@@ -470,9 +558,13 @@ From the Ma model: material dimensions contain resonant cavities
 cavities takes the form of standing waves at specific
 frequencies.
 
-From the threshold model: energy can accumulate continuously in
-a mode, in any amount, without triggering a discrete quantum
-transition.  Sub-threshold energy is stable and hidden.
+From the sheet hierarchy (§3.2): energy deposited on Ma_ν
+accumulates in mode-quanta so much smaller than any ordinary
+detector's threshold that, to those detectors, the filling is
+effectively continuous.  The stored energy is physically real
+but invisible to standard instruments.  (If Reiter is also
+right, §3.3, the continuity is strict rather than effective —
+a strengthening, not a requirement.)
 
 Together, these imply that a material-dimension cavity could hold
 a *distribution* of energy across its modes — some energy in the
@@ -628,25 +720,35 @@ section 11.3).  But the *existence* of the coupling is not in
 doubt within the Ma framework — without it, particles would
 have no fields and no interactions.
 
-### 5.4 Continuous injection under the threshold model
+### 5.4 Fine-grained injection on Ma_ν
 
-In the standard quantum picture, energy enters a mode in
-discrete quanta.  You can put 0 or 1 quantum into a mode, but
-not half a quantum.  This limits the write precision to integer
-multiples of the mode energy.
+In the standard quantum picture, energy enters an Ma_e cavity
+(or any ordinary quantum system) in discrete quanta of the local
+mode scale.  You can put 0 or 1 quantum into a mode, but not
+half a quantum.  This limits the write precision to integer
+multiples of the mode energy — roughly MeV steps on Ma_e, GeV
+steps on Ma_p.
 
-Under the threshold model, energy flows continuously.  The write
-amplitude can take any value — not just integer multiples but
-any fraction.  This is the difference between a digital write
-(0 or 1) and a true analog write (any value on a continuous
-scale).
+On Ma_ν the situation is qualitatively different.  Each write
+deposits an integer number of Ma_ν mode-quanta (~meV each), but
+from the perspective of a detector calibrated to Ma_e or nuclear
+events, the step size is ≳ 10⁹ times smaller than the smallest
+event it can resolve.  The write is effectively analog, limited
+in practice by thermal noise and cross-shear leakage rather than
+by the granularity of quantization.  This is the property
+mechanism (a) of §3.2 gives by itself.
 
-For information storage, continuous injection is a significant
-advantage.  It means each mode carries a continuously variable
-amplitude, and the information content per mode is limited only
-by noise — not by the granularity of quantization.  Whether this
-advantage is real depends, of course, on whether the threshold
-model is correct.
+If Reiter's mechanism (b) is also correct, the write becomes
+strictly continuous — arbitrarily small fractional amplitudes
+are physical, not just amplitudes that happen to be below the
+detector threshold.  For ordinary storage purposes the two are
+indistinguishable; the difference surfaces only in §7.4.
+
+For information storage, either flavor of fine-grained injection
+is a significant advantage.  Each mode carries an essentially
+continuous amplitude, and the information content per mode is
+limited only by noise — not by any practical granularity of
+quantization.
 
 
 ## 6. Retention: how long does stored information last?
@@ -846,31 +948,56 @@ standpoint, because it is passive and parallel.  Its feasibility
 depends on whether the evanescent coupling is strong enough to
 detect but weak enough not to drain the stored state.
 
-### 7.4 Sub-quantum extraction: the threshold model's unique prediction
+### 7.4 Sub-quantum extraction: the strictly-Reiter discriminator
 
-The three mechanisms above are consistent with standard quantum
-mechanics.  The fourth is not.
+The three read mechanisms above are consistent with standard
+quantum mechanics applied across the sheet hierarchy.  A fourth
+mechanism — extraction of energy *below the Ma_ν mode scale
+itself* — is not.  It is the one prediction in this paper that
+requires Reiter's mechanism (b), not just the MaSt-native
+mechanism (a).
 
-If the threshold model is correct, then energy below the quantum
-threshold is physically real and can, in principle, be
-transferred between systems.  This opens the possibility of
-extracting *less than one quantum* of energy from a material-dimension mode
-— enough to carry frequency information (which mode the energy
-came from) but not enough to trigger a state transition in the
-mode (which would constitute a measurement in the quantum sense).
+It is important to distinguish two senses of "sub-quantum":
 
-In standard quantum mechanics, this is strictly forbidden.  You
+- **Sub-Ma_e-quantum extraction** (MaSt-native).  Pulling a
+  single Ma_ν mode quantum (~meV) out of an Ma_ν cavity is,
+  from the viewpoint of a detector calibrated to the Ma_e
+  scale (~MeV), "sub-quantum" by a factor of ~10⁹.  This is
+  simply ordinary quantum mechanics applied across the sheet
+  hierarchy; it underwrites mechanisms §§7.1–7.3 and requires
+  nothing beyond premise 1.
+
+- **Sub-Ma_ν-quantum extraction** (strictly Reiter).  Pulling
+  a *fractional* amount of a single Ma_ν mode quantum — say
+  0.3 meV from a 30 meV mode — is forbidden in standard
+  quantum mechanics even on Ma_ν.  It becomes possible only
+  under Reiter's mechanism (b), in which absorption and
+  emission are classically continuous.
+
+It is the second sense that this section is about.
+
+If Reiter is correct, energy below every quantum threshold
+(including Ma_ν's own) is physically real and can, in principle,
+be transferred between systems.  This opens the possibility of
+extracting less than one Ma_ν quantum of energy from an Ma_ν
+mode — enough to carry frequency information (which mode the
+energy came from) but not enough to trigger a state transition
+in the mode (which would constitute a measurement in the
+quantum sense).
+
+In standard quantum mechanics, this is strictly forbidden: you
 either extract a full quantum (collapsing the mode state) or
 extract nothing.  There is no middle ground.
 
-This makes sub-quantum extraction a *discriminating test*
-between the two frameworks.  If it can be demonstrated — if
+This makes sub-Ma_ν-quantum extraction a *discriminating test*
+between mechanisms (a) and (b).  If it can be demonstrated — if
 frequency information can be retrieved from a resonant system
-using energy transfers smaller than one quantum — it
-simultaneously confirms the threshold model and demonstrates a
+using energy transfers smaller than one Ma_ν mode quantum — it
+simultaneously confirms the Reiter mechanism and demonstrates a
 non-destructive readout mechanism for material-dimension storage.
 If it cannot be demonstrated despite favorable conditions, it
-provides evidence against the threshold model.
+provides evidence against Reiter's mechanism but leaves the rest
+of the storage picture (and §§7.1–7.3) intact.
 
 
 ## 8. Architecture: address space, capacity, and scaling
@@ -938,8 +1065,9 @@ addressable space.
 
 ### 8.4 Bits per mode
 
-Each mode holds a continuously variable amplitude (under the
-threshold model).  The precision is limited by noise — thermal
+Each mode holds an effectively continuous amplitude (the
+fine-grained Ma_ν regime of §3.2, strictly continuous under
+Reiter).  The precision is limited by noise — thermal
 leakage, cross-shear coupling, and whatever the true
 evanescent coupling strength turns out to be.  At a ~1% noise
 floor, roughly 100 levels per mode are distinguishable — about
@@ -1949,28 +2077,32 @@ different channel).
 
 ### 16.5 Sub-quantum information extraction
 
-**Tests:** the threshold model specifically (independent of
-biology).
+**Tests:** Reiter's mechanism (b) of §3.3, specifically
+(independent of biology, and independent of the MaSt-native
+mechanism (a) that the rest of the paper rests on).
 
 **Experiment:** Prepare a well-characterized microwave or
 optical cavity in a known state.  Attempt to extract energy
-below the single-quantum level while retaining frequency
-information about the cavity state.  Use the most sensitive
+below the single-quantum level of *that cavity* while retaining
+frequency information about its state.  Use the most sensitive
 available detection (superconducting detectors, single-photon
 counters operated below threshold).
 
-**Prediction:** If the threshold model is correct, partial
+**Prediction:** If Reiter's mechanism is correct, partial
 energy extraction carrying frequency information is possible:
 the detector accumulates sub-quantum energy and eventually
 produces a signal that identifies the cavity mode.  If standard
-quantum mechanics is correct, no frequency information can be
-extracted below the single-quantum level.
+quantum mechanics is correct (mechanism (a) only), no frequency
+information can be extracted below the single-quantum level of
+the cavity being probed.
 
-**What would falsify it:** If sub-quantum extraction is
-definitively ruled out under favorable conditions, the threshold
-model's core claim (continuous absorption) is wrong, and
-section 7.4 of the storage hypothesis must be abandoned.  The
-remaining mechanisms (sections 7.1–7.3) are unaffected.
+**What would falsify it:** If sub-Ma_ν-quantum extraction is
+definitively ruled out under favorable conditions, Reiter's
+mechanism (b) is wrong and section 7.4 of the storage hypothesis
+must be abandoned.  The rest of the storage picture — written
+under mechanism (a) — is unaffected, because (a) already
+predicts that Ma_ν quanta are "sub-quantum" relative to ordinary
+particle-sheet detectors without requiring fractional quanta.
 
 
 ## 17. Limitations, caveats, and open problems
@@ -1993,21 +2125,33 @@ two effective free parameters — and the spin composition of
 the cross-sheet neutron mode requires a six-dimensional spinor
 analysis that has not been completed).
 
-**Threshold theory** is based on experiments by a single
-researcher (Eric Reiter) that have not been independently
-replicated.  The mainstream physics community has not accepted
-the "unquantum effect" claims.  The theoretical framework
-(continuous absorption, threshold emission) is internally
-consistent and has historical precedent (Planck's second theory,
-1911), but it remains outside the scientific consensus.
-Furthermore, R35 and Q85 §11 found that continuous absorption
-is **not viable on the electron and proton sheets** — their
-mode ladders are too sparse (the spin filter kills most
-internal excitations).  The threshold picture survives only on
-the **neutrino sheet**, where the mode density can be high
-enough (if r_ν is large) for mode-hopping to appear continuous.
-This narrows the storage hypothesis to Ma_ν specifically (see
-§3.5).
+**Sub-threshold storage on Ma_ν** is the load-bearing
+claim of premise 2, and the paper rests on it via mechanism (a)
+of §3.2 — the MaSt-native sheet hierarchy.  That mechanism is a
+structural consequence of the Ma model and requires no
+additional hypothesis: Ma_ν mode-quanta (~meV) are simply
+several orders of magnitude below the resolution of ordinary
+detectors, and R35 and Q85 §11 confirm the regime is viable on
+Ma_ν (while ruling it out on Ma_e and Ma_p, whose mode ladders
+are too sparse — the spin filter kills most internal
+excitations).  The storage claims in this paper therefore stand
+or fall with the Ma model itself, not with Reiter.
+
+**Reiter's threshold model** is a stronger, independent
+hypothesis — mechanism (b) of §3.3.  It claims that absorption
+is classically continuous, with discreteness living entirely in
+the detector.  It is based on experiments by a single researcher
+that have not been independently replicated, and the mainstream
+physics community has not accepted the "unquantum effect"
+claims.  The theoretical framework is internally consistent and
+has historical precedent (Planck's second theory, 1911), but it
+remains outside the scientific consensus.  The only prediction
+in this paper that hinges specifically on Reiter being right is
+the sub-Ma_ν-quantum extraction test of §7.4 (operationalized
+in §16.5).  If Reiter is right, that test comes out positive
+and the storage picture gains a true continuum; if Reiter is
+wrong, only §7.4 is lost, and the rest of the paper — including
+the scope narrowing to Ma_ν (see §3.6) — is unaffected.
 
 **The biological connection** is the most speculative layer.
 It rests on three numerical coincidences that may be exactly
@@ -2070,23 +2214,25 @@ a question that may have a conventional solution.
 This paper is a map of implications, not a claim of discovery.
 
 Its value lies in three things.  First, it makes the logical
-chain explicit.  Each link — Ma geometry, threshold absorption,
-material-dimension storage, numerical coincidences, biological
-coupling — can be tested independently.  A failure at any link
-collapses the chain at that point but leaves the links below
-intact.  The Ma model's validity does not depend on threshold
-theory; the biological coincidences do not depend on whether
-Reiter's experiments are correct; the storage hypothesis stands
+chain explicit.  Each link — Ma geometry, sub-threshold storage
+on Ma_ν, material-dimension memory architecture, numerical
+coincidences, biological coupling — can be tested independently.
+A failure at any link collapses the chain at that point but
+leaves the links below intact.  The Ma model's validity does
+not depend on Reiter's experiments; the sub-threshold Ma_ν
+storage regime does not depend on them either (it follows from
+the sheet hierarchy alone); the biological coincidences do not
+depend on whether Reiter is right; the storage hypothesis stands
 or falls on the coupling calculation regardless of biology.
 
 Second, it generates predictions that none of the component
-frameworks produce alone.  The Ma model by itself does not
-predict THz effects on planarian regeneration.  Threshold theory
-by itself does not predict preferred membrane voltages.  Levin's
-bioelectric code by itself does not predict spectral features at
-28.3 THz.  These predictions emerge only from the combination —
-making the combination worth examining even if any individual
-component turns out to be wrong.
+ideas produce alone.  The Ma model by itself does not predict
+THz effects on planarian regeneration.  A sub-threshold storage
+regime by itself does not predict preferred membrane voltages.
+Levin's bioelectric code by itself does not predict spectral
+features at 28.3 THz.  These predictions emerge only from the
+combination — making the combination worth examining even if
+any individual component turns out to be wrong.
 
 Third, it connects three disparate fields — extra-dimensional
 geometry, threshold physics, and developmental biology — in a
