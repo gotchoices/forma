@@ -24,7 +24,8 @@ measured, not explained.  MaSt/GRID attempt to derive those
 parameters from a simpler starting point: the geometry of a
 compact six-dimensional space.
 
-Model-E uses **7 measured inputs** to derive the rest:
+Model-F uses **7 measured inputs** to derive the rest (same
+empirical inputs as model-E):
 
 | Input | What it sets |
 |-------|-------------|
@@ -282,7 +283,7 @@ sheet to three (3Ma = Ma_e × Ma_ν × Ma_p), yielding Ma (R26).
 ## Structure
 
 - `models/` — **Model documentation**: versioned writeups of each
-  MaSt model generation (A through D).
+  MaSt model generation (A through F).
   See [`models/README.md`](models/README.md).
 - `grid/` — **GRID** (Geometric Relational Interaction Domain):
   the substrate layer.  Derives Maxwell + Einstein from a discrete
