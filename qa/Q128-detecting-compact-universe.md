@@ -125,6 +125,42 @@ local signature:
   atomic-clock precision (~10⁻¹⁸/year) is not demonstrated to
   be sensitive to the specific predicted signal.
 
+### 4.1 Sub-hypothesis: redshift itself as the leakage signal
+
+A stronger reading of §4: not a correction to ΛCDM, but
+the **primary** cosmological redshift mechanism.
+"Galaxies fleeing" would be a misinterpretation of
+accumulated α-leakage along the line of sight.  This
+inherits the empirical constraints of historical "tired-
+light" models:
+
+- **Achromaticity.**  Observed z is identical across
+  wavelengths.  Per-2π-cycle leakage (§4) gives
+  frequency-dependent loss ∝ α · d · f / c — fails.  A
+  per-unit-proper-distance formulation is achromatic and
+  survives.  These are not equivalent framings; §4's
+  default needs reconciling with whichever position the
+  derivation supports.
+- **Type Ia supernova time dilation.**  SNe at z = 1 fade
+  ~2× slower than local.  Expansion dilates the emission
+  interval; leakage alone does not.  Hardest constraint.
+- **Tolman surface-brightness test.**  Expansion predicts
+  (1+z)⁴ dimming; tired-light predicts (1+z)¹.  Modern
+  data favors expansion at high z.
+- **CMB blackbody preservation.**  T = 2.725 K, blackbody
+  to parts in 10⁵.  Frequency-independent (per-distance)
+  leakage preserves blackbody; frequency-dependent does
+  not.
+- **CMB at z ≈ 1100.**  Requires a leakage rate
+  significantly different from α at MaSt's natural
+  coupling.  Would demand α run with scale, or the
+  mechanism to saturate.
+
+The sub-hypothesis survives only if (a) the mechanism is
+per-proper-distance rather than per-cycle, and (b) an
+auxiliary mechanism reproduces supernova time dilation.
+Both require explicit derivation.
+
 ## 5. What we can infer (cautiously)
 
 Under the hypothesis that α = leakage rate per 2π cycle:
