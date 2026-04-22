@@ -32,6 +32,8 @@
   color: var(--text); border-radius: 3px; padding: 1px 4px; font-size: 11px;
 }
 .mode-slot .ms-info { color: #555; font-size: 10px; margin-top: 3px; font-family: monospace; }
+.mode-slot .ms-ph { font-size: 10px; padding: 1px 5px; }
+.mode-slot .ms-phval { min-width: 32px; text-align: right; }
 .preset-row { padding: 6px 12px; border-bottom: 1px solid var(--border); }
 .preset-row select {
   font-size: 10px; background: #111; color: var(--text);
@@ -89,6 +91,8 @@
       <option value="">— presets —</option>
       <option value="electron">Electron (1,2)</option>
       <option value="ghost">Ghost (1,1)</option>
+      <option value="proton">Proton — 3×(1,2) at 120°</option>
+      <option value="innershell">Inner shell — 2×(1,2) at 180°</option>
       <option value="r21trio">R21 trio</option>
       <option value="harmonics">Harmonics 1–3</option>
       <option value="chargefamily">Charge family</option>
@@ -132,13 +136,18 @@ const MODE_COLORS = ['#ff6e40','#4fc3f7','#66bb6a','#ab47bc','#fdd835','#e05050'
 const DEFAULTS = {
   eps: 0.50, shear: 0.157, shellAlpha: 0.5, wire: false, geodesics: true,
   modes: [{ n1: 1, n2: 2, parity: 'even', color: '#ff6e40',
-            brightness: 0.8, visible: true, showGeodesic: true }],
+            brightness: 0.8, visible: true, showGeodesic: true, phase: 0 }],
 };
 
 function load() {
   try {
     const r = localStorage.getItem(KEY);
-    if (r) return JSON.parse(r);
+    if (r) {
+      const s = JSON.parse(r);
+      if (Array.isArray(s.modes))
+        for (const m of s.modes) if (typeof m.phase !== 'number') m.phase = 0;
+      return s;
+    }
   } catch {}
   return structuredClone(DEFAULTS);
 }
@@ -459,9 +468,10 @@ function buildGeodesicMesh(m) {
   if (a < 1e-6) return null;
   const nSeg = Math.max(200, (Math.abs(n1) + Math.abs(n2)) * 60);
   const pts = [];
+  const phi0 = ((m.phase || 0) * Math.PI) / 180;  // rigid rotation of the path around the ring
   for (let i = 0; i <= nSeg; i++) {
     const t = (i / nSeg) * TAU;
-    const th1 = n1 * t, ph = n2 * t;
+    const th1 = n1 * t, ph = n2 * t + phi0;
     const rr = R_MAJOR + a * Math.cos(th1);
     pts.push(new THREE.Vector3(rr * Math.cos(ph), a * Math.sin(th1), rr * Math.sin(ph)));
   }
@@ -474,15 +484,36 @@ function buildGeodesicMesh(m) {
   return mesh;
 }
 
+// Select the eigenvector that most looks like the target Fourier mode
+// cos(|n₁|θ) (even) or sin(|n₁|θ) (odd).  In the spindle regime (ε > 1)
+// the |1+ε cos θ| regularization admits spurious cusp-localized modes
+// that reorder the sorted eigenvalue list, so picking by sort-index
+// (eigIdx = |n₁|) flips onto a cusp-localized branch above ε ≈ 2.9 and
+// the outer lobe goes dark.  Overlap with the target Fourier basis
+// element is stable across that crossing.
+function selectEigIdx(result, parity, absN1) {
+  // Target basis index: for even parity {1, cos θ, …} → |n₁|.
+  // For odd parity {sin θ, sin 2θ, …} → |n₁| − 1.
+  const target = parity === 'even' ? absN1 : Math.max(0, absN1 - 1);
+  let bestIdx = Math.min(target, result.eigenvectors.length - 1);
+  let bestScore = -Infinity;
+  for (let k = 0; k < result.eigenvectors.length; k++) {
+    const v = result.eigenvectors[k];
+    let norm2 = 0;
+    for (let i = 0; i < v.length; i++) norm2 += v[i] * v[i];
+    if (norm2 <= 0) continue;
+    const score = (v[target] * v[target]) / norm2;  // squared projection
+    if (score > bestScore) { bestScore = score; bestIdx = k; }
+  }
+  return bestIdx;
+}
+
 function computeOneModeData(mi) {
   const m = S.modes[mi];
   const qeff = m.n2 - S.shear * m.n1;
   const result = solveEigenmodes(S.eps, qeff, m.parity);
   const absN1 = Math.abs(m.n1);
-  const eigIdx = Math.min(
-    m.parity === 'even' ? absN1 : Math.max(0, absN1 - 1),
-    result.eigenvectors.length - 1
-  );
+  const eigIdx = selectEigIdx(result, m.parity, absN1);
   const coeffs = result.eigenvectors[eigIdx];
   const density = evalDensity(coeffs, m.parity, DENSITY_SAMPLES);
   const eigenvalue = result.eigenvalues[eigIdx];
@@ -535,6 +566,19 @@ function refreshAllDensities() {
   updateVertexColors();
 }
 
+// Only the geodesic depends on φ₀ — density is |f(θ)|², independent of φ.
+function refreshGeodesic(mi) {
+  const md = modeData[mi];
+  if (!md) return;
+  if (md.geodesicMesh) {
+    scene.remove(md.geodesicMesh);
+    md.geodesicMesh.geometry.dispose();
+    md.geodesicMesh.material.dispose();
+  }
+  md.geodesicMesh = buildGeodesicMesh(S.modes[mi]);
+  if (md.geodesicMesh) scene.add(md.geodesicMesh);
+}
+
 /* ── Info panel ────────────────────────────────────── */
 
 function updateInfo() {
@@ -583,6 +627,17 @@ function renderModeList() {
         <input type="range" class="ms-bright" data-i="${idx}" min="0" max="1" step="0.05" value="${m.brightness}">
         <span class="val ms-bval">${m.brightness.toFixed(2)}</span>
         <label style="font-size:10px;margin-left:4px"><input type="checkbox" class="ms-geo" data-i="${idx}" ${m.showGeodesic ? 'checked' : ''}> geo</label>
+      </div>
+      <div class="ms-row">
+        <span class="ms-lbl">φ₀</span>
+        <input type="range" class="ms-phase" data-i="${idx}" min="0" max="360" step="1" value="${m.phase || 0}">
+        <span class="val ms-phval">${(m.phase || 0)}°</span>
+      </div>
+      <div class="ms-row" style="gap:3px;justify-content:flex-end">
+        <button class="btn ms-ph" data-i="${idx}" data-p="0">0°</button>
+        <button class="btn ms-ph" data-i="${idx}" data-p="120">120°</button>
+        <button class="btn ms-ph" data-i="${idx}" data-p="180">180°</button>
+        <button class="btn ms-ph" data-i="${idx}" data-p="240">240°</button>
       </div>
       <div class="ms-info">q_eff=${qeff}  λ=${lam}  C=${C}</div>
     `;
@@ -646,13 +701,39 @@ function renderModeList() {
     S.modes.splice(i, 1);
     updateVertexColors(); save(); renderModeList(); updateInfo();
   });
+  list.querySelectorAll('.ms-phase').forEach(el => el.oninput = function () {
+    const i = +this.dataset.i;
+    S.modes[i].phase = +this.value;
+    this.closest('.ms-row').querySelector('.ms-phval').textContent = `${+this.value}°`;
+    refreshGeodesic(i); save();
+    // update preset button highlight
+    const slot = this.closest('.mode-slot');
+    slot.querySelectorAll('.ms-ph').forEach(b =>
+      b.classList.toggle('on', +b.dataset.p === +this.value));
+  });
+  list.querySelectorAll('.ms-ph').forEach(el => {
+    // highlight on load
+    const i = +el.dataset.i;
+    if (+el.dataset.p === (S.modes[i].phase || 0)) el.classList.add('on');
+    el.onclick = function () {
+      const i2 = +this.dataset.i;
+      const p  = +this.dataset.p;
+      S.modes[i2].phase = p;
+      const slot = this.closest('.mode-slot');
+      slot.querySelector('.ms-phase').value = p;
+      slot.querySelector('.ms-phval').textContent = `${p}°`;
+      slot.querySelectorAll('.ms-ph').forEach(b =>
+        b.classList.toggle('on', +b.dataset.p === p));
+      refreshGeodesic(i2); save();
+    };
+  });
 }
 
-function mkMode(n1, n2, parity = 'even', color = null) {
+function mkMode(n1, n2, parity = 'even', color = null, phase = 0) {
   return {
     n1, n2, parity,
     color: color || MODE_COLORS[S.modes.length % MODE_COLORS.length],
-    brightness: 0.8, visible: true, showGeodesic: true,
+    brightness: 0.8, visible: true, showGeodesic: true, phase,
   };
 }
 
@@ -667,13 +748,19 @@ function addMode(n1 = 0, n2 = 1, parity = 'even', color = null) {
 /* ── Presets ────────────────────────────────────────── */
 
 function applyPreset(name) {
-  rebuildAllModeData(); // removes all existing
+  // Tear down current modes (remove their scene objects) before replacing.
+  for (let i = 0; i < modeData.length; i++) removeModeData(i);
   modeData.length = 0;
   S.modes = [];
 
   const sets = {
     electron:    [mkMode(1, 2, 'even', '#ff6e40')],
     ghost:       [mkMode(1, 1, 'even', '#fdd835')],
+    proton:      [mkMode(1, 2, 'even', '#ff6e40',   0),
+                  mkMode(1, 2, 'even', '#4fc3f7', 120),
+                  mkMode(1, 2, 'even', '#66bb6a', 240)],
+    innershell:  [mkMode(1, 2, 'even', '#ff6e40',   0),
+                  mkMode(1, 2, 'even', '#4fc3f7', 180)],
     r21trio:     [mkMode(0, 2, 'even', '#4fc3f7'),
                   mkMode(1, 2, 'even', '#ff6e40'),
                   mkMode(1, 2, 'odd',  '#66bb6a')],
