@@ -13,18 +13,16 @@ Active entry is a 3–5-line pointer; full narrative lives in the study's own
 
 ## Active
 
-### R63. Proton-sheet tuning — disciplined audit and sweep  **Active — Track 1 positive**
+### R63. Proton-sheet tuning — disciplined audit and sweep  **Active — Track 2 framed**
 [`R63-proton-tuning/`](R63-proton-tuning/) · theoretical + compute · depends on R60, R59, R53, R49, R61, model-F
-Apply the e-sheet tuning discipline to the p-sheet. Track 1 (pure p-sheet
-audit): at baseline `(ε_p=0.55, s_p=0.162)`, R60 T16's Z₃ rule produces a
-clean spectrum — **zero sub-observed ghosts**, and 7 observed particles
-fall on pure p-sheet Z₃-free resonances (proton, π⁰, η′, **Δ⁺**, Ξ⁻, Ξ⁰,
-Ω⁻). Δ⁺ gets a natural (3, 9) "three (1, 3) quark" assignment parallel to
-the proton's (3, 6). User's recollection validated. **Track 21's naive
-(0.15, 0.05) pion-fix point rejected**: it introduces sub-pion neutral
-ghosts at 45 and 90 MeV. Next tracks chosen from the pool with the
-constraint that any `(ε_p, s_p)` shift must preserve baseline sub-proton
-cleanness.
+Apply the e-sheet tuning discipline to the p-sheet. **Track 1** tested two
+`(ε_p, s_p)` points: baseline `(0.55, 0.162)` passes cleanly (zero
+sub-observed ghosts, 7 observed matches including proton, π⁰, η′, Δ⁺, Ξ⁻,
+Ξ⁰, Ω⁻); Track 21's extreme `(0.15, 0.05)` fails (sub-π⁰ ghosts at 45 and
+90 MeV). Structural bound `μ(3, 6) ≤ 8.09` identified but the full viable
+region remains uncharacterized. **Track 2 (framed, ready to execute)**:
+sweep `(ε_p, s_p)` over a 2D grid to map the viable region and produce a
+shortlist of candidate points for downstream observable-anchored tracks.
 
 ### R62. Derivations — analytical proofs  **Active**
 [`R62-derivations/`](R62-derivations/) · theoretical · depends on KK primer, R59, model-E

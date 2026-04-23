@@ -1,12 +1,10 @@
 # R63: Proton-sheet tuning — disciplined audit and sweep
 
-**Status:** Track 1 complete (positive — R60 T16 validated).
-Pure p-sheet at model-F baseline has ZERO sub-observed ghosts
-and 7 observed-particle matches (proton, π⁰, η′, Δ⁺, Ξ⁻, Ξ⁰, Ω⁻).
-Track 21's naive `(ε_p, s_p) = (0.15, 0.05)` shift rejected: it
-introduces sub-pion neutral ghosts at 45 and 90 MeV.  Any pion
-fix must preserve baseline sub-proton cleanness.  Subsequent
-tracks chosen from the pool under this constraint.
+**Status:** Track 1 complete — two points tested (baseline
+passes, Track 21's extreme fails); structural bound
+`μ(3, 6) ≤ 8.09` identified but the viable region is not yet
+mapped.  Track 2 framed to characterize the full range of
+viable `(ε_p, s_p)` values.
 **Type:** theoretical + compute
 **Depends on:** R60 (especially Tracks 7, 12, 21), R59, R53, R49, R61, model-F
 
@@ -250,9 +248,83 @@ variables into play.
 
 ---
 
-## Next-track pool
+## Track 2 — Pure p-sheet viable-region map
 
-Tracks after Track 1.  Sequence decided from Track 1's findings
+**Goal.**  Characterize the full range of `(ε_p, s_p)` values
+that preserve the pure p-sheet cleanness Track 1 established at
+baseline.  Produce a 2D map showing which points are viable
+(no sub-observed ghosts + observed matches preserved) and which
+are not.
+
+**Motivation.**  Track 1 tested only two `(ε_p, s_p)` points
+(baseline and Track 21's extreme).  The analytical bound
+`μ(3, 6) ≤ 8.09` separates them cleanly but does not tell us:
+
+- How large the viable region actually is.
+- Whether the 7 baseline observed-particle matches survive
+  throughout the region, or only at baseline.
+- Whether any point in the region offers a natural improvement
+  on open issues (e.g., pion matches, nuclear scaling) without
+  introducing ghosts elsewhere.
+
+**Strategy.**  Sweep `(ε_p, s_p)` over a 2D grid; at each
+point, rebuild the metric (σ_ra auto-updates), calibrate
+L_ring_p from the (3, 6) proton, and run Track 1's audit.
+Output a viability map and a shortlist of candidates.
+
+**Tactics.**
+
+1. **Grid definition.**  ε_p ∈ [0.2, 2.0] with log-ish spacing;
+   s_p ∈ [0.0, 0.5] linear.  Roughly 15 × 11 = 165 points.
+   Extensible on boundaries if the viable region extends
+   further.
+2. **Per-point evaluation.**  Reuse Track 1's
+   `enumerate_pure_p_modes` and `classify_z3_free_mode`.  Add:
+   - Sub-observed ghost count (primary viability gate).
+   - Number of the 7 baseline-matched observed particles that
+     remain within their threshold at this point.
+   - μ(3, 6) and L_ring_p for reference.
+3. **Output.**
+   - CSV grid with per-point metrics.
+   - Viability map (pass/fail on ghost criterion).
+   - Shortlist of "clean + all 7 matches preserved" candidates.
+   - If any candidate has a better pion match than baseline's
+     10.37%, flag it.
+
+**Acceptance.**
+
+- Viable region clearly delineated (not just "baseline is
+  viable").
+- Baseline falls inside the viable region with measurable
+  slack in all directions.
+- Track 21's extreme falls clearly outside.
+- Shortlist of candidate points for observable-anchored
+  tracks (pool items b–g).
+
+**What Track 2 does NOT do.**
+
+- Does not test observables beyond the 7 baseline matches.
+  Observable-anchored sweeps are pool item **c** onward.
+- Does not touch `ε_ν` or cross-sheet σ.  Still proton-only.
+- Does not re-run the multi-sheet inventory (14 of 16 from
+  R60 T19).  That full inventory check is a later track if
+  Track 2's candidates look interesting.
+
+**Payoff.**
+
+- Knowing the boundary of viable `(ε_p, s_p)` shapes every
+  downstream decision about parameter movement.
+- The shortlist of viable candidates feeds directly into
+  pool items b–g (observable-anchored sweeps).
+- If any candidate naturally improves the pion match without
+  breaking anything else, that's a strong recommendation
+  path.
+
+---
+
+## Next-track pool (after Track 2)
+
+Tracks after Track 2.  Sequence decided from Track 2's findings
 and the user's observable-set decision.  Entries are sketches;
 the chosen one is elaborated to full-track detail when promoted.
 
@@ -370,13 +442,13 @@ User-imposed rules R63 should follow throughout execution:
 
 ## Next steps
 
-- **Track 1 is ready to execute now.**  Proton-focused,
-  self-contained, no external observables required.  Three
-  phases: audit, `(ε_p, s_p)` adjustment, preservation check.
-  Produces the ghost map and (if needed) a recommended
-  parameter shift for the proton sheet alone.
-- **Pool items a–l await Track 1's outcome** and the user's
+- **Track 1 is complete.**  Two points tested; baseline
+  (0.55, 0.162) passes, Track 21's (0.15, 0.05) fails; the
+  structural bound μ(3, 6) ≤ 8.09 is identified.  See
+  [findings-1.md](findings-1.md).
+- **Track 2 is the next step.**  Map the viable region in
+  `(ε_p, s_p)` space; produce a shortlist of candidate points
+  for downstream work.  Ready to execute.
+- **Pool items a–l await Track 2's outcome** and the user's
   decision on which observables anchor the observable-driven
-  sweeps (pool items **b**–**f**).  Items **g**, **h** come
-  into scope only if Track 1 flags obstacles that single-
-  sheet adjustment cannot fix.
+  sweeps.

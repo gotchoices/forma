@@ -1,37 +1,37 @@
-# R63 Track 1: Pure p-sheet ghost audit — R60 T16 validated, Track 21 flagged
+# R63 Track 1: Pure p-sheet ghost audit — validation at two points
 
 **Scope.**  Enumerate pure p-sheet modes `(0, 0, 0, 0, n_pt, n_pr)`
-and classify each against the observed particle spectrum.  Audit
-the discipline established by R60 Track 16: free p-sheet modes
-require `n_pt ≡ 0 (mod 3)`, and all Z₃-free composites should
-either match observed particles or be matter-decay-dominated.
+and classify each against the observed particle spectrum at two
+specific `(ε_p, s_p)` points: the model-F baseline and Track 21's
+pion-optimal candidate.  Test R60 Track 16's prediction that free
+p-sheet modes require `n_pt ≡ 0 (mod 3)` produces a clean spectrum.
 
 Script:
 [`scripts/track1_proton_ghost_audit.py`](scripts/track1_proton_ghost_audit.py)
 
-Classification (charge-and-mass only, since the pure p-sheet
-mode's spin can be realized differently under 1-sheet vs
-compound SU(2) composition per R62 7d):
+Classification (charge-and-mass only; spin is realized by 1-sheet
+vs compound SU(2) composition per R62 7d):
 
-- **observed** — mode mass matches a known particle's mass at
-  compatible |Q| within the model-F threshold (2%, or 14% for
-  pions per Track 21 tolerance).
-- **split-dominated** — unmatched, but above the lightest
-  observed particle of matching |Q| and above the electron-
-  emission threshold `|Q| × m_e`.  These are plausible
-  short-lived resonances consistent with R28's "dense modes
-  above the predictive horizon."
+- **observed** — mode mass matches an observed particle at
+  compatible |Q| within model-F threshold (2%, or 14% for pions).
+- **split-dominated** — unmatched, but above the lightest observed
+  particle of matching |Q| and above the electron-emission
+  threshold `|Q| × m_e`.  Plausible short-lived resonance.
 - **ghost-sub-observed** — predicted mass is BELOW the lightest
-  observed particle of matching |Q|.  The model says "there's
-  a particle here" and the real world says "there isn't."
-  **This is the real ghost problem.**
+  observed particle of matching |Q|.  The model says "there's a
+  particle here" and nature says "there isn't."
+
+**Important limitation.**  Track 1 tested only two specific
+`(ε_p, s_p)` points.  It does NOT characterize the full range of
+viable values.  That requires Track 2.
 
 ---
 
-## F1. R60 T16's Z₃ rule is validated at model-F baseline
+## F1. At model-F baseline, R60 T16's Z₃ rule produces a clean spectrum
 
-At `(ε_p, s_p) = (0.55, 0.162037)`, `L_ring_p = 47.29 fm`,
-enumerating pure p-sheet modes in `(n_pt, n_pr)` with
+At `(ε_p, s_p) = (0.55, 0.162037)`, `L_ring_p = 47.29 fm`:
+
+Enumerating pure p-sheet modes in `(n_pt, n_pr)` with
 `|n_pt| ≤ 12, |n_pr| ≤ 18` yields 355 distinct modes below
 2.5 GeV.  Applying the Z₃ filter (`n_pt ≡ 0 mod 3`):
 
@@ -43,17 +43,17 @@ enumerating pure p-sheet modes in `(n_pt, n_pr)` with
 | &nbsp;&nbsp;&nbsp;&nbsp;— split-dominated | 108 |
 | &nbsp;&nbsp;&nbsp;&nbsp;— **sub-observed ghosts** | **0** |
 
-**VERDICT: zero sub-observed ghosts at baseline.**  R60 T16's
-Z₃ rule + natural matter-decay availability produces a CLEAN
-pure-p-sheet spectrum.  The user's recollection — "we
-eliminated ghosts below 3 × (1, 2) modes working together in
-3-phase orientation" — is validated.
+**Baseline passes the audit.**  R60 T16's Z₃ rule + natural
+matter-decay availability produces a clean pure-p-sheet spectrum.
+The user's recollection — "we eliminated ghosts below 3 × (1, 2)
+modes working together in 3-phase orientation" — is validated at
+this specific point.
 
-## F2. Pure p-sheet naturally picks up 7 observed particles
+## F2. Pure p-sheet rings on 7 observed particles at baseline
 
-The 8 mass-level matches against the observed spectrum
-(charge-and-mass, spin handled by 1-sheet vs compound
-realization):
+At baseline, mass+charge matches to known particles (spin-
+agnostic, since pure-p single-sheet is spin ½ but compound
+realizations can give any allowed SU(2) spin):
 
 | Mode | E (MeV) | Observed | Δm/m |
 |:----:|-------:|:---------|-----:|
@@ -66,73 +66,33 @@ realization):
 | (0, −11) | 1330.72 | Ξ⁰ | +1.21% |
 | (−3, +12) | 1648.34 | Ω⁻ | +1.44% |
 
-Notable: **Δ⁺ at 1232 MeV — previously listed as "topologically
-forbidden"** in model-F — shows up naturally as the `(3, 9)`
-Z₃ composite at 1223 MeV (0.71% off).  Under R60 T16's picture
-this is "three (1, 3) quarks" parallel to the proton's "three
-(1, 2) quarks."  The p-sheet rings on the (1, n_r) strand
-ladder; Z₃ composites pick out the baryons.
+Notable: **Δ⁺ at 1232 MeV — previously flagged "topologically
+forbidden" in model-F** — shows up naturally as the `(3, 9)` Z₃
+composite at 1223 MeV (0.71% off), parallel to the proton's
+`(3, 6)` as three (1, 2) quarks.  `(3, 12)` at 1648 MeV sits
+near Ω⁻ (1.44% off).  These are mass-level coincidences; physical
+spin realization (spin 3/2 for Δ⁺ and Ω⁻) needs multi-sheet
+composition.
 
-The spin reading: these modes have spin ½ under 1-sheet DK.
-Δ⁺ (spin 3/2) and Ω⁻ (spin 3/2) would need additional spin
-structure beyond 1-sheet to physically match — that's an
-independent R62 question.  What the audit confirms is that the
-p-sheet rings at the correct (mass, |Q|) combinations for
-these observed particles.
+## F3. The sub-proton region is structurally clean at baseline
 
-## F3. The sub-proton region is clean by structure
+Below the proton (938 MeV), every Z₃-free mode is either
+observed (π⁰) or matter-decay-dominated:
 
-Ordering pure p-sheet Z₃-free modes below the proton
-(< 938 MeV) at baseline:
+- Neutral modes (0, −1) through (0, −7) at 121, 242, 363, 484,
+  605, 726, 847 MeV: all split-dominated.
+- Charged modes (−3, 0), (−3, ±1), (−3, ±2), etc. at 662–936
+  MeV: all split-dominated via matter decay to lighter
+  observed products.
+- Nothing below π⁰ (135 MeV) has spin-1/2 nature predicted
+  where none is observed.
 
-| Mode | E (MeV) | |Q| | Classification |
-|:----:|-------:|:---:|:---------------|
-| (0, −1) | 120.97 | 0 | **observed (π⁰)** |
-| (0, −2) | 241.95 | 0 | split-dominated |
-| (0, −3) | 362.92 | 0 | split-dominated |
-| (0, −4) | 483.90 | 0 | split-dominated |
-| (0, −5) | 604.87 | 0 | split-dominated |
-| (−3, 0) | 662.48 | 1 | split-dominated |
-| (−3, ±1) | 662.78, 683.91 | 3 | split-dominated |
-| (−3, ±2) | 684.80, 725.17 | 3 | split-dominated |
-| (0, −6) | 725.85 | 0 | split-dominated |
-| (−3, ±3) | 726.57, 783.12 | 1 | split-dominated |
-| (−3, ±4) | 784.93, 854.37 | 3 | split-dominated |
-| (0, −7) | 846.82 | 0 | split-dominated |
-| (−3, ±5) | 856.51, 935.89 | 3 | split-dominated |
-| (−3, −6) | 938.27 | 1 | **observed (proton)** |
+## F4. Track 21's extreme pion-shift introduces sub-π⁰ ghosts
 
-**Every mode below the proton is either observed (π⁰) or
-matter-decay-dominated.**  The intermediate Z₃-free composites
-like (3, 0) = 662 MeV and (3, ±3) = 726/783 MeV are not
-observed particles, but they have matter decay channels to
-lighter observed products:
-
-- (3, 0) at 662 MeV: can decay to p + π⁻ + light_stuff (938 −
-  140 ≈ threshold too high for p + π alone, but e.g. 3π±+
-  lighter products are kinematically fine).  Actually the
-  simpler reading: 662 MeV > lightest |Q|=1 matter (e⁺ at
-  0.511 MeV), so e⁺-emission channel is always energetically
-  available.  This mode does not correspond to a stable
-  observed particle — consistent with it being a short-lived
-  pre-proton Z₃ composite.
-- (3, ±1) at 663, 684 MeV: |Q|=3.  No observed |Q|=3 particle
-  (because the Standard Model has none), but the mode can
-  disperse via 3-electron emission above 1.5 MeV.
-- (3, ±3) at 727, 783 MeV: |Q|=1, between the observed ρ±
-  (775) but not within 2%.  Split-dominated, consistent with
-  being unobservable as stable resonances.
-
-No sub-pion neutral modes.  No sub-proton charged modes
-unmatched.  The p-sheet ladder opens cleanly at (0, −1) = π⁰
-and closes at (−3, −6) = proton.
-
-## F4. Track 21's pion-optimal shift BREAKS cleanness
-
-At `(ε_p, s_p) = (0.15, 0.05)` — Track 21's pion-fitting
-candidate — `L_ring_p = 127.06 fm`.  The p-ring mode spacing
-drops from 121 MeV (baseline) to about 45 MeV.  Re-running the
-audit:
+At `(ε_p, s_p) = (0.15, 0.05)` — Track 21's pion-optimal
+candidate — `L_ring_p` grows from 47 fm to 127 fm.  The p-ring
+mode spacing drops from ~121 MeV (baseline) to ~45 MeV.
+Re-running the audit:
 
 | | Count |
 |---|---:|
@@ -141,72 +101,102 @@ audit:
 | &nbsp;&nbsp;&nbsp;&nbsp;— split-dominated | 81 |
 | &nbsp;&nbsp;&nbsp;&nbsp;— **sub-observed ghosts** | **2** |
 
-**The 2 sub-observed ghosts:**
+The two sub-observed ghosts:
 
 | Mode | E (MeV) | |Q| | Problem |
 |:----:|-------:|:---:|:--------|
-| (0, −1) | 45.03 | 0 | below lightest Q=0 observed (π⁰ at 135 MeV) |
+| (0, −1) | 45.03 | 0 | below lightest Q=0 observed (π⁰ at 135) |
 | (0, −2) | 90.05 | 0 | below π⁰ |
 
-Track 21's pion-optimal shift inflates `L_ring_p` from 47 fm
-to 127 fm to fit pions.  That smaller p-ring spacing puts the
-`(0, −1)` pure p-sheet mode at 45 MeV instead of 121 MeV — far
-below π⁰.  No observed neutral particle exists below 135 MeV,
-so the model at this geometry predicts phantom neutral modes
-at 45 and 90 MeV.
+**Track 21's naive shift fails the sub-observed ghost test.**  The
+same geometry that closes the pion desert also predicts phantom
+neutral modes at 45 and 90 MeV where nature has nothing.
 
-**This is a concrete argument against adopting Track 21's
-naive pion fix**: the same geometry shift that closes the pion
-desert introduces sub-pion neutral ghosts.
+## F5. Structural boundary: `μ(3, 6) ≤ 8.09`
 
-## F5. What Track 1 establishes
+The sub-pion ghost problem appears when the lowest Q=0 pure
+p-sheet mode `(0, −1)` drops below π⁰'s lower match threshold
+(116 MeV, i.e. 14% below 135).  Since L_ring_p is always
+calibrated to put (3, 6) at the proton mass, the energy of
+(0, −1) is:
 
-1. **Baseline is right for the pure p-sheet** — no ghost
-   problem at `(ε_p, s_p) = (0.55, 0.162)`.  R60 T16's Z₃
-   discipline is confirmed to work as designed.
-2. **The p-sheet is a rich mass axis** — 7 observed particles
-   (proton, π⁰, η′, Δ⁺, Ξ⁻, Ξ⁰, Ω⁻) fall at pure p-sheet
-   Z₃-free resonances at baseline.  A previously-"forbidden"
-   particle (Δ⁺) gets a natural assignment as the (3, 9) Z₃
-   composite.  The correspondence is mass-and-charge; spin
-   realization via multi-sheet / SU(2) is a separate question.
-3. **Track 21's naive pion shift must be rejected** — it
-   introduces sub-pion neutral ghosts that the model cannot
-   account for.  Any pion fix must preserve the baseline's
-   sub-proton cleanness, which means `(ε_p, s_p)` must stay
-   close to values that keep L_ring_p near 47 fm.
+<!-- E(0, -1) = 938 × μ(0, -1) / μ(3, 6) = 938 / μ(3, 6) -->
+$$
+E(0, -1) \;=\; m_p \cdot \frac{\mu(0, -1)}{\mu(3, 6)}
+\;=\; \frac{m_p}{\mu(3, 6)}
+$$
 
-## Implication for R63
+For `E(0, -1) ≥ 116 MeV` (i.e., (0, -1) at worst still matches
+π⁰ within pion threshold):
 
-The pool of next-track candidates is re-prioritized:
+<!-- μ(3, 6) ≤ 938/116 = 8.09 -->
+$$
+\mu(3, 6) \;\le\; \frac{m_p}{116 \text{ MeV}} \;\approx\; 8.09
+$$
 
-- **a. Sweep infrastructure** — now constrained to preserve
-  baseline's sub-proton cleanness.  Track 21's (0.15, 0.05)
-  is out; but smaller shifts that preserve L_ring_p near
-  baseline may still help pions.
-- **b. Observable correlation audit** — particularly
-  interesting now because the pure p-sheet gives 7 observed
-  matches at once; checking their joint sensitivity to
-  `(ε_p, s_p)` will tell us how tightly the observed spectrum
-  pins the proton sheet.
-- **c. Neutron-anchored sweep** — per the user's preferred
-  anchor.  Neutron is a 3-sheet compound; this audit's
-  pure-p-sheet clean ladder sets the boundary conditions.
+where `μ²(3, 6) = (3/ε_p)² + (6 − 3 s_p)²`.  Checking the two
+tested points:
 
-The earlier-suggested pool items for ghost elimination
-(**m** — e-sheet winding filter) can be deprioritized: the
-"|Q|≥4 light ghosts" the broader Track 1 draft found are
-artifacts of mixing e-sheet charge with p-sheet modes, not a
-p-sheet problem.  That analysis moves to pool item **l**
-(e-sheet re-validation) as an independent question.
+- Baseline (0.55, 0.162): μ(3, 6) = **7.76** ✓ (inside bound)
+- Track 21 (0.15, 0.05): μ(3, 6) = **20.84** ✗ (way outside)
+
+This bound defines a 2D region in `(ε_p, s_p)` space, not a single
+point.  A coarse back-of-envelope along slices of s_p:
+
+| s_p | minimum ε_p (μ(3,6) ≤ 8.09) |
+|----:|----------------------------:|
+| 0.00 | ≥ 0.552 |
+| 0.16 | ≥ 0.506 (baseline: 0.55, margin ~9%) |
+| 0.30 | ≥ 0.477 |
+| 0.50 | ≥ 0.446 |
+| 1.00 | ≥ 0.399 |
+
+Baseline sits well inside the viable region — it is not a
+knife-edge; there is comfortable slack in both directions.
+**But exactly how far the region extends and which points
+preserve the 7 baseline observed matches is NOT characterized
+by Track 1.**
+
+## F6. What Track 1 did NOT establish
+
+Explicitly, Track 1 does not tell us:
+
+- Whether other points within the `μ(3, 6) ≤ 8.09` region give
+  additional observed-particle matches or lose them.
+- Whether the nuclear scaling `d → ⁵⁶Fe` at ≤ 1.4% is preserved
+  across the viable region.
+- Whether the multi-sheet inventory matches (14 of 16 within
+  1.12% from R60 T19) survive parameter variation.
+- Whether there is a specific point in the viable region that
+  improves the pion match without introducing sub-π⁰ ghosts.
+
+These are Track 2's questions.
+
+---
+
+## What this means
+
+**`(ε_p, s_p)` is not pinned by Track 1.**  What Track 1
+establishes is:
+
+1. Model-F's baseline `(0.55, 0.162)` is a viable point.  R60
+   T16's Z₃ discipline works as designed at this geometry.
+2. Track 21's extreme `(0.15, 0.05)` is infeasible.  The naive
+   pion-fix shift introduces sub-π⁰ neutral ghosts and must be
+   rejected.
+3. The structural bound `μ(3, 6) ≤ 8.09` cleanly separates these
+   two data points and defines a 2D region — not a single point.
+
+The full range of viable `(ε_p, s_p)` values under the complete
+set of constraints (ghost-clean + observed-match preservation +
+nuclear scaling + multi-sheet inventory) remains to be mapped.
 
 ## Status
 
-**Track 1 complete — positive result for R60 T16.**  The Z₃
-discipline produces a clean sub-proton p-sheet ladder at
-model-F baseline.  Seven observed particles (proton, π⁰, η′,
-Δ⁺, Ξ⁻, Ξ⁰, Ω⁻) emerge as pure p-sheet Z₃-free resonances.
-Track 21's naive `(ε_p, s_p)` shift introduces sub-pion
-ghosts and is rejected.  R63's pool items proceed with the
-updated constraint: any proton-sheet re-optimization must
-preserve the baseline's sub-proton cleanness.
+**Track 1 complete** — positive result at baseline, negative
+result at Track 21's extreme, structural boundary identified.
+
+**Next step: Track 2** — systematic sweep of `(ε_p, s_p)` across
+the structural bound, with per-point validation against the
+full constraint set.  Output: a viable-region map and the
+best candidate(s) for subsequent observable-anchored work.
