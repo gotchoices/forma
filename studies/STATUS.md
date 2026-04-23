@@ -17,16 +17,17 @@ Active entry is a 3–5-line pointer; full narrative lives in the study's own
 [`R63-proton-tuning/`](R63-proton-tuning/) · theoretical + compute · depends on R60, R59, R53, R49, R61, model-F
 Apply the e-sheet tuning discipline to the p-sheet. R60 T21 exposed that
 `(ε_p, s_p)` was never re-swept after σ_ra lifted the R19 constraint; the
-e-sheet has been audited such that every charged mode is observed or
-split-dominated, while the p-sheet has only been inventory-matched
-(observed → mode) without the reverse audit (mode → observed/suppressed).
-**Track 1:** mode-by-mode ghost audit at baseline — self-contained,
-intrinsic to model-F, no external observables required. Subsequent tracks
-(lettered pool a–z) chosen based on Track 1's findings: targeted parameter
-adjustment, sweep infrastructure, observable correlation, neutron/nuclear-
-anchored sweeps, inventory consistency, radius gut-check, cross-sheet σ,
-anchoring-mode audit, ε_ν sweep. Discipline constraints: neutron preferred
-over ephemeral particles; radii gut-check only; anomalous moments deferred.
+e-sheet has been audited (every charged mode is observed or split-
+dominated), while the p-sheet has only been inventory-matched (observed →
+mode) without the reverse audit. **Track 1 (proton-only):** enumerate
+p-sheet-involving modes at baseline, classify as observed / split-
+dominated / light ghost, then adjust `(ε_p, s_p)` alone to eliminate any
+light ghosts while preserving observed particles. Other free variables
+(`ε_ν`, cross-sheet σ, anchoring-mode) are NOT moved in Track 1 — they
+live in the lettered pool for later tracks if Track 1 reports obstacles
+that single-sheet adjustment cannot close. Observable-anchored sweeps
+(pool) await user decision on observable set; neutron preferred; radii
+gut-check only; anomalous moments deferred.
 
 ### R62. Derivations — analytical proofs  **Active**
 [`R62-derivations/`](R62-derivations/) · theoretical · depends on KK primer, R59, model-E

@@ -33,15 +33,21 @@ R28 reported ~900 modes below 2 GeV against ~40 known particles;
 whether the ~860-mode excess is legitimately routing-suppressed
 or contains ghosts was never audited.
 
-R63 addresses this gap:
+R63 addresses this gap in a **proton-focused** way:
 
-1. **Track 1 (now):** enumerate every physical-filter-compliant
-   p-sheet and compound mode in order of energy at the current
-   baseline; classify each as observed / split-dominated / ghost.
-2. **Subsequent tracks (chosen later):** depending on what
-   Track 1 finds, target parameter adjustments, observable-
-   anchored sweeps, cross-sheet explorations, or all of the
-   above.
+1. **Track 1 (now):** restricted to the proton sheet.  Enumerate
+   p-sheet-involving modes, classify each as
+   observed / split-dominated / ghost, and try to eliminate any
+   remaining **light ghosts** by modifying `(ε_p, s_p)` alone.
+   Ghosts that exist but are above the routing-cost splitting
+   threshold are acceptable — they're naturally suppressed.
+   Other free variables (`ε_ν`, cross-sheet σ) are not moved in
+   Track 1 even if the neutron or other compound fits want to.
+2. **Subsequent tracks (chosen later):** if Track 1 leaves
+   residual issues that `(ε_p, s_p)` alone cannot fix, promote
+   pool items to bring in other free variables — in particular,
+   `ε_ν` movement is acceptable in a later track if it is the
+   price of a clean neutron fit.
 
 R63 is explicitly disciplined: observable-anchored sweeps do not
 run until the target observables are approved by the user and
@@ -119,77 +125,123 @@ transient states.  Use as cross-checks only.
 
 ---
 
-## Track 1 — Mode-by-mode ghost audit (intrinsic-first tuning)
+## Track 1 — Proton-sheet ghost audit and adjustment
 
-**Motivation.**  The electron sheet is self-cleaning: R53 tuned
-`(ε_e, s_e)` so that electron, muon, tau are the three lowest
-charged modes, with higher modes heavy enough that R56/R57
-routing dominates.  The historically-worrisome (1, 1) ghost is
-not filtered — it *is* the muon.  The shear resonance substitutes
-for an explicit filter.
+**Motivation.**  The electron sheet is already self-cleaning:
+R53 tuned `(ε_e, s_e)` so that electron, muon, tau are the
+three lowest charged modes, with higher modes heavy enough that
+R56/R57 routing dominates.  The historically-worrisome (1, 1)
+ghost is not filtered — it *is* the muon.  The shear resonance
+substitutes for an explicit filter.
 
 The proton sheet has not been audited this way.  Track 1 applies
-the e-sheet discipline to the p-sheet and to compound modes at
-the current model-F baseline.
+the e-sheet discipline to the proton sheet.  Scope is **strictly
+proton-focused**: only `(ε_p, s_p)` is moved in Track 1.  Other
+free variables are left at baseline even if compound-mode fits
+suggest they want to move — those movements are pool items for
+future tracks.
 
-**Goal.**  For each sheet and each compound class, enumerate
-every physical-filter-compliant mode in ascending mass order.
-Classify each as:
+**Scope.**
+
+- **In:** single p-sheet modes `(0, 0, 0, 0, n_pt, n_pr)` under
+  the Z₃ rule (`n_pt ≡ 0 mod 3`); compound modes with nonzero
+  p-sheet activity (2-sheet `{e+p, ν+p}` and 3-sheet).
+- **Out of Track 1 scope:** pure e-sheet modes (R53-validated),
+  pure ν-sheet modes (only the (1, 0) item, which lives in pool
+  **k**), and any proposed movement of `ε_ν`, `s_ν`, cross-sheet
+  σ, or anchoring-mode choice.
+
+**Goal.**  For each in-scope mode in ascending mass order,
+classify as:
 
 - (a) **observed particle** — match within the model-F threshold
-      (tolerate the current 10–13% on pions per Track 21),
+      (tolerate the current 10–13% on pions per Track 21, on the
+      understanding Track 21's `(ε_p, s_p)` shift closes them);
 - (b) **split-dominated** — `E_mode > min(sum(E_obs_i) +
-      V_separation)` per R56/R57 routing, so the mode is
-      naturally suppressed,
-- (c) **genuine ghost** — neither observed nor split-dominated;
-      requires explanation or parameter adjustment (pool
-      item **a**).
+      V_separation)` per R56/R57 routing, so naturally
+      suppressed and acceptable per the user's criterion;
+- (c) **light ghost** — a mode below the splitting threshold
+      that matches no observed particle.  These are the only
+      problems Track 1 must eliminate.
 
-**Strategy.**
+If light ghosts are found, Track 1 then attempts to eliminate
+them by moving `(ε_p, s_p)` alone.
 
-1. Single-sheet audits first: e-sheet (validate), p-sheet
-   (expected open items), ν-sheet (the known (1, 0) item).
-2. Compound audits next: 2-sheet (mesons), 3-sheet (baryons).
-3. Splitting-threshold evaluation for each unexplained mode:
-   `E_mode` vs `min_split(sum(E_obs_i) + V_separation)` with
-   V_separation from the R56/R57 cost model.
-4. Output: per-scope ordered list of (mode, energy,
-   classification, notes).  Feeds pool item **a** if non-empty.
+**Phases.**
+
+### Phase 1 — Audit at baseline
+
+Enumerate in-scope modes up to a bounded energy (initially
+2 GeV, extensible).  Classify each.  Output the ordered
+per-scope ghost list.  If empty, Phase 2/3 short-circuit to
+"no action required" and Track 21's pion shift becomes a
+free-floating optimization (pool items **c**–**f**).
+
+### Phase 2 — `(ε_p, s_p)` adjustment to eliminate light ghosts
+
+For each light ghost identified in Phase 1, characterize the
+direction in `(ε_p, s_p)` that either:
+- relocates the ghost onto an observed particle (mirrors R53's
+  "(1, 1) → muon" mechanism on the e-sheet), or
+- lifts the ghost above its splitting threshold (reclassifying
+  it as split-dominated).
+
+Sweep a targeted `(ε_p, s_p)` region — initially a grid around
+baseline, refined toward any region that simultaneously
+addresses all ghosts.  Track 21's already-identified sweet
+spot `(ε_p ≈ 0.15, s_p ≈ 0.05)` is a natural candidate to
+evaluate first.
+
+### Phase 3 — Observed-particle preservation check
+
+At any candidate `(ε_p, s_p)` from Phase 2, verify that no
+observed particle is degraded below model-F's current match.
+The proton mass is always preserved (L_ring_p re-derives), but
+the neutron and compound-mode matches are not guaranteed.  If
+observed particles are degraded, Phase 2's direction is
+incompatible — flag for pool items that bring additional
+variables into play.
 
 **Tactics.**
 
-- Reuse R60 T20 Phase D enumeration (Z₃ on p-sheet + charge +
-  composite α + spin filters); extend with energy-ordered
-  output up to a bounded cap (initially 2 GeV; extensible).
-- New primitive `splitting_threshold(mode, metric)` returns
-  the minimum split cost over decompositions into observed
-  lighter particles.
-- One script per audit scope; each produces markdown + CSV.
+- Reuse R60 T20 Phase D enumeration (Z₃ + charge + composite α
+  + spin filters), restricted to in-scope tuples.
+- New primitive `splitting_threshold(mode, metric)` returns the
+  minimum `sum(E_obs_i) + V_separation` over decompositions
+  into observed lighter particles, with V_separation from the
+  R56/R57 routing cost model.
+- Rebuild metric (σ_ra auto-updates) at each `(ε_p, s_p)`
+  candidate; re-run the audit.
+- One script: `track1_proton_ghost_audit.py` with Phase 1/2/3
+  as functions sharing the enumeration engine.
+- Outputs: markdown + CSV ghost-list per phase.
 
 **Acceptance.**
 
-- e-sheet: (1, 2) = electron, (1, 1) = muon, high-n tau; no
-  lighter charged mode; no intermediate charged modes.
-- p-sheet: either clean or produces a ranked ghost list.
-- ν-sheet: characterizes (1, 0) and related low modes.
-- Compound audits: ordered lists with observed-particle tags.
+- Phase 1 produces an unambiguous classification of every
+  in-scope mode below 2 GeV at baseline.
+- If Phase 1 finds no light ghosts: Track 1 closes with
+  "proton-sheet clean at baseline; Track 21's shift is a
+  free optimization".
+- If Phase 1 finds light ghosts AND Phase 2 finds a `(ε_p, s_p)`
+  that eliminates all of them while Phase 3 preserves observed
+  particles: Track 1 closes with a recommended parameter
+  shift, and pool items proceed at the new baseline.
+- If Phase 1 finds light ghosts AND no `(ε_p, s_p)` eliminates
+  them cleanly in Phase 2/3: Track 1 closes with a precise
+  obstacle report, and pool items **h** (cross-sheet) or other
+  multi-variable options come into scope.
 
 **What Track 1 is NOT.**
 
-- Not a parameter sweep.  Inventory-at-baseline.
-- Not dependent on external observables.  Uses only the known
+- Not an e-sheet audit.  R53 already did it.  (Pool item **l**
+  can re-validate if needed.)
+- Not a ν-sheet audit.  The (1, 0) item is pool **k**.
+- Not an observable-anchored sweep.  Uses only the known
   particle list and R56/R57 routing cost.
-
-**Payoff.**
-
-- **If the p-sheet is clean:** `(ε_p, s_p)` does not need to
-  move for intrinsic reasons.  Track 21's pion fix becomes a
-  free-floating optimization against external observables
-  (pool items **b**–**f**).
-- **If the p-sheet has ghosts:** pool item **a** becomes a
-  targeted geometry adjustment, potentially aligned with
-  Track 21's shift, potentially not.  Either outcome is
-  informative.
+- Not multi-variable.  Only `(ε_p, s_p)` is adjusted.  If
+  fixing the proton sheet requires other knobs to move,
+  Track 1 reports the obstacle and stops.
 
 ---
 
@@ -199,61 +251,70 @@ Tracks after Track 1.  Sequence decided from Track 1's findings
 and the user's observable-set decision.  Entries are sketches;
 the chosen one is elaborated to full-track detail when promoted.
 
-**a. Targeted parameter adjustment against ghost list.**  If
-Track 1 identifies p-sheet (or compound) ghosts, mirror R53's
-e-sheet methodology: for each ghost, identify the `(ε_p, s_p)`
-direction that relocates it onto an observed particle or lifts
-it above the splitting threshold, without breaking existing
-matches.  Composes with Track 21's pion-driven shift.
+**a. Sweep infrastructure.**  Build a parameterized sweep engine
+(`ParameterPoint` × `ObservableScorer`) that composes Track 1's
+classifier with external observable matching.  Reuse R60
+`track1_solver.py` + `build_aug_metric`.
 
-**b. Sweep infrastructure.**  Build a parameterized sweep
-engine (`ParameterPoint` × `ObservableScorer`) that composes
-Track 1's classifier with external observable matching.
-Reuse R60 `track1_solver.py` + `build_aug_metric`.
-
-**c. Observable correlation audit.**  For each candidate
+**b. Observable correlation audit.**  For each candidate
 observable, estimate `dPrediction/dParameter` numerically at
 baseline.  Rank observables by total sensitivity and by
 orthogonality (how independently each constrains different
 variables).  Informs which observables can realistically pin
 what before any observable-anchored sweep runs.
 
-**d. Neutron-anchored sweep.**  With sensitivity map from
-**c**, sweep `(ε_p, s_p, ε_ν, σ_xx)` scoring on neutron
+**c. Neutron-anchored sweep.**  With sensitivity map from
+**b**, sweep `(ε_p, s_p, ε_ν, σ_xx)` scoring on neutron
 observables (mass, Δm, decay Q, lifetime).  User's preferred
-anchor.
+anchor.  `ε_ν` may move in this track if required by the
+neutron fit.
 
-**e. Nuclear-scaling-anchored sweep.**  Same as **d** but
+**d. Nuclear-scaling-anchored sweep.**  Same as **c** but
 scoring on nuclear masses across the stable-isotope chart.
-Cross-validates **d**; agreement is strong evidence.
+Cross-validates **c**; agreement is strong evidence.
 
-**f. Inventory consistency sweep.**  Within the region of
-agreement from **d** and **e**, verify that no non-pion
-hadron regresses below model-F's current accuracy.  Final
-gate before recommending a parameter update.
+**e. Inventory consistency sweep.**  Within the region of
+agreement from **c** and **d**, verify that no non-pion hadron
+regresses below model-F's current accuracy.  Final gate before
+recommending a parameter update.
 
-**g. Charge-radius gut-check.**  Compute r_p and nuclear
-charge radii at each sweep point; compare to measurement.
+**f. Charge-radius gut-check.**  Compute r_p and nuclear charge
+radii at each sweep point; compare to measurement.
 **Informational only; does not pin.**  Documents whether the
-circumference-to-radius relationship is consistent across
-the sweep.
+circumference-to-radius relationship is consistent across the
+sweep.
 
-**h. Cross-sheet σ exploration.**  R60 T7c found most
-cross-sheet activations break α universality, but its own
-pool item **h** proposes a structural triangular prescription
-(σ_ep, σ_eν, σ_νp all nonzero at derived values) that may
-preserve it.  Explore only if Tracks **a**–**f** leave
-meaningful residual constraints.
-
-**i. Anchoring-mode audit.**  L_ring_p is derived by
-calibrating the (3, 6) proton to m_p.  Does pinning on a
-different mode give a meaningfully different L_ring_p?
-Sanity check on the anchoring choice.
-
-**j. ε_ν continuous sweep.**  Separable from hadron physics at
+**g. ε_ν continuous sweep.**  Separable from hadron physics at
 leading order (ν-sheet contributes < 10⁻¹⁰ MeV per winding to
 hadron modes) but affects the neutrino-oscillation comb and
-Majorana predictions.  Run when R61-facing questions resurface.
+Majorana predictions.  Run when R61-facing questions resurface,
+or when Track 1 / pool item **c** indicates ν-sheet movement
+is needed.
+
+**h. Cross-sheet σ exploration.**  R60 T7c found most
+cross-sheet activations break α universality, but R60's own
+pool item **h** proposes a structural triangular prescription
+(σ_ep, σ_eν, σ_νp all nonzero at derived values) that may
+preserve it.  Explore only if `(ε_p, s_p)` alone plus at most
+`ε_ν` movement leaves meaningful residual constraints.
+
+**i. Anchoring-mode audit.**  L_ring_p is derived by calibrating
+the (3, 6) proton to m_p.  Does pinning on a different mode
+(e.g., a compound with the proton role) give a meaningfully
+different L_ring_p?  Sanity check on the anchoring choice.
+
+**k. ν-sheet (1, 0) ghost audit.**  The ν-sheet has a known
+low-mode ghost at `(n_νt, n_νr) = (1, 0)` flagged in model-F's
+open questions.  Apply Track 1's discipline to the ν-sheet
+specifically: is it observed, split-dominated, or does `ε_ν`
+(or `s_ν`, already pinned) need to move to relocate it?
+Composes with pool item **g**.
+
+**l. e-sheet re-validation.**  R53 already pinned `(ε_e, s_e)`
+so that electron/muon/tau are the three lowest charged modes.
+Re-run the Track 1 methodology on the e-sheet as a sanity
+check that the e-sheet still satisfies the ghost criterion
+after any downstream metric updates.
 
 **z. Closeout.**  After chosen pool items execute: if a
 coherent parameter shift emerges that (i) closes the pion gap,
@@ -284,9 +345,13 @@ User-imposed rules R63 should follow throughout execution:
 
 ## Next steps
 
-- **Track 1 is ready to execute now.**  Self-contained,
-  intrinsic to model-F, no external observables required.
-  Produces the ghost map that informs which pool items are
-  worth promoting.
-- **Pool items b–j await Track 1's outcome and user decisions**
-  about the observable set.
+- **Track 1 is ready to execute now.**  Proton-focused,
+  self-contained, no external observables required.  Three
+  phases: audit, `(ε_p, s_p)` adjustment, preservation check.
+  Produces the ghost map and (if needed) a recommended
+  parameter shift for the proton sheet alone.
+- **Pool items a–l await Track 1's outcome** and the user's
+  decision on which observables anchor the observable-driven
+  sweeps (pool items **b**–**f**).  Items **g**, **h** come
+  into scope only if Track 1 flags obstacles that single-
+  sheet adjustment cannot fix.
