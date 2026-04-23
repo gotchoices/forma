@@ -1,13 +1,24 @@
 # R63: Proton-sheet tuning — disciplined audit and sweep
 
-**Status:** Tracks 1 and 2 complete.  Viable-region map produced;
-the analytical bound `μ(3, 6) ≤ 8.09` (≈ 62% of the tested grid)
-is confirmed.  Baseline `(0.55, 0.162)` sits comfortably inside
-with slack.  One strict-improvement candidate identified:
-**`(0.55, 0.180)` preserves all 7 baseline matches and adds a Λ
-match** (8 total).  Next: pool item **c** (neutron-anchored
-sweep) or **e** (multi-sheet inventory consistency check) to
-validate the improvement candidate before any model-F update.
+**Status:** Tracks 1–3 complete, including Phase B of Track 3
+(width-weighted fitness).  Analytic ghost-free bound
+`μ(3, 6) ≤ 8.09` confirmed at fine resolution (88% of grid).
+
+**Track 3 Phase B peak: `(ε_p = 0.80, s_p = 0.05)` with fitness
+4.95/7 and a NEAR-EXACT π⁰ match at 0.038%** — the pion problem
+that has haunted model-F effectively closes at this point.
+Baseline drops to fitness 4.04/7 under physically-principled
+(natural-line-width) thresholds.
+
+Phase A found two peaks under flat thresholds: (0.73, 0.34) at
+4.93, (0.89, 0.01) at 4.82.  Phase B's width-weighted rescoring
+moves the optimum to (0.80, 0.05) because it restores the tight
+precision requirement for π⁰ (which is actually a narrow
+resonance despite its short lifetime).
+
+Next: pool item **e** (multi-sheet inventory consistency) at
+`(0.80, 0.05)` to check whether R60 T19's 14-of-16 hadron
+matches and nuclear scaling survive at the new geometry.
 **Type:** theoretical + compute
 **Depends on:** R60 (especially Tracks 7, 12, 21), R59, R53, R49, R61, model-F
 
@@ -445,13 +456,17 @@ User-imposed rules R63 should follow throughout execution:
 
 ## Next steps
 
-- **Tracks 1 and 2 complete.**  Viable region characterized;
-  `(0.55, 0.180)` identified as a strict improvement over
-  baseline.  See [findings-1.md](findings-1.md),
-  [findings-2.md](findings-2.md).
-- **Natural next step: pool item c or e** to validate
-  `(0.55, 0.180)` against additional constraints (neutron
-  physics or multi-sheet inventory).  If both pass, it
-  becomes the recommended new baseline for model-F.
-- **Pool items a, b, d, f–l remain available** — sequence
-  depends on user preference and observable-set decisions.
+- **Tracks 1–3 complete.**  Viable region analytically bounded,
+  fitness landscape visualized, two local maxima identified as
+  candidates for an improved proton-sheet baseline.  See
+  [findings-1.md](findings-1.md), [findings-2.md](findings-2.md),
+  [findings-3.md](findings-3.md).  Heat maps in
+  [`outputs/`](outputs/).
+- **Natural next step: pool item e** (multi-sheet inventory
+  consistency) tested at both local maxima:
+  - `(0.89, 0.01)` — solves the pion problem (π⁰ at 1.4%)
+    but loses Ξ⁰ on pure p.  Does multi-sheet Ξ⁰ match
+    survive?
+  - `(0.73, 0.34)` — highest pure-p fitness; loses η′.
+    Does multi-sheet η′ match survive?
+- **Pool items a, b, c, d, f–l remain available.**

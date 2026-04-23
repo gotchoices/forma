@@ -13,19 +13,20 @@ Active entry is a 3–5-line pointer; full narrative lives in the study's own
 
 ## Active
 
-### R63. Proton-sheet tuning — disciplined audit and sweep  **Active — Tracks 1–2 complete**
+### R63. Proton-sheet tuning — disciplined audit and sweep  **Active — Tracks 1–3 complete**
 [`R63-proton-tuning/`](R63-proton-tuning/) · theoretical + compute · depends on R60, R59, R53, R49, R61, model-F
-Apply the e-sheet tuning discipline to the p-sheet. **Track 1** tested
-baseline `(0.55, 0.162)` (clean, 7 observed matches) and Track 21's extreme
-`(0.15, 0.05)` (sub-π⁰ ghosts — rejected); identified analytical bound
-`μ(3, 6) ≤ 8.09`. **Track 2** swept a 17×13 grid (221 points): 62% fall
-inside the viable (ghost-free) region, confirming the bound. Two points
-preserve all 7 baseline matches; **`(0.55, 0.180)` is a strict improvement,
-gaining a Λ match (8 total vs baseline's 7)**. Alternative geometries like
-`(0.70, 0.40)` and `(0.90, 0.00)` reach 8 total matches with different
-trade-offs (gain τ, φ, or η, lose η′ or Ξ⁰). Next: pool item **c**
-(neutron-anchored) or **e** (multi-sheet inventory consistency) to
-validate the improvement candidate.
+Apply the e-sheet tuning discipline to the p-sheet. **Tracks 1–2**
+established the ghost-free region analytically (`μ(3, 6) ≤ 8.09`). **Track
+3 (Phases A + B)** produced continuous fitness heat maps at 81×51 grid.
+**Phase B uses physically-principled thresholds scaled by each particle's
+natural line width Γ = ℏ/τ**, replacing Phase A's artificial 14% pion
+concession with a 2% floor that respects π⁰'s actual narrow-resonance
+character. **Under width-weighted scoring the peak is `(ε_p = 0.80, s_p =
+0.05)` with fitness 4.95/7 and a near-exact π⁰ match at 0.038% — the
+pion desert closes completely at this geometry.** Baseline scores 4.04/7,
+well below the peak. The point is inside the ghost-free region
+(μ(3,6) = 6.95); L_ring_p ≈ 39 fm (modest shift from baseline's 47 fm).
+Next: pool item **e** (multi-sheet inventory consistency) at (0.80, 0.05).
 
 ### R62. Derivations — analytical proofs  **Active**
 [`R62-derivations/`](R62-derivations/) · theoretical · depends on KK primer, R59, model-E

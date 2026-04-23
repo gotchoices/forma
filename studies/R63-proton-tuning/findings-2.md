@@ -7,6 +7,36 @@ p-sheet audit.  Report: sub-observed ghost count, how many of
 baseline's 7 observed-particle matches are preserved, and what
 new matches may appear.
 
+**Key notation — μ.**  Several results below use `μ(n_t, n_r)` or
+specifically `μ(3, 6)`.  μ is the **derived dimensionless mode
+eigenvalue** — not a free parameter and not the same as ε or s.
+For any mode with tube winding `n_t` and ring winding `n_r` on a
+sheet with aspect ratio ε and shear s:
+
+<!-- μ²(n_t, n_r, ε, s) = (n_t/ε)² + (n_r − n_t·s)² -->
+$$
+\mu^2(n_t, n_r, \varepsilon, s) \;=\; (n_t/\varepsilon)^2 \;+\; (n_r - n_t\,s)^2
+$$
+
+The physical mass is `E = μ × (2πℏc / (L_ring √k))`.  So
+`μ(3, 6)` is just a shorthand for "the dimensionless eigenvalue
+of the (3, 6) proton mode at the chosen (ε_p, s_p)."  It is a
+function of two variables only.  The ghost-free bound
+`μ(3, 6) ≤ 8.09` is an algebraic restatement of "L_ring_p must
+be small enough that the (0, −1) mode, after proton calibration,
+stays within pion-match tolerance."
+
+**What Track 2 is and is not.**  Track 2 tested 221 discrete
+points on a coarse grid.  It does NOT produce a continuous
+function `score(ε_p, s_p)`; it produces per-point classification
+("clean / ghost", "how many of 7 particles matched").  The
+match-count criterion is brittle at the 2% threshold because
+resonances can sit just inside or just outside that window — a
+1% parameter shift can cause a match count to drop by 1
+without anything physically "breaking."  Track 3 addresses this
+by defining a continuous fitness score and producing a heat
+map.
+
 Grid:
 - ε_p ∈ {0.20, 0.25, 0.30, 0.35, 0.40, 0.45, 0.50, 0.55, 0.60,
   0.65, 0.70, 0.80, 0.90, 1.00, 1.20, 1.50, 2.00}
@@ -138,21 +168,37 @@ downstream check.
 
 ## What Track 2 establishes
 
-1. **The viable region in `(ε_p, s_p)` is bounded below by
-   μ(3, 6) ≤ 8.09** (equivalently, roughly ε_p ≥ 0.55 for
-   modest s_p).  The analytical Track 1 bound is confirmed
-   by the grid.
+1. **The ghost-free region is a coupled 2D inequality**, not a
+   simple `(r₁ ≤ ε_p ≤ r₂) AND (s₁ ≤ s_p ≤ s₂)` rectangle:
+
+   <!-- (3/ε_p)² + (6 − 3 s_p)² ≤ 65.4 -->
+   $$
+   \Big(\frac{3}{\varepsilon_p}\Big)^{\!2} + (6 - 3\,s_p)^2 \;\le\; 65.4
+   $$
+
+   The allowed ε_p depends on s_p.  For physical s_p ∈ [0, 0.5]
+   the minimum ε_p ranges from 0.446 (at s_p = 0.5) to 0.553
+   (at s_p = 0).  There is no upper bound on ε_p from the
+   ghost criterion.
 2. **62% of tested grid points are ghost-free.**  Baseline is
    not knife-edge; comfortable slack exists in all directions.
-3. **Two grid points preserve all 7 baseline matches**:
-   baseline itself and `(0.55, 0.180)`.  The latter is a
-   strict improvement (gains Λ).
-4. **Multiple alternative viable geometries** exist with
-   different trade-offs — some ring on τ, some on φ, some on
-   Λ or η.  This suggests the p-sheet is genuinely rich in
-   particle matches, not narrowly tuned.
+3. **The "count of baseline matches preserved" is brittle**
+   under the 2% threshold — small parameter shifts can flip
+   individual matches in or out of the window.  Only 2 of 221
+   grid points preserve all 7 baseline matches.  This is a
+   discrete-threshold artifact, not a physical constraint.
+4. **Alternative viable geometries ring on different particles**
+   — some gain τ, φ, Λ, η, or K matches while losing others.
+   The p-sheet is genuinely rich in particle matches across
+   the viable region, not narrowly tuned.
 5. **Track 21's extreme point is clearly outside the viable
    region** — confirms the rejection from Track 1.
+
+**What Track 2 did NOT produce:** a continuous fitness function
+over (ε_p, s_p).  Track 3 is the natural next step — replace
+the binary "match / no match at 2%" criterion with a continuous
+closeness score and produce a heat map to visualize the
+landscape.
 
 ## Implications for R63
 
