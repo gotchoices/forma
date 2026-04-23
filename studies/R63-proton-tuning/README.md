@@ -16,9 +16,20 @@ moves the optimum to (0.80, 0.05) because it restores the tight
 precision requirement for π⁰ (which is actually a narrow
 resonance despite its short lifetime).
 
-Next: pool item **e** (multi-sheet inventory consistency) at
-`(0.80, 0.05)` to check whether R60 T19's 14-of-16 hadron
-matches and nuclear scaling survive at the new geometry.
+**Track 4 complete — significant finding.**  The e-sheet
+parallel audit shows R53 Solution D is a local minimum of
+sub-observed ghost count but **not zero**: 4 structural ghosts
+appear at baseline (|Q|=2, 3, 4 modes at 2m_e, 3m_e, 4m_e via
+the (n, 2n) shear-resonance family, plus (0, −1) at 104 MeV
+below π⁰).  The Phase B grid sweep (2296 points) finds **zero**
+ghost-free geometries — the problem is architectural, not
+parametric.  Tau matches cleanly at (−1, +15) = 1774 MeV
+(0.14% off), confirming R53's three-generation assignment at
+low winding.  **Implication:** R33's historical n_tube = ±1
+filter has been implicitly assumed in model-F but not
+formally adopted.  Pool item **m** (e-sheet winding restriction)
+must be resolved before multi-sheet work (pool item e) can
+proceed with confidence.
 **Type:** theoretical + compute
 **Depends on:** R60 (especially Tracks 7, 12, 21), R59, R53, R49, R61, model-F
 
@@ -336,9 +347,157 @@ Output a viability map and a shortlist of candidates.
 
 ---
 
-## Next-track pool (after Track 2)
+## Track 4 — E-sheet parallel audit (validation for multi-sheet searches)
 
-Tracks after Track 2.  Sequence decided from Track 2's findings
+**Goal.**  Apply Tracks 1–3b's methodology to the electron sheet,
+so the e-sheet is validated to the same level of precision the
+p-sheet just received.  This is a **prerequisite for any
+multi-sheet search** (pool items c, d, e): trusting a multi-sheet
+inventory requires knowing each sheet's own mode ladder is clean.
+
+**Motivation.**  The e-sheet's current `(ε_e, s_e) =
+(397.074, 2.004200)` comes from R53 Solution D — an **algebraic
+constraint solve** (two equations `m_μ/m_e ≈ 207, m_τ/m_e ≈ 3477`
+in two unknowns), not a sweep + fitness analysis.  R33's earlier
+ghost census preceded the σ_ra + per-sheet Dirac–Kähler
+architecture.  R63 Track 1 deliberately **skipped** the e-sheet on
+the assumption "R53 already handled it."  Track 3b's dramatic
+p-sheet result (fitness 4.95 vs baseline's 4.04, near-exact π⁰
+match at a completely different geometry than the historical
+baseline) raises a legitimate doubt: the same discipline applied
+to the e-sheet may reveal similar surprises.
+
+**Scope — strictly e-sheet.**  Only `(ε_e, s_e)` is swept in
+Track 4.  Cross-sheet σ, ν-sheet geometry, and p-sheet
+parameters are held fixed at their current model-F values.  If
+the e-sheet needs other variables, that is noted as obstacle
+(parallel to Track 1's p-sheet result) rather than pursued in
+Track 4.
+
+**Target particles and thresholds.**  All three charged leptons
+are narrow; no broad-resonance case like Δ⁺.  Under width-
+weighted thresholds (floor 2%):
+
+| Particle | τ | Γ / m | Threshold |
+|:--------:|:--:|:-----:|:---------:|
+| electron | stable | 0 | 2.0% |
+| muon | 2.2 μs | 3×10⁻¹⁹ | 2.0% (floor) |
+| tau | 2.9×10⁻¹³ s | 2×10⁻¹⁴ | 2.0% (floor) |
+
+All three are essentially exact-match targets.
+
+### Phase A — Pure e-sheet ghost audit at baseline
+
+Enumerate pure e-sheet modes `(n_et, n_er, 0, 0, 0, 0)` up to a
+bounded energy cap (initially 5 GeV to cover tau at 1777 MeV
+with headroom).  For each, compute:
+
+- Effective charge `Q = −n_et` (pure e-sheet, no p-sheet
+  contribution).
+- Mass via the p-sheet-analogous formula with L_ring_e
+  calibrated to the electron at `(1, 2)`.
+- Classification: observed, split-dominated, or sub-observed
+  ghost.
+
+**Explicit questions for Phase A:**
+
+1. Are there sub-observed ghosts below the electron (Q = ±1,
+   spin-½, mass < m_e)?  There shouldn't be — the electron is
+   supposed to be the lightest charged mode — but the R33-era
+   selection rules (n_tube = ±1 filter) are worth re-verifying
+   under the current architecture.
+2. Are there `Q = 0` spin-½ modes on the e-sheet with no
+   observed counterpart?  E.g., `(n_et = 0, n_er > 0)` modes
+   — these would have the quantum numbers of sub-proton
+   spin-½ neutrals.  If the architecture doesn't implicitly
+   suppress them, they're a problem the p-sheet audit didn't
+   expose.
+3. Are there `|Q| ≥ 2` modes at low mass with no observed
+   counterpart?  Parallel to the "|Q| = 4" ghosts my broader
+   Track 1 draft found before narrowing scope.
+4. Does tau actually appear as a low-order `(1, n)` mode at
+   the R53 values, or is it high-n (R53 notes n ≈ 3478 is
+   needed)?  If the latter, the tau match is a distant
+   high-winding assignment — worth noting.
+
+### Phase B — (ε_e, s_e) viable-region map
+
+Sweep `(ε_e, s_e)` around R53 Solution D.  Grid design is
+non-trivial because the e-sheet lives in extreme geometry:
+
+- ε_e ≈ 397 is very large; small ε_e changes produce huge
+  μ(1, 2) changes.  Use **log-spaced** ε_e over a ±30% range,
+  maybe ε_e ∈ [250, 600] at log-spaced steps.
+- s_e ≈ 2.004 is near the shear-resonance line `s_e = n_r/n_t`
+  for the electron's (1, 2).  Small s_e changes produce
+  significant detuning changes.  Use fine linear spacing,
+  maybe s_e ∈ [1.98, 2.03] at step 0.001 (50 values).
+
+That's roughly 30 × 50 = 1500 grid points at this resolution.
+Expand if the viable region extends beyond.
+
+Compute continuous width-weighted fitness against electron,
+muon, tau.  Per the p-sheet experience, baseline is likely a
+sharp local maximum (because R53 solved the two mass ratios
+exactly) but the **shape of the peak** and any secondary
+features are what we want to see.
+
+### Phase C — Thresholds and interpretation
+
+If baseline is a sharp peak:  
+→ R53 Solution D validated; confidence for multi-sheet searches.
+
+If baseline is in a ridge with comparable neighbors:  
+→ Multiple viable e-sheet geometries exist; multi-sheet
+searches should pick among them based on additional criteria.
+
+If baseline is NOT the local optimum under width-weighted
+scoring:  
+→ Same finding as Track 3b on the p-sheet: the algebraic
+pinning may be hiding a better fit.  Would require serious
+reconsideration before committing to multi-sheet work.
+
+### Deliverables
+
+- `scripts/track4_e_sheet_audit.py` — Phase A ghost audit
+- `scripts/track4b_e_sheet_sweep.py` — Phase B sweep + heat maps
+- `outputs/track4_*.png` — ghost map, fitness map, difference
+  map (vs baseline scoring)
+- `findings-4.md` — full write-up
+
+### Acceptance
+
+- Phase A either validates the e-sheet is clean or produces a
+  ranked ghost list.
+- Phase B produces a viable-region map of (ε_e, s_e) with
+  baseline marked and peaks identified.
+- Phase C makes a clean recommendation about whether R53
+  Solution D is robust under continuous-fitness scoring.
+
+### What Track 4 does NOT do
+
+- Does not touch cross-sheet σ, ν-sheet, or p-sheet values.
+- Does not re-derive R53's mass-ratio constraint — it treats
+  the lepton masses as targets and sees whether R53's values
+  are optimal under the sweep.
+- Does not re-open the question of whether |n_et| > 1 should
+  be allowed; the sub-observed ghost criterion will flag any
+  problem modes, and suppression is an architecture question
+  for a separate track.
+
+### Time estimate
+
+Phase A: ~30 seconds (enumeration + classification at one point).
+Phase B: ~1–2 minutes (1500-point grid, same inner loop as
+Track 3).  Phase C: analysis only.
+
+Approximate total: a few minutes of compute plus writeup.
+
+---
+
+## Next-track pool (after Track 4)
+
+Tracks after Track 4.  Sequence decided from its findings
 and the user's observable-set decision.  Entries are sketches;
 the chosen one is elaborated to full-track detail when promoted.
 
@@ -401,31 +560,20 @@ specifically: is it observed, split-dominated, or does `ε_ν`
 (or `s_ν`, already pinned) need to move to relocate it?
 Composes with pool item **g**.
 
-**l. e-sheet re-validation.**  R53 already pinned `(ε_e, s_e)`
-so that electron/muon/tau are the three lowest charged modes.
-Re-run the Track 1 methodology on the e-sheet as a sanity
-check that the e-sheet still satisfies the ghost criterion
-after any downstream metric updates.  **Now more urgent after
-Track 1's obstacle finding** — test whether R53's e-sheet
-itself passes the ghost discipline, or whether it only pins
-the |n_et| = 1 sector and leaves |n_et| ≥ 4 as a latent
-issue.
+**l. [Promoted to Track 4.]**  E-sheet parallel audit — see
+Track 4 section above.
 
-**m. E-sheet winding restriction / high-n filter.**  Track 1
-F5 identified this as the natural response to the light-ghost
-obstacle: any mode with effective |Q| > 3 has no matter-decay
-path below ~2 GeV, and the audit finds such modes at
-|n_et| = 4, 5 on the e-sheet.  Need a principled selection
-rule that restricts |n_et| ≤ some cap (probably 3), analogous
-to Z₃ on the p-sheet.  Candidates:
-  (i) derived-from-geometry rule (some waveguide or resonance
-      argument that makes |n_et| ≥ 4 exponentially suppressed);
-  (ii) cross-sheet σ_ep that promotes high-|n_et| + p-sheet
-       combinations to energies above the cap (composes with
+**m. E-sheet winding restriction / high-|n_et| filter.**  If
+Track 4 finds sub-observed ghosts on the e-sheet requiring a
+selection rule beyond the n_tube = ±1 filter (which R33
+suggested but hasn't been re-verified), this pool item
+becomes concrete.  Candidates for a derived rule:
+  (i) geometric waveguide suppression at high |n_et|;
+  (ii) cross-sheet σ_ep that lifts high-|n_et| compound
+       combinations above the energy cap (composes with
        pool **h**);
-  (iii) explicit R56/R57 routing analysis at higher N-body
-        decays that shows the ghosts are actually split-
-        dominated under more sophisticated accounting.
+  (iii) R56/R57 routing analysis at higher N-body decays
+        showing the ghosts are actually split-dominated.
 
 **z. Closeout.**  After chosen pool items execute: if a
 coherent parameter shift emerges that (i) closes the pion gap,
@@ -456,17 +604,16 @@ User-imposed rules R63 should follow throughout execution:
 
 ## Next steps
 
-- **Tracks 1–3 complete.**  Viable region analytically bounded,
-  fitness landscape visualized, two local maxima identified as
-  candidates for an improved proton-sheet baseline.  See
-  [findings-1.md](findings-1.md), [findings-2.md](findings-2.md),
-  [findings-3.md](findings-3.md).  Heat maps in
-  [`outputs/`](outputs/).
-- **Natural next step: pool item e** (multi-sheet inventory
-  consistency) tested at both local maxima:
-  - `(0.89, 0.01)` — solves the pion problem (π⁰ at 1.4%)
-    but loses Ξ⁰ on pure p.  Does multi-sheet Ξ⁰ match
-    survive?
-  - `(0.73, 0.34)` — highest pure-p fitness; loses η′.
-    Does multi-sheet η′ match survive?
-- **Pool items a, b, c, d, f–l remain available.**
+- **Tracks 1–3 complete.**  See [findings-1.md](findings-1.md),
+  [findings-2.md](findings-2.md), [findings-3.md](findings-3.md).
+  Heat maps in [`outputs/`](outputs/).  Track 3b's peak:
+  `(ε_p = 0.80, s_p = 0.05)` with near-exact π⁰ match.
+- **Track 4 is the next step** — e-sheet parallel audit, a
+  prerequisite for trusting multi-sheet searches.  Should
+  confirm (or challenge) R53 Solution D to the same level of
+  precision the p-sheet now has.
+- **Pool item e (multi-sheet inventory at 0.80, 0.05)** comes
+  AFTER Track 4, not before — trusting a multi-sheet inventory
+  requires each sheet's own mode ladder to be validated first.
+- **Other pool items** (a, b, c, d, f–k, m) remain available
+  as needed.

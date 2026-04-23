@@ -194,19 +194,12 @@ MATCH_THRESHOLD_PION = 0.14
 def match_observed(E, Q):
     """Find the best observed particle with compatible Q at matching mass.
 
-    Note: we match on MASS and CHARGE only, not spin.  The pure p-sheet
-    audit tests whether the predicted (mass, Q) points on the p-sheet
-    correspond to any observed particle.  The spin of the realized
-    particle depends on whether the mode manifests as 1-sheet (spin ½)
-    or as a compound 2-/3-sheet with ν/e participation (spin 0, 1,
-    3/2).  R60 T20's SM taxonomy says: a (mass, Q) that the p-sheet
-    rings can be realized at whatever spin the compound architecture
-    gives — so if a matching observed particle exists at any spin,
-    it's not a ghost.
+    Excludes γ and ν (which are decay products, not mass targets).
+    Electron is kept as a valid match target (needed for e-sheet work).
     """
     best = None
     for p in OBSERVED:
-        if p.mass_MeV < 1.0:
+        if p.name in ("γ", "ν"):
             continue
         if abs(p.charge) != abs(Q):
             continue
@@ -221,7 +214,7 @@ def match_observed(E, Q):
 def closest_observed(E, Q):
     best = None
     for p in OBSERVED:
-        if p.mass_MeV < 1.0:
+        if p.name in ("γ", "ν"):
             continue
         if abs(p.charge) != abs(Q):
             continue

@@ -26,7 +26,16 @@ character. **Under width-weighted scoring the peak is `(ε_p = 0.80, s_p =
 pion desert closes completely at this geometry.** Baseline scores 4.04/7,
 well below the peak. The point is inside the ghost-free region
 (μ(3,6) = 6.95); L_ring_p ≈ 39 fm (modest shift from baseline's 47 fm).
-Next: pool item **e** (multi-sheet inventory consistency) at (0.80, 0.05).
+**Track 4 complete** — e-sheet parallel audit exposes an architectural
+gap. R53 Solution D matches all three leptons (electron exact, muon
+0.83%, tau 0.14% at (−1,+15)) but is a **local minimum of ghost count,
+not zero**: 4 sub-observed ghosts appear at baseline (|Q|=2,3,4 modes at
+multiples of m_e from the (n,2n) shear-resonance family, plus a (0,−1)
+Q=0 mode below π⁰). The 2296-point grid sweep finds **zero ghost-free
+geometries** — the problem is structural. **R33's historical n_tube=±1
+selection rule has been implicitly relied on but not formally encoded**
+in model-F. Pool item **m** (e-sheet winding restriction) must resolve
+before multi-sheet searches (pool item e) can proceed.
 
 ### R62. Derivations — analytical proofs  **Active**
 [`R62-derivations/`](R62-derivations/) · theoretical · depends on KK primer, R59, model-E
