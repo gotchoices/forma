@@ -1,10 +1,13 @@
 # R63: Proton-sheet tuning — disciplined audit and sweep
 
-**Status:** Track 1 complete — two points tested (baseline
-passes, Track 21's extreme fails); structural bound
-`μ(3, 6) ≤ 8.09` identified but the viable region is not yet
-mapped.  Track 2 framed to characterize the full range of
-viable `(ε_p, s_p)` values.
+**Status:** Tracks 1 and 2 complete.  Viable-region map produced;
+the analytical bound `μ(3, 6) ≤ 8.09` (≈ 62% of the tested grid)
+is confirmed.  Baseline `(0.55, 0.162)` sits comfortably inside
+with slack.  One strict-improvement candidate identified:
+**`(0.55, 0.180)` preserves all 7 baseline matches and adds a Λ
+match** (8 total).  Next: pool item **c** (neutron-anchored
+sweep) or **e** (multi-sheet inventory consistency check) to
+validate the improvement candidate before any model-F update.
 **Type:** theoretical + compute
 **Depends on:** R60 (especially Tracks 7, 12, 21), R59, R53, R49, R61, model-F
 
@@ -442,13 +445,13 @@ User-imposed rules R63 should follow throughout execution:
 
 ## Next steps
 
-- **Track 1 is complete.**  Two points tested; baseline
-  (0.55, 0.162) passes, Track 21's (0.15, 0.05) fails; the
-  structural bound μ(3, 6) ≤ 8.09 is identified.  See
-  [findings-1.md](findings-1.md).
-- **Track 2 is the next step.**  Map the viable region in
-  `(ε_p, s_p)` space; produce a shortlist of candidate points
-  for downstream work.  Ready to execute.
-- **Pool items a–l await Track 2's outcome** and the user's
-  decision on which observables anchor the observable-driven
-  sweeps.
+- **Tracks 1 and 2 complete.**  Viable region characterized;
+  `(0.55, 0.180)` identified as a strict improvement over
+  baseline.  See [findings-1.md](findings-1.md),
+  [findings-2.md](findings-2.md).
+- **Natural next step: pool item c or e** to validate
+  `(0.55, 0.180)` against additional constraints (neutron
+  physics or multi-sheet inventory).  If both pass, it
+  becomes the recommended new baseline for model-F.
+- **Pool items a, b, d, f–l remain available** — sequence
+  depends on user preference and observable-set decisions.
