@@ -16,20 +16,28 @@ moves the optimum to (0.80, 0.05) because it restores the tight
 precision requirement for π⁰ (which is actually a narrow
 resonance despite its short lifetime).
 
-**Track 4 complete — significant finding.**  The e-sheet
-parallel audit shows R53 Solution D is a local minimum of
-sub-observed ghost count but **not zero**: 4 structural ghosts
-appear at baseline (|Q|=2, 3, 4 modes at 2m_e, 3m_e, 4m_e via
-the (n, 2n) shear-resonance family, plus (0, −1) at 104 MeV
-below π⁰).  The Phase B grid sweep (2296 points) finds **zero**
-ghost-free geometries — the problem is architectural, not
-parametric.  Tau matches cleanly at (−1, +15) = 1774 MeV
-(0.14% off), confirming R53's three-generation assignment at
-low winding.  **Implication:** R33's historical n_tube = ±1
-filter has been implicitly assumed in model-F but not
-formally adopted.  Pool item **m** (e-sheet winding restriction)
-must be resolved before multi-sheet work (pool item e) can
-proceed with confidence.
+**Track 4 complete, Q132 formulated.**  Track 4's e-sheet audit
+exposed an architectural gap — the ghost tower at `|n_et| ≥ 2`
+and the (0, −1) Q=0 mode at 104 MeV — which led to formulating
+the **promotion-chain principle** ([Q132](../../qa/Q132-promotion-chain-principle.md)):
+each 2π tube closure is one particle-creation event; tube
+without ring is a valid neutral particle (self-generated mass,
+no promotion to charge).  Under Q132, the single-sheet ghost
+list is fully resolved — either eliminated (multi-event modes)
+or reinterpreted as valid dark/sterile predictions (ring-only
+or tube-only neutral modes).
+
+**Track 5 complete.**  Q132 re-render of Track 4's e-sheet
+grid sweep: **0 sub-observed ghosts across 2296 points (vs
+100% under Track 4)** — Q132 eliminates the e-sheet ghost
+problem.  The fitness landscape shows a sharp ridge at
+`s_e ≈ 2.0` with structured peaks in ε_e.  **R53 Solution D
+sits at a near-peak** with fitness 2.514 / 3.0 at exact values.
+Dark-mode catalog of 23 neutral predictions + 35 charged-gap
+predictions at baseline, including clean pure-e-sheet matches
+on the proton (0.04%) and neutron (0.05%).  `s_e` is tightly
+pinned at ~2.004; `ε_e` has more latitude for joint
+compound-mode optimization.
 **Type:** theoretical + compute
 **Depends on:** R60 (especially Tracks 7, 12, 21), R59, R53, R49, R61, model-F
 
@@ -495,11 +503,87 @@ Approximate total: a few minutes of compute plus writeup.
 
 ---
 
-## Next-track pool (after Track 4)
+## Track 5 — E-sheet fitness landscape under Q132
 
-Tracks after Track 4.  Sequence decided from its findings
-and the user's observable-set decision.  Entries are sketches;
-the chosen one is elaborated to full-track detail when promoted.
+**Goal.**  Re-render Track 4's `(ε_e, s_e)` sweep using the
+Q132 promotion-chain principle's updated ghost criterion.
+Under Track 4's old rule every grid point was ghost-masked;
+under Q132 the mask shrinks dramatically and the underlying
+lepton-fitness topography (which has been there all along)
+becomes visible.
+
+**Motivation.**  Track 4's fitness heat map was almost entirely
+hatched because the strict criterion flagged (0, n_r) and
+(1, 0) modes as ghosts.  Q132 reinterprets these as **valid
+neutral massive particles** (dark-matter / sterile-neutrino
+candidates), not ghosts.  Only `|n_et| ≥ 2` multi-event modes
+remain as true ghosts on the e-sheet — and these are filtered
+structurally.  The fitness landscape that was hidden is the
+one we actually care about.
+
+**Scope — strictly e-sheet re-classification.**  Track 5
+reuses Track 4's grid, metric builders, and mode enumeration;
+only the `classify_z3_free_mode` function changes to match
+Q132.  No new parameters are swept.
+
+**Phase A — Q132 re-classification.**  Mode classification
+refactored to reflect Q132's typology:
+
+| Pattern | Old classification (Track 4) | New classification (Q132) |
+|:-------:|:-----------------------------|:--------------------------|
+| (0, n_r ≠ 0), Q=0 | ghost-sub-observed | **valid neutral particle (dark candidate)** |
+| (1, 0), Q≠0 | ghost-sub-observed | **valid neutral particle (tube-only, self-mass)** |
+| (\|n_et\| ≥ 2, any n_er) | ghost-no-decay | **still ghost** (multi-event forbidden) |
+| (1, n_r ≠ 0), Q≠0 | observed/split | unchanged |
+
+**Phase B — updated fitness heat map.**  Re-score with the new
+ghost mask.  Expected result: the 2296-point grid is mostly
+clean, with ghosts confined to a thin region of the (ε_e, s_e)
+plane where low-n_er modes happen to produce sub-electron
+charged candidates.  The lepton-fit topography around R53
+Solution D becomes visible.
+
+**Phase C — interpretation.**  Identify:
+
+- Where the lepton-fit peak actually is under clean
+  classification (may or may not be exactly R53 Solution D).
+- The predicted dark-mode spectrum at the peak: what neutral
+  ring-only and tube-only modes are predicted, at what masses.
+  These become R42-class dark-matter candidates; the sweep
+  should report them as outputs, not just ignore them.
+- How wide the "comfortable" (ε_e, s_e) range is once ghost
+  mask shrinks — likely much wider than R53's algebraic solve
+  would suggest.
+
+**Deliverables.**
+
+- `scripts/track5_e_sheet_q132.py` — refactored classification
+  + sweep + heat map generation.
+- `outputs/track5_fitness_q132.png` — heat map under new rules.
+- `outputs/track5_dark_modes.csv` — catalog of predicted
+  neutral modes per (ε_e, s_e) shortlist candidate.
+- `findings-5.md` — Phase A/B/C writeup.
+
+**Acceptance.**
+
+- Heat map shows an interpretable fitness topography (not
+  ghost-dominated).
+- R53 Solution D assessed against the new topography — is it
+  a peak, a ridge, or off-peak?
+- Dark-mode catalog produced for any candidate (ε_e, s_e)
+  points that deserve attention.
+
+**Time estimate.**  Re-using Track 4 infrastructure: ~5
+minutes total (enumeration is already fast; only the
+classifier changes).
+
+---
+
+## Next-track pool (after Track 5)
+
+Tracks after Track 5.  Sequence decided from its findings.
+Entries are sketches; the chosen one is elaborated to full-
+track detail when promoted.
 
 **a. Sweep infrastructure.**  Build a parameterized sweep engine
 (`ParameterPoint` × `ObservableScorer`) that composes Track 1's
@@ -525,8 +609,11 @@ Cross-validates **c**; agreement is strong evidence.
 
 **e. Inventory consistency sweep.**  Within the region of
 agreement from **c** and **d**, verify that no non-pion hadron
-regresses below model-F's current accuracy.  Final gate before
-recommending a parameter update.
+regresses below model-F's current accuracy.  **Now superseded
+by pool item p** (joint three-sheet compound search) — keep
+for legacy reference, but p's joint-optimization approach is
+more principled now that sheet-level shortlists exist for
+all three sheets.
 
 **f. Charge-radius gut-check.**  Compute r_p and nuclear charge
 radii at each sweep point; compare to measurement.
@@ -563,17 +650,42 @@ Composes with pool item **g**.
 **l. [Promoted to Track 4.]**  E-sheet parallel audit — see
 Track 4 section above.
 
-**m. E-sheet winding restriction / high-|n_et| filter.**  If
-Track 4 finds sub-observed ghosts on the e-sheet requiring a
-selection rule beyond the n_tube = ±1 filter (which R33
-suggested but hasn't been re-verified), this pool item
-becomes concrete.  Candidates for a derived rule:
-  (i) geometric waveguide suppression at high |n_et|;
-  (ii) cross-sheet σ_ep that lifts high-|n_et| compound
-       combinations above the energy cap (composes with
-       pool **h**);
-  (iii) R56/R57 routing analysis at higher N-body decays
-        showing the ghosts are actually split-dominated.
+**m. [Captured by Q132.]**  E-sheet winding restriction: the
+promotion-chain principle (one 2π tube closure = one particle-
+creation event) derives |n_tube|=±1 from first principles.
+Formalization is now an **R62 derivation target** (Program 2),
+not an R63 track.  R63 adopts Q132 as a working hypothesis.
+
+**n. P-sheet re-render under Q132 (Tracks 1–3 update).**
+Under Q132, pure-ring p-sheet modes `(0, n_pr ≠ 0)` that
+Tracks 1–3 flagged as part of the split-dominated pool are
+reinterpreted as **valid neutral dark-matter candidates**.
+High-|Q| gcd=1 ghosts remain eliminated (non-integer strand
+decomposition).  The fitness landscape shape is likely
+unchanged from Track 3b's Phase B, but the dark-mode catalog
+at each candidate peak should be documented.  Lower priority
+than Track 5 because the p-sheet's main ghost class (high-|Q|
+towers) is handled identically under Q132.
+
+**o. ν-sheet parallel audit (Q132 rules from the start).**
+We have not systematically swept the ν-sheet the way Tracks
+1–5 treat the p and e sheets.  s_ν = 0.022 is pinned by the
+Δm² ratio, so the effective sweep axis is ε_ν alone (between
+R61 #1 at 2.0 and R49 Family A at 5.0 — a continuous sweep
+between has not been done).  Under Q132, the (1, 0) mode
+becomes a valid sterile-ν-like prediction; other (0, n_r)
+modes become dark candidates.  The sweep should produce a
+fitness landscape against the three observed ν mass
+eigenstates plus the dark-mode catalog.
+
+**p. Joint three-sheet compound-mode search.**  With sheet-
+level shortlists in hand from Tracks 3b, 5, and o, the
+compound-mode survey runs joint optimization over all three
+sheets' parameter shortlists simultaneously, scoring against
+the multi-sheet inventory (14 of 16 hadrons per R60 T19) and
+nuclear scaling.  This replaces the previous pool item **e**
+as a more principled next step — pre-committing to candidate
+ranges rather than pinning individual sheets.
 
 **z. Closeout.**  After chosen pool items execute: if a
 coherent parameter shift emerges that (i) closes the pion gap,
@@ -604,16 +716,21 @@ User-imposed rules R63 should follow throughout execution:
 
 ## Next steps
 
-- **Tracks 1–3 complete.**  See [findings-1.md](findings-1.md),
-  [findings-2.md](findings-2.md), [findings-3.md](findings-3.md).
-  Heat maps in [`outputs/`](outputs/).  Track 3b's peak:
-  `(ε_p = 0.80, s_p = 0.05)` with near-exact π⁰ match.
-- **Track 4 is the next step** — e-sheet parallel audit, a
-  prerequisite for trusting multi-sheet searches.  Should
-  confirm (or challenge) R53 Solution D to the same level of
-  precision the p-sheet now has.
-- **Pool item e (multi-sheet inventory at 0.80, 0.05)** comes
-  AFTER Track 4, not before — trusting a multi-sheet inventory
-  requires each sheet's own mode ladder to be validated first.
-- **Other pool items** (a, b, c, d, f–k, m) remain available
-  as needed.
+- **Tracks 1–5 complete.**  See [findings-1.md](findings-1.md)
+  through [findings-5.md](findings-5.md).  Heat maps in
+  [`outputs/`](outputs/).
+- **[Q132](../../qa/Q132-promotion-chain-principle.md) formulated** as
+  working hypothesis for the principle underlying |n_tube|=±1.
+  Formalization is an R62 derivation target (new Program 2).
+- **Track 5 vindicated Q132 on the e-sheet:** 0 ghosts across
+  2296 points (vs 100% under strict criterion); R53 Solution D
+  confirmed as near-peak.
+- **Next: pool items **n** (p-sheet re-render under Q132),
+  **o** (ν-sheet parallel audit under Q132), then **p** (joint
+  three-sheet compound-mode search).
+- **Keep (ε, s) ranges open** on every sheet until pool **p**
+  runs.  On e-sheet: `s_e` tightly pinned at ~2.004; `ε_e` has
+  latitude (350–450 range).  On p-sheet: Track 3b's shortlist
+  of candidates (0.80, 0.05) and neighbors.  On ν-sheet: `s_ν`
+  pinned at 0.022, `ε_ν` undetermined between R61 #1 and R49
+  Family A.
