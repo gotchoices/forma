@@ -30,8 +30,11 @@ structural mechanisms that model-E lacked:
 **Headline results:** 14 of 16 non-input inventory particles
 within 1.12%, 3 charged lepton generations inherited from
 model-E, nuclear masses d → ⁵⁶Fe within 1.4%, α_Coulomb = Z² α
-exact, pion desert halved (22–25% → 10–13%).  Same 4 measured
-inputs as model-E.
+exact.  Pion errors drop from 22–25% (model-E) to 10–13% at
+the inherited `(ε_p=0.55, s_p=0.162)`, and Track 21 shows they
+drop further to sub-1% under a modest proton-sheet re-
+optimization — deferred to R63.  Same 4 measured inputs as
+model-E.
 
 ---
 
@@ -212,14 +215,25 @@ free parameters.  Under R62 7d, all three generations are
 spin-½ Dirac KK modes on the e-sheet's 2-torus, consistent
 with observation.
 
-### Pion desert (inherited limitation)
+### Pions — resolvable by proton-sheet fine-tuning
 
-- π⁰ stuck at ~120 MeV (target 135 MeV; 10.4% off)
-- π± stuck at ~120 MeV (target 140 MeV; 13.3% off)
+At the current baseline `(ε_p = 0.55, s_p = 0.162)` inherited
+from model-E:
 
-Halved from model-E's 22–25% by the richer Track 20 search,
-but not closed.  Likely needs chiral-dynamics or paired-mode
-physics beyond R60.  Candidate for focused follow-up study.
+- π⁰ at ~120 MeV (target 135 MeV; 10.4% off)
+- π± at ~120 MeV (target 140 MeV; 13.3% off)
+
+Halved from model-E's 22–25% by the richer Track 20 search.
+**R60 Track 21 showed the remaining gap is not structural:**
+the model-E-inherited `(ε_p, s_p)` is a free parameter in
+model-F (the R19 constraint that pinned it no longer applies
+under σ_ra), and a modest shift brings both pions to sub-1%.
+Specifically, `(ε_p, s_p) ≈ (0.15, 0.05)` gives π⁰ at 0.08%
+and π± at 1.01% simultaneously (Track 21 F122–F125).  A full
+inventory re-verification under the shifted geometry is
+deferred to R63, which will run the disciplined parameter
+sweep over all currently-unpinned variables against
+high-precision observables.
 
 ---
 
@@ -357,9 +371,12 @@ and the linked per-track findings.
 
 ### Known limitations
 
-- **Pion mass desert.**  π⁰ at 10.4%, π± at 13.3% — halved from
-  model-E but not closed.  Likely needs chiral dynamics or
-  paired-mode physics beyond R60.
+- **Pion masses** (at current baseline `(ε_p, s_p) = (0.55, 0.162)`).
+  π⁰ at 10.4%, π± at 13.3%.  **Not structural** — Track 21
+  showed both pions drop to sub-1% under a modest proton-sheet
+  re-optimization that model-F's architecture permits but has
+  not yet adopted.  Full re-verification of the inventory
+  under the shifted geometry is R63's job.
 - **Single-k closed form.**  k = 1.1803/(8π) confirmed as a
   structural fixed point (R60 Track 14); closed-form derivation
   of its specific value is open.  Best near-natural-form

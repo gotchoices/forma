@@ -180,8 +180,9 @@ into an observable total.  Rules tested included:
 - 14 of 16 non-input particles matched within 2%
 - No pathological misses (unlike the parity rule, which
   admitted a π± tuple at 896% off)
-- Only the persistent pion desert (10–13%) exceeded 2%, and
-  that's a known model-wide issue independent of spin
+- Only the pions (10–13%) exceeded 2%, and that's now known
+  to be a proton-sheet parameterization artifact (R60 T21),
+  independent of the spin rule
 
 But the striking finding was the **taxonomic structure** that
 fell out:

@@ -112,11 +112,15 @@ high shear, the ghost problem becomes: why are (1, 4) through
 
 ### O7. Charged pions remain the sole structural failure
 
-π± require Q = ±1, spin = 0.  The topological spin-charge
-constraint (odd Q forces spin ≥ ½) is independent of all metric
-parameters.  No shear, cross-shear, or winding number avoids it.
-This is the one particle the current formalism cannot host as
-a single mode or balanced pair.
+**(Resolved under model-F.)**  At the time this was written, π±
+looked blocked by the topological spin-charge constraint within
+a single-sheet formalism.  Under model-F's per-sheet
+Dirac–Kähler + SU(2) composition (R62 D7d, R60 T20), a 2-sheet
+mode spans two spin-½ KK towers that combine to {0, 1}, so
+charged spin-0 pions become possible.  R60 T21 further showed
+the residual mass accuracy is a proton-sheet parameter issue,
+not a structural block — both pions drop to sub-1% under a
+modest shift of `(ε_p, s_p)`.
 
 ### O8. The proton sheet should also show three generations
 

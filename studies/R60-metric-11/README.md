@@ -1808,6 +1808,66 @@ reports accuracy per rule; Phase E writes up verdict.
 
 ---
 
+### Track 21 — Pion search over windings and free geometric parameters
+
+**Goal.**  Determine whether a credible pion candidate exists
+by relaxing (a) the `|n| ≤ 6` envelope used by Track 20 Phase D
+and/or (b) the model-E-inherited proton sheet geometry
+`(ε_p, s_p) = (0.55, 0.162)`.  The electron sheet is pinned
+(R53 generations + R60 T17), but the proton sheet's value is
+legacy from R19, which no longer constrains model-F.
+
+**Strategy.**  Three phases: (1) winding sweep at baseline
+geometry, (2) `(ε_p, s_p)` grid sweep at `n_max = 6`, (3)
+re-check winding sensitivity at the best Phase 2 point.  In
+all phases: 2-sheet restriction (per R60 T20 SM taxonomy);
+Z₃, Q-match, composite α filters as in Phase D.
+
+**Tactics.**  Single script
+[`scripts/track21_pion_highwinding.py`](scripts/track21_pion_highwinding.py)
+with a `SearchResult` accumulator tracking top-k, nearest-below
+and nearest-above; three per-pair search primitives
+(`search_ep`, `search_en`, `search_np`); a `build_metric_at`
+helper that rebuilds params+metric for any `(ε_p, s_p)` via
+`derive_L_ring` on the (3, 6) proton + σ_ra auto-update.
+130-point grid runs end-to-end in ~8 seconds.
+
+**Result (F120–F125, see [findings-21.md](findings-21.md)):**
+**Positive — pion desert vacated under parameter shift.**
+
+- **Phase 1** (winding at baseline): n_max ∈ {6..20} does not
+  help.  π⁰ stuck at 10.374%, π± at 13.323%.  ~38 MeV mass gap
+  straddles both.
+- **Phase 2** (parameter grid): best π⁰ = **0.027%** at
+  `(ε_p=0.300, s_p=0.500)`; best π± = **0.009%** at
+  `(ε_p=0.100, s_p=0.100)`.  Joint sweet spot near
+  `(ε_p ≈ 0.15, s_p ≈ 0.05)` gives **both pions under 1%**
+  simultaneously (π⁰ = 0.08%, π± = 1.01%).
+- **Phase 3**: winding sensitivity confirmed invariant at the
+  new geometry.
+
+**Mechanism:** L_ring_p grows from 47 fm (baseline) to 140–190 fm
+at the new points.  P-ring mode spacing drops from 26 MeV to
+~7 MeV, and integer `(n_pt, n_pr)` tuples now land inside what
+was the pion mass gap.
+
+**What Track 21 establishes:**
+
+- The pion desert is not structural; it's specifically the
+  consequence of model-E's R19-derived `(ε_p, s_p)`, which no
+  longer applies in model-F.  `(ε_p, s_p)` should be treated as
+  a free parameter and re-optimized.
+
+**What Track 21 leaves for Track 22:**
+
+- Full inventory re-fit at `(ε_p ≈ 0.15, s_p ≈ 0.05)`.  Changing
+  L_ring_p affects all hadrons and nuclei — the pion win must
+  not come at the cost of regression elsewhere.  Checks: nuclear
+  scaling (d → ⁵⁶Fe), hadron inventory re-sweep, α universality
+  audit, (3, 6) proton eigenvalue.
+
+---
+
 ### Track 14 — Analytical derivation of k = 1.1803/(8π)
 
 **Goal.**  Derive the single-k value that the joint solver

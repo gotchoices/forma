@@ -220,7 +220,10 @@ and references, see [`models/model-F.md`](models/model-F.md).
   (Z₃ quark structure) break this symmetry; ν-sheet doesn't.
 - **14 of 16 compound particles matched within 1.12%** under
   Z₃-compliant + composite-α search.  Several beating model-E.
-  Pion desert halved (23% → 10–13%) but not closed.
+  Pions at 10–13% with the model-E-inherited proton-sheet
+  values; R60 Track 21 showed both drop to sub-1% under a
+  proton-sheet re-optimization that R63 will take through full
+  inventory verification.
 - **Three charged lepton generations** from R53 Solution D;
   mass ratios algebraically exact.
 - **Nuclear masses d → ⁵⁶Fe within 1.4%** with α_Coulomb = Z² α

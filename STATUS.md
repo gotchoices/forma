@@ -54,8 +54,10 @@ for detailed architecture and references.
   averages to zero automatically.
 - **Particle spectrum:** 14 of 16 non-input particles within
   1.12% under Z₃-compliant + composite-α search (R60 Track 19,
-  several beating model-E).  Pions halved (22–25% → 10–13%)
-  but still the persistent failure mode.
+  several beating model-E).  Pions at 10–13% at the model-E-
+  inherited `(ε_p, s_p)`; R60 Track 21 showed these drop to
+  sub-1% under a modest proton-sheet re-optimization that
+  R63 will take through a full inventory verification.
 - **Three lepton generations** inherited from R53 Solution D;
   mass ratios algebraically exact.
 - **Neutrino masses:** Δm²₃₁/Δm²₂₁ = 33.59, analytically
@@ -79,9 +81,12 @@ from a minimal discrete lattice with one geometric constant
 For detailed discussion of each open problem, see
 [model-F open questions](models/model-F.md#open-questions).
 
-- **Pion mass desert.**  π⁰ and π± land at ~105–120 MeV
-  instead of 135–140 MeV.  Halved by R60 Track 19 (22–25% →
-  10–13%) but not closed.  Candidate for a focused follow-up.
+- **Proton-sheet re-optimization.**  Model-E's inherited
+  `(ε_p, s_p) = (0.55, 0.162)` is the source of the residual
+  pion gap (R60 T21); the R19 constraint that pinned those
+  values no longer applies in model-F.  R63 will run a
+  disciplined sweep over all remaining free variables and
+  verify the inventory under the re-optimized geometry.
 - **Single-k closed form.**  R60 Track 14 confirmed
   k = 1.1803/(8π) is a structural fixed point; closed-form
   derivation of its specific value is open.

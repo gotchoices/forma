@@ -13,6 +13,21 @@ Active entry is a 3–5-line pointer; full narrative lives in the study's own
 
 ## Active
 
+### R63. Proton-sheet tuning — disciplined audit and sweep  **Framed — Track 1 ready**
+[`R63-proton-tuning/`](R63-proton-tuning/) · theoretical + compute · depends on R60, R59, R53, R49, R61, model-F
+Apply the e-sheet tuning discipline to the p-sheet. R60 T21 exposed that
+`(ε_p, s_p)` was never re-swept after σ_ra lifted the R19 constraint; the
+e-sheet has been audited such that every charged mode is observed or
+split-dominated, while the p-sheet has only been inventory-matched
+(observed → mode) without the reverse audit (mode → observed/suppressed).
+**Track 1:** mode-by-mode ghost audit at baseline — self-contained,
+intrinsic to model-F, no external observables required. Subsequent tracks
+(lettered pool a–z) chosen based on Track 1's findings: targeted parameter
+adjustment, sweep infrastructure, observable correlation, neutron/nuclear-
+anchored sweeps, inventory consistency, radius gut-check, cross-sheet σ,
+anchoring-mode audit, ε_ν sweep. Discipline constraints: neutron preferred
+over ephemeral particles; radii gut-check only; anomalous moments deferred.
+
 ### R62. Derivations — analytical proofs  **Active**
 [`R62-derivations/`](R62-derivations/) · theoretical · depends on KK primer, R59, model-E
 Home for first-principles derivations, organized as programs. Program 1
@@ -33,7 +48,9 @@ Can a single metric implement R59's α architecture and reproduce the model-E
 spectrum? Yes — joint e+p+ν solver converges at g_aa = 1 with α universality.
 Single-k symmetry k = 1.1803/(8π) holds across sheets. Z₃ confinement and
 (3,6) proton drop out; 14 of 16 compound particles within 1.12% (Tracks 15–20).
-Pion desert halved but not closed. **Promoted to model-F** as active model.
+Track 21 showed the residual pion gap is resolvable by proton-sheet
+re-optimization (R19 legacy vacated under σ_ra). **Promoted to model-F** as
+active model.
 
 ### R58. Phonon material search for neutrino frequency matching  **Active — Track 1 complete**
 [`R58-phonon-material-search/`](R58-phonon-material-search/) · compute · depends on R49, L05, Q119
@@ -137,37 +154,33 @@ Residual (1,1) boson at ½ m_e remains the critical tension — wave-optics
 
 Candidate studies, roughly in priority order. Assign R-numbers when promoted.
 
-### B1. Pion mass desert  *(model-F open question, follow-up to R60 T19)*
-π⁰ and π± land at 105–120 MeV vs target 135–140. Halved by R60 T19 but not
-closed. Candidate for focused study targeting the structural source.
-
-### B2. KK gauge coupling on the sheared torus — resolve Yukawa tension  *(R29 F11–F13)*
+### B1. KK gauge coupling on the sheared torus — resolve Yukawa tension  *(R29 F11–F13)*
 Compute overlap integral of electron mode profile with each KK gauge mode on
 the sheared Ma_e metric, sum the series, compare to hydrogen spectroscopy.
 r_e that matches spectroscopy pins it independent of g − 2.
 
-### B3. W-barrier height from mode reconfiguration dynamics  *(R43 F7, Q96)*
+### B2. W-barrier height from mode reconfiguration dynamics  *(R43 F7, Q96)*
 Variational path from neutron (1,2,0,0,1,2) to proton + electron + neutrino;
 saddle energy should equal M_W = 80.4 GeV.
 
-### B4. Flat-space → curved appearance  *(Q2)*
+### B3. Flat-space → curved appearance  *(Q2)*
 Explicit field projection from flat Ma into 3+1D. R12 F14 revised picture;
 computation is R13 Track 3.
 
-### B5. Quadrupole correction  *(Q10, after R6)*
+### B4. Quadrupole correction  *(Q10, after R6)*
 ~2.5% (1,2) field anisotropy at the rotation horizon; shifts q/e by ~few %.
 
-### B6. Precession of torus axis  *(Q19)*
+### B5. Precession of torus axis  *(Q19)*
 What drives axis precession, does it restore approximate spherical symmetry?
 
-### B7. Orbit precession and volume-filling  *(Q23)*
+### B6. Orbit precession and volume-filling  *(Q23)*
 Does a precessing (1,2) orbit reproduce WvM's Fig. 2 volume-filling pattern?
 
-### B8. Photon absorption and excited electrons  *(Q28)*
+### B7. Photon absorption and excited electrons  *(Q28)*
 Material-dimension picture of absorption: higher harmonic, reshaped geometry,
 or discrete allowed increments reproducing atomic spectra.
 
-### B9. String-theory parallels  *(Q24, Q25)*
+### B8. String-theory parallels  *(Q24, Q25)*
 MaSt vs torus-compactified string theory: modular invariance, T-duality.
 
 ---

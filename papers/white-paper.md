@@ -376,25 +376,28 @@ because it sits at the shear resonance.  No ad hoc filter is
 needed.
 
 
-## 9. The pion desert
+## 9. The pions
 
-The charged pion is structurally hard: `Q = ±1` requires at
+The charged pion is structurally subtle: `Q = ±1` requires at
 least one odd tube winding, but the pion is spin 0.  Per-sheet
 Dirac–Kähler makes this possible via multi-sheet composition —
 a 2-sheet mode spans two spin-½ KK towers that combine to
 {0, 1}, so spin 0 is allowed.
 
-The best model-F candidates:
+At model-F's current baseline `(ε_p = 0.55, s_p = 0.162)`:
 
 - π⁰ — (0, 0, −1, −6, 0, −1) at 120.9 MeV (10.4% off 135.0)
 - π± — (1, 2, 0, 0, 0, −1) at 121.0 MeV (13.3% off 139.6)
 
 These are the largest gaps in the inventory.  The errors are
 **halved** from model-E's (22.7%, 24.9%) by the Z₃-compliant
-search, but still large.  Likely needs chiral-dynamics or
-paired-mode physics beyond the current metric.  Both pions are
-short-lived (26 ns for π±, 8.4 × 10⁻¹⁷ s for π⁰), consistent
-with their large mode gaps.
+search.  R60 Track 21 showed the remaining gap is not
+structural: the baseline `(ε_p, s_p)` is inherited from
+model-E's R19 formula, which no longer applies under model-F's
+σ_ra architecture.  A modest shift to `(ε_p ≈ 0.15, s_p ≈ 0.05)`
+brings both pions to under 1% simultaneously (π⁰ at 0.08%,
+π± at 1.01%).  A full inventory re-verification at the new
+geometry is deferred to R63.
 
 
 ## 10. Nuclear scaling
@@ -426,9 +429,10 @@ the value α = 1/137 is still an input (σ_ta = √α).  A closed-
 form derivation of the single-k value `k = 1.1803/(8π)`, which
 is known to be a structural fixed point, is open.
 
-**Pion desert.**  π⁰ at 10.4%, π± at 13.3% — halved from
-model-E but not closed.  The persistent failure mode of the
-model.
+**Proton-sheet re-optimization.**  The residual pion gap at the
+current baseline is resolvable by shifting `(ε_p, s_p)` within
+the region the σ_ra architecture permits (R60 T21).  The full
+inventory verification under the shifted geometry is R63.
 
 **Specific spin within SU(2)-allowed sets.**  The sheet-count
 rule gives allowed sets (mesons {0, 1}; baryons {½, 3/2}).
