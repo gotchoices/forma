@@ -1,7 +1,12 @@
 # R63: Proton-sheet tuning — disciplined audit and sweep
 
-**Status:** Framed — Track 1 ready; subsequent tracks chosen from
-the pool based on Track 1's outcome.
+**Status:** Track 1 complete (positive — R60 T16 validated).
+Pure p-sheet at model-F baseline has ZERO sub-observed ghosts
+and 7 observed-particle matches (proton, π⁰, η′, Δ⁺, Ξ⁻, Ξ⁰, Ω⁻).
+Track 21's naive `(ε_p, s_p) = (0.15, 0.05)` shift rejected: it
+introduces sub-pion neutral ghosts at 45 and 90 MeV.  Any pion
+fix must preserve baseline sub-proton cleanness.  Subsequent
+tracks chosen from the pool under this constraint.
 **Type:** theoretical + compute
 **Depends on:** R60 (especially Tracks 7, 12, 21), R59, R53, R49, R61, model-F
 
@@ -314,7 +319,27 @@ Composes with pool item **g**.
 so that electron/muon/tau are the three lowest charged modes.
 Re-run the Track 1 methodology on the e-sheet as a sanity
 check that the e-sheet still satisfies the ghost criterion
-after any downstream metric updates.
+after any downstream metric updates.  **Now more urgent after
+Track 1's obstacle finding** — test whether R53's e-sheet
+itself passes the ghost discipline, or whether it only pins
+the |n_et| = 1 sector and leaves |n_et| ≥ 4 as a latent
+issue.
+
+**m. E-sheet winding restriction / high-n filter.**  Track 1
+F5 identified this as the natural response to the light-ghost
+obstacle: any mode with effective |Q| > 3 has no matter-decay
+path below ~2 GeV, and the audit finds such modes at
+|n_et| = 4, 5 on the e-sheet.  Need a principled selection
+rule that restricts |n_et| ≤ some cap (probably 3), analogous
+to Z₃ on the p-sheet.  Candidates:
+  (i) derived-from-geometry rule (some waveguide or resonance
+      argument that makes |n_et| ≥ 4 exponentially suppressed);
+  (ii) cross-sheet σ_ep that promotes high-|n_et| + p-sheet
+       combinations to energies above the cap (composes with
+       pool **h**);
+  (iii) explicit R56/R57 routing analysis at higher N-body
+        decays that shows the ghosts are actually split-
+        dominated under more sophisticated accounting.
 
 **z. Closeout.**  After chosen pool items execute: if a
 coherent parameter shift emerges that (i) closes the pion gap,
