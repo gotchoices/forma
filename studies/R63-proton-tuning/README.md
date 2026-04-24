@@ -1,10 +1,12 @@
 # R63: Proton-sheet tuning — disciplined audit and sweep
 
-**Status:** Tracks 1–6 complete.  Q132 v2 adopted as the working
-rule set (see [Q132](../../qa/Q132-promotion-chain-principle.md)).
-R63 delivers a coherent refinement of model-F: tighter discipline,
-preserved inventory accuracy, and the same pion position.  Details
-by track in [findings-1.md](findings-1.md) through
+**Status:** Tracks 1–6 complete; Track 7 (compound-mode vs.
+spatial-separation audit) framed and pending execution.
+Q132 v2 adopted as the working rule set (see
+[Q132](../../qa/Q132-promotion-chain-principle.md)).  R63 so far
+delivers a coherent refinement of model-F: tighter discipline,
+preserved inventory accuracy, and the same pion position.
+Details by track in [findings-1.md](findings-1.md) through
 [findings-6.md](findings-6.md).
 
 **Type:** theoretical + compute
@@ -645,6 +647,135 @@ Results live in [findings-6.md](findings-6.md).
 
 ---
 
+## Track 7 — Compound-mode vs. spatial separation audit
+
+**Goal.**  Test whether MaSt's compound-mode description of
+nuclei holds across the stable chain, and — if it holds — whether
+it naturally predicts the Fe binding peak and the observed
+stability boundary as emergent features of the framework.
+
+**Motivation.**  R63's inventory work has relied on the
+compound-mode hypothesis: a nucleus of (A, Z) is one particle
+with winding `(1−Z, 0, 0, 0, 3A, 6A)` rather than A spatially-
+separated nucleons.  R60 T19 Phase 2 verified this at ~1%
+accuracy for d, ⁴He, ¹²C, and ⁵⁶Fe but never extended above Fe
+and never compared directly to the spatial-separation
+alternative.  Before tightening ε or cross-sheet σ values
+further, R63 should verify the structural hypothesis: does
+compound-mode hold all the way up, or does it break at some A —
+and if so, does it break exactly where observation says nuclei
+stop being stable?
+
+This is a **structural question, not a parametric one**.  In
+MaSt, the compound-mode mass scales linearly in A
+(`μ(3A, 6A) = 3A·μ(1, 2)`), so changes to ε_p or s_p shift every
+nucleus by the same fraction and leave the *relative* pattern —
+which is what Track 7 tests — invariant at leading order.  No
+parameter pinning is needed or produced.
+
+### Parameters
+
+Track 7 runs against the v2-certified candidate parameter set
+R63 has been developing: the sheet shears and aspect ratios sit
+at the values that emerged from Track 6c's joint-fitness peak
+(numerically the same as model-F's, but treated as *working*
+values, not pins).  Free variables remain free.  Where the
+answer is known to be ratio-invariant at leading order — and
+it is, for Track 7's comparisons — variables are held at their
+current working values for compute convenience, not as
+commitments.
+
+`s_ν` and `ε_ν` are held at R61 central values on the basis
+that Track 6c demonstrated the ν-sheet is passive for the
+hadronic inventory.
+
+### Phase 7a — H → Fe
+
+Compute compound-mode predicted mass for ~15 stable nuclei
+spanning Z=1 to Z=26 using the A-scaling tuple.  Compare to
+observed mass; tabulate miss vs. binding energy.  R60 T19's
+four data points showed miss correlating with total binding,
+growing slowly with A; 7a extends this to the full light chain
+so the trend is visible at resolution.
+
+**Acceptance.**  A coherent miss-vs-binding curve across the
+light chain, establishing that compound mode tracks observation
+up through the Fe peak.
+
+### Phase 7b — Fe → hypothetical element 137
+
+Extend the same calculation through the stable-heavy chain up
+to ²⁰⁸Pb (Z=82), then continue into the trans-uranium regime
+and beyond — up to the hypothetical element 137 as a far-field
+probe.  Questions to answer:
+
+- Does the compound-mode miss stay within the binding-energy
+  envelope all the way up, or does it start to diverge?
+- If it diverges, where?  Does the divergence coincide with the
+  observed end of primordial stability (~Bi, Z=83)?
+- What does MaSt predict for elements that cannot be stably
+  assembled in nature?
+
+**Acceptance.**  The miss-vs-binding curve extends past Fe into
+the known-stable-heavy regime and into the hypothetical.  Any
+divergence is characterized by location and magnitude.
+
+### Phase 7c — Compound-vs-separated crossover
+
+Using the 7b miss pattern, estimate the A at which MaSt's
+compound-mode cost exceeds the cost of spatially-separated
+nucleons plus the observed nuclear binding.  Compare the
+crossover location to the observed Fe peak of binding-per-
+nucleon and to the observed stability boundary.
+
+**Possible outcomes.**
+
+- Crossover at Fe → MaSt naturally predicts the Fe peak as the
+  transition between "compact-dimension stacking is favored" and
+  "spatial separation is favored."  Major structural result.
+- Crossover at Bi (Z=83) → MaSt predicts the observed primordial
+  stability boundary.  Also major.
+- Crossover elsewhere → cleanly identifies where MaSt differs
+  from observation and what the missing physics is.
+- No clean crossover → the compound-mode picture holds throughout
+  the computed range; A-scaling is structurally confirmed at all
+  scales, and the Fe peak is produced by something else (a
+  candidate for follow-up).
+
+**Acceptance.**  A compound-vs-separated energy comparison
+produced across the computed A range with a specific crossover
+point (or documented absence thereof), and its relationship to
+the Fe peak and the stability boundary characterized.
+
+### Deliverables
+
+- `scripts/track7_compound_vs_separated.py` — compound-mode
+  mass calculation for the Z=1 → 137 chain plus the separated-
+  energy comparison.
+- `outputs/track7_mass_chain.csv` — per-nucleus prediction and
+  miss data.
+- `outputs/track7_binding_vs_miss.png` — miss-vs-binding curve.
+- `outputs/track7_crossover.png` — compound vs. separated energy
+  comparison with crossover point.
+- `findings-7.md` — writeup.
+
+### What Track 7 does NOT do
+
+- Does not pin ε_p, s_p, or any other ratio.  The ratio-invariant
+  nature of the comparison is the point.
+- Does not modify the v2 rule set.
+- Does not attempt a precision fit.  Pool item **q** (32-nucleus
+  precision survey) is the follow-up if 7 validates the picture.
+- Does not create `models/model-G.md`.
+
+### Time estimate
+
+Each nucleus is one metric evaluation.  30–40 nuclei plus
+plotting: under a minute of compute.  The writeup is the
+larger effort.
+
+---
+
 ## Next-track pool (after Track 6)
 
 Tracks after Track 5.  Sequence decided from its findings.
@@ -665,13 +796,17 @@ what before any observable-anchored sweep runs.
 
 **c. Neutron-anchored sweep.**  With sensitivity map from
 **b**, sweep `(ε_p, s_p, ε_ν, σ_xx)` scoring on neutron
-observables (mass, Δm, decay Q, lifetime).  User's preferred
-anchor.  `ε_ν` may move in this track if required by the
-neutron fit.
+observables (mass, Δm, decay Q, lifetime).  Superseded in
+priority by Track 7 + pool **q** (the stable-nuclei chain
+offers more observables with sharper stability than the
+marginally-stable neutron alone).  Kept as a possible
+complement.
 
-**d. Nuclear-scaling-anchored sweep.**  Same as **c** but
-scoring on nuclear masses across the stable-isotope chart.
-Cross-validates **c**; agreement is strong evidence.
+**d. [Promoted / reframed.]**  The original
+"nuclear-scaling-anchored sweep" idea splits into Track 7
+(compound-mode vs. separation structural audit, no pinning)
+and pool **q** (32-nucleus precision survey, follow-on
+pinning).  See Track 7 above.
 
 **e. Inventory consistency sweep.**  Within the region of
 agreement from **c** and **d**, verify that no non-pion hadron
@@ -742,6 +877,23 @@ sheet compound-mode search is Phase 6d of Track 6, running
 after the per-sheet marginal scans of 6c narrow the joint
 product space.
 
+**q. 32-nucleus precision survey.**  Once Track 7 settles the
+compound-mode hypothesis structurally, run a finer survey
+against ~32 experimentally-known stable-isotope masses
+spanning Z=1 to Z=82 (light chain, mid-chain, and up through
+²⁰⁸Pb).  Computes per-nucleus residuals at the working
+candidate parameter set; tabulates and plots the residual-
+vs-(Z, A, binding-energy) pattern.  Because the A-scaling
+compound-mode mass is ratio-invariant at leading order, the
+survey by itself is NOT a strong ratio-pinning tool on
+`(ε_p, s_p)` — all nuclei shift together.  Its power is as a
+**discriminating probe for cross-sheet σ_ep** (pool **h**):
+σ_ep couples the e-sheet `(1−Z)` contribution to the p-sheet,
+producing Z-dependent shifts that distinguish nuclei with
+different Z/A ratios.  If σ_ep is admitted as a free variable,
+the 32-nucleus survey becomes the discriminating observable.
+Dependent on Track 7; composes with pool **h**.
+
 **z. Closeout.**  After chosen pool items execute: if a
 coherent set of parameters + Q132 v2 tuple assignments emerges
 that (i) closes the pion gap, (ii) passes the v2 ghost audit,
@@ -777,15 +929,23 @@ Tracks 1–6 are complete.  Per-track results live in
 [findings-1.md](findings-1.md) through
 [findings-6.md](findings-6.md); outputs in [`outputs/`](outputs/).
 
+**Next: Track 7** — compound-mode vs. spatial-separation audit
+(see the Track 7 section above).  Ratio-invariant at leading
+order; requires no parameter pinning; tests a structural
+hypothesis that all of R63's inventory work rests on.
+
 Open items that could become future R63 tracks or successor
 studies:
 
+- **Pool item q** (32-nucleus precision survey) — follow-on
+  to Track 7; discriminating for cross-sheet σ_ep in
+  composition with pool **h**.
 - **Phase 6e** (dark-mode compound catalog) — enumerate v2-valid
-  compound dark modes across the three sheets at baseline
-  ratios, for future phenomenological cross-checks.
-- **Pool items o–i** — ν-sheet standalone audit, cross-sheet σ
-  exploration, anchoring-mode audit.  Each is an independent
-  line of work that Tracks 1–6 did not require.
+  compound dark modes across the three sheets, for future
+  phenomenological cross-checks.
+- **Pool items h, i, o** — cross-sheet σ exploration,
+  anchoring-mode audit, ν-sheet standalone audit.  Each is an
+  independent line of work that Tracks 1–6 did not require.
 - **Chiral-correction mechanism** — the ~10% pion miss under v2
   sits at the expected ephemeral-echo position (nearest v2
   winding is 121 MeV; observed pions at 135 / 140 MeV).  A
