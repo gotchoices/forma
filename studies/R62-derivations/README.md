@@ -86,6 +86,21 @@ interpretation from R60, with u/d flavor charges imported
 from the Standard Model (u/d flavor derivation is an open
 pool item).
 
+**Charge-sector refinement (added 2026-04-24).**  Tracks **5b**
+and **10b** refine the single-sheet charge result F14 and the
+multi-sheet compound-charge formula F32 to Q132 v2's phase-lock
+typology.  The refinement is derived, not postulated: integrating
+F14's standing-wave quantization over the primitive's full closed
+path gives an ω-sum over roots of unity that splits modes into
+bright (|p_t| = 1, charge fires) and dark (|p_t| ≥ 2 with gcd = 1,
+charge cancels by root-of-unity summation).  F14/F32 are recovered
+as the bright-single-copy special cases.  F14b/F32b fix the places
+F14/F32 misfired (e.g., derivation-10's `(−1, 0, 0, 0, 1, 0) →
++2e` "unphysical?" entry becomes `Q = 0`; R60 T19 tuples for τ,
+Λ, Σ⁻, Ξ⁻, Ξ⁰ that failed R63 Track 6 Phase 6a are explained by
+the stricter rule).  Downstream tracks (6, 11) inherit the
+corrected charge via F14b/F32b substitution.
+
 ---
 
 ## Program 1 — Electron from light
@@ -1016,6 +1031,76 @@ geometric origin for non-electromagnetic conservation laws.
 
 ---
 
+#### Track 5b — Charge under phase-lock (Q132 v2 refinement of Track 5)
+
+**Goal.**  Refine Track 5's F14 `Q = e × n_t` to the full primitive
+typology.  F14 used a single-closure shortcut on the standing-wave
+quantization; integrating over the primitive's **full** closed path
+gives an ω-sum over roots of unity that splits multi-closure
+primitives into **bright** (|p_t| = 1, p_r ≠ 0) and **dark**
+(|p_t| ≥ 2, gcd = 1) cleanly.  This is the derivation-side content
+of [Q132 v2](../../qa/Q132-promotion-chain-principle.md), promoted
+from R63's empirical discovery (Tracks 5 and 6) that R60 T19's
+tuples need the bright/dark distinction to produce correct charge
+arithmetic without per-particle exceptions.
+
+**Strategy.**
+
+1. Reduce `(n_t, n_r)` to primitive `(p_t, p_r)` by gcd; record the
+   multiplicity k.
+2. Parametrize the primitive's closed path; identify the tube-
+   closure times `λ_j = j/|p_t|` and the ring-phase values there.
+3. Sum charge contributions over j = 1 … |p_t| with phase
+   `exp(i · 2π · j · p_r/p_t)`; observe that the `|p_t|`-th roots
+   of unity sum to zero for |p_t| ≥ 2 (with gcd = 1).
+4. Conclude: the primitive's charge is `e · p_t` (bright) iff
+   |p_t| = 1 and p_r ≠ 0; else 0 (dark, tube-only, ring-only).
+5. Interpret k-copy multiplicity as either k free primitives
+   (binding-free sheet) or one bound composite (sheet with
+   k-ary binding); the charge-carrying role depends on sheet.
+
+**Tactics.**
+
+1. Recap F14 D.4 standing-wave quantization; note its single-
+   closure implicit scope.
+2. Write the compact-path parametrization and the charge
+   accumulation integral; reduce it to the discrete ω-sum.
+3. Evaluate the two cases (ω = 1, ω ≠ 1) via root-of-unity
+   cancellation.
+4. Tabulate the resulting primitive typology; verify reduction
+   to F14 in the |p_t| = 1 special case.
+5. Discuss physical interpretation (first-closure view vs. ω-sum
+   view; equivalence as theorems).
+6. Write the F14b lemma.
+
+**Deliverable.**  `derivation-5b.md` — focused refinement, not a
+full rewrite of derivation-5.  References F14 throughout and
+preserves F14 as the `|p_t| = 1` special case.
+
+**Acceptance criteria.**
+
+- ω-sum is derived, not postulated, from F4 D.4 standing-wave
+  quantization applied to the primitive's full path.
+- The two cases (bright, dark) fall out as consequences of
+  root-of-unity cancellation, no new physical inputs.
+- F14 is recovered as the bright single-copy special case.
+- k-copy multiplicity interpretation is stated for both binding-
+  free and binding-capable sheets.
+- Lemma F14b supersedes F14; downstream tracks (6, 10, 11)
+  inherit F14b's `Q` via simple substitution.
+
+**Status.**  **Complete.**  See [derivation-5b.md](derivation-5b.md);
+lemma F14b.  **Outcome: clean derivation.**  The bright/dark
+dichotomy of Q132 v2 emerges from classical standing-wave
+kinematics on the primitive's full closed path — no new postulates
+beyond F4 and the tube-couples convention.  F14b reduces to F14
+for bright single-copy primitives and gives `Q = 0` for dark
+primitives (|p_t| ≥ 2, gcd = 1), resolving the apparent ghost-
+tower entries that F14's shortcut would have mislabeled as
+`|Q| = |n_t|` particles.
+
+---
+
 #### Track 6 — Lorentz force on the standing-wave state (promoted from pool item **e**)
 
 **Goal.**  Close the single-sheet "electron from light" loop by
@@ -1916,6 +2001,80 @@ lemmas F30–F33 at the end.
 
 ---
 
+#### Track 10b — Compound charge under phase-lock (Q132 v2 refinement of Track 10)
+
+**Goal.**  Refine Track 10's F32 `Q = e(−n_1 + n_5)` to the full
+primitive typology on T⁶.  F32 applied F14 independently on each
+sheet and summed linearly, silently assuming bright single-copy on
+both active sheets.  10b applies F14b ([Track 5b](#track-5b---charge-under-phase-lock-q132-v2-refinement-of-track-5))
+per sheet and adds per-sheet **binding factors** `β_s(k_s)` that
+express how k-copy multiplicity combines into observable 4D charge:
+
+- e-sheet has no binding; `β_e(k) = k` — k copies scatter as k
+  separate primitive particles.
+- ν-sheet pairs real-field-conjugate modes (R60 T18); `β_ν ≡ 0`.
+- p-sheet Z₃ confinement binds `k ∈ {3, 6, 9, …}` into one
+  color-singlet composite; `β_p = 1` there, `0` for
+  `k ∈ {2, 4, 5, 7, 8, …}`.
+
+F32 is the bright-single-copy special case: both active sheets
+bright with k = 1, no ν-sheet contribution, giving `Q = e(−n_1 +
+n_5)`.  F32b correctly handles the full inventory where F32
+misfires — notably the `|p_t| ≥ 2, gcd = 1` dark primitives that
+R63 Track 6 Phase 6a identified (τ, Λ, Σ⁻, Ξ⁻, Ξ⁰ under R60 T19's
+original tuples), and the tube-only-sum entries that F32 reads as
+`|Q| = 2` (derivation-10 line 633's "unphysical?" entry).
+
+**Strategy.**
+
+1. Classify each of the three sheets' primitives independently
+   per F14b.
+2. Define the sheet binding factor `β_s(k_s)`: scatter for e,
+   zero for ν, Z₃-filtered for p.
+3. Sum per-sheet charge contributions with empirical sign vector
+   `(σ_e, σ_ν, σ_p) = (−1, 0, +1)`.
+4. Verify F32 is recovered in the bright-single-copy special case.
+5. Tabulate corrections where F32 misfires vs. F32b gives the
+   correct charge.
+
+**Tactics.**
+
+1. Build on F14b; no re-derivation of the single-sheet bright/
+   dark dichotomy — just per-sheet application.
+2. Articulate the Z₃ binding factor explicitly — why β_p(3) = 1
+   (color-singlet projection) rather than 3 (naive multiplicity).
+3. Preserve F30/F31 (mass) unchanged; 10b is a charge-sector
+   refinement only.
+4. Write the F32b lemma.
+
+**Deliverable.**  `derivation-10b.md` — focused refinement
+following derivation-10's style.  Uses F14b as input and inherits
+derivation-10's F30/F31 mass machinery verbatim.
+
+**Acceptance criteria.**
+
+- Per-sheet primitive classification is applied cleanly, sheet
+  by sheet, following F14b.
+- Binding factors `β_e, β_ν, β_p` are defined explicitly with
+  their MaSt-specific values (matched to R60 T16–T18).
+- F32 is recovered as the bright-single-copy special case by
+  direct substitution.
+- At least one "F32 misfires vs. F32b corrects" entry is
+  tabulated (e.g., derivation-10 line 633's `(−1, 0, 0, 0, 1, 0)
+  → +2e` now → 0).
+- Downstream derivations (6, 11) inherit the corrected `Q` via
+  F14b/F32b substitution with no further refinement needed.
+
+**Status.**  **Complete.**  See [derivation-10b.md](derivation-10b.md);
+lemma F32b.  **Outcome: clean derivation.**  The Q132 v2
+compound-charge arithmetic is the natural multi-sheet extension
+of F14b's single-sheet bright/dark dichotomy, with per-sheet
+binding factors supplied by R60 T16–T18's architectural rules
+(Z₃, real-field pairing, e-sheet Z₃ exemption) and no additional
+empirical inputs beyond what F32 already used.
+
+---
+
 #### Track 11 — Magnetic moment at tree level (promoted from pool item **g**)
 
 **Goal.**  Derive the tree-level magnetic moment of a MaSt
@@ -2380,6 +2539,7 @@ Objectives section above and motivates the sequence
 | derivation-3.md | Track 3 — photon on a 2-torus, 4D mass from compact momentum (complete) |
 | derivation-4.md | Track 4 — recovery of the MaSt mass formula (complete) |
 | derivation-5.md | Track 5 — charge identification: tube as the charge-carrying winding (complete) |
+| derivation-5b.md | Track 5b — charge under phase-lock: ω-sum over tube closures, bright/dark dichotomy (complete); derivation-side content of Q132 v2 on a single sheet |
 | derivation-6.md | Track 6 — Lorentz force on the standing-wave state (complete) |
 | derivation-7a.md | Track 7a — spin on T² via metric route (Killing vectors + holonomy); result: metric alone does not produce spin-½; GRID-native |
 | derivation-7b.md | Track 7b — spin on T² via CP field-polarization route; result: WvM ratio rule s = n_t/n_r; GRID-native |
@@ -2387,6 +2547,7 @@ Objectives section above and motivates the sequence
 | derivation-8.md | Track 8 — cross-shears between two 2-tori: generalized mass formula m² c² = h^{ab} p_a p_b on 4×4 internal metric, Schur-complement block inverse, compound modes, recovery of Track 2 at zero cross-shear (complete); GRID-native |
 | derivation-9.md | Track 9 — Klein quantization at non-Planck scales: scale-invariance of the KK-on-torus derivations (F29), UV consistency check, hierarchy question documented as inherited open problem (complete); GRID-native |
 | derivation-10.md | Track 10 — full 6D MaSt on T⁶ (three 2-tori, 21-parameter internal metric): mass formula m² c² = h^{ab} p_a p_b, iterated-Schur-complement form, universal charge Q = e(−n_1 + n_5), six-term Lorentz force, consistency with Tracks 2, 8, 9 (complete); GRID-native |
+| derivation-10b.md | Track 10b — compound charge under phase-lock: per-sheet primitive classification + binding factors (β_e=k, β_ν=0, β_p Z₃-filtered); F32b supersedes F32 on the full primitive typology while recovering F32 in the bright-single-copy special case (complete); derivation-side content of Q132 v2 on T⁶ |
 | scripts/ | Optional verification scripts (not expected to be needed for analytical tracks) |
 
 Future programs (Program 2, Program 3, …) will add their own

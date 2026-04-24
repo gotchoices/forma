@@ -225,6 +225,25 @@ carries D8's machinery to three sheets.  Pool g (magnetic
 moment) needs D7 resolved.  Stages 2 and 3 build on Stage 1's
 completed 6D block.
 
+**Charge-sector refinement: D5b and D10b (Q132 v2).**  D5's F14
+and D10's F32 used a single-closure reading of the standing-wave
+quantization that implicitly assumed `|n_t| = 1` on the charge-
+carrying sheets.  D5b integrates F14's construction over the
+primitive's **full** closed path, producing an ω-sum over tube
+closures that cleanly splits modes into **bright** (`|p_t| = 1`
+primitive, charge fires as `e · p_t`) and **dark** (`|p_t| ≥ 2`
+with gcd = 1, charge cancels exactly by root-of-unity summation).
+D10b propagates the refinement to T⁶ with per-sheet binding
+factors `β_e(k) = k`, `β_ν ≡ 0`, `β_p = 1` for Z₃-compatible `k`.
+F14/F32 are recovered as the bright-single-copy special cases.
+D5b and D10b are derivation-side content of
+[Q132 v2](../qa/Q132-promotion-chain-principle.md); no new
+physical postulates — the bright/dark dichotomy is a theorem of
+standing-wave kinematics on compact dimensions with non-trivial
+closure ratio.  Downstream derivations (D6 Lorentz force, D11
+magnetic moment) inherit the corrected charge via F14b/F32b
+substitution.
+
 ---
 
 ## 3. The derivations
@@ -382,6 +401,53 @@ labels and non-electromagnetic quantum numbers.
 - F14: charge = tube Killing momentum, quantized as Q = e × n_t
 - F15: universal formula Q = −n₁ + n₅ on T⁶ (three sheets)
 - F16: ring momenta are conserved but dark (no EM coupling)
+
+
+### D5b — Charge under phase-lock (Q132 v2 refinement of D5)
+
+**File:** [`studies/R62-derivations/derivation-5b.md`](
+../studies/R62-derivations/derivation-5b.md)
+**Status:** Complete
+**Uses:** D2 (F4), D4 (F11), D5 (F14) — no new postulates
+
+D5's F14 wrote `Q = e × n_t` from a single-closure reading of
+the standing-wave quantization.  D5b extends the computation to
+the full primitive closed path of an `(n_t, n_r)` mode.  After
+gcd reduction to primitive `(p_t, p_r)`, the charge accumulated
+over the `|p_t|` tube closures of the primitive path is the
+**ω-sum**
+
+> Q_net = e · Σ_{j=1}^{|p_t|} exp(i · 2π · j · p_r/p_t)
+
+which is `e · p_t` when `|p_t| = 1` (Case i, the ω = 1 case F14
+already captured) and **exactly zero** when `|p_t| ≥ 2` with
+`gcd(|p_t|, |p_r|) = 1` (Case ii: the ring phases at successive
+tube closures form the `|p_t|`-th roots of unity, which sum to
+zero).  The single-sheet primitive typology splits into:
+
+| Primitive | Q per primitive |
+|:--|:--|
+| `(0, 0)` | — (no mode) |
+| `(0, p_r ≠ 0)` ring-only neutral | 0 |
+| `(±1, 0)` tube-only neutral | 0 (no ring → no mass quantum to promote) |
+| `(±1, p_r ≠ 0)` **bright** | e · p_t |
+| `(\|p_t\| ≥ 2, p_r ≠ 0), gcd = 1` **dark** | 0 (ω-sum) |
+
+F14 is recovered as the bright single-copy special case.  k-copy
+multiplicity (gcd > 1) propagates as k independent primitive
+particles on a binding-free sheet, or one bound composite on a
+sheet with k-ary binding (e.g., p-sheet Z₃ for k = 3).  **No new
+physical postulates** — the bright/dark dichotomy is a theorem of
+standing-wave kinematics on a compact dimension with non-trivial
+closure ratio.
+
+**Key results:**
+- F14b: primitive charge = `e · p_t` (bright) or 0 (dark, tube-
+  only, ring-only); multiplicity accounted for by sheet binding.
+
+This is the derivation-side content of
+[Q132 v2](../qa/Q132-promotion-chain-principle.md) on a single
+sheet.  The multi-sheet generalization is D10b.
 
 
 ### D6 — Lorentz force on the standing-wave state
@@ -635,6 +701,56 @@ and D9 as sub-cases, confirming D10 is a strict generalization.
   sub-cases
 
 
+### D10b — Compound charge under phase-lock (Q132 v2 refinement of D10)
+
+**File:** [`studies/R62-derivations/derivation-10b.md`](
+../studies/R62-derivations/derivation-10b.md)
+**Status:** Complete
+**Uses:** D5b (F14b), D10 (F30, F31), R60 T16-T18 (per-sheet
+  binding architecture)
+
+D10's F32 applied F14 on each sheet and summed linearly with the
+empirical sign vector `(σ_e, σ_ν, σ_p) = (−1, 0, +1)`, giving
+`Q = e(−n_1 + n_5)`.  D10b applies **F14b** per sheet instead,
+and adds a **binding factor** `β_s(k_s)` that encodes how k-copy
+multiplicity combines into observable 4D charge:
+
+- e-sheet (no binding): `β_e(k) = k` — k copies scatter as k
+  separate primitive particles.
+- ν-sheet (R60 T18 real-field conjugate pairing): `β_ν ≡ 0` —
+  no observable 4D charge contribution regardless of primitive.
+- p-sheet (R60 T16 Z₃ confinement): `β_p = 1` for `k ∈ {1, 3,
+  6, 9, …}` (single primitive or Z₃ singlet composite);
+  `β_p = 0` for `k ∈ {2, 4, 5, 7, 8, …}` (no Z₃ bound state
+  available, tuple disallowed).
+
+The compound charge is then
+
+> Q_compound = Σ_s σ_s · β_s(k_s) · Q_prim(s)
+
+F32's `Q = e(−n_1 + n_5)` is recovered in the bright-single-copy
+special case on both active sheets.  F32b corrects the places F32
+misfired:
+
+| Tuple | F32 | F32b | Correction |
+|:--|:--|:--|:--|
+| `(−1, 0, 0, 0, 1, 0)` | +2e ("unphysical?" in D10 line 633) | 0 | both sheets tube-only neutral |
+| `(−2, −3, 0, 0, 0, 0)` | −2e | 0 | e-sheet dark (|p_t|=2, gcd=1) |
+| R60 T19 tuples for τ, Λ, Σ⁻, Ξ⁻, Ξ⁰ | charge mismatch | charge matches after R63 Track 6 Phase 6b re-derivation | phase-lock filter fires |
+
+**Key results:**
+- F32b: compound charge on T⁶ from per-sheet primitive
+  classification (F14b) and binding factors; F32 recovered as
+  the bright-single-copy special case; correctly handles dark
+  primitives, tube-only neutrals, and k-copy multiplicity.
+
+D10b supersedes D10's charge result on the full T⁶ primitive
+typology while preserving D10's mass machinery (F30/F31)
+unchanged.  Downstream derivations (D6 Lorentz force, D11
+magnetic moment) inherit the corrected `Q` via F14b/F32b
+substitution with no further refinement.
+
+
 ### D11 — Magnetic moment at tree level (promoted from pool g)
 
 **File:** [`studies/R62-derivations/derivation-11.md`](
@@ -797,8 +913,9 @@ that subsequent derivations cite.  The chain:
 | F11 | MaSt's μ² = (n_t/ε)² + (n_r − s n_t)² recovered | D8, D10 |
 | F12 | Geometric meaning of (ε, s) | D8, D10 |
 | F13 | Mode spectrum and ordering | D8, D10 |
-| F14 | Charge = tube Killing momentum, Q = e × n_t | D6, D10 |
-| F15 | Universal charge formula Q = −n₁ + n₅ | D10 |
+| F14 | Charge = tube Killing momentum, Q = e × n_t | D6, D10 (refined by F14b in D5b) |
+| F14b | Charge under phase-lock: bright (\|p_t\|=1) fires `e·p_t`, dark (\|p_t\|≥2, gcd=1) cancels by ω-sum; F14 recovered as bright single-copy special case | D6 (via substitution), D10b |
+| F15 | Universal charge formula Q = −n₁ + n₅ | D10 (refined by F32b in D10b) |
 | F16 | Ring momenta conserved but dark | D6, D10 |
 | F17 | Lorentz force with derived m, Q | D8, D10 |
 | F18 | Minimal coupling is geometric | — (standalone result) |
@@ -817,5 +934,6 @@ that subsequent derivations cite.  The chain:
 | F29 | KK-on-torus scale-invariance; hierarchy inherited, not contradicted | D10, "what remains open" |
 | F30 | Mass formula on full T⁶ | pool z (closeout) |
 | F31 | Iterated Schur-complement structure on T⁶ | pool z |
-| F32 | Universal charge Q = e(−n_1 + n_5) on T⁶ | pool z |
+| F32 | Universal charge Q = e(−n_1 + n_5) on T⁶ | pool z (refined by F32b in D10b) |
+| F32b | Compound charge under phase-lock: per-sheet primitive classification (F14b) + binding factors β_e=k, β_ν=0, β_p Z₃-filtered; F32 recovered as bright-single-copy special case | pool z, D11 (via substitution) |
 | F33 | Recovery of D2, D8, D9 as sub-cases | — (consistency check) |
