@@ -83,7 +83,7 @@ style: |
 
 MaSt — model-F
 
-<p class="small">A project of GotChoices.org · built with AI assistance</p>
+<p class="small">A project of GotChoices.org</p>
 
 ---
 
