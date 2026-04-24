@@ -1,10 +1,11 @@
 # R63: Proton-sheet tuning — disciplined audit and sweep
 
-**Status:** Tracks 1–7 complete through Phase 7b.  R63 is
-developing the **g-candidate** — the evolving parameter set and
-rule set that is intended to become model-G if and when it
-demonstrates clear superiority over model-F across multiple
-axes.  The rule-set piece of the g-candidate is
+**Status:** Tracks 1–7 complete through Phase 7b; Track 8
+(decay-conservation audit and additive tuple refinement) framed
+and in progress.  R63 is developing the **g-candidate** — the
+evolving parameter set and rule set that is intended to become
+model-G if and when it demonstrates clear superiority over
+model-F across multiple axes.  The rule-set piece of the g-candidate is
 [Q132 v2](../../qa/Q132-promotion-chain-principle.md) (the `v2`
 is the version of the rule; the overall "what R63 is assembling"
 is the g-candidate).  So far the g-candidate delivers a coherent
@@ -798,6 +799,205 @@ larger effort.
 
 ---
 
+## Track 8 — Decay-conservation audit and additive tuple refinement
+
+**Goal.**  Adopt winding conservation across decays as the core
+principle for composite-particle tuple assignment, substitute
+the β-decay-derived neutron tuple for R60 T19's mass-fitted
+choice, apply additive composition to nuclei, and audit the
+rest of the particle zoo against the same principle.
+
+**Motivation.**  Earlier-framed Track 8 (bound-state tuple
+search) was withdrawn.  It was attempting to discover new
+quantum numbers for each stable nucleus by brute-force tuple
+search — but the nucleus already IS a proton and a neutron, not
+a particle with unknown quantum numbers.  The right question
+is: what are the nucleon tuples, and how do they combine when
+nucleons sit near each other?
+
+A cleaner principle emerged from discussion: **winding
+conservation across decays**.  β-decay is `n → p + e⁻ + ν̄`;
+if MaSt windings are conserved, then `n_tuple = p_tuple + e_tuple
++ ν̄_tuple = (1, 2, 1, 1, 3, 6)`.  This tuple:
+
+- matches observed neutron mass to the same accuracy as the
+  R60 T19-picked `(−3, −6, 1, −6, −3, −6)` (0.14% miss, both);
+- has a clean physical reading (neutron as a bound combination
+  of proton + electron + antineutrino);
+- shares p-sheet windings with the proton, so the two can be
+  *added* to give composite-nucleus tuples without cancellation
+  nonsense.
+
+Applying additive composition to nuclei (Z copies of proton +
+(A−Z) copies of the new neutron):
+
+| Nucleus | A-scaling miss | Additive miss |
+|---|:-:|:-:|
+| ³He | +0.505% | **+0.229%** |
+| ⁴He | +0.846% | **+0.690%** |
+| ¹²C | +1.189% | **+0.755%** |
+| ⁴⁰Ca | +1.413% | **+0.850%** |
+| ⁵⁶Fe | +1.369% | **+0.871%** |
+
+Additive beats A-scaling across the chain by ~0.4 percentage
+points.  The residual (~0.9% at Fe) is cleanly the observed
+binding energy, giving a sharp diagnostic for the missing
+binding mechanism.
+
+This is the direction Track 8 pursues.
+
+### Note on photons and other massless products
+
+Some decays emit photons (π⁰ → γγ, Σ⁰ → Λγ, η → γγ, etc.).
+Photons in MaSt are level-1 promotions — energy, but no
+compact-dimension windings in the sense we're using.  So
+photons **carry no windings to the additive sum**; they carry
+away the decay's kinetic energy (Q-value) but leave winding
+conservation intact among the massive particles.
+
+Similarly, neutrinos have windings (as ν₁, ν₂, ν₃) but have
+tiny masses — their windings matter for the tuple sum but
+their mass contribution is negligible in the mass arithmetic.
+
+### Phase 8a — Neutron substitution and nuclear verification
+
+Substitute the β-decay neutron tuple `(1, 2, 1, 1, 3, 6)` into
+the g-candidate inventory.  Re-run the Phase 6a charge check
+and the Track 7a nuclear mass check under additive composition.
+Verify:
+
+1. The neutron still passes v2 charge arithmetic (as a
+   fundamental-mode check).
+2. The nuclear chain under additive composition reproduces the
+   improvement shown in the quick-verify dialogue: better miss
+   across the H → Fe chain than A-scaling gave.
+3. Compound-charge consistency for nuclei: we adopt the
+   **ingredient-sum** rule (nucleus charge = Z·Q_p + (A−Z)·Q_n
+   = Z·(+1) + (A−Z)·0 = Z) rather than re-applying v2's
+   per-sheet primitive rule to the summed compound tuple.
+   Clarify this extension of v2 in the findings.
+
+**Acceptance.**  Neutron charge still 0 under v2 at the
+fundamental level; every H-to-Fe nucleus's mass under additive
+composition is at or better than its A-scaling prediction.
+
+### Phase 8b — Hadron-zoo decay audit
+
+For each decay listed below, compute
+`Δ = parent_tuple − Σ daughter_tuples`
+and `mass_residual = parent_mass_from_metric − Σ daughter_masses`,
+under current g-candidate tuples.  Photons carry no winding and
+no mass contribution to the residual.  Report:
+
+- Whether Δ = 0 (winding conservation holds for current tuples).
+- The mass residual, which (when Δ = 0) is MaSt's estimate of
+  the decay Q-value.
+- Comparison to observed Q-values.
+
+Candidate decays:
+
+| Parent | Products | Type |
+|:---|:---|:---|
+| n | p + e⁻ + ν̄_e | β decay (canonical) |
+| Λ | p + π⁻ | weak, 64% |
+| Λ | n + π⁰ | weak, 36% |
+| Σ⁻ | n + π⁻ | weak |
+| Σ⁺ | p + π⁰ | weak |
+| Σ⁺ | n + π⁺ | weak |
+| Ξ⁻ | Λ + π⁻ | weak |
+| Ξ⁰ | Λ + π⁰ | weak |
+| ρ⁰ | π⁺ + π⁻ | strong |
+| K_S⁰ | π⁺ + π⁻ | weak |
+| K⁻ | μ⁻ + ν̄_μ | weak (leptonic) |
+| π⁻ | μ⁻ + ν̄_μ | weak (leptonic) |
+| π⁰ | γ + γ | EM (photon-only products) |
+| η | γ + γ | EM (photon-only products) |
+
+Special cases:
+
+- **Photon-only products** (π⁰ → γγ, η → γγ): parent's winding
+  sum should be zero if winding conservation holds and photons
+  carry no windings.  If the parent tuple is non-trivial,
+  either the tuple violates the principle or photons carry some
+  winding we haven't accounted for.  Both possibilities are
+  interesting.
+- **Neutrino flavor mixing**: ν_e, ν_μ, ν_τ (flavor
+  eigenstates) are superpositions of ν₁, ν₂, ν₃ (mass
+  eigenstates).  A decay emits a flavor eigenstate; the tuple
+  sum should reflect whichever mass-eigenstate basis we've
+  adopted.  Handle as a bookkeeping caveat, not a show-stopper.
+- **Weak decays with flavor change**: at the quark level, β
+  decay involves d → u via W.  In MaSt with nucleon-level
+  tuples, whether d→u breaks winding conservation is an open
+  question.  The audit will expose the pattern.
+
+**Acceptance.**  For each decay, a clear verdict: current
+tuples are winding-conservation-consistent (Δ = 0) or not
+(Δ ≠ 0, identifying which tuples are suspect).
+
+### Phase 8c — Tuple refinement from decay constraints
+
+For each decay where Δ ≠ 0 under current tuples, use the
+constraint to propose a revised tuple for one of the particles
+involved, prioritizing:
+
+1. Conservation consistency across all that particle's decays.
+2. Mass match to observation (within width-weighted threshold).
+3. v2 charge arithmetic at the fundamental level.
+4. Physical interpretability (clean composition mapping).
+
+**Acceptance.**  A revised tuple set that maximizes
+decay-conservation consistency while preserving Track 5 and
+Track 6 mass-match quality.  Any irreducible inconsistencies
+flagged as framework-level open questions (likely signatures
+of flavor-changing weak processes).
+
+### Phase 8d — Synthesis
+
+- If all (or nearly all) decays pass winding conservation under
+  a consistent tuple set: MaSt's windings are conserved
+  observables, and the tuple set is structurally principled.
+- If a subset systematically fails: identifies which decay
+  types MaSt's framework cannot yet accommodate (most likely
+  weak flavor-change processes), pointing at the specific
+  extension needed.
+- Either way: the Q-value predictions per decay become a new
+  set of observables — MaSt predicting experimental quantities
+  not yet used in the fit.
+
+### Deliverables
+
+- `scripts/track8_phase8a_neutron_and_nuclei.py` — substitutes
+  neutron tuple, re-runs charge check and nuclear chain.
+- `scripts/track8_phase8b_decay_audit.py` — winding and mass
+  audit over the zoo decays.
+- `scripts/track8_phase8c_refinement.py` — tuple revision under
+  decay constraints.
+- `outputs/track8_*.csv` / `*.png` — per-particle and
+  per-decay results.
+- `findings-8.md` — writeup.
+
+### What Track 8 does NOT do
+
+- Does not pin ε_p, s_p, or any other ratio.  The g-candidate
+  working parameters are held constant; Track 8 is combinatoric
+  over integer windings.
+- Does not attempt to model S-space configuration energies.
+  That remains a framework-extension question for a successor
+  study.
+- Does not resolve the pion mass (10% miss per Track 6b-pion);
+  the residual is the expected ephemeral-echo signature.
+- Does not create `models/model-G.md`.
+
+### Time estimate
+
+Phase 8a: minutes (substitution + re-run of existing scripts).
+Phase 8b: minutes to hours (combinatoric checks over ~14
+decays).  Phase 8c: the real work, since tuple revisions may
+be interlocked.  Phase 8d: analysis + writeup.
+
+---
+
 ## Next-track pool (after Track 6)
 
 Tracks after Track 5.  Sequence decided from its findings.
@@ -959,14 +1159,12 @@ is Track 8 (bound-state tuple search per stable nucleus), which
 provides the binding mechanism natively if the right tuples
 exist.
 
-**Next: Track 8** — stable-nucleus tuple search under
-g-candidate rules.  For each stable nucleus, search the tuple
-lattice for a compound Ma-mode whose mass matches observation
-within width-weighted threshold and whose g-candidate charge
-matches observed Z.  If such tuples exist, that IS MaSt's
-native account of nuclear binding.  If they don't for some
-nuclei, that exposes exactly where g-candidate needs an
-explicit mechanism.
+**Next: Track 8** (decay-conservation audit and additive tuple
+refinement) — framed; executing Phase 8a.  See the Track 8
+section above.  The core idea: β decay `n → p + e + ν̄` implies
+`n_tuple = p_tuple + e_tuple + ν̄_tuple = (1, 2, 1, 1, 3, 6)`,
+a cleaner neutron tuple that enables additive composition for
+nuclei and sets up a decay-conservation audit across the zoo.
 
 Open items that could become future R63 tracks or successor
 studies:
