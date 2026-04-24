@@ -1,8 +1,15 @@
 # R63: Proton-sheet tuning — disciplined audit and sweep
 
-**Status:** Tracks 1–8 complete.  Track 9 (nuclear binding from
-Ma-state energy minimization via cross-shear dressing) framed
-and pending execution.  R63 is developing the **g-candidate** — the
+**Status:** R63 closed.  Tracks 1–9 complete.  Track 9's
+cross-shear-binding hypothesis was falsified by Phase 9a: no
+linear cross-shear dressing produces nuclear binding at any
+placement or magnitude in the signature-preserving range.  The
+falsification is structural (additivity of compound tuple +
+linear metric perturbation → exact cancellation).  Nuclear
+binding as an emergent MaSt mechanism is identified as beyond
+R63's refinement scope; four framework-extension options
+(non-additive tuples, S-space machinery, non-linear mass
+formula, dynamical L_ring) remain for successor studies.  R63 is developing the **g-candidate** — the
 evolving parameter set and rule set that is intended to become
 model-G if and when it demonstrates clear superiority over
 model-F across multiple axes.  The rule-set piece of the g-candidate is
@@ -1238,6 +1245,18 @@ the promotion chain) and is out of Track 9's scope.
 - Does not pin ratios from nuclear data beyond what's needed
   to fit the binding curve.
 
+### Outcome
+
+**Track 9 closed with structural falsification.**  Phase 9a
+established that linear cross-shear dressing of the additive
+compound tuple produces zero binding at every placement and
+magnitude in the signature-preserving range (10⁻⁴ MeV
+numerical noise vs. 30–500 MeV observed).  The cancellation is
+structural: additivity of the compound tuple + linear metric
+perturbation → exact cancellation.  Phases 9b, 9c, 9d do not
+run.  Four framework-extension options remain for successor
+studies; see [findings-9.md](findings-9.md) §F9a.4.
+
 ---
 
 ## Next-track pool (after Track 6)
@@ -1389,51 +1408,51 @@ User-imposed rules R63 should follow throughout execution:
 
 ## Next steps
 
-R63 Tracks 1–8 complete.  **Track 9 framed** (nuclear binding
-from Ma-state energy minimization via cross-shear dressing);
-see the Track 9 section above.  Per-track results in
+**R63 closed.**  Tracks 1–9 complete.  Per-track results in
 [findings-1.md](findings-1.md) through
-[findings-8.md](findings-8.md); outputs in [`outputs/`](outputs/).
+[findings-9.md](findings-9.md); outputs in [`outputs/`](outputs/).
 
-The g-candidate has received its major R63 refinements through
-Track 8:
+The g-candidate (R63's refinement of model-F) carries:
 - Q132 v2 rule set (gcd decomposition + phase-lock).
 - e-sheet ghost-free under v2.
-- Inventory tuples re-derived where v2 required (Track 6).
+- Inventory tuples re-derived where v2 required.
 - β-decay-consistent neutron tuple and additive nuclear
-  composition (Track 8).
+  composition.
 - Ingredient-sum rule for composite charge.
 
-Track 9 targets the one remaining R63 question: whether cross-
-sheet σ dressing can reproduce the observed nuclear binding
-curve (~0.87% residual at Fe = ~453 MeV vs. observed 492 MeV)
-using ~250 nuclear masses to constrain the previously
-unactivated off-diagonal metric parameters.
+Track 9 **falsified cross-shear dressing as the nuclear binding
+mechanism** (structural cancellation from additivity + linear
+metric perturbation).  The ~0.87% residual at Fe remains as
+the binding-energy observable, but closing it requires a
+framework extension outside R63's refinement scope.
 
-Directions for future refinement — framed as potential successor
-studies rather than additional R63 tracks — are captured in the
-close-out sections of [findings-7.md](findings-7.md) and
-[findings-8.md](findings-8.md).  In brief:
+Directions for future refinement — as successor studies rather
+than additional R63 tracks — captured in the close-out sections
+of [findings-7.md](findings-7.md),
+[findings-8.md](findings-8.md), and
+[findings-9.md](findings-9.md).  In brief:
 
+- **Nuclear binding mechanism** (Track 9 successor): four
+  framework-extension options — non-additive compound tuples,
+  S-space configuration energy, non-linear mass formula,
+  dynamical L_ring — each a viable but speculative path.  See
+  findings-9 §F9a.4.
 - **Systematic tuple optimization under decay constraints**
-  (Phase 8c as a dedicated study) — least-squares-style refine
-  of hadron tuples to maximize winding conservation across
-  observed decays.
-- **PMNS neutrino flavor-mixing bookkeeping** — proper
-  flavor-eigenstate treatment for leptonic decays.
-- **Chiral-anomaly mechanism in MaSt** — first-principles
-  derivation of π⁰ → γγ and η → γγ rates (R62-adjacent).
-- **S-space overlap machinery** — successor-study scope if
-  Track 9 finds that cross-shear dressing alone cannot close
-  the binding curve.
-- **ν-sheet standalone audit** (pool **o**) remains open for
+  (Phase 8c promoted) — least-squares refinement of hadron
+  tuples to maximize winding conservation.
+- **PMNS neutrino flavor-mixing bookkeeping** (T8 FR-2) —
+  proper flavor-eigenstate treatment for leptonic decays.
+- **Chiral-anomaly mechanism in MaSt** (T8 FR-3) — first-
+  principles derivation of π⁰ → γγ and η → γγ rates.
+- **ν-sheet standalone audit** (pool **o**) — open for
   neutrino-sector observables independent of hadronic fit.
 
-**Model-G** is deferred per the R63 discipline: a model letter
-change is warranted only when a coherent set of findings is
-demonstrably superior to model-F across multiple criteria.
-R63's output — the g-candidate as it stands — is the input to
-that decision, not the decision itself.
+**Model-G** remains deferred.  The g-candidate as it stands is
+the input to the model-letter-change decision, not the
+decision itself.  A second refinement pass — a **model-H** or
+a **nuclear-binding-focused successor study** — would be
+needed before the full "better than model-F on nuclear
+observables" claim can be made.
 
 Open items that could become future R63 tracks or successor
 studies:
