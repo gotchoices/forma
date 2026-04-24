@@ -1,16 +1,14 @@
 # R63: Proton-sheet tuning — disciplined audit and sweep
 
-**Status:** Tracks 1–8 complete.  Track 9 active.  Phase 9a
-falsified linear cross-shear dressing of additive tuples as a
-binding mechanism, but the falsification is narrower than a
-closure warrants: three Ma-internal candidates remain open
-(non-additive bound tuples, mass-formula validity at high n_pt,
-Z₃ multi-strand phase coherence).  **Phase 9b runs next** —
-non-additive tuple search for the deuteron, using deuteron
-stability (observed binding 2.2 MeV, required for bound-n β
-stability) as the sharp target.  R63 will not close until at
-least one of the remaining Ma candidates is either demonstrated
-or ruled out.  R63 is developing the **g-candidate** — the
+**Status:** Tracks 1–8 complete.  Track 9 active.  Phases 9a
+(linear cross-shear dressing), 9b (non-additive deuteron tuple
+search), and 9c (mass-formula validity at high n_pt) have each
+falsified their respective candidate mechanisms cleanly.  The
+one remaining Ma-internal candidate is **Phase 9d — Z₃
+multi-strand phase coherence at k > 3**: does a 6-strand
+p-sheet compound in Z₆ coherence have lower mass than two
+independent Z₃ triplets?  Phase 9d is framed but unexecuted;
+it requires a principled ansatz before running.  R63 is developing the **g-candidate** — the
 evolving parameter set and rule set that is intended to become
 model-G if and when it demonstrates clear superiority over
 model-F across multiple axes.  The rule-set piece of the g-candidate is
@@ -1084,45 +1082,137 @@ only the additive tuple (or heavier), Path A (non-additive
 bound tuples) is falsified for the deuteron and we proceed to
 Phase 9c.
 
-### Phase 9c — Mass-formula validity at high n_pt (PROVISIONAL)
+### Phase 9c — Mass-formula validity at high n_pt (EXECUTED; falsified)
 
-If 9b doesn't find a lighter tuple, audit derivations 3/4 (the
-mass-formula derivations) for their validity range in n_pt.
-The current `μ = √((n_t/ε)² + (n_r − n_t·s)²)` assumes KK
-low-winding behavior; at nucleus-scale windings (n_pt up to
-±168 for ⁵⁶Fe), corrections could be sign- and magnitude-
-significant.  If the corrections produce binding of the right
-size, the mechanism is a validity-range refinement of an
-existing derivation — no new posits.
+Path B audit.  Derivation 4 of R62 gives MaSt's mass formula
+`μ² = (n_t/ε)² + (n_r − s·n_t)²` as a closed-form consequence
+of the photon-on-T² geometry; no n-dependent approximation is
+used in the derivation.  Numerical verification: `μ(kn_t, kn_r)
+= k·μ(n_t, n_r)` holds to double-precision (1.5×10⁻¹⁶ relative)
+across `k ∈ {1 … 200}`.  Full 11D metric at σ_cross = 0 gives
+compound-vs-separated agreement to ~10⁻³ MeV through ²⁰⁸Pb —
+orders of magnitude short of observed binding.
 
-### Phase 9d — Z₃ multi-strand phase coherence (PROVISIONAL)
+See [findings-9.md §Phase 9c](findings-9.md) for details.
 
-If 9c doesn't close the gap either, develop a specific ansatz
-for how Z₃ phase coherence in k = 3A strand groupings
-(k > 3) contributes to mass.  Under Q132 v2, primitive (1, 2)
-strands have ω-sum contributions at single-baryon level; the
-question is whether multi-baryon groupings have collective
-phase-coherence energies not captured by A · m_p.  Needs a
-concrete ansatz before it becomes testable.
+### Phase 9d — Z₃ multi-strand phase coherence at k > 3
+
+**Final remaining Ma-internal candidate.**  If 9a, 9b, 9c all
+falsify their respective mechanisms, Phase 9d is the last
+Ma-level hypothesis.  The reviewer frames it precisely: current
+MaSt treats `(6, 12)` via `μ(6, 12) = 2·μ(3, 6)` irrespective
+of whether the six strands are arranged as two independent Z₃
+triplets or as a coherent Z₆ hexagon.  **Phase 9b's tuple
+search cannot distinguish these** — they have the same
+windings.  If coherent arrangements have lower mass, that's
+nuclear binding in Ma.
+
+#### Origin of Z₃ on the p-sheet (R60 T16)
+
+Z₃ confinement on the p-sheet was derived in R60 Track 16 from
+a **density-fluctuation-cancellation argument** applied to a
+single (1, 2) mode under the real-field (spin 7b) picture:
+
+- Real-field charge density ρ_Q = φ² on a single (1, 2) mode has
+  a 2ω Fourier harmonic (time-dependent density fluctuation).
+- Three copies of the mode at 120°-offset internal phases —
+  a Z₃-symmetric arrangement — cancel the 2ω harmonic exactly.
+- Therefore free single quark-like (1, 2) modes are forbidden;
+  minimum stable composite is `n_pt = 3` with three Z₃-coherent
+  strands.
+
+**The Z₃ rule is not a postulate — it emerges from density
+cancellation.**  This is the handle Phase 9d must exploit.
+
+#### Extending to k = 3A: 2×Z₃ vs Z₆ for A = 2
+
+For the deuteron (A = 2, k = 6), six strands must arrange
+themselves to keep density cancellation.  Two candidate
+arrangements:
+
+- **2 × Z₃** — two independent triplets, each internally
+  Z₃-coherent, with arbitrary relative phase between triplets.
+- **Z₆ hexagon** — six strands at 60°-offset phases
+  `(0, 60°, 120°, 180°, 240°, 300°)`.  Still Z₃-singlet (the
+  2ω cancellation argument works at this level too since
+  `1 + ω² + ω⁴ = 0` for ω = exp(i·60°)`).
+
+At the level of R60 T16's 2ω cancellation, **both arrangements
+satisfy the selection rule**.  The current mass formula treats
+them identically.
+
+The question Phase 9d asks: **is there a higher-harmonic or
+collective-phase energy that distinguishes Z₆ from 2×Z₃, and
+can it supply the deuteron's 2.2 MeV binding?**
+
+#### What Phase 9d needs to produce
+
+1. **A principled ansatz** for a phase-coherence term in the
+   compound mass formula.  Candidates to consider:
+   - **4ω cancellation** at k = 6: does Z₆ cancel 4ω where
+     2×Z₃ does not?  If yes, Z₆ has lower power oscillation
+     → lower effective mass.
+   - **Inter-triplet phase correlation energy**: if MaSt
+     geometry penalizes relative phase between triplets in a
+     2×Z₃ arrangement, Z₆ has zero such penalty (all 60°) and
+     binds lower.
+   - **Ring-direction phase summation**: extend Q132 v2's ω-sum
+     (currently single-mode) to multi-strand compounds.  Natural
+     candidate: `ω-sum_multi = Σ_k exp(i · 2π · n_pr,k / n_pt,k)`
+     over strand-specific windings.  If configurations differ,
+     energies differ.
+
+2. **A test against a sharp target**: the deuteron 2.2 MeV
+   binding.  One number.  Extends to ³He (7.7 MeV), ⁴He
+   (28.3 MeV), ¹²C (92 MeV) if the first number lands.
+
+3. **A consistency check**: the ansatz should give **zero
+   correction at k = 3** (single baryon, already Z₃-coherent)
+   and non-zero at k = 6, 9, 12, ... .  The mass formula for
+   isolated baryons is empirically fine as-is.
+
+#### Why this needs framing work before execution
+
+Unlike 9a-9c, Phase 9d is not a numerical experiment on an
+existing framework.  It requires **proposing new structure in
+MaSt** — specifically a phase-coherence extension to the mass
+formula — and then testing it.  The structural proposal needs
+discussion before coding.
+
+The user's intuition: "protons in the nucleus need neutrons to
+keep the nucleus stable, and there could be something about
+having 6 quarks on the p-sheet that is the strong force magic"
+— maps directly to this hypothesis.  A deuteron has 6 p-sheet
+strands (3 from p, 3 from n).  Whether those 6 strands arrange
+differently than 2 independent 3-strand sets is the question.
+
+#### Status
+
+Phase 9d is **framed but unexecuted**.  The reviewer's
+recommendation is to continue R63 with Phase 9d, since it is
+the one remaining Ma-internal candidate.  Before running, an
+ansatz proposal needs to be settled.
 
 ### Exit criteria
 
-- **Success (any of 9b/9c/9d)**: a Ma mechanism reproduces
-  deuteron binding (2.2 MeV within ~0.5 MeV) and extends
-  sensibly to heavier nuclei (⁴He, ¹²C, ⁵⁶Fe).
-- **All three fail**: binding in Ma is ruled out at R63's
-  scope, and the framework-extension options (S-space overlap,
-  dynamical L_ring) become the successor-study targets.
-  T8 FR-4 becomes the central open problem for a follow-on.
+- **Success (9d)**: a principled phase-coherence ansatz
+  reproduces the deuteron's 2.2 MeV binding within a factor
+  of 2, and extends sensibly to heavier nuclei.
+- **9d doesn't deliver**: all three Ma-internal candidates
+  (9a, 9b/9c, 9d) will then have been tested and falsified.
+  The "binding requires framework extension" conclusion from
+  F9a.6 becomes earned.  Follow-on study candidates:
+  S-space overlap machinery (T8 FR-4 second bullet), dynamical
+  L_ring, or a fundamentally new binding physics direction.
 
 ### Reusable assets
 
-- Track 6 Phase 6b's tuple-search infrastructure (used the
-  same way for hadron tuple re-derivation).
+- Track 6 Phase 6b's tuple-search infrastructure.
 - Track 8's additive-composition nucleus tuples as the
   reference to beat.
-- `build_aug_metric` from R60 (as-is; no modification needed
-  for 9b).
+- `build_aug_metric` from R60 (as-is).
+- R60 T16's density-cancellation argument as the template for
+  extending phase-coherence reasoning to k > 3.
 - The 2.2 MeV deuteron gap as the primary numerical benchmark.
 
 ---

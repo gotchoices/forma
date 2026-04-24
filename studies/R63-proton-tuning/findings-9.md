@@ -353,3 +353,86 @@ Path B (mass-formula validity at high n_pt) and Path C (Z₃
 multi-strand phase coherence).  **Phase 9c runs next.**  If
 both 9c and 9d fail, the conclusion that binding requires
 framework extension is earned.
+
+---
+
+## Phase 9c — Mass-formula validity at high n_pt
+
+**Hypothesis (Path B of F9a.4).**  Derivation 4 of R62 gives
+MaSt's mass formula `μ² = (n_t/ε)² + (n_r − s·n_t)²` in what
+the reviewer called "the low-winding KK regime."  At nucleus-
+scale windings (n_pt up to ±168 for ⁵⁶Fe), there could be
+higher-order corrections to the formula that break its strict
+k-linearity and produce binding.
+
+Script:
+[`scripts/track9_phase9c_mass_formula_audit.py`](scripts/track9_phase9c_mass_formula_audit.py) ·
+Output:
+[`outputs/track9_phase9c_k_linearity.csv`](outputs/track9_phase9c_k_linearity.csv)
+
+### F9c.1. The mass formula is exactly linear under scaling
+
+Numerical verification of `μ(3k, 6k) = k·μ(3, 6)` at
+(ε_p = 0.55, s_p = 0.162037):
+
+| k | μ(3k, 6k) | k·μ(3, 6) | Relative error |
+|:-:|:-:|:-:|:-:|
+| 1 | 7.7559678970 | 7.7559678970 | 0 |
+| 10 | 77.5596789705 | 77.5596789705 | 0 |
+| 50 | 387.7983948523 | 387.7983948523 | 1.5×10⁻¹⁶ |
+| 100 | 775.5967897047 | 775.5967897047 | 1.5×10⁻¹⁶ |
+| 168 | 1303.0026067039 | 1303.0026067039 | 0 |
+| 200 | 1551.1935794094 | 1551.1935794094 | 1.5×10⁻¹⁶ |
+
+**Maximum deviation: 1.5×10⁻¹⁶** — exactly at double-precision
+floating-point noise.  The formula is algebraically linear
+under uniform scaling; there is no high-n regime where it
+deviates.
+
+Reading derivation 4 directly confirms this: the formula
+`μ² = (n_t/ε)² + (n_r − s·n_t)²` is a closed-form consequence
+of the photon-on-T² geometry with no n-dependent approximation.
+The only approximation cited (`s_geom ≈ ε·s`) is in the
+*geometric interpretation* of the s parameter, not in the mass
+formula itself.
+
+### F9c.2. Full 11D metric preserves additivity
+
+Testing the full 11D compound-mode energy against the sum of
+nucleon masses, at g-candidate baseline (σ_cross = 0):
+
+| Nucleus | E(compound) | Z·m_p + (A−Z)·m_n | ΔE |
+|:---|:-:|:-:|:-:|
+| ²H | 1876.54407 | 1876.54414 | −6.96×10⁻⁵ |
+| ⁴He | 3753.08814 | 3753.08828 | −1.39×10⁻⁴ |
+| ¹²C | 11259.26442 | 11259.26483 | −4.17×10⁻⁴ |
+| ⁴⁰Ca | 37530.88139 | 37530.88278 | −1.39×10⁻³ |
+| ⁵⁶Fe | 52543.23424 | 52543.23617 | −1.94×10⁻³ |
+| ²⁰⁸Pb | 195160.58662 | 195160.59353 | −6.91×10⁻³ |
+
+ΔE scales with A (the tiny residual is the √(sum of squares)
+vs sum non-linearity between compound and separated, same as
+Phase 9a's ~10⁻⁴ MeV noise scaled up).  It is **seven orders of
+magnitude too small** to account for observed nuclear binding.
+
+### F9c.3. Path B falsified
+
+The mass formula's closed-form derivation in R62 derivation 4
+contains no approximation in n that breaks down at nucleus
+scale.  Numerical verification confirms exactness.  There is no
+"high-winding correction" available to supply binding; Path B
+is falsified.
+
+### F9c.4. What Phase 9c establishes
+
+1. **μ(kn_t, kn_r) = k·μ(n_t, n_r) holds exactly to
+   double-precision** across k ∈ {1 … 200}, covering the full
+   nucleus-scale winding range.
+2. **At σ_cross = 0, the 11D compound energy equals the sum of
+   nucleon masses to ~10⁻³ MeV** even for Pb — cleanly orders of
+   magnitude short of observed binding energies (1800 MeV for Pb).
+3. **Path B is falsified.**  The mass formula is not hiding a
+   binding mechanism at high n_pt.
+
+Only **Path C (Z₃ multi-strand phase coherence)** remains as
+an Ma-internal candidate.  Phase 9d takes that up.

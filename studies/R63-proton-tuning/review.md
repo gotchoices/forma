@@ -444,3 +444,56 @@ If P1 succeeds, Track 9 completes as a positive result.
 If P1–P4 all fail, *then* the "binding requires framework
 extension" conclusion in findings-9.md is earned.  The
 current F9a findings are not enough to earn it.
+
+---
+
+## After Phase 9b
+
+**What 9b settled.**  The ~94K-tuple search found no lighter
+v2-compatible tuple for the deuteron at structural precision
+(n_pt = 6 for the 2-baryon count).  Path A — "the deuteron is
+a different Ma tuple than the additive sum" — is falsified for
+the deuteron.  P4 in my earlier list is closed.
+
+**What 9b did NOT settle.**  9b is a tuple search; it cannot
+see internal phase structure.  The current mass formula reads
+`(6, 12)` via `μ(6, 12) = 2·μ(3, 6)` by linearity, identical
+whether the six strands are arranged as two Z₃ triplets or as
+one Z₆ hexagon.  **Path C (phase coherence) is not a tuple
+question and is untouched by 9b's result.**
+
+### Does the neutrino sheet add a new direction?
+
+Probably not productive:
+
+1. **ν-sheet is structurally passive.**  R60 T18 zeroes ν-sheet
+   charge; F9a's cross-shear test showed ν-sheet cross-terms
+   don't break the compound-vs-separated cancellation; T6 Phase
+   6c found ν-sheet variations don't move inventory fitness.
+2. **More ν winding ⇒ higher mass.**  Additional ν content
+   contributes a kinetic-like term to the quadratic form.
+   Binding needs to *lower* mass, so ν extensions push the
+   wrong way at leading order.
+3. **9b already tested ν variations.**  The raw search scanned
+   ν by Δ = 3; the n_pt = 6 constrained search by Δ = 2.  No
+   lighter tuple surfaced from ν variation alone.
+
+The Majorana question (is ν = ν̄?) is real but orthogonal — it
+changes the independent-mode count on the ν-sheet, not the
+sheet's mass contribution.  It doesn't create binding.
+
+### Recommended order
+
+1. **Phase 9c (mass-formula validity at high n_pt).**  Already
+   announced; runs next per findings-9.  Likely a smaller
+   effect but worth checking.
+2. **Phase 9b-new (Z₆ vs. 2 × Z₃ phase coherence at k = 6).**
+   The one untouched Ma-internal mechanism that is structurally
+   motivated by extending Q132 v2's ω-sum to multi-strand
+   composites.  Deuteron binding (2.2 MeV) as a one-number
+   test; extend to ³He (7.7 MeV) and ⁴He (28.3 MeV) if the
+   first number lands.
+
+If both 9c and 9b-new fail, the "binding requires framework
+extension" conclusion in F9a.6 is earned.  Until then, R63
+stays open with a specific Ma-internal candidate in play.
