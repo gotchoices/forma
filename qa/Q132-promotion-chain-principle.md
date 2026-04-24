@@ -1,11 +1,11 @@
-# Q132: The promotion-chain principle — what each compact dimension produces, and why `|n_tube| = ±1`
+# Q132: The promotion-chain principle — phase-locked 2π closures and the (bright, dark, multiple) typology of modes
 
-**Status:** Open — working hypothesis.  Proposes a foundational
-principle that unifies R33's empirical "n_tube = ±1" rule,
-the order-of-compactification framework (Q127), and the
-ghost-suppression behavior exposed by R63 Tracks 1–4.  Not yet
-derived from GRID axioms; formalization is an R62 derivation
-target.
+**Status:** Open — working hypothesis, **v2 (refined)**.
+Proposes a foundational principle that unifies R33's empirical
+"n_tube = ±1" rule, the order-of-compactification framework
+(Q127), and the ghost-suppression behavior exposed by R63
+Tracks 1–4.  Not yet derived from GRID axioms; formalization
+is an R62 derivation target.
 
 **Related:**
   [Q127](Q127-orders-of-compactification.md) (orders of compactification),
@@ -17,15 +17,40 @@ target.
   [R60 T17](../studies/R60-metric-11/findings-17.md) (e-sheet Z₃ exemption),
   [R60 T18](../studies/R60-metric-11/findings-18.md) (ν-sheet charge = 0),
   [R62 Program 1](../studies/R62-derivations/) (electron from light),
-  [R63](../studies/R63-proton-tuning/) Tracks 1–4 (ghost audits that exposed the need for this principle).
+  [R63](../studies/R63-proton-tuning/) Tracks 1–6 (ghost audits and refinement).
+
+---
+
+## 0. Brief history
+
+**Q132 v1 (initial draft, now superseded).**  The original
+formulation asserted per-sheet rules:
+(a) charge requires both `n_tube ≠ 0` AND `n_ring ≠ 0` on the
+*same* sheet; (b) `|n_tube| ≥ 2` is forbidden as a single
+particle (multi-event rule), allowed only via sheet-specific
+binding (Z₃ on p, T18 pairing on ν).  This successfully cleaned
+the pure-e-sheet ghost tower (R63 Track 4), but applied to
+R60 T19's compound-mode inventory it flagged 9 of 19 particles
+as Q132-incompatible on their e-sheet — forcing speculative
+"e-sheet binding mechanism" rescues.  v1 was **too restrictive**:
+it forbade modes that phase-cancellation naturally handles
+without invoking a new binding mechanism.
+
+v2 below replaces the per-sheet forbidding with a cleaner
+gcd-based classification: multi-event modes decompose into
+bright copies of a primitive, or are *dark* (mass-only) when
+the primitive's two windings don't phase-lock.  Every v1
+conclusion that used mode enumeration or dark-mode reinterpretation
+still holds under v2.
 
 ---
 
 ## 1. The principle
 
 **Each compact dimension promotes its input to the next-order
-observable, subject to specific rules about what constitutes a
-completed promotion.**
+observable.  A 2π closure is one promotion event.  A second
+axis can receive a promotion from the same photon only when its
+own 2π completes in phase with the first.**
 
 The three levels at work in model-F:
 
@@ -36,229 +61,312 @@ The three levels at work in model-F:
 | 2 | ring (first T² cycle) | energy | **mass** |
 | 3 | tube (second T² cycle) | mass | **charge** |
 
-Each level is a compact 2π closure, and each 2π closure counts
-as **one discrete promotion event**.  Multiple 2π closures on the
-same cycle are not amplifications of one event — they are
-**separate events** producing separate objects.
+On a single sheet the tube and ring are the two cycles of a
+T² torus.  Both can promote a trapped photon at once — energy
+becomes mass via the ring, mass becomes charge via the tube —
+but only if the two 2π closures are **phase-locked**: the
+ring must have completed an integer number of cycles at the
+moment the tube first closes.  This is the central added
+content of v2.
 
-## 2. Mass vs charge role: shear-determined
+## 2. Physical mechanism — first-closure promotion
 
-A trapped photon produces mass regardless of whether it's trapped
-in the ring or the tube direction — any confined EM energy has a
-rest frame and therefore a mass.  **The asymmetry between "ring as
-mass producer" and "tube as charge producer" is set by the SHEAR
-geometry**, not by an intrinsic difference between the two cycles.
+Consider a single-sheet mode `(n_t, n_r)` tracing a closed path
+on the sheet's T².  As the path advances, tube and ring phases
+wind at rates proportional to `n_t` and `n_r`.  The path's full
+primitive period closes after the tube has wound `n_t` times
+and the ring `n_r` times.
 
-On the e-sheet, the extreme shear (s_e ≈ 2) makes the (1, 2)
-family shear-resonant, concentrating mass in the ring direction
-and designating the tube as the "charge counter."  On the p-sheet,
-s_p ≈ 0.16 and the (n, 2n) structure similarly picks out one
-direction as primary-mass, the other as charge.  On the ν-sheet,
-R60 T18's real-field conjugate-pair averaging nullifies the
-charge-producing mechanism even when tube winding is present.
+**At the first 2π tube closure** (1/n_t of the way through the
+primitive period) the ring phase is `2π · (n_r/n_t)`.  Two
+cases:
 
-This shear-based role designation is an empirical observation
-from the sheet geometries that model-F has converged on; the
-deeper reason *why* shear plays this role is an open derivation
-target.
+- **Integer ratio** (`n_t | n_r`, i.e., the ring has completed
+  an integer number of 2π closures at that moment).  The tube's
+  promotion from mass to charge has a fully formed mass quantum
+  (supplied by the ring) to act on.  Charge emerges.  Bright.
+- **Non-integer ratio.**  The tube closes without the ring
+  having completed its own 2π, so there is no clean mass
+  quantum available to be promoted.  The promotion fails at
+  first closure and the mode settles as mass only.  **Dark.**
 
-## 3. Particle-creation events
+The picture is one-shot: the *first* closure decides.  If
+charge fails to fire at the first tube 2π, it cannot recover
+at later closures because the phase relationship is fixed by
+the winding ratio, not by opportunity.
 
-The principle is sharpest on the tube:
+## 3. Mathematical form — the ω-sum
 
-> **Each 2π tube closure is one particle-creation event.**
+The first-closure story is equivalent to a cumulative
+phase-sum that gives the same classification.  At each tube
+closure `j = 1 … n_t` the charge contribution has phase
+`exp(i · 2π · j · n_r / n_t)`.  Total charge:
 
-- `|n_tube| = 1` is one event → one particle.
-- `|n_tube| = 2` is two events → two particles (not one composite
-  unless bound by Z₃-style mechanisms, in which case each
-  constituent strand still has `|n_tube| = 1`).
-- `|n_tube| = 0` is no event → no particle from the tube, but
-  other cycles may still produce a (neutral) particle.
+<!-- Q_net = Σ_{j=1}^{n_t} exp(i · 2π · j · n_r / n_t) -->
+$$
+Q_{\text{net}} \;=\; \sum_{j=1}^{n_t} e^{\,i\,2\pi\,j\,n_r/n_t}
+$$
 
-## 4. Typology of single-sheet modes
+Letting ω = exp(i · 2π · n_r/n_t):
 
-Combining the promotion chain and the per-event rule gives a
-clean classification of single-sheet `(n_tube, n_ring)` tuples:
+- If **ω = 1** (equivalent to `n_t | n_r`): every term is 1,
+  `Q_net = n_t`.
+- If **ω ≠ 1**: the geometric series collapses using
+  `ω^(n_t) = exp(i · 2π · n_r) = 1`, giving
+  `Q_net = ω · (1 − ω^(n_t)) / (1 − ω) = 0`.
 
-| Pattern | Mechanism | Physical result |
-|:-------:|:----------|:---------------|
-| (0, 0) | no activity on either cycle | no particle |
-| **(0, n_r ≠ 0)** | ring traps photon → mass; no tube closure → no charge | **neutral massive particle** |
-| **(1, 0)** | tube traps photon — but with no ring to provide ring-derived mass, the tube acts as its own ring (self-generated mass); no mass-to-charge promotion available | **neutral massive particle** |
-| (1, n_r ≠ 0) | ring provides mass; tube 2π promotes mass to charge | **charged particle** |
-| (\|n_tube\| ≥ 2, any n_r) | multiple 2π tube closures → multiple particle events | **forbidden as a single compound** (may appear as Z₃-style composite of n strands) |
+The ring's phases at successive tube closures form the n_t-th
+roots of unity, which sum to zero.  **Charge either adds
+coherently (ω = 1) or cancels exactly (ω ≠ 1).  There is no
+intermediate.**
 
-**Key clarification.**  Both (0, n_r ≠ 0) and (1, 0) are valid
-particles — both involve a confined photon, both produce mass.
-The distinction is whether a second-order promotion to charge
-can occur: it requires a mass input available to the tube
-(which the ring provides), AND a successful tube 2π closure
-(which promotes that mass).  If either is missing, the mode
-is neutral.
+Both views are equivalent; the first-closure view is a
+one-shot decision rule, the ω-sum view is the same decision
+expressed as exact cancellation across all closures.
 
-## 5. What this principle explains
+## 4. Classification of single-sheet modes
 
-### a. R33's empirical "n_tube = ±1" rule — derived
+Reduce `(n_t, n_r)` by gcd to its primitive `(p_t, p_r)` with
+`gcd(p_t, p_r) = 1`; the original mode is `k` copies of the
+primitive where `k = gcd(|n_t|, |n_r|)`, and `μ(n_t, n_r) = k ·
+μ(p_t, p_r)` exactly.
 
-R33 observed from the charge formula that real particles have
-`|n_tube| = 1` but did not derive it from first principles.
-Under the per-event rule, this is immediate: a particle
-corresponds to one creation event, which is one 2π tube closure.
-Any observed stable particle therefore has exactly `|n_tube| = 1`
-on its active charged sheet.
+| Primitive | Result | Multiplicity | Classification |
+|:--:|:--|:--:|:--|
+| `(0, 0)` | nothing traps | — | no particle |
+| `(0, p_r ≠ 0)` | ring traps photon → mass; no tube → no charge promotion | k | **neutral massive particle (ring-only)** |
+| `(p_t ≠ 0, 0)` | tube closes but no ring-supplied mass to promote | k | **neutral massive particle (tube-only, self-mass)** |
+| `(±1, p_r ≠ 0)` | one tube closure with ring at integer phase → charge fires | k | **k bright charged particles** |
+| `(p_t, p_r)` with \|p_t\| > 1, gcd=1 | first tube closure finds ring off-integer → charge fails; ω-sum cancels | k | **k dark massive particles (mass only, Q = 0)** |
 
-### b. Z₃ confinement on the p-sheet — absorbed
+### Worked examples
 
-R60 T16 derived that `n_pt ≡ 0 (mod 3)` is required for free
-p-sheet modes (density-fluctuation cancellation).  Under the
-promotion-chain principle with the per-event rule, this becomes:
+| Mode | gcd | Primitive | Result |
+|:---:|:---:|:---:|:---|
+| (1, 2) | 1 | (1, 2) | 1 charged particle (electron on e-sheet) |
+| (1, 15) | 1 | (1, 15) | 1 charged particle (tau on e-sheet) |
+| (2, 4) | 2 | (1, 2) | 2 charged particles (2 electrons) |
+| (3, 6) | 3 | (1, 2) | 3 charged particles (on p-sheet, 3 quarks via Z₃) |
+| (2, 3) | 1 | (2, 3) | 1 dark massive particle (ω = e^(i3π) ≠ 1) |
+| (3, 2) | 1 | (3, 2) | 1 dark massive particle |
+| (4, 6) | 2 | (2, 3) | 2 dark massive particles |
+| (3, 5) | 1 | (3, 5) | 1 dark massive particle |
+| (0, 5) | 5 | (0, 1) | 5 ring-only neutrals — or equivalently one 5-ring-wound neutral (no tube interaction to distinguish) |
+| (1, 0) | 1 | (1, 0) | 1 tube-only neutral |
 
-- A free composite must be a Z₃ triplet of strands, each with
-  `|n_pt| = 1` (so each strand is one particle-creation event).
-- The composite has three events (three "quarks") bound together.
-- The composite's apparent `|n_pt| = 3` is the count of its
-  constituents, not a single-particle tube winding.
+The gcd reduction is a mathematical identity (not an
+interpretation choice): the μ-value of any non-primitive mode
+is an exact integer multiple of its primitive's μ-value.  The
+physical meaning of k-multiplicity depends on binding:
 
-This is consistent with R60 T16 and strengthens the
-interpretation: the (3, 6) proton is three quark strands, each
-with its own 2π tube closure, bound by Z₃.
+- No binding (e-sheet) → k separate free particles in the
+  observed spectrum.  E.g., (2, 4) on e-sheet means "2
+  electrons," not a new |Q| = 2 particle.
+- Binding mechanism available (p-sheet Z₃, ν-sheet T18) →
+  k bound constituents of a composite.  E.g., (3, 6) on
+  p-sheet means "3 quarks bound into a baryon."
 
-### c. The e-sheet's absence of a Z₃ analog — explained
+## 5. Compound modes and cross-sheet charge arithmetic
 
-The e-sheet's `|n_et|=1` behavior does not require Z₃
-confinement; it requires only the per-event rule.  A single
-electron is `(1, 2)` with one tube event; the muon is `(1, 1)`,
-the tau is `(1, 15)` (per R63 Track 4, contra R53's high-n
-claim).  All three are single-event leptons.
+A compound mode has a winding pair `(n_t, n_r)` on each of the
+three sheets.  Classify each sheet's contribution by the
+section-4 table, then sum charges:
 
-### d. The `(1, 0)` ν-sheet "ghost" — reinterpreted
+<!-- Q_compound = Q_e + Q_ν + Q_p -->
+$$
+Q_{\text{compound}} \;=\; Q_e \;+\; Q_\nu \;+\; Q_p
+$$
 
-Model-F flagged `(1, 0)` on the ν-sheet as a ghost because it
-predicted a neutral mode with no observed counterpart.  Under
-the promotion-chain principle, it's **not a ghost — it's a
-valid prediction** of a tube-only neutral particle.  Its mass
-under R61 #1 geometry would be ~46% of ν₁, placing it at ~13–15
-meV.  This is below cosmological detection thresholds, but the
-prediction is clean and may connect to sterile-neutrino
-phenomenology.
+with per-sheet contribution:
 
-### e. Ring-only neutral modes — reinterpreted
+- **Bright primitive `(±1, p_r ≠ 0)`, k copies:** contributes
+  `±k` units of charge (sign fixed by the sheet's tube
+  direction convention).
+- **Dark primitive (\|p_t\| > 1, gcd = 1):** contributes 0 (Q_net
+  cancels by ω-sum).
+- **Tube-only `(±1, 0)`, k copies:** contributes 0 (no ring
+  → no mass quantum to promote).
+- **Ring-only `(0, p_r ≠ 0)`, k copies:** contributes 0 (no
+  tube event).
+- **Null `(0, 0)`:** contributes 0.
 
-Similarly, `(0, n_r ≠ 0)` modes on any sheet — previously flagged
-as ghosts in R63 Tracks 1 and 4 — are valid predictions of
-**neutral massive particles (ring-trapped photons)** under the
-clarified principle.  Their non-observation in the observed
-spectrum makes them **dark-mode candidates** (consistent with
-R42's dark-matter framing of ghost modes).
+The ν-sheet has an additional reduction: R60 T18's real-field
+conjugate-pair averaging zeroes the ν-sheet's charge
+contribution regardless of windings.  So effectively
+`Q_ν = 0` always for the neutrino sheet.
 
-### f. R63 Track 1 high-|Q| ghosts — killed
+This produces `Q_compound` as a single integer matching the
+particle's observed charge.  A compound with all-dark sheets
+is valid and is a **massive neutral particle** — mass from
+ring-trapped photons on one or more sheets, charge zero by
+phase cancellation on each.
 
-The p-sheet modes like `(3, 1), (3, 2), (3, 4), (3, 5)` with
-gcd(n_pt, n_pr) = 1 have "per-strand" windings that would be
-non-integer — so they cannot arise as integer-strand Z₃
-composites.  Under the per-event rule, they are forbidden.
+## 6. Discipline constraint for model-building
 
-### g. R63 Track 4 high-|n_et| ghosts — killed
+A correct rule for charged particles must satisfy two
+asymmetric tests:
 
-The e-sheet `(2, 4), (3, 6), (4, 8)` ghost tower at multiples
-of m_e has `|n_et| ≥ 2` — multiple tube events → forbidden as
-single particles.  Z₃ compositing is not structurally
-available on the e-sheet (R60 T17's exemption), so these don't
-reappear as composites either.
+1. **Every observed charged particle must be predicted.**  The
+   rule cannot exclude anything we see.
+2. **No unobserved charged particle may be predicted.**  The
+   rule's bright catalog must not contain entries with no
+   observational counterpart.
 
-## 6. Net effect on R63's ghost inventory
+Dark particles are **unconstrained** by current observation —
+any number of dark modes may accumulate as predictions without
+conflict, and they form a natural dark-matter / dark-resonance
+candidate catalog (consistent with R42's framing).
 
-Every single-sheet ghost R63 has identified is either:
+v2's bright/dark split is built around this asymmetry:
+predicted brights must match; predicted darks are free.
 
-- **eliminated** (multi-event modes; gcd-mismatched p-sheet
-  modes with no integer strand decomposition);
-- **reinterpreted as a valid neutral massive particle**
-  ((0, n_r ≠ 0) modes, (1, 0) ν-sheet); these become dark-matter
-  or sterile-neutrino candidates rather than problems;
-- **handled by an existing mechanism** ((1, n_r ≠ 0) modes on
-  the ν-sheet, which are tube+ring → would be charged but R60
-  T18's real-field conjugate pairing neutralizes them).
+## 7. What v2 explains
 
-## 7. Open questions and derivation targets
+### a. R33's empirical "n_tube = ±1" rule — still derived
 
-1. **Why does the shear determine the ring/tube role?**  The
-   principle says the tube is the charge counter, but the
-   underlying reason the shear-resonance direction plays the
-   ring role and the tube-Killing direction plays the charge
-   role is not derived.  Candidate mechanism: the shear
-   resonance makes the ring direction's KK momentum near-zero,
-   leaving only the tube direction to carry topological charge
-   into 4D.  Needs explicit derivation.
+R33 observed from the charge formula that real charged
+particles have `|n_tube| = 1` on their active charged sheet.
+Under v2 this is a corollary of the bright condition: any
+primitive charged mode requires `|p_t| = 1`.  Multi-event
+modes with `|n_t| > 1` either decompose (gcd > 1 → k electrons
+on e-sheet) or phase-cancel (gcd = 1 → dark).  In both cases
+no new `|Q| > 1` fundamental particle is produced from a
+single e-sheet mode.
 
-2. **Why is a 2π tube closure one "event" and not zero, two, or
-   a fraction?**  The principle asserts it; GRID A6's "α as
-   coupling per 2π" is consistent but not a proof.  An R62
-   derivation starting from GRID axioms → KK reduction → "each
-   2π emits one quantum" would formalize this.
+### b. Z₃ confinement on the p-sheet — natively compatible
 
-3. **What does tube-without-ring "self-promoting mass" actually
-   mean mechanically?**  The (1, 0) mode's mass depends on the
-   full metric via L_ring and the shear; the principle just
-   says "mass exists," without specifying the ring-vs-tube
-   mass-contribution breakdown.  An explicit derivation would
-   show how the tube direction's trapped energy produces mass
-   via the sheet geometry.
+The (3, 6) proton has gcd = 3 on the p-sheet, decomposing
+into 3 × (1, 2) primitives.  Each primitive is a bright
+charged strand — a quark with tube winding 1.  Z₃
+confinement is the binding mechanism that holds the 3
+strands together; v2 provides the strand-counting
+(gcd decomposition).  Z₃ remains an independent structural
+rule, but it now sits on top of a general gcd framework
+rather than as a one-off exception.
 
-4. **How does multi-sheet compositing interact with the per-event
-   rule?**  Multi-sheet compounds (pions, baryons, nuclei)
-   should be bookkeeping-consistent with "N particle-creation
-   events, bound together."  A full-audit of the existing
-   model-F inventory against this interpretation is warranted.
-   Particularly: the neutron `(−3, −6, 1, −6, −3, −6)` has
-   `|n_et| = 3` and `|n_pt| = 3` — does this represent 3 strands
-   on each sheet plus 1 ν event (7 total events)?  Or some
-   other decomposition?
+### c. R63 Track 4 e-sheet ghost tower — dissolved
 
-5. **Is the ν-sheet charge neutralization (R60 T18) derivable
-   from the promotion chain, or is it an independent
-   architectural feature?**  If the real-field conjugate pairing
-   is a consequence of the same principle, the theory is
-   complete; otherwise it's a separate rule.
+The (2, 4), (3, 6), (4, 8) "ghost tower" at multiples of m_e
+was the motivating finding.  Under v2 these modes have
+primitive (1, 2) (= electron) with multiplicity 2, 3, 4 — so
+they are not new particles but 2, 3, 4 electrons.  Because
+the e-sheet has no binding mechanism, these scatter as free
+electrons rather than forming composites.  No new particles
+are predicted; the ghost tower is gone.
 
-## 8. Status and next steps
+### d. Multi-event dark modes — a new positive prediction
+
+Modes with gcd = 1 and `|n_t| > 1` like `(2, 3)`, `(3, 2)`,
+`(3, 5)`, `(5, 2)` are genuine particles in v2 — they have
+mass (from the trapped EM energy) but zero charge (by ω-sum
+cancellation).  These populate the **dark-mode catalog**
+alongside ring-only and tube-only neutrals.  R42's dark-
+matter framing naturally absorbs them.
+
+### e. Compound all-dark modes — permitted
+
+A compound whose every active sheet is primitively dark is a
+valid heavy neutral particle.  R60 T19 tupled φ and ρ with
+sheets that are all primitively dark under v2; this is
+consistent with their observation as neutral vector mesons.
+Whether these are the *correct* tuples for φ and ρ is a
+separate question to be settled inside R63.
+
+### f. ν-sheet (1, 0) — reinterpreted as tube-only neutral
+
+The flagged ν-sheet ghost at `(n_νt, n_νr) = (1, 0)` is a
+tube-only neutral under section 4 — a valid sterile-neutrino
+candidate, not a ghost.  (R60 T18's charge-zero rule is
+independent; it applies after v2 classification.)
+
+## 8. Open questions and derivation targets
+
+1. **Why does the first tube closure decide?**  The asymmetry
+   between "failed at first closure → dark" vs "successful
+   at first closure → charged, and subsequent closures
+   contribute copies" deserves derivation from the underlying
+   dynamics.  The ω-sum gives the same answer but via
+   cumulative cancellation; a proof that these two pictures
+   are equivalent at the level of GRID dynamics is an R62
+   target.
+
+2. **Why is a 2π tube closure one "promotion event"?**  GRID
+   A6's "α as coupling per 2π" is consistent but not a proof.
+   An R62 derivation from GRID axioms → KK reduction →
+   "each 2π emits one quantum" would formalize the base unit.
+
+3. **What sets the tube-vs-ring role?**  v2, like v1, relies
+   on the sheet's shear geometry to designate which cycle is
+   the "charge counter" and which the "mass counter."  A
+   derivation of the role designation from shear magnitude is
+   open.
+
+4. **Is R60 T18's ν-sheet charge zero derivable from v2?**
+   Currently it is an independent architectural feature.  If
+   the real-field conjugate pairing on the ν-sheet is itself
+   a consequence of the promotion chain (e.g., a symmetry of
+   how ν's aleph maps to its ring), then the theory is
+   unified; otherwise T18 remains a separate rule.
+
+5. **Does the ω-sum generalize to more than one tube event per
+   sheet with binding?**  Z₃ on the p-sheet handles k = 3
+   strand binding; its generalization to larger k (nuclei with
+   `n_pt = 3A, n_pr = 6A`) is already used empirically.  A
+   clean statement of "bright multiplicity k is bound into one
+   composite when a k-ary binding exists" is worth writing
+   down explicitly.
+
+## 9. Status and next steps
 
 This Q file captures the principle; it does not derive it.
 
 **Path to formalization:**
 
 - A **new R62 derivation** (Program 2, "Promotion-chain
-  principle") starting from GRID axioms, KK reduction, and
-  the 2π-per-event counting, producing as output:
-  (a) the per-event rule as a theorem,
-  (b) the shear-determined role asymmetry,
-  (c) the typology of Section 4,
-  (d) the ghost-suppression results of Section 5.
+  principle — v2") starting from GRID axioms, KK reduction,
+  and the phase-lock condition, producing as output:
+  (a) the first-closure decision rule as a theorem,
+  (b) the ω-sum as its mathematical form,
+  (c) the shear-determined role asymmetry,
+  (d) the typology of Section 4,
+  (e) the compound charge arithmetic of Section 5.
 
-- **Empirical validation** inside R63: Track 5 (if created)
-  could apply the principle explicitly to re-score the e-sheet
-  and p-sheet landscapes, treating the now-allowed neutral
-  modes as valid predictions rather than ghosts.
+- **Empirical validation** inside R63: Tracks 5 and 6 apply v2
+  to the e-sheet landscape and the compound-mode inventory
+  respectively.  A pass of Track 5 (no bright ghosts on
+  isolated e-sheet) and Track 6 (every observed charged
+  particle predicted, no unobserved charged particle
+  predicted) would establish v2 as sound for model-building
+  work (pre-model-G).
 
 - **Comparison with Q131's unpromoted-information proposal**:
   both Q131 (dark energy as unpromoted aleph information) and
-  this principle (particle species as promotion results) share
-  the same "promotion" framework.  They may unify as parts of
-  a single theory of compact-dimension physics.
+  this principle (particle species as promotion results)
+  share the same "promotion" framework and may unify under a
+  single theory of compact-dimension physics.
 
-## 9. Why this matters
+## 10. Why this matters
 
 If correct, the principle:
 
-- Turns `|n_tube| = ±1` from an empirical rule into a **theorem**;
-- Explains **why particles are discrete** (each 2π = one event);
-- Unifies **Z₃ confinement** (p-sheet) and **winding restriction**
-  (e-sheet) under a single rule;
-- Converts the **R63 ghost list** from an architectural problem
-  into a **predictive catalog** of dark and sterile states;
-- Slots cleanly above the existing **order-of-compactification**
-  framework (Q127), which describes *what each level produces*
-  but not *what a completed promotion looks like at each level*.
+- Turns `|n_tube| = ±1` from an empirical rule into a
+  **corollary** of the phase-lock condition;
+- Explains **why particles are discrete** (each 2π = one
+  event) and **why some are dark** (phase-cancellation when
+  the primitive windings don't lock);
+- Unifies **Z₃ confinement** (p-sheet), **winding restriction**
+  (e-sheet), and **charge-zero pairing** (ν-sheet) under a
+  single gcd-based counting rule;
+- Converts the **R63 ghost list** from an architectural
+  problem into a **predictive catalog** of dark and sterile
+  states, with the bright catalog disciplined to match the
+  observed charged inventory exactly;
+- Provides a concrete tuple-validity filter (`n_t | n_r` for
+  any sheet that is supposed to contribute charge) that
+  focuses the search space for compound-mode tuples without
+  introducing new binding mechanisms.
 
-If wrong, the framework still exposes the specific questions
-(items 1–5 in Section 7) that need answering — progress either
-way.
+If wrong, v2's concrete predictions (the bright catalog must
+match every observed charged particle, no more and no fewer)
+make it falsifiable with the existing inventory, not with
+speculative future observations.
