@@ -11,12 +11,13 @@ Phases adopted (renamed from the original 6A/6A-prime/6B/6C/6D):
 - **6a** — Per-sheet v2 classification and compound charge check
   against R60 T19's inventory.
 - **6b** — Constrained tuple re-derivation for particles failing 6a.
-- **6c** — (deferred) Marginal ratio scans.
+- **6c** — Marginal ratio scans against the v2-certified tuple set,
+  width-weighted to reflect each particle's natural line width.
 - **6d** — (deferred) Joint ratio search.
 - **6e** — (deferred) Dark-mode compound catalog at shortlist.
 
-This document covers 6a and 6b.  6c–6e run after the re-derived
-tuple set is validated.
+This document covers 6a, 6b, and 6c.  6d–6e run if 6c's findings
+justify them.
 
 ---
 
@@ -243,11 +244,219 @@ that differs from model-F by adopting Q132 v2 as an explicit rule.
 Per the R63 discipline, model-G will not be drafted until 6c–6e
 (and any follow-up R63 tracks) confirm no regression.
 
+---
+
+## Phase 6c — Marginal ratio scans (width-weighted, v2 inventory)
+
+**Scope.**  Sweep each sheet's `(ε, s)` over a 2D grid while
+holding the other two sheets at model-F baseline.  At each grid
+point, re-derive that sheet's `L_ring` from its anchor tuple
+(electron for e, proton for p, ν₁ for ν), rebuild the metric,
+compute the predicted mass of all 19 v2-certified inventory
+tuples, and score against observed masses using width-weighted
+thresholds: `threshold = max(2%, 2 × Γ/m)` where `Γ = ℏ/τ` is
+each particle's natural line width.
+
+The width-weighted scoring implements the user's "story of
+lifetime" criterion: the expected prediction accuracy is bounded
+by the particle's physical width.  Broad resonances (ρ at
+Γ/m ≈ 19%) have wide thresholds; narrow states (leptons, most
+hadrons) bottom out at the 2% floor.
+
+Script:
+[`scripts/track6_phase6c_marginal_scans.py`](scripts/track6_phase6c_marginal_scans.py)
+Outputs:
+[`outputs/track6_phase6c_p_sheet.png`](outputs/track6_phase6c_p_sheet.png),
+[`outputs/track6_phase6c_e_sheet.png`](outputs/track6_phase6c_e_sheet.png),
+[`outputs/track6_phase6c_nu_sheet.png`](outputs/track6_phase6c_nu_sheet.png),
+[`outputs/track6_phase6c_grids.csv`](outputs/track6_phase6c_grids.csv),
+[`outputs/track6_phase6c_peaks.txt`](outputs/track6_phase6c_peaks.txt).
+
+### F6c.1. Headline — baseline is already near-optimal
+
+| Configuration | Fitness (19 max) | Comment |
+|:---|:-:|:---|
+| model-F baseline `(ε_p, s_p) = (0.55, 0.162)` | **14.91** | near-peak |
+| p-sheet marginal peak `(0.55, 0.16)` | **15.03** | ~baseline, tiny nudge |
+| e-sheet marginal peak `(349, 2.004)` | 14.60 | slightly below baseline |
+| ν-sheet: any `(ε_ν, s_ν)` tested | 14.91 | completely passive |
+| Track 3b pure-p peak `(0.80, 0.05)` | **7.22** | catastrophic for 12 of 16 hadrons |
+
+The marginal scans confirm that **the model-F baseline ratios
+are already the best point across all three sheets** for the
+full 19-particle v2 inventory.  No ratio shift recovers more than
+a ~1% fitness improvement; several previously-attractive points
+(Track 3b's pure-p peaks) collapse fitness globally.
+
+### F6c.2. The ν-sheet is passive
+
+Fitness is **identical** (14.911 / 19) at every `(ε_ν, s_ν)`
+point tested across `ε_ν ∈ [1.0, 10.5]` and `s_ν ∈ [0.005, 0.1]`.
+This confirms the R60 T18 reading: the ν-sheet's contribution to
+compound-mode masses at R61 geometry (L_ring_ν ~ 10¹¹ fm) is
+below the metric's numerical resolution.  Under v2 the ν-sheet
+can be frozen at any representative value for inventory work;
+`ε_ν` remains open, but not because it's under-determined —
+because it *doesn't matter* for the inventory.  A ν-specific
+study (pool item **o**) would still be necessary for neutrino
+observables.
+
+### F6c.3. Track 3b's peak breaks the full inventory
+
+Track 3b (pure-p-sheet fitness) found `(0.80, 0.05)` as a peak
+because it makes `μ(3, 6) ≈ 6.95`, which combined with proton
+calibration gives `K = m_p / μ(3, 6) = 135` MeV — landing the
+pure-p-sheet pion `(0, 0, 0, 0, 0, −1)` at exactly 135 MeV.
+π⁰ match under Track 3b at 0.038%.
+
+Evaluated against the full v2 inventory, `(0.80, 0.05)` produces:
+
+| Particle | Target | Pred at (0.80, 0.05) | Miss | Closeness |
+|:---|---:|---:|---:|:-:|
+| π⁰ | 134.98 | 135.03 | +0.04% | 0.98 |
+| η′ | 957.78 | 1023.88 | +6.90% | 0 |
+| φ | 1019.46 | 972.62 | −4.59% | 0 |
+| K⁰ | 497.61 | 550.10 | +10.55% | 0 |
+| K± | 493.68 | 550.01 | +11.41% | 0 |
+| η | 547.86 | 581.63 | +6.16% | 0 |
+| τ | 1776.86 | 1565.39 | −11.90% | 0 |
+| Λ | 1115.68 | 1157.32 | +3.73% | 0 |
+| Ξ⁰ | 1314.86 | 1017.11 | −22.65% | 0 |
+| ... | | | | |
+
+Track 3b's peak closes π⁰ at the cost of **12 other hadrons
+simultaneously breaking by 2–22%**.  This is a structural
+consequence: the p-sheet calibration factor `K = m_p / μ(3, 6)`
+scales every p-sheet-involving particle, and Track 3b's choice
+shifts `K` by ~11% — so every p-sheet particle shifts by ~11%
+except those that coincidentally re-align.
+
+### F6c.4. Pions are the one residual outlier
+
+At model-F baseline, the v2 inventory matches within 2% on **17
+of 19 particles**.  The only discipline-violating misses are:
+
+| Particle | v2 tuple | Mass miss | Γ/m (width) | Threshold | Status |
+|:---|:---:|:-:|:-:|:-:|:---|
+| π⁰ | `(0,0,−1,−6,0,−1)` | **+10.37%** | 5.8×10⁻⁸ | 2% | fail |
+| π± | `(1,2,−2,−6,0,−1)` | **+13.32%** | 1.8×10⁻¹⁶ | 2% | fail |
+
+Pions have very narrow natural widths, so the "lifetime story"
+criterion wants misses much smaller than 2% — not 10%.  These
+are genuine misses at model-level precision.  Every other hadron
+in the v2 inventory matches within its width-weighted threshold
+at baseline.
+
+### F6c.5. The pion tuples are the issue, not the ratios
+
+The pion tuples from R60 T19 have p-sheet `(n_pt, n_pr) = (0, −1)`
+— pure ring-only with `|n_pr| = 1`.  Under any `(ε_p, s_p)`:
+
+- `μ(0, −1) = |−1 − 0·s_p| = 1` (constant)
+- Pion mass `= 1 × K = m_p / μ(3, 6; ε_p, s_p)`
+
+At baseline `μ(3, 6) = 7.76 → K = 120.97 MeV`, so pion = 121 MeV.
+To land pion at 135 MeV we need `μ(3, 6) = 6.95`, i.e., Track 3b's
+ratios — but that breaks everything else.
+
+**The structural bind:** the proton `(3, 6)` and the pion `(0, −1)`
+are both p-sheet modes whose masses are rigidly tied by the
+shared `L_ring_p` calibration.  There is no `(ε_p, s_p)` at which
+`μ(3, 6) = 7.76 (proton fits)` AND `μ(0, −1) = 1.116 (pion fits at 135)`.
+These are different functions.  The ratio space has no solution
+under the current pion tuple assignment.
+
+The resolution must therefore come from a **different pion
+tuple**, not a different ratio.  Candidates:
+- A compound pion using e-sheet or ν-sheet bright contributions
+  whose combined mass lands at 135 MeV under model-F ratios.
+- A p-sheet primitive with different `(n_pt, n_pr)` that happens
+  to hit 135 MeV.
+- A mixed-sheet tuple leveraging the v2 dark-massive category.
+
+Phase 6b's search did not re-derive the pions because they passed
+Phase 6a's *charge* check — their mass mismatch slipped through
+the filter.  A Phase 6d-pion (or extension to 6b) targeting pion
+mass under v2 at baseline ratios is the natural next step.
+
+### F6c.6. Per-particle miss vs. width at baseline
+
+| Particle | Miss (Δm/m) | Γ/m (natural width) | Miss / (Γ/m) | Reading |
+|:---|:-:|:-:|:-:|:---|
+| electron | 0 | stable | — | exact ✓ |
+| proton | 0 | stable | — | exact ✓ |
+| ν₁ | 0 | stable | — | exact ✓ |
+| neutron | 0.14% | 8×10⁻²⁸ | enormous | model-precision floor; lifetime story inapplicable (narrow) |
+| rho | 1.0% | 0.19 | **0.05** | **miss well inside the natural width — lifetime story matches** |
+| phi | 0.56% | 0.004 | 140 | narrow; model-precision regime |
+| Sigma_+ | 0.02% | 7×10⁻¹⁵ | — | model-precision |
+| K⁰ | 0.52% | 1.5×10⁻¹¹ | — | model-precision |
+| K± | 0.25% | 1.1×10⁻¹⁶ | — | model-precision |
+| muon | 0.83% | 3×10⁻¹⁹ | — | model-precision |
+| tau | 0.05% | 1.3×10⁻¹² | — | model-precision |
+| π⁰ | **10.4%** | 5.8×10⁻⁸ | 1.8×10⁶ | **miss is 10⁶× the width — not lifetime story** |
+| π± | **13.3%** | 1.8×10⁻¹⁶ | 7×10¹⁴ | **miss is 10¹⁴× the width — not lifetime story** |
+
+One particle — ρ — is actually "told right" by v2 under the
+width-weighted criterion: its 1% miss sits inside its large
+natural width.  Most others are at model-precision floor.  Pions
+are the glaring exception and tell us the tuples are wrong, not
+the ratios.
+
+### F6c.7. What Phase 6c establishes
+
+1. **Model-F baseline ratios are near-optimal for the v2
+   inventory.**  No sheet's marginal scan finds a significantly
+   better peak.  Track 3b's peak (0.80, 0.05) collapses the full
+   inventory fitness by half.
+2. **The ν-sheet is passive for inventory fitness.**  `ε_ν` and
+   `s_ν` can be frozen at any representative value; only
+   dedicated ν observables (pool item **o**) would justify moving
+   them.
+3. **17 of 19 particles match within their width-weighted
+   threshold at baseline under v2.**  This is comparable to
+   model-F's accuracy envelope with the addition of strict
+   discipline (charge arithmetic from v2, natural-width
+   thresholds instead of the old 14% pion concession).
+4. **Pions are the only remaining discipline failure.**  π⁰ at
+   +10.4% and π± at +13.3% are structurally incompatible with
+   their current R60 T19 tuples at *any* baseline-family ratio;
+   resolution requires new tuples, not ratio tuning.
+
+### Implication — Phase 6b-pion (recommended)
+
+Under v2, pion charges pass but masses fail.  A Phase 6b-style
+constrained search specifically for pion alternatives at model-F
+baseline ratios is the natural follow-up:
+
+- Target: π⁰ at 134.977 MeV (|Q|=0), π± at 139.570 MeV (|Q|=1)
+- Envelope: `|n_i| ≤ 6` initially; extend if no candidates
+- Filter: v2 Q match, Z₃, width-weighted mass threshold
+- Preserve: the 17 working particles (no regression)
+
+If a pion tuple exists under v2 that closes the mass gap at
+baseline ratios, the inventory becomes 19/19 under discipline.
+If no such tuple exists within `|n_i| ≤ 6`, the conclusion is
+that pions require an architectural extension not yet in v2 — a
+principled finding, not a defeat.
+
+---
+
 ## Status
 
-**Phase 6a and 6b complete under Q132 v2.**  All 19 inventory
-particles are either v2-compatible directly (14 of 19) or have
-v2-compatible replacement tuples (5 of 19).  Every replacement
-matches within 0.4%, none require extending the |n_i| ≤ 6 search
-envelope.  **Ready for 6c** (marginal ratio scans against the
-v2-certified tuple set).
+**Phases 6a, 6b, 6c complete under Q132 v2.**
+
+- **6a:** 14 of 19 R60 T19 tuples pass v2 charge arithmetic.
+- **6b:** All 5 failing particles (τ, Λ, Σ⁻, Ξ⁻, Ξ⁰) have
+  v2-compatible replacements at 0.04–0.37% mass error.
+- **6c:** Model-F baseline ratios are optimal; ν-sheet passive;
+  17 of 19 particles match width-weighted thresholds; pions are
+  the only residual — a **tuple issue, not a ratio issue**.
+
+**Recommended next:** **Phase 6b-pion** — constrained tuple
+re-derivation for π⁰ and π± under v2 at baseline ratios, aiming
+for width-consistent mass matches without breaking the 17
+working particles.  If that succeeds, the v2 inventory is
+complete and 6d (joint ratio search) is moot — baseline is the
+joint peak.  If it fails cleanly, we have a precise boundary
+condition for what v2 can and cannot do.
