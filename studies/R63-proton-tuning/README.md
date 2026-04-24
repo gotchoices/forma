@@ -1,13 +1,35 @@
 # R63: Proton-sheet tuning — disciplined audit and sweep
 
-**Status:** Tracks 1–6 complete; Track 7 (compound-mode vs.
-spatial-separation audit) framed and pending execution.
-Q132 v2 adopted as the working rule set (see
-[Q132](../../qa/Q132-promotion-chain-principle.md)).  R63 so far
-delivers a coherent refinement of model-F: tighter discipline,
-preserved inventory accuracy, and the same pion position.
+**Status:** Tracks 1–7 complete through Phase 7b.  R63 is
+developing the **g-candidate** — the evolving parameter set and
+rule set that is intended to become model-G if and when it
+demonstrates clear superiority over model-F across multiple
+axes.  The rule-set piece of the g-candidate is
+[Q132 v2](../../qa/Q132-promotion-chain-principle.md) (the `v2`
+is the version of the rule; the overall "what R63 is assembling"
+is the g-candidate).  So far the g-candidate delivers a coherent
+refinement of model-F: tighter discipline, preserved inventory
+accuracy, same pion position, and a compound-mode nuclear
+description that stays coherent across the full known chain.
 Details by track in [findings-1.md](findings-1.md) through
-[findings-6.md](findings-6.md).
+[findings-7.md](findings-7.md).
+
+### Terminology
+
+- **g-candidate** (or just **g**) — the R63-developed candidate
+  for an eventual model-G: parameter working values + rule
+  refinements, held as "current best" but explicitly not pinned
+  until a study-level review warrants it.
+- **Q132 v2** — the rule-set version adopted by R63 (v1 was the
+  initial, overly-restrictive draft).  Always kept as `v2` to
+  distinguish from v1.
+- **model-F** — the baseline model R63 is refining.  Fixed
+  reference point for comparisons.
+
+Earlier findings files (-5, -6) sometimes use "v2" as a shorthand
+for the whole g-candidate; the intent was always the
+g-candidate, and the two terms are used interchangeably in the
+earlier writeups.
 
 **Type:** theoretical + compute
 **Depends on:** R60 (especially Tracks 7, 12, 21), R59, R53, R49, R61, model-F
@@ -675,9 +697,9 @@ parameter pinning is needed or produced.
 
 ### Parameters
 
-Track 7 runs against the v2-certified candidate parameter set
-R63 has been developing: the sheet shears and aspect ratios sit
-at the values that emerged from Track 6c's joint-fitness peak
+Track 7 runs against the **g-candidate parameter set** R63 has
+been developing: the sheet shears and aspect ratios sit at the
+values that emerged from Track 6c's joint-fitness peak
 (numerically the same as model-F's, but treated as *working*
 values, not pins).  Free variables remain free.  Where the
 answer is known to be ratio-invariant at leading order — and
@@ -925,14 +947,26 @@ User-imposed rules R63 should follow throughout execution:
 
 ## Next steps
 
-Tracks 1–6 are complete.  Per-track results live in
-[findings-1.md](findings-1.md) through
-[findings-6.md](findings-6.md); outputs in [`outputs/`](outputs/).
+Tracks 1–6 complete.  Track 7 complete through Phase 7b.
+Per-track results in [findings-1.md](findings-1.md) through
+[findings-7.md](findings-7.md); outputs in [`outputs/`](outputs/).
 
-**Next: Track 7** — compound-mode vs. spatial-separation audit
-(see the Track 7 section above).  Ratio-invariant at leading
-order; requires no parameter pinning; tests a structural
-hypothesis that all of R63's inventory work rests on.
+**Track 7 Phase 7c deferred** pending Track 8.  Phase 7c's
+original "compound vs. separated" comparison is not cleanly
+answerable from g-candidate alone because the current rule set
+lacks an explicit binding mechanism; the productive next move
+is Track 8 (bound-state tuple search per stable nucleus), which
+provides the binding mechanism natively if the right tuples
+exist.
+
+**Next: Track 8** — stable-nucleus tuple search under
+g-candidate rules.  For each stable nucleus, search the tuple
+lattice for a compound Ma-mode whose mass matches observation
+within width-weighted threshold and whose g-candidate charge
+matches observed Z.  If such tuples exist, that IS MaSt's
+native account of nuclear binding.  If they don't for some
+nuclei, that exposes exactly where g-candidate needs an
+explicit mechanism.
 
 Open items that could become future R63 tracks or successor
 studies:
@@ -954,6 +988,7 @@ studies:
   be natural R62 or successor work.
 - **Model-G** — deferred; a model letter change is warranted
   only if a coherent set of findings is demonstrably superior to
-  model-F across multiple criteria.  R63 delivers v2 as a
+  model-F across multiple criteria.  R63 delivers the g-candidate
+  as a
   candidate rule set; the broader judgment call is deferred to
   study-level review.
