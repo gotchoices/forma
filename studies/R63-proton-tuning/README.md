@@ -1,61 +1,12 @@
 # R63: Proton-sheet tuning — disciplined audit and sweep
 
-**Status:** Tracks 1–6 complete through Phase 6b.  **Q132 v2**
-adopted as the working rule set; see
-[Q132](../../qa/Q132-promotion-chain-principle.md).  Under v2 the
-e-sheet, p-sheet, and full compound inventory all pass the
-discipline rule: *every observed charged particle is predicted;
-no unobserved stable charged particle is.*  Ready for Phase 6c
-onward.
+**Status:** Tracks 1–6 complete.  Q132 v2 adopted as the working
+rule set (see [Q132](../../qa/Q132-promotion-chain-principle.md)).
+R63 delivers a coherent refinement of model-F: tighter discipline,
+preserved inventory accuracy, and the same pion position.  Details
+by track in [findings-1.md](findings-1.md) through
+[findings-6.md](findings-6.md).
 
-**Tracks 1–3** (proton-sheet audit + fitness sweep): clean
-p-sheet spectrum at baseline, fitness peak at `(0.80, 0.05)` with
-near-exact π⁰ match (0.038%), analytic ghost-free bound
-`μ(3, 6) ≤ 8.09` confirmed.
-
-**Track 4** (e-sheet audit): exposed the `(n, 2n)` ghost tower
-at multiples of `m_e` and the `(0, −1)` Q=0 mode.  Motivated
-[Q132](../../qa/Q132-promotion-chain-principle.md).
-
-**Q132 v1 → v2.**  The original Q132 formulation (|n_tube| ≤ 1
-per sheet, with Z₃ / T18 as sheet-specific rescues) was
-overly restrictive: applied to R60 T19's compound inventory it
-flagged 9 of 19 particles as incompatible, forcing speculative
-"e-sheet binding mechanism" rescues.  The refined **v2** rule
-uses gcd decomposition and phase-lock (ω-sum) to classify modes
-as bright / dark / multiple; the `(n, 2n)` ghost tower is
-dissolved as k copies of the electron primitive, and primitively-
-dark modes (gcd=1, `|p_t| > 1`) are valid neutral massive
-predictions.  See Q132 §0 for the history and §4–§5 for the
-rule set.
-
-**Track 5 v2** (e-sheet landscape): 0 bright-primitive ghosts
-across 2296 grid points; R53 Solution D validated as near-peak
-at fitness 2.514/3.0; 91 dark-massive + 46 multi-copy + ring-
-only/tube-only neutral modes catalogued as dark predictions.
-35 bright-gap charged primitives remain as routing-suppressed
-resonance predictions (same list as v1; inherited interpretation).
-
-**Track 6 v2 Phase 6a** (compound charge check): 14 of 19 of
-R60 T19's inventory tuples pass v2 charge arithmetic directly.
-5 fail (τ, Λ, Σ⁻, Ξ⁻, Ξ⁰) — their tuples have bright/dark
-configurations that give wrong compound Q under v2.
-
-**Track 6 v2 Phase 6b** (constrained re-derivation): brute-force
-search `|n_i| ≤ 6` with v2 + Z₃ + mass-match constraints finds
-**v2-compatible candidates for all 5 failing particles at
-0.04–0.37% mass error** — comparable to or better than R60 T19's
-originals.  No widening of the search envelope required.
-
-**Net Track 6 outcome:** under the Phase 6b replacement tuples,
-all 19 inventory particles simultaneously satisfy v2 per-sheet
-rules, compound charge arithmetic, and 2% mass match.  This is
-the first coherent candidate set for a pre-model-G formulation.
-
-**Next (Phase 6c+):** marginal ratio scans per sheet against the
-v2-certified tuple set, with all sheet ratios carrying forward
-their **full viable ranges** from prior tracks; no premature
-pinning to any one candidate.
 **Type:** theoretical + compute
 **Depends on:** R60 (especially Tracks 7, 12, 21), R59, R53, R49, R61, model-F
 
@@ -653,84 +604,44 @@ v2 distinguishes two cases that v1 conflated:
 - **gcd = 1 with `|p_t| > 1`:** a single dark primitive.  Phase
   cancellation (ω-sum) gives zero charge; mass-only contribution.
 
-### Phase 6a — v2 compatibility check (done)
+### Phases
 
-For each of the 19 inventory tuples from R60 T19, classify each
-sheet under v2 and compute the compound predicted charge (sum of
-per-sheet primitive contributions; ν-sheet zeroed by T18).
-**Result:** 14 of 19 pass; 5 fail (τ, Λ, Σ⁻, Ξ⁻, Ξ⁰).  See
-[findings-6.md §Phase 6a](findings-6.md).
+- **6a** — per-sheet v2 classification and compound charge check
+  against R60 T19's inventory.
+- **6b** — constrained tuple re-derivation for any particle whose
+  R60 T19 tuple gives the wrong compound charge under v2.
+- **6b-pion** — focused characterization of what v2 predicts for
+  the pion position at model-F baseline.
+- **6c** — marginal ratio scans per sheet, width-weighted against
+  the resulting v2-certified tuple set.
+- **6d, 6e** — (optional) joint ratio search and dark-mode
+  compound catalog; see below.
 
-### Phase 6b — Constrained re-derivation (done)
-
-Brute-force search `|n_i| ≤ 6` for the 5 failing particles under
-Z₃ + v2 charge + 2% mass-match filters.  **Result:** every
-failing particle has v2-compatible candidates at 0.04–0.37% mass
-error.  See [findings-6.md §Phase 6b](findings-6.md).
-
-### Phase 6c — Marginal ratio scans per sheet (next)
-
-Against the v2-certified tuple set (14 direct passes + 5 Phase
-6b replacements), for each sheet independently, evaluate
-inventory fitness across that sheet's open range.  Purpose:
-establish which variables actually bite the inventory, narrow
-each sheet's viable range before joint search.
-
-ν-sheet marginal scan will reveal whether `ε_ν` affects inventory
-fitness materially.  Under R60 T18, the ν-sheet may be effectively
-passive; 6c confirms or refutes.
-
-### Phase 6d — Joint ratio search on the narrowed product space
-
-A coarse joint grid over the ranges that survived 6c.  Score
-inventory fitness (width-weighted, v2-certified tuples) at each
-grid point.  Identify all competitive regions — don't collapse
-to a single peak.
-
-### Phase 6e — Dark-mode compound catalog at shortlist
-
-At each competitive ratio combination from 6d, enumerate
-v2-valid compound dark modes beyond the inventory.  Produce a
-ranked dark-state predictions list.  Differences across
-candidates inform phenomenological discrimination.
+Results live in [findings-6.md](findings-6.md).
 
 ### Deliverables
 
-- `scripts/track6_q132_compound_audit.py` — classifier +
-  per-sheet classification (Phase 6a) and constrained
-  re-derivation (Phase 6b).
-- `outputs/track6_phase6a_v2.csv` — Phase 6a compatibility matrix.
+- `scripts/track6_phase6a_compatibility.py`,
+  `scripts/track6_phase6b_rederivation.py`,
+  `scripts/track6_phase6b_pion.py`,
+  `scripts/track6_phase6c_marginal_scans.py`.
+- `outputs/track6_phase6a_v2.csv` — Phase 6a classification.
 - `outputs/track6_phase6b_rederivation.csv` — Phase 6b candidates.
-- `outputs/track6_marginal_*.png` — per-sheet Phase 6c (pending).
-- `outputs/track6_joint_*.png` — Phase 6d fitness surfaces (pending).
+- `outputs/track6_phase6b_pion_candidates.csv` — 6b-pion output.
+- `outputs/track6_phase6c_*` — 6c scans and peaks.
 - `outputs/track6_dark_catalog.csv` — Phase 6e predictions
   per shortlisted candidate (pending).
-- `findings-6.md` — 6a + 6b writeup; extended as later phases run.
-
-### Acceptance
-
-- **Phase 6a (met):** classifies every inventory tuple and
-  identifies pass/fail under v2 charge arithmetic.
-- **Phase 6b (met):** produces v2-compatible replacement tuples
-  for every failing particle within the same |n_i| ≤ 6 envelope
-  and ≤ 2% mass match.
-- Phase 6c produces per-sheet viable ranges narrowed from the
-  entering ranges above.
-- Phase 6d produces a shortlist of competitive joint ratio
-  candidates with fitness scores.
-- Phase 6e catalogs dark-mode predictions at each shortlist
-  entry.
 
 ### What Track 6 does NOT do
 
-- Does not commit to a single ratio combination; the output
-  is a shortlist, not a winner.
+- Does not commit to a single ratio combination.
 - Does not formally derive Q132 v2 from GRID axioms — that is
   an R62 target.
 - Does not touch cross-sheet σ values (pool item **h**) or
   anchoring-mode choice (pool item **i**).
-- Does not create `models/model-G.md` — that is deferred until
-  R63 closes with a coherent improvement over model-F.
+- Does not create `models/model-G.md` — per the R63 discipline,
+  a model letter change is deferred until R63 closes with a
+  demonstrable improvement over model-F across multiple axes.
 
 ---
 
@@ -862,34 +773,27 @@ User-imposed rules R63 should follow throughout execution:
 
 ## Next steps
 
-- **Tracks 1–6 complete through Phase 6b.**  See
-  [findings-1.md](findings-1.md) through
-  [findings-6.md](findings-6.md).  Heat maps in
-  [`outputs/`](outputs/).
-- **[Q132](../../qa/Q132-promotion-chain-principle.md) v2 adopted**
-  as the R63 working rule set (gcd decomposition, phase-lock
-  ω-sum, bright/dark/multiple typology).  Formalization is an
-  R62 derivation target.
-- **Track 5 v2:** 0 bright-primitive ghosts across 2296 e-sheet
-  grid points; R53 Solution D validated as near-peak.
-- **Track 6 v2 Phase 6a:** 14 of 19 R60 T19 tuples pass v2
-  charge arithmetic directly.
-- **Track 6 v2 Phase 6b:** the 5 failing tuples (τ, Λ, Σ⁻, Ξ⁻,
-  Ξ⁰) all have v2-compatible replacements within |n_i| ≤ 6
-  at 0.04–0.37% mass error.  **Full 19-particle inventory now
-  passes v2.**
-- **Next: Phase 6c** — marginal ratio scans per sheet against
-  the v2-certified tuple set; identify which ratios bite the
-  inventory, narrow the ranges before joint search.
-- **All sheet ratios carry forward as ranges.**  No premature
-  pinning: e-sheet carries `s_e ≈ 2.0 ± 0.005` (analytically
-  pinned by resonance collapse) and `ε_e ∈ [280, 460]` (open
-  ridge); p-sheet carries `(ε_p, s_p)` with Track 3b's (0.80,
-  0.05) as one candidate among a region to be re-mapped under
-  v2; ν-sheet carries `ε_ν` fully open and `s_ν` provisionally
-  at 0.022 but revisitable if 6c finds sensitivity.
-- **Model-G is not yet drafted** — per user discipline, the
-  model file will only be created once R63 produces a set of
-  findings demonstrably superior to model-F across the relevant
-  criteria (pion match, inventory match, no new ghost problems,
-  dark-mode catalog as an asset rather than a liability).
+Tracks 1–6 are complete.  Per-track results live in
+[findings-1.md](findings-1.md) through
+[findings-6.md](findings-6.md); outputs in [`outputs/`](outputs/).
+
+Open items that could become future R63 tracks or successor
+studies:
+
+- **Phase 6e** (dark-mode compound catalog) — enumerate v2-valid
+  compound dark modes across the three sheets at baseline
+  ratios, for future phenomenological cross-checks.
+- **Pool items o–i** — ν-sheet standalone audit, cross-sheet σ
+  exploration, anchoring-mode audit.  Each is an independent
+  line of work that Tracks 1–6 did not require.
+- **Chiral-correction mechanism** — the ~10% pion miss under v2
+  sits at the expected ephemeral-echo position (nearest v2
+  winding is 121 MeV; observed pions at 135 / 140 MeV).  A
+  dedicated study of whether a principled chiral-style
+  correction on the p-sheet reproduces the 14 MeV offset would
+  be natural R62 or successor work.
+- **Model-G** — deferred; a model letter change is warranted
+  only if a coherent set of findings is demonstrably superior to
+  model-F across multiple criteria.  R63 delivers v2 as a
+  candidate rule set; the broader judgment call is deferred to
+  study-level review.

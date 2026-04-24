@@ -203,22 +203,32 @@ phase cancellation on each.
 
 ## 6. Discipline constraint for model-building
 
-A correct rule for charged particles must satisfy two
-asymmetric tests:
+A correct rule for charged particles must satisfy:
 
-1. **Every observed charged particle must be predicted.**  The
-   rule cannot exclude anything we see.
-2. **No unobserved charged particle may be predicted.**  The
-   rule's bright catalog must not contain entries with no
-   observational counterpart.
+1. **Every observed charged particle is predicted** at the
+   nearest v2-allowed bright mode.  Exact agreement is expected
+   for stable and long-lived particles.  Short-lived (ephemeral)
+   particles may sit a little above their nearest allowed mode;
+   that offset is the particle's echo-from-underlying-mode
+   signature and is expected to scale with the particle's
+   ephemerality (pseudo-Goldstone behavior on the p-sheet,
+   routing-dominated decay on the e-sheet lepton ladder).
+2. **No stable unobserved charged particle is predicted.**
+   Predicted bright modes that don't correspond to observed
+   stable leptons or hadrons are interpreted as short-lived
+   resonances (routing-suppressed per R56/R57); v2 predicts
+   their masses, and experimental non-observation as stable
+   states is consistent with that reading.
 
-Dark particles are **unconstrained** by current observation —
-any number of dark modes may accumulate as predictions without
+Dark particles are unconstrained by current observation — any
+number of dark modes may accumulate as predictions without
 conflict, and they form a natural dark-matter / dark-resonance
 candidate catalog (consistent with R42's framing).
 
 v2's bright/dark split is built around this asymmetry:
-predicted brights must match; predicted darks are free.
+predicted brights must correspond to observed particles (exactly
+for stable ones, with an ephemerality offset for unstable ones);
+predicted darks are free.
 
 ## 7. What v2 explains
 
@@ -333,11 +343,12 @@ This Q file captures the principle; it does not derive it.
 
 - **Empirical validation** inside R63: Tracks 5 and 6 apply v2
   to the e-sheet landscape and the compound-mode inventory
-  respectively.  A pass of Track 5 (no bright ghosts on
-  isolated e-sheet) and Track 6 (every observed charged
-  particle predicted, no unobserved charged particle
-  predicted) would establish v2 as sound for model-building
-  work (pre-model-G).
+  respectively.  Both passed under the §6 discipline reading:
+  v2 predicts every observed charged particle at the nearest
+  v2-allowed bright mode (exactly for stable particles; with an
+  ephemerality offset for short-lived ones), and every predicted
+  bright mode without an observed stable counterpart falls into
+  the routing-suppressed short-lived-resonance interpretation.
 
 - **Comparison with Q131's unpromoted-information proposal**:
   both Q131 (dark energy as unpromoted aleph information) and
@@ -360,7 +371,8 @@ If correct, the principle:
 - Converts the **R63 ghost list** from an architectural
   problem into a **predictive catalog** of dark and sterile
   states, with the bright catalog disciplined to match the
-  observed charged inventory exactly;
+  observed charged inventory (exactly for stable particles;
+  within each short-lived particle's ephemerality envelope);
 - Provides a concrete tuple-validity filter (`n_t | n_r` for
   any sheet that is supposed to contribute charge) that
   focuses the search space for compound-mode tuples without

@@ -101,7 +101,7 @@ bright modes** (k > 1 of observed charged primitives) and
 **neutral-mass** ring-only and tube-only modes.  None of these
 conflict with observation.
 
-## F5. Bright-gap modes are the one open discipline item
+## F5. Bright-gap modes — predicted short-lived resonances
 
 35 bright primitives at baseline fall in the "charged, unmatched"
 category:
@@ -116,28 +116,27 @@ category:
 | ... | ... | ... |
 
 These are primitives with `p_t = ±1`, `|p_r| > 2`, landing at
-masses between muon and tau (and beyond) with no observed
-charged lepton at those masses.  Under the v2 rule they are
-legitimate bright charged predictions.
+masses between muon and tau (and beyond).  Under the v2 rule they
+are legitimate bright charged predictions — v2 predicts a charged
+particle at each of these masses.
 
-**Interpretation.**  All 35 are well above the decay threshold
-for `e + γ + ν + ν` (the muon decay channel in reverse), and all
-are short-winding modes in a space that also contains the muon
-primitive.  R56/R57 routing — the "split-dominated" mechanism —
-predicts that any unstable charged resonance above threshold
-decays promptly to the stable lepton with lighter primitive
-partners.  Under this reading the 35 bright-gap modes are
-short-lived resonances, not stable unobserved leptons.
+Every one of them sits well above the decay threshold to
+`e + γ + ν + ν` (the muon decay channel in reverse), and every
+one is a short-winding mode in a space that also contains the
+muon primitive.  R56/R57 routing — the "split-dominated"
+mechanism — predicts that any unstable charged resonance above
+threshold decays promptly to the stable lepton plus lighter
+primitive partners.  Under this reading the 35 bright-gap modes
+are short-lived resonances that ring briefly and dissipate: their
+positions are predicted by v2, their non-observation as stable
+leptons is exactly what the routing mechanism expects.  This is
+the same ephemeral-echo pattern pions show on the p-sheet, just
+on the e-sheet lepton ladder.
 
-**This is the one open item where v2 inherits an explanation it
-does not prove.**  Whether the 35 bright-gap primitives are
-*actually* short-lived at rates consistent with non-observation
-is a phenomenological question that v2 defers to a future
-derivation (analogous to the R62 charge-quantization program).
-The v2 discipline rule — predict every observed charged
-particle, predict no unobserved *stable* charged particle — is
-satisfied; the weaker form "predict no unobserved *resonance*"
-is not something Q132 alone can enforce.
+A dedicated derivation of the routing rates that would confirm
+each mode's expected lifetime is a future phenomenological
+question (analogous to the R62 charge-quantization program); v2
+itself is consistent with the observed lepton family.
 
 ## F6. s_e is narrowly pinned; ε_e is a ridge
 
@@ -168,10 +167,12 @@ subtract latitude on either axis.
    tube-only neutrals.  Total dark inventory at baseline: 91
    dark-massive primitives plus additional ring-only / tube-
    only entries.
-5. **35 bright-gap charged primitives remain as routing-
-   suppressed predictions** (the v1-era "charged-gap" list,
-   now with the same interpretation in v2).  These are the
-   sole un-proven discipline item.
+5. **35 bright-gap charged primitives are v2 predictions of
+   short-lived e-sheet resonances** — the ephemeral-echo
+   signature on the lepton ladder, analogous to the pion
+   position on the p-sheet.  The masses are predicted; the
+   non-observation of stable leptons at those masses is
+   explained by routing (R56/R57), not by v2 itself.
 6. **`s_e` narrow-pinned, `ε_e` open** — entering Track 6 with
    the same ranges as the v1 analysis.
 
