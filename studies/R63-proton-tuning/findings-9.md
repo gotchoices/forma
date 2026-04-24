@@ -1,15 +1,38 @@
-# R63 Track 9: Nuclear binding from Ma-state energy minimization
+# R63 Track 9: Nuclear binding mechanism in Ma
 
-Track 9 tests the hypothesis that nuclear binding energy — the
-energy difference between a bound compound nucleus and its
-separated constituent nucleons — can be produced by turning on
-previously-unactivated cross-sheet σ couplings in the 11D MaSt
-metric.  **Phase 9a reports a clean falsification.**
+Track 9 investigates where in the MaSt framework the nuclear
+binding mechanism lives.  Phase 9a tested one specific candidate
+(cross-shear dressing of additive-composition tuples) and
+falsified it structurally.  Subsequent phases explore other
+candidates that remain viable within Ma.
 
-The result is structural, not parametric: the falsification
-stems from the algebra of how the additive-composition tuple
-relates to its nucleon constituents, and it holds across every
-cross-shear placement at every magnitude tested.
+**The deuteron is the sharpest target.**  Under Phase 8a's
+additive composition, the predicted deuteron mass is
+1876.54 MeV (sum of proton + neutron).  The observed deuteron
+is 1875.61 MeV — **2.2 MeV lighter than additive**.  Critically,
+the daughter masses for β decay of the bound neutron
+(2m_p + m_e) sum to 1877.6 MeV; for the deuteron to be stable
+against β decay, **observed m(d) must be less than 1877.6 MeV,
+which observation confirms and additive prediction barely
+does**.  MaSt currently predicts m(d) ≈ 1877.8 MeV at additive
+leading order, which would make the deuteron unstable against
+β decay — contradicting observation.
+
+Binding in Ma is therefore **structurally required**, not a
+refinement.  The question is which Ma mechanism produces the
+2.2 MeV gap for the deuteron (and proportional gaps for heavier
+nuclei).
+
+Phases adopted:
+
+- **9a** — Cross-shear dressing hypothesis (EXECUTED).
+  Falsified cleanly as a candidate, though the falsification
+  is narrower than originally claimed.
+- **9b** — Non-additive tuple search for the deuteron (NEXT).
+  Does a lighter Ma tuple exist near the additive?
+- **9c, 9d** — provisional numbers for mass-formula validity
+  audit and Z₃ multi-baryon phase coherence.  Framed in the
+  R63 README but not yet executed.
 
 Script:
 [`scripts/track9_phase9a_cross_shear_algebra.py`](scripts/track9_phase9a_cross_shear_algebra.py) ·
@@ -129,119 +152,204 @@ Numerically, higher-order terms across the signature-preserving
 identity between `T_c` and the nucleon sum holds through the
 quadratic form at every order tested.
 
-### F9a.3. Why this is a structural result, not a bug
+### F9a.3. Scope of the falsification
 
-The cancellation isn't an artifact of a specific cross-shear or
-of the approximation `ΔE ≈ ΔE²/(2E)`.  It comes from the
-interplay of two deeply-built-in features of the framework:
+The cancellation holds given two assumptions that are specific
+to what Phase 9a tested, and are not theorems of the framework:
 
-1. **Additive composition** (Phase 8a): the compound nucleus
-   tuple is the winding sum of its nucleons.  The corresponding
-   Ma-winding vectors add linearly.
-2. **Linear metric perturbation**: cross-shear dressing is a
-   rank-1 perturbation of G₀.  The first-order correction to
-   any quadratic form of the windings is bilinear in the
-   windings, and its effect on the energy eigenvalue is linear
-   after the mass-extraction normalization.
+1. **Additive composition is the correct compound tuple.**
+   Phase 8a adopted additivity as the modeling choice for
+   composite nuclei; it was not derived.  The cancellation
+   proof rests on `T_c = Σ T_nucleon`.  If bound nuclei
+   correspond to a different Ma-mode, the cancellation's
+   starting premise fails.
+2. **Linearity of the perturbation.**  Cross-shear dressing
+   adds a rank-1 symmetric entry to G.  Mechanisms that modify
+   mass via non-linear coupling, validity-range corrections
+   to the mass formula, or Z₃ multi-strand phase coherence
+   are not of this form.
 
-Linearity in both places means the compound result equals the
-sum of nucleon results identically.  Any mechanism that breaks
-the cancellation must break **one** of these two structural
-properties.  Cross-shear dressing alone breaks neither.
+The falsification is therefore precise: **linear cross-shear
+dressing of additive-composition tuples does not produce
+binding**.  It is NOT a falsification of "binding in Ma"
+generally.  The framework retains candidate mechanisms that
+escape one or both assumptions.
 
 ### F9a.4. What remains viable for nuclear binding
 
-Four options survive after Phase 9a's falsification.  None is
-implementable inside the original Track 9 scope ("cross-shear
-dressing at fixed parameters"); each is a framework-extension
-candidate for a successor study:
+Three Ma-internal candidates remain after 9a's narrow
+falsification.  All are within R63 scope; none requires
+leaving the Ma domain:
 
-**Option A — Non-additive compound tuple.**  The bound nucleus
-is a different Ma-mode from the winding sum of its constituent
-nucleons.  The "right" tuple has different windings that give
-lower mass.  This was the original Track 8 direction, withdrawn
-at the user's request.  Reactivating it requires comparing
-bound-state tuples to additive tuples and interpreting the
-difference as "nucleons rearrange when close in S."  It's a
-conservative extension — keeps the metric, changes the tuple
-assignment.
+**Option A (→ Phase 9b) — Non-additive bound tuple.**  The
+bound nucleus is a different Ma-mode from the winding sum of
+its constituents.  A brute-force search of Ma tuples at fixed
+(A, Z) for mass below the additive prediction identifies
+alternative representations.  If found, that lighter tuple is
+the bound state and the additive tuple is the "reference"
+separated configuration.  Additive was adopted in T8 as a
+modeling choice, not derived — revisiting it is a conservative
+refinement.
 
-**Option B — S-space configuration energy.**  The cost of
-placing two nucleons at nearby S-locations isn't zero; MaSt
-currently doesn't model it.  Binding = 4D projection of an
-S-space interaction that hasn't been added to the framework.
-Track 8 FR-4 second bullet.  Most physically motivated but
-requires new machinery for handling S-space.
+**Option B (→ Phase 9c) — Mass-formula validity at high
+n_pt.**  Derivations 3/4 construct the mass formula
+`E = √(ñ · G⁻¹ · ñ)` in a low-winding KK regime.  At nucleus-
+scale windings (n_pt up to ±168 for ⁵⁶Fe), corrections to the
+approximation can kick in.  Auditing the derivations' validity
+ranges and computing the leading corrections is a direct test:
+if high-n corrections have the right sign and magnitude, they
+produce binding without further posits.
 
-**Option C — Non-linear mass formula.**  Currently
-`E = √(ñ · G⁻¹ · ñ)`.  The sqrt structure is what makes
-`E(compound) ≈ Σ E(nucleons)` hold at σ = 0.  A modified mass
-formula that's non-trivially non-quadratic in ñ could break
-additivity and produce binding.  Speculative; no current basis
-in the framework.
+**Option C (→ Phase 9d) — Z₃ multi-strand phase coherence.**
+Under Q132 v2, the (3A, 6A) p-sheet tuple is 3A primitive
+strands.  The framework currently treats 3A strands as A
+independent Z₃ triplets — giving additivity.  But Z₃ itself
+has representation-theoretic structure for k = 3A > 3 strand
+groupings: different singlet channels could have different
+effective ring-direction coherence energies.  A specific
+ansatz for how Z₃ phase coherence enters the mass formula
+would give a concrete test.
 
-**Option D — Dynamical L_ring.**  If ring circumferences shift
-with compound-mode density (e.g., `L_ring_p` smaller for
-high-`n_pt` tuples), the compound gets a different effective
-scale than its constituents.  No current basis in the framework
-either.
+**Out of scope**: S-space configuration energy (Track 8 FR-4
+second bullet) remains the framework-extension candidate for
+*if* all of A, B, C fail.  R63's job is to determine whether
+binding lives in Ma or requires S-space machinery.
 
 ### F9a.5. What Phase 9a establishes
 
-1. **Cross-shear dressing is not the nuclear binding mechanism
-   in MaSt.**  The falsification is clean and structural.
-2. **The falsification generalizes.**  Any rank-1 or multi-
-   rank linear perturbation of the Ma metric will exhibit the
-   same cancellation, because the cancellation comes from the
-   additivity of the compound tuple, not from the specific σ
-   values.
-3. **Phase 9b, 9c, 9d do not run.**  Without cross-shear
-   dressing producing binding, there is nothing to fit the
-   chart-wide B(A,Z) curve against; the BW decomposition and
-   magic-number scans are moot.
-4. **The residual ~0.87% binding gap at ⁵⁶Fe is still the
-   target**, but a framework extension is now the path to it,
-   not an in-g-candidate parameter sweep.
-
-### F9a.6. Implications for R63 and for model-G
-
-Track 9 is closed.  Its outcome sharpens the picture without
-improving the g-candidate itself: we now know explicitly that
-nuclear binding in MaSt needs framework extension and cannot be
-produced by parameter activation alone.
-
-The four remaining options (A–D above) are all genuinely
-outside R63's scope — model-G, as a refinement of model-F's
-metric + v2 rule set, does not address nuclear binding.  A
-**model-H** or a **successor study** targeting binding physics
-(with S-space machinery, non-additive tuple interpretations, or
-one of the other options) would be the natural future direction.
-
-This is not a failure of R63; it's a clean determination of
-R63's boundary.  The g-candidate is a principled refinement of
-model-F on discipline (Q132 v2), inventory (Track 6), and
-nuclear mass composition (Track 8).  Nuclear binding as an
-emergent mechanism is a separate program.
+1. **Linear cross-shear dressing is not the nuclear binding
+   mechanism for additive-composition tuples.**  The structural
+   cancellation identified in F9a.2 rules this out.
+2. **The result is narrower than "binding requires framework
+   extension."**  Three Ma-internal candidates remain viable
+   (F9a.4); each avoids one or both of the cancellation's
+   premises.
+3. **Phase 9b is next** — a non-additive tuple search for the
+   deuteron as the sharpest test.  If bound-state tuples lighter
+   than additive exist within the g-candidate lattice, the
+   additive rule was the wrong compound-mode representation
+   and binding is in Ma.
 
 ---
 
-## Status — Track 9 closed with structural falsification
+## Phase 9b — Non-additive tuple search for the deuteron
 
-**Phase 9a complete.**  Linear cross-shear dressing of the
-additive compound tuple does not produce nuclear binding at any
-placement or magnitude in the signature-preserving range.  The
-cancellation is structural, from additivity + linear
-perturbation.
+**Hypothesis (Path A of F9a.4).**  The bound deuteron is a Ma
+tuple *other than* the additive `(1, 2, −1, −1, 6, 12)` sum of
+proton and neutron tuples.  If a lighter v2-compatible tuple
+exists at (A=2, Z=1), that lighter tuple is the bound state and
+the additive tuple is the "reference" separated configuration;
+the mass difference is the binding energy.
 
-**Phases 9b, 9c, 9d do not run** — there is nothing for them to
-fit.
+**Sharp target.**  Observed m(d) = 1875.61 MeV.  Additive tuple
+gives m = 1876.54 MeV.  Gap = 2.2 MeV to close (observed is
+lighter by 0.93 MeV and observed binding is 2.22 MeV relative
+to m_p + m_n).
 
-**Four framework-extension options** (non-additive tuples, S-space
-machinery, non-linear mass formula, dynamical L_ring) remain
-viable for the binding mechanism but all fall outside R63's
-refinement scope.  Each is a candidate for successor study.
+Script:
+[`scripts/track9_phase9b_deuteron_search.py`](scripts/track9_phase9b_deuteron_search.py) ·
+Output:
+[`outputs/track9_phase9b_deuteron_candidates.csv`](outputs/track9_phase9b_deuteron_candidates.csv)
 
-**R63 closes** with Tracks 1–9 complete, the g-candidate
-refined as documented in findings-1 … findings-8, and nuclear
-binding identified as a boundary of the framework rather than a
-parameter-fit problem.
+### F9b.1. Lighter tuples exist — but at structurally different windings
+
+The raw search envelope (Δ=3 on e and ν, Δ=3 on n_pt Z₃-stepped,
+Δ=6 on n_pr) scanned 93,639 candidate tuples.  Results:
+
+| Candidates within ±2% of observed | 4606 |
+| Candidates LIGHTER than additive (1876.54 MeV) | 1617 |
+| Candidates within 0.5 MeV of observed (1875.61 MeV) | 147 |
+| Closest match | `(0, 0, −4, −4, 3, 15)` at **1875.70 MeV** (+0.10 MeV from observed) |
+
+The best-matching tuple sits within 0.1 MeV of the observed
+deuteron mass — better than any naïvely-additive prediction.
+
+### F9b.2. But the candidates aren't deuterons
+
+The best candidate `(0, 0, −4, −4, 3, 15)` has `n_pt = 3`, not
+6.  Under Q132 v2, p-sheet gcd = 3 with primitive (1, 5) means
+**one Z₃-bound baryon** (3 strands = 1 triplet), not two.  A
+single baryon at 1875 MeV is some exotic excited state — perhaps
+analogous to a D⁺ meson (1870 MeV, charged, similar mass) —
+**not a deuteron**.
+
+Every top candidate in the search has the same issue: `n_pt = 3`
+(1 baryon) or other structures that don't represent two bound
+nucleons.  The search finds "other charged particles at ~1875
+MeV" rather than "the deuteron bound state."
+
+### F9b.3. With the baryon-count filter, no improvement over additive
+
+Imposing the correct structural constraint — **n_pt = 6** (2 Z₃
+triplets = 2 baryons) — and letting the other windings vary by
+±2 around the additive tuple:
+
+| Constraint | Lighter than additive? |
+|:---|:---:|
+| `n_pt=6, n_pr=12` (canonical "2 nucleons" p-sheet), vary e and ν by ±2 | **0 lighter tuples** |
+| `n_pt=6, n_pr ∈ [10, 14]` (allow small p-sheet ring variation) | 1200 lighter, but all at 1725–1805 MeV (70–150 MeV below observed) |
+
+When the p-sheet structure is pinned to the canonical "2 nucleons
+= 2 Z₃ triplets of primitive (1, 2)" form, **the additive tuple
+is locally optimal**.  Nothing in the e/ν-sheet variations
+improves on it.
+
+Allowing the p-sheet ring winding to vary finds lighter tuples,
+but they have **masses 70–150 MeV below observed** — not
+deuteron candidates, but single-baryon or mesonic states at
+different energies.
+
+### F9b.4. Path A falsified for the deuteron under structural constraints
+
+The cleanest reading:
+
+- If the deuteron's Ma representation must contain 2 Z₃ baryon
+  triplets with primitive (1, 2) windings (matching additive's
+  structural interpretation of "2 nucleons"), **no tuple lighter
+  than additive exists**.
+- If the structural constraint is relaxed, lighter tuples exist
+  but they don't represent deuterons — they represent different
+  particles at similar masses.
+
+Path A is therefore falsified for the deuteron at the honest
+structural level.  There is no "non-additive deuteron tuple" in
+the g-candidate lattice; the additive tuple is the g-candidate's
+representation of the deuteron, and its 0.9 MeV overshoot vs.
+observed is not curable by a different tuple choice.
+
+### F9b.5. What Phase 9b establishes
+
+1. **Lighter v2-compatible tuples exist near the deuteron mass**
+   (1617 of them within ±2% of observed), but they represent
+   other particles — single baryons or charmed-meson-like
+   states — not bound nucleon pairs.
+2. **Under the natural baryon-count constraint (n_pt = 6 for a
+   2-nucleon compound), no lighter tuple exists in the local
+   envelope of the additive.**  Additive is structurally
+   optimal within its baryon class.
+3. **Path A (non-additive bound tuples) is falsified for the
+   deuteron at structural precision.**  Nuclear binding does
+   not live in "different tuples at the same mass"; it must
+   live in a different mechanism.
+4. The remaining Ma-internal candidates are Path B (mass-formula
+   validity at high n_pt) and Path C (Z₃ multi-strand phase
+   coherence).  **Phase 9c (Path B) runs next**: audit the
+   derivations of the mass formula for corrections at compound-
+   scale windings.
+
+---
+
+## Status
+
+**Phases 9a and 9b complete.**
+- 9a: linear cross-shear dressing falsified (structural
+  cancellation under additivity).
+- 9b: non-additive deuteron tuple search falsified under the
+  baryon-count structural filter.  Additive is locally optimal
+  for its structural class.
+
+Two Ma-internal candidates remain for the binding mechanism:
+Path B (mass-formula validity at high n_pt) and Path C (Z₃
+multi-strand phase coherence).  **Phase 9c runs next.**  If
+both 9c and 9d fail, the conclusion that binding requires
+framework extension is earned.

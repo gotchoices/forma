@@ -1,15 +1,16 @@
 # R63: Proton-sheet tuning — disciplined audit and sweep
 
-**Status:** R63 closed.  Tracks 1–9 complete.  Track 9's
-cross-shear-binding hypothesis was falsified by Phase 9a: no
-linear cross-shear dressing produces nuclear binding at any
-placement or magnitude in the signature-preserving range.  The
-falsification is structural (additivity of compound tuple +
-linear metric perturbation → exact cancellation).  Nuclear
-binding as an emergent MaSt mechanism is identified as beyond
-R63's refinement scope; four framework-extension options
-(non-additive tuples, S-space machinery, non-linear mass
-formula, dynamical L_ring) remain for successor studies.  R63 is developing the **g-candidate** — the
+**Status:** Tracks 1–8 complete.  Track 9 active.  Phase 9a
+falsified linear cross-shear dressing of additive tuples as a
+binding mechanism, but the falsification is narrower than a
+closure warrants: three Ma-internal candidates remain open
+(non-additive bound tuples, mass-formula validity at high n_pt,
+Z₃ multi-strand phase coherence).  **Phase 9b runs next** —
+non-additive tuple search for the deuteron, using deuteron
+stability (observed binding 2.2 MeV, required for bound-n β
+stability) as the sharp target.  R63 will not close until at
+least one of the remaining Ma candidates is either demonstrated
+or ruled out.  R63 is developing the **g-candidate** — the
 evolving parameter set and rule set that is intended to become
 model-G if and when it demonstrates clear superiority over
 model-F across multiple axes.  The rule-set piece of the g-candidate is
@@ -1013,249 +1014,116 @@ refinement.
 
 ---
 
-## Track 9 — Nuclear binding from Ma-state energy minimization
+## Track 9 — Nuclear binding mechanism in Ma
 
 **Working premise.**  Forces in S arise from lowest-energy
-states in Ma.  The nuclear "strong force" — the mechanism that
-makes bound nuclei lower-energy than their separated nucleons —
-is the 4D projection of an as-yet-unactivated Ma-domain cost
-function.  Track 9 tests whether turning on the right
-off-diagonal metric parameters (cross-sheet shears σ, plus
-secondary adjustments to the diagonal ε/s axes) reproduces the
-observed nuclear binding-energy curve without breaking the
-particle-inventory fit.
+states in Ma.  The nuclear "strong force" — what makes bound
+nuclei lower-energy than their separated nucleons — must be
+produced by some Ma mechanism.  Track 9 investigates which one.
 
-**Why this is the next track.**  Track 8 left a sharp numerical
-residual: the additive compound-mode prediction overshoots
-observed nuclear mass by ~0.87% at ⁵⁶Fe (453 MeV predicted
-binding-energy gap vs. 492 MeV observed).  The residual tracks
-binding energy cleanly across the H → Pb chain.  That residual
-is the target.  The particle-inventory work in Tracks 5–6
-couldn't constrain cross-sheet σ parameters (too few observables
-for too many degrees of freedom); the ~250 known nuclear masses
-can.
+**The sharp target.**  Under Phase 8a's additive composition,
+the predicted deuteron mass is 1876.54 MeV.  Observed is
+1875.61 MeV — 2.2 MeV lighter.  **For the bound neutron inside
+the deuteron to be stable against β decay** (as observed),
+m(d) < 2m_p + m_e = 1877.6 MeV is required.  The additive
+prediction 1876.54 MeV clears this by only ~1 MeV, and without
+the observed 2.2 MeV binding, MaSt is on the wrong side of the
+β-stability threshold.  Binding in Ma is **structurally
+required**, not a refinement to pursue for accuracy.  Track 9
+must find the mechanism or conclude the framework needs
+extension.
 
-### Hypothesis
+### Phase 9a — Cross-shear dressing (EXECUTED; falsified as candidate)
 
-The binding mechanism is **off-diagonal coupling in the 11D
-metric between sheets that are simultaneously wound** in a
-composite mode.  Concretely:
+Tested whether turning on cross-sheet σ entries in the 11D
+metric produces nuclear binding.  Method: scan all ten
+cross-shear placements (e↔p, ν↔p, e↔ν tube/ring pairs) at five
+magnitudes each within the signature-preserving range; compute
+`B = Σ E(nucleons) − E(compound)` for the additive-composition
+tuple at each point.
 
-- For a compound nucleus tuple
-  `(A−Z, 2(A−Z), −(A−Z), −(A−Z), 3A, 6A)`, both the e-sheet
-  and the p-sheet carry non-zero tube windings.
-- Turning on cross-sheet `σ_ep` introduces an off-diagonal
-  metric entry `G_{et, pt} ≠ 0` that produces an extra
-  energy term proportional to `n_et · n_pt`.
-- For the nucleus: `n_et · n_pt = (A − Z) · 3A ∝ A · (A − Z)`.
-  The cross-term's magnitude grows with A and N−Z — exactly
-  the shape of the asymmetry term in Bethe-Weizsäcker and
-  roughly the shape of the observed binding curve.
+**Result**: binding stays at `~10⁻⁴ MeV` (numerical noise)
+regardless of placement or magnitude.  Linear cross-shear
+dressing of additive tuples does not produce binding.
 
-The same mechanism is a candidate for the residual p-n mass
-deficit: under current g-candidate, predicted `m_n − m_p ≈ 0`;
-observed is +1.293 MeV.  σ_ep acts on the neutron's
-`n_et · n_pt = 1 · 3 = 3`, shifting its mass relative to the
-proton's `n_et · n_pt = 0 · 3 = 0` — a small, Z-dependent shift
-with sign and magnitude that can be checked.
+**Scope of the falsification.**  The proof rests on two
+assumptions: (1) additive composition is the correct compound
+tuple; (2) cross-shear dressing is a linear rank-1 perturbation.
+Both are *specific to the test*, not theorems.  Mechanisms that
+violate either assumption remain viable — see Phase 9b onward.
 
-Track 9's central test: **can a single self-consistent cross-
-shear configuration close both the nuclear binding curve and
-the p-n mass shift?**  If yes, the hypothesis holds.  If the
-two observables demand different σ values, the hypothesis is
-falsified and a framework extension is needed.
+See [findings-9.md](findings-9.md) Phase 9a for details.
 
-### A note on the neutron as a near-miss, not an exact match
+### Phase 9b — Non-additive tuple search for the deuteron (NEXT)
 
-The neutron is observably quasi-stable — mean lifetime ~879 s,
-finite but long.  Under the "story of lifetime" criterion, the
-neutron sits just above its β-decay threshold
-(`m_p + m_e + m_ν̄`, the sum of daughter masses), and that
-small excess (≈ 0.78 MeV) is the decay's Q-value and the
-signature of its ephemerality.  The neutron **should not be
-matched exactly** in the fit; it should sit above the decay
-threshold by a small amount consistent with its observed
-Q-value.
+**Premise.**  Phase 9a's cancellation exploits the assumption
+that the bound nucleus has the additive-composition tuple.  If
+a different Ma-mode (different windings, same observable
+content) has lower mass, *that* mode is the bound state and
+the additive tuple is the "reference" separated configuration.
 
-Concretely, Track 9's neutron target is:
+**Sharp target.**  Deuteron: observed mass 1875.61 MeV;
+additive prediction 1876.54 MeV; gap 2.2 MeV (= observed
+binding) = what Phase 9b needs to find by identifying a
+v2-compatible tuple with mass ≤ observed.
 
-- **Constraint N1** (hard): predicted `m_n > m_p + m_e + m_ν̄`
-  — β decay must be energetically allowed.
-- **Constraint N2** (soft): predicted `m_n − m_p` close to
-  1.293 MeV — consistent with the observed small ephemerality
-  gap, but not required to match exactly.
+**Method.**  Brute-force scan the Ma tuple lattice within a
+moderate envelope around the additive deuteron tuple
+`(1, 2, −1, −1, 6, 12)`.  For each candidate:
 
-### Variables swept
+- Z₃ constraint on p-sheet: `n_pt` multiple of 3.
+- Compute mass via g-candidate metric.
+- Check ingredient-sum charge consistency with Q(deuteron) = +1.
+- Rank by mass closeness to observed 1875.61 MeV and by
+  structural plausibility (how close to the additive tuple).
 
-All free variables open; no commitment to "only σ_ep":
+If the search finds a v2-compatible tuple at or below
+1875.61 MeV, that's the deuteron bound state and binding is in
+Ma via non-additive tuple selection.  If the search returns
+only the additive tuple (or heavier), Path A (non-additive
+bound tuples) is falsified for the deuteron and we proceed to
+Phase 9c.
 
-- **Primary cross-shears**: `σ_ep`, `σ_νp`, `σ_eν`.  All three
-  currently at zero in g-candidate.  Each may be nonzero.
-  R60 T7c's concern is that arbitrary activations break α
-  universality; Track 9 acknowledges this as a constraint and
-  fits within the subset that preserves α to within
-  experimental precision.
-- **Secondary tube-ring cross-shears**: per-sheet
-  `σ_ta, σ_at` are already nonzero at the √α / 4πα form (R59
-  F59).  Track 9 can allow small adjustments if the fit
-  demands, but the natural-form values are kept as a working
-  baseline.
-- **Diagonal shears and ratios**: `(ε_p, s_p)` at Track 6c's
-  joint peak but allowed small drift; `(ε_e, s_e)` at R53
-  Solution D with `s_e` pinned by shear resonance;
-  `(ε_ν, s_ν)` at R61 central values (Track 6c confirmed
-  passive for hadrons; confirm again here for nuclei).
-- **Calibration anchors** (proton mass, electron mass, ν₁
-  mass) remain fixed; L_ring values re-derive at each sweep
-  point.
+### Phase 9c — Mass-formula validity at high n_pt (PROVISIONAL)
 
-The sweep is multi-dimensional.  The regularizing constraint
-is that **the particle inventory from Tracks 5–6 must not
-regress**: lepton masses within their current accuracy, hadron
-masses within the Track 6c widths, charge arithmetic
-unchanged.  With that constraint, cross-shears are the
-dominant free parameters for the binding curve.
+If 9b doesn't find a lighter tuple, audit derivations 3/4 (the
+mass-formula derivations) for their validity range in n_pt.
+The current `μ = √((n_t/ε)² + (n_r − n_t·s)²)` assumes KK
+low-winding behavior; at nucleus-scale windings (n_pt up to
+±168 for ⁵⁶Fe), corrections could be sign- and magnitude-
+significant.  If the corrections produce binding of the right
+size, the mechanism is a validity-range refinement of an
+existing derivation — no new posits.
 
-### Phase 9a — Compound vs. separated energy under cross-shear dressing
+### Phase 9d — Z₃ multi-strand phase coherence (PROVISIONAL)
 
-Pure algebra for a single nucleus.  Extend `build_aug_metric`
-(or derivation-10's F31 Schur-complement machinery) to admit
-non-zero `σ_ep, σ_νp, σ_eν`.  Compute:
-
-- `E_Ma(compound nucleus tuple)` with cross-shears
-- `E_Ma(Z nucleons separated)` = `Z·m_p + (A−Z)·m_n` (nucleons
-  evaluated at the same cross-shears, independently)
-- Their difference = predicted binding energy
-
-Identify which cross-shear entries appear in the difference and
-at what order (linear vs. quadratic).  Establish that
-non-trivial binding is **algebraically possible** before moving
-to the numerical fit.
-
-### Phase 9b — Binding curve across the chart, constrained fit
-
-Over the ~30-nucleus chain from Track 7 (extensible to ~100+
-masses from AME), solve the constrained least-squares problem:
-
-- Objective: minimize `Σ (B_predicted − B_observed)² / σ²(A, Z)`
-- Variables: `σ_ep, σ_νp, σ_eν` primary; diagonal shears
-  allowed small drift; calibration anchors fixed.
-- Constraints:
-  - Particle inventory within current Track 6c accuracy.
-  - α universality preserved (σ activations within allowed
-    triangular-prescription subspace per R60 T7c).
-  - N1 constraint: predicted `m_n > m_p + m_e + m_ν̄`.
-  - Proton, electron, ν₁ masses unchanged.
-
-Output: best-fit cross-shears and residual binding-energy
-pattern.
-
-### Phase 9c — BW-term decomposition
-
-Decompose the fitted binding prediction against the
-Bethe-Weizsäcker parameterization:
-
-`B(A, Z) ≈ a_V·A − a_S·A^(2/3) − a_C·Z(Z−1)/A^(1/3)
-          − a_A·(N−Z)²/A + δ_pairing`
-
-For each BW term, identify which MaSt structural feature
-produces it.  Volume term should come from the additive
-composition's leading linear-A behavior.  Surface term should
-emerge from subleading corrections.  Coulomb term is
-charge-charge in the metric.  **Asymmetry term is the primary
-diagnostic** — if cross-shear `σ_ep` reproduces the
-`(N−Z)²/A` structure with a magnitude matching empirical
-`a_A ≈ 23 MeV`, the hypothesis is confirmed in its most
-demanding test.  Pairing term is the even-odd diagnostic.
-
-### Phase 9d (optional) — Magic numbers
-
-If 9b/9c hold up, search for (A, Z) where the fitted
-cross-shear-dressed energy has local minima.  Compare to the
-observed magic numbers 2, 8, 20, 28, 50, 82, 126.  A match
-would be a major first-principles structural result.  A
-non-match means shell structure is orthogonal to MaSt's
-binding mechanism (probably originates at a different level of
-the promotion chain) and is out of Track 9's scope.
-
-### Consistency checks (beyond the primary fit)
-
-- **Saturation / B-per-A plateau**: the fitted cross-shear's
-  binding contribution should naturally give `B/A ≈ 8.8 MeV`
-  plateau for mid-A nuclei.  Under a quadratic metric, a term
-  proportional to `n_et · n_pt = (A−Z) · 3A ∝ A²` divided by
-  `E ∝ A` gives contribution per nucleon ∝ A^(1/2)-like,
-  bounded.  Confirm numerically.
-- **n-p mass shift self-consistency** (Constraint N2, soft):
-  the fitted σ's should produce `m_n − m_p ∼ 1.3 MeV`,
-  allowing that the neutron is a near-miss rather than exact.
-- **Range ≈ L_p**: any exponential-decay length in compound-
-  mode distance should match the p-sheet compact radius
-  independently known from proton calibration.
-- **α universality not broken**: check that cross-sheet
-  activations don't push α away from its experimental value
-  beyond tolerance.
+If 9c doesn't close the gap either, develop a specific ansatz
+for how Z₃ phase coherence in k = 3A strand groupings
+(k > 3) contributes to mass.  Under Q132 v2, primitive (1, 2)
+strands have ω-sum contributions at single-baryon level; the
+question is whether multi-baryon groupings have collective
+phase-coherence energies not captured by A · m_p.  Needs a
+concrete ansatz before it becomes testable.
 
 ### Exit criteria
 
-- **Success**: nuclear binding curve reproduced within
-  typical B(A,Z) uncertainties (~MeV) across the ~100 nucleus
-  chain, with σ values that simultaneously satisfy the n-p
-  mass shift (soft) and don't regress the particle inventory.
-- **Partial success**: binding reproduced with caveats (e.g.,
-  magic-number structure missing, pairing term unexplained,
-  one BW term off).  Report as "mechanism identified but not
-  complete."
-- **Falsification**: no σ combination simultaneously satisfies
-  binding curve and n-p mass shift and inventory preservation.
-  In that case, the binding mechanism is *not* pure
-  cross-shear dressing, and framework extension (S-space
-  overlap per T8 FR-4) is the next study.
-
-### Deliverables
-
-- `scripts/track9_phase9a_cross_shear_algebra.py` — single-nucleus
-  derivation.
-- `scripts/track9_phase9b_binding_fit.py` — chart-wide fit.
-- `scripts/track9_phase9c_BW_decomposition.py` — decomposition
-  and diagnostic.
-- `outputs/track9_*.csv` — per-nucleus binding predictions.
-- `outputs/track9_BW_decomposition.png` — five-term fit
-  visualization.
-- `findings-9.md` — writeup.
+- **Success (any of 9b/9c/9d)**: a Ma mechanism reproduces
+  deuteron binding (2.2 MeV within ~0.5 MeV) and extends
+  sensibly to heavier nuclei (⁴He, ¹²C, ⁵⁶Fe).
+- **All three fail**: binding in Ma is ruled out at R63's
+  scope, and the framework-extension options (S-space overlap,
+  dynamical L_ring) become the successor-study targets.
+  T8 FR-4 becomes the central open problem for a follow-on.
 
 ### Reusable assets
 
-- Track 7's isotope-chain infrastructure (`NUCLEI` list,
-  `nuclear_mass`, `binding_energy`).
-- Track 8's additive-composition nucleus tuples.
-- `build_aug_metric` from R60 (extend for cross-shears).
-- Derivation-10's F31 Schur-complement machinery (if relevant).
-- AME atomic-mass-evaluation data for extended chart coverage.
-
-### Scope boundaries
-
-- Does not re-open Q132 v2.
-- Does not touch particle inventory tuples (leptons, hadrons
-  below nuclei) beyond ensuring they don't regress.
-- Does not attempt PMNS bookkeeping (T8 FR-2) or chiral-anomaly
-  derivation (T8 FR-3).
-- Does not extend MaSt with S-space machinery (T8 FR-4); if
-  Track 9 requires this, that's a finding, not a default.
-- Does not pin ratios from nuclear data beyond what's needed
-  to fit the binding curve.
-
-### Outcome
-
-**Track 9 closed with structural falsification.**  Phase 9a
-established that linear cross-shear dressing of the additive
-compound tuple produces zero binding at every placement and
-magnitude in the signature-preserving range (10⁻⁴ MeV
-numerical noise vs. 30–500 MeV observed).  The cancellation is
-structural: additivity of the compound tuple + linear metric
-perturbation → exact cancellation.  Phases 9b, 9c, 9d do not
-run.  Four framework-extension options remain for successor
-studies; see [findings-9.md](findings-9.md) §F9a.4.
+- Track 6 Phase 6b's tuple-search infrastructure (used the
+  same way for hadron tuple re-derivation).
+- Track 8's additive-composition nucleus tuples as the
+  reference to beat.
+- `build_aug_metric` from R60 (as-is; no modification needed
+  for 9b).
+- The 2.2 MeV deuteron gap as the primary numerical benchmark.
 
 ---
 
