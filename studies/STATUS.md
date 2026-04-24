@@ -13,31 +13,30 @@ Active entry is a 3–5-line pointer; full narrative lives in the study's own
 
 ## Active
 
-### R63. Proton-sheet tuning — disciplined audit and sweep  **Active — Tracks 1–3 complete**
+### R63. Proton-sheet tuning — disciplined audit and sweep  **Active — Tracks 1–5 complete, Track 6 framed**
 [`R63-proton-tuning/`](R63-proton-tuning/) · theoretical + compute · depends on R60, R59, R53, R49, R61, model-F
 Apply the e-sheet tuning discipline to the p-sheet. **Tracks 1–2**
 established the ghost-free region analytically (`μ(3, 6) ≤ 8.09`). **Track
-3 (Phases A + B)** produced continuous fitness heat maps at 81×51 grid.
-**Phase B uses physically-principled thresholds scaled by each particle's
-natural line width Γ = ℏ/τ**, replacing Phase A's artificial 14% pion
-concession with a 2% floor that respects π⁰'s actual narrow-resonance
-character. **Under width-weighted scoring the peak is `(ε_p = 0.80, s_p =
-0.05)` with fitness 4.95/7 and a near-exact π⁰ match at 0.038% — the
-pion desert closes completely at this geometry.** Baseline scores 4.04/7,
-well below the peak. The point is inside the ghost-free region
-(μ(3,6) = 6.95); L_ring_p ≈ 39 fm (modest shift from baseline's 47 fm).
-**Tracks 4–5 complete + Q132 formulated + vindicated.** Track 4's
-e-sheet audit exposed a latent ghost tower, motivating
-[Q132](../qa/Q132-promotion-chain-principle.md) — the **promotion-chain
-principle** (each 2π tube closure = one particle-creation event). Track 5
-re-ran Track 4's grid under Q132: **0 ghosts across 2296 points (vs 100%
-under strict criterion)**, clean fitness landscape with sharp ridge at
-`s_e ≈ 2.0`, **R53 Solution D confirmed as a near-peak** at fitness 2.514
-/ 3.0 with 23 dark-mode predictions and surprising pure-e-sheet matches
-on proton (0.04%) and neutron (0.05%). Pool items **n** (p-sheet
-re-render), **o** (ν-sheet parallel audit), **p** (joint three-sheet
-compound-mode search) lined up. (ε, s) ranges kept open on all three
-sheets pending joint compound-mode optimization.
+3 (Phases A + B)** produced continuous fitness heat maps; Phase B's
+width-weighted scoring (thresholds scaled by each particle's natural
+line width Γ = ℏ/τ) moved the peak to `(ε_p = 0.80, s_p = 0.05)` with
+fitness 4.95/7 and a near-exact π⁰ match at 0.038%, closing the pion
+desert. **Tracks 4–5 + Q132.** Track 4's e-sheet audit exposed a latent
+ghost tower, motivating [Q132](../qa/Q132-promotion-chain-principle.md)
+— the **promotion-chain principle** (each 2π tube closure = one
+particle-creation event). Track 5 re-ran the e-sheet grid under Q132:
+**0 ghosts across 2296 points (vs 100% under strict criterion)**, clean
+fitness landscape with a sharp resonance ridge at `s_e ≈ 2.0` spanning
+a wide `ε_e` range from ~280 to ~460 with multiple local peaks; R53
+Solution D is one such peak, not the unique solution. **Track 6
+framed** as the next task: a joint Q132 compound-mode audit across all
+three sheets, starting with a ratio-independent per-sheet compatibility
+check (Phase 6A), then marginal ratio scans (6B), then joint coarse
+search (6C), then dark-mode catalog (6D). Pool items **n** and **p**
+absorbed into Track 6; pool **o** (ν-sheet standalone) deferrable
+pending 6B sensitivity results. **No premature pinning** — all sheet
+ratios carry forward as ranges, narrowed only where prior analysis
+forces it (Track 5's `s_e` resonance ridge is the lone analytical pin).
 
 ### R62. Derivations — analytical proofs  **Active**
 [`R62-derivations/`](R62-derivations/) · theoretical · depends on KK primer, R59, model-E

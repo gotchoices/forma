@@ -36,8 +36,17 @@ sits at a near-peak** with fitness 2.514 / 3.0 at exact values.
 Dark-mode catalog of 23 neutral predictions + 35 charged-gap
 predictions at baseline, including clean pure-e-sheet matches
 on the proton (0.04%) and neutron (0.05%).  `s_e` is tightly
-pinned at ~2.004; `ε_e` has more latitude for joint
-compound-mode optimization.
+pinned at ~2.004 by the shear-resonance collapse outside the
+ridge; `ε_e` has **full ridge latitude from ~280 to ~460**
+with multiple local peaks — R53's particular coordinate is
+one of several viable candidates, not the unique solution.
+
+**Track 6 framed (next):** joint Q132 compound-mode audit
+across all three sheets, scoring per-sheet compatibility of
+the observed inventory first (ratio-independent), then
+marginal ratio scans per sheet, then a joint coarse ratio
+search.  All ratios carry forward their **full viable ranges**
+from prior tracks; no premature pinning to any one candidate.
 **Type:** theoretical + compute
 **Depends on:** R60 (especially Tracks 7, 12, 21), R59, R53, R49, R61, model-F
 
@@ -579,7 +588,163 @@ classifier changes).
 
 ---
 
-## Next-track pool (after Track 5)
+## Track 6 — Joint Q132 compound-mode audit across all three sheets
+
+**Goal.**  Check that the full observed inventory of particles
+is compatible with per-sheet Q132 (the promotion-chain rule),
+and find the combinations of sheet ratios that give the best
+joint fit to the inventory under that rule.  This track
+supersedes the original pool item **n** (p-sheet-only re-
+render) and pool item **p** (joint compound search) by
+merging them: Q132 changes how compound-mode assignments are
+evaluated across sheets, so p-sheet re-evaluation and compound
+search are naturally the same task.
+
+**Why this is one track and not two.**  Q132 is a per-sheet
+rule: each sheet's winding pair `(n_t, n_r)` must fall into
+one of the allowed cells (ring-only neutral, tube-only
+neutral, charged, or null).  A compound-mode particle assigns
+a `(n_t, n_r)` pair to each of three sheets.  Checking Q132
+compatibility is therefore inherently compound — you can't
+evaluate a particle's legality one sheet at a time in
+isolation.
+
+### Ratios: status going in
+
+All ratios carry forward **as ranges**, pinned only where
+prior analysis forced pinning.  Prior candidate points (R53
+Solution D on the e-sheet; Track 3b's (0.80, 0.05) on the
+p-sheet) are data points to include in the search, not
+coordinates to impose.
+
+| Sheet | Variable | Status entering Track 6 | Source |
+|:---:|:---|:---|:---|
+| e | `s_e` | **Narrow-pinned** at 2.0 ± ~0.005 | Track 5 showed fitness collapses outside the shear-resonance ridge |
+| e | `ε_e` | **Open** across ~280–460 | Track 5 found a wide ridge with multiple local peaks |
+| p | `s_p` | **Open** | Track 3b's peak at 0.05 was under strict ghost rules; Q132 loosens the landscape and the peak may move |
+| p | `ε_p` | **Open** | same reasoning; Track 3b's 0.80 is a candidate, not a pin |
+| ν | `s_ν` | Previously pinned at 0.022 from Δm² ratio 33.6 | R61 pinning; revisit only if Phase 6B shows sensitivity |
+| ν | `ε_ν` | **Open** | never constrained by fitness analysis |
+
+### Baryon reinterpretation (ground for Phase 6A)
+
+Under Q132 strict per-sheet, `|n_t| ≥ 2` on a single sheet is
+forbidden.  The R60 T16 Z₃ rule requires `n_pt ≡ 0 (mod 3)`
+for free p-sheet modes — so baryons carry `|n_pt| = 3` or 6.
+These are not single Q132 events; they are **three Q132
+events bound by Z₃ confinement** into a color-singlet
+composite.  Each individual `n_pt = ±1` event would be a
+free color charge (QCD-forbidden); three of them gcd-locked
+by Z₃ form the baryon.  This matches the three-quark picture
+natively and is adopted as the working interpretation in
+Phase 6A.  Mesons with `n_pt = 0` are single-event objects;
+baryons with `|n_pt| = 3` are three-event Z₃-bound
+composites; `|n_pt| = 3` with `gcd(n_pt, n_pr) = 1` (φ, ρ
+as R60-assigned) is **neither valid single-event nor
+Z₃-singlet** and must be re-derived.
+
+### Phase 6A — Per-sheet Q132 compatibility of inventory (ratio-independent)
+
+Walk every baseline inventory tuple (the 14 of 16 hadrons
+carried through R60 T19, plus leptons, plus mesons) and
+classify each of the three sheets under Q132 per-sheet.  This
+is purely a winding-integer check; ratio values don't enter.
+
+Outputs:
+- A compatibility matrix (rows = particles, columns =
+  per-sheet Q132 status + overall verdict).
+- A list of flagged tuples needing re-derivation (expect:
+  φ, ρ, possibly others).
+- Baryon tuples explicitly annotated as three-event
+  Z₃-bound composites.
+
+If Phase 6A reveals that the inventory is not cleanly Q132-
+compatible (beyond φ, ρ), Track 6 stops and reports the
+structural obstacle before spending effort on ratio scans.
+
+### Phase 6B — Marginal ratio scans per sheet
+
+For each sheet independently, evaluate inventory fitness
+across that sheet's open range, with other sheets held at
+representative points from their own ranges (rotated so no
+single prior candidate biases the scan).  Purpose: establish
+**which variables actually bite the inventory**, narrow each
+sheet's viable range before joint search, and detect any
+sheet whose ratios don't matter (those get carried as-is
+into 6C).
+
+ν-sheet marginal scan will reveal whether `ε_ν` actually
+affects inventory fitness.  Under R60 T18 (real-field
+conjugate pairing zeroes ν-sheet charge), the ν-sheet may
+be effectively passive for inventory fit; 6B will confirm
+or refute.
+
+### Phase 6C — Joint ratio search on the narrowed product space
+
+A coarse joint grid over the ranges that survived 6B.  Score
+inventory fitness (width-weighted, consistent with Track 3b /
+Track 5) under Q132 per-sheet at each grid point.  The
+emphasis is on **identifying all competitive regions** — not
+collapsing to one peak.  Output peaks, ridges, and any
+degeneracy; keep all competitive ratio combinations as
+candidates.
+
+### Phase 6D — Dark-mode compound catalog at shortlisted candidates
+
+At each competitive ratio combination from 6C, enumerate
+Q132-valid compound modes beyond the inventory.  Produce a
+ranked dark-state predictions list.  Differences in dark
+catalog across candidates may help discriminate them against
+future phenomenological observations.
+
+### Deliverables
+
+- `scripts/track6_q132_compound_audit.py` — classifier +
+  marginal scans + joint grid.
+- `outputs/track6_compatibility_matrix.csv` — Phase 6A.
+- `outputs/track6_marginal_*.png` — per-sheet Phase 6B.
+- `outputs/track6_joint_*.png` — Phase 6C fitness surfaces.
+- `outputs/track6_dark_catalog.csv` — Phase 6D predictions
+  per shortlisted candidate.
+- `findings-6.md` — full writeup.
+
+### Acceptance
+
+- Phase 6A either confirms inventory is Q132-compatible
+  (with noted baryon three-event reading and φ/ρ as
+  re-derivation targets) or produces a precise obstacle
+  report.
+- Phase 6B produces per-sheet viable ranges narrowed from
+  the entering ranges above.
+- Phase 6C produces a shortlist of competitive joint ratio
+  candidates with fitness scores.
+- Phase 6D catalogs dark-mode predictions at each shortlist
+  entry.
+
+### What Track 6 does NOT do
+
+- Does not re-derive φ or ρ tuples — flagged as Q132-
+  incompatible with current R60 assignment, passed to a
+  later track or R60 revision.
+- Does not commit to a single ratio combination; the output
+  is a shortlist, not a winner.
+- Does not formally derive Q132 from GRID axioms — that is
+  R62 Program 2.
+- Does not touch cross-sheet σ values (pool item **h**) or
+  anchoring-mode choice (pool item **i**).
+
+### Time estimate
+
+Phase 6A: ~minutes (inspection + short script).
+Phase 6B: ~10–20 minutes (three 1D scans, each similar in
+cost to Track 5).
+Phase 6C: ~1–2 hours depending on grid density and
+post-6B range narrowing.
+Phase 6D: ~minutes per shortlist entry.
+
+---
+
+## Next-track pool (after Track 6)
 
 Tracks after Track 5.  Sequence decided from its findings.
 Entries are sketches; the chosen one is elaborated to full-
@@ -610,8 +775,8 @@ Cross-validates **c**; agreement is strong evidence.
 **e. Inventory consistency sweep.**  Within the region of
 agreement from **c** and **d**, verify that no non-pion hadron
 regresses below model-F's current accuracy.  **Now superseded
-by pool item p** (joint three-sheet compound search) — keep
-for legacy reference, but p's joint-optimization approach is
+by Track 6** (joint Q132 compound-mode audit) — kept for
+legacy reference, but Track 6's joint-optimization approach is
 more principled now that sheet-level shortlists exist for
 all three sheets.
 
@@ -656,36 +821,28 @@ creation event) derives |n_tube|=±1 from first principles.
 Formalization is now an **R62 derivation target** (Program 2),
 not an R63 track.  R63 adopts Q132 as a working hypothesis.
 
-**n. P-sheet re-render under Q132 (Tracks 1–3 update).**
-Under Q132, pure-ring p-sheet modes `(0, n_pr ≠ 0)` that
-Tracks 1–3 flagged as part of the split-dominated pool are
-reinterpreted as **valid neutral dark-matter candidates**.
-High-|Q| gcd=1 ghosts remain eliminated (non-integer strand
-decomposition).  The fitness landscape shape is likely
-unchanged from Track 3b's Phase B, but the dark-mode catalog
-at each candidate peak should be documented.  Lower priority
-than Track 5 because the p-sheet's main ghost class (high-|Q|
-towers) is handled identically under Q132.
+**n. [Promoted to Track 6.]**  P-sheet re-render under Q132
+was promoted and broadened: Q132 compatibility is inherently
+per-sheet, and a compound-mode inventory audit is the natural
+minimal unit of work, so pool **n** merges with pool **p**
+into Track 6 above.
 
-**o. ν-sheet parallel audit (Q132 rules from the start).**
-We have not systematically swept the ν-sheet the way Tracks
-1–5 treat the p and e sheets.  s_ν = 0.022 is pinned by the
-Δm² ratio, so the effective sweep axis is ε_ν alone (between
-R61 #1 at 2.0 and R49 Family A at 5.0 — a continuous sweep
-between has not been done).  Under Q132, the (1, 0) mode
-becomes a valid sterile-ν-like prediction; other (0, n_r)
-modes become dark candidates.  The sweep should produce a
-fitness landscape against the three observed ν mass
-eigenstates plus the dark-mode catalog.
+**o. ν-sheet standalone audit (Q132 rules).**  A dedicated
+ν-sheet sweep against the three observed ν mass eigenstates
+plus Q132 dark-mode catalog.  Track 6 Phase 6B will evaluate
+whether `ε_ν` meaningfully affects inventory fitness; if 6B
+shows ν-sheet ratios matter, this item becomes urgent and
+runs immediately after Track 6.  If 6B shows no ν-sheet
+sensitivity for the inventory, **o** stays as a loose-end
+cleanup aimed specifically at neutrino observables rather
+than hadron inventory.  s_ν previously pinned at 0.022 from
+Δm² ratio 33.6; ε_ν undetermined between R61 #1 (2.0) and
+R49 Family A (5.0).
 
-**p. Joint three-sheet compound-mode search.**  With sheet-
-level shortlists in hand from Tracks 3b, 5, and o, the
-compound-mode survey runs joint optimization over all three
-sheets' parameter shortlists simultaneously, scoring against
-the multi-sheet inventory (14 of 16 hadrons per R60 T19) and
-nuclear scaling.  This replaces the previous pool item **e**
-as a more principled next step — pre-committing to candidate
-ranges rather than pinning individual sheets.
+**p. [Absorbed into Track 6 Phase 6C.]**  The joint three-
+sheet compound-mode search is Phase 6C of Track 6, running
+after the per-sheet marginal scans of 6B narrow the joint
+product space.
 
 **z. Closeout.**  After chosen pool items execute: if a
 coherent parameter shift emerges that (i) closes the pion gap,
@@ -724,13 +881,15 @@ User-imposed rules R63 should follow throughout execution:
   Formalization is an R62 derivation target (new Program 2).
 - **Track 5 vindicated Q132 on the e-sheet:** 0 ghosts across
   2296 points (vs 100% under strict criterion); R53 Solution D
-  confirmed as near-peak.
-- **Next: pool items **n** (p-sheet re-render under Q132),
-  **o** (ν-sheet parallel audit under Q132), then **p** (joint
-  three-sheet compound-mode search).
-- **Keep (ε, s) ranges open** on every sheet until pool **p**
-  runs.  On e-sheet: `s_e` tightly pinned at ~2.004; `ε_e` has
-  latitude (350–450 range).  On p-sheet: Track 3b's shortlist
-  of candidates (0.80, 0.05) and neighbors.  On ν-sheet: `s_ν`
-  pinned at 0.022, `ε_ν` undetermined between R61 #1 and R49
-  Family A.
+  confirmed as near-peak, with the full ε_e ridge recognized
+  as viable latitude rather than a pinned coordinate.
+- **Next: Track 6** (joint Q132 compound-mode audit across all
+  three sheets), absorbing pool items **n** and **p** and
+  provisionally deferring pool **o** pending Track 6 Phase 6B.
+- **All sheet ratios carry forward as ranges.**  No premature
+  pinning: e-sheet carries `s_e ≈ 2.0 ± 0.005` (analytically
+  pinned by resonance collapse) and `ε_e ∈ [280, 460]` (open
+  ridge); p-sheet carries `(ε_p, s_p)` with Track 3b's (0.80,
+  0.05) as one candidate among a region to be re-mapped under
+  Q132; ν-sheet carries `ε_ν` fully open and `s_ν` provisionally
+  at 0.022 but revisitable if Phase 6B finds sensitivity.
