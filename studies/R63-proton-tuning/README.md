@@ -1,8 +1,6 @@
 # R63: Proton-sheet tuning — disciplined audit and sweep
 
-**Status:** Tracks 1–7 complete through Phase 7b; Track 8
-(decay-conservation audit and additive tuple refinement) framed
-and in progress.  R63 is developing the **g-candidate** — the
+**Status:** Tracks 1–8 complete.  R63 is developing the **g-candidate** — the
 evolving parameter set and rule set that is intended to become
 model-G if and when it demonstrates clear superiority over
 model-F across multiple axes.  The rule-set piece of the g-candidate is
@@ -996,6 +994,14 @@ Phase 8b: minutes to hours (combinatoric checks over ~14
 decays).  Phase 8c: the real work, since tuple revisions may
 be interlocked.  Phase 8d: analysis + writeup.
 
+### Outcome
+
+Track 8 closed with **Phases 8a and 8b complete in R63**; 8c and
+8d promoted to successor-study scope.  See
+[findings-8.md](findings-8.md) for results and the
+close-out section FR-1 … FR-5 for the directions for future
+refinement.
+
 ---
 
 ## Next-track pool (after Track 6)
@@ -1147,24 +1153,44 @@ User-imposed rules R63 should follow throughout execution:
 
 ## Next steps
 
-Tracks 1–6 complete.  Track 7 complete through Phase 7b.
-Per-track results in [findings-1.md](findings-1.md) through
-[findings-7.md](findings-7.md); outputs in [`outputs/`](outputs/).
+R63 Tracks 1–8 complete.  Per-track results in
+[findings-1.md](findings-1.md) through
+[findings-8.md](findings-8.md); outputs in [`outputs/`](outputs/).
 
-**Track 7 Phase 7c deferred** pending Track 8.  Phase 7c's
-original "compound vs. separated" comparison is not cleanly
-answerable from g-candidate alone because the current rule set
-lacks an explicit binding mechanism; the productive next move
-is Track 8 (bound-state tuple search per stable nucleus), which
-provides the binding mechanism natively if the right tuples
-exist.
+The g-candidate has received its major R63 refinements:
+- Q132 v2 rule set (gcd decomposition + phase-lock) adopted.
+- e-sheet ghost-free under v2 (Track 5).
+- Compound-mode inventory tuples re-derived where necessary
+  (Track 6).
+- Neutron tuple updated to the β-decay-consistent form and
+  additive composition for nuclei adopted (Track 8).
+- Ingredient-sum rule for composite charge added to v2.
 
-**Next: Track 8** (decay-conservation audit and additive tuple
-refinement) — framed; executing Phase 8a.  See the Track 8
-section above.  The core idea: β decay `n → p + e + ν̄` implies
-`n_tuple = p_tuple + e_tuple + ν̄_tuple = (1, 2, 1, 1, 3, 6)`,
-a cleaner neutron tuple that enables additive composition for
-nuclei and sets up a decay-conservation audit across the zoo.
+Directions for future refinement — framed as potential successor
+studies rather than additional R63 tracks — are captured in the
+close-out sections of [findings-7.md](findings-7.md) and
+[findings-8.md](findings-8.md).  In brief:
+
+- **Nuclear binding mechanism** — close the ~0.9% residual at
+  Fe via cross-sheet σ_ep (pool item **h**) or an S-space
+  overlap mechanism.  Required for MaSt to derive nuclear
+  binding rather than expose it as a residual.
+- **Systematic tuple optimization under decay constraints**
+  (Phase 8c as a dedicated study) — least-squares-style refine
+  of hadron tuples to maximize winding conservation across
+  observed decays.
+- **PMNS neutrino flavor-mixing bookkeeping** — proper
+  flavor-eigenstate treatment for leptonic decays.
+- **Chiral-anomaly mechanism in MaSt** — first-principles
+  derivation of π⁰ → γγ and η → γγ rates (R62-adjacent).
+- **Cross-sheet σ exploration** (pool **h**) and **ν-sheet
+  standalone audit** (pool **o**) remain open.
+
+**Model-G** is deferred per the R63 discipline: a model letter
+change is warranted only when a coherent set of findings is
+demonstrably superior to model-F across multiple criteria.
+R63's output — the g-candidate as it stands — is the input to
+that decision, not the decision itself.
 
 Open items that could become future R63 tracks or successor
 studies:

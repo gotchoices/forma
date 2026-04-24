@@ -51,22 +51,20 @@ from track7a_nuclei_H_to_Fe import (
 # ─── Fundamental tuples (g-candidate, Phase 8a proposal) ───────────
 
 PROTON_TUPLE   = (0, 0, 0, 0, 3, 6)
-NEUTRON_TUPLE  = (1, 2, 1, 1, 3, 6)        # β-decay-derived (Phase 8a)
+NEUTRON_TUPLE  = (1, 2, -1, -1, 3, 6)      # β-decay-derived (Phase 8a)
 ELECTRON_TUPLE = (1, 2, 0, 0, 0, 0)
 NU1_TUPLE      = (0, 0, 1, 1, 0, 0)
 
-# Check: does the additive identity hold?
-#   neutron = proton + electron + antineutrino
-#   antineutrino of ν₁ = C-conjugate of (0, 0, 1, 1, 0, 0) = (0, 0, −1, −1, 0, 0)
-#   p + e + ν̄ = (0,0,0,0,3,6) + (1,2,0,0,0,0) + (0,0,-1,-1,0,0)
-#             = (1, 2, -1, -1, 3, 6)
-# Hmm — sign mismatch on ν windings vs. our proposed neutron tuple.
-# The proposed neutron is (1, 2, 1, 1, 3, 6); our β sum gives (1, 2, −1, −1, 3, 6).
-# These are related by ν ↔ ν̄ swap.  Physically acceptable — the β decay
-# is n → p + e⁻ + ν̄_e, so neutron = p + e + ν̄ up to the antiparticle
-# convention for the ν.  The mass is identical under either sign choice
-# (ν-sheet mass is dominated by winding magnitudes).  We adopt the
-# (1, 2, 1, 1, 3, 6) form matching R60 T19's ν sign convention.
+# The neutron tuple satisfies the β-decay identity
+#   n → p + e⁻ + ν̄_e   ⟹   n_tuple = p_tuple + e_tuple + ν̄_e_tuple
+#   ν̄_e = C-conjugate of ν₁ = (0, 0, −1, −1, 0, 0)
+#   ⟹ n = (0,0,0,0,3,6) + (1,2,0,0,0,0) + (0,0,-1,-1,0,0)
+#       = (1, 2, -1, -1, 3, 6)
+# The ν-sheet negative windings reflect the fact that an antineutrino
+# (not a neutrino) is emitted in β decay.  Mass is identical to the
+# (1, 2, 1, 1, 3, 6) sign-flip since ν-sheet μ² depends on |windings|²
+# symmetrically, so the Phase 7 nuclear mass verification results hold
+# unchanged.
 
 
 # ─── Fundamental charge arithmetic ─────────────────────────────────

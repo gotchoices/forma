@@ -1,0 +1,35 @@
+==================================================================================================================================
+R63 Track 8 Phase 8b — Decay-conservation audit
+==================================================================================================================================
+  parent      decay                              BR%  Δ_tuple             winding  Q parent / Σ  mass resid (pred)  Q_obs (MeV)
+  --------------------------------------------------------------------------------------------------------------------------------
+  neutron     → proton + electron + anti_nu_1    100  (0,0,0,0,0,0)       ✓ OK      +0/ +0  ✓           -0.511        0.782
+  Lambda      → proton + anti_pi_plus             64  (-2,4,-1,-12,-6,-10)  ✗ NO      +0/ +0  ✓          +48.420       37.841
+  Lambda      → neutron + pi0                     36  (-4,0,3,1,-6,-8)    ✗ NO      +0/ +0  ✓          +48.421       41.141
+  Sigma_-     → neutron + anti_pi_plus            99  (4,0,-3,-11,0,-2)   ✗ NO      -1/ -1  ✓         +137.983      118.314
+  Sigma_+     → proton + pi0                      52  (2,-3,-1,0,0,1)     ✗ NO      +1/ +1  ✓         +130.353      116.121
+  Sigma_+     → neutron + pi_plus                 48  (0,-7,1,1,0,1)      ✗ NO      +1/ +1  ✓         +130.352      110.235
+  Xi_-        → Lambda + anti_pi_plus             99  (2,4,-3,-6,0,8)     ✗ NO      -1/ -1  ✓          +94.001       66.457
+  Xi_0        → Lambda + pi0                      99  (0,0,1,6,0,10)      ✗ NO      +0/ +0  ✓          +94.279       64.200
+  rho0        → pi_plus + anti_pi_plus           100  (-3,-6,1,-6,-3,3)   ✗ NO      +0/ +0  ✓         +541.167      496.120
+  K0          → pi_plus + anti_pi_plus            69  (0,-1,-1,-6,0,-4)   ✗ NO      +0/ +0  ✓         +253.069      218.471
+  K_plus      → anti_muon + nu_2                  64  (2,4,-3,-13,0,-4)   ✗ NO      +1/ +1  ✓         +390.143      388.019
+  K_plus      → pi_plus + pi0                     21  (0,1,1,6,0,-2)      ✗ NO      +1/ +1  ✓         +252.978      219.130
+  pi_plus     → anti_muon + nu_2                 100  (2,3,-3,-13,0,-1)   ✗ NO      +1/ +1  ✓          +16.191       33.912
+  pi0         → photon + photon                   99  (0,0,-1,-6,0,-1)    ✗ NO      +0/ +0  ✓         +120.974      134.977
+  eta         → photon + photon                   39  (0,-4,-1,-6,0,-3)   ✗ NO      +0/ +0  ✓         +553.101      547.862
+  eta         → pi0 + pi0 + pi0                   33  (0,-4,2,12,0,0)     ✗ NO      +0/ +0  ✓         +190.178      142.931
+  eta_prime   → rho0 + photon                     29  (3,0,-2,0,3,-9)     ✗ NO      +0/ +0  ✓         +175.433      182.520
+  eta_prime   → eta + pi0 + pi0                   43  (0,-2,2,12,0,-1)    ✗ NO      +0/ +0  ✓         +163.501      139.964
+  phi         → K_plus + anti_K_plus              49  (-3,-6,1,-6,-3,6)   ✗ NO      +0/ +0  ✓          +35.375       32.107
+  --------------------------------------------------------------------------------------------------------------------------------
+  Summary: 1 of 19 decays are winding-conservative under current tuples.
+
+  Breakdown by decay type:
+    EM                :  0 conservative,  1 violations
+    EM-anomaly        :  0 conservative,  2 violations
+    beta              :  1 conservative,  0 violations
+    strong            :  0 conservative,  4 violations
+    weak              :  0 conservative,  1 violations
+    weak-hadronic     :  0 conservative,  8 violations
+    weak-leptonic     :  0 conservative,  2 violations
