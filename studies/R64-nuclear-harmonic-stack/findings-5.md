@@ -211,20 +211,180 @@ in Track 5.  The next phase would test this expanded model.
 
 ---
 
+---
+
+## Phase 5c — Three-line model with plugged BW surface
+
+Tested user's Option 3 (hybrid): plug in standard BW surface
+`a_S·A^(2/3)` with `a_S = 18.34 MeV` alongside Coulomb, re-fit
+`(ε_p, s_p)` jointly, and check if the Fe peak emerges.
+
+### F5c.1. Three-line model still fails to produce the Fe peak
+
+Joint refit lands at **Point D = (ε_p, s_p, K_p) = (0.06, +0.30, 18.4)**
+with RMS mass error 0.393% — *worse* than Track 3 Point B's 0.182%
+(no Coulomb, no surface).  The optimizer was forced to extreme
+parameter values to compensate for added terms.
+
+Predicted binding at Point D:
+
+| Nucleus | B_obs | B_pred | ratio |
+|:---|:-:|:-:|:-:|
+| ²H | 2.22 | 9.01 | 4.05 (over) |
+| ⁴He | 28.30 | 29.13 | 1.03 (close, lucky) |
+| ¹²C | 92.16 | 123.29 | 1.34 (over) |
+| ⁴⁰Ca | 342.05 | 469.01 | **1.37** (over) |
+| ⁵⁶Fe | 492.26 | 678.03 | **1.38** (over) |
+| ¹²⁰Sn | 1020.54 | 1485.61 | **1.46** (over) |
+| ²⁰⁸Pb | 1636.43 | 2517.25 | **1.54** (over) |
+| ²³⁸U | 1801.69 | 2862.98 | **1.59** (over) |
+
+Predicted B/A peak: **¹³⁰Te at A=130** with B/A = 12.55 MeV.
+Observed: ⁵⁶Fe at A=56 with B/A = 8.79.  **Peak misplaced by 74
+mass units.**
+
+The three-line model with plugged BW values gives:
+- *Over-binding everywhere* in the body of the chart (37–60% over)
+- Peak at wrong A (130 vs 56)
+- Worse RMS than R64-Ma alone
+
+### F5c.2. Why the plugged hybrid fails: R64-Ma already implicitly absorbs surface and asymmetry effects
+
+The diagnosis is structural.  R64's flat-formula mass
+
+<!-- m² = K_p² · μ²(3A, 2(2Z-A)) -->
+$$
+m^2_\text{R64-Ma}(Z, A) \;=\; K_p^2\,\mu^2\bigl(3A,\; 2(2Z-A)\bigr)
+$$
+
+has TWO terms inside the square root:
+- `(3A/ε)²` — A²-scaling (volume-like contribution)
+- `(2(2Z−A) − 3sA)²` — Z-A asymmetry (asymmetry-like contribution)
+
+Through the chain-fit at Point B, the optimizer found a balance
+where these two terms (combined via the square root) **implicitly
+match observed binding** — including effects that BW separately
+attributes to Coulomb, surface, and asymmetry.  R64-Ma at Point B
+isn't just "volume term"; it's an **integrated mass formula** that
+already absorbs some of what BW splits across multiple terms.
+
+Adding explicit BW Coulomb and surface on top **double-counts**:
+- Some of what Point B was fitting was already including the
+  Coulomb and surface effects from observed data.
+- The "double-counting" forces the optimizer to other parameter
+  regions where the explicit terms don't conflict — but those
+  regions don't fit the observed data well.
+
+The implication: **the two-line and three-line hybrid models are not
+clean tests of R64's structure**, because R64-Ma's formula is not
+cleanly factorable into "volume-only".
+
+### F5c.3. What this tells us about R64's structure
+
+R64-Ma's flat-formula mass is **a holistic mass formula**, not a
+decomposition into independent BW terms.  The good chain-fit at
+Point B (RMS 0.18%) is evidence that R64 captures the right *total*
+nuclear binding shape — but it doesn't separate cleanly into BW
+components, so we can't simply add BW corrections to it.
+
+Two interpretations:
+
+**Interpretation A — R64 captures the right total**.  The chain-fit
+Point B already gives observed binding within ~5% across the body
+of the chart.  This means R64's mass formula, taken as a *complete*
+description (including all "BW-equivalent" contributions implicitly),
+is correctly capturing the strong-force binding shape.  The Fe peak
+isn't there because the formula's `μ²` form gives roughly constant
+B/A, not a peaked shape.  **The peak is what R64 doesn't capture.**
+
+**Interpretation B — R64 captures a coincidental fit**.  The
+chain-fit Point B happens to match observed binding via a
+fortunate parameter combination, but doesn't structurally
+correspond to the underlying physics.  Adding BW corrections
+breaks the fit because R64's formula isn't physically aligned
+with the BW decomposition.
+
+Both interpretations are honestly available.  Without deeper
+structural understanding (mode stacking, quantum number decoding),
+we can't distinguish them.
+
+### F5c.4. The Fe peak shape requires structural Ma physics not in R64
+
+If we want R64 to produce the Fe peak from first principles, we'd
+need at least one of:
+
+- A non-additive composition rule that introduces A-dependent
+  curvature in `m_Ma(Z, A)`.
+- Explicit cross-sheet content for nuclei (rejected by user
+  reasoning that nuclei don't need electron shells to live).
+- A spatial-distribution model in S that gives surface effects
+  natively.
+- Quantum-number-aware composition (mode stacking with shell
+  closures).
+
+None of these is in the current R64 framework.  Adding any of
+them requires structural commitments we don't have evidence for.
+
+---
+
+## Track 5 verdict and recommendation
+
+**Track 5 fails to produce the Fe peak under any of the three
+phases attempted**:
+
+- Phase 5a: adding Coulomb at fixed Point B over-corrects
+  (double-counts).
+- Phase 5b: joint refit Point C with explicit Coulomb shifts the
+  problem but doesn't produce the peak.
+- Phase 5c: adding plugged BW surface alongside makes things
+  *worse* — over-binds everywhere, peak misplaced.
+
+The structural lesson is **R64-Ma is a holistic formula that
+implicitly absorbs BW-equivalent corrections at the chain-fit
+parameter point**.  Decomposing it into BW components and adding
+explicit Coulomb/surface terms breaks the implicit balance.
+
+This means the user's intuition — that the Fe peak comes from
+two opposing curves crossing — is structurally correct, but R64's
+flat-formula structure doesn't cleanly decompose into those curves.
+
+### Recommendation: pause Track 5; pursue user's Option 2 (mode stacking + shell decoding)
+
+R64-Ma's mass formula needs deeper structural understanding before
+the Fe peak can be derived.  The natural next move is the user's
+Option 2 from the prior conversation: **decode mode stacking via
+quantum numbers (n, l, m_l, m_s) on the e-sheet first** (where
+atomic shells are well-quantified), then apply the same framework
+to the p-sheet for nuclear shells.  At that point:
+
+- We'll understand what "harmonic stacking" really means
+  structurally.
+- The Fe peak will likely emerge naturally as a consequence of
+  shell-closure structure, not from an additive BW-style
+  decomposition.
+- R64's current chain-fit will be reinterpreted in the deeper
+  framework.
+
+Track 5 closes without producing the Fe peak.  The Track 5 work
+is informative as a **falsification of the simple linear-decomposition
+hypothesis**: nuclear binding is not cleanly Ma-volume + S-Coulomb +
+S-surface.  It's deeper.
+
+The Track 5 outputs (Point B, Point C, Point D candidate working
+points) remain on file but none is yet a hard pin.  Q134 should be
+updated to note that Track 5 didn't resolve the Fe peak, and the
+working theory continues with Track 1's Point A and Track 3's
+Point B as candidate data points pending deeper structural
+understanding.
+
+---
+
 ## Status
 
-**Phase 5a, 5b complete.  Two-line model insufficient.**
+**Track 5 closes.  Three-phase audit (5a, 5b, 5c) shows the simple
+two- and three-line decompositions don't produce the Fe peak when
+combined with R64-Ma.**
 
-Track 5's contribution to R64:
-- Identified Point C `(ε_p, s_p) = (0.230, +0.020)` as a refined
-  working point that explicitly incorporates Coulomb.
-- Established that R64-Ma alone cannot produce the Fe peak.
-- Documented the missing surface-like contribution.
-
-The natural next move is **Phase 5c — surface mechanism diagnosis**,
-testing the hypothesis that adding a surface term (Ma-side or
-S-emergent) to R64-Ma + Coulomb produces the Fe peak.  This is a
-straightforward 3-line model audit.
-
-Track 5 doesn't close yet — Phase 5c is still pending.  But the
-two-line hypothesis is decisively shown to be incomplete.
+The user's Option 2 (mode stacking and shell decoding) is now the
+recommended next direction.  Pool item **b** (quantum-number
+decoding) becomes the natural next track.
