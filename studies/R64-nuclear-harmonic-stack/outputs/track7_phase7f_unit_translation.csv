@@ -1,0 +1,13 @@
+quantity,value,unit
+sigma_t_7c,-116.1,7-tensor units
+sigma_pS_analytical_track9,0.004267896782026327,dimensionless 11D
+sigma_pS_numerical_track9,0.004267896782026327,dimensionless 11D
+sigma_pS_analytical_R64PB,0.012914028752927497,dimensionless 11D
+signature_band_low,-0.075,11D
+signature_band_high,0.075,11D
+univ_1pct_low,-0.0025,11D
+univ_1pct_high,0.0025,11D
+in_sig_band_track9,True,bool
+in_univ_1pct_track9,False,bool
+in_sig_band_R64PB,True,bool
+in_univ_1pct_R64PB,False,bool

@@ -349,7 +349,7 @@ premise: the geometric reality of charge IS in Ma, but the
 
 ## Track 7 — Strong force from a 7-tensor: 6 Ma + 1 S spatial dimension
 
-**Status: Phases 7a, 7b, 7c, 7d complete.**
+**Status: Phases 7a, 7b, 7c, 7d, 7e, 7f, 7g complete.**
 
 After Track 6's review, the goal of *re-deriving* nuclear shell
 structure from MaSt was deemed a structural re-invention of well-

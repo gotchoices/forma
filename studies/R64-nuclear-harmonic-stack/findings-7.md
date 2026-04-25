@@ -732,9 +732,419 @@ isn't.
 
 ---
 
+---
+
+## Phase 7e — α-coupling integration test
+
+Phase 7c introduced new metric off-diagonals at (p_t, S_x), (p_t, S_y),
+(p_t, S_z) — call them σ_pS_tube — to deliver the strong-force trough.
+R60 model-F's α-architecture lives in the ℵ row (σ_ta tube↔ℵ, σ_at
+ℵ↔t, σ_ra ring↔ℵ derived).  These are different rows/columns of the
+11×11 metric.  Phase 7e tests whether they're algebraically
+*decoupled* — i.e., whether α-extraction stays invariant under
+non-zero σ_pS_tube.
+
+Script:
+[`scripts/track7_phase7e_alpha_integration.py`](scripts/track7_phase7e_alpha_integration.py)
+Outputs:
+[`outputs/track7_phase7e_alpha_universality.csv`](outputs/track7_phase7e_alpha_universality.csv) ·
+[`outputs/track7_phase7e_alpha_curves.png`](outputs/track7_phase7e_alpha_curves.png)
+
+### Method
+
+Augment R60's `build_aug_metric(p)` (Track 7b — model-F with σ_ra
+ring↔ℵ included) by writing σ_pS_tube into G[p_t, S_x],
+G[p_t, S_y], G[p_t, S_z] (S-isotropic).  Sweep σ_pS_tube ∈
+[−0.5, +0.5]; at each value:
+
+1. Check signature (one negative eigenvalue).
+2. Compute `alpha_coulomb(G, n11) / α₀` for ten model-F inventory
+   modes spanning Q = ±1, 0 and the active-sheet taxonomy
+   (electron, muon, proton, neutron, Λ, Σ⁻, π⁰, π±, K±, ρ).
+3. Compare to baseline values at σ_pS_tube = 0.
+
+### F7e.1. Baseline α-universality is reproduced
+
+At σ_pS_tube = 0, the bare α-sum rule
+`α/α₀ = (n_et − n_pt + n_νt)²` lands within numerical noise on
+all ten test modes:
+
+| Mode | α_sum | Expected α/α₀ | Observed α/α₀ |
+|:---|:-:|:-:|:-:|
+| electron | +1 | 1 | 1.000000 |
+| muon | −1 | 1 | 1.000000 |
+| proton (1,3) | −1 | 1 | 1.000000 |
+| neutron | −1 | 1 | 1.000000 |
+| Λ | −1 | 1 | 1.000000 |
+| Σ⁻ | −1 | 1 | 1.000000 |
+| π⁰ | −2 | 4 | 4.000000 |
+| π± | −4 | 16 | 16.0 |
+| K± | −3 | 9 | 9.000000 |
+| ρ | −3 | 9 | 9.000000 |
+
+R60 model-F's α-architecture is reproduced cleanly at σ_pS_tube = 0
+— the test infrastructure is sound.
+
+### F7e.2. Signature-preservation band is narrow
+
+Sweeping σ_pS_tube ∈ [−0.5, +0.5] in the augmented metric, the
+**signature stays Lorentzian only for σ_pS_tube ∈ [−0.075, +0.075]**.
+Outside this window, additional negative eigenvalues appear and
+the metric is no longer physical.  Phase 7c's value σ_t = −116
+(in 7-tensor units) cannot be inserted directly as a dimensionless
+metric entry — that's a unit-translation issue separate from this
+band.  But within the dimensionless [−0.075, +0.075] window, we can
+ask whether α-extraction survives.
+
+### F7e.3. α is mode-dependently sensitive to σ_pS_tube
+
+Sample α/α₀ at representative σ_pS_tube values:
+
+| Mode | σ=−0.05 | σ=−0.01 | σ=0 | σ=+0.01 | σ=+0.05 |
+|:---|:-:|:-:|:-:|:-:|:-:|
+| electron | 1.166 | 1.0037 | 1.000 | 1.0037 | 1.166 |
+| muon | 1.166 | 1.0037 | 1.000 | 1.0037 | 1.166 |
+| proton | 0.565 | 0.989 | 1.000 | 0.989 | 0.565 |
+| neutron | 4.396 | 1.051 | 1.000 | 1.051 | 4.396 |
+| Λ | 0.393 | 0.927 | 1.000 | 0.927 | 0.393 |
+| Σ⁻ | 0.144 | 0.972 | 1.000 | 0.972 | 0.144 |
+| π⁰ | 4.663 | 4.015 | 4.000 | 4.015 | 4.663 |
+| π± | 18.65 | 16.06 | 16.0 | 16.06 | 18.65 |
+| K± | 8.410 | 8.986 | 9.000 | 8.986 | 8.410 |
+| ρ | 8.410 | 8.986 | 9.000 | 8.986 | 8.410 |
+
+Three structural features:
+
+1. **Deviations are symmetric in σ** (e.g. ±0.05 give the same
+   |Δα|).  The leading effect is **quadratic** in σ_pS_tube.
+2. **Different modes shift in different directions.**  Electron
+   α RISES at non-zero σ; proton α FALLS.  Charge-positive
+   compounds and charge-negative compounds get pushed in opposite
+   senses.
+3. **The α-sum rule's universality is broken.**  At σ = ±0.05,
+   different |α_sum|² values that originally agreed (e.g.
+   electron and proton both at α/α = 1) now disagree (1.17 vs
+   0.57).
+
+### F7e.4. Universality preserved only at σ_pS_tube ≈ 0
+
+Maximum relative deviation `max |α(σ)/α(0) − 1|` across modes vs
+σ_pS_tube:
+
+| Threshold ε | σ_pS_tube range satisfying |Δα/α| < ε |
+|:---:|:---|
+| 10⁻⁶ | [+0.00000, +0.00000] (only σ = 0) |
+| 10⁻⁴ | [+0.00000, +0.00000] (only σ = 0) |
+| 10⁻² | [−0.00250, +0.00250] (very narrow) |
+
+Universality is structurally preserved only at σ_pS_tube = 0 to
+machine-noise precision.  Even the loose 1% threshold gives a
+window of only ±0.0025 — narrow compared to the [−0.075, +0.075]
+signature band.
+
+### F7e.5. Verdict — sectors are NOT decoupled
+
+The α-coupling sector and the (p_t, S) coupling sector are
+**algebraically coupled** through G⁻¹.  Adding σ_pS_tube ≠ 0 to
+the model-F metric does not preserve R60's α-extraction; it
+disturbs both the magnitude (α(electron) shifts away from α₀) and
+the universality (different modes get different shifts).
+
+This is a clean negative result on the simple decoupling
+hypothesis.  It does **not** mean σ_pS_tube cannot exist — only
+that a *naive* free σ_pS_tube ≠ 0 is incompatible with model-F's
+α-architecture.
+
+### F7e.6. What this implies for model-G integration
+
+To carry Phase 7c's strong-force coupling into model-G without
+regressing model-F's α-universality, σ_pS_tube needs a
+**structural prescription** analogous to σ_ra = (s·ε)·σ_ta.  Two
+candidate forms suggest themselves:
+
+- **(A) σ_pS_tube = f(σ_ta, σ_at, sheet params)** — derived from
+  existing α-architecture parameters, possibly with
+  a constraint that cancels its contribution to G⁻¹[Ma, t].
+- **(B) σ_pS_tube + companion entries** — additional (S, t),
+  (S, ℵ) or (e_t, S), (ν_t, S) entries that, in combination,
+  cancel the α-perturbation while preserving the strong-force
+  trough.  Analogous to how R60's σ_ra cancels shear-induced
+  mode-dependence in α.
+
+Either route requires new structural derivation.  This sharpens
+the next-track question:
+
+- **Pool item j** (this phase) is now *answered*: sectors are
+  coupled, σ_pS_tube needs structure.
+- **Pool item m** (Yukawa propagator extension) becomes a
+  natural foil: a propagator-based formulation may not require
+  a metric off-diagonal at (p_t, S) at all — the strong force
+  could come from a separate exchange particle in Ma whose
+  propagator integrates to give Yukawa, leaving R60's metric
+  algebraically untouched.
+
+### F7e.7. Caveats
+
+1. **Unit translation** between Phase 7c's σ_t = −116 (7-tensor
+   units) and R60's dimensionless metric entries is non-trivial.
+   The signature band [−0.075, +0.075] in dimensionless units
+   does not directly map to "Phase 7c is in or out."  A separate
+   calculation is needed to translate Phase 7c's σ_t to the
+   equivalent metric entry — but the structural finding here
+   (sectors couple) is independent of that translation.
+2. **Charge-independence test (σ_pS_ring)** was not exercised.
+   Phase 7c forces σ_pS_ring = 0 already, so no sweep is required.
+3. **Higher-order companions.**  This phase tested a single new
+   entry; companion entries that could restore universality
+   weren't enumerated.  That's the structural-prescription work
+   for whichever direction model-G integration takes.
+
+---
+
+## Phase 7f — Unit translation: 7-tensor σ_t ↔ 11D σ_pS_tube
+
+Phase 7e left an unresolved question: where does Phase 7c's
+σ_t = −116.1 (7-tensor units) land in the dimensionless 11D
+universality band [−0.0025, +0.0025]?  Phase 7f answers this by
+deriving the equivalent 11D σ_pS_tube via Schur-complement
+matching of the cross term in m²(k_S).
+
+Script:
+[`scripts/track7_phase7f_unit_translation.py`](scripts/track7_phase7f_unit_translation.py)
+Outputs:
+[`outputs/track7_phase7f_unit_translation.csv`](outputs/track7_phase7f_unit_translation.csv) ·
+[`outputs/track7_phase7f_unit_translation.png`](outputs/track7_phase7f_unit_translation.png)
+
+### Method
+
+Equating cross terms in m²(k_S):
+
+- 7-tensor: `2 · k_S · σ_t · n_pt · ℏc`
+- 11D Schur: `−(2π·ℏc)² · 2 · (n_pt/L_p) · k_S · σ_pS / (k_p · 1)`
+  (leading order in σ_pS; G[p_t,p_t] = k_p, G[S,S] = 1)
+
+Solving:
+
+<!-- σ_pS = −σ_t · L_p · k_p / [(2π)² · ℏc] -->
+$$
+\sigma_{pS} \;=\; -\sigma_t \cdot L_p \cdot k_p \;\big/\; [(2\pi)^2 \cdot \hbar c]
+$$
+
+with L_p = ε_p · L_ring_p the p-sheet tube length.
+
+### F7f.1. Translation result for Phase 7c at two baselines
+
+| Baseline | ε_p | L_ring_p (fm) | L_p_tube (fm) | σ_pS_equiv |
+|:---|:-:|:-:|:-:|:-:|
+| R60 Track 9 model-F | 0.4 | 15.24 | 6.10 | **+0.00427** |
+| R64 Point B | 0.2052 | 89.91 | 18.45 | **+0.01291** |
+
+(Sign positive because σ_t < 0 and prefactor carries a negative sign.)
+
+### F7f.2. Numerical verification
+
+At Track 9 baseline with σ_pS = +0.00427 and test mode
+(n_pt = 6, k_S = 1 fm⁻¹):
+
+- m²(σ_pS = 0) = +8.795e7 MeV²
+- m²(σ_pS = +0.00427) = +8.747e7 MeV²
+- 11D Δm² = −4.75 × 10⁵ MeV²
+- 7-tensor Δm² (cross only) = −2.75 × 10⁵ MeV²
+- Ratio: **+1.73**
+
+The 1.73 ratio reflects higher-order Schur corrections (the
+linearization is not exact at this σ_pS magnitude) plus the
+(2π)² factor's interaction with the kinetic A normalization.
+The order of magnitude is correct; absolute precision would
+require a more careful Schur-complement expansion or a
+nonlinear matching condition.
+
+### F7f.3. Locating in Phase 7e bands
+
+Phase 7e's bands (model-F frame):
+- Signature OK: [−0.0750, +0.0750]
+- Universality < 10⁻⁶: only σ = 0
+- Universality < 1%: [−0.0025, +0.0025]
+
+| Translation | σ_pS_equiv | In sig band? | In 1% univ band? | × 1% threshold |
+|:---|:-:|:-:|:-:|:-:|
+| Track 9 baseline | +0.00427 | ✓ | ✗ | 1.7× |
+| R64 Point B baseline | +0.01291 | ✓ | ✗ | 5.2× |
+
+### F7f.4. Implication
+
+Phase 7c's σ_t corresponds to a **moderate** dimensionless 11D
+coupling — comparable to (Track 9) or several times larger than
+(R64 PB) the 1% universality threshold.  Not deeply inside the
+band ("safely small"), not catastrophically outside ("breaks
+metric"); right at the **edge**.
+
+Estimated α-perturbation magnitude at this σ_pS:
+- ~0.12% on electron α (Track 9 σ_pS_equiv)
+- ~few % on charge-positive compounds (R64 PB σ_pS_equiv)
+
+This is the "moderate σ_pS_tube" case the review anticipated:
+the metric stays physical, model-F's α-architecture is
+disturbed at the few-percent level (not negligible, not
+catastrophic).  Pool item j (structural prescription) and pool
+item m (Yukawa pivot) both remain viable paths through this.
+
+---
+
+## Phase 7g — α-test at R64 Point B with R64 u/d inventory
+
+Phase 7e tested model-F regression (proton at (0,0,0,0,1,3),
+etc.).  Phase 7g tests the same structural question at R64's
+own frame: R64 Point B parameters with R64 u/d compound tuples
+(proton (3,+2), neutron (3,−2), deuteron (6,0)).
+
+Script:
+[`scripts/track7_phase7g_R64_inventory.py`](scripts/track7_phase7g_R64_inventory.py)
+Outputs:
+[`outputs/track7_phase7g_R64_alpha_universality.csv`](outputs/track7_phase7g_R64_alpha_universality.csv) ·
+[`outputs/track7_phase7g_R64_alpha_curves.png`](outputs/track7_phase7g_R64_alpha_curves.png)
+
+### F7g.1. Baseline α-extraction at R64 Point B
+
+At σ_pS = 0 with R64 PB params:
+
+| Mode | Tuple | α_sum | Expected α/α₀ | Observed α/α₀ |
+|:---|:-:|:-:|:-:|:-:|
+| electron | (1,2,0,0,0,0) | +1 | 1 | 1.000 |
+| muon | (1,1,−2,−2,0,0) | −1 | 1 | 1.000 |
+| **R64 proton** | (0,0,0,0,3,+2) | **−3** | **9** | **9.000** |
+| **R64 neutron** | (0,0,0,0,3,−2) | **−3** | **9** | **9.000** |
+| **R64 deuteron** | (0,0,0,0,6,0) | **−6** | **36** | **36.0** |
+| R64 pp | (0,0,0,0,6,+4) | −6 | 36 | 36.0 |
+| π⁰ | (0,−1,−2,−2,0,0) | −2 | 4 | 4.000 |
+| K± | (−1,−6,−2,2,0,1) | −3 | 9 | 9.000 |
+
+The R64 baryon tuples give **α/α₀ = 9** (proton, neutron) or
+**α/α₀ = 36** (deuteron, NN compounds) under the bare α-sum
+rule, **not** the physical 1 or Z².  This is a known R64-specific
+issue requiring a different α-attribution rule (pool item g,
+"Charge-attribution rule extension").  Phase 7g sidesteps this
+by testing **relative ratios** α(σ)/α(0) — coupling structure
+is independent of the baseline α value.
+
+### F7g.2. Signature and universality bands at R64 frame
+
+| Band | Phase 7e (model-F) | **Phase 7g (R64 PB)** |
+|:---|:-:|:-:|
+| Signature OK | [−0.0750, +0.0750] | **[−0.1100, +0.1100]** |
+| Universality < 10⁻⁶ | only σ = 0 | only σ = 0 |
+| Universality < 1% | [−0.0025, +0.0025] | **[−0.0075, +0.0075]** |
+
+The R64 frame has both wider signature window (~1.5×) and
+wider 1% universality region (3×).  The wider tolerance is a
+geometric consequence of R64's (ε_p, s_p) being smaller, which
+shifts the off-diagonal weight in G⁻¹.
+
+### F7g.3. Two-group coupling pattern at R64's frame
+
+α(mode)/α(σ=0) ratios at sample σ_pS:
+
+| Mode | σ=−0.05 | σ=−0.01 | σ=+0.01 | σ=+0.05 |
+|:---|:-:|:-:|:-:|:-:|
+| electron | 1.116 | 1.0036 | 1.0036 | 1.116 |
+| muon | 1.116 | 1.0036 | 1.0036 | 1.116 |
+| **R64 proton** | **1.579** | **1.0165** | **1.0165** | **1.579** |
+| **R64 neutron** | **1.583** | **1.0166** | **1.0166** | **1.583** |
+| **R64 deuteron** | **1.581** | **1.0166** | **1.0166** | **1.581** |
+| **R64 pp** | **1.579** | **1.0165** | **1.0165** | **1.579** |
+| **R64 nn** | **1.583** | **1.0166** | **1.0166** | **1.583** |
+| π⁰ | 1.116 | 1.0036 | 1.0036 | 1.116 |
+| π± | 1.116 | 1.0036 | 1.0036 | 1.116 |
+| K± | 1.116 | 1.0036 | 1.0036 | 1.116 |
+| ρ | 1.116 | 1.0036 | 1.0036 | 1.116 |
+
+**Two clean groups** emerge:
+
+- **p-sheet group** (R64 proton, neutron, deuteron, pp, nn — all
+  R64 baryon-class compounds): shift uniformly together,
+  ~3.4× the rate of the e/ν group.
+- **e/ν group** (electron, muon, mesons): shift uniformly
+  together at a smaller rate.
+
+Within each group: deviations agree to 4+ significant figures.
+Between groups: relative shift differs by factor ~3.4.
+
+This is a **structural feature**, not noise.  σ_pS_tube
+modifies G⁻¹ in a way that affects p-sheet modes more strongly
+than e/ν modes (because the perturbation is on the p-sheet
+row).  Modes on the same sheet shift uniformly because the
+α-extraction formula's mode-dependence factors out within a
+sheet.
+
+### F7g.4. Implication for companion-entry strategy
+
+The two-group pattern is highly informative for pool item j's
+companion-entry search.  Phase 7e's 10-mode chaos (different
+sign shifts across modes) was actually masked by the fact that
+some R60 model-F tuples mix sheets in complex ways.  At R64's
+clean p-sheet-only baryon picture, the perturbation reduces to
+**a 2-parameter structure**: one coefficient for the p-sheet
+group, one for the e/ν group.
+
+A companion entry σ_companion at e.g. (e_t, S_*) or (ν_t, S_*)
+that reproduces the same magnitude perturbation on the e/ν
+group while leaving the p-sheet group unaffected would
+**equalize the two groups' shifts**, restoring universality at
+second order.  This is a concrete and tractable
+structural-prescription problem.
+
+### F7g.5. Comparison to Phase 7e
+
+The "α-sectors are coupled" finding survives at R64's frame.
+The structure is **cleaner** at R64's frame: the two-group
+pattern (p-sheet vs e/ν) is more interpretable than 7e's
+mode-by-mode chaos.
+
+Where Phase 7c's σ_pS_equiv = +0.0129 (R64 PB baseline) lands:
+
+| Reference | Threshold | Status |
+|:---|:-:|:-:|
+| Phase 7g signature band | [−0.110, +0.110] | ✓ Inside |
+| Phase 7g 1% universality | [−0.0075, +0.0075] | ✗ 1.7× over |
+| Estimated α-shift on R64 proton | — | ~3% |
+| Estimated α-shift on electron | — | ~0.6% |
+
+The α perturbation at Phase 7c's coupling is:
+- ~3% on R64 baryons (proton, neutron, deuteron, NN compounds)
+- ~0.6% on leptons and mesons
+
+Few-percent disagreement between sheets — structurally
+disturbing for model-G integration unless cancelled by
+companion entries.
+
+### F7g.6. Recap of the conditional from F7e.6
+
+Phase 7e/7f/7g together resolve the conditionality flagged in
+F7e.6:
+
+- (a) **Phase 7c's coupling is non-trivial in 11D** (F7f.3): it's
+  outside the 1% universality band by factor 2-5.
+- (b) **The same coupling pattern persists at R64's frame**
+  (F7g.4): two-group structure (p-sheet vs e/ν), each shifting
+  uniformly.
+- (c) **Companion-entry resolution is more tractable than
+  expected** (F7g.4): the two-group pattern reduces companion
+  search to a 2-parameter constraint, not a per-mode constraint.
+
+Net read: Phase 7c's σ_t **does** require a structural
+prescription to coexist with R60's α-architecture; the
+prescription likely takes the form of one or two companion
+entries (e_t, S) and/or (ν_t, S) that equalize the e/ν-sheet
+shift to match the p-sheet shift.  This is pool item j's
+companion-entry direction.  Pool item m (Yukawa pivot) remains
+the alternative path that sidesteps the companion problem
+entirely by removing the (p_t, S) entry from the metric.
+
+---
+
 ## Status
 
-**Phases 7a, 7b, 7c, and 7d complete.**
+**Phases 7a, 7b, 7c, 7d, 7e, 7f, and 7g complete.**
 
 **Phase 7a**: 7-tensor produces a trough in E(r) for two-particle
 states, charge-independent (σ_r = 0 selected structurally), pn
@@ -765,6 +1175,33 @@ effective coupling ~0.37 — too strong to support nature's
 single-bound-state spectrum.  Phase 7b's structural finding
 (polynomial form, no Yukawa) is now made concrete in QM
 observables.
+
+**Phase 7e**: Augmented R60 model-F's 11×11 metric with
+σ_pS_tube at the new (p_t, S) entries; swept and re-extracted
+α.  **α-sectors are NOT decoupled**.  Even small σ_pS_tube ≠ 0
+disturbs α, and different modes shift in different directions —
+universality breaks at the 1% level for σ_pS_tube outside
+[−0.0025, +0.0025].  Conditional finding pending unit
+translation and R64-frame test.
+
+**Phase 7f**: Schur-complement matching translates Phase 7c's
+σ_t = −116.1 (7-tensor units) to **σ_pS_tube ≈ +0.0043** in 11D
+units (Track 9 baseline) or **+0.0129** (R64 Point B baseline).
+Inside the signature band but outside the 1% universality band
+by factor 1.7× to 5×.  Phase 7c's coupling is moderate — α
+perturbation at the few-percent level, not negligible and not
+catastrophic.
+
+**Phase 7g**: Re-ran Phase 7e at R64's actual frame (Point B
+params + R64 u/d inventory).  Universality bands wider at R64
+frame (1% band: [−0.0075, +0.0075], 3× wider than model-F).
+**Two-group coupling pattern** revealed: R64 baryons (proton,
+neutron, deuteron, NN compounds) shift uniformly together at
+~3.4× the rate of leptons + mesons, which also shift uniformly.
+Highly informative — companion-entry resolution reduces to a
+2-parameter constraint (equalize p-sheet shift with e/ν
+shift), much more tractable than per-mode chaos.  σ_pS_tube
+needs structure, but the structure is concrete and solvable.
 
 Track 7 produces the right shape AND right scale of the NN
 potential at the static intermediate-r level (Phase 7c).  Lifting

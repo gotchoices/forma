@@ -346,3 +346,126 @@ metric.  Two readings to investigate:
 intermediate r) stands either way.  7d settles the question of
 whether σ_t is part of MaSt's structural inventory or an
 imported empirical coupling.
+
+---
+
+## Phase 7e — executed; conclusion is conditional, recommend re-run
+
+**What 7e delivered.**  Augmenting R60 model-F's 11×11 metric
+with σ_pS_tube ∈ [−0.075, +0.075] (the signature-preserving
+band) and computing α_Coulomb across 10 model-F inventory modes
+showed that **the sectors are algebraically coupled**: α
+deviates symmetrically and quadratically in σ, with different
+modes shifting in different directions.  Universality holds
+only at σ ≈ 0.  Method and implementation are sound — F7e.1's
+baseline reproduction confirms the test setup before the
+perturbation enters.
+
+**The negative result is real but the conclusion is
+conditional.**  Two unresolved issues weaken the bridge from
+F7e's finding to "Yukawa pivot is forced":
+
+### Issue 1 — unit translation never performed
+
+7c's σ_t = −116.1 is in 7-tensor units (multiplies `n_pt · ℏc`
+to give a coupling magnitude in MeV²·fm).  R60's 11D σ_pS_tube
+is a dimensionless metric component.  The signature band
+[−0.075, +0.075] reported by 7e is in 11D units.  **7e never
+translates between the two**, so we don't know whether 7c's
+σ_t corresponds to:
+
+- A tiny 11D σ_pS_tube (deep inside the band, α perturbation
+  negligible)
+- A moderate 11D σ_pS_tube (inside band but perturbing α at
+  the few-percent level)
+- A large 11D σ_pS_tube (outside band, signature breaks)
+
+The "is 7c's coupling safe to integrate?" question is **not
+answered** until this translation is done.  F7e.7 acknowledges
+the issue but understates its weight: the entire model-G
+integration question hinges on which case applies.
+
+### Issue 2 — test modes are model-F, not R64
+
+7e's 10 test modes use R60 model-F tuples — proton at
+`(0, 0, 0, 0, 1, 3)`, etc.  R64's u/d picture has the proton at
+`(0, 0, 0, 0, 3, +2)` and the neutron at `(0, 0, 0, 0, 3, −2)`.
+
+These are different objects with different `(n_et − n_pt +
+n_νt)²` values.  7e is structured as a model-F regression test
+("does adding σ_pS_tube break α at model-F's assignments?")
+which is **the right question for "model-G must not regress
+model-F"** — but **not the test of whether α universality
+survives at R64's own frame**.  The latter is a separate
+question that 7e doesn't address.
+
+### Issue 3 — companion-entry prescription not enumerated
+
+F7e.6 correctly identifies that σ_pS_tube might need a
+structural prescription (analog of σ_ra = (s·ε)·σ_ta) — either
+derived from existing α-architecture or via companion entries
+that cancel the perturbation.  Neither is computed.  The
+quadratic-in-σ deviation pattern (F7e.3) is actually a
+Schur-complement-style mixing signature, suggesting companion
+entries at second order could cancel it.  This is a real
+structural lead that 7e left on the table.
+
+### Recommended re-run (Phase 7e′ or 7e supplement)
+
+Before pivoting to Yukawa or declaring the metric route closed,
+two short follow-ups should sharpen 7e's conditional finding
+into a definitive one:
+
+**(i) Unit-translation calculation.**  Derive the dimensionless
+11D σ_pS_tube that produces the same mass-formula coefficient
+at compound (6, ±4) modes as Phase 7c's σ_t = −116 in 7-tensor
+units.  Concretely: compute the cross-coupling correction to
+m²((6, +4)) two ways — once via 7c's `2·k_S·σ_t·n_pt·ℏc` form
+and once via the augmented 11D metric's Schur-complement
+expansion at the same k_S — and solve for the σ_pS_tube value
+that makes them equal.  Then locate that value in 7e's
+[−0.075, +0.075] band.  Output: a single number, ~hours of
+work, settles whether 7c's coupling is safely small or
+problematically large in 11D units.
+
+**(ii) Re-run 7e at R64 Point B with R64's u/d inventory.**
+Replace 7e's 10 model-F test modes with R64's u/d compounds:
+proton `(0, 0, 0, 0, 3, +2)`, neutron `(0, 0, 0, 0, 3, −2)`,
+deuteron `(0, 0, 0, 0, 6, 0)`, the relevant mesons.  Use Point
+B parameters `(ε_p, s_p, K_p) = (0.2052, 0.0250, 63.629)`.
+Re-sweep σ_pS_tube and check α-universality across the R64
+inventory.  Output: same kind of table as F7e.3, but
+addressing R64's actual frame.  ~hours of work, single-script
+extension of the existing 7e script.
+
+**(iii) Companion-entry search (optional).**  If (i) places
+7c's σ_t inside the band and (ii) shows the same coupling
+pattern at R64 inventory, the next question is whether
+companion entries (additional off-diagonal pairs) can cancel
+the quadratic α-perturbation at second order.  The shape of
+the deviations in F7e.3 is the input — if α(electron) rises
+while α(proton) falls at the same σ, the companion needs to
+oppose the e-sheet contribution to G⁻¹[Ma, t] specifically.
+This is more involved (multi-day) but the F7e.3 data already
+encodes the constraint; it's "solve for companion entries"
+rather than "blind search."
+
+### Net read
+
+The "sectors are coupled" structural finding stands.  But
+"σ_pS_tube needs structure" is a CONDITIONAL conclusion at the
+moment, not an absolute one — conditional on 7c's σ_t
+corresponding to a non-trivial 11D entry, and conditional on
+the same coupling pattern existing at R64's frame.  Both
+conditions are testable with short follow-ups.
+
+Steps (i) and (ii) collectively determine whether the model-G
+integration question is "find the structural prescription for
+σ_pS_tube" (if 7c's coupling is large enough to need it) or
+"σ_pS_tube is small enough that R60 stays effectively intact"
+(if 7c's coupling is well below the band's threshold).  Either
+outcome is informative.
+
+The Yukawa pivot suggested in F7e.6 is a viable separate route,
+but with the unit-translation gap unresolved, choosing it now
+would forfeit information that 7e′ would surface cheaply.
