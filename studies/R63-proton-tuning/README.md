@@ -1,14 +1,22 @@
 # R63: Proton-sheet tuning — disciplined audit and sweep
 
-**Status:** Tracks 1–8 complete.  Track 9 active.  Phases 9a
+**Status:** Tracks 1–8 complete.  Track 9 complete: phases 9a
 (linear cross-shear dressing), 9b (non-additive deuteron tuple
-search), and 9c (mass-formula validity at high n_pt) have each
-falsified their respective candidate mechanisms cleanly.  The
-one remaining Ma-internal candidate is **Phase 9d — Z₃
-multi-strand phase coherence at k > 3**: does a 6-strand
-p-sheet compound in Z₆ coherence have lower mass than two
-independent Z₃ triplets?  Phase 9d is framed but unexecuted;
-it requires a principled ansatz before running.  R63 is developing the **g-candidate** — the
+search), and 9c (mass-formula validity at high n_pt) each
+falsified their respective candidate mechanisms cleanly.
+**Track 10 active.**  The reviewer reframed Phase 9d as a
+dedicated track around Pauli-saturated multi-strand coherence
+(3 colors × 2 spins = 6 strand capacity per p-sheet tuple).
+Phase 10a executed: the (1, 2) eigenmode geometry on the curved
+p-sheet is characterized (FWHM ≈ 83°), but R60 T16's 2ω
+back-reaction U₂ does not distinguish Z₆, 2 × Z₃, or Pauli-
+saturated arrangements at N = 6 — all give U₂ = −3.  Higher
+harmonics distinguish inconsistently and lack framework
+selection.  **Pending decision** between Reading A (close R63;
+binding requires framework extension), B (extend R60 T16 to
+higher harmonics), or C (binding belongs to S-space).
+See [findings-10.md](findings-10.md).
+R63 is developing the **g-candidate** — the
 evolving parameter set and rule set that is intended to become
 model-G if and when it demonstrates clear superiority over
 model-F across multiple axes.  The rule-set piece of the g-candidate is
@@ -1188,10 +1196,63 @@ differently than 2 independent 3-strand sets is the question.
 
 #### Status
 
-Phase 9d is **framed but unexecuted**.  The reviewer's
-recommendation is to continue R63 with Phase 9d, since it is
-the one remaining Ma-internal candidate.  Before running, an
-ansatz proposal needs to be settled.
+Phase 9d as originally framed (generic "Z₃ phase coherence" search)
+has been **superseded by Track 10**, which the reviewer promoted
+into a dedicated track around the deterministic Pauli-saturated
+variant.  See Track 10 below.
+
+---
+
+## Track 10 — Pauli-saturated multi-strand coherence
+
+**The reframed mechanism.**  Each (1, 2) p-sheet primitive carries a
+Z₃ color (3 values, from R60 T16) and a Dirac–Kähler spin (2 values,
+from D7d's per-sheet spinor structure).  Pauli antisymmetry caps
+strand-occupancy of a single tuple at 3 × 2 = 6 — the
+**Pauli-saturated** configuration.  Six matches the deuteron's quark
+count (proton uud + neutron udd = 6 quarks); the hypothesis is that
+the saturated compound has lower mass than "two free nucleons" by
+the deuteron binding 2.22 MeV, with no free parameters.
+
+The 1s-orbital analogy is load-bearing: two electrons fit `(n,l,m)
+= (1,0,0)` because spin distinguishes them; a third electron must
+go to 2s.  MaSt's nuclear analog: six p-sheet strands fit one
+compactification slot; a seventh requires a radial excitation.
+
+### Phase 10a — Eigenmode geometry and back-reaction capacity (EXECUTED)
+
+Two structural questions, both computable directly:
+
+1. **Geometric**: does the (1, 2) eigenmode profile permit six
+   coexisting strands at the g-candidate baseline?
+2. **Mechanistic**: does R60 T16's 2ω back-reaction U₂ distinguish
+   candidate N = 6 phase arrangements (Z₆ vs 2×Z₃ at various
+   inter-triplet angles)?
+
+**Result**: eigenmode is well-defined (FWHM ≈ 83° at θ₁ ≈ 80°);
+"ribbon overlap" geometric criterion is wrong (would forbid the
+proton); R60 T16's U₂ saturates at −3 for *every* Z₃-coherent N = 6
+arrangement, including Pauli-saturated.  The framework's existing
+mechanism does not derive a deuteron binding.
+
+See [findings-10.md](findings-10.md) Phase 10a.
+
+### Decision pending
+
+Three readings of Phase 10a, choice belongs to user/reviewer:
+
+- **Reading A** — Honest closure: framework's rigidity exhausted at
+  N = 3; binding requires framework extension.  R63 closes here.
+- **Reading B** — Extend R60 T16's density-cancellation argument to
+  higher harmonics (φ³, φ⁴ contributions to ρ_Q); a Phase 10b
+  derivation of effective coherence weights `w_m` from higher-order
+  back-reaction.  Stays in Ma; not a free-parameter fit.
+- **Reading C** — Binding belongs to S-space configuration energy
+  (T8 FR-4 second bullet); R63 documents the closed Ma-internal
+  exhaustion and defers binding to a successor study.
+
+If Reading B is selected, Phase 10b runs next.  Otherwise R63 closes
+with the binding observable as the explicit open question.
 
 ### Exit criteria
 
@@ -1366,9 +1427,10 @@ User-imposed rules R63 should follow throughout execution:
 
 ## Next steps
 
-**R63 closed.**  Tracks 1–9 complete.  Per-track results in
+**R63 active — Track 10 pending decision.**  Tracks 1–9 complete;
+Phase 10a executed.  Per-track results in
 [findings-1.md](findings-1.md) through
-[findings-9.md](findings-9.md); outputs in [`outputs/`](outputs/).
+[findings-10.md](findings-10.md); outputs in [`outputs/`](outputs/).
 
 The g-candidate (R63's refinement of model-F) carries:
 - Q132 v2 rule set (gcd decomposition + phase-lock).
@@ -1378,11 +1440,19 @@ The g-candidate (R63's refinement of model-F) carries:
   composition.
 - Ingredient-sum rule for composite charge.
 
-Track 9 **falsified cross-shear dressing as the nuclear binding
-mechanism** (structural cancellation from additivity + linear
-metric perturbation).  The ~0.87% residual at Fe remains as
-the binding-energy observable, but closing it requires a
-framework extension outside R63's refinement scope.
+Track 9 **falsified all three Ma-internal candidate mechanisms**
+that don't require new framework structure: cross-shear dressing
+(9a), non-additive deuteron tuples (9b), and high-winding mass
+formula corrections (9c).  Track 10 reframes the last candidate
+(Z₃ multi-strand phase coherence) under a Pauli-saturation rule
+(3 colors × 2 spins per p-sheet tuple → 6-strand capacity = the
+deuteron).  Phase 10a finds the (1, 2) eigenmode geometry is
+computable but R60 T16's 2ω back-reaction does not distinguish
+candidate N = 6 arrangements; the framework's existing rigidity
+gives no binding-energy difference between "Pauli-saturated
+deuteron compound" and "two free nucleons".  Higher harmonics
+distinguish but inconsistently and without framework selection.
+The deuteron's 2.2 MeV binding remains the open observable.
 
 Directions for future refinement — as successor studies rather
 than additional R63 tracks — captured in the close-out sections

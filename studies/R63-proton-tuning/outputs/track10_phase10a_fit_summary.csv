@@ -1,0 +1,14 @@
+quantity,value
+eps_p,0.55
+s_p,0.162037
+n_t,1
+n_r,2
+q_eff,1.837963
+lambda_0,2.069579196102659
+theta1_peak_deg,80.15625
+fwhm_theta1_deg,82.86230890385373
+ribbon_theta2_width_deg,165.72461780770746
+N_max,2.1722783540687534
+fits_electron_1s,True
+fits_proton_Z₃,False
+fits_deuteron_PS,False

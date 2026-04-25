@@ -497,3 +497,192 @@ sheet's mass contribution.  It doesn't create binding.
 If both 9c and 9b-new fail, the "binding requires framework
 extension" conclusion in F9a.6 is earned.  Until then, R63
 stays open with a specific Ma-internal candidate in play.
+
+---
+
+## After Phase 9c
+
+9c confirmed `μ(kn_t, kn_r) = k·μ(n_t, n_r)` to double-precision
+across k = 1…200; derivation 4 of R62 has no hidden
+high-winding correction.  Path B is cleanly falsified.
+
+Path C (Z₃ multi-strand phase coherence) is the only Ma-
+internal candidate left.  **I recommend promoting it from
+"Phase 9d" to a dedicated Track 10**, framed around
+Pauli-saturated multi-strand structure rather than the generic
+"try different phase arrangements" wording 9d inherited.  The
+Pauli framing gives the track a deterministic mechanism with
+no free parameters.
+
+---
+
+## Track 10 — Pauli-saturated multi-strand coherence
+
+### The structural idea
+
+A standing wave on a compact dimension can host more than one
+particle at the same winding numbers, if the particles carry
+additional fermionic quantum numbers that distinguish them.
+The canonical example is the 1s atomic orbital: two electrons,
+both with `(n, l, m_l) = (1, 0, 0)`, differ only in spin
+`m_s = ±½`.  Pauli antisymmetry is satisfied by the spin label
+alone, and the spatial wavefunction is shared.
+
+MaSt already uses this structure implicitly.  Q132 v2 reads
+`(2, 4)` on the e-sheet as "two electrons" (k = 2 copies of
+the primitive `(1, 2)`), not as one `|Q| = 2` particle.  The
+two copies share the same tuple because spin labels them
+apart.  A third copy would violate Pauli on `(1, 0, 0, m_s)`
+and is not allowed on the 1s slot — in MaSt language, k = 3
+on the e-sheet is ruled out not by the mass formula but by
+the spin-state count.
+
+The p-sheet extension is parallel but richer, because each
+primitive strand carries both a **Z₃ color** (3 values, from
+the phases 0, 2π/3, 4π/3 that implement R60 T16's
+confinement) and a **spin** (2 values, from D7d's per-sheet
+Dirac–Kähler).  The Pauli-allowed capacity on a single
+p-sheet tuple is
+
+> **3 colors × 2 spins = 6 distinct strand states**.
+
+For k = 3 (one baryon) only 3 of the 6 slots are occupied;
+spin is free (SU(6)-combined at the baryon level per
+derivation-11 and R60 Track 15).  For **k = 6** every color-
+spin slot is filled exactly once — the compound mode is
+**Pauli-saturated**.  Six strands is the maximum that fits.
+Seven would require an additional quantum number beyond
+(color, spin) and so must open a new tuple instead.
+
+Matched to observation: the deuteron has six quarks (proton
+uud + neutron udd = 3u + 3d).  The Pauli-saturated k = 6
+p-sheet compound is MaSt's structural representation of this
+state.
+
+### Why this is a new mechanism vs. 9a/9b/9c
+
+9a tested linear cross-shear dressing of the additive tuple;
+falsified.  9b tested *different* tuples under the same mass
+formula; falsified at structural precision.  9c tested
+high-winding corrections to the mass formula; falsified.
+All three assumed the mass depends only on `(n_pt, n_pr)`
+totals — no per-strand quantum numbers enter.
+
+Track 10 breaks that assumption.  It proposes that the mass
+at `k = 6` depends on **how the six strands populate the
+(color, spin) Pauli slots**, because the ring-direction phase
+coherence across the compound differs between "two
+independent color-triplets, spin-paired within each" (two
+free nucleons) and "one Pauli-saturated compound, spins
+correlated across all six strands" (the bound deuteron).
+
+The mechanism is Pauli antisymmetry interacting with Q132 v2's
+phase-lock structure — both already in the framework
+separately.  Track 10 is the first phase that puts them
+together.
+
+### Goal
+
+Compute the mass of the Pauli-saturated k = 6 p-sheet compound
+mode and compare to 2·m_p.  The difference, if any, is MaSt's
+prediction of the deuteron binding energy.  Target: observed
+2.22 MeV.
+
+- If the calculation gives ≈ 2.22 MeV, the strong force in Ma
+  is Pauli-forced phase coherence at k ≥ 6, and Track 10
+  closes R63 with a positive identification of the binding
+  mechanism.
+- If the calculation gives ≈ 0, Pauli structure doesn't
+  couple to mass at the level Q132 v2 captures; binding is
+  not Ma-internal and framework extension is earned.
+- If it gives a wrong non-zero value (e.g., 0.5 MeV or 20
+  MeV), the mechanism is present but the construction is
+  incomplete; diagnose and refine.
+
+No free parameters — Pauli is rigid, Z₃ is rigid, spin-½ is
+rigid.  One number in, one number out.
+
+### Technical approach
+
+**Step 1 — Audit D7d for per-strand spin at multi-copy
+primitives.**  D7d assigns spin ½ per sheet via per-sheet
+Dirac–Kähler on flat T².  Verify that at k = 6 on a single
+`(n_pt, n_pr)` tuple the framework naturally provides 2 spin
+states per Z₃ color — i.e., that D7d's spinor doubling is
+explicit at the primitive-strand level, not just at the
+compound level.  (If it isn't, the Pauli-saturation count of 6
+needs structural justification rather than being assumed.)
+
+**Step 2 — Catalog the 6 (color, spin) Pauli states.**  The 6
+strands occupy `(color, spin) ∈ {0, 2π/3, 4π/3} × {↑, ↓}`.
+At k = 6 Pauli-saturation, each of the 6 (color, spin) pairs
+appears exactly once.  No enumeration of alternatives is
+required — there is only one Pauli-saturated configuration
+up to overall phase.
+
+**Step 3 — Extend Q132 v2's ω-sum to carry per-strand phase.**
+Q132 v2's ω-sum `Σⱼ exp(i · 2π · j · p_r/p_t)` tracks
+ring-phase at successive tube closures of a single primitive.
+For k strands sharing a tuple, each strand contributes its own
+ω-sum shifted by its (color, spin) label:
+
+<!-- ω_{c,σ} = exp( i (θ_color + φ_spin) ) -->
+
+with `θ_color ∈ {0, 2π/3, 4π/3}` the Z₃ phase and `φ_spin ∈
+{0, π}` the spin-½ phase factor.  The k-strand compound's
+effective ring-direction contribution is the coherent sum of
+strand contributions weighted by their (color, spin) labels.
+
+**Step 4 — Compute the mass correction.**  Work out the
+compound mass with the per-strand phase sum included, compare
+to the bare `k · μ(primitive)` and to the "two independent
+Z₃ color triplets" baseline.  The coherent sum at Pauli-
+saturation should differ from the two-triplet sum; the
+difference is the deuteron binding.
+
+**Step 5 — Single-number test.**  Deuteron binding = 2.22 MeV.
+Report the computed value.
+
+**Step 6 — Extend to higher nuclei.**  k = 9 (triton: 3 nucleons,
+requires Pauli-breaking since only 6 color-spin slots exist —
+the 7th strand must occupy a **radial excitation** of the
+p-sheet, analogous to the 2s shell for the 3rd electron in
+Li).  Compute triton binding and compare to observed 8.48 MeV.
+k = 12 (⁴He: 4 nucleons, two full sets of 6, each Pauli-
+saturated in its own radial shell) — compare to observed
+28.30 MeV.  The shell-structure analogy is deliberate: if the
+picture is right, MaSt should predict a "nuclear shell" pattern
+matching the atomic one in structure if not in scale.
+
+### Why the 1s-shell analogy is load-bearing
+
+If someone asks "why can 6 strands fit on k = 6 but not on
+k = 3?" the answer is the same as "why can 2 electrons fit
+in 1s but not 3?": Pauli.  The atomic shell structure is the
+canonical example of how compact-state multiplicity is bounded
+by fermionic-quantum-number exhaustion.  MaSt has the same
+structural ingredients — fermionic KK modes from D7d, a
+discrete Z₃ color from R60 T16 — and should exhibit the same
+shell-bounded multiplicity.  That two protons fit one
+compactification "slot" and a third requires a new one is
+the nuclear analog of two electrons fitting 1s and the third
+going to 2s.
+
+### Deliverables
+
+- A derived expression for the compound-mode mass at k = 6
+  with per-strand (color, spin) phases included.
+- A single number for the k = 6 Pauli-saturated
+  configuration's binding prediction vs. 2 × m_p.
+- Comparison to observed deuteron binding 2.22 MeV.
+- If step-6 is reached, binding predictions for ³H and ⁴He.
+
+### Relation to Track 9 closeout
+
+Track 9d was framed as generic "Z₃ phase coherence" without
+the Pauli constraint.  Track 10 replaces it with the
+deterministic Pauli-saturated variant.  If Track 10 succeeds,
+it subsumes 9d.  If Track 10 fails cleanly, 9d as originally
+framed is unlikely to fare better (free-parameter phase
+arrangements don't have the rigidity Pauli provides), and the
+framework-extension conclusion in F9a.6 is earned.
