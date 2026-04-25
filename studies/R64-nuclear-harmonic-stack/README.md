@@ -347,9 +347,85 @@ premise: the geometric reality of charge IS in Ma, but the
 
 ---
 
+## Track 7 — Strong force from a 7-tensor: 6 Ma + 1 S spatial dimension
+
+**Status: framed; Phase 7a executing.**
+
+After Track 6's review, the goal of *re-deriving* nuclear shell
+structure from MaSt was deemed a structural re-invention of well-
+understood SM physics (per
+[primers/nuclear-scaling.md](../../primers/nuclear-scaling.md)).
+What's *novel* in MaSt — and what would constitute genuine
+first-principles work — is deriving the **strong force itself**
+(its r-dependent shape and strength) from MaSt's geometric
+structure.
+
+The user's framing: build a 7-tensor (the T⁶ Ma block + 1
+abstract S spatial dimension), assume Ma couples to S at the
+known 1/α magnitude (analogous to how the photon couples
+electromagnetism via aleph in the full 11-tensor), and sweep
+remaining off-diagonal parameters to see if the natural energy
+structure matches the observed nucleon-nucleon potential:
+
+- a hard core (or repulsion) at very small r
+- an attractive trough at r ≈ 1 fm with depth ~50 MeV
+- a barrier / decay region beyond
+- Coulomb tail (`α/r`) at large r
+
+If this shape emerges from the 7-tensor with the standard 1/α
+coupling assumption, MaSt would have produced the strong force's
+r-dependent profile from geometric consistency rather than as
+an empirical input.
+
+### Victory criteria
+
+Track 7 succeeds if the 7-tensor at some parameter point produces:
+
+1. **Energy curve shape** matches the observed strong-force
+   profile (trough at ~1 fm, depth ~50 MeV, range ~1.5 fm,
+   Coulomb tail at large r).
+2. **P-sheet supports both protons and neutrons** (R64's Point B
+   already does this; verify it survives the 7-tensor extension).
+3. **Shear explains the Fe-peak preference** (light nuclei
+   prefer to grow toward heavier; binding-per-nucleon rises with
+   A from below Fe).
+4. **Marginal-nucleon preference is computable**: at a given
+   (Z, N), the 7-tensor predicts whether the next nucleon prefers
+   to be a proton or a neutron (matching the valley of stability).
+
+If all four hold simultaneously, declare victory: MaSt has
+derived the strong force from first principles plus the standard
+α coupling assumption.
+
+### Phases
+
+- **Phase 7a — Minimal 7-tensor sweep.**  Build the 6 Ma + 1 S
+  metric using R64 Point B parameters for the Ma block, the
+  assumed 1/α magnitude for Ma↔S coupling, and treat any
+  remaining off-diagonal terms as free.  Compute the energy of
+  a two-particle p-sheet configuration as a function of S
+  separation, sweeping the free parameters.  Plot E(r); look
+  for the strong-force shape.
+- **Phase 7b — Marginal-nucleon test.**  At a chosen working
+  point from 7a, compute predicted Z/A optimum vs A across the
+  nuclear chain.  Check the four victory criteria.
+- **Phase 7c — Refine.**  If 7a/7b are encouraging, refine the
+  parameter set and characterize uncertainties.
+
+### Reusable assets
+
+- R64 Point B Ma metric parameters
+- R60 11D metric construction (for off-diagonal structure
+  reference)
+- α = 1/137.036 as an input (per GRID)
+- Track 3's nuclear chain (84 stable isotopes) as the comparison
+  data
+
+---
+
 ## Track 6 — Flexible slot-configuration tool for shell-structure hypotheses
 
-**Status: Phase 6a complete; Phase 6b open.**
+**Status: Phase 6a complete; Track PAUSED.**
 
 Track 6 (revised after the previous mass-ordering iteration was
 abandoned per user direction) builds a computational tool for
