@@ -24,6 +24,19 @@ R62 derivation 4's flat geometry is correct physics.  See
 Track 11 below, [findings-9.md](findings-9.md),
 [findings-10.md](findings-10.md), and
 [findings-11.md](findings-11.md).
+
+**R63 closed (model-F refinement complete).**  The
+g-candidate as documented (Q132 v2 + ingredient-sum charge +
+β-decay-consistent cross-sheet neutron) is the deliverable.
+Nuclear binding does not live in the g-candidate's cross-sheet
+representation — the binding question continues in
+**[R64](../R64-nuclear-harmonic-stack/)**, which reframes the
+proton/neutron as ring-flipped u/d primitives on the p-sheet
+alone.  R64 Track 1 has already landed a magic point at
+`ε_p ≈ 0.073` matching constituent m_u, m_n−m_p, and B(²H)
+simultaneously; full development is the new study's job.
+Working theory captured in
+[Q134](../../qa/Q134-nuclear-harmonic-stack-on-p-sheet.md).
 R63 is developing the **g-candidate** — the
 evolving parameter set and rule set that is intended to become
 model-G if and when it demonstrates clear superiority over
