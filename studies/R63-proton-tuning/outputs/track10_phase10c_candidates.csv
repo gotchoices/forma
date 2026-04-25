@@ -1,0 +1,5 @@
+label,tuple,description,mass_MeV,mass_minus_m_d
+regular pp,"(0, 0, 0, 0, 6, 12)","diproton, additive p-sheet",1876.544,0.93100000000004
+regular pn,"(1, 2, -1, -1, 6, 12)",T8 additive deuteron,1876.5440695746859,0.9310695746858073
+complementary pp,"(0, 0, 0, 0, 6, 0)",n_r-cancelled diproton,1324.9490544365146,-550.6639455634854
+complementary pn,"(1, 2, -1, -1, 6, 0)",user's hypothesis,1324.9491529761196,-550.6638470238804

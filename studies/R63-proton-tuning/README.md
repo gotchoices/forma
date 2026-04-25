@@ -3,9 +3,9 @@
 **Status:** Tracks 1–10 complete.  Track 9 (linear cross-shear
 dressing 9a, non-additive deuteron tuple search 9b, mass-formula
 validity 9c) and Track 10 (Pauli-saturated multi-strand coherence:
-phase coherence 10a, Slater-determinant exchange 10b) each
-falsified their respective Ma-internal binding-mechanism
-candidates cleanly.
+phase coherence 10a, Slater-determinant exchange 10b, complementary-
+shear compound 10c) each falsified their respective Ma-internal
+binding-mechanism candidates cleanly.
 
 **R63 closes with respect to nuclear binding (Reading A
 earned).**  All four Ma-internal mechanisms tested fail
@@ -1273,10 +1273,32 @@ extension rather than completion.
 
 See [findings-10.md](findings-10.md) Phase 10b.
 
+### Phase 10c — Complementary-shear compound mode for the deuteron (EXECUTED)
+
+Tested the user's structural hypothesis: the deuteron's p-sheet
+content is `(6, 0)` — three (1, 2)-type strands plus three
+(1, −2)-type strands at interleaved 60° phases, with n_r
+contributions cancelling — and the neutron's e-sheet (1, 2) and
+ν-sheet (−1, −1) windings act as "ballast" that distinguishes
+pn from pp.
+
+**Result**: At g-candidate baseline the (6, 0) compound mass is
+1325 MeV — about 550 MeV under the deuteron, classified as
+tube-only neutral (Q = 0, not deuteron's +1).  The e/ν ballast
+contributes only +0.0001 MeV via quadratic-form combination,
+far below the binding magnitude.  Sweeping s_p locates the
+deuteron-mass match at s_p ≈ 0.998, but at that shear the
+hadron inventory is shattered — only 4 of 13 hadrons within
+±5%, worst miss φ at +55%.  The shear-flip-on-binding
+hypothesis is not implementable in the existing framework
+without adding a new tuple-class transition operator.
+
+See [findings-10.md](findings-10.md) Phase 10c.
+
 ### Track 10 closes — Reading A is earned
 
-All three Ma-internal candidates for the binding mechanism have
-been tested and falsified:
+All Ma-internal candidates for the binding mechanism have been
+tested and falsified:
 
 - **Phase 9a** — linear cross-shear dressing: structural
   cancellation under additivity.
@@ -1292,6 +1314,10 @@ been tested and falsified:
 - **Phase 10b** — Slater-determinant exchange-interaction
   channel: zero contribution for label-diagonal R60 T16
   operator.
+- **Phase 10c** — complementary-shear compound mode: the
+  (6, 0) tuple is a different particle (Q=0 at 1326 MeV);
+  e/ν ballast is 0.0001 MeV; tuning s_p to match m_d shatters
+  the hadron inventory (worst miss +55% on φ).
 
 The framework's existing Ma-domain operator set (`ρ_Q`-coherence)
 cannot supply nuclear binding at k = 6 by any of the four

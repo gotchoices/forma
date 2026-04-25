@@ -455,9 +455,163 @@ channel verified to give zero contribution beyond the classical
 sum for R60 T16's existing operator.  Reading A is earned within
 the framework's current operator inventory.
 
-Track 10 closes; R63 closes with respect to nuclear binding.
-The three successor-study directions (B-extended, C, D) are
-all framework extensions that fall outside R63's scope.
+---
+
+## Phase 10c — Complementary-shear compound mode for the deuteron
+
+**Hypothesis (user-proposed).**  The deuteron's p-sheet content
+might be `(6, 0)` rather than `(6, 12)` — three (1, 2)-type
+strands at one Z₃ phase set and three (1, −2)-type strands at
+phases offset by 60°, with the n_r contributions cancelling in
+the additive sum.  The neutron's e-sheet (1, 2) and ν-sheet
+(−1, −1) windings (per T8) act as "ballast" that stabilizes the
+compound and distinguishes pn from pp.
+
+Script:
+[`scripts/track10_phase10c_complementary_compound.py`](scripts/track10_phase10c_complementary_compound.py) ·
+Outputs:
+[`outputs/track10_phase10c_candidates.csv`](outputs/track10_phase10c_candidates.csv),
+[`outputs/track10_phase10c_shear_sweep.csv`](outputs/track10_phase10c_shear_sweep.csv),
+[`outputs/track10_phase10c_inventory_damage.csv`](outputs/track10_phase10c_inventory_damage.csv)
+
+### F10c.1. Four candidate compound masses at g-candidate baseline
+
+At `(ε_p, s_p) = (0.55, 0.162037)`:
+
+| Configuration | Tuple | Mass (MeV) | vs m_d |
+|:---|:---|---:|---:|
+| regular pp | `(0, 0, 0, 0, 6, 12)` | 1876.54 | +0.93 |
+| regular pn (T8 additive) | `(1, 2, −1, −1, 6, 12)` | 1876.54 | +0.93 |
+| complementary pp | `(0, 0, 0, 0, 6, 0)` | 1324.95 | −550.66 |
+| complementary pn (user's) | `(1, 2, −1, −1, 6, 0)` | 1324.95 | −550.66 |
+
+The (6, 0) compound mode is ~550 MeV lighter than the deuteron at
+g-candidate.  Under Q132 v2 it classifies as gcd = 6, primitive
+(1, 0), tube-only neutral — Q = 0, inconsistent with the
+deuteron's Q = +1 anyway.
+
+### F10c.2. The e/ν "ballast" is 0.0001 MeV
+
+Comparing `pn` vs `pp` at the same p-sheet structure, the
+neutron's e-sheet (1, 2) and ν-sheet (−1, −1) windings shift the
+compound mass by **+0.0001 MeV**, identically for both p-sheet
+structures.
+
+This is much smaller than the naive `m_e ≈ 0.5 MeV` estimate I
+gave in advice, because the relativistic mass formula combines
+contributions in quadrature: `M_total ≈ √(M_p² + m_e²) ≈
+M_p + m_e²/(2 M_p) ≈ M_p + 0.0001 MeV`.  The e-sheet's
+contribution to the deuteron-scale mass² is at the 10⁻⁷
+fractional level and cannot supply meaningful binding.  The
+ν-sheet's R61 geometry makes its contribution even smaller
+(< 10⁻¹⁵ MeV).
+
+### F10c.3. The (6, 0) tuple matches m_d only at s_p ≈ 1
+
+Sweeping `s_p` from 0.05 to 1.5 (with `L_ring_p` re-derived at
+each point so the proton remains anchored to m_p):
+
+| s_p | m_(6,0) | vs m_d |
+|---:|---:|---:|
+| 0.162 (g-candidate) | 1324.93 | −550.68 |
+| 0.500 | 1501.25 | −374.36 |
+| 0.900 | 1791.51 | −84.11 |
+| 0.990 | 1867.85 | −7.77 |
+| 0.998 | 1874.80 | −0.81 |
+| 1.000 | 1876.54 | +0.93 |
+| 1.100 | 1965.62 | +90.00 |
+
+The (6, 0) compound matches the deuteron mass at `s_p ≈ 0.998`,
+exactly where the analytical condition `9s² = (6 − 3s)²` is
+satisfied.
+
+### F10c.4. Inventory damage at s_p = 0.998
+
+At the deuteron-matching shear, recomputing the 13-particle
+inventory (with `L_ring_p` re-anchored to keep proton at m_p):
+
+| Particle | Predicted (MeV) | Observed (MeV) | Δ |
+|:---|---:|---:|---:|
+| proton | 938.27 | 938.27 | 0.00% |
+| neutron | 938.27 | 939.57 | −0.14% |
+| Σ⁺ | 1189.60 | 1189.37 | +0.02% |
+| Σ⁻ | 1210.93 | 1197.45 | +1.13% |
+| Λ | 1172.30 | 1115.68 | **+5.07%** |
+| π± | 150.65 | 139.57 | **+7.94%** |
+| π⁰ | 150.65 | 134.98 | **+11.61%** |
+| η | 615.20 | 547.86 | **+12.29%** |
+| η′ | 1099.56 | 957.78 | **+14.80%** |
+| K⁰ | 611.58 | 497.61 | **+22.90%** |
+| K± | 611.51 | 493.68 | **+23.87%** |
+| Ξ⁻ | 1791.52 | 1321.71 | **+35.55%** |
+| φ | 1584.69 | 1019.46 | **+55.44%** |
+
+**4 of 13 hadrons within ±5%; worst miss φ at +55%.**  Compare
+to g-candidate s_p = 0.162 where every entry is within ~1.8%
+(Track 6 / Track 8 baseline).
+
+The hadrons that survive are those with low |n_pr| or specific
+n_r combinations that happen to be insensitive to the s_p
+change.  Most of the inventory's mass formula depends on
+`n_pr − 3·s_p`, which shifts dramatically when s_p moves from
+0.16 to 1.0.
+
+### F10c.5. What Phase 10c establishes
+
+1. **The (6, 0) compound is a different particle, not the
+   deuteron.**  At g-candidate it predicts a Q = 0 mass-1326 MeV
+   state — neither matches deuteron mass (1876) nor deuteron
+   charge (+1).
+2. **The e/ν "ballast" is quantitatively negligible** —
+   ~0.0001 MeV via quadrature, far below the 0.93 MeV
+   additive-residual gap (and even further below the
+   2.22 MeV observed binding when accounting for MaSt's
+   neutron-mass deficit).
+3. **Tuning s_p to match the (6, 0) deuteron candidate breaks
+   the inventory** — only 4 of 13 hadrons stay within ±5%, with
+   misses up to +55% on the φ.  No parameter point exists where
+   the (6, 0) interpretation gives the deuteron without
+   shattering everything else.
+4. **The shear-flip-on-binding hypothesis is not implementable
+   in the existing framework.**  Each tuple is its own KK
+   eigenmode; there is no operator that says "the neutron's
+   p-sheet flips from (3, 6) to (3, −6) when bound to a
+   proton."  Such an operator would be a framework extension
+   on the order of Reading B-extended (a new dynamic
+   tuple-class transition rule).
+5. **The user's structural insight (pp unstable / pn stable
+   distinction) is real physics**, but the existing framework
+   doesn't model it.  Implementing it requires extending the
+   framework with one of: a spin-coupled cross-sheet operator
+   (Reading B-extended), an S-space configuration-energy term
+   (Reading C), a vacuum-polarization or many-mode coupling
+   (Reading D), or a new "tuple-class transition" operator.
+
+### F10c.6. Track 10 closure (re-confirmed)
+
+Phase 10c is the third Track 10 phase (after 10a and 10b) to
+test a Pauli/structural binding hypothesis and find it
+quantitatively unworkable inside the framework's existing
+operator set.  Reading A — the conclusion that nuclear binding
+requires framework extension — is now supported by all three
+phases independently.
+
+R63's nuclear-binding closure stands.  The successor-study
+directions remain B-extended, C, and D.
+
+---
+
+## Status
+
+**Track 10 complete (phases 10a, 10b, 10c).**  All three
+phases test Pauli/structural binding hypotheses against the
+framework's existing operators (R60 T16's `ρ_Q`-coherence,
+F32b's compound-charge rule, KK mass formula).  All three
+return falsifying or null results.
+
+R63 closes with respect to nuclear binding.  Reading A —
+"binding requires framework extension or different physics" —
+is the verdict.
 
 ---
 
