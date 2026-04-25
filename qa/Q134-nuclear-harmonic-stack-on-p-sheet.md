@@ -29,17 +29,104 @@ candidate.
 
 ---
 
-## 0. The premise
+## 0. The premise and the sheet-particle architecture
+
+The premise:
 
 > All forces in spacetime (S) are geometric realities in the compact
 > manifold (Ma).
 
-R63 closed negatively on this premise for the strong force *under
-the cross-sheet model*: six Ma-internal binding mechanisms were
-falsified, plus the curved-donut geometry alternative.  R64 reframes
-the question by changing the proton/neutron representation and
+### 0.1 Sheet-particle mapping (working theory)
+
+A unifying structural reading that emerged from R64's Track 4
+inventory failure (light-flavor sector) and the recognition that
+R64 had been **strictly p-sheet** while R63's working inventory
+used cross-sheet representations.  Each MaSt sheet hosts a
+distinct family of fundamental particles:
+
+| Sheet | Hosts | Stable-matter relevance |
+|:---|:---|:---|
+| **p-sheet** | u quark, d quark → nucleons → stable nuclei | Yes (u, d are the only stable quarks in baryonic matter) |
+| **e-sheet** | electron, muon, tau, and the **charge structure** of charged hadrons | Yes (electron is stable; e-sheet content carries Q) |
+| **ν-sheet** | neutrinos and possibly flavor-mixing structure | Yes (neutrinos are stable) |
+| **Cross-sheet** | strange, charm, bottom, top quarks; mesons and hyperons containing them | No (s/c/b/t-bearing hadrons all decay) |
+
+This architecture maps the SM's **stable-vs-unstable** distinction
+onto MaSt's **single-sheet-vs-cross-sheet** distinction.  Stable
+matter (u, d, e, neutrinos) lives on dedicated single sheets.
+Unstable matter (everything containing s, c, b, t) requires
+cross-sheet content that links structure across sheets.
+
+### 0.2 Implications for R63 ↔ R64 reconciliation
+
+Under this architecture, R63 and R64 are **complementary**, not
+competing:
+
+- **R64 is the right framework for nuclear binding**.  Stable
+  nuclei contain only u and d quarks; they live entirely on the
+  p-sheet; the harmonic-stack picture applies.
+- **R63's cross-sheet representations are the right framework
+  for s/c/b/t-bearing hadrons**.  Mesons (K, η, η′, …) and
+  hyperons (Λ, Σ, Ξ, Ω, …) inherit their non-trivial mass scales
+  from cross-sheet coupling.
+
+The unified R64-extended g-candidate would:
+- Use R64's pure-p-sheet representation for nucleons and nuclei
+  (Tracks 1, 3 work).
+- Use R63's cross-sheet inventory tuples for K, η, η′, Λ, Σ, Ξ,
+  φ (Track 5 hard gate).
+- Re-fit any shared parameters jointly.
+
+If this hybrid passes the inventory gate at parameters consistent
+with the chain-fit Point B, it is a strong candidate for promotion
+to model-G.
+
+### 0.3 Implications for the Fe peak
+
+The Fe binding-energy peak (B/A maximum at ⁵⁶Fe) is currently
+**not produced** by R64's pure p-sheet.  R64 predicts roughly
+constant B/A ≈ 8.6 MeV/A across the chain; observed B/A peaks
+at 8.79 at Fe and falls to 7.87 at Pb.
+
+In the SM picture, the Fe peak is the result of:
+- **Surface effects** penalizing light nuclei (small-A losses
+  fade as A grows).
+- **Coulomb effects** penalizing heavy nuclei (Z²/A^(1/3) cost
+  rising with Z).
+
+Both mechanisms naturally fall on the multi-sheet architecture:
+**surface** as cross-sheet boundary coupling (the e- and
+ν-sheets supplying corrections that vanish at large A), and
+**Coulomb** as e-sheet electromagnetic coupling between the
+nucleus's e-sheet charge content (in R63's cross-sheet
+neutron, the e-sheet content is what supplies charge structure;
+the proton's e-sheet content is currently zero in R64 but might
+not stay zero in the hybrid extension).
+
+The Fe peak is therefore a **prediction** of the multi-sheet
+extension if the architecture holds.  Track 5 tests this jointly
+with the inventory.
+
+---
+
+## 0.4 Background: R63's binding-mechanism survey
+
+R63 surveyed Ma-internal binding mechanisms under a cross-sheet
+neutron representation `(1, 2, −1, −1, 3, 6)`.  Six mechanisms
+were tested and falsified within that representation: cross-shear
+dressing (T9 9a), non-additive tuples (9b), high-n mass-formula
+corrections (9c), Pauli phase coherence (T10 10a), Slater-determinant
+exchange (10b), complementary-shear compound (10c), and curved-donut
+geometry (T11 11).  All six tests assumed the proton's three p-sheet
+quark strands are identical `(1, 2)` primitives — a single-flavor
+assumption R64 abandons.
+
+R64 reframes the question by changing the proton/neutron
+representation (pure-p-sheet, two flavors via ring flip) and
 testing whether the strong force can live geometrically on the
-p-sheet alone.
+p-sheet alone for nucleons and nuclei.  The remaining s/c/b/t
+sector is then handled by cross-sheet structure (per §0.1
+architecture).
 
 **Track 1 (Phase 1a–1c)** landed a positive on a foundational test:
 a single `(ε_p, s_p)` point — labeled the "magic point" at

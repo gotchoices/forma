@@ -258,69 +258,174 @@ predicted from this family without further parameters.
 
 ---
 
-## Track pool (after Track 2)
+## Track 5 — Two-line nuclear binding model: Ma harmonic stack + S-separation Coulomb
 
-Track 1 closed the foundational viability test.  Track 2 starts
-the quark generation identification.  Other pool items remain.
+**Status: framed; pending execution.**
 
-**a. Inventory re-derivation under flavor-aware composition.**
-After Track 2 identifies all 6 quarks, every meson and baryon
-becomes a mechanical prediction.  This pool item is then a
-*verification* of the predictions, not a fit.
+A reframed direction following Track 4's structural lesson (the
+inventory under R64's pure-p-sheet picture cannot be obtained by
+transplanting R63's tuples) and the realization that the Fe peak
+in nuclear binding requires a SECOND curve crossing R64's first.
 
-**b. Light-nuclei harmonic stack quantitative.**  ²H, ³He,
-⁴He, ⁶Li, ⁷Li, ⁹Be, ¹²C — masses, charges, magnetic moments
-where Ma admits them.  Check against observed binding energies
-*as predictions of the additive-stack mass formula*, not as a
-constraint on the search.
+### Premise
 
-**c. Mid-chain through Fe.**  ¹⁶O, ²⁴Mg, ²⁸Si, ³²S, ⁴⁰Ca,
-⁵⁶Fe.  Validates that the harmonic stack scales correctly into
-the heavy-binding regime.  ⁵⁶Fe is the most-bound nucleus per
-nucleon and an obvious benchmark.
+The user's observation is that the Fe peak in B/A vs A is the
+crossover of two trends:
 
-**d. Higher-generation quarks (strange, charm, bottom, top).**
-Identify the p-sheet primitive class that hosts each generation.
-Candidates: `(2, ±1)`, `(1, ±3)`, `(2, ±3)`, ... .  Each
-generation should be a distinct primitive class on the p-sheet
-(or possibly a dressed mode involving multiple sheets — to be
-determined).
+- **Line 1 (strong, Ma-internal)**: R64's harmonic stack on the
+  p-sheet, captured by Point B's chain-fit.  Gives ~constant
+  per-nucleon binding 8.6 MeV/A.
+- **Line 2 (Coulomb, S-emergent)**: protons separated by spatial
+  distance r in S have potential energy `α·ℏc/r`.  This is real
+  but expressed in the S frame.  Aggregated over a nucleus with
+  Z protons of average S-separation r ≈ r₀·A^(1/3), this gives
+  the standard Bethe-Weizsäcker Coulomb term with no manual
+  α-scaling needed (α is already in the formula).
 
-**e. Hyperon and meson re-derivation.**  Λ, Σ, Ξ, Ω as multi-
-generation baryons (uds, dds, ssd, ...).  K, η, η′, φ as quark-
-antiquark mesons.
+Crossing of the two curves at Fe produces the binding peak.
+Embracing Coulomb as a real S-energy emerging from Ma charge
+geometry is consistent with the "all S-forces are Ma geometry"
+premise: the geometric reality of charge IS in Ma, but the
+*energy associated with spatial separation* is measured in S.
 
-**f. New-particle predictions.**  The harmonic stack predicts
-specific compound modes that should exist.  Cross-check against
-the SM's known particle list to identify novel predictions.
+### Goals
 
-**g. Charge-attribution rule extension.**  Q132 v2 doesn't
-currently distinguish (1, +2) from (1, −2) charges.  R64 needs
-the rule extended — the natural form is that the sign of n_r at
-the primitive level distinguishes +2/3 from −1/3 fractional
-charge.  Derivation work is required.
+1. **Test if R64-Ma + S-Coulomb produces the Fe peak.**  Compute
+   the binding curve under `m_total = m_R64-Ma + E_Coulomb(Z, A)`
+   and check whether the resulting B/A predictions reproduce the
+   observed rise-and-fall with a peak near Fe.
+2. **Refit Point B if needed.**  When Coulomb is added explicitly,
+   the chain-fit Point B may no longer be optimal — some of what
+   Point B was implicitly fitting may now be Coulomb.  Re-fit
+   `(ε_p, s_p)` jointly with Coulomb and report the new working
+   point.
+3. **Diagnose remaining residuals.**  Even with R64 + Coulomb,
+   there may be light-A deviations (the ⁴He over-binding pattern
+   from Phase 3e).  Document where the model still misses, in
+   what shape.
 
-**h. Electron-shell harmonic stack on the e-sheet.**  Optional —
-could be a separate study (R65) or a Track of R64 if the p-sheet
-work goes smoothly.  Test whether 1s, 2s, 2p, 3s, 3p, 3d levels
-appear as harmonic modes on the e-sheet at appropriate `(ε_e,
-s_e)`.
+### Phases
 
-**i. Z = 137 impedance-overflow audit.**  Deferred.  Once
-H → Fe works, asking what happens at Z ≈ 137 is the natural
-next limit-test.  But the energetic argument (137 protons in Ma
-exceeds 1 proton's S-energy) is qualitative for now.
+- **Phase 5a — Add Coulomb to R64's mass formula.**  Compute
+  `m(Z, A) = m_R64(Z, A) + E_Coulomb(Z, A)` at fixed Point B
+  parameters with `a_C = 0.71 MeV` (standard Bethe-Weizsäcker).
+  Plot predicted B/A vs A; compare to observation.  Identify Fe
+  peak if present.
+- **Phase 5b — Re-fit (ε_p, s_p) jointly with Coulomb.**  Sweep
+  `(ε_p, s_p)` and re-anchor K_p at each point; minimize global
+  residual against `m_observed(Z, A) = m_pred-Ma + E_Coulomb`.
+  Report the new optimum and how far it has shifted from Point B.
+- **Phase 5c — Light-A diagnostic.**  At the Phase 5b optimum,
+  examine the pattern of residuals for A ≤ 12.  If light nuclei
+  still over-bind, characterize the shape (which would then be
+  attacked in a future track via additional structure).
 
-**j. S-stability tooling.**  Deferred.  Required to *quantify*
-when an Ma harmonic-stack compound is preferred over spatial
-separation in S.  Currently we hypothesize preferences without
-calculation.
+### Success / failure criteria
 
-**z. Closeout.**  After at least Tracks a, b, c run successfully:
-recommend a **model-H** designation if the harmonic-stack picture
-delivers across the H → Fe range.  If only Track 1 lands but the
-inventory or light-nuclei break, closeout reports the magic
-point as a structural curiosity without promoting to a model.
+- **Success**: R64 + Coulomb produces a B/A curve with a clear
+  peak near Fe (within ±10 MeV of observed) and matches the heavy
+  chain (Pb, U) within ~5%.
+- **Partial**: Fe peak emerges but light-A residuals persist —
+  document and queue follow-up.
+- **Failure**: no Fe peak emerges, or the chain fit shatters.
+  Returns R64 to Track-3-end status; reframing needed.
+
+### Reusable assets
+
+- R64 Track 3 nuclear-chain data (84 stable isotopes, AME2020
+  masses).
+- R64 Track 1 Phase 1c magic-point search infrastructure (re-anchor
+  K_p in Newton iteration).
+- Bethe-Weizsäcker Coulomb formula with `a_C = 0.71 MeV` (SM
+  standard).
+
+### Outputs
+
+- `outputs/track5_phase5a_coulomb_added.csv`
+- `outputs/track5_phase5a_binding_curve.png`
+- `outputs/track5_phase5b_joint_refit.csv` (if 5b runs)
+
+---
+
+## Track pool (after Track 5)
+
+Reordered and cleaned up after Track 4's lesson.  Items lettered
+(not numbered) so that selection from the pool can flex with
+findings.  Obsolete pool items have been removed.
+
+**a. Light-A deviation diagnosis.**  Even with Coulomb added,
+R64 may over-bind light nuclei (⁴He at 22%, ¹²C at 13% in Track
+3 Phase 3e).  Investigate whether this is finite-stack effect
+(the additive harmonic-stack rule needs corrections for small
+A), surface effect (boundary nucleons have fewer neighbors),
+or another mechanism.  The deuteron is the central case.
+
+**b. Quantum-number decoding (Ma analogs of n, l, m_l, m_s).**
+Identify the Ma winding/orientation feature for each atomic
+quantum number.  Provisional mapping:
+- n ↔ harmonic level (rung on the (n_t, n_r) lattice)
+- l ↔ phase separation (relative phases of strands)
+- m_l ↔ orientation (direction of angular structure)
+- m_s ↔ ring-winding polarity (sign of n_r component)
+Test against electron 1s, 2s, 2p quantum-state predictions.
+Deliverable: complete Ma-side label for each electron shell
+state.
+
+**c. Electron-shell harmonic structure on the e-sheet.**  Apply
+pool-b's quantum-number decoding to predict observed atomic
+shell energies.  Find `(ε_e, s_e, K_e)` working point that
+reproduces 1s, 2s, 2p, 3s, 3p, 3d energies for hydrogen and
+multi-electron atoms; check periodic-table grouping; check
+Pauli-saturation counts.
+
+**d. Nuclear shell structure and magic numbers.**  Apply pool-b's
+decoding to the p-sheet for nucleons.  Test:
+- Magic numbers (2, 8, 20, 28, 50, 82, 126) as nuclear shell
+  closures
+- Specific stability of doubly-magic nuclei (⁴He, ¹⁶O, ⁴⁰Ca,
+  ⁵⁶Ni, ¹³²Sn, ²⁰⁸Pb)
+- Pairing energy from m_s polarity considerations
+
+**e. Higher-generation quark identification.**  After mode-stacking
+is understood (pool-b through pool-d), search for s/c/b/t
+primitives within the unified Ma quantum-number framework.
+Higher generations may correspond to specific (n, l) combinations
+on the p-sheet, or cross-sheet structure, or both.  *Earlier
+attempts (Track 2 Phase 2a, Track 4) tried this without
+quantum-number decoding and found structural problems; not
+repeated until pool-b lands.*
+
+**f. Full hadron inventory under unified framework.**  Once
+quark generations are identified, predict mesons (q-q̄) and
+hyperons (qqq with at least one s/c/b/t) via the unified Ma
+quantum-number rules.  Replaces R63's empirically-fit
+inventory tuples with derived predictions.
+
+**g. Charge-attribution rule extension.**  R64 currently uses a
+provisional rule (u = +2/3, d = −1/3 from sign of n_pr).  This
+needs derivation from a refined Q132 rule in light of the
+quantum-number framework.
+
+**h. Z = 137 impedance-overflow audit.**  Deferred.  Once
+nuclear physics is settled, asking what happens at Z ≈ 137 is
+the natural next limit test.
+
+**i. Synthesis & promotion to model-G.**  Combine all completed
+tracks.  Assess whether R64-extended is decisively better than
+R63's framework across the full observable set: nuclear binding,
+nuclear stability, hadron inventory, electron shells.  Recommend
+promotion if criteria are met.
+
+### Obsolete (kept for historical record, not pursued)
+
+- ~~Inventory re-derivation under flavor-aware composition only on
+  p-sheet~~ — found structurally incompatible with SM isospin
+  near-symmetry (Track 4 Phase 4a).
+- ~~Hybrid inventory using R63 tuples at R64 parameters~~ — found
+  to mix incompatible frameworks (Track 5 Phase 5a as originally
+  scoped, now superseded).
+- ~~S-stability tooling as separate prerequisite~~ — superseded by
+  Line 2 (S-Coulomb directly added to budget).
 
 ---
 
