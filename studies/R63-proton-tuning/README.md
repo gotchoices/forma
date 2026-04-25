@@ -5,19 +5,25 @@ dressing 9a, non-additive deuteron tuple search 9b, mass-formula
 validity 9c) and Track 10 (Pauli-saturated multi-strand coherence:
 phase coherence 10a, Slater-determinant exchange 10b, complementary-
 shear compound 10c) each falsified their respective Ma-internal
-binding-mechanism candidates cleanly.
+binding-mechanism candidates cleanly **under the assumption that
+R62 derivation 4's flat-torus mass formula is exact**.
 
-**R63 closes with respect to nuclear binding (Reading A
-earned).**  All four Ma-internal mechanisms tested fail
-within the framework's existing operator inventory: linear
-cross-shear dressing cancels structurally, non-additive
-deuteron tuples don't exist at the right baryon count, the
-√-quadratic mass formula has no high-winding correction, R60
-T16's m=2 back-reaction is degenerate at N=6, and Slater-
-determinant exchange contributes zero for label-diagonal
-operators.  Three successor-study directions remain (B-extended,
-C, D — see Track 10 section); none falls within R63's scope.
-See [findings-9.md](findings-9.md), [findings-10.md](findings-10.md).
+**Track 11 complete (negative).**  Tested Configuration 1 from
+the geometric-configurations menu — replace R62 derivation 4's
+flat-torus commitment with a curved-donut metric `(1 + ε cos
+θ_1)` and re-audit.  Result: **doubly falsified**.  Phase 11a
+(inventory audit) found the curved p-sheet shatters the
+inventory shape — mesons drift 18–31% (worst K⁰ at −31%) while
+baryons drift only ~3%, and the meson/baryon class split is
+structural so no parameter re-anchor fixes it.  Phase 11b
+(compound audit) found that curvature breaks k-linearity in
+the **wrong direction** — λ(6, 12) is 4.9% *larger* than
+4·λ(3, 6), predicting the deuteron compound 45.5 MeV *above*
+`2·m_p` (anti-binding ~20× the observed binding magnitude).
+R62 derivation 4's flat geometry is correct physics.  See
+Track 11 below, [findings-9.md](findings-9.md),
+[findings-10.md](findings-10.md), and
+[findings-11.md](findings-11.md).
 R63 is developing the **g-candidate** — the
 evolving parameter set and rule set that is intended to become
 model-G if and when it demonstrates clear superiority over
@@ -1324,7 +1330,10 @@ cannot supply nuclear binding at k = 6 by any of the four
 mechanisms tested.  R63 closes with respect to nuclear binding;
 **Reading A is the honest verdict**.
 
-### Three successor-study directions (out of R63 scope)
+### Three successor-style directions for the R60 T16 operator
+
+These are mechanism extensions that keep R62 derivation 4's
+flat-torus geometry but add structure on top:
 
 - **Reading B-extended** — Add a spin-coupled back-reaction
   operator derived from D7d's Dirac–Kähler spinor structure.
@@ -1332,11 +1341,27 @@ mechanisms tested.  R63 closes with respect to nuclear binding;
 - **Reading C** — Model S-space configuration energy of
   spatially-separated nucleons.  Aligns with standard nuclear
   phenomenology; substantial new machinery.
-- **Reading D (new)** — Vacuum polarization of the p-sheet by
+- **Reading D** — Vacuum polarization of the p-sheet by
   multi-baryon compounds (one-loop / many-mode back-reaction
   rather than tree-level KK mass).  Conceptually closer to the
   SM's pion-exchange binding picture.  Substantial framework
   extension.
+
+### A different direction: lift the geometric commitment itself
+
+R62 derivation 4 explicitly works on a **flat** 2-torus
+(D.3b's "intrinsically-flat sheared lattice" basis).  All
+six Track 9/10 falsifications inherit that commitment.  If
+the framework's actual intrinsic geometry is something else —
+a curved donut, a holonomy-bearing flat torus, a higher-genus
+base — the flat formula is an approximation and the spectrum
+the framework actually predicts may host binding without any
+new operator.
+
+This is the avenue Track 11 opens.  See **Track 11 — Curved-
+torus eigenvalue audit** below.  See also "Geometric
+configurations supporting an Ma-internal strong force" further
+down for the systematic exploration menu.
 
 ### Exit criteria
 
@@ -1359,6 +1384,281 @@ mechanisms tested.  R63 closes with respect to nuclear binding;
 - R60 T16's density-cancellation argument as the template for
   extending phase-coherence reasoning to k > 3.
 - The 2.2 MeV deuteron gap as the primary numerical benchmark.
+
+---
+
+## Track 11 — Curved-torus eigenvalue audit
+
+**Premise of the user's standing claim**: all forces in
+spacetime (S) are geometric realities in the Ma compact
+manifold.  The strong force is the outstanding gap — neither
+single-particle KK mass nor any of the six Track 9/10
+mechanisms produces nuclear binding within R62 derivation 4's
+flat-torus formulation.  Track 11 tests whether the
+binding-deadness is a property of MaSt physics or a property
+of the **flat-geometry choice** in derivation 4.
+
+### Why the geometric commitment matters
+
+R62 derivation 4 §D.3b states verbatim:
+
+> "MaSt's mass formula is the squared length of the lattice
+> vector (n_t, n_r) on a **flat 2-torus** with basis vectors
+> (1/ε, −s) and (0, 1)."
+
+The metric components are constants; Gaussian curvature is
+zero everywhere.  The closed-form mass formula
+`μ²(n_t, n_r) = (n_t/ε)² + (n_r − s·n_t)²` is the **exact**
+KK spectrum of this geometry — and exactly k-linear under
+`(n_t, n_r) → (k n_t, k n_r)`, which Phase 9c verified to
+double precision.
+
+Phase 10a's Sturm-Liouville solver, however, works with the
+curved-donut metric `ds² = a²dθ₁² + (R + a cos θ₁)² dθ₂²` —
+its operator carries the `(1 + ε cos θ₁)` weight that
+derivation 4 dropped.  The eigenvalue tower the solver
+returned at the (1, 2) mode showed cos/sin parity splits at
+every n_t > 0 (Δλ ≈ 1.34 at n_t = 1) — physics that is
+**absent** from derivation 4's flat formula.
+
+Two structurally distinct things have been running in parallel
+without reconciliation: a **flat-torus mass formula** (used
+for Tracks 1–10's inventory and binding work) and a
+**curved-torus visualizer + SL solver** (used in 10a's
+geometry analysis).  Track 11 picks one as the actual physics
+and audits the consequences.
+
+### Goals
+
+1. **Audit which geometry is "really" MaSt.**  R62 derivation
+   4 chose flat; the visualizer renders curved.  Compare
+   inventory predictions under both and report which is
+   more consistent with observation.
+2. **Test whether curvature corrections preserve the
+   inventory.**  The 19-particle inventory was fit at flat-
+   formula values.  Re-evaluating at curved-SL eigenvalues
+   shifts every prediction.  How big are the shifts?  Can
+   they be absorbed into a re-anchor of `M = h/(L_t c)` per
+   sheet, or do they break particle-mass *ratios*?
+3. **Test whether curvature corrections supply binding.**
+   Solve the SL system at the proton primitive (3, 6) and
+   the deuteron compound (6, 12) on the p-sheet; check
+   whether `λ(6, 12) = 4·λ(3, 6)` exactly (no binding) or
+   deviates (binding from curvature).
+4. **Decide whether to revise R62 derivation 4.**  If
+   inventory survives AND curvature gives binding, the
+   geometric commitment in derivation 4 is wrong and should
+   be lifted.  If inventory shatters, flat geometry is the
+   right physics and Track 10's Reading A is fully
+   structural.  If curvature gives no binding either, the
+   binding question is independent of the geometric choice.
+
+### Strategy
+
+The Phase 10a SL solver already does the curved-torus
+spectrum (the 10a script's operator is `-∂(p f') + (ε²q²/p) f
+= λ p f` with `p(θ₁) = 1 + ε cos θ₁` — the donut form).
+Track 11 reuses it across the inventory and across compound
+modes.
+
+**Phase 11a — Inventory audit at curved geometry.**  For
+each of the 19 inventoried particles (electron, muon, tau, p,
+n, π⁰, π±, K, η, η′, ρ, ω, φ, Σ, Λ, Ξ, …), compute the SL
+eigenvalue at each sheet's `(n_t, n_r)` primitive on that
+sheet's curved metric.  Combine via block-diagonal m²-sum.
+Re-anchor each sheet's overall scale by pinning one
+calibration mass per sheet (electron on e-sheet, proton on
+p-sheet, lightest neutrino on ν-sheet).  Report the relative
+error per particle vs. observed, and compare to the
+flat-formula baseline.  Three outcomes:
+
+- All 19 particles within ~1% (comparable to flat-baseline
+  fit).  Curvature is consistent with observation.  Inventory
+  preserved.  Continue to 11b.
+- Several particles drift >5% but a coordinated
+  parameter-set adjustment (re-fit `(ε_p, s_p)` etc) restores
+  the fit.  Curvature lives at the order of 5–10%.  Continue
+  to 11b after re-fit.
+- Inventory shatters (multiple particles at >20%).  Curved
+  geometry is incompatible with the empirical fit; either
+  the inventory tuples need re-derivation under curved
+  spectrum, or the framework's actual geometry is flat after
+  all and Track 11 closes negatively.
+
+**Phase 11b — Compound-vs-separated audit at curved
+geometry.**  Conditional on 11a passing:
+- Solve SL for proton-primitive `(3, 6)` on the p-sheet → `λ_p`.
+- Solve SL for deuteron-compound `(6, 12)` on the p-sheet → `λ_d`.
+- Compute `δ = √λ_d − 2·√λ_p` (with proper SL→mass conversion).
+- If `δ < 0`, that's curvature-induced binding; compare to
+  observed deuteron 2.2 MeV.
+- If `δ ≈ 0`, k-linearity holds even on curved geometry;
+  curvature is real but binding-blind.
+- If `δ > 0`, curvature anti-binds.
+
+**Phase 11c (conditional) — Heavier nuclei.**  If 11b finds
+the right-sign deuteron binding, extend to ⁴He (compound
+`(12, 24)` on p-sheet, observed B = 28.3 MeV) and ⁵⁶Fe
+(observed B = 492 MeV) to see if the curvature-derived
+binding curve matches observation.
+
+### What success looks like
+
+A curved-donut intrinsic geometry that:
+- Gives the inventory within ~1% (matches Track 5/6 fit).
+- Gives `δ_deuteron ≈ −2.2 MeV` from SL eigenvalue spectrum
+  at the same parameters that match the inventory.
+- Extends to heavier nuclei with a coherent A-scaling.
+
+This would be a major positive: the strong force is in Ma,
+mediated by torus curvature, with no new operators or
+postulates beyond replacing R62 derivation 4's flat-torus
+choice with the curved one.  R62 derivation 4 would be
+revised; the inventory would re-fit cleanly; binding would
+become a derived prediction.
+
+### What failure looks like
+
+- 11a shatters the inventory → flat geometry was the right
+  physics; curved is wrong; Track 10's Reading A is fully
+  earned.
+- 11b returns `δ ≈ 0` → curvature exists but k-linearity is
+  preserved by some structural reason; binding is
+  fundamentally elsewhere.
+- 11b returns wrong sign or wrong magnitude → curvature is
+  not the binding mechanism; cycle through Configurations
+  2–6 below.
+
+### Scope and discipline
+
+- Track 11 audits R62 derivation 4 — one specific
+  derivation-level commitment.  It does not re-open Q132 v2,
+  Track 8's additive-composition rule, or any inventory
+  tuple.
+- The SL solver from 10a is reused as-is.  No new framework
+  machinery.
+- Inventory preservation is the **hard constraint**.  Any
+  geometric configuration that drops more than ~5% of the
+  inventory below model-F's accuracy is out.
+
+### Reusable assets
+
+- `track10_phase10a_eigenmode_fit.py` — SL solver (already
+  validated).
+- Track 5/6's inventory (19 particles with tuples and
+  observed masses).
+- Track 8's additive-composition nuclear tuples and the
+  2.22 MeV deuteron benchmark.
+
+---
+
+## Geometric configurations supporting an Ma-internal strong force
+
+A systematic menu of geometric-configuration options for
+producing the strong force as a geometric reality in Ma
+while preserving the existing particle inventory.  Track 11
+takes Configuration 1 as the next concrete experiment;
+the rest are documented for future exploration.
+
+The menu is ordered by inventory-preservation cost: lower
+tier → smaller likely impact on existing predictions.
+
+### Tier 1 — Most likely to preserve inventory
+
+**Configuration 1: Curved-donut metric.**  Replace R62
+derivation 4's flat 2-torus metric with the curved donut
+`ds² = a²dθ₁² + (R + a cos θ₁)² dθ₂²`.  Mass formula becomes
+the SL eigenvalue spectrum on this metric (which the 10a
+solver already implements) rather than the closed-form
+`(n_t/ε)² + (n_r − s·n_t)²`.  Curvature corrections scale
+with `ε²`; for sheets with ε near 1 they are mild.  Inventory
+re-anchors freely via L_ring per sheet.  **Track 11 takes
+this as the next experiment.**
+
+**Configuration 2: Wilson-line / U(1) holonomy on flat
+torus.**  Add a U(1) gauge connection `A_a(θ)` on the T².
+Single-strand modes pick up a pure phase from the holonomy
+and don't shift in mass.  Multi-strand compounds at
+distinct `(color, spin)` labels pick up *relative* phases
+between strands, generating a pairwise interaction energy
+`Σ_{i<j} V(label_i, label_j)`.  Single-particle inventory
+preserved by construction; binding lives only in
+multi-strand compounds.  Test cost moderate; needs a
+principled choice of what the connection couples to.
+
+### Tier 2 — Larger structural change
+
+**Configuration 3: Higher-genus base for one sheet.**  If
+the p-sheet is genus-2 (a double torus) instead of T², it
+admits a richer 1-cycle structure.  Multi-baryon compounds
+could occupy fundamentally distinct cycle classes from
+single baryons.  Single-baryon inventory may survive if
+extra cycles only show up at gcd > 3 (the proton's k=3
+saturation might keep it on the T² subspace).  Test cost
+high — new mass formula or numerical solver on genus-2;
+R60/R62 derivations all assume T².
+
+**Configuration 4: Inter-sheet topological connection.**
+The three T² sheets meet at a singular point (or a small
+region — a brane intersection or conifold).  Modes that
+wrap two sheets simultaneously have access to a new mode
+class.  The deuteron's `(1, 2, −1, −1, 6, 12)` could be
+one such cross-sheet object (it has non-trivial e-, ν-, and
+p-content); free nucleons remain bulk-only.  The
+intersection geometry supplies a topological binding
+energy.  Test cost high — extends R60 sheet-coupling
+beyond σ-shears to topological connections.
+
+### Tier 3 — Speculative, for completeness
+
+**Configuration 5: Dynamical compactification radius.**
+`L_ring_p` shifts with strand density.  Multi-baryon
+compounds at higher local strand density "feel" a smaller
+compactification, raising mass per strand non-linearly.
+Conceptually similar to Reading D (vacuum polarization);
+adds a back-reaction of the modes on the geometry.
+
+**Configuration 6: Non-Abelian gauge structure on T².**
+Z₃ color is currently a discrete group label; promote it to
+a non-Abelian gauge symmetry on the torus, with commutator-
+mediated strand-strand couplings.  Strong-force-like
+non-linearities arise naturally; principled but a major
+framework addition.
+
+### Tier 4 — Add-on operators (already enumerated in Track 10)
+
+These are the "Reading B-extended / C / D" successor
+directions from the Track 10 closeout.  Listed here for
+completeness so the full configuration space is in one
+place:
+
+- **Reading B-extended**: spin-coupled back-reaction
+  operator derived from D7d.
+- **Reading C**: S-space configuration energy.
+- **Reading D**: vacuum polarization / many-mode
+  back-reaction.
+
+### Selection logic
+
+Track 11 takes Configuration 1 first because:
+- Lowest test cost (10a solver already implements the curved
+  metric).
+- Most direct test of the simplest geometric question (flat
+  vs curved).
+- Either outcome (curvature delivers binding / curvature
+  doesn't) is informative for the rest of the menu.
+- A successful Configuration 1 result revises R62 derivation
+  4 — a substantial structural finding even if binding
+  fails — and saves significant work elsewhere.
+
+If Configuration 1 fails:
+- Configuration 2 next (Wilson-line / holonomy) — preserves
+  inventory by construction.
+- Configuration 4 third (inter-sheet topological connection)
+  — fits the deuteron's actual non-trivial cross-sheet
+  content.
+- Tier 2/3 configurations and Tier 4 add-ons in subsequent
+  studies.
 
 ---
 
@@ -1511,10 +1811,31 @@ User-imposed rules R63 should follow throughout execution:
 
 ## Next steps
 
-**R63 active — Track 10 pending decision.**  Tracks 1–9 complete;
-Phase 10a executed.  Per-track results in
+**R63 — Tracks 1–11 complete.**  Configuration 1
+(curved-donut metric) is eliminated: inventory shatters
+(meson errors up to 31%) and compound anti-binds (deuteron
+predicted 45.5 MeV above `2·m_p`).  R62 derivation 4's
+flat-torus commitment is robust; the binding-killer is not
+the geometric flatness assumption.  Per-track results in
 [findings-1.md](findings-1.md) through
-[findings-10.md](findings-10.md); outputs in [`outputs/`](outputs/).
+[findings-11.md](findings-11.md); outputs in
+[`outputs/`](outputs/).
+
+**Remaining geometric-configuration candidates** (in priority
+order, per the menu above):
+
+- **Configuration 2** (Wilson-line / U(1) holonomy on flat T²)
+  — natural Track 12 candidate.  Single-particle inventory
+  preserved by construction; binding test is whether multi-
+  strand pairwise interaction can supply the deuteron's
+  2.22 MeV at a principled connection choice.
+- **Configuration 4** (inter-sheet topological connection)
+  — fits the deuteron's actual non-trivial cross-sheet
+  content; high test cost.
+- **Configurations 3, 5, 6** — backlog.
+
+Whether to promote Configuration 2 to Track 12 within R63 or
+to spawn a successor study is the next decision point.
 
 The g-candidate (R63's refinement of model-F) carries:
 - Q132 v2 rule set (gcd decomposition + phase-lock).
