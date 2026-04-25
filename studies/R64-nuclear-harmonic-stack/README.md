@@ -326,20 +326,41 @@ point as a structural curiosity without promoting to a model.
 
 ## Status
 
-**Track 1 complete (positive).**  Magic point identified at
-`(ε_p, s_p, K_p) = (0.07309, 0.19387, 22.847 MeV/μ)` to machine
-precision (Phase 1c Newton solve).  Three independent observables
-match: m_u = 315.3 MeV (SM constituent), m_n − m_p = 1.293 MeV
-(observed), B(²H) = 2.225 MeV (observed).  ³He and ⁴He under-bind
-under naive additive-winding composition (anticipated; refined
-stacking rule is a later track).  α-pinning hypothesis tested and
-rejected (ε_p is 0.16% above 10·α, structurally meaningful gap).
-See [findings-1.md](findings-1.md) and
-[Q134](../../qa/Q134-nuclear-harmonic-stack-on-p-sheet.md).
+**Tracks 1, 2 (Phase 2a), 3 complete.**  Two distinct candidate
+working points are now on the table within R64; both are
+**explicitly provisional** — neither is yet a hard pin.
 
-**Track 2 framed (quark generation primitive identification).**
-Pending execution.
+**Point A — magic point** (Track 1, deuteron-anchored):
+- `(ε_p, s_p, K_p) = (0.07309, 0.19387, 22.847 MeV/μ)`
+- Reproduces m_u, m_n−m_p, B(²H) within ~0.1% (anchor).
+- **Heavy-nucleus binding under-predicts by ~7×** (Phase 3a).
+- Strange quark search at this point (Phase 2a) gave
+  structural problems (Σ off by 9–15%, K⁰ off by 17%).
 
-R63 is closed cleanly with respect to nuclear binding.  Its
-g-candidate findings remain valid for the cross-sheet
-formulation; R64 is testing the alternative on-sheet picture.
+**Point B — chain-fit point** (Track 3, body-of-chart-anchored):
+- `(ε_p, s_p, K_p) = (0.2052, +0.0250, 63.629 MeV/μ)`
+- m_u = 335 MeV, m_d = 336 MeV (matches SM constituent value).
+- **Body of nuclear chart (Ca through Sn) fits within 1–2%**;
+  ⁵⁶Fe within 2%, ¹²⁰Sn within 1%.
+- **Deuteron is an outlier**: predicted B(²H) = 17 vs observed
+  2.2 MeV.
+
+The chain-fit Point B is the current preferred candidate, BUT
+the deuteron's outlier status and the need to revalidate the
+hadron inventory at the new point keep it provisional.  Lesson
+from Track 3: don't pin too quickly to a single observable.
+
+Working theory captured in
+[Q134](../../qa/Q134-nuclear-harmonic-stack-on-p-sheet.md) (R64's
+g-candidate, parallel to R63's g-candidate).
+
+**Track 4 active — inventory audit at Point B.**  Hard gate
+before Point B is treated as a pin.
+
+R63 closed cleanly with respect to nuclear binding under the
+cross-sheet model.  Its g-candidate findings remain valid for
+that representation; R64 tests the alternative on-sheet
+representation.  R63 and R64 are parallel candidates for
+becoming model-G; promotion is deferred until one (or
+neither) demonstrates clear superiority across multiple
+criteria.

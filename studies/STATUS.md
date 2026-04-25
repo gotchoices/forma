@@ -13,23 +13,28 @@ Active entry is a 3–5-line pointer; full narrative lives in the study's own
 
 ## Active
 
-### R64. Nuclear structure as a harmonic stack on the p-sheet  **Active — Track 1 complete (positive)**
+### R64. Nuclear structure as a harmonic stack on the p-sheet  **Active — Tracks 1–4 complete; both candidate working points provisional**
 [`R64-nuclear-harmonic-stack/`](R64-nuclear-harmonic-stack/) · theoretical + compute · depends on R63, R62, R60, model-F
-Successor to R63 with a new working hypothesis: u/d quarks as ring-flipped
-primitives on the p-sheet (`u = (1, +2)`, `d = (1, −2)`), and the neutron
-living entirely on the p-sheet at `(3, −2)` rather than across three sheets.
-**Track 1 (Phase 1a + 1b)** found a 1D viable curve `s_p(ε_p)` for the
-proton/neutron mass ratio across all swept ε, and located a magic point at
-`ε_p ≈ 0.073, s_p ≈ 0.194` where three independent observables match
-simultaneously: constituent **m_u = 315.3 MeV** (SM ~315), **Δ(n−p) = 1.293
-MeV** (observed, by construction), and **B(²H) = 2.226 MeV** (observed
-2.224, 0.1% accuracy).  Naive additive winding composition under-binds
-³He (2.6×) and ⁴He (6.3×) — anticipated by user; refined composition rule
-for A ≥ 3 is the next track question.  Working theory captured in
-[Q134](../qa/Q134-nuclear-harmonic-stack-on-p-sheet.md) (h-candidate).
-**Tracks 2+ pending**: inventory survival audit at magic point, refined
-harmonic-stacking rule, light-nuclei progression, higher-generation
-quarks.
+Parallel candidate to R63 for becoming **model-G** when promoted.  Hypothesis:
+u/d quarks as ring-flipped primitives on the p-sheet (`u = (1, +2)`,
+`d = (1, −2)`), and the neutron lives entirely on the p-sheet at `(3, −2)`.
+**Track 1** found a 1D viable curve `s_p(ε_p)` for the proton/neutron mass
+ratio and located a magic point at `(ε_p, s_p, K_p) = (0.07309, 0.19387,
+22.847)` ("Point A") matching m_u, Δ(n−p), and B(²H) within 0.1%.
+**Track 3** found heavy-nucleus binding at Point A under-predicts by ~7×;
+global re-fit on the body of the chart located **Point B** at
+`(ε_p, s_p, K_p) = (0.2052, +0.0250, 63.629)`, which fits the nuclear
+chain Ca→Sn within 1–2%.  m_d at Point B = 336 MeV (matches SM
+constituent).  **Track 4** inventory audit at Point B: per-particle
+mass fits are excellent (<2%) but no single strange primitive fits the
+strange family (forced global fit gives 18% RMS error).  Same SM-isospin
+near-symmetry issue at both points.  **R64 captures bulk nuclear
+binding (n_t-dominated) but not light-flavor structure (n_r-sensitive)
+under strict additive winding.**  Working theory captured in
+[Q134](../qa/Q134-nuclear-harmonic-stack-on-p-sheet.md) — both candidate
+points held explicitly provisional.  **Tracks 5+ pending**: deuteron
+outlier diagnosis, Coulomb-coupling audit, alternative composition rules,
+or full quark-generation search.
 
 ### R63. Proton-sheet tuning — disciplined audit and sweep  **Active — Tracks 1–5 complete, Track 6 framed**
 [`R63-proton-tuning/`](R63-proton-tuning/) · theoretical + compute · depends on R60, R59, R53, R49, R61, model-F

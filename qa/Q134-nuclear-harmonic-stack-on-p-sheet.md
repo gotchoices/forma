@@ -1,8 +1,21 @@
-# Q134: Nuclear structure as a harmonic stack on the p-sheet — the h-candidate working theory
+# Q134: Nuclear structure as a harmonic stack on the p-sheet — R64's g-candidate working theory
 
-**Status:** Open — working hypothesis from R64 Track 1 (positive on
-foundational test).  Captures the provisional theory and ground rules
-for proceeding.
+**Status:** Open — working hypothesis under R64.  R64 Track 1 landed
+positive on a deuteron-anchored magic point; R64 Track 3 demonstrated
+that the deuteron anchor was premature and re-fitted to the body of
+the nuclear chart, landing on a different candidate working point.
+Captures the provisional theory and ground rules for proceeding.
+
+**Note on terminology:** R63 and R64 are **parallel candidates** for
+becoming model-G when promoted.  Each produces its own *g-candidate*
+parameter set and rule set.  R63's g-candidate uses cross-sheet
+neutron representation and falsified Ma-internal binding within
+that representation; R64's g-candidate uses on-p-sheet neutron with
+flavor-aware u/d primitives and is currently passing nuclear-chain
+binding within ~5% across the body of the chart.  Whichever (if
+either) demonstrates clear superiority across multiple criteria
+becomes the basis for **model-G** when the project promotes a
+candidate.
 
 **Related:**
   [Q132](Q132-promotion-chain-principle.md) (Z₃ confinement / promotion-chain rule),
@@ -28,19 +41,29 @@ the question by changing the proton/neutron representation and
 testing whether the strong force can live geometrically on the
 p-sheet alone.
 
-R64 Track 1 lands a positive on the foundational test: a single
-`(ε_p, s_p)` point reproduces three independent observables —
-constituent up-quark mass, neutron-proton mass split, and deuteron
-binding — within ~0.1% each.  That positive justifies capturing
-the working theory and provisional ground rules now, while open
-questions are pursued in subsequent tracks.
+**Track 1 (Phase 1a–1c)** landed a positive on a foundational test:
+a single `(ε_p, s_p)` point — labeled the "magic point" at
+`(0.07309, 0.19387)` — reproduces three independent observables
+(constituent up-quark mass, neutron-proton mass split, and deuteron
+binding) within ~0.1% each.
+
+**Track 3 (Phase 3a–3e)** revealed that the magic point was
+deuteron-anchored and structurally non-representative.  At a
+different candidate working point obtained by global least-squares
+re-fit on the nuclear chain — `(ε_p, s_p) = (0.2052, +0.0250)` — the
+harmonic-stack model fits the body of the nuclear chart (Ca through
+Sn) within 1–2%, with the deuteron remaining as a visible outlier.
+
+Two candidate working points are therefore on the table within R64,
+and a Track 4 audit is needed before either is treated as a hard
+pin.
 
 ---
 
-## 1. The working theory (h-candidate)
+## 1. The R64 g-candidate working theory
 
-The "h-candidate" is the candidate model successor to the g-candidate
-that R63 was developing.  Its core structural commitments are:
+R64's g-candidate is the alternative to R63's g-candidate.  Its
+core structural commitments are:
 
 ### 1.1 Two flavors as ring-direction primitives
 
@@ -68,12 +91,12 @@ in R63 close-out discussion).
 The four sign combinations on `(n_pt, n_pr) = (±1, ±2)` decompose
 naturally:
 
-| Geometric label | Quantum role | μ at magic point |
-|:---|:---|:-:|
-| (+1, +2) | u | 315.3 MeV |
-| (−1, −2) | ū | 315.3 MeV |
-| (+1, −2) | d | 316.6 MeV |
-| (−1, +2) | d̄ | 316.6 MeV |
+| Geometric label | Quantum role | μ at chain-fit point | μ at magic point |
+|:---|:---|:-:|:-:|
+| (+1, +2) | u | 334.8 MeV | 315.3 MeV |
+| (−1, −2) | ū | 334.8 MeV | 315.3 MeV |
+| (+1, −2) | d | 336.0 MeV | 316.6 MeV |
+| (−1, +2) | d̄ | 336.0 MeV | 316.6 MeV |
 
 Antimatter is full reversal `(n_t, n_r) → (−n_t, −n_r)`; flavor is
 ring reversal alone.
@@ -122,21 +145,60 @@ $$
 Solving for the observed mass ratio gives the viable curve `s_p(ε_p)`
 along which proton/neutron mass split matches observation.
 
-### 1.6 The "magic point"
+### 1.6 Two candidate working points (both PROVISIONAL)
 
-R64 Track 1 located **`ε_p ≈ 0.073, s_p ≈ 0.194`** as the candidate
-magic point where three observables match simultaneously:
+R64 currently has two distinct candidate working points for `(ε_p,
+s_p, K_p)`.  Neither is yet a hard pin — both are provisional until
+broader validation passes.
 
-- m_u = 315.3 MeV (SM constituent ~315)
-- m_n − m_p = 1.293 MeV (observed, by construction)
-- B(²H) = 2.226 MeV (observed 2.224)
+**Point A — Magic point (Track 1, deuteron-anchored):**
 
-K_p (mass scale) at this point: 22.86 MeV/μ-unit.
+- `ε_p = 0.07309, s_p = +0.19387, K_p = 22.847 MeV/μ`
+- Reproduces m_u = 315.3 MeV, m_n − m_p = 1.293, B(²H) = 2.226
+  simultaneously.
+- α-pinning hypothesis tested and rejected (Phase 1c): ε_p ≠ 10·α
+  exactly.
+- **Heavy-nucleus binding under-predicts by ~7×** (Phase 3a).
+- **Valley of stability strongly proton-rich** (Phase 3b).
 
-This point is structurally distinct from R63's working point
-`(ε_p, s_p) = (0.55, 0.162)` — different geometry, different shear
-magnitude, different K_p.  Whether this point also preserves the
-hadron inventory (mesons, hyperons) is the next test.
+**Point B — Chain-fit point (Track 3, body-of-chart-anchored):**
+
+- `ε_p = 0.2052, s_p = +0.0250, K_p = 63.629 MeV/μ`
+- m_u = 334.8 MeV, m_d = 336.0 MeV (latter near-exactly matches
+  SM constituent value).
+- m_n − m_p = +1.293 MeV (by construction).
+- **Body of nuclear chart (Ca through Sn) fits within 1–2%**;
+  ⁵⁶Fe within 2%, ¹²⁰Sn within 1%.
+- Light end (⁴He, ¹²C) over-binds by 10–22%.
+- Heavy end (Pb, U) over-binds by 5–9%.
+- **Deuteron is an outlier**: predicted B(²H) = 17.3 vs observed
+  2.22 MeV.
+- Valley of stability: Z/A_optimum = 0.519 (still slightly proton-
+  rich; observed trends 0.50 → 0.39 with A).
+
+**Status of the two candidates:**
+
+The chain-fit Point B is the better fit for the body of the nuclear
+chart and is the current preferred candidate, BUT:
+
+1. The deuteron's outlier status under Point B is unexplained
+   (whereas Point A captures it exactly).
+2. The hadron inventory (Λ, Σ, Ξ, K, π, η, etc.) has not been
+   re-audited at Point B — Track 4 is the gate before treating
+   Point B as a hard pin.
+3. The valley-of-stability direction is still slightly off at
+   Point B; whether this is Coulomb-explained (R64 missing EM)
+   or structural is unresolved.
+4. The Coulomb-interpretation puzzle: at Point B, R64's prediction
+   sits closer to *raw* observed binding than to Coulomb-subtracted
+   binding, suggesting R64's mass formula implicitly encodes
+   something Coulomb-like.  Diagnostic of what physics R64
+   captures.
+
+**The lesson from Track 3**: pinning to a single observable
+(deuteron in Track 1) gave a structurally non-representative
+working point.  Don't pin Point B prematurely either — keep it
+provisional through Track 4 validation.
 
 ---
 
@@ -164,17 +226,23 @@ hadron inventory (mesons, hyperons) is the next test.
    `(1, ±3)`, `(2, ±3)`, ... .  To be pinned by inventory and
    observed flavor masses.
 
-### 2.2 Composition rules (provisional, may need refinement)
+### 2.2 Composition rules (provisional)
 
 1. **Baryons compose by additive winding sum** of constituent quarks.
    Verified working for proton (3, +2), neutron (3, −2), and the
-   deuteron (6, 0) at the magic point.
-2. **Mesons compose as quark-antiquark pairs.**  Examples to test:
-   π⁰ as uū or dd̄ or mixed; K⁺ as us̄; etc.
-3. **Nuclei may NOT strictly follow additive winding** for A ≥ 3.
-   ³He under-binds 2.6× and ⁴He under-binds 6.3× under naive
-   additive composition.  This indicates a composition-rule
-   refinement is needed for A ≥ 3 — currently an open question.
+   deuteron (6, 0).
+2. **Nuclei compose by extended additive winding**: nucleus (Z, A)
+   has p-sheet content `(3A, 2(2Z − A))`.  At the chain-fit
+   point (Point B), this rule reproduces the body of the nuclear
+   chart within 1–2% (Phase 3e).  At the magic point (Point A),
+   it under-predicts by 7×.
+3. **Mesons compose as quark-antiquark pairs.**  Examples to test:
+   π⁰ as uū or dd̄ or mixed; K⁺ as us̄; etc.  Not yet validated.
+4. **The deuteron is an outlier.**  Under Point B's rule, B(²H)
+   = 17 MeV vs observed 2.22 MeV.  Either a special structural
+   feature of the 2-body system needs to be identified, or
+   Point B is wrong (and Point A's deuteron-anchored picture
+   is right after all).  This is the central tension under R64.
 
 ### 2.3 Charge attribution (provisional)
 
@@ -195,31 +263,49 @@ fractional-charge sign) is an R62-style derivation target.
 
 ## 3. Open questions (for next tracks)
 
-### 3.1 Inventory survival audit
+### 3.1 Inventory survival audit at the chain-fit point (Point B)
 
-At the magic point ε_p ≈ 0.073, do the 13 hadrons of Track 5/6
-(proton, neutron, π, K, η, η′, Λ, Σ, Ξ, φ) still fit observed
-masses within 5% under flavor-aware composition?  Each meson and
-hyperon needs its u/d/s tuple re-derived; charge attribution under
-the provisional rule (§2.3) needs verification; mass predictions
-compared to observed.
+The 13 hadrons of R63 Tracks 5/6 (π, K, η, η′, Λ, Σ, Ξ, φ, …) need
+to be tested at Point B's parameter set.  Each meson and hyperon
+needs its u/d/s tuple re-derived under flavor-aware composition,
+charge attribution under the provisional rule (§2.3), and mass
+predictions compared to observation.  This is the **Track 4 hard
+gate** — Point B becomes a candidate for promotion to model-G only
+if the inventory survives within ~5% per particle.
 
-### 3.2 Refined harmonic-stacking rule for A ≥ 3
+Track 2 Phase 2a's strange-quark search was done at Point A and
+gave structural problems (Σ⁺ off by 15%, K⁰ off by 17%).  Worth
+re-running at Point B before treating those as final negatives.
 
-Naive additive winding under-binds ³He and ⁴He.  Candidate
-mechanisms:
+### 3.2 The deuteron's outlier status
 
-- **Shell closure**: at A = 4 with N = Z = 2, a closed-shell
-  configuration on the p-sheet provides extra binding.  Geometric
-  origin?
-- **Multi-mode coherence**: the harmonic stack at higher A engages
-  multiple SL eigenmodes simultaneously.  The composition rule is
-  not strict winding addition but coherent mode superposition.
-- **Pauli structure across the stack**: each strand carries
-  (color, spin) labels (Pauli capacity = 6 per (n_t, n_r) class,
-  per R63 Track 10).  At A = 4 with 12 strands on the p-sheet, the
-  stack fills 2 Pauli shells; the closed-shell binding may be
-  computable.
+Under Point B, B(²H) = 17 MeV vs observed 2.22.  Two readings:
+
+- **The 2-body system is special.**  In QCD, the deuteron is
+  loosely bound by ~2 MeV — far below the per-nucleon binding of
+  heavier nuclei.  The harmonic-stack rule may require a 2-body
+  correction that doesn't apply to A ≥ 3.  Identifying this
+  correction is a research target.
+- **Point B is wrong.**  If no principled correction explains
+  the deuteron under Point B, the deuteron-anchored Point A may
+  be right after all — and the heavy-chain fit at Point B is a
+  numerical accident.
+
+### 3.3 The Coulomb-interpretation puzzle
+
+At Point B, R64's prediction sits closer to *raw* observed binding
+than to Coulomb-subtracted binding.  In standard nuclear physics,
+the strong force should match the Coulomb-subtracted residual.
+Possible readings:
+
+- R64's mass formula implicitly encodes a Coulomb-like attraction
+  through its harmonic-stack structure.
+- The fit at Point B is coincidental in a way we haven't
+  understood.
+
+A clean diagnostic: predict the binding curve for several Z at
+fixed A; the Z-dependence should match Coulomb's `Z(Z−1)/A^(1/3)`
+shape if R64 captures Coulomb implicitly.
 
 ### 3.3 Z = 137 impedance limit
 
@@ -252,41 +338,60 @@ n_pr maps to the fractional-charge sign at the +2/3 vs −1/3 level.
 
 ## 4. What this question replaces / extends
 
-This Q file captures the **h-candidate working theory** that
-supersedes the g-candidate's cross-sheet representation of the
-nucleon.  It does NOT supersede:
+R64's g-candidate is an **alternative** to R63's g-candidate.  Both
+are candidates for promotion to model-G, distinguished by how the
+neutron is represented and where the strong force lives.
 
-- **Q132 v2** as the rule set on the e-sheet and ν-sheet (still
-  applies; R64 doesn't change the lepton sector).
+**R64 retains** without modification:
+- **Q132 v2** as the rule set on the e-sheet and ν-sheet (R64
+  doesn't change the lepton sector).
 - **R60 T16** (Z₃ confinement) — the harmonic stack respects this
   by construction.
-- **R62 derivation 4** (the closed-form mass formula) — R64 still
-  uses the flat-torus formula; the magic point is a different
-  parameter choice within the same formula.
+- **R62 derivation 4** (the closed-form mass formula on a flat
+  2-torus).  R64 uses the same formula; only the working
+  parameters and the proton/neutron representation change.
 
-What it does change:
-
+**R64 changes** relative to R63:
 - **Neutron representation**: cross-sheet `(1, 2, −1, −1, 3, 6)`
   → on-sheet `(0, 0, 0, 0, 3, −2)`.
 - **Quark inventory**: single primitive `(1, 2)` → two primitives
   `u = (1, +2), d = (1, −2)`.
-- **Working `(ε_p, s_p)`**: `(0.55, 0.162)` (R63) → `(0.073, 0.194)`
-  (R64 magic point candidate).
+- **Working `(ε_p, s_p, K_p)`**: R63 used `(0.55, 0.162, K_MODELF)`.
+  R64 has two candidate points:
+  - Point A (deuteron-anchored): `(0.07309, +0.19387, 22.847)`
+  - Point B (chain-anchored, current preferred): `(0.2052, +0.0250,
+    63.629)`
 - **Charge rule** (provisional): added u/d sign attribution at the
   primitive level.
+- **Composition rule for nuclei**: extended additive winding
+  `(Z, A) → (3A, 2(2Z−A))`.
 
 ---
 
 ## 5. Status
 
-**Foundational test passed (R64 Track 1).**  Track 2 (inventory
-survival audit) is the next gate.  If Track 2 passes, Tracks 3–7
-test the harmonic-stack rule for A ≥ 3, charge derivation, higher-
-generation quarks, and the heavier-nucleus binding curve through
-Fe.
+**R64 Track 1 (positive at Point A).**  The deuteron-anchored magic
+point reproduces three foundational observables (m_u, m_n−m_p,
+B(²H)) within ~0.1%.
 
-If Track 2 fails (inventory shatters at the magic point), the
-h-candidate falls — same outcome shape as Configuration 1 in R63
-Track 11.  The premise survives in principle (Configurations 2–6
-of R63's geometric menu remain), but the harmonic-stack-on-p-sheet
-specific implementation closes.
+**R64 Track 2 Phase 2a (partial at Point A).**  Strange-quark search
+at Point A located a primitive `(1, −20)` matching m_s = m_Ω/3 by
+construction, but Σ over-predicts by 9–15% and K⁰ by 17%.
+Inconclusive at Point A; not yet redone at Point B.
+
+**R64 Track 3 (reframing).**  Heavy-element binding curve at
+Point A under-predicts by ~7×.  Phase 3d's global re-fit located
+Point B as a candidate that fits the body of the chart within
+1–2%.  Deuteron is an outlier under Point B.
+
+**Next gate — Track 4 inventory audit at Point B.**  The 13-particle
+hadron inventory needs to be re-tested at Point B's parameters
+under flavor-aware composition.  Inventory preservation within ~5%
+is the gate before Point B is treated as a hard pin.
+
+**Promotion to model-G is deferred.**  Both R63's g-candidate and
+R64's g-candidate would need to demonstrate clear superiority
+across multiple criteria (inventory accuracy, binding curve, charge
+attribution, decay structure, heavy nuclei) before the project
+promotes either to model-G.  R64's chain-fit is a promising
+candidate but explicitly provisional pending Track 4.
