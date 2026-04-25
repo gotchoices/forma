@@ -189,18 +189,84 @@ See [findings-1.md](findings-1.md) for results.
 
 ---
 
-## Track pool (after Track 1)
+## Track 2 — Quark generation primitive identification
 
-If Track 1 succeeds, promote the most informative pool item to
-Track 2.  Other items remain in the pool for later.
+**Status: framed; pending execution.**
+
+Track 1 landed positive on the foundational test: the magic point
+`(ε_p, s_p) = (0.07309, 0.19387)` reproduces the proton, neutron,
+and deuteron masses simultaneously with constituent m_u = 315 MeV.
+Track 2 tests whether the same magic point hosts the **other five
+quark types** (d, s, c, b, t — d already lands as the (1, −2)
+ring-flip partner of u) as primitive classes on the p-sheet
+lattice.
+
+### Strategic rationale
+
+In the SM, all hadrons are quark composites: mesons are q-q̄ pairs,
+baryons are qqq triplets.  If MaSt's primitive lattice contains
+the full 6-quark family at the magic point, every meson and
+baryon becomes a *prediction* rather than a fit.  This is more
+parsimonious than an inventory-by-particle audit (which would
+require 13 separate fits and a working composition rule
+simultaneously).
+
+### Phases
+
+- **2a — Strange quark.** Scan the Z₃-compatible primitive lattice
+  for the class whose mass at the magic point matches m_s ≈ 510
+  MeV (constituent).  Cleanest single-quark observable: **Ω⁻
+  (sss)** at 1672 MeV — no u/d contamination, gives m_s = 557 MeV
+  from the additive triplet.  Cross-check against kaons (us̄),
+  Λ (uds), Σ (uus, dds), Ξ (uss, dss).  Charge attribution under
+  the provisional R64 rule (sign of n_pr distinguishes +2/3 from
+  −1/3) needs verification at strangeness.
+- **2b — Charm quark.** Target m_c ≈ 1500 MeV.  Cleanest target:
+  **J/ψ (cc̄)** at 3097 MeV → m_c ≈ 1549 MeV.  Test against D
+  mesons (cū, cd̄, cs̄), Λ_c (udc).
+- **2c — Bottom quark.** Target m_b ≈ 4700 MeV.  Cleanest target:
+  **ϒ (bb̄)** at 9460 MeV → m_b ≈ 4730 MeV.  Test against B mesons.
+- **2d — Top quark.** Target m_t ≈ 173,000 MeV (current ≈
+  constituent because QCD effects negligible at top scale).
+  Sparse hadron spectroscopy at this scale; the t identification
+  is mostly structural (which primitive class hosts it) rather
+  than empirically tested.
+- **2e — Generation structure.** If 2a–2d each find a clean
+  primitive, examine whether (u, c, t) and (d, s, b) form a
+  structured family on the p-sheet lattice.  A natural progression
+  (e.g., (1, ±2) → (2, ±n) → (3, ±n)) would predict the SM's
+  3-generation structure as a consequence of p-sheet harmonics
+  rather than an empirical input.
+
+### Goal
+
+A 6-quark family on the p-sheet, all at the magic point
+`(ε_p, s_p, K_p) = (0.07309, 0.19387, 22.847)`, each matching its
+observed constituent mass to within 5%.  Mesons and baryons
+predicted from this family without further parameters.
+
+### Success / failure criteria
+
+- **Success**: 5 primitive classes (d already done as Track 1's
+  ring-flip; s, c, b, t to be found) each within 5% of observed
+  constituent mass.  Generation structure (Phase 2e) shows a
+  clean progression on the lattice.
+- **Failure**: no primitive class delivers s within 5% of 510 MeV,
+  OR found primitives don't form a structured family.  R64
+  closes if 2a fails decisively; structural reframing if 2a
+  passes but 2e doesn't.
+
+---
+
+## Track pool (after Track 2)
+
+Track 1 closed the foundational viability test.  Track 2 starts
+the quark generation identification.  Other pool items remain.
 
 **a. Inventory re-derivation under flavor-aware composition.**
-The 13-particle hadron inventory needs every baryon's tuple
-re-expressed as a u/d combination on the p-sheet, and every
-meson re-expressed as a quark-antiquark pair.  Charge attribution
-under Q132 v2 may need extension (currently doesn't distinguish
-(1, +2) from (1, −2) at the rule level).  This is the most
-likely Track 2.
+After Track 2 identifies all 6 quarks, every meson and baryon
+becomes a mechanical prediction.  This pool item is then a
+*verification* of the predictions, not a fit.
 
 **b. Light-nuclei harmonic stack quantitative.**  ²H, ³He,
 ⁴He, ⁶Li, ⁷Li, ⁹Be, ¹²C — masses, charges, magnetic moments
@@ -260,10 +326,19 @@ point as a structural curiosity without promoting to a model.
 
 ## Status
 
-**Track 1 active** — magic-point search for `(ε_p, s_p)` such
-that proton (3, +2) and neutron (3, −2) match observed masses.
-Pool item **a** (inventory re-derivation) is the most likely
-Track 2.
+**Track 1 complete (positive).**  Magic point identified at
+`(ε_p, s_p, K_p) = (0.07309, 0.19387, 22.847 MeV/μ)` to machine
+precision (Phase 1c Newton solve).  Three independent observables
+match: m_u = 315.3 MeV (SM constituent), m_n − m_p = 1.293 MeV
+(observed), B(²H) = 2.225 MeV (observed).  ³He and ⁴He under-bind
+under naive additive-winding composition (anticipated; refined
+stacking rule is a later track).  α-pinning hypothesis tested and
+rejected (ε_p is 0.16% above 10·α, structurally meaningful gap).
+See [findings-1.md](findings-1.md) and
+[Q134](../../qa/Q134-nuclear-harmonic-stack-on-p-sheet.md).
+
+**Track 2 framed (quark generation primitive identification).**
+Pending execution.
 
 R63 is closed cleanly with respect to nuclear binding.  Its
 g-candidate findings remain valid for the cross-sheet

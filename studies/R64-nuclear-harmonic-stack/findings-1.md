@@ -263,24 +263,127 @@ weighting is consistent.
 
 ---
 
+---
+
+## Phase 1c — α-precision audit of the magic point
+
+The Phase 1b sweep located the magic point near ε_p ≈ 0.073, suspiciously
+close to 10·α = 10/137.036 = 0.07297.  Phase 1c refined the search via
+2D Newton iteration on the joint `(ε_p, s_p)` system with PDG/CODATA-
+precision input masses and tested whether ε_p coincides with α-derived
+constants exactly.
+
+Script:
+[`scripts/track1_phase1c_alpha_check.py`](scripts/track1_phase1c_alpha_check.py)
+
+### F1.7. The high-precision magic point
+
+Newton converges in 3 iterations to machine precision:
+
+- **ε_p = 0.073092553872** (12 significant figures)
+- **s_p = 0.193871467423**
+- **K_p = 22.846596 MeV/μ-unit**
+
+All three input masses (m_p, m_n, m_d) are reproduced to all 8 input
+digits, confirming the magic point is genuinely pinned at this value
+by the three observables.
+
+### F1.8. ε_p is close to 10·α but NOT exactly equal
+
+| Candidate | Value | Δ from ε_p | Relative |
+|:---|:-:|:-:|:-:|
+| **10·α** | 0.072974 | +1.19×10⁻⁴ | **+0.163%** |
+| **10/137** | 0.072993 | +1.00×10⁻⁴ | +0.137% |
+| α^(1/2) | 0.085425 | −0.0123 | −14.4% |
+| α^(1/3) | 0.193964 | −0.121 | −62.3% (s_p match!) |
+
+ε_p sits 0.16% above 10·α.  This is **larger than the precision of the
+input masses** (PDG values are good to ~10⁻⁷), so the gap is
+structurally meaningful, not a measurement uncertainty.  The closeness
+is **coincidence within ~0.2%**, not exact pinning.
+
+### F1.9. s_p has no clean α-relation either
+
+| Candidate | Value | Relative diff |
+|:---|:-:|:-:|
+| π/16.2 | 0.193925 | −0.03% |
+| 26.6·α | 0.194110 | −0.12% |
+| α^(1/3) | 0.193964 | −0.05% |
+| 0.20 (round) | 0.20 | −3.06% |
+
+Several candidates land within 0.1% of s_p, but they're all ad-hoc
+(why 26.6? why π/16.2?).  The only reasonably principled candidate is
+α^(1/3) at −0.05%, which is intriguing but unmotivated structurally.
+
+### F1.10. What Phase 1c establishes
+
+1. **The magic point at machine precision** is `(ε_p, s_p, K_p) =
+   (0.07309, 0.19387, 22.847 MeV/μ)` — an empirically-pinned set of
+   three numbers, not an α-derivable coordinate.
+2. **The α-pinning hypothesis is rejected** at 0.16% precision.  R64's
+   parameter set is empirical, like model-F's, and does not reduce to
+   one or zero parameters via α.
+3. **Q134's ground rules stand unchanged**.  The h-candidate is a 2-
+   parameter framework on the p-sheet (`ε_p`, `s_p`), with `K_p`
+   determined by the proton anchor — same parameter count as R63's
+   g-candidate, just at different working values.
+
+The α coincidence is filed as a curiosity.  If a 4th observable
+ends up landing the magic point exactly at 10·α (e.g., a future
+precision measurement of m_n or m_d that shifts the input numbers),
+the question reopens.  For now, ε_p is empirical.
+
+---
+
 ## Recommendation
 
 **Track 1 succeeds at its stated test.**  The viable curve exists,
 the magic point is identifiable, and the simultaneous match of
-three independent observables (m_u, m_n−m_p, B(²H)) at `ε_p ≈ 0.073`
+three independent observables (m_u, m_n−m_p, B(²H)) at `ε_p ≈ 0.0731`
 is structurally significant — it's the kind of coincidence that
 either reflects the framework working or vanishes on closer
 examination.
 
-The next tracks need to determine which:
+Phase 1c confirmed the magic point is empirically pinned (not
+α-derivable at exact precision), with `(ε_p, s_p, K_p) =
+(0.07309, 0.19387, 22.847)` to machine precision.
 
-- **Track 2 (inventory survival audit at ε_p = 0.073)**: re-render
-  the 13-particle hadron inventory with u/d-aware composition.
-  Hard inventory-preservation gate per R64 discipline.
-- **Track 3 (refined harmonic-stacking rule for A ≥ 3)**: identify
-  the structural mechanism that turns additive winding into
-  shell-closure-aware binding for ³He, ⁴He, ⁶Li, ⁷Li, ¹²C.
+**Working theory captured in [Q134](../../qa/Q134-nuclear-harmonic-stack-on-p-sheet.md).**
 
-Per user direction, draft a Q file capturing the working theory
-and provisional ground rules immediately, since the foundational
-test landed positive.
+### Next track — quark generation primitive identification
+
+Per user direction, Track 2 makes a clean subject change to **quark
+generation primitive identification** rather than a particle-by-
+particle inventory audit.  Reasoning:
+
+- All hadrons in the SM are quark composites; identifying all 6
+  quarks lets the rest of the inventory follow mechanically as
+  predictions, not fits.
+- Each quark identification is one constraint (one observed mass)
+  vs 13 constraints for inventory audit.
+- Success would vindicate the SM's 3-generation flavor structure
+  as MaSt-derived rather than MaSt-input.
+- Failure (e.g., no primitive class delivers m_s ≈ 510 MeV at the
+  magic point) is a clean falsification.
+
+Track 2 phases:
+
+- **2a — Strange quark.** Scan `(n_t, n_r)` lattice for the
+  primitive class whose mass at the magic point matches m_s ≈
+  510 MeV (constituent).  Test against Ω⁻ (sss), kaons, Λ.
+- **2b — Charm quark.** Same approach, target m_c ≈ 1500 MeV.
+  Test against J/ψ (cc̄), D mesons.
+- **2c — Bottom quark.** Target m_b ≈ 4700 MeV.  Test against ϒ
+  (bb̄), B mesons.
+- **2d — Top quark.** Target m_t ≈ 173,000 MeV.  Heavier than the
+  hadron-spectroscopy window; minimal tests available.
+- **2e — Generation structure.** If 2a–2d each find a clean
+  primitive, examine whether (u, c, t) and (d, s, b) form a
+  structured family on the lattice.  A natural progression would
+  predict the SM's 3-generation structure as a *consequence* of
+  the p-sheet's harmonic structure.
+
+Track 2 starts with Phase 2a (strange) — the structurally simplest
+extension of the u/d ring-flip primitives, and the one with the
+cleanest single-quark observable target (Ω⁻ at 1672 MeV = 3·m_s,
+with no u/d contamination).
