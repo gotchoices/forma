@@ -566,9 +566,175 @@ empirical coupling σ_t."**
 
 ---
 
+---
+
+## Phase 7d — Schrödinger validation of Phase 7c V(r)
+
+Phase 7c demonstrated that the 7-tensor V(r) has the right
+shape and scale at the trough.  Phase 7d tests whether the
+**quantum-mechanical observables** of that V(r) — bound-state
+energies and scattering lengths — match observation when V(r)
+is solved as a two-body radial Schrödinger problem.
+
+Script:
+[`scripts/track7_phase7d_schrodinger.py`](scripts/track7_phase7d_schrodinger.py)
+Outputs:
+[`outputs/track7_phase7d_results.csv`](outputs/track7_phase7d_results.csv) ·
+[`outputs/track7_phase7d_potential_and_wavefunctions.png`](outputs/track7_phase7d_potential_and_wavefunctions.png)
+
+### Method
+
+Radial Schrödinger equation with reduced-mass Hamiltonian:
+
+<!-- −ℏ²/(2μ) u'' + V(r) u = E u -->
+$$
+-\frac{\hbar^2}{2\mu}\,u''(r) + V(r)\,u(r) \;=\; E\,u(r)
+$$
+
+with `μ = m_p·m_n/(m_p+m_n)` for pn (similarly for nn, pp), and
+`V(r) = m_compound(r) − m_Ma(n_pt, n_pr)` (subtracts the constant
+Ma-side offset so V(∞) = 0).  Bound states found by shooting
+method (scipy.integrate solve_ivp + brentq sign-change refinement);
+scattering lengths extracted from k·cot(δ) = −1/a + (r_eff/2)·k²
+effective-range fit at low k.
+
+### F7d.1. Multiple bound states emerge in all channels
+
+| Channel | Bound states | E (MeV)            | Observed |
+|:---|:-:|:---|:---|
+| pn  | 3 | −12.64, −4.82, −2.22 | 1 (deuteron at −2.22) |
+| nn  | 3 | −12.46, −4.74, −2.17 | **0 (unbound)** |
+| pp  | 3 | −11.99, −4.56, −2.05 | **0 (unbound)** |
+
+The nn and pp channels having multiple bound states is decisively
+wrong — observation says these systems are unbound.  The pn
+channel having THREE bound states is also wrong; nature has only
+the deuteron.
+
+### F7d.2. Deuteron binding energy off by factor ~13
+
+| Quantity | Phase 7d | Observed |
+|:---|:-:|:-:|
+| Schrödinger eigenvalue (above V(∞)) | −12.64 MeV | — |
+| Ma-side offset Δ_Ma(pn) | −17.32 MeV | — |
+| Total binding from free-nucleon threshold | **29.95 MeV** | **2.22 MeV** |
+
+Phase 7d's pn ground state is bound by 30 MeV from the free-nucleon
+threshold — vs observed 2.22 MeV.  Off by **factor 13.5**.
+
+(Numerically, the *third* bound state at −2.22 MeV happens to land
+at the observed B(²H) value.  This is coincidence — that state is
+the highest excited state of a Rydberg-like spectrum, not the
+ground state, so it doesn't represent a successful prediction.)
+
+### F7d.3. The Rydberg-like spectrum diagnoses the polynomial tail
+
+The bound-state spectrum follows approximately
+`E_n = −μ·B²/(2·n²)` — a Coulomb-like Rydberg series — with
+effective dimensionless coupling
+
+<!-- B = |A_1| / ℏc = |σ_t · n_pt · ℏc / m_Ma| / ℏc -->
+$$
+B \;=\; \frac{|A_1|}{\hbar c} \;=\;
+\left|\frac{\sigma_t \cdot n_{pt}}{m_{\text{Ma}}}\right|
+\;\approx\; 0.374
+$$
+
+(compare to QED's α ≈ 0.0073).  The 7-tensor's polynomial 1/r
+tail is acting like a strong attractive "Coulomb force" with
+~50× the EM coupling — far larger than any short-range piece —
+producing the bound-state ladder.
+
+A Yukawa potential `V(r) = −g²·exp(−mr)/r` cuts off the
+attraction at r > 1/m; the spectrum truncates to a single
+deuteron-like bound state.  Phase 7d's failure mode is precisely
+the predicted polynomial-vs-Yukawa structural difference (Phase
+7b), now made concrete in quantum-mechanical observables.
+
+### F7d.4. Scattering lengths — wrong sign for singlet
+
+Effective-range fit of k·cot(δ) at low k:
+
+| Channel | Phase 7d a (fm) | r_eff (fm) | Observed a (fm) | Status |
+|:---|:-:|:-:|:-:|:-:|
+| pn triplet (³S₁) | +13.2 | +33.7 | +5.42 | right sign, 2.4× off |
+| nn singlet (¹S₀) | +22.5 | +34.9 | **−23.7** | **wrong sign** |
+
+The singlet sign reversal is direct evidence that V(r) is too
+attractive: nature's a_s ≈ −23.7 fm signals an *almost-bound*
+state (very near the threshold, large negative scattering
+length); Phase 7d's a_s ≈ +22.5 fm signals an *already-bound*
+system (positive a, with bound states below threshold).
+Reducing V(r)'s long-range attraction (Yukawa cutoff) would
+move the singlet from "bound" to "almost-bound," reversing the
+sign correctly.
+
+The triplet a_t = +13 fm vs observed +5.4 fm is the same problem
+in milder form: V(r) is binding the deuteron too strongly,
+giving a smaller asymptotic |r·u(r)/u(r)| at low energy.
+
+### F7d.5. Acceptance criteria
+
+| # | Criterion | Status |
+|:-:|:---|:-:|
+| 1 | B(²H) within ±20% of 2.224 MeV | ✗ FAIL (factor 13.5) |
+| 2 | a_t positive, few-fm magnitude | ✓ PASS (sign and order) |
+| 3 | a_s large negative | ✗ FAIL (wrong sign) |
+| 4 | nn unbound | ✗ FAIL (3 bound states) |
+| 5 | pp unbound | ✗ FAIL (3 bound states) |
+
+Phase 7d does **not** validate Phase 7c V(r) as a quantum-
+mechanical NN potential.  The polynomial 1/r tail produces a
+Coulomb-like attraction that dominates the bound-state spectrum
+and scattering structure.
+
+### F7d.6. What Phase 7d establishes
+
+**The static-trough success of Phase 7c does not survive
+quantum-mechanical lifting.**  At intermediate r (where Phase 7c
+matched the observed depth ~50 MeV at ~1 fm), the polynomial
+form approximates Yukawa adequately.  But the wavefunctions of
+bound states sample V(r) at all r — including the long-range
+1/r tail — and the integrated effect is dominated by that tail.
+
+This is a clean structural finding, not a parameter-tuning
+question:
+
+- **σ_t cannot be retuned** to fix this.  Reducing |σ_t| weakens
+  the trough below 50 MeV (which Phase 7c gets right) without
+  fixing the qualitative tail problem.
+- **No combination of (ε_p, s_p, σ_t)** at the polynomial form
+  level can give one bound state instead of three or fix a_s sign
+  — it's the functional form that's wrong.
+- **The Yukawa exponential cutoff is structurally required** for
+  the QM observables to land near observation — exactly what
+  pool item m (propagator-based extension) addresses.
+
+Phase 7d's negative result is therefore *informative*: it
+confirms in concrete observables that the polynomial form is the
+limiting factor at the deuteron-binding scale, not just at the
+asymptotic tail.
+
+### F7d.7. What Phase 7d does NOT invalidate
+
+Phase 7c's *static-potential* claims still hold:
+
+- Trough depth ~50 MeV at r ≈ 1 fm — consistent with NN potential
+  phenomenology at intermediate r.
+- pn preferred over pp by ~19 MeV — Ma-side at Point B.
+- Charge symmetry preserved (σ_r = 0 structural constraint).
+- Coulomb 1/r tail at large r for charged pairs.
+
+These remain valid as features of the static V(r); Phase 7d
+simply shows that integrating V(r) into the QM problem requires
+the long-range tail to also be right, which the polynomial form
+isn't.
+
+---
+
 ## Status
 
-**Phases 7a, 7b, and 7c complete.**
+**Phases 7a, 7b, 7c, and 7d complete.**
 
 **Phase 7a**: 7-tensor produces a trough in E(r) for two-particle
 states, charge-independent (σ_r = 0 selected structurally), pn
@@ -589,13 +755,30 @@ lands at **−50.2 MeV at r = 1.135 fm**, inside the observed
 NN-potential band.  pn-vs-pp preference, charge symmetry, and
 Coulomb tail all preserved.
 
-Track 7 now produces the right shape AND right scale of the
-NN potential at intermediate r, from a minimal 7-tensor at R64
-Point B with one empirical cross-shear σ_t playing the role of
-QCD's α_s.  Polynomial-vs-Yukawa difference at large r remains
-as a separate question for propagator-based extensions.
+**Phase 7d**: Phase 7c V(r) solved as a two-body radial Schrödinger
+problem.  Quantum-mechanical observables fail decisively —
+**3 bound states in pn** (vs 1 deuteron observed), **bound states
+in nn and pp** (vs unbound), **B(²H) = 30 MeV** (vs 2.22 MeV
+observed, factor 13.5 off), **wrong sign for a_s**.  The
+polynomial 1/r tail produces a Coulomb-like Rydberg series with
+effective coupling ~0.37 — too strong to support nature's
+single-bound-state spectrum.  Phase 7b's structural finding
+(polynomial form, no Yukawa) is now made concrete in QM
+observables.
+
+Track 7 produces the right shape AND right scale of the NN
+potential at the static intermediate-r level (Phase 7c).  Lifting
+to QM observables (Phase 7d) reveals the polynomial 1/r tail as
+the limiting factor: V(r) is "too long-range" without an
+exponential cutoff.  Pool item m (Yukawa propagator extension)
+is the natural next step — addressing not just the asymptotic
+tail but the deuteron's binding energy and scattering-length
+structure simultaneously.
 
 This is the most novel positive result R64 has produced: an
 emergent strong-force shape and scale from MaSt's geometry,
 including charge-independence as a structural constraint and
-pn preference as a Ma-side feature.
+pn preference as a Ma-side feature.  Phase 7d's negative
+quantum-mechanical result sharpens the next-step question:
+the polynomial form is the limiting factor, not parameter
+tuning.

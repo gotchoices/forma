@@ -256,3 +256,93 @@ factor ~2-5" in the findings.  After Phase 7c the label could
 upgrade to "right shape and scale at Point B with one empirical
 coupling, polynomial form (not Yukawa)."  That's a substantively
 stronger claim and worth spending one phase to nail down.
+
+---
+
+## Phase 7c — executed; follow-up needed on full-metric consistency
+
+**What 7c delivered.**  With `A = 4·(ℏc)²` instead of `(ℏc)²`,
+the σ_t sweep landed σ_t = −116.1, giving trough depth 50.2 MeV
+at r = 1.135 fm — inside the observed NN-potential band.  pn
+deeper than pp by 18.9 MeV (Ma-side at Point B), charge symmetry
+preserved, Coulomb tail correct.  All four acceptance criteria
+met.  Track 7 has the right shape AND right scale at intermediate
+r with one empirical cross-shear σ_t.
+
+**One structural concern 7c didn't address.**  σ_t is dimensionless
+in the same way R60's metric entries are.  Compare:
+
+| Entry | Value | Channel |
+|:---|---:|:---|
+| σ_ta (R60 EM) | √α ≈ 0.0854 | p-tube → aleph → S |
+| σ_t (7c strong) | −116.1 | p-tube → S directly |
+
+σ_t is **~1360× stronger** than σ_ta.  R60's architecture routes
+ALL Ma↔S coupling through aleph; 7c's σ_t bypasses aleph
+entirely.  This is either (a) a legitimate new metric channel
+(strong force as a separate Ma↔S pathway from EM), or (b) a
+phenomenological effective coupling that doesn't correspond to a
+real metric entry.  7c didn't distinguish between these.
+
+**At single-particle k_S = 0, σ_t vanishes** (the cross-coupling
+term is `2·k_S·σ_t·n_pt·ℏc`, linear in k_S).  So single-proton
+calibration is unaffected at leading order.  But Schur-complement
+dressing of compound modes could leak σ_t into observables that
+R60 already pinned, particularly α universality across the e and
+p sheets.
+
+### Next steps (suggestions)
+
+**Phase 7d — full 11D consistency check.**  Add σ_t = −116.1 to
+the R60 11D metric as an extra off-diagonal entry between
+p-tube and S spatial.  Check:
+
+1. **Signature** — still one negative eigenvalue?
+2. **Single-particle masses** — m_e, m_p, m_n, m_ν₁ unshifted
+   at model-F precision?
+3. **α universality** — composite α across (e, p) still equal
+   to 1?  (R60 T7c is the comparison.)
+4. **R60 T19 inventory** — 13 hadrons still inside width-
+   weighted envelopes?
+
+If 7d passes all four: σ_t is a legitimate new metric channel,
+analogous to SM's SU(3) × U(1) separation.  R64 then has
+identified a structural parameter (the strong coupling) that
+extends R60's architecture without breaking it.
+
+If 7d fails at step 3 or 4: σ_t doesn't sit cleanly in the 11D
+metric.  Two readings to investigate:
+
+- **σ_t needs its own auxiliary dimension** (analog of aleph
+  for the strong channel).  This would be a genuine new
+  architectural piece — extra compact dimension for strong
+  force mediation, paralleling aleph's role for EM.
+- **σ_t is an effective coupling, not a metric entry.**
+  Like QCD's running α_s, it emerges from a more fundamental
+  structure but isn't directly a metric off-diagonal.  The
+  fundamental mechanism stays open.
+
+**Other open questions visible from 7c:**
+
+- **σ_t structural derivation.**  F7c.4's table showed no clean
+  α-relation.  Worth re-checking with Point B's specific
+  parameters: σ_t · ε_p ≈ −23.8, σ_t · s_p ≈ −2.9, neither
+  particularly natural — but a search over `σ_t · f(ε_p, s_p,
+  K_p, n_pt, α)` might surface a structural identity.
+
+- **Yukawa cutoff at large r.**  7b's polynomial form is
+  adequate at r ~ 1 fm but lacks the exponential cutoff at r >
+  2 fm.  Propagator-based extension is the natural follow-on.
+  This sits as a recognized limitation regardless of how 7d
+  resolves.
+
+- **Strange-family fit at 7d's augmented metric.**  T4 found
+  the strange family doesn't fit at Point B under the single-
+  primitive hypothesis.  If 7d works out, the augmented metric
+  might shift hadron predictions enough that the strange family
+  also re-fits — worth checking.
+
+7c's phenomenological achievement (right shape, right scale at
+intermediate r) stands either way.  7d settles the question of
+whether σ_t is part of MaSt's structural inventory or an
+imported empirical coupling.

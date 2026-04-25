@@ -349,7 +349,7 @@ premise: the geometric reality of charge IS in Ma, but the
 
 ## Track 7 — Strong force from a 7-tensor: 6 Ma + 1 S spatial dimension
 
-**Status: framed; Phase 7a executing.**
+**Status: Phases 7a, 7b, 7c, 7d complete.**
 
 After Track 6's review, the goal of *re-deriving* nuclear shell
 structure from MaSt was deemed a structural re-invention of well-
@@ -372,11 +372,6 @@ structure matches the observed nucleon-nucleon potential:
 - a barrier / decay region beyond
 - Coulomb tail (`α/r`) at large r
 
-If this shape emerges from the 7-tensor with the standard 1/α
-coupling assumption, MaSt would have produced the strong force's
-r-dependent profile from geometric consistency rather than as
-an empirical input.
-
 ### Victory criteria
 
 Track 7 succeeds if the 7-tensor at some parameter point produces:
@@ -393,24 +388,101 @@ Track 7 succeeds if the 7-tensor at some parameter point produces:
    (Z, N), the 7-tensor predicts whether the next nucleon prefers
    to be a proton or a neutron (matching the valley of stability).
 
-If all four hold simultaneously, declare victory: MaSt has
-derived the strong force from first principles plus the standard
-α coupling assumption.
+### Phase summary
 
-### Phases
+- **Phase 7a — Minimal 7-tensor sweep.**  Done.  Trough
+  emerges at the right shape but ~5× too shallow with the
+  natural `A = (ℏc)²` kinetic coefficient.  Charge-independence
+  forces σ_r = 0 structurally; pn deeper than pp by ~17 MeV
+  from the Ma-side at Point B.
+- **Phase 7b — Yukawa fit.**  Done.  V(r) is essentially exact
+  polynomial `A₂/r² + A₁/r` (R² = 0.9998).  Yukawa exponential
+  cannot emerge from the metric-coupling formalism — that
+  requires propagator physics (queued as pool item m).
+- **Phase 7c — Two-body kinematic correction.**  Done.  k_S =
+  1/r is the *relative* momentum of two nucleons in COM frame,
+  so `A = 4·(ℏc)²` (relativistic two-body invariant-mass
+  relation).  With the fix, pn trough lands at r = 1.135 fm
+  with depth −50.2 MeV — inside the observed NN-potential band
+  (40–60 MeV).  σ_t = −116.1 sits as MaSt's α_s analog
+  (no clean structural relation to α, ε_p, s_p, K_p).
+  See [findings-7.md](findings-7.md).
 
-- **Phase 7a — Minimal 7-tensor sweep.**  Build the 6 Ma + 1 S
-  metric using R64 Point B parameters for the Ma block, the
-  assumed 1/α magnitude for Ma↔S coupling, and treat any
-  remaining off-diagonal terms as free.  Compute the energy of
-  a two-particle p-sheet configuration as a function of S
-  separation, sweeping the free parameters.  Plot E(r); look
-  for the strong-force shape.
-- **Phase 7b — Marginal-nucleon test.**  At a chosen working
-  point from 7a, compute predicted Z/A optimum vs A across the
-  nuclear chain.  Check the four victory criteria.
-- **Phase 7c — Refine.**  If 7a/7b are encouraging, refine the
-  parameter set and characterize uncertainties.
+**Net at 7c:** the 7-tensor at R64 Point B with corrected
+two-body kinematics produces strong-force *shape* and *scale*
+at intermediate r from one empirical cross-shear σ_t.  The
+polynomial form (vs Yukawa) is a known limitation at large r.
+
+### Phase 7d — Schrödinger validation of V(r)
+
+**Status: complete.  Result: V(r) fails QM observables decisively
+— polynomial 1/r tail dominates.**
+
+Phase 7c's V(r) reproduces the static NN-potential trough.
+Phase 7d tests whether the same V(r) gives the right
+**quantum-mechanical observables** when solved as a Schrödinger
+two-body problem.
+
+**Goal.**  Compute, from V(r) at Phase 7c parameters:
+
+| Observable | Channel | Observed |
+|:---|:---|:-:|
+| Deuteron binding energy B(²H) | pn S-wave (³S₁) | 2.224 MeV |
+| Triplet scattering length a_t | pn S-wave (³S₁) | +5.42 fm |
+| Singlet scattering length a_s | NN S-wave (¹S₀) | −23.7 fm |
+
+If V(r) reproduces these to ~10–20%, Track 7's claim upgrades
+from "shape and scale match" to "shape, scale, and bound-state
++ scattering data match" — much stronger.  In particular, B(²H)
+agreement would resolve R64's standing deuteron outlier
+(Point B's m(6, 0) over-binds by 15 MeV at the *Ma-side
+algebraic* level; the Schrödinger ground state of V(r) is a
+*different* prediction and may land closer).
+
+**Strategy.**  Solve the radial Schrödinger equation with the
+reduced-mass Hamiltonian:
+
+<!-- −ℏ²/(2μ) ∇² ψ + V(r) ψ = E ψ -->
+$$
+-\frac{\hbar^2}{2\mu}\nabla^2\psi + V(r)\,\psi = E\,\psi
+$$
+
+with `μ = m_p/2` (equal-mass nucleon reduced mass), `V(r) =
+A₂/r² + A₁/r` (+ Coulomb for pp), and the boundary conditions
+appropriate for bound states (decay at infinity, regular at
+origin) or scattering states (free-wave asymptotic).
+
+**Tactics.**
+
+- Implement a numerical radial-equation solver (Numerov method
+  or scipy.integrate) — no existing solver in studies/lib.
+- Compute B(²H) as the lowest E < 0 eigenvalue in the pn
+  channel with V(r) at Phase 7c σ_t = −116.1.
+- Compute a_t and a_s by integrating to large r and matching
+  the asymptotic phase-shift form `r·u(r) → sin(kr + δ)`,
+  taking k → 0 limit for scattering length.
+- Repeat for pp (with Coulomb) — predict zero-energy resonance
+  structure if any.
+
+**Result summary.** All five acceptance criteria failed except
+a_t (right sign, order of magnitude OK).  The polynomial 1/r
+tail produces a Coulomb-like Rydberg series of bound states
+(3 states each in pn, nn, pp channels) with effective coupling
+~0.37 (50× α).  Total B(²H) = 30 MeV vs observed 2.22 MeV
+(factor 13.5 off).  See findings-7.md F7d.1–F7d.7 for full
+analysis.
+
+**Verdict.** Phase 7c V(r) gives the right *static* trough but
+fails *quantum-mechanical* observables.  σ_t cannot be retuned
+to fix this — it's the functional form (polynomial vs Yukawa)
+that's wrong.  Pool item m (propagator-based Yukawa extension)
+is the natural next step.
+
+**Outputs.**
+
+- [`outputs/track7_phase7d_results.csv`](outputs/track7_phase7d_results.csv)
+- [`outputs/track7_phase7d_potential_and_wavefunctions.png`](outputs/track7_phase7d_potential_and_wavefunctions.png)
+- [findings-7.md](findings-7.md) F7d section updated with full results.
 
 ### Reusable assets
 
@@ -470,76 +542,133 @@ peak emerges.  All directly supported by the tool.
 
 ---
 
-## Track pool (after Track 6)
+## Track pool (after Track 7c)
 
-Items lettered for flexible selection.  Obsolete pool items
-removed; remaining items in priority order.
+Items lettered for flexible selection.  Items marked **[model-G]**
+are on the critical path to integrating R63+R64 contributions
+into a model-G candidate that includes strong-force modeling
+without regressing model-F.
 
-**a. Light-A deviation diagnosis.**  Even with Coulomb added,
-R64 may over-bind light nuclei (⁴He at 22%, ¹²C at 13% in Track
-3 Phase 3e).  Investigate whether this is finite-stack effect
-(the additive harmonic-stack rule needs corrections for small
-A), surface effect (boundary nucleons have fewer neighbors),
-or another mechanism.  The deuteron is the central case.
+### Model-G integration critical path (added after Phase 7c)
+
+**j. α-coupling integration test.**  **[model-G]**  Phase 7c
+introduced a new metric off-diagonal at (p_t, S_x), (p_t, S_y),
+(p_t, S_z) — currently zero in R60 baseline.  R60's α-architecture
+lives in the ℵ row.  Algebraically the new entries are independent,
+but when the 11×11 is solved/diagonalized, eigenmodes may mix.
+**Test:** augment R60 Track 12's α-extraction infrastructure with
+the Phase 7c off-diagonals and re-run universality checks.  If α
+stays at 1/137 to numerical noise, the strong and EM sectors are
+decoupled (excellent news).  If α shifts, derive the constraint
+σ_t must satisfy to preserve universality, analogous to R60's
+σ_ra prescription.  Also resolves the σ_t naming question: in
+R60 nomenclature this is **σ_pS_tube** (p-sheet tube ↔ S
+spatial), to disambiguate from σ_ta and σ_at.
+
+**k. Strange family on a different generation.**  **[model-G]**
+R64 Track 4 found an 18% RMS error forcing s, Λ, Σ, Ξ as a
+single primitive on the p-sheet at Point B.  The likely
+resolution per the R64 review: strange is a different
+*generation*, not a different flavor at Point B.  R60's three
+e-sheet primitives `(1, 2), (1, 1), (1, 15)` already imply
+three generations.  **Test:** search for an `(ε_s, s_s, K_s)`
+point on the p-sheet (or a different sheet) that hosts
+`(1, 1)` or another primitive class as the s-quark at
+~510 MeV constituent mass.  Cross-validate against Λ, Σ, Ξ.
+*Supersedes the old Track 2 Phase 2a single-primitive search.*
+
+**l. Joint refit of (ε_p, s_p, σ_t) against multi-target.**
+**[model-G]**  Phase 7c held (ε_p, s_p, K_p) frozen at Point B
+from Track 3's chain fit and only fit σ_t.  Whether this is a
+joint optimum or a local landing spot is open.  **Test:** sweep
+(ε_p, s_p) jointly with σ_t against {nuclear chain Ca→Sn,
+NN trough at r ≈ 1 fm depth ~50 MeV, deuteron B(²H), α
+universality (with prescription from item j)}.  Report whether
+Point B + σ_t = −116 is stable or drifts.  Required gating
+before treating R64 Point B as a model-G working point.
+
+**m. Yukawa long-range extension (propagator-based).**  Phase 7b
+established that the 7-tensor's V(r) is polynomial 1/r² + 1/r,
+not Yukawa exp(−mr)/r.  Yukawa requires propagator physics:
+integrating a virtual mediator's mode over momenta with a
+mass-pole 1/(k² + m²).  **Test:** identify the Ma compound that
+serves as the strong-force mediator (most likely a low-lying
+meson-class state — pion-analog), compute its mass at Point B,
+write down the πNN-analog vertex from Ma overlap, and do the
+propagator integral.  If the Ma identity gives m_med ≈ 140 MeV
+naturally, the Yukawa range falls out without further fitting.
+*Substantial new formalism; multi-day scope.*
+
+**n. Nuclear reactions & scattering machinery.**  V(r) is a
+static potential.  Reactions need cross-sections, branching
+ratios, and decay rates.  **Two routes:** (n.1) embed V(r) in
+a non-relativistic many-body Hamiltonian (standard nuclear
+physics) and predict reaction rates from Fermi's golden rule;
+(n.2) build a propagator-based formalism in MaSt that gives
+amplitudes directly (would extend item m).  Decision needed:
+which route, scope, and required infrastructure.
+
+**o. Z₃ and unit-per-sheet AM cross-check at R64 Point B.**
+**[model-G]**  R60 model-F established Z₃ confinement (Track 16)
+and unit-per-sheet AM spin (Track 20) — both are structural
+rules independent of (ε_p, s_p).  They should survive R64's
+on-sheet u/d picture, but the check is owed before model-G
+integration.  **Test:** verify R64's u/d compounds are Z₃-
+compliant (every baryon `(3·k, ...)` after composition) and
+spin assignments under unit-per-sheet AM still match observed
+spin-½ for nucleons, spin-0/1 for mesons, etc.
+
+### Existing pool items (still applicable)
+
+**a. Light-A deviation diagnosis.**  R64 may over-bind light
+nuclei (⁴He at 22%, ¹²C at 13% in Track 3 Phase 3e).  Phase 7d
+will likely partially address this for the deuteron (B(²H) is
+a Phase 7d target).  Higher-A residuals (⁴He, ¹²C) remain
+open — possibly a finite-stack correction or Phase 7c V(r)
+applied to many-body machinery (item n).
 
 **b. Quantum-number decoding (Ma analogs of n, l, m_l, m_s).**
 Identify the Ma winding/orientation feature for each atomic
 quantum number.  Provisional mapping:
-- n ↔ harmonic level (rung on the (n_t, n_r) lattice)
-- l ↔ phase separation (relative phases of strands)
-- m_l ↔ orientation (direction of angular structure)
-- m_s ↔ ring-winding polarity (sign of n_r component)
-Test against electron 1s, 2s, 2p quantum-state predictions.
-Deliverable: complete Ma-side label for each electron shell
-state.
+- n ↔ harmonic level
+- l ↔ phase separation
+- m_l ↔ orientation
+- m_s ↔ ring-winding polarity
+Lower priority for nuclear / strong-force model-G; relevant
+for pool-c.
 
 **c. Electron-shell harmonic structure on the e-sheet.**  Apply
 pool-b's quantum-number decoding to predict observed atomic
-shell energies.  Find `(ε_e, s_e, K_e)` working point that
-reproduces 1s, 2s, 2p, 3s, 3p, 3d energies for hydrogen and
-multi-electron atoms; check periodic-table grouping; check
-Pauli-saturation counts.
+shell energies.  Lower priority for nuclear-focus model-G.
 
-**d. Nuclear shell structure and magic numbers.**  Apply pool-b's
-decoding to the p-sheet for nucleons.  Test:
-- Magic numbers (2, 8, 20, 28, 50, 82, 126) as nuclear shell
-  closures
-- Specific stability of doubly-magic nuclei (⁴He, ¹⁶O, ⁴⁰Ca,
-  ⁵⁶Ni, ¹³²Sn, ²⁰⁸Pb)
-- Pairing energy from m_s polarity considerations
-
-**e. Higher-generation quark identification.**  After mode-stacking
-is understood (pool-b through pool-d), search for s/c/b/t
-primitives within the unified Ma quantum-number framework.
-Higher generations may correspond to specific (n, l) combinations
-on the p-sheet, or cross-sheet structure, or both.  *Earlier
-attempts (Track 2 Phase 2a, Track 4) tried this without
-quantum-number decoding and found structural problems; not
-repeated until pool-b lands.*
+**e. Higher-generation quark search (general).**  Beyond strange
+(item k): c, b, t.  Once item k succeeds for s, the same
+generation framework should host c, b, t by analogous primitive
+classes.
 
 **f. Full hadron inventory under unified framework.**  Once
-quark generations are identified, predict mesons (q-q̄) and
-hyperons (qqq with at least one s/c/b/t) via the unified Ma
-quantum-number rules.  Replaces R63's empirically-fit
-inventory tuples with derived predictions.
+quark generations are identified (items k, e), predict mesons
+and hyperons via Ma composition rules.
 
 **g. Charge-attribution rule extension.**  R64 currently uses a
-provisional rule (u = +2/3, d = −1/3 from sign of n_pr).  This
-needs derivation from a refined Q132 rule in light of the
-quantum-number framework.
+provisional rule (u = +2/3, d = −1/3 from sign of n_pr).  Needs
+derivation from a refined Q132 rule.
 
-**h. Z = 137 impedance-overflow audit.**  Deferred.  Once
-nuclear physics is settled, asking what happens at Z ≈ 137 is
-the natural next limit test.
+**h. Z = 137 impedance-overflow audit.**  Deferred.
 
-**i. Synthesis & promotion to model-G.**  Combine all completed
-tracks.  Assess whether R64-extended is decisively better than
-R63's framework across the full observable set: nuclear binding,
-nuclear stability, hadron inventory, electron shells.  Recommend
-promotion if criteria are met.
+**i. Synthesis & promotion to model-G.**  Combine completed
+tracks.  Items j, k, l, o gate this; item m is the natural
+follow-on.  Recommend promotion if criteria met.
 
 ### Obsolete (kept for historical record, not pursued)
 
+- ~~**d. Nuclear shell structure and magic numbers.**~~  Track 6
+  review concluded that re-deriving SM nuclear shell structure
+  from MaSt is structural re-invention of well-understood
+  physics, not novel work.  Magic numbers, doubly-magic
+  stability, pairing energy — all are SOC-derived in the SM
+  picture and reproduced by Phase 7c V(r) embedded in standard
+  many-body machinery (item n).  Removed from pool.
 - ~~Inventory re-derivation under flavor-aware composition only on
   p-sheet~~ — found structurally incompatible with SM isospin
   near-symmetry (Track 4 Phase 4a).

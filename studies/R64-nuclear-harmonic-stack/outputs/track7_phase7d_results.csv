@@ -1,0 +1,15 @@
+metric,value,unit
+sigma_t,-116.1,(dimensionless)
+A_kinetic,155751.74877512793,MeV^2·fm^2
+mu_red_pn,469.45902742357305,MeV
+Delta_Ma_pn,-17.315442879923694,MeV
+E_ground_pn,-12.63643813830576,MeV
+B_2H_above_threshold,12.63643813830576,MeV
+B_2H_total,29.951881018229454,MeV
+B_2H_observed,2.224,MeV
+a_triplet_phase7d,13.236402025861446,fm
+a_triplet_observed,5.42,fm
+a_singlet_nn_phase7d,22.47168310440042,fm
+a_singlet_observed,-23.7,fm
+nn_bound_states,3,count
+pp_bound_states,3,count
