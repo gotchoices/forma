@@ -1142,9 +1142,192 @@ entirely by removing the (p_t, S) entry from the metric.
 
 ---
 
+## Phase 7h — Yukawa QM observables test
+
+Phase 7d showed Phase 7c's polynomial V(r) produces 3 bound states
+in pn (vs 1 deuteron observed) and binds nn, pp (vs unbound).  The
+polynomial 1/r tail acts like a strong attractive Coulomb-like
+force.  Pool item m (Yukawa propagator extension) is the natural
+structural reframing.  Phase 7h tests whether Yukawa form
+`V(r) = −g²·ℏc·exp(−m·r/ℏc)/r` resolves the QM failures.
+
+Script:
+[`scripts/track7_phase7h_yukawa_qm.py`](scripts/track7_phase7h_yukawa_qm.py)
+Outputs:
+[`outputs/track7_phase7h_yukawa_results.csv`](outputs/track7_phase7h_yukawa_results.csv) ·
+[`outputs/track7_phase7h_yukawa_curves.png`](outputs/track7_phase7h_yukawa_curves.png)
+
+### Method
+
+Three Yukawa variants, each with a g² sweep:
+
+- **V1** Pure Yukawa, m = 140 MeV (pion mass).
+- **V2** Pure Yukawa, m = 254 MeV (R64's `(0, ±4)` compound mass —
+  the closest meson-class state in R64's Ma lattice).
+- **V3** Hybrid: Phase 7c kinetic 1/r² hard core +
+  Yukawa attraction, m = 140 MeV.
+
+For each (variant, g²) combination, run Phase 7d's Schrödinger
+solver on pn (no Coulomb), nn (no Coulomb), pp (with Coulomb).
+Report bound-state count, B(²H) = −E_ground in pn, triplet
+scattering length a_t.
+
+### F7h.1. Yukawa exponential cutoff fixes the bound-state spectrum
+
+V1 sweep results (m = 140 MeV):
+
+| g² | pn bound states | B(²H) MeV |
+|:-:|:-:|:-:|
+| 0.05 | 0 (unbound) | — |
+| 0.30 | 1 | 0.32 |
+| **0.40** | **1** | **3.76** |
+| 0.50 | 1 | 11.0 |
+| 0.70 | 1 | 37.2 |
+
+The bound-state count drops from 3 (Phase 7d's polynomial) to **1
+or 0** across the relevant Yukawa parameter range.  This confirms
+the structural diagnosis from Phase 7d: the polynomial 1/r tail
+*was* the source of the Rydberg-like spectrum, and replacing it
+with an exponential cutoff suppresses the spurious excited
+states.
+
+### F7h.2. Best parameter sets near observed B(²H)
+
+| Variant | m (MeV) | g² | B(²H) (MeV) | nn bound | pp bound |
+|:---|:-:|:-:|:-:|:-:|:-:|
+| V1 (pure m=140) | 140 | 0.30 | 0.32 | 1 | 0 |
+| V1 (pure m=140) | 140 | **0.40** | **3.76** | **1** | **1** |
+| V2 (pure m=254) | 254 | 0.50 | 0.07 | 1 | 0 |
+| V2 (pure m=254) | 254 | 2.00 | 0.58 | 1 | 1 |
+| V3 (hybrid m=140) | 140 | 2.00 | 0.84 | 1 | 1 |
+
+V1 with g² = 0.4 gives B(²H) = 3.76 MeV — **factor 1.7 from
+observed 2.22 MeV**, vs Phase 7d's factor 13.5.  Yukawa
+exponential clearly improves the binding magnitude.
+
+### F7h.3. But nn and pp bind too — no isospin asymmetry
+
+Across all 30 (variant, g²) combinations swept, **none** gave the
+required pattern:
+
+- pn bound (1 state)
+- nn unbound (0 states)
+- pp unbound (0 states, after Coulomb)
+
+In every Yukawa configuration where pn is bound at B ~ few MeV,
+**nn is also bound** with similar binding.  Coulomb removes pp
+binding only at low coupling (g² ≤ 0.3) where pn is also
+unbound.
+
+### F7h.4. Why: central Yukawa lacks deuteron-vs-singlet asymmetry
+
+The structural reason is unavoidable: a *central* Yukawa potential
+`V(r) = −g²·ℏc·exp(−m·r/ℏc)/r` is identical for pn, nn, and pp
+(modulo Coulomb).  All three channels see the same V(r).
+
+Nature's deuteron is in the **³S₁ triplet** channel and is bound
+(B = 2.22 MeV).  The **¹S₀ singlet** channel is *unbound* (a_s =
+−23.7 fm signals an almost-bound state, not a true bound state).
+This asymmetry between ³S₁ and ¹S₀ comes from **spin-dependent
+operators**:
+
+- Spin-spin: σ₁·σ₂ (gives different sign in triplet vs singlet)
+- Tensor force: S₁₂(r) (only operates in triplet ³S₁ via tensor
+  coupling)
+- Spin-orbit: L·S (vanishes in S-waves)
+
+Simple central Yukawa has none of these.  In real nuclear
+physics, OPE (one-pion-exchange) includes a spin-spin term and a
+tensor term; the deuteron is bound largely by the tensor force,
+which is *forbidden in singlet*.
+
+### F7h.5. Channel asymmetry in Phase 7d came from Ma compound winding
+
+Phase 7d's V_pn, V_nn, V_pp were *not* identical — they differed
+because of the (n_pt, n_pr) compound winding:
+
+- pn: (6, 0)
+- pp: (6, +4)
+- nn: (6, −4)
+
+The ring-direction asymmetry (n_pr) entered through R64's mass
+formula μ² = (n_pt/ε)² + (n_pr − s·n_pt)², making V_pn slightly
+deeper than V_pp/V_nn (~19 MeV difference in the trough).  But
+this was small compared to the overall Coulomb-like 1/r tail
+attraction, so all three channels had multiple bound states
+anyway.
+
+In Phase 7h Yukawa, we **deliberately stripped that ring
+asymmetry** by using a pure central form.  So both channels bind
+together — exactly what we'd expect from a central force.
+
+### F7h.6. Acceptance vs result
+
+| # | Criterion | Result |
+|:-:|:---|:---|
+| 1 | pn has exactly 1 bound state | ✓ achievable (g² range) |
+| 2 | B(²H) within factor 2 of 2.22 MeV | ✓ V1 g²=0.4 gives 3.76 |
+| 3 | nn unbound | ✗ FAILS — nn binds with pn |
+| 4 | pp unbound (after Coulomb) | ✗ FAILS at relevant g² |
+| 5 | a_t > 0 | ✓ multiple cases |
+| 6 | a_s < 0 | mixed (depends on g²) |
+
+Three of six pass.  The three that fail are precisely the
+deuteron-vs-singlet asymmetry that requires spin structure.
+
+### F7h.7. What Phase 7h establishes
+
+**Positive findings**:
+
+1. **Yukawa exponential cutoff DOES fix Phase 7d's Rydberg
+   spectrum.**  Bound-state count drops from 3 to 1 across the
+   relevant g² range.  This was Pool item m's primary motivation
+   and it's confirmed.
+2. **Yukawa CAN give B(²H) within factor 2 of observation.**
+   V1 g² = 0.4 lands at 3.76 MeV — close enough that with
+   parameter refinement, exact match is plausible.
+
+**Sharpened understanding of what's needed**:
+
+3. **Pool item m needs MORE than exponential cutoff.**  A central
+   Yukawa alone cannot reproduce the deuteron-vs-singlet
+   selectivity.  Pool item m's full version requires the strong
+   mediator's coupling to nucleons to be **spin-dependent** —
+   either:
+   - a Ma-overlap vertex that distinguishes spin-aligned (³S₁)
+     from spin-anti-aligned (¹S₀) configurations, or
+   - separate mediators for the various exchange channels (π,
+     ρ, σ, ω in the SM picture), each with its own spin-isospin
+     structure.
+
+In MaSt language: the pool-item-m derivation must include the
+spin-projection operator structure that comes from Ma's
+quantum-number rules (R60 Track 20's unit-per-sheet AM rule
+gives spin ½ per sheet; how that propagates into a 2-nucleon
+exchange amplitude is the missing piece).
+
+### F7h.8. Status of Yukawa pivot
+
+Yukawa is **partially validated**:
+- Confirms shape diagnosis from Phase 7d.
+- Resolves the bound-state count problem.
+- Gets B(²H) within factor 2 with one parameter (g²).
+
+But Yukawa **alone is not enough**:
+- Cannot produce ³S₁/¹S₀ asymmetry.
+- nn and pp bind with pn unless spin/isospin structure is added.
+
+Pool item m, properly developed, must include spin-dependent
+vertex structure (analog of QFT's σ₁·σ₂, S₁₂, L·S operators in
+OPE).  This makes pool item m a substantial research project,
+not a small extension — but the structural shape of what's
+needed is now sharp.
+
+---
+
 ## Status
 
-**Phases 7a, 7b, 7c, 7d, 7e, 7f, and 7g complete.**
+**Phases 7a, 7b, 7c, 7d, 7e, 7f, 7g, 7h complete.**
 
 **Phase 7a**: 7-tensor produces a trough in E(r) for two-particle
 states, charge-independent (σ_r = 0 selected structurally), pn
@@ -1202,6 +1385,21 @@ Highly informative — companion-entry resolution reduces to a
 2-parameter constraint (equalize p-sheet shift with e/ν
 shift), much more tractable than per-mode chaos.  σ_pS_tube
 needs structure, but the structure is concrete and solvable.
+
+**Phase 7h**: Tested Yukawa form `V = −g²·ℏc·exp(−m·r/ℏc)/r` as
+the pool-item-m alternative to the metric-coupling route.  Three
+variants swept: pure Yukawa with m_π = 140, with R64's m=254
+mediator candidate, hybrid 7c-hardcore + Yukawa.  **Yukawa
+exponential cutoff DOES fix Phase 7d's Rydberg spectrum** — pn
+bound-state count drops from 3 to 1; V1 with g²=0.4 gives B(²H)
+= 3.76 MeV (factor 1.7 from observed 2.22, vs Phase 7d's factor
+13.5).  But **central Yukawa cannot produce ³S₁/¹S₀ asymmetry**:
+nn and pp bind with pn whenever pn is bound.  This sharpens
+pool item m: needs Yukawa cutoff AND spin-dependent vertex
+structure (analog of OPE's σ₁·σ₂, S₁₂ operators) — the strong
+mediator's coupling to nucleons must distinguish triplet from
+singlet.  Pool item m is a substantial research direction, not
+a small extension; the shape of what's needed is now sharp.
 
 Track 7 produces the right shape AND right scale of the NN
 potential at the static intermediate-r level (Phase 7c).  Lifting

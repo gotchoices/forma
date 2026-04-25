@@ -349,7 +349,7 @@ premise: the geometric reality of charge IS in Ma, but the
 
 ## Track 7 — Strong force from a 7-tensor: 6 Ma + 1 S spatial dimension
 
-**Status: Phases 7a, 7b, 7c, 7d, 7e, 7f, 7g complete.**
+**Status: Phases 7a, 7b, 7c, 7d, 7e, 7f, 7g, 7h complete.**
 
 After Track 6's review, the goal of *re-deriving* nuclear shell
 structure from MaSt was deemed a structural re-invention of well-
@@ -492,6 +492,144 @@ is the natural next step.
 - α = 1/137.036 as an input (per GRID)
 - Track 3's nuclear chain (84 stable isotopes) as the comparison
   data
+
+---
+
+## Track 8 — Hub-and-spoke test: aleph-spatial coupling for the strong force
+
+**Status: framed; pending execution.**
+
+**Premise** (from [Q135](../../qa/Q135-aleph-as-common-mediator.md)).
+The metric's existing structure — sheets coupled to aleph, aleph
+coupled to time, no direct cross-sheet entries, EM emergent at α —
+suggests aleph is the universal mediator of inter-coordinate
+coupling.  Phase 7c's empirical σ_pS_tube (direct p-sheet → S
+spatial) bypasses aleph and was shown by Phase 7e to perturb α
+universality.  An alternative architectural choice: **the strong
+force is also aleph-mediated**, via a new `σ_aS` entry (aleph ↔
+S spatial) that R60 has at zero by default and that has not been
+tested.
+
+If σ_aS produces the strong-force trough AND preserves α
+universality, the metric architecture simplifies significantly:
+no direct cross-coordinate entries are needed; aleph mediates
+everything.
+
+### Goal
+
+Test numerically whether `σ_aS` (placed at G[ℵ, S_x], G[ℵ, S_y],
+G[ℵ, S_z], symmetrically) can:
+
+1. Preserve α universality across the model-F inventory (the
+   gating constraint from Phase 7e).
+2. Produce a non-trivial NN potential `V(r)` with a trough at
+   intermediate r, via the aleph-mediated path:
+
+   `p-tube ─[σ_ta]→ aleph ─[σ_aS]→ S spatial`
+
+3. Match Phase 7c's depth and position (~50 MeV at ~1 fm) at
+   *some* value of σ_aS, ideally with a structurally-motivated
+   magnitude (analogous to σ_ra's `(s·ε)·σ_ta` derivation).
+
+### Strategy
+
+The aleph-mediated coupling for two p-tube nucleons:
+
+- Single-particle: charge `Q ∝ σ_ta · σ_at` (R62 D5, unchanged).
+  σ_aS doesn't enter at single-particle level *if* the
+  Schur-complement structure separates the time and spatial S
+  coordinates.  This is testable.
+- Two-particle: the cross-coupling between two p-tube modes via
+  aleph and S spatial introduces an effective `σ_ta · σ_aS`
+  coupling at second order.  This is the candidate strong-force
+  channel.
+
+### Phases
+
+**Phase 8a — Augment R60 model-F metric with σ_aS, test α
+universality.**
+
+1. Build augmented metric: R60 model-F baseline + σ_aS at
+   G[ℵ, S_x], G[ℵ, S_y], G[ℵ, S_z] symmetrically.
+2. Sweep σ_aS over its signature-preserving range.
+3. Compute α_Coulomb across the same 10 model-F inventory modes
+   used in Phase 7e.
+4. Check if α stays at baseline value (within 10⁻⁶) for any
+   non-trivial σ_aS, OR derive the constraint σ_aS must satisfy
+   to preserve universality.
+
+**Decisive criterion**: if α-universality holds for σ_aS in some
+non-zero range, hub-and-spoke is *consistent* with the EM sector.
+If α is perturbed by any non-zero σ_aS, the architectural
+hypothesis fails for the simple form, and a structural
+prescription (analogous to σ_ra's `(s·ε)·σ_ta`) would be required.
+
+**Phase 8b — Compute V(r) under aleph-mediated coupling.**
+
+If 8a passes:
+
+1. At an α-preserving σ_aS value, derive V(r) for two-nucleon
+   compounds (pp, pn, nn) following Phase 7c's machinery but
+   with the cross-coupling computed from the augmented 11D
+   metric's Schur decomposition rather than direct p-S.
+2. Find the σ_aS value that produces a trough at r ≈ 1 fm with
+   depth in the 40–60 MeV range.
+3. Check pn vs pp preference (still expected from Ma side).
+4. Compare to Phase 7c's σ_t = −116.1 result.  If σ_aS lands at a
+   structurally-natural value (e.g., σ_aS = √α, or some
+   α-derived magnitude), hub-and-spoke is *strongly supported*.
+   If σ_aS needs to be empirically large like σ_pS_tube did,
+   the architectural choice is neutral on physics but cleaner
+   structurally.
+
+**Phase 8c (optional) — Schrödinger validation.**
+
+If 8b lands a viable V(r), repeat Phase 7d's Schrödinger
+calculation with the new V(r).  Same diagnostic as before: B(²H),
+a_t, a_s.  The polynomial-vs-Yukawa concern from 7d may persist
+or may not, depending on whether the aleph-mediated form differs
+from the direct-coupling polynomial form.
+
+### Success / failure criteria
+
+| Outcome | Interpretation |
+|:---|:---|
+| 8a passes (σ_aS preserves α) AND 8b produces trough at strong-force magnitude | **Hub-and-spoke confirmed for both EM and strong.**  Strong force is aleph-mediated at large σ_aS.  Cross-sheet entries truly zero by structure. |
+| 8a passes, 8b doesn't produce trough at any σ_aS magnitude | **Hub-and-spoke confirmed for EM only.**  Aleph mediation is consistent with EM but cannot carry the strong sector at the metric level.  Strong force pivots to propagator-based formalism (pool **m** Route B). |
+| 8a fails (σ_aS perturbs α) | Hub-and-spoke needs refinement (σ_aS requires structural prescription, like σ_ra's), OR aleph-S coupling is structurally forbidden.  R64 Phase 7e's framing of the strong-coupling-must-have-structure question generalizes to σ_aS. |
+| **σ_aS at α-magnitude reproduces the missing magnetic vector potential AND no strong trough emerges at any σ_aS** | **Cleanest architectural outcome.**  Aleph mediates EM completely (both time-component Coulomb via σ_at and spatial-component magnetic via σ_aS).  Strong force is structurally NOT a metric off-diagonal — it requires propagator physics (massive mediator, Yukawa).  This reading is consistent with Phase 7b's proof that pure-metric formalisms can't produce Yukawa form, and with Phase 7d's polynomial-form pathology.  Forces R64 to pivot strong-force formalism to pool **m** Route B (propagator-based), but completes EM with the magnetic vector potential MaSt was structurally missing. |
+
+### Reusable assets
+
+- R60's `build_aug_metric` (the model-F baseline) — already exists.
+- Phase 7e's α-universality test infrastructure — already exists,
+  modify to add σ_aS instead of σ_pS_tube.
+- Phase 7c's V(r) extraction — needs adaptation to compute via
+  aleph-mediated path rather than direct sheet-S.
+
+### Outputs
+
+- `outputs/track8_phase8a_alpha_universality.csv` — σ_aS sweep,
+  α/α₀ across modes.
+- `outputs/track8_phase8b_potential_curves.png` — V(r) for pp,
+  pn, nn at the α-preserving σ_aS.
+- `findings-8.md` — full Phase 8a + 8b writeup.
+
+### Why this matters for R64 and R62
+
+Phase 8 is small (single-script extension of 7e infrastructure)
+and decisive (gates the architectural choice between hub-and-spoke
+and direct-cross-coordinate prescriptions).  Running it before
+either Yukawa pivot (7c pool **m**) or σ_pS_tube structural
+prescription (7c pool **j**) prevents committing months of work
+to either route until the architectural choice is settled.
+
+If hub-and-spoke is supported, the R62 derivation roadmap
+(`STATUS.md`) collapses meaningfully: cross-sheet σ entries
+become zero by structure (Obstacle 1 closed), strong-force
+coupling becomes σ_aS derivation (Obstacle 2 simplified), aleph
+existence becomes mandatory (Obstacle 3 closed).  The architectural
+simplification flows back into the broader derivation program.
 
 ---
 
