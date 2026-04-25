@@ -292,6 +292,18 @@ it may be derivable from macro-scale observables, or it may be
 an independent parameter.  We leave this aside unless the Maxwell
 or G derivations require it.
 
+A sharper, computable version of this question: **is the
+hexagonal junction rule invariant under block-spinning?**  Take
+the hex lattice (or its triangular dual) and coarse-grain by
+2× or 4× — do the effective junction-scattering rule, the
+effective ζ, and the effective coupling come back at the same
+fixed-point values, or do they flow with scale?  If invariant,
+the holographic windowing structure recurs at every scale rather
+than living only at L_P, and the framework is an RG fixed point
+of its own substrate.  This is a concrete numerical experiment
+on `sim-maxwell`-style dynamics, not a derivation question, and
+would put empirical teeth on the windowing intuition.
+
 **Q2. Are ζ and α related?**
 
 Both are treated as independent inputs.  It is conceivable that
