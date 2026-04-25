@@ -1233,26 +1233,44 @@ Two structural questions, both computable directly:
 "ribbon overlap" geometric criterion is wrong (would forbid the
 proton); R60 T16's U₂ saturates at −3 for *every* Z₃-coherent N = 6
 arrangement, including Pauli-saturated.  The framework's existing
-mechanism does not derive a deuteron binding.
+mechanism does not derive a deuteron binding at leading order.
 
-See [findings-10.md](findings-10.md) Phase 10a.
+A modeling correction was applied (F10a.4b): the original
+"Pauli spin-π = Z₆ phase shift" mapping was unjustified —
+`ρ_Q = |ψ|²` is independent of m_s, so spin is an orthogonal
+label in the back-reaction, not a phase rotation.  Under the
+corrected spin-orthogonal interpretation, the Pauli-saturated
+configuration's phase profile is "doubled Z₃" rather than Z₆,
+and higher harmonics push it in the **wrong direction** for
+binding (more positive U_m than two free triplets at every
+m = 3k).  The phase-coherence channel of `ρ_Q` is exhausted
+for binding.
+
+See [findings-10.md](findings-10.md) Phase 10a (F10a.4b
+correction).
 
 ### Decision pending
 
 Three readings of Phase 10a, choice belongs to user/reviewer:
 
-- **Reading A** — Honest closure: framework's rigidity exhausted at
-  N = 3; binding requires framework extension.  R63 closes here.
-- **Reading B** — Extend R60 T16's density-cancellation argument to
-  higher harmonics (φ³, φ⁴ contributions to ρ_Q); a Phase 10b
-  derivation of effective coherence weights `w_m` from higher-order
-  back-reaction.  Stays in Ma; not a free-parameter fit.
-- **Reading C** — Binding belongs to S-space configuration energy
-  (T8 FR-4 second bullet); R63 documents the closed Ma-internal
-  exhaustion and defers binding to a successor study.
+- **Reading A** — Honest closure: phase-coherence channel of
+  `ρ_Q` is exhausted; binding requires framework extension or
+  different physics.  R63 closes here.
+- **Reading B (revised)** — Exchange-interaction channel: D7d's
+  antisymmetric Slater determinant for the 6-fermion Pauli-
+  saturated state contains exchange terms (with fermion sign
+  factors) that the classical U_m sum does not capture.
+  Phase 10b evaluates these on the antisymmetrized state
+  using D7d's existing spinor machinery.  Stays in Ma; no new
+  postulates.
+- **Reading C** — Binding belongs to S-space configuration
+  energy (T8 FR-4 second bullet); R63 documents the closed
+  Ma-internal exhaustion and defers binding to a successor
+  study.
 
-If Reading B is selected, Phase 10b runs next.  Otherwise R63 closes
-with the binding observable as the explicit open question.
+If Reading B (revised) is selected, Phase 10b runs next.
+Otherwise R63 closes with the binding observable as the
+explicit open question.
 
 ### Exit criteria
 

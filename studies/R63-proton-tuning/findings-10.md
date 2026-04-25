@@ -171,6 +171,48 @@ The Pauli labelling (color × spin-π) maps the six strands onto
 does not break the U₂ tie because R60 T16's U₂ already saturates at
 −3 for any Z₃-coherent N = 6 arrangement.
 
+### F10a.4b. Modeling correction — spin does not enter the back-reaction phase
+
+The "Pauli spin-π Z₃×{0,π}" mapping in F10a.4 assumes the spin
+label enters R60 T16's back-reaction phase as a π shift, sending
+the Pauli-saturated 6 strands onto the Z₆ hexagon.  This
+assumption is not justified by R60 T16's derivation.
+
+R60 T16 uses charge density `ρ_Q = φ²`.  In Dirac–Kähler (and in
+standard QED), `|ψ|²` sums over spinor components and is
+**independent of m_s**.  Spin is an orthogonal quantum-number
+label to the spatial phase; it does not appear in `ρ_Q`'s
+harmonic decomposition.  The Pauli-saturated 6 strands occupy
+six distinct `(color, spin)` labels but only **three distinct
+color phases**, each with multiplicity 2.  The correct phase
+profile is **"doubled Z₃"** — the same as row `2×Z₃ inter=0°`
+in F10a.4's table — not the Z₆ hexagon.
+
+Re-reading F10a.4's table with corrected labels:
+
+| Arrangement | U₂ | U₃ | U₄ | U₆ |
+|:---|:-:|:-:|:-:|:-:|
+| **Pauli-saturated (= doubled Z₃)** | −3 | **+15** | −3 | **+15** |
+| Two independent Z₃ triplets (free baryons) | −3 | +6 | −3 | +6 |
+| Z₆ hexagon (geometric, no Pauli motivation) | −3 | −3 | −3 | +15 |
+
+The Pauli row matches what was previously labeled `2×Z₃ inter=0°`;
+the Z₆ row matches what was previously labeled "Pauli spin-π."
+
+At m = 2 the Pauli configuration is degenerate with two free
+triplets (both U₂ = −3), so F10a.3's leading-order conclusion is
+unchanged.  At m = 3, 6, 9, … the Pauli configuration has U_m =
++15 versus the two-free-triplet sum of +6 — the Pauli phase
+profile is **more positive** by 9 units at every m = 3k harmonic,
+i.e. **less stable**, not more.  Higher-order corrections to
+R60 T16's `ρ_Q`-coherence mechanism therefore push Pauli-saturation
+in the **wrong direction** for binding.
+
+This corrects the F10a.4 narrative: m = 3 does not "prefer Z₆,"
+because Z₆ is not the Pauli configuration under R60 T16's actual
+operator.  The genuine Pauli configuration loses to two free
+triplets at every higher harmonic.
+
 ### F10a.5. What Phase 10a establishes
 
 1. **The (1, 2) eigenmode on the curved p-sheet is computable and
@@ -182,71 +224,96 @@ does not break the U₂ tie because R60 T16's U₂ already saturates at
    itself.  Multiple modes can occupy the same spatial region when
    distinguished by quantum numbers.
 3. **R60 T16's 2ω back-reaction U₂ does NOT distinguish the
-   candidate N = 6 arrangements** — Z₆, 2×Z₃ at any inter-triplet
-   angle, and Pauli-spin-saturated all give U₂ = −3.  The framework's
-   actual binding-selection mechanism therefore yields *no* mass
-   difference between "deuteron Pauli-saturated compound" and "two
-   free protons + neutron".
-4. **Higher harmonics (m = 3, 4, 6) distinguish configurations but
-   give inconsistent orderings and have no framework-level reason
-   to dominate.**  Selecting one as the binding mechanism would be
-   an added postulate, not a derivation.
+   Pauli-saturated configuration from two free Z₃ triplets** —
+   both give U₂ = −3.  The framework's leading-order binding-
+   selection mechanism yields *no* mass difference between
+   "deuteron Pauli-saturated compound" and "two free nucleons."
+4. **Under the corrected spin-orthogonal modeling (F10a.4b),
+   higher harmonics push Pauli-saturation in the wrong
+   direction.**  At m = 3, 6, 9, … the Pauli phase profile
+   (= doubled Z₃) gives U_m = +15 versus +6 for two free
+   triplets, making it less stable rather than more.
+   Reading B as originally framed (higher-harmonic completion
+   of R60 T16's `ρ_Q`-coherence mechanism) cannot supply
+   binding — it makes the problem worse.
+5. **The phase-coherence channel of `ρ_Q` is exhausted.**  Any
+   Ma-internal binding mechanism must come from a different
+   operator — one that sees the spin labels directly, which
+   `ρ_Q` does not.
 
-### F10a.6. Reading on the Track 10 hypothesis
+### F10a.6. Reading on the Track 10 hypothesis (corrected)
 
 Track 10's framing ("Pauli-saturated coherence has lower mass than
-two independent triplets, deriving the deuteron binding without free
-parameters") **does not survive Phase 10a as posed**.  The framework's
-ω-cancellation rule treats Z₆ and 2×Z₃ identically, and Pauli-
-saturation maps onto Z₆ structurally.
+two independent triplets") is degenerate at the leading order of
+R60 T16's `ρ_Q`-coherence mechanism (m = 2) and is anti-binding
+at higher orders of the same mechanism (m = 3k).  The
+phase-coherence channel of `ρ_Q` is closed for binding under the
+corrected spin-orthogonal modeling.
 
-Three readings of this result are available; choosing among them is
-the user-and-reviewer call:
+The Track 10 framing is not falsified, however — it is redirected.
+Pauli-saturation is real (six distinct color-spin labels exist on
+a single tuple); R60 T16's `ρ_Q`-coherence operator simply does
+not see the spin labels and cannot reward Pauli structure.  A
+different operator that *does* see them is the natural next test.
 
-**Reading A (honest closure).**  The strong-force-in-Ma hypothesis
-is falsified at the level the framework currently supports.
-R60 T16's 2ω cancellation is rigid enough to select N = 3 (the
-proton) but degenerate at N = 6 (cannot select a unique deuteron
-configuration).  If the framework's existing rigidity is taken as
-authoritative, Track 10 closes the candidate-mechanism list, and
-"binding requires framework extension" (F9a.6) is now earned.
+Three readings remain:
 
-**Reading B (extend the cancellation rule).**  Promote the
-density-cancellation argument from "cancel 2ω" to "cancel an
-infinite tower".  Define an effective coherence energy
+**Reading A — honest closure.**  All Ma-internal mechanisms in
+the framework's current operator inventory have been exhausted
+for binding.  R63 closes with "binding requires framework
+extension or a different physics channel."
 
-<!-- U_eff = Σ_m w_m U_m -->
-$$
-U_{\text{eff}}(\{\phi_i\}) = \sum_{m \geq 2} w_m U_m(\{\phi_i\})
-$$
+**Reading B (revised) — exchange-interaction channel.**  D7d's
+per-sheet Dirac–Kähler structure provides an antisymmetric Slater
+determinant for N strand fermions on a single tuple.  The
+expectation value of the same `ρ_Q` operator on the
+antisymmetrized 6-fermion wavefunction (Pauli-saturated)
+contains exchange terms that the classical phase-coherence sum
+U_m does not capture — the U_m sum treats strands as classical
+phases, while the Slater determinant carries fermion sign
+factors that depend on color-and-spin label overlap.  These
+exchange contributions are computable from D7d's existing
+machinery without framework extension.  This is the natural
+Phase 10b in the corrected picture.
 
-with weights `w_m` to be derived from a higher-order analysis of
-ρ_Q at multi-mode interaction.  This is *not* a free-parameter fit —
-the weights would come from a re-derivation of R60 T16 carried to
-higher orders in φ.  It is a framework extension within Ma but
-beyond what currently exists.
-
-**Reading C (different physics).**  Nuclear binding is not in the
-phase-coherence channel of Ma at all.  The 2ω rule is exhausted at
-N = 3, and additional structure at N = 6 belongs to S-space (spatial
-configuration energy of nucleon centers) or to a yet-unidentified
-sheet-coupling term.  Track 9's framework-extension note in F9a.6
-is what's earned.
+**Reading C — different physics.**  Nuclear binding belongs to
+S-space configuration energy or a yet-unidentified sheet-coupling
+term.  Same as before; deferred to a successor study.
 
 ### F10a.7. What still wants computing
 
-If Reading B is pursued, the natural Phase 10b would derive `w_m`
-from a higher-order treatment of `ρ_Q = (Σ_i φ_i)²` for k coherent
-strands — the cross-terms produce harmonics beyond 2ω whose
-back-reaction *is* in principle computable from the same framework
-that produced R60 T16, just at higher order in the φ expansion.
+Under Reading B (revised), Phase 10b evaluates `ρ_Q` (or another
+appropriate operator) on the antisymmetrized 6-fermion Slater
+determinant of (color, spin) labels and compares to the
+two-disjoint-3-fermion-Slater configuration.  The mechanical
+steps:
 
-If Reading A or C is accepted, Track 10 closes here with the
-finding that *no Ma-internal mechanism currently in the framework
-supplies a binding-energy distinction at k = 6 strands*.
+1. Construct the 6-fermion Slater determinant from labels
+   `(c, s) ∈ {R, G, B} × {↑, ↓}` on the single (1, 2) primitive
+   spatial wavefunction.
+2. Compute `⟨Ψ_6 | Ô | Ψ_6⟩` for the relevant operator(s); the
+   exchange terms (with fermion sign factors from
+   antisymmetrization) appear here but not in the classical
+   U_m sum.
+3. Compute the same expectation value on two disjoint
+   3-fermion Slater determinants (each of which is the
+   proton's Z₃ singlet structure).
+4. Difference is the candidate binding contribution.  Compare
+   to deuteron 2.22 MeV.
 
-**Phase 10a status: complete.**  Decision on Reading A vs. B vs. C
-is the next conversation step, not a unilateral closure.
+This stays inside the existing framework (D7d for spinors,
+R60 T16 for the operator).  No new postulates.
+
+If Reading B (revised) also returns degenerate or wrong-sign,
+Reading A is earned: no Ma-internal mechanism currently in the
+framework distinguishes Pauli-saturated 6-fermion compounds
+from disjoint 3-fermion compounds, and binding requires either
+S-space machinery (Reading C) or a structural extension
+(F9a.6's open-question status).
+
+**Phase 10a status: complete (with F10a.4b correction).**
+Decision on Reading A vs. B-revised vs. C is the next
+conversation step.
 
 ---
 
