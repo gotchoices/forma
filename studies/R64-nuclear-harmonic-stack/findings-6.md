@@ -273,15 +273,31 @@ configuration changes.
 
 ## Status
 
-**Phase 6a complete.  Tool framework operational; baseline
-hypotheses tested.**
+**Phase 6a complete.  Track 6 PAUSED.**
 
-The structural picture matches what Tracks 3 and 5 already showed:
-R64-Ma + Coulomb gives roughly right valley but wrong binding
-magnitude (Coulomb double-counts at Point B).  Need either:
-- Joint refit at Point C with explicit Coulomb (matches Track 5)
-- Plus surface-like term for Fe peak
-- Plus shell-closure bonuses for fine corrections
+After review with the user (referencing
+[primers/nuclear-scaling.md](../../primers/nuclear-scaling.md)
+for the standard-physics view of nuclear shell structure):
 
-Track 6 will continue if the user wants to explore Phase 6b
-hypotheses.  The tool is ready.
+Track 6's tool is **structurally a re-derivation of SM nuclear
+shell physics with MaSt labels** — not novel.  Magic numbers,
+SOC shell structure, and the Fe peak's smooth-curve mechanism
+are well understood in standard physics.  R64 doesn't need to
+re-derive them.
+
+**What Track 6's tool can do** (saved for potential later use):
+- Test arbitrary slot configurations (orderings, capacities) for
+  cumulative magic-A alignment.
+- Compute predicted nuclear binding curves under R64-Ma + optional
+  Coulomb + optional shell-closure bonuses.
+- Compute predicted valley of stability (Z/A vs A) at any
+  configuration.
+
+**When to come back to it**: if downstream MaSt work produces
+specific shell-structure predictions that need to be tested
+against observed magic numbers, the framework is ready.  Until
+then, Track 6 stays paused.
+
+The natural successor work — what's NOVEL for MaSt — is to
+derive the strong force itself (its strength and r-dependence)
+from MaSt's geometric structure.  This is taken up in Track 7.
