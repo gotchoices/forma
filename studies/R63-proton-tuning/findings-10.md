@@ -317,6 +317,150 @@ conversation step.
 
 ---
 
+## Phase 10b — Slater-determinant exchange-interaction verification
+
+**Hypothesis (Reading B-revised).**  D7d's per-sheet Dirac–Kähler
+construction provides an antisymmetric Slater determinant for the
+Pauli-saturated 6-fermion state on a single (1, 2) p-sheet
+primitive.  The expectation value of R60 T16's U_m operator on
+this antisymmetrized state may include exchange contributions
+that the classical phase-coherence sum F10a.4 doesn't capture.
+
+Script:
+[`scripts/track10_phase10b_slater_exchange.py`](scripts/track10_phase10b_slater_exchange.py) ·
+Outputs:
+[`outputs/track10_phase10b_slater_exchange.csv`](outputs/track10_phase10b_slater_exchange.csv) ·
+[`outputs/track10_phase10b_spin_color.csv`](outputs/track10_phase10b_spin_color.csv)
+
+### F10b.1. Slater-determinant U_m equals the classical doubled-Z₃ sum
+
+Computing `⟨Ψ_6 | U_m | Ψ_6⟩` via the Slater-Condon two-body rule
+on the Pauli-saturated 6-fermion state with labels
+`{R↑, R↓, G↑, G↓, B↑, B↓}` (all sharing the (1, 2) spatial mode):
+
+| m | Slater (quantum) | classical doubled-Z₃ | two free Z₃ triplets | Pauli − two free |
+|:-:|:-:|:-:|:-:|:-:|
+| 2 | −3.0000 | −3.0000 | −3.0000 | +0.0000 |
+| 3 | +15.0000 | +15.0000 | +6.0000 | +9.0000 |
+| 4 | −3.0000 | −3.0000 | −3.0000 | +0.0000 |
+| 6 | +15.0000 | +15.0000 | +6.0000 | +9.0000 |
+
+The quantum Slater value matches the classical doubled-Z₃ sum at
+every harmonic.  **The exchange contribution is identically zero**
+for label-diagonal operators like U_m.  This is a direct
+consequence of Slater-Condon: a two-body operator V that doesn't
+change labels under action gives ⟨ij|V|ji⟩ matrix elements that
+cancel the direct contribution's swap-sign, leaving only the
+direct sum.
+
+F10a.4b's analysis is now confirmed quantum-mechanically: the
+Pauli-saturated configuration is degenerate with two free
+triplets at m=2 and **less stable** by 9 units at m=3k harmonics.
+
+### F10b.2. The exchange-interaction channel does not supply binding
+
+Reading B-revised's hypothesis — that antisymmetrization gives
+exchange contributions beyond the classical U_m sum — is
+falsified for R60 T16's ρ_Q-coherence operator.  The reason is
+structural: R60 T16's operator is label-diagonal (depends on
+color phases, not on label identity), and label-diagonal
+operators have zero Slater-Condon exchange.
+
+The Pauli structure does set the *occupied label set* (forces
+six distinct color-spin labels at k=6 saturation), but does not
+re-weight the energy expectation value of operators that only
+see the color phase — including R60 T16's existing operator.
+
+### F10b.3. Spin-dependent operators distinguish, but lie outside R60 T16
+
+A side calculation tested the mixed spin-color operator
+`Σ_{i<j} σ_z(i) σ_z(j) cos(m(c_i − c_j))` on three reference
+configurations:
+
+| m | Pauli-saturated | aligned spins | separated spins |
+|:-:|:-:|:-:|:-:|
+| 2 | −3 | −3 | −3 |
+| 3 | −3 | +15 | −3 |
+| 4 | −3 | −3 | −3 |
+| 6 | −3 | +15 | −3 |
+
+This operator distinguishes Pauli-saturated/separated (both at −3)
+from aligned-spin (at +15) at the higher harmonics.  Spin-coupled
+operators have non-trivial expectation values on different label
+arrangements.  But none of these operators appears in R60 T16's
+derivation, which uses only `ρ_Q = |ψ|²` — spin-blind by
+construction.  Promoting R60 T16 to a spin-coupled operator
+would be a framework extension (a new term in the Lagrangian),
+not a completion of the existing one.
+
+### F10b.4. What Phase 10b establishes
+
+1. **The exchange-interaction channel via R60 T16's operator is
+   exhausted.**  Slater-Condon gives no exchange contribution
+   for label-diagonal V, and U_m is label-diagonal.  The
+   Pauli-saturated state's expectation value equals the
+   classical doubled-Z₃ result identically.
+2. **Reading A is earned within the framework's existing
+   operator set.**  No Ma-internal mechanism currently in MaSt
+   distinguishes Pauli-saturated 6 strands from two free Z₃
+   triplets in the binding direction; in the higher-harmonic
+   direction the distinction has the wrong sign.
+3. **Spin-coupled operators COULD distinguish, but require
+   framework extension.**  The closest in-framework option
+   (Reading B-extended) is to add a spin-coupled term to R60
+   T16's back-reaction.  This is a structural extension of
+   the Lagrangian, not a re-evaluation of an existing
+   calculation.
+4. **The deuteron-binding question is now decisively outside
+   R63's refinement scope.**  The "g-candidate" model — Q132
+   v2 + ingredient-sum charge + additive nuclear composition +
+   β-decay-consistent neutron — refines model-F's discipline
+   but does not derive nuclear binding.  Binding is a separate
+   research target.
+
+### F10b.5. Successor-study directions
+
+Three concrete directions for future work, all outside R63:
+
+**Reading B-extended** — add a spin-coupled back-reaction
+operator to R60 T16.  Would derive the operator from the same
+Dirac–Kähler structure that gives D7d's spin (so it's not a
+free-postulate addition), and re-run the Pauli-saturation
+calculation with the extended operator.  Sits in Ma; framework
+extension required.
+
+**Reading C** — model the S-space configuration energy of
+spatially-separated nucleons.  Would import standard nuclear-
+force phenomenology (Yukawa pion exchange, etc.) into the
+spacetime side of MaSt; aligns with how SM treats binding.
+Larger scope; reinvents some SM machinery.
+
+**Reading D (new)** — vacuum polarization of the p-sheet by
+multi-baryon compound modes.  Multi-strand compounds polarize
+the p-sheet's other modes (mesonic excitations); the
+back-reaction is a one-loop / many-mode effect, not a tree-
+level KK mass.  Conceptually a closer analog of pion-exchange
+binding in nuclei.  Substantial framework extension.
+
+R63 closes here with respect to nuclear binding.  The
+g-candidate model is the deliverable; the binding mechanism
+remains an open Ma-extension target for a successor study.
+
+---
+
+## Status
+
+**Phase 10b complete.**  Slater-determinant exchange-interaction
+channel verified to give zero contribution beyond the classical
+sum for R60 T16's existing operator.  Reading A is earned within
+the framework's current operator inventory.
+
+Track 10 closes; R63 closes with respect to nuclear binding.
+The three successor-study directions (B-extended, C, D) are
+all framework extensions that fall outside R63's scope.
+
+---
+
 ## Antimatter vs "complementary" — clarification before any 10b
 
 The user asked, before approving Phase 10b, how a Pauli-saturated

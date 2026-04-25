@@ -1,21 +1,23 @@
 # R63: Proton-sheet tuning — disciplined audit and sweep
 
-**Status:** Tracks 1–8 complete.  Track 9 complete: phases 9a
-(linear cross-shear dressing), 9b (non-additive deuteron tuple
-search), and 9c (mass-formula validity at high n_pt) each
-falsified their respective candidate mechanisms cleanly.
-**Track 10 active.**  The reviewer reframed Phase 9d as a
-dedicated track around Pauli-saturated multi-strand coherence
-(3 colors × 2 spins = 6 strand capacity per p-sheet tuple).
-Phase 10a executed: the (1, 2) eigenmode geometry on the curved
-p-sheet is characterized (FWHM ≈ 83°), but R60 T16's 2ω
-back-reaction U₂ does not distinguish Z₆, 2 × Z₃, or Pauli-
-saturated arrangements at N = 6 — all give U₂ = −3.  Higher
-harmonics distinguish inconsistently and lack framework
-selection.  **Pending decision** between Reading A (close R63;
-binding requires framework extension), B (extend R60 T16 to
-higher harmonics), or C (binding belongs to S-space).
-See [findings-10.md](findings-10.md).
+**Status:** Tracks 1–10 complete.  Track 9 (linear cross-shear
+dressing 9a, non-additive deuteron tuple search 9b, mass-formula
+validity 9c) and Track 10 (Pauli-saturated multi-strand coherence:
+phase coherence 10a, Slater-determinant exchange 10b) each
+falsified their respective Ma-internal binding-mechanism
+candidates cleanly.
+
+**R63 closes with respect to nuclear binding (Reading A
+earned).**  All four Ma-internal mechanisms tested fail
+within the framework's existing operator inventory: linear
+cross-shear dressing cancels structurally, non-additive
+deuteron tuples don't exist at the right baryon count, the
+√-quadratic mass formula has no high-winding correction, R60
+T16's m=2 back-reaction is degenerate at N=6, and Slater-
+determinant exchange contributes zero for label-diagonal
+operators.  Three successor-study directions remain (B-extended,
+C, D — see Track 10 section); none falls within R63's scope.
+See [findings-9.md](findings-9.md), [findings-10.md](findings-10.md).
 R63 is developing the **g-candidate** — the
 evolving parameter set and rule set that is intended to become
 model-G if and when it demonstrates clear superiority over
@@ -1249,28 +1251,66 @@ for binding.
 See [findings-10.md](findings-10.md) Phase 10a (F10a.4b
 correction).
 
-### Decision pending
+### Phase 10b — Slater-determinant exchange-interaction verification (EXECUTED)
 
-Three readings of Phase 10a, choice belongs to user/reviewer:
+Computed `⟨Ψ_6 | U_m | Ψ_6⟩` via Slater-Condon two-body rule on
+the Pauli-saturated 6-fermion state with labels
+`{R↑, R↓, G↑, G↓, B↑, B↓}` sharing the (1, 2) spatial mode.
 
-- **Reading A** — Honest closure: phase-coherence channel of
-  `ρ_Q` is exhausted; binding requires framework extension or
-  different physics.  R63 closes here.
-- **Reading B (revised)** — Exchange-interaction channel: D7d's
-  antisymmetric Slater determinant for the 6-fermion Pauli-
-  saturated state contains exchange terms (with fermion sign
-  factors) that the classical U_m sum does not capture.
-  Phase 10b evaluates these on the antisymmetrized state
-  using D7d's existing spinor machinery.  Stays in Ma; no new
-  postulates.
-- **Reading C** — Binding belongs to S-space configuration
-  energy (T8 FR-4 second bullet); R63 documents the closed
-  Ma-internal exhaustion and defers binding to a successor
-  study.
+**Result**: Slater-determinant expectation value equals the
+classical doubled-Z₃ sum at every harmonic (m = 2, 3, 4, 6).
+The exchange contribution is identically zero for label-diagonal
+operators like R60 T16's U_m — Slater-Condon gives no new
+contribution beyond the direct sum.  Reading B-revised
+(exchange-interaction channel) is therefore falsified within the
+existing operator inventory.
 
-If Reading B (revised) is selected, Phase 10b runs next.
-Otherwise R63 closes with the binding observable as the
-explicit open question.
+A side survey of spin-coupled operators (e.g., σ_z(i)σ_z(j)·cos
+(m·Δφ_color)) confirmed that operators with spin dependence DO
+distinguish configurations — but no such operator is part of R60
+T16's existing Z₃ derivation, so adding one is framework
+extension rather than completion.
+
+See [findings-10.md](findings-10.md) Phase 10b.
+
+### Track 10 closes — Reading A is earned
+
+All three Ma-internal candidates for the binding mechanism have
+been tested and falsified:
+
+- **Phase 9a** — linear cross-shear dressing: structural
+  cancellation under additivity.
+- **Phase 9b** — non-additive bound-state tuples: no lighter
+  v2-compatible candidate exists at the deuteron's structural
+  baryon count.
+- **Phase 9c** — high-winding mass-formula corrections:
+  μ-additivity exact to double precision; no hidden
+  high-winding term.
+- **Phase 10a** — Pauli-saturated phase coherence under R60
+  T16's m=2 mechanism: degenerate at leading order.  Higher
+  harmonics push wrong direction (F10a.4b).
+- **Phase 10b** — Slater-determinant exchange-interaction
+  channel: zero contribution for label-diagonal R60 T16
+  operator.
+
+The framework's existing Ma-domain operator set (`ρ_Q`-coherence)
+cannot supply nuclear binding at k = 6 by any of the four
+mechanisms tested.  R63 closes with respect to nuclear binding;
+**Reading A is the honest verdict**.
+
+### Three successor-study directions (out of R63 scope)
+
+- **Reading B-extended** — Add a spin-coupled back-reaction
+  operator derived from D7d's Dirac–Kähler spinor structure.
+  Stays in Ma; framework extension required.
+- **Reading C** — Model S-space configuration energy of
+  spatially-separated nucleons.  Aligns with standard nuclear
+  phenomenology; substantial new machinery.
+- **Reading D (new)** — Vacuum polarization of the p-sheet by
+  multi-baryon compounds (one-loop / many-mode back-reaction
+  rather than tree-level KK mass).  Conceptually closer to the
+  SM's pion-exchange binding picture.  Substantial framework
+  extension.
 
 ### Exit criteria
 
