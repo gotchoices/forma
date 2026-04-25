@@ -347,11 +347,57 @@ premise: the geometric reality of charge IS in Ma, but the
 
 ---
 
-## Track pool (after Track 5)
+## Track 6 — Flexible slot-configuration tool for shell-structure hypotheses
 
-Reordered and cleaned up after Track 4's lesson.  Items lettered
-(not numbered) so that selection from the pool can flex with
-findings.  Obsolete pool items have been removed.
+**Status: Phase 6a complete; Phase 6b open.**
+
+Track 6 (revised after the previous mass-ordering iteration was
+abandoned per user direction) builds a computational tool for
+testing nuclear-shell-structure hypotheses against observed
+nuclear physics, with no commitment to a specific MaSt
+interpretation.  Each hypothesis is a **slot configuration**:
+which (n_t, n_r) primitives serve as slots, the order in which
+slots fill, the per-slot capacity per isospin, and any optional
+additions (Coulomb, surface, shell-closure bonuses).  The tool
+reports magic-A alignment, binding-curve fitness, and valley-of-
+stability prediction.
+
+Working under interpretation B3: each slot holds nucleons of one
+isospin (proton or neutron, not mixed), with Pauli capacity 2 per
+slot.  Magic numbers are per-isospin.
+
+**Phase 6a tested three baseline hypotheses**:
+- H1 (mass-ordered, no Coulomb): bulk binding curve fits 18%
+  mean error but **valley wrong direction** (predicts proton-rich
+  heavy nuclei).
+- H2 (+ Coulomb): valley **correct direction** (Z/A drops from
+  0.50 to 0.29 with A) but Coulomb double-counts at Point B,
+  binding magnitude breaks (mean error 42%).
+- H4 (+ shell-closure bonuses): bonuses are subleading; doesn't
+  produce Fe peak.
+
+**Key Phase 6a findings**:
+- Tool framework is operational.
+- Adding S-Coulomb gives the right valley direction; need joint
+  refit to fix magnitude (= Track 5 Point C).
+- Shell-closure bonuses are subleading to bulk binding.
+- Fe peak still not produced under any tested hypothesis (surface
+  is missing).
+
+See [findings-6.md](findings-6.md).
+
+**Phase 6b candidates**: refit Point B → Point C with explicit
+Coulomb in the tool's mass evaluation; test (1, ±1) exclusion
+per user hint; test SOC nuclear-shell-model sequence as a
+user-provided slot ordering; add surface term and check if Fe
+peak emerges.  All directly supported by the tool.
+
+---
+
+## Track pool (after Track 6)
+
+Items lettered for flexible selection.  Obsolete pool items
+removed; remaining items in priority order.
 
 **a. Light-A deviation diagnosis.**  Even with Coulomb added,
 R64 may over-bind light nuclei (⁴He at 22%, ¹²C at 13% in Track
