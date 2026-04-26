@@ -666,6 +666,194 @@ simplification flows back into the broader derivation program.
 
 ---
 
+## Track 9 — σ_pS structural-prescription search via universality constraint
+
+**Status: framed; pending execution.**
+
+**Premise.**  Phase 7e showed that a *single-parameter* σ_pS_tube
+addition to the metric perturbs α universality mode-dependently.
+Phase 8c showed that aleph-mediated σ_aS produces an α-suppressed
+effective coupling too weak for the strong force.  Both are
+honest negative results within their narrow scopes — but neither
+exhausts the question of whether a **structurally prescribed**
+direct sheet-S coupling can preserve α while delivering
+strong-force-magnitude effective coupling.
+
+R60 T7 set the precedent: σ_ra (ring↔aleph) appeared to break α
+universality at first.  Solving the universality constraint
+algebraically gave the structural prescription
+**σ_ra = (s · ε) · σ_ta** — and at that prescription α stayed
+universal.  The same machinery, applied to σ_pS, may or may not
+admit an analogous prescription.  Track 9 does the systematic
+search.
+
+If a prescription exists, the metric carries the strong sector
+directly without auxiliary dimensions or propagator formalism.
+If none exists, we have a clean falsification — the strong force
+genuinely sits outside the metric, and Q135's hub-and-spoke
+principle is fully earned.
+
+### Goal
+
+Find σ_pS_tube as an explicit function of other R60 metric
+entries (σ_ta, σ_at, σ_ra, ε_p, s_p, possibly more) such that:
+
+1. α universality is preserved across the full inventory.
+2. The function is non-trivial (σ_pS_tube ≠ 0 at general
+   parameters).
+3. At the working metric values, σ_pS_tube reaches a magnitude
+   sufficient to produce a strong-force NN potential trough
+   (per Phase 7c's reference: depth ~50 MeV at r ~ 1 fm).
+
+If all three pass: the strong force lives in the metric via a
+structural prescription, and direct sheet-S coupling is
+architecturally legitimate.  If any fails, the negative result
+narrows the structural options for where the strong force lives.
+
+### Strategy
+
+Phase 7e provided the data: σ_pS_tube perturbs α by mode-dependent
+quadratic factors.  The shifts have specific structure
+(electron up, proton down, etc.) that any prescription must
+cancel.
+
+The universality constraint is algebraic.  For each inventory
+mode `i` with windings `n_i`, demand `α_i(σ_pS_tube, ...) =
+α_baseline` to all orders in σ_pS_tube.  This gives a system of
+equations.  Solving for σ_pS_tube as a function of the other
+entries finds the prescription if one exists.
+
+R60 T7 did this for σ_ra and got a closed-form result.  For
+σ_pS_tube, the answer is unknown until the calculation is done.
+
+### Phases
+
+**Phase 9a — Algebraic universality constraint.**
+
+Set up `α_Coulomb(mode, augmented metric)` symbolically with σ_pS
+as a free variable.  Expand to second order in σ_pS.  Demand
+α stays at baseline across the 10-13 inventory modes.  Output:
+a system of constraint equations on σ_pS as a function of other
+entries.
+
+**Phase 9b — Solve for the prescription.**
+
+Two cases:
+
+- **Single-parameter solution exists**: σ_pS = f(σ_ta, σ_at,
+  σ_ra, ε_p, s_p) — explicit formula that preserves α.
+  Track 9 succeeds at this phase.
+- **Single-parameter doesn't suffice**: enumerate companion
+  entries (σ_pS_ring, modifications to σ_ra, etc.) and re-solve
+  the larger system.  Either find a multi-parameter prescription
+  or conclude none exists.
+
+If the system is over-constrained (no consistent solution exists
+across all inventory modes), the prescription doesn't exist —
+direct sheet-S coupling is fundamentally incompatible with α
+universality.  Q135 hub-and-spoke is then fully earned.
+
+**Phase 9c — Numerical validation.**
+
+If 9b found a prescription:
+
+1. Plug into augmented metric.
+2. Verify α universality numerically across the 13-mode inventory
+   (target: same machine-precision as Phase 8b's locus).
+3. Compute V(r) using the prescribed σ_pS at R64 Point B
+   parameters with corrected two-body kinematics (Phase 7c
+   convention, A_kin = 4·(ℏc)²).
+4. Check whether the resulting trough has Phase 7c-magnitude
+   depth (~50 MeV) at physical r (~1 fm).
+
+**Phase 9d (conditional) — Schrödinger validation.**
+
+If 9c lands a viable V(r), repeat Phase 7d's calculation with
+the new V(r): B(²H), a_t, a_s.  Compare to observation.  Same
+diagnostic that exposed Phase 7c's limitations may apply here
+too.
+
+### Acceptance criteria
+
+| # | Criterion | Status |
+|:-:|:---|:---|
+| 1 | Universality-preserving prescription σ_pS = f(other entries) found | Phase 9b gates this |
+| 2 | Prescription is non-trivial (not σ_pS ≡ 0) | Phase 9b checks |
+| 3 | At working parameters, prescribed σ_pS reaches Phase 7c magnitude | Phase 9c |
+| 4 | Resulting V(r) matches Phase 7c's trough at intermediate r | Phase 9c |
+| 5 | (optional) Schrödinger observables land within band | Phase 9d |
+
+### Possible outcomes
+
+**Outcome A — Prescription found, delivers strong force.** σ_pS
+gets a closed-form derivation analogous to σ_ra.  Strong force
+emerges from the metric without new dimensions or propagator
+machinery.  Hub-and-spoke is generalized: any metric off-diagonal
+is allowed if it has the right structural prescription.
+
+**Outcome B — Prescription found, but at uninteresting magnitude.**
+σ_pS gets a formula, but plugging in the working parameters gives
+a value too small for strong-force coupling (analogous to Phase
+8c's α-suppression).  The metric carries the structural symmetry
+but not the dynamical magnitude — strong force still requires
+elsewhere.
+
+**Outcome C — No prescription exists.**  The universality
+constraint is over-determined.  Direct sheet-S coupling is
+fundamentally incompatible with α universality at any
+prescription.  Q135 hub-and-spoke is fully earned, and the
+strong force is structurally not in the metric — propagator-
+based formalism (R64 pool m) becomes the unavoidable next path.
+
+**Outcome D — Partial / multi-parameter prescription.**  Several
+companion entries needed (σ_pS, σ_pS_ring, etc., jointly
+constrained).  Track 9 succeeds but with a richer architecture
+than R60 T7's single σ_ra prescription.
+
+Each outcome is informative; no single result aborts the
+study.
+
+### Why this is the right next track
+
+You stated a preference for keeping the strong force inside the
+metric formalism (no auxiliary dimensions, no propagator
+machinery).  Track 9 is the **only systematic test** of whether
+that's possible.  Phase 7e tested a single un-prescribed σ_pS
+and found it broke α — but didn't try to find the right
+prescription.  Phase 8c tested aleph-mediation and found it too
+weak — but ruled in the *direct* path only by ruling out the
+*aleph-mediated* path.  Track 9 closes this gap by going after
+the direct path with the systematic constraint solver R60 T7
+established as standard.
+
+The work is bounded — single algebraic study with closed-form
+output (or proof of non-existence).  R60 T7's σ_ra precedent
+suggests the methodology works.  The only unknown is what the
+prescription looks like (if any).
+
+### Reusable assets
+
+- R60 T7's σ_ra derivation as the methodological template.
+- R60 Track 12's α-extraction infrastructure (already used
+  in 7e and 8a/8b/8c for sweeping).
+- Phase 7e's mode-by-mode α-shift data as the constraint
+  input.
+- Phase 7c's V(r) machinery (with corrected two-body
+  kinematics from Phase 8c) for the numerical test if 9b
+  succeeds.
+
+### Outputs
+
+- `outputs/track9_phase9b_prescription.txt` — the σ_pS
+  formula or proof of non-existence.
+- `outputs/track9_phase9c_universality_check.csv` —
+  numerical verification of universality at prescription.
+- `outputs/track9_phase9c_potential_curves.png` — V(r)
+  at prescribed σ_pS, comparison to Phase 7c reference.
+- `findings-9.md` — full Phase 9a/9b/9c writeup.
+
+---
+
 ## Track 6 — Flexible slot-configuration tool for shell-structure hypotheses
 
 **Status: Phase 6a complete; Track PAUSED.**
