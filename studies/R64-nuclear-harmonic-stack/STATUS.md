@@ -58,11 +58,17 @@ letter-keyed items; pull in any order.  Current priorities (per
 recent discussion):
 
 **Force completion (goal 1):**
-- **u**. Weak force from e-sheet → S coupling (top priority).
+- ~~**u**~~. Weak force from e-sheet → S coupling. **[TRIED — outcome C]**
+  σ_eS_tube + e-H2 activation works architecturally but V(r) is
+  not Yukawa-shaped; mass scale comes out at ~500 MeV vs
+  W± at 80 GeV.  See [findings-12.md](findings-12.md).  Weak still open.
+- **u′** (next). Same template applied to **ν-sheet → S** (different
+  geometry; cheapest next attempt).
+- **u′′**. σ_eS_ring + companion (different e-sheet entry).
+- **t**. Symmetric three-sheet → S activation (test cross-Schur
+  paths for qualitatively new shapes).
 - **v**. Anomalous magnetic moments from H2 second-order
   leakage (potentially derives g-2 from same architecture).
-- **t**. Symmetric three-sheet → S activation (broader companion
-  to u).
 - **w**. Magnetic-channel preservation under Track 11 (sanity check).
 
 **Metric principle / accuracy (goal 2):**
