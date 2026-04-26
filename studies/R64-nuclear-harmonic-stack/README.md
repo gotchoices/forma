@@ -854,6 +854,136 @@ prescription looks like (if any).
 
 ---
 
+## Track 10 — Ring-S coupling: testing the mass-channel hypothesis for the strong force
+
+**Status: framed; Phase 10a pending execution.  Other phases in pool.**
+
+**Premise.**  Track 7–9 tested σ_pS_tube as the candidate strong-
+force coupling and found it cannot deliver Phase 7c-class strength
+under any compensation structure within signature constraints
+(σ_eff capped at ~0.5; Phase 7c required ~116).  Every prior
+attempt routed through the **tube** sheet entry — i.e., the
+*charge*-promotion direction.
+
+But the strong force has gravity-like phenomenology: always
+attractive, charge-symmetric (pp ≈ nn ≈ pn under strong), much
+stronger than Coulomb.  In MaSt's promotion chain:
+
+- **Mass = ring** (first-order: light → mass via the ring 2π
+  closure).  Always positive (`m² ≥ 0`).  Source of gravity.
+- **Charge = tube** (second-order: mass → charge via the tube 2π
+  closure).  Signed.  Source of Coulomb.
+
+If the strong force is structurally "gravity-like" rather than
+"Coulomb-like," it should originate in the **ring** sector, not
+the tube sector.  Track 10 tests whether direct ring-S coupling
+(σ_pS_ring) — not tube-S — is the right metric origin for the
+strong force.
+
+This reframe is a **simplification, not an addition**: it doesn't
+introduce new dimensions, propagator formalism, or auxiliary
+structure.  It just tests a different metric off-diagonal as the
+primary entry.  σ_pS_ring has been a *companion* in prior phases
+(Phase 9 H1, H3, H6) but has never been the *primary* coupling.
+
+### Phase 10a — σ_pS_ring as primary direct coupling
+
+**Status: pending execution.**
+
+**Goal.**  Test whether direct p-sheet ring ↔ S spatial coupling
+preserves α universality (with or without companion entries) and
+produces an attractive, charge-symmetric V(r) at signature-OK
+magnitudes.  Compare against Phase 9's σ_pS_tube primary results.
+
+**Strategy.**
+
+1. Replicate Phase 7e/9b's machinery with σ_pS_ring as the
+   primary entry instead of σ_pS_tube.
+2. Sweep σ_pS_ring alone first; observe α universality
+   perturbation pattern and signature band.
+3. If universality breaks (likely), search for compensating
+   companion entries analogous to Phase 9b's H2 prescription
+   (σ_aS = -1.819·σ_pS_tube).  Candidate companions:
+   - σ_aS (aleph-mediated parallel)
+   - σ_pS_tube as companion (inverse of Phase 9 H2 setup)
+   - σ_eS_ring, σ_νS_ring (3-sheet symmetric)
+4. At the prescription that preserves universality, sweep
+   σ_pS_ring within signature band; compute V(r) for pp, pn,
+   nn channels using Phase 7c's two-body kinematic formula
+   with σ_eff extracted from the augmented 11D inverse metric.
+5. Check phenomenology:
+   - **Charge symmetry**: V(pp) ≈ V(nn) within Coulomb shift?
+   - **Always attractive**: V_min < 0 across all three channels?
+   - **Channel-symmetric strong contribution**: pn distinguished
+     from pp/nn only by Ma-side offset?
+
+**Acceptance criteria.**
+
+| # | Criterion | Threshold |
+|:-:|:---|:---|
+| 1 | Signature band reaches σ_pS_ring with σ_eff ≥ 1 | Larger band than σ_pS_tube → progress |
+| 2 | α universality preserved (with or without companions) | Spread < 10⁻⁹ |
+| 3 | Three channels (pp, pn, nn) get attractive V(r) | All V_min < 0 at intermediate r |
+| 4 | Strong contribution charge-symmetric | V_strong(pp) ≈ V_strong(nn) ≈ V_strong(pn) |
+| 5 | At signature boundary, σ_eff approaches Phase 7c scale | σ_eff > 1, ideally → 116 |
+
+**Possible outcomes.**
+
+- **A — Ring-S delivers the strong force.**  σ_pS_ring at
+  signature-permitted magnitudes produces an attractive,
+  charge-symmetric V(r) trough at intermediate r.  The strong
+  force lives in the metric via the ring (mass) channel.  The
+  user's two-channel hypothesis is vindicated.
+- **B — Ring-S preserves universality but at limited magnitude.**
+  Same structural ceiling as σ_pS_tube (~σ_eff = 0.5).  The
+  signature constraint is fundamental regardless of which
+  off-diagonal carries the coupling.  Strong force confirmed
+  outside metric.
+- **C — Ring-S preserves universality AND delivers stronger
+  σ_eff than tube-S, but still falls short of Phase 7c.**
+  Partial structural progress; ring channel is "better" than
+  tube channel for strong force but neither is sufficient.
+- **D — Ring-S is structurally wrong** (universality breaks
+  with no recoverable prescription).  Track 10 closes
+  symmetrically with Track 9; both metric channels are
+  exhausted; propagator route is the architectural inevitable.
+
+**Reusable assets.**
+
+- Phase 7e infrastructure (α-universality test machinery).
+- Phase 9b's optimization framework (scipy.optimize for
+  prescription search).
+- Phase 7c's V(r) machinery with corrected two-body kinematics
+  (Phase 8c convention, A_kinetic = 4·(ℏc)²).
+- R64 Point B p-sheet calibration.
+
+**Outputs.**
+
+- `outputs/track10_phase10a_universality_sweep.csv`
+- `outputs/track10_phase10a_potential_curves.csv`
+- `outputs/track10_phase10a_potential_curves.png`
+- `findings-10.md`
+
+### Why this matters
+
+If 10a returns Outcome A (ring-S delivers the strong force), R64
+suddenly has a complete in-metric architecture: Coulomb via
+tube → aleph → t (R62 D5 / R60 architecture); strong force via
+ring → S (Track 10).  Two channels, structurally aligned with
+Q132's promotion chain (mass = ring, charge = tube), no new
+dimensions or propagator formalism.
+
+If 10a returns Outcome B/C/D, the metric route to strong force is
+genuinely exhausted across both tube and ring channels, and the
+propagator-based approach (R64 pool item m) becomes the
+unavoidable architectural path.
+
+Either way, Phase 10a is decisive for the "two-channel metric
+hypothesis" — and it's a single bounded test, not an expansion
+of complexity.
+
+---
+
 ## Track 6 — Flexible slot-configuration tool for shell-structure hypotheses
 
 **Status: Phase 6a complete; Track PAUSED.**
@@ -957,6 +1087,58 @@ write down the πNN-analog vertex from Ma overlap, and do the
 propagator integral.  If the Ma identity gives m_med ≈ 140 MeV
 naturally, the Yukawa range falls out without further fitting.
 *Substantial new formalism; multi-day scope.*
+
+**10b. Aleph-redundancy audit (10D direct-coupling test).**  R60
+postulates the aleph dimension as the universal mediator: every
+sheet ↔ time and sheet ↔ S coupling routes through aleph.
+Whether aleph is *necessary* (vs. a convenience) hasn't been
+ruled out.  **Test:** construct a 10D metric (T⁶ + spacetime, no
+aleph row), add direct sheet-spacetime entries (σ_pt_t, σ_pr_t,
+σ_pt_S, σ_pr_S, etc.), and check whether α universality is
+recoverable.  If yes — aleph is removable and MaSt's metric
+simplifies to 10D.  If no — aleph is structurally required and
+hub-and-spoke holds.  Either outcome resolves a foundational
+question.  Likely several days of work; algebraic + numerical.
+
+**10c. Direct ring-time coupling (gravity-channel test).**  In
+R60, σ_ra (ring ↔ aleph) is derived as `(s·ε)·σ_ta`.  But ring
+itself never directly couples to spacetime time at the metric
+level.  If gravity in MaSt comes from ring → time coupling
+(parallel to how Coulomb comes from tube → aleph → time), maybe
+this should be tested explicitly.  **Test:** add σ_pr_t (and
+analogues per sheet) directly to the 11D metric; compute
+gravitational-like effects from ring sheet content; check
+alignment with observed Newtonian gravity ratio
+G·m₁m₂/r relative to α·q₁q₂/r at the same scale.
+
+**10d. Two-channel hybrid: tube-S Coulomb extension + ring-S
+strong force.**  If Track 10a delivers Outcome A (ring-S = strong
+force), the natural next test is whether σ_pS_tube can be
+simultaneously activated to extend the EM channel (giving the
+magnetic vector potential per Phase 8).  **Test:** sweep both
+σ_pS_tube and σ_pS_ring with their respective universality
+prescriptions, find the joint signature band, and verify both
+phenomenologies emerge correctly.  Caps the two-channel
+hypothesis with explicit cross-validation.
+
+**10e. Closed-form derivation of the −1.819 coefficient.**  Phase
+9b's H2 prescription has σ_aS = −1.819·σ_pS_tube as a structural
+constraint, but the closed-form expression for −1.819 in terms
+of (σ_ta, σ_at, ε_p, s_p, ...) has not been derived.  **Test:**
+symbolic algebra to expand α_Coulomb to second order in
+σ_pS_tube and σ_aS, demand cancellation, solve for the σ_aS
+coefficient analytically.  Likely yields a clean expression
+(analogous to R60 T7's `(s·ε)`).  Interpretive value: tells us
+*why* the coefficient is what it is, even if 9c showed it
+doesn't deliver strong force.
+
+**10f. Ring-aleph parallel channel.**  σ_ra (ring↔aleph) is
+already in R60 as a derived companion of σ_ta.  But what if it
+should be a *primary* channel parallel to σ_ta?  **Test:**
+parameterize σ_ra independently from σ_ta and check whether α
+universality can be preserved with two independent aleph-row
+entries (one tube, one ring).  This is a generalization of
+R60's σ_ra prescription, possibly opening new structural space.
 
 **n. Nuclear reactions & scattering machinery.**  V(r) is a
 static potential.  Reactions need cross-sections, branching
