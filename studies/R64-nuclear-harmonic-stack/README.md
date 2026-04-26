@@ -38,6 +38,15 @@ fundamental representation.
 R64's job is to test this picture and develop it into a working
 nuclear model if it survives.
 
+**Quick reference:**
+- [`metric-terms.md`](metric-terms.md) — every entry in the 11×11
+  metric: pinned/free/derived flags, current values, source.
+  CSV form: [`metric-terms.csv`](metric-terms.csv).
+- [`zoo.md`](zoo.md) — particle inventory match table (mass and
+  α-attribution status for every entry).
+- [`findings-11.md`](findings-11.md) — Track 11: strong force
+  rescued in the metric.
+
 ---
 
 ## Mission
@@ -1298,19 +1307,9 @@ without regressing model-F.
 
 ### Model-G integration critical path (added after Phase 7c)
 
-**j. α-coupling integration test.**  **[model-G]**  Phase 7c
-introduced a new metric off-diagonal at (p_t, S_x), (p_t, S_y),
-(p_t, S_z) — currently zero in R60 baseline.  R60's α-architecture
-lives in the ℵ row.  Algebraically the new entries are independent,
-but when the 11×11 is solved/diagonalized, eigenmodes may mix.
-**Test:** augment R60 Track 12's α-extraction infrastructure with
-the Phase 7c off-diagonals and re-run universality checks.  If α
-stays at 1/137 to numerical noise, the strong and EM sectors are
-decoupled (excellent news).  If α shifts, derive the constraint
-σ_t must satisfy to preserve universality, analogous to R60's
-σ_ra prescription.  Also resolves the σ_t naming question: in
-R60 nomenclature this is **σ_pS_tube** (p-sheet tube ↔ S
-spatial), to disambiguate from σ_ta and σ_at.
+**~~j. α-coupling integration test.~~**  **[COMPLETE — Phases 11a/c/d]**
+Strong-EM coupling preserved with H2 prescription and A1
+attribution.  See findings-11.md.
 
 **k. Strange family on a different generation.**  **[model-G]**
 R64 Track 4 found an 18% RMS error forcing s, Λ, Σ, Ξ as a
@@ -1324,39 +1323,25 @@ point on the p-sheet (or a different sheet) that hosts
 ~510 MeV constituent mass.  Cross-validate against Λ, Σ, Ξ.
 *Supersedes the old Track 2 Phase 2a single-primitive search.*
 
-**l. Joint refit of (ε_p, s_p, σ_t) against multi-target.**
-**[model-G]**  Phase 7c held (ε_p, s_p, K_p) frozen at Point B
-from Track 3's chain fit and only fit σ_t.  Whether this is a
-joint optimum or a local landing spot is open.  **Test:** sweep
-(ε_p, s_p) jointly with σ_t against {nuclear chain Ca→Sn,
-NN trough at r ≈ 1 fm depth ~50 MeV, deuteron B(²H), α
-universality (with prescription from item j)}.  Report whether
-Point B + σ_t = −116 is stable or drifts.  Required gating
-before treating R64 Point B as a model-G working point.
+**~~l. Joint refit of (ε_p, s_p, σ_t).~~**  **[COMPLETE — Phase 11e]**
+Point B confirmed; V_min(pn) = −50.15 MeV at r = 1.133 fm
+exactly under σ_pS_tube + H2 active.  Sensitivity to (ε_p, s_p)
+is real but understood (asymptotic m_Ma calibration is separate
+from strong-force calibration).
 
-**m. Yukawa long-range extension (propagator-based).**  Phase 7b
-established that the 7-tensor's V(r) is polynomial 1/r² + 1/r,
-not Yukawa exp(−mr)/r.  Yukawa requires propagator physics:
-integrating a virtual mediator's mode over momenta with a
-mass-pole 1/(k² + m²).  **Test:** identify the Ma compound that
-serves as the strong-force mediator (most likely a low-lying
-meson-class state — pion-analog), compute its mass at Point B,
-write down the πNN-analog vertex from Ma overlap, and do the
-propagator integral.  If the Ma identity gives m_med ≈ 140 MeV
-naturally, the Yukawa range falls out without further fitting.
-*Substantial new formalism; multi-day scope.*
+**~~m. Yukawa long-range extension (propagator-based).~~**
+**[OBSOLETE — Track 11 reversed the architectural need.]**
+Phase 11c showed the strong force lives in the metric (σ_pS_tube
++ H2 at signature edge), no propagator formalism required.
+Pool item m would still be useful for the long-range tail of
+V(r) far from the trough, but is no longer the architectural
+critical path.  Keep on shelf in case the edge-methodology
+interpretation (item r) changes the picture.
 
-**10b. Aleph-redundancy audit (10D direct-coupling test).**  R60
-postulates the aleph dimension as the universal mediator: every
-sheet ↔ time and sheet ↔ S coupling routes through aleph.
-Whether aleph is *necessary* (vs. a convenience) hasn't been
-ruled out.  **Test:** construct a 10D metric (T⁶ + spacetime, no
-aleph row), add direct sheet-spacetime entries (σ_pt_t, σ_pr_t,
-σ_pt_S, σ_pr_S, etc.), and check whether α universality is
-recoverable.  If yes — aleph is removable and MaSt's metric
-simplifies to 10D.  If no — aleph is structurally required and
-hub-and-spoke holds.  Either outcome resolves a foundational
-question.  Likely several days of work; algebraic + numerical.
+**~~10b. Aleph-redundancy audit (10D direct-coupling test).~~**
+**[COMPLETE — Phase 10b]**  Aleph is structurally required.
+Direct sheet-time replacements give α(proton) 30+ orders below
+target.  See findings-10.md.
 
 **10c. Direct ring-time coupling (gravity-channel test).**  In
 R60, σ_ra (ring ↔ aleph) is derived as `(s·ε)·σ_ta`.  But ring
@@ -1369,26 +1354,15 @@ gravitational-like effects from ring sheet content; check
 alignment with observed Newtonian gravity ratio
 G·m₁m₂/r relative to α·q₁q₂/r at the same scale.
 
-**10d. Two-channel hybrid: tube-S Coulomb extension + ring-S
-strong force.**  If Track 10a delivers Outcome A (ring-S = strong
-force), the natural next test is whether σ_pS_tube can be
-simultaneously activated to extend the EM channel (giving the
-magnetic vector potential per Phase 8).  **Test:** sweep both
-σ_pS_tube and σ_pS_ring with their respective universality
-prescriptions, find the joint signature band, and verify both
-phenomenologies emerge correctly.  Caps the two-channel
-hypothesis with explicit cross-validation.
+**~~10d. Two-channel hybrid: tube-S Coulomb extension + ring-S
+strong force.~~**  **[OBSOLETE — Phase 10a/11c reversed the
+premise.]**  Ring-S did not deliver strong force (Phase 10a:
+channel-asymmetric, deuteron-zero).  Strong force lives in tube-S
+(Phase 11c).  No two-channel hybrid needed.
 
-**10e. Closed-form derivation of the −1.819 coefficient.**  Phase
-9b's H2 prescription has σ_aS = −1.819·σ_pS_tube as a structural
-constraint, but the closed-form expression for −1.819 in terms
-of (σ_ta, σ_at, ε_p, s_p, ...) has not been derived.  **Test:**
-symbolic algebra to expand α_Coulomb to second order in
-σ_pS_tube and σ_aS, demand cancellation, solve for the σ_aS
-coefficient analytically.  Likely yields a clean expression
-(analogous to R60 T7's `(s·ε)`).  Interpretive value: tells us
-*why* the coefficient is what it is, even if 9c showed it
-doesn't deliver strong force.
+**~~10e. Closed-form derivation of the −1.819 coefficient.~~**
+**[COMPLETE — Phase 11d]**  `b = −8π·√α·2^(−1/4)` from
+first-order perturbation of G⁻¹.  See findings-11.md F11d.
 
 **10f. Ring-aleph parallel channel.**  σ_ra (ring↔aleph) is
 already in R60 as a derived companion of σ_ta.  But what if it
@@ -1397,6 +1371,48 @@ parameterize σ_ra independently from σ_ta and check whether α
 universality can be preserved with two independent aleph-row
 entries (one tube, one ring).  This is a generalization of
 R60's σ_ra prescription, possibly opening new structural space.
+
+**p. Meson α-attribution extension.**  **[model-G]**  Phase 11a
+F11a.2 derived A1 attribution `f(n_pt, n_pr) = n_pt/6 + n_pr/4`
+for R64 quark composition (single-sheet, p-sheet only).  This
+gives correct α/α₀ for u, d, proton, neutron, deuteron, pp, nn,
+plus electron and muon.  But multi-sheet mesons (π, K, η, ρ, φ)
+still carry the R60 "winding sum²" formula and give α/α₀ values
+matching `(n_et − n_pt + n_νt)²` rather than the actual electric
+charge.  **Test:** generalize A1 to a sheet-symmetric attribution
+function f(n_et, n_er, n_νt, n_νr, n_pt, n_pr) that correctly
+maps every R60+R64 inventory tuple to its observed electric
+charge in units of e.  The A1 form (a/6 + b/4) on the p-sheet
+suggests analogous forms (c/X + d/Y) on the e and ν sheets.
+Bounded analytical task; closed form expected.
+
+**q. R64 L_ring recalibration.**  **[model-G]**  Phase 11f showed
+mode_energy gives wrong masses for R64 baryons (~5500 MeV vs
+938) because L_ring_p was carried over from R60 model-F's proton
+at (1, 3) without recalibration for R64's (3, +2).  **Test:**
+refit L_ring_p (and possibly L_ring_e, L_ring_ν if other R64-
+sensitive modes show drift) so mode_energy at the R64 proton tuple
+returns 938.272 MeV.  Verify the rest of the R60 inventory still
+matches its previous predicted masses.  Bounded numerical fit;
+no architectural change.
+
+**r. Edge-methodology physical interpretation.**  **[model-G]**
+Phase 11a F11a.4 and Phase 11c showed σ_eff_tube reaches Phase
+7c's −116 only at the precise signature boundary (σ_pS_tube ≈
+−0.12505).  This is a "lightlike" calibration where one metric
+eigenvalue approaches zero.  Whether the strong-force trough
+sitting *exactly* at this edge is structurally meaningful (a
+genuine lightlike degree of freedom for the strong field) or a
+numerical convenience (the metric inversion happens to scale
+divergently here) is open.  **Test:** (i) symbolic analysis of
+G⁻¹[p_t, S_x] near the boundary to check if the divergent rate is
+a clean structural form; (ii) check whether the same edge maximum
+appears under different working points or only at Point B; (iii)
+investigate whether the lightlike eigenvector has a physical
+interpretation (massless mode? confined direction?).  If
+structural, this pins σ_pS_tube and removes one free parameter.
+If artifact, the strong-force calibration becomes ad hoc and
+pool item m (Yukawa propagator) returns to consideration.
 
 **n. Nuclear reactions & scattering machinery.**  V(r) is a
 static potential.  Reactions need cross-sections, branching

@@ -1,0 +1,90 @@
+,ℵ (0),p_t (1),p_r (2),e_t (3),e_r (4),ν_t (5),ν_r (6),S_x (7),S_y (8),S_z (9),t (10)
+ℵ (0),"g_aa = 1
+[P: PINNED R59 F59]","-σ_ta = -√α ≈ -0.0854
+[P: PINNED p-sign]","σ_ra_p ≈ -0.000438
+[D: DERIVED Track 7]
+= (sε)_p · (-σ_ta)
+R64 Point B value","+σ_ta = +√α ≈ +0.0854
+[P: PINNED e-sign]","σ_ra_e ≈ +67.98
+[D: DERIVED Track 7]
+= (sε)_e · (+σ_ta)","+σ_ta = +√α ≈ +0.0854
+[P: PINNED ν-sign]","σ_ra_ν ≈ +0.003759
+[D: DERIVED Track 7]
+= (sε)_ν · (+σ_ta)","σ_aS ≈ -0.227 (NEW IN R64)
+[D: DERIVED Phase 11d]
+= b · σ_pS_tube
+b = -8π·√α·2^(-1/4) ≈ -1.819","σ_aS ≈ -0.227 (same as Sx)
+[D: DERIVED Phase 11d]","σ_aS ≈ -0.227 (same as Sx)
+[D: DERIVED Phase 11d]","σ_at = 4πα ≈ 0.0917
+[P: PINNED R59 F59]"
+p_t (1),,"k = 2^(1/4)/(8π) ≈ 0.04732
+[F: single-k structural]
+R60 fit was 0.04696 (0.75% drift)","k·sε_p ≈ 0.000241
+[C: s_p·ε_p = 0.005130]
+R64 Point B value","0
+[X: cross-sheet p↔e broke sig — Arch 1]","0
+[?: untested]","0
+[?: untested]","0
+[!: breaks α universality in Track 7c]","σ_pS_tube ≈ -0.12505 (NEW IN R64)
+[F: edge-pinned]
+σ_eff_tube = -116 at signature edge
+Strong-force activation","σ_pS_tube ≈ -0.12505 (same as Sx)
+[F: edge-pinned]","σ_pS_tube ≈ -0.12505 (same as Sx)
+[F: edge-pinned]","0
+[X: Ma↔t direct ruled out — R59 F2]"
+p_r (2),,,"k·(1+(sε)²) ≈ 0.04732
+[F: follows k and sε_p]
+R64 Point B; close to k","0
+[?: untested]","0
+[?: untested]","0
+[?: untested]","0
+[!: breaks sig/α in Track 7c]","0
+[X/F: σ_pS_ring tested in Phase 10a — α-inert but channel-asymmetric; not used]","0
+[same]","0
+[same]","0
+[X: Ma↔t direct ruled out]"
+e_t (3),,,,"k = 2^(1/4)/(8π) ≈ 0.04732
+[F: single-k]","k·sε_e ≈ 37.38
+[C: s_e·ε_e = 795.82]","0
+[?: untested]","0
+[!: breaks α in Track 7c]","0
+[X/?: σ_eS_tube — analogous to σ_pS_tube but never tested; pool item]","0
+[same]","0
+[same]","0
+[X: Ma↔t direct ruled out]"
+e_r (4),,,,,"k·(1+(sε)²) ≈ 29744
+[F: follows k and sε_e]
+HUGE from extreme shear","0
+[?: untested]","0
+[?: untested]","0
+[X: Ma↔S not used]","0
+[X: Ma↔S not used]","0
+[X: Ma↔S not used]","0
+[X: Ma↔t direct ruled out]"
+ν_t (5),,,,,,"k = 2^(1/4)/(8π) ≈ 0.04732
+[F: single-k]","k·sε_ν ≈ 0.002067
+[C: s_ν·ε_ν = 0.044]","0
+[X/?: σ_νS_tube — analogous; never tested; pool item]","0
+[same]","0
+[same]","0
+[X: Ma↔t direct ruled out]"
+ν_r (6),,,,,,,"k·(1+(sε)²) ≈ 0.04706
+[F: follows k and sε_ν]","0
+[X: Ma↔S not used]","0
+[X: Ma↔S not used]","0
+[X: Ma↔S not used]","0
+[X: Ma↔t direct ruled out]"
+S_x (7),,,,,,,,"+1
+[S: flat Minkowski]","0
+[flat S]","0
+[flat S]","0
+[X: S↔t not used — no rotation]"
+S_y (8),,,,,,,,,"+1
+[S: flat Minkowski]","0
+[flat S]","0
+[X: S↔t not used]"
+S_z (9),,,,,,,,,,"+1
+[S: flat Minkowski]","0
+[X: S↔t not used]"
+t (10),,,,,,,,,,,"-1
+[S: Lorentzian time diagonal]"
