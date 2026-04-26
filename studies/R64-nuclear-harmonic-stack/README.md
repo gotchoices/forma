@@ -1298,200 +1298,275 @@ peak emerges.  All directly supported by the tool.
 
 ---
 
-## Track pool (after Track 7c)
+## Track pool
 
-Items lettered for flexible selection.  Items marked **[model-G]**
-are on the critical path to integrating R63+R64 contributions
-into a model-G candidate that includes strong-force modeling
-without regressing model-F.
+All items are letter-keyed for flexible selection in any order.
+Items marked **[model-G]** are gates on promotion to a model-G
+candidate.  Categories are organizational only — pull any item
+when ready.
 
-### Model-G integration critical path (added after Phase 7c)
+### Goal alignment
 
-**~~j. α-coupling integration test.~~**  **[COMPLETE — Phases 11a/c/d]**
-Strong-EM coupling preserved with H2 prescription and A1
-attribution.  See findings-11.md.
+The pool serves four overall goals:
+1. **Solve the weak force** (complete the four-force scorecard).
+2. **Make the metric principled and accurate** (every off-
+   diagonal has a structural rationale; every "free" parameter
+   is derived or pinned).
+3. **Assemble model-G** (the working post-R64 model candidate).
+4. **Derive every metric term from first principles** (deferred
+   to a separate study once model-G is stable).
 
-**k. Strange family on a different generation.**  **[model-G]**
-R64 Track 4 found an 18% RMS error forcing s, Λ, Σ, Ξ as a
-single primitive on the p-sheet at Point B.  The likely
-resolution per the R64 review: strange is a different
-*generation*, not a different flavor at Point B.  R60's three
-e-sheet primitives `(1, 2), (1, 1), (1, 15)` already imply
-three generations.  **Test:** search for an `(ε_s, s_s, K_s)`
-point on the p-sheet (or a different sheet) that hosts
-`(1, 1)` or another primitive class as the s-quark at
-~510 MeV constituent mass.  Cross-validate against Λ, Σ, Ξ.
-*Supersedes the old Track 2 Phase 2a single-primitive search.*
+---
 
-**~~l. Joint refit of (ε_p, s_p, σ_t).~~**  **[COMPLETE — Phase 11e]**
-Point B confirmed; V_min(pn) = −50.15 MeV at r = 1.133 fm
-exactly under σ_pS_tube + H2 active.  Sensitivity to (ε_p, s_p)
-is real but understood (asymptotic m_Ma calibration is separate
-from strong-force calibration).
+### Force completion (goal 1)
 
-**~~m. Yukawa long-range extension (propagator-based).~~**
-**[OBSOLETE — Track 11 reversed the architectural need.]**
-Phase 11c showed the strong force lives in the metric (σ_pS_tube
-+ H2 at signature edge), no propagator formalism required.
-Pool item m would still be useful for the long-range tail of
-V(r) far from the trough, but is no longer the architectural
-critical path.  Keep on shelf in case the edge-methodology
-interpretation (item r) changes the picture.
+**u. Weak force from e-sheet → S coupling.**  **[model-G]**
+By analogy with Track 11's strong-force discovery on the proton
+sheet, weak force is hypothesized to live in σ_eS_tube + an
+e-sheet H2 prescription analogous to the proton-sheet H2.  The
+hub-and-spoke architecture provides cross-sheet routing
+(charged-current e ↔ ν via aleph) for free.
+**Test:** activate σ_eS_tube on the e-sheet; derive the e-sheet
+H2 coefficient as `b_e = −G⁻¹[E_TUBE, t] / G⁻¹[ALEPH, t]` (Phase
+11d framework, sheet-substituted).  Find signature edge.
+Compute V(r) for ee, eμ systems and check for Yukawa profile
+with mass scale.
+**Yields:**
+- A: Yukawa with M ≈ 80 GeV → weak force confirmed in metric.
+- B: Yukawa with wrong mass scale → e-sheet → S delivers a force,
+  scale needs additional input.
+- C: not Yukawa-shaped → reconsider what e-sheet S-channel does.
+- D: universality breaks → re-derive the e-sheet H2 form.
 
-**~~10b. Aleph-redundancy audit (10D direct-coupling test).~~**
-**[COMPLETE — Phase 10b]**  Aleph is structurally required.
-Direct sheet-time replacements give α(proton) 30+ orders below
-target.  See findings-10.md.
+**t. Symmetric three-sheet → S activation.**  **[model-G]**
+Broader companion to item u.  Activate σ_pS_tube + σ_eS_tube +
+σ_νS_tube simultaneously, each with its own sheet-H2 prescription,
+and identify what each sheet's S-coupling delivers
+phenomenologically.  Confirms whether the architecture is
+genuinely three independent Clifford-style embeddings + aleph
+hub, vs. "p-sheet is special."
+**Test:** find joint signature edge; verify A1 universality
+survives; compute V(r) for representative ee, eμ, νe, νν systems
+in addition to NN already covered.
+**Yields:** sheet-by-sheet identification of force sector.
+Strong on p (Phase 11c); weak/ν-current on e/ν per item u
+results.
 
-**10c. Direct ring-time coupling (gravity-channel test).**  In
-R60, σ_ra (ring ↔ aleph) is derived as `(s·ε)·σ_ta`.  But ring
-itself never directly couples to spacetime time at the metric
-level.  If gravity in MaSt comes from ring → time coupling
-(parallel to how Coulomb comes from tube → aleph → time), maybe
-this should be tested explicitly.  **Test:** add σ_pr_t (and
-analogues per sheet) directly to the 11D metric; compute
-gravitational-like effects from ring sheet content; check
-alignment with observed Newtonian gravity ratio
-G·m₁m₂/r relative to α·q₁q₂/r at the same scale.
+**v. Anomalous magnetic moments from H2 second-order leakage.**
+**[model-G]**  Second-order σ_pS_tube² leakage in the H2 prescription
+shifts the proton's α by 4 × 10⁻⁴ at the strong-force operating
+point — exactly the order of magnitude of QED anomalous magnetic
+moments.  The pattern matches qualitatively: large proton
+anomaly (a_p ≈ 1.79), tiny electron anomaly (a_e ≈ 1.16 × 10⁻³),
+explained by p-sheet activation vs. no-e-sheet activation in
+current architecture.
+**Test:** (i) translate the metric's σ_aS-induced second-order
+G⁻¹[ALEPH, S_x] shift into a magnetic-moment correction in
+physical units; (ii) compute predicted proton g/2 under
+σ_pS_tube + H2 at edge; (iii) compute predicted electron g/2
+under σ_eS_tube + e-H2 at edge (after item u); (iv) compare to
+observed a_p, a_e.
+**Yields:** if predictions match observed g-2 within an order
+of magnitude, the anomaly emerges automatically from the same
+H2 mechanism that delivers strong/weak forces — no QFT loop
+calculation needed.  Major architectural finding.  R44 closed
+g-2 from torus geometry but did NOT test this mechanism.
 
-**~~10d. Two-channel hybrid: tube-S Coulomb extension + ring-S
-strong force.~~**  **[OBSOLETE — Phase 10a/11c reversed the
-premise.]**  Ring-S did not deliver strong force (Phase 10a:
-channel-asymmetric, deuteron-zero).  Strong force lives in tube-S
-(Phase 11c).  No two-channel hybrid needed.
+**w. Magnetic-channel preservation under Track 11 activation.**
+**[model-G]**  Verify that σ_eff_aS (the magnetic Schur coupling)
+at σ_pS_tube + H2 active still delivers α-magnitude magnetic
+effects, despite the bare σ_aS being 31× α at the operating
+point.  G⁻¹[ALEPH, S_x] = 9 × 10⁻⁵ suggests Schur cancellation
+keeps magnetic at the right scale, but explicit verification is
+owed.
+**Test:** re-run R60/R64 Phase 8 magnetic vector-potential test
+with σ_pS_tube + H2 active in place of σ_aS-only activation.
+Compare resulting magnetic α to baseline.
+**Yields:** sanity check on Track 11 architecture; should pass
+or surface a magnetic-α anomaly that connects to item v.
 
-**~~10e. Closed-form derivation of the −1.819 coefficient.~~**
-**[COMPLETE — Phase 11d]**  `b = −8π·√α·2^(−1/4)` from
-first-order perturbation of G⁻¹.  See findings-11.md F11d.
+---
 
-**10f. Ring-aleph parallel channel.**  σ_ra (ring↔aleph) is
-already in R60 as a derived companion of σ_ta.  But what if it
-should be a *primary* channel parallel to σ_ta?  **Test:**
-parameterize σ_ra independently from σ_ta and check whether α
-universality can be preserved with two independent aleph-row
-entries (one tube, one ring).  This is a generalization of
-R60's σ_ra prescription, possibly opening new structural space.
-
-**p. Meson α-attribution extension.**  **[model-G]**  Phase 11a
-F11a.2 derived A1 attribution `f(n_pt, n_pr) = n_pt/6 + n_pr/4`
-for R64 quark composition (single-sheet, p-sheet only).  This
-gives correct α/α₀ for u, d, proton, neutron, deuteron, pp, nn,
-plus electron and muon.  But multi-sheet mesons (π, K, η, ρ, φ)
-still carry the R60 "winding sum²" formula and give α/α₀ values
-matching `(n_et − n_pt + n_νt)²` rather than the actual electric
-charge.  **Test:** generalize A1 to a sheet-symmetric attribution
-function f(n_et, n_er, n_νt, n_νr, n_pt, n_pr) that correctly
-maps every R60+R64 inventory tuple to its observed electric
-charge in units of e.  The A1 form (a/6 + b/4) on the p-sheet
-suggests analogous forms (c/X + d/Y) on the e and ν sheets.
-Bounded analytical task; closed form expected.
-
-**q. R64 L_ring recalibration.**  **[model-G]**  Phase 11f showed
-mode_energy gives wrong masses for R64 baryons (~5500 MeV vs
-938) because L_ring_p was carried over from R60 model-F's proton
-at (1, 3) without recalibration for R64's (3, +2).  **Test:**
-refit L_ring_p (and possibly L_ring_e, L_ring_ν if other R64-
-sensitive modes show drift) so mode_energy at the R64 proton tuple
-returns 938.272 MeV.  Verify the rest of the R60 inventory still
-matches its previous predicted masses.  Bounded numerical fit;
-no architectural change.
+### Metric principle / accuracy (goal 2)
 
 **r. Edge-methodology physical interpretation.**  **[model-G]**
 Phase 11a F11a.4 and Phase 11c showed σ_eff_tube reaches Phase
 7c's −116 only at the precise signature boundary (σ_pS_tube ≈
 −0.12505).  This is a "lightlike" calibration where one metric
 eigenvalue approaches zero.  Whether the strong-force trough
-sitting *exactly* at this edge is structurally meaningful (a
-genuine lightlike degree of freedom for the strong field) or a
-numerical convenience (the metric inversion happens to scale
-divergently here) is open.  **Test:** (i) symbolic analysis of
-G⁻¹[p_t, S_x] near the boundary to check if the divergent rate is
-a clean structural form; (ii) check whether the same edge maximum
-appears under different working points or only at Point B; (iii)
-investigate whether the lightlike eigenvector has a physical
-interpretation (massless mode? confined direction?).  If
-structural, this pins σ_pS_tube and removes one free parameter.
-If artifact, the strong-force calibration becomes ad hoc and
-pool item m (Yukawa propagator) returns to consideration.
+sitting *exactly* at this edge is structurally meaningful or a
+numerical convenience is open.
+**Test:** (i) symbolic analysis of G⁻¹[p_t, S_x] near the
+boundary; (ii) check edge maximum at different working points;
+(iii) investigate the lightlike eigenvector's interpretation
+(massless mode? confined direction?).
+**Yields:** if structural, σ_pS_tube becomes pinned (one fewer
+free parameter).  If artifact, strong-force calibration is
+ad hoc and pool item m returns.
 
-**n. Nuclear reactions & scattering machinery.**  V(r) is a
-static potential.  Reactions need cross-sections, branching
-ratios, and decay rates.  **Two routes:** (n.1) embed V(r) in
-a non-relativistic many-body Hamiltonian (standard nuclear
-physics) and predict reaction rates from Fermi's golden rule;
-(n.2) build a propagator-based formalism in MaSt that gives
-amplitudes directly (would extend item m).  Decision needed:
-which route, scope, and required infrastructure.
+**s. Clifford embedding analysis per sheet.**  **[model-G]**
+The metric's all-zero cross-sheet block suggests three
+independent flat-torus embeddings of each Ma sheet into the
+ambient slice, communicating only through aleph.  Each sheet's
+(ε, s) should satisfy a Clifford embedding constraint.
+**Test:** (i) write down the Clifford embedding equation for a
+generic 2D torus into the 4D × ℵ ambient block; (ii) derive the
+resulting (ε, s) curve analytically; (iii) compare to empirical
+curves — Track 1 (R64) for (ε_p, s_p), R53 ridge for (ε_e, s_e),
+R61 mass-ratio constraint for (ε_ν, s_ν).
+**Yields:** if analytical curves match empirical fits, 6 sheet
+parameters compress to 3 effective DOFs.  Bounded analytical
+task; closed-form expected.
+
+**p. Meson α-attribution extension.**  **[model-G]**
+A1 attribution `f(n_pt, n_pr) = n_pt/6 + n_pr/4` (Phase 11a)
+gives correct α for R64 single-sheet primitives but multi-sheet
+mesons still carry the R60 "winding sum²" formula.
+**Test:** generalize A1 to a sheet-symmetric attribution
+function `f(n_et, n_er, n_νt, n_νr, n_pt, n_pr)` that maps every
+inventory tuple to observed electric charge in units of e.  The
+form (a/6 + b/4) on the p-sheet suggests analogous forms on
+e/ν sheets.
+**Yields:** unified A1' attribution that gives correct α
+across the full hadron inventory (closes interpretive ◆ rows
+in zoo.md).  Bounded analytical task.
+
+**x. A1 closed-form derivation from first principles.**
+**[model-G]**  Phase 11a found `f(n_pt, n_pr) = n_pt/6 + n_pr/4`
+empirically by demanding `f(u) = +2/3` and `f(d) = −1/3`.  But
+the *origin* of the 1/6 and 1/4 coefficients is not derived —
+they're just the unique solution to the two-quark-charge
+constraint.
+**Test:** derive A1 (and item p's e/ν analogues) from the
+geometric structure of the sheet.  Likely connects to Clifford
+embedding (item s) and the proton sheet's (ε_p, s_p) values.
+The 1/6 may come from a 6-fold symmetry; the 1/4 from a 4-fold.
+**Yields:** A1 becomes a structural prescription rather than an
+empirical fit.  Removes one "fit" from the architecture's
+provenance.
+
+**y. R60 k recalibration to structural 2^(1/4)/(8π).**
+**[model-G]**  R60's empirical k = 1.1803/(8π) is within 0.75%
+of the structurally clean `k = 2^(1/4)/(8π)` (per Phase 11d).
+Test whether using the structural value (instead of the R60
+fit) preserves all R60 results to acceptable precision.
+**Test:** rebuild R60 model-F with k = 2^(1/4)/(8π); re-run
+universality, mass spectrum, and Phase 7c trough fit.  Verify
+nothing breaks.
+**Yields:** removes the 0.75% fit-residue and converts k to a
+purely structural number (`2^(1/4)` = 4th-root, suggestive of
+tube-cycle quotient).  One free parameter pinned.
+
+**10f. Ring-aleph parallel channel.**  σ_ra (ring↔aleph) is
+already in R60 as a derived companion of σ_ta.  But what if it
+should be a *primary* channel parallel to σ_ta?
+**Test:** parameterize σ_ra independently from σ_ta and check
+whether α universality can be preserved with two independent
+aleph-row entries (one tube, one ring).  This generalizes R60's
+σ_ra prescription, possibly opening new structural space.
+
+---
+
+### Model-G integration (goal 3)
+
+**i. Synthesis & promotion to model-G.**  Combine completed
+tracks: R60 model-F + Track 11 architecture (σ_pS_tube + H2 +
+A1) + ε/s/K calibrations.  Items u (weak), v (anomaly), q
+(L_ring) recommended before promotion; r/s/x are nice-to-have
+refinements.
+
+**k. Strange family on a different generation.**  **[model-G]**
+R64 Track 4 found 18% RMS error forcing s, Λ, Σ, Ξ as a single
+primitive on the p-sheet.  Likely strange is a different
+*generation*, not a different flavor at Point B.
+**Test:** search for an `(ε_s, s_s, K_s)` point hosting `(1, 1)`
+or another primitive class as the s-quark at ~510 MeV
+constituent mass.  Cross-validate against Λ, Σ, Ξ.
 
 **o. Z₃ and unit-per-sheet AM cross-check at R64 Point B.**
-**[model-G]**  R60 model-F established Z₃ confinement (Track 16)
-and unit-per-sheet AM spin (Track 20) — both are structural
-rules independent of (ε_p, s_p).  They should survive R64's
-on-sheet u/d picture, but the check is owed before model-G
-integration.  **Test:** verify R64's u/d compounds are Z₃-
-compliant (every baryon `(3·k, ...)` after composition) and
-spin assignments under unit-per-sheet AM still match observed
+**[model-G]**  Verify R64's u/d compounds are Z₃-compliant
+(every baryon `(3·k, ...)` after composition) and spin
+assignments under unit-per-sheet AM still match observed
 spin-½ for nucleons, spin-0/1 for mesons, etc.
 
-### Existing pool items (still applicable)
+**q. R64 L_ring recalibration.**  **[model-G]**
+Phase 11f showed mode_energy gives wrong masses for R64 baryons
+(~5500 MeV vs 938) because L_ring_p was carried over from R60
+model-F's proton at (1, 3).
+**Test:** refit L_ring_p (and possibly L_ring_e, L_ring_ν) so
+mode_energy at the R64 proton tuple returns 938.272 MeV.  Verify
+the rest of the R60 inventory still matches.
+
+---
+
+### Particle-physics extensions (goal 3, follow-on)
 
 **a. Light-A deviation diagnosis.**  R64 may over-bind light
-nuclei (⁴He at 22%, ¹²C at 13% in Track 3 Phase 3e).  Phase 7d
-will likely partially address this for the deuteron (B(²H) is
-a Phase 7d target).  Higher-A residuals (⁴He, ¹²C) remain
-open — possibly a finite-stack correction or Phase 7c V(r)
-applied to many-body machinery (item n).
+nuclei (⁴He at 22%, ¹²C at 13%).  Phase 7d will likely partially
+address this for the deuteron.  Higher-A residuals open —
+possibly finite-stack correction or many-body machinery (item n).
 
 **b. Quantum-number decoding (Ma analogs of n, l, m_l, m_s).**
 Identify the Ma winding/orientation feature for each atomic
-quantum number.  Provisional mapping:
-- n ↔ harmonic level
-- l ↔ phase separation
-- m_l ↔ orientation
-- m_s ↔ ring-winding polarity
-Lower priority for nuclear / strong-force model-G; relevant
-for pool-c.
+quantum number.  Provisional mapping: n ↔ harmonic level,
+l ↔ phase separation, m_l ↔ orientation, m_s ↔ ring-winding
+polarity.
 
-**c. Electron-shell harmonic structure on the e-sheet.**  Apply
-pool-b's quantum-number decoding to predict observed atomic
-shell energies.  Lower priority for nuclear-focus model-G.
+**c. Electron-shell harmonic structure on the e-sheet.**
+Apply item b's quantum-number decoding to predict observed
+atomic shell energies.
 
-**e. Higher-generation quark search (general).**  Beyond strange
-(item k): c, b, t.  Once item k succeeds for s, the same
-generation framework should host c, b, t by analogous primitive
-classes.
+**e. Higher-generation quark search.**  Beyond strange (item k):
+c, b, t.  Same generation framework should host c, b, t by
+analogous primitive classes.
 
 **f. Full hadron inventory under unified framework.**  Once
 quark generations are identified (items k, e), predict mesons
 and hyperons via Ma composition rules.
 
-**g. Charge-attribution rule extension.**  R64 currently uses a
-provisional rule (u = +2/3, d = −1/3 from sign of n_pr).  Needs
-derivation from a refined Q132 rule.
+**n. Nuclear reactions & scattering machinery.**  V(r) is static.
+Reactions need cross-sections, branching ratios, decay rates.
+Two routes: (n.1) embed V(r) in non-relativistic many-body
+Hamiltonian; (n.2) build propagator formalism in MaSt.
 
-**h. Z = 137 impedance-overflow audit.**  Deferred.
+---
 
-**i. Synthesis & promotion to model-G.**  Combine completed
-tracks.  Items j, k, l, o gate this; item m is the natural
-follow-on.  Recommend promotion if criteria met.
+### Completed (kept for reference)
 
-### Obsolete (kept for historical record, not pursued)
+- **~~g. Charge-attribution rule extension.~~** **[COMPLETE — Phase 11a]**
+  A1 = f(n_pt, n_pr) = n_pt/6 + n_pr/4.
+- **~~j. α-coupling integration test.~~** **[COMPLETE — Phases 11a/c/d]**
+  Strong-EM coupling preserved with H2 + A1.
+- **~~l. Joint refit of (ε_p, s_p, σ_t).~~** **[COMPLETE — Phase 11e]**
+  Point B confirmed under σ_pS_tube + H2 active.
+- **~~10b. Aleph-redundancy audit.~~** **[COMPLETE — Phase 10b]**
+  Aleph is structurally required; cannot be removed.
+- **~~10e. Closed-form derivation of −1.819.~~** **[COMPLETE — Phase 11d]**
+  `b = −8π·√α·2^(−1/4)`.
 
-- ~~**d. Nuclear shell structure and magic numbers.**~~  Track 6
-  review concluded that re-deriving SM nuclear shell structure
-  from MaSt is structural re-invention of well-understood
-  physics, not novel work.  Magic numbers, doubly-magic
-  stability, pairing energy — all are SOC-derived in the SM
-  picture and reproduced by Phase 7c V(r) embedded in standard
-  many-body machinery (item n).  Removed from pool.
-- ~~Inventory re-derivation under flavor-aware composition only on
-  p-sheet~~ — found structurally incompatible with SM isospin
-  near-symmetry (Track 4 Phase 4a).
-- ~~Hybrid inventory using R63 tuples at R64 parameters~~ — found
-  to mix incompatible frameworks (Track 5 Phase 5a as originally
-  scoped, now superseded).
-- ~~S-stability tooling as separate prerequisite~~ — superseded by
-  Line 2 (S-Coulomb directly added to budget).
+### Obsolete (no longer pursued)
+
+- **~~d. Nuclear shell structure and magic numbers.~~** Re-deriving
+  SM shell structure is structural re-invention, not novel work.
+- **~~h. Z = 137 impedance-overflow audit.~~** Deferred indefinitely.
+- **~~m. Yukawa long-range extension (propagator-based).~~**
+  Track 11 reversed the architectural need — strong force lives
+  in the metric.  Keep on shelf only if item r flips the
+  edge-methodology verdict.
+- **~~10c. Direct ring-time coupling (gravity-channel test).~~**
+  Gravity is St + GRID territory, **outside MaSt scope**.  No
+  longer relevant to MaSt's force completion.
+- **~~10d. Two-channel hybrid (tube-S Coulomb + ring-S strong).~~**
+  Phase 10a/11c reversed the premise.  Strong is in tube-S.
+- **~~Phase 11b. Pairwise quark-quark cross term.~~**  Deprecated
+  by Phase 11a structural analysis (factors back to (Σq)² in
+  single-body metric; deuteron problem returns).
+- **~~Inventory re-derivation under flavor-aware composition.~~**
+  Track 4 Phase 4a found incompatible with SM isospin.
+- **~~Hybrid R63 tuples at R64 parameters.~~** Track 5 Phase 5a
+  superseded.
+- **~~S-stability tooling as separate prerequisite.~~** Superseded
+  by Line 2.
 
 ---
 

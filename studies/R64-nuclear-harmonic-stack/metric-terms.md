@@ -183,11 +183,15 @@ Plus 1 input constant: **α** (the fine structure constant).
 | Stage | Free count | Notes |
 |-------|----------:|-------|
 | Today (R64 + Track 11) | 11 + α | Status quo |
-| If σ_pS_tube edge-pinned (pool item r resolves) | 10 + α | Edge methodology becomes structural |
-| If R64 (ε_p, s_p, K_p) derived from nucleon mass first principles | 7 + α | Pool item l + ε/s/K derivation |
-| If e-sheet (ε_e, s_e) derived from generation structure | 5 + α | Pool item k + e-sheet derivation |
-| If ν-sheet (ε_ν, s_ν) derived | 3 + α | Same pattern |
+| If Clifford embedding pins (ε, s) curves (pool item s) | 8 + α (effective 5) | 6 sheet params → 3 effective DOFs along curves |
+| If σ_pS_tube edge-pinned (pool item r resolves) | 7 + α (effective 4) | Edge methodology becomes structural |
+| If three-sheet → S architecture (item t + Track 12) | as above | Adds σ_eS_tube, σ_νS_tube each edge-pinned |
+| If sheet-curve points derived from generation structure | 4 + α (effective 1) | Pool items k, e + sheet derivations |
 | If L_ring values derived from sheet scales | 0 + α | **Goal achieved** |
+
+(Note: gravity is **outside MaSt scope** — it lives in St + GRID.
+The "1 free variable (α)" goal is for MaSt's internal-force
+sector only.)
 
 We are at **11 free parameters**.  Reducing each requires its own
 structural derivation track.  Realistic intermediate target: **5

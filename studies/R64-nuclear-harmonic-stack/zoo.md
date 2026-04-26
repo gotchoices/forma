@@ -141,6 +141,26 @@ interpretive issue, not a mass error.
 
 ---
 
+## Force coverage
+
+MaSt is responsible for the three internal forces (compact-
+dimension origin); gravity comes from St + GRID (the 4D
+spacetime block plus lattice curvature) and is outside MaSt's
+scope.
+
+| Force | MaSt scope | Status |
+|---|:---:|:---:|
+| Gravity | no (St/GRID) | ✓ outside scope |
+| Electromagnetism (Coulomb + magnetic) | yes | ✓ R59/R60/Phase 8 |
+| Strong | yes | ✓ Phase 11c |
+| **Weak** | yes | **✗ open — Track 12** |
+
+Track 12 (e-sheet → S coupling, weak-force candidate) is the
+single remaining metric-architecture gap for MaSt's
+internal-force responsibility.
+
+---
+
 ## Predicted modes without clean observed match (potential ephemeral particles)
 
 R60 model-F's full mode landscape predicts many compound 6-tuples
