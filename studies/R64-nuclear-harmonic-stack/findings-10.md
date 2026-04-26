@@ -225,3 +225,134 @@ The structurally-clean two-channel architecture (Coulomb in tube,
 gravity-like in ring) is validated.  The strong force's magnitude
 question remains open and points outside the metric — propagator-
 based formalism (R64 pool item m) or some other extension.
+
+---
+
+## Phase 10c — Architecture test: σ_ra = 0 with direct sheet-S replacement
+
+User-proposed simplification: aleph mediates **only** the tube
+(charge) sector; the ring sector lives entirely in direct sheet-S
+coupling.  This would zero out R60 T7's σ_ra = (s·ε)·σ_ta
+prescription and replace its role with σ_pS_ring (or some
+combination of sheet-S entries).  If it works, the aleph row
+simplifies and the architecture cleanly separates: charge through
+aleph, mass through direct S.
+
+Script:
+[`scripts/track10_phase10c_no_sigma_ra.py`](scripts/track10_phase10c_no_sigma_ra.py)
+Output:
+[`outputs/track10_phase10c_no_sigma_ra.csv`](outputs/track10_phase10c_no_sigma_ra.csv)
+
+### F10c.1. σ_ra = 0 breaks signature, not just universality
+
+Setting σ_ra = 0 (with no other modification) gives:
+
+- **Signature is no longer Lorentzian** (multiple negative eigenvalues
+  appear in the 11×11 metric).
+- α universality spread: ~12.6 (catastrophic — modes vary by factor
+  10× from each other).
+
+Mode-by-mode α/α_expected with σ_ra = 0:
+
+| Mode | α/α_expected |
+|:---|:---:|
+| electron | 12.50 |
+| muon | 12.53 |
+| proton | 0.00 (effectively no charge) |
+| neutron | 0.00 (effectively no charge) |
+| Λ | 12.63 |
+| π⁰ | 0.00 |
+| K± | 1.38 |
+| ρ | 1.41 |
+
+The proton's α going to zero is particularly striking — without σ_ra,
+the ring sector's contribution to charge isn't routed correctly
+through aleph, and the proton (which has mostly p-sheet ring content
+n_pr = 3) loses its EM coupling.
+
+### F10c.2. Direct sheet-S coupling cannot restore α universality
+
+Three compensation hypotheses tested with σ_ra still set to zero:
+
+- **C1**: σ_pS_tube + σ_pS_ring jointly free
+- **C2**: + σ_aS (3-parameter)
+- **C3**: 3-sheet symmetric extension (R60-T7-style ring companions
+  on each sheet, with cross-sheet symmetric prescription)
+
+All three searches failed to find a Lorentzian-signature
+configuration that preserves α universality.  The optimizer was
+never able to navigate out of the signature-broken region —
+direct sheet-S entries do not couple in the right place to
+fix the signature failure caused by removing σ_ra.
+
+### F10c.3. σ_ra is structurally required, not a convenience
+
+The architectural conclusion is decisive: **R60 T7's σ_ra
+prescription is genuine and required**.  Three independent
+observations confirm this:
+
+1. **Signature**: σ_ra is needed to keep the 11×11 metric
+   Lorentzian when σ_ta is active.  No combination of direct
+   sheet-S entries restores signature.
+2. **α universality**: Without σ_ra, charge extraction breaks for
+   any mode with non-zero ring content.  The proton's charge
+   becomes zero numerically.
+3. **Substitution failure**: σ_pS_ring (or any direct sheet-S
+   entry) does NOT play the same metric-structural role as σ_ra.
+   Even though both involve the ring index, they sit in different
+   inverse-metric paths and have different effects on α-extraction.
+
+### F10c.4. Why the user's proposal can't work
+
+The structural reason: **σ_ra and σ_pS_ring affect different
+inverse-metric entries.**
+
+- σ_ra connects ring → aleph → time, contributing to G⁻¹[Ma, t]
+  (the column α-extraction reads).
+- σ_pS_ring connects ring → S spatial directly, contributing to
+  G⁻¹[Ma, S] (a different column entirely).
+
+α-extraction projects onto G⁻¹[Ma, t].  σ_pS_ring doesn't enter
+this projection at leading order, so it can't substitute for σ_ra's
+role.
+
+The architectural simplification "aleph mediates only tube" can't
+be achieved by replacing σ_ra with sheet-S entries, because the
+two metric structures occupy different functional roles.
+
+### F10c.5. What this clarifies
+
+Negative results have value.  Phase 10c clarifies that:
+
+- **σ_ra is a structural feature of the 11D metric**, not a
+  T7-specific convenience.  R60's architecture genuinely requires
+  ring-aleph coupling.
+- **Aleph mediates BOTH tube and ring**, with the σ_ra prescription
+  ensuring α universality across the inventory.  This is the
+  architecture; it can't be simplified by routing ring through S
+  instead.
+- **The user's "only tube couples to aleph" hypothesis** doesn't
+  survive: the tube-only aleph row breaks both signature and
+  universality.
+
+This sharpens Q135's hub-and-spoke principle: aleph mediates the
+full tube+ring sector, with σ_ra as the structural prescription
+linking them.  Direct sheet-S couplings (as in Tracks 9 and 10a)
+are *additional* channels on top of the aleph-mediated baseline,
+not replacements for it.
+
+The architectural picture is now:
+
+| Channel | Status |
+|:---|:---|
+| Aleph-mediated EM (tube → aleph → time, ring → aleph derived) | structural baseline; cannot be reduced |
+| σ_aS (aleph → S, α-magnitude) | completes EM with magnetic vector potential (Phase 8) |
+| σ_pS_tube direct (with H2 prescription) | architecturally allowed at signature-permitted magnitudes (Phase 9) |
+| σ_pS_ring direct (α-inert) | architecturally allowed without companion (Phase 10a) |
+| σ_ra absent | structurally **forbidden** — breaks signature (Phase 10c) |
+
+The strong-force-magnitude question stands: even with both
+sheet-S channels available alongside the full aleph row, σ_eff is
+capped at ~1 by signature constraints.  The metric route is
+genuinely exhausted; propagator-based formalism (R64 pool item m)
+remains the architectural next step for strong-force magnitude.
