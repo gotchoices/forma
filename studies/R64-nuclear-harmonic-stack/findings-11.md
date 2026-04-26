@@ -473,7 +473,7 @@ Open follow-ons:
 
 - **Phase 11d**: Closed-form derivation of the −1.819 H2
   coefficient (was pool item 10e/10c').  Now architecturally
-  central, not just interpretive.
+  central, not just interpretive.  **(Complete — see below.)**
 - **Phase 11e**: Joint refit of (ε_p, s_p, K_p) with σ_pS_tube
   active at the H2 edge — verify Point B is stable when the
   strong-force sector is also fitted simultaneously.  Was pool
@@ -484,3 +484,124 @@ Open follow-ons:
 - **Continued exploration**: gravity sector, multi-nucleon
   binding chain Ca → Sn revisited under the edge architecture,
   α(μ) running, etc.
+
+---
+
+## Phase 11d — Closed-form derivation of the H2 coefficient
+
+Script:
+[`scripts/track11_phase11d_h2_closed_form.py`](scripts/track11_phase11d_h2_closed_form.py)
+
+### Method
+
+First-order perturbation of G⁻¹ under the H2 augmentation.  Adding
+σ_pS_tube to (P_TUBE, S_i) and σ_aS = b·σ_pS_tube to (ALEPH, S_i)
+for i ∈ {x, y, z} shifts the inverse metric.  At first order:
+
+<!-- ΔG⁻¹[Ma_α, t] = -Σ G⁻¹[Ma_α, i] · ΔG[i, j] · G⁻¹[j, t] -->
+$$
+\Delta G^{-1}[\mathrm{Ma}_\alpha, t] = -\sum_{i,j} G^{-1}[\mathrm{Ma}_\alpha, i] \cdot \Delta G[i, j] \cdot G^{-1}[j, t]
+$$
+
+At baseline G⁻¹[S_i, t] = 0 (S spatial is diagonal-Euclidean,
+decoupled from t).  This eliminates several terms.  The surviving
+contribution factorizes as:
+
+<!-- ΔG⁻¹[Ma_α, t] = -σ_pS_tube · S_sum_α · (G⁻¹[P_TUBE, t] + b·G⁻¹[ALEPH, t]) -->
+$$
+\Delta G^{-1}[\mathrm{Ma}_\alpha, t] = -\sigma_{pS\,\mathrm{tube}} \cdot S_{\mathrm{sum},\alpha} \cdot \bigl(G^{-1}[P_{\mathrm{TUBE}}, t] + b \cdot G^{-1}[\mathrm{ALEPH}, t]\bigr)
+$$
+
+where S_sum_α = G⁻¹[Ma_α, S_x] + G⁻¹[Ma_α, S_y] + G⁻¹[Ma_α, S_z].
+
+For ΔG⁻¹[Ma_α, t] to vanish across all charged Ma_α (universality
+preservation), the bracket must vanish, giving:
+
+<!-- b = -G⁻¹[P_TUBE, t] / G⁻¹[ALEPH, t] -->
+$$
+b \;=\; -\,\frac{G^{-1}[P_{\mathrm{TUBE}}, t]}{G^{-1}[\mathrm{ALEPH}, t]}
+$$
+
+### F11d.1. Symbolic reduction via Cramer's rule
+
+For the simplified (ALEPH, p_t, e_t, ν_t, T) Schur block, expanding
+the cofactors:
+
+- `cofactor(t, ALEPH)` factors as `−4πα · g_pp · g_ee · g_νt`
+- `cofactor(t, P_TUBE)` factors as `+4π · α^(3/2) · g_ee · g_νt`
+
+The shared `g_ee · g_νt` factors and the `4π` cancel in the ratio.
+After sign tracking:
+
+<!-- b = -√α / g_pp -->
+$$
+b \;=\; -\,\frac{\sqrt{\alpha}}{g_{pp}}
+$$
+
+In R60 model-F, the proton tube diagonal is `g_pp = k_p`, the
+universal tube-coupling constant satisfying single-k symmetry
+(`k_e = k_p = k_νt`).  So:
+
+<!-- b = -√α / k_p -->
+$$
+\boxed{\;b \;=\; -\frac{\sqrt{\alpha}}{k_p}\;}
+$$
+
+### F11d.2. Numerical verification
+
+At R60 model-F: √α = 0.0854245, k_p = 0.0469644.
+
+| Quantity | Value |
+|:---|:---:|
+| −√α / k_p | **−1.818920426** |
+| Phase 9b empirical b | −1.818920 |
+| Match | ✓ exact |
+
+The closed-form prediction matches Phase 9b's numerical optimization
+to 6 significant figures (limited only by Phase 9b's reported
+precision).  Across (ε_p, s_p) sweeps spanning 30× in ε_p and 100×
+in s_p, b stays exactly at −1.818920 — confirming b depends only
+on α and k_p, not on working-point parameters.
+
+### F11d.3. Architectural significance
+
+The H2 prescription joins the R60 T7 prescription σ_ra =
+(s·ε)·σ_ta as a **structural feature derived from universality
+preservation**, not a numerical fit.  Both follow the same pattern:
+
+| Prescription | Closed form | Derived from |
+|:---|:---:|:---|
+| R60 T7 (Phase 7c framework) | σ_ra = (s·ε) · σ_ta | sheet-row universality of ring contributions |
+| **R64 H2 (Phase 9b / 11d)** | **σ_aS = −(√α / k_p) · σ_pS_tube** | **first-order perturbation of G⁻¹[Ma, t] under sheet-S activation** |
+
+Both are "thin" prescriptions: one structural constraint each,
+each derivable in a few lines of algebra, both essential to
+keep the inverse-metric column G⁻¹[Ma, t] unperturbed when
+new metric off-diagonals are activated.  Together they are
+the **two prescriptions** that enable:
+
+- Coulomb at α magnitude with universality across the inventory
+  (R60 T7 σ_ra)
+- Strong force at Phase 7c magnitude with charge symmetry
+  (R64 H2 closed form)
+
+### F11d.4. Phase 11d completes Track 11
+
+With the H2 closed form derived, the strong-force architecture
+in the metric is now fully analytical:
+
+1. **σ_pS_tube** — primary direct coupling, p-sheet tube ↔ S
+   spatial (Phase 9, Phase 11c).
+2. **σ_aS = −(√α / k_p) · σ_pS_tube** — companion entry on the
+   aleph row, derived in Phase 11d.
+3. **Operate at the signature edge** — Phase 11a methodology;
+   gives σ_eff_tube freely tunable up to ∞.
+4. **A1 charge attribution** — `f(n_pt, n_pr) = n_pt/6 + n_pr/4`
+   for R64 quark composition (Phase 11a F11a.2).
+
+Four ingredients, all with closed-form structure or first-
+principles motivation.  No fitting parameters.  The strong force
+is fully derivable from R60 model-F's metric architecture once
+sheet-S coupling is activated under H2 at the signature edge.
+
+
