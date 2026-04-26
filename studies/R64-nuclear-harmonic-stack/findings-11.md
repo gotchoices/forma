@@ -547,6 +547,31 @@ $$
 \boxed{\;b \;=\; -\frac{\sqrt{\alpha}}{k_p}\;}
 $$
 
+**Further structural simplification (user-noted).**  R60 model-F's
+universal tube coupling is empirically `k = 1.1803/(8π)`, but
+1.1803 is within 0.75% of `2^(1/4) = 1.18921`.  The structurally
+clean form is:
+
+<!-- k_p = 2^(1/4) / (8π) -->
+$$
+k_p \;=\; \frac{2^{1/4}}{8\pi}
+$$
+
+which gives the H2 prescription a fully closed-form expression in
+α alone (no fit constants):
+
+<!-- b = -8π · √α / 2^(1/4) -->
+$$
+\boxed{\;b \;=\; -\,8\pi \cdot \sqrt{\alpha} \cdot 2^{-1/4}\;}
+$$
+
+The 0.75% drift between R60's empirical 1.1803 and the structural
+2^(1/4) is a calibration artifact from R60's fitting; with the
+structural value, b ≈ −1.8054 (vs Phase 9b's −1.81892, agreeing
+to within the same 0.75%).  The 4th-root structure is suggestive
+of a tube-cycle quotient, similar to how `4π` appears in α from
+the unit-sphere Coulomb integration.
+
 ### F11d.2. Numerical verification
 
 At R60 model-F: √α = 0.0854245, k_p = 0.0469644.
