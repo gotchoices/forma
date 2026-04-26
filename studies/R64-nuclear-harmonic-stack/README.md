@@ -984,6 +984,170 @@ of complexity.
 
 ---
 
+## Track 11 — Quark-counting structural audit
+
+**Status: Phase 11a complete; Phase 11b queued.  See [findings-11.md](findings-11.md).**
+
+**Phase 11a result (summary).**  Two findings, both substantial:
+
+1. **Pool item g resolved.**  The charge-function projection
+   `f(n_pt, n_pr) = n_pt/6 + n_pr/4` (linear, derived from u →
+   +2/3, d → −1/3) gives α universality at machine precision
+   (5 × 10⁻⁸ spread) across the full R64 inventory: single
+   quarks, baryons, two-nucleon compounds, leptons, neutrino.
+   The factor-of-9 anomaly silently propagated since Phase 7g
+   is corrected.
+2. **Track 10's σ_eff cap was a measurement artifact.**  The
+   Schur-effective σ_eff_ring grows divergently as σ_pS_ring
+   approaches the signature boundary (0.1251).  Within the
+   signature-OK band, σ_eff_ring is freely tunable from 0 to ∞.
+   At σ_pS_ring ≈ 0.12505, σ_eff_ring = 116 (Phase 7c's target).
+
+**The remaining obstruction is channel structure, not magnitude.**
+At σ_eff_ring = 116, V(r) is qualitatively wrong: pp repulsive,
+nn attractive (charge asymmetric), pn unaffected (n_pr = 0).
+The ring channel is structurally tied to signed n_pr and cannot
+give the charge-symmetric strong force of nature.  Phase 11b
+(pairwise cross term) is the architecturally indicated next test.
+
+**Premise.**  Track 10's combined verdict (Phases 10a, 10b, 10c)
+was that the metric route to the strong force is exhausted: σ_eff
+caps at ~1 across all tested couplings, vs Phase 7c's σ_t = 116
+target.  Before declaring the metric formalism closed, audit
+whether the gap reflects a **counting error** introduced by R64's
+shift from R60 model-F primitives to a u/d quark decomposition.
+
+**The R60 → R64 shift.**  R60 model-F treated the proton as a
+single primitive at `(n_pt, n_pr) = (1, 3)`.  R64 decomposes it
+into `u + u + d` with quark primitives `u = (1, +2)`, `d = (1, −2)`,
+giving proton = `(3, +2)`.  Critical consequence:
+
+- R60 proton: bare α/α₀ = (n_pt)² = 1.
+- R64 proton: bare α/α₀ = (n_pt)² = **9**.
+
+Phase 7g acknowledged this as "pool item g" (charge-attribution
+rule needs derivation) but never resolved it.  The factor of 9
+has been silently propagated through every R64 phase since.
+
+**The structural question.**  Two issues compounded from the
+quark decomposition:
+
+1. **α-attribution.**  Q in the Coulomb formula is linear in the
+   raw mode 6-tuple: `Q = n_Ma · G⁻¹[Ma, t] · (−G⁻¹[t, t])`.  At
+   R64 the proton's effective charge is *physically* +1 e, not
+   +3 e, but the formula reads `n_pt = 3` and produces 3× the
+   charge.  The natural fix is a charge-projection that maps
+   the R64 (n_pt, n_pr) onto the actual electric charge in units
+   of e: `f(n_pt, n_pr) = n_pt/6 + n_pr/4` reproduces u = +2/3,
+   d = −1/3, proton = +1, neutron = 0, deuteron = +1.
+2. **Cross-term linearity.**  In the strong-force m² expression,
+   the cross term is `2·k_S·σ_t·n_pt·ℏc` — *linear* in n_pt.
+   The actual strong force is pairwise (gluon-mediated between
+   quark pairs).  For two nucleons: 6 quarks total, but 9 cross-
+   nucleon quark pairs.  A pairwise reformulation `σ·Σᵢⱼqᵢqⱼ`
+   could give qualitatively different counting — and crucially,
+   the deuteron (n_pr_total = 0 under the linear form, hence
+   zero contribution from σ_pS_ring in Phase 10a) would receive
+   nonzero attractive contribution from u·d pair products.
+
+If either issue corrects to close the σ_eff gap, the metric
+formalism is rescued.  If neither does, the pool item m
+(propagator) path is genuinely the only architectural option.
+
+### Phase 11a — α-attribution audit
+
+**Status: pending execution.**
+
+**Goal.**  Quantify the magnitude error in α/α₀ across R64's
+u/d-decomposed inventory under the current attribution rule, and
+test whether an alternative rule (signed-quark-charge projection)
+recovers α universality at R64 tuples while preserving R60
+model-F results.
+
+**Strategy.**
+
+1. Compute α/α₀ across R64 inventory (R64 proton (3, +2), neutron
+   (3, −2), deuteron (6, 0), pp (6, +4), nn (6, −4), single u
+   (1, +2), single d (1, −2)) under current `n_Ma · G⁻¹[Ma, t]`
+   formula at R60 model-F metric calibration.  Tabulate α/α₀
+   ratios.
+2. Test attribution rule **A1**: replace `n_pt, n_pr` in α formula
+   with `n_pt_eff = f(n_pt, n_pr) = n_pt/6 + n_pr/4` (signed
+   electric charge in units of e).  Compute α/α₀ across the same
+   inventory.
+3. Test attribution rule **A2**: leave the formula intact but
+   recalibrate the p-sheet σ_ta, σ_at to absorb the factor of 3
+   (`σ_ta_p_R64 = σ_ta / 3`).  Check whether universality across
+   e/ν sheets still holds.
+4. If A1 or A2 succeeds, recompute the Schur-effective σ_eff_ring
+   at signature boundary in Phase 10a's framework under the
+   corrected calibration.  Compare to current 1.13.
+5. Document where the factor of 3 (or 9) goes — does it shift
+   σ_t target, σ_eff_ring boundary, or both?
+
+**Acceptance criteria.**
+
+| # | Criterion | Threshold |
+|:-:|:---|:---|
+| 1 | At least one attribution rule gives α/α₀ = 1 ± 10⁻⁶ at R64 proton | yes/no |
+| 2 | The same rule gives α/α₀ = 0 (within numerical noise) at R64 neutron | yes/no |
+| 3 | Universality across full R64 inventory (proton, neutron, deuteron, single u, single d, electron, ν, mesons) preserved | spread < 10⁻⁶ |
+| 4 | Under corrected attribution, σ_eff at Phase 10a boundary changes by a factor that closes a measurable fraction of the 102.7× gap | report ratio |
+
+**Possible outcomes.**
+
+- **A — Attribution fix closes the gap.**  An alternative rule
+  gives α universality at R64 tuples *and* rescales σ_eff at
+  signature boundary by a factor that brings it within reach
+  of Phase 7c's 116.  The metric formalism is rescued; the
+  R64 → strong-force path is intact, just mis-calibrated by a
+  quark-counting factor.
+- **B — Attribution fix is real but doesn't close the gap.**
+  An alternative rule fixes the α/α₀ = 9 anomaly (architecturally
+  important — pool item g resolved) but σ_eff at signature
+  boundary still doesn't reach 116.  Gap is structural, not
+  calibration.  Phase 11b (pairwise cross term) becomes the
+  next test.
+- **C — No attribution rule gives universality at R64 tuples.**
+  R64's u/d composition is structurally incompatible with the
+  Coulomb α formula in its current form.  Either the formula
+  needs revision or R64's primitive assignment is wrong (one
+  more architectural option to surface).
+
+### Phase 11b — Pairwise vs linear cross term [pool]
+
+**Status: queued behind 11a.**
+
+**Goal.**  Test whether replacing the linear cross term
+`σ·n_pt` with a pairwise quark-quark sum `σ·Σᵢⱼ qᵢqⱼ` gives
+qualitatively different V(r) for pp, pn, nn — particularly
+rescuing the deuteron (currently zero contribution from
+σ_pS_ring because n_pr(pn) = 0).
+
+**Why bounded.**  This is a one-script investigation: re-run
+Phase 10a's V(r) calculation with the cross-term substitution.
+No new metric structure, no new dimensions.  If pairwise
+counting changes the deuteron picture, that's a structural
+finding regardless of whether σ_eff magnitude closes the gap.
+
+### Why this is the right next track
+
+Track 10 closed by declaring the metric route exhausted, but the
+quark-counting question was raised explicitly by the user as a
+plausible source of factor-of-3 (or factor-of-9) error.  Pool
+item g has been silently deferred since Phase 7g.  Both Phase 11a
+(attribution) and 11b (pairwise) are bounded single-script tests.
+Worst-case outcome confirms metric exhaustion (no harm done);
+best case rescues the metric formalism.
+
+### Outputs
+
+- `outputs/track11_phase11a_attribution_audit.csv`
+- `outputs/track11_phase11a_alpha_ratios.png`
+- `findings-11.md` — Phase 11a writeup, frames 11b if relevant.
+
+---
+
 ## Track 6 — Flexible slot-configuration tool for shell-structure hypotheses
 
 **Status: Phase 6a complete; Track PAUSED.**
