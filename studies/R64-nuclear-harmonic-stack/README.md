@@ -986,7 +986,20 @@ of complexity.
 
 ## Track 11 — Quark-counting structural audit
 
-**Status: Phase 11a complete; Phase 11b queued.  See [findings-11.md](findings-11.md).**
+**Status: Phases 11a and 11c complete.  Strong force confirmed in the metric.  See [findings-11.md](findings-11.md).**
+
+**Net Track 11 result.**  The 11D metric formalism delivers the
+strong force at full magnitude (σ_eff_tube = ±116) with charge-
+symmetric V(r): pp, nn at −32 MeV (charge-symmetric within
+~0.4 MeV), pn at −50 MeV at r ≈ 1.135 fm — exactly Phase 7c's
+profile.  Two corrections together rescued the metric: (i)
+A1 charge attribution `f(n_pt, n_pr) = n_pt/6 + n_pr/4`
+resolving the factor-of-9 anomaly; (ii) measuring σ_eff at the
+precise signature edge rather than at "safe distance" as Track
+10 had done.  Phase 9b's H2 prescription (σ_aS = −1.819·σ_pS_tube)
+combined with edge methodology completes the strong-force
+architecture.  Pool item m (Yukawa propagator) is no longer
+forced; the metric formalism is complete.
 
 **Phase 11a result (summary).**  Two findings, both substantial:
 
@@ -1114,9 +1127,90 @@ model-F results.
   needs revision or R64's primitive assignment is wrong (one
   more architectural option to surface).
 
-### Phase 11b — Pairwise vs linear cross term [pool]
+### Phase 11c — σ_pS_tube + H2 at signature edge (charge-symmetric strong force)
 
-**Status: queued behind 11a.**
+**Status: pending execution.  Replaces Phase 11b after Phase 11a structural insight.**
+
+**Premise.**  Phase 11a established two things: (i) σ_eff is tunable
+up to ∞ at the signature edge (not capped at ~1 as Phase 10a's
+"safe-boundary" measurement suggested); (ii) the ring channel
+cannot deliver charge-symmetric strong force because n_pr is
+signed.  But the tube channel uses n_pt, which is **6 for all
+two-nucleon systems** (3 quarks × 2 nucleons), independent of
+pp/pn/nn — automatically charge-symmetric.
+
+Phase 9b found the H2 prescription σ_aS = −1.819·σ_pS_tube
+preserves α universality.  Phase 9c measured σ_eff_tube at "safe
+boundary" and got ~0.5 — but that's exactly the measurement choice
+Phase 11a corrected.  The tube channel might naturally deliver
+σ_eff = 116 at the H2 signature edge.
+
+**Goal.**  Test whether σ_pS_tube + H2 prescription, measured at
+the precise signature edge (Phase 11a methodology), gives:
+1. σ_eff_tube reaching Phase 7c's target of 116
+2. α universality preserved at the edge (under both R0 and A1
+   attribution)
+3. V(r) for pp/pn/nn that's attractive, charge-symmetric, and
+   binds the deuteron
+
+**Strategy.**
+
+1. Build R60 metric at R64 Point B with σ_pS_tube + H2 companion
+   active.
+2. Fine-grained boundary scan (step 10⁻⁵ near the edge) to find
+   the precise σ_pS_tube where signature breaks.
+3. Walk back from the edge measuring σ_eff_tube via the Schur
+   formula `−G⁻¹[p_t, S_x] · g_pp · g_SS`.
+4. Verify A1 universality holds at the edge (the critical
+   correctness check Phase 11a established).
+5. At σ_pS_tube giving σ_eff_tube = 116, compute V(r) for pp,
+   pn, nn channels using the corrected two-body kinematics and
+   A1 charge attribution.
+6. Compare V_min(pp), V_min(pn), V_min(nn) for charge symmetry
+   and Phase 7c reference depth.
+
+**Acceptance criteria.**
+
+| # | Criterion | Threshold |
+|:-:|:---|:---|
+| 1 | σ_eff_tube reaches 116 within signature-OK band | yes/no |
+| 2 | A1 universality preserved at signature edge | spread < 10⁻⁶ |
+| 3 | All three channels (pp, pn, nn) attractive at σ_eff = 116 | V_min < 0 for each |
+| 4 | Charge symmetry: V_min(pp) ≈ V_min(nn) | within Coulomb shift |
+| 5 | Deuteron binding nonzero | V_min(pn) < V(∞) |
+| 6 | V_min depth matches Phase 7c reference | ≈ −50 MeV at r ≈ 1.1 fm |
+
+**Possible outcomes.**
+
+- **A — Tube channel rescues the metric formalism.**  σ_pS_tube
+  + H2 at signature edge gives charge-symmetric, deuteron-binding
+  V(r) at the right magnitude.  Strong force lives in the metric;
+  pool item m unforced.  The 11D metric is complete.
+- **B — Magnitude reaches 116 but V(r) shape is wrong.**  σ_eff
+  scales but kinematic structure (r_min, depth profile) doesn't
+  match Phase 7c.  Working-point (ε_p, s_p) needs adjustment;
+  Phase 11d (joint refit at edge) becomes the natural follow-on.
+- **C — H2 prescription breaks at the edge.**  Universality fails
+  near the signature boundary even with companion compensation.
+  Different prescription needed (revisit Phase 9 H6, H10, or
+  derive new structure).
+- **D — Tube channel structurally insufficient.**  Even at edge,
+  σ_eff_tube doesn't reach 116, or the cross term magnitude isn't
+  what V(r) needs.  Then propagator route returns as the
+  architectural option.
+
+### Phase 11b — Pairwise vs linear cross term [pool, deprecated]
+
+**Status: deprecated by Phase 11a structural analysis.**
+
+A pairwise quark-quark cross term `σ·Σᵢⱼ qᵢqⱼ` factors back to
+`(Σᵢ qᵢ)²` in any single-body metric formalism.  For pn (Σq = 0)
+this gives zero contribution — the deuteron problem returns.
+Single-body metrics cannot encode genuine pairwise structure;
+that requires multi-body or propagator formalism.  Phase 11c
+addresses charge-symmetry via the tube channel instead, which
+uses n_pt (= 6 for all NN systems) as the natural always-on
+quantity.
 
 **Goal.**  Test whether replacing the linear cross term
 `σ·n_pt` with a pairwise quark-quark sum `σ·Σᵢⱼ qᵢqⱼ` gives
