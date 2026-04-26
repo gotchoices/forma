@@ -356,3 +356,123 @@ sheet-S channels available alongside the full aleph row, σ_eff is
 capped at ~1 by signature constraints.  The metric route is
 genuinely exhausted; propagator-based formalism (R64 pool item m)
 remains the architectural next step for strong-force magnitude.
+
+---
+
+## Phase 10b — Aleph-redundancy audit (full removal test)
+
+User-proposed simplification beyond Phase 10c: remove the aleph
+dimension entirely, replacing the aleph row with direct
+sheet-spacetime entries (σ_xt_t, σ_xr_t for each sheet).  If
+the 11×11 metric can simplify to effectively 10×10 with direct
+sheet-time couplings preserving α universality and the right α
+magnitude, aleph is removable.
+
+Script:
+[`scripts/track10_phase10b_aleph_redundancy.py`](scripts/track10_phase10b_aleph_redundancy.py)
+Output:
+[`outputs/track10_phase10b_aleph_audit.csv`](outputs/track10_phase10b_aleph_audit.csv)
+
+### F10b.1. Zeroing aleph collapses all charges to zero
+
+Setting all aleph row entries to zero (σ_ta, σ_at, σ_ra, σ_aS = 0)
+gives:
+
+- Signature OK ✓
+- α-spread = 0 (trivially)
+- **α(proton) = 0** (and α(electron), α(every charged mode) = 0)
+
+The proton's charge collapses because there's no metric path from
+`p_tube` to `time` once aleph is removed.  Charge generation is
+literally absent without the aleph mediation.  Universality holds
+trivially (zero = zero everywhere).
+
+### F10b.2. Direct sheet-time entries cannot recover α magnitude
+
+Three hypotheses tested with α-magnitude penalty included in the
+cost function (to filter out degenerate "all α = 0" solutions):
+
+| Hypothesis | n_params | best α(proton) | target α |
+|:---|:---:|:---:|:---:|
+| H_T1: only σ_pt_t | 1 | 1.5 × 10⁻³⁴ | 7.3 × 10⁻³ |
+| H_T2: σ_xt_t for all 3 sheets | 3 | 5.9 × 10⁻³² | 7.3 × 10⁻³ |
+| H_T3: σ_xt_t + σ_xr_t for all 3 sheets | 6 | 1.2 × 10⁻³⁴ | 7.3 × 10⁻³ |
+
+All three optimizations stuck at the magnitude-penalty floor
+(cost ≈ 0.10).  The optimizer could not find direct-coupling
+configurations that produce α(proton) at any meaningful fraction
+of 1/137 — values are 30+ orders of magnitude too small.
+
+### F10b.3. Why direct sheet-time can't replace aleph
+
+The structural reason: aleph's α-architecture has a specific
+Schur path that produces α at the right magnitude:
+
+`α ∝ σ_ta · σ_at / g_aa = √α · 4πα / 1 ≈ α`
+
+This is a *product* of two off-diagonals (σ_ta and σ_at) divided
+by a diagonal (g_aa = 1).  The product structure naturally
+produces α-magnitude coupling.
+
+Direct σ_pt_t entries enter the inverse metric as:
+
+`G⁻¹[p_t, t] ≈ -σ_pt_t / (g_pp · g_tt)`
+
+This is a single off-diagonal divided by two diagonals.  At
+R64 Point B with g_pp = ε_p² ≈ 0.04 and g_tt ≈ −1, the scaling
+behaves differently, and the optimizer cannot find a stable
+basin where α(proton) ≈ 1/137 with universality across the
+inventory.
+
+### F10b.4. Verdict
+
+**Aleph is structurally required for charge generation.**  Three
+independent pieces of evidence:
+
+1. **Without aleph, charge collapses** (F10b.1).  No metric path
+   from sheet-tube to time means no Coulomb coupling.
+2. **Direct sheet-time entries cannot replace aleph** at meaningful
+   α magnitudes (F10b.2).  Optimization stuck at 30+ orders below
+   target.
+3. **Phase 10c showed even partial aleph removal** (just σ_ra = 0)
+   breaks signature catastrophically.  Aleph is not a
+   convenience layer; it's structural.
+
+The user's "10D aleph-removal" simplification does not survive
+the test.  R60's 11D architecture is the minimum required for
+the EM sector.
+
+### F10b.5. What this finalizes for Track 10
+
+Combined results across Phase 10a, 10b, 10c:
+
+| Test | Result | Architectural conclusion |
+|:---|:---|:---|
+| 10a: σ_pS_ring as primary direct coupling | α-inert; σ_eff still capped ~1 | Ring channel is structurally clean (mass-channel) but magnitude-limited |
+| 10c: σ_ra = 0 (just remove ring-aleph) | Signature breaks, charge collapses | σ_ra is structural, not a convenience |
+| **10b: full aleph removal** | **No direct replacement found** | **Aleph itself is structurally required** |
+
+The architectural floor:
+- **11D is the minimum metric for MaSt's EM sector.**  Aleph
+  cannot be removed; σ_ra cannot be removed.
+- **Both tube and ring couple to aleph** — that's the structure.
+- **Direct sheet-S couplings are allowed** as additional channels
+  on top of the aleph baseline (Phases 9b, 10a), but capped at
+  σ_eff ~ 1 by signature constraints.
+- **Strong force magnitude (Phase 7c required σ_eff ≈ 116) cannot
+  fit in the metric**, regardless of which channels are activated.
+
+The architectural picture is now closed:
+
+| Sector | Mechanism |
+|:---|:---|
+| Coulomb (tube → aleph → t) | σ_at, σ_ta — derived in R62 D5 |
+| Magnetic (aleph → S) | σ_aS at α-magnitude — completes EM (Phase 8) |
+| Ring sector universality preservation | σ_ra = (s·ε)·σ_ta — required (Phase 10c) |
+| Direct sheet-S couplings | allowed with prescriptions, capped at σ_eff ~1 |
+| Strong force at full magnitude | **outside the metric** — propagator route |
+
+Track 10 (a, b, c) plus Track 9 (a, b, c, d) together exhaust the
+metric architecture for the strong sector.  Pool item m
+(Yukawa propagator extension) becomes the architecturally
+unavoidable next path.
