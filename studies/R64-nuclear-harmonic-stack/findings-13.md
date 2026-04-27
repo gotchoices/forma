@@ -1,9 +1,31 @@
 # R64 Pool item z (Step 1) — Neutron lifetime order-of-magnitude estimate
 
 **Status: Step 1 complete.  Result: G_F ≈ s_p · α² / m_p² to 0.5%
-at R64 Point A.  Major finding — weak coupling appears to emerge
-from the same structural ingredients that calibrate nucleon
-properties.**
+at R64 Point A.  This dimensional match is independent of
+subsequent walk-backs and survives intact.**
+
+> **Subsequent context (post Track 13b, 14, 17):** This finding
+> is independent of the strong-force question.  Tracks 13b and
+> 17 ruled out σ_pS_tube as the strong-force mechanism, and
+> Track 14 showed Point A's Ma compound formula gives only
+> ~1 MeV/n nuclear binding (not the 7-8 MeV/n volume term).
+> Those issues do NOT affect the G_F finding — `s_p · α² / m_p²`
+> is a dimensional relationship between calibrated parameters,
+> independent of V(r) shape, edge methodology, or QM gate.
+>
+> What survives:
+> - The 0.5% numerical match at Point A
+> - The dimensional uniqueness argument (only combination of
+>   nucleon-physics parameters with units of energy⁻²)
+> - The structural interpretation of n_pr/4 = T_z (echoed in
+>   Track 15)
+>
+> What's caveated:
+> - "Major finding" → "suggestive numerical relationship"
+>   (until step 2's matrix-element derivation completes)
+> - Step 2 (cross-sheet matrix element) was not run
+> - The match holds at Point A but Point A doesn't satisfy
+>   nuclear-chain binding (Track 14)
 
 ---
 

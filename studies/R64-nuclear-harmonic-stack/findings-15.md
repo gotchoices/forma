@@ -3,10 +3,30 @@
 **Status: complete (first pass).  Result: Ma compound + SEMF
 residual reproduces the nuclear binding chain to RMS 3.3 MeV
 across 18 nuclei (²H → ¹²⁰Sn).  All four SEMF coefficients
-emerge within 15–20% of literature.  The user's electroweak-style
-reframing — quantum-number structure of compound modes provides
-the isospin/spin/Pauli phenomenology while Ma compound provides
-the base binding — is quantitatively validated.**
+emerge within 15–20% of literature.**
+
+> **Important update (post Track 17):** The original framing of
+> this finding suggested σ_pS_tube + H2 at moderate magnitude
+> would deliver the volume term in mean-field.  Track 17
+> subsequently ran the residual sweep at moderate σ_pS_tube
+> and found **no V(r) trough emerges at any moderate magnitude**
+> — only the singular edge gives an attractive trough, and that
+> fails the QM gate (Track 13b).  **σ_pS_tube does NOT deliver
+> the volume binding mechanism in any honest regime.**
+>
+> What survives from this finding:
+> - The n_pr/4 = T_z mapping (F15.1) is exactly right.
+> - The SEMF residual fits SEMF coefficients in the right ballpark
+>   (15–20% of literature) — meaning the binding-curve shape is
+>   consistent with standard nuclear physics.
+> - The asymmetry coefficient a_a ≈ 20 MeV (F15.5) confirms
+>   isospin-energy interpretation of n_pr.
+>
+> What does NOT survive: that σ_pS_tube is the structural
+> mechanism behind the volume term.  The mechanism for the
+> 7-8 MeV/n volume saturation is **still open** as of this
+> review.  See findings-17.md and the architectural notes in
+> STATUS.md.
 
 ---
 
@@ -170,12 +190,17 @@ genuinely pay an energy cost for non-symmetric T_z**.
 ## What this implies for the previous over-claims
 
 - **σ_pS_tube + H2 at the singular edge (Track 11) is over-engineered.**
-  The volume binding (a_v ≈ 14 MeV/n) needs only a moderate σ_eff
-  via mean-field averaging, far from the singular edge.  Pool
-  item r (edge methodology) — the edge calibration is genuinely
-  a regulator artifact of demanding σ_pS_tube provide all
-  binding.  Done correctly, σ_pS_tube provides only the volume
-  term, which works at moderate magnitude.
+  The volume binding (a_v ≈ 14 MeV/n) does NOT come from σ_pS_tube
+  V(r) at any honest magnitude.  ~~The volume term needs only a
+  moderate σ_eff via mean-field averaging~~ — Track 17 ruled this
+  out: at moderate σ_pS_tube, V(r) has no trough at all (kinetic
+  term dominates; cross term too weak to compete).  Only the
+  singular edge gives an attractive V(r), which fails QM
+  (Track 13b).  **σ_pS_tube cannot be the volume-binding
+  mechanism.**  Pool item r (edge methodology) — the edge
+  calibration is genuinely a regulator artifact, confirmed by
+  Track 17.  The volume term's structural origin is **still
+  open**.
 - **Track 13b's QM-gate failure at σ_eff = −116 is consistent.**
   The deuteron doesn't need a V(r) bound state — Ma compound
   formation provides its binding.  σ_pS_tube at moderate σ_eff

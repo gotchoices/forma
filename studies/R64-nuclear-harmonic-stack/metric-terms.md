@@ -126,18 +126,39 @@ structural k).
 | σ_ra_p | −(sε)_p · σ_ta | −0.000438 |
 | σ_ra_ν | +(sε)_ν · σ_ta | +0.003759 |
 
-### New in R64: sheet-S coupling (strong-force activation)
+### New in R64: sheet-S coupling — **status reduced post audit**
 
 | Symbol | Value | Pinned/Free | Source |
 |--------|-------|:---:|--------|
-| σ_pS_tube | ±0.125050 (signature edge) | free *(or "edge-pinned")* | Phase 11c — sets σ_eff_tube = ±116 |
-| σ_aS | b · σ_pS_tube ≈ ∓0.227 | *derived* | H2 closed form (Phase 11d) |
-| σ_pS_ring | 0 (zero in R64 baseline) | **pinned** | Phase 10a — adds nothing of value at edge |
+| σ_pS_tube | 0 in baseline; tested at ±0.125 (Track 11) | **untested as architectural feature** | Track 11 attempt; ruled out as strong-force mechanism (Tracks 13b, 17) |
+| σ_aS | 0 in baseline; H2 prescription if σ_pS_tube active | derived from σ_pS_tube via b = −√α/k_p | Phase 11d (closed form), Phase 8 (α-magnitude reading) |
+| σ_pS_ring | 0 in R64 baseline | **pinned** | Phase 10a — α-inert; channel-asymmetric |
 
-**Edge-pinning interpretation**: σ_pS_tube is "free" in that we
-choose to operate at the signature edge.  Once the edge methodology
-is interpreted physically (pool item r), σ_pS_tube becomes pinned
-to a structural value, removing one degree of freedom.
+**Status of σ_pS_tube + H2 (post audit, April 2026):**
+
+The Track 11 reading — that σ_pS_tube + H2 at the signature edge
+delivers the strong force — has been formally walked back.  Two
+independent tests rule it out as a strong-force mechanism:
+
+- **Track 13b** (QM gate): the V(r) trough at σ_eff_tube = −116
+  produces 3 bound pn states (vs 1 deuteron observed), bound
+  nn/pp (vs unbound), B(²H) ≈ 30 MeV (vs 2.22 observed) at both
+  Points A and B.
+- **Track 17** (moderate σ_pS_tube sweep): at any σ_pS_tube
+  inside the signature band but away from the edge, V(r) is
+  REPULSIVE everywhere (kinetic-style term dominates).  No
+  attractive trough forms.  σ_pS_tube cannot be the volume-
+  binding mechanism in any honest regime.
+
+**What survives**: the H2 closed-form b = −√α/k_p as a
+universality-preservation prescription if σ_pS_tube were ever
+activated.  The math is real; the application as strong-force
+mechanism is what's ruled out.
+
+**Open**: pool item r (edge methodology — physical or regulator
+artifact?), pool item m (Yukawa propagator with geometric
+reading as compactification cutoff), pool item v (whether σ_pS
+plays a role in magnetic anomaly via second-order effects).
 
 ### A1 charge attribution (R64 quark composition)
 
@@ -157,8 +178,8 @@ to a structural value, removing one degree of freedom.
 | 1 | σ_at = 4πα |
 | 1 | σ_ta = √α (magnitude; signs are sheet conventions) |
 | 1 | σ_ra prescription = (s·ε)·σ_ta per sheet |
-| 1 | A = single-k symmetry: k = 2^(1/4)/(8π) |
-| 1 | b = H2 closed form: σ_aS = −8π·√α·2^(−1/4) · σ_pS_tube |
+| 1 | k empirical = 1.1803/(8π) (single-k symmetry).  *2^(1/4) speculation walked back per review.md.* |
+| 1 | b = H2 closed form: σ_aS = −√α/k_p · σ_pS_tube  *(if σ_pS_tube ever activated)* |
 | 1 | A1 charge attribution: f(n_pt, n_pr) = n_pt/6 + n_pr/4 |
 | **7** | **total pinned constraints** |
 
@@ -167,25 +188,30 @@ to a structural value, removing one degree of freedom.
 | Count | Description |
 |------:|-------------|
 | 2 | (ε_e, s_e) — electron sheet geometry |
-| 2 | (ε_p, s_p) — proton sheet geometry (Point B) |
+| 2 | (ε_p, s_p) — proton sheet geometry (Point A or Point B; **no unified value**) |
 | 2 | (ε_ν, s_ν) — neutrino sheet geometry |
-| 1 | K_p — kinematic mass prefactor (Point B) |
+| 1 | K_p — kinematic mass prefactor (different at Point A vs B) |
 | 1 | L_ring_e — electron-sheet ring scale |
-| 1 | L_ring_p — proton-sheet ring scale (R60 carryover, needs R64 update) |
+| 1 | L_ring_p — proton-sheet ring scale (R60 carryover, needs R64 update — pool item q) |
 | 1 | L_ring_ν — neutrino-sheet ring scale |
-| 1 | σ_pS_tube — strong-force activation magnitude (edge-pinned conjecturally) |
-| **11** | **total free parameters** |
+| **10** | **total free parameters** *(was 11 before σ_pS_tube was ruled out as architectural feature)* |
 
 Plus 1 input constant: **α** (the fine structure constant).
+
+**Note**: σ_pS_tube was previously listed here as "free, conjecturally
+edge-pinned."  Post audit (Tracks 13b, 17), σ_pS_tube is reduced to
+"tested and ruled out as strong-force mechanism."  It's not a
+free parameter we activate; it's a candidate we eliminated.  The
+strong-force mechanism is currently **unaccounted for** at the
+metric level (above the deuteron compound mode).
 
 ### How close are we to "1 free variable (α)"?
 
 | Stage | Free count | Notes |
 |-------|----------:|-------|
-| Today (R64 + Track 11) | 11 + α | Status quo |
-| If Clifford embedding pins (ε, s) curves (pool item s) | 8 + α (effective 5) | 6 sheet params → 3 effective DOFs along curves |
-| If σ_pS_tube edge-pinned (pool item r resolves) | 7 + α (effective 4) | Edge methodology becomes structural |
-| If three-sheet → S architecture (item t + Track 12) | as above | Adds σ_eS_tube, σ_νS_tube each edge-pinned |
+| Today (post audit) | 10 + α | σ_pS_tube ruled out, not a free param |
+| If Clifford embedding pins (ε, s) curves (pool item s) | 7 + α (effective 4) | 6 sheet params → 3 effective DOFs along curves |
+| If a unified working point exists (pools k, l, ae) | as above | (ε_p, s_p, K_p) at one point satisfying both deuteron AND nuclear chain — currently no such point |
 | If sheet-curve points derived from generation structure | 4 + α (effective 1) | Pool items k, e + sheet derivations |
 | If L_ring values derived from sheet scales | 0 + α | **Goal achieved** |
 
@@ -193,13 +219,20 @@ Plus 1 input constant: **α** (the fine structure constant).
 The "1 free variable (α)" goal is for MaSt's internal-force
 sector only.)
 
-We are at **11 free parameters**.  Reducing each requires its own
-structural derivation track.  Realistic intermediate target: **5
-free parameters** by deriving the proton-sheet geometry and
-edge-methodology interpretation (pool items l, q, r).  The
-"only α" goal requires deriving generation structure on each
-sheet — a major program that would supersede most of the current
-fit work.
+We are at **10 free parameters** post audit.  Reducing each
+requires its own structural derivation track.  Realistic
+intermediate target: **~5 free parameters** by deriving the
+proton-sheet geometry (pool items l, q) and Clifford embedding
+(pool s).  The "only α" goal requires deriving generation
+structure on each sheet — a major program that would supersede
+most of the current fit work.
+
+**Important caveat**: even with 10 free + α, the strong-force
+volume term (~7 MeV/n for heavy nuclei) is **not delivered by
+any pinned or free parameter currently in the architecture**.
+Resolving this requires either a new metric mechanism (pool m
+revival), a new compound-mode formula (pool ae extension), or
+acceptance of a nuclear-physics overlay outside MaSt.
 
 ---
 
@@ -207,11 +240,14 @@ fit work.
 
 1. **Signature**: exactly one negative eigenvalue (the t direction).
 2. **σ_ra prescription**: σ_ra_x = (s·ε)_x · σ_ta_x per sheet.
-3. **H2 prescription**: σ_aS = −8π·√α·2^(−1/4) · σ_pS_tube
-   (Phase 11d).  Required to keep α-universality preserved when
-   the sheet-S strong-force coupling is activated.
+3. **H2 prescription** (if σ_pS_tube ever activated): σ_aS =
+   −√α/k_p · σ_pS_tube ≈ −1.81892 · σ_pS_tube (Phase 11d).
+   Required to keep α-universality preserved.
+   *(Note: the original write-up promoted a 2^(1/4) speculation
+   to "structurally clean form."  This is walked back per
+   review.md Concern 5; the supported form is empirical k_p.)*
 4. **Single-k symmetry**: k_e = k_p = k_ν.  Empirical R60 value
-   1.1803/(8π) is within 0.75% of the structural 2^(1/4)/(8π).
+   1.1803/(8π) ≈ 0.04696.
 5. **A1 charge attribution**: at R64 quark composition, the
    p-sheet contribution to α is f(n_pt, n_pr) = n_pt/6 + n_pr/4.
    Replaces R0's raw n_pt projection.
@@ -219,10 +255,13 @@ fit work.
    (n_et − n_pt + n_νt)² for compounds touching multiple sheets.
    This is the R60 carryover formula and gives sums > 1 for
    mesons (a known limitation; pool item p).
-7. **Edge methodology**: σ_eff_tube reaches Phase 7c's −116 only
-   near the signature boundary (σ_pS_tube ≈ −0.12505).  Whether
-   this is a structural or numerical artifact is open (pool
-   item r).
+7. ~~**Edge methodology**~~: post-audit (Track 17), the
+   σ_eff_tube → −116 at signature edge is now strongly suspected
+   to be a regulator artifact, not a structural feature.  At
+   moderate σ_pS_tube the V(r) has no trough at all; only the
+   singular-edge limit gives one, and that fails the QM gate
+   (Track 13b).  Pool item r remains formally open but the
+   architectural reading has shifted to "regulator artifact."
 
 ---
 
