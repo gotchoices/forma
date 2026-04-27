@@ -469,3 +469,214 @@ outcome is informative.
 The Yukawa pivot suggested in F7e.6 is a viable separate route,
 but with the unit-translation gap unresolved, choosing it now
 would forfeit information that 7e′ would surface cheaply.
+
+---
+
+## Phase 11 — re-run with QM gate; key claims need to walk back
+
+Track 11 is presented as fully rescuing the metric route to the
+strong force.  The findings claim "the strong force lives in the
+11D metric" (F11c.5), "Pool item m is unforced" (F11c.5 #2), and
+"no new formalism required" (Track 11 net result).  These are the
+biggest claims in any R64 track, and they don't survive the
+checks Track 7 already established.
+
+### Concern 1 — Phase 7d's QM disqualifier was never re-applied
+
+Phase 11c's V(r) is *numerically identical* to Phase 7c's by
+construction (F11c.3: "Phase 7c was right all along; σ_t = −116
+was exactly the Schur σ_eff_tube at the σ_pS_tube + H2 signature
+edge").  This is presented as a positive — the metric reproduces
+the trough.  It is also a problem: Phase 7d already solved Phase
+7c's V(r) as a Schrödinger problem and found:
+
+- 3 bound states in pn (vs 1 deuteron observed)
+- nn and pp both bound (vs unbound in nature)
+- B(²H) = 30 MeV (vs 2.22 MeV — factor 13.5 too deep)
+- a_s wrong sign (+22 fm vs −23.7 fm)
+
+A V(r) that produces the same eigenvalue spectrum as Phase 7c's
+V(r) inherits the same QM failures.  Track 11 does not re-run
+Phase 7d on the metric-derived V(r); it doesn't acknowledge the
+prior result; the verdict "Pool item m is unforced" follows from
+"static trough matches" alone.  That inference is unsound.
+
+What 11c actually demonstrates is *the static-potential trough is
+reproducible from the metric*.  That is genuinely informative and
+worth keeping.  But it does not show the metric formalism is
+"complete" for the strong force, because the actual physical
+disqualifier in Track 7 lived at the QM level, not the static
+level.
+
+### Concern 2 — pp/nn binding contradicts observation
+
+F11c.2 reports V_min(pp) = −32.3 MeV and V_min(nn) = −32.7 MeV
+and frames this as "charge-symmetric" ✓.  Charge symmetry is
+preserved at the σ-coupling level, but the underlying claim is
+that the metric reproduces the strong force, and nature has both
+nn and pp unbound.  Reproducing depth ≈ 32 MeV in the nn channel
+isn't a victory; it's a quantitative disagreement with
+observation that the QM gate (Concern 1) would surface
+immediately.  The findings don't flag it.
+
+### Concern 3 — Phase 11e mis-labels extreme sensitivity as "stable"
+
+The 11e CSV (track11_phase11e_point_b_stability.csv) shows
+V_min(pn) sweep across (ε_p, s_p) near Point B:
+
+| ε_p | V_min(pn) (MeV) |
+|:-:|:-:|
+| 0.18 | **+214** |
+| 0.19 | +101 |
+| 0.2052 (Point B) | −50 |
+| 0.21 | −93 |
+| 0.22 | −178 |
+| 0.23 | **−255** |
+
+Spread = 469 MeV across a 12% ε_p range.  The script's stability
+threshold (5 MeV) is generous by two orders of magnitude relative
+to the actual variation.  The verdict "stable around Point B" is
+incompatible with these numbers.  The strong-force depth is
+**fine-tuned**, not robust — Point B sits on a steep slope where
+small parameter shifts move V_min by tens to hundreds of MeV.
+
+### Concern 4 — Phase 11f mass-prediction setup is wrong
+
+11f's CSV reports:
+
+| Particle | Predicted (MeV) | Target (MeV) | Off by |
+|:---|:-:|:-:|:-:|
+| R64 proton | 5534 | 938.3 | 5.9× |
+| R64 neutron | 5542 | 939.6 | 5.9× |
+| η | 1841 | 547.9 | 3.4× |
+| φ | 2077 | 1019 | 2.0× |
+
+The script uses `track9_params()` (with R60 model-F's L_ring_p =
+15.244 fm calibrated for the proton at *(1, 3)*) and feeds R64
+tuples *(3, +2)* into `mode_energy`.  R64's mass calibration is
+via `K_p · μ` (Track 1 Phase 1b), not via `2π·ℏc / (L · √k)`.
+11f mixes the two conventions and produces nonsense masses for
+R64 baryons.
+
+The α-attribution test in 11f is independent of L_ring_p (it
+depends only on G⁻¹ structure) and is valid.  But the mass
+column is methodologically broken and is not flagged in the
+findings.  As written, "full hadron inventory under the new
+strong-force architecture" has not been validated; only the
+α-attribution piece has.
+
+### Concern 5 — F11d's structural-form claim mixes derivation and speculation
+
+Phase 11d derives `b = −√α / k_p` from a clean first-order
+perturbation argument.  This part is solid and matches Phase 9b's
+empirical −1.81892 to 6 sig figs.  The findings then promote a
+second boxed form `b = −8π·√α / 2^(1/4)` based on the observation
+that R60's empirical k = 1.1803/(8π) is "within 0.75% of
+2^(1/4) = 1.18921".
+
+A 0.75% match is not a derivation.  The 2^(1/4) form would predict
+b ≈ −1.8054, which Phase 9b's 6-sig-fig result (−1.81892) would
+have caught as a 0.75% deviation — and did, by giving a different
+answer.  The findings text says "agreeing to within the same
+0.75%", which acknowledges the disagreement but boxes the
+speculation anyway.  This should be hedged or removed; the
+empirical k_p form is the supported result.
+
+### Concern 6 — "Edge methodology" deserves scrutiny, not adoption
+
+F11a.4 reports σ_eff_ring climbing as σ_pS_ring approaches the
+signature boundary: 0.27, 0.74, 1.5, 2.5, 7.0, 12.6, 24.5, 65.7,
+**116, 854**, ... over the last few thousandths of σ_pS_ring.
+The metric becomes degenerate at the boundary (one eigenvalue
+→ 0); G⁻¹ entries diverge there by definition.  Phase 11c
+requires σ_pS_tube tuned to six decimal places (0.125050) to land
+σ_eff_tube = 116.
+
+This is the textbook signature of a singular limit.  Two
+concerns:
+
+- *Mathematical*: physical observables at a metric singularity
+  are not well-defined.  Any value of σ_eff is reachable by
+  picking where on the diverging curve you sit; this isn't
+  derivation, it's choice of regulator.
+- *Empirical*: tiny perturbations in σ_pS_tube (5th decimal)
+  produce order-of-magnitude shifts in σ_eff (65 → 116 → 854).
+  No physical theory should require parameter precision below
+  the noise floor of the input parameters.
+
+Track 10's σ_eff cap of ~1 was characterized as a "measurement
+artifact" of taking a "safe distance" from the boundary.  An
+equally fair characterization is that staying away from the
+singular boundary is what makes σ_eff a *physical observable*
+in the first place; pushing toward the boundary makes σ_eff a
+*tunable artifact of regulator choice*.  Track 11's headline
+σ_eff = 116 result rests on the second framing without
+defending it.
+
+### Concern 7 — Track 10 floor results conflated with the σ_eff cap
+
+Track 10 had three substantive findings: 10a (ring-S is α-inert),
+10b (aleph cannot be removed; charges collapse without it), and
+10c (σ_ra cannot be removed; signature breaks).  Track 11
+correctly reverses Track 10's σ_eff-magnitude cap, but the
+findings' "Track 10's metric exhausted verdict is fully reversed"
+phrasing erases the 10b/10c floor results that are independent
+and still stand.  Findings-11.md should preserve this distinction
+explicitly.
+
+### What Track 11 has actually established
+
+Strip the over-claims and Track 11 still has real content:
+
+1. **A1 charge attribution** `f(n_pt, n_pr) = n_pt/6 + n_pr/4`
+   gives α-universality at machine precision across R64's quark
+   inventory.  This is a clean positive (pool item g closed).
+2. **Phase 11d's b = −√α / k_p closed form** for the H2
+   coefficient, derivable in a few lines of perturbation theory,
+   matching Phase 9b numerical to 6 sig figs.  This is structural
+   content even without the strong-force claim.
+3. **Phase 7c's σ_t = −116 has a metric origin** (Schur σ_eff at
+   the σ_pS_tube + H2 signature edge, R64 Point B).  The
+   *static-potential* trough is reproducible from the metric.
+
+These three results are worth keeping.  What needs to walk back:
+
+- "Strong force lives in the metric" → "static trough is
+  reproducible; QM observables not yet checked at the new
+  configuration."
+- "Pool item m is unforced" → still forced, until the QM gate is
+  re-applied.
+- "Metric formalism is complete" → not established; Phase 7d-style
+  validation on Phase 11c's V(r) is the missing test.
+
+### Recommended re-runs
+
+1. **Apply Phase 7d's Schrödinger machinery to Phase 11c's V(r)**.
+   The V(r) is numerically the same as Phase 7c's, so the
+   eigenvalue spectrum should be the same (3 bound states in pn,
+   bound nn/pp, B(²H) ~ 30 MeV).  If so, F11c.5 needs to walk
+   back; if surprisingly different, that's a new result worth
+   investigating.
+2. **Fix Phase 11f to use K_p · μ for masses** at R64 tuples, then
+   re-run the inventory.  Report whichever masses survive at Point
+   B; make the inventory check honest.
+3. **Re-frame Phase 11e** with the actual V_min(pn) spread (~470
+   MeV) and consider whether it disqualifies "structural"
+   language for Point B.
+4. **Trim F11d.1** to the supported `b = −√α / k_p` derivation
+   and either drop or hedge the 2^(1/4) speculation.
+5. **Address Concern 6 explicitly** — characterize whether σ_eff at
+   the signature boundary is a physical observable or a
+   regulator artifact.  This matters because Track 11's headline
+   result depends on the answer.
+
+### Net read
+
+Track 11 contains real findings worth preserving (A1, the H2
+closed form, the Schur identification of σ_t = −116).  But the
+narrative around them — "metric formalism is complete", "strong
+force is in the metric", "pool item m is unforced" — outpaces
+what was actually demonstrated.  The QM gate that disqualified
+the metric V(r) in Track 7 was never reapplied; until it is, the
+disqualifier still applies.  The track needs a re-run pass with
+the QM gate restored before the architectural claims can stand.

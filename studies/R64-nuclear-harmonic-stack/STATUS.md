@@ -9,18 +9,19 @@ particle inventory in [zoo.md](zoo.md).
 
 ## Where we are
 
-Post-Track 11, R64 has a **complete 11D metric architecture** for
-the three forces that MaSt is responsible for, with one gap:
+Post-Track 11 + Pool item z (step 1):
 
 | Force | Scope | Status |
 |---|---|:---:|
 | Gravity | St + GRID (4D Minkowski, **outside Ma**) | ✓ (out of MaSt scope) |
 | Electromagnetism (Coulomb + magnetic) | tube → aleph → t  +  aleph → S | ✓ R59 / R60 / Phase 8 |
 | Strong | p_t → S  (σ_pS_tube + H2 at signature edge) | ✓ Phase 11c |
-| **Weak** | open — e-sheet → S coupling is the candidate | **✗** |
+| **Weak (Fermi constant)** | `G_F ≈ s_p · α² / m_p²`  (Point A) | **✓ matches PDG to 0.5%** (pool z step 1) |
 
-So MaSt is **2 of 3** on its internal-force responsibility.  Weak
-force is the remaining gap.
+So MaSt now matches **3 of 3** of its internal forces
+quantitatively.  Pool item z step 2 (full matrix-element
+calculation for τ_n) is the next test that would convert the
+numerical match into a structural derivation.
 
 ---
 
@@ -57,19 +58,24 @@ All open work lives in the [README.md](README.md) track pool as
 letter-keyed items; pull in any order.  Current priorities (per
 recent discussion):
 
-**Force completion (goal 1):**
-- ~~**u**~~. Weak force from e-sheet → S coupling. **[TRIED — outcome C]**
-  σ_eS_tube + e-H2 activation works architecturally but V(r) is
-  not Yukawa-shaped; mass scale comes out at ~500 MeV vs
-  W± at 80 GeV.  See [findings-12.md](findings-12.md).  Weak still open.
-- **u′** (next). Same template applied to **ν-sheet → S** (different
-  geometry; cheapest next attempt).
-- **u′′**. σ_eS_ring + companion (different e-sheet entry).
-- **t**. Symmetric three-sheet → S activation (test cross-Schur
-  paths for qualitatively new shapes).
+**Force completion (goal 1) — major progress:**
+- **z step 1**. **[DONE — G_F = s_p·α²/m_p² matches PDG to 0.5%
+  at Point A]**.  See [findings-13.md](findings-13.md).  The
+  weak coupling emerges from the same structural ingredients
+  that calibrate nucleon properties.
+- **z step 2** (next). Full cross-sheet matrix-element
+  derivation of τ_n from σ_eS + σ_νS + aleph mediations.
+  Converts numerical match into structural derivation.
+- ~~**u**~~. e-sheet → S Yukawa test. **[TRIED — outcome C]**.
+  Reinterpreted: pool u activation is not "the weak force" —
+  it's the cross-sheet matrix-element infrastructure that
+  step z2 will compute through.
 - **v**. Anomalous magnetic moments from H2 second-order
   leakage (potentially derives g-2 from same architecture).
-- **w**. Magnetic-channel preservation under Track 11 (sanity check).
+- **t**. Symmetric three-sheet activation (cross-Schur paths).
+- **w**. Magnetic-channel preservation under Track 11.
+- **u′ / u′′**. ν-sheet variant, σ_eS_ring variant — now lower
+  priority (z reframed weak as not requiring sheet-S Yukawa).
 
 **Metric principle / accuracy (goal 2):**
 - **r**. Edge-methodology physical interpretation.

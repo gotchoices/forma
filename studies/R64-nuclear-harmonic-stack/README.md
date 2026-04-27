@@ -1372,6 +1372,29 @@ H2 mechanism that delivers strong/weak forces — no QFT loop
 calculation needed.  Major architectural finding.  R44 closed
 g-2 from torus geometry but did NOT test this mechanism.
 
+**z. Neutron lifetime from p-sheet shear + cross-sheet matrix
+element.**  **[model-G]**  *(Highest-stakes outstanding test.)*
+Tests whether MaSt predicts τ_n ≈ 880 s from structural ingredients.
+The hypothesis (electroweak unification reframing): EM and weak
+are two aspects of the same p-sheet structure — Coulomb is the
+shear-symmetric (proton/neutron-equal) charge winding, while weak
+is the *shear-asymmetric* mass detuning that makes the neutron
+metastable.  β decay is the relaxation channel, with rate set by
+mass gap + cross-sheet matrix element.
+**Method**: (i) compute Q-value from MaSt
+`m_Ma(3, −2) − m_Ma(3, +2) − m_e − m_ν` at the working point;
+(ii) apply standard phase-space integral (universal physics);
+(iii) construct the transition matrix element ⟨p, e, ν̄ \| H \| n⟩
+from cross-sheet structural couplings (σ_eS_tube + e-H2 from pool
+item u + σ_νS_tube + ν-H2); aleph mediates between sheets;
+(iv) compare predicted τ_n to observed 880 s.  Step (i) and (ii)
+are simple; step (iii) is the substantive new work.
+**Yields**: if order-of-magnitude match, weak force is
+"p-sheet shear + cross-sheet matrix elements" — the reframing
+is validated, model-G is ready.  If far off, we learn whether
+the matrix element formalism needs refinement or whether
+calibration (s_p) needs joint refit against τ_n.
+
 **w. Magnetic-channel preservation under Track 11 activation.**
 **[model-G]**  Verify that σ_eff_aS (the magnetic Schur coupling)
 at σ_pS_tube + H2 active still delivers α-magnitude magnetic
