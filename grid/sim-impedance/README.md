@@ -93,6 +93,43 @@ the answer to derive the answer.  Without a first-principles
 derivation of "how close is close enough," coincidence
 counting cannot constrain α.
 
+### α is topological, not per-junction (a structural lesson)
+
+The sin² energy-projection models in F9 (f_esc) and F11 (vector
+deficit) are **per-junction** quantities — and per-junction quantities
+are lattice-dependent.  Per-junction values shrink as 1/N² while the
+junction count along a 1D 2π loop grows only as N, so the total
+vanishes as 1/N in the continuum limit.  α cannot be that.
+
+For a 2π wrap distributed over N junctions, the trade-off between
+"many small bends" (fine grid) and "few large bends" (coarse grid)
+gives an invariant total only when the per-junction leakage is
+**linear** in the bend angle, not quadratic:
+
+| Model | Per-junction | Total over 2π loop |
+|---|---|---|
+| Linear (sin θ ≈ θ) | 2π/N | **2π — invariant** |
+| Quadratic (sin² θ ≈ θ²) | (2π/N)² | 4π²/N → 0 |
+
+[F12 F3](F12-charge-per-radian.md) implicitly uses the linear model
+and recovers a clean per-radian charge rate of √(α/π).  This is
+consistent with α being a topological invariant of the 2π wrap.
+The quadratic (sin²) model used in F9/F11 was appropriate for
+*energy projection* but not for *charge accumulation* — charge is
+linear in winding (Q = e · n_winding), so the per-radian quantity
+is the right level for α.
+
+**Implication:** future α-derivation work should target per-2π-wrap
+(topological) quantities, not per-junction (geometric) ones.  The
+closed-circle problem in F12 (α sets L → L sets geometry → geometry
+sets α) is specifically an artifact of the per-junction framing;
+a per-2π-wrap topological calculation does not need to fix L and
+so does not close the circle.  This aligns the program with A6
+(α as the cost of the *minimal vortex* — the topological object,
+not its lattice rendering), with R19/R55/R59 (wrapping integers
+on compact dimensions), and with [`foundations.md`](../foundations.md)
+Q2 (ζ–α consistency — both topological quantities).
+
 ### Viable pathways remain
 
 The sim-impedance study tested junction geometry, not all
