@@ -3,7 +3,9 @@
 Eric Reiter's threshold model proposes that the quantization we
 observe in experiments is not a fundamental property of nature
 but an illusion created by threshold detectors acting on
-classical waves.  This primer explains the theory, catalogs the
+classical waves.  In Reiter's view, the threshold property is
+not unique to detectors — it is universal, a feature of matter
+itself.  This primer explains the theory, catalogs the
 experimental claims, and examines where the ideas touch — and
 diverge from — our Ma (six-dimensional material space) model of particles as confined light.
 
@@ -25,7 +27,14 @@ detector clicks because a single quantum delivered all of its
 energy at once.  The fundamental constants h (Planck's constant),
 e (electron charge), and m_e (electron mass) represent
 indivisible quanta: you cannot have half a photon, half a charge,
-or half an electron mass.
+or half an electron mass.  (Reiter notes that m_e is just one
+example; in his framework m can be a threshold mass for protons,
+neutrons, helium, etc., as evidenced by the alpha-split tests
+discussed below.)
+
+*Notation:* throughout this primer, ν (Greek nu) denotes
+frequency and v (Latin vee) denotes velocity.  The two are
+visually similar in some fonts but always distinct.
 
 ### The threshold reinterpretation
 
@@ -78,7 +87,7 @@ coincidence from a single emitted pulse.
 Planck wrote (1911): emission is quantized, but absorption is
 continuous.  Lenard (1902) proposed a "trigger hypothesis" for
 the photoelectric effect.  Sommerfeld and Debye (1913) explored
-an electron spiraling inward during resonant absorption.
+a charge-wave gaining kinetic energy during resonant absorption.
 Millikan (1947) described the loading theory but called it
 "terribly difficult to conceive."  Reiter argues that physics
 abandoned the loading theory prematurely, partly because
@@ -115,10 +124,11 @@ only these ratios and therefore cannot distinguish between
 quantized and sub-quantized amounts.
 
 Quoting Reiter: "Visualize a small sample volume of that initial
-emission and realize that its e/m ratio is conserved.  In that
-sample volume, let us imagine a hundredth of the original e and a
-hundredth of the original m.  Now realize those hundreds will
-cancel to deliver the ratio e/m, the way our experiments read."
+emission (after the wave spreads in space) and realize that its
+e/m ratio is conserved.  In that sample volume, let us imagine
+a hundredth of the original e and a hundredth of the original m.
+Now realize those hundreds will cancel to deliver the ratio e/m,
+the way our experiments read."
 
 The one class of experiments that *does* measure e independently
 (not as a ratio) is the Millikan oil-drop experiment and its
@@ -126,6 +136,13 @@ relatives.  But these experiments use macroscopic masses (oil
 drops, atoms in bulk), where an ensemble threshold effect can
 rally charges toward multiples of e regardless of whether free-
 space charge is truly quantized.
+
+A similar argument applies to h.  The blackbody experiment
+extracts the threshold value of h independently of the other two
+constants; Planck's formula does not contain h/e or h/m, but it
+does contain h/k (where k is Boltzmann's constant), which can be
+treated thermodynamically along the same lines.  In Reiter's
+framing, k might also be a threshold constant.
 
 
 ---
@@ -170,11 +187,17 @@ Reiter reports coincidence rates *far* exceeding chance:
 
 ### Conditions where the effect appears (and doesn't)
 
-The unquantum effect is not universal.  Reiter reports:
+The unquantum effect is not universal — it is conditional on
+specific properties of both the source and the detector.  Reiter
+emphasizes that the effect's accessibility varies with the
+detector's response characteristics, the source isotope, and
+several environmental factors.  Reiter reports:
 
 - **Works** with ¹⁰⁹Cd (88 keV), ⁵⁷Co (122 keV), ²²Na (511
   keV annihilation) — all cases where the detector's
   photoelectric efficiency exceeds its Compton efficiency.
+  (The condition is a property of the detector, not of the
+  gamma source alone.)
 - **Does not work** with ¹³⁷Cs (662 keV), where Compton
   scattering dominates.  This null result is consistent with
   Reiter's model: Compton scattering recoils the electron,
@@ -182,27 +205,32 @@ The unquantum effect is not universal.  Reiter reports:
 - **Does not work** with ²⁴¹Am gamma rays (59 keV from alpha
   decay) — despite high photoelectric efficiency.  Reiter
   attributes this to the temporal properties of alpha-decay
-  gamma emission.
+  gamma emission, and notes that the effect is in any case
+  more difficult to see at this energy due to noise and reduced
+  pulse-height resolution.
 - **Sensitive to temperature**: liquid-nitrogen-cooled aluminum
   scatterer produces ~50% more coincidences (coherent
   Rayleigh scattering enhanced by reduced thermal motion).
 - **Sensitive to chemical state**: ¹⁰⁹Cd in salt form produces
   5× more coincidences than in metallic form (attributed to
   greater coherence from crystalline order).
-- **Sensitive to distance**: falls off as the classical wave
-  spreads.
+- **Distance dependence is non-trivial**: with most isotopes the
+  effect falls off as the classical wave spreads, but with
+  ¹³⁷Cs the effect has been seen at greater distances — so the
+  geometric falloff is not a simple universal rule.
 
 ### The alpha-ray split
 
-The ²⁴¹Am alpha-split experiment is particularly striking.  An
-alpha particle (helium nucleus, 5.5 MeV kinetic energy) passes
-through gold leaf.  Two silicon surface-barrier detectors record
-coincidences at 105× chance.  The pulse-height pairs show that
-most splits are near half-height (energy roughly divided
-between the two detectors), but six events clearly exceed
-particle-energy conservation — both detectors registering more
-than half the original energy.  Even counting only those six,
-the rate exceeds chance by 4×.
+The ²⁴¹Am alpha-split experiment is particularly striking.  By
+orthodox QM, an alpha particle (helium nucleus, 5.5 MeV kinetic
+energy) incident on a gold leaf either passes through or
+reflects.  In Reiter's experimental setup, two silicon
+surface-barrier detectors record coincidences at 105× chance.
+The pulse-height pairs show that most splits are near half-height
+(energy roughly divided between the two detectors), but six
+events clearly exceed particle-energy conservation — both
+detectors registering more than half the original energy.  Even
+counting only those six, the rate exceeds chance by 4×.
 
 This matters because:
 - At 5.5 MeV, there is not enough energy to split a helium
@@ -210,7 +238,10 @@ This matters because:
 - The events exceeding energy conservation cannot be explained
   by particle splitting.
 - Reiter interprets this as a helium matter-wave splitting
-  classically and loading pre-loaded detectors.
+  classically and loading pre-loaded detectors.  He notes that
+  helium-like structure is, in a sense, present in every element
+  past hydrogen (not only in the silicon detectors), so the
+  pre-loaded "sink" is broadly available in matter.
 
 
 ### Status and caveats
@@ -229,10 +260,14 @@ would overturn a century of quantum mechanics.  The absence of
 replication is the single most important caveat.  Reiter
 attributes this to the narrow experimental window (specific
 isotopes, specific detector types, specific geometries) and to
-institutional resistance.
+institutional resistance: in the mindset of current quantum
+theory, the effect appears impossible *a priori*, and the work
+has therefore been routinely set aside rather than investigated
+on its own terms.
 
-The work should be treated as an interesting open claim deserving
-of independent testing, not as established physics.
+The work should be treated as an interesting open claim that has
+not yet been widely accepted but deserves objective independent
+review and replication, rather than dismissal.
 
 
 ---
