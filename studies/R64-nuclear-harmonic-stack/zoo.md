@@ -41,19 +41,31 @@ attribution rule.
 
 ---
 
-## Two-nucleon compounds (Track 11c strong force)
+## Two-nucleon compounds — **partial; QM gate pending**
 
-V(r) at σ_eff_tube = −116, σ_pS_tube + H2 active:
+> **Walk-back (per review.md Concerns 1, 2):**  The original
+> framing presented these V(r) values as a "strong force in
+> metric" success.  In fact: (a) Phase 7d already showed
+> Phase 7c's V(r) — which Phase 11c reproduces numerically —
+> fails the QM gate (3 bound pn states, bound nn/pp, B(²H) ≈ 30 MeV
+> vs 2.22 observed); (b) V_min(nn) = −32.7 MeV would imply nn
+> is bound, contradicting nature.  Track 11 did not re-apply the
+> QM gate.  Track 13b is the proper test.
 
-| Channel | tuple | Observed (per-pair) | Predicted V_min | r_min | Match |
+V(r) at σ_eff_tube = −116, σ_pS_tube + H2 active **at Point B**
+(static potential only, QM not yet applied):
+
+| Channel | tuple | Observed | V_min (static) | r_min | Status |
 |---|---|---:|---:|---:|:---:|
-| pp | (6, +4) | repulsive at r ≈ 1 fm | **−32.31 MeV** at 1.137 fm | 1.137 fm | ✓ |
-| **pn (deuteron)** | (6, 0) | bound at ≈ −2.2 MeV (deuteron); strong-channel ≈ −50 MeV | **−50.15 MeV** at 1.135 fm | 1.135 fm | ✓ |
-| nn | (6, −4) | (no bound state, but channel attractive) | **−32.72 MeV** at 1.130 fm | 1.130 fm | ✓ |
+| pp | (6, +4) | unbound at NN level | **−32.31 MeV** | 1.137 fm | ⚠ static trough conflicts with unbound observation |
+| pn (deuteron) | (6, 0) | bound at −2.22 MeV | **−50.15 MeV** | 1.135 fm | ⚠ static depth ≈ 23× observed binding |
+| nn | (6, −4) | unbound | **−32.72 MeV** | 1.130 fm | ⚠ static trough conflicts with unbound observation |
 
-Charge symmetry: V_min(pp) ≈ V_min(nn) within 0.4 MeV.  pn deeper
-because of the Ma-side asymmetry (n_pr = 0 minimizes the m_Ma
-formula).  Phase 7c reference profile reproduced exactly.
+The static potential is the same as Phase 7c's, which Phase 7d
+showed gives 3 bound pn states and bound nn/pp.  The metric
+reproduces this V(r); applying the QM gate to it is needed to
+characterize what the metric architecture actually predicts at
+the level of observable spectra.
 
 ---
 
@@ -141,23 +153,19 @@ interpretive issue, not a mass error.
 
 ---
 
-## Force coverage
-
-MaSt is responsible for the three internal forces (compact-
-dimension origin); gravity comes from St + GRID (the 4D
-spacetime block plus lattice curvature) and is outside MaSt's
-scope.
+## Force coverage (post-walkback)
 
 | Force | MaSt scope | Status |
 |---|:---:|:---:|
 | Gravity | no (St/GRID) | ✓ outside scope |
 | Electromagnetism (Coulomb + magnetic) | yes | ✓ R59/R60/Phase 8 |
-| Strong | yes | ✓ Phase 11c |
-| **Weak** | yes | **✗ open — Track 12** |
+| Strong | yes | ⚠ **partial** — static V(r) trough metric-derivable; QM gate not yet applied |
+| Weak (Fermi constant scaling) | yes | ⚠ **0.5% G_F match (pool z step 1)**; matrix-element derivation pending |
 
-Track 12 (e-sheet → S coupling, weak-force candidate) is the
-single remaining metric-architecture gap for MaSt's
-internal-force responsibility.
+Both strong and weak have informative-but-not-validated results.
+Tracks 13b (QM gate) and pool z step 2 (matrix element) will
+decide whether the metric architecture actually delivers each
+force at the QM level.
 
 ---
 

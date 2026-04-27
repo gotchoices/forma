@@ -9,19 +9,36 @@ particle inventory in [zoo.md](zoo.md).
 
 ## Where we are
 
-Post-Track 11 + Pool item z (step 1):
+Post-Track 11 + Pool item z (step 1), with [review.md](review.md)
+critical-review walk-backs applied:
 
 | Force | Scope | Status |
 |---|---|:---:|
 | Gravity | St + GRID (4D Minkowski, **outside Ma**) | ✓ (out of MaSt scope) |
 | Electromagnetism (Coulomb + magnetic) | tube → aleph → t  +  aleph → S | ✓ R59 / R60 / Phase 8 |
-| Strong | p_t → S  (σ_pS_tube + H2 at signature edge) | ✓ Phase 11c |
-| **Weak (Fermi constant)** | `G_F ≈ s_p · α² / m_p²`  (Point A) | **✓ matches PDG to 0.5%** (pool z step 1) |
+| Strong (static potential trough) | p_t → S  (σ_pS_tube + H2 at signature edge), Point B | ⚠ **partial — V(r) reproducible, QM gate not yet passed** |
+| Weak (Fermi constant, scaling) | `G_F ≈ s_p · α² / m_p²`  (Point A) | ⚠ **0.5% numerical match; matrix-element derivation pending** |
 
-So MaSt now matches **3 of 3** of its internal forces
-quantitatively.  Pool item z step 2 (full matrix-element
-calculation for τ_n) is the next test that would convert the
-numerical match into a structural derivation.
+**Important caveats** (from critical review, ack. April 2026):
+- Track 11's "strong force in the metric" claim outpaces what was
+  demonstrated.  Phase 11c reproduced Phase 7c's static V(r), but
+  Phase 7d had already shown that V(r) fails the QM gate (3 bound
+  pn states vs 1 deuteron observed; nn/pp bound vs unbound; B(²H)
+  ≈ 30 MeV vs 2.22 MeV observed).  Track 11 didn't re-apply the
+  QM gate; until it does, the strong-force claim must be hedged
+  to "static-potential trough is metric-derivable."
+- The "edge methodology" (σ_eff diverging at signature boundary)
+  is a textbook singular limit; physical observables there are
+  regulator-dependent, not structural.  Pool item r is needed to
+  decide whether this is a real architectural feature or
+  artefact.
+- Phase 11e's "stable around Point B" claim is incompatible with
+  the actual V_min(pn) spread (~470 MeV across 12% ε_p variation).
+  Point B is fine-tuned, not robust.
+- Pool item z step 1's G_F match is **independent of these
+  concerns** — it's a dimensional relationship between calibrated
+  parameters that doesn't depend on V(r) shape, edge methodology,
+  or the QM gate.  This finding survives intact.
 
 ---
 
@@ -100,8 +117,19 @@ recent discussion):
 **Goal 4 (derive every metric term from first principles)** is
 deferred to a separate study after model-G stabilizes.
 
-**No active blockers.**  The architecture is complete enough to
-draft model-G; remaining items are refinements and extensions.
+**Outstanding gates before model-G can be drafted:**
+- Concern 1: re-apply Phase 7d Schrödinger gate to Phase 11c's
+  V(r); honestly characterize whether the static trough survives
+  the QM check.
+- Concern 6: edge methodology — physical observable or regulator
+  artifact?
+- Concern 4: re-do Phase 11f mass inventory using `K_p · μ`
+  (R64 convention) instead of model-F L_ring.
+- Track 13b (proposed): Point A unified-working-point validation,
+  with QM gate.
+
+Once these gates clear (or are honestly characterized), model-G
+draft can begin.
 
 ---
 

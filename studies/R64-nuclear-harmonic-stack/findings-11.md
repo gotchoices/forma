@@ -1,24 +1,57 @@
 # R64 Track 11 — Quark-counting structural audit
 
+> **Critical-review walk-back applied (April 2026).**  This file
+> originally contained over-claims that didn't survive the
+> review in [review.md](review.md).  The headline claims
+> ("strong force lives in the metric", "pool item m unforced",
+> "metric formalism is complete") have been walked back.  What
+> Track 11 actually established is preserved below; what it
+> claimed but did not demonstrate is now hedged.  Findings F11c.5
+> in particular needed full revision.
+
 Track 11 audits whether R64's u/d quark decomposition introduced a
 hidden factor-of-3 (or factor-of-9) error in the α-Coulomb formula
 or the strong-force cross term, before declaring the metric route
 exhausted (Track 10's verdict).
 
-**Phase 11a result: two separate findings, both substantial.**
+**What Track 11 actually established (post-review):**
 
-1. **Attribution fix is real.**  A charge-function projection
+1. **A1 charge attribution.**  A projection
    `f(n_pt, n_pr) = n_pt/6 + n_pr/4` gives α universality at
-   machine precision across the full R64 inventory (single
-   quarks, baryons, two-nucleon compounds, leptons).  The
-   factor-of-9 anomaly at the R64 proton is resolved.  Pool
-   item g is closed.
-2. **σ_eff_ring is NOT capped at ~1.**  The Schur-effective
-   coupling diverges as σ_pS_ring approaches the signature
-   boundary.  At σ_pS_ring ≈ 0.1251 (within the signature-OK
-   band) σ_eff_ring crosses Phase 7c's target of 116.  The
-   "metric capped at σ_eff ~1" finding from Phase 10a was a
-   measurement choice, not a structural ceiling.
+   machine precision across R64's quark inventory (single quarks,
+   baryons, two-nucleon compounds, leptons).  Pool item g closed.
+   *This finding stands.*
+2. **H2 closed form `b = −√α/k_p`.**  Phase 11d derives the H2
+   companion coefficient from a clean first-order perturbation of
+   G⁻¹.  Matches Phase 9b's empirical −1.81892 to 6 significant
+   figures.  *This finding stands.*  (The 2^(1/4) speculation in
+   the original F11d.1 box has been removed — see walk-back
+   notes inline.)
+3. **σ_t = −116 has a metric origin.**  Phase 7c's empirical σ_t
+   value is identified with the Schur σ_eff_tube at the
+   σ_pS_tube + H2 signature edge for R64 Point B.  *The connection
+   stands; what it implies physically is more limited than the
+   original phrasing suggested — see Concern 1 below.*
+
+**What Track 11 claimed but did NOT demonstrate (per review):**
+
+- That "the strong force lives in the metric."  Phase 11c
+  reproduced the *static* V(r) trough, not the QM-validated
+  spectrum.  Phase 7d had already shown the static V(r) gives 3
+  bound pn states (vs 1 deuteron observed), bound nn/pp (vs
+  unbound), and B(²H) ≈ 30 MeV (vs 2.22 MeV).  Track 11 did not
+  re-apply that gate.  Until it does, the strong-force claim is
+  not established.
+- That pool item m (Yukawa propagator) is "unforced."  It remains
+  potentially needed; the QM gate on Phase 11c's V(r) decides.
+- That the architecture is complete.  Not established by Track 11;
+  several gates remain (see review.md).
+
+**Edge-methodology caveat:** the σ_eff_tube = 116 result requires
+σ_pS_tube tuned to 6 decimal places, sitting at a metric singular
+limit (one eigenvalue → 0).  σ_eff diverges there by
+construction.  Whether this represents a structural feature or a
+regulator artifact is open (pool item r).
 
 **However**, even at σ_eff_ring = 116, V(r) does not deliver
 charge-symmetric strong-force binding.  The ring channel is
@@ -547,30 +580,16 @@ $$
 \boxed{\;b \;=\; -\frac{\sqrt{\alpha}}{k_p}\;}
 $$
 
-**Further structural simplification (user-noted).**  R60 model-F's
-universal tube coupling is empirically `k = 1.1803/(8π)`, but
-1.1803 is within 0.75% of `2^(1/4) = 1.18921`.  The structurally
-clean form is:
-
-<!-- k_p = 2^(1/4) / (8π) -->
-$$
-k_p \;=\; \frac{2^{1/4}}{8\pi}
-$$
-
-which gives the H2 prescription a fully closed-form expression in
-α alone (no fit constants):
-
-<!-- b = -8π · √α / 2^(1/4) -->
-$$
-\boxed{\;b \;=\; -\,8\pi \cdot \sqrt{\alpha} \cdot 2^{-1/4}\;}
-$$
-
-The 0.75% drift between R60's empirical 1.1803 and the structural
-2^(1/4) is a calibration artifact from R60's fitting; with the
-structural value, b ≈ −1.8054 (vs Phase 9b's −1.81892, agreeing
-to within the same 0.75%).  The 4th-root structure is suggestive
-of a tube-cycle quotient, similar to how `4π` appears in α from
-the unit-sphere Coulomb integration.
+**Speculation (walked back per review.md Concern 5):** the
+observation that R60's empirical k = 1.1803/(8π) is "within 0.75%
+of 2^(1/4)/(8π) = 1.18921/(8π)" was originally elevated to a
+"structural form" `b = −8π·√α·2^(−1/4) ≈ −1.8054`.  Phase 9b's
+6-sig-fig empirical −1.81892 disagrees with this at the same
+0.75% level — i.e. the speculation predicts a number Phase 9b
+already knows is wrong.  A 0.75% match is not a derivation; the
+supported result is the empirical-k_p form `b = −√α/k_p`.  The
+2^(1/4) connection may be real but is not established by what
+this study has demonstrated.
 
 ### F11d.2. Numerical verification
 
