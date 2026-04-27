@@ -16,7 +16,7 @@ critical-review walk-backs applied:
 |---|---|:---:|
 | Gravity | St + GRID (4D Minkowski, **outside Ma**) | ✓ (out of MaSt scope) |
 | Electromagnetism (Coulomb + magnetic) | tube → aleph → t  +  aleph → S | ✓ R59 / R60 / Phase 8 |
-| Strong (static potential trough) | p_t → S  (σ_pS_tube + H2 at signature edge), Point B | ⚠ **partial — V(r) reproducible, QM gate not yet passed** |
+| Strong (static potential trough) | p_t → S  (σ_pS_tube + H2 at signature edge) | **✗ — V(r) reproducible from metric, but QM gate FAILS** at both Point A and Point B (3 bound pn states vs 1; bound nn/pp; B(²H) 6.6× too deep at Point A, 13× at Point B; see [findings-13b.md](findings-13b.md)) |
 | Weak (Fermi constant, scaling) | `G_F ≈ s_p · α² / m_p²`  (Point A) | ⚠ **0.5% numerical match; matrix-element derivation pending** |
 
 **Important caveats** (from critical review, ack. April 2026):
@@ -118,18 +118,23 @@ recent discussion):
 deferred to a separate study after model-G stabilizes.
 
 **Outstanding gates before model-G can be drafted:**
-- Concern 1: re-apply Phase 7d Schrödinger gate to Phase 11c's
-  V(r); honestly characterize whether the static trough survives
-  the QM check.
+- ~~Concern 1: re-apply Phase 7d Schrödinger gate to Phase 11c's
+  V(r).~~  **[Track 13b complete — FAIL at both Point A and Point B.
+  See [findings-13b.md](findings-13b.md).  Strong-force-in-metric
+  claim formally walked back.]**
 - Concern 6: edge methodology — physical observable or regulator
-  artifact?
+  artifact?  Track 13b strongly suggests artifact.
 - Concern 4: re-do Phase 11f mass inventory using `K_p · μ`
   (R64 convention) instead of model-F L_ring.
-- Track 13b (proposed): Point A unified-working-point validation,
-  with QM gate.
+- Pool item m revived: Yukawa long-range extension — propagator-
+  based path.  Now back on the critical path since the metric-V(r)
+  route failed the QM gate.
+- Alternative: revisit R29's compound-mode framework — maybe the
+  deuteron *is* a (6, 0) Ma mode and "strong force as V(r) bound
+  state" was a category error.
 
-Once these gates clear (or are honestly characterized), model-G
-draft can begin.
+Model-G draft cannot begin until the strong-force question is
+re-resolved (currently: open, with metric-V(r) route eliminated).
 
 ---
 
