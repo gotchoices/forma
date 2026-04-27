@@ -4,7 +4,9 @@
 **Model era:** [model-F](../models/model-F.md). 11D architecture
 with geometric α-coupling, Z₃ quark confinement on the proton
 sheet, and per-sheet Dirac–Kähler spin.  See
-[`model-F.md`](../models/model-F.md) for the complete model card.
+[`model-F.md`](../models/model-F.md) for the complete model card,
+and [`derivations.md`](derivations.md) for the analytical
+derivation chain (D1–D11) that grounds the claims below.
 
 ---
 
@@ -72,9 +74,9 @@ active sheet from its Dirac–Kähler spinor content.
 | **Outputs** | 14/16 non-input particles within 1.12%; nuclear masses ≤ 1.4%; α_Coulomb = Z² α exact; 3 lepton generations; ν oscillation exact; SM taxonomy (lepton/meson/baryon) emergent from sheet count |
 | **Stable particles** | Exact eigenmodes (electron, proton as (3, 6), neutrino mass eigenstates) |
 | **Unstable particles** | Near-misses with gaps correlated to instability |
-| **Proton structure** | (3, 6) Z₃-confined bound state of three (1, 2) quark constituents at 120° offsets (derived, R60 Track 16) |
-| **Spin mechanism** | Per-sheet Dirac–Kähler → each active sheet contributes spin ½; compound modes compose via SU(2) angular-momentum addition (R62 derivation 7d) |
-| **Charge mechanism** | Topological (GRID); composite rule gives α_Coulomb = (n_et − n_pt/gcd(n_pt,n_pr) + n_νt)² × α |
+| **Proton structure** | (3, 6) Z₃-confined bound state of three (1, 2) quark constituents at 120° offsets (derived, [R60 Track 16](../studies/R60-metric-11/findings-16.md)) |
+| **Spin mechanism** | Per-sheet Dirac–Kähler → each active sheet contributes spin ½; compound modes compose via SU(2) angular-momentum addition ([R62 derivation 7d](../studies/R62-derivations/derivation-7d.md)) |
+| **Charge mechanism** | Topological (GRID); composite rule gives α_Coulomb = (n_et − n_pt/gcd(n_pt,n_pr) + n_νt)² × α ([R62 derivation 10b](../studies/R62-derivations/derivation-10b.md)) |
 | **Testable** | Σm_ν ≈ 125 meV; 0νββ at |m_ββ| ~ 10–30 meV; Ma_ν ring L₄ ≈ 42 μm |
 
 ---
@@ -132,6 +134,13 @@ spatial motion.  Massive particles reserve some for internal
 circulation and can never reach c — there is always some
 frequency left, some rest mass, some velocity budget used
 internally.
+
+The rigorous version of this argument — confined photon → rest
+mass + inertia + quantized angular momentum, from special
+relativity, E = hf, and standing-wave boundary conditions
+alone — is [R62 D1](../studies/R62-derivations/derivation-1.md).
+The Kaluza-Klein generalization to a 2-torus that produces a
+gauge field along with the mass is [R62 D2 / D3 / D4](../studies/R62-derivations/derivation-2.md).
 
 
 ## 2. The spectrum
@@ -209,7 +218,7 @@ each serves a derived structural role:
 - **3 tube↔ℵ couplings** at σ_ta = √α — deliver α from each
   sheet to the spacetime embedding
 - **3 ring↔ℵ couplings** at σ_ra = (sε)·σ_ta — structurally
-  derived (R60 Track 7), not free
+  derived ([R60 Track 7](../studies/R60-metric-11/findings-7.md)), not free
 - **1 ℵ↔t coupling** at σ_at = 4πα — single global α delivery
 - **cross-sheet entries** reserved for compound fine-tuning if
   needed; zero in the model-F baseline
@@ -230,7 +239,10 @@ for the complete 121-entry reference table.
 hosts a Dirac–Kähler field, which on Kaluza-Klein reduction gives
 a tower of 4D Dirac fermions — each winding mode on each active
 sheet contributes spin ½.  A compound mode spanning multiple
-sheets composes via SU(2) angular-momentum addition:
+sheets composes via SU(2) angular-momentum addition (derivation:
+[R62 D7d](../studies/R62-derivations/derivation-7d.md); for the
+full derivation chain see
+[`papers/derivations.md`](derivations.md)):
 
 - **1 active sheet** → single spin ½ → lepton
 - **2 active sheets** → ½ ⊗ ½ = {0, 1} → meson (pseudoscalar or vector)
@@ -249,12 +261,19 @@ embedding detects as electric charge.  The base formula is
 The electron sheet contributes negative charge, the proton sheet
 positive.  The neutrino sheet has no net charge contribution: its
 real-field modes come as tube-conjugate pairs that automatically
-average ⟨n_νt⟩ = 0 (R60 Track 18).
+average ⟨n_νt⟩ = 0 ([R60 Track 18](../studies/R60-metric-11/findings-18.md)).
+The base formula is derived in
+[R62 D5](../studies/R62-derivations/derivation-5.md) (charge =
+tube Killing momentum) and refined under phase-lock in
+[R62 D5b](../studies/R62-derivations/derivation-5b.md) (the
+bright/dark dichotomy from the ω-sum over tube closures).
 
 For **compound modes** a richer rule accounts for the Z₃ quark
 structure of the proton sheet (§5):
 
 > α_Coulomb = (n_et − n_pt/gcd(n_pt, n_pr) + n_νt)² × α
+
+Derivation: [R62 D10b](../studies/R62-derivations/derivation-10b.md).
 
 For single modes with gcd = 1 this reduces to `Q² × α`.  For the
 (3, 6) proton, the proton-sheet contribution becomes −1 per
@@ -265,12 +284,14 @@ the familiar electrostatic scaling emerging from topology alone.
 
 **α coupling is geometric.**  The fine-structure constant enters
 through a three-link chain: `tube ↔ ℵ ↔ t`.  The value of α is
-supplied at the ℵ↔t entry (σ_at = 4πα) and at tube↔ℵ entries
-(σ_ta = √α).  The coupling then propagates identically for every
-charged sheet, giving **α universality** — every unit-charged
-mode feels the same α.  This is structural, not tuned.  Only the
-value of α itself remains input; the pattern of its action is
-derived.
+supplied at the ℵ↔t entry (σ_at = 4πα, pinned in
+[R59 F59](../studies/R59-clifford-torus/findings.md)) and at
+tube↔ℵ entries (σ_ta = √α; tube → ℵ identification in
+[R62 D6](../studies/R62-derivations/derivation-6.md)).  The
+coupling then propagates identically for every charged sheet,
+giving **α universality** — every unit-charged mode feels the
+same α.  This is structural, not tuned.  Only the value of α
+itself remains input; the pattern of its action is derived.
 
 
 ## 5. The proton: Z₃ quark confinement
@@ -286,11 +307,12 @@ The mechanism is derived, not postulated.  On the proton sheet,
 a single (1, 2) mode carries a **2ω density fluctuation** that
 the embedding cannot accommodate as a stable mode.  Three copies
 at 120° offsets cancel this fluctuation exactly — N = 3 is the
-minimum count that works (R60 Track 16).  The proton sheet
-therefore admits only **n_pt ≡ 0 (mod 3)** as free modes: the
-(3, 6) composite, not the (1, 2) constituent.  This is **Z₃
-confinement**, and it reproduces QCD's "only color singlets
-are free" rule from pure geometry.
+minimum count that works
+([R60 Track 16](../studies/R60-metric-11/findings-16.md)).
+The proton sheet therefore admits only **n_pt ≡ 0 (mod 3)** as
+free modes: the (3, 6) composite, not the (1, 2) constituent.
+This is **Z₃ confinement**, and it reproduces QCD's "only color
+singlets are free" rule from pure geometry.
 
 The three (1, 2) constituents are the geometric analogues of
 quarks.  They are never seen in isolation — the only free mode
@@ -303,7 +325,8 @@ localization ratio `R_loc = m_e · L_er / ℏc < 1` means the mode
 is delocalized across the entire sheet.  The Z₃ binding
 mechanism, which requires local phase coherence between copies,
 cannot form.  The electron propagates freely as a single (1, 2)
-(R60 Track 17) — a derived exemption, not a postulate.
+([R60 Track 17](../studies/R60-metric-11/findings-17.md)) — a
+derived exemption, not a postulate.
 
 
 ## 6. The neutron
