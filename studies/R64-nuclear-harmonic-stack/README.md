@@ -1395,6 +1395,61 @@ is validated, model-G is ready.  If far off, we learn whether
 the matrix element formalism needs refinement or whether
 calibration (s_p) needs joint refit against τ_n.
 
+**ad. Quantum-number sub-modes within Ma compound modes.**
+**[model-G]**  *(Most promising current track for nuclear binding.)*
+
+The Ma compound (3·A, n_pr) hosts a subspace of quantum-number
+configurations: total isospin T, total spin S, parity P, angular
+momentum L.  Specifically, **n_pr/4 = T_z** (isospin third
+component) is encoded directly in the tuple — u quark T_z=+1/2
+maps to n_pr=+2, d quark T_z=−1/2 maps to n_pr=−2.  The deuteron
+is the T=0, S=1 sub-mode of (6, 0).  pp and nn are forced into
+T=1 because their compounds have T_z=±1.
+
+**Premise**: nuclear binding emerges from selecting the most
+attractive (T, S, P) sub-mode within the Ma compound's
+quantum-number subspace, plus the bare m_Ma.  No V(r), no
+σ_pS_tube, no metric coupling beyond what's already there.
+This dovetails with R47's SU(6) flavor-spin symmetry result
+(magnetic moments).
+
+**Test**:
+1. Enumerate light nuclei (²H, ³H, ³He, ⁴He, ⁶Li, ⁷Li, ⁹Be,
+   ¹⁰B, ¹²C, ¹⁴N, ¹⁶O) with their observed J^P and T quantum
+   numbers.
+2. For each, identify the Ma compound (3·A, 2·(2Z−A)) and verify
+   T_z matches.
+3. Look for systematic correlations between the residual (B_obs
+   − |Δ_Ma|) and the quantum numbers (T, S, parity, even-even
+   bonus, A=4n alpha-cluster bonus, etc.).
+4. If the residual tracks the SEMF asymmetry term `a_a·(N−Z)²/A`
+   plus pairing/shell corrections at the right scale, the
+   architecture is "Ma compound + quantum-number selection
+   within sub-modes" — no σ_pS_tube needed.
+
+**Yields**:
+- A: residual matches SEMF-style isospin/pairing/shell pattern.
+  Strong-force binding is fully accounted for by Ma quantum-
+  number structure; pool item m and σ_pS_tube no longer needed.
+- B: residual partially matches but has volume-like piece left
+  over.  Quantum-number structure handles spin-isospin
+  asymmetry; some additional mechanism (compound mode S extent?)
+  delivers volume saturation.
+- C: no clean correlation.  Strong force is genuinely outside
+  this framework; pool item m revival warranted.
+
+**ae. R29 vs R64 mass formula comparison.**  **[model-G]**
+R29 found nuclei as Ma compound modes with `n_5 = A`, `n_6 = 2A`
+matching d → ⁵⁶Fe to <1%.  R64 uses `n_pt = 3A`, `n_pr = 2(2Z−A)`,
+which gives the deuteron at 4% but heavy-nuclei binding off by
+factors of 5+.  **What's the difference?**  R29 may be
+parameterizing a piece of the binding (volume saturation?) that
+R64's simpler u/d composition doesn't capture.
+**Test**: compute R29's compound masses across the same chain
+(d → ²³⁸U); compare to R64 at Point A; identify the structural
+piece R29 captures that R64 misses.  This may be where the
+heavy-nucleus volume term lives in MaSt.
+
 **w. Magnetic-channel preservation under Track 11 activation.**
 **[model-G]**  Verify that σ_eff_aS (the magnetic Schur coupling)
 at σ_pS_tube + H2 active still delivers α-magnitude magnetic

@@ -16,7 +16,7 @@ critical-review walk-backs applied:
 |---|---|:---:|
 | Gravity | St + GRID (4D Minkowski, **outside Ma**) | ✓ (out of MaSt scope) |
 | Electromagnetism (Coulomb + magnetic) | tube → aleph → t  +  aleph → S | ✓ R59 / R60 / Phase 8 |
-| Strong (static potential trough) | p_t → S  (σ_pS_tube + H2 at signature edge) | **✗ — V(r) reproducible from metric, but QM gate FAILS** at both Point A and Point B (3 bound pn states vs 1; bound nn/pp; B(²H) 6.6× too deep at Point A, 13× at Point B; see [findings-13b.md](findings-13b.md)) |
+| Strong (binding chain) | Ma compound mode + SEMF residual at Point A | **✓ structural** — Ma compound (~1 MeV/n base) + SEMF residual (~7 MeV/n volume saturation, etc.) reproduces nuclear chain ²H → ¹²⁰Sn to RMS 3.3 MeV with all four SEMF coefficients at literature scale (within 15–20%).  See [findings-15.md](findings-15.md).  σ_pS_tube V(r) singular-edge approach (Track 11) is over-engineered; the volume term wants only moderate σ_eff. |
 | Weak (Fermi constant, scaling) | `G_F ≈ s_p · α² / m_p²`  (Point A) | ⚠ **0.5% numerical match; matrix-element derivation pending** |
 
 **Important caveats** (from critical review, ack. April 2026):
