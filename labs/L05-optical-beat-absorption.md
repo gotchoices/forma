@@ -385,6 +385,81 @@ No lock-in — relies on direct power measurement.
 Proof-of-concept only; upgrade if signal found.
 
 
+### NKT Photonics Koheras BASIK option (alternative all-Yb architecture)
+
+The [Koheras BASIK](https://www.nktphotonics.com/products/single-frequency-fiber-lasers/koheras-basik/)
+is an industrial OEM single-frequency fiber laser with
+sub-kHz to sub-100 Hz Lorentzian linewidth, fiber-pigtailed,
+and rack-integrable through the [ACOUSTIK](https://www.nktphotonics.com/products/single-frequency-lasers/koheras-acoustik/)
+16-channel chassis.  Attractive as a single-vendor solution
+for the entire laser front end.  The wavelength assignment
+below differs from §3 because the BASIK gain bands force a
+different reference choice — the beat physics is unchanged.
+
+**Gain-band constraint.**  BASIK is offered only as Erbium
+(X15/E15, 1535–1580 nm) or Ytterbium (Y10, 1030–1120 nm).
+The maximum beat from two Er BASIKs is c·(1/1535 − 1/1580) ≈
+5.56 THz — below every Family A target.  Only the **Y10
+(Yb)** band reaches 7–14 THz, so all four modules must be
+Y10.
+
+**Four modules, not three.**  Three lasers produce three
+beats {|f₁−f₂|, |f₁−f₃|, |f₂−f₃|}.  Hitting all three
+Family A targets exactly would require 7.06 + 7.37 = 14.07,
+but the actual sum is 14.43 — off by 0.36 THz, far outside
+any BASIK's ±64 GHz tuning range.  The minimum count is
+therefore one reference + three partners, as in §3.
+
+**Family A wavelength assignment** (f = c/λ with c =
+299 792.458 nm·THz):
+
+| Role | Center λ to specify | f (THz) | Beat vs. ref |
+|------|---------------------|---------|--------------|
+| Reference | 1035.00 nm | 289.654 | — |
+| ν₁ partner | 1060.85 nm | 282.594 | **7.060 THz** |
+| ν₂ partner | 1062.01 nm | 282.284 | **7.370 THz** |
+| ν₃ partner | 1087.83 nm | 275.584 | **14.070 THz** |
+
+All four wavelengths sit inside 1030–1120 nm and at or below
+1090 nm, where Y10 guarantees > 10 mW output regardless of
+linewidth option.
+
+**Y10 module specs:** linewidth < 20 kHz Lorentzian (standard)
+or < 3 kHz (reduced); ±240 pm thermal tuning ≈ ±64 GHz at
+1064 nm; 10 GHz fast wavelength modulation up to 20 kHz rate;
+PM fiber output default; > 10 mW output (> 5 mW for reduced
+linewidth above 1090 nm).  The ±64 GHz fine-tuning span is
+~10⁴× wider than the predicted ν mode acceptance (~7 MHz at
+Q = 10⁶), so scanning each candidate is straightforward.
+Standard linewidth is more than adequate for L05.
+
+**Detection.**  Both Si (cutoff ~1100 nm) and InGaAs photodiodes
+work in 1030–1100 nm.  The Thorlabs PDA20CS2 / PDA10DT and
+APD430C recommended above remain valid.
+
+**Other families.**  Each BASIK is fixed-wavelength once
+specified.  Retuning to Family B/C/D requires ordering new
+partner modules at the family-appropriate centers (the 1035
+nm reference can stay).  Computed analogously to the table
+above for each family's three target beats.
+
+**Single-vendor BASIK build (estimated $50–75K)**
+
+| Item | Product | Cost (est.) |
+|------|---------|-------------|
+| Reference + 3 partners | 4× Koheras BASIK Y10 (custom center λ each) | $30–45K |
+| Rack/control | Koheras ACOUSTIK 16-channel chassis | $5–10K |
+| Detectors | 3× PDA20CS2 + 1× APD430C | $11K |
+| Supporting | lock-in, fibers, optics, samples | $8K |
+| **Total** | | **~$54–74K** |
+
+Comparable to the premium TOPTICA build but with industrial
+OEM hardware and full software control via NKTP CONTROL.
+Trade-off: family-locked at order time vs. the wide-tunable
+TOPTICA CTL which retunes across all four families in
+software.
+
+
 ## 11. Track 5: Water as target medium
 
 ### Motivation
