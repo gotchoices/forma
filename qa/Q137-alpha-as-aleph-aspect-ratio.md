@@ -1,9 +1,12 @@
 # Q137: Is α the geometric aspect ratio of the aleph thread?
 
-**Status:** Open — proposed geometric interpretation; not yet derived
-from first principles, but cleanly consistent with the framework's
-universality of α.  Reframes α from "coupling constant" to "lattice
-substrate aspect ratio."
+**Status:** Open — proposed geometric interpretation, now with
+mechanism (§4 mini-WvM eddies) and polarity story (§5 chirality
+propagation).  Reframes α from "coupling constant" to "lattice
+substrate aspect ratio."  Honest closing (§15): α is architecture,
+not derivable within the framework — but with a clear geometric
+face (the aleph's d/L) that explains its universality, charge
+quantization, and polarity in one consistent picture.
 
 **Related:**
   [Q07](Q07-flat-compact-dimensions.md) (flat compact dimensions),
@@ -97,31 +100,181 @@ not the same ABSOLUTE energy.  Heavier particles have more edges
 each carrying less energy each, and the fractional contributions
 sum.
 
-## 4. Why this is structurally cleaner than alternatives
+## 4. The hexagonal mini-WvM mechanism
 
-Two earlier candidate interpretations had issues:
+The per-edge α-leakage in §3 is consistent with universality but
+needs a physical mechanism — what does it look like for "each edge
+to leak fraction α"?  The cleanest candidate: each hexagonal face
+of the lattice hosts a small standing-wave bound photon whose
+polarization is locked perpendicular to the face.
 
-**α as r/R (bound-state aspect ratio).** This makes α the ratio of
-the bound photon's transverse extent r to its bending radius R.  Both
-scale with the particle's Compton wavelength, so r/R is universal.
-But this requires r itself to be a *particle-specific* quantity —
-the aleph's cross-section would have to scale with the bound photon.
-That's not a clean substrate property; it's a feature of each
-bound state.
+### 4a. Why the eddies exist
 
-**α as transmission coefficient at the Ma↔S junction.** The "impedance
-mismatch" reading from
-[`primers/alpha-in-grid.md`](../primers/alpha-in-grid.md).  This is
-correct but abstract — it doesn't specify what the geometric content
-of the mismatch IS.
+Before describing the mini-WvM configuration, we need to answer the
+prior question: **why do hexagonal eddies form at all?**  The answer
+follows from the aspect-ratio premise of §2 combined with the
+geometry of bending a flat sheet into a torus.
 
-The aspect-ratio reading combines the cleanness of both:
-- α emerges from a *universal substrate property* (aleph thinness),
-  not a per-particle configuration
-- It gives a *concrete geometric mechanism* (per-edge leakage through
-  the compact cross-section), not just a coupling abstraction
+Each aleph thread has a finite cross-section (diameter d) and length
+L (per §2, with d/L = α).  When the flat sheet is bent into a torus,
+each thread bends with the surface.  At each bend, the **inner side
+of the thread is shorter than the outer side** — this is just the
+cylinder-bending geometry: for a thread of cross-section radius r
+bending through angle θ, the inner path is shorter by `r × θ` and
+the outer is longer by the same amount.
 
-## 5. What this interpretation explains
+For a wave propagating along the thread:
+
+- **Inner path**: less distance to cover at speed c → the wave needs
+  less energy to maintain its standing-wave configuration on this
+  side
+- **Outer path**: more distance → the wave needs more energy
+
+But the wave's TOTAL energy is set by its frequency (= mc² for a
+Compton-scale bound photon), independent of how the thread bends.
+**Energy conservation requires the surplus on the inner side and
+the deficit on the outer side to redistribute somewhere.**
+
+The natural redistribution channel is through closed loops on the
+surface.  In a wye-junction lattice, the smallest closed loops are
+the hexagonal faces — six edges meeting at six wye junctions.  The
+surplus energy from inner-side path-shortening accumulates as a
+**circulating mode** around each hexagonal face, with circulation
+direction set by the global wave's chirality (§5 elaborates this).
+
+This is the eddy: a small circulating mode of EM energy bound to
+each hexagonal face, sourced by the inner-path-shortening surplus
+from the threads composing that hexagon.  The eddies are *forced*
+into existence by the combination of (a) thread cross-section,
+(b) bent geometry, and (c) energy conservation.  They aren't
+postulated — they're required.
+
+The per-hexagon energy in the eddy = (sum of inner-path surpluses
+from the 6 threads) = α × (per-hexagon share of mc²), per the
+leakage argument in §3.
+
+### 4b. What the eddy looks like — mini-WvM
+
+Now that we know WHY the eddies exist, we can describe what they
+look like physically.
+
+**Picture.** At each hexagonal cell of the wye-junction lattice,
+the surplus energy circulates as a mini-photon around the hexagon's
+perimeter.  This is NOT a circulating current (which would give a
+static B field per Ampère's law); it's a circulating EM wave (light)
+where E and B are both perpendicular to the propagation direction.
+
+For a photon traveling tangent to the hexagon, the perpendicular
+plane at each point spans:
+
+- the in-plane radial direction (toward/away from hexagon center)
+- the surface normal direction (perpendicular to hexagon plane)
+
+If the polarization is set with E along the surface normal — and
+the standing wave's closure condition matches the hexagonal loop —
+the time-averaged E points OUTWARD (or inward) along the surface
+normal at every point on the loop.  The B field circulates around
+the hexagon perimeter in the in-plane radial direction.
+
+This is exactly WvM's bound-photon construction at a smaller scale:
+
+- **Macroscopic WvM:** photon on the (1,2) torus, E radial, gives
+  charge ≈ 0.91e
+- **Hexagonal mini-WvM:** photon on a single hexagon, E normal to
+  surface, gives a fragment of the surface charge
+
+The macroscopic charge is the integrated contribution of all the
+per-hexagon mini-WvM eddies across the surface.  It's a self-similar
+structure: bound photons at multiple scales, each producing a static
+E field by the same WvM mechanism.
+
+The per-hexagon energy of the mini-WvM eddy = α × (its share of
+mc²), per the leakage argument in §3.  Summed over all hexagons,
+this gives the total Coulomb energy α × mc² universally.
+
+## 5. Charge polarity from chirality propagation
+
+The mini-WvM mechanism in §4 also explains why charges have signs
+and why all hexagonal eddies on a given particle circulate in the
+same direction.
+
+The macroscopic bound photon has a definite chirality (helicity),
+set topologically by whether its (1,2) winding is right-handed or
+left-handed.  This chirality propagates through the wave's E and B
+field configuration uniformly.  At each point in space (including
+each hexagonal face on the surface), the local Poynting vector
+`S = E × B / μ₀` has a definite direction relative to the wave's
+chirality.
+
+Since the local Poynting direction is uniformly oriented across the
+surface (set by the global chirality), the eddies driven by it all
+rotate in the same sense.  Topological consistency forbids
+mixed-handedness eddies — they would create discontinuities in the
+field at hexagon boundaries, costing energy.  The minimum-energy
+state has all hexagonal eddies in uniform handedness.
+
+The propagation chain:
+
+```
+Topology choice ((1,2) vs (1,−2))
+  ↓
+Macroscopic photon's chirality (right- vs left-handed)
+  ↓
+Uniform handedness of E × B (Poynting) on the surface
+  ↓
+All hexagonal mini-photons have same helicity
+  ↓
+All eddies circulate in same direction (relative to local normal)
+  ↓
+All E field projections point in same direction (outward or inward)
+  ↓
+Net surface charge has definite sign (positive or negative)
+```
+
+For the antiparticle: flip the topology choice; everything else
+flips with it.  CPT symmetry is automatic — particle and antiparticle
+differ only in chirality at the topological level, and that flip
+propagates through the entire field configuration.
+
+This gives a complete picture of charge polarity:
+
+- **Sign of charge** = direction of mini-photon circulation around
+  hexagons relative to the local surface normal
+- **Magnitude of charge** = number of full topological windings
+  (= 1 for elementary particles, fractional for quark-like states)
+- **Universal magnitude e** for one full 2π wrap = the topological
+  closure constraint applied to the per-hexagon α-fraction
+
+## 6. Relationship to the impedance-mismatch reading
+
+The framework's existing interpretation of α —
+[`primers/alpha-in-grid.md`](../primers/alpha-in-grid.md)'s
+"transmission coefficient at the Ma↔S junction" — is correct but
+abstract.  It says α is the impedance mismatch between the 2D
+material sheet and the 3D spatial lattice, without specifying
+what the geometric content of that mismatch IS.
+
+The aspect-ratio reading sharpens it:
+
+- The "impedance mismatch" IS the aleph's d/L ratio
+- A thin thread (small d/L) couples weakly between the internal
+  standing wave on Ma and the external Coulomb field in S — that's
+  the impedance mismatch
+- The thinness *quantifies* the mismatch: α = d/L is the precise
+  geometric content of "how much energy crosses the junction"
+
+So the aspect-ratio reading is a refinement of the impedance-mismatch
+reading, not a replacement.  It gives:
+
+- A *universal substrate property* (aleph thinness) as the source
+  of the impedance mismatch
+- A *concrete geometric mechanism* (per-edge leakage through the
+  compact cross-section) for what was previously just a coupling
+  abstraction
+- A clean explanation of why the mismatch is universal across
+  particles (substrate property, not particle property)
+
+## 7. What this interpretation explains
 
 Several framework facts click into place:
 
@@ -149,7 +302,7 @@ universal fraction; total energy on the loop is mc²; total Coulomb
 is α × mc².  Linear in mc² because the leakage mechanism is
 proportional to wave energy.
 
-## 6. Connection to the truss model
+## 8. Connection to the truss model
 
 The framework's "truss model" of the aleph
 ([foundations.md:240-242](../grid/foundations.md#L240-L242)) describes
@@ -185,7 +338,7 @@ This is an open issue.  The aspect-ratio reading is geometrically
 clean but not yet identified with a specific physical feature of
 the framework's truss.
 
-## 7. Standard-physics anchor
+## 9. Standard-physics anchor
 
 The classical electron radius `r_e = α × ℏ/(mc) = α × λ_C/(2π)` is
 a standard physics quantity.  In the aspect-ratio reading, this is
@@ -206,7 +359,7 @@ extent, and that extent is α-times the loop radius — but the
 underlying mechanism is per-edge leakage of α-fraction, not a
 particle-specific aleph.
 
-## 8. Computable handles
+## 10. Computable handles
 
 Several quantitative tests would discriminate between the
 aspect-ratio reading and alternatives:
@@ -231,7 +384,7 @@ than α/π (= 0.0023), suggesting the relevant aspect ratio in that
 calculation is *different* from the aleph's d/L.  The interpretations
 might not be quite isomorphic.  Worth working out.
 
-## 9. Open issues
+## 11. Open issues
 
 The interpretation is consistent with framework-level statements
 but has gaps:
@@ -239,11 +392,16 @@ but has gaps:
 - **Definition of d.** What physical feature of the aleph is the
   "cross-section diameter"?  The truss model's zigzag amplitude
   doesn't fit (too large).  Some sub-Planckian feature is needed.
-- **Mechanism of per-edge leakage.**  The argument that "each edge
-  leaks fraction α of its energy" is consistent with universality
-  but not derived from the lattice's gauge action.  Whether this
-  emerges naturally from solving Maxwell on the lattice is not
-  shown.
+- **Mechanism of per-edge leakage** (partially addressed, §4).
+  The hexagonal mini-WvM picture provides a candidate physical
+  mechanism: each hexagonal face hosts a circulating bound photon
+  whose polarization is locked normal to the surface.  But the
+  emergence of THIS specific configuration from the lattice's
+  gauge action remains to be shown.
+- **Chirality propagation rigor** (introduced in §5).  The argument
+  that all hexagonal eddies inherit the macroscopic chirality is
+  topological (consistency / minimum-energy), but the precise field
+  configuration that minimizes energy hasn't been computed.
 - **Relation to A6 axiom.**  A6 introduces α as the gauge action
   coefficient.  The aspect-ratio reading would replace this with
   a geometric statement about the aleph.  Is this compatible with
@@ -251,11 +409,11 @@ but has gaps:
   architectural change.
 - **Numerical pinning.**  Even with the geometric interpretation,
   α = 1/137 is still input.  Why this specific value?  No advance
-  beyond the standard "α is a measured constant" — but the
-  geometric interpretation does propose what KIND of measurement
-  it would correspond to (the aleph's aspect ratio).
+  beyond "α is a measured aspect ratio of the substrate" — see
+  §15 for the structural reason this won't yield to derivation
+  within the framework.
 
-## 10. If true
+## 12. If true
 
 This interpretation reframes much of the framework's electromagnetic
 content:
@@ -283,7 +441,7 @@ relative to its longitudinal length.  If that ratio is structurally
 fixed (by some self-consistency condition or topological requirement),
 α follows.
 
-## 11. Path forward
+## 13. Path forward
 
 Three concrete steps to make this useful:
 
@@ -292,17 +450,148 @@ Three concrete steps to make this useful:
    it the truss's transverse mode amplitude?  A sub-Planckian
    compact-dim characteristic?  Something else?
 
-2. **Verify the leakage mechanism.**  Compute (numerically or
-   analytically) the actual Coulomb-field generation for a bent
-   lattice edge with finite cross-section.  Confirm leakage fraction
-   = d/L.  Use existing sim-impedance machinery if possible.
+2. **Verify the leakage mechanism via the proposed mini-WvM
+   configuration (§4).**  Compute (numerically or analytically) the
+   actual Coulomb-field generation for a hexagonal face hosting a
+   bound mini-photon with E locked along the surface normal.  Confirm
+   per-hexagon leakage fraction = d/L, summing to α × mc² total
+   over the surface.  Sim-impedance machinery (Track 9, Track 12)
+   provides the geometric infrastructure.
 
-3. **Look for a fixing condition.**  If d/L = α is a geometric
-   self-consistency requirement (Nyquist-like, ζ-α link from
-   foundations.md Q2, or similar), that closes the loop.  This is
-   the highest-leverage open question.
+3. **Use the proper external-flux integration, not surface integral
+   on the torus.**  Past studies (R15, R17, R18, R19, sim-impedance
+   Track 8) tried to derive α by integrating the (1,2) wave's
+   amplitude over the torus surface.  These integrals all vanish by
+   φ-symmetry — and correctly so.  The wave's surface amplitude has
+   positive and negative phases that cancel; that's a feature of any
+   wave, not a problem to solve.
+
+   The right calculation is the **external Coulomb field flux**
+   through a surface ENCLOSING the torus (not at the torus surface).
+   This is Gauss's law applied to the radiated α-portion that has
+   projected outward as the Coulomb field.  By construction this
+   flux equals e — but only if the framework's mechanism (per-edge
+   leakage of α-fraction, assembled by mini-WvM eddies per §4) is
+   correctly modeled.
+
+   Crucially: this calculation does NOT derive α (see §15).  It
+   verifies the framework's internal consistency by checking that
+   the mechanism produces the right discrete charge quantum.  The
+   R15-R19 studies were structurally unable to find α through
+   surface integration because they were computing the wrong
+   quantity — the internal wave's field on the surface, which
+   integrates to zero by symmetry, instead of the external Coulomb
+   flux through an enclosing surface, which integrates to e by
+   topology.
+
+4. **Look for a fixing condition for d/L itself.**  If d/L = α is
+   forced by some geometric self-consistency requirement
+   (Nyquist-like, ζ-α link from foundations.md Q2, or anomaly
+   cancellation), that gives an indirect path to fixing α.  This
+   requires a constraint OUTSIDE the aspect-ratio identification
+   itself — see §15.
 
 The interpretation is geometrically clean and computationally
-testable.  It moves the α-derivation question from "compute a
-coupling constant" to "compute a substrate thinness" — a more
-tangible target.
+testable.  It moves the α-meaning question from "what is this
+coupling constant" to "what is this substrate thinness" — but as
+§15 explains, that thinness IS α by construction, so no calculation
+within the framework can derive its value.
+
+## 14. Alternative geometric realization: cylinders instead of strings
+
+The aspect-ratio interpretation works equally well if we invert the
+geometry: model the lattice elements as **cylinders** (D diameter,
+L height, with L/D = α) instead of linear threads (d diameter,
+L length, with d/L = α).
+
+A cylinder is a thin disk — short in the L direction, wide in the
+D direction.  Stacked such that adjacent cylinders are contact-
+tangent, six cylinders pack around each one — the same hexagonal
+close-packing the edge-and-vertex lattice produces, just one level
+up.
+
+Both pictures yield identical physics:
+
+| Linear-string model | Cylinder model |
+|---|---|
+| Edge: length L, diameter d | Cylinder: diameter D, height L |
+| Aspect ratio α = d/L | Aspect ratio α = L/D |
+| Thin and long | Thin (short) and wide |
+| Wye-junction graph; hexagonal faces | Hex close-packing of disks |
+| Inner-path shortening → eddies in faces | Cylinder distortion → eddies around perimeters |
+| Total Coulomb = α × mc² | Total Coulomb = α × mc² |
+
+The two models are descriptions at different scales of the same
+substrate.  The cylinder model is what the linear-string model
+"looks like" when viewed one level up — hexagonal faces of the
+edge lattice ARE cylindrical regions when seen as units.  The
+same α-aspect-ratio appears at both levels, and the math works
+identically.
+
+This is more than analogy: it's evidence that α has a *self-similar*
+geometric content.  At every scale where the lattice has its
+hexagonal organization, the same aspect ratio governs the local
+impedance.  The choice between models is presentational, not
+physical — linear strings emphasize edge-and-vertex graph structure;
+cylinders emphasize face-and-tangent disk structure.
+
+## 15. α is architecture, not derivable
+
+Under the aspect-ratio interpretation, α stops being a coupling
+constant and becomes a geometric property of the substrate (d/L,
+the aleph thread's aspect ratio).  This reframes the α-derivation
+question in a final way:
+
+> **α is, by construction, an architectural input.  The aleph
+> thread has SOME aspect ratio, and that ratio IS α.  No calculation
+> within the framework can derive α because the framework already
+> requires the ratio to be specified — once we identify α with d/L,
+> the question "what determines α?" becomes "what determines d/L?",
+> which the framework as currently formulated does not answer.**
+
+The aspect-ratio interpretation gives α a geometric face — it
+clarifies WHAT KIND of input α is (a substrate's d/L) — but it
+doesn't tell us WHY the substrate has that specific value 1/137.
+
+What COULD make α derivable, given this interpretation:
+
+- **An independent constraint on d/L.**  If some other principle
+  (Nyquist sampling theorem applied to ζ resolution, anomaly
+  cancellation, topological self-consistency) forces a specific
+  d/L value, that fixes α.  Foundations.md Q2's ζ-α link is the
+  candidate most aligned with this picture.
+
+- **A deeper substrate that determines the lattice's geometry.**
+  If the GRID lattice is itself an effective description of a
+  more fundamental layer, that fundamental layer might dictate
+  d/L.  This is speculative and currently unconnected to any
+  concrete proposal.
+
+- **Anthropic / multiverse selection.**  Different universes
+  have different aleph aspect ratios, and we observe α = 1/137
+  because that's the value compatible with our existence.
+  Doesn't tell us a mechanism, just selects.
+
+Until one of these closes, **α stays as input — but now it's
+an input with a geometric face.**  We know what α IS (the aleph's
+aspect ratio); we don't know WHY it has that value.  This is a
+genuine advance over treating α as a measured "coupling constant"
+of mysterious origin, but it doesn't deliver a derivation.
+
+The interpretation's value is therefore primarily interpretive
+and structural:
+
+- It tells us what KIND of fact α is — geometric, architectural,
+  substrate-level — rather than predicting its value.
+- It explains WHY α is universal across particles (substrate
+  property, not particle property).
+- It explains WHY charge is quantized (topological closure of
+  the per-hexagon α-fractions around 2π).
+- It explains WHY charge has a sign (chirality propagation, §5).
+- It identifies WHERE the past α-derivation studies went wrong
+  (surface integral vs external flux, §13).
+
+This is substantial progress.  But α-derivation per se remains
+the same unresolved question, just posed in cleaner geometric
+language.  α is architecture; the framework records it as input;
+no calculation within the framework can pull it out.
