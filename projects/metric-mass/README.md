@@ -7,16 +7,38 @@
 
 ## Why this project exists
 
-The R-track has been working in 11D ([R60-metric-11](../../studies/R60-metric-11/),
-through [R64-nuclear-harmonic-stack](../../studies/R64-nuclear-harmonic-stack/)).
-That's where the production work lives, but it's a lot of metric
-components moving at once, and most of the time we plug constants
-into the metric and read out a number.
+Standard Kaluza-Klein theory ([primers/kaluza-klein.md](../../primers/kaluza-klein.md))
+takes two big things for granted before it begins:
 
-This project backs all the way up. We start from the smallest metric
-that can generate mass at all and derive every step. The goal isn't
-new physics — it's making every entry of every metric we ever write
-feel obvious, not mysterious.
+1. **Gravity exists.** KK assumes 4D general relativity already works —
+   that mass curves spacetime via Einstein's equations.
+2. **Mass exists.** KK builds particles by giving them rest mass and
+   then asking what an extra dimension would do for them.
+
+Given those two starting assumptions, KK then *produces* electromagnetism
+as a geometric consequence of adding one compact extra dimension. That
+is its whole punchline: EM falls out of geometry once you already have
+mass and gravity.
+
+This project goes the other way. We assume only **light** — a
+massless propagating wave — exists. No mass, no gravity, no
+electromagnetism. We don't try to derive EM (that's a future project's
+job). We ask the much narrower question:
+
+> *If light is all we have, and the manifold has one compact extra
+> dimension, what does the metric have to look like? In particular,
+> are the off-diagonal (cross) terms zero, or does light's behavior
+> on the manifold force them to be nonzero?*
+
+This is a back-up question relative to the production R-track
+([R60-metric-11](../../studies/R60-metric-11/), through
+[R64-nuclear-harmonic-stack](../../studies/R64-nuclear-harmonic-stack/)),
+which works in 11D with many metric components moving at once. The
+production track is where new physics gets pushed; this project is
+where intuition for *what each metric component does* gets built.
+
+The goal isn't new physics. It's making every entry of every metric
+we ever write feel obvious, not mysterious.
 
 ## Coordinates and notation
 
