@@ -3,7 +3,7 @@
 **Status:** Open — proposed geometric interpretation, now with
 mechanism (§4 mini-WvM eddies) and polarity story (§5 chirality
 propagation).  Reframes α from "coupling constant" to "lattice
-substrate aspect ratio."  Honest closing (§15): α is architecture,
+substrate aspect ratio."  Honest closing (§16): α is architecture,
 not derivable within the framework — but with a clear geometric
 face (the aleph's d/L) that explains its universality, charge
 quantization, and polarity in one consistent picture.
@@ -410,7 +410,7 @@ but has gaps:
 - **Numerical pinning.**  Even with the geometric interpretation,
   α = 1/137 is still input.  Why this specific value?  No advance
   beyond "α is a measured aspect ratio of the substrate" — see
-  §15 for the structural reason this won't yield to derivation
+  §16 for the structural reason this won't yield to derivation
   within the framework.
 
 ## 12. If true
@@ -474,7 +474,7 @@ Three concrete steps to make this useful:
    leakage of α-fraction, assembled by mini-WvM eddies per §4) is
    correctly modeled.
 
-   Crucially: this calculation does NOT derive α (see §15).  It
+   Crucially: this calculation does NOT derive α (see §16).  It
    verifies the framework's internal consistency by checking that
    the mechanism produces the right discrete charge quantum.  The
    R15-R19 studies were structurally unable to find α through
@@ -489,12 +489,12 @@ Three concrete steps to make this useful:
    (Nyquist-like, ζ-α link from foundations.md Q2, or anomaly
    cancellation), that gives an indirect path to fixing α.  This
    requires a constraint OUTSIDE the aspect-ratio identification
-   itself — see §15.
+   itself — see §16.
 
 The interpretation is geometrically clean and computationally
 testable.  It moves the α-meaning question from "what is this
 coupling constant" to "what is this substrate thinness" — but as
-§15 explains, that thinness IS α by construction, so no calculation
+§16 explains, that thinness IS α by construction, so no calculation
 within the framework can derive its value.
 
 ## 14. Alternative geometric realization: cylinders instead of strings
@@ -535,7 +535,111 @@ impedance.  The choice between models is presentational, not
 physical — linear strings emphasize edge-and-vertex graph structure;
 cylinders emphasize face-and-tangent disk structure.
 
-## 15. α is architecture, not derivable
+## 15. Computational verification — a future project
+
+A natural test of this Q file's mechanism would be a simulation that
+puts a standing wave on the minimal hexagonal torus and checks
+whether eddies form at each hexagonal face with the predicted
+α-fraction of the wave's energy.  This is not yet built, but the
+infrastructure is mostly in place.
+
+### Pieces that already exist
+
+- **Wave propagation on lattice graphs**:
+  [`grid/sim-maxwell/run.py`](../grid/sim-maxwell/run.py) (triangular),
+  [`grid/sim-maxwell/run_hex.py`](../grid/sim-maxwell/run_hex.py)
+  (hexagonal honeycomb).  Provides edge-amplitude evolution under
+  junction scattering rules with verified linear superposition
+  (`run_superposition.py`).
+- **Minimal hex torus geometry**:
+  [`grid/sim-impedance/scripts/track12_minimal_torus.py`](../grid/sim-impedance/scripts/track12_minimal_torus.py)
+  (`build_hex_torus(N1, N2, R, a)` produces a closed hex graph at
+  the smallest size N=2 with 8 nodes, 12 edges).
+- **Junction curvature / distortion analysis**:
+  [`grid/sim-impedance/scripts/track9_junction_escape.py`](../grid/sim-impedance/scripts/track9_junction_escape.py)
+  computes per-junction non-coplanarity for bent lattices.
+- **Standing-wave initialization on closed graphs**: not directly
+  available, but the Laplacian eigenvalue problem on the hex-torus
+  graph is straightforward (NumPy `linalg.eigh`).
+- **Field-to-E projection**: would build on existing edge-amplitude
+  representation and project onto each hex face's surface normal.
+
+### The key open modeling problem
+
+The naive approach — "model inner-path-shortening by reducing the
+edge length on the inner side by α" — is **not sufficient**.  It
+shortens the path but doesn't explain what happens to the
+information/energy that the shortened path no longer needs to carry.
+Per the §4a argument: the wave must stay intact on the reduced
+pathway, AND the surplus must form eddies.  Both behaviors must
+emerge from the same simulation.
+
+**The unsolved modeling question:** how do we trim information
+content at each node such that:
+
+1. The standing wave remains intact on its (now shorter) inner path
+2. The "trimmed" portion accumulates as eddies around closed loops
+3. Total energy is conserved between wave and eddy channels
+4. The eddies have uniform handedness set by the wave's chirality (§5)
+
+Standard junction scattering rules (Neumann, Kirchhoff) preserve
+amplitude and don't naturally produce a "surplus" channel.  We'd
+need to either:
+
+**(a) Modify the scattering rule** so each junction siphons off a
+fraction α of incoming energy into a separate eddy field on the
+adjacent hexagonal face.  This is non-standard and would need to be
+designed consistent with the framework's lattice action.
+
+**(b) Build the eddies explicitly as additional dynamical fields**
+on hex faces, coupled to the wave via a curvature-induced source
+term proportional to α.  Closer to gauge-theory practice but
+requires specifying the coupling.
+
+**(c) Use a two-channel propagation** — wave on edges + eddy on
+faces — with energy transfer governed by a leakage coefficient
+α at each junction.  Conceptually cleanest but the leakage rule
+is currently undocumented.
+
+In all three options, the *rule* for splitting energy between wave
+and eddy channels is what we don't know how to specify from first
+principles.  Once specified, the verification becomes
+straightforward computation; before that, it's the modeling
+question that blocks the simulation.
+
+### What the simulation would verify if built
+
+Assuming the leakage rule were specified, the simulation would test:
+
+- **Stability**: does the standing wave persist over many cycles
+  with the α-leakage active?
+- **Eddy formation**: do circulating modes appear at each hex face?
+- **Magnitude**: is the per-hexagon eddy energy = α × (per-hex
+  share of wave energy)?
+- **Polarity**: does flipping the global wave's chirality reverse
+  all eddy directions uniformly?
+- **External field**: does the integrated normal E field over an
+  enclosing surface = e by Gauss's law (verifying §13's flux
+  picture)?
+
+A successful simulation would confirm Q137's mechanism is
+internally consistent — not derive α (still input as the leakage
+rule's coefficient), but verify the picture's computational
+coherence.
+
+### Scope and difficulty
+
+The project is **moderate-to-substantial**: maybe 400-600 lines of
+new code combining existing infrastructure, plus the open
+conceptual work of designing the leakage rule.  The conceptual
+work is the harder part.
+
+This is appropriate as a future track, possibly under a new
+`grid/sim-eddies/` study folder, with the scoping question being
+"how to model excess information / energy at hexagonal junctions"
+as the central open issue.
+
+## 16. α is architecture, not derivable
 
 Under the aspect-ratio interpretation, α stops being a coupling
 constant and becomes a geometric property of the substrate (d/L,
