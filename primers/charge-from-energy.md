@@ -226,6 +226,18 @@ circulating as the standing wave that constitutes the
 particle's mass.  The ambient 3D lattice sees only a small
 fraction of what the particle actually carries.
 
+**Caveat: same charge does not mean same Coulomb energy.**
+The α-*fraction* is universal, but the absolute energy
+`αmc²` varies with the particle's mass.  An electron and a
+proton both carry charge |q| = e, but their Coulomb
+self-energies are 3.73 keV and 6.85 MeV respectively — a
+factor of 1836 difference.  The mechanism is straightforward:
+heavier particles have smaller Compton-scale shells, and
+assembling the same charge into a smaller shell costs more
+energy (`U = q²/4πε₀ r`).  The α-fraction comes out universal
+because the Compton relation `r × mc² = ℏc` makes the mass
+cancel in the ratio.
+
 In the GRID framework, α is the **impedance mismatch**
 between the 2D material sheet and the 3D spatial lattice.
 These are two different grid fabrics — different

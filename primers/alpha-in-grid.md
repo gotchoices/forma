@@ -354,6 +354,56 @@ material sheet and the 3D spatial lattice**.  It measures how
 efficiently a topological winding on the sheet couples energy
 into the ambient grid.
 
+### Same charge does not mean same Coulomb energy
+
+A subtle point worth spelling out: **the universal α-fraction
+applies to the *ratio* of Coulomb energy to rest energy — not
+to the absolute Coulomb energy itself.**  Two particles with
+the same charge magnitude have very different Coulomb
+self-energies if they have different rest masses.
+
+Concretely, for an electron and a proton — both with charge
+|q| = e — the absolute energies are:
+
+| Particle | mc² | Compton size ƛ_C = ℏ/(mc) | E_Coulomb = αmc² |
+|----------|-----|---------------------------|------------------|
+| Electron | 0.511 MeV | 3.86 × 10⁻¹³ m | **3.73 keV** |
+| Proton | 938 MeV | 2.10 × 10⁻¹⁶ m | **6.85 MeV** |
+
+The proton's Coulomb self-energy is **~1836× larger than
+the electron's**, even though both carry the same elementary
+charge.  Only the *fraction* `E_Coulomb / mc² = α` is
+universal.
+
+The mechanism is straightforward when read as classical
+electrostatic self-energy: assembling charge q into a shell
+of radius r costs `U = q²/(4πε₀ r)`.  Same q with smaller r
+means more concentrated field, which means more stored energy.
+Heavier particles have smaller Compton-scale shells, so the
+same charge requires more assembly energy.
+
+The α-fraction emerges as universal because the Compton
+relation `r × mc² = ℏc` is universal:
+
+$$
+\frac{E_{\text{Coulomb}}}{mc^2} \;=\; \frac{q^2/(4\pi\varepsilon_0\, r)}{mc^2} \;=\; \frac{q^2}{4\pi\varepsilon_0 \cdot (r \cdot mc^2)} \;=\; \frac{q^2}{4\pi\varepsilon_0\, \hbar c} \;=\; \alpha
+$$
+
+The mass cancels: it appears once in `1/r` and once in `mc²`,
+and they cancel to give `α` regardless of which particle.
+
+The takeaway in three statements:
+
+- **Charge magnitude** is fixed at e per 2π wrap by topology
+  — same for all charged particles, independent of size or
+  rest mass.
+- **Coulomb self-energy** is `α × mc²`, which depends on the
+  particle's rest mass — heavier particles carry more
+  Coulomb self-energy in absolute terms.
+- **The fraction `E_Coulomb / mc² = α`** is universal because
+  the size-mass relation (Compton wavelength) is universal,
+  not because the absolute Coulomb energies match.
+
 ### Why this matters
 
 In standard physics, α is a measured constant with no known
