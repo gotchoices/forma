@@ -14,7 +14,7 @@
   identifies the correct frequency family before L02 commits
   to a tuning),
   [L05](L05-optical-beat-absorption.md) (optical-beat
-  absorption — cheapest first check that the ν-sheet
+  absorption — simplest first check that the ν-sheet
   coupling channel exists at all)
 
 **Logical sequence:** L02 is the final step in the
@@ -147,17 +147,17 @@ absorption that would compete with the neutrino coupling.
 
 ## 6. Equipment
 
-| Item | Purpose | Approx. cost | Notes |
-|---|---|---|---|
-| Tunable far-IR source (20–60 μm) | Pump beam | $20–100K | QCL, BWO, or FEL access |
-| D₂O (1 kg, 99.9%) | Target material | ~$500–1K | Commercial (Sigma-Aldrich) |
-| D₂ gas (lecture bottle) | Gas-phase target | ~$200–500 | Commercial |
-| Gas cell with IR windows | Containment | ~$1–3K | Diamond or polyethylene windows |
-| Precision calorimeter (μW resolution) | Track 1 excess heat | ~$2–5K | Commercial |
-| NaI(Tl) scintillation detector + MCA | Track 2 gamma spectroscopy | ~$3–5K | Look for 2.224 MeV line |
-| He-3 proportional counter + moderator | Track 2 neutron detection | ~$5–10K | Polyethylene-wrapped |
-| H₂O / H₂ gas (control) | Null comparison | ~$0 | Standard lab supplies |
-| Temperature sensors (±0.01°C) | Calorimetry | ~$100–500 | Pt RTD or thermistor |
+| Item | Purpose | Notes |
+|---|---|---|
+| Tunable far-IR source (20–60 μm) | Pump beam | QCL, BWO, or FEL access |
+| D₂O (1 kg, 99.9%) | Target material | Commercial (Sigma-Aldrich) |
+| D₂ gas (lecture bottle) | Gas-phase target | Commercial |
+| Gas cell with IR windows | Containment | Diamond or polyethylene windows |
+| Precision calorimeter (μW resolution) | Track 1 excess heat | Commercial |
+| NaI(Tl) scintillation detector + MCA | Track 2 gamma spectroscopy | Look for 2.224 MeV line |
+| He-3 proportional counter + moderator | Track 2 neutron detection | Polyethylene-wrapped |
+| H₂O / H₂ gas (control) | Null comparison | Standard lab supplies |
+| Temperature sensors (±0.01°C) | Calorimetry | Pt RTD or thermistor |
 
 
 **Overlap with L01:** The same far-IR source and spectrometer

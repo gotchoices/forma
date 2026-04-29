@@ -117,23 +117,23 @@ persistent signal in polyethylene vs. BaF₂.
 
 ### 6.1 THz / far-IR source (write beam)
 
-| Option | Range | Bandwidth | Power | Approx. cost | Notes |
-|---|---|---|---|---|---|
-| **DFG system** (two telecom lasers + GaSe crystal) | 0.5–30 THz tunable | ~GHz | ~μW–mW | $50–150K | Covers full range; best general-purpose option |
-| **QCL** (quantum cascade laser) | 1–5 THz | ~MHz | ~mW | $30–80K | Higher power but limited range; needs cryocooling below ~3 THz |
-| **OPO** (optical parametric oscillator) | 5–30 THz | ~GHz | ~mW | $50–120K | Good for mid-IR portion |
-| **FEL** (free-electron laser) | 0.3–100+ THz | Tunable, narrow | ~kW peak | Facility access | Highest power; requires beam-time proposal |
+| Option | Range | Bandwidth | Power | Notes |
+|---|---|---|---|---|
+| **DFG system** (two telecom lasers + GaSe crystal) | 0.5–30 THz tunable | ~GHz | ~μW–mW | Covers full range; best general-purpose option |
+| **QCL** (quantum cascade laser) | 1–5 THz | ~MHz | ~mW | Higher power but limited range; needs cryocooling below ~3 THz |
+| **OPO** (optical parametric oscillator) | 5–30 THz | ~GHz | ~mW | Good for mid-IR portion |
+| **FEL** (free-electron laser) | 0.3–100+ THz | Tunable, narrow | ~kW peak | Highest power; facility access via beam-time proposal |
 
 **Recommended:** DFG system for tunability, supplemented by a
 QCL if more power is needed at 1–5 THz.
 
 ### 6.2 Spectrometer (read system)
 
-| Option | Range | Sensitivity | Resolution | Approx. cost |
-|---|---|---|---|---|
-| **FTIR spectrometer** (e.g., Bruker Vertex 80v) | 1–100+ THz | ~pW/√Hz with cooled bolometer | ~0.1 cm⁻¹ (~3 GHz) | $80–200K |
-| **THz-TDS** (time-domain spectroscopy) | 0.1–10 THz | ~fW coherent | ~10 GHz | $60–150K |
-| **Heterodyne receiver** | 0.5–5 THz | ~10⁻²⁰ W/Hz | ~MHz | $40–100K |
+| Option | Range | Sensitivity | Resolution |
+|---|---|---|---|
+| **FTIR spectrometer** (e.g., Bruker Vertex 80v) | 1–100+ THz | ~pW/√Hz with cooled bolometer | ~0.1 cm⁻¹ (~3 GHz) |
+| **THz-TDS** (time-domain spectroscopy) | 0.1–10 THz | ~fW coherent | ~10 GHz |
+| **Heterodyne receiver** | 0.5–5 THz | ~10⁻²⁰ W/Hz | ~MHz |
 
 **Recommended:** FTIR spectrometer with a liquid-helium-cooled
 Si bolometer.  Broadband coverage in a single scan; well-
@@ -141,23 +141,25 @@ understood calibration; commercially available.
 
 ### 6.3 Supporting equipment
 
-| Item | Purpose | Approx. cost |
-|---|---|---|
-| Vacuum sample chamber | Eliminate water vapor absorption | $10–20K |
-| Closed-cycle cryostat (4 K) | Reduce thermal background; kT drops from 25 meV to 0.4 meV | $20–40K |
-| Optical chopper + lock-in amplifier | Modulated detection for signal extraction | $5–15K |
-| Beam-steering optics (off-axis parabolic mirrors) | Focus write beam to ~100 μm spot | $5–10K |
-
-### 6.4 Total estimated budget
-
-| Configuration | Cost |
+| Item | Purpose |
 |---|---|
-| Minimal (DFG + FTIR + vacuum chamber) | ~$150–350K |
-| Full (add cryostat + lock-in + QCL) | ~$250–550K |
-| Using existing university FTIR lab | ~$50–150K (source only) |
+| Vacuum sample chamber | Eliminate water vapor absorption |
+| Closed-cycle cryostat (4 K) | Reduce thermal background; kT drops from 25 meV to 0.4 meV |
+| Optical chopper + lock-in amplifier | Modulated detection for signal extraction |
+| Beam-steering optics (off-axis parabolic mirrors) | Focus write beam to ~100 μm spot |
 
-This is within the budget of a standard university experimental
-physics or materials-science lab.
+### 6.4 Configurations
+
+| Configuration | Components |
+|---|---|
+| Minimal | DFG source + FTIR + vacuum chamber |
+| Full | Adds cryostat, lock-in, and QCL for higher power |
+| Existing-facility | Use a university FTIR lab and supply only the source |
+
+The hardware is within the scope of a standard university
+experimental physics or materials-science lab; collaboration
+with an existing FTIR facility eliminates the largest single
+hardware item.
 
 ---
 
@@ -260,8 +262,7 @@ explanation.
 
 | Factor | Assessment |
 |---|---|
-| Equipment availability | All components commercially available |
-| Budget | $150–550K; within university lab range |
+| Equipment availability | All components commercially available; within university lab range |
 | Expertise required | THz spectroscopy (active research field; many labs worldwide) |
 | Time to first result | ~3–6 months from equipment delivery |
 | Risk of false positive | Moderate (trapped-charge states mimic persistence); controlled by material comparison |
@@ -272,9 +273,9 @@ explanation.
 
 Many university and national-lab THz spectroscopy groups have
 the required equipment already in place.  A collaboration with
-an existing group would reduce the cost to essentially zero
-(beyond consumables and student time).  Candidate facility
-types:
+an existing group would eliminate most of the hardware burden
+(only consumables and student time remain).  Candidate
+facility types:
 
 - **THz spectroscopy labs** (common in physics and chemistry
   departments)
@@ -297,8 +298,8 @@ experiment:
 4. Record the spectrum again.
 5. Look for ANY change at the predicted mode frequencies.
 
-This costs essentially nothing if you have access to a
-cryogenic FTIR setup.  A null result at this sensitivity is
+This requires essentially no new hardware if you have access
+to a cryogenic FTIR setup.  A null result at this sensitivity is
 unsurprising (the broadband source puts very little power into
 any single mode frequency), but a positive result — even a
 hint — would justify the full narrowband experiment.

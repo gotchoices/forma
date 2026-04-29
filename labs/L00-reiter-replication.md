@@ -546,101 +546,106 @@ and sensitivity studies (Track 2).
 
 ### Radioactive sources
 
-| Item | Specification | Supplier examples | Est. cost |
-|------|--------------|-------------------|-----------|
-| Cd-109 sealed source | ~1 μCi, license-exempt | Spectrum Techniques (#CD1U), Eckert & Ziegler | $50–200 |
-| Cd-109 solution (Track 2.3) | ~0.5 μCi in HCl solution, for chemical-state preparation | Eckert & Ziegler custom order | $200–500 |
+| Item | Specification | Supplier examples |
+|------|--------------|-------------------|
+| Cd-109 sealed source | ~1 μCi, license-exempt | Spectrum Techniques (#CD1U), Eckert & Ziegler |
+| Cd-109 solution (Track 2.3) | ~0.5 μCi in HCl solution, for chemical-state preparation | Eckert & Ziegler custom order |
 
 All sources are low-level, license-exempt under NRC 10 CFR
 30.71 Schedule B (< 10 μCi for Cd-109).
 
 ### Detectors
 
-| Item | Specification | Supplier examples | Est. cost |
-|------|--------------|-------------------|-----------|
-| Detector #1 — thin NaI(Tl) | 3–5 mm thick × 40 mm diameter NaI(Tl) crystal coupled to PMT; requires custom order | Saint-Gobain (custom), Hilger Crystals, Scionix | $1,500–3,000 |
-| Detector #2 — standard NaI(Tl) | 1.5" or 2" diameter × 2" thick NaI(Tl), integrated with PMT | Ortec 905 series, Saint-Gobain 2M2/2, Scionix 38B51/2M-E1 | $2,000–4,000 |
-| HV power supply (2 channels) | 0–2000 V DC, NIM standard | Ortec 556, CAEN N470A | $1,000–2,500 |
+| Item | Specification | Supplier examples |
+|------|--------------|-------------------|
+| Detector #1 — thin NaI(Tl) | 3–5 mm thick × 40 mm diameter NaI(Tl) crystal coupled to PMT; requires custom order | Saint-Gobain (custom), Hilger Crystals, Scionix |
+| Detector #2 — standard NaI(Tl) | 1.5" or 2" diameter × 2" thick NaI(Tl), integrated with PMT | Ortec 905 series, Saint-Gobain 2M2/2, Scionix 38B51/2M-E1 |
+| HV power supply (2 channels) | 0–2000 V DC, NIM standard | Ortec 556, CAEN N470A |
 
 ### Signal processing electronics (NIM standard)
 
-| Item | Specification | Qty | Supplier examples | Est. cost (each) |
-|------|--------------|-----|-------------------|-----------------|
-| Shaping amplifier | Gaussian shaping, 0.5–10 μs shaping time | 2 | Ortec 572A, CAEN N568B | $800–1,500 |
-| Single-channel analyzer (SCA) | Adjustable LL and UL window, NIM output | 2 | Ortec 550A, Ortec 551, CAEN N845 | $500–1,000 |
-| Coincidence unit | 2+ inputs, adjustable resolving time τ (50–1000 ns) | 1 | Ortec 414A, CAEN N455 | $500–1,000 |
-| Counter/scaler | ≥1 channel, gated input | 3 | Ortec 994, CAEN N1145 | $400–800 |
-| NIM crate + power supply | Standard NIM bin, ±6V, ±12V, ±24V | 1 | Ortec 4001C + 4002D, Wiener UEP6021 | $800–1,500 |
+| Item | Specification | Qty | Supplier examples |
+|------|--------------|-----|-------------------|
+| Shaping amplifier | Gaussian shaping, 0.5–10 μs shaping time | 2 | Ortec 572A, CAEN N568B |
+| Single-channel analyzer (SCA) | Adjustable LL and UL window, NIM output | 2 | Ortec 550A, Ortec 551, CAEN N845 |
+| Coincidence unit | 2+ inputs, adjustable resolving time τ (50–1000 ns) | 1 | Ortec 414A, CAEN N455 |
+| Counter/scaler | ≥1 channel, gated input | 3 | Ortec 994, CAEN N1145 |
+| NIM crate + power supply | Standard NIM bin, ±6V, ±12V, ±24V | 1 | Ortec 4001C + 4002D, Wiener UEP6021 |
 
 ### Data acquisition
 
-| Item | Specification | Supplier examples | Est. cost |
-|------|--------------|-------------------|-----------|
-| Multichannel analyzer (MCA) | ≥1024 channels, USB interface | Ortec EASY-MCA-2K, Amptek MCA-8000D | $1,500–3,000 |
-| Digital storage oscilloscope | ≥4 channels, ≥100 MHz bandwidth, histogram software | Lecroy (any current 4-ch model), Tektronix MDO3000 series, Keysight DSOX3000 | $3,000–8,000 or use existing lab scope |
+| Item | Specification | Supplier examples |
+|------|--------------|-------------------|
+| Multichannel analyzer (MCA) | ≥1024 channels, USB interface | Ortec EASY-MCA-2K, Amptek MCA-8000D |
+| Digital storage oscilloscope | ≥4 channels, ≥100 MHz bandwidth, histogram software | Lecroy (any current 4-ch model), Tektronix MDO3000 series, Keysight DSOX3000; or use existing lab scope |
 
 ### Shielding and mechanical
 
-| Item | Specification | Est. cost |
-|------|--------------|-----------|
-| Lead bricks | 2" × 4" × 8", sufficient to build enclosure ~12" × 12" × 12" (~20 bricks, ~250 kg) | $400–800 |
-| Tin collimator | Custom-machined tin cylinder with aperture; or tin sheet wrapped into tube, ~2 cm ID × 3 cm length | $50–100 (machine shop) |
-| Detector mounting | Optical rail or custom bracket to hold detectors in tandem alignment | $100–300 |
-| BNC cables | 50 Ω, various lengths | $50–100 |
+| Item | Specification |
+|------|--------------|
+| Lead bricks | 2" × 4" × 8", sufficient to build enclosure ~12" × 12" × 12" (~20 bricks, ~250 kg) |
+| Tin collimator | Custom-machined tin cylinder with aperture; or tin sheet wrapped into tube, ~2 cm ID × 3 cm length (machine shop) |
+| Detector mounting | Optical rail or custom bracket to hold detectors in tandem alignment |
+| BNC cables | 50 Ω, various lengths |
 
 ### Consumables (Track 2.3, chemical state preparation)
 
-| Item | Specification | Est. cost |
-|------|--------------|-----------|
-| Platinum wire | ~1 mm diameter, ~5 cm length, for electroplating | $30–80 |
-| Substrate for salt preparation | Glass slide or ceramic dish | < $10 |
-| Electroplating supplies | DC power supply (0–5 V, 0–1 A), beaker, leads | $50–100 (or use existing lab supply) |
+| Item | Specification |
+|------|--------------|
+| Platinum wire | ~1 mm diameter, ~5 cm length, for electroplating |
+| Substrate for salt preparation | Glass slide or ceramic dish |
+| Electroplating supplies | DC power supply (0–5 V, 0–1 A), beaker, leads (or use existing lab supply) |
 
-### Budget summary — Tracks 1–2
+### Sourcing scenarios — Tracks 1–2
 
-| Scenario | Estimated total |
-|----------|----------------|
-| Purchase all new equipment | $13,000–30,000 |
-| University lab (most NIM equipment available) | $2,000–5,000 (sources + custom thin detector) |
-| Facility with existing nuclear spectroscopy setup | $500–1,500 (sources only) |
+The hardware burden depends heavily on the host facility:
+
+- **Greenfield purchase** — buy all new equipment.  Sources,
+  custom thin detector, full NIM signal chain, MCA, scope,
+  shielding.  Largest hardware investment.
+- **University lab with NIM bins** — most signal-chain
+  electronics are commonly already on the shelf; only
+  sources and the custom thin detector need to be purchased.
+- **Existing nuclear spectroscopy setup** — only the
+  radioactive sources need to be added.
 
 ## Additional equipment — Track 3
 
-| Item | Specification | Est. cost |
-|------|--------------|-----------|
-| Na-22 sealed source | ~1 μCi, license-exempt | $100–300 |
-| Third NaI(Tl) detector + HV | 2" standard assembly | $2,000–4,000 |
-| Additional SCA + amplifier + counter | One more NIM channel | $1,700–3,300 |
+| Item | Specification |
+|------|--------------|
+| Na-22 sealed source | ~1 μCi, license-exempt |
+| Third NaI(Tl) detector + HV | 2" standard assembly |
+| Additional SCA + amplifier + counter | One more NIM channel |
 
 ## Additional equipment — Track 4
 
-| Item | Specification | Est. cost |
-|------|--------------|-----------|
-| Aluminum slab | ~5 mm thick, ~50 mm square, high purity | $20–50 |
-| Silicon single crystal | ~5 mm thick, ~25 mm diameter, polished faces | $50–200 |
-| Germanium single crystal | ~5 mm thick, ~25 mm diameter, polished faces | $100–300 |
-| Rotation stage | Manual goniometer for crystal orientation | $200–500 |
-| Liquid nitrogen + dewar (Track 2.4 / 4) | Standard lab supply | $50–100 per fill |
+| Item | Specification |
+|------|--------------|
+| Aluminum slab | ~5 mm thick, ~50 mm square, high purity |
+| Silicon single crystal | ~5 mm thick, ~25 mm diameter, polished faces |
+| Germanium single crystal | ~5 mm thick, ~25 mm diameter, polished faces |
+| Rotation stage | Manual goniometer for crystal orientation |
+| Liquid nitrogen + dewar (Track 2.4 / 4) | Standard lab supply |
 
 ## Additional equipment — Track 5
 
-| Item | Specification | Est. cost |
-|------|--------------|-----------|
-| Am-241 sealed source | ~1 μCi, license-exempt (also emits 59.6 keV γ, usable in Tracks 1–2) | $50–200 |
-| Silicon surface-barrier detectors (SBDs) | 2 units, ~300 mm² active area, ~100 μm depletion depth | $1,000–2,000 each |
-| Charge-sensitive preamplifiers | 2 units, matched to SBDs | $500–1,000 each |
-| Vacuum chamber | ~30 cm diameter bell jar or cube, with feedthroughs for 4 BNC + HV | $2,000–5,000 |
-| Vacuum pump | Rotary vane, ~10⁻² torr sufficient | $1,000–2,000 (or use existing) |
-| Gold leaf | 24-carat, standard booklet (~80 mm square sheets, ~100 nm thick) | $30–60 |
+| Item | Specification |
+|------|--------------|
+| Am-241 sealed source | ~1 μCi, license-exempt (also emits 59.6 keV γ, usable in Tracks 1–2) |
+| Silicon surface-barrier detectors (SBDs) | 2 units, ~300 mm² active area, ~100 μm depletion depth |
+| Charge-sensitive preamplifiers | 2 units, matched to SBDs |
+| Vacuum chamber | ~30 cm diameter bell jar or cube, with feedthroughs for 4 BNC + HV |
+| Vacuum pump | Rotary vane, ~10⁻² torr sufficient (or use existing) |
+| Gold leaf | 24-carat, standard booklet (~80 mm square sheets, ~100 nm thick) |
 
-## Budget summary — all tracks
+## Sourcing summary — all tracks
 
-| Scope | Estimated total (new purchase) | With existing lab |
-|-------|-------------------------------|-------------------|
-| Track 1 only | $13,000–30,000 | $500–5,000 |
-| Tracks 1–2 | $13,500–31,000 | $700–5,500 |
-| Tracks 1–4 | $17,000–39,000 | $1,500–7,000 |
-| All tracks (1–5) | $22,000–48,000 | $4,000–12,000 |
+Each successive track adds a modest set of additional
+components on top of the previous tracks' inventory.  In
+all cases, hosting at a facility with an existing nuclear
+spectroscopy setup substantially reduces the marginal
+hardware requirement to mostly sources and a handful of
+specialty components per track.
 
 ---
 

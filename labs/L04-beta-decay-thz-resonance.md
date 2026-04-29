@@ -12,14 +12,14 @@
   same coupling channel, stronger observable; tunes to the
   family L04 identifies),
   [L05](L05-optical-beat-absorption.md) (optical-beat
-  absorption — cheapest predecessor; existence check on
+  absorption — simplest predecessor; existence check on
   the ν-sheet coupling channel before L04 commits to
   tritium handling)
 
 **Logical sequence:** L04 is the middle step in the
 L05 → L04 → L02 chain.  L05 first checks whether the
-ν-sheet coupling channel exists via cheap intensity-beat
-absorption.  L04 then tests whether the same channel can
+ν-sheet coupling channel exists via simple intensity-beat
+absorption with no radioactives.  L04 then tests whether the same channel can
 modify a weak transition (β-decay rate).  L02 finally
 drives the channel hard enough to trigger nuclear events.
 A negative L05 (intensity-coupling fails) does not rule
@@ -284,23 +284,24 @@ A confirmed resonance at a predicted frequency would:
    in L02 (threshold-mediated nuclear events).
 
 
-## 7. Equipment and cost
+## 7. Equipment
 
 This experiment shares equipment with L01.  The additional
 requirements are modest:
 
-| Item | Purpose | Cost |
-|---|---|---|
-| Tritium source (sealed, ~GBq) | Beta emitter | $1–5K |
-| Si surface-barrier detector | Electron counting | $2–5K |
-| Counting electronics (MCA + scaler) | Pulse processing | $5–10K |
-| THz source (DFG or QCL) | From L01 | (shared) |
-| Fabry-Pérot cavity (adjustable) | Resonant field enhancement | $5–15K |
-| Frequency reference / wavemeter | Verify THz frequency | $5–10K |
-| Shielding (lead + mu-metal) | Reduce background counts | $2–5K |
+| Item | Purpose |
+|---|---|
+| Tritium source (sealed, ~GBq) | Beta emitter |
+| Si surface-barrier detector | Electron counting |
+| Counting electronics (MCA + scaler) | Pulse processing |
+| THz source (DFG or QCL) | From L01 (shared) |
+| Fabry-Pérot cavity (adjustable) | Resonant field enhancement |
+| Frequency reference / wavemeter | Verify THz frequency |
+| Shielding (lead + mu-metal) | Reduce background counts |
 
-**Incremental cost beyond L01:** ~$20–50K
-**Standalone cost:** ~$170–400K (includes THz source)
+The THz source dominates the equipment requirement; sharing
+it with L01 substantially reduces the marginal hardware
+needed for L04.
 
 ### 7.1 THz source requirements
 

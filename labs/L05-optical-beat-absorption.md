@@ -13,11 +13,11 @@
 
 **Logical sequence:** L05 is the first step in the
 L05 → L04 → L02 chain.  It establishes whether the ν-sheet
-coupling channel exists at all using the cheapest, safest
-method (no radioactives, ~$30–55K).  A positive L05 result
-identifies which frequency family is correct and motivates
-L04 (β-decay rate test) and L02 (nuclear loading).  A
-negative L05 rules out intensity-beat coupling but leaves
+coupling channel exists at all using the simplest, lowest-
+risk method (no radioactives required).  A positive L05
+result identifies which frequency family is correct and
+motivates L04 (β-decay rate test) and L02 (nuclear loading).
+A negative L05 rules out intensity-beat coupling but leaves
 direct-field coupling open for L04.
 
 ---
@@ -110,11 +110,11 @@ One set of tunable lasers covers ALL families.
 The dark mode linewidth at Q = 10⁶ is ~7 MHz.  The beat
 frequency must stay within this window.
 
-| Laser type | Relative jitter | Adequate? | Cost (pair) |
-|-----------|----------------|-----------|-------------|
-| Free-running DFB | ~10 MHz | Marginal | $2–4K |
-| **External cavity (ECL)** | **~100 kHz** | **Yes** | **$10–20K** |
-| Phase-locked pair | <1 kHz | Yes (overkill) | $15–25K |
+| Laser type | Relative jitter | Adequate? |
+|-----------|----------------|-----------|
+| Free-running DFB | ~10 MHz | Marginal |
+| **External cavity (ECL)** | **~100 kHz** | **Yes** |
+| Phase-locked pair | <1 kHz | Yes (overkill) |
 
 **Recommendation:** ECLs for the discovery phase.  100 kHz
 jitter is 70× below the mode acceptance bandwidth.
@@ -219,23 +219,23 @@ See [Q118](../qa/Q118-optical-beating-and-dark-mode-coupling.md)
 for the full analysis.
 
 
-## 8. Equipment and cost
+## 8. Equipment
 
-| Item | Spec | Cost |
-|------|------|------|
-| Reference laser | 1550 nm ECL, 50 mW | $5–8K |
-| Partner 1 (ν₁) | Tunable ECL, 1600–1620 nm | $5–10K |
-| Partner 2 (ν₂) | Tunable ECL, 1600–1620 nm | $5–10K |
-| Partner 3 (ν₃) | Extended InGaAs, 1650–1680 nm | $5–10K |
-| Fiber combiner | 1×4 PM coupler | $500 |
-| InGaAs detectors (×4) | 1500–1700 nm, low noise | $2–4K |
-| Lock-in amplifier | Standard | $3–5K |
-| Samples | Si, diamond, ZnSe, CaF₂ windows | $1–3K |
-| Optics (lenses, mounts) | Standard | $2–3K |
-| **Total** | | **$30–55K** |
+| Item | Spec |
+|------|------|
+| Reference laser | 1550 nm ECL, 50 mW |
+| Partner 1 (ν₁) | Tunable ECL, 1600–1620 nm |
+| Partner 2 (ν₂) | Tunable ECL, 1600–1620 nm |
+| Partner 3 (ν₃) | Extended InGaAs, 1650–1680 nm |
+| Fiber combiner | 1×4 PM coupler |
+| InGaAs detectors (×4) | 1500–1700 nm, low noise |
+| Lock-in amplifier | Standard |
+| Samples | Si, diamond, ZnSe, CaF₂ windows |
+| Optics (lenses, mounts) | Standard |
 
-Versus L04: $170–400K (needs THz source + tritium handling).
-L05 is 5–10× cheaper and has no radioactive materials.
+Compared to L04, L05 needs no THz source and no radioactive
+materials — far simpler bench setup.  See §10 for specific
+product candidates.
 
 
 ## 9. Relation to other experiments
@@ -243,13 +243,13 @@ L05 is 5–10× cheaper and has no radioactive materials.
 | Experiment | Method | Observable | Risk |
 |-----------|--------|-----------|------|
 | **L05 (this)** | Optical beat in transparent sample | Absorption dip at ν frequency | Intensity coupling might not work |
-| L04 | Direct THz + tritium | Beta decay rate change | Expensive, radioactive |
-| L02 | Far-IR loading of D₂ gas | Excess heat / 2.224 MeV γ / neutrons | Expensive, nuclear safety |
+| L04 | Direct THz + tritium | Beta decay rate change | Radioactive handling |
+| L02 | Far-IR loading of D₂ gas | Excess heat / 2.224 MeV γ / neutrons | Nuclear safety |
 
-L05 is the FIRST experiment to run: cheapest, safest,
-fastest.  A positive result motivates L04 and L02.  A
-negative result rules out intensity-coupling but leaves
-field-coupling open for L04.
+L05 is the first experiment to run in the chain: simplest
+bench setup, no radioactives, fastest turnaround.  A positive
+result motivates L04 and L02.  A negative result rules out
+intensity-coupling but leaves field-coupling open for L04.
 
 
 ## 10. Specific equipment candidates
@@ -260,10 +260,10 @@ The reference must be extremely stable — all beat frequencies
 are measured relative to it.  Fixed-wavelength, narrow
 linewidth, fiber-coupled.
 
-| Product | Manufacturer | Linewidth | Power | Est. price | Notes |
-|---------|-------------|-----------|-------|-----------|-------|
-| **PLANEX** | [RIO Lasers](https://rio-lasers.com/1550nm-laser-diode/) | <3 kHz | 20 mW | $3–5K | Ultra-stable, designed as reference oscillator. OEM butterfly module. **Top choice.** |
-| **SFL1550P** | [Thorlabs](https://www.thorlabs.com/newgrouppage9.cfm?objectgroup_id=13653) | <50 kHz | 40 mW | ~$6K | Single-frequency, butterfly package, thermoelectric cooled. |
+| Product | Manufacturer | Linewidth | Power | Notes |
+|---------|-------------|-----------|-------|-------|
+| **PLANEX** | [RIO Lasers](https://rio-lasers.com/1550nm-laser-diode/) | <3 kHz | 20 mW | Ultra-stable, designed as reference oscillator. OEM butterfly module. **Top choice.** |
+| **SFL1550P** | [Thorlabs](https://www.thorlabs.com/newgrouppage9.cfm?objectgroup_id=13653) | <50 kHz | 40 mW | Single-frequency, butterfly package, thermoelectric cooled. |
 
 **Recommendation:** RIO PLANEX.  Purpose-built as a
 frequency reference.  3 kHz linewidth is far beyond what we
@@ -278,17 +278,17 @@ The partner wavelength ranges from 1557 nm (Family C ν₁)
 to 1613 nm (Family A ν₂) — well within standard C+L band
 telecom laser tuning range.
 
-| Product | Manufacturer | Linewidth | Power | Range | Est. price | Notes |
-|---------|-------------|-----------|-------|-------|-----------|-------|
-| **OSICS T100** (1520) | [EXFO](https://www.exfo.com/en/products/lab-manufacturing-testing/tunable-laser-sources/osics-t100/) | narrow | 7 dBm | 1520–1620 nm | ~$10–15K | Industry standard for telecom testing. 1 pm resolution. Often available refurbished. |
-| **TSL-570** | [Santec](https://inst.santec.com/products/tunablelaser/tsl-570) | <0.1 pm | 13 dBm | 1500–1630 nm | ~$15–25K | Mode-hop free across full range. 90 dB side-mode suppression. Best-in-class tunable. |
-| **CTL 1550** | [TOPTICA](https://www.toptica.com/products/tunable-diode-lasers/ecdl-dfb-lasers/ctl) | 10 kHz | 50 mW | 1480–1630 nm | ~$20–30K | Scientific grade. 10 kHz linewidth is 700× better than needed. |
+| Product | Manufacturer | Linewidth | Power | Range | Notes |
+|---------|-------------|-----------|-------|-------|-------|
+| **OSICS T100** (1520) | [EXFO](https://www.exfo.com/en/products/lab-manufacturing-testing/tunable-laser-sources/osics-t100/) | narrow | 7 dBm | 1520–1620 nm | Industry standard for telecom testing. 1 pm resolution. Often available refurbished. |
+| **TSL-570** | [Santec](https://inst.santec.com/products/tunablelaser/tsl-570) | <0.1 pm | 13 dBm | 1500–1630 nm | Mode-hop free across full range. 90 dB side-mode suppression. Best-in-class tunable. |
+| **CTL 1550** | [TOPTICA](https://www.toptica.com/products/tunable-diode-lasers/ecdl-dfb-lasers/ctl) | 10 kHz | 50 mW | 1480–1630 nm | Scientific grade. 10 kHz linewidth is 700× better than needed. |
 
 **Recommendation:** Two EXFO T100 modules — one tuned to ν₁
 partner wavelength, one to ν₂.  These are the workhorse of
-telecom labs; refurbished units are widely available at
-$5–8K each, halving the cost.  Either can be retuned to scan
-all four families without hardware changes.
+telecom labs; refurbished units are widely available.
+Either can be retuned to scan all four families without
+hardware changes.
 
 
 ### Tunable partner for ν₃ (~1650–1680 nm)
@@ -301,18 +301,19 @@ stop at ~1630 nm.  The ν₃ partner wavelengths are:
 
 Options:
 
-| Product | Manufacturer | Linewidth | Power | Range | Est. price | Notes |
-|---------|-------------|-----------|-------|-------|-----------|-------|
-| **CTL 1650** | [TOPTICA](https://www.toptica.com/products/tunable-diode-lasers/ecdl-dfb-lasers/ctl) | 10 kHz | 40 mW | 1530–1750 nm | ~$25–35K | **Covers the full range** including all ν₃ candidates. The only commercial off-the-shelf tunable with narrow linewidth at 1672 nm. Could also serve as ν₁/ν₂ partner. |
-| **Custom DFB** | [Eblana Photonics](https://www.eblana.com/) | ~100 kHz | 10 mW | custom single wavelength | ~$5–10K | Eblana manufactures custom DFB diodes at non-standard wavelengths. Would need to specify 1672 nm. Fixed wavelength — one diode per family's ν₃. |
+| Product | Manufacturer | Linewidth | Power | Range | Notes |
+|---------|-------------|-----------|-------|-------|-------|
+| **CTL 1650** | [TOPTICA](https://www.toptica.com/products/tunable-diode-lasers/ecdl-dfb-lasers/ctl) | 10 kHz | 40 mW | 1530–1750 nm | **Covers the full range** including all ν₃ candidates. The only commercial off-the-shelf tunable with narrow linewidth at 1672 nm. Could also serve as ν₁/ν₂ partner. |
+| **Custom DFB** | [Eblana Photonics](https://www.eblana.com/) | ~100 kHz | 10 mW | custom single wavelength | Eblana manufactures custom DFB diodes at non-standard wavelengths. Would need to specify 1672 nm. Fixed wavelength — one diode per family's ν₃. |
 
-**Recommendation:** if budget allows, TOPTICA CTL — one unit
-covers ALL partner wavelengths (ν₁, ν₂, ν₃ for all families).
-It could replace both EXFO T100s AND serve as the ν₃ source.
-Two CTLs would provide simultaneous three-frequency coverage.
+**Recommendation:** TOPTICA CTL is the most flexible — one
+unit covers ALL partner wavelengths (ν₁, ν₂, ν₃ for all
+families) and could replace both EXFO T100s AND serve as
+the ν₃ source.  Two CTLs would provide simultaneous three-
+frequency coverage.
 
-If budget is tight: Eblana custom DFB at 1672 nm for Family A
-testing, with option to order additional diodes for other
+A leaner option: Eblana custom DFB at 1672 nm for Family A
+testing, with the option to order additional diodes for other
 families if results are positive.
 
 
@@ -321,76 +322,79 @@ families if results are positive.
 Need four detectors (one per beam) to monitor transmitted
 power.  InGaAs covers the full range.
 
-| Product | Manufacturer | Type | Range | Bandwidth | Est. price | Notes |
-|---------|-------------|------|-------|-----------|-----------|-------|
-| **PDA20CS2** | [Thorlabs](https://www.thorlabs.com/newgrouppage9.cfm?objectgroup_id=4) | Amplified InGaAs | 800–1700 nm | DC–10 MHz | ~$2K | Switchable gain (8 settings). Good general-purpose choice. |
-| **PDA10DT** | [Thorlabs](https://www.thorlabs.com/newgrouppage9.cfm?objectgroup_id=4) | Amplified InGaAs | 900–1700 nm | DC–10 MHz | ~$1.5K | Fixed gain. Slightly cheaper. |
-| **APD430C** | [Thorlabs](https://www.thorlabs.com/newgrouppage9.cfm?objectgroup_id=4047) | InGaAs avalanche | 900–1700 nm | DC–400 MHz | ~$5K | Highest sensitivity. Use for the weakest signal channel. |
-| **G12183-010K** | [Hamamatsu](https://www.hamamatsu.com/jp/en/product/optical-sensors/photodiodes/ingaas-photodiode.html) | InGaAs PIN | 900–1700 nm | high speed | ~$200 | Bare diode — needs external TIA circuit. Cheapest per channel. |
+| Product | Manufacturer | Type | Range | Bandwidth | Notes |
+|---------|-------------|------|-------|-----------|-------|
+| **PDA20CS2** | [Thorlabs](https://www.thorlabs.com/newgrouppage9.cfm?objectgroup_id=4) | Amplified InGaAs | 800–1700 nm | DC–10 MHz | Switchable gain (8 settings). Good general-purpose choice. |
+| **PDA10DT** | [Thorlabs](https://www.thorlabs.com/newgrouppage9.cfm?objectgroup_id=4) | Amplified InGaAs | 900–1700 nm | DC–10 MHz | Fixed gain. Simpler alternative to the PDA20CS2. |
+| **APD430C** | [Thorlabs](https://www.thorlabs.com/newgrouppage9.cfm?objectgroup_id=4047) | InGaAs avalanche | 900–1700 nm | DC–400 MHz | Highest sensitivity. Use for the weakest signal channel. |
+| **G12183-010K** | [Hamamatsu](https://www.hamamatsu.com/jp/en/product/optical-sensors/photodiodes/ingaas-photodiode.html) | InGaAs PIN | 900–1700 nm | high speed | Bare diode — needs external TIA circuit. |
 
 **Recommendation:** 3× Thorlabs PDA20CS2 (main channels) +
 1× Thorlabs APD430C (highest-sensitivity channel, used for
-the weakest beam or the reference monitor).  Total: ~$11K.
-The switchable gain on the PDA20CS2 is valuable during
-initial setup when signal levels are unknown.
+the weakest beam or the reference monitor).  The switchable
+gain on the PDA20CS2 is valuable during initial setup when
+signal levels are unknown.
 
 
 ### Supporting equipment
 
-| Item | Product / spec | Est. price | Notes |
-|------|---------------|-----------|-------|
-| Lock-in amplifier | Stanford Research SR830 or SR860 | $4–6K | Extracts weak absorption signal from noise. Essential for narrow-dip detection. |
-| Fiber combiner | Thorlabs TW1550R5F1 (1×4 PM) | $500 | Combines all beams into one fiber for co-propagation. |
-| Fiber collimator | Thorlabs F240APC-1550 (×2) | $400 | Launch into and collect from sample. |
-| Sample mounts | Thorlabs cage system | $500 | Standard optomechanics. |
-| Sample windows | Si, diamond, ZnSe, CaF₂ (25 mm dia) | $1–3K | Diamond is most expensive (~$1K) but cleanest spectrum. |
-| Optical table | small breadboard (12"×18") | $500 | Or use existing table. |
-| Function generator | for laser modulation sweep | $500 | Drives the tunable laser's wavelength modulation. |
+| Item | Product / spec | Notes |
+|------|---------------|-------|
+| Lock-in amplifier | Stanford Research SR830 or SR860 | Extracts weak absorption signal from noise. Essential for narrow-dip detection. |
+| Fiber combiner | Thorlabs TW1550R5F1 (1×4 PM) | Combines all beams into one fiber for co-propagation. |
+| Fiber collimator | Thorlabs F240APC-1550 (×2) | Launch into and collect from sample. |
+| Sample mounts | Thorlabs cage system | Standard optomechanics. |
+| Sample windows | Si, diamond, ZnSe, CaF₂ (25 mm dia) | Diamond gives the cleanest spectrum. |
+| Optical table | small breadboard (12"×18") | Or use existing table. |
+| Function generator | for laser modulation sweep | Drives the tunable laser's wavelength modulation. |
 
 
 ### Build options
 
-**Budget build (~$35K)**
+Three configurations spanning capability tiers.  Higher
+tiers cover more frequency families and allow simultaneous
+multi-frequency illumination; lower tiers test fewer modes
+with reduced hardware.
 
-| Item | Product | Cost |
-|------|---------|------|
-| Reference | RIO PLANEX 1550 nm | $4K |
-| Partner 1 (ν₁) | EXFO T100 (refurbished) | $6K |
-| Partner 2 (ν₂) | EXFO T100 (refurbished) | $6K |
-| Partner 3 (ν₃) | Eblana custom DFB 1672 nm | $8K |
-| Detectors | 3× PDA20CS2 + 1× APD430C | $11K |
-| Supporting | lock-in, fibers, optics, samples | $8K |
-| **Total** | | **~$43K** |
+**Single-family build** — covers Family A fully
 
-Covers Family A fully.  Other families require retuning
-partners 1–2 (free) and ordering a new Eblana DFB for ν₃
-(~$5K per family).
+| Item | Product |
+|------|---------|
+| Reference | RIO PLANEX 1550 nm |
+| Partner 1 (ν₁) | EXFO T100 (refurbished) |
+| Partner 2 (ν₂) | EXFO T100 (refurbished) |
+| Partner 3 (ν₃) | Eblana custom DFB 1672 nm |
+| Detectors | 3× PDA20CS2 + 1× APD430C |
+| Supporting | lock-in, fibers, optics, samples |
 
-**Premium build (~$80K)**
+Covers Family A.  Other families require retuning partners
+1–2 (no hardware change) and ordering a new Eblana DFB for
+ν₃ (one diode per family).
 
-| Item | Product | Cost |
-|------|---------|------|
-| Reference | RIO PLANEX 1550 nm | $4K |
-| Partner 1+2+3 | 2× TOPTICA CTL (1530–1750 nm) | $55K |
-| Detectors | 3× PDA20CS2 + 1× APD430C | $11K |
-| Supporting | lock-in, fibers, optics, samples | $8K |
-| **Total** | | **~$78K** |
+**Full-coverage build** — covers all four families, no
+retuning hardware
+
+| Item | Product |
+|------|---------|
+| Reference | RIO PLANEX 1550 nm |
+| Partner 1+2+3 | 2× TOPTICA CTL (1530–1750 nm) |
+| Detectors | 3× PDA20CS2 + 1× APD430C |
+| Supporting | lock-in, fibers, optics, samples |
 
 Covers ALL families with no hardware changes — just retune
 the CTLs.  10 kHz linewidth provides 700× margin over the
 mode acceptance bandwidth.  Two CTLs allow simultaneous
 illumination at all three frequencies.
 
-**Minimum viable (~$20K)**
+**Minimum viable** — proof-of-concept
 
-| Item | Product | Cost |
-|------|---------|------|
-| Reference | Thorlabs SFL1550P | $6K |
-| Partner 1 | EXFO T100 (used) | $5K |
-| Partner 3 | Eblana custom DFB 1672 nm | $5K |
-| Detectors | 2× PDA10DT | $3K |
-| Supporting | minimal optics, no lock-in | $2K |
-| **Total** | | **~$21K** |
+| Item | Product |
+|------|---------|
+| Reference | Thorlabs SFL1550P |
+| Partner 1 | EXFO T100 (used) |
+| Partner 3 | Eblana custom DFB 1672 nm |
+| Detectors | 2× PDA10DT |
+| Supporting | minimal optics, no lock-in |
 
 Tests ν₁ and ν₃ only (skips ν₂ which is close to ν₁).
 No lock-in — relies on direct power measurement.
@@ -455,21 +459,20 @@ partner modules at the family-appropriate centers (the 1035
 nm reference can stay).  Computed analogously to the table
 above for each family's three target beats.
 
-**Single-vendor BASIK build (estimated $50–75K)**
+**Single-vendor BASIK build**
 
-| Item | Product | Cost (est.) |
-|------|---------|-------------|
-| Reference + 3 partners | 4× Koheras BASIK Y10 (custom center λ each) | $30–45K |
-| Rack/control | Koheras ACOUSTIK 16-channel chassis | $5–10K |
-| Detectors | 3× PDA20CS2 + 1× APD430C | $11K |
-| Supporting | lock-in, fibers, optics, samples | $8K |
-| **Total** | | **~$54–74K** |
+| Item | Product |
+|------|---------|
+| Reference + 3 partners | 4× Koheras BASIK Y10 (custom center λ each) |
+| Rack/control | Koheras ACOUSTIK 16-channel chassis |
+| Detectors | 3× PDA20CS2 + 1× APD430C |
+| Supporting | lock-in, fibers, optics, samples |
 
-Comparable to the premium TOPTICA build but with industrial
-OEM hardware and full software control via NKTP CONTROL.
-Trade-off: family-locked at order time vs. the wide-tunable
-TOPTICA CTL which retunes across all four families in
-software.
+Comparable in scope to the full-coverage TOPTICA build but
+with industrial OEM hardware and full software control via
+NKTP CONTROL.  Trade-off: family-locked at order time vs.
+the wide-tunable TOPTICA CTL which retunes across all four
+families in software.
 
 
 ## 11. Track 5: Water as target medium
@@ -553,16 +556,15 @@ This track runs AFTER Phases 1–4 produce results:
      sample post-exposure)
 
    At L05 laser powers (10–50 mW), none of these are
-   expected.  But the measurements are cheap and the water
-   is already there.
+   expected.  But the measurements add minimal hardware
+   and the water is already there.
 
 ### Equipment additions
 
-| Item | Spec | Cost |
-|------|------|------|
-| Thin water cell | ~100 μm path, CaF₂ windows | $200–500 |
-| Thermocouple / RTD | monitor water temperature | $50–100 |
-| Water samples | deionized H₂O, D₂O for comparison | $50 |
+| Item | Spec |
+|------|------|
+| Thin water cell | ~100 μm path, CaF₂ windows |
+| Thermocouple / RTD | monitor water temperature |
+| Water samples | deionized H₂O, D₂O for comparison |
 
-Total addition: < $1K.  Uses the same lasers and detectors
-as the main experiment.
+Uses the same lasers and detectors as the main experiment.

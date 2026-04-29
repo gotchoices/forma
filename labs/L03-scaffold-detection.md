@@ -35,57 +35,53 @@ stopped if the preceding result is negative.
 
 ### Track 1 only (validation of up-conversion chain)
 
-| Component | Specific model | Est. cost |
-|-----------|---------------|----------:|
-| THz source (known, for calibration) | Globar (SiC element) + bandpass filter at 7 THz, OR Virginia Diodes WR-0.15 multiplier chain (~5-7.5 THz) | $2,000–$8,000 |
-| Nonlinear crystal | GaSe, 10×10 mm, 1 mm thick (Eksma Optics or Del Mar Photonics) | $3,000 |
-| Pump laser | Lumibird/Teem Photonics PNP microchip Nd:YAG, frequency-doubled to 532 nm, ~1 ns pulses, ~10 μJ, 1-10 kHz | $12,000 |
-| Pump beam optics | Thorlabs dielectric mirrors (BB1-E02 ×4), plano-convex lens (f=150 mm), half-wave plate, polarizer | $1,000 |
-| THz collection optics | 2× Thorlabs gold off-axis parabolic mirrors (MPD249-M01), 1× TPX window (Tydex, 25 mm dia) | $1,500 |
-| Pump rejection filters | 3× OptiGrate BragGrate notch at 532 nm + 1× Semrock bandpass 525-530 nm | $5,000 |
-| Detector | Excelitas SPCM-AQRH-14-FC silicon SPAD (65% QE at 528 nm, <25 dark counts/sec) | $4,000 |
-| Lock-in amplifier | Stanford Research Systems SR830 (used) or SR860 | $5,000 |
-| Optical chopper | Thorlabs MC2000B + blade | $1,300 |
-| Optical breadboard | Thorlabs 2'×3' breadboard + posts, clamps, mounts | $2,500 |
-| BNC cables, connectors, misc | — | $1,000 |
-| **Track 1 total** | | **~$38,000** |
+| Component | Specific model |
+|-----------|---------------|
+| THz source (known, for calibration) | Globar (SiC element) + bandpass filter at 7 THz, OR Virginia Diodes WR-0.15 multiplier chain (~5-7.5 THz) |
+| Nonlinear crystal | GaSe, 10×10 mm, 1 mm thick (Eksma Optics or Del Mar Photonics) |
+| Pump laser | Lumibird/Teem Photonics PNP microchip Nd:YAG, frequency-doubled to 532 nm, ~1 ns pulses, ~10 μJ, 1-10 kHz |
+| Pump beam optics | Thorlabs dielectric mirrors (BB1-E02 ×4), plano-convex lens (f=150 mm), half-wave plate, polarizer |
+| THz collection optics | 2× Thorlabs gold off-axis parabolic mirrors (MPD249-M01), 1× TPX window (Tydex, 25 mm dia) |
+| Pump rejection filters | 3× OptiGrate BragGrate notch at 532 nm + 1× Semrock bandpass 525-530 nm |
+| Detector | Excelitas SPCM-AQRH-14-FC silicon SPAD (65% QE at 528 nm, <25 dark counts/sec) |
+| Lock-in amplifier | Stanford Research Systems SR830 (used) or SR860 |
+| Optical chopper | Thorlabs MC2000B + blade |
+| Optical breadboard | Thorlabs 2'×3' breadboard + posts, clamps, mounts |
+| BNC cables, connectors, misc | — |
 
 ### Track 2 adds (biological sample)
 
-| Component | Purpose | Est. cost |
-|-----------|---------|----------:|
-| Sample chamber | Custom enclosure with TPX windows (Tydex, ×2), blackened interior, N₂ purge ports | $500 |
-| Biological samples | Fresh leaves (plant nursery), salamander limbs (if available through biology collaborator) | $200 |
-| Surgical tools | Scalpel, forceps, cutting board — for clean tissue severing | $100 |
-| **Track 2 incremental** | | **~$800** |
+| Component | Purpose |
+|-----------|---------|
+| Sample chamber | Custom enclosure with TPX windows (Tydex, ×2), blackened interior, N₂ purge ports |
+| Biological samples | Fresh leaves (plant nursery), salamander limbs (if available through biology collaborator) |
+| Surgical tools | Scalpel, forceps, cutting board — for clean tissue severing |
 
 ### Track 3 adds (time-series and spatial scanning)
 
-| Component | Purpose | Est. cost |
-|-----------|---------|----------:|
-| Translation stage | Thorlabs MTS50/M-Z8E motorized linear stage (50 mm travel) ×2 for XY scanning | $4,000 |
-| Stage controller | Thorlabs BSC203 3-axis controller | $3,000 |
-| Data acquisition | National Instruments USB-6003 DAQ for synchronizing SPAD counts with stage position | $500 |
-| Automation software | Python script using Thorlabs APT + NI-DAQmx libraries | $0 |
-| **Track 3 incremental** | | **~$7,500** |
+| Component | Purpose |
+|-----------|---------|
+| Translation stage | Thorlabs MTS50/M-Z8E motorized linear stage (50 mm travel) ×2 for XY scanning |
+| Stage controller | Thorlabs BSC203 3-axis controller |
+| Data acquisition | National Instruments USB-6003 DAQ for synchronizing SPAD counts with stage position |
+| Automation software | Python script using Thorlabs APT + NI-DAQmx libraries |
 
 ### Track 4 adds (imaging via EMCCD)
 
-| Component | Purpose | Est. cost |
-|-----------|---------|----------:|
-| EMCCD camera | Andor iXon Life 888 (1024×1024, >90% QE, single-photon, cooled to −80°C) | $30,000 |
-| Imaging lens | Thorlabs achromatic doublet (f=100 mm) for imaging the sum-frequency output onto the EMCCD | $200 |
-| Additional filters | Semrock short-pass at 530 nm (×2) for extra pump suppression in imaging mode | $600 |
-| **Track 4 incremental** | | **~$31,000** |
+| Component | Purpose |
+|-----------|---------|
+| EMCCD camera | Andor iXon Life 888 (1024×1024, >90% QE, single-photon, cooled to −80°C) |
+| Imaging lens | Thorlabs achromatic doublet (f=100 mm) for imaging the sum-frequency output onto the EMCCD |
+| Additional filters | Semrock short-pass at 530 nm (×2) for extra pump suppression in imaging mode |
 
-### Cumulative budget
+### What each track enables
 
-| After track | Total investment | What you can do |
-|-------------|----------------:|-----------------|
-| 1 | ~$38,000 | Validate the up-conversion chain with a known THz source |
-| 2 | ~$39,000 | Search for 7 THz signal from biological tissue and severed tissue |
-| 3 | ~$46,000 | Spatial scanning + time-series of scaffold persistence |
-| 4 | ~$77,000 | Full 2D imaging — photograph the scaffold |
+| After track | Capability |
+|-------------|-----------|
+| 1 | Validate the up-conversion chain with a known THz source |
+| 2 | Search for 7 THz signal from biological tissue and severed tissue |
+| 3 | Spatial scanning + time-series of scaffold persistence |
+| 4 | Full 2D imaging — photograph the scaffold |
 
 
 ---
@@ -464,8 +460,8 @@ If no image: the signal is below the EMCCD sensitivity
 at this integration time.  Consider: longer integration
 (overnight exposures), cooler EMCCD (upgrade to
 liquid-nitrogen cooling for lower dark current), or
-higher pump power (upgrade to the Litron/Lumibird
-pulsed Nd:YAG at ~$35,000).
+higher pump power (upgrade to a higher-energy pulsed
+Nd:YAG such as Litron or Lumibird systems).
 
 
 ---

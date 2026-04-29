@@ -42,8 +42,8 @@ These are designs, not results.  None have been performed.
 
 L05 → L04 → L02 form a progressive chain on the same physics:
 
-1. **L05** — does the ν-sheet coupling channel exist at all?  Cheapest, safest first step (optical beat absorption, no radioactives, ~$30–55K).  Identifies the correct frequency family.
-2. **L04** — can the channel modify a weak transition?  Tritium β-decay rate change at the family frequency from L05 (~$170–400K, tritium handling).
-3. **L02** — can the channel trigger fusion?  Far-IR loading of D₂ across the 0.782 MeV threshold (most ambitious; nuclear safety required).
+1. **L05** — does the ν-sheet coupling channel exist at all?  Optical beat absorption in transparent samples; no radioactives required.  Identifies the correct frequency family.
+2. **L04** — can the channel modify a weak transition?  Tritium β-decay rate change at the family frequency from L05; requires tritium handling.
+3. **L02** — can the channel trigger fusion?  Far-IR loading of D₂ across the 0.782 MeV threshold; nuclear safety required.
 
 A negative L05 rules out intensity-coupling but leaves field-coupling open for L04.  A positive L05 motivates L04 and L02 directly.
