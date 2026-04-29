@@ -150,12 +150,14 @@ they are framing questions to be examined.
    *Off-diagonal shear and the breaking of ±n degeneracy.*
    Asks the converse of chapter 5's question: given an
    off-diagonal shear g_Su (from any source), what does it do
-   to ±n modes? Derives that shear lifts the rest-degeneracy
-   for moving modes and produces a thermal-equilibrium
-   asymmetry between +n and −n densities. Contains the
-   project's closest contact with the real-world
-   matter/antimatter question without claiming it as the
-   mechanism.
+   to ±n modes? Derives that shear lifts the ±n degeneracy
+   for moving modes via an n-linear cross-term in the dispersion
+   relation, but that the (k_S, n) → (−k_S, −n) symmetry of the
+   sheared dispersion is exact — so pure thermal equilibrium
+   gives direction-correlated asymmetry without net ±n
+   population bias. Identifies shear as supplying one of the
+   three Sakharov ingredients for baryogenesis (a CP-violation
+   analog), not the whole mechanism.
 8. [08-closing-summary.md](08-closing-summary.md) —
    *Closing summary.* Consolidate what the project established,
    ruled out, and unexpectedly found. Make the open questions
@@ -165,13 +167,91 @@ they are framing questions to be examined.
 Each chapter is added one at a time. The arc is a sketch, not a
 contract.
 
+## Project status
+
+**Provisionally complete.** All eight chapters are in place as
+full prose. The project's narrow question has been answered,
+and the structural results are documented. Further development
+can happen on demand.
+
+## TODOs / pending work
+
+The project is structurally finished, but several pieces of
+work remain available if desired:
+
+### Figures and animations
+
+Several visualizations were sketched in chapter narrative or
+in the [mass-uni.md](mass-uni.md) spec but not yet built:
+
+- **`viz/mass-uni.html` — interactive 3D explorer.** Specified
+  in [mass-uni.md](mass-uni.md). Three.js-based; cylinder
+  rendering with multiple particles, geodesics, photon
+  worldlines, time slider. Substantial implementation effort.
+- **Dispersion-relation animation showing ±n branches splitting
+  under shear** (Chapter 7). The static dispersion plot exists
+  ([dispersion.png](figures/dispersion.png)); animating
+  parameter γ from 0 to nonzero would show the branches
+  lifting from coincidence into asymmetric splitting.
+- **Wave-packet collision animation** (Chapter 4). Two ±n
+  packets approaching, overlapping with cos(nu/R_u) standing
+  wave during overlap, separating with original parameters
+  intact. Would make the linear-superposition pass-through
+  vivid.
+- **Helical phase contour rendered as a 3D tube** (Chapter 3).
+  The cylinder embedding shows the wave on the surface, but
+  rendering a single constant-phase contour as a 3D helical
+  tube threading through (t, S, u) space would land §2's
+  "tube of phase around a straight worldline" picture more
+  directly.
+- **Gravitational bending diagram** (Chapter 6). A simple
+  schematic showing geodesic deflection past a mass on M.
+  Would help readers picture what "bending of S geodesics by
+  mass on u" looks like in our cylinder embedding.
+
+### Computational verification
+
+- **Numerical evolution of the wave equation on a discretized
+  cylinder.** Chapter 2's analytical mode structure is exact;
+  a numerical PDE solver showing the same modes evolve
+  correctly under □φ = 0 on a finite-difference grid would be
+  a sanity check on the derivation. Probably overkill for the
+  project's pedagogical scope, but available if desired.
+- **Numerical demonstration of the ±n thermal biasing**
+  (Chapter 7 §6). Compute equilibrium populations of +n and
+  −n modes in a sheared region for various γ values. Would
+  give concrete numbers to the "asymmetric equilibrium"
+  claim.
+
+### Conceptual extensions
+
+- **Schwarzschild-like solution of the back-reaction.**
+  Chapter 5 §5 sketched the linearized sourcing; an explicit
+  computation of the metric a localized rest mass produces
+  (e.g., Gaussian envelope's induced h_μν) would give a
+  concrete picture of "Kerr-like off-diagonal from a
+  non-rotating mass."
+- **Non-linear Einstein-Klein-Gordon self-consistency.**
+  Chapter 5's chicken-and-egg discussion sketched the issue;
+  attempting a self-consistent simultaneous solution
+  (analytical or numerical) would settle whether the linearized
+  pattern survives at higher orders.
+- **Quantum corrections.** The whole project is classical.
+  Asking what the quantized version of φ on M looks like —
+  particle-number eigenstates, vacuum fluctuations, etc. — is
+  a separate program but a natural follow-up.
+
+These TODOs are pre-organized so that picking up any single
+item is well-scoped without requiring the whole list.
+
 ## What this project is not trying to do
 
 - Not deriving α (that's [studies/R31-alpha-derivation/](../../studies/R31-alpha-derivation/)
   and [Q137](../../qa/Q137-alpha-as-aleph-aspect-ratio.md))
 - Not searching for particles (that's the R-track)
 - Not replacing the 11D production metric (that's [R60](../../studies/R60-metric-11/))
-- Not modeling charge — that's a separate future project
+- Not modeling charge — that's the [metric-charge](../metric-charge/)
+  follow-up project
 - Not claiming 2+1D is fundamental — it's a teaching ladder
 
 The output is intuition. Anything else is a bonus.

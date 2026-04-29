@@ -49,4 +49,7 @@ Each project's README should:
 - [metric-mass/](metric-mass/) — Build the metric from the minimum
   number of dimensions needed to see mass generation. Backs up from
   R-track's 11D complexity to develop intuition about what each
-  metric component does.
+  metric component does. **Status: provisionally complete.**
+- [metric-charge/](metric-charge/) — Follow-up to metric-mass,
+  taking up the analogous question for charge. **Status: empty,
+  awaiting framing.**
