@@ -1257,9 +1257,296 @@ mode. That correspondence is what turns "looks like a mass" into
 
 ### 6. Reading the dispersion relation as energy-momentum
 
-Compare the result to the relativistic identity
-E² = (pc)² + (mc²)² and see whether anything in the dispersion
-relation plays the role of a "mass."
+This is the section where mass appears. The work happens in two
+stages. Stage one is *structural*: we compare the dispersion
+relation, rewritten in §5 as
+
+<!-- E² = c² p_S² + c² p_u² -->
+$$
+E^2 = c^2\,p_S^2 + c^2\,p_u^2
+$$
+
+to the standard relativistic energy-momentum identity. The forms
+match if we read one of the terms as "mass-energy." That gives a
+*candidate* mass.
+
+Stage two is *operational*: we verify that the candidate behaves
+like inertial mass — that is, that it produces the right
+relationship between momentum and velocity for a slowly-moving
+mode. This is the inertial proof. It turns "looks like a mass"
+into "is a mass."
+
+#### The relativistic energy-momentum identity (imported)
+
+For any free relativistic particle in special relativity, total
+energy E, momentum p, and rest mass m are tied together by:
+
+<!-- E² = (p c)² + (m c²)² -->
+$$
+E^2 = (p\,c)^2 + (m\,c^2)^2
+$$
+
+This identity is the foundational equation of relativistic
+mechanics. Two limits make it transparent:
+
+- **Massless particle (m = 0).** E = pc — energy is just momentum
+  times the speed of light. Light, in any frame, satisfies this.
+- **Rest (p = 0).** E = mc² — Einstein's famous mass-energy
+  equivalence. A particle at rest carries energy mc² in its rest
+  mass alone.
+
+Between these two limits, the formula interpolates: for any free
+particle, the total energy is the Pythagorean combination of the
+"motion" contribution pc and the "rest" contribution mc².
+
+We import this identity as established physics — it is derived
+elsewhere from the structure of Lorentz transformations in special
+relativity (see, e.g., any textbook on special relativity, or
+[primers/metric.md §7](../../primers/metric.md) for the underlying
+spacetime geometry).
+
+#### Structural matching
+
+Place the two equations side by side:
+
+<!-- E² = c² p_S² + c² p_u²  (from our derivation) -->
+<!-- E² = (pc)² + (mc²)²       (relativistic identity) -->
+$$
+\underbrace{E^2 \;=\; c^2\,p_S^2 \;+\; c^2\,p_u^2}_{\text{our derivation}}
+\qquad \text{vs.} \qquad
+\underbrace{E^2 \;=\; (p\,c)^2 \;+\; (m\,c^2)^2}_{\text{relativistic identity}}
+$$
+
+The structural correspondence is term-by-term:
+
+| Our equation | Relativistic identity | Implied identification |
+|---|---|---|
+| E² | E² | (same — total energy) |
+| c² p_S² | (pc)² | p ↔ p_S (spatial momentum) |
+| c² p_u² | (mc²)² | mc² ↔ c p_u, i.e., **m ↔ p_u / c** |
+
+Substituting our quantized p_u = ℏn/R_u:
+
+<!-- m = p_u / c = ℏ |n| / (R_u c) -->
+$$
+m \;=\; \frac{p_u}{c} \;=\; \frac{\hbar\,|n|}{R_u\,c}
+$$
+
+(The absolute value |n| appears because mass is conventionally
+non-negative, and the dispersion relation depends only on n²,
+treating ±n symmetrically.)
+
+This gives a **candidate mass spectrum**:
+
+| n | Candidate rest mass m_n |
+|---|---|
+| 0 | 0 |
+| ±1 | ℏ / (R_u c) |
+| ±2 | 2 ℏ / (R_u c) |
+| ±3 | 3 ℏ / (R_u c) |
+| ... | n ℏ / (R_u c) |
+
+Three things to notice immediately:
+
+1. **The spectrum is discrete.** Mass takes only integer multiples
+   of a base value m_1 = ℏ/(R_u c). This discreteness is inherited
+   from the integer quantization of n in §2, which was inherited
+   from the periodicity of u.
+2. **n = 0 is massless.** The lowest branch carries no rest mass.
+   This is consistent with the §4 finding that the n = 0 branch
+   coincides with the light cone ω = c|k_S|.
+3. **The mass scale is set by R_u.** The base mass m_1 depends
+   inversely on the radius of the compact direction. Smaller
+   R_u → larger mass spacing.
+
+#### Why this is still only a candidate
+
+The structural match is suggestive but not yet proof.
+"E² = (pc)² + (mc²)²" is a particular *form* that the relativistic
+energy-momentum identity takes; many quantities can be put into
+that form without thereby earning the name "mass." For the
+identification to be physically meaningful, the candidate mass
+m_n must behave the way mass actually does in mechanics.
+
+The defining behavior of inertial mass is its role in the
+momentum-velocity relation. In non-relativistic mechanics:
+
+<!-- p = m v -->
+$$
+p = m\,v
+$$
+
+Momentum equals mass times velocity, and *mass is exactly the
+proportionality constant*. To say a quantity is mass is to say
+that it appears in this equation as the proportionality between
+momentum and velocity. So we ask: does our candidate m_n produce
+this relation for a slowly-moving wave packet?
+
+This is the **inertial test**.
+
+#### The inertial test: setup
+
+Pick an n ≠ 0 mode. Build a localized wave packet centered around
+some spatial wavenumber k_S. The packet's center moves through S
+with the group velocity v_g (this was §4's result, now used as a
+tool). For our candidate mass to deserve the name, we need:
+
+<!-- p_S = m_n · v_g  in the slow-motion limit -->
+$$
+p_S \;=\; m_n \cdot v_g \quad \text{in the slow-motion limit}
+$$
+
+The "slow-motion limit" is the regime where the wave packet's
+velocity v_g is much smaller than c. For our setup, this
+corresponds to small spatial wavenumber relative to the rest
+contribution: |k_S| ≪ |n|/R_u.
+
+Why slow-motion? Because the relation p = mv is the
+*non-relativistic* form. At relativistic speeds, the correct
+relation is p = γmv (with γ = 1/√(1−v²/c²)), and in the limit
+v ≪ c, γ → 1 and we recover p = mv. So the slow-motion limit
+is where the inertial test cleanly applies.
+
+#### The inertial test: computation
+
+Three quantities to assemble. From §§4 and 5:
+
+- **Spatial momentum** of the mode:
+  <!-- p_S = ℏ k_S -->
+  $$ p_S = \hbar\,k_S $$
+
+- **Group velocity** of an n-mode at wavenumber k_S:
+  <!-- v_g = c² k_S / ω -->
+  $$ v_g = \frac{c^2\,k_S}{\omega} $$
+
+- **Candidate mass** for the n-mode:
+  <!-- m_n = ℏ |n| / (R_u c) -->
+  $$ m_n = \frac{\hbar\,|n|}{R_u\,c} $$
+
+In the slow-motion limit, |k_S| ≪ |n|/R_u, so ω is dominated by
+the rest term:
+
+<!-- ω ≈ c |n| / R_u  (slow limit) -->
+$$
+\omega \;\approx\; \frac{c\,|n|}{R_u}
+\qquad (\text{slow-motion limit})
+$$
+
+Substituting this into v_g:
+
+<!-- v_g ≈ c² k_S / (c |n| / R_u) = c k_S R_u / |n| -->
+$$
+v_g \;\approx\; \frac{c^2\,k_S}{c\,|n|/R_u}
+\;=\; \frac{c\,k_S\,R_u}{|n|}
+$$
+
+Now compute m_n · v_g and compare to p_S:
+
+<!-- m_n v_g = (ℏ|n|/(R_u c)) (c k_S R_u / |n|) = ℏ k_S -->
+$$
+m_n \cdot v_g
+\;=\; \frac{\hbar\,|n|}{R_u\,c}
+\;\cdot\; \frac{c\,k_S\,R_u}{|n|}
+\;=\; \hbar\,k_S
+$$
+
+The R_u, c, and |n| factors cancel cleanly — leaving exactly
+ℏk_S. And ℏk_S is what we already identified as p_S. So:
+
+<!-- p_S = m_n · v_g  (verified in slow limit) -->
+$$
+\boxed{\;p_S \;=\; m_n \cdot v_g\;}
+$$
+
+This is the operational definition of inertial mass, satisfied
+exactly. The candidate m_n = ℏ|n|/(R_u c) **is** the inertial
+mass of the n-mode.
+
+#### Why the cancellation matters
+
+The clean cancellation in m_n · v_g is not an accident of
+algebra — it is the structural reason mass and the group velocity
+combine the way they do. The factor ℏ|n|/R_u is "the wave's
+contribution to ω at rest" (its rest frequency times ℏ); the
+factor c² k_S / ω is "the velocity of the packet, which depends on
+how steep the dispersion curve is at this k_S." When both are
+evaluated near the bottom of the dispersion curve (k_S small,
+ω near rest frequency), the two combine to produce exactly the
+spatial momentum ℏk_S.
+
+If our candidate had not been the right mass, the cancellation
+would not have happened — we would have ended up with some other
+quantity on the right-hand side, and the inertial relation would
+have failed. The fact that it works is what tells us the
+identification is physically correct.
+
+#### Bonus: kinetic energy in the slow limit
+
+A second consistency check, also in the slow-motion limit. Take
+the relativistic energy E = √((mc²)² + (pc)²) and Taylor-expand
+for small p/mc:
+
+<!-- E ≈ mc² + p²/(2m) + O(p⁴/m³c²) -->
+$$
+E \;\approx\; m\,c^2 + \frac{p^2}{2\,m} + O\!\left(\frac{p^4}{m^3 c^2}\right)
+$$
+
+The first term is rest energy; the second is the non-relativistic
+kinetic energy of a particle of mass m moving with momentum p.
+For our n-mode with mass m_n and momentum p_S:
+
+<!-- E ≈ m_n c² + p_S²/(2 m_n) -->
+$$
+E \;\approx\; m_n\,c^2 + \frac{p_S^2}{2\,m_n}
+$$
+
+The kinetic-energy part p_S² / (2m_n) is the standard formula for
+a non-relativistic particle of mass m_n. Mass m_n appears as the
+*inertial coefficient* in the kinetic energy too — just as it
+appears in the momentum-velocity relation. Both checks confirm
+the same identification.
+
+#### What §6 establishes
+
+The mass identification is now complete:
+
+| Claim | Status |
+|---|---|
+| Each n-mode has rest mass m_n = ℏ\|n\|/(R_u c) | Established by structural matching with E² = (pc)² + (mc²)² |
+| The mass spectrum is discrete: m_n = m_1 · \|n\| | Established |
+| The base mass scale is m_1 = ℏ/(R_u c) | Established |
+| n = 0 is massless | Established (m_0 = 0) |
+| The candidate m_n is the *inertial* mass | Established by p_S = m_n v_g in slow limit |
+| The kinetic energy of a slow n-mode is p_S² / (2 m_n) | Established as a consistency check |
+| Mass is *geometric* — sourced by R_u, not by a mass term | Established (R_u is the only dimensionful parameter producing mass) |
+
+What §6 has *not* asserted:
+
+- That the modes are *physical particles* (we have only demonstrated
+  the mode structure of the wave equation; whether nature realizes
+  these modes, and how, is a separate question).
+- That the mass values m_n correspond to any specific particle in
+  the standard model (R_u is a free parameter of the project; we
+  have not pinned its numerical value).
+- That this minimal manifold is sufficient to describe charge,
+  spin, or interactions (those are deferred to other projects, as
+  noted in the chapter-1 non-assumptions).
+
+The next two sections look at the two qualitatively different
+families separately:
+
+- **§7** examines the n = 0 mode in detail and confirms it
+  behaves exactly like ordinary light (massless, propagates at c
+  in both phase and group velocities, no rest energy).
+- **§8** examines the n ≠ 0 modes in detail and works out what
+  shape they take in (t, S, u) space — specifically, how the
+  combination of S-propagation and u-winding produces the helical
+  worldlines that visualize a moving massive object on M.
+
+After those two sections, §9 asks whether the bare diagonal metric
+of Chapter 1 remains consistent with the existence of these massive
+modes, or whether anything we have derived forces the metric to be
+modified.
 
 ### 7. The lowest u-mode
 
