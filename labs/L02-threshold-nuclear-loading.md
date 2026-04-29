@@ -8,7 +8,22 @@
 **Related:** R35 F1–F34 (threshold detection statistics),
   R49 F1–F10 (neutrino mode spectrum, 22 candidate triplets),
   [L01](L01-thz-write-read.md) (THz write/read — shares
-  equipment and target frequencies)
+  equipment and target frequencies),
+  [L04](L04-beta-decay-thz-resonance.md) (β-decay rate
+  modification — same coupling channel, weaker observable;
+  identifies the correct frequency family before L02 commits
+  to a tuning),
+  [L05](L05-optical-beat-absorption.md) (optical-beat
+  absorption — cheapest first check that the ν-sheet
+  coupling channel exists at all)
+
+**Logical sequence:** L02 is the final step in the
+L05 → L04 → L02 chain.  L05 establishes that the ν-sheet
+coupling channel exists; L04 identifies which frequency
+family is correct; L02 then drives that frequency hard
+enough to cross the 0.782 MeV neutron-formation threshold.
+Running L02 before L05/L04 is possible but risks tuning to
+the wrong frequency family.
 
 ---
 

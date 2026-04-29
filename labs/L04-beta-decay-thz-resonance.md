@@ -9,7 +9,21 @@
   [L01](L01-thz-write-read.md) (THz write/read — shares
   equipment and source technology),
   [L02](L02-threshold-nuclear-loading.md) (nuclear loading —
-  same coupling channel, different observable)
+  same coupling channel, stronger observable; tunes to the
+  family L04 identifies),
+  [L05](L05-optical-beat-absorption.md) (optical-beat
+  absorption — cheapest predecessor; existence check on
+  the ν-sheet coupling channel before L04 commits to
+  tritium handling)
+
+**Logical sequence:** L04 is the middle step in the
+L05 → L04 → L02 chain.  L05 first checks whether the
+ν-sheet coupling channel exists via cheap intensity-beat
+absorption.  L04 then tests whether the same channel can
+modify a weak transition (β-decay rate).  L02 finally
+drives the channel hard enough to trigger nuclear events.
+A negative L05 (intensity-coupling fails) does not rule
+out L04 — direct field coupling is a stronger drive.
 
 ---
 
@@ -322,6 +336,7 @@ improves power below 3 THz.
 | Experiment | What it tests | Observable |
 |---|---|---|
 | **L04 (this)** | EM coupling to neutrino modes | Beta decay rate change |
+| L05 | Existence of the ν-sheet coupling channel | Optical-beat absorption dip at ν frequency |
 | L01 | EM coupling to neutrino modes | Persistent THz spectral feature |
 | L02 | Energy loading through neutrino window | Nuclear events in deuterium |
 | L03 | Neutrino scaffold emission | Up-converted THz from biological tissue |

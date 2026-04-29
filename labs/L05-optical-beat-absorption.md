@@ -4,9 +4,21 @@
 **Tests:** Dark mode absorption at MaSt-predicted neutrino
   frequencies using optical heterodyne beating
 **Related:** [L04](L04-beta-decay-thz-resonance.md) (direct
-  THz approach), [R57](../studies/R57-energy-routing/findings.md)
+  THz approach — next step if L05 is positive),
+  [L02](L02-threshold-nuclear-loading.md) (nuclear loading
+  in D₂ — final step of the chain),
+  [R57](../studies/R57-energy-routing/findings.md)
   (dark mode routing), [R49](../studies/R49-neutrino-filter/)
   (neutrino sheet modes)
+
+**Logical sequence:** L05 is the first step in the
+L05 → L04 → L02 chain.  It establishes whether the ν-sheet
+coupling channel exists at all using the cheapest, safest
+method (no radioactives, ~$30–55K).  A positive L05 result
+identifies which frequency family is correct and motivates
+L04 (β-decay rate test) and L02 (nuclear loading).  A
+negative L05 rules out intensity-beat coupling but leaves
+direct-field coupling open for L04.
 
 ---
 
@@ -232,7 +244,7 @@ L05 is 5–10× cheaper and has no radioactive materials.
 |-----------|--------|-----------|------|
 | **L05 (this)** | Optical beat in transparent sample | Absorption dip at ν frequency | Intensity coupling might not work |
 | L04 | Direct THz + tritium | Beta decay rate change | Expensive, radioactive |
-| L02 | THz + palladium-deuterium | Nuclear events | Expensive, nuclear safety |
+| L02 | Far-IR loading of D₂ gas | Excess heat / 2.224 MeV γ / neutrons | Expensive, nuclear safety |
 
 L05 is the FIRST experiment to run: cheapest, safest,
 fastest.  A positive result motivates L04 and L02.  A
