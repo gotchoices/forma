@@ -212,11 +212,29 @@ independent single-variable equations** — one for each coordinate
 | u | U''(u) + k_u² U(u) = 0 | Harmonic oscillator with wavenumber k_u |
 
 Constraint among the constants:
-<!--EC Did we explain what allows us to set this equality of the constants? -->
+
 <!-- ω² = c² k_S² + c² k_u² -->
 $$
 \omega^2 = c^2\,k_S^2 + c^2\,k_u^2
 $$
+
+Where did this constraint come from? It is not a separate fact — it
+is just the **definition of k_u** rewritten. Recall that we
+defined k_u by
+
+<!-- k_u² ≡ ω²/c² − k_S² -->
+$$
+k_u^2 \;\equiv\; \frac{\omega^2}{c^2} - k_S^2
+$$
+
+so that the leftover U-equation came out as a clean harmonic
+oscillator U″ + k_u² U = 0. Multiplying both sides of that
+definition by c² and moving k_S² to the right gives exactly the
+constraint above. So the constraint is the consequence of having
+chosen the three constants ω, k_S, k_u to make all three ODEs
+work simultaneously — all three were carved out of the *same*
+wave equation, and the constraint is what records that shared
+origin.
 
 This last equation already looks like a dispersion relation (it
 relates frequency to wavenumbers via c), but at this point ω, k_S,
@@ -720,20 +738,17 @@ that identification — that is the work of §§5–6. For now, we have
 solved the wave equation; in the next sections we ask what the
 solutions *mean*.
 
-### 3. The S- and t-equations
-<!--EC Is this a stranded/leftover? -->
-Examine what the remaining equations require of X(S) and T(t),
-without yet assuming oscillatory or growing solutions.
-
 ### 4. The dispersion relation
 
-The previous three sections produced, almost as a side effect, an
-equation that ties together the three constants of a product-mode:
-<!--EC That last sentence isn't very understandable.  What does it mean? 
+A single mode has three numbers attached to it: ω, k_S, and n.
+The wave equation forces a relation between them. Working out
+what that relation is — and looking at what it tells us — is the
+goal of this section.
 
-Is there any intuitive way to interpret each of the three constants?
-What they each control and define?
--->
+The relation itself was produced as a byproduct of §1 (where we
+collected the three ODEs and the constraint among their
+constants) and §2 (where we forced k_u to take the discrete
+values n/R_u). Putting those together:
 
 <!-- ω² = c² k_S² + c² (n/R_u)² -->
 $$
@@ -741,15 +756,31 @@ $$
 $$
 
 This is the **dispersion relation** for the wave equation on M.
-The name comes from optics: in any medium, the dispersion
-relation tells you which frequencies propagate at which speeds, and
-how a packet of waves "disperses" (spreads out) over time because
-its components travel differently. For a free wave on M, the
-relation says: not every (ω, k_S, n) combination is a solution —
-only those that satisfy the equation above. Once any two of the
-three are chosen, the third is fixed up to a sign.
 
-This section examines what that equation is saying. It is the
+#### What each of the three numbers controls
+
+Before exploring what the relation says, it helps to spell out
+intuitively what ω, k_S, and n each do. They are not interchangeable
+— each one controls a different aspect of the wave's behavior.
+
+| Symbol | Lives in | Intuitive meaning | Range |
+|---|---|---|---|
+| ω | time | How fast the wave oscillates *in time* at any fixed point. High ω = fast oscillation; period = 2π/ω. | continuous, ≥ 0 |
+| k_S | extended space S | How tightly the wave's crests are packed *along S*. High k_S = short wavelength along S; wavelength = 2π/k_S. | continuous, any real |
+| n | compact direction u | How many times the wave winds *around u* in one circumference. n = 0 means no winding (constant in u); n = ±1 means one winding (in opposite directions); n = ±2 means two windings; etc. | integer (the only quantized one) |
+
+The dispersion relation says: given ω, k_S, n, the three are not
+free to be chosen independently. Once any two are fixed, the third
+is determined (up to a sign). The wave equation acts as a
+"budget": ω² gets divided between c² k_S² (motion in space) and
+c² (n/R_u)² (winding in the compact direction).
+
+The name "dispersion relation" comes from optics: in any medium,
+the dispersion relation tells you which frequencies propagate at
+which speeds, and how a packet of waves "disperses" (spreads out)
+over time because its components travel differently.
+
+This section examines what the equation says. It is the
 structural climax of the chapter: the single equation that holds
 all of the wave-physics that emerged from solving □φ = 0 on our
 manifold. Sections 5–6 will translate it into the language of
@@ -804,29 +835,63 @@ like light" at high spatial wavenumber.
 
 #### Phase velocity vs group velocity
 
-Two distinct velocities are hidden inside any dispersion relation.
-<!--EC Where are the velocities hidden?  If I saw a S vs t graph, would I see them? -->
-**Phase velocity** v_p is how fast a single wave-crest moves
-through space. For a plane wave of the form
-<!--EC the following formula doesn't render well.  Use standard formula formatting. -->
-exp(i(k_S S − ωt + n u/R_u)), the (S, t) part has its constant-
-phase surfaces moving at speed:
+Two distinct velocities are encoded in any dispersion relation, and
+both can be read off directly from a graph of the wave on the (S, t)
+plane: they are the *slopes* of two different features of the wave
+in that graph.
+
+To see this concretely, picture an (S, t) plot of the real part of
+the wave at fixed n (i.e., looking at one branch of the dispersion
+relation). The plot shows a series of parallel diagonal stripes —
+the *constant-phase lines* of the wave, where each stripe is a
+crest or a trough. If the wave is finite in extent (a localized
+pulse rather than an infinite plane wave), there is also an outer
+*envelope* that bounds the stripes. The two velocities are:
+
+- The **phase velocity** v_p is the slope dS/dt of a single
+  constant-phase stripe — how fast a crest moves through space.
+- The **group velocity** v_g is the slope dS/dt of the envelope —
+  how fast the *bundle* of crests as a whole moves through space.
+
+For a pure plane wave (no envelope), only the phase velocity is
+visible; the group velocity is what shows up once you have a packet
+that constructively interferes in some neighborhood and destructively
+elsewhere. Both velocities live in the (S, t) plane as slopes,
+but they need not be the same slope.
+
+Mathematically, take a single plane-wave mode
+
+<!-- φ ∝ exp(i(k_S S − ω t + n u / R_u)) -->
+$$
+\varphi \;\propto\; \exp\bigl(i\,(k_S\,S - \omega\,t + n\,u / R_u)\bigr)
+$$
+
+The (S, t) part has constant-phase lines satisfying
+k_S S − ω t = constant. Solving for S in terms of t gives
+S = (ω/k_S)·t + const, a line with slope ω/k_S — the phase
+velocity:
 
 <!-- v_p = ω / k_S -->
 $$
 v_p = \frac{\omega}{k_S}
 $$
 
-**Group velocity** v_g is how fast a *wave packet* — a
-narrow-bandwidth sum of nearby modes that constructively
-interfere — moves through space. The standard wave-mechanics
-result (a calculus exercise that follows from a Taylor expansion
-of ω in k_S) is:
+The group velocity v_g (slope of the envelope) requires a few
+nearby modes to be added together — a single plane wave has no
+envelope. The standard wave-mechanics result (a calculus exercise
+on a narrow Taylor expansion of ω in k_S) is:
 
 <!-- v_g = dω/dk_S -->
 $$
 v_g = \frac{d\omega}{dk_S}
 $$
+
+The figure below shows both velocities as slopes on (S, t) plots,
+for n = 0 (where they coincide) and n = 1 (where they don't):
+
+![Phase and group velocities as slopes on (S, t)](figures/velocities.png)
+
+(Source: [`figures/velocities.py`](figures/velocities.py).)
 
 Compute both for our dispersion relation. For the n = 0 branch:
 
@@ -879,45 +944,91 @@ energy or information. The thing that *carries* energy and
 information — the envelope of a wave packet — moves at v_g. So as
 long as v_g ≤ c, no signals are propagating faster than light.
 
-Several consequences fall out of v_p v_g = c²:
-<!--EC This is where intuitive interpretations of the constants would help if such is possible.  It's easy to get lost in the following three cases. -->
-- For an n ≠ 0 mode at small k_S, v_g is small (close to zero, by
-  the formula v_g = c²k_S/ω, since ω at small k_S is dominated by
-  the rest term). The mode barely moves through space.
-- For an n ≠ 0 mode at large k_S, v_g approaches c from below
-  (because ω → c|k_S|), and v_p approaches c from above. The
-  ultra-relativistic limit recovers light-speed propagation.
-- For n = 0 always, v_g = v_p = c — a "light" mode is always at
-  light-speed, no ambiguity.
+Several consequences fall out of v_p v_g = c². Before listing
+them it is worth restating in plain language what the two
+parameters n and k_S each control of a mode's behavior:
 
-These three observations already strongly suggest that the n ≠ 0
+- **n** controls *whether the mode has rest energy*. n = 0 means
+  no winding around the compact direction u (the wave is constant
+  in u); n ≠ 0 means the mode is wound and carries a fixed
+  oscillation in time even when not propagating in S.
+- **k_S** controls *how fast the mode propagates along S*.
+  k_S = 0 is no propagation (the mode is at rest along S); large
+  |k_S| is fast propagation.
+
+Combining these two parameters gives four qualitatively distinct
+regions, and the v_p, v_g behavior depends on which region you
+are in:
+
+- **n ≠ 0, small k_S** — wound mode, barely propagating.
+  v_g = c² k_S / ω is small (close to zero), because ω at small
+  k_S is dominated by the rest term c|n|/R_u rather than by k_S.
+  Picture: a closed wave around u sitting almost still in space.
+  v_p is correspondingly very large (since v_p · v_g = c²).
+- **n ≠ 0, large k_S** — wound mode, propagating fast.
+  v_g approaches c from below (because ω → c|k_S|), and v_p
+  approaches c from above. The ultra-relativistic limit recovers
+  light-speed propagation. Picture: a closed wave around u
+  carried along S so fast that the winding contribution to ω
+  becomes negligible.
+- **n = 0, any k_S ≠ 0** — unwound mode, propagating.
+  v_g = v_p = c always, no dispersion. Picture: ordinary light
+  along S.
+- **n = 0, k_S = 0** — degenerate. ω = 0; the field is static
+  in time. No physical wave at all, just a constant value of φ.
+
+These four cases already strongly suggest that the n ≠ 0
 branches describe something with *inertia* — something that can
-sit at rest, that carries an internal frequency at zero
+sit at rest (k_S = 0), that carries an internal frequency at zero
 spatial-wavenumber, and that approaches light-speed only at high
-energy. We do not yet have the right to use the word "mass" — that
-identification needs the bridge of §5 — but the dispersion relation
-on its own is already pointing strongly in that direction.
+energy. We do not yet have the right to use the word "mass" —
+that identification needs the bridge of §5 — but the dispersion
+relation on its own is already pointing strongly in that
+direction.
 
 #### Two limiting cases worth naming
 
-**The rest case (k_S = 0).** Set the spatial wavenumber to zero.
-The dispersion relation reduces to:
-<!--EC Does n=0 mean no wave in u?  N is the quantum number for u isn't it?  I'm getting lost here.  Does n=0 mean no mass or a mass that is not moving in S?>
+**The rest case (k_S = 0).** Setting the spatial wavenumber to
+zero means the mode has no propagation along S — it is "at rest"
+in the extended direction. (Note carefully: k_S = 0 is about the
+extended direction S, not about the compact direction u. The
+quantum-number n stays whatever it is.)
+
+The dispersion relation at k_S = 0 reduces to:
+
 <!-- ω(k_S=0) = c |n| / R_u -->
 $$
 \omega(k_S = 0) = \frac{c\,|n|}{R_u}
 $$
 
-For n = 0, this gives ω = 0 — no oscillation in time at all, just
-a static field. For n ≠ 0, it gives a *nonzero rest frequency*
-that depends only on the integer n and the geometry of the
-compact direction (R_u). The wave at k_S = 0 has no propagation
-along S, but it *still oscillates* in time. The time oscillation
-is being driven entirely by the closed wave around u.
+To unpack what this says, take the two cases of n separately:
 
-This is the key fact §6 will read as "rest energy → mass": the
-n ≠ 0 mode has energy that is *stored in the compact direction's
-winding*, not in any motion through S.
+- **n = 0 and k_S = 0.** *Both* coordinates contribute nothing.
+  No winding around u, no propagation along S. The dispersion
+  relation gives ω = 0 — no oscillation in time. This is just a
+  static, uniform field; not a physical wave. We mention it for
+  completeness and set it aside.
+
+- **n ≠ 0 and k_S = 0.** No propagation along S, but the mode
+  is *still wound around u*. The dispersion relation gives
+  ω = c|n|/R_u — a *nonzero rest frequency* that depends only
+  on the integer n and the geometry of the compact direction
+  (R_u). The wave is not moving through S, yet it *still
+  oscillates in time*. The time oscillation is being driven
+  entirely by the closed wave around u.
+
+So there are two distinct kinds of "rest" in this picture. n = 0
+means *no winding* — no rest energy contribution; this will turn
+out to mean "massless" in §§5-6. k_S = 0 means *no S-motion* —
+the mode is sitting still along the extended direction; this
+will turn out to mean "at rest spatially" in §§5-6 (i.e., zero
+spatial momentum).
+
+The non-degenerate rest case (n ≠ 0, k_S = 0) is the key fact §6
+will read as "rest energy → mass": a wound mode at rest in S has
+energy that is *stored in the compact direction's winding*, not
+in any motion through S. This is the natural inertial reservoir
+that §6 will identify as rest mass.
 
 **The ultra-relativistic limit (|k_S| → ∞).** Take k_S much
 larger than n/R_u. Then:
@@ -1143,12 +1254,6 @@ that p_u / c, when used as the "mass," produces the correct
 non-relativistic momentum-velocity relation p = m v_g for a slow
 mode. That correspondence is what turns "looks like a mass" into
 "is a mass."
-
-### 5. Energy and momentum of a mode
-
-Use the standard wave-mechanics identifications p = ℏk and E = ℏω
-to translate the dispersion relation from wave-vectors into
-physical quantities.
 
 ### 6. Reading the dispersion relation as energy-momentum
 
