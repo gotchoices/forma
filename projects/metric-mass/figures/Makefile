@@ -16,7 +16,10 @@ OUTPUTS := \
 	wave-modes.png \
 	dispersion.png \
 	velocities.png \
-	cylinder-modes.png
+	cylinder-modes.png \
+	u-vs-t.png \
+	superposition-ut.png \
+	mass-uni-anim.gif
 
 .PHONY: all clean
 
@@ -24,6 +27,10 @@ all: $(OUTPUTS)
 
 # Each PNG comes from the .py script of matching stem.
 %.png: %.py
+	$(PYTHON) $<
+
+# Animated GIF target
+%.gif: %.py
 	$(PYTHON) $<
 
 clean:

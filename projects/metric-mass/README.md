@@ -123,28 +123,44 @@ they are framing questions to be examined.
    examining what the *sign* of n carries physically: in
    standard KK with compact momentum read as charge, ±n gives
    the matter/antimatter distinction; what is the analog in our
-   mass-only setup? Visualization figures belong here.
-4. [04-metric-self-consistency.md](04-metric-self-consistency.md) —
+   mass-only setup? Visualization figures included.
+4. [04-mode-interactions.md](04-mode-interactions.md) —
+   *Mode interactions: what happens when ±n meet?* Use linear
+   superposition to predict what happens when a +n and a −n
+   packet collide, and what a static superposition of the two
+   looks like. Establishes that linear theory predicts
+   pass-through (no annihilation), 2× rest mass (no inertia
+   shielding), and a clearly non-light state when ±n are
+   overlapped. Settles which candidate readings of the ±n
+   distinction survive on this minimal manifold and which
+   require nonlinear physics to evaluate.
+5. [05-metric-self-consistency.md](05-metric-self-consistency.md) —
    *Self-consistency of the bare metric.* Examine whether the
    diagonal-and-constant metric of chapter 1 remains internally
    consistent with the solutions chapter 2 produced — or whether
    the solutions force any modification.
-5. **Position-dependent g_uu.** If chapter 4 reveals tension, one
-   natural relaxation is letting g_uu become a function of S
-   (the "dilaton-style" possibility from §3 of the foundation).
-   Examine the consequences.
-6. **Off-diagonal terms.** Examine whether any g_tu, g_Su cross
-   term is forced or admitted by the solutions, and what physical
-   meaning such a term would carry on this minimal manifold.
-7. **Closing summary.** Whatever chapters 4–6 reveal, restate the
-   project's findings in plain language: what the math actually
-   established, and what it left open for follow-up projects
-   (charge, sheets, gravity).
-
-If chapter 4 establishes that the diagonal metric is fine on its
-own, chapters 5–6 may not be needed. If it reveals tension, the
-arc continues. We pick up the next chapter once the previous one's
-findings are in.
+6. [06-gravitational-bending.md](06-gravitational-bending.md) —
+   *Gravitational bending and the ±n cancellation question.*
+   Extend the framework with linearized GR (or a Newtonian proxy)
+   to ask whether mass on M bends spacetime, and crucially
+   whether a static ±n superposition cancels or doubles that
+   bending. Settles the gravitational half of the
+   inertia-shielding question started in chapter 4.
+7. [07-shear-and-bias.md](07-shear-and-bias.md) —
+   *Off-diagonal shear and the breaking of ±n degeneracy.*
+   Asks the converse of chapter 5's question: given an
+   off-diagonal shear g_Su (from any source), what does it do
+   to ±n modes? Derives that shear lifts the rest-degeneracy
+   for moving modes and produces a thermal-equilibrium
+   asymmetry between +n and −n densities. Contains the
+   project's closest contact with the real-world
+   matter/antimatter question without claiming it as the
+   mechanism.
+8. [08-closing-summary.md](08-closing-summary.md) —
+   *Closing summary.* Consolidate what the project established,
+   ruled out, and unexpectedly found. Make the open questions
+   legible. Hand off to follow-up projects (charge, gravity
+   mechanism, cosmological shear dynamics).
 
 Each chapter is added one at a time. The arc is a sketch, not a
 contract.
