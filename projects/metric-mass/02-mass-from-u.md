@@ -212,7 +212,7 @@ independent single-variable equations** — one for each coordinate
 | u | U''(u) + k_u² U(u) = 0 | Harmonic oscillator with wavenumber k_u |
 
 Constraint among the constants:
-
+<!--EC Did we explain what allows us to set this equality of the constants? -->
 <!-- ω² = c² k_S² + c² k_u² -->
 $$
 \omega^2 = c^2\,k_S^2 + c^2\,k_u^2
@@ -721,14 +721,428 @@ solved the wave equation; in the next sections we ask what the
 solutions *mean*.
 
 ### 3. The S- and t-equations
-
+<!--EC Is this a stranded/leftover? -->
 Examine what the remaining equations require of X(S) and T(t),
 without yet assuming oscillatory or growing solutions.
 
 ### 4. The dispersion relation
 
-Combine the three pieces to find what relation must hold among the
-frequency ω, the spatial wavenumber k_S, and the u-mode label.
+The previous three sections produced, almost as a side effect, an
+equation that ties together the three constants of a product-mode:
+<!--EC That last sentence isn't very understandable.  What does it mean? 
+
+Is there any intuitive way to interpret each of the three constants?
+What they each control and define?
+-->
+
+<!-- ω² = c² k_S² + c² (n/R_u)² -->
+$$
+\omega^2 = c^2\,k_S^2 + c^2\,\left(\frac{n}{R_u}\right)^2
+$$
+
+This is the **dispersion relation** for the wave equation on M.
+The name comes from optics: in any medium, the dispersion
+relation tells you which frequencies propagate at which speeds, and
+how a packet of waves "disperses" (spreads out) over time because
+its components travel differently. For a free wave on M, the
+relation says: not every (ω, k_S, n) combination is a solution —
+only those that satisfy the equation above. Once any two of the
+three are chosen, the third is fixed up to a sign.
+
+This section examines what that equation is saying. It is the
+structural climax of the chapter: the single equation that holds
+all of the wave-physics that emerged from solving □φ = 0 on our
+manifold. Sections 5–6 will translate it into the language of
+energy, momentum, and mass, but those translations need
+identifications we have not yet introduced. For this section, we
+keep the language pure wave-physics.
+
+#### Branch structure: one curve per integer n
+
+The dispersion relation is one equation in three unknowns (ω, k_S,
+n). Because n is restricted to integers, the equation cuts the
+allowed (k_S, ω) plane into a *family of curves*, one curve per
+value of n. Each curve is the locus of (k_S, ω) pairs that the
+wave equation permits at that fixed n.
+
+For n = 0 the relation simplifies to ω² = c² k_S², i.e.,
+ω = ±c|k_S|. This is a pair of straight lines through the origin
+of the (k_S, ω) plane — the *light cone* of the (k_S, ω)
+diagram. (We will conventionally take ω > 0, which gives the
+single line ω = c|k_S|.)
+
+For n ≠ 0 the relation gives ω = ±c·√(k_S² + (n/R_u)²) — a
+**hyperbola** sitting *above* the n = 0 line. The hyperbola never
+touches the line at any finite (k_S, ω), but approaches it
+asymptotically as |k_S| → ∞. At k_S = 0, the hyperbola reaches its
+minimum: ω = c|n|/R_u, a strictly positive value. This minimum is
+the **rest frequency** of the n-th branch — the frequency the wave
+oscillates at when there is no S-propagation.
+
+For each integer n, then, we get a separate "branch" of allowed
+modes:
+
+- n = 0: the line ω = c|k_S|
+- n = ±1: a hyperbola with rest frequency c/R_u
+- n = ±2: a hyperbola with rest frequency 2c/R_u
+- n = ±3: a hyperbola with rest frequency 3c/R_u
+- and so on for higher |n|
+
+The branches form a *tower* in the (k_S, ω) plane. The figure
+below shows the first few:
+
+![Dispersion relation: one branch per integer n](figures/dispersion.png)
+
+The dashed line is the light cone ω = c|k_S|. The black V-shape
+is the n = 0 branch (it coincides with the light cone). The
+colored hyperbolas are n = 1, 2, 3, with their rest frequencies
+marked on the ω-axis. As |k_S| grows, every hyperbola asymptotes
+toward the light cone — the higher-n branches "look more and more
+like light" at high spatial wavenumber.
+
+(Source: [`figures/dispersion.py`](figures/dispersion.py).)
+
+#### Phase velocity vs group velocity
+
+Two distinct velocities are hidden inside any dispersion relation.
+<!--EC Where are the velocities hidden?  If I saw a S vs t graph, would I see them? -->
+**Phase velocity** v_p is how fast a single wave-crest moves
+through space. For a plane wave of the form
+<!--EC the following formula doesn't render well.  Use standard formula formatting. -->
+exp(i(k_S S − ωt + n u/R_u)), the (S, t) part has its constant-
+phase surfaces moving at speed:
+
+<!-- v_p = ω / k_S -->
+$$
+v_p = \frac{\omega}{k_S}
+$$
+
+**Group velocity** v_g is how fast a *wave packet* — a
+narrow-bandwidth sum of nearby modes that constructively
+interfere — moves through space. The standard wave-mechanics
+result (a calculus exercise that follows from a Taylor expansion
+of ω in k_S) is:
+
+<!-- v_g = dω/dk_S -->
+$$
+v_g = \frac{d\omega}{dk_S}
+$$
+
+Compute both for our dispersion relation. For the n = 0 branch:
+
+<!-- ω = c|k_S|;  v_p = c, v_g = c -->
+$$
+\omega = c\,|k_S|,
+\qquad
+v_p = \frac{\omega}{k_S} = c\,\mathrm{sign}(k_S),
+\qquad
+v_g = \frac{d\omega}{dk_S} = c\,\mathrm{sign}(k_S)
+$$
+
+So phase and group velocities are both ±c (depending on direction
+of propagation). For n = 0 modes, the two velocities are equal —
+the wave doesn't disperse, and a packet moves rigidly at the
+speed of light.
+
+For an n ≠ 0 branch, take the derivative of
+ω = c·√(k_S² + (n/R_u)²):
+
+<!-- v_g = dω/dk_S = c² k_S / ω -->
+$$
+v_g = \frac{d\omega}{dk_S} = \frac{c^2\,k_S}{\omega}
+$$
+
+And:
+
+<!-- v_p = ω/k_S -->
+$$
+v_p = \frac{\omega}{k_S}
+$$
+
+Multiplying the two:
+
+<!-- v_p v_g = c² -->
+$$
+v_p \cdot v_g = c^2
+$$
+
+This is a striking relation: the product of phase and group
+velocity equals the square of the speed of light, exactly. It
+means that whenever v_g < c (a wave packet moving slower than
+light), we automatically have v_p > c (the phase appears to move
+faster than light).
+
+What does v_p > c mean? Not anything physically alarming. The
+*phase* is just a label of where the wave's crests sit, and a
+phase pattern can move arbitrarily fast without transporting any
+energy or information. The thing that *carries* energy and
+information — the envelope of a wave packet — moves at v_g. So as
+long as v_g ≤ c, no signals are propagating faster than light.
+
+Several consequences fall out of v_p v_g = c²:
+<!--EC This is where intuitive interpretations of the constants would help if such is possible.  It's easy to get lost in the following three cases. -->
+- For an n ≠ 0 mode at small k_S, v_g is small (close to zero, by
+  the formula v_g = c²k_S/ω, since ω at small k_S is dominated by
+  the rest term). The mode barely moves through space.
+- For an n ≠ 0 mode at large k_S, v_g approaches c from below
+  (because ω → c|k_S|), and v_p approaches c from above. The
+  ultra-relativistic limit recovers light-speed propagation.
+- For n = 0 always, v_g = v_p = c — a "light" mode is always at
+  light-speed, no ambiguity.
+
+These three observations already strongly suggest that the n ≠ 0
+branches describe something with *inertia* — something that can
+sit at rest, that carries an internal frequency at zero
+spatial-wavenumber, and that approaches light-speed only at high
+energy. We do not yet have the right to use the word "mass" — that
+identification needs the bridge of §5 — but the dispersion relation
+on its own is already pointing strongly in that direction.
+
+#### Two limiting cases worth naming
+
+**The rest case (k_S = 0).** Set the spatial wavenumber to zero.
+The dispersion relation reduces to:
+<!--EC Does n=0 mean no wave in u?  N is the quantum number for u isn't it?  I'm getting lost here.  Does n=0 mean no mass or a mass that is not moving in S?>
+<!-- ω(k_S=0) = c |n| / R_u -->
+$$
+\omega(k_S = 0) = \frac{c\,|n|}{R_u}
+$$
+
+For n = 0, this gives ω = 0 — no oscillation in time at all, just
+a static field. For n ≠ 0, it gives a *nonzero rest frequency*
+that depends only on the integer n and the geometry of the
+compact direction (R_u). The wave at k_S = 0 has no propagation
+along S, but it *still oscillates* in time. The time oscillation
+is being driven entirely by the closed wave around u.
+
+This is the key fact §6 will read as "rest energy → mass": the
+n ≠ 0 mode has energy that is *stored in the compact direction's
+winding*, not in any motion through S.
+
+**The ultra-relativistic limit (|k_S| → ∞).** Take k_S much
+larger than n/R_u. Then:
+
+<!-- ω = c·sqrt(k_S² + (n/R_u)²) ≈ c|k_S|·(1 + ...) -->
+$$
+\omega = c\,\sqrt{k_S^2 + (n/R_u)^2}
+\;=\; c\,|k_S|\,\sqrt{1 + \left(\frac{n}{R_u\,k_S}\right)^2}
+\;\to\; c\,|k_S|
+\quad \text{as } |k_S| \to \infty
+$$
+
+At very high spatial wavenumber, every branch — n = 0, 1, 2, … —
+approaches the same asymptote ω = c|k_S|. The contribution of the
+compact direction becomes negligible compared to the spatial
+wavenumber. So at high momentum, even the "massive" modes look
+like light. This is the standard relativistic statement that
+high-energy massive particles approximate massless ones.
+
+#### What §4 establishes
+
+| Claim | Status |
+|---|---|
+| The dispersion relation ω² = c²k_S² + c²(n/R_u)² ties (ω, k_S, n) together | Established |
+| The (k_S, ω) plane carries one branch per integer n | Established |
+| The n = 0 branch is the light-cone line ω = c\|k_S\| | Established |
+| The n ≠ 0 branches are hyperbolas above the light cone | Established |
+| Phase × group velocity = c² for n ≠ 0 modes | Established |
+| Group velocity is below c for n ≠ 0; equals c for n = 0 | Established |
+| n ≠ 0 modes have a nonzero rest frequency at k_S = 0 | Established |
+| All branches approach ω = c\|k_S\| as \|k_S\| → ∞ | Established |
+
+What §4 has *not* done:
+
+- Identified ω as energy, k_S as momentum, or anything as mass.
+  Those are linguistic bridges from wave-physics to particle-
+  physics, and they belong to §5.
+- Asserted that any branch corresponds to a physical "particle."
+  The dispersion relation tells us which (k_S, ω) pairs are
+  *allowed solutions*; whether nature populates them, and with
+  what abundance, is outside the scope of solving the wave
+  equation.
+
+The next section makes the bridge: introduce p = ℏk and E = ℏω as
+the standard wave-to-particle identifications, apply them to our
+modes, and rewrite the dispersion relation in physical-quantity
+language. After that, §6 will recognize the result as the
+relativistic energy-momentum identity and read off the mass —
+*and demonstrate that the read-off mass behaves inertially*.
+
+---
+
+### 5. Energy and momentum of a mode
+
+To bridge from wave-physics to particle-physics we need two
+identifications. Both are standard consequences of quantum
+mechanics, but they apply to *any* wave (not just quantum
+wavefunctions), and they will let us turn the wave-physics
+quantities ω and k_S into the physical quantities energy E and
+momentum p.
+
+#### The Planck–Einstein relation: energy from frequency
+
+For any wave that carries energy, the energy of a single mode is
+proportional to its angular frequency:
+
+<!-- E = ℏ ω -->
+$$
+E = \hbar\,\omega
+$$
+
+This is the **Planck–Einstein relation**. Historically it was
+introduced by Planck (for blackbody radiation, 1900) and used by
+Einstein (for the photoelectric effect, 1905) to link a wave's
+oscillation rate to a quantum of energy. In the quantum-mechanical
+context it is the relation between a wavefunction's time-dependent
+phase and the energy of the state it represents.
+
+Operationally for our derivation: a mode oscillating at angular
+frequency ω carries E = ℏω of energy. ω is a wave-physics
+quantity (radians per second) and E is a physics quantity (joules
+or eV). The constant ℏ ("h-bar," reduced Planck constant) is what
+makes the units balance. We do not need to derive ℏ here — we
+take it as the standard physical constant linking frequency and
+energy.
+
+#### The de Broglie relation: momentum from wavenumber
+
+The spatial counterpart says: a wave's momentum is proportional to
+its spatial wavenumber:
+
+<!-- p = ℏ k -->
+$$
+p = \hbar\,k
+$$
+
+This is the **de Broglie relation**. Historically de Broglie
+(1924) proposed it as the inverse of the Planck–Einstein relation:
+if waves carry quantized energy via E = ℏω, then symmetry between
+time and space suggests waves carry quantized momentum via
+p = ℏk. Experimentally this was confirmed by electron
+diffraction (Davisson–Germer, 1927).
+
+Operationally for our derivation: a mode with spatial wavenumber
+k carries p = ℏk of momentum in that spatial direction.
+
+#### Why these are the right identifications
+
+A wave with no notion of "particle" still has a *frequency* and a
+*wavenumber*. Why should we be allowed to multiply by ℏ and call
+the result energy or momentum?
+
+The honest answer is: for our purposes, *we are using these
+identifications as definitions*. We are claiming: when this wave
+deposits energy somewhere (perhaps via a coupling we have not
+specified), the deposited energy is ℏω per quantum; when it
+deposits momentum, the deposited momentum is ℏk per quantum.
+These claims have been verified for every kind of wave in physics
+where the experiment has been done. We import them here as the
+standard wave-particle bridge.
+
+A reader who wants more rigor can look at the Lagrangian
+formulation of a free scalar field, where these identifications
+follow directly from Noether's theorem applied to time-translation
+and space-translation symmetries. We will not need that level of
+detail; we use the relations as established physical bridges.
+
+#### Applying the identifications to our modes
+
+Our modes are labeled by (n, k_S), with ω determined by the
+dispersion relation. Apply the bridge to each piece:
+
+| Wave-physics quantity | Particle-physics quantity |
+|---|---|
+| ω (angular frequency in t) | E = ℏω (total energy of the mode) |
+| k_S (wavenumber in S) | p_S = ℏ k_S (momentum along S) |
+| n / R_u (effective wavenumber in u) | p_u = ℏ n / R_u (momentum along u) |
+
+The third row is new: we are extending the same identification to
+the compact direction. Whatever oscillation we see in u
+corresponds to a momentum component in u, equal to ℏ times the
+"effective wavenumber" n/R_u that emerged from periodicity. Note
+that **p_u is quantized** (it can only take values nℏ/R_u for
+integer n) because k_u was quantized — the periodicity boundary
+condition has propagated through to the momentum.
+
+#### Rewriting the dispersion relation in physical quantities
+
+Take the dispersion relation:
+
+<!-- ω² = c² k_S² + c² (n/R_u)² -->
+$$
+\omega^2 = c^2\,k_S^2 + c^2\,\left(\frac{n}{R_u}\right)^2
+$$
+
+Multiply both sides by ℏ² to bring in the ℏ-factors:
+
+<!-- (ℏω)² = c² (ℏk_S)² + c² (ℏ n/R_u)² -->
+$$
+(\hbar\,\omega)^2 = c^2\,(\hbar\,k_S)^2 + c^2\,\left(\frac{\hbar\,n}{R_u}\right)^2
+$$
+
+Now substitute the bridge identifications E = ℏω, p_S = ℏk_S,
+and p_u = ℏn/R_u:
+
+<!-- E² = c² p_S² + c² p_u² -->
+$$
+E^2 = c^2\,p_S^2 + c^2\,p_u^2
+$$
+
+This is the dispersion relation, written in the language of
+energy and momentum. It is the same equation we had before; we
+have just renamed the quantities through the bridge.
+
+#### What this looks like — and why we don't yet jump to mass
+
+The final equation, E² = c²p_S² + c²p_u², bears a striking
+resemblance to the **relativistic energy-momentum identity**:
+
+<!-- E² = (pc)² + (mc²)² -->
+$$
+E^2 = (p\,c)^2 + (m\,c^2)^2
+$$
+
+If we identify the "spatial momentum" with p_S, and somehow
+identify mc² with cp_u, we would land on E² = (p_S c)² + (m c²)²
+with mc² = c p_u, i.e., m = p_u / c = ℏ |n| / (R_u c).
+
+That identification is what §6 will make rigorous. But before
+asserting it, we should be careful about what we have actually
+shown. So far:
+
+- E² = c²p_S² + c²p_u² is **derived**: it follows from the wave
+  equation plus the bridge.
+- E² = (pc)² + (mc²)² is **a known identity from relativity**: it
+  describes a free relativistic particle.
+
+These two equations have the *same form* if we identify
+mc² = cp_u. But "having the same form" is not yet "they describe
+the same physics." To make the identification, we need to verify
+that the quantity we are about to call "mass" actually behaves
+like inertial mass — that is, that it produces the right
+relationship between momentum and velocity for a slow-moving
+mode, namely p = m v_g.
+
+That verification — the **inertial proof of mass** — is the work
+of §6.
+
+#### What §5 establishes
+
+| Claim | Status |
+|---|---|
+| E = ℏω is the standard energy-frequency bridge | Imported as a physical relation |
+| p = ℏk is the standard momentum-wavenumber bridge | Imported as a physical relation |
+| Every mode carries E = ℏω, p_S = ℏk_S, and p_u = ℏn/R_u | Established by applying the bridge |
+| p_u is quantized: p_u = ℏn/R_u for integer n | Established (inherited from k_u quantization) |
+| E² = c²p_S² + c²p_u² is the dispersion relation rewritten | Established |
+| E² = c²p_S² + c²p_u² **looks like** E² = (pc)² + (mc²)² | Observed — not yet identified |
+| The quantity p_u / c **plausibly is** rest mass | Conjectured — to be verified by §6's inertial check |
+
+The next section makes the identification rigorous by showing
+that p_u / c, when used as the "mass," produces the correct
+non-relativistic momentum-velocity relation p = m v_g for a slow
+mode. That correspondence is what turns "looks like a mass" into
+"is a mass."
 
 ### 5. Energy and momentum of a mode
 

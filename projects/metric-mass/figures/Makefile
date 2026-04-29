@@ -13,7 +13,8 @@
 PYTHON := ../../../.venv/bin/python
 
 OUTPUTS := \
-	wave-modes.png
+	wave-modes.png \
+	dispersion.png
 
 .PHONY: all clean
 
