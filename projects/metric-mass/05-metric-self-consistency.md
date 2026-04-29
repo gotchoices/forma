@@ -496,20 +496,21 @@ gravitational coupling — measured by the diagonal stress-energy
 trace — is doubled, not cancelled. But the off-diagonal
 KK-style structures are cancelled cleanly.
 
-The user's intuition that ±n superposition could "shield"
-something turns out to be correct at the off-diagonal level:
-the cross-terms that distinguish a mass-like configuration
-from a light-like one (the "compact-direction couplings") *do*
-cancel in the symmetric superposition. They do not cancel at
-the diagonal level: the energy and rest mass still add.
+The intuition that ±n superposition could "shield" something
+([Chapter 4 §6](04-mode-interactions.md)) turns out to be
+correct at the off-diagonal level: the cross-terms that
+distinguish a mass-like configuration from a light-like one
+(the "compact-direction couplings") *do* cancel in the
+symmetric superposition. They do not cancel at the diagonal
+level: the energy and rest mass still add.
 
 ---
 
 ## 8. Putting the chart together: must / can't / may / may not
 
-The user's question framing — under what conditions must
-cross-terms exist, can't exist, may exist, may not exist? — can
-now be answered case by case from the math.
+The framing question — under what conditions must cross-terms
+exist, can't exist, may exist, may not exist? — can now be
+answered case by case from the math.
 
 **Must cross-terms exist?**
 
@@ -564,8 +565,139 @@ The bare diagonal metric of Chapter 1 is therefore:
 - **Self-consistent again** for a static ±n superposition,
   where the ±n cancellation eliminates the g_tu source.
 
-This is the structural answer the math gives. The reader can
-choose how to interpret it.
+This is the structural answer the math gives.
+
+#### Reading the result: the metric *is* the gravitational field
+
+A natural interpretation worth making explicit: what the
+chapter has shown is that **mass on M sources off-diagonal
+metric components, and the off-diagonals (together with the
+modifications to the diagonal entries) are the gravitational
+field**. The g_tu component, in particular, is one piece of
+the gravitational field that a mass at rest produces.
+
+This lines up with how gravity works in standard general
+relativity: the gravitational field *is* the metric, or more
+precisely the deviation of the metric from a flat reference
+([primers/metric.md §9](../../primers/metric.md)). A particle
+of mass M sources a metric perturbation h_μν whose
+non-trivial entries (in suitable coordinates) include both
+diagonal modifications (the g_tt = −(1−2GM/(r c²)) factor
+familiar from Schwarzschild) and, when motion or angular
+momentum is involved, off-diagonals like the frame-dragging
+g_tφ in Kerr. The "field" is the full deformation of g_μν
+away from flat. There isn't a separate "gravitational field"
+distinct from the metric — they are the same object.
+
+In our framework, the g_tu component is the off-diagonal
+piece of that deformation associated specifically with mass
+at rest on a manifold with a compact dimension. Together with
+the modifications to T_tt and T_uu (which would source g_tt
+and g_uu modifications), it is the project's full
+gravitational signature of mass on the minimal manifold.
+
+#### Two masses: superposition of contributions
+
+For two masses on M, there is **one** metric that satisfies
+Einstein's equations sourced by both stress-energies together,
+not two separate metrics. In the linearized regime
+(g_μν = η_μν + h_μν with h small), the equation
+□ h_μν ∝ T_μν is linear, so contributions add:
+
+<!-- h_μν^total = h_μν^[mass 1] + h_μν^[mass 2]  (linearized) -->
+$$
+h_{\mu\nu}^\text{total} = h_{\mu\nu}^{[\text{mass 1}]} + h_{\mu\nu}^{[\text{mass 2}]}
+$$
+
+Each mass independently sources its own g_tu (and other
+modifications), and the total off-diagonal entries at any
+spacetime point are the sum of the contributions from each
+source. This linear superposition of metric perturbations is
+the standard formalism by which "two masses each warp
+spacetime" produces an interference pattern of warps —
+exactly the picture observers expect from two gravitating
+bodies.
+
+Outside the linearized regime, this superposition is only
+approximate: at higher orders, the contributions interact via
+the nonlinearity of the Einstein tensor. But for any
+physically realistic field amplitude on M, the linearized
+picture is exact to extraordinary precision.
+
+So the reading is: yes, the chapter has effectively *shown
+the mechanism* for how mass on M produces gravitational
+warping. Multiple masses produce multiple linearly-superposed
+contributions, and the total off-diagonal-and-diagonal metric
+deformation at any point is the gravitational field there.
+This is the spacetime warping we expect from masses, derived
+inside the framework's own machinery rather than imposed from
+outside.
+
+#### Comparison with Schwarzschild and Kerr
+
+A specific point of comparison with standard general relativity
+is worth flagging. In standard 1+3D GR:
+
+- The **Schwarzschild** metric (a static, non-rotating spherical
+  mass in vacuum) is *purely diagonal*. A particle at rest
+  produces no off-diagonal entries; gravity manifests as
+  diagonal modifications of g_tt and g_rr (gravitational time
+  dilation and radial-ruler stretching). Orbits emerge from
+  the diagonal curvature via the geodesic equation; no
+  off-diagonal cross-term is needed for orbital mechanics.
+- The **Kerr** metric (a rotating mass) does have an
+  off-diagonal: g_tφ ≠ 0, called *frame-dragging*. Spacetime
+  near a spinning mass is dragged around in the direction of
+  the rotation, mixing time with the azimuthal direction. This
+  off-diagonal vanishes when the mass stops spinning.
+
+In our framework, the g_tu off-diagonal sourced by a *static*
+mass at rest is structurally analogous to **Kerr's
+frame-dragging g_tφ**, with two important wrinkles:
+
+1. The compact direction u plays the role that φ plays in Kerr —
+   it is the direction "around" which the dragging happens.
+2. The mass is producing the off-diagonal even though it is
+   *not rotating in the usual sense*. The role that φ-rotation
+   plays in Kerr is played here by the wave's compact-direction
+   *winding*, which is non-zero for any massive mode (n ≠ 0)
+   at any state of motion, including rest. The winding is a
+   kind of "intrinsic compact-direction angular momentum" that
+   the wave carries by virtue of being massive.
+
+So our minimal-manifold framework produces a *Kerr-like*
+gravitational signature even for a non-rotating rest mass.
+This is a non-trivial qualitative difference from standard
+1+3D GR's static-mass result. Whether it is a deep feature of
+the wave-realist mass picture, or a peculiarity of the 1+1+1D
+manifold, is a question this project does not settle. It is
+worth flagging for the future charge project (where standard
+KK identifies the same g_μ5 entries as the EM potential, not
+as gravitational frame-dragging — yet another instance of the
+mass-vs-charge framing tension noted in §6 of this chapter).
+
+#### Orbits and extended dimensions
+
+The g_tu off-diagonal does not directly produce orbits. Orbits
+in standard GR are extended-space trajectories driven by the
+geodesic equation applied to the *diagonal* curvature of
+spacetime; Schwarzschild gives orbits with no off-diagonals.
+
+If the framework were extended to multiple S dimensions
+(S_1, S_2, ... — beyond the scope of this project), localized
+masses would source position-dependent diagonal modifications
+g_tt(S), g_S_iS_i(S), and orbital trajectories would emerge
+from those diagonal pieces in the standard GR way. The g_tu
+off-diagonal is a compact-direction-specific feature
+("frame-dragging in u") with no direct extended-space orbital
+analog. It would coexist with the diagonal modifications that
+produce orbits, but it would not contribute to them.
+
+In other words: gravity on a multi-S manifold would still
+produce orbits via the standard mechanism (diagonal curvature),
+*and* would carry an additional compact-direction
+off-diagonal (g_tu) signature for any masses present. The two
+features live in independent components of the metric.
 
 ---
 
