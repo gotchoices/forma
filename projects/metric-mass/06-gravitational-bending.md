@@ -126,13 +126,13 @@ superposition, but the *diagonal* T entries (T_tt, T_uu) double
 — and gravity couples to all of T, with the diagonal entries
 dominating the bending in the slow-and-weak limit.
 
-This is the resolution of the user-stated question about
-"non-destructive inertial elimination": the picture turns out
-to be the same at the gravitational level as at the inertial
-level. The off-diagonal couplings (which would have been the
-KK-style "field-mediated" effects) are cancelled, but the
-diagonal energy density — which gravity sees at leading order
-— is doubled.
+This resolves the "non-destructive inertial elimination"
+question raised in [Chapter 4 §6](04-mode-interactions.md):
+the picture turns out to be the same at the gravitational
+level as at the inertial level. The off-diagonal couplings
+(which would have been the KK-style "field-mediated" effects)
+are cancelled, but the diagonal energy density — which gravity
+sees at leading order — is doubled.
 
 Compactly:
 
@@ -200,7 +200,11 @@ spacetime is not a fundamental fact; it is the consequence of
 information-theoretic / entropic balance across horizons. Mass
 "bends spacetime" because mass shifts the entropy across nearby
 information surfaces, and the metric responds to maintain
-local thermodynamic balance.
+local thermodynamic balance. Jacobson's 1995 derivation —
+showing the Einstein equations follow from the local first law
+of thermodynamics applied to horizon area — is the cleanest
+form of this argument and is the closest pre-existing analog
+to the GRID picture below.
 
 **The GRID picture.** The broader GRID framework
 ([primers/physics-from-fabric.md](../../primers/physics-from-fabric.md))
@@ -211,15 +215,27 @@ to physics:
   Maxwell's equations and electromagnetism via local information
   propagation rules.
 - An **entropy / heat / temperature** pathway, which yields
-  gravity via thermodynamic balance — closely aligned with
-  the entropic-gravity programs above.
+  gravity via thermodynamic balance.
+
+GRID's entropy pathway is structurally aligned with Jacobson's
+derivation: gravity emerges from horizon-area entropy obeying
+the first law of thermodynamics. GRID arrives at the same
+conclusion (Einstein's equations as a thermodynamic equation
+of state) from its own substrate construction rather than by
+importing Jacobson's argument directly, but the two
+formulations are compatible and the family resemblance is
+explicit
+([primers/physics-from-fabric.md](../../primers/physics-from-fabric.md)
+discusses this).
 
 Under this picture, gravitational bending and electromagnetic
 fields would arise from *separate* substrate mechanisms even
 though both are encoded in metric structure. Gravity is the
-thermodynamic limit of substrate dynamics; electromagnetism is
-the causal-information-network limit. Both can be present
-simultaneously, but they have different microscopic origins.
+thermodynamic limit of substrate dynamics (the
+Jacobson/entropic line); electromagnetism is the
+causal-information-network limit (a separate channel with its
+own coupling parameter, α). Both can be present simultaneously,
+but they have different microscopic origins.
 
 For our chapter's question — does ±n cancel gravitational
 bending? — the substrate-level mechanism does not change the
