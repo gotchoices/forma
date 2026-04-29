@@ -96,12 +96,44 @@ mass.
 1. [01-foundation.md](01-foundation.md) — Axioms and givens. The
    minimal manifold, metric, and wave field on which the rest of
    the project rests.
-2. *02 — coming next:* deriving the mass spectrum from a standing
-   wave in u.
+2. [02-mass-from-u.md](02-mass-from-u.md) — Solve the wave equation
+   on M. Outline currently in place; full chapter to be filled out
+   from that outline.
 
-Each chapter is added one at a time. We don't sketch a full
-table-of-contents up front because the project is allowed to grow
-in directions we haven't anticipated.
+### Tentative downstream arc
+
+The chapters below are *plausible follow-ups*, not commitments.
+The project is allowed to redirect based on what each chapter's
+math actually reveals. None of these is asserting an answer —
+they are framing questions to be examined.
+
+3. **Visualization of the solutions.** Render the modes found in
+   chapter 2 as helices / standing waves on the (S, u, t) Cartesian
+   embedding. Build intuition for what the field looks like at
+   different mode numbers and motion states.
+4. **Self-consistency of the bare metric.** Examine more carefully
+   whether the diagonal-and-constant metric of chapter 1 remains
+   internally consistent with the solutions chapter 2 produced —
+   or whether the solutions force any modification.
+5. **Position-dependent g_uu.** If chapter 4 reveals tension, one
+   natural relaxation is letting g_uu become a function of S
+   (the "dilaton-style" possibility from §3 of the foundation).
+   Examine the consequences.
+6. **Off-diagonal terms.** Examine whether any g_tu, g_Su cross
+   term is forced or admitted by the solutions, and what physical
+   meaning such a term would carry on this minimal manifold.
+7. **Closing summary.** Whatever chapter 4–6 reveal, restate the
+   project's findings in plain language: what the math actually
+   established, and what it left open for follow-up projects
+   (charge, sheets, gravity).
+
+If chapter 4 establishes that the diagonal metric is fine on its
+own, chapters 5–6 may not be needed. If it reveals tension, the
+arc continues. We pick up the next chapter once the previous one's
+findings are in.
+
+Each chapter is added one at a time. The arc is a sketch, not a
+contract.
 
 ## What this project is not trying to do
 

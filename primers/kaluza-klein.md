@@ -1,476 +1,600 @@
 # Kaluza-Klein Theory — A Ground-Up Introduction
 
-A self-contained introduction to Kaluza-Klein (KK) theory,
-starting from coordinates and distance and ending with
-electromagnetism emerging from geometry. Assumes calculus,
-vectors, and matrices. No prior exposure to general relativity
-or differential geometry is needed.
+A self-contained introduction to Kaluza-Klein (KK) theory: how
+electromagnetism falls out of geometry once you allow spacetime to
+have a small, compact extra dimension.
+
+**Prerequisite:** [metric.md](metric.md). The metric primer covers
+the geometry foundations — distance recipes, the metric as a
+matrix, off-diagonal terms, position-dependent metrics, light
+cones, geodesics, and compact dimensions. This primer takes those
+as given and concentrates on KK theory itself. If any concept here
+feels unmotivated, the metric primer almost certainly has the
+background.
 
 ---
 
-## 1. Coordinates and distance
+## Concepts introduced in this primer
 
-Everything starts with measuring distance.
+| § | Concept |
+|---|---------|
+| 1 | The Kaluza-Klein hypothesis |
+| 2 | Going from 4D to 5D: what changes? |
+| 3 | The 5×5 metric and its three regions |
+| 4 | The four-potential A_μ — a refresher |
+| 5 | Identifying cross terms with the EM potential |
+| 6 | What the cross terms do physically |
+| 7 | Klein's contribution: compactification |
+| 8 | What falls out — equations and quantities |
+| 9 | Charge conservation from symmetry |
+| 10 | Geodesics in 5D: where the force comes from |
+| 11 | An analogy: the tilted conveyor belt |
+| 12 | What is established vs. what is hypothetical |
+| 13 | The essential insight |
+| Appendix A | Deriving the Lorentz force from the 5D metric |
 
-In a plane, the distance between two nearby points is the
-Pythagorean theorem:
+---
 
-    ds² = dx² + dy²
+## 1. The Kaluza-Klein hypothesis
 
-This says: if you step dx to the right and dy upward, the total
-distance you've traveled (squared) is dx² + dy². In 3D:
+In 1921, Theodor Kaluza asked a striking question:
 
-    ds² = dx² + dy² + dz²
+> *What if spacetime has one more dimension than we observe?*
 
-The "ds²" notation means the square of an infinitesimal distance
-— the distance between two points that are infinitely close. Why
-infinitesimal? Because in curved space the formula changes from
-place to place, so it's only exactly right for tiny steps. For
-flat space it works at any scale.
+We observe four dimensions: three of space (x, y, z) and one of
+time (t). Maybe there is a fifth dimension — call it *w* — that we
+can't see, perhaps because it is too small.
 
-**Spacetime.** Einstein showed that time and space are intertwined.
-The spacetime "distance" (called the interval) between two nearby
-events is:
+The hypothesis is geometric, not exotic: just one more direction
+to move in, governed by the same kind of metric and geometry as the
+four we already use. The interesting part is what we get for free
+when we add it.
 
-    ds² = −c²dt² + dx² + dy² + dz²
+In 1926, Oskar Klein added the second piece of the story: the
+fifth dimension is **compact**, meaning it wraps around like a
+circle (see [metric.md §12](metric.md)). If you move far enough
+in the w direction, you come back to where you started.
 
-The minus sign on the time term is the key difference between
-space and time. We won't need the details — just the fact that
-spacetime distance is a real, computable thing, and it governs
-how particles move.
+Together, **Kaluza-Klein theory** is the proposal that spacetime is
+4D extended × 1D compact. The remarkable result, which we will
+walk through, is:
 
+> **Adding one compact extra dimension to gravity automatically
+> produces electromagnetism.**
 
-## 2. The metric: the distance recipe
+The rest of this primer unpacks how that works.
 
-The formula ds² = dx² + dy² is specific to Cartesian coordinates
-in flat space. Switch to polar coordinates (r, θ) and the same
-flat plane has a different-looking distance formula:
+---
 
-    ds² = dr² + r² dθ²
+## 2. Going from 4D to 5D: what changes?
 
-The geometry hasn't changed — it's still a flat plane. But the
-recipe for computing distance from coordinate differences has
-changed. This recipe is called the **metric**.
+Adding one dimension to spacetime changes a few specific things and
+leaves most of the machinery unchanged.
 
-We can write the metric as a matrix. In 2D Cartesian:
+**What changes.**
 
-ds² = dx² + dy²
+- The number of coordinates goes from 4 to 5: from (t, x, y, z) to
+  (t, x, y, z, w).
+- The metric, which was a 4×4 symmetric matrix, becomes a 5×5
+  symmetric matrix.
+- A 5×5 symmetric matrix has 15 independent entries (5 diagonal +
+  10 off-diagonal — symmetric so each off-diagonal pair counts as
+  one). The 4×4 case had 10. So we have 5 new entries to make
+  sense of.
 
-<!-- g = [[1, 0], [0, 1]];  ds² = [dx, dy] · g · [dx, dy]ᵀ -->
-$$
-g = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix},
-\qquad
-ds^2 = \begin{pmatrix} dx & dy \end{pmatrix}\,g\,\begin{pmatrix} dx \\ dy \end{pmatrix}
-$$
+**What stays the same.**
 
-In polar coordinates:
+- The metric still measures distance the same way: ds² = g_AB dx^A
+  dx^B with the indices now running over 5 coordinates instead of
+  4.
+- The metric still has Lorentzian signature (one negative
+  eigenvalue, four positive — the time eigenvalue is still
+  negative).
+- Geodesics are still the paths free particles follow.
 
-ds² = dr² + r² dθ²
+**Index notation note.** When we move to 5D, the convention is to
+use *uppercase* indices A, B, ... = 0, 1, 2, 3, 4 to indicate "ranges
+over all 5 coordinates," and *lowercase* indices μ, ν, ... = 0, 1, 2, 3
+to indicate "ranges over the 4 spacetime coordinates only." We
+will follow this convention. So:
 
-<!-- g = [[1, 0], [0, r²]] -->
-$$
-g = \begin{pmatrix} 1 & 0 \\ 0 & r^2 \end{pmatrix}
-$$
+- Sum over μ, ν → 4×4 = 16 terms (spacetime only)
+- Sum over A, B → 5×5 = 25 terms (full 5D)
+- An entry like g_μ5 has one spacetime index and one fifth-dim
+  index — that's a "cross" entry, mixing 4D with the new direction.
 
-Same flat plane, different metric matrix. The metric encodes both
-the geometry of the space AND the coordinate system.
+---
 
-**Why this matters:** the metric is the fundamental object in
-general relativity. If you know the metric, you know everything
-about the geometry — distances, angles, curvature, and how
-particles move.
+## 3. The 5×5 metric and its three regions
 
+The new 5×5 metric naturally splits into three regions, each with a
+distinct physical role.
 
-## 3. Off-diagonal terms and mixing
+**Visualizing the split.** Picture the 5×5 metric matrix with its
+rows and columns ordered (t, x, y, z, w). Four of the indices are
+the familiar spacetime indices (t, x, y, z); one is the new w. We
+can draw the matrix with a horizontal and vertical line separating
+the spacetime indices from the w index:
 
-So far our metrics have been diagonal — each coordinate contributes
-independently to the distance. But metrics can have off-diagonal
-terms. Consider a 2D metric:
+```
+        t   x   y   z  | w
+       ─── ─── ─── ─── | ───
+   t    .   .   .   . | .
+   x    .   .   .   . | .
+   y    .   .   .   . | .
+   z    .   .   .   . | .
+       ─── ─── ─── ───┼───
+   w    .   .   .   . | .
+```
 
-<!-- g = [[1, A], [A, 1]];  ds² = dx² + 2A dx dy + dy² -->
-$$
-g = \begin{pmatrix} 1 & A \\ A & 1 \end{pmatrix},
-\qquad
-ds^2 = dx^2 + 2A\,dx\,dy + dy^2
-$$
+Three regions:
 
-The cross term 2A dx dy means the coordinates are "mixed" — moving
-in x also partly counts as moving in y. You can think of this as
-the axes being tilted rather than perpendicular.
+1. **The 4×4 spacetime block** (top-left, with both indices
+   spacetime): 10 independent entries. This is the *ordinary 4D
+   metric* you already know.
+2. **The single 1×1 corner entry g_55** (bottom-right, both indices
+   = 5): 1 entry. This describes the metric in the w direction
+   alone.
+3. **The cross block g_μ5** (top-right and bottom-left, one
+   spacetime index and one w index): 4 entries (since the matrix
+   is symmetric, the top-right strip and the bottom-left strip
+   carry the same 4 numbers).
 
-When A = 0, the axes are orthogonal. When A ≠ 0, they're tilted.
-Motion in one direction drags you in the other.
+So 5×5 with symmetry = 10 + 1 + 4 = 15 entries, matching what we
+counted in §2.
 
-This will be the key to understanding electromagnetism as geometry.
-
-
-## 4. Geodesics: the shortest path
-
-A **geodesic** is the path of shortest distance between two points.
-In flat space, geodesics are straight lines. On a sphere, they're
-great circles. In general, the metric determines what "shortest"
-means, so different metrics give different geodesics.
-
-The important physical principle: **free particles follow
-geodesics.** In flat space, a free particle moves in a straight
-line (Newton's first law). In curved space, a free particle follows
-a geodesic — a curved path that is "straight" according to the
-local geometry.
-
-When we see a particle following a curved path, we can explain it
-two ways:
-- **Force:** something pushes the particle off a straight line
-- **Geometry:** the particle IS following a straight line, but in
-  a curved space
-
-General relativity takes the geometry view for gravity. Kaluza-Klein
-takes the geometry view for electromagnetism.
-
-
-## 5. General relativity in brief
-
-Einstein's insight: gravity is not a force. Mass and energy curve
-spacetime — they change the metric. Free particles follow geodesics
-in this curved spacetime, and those geodesics look like the
-trajectories of particles accelerating under gravity.
-
-The metric near a massive object (like Earth) differs slightly from
-the flat spacetime metric. This difference is what makes objects
-fall. The "force" of gravity is really just the curvature of the
-shortest path.
-
-**Einstein's field equations** relate the curvature of the metric
-to the energy and momentum present. We won't need the explicit
-equations — just the principle:
-
-    Energy/momentum → determines → metric → determines → geodesics
-
-This chain is the entire content of general relativity. If you
-know the metric, you can compute how everything moves.
-
-
-## 6. What "compact" means
-
-A dimension is **compact** if it has finite size but no boundary.
-Travel far enough in one direction, and you return to where you
-started.
-
-You already know a compact coordinate: the angle θ in polar
-coordinates. θ goes from 0 to 2π and then wraps — θ = 0 is the
-same point as θ = 2π. The θ direction is a circle of circumference
-2π (in radians) or 2πr (in distance units at radius r).
-
-Now imagine a new coordinate w that wraps after distance L:
-
-    w  and  w + L  are the same point
-
-This is a compact dimension with circumference L. Mathematically,
-it's a circle, written S¹.
-
-A compact dimension can be **flat** — zero intrinsic curvature.
-Analogy: wrap a flat sheet of paper into a cylinder. The paper is
-still flat (you can unroll it without stretching), but the
-circumference direction is compact. A straight line drawn on the
-flat sheet becomes a helix on the cylinder, but it's still a
-geodesic — the shortest path.
-
-
-## 7. Kaluza's idea: a fifth dimension
-
-In 1921, Theodor Kaluza asked: what if spacetime has one more
-dimension than we observe?
-
-In ordinary 4D spacetime, coordinates are (t, x, y, z) and the
-metric is a 4×4 matrix. Add a fifth coordinate w. Now the metric
-is a 5×5 matrix.
-
-The 5D distance formula could be written as a single expression
-— g_AB dx^A dx^B with A,B running over all five coordinates —
-but that would bury the physics inside a 25-term sum. Instead,
-we split the 5×5 matrix into three groups, each with a distinct
-physical meaning:
+**Writing the split as ds².** Instead of writing ds² as one big
+sum of 25 terms, we group the contributions by which region they
+come from:
 
 <!-- ds² = g_μν dx^μ dx^ν (gravity) + g₅₅ dw² (scalar) + 2 g_μ5 dx^μ dw (EM) -->
 $$
-ds^2 = \underbrace{g_{\mu\nu}\,dx^\mu\,dx^\nu}_{\text{gravity}}
-     + \underbrace{g_{55}\,dw^2}_{\text{scalar}}
-     + \underbrace{2\,g_{\mu 5}\,dx^\mu\,dw}_{\text{electromagnetism}}
+ds^2 = \underbrace{g_{\mu\nu}\,dx^\mu\,dx^\nu}_{\text{spacetime block}}
+     + \underbrace{g_{55}\,dw^2}_{\text{w-alone}}
+     + \underbrace{2\,g_{\mu 5}\,dx^\mu\,dw}_{\text{cross block}}
 $$
 
-Here μ and ν each run over {t, x, y, z} — the four spacetime
-coordinates. The expression g_μν dx^μ dx^ν uses index notation
-(see `matrix-primer.md` §9): it means "sum over all combinations
-of μ and ν," which is 4×4 = 16 terms — the spacetime metric.
+The factor of 2 on the cross term comes from the symmetric matrix
+convention (see [metric.md §6](metric.md)): the entries g_μ5 and
+g_5μ are equal and both contribute, so they add up to 2 g_μ5 dx^μ dw.
 
-The factor of 2 on the cross terms has the same origin as in the
-matrix primer (§7): the metric matrix is symmetric (g_μ5 = g_5μ),
-so the terms with indices (μ,5) and (5,μ) are equal and combine.
+**The three roles.**
 
-For example, in just 2D:
+| Region | Entries | Role |
+|--------|---------|------|
+| g_μν (spacetime block) | 10 | Ordinary 4D metric → gravity |
+| g₅₅ (single corner) | 1 | Scalar (the "dilaton") |
+| g_μ5 (cross block) | 4 | **Electromagnetism** |
 
-<!-- g_μν dx^μ dx^ν = g₁₁ dx¹ dx¹ + g₁₂ dx¹ dx² + g₂₁ dx² dx¹ + g₂₂ dx² dx² -->
+The first two are familiar and unsurprising once you've absorbed
+ordinary general relativity (see [metric.md §9](metric.md)). The
+remarkable claim is the third: the four cross entries g_μ5 are
+electromagnetism. The next two sections explain what that means
+and why it is true.
+
+---
+
+## 4. The four-potential A_μ — a refresher
+
+To explain the third claim of §3, we need a brief refresher on how
+electromagnetism is described mathematically. (For a full treatment
+see [maxwell-primer.md](maxwell-primer.md).)
+
+In ordinary electromagnetism, you can specify the entire E and B
+field configuration with just **four numbers** at every point in
+spacetime — the **four-potential**:
+
+<!-- A_μ = (φ/c, A_x, A_y, A_z) -->
 $$
-g_{\mu\nu}\,dx^\mu\,dx^\nu
-  = g_{11}\,dx^1\,dx^1
-  + g_{12}\,dx^1\,dx^2
-  + g_{21}\,dx^2\,dx^1
-  + g_{22}\,dx^2\,dx^2
+A_\mu = \left( \frac{\phi}{c},\; A_x,\; A_y,\; A_z \right)
 $$
 
-which is just the matrix product [dx¹, dx²] · g · [dx¹, dx²]ᵀ.
+Reading the components:
 
-The three groups of terms in the 5D metric:
+- **φ** is the *scalar potential* — what a voltmeter measures. The
+  φ/c is unit-conversion to put it on the same footing as the
+  other three.
+- **A_x, A_y, A_z** are the spatial (x, y, z) components of the
+  *vector potential*, a vector field whose curl gives the magnetic
+  field.
 
-| Terms | What they are | Physical meaning |
-|-------|---------------|------------------|
-| g_μν dx^μ dx^ν | 4D spacetime metric | Gravity |
-| g₅₅ dw² | Length of the extra dimension | A scalar field (the "dilaton") |
-| 2 g_μ5 dx^μ dw | Cross terms mixing w with spacetime | **Electromagnetism** |
+**Why does φ/c sit in the time slot?** The pairing isn't arbitrary
+— it follows the same pattern as every other 4-vector in special
+relativity. Position is (ct, x, y, z); energy-momentum is
+(E/c, p_x, p_y, p_z); the time component is always the "scalar"
+quantity and the spatial components are always the vector
+quantity. The pattern works for A_μ because of what φ and **A** do
+to a charged particle:
 
-The cross terms are the key. They connect to the electromagnetic
-potential — the four-number object A_μ from which all electric
-and magnetic fields are derived. (For a full review of Maxwell's
-equations, potentials, and A_μ, see [`maxwell-primer.md`](maxwell-primer.md).
-The short version follows.)
+| Quantity | Time-component | Space-components | What it produces |
+|---|---|---|---|
+| Position | ct | x, y, z | — |
+| Energy-momentum | E/c | p_x, p_y, p_z | — |
+| Four-potential A_μ | φ/c | A_x, A_y, A_z | (force, below) |
 
-In electromagnetism, the E and B fields (6 components total) can
-all be derived from just 4 numbers called the **four-potential**:
+The energy of charge q in the potential is **U = qφ**. The momentum
+of charge q in the potential is **p = qA**. Energy and time are
+canonically paired (energy is the time-component of momentum);
+momentum and space are canonically paired (each spatial momentum is
+the conjugate of the corresponding spatial coordinate). So φ ↔
+energy ↔ time, and **A** ↔ momentum ↔ space. The four-potential
+is just packaging "energy per charge" and "momentum per charge"
+into one 4-vector.
 
-    A_μ = (φ/c, A_x, A_y, A_z)
+Your hunch about derivatives also pays off: when you compute the
+electric field
 
-where φ is the scalar potential (voltage) and **A** is the vector
-potential. The fields come from derivatives of the potentials:
+$$
+\mathbf{E} = -\nabla\phi - \frac{\partial \mathbf{A}}{\partial t}
+$$
 
-    E = −∇φ − ∂A/∂t       (E points "downhill" from high voltage)
-    B = ∇ × A              (B is the "swirl" of A)
+the φ contribution comes from a *spatial* gradient and the **A**
+contribution comes from a *time* derivative. So the two
+contributions to E are sourced by derivatives in the
+"perpendicular" direction relative to where each potential lives in
+A_μ. That cross-coupling is exactly the kind of structure encoded
+when we write the field tensor F_μν = ∂_μ A_ν − ∂_ν A_μ
+(see [maxwell-primer.md](maxwell-primer.md) and Appendix A.4).
 
-Kaluza's identification: the four cross terms of the 5D metric
-ARE the four-potential:
+The actual electric and magnetic fields are derivatives of A_μ:
 
-    g_μ5 = A_μ
+- E = −∇φ − ∂**A**/∂t  (E points "downhill" from high voltage,
+  with a correction from time-varying **A**)
+- B = ∇ × **A**  (B is the "swirl" of **A**)
 
-The metric cross terms (how much the compact dimension tilts
-relative to each spacetime direction) and the electromagnetic
-potential (the object whose derivatives give E and B) are the
-same mathematical object. If you know the 5D metric, you know
-the electromagnetic field.
+So six field components (three of E, three of B) are determined by
+just four numbers (the components of A_μ) once you know how to
+take their derivatives. A_μ is the *underlying* object;
+the E and B fields are derived from it.
 
-This is why the three-way split matters. The cross terms between
-spacetime and the compact dimension aren't just "some off-diagonal
-entries" — they are electromagnetism, encoded in the geometry of
-the extra dimension.
+The key fact for KK: **electromagnetism is fully encoded in a
+4-vector A_μ, one number per spacetime direction**.
 
+---
 
-## 8. What the cross terms do physically
+## 5. Identifying cross terms with the EM potential
 
-When A_μ = 0 (no electromagnetic field), the 5D metric has no
-cross terms. The compact dimension w is perfectly orthogonal to
-spacetime. Motion in w doesn't affect motion in spacetime, and
-vice versa.
+Now we make the central identification of Kaluza-Klein theory.
 
-When A_μ ≠ 0, moving through spacetime drags you in the w
-direction (and vice versa). The 5D distance formula becomes:
+The cross block of the 5×5 metric, g_μ5, contains 4 numbers (one
+for each spacetime direction μ = t, x, y, z). The four-potential
+A_μ also has 4 numbers. Kaluza's identification:
 
-    ds² = g_μν dx^μ dx^ν + (dw + A_μ dx^μ)²
+> **The cross-block of the 5D metric IS the electromagnetic
+> four-potential.**
+
+<!-- g_μ5 = A_μ -->
+$$
+g_{\mu 5} = A_\mu
+$$
+
+(The exact identification has a unit-conversion factor in front of
+A_μ that depends on conventions; the order-of-magnitude story is
+what matters. We will use the convention-light form for clarity.)
+
+This is one identification, four equations (one per μ).
+
+What it says, structurally:
+
+- The metric component that mixes time with the compact w direction
+  is the scalar potential: g_t5 ↔ φ.
+- The metric components that mix the three spatial directions with
+  w are the vector potential: g_x5 ↔ A_x, g_y5 ↔ A_y, g_z5 ↔ A_z.
+
+If you know the 5D metric, you know the EM four-potential. And if
+you know A_μ, you know the cross-block of the 5D metric. They are
+the same mathematical object, viewed two ways.
+
+**Why is this surprising?** Because nothing in the construction
+"forces" the cross terms to be electromagnetism. We just added a
+fifth dimension and asked what the metric matrix looks like. The
+four off-diagonal entries that mix the new direction with the four
+old ones happen to have *exactly* the right structure to play the
+role of A_μ. The 5D Einstein equations, when worked out, give
+Maxwell's equations for these entries. The 5D geodesic equation,
+when projected to 4D, gives the Lorentz force. (Both of these
+results we will sketch in later sections; appendix A works through
+the geodesic-to-Lorentz derivation explicitly.)
+
+This is the punchline of KK: **electromagnetism is not separate
+from geometry; it is geometry, encoded in metric components we
+hadn't been able to see before.**
+
+---
+
+## 6. What the cross terms do physically
+
+This section is KK-specific: it takes the general "off-diagonal
+terms mix coordinates" idea (covered in
+[metric.md §6](metric.md)) and works out what that mixing means
+*specifically* for the cross block g_μ5 of the 5×5 KK metric. The
+factorization below — where ds² rearranges into a clean square
+involving (dw + A_μ dx^μ) — only works because the cross block has
+the special structure of being identified with A_μ.
+
+The g_μ5 cross terms are not just a formal identification — they
+have a clear physical interpretation in terms of how motion mixes.
+
+**When A_μ = 0.** The cross terms vanish and the 5D metric
+factorizes: ds² is just the 4D piece plus dw² alone. Motion in w
+doesn't influence motion in spacetime, and vice versa. The
+compact dimension is decoupled.
+
+**When A_μ ≠ 0.** The cross terms mix spacetime motion with motion
+in the compact direction. The 5D distance formula can be rewritten
+as:
+
+<!-- ds² = g_μν dx^μ dx^ν + (dw + A_μ dx^μ)² -->
+$$
+ds^2 = g_{\mu\nu}\,dx^\mu\,dx^\nu + \left(dw + A_\mu\,dx^\mu\right)^2
+$$
+
+(For simplicity we've absorbed unit factors and set g_55 = 1 in
+this form; the exact coefficients depend on conventions.)
 
 Expanding the squared term:
 
-    (dw + A_μ dx^μ)² = dw² + 2 A_μ dw dx^μ + A_μ A_ν dx^μ dx^ν
+<!-- (dw + A_μ dx^μ)² = dw² + 2 A_μ dw dx^μ + A_μ A_ν dx^μ dx^ν -->
+$$
+\left(dw + A_\mu\,dx^\mu\right)^2 = dw^2 + 2\,A_\mu\,dw\,dx^\mu + A_\mu A_\nu\,dx^\mu\,dx^\nu
+$$
 
-The middle term (2 A_μ dw dx^μ) is the cross term that mixes the
-dimensions. The last term (A_μ A_ν dx^μ dx^ν) is a small
-correction to the spacetime metric from the electromagnetic field
-energy.
+The middle term (2 A_μ dw dx^μ) is the cross term — the one that
+mixes dimensions. The last term (A_μ A_ν dx^μ dx^ν) is a small
+correction to the spacetime metric from the EM field's energy.
 
-**Physical picture:** imagine walking on a conveyor belt that runs
-at an angle to your path. Your forward motion carries you sideways
-(the cross term). How much you drift sideways depends on your
-speed and the belt's tilt (A_μ). If you also have momentum in the
-sideways direction (momentum in w = charge), the belt accelerates
-you forward. This acceleration is the electromagnetic force.
+**Physical picture: the conveyor-belt analogy.** Imagine walking on
+a conveyor belt that runs at an angle to your path. Your forward
+motion in spacetime carries you partly sideways into the w
+direction (and vice versa). How much you drift depends on your
+speed and the belt's tilt — and the belt's tilt is exactly A_μ.
 
+If you also have momentum in the w direction (which we will
+identify with charge in §7), the belt now accelerates you in
+spacetime. That acceleration is what we observe as the
+electromagnetic force.
 
-## 9. Klein's contribution: compactification
+So electromagnetism, in the KK picture, is a *mixing* between
+ordinary spacetime motion and motion in a compact direction we
+cannot directly see.
 
-In 1926, Oskar Klein made Kaluza's idea physical by making the
-fifth dimension compact:
+---
 
-    w ~ w + L
+## 7. Klein's contribution: compactification
 
-The coordinate w wraps with circumference L. This has a profound
-consequence.
+Klein's 1926 contribution was to make the fifth dimension compact:
 
-**Quantization.** A particle has a wavefunction ψ that must be
-single-valued — if you go around the compact dimension and return
-to the same point, the wavefunction must return to the same value:
+<!-- w ~ w + L -->
+$$
+w \;\sim\; w + L
+$$
 
-    ψ(w + L) = ψ(w)
+The coordinate w wraps with circumference L. (This is the standard
+compact dimension of [metric.md §12](metric.md), now applied
+specifically to the KK extra dimension.)
 
-The solutions are:
+This has a profound consequence: **quantization of charge**.
 
-    ψ(w) = exp(i n w 2π / L)    for  n = 0, ±1, ±2, ...
+**Why quantization?** A particle's wavefunction ψ(t, x, y, z, w)
+must be **single-valued**: going around the compact direction and
+returning must give the same value. So:
 
-where n is an integer. The momentum in the w direction is:
+<!-- ψ(w + L) = ψ(w) -->
+$$
+\psi(w + L) = \psi(w)
+$$
 
-    p_w = n ℏ / R
+The solutions of a wave equation with this periodicity have a very
+restricted form in the w direction. The allowed w-dependence is:
 
-where R = L / (2π) is the compact radius and ℏ is the reduced
-Planck constant.
+<!-- ψ(w) ∝ e^(i n 2π w / L) -->
+$$
+\psi(w) \;\propto\; e^{i\,n\,2\pi w / L}
+\qquad \text{for } n = 0, \pm 1, \pm 2, \ldots
+$$
 
-**The key identification:** this quantized momentum is electric
-charge.
+where n is an integer. (The integer n is what makes the solution
+single-valued — fractional values would not return to the same
+value after w → w + L.)
 
-    q = p_w / c = n ℏ / (R c)
+The momentum in the w direction is then quantized:
 
-A particle with n = 0 has no momentum in w — it's neutral. A
-particle with n = +1 has one unit of momentum in w — it carries
-charge +e. A particle with n = −1 carries charge −e.
+<!-- p_w = n ℏ / R    where R = L / (2π) -->
+$$
+p_w = \frac{n\,\hbar}{R}, \qquad R = \frac{L}{2\pi}
+$$
 
-The elementary charge is:
+R is the *compact radius* — the radius of the circle if you
+imagine the compact direction as drawn on a cylinder.
 
-    e = ℏ / (R c)
+**The key identification: charge IS quantized momentum in w.** A
+particle's electric charge q is proportional to its w-momentum:
 
-Solving for R:
+- n = 0: no momentum in w → no electric charge → neutral particle.
+- n = +1: one unit of w-momentum → carries elementary charge +e.
+- n = −1: one unit of w-momentum the other way → carries charge −e.
+- n = ±2: would carry charge ±2e (no fundamental particle of pure
+  EM nature has this; in nature only n = 0 and n = ±1 are observed
+  for elementary particles).
 
-    R = ℏ / (e c) ≈ 2 × 10⁻³⁴ m
+The elementary charge is then:
 
-This is extraordinarily small — far below anything we can probe
-experimentally, which is why we don't "see" the extra dimension.
-(The exact value depends on normalization conventions for how
-the metric couples to matter; the order of magnitude is robust.)
+<!-- e = ℏ / (R c) -->
+$$
+e = \frac{\hbar}{R\,c}
+$$
 
+(modulo unit-conversion conventions). Solving for R using the
+known value of e gives R ≈ 2 × 10⁻³⁴ m — extraordinarily small,
+far below anything we can probe experimentally. That smallness is
+why we don't see the compact dimension directly.
 
-## 10. What falls out
+So compactification produces, all at once:
 
-From the 5D Einstein field equations (applied to the 5×5 metric),
-three sets of equations emerge:
+- The discrete spectrum of allowed charge values (charge
+  quantization).
+- The interpretation of charge as a kind of momentum.
+- An explanation for why the extra dimension is hidden from us
+  (it's tiny).
 
-| 5D equations | 4D result |
-|--------------|-----------|
-| Spacetime-spacetime components | Einstein's equations (gravity) |
-| Spacetime-w components | **Maxwell's equations** (electromagnetism) |
-| w-w component | Scalar field equation (dilaton) |
+---
 
-From the 5D geodesic equation (the equation of motion for a free
-particle in 5D), you get:
+## 8. What falls out — equations and quantities
 
-    4D geodesic (gravity) + Lorentz force (electromagnetism)
+When you take the 5D Einstein equations (the equations of motion
+for the 5×5 metric in the presence of stress-energy) and project
+them down to 4D using the three-region split of §3, three sets of
+equations emerge:
+
+| 5D equations component | 4D result |
+|------------------------|-----------|
+| Spacetime-spacetime (g_μν) | Einstein's equations (gravity) |
+| Spacetime-w (g_μ5) | **Maxwell's equations** (electromagnetism) |
+| w-w (g_55) | Scalar field equation (dilaton) |
+
+When you take the 5D geodesic equation (the equation of motion for
+a free particle in 5D) and project it down, you get:
+
+> 4D geodesic (gravity) + Lorentz force (electromagnetism)
 
 A free particle in 5D, which just follows a straight line, looks
 like a charged particle being deflected by electromagnetic fields
-in 4D.
+in 4D. (Appendix A walks through this projection explicitly.)
 
 These results are **exact** — not approximations, analogies, or
-heuristics. They are consequences of the mathematics of the 5×5
-metric. Maxwell's equations are literally the Einstein equations
-applied to the off-diagonal metric components.
+heuristics. They are mathematical consequences of having a 5×5
+metric with the structure of §3. Maxwell's equations are literally
+the Einstein equations applied to the off-diagonal block.
 
-**Summary:**
+**Summary of identifications:**
 
 | Physical concept | KK geometric origin |
 |------------------|---------------------|
 | EM potential A_μ | Off-diagonal metric g_μ5 |
 | Electric charge | Momentum in compact dimension |
 | Charge quantization | Periodicity of compact dimension |
-| Charge conservation | Translation symmetry in w (Noether's theorem) |
+| Charge conservation | Translation symmetry in w (Noether) |
 | Lorentz force | Geodesic equation in 5D |
 | Maxwell's equations | Einstein equations in 5D |
 | Gauge transformation | Coordinate shift in w |
 
+Each of these connections is a precise mathematical statement — the
+KK identification turns each electromagnetic concept into a
+geometric one.
 
-## 11. Charge conservation from symmetry
+---
 
-A powerful result comes from Noether's theorem, which says: every
-continuous symmetry of the physics corresponds to a conserved
+## 9. Charge conservation from symmetry
+
+A particularly elegant consequence comes from **Noether's theorem**:
+every continuous symmetry of the physics corresponds to a conserved
 quantity.
 
 In ordinary 3D space:
-- Translation symmetry in x → momentum p_x is conserved
-- Translation symmetry in y → momentum p_y is conserved
-- Rotation symmetry → angular momentum L is conserved
 
-In KK:
-- Translation symmetry in w → momentum p_w is conserved
-- But p_w is charge
-- Therefore **charge is conserved**
+- Translation symmetry in x → momentum p_x is conserved.
+- Translation symmetry in y → momentum p_y is conserved.
+- Rotation symmetry → angular momentum is conserved.
 
-This is not a separate postulate — it follows from the geometry.
-If the metric doesn't depend on w (the compact dimension "looks
-the same" everywhere along its circumference), then momentum in
-w is conserved, which means charge is conserved.
+Apply the same theorem to the compact direction:
+
+- Translation symmetry in w → momentum p_w is conserved.
+- But p_w **is** electric charge.
+- Therefore **electric charge is conserved**.
+
+This is not a separate postulate — it follows automatically from
+the geometry. If the metric doesn't depend on w (the compact
+dimension "looks the same" everywhere along its circumference),
+then momentum in w is conserved, which means charge is conserved.
 
 This is the same reason momentum is conserved: space looks the
 same at every point (translation symmetry). Charge conservation
 and momentum conservation are the same theorem applied to
 different dimensions.
 
+---
 
-## 12. Geodesics in 5D: where the force comes from
+## 10. Geodesics in 5D: where the force comes from
 
 Consider a particle with momentum p_w = q c in the compact
-direction, moving through a region where A_μ ≠ 0. The 5D
-geodesic equation (shortest path in 5D) produces, when projected
-to 4D:
+direction (i.e., a particle of charge q), moving through a region
+where A_μ ≠ 0. The 5D geodesic equation (shortest path in 5D)
+produces, when projected to 4D:
 
-    (4D acceleration) = (gravitational terms) + q (E + v × B)
+<!-- (4D acceleration) = (gravitational terms) + q (E + v × B) -->
+$$
+\text{(4D acceleration)} = \text{(gravitational terms)} + q\,\bigl(\mathbf{E} + \mathbf{v} \times \mathbf{B}\bigr)
+$$
 
-The second term is the **Lorentz force** — the force on a charge
-q in electric field E and magnetic field B, where v is the
+The second term is the **Lorentz force** — the force on a charge q
+in electric field E and magnetic field B, where v is the
 particle's velocity. This is exact.
 
-The particle isn't being pushed by a force — it's following a
-straight line in 5D. But because the compact dimension is tilted
-by the EM field (A_μ ≠ 0), a "straight line" in 5D projects to
-a curved path in 4D. We interpret that curvature as the effect
-of an electromagnetic force, just as we interpret the curvature
-of an orbit around Earth as the effect of gravitational force.
+The particle isn't being pushed by a force in the 5D picture —
+it's following a straight line (a geodesic) in 5D. But because the
+compact dimension is tilted by the EM field (A_μ ≠ 0), a "straight
+line" in 5D projects to a curved path in 4D. We interpret that
+curvature as the effect of an electromagnetic force, just as we
+interpret the curvature of an orbit around Earth as the effect of
+gravitational force.
 
+Appendix A works through the algebra showing exactly where the
+electromagnetic field tensor F_μν and the Lorentz force appear
+from the 5D Christoffel symbols.
 
-## 13. An analogy: the tilted conveyor belt
+---
+
+## 11. An analogy: the tilted conveyor belt
 
 Imagine a long hallway with a moving floor (like an airport
 walkway), but the walkway runs at an angle to the hallway. The
 floor's velocity field is A(x) — it varies along the hallway.
 
-- A person standing still (p_w = 0, neutral) is not affected by
-  the walkway's angle — they don't move.
+- A person standing still in the walkway direction (p_w = 0,
+  neutral) is not affected by the walkway's angle — they don't
+  move.
 - A person walking in the walkway direction (p_w ≠ 0, charged)
   gets carried sideways by the angle — they experience a force.
 - The faster they walk in the walkway direction (more charge),
   the stronger the sideways deflection.
-- If the walkway angle varies (A changes with position), the
-  deflection varies — this is the electromagnetic field.
+- If the walkway angle varies along the hallway (A changes with
+  position), the deflection varies — this is the electromagnetic
+  field.
 
-This analogy captures the essential mechanism: charge is motion
-in a hidden direction, and the electromagnetic force is a
-geometric consequence of that direction being tilted relative to
-the directions we can see.
+This analogy captures the essential mechanism: charge is motion in
+a hidden direction, and the electromagnetic force is a geometric
+consequence of that direction being tilted relative to the
+directions we can see.
 
+---
 
-## 14. What is established vs. what is hypothetical
+## 12. What is established vs. what is hypothetical
 
 **Established (proven mathematically, not disputed):**
-- The 5D → 4D decomposition is exact
-- Maxwell's equations emerge from the 5D Einstein equations
-- Charge quantization follows from periodicity
-- Geodesics in 5D give the Lorentz force in 4D
-- Noether's theorem gives charge conservation
+
+- The 5D → 4D decomposition is exact.
+- Maxwell's equations emerge from the 5D Einstein equations.
+- Charge quantization follows from periodicity.
+- Geodesics in 5D give the Lorentz force in 4D.
+- Noether's theorem gives charge conservation.
 
 These are mathematical facts — true regardless of whether nature
 actually has compact dimensions.
 
 **Hypothetical (not observed, not disproven):**
-- Whether nature actually has compact extra dimensions
-- The size of any such dimensions
-- Whether the dilaton scalar field exists
+
+- Whether nature actually has compact extra dimensions.
+- The size of any such dimensions.
+- Whether the dilaton scalar field exists.
 
 LHC searches constrain compact dimension sizes to be smaller than
 ~10⁻¹⁹ m. This doesn't rule them out — KK predicts R ~ 10⁻³⁴ m,
 which is far smaller than current experimental reach.
 
 **Known limitations:**
-- The compact radius R is a free parameter. KK doesn't predict
-  its value, and hence doesn't predict the value of e (or α).
+
+- The compact radius R is a free parameter. KK doesn't predict its
+  value, and hence doesn't predict the value of e (or α).
 - Simple KK (one compact dimension) only produces U(1) gauge
   symmetry — electromagnetism. The strong force (SU(3)) and weak
   force (SU(2)) require additional compact dimensions with more
@@ -479,15 +603,16 @@ which is far smaller than current experimental reach.
 - KK predicts a scalar field (dilaton) from g₅₅. This field has
   not been observed.
 
+---
 
-## 15. The essential insight
+## 13. The essential insight
 
 Kaluza-Klein theory says:
 
 > **Electromagnetism is what gravity looks like when there is a
 > small, compact extra dimension.**
 
-The electromagnetic field is the shape of the extra dimension. 
+The electromagnetic field is the shape of the extra dimension.
 Charge is momentum in the extra dimension. The force on a charged
 particle is the curvature of the shortest path through the extra
 dimension. All of electromagnetism — fields, forces, charge
@@ -503,7 +628,7 @@ can be formulated precisely.
 
 ## Appendix A: Deriving the Lorentz force from the 5D metric
 
-Sections 7–12 stated that the electromagnetic field tensor and the
+Sections 7–10 stated that the electromagnetic field tensor and the
 Lorentz force *emerge* from the 5D geodesic equation. This appendix
 shows the algebra explicitly.
 
@@ -512,10 +637,10 @@ the Lorentz force on a charged particle, obtained by projecting the
 5D geodesic equation into 4D spacetime. It does **not** cover:
 
 - The derivation of Maxwell's equations from the 5D Einstein
-  equations (a much longer calculation involving the 5D Ricci tensor)
+  equations (a much longer calculation involving the 5D Ricci tensor).
 - Klein's quantization of charge from compactification (covered
-  conceptually in §9 of the main text)
-- The dilaton field equation from the g₅₅ component
+  conceptually in §7 of the main text).
+- The dilaton field equation from the g₅₅ component.
 
 Our goal is to show, with full algebra, exactly where the
 electromagnetic field tensor F_ab arises from the 5D metric, and
