@@ -557,9 +557,44 @@ S-propagation," which corresponds to a particle at rest (we will
 make this identification properly in §6).
 
 #### The full mode
-<!--EC You haven't made a case for what we are putting the piecses together.  Why are we combining X and T?  Presumably, because that is what a "wave function" is in spacetime?  We want to be able to predict energy, wave fronts, what?  And remind the reader that our three functions go together my multiplying. -->
-Putting all three pieces together, a single product-form solution
-of the wave equation is:
+
+We have three single-coordinate functions: T(t), X(S), and U(u).
+Each one alone tells us only how the field varies in *one*
+direction. The original ansatz from §1 was that the field is the
+product of the three:
+
+<!-- φ(t, S, u) = T(t) · X(S) · U(u) -->
+$$
+\varphi(t, S, u) = T(t) \cdot X(S) \cdot U(u)
+$$
+
+So the natural next step is to multiply the three solutions
+together — that is what the ansatz commits us to.
+
+Why do we want the multiplied form? Because the multiplied form
+*is* what we mean by "the field" — its value at any point of M.
+Without combining the three, we have a recipe for how φ varies in
+each coordinate separately, but we cannot yet evaluate φ(t, S, u)
+at any specific point.
+
+The combined form lets us answer concrete questions like:
+
+- **Wavefront geometry.** Where in the manifold M does φ have the
+  same value? (This is what "constant-phase surfaces" means and
+  is the key to visualizing the wave.)
+- **Time evolution.** How does the wave at a fixed (S, u) location
+  change as t advances?
+- **Spatial structure.** What does a snapshot of the wave look
+  like at a fixed t?
+- **Energy and momentum.** Which combinations of derivatives carry
+  energy? Which carry momentum? (We'll need these in §§5–6 to
+  identify mass.)
+
+None of these can be answered from T, X, U alone. The product is
+the wave; the factored pieces are just the way the wave's
+coordinate-dependence happens to factor.
+
+A single product-form solution of the wave equation is therefore:
 
 <!-- φ_(n, k_S, ω, signs) = e^(±i k_S S) · e^(±i ω t) · e^(i n u / R_u) -->
 $$
@@ -614,13 +649,52 @@ mode of fixed n looks like a *helical wavefront* in (S, u, t)
 space — a constant-phase surface that winds n times around u as it
 advances along S, and shifts in time at rate ω.
 
-#### Answering your three intuitions
+#### A first picture of the modes
 
-| Your reading | Verdict |
+The figure below shows the real part of φ at a fixed time t = 0,
+plotted on the (S, u) face of the manifold, for three example
+modes. The compact direction u is drawn as the unrolled vertical
+strip from u = 0 to u = L_u; the dashed horizontal lines mark where
+u wraps back on itself.
+
+![Three example wave modes on the manifold M](figures/wave-modes.png)
+
+Reading the three panels:
+
+- **Left (n = 0, k_S ≠ 0).** The wave has no u-structure — its
+  value depends only on S. Vertical bands of red and blue mark
+  successive crests and troughs along S. As t advances, these
+  bands slide along S at speed c. This is the picture of
+  ordinary light propagating along the spatial direction.
+
+- **Middle (n = 1, k_S = 0).** The wave has no S-structure — its
+  value depends only on u. Horizontal bands mark crests and
+  troughs around the compact direction. Going up and around (u
+  increases by L_u and wraps), the wave completes exactly one
+  full cycle. As t advances, the colors at any fixed point
+  oscillate in time, but the band pattern doesn't slide along S.
+  This is the picture of a "particle at rest" — to be made
+  precise in §6.
+
+- **Right (n = 1, k_S ≠ 0).** The wave has structure in both
+  directions. Bands tilt diagonally — they move along S as t
+  advances, and they wind around u at the same time. When the
+  flat strip is conceptually rolled back into a cylinder, these
+  diagonal bands become a *helical* wavefront. This is the
+  picture of a moving massive object: motion along S combined
+  with the closed u-cycle that makes it massive.
+
+(Source: [`figures/wave-modes.py`](figures/wave-modes.py). The
+script can be re-run to regenerate the image, or modified to plot
+other (n, k_S) combinations.)
+
+#### Three things to take away
+
+| Claim | Meaning |
 |---|---|
-| "Harmonic oscillator in S means a wave-shape in S" | Confirmed: X(S) is sinusoidal in space, wavelength 2π/k_S |
-| "U-oscillator is a standing wave" | Confirmed (it is a closed wave on u; whether you call it standing or traveling is a basis choice — both views are valid) |
-| "T(t) is the frequency of the light" | Confirmed: T(t) oscillates at angular frequency ω; T(t) and the time-frequency are the same object |
+| "Harmonic oscillator in S" means *a wave-shape in S* | X(S) is sinusoidal in space, with wavelength 2π/k_S |
+| The u-oscillator is a *closed wave* on the circle | Whether one describes it as standing or traveling is a basis choice; both views are valid descriptions of the same field |
+| T(t) is the *frequency-of-oscillation in time* | T(t) oscillates at angular frequency ω; T(t) and the temporal frequency are the same object |
 
 #### What §3 establishes
 
