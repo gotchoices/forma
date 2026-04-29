@@ -3,7 +3,7 @@
 **Status:** Bare outline. Each section is one sentence describing
 the work that section will perform. To be filled out once the
 outline is approved.
-
+<!--EC get rid of outline notes -->
 [Chapter 1](01-foundation.md) posited a bare diagonal metric on M
 as the *starting* condition, with the understanding (Chapter 1 §3)
 that whether the metric stays diagonal is an open question.
@@ -79,6 +79,8 @@ Summarize what the math says. Three possibilities (matching
 the diagonal metric is fully consistent; some off-diagonals or
 position dependence are forced; or the constraint is more
 elaborate than either case anticipated.
+
+<!--EC Will there emerge a gravitational field on M?  Does this imply cross terms to produce the field? -->
 
 ### 7. End of Chapter 4
 
