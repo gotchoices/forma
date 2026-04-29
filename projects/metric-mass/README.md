@@ -97,8 +97,11 @@ mass.
    minimal manifold, metric, and wave field on which the rest of
    the project rests.
 2. [02-mass-from-u.md](02-mass-from-u.md) — Solve the wave equation
-   on M. Outline currently in place; full chapter to be filled out
-   from that outline.
+   on M. Derive the mode structure (a separable family labeled by
+   integer n and continuous k_S), the dispersion relation, and the
+   discrete rest-mass spectrum m_n = ℏ\|n\|/(R_u c). Includes the
+   inertial proof that the candidate mass behaves operationally as
+   inertial mass via p_S = m_n · v_g in the slow-motion limit.
 
 ### Tentative downstream arc
 
@@ -107,14 +110,25 @@ The project is allowed to redirect based on what each chapter's
 math actually reveals. None of these is asserting an answer —
 they are framing questions to be examined.
 
-3. **Visualization of the solutions.** Render the modes found in
-   chapter 2 as helices / standing waves on the (S, u, t) Cartesian
-   embedding. Build intuition for what the field looks like at
-   different mode numbers and motion states.
-4. **Self-consistency of the bare metric.** Examine more carefully
-   whether the diagonal-and-constant metric of chapter 1 remains
-   internally consistent with the solutions chapter 2 produced —
-   or whether the solutions force any modification.
+3. [03-examining-the-modes.md](03-examining-the-modes.md) —
+   *Examining the modes.* Take the n = 0 and n ≠ 0 mode families
+   separately. Confirm the n = 0 mode behaves exactly like
+   ordinary light. Work out the shape of the n ≠ 0 modes in
+   (t, S, u) space — specifically, how the wave packet's
+   straight worldline along S combines with the wave's u-winding
+   to produce a *helical phase contour* threading through the
+   manifold. (The helix lives in the wave's phase structure, not
+   in the particle's spatial path; this distinction is what
+   keeps mass cleanly separate from charge.) Includes a section
+   examining what the *sign* of n carries physically: in
+   standard KK with compact momentum read as charge, ±n gives
+   the matter/antimatter distinction; what is the analog in our
+   mass-only setup? Visualization figures belong here.
+4. [04-metric-self-consistency.md](04-metric-self-consistency.md) —
+   *Self-consistency of the bare metric.* Examine whether the
+   diagonal-and-constant metric of chapter 1 remains internally
+   consistent with the solutions chapter 2 produced — or whether
+   the solutions force any modification.
 5. **Position-dependent g_uu.** If chapter 4 reveals tension, one
    natural relaxation is letting g_uu become a function of S
    (the "dilaton-style" possibility from §3 of the foundation).
@@ -122,7 +136,7 @@ they are framing questions to be examined.
 6. **Off-diagonal terms.** Examine whether any g_tu, g_Su cross
    term is forced or admitted by the solutions, and what physical
    meaning such a term would carry on this minimal manifold.
-7. **Closing summary.** Whatever chapter 4–6 reveal, restate the
+7. **Closing summary.** Whatever chapters 4–6 reveal, restate the
    project's findings in plain language: what the math actually
    established, and what it left open for follow-up projects
    (charge, sheets, gravity).

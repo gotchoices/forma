@@ -1532,48 +1532,28 @@ What §6 has *not* asserted:
   spin, or interactions (those are deferred to other projects, as
   noted in the chapter-1 non-assumptions).
 
-The next two sections look at the two qualitatively different
-families separately:
-
-- **§7** examines the n = 0 mode in detail and confirms it
-  behaves exactly like ordinary light (massless, propagates at c
-  in both phase and group velocities, no rest energy).
-- **§8** examines the n ≠ 0 modes in detail and works out what
-  shape they take in (t, S, u) space — specifically, how the
-  combination of S-propagation and u-winding produces the helical
-  worldlines that visualize a moving massive object on M.
-
-After those two sections, §9 asks whether the bare diagonal metric
-of Chapter 1 remains consistent with the existence of these massive
-modes, or whether anything we have derived forces the metric to be
-modified.
-
-### 7. The lowest u-mode
-
-Examine what kind of object the lowest-mode case is, and check
-whether it is consistent with a massless object propagating along
-S.
-
-### 8. Higher u-modes
-
-Examine what kind of object the higher-mode cases are, and derive
-the form of any rest energy that appears.
-
-### 9. Self-consistency of the bare metric
-
-Verify whether the solutions we have found respect the
-diagonal-and-constant metric of Chapter 1, or whether they force
-any modification.
-
-### 10. Summary of what we derived
-
-List, in plain language, what the math actually establishes — and
-what questions remain open for later chapters.
-
 ---
 
-## What's next
+## End of Chapter 2
 
-After Chapter 2, the natural follow-ups depend on what the
-self-consistency check (§9) reveals. See the project README for
-the tentative downstream chapter arc.
+The chapter set out to solve the wave equation on M and let the
+math say what it said. What it said:
+
+1. The wave equation admits a separable family of solutions, one
+   per (n, k_S) pair, with n ∈ ℤ and k_S ∈ ℝ.
+2. Periodicity on u forces n to be an integer.
+3. The dispersion relation ω² = c²k_S² + c²(n/R_u)² ties the
+   mode constants together.
+4. Translated to physical quantities via E = ℏω and p = ℏk, the
+   dispersion relation reads E² = c²p_S² + c²p_u².
+5. Comparison with the relativistic identity E² = (pc)² + (mc²)²
+   identifies a candidate mass m_n = ℏ|n|/(R_u c). The candidate
+   is verified inertially: p_S = m_n · v_g in the slow-motion
+   limit. Mass is established.
+
+The central question of the chapter — *can mass arise from light
+alone on a minimal manifold?* — has been answered affirmatively,
+with a discrete spectrum and an inertial proof.
+
+For the next chapter and the rest of the project arc, see the
+project [README's table of contents](README.md#chapters).
