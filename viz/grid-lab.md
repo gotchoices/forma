@@ -28,8 +28,9 @@ We will build simple structures from scratch that can evolve from 1 to 2 to 3 di
 ## Clock
 - There is a master clock that displays as 0 or 1
 - It is controllable by single (half) stepping or with a run/stop button and a settable speed control
-- There are two clock edges: 0-1 (inhale)
-- There are two clock edges: 1-0 (exhale)
+- There are two clock edges:
+  - 0→1 (exhale, yang): information flows outward from nodes to edges
+  - 1→0 (inhale, yin): nodes gather information from their edges
 
 ## Update rules
 Each type of primitive has its own local update rule.  
@@ -53,6 +54,22 @@ Edge
 
 Coupling value
 In the version 1, the individual coupling constant will not be used.  Later, it will become a function of the bending angle between primitives.  Keep it stubbed in, but do not consider it yet in the calculation.
+
+## Version 2 Update rules
+
+Yee-style additive coupling.  Each update *adds* a contribution from neighbors to the primitive's current value rather than replacing it.  Combined with the staggered geometry — nodes at integer positions, edges between them — this yields stable, linear wave propagation: a perturbation travels along the array in a definite direction, and two perturbations launched from opposite ends pass through each other without disrupting each other.
+
+Node:
+- On inhale, my next value is my current value plus the sum of:
+  - Each connected edge's value, times cos(phi) where phi is the angle where the edge connects to the node, divided by the translation factor k.  As an example, a node currently at phase 10, connected by two edges (left at -x, phi=0, value 3; right at +x, phi=180°, value 2), becomes 10 + (3 − 2)/k.
+- On exhale, do nothing.
+
+Edge
+- On inhale, do nothing.
+- On exhale, my next value is my current value plus k times (the value of my head node − the value of my tail node).  As an example, an edge currently at value 4, running from node A (tail, phase 30) to node B (head, phase 50), becomes 4 + k·(50 − 30) = 4 + 20·k.
+
+Coupling value
+Same stub as v1 — present in state, defaulting to 1, not yet used in the calculation.  When activated it will modulate the per-edge contribution as a function of the bending angle between primitives.
 
 ## Primitive scaling
 To translate values between primitives (edges and nodes), including a global translation value that is settable.  Default = 1.  This translates magnitudes to angles and vice versa.  Node phase is derived by dividing the sum of its inputs by the translation factor.  Edges multiply to get their value.  This is uniform across update versions.

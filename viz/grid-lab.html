@@ -28,9 +28,11 @@
 }
 #popup .row { display: flex; gap: 4px; margin-top: 5px; justify-content: flex-end; }
 #clock-display {
-  display: inline-block; min-width: 14px; text-align: center;
-  font-weight: 700; font-size: 14px; color: var(--accent);
-  font-family: monospace;
+  display: inline-block; min-width: 32px; text-align: center;
+  font-weight: 700; font-size: 22px; color: var(--accent);
+  font-family: monospace; padding: 1px 10px; line-height: 1.15;
+  border: 1px solid var(--accent); border-radius: 5px;
+  background: rgba(79,195,247,0.08);
 }
 #hint {
   position: absolute; top: 8px; left: 14px;
@@ -87,6 +89,13 @@
   </div>
   <div class="cg tog"><label><input type="checkbox" id="cb-accum"> Accumulate</label></div>
   <div class="cg">
+    <label>Rule</label>
+    <select id="sel-rule">
+      <option value="1">v1 (replace)</option>
+      <option value="2">v2 (Yee)</option>
+    </select>
+  </div>
+  <div class="cg">
     <label>k</label>
     <input type="range" id="sl-k" min="0.05" max="5" step="0.05" value="1">
     <span class="val" id="v-k">1.00</span>
@@ -95,15 +104,12 @@
   <div class="sep"></div>
 
   <button class="btn" id="btn-step" title="Advance one half-step">Step ½</button>
+  <span id="clock-display" title="Master clock (0 or 1)">0</span>
   <button class="btn" id="btn-run">▶ Run</button>
   <div class="cg">
     <label>Speed</label>
     <input type="range" id="sl-speed" min="0.5" max="20" step="0.5" value="2">
     <span class="val" id="v-speed">2.0</span>
-  </div>
-  <div class="cg">
-    <label>Clock</label>
-    <span id="clock-display">0</span>
   </div>
 
   <div class="sep"></div>
@@ -171,8 +177,8 @@ const DEFAULT = {
   units: 'deg',         // 'deg' | 'rad'
   accumMode: false,     // false = wrap node phase to one period
   k: 1.0,               // primitive scaling (translation factor)
-  coupling: 1.0,        // stubbed (v1 ignores)
-  ruleVersion: 1,
+  coupling: 1.0,        // stubbed (v1/v2 ignore)
+  ruleVersion: 2,       // 1 = replacement (v1), 2 = Yee additive (v2)
   speed: 2.0,
   heatRange: 5.0,
   autoScale: false,
@@ -465,10 +471,11 @@ function applyLabelVisibility() {
 
 /* ── Update rules (v1) ─────────────────────────────────── */
 
-// Nodes: on inhale (clock 0→1), each node's next phase =
-//   (sum of cos(phi_e) · edge_value_e for connected edges) / k.
-// In v1 layout, every node has prev edge at phi=0 (cos=1) and next edge
-// at phi=π (cos=-1).
+// Nodes: on inhale (clock 1→0, yin — nodes gather), each node's next phase
+// is the cosine-weighted sum of its connected edge values, divided by k.
+// In v1 the result REPLACES the current phase; in v2 (Yee) it is ADDED to
+// the current phase.  Either way, every node has prev edge at phi=0 (cos=1)
+// and next edge at phi=π (cos=-1) in our 1D layout.
 function applyNodeRule() {
   const N = S.N;
   const M = S.wrap ? N : N - 1;
@@ -487,32 +494,40 @@ function applyNodeRule() {
     } else if (i < N - 1) {
       sum += S.edgeMags[i] * -1.0;
     }
-    next[i] = wrapPhase(sum / Math.max(1e-9, S.k));
+    const inc = sum / Math.max(1e-9, S.k);
+    const v = (S.ruleVersion === 2) ? S.nodePhases[i] + inc : inc;
+    next[i] = wrapPhase(v);
   }
   S.nodePhases = next;
 }
 
-// Edges: on exhale (clock 1→0), each edge's next value = (phase_a + phase_b) · k.
+// Edges: on exhale (clock 0→1, yang — info flows out).
+// v1: next = (tail_phase + head_phase) · k                    (replace, summing)
+// v2: next = current + (head_phase − tail_phase) · k          (Yee additive, directional)
 function applyEdgeRule() {
   const N = S.N;
   const M = S.wrap ? N : N - 1;
   const next = new Array(M).fill(0);
   for (let i = 0; i < M; i++) {
-    const a = i;
-    const b = (i + 1) % N;
-    next[i] = (S.nodePhases[a] + S.nodePhases[b]) * S.k;
+    const tail = i;
+    const head = (i + 1) % N;
+    if (S.ruleVersion === 2) {
+      next[i] = S.edgeMags[i] + (S.nodePhases[head] - S.nodePhases[tail]) * S.k;
+    } else {
+      next[i] = (S.nodePhases[tail] + S.nodePhases[head]) * S.k;
+    }
   }
   S.edgeMags = next;
 }
 
 function halfStep() {
   if (clockState === 0) {
-    // Rising edge 0→1: inhale → node rule
-    applyNodeRule();
+    // Rising edge 0→1: exhale (yang) → edges absorb node phases
+    applyEdgeRule();
     clockState = 1;
   } else {
-    // Falling edge 1→0: exhale → edge rule
-    applyEdgeRule();
+    // Falling edge 1→0: inhale (yin) → nodes gather from edges
+    applyNodeRule();
     clockState = 0;
   }
   $('clock-display').textContent = clockState;
@@ -649,6 +664,7 @@ function updateInfo() {
   const M = S.wrap ? S.N : S.N - 1;
   $('info').textContent =
     `mode: ${S.wrap ? 'ring' : '1D'} · N=${S.N} · edges=${M}` +
+    ` · rule: v${S.ruleVersion}` +
     ` · units: ${S.units}` +
     ` · k=${S.k.toFixed(2)}` +
     ` · accum: ${S.accumMode ? 'on' : 'off'}` +
@@ -717,6 +733,7 @@ function syncControls() {
   $('sl-heat').value   = S.heatRange; $('v-heat').textContent = S.heatRange.toFixed(1);
   $('cb-auto').checked = S.autoScale;
   $('cb-labels').checked = S.showLabels;
+  $('sel-rule').value  = String(S.ruleVersion);
   $('clock-display').textContent = clockState;
 }
 
@@ -759,6 +776,10 @@ $('sel-units').onchange = e => {
   // converting between units changes the numeric meaning of stored phases.
   // simplest: leave numbers alone; user adjusts as needed.
   S.units = e.target.value; applyValues(); updateInfo(); saveState();
+};
+$('sel-rule').onchange = e => {
+  S.ruleVersion = parseInt(e.target.value, 10);
+  updateInfo(); saveState();
 };
 $('cb-accum').onchange = e => {
   S.accumMode = e.target.checked;
