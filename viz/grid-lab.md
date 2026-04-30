@@ -21,7 +21,7 @@ We will build simple structures from scratch that can evolve from 1 to 2 to 3 di
 - To build a linear array of primitives, we repeat the node-edge-node-edge-node along an axis
 - Each node has an angular orientation where (for a 1D array) 0 points in the -x direction.  So each new node connected to the array connects to the previous edge at its own 0 point.  The 180 degree point (+x direction) will be where the next edge will connect to this node.
 - Likewise, each edge has a directional orientation, a tail and a head.  In the 1D case, each edge has its tail in -x and its head in +x (connecting to each new node).
-- A 1D linear array can be wrapped into a circle, making it periodic.  This is done by forming a circular array in xy.  A single node will be centered at the origin and flat in xz.  The nodes that connect to it will be rotated slightly in y to go to the next node.  This will form a circle of nodes and lines where the normals of the node circles point out radially from a cennter point.
+- A 1D linear array can be wrapped into a circle, making it periodic — picture a ferris wheel with its axle along z.  The wrap circle lies in the xy plane, centered at the origin, with nodes spaced around its rim at the wheel's radius (derived from the array length).  Going from one node to the next is a small rotation about the z axis.  Each node circle reorients so its normal points radially outward from the axle, and edges curve along the rim, tangent to the wheel.
 - The controls allow one to build a linear array with a specified number of nodes.
 - The controls also allow selectively to wrap the array into a circle.  The diameter/radious of the circle is derived by the number of primitives in the array.
 
@@ -62,8 +62,10 @@ Each edge should be rendered as a heatmap or color.  A global setting can determ
 
 Each node should be a uniform color but have a bright dot to indicate its current phase.  The dot is positioned over the correct location on the circle.  In cumulative mode, the base color of the node circle will change color according to scale (i.e. 0-360 is neutral, 361-720 is hotter, -360-0 is cooler).
 
+In addition to graphical rendering, each primitive shall be able to display a numeric value.  These should be legible at a single font regardless of zoom value and display in proximity, to the primitive and always right-side-up regardless of the primitive's rotation.  Near center of mass for each primitive is a good place for the numeric display, slightly elevated in y for edges (so it isn't buried in the edge thickness).  Numeric display may be turned on/off globally.
+
 ## Initial Conditions
 The user can click on a primitive to set its value.  A small popup box will accept the value and write it in.  There is also a global clear button to reset all values to zero.  In later iterations, we will have functions for injecting wave functions.
 
 ## MVP
-For first iteration, we should be able to build the 1D array of specified length and optionall wrap it into y.  Further, higher degrees will be deferred for now.
+For first iteration, we should be able to build the 1D array of specified length and optionally wrap it into a ring (ferris-wheel orientation).  Further, higher degrees will be deferred for now.

@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Grid Lab — totu viz</title>
+<link rel="stylesheet" href="totu-viz.css">
+<style>
+.cg input[type=number] {
+  width: 46px; padding: 1px 4px; background: var(--btn-bg);
+  border: 1px solid var(--btn-border); color: var(--text); border-radius: 3px;
+  font-size: 11px;
+}
+.cg select {
+  background: var(--btn-bg); border: 1px solid var(--btn-border); color: var(--text);
+  font-size: 11px; padding: 1px 4px; border-radius: 3px;
+}
+#popup {
+  position: absolute; background: var(--surface); border: 1px solid var(--accent);
+  border-radius: 6px; padding: 8px 10px; z-index: 50; min-width: 130px;
+  font-size: 11px; color: var(--text); display: none;
+  backdrop-filter: blur(6px); box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+#popup .lbl { display: block; color: var(--muted); margin-bottom: 4px; font-size: 10px; }
+#popup input {
+  width: 100%; padding: 3px 5px; background: var(--btn-bg);
+  border: 1px solid var(--btn-border); color: var(--text); border-radius: 3px;
+  font-size: 11px; font-family: monospace;
+}
+#popup .row { display: flex; gap: 4px; margin-top: 5px; justify-content: flex-end; }
+#clock-display {
+  display: inline-block; min-width: 14px; text-align: center;
+  font-weight: 700; font-size: 14px; color: var(--accent);
+  font-family: monospace;
+}
+#hint {
+  position: absolute; top: 8px; left: 14px;
+  font: 10.5px/1.4 monospace; color: #555; pointer-events: none;
+  background: rgba(10,10,18,0.5); padding: 2px 6px; border-radius: 3px;
+}
+.info-line { color: #666; }
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <h1>Grid Lab</h1><div class="sep"></div>
+
+  <div class="cg">
+    <label>N</label>
+    <input type="number" id="in-N" min="2" max="64" step="1" value="6">
+  </div>
+  <div class="cg tog"><label><input type="checkbox" id="cb-wrap"> Wrap (ring)</label></div>
+
+  <div class="sep"></div>
+
+  <div class="cg">
+    <label>Diam</label>
+    <input type="range" id="sl-diam" min="0.1" max="2" step="0.05" value="0.6">
+    <span class="val" id="v-diam">0.60</span>
+  </div>
+  <div class="cg">
+    <label>Edge</label>
+    <input type="range" id="sl-edge" min="0.1" max="3" step="0.05" value="1.0">
+    <span class="val" id="v-edge">1.00</span>
+  </div>
+
+  <div class="sep"></div>
+
+  <div class="cg">
+    <label>Units</label>
+    <select id="sel-units">
+      <option value="deg">deg</option>
+      <option value="rad">rad</option>
+    </select>
+  </div>
+  <div class="cg tog"><label><input type="checkbox" id="cb-accum"> Accumulate</label></div>
+  <div class="cg">
+    <label>k</label>
+    <input type="range" id="sl-k" min="0.05" max="5" step="0.05" value="1">
+    <span class="val" id="v-k">1.00</span>
+  </div>
+
+  <div class="sep"></div>
+
+  <button class="btn" id="btn-step" title="Advance one half-step">Step ½</button>
+  <button class="btn" id="btn-run">▶ Run</button>
+  <div class="cg">
+    <label>Speed</label>
+    <input type="range" id="sl-speed" min="0.5" max="20" step="0.5" value="2">
+    <span class="val" id="v-speed">2.0</span>
+  </div>
+  <div class="cg">
+    <label>Clock</label>
+    <span id="clock-display">0</span>
+  </div>
+
+  <div class="sep"></div>
+
+  <div class="cg">
+    <label>Heat ±</label>
+    <input type="range" id="sl-heat" min="0.5" max="50" step="0.5" value="5">
+    <span class="val" id="v-heat">5.0</span>
+  </div>
+  <div class="cg tog"><label><input type="checkbox" id="cb-auto"> Auto</label></div>
+
+  <div class="sep"></div>
+
+  <button class="btn" id="btn-clear" title="Reset all values to zero">Clear</button>
+  <button class="btn" id="btn-fit" title="Fit camera to graph">Fit</button>
+
+  <div class="sep"></div>
+
+  <div class="cg">
+    <label>Profile</label>
+    <select id="sel-prof"><option value="">—</option></select>
+  </div>
+  <button class="btn" id="btn-save" title="Save current state under a name">Save…</button>
+  <button class="btn" id="btn-del" title="Delete selected profile">Delete</button>
+</div>
+
+<div class="view-full" id="view">
+  <div id="hint">click a node or edge to set its value</div>
+  <div id="popup">
+    <span class="lbl" id="pop-label">Value</span>
+    <input type="text" id="pop-input" autocomplete="off">
+    <div class="row">
+      <button class="btn" id="pop-cancel">Cancel</button>
+      <button class="btn on" id="pop-ok">OK</button>
+    </div>
+  </div>
+  <div class="info-line" id="info"></div>
+</div>
+
+<script type="importmap">
+{"imports":{
+  "three":"https://cdn.jsdelivr.net/npm/three@0.163.0/build/three.module.js",
+  "three/addons/":"https://cdn.jsdelivr.net/npm/three@0.163.0/examples/jsm/"
+}}
+</script>
+<script type="module">
+import { THREE, createScene, autoResize, animLoop, PALETTE } from './totu-viz.js';
+
+const $ = id => document.getElementById(id);
+const TAU = Math.PI * 2;
+const RAD = Math.PI / 180;
+
+const STATE_KEY  = 'grid-lab-state';
+const PROF_KEY   = 'grid-lab-profiles';
+
+/* ── State ─────────────────────────────────────────────── */
+
+const DEFAULT = {
+  N: 6,
+  wrap: false,
+  nodeDiam: 0.6,
+  edgeLen: 1.0,
+  units: 'deg',         // 'deg' | 'rad'
+  accumMode: false,     // false = wrap node phase to one period
+  k: 1.0,               // primitive scaling (translation factor)
+  coupling: 1.0,        // stubbed (v1 ignores)
+  ruleVersion: 1,
+  speed: 2.0,
+  heatRange: 5.0,
+  autoScale: false,
+};
+
+function defaultArrays(N, wrap) {
+  return {
+    nodePhases: Array(N).fill(0),
+    edgeMags:   Array(wrap ? N : N - 1).fill(0),
+  };
+}
+
+function loadState() {
+  let s;
+  try {
+    const raw = localStorage.getItem(STATE_KEY);
+    s = raw ? { ...DEFAULT, ...JSON.parse(raw) } : { ...DEFAULT };
+  } catch { s = { ...DEFAULT }; }
+  const need = defaultArrays(s.N, s.wrap);
+  if (!Array.isArray(s.nodePhases) || s.nodePhases.length !== need.nodePhases.length)
+    s.nodePhases = need.nodePhases;
+  if (!Array.isArray(s.edgeMags) || s.edgeMags.length !== need.edgeMags.length)
+    s.edgeMags = need.edgeMags;
+  return s;
+}
+function saveState() { localStorage.setItem(STATE_KEY, JSON.stringify(S)); }
+
+function loadProfiles() {
+  try { return JSON.parse(localStorage.getItem(PROF_KEY) || '{}'); }
+  catch { return {}; }
+}
+function saveProfiles(p) { localStorage.setItem(PROF_KEY, JSON.stringify(p)); }
+
+let S = loadState();
+let clockState = 0;
+let running = false;
+let runTimer = null;
+
+/* ── Scene ─────────────────────────────────────────────── */
+
+const view = $('view');
+const { scene, camera, renderer, controls } = createScene(view, {
+  camPos: [0, 2.5, 6],
+});
+autoResize(renderer, camera, view);
+controls.target.set(0, 0, 0);
+
+const graphGroup = new THREE.Group();
+scene.add(graphGroup);
+
+const nodes = []; // { group, ringMat, dot, pos, localX, localY, localZ }
+const edges = []; // { mesh, mat, a, b }
+
+const RING_TUBE = 0.035;     // tube radius for the rim torus
+const EDGE_TUBE = 0.05;      // edge cylinder radius
+const DOT_R     = 0.07;      // phase dot radius
+
+const dotMat   = new THREE.MeshBasicMaterial({ color: 0xfff2a0 });
+const dotGeo   = new THREE.SphereGeometry(DOT_R, 14, 10);
+
+/* ── Color helpers ─────────────────────────────────────── */
+
+const COLD = [0.10, 0.55, 1.00];
+const NEUT = [0.40, 0.40, 0.45];
+const HOT  = [1.00, 0.35, 0.10];
+
+function heatColor(val, range) {
+  const t = Math.max(-1, Math.min(1, val / range));
+  const tgt = t >= 0 ? HOT : COLD;
+  const a = Math.abs(t);
+  return new THREE.Color(
+    NEUT[0] + (tgt[0] - NEUT[0]) * a,
+    NEUT[1] + (tgt[1] - NEUT[1]) * a,
+    NEUT[2] + (tgt[2] - NEUT[2]) * a,
+  );
+}
+
+// Base node color: neutral gray, shifted hot/cool by accumulate-mode wrap count.
+function nodeBaseColor(phase) {
+  if (!S.accumMode) return new THREE.Color(0.30, 0.30, 0.36);
+  const fullTurn = S.units === 'deg' ? 360 : TAU;
+  const wraps = Math.floor(phase / fullTurn);
+  if (wraps === 0) return new THREE.Color(0.30, 0.30, 0.36);
+  const sign = Math.sign(wraps);
+  const mag  = Math.min(Math.abs(wraps), 5) / 5;
+  if (sign > 0) {
+    return new THREE.Color(0.30 + mag * 0.65, 0.30 - mag * 0.10, 0.36 - mag * 0.20);
+  } else {
+    return new THREE.Color(0.30 - mag * 0.10, 0.30 + mag * 0.25, 0.36 + mag * 0.55);
+  }
+}
+
+/* ── Geometry layout ───────────────────────────────────── */
+
+function nodeFrame1D(i) {
+  const r = S.nodeDiam / 2;
+  const step = S.nodeDiam + S.edgeLen;
+  const x = (i - (S.N - 1) / 2) * step;
+  return {
+    pos:    new THREE.Vector3(x, 0, 0),
+    localX: new THREE.Vector3(1, 0, 0),
+    localY: new THREE.Vector3(0, 0, -1),
+    localZ: new THREE.Vector3(0, 1, 0),
+    r,
+  };
+}
+
+function nodeFrameRing(i) {
+  const r = S.nodeDiam / 2;
+  // Place N nodes equally spaced on a wheel in xy plane (axle z).
+  // Chord between adjacent rim points = nodeDiam + edgeLen.
+  const chord = S.nodeDiam + S.edgeLen;
+  const R = chord / (2 * Math.sin(Math.PI / S.N));
+  const theta = i * TAU / S.N;
+  const c = Math.cos(theta), s = Math.sin(theta);
+  return {
+    pos:    new THREE.Vector3(R * c, R * s, 0),
+    localX: new THREE.Vector3(-s, c, 0),     // tangent toward next node
+    localY: new THREE.Vector3(0, 0, 1),      // axle
+    localZ: new THREE.Vector3(c, s, 0),      // radial outward (disk normal)
+    r,
+  };
+}
+
+function nodeFrame(i) { return S.wrap ? nodeFrameRing(i) : nodeFrame1D(i); }
+
+// Phase dot offset in node-local coords.  phi=0 → -localX (where prev edge enters);
+// phi=π → +localX (where next edge enters).  CCW when viewed from +localZ.
+function dotOffset(phi, r) {
+  return new THREE.Vector3(-r * Math.cos(phi), r * Math.sin(phi), 0);
+}
+
+// Convert phase value (in user units) to radians.
+function phiRad(phase) {
+  return S.units === 'deg' ? phase * RAD : phase;
+}
+
+/* ── Build / rebuild ───────────────────────────────────── */
+
+function clearGraph() {
+  graphGroup.clear();
+  for (const n of nodes) { n.ringMat.dispose(); }
+  for (const e of edges) { e.mat.dispose(); e.mesh.geometry.dispose(); }
+  nodes.length = 0;
+  edges.length = 0;
+}
+
+function buildGraph() {
+  clearGraph();
+
+  // Nodes
+  for (let i = 0; i < S.N; i++) {
+    const f = nodeFrame(i);
+    const group = new THREE.Group();
+    group.position.copy(f.pos);
+    group.quaternion.setFromRotationMatrix(
+      new THREE.Matrix4().makeBasis(f.localX, f.localY, f.localZ)
+    );
+
+    const ringGeo = new THREE.TorusGeometry(f.r, RING_TUBE, 8, 48);
+    const ringMat = new THREE.MeshStandardMaterial({
+      color: 0x505060, roughness: 0.6, metalness: 0.1,
+    });
+    const ring = new THREE.Mesh(ringGeo, ringMat);
+    ring.userData = { kind: 'node', index: i };
+    group.add(ring);
+
+    const dot = new THREE.Mesh(dotGeo, dotMat);
+    dot.userData = { kind: 'node', index: i };
+    group.add(dot);
+
+    graphGroup.add(group);
+    nodes.push({ group, ringMat, ring, dot, frame: f });
+  }
+
+  // Edges
+  const M = S.wrap ? S.N : S.N - 1;
+  for (let i = 0; i < M; i++) {
+    const a = nodes[i].frame;
+    const b = nodes[(i + 1) % S.N].frame;
+    const pA = a.pos.clone().addScaledVector(a.localX, +a.r);
+    const pB = b.pos.clone().addScaledVector(b.localX, -b.r);
+
+    const dir = pB.clone().sub(pA);
+    const len = dir.length();
+    const mid = pA.clone().addScaledVector(dir, 0.5);
+    const geo = new THREE.CylinderGeometry(EDGE_TUBE, EDGE_TUBE, len, 12);
+    const mat = new THREE.MeshStandardMaterial({
+      color: 0x808080, roughness: 0.55, metalness: 0.1,
+    });
+    const mesh = new THREE.Mesh(geo, mat);
+    mesh.position.copy(mid);
+    mesh.quaternion.setFromUnitVectors(
+      new THREE.Vector3(0, 1, 0), dir.clone().normalize()
+    );
+    mesh.userData = { kind: 'edge', index: i };
+    graphGroup.add(mesh);
+    edges.push({ mesh, mat });
+  }
+
+  applyValues();
+}
+
+/* ── Apply values to visuals ───────────────────────────── */
+
+function applyValues() {
+  // Edges → heat color
+  let range = S.heatRange;
+  if (S.autoScale) {
+    let mx = 0;
+    for (const v of S.edgeMags) mx = Math.max(mx, Math.abs(v));
+    if (mx > 0) {
+      const target = Math.max(0.5, mx * 1.05);
+      // gentle ease toward target (avoids flicker)
+      range = S.heatRange + (target - S.heatRange) * 0.35;
+      S.heatRange = range;
+      $('sl-heat').value = Math.min(50, Math.max(0.5, range)).toFixed(1);
+      $('v-heat').textContent = range.toFixed(1);
+    }
+  }
+  for (let i = 0; i < edges.length; i++) {
+    edges[i].mat.color = heatColor(S.edgeMags[i], range);
+  }
+
+  // Nodes → base color + phase dot position
+  for (let i = 0; i < nodes.length; i++) {
+    const n = nodes[i];
+    const phase = S.nodePhases[i];
+    n.ringMat.color = nodeBaseColor(phase);
+    n.dot.position.copy(dotOffset(phiRad(phase), n.frame.r));
+  }
+}
+
+/* ── Update rules (v1) ─────────────────────────────────── */
+
+// Nodes: on inhale (clock 0→1), each node's next phase =
+//   (sum of cos(phi_e) · edge_value_e for connected edges) / k.
+// In v1 layout, every node has prev edge at phi=0 (cos=1) and next edge
+// at phi=π (cos=-1).
+function applyNodeRule() {
+  const N = S.N;
+  const M = S.wrap ? N : N - 1;
+  const next = new Array(N).fill(0);
+  for (let i = 0; i < N; i++) {
+    let sum = 0;
+    // prev edge (phi=0)
+    if (S.wrap) {
+      sum += S.edgeMags[(i - 1 + M) % M] * 1.0;
+    } else if (i > 0) {
+      sum += S.edgeMags[i - 1] * 1.0;
+    }
+    // next edge (phi=π)
+    if (S.wrap) {
+      sum += S.edgeMags[i] * -1.0;
+    } else if (i < N - 1) {
+      sum += S.edgeMags[i] * -1.0;
+    }
+    let v = sum / Math.max(1e-9, S.k);
+    if (!S.accumMode) {
+      const fullTurn = S.units === 'deg' ? 360 : TAU;
+      v = ((v % fullTurn) + fullTurn) % fullTurn;
+    }
+    next[i] = v;
+  }
+  S.nodePhases = next;
+}
+
+// Edges: on exhale (clock 1→0), each edge's next value = (phase_a + phase_b) · k.
+function applyEdgeRule() {
+  const N = S.N;
+  const M = S.wrap ? N : N - 1;
+  const next = new Array(M).fill(0);
+  for (let i = 0; i < M; i++) {
+    const a = i;
+    const b = (i + 1) % N;
+    next[i] = (S.nodePhases[a] + S.nodePhases[b]) * S.k;
+  }
+  S.edgeMags = next;
+}
+
+function halfStep() {
+  if (clockState === 0) {
+    // Rising edge 0→1: inhale → node rule
+    applyNodeRule();
+    clockState = 1;
+  } else {
+    // Falling edge 1→0: exhale → edge rule
+    applyEdgeRule();
+    clockState = 0;
+  }
+  $('clock-display').textContent = clockState;
+  applyValues();
+  saveState();
+}
+
+/* ── Run loop ──────────────────────────────────────────── */
+
+function setRunning(r) {
+  running = r;
+  $('btn-run').textContent = r ? '⏸ Stop' : '▶ Run';
+  $('btn-run').classList.toggle('on', r);
+  if (runTimer) { clearInterval(runTimer); runTimer = null; }
+  if (r) runTimer = setInterval(halfStep, 1000 / Math.max(0.1, S.speed));
+}
+
+/* ── Click → popup ─────────────────────────────────────── */
+
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2();
+let pendingTarget = null;  // { kind, index }
+
+function pickAt(clientX, clientY) {
+  const rect = view.getBoundingClientRect();
+  mouse.x =  ((clientX - rect.left) / rect.width)  * 2 - 1;
+  mouse.y = -((clientY - rect.top)  / rect.height) * 2 + 1;
+  raycaster.setFromCamera(mouse, camera);
+  const hits = raycaster.intersectObjects(graphGroup.children, true);
+  for (const h of hits) {
+    const ud = h.object.userData;
+    if (ud && ud.kind) return ud;
+  }
+  return null;
+}
+
+let startX = 0, startY = 0, downTime = 0;
+view.addEventListener('pointerdown', e => {
+  // ignore if click hits popup or its children
+  if (e.target.closest('#popup')) return;
+  // record so we can suppress orbit-drags from triggering the picker
+  startX = e.clientX; startY = e.clientY; downTime = performance.now();
+});
+
+view.addEventListener('pointerup', e => {
+  if (e.target.closest('#popup')) return;
+  const dx = e.clientX - startX, dy = e.clientY - startY;
+  if (Math.hypot(dx, dy) > 4 || performance.now() - downTime > 400) return;
+  const hit = pickAt(e.clientX, e.clientY);
+  if (!hit) { hidePopup(); return; }
+  pendingTarget = hit;
+  const cur = hit.kind === 'node' ? S.nodePhases[hit.index] : S.edgeMags[hit.index];
+  const unit = hit.kind === 'node' ? ` (${S.units})` : '';
+  showPopup(e.clientX, e.clientY,
+    `${hit.kind === 'node' ? 'Node' : 'Edge'} ${hit.index} ${hit.kind === 'node' ? 'phase' : 'value'}${unit}`,
+    fmtVal(cur));
+});
+
+function fmtVal(v) {
+  if (Math.abs(v) < 1e-9) return '0';
+  if (Math.abs(v) < 1e-3 || Math.abs(v) >= 1e5) return v.toExponential(3);
+  return Number(v.toFixed(4)).toString();
+}
+
+function showPopup(x, y, label, val) {
+  const popup = $('popup');
+  $('pop-label').textContent = label;
+  $('pop-input').value = val;
+  // position within view
+  const rect = view.getBoundingClientRect();
+  let lx = x - rect.left + 12;
+  let ly = y - rect.top + 12;
+  popup.style.left = lx + 'px';
+  popup.style.top  = ly + 'px';
+  popup.style.display = 'block';
+  // clamp to viewport
+  requestAnimationFrame(() => {
+    const pr = popup.getBoundingClientRect();
+    const vr = view.getBoundingClientRect();
+    if (pr.right > vr.right) popup.style.left = (vr.right - pr.width - 6 - vr.left) + 'px';
+    if (pr.bottom > vr.bottom) popup.style.top = (vr.bottom - pr.height - 6 - vr.top) + 'px';
+  });
+  $('pop-input').focus();
+  $('pop-input').select();
+}
+
+function hidePopup() {
+  $('popup').style.display = 'none';
+  pendingTarget = null;
+}
+
+function commitPopup() {
+  if (!pendingTarget) { hidePopup(); return; }
+  const raw = $('pop-input').value.trim();
+  const v = Number(raw);
+  if (!Number.isFinite(v)) { hidePopup(); return; }
+  if (pendingTarget.kind === 'node') {
+    let p = v;
+    if (!S.accumMode) {
+      const fullTurn = S.units === 'deg' ? 360 : TAU;
+      p = ((p % fullTurn) + fullTurn) % fullTurn;
+    }
+    S.nodePhases[pendingTarget.index] = p;
+  } else {
+    S.edgeMags[pendingTarget.index] = v;
+  }
+  hidePopup();
+  applyValues();
+  saveState();
+}
+
+$('pop-ok').onclick     = commitPopup;
+$('pop-cancel').onclick = hidePopup;
+$('pop-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter')  { e.preventDefault(); commitPopup(); }
+  if (e.key === 'Escape') { e.preventDefault(); hidePopup(); }
+});
+
+/* ── Camera fit ────────────────────────────────────────── */
+
+function fitCamera() {
+  let extent;
+  if (S.wrap) {
+    const chord = S.nodeDiam + S.edgeLen;
+    const R = chord / (2 * Math.sin(Math.PI / S.N));
+    extent = R * 2 + S.nodeDiam;
+  } else {
+    extent = (S.N - 1) * (S.nodeDiam + S.edgeLen) + S.nodeDiam;
+  }
+  const d = Math.max(2.5, extent * 0.85);
+  camera.position.set(0, d * 0.55, d * 1.1);
+  controls.target.set(0, 0, 0);
+  controls.update();
+}
+
+/* ── Info line ─────────────────────────────────────────── */
+
+function updateInfo() {
+  const M = S.wrap ? S.N : S.N - 1;
+  $('info').textContent =
+    `mode: ${S.wrap ? 'ring' : '1D'} · N=${S.N} · edges=${M}` +
+    ` · units: ${S.units}` +
+    ` · k=${S.k.toFixed(2)}` +
+    ` · accum: ${S.accumMode ? 'on' : 'off'}` +
+    ` · range: ±${S.heatRange.toFixed(1)}` +
+    `${S.autoScale ? ' (auto)' : ''}`;
+}
+
+/* ── Profiles ──────────────────────────────────────────── */
+
+function refreshProfileList() {
+  const sel = $('sel-prof');
+  const profs = loadProfiles();
+  const names = Object.keys(profs).sort();
+  sel.innerHTML = '<option value="">—</option>' +
+    names.map(n => `<option value="${n}">${n}</option>`).join('');
+}
+
+$('btn-save').onclick = () => {
+  const name = (prompt('Profile name?') || '').trim();
+  if (!name) return;
+  const profs = loadProfiles();
+  profs[name] = JSON.parse(JSON.stringify(S));
+  saveProfiles(profs);
+  refreshProfileList();
+  $('sel-prof').value = name;
+};
+
+$('btn-del').onclick = () => {
+  const name = $('sel-prof').value;
+  if (!name) return;
+  if (!confirm(`Delete profile "${name}"?`)) return;
+  const profs = loadProfiles();
+  delete profs[name];
+  saveProfiles(profs);
+  refreshProfileList();
+};
+
+$('sel-prof').onchange = () => {
+  const name = $('sel-prof').value;
+  if (!name) return;
+  const profs = loadProfiles();
+  if (!profs[name]) return;
+  S = { ...DEFAULT, ...profs[name] };
+  // safety: ensure arrays match
+  const need = defaultArrays(S.N, S.wrap);
+  if (S.nodePhases.length !== need.nodePhases.length) S.nodePhases = need.nodePhases;
+  if (S.edgeMags.length   !== need.edgeMags.length)   S.edgeMags   = need.edgeMags;
+  syncControls();
+  buildGraph();
+  fitCamera();
+  updateInfo();
+  saveState();
+};
+
+/* ── Control bindings ──────────────────────────────────── */
+
+function syncControls() {
+  $('in-N').value      = S.N;
+  $('cb-wrap').checked = S.wrap;
+  $('sl-diam').value   = S.nodeDiam;  $('v-diam').textContent = S.nodeDiam.toFixed(2);
+  $('sl-edge').value   = S.edgeLen;   $('v-edge').textContent = S.edgeLen.toFixed(2);
+  $('sel-units').value = S.units;
+  $('cb-accum').checked= S.accumMode;
+  $('sl-k').value      = S.k;         $('v-k').textContent    = S.k.toFixed(2);
+  $('sl-speed').value  = S.speed;     $('v-speed').textContent= S.speed.toFixed(1);
+  $('sl-heat').value   = S.heatRange; $('v-heat').textContent = S.heatRange.toFixed(1);
+  $('cb-auto').checked = S.autoScale;
+  $('clock-display').textContent = clockState;
+}
+
+function rebuildGraphFromState() {
+  // adjust value arrays if N or wrap changed
+  const need = defaultArrays(S.N, S.wrap);
+  if (S.nodePhases.length !== need.nodePhases.length) {
+    const old = S.nodePhases; S.nodePhases = need.nodePhases;
+    for (let i = 0; i < Math.min(old.length, S.nodePhases.length); i++) S.nodePhases[i] = old[i];
+  }
+  if (S.edgeMags.length !== need.edgeMags.length) {
+    const old = S.edgeMags; S.edgeMags = need.edgeMags;
+    for (let i = 0; i < Math.min(old.length, S.edgeMags.length); i++) S.edgeMags[i] = old[i];
+  }
+  buildGraph();
+  updateInfo();
+  saveState();
+}
+
+$('in-N').oninput = e => {
+  let n = parseInt(e.target.value, 10);
+  if (!Number.isFinite(n)) return;
+  n = Math.max(2, Math.min(64, n));
+  if (n !== S.N) { S.N = n; rebuildGraphFromState(); }
+};
+$('cb-wrap').onchange = e => {
+  S.wrap = e.target.checked; rebuildGraphFromState(); fitCamera();
+};
+$('sl-diam').oninput = e => {
+  S.nodeDiam = parseFloat(e.target.value);
+  $('v-diam').textContent = S.nodeDiam.toFixed(2);
+  rebuildGraphFromState();
+};
+$('sl-edge').oninput = e => {
+  S.edgeLen = parseFloat(e.target.value);
+  $('v-edge').textContent = S.edgeLen.toFixed(2);
+  rebuildGraphFromState();
+};
+$('sel-units').onchange = e => {
+  // converting between units changes the numeric meaning of stored phases.
+  // simplest: leave numbers alone; user adjusts as needed.
+  S.units = e.target.value; applyValues(); updateInfo(); saveState();
+};
+$('cb-accum').onchange = e => {
+  S.accumMode = e.target.checked;
+  if (!S.accumMode) {
+    const fullTurn = S.units === 'deg' ? 360 : TAU;
+    S.nodePhases = S.nodePhases.map(p => ((p % fullTurn) + fullTurn) % fullTurn);
+  }
+  applyValues(); updateInfo(); saveState();
+};
+$('sl-k').oninput = e => {
+  S.k = parseFloat(e.target.value);
+  $('v-k').textContent = S.k.toFixed(2);
+  updateInfo(); saveState();
+};
+$('sl-speed').oninput = e => {
+  S.speed = parseFloat(e.target.value);
+  $('v-speed').textContent = S.speed.toFixed(1);
+  if (running) setRunning(true);  // restart with new interval
+  saveState();
+};
+$('sl-heat').oninput = e => {
+  S.heatRange = parseFloat(e.target.value);
+  $('v-heat').textContent = S.heatRange.toFixed(1);
+  applyValues(); updateInfo(); saveState();
+};
+$('cb-auto').onchange = e => {
+  S.autoScale = e.target.checked; applyValues(); updateInfo(); saveState();
+};
+$('btn-step').onclick  = () => { halfStep(); };
+$('btn-run').onclick   = () => setRunning(!running);
+$('btn-clear').onclick = () => {
+  S.nodePhases = S.nodePhases.map(() => 0);
+  S.edgeMags   = S.edgeMags.map(() => 0);
+  clockState = 0;
+  $('clock-display').textContent = 0;
+  applyValues();
+  saveState();
+};
+$('btn-fit').onclick = fitCamera;
+
+/* ── Bootstrap ─────────────────────────────────────────── */
+
+syncControls();
+buildGraph();
+fitCamera();
+updateInfo();
+refreshProfileList();
+
+animLoop(() => {
+  if (S.autoScale && !running) applyValues();  // ease toward target while idle
+}, { renderer, scene, camera, controls });
+</script>
+</body>
+</html>

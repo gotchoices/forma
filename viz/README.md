@@ -16,6 +16,7 @@ browser, no server required.
 | [`fusion.html`](fusion.html) | Q95 | Proton-proton fusion: nuclear potential (Coulomb + MaSt strong), fusion rate vs temperature, WKB tunneling, B-field alignment, scenario analysis. |
 | [`torus-modes.html`](torus-modes.html) | R21 | Standing-wave eigenmodes on the curved embedded torus. Probability density |f(θ₁)|² rendered as glowing particle clouds inside a translucent shell. Multiple simultaneous modes, presets (electron, R21 trio, harmonics). Adjustable ε, shear. |
 | [`torus-lab.html`](torus-lab.html) | R46 | Eigenmode workbench: sweeps all (n₁,n₂) modes, displays energy-level spectrum with known particle masses. Slot group placement for mode filtering and moment/charge analysis. 3D density, 2D sheet, 1D profiles. Profile save/load. |
+| [`grid-lab.html`](grid-lab.html) | GRID | Node/edge lattice workbench. 1D linear array, optional ring wrap (ferris-wheel). Master clock with half-step / run controls; nodes update on the rising edge, edges on the falling edge. Edges drawn as a diverging heatmap, nodes as circles with a phase dot. Click any primitive to set its value. Profile save/load. |
 
 ## Launch
 
