@@ -38,6 +38,18 @@
   background: rgba(10,10,18,0.5); padding: 2px 6px; border-radius: 3px;
 }
 .info-line { color: #666; }
+#labels {
+  position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+}
+.label {
+  position: absolute; font: 10px/1.2 monospace; color: #e0e0e0;
+  background: rgba(10,10,18,0.62); padding: 1px 5px; border-radius: 3px;
+  transform: translate(-50%, -50%); white-space: nowrap;
+  pointer-events: none; user-select: none;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.label.l-edge { color: #f5f5f5; }
+.label.l-node { color: #fff2a0; }
 </style>
 </head>
 <body>
@@ -107,6 +119,7 @@
 
   <button class="btn" id="btn-clear" title="Reset all values to zero">Clear</button>
   <button class="btn" id="btn-fit" title="Fit camera to graph">Fit</button>
+  <div class="cg tog"><label><input type="checkbox" id="cb-labels" checked> Labels</label></div>
 
   <div class="sep"></div>
 
@@ -120,6 +133,7 @@
 
 <div class="view-full" id="view">
   <div id="hint">click a node or edge to set its value</div>
+  <div id="labels"></div>
   <div id="popup">
     <span class="lbl" id="pop-label">Value</span>
     <input type="text" id="pop-input" autocomplete="off">
@@ -162,7 +176,10 @@ const DEFAULT = {
   speed: 2.0,
   heatRange: 5.0,
   autoScale: false,
+  showLabels: true,
 };
+
+const EDGE_LABEL_LIFT = 0.08;  // world-space y offset so the label clears the edge tube
 
 function defaultArrays(N, wrap) {
   return {
@@ -296,14 +313,32 @@ function phiRad(phase) {
   return S.units === 'deg' ? phase * RAD : phase;
 }
 
+// Wrap a phase into [0, period) when not in accumulate mode.
+// The period itself is invalid (folds to zero); floating-point noise near
+// the period must also snap to zero so the user never sees a displayed 360.
+function wrapPhase(v) {
+  if (S.accumMode) return v;
+  const fullTurn = S.units === 'deg' ? 360 : TAU;
+  let p = ((v % fullTurn) + fullTurn) % fullTurn;
+  if (fullTurn - p < 1e-6 * fullTurn) p = 0;
+  return p;
+}
+
 /* ── Build / rebuild ───────────────────────────────────── */
 
 function clearGraph() {
   graphGroup.clear();
-  for (const n of nodes) { n.ringMat.dispose(); }
-  for (const e of edges) { e.mat.dispose(); e.mesh.geometry.dispose(); }
+  for (const n of nodes) { n.ringMat.dispose(); n.label?.remove(); }
+  for (const e of edges) { e.mat.dispose(); e.mesh.geometry.dispose(); e.label?.remove(); }
   nodes.length = 0;
   edges.length = 0;
+}
+
+function makeLabel(cls) {
+  const el = document.createElement('div');
+  el.className = 'label ' + cls;
+  $('labels').appendChild(el);
+  return el;
 }
 
 function buildGraph() {
@@ -331,7 +366,8 @@ function buildGraph() {
     group.add(dot);
 
     graphGroup.add(group);
-    nodes.push({ group, ringMat, ring, dot, frame: f });
+    const label = makeLabel('l-node');
+    nodes.push({ group, ringMat, ring, dot, frame: f, label });
   }
 
   // Edges
@@ -356,7 +392,8 @@ function buildGraph() {
     );
     mesh.userData = { kind: 'edge', index: i };
     graphGroup.add(mesh);
-    edges.push({ mesh, mat });
+    const label = makeLabel('l-edge');
+    edges.push({ mesh, mat, label, mid });
   }
 
   applyValues();
@@ -381,6 +418,7 @@ function applyValues() {
   }
   for (let i = 0; i < edges.length; i++) {
     edges[i].mat.color = heatColor(S.edgeMags[i], range);
+    edges[i].label.textContent = fmtVal(S.edgeMags[i]);
   }
 
   // Nodes → base color + phase dot position
@@ -389,7 +427,40 @@ function applyValues() {
     const phase = S.nodePhases[i];
     n.ringMat.color = nodeBaseColor(phase);
     n.dot.position.copy(dotOffset(phiRad(phase), n.frame.r));
+    n.label.textContent = fmtVal(phase);
   }
+}
+
+/* ── Label positions (per-frame, screen-space) ─────────── */
+
+const _projV = new THREE.Vector3();
+function updateLabelPositions() {
+  if (!S.showLabels) return;
+  const w = view.clientWidth, h = view.clientHeight;
+  for (const n of nodes) {
+    _projV.copy(n.frame.pos).project(camera);
+    const off = _projV.z < -1 || _projV.z > 1;
+    n.label.style.display = off ? 'none' : '';
+    if (!off) {
+      n.label.style.left = (( _projV.x + 1) * 0.5 * w) + 'px';
+      n.label.style.top  = ((-_projV.y + 1) * 0.5 * h) + 'px';
+    }
+  }
+  for (const e of edges) {
+    _projV.copy(e.mid);
+    _projV.y += EDGE_LABEL_LIFT;
+    _projV.project(camera);
+    const off = _projV.z < -1 || _projV.z > 1;
+    e.label.style.display = off ? 'none' : '';
+    if (!off) {
+      e.label.style.left = (( _projV.x + 1) * 0.5 * w) + 'px';
+      e.label.style.top  = ((-_projV.y + 1) * 0.5 * h) + 'px';
+    }
+  }
+}
+
+function applyLabelVisibility() {
+  $('labels').style.display = S.showLabels ? '' : 'none';
 }
 
 /* ── Update rules (v1) ─────────────────────────────────── */
@@ -416,12 +487,7 @@ function applyNodeRule() {
     } else if (i < N - 1) {
       sum += S.edgeMags[i] * -1.0;
     }
-    let v = sum / Math.max(1e-9, S.k);
-    if (!S.accumMode) {
-      const fullTurn = S.units === 'deg' ? 360 : TAU;
-      v = ((v % fullTurn) + fullTurn) % fullTurn;
-    }
-    next[i] = v;
+    next[i] = wrapPhase(sum / Math.max(1e-9, S.k));
   }
   S.nodePhases = next;
 }
@@ -544,12 +610,7 @@ function commitPopup() {
   const v = Number(raw);
   if (!Number.isFinite(v)) { hidePopup(); return; }
   if (pendingTarget.kind === 'node') {
-    let p = v;
-    if (!S.accumMode) {
-      const fullTurn = S.units === 'deg' ? 360 : TAU;
-      p = ((p % fullTurn) + fullTurn) % fullTurn;
-    }
-    S.nodePhases[pendingTarget.index] = p;
+    S.nodePhases[pendingTarget.index] = wrapPhase(v);
   } else {
     S.edgeMags[pendingTarget.index] = v;
   }
@@ -655,6 +716,7 @@ function syncControls() {
   $('sl-speed').value  = S.speed;     $('v-speed').textContent= S.speed.toFixed(1);
   $('sl-heat').value   = S.heatRange; $('v-heat').textContent = S.heatRange.toFixed(1);
   $('cb-auto').checked = S.autoScale;
+  $('cb-labels').checked = S.showLabels;
   $('clock-display').textContent = clockState;
 }
 
@@ -700,10 +762,7 @@ $('sel-units').onchange = e => {
 };
 $('cb-accum').onchange = e => {
   S.accumMode = e.target.checked;
-  if (!S.accumMode) {
-    const fullTurn = S.units === 'deg' ? 360 : TAU;
-    S.nodePhases = S.nodePhases.map(p => ((p % fullTurn) + fullTurn) % fullTurn);
-  }
+  if (!S.accumMode) S.nodePhases = S.nodePhases.map(wrapPhase);
   applyValues(); updateInfo(); saveState();
 };
 $('sl-k').oninput = e => {
@@ -725,6 +784,9 @@ $('sl-heat').oninput = e => {
 $('cb-auto').onchange = e => {
   S.autoScale = e.target.checked; applyValues(); updateInfo(); saveState();
 };
+$('cb-labels').onchange = e => {
+  S.showLabels = e.target.checked; applyLabelVisibility(); saveState();
+};
 $('btn-step').onclick  = () => { halfStep(); };
 $('btn-run').onclick   = () => setRunning(!running);
 $('btn-clear').onclick = () => {
@@ -739,14 +801,17 @@ $('btn-fit').onclick = fitCamera;
 
 /* ── Bootstrap ─────────────────────────────────────────── */
 
+S.nodePhases = S.nodePhases.map(wrapPhase);
 syncControls();
 buildGraph();
+applyLabelVisibility();
 fitCamera();
 updateInfo();
 refreshProfileList();
 
 animLoop(() => {
   if (S.autoScale && !running) applyValues();  // ease toward target while idle
+  updateLabelPositions();
 }, { renderer, scene, camera, controls });
 </script>
 </body>
