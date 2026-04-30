@@ -50,3 +50,20 @@ Node:
 Edge
 - On inhale, do nothing.
 - On exhale, my next value is the sum of the two nodes I am connected to
+
+Coupling value
+In the version 1, the individual coupling constant will not be used.  Later, it will become a function of the bending angle between primitives.  Keep it stubbed in, but do not consider it yet in the calculation.
+
+## Primitive scaling
+To translate values between primitives (edges and nodes), including a global translation value that is settable.  Default = 1.  This translates magnitudes to angles and vice versa.  Node phase is derived by dividing the sum of its inputs by the translation factor.  Edges multiply to get their value.  This is uniform across update versions.
+
+## Rendering
+Each edge should be rendered as a heatmap or color.  A global setting can determine scaling, specifying the range of allowable values.  Values that overflow or underflow the heat mapping should saturate.  Zero should be mapped to a color in the middle of the spectrum, allowing positive and negative colors to map to hot and cold colors according to the selected scaling.  If the graph looks saturated, the scaling can be adjusted.  A checkbox should be available for auto scaling where the scaling method will adapt to values on the graph according to some slow update method.
+
+Each node should be a uniform color but have a bright dot to indicate its current phase.  The dot is positioned over the correct location on the circle.  In cumulative mode, the base color of the node circle will change color according to scale (i.e. 0-360 is neutral, 361-720 is hotter, -360-0 is cooler).
+
+## Initial Conditions
+The user can click on a primitive to set its value.  A small popup box will accept the value and write it in.  There is also a global clear button to reset all values to zero.  In later iterations, we will have functions for injecting wave functions.
+
+## MVP
+For first iteration, we should be able to build the 1D array of specified length and optionall wrap it into y.  Further, higher degrees will be deferred for now.
