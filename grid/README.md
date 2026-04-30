@@ -91,6 +91,7 @@ See [STATUS.md](STATUS.md) for the roadmap and progress.
 | File | Contents |
 |------|----------|
 | [foundations.md](foundations.md) | The six axioms, notation, ζ and α |
+| [bounding-mechanisms.md](bounding-mechanisms.md) | Two scales (local vs global) and two mechanisms (wrap vs saturation) of phase boundedness.  Why wrap gives both gravity and charge quantization, while saturation would give gravity alone. |
 | [maxwell.md](maxwell.md) | Full derivation: lattice → Maxwell's equations |
 | [photon-from-aleph.md](photon-from-aleph.md) | KK-reduction framing: photon as ℵ-line zero mode; unifying principle connecting GRID's photon to MaSt's matter spin |
 | [gravity.md](gravity.md) | Full derivation: lattice → Einstein's equations + G |

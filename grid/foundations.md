@@ -74,12 +74,44 @@ the lattice — without it, there are no oscillating fields and
 no wave propagation.  The time derivative of phase (θ̇) is
 the electric field in the temporal gauge; its oscillation
 between positive and negative values produces the alternating
-E and B of an electromagnetic wave.  When phase accumulates
-past 2π and wraps, this topological carry is the microscopic
-mechanism of charge quantization.
+E and B of an electromagnetic wave.
 
-*This axiom gives us: U(1) symmetry (the circle group), and the
-seed from which electromagnetic gauge structure will grow.*
+**The wrap is local and lossy.**  When phase accumulates past
+2π at a single cell, the cell stores only `θ mod 2π` — the
+integer winding count (the "carry") is **not stored anywhere**.
+This local information loss is the structural source of
+irreversibility in the lattice: trajectories that differ only
+by an integer winding count are indistinguishable to the
+lattice, so initial conditions are washed out as phases
+diffuse.  *This local lossiness is what makes the lattice
+entropic — see A5 and [gravity.md](gravity.md).*
+
+**Charge quantization arises at a different scale.**  At the
+much larger compactified-dimension scale (MaSt sheets), many
+grid cells are wrapped into closed surfaces (e.g. 2-tori).
+A standing-wave excitation winding around such a sheet picks
+up a **conserved topological winding number** — this number
+*is* preserved (it's a homotopy invariant of the field
+configuration on a torus), and it's what produces the
+quantization of charge.  See
+[maxwell.md](maxwell.md) and
+[bounding-mechanisms.md](bounding-mechanisms.md).
+
+So the same compact-phase axiom (A3) plays two roles at two
+scales, with **opposite information consequences**:
+
+- **Local (GRID, single cell):** carry discarded → information
+  loss → entropy generation → gravity (via A5 + Jacobson)
+- **Global (MaSt, sheets of cells):** winding conserved →
+  topological invariant → charge quantization
+
+Both roles flow from A3's compactness; the scale difference is
+the difference between throwing away local overflow and
+preserving a global homotopy class.
+
+*This axiom gives us: U(1) symmetry (the circle group), entropy
+generation at the lattice scale, and the seed from which
+electromagnetic gauge structure will grow.*
 
 ### A4. Local gauge invariance
 
@@ -116,6 +148,19 @@ electromagnetic field tensor F_μν is constructed.*
 Each cell contributes ζ = 1/4 bit to the collective information
 content of the lattice.  Equivalently: it takes 1/ζ = 4 cells to
 encode one bit of physical information.
+
+**Why this bound is well-defined:** the per-cell information
+capacity is finite *because of A3's compactness*.  Phase on S¹
+with finite resolution Δθ stores at most log₂(2π/Δθ) bits — a
+bound from topology, not from temperature.  A spring lattice
+with continuous unbounded ℝ-valued degrees of freedom would
+have unbounded information capacity per cell at finite
+resolution, and A5's holographic-style scaling
+(entropy proportional to *area*, not *volume*) would not be
+applicable.  The bounded phase from A3 is structurally
+prerequisite for A5's well-definedness.  See
+[bounding-mechanisms.md](bounding-mechanisms.md) for the
+explicit connection.
 
 **Geometric origin:** ζ follows from the face count of the
 simplicial cells adjacent to a causal horizon.  A horizon is
