@@ -66,7 +66,7 @@ Node:
 
 Edge
 - On inhale, do nothing.
-- On exhale, my next value is my current value plus k times (the value of my head node − the value of my tail node).  As an example, an edge currently at value 4, running from node A (tail, phase 30) to node B (head, phase 50), becomes 4 + k·(50 − 30) = 4 + 20·k.
+- On exhale, my next value is my current value plus k times (the value of my tail node − the value of my head node).  The sign convention follows from stability: the edge stores a flux/gradient pointing from high-phase tail to low-phase head, so a positive tail-minus-head difference grows the edge value.  As an example, an edge currently at value 4, running from node A (tail, phase 30) to node B (head, phase 50), becomes 4 + k·(30 − 50) = 4 − 20·k.
 
 Coupling value
 Same stub as v1 — present in state, defaulting to 1, not yet used in the calculation.  When activated it will modulate the per-edge contribution as a function of the bending angle between primitives.

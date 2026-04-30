@@ -159,6 +159,12 @@
 </script>
 <script type="module">
 import { THREE, createScene, autoResize, animLoop, PALETTE } from './totu-viz.js';
+import {
+  build1D,
+  clear as engineClear,
+  halfStep as engineHalfStep,
+  wrapPhase as engineWrapPhase,
+} from './grid-engine.js';
 
 const $ = id => document.getElementById(id);
 const TAU = Math.PI * 2;
@@ -187,27 +193,52 @@ const DEFAULT = {
 
 const EDGE_LABEL_LIFT = 0.08;  // world-space y offset so the label clears the edge tube
 
-function defaultArrays(N, wrap) {
+// Engine-config view of S — what the engine functions consume.
+function engineConfig() {
   return {
-    nodePhases: Array(N).fill(0),
-    edgeMags:   Array(wrap ? N : N - 1).fill(0),
+    k: S.k,
+    ruleVersion: S.ruleVersion,
+    units: S.units,
+    accumMode: S.accumMode,
   };
 }
 
+// Restore phase/value arrays into a freshly-built engine state, padding/
+// truncating so the graph always matches the configured N + wrap.
+function hydrateEngine(engine, savedNodePhases, savedEdgeMags) {
+  if (Array.isArray(savedNodePhases)) {
+    const lim = Math.min(savedNodePhases.length, engine.nodes.length);
+    for (let i = 0; i < lim; i++) engine.nodes[i].phase = savedNodePhases[i];
+  }
+  if (Array.isArray(savedEdgeMags)) {
+    const lim = Math.min(savedEdgeMags.length, engine.edges.length);
+    for (let i = 0; i < lim; i++) engine.edges[i].value = savedEdgeMags[i];
+  }
+}
+
 function loadState() {
-  let s;
+  let raw = {};
   try {
-    const raw = localStorage.getItem(STATE_KEY);
-    s = raw ? { ...DEFAULT, ...JSON.parse(raw) } : { ...DEFAULT };
-  } catch { s = { ...DEFAULT }; }
-  const need = defaultArrays(s.N, s.wrap);
-  if (!Array.isArray(s.nodePhases) || s.nodePhases.length !== need.nodePhases.length)
-    s.nodePhases = need.nodePhases;
-  if (!Array.isArray(s.edgeMags) || s.edgeMags.length !== need.edgeMags.length)
-    s.edgeMags = need.edgeMags;
+    const txt = localStorage.getItem(STATE_KEY);
+    if (txt) raw = JSON.parse(txt);
+  } catch {}
+  const s = { ...DEFAULT, ...raw };
+  s.engine = build1D(s.N, { wrap: s.wrap });
+  hydrateEngine(s.engine, raw.nodePhases, raw.edgeMags);
+  delete s.nodePhases;
+  delete s.edgeMags;
   return s;
 }
-function saveState() { localStorage.setItem(STATE_KEY, JSON.stringify(S)); }
+
+function saveState() {
+  const { engine, ...rest } = S;
+  const out = {
+    ...rest,
+    nodePhases: engine.nodes.map(n => n.phase),
+    edgeMags:   engine.edges.map(e => e.value),
+  };
+  localStorage.setItem(STATE_KEY, JSON.stringify(out));
+}
 
 function loadProfiles() {
   try { return JSON.parse(localStorage.getItem(PROF_KEY) || '{}'); }
@@ -319,16 +350,8 @@ function phiRad(phase) {
   return S.units === 'deg' ? phase * RAD : phase;
 }
 
-// Wrap a phase into [0, period) when not in accumulate mode.
-// The period itself is invalid (folds to zero); floating-point noise near
-// the period must also snap to zero so the user never sees a displayed 360.
-function wrapPhase(v) {
-  if (S.accumMode) return v;
-  const fullTurn = S.units === 'deg' ? 360 : TAU;
-  let p = ((v % fullTurn) + fullTurn) % fullTurn;
-  if (fullTurn - p < 1e-6 * fullTurn) p = 0;
-  return p;
-}
+// Local convenience wrapper around the engine's wrapPhase.
+function wrapPhase(v) { return engineWrapPhase(v, engineConfig()); }
 
 /* ── Build / rebuild ───────────────────────────────────── */
 
@@ -412,7 +435,7 @@ function applyValues() {
   let range = S.heatRange;
   if (S.autoScale) {
     let mx = 0;
-    for (const v of S.edgeMags) mx = Math.max(mx, Math.abs(v));
+    for (const e of S.engine.edges) mx = Math.max(mx, Math.abs(e.value));
     if (mx > 0) {
       const target = Math.max(0.5, mx * 1.05);
       // gentle ease toward target (avoids flicker)
@@ -423,14 +446,15 @@ function applyValues() {
     }
   }
   for (let i = 0; i < edges.length; i++) {
-    edges[i].mat.color = heatColor(S.edgeMags[i], range);
-    edges[i].label.textContent = fmtVal(S.edgeMags[i]);
+    const v = S.engine.edges[i].value;
+    edges[i].mat.color = heatColor(v, range);
+    edges[i].label.textContent = fmtVal(v);
   }
 
   // Nodes → base color + phase dot position
   for (let i = 0; i < nodes.length; i++) {
     const n = nodes[i];
-    const phase = S.nodePhases[i];
+    const phase = S.engine.nodes[i].phase;
     n.ringMat.color = nodeBaseColor(phase);
     n.dot.position.copy(dotOffset(phiRad(phase), n.frame.r));
     n.label.textContent = fmtVal(phase);
@@ -469,67 +493,10 @@ function applyLabelVisibility() {
   $('labels').style.display = S.showLabels ? '' : 'none';
 }
 
-/* ── Update rules (v1) ─────────────────────────────────── */
-
-// Nodes: on inhale (clock 1→0, yin — nodes gather), each node's next phase
-// is the cosine-weighted sum of its connected edge values, divided by k.
-// In v1 the result REPLACES the current phase; in v2 (Yee) it is ADDED to
-// the current phase.  Either way, every node has prev edge at phi=0 (cos=1)
-// and next edge at phi=π (cos=-1) in our 1D layout.
-function applyNodeRule() {
-  const N = S.N;
-  const M = S.wrap ? N : N - 1;
-  const next = new Array(N).fill(0);
-  for (let i = 0; i < N; i++) {
-    let sum = 0;
-    // prev edge (phi=0)
-    if (S.wrap) {
-      sum += S.edgeMags[(i - 1 + M) % M] * 1.0;
-    } else if (i > 0) {
-      sum += S.edgeMags[i - 1] * 1.0;
-    }
-    // next edge (phi=π)
-    if (S.wrap) {
-      sum += S.edgeMags[i] * -1.0;
-    } else if (i < N - 1) {
-      sum += S.edgeMags[i] * -1.0;
-    }
-    const inc = sum / Math.max(1e-9, S.k);
-    const v = (S.ruleVersion === 2) ? S.nodePhases[i] + inc : inc;
-    next[i] = wrapPhase(v);
-  }
-  S.nodePhases = next;
-}
-
-// Edges: on exhale (clock 0→1, yang — info flows out).
-// v1: next = (tail_phase + head_phase) · k                    (replace, summing)
-// v2: next = current + (head_phase − tail_phase) · k          (Yee additive, directional)
-function applyEdgeRule() {
-  const N = S.N;
-  const M = S.wrap ? N : N - 1;
-  const next = new Array(M).fill(0);
-  for (let i = 0; i < M; i++) {
-    const tail = i;
-    const head = (i + 1) % N;
-    if (S.ruleVersion === 2) {
-      next[i] = S.edgeMags[i] + (S.nodePhases[head] - S.nodePhases[tail]) * S.k;
-    } else {
-      next[i] = (S.nodePhases[tail] + S.nodePhases[head]) * S.k;
-    }
-  }
-  S.edgeMags = next;
-}
+/* ── Clock half-step (delegates to engine) ─────────────── */
 
 function halfStep() {
-  if (clockState === 0) {
-    // Rising edge 0→1: exhale (yang) → edges absorb node phases
-    applyEdgeRule();
-    clockState = 1;
-  } else {
-    // Falling edge 1→0: inhale (yin) → nodes gather from edges
-    applyNodeRule();
-    clockState = 0;
-  }
+  clockState = engineHalfStep(S.engine, engineConfig(), clockState);
   $('clock-display').textContent = clockState;
   applyValues();
   saveState();
@@ -579,7 +546,9 @@ view.addEventListener('pointerup', e => {
   const hit = pickAt(e.clientX, e.clientY);
   if (!hit) { hidePopup(); return; }
   pendingTarget = hit;
-  const cur = hit.kind === 'node' ? S.nodePhases[hit.index] : S.edgeMags[hit.index];
+  const cur = hit.kind === 'node'
+    ? S.engine.nodes[hit.index].phase
+    : S.engine.edges[hit.index].value;
   const unit = hit.kind === 'node' ? ` (${S.units})` : '';
   showPopup(e.clientX, e.clientY,
     `${hit.kind === 'node' ? 'Node' : 'Edge'} ${hit.index} ${hit.kind === 'node' ? 'phase' : 'value'}${unit}`,
@@ -625,9 +594,9 @@ function commitPopup() {
   const v = Number(raw);
   if (!Number.isFinite(v)) { hidePopup(); return; }
   if (pendingTarget.kind === 'node') {
-    S.nodePhases[pendingTarget.index] = wrapPhase(v);
+    S.engine.nodes[pendingTarget.index].phase = wrapPhase(v);
   } else {
-    S.edgeMags[pendingTarget.index] = v;
+    S.engine.edges[pendingTarget.index].value = v;
   }
   hidePopup();
   applyValues();
@@ -686,7 +655,12 @@ $('btn-save').onclick = () => {
   const name = (prompt('Profile name?') || '').trim();
   if (!name) return;
   const profs = loadProfiles();
-  profs[name] = JSON.parse(JSON.stringify(S));
+  const { engine, ...rest } = S;
+  profs[name] = {
+    ...rest,
+    nodePhases: engine.nodes.map(n => n.phase),
+    edgeMags:   engine.edges.map(e => e.value),
+  };
   saveProfiles(profs);
   refreshProfileList();
   $('sel-prof').value = name;
@@ -707,11 +681,12 @@ $('sel-prof').onchange = () => {
   if (!name) return;
   const profs = loadProfiles();
   if (!profs[name]) return;
-  S = { ...DEFAULT, ...profs[name] };
-  // safety: ensure arrays match
-  const need = defaultArrays(S.N, S.wrap);
-  if (S.nodePhases.length !== need.nodePhases.length) S.nodePhases = need.nodePhases;
-  if (S.edgeMags.length   !== need.edgeMags.length)   S.edgeMags   = need.edgeMags;
+  const loaded = profs[name];
+  S = { ...DEFAULT, ...loaded };
+  S.engine = build1D(S.N, { wrap: S.wrap });
+  hydrateEngine(S.engine, loaded.nodePhases, loaded.edgeMags);
+  delete S.nodePhases;
+  delete S.edgeMags;
   syncControls();
   buildGraph();
   fitCamera();
@@ -738,16 +713,11 @@ function syncControls() {
 }
 
 function rebuildGraphFromState() {
-  // adjust value arrays if N or wrap changed
-  const need = defaultArrays(S.N, S.wrap);
-  if (S.nodePhases.length !== need.nodePhases.length) {
-    const old = S.nodePhases; S.nodePhases = need.nodePhases;
-    for (let i = 0; i < Math.min(old.length, S.nodePhases.length); i++) S.nodePhases[i] = old[i];
-  }
-  if (S.edgeMags.length !== need.edgeMags.length) {
-    const old = S.edgeMags; S.edgeMags = need.edgeMags;
-    for (let i = 0; i < Math.min(old.length, S.edgeMags.length); i++) S.edgeMags[i] = old[i];
-  }
+  // Rebuild engine if topology changed; preserve as many values as possible.
+  const oldNodes = S.engine.nodes.map(n => n.phase);
+  const oldEdges = S.engine.edges.map(e => e.value);
+  S.engine = build1D(S.N, { wrap: S.wrap });
+  hydrateEngine(S.engine, oldNodes, oldEdges);
   buildGraph();
   updateInfo();
   saveState();
@@ -783,7 +753,9 @@ $('sel-rule').onchange = e => {
 };
 $('cb-accum').onchange = e => {
   S.accumMode = e.target.checked;
-  if (!S.accumMode) S.nodePhases = S.nodePhases.map(wrapPhase);
+  if (!S.accumMode) {
+    for (const n of S.engine.nodes) n.phase = wrapPhase(n.phase);
+  }
   applyValues(); updateInfo(); saveState();
 };
 $('sl-k').oninput = e => {
@@ -811,8 +783,7 @@ $('cb-labels').onchange = e => {
 $('btn-step').onclick  = () => { halfStep(); };
 $('btn-run').onclick   = () => setRunning(!running);
 $('btn-clear').onclick = () => {
-  S.nodePhases = S.nodePhases.map(() => 0);
-  S.edgeMags   = S.edgeMags.map(() => 0);
+  engineClear(S.engine);
   clockState = 0;
   $('clock-display').textContent = 0;
   applyValues();
@@ -822,7 +793,8 @@ $('btn-fit').onclick = fitCamera;
 
 /* ── Bootstrap ─────────────────────────────────────────── */
 
-S.nodePhases = S.nodePhases.map(wrapPhase);
+// Snap any stale near-period phases to zero on load.
+for (const n of S.engine.nodes) n.phase = wrapPhase(n.phase);
 syncControls();
 buildGraph();
 applyLabelVisibility();
