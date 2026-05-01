@@ -23,8 +23,8 @@ from [Chapter 1 §6](01-foundation.md):
 <!-- (-1/c²)∂²φ/∂t² + ∂²φ/∂S² + ∂²φ/∂u² = 0 -->
 $$
 -\frac{1}{c^2}\frac{\partial^2\varphi}{\partial t^2}
-+ \frac{\partial^2\varphi}{\partial S^2}
-+ \frac{\partial^2\varphi}{\partial u^2}
++\frac{\partial^2\varphi}{\partial S^2}
++\frac{\partial^2\varphi}{\partial u^2}
 = 0
 $$
 
@@ -93,8 +93,8 @@ Substituting into the wave equation:
 <!-- -(1/c²) T'' X U + T X'' U + T X U'' = 0 -->
 $$
 -\frac{1}{c^2}\,T''(t)\,X(S)\,U(u)
-+ T(t)\,X''(S)\,U(u)
-+ T(t)\,X(S)\,U''(u)
++T(t)\,X''(S)\,U(u)
++T(t)\,X(S)\,U''(u)
 = 0
 $$
 
@@ -106,8 +106,8 @@ the product vanishes, and we set it aside):
 <!-- -(1/c²) T''/T + X''/X + U''/U = 0 -->
 $$
 -\frac{1}{c^2}\,\frac{T''(t)}{T(t)}
-+ \frac{X''(S)}{X(S)}
-+ \frac{U''(u)}{U(u)}
++\frac{X''(S)}{X(S)}
++\frac{U''(u)}{U(u)}
 = 0
 $$
 

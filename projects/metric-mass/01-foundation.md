@@ -103,7 +103,11 @@ Or in matrix form, with coordinate ordering (t, S, u):
 
 <!-- g = diag(-c², 1, 1) -->
 $$
-g_{\mu\nu} = \begin{pmatrix} -c^2 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix}
+g_{\mu\nu} = \begin{pmatrix}
+-c^2 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{pmatrix}
 $$
 
 (For what a metric is and why we write it this way, see
@@ -275,8 +279,8 @@ with:
 <!-- (-1/c²)∂²φ/∂t² + ∂²φ/∂S² + ∂²φ/∂u² = 0 -->
 $$
 -\frac{1}{c^2}\frac{\partial^2\varphi}{\partial t^2}
-+ \frac{\partial^2\varphi}{\partial S^2}
-+ \frac{\partial^2\varphi}{\partial u^2}
++\frac{\partial^2\varphi}{\partial S^2}
++\frac{\partial^2\varphi}{\partial u^2}
 = 0
 $$
 
