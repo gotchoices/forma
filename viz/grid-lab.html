@@ -52,6 +52,7 @@
 }
 .label.l-edge { color: #f5f5f5; }
 .label.l-node { color: #fff2a0; }
+.label.l-inert { color: #888; opacity: 0.7; font-style: italic; }
 </style>
 </head>
 <body>
@@ -63,7 +64,21 @@
     <label>N</label>
     <input type="number" id="in-N" min="2" max="64" step="1" value="6">
   </div>
-  <div class="cg tog"><label><input type="checkbox" id="cb-wrap"> Wrap (ring)</label></div>
+  <div class="cg tog"><label><input type="checkbox" id="cb-periodic"> Periodic</label></div>
+  <div class="cg tog"><label><input type="checkbox" id="cb-wrap"> Wrap</label></div>
+
+  <div class="sep"></div>
+
+  <div class="cg">
+    <label>Preset</label>
+    <select id="sel-preset">
+      <option value="">—</option>
+      <option value="delta-L">Delta L</option>
+      <option value="delta-R">Delta R</option>
+      <option value="delta-2">Delta 2</option>
+      <option value="sin">Sin</option>
+    </select>
+  </div>
 
   <div class="sep"></div>
 
@@ -164,6 +179,8 @@ import {
   clear as engineClear,
   halfStep as engineHalfStep,
   wrapPhase as engineWrapPhase,
+  applyPreset as engineApplyPreset,
+  NO_HEAD,
 } from './grid-engine.js';
 
 const $ = id => document.getElementById(id);
@@ -177,7 +194,8 @@ const PROF_KEY   = 'grid-lab-profiles';
 
 const DEFAULT = {
   N: 6,
-  wrap: false,
+  periodic: false,      // logical closure — engine treats trailing edge as connected
+  wrap: false,          // visual roll into a ferris-wheel ring
   nodeDiam: 0.6,
   edgeLen: 1.0,
   units: 'deg',         // 'deg' | 'rad'
@@ -222,8 +240,14 @@ function loadState() {
     const txt = localStorage.getItem(STATE_KEY);
     if (txt) raw = JSON.parse(txt);
   } catch {}
+  // Migration: legacy state had a single `wrap` flag that did both jobs.
+  // If `periodic` is missing but `wrap` is present, mirror it so old
+  // ring sessions stay periodic-and-wrapped after the split.
+  if (raw.periodic === undefined && raw.wrap !== undefined) {
+    raw.periodic = raw.wrap;
+  }
   const s = { ...DEFAULT, ...raw };
-  s.engine = build1D(s.N, { wrap: s.wrap });
+  s.engine = build1D(s.N, { periodic: s.periodic });
   hydrateEngine(s.engine, raw.nodePhases, raw.edgeMags);
   delete s.nodePhases;
   delete s.edgeMags;
@@ -358,7 +382,10 @@ function wrapPhase(v) { return engineWrapPhase(v, engineConfig()); }
 function clearGraph() {
   graphGroup.clear();
   for (const n of nodes) { n.ringMat.dispose(); n.label?.remove(); }
-  for (const e of edges) { e.mat.dispose(); e.mesh.geometry.dispose(); e.label?.remove(); }
+  for (const e of edges) {
+    if (!e) continue;
+    e.mat.dispose(); e.mesh.geometry.dispose(); e.label?.remove();
+  }
   nodes.length = 0;
   edges.length = 0;
 }
@@ -399,20 +426,38 @@ function buildGraph() {
     nodes.push({ group, ringMat, ring, dot, frame: f, label });
   }
 
-  // Edges
-  const M = S.wrap ? S.N : S.N - 1;
-  for (let i = 0; i < M; i++) {
+  // Edges — one per unit cell, index-aligned with S.engine.edges.
+  // Trailing edge (i = N-1):
+  //   periodic + wrap   → closes the chain visually (joins node N-1 → node 0)
+  //   periodic + flat   → rendered as a stub (logical closure not visualized)
+  //   open + flat       → rendered as a stub (cosmetic — engine treats as inert)
+  //   open + wrap       → hidden (gap on the wheel shows the chain is open)
+  for (let i = 0; i < S.N; i++) {
+    const isTrailing = (i === S.N - 1);
+    const closeRing  = isTrailing && S.periodic && S.wrap;
+    const hide       = isTrailing && !S.periodic && S.wrap;
+
+    if (hide) { edges.push(null); continue; }
+
     const a = nodes[i].frame;
-    const b = nodes[(i + 1) % S.N].frame;
-    const pA = a.pos.clone().addScaledVector(a.localX, +a.r);
-    const pB = b.pos.clone().addScaledVector(b.localX, -b.r);
+    let pA = a.pos.clone().addScaledVector(a.localX, +a.r);
+    let pB;
+    if (isTrailing && !closeRing) {
+      // Stub: extend along the tail's +localX by edgeLen.
+      pB = pA.clone().addScaledVector(a.localX, S.edgeLen);
+    } else {
+      const b = nodes[(i + 1) % S.N].frame;
+      pB = b.pos.clone().addScaledVector(b.localX, -b.r);
+    }
 
     const dir = pB.clone().sub(pA);
     const len = dir.length();
     const mid = pA.clone().addScaledVector(dir, 0.5);
     const geo = new THREE.CylinderGeometry(EDGE_TUBE, EDGE_TUBE, len, 12);
+    const inert = isTrailing && !S.periodic;
     const mat = new THREE.MeshStandardMaterial({
       color: 0x808080, roughness: 0.55, metalness: 0.1,
+      transparent: inert, opacity: inert ? 0.55 : 1.0,
     });
     const mesh = new THREE.Mesh(geo, mat);
     mesh.position.copy(mid);
@@ -422,7 +467,8 @@ function buildGraph() {
     mesh.userData = { kind: 'edge', index: i };
     graphGroup.add(mesh);
     const label = makeLabel('l-edge');
-    edges.push({ mesh, mat, label, mid });
+    if (inert) label.classList.add('l-inert');
+    edges.push({ mesh, mat, label, mid, inert });
   }
 
   applyValues();
@@ -446,9 +492,11 @@ function applyValues() {
     }
   }
   for (let i = 0; i < edges.length; i++) {
+    const visual = edges[i];
+    if (!visual) continue;
     const v = S.engine.edges[i].value;
-    edges[i].mat.color = heatColor(v, range);
-    edges[i].label.textContent = fmtVal(v);
+    visual.mat.color = heatColor(v, range);
+    visual.label.textContent = fmtVal(v);
   }
 
   // Nodes → base color + phase dot position
@@ -477,6 +525,7 @@ function updateLabelPositions() {
     }
   }
   for (const e of edges) {
+    if (!e) continue;
     _projV.copy(e.mid);
     _projV.y += EDGE_LABEL_LIFT;
     _projV.project(camera);
@@ -619,7 +668,8 @@ function fitCamera() {
     const R = chord / (2 * Math.sin(Math.PI / S.N));
     extent = R * 2 + S.nodeDiam;
   } else {
-    extent = (S.N - 1) * (S.nodeDiam + S.edgeLen) + S.nodeDiam;
+    // Flat layout: N-1 unit cells between nodes plus the right-end stub.
+    extent = (S.N - 1) * (S.nodeDiam + S.edgeLen) + S.nodeDiam + S.edgeLen;
   }
   const d = Math.max(2.5, extent * 0.85);
   camera.position.set(0, d * 0.55, d * 1.1);
@@ -630,9 +680,11 @@ function fitCamera() {
 /* ── Info line ─────────────────────────────────────────── */
 
 function updateInfo() {
-  const M = S.wrap ? S.N : S.N - 1;
+  const topo =
+    (S.periodic ? 'periodic' : 'open') +
+    (S.wrap ? ' · wrapped' : '');
   $('info').textContent =
-    `mode: ${S.wrap ? 'ring' : '1D'} · N=${S.N} · edges=${M}` +
+    `${topo} · N=${S.N} · edges=${S.engine.edges.length}` +
     ` · rule: v${S.ruleVersion}` +
     ` · units: ${S.units}` +
     ` · k=${S.k.toFixed(2)}` +
@@ -683,7 +735,8 @@ $('sel-prof').onchange = () => {
   if (!profs[name]) return;
   const loaded = profs[name];
   S = { ...DEFAULT, ...loaded };
-  S.engine = build1D(S.N, { wrap: S.wrap });
+  if (S.periodic === undefined && loaded.wrap !== undefined) S.periodic = loaded.wrap;
+  S.engine = build1D(S.N, { periodic: S.periodic });
   hydrateEngine(S.engine, loaded.nodePhases, loaded.edgeMags);
   delete S.nodePhases;
   delete S.edgeMags;
@@ -698,7 +751,9 @@ $('sel-prof').onchange = () => {
 
 function syncControls() {
   $('in-N').value      = S.N;
+  $('cb-periodic').checked = S.periodic;
   $('cb-wrap').checked = S.wrap;
+  $('sel-preset').value = '';
   $('sl-diam').value   = S.nodeDiam;  $('v-diam').textContent = S.nodeDiam.toFixed(2);
   $('sl-edge').value   = S.edgeLen;   $('v-edge').textContent = S.edgeLen.toFixed(2);
   $('sel-units').value = S.units;
@@ -716,7 +771,7 @@ function rebuildGraphFromState() {
   // Rebuild engine if topology changed; preserve as many values as possible.
   const oldNodes = S.engine.nodes.map(n => n.phase);
   const oldEdges = S.engine.edges.map(e => e.value);
-  S.engine = build1D(S.N, { wrap: S.wrap });
+  S.engine = build1D(S.N, { periodic: S.periodic });
   hydrateEngine(S.engine, oldNodes, oldEdges);
   buildGraph();
   updateInfo();
@@ -729,8 +784,32 @@ $('in-N').oninput = e => {
   n = Math.max(2, Math.min(64, n));
   if (n !== S.N) { S.N = n; rebuildGraphFromState(); }
 };
+$('cb-periodic').onchange = e => {
+  S.periodic = e.target.checked;
+  rebuildGraphFromState();   // engine topology changed
+};
 $('cb-wrap').onchange = e => {
-  S.wrap = e.target.checked; rebuildGraphFromState(); fitCamera();
+  S.wrap = e.target.checked;
+  // Visual-only change: rebuild meshes but engine state is untouched.
+  buildGraph();
+  fitCamera();
+  updateInfo();
+  saveState();
+};
+$('sel-preset').onchange = e => {
+  const name = e.target.value;
+  if (!name) return;
+  engineApplyPreset(S.engine, name);
+  // Snap any preset-produced phases that are technically out of [0, period).
+  if (!S.accumMode) {
+    for (const n of S.engine.nodes) n.phase = wrapPhase(n.phase);
+  }
+  clockState = 0;
+  $('clock-display').textContent = clockState;
+  applyValues();
+  saveState();
+  // Reset the dropdown so the same preset can be re-applied (re-trigger onchange).
+  e.target.value = '';
 };
 $('sl-diam').oninput = e => {
   S.nodeDiam = parseFloat(e.target.value);

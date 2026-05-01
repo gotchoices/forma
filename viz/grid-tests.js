@@ -8,6 +8,7 @@
 import {
   build1D, clear, applyNodeRule, applyEdgeRule, halfStep, fullStep,
   wrapPhase, setPhase, setEdge, getPhase, getEdge,
+  applyPreset, listPresets, NO_HEAD,
 } from './grid-engine.js';
 
 /* ── Tiny test harness ─────────────────────────────────── */
@@ -68,40 +69,73 @@ const cfg = (over = {}) => ({
 /* ── Topology tests ────────────────────────────────────── */
 
 group('build1D — topology', () => {
-  test('open chain N=5: 5 nodes, 4 edges', () => {
+  test('open chain N=5: 5 nodes, 5 edges (last is dangling)', () => {
     const s = build1D(5);
     assertEq(s.nodes.length, 5);
-    assertEq(s.edges.length, 4);
-    assertEq(s.topology.wrap, false);
+    assertEq(s.edges.length, 5);
+    assertEq(s.topology.periodic, false);
+    assertEq(s.edges[4].head, NO_HEAD);
   });
 
-  test('ring N=5: 5 nodes, 5 edges', () => {
-    const s = build1D(5, { wrap: true });
+  test('ring N=5: 5 nodes, 5 edges (trailing closes the loop)', () => {
+    const s = build1D(5, { periodic: true });
     assertEq(s.nodes.length, 5);
     assertEq(s.edges.length, 5);
-    assertEq(s.topology.wrap, true);
+    assertEq(s.topology.periodic, true);
+    assertEq(s.edges[4].tail, 4);
+    assertEq(s.edges[4].head, 0);
   });
 
   test('open chain: boundary nodes have one edge, interior has two', () => {
     const s = build1D(5);
+    // node 0 is head of nothing, tail of edge 0; node N-1 is head of edge N-2
+    // and tail of inert edge N-1 (no incidence).
     assertEq(s.nodes[0].edges.length, 1);
     assertEq(s.nodes[4].edges.length, 1);
     assertEq(s.nodes[2].edges.length, 2);
   });
 
+  test('open chain: trailing edge has no incidence on any node', () => {
+    const s = build1D(5);
+    for (const n of s.nodes) {
+      for (const inc of n.edges) {
+        assertTrue(inc.idx !== 4, `node sees inert edge: idx=${inc.idx}`);
+      }
+    }
+  });
+
   test('ring: every node has two edges', () => {
-    const s = build1D(5, { wrap: true });
+    const s = build1D(5, { periodic: true });
     for (const n of s.nodes) assertEq(n.edges.length, 2);
   });
 
   test('connection angles: tail at phi=π, head at phi=0', () => {
-    const s = build1D(3);
-    // edge 0: tail=0, head=1
+    const s = build1D(3, { periodic: true });
     const e0 = s.edges[0];
     const tailIncidence = s.nodes[e0.tail].edges.find(x => x.idx === 0);
     const headIncidence = s.nodes[e0.head].edges.find(x => x.idx === 0);
     assertApprox(tailIncidence.phi, Math.PI);
     assertApprox(headIncidence.phi, 0);
+  });
+});
+
+group('inert trailing edge (open chain)', () => {
+  test('edge update skips dangling edge — value is preserved', () => {
+    const s = build1D(4);
+    const c = cfg();
+    setEdge(s, 3, 42);  // trailing edge
+    setPhase(s, 3, 7, c);  // tail node has phase, would normally drag the edge
+    applyEdgeRule(s, c);
+    assertApprox(getEdge(s, 3), 42, 1e-9, 'inert edge value unchanged:');
+  });
+
+  test('node update does not see the dangling edge', () => {
+    const s = build1D(4);
+    const c = cfg();
+    setEdge(s, 3, 100);
+    applyNodeRule(s, c);
+    // Without the dangling edge contributing, all nodes start and stay at 0.
+    for (let i = 0; i < 4; i++) assertApprox(getPhase(s, i), 0, 1e-9, `node ${i}:`);
   });
 });
 
@@ -226,7 +260,7 @@ group('v2 — two pulses pass through each other', () => {
 group('v2 — ring propagation', () => {
   test('right-going pulse on a ring returns to origin after N cycles', () => {
     const N = 6;
-    const s = build1D(N, { wrap: true });
+    const s = build1D(N, { periodic: true });
     const c = cfg();
     // A bare phase impulse excites both wave-equation directions on a
     // periodic ring (no boundary to break symmetry).  To launch a clean
@@ -241,21 +275,80 @@ group('v2 — ring propagation', () => {
   });
 
   test('bare phase impulse on a ring splits into two counter-rotating pulses', () => {
-    // Documents the symmetric-launch behaviour: with no edge seed the
-    // initial energy goes both directions, so the Nyquist-like checkerboard
-    // mode at the CFL boundary (k=1) lets amplitudes oscillate.  This is
-    // expected — not a propagation failure.
     const N = 6;
-    const s = build1D(N, { wrap: true });
+    const s = build1D(N, { periodic: true });
     const c = cfg();
     setPhase(s, 0, 30, c);
     let clock = 0;
     clock = fullStep(s, c, clock);
-    // After one full cycle the seed has split: equal-amplitude pulses
-    // appeared at indices 1 and N-1, with index 0 inverted.
     assertApprox(getPhase(s, 1),     30, 1e-9, 'right branch:');
     assertApprox(getPhase(s, N - 1), 30, 1e-9, 'left  branch:');
     assertApprox(getPhase(s, 0),    -30, 1e-9, 'origin recoil:');
+  });
+});
+
+group('presets', () => {
+  test('listPresets returns the four documented names', () => {
+    const names = listPresets();
+    assertTrue(names.includes('delta-L'), 'delta-L missing');
+    assertTrue(names.includes('delta-R'), 'delta-R missing');
+    assertTrue(names.includes('delta-2'), 'delta-2 missing');
+    assertTrue(names.includes('sin'),     'sin missing');
+  });
+
+  test('delta-L on periodic ring propagates right cleanly', () => {
+    const N = 8;
+    const s = build1D(N, { periodic: true });
+    const c = cfg();
+    applyPreset(s, 'delta-L');
+    let clock = 0;
+    for (let i = 0; i < 4; i++) clock = fullStep(s, c, clock);
+    assertApprox(getPhase(s, 4), 30, 1e-9, 'pulse at idx 4 after 4 cycles:');
+    for (let i = 0; i < N; i++) {
+      if (i !== 4) assertApprox(getPhase(s, i), 0, 1e-9, `idx ${i}:`);
+    }
+  });
+
+  test('delta-R on periodic ring propagates left cleanly', () => {
+    const N = 8;
+    const s = build1D(N, { periodic: true });
+    const c = cfg();
+    applyPreset(s, 'delta-R');
+    let clock = 0;
+    for (let i = 0; i < 4; i++) clock = fullStep(s, c, clock);
+    // Pulse started at idx N-1=7, moved left 4 steps → idx 3.
+    assertApprox(getPhase(s, 3), 30, 1e-9, 'pulse at idx 3 after 4 cycles:');
+    for (let i = 0; i < N; i++) {
+      if (i !== 3) assertApprox(getPhase(s, i), 0, 1e-9, `idx ${i}:`);
+    }
+  });
+
+  test('delta-2 on periodic ring: pulses meet and pass through', () => {
+    const N = 8;
+    const s = build1D(N, { periodic: true });
+    const c = cfg();
+    applyPreset(s, 'delta-2');
+    let clock = 0;
+    // Cycle 5: right-going pulse from idx 0 reaches idx 5; left-going
+    // pulse from idx 7 reaches idx 2.  By linear superposition the two
+    // are independent and have crossed past each other.
+    for (let i = 0; i < 5; i++) clock = fullStep(s, c, clock);
+    assertApprox(getPhase(s, 2), 30, 1e-9, 'left pulse at idx 2:');
+    assertApprox(getPhase(s, 5), 30, 1e-9, 'right pulse at idx 5:');
+  });
+
+  test('sin on periodic ring: shape preserved after N cycles (rotation)', () => {
+    const N = 8;
+    const s = build1D(N, { periodic: true });
+    const c = cfg();
+    applyPreset(s, 'sin');
+    const initial = s.nodes.map(n => n.phase);
+    let clock = 0;
+    for (let i = 0; i < N; i++) clock = fullStep(s, c, clock);
+    // After N cycles a unit-speed traveling wave returns to its start.
+    for (let i = 0; i < N; i++) {
+      assertApprox(getPhase(s, i), initial[i], 1e-6, `idx ${i}:`);
+    }
   });
 });
 

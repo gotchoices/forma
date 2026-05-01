@@ -18,12 +18,11 @@ We will build simple structures from scratch that can evolve from 1 to 2 to 3 di
 - The length of nodes and the diameter of circles is set to a default value of 1 each.  But these values are independently settable, but global (applies to all edges and nodes in the graph).
 - The node value is globally configurable to accumulate or not as it crosses the periodic boundary.  In accumulation mode, the value is unbounded — 360 → 361 is allowed, and values like 720 or -270 are valid.  In wrap mode, the value lives strictly in the half-open range [0, period): zero is valid, but the period itself (360° or 2π) is **not** — it is identical to zero and must fold back.  Implementations must enforce this so that floating-point noise near the period also snaps to zero; the user should never see a displayed 360 (or 2π) in wrap mode.  So the sequence is 358 → 359 → 0, never 358 → 359 → 360 → 0.
 - The simple node and edge lay flat in xz so the line is along x and the node circle is in the xz plane, centered on x.  The edge intersects the circle normal to the circle
-- To build a linear array of primitives, we repeat the node-edge-node-edge-node along an axis
+- To build a linear array of primitives, we repeat the (node, edge) unit cell N times along an axis: an array of N units has N nodes and N edges.  In an open chain (not periodic), the trailing edge has no head node — it is visualized as a stub for unit-cell symmetry but is inert (it does not participate in the update rules and is not seen by any node).  When the chain is periodic the trailing edge closes the loop, connecting node N-1 back to node 0.
 - Each node has an angular orientation where (for a 1D array) 0 points in the -x direction.  So each new node connected to the array connects to the previous edge at its own 0 point.  The 180 degree point (+x direction) will be where the next edge will connect to this node.
 - Likewise, each edge has a directional orientation, a tail and a head.  In the 1D case, each edge has its tail in -x and its head in +x (connecting to each new node).
-- A 1D linear array can be wrapped into a circle, making it periodic — picture a ferris wheel with its axle along z.  The wrap circle lies in the xy plane, centered at the origin, with nodes spaced around its rim at the wheel's radius (derived from the array length).  Going from one node to the next is a small rotation about the z axis.  Each node circle reorients so its normal points radially outward from the axle, and edges curve along the rim, tangent to the wheel.
-- The controls allow one to build a linear array with a specified number of nodes.
-- The controls also allow selectively to wrap the array into a circle.  The diameter/radious of the circle is derived by the number of primitives in the array.
+- The chain has two independent boolean properties: *periodic* (logically closed, the trailing edge connects back to node 0) and *wrap* (visually rolled into a ring).  Periodic without wrap leaves the array drawn flat with the trailing edge as a stub, but the engine still treats it as connected to node 0.  Wrap rolls the chain into a vertical ring — picture a ferris wheel with its axle along z, the wrap circle in the xy plane, centered at the origin, with nodes spaced around its rim at the wheel's radius (derived from the array length).  Going from one node to the next is a small rotation about the z axis.  Each node circle reorients so its normal points radially outward from the axle, and edges curve along the rim, tangent to the wheel.  In wrap mode without periodic, the trailing edge is hidden and the visible chain forms an arc with one segment missing.
+- The controls allow one to build a linear array with a specified number of unit cells (N), mark the array periodic, and toggle the visual wrap independently.  When wrapped, the diameter of the circle is derived from the number of unit cells.
 
 ## Clock
 - There is a master clock that displays as 0 or 1
@@ -82,7 +81,16 @@ Each node should be a uniform color but have a bright dot to indicate its curren
 In addition to graphical rendering, each primitive shall be able to display a numeric value.  These should be legible at a single font regardless of zoom value and display in proximity, to the primitive and always right-side-up regardless of the primitive's rotation.  Near center of mass for each primitive is a good place for the numeric display, slightly elevated in y for edges (so it isn't buried in the edge thickness).  Numeric display may be turned on/off globally.
 
 ## Initial Conditions
-The user can click on a primitive to set its value.  A small popup box will accept the value and write it in.  There is also a global clear button to reset all values to zero.  In later iterations, we will have functions for injecting wave functions.
+The user can click on a primitive to set its value.  A small popup box will accept the value and write it in.  There is also a global clear button to reset all values to zero.
+
+A pulldown menu offers preloaded initial states for common test cases.  Selecting a preset clears the chain and overwrites all values.  In each delta-style preset, both a node phase and an edge value are set: in periodic mode the edge value is needed to cancel the would-be opposite-direction branch and yield a clean directional pulse, and in an open chain the boundary already breaks symmetry so the edge seed is cosmetic but kept for consistency.
+
+- **Delta L** — single impulse at the left end set up to propagate right.  Sets node 0's phase and the trailing edge's value (positive sign).
+- **Delta R** — single impulse at the right end set up to propagate left.  Sets node N-1's phase and the trailing edge's value (negative sign — opposite to Delta L).
+- **Delta 2** — both Delta L and Delta R simultaneously, so the two pulses meet and pass through each other in the middle.  Both endpoint nodes are set; the trailing-edge contributions cancel and it remains zero.
+- **Sin** — a smooth sinusoidal traveling-wave initial condition: nodes carry a cosine pattern around the chain, and edges carry the matching half-cell-shifted sine pattern (so on a periodic ring at k=1 it propagates right at one cell per cycle without distortion).
+
+In later iterations, we will add additional injection presets (Gaussian wavepackets, multi-mode mixes, etc.).
 
 ## MVP
 For first iteration, we should be able to build the 1D array of specified length and optionally wrap it into a ring (ferris-wheel orientation).  Further, higher degrees will be deferred for now.

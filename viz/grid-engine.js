@@ -18,24 +18,38 @@ const TAU = Math.PI * 2;
 
 /* ── Topology builders ────────────────────────────────── */
 
-/** Build a 1D linear (or ring, if `wrap`) chain of N nodes. */
-export function build1D(N, { wrap = false } = {}) {
+/** Sentinel for an edge with no head node (inert dangling edge). */
+export const NO_HEAD = -1;
+
+/**
+ * Build a 1D chain of N (node, edge) unit cells.  Always N nodes and
+ * N edges.  In `periodic` mode the trailing edge connects node N-1
+ * back to node 0; in open mode (default) it dangles with head = NO_HEAD
+ * and is inert — its update is skipped and it is not seen by any node.
+ */
+export function build1D(N, { periodic = false } = {}) {
   if (N < 2) throw new Error('build1D: N must be at least 2');
   const nodes = [];
   for (let i = 0; i < N; i++) nodes.push({ phase: 0, edges: [] });
 
   const edges = [];
-  const M = wrap ? N : N - 1;
-  for (let i = 0; i < M; i++) {
+  for (let i = 0; i < N; i++) {
     const tail = i;
-    const head = (i + 1) % N;
+    let head;
+    if (i < N - 1)        head = i + 1;
+    else if (periodic)    head = 0;
+    else                  head = NO_HEAD;
     edges.push({ value: 0, tail, head });
-    // From the tail's perspective, the edge departs at phi=π (the +x point);
-    // from the head's perspective it arrives at phi=0 (the -x point).
-    nodes[tail].edges.push({ idx: i, phi: Math.PI });
-    nodes[head].edges.push({ idx: i, phi: 0 });
+    if (head !== NO_HEAD) {
+      // From the tail's perspective, the edge departs at phi=π (the +x point);
+      // from the head's perspective it arrives at phi=0 (the -x point).
+      nodes[tail].edges.push({ idx: i, phi: Math.PI });
+      nodes[head].edges.push({ idx: i, phi: 0 });
+    }
+    // If head is NO_HEAD, the edge has no incidence on any node — it is
+    // purely cosmetic state that the rules never touch.
   }
-  return { nodes, edges, topology: { kind: '1D', N, wrap } };
+  return { nodes, edges, topology: { kind: '1D', N, periodic } };
 }
 
 /** Stub.  Will lay out a 2D rectangular lattice with optional periodicity. */
@@ -96,6 +110,7 @@ export function applyNodeRule(state, config) {
 export function applyEdgeRule(state, config) {
   const { k = 1, ruleVersion = 2 } = config;
   const next = state.edges.map(edge => {
+    if (edge.head === NO_HEAD) return edge.value;  // inert dangling edge
     const tail = state.nodes[edge.tail].phase;
     const head = state.nodes[edge.head].phase;
     if (ruleVersion === 2) return edge.value + (tail - head) * k;
@@ -133,3 +148,68 @@ export function setPhase(state, i, v, config = {}) {
   state.nodes[i].phase = wrapPhase(v, config);
 }
 export function setEdge(state, i, v) { state.edges[i].value = v; }
+
+/* ── Presets (initial-condition library) ───────────────── */
+
+/**
+ * Set up a clean right-going single-cell impulse at the left end.
+ *   - In periodic mode, the trailing-edge value cancels the would-be
+ *     left-going branch, leaving a pure right-going pulse.
+ *   - In open mode, the boundary at node 0 already breaks symmetry; the
+ *     edge value is cosmetic but kept for consistency.
+ */
+function presetDeltaL(state, { amplitude = 30 } = {}) {
+  clear(state);
+  const N = state.nodes.length;
+  state.nodes[0].phase = amplitude;
+  state.edges[N - 1].value = amplitude;
+}
+
+/** Symmetric to Delta L but seeded at the right end and propagating left. */
+function presetDeltaR(state, { amplitude = 30 } = {}) {
+  clear(state);
+  const N = state.nodes.length;
+  state.nodes[N - 1].phase = amplitude;
+  state.edges[N - 1].value = -amplitude;
+}
+
+/** Two pulses (left-end going right, right-end going left).  The two
+ *  edge biases sum to zero, so the trailing edge stays at zero. */
+function presetDelta2(state, { amplitude = 30 } = {}) {
+  clear(state);
+  const N = state.nodes.length;
+  state.nodes[0].phase = amplitude;
+  state.nodes[N - 1].phase = amplitude;
+}
+
+/**
+ * Smooth right-going traveling sinusoidal wave: cosine on nodes, sine
+ * (half-cell shifted) on edges.  On a periodic ring at k=1 this is an
+ * exact eigenmode of the Yee scheme and propagates without distortion.
+ */
+function presetSin(state, { amplitude = 30 } = {}) {
+  clear(state);
+  const N = state.nodes.length;
+  for (let i = 0; i < N; i++) {
+    state.nodes[i].phase = amplitude * Math.cos(2 * Math.PI * i / N);
+  }
+  for (let i = 0; i < state.edges.length; i++) {
+    if (state.edges[i].head === NO_HEAD) continue;
+    state.edges[i].value = amplitude * Math.sin(2 * Math.PI * (i + 0.5) / N);
+  }
+}
+
+const PRESETS = {
+  'delta-L': presetDeltaL,
+  'delta-R': presetDeltaR,
+  'delta-2': presetDelta2,
+  'sin':     presetSin,
+};
+
+export function applyPreset(state, name, opts = {}) {
+  const fn = PRESETS[name];
+  if (!fn) throw new Error(`Unknown preset: ${name}`);
+  fn(state, opts);
+}
+
+export function listPresets() { return Object.keys(PRESETS); }
