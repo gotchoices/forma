@@ -1,4 +1,4 @@
-# Model: model-F (11D α-derivable architecture) ⟵ ACTIVE
+# Model: model-F (11D α-accurate architecture) ⟵ ACTIVE
 
 **Status:** Active — R60 complete through Track 20; R62 derivation 7d closes the spin story
 **Code:** [`studies/R60-metric-11/scripts/track1_solver.py`](../studies/R60-metric-11/scripts/track1_solver.py) (primitives) plus R60 tracks

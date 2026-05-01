@@ -1,9 +1,9 @@
 # metric-mass
 
 **Type:** Educational project (see [../README.md](../README.md))
-**Scope:** Mass generation only. Charge will be a separate project.
-**Method:** Mathematical derivation first; computation only if a
-  question can't be settled on paper.
+**Scope:** Mass generation only. Charge is handled in [metric-charge](../metric-charge/).
+**Method:** Mathematical derivation first; computation only if a question can't be settled on paper.
+**Status:** Provisionally complete — eight chapters in place; follow-up work listed below.
 
 ## Why this project exists
 
@@ -47,7 +47,7 @@ we ever write feel obvious, not mysterious.
 | **t** | Time | Extended, real |
 | **S** | Spatial extension | Extended, real (1D in this project) |
 | **u** | Compact, mass-generating | Compact: u ~ u + L_u |
-| **w** | Compact, charge-generating | (out of scope — future project) |
+| **w** | Compact, charge-generating | (out of scope here — see [metric-charge](../metric-charge/)) |
 | **v** | Reserved | (possible third compact direction) |
 
 x, y, z are reserved for Cartesian visualization axes when we render
@@ -93,91 +93,25 @@ mass.
 
 ## Chapters
 
-1. [01-foundation.md](01-foundation.md) — Axioms and givens. The
-   minimal manifold, metric, and wave field on which the rest of
-   the project rests.
-2. [02-mass-from-u.md](02-mass-from-u.md) — Solve the wave equation
-   on M. Derive the mode structure (a separable family labeled by
-   integer n and continuous k_S), the dispersion relation, and the
-   discrete rest-mass spectrum m_n = ℏ\|n\|/(R_u c). Includes the
-   inertial proof that the candidate mass behaves operationally as
-   inertial mass via p_S = m_n · v_g in the slow-motion limit.
+1. [01-foundation.md](01-foundation.md) — *Foundation.* Axioms and givens: the minimal manifold (t, S, u), the bare diagonal metric, and the scalar wave field that the rest of the project derives from.
 
-### Tentative downstream arc
+2. [02-mass-from-u.md](02-mass-from-u.md) — *Mass from u.* Mode structure of the wave equation on M, the dispersion relation, the discrete rest-mass spectrum m_n = ℏ\|n\|/(R_u c), and the inertial proof that this mass behaves operationally as inertial mass via p_S = m_n · v_g in the slow-motion limit.
 
-The chapters below are *plausible follow-ups*, not commitments.
-The project is allowed to redirect based on what each chapter's
-math actually reveals. None of these is asserting an answer —
-they are framing questions to be examined.
+3. [03-examining-the-modes.md](03-examining-the-modes.md) — *Examining the modes.* Confirm n = 0 modes behave as ordinary light. Derive the *helical phase contour* of n ≠ 0 modes in (t, S, u) — the helix lives in phase structure, not in the particle's spatial path, which keeps mass cleanly separate from charge. Examines what the sign of n carries (matter/antimatter analog). Visualization figures included.
 
-3. [03-examining-the-modes.md](03-examining-the-modes.md) —
-   *Examining the modes.* Take the n = 0 and n ≠ 0 mode families
-   separately. Confirm the n = 0 mode behaves exactly like
-   ordinary light. Work out the shape of the n ≠ 0 modes in
-   (t, S, u) space — specifically, how the wave packet's
-   straight worldline along S combines with the wave's u-winding
-   to produce a *helical phase contour* threading through the
-   manifold. (The helix lives in the wave's phase structure, not
-   in the particle's spatial path; this distinction is what
-   keeps mass cleanly separate from charge.) Includes a section
-   examining what the *sign* of n carries physically: in
-   standard KK with compact momentum read as charge, ±n gives
-   the matter/antimatter distinction; what is the analog in our
-   mass-only setup? Visualization figures included.
-4. [04-mode-interactions.md](04-mode-interactions.md) —
-   *Mode interactions: what happens when ±n meet?* Use linear
-   superposition to predict what happens when a +n and a −n
-   packet collide, and what a static superposition of the two
-   looks like. Establishes that linear theory predicts
-   pass-through (no annihilation), 2× rest mass (no inertia
-   shielding), and a clearly non-light state when ±n are
-   overlapped. Settles which candidate readings of the ±n
-   distinction survive on this minimal manifold and which
-   require nonlinear physics to evaluate.
-5. [05-metric-self-consistency.md](05-metric-self-consistency.md) —
-   *Self-consistency of the bare metric.* Examine whether the
-   diagonal-and-constant metric of chapter 1 remains internally
-   consistent with the solutions chapter 2 produced — or whether
-   the solutions force any modification.
-6. [06-gravitational-bending.md](06-gravitational-bending.md) —
-   *Gravitational bending and the ±n cancellation question.*
-   Extend the framework with linearized GR (or a Newtonian proxy)
-   to ask whether mass on M bends spacetime, and crucially
-   whether a static ±n superposition cancels or doubles that
-   bending. Settles the gravitational half of the
-   inertia-shielding question started in chapter 4.
-7. [07-shear-and-bias.md](07-shear-and-bias.md) —
-   *Off-diagonal shear and the breaking of ±n degeneracy.*
-   Asks the converse of chapter 5's question: given an
-   off-diagonal shear g_Su (from any source), what does it do
-   to ±n modes? Derives that shear lifts the ±n degeneracy
-   for moving modes via an n-linear cross-term in the dispersion
-   relation, but that the (k_S, n) → (−k_S, −n) symmetry of the
-   sheared dispersion is exact — so pure thermal equilibrium
-   gives direction-correlated asymmetry without net ±n
-   population bias. Identifies shear as supplying one of the
-   three Sakharov ingredients for baryogenesis (a CP-violation
-   analog), not the whole mechanism.
-8. [08-closing-summary.md](08-closing-summary.md) —
-   *Closing summary.* Consolidate what the project established,
-   ruled out, and unexpectedly found. Make the open questions
-   legible. Hand off to follow-up projects (charge, gravity
-   mechanism, cosmological shear dynamics).
+4. [04-mode-interactions.md](04-mode-interactions.md) — *Mode interactions: what happens when ±n meet?* Linear superposition predicts pass-through (no annihilation), 2× rest mass (no inertia shielding), and a clearly non-light state when ±n overlap. Settles which candidate readings of the ±n distinction survive on the bare manifold and which require nonlinear physics to evaluate.
 
-Each chapter is added one at a time. The arc is a sketch, not a
-contract.
+5. [05-metric-self-consistency.md](05-metric-self-consistency.md) — *Self-consistency of the bare metric.* Under linearized Einstein equations, a single massive mode sources g_tu — the diagonal metric is *not* self-consistent in the presence of mass. A static ±n superposition cancels that source exactly, preserving the diagonal form. Establishes the off-diagonal sourcing as structurally parallel to standard Kaluza-Klein.
 
-## Project status
+6. [06-gravitational-bending.md](06-gravitational-bending.md) — *Gravitational bending and the ±n cancellation question.* Mass on M bends spacetime; a static ±n superposition *doubles* (not cancels) that bending. Settles the gravitational half of the inertia-shielding question started in chapter 4.
 
-**Provisionally complete.** All eight chapters are in place as
-full prose. The project's narrow question has been answered,
-and the structural results are documented. Further development
-can happen on demand.
+7. [07-shear-and-bias.md](07-shear-and-bias.md) — *Off-diagonal shear and the breaking of ±n degeneracy.* A given off-diagonal shear g_Su lifts the ±n degeneracy for moving modes via an n-linear cross-term in the dispersion relation. The (k_S, n) → (−k_S, −n) symmetry of the sheared dispersion remains exact, so thermal equilibrium gives direction-correlated asymmetry without net ±n population bias. Identifies shear as a Sakharov CP-violation analog — one ingredient for baryogenesis, not the whole mechanism.
+
+8. [08-closing-summary.md](08-closing-summary.md) — *Closing summary.* What the project established, ruled out, and unexpectedly found. Open questions made legible. Hand-off to follow-up projects (charge, gravity mechanism, cosmological shear dynamics).
 
 ## TODOs / pending work
 
-The project is structurally finished, but several pieces of
-work remain available if desired:
+The project is structurally finished, but several pieces of work remain available if desired:
 
 ### Figures and animations
 
