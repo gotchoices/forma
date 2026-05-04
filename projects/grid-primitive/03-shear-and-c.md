@@ -1,8 +1,6 @@
 # Chapter 3 — Shear and *c*
 
-**Status:** outline — sections are framed but not yet infilled. Awaiting review before the algebra is written out.
-
-This chapter takes the wave dynamics derived in [02-wave-on-a-primitive.md](02-wave-on-a-primitive.md) — two propagating modes with speeds *c*_± = √λ_± — and confronts them with the lattice signal speed *c* required by GRID axiom A1. The question is whether the constraint that perturbations cross one cylinder in transit time τ = *L*/*c* fixes the primitive's parameters uniquely or leaves a one-parameter family of solutions.
+This chapter takes the wave dynamics derived in [02-wave-on-a-primitive.md](02-wave-on-a-primitive.md) — two propagating modes with speeds *c*₊ and *c*₋, generally unequal when the chiral coupling *K_eφ* > 0 — and confronts them with the lattice signal speed *c* required by GRID axiom A1. The question is whether matching the cylinder's internal dynamics to the lattice cadence pins the primitive's parameters uniquely or leaves a family of solutions.
 
 This chapter settles open question 1 of [README.md](README.md).
 
@@ -13,117 +11,178 @@ This chapter settles open question 1 of [README.md](README.md).
 | § | Concept |
 |---|---------|
 | 1 | The constraint: cylinder transit time matches lattice cadence |
-| 2 | Two modes, two speeds — which one is *c*? |
-| 3 | Three candidate identifications and what each implies |
+| 2 | Two mode speeds, one *c* — which is which? |
+| 3 | Three candidate identifications |
 | 4 | Imposing the constraint algebraically |
 | 5 | Combining with equipartition (χ̃ = 1/√2) |
 | 6 | What pins, what stays free |
-| 7 | The two-modes vs vacuum-Maxwell tension — flagged for resolution |
+| 7 | The two-modes vs vacuum-Maxwell tension |
 | 8 | Summary of givens |
 
 ---
 
 ## 1. The constraint — cylinder transit time matches lattice cadence
 
-Goal: state the constraint cleanly. The lattice signal speed *c* is set by axiom A1 (one cell per tick, one lattice spacing per time step). For the cylinder primitive of length *L*, the transit time τ = *L*/*c* is what the lattice cadence requires for information to traverse the cylinder. This must equal the time the cylinder's *internal* dynamics actually take to transmit a perturbation.
+GRID axiom A1 fixes a single propagation speed for the lattice: one cell per tick, one Planck length per Planck time. Call this speed *c*. Inside the cylinder primitive, a perturbation entering at one end takes some real amount of time *τ* to reach the other end. Two relations hold a priori:
 
-*To infill:* the precise statement of the constraint, distinguishing definitional τ = *L*/*c* (always true by definition) from the substantive equality between the cylinder's internal wave speed and *c* (which is a real algebraic constraint).
+- **Definitional.** *τ* = *L*/*c*. This is just unit conversion: the *cadence* of the lattice (one cell per tick) measured against the cylinder's length *L*.
+- **Substantive.** *τ* = *L* / *c*_internal, where *c*_internal is whatever speed the cylinder's *own* dynamics propagate a perturbation. This is an algebraic statement about the cylinder's stiffness matrix, mass density, and shear coupling.
+
+Both are facts about the same *τ*, so they must agree:
+
+*c*_internal = *c*
+
+This is not a tautology. The left-hand side is determined by the cylinder's symbolic constants (the entries of *M*, the inertias ρ and *I_φ*, and the geometry *r*). The right-hand side is a single number set by the lattice. Forcing one to equal the other is a real constraint on the primitive.
+
+The substantive question of this chapter is: *what does this constraint pin down, and what does it leave free?*
 
 ---
 
-## 2. Two modes, two speeds — which one is *c*?
+## 2. Two mode speeds, one *c* — which is which?
 
-Goal: surface the choice that has to be made. Chapter 2 derived two natural mode speeds *c*_+ and *c*_− with *c*_+ > *c*_− whenever χ̃ > 0 (chirality splits them). The lattice signal speed *c* is a single number. So at most one of *c*_± can equal *c* directly; alternatively, *c* could be some effective combination.
+Chapter 2 derived the dispersion relation for waves on a single cylinder. The result was *two* propagating modes per primitive:
 
-*To infill:* the framing of the question — three candidate readings of "the cylinder propagates at *c*":
+ω²(*k*) = *k*² · λ_±,    *c*_± = √λ_±
 
-- Identify *c* with *c*_+ (the fast mode is light).
-- Identify *c* with *c*_− (the slow mode is light).
-- Identify *c* with an effective average (both modes contribute).
+with λ_± the two eigenvalues of the matrix *D*⁻¹*M*, where *D* = diag(ρ, *I_φ*). When the off-diagonal *K_eφ* is nonzero (which is required for propagation at all — chapter 2 §7), the two eigenvalues split:
 
-Each has consequences. The chapter examines each in turn.
+*c*_+ > *c*_−
+
+Both are real; both correspond to physical waves; they differ in which polarization (which mix of strain magnitude and azimuthal direction) is propagating.
+
+The lattice signal speed *c* is, by contrast, a *single* number. So the equation "*c*_internal = *c*" is ambiguous: which mode is "the internal speed"? The cylinder has two. We have to decide what to identify *c* with.
+
+This is not a mathematical question — it is a *modeling* question, asking which of the cylinder's modes plays the role of "light" at the lattice scale.
 
 ---
 
 ## 3. Three candidate identifications
 
-Goal: lay out the three candidates side by side.
+Three candidates present themselves.
 
-*To infill, for each:*
+**Candidate A.** *c*_+ = *c*. The fast mode is identified with the lattice signal speed. The slow mode is something else — a second physical excitation that propagates more slowly than light at every point. It might decouple from the photon sector (a heavy mode), or be a massive matter-like excitation, or be screened in the continuum limit. It exists, but it is not what we call light.
 
-- **Candidate A: *c*_+ = *c*.** The fast mode is identified as light; the slow mode is something else (a "matter-like" excitation that does not propagate at *c* and may not show up as light at the lattice scale). Implications: there is a second mode at every cylinder, but its physics is distinct from photon physics.
+**Candidate B.** *c*_− = *c*. The slow mode is identified with light. The fast mode is some superluminal excitation. This is incompatible with GRID axiom A1, which states that nothing propagates faster than *c*: information travels strictly at one cell per tick along causal directions. A faster mode would violate causality on the lattice. Candidate B is therefore not viable.
 
-- **Candidate B: *c*_− = *c*.** The slow mode is light; the fast mode is some superluminal excitation. This is unphysical for vacuum Maxwell and is rejected on physical grounds, but it is worth showing why.
+**Candidate C.** *c*_+ = *c*_− = *c*. Both modes propagate at the same speed. This requires the two eigenvalues λ_+ and λ_− to be equal — the matrix *D*⁻¹*M* must be a scalar multiple of the identity. For our 2 × 2 *M* with positive *K_ee* and *K_φφ*, the only way to make the eigenvalues coincide is for the discriminant in the quadratic formula to vanish:
 
-- **Candidate C: *c*_+ = *c*_− = *c*.** Both modes propagate at the same speed. This requires the matrix *M* to have degenerate eigenvalues; given χ̃ > 0, the only way to get degeneracy in our 2 × 2 *M* is at the stability boundary (χ̃ = 1), where one mode collapses. So Candidate C is incompatible with the stable-range commitment of theory 3.
+(*K_ee*/ρ − *K_φφ*/*I_φ*)² + 4 *K_eφ*² / (ρ *I_φ*) = 0
 
-*To infill:* the elimination of B and C, leaving A as the working choice (with a flag in §7 about whether the residual second mode causes trouble for vacuum Maxwell).
+Both terms are non-negative, so the only solution is *K_ee*/ρ = *K_φφ*/*I_φ* AND *K_eφ* = 0. But *K_eφ* = 0 contradicts chapter 2's theorem 2 (shear is necessary for propagation): the two channels would decouple and waves could not propagate as coupled stretch-and-twist motions. Candidate C is therefore inconsistent with the propagation requirement.
+
+Candidates B and C are eliminated. **Candidate A is the working hypothesis.**
+
+That choice has a downstream cost: the cylinder primitive carries a second propagating mode at a different (slower) speed than light. Whether this contradicts vacuum Maxwell at the lattice scale, or is reconciled by the lattice assembly in later chapters, is taken up in §7.
 
 ---
 
 ## 4. Imposing the constraint algebraically
 
-Goal: with Candidate A fixed (*c*_+ = *c*), write the constraint equation and solve symbolically.
+With Candidate A fixed, the constraint is:
 
-*To infill:* using the closed form λ_+ from chapter 2 §4 with the simplifying assumption ρ = *I_φ* and *K_ee* = *K_φφ* ≡ *K* (kept consistent with chapter 2's treatment), the constraint reduces to:
+*c*² = λ_+
+
+Substituting from chapter 2 §4:
+
+<!-- c² = (1/2)[K_ee/ρ + K_φφ/I_φ + √((K_ee/ρ − K_φφ/I_φ)² + 4 K_eφ²/(ρ I_φ))] -->
+$$
+c^2 = \tfrac{1}{2}\!\left[\,\frac{K_{ee}}{\rho} + \frac{K_{\varphi\varphi}}{I_\varphi}
+\;+\; \sqrt{\!\left(\frac{K_{ee}}{\rho} - \frac{K_{\varphi\varphi}}{I_\varphi}\right)^{\!2}
++ \frac{4\,K_{e\varphi}^{2}}{\rho\, I_\varphi}}\,\right]
+$$
+
+This is one equation in five symbolic constants: *K_ee*, *K_φφ*, *K_eφ*, ρ, *I_φ*. It is a real constraint; it pins one combination of these five.
+
+To make the structure visible without losing the substance, take the simplifying special case where the longitudinal and azimuthal "natural frequencies" coincide:
+
+ρ = *I_φ*       and       *K_ee* = *K_φφ* ≡ *K*
+
+This is not a derivation; it is a working assumption that strips the algebra to one symbolic stiffness *K* and one symbolic inertia ρ. The general case has the same structural conclusion (one constraint, several free parameters), but the formulas are messier. We will note where the general case differs from the special case and flag any conclusion that depends on the assumption.
+
+Under this special case, the eigenvalues simplify to (chapter 2 §6):
+
+λ_± = (*K*/ρ)(1 ± χ̃),    where χ̃ = *K_eφ* / √(*K_ee* · *K_φφ*) = *K_eφ*/*K*.
+
+The constraint *c*² = λ_+ becomes:
 
 *c*² = (*K*/ρ)(1 + χ̃)
 
-(or equivalently in terms of *L*, *r*, the underlying material constants — to be worked out).
-
-This is one equation in five symbolic constants (*K_ee*, *K_φφ*, *K_eφ*, ρ, *I_φ*) — or, after the simplifying reduction, in three (*K*, ρ, χ̃). One constraint among multiple parameters does not pin everything; it pins one combination.
+— a single equation in *K*, ρ, and χ̃. One constraint, three quantities — two combinations remain free.
 
 ---
 
 ## 5. Combining with equipartition (χ̃ = 1/√2)
 
-Goal: combine the *c* constraint from §4 with the equipartition value from chapter 2 §7.
+Chapter 2 §7 identified χ̃ = 1/√2 as the *natural* shear value — the equipartition point at which the propagating modes carry equal energy in their strain and azimuthal channels. Equipartition is a property of the system at thermodynamic balance; it is not something that the static dispersion relation alone forces, but it is the value the system would settle into under typical thermal conditions.
 
-*To infill:* substituting χ̃ = 1/√2 into the *c* constraint gives:
+Treating equipartition as a separate input (in addition to the *c* constraint of §4) and substituting χ̃ = 1/√2 into the special-case relation:
 
-*K*/ρ = *c*² / (1 + 1/√2)
+*c*² = (*K*/ρ)(1 + 1/√2)
 
-This pins the ratio *K*/ρ in terms of *c*. Combined with χ̃ = 1/√2 (which pins *K_eφ*/*K* = 1/√2), all stiffness-and-inertia *ratios* in the simplifying special case are now fixed by *c* and the equipartition principle.
+so:
 
-What is *not* pinned: the absolute scale of *K* (and correspondingly ρ), the cylinder length *L*, and the cross-section radius *r*. These remain free.
+<!-- K / ρ = c² / (1 + 1/√2) = c² · 2(√2 − 1) ≈ 0.586 · c² -->
+$$
+\frac{K}{\rho} = \frac{c^{2}}{1 + 1/\sqrt{2}} = c^{2} \cdot 2(\sqrt{2} - 1) \approx 0.586\, c^{2}
+$$
+
+The ratio *K*/ρ — the natural mode speed squared in the decoupled limit — is now fixed in terms of *c*.
+
+Together with χ̃ = 1/√2 (which pins *K_eφ*/*K*), all *dimensionless* stiffness ratios in the special case are now determined:
+
+- *K_eφ* / *K* = 1/√2
+- *K*/ρ = *c*²/(1 + 1/√2)
+
+What is *not* pinned: the absolute scale of *K* (and correspondingly ρ); the cylinder length *L*; the cross-section radius *r*.
 
 ---
 
 ## 6. What pins, what stays free
 
-Goal: enumerate the parameters and their status after applying *c* + equipartition.
-
-*To infill:* a table summarizing:
+Collecting the parameters and their status after the *c* constraint and equipartition:
 
 | Parameter | Status |
 |---|---|
-| *K_eφ* / *K* | Pinned to 1/√2 (equipartition) |
-| *K*/ρ | Pinned by *c*² / (1 + 1/√2) |
-| Absolute scale of *K* (and ρ) | Free |
-| Cylinder length *L* | Free |
-| Cylinder cross-section radius *r* | Free |
-| Slow-mode speed *c*_− | Determined: *c*_− = √(*K*/ρ)(1 − 1/√2) ≈ 0.42 × *c*_+ — concrete value flagged for §7 |
+| Dimensionless shear χ̃ = *K_eφ*/√(*K_ee K_φφ*) | **Pinned**: χ̃ = 1/√2 (equipartition) |
+| Speed-squared ratio *K*/ρ | **Pinned**: *K*/ρ = *c*² · 2(√2 − 1) |
+| Absolute scale of *K* (and correspondingly ρ) | **Free** |
+| Cylinder length *L* | **Free** |
+| Cylinder cross-section radius *r* | **Free** |
+| Slow-mode speed *c*_− | **Determined**: *c*_− = √(*K*/ρ) · √(1 − 1/√2) ≈ 0.414 · *c* — see §7 |
 
-Three free parameters survive: an overall stiffness scale, *L*, and *r*. The next chapters will examine whether the entropy account (chapter 4), Maxwell recovery (chapter 6), or α (chapter 8) further constrains these.
+Three free parameters survive — an overall stiffness scale, *L*, and *r* — beyond what the lattice cadence and equipartition alone determine. Whether further physical constraints (the entropy account, Maxwell recovery, the kink-loss derivation of α) fix any of these is a downstream question.
+
+A note on the simplifying assumption ρ = *I_φ*, *K_ee* = *K_φφ*. In the general case, the *c* constraint pins one combination of (*K_ee*, *K_φφ*, *K_eφ*, ρ, *I_φ*), but the specific combination is more elaborate than *K*/ρ. Equipartition adds another constraint. The conclusion that "two ratios are pinned and three parameters remain free" carries over (4 ratios − 1 *c* constraint − 1 equipartition = 2 pinned, several free). The clean special-case formulas of §4–§5 are the simplest expression of this structure; the general case has the same shape.
 
 ---
 
 ## 7. The two-modes vs vacuum-Maxwell tension
 
-Goal: confront the lingering issue that Candidate A leaves unresolved. With *c*_+ = *c* and *c*_− ≠ *c*, the cylinder has a second mode that propagates at a *different* speed — slower than the lattice cadence *c*. Vacuum Maxwell, by contrast, has *both* photon polarizations at exactly *c*.
+Candidate A leaves the slow mode at a definite speed:
 
-*To infill:* this is a genuine tension and the chapter should not paper over it. Possible resolutions to be examined briefly (with full treatment deferred):
+*c*_− = √(*K*/ρ) · √(1 − χ̃) = *c* · √((1 − 1/√2) / (1 + 1/√2)) ≈ 0.414 · *c*
 
-- The slow mode is real but is identified as a *non-photon* excitation — possibly a massive mode, a dispersive mode that does not appear as long-wavelength light, or an excitation that decouples in the continuum limit.
-- The slow mode is suppressed by some property of the lattice assembly (chapter 5) that does not exist on a single primitive — collective effects in a 2D lattice may average the two speeds or suppress one of them.
-- The slow mode is a real prediction — testable as a tiny deviation from the vacuum Maxwell two-equal-speed prediction. (This is unlikely to match observation but is logically possible.)
+A genuine second propagating mode at about 0.41 *c* is not what vacuum Maxwell looks like. Vacuum Maxwell has two photon polarizations both propagating at *c*; there is no second, slower wave. So either the cylinder primitive is making a wrong prediction, or the slow mode is not the *photon* polarization at all — it is something else that the lattice scale either doesn't see or doesn't call light.
 
-The chapter flags the issue and notes that resolution is deferred to chapter 5 (lattice assembly) or chapter 6 (Maxwell base). It is not a foundation-level failure of the primitive; it is a downstream question.
+Three resolutions are conceivable, each of which is a downstream question to be addressed (or rejected) elsewhere:
+
+1. **The slow mode decouples in the continuum limit.** If the slow mode picks up a mass (a gap in the dispersion relation) once the lattice is assembled, it will not propagate as a long-wavelength wave at any speed — it will sit as a localized excitation. Maxwell at the long-wavelength scale would see only the fast mode (photon polarizations).
+
+2. **Lattice assembly averages the two speeds.** Coupling many primitives in a 2D periodic lattice may produce collective modes whose speed is some effective combination of *c*_+ and *c*_−. Whether that combination equals *c* is a 2D-lattice calculation, not a single-primitive one.
+
+3. **The slow mode is a real prediction.** Some media — magneto-optical materials, certain crystals — do support birefringent propagation. If the cylinder primitive predicts a tiny deviation from the vacuum Maxwell two-equal-speed claim, that is an empirically falsifiable feature. Existing laboratory bounds on photon-polarization birefringence in vacuum are very tight, however, so this option is unlikely to survive observational scrutiny.
+
+The chapter does not resolve the tension. It flags it, identifies the candidate resolutions, and notes that the next chapters (assembly into a 2D lattice, then bridge to Maxwell) are where it has to be addressed. The cylinder primitive itself does not fail at this stage — but it carries an obligation to its successor chapters.
 
 ---
 
 ## 8. Summary of givens
 
-Goal: consolidate what chapter 3 establishes.
+The cylinder primitive's parameters, after this chapter:
 
-*To infill:* a brief recap. The constraint *c*_+ = *c* together with equipartition χ̃ = 1/√2 pins all dimensionless stiffness ratios in the simplifying special case, leaving an overall stiffness scale, *L*, and *r* as free parameters. The slow mode *c*_− has a determined value strictly less than *c*; whether this conflicts with vacuum Maxwell or is benign at the lattice scale is flagged for downstream chapters. Chapter 4 takes up whether the topological-defect entropy story is enough to source Jacobson's gravity.
+- The lattice signal speed *c* (axiom A1) pins the cylinder's fast-mode speed: *c*_+ = *c*.
+- Combined with the equipartition shear χ̃ = 1/√2 (chapter 2 §7), the dimensionless stiffness ratios *K_eφ*/*K* and *K*/ρ are both determined by *c* alone.
+- An overall stiffness scale, the cylinder length *L*, and the cross-section radius *r* remain as free parameters of the primitive.
+- The slow mode *c*_− is determined by the same constraints to be ≈ 0.414 *c*. Its physical role is unresolved at this chapter; resolution is an obligation for the lattice-assembly and Maxwell-bridge chapters that follow.
+
+The next chapter takes up whether the cylinder primitive's stress vector field, assembled into a 2D periodic lattice and excited at finite temperature, supplies the entropy that Jacobson's argument requires for entropic gravity.
