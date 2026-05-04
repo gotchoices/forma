@@ -384,6 +384,420 @@ than α/π (= 0.0023), suggesting the relevant aspect ratio in that
 calculation is *different* from the aleph's d/L.  The interpretations
 might not be quite isomorphic.  Worth working out.
 
+## 10b. The dynamical view: per-junction retention κ ≈ 1 − f(α)
+
+§3 framed α = d/L as a *geometric* leakage fraction at each
+edge.  This section gives the same content from the
+*dynamical* side — what the leakage looks like as the lattice
+evolves in time, and how it can be implemented and tested
+directly in the grid-lab visualizer.
+
+### 10b.1. The dynamical claim
+
+At each lattice junction (the wye-junction where multiple
+edges meet at a node), the update rule does not perfectly
+transmit the incoming amplitude.  A small fraction is **retained**
+at the junction rather than passed on:
+
+- **Transmission coefficient** κ ≈ 1 − ε(α) per edge-to-node
+  or node-to-edge update step
+- **Retained fraction** ε(α) is α-related (the exact form
+  depends on the lattice geometry — for hexagonal wye it is
+  some O(1) factor times α)
+
+The retained fraction accumulates **on the primitive itself**
+(edge or node) as a non-zero "DC" component superposed on the
+oscillating "AC" component of the wave.  After many clock
+ticks, the lattice carries:
+
+<!-- E_total = E_AC (wave/photon, propagating) + E_DC (static, accumulated) -->
+$$
+E_{\text{total}}(\text{cell}) \;=\; E_{\text{AC}}(\text{cell}) \;+\; E_{\text{DC}}(\text{cell})
+$$
+
+with both components conserved globally (energy is preserved
+by the unitary lattice update; only the partition between AC
+and DC shifts as energy accumulates locally).
+
+### 10b.2. Why this is the same physical content as §3
+
+§3 says: each edge "leaks" a fraction α = d/L of its energy
+through its compact cross-section into the static EM field.
+
+This section says: each junction retains a fraction of the
+incoming amplitude as static DC bias.
+
+These are two views of the *same* event:
+
+- "Leakage out through cross-section into S" (§3 geometric
+  view): energy crosses the Ma↔S junction and contributes to
+  the Coulomb field around the particle.
+- "Retention at the lattice junction" (this section's
+  dynamical view): energy doesn't leave the lattice; it
+  accumulates as DC bias on the local primitives, which is
+  the lattice substrate's representation of the static EM
+  field.
+
+The DC bias *is* the gauge field A_μ in the temporal gauge.
+Standard lattice gauge theory: A_μ on each link is the running
+phase tally — exactly the "retained fraction" accumulated over
+many clock cycles.  The geometric d/L ratio sets the rate of
+retention; the dynamics distributes it across the lattice;
+the result is the static A_μ field.
+
+### 10b.3. Localization: where the DC bias accumulates
+
+A uniform retention κ < 1 at every junction would produce
+*uniform* DC bias — not localized charges.  Localization
+requires an inhomogeneity, and it comes from the same
+inner-outer-asymmetry mechanism Q136 §5b describes:
+
+- Bare flat lattice: retention is uniform → DC bias is uniform
+  → no localized charge
+- Lattice wrapped into a Ma sheet (closed compact surface):
+  the inner-outer asymmetry of the wrapped thick member
+  forces a *non-uniform* phase mismatch → eddies localize at
+  high-curvature regions (junctions on the closed sheet)
+- The retention factor κ then accumulates DC bias
+  *preferentially at those localized eddy sites* — giving
+  localized charge densities
+
+So the architecture is:
+
+| Property of charge | Source mechanism |
+|---|---|
+| Strength (α magnitude) | Per-junction retention κ ≈ 1 − ε(α); geometric d/L |
+| Localization | Eddies at high-curvature junctions of the wrapped Ma sheet (Q136 §5b) |
+| Quantization (integer e) | Topological winding number around closed compact dim ([bounding-mechanisms.md](../grid/bounding-mechanisms.md)) |
+| Sign (+ or −) | Chirality propagation through the global helicity (§5) |
+
+Each of these four properties of charge has a separate
+structural mechanism.  None alone gives all of them; together
+they compose the full charge phenomenology.
+
+### 10b.4. Grid-lab implementation and testability
+
+The retention factor is **directly implementable** in the
+grid-lab visualizer ([viz/grid-lab.md](../viz/grid-lab.md)).
+The visualizer's update rules already carry a coupling value
+(currently stubbed at 1.0).  Setting that coupling to κ < 1
+implements the per-junction retention directly.
+
+Concrete experimental tests in grid-lab:
+
+1. **DC accumulation pattern.**  Run a long sinusoidal pulse
+   on a 1D chain with κ = 1 − ε.  After many cycles, check
+   whether a non-zero DC component (running mean of the
+   primitive's value) accumulates.  If the AC + DC
+   decomposition holds, the AC oscillation amplitude should
+   decrease over time while the DC component rises, with
+   AC + DC conserved.
+2. **1/r² Coulomb pattern.**  Inject a localized "charge" (a
+   sustained bias on a single primitive) on a wrapped 2D
+   lattice and let the system relax.  Measure the resulting
+   DC field as a function of distance from the source.  If
+   the retention mechanism is correct, the DC field should
+   fall off as 1/r² (3D) or 1/r (2D) — Coulomb's law from
+   first principles.
+3. **α calibration.**  Tune ε such that the equilibrium DC
+   bias around a unit-injected charge gives the
+   experimentally observed Coulomb energy fraction.  The
+   value of ε that achieves this is the α of the simulated
+   lattice — testing whether the retention reading is
+   numerically consistent with α = 1/137.
+4. **Universality across particles.**  Wind different "loop
+   sizes" N around a periodic chain and confirm that the
+   total DC accumulation is α-independent of N (per §3's
+   universality argument).  If the retention reading is
+   right, large N (heavy particles) and small N (light
+   particles) should produce the same total Coulomb fraction.
+
+These tests are concrete, computable, and have a definite
+yes/no answer.  Whichever way they come out, the framework
+gains either a confirmed mechanism or a falsified one — the
+kind of empirical anchor the broader α discussion has lacked.
+
+### 10b.5. What this resolves
+
+This dynamical view does *not* derive α numerically (per §16,
+that's not the kind of thing the framework can do).  But it:
+
+- **Gives α a microscopic operational definition**: the
+  retention factor at each lattice junction.  Previously α
+  was either a coupling constant (abstract) or an aspect
+  ratio (geometric) — now it is also a specific, simulable
+  parameter in the lattice update rule.
+- **Connects α to information bookkeeping**: the retained
+  fraction is the lattice's "memory" of the wave's history;
+  static fields are accumulated history.  Landauer-style
+  information-theoretic readings of α become concrete.
+- **Makes the AC + DC decomposition manifest in code**: any
+  simulation now has a clean separation of "wave content"
+  (AC) and "field content" (DC), with their relative
+  magnitudes set by the retention factor.  This is the
+  cleanest dynamical realization of the geometric d/L picture.
+
+The retention reading and the aspect-ratio reading are the
+same hypothesis viewed from the dynamics side and the
+geometry side.  Together they give a complete picture: α is a
+*substrate property* (geometric: thread aspect ratio) that
+manifests *dynamically* (per-junction retention) and
+*observably* (Coulomb 1/r² with strength α at distance).
+
+## 10c. The two-primitive substrate and the light-current / light-voltage inversion
+
+§10b framed the dynamical retention as a single accumulation
+of "DC bias" on each lattice cell.  But the lattice has two
+distinct operational primitives (per Q136 §5b), and the DC
+bias takes a different form on each.  This refinement matters
+because the two forms map *invertedly* onto the macroscopic
+EM observables (charge and magnetic moment) compared to what
+the ordinary EM intuition would predict.
+
+### 10c.1. The two-primitive substrate
+
+The grid-lab implementation realizes the 1D aleph thread as
+two complementary primitives, each carrying a different value
+type:
+
+- **Edges** carry a static, unbounded scalar value — call it
+  the **magnitude** along the thread's straight-running
+  portion.
+- **Nodes** carry a static, bounded periodic value — the
+  **phase** around the thread's looped portion at each
+  junction.
+
+Both values are real numbers; both are non-zero in size; they
+differ in *boundedness* (per `bounding-mechanisms.md`):
+
+| Primitive | Value type | Topology of state space | Geometric role |
+|---|---|---|---|
+| Edge | Magnitude (scalar) | ℝ (unbounded) | Thread running straight between junctions |
+| Node | Phase | S¹ (bounded by wrap) | Thread looping back at a junction |
+
+The complementary value types are not arbitrary — they follow
+from the geometry of the 1D thread.  A straight run has a
+natural "amplitude along the run" (magnitude); a loop has a
+natural "angle around the loop" (phase).  Each primitive
+carries the value type that's most natural for its local
+topology.
+
+### 10c.2. DC accumulation on each primitive
+
+Under the per-junction retention story of §10b, the DC bias
+accumulates differently on each primitive:
+
+- **Light voltage** on an edge: the magnitude value
+  accumulates a static, sustained scalar — a DC potential
+  along the edge.  No oscillation; just a steady directional
+  bias.  This is the "voltage-like" accumulation: a static
+  gradient in the wave amplitude that doesn't oscillate.
+- **Light current** at a node: the phase value accumulates a
+  static *circulation rate* — a sustained ∮θ̇ dt around the
+  loop.  This isn't an instantaneous large phase value (the
+  bounded S¹ would wrap that out); it's a *winding rate* —
+  the loop continuously winds in one direction faster than
+  it unwinds, accumulating winding number over time.  This
+  is the "current-like" accumulation: a steady circulation
+  of phase around the closed loop.
+
+The terminology *light* current and *light* voltage is
+deliberate.  These are not electric currents and voltages —
+they are accumulations of *photon-amplitude content* on the
+substrate.  They are an order lower than the macroscopic EM
+observables we measure in the lab; they live on the lattice
+itself, not on the spacetime fields the lattice produces.
+
+### 10c.3. The inversion claim
+
+Now the structural claim that motivated this section: the
+two substrate accumulations map onto the macroscopic EM
+observables in an **inverted** way relative to what the
+standard "electric current → magnetic moment, voltage → static
+charge" intuition suggests.
+
+**Substrate-level mapping (proposed):**
+
+| Substrate accumulation | Maps to macroscopic observable |
+|---|---|
+| **Light current** at a node (phase circulation, S¹ winding) | **Outward static charge** (Coulomb-like radial field) |
+| **Light voltage** on an edge (sustained magnitude bias) | **Magnetic moment** (loop-like circulating field) |
+
+This is the inverse of the standard EM correspondence:
+
+| Standard EM | Source | Effect |
+|---|---|---|
+| Electric current (charge flow in a loop) | I | B field (magnetic moment) |
+| Electric voltage (static potential) | V | E field (static charge effect) |
+
+The substrate-level correspondence is *swapped*: substrate
+current produces the analog of standard EM voltage's effect
+(charge), and substrate voltage produces the analog of
+standard EM current's effect (moment).
+
+### 10c.4. Why the inversion makes structural sense
+
+Three reasons converge on this inverted mapping.
+
+**(a) Topology matches the right effect.**
+
+A *node-level light current* is a sustained circulation of
+phase around a closed loop on a closed surface — that is, a
+topological winding number ≠ 0.  Topological winding around
+a compact dimension is exactly what gives **charge
+quantization** (per `bounding-mechanisms.md`): the integer
+winding number maps to the integer charge in units of e.
+The far-field signature of an integer winding number is a
+**radial Coulomb field** — outward static charge.
+
+A *edge-level light voltage* is a sustained scalar bias along
+a directional segment.  When the lattice closes back on itself
+(e.g., a Ma sheet), edges that share a circulation pattern
+add up to a directional flux through a loop.  Directional
+flux through a loop is **magnetic moment** (μ = I·A in the
+naive picture, but here it's the substrate's analog where the
+"current" is the integrated edge-bias around the loop).
+
+**(b) The promotion-chain principle (Q132).**
+
+Q132 says each compact dimension promotes information into
+the next-order observable.  The substrate-level
+accumulation lives at the *lattice* level (one order below
+EM); promoting it to spacetime observables involves a
+topological transformation that's analogous to the Hodge dual
+in differential geometry — *swapping* "static" and
+"circulating" roles between adjacent levels.
+
+In differential forms language: at level n, "static potential"
+is a 0-form; "circulation" is a 1-form.  Hodge duality on
+the compactified dimension exchanges p-forms and (n−p)-forms.
+The promotion from substrate to EM corresponds to a Hodge
+dualization that swaps:
+
+- 0-form static (light voltage on edge) ↔ (n−1)-form
+  circulation (B-like flux through loop)
+- 1-form circulation (light current at node) ↔ (n−2)-form
+  static (E-like radial field)
+
+The dualization exchanges the substrate-level
+"voltage/current" labels with the EM-level
+"current/voltage" labels — exactly the inversion claimed
+above.
+
+**(c) Bounded vs unbounded value types match the right
+observable.**
+
+Per `bounding-mechanisms.md`, *bounded* phase produces
+quantization (winding number ∈ ℤ).  The light current at a
+node is the time-rate of accumulation in a *bounded* state
+space — its discrete invariant (winding rate) maps to
+quantized charge (which has discrete observed values e, 2e,
+...).
+
+The light voltage on an edge is the accumulation in an
+*unbounded* state space — there is no discrete invariant; the
+value is a continuous magnitude.  This maps to magnetic
+moment, which in the framework's R47-style accounting is
+*not* sharply quantized (μ_p = 2.79 μ_N, μ_n = −1.91 μ_N —
+non-integer values that depend on the SU(6) structure, not on
+a single winding number).
+
+So:
+- Bounded substrate value → quantized macroscopic observable (charge)
+- Unbounded substrate value → continuous macroscopic observable (moment)
+
+The inversion follows from matching boundedness to
+quantization, which is the structural pattern
+`bounding-mechanisms.md` already establishes.
+
+### 10c.5. Status of this claim
+
+The inversion is a **proposed structural correspondence**, not
+a derived one.  The three arguments above (topology match,
+Hodge-dual reading, boundedness-quantization match) are
+suggestive but not rigorous.  What would need to be done to
+test it:
+
+- **In grid-lab**: inject a sustained phase circulation at a
+  single node and measure the resulting far-field DC pattern.
+  Does it look like 1/r² (charge-like, radial) or 1/r³
+  (moment-like, dipolar)?  If radial, the inversion holds.
+- Independently: inject a sustained magnitude bias on edges
+  around a closed loop and measure the resulting field.
+  Does it look like 1/r³ (dipole, moment-like) or 1/r²
+  (charge-like)?  If dipolar, the inversion holds.
+- Symbolically: write the explicit Hodge-dual mapping from
+  substrate forms (edges = 1-form magnitudes, nodes = 0-form
+  phases) to spacetime observable forms and verify the
+  correspondence.
+
+If the inversion holds:
+
+- **Charge originates from node phase circulations**, not
+  from edge biases.  This sharpens the role of the bounded
+  S¹ phase (from `bounding-mechanisms.md`) as the *source*
+  of charge, not just its quantizer.
+- **Magnetic moment originates from edge magnitude biases**,
+  not from any literal "circulating current."  Standard EM
+  intuition is recovered as an effective theory at the
+  spacetime level, but the substrate mechanism differs by
+  the Hodge-dual swap.
+- **Q137's per-edge α-leakage gets a more refined picture**:
+  it's not a single uniform leakage; it's a leakage that
+  sources different macroscopic observables depending on
+  whether the leakage occurs on edges (→ moment) or nodes
+  (→ charge).  α is still the substrate aspect ratio; the
+  inverted mapping is how that single parameter splits into
+  the different EM observables.
+
+### 10c.6. Concrete grid-lab tests
+
+The two-primitive substrate is already implemented in
+[`viz/grid-lab.md`](../viz/grid-lab.md):  edges carry
+magnitude, nodes carry bounded phase.  Adding the retention
+factor κ < 1 (currently stubbed at 1.0) and watching the DC
+accumulation patterns directly tests the inversion claim.
+
+The four tests from §10b.4 should be run, but interpreted in
+the light-current/light-voltage frame:
+
+1. **Edge DC accumulation** under sinusoidal drive: should
+   produce a static far-field pattern that looks
+   *moment-like* (1/r³, dipolar) — not charge-like.
+2. **Node DC accumulation** (phase winding rate) under
+   sustained drive: should produce a static far-field
+   pattern that looks *charge-like* (1/r², radial) — not
+   moment-like.
+3. **Inversion crossover**: drive edges and nodes with
+   identical magnitude and check that the resulting fields
+   are dual to each other (radial vs circular).
+4. **Universality of α**: regardless of which primitive
+   carries the bias, the per-edge or per-node leakage
+   fraction should integrate to the same α — confirming α
+   is a substrate property, not a primitive-specific one.
+
+Test 1–3 are direct yes/no checks of the inversion claim.
+Test 4 is a consistency check on §10b's universality
+argument.
+
+If the tests confirm the inversion, the framework gains:
+
+- A precise dynamical mechanism for charge (light currents at
+  nodes) distinct from the mechanism for magnetic moment
+  (light voltages on edges)
+- A clean separation of which primitive sources which
+  macroscopic observable
+- A grid-lab calibration handle for α: tune ε(α) such that
+  the retention coefficient produces the right magnitude of
+  Coulomb field at unit charge; the value that achieves this
+  IS the lattice's α
+
+If the tests *don't* confirm the inversion (e.g., light
+current at a node produces a moment-like field, not
+charge-like), the framework needs to revise either §10c.3's
+mapping or §10c.4's structural argument.  Either outcome is
+informative.
+
 ## 11. Open issues
 
 The interpretation is consistent with framework-level statements

@@ -170,15 +170,68 @@ framework, but there are scenarios that would force a revision:
   force the issue.  Currently the bookkeeping closes with
   1D aleph.
 
+## 5b. Two operational primitives, one underlying thread
+
+In simulation contexts (notably `viz/grid-lab`), the lattice
+is implemented with **two distinct operational primitives**:
+
+- **Edges** carry a static, unbounded scalar value (magnitude
+  along the thread)
+- **Nodes** carry a static, *bounded* periodic value (phase
+  around the thread's loop), with the boundedness implemented
+  per `bounding-mechanisms.md` as either wrap (S¹) or
+  saturation (interval)
+
+These are not two separate internal dimensions, and they do
+not contradict the 1D answer above.  They are **two
+complementary value types on the same 1D thread**, distinguished
+by the thread's local geometry:
+
+- Where the thread runs straight between junctions, the
+  natural value to track is the *magnitude* of the wave's
+  amplitude along that run.  The simulator labels this an
+  **edge** value.
+- Where the thread loops back around a junction, the natural
+  value to track is the *phase angle* around that loop.  The
+  simulator labels this a **node** value.
+
+Both values live on the same 1D thread.  They differ in
+**topology of the segment**, not in dimension.  An edge value
+and a node value are complementary representations of the
+thread's state, much as position and angular orientation are
+complementary representations of a single particle's state on
+a circle.
+
+This is consistent with §3.1's observation that a 1-manifold
+can be open or closed without growing a second dimension: the
+two value types correspond exactly to the open-segment vs
+closed-loop topology choices on the same 1-manifold.
+
+The richer dynamical question — what happens when these two
+value types accumulate static (DC) bias under a per-junction
+retention factor κ < 1 — is the topic of
+[Q137 §10b](Q137-alpha-as-aleph-aspect-ratio.md#10b-the-dynamical-view-per-junction-retention-κ--1--fα)
+and (the new follow-on)
+[Q137 §10c](Q137-alpha-as-aleph-aspect-ratio.md#10c-the-two-primitive-substrate-and-the-light-current--light-voltage-inversion).
+Q136's role is just to confirm that the two-primitive
+operational view is consistent with — not in tension with —
+the 1D-aleph answer.
+
 ## 6. Implications of the 1D answer
 
-- **The lattice has a single primitive object, not two.**
-  Edges and nodes are two faces of the same 1D thread, not
-  two separately-axiomatized structures.  A foundational
-  reformulation of A1+A3 along the lines of "there is a 1D
-  compact internal thread that weaves through the lattice
-  embedding" would unify what are currently two assertions
-  (4D lattice geometry + 1D internal phase per edge) into one.
+- **The lattice has a single underlying primitive (the 1D
+  thread), with two operational realizations.**
+  Edges (carrying scalar magnitude along straight runs) and
+  nodes (carrying bounded phase around looped segments) are
+  two complementary value types on the same 1D thread, not
+  two separately-axiomatized structures and not two
+  dimensions (see §5b).  A foundational reformulation of
+  A1+A3 along the lines of "there is a 1D compact internal
+  thread that weaves through the lattice embedding, with
+  open-segment portions appearing as edges and closed-loop
+  portions appearing as nodes" would unify what are currently
+  two assertions (4D lattice geometry + 1D internal phase per
+  edge) into one.
 - **The 1D / 2D split between aleph and Ma sheet is
   preserved.**  The architectural roles (aleph for phase /
   gauge, Ma for identity / mass / charge) remain distinct,
