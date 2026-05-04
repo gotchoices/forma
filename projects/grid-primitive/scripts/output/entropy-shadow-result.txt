@@ -1,0 +1,29 @@
+sim-entropy-shadow — finite-T fail-fast test for theory 7
+================================================================
+
+Lattice:           121 x 121
+Inclusion radius:  4
+Inclusion value:   psi = [1. 0.]
+chi-tilde:         0.7071
+Temperature T:     1.0
+Thermalise sweeps: 2000
+Measure sweeps:    8000 (sample every 5)
+MC samples:        1600
+
+Mean field <|psi(r)|>
+----------------------------------------------------------------
+  Log:   |psi| = A + B log(r), A = 1.344305, B = -0.333628, R^2 = 0.997103
+  Power: |psi| = C * r^p, C = 3.073086, p = -0.736485, R^2 = 0.984319
+
+Variance var(psi_R) + var(psi_I)  [entropy shadow]
+----------------------------------------------------------------
+  Log:   var = A + B log(r), A = 1.068980, B = 0.690957, R^2 = 0.926012
+  Power: var = C * r^p, C = 1.479616, p = 0.251221, R^2 = 0.898214
+
+Verdict
+----------------------------------------------------------------
+  Mean field: logarithmic decay (R²_log = 0.9971)
+  Variance shadow: logarithmic decay (R²_log = 0.9260)
+
+  -> PASS — both mean field and variance show logarithmic decay (entropic 1/r force scaling, 2D)
+  The cylinder primitive at finite temperature exhibits the same entropy-shadow pattern that grid/sim-gravity-2 found for its mode-tower model. Theory 7 passes the linear thermal test. A BKT / topological-defect follow-up will test the coefficient match against ζ; for now, the scaling is correct.

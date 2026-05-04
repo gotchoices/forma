@@ -1,0 +1,20 @@
+sim-defect-gravity — static fail-fast test for theory 7
+================================================================
+
+Lattice:           121 x 121
+Inclusion radius:  4
+Inclusion value:   psi = [1. 0.]
+chi-tilde:         0.7071 (does not affect static)
+
+Fit results
+----------------------------------------------------------------
+Log:   |psi| = A + B log(r)
+       A = 1.451022, B = -0.347954, R^2 = 0.999973
+
+Power: |psi| = C * r^p
+       C = 10.385716, p = -1.141150, R^2 = 0.894712
+
+Verdict
+----------------------------------------------------------------
+PASS — logarithmic decay (gravity-compatible kinematics, 2D)
+The stress vector field has the Laplace Green's function structure needed for a 1/r force law in 2D. Theory 7 passes the static check.
