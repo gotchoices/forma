@@ -616,9 +616,15 @@ mathematics works either way.
 ## 15. How forma reuses this language
 
 forma's GRID model uses the same gauge vocabulary, but the
-*origin* of the gauge structure differs from the Standard Model's,
-and forma's reading of the strong and weak forces departs from
-the SM's in substantive ways.
+*origin* of the U(1) gauge structure differs from the Standard
+Model's, and forma's working reading of the strong and weak
+forces departs from the SM's reading in substantive ways. This
+section reports forma's current positions as of the latest GRID
+synthesis ([grid/synthesis.md](../grid/synthesis.md)) and the
+2026-04-25 R64 status update
+([studies/R64-nuclear-harmonic-stack/STATUS.md](../studies/R64-nuclear-harmonic-stack/STATUS.md)),
+distinguishing what is structurally established from what is
+hypothesized.
 
 ### U(1) and A_μ — same equations, different origin
 
@@ -644,140 +650,216 @@ is the same chain QED uses. The difference is one of *origin*:
   that pre-existing phase is unphysical.
 
 In both readings, A_μ is a connection forced into existence by
-local U(1) invariance. The Standard Model treats this as a
-mathematical convenience that happens to describe nature; GRID
-treats it as the lattice's *bookkeeping for relative phase
-between neighboring cells*. The equations are identical; what
-differs is whether A_μ is fundamental or emergent.
+local U(1) invariance. The equations are identical; what differs
+is whether A_μ is fundamental or emergent.
+
+A complementary lattice-geometry observation
+([grid/lattice-geometry.md](../grid/lattice-geometry.md)) reads
+each cell edge as a small standing-wave register: A_μ is the
+*lowest mode* on the edge, and the cell's phase θ is a
+*collective property* of those edge modes — not a separate
+variable laid on top. Higher edge modes carry sub-Planckian
+internal state that contributes to entropy. Matter (θ) and
+gauge field (A_μ) are different aspects of the same edge-mode
+structure.
 
 ### Phase and connection on the same primitive
 
 A working forma project, [projects/grid-primitive/](../projects/grid-primitive/),
-goes one step further: it asks what the lattice cells and links
-themselves are *made of*. Its hypothesis is that each link is a
-2D cylindrical tube with two coupled fields — a longitudinal
-strain *e(x, t)* and an azimuthal phase *φ(x, t)*. The phase φ
-coarse-grains to the gauge field A_μ; the strain e plays the
-role of the matter field. Crucially, e and φ are *not*
-independent fields laid on top of one another — they are coupled
-strain components of a single elastic structure, linked by a
-shear coefficient *K_eφ*
-(see [projects/grid-primitive/01-foundation.md](../projects/grid-primitive/01-foundation.md)
-§7).
+asks what the lattice cells and links themselves are *made of*.
+Its hypothesis is that each link is a 2D cylindrical tube with
+two coupled fields — a longitudinal strain *e(x, t)* and an
+azimuthal phase *φ(x, t)* — linked by a shear coupling *K_eφ*
+([projects/grid-primitive/01-foundation.md](../projects/grid-primitive/01-foundation.md)
+§7). The phase φ coarse-grains to A_μ; the strain e plays the
+role of a matter field. They are not independent fields stacked
+on the same support — they are two coupled strain components of
+a single elastic structure.
 
-This means matter and gauge field, in the grid-primitive
-reading, are *one geometric object* viewed along two axes. The
-Standard Model's deep structural fact — that the gauge field is
-forced to exist by the matter field's local symmetry — has a
-direct mechanical realization: they cannot be separated because
-they are two components of the same physical strain.
+This is consistent with the lattice-geometry reading above:
+matter and gauge field cannot be cleanly separated because they
+are two aspects of one geometric object. The Standard Model's
+abstract structural fact — that the gauge field is forced to
+exist by the matter field's local symmetry — has a direct
+mechanical realization in this picture: they cannot be separated
+because they are two strain components of one tube.
 
-### Strong force — a non-standard interpretation
+### What GRID does *not* derive: SU(2) and SU(3)
 
-forma proposes a reinterpretation of the strong force as
-electromagnetism without α-suppression
-([qa/Q95-strong-force-as-internal-em.md](../qa/Q95-strong-force-as-internal-em.md)).
-The argument:
+The latest GRID synthesis is explicit on the limits of the
+single-phase axiom set
+([grid/synthesis.md](../grid/synthesis.md), §"Open questions"):
 
-- In forma's MaSt model, the electron and other charged
-  particles are localized photon modes on a compact internal
-  surface (Ma).
-- The full internal electromagnetic fields on Ma are roughly
-  1/α ≈ 137× stronger than what is measured externally; the
-  external field is what *leaks out* through the Compton window.
-- At distances much larger than a Compton wavelength,
-  particles interact via the leaked external field — ordinary
-  QED, with coupling α.
-- At distances of order a Compton wavelength, the internal Ma
-  surfaces overlap, and the *full* internal fields couple
-  directly. The effective coupling strength jumps by a factor
-  of 1/α.
-- The observed ratio α_strong / α ≈ 137 is, in this reading,
-  exactly 1/α — not a coincidence but the predicted ratio of
-  internal-to-external EM coupling strengths.
+> "GRID produces only U(1) gauge theory (electromagnetism). The
+> SU(2) × SU(3) structure of the weak and strong forces would
+> require richer internal degrees of freedom beyond a single
+> phase per cell."
 
-In short: the strong force is the electromagnetic force seen
-from *inside* Ma, without the α-projection. Nucleons bind
-because once the Ma tori overlap, the lower-energy configuration
-is a coupled mode rather than two separated particles. SU(3)
-gauge theory, in this reading, is an effective low-energy
-description; the underlying mechanism is geometric overlap of
-internal field structures.
+A consistent caveat appears in
+[grid/bounding-mechanisms.md](../grid/bounding-mechanisms.md):
+the entropy and quantization story given for U(1) "may need
+adjustment for non-abelian compact groups." So at the GRID
+level, SU(2) and SU(3) are not produced by the existing axioms
+— they would require either richer per-cell state spaces or
+emergence from a different layer of the model (such as MaSt's
+material-sheet geometry).
 
-This is forma's working hypothesis, not a settled result.
-Whether eight gluon-like modes emerge from the overlap geometry
-in the way SU(3) requires is open.
+### Strong force — a working interpretation, with a known gap
 
-### Weak force — a non-standard interpretation
+forma's working interpretation of the strong force lives in
+MaSt, not in GRID. It is most fully laid out in
+[qa/Q95-strong-force-as-internal-em.md](../qa/Q95-strong-force-as-internal-em.md):
+charged particles are localized photon modes on compact internal
+surfaces (Ma), and at distances much larger than a Compton
+wavelength their interaction is α-suppressed by the "Compton
+window" (giving ordinary QED). At distances of order a Compton
+wavelength, the Ma tori overlap and the full internal fields
+couple directly. The internal-to-external field ratio is ~1/α,
+which matches the empirical α_strong/α ≈ 137 and would, if the
+mechanism is correct, account for the strong coupling without
+postulating SU(3).
 
-forma also proposes a structural reading of the weak force, the
-neutron's instability, and Fermi's coupling constant G_F
-([studies/R64-nuclear-harmonic-stack/findings-13.md](../studies/R64-nuclear-harmonic-stack/findings-13.md)).
+The current state of evidence, from the R64 STATUS audit:
 
-In MaSt, the neutron and proton are modes on a shared internal
-sheet (the *p-sheet*), distinguished by which direction they
-wind. They have nearly the same mass; the small mass difference
-that makes the neutron decay-unstable is attributed to a
-**shear** in the p-sheet metric — a small geometric detuning
-parametrized by *s_p*. The headline numerical result:
+- **Deuteron is well-accounted for structurally.** The Ma
+  compound mode (6, 0) at R64 Point A has a mass of 1875.71 MeV
+  versus the observed 1875.61 MeV — agreement to 0.005% on mass
+  and 4% on binding. The deuteron does not require a "force":
+  it appears as the lower-energy mode of the compound, with the
+  binding equal to the mass deficit of the compound mode.
+- **Heavy nuclei are not yet accounted for.** Ma compound
+  binding gives ~1 MeV per nucleon, versus the observed ~8 MeV
+  per nucleon. **About 88% of heavy-nuclei binding remains
+  structurally unexplained** in the current MaSt picture, and
+  MaSt cannot yet derive the Fe peak, magic numbers, or
+  saturation density.
+- **One mechanism has been formally walked back.** R64 Tracks
+  13b and 17 ruled out a particular σ_pS_tube + H2 mechanism
+  for the strong force: at the singular metric edge it produced
+  the wrong number of bound states with the wrong scattering
+  length, and at moderate magnitudes it produced no V(r) trough
+  at all
+  ([studies/R64-nuclear-harmonic-stack/findings-13b.md](../studies/R64-nuclear-harmonic-stack/findings-13b.md),
+  [findings-17.md](../studies/R64-nuclear-harmonic-stack/findings-17.md)).
+- **Q95's "internal EM at overlap" remains an open hypothesis.**
+  Q95 §7 itself flags three unresolved problems: incompatibility
+  with QCD's asymptotic freedom, no derivation of gluon-like
+  modes, and no computation of the actual torus-torus
+  interaction. R39's prior null result for near-field EM
+  attraction applies to α-projected coupling through S, not to
+  direct Ma-Ma overlap, so it does not falsify Q95 — but it
+  doesn't confirm it either.
+
+So forma's strong-force picture has one clean structural
+success (the deuteron as a compound mode), one large open gap
+(heavy-nuclei binding), and one still-open mechanism hypothesis
+(Q95's overlap reading) that the most recent attempts at a
+specific realization did not vindicate.
+
+### Quark and isospin structure — a structurally established geometric reading
+
+Independently of the strong-force mechanism question, R64's
+audit lists a few quark-flavor results in its
+**"structurally established, won't be walked back"** category:
+
+- u and d quarks are identified geometrically as
+  (n_pt, n_pr) = (1, +2) and (1, −2) on the p-sheet —
+  distinguished by which direction they wind, not by an
+  abstract internal SU(2) label.
+- Proton and neutron are (3, +2) and (3, −2) on the same sheet.
+- The exact mapping n_pr / 4 = T_z (third component of isospin)
+  matches the SM's quark/nucleon isospin assignments.
+- The A1 charge attribution f(n_pt, n_pr) = n_pt/6 + n_pr/4
+  reproduces the SM quark charges (u → +2/3, d → −1/3).
+
+What the SM treats as an abstract internal SU(2) flavor
+symmetry has, in this reading, a concrete geometric realization:
+isospin-third is a winding number on the p-sheet. Whether the
+*full* SU(2) algebra (not just the Z₂ "flip" between u and d)
+emerges from the geometry is still open.
+
+### Weak force — a structurally established dimensional match
+
+forma's weak-force interpretation, also from R64, is on firmer
+ground than the strong-force interpretation. The R64 STATUS
+audit lists the result among its "structurally established,
+won't be walked back" findings:
 
 <!-- G_F ≈ s_p · α² / m_p² -->
 $$
 G_F \;\approx\; s_p \cdot \frac{\alpha^2}{m_p^2}
 $$
 
-where s_p is the p-sheet shear, α is the fine-structure
-constant, and m_p is the proton mass. Plugging in forma's
-calibrated s_p ≈ 0.194 reproduces the measured Fermi constant
-to within 0.5%, and the resulting neutron lifetime matches the
-880-second observation. (As of R64's writeup this is described
-as a "suggestive numerical relationship" rather than a derived
-mechanism — the matrix-element derivation is still pending.)
+where s_p ≈ 0.194 is the proton-sheet shear (a small geometric
+detuning that breaks the otherwise-degenerate symmetry between
+proton and neutron mass), α is the fine-structure constant, and
+m_p is the proton mass. The match to the measured Fermi
+constant is 0.5% at R64's Point A
+([studies/R64-nuclear-harmonic-stack/findings-13.md](../studies/R64-nuclear-harmonic-stack/findings-13.md)),
+and it is independent of the strong-force walk-backs that
+affected other R64 tracks. The structural neutron lifetime that
+follows matches the observed 880 s.
 
-The qualitative reading: there is no separate "weak force." The
-weak interaction is what the *same* electromagnetic structure
+The current honest framing is: the dimensional relationship is
+robust and unique under the relevant constraints, but the
+matrix-element derivation that would convert this from "the
+right combination of parameters" into "the predicted weak
+amplitude" has not yet been carried out (R64 STATUS lists this
+as the next step). The mechanism in the qualitative picture: the
+weak interaction is what *the same* electromagnetic structure
 looks like when sheet shear breaks the symmetry between two
-otherwise-degenerate matter modes. β-decay is the relaxation
-channel from the higher-energy mode (neutron) to the
-lower-energy mode (proton plus byproducts). The W and Z bosons
-of the SM may be effective field-theoretic descriptions of
-mode-transition amplitudes, not exchanged elementary particles.
+otherwise-degenerate matter modes (cross-sheet coupling, in
+[qa/Q96-force-carriers-in-mast.md](../qa/Q96-force-carriers-in-mast.md)).
+β-decay is the relaxation channel from the higher mode (neutron)
+to the lower (proton plus byproducts).
 
-### SU(2) and SU(3) — partial commitments
+A separate intriguing data point: the R43 study finds
+sin²θ_W = 3/13 ≈ 0.2308, matching the PDG value at M_Z to
+−0.19% ([studies/R43-weinberg-angle/](../studies/R43-weinberg-angle/)).
+The synthesis flags this as "suggestive but not yet a derivation
+that SU(2) × U(1) is emergent." The match is striking, but the
+geometric reason 3/13 should appear is not yet given.
 
-For the gauge groups themselves, forma's positions are partial:
+### SU(3) and color — speculation, not a position
 
-- **SU(2)** — The flavor symmetry that the SM treats as an
-  abstract internal SU(2) (up vs down quark, proton vs neutron)
-  is identified in R64 with a *geometric ring-direction* on the
-  p-sheet: u and d quarks differ by which way they wind, not by
-  an abstract internal label. Whether this geometric reading
-  reproduces the full SU(2) algebra (and not just a Z_2 flip)
-  is open.
-- **SU(3)** — The three "colors" of the SM are speculated in
-  Q95 §7 to correspond to the three matter sheets (Ma_e, Ma_ν,
-  Ma_p), but this is flagged as far from established. SU(3)
-  remains the gauge structure forma has the least committed
-  reading of.
+For SU(3), forma does not have a working interpretation
+comparable to the weak-force reading above. Q95 §7 speculates
+that the three "colors" of the SM might correspond to the three
+material sheets (Ma_e, Ma_ν, Ma_p), but this is explicitly
+flagged as far from established and no derivation has been
+attempted. SU(3) remains the gauge structure forma has the
+least committed reading of.
 
 ### The general pattern
 
-Across all of these, the pattern is consistent: where the
-Standard Model postulates a fundamental gauge field whose
-existence is required by an abstract internal symmetry, forma
-attempts to identify a *geometric or mechanical structure* that
-both produces the symmetry and explains the observed dynamics.
-The vocabulary of gauge theory — connections, generators, group
-factors — is preserved, but the things the symbols name are
-recast as features of compact geometry rather than as
-fundamental fields in their own right.
+The recurring pattern: where the Standard Model postulates a
+gauge field whose existence is required by an abstract internal
+symmetry, forma attempts to find a *geometric or mechanical
+structure* that produces the symmetry and explains the
+dynamics. The vocabulary of gauge theory — connections,
+generators, group factors — is preserved; the things the
+symbols name are recast as features of compact geometry rather
+than as fundamental fields.
+
+This program is uneven in completeness:
+
+| Force | forma's reading | Confidence |
+|---|---|---|
+| EM (U(1) gauge) | Lattice-link connection forced by A4 | Derived from GRID axioms |
+| Quark/nucleon isospin | Geometric winding on the p-sheet | Structurally established (R64) |
+| Weak (G_F) | Sheet-shear ratio s_p·α²/m_p² | Dimensional match at 0.5%; mechanism pending |
+| Deuteron binding | Ma compound-mode mass deficit | Established at 4% |
+| Heavy-nuclei binding | (residual structure in S) | 88% open |
+| Strong-force mechanism | Internal EM at Ma-Ma overlap (Q95) | Open hypothesis, no computation yet |
+| SU(3) color | Speculative: three material sheets | Far from established |
 
 A reader who knows the Standard Model's gauge language will
-recognize forma's equations and conclusions. The point of
-divergence is *what the symbols are about*: in one reading,
-abstract internal symmetries that nature happens to respect; in
-the other, the bookkeeping of an underlying geometric and
-mechanical structure.
+recognize forma's equations and many of its conclusions. The
+point of divergence is *what the symbols are about*: in one
+reading, abstract internal symmetries that nature happens to
+respect; in the other, the bookkeeping of an underlying
+geometric and mechanical structure that, where it succeeds,
+*derives* what the SM postulates.
 
 ---
 
