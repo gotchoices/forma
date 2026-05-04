@@ -44,7 +44,7 @@ Slow, deliberate, table-driven — match metric-mass's pacing. Every concept int
 
 Five coordinates: t, S₁, S₂, u, w. Domain table (extended ℝ for t, S₁, S₂; periodic S¹ for u and w).
 
-**Why two extended (vs. one in metric-mass):** two knots at different (S₁, S₂) positions — needed for bound states, partial separation, and the force-law derivations in chapter 9.
+**Why two extended (vs. one in metric-mass):** single-knot derivations in this project largely don't need S₂ — most results work in S₁ alone. S₂ is carried for continuity with [metric-binding](../metric-binding/), where it becomes essential (two knots at different (S₁, S₂) positions).
 
 **Why two compact (vs. one in metric-mass):**
 1. Knots — a 1D compact direction has no knot family; 2D does

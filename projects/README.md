@@ -51,5 +51,9 @@ Each project's README should:
   R-track's 11D complexity to develop intuition about what each
   metric component does. **Status: provisionally complete.**
 - [metric-charge/](metric-charge/) — Follow-up to metric-mass,
-  taking up the analogous question for charge. **Status: empty,
-  awaiting framing.**
+  taking up the analogous question for charge on a 2D compact
+  sheet. **Status: framed; awaiting first chapter.**
+- [metric-binding/](metric-binding/) — Follow-up to metric-charge,
+  taking up multi-knot interactions on a 2D sheet — energy at
+  separation, force laws, bound-state regimes. **Status: framed;
+  awaiting first chapter.**
