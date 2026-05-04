@@ -19,9 +19,9 @@ The dialog [`dialogs/grid-3.md`](../../dialogs/grid-3.md) brainstormed several c
 
 The grid is built from edges and nodes, arranged on a 2D sheet (for compact dimensions or MaSt sheets) or a 3D extent (for the spatial lattice S). Each edge is modeled as a small **2D cylindrical tube** — nanotube-like in structure, but with no commitment to atomic-scale carbon-nanotube physics.
 
-The cylinder is a **distributed** primitive: it has length *L*, and the state — longitudinal strain *e(x, t)* and azimuthal phase *φ(x, t)* — varies along the cylinder's length *x* ∈ [0, *L*]. A perturbation at one end takes transit time τ = *L*/*c* to reach the other. A wall-shear coupling *K_eφ* between strain and phase makes the two fields drive each other along the cylinder, which is what allows the edge to carry a propagating wave.
+The cylinder is a **distributed** primitive: it has length *L*, and the state at each cross-section is a 2D internal stress vector. In polar coordinates, the stress vector has magnitude *e(x, t)* (the strength of longitudinal compression/tension) and azimuthal direction *φ(x, t)* (the angular location around the cross-section where that stress is concentrated). A perturbation at one end takes transit time τ = *L*/*c* to reach the other. A wall-shear coupling *K_eφ* between magnitude and azimuth makes the two coordinates drive each other along the cylinder, which is what allows the edge to carry a propagating wave.
 
-Mechanical intuition: a rubber cylinder with fibrous shear in the wall, glued to its neighbors at the endpoints. Under tension it stretches; under torque it twists; the fibers couple stretching and twisting so that a perturbation at one end propagates as a coupled stretch-and-twist along the cylinder, emerging at the far end as a perturbation in (*e*, *φ*) for the next cylinder to receive.
+Mechanical intuition: a rubber cylinder reinforced with helical fibers in its wall, glued to its neighbors at the endpoints. Imagine pushing on the end of the cylinder *off-center* — at some azimuthal location around the rim. The push exerts a longitudinal compressive force at that location. The helical fibers couple this off-center longitudinal load to a transverse bow of the cylinder body, which propagates along the length and emerges as a perturbation in the (*e*, *φ*) stress vector for the next cylinder to receive. The cylinder body does not rotate; the off-center loading is what carries the directional information.
 
 Nodes are passive junctions where multiple cylinders meet. They hold no state of their own; their role is to impose continuity — the (*e*, *φ*) values match across a junction where adjacent cylinder endpoints connect. There is no node update rule.
 
@@ -49,8 +49,8 @@ For charge emergence the relationship is different. [grid/charge-emergence.md](.
 
 | Symbol | Role | Type |
 |---|---|---|
-| *e(x, t)* | Longitudinal strain field along cylinder, *x* ∈ [0, *L*] | Real, signed |
-| *φ(x, t)* | Azimuthal phase field along cylinder, *x* ∈ [0, *L*] | Compact: φ ∈ [0, 2π) |
+| *e(x, t)* | Longitudinal stress magnitude at cross-section *x* | Real, signed (+ tension, − compression) |
+| *φ(x, t)* | Azimuthal direction where stress is concentrated at cross-section *x* | Angle, periodic mod 2π |
 | *K_ee, K_φφ* | Diagonal stiffnesses (longitudinal, azimuthal) | Real, positive |
 | *K_eφ* | Off-diagonal shear coupling between *e* and *φ* | Real |
 | *χ̃* | Dimensionless shear ratio: χ̃ = K_eφ / √(K_ee K_φφ) | Real, ∈ (0, 1) |
@@ -86,7 +86,7 @@ The earlier viz model ([viz/grid-lab/](../../viz/grid-lab.md)) treated edges and
 
 Claims to examine — derived where possible, stated explicitly when taken as input, falsified explicitly if the math doesn't support them.
 
-1. **Two DoF suffice per edge.** A cylindrical primitive with longitudinal strain field *e(x, t)* and azimuthal phase field *φ(x, t)* — distributed along the cylinder's length — is rich enough to carry both magnitude-type (E-like) and phase-type (B-like) information on a single edge.
+1. **Two DoF suffice per edge.** A cylindrical primitive whose state at each cross-section is a 2D internal stress vector (with magnitude *e* and azimuthal direction *φ* as its two real components) is rich enough to carry both magnitude-type (E-like) and phase-type (B-like) information on a single edge.
 
 2. **Shear is necessary for propagation.** With K_eφ = 0, strain and phase decouple and the cylinder supports no propagating waves. K_eφ > 0 is structurally required.
 
@@ -98,7 +98,7 @@ Claims to examine — derived where possible, stated explicitly when taken as in
 
 6. **The lattice signal speed *c* emerges from the cylinder's internal dynamics.** In the distributed picture, a perturbation traverses one cylinder in transit time τ = *L*/*c*. The internal wave speed is set by the stiffness scales, the cross-section radius *r*, the length *L*, and the shear χ̃. Imposing this speed = c is a real algebraic constraint (not a tautology) that relates the primitive's geometry to the lattice cadence. *Open question:* does this constraint pin χ̃ uniquely (leaving a length scale free), pin a length given χ̃ = 1/√2, or admit a one-parameter family?
 
-7. **Cylinder circumference is the entropy reservoir.** Rotations around the 2π cross-section play, on the cylinder primitive, the role that the bounded periodic phase played at a node in the earlier viz model: a compact periodic variable whose wraps lose information. *This is a load-bearing bet, and it specifically distinguishes this model from [grid/sim-gravity/](../../grid/sim-gravity/)'s failed spring lattice.* That earlier attempt failed because every degree of freedom was R-valued (unbounded position vector) — the lattice produced the elastic 1/r² strain field rather than the entropic 1/r force. Here, although strain *e* is similarly unbounded, the azimuthal phase *φ* is compact (∈ [0, 2π)), so wraps lose information by construction. The hope is that this single-bounded-DoF distinction supplies what springs alone could not. If circumference rotations cannot supply the entropy that [grid/sim-gravity-2/](../../grid/sim-gravity-2/) sourced from a tower of ℵ-line modes, the project must pivot the entropy mechanism or fall back to a discrete primitive. Chapter 4 is the fail-fast check.
+7. **Topological defects of the stress vector field are the entropy reservoir.** The cylinder's state at each cross-section is a 2D stress vector with two real components (magnitude *e* and azimuthal direction *φ*). The vector field can carry **topological defects** — points in (*x*, *t*) space where the stress vector vanishes and the surrounding field circulates with nonzero integer winding number. In thermal equilibrium, vortex–antivortex pairs proliferate, and the count and configuration of these defects supplies entropy. *This is a load-bearing bet, and it specifically distinguishes this model from [grid/sim-gravity/](../../grid/sim-gravity/)'s failed spring lattice.* That earlier attempt failed because every degree of freedom was R-valued and the field had no nontrivial homotopy structure to carry topological defects — the lattice produced the elastic 1/r² strain field rather than the entropic 1/r force. The cylinder primitive's 2D stress vector field has π₁(ℝ² \ {0}) = ℤ; this is the structural ingredient hoped to supply what springs alone could not. The mechanism is well-established physics (the 2D XY model, the Berezinskii–Kosterlitz–Thouless transition, vortex–antivortex pair condensation in superfluids). If topological defects cannot supply the entropy that [grid/sim-gravity-2/](../../grid/sim-gravity-2/) sourced from a tower of ℵ-line modes, the project must pivot the entropy mechanism or fall back to a discrete phase-based primitive. Chapter 4 is the fail-fast check.
 
 8. **The lattice of primitives establishes the common base for [grid/maxwell.md](../../grid/maxwell.md).** Coarse-graining the primitive's (*e*, *φ*) over the lattice yields the cell-phase θ and link gauge connection A_μ that maxwell.md takes as input. Maxwell's E and B emerge as the strain-channel and phase-channel components of the wave, with the staggering across coupled edges playing the role of Yee's E/H staggering. The project does not re-derive Maxwell; it shows that maxwell.md's inputs are well-founded.
 
@@ -110,7 +110,7 @@ Claims to examine — derived where possible, stated explicitly when taken as in
 
 1. Does the lattice signal speed *c* fix χ̃ uniquely, or does it leave one free length scale (*L* or *r*)? (Theory 6.)
 
-2. Can rotations around the 2π circumference supply the entropy that sim-gravity-2 sourced from a ℵ-line mode tower? (Theory 7 — early-validation candidate, gating chapter 4.)
+2. Can topological defects (vortices) of the 2D stress vector field supply the entropy that sim-gravity-2 sourced from a ℵ-line mode tower? (Theory 7 — early-validation candidate, gating chapter 4.)
 
 3. What is the precise relationship between the two distinct "wraps" the dialog uses — wraps of the *cylinder cross-section* (small scale, primitive-internal) and wraps of a *2D sheet of primitives* (MaSt scale, where charge lives per [grid/charge-emergence.md](../../grid/charge-emergence.md))?
 
@@ -126,7 +126,7 @@ Claims to examine — derived where possible, stated explicitly when taken as in
 
 - The earlier viz model treated edges and nodes as serially-arranged separate primitives, with a discrete two-phase clock alternating updates. That model is preserved in [viz/grid-lab/](../../viz/grid-lab.md) and remains useful for propagation intuition. It is *not* the foundational model for this project — the cylinder collapses both roles into a single object.
 
-- [grid/sim-gravity/](../../grid/sim-gravity/) tried a spring lattice and got the elastic 1/r² strain field — the wrong power law for gravity. The cause was that all degrees of freedom were R-valued (unbounded position vectors); without a compact periodic variable, the lattice had no information loss to source entropy from. [grid/sim-gravity-2/](../../grid/sim-gravity-2/) succeeded by adding a tower of standing-wave modes (n = 1, 2, …) on the ℵ-line as the entropy reservoir. The cylinder primitive does not carry such a tower; instead, theory 7 is the bet that 2π-circumference rotations of the bounded *φ* — the structural difference between this primitive's "spring model" and sim-gravity's — supply the entropy in a different way. Chapter 4 is the explicit check, and a negative result triggers fallback to a discrete phase-based primitive (ground rule 8).
+- [grid/sim-gravity/](../../grid/sim-gravity/) tried a spring lattice and got the elastic 1/r² strain field — the wrong power law for gravity. The cause was that the field at each lattice site was a single scalar displacement (no nontrivial target-space topology); without a target space that can support topological defects, the lattice had no defect entropy to source Jacobson's argument from. [grid/sim-gravity-2/](../../grid/sim-gravity-2/) succeeded by adding a tower of standing-wave modes (n = 1, 2, …) on the ℵ-line as the entropy reservoir. The cylinder primitive does not carry such a tower; instead, theory 7 is the bet that **vortex defects in the 2D stress vector field** — possible because the target space ℝ² has π₁(ℝ² \ {0}) = ℤ — supply the entropy in a different way. Chapter 4 is the explicit check, and a negative result triggers fallback to a discrete phase-based primitive (ground rule 8).
 
 - [grid/sim-impedance/](../../grid/sim-impedance/) (Tracks 1–12) systematically tested whether α could be derived from junction geometry alone and concluded that it could not. The framing here is more guarded — the project takes another pass at *understanding* α, not deriving its value, and reads sim-impedance's enumeration as a constraint on the menu rather than a closed verdict.
 
@@ -167,7 +167,7 @@ The arc below is a *sketch*. Early chapters are framed in detail; later chapters
 
 The chapters below are plausible follow-ups, not commitments.
 
-4. **`04-circumference-as-entropy.md`** — The fail-fast validation. Examine whether 2π-circumference rotations on the cylinder supply the entropy that sim-gravity-2 sourced from a ℵ-line mode tower — i.e., whether the bounded azimuthal phase *φ* alone (in contrast to sim-gravity's all-unbounded springs) is enough. A negative result here triggers the fallback in ground rule 8 (pivot to a discrete phase-based primitive) before further chapters; a positive result clears the path to chapters 7–8.
+4. **`04-entropy-from-defects.md`** — The fail-fast validation on gravity. Examine whether topological vortex defects of the 2D stress vector field supply the entropy density required for Jacobson's 1/r force. The mechanism is BKT-style vortex–antivortex proliferation; the calculation is to compute the equilibrium defect density and entropy contribution and match it against GRID's ζ = 1/4 bit per cell. A negative result triggers the fallback in ground rule 8 (pivot to a discrete phase-based primitive) before further chapters; a positive result clears the path to chapters 7–8.
 
 5. **`05-the-2d-lattice.md`** — Assemble primitives into a 2D periodic lattice. Establish the boundary-free discipline, the staggering of strain and phase across coupled edges, and the relationship to Yee's E/H staggering.
 
