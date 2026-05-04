@@ -1,23 +1,13 @@
 # Chapter 1 — Foundation
 
-**Status:** Sparse outline. To be expanded into full prose.
+This chapter establishes the *manifold*, *metric*, *field*, *periodicities*, and *closure rule* on which the rest of the project rests. It is the only chapter where we **assume** things; every later chapter must derive its claims from what is stated here.
 
----
+**Prerequisites:**
 
-## Purpose
+- [primers/metric.md](../../primers/metric.md) — the metric primer (covers metric machinery, signature, off-diagonals, light cones, the d'Alembertian, compact dimensions). We assume it as a reference.
+- [metric-mass/01-foundation.md](../metric-mass/01-foundation.md) — the predecessor chapter. Where metric-mass already established something (mass-from-compactification, the inertial proof, off-diagonal sourcing from massive modes), we cite it rather than re-derive.
 
-Establish the *manifold*, *metric*, *field*, *periodicity*, and *closure rule* on which the rest of the project rests. This is the only chapter where we **assume** things; every later chapter derives its claims from what is stated here.
-
-## Prerequisites
-
-- [primers/metric.md](../../primers/metric.md) — metric machinery (covered in metric-mass)
-- [metric-mass/01-foundation.md](../metric-mass/01-foundation.md) — predecessor chapter; we pick up from where it ends
-
-Wherever metric-mass already established something, we cite it rather than re-derive.
-
-## Tone
-
-Slow, deliberate, table-driven — match metric-mass's pacing. Every concept introduced here gets reused as-is for the rest of the project.
+The chapter is paced deliberately slowly. Once a concept is defined here, it is used as-is throughout the rest of the project. If you are fluent with differential geometry or with metric-mass, parts will feel basic. That is intentional.
 
 ---
 
@@ -25,14 +15,14 @@ Slow, deliberate, table-driven — match metric-mass's pacing. Every concept int
 
 | § | Concept |
 |---|---------|
-| 1 | Coordinates: (t, S₁, S₂, u, w) and their domains |
+| 1 | Our coordinates: t, S₁, S₂, u, w and their domains |
 | 2 | The bare metric on the 2D sheet |
 | 3 | Aspect ratio ε ≡ L_u / L_w |
-| 4 | Off-diagonal shear σ_uw (deferred to ch. 7) |
+| 4 | Off-diagonal shear σ_uw |
 | 5 | Visualization disposition (45° rendering) |
 | 6 | The wave field φ |
 | 7 | Why a scalar field is enough — and what we choose not to track |
-| 8 | The wave equation on the manifold |
+| 8 | The wave equation on M |
 | 9 | Periodicity in (u, w) |
 | 10 | The closure condition (axiomatic) |
 | 11 | Explicit non-assumptions |
@@ -40,139 +30,356 @@ Slow, deliberate, table-driven — match metric-mass's pacing. Every concept int
 
 ---
 
-## §1. Coordinates
+## 1. Our coordinates
 
-Five coordinates: t, S₁, S₂, u, w. Domain table (extended ℝ for t, S₁, S₂; periodic S¹ for u and w).
+We work with five coordinates: **t**, **S₁**, **S₂**, **u**, and **w**. Each one's domain (the set of values it can take) is given below.
 
-**Why two extended (vs. one in metric-mass):** single-knot derivations in this project largely don't need S₂ — most results work in S₁ alone. S₂ is carried for continuity with [metric-binding](../metric-binding/), where it becomes essential (two knots at different (S₁, S₂) positions).
+| Coordinate | Symbol | Domain | What this means |
+|---|---|---|---|
+| Time | t | All real numbers | t can be any real value, no wraparound |
+| First spatial extension | S₁ | All real numbers | S₁ can be any real value, no wraparound |
+| Second spatial extension | S₂ | All real numbers | S₂ can be any real value, no wraparound |
+| Compact, "u-direction" of the sheet | u | u ∈ [0, L_u), wraps | u runs from 0 up to L_u, then wraps back to 0 |
+| Compact, "w-direction" of the sheet | w | w ∈ [0, L_w), wraps | w runs from 0 up to L_w, then wraps back to 0 |
 
-**Why two compact (vs. one in metric-mass):**
-1. Knots — a 1D compact direction has no knot family; 2D does
-2. Closure condition — needs winding in *both* u and w
-3. Polarization — see §7
+The lengths L_u and L_w are the circumferences of the two compact directions. Both have units of length. We leave their numerical values symbolic for now.
 
-Manifold notation: M = ℝ × ℝ × ℝ × S¹ × S¹.
+**Manifold notation.** In differential-geometry shorthand, the combined domain is
 
-## §2. The bare metric
+<!-- M = ℝ × ℝ × ℝ × S¹ × S¹ -->
+$$
+M = \mathbb{R} \times \mathbb{R} \times \mathbb{R} \times S^1 \times S^1
+$$
 
-Simplest Lorentzian metric on M:
+— ℝ for each of t, S₁, S₂, and S¹ ("the 1-sphere," math-speak for an ordinary circle) for each of u and w. The two compact factors form a **2-torus** T² = S¹ × S¹. We will call the manifold **M**, but the formal product notation is just shorthand for the table above.
 
-ds² = −c² dt² + dS₁² + dS₂² + du² + dw²
+(Heads-up on a notation clash, same one as metric-mass: **S₁** is our coordinate for the first spatial extension; **S¹** is the math symbol for "circle." The subscript 1 vs. superscript 1 is the only thing distinguishing them in print. They are different things.)
 
-Diagonal, all coefficients 1, periodicity carries the geometric content.
+**Why two extended dimensions** (whereas metric-mass had one). Most single-knot derivations in this project don't strictly need S₂ — the closure condition, knot topology, mode spectrum, aspect-ratio sweep, and shear-induced fractional charge all work in S₁ alone. S₂ is carried in the coordinate set as forward-looking infrastructure for the follow-up project [metric-binding](../metric-binding/), where two knots at different (S₁, S₂) positions become essential. Keeping the coordinate set consistent across the two projects avoids a notational reset at the boundary.
 
-## §3. Aspect ratio ε ≡ L_u / L_w
+**Why two compact dimensions** (whereas metric-mass had one). Three converging reasons:
 
-Free parameter. Lives in the periodicities (L_u and L_w), not in the metric components in the bare form. ε = 1 is the symmetric Clifford torus; ε ≪ 1 is "thin," ε ≫ 1 is "fat." Will be swept in chapter 6.
+1. **Knot families.** A 1D compact direction admits only winding number — no knot topology. A 2D torus admits a discrete family of knots labeled by winding pairs (m, n), with non-trivial topological invariants (crossing number, genus, linking number). The whole knot picture of charge is impossible without a 2D compact substrate.
 
-## §4. Off-diagonal shear σ_uw
+2. **The closure condition** (§10) requires winding in *both* u and w simultaneously. A single compact direction cannot host the rule.
 
-Optional non-zero g_uw entry. With shear:
+3. **Polarization.** A real EM photon has E and B fields perpendicular to its propagation direction. A photon traveling along u with only u as a compact direction has nowhere internal for its polarization — it would have to point into S, which would put oscillating fields throughout observable spacetime. The 2D sheet gives polarization an internal home. We expand on this in §7.
 
-ds² = −c² dt² + dS₁² + dS₂² + du² + 2 σ_uw du dw + dw²
-
-Geometric meaning: u and w are no longer orthogonal in the metric sense. σ tilts them. Returns in chapter 7 as the symmetry-breaking parameter (matter/antimatter bias, three-phase population).
-
-## §5. Visualization disposition
-
-Lift from [README.md](README.md). Compact directions exaggerated, sheet sits at ~45° in 3D rendering with u's normal toward (+y, +z) and w's normal toward (−y, +z). The (x, y, z) display axes are not metric coordinates — just where on the screen each coordinate is drawn.
-
-## §6. The wave field
-
-We work with a scalar field φ(t, S₁, S₂, u, w). Same kind of object as metric-mass's φ(t, S, u), now on the larger manifold.
-
-## §7. Why a scalar field is enough — and what we choose not to track
-
-> **This section is the seam between metric-mass and metric-charge on the polarization question. It's deliberately structural and short. The full vector-field story is parallel to our work, not part of it, and lives downstream in [grid/](../../grid/).**
-
-### §7.1 Scalar suffices for our derivations
-
-Everything chapters 2–9 will derive — winding numbers (m, n), knot topology, the closure condition, fractional charge from multi-phase wraps, mass-only modes from closure failure — operates on the **phase pattern** of φ. It does not require a polarization vector.
-
-A scalar field is the right level of abstraction for this project's derivation chain.
-
-### §7.2 What metric-mass quietly elided
-
-A real photon is a vector potential A_μ with E and B fields perpendicular to k. metric-mass's scalar abstraction collapsed this away — it didn't need polarization for the mass-from-u derivation, so it didn't include it.
-
-If we naively promote metric-mass's setup to a real photon: a photon traveling along u has its polarization perpendicular to u. With only u as a compact direction, "perpendicular to u" means S or t — observable spacetime. That would put an oscillating E into S at every massive object's Compton frequency. We don't observe this. So the naive promotion fails.
-
-The scalar abstraction in metric-mass is therefore not just a simplification — it's a way of avoiding a structural deficiency: **one compact dimension is too few to host the photon's polarization internally.**
-
-### §7.3 What the 2D sheet buys
-
-With both u and w compact, a photon traveling along u has w as a perpendicular direction *within the sheet*. E along w is internal to the compact structure. This is the minimum compact geometry on which one of the photon's polarization components has an internal home — independent of the (already sufficient) topological reasons for jumping to 2D.
-
-### §7.4 What still leaks
-
-B = k × E. With k along u and E along w, B is perpendicular to both — out of the sheet plane. So even on a 2D sheet, *one* of {E, B} wants to live outside the sheet. This is plausibly the structural opening through which bound photons couple to S, and the candidate quantity that α measures (Q137, grid/alpha-derivation).
-
-### §7.5 What this chapter commits to
-
-We use a scalar φ throughout. Wherever later chapters say "the wave winds 2π on w," "the wave forms a knot," or "the closure condition is satisfied," we mean *the phase pattern of φ*. The polarization-leakage question is parallel to this work, deferred to grid/, and flagged as an open structural question rather than a derivation step.
-
-If a later chapter forces the issue (a closure-condition prediction that depends on polarization structure), we will revisit. So far we don't expect that.
-
-## §8. The wave equation on M
-
-□φ = 0 on the 5D manifold. Explicit form of the d'Alembertian with the bare metric of §2. Routine extension of metric-mass's wave equation; main novelty is the Laplacian on the (u, w) torus.
-
-## §9. Periodicity in (u, w)
-
-φ(t, S₁, S₂, u + L_u, w) = φ(t, S₁, S₂, u, w)
-φ(t, S₁, S₂, u, w + L_w) = φ(t, S₁, S₂, u, w)
-
-This is what makes (u, w) a 2-torus. With σ ≠ 0 (chapter 7), the periodicity lattice is sheared — note the consistency requirement and defer the full treatment.
-
-## §10. The closure condition (axiomatic)
-
-The centerpiece of the project. State cleanly:
-
-> **Closure condition.** A wave configuration on the 2D sheet promotes its mass mode to a charge mode when, during a single closed traversal of the phase pattern, **both** of the following are satisfied:
-> 1. The phase completes a full 2π winding on w.
-> 2. The phase completes a complete standing wave (full period — node-to-antinode-to-node) on both u and w.
->
-> Mini-step traversals are allowed; what matters is that the closure pattern locks during one full traversal of the knot.
-
-This is **stated, not derived**. The "why" — the α-coupling-strength derivation that explains the *strength* of the resulting charge — lives in [grid/](../../grid/), to be developed there.
-
-Variants to keep open for chapter 4:
-- 2π winding on u (instead of w) — different particle class?
-- Standing wave on only one direction
-- Multiple knots collectively satisfying closure but no single one individually
-
-## §11. Explicit non-assumptions
-
-What this chapter does *not* commit to:
-
-- No claim that electron, proton, or neutrino sheets exist as separate species (this project has one sheet)
-- No commitment to a numerical value of α (taken as given when needed; derived elsewhere)
-- No claim that the closure condition of §10 is unique (alternatives examined in chapter 4)
-- No tracking of full vector polarization for the EM field — see §7
-- No claim that the scalar abstraction loses *no* information beyond polarization (we leave room for surprises)
-- No quantum field theory; classical field analysis only
-- No backreaction of the field on the metric (linearized regime; deferred)
-
-## §12. Summary of givens
-
-Recap table of:
-- Coordinates and domains
-- Bare metric
-- Parameters: ε, σ_uw
-- Field: scalar φ
-- Periodicities
-- The closure condition
-- Visualization convention
-
-This is the working set chapter 2 begins from.
+**Note on visualization.** When we render M to a screen later, we embed the compact (u, w) sheet at a tilted disposition relative to (t, S₁, S₂); the details are in §5. The Cartesian display axes (x, y, z) carry no metric meaning — they are just where on the screen each coordinate goes.
 
 ---
 
-## Open questions flagged in this chapter
+## 2. The bare metric
 
-| Q | Where it goes |
-|---|---------------|
-| Does the polarization leakage out of the sheet quantify α? | grid/alpha-derivation |
-| Is the scalar abstraction lossy beyond polarization? | watch for surprises in chapters 2–9 |
-| Is the closure condition unique, or one of several? | chapter 4 |
-| Does periodicity remain consistent under shear? | chapter 7 |
+The starting metric for this project is the simplest Lorentzian metric on M:
+
+<!-- ds² = -c² dt² + dS₁² + dS₂² + du² + dw² -->
+$$
+ds^2 = -c^2\,dt^2 + dS_1^2 + dS_2^2 + du^2 + dw^2
+$$
+
+In matrix form, with coordinate ordering (t, S₁, S₂, u, w):
+
+<!-- g = diag(-c², 1, 1, 1, 1) -->
+$$
+g_{\mu\nu} = \begin{pmatrix}
+-c^2 & 0 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 0 & 1
+\end{pmatrix}
+$$
+
+(For what a metric is and why we write it this way, see [metric.md §1–§4](../../primers/metric.md). The 5D extension is mechanical — every spacelike direction gets the same +1 entry.)
+
+Reading the matrix:
+
+- **g_tt = −c².** The diagonal entry for time. The negative sign is what distinguishes time from space (Lorentzian signature). The c² is the unit-conversion factor that makes ds² come out as length² when t is in seconds and the spatial coordinates are in meters.
+- **g_S₁S₁ = g_S₂S₂ = 1.** Ordinary Euclidean weight for the two extended spatial directions.
+- **g_uu = g_ww = 1.** Same Euclidean weight for the two compact directions. The only thing distinguishing u and w from S₁ and S₂ in the metric is the topology of the underlying coordinate (compact vs. extended), not the metric weight.
+
+Three properties of this metric to keep in mind:
+
+- **Lorentzian.** One negative eigenvalue (the time entry) → light cone exists at every point.
+- **Flat.** g_μν does not depend on any of the coordinates → no curvature anywhere.
+- **Diagonal — as a starting condition.** No cross terms between coordinates. As in metric-mass, we treat this as an *initial* form to be revisited. metric-mass Chapter 5 already established that off-diagonals develop in the presence of mass; this project takes that result as given and asks what additional structure the closure condition imposes (see §10 and chapter 5 of this project).
+
+The diagonal-and-constant bare metric is the simplest possible setting in which to start the analysis. Whenever a later chapter requires off-diagonals — either the externally introduced shear σ_uw (§4, chapter 8) or the dynamically sourced cross terms from a mass mode (chapter 5) — that chapter will say so explicitly.
+
+---
+
+## 3. Aspect ratio ε ≡ L_u / L_w
+
+The 2-torus has two independent compact lengths, L_u and L_w. We define the **aspect ratio**:
+
+<!-- ε ≡ L_u / L_w -->
+$$
+\varepsilon \;\equiv\; \frac{L_u}{L_w}
+$$
+
+It is a free, dimensionless parameter of the sheet.
+
+- **ε = 1** is the symmetric **Clifford torus**: equal compact lengths in u and w.
+- **ε ≪ 1** is a "thin" sheet — small u-circumference, large w-circumference.
+- **ε ≫ 1** is a "fat" sheet — large u-circumference, small w-circumference.
+
+In the bare-metric form (§2), ε lives entirely in the periodicities (§9); it does not appear in the metric components themselves. (One could absorb ε into the metric coefficients by rescaling u or w; we do not, because keeping ε in the periodicities matches the convention used in MaSt's R-track.)
+
+ε is left symbolic throughout this chapter and chapter 2. It will be **swept** as a parameter in chapter 7, where varying ε is the mechanism by which different knot families dominate, including the candidate single-phase, three-phase, and dark behaviors.
+
+---
+
+## 4. Off-diagonal shear σ_uw
+
+In the bare metric (§2), all off-diagonals are zero. We introduce one optional off-diagonal entry: a coupling between u and w, denoted σ_uw (also written σ when context is unambiguous).
+
+With shear, the metric becomes:
+
+<!-- ds² = -c²dt² + dS₁² + dS₂² + du² + 2 σ du dw + dw² -->
+$$
+ds^2 = -c^2\,dt^2 + dS_1^2 + dS_2^2 + du^2 + 2\,\sigma_{uw}\,du\,dw + dw^2
+$$
+
+In matrix form, the change is in the (u, w) sub-block:
+
+<!-- (u, w) sub-block becomes ((1, σ), (σ, 1)) -->
+$$
+g^{\text{(u,w)}}_{\mu\nu} = \begin{pmatrix} 1 & \sigma_{uw} \\ \sigma_{uw} & 1 \end{pmatrix}
+$$
+
+Geometric meaning: u and w are no longer orthogonal in the metric sense. σ_uw tilts the local (u, w) basis. The metric remains Lorentzian as long as |σ_uw| < 1 (otherwise the (u, w) sub-block becomes degenerate or signature-flipped).
+
+For most of the project (chapters 2–7) we keep **σ_uw = 0**. Shear is turned on in chapter 8, where it becomes the parameter that biases matter over antimatter, aligns complementary nodes (proton-vs-neutron analog), and drives the quark-like fractional-charge mechanism.
+
+This σ_uw is a **deliberate, externally imposed** off-diagonal — it is not the off-diagonal that mass dynamically sources via Einstein's equations. The latter is treated in chapter 5. Both kinds of off-diagonals coexist in the framework; they have different origins and play different roles.
+
+---
+
+## 5. Visualization disposition
+
+When we render M to a screen, we use a fixed convention so that pictures across chapters refer to the same arrangement.
+
+**Display axes.** The Cartesian rendering axes are (x, y, z), where:
+
+- **x** displays S₁
+- **y** displays S₂
+- **z** displays t
+
+These are display assignments only; they carry no metric meaning. (S₁ and S₂ are spacelike with metric weight 1; t is timelike with metric weight −c². The renderer ignores those distinctions and just plots them as Cartesian axes.)
+
+**The compact sheet.** The (u, w) torus is rendered as a small 2-torus embedded in 3D space at each (x, y, z) point, with the compact dimensions exaggerated for visibility. The sheet is drawn at a **45° disposition** relative to the display axes:
+
+- u's normal points toward (+y, +z) — i.e., into the upper-back region of the rendering frame.
+- w's normal points toward (−y, +z) — i.e., into the upper-front region.
+
+The two normals are 90° apart in the bare (σ_uw = 0) case and visibly distinct from any of the (x, y, z) display directions.
+
+**Effect of shear.** When σ_uw ≠ 0, the rendered angle between u and w narrows from 90° (viewed from above, looking down the +z axis). This is the visual analog of the metric-side tilt described in §4.
+
+**Knot trajectories.** A knot — a closed curve traversing the (u, w) sheet — appears in the visualization as a 3D spiral. When the knot also has a worldline through (S, t), the spiral threads through space and time. This will be the main visual object in chapter 3 (knots on the torus) and onward.
+
+The visualization is intended for intuition, not derivation. None of the project's mathematical results depend on the rendering choice.
+
+---
+
+## 6. The wave field
+
+We assume the existence of a single **real scalar field** on M, which we call φ.
+
+The notation:
+
+<!-- φ : M → ℝ -->
+$$
+\varphi : M \to \mathbb{R}
+$$
+
+— shorthand for "for each point (t, S₁, S₂, u, w) of M, there is a real number φ(t, S₁, S₂, u, w)." Same kind of object as the φ of metric-mass, just on a larger manifold.
+
+The choice to use a *scalar* (rather than a vector or tensor field) deserves its own discussion, since it elides a real piece of physics and we want to be explicit about what we are choosing not to track. That discussion is §7.
+
+---
+
+## 7. Why a scalar field is enough — and what we choose not to track
+
+This section is the seam between metric-mass and metric-charge on the polarization question. It is deliberately structural and short. The full vector-field story is parallel to our work, not part of it; the quantitative part of it lives downstream in [grid/](../../grid/).
+
+### 7.1 The scalar abstraction is sufficient for our derivation chain
+
+Everything chapters 2–9 will derive operates on the **phase pattern** of φ:
+
+- Winding numbers (m, n) on the 2-torus
+- Knot topology and its invariants
+- The closure condition (§10) — a statement about how phase wraps and standing-waves
+- Fractional charge from multi-phase wraps (chapter 8)
+- Mass-only modes from closure failure (chapter 4)
+- Off-diagonal sourcing of the metric by these modes (chapter 5)
+
+None of these requires a polarization vector. A scalar field is the right level of abstraction for this project's derivation chain, and we use it throughout.
+
+### 7.2 What metric-mass quietly elided
+
+A real electromagnetic photon is a **vector potential** A_μ with E and B fields perpendicular to its propagation direction k. metric-mass's scalar abstraction collapsed this away — the mass-from-u derivation didn't need polarization, so it didn't include it.
+
+If we naively promote metric-mass's setup to a real photon and ask where polarization would live, we run into a problem. A photon traveling along u has its polarization perpendicular to u. With only u as a compact direction, "perpendicular to u" inside the manifold means **only S or t** — observable spacetime. A bound photon on u, taken seriously as a vector field, would put an oscillating E into S at every massive object's Compton frequency. We do not observe this.
+
+So the scalar abstraction in metric-mass is not just a pedagogical simplification — it is a way of avoiding a structural deficiency: **one compact dimension is too few to host the photon's polarization internally.**
+
+### 7.3 What the 2D sheet buys for polarization
+
+With both u and w compact, a photon traveling along u has w as a perpendicular direction *within the sheet*. E along w is internal to the compact structure — a polarization component that does not leak into observable spacetime.
+
+This is the minimum compact geometry on which one of the photon's polarization components has an internal home, independent of the (already sufficient) topological reasons for the 2D-sheet jump.
+
+### 7.4 What still leaks
+
+Even on the 2D sheet, the *full* polarization story does not close. B = k × E. With k along u and E along w, B is perpendicular to both — out of the sheet plane. Within the manifold M, "out of the (u, w) plane" means into S or t.
+
+So at most *one* of {E, B} fits inside the sheet at any moment, depending on the polarization choice. The other one wants to live outside.
+
+This residual leakage is plausibly the structural opening through which bound photons couple to S — the mechanism by which compact-sheet modes become observable as electromagnetic phenomena in 4D spacetime. It is a candidate quantity for what α measures in geometric terms (cf. [Q137](../../qa/Q137-alpha-as-aleph-aspect-ratio.md), the alpha-derivation work in [grid/](../../grid/)). The quantitative answer is grid's job, not this project's.
+
+### 7.5 What this chapter commits to
+
+We use a scalar φ throughout. Wherever later chapters say "the wave winds 2π on w," "the wave forms a knot," or "the closure condition is satisfied," we mean *the phase pattern of φ*. The polarization-leakage question is parallel to our work, deferred to grid, and flagged as an open structural question — not a derivation step.
+
+If a later chapter forces the issue (say, a closure-condition prediction that depends quantitatively on polarization structure), we will revisit. So far we do not expect that.
+
+---
+
+## 8. The wave equation
+
+φ obeys the **massless wave equation**:
+
+<!-- □φ = 0 -->
+$$
+\Box\varphi = 0
+$$
+
+This says, in the language of the metric primer ([metric.md §11](../../primers/metric.md)), that φ is a light-like field — its disturbances propagate on light-like paths (ds² = 0).
+
+Plugging the bare metric (§2) into the general form g^μν ∂_μ ∂_ν φ = 0 gives the explicit wave equation we will work with in chapter 2:
+
+<!-- (-1/c²)∂²φ/∂t² + ∂²φ/∂S₁² + ∂²φ/∂S₂² + ∂²φ/∂u² + ∂²φ/∂w² = 0 -->
+$$
+-\frac{1}{c^2}\frac{\partial^2\varphi}{\partial t^2}
++\frac{\partial^2\varphi}{\partial S_1^2}
++\frac{\partial^2\varphi}{\partial S_2^2}
++\frac{\partial^2\varphi}{\partial u^2}
++\frac{\partial^2\varphi}{\partial w^2}
+= 0
+$$
+
+The structure is a routine extension of metric-mass's wave equation: each Cartesian-orthogonal coordinate contributes a second derivative with sign matching its metric signature. The substantive new piece, coming in chapter 2, is the **Laplacian on the (u, w) torus** — the last two terms together. That Laplacian is what the periodicity boundary conditions of §9 act on, and its eigenvalue structure is what produces the discrete (m, n) mode family.
+
+When σ_uw ≠ 0 (chapter 8), the wave equation acquires a cross-term from the off-diagonal inverse metric. We defer that case until needed.
+
+---
+
+## 9. Periodicity in (u, w)
+
+Because both u and w are compact, the field φ must be **single-valued** on each compact direction. Going around by L_u (and coming back to "where you started") must give the same field value; same for L_w.
+
+Two boundary conditions, both required:
+
+<!-- φ(t, S₁, S₂, u + L_u, w) = φ(t, S₁, S₂, u, w) -->
+$$
+\varphi(t, S_1, S_2, u + L_u, w) = \varphi(t, S_1, S_2, u, w)
+$$
+
+<!-- φ(t, S₁, S₂, u, w + L_w) = φ(t, S₁, S₂, u, w) -->
+$$
+\varphi(t, S_1, S_2, u, w + L_w) = \varphi(t, S_1, S_2, u, w)
+$$
+
+These are not separate equations but **boundary conditions** on the wave equation of §8. They restrict which solutions are allowed: a candidate solution that increased or decreased after one trip around either compact direction would be multi-valued and is therefore disqualified.
+
+These two periodicities together produce the **discrete 2D mode family** (m, n) that chapter 2 will derive — the analog of metric-mass's 1D winding spectrum, now indexed by a pair of integers rather than one.
+
+**Note for chapter 8 (when σ_uw ≠ 0).** With shear, the natural periodicity lattice on (u, w) is no longer rectangular — it is sheared to match the metric. The boundary conditions must be applied along the sheared lattice vectors, not along independent u and w. We flag this here and defer the full treatment to chapter 8.
+
+---
+
+## 10. The closure condition (axiomatic)
+
+This is the centerpiece of the project. We state it now and explore its consequences in chapters 4 and 5.
+
+> **Closure condition.** A wave configuration on the 2D sheet promotes its mass mode to a charge mode when, during a single closed traversal of its phase pattern, **both** of the following are satisfied:
+>
+> 1. The phase completes a full **2π winding on w**.
+> 2. The phase completes a **complete standing wave** (full period — node-to-antinode-to-node) on **both u and w**.
+>
+> Mini-step traversals are allowed; what matters is that the closure pattern locks during one full traversal of the knot.
+
+This is **stated, not derived**. The "why" — the α-coupling-strength derivation that explains the *strength* of the resulting charge — lives in [grid/](../../grid/), to be developed there. This project takes the rule as given and explores its consequences.
+
+### Dual view
+
+The phase-pattern statement above is one of two equivalent formulations.
+
+The other formulation is *metric-side*. metric-mass Chapter 5 already established that under linearized Einstein equations, a mass mode in a compact direction sources off-diagonal metric entries (g_tu in metric-mass's case). On the 2D sheet, the analogous calculation produces a richer set of off-diagonal entries — in principle, all of g_tu, g_S₁u, g_S₂u, g_tw, g_S₁w, g_S₂w can be sourced.
+
+In the standard Kaluza-Klein identification, off-diagonals of this type (mixing extended spacetime with a compact direction) are physical electromagnetic gauge potentials A_μ and B_μ, one per compact direction. The closure condition, in this formulation, is the rule under which the off-diagonals sourced by a given mass mode actually form a valid gauge-potential pattern — i.e., are consistent with the gauge structure that makes them observable as EM fields.
+
+Modes that fail closure source off-diagonals too, but the pattern doesn't satisfy the gauge structure. Those off-diagonals remain "internal" and produce no observable EM in 4D — a candidate structural origin for neutrino-class neutrality.
+
+The two formulations are equivalent: phase-pattern closure ↔ off-diagonals form a valid gauge potential. **Chapter 5 develops the metric-side view and proves the equivalence.** Chapter 1 only states it.
+
+### Variants to keep open
+
+The closure condition stated above is one specific rule. Several variants are conceivable and will be examined in chapter 4:
+
+- 2π winding on **u** instead of w — does this give a different particle class?
+- A standing wave on only one of u or w (rather than both)
+- A configuration where multiple knots collectively satisfy closure but no single one does individually
+
+Whether these variants describe additional particle classes, redundant labelings of the same class, or unphysical configurations is a chapter-4 question.
+
+---
+
+## 11. Explicit non-assumptions
+
+The following are *not* given. They are to be derived, observed to arise from the givens, or kept out of scope for this project.
+
+- **Distinct sheet species.** No claim that electron, proton, or neutrino sheets exist as separate species. This project has *one sheet* and characterizes what kinds of particles it can host under varying (ε, σ_uw, knot quantum numbers, multi-phase populations). The multi-sheet structure of full MaSt is downstream.
+
+- **Numerical α.** We do not commit to a numerical value of the fine-structure constant. Where α appears in interpretations or comparisons, it is taken as given; its derivation is [grid/](../../grid/)'s territory.
+
+- **Closure-condition uniqueness.** No claim that the closure condition of §10 is the unique rule that promotes mass to charge. Alternatives are examined in chapter 4.
+
+- **Vector polarization.** We do not track full vector polarization for the EM field. The scalar field φ carries phase but not polarization. See §7.
+
+- **Lossless scalar abstraction.** No claim that the scalar abstraction loses *no* information beyond polarization. We leave room for surprises and will revisit if any later chapter encounters a result that depends on polarization in an unexpected way.
+
+- **Quantum field theory.** The wave equation is classical. We invoke quantization-of-momentum at the periodicity boundary conditions (§9) but otherwise treat φ classically. ℏ enters only at the step of identifying p = ℏk for a wave of wavenumber k.
+
+- **Nonlinear backreaction.** We use linearized Einstein equations to compute mass-mode-sourced off-diagonals (chapter 5). Full nonlinear self-consistency of the field-and-metric system is deferred — the linearized regime is sufficient for everything this project sets out to establish.
+
+---
+
+## 12. Summary of givens
+
+We have, in total:
+
+1. A manifold M with coordinates (t, S₁, S₂, u, w) — t, S₁, S₂ are extended (real-line); u and w are compact (circles of circumferences L_u and L_w respectively).
+2. A starting metric ds² = −c²dt² + dS₁² + dS₂² + du² + dw², diagonal and constant. Subject to revision in chapter 5 (mass-induced off-diagonals) and chapter 8 (externally imposed shear σ_uw).
+3. The aspect-ratio parameter ε ≡ L_u/L_w, free and symbolic; swept in chapter 7.
+4. The shear parameter σ_uw, equal to zero in chapters 2–7; turned on in chapter 8.
+5. A real scalar field φ : M → ℝ.
+6. The massless wave equation □φ = 0.
+7. Two periodicity boundary conditions: φ(u + L_u) = φ(u) and φ(w + L_w) = φ(w) (with all other arguments held fixed).
+8. **The closure condition** of §10, as a statement about phase patterns, with a pending equivalent metric-side statement (chapter 5).
+
+Methodological commitments:
+
+- Units are kept SI-like: c and ℏ remain explicit symbols.
+- φ is a scalar; full vector polarization is acknowledged but not tracked (§7).
+- Off-diagonals of the metric start at zero and are introduced where the project requires them (mass-sourced in chapter 5; shear-imposed in chapter 8).
+
+That is the entire content of this chapter. Everything else in the project must be derived from these eight items and the methodological commitments.
+
+---
+
+## What's next
+
+[Chapter 2 — Modes on a sheet](02-modes-on-a-sheet.md). Solve the wave equation on M. Derive the mode family (m, n) labeled by winding pairs in (u, w), the dispersion relation, and the discrete mass spectrum. Confirm the (0, 0) zero mode behaves as ordinary light. Establish the (m, 0) and (0, n) "single-axis" modes as candidate closure-failure mass-only states for chapter 4 to interrogate.
