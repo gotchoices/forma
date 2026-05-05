@@ -217,6 +217,72 @@ Q136's role is just to confirm that the two-primitive
 operational view is consistent with — not in tension with —
 the 1D-aleph answer.
 
+## 5c. Vortex picture: tube and ring chiralities, and why neutrons enable proton compound modes
+
+Particles in MaSt are standing waves on Ma sheets — their phase
+winds around the compactified loops *as time advances*.  The
+phase advance per unit time is conventionally directional: it
+proceeds clockwise or counter-clockwise around each closed
+compact dimension.  In this sense each particle is a **vortex
+in the time direction** — its phase circulates around the
+compact loop continuously while the particle exists, and the
+*direction of that circulation* is part of what distinguishes
+the particle from its anti-particle.
+
+A particle on the p-sheet has *two* such circulations — one
+around the tube cycle (winding number n_pt) and one around the
+ring cycle (winding number n_pr).  The signs of n_pt and n_pr
+encode the two independent chiralities of the particle's
+vortex.  R64's u/d primitives illustrate the structure:
+
+| Particle | (n_pt, n_pr) | Tube vortex | Ring vortex |
+|---|---|---|---|
+| Proton | (3, +2) | +3 (same as neutron) | +2 |
+| Neutron | (3, −2) | +3 (same as proton) | **−2 (opposite to proton)** |
+
+Proton and neutron share the same tube-vortex direction but
+have opposite ring-vortex direction.
+
+This structure makes neutrons specifically capable of canceling
+the ring contribution of a proton in a compound mode:
+
+- Two protons (compound n_pr = +4) carry reinforcing ring
+  vortices; the m_Ma compound formula penalizes this through
+  the `(n_pr − s·n_pt)²` term (≈ 14.8 at Point A), and no
+  bound diproton exists.
+- A proton and a neutron (compound n_pr = 0) cancel ring
+  vortices completely; the same term drops to ≈ 0.02, leaving
+  m_Ma at its minimum and giving the deuteron its 4% binding
+  match (Track 14).
+- ⁴He at (12, 0) has full ring cancellation across two protons
+  and two neutrons, giving the strongest per-nucleon binding
+  among light nuclei.
+
+Physically: **the neutron acts as the ring-vortex canceller
+that allows two same-direction proton tube-vortices to share
+a compound mode without paying the ring-asymmetry penalty.**
+This is the same content as Track 14's "n_pr cancellation makes
+the deuteron special" and Track 15's `a_a · (N − Z)² / A` SEMF
+asymmetry term, expressed as a vortex narrative rather than a
+mass-formula or quantum-number-counting one.
+
+The framing predicts (consistent with observation):
+
+- **N = Z is preferred for light nuclei**: ²H, ⁴He, ¹²C, ¹⁶O,
+  ²⁰Ne all have N = Z, where ring cancellation is exact.
+- **No diproton or dineutron**: no ring-canceller available.
+- **³He and ³H bind weakly**: partial ring cancellation (n_pr =
+  ±2 instead of 0), giving B/A ≈ 2.6 MeV vs ⁴He's 7.1 MeV.
+
+This is interpretive content for the existing math — not a new
+mechanism — but the vortex-direction reading clarifies why
+neutrons are essential for multi-nucleon binding even though
+they appear "neutral" from a Coulomb perspective.  See also
+Q137's chirality-propagation discussion (§5) for the
+parallel polarity story at the EM level, and the related
+caveats in this file's previous reasoning about the limits of
+the simple "same-vortex reinforce" reading.
+
 ## 6. Implications of the 1D answer
 
 - **The lattice has a single underlying primitive (the 1D
