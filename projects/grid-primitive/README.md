@@ -51,14 +51,18 @@ For charge emergence the relationship is different. [grid/charge-emergence.md](.
 |---|---|---|
 | *e(x, t)* | Longitudinal stress magnitude at cross-section *x* | Real, signed (+ tension, − compression) |
 | *φ(x, t)* | Azimuthal direction where stress is concentrated at cross-section *x* | Angle, periodic mod 2π |
-| *K_ee, K_φφ* | Diagonal stiffnesses (longitudinal, azimuthal) | Real, positive |
+| *K_ee, K_φφ* | Diagonal stiffnesses (longitudinal, azimuthal) — substrate-level coefficients | Real, positive |
 | *K_eφ* | Off-diagonal shear coupling between *e* and *φ* | Real |
-| *χ̃* | Dimensionless shear ratio: χ̃ = K_eφ / √(K_ee K_φφ) | Real, ∈ (0, 1) |
+| ρ, *I_φ* | Diagonal substrate-level inertia coefficients — what *D*'s diagonal entries are. *Not* particle rest mass (which is a metric-mass-style emergent quantity, not present at this scale) | Real, positive |
+| *D_eφ* | Off-diagonal substrate-level inertia (matched chirality counterpart of *K_eφ*) | Real |
+| *χ̃* | Dimensionless chirality: χ̃ = K_eφ / √(K_ee K_φφ) = D_eφ / √(ρ I_φ) (matched chirality) | Real, ∈ (0, 1) |
 | *L* | Cylinder length (one lattice spacing) | Length |
 | *r* | Cylinder cross-section radius | Length |
 | *τ* | Transit time across one cylinder: τ = *L*/*c* | Time |
 | *N* | Discretization count when a sheet is wrapped into a torus | Integer |
 | *c* | Lattice signal speed (one cell per tick, GRID axiom A1) | Speed |
+
+A note on inertia at the substrate scale. The cylinder primitive lives at the lattice substrate scale (Planck), well below where particles or their rest masses exist. The "inertia matrix" *D* in this project is *substrate-level resistance to acceleration of the field* — what gives the medium a finite propagation speed *c*. It is not the rest mass of any particle. Particle rest mass is the emergent quantity of [metric-mass](../metric-mass/) (momentum on a compact dimension); the cylinder primitive does not carry rest mass in that sense. We borrow "mass" and "moment of inertia" from continuum mechanics for pedagogical convenience, but these are substrate coefficients, not particle rest masses. In GRID's natural units (*c* = ℏ = 1), the matched-chirality + bare-speed condition collapses *M* and *D* into a single matched-chirality matrix; "mass" and "stiffness" at the substrate level are two views of the same structural quantity, not separate physics.
 
 The earlier viz model ([viz/grid-lab/](../../viz/grid-lab.md)) treated edges and nodes as separate *lumped* primitives — one magnitude per edge, one periodic phase per node — connected by a discrete two-phase clock. The cylinder primitive folds both roles into a single *distributed* object: state varies continuously along the cylinder's length, and propagation is direct rather than mediated by a clock. The viz remains useful for building intuition about wave propagation, but is superseded by the cylinder for the foundational model.
 

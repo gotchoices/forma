@@ -218,13 +218,31 @@ The cylinder primitive is hypothetical. Its qualities are what we postulate to m
 
 The alternative — independent chiralities in *M* and *D* — would correspond to a medium whose helical structure somehow contributes differently to potential and kinetic energy. We have no microstructural reason to expect that, so the simplest and most physically motivated choice is matched.
 
-### Why this matters
+### What "inertia" means at this scale
 
-Chapter 2 will derive the wave dispersion relation. With the diagonal-*D* assumption (no cross-inertia), the chiral stiffness *K_eφ* makes the cylinder support two propagating modes at *different speeds*. With matched chirality (and bare-speed equality from chapter 3, *K_ee*/ρ = *K_φφ*/*I_φ* = *c*²), both modes propagate at exactly the same speed *c* — matching what vacuum Maxwell expects for the two photon polarizations.
+A clarification worth making explicit, because the macroscopic-engineering analogies we have been using can mislead. The entries of *D* — ρ, *I_φ*, *D_eφ* — are **substrate-level coefficients**: what gives the medium a finite propagation speed by pairing with time-derivatives in the wave equation. They are *not* "rest mass" in the metric-mass sense.
+
+The cylinder primitive lives at the lattice substrate scale (Planck), well below where particles or their rest masses exist. Particle rest mass is the emergent quantity that [metric-mass](../../projects/metric-mass/) derives from momentum quantization on a compact dimension — a structural feature of how the lattice carries particles, not a property of the lattice substrate itself. The cylinder primitive does not have rest mass in that sense; nothing at the substrate scale does.
+
+We are borrowing "mass density" and "moment of inertia" from continuum mechanics because the wave equation has the same algebraic form there. But our *D* and *M* are substrate-level structural coefficients of the lattice's computational machinery, not the kinetic quantities of macroscopic mechanics. Calling them "mass" is shorthand; treating them as particle rest mass would be a category error.
+
+### Inertia and stiffness as one thing in natural units
+
+In GRID's natural units (*c* = ℏ = 1, *L* = *L_P* = 1 — see [grid/foundations.md](../../grid/foundations.md) §"Notation and conventions"), the matched-chirality condition combined with the bare-speed condition (chapter 3, *K_ee*/ρ = *K_φφ*/*I_φ* = *c*²) reduces to:
+
+*M* = *D*
+
+The stiffness matrix and the inertia matrix are *literally the same matrix* in natural units. There is one matched-chirality structure with diagonal entries (1's after normalization) and off-diagonal entries (χ̃); we project it through *c*² when we want to read it as stiffness, and through 1 when we want to read it as inertia, but these projections are bookkeeping rather than separate physics.
+
+This is consistent with the substrate-level interpretation. At the lattice scale, "kinetic" and "elastic" responses are not separate things — they are two views of the same dimensionless matched-chirality matrix that characterizes how the medium responds to perturbations. The separate-matrix presentation in *D* and *M* is pedagogically useful (it makes the matched-chirality condition explicit and lets us connect to engineering wave-equation language), but it is not a claim that the substrate has two distinct physical entities corresponding to "mass" and "spring constant."
+
+### Why this matters for chapter 2
+
+Chapter 2 derives the wave dispersion relation. With the diagonal-*D* assumption (no cross-inertia), the chiral stiffness *K_eφ* makes the cylinder support two propagating modes at *different speeds*. With matched chirality (and bare-speed equality from chapter 3), both modes propagate at exactly the same speed *c* — matching what vacuum Maxwell expects for the two photon polarizations.
 
 This is not a fix for a problem; it is the design of the cylinder primitive. The cylinder we are committing to is one whose microstructure is internally chirally self-consistent. The fact that this simplifies the wave dynamics is a consequence of the right design, not a contrivance to make the math work.
 
-For chapter 1's purposes, the foundation-level statement is: **the cylinder primitive has matched chirality** — *D_eφ*/√(ρ *I_φ*) = *K_eφ*/√(*K_ee* *K_φφ*) = χ̃. The full *D* matrix replaces the diagonal-*D* simplification used elsewhere in older drafts of these chapters.
+For chapter 1's purposes, the foundation-level statement is: **the cylinder primitive has matched chirality** — *D_eφ*/√(ρ *I_φ*) = *K_eφ*/√(*K_ee* *K_φφ*) = χ̃. The full *D* matrix replaces the diagonal-*D* simplification used in earlier drafts of these chapters.
 
 ---
 

@@ -45,9 +45,13 @@ $$
 
 The three coefficients are:
 
-- ρ — the **longitudinal mass density** (mass per unit length, kg/m for an actual rod). What resists changes in *e* alone.
-- *I_φ* — the **rotational moment of inertia per unit length**. For a real elastic rod of cross-section radius *r*, *I_φ* would scale roughly as (mass per length) × *r*². What resists changes in *φ* alone.
-- *D_eφ* — the **chiral cross-inertia**. The helical microstructure that produces the stiffness chirality also couples the kinetic energies of stretching and twisting motions.
+- ρ — the **longitudinal substrate-level inertia** for the *e* channel. By analogy with continuum mechanics this would be a "mass density" (kg/m for an actual rod), but the analogy is loose: this is a substrate coefficient that pairs with ∂_t² *e*, not the rest mass of any particle.
+- *I_φ* — the **azimuthal substrate-level inertia**. By analogy this is "moment of inertia per unit length," but again the cylinder primitive is at the lattice substrate scale, well below where particles or their rest masses exist.
+- *D_eφ* — the **chiral cross-inertia**. The helical microstructure that produces the stiffness chirality also couples the kinetic energies of stretching and twisting.
+
+A clarification worth making explicit. "Mass," "inertia," and "moment of inertia" are continuum-mechanics terms we are borrowing because the wave equation has the same algebraic form. But the cylinder primitive is at the Planck-scale lattice substrate, and at this scale **no particle rest mass exists** — particle rest mass is a metric-mass-style emergent quantity, structural to how the lattice carries particles, not a property of the lattice substrate itself. So our ρ, *I_φ*, and *D_eφ* are *substrate coefficients* that determine the medium's propagation speed; they are not particle rest masses.
+
+In GRID's natural units (*c* = ℏ = 1), the matched-chirality + bare-speed condition reduces *M* and *D* to the *same* matched-chirality matrix (chapter 1 §8). The separate-matrix presentation here is for pedagogical clarity — the matched-chirality condition is more visible when *D* and *M* are written out separately than when they are folded into one. But at the substrate level, "mass" and "stiffness" are two views of the same structural quantity, not separate physics.
 
 By the **matched chirality** commitment of chapter 1 §8, the cross-inertia is not an independent parameter: it is fixed by the same chirality ratio χ̃ that governs the stiffness matrix:
 
