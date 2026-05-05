@@ -220,11 +220,18 @@ The alternative — independent chiralities in *M* and *D* — would correspond 
 
 ### What "inertia" means at this scale
 
-A clarification worth making explicit, because the macroscopic-engineering analogies we have been using can mislead. The entries of *D* — ρ, *I_φ*, *D_eφ* — are **substrate-level coefficients**: what gives the medium a finite propagation speed by pairing with time-derivatives in the wave equation. They are *not* "rest mass" in the metric-mass sense.
+A subtlety worth making explicit. The entries of *D* — ρ, *I_φ*, *D_eφ* — are not arbitrary coefficients put into the wave equation by hand. They have a natural origin under the *fractal microgrid* interpretation of the cylinder primitive (mentioned in [README.md](README.md) and chapter 1 §1 as "acknowledged but not pursued in detail"). Pursued one level: the cylinder is itself a small 2D microgrid wrapped into a tube of cross-section circumference 2π*r*. Waves circulating around the cross-section have their transverse momentum quantized — *p_cross* = ℏ*n*/*r*, *n* integer (the standard Kaluza-Klein quantization on a compact direction). For waves propagating along the cylinder's axis, this transverse momentum manifests as **substrate inertia** at the cylinder scale: an effective mass density carrying the KK-mode energy. Lowest mode (*n* = 0) is the massless wave we work with throughout the chapter; *n* ≠ 0 modes are the source of *D*'s entries.
 
-The cylinder primitive lives at the lattice substrate scale (Planck), well below where particles or their rest masses exist. Particle rest mass is the emergent quantity that [metric-mass](../../projects/metric-mass/) derives from momentum quantization on a compact dimension — a structural feature of how the lattice carries particles, not a property of the lattice substrate itself. The cylinder primitive does not have rest mass in that sense; nothing at the substrate scale does.
+This is structurally **the same mechanism** as the rest-mass story in [metric-mass](../../projects/metric-mass/). There, particle rest mass emerges from quantized momentum on a compact dimension *u* with circumference *L_u*: *m_n* = ℏ|*n*|/(*R_u c*). Here, substrate inertia emerges from quantized momentum on the cylinder's cross-section circumference 2π*r*. Same wrap mechanism, different scales:
 
-We are borrowing "mass density" and "moment of inertia" from continuum mechanics because the wave equation has the same algebraic form there. But our *D* and *M* are substrate-level structural coefficients of the lattice's computational machinery, not the kinetic quantities of macroscopic mechanics. Calling them "mass" is shorthand; treating them as particle rest mass would be a category error.
+| Scale | Compact wrap | Quantized momentum becomes |
+|---|---|---|
+| Compton (~10⁻¹³ m) | Compact dimension *u* (metric-mass) | Particle rest mass |
+| Sub-Planck (cylinder cross-section) | Cylinder circumference 2π*r* (this project) | Substrate inertia (the *D* matrix) |
+
+So substrate inertia is *not* a separate physical input, and it is *not* a category-error analogy with particle rest mass. It is the same KK-style emergent quantity at a different scale. Calling *D*'s entries "mass" and "moment of inertia" is therefore not loose terminology — it is using the correct word for a structurally identical phenomenon.
+
+The cylinder is in MaSt terminology a **dark-mass-like** object at the substrate level: it carries inertia from the cross-section wrap, but the wrap is one-dimensional (a ring around the circumference) and so cannot produce charge. Charge requires a *two*-dimensional wrap of a sheet into a closed surface (chapter 8's α-derivation), which is a different topology operating at a different fractal level. The substrate inertia is mass-analog only.
 
 ### Inertia and stiffness as one thing in natural units
 

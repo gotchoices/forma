@@ -190,6 +190,22 @@ The α-derivation exercise has produced:
 
 ---
 
+## 8.5. The fractal recursion: another wrap one level down
+
+A brief observation that ties this chapter to the foundation. The cylinder primitive itself, viewed under the fractal-microgrid interpretation (chapter 1 §8), is a wrapped 2D microgrid — a sheet of microgrid wrapped into a tube of cross-section circumference 2π*r*. This is *another* 2π wrap, one fractal level below the sheet wrap that this chapter examines.
+
+Two structural observations follow from applying chapter 8's logic at the next-deeper fractal level:
+
+**The cross-section wrap produces mass-analog, not charge.** The cross-section is a 1D ring (the circumference, parametrized by an angular coordinate). Wrapping a 1D direction into a closed loop is the standard Kaluza-Klein topology that produces mass-analog through quantized transverse momentum — exactly the mechanism that gives the cylinder its substrate inertia in chapter 1 §8. It does *not* produce charge: charge requires a *two*-dimensional wrap of a sheet into a closed surface (the sheet wrap of this chapter), not a 1D wrap of an angular coordinate. So the cross-section wrap contributes a "dark mass" at the substrate level (in MaSt terminology — mass-analog from compact-wrap quantization, not coupled to electromagnetism), not a substrate-level charge.
+
+**Any radial leakage at the cross-section level is dynamic, not static.** If we apply chapter 8's polygonal kink-loss formula at the cross-section scale, we would get some leakage rate per cross-section loop. But this leakage is not a *static* radial E-field analog around every cylinder. It is dynamically tied to the signals passing through the cylinder at any moment — the cross-section wrap leaks whatever waves are currently flowing through, in whatever direction, and over time-averages this integrates to zero (no net residual). So even if the leakage rate is nonzero per loop, the time-averaged radial signature is zero, and there is no observable static field from the substrate-level wrap.
+
+The combination of these two observations means the fractal recursion adds the substrate-level mass-analog (which we already accounted for as *D*) without adding any unaccounted-for static field at the lattice scale. The cross-section wrap is a *consistent* part of the cylinder primitive's structure, not a problem.
+
+This is as far as we pursue the fractal recursion. The detailed cross-section dynamics — exactly how the microgrid produces *D*, what *K_micro* values that microgrid would have, etc. — are deferred (per ground rule 3, "stop at the cylinder; the cylinder's internal dynamics are described by a stiffness matrix with symbolic entries; we do not derive those entries from sub-cylinder geometry"). What we have used here is just the structural observation that the cylinder primitive's *D* matrix has a natural microgrid origin parallel to metric-mass's compact-dimension story.
+
+---
+
 ## 9. Risks and caveats
 
 - **Risk: *K*(1/√2) might not be O(10⁻³).** If the actual calculation gives a wildly different value, the structural form α = (2π²/3) · *K*(1/√2) holds but the numerical match to α = 1/137 fails. That would be a real falsification — the cylinder primitive on a hexagonal lattice with χ̃ = 1/√2 simply doesn't reproduce the observed coupling. The follow-up calculation would tell us this.
