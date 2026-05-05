@@ -31,19 +31,29 @@ We work with energy *per unit length* of cylinder (an energy *density*) and inte
 
 ### Kinetic density
 
-When the fields change in time, they carry kinetic energy of the standard "(½) × inertia × velocity²" form:
+When the fields change in time, they carry kinetic energy. For a generic two-channel medium it is the standard quadratic form, but with the chirally-coupled inertia matrix *D* introduced in chapter 1 §8 — the medium's helical microstructure produces inertia couplings as well as stiffness couplings:
 
-<!-- T̃ = (1/2) ρ (∂_t e)² + (1/2) I_φ (∂_t φ)² -->
+<!-- T̃ = (1/2) (∂_t e, ∂_t φ) · D · (∂_t e, ∂_t φ)ᵀ
+   = (1/2)[ρ (∂_t e)² + 2 D_eφ (∂_t e)(∂_t φ) + I_φ (∂_t φ)²] -->
 $$
-\widetilde{T} = \tfrac{1}{2}\rho\,(\partial_t e)^2 + \tfrac{1}{2} I_\varphi\,(\partial_t \varphi)^2
+\widetilde{T} = \tfrac{1}{2}
+\begin{pmatrix} \partial_t e & \partial_t \varphi \end{pmatrix}
+D
+\begin{pmatrix} \partial_t e \\ \partial_t \varphi \end{pmatrix}
+= \tfrac{1}{2}\!\left[\rho\,(\partial_t e)^2 + 2 D_{e\varphi}\,(\partial_t e)(\partial_t \varphi) + I_\varphi\,(\partial_t \varphi)^2\right]
 $$
 
-Each term is just *(½ × inertia × velocity²)* per unit length, applied to each field separately. The two coefficients are the relevant "inertias":
+The three coefficients are:
 
-- ρ — the **longitudinal mass density** of the cylinder (mass per unit length, kg/m for an actual rod). This is what resists changes in *e*.
-- *I_φ* — the **rotational moment of inertia per unit length**. For a real elastic rod of cross-section radius *r*, *I_φ* would scale roughly as (mass per length) × *r*². It is what resists changes in the azimuthal direction *φ*.
+- ρ — the **longitudinal mass density** (mass per unit length, kg/m for an actual rod). What resists changes in *e* alone.
+- *I_φ* — the **rotational moment of inertia per unit length**. For a real elastic rod of cross-section radius *r*, *I_φ* would scale roughly as (mass per length) × *r*². What resists changes in *φ* alone.
+- *D_eφ* — the **chiral cross-inertia**. The helical microstructure that produces the stiffness chirality also couples the kinetic energies of stretching and twisting motions.
 
-Both ρ and *I_φ* are real material constants of the primitive. We do not commit to a relation between them at this stage; if a later chapter forces one, it will be flagged explicitly.
+By the **matched chirality** commitment of chapter 1 §8, the cross-inertia is not an independent parameter: it is fixed by the same chirality ratio χ̃ that governs the stiffness matrix:
+
+D_eφ / √(ρ · *I_φ*) = χ̃
+
+A diagonal *D* (with *D_eφ* = 0) corresponds to χ̃ = 0 in the inertia, which is *inconsistent* with χ̃ > 0 in the stiffness. Earlier drafts made the diagonal-*D* simplification implicitly; the matched-chirality formulation is the consistent one.
 
 ### Elastic potential density
 
@@ -85,45 +95,45 @@ A brief note on terminology. In classical mechanics, the combination *L̃* = *T�
 
 To find how the cylinder evolves in time, take a small slice of cylinder of width d*x* at position *x* and apply Newton's second law to it. There are two fields on the slice (*e* and *φ*), so we write a separate Newton equation for each. The argument is a routine continuum-mechanics calculation, the same one used to derive the wave equation for a stretched string.
 
-### Equation for *e*
+### The inertial momentum and the elastic force
 
-The slice has linear mass ρ d*x* attached to the longitudinal coordinate *e*. The mass times its acceleration ∂_t² *e* is the inertial term:
+Now the inertia is a 2 × 2 matrix, so the slice's "momentum" couples both fields. Define the column **u** = (*e*, *φ*)ᵀ. The slice's *generalized momentum* per unit length is *D* ∂_t **u**, and its *generalized inertial force* per unit length is *D* ∂_t² **u**. In components:
 
-(inertial force on slice) = ρ d*x* · ∂_t² *e*
+(inertial force on slice in *e* channel) = (ρ ∂_t² *e* + *D_eφ* ∂_t² *φ*) d*x*
+(inertial force on slice in *φ* channel) = (*D_eφ* ∂_t² *e* + *I_φ* ∂_t² *φ*) d*x*
 
-The elastic force on the slice comes from the *difference* in internal stress at the two ends of the slice. Reading off the elastic potential Ṽ from §1, the *e*-channel internal stress at any cross-section *x* is
+The cross terms come from *D_eφ*: a coupled-channel medium has cross-inertia exactly because acceleration in one channel produces inertial response in the other.
 
-σ_e(*x*, *t*) = *K_ee* (∂_x e) + *K_eφ* (∂_x φ)
+The elastic force on the slice comes from the *difference* in internal stress at the two ends of the slice. Reading off the elastic potential Ṽ from §1, the internal stresses at any cross-section *x* are:
 
-— the sum of the field's own gradient times its self-stiffness, plus a cross-coupling contribution from the other field's gradient. This is just the engineer's "stress equals stiffness times strain," generalized to a chirally-coupled medium.
+σ_e(*x*, *t*) = *K_ee* (∂_x *e*) + *K_eφ* (∂_x *φ*)
+σ_φ(*x*, *t*) = *K_eφ* (∂_x *e*) + *K_φφ* (∂_x *φ*)
 
-The net force on the slice is the difference between σ_e at *x* + d*x* and at *x*:
+The net elastic forces on the slice in each channel are the gradients of these stresses, times d*x*.
 
-(net elastic force) = σ_e(*x* + d*x*) − σ_e(*x*) = (∂_x σ_e) · d*x* = [*K_ee* (∂_x² *e*) + *K_eφ* (∂_x² *φ*)] · d*x*
+### The equations of motion
 
-Setting the inertial force equal to the net elastic force and dividing through by d*x*:
+Setting inertial force equal to net elastic force and dividing through by d*x*:
 
-<!-- ρ ∂_t² e = K_ee ∂_x² e + K_eφ ∂_x² φ -->
+<!-- ρ ∂_t² e + D_eφ ∂_t² φ = K_ee ∂_x² e + K_eφ ∂_x² φ -->
+<!-- D_eφ ∂_t² e + I_φ ∂_t² φ = K_eφ ∂_x² e + K_φφ ∂_x² φ -->
 $$
-\rho\, \partial_t^2 e \;=\; K_{ee}\, \partial_x^2 e \;+\; K_{e\varphi}\, \partial_x^2 \varphi
+\begin{aligned}
+\rho\, \partial_t^2 e + D_{e\varphi}\, \partial_t^2 \varphi
+\;&=\;
+K_{ee}\, \partial_x^2 e + K_{e\varphi}\, \partial_x^2 \varphi
+\\
+D_{e\varphi}\, \partial_t^2 e + I_\varphi\, \partial_t^2 \varphi
+\;&=\;
+K_{e\varphi}\, \partial_x^2 e + K_{\varphi\varphi}\, \partial_x^2 \varphi
+\end{aligned}
 $$
 
-That is the equation of motion for *e*. Reading it back: mass density times acceleration equals the sum of the *e*-field's own restoring force (first term, like a stretched string) and the cross-coupling force from the *φ*-field's curvature (second term).
-
-### Equation for *φ*
-
-The same argument for the azimuthal field gives a parallel equation. The slice has rotational moment of inertia *I_φ* d*x* attached to *φ*. The conjugate stress is σ_φ = *K_eφ* (∂_x e) + *K_φφ* (∂_x φ). The net torque from the gradient of σ_φ gives the elastic restoring force:
-
-<!-- I_φ ∂_t² φ = K_eφ ∂_x² e + K_φφ ∂_x² φ -->
-$$
-I_\varphi\, \partial_t^2 \varphi \;=\; K_{e\varphi}\, \partial_x^2 e \;+\; K_{\varphi\varphi}\, \partial_x^2 \varphi
-$$
-
-The two equations are coupled through the *K_eφ* terms that appear on the right-hand side of each: a curvature in *e* drives *φ*, and a curvature in *φ* drives *e*.
+These are coupled both ways now: in time-derivatives (through *D_eφ*) *and* in space-derivatives (through *K_eφ*). The medium's chirality has manifested in both kinetic and elastic responses, exactly as the matched-chirality commitment of chapter 1 requires.
 
 ### In matrix form
 
-It helps to write the pair compactly. Define the column vector **u**(*x*, *t*) = (*e*, *φ*)ᵀ and the diagonal inertia matrix *D* = diag(ρ, *I_φ*):
+Define **u** = (*e*, *φ*)ᵀ and the matrices *D* and *M* from chapter 1. The pair of equations becomes:
 
 <!-- D ∂_t² u = M ∂_x² u -->
 $$
@@ -211,121 +221,134 @@ These are independent uncoupled waves: a stretch wave that doesn't twist, and a 
 
 This is the cylinder primitive without chirality. It is not yet what we want — chapter 2's hypothesis is that *K_eφ* > 0 is what supports coupled wave behavior — but it is a useful baseline to compare to.
 
-### General case: with chiral coupling
+### General case: with matched chirality
 
-Turn *K_eφ* back on. The matrix *D*⁻¹*M* now has off-diagonal entries:
+Turn *K_eφ* back on. By the matched-chirality commitment of chapter 1 §8, the cross-inertia *D_eφ* is also non-zero, with both controlled by the single chirality parameter χ̃:
 
-<!-- D^{-1} M = ((K_ee/ρ, K_eφ/ρ), (K_eφ/I_φ, K_φφ/I_φ)) -->
+*K_eφ* = χ̃ √(*K_ee* *K_φφ*),    *D_eφ* = χ̃ √(ρ *I_φ*)
+
+This has a striking algebraic consequence. With matched chirality, *M* and *D* have the same off-diagonal *structure*, and they are proportional to each other when the bare-speed condition
+
+*K_ee*/ρ = *K_φφ*/*I_φ* ≡ *c*²
+
+holds (where *c* is the bare propagation speed common to both channels — chapter 3 will identify this with the lattice signal speed). Under both conditions:
+
+<!-- M = c² D -->
 $$
-D^{-1} M = \begin{pmatrix} K_{ee}/\rho & K_{e\varphi}/\rho \\ K_{e\varphi}/I_\varphi & K_{\varphi\varphi}/I_\varphi \end{pmatrix}
-$$
-
-The eigenvalues come from the characteristic equation det(*D*⁻¹*M* − λ*I*) = 0:
-
-<!-- (K_ee/ρ − λ)(K_φφ/I_φ − λ) − K_eφ²/(ρ I_φ) = 0 -->
-$$
-\Big(\frac{K_{ee}}{\rho} - \lambda\Big)\Big(\frac{K_{\varphi\varphi}}{I_\varphi} - \lambda\Big) - \frac{K_{e\varphi}^2}{\rho\, I_\varphi} = 0
-$$
-
-This expands to a quadratic in λ:
-
-<!-- λ² − (K_ee/ρ + K_φφ/I_φ) λ + (K_ee K_φφ − K_eφ²)/(ρ I_φ) = 0 -->
-$$
-\lambda^2 - \Big(\frac{K_{ee}}{\rho} + \frac{K_{\varphi\varphi}}{I_\varphi}\Big)\, \lambda + \frac{K_{ee} K_{\varphi\varphi} - K_{e\varphi}^2}{\rho\, I_\varphi} = 0
+M \;=\; c^2\, D
 $$
 
-By the quadratic formula:
+To see this directly: with *K_ee* = *c*² ρ and *K_φφ* = *c*² *I_φ*, the diagonal entries of *M* equal *c*² times those of *D*. For the off-diagonal:
 
-<!-- λ_± = (1/2)[K_ee/ρ + K_φφ/I_φ ± √((K_ee/ρ − K_φφ/I_φ)² + 4 K_eφ²/(ρ I_φ))] -->
+*K_eφ* = χ̃ √(*K_ee* *K_φφ*) = χ̃ √(*c*² ρ · *c*² *I_φ*) = *c*² · χ̃ √(ρ *I_φ*) = *c*² *D_eφ*
+
+so *K_eφ* = *c*² *D_eφ*. The two matrices are proportional throughout.
+
+### What *M* = *c*² *D* does to the dispersion
+
+Substitute into the eigenvalue problem:
+
+ω² *D* **A** = *k*² *M* **A** = *k*² · *c*² *D* **A**
+
+so
+
+ω² *D* **A** = *c*² *k*² *D* **A**
+
+Since *D* is invertible (positive-definite), divide by *D* on both sides:
+
+<!-- ω² = c² k² -->
 $$
-\lambda_{\pm} \;=\; \tfrac{1}{2}\!\left[\,\frac{K_{ee}}{\rho} + \frac{K_{\varphi\varphi}}{I_\varphi}
-\;\pm\; \sqrt{\!\left(\frac{K_{ee}}{\rho} - \frac{K_{\varphi\varphi}}{I_\varphi}\right)^{\!2}
-+ \frac{4\,K_{e\varphi}^2}{\rho\, I_\varphi}}\,\right]
+\omega^2 \;=\; c^2\, k^2
 $$
 
-These are the two eigenvalues. Both are real (the term under the square root is a sum of two squares, always ≥ 0) and both are positive when *M* is positive-definite (which is the stability requirement of chapter 2 §6).
+— **for every amplitude vector A**. There is no eigenvalue selection because every direction is an eigenvector with the same eigenvalue *c*². The dispersion relation is single-branch:
 
-The two natural propagation speeds are *c*_± = √λ_±. Together with the eigenvalue equation, the dispersion relation — the relation between frequency ω and wavenumber *k* — is:
+ω(*k*) = *c* |*k*|
 
-<!-- ω²(k) = k² λ_± -->
-$$
-\omega^2(k) \;=\; k^2\, \lambda_{\pm}
-$$
+The cylinder propagates at a single speed *c*, with no preferred polarization. Both real components of the stress vector — and any combination of them — propagate at the same speed. The chiral coupling is still present (it is what makes the cylinder a coupled-wave medium rather than two unrelated channels), but matched chirality removes any speed difference between polarizations.
 
-— two branches, one for each eigenvalue. Both are linear in |*k*|: the speed *c*_± is independent of *k*.
+### Why this matters
 
-This last observation is important. A wave whose speed is independent of wavelength is called **non-dispersive**: a localized pulse, which is a sum of many wavelengths, will propagate as a unit without spreading out. (A *dispersive* medium is one where different wavelengths travel at different speeds, so an initially-localized pulse spreads out over time; the cylinder primitive does not have this problem.)
+This is the key consequence of matched chirality for the wave dynamics. Without it (with *D* diagonal), the cylinder would have produced two propagating modes at different speeds — chiral splitting, like optical activity in a sugar solution. *With* matched chirality, the two modes degenerate at *c*, exactly as vacuum Maxwell expects for the two photon polarizations.
 
-For *K_eφ* = 0, the formula collapses to λ_+ = max(*K_ee*/ρ, *K_φφ*/*I_φ*) and λ_− = min(*K_ee*/ρ, *K_φφ*/*I_φ*), recovering the special-case result. As *K_eφ* grows from zero, the cross term inside the square root grows, and the two eigenvalues split further apart: the larger one (λ_+) increases, and the smaller one (λ_−) decreases. This splitting of the two natural mode speeds is the chiral coupling at work.
+The cylinder primitive is not a chiral medium in the propagation sense (no birefringence, no slow mode); it is a chirally-coupled medium where the chirality enters internally (in how the channels interact at any given point) but does not split the propagation speeds.
+
+A useful physical analog: in optics, a chiral medium splits left- and right-circular polarizations into different speeds (optical activity). The cylinder primitive is *not* such a medium. It is the chirally-coupled analog of vacuum, where both polarizations propagate at *c* despite the underlying chiral structure.
+
+### Without matched chirality
+
+For completeness, if matched chirality fails (independent chiralities in *D* and *M*), the analysis returns the two-eigenvalue problem of an earlier draft of this chapter — eigenvalues λ_± of *D*⁻¹*M*, with two distinct propagation speeds *c*_± = √λ_±. The earlier algebraic form (a quadratic in λ with discriminant determining the split) is the general case; matched chirality is the special case where the discriminant happens to vanish in such a way that the two eigenvalues coincide at *c*².
+
+The cylinder primitive *commits* to matched chirality; the general two-speed case is not the model we are working with.
 
 ---
 
-## 5. The two natural modes: how strain and direction combine
+## 5. Polarizations: how strain and direction combine in the propagating wave
 
-Each eigenvalue has a corresponding eigenvector. Solving (*D*⁻¹*M* − λ_± *I*) **v**_± = 0 gives, after a small amount of algebra, eigenvectors that can be written in the form
+Under matched chirality (§4), every direction in the (*e*, *φ*) amplitude plane is an eigenvector with the same eigenvalue *c*². There is no preferred mode-shape; the cylinder propagates *all* polarizations at the same speed.
 
-<!-- v_+ ∝ (cos θ, sin θ)^T, v_- ∝ (−sin θ, cos θ)^T -->
-$$
-\mathbf{v}_+ \propto \begin{pmatrix} \cos\theta \\ \sin\theta \end{pmatrix}, \qquad
-\mathbf{v}_- \propto \begin{pmatrix} -\sin\theta \\ \cos\theta \end{pmatrix}
-$$
+### Two independent polarizations
 
-where the **mixing angle** θ is determined by the matrix entries. The two eigenvectors are orthogonal — perpendicular in the (*A_e*, *A_φ*) plane.
+Although every amplitude direction propagates at *c*, we can still pick a basis of two orthogonal polarizations to describe a general wave. The natural choice is the two coordinate directions in the (*e*, *φ*) plane:
 
-A useful way to read these: the mixing angle θ tells how much each natural mode involves strain versus azimuthal direction.
+- **e-polarized wave**: *A* = (1, 0)ᵀ. The stress magnitude oscillates while the azimuthal direction stays at zero.
+- **φ-polarized wave**: *A* = (0, 1)ᵀ. The azimuthal direction oscillates while the stress magnitude stays at zero.
 
-- At θ = 0 (which happens when *K_eφ* = 0): **v**_+ = (1, 0)ᵀ is pure strain, **v**_− = (0, 1)ᵀ is pure direction. This is the decoupled limit.
-- At θ ≠ 0: each mode mixes strain and direction. The fast mode **v**_+ has both *A_e* and *A_φ* nonzero, so when the wave passes through, both fields oscillate together. Same for the slow mode, with the strain-direction mix swapped.
-- At θ = π/4 (45°): each mode is a 50/50 mix of strain and direction.
+A general wave is any linear combination of these two: *A* = (*A_e*, *A_φ*) = *A_e*(1, 0) + *A_φ*(0, 1). All combinations propagate at *c*.
 
-For the simplifying special case where *K_ee*/ρ = *K_φφ*/*I_φ* (equal "bare" speeds for the two channels), the eigenvectors are exactly at θ = π/4 for any *K_eφ* > 0 — the symmetry forces a 50/50 mix. The general case has a θ that depends on the imbalance between the two channels' bare stiffnesses.
+This is exactly Maxwell's vacuum in 2D: two independent polarizations of a single wave field, both at *c*, with any superposition also at *c*.
 
-### Mechanical reading
+### Circularly polarized waves
 
-In each natural mode, the stress-magnitude oscillation at any position is *locked* to the azimuthal direction's oscillation at the same position. The fast mode (**v**_+) oscillates the two together: when stress is high, direction is at one angle; when stress is low, direction is at the other angle. The slow mode (**v**_−) oscillates them oppositely: when stress is high, direction goes the *other* way; when stress is low, direction goes *back*. The partial cancellation in the slow mode is what makes its propagation speed lower than the fast mode's.
+A particularly useful pair of polarizations is the **circular** combination:
 
-### Optical analog
+- **R-circular**: *A* = (1, *i*)ᵀ /√2 — at any spatial point, as time advances the (*e*, *φ*) amplitude rotates clockwise (if we identify (*e*, *φ*) with (*x*, *y*) Cartesian coordinates).
+- **L-circular**: *A* = (1, −*i*)ᵀ /√2 — counter-clockwise rotation.
 
-In optics, a chiral medium (such as a sugar solution) has two natural modes — left-circular and right-circular polarized light — that propagate at slightly different speeds. The cylinder primitive has the same structure: two natural mode mixings of stress magnitude and azimuthal direction, traveling at slightly different speeds *c*_+ and *c*_−. This split in mode speeds is sometimes called *optical activity*. When the cylinder lattice is later coarse-grained to recover Maxwell, these two natural modes will play the role of the two photon polarizations.
+Under matched chirality, both circular polarizations propagate at *c*. There is no chiral-medium-style splitting between them — no "optical activity" in the propagation. The cylinder is structurally chiral (*K_eφ* > 0, *D_eφ* > 0), but its chirality affects only the *internal* coupling between channels, not the propagation speed of any polarization.
+
+### What chirality *does* affect
+
+Even though all polarizations propagate at *c*, the chirality is not invisible. It enters in two ways:
+
+1. **Coupling between the channels.** A pure-*e* perturbation injected at one end of the cylinder does not stay pure-*e* — the chirality redistributes amplitude into the *φ* channel as the wave evolves. Both channels participate in any actual wave because of *K_eφ* and *D_eφ* together.
+2. **The kink-loss formula in chapter 8.** When the cylinder lattice is folded into a torus (the wrap relevant to charge emergence), the chirality enters the leakage rate per wrap. The functional form of α as a geometric ratio depends on χ̃.
+
+So matched chirality does not erase the chirality from the model. It just localizes its effects — chirality matters for how the cylinder couples its two channels and for how a wrapped sheet of cylinders leaks energy at corners. It does not produce birefringence at the propagation level.
 
 ---
 
-## 6. Stability boundary and the degenerate limit χ̃ → 1
+## 6. Stability boundary on the chirality
 
-The dimensionless shear ratio from chapter 1 is
+The dimensionless chirality from chapter 1 is
 
-χ̃ = *K_eφ* / √(*K_ee* · *K_φφ*)
+χ̃ = *K_eφ* / √(*K_ee* · *K_φφ*) = *D_eφ* / √(ρ · *I_φ*)
 
-This packages the chiral coupling into a single dimensionless number, comparing the off-diagonal stiffness *K_eφ* to the geometric mean of the diagonal stiffnesses √(*K_ee* · *K_φφ*).
+(matched chirality means both ratios equal the same χ̃). For both *M* and *D* to be positive-definite — energy must be bounded below in both elastic and kinetic forms — we need the determinant of each matrix to be positive:
 
-For *M* to be positive-definite (the stability requirement — energy must be bounded below), the determinant *K_ee* · *K_φφ* − *K_eφ*² must be positive. This translates to χ̃ < 1.
+det(*M*) = *K_ee* *K_φφ* − *K_eφ*² > 0,    det(*D*) = ρ *I_φ* − *D_eφ*² > 0
 
-To see what happens as χ̃ approaches 1, take the simplifying special case ρ = *I_φ* and *K_ee* = *K_φφ* ≡ *K* (which strips the algebra to one symbolic stiffness scale). The eigenvalues simplify to:
+Both translate to the same condition on χ̃:
 
-<!-- λ_± = (K/ρ)(1 ± χ̃) -->
-$$
-\lambda_{\pm} = \frac{K}{\rho}\,(1 \pm \tilde{\chi})
-$$
+χ̃ < 1
 
-So *c*_+ = √(*K*(1 + χ̃)/ρ) and *c*_− = √(*K*(1 − χ̃)/ρ).
+So the stable range of chirality is χ̃ ∈ (0, 1), bounded below by 0 (no chiral coupling — the cylinder becomes two unrelated channels) and above by 1 (both *M* and *D* simultaneously become singular).
 
-As χ̃ → 1 from below, the slow mode's eigenvalue λ_− → 0, and its speed *c*_− → 0. The slow wave is grinding to a halt.
+What happens at χ̃ = 1? Both matrices have determinant zero. *M* has a direction in (*e*, *φ*)-space along which the elastic potential is flat (no restoring force); *D* simultaneously has a direction along which the kinetic energy is flat (no inertial response). For χ̃ > 1 both lose positive-definiteness and the model breaks down: the kinetic and potential energies could each become negative for some perturbations, signaling unphysical instabilities.
 
-At exactly χ̃ = 1, the matrix *M* has determinant zero. There is a direction in (*e*, *φ*)-space along which the elastic potential energy is *flat* — costing nothing to deform. A perturbation in that direction has no restoring force, so it does not oscillate; it just stays at whatever value it was set to. The slow mode has been replaced by a static, non-propagating zero mode.
+A note on the propagation speed at the stability boundary. Under matched chirality (M = c² D), both modes propagate at *c* throughout the stable range — including at the χ̃ = 1 boundary, where the dispersion ω = c |k| still holds because the matrices remain proportional even as they go singular. (In an earlier-draft setup with diagonal D, the slow-mode speed would have collapsed to zero at χ̃ = 1; under matched chirality this collapse does not happen because both matrices degenerate together.)
 
-For χ̃ > 1, *M* loses positive-definiteness entirely. The smaller eigenvalue becomes *negative*, meaning ω² < 0 on that branch, which means ω is imaginary. A would-be sinusoidal mode at imaginary ω is actually exponentially growing — an instability that signals the model has broken down.
-
-So the cylinder primitive's stable, wave-supporting regime is χ̃ ∈ (0, 1) *strictly* — bounded below by 0 (no chiral coupling, no coupled wave) and above by 1 (degenerate, slow mode collapses). This confirms theory 3 of [README.md](README.md): stability bounds the shear.
+So the χ̃ < 1 condition is a stability requirement in its own right (positive-definiteness of energy), not a wave-speed constraint. Both modes propagate at *c* throughout the stable range. Theory 3 of [README.md](README.md) is confirmed.
 
 ---
 
 ## 7. The natural shear value χ̃ = 1/√2
 
-The stable range (0, 1) is wide; nothing in §6 prefers any value of χ̃ over any other. To find a *natural* point in this range, we look for the geometric center.
+The stable range χ̃ ∈ (0, 1) is wide; nothing in §6 prefers any value of χ̃ over any other. To find a *natural* point in this range, we look for the geometric center.
 
 The geometric mean of 0 and 1 — equivalently, the point halfway between them on a logarithmic scale — corresponds to *K_eφ*² being half the way to its stability ceiling *K_ee* · *K_φφ*:
 
-*K_eφ*² = (1/2) *K_ee* · *K_φφ*
+*K_eφ*² = (½) *K_ee* · *K_φφ*
 
 Equivalently, χ̃² = 1/2, so
 
@@ -334,20 +357,15 @@ $$
 \tilde{\chi} = \frac{1}{\sqrt{2}} \approx 0.707
 $$
 
-What this point means physically:
+What this point means structurally:
 
-- The chiral coupling is well-engaged (χ̃ is well away from zero, so the two channels are coupled and the medium supports propagating modes).
-- The stability margin is also substantial (χ̃ is well below 1, so the slow mode is not near collapse).
-- *M*'s determinant is exactly half the diagonal product: det(*M*) = *K_ee* · *K_φφ* − *K_eφ*² = (1/2) *K_ee* · *K_φφ*.
+- The chiral coupling is well-engaged (χ̃ is well away from zero, so the two channels are genuinely coupled — the cylinder is a coupled-wave medium, not two unrelated channels).
+- The stability margin is substantial (χ̃ is well below 1, so neither *M* nor *D* is anywhere near singular).
+- The determinants are exactly half their diagonal products: det(*M*) = ½ *K_ee* *K_φφ*, det(*D*) = ½ ρ *I_φ*.
 
-In the simplifying special case ρ = *I_φ*, *K_ee* = *K_φφ* = *K*, the two mode speeds at χ̃ = 1/√2 are:
+Under matched chirality, the value χ̃ = 1/√2 does *not* affect the propagation speed — both polarizations propagate at *c* throughout the stable range, by the matched-chirality result of §4. What χ̃ affects is the *internal coupling strength* between the channels: how strongly a perturbation in one channel drives a response in the other. At χ̃ = 1/√2, this coupling is "well-tuned" — neither so weak that the channels are effectively independent, nor so strong that the medium is near instability.
 
-*c*_+ = √(*K*(1 + 1/√2)/ρ) ≈ √(1.707 *K*/ρ)
-*c*_− = √(*K*(1 − 1/√2)/ρ) ≈ √(0.293 *K*/ρ)
-
-Their ratio is *c*_+/*c*_− = √((1 + 1/√2) / (1 − 1/√2)) ≈ 2.41. The slow mode is roughly 0.41 times the fast mode.
-
-This χ̃ = 1/√2 value is sometimes referred to as an "equipartition" or "impedance-matched" point in the literature, on the grounds that strain and azimuthal channels carry comparable shares of the wave's content there. The mathematical content is the geometric-mean argument above; richer physical interpretations of the same value (thermodynamic equilibration between left and right circular populations, for example) don't add to or change the value.
+The χ̃ = 1/√2 value is sometimes referred to as an "equipartition" or "impedance-matched" point in the literature. The mathematical content is the geometric-mean argument above; the physical interpretations don't change the value.
 
 A note on what this does and does not establish. The geometric-mean argument identifies χ̃ = 1/√2 as the *natural* value in the parameter space — but does not *force* the cylinder primitive to sit there. Nothing in chapter 2 alone pins χ̃ to any particular value within (0, 1). The further question of whether the lattice signal speed *c* (from GRID axiom A1) supplies an additional constraint that pins χ̃ is taken up in the next chapter.
 
@@ -355,26 +373,24 @@ A note on what this does and does not establish. The geometric-mean argument ide
 
 ## 8. Left-going and right-going waves travel at equal speeds
 
-A central question for the cylinder primitive: does the chiral shear, which we have just established splits the two natural modes into different speeds, *also* introduce a preference for one direction of propagation over the other?
+A check on the model: does the chiral coupling introduce a preference for one direction of propagation over the other?
 
-The answer is no, and the proof is direct. The dispersion relation derived in §4 is
+The answer is no. The dispersion relation under matched chirality is
 
-ω²(*k*) = *k*² λ_±
+ω²(*k*) = *c*² *k*²
 
-The right-hand side depends on *k* only through *k*². Since *k*² = (−*k*)², we have
+depending on *k* only through *k*². Since *k*² = (−*k*)², we have
 
 <!-- ω²(k) = ω²(−k) -->
 $$
 \omega^2(k) = \omega^2(-k)
 $$
 
-for each branch ±. Taking the positive square root gives ω(*k*) = ω(−*k*) up to sign convention. The phase speed |ω/*k*| = *c*_± is independent of the sign of *k*. Waves moving in the +*x* direction (*k* > 0) and waves moving in the −*x* direction (*k* < 0) propagate at exactly the same speed for each mode.
+The phase speed |ω/*k*| = *c* is independent of the sign of *k*. Waves moving in the +*x* direction (*k* > 0) and the −*x* direction (*k* < 0) propagate at the same speed.
 
-It is worth distinguishing this from another notion that is easily confused with it: the chiral shear *does* split the two modes themselves into different speeds (*c*_+ ≠ *c*_−). That is the cylinder's analog of *optical activity* — the difference between left-circular and right-circular polarized light in a chiral solution. But the choice of mode is a property of the *polarization* (which mix of strain and direction is oscillating), not of which way the wave is going. A given mode propagates at the same speed in either direction.
+The reason is structural: both *M* and *D* are real and symmetric. There is no term in the equations of motion that distinguishes +*x* from −*x*. A complex-valued or asymmetric *M* (or *D*) would break this — and in some real media (a magnetic field aligned with a propagation axis, for instance) such terms do appear, producing the *Faraday effect* in which left-circular light travels faster than right-circular light in one direction and slower in the reverse direction. The cylinder primitive's chirality is of a different, time-reversal-symmetric kind, and it does not produce direction-dependent propagation. This confirms theory 5 of [README.md](README.md).
 
-The reason the medium has direction symmetry is structural: the stiffness matrix *M* is real and symmetric, the inertia matrix *D* is real and diagonal. There is no term in the equations of motion that distinguishes +*x* from −*x*. A complex-valued *M*, or an asymmetric *M*, would break this — and in some real media (a magnetic field aligned with a propagation axis, for instance) such terms do appear, producing the *Faraday effect* in which left-circular light travels faster than right-circular light in one direction and slower in the reverse direction. The cylinder primitive's chirality is of a different, time-reversal-symmetric kind, and it does not produce direction-dependent propagation. This confirms theory 5 of [README.md](README.md).
-
-A *negative-result candidate* worth flagging: if working through the algebra had produced a term linear in *k* in the dispersion (a difference between ω(*k*) and ω(−*k*)), the cylinder primitive would have failed this test — it would be incompatible with vacuum Maxwell, where photons of given polarization travel at *c* in either direction. The check passes because *M* is real and symmetric.
+A *negative-result candidate* worth flagging: if working through the algebra had produced a term linear in *k* in the dispersion (a difference between ω(*k*) and ω(−*k*)), the cylinder primitive would have failed this test — it would be incompatible with vacuum Maxwell, where photons of given polarization travel at *c* in either direction. The check passes because both *M* and *D* are real and symmetric.
 
 ---
 
@@ -407,14 +423,14 @@ The viz model demonstrated this empirically with its Δ2 preset ([viz/grid-lab.m
 
 The cylinder primitive's wave dynamics, established in this chapter:
 
-- The cylinder's energy density has two parts: kinetic (from time-derivatives of the fields, weighted by the inertias ρ and *I_φ*) and elastic (from spatial gradients, weighted by the stiffness matrix *M*).
-- Newton's law applied to a slice of cylinder gives a coupled pair of linear second-order PDEs for *e* and *φ*, written compactly as *D* ∂_t² **u** = *M* ∂_x² **u** with *D* = diag(ρ, *I_φ*).
-- The sinusoidal trial **u** = **A** *e^{i(kx − ωt)}* reduces the PDE to a 2 × 2 eigenvalue problem (ω²/*k*²) **A** = *D*⁻¹*M* **A** with two real positive eigenvalues at every *k*.
-- The dispersion relation has two branches, ω²(*k*) = *k*² λ_±, both linear in |*k*|. The medium is non-dispersive: pulses propagate without spreading.
-- The two natural modes are mixings of strain and azimuthal direction governed by the eigenvectors of *D*⁻¹*M*. They are the cylinder primitive's analog of left-circular and right-circular polarizations.
-- Stability requires χ̃ ∈ (0, 1) strictly. The upper limit χ̃ = 1 is degenerate: the slow-mode wave speed collapses to zero.
-- The geometric mean of the stable range is χ̃ = 1/√2 ≈ 0.707 — a natural midpoint at which the chiral coupling is well-engaged but the stability margin is substantial.
-- The dispersion ω² depends on *k* only through *k*², so left-going and right-going waves propagate at identical speeds. Chirality splits *mode* speeds (optical activity) but not *direction* speeds (no Faraday effect). The cylinder is direction-symmetric.
+- The cylinder's energy density has two parts: kinetic (from time-derivatives of the fields, weighted by the inertia matrix *D*) and elastic (from spatial gradients, weighted by the stiffness matrix *M*). Both matrices are non-diagonal under the matched-chirality commitment of chapter 1 §8.
+- Newton's law applied to a slice of cylinder gives a coupled pair of linear second-order PDEs for *e* and *φ*, written compactly as *D* ∂_t² **u** = *M* ∂_x² **u**.
+- The sinusoidal trial **u** = **A** *e^{i(kx − ωt)}* reduces the PDE to ω² *D* **A** = *k*² *M* **A**.
+- Under matched chirality plus bare-speed equality (*K_ee*/ρ = *K_φφ*/*I_φ* = *c*²), the matrices satisfy *M* = *c*² *D*. The eigenvalue problem then has a single eigenvalue *c*² with every direction in (*A_e*, *A_φ*)-space being an eigenvector. The dispersion is single-branch: ω = *c* |*k*|.
+- Both polarizations of the cylinder's stress vector — and any combination of them — propagate at the same speed *c*. The cylinder is the chirally-coupled analog of vacuum: chirality at the internal-coupling level, no birefringence at the propagation level.
+- Stability requires χ̃ ∈ (0, 1) strictly — bounded above by simultaneous singularity of *M* and *D*. Both modes propagate at *c* throughout the stable range.
+- The geometric mean of the stable range is χ̃ = 1/√2 ≈ 0.707 — a natural midpoint at which the chiral coupling is well-engaged but the stability margin is substantial. Under matched chirality, χ̃ governs internal coupling strength, not propagation speed.
+- The dispersion ω² depends on *k* only through *k*², so left-going and right-going waves propagate at identical speeds. The cylinder is direction-symmetric (no Faraday effect).
 - The wave equations are linear, so any two solutions can be superposed. Two opposing pulses pass through each other and emerge with original waveforms intact.
 
-These properties are what a viable primitive substrate must have to support Maxwell-style wave physics. The next chapter takes up the question of whether the lattice signal speed *c* — the cadence at which the GRID lattice transmits information — pins the cylinder's parameters more tightly, or leaves a one-parameter family in play.
+These properties are what a viable primitive substrate must have to support vacuum-Maxwell-style wave physics. The next chapter takes up the question of whether the lattice signal speed *c* — the cadence at which the GRID lattice transmits information — pins the cylinder's parameters more tightly, or leaves a one-parameter family in play.

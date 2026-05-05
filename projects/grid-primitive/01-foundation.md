@@ -19,10 +19,11 @@ The chapter is paced deliberately slowly. Once a definition is set here it is us
 | 5 | Nodes as passive continuity boundaries |
 | 6 | The stiffness matrix M |
 | 7 | The shear coupling *K_eφ* |
-| 8 | Relationship to the earlier viz model |
-| 9 | What is taken as input from GRID |
-| 10 | Explicit non-assumptions |
-| 11 | Summary of givens |
+| 8 | The inertia matrix *D* and matched chirality |
+| 9 | Relationship to the earlier viz model |
+| 10 | What is taken as input from GRID |
+| 11 | Explicit non-assumptions |
+| 12 | Summary of givens |
 
 ---
 
@@ -173,19 +174,61 @@ The strict inequality on the off-diagonal is what keeps wave dynamics nontrivial
 
 ## 7. The shear coupling *K_eφ*
 
-Among the three entries of *M*, the off-diagonal *K_eφ* deserves a separate paragraph because it is what makes the cylinder a *wave-supporting* medium rather than two independent decoupled springs.
+Among the three entries of *M*, the off-diagonal *K_eφ* deserves a separate paragraph because it is what makes the cylinder a *coupled-wave* medium rather than two unrelated channels.
 
-If *K_eφ* = 0, the cylinder's strain and phase evolve independently. A longitudinal perturbation produces only longitudinal oscillation; an azimuthal perturbation produces only azimuthal oscillation. There is no exchange between the two channels and no propagating wave along the cylinder.
+If *K_eφ* = 0, the cylinder's stress magnitude and azimuthal direction evolve independently. A longitudinal perturbation produces only longitudinal oscillation; an azimuthal perturbation produces only azimuthal oscillation. The two channels still propagate as waves — but as two unrelated decoupled waves with no exchange between them. The cylinder would then be two independent springs sharing only their endpoints, not a coupled chiral medium.
 
-If *K_eφ* ≠ 0, strain and phase drive each other. A stretch at one position induces a twist; a twist induces a stretch elsewhere. The wave that propagates along the cylinder is a coupled stretch-and-twist motion in which neither field carries the wave alone.
+If *K_eφ* ≠ 0, the channels drive each other. A stretch at one position induces a twist; a twist induces a stretch elsewhere. The wave along the cylinder becomes a coupled stretch-and-twist motion in which neither channel carries the wave alone — exactly what the cylinder primitive needs to be.
 
-Mechanical picture: imagine the rubber cylinder of §2 reinforced with helical fibers wrapped around the wall at a non-trivial angle. When the cylinder is pulled along its length, the fibers refuse to lengthen along the helix without also rotating, so a stretch forces a twist. *K_eφ* is the strength of that coupling — geometrically, it is set by the helix angle of the fibers (achiral fibers give *K_eφ* = 0; maximally chiral fibers give the largest *K_eφ*).
+Mechanical picture: imagine the rubber cylinder of §2 reinforced with helical fibers wrapped around the wall at a non-trivial angle. When the cylinder is pulled along its length, the fibers refuse to lengthen along the helix without also rotating, so a stretch forces a twist. *K_eφ* is the strength of that coupling — geometrically, set by the helix angle of the fibers (achiral fibers give *K_eφ* = 0; maximally chiral fibers give the largest *K_eφ*).
 
-This is the substantive structural commitment of the primitive. The cylinder is not a chiral mathematical curiosity — by hypothesis, it is what supports wave propagation in the lattice at all.
+This is the substantive structural commitment of the primitive. The cylinder is not a chiral mathematical curiosity — by hypothesis, it is what supports the *coupled* wave propagation that lets a single perturbation carry both magnitude and direction information.
 
 ---
 
-## 8. Relationship to the earlier viz model
+## 8. The inertia matrix *D* and matched chirality
+
+A subtlety that chapter 2 will derive consequences from, and that we state here as a foundation-level commitment of the cylinder primitive.
+
+The cylinder's two fields *e* and *φ* are *not* independent in the medium's microstructure. The same helical fibers that produce the chiral stiffness coupling *K_eφ* also produce a chiral *inertia* coupling — a cross-inertia *D_eφ* that links the two channels' kinetic energy. The cylinder's inertia is therefore a 2 × 2 matrix:
+
+<!-- D = (ρ, D_eφ; D_eφ, I_φ) -->
+$$
+D \;=\; \begin{pmatrix} \rho & D_{e\varphi} \\ D_{e\varphi} & I_\varphi \end{pmatrix}
+$$
+
+with diagonal entries ρ (longitudinal mass density) and *I_φ* (rotational moment of inertia per unit length), and off-diagonal entry *D_eφ* (chiral cross-inertia).
+
+The chirality of the medium is characterized by a single dimensionless number χ̃ ∈ (0, 1), and it appears identically in both matrices:
+
+<!-- K_eφ / √(K_ee K_φφ) = D_eφ / √(ρ I_φ) = χ̃ -->
+$$
+\frac{K_{e\varphi}}{\sqrt{K_{ee}\, K_{\varphi\varphi}}}
+\;=\;
+\frac{D_{e\varphi}}{\sqrt{\rho\, I_\varphi}}
+\;=\;
+\tilde{\chi}
+$$
+
+This is **matched chirality**: the chirality has the same magnitude in stiffness and inertia, because both are inherited from a single microstructural source — the helical fiber arrangement in the cylinder wall.
+
+### Why we postulate matched chirality
+
+The cylinder primitive is hypothetical. Its qualities are what we postulate to make the model work, and stating those qualities clearly is part of the foundation. Matched chirality is a *self-consistency* assumption: the chirality is one physical thing (a helical structure), and it manifests in both elastic energy and kinetic energy with the same magnitude. We are not deriving matched chirality from a deeper theory; we are choosing it as a property of the cylinder we are designing.
+
+The alternative — independent chiralities in *M* and *D* — would correspond to a medium whose helical structure somehow contributes differently to potential and kinetic energy. We have no microstructural reason to expect that, so the simplest and most physically motivated choice is matched.
+
+### Why this matters
+
+Chapter 2 will derive the wave dispersion relation. With the diagonal-*D* assumption (no cross-inertia), the chiral stiffness *K_eφ* makes the cylinder support two propagating modes at *different speeds*. With matched chirality (and bare-speed equality from chapter 3, *K_ee*/ρ = *K_φφ*/*I_φ* = *c*²), both modes propagate at exactly the same speed *c* — matching what vacuum Maxwell expects for the two photon polarizations.
+
+This is not a fix for a problem; it is the design of the cylinder primitive. The cylinder we are committing to is one whose microstructure is internally chirally self-consistent. The fact that this simplifies the wave dynamics is a consequence of the right design, not a contrivance to make the math work.
+
+For chapter 1's purposes, the foundation-level statement is: **the cylinder primitive has matched chirality** — *D_eφ*/√(ρ *I_φ*) = *K_eφ*/√(*K_ee* *K_φφ*) = χ̃. The full *D* matrix replaces the diagonal-*D* simplification used elsewhere in older drafts of these chapters.
+
+---
+
+## 9. Relationship to the earlier viz model
 
 The earlier viz model ([viz/grid-lab.md](../../viz/grid-lab.md)) treated edges and nodes as separate primitives:
 
@@ -223,7 +266,7 @@ The project's job is not to derive the GRID inputs. Its job is to show how a pri
 
 ---
 
-## 10. Explicit non-assumptions
+## 11. Explicit non-assumptions
 
 To prevent confusion later, things this chapter does *not* assume:
 
@@ -236,14 +279,15 @@ To prevent confusion later, things this chapter does *not* assume:
 
 ---
 
-## 11. Summary of givens
+## 12. Summary of givens
 
 The full setup, in one place:
 
 - A 2D cylindrical primitive of length *L* and cross-section radius *r*, deemed continuous along its length.
 - A 2D internal stress vector at each cross-section, parameterized in polar coordinates as magnitude *e(x, t)* ∈ ℝ and azimuthal direction *φ(x, t)* ∈ ℝ (mod 2π), with *x* ∈ [0, *L*]. The underlying vector is in ℝ² ≅ ℂ; the polar parameterization has a coordinate singularity at *e* = 0 that is not a feature of the underlying field.
 - A symmetric stiffness matrix *M* with entries *K_ee* > 0, *K_φφ* > 0, and off-diagonal *K_eφ* satisfying K_eφ² < K_ee · K_φφ.
-- A dimensionless shear ratio χ̃ = K_eφ / √(K_ee · K_φφ) ∈ (0, 1).
+- A symmetric inertia matrix *D* with entries ρ > 0, *I_φ* > 0, and off-diagonal *D_eφ* — *not* assumed diagonal.
+- A single dimensionless chirality parameter χ̃ ∈ (0, 1) that governs both matrices through **matched chirality**: *K_eφ*/√(*K_ee K_φφ*) = *D_eφ*/√(ρ *I_φ*) = χ̃.
 - Nodes that impose continuity of the stress vector at endpoints of meeting cylinders, with no state and no update rule.
 - Transit time τ = *L*/*c* across a cylinder, with *c* the lattice signal speed inherited from GRID axiom A1.
 - Three latent entropy structures available on the primitive (§4) — vortex defects in the 2D stress field, longitudinal winding sectors of *φ*, and longitudinal Fourier modes — of which at least one is hoped to source entropy in chapter 4.
