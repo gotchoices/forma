@@ -30,9 +30,7 @@ The chapter is paced deliberately slowly. Once a definition is set here it is us
 
 The GRID lattice is a regular 4D causal array of cells (axiom A1 of [grid/foundations.md](../../grid/foundations.md)). Each cell carries an internal phase θ ∈ [0, 2π) (A3); each link between cells carries a gauge connection A_μ (A4). Maxwell's equations, charge quantization, and entropic gravity are all derived from the collective behavior of (θ, A_μ) on the lattice.
 
-An intuition for what *gauge* and *A_μ* mean is worth carrying through the rest of the project. Each cell can be visualized as a small clock hand pointing in some direction on a circle — that is the phase θ. The physical content is *not* where any one clock hand points; it is the *difference* between the hands of neighboring clocks. Two configurations that look completely different at the cell level — every clock pointing in a different absolute direction — are physically the same as long as the differences between neighboring clocks agree.
-
-The freedom to relabel each cell's clock by an arbitrary amount, without changing the physics, is **local gauge invariance**. For this invariance to be consistent, the lattice has to record an offset on each *link* between cells: how much the two clocks at the link's endpoints have been independently rotated relative to each other. That offset is the **gauge connection A_μ** — bookkeeping that lives on links, not cells, and that compensates for arbitrary local relabelings of θ. In the continuum limit, A_μ is the electromagnetic four-potential, and its dynamics produce the electromagnetic field. Inside this project, A_μ is one of the structures the cylinder primitive has to supply at the lattice scale; the cylinder's azimuthal phase *φ* is what coarse-grains to it.
+Readers unfamiliar with what *gauge* and *A_μ* mean as physics terms can consult [primers/gauge-primer.md](../../primers/gauge-primer.md). For the purposes of this chapter, three short pointers suffice: the cell-level phase θ is a per-cell internal variable that has no observable absolute value (only differences between neighboring cells matter); the connection A_μ is the bookkeeping on links that keeps those differences consistent under arbitrary local relabelings of θ; in the continuum limit, A_μ is the electromagnetic four-potential. Inside this project, A_μ is one of the structures the cylinder primitive has to supply at the lattice scale, and the cylinder's azimuthal direction *φ* is what coarse-grains to it.
 
 This project sits one layer below. The question is: *what is the primitive substrate from which (θ, A_μ) emerge?* Concretely — when GRID writes "the lattice has cells and links," what *is* a cell or a link, and what supports its state?
 
@@ -85,31 +83,40 @@ Two consequences worth marking now:
 
 ---
 
-## 4. Topology of the stress vector field — what makes entropy possible
+## 4. The shape of the field, and what makes entropy possible
 
-The 2D stress vector field at each (*x*, *t*) takes values in a 2D plane (the cross-sectional plane). The target space is ℝ², or equivalently ℂ if we package the stress vector as a complex scalar ψ(*x*, *t*) = *e* · exp(*iφ*).
+The stress vector at each cross-section lives in a 2D plane — the cross-sectional plane of the cylinder. Two coordinate systems describe it equally well:
 
-The compactness of *φ* in our polar parameterization is a property of the *coordinates*, not of the *target space*. Target-space topology is flat (ℝ²) — there is no intrinsic "wraparound" that loses information when the polar angle crosses 2π. The angle is just a coordinate label on a flat plane, and the underlying stress vector is smooth across the apparent wrap.
+- **Cartesian** — write the stress vector as a pair of real numbers (ψ_R, ψ_I), the components along two perpendicular axes in the plane.
+- **Polar** — write it as a magnitude *e* and a direction *φ* (an angle in [0, 2π)).
 
-What survives, and is genuinely topological, is the *non-trivial homotopy structure*:
+The two are interchangeable: ψ_R = *e* cos *φ*, ψ_I = *e* sin *φ*. The polar angle *φ* is *periodic* by construction — angle 0 and angle 2π label the same direction — but this periodicity is a property of the *coordinate*, not of the underlying vector. The vector itself lives on a flat 2D plane and is smooth across the line where *φ* "wraps" from 2π back to 0. There is no inherent wraparound that loses information just because the angle coordinate happens to cross 2π.
 
-π₁(ℝ² \ {0}) = ℤ
+What is genuinely a feature of the field — independent of which coordinate system one uses — is the following.
 
-That is: closed loops in the plane *with the origin removed* are classified by an integer — the winding number around the origin. This is what makes **vortex defects** possible.
+### Winding number
 
-A vortex defect is a point in (*x*, *t*) space where the stress vector vanishes (*e* = 0) and where the surrounding stress vector field circulates with nonzero winding number as one traces a small loop around the point. Each vortex is labeled by an integer winding *n* ∈ ℤ. Vortices of opposite sign can annihilate; vortices of the same sign repel. In thermal equilibrium on a 2D field theory of this type, vortex–antivortex pairs proliferate.
+Imagine walking in a closed loop in (*x*, *t*) space — say, a small circle in the plane of two coordinates. As you walk, the stress vector at your current position rotates as the field rotates. By the time you complete the loop and return to where you started, the stress vector has rotated some net amount. That net amount is always an integer multiple of 2π — call this integer *n*, the **winding number** of the loop.
 
-This is the **2D XY model** universality class. The Berezinskii–Kosterlitz–Thouless (BKT) transition separates a low-temperature regime (vortices bound in pairs) from a high-temperature regime (vortices unbound and free). In either regime, defects carry entropy.
+For a smooth field that doesn't pass through zero anywhere in or near the loop, *n* = 0 — the stress vector returns to where it started without making any net rotation. The vector swings back and forth as you walk, but the swings cancel.
 
-A note on what the cylinder primitive makes available for the entropy story. Three structures coexist on the primitive, any of which could in principle source entropy; chapter 4 will sort through them:
+Around a point where the stress vector field passes through zero with nonzero rotation, however, *n* can be a nonzero integer. Such a point is called a **vortex**. The winding number is a *robust* property of the field: small smooth deformations of the field do not change it. The only way to change *n* is to pass the field through zero somewhere along the loop — which is the same as moving a vortex across the loop boundary.
 
-1. **Topological vortex defects in the 2D stress vector field** — points in (*x*, *t*) where *e* = 0 with nonzero winding number around them. This is the primary candidate, and the one chapter 4 examines first.
+In a model where the field magnitude is constrained to remain strictly positive (a constrained nonlinear model), vortices are robust topological objects. They can be created and destroyed only in vortex–antivortex pairs (winding numbers of opposite sign). At finite temperature, populations of such pairs proliferate, carrying entropy.
 
-2. **Non-trivial winding sectors of *φ(x)* along the cylinder** — for a fixed time, *φ(x)* can wrap the 2π circle some integer number of times as *x* ranges over [0, *L*]. The winding number is a discrete invariant per cylinder, complementary to defects in (*x*, *t*).
+In the *linear* model of chapter 2 — where the magnitude is unconstrained and the field can pass through zero at any point — vortices exist as configurations but are not robust. They can be smoothly untied through ψ = 0.
 
-3. **Longitudinal Fourier modes of *e* and *φ*** — Fourier-decomposing the fields along *x* gives a tower of mode amplitudes, each an oscillator. This is the mathematical structure that supplied [grid/sim-gravity-2/](../../grid/sim-gravity-2/)'s entropy reservoir on the ℵ-line; it remains available as a backup if the topological-defect mechanism does not suffice.
+### Three candidate entropy structures
 
-All three are present. Which (if any) actually sources the entropy required for Jacobson's argument is the substantive question of chapter 4. The topological-defect mechanism (1) is the load-bearing bet of theory 7 in [README.md](README.md); a negative result triggers fallback to a discrete primitive (ground rule 8).
+With this geometric setup, three distinct mechanisms could in principle source entropy on the cylinder primitive; chapter 4 sorts through them.
+
+1. **Vortex defects in the 2D stress vector field** — points in (*x*, *t*) space where the stress vector vanishes with nonzero winding number around them. In a constrained-magnitude model, these are robust objects whose statistics carry entropy.
+
+2. **Winding sectors of *φ(x)* along a single cylinder** — for a fixed time, the polar angle *φ(x)* can wrap the 2π circle some integer number of times as *x* ranges over [0, *L*]. The winding number is a discrete invariant per cylinder, complementary to (1).
+
+3. **Longitudinal Fourier modes of *e* and *φ*** — Fourier-decomposing the fields along *x* gives a tower of oscillator modes per cylinder. This is the mathematical structure that supplied [grid/sim-gravity-2/](../../grid/sim-gravity-2/)'s entropy reservoir on the ℵ-line.
+
+All three are present. Which (if any) actually sources the entropy required for Jacobson's argument is the substantive question of chapter 4. Vortex defects (1) are the load-bearing bet of theory 7 in [README.md](README.md); a negative result triggers the fallback in ground rule 8 (pivot to a discrete primitive).
 
 ---
 
