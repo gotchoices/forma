@@ -31,18 +31,18 @@ Same layer as grid-primitive, different model: analog-first cylinder vs. digital
 
 The lattice has two structural primitive types:
 
-- **Nodes** — 0D vertices.
-- **Edges** — 1D directed segments connecting two nodes.
+- **Nodes** — vertices in the lattice graph. Whether a node holds one scalar, multiple values, internal spatial structure, or no state at all is model-dependent.
+- **Edges** — directed connections between two nodes. Whether an edge holds one value, a pair of values (forward and backward amplitudes), or something else is model-dependent.
 
 Edges have **polarity** (head and tail), set when placed in the lattice. Edge orientations across the lattice are standardized in a common direction (1D rightward; 2D hex three-direction; 3D analog deferred).
 
-Beyond this substrate, the *state* held at each primitive type and the *update rules* governing their dynamics are **model-dependent**. Different candidate models make different choices:
+Beyond this substrate, the *state* held at each primitive type and the *update rules* governing their dynamics are **model-dependent**. Different candidate models make different choices, and bounding choices in particular have structural consequences. The principal candidates:
 
-- **Telegrapher** — v on nodes ∈ U(1); i on edges ∈ ℝ; two-phase clock; signed-sum at nodes, principal-branch difference at edges.
-- **Telegrapher dual** — i on nodes ∈ ℝ; V on edges ∈ U(1); same dynamics as Telegrapher but with U(1) on edges. Topological invariants live on edge cycles instead of node loops.
-- **Scattering (sim-maxwell)** — (a_fwd, a_bwd) on edges; no node state; single-phase clock; scattering matrix S = (2/N)·J − I at vertices.
-- **Normalized telegrapher** — Telegrapher with 1/N factor on the node update for CFL stability at any coordination.
-- **cos-weighted (grid-lab v2)** — included for reference, expected to fail at coord 3.
+- **Telegrapher** ([models/telegrapher.md](models/telegrapher.md)) — across variable bounded on nodes (U(1)); through variable unbounded on edges (ℝ). Topological invariants are *node-loop windings* (Higgs-matter-field flavor).
+- **Gauge** ([models/gauge.md](models/gauge.md)) — level unbounded on nodes (ℝ); gauge field bounded on edges (U(1)). Topological invariants are *plaquette flux* on edge cycles (Wilson-loop / lattice gauge flavor). Distinct from Telegrapher because the bounding is on the other lattice structure.
+- **Scattering** ([models/scattering.md](models/scattering.md)) — (a_fwd, a_bwd) on edges; no node state; single-phase clock; scattering matrix S = (2/N)·J − I at vertices. This is grid/sim-maxwell's model.
+- **Normalized telegrapher** ([models/normalized.md](models/normalized.md)) — Telegrapher with 1/N factor on the node update for CFL stability at any coordination.
+- **cos-weighted** ([models/cos-weighted.md](models/cos-weighted.md)) — grid-lab's v2 rule. Included for reference; expected to fail at coord 3.
 
 Each candidate is a full self-contained model: state + clock + update rules. Chapter 2 specifies each precisely. Chapter 3 defines the test bench (standardized inputs, observables, and signal translation between paradigms). Chapter 4 runs the comparison and selects a winner. Chapters 5 onwards build on the winning model.
 

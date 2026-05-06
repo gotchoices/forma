@@ -12,15 +12,15 @@ This chapter contains no update rules and no commitments to compact-vs-real stat
 
 The lattice has two primitive types:
 
-- **Node** — a 0D vertex. A point in the lattice graph at which edges meet. Each node holds some state, but *what* state is model-dependent.
-- **Edge** — a 1D directed segment connecting two nodes. Each edge holds some state, again model-dependent.
+- **Node** — a vertex in the lattice graph. Edges meet at nodes. *What* state a node holds — a single scalar, multiple scalars, internal spatial structure (e.g., angular attachment information for incident edges), or no state at all — is model-dependent.
+- **Edge** — a directed connection between two nodes. *What* state an edge holds — a single scalar, a pair of forward/backward amplitudes, or something else — is also model-dependent.
 
 A lattice is fully specified by:
 - Its set of nodes,
 - Its set of edges (each edge connecting two nodes),
 - Each edge's polarity (which endpoint is the tail, which is the head).
 
-Nodes and edges are the only structural objects; everything else (loops, plaquettes, sheets, wraps) is a derived configuration of them.
+Nodes and edges are the only structural objects; everything else (loops, plaquettes, sheets, wraps) is a derived configuration of them. Whether the lattice carries any *additional geometric structure* — for instance, the angular positions of edges incident at each node, useful only to models like cos-weighted that read those angles — is a property of the lattice's spatial embedding, separate from the abstract graph.
 
 ## §3. Edge polarity and orientation
 
