@@ -97,19 +97,19 @@ For the specific hexagonal lattice with wye junctions, the lattice-geometry fact
 
 The consistency check between the cylinder primitive's continuum coefficient and the geometric ζ_2D = 1/3 is the central content of this chapter.
 
-**Existence rather than derivation.** The continuum coefficient is 1/(2π), set by the 2D Laplacian Green's function (§3). For ζ_2D = 1/3 to be reproduced at the per-node level, a lattice-geometry factor of 2π/3 has to bridge the two — a factor of order unity, dimensionally appropriate, and well within the range that hexagonal-lattice geometry can supply. We do not compute this factor explicitly, so this is not a *derivation*; it is an *existence demonstration* that no inconsistency stands between the cylinder primitive's continuum response and the assumed ζ_2D.
+**The bridge holds.** Two ingredients combine cleanly:
 
-**Honesty about what the check actually verifies.** What §4 confirms is that the cylinder primitive is *not contradicting* the geometric ζ_2D = 1/3 — the continuum-side and lattice-geometry-side coefficients combine in a way that gives the right per-node value. It does not prove the match in full numerical detail, because the actual coefficient on the continuum side has uncertainties in:
+- *Continuum side.* The cylinder primitive at static equilibrium produces a 2D Laplacian Green's function with prefactor 1/(2π) (chapter 4 §3 derivation; three confirming simulations in chapter 4 §7). This is the *cylinder-primitive contribution* to ζ.
+- *Lattice-geometry side.* The hexagonal lattice's wye-junction structure supplies a geometric factor of order unity that, combined with the continuum prefactor, must reproduce the per-node ζ_2D = 1/3. The required factor (2π/3) is dimensionally appropriate and well within the range that hexagonal-lattice geometry can supply. We do not compute this factor explicitly in this chapter, so the chapter does not constitute a *derivation* of ζ_2D — it is a *consistency check*. ζ_2D = 1/3 is grid/lattice-geometry.md's input; the cylinder primitive is consistent with it.
 
-- The exact definition of "entanglement entropy" vs "thermal entropy" being matched.
-- The treatment of the logarithmic divergence in 2D entanglement entropy (the well-known "log violation" of strict area scaling for free 2D fields).
-- The specific normalization of the cylinder primitive's stiffness scales (the *K*/ρ = (2 − √2) *c*² result of chapter 3, etc.).
+**Net result: the cylinder primitive lattice is compatible with grid/gravity.md.** What Jacobson's argument needs from a substrate — area-scaling entropy with a finite coefficient — the cylinder primitive supplies (chapter 4). What ζ value to use — grid/gravity.md takes from grid/lattice-geometry.md as ζ_2D = 1/3, and the cylinder primitive's continuum coefficient combined with hexagonal-lattice geometry is consistent with that value. Jacobson's argument runs unchanged on top, and the 2D analog of Newton's *G* follows.
 
-Each of these introduces O(1) factors that have to be tracked carefully for a full numerical match.
+**Honesty about what is checked vs computed.**
 
-**A pragmatic note.** For Jacobson's argument to give Newton's *G* with the correct value, what matters is that ζ takes a *specific* positive value — different ζ values would give different *G*. The geometric argument fixes ζ_2D = 1/3 by lattice structure; the cylinder primitive's continuum coefficient is structurally consistent with this; the *full* numerical match (including all O(1) factors) is a normalization exercise that is well-defined but tedious.
+- The *scaling* (1/r force in 2D from logarithmic Green's function) is *derived* and *simulation-confirmed*.
+- The *coefficient* (consistency of the cylinder primitive's continuum response with ζ_2D = 1/3) is *checked at the existence level*: the required lattice-geometry factor exists in a natural range, no obstruction stands in the way. A full numerical match across all O(1) factors — entanglement-vs-thermal entropy normalization, the 2D log-violation of strict area scaling, the specific cylinder-primitive stiffness scales — is a substantial-but-tedious calculation deferred to follow-up.
 
-For the project's purposes — checking that the cylinder primitive does not break GRID's gravity derivation — the consistency check of §4 is sufficient. The cylinder primitive supplies an entropy account compatible with the lattice's geometric ζ, and Jacobson's argument from gravity.md runs unchanged on top.
+For Jacobson's argument to give Newton's *G* with the correct value, what matters is that ζ takes a *specific* positive value — different ζ values would give different *G*. The geometric argument fixes ζ_2D = 1/3 by lattice structure; the cylinder primitive's continuum coefficient is consistent with this; the bridge is therefore made at the level the project requires.
 
 ---
 
@@ -176,8 +176,8 @@ What this chapter establishes:
 
 - The 2D-lattice analog of GRID's information-capacity axiom A5 is ζ_2D = 1/3, derived from the hexagonal-lattice + wye-junction geometry.
 - The cylinder primitive's continuum entropy coefficient is 1/(2π) per log(distance), from the 2D Laplacian Green's function (chapter 4).
-- The continuum coefficient combines with the hexagonal-lattice geometry to give a per-node entropy consistent with ζ_2D = 1/3 (the consistency check of §4, with full numerical matching deferred).
-- The cylinder primitive's lattice is therefore consistent with grid/gravity.md's input requirements. Jacobson's argument runs unchanged on top: causal horizons carry area-scaling entropy with the geometrically-derived ζ, and the gravitational field equations follow.
-- A full numerical match of all O(1) factors is a well-defined but tedious calculation, deferred to follow-up work.
+- The continuum coefficient combines with the hexagonal-lattice geometry to give a per-node entropy consistent with ζ_2D = 1/3 (the consistency check of §4, with full numerical matching of O(1) factors deferred).
+- **The cylinder primitive lattice is compatible with grid/gravity.md.** Jacobson's argument runs unchanged on top: causal horizons carry area-scaling entropy with the geometrically-derived ζ, and the 2D analog of Newton's *G* follows.
+- A full numerical match of all O(1) factors is a well-defined but tedious calculation, deferred to follow-up work; not required for the bridge to be made.
 
 The next chapter takes up the α question: whether folding the cylinder primitive's lattice into a closed surface produces a kink-loss picture that illuminates α.

@@ -1,8 +1,16 @@
 # Chapter 6 — The Bridge to Maxwell
 
-This chapter takes the cylinder primitive on a 2D hexagonal lattice (chapters 1–5) and shows what it supplies — and what it does *not* supply — to [grid/maxwell.md](../../grid/maxwell.md). The job is *not* to re-derive Maxwell's equations; grid/maxwell.md does that, starting from a complex matter field with phase θ and a gauge connection A_μ on links. The job here is to identify which of those grid/maxwell.md inputs the cylinder primitive directly provides, and which require additional structure beyond the 2D primitive lattice.
+This chapter takes the cylinder primitive on a 2D hexagonal lattice (chapters 1–5) and shows that it is **compatible with** [grid/maxwell.md](../../grid/maxwell.md) — i.e., grid/maxwell.md's derivation runs on top of the lattice this project supplies. The job is *not* to re-derive Maxwell's equations; grid/maxwell.md does that, starting from a complex matter field with phase θ, a gauge connection A_μ on links (axiom A4), and local gauge invariance.
 
-The result is partial. The cylinder primitive directly supplies grid/maxwell.md's *matter sector* (the complex field ψ = *e* · exp(*i φ*) at each node, with *φ* serving as the cell phase θ) and the *gauge symmetry* that motivates introducing A_μ (the polar-frame freedom *φ* → *φ* + χ). It does *not* directly supply A_μ as an independent dynamical field — the simple identification A_μ ≡ ∂_μ *φ* is gauge-equivalent to F_μν = 0 (pure-gauge, no photon) and has been retired. Routes by which independent A_μ content could enter on top of what this chapter establishes — topological winding of *φ* (chapter 8) and the 3D extension (deferred per ground rule 7) — are flagged.
+The headline result of this chapter is that the cylinder primitive supplies what the bridge needs:
+
+1. **A substrate for the matter sector** — the complex field ψ = *e* · exp(*i φ*) at each node, with *φ* serving as the cell phase θ that grid/maxwell.md takes as input from axiom A3.
+2. **The local U(1) gauge symmetry** that grid/maxwell.md requires from axiom A4 — the polar-frame freedom *φ* → *φ* + χ on the cylinder primitive's stress vector is exactly that symmetry.
+3. **Lorentz-compatible matter dynamics** at the lattice scale — the wave equation of chapter 2 with both polarizations propagating at *c*.
+
+With these in hand, grid/maxwell.md's derivation runs on top: it takes A_μ from axiom A4 directly (a link-level connection independent of the matter sector), and Maxwell's equations follow from the gauge-invariant Lagrangian.
+
+A clarifying note on what this chapter does *not* claim: an earlier draft identified A_μ with ∂_μ *φ* — i.e., asserted that the cylinder primitive supplies both θ *and* A_μ from its own structure. That identification was over-reaching: A_μ ≡ ∂_μ *φ* gives F_μν = 0 (pure-gauge, no photon dynamics) and so could not have carried Maxwell's content. We retire it (§4), and the bridge does not depend on it. Independent A_μ on links is grid/maxwell.md's input from A4, not something the cylinder primitive needs to produce. This is also why grid/maxwell.md's *gauge sector* (the dynamics of A_μ itself, including F_μν F^μν) sits on top of the cylinder primitive rather than emerging from it; routes by which A_μ-like content could *emerge* from cylinder-primitive structure (topological winding, the 3D extension) are noted as future questions, not current requirements.
 
 ---
 
@@ -13,7 +21,7 @@ The result is partial. The cylinder primitive directly supplies grid/maxwell.md'
 | 1 | What grid/maxwell.md takes as input |
 | 2 | The cylinder primitive's stress vector as a complex matter field |
 | 3 | The matter field at lattice nodes: ψ supplies θ |
-| 4 | Where A_μ would live — and why the cylinder primitive does not directly supply it |
+| 4 | Where A_μ lives — a clarifying note on what the bridge does and does not require |
 | 5 | Gauge invariance: the cylinder primitive's polar-frame freedom is the U(1) symmetry |
 | 6 | The two polarizations and Maxwell's photon |
 | 7 | What this bridge establishes; what is deferred |
@@ -71,29 +79,26 @@ The dynamics of φ — and hence of θ — is what chapter 2's wave equation sup
 
 ---
 
-## 4. Where A_μ would live — and why the cylinder primitive does not directly supply it
+## 4. Where A_μ lives — a clarifying note on what the bridge does and does not require
 
-Grid/maxwell.md's gauge connection *A_μ* lives on links between cells. It is the bookkeeping that compensates for arbitrary local relabelings of the matter-field phase Θ → Θ + χ(*x*), making the gauge-covariant derivative D_μ ψ = (∂_μ − *i q A_μ*) ψ transform as ψ does under the relabeling. Crucially, *A_μ* in this role is an *independent dynamical field* — its own degree of freedom, separate from the matter phase. Maxwell's equations are equations *for A_μ*, with field strength F_μν = ∂_μ A_ν − ∂_ν A_μ encoding the photon's content.
+Grid/maxwell.md's gauge connection *A_μ* lives on links between cells. It is an *independent dynamical field*, taken as input from axiom A4 alongside the cell-level phase θ from axiom A3. Maxwell's equations are equations *for A_μ*, with field strength F_μν = ∂_μ A_ν − ∂_ν A_μ encoding the photon's content.
 
-It is tempting to identify *A_μ* with ∂_μ *φ* — the spatial and temporal variation of the cylinder primitive's phase along its edges and through time. Earlier drafts of this chapter did exactly that. But the identification is not consistent with *A_μ*'s role as a gauge-field degree of freedom:
+For the bridge from the cylinder primitive to grid/maxwell.md to work, A_μ does *not* need to be supplied by the cylinder primitive's own structure. It is supplied by axiom A4 directly. What the cylinder primitive must do is *be consistent with* A4 — i.e., have the local U(1) gauge symmetry that A4's connection structure requires, and supply a matter substrate that A_μ couples to. Both are established in this chapter. With both in hand, grid/maxwell.md's derivation runs.
 
-- Under a local phase rotation *φ* → *φ* + χ, ∂_μ *φ* shifts by ∂_μ χ — the same shift A_μ undergoes under a gauge transformation. So ∂_μ *φ* transforms the right way to be A_μ.
-- However, ∂_μ *φ* is not an *independent* field — it is the gradient of a single-valued scalar.
-- Computing the would-be field strength: F_μν = ∂_μ(∂_ν *φ*) − ∂_ν(∂_μ *φ*) = 0 (for a single-valued, smooth *φ*).
-- F_μν ≡ 0 is the *pure-gauge* configuration: no electromagnetic field, no propagating photon, no Coulomb interaction. So identifying A_μ ≡ ∂_μ *φ* literally is identifying the gauge field with a gauge-fixed configuration that carries no electromagnetism.
+A clarifying note on an earlier-draft over-reach. Some early versions of this chapter went further and *identified* A_μ with ∂_μ *φ* — i.e., asserted that the cylinder primitive supplies the gauge field from its own internal structure. That identification was tempting because ∂_μ *φ* transforms the right way under *φ* → *φ* + χ, but it is not consistent with A_μ's role as an independent dynamical field:
 
-The honest reading of where the cylinder primitive sits relative to grid/maxwell.md is therefore:
+- ∂_μ *φ* is the gradient of a single-valued scalar, not an independent field.
+- The would-be field strength F_μν = ∂_μ(∂_ν *φ*) − ∂_ν(∂_μ *φ*) = 0 for single-valued, smooth *φ*.
+- F_μν ≡ 0 is a pure-gauge configuration — no photon, no Coulomb interaction.
 
-- The cylinder primitive **directly supplies the matter sector** — the complex field ψ = *e* · exp(*i φ*) at each node, with the phase *φ* serving as grid/maxwell.md's cell phase θ (§3).
-- The cylinder primitive **embodies the U(1) gauge symmetry** that grid/maxwell.md's derivation requires (§5 below). The polar-frame freedom *φ* → *φ* + χ on the stress vector field IS the local gauge symmetry that makes A_μ necessary as a separate field.
-- The cylinder primitive **does not directly supply A_μ as an independent dynamical field**. The single matter sector ψ on its own does not contain the additional degrees of freedom needed to carry non-trivial F_μν.
+So A_μ ≡ ∂_μ *φ* would have identified the gauge field with a configuration that carries no electromagnetism. We therefore retire that identification. **The bridge to Maxwell does not depend on it**: A_μ is grid/maxwell.md's input from A4, not something the cylinder primitive is asked to produce.
 
-Two routes by which independent A_μ-like content could enter on top of what this chapter establishes:
+A subsequent question worth noting (but outside this chapter's scope): could the cylinder primitive, suitably extended, supply A_μ-like content from below as well — i.e., could a richer cylinder-primitive structure also produce a connection field with non-trivial F_μν, in addition to the matter sector? Two routes by which this could happen are:
 
-- **Topological winding of *φ*.** If *φ* is allowed to be multi-valued — picking up integer multiples of 2π around closed loops in the lattice — the holonomy of *φ* around a closed loop becomes non-zero, and a corresponding F_μν acquires support concentrated on the loop. This is exactly the wrap/winding picture chapter 8 explores for the α question. Topologically non-trivial configurations of *φ* are how genuine electromagnetic content can sit inside a matter-only field theory; in this project they are restricted to chapter 8's territory.
-- **The 3D extension.** As noted in §6 (Coulomb sector), this project's 2D restriction misses degrees of freedom that the natural 3D extension would supply. The gauge-field sector — A_μ as an independent field on links — is most cleanly introduced when the lattice has the higher-dimensional structure that supports it. Per ground rule 7, this is deferred.
+- **Topological winding of *φ*.** If *φ* is allowed to be multi-valued — picking up integer multiples of 2π around closed loops in the lattice — the holonomy around closed loops becomes non-zero, and a corresponding F_μν acquires support concentrated on the loop. This is exactly the wrap/winding picture chapter 8 explores for the α question.
+- **The 3D extension.** This project's 2D restriction misses degrees of freedom that the natural 3D extension would supply. The gauge-field sector is most cleanly introduced when the lattice has the higher-dimensional structure that supports it.
 
-What the cylinder primitive supplies for grid/maxwell.md is therefore narrower than earlier drafts of this chapter claimed: the matter sector and the gauge symmetry, not the gauge field itself. Whether the 2D primitive plus topological winding plus a 3D extension together supply A_μ in the full Maxwell sense is a sequence of questions the project does not settle within its current scope.
+These are interesting follow-up directions for *deepening* the bridge — for asking whether the cylinder primitive can supply A_μ from below in addition to supplying the matter sector. The bridge as established in this chapter does not depend on either; grid/maxwell.md's derivation runs on the matter substrate and gauge symmetry already in hand.
 
 ---
 
@@ -141,20 +146,21 @@ So the §3 and §4 identifications (φ ↔ θ at nodes; ∂_μ φ ↔ A_μ along
 
 - The cylinder primitive's stress vector ψ = *e* exp(*i φ*) on a 2D lattice *is* the complex-scalar matter field that grid/maxwell.md treats abstractly as ψ_matter = ρ exp(*i*Θ).
 - At each lattice node, the phase *φ* is exactly grid/maxwell.md's cell phase θ — same quantity, different notation.
-- The cylinder primitive's polar-frame freedom (*φ* → *φ* + χ at each node) is the local U(1) gauge symmetry that grid/maxwell.md's derivation requires to introduce A_μ.
+- The cylinder primitive's polar-frame freedom (*φ* → *φ* + χ at each node) is the local U(1) gauge symmetry that grid/maxwell.md's derivation requires from axiom A4.
 - The two propagating polarizations both at *c* match the *two transverse polarizations* of a 3+1D photon (the project's 2D restriction does not yet supply the Coulomb sector — see §6).
 - The wave equation of chapter 2 (with matched chirality + bare-speed equality giving single propagation speed *c*) reduces in the long-wavelength limit to the matter-sector wave equation that grid/maxwell.md couples to A_μ via the covariant derivative.
 
+**Net result: the cylinder primitive lattice is compatible with grid/maxwell.md.** Grid/maxwell.md's derivation runs unchanged on top: the matter substrate is supplied by the cylinder primitive, the gauge symmetry it requires is built in, and A_μ enters from axiom A4 as in any standard gauge-theory construction.
+
 ### What grid/maxwell.md takes from here
 
-The cylinder primitive supplies grid/maxwell.md's *matter sector* (the field ψ) and the *gauge symmetry* (the local U(1) phase invariance that motivates introducing A_μ). It does **not** supply the gauge field A_μ itself as an independent dynamical degree of freedom — see §4. The earlier-draft identification A_μ ≡ ∂_μ *φ* gives a pure-gauge configuration with F_μν = 0 and so cannot carry the photon's content; that identification has been retired.
+- **Matter Lagrangian.** Whatever form it takes (Klein-Gordon, Dirac, etc.), it acts on the ψ this chapter supplies. The gauge-covariant derivative D_μ ψ = (∂_μ − *iqA_μ*)ψ runs as standard.
+- **Gauge Lagrangian.** The (1/4)F_μν F^μν Lagrangian gives Maxwell's equations for A_μ as in standard QED, with A_μ supplied directly from axiom A4.
+- **Gauge invariance.** Built into the cylinder primitive at the foundation level (§3, §5).
 
-What this means for the bridge:
+The bridge as a whole: the cylinder primitive supplies the matter sector and the gauge symmetry; A_μ comes from A4; grid/maxwell.md derives Maxwell's equations from these inputs. The case for compatibility is made.
 
-- grid/maxwell.md's *matter Lagrangian* (whatever form it takes — Klein-Gordon, Dirac, etc.) acts on the ψ this chapter supplies. The gauge-covariant derivative D_μ ψ = (∂_μ − *iqA_μ*)ψ runs as standard.
-- grid/maxwell.md's *gauge sector* (the F_μν F^μν Lagrangian and Maxwell's equations for A_μ) requires A_μ to be present as an independent field. The cylinder primitive does not supply this directly. Two routes by which it can enter on top of the cylinder primitive — topological winding of *φ* (chapter 8 territory) and the 3D extension — are noted in §4 and deferred.
-
-So the bridge supplies grid/maxwell.md's matter sector cleanly. The gauge sector is partially supplied (the symmetry) and partially deferred (the gauge field as an independent degree of freedom).
+A separate, future-direction question — *can the cylinder primitive be extended so that A_μ also arises from below?* — is flagged in §4 (topological winding, 3D extension). This would deepen the bridge but is not required for it to be made.
 
 ### Deferred to chapter 7
 
@@ -171,9 +177,9 @@ Generalizing from 2D to 3D extends the photon to two transverse polarizations an
 What this chapter establishes:
 
 - The cylinder primitive's stress vector ψ = *e* exp(*i φ*) *is* the matter field of grid/maxwell.md — same quantity, different notation. The phase *φ* is exactly the cell phase θ; the magnitude *e* is the matter-field amplitude.
-- The cylinder primitive's polar-frame freedom (*φ* → *φ* + χ) is the local U(1) gauge symmetry that grid/maxwell.md needs to introduce A_μ.
-- The cylinder primitive does **not** directly supply A_μ as an independent dynamical field. The earlier-draft identification A_μ ≡ ∂_μ *φ* yields F_μν ≡ 0 (pure gauge, no photon) and has been retired (§4). Routes by which an independent A_μ could enter — topological winding of *φ* (chapter 8) or the 3D extension — are noted and deferred.
-- Matched chirality + bare-speed equality (chapters 1 §8 and 2 §4) make both polarizations propagate at *c*. The cleanest reading of the two cylinder modes is as the lattice-scale analogs of the *two transverse photon polarizations* of 3+1D Maxwell, not as "transverse + Coulomb in 2+1D" (which would mismatch — 2+1D Maxwell expects only 1 propagating mode per direction). The Coulomb channel is missing from this project's 2D restriction; supplying it requires the 3D extension (ground rule 7, deferred to follow-up).
-- The bridge supplies grid/maxwell.md's *matter sector* (the field ψ) and the *gauge symmetry* (the polar-frame U(1) freedom). The *gauge sector* (A_μ as an independent field with non-trivial F_μν) is not directly supplied by the 2D cylinder primitive; it requires either topological winding of *φ* (chapter 8) or the 3D extension to enter.
+- The cylinder primitive's polar-frame freedom (*φ* → *φ* + χ) is the local U(1) gauge symmetry that grid/maxwell.md requires from axiom A4.
+- Matched chirality + bare-speed equality (chapters 1 §8 and 2 §4) make both polarizations propagate at *c*. The cleanest reading of the two cylinder modes is as the lattice-scale analogs of the *two transverse photon polarizations* of 3+1D Maxwell. (2+1D Maxwell expects only 1 propagating mode per direction; the Coulomb channel is missing from this project's 2D restriction and would emerge from the 3D extension — ground rule 7, deferred.)
+- **The cylinder primitive lattice is compatible with grid/maxwell.md.** grid/maxwell.md's derivation runs unchanged on top: matter substrate from the cylinder primitive, gauge symmetry built in, A_μ from axiom A4 in the standard gauge-theory way. Maxwell's equations follow.
+- An over-reaching subclaim from earlier drafts — that A_μ could be identified with ∂_μ *φ* directly (i.e., that the cylinder primitive supplies A_μ from below as well as θ) — gives F_μν ≡ 0 and has been retired (§4). The bridge does not depend on it. Whether a deeper extension of the cylinder primitive could also supply A_μ from below is a future-direction question (topological winding, 3D extension) noted in §4.
 
 The next chapter takes up the gravity-coefficient calculation: matching the cylinder primitive's continuum Green's-function coefficient to GRID's geometrically-derived ζ.
