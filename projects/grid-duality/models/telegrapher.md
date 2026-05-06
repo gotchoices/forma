@@ -45,3 +45,18 @@ This is matter-field-on-nodes flavor: the node hosts a U(1) compact phase analog
 - Power conservation in steady state: at any node, Σ s_e · i_e = 0 implies Kirchhoff balance. For a sustained drive at a Y-junction with one input and two outputs, steady state has i_in = i_out_1 + i_out_2 (current splits equally if symmetric).
 - Single-pulse 2D transients show amplification at junctions because the rule lets edges read the full v_node onto their integration, doubling apparent amplitude. This is the issue the comparison test bench will measure.
 - Without 2D regularization, this model is expected to fail the 2D wavefront and 2D Y-junction tests. See the Normalized variant for one fix.
+
+## Bounded vs unbounded phase
+
+The default model carries v on the compact circle U(1) — every step applies (v + delta) mod 2π, discarding any winding accumulation. The implementation supports a `wrap_node = False` flag that drops the wrap (and the principal-branch reduction in the edge update), turning v into an unbounded ℝ variable. The test [scripts/test_unbounded_phase.py](../scripts/test_unbounded_phase.py) probes whether the wrap is doing thermodynamic-style work (allowing relaxation by discarding winding entropy) or whether it is purely representational.
+
+Result for Telegrapher: 100-step 2D pulse on a 14×14 hex torus.
+
+| Variant | Energy ratio after 100 steps |
+|---|---|
+| wrap_node=True (default) | 4.6 × 10⁴ |
+| wrap_node=False | 6.3 × 10¹⁰⁵ (numerical overflow) |
+
+The wrap *mitigates* but does not *fix* Telegrapher's CFL instability at coord 3. With the wrap, v stays in [0, 2π), which caps the magnitude of v's drift and slows the cross-coupling with i (which remains on ℝ in both modes). Without the wrap, both v and i grow without bound and the divergence accelerates dramatically. The wrap is a *symptom-suppressor*, not a stabilizer: the underlying CFL violation is unaffected.
+
+The user's hypothesis going in was that the wrap enables cooling/relaxation by discarding winding accumulation. The data does not support this for Telegrapher: removing the wrap makes the divergence worse, not different in kind, and the relaxation probe (Dirichlet-pinned, damped, 800 steps) crashes outright in unbounded mode. Cooling, where it appears at all in the v-i family, comes from the *damping* term and the *static-limit-equals-Laplacian* property — not from phase wrapping. See the Normalized variant, which is bit-identical with and without the wrap (the wrap is "armed but never fires" in stable regimes).

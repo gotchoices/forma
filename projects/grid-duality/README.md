@@ -142,6 +142,10 @@ projects/grid-duality/
     ├── test_1d_dispersion.py       1D group-velocity sweep (light-vs-medium signature)
     ├── test_2d_superposition.py    linearity check: does v_A + v_B = v_AB?
     ├── test_y_junction.py          Y-tree matched-impedance reflection/transmission
+    ├── test_unbounded_phase.py     side-test: bounded (mod 2π) vs unbounded v in v-i models
+    ├── test_relcos_dial_ic.py      RelCos-both fair-shake: dial-aware IC vs standard IC
+    ├── test_2d_freewave_superposition.py    free-wave superposition (no pins)
+    ├── test_2d_dispersion.py       2D group-velocity sweep at coord 3
     └── output/                     plots and notes
 ```
 

@@ -44,3 +44,9 @@ Trade-off: propagation speed in lattice units depends on coordination. A wave at
 - For coord 2 (1D linear): 1/N = 1/2. Propagation speed is reduced relative to Telegrapher (which is at unit speed in 1D).
 - For irregular lattices (varying coord per node), the 1/N factor is local — each node uses its own coord. This keeps the rule local without needing global lattice information.
 - This is the most pragmatic of the bond-graph candidates. If it passes the comparison tests, it's a strong contender for the winning model.
+
+## Bounded vs unbounded phase
+
+The model inherits Telegrapher's `wrap_node` flag (default `True`). The test [scripts/test_unbounded_phase.py](../scripts/test_unbounded_phase.py) probes whether the mod 2π wrap on v is dynamically active.
+
+Result: bit-identical between bounded and unbounded variants on both the stability probe (2D Gaussian pulse, 100 steps, energy ratio 1.89× in both modes) and the relaxation probe (Dirichlet-pinned, damped, 800 steps; log slope, force exponent, and per-node match-to-Laplacian R² all match to four decimals). The reason: in stable regimes v stays well within [0, 2π) and never wraps, so the mod operation has no effect on subsequent dynamics. The wrap is "armed but not fired." Cooling in this model comes from damping plus the static-limit-equals-Laplacian property, not from phase wrapping.

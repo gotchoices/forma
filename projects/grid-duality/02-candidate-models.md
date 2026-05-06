@@ -71,6 +71,16 @@ Spec: [models/normalized.md](models/normalized.md).
 
 A variant motivated by a "compass dial" picture: each node's v is interpreted not just as a phase but as a heading, and each incident edge contributes to the node's update weighted by cos(θ_edge − v_node), where θ_edge is the edge's geometric direction. Both phases (node update and edge update) are cos-weighted in this way.
 
+The node update is a cos-weighted signed sum:
+
+> v_node ← (v_node + Σ_e s_e · i_e · cos(θ_e − v_node)) mod 2π
+
+The edge update takes the difference of the two ends' cos-weighted phase amplitudes — *not* a single principal-branch difference of cos-weighted node values, since the cos factor is evaluated at each end separately:
+
+> i_edge ← i_edge + φ(v_tail) · cos(θ_edge − v_tail) − φ(v_head) · cos(θ_edge − v_head)
+
+where φ(v) is v in the principal branch (−π, π]. The two terms on the right do not collapse into a single cos-weighted Δv unless v_tail and v_head are close enough that cos(θ − v) is approximately constant across the edge — which is the case for small-amplitude waves but not in general.
+
 The model exploits the cos sum-to-zero property: for N edge directions evenly spaced by 2π/N, Σ_k cos(θ_k − v) = 0 for any v. This gives implicit current conservation at every regular junction, regardless of dial orientation. Free wave propagation in 2D is stable, with bounded oscillation.
 
 Static-source / Dirichlet problems are a different story: pinning a node fixes its v, which removes the cos sum-to-zero property at the boundary, and the model destabilizes. This is documented in [models/relcos-both.md](models/relcos-both.md).

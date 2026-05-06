@@ -62,29 +62,55 @@ A Gaussian-enveloped cosine launched in a chosen direction on a 20×12 hex torus
 
 ## §5. Light-carrier tests
 
-### Test L1 — 1D dispersion / group velocity
+### Test L1a — 1D dispersion / group velocity (coord 2)
 
 Sweep the carrier wavevector k from 0.1 to ~π on a 256-node ring. For each k, launch a Gaussian wavepacket, track the envelope centroid over 80 steps via the circular-mean trick (z = Σ |v|² · e^{i·2π x/n}), and linear-fit centroid-vs-step to extract the group velocity v_g(k).
 
 - **Reference**: a non-dispersive medium gives v_g(k) = c constant.
-- **What it diagnoses**: whether the model carries waves of different wavelengths at the same speed — the defining feature of light.
+- **What it diagnoses**: dispersion of the model on a coord-2 lattice. Note: at coord 2, the Scattering matrix S = (2/2)·J − I reduces to a swap, so this test is a pure transport probe and does not exercise junction scattering — the L1b coord-3 test below is the more demanding probe.
 - **Script**: [scripts/test_1d_dispersion.py](scripts/test_1d_dispersion.py).
+
+### Test L1b — 2D dispersion / group velocity (coord 3)
+
+On a 40×40 hex torus, launch a directional Gaussian-modulated cosine wavepacket along +x. Project each node's position onto the propagation axis, take the |v|²-weighted centroid, and linear-fit centroid-vs-step over a window before any periodic-wraparound effect. Sweep k.
+
+- **Reference**: a coord-3 lattice with bounded dispersion gives v_g(k) ≈ constant within ≈ 20% spread; perfect non-dispersion is not expected, since the Y-junction scattering at every node introduces some k-dependence in any model whose scattering matrix is not the trivial swap.
+- **What it diagnoses**: dispersion under realistic hex-lattice scattering. Scattering's coord-2 perfect non-dispersion (test L1a) is a special-case artifact; this test confirms whether the model still carries waves of different wavelengths at *comparable* speeds when junction scattering is real.
+- **Script**: [scripts/test_2d_dispersion.py](scripts/test_2d_dispersion.py).
 
 ### Test L2 — Y-junction reflection / transmission
 
 A Y-tree with three 60-node arms meeting at one coord-3 vertex. A Gaussian wavepacket is launched on arm 0, travels inward, scatters at the junction, and clears into the other arms. Per-arm energy is measured at every step.
 
-- **Reference**: matched-impedance scattering at coord N = 3 gives R = −1/3 reflected and T = +2/3 transmitted into each branch, so the energy fractions are R² = 1/9 reflected, T² = 4/9 per transmitted branch, with total Σ = 1 (energy conservation). Both v-i and scattering paradigms predict the same coefficients in the matched-impedance limit; this is the canonical test for whether a model treats junctions correctly.
+*Matched impedance* in this context is the transmission-line analog: when N identical lossless lines meet at a junction, voltage continuity (all incident lines see the same potential) and Kirchhoff current conservation uniquely determine how an inbound wave splits. For N lines, R = (2 − N)/N and T = 2/N per branch. At N = 3 this gives R = −1/3, T = +2/3, energy fractions R² = 1/9 reflected and T² = 4/9 per transmitted branch (total Σ = 1, energy conservation). The same coefficients arise in acoustic-network and microwave-network analysis.
+
+- **Reference**: matched-impedance scattering at coord N = 3 gives R² = 1/9, T² = 4/9 each. Both v-i and scattering paradigms predict these in the matched-impedance limit; this is the canonical test for whether a model treats junctions correctly.
 - **What it diagnoses**: junction-level energy flow — the structural property that makes a hex lattice (every node coord 3) a viable light carrier.
 - **Script**: [scripts/test_y_junction.py](scripts/test_y_junction.py).
 
-### Test L3 — Linearity / superposition
+### Test L3a — Linearity / superposition under Dirichlet pinning
 
 On a 25×25 hex torus, three Dirichlet-pinned configurations: source A only; source B only; both A and B. After running each to a settled state under small damping, compare the field v_AB to the sum v_A + v_B over the unpinned interior.
 
 - **Reference**: a linear medium satisfies v_AB = v_A + v_B exactly. Per-node correlation and rescaled-fit R² near 1 confirm linearity; deviation diagnoses nonlinearity in the update rule.
-- **What it diagnoses**: linear superposition — required for any wave-equation interpretation, and required for gravity to add over multiple sources.
+- **What it diagnoses**: linear superposition under boundary-driven static fields. Failures here can indicate either intrinsic nonlinearity in the update rule *or* downstream effects of Dirichlet-pinning instability — see L3b for the disambiguating test.
 - **Script**: [scripts/test_2d_superposition.py](scripts/test_2d_superposition.py).
+
+### Test L3b — Free-wave superposition (no pins)
+
+Two Gaussian-modulated cosine wavepackets launched in opposite directions on a 20×20 hex torus, no Dirichlet pinning, no damping, 60 steps. Three independent runs: A only; B only; both A and B with initial state set to the additive sum of A's and B's initial states. Compare v_AB(t) to v_A(t) + v_B(t) per step.
+
+- **Reference**: a linear update rule gives v_AB = v_A + v_B at every step, to machine precision.
+- **What it diagnoses**: intrinsic nonlinearity of the update rule, separated from boundary-condition effects. Together with L3a, this distinguishes "nonlinear in vacuum" from "nonlinear only when boundary-pinned."
+- **Script**: [scripts/test_2d_freewave_superposition.py](scripts/test_2d_freewave_superposition.py).
+
+### Test L4 — Dial-aware IC fair-shake (RelCos-both only)
+
+The standard IC translation in §3 above treats v as a wave amplitude (v(x) = A·env·cos(k·x), i matched). RelCos-both's compass-dial interpretation, however, treats v as a *heading*. A natural alternative IC under that interpretation is v = constant (the direction of intended motion) and i alone carrying the wave envelope. This test reruns the wavefront and Y-junction probes for RelCos-both with both ICs to check whether the model's failures are intrinsic or specific to the v-amplitude IC.
+
+- **Reference**: if a model performs comparably under both ICs, the failures are intrinsic. If the dial-aware IC dramatically improves the result, the v-amplitude IC was unfair.
+- **What it diagnoses**: whether RelCos-both's L2 / L3 failures are bench artifacts.
+- **Script**: [scripts/test_relcos_dial_ic.py](scripts/test_relcos_dial_ic.py).
 
 ## §6. Gravity test — substrate part
 
@@ -100,20 +126,31 @@ The substrate test is the gravity-emergence claim. Any candidate model that live
 
 ## §7. Gravity test — dynamics-convergence part
 
+### Note on the paradigm-dependence of "pinning"
+
+"Pin v on a node at value V" sounds paradigm-neutral but is not. The bench has to choose one interpretation per model, and the choices differ in physical content:
+
+- **v-i Telegrapher / Normalized.** Pinning v means *fixing the across variable at the node*, the natural Dirichlet boundary condition for a node-level scalar — like grounding a node in a circuit. The through variable i on incident edges is free.
+- **RelCos-both.** Pinning v means fixing the *dial direction* at that node — a stronger constraint, since the cos(θ − v) factor in the update sees a frozen v while neighboring nodes' v evolves. This breaks the cos sum-to-zero condition at the boundary, which is the structural cause of RelCos-both's pinning instability.
+- **Scattering.** No node state exists in the model, so "pinning v" has no direct meaning. The bench uses `a_fwd = a_bwd = V/2` on every incident edge of the pinned node, making the node-equivalent observable `(a_fwd + a_bwd)` equal to V. This is one of several possible interpretations (e.g., one could pin only the *outgoing* amplitudes from the node, or pin some other linear combination), and choosing a different one would change G2's outcome for Scattering.
+
+Conclusion: G2 is not the same test across paradigms. Within a paradigm it tests a well-defined property; across paradigms it should be read as "each model's response to *its* most natural Dirichlet-pinning interpretation," which is informative but not paradigm-neutral.
+
 ### Test G2 — does each model relax to the substrate's static solution?
 
 Same Dirichlet pins as test G1, but instead of solving the graph Laplacian directly, run each model's dynamic update rule for 800 steps with a small damping factor (0.02 per step on the through variable). Time-average the field over the last quarter of the run. Compare to the static solution from G1: log fit, force fit, per-node rescaled R².
 
 - **Pass condition**: the dynamic-averaged field matches the static solution shape (rescaled R² near 1, force exponent near −1).
 - **What it diagnoses**: whether the model's dynamics, with damping, relax toward the graph Laplacian's harmonic ground state. A model whose static limit is the graph Laplacian will pass; a model that is unitary by construction (energy-conserving wave equation) need not pass — its dynamics propagate but do not relax to a Dirichlet-pinned static state without an explicit static solver step.
-- **Note**: this test is informative, not gating. Gravity emergence comes from G1; G2 tells us about the model's relaxation behavior under simulated boundaries.
+- **Note on gating.** As a *gravity* test, G2 is informative-only: gravity emergence is established by G1 (the substrate Laplacian solve), independent of any model's dynamics. A model that fails to relax to the static solution under G2 is not failing the gravity test; gravity is computed on the substrate directly.
+- However, G2 is *separately* a **stability test** for any v-i model whose static limit is the graph Laplacian. Such a model's dynamics, under damping and Dirichlet pinning, should converge to the static solution. If the energy diverges instead, that is a free-standing stability failure of the model, with nothing to do with gravity. Failures in this mode (RelCos-both's 60,000× energy divergence under pinning) are gating as stability concerns, not as gravity-test failures. The chapter-4 verdict treats them as the former.
 - **Script**: Part B of [scripts/test_2d_static_field.py](scripts/test_2d_static_field.py).
 
 ## §8. Observables and metrics
 
 A test result is one or more numbers extracted from a run. The bench uses the following observables consistently:
 
-- **Total energy.** For v-i models: 0.5 · Σ v² + 0.5 · Σ i². For Scattering: 0.5 · Σ (a_fwd² + a_bwd²). Both reduce to the wave-equation energy norm.
+- **Total energy.** For v-i models: 0.5 · Σ v² + 0.5 · Σ i² (sum over nodes for v, over edges for i). For Scattering: 0.5 · Σ (a_fwd² + a_bwd²) (sum over edges). Both reduce to the wave-equation energy norm. *Cross-paradigm note:* the absolute values differ by a constant factor (≈ 0.65 for typical wavepackets on a 2D hex, since v-i energy counts both nodes and edges while Scattering counts edges only). Cross-paradigm comparisons therefore use *energy ratios* (final / initial) and matched-impedance fractions, which are dimensionless and paradigm-comparable; not absolute energies, which are not.
 - **Per-node v-equivalent.** For v-i models: v itself, mapped to (−π, π] for symmetric reading. For Scattering: (a_fwd + a_bwd) averaged over incident edges per node — the scattering-paradigm node-level observable.
 - **Per-edge i-equivalent.** For v-i models: i. For Scattering: a_fwd − a_bwd (the directed-flow component, tail-to-head).
 - **Group velocity v_g(k).** Slope of envelope-centroid versus time on a ring.

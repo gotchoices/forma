@@ -173,22 +173,34 @@ No new tests. No code changes (the optional implementation refactor in A1 is def
 
 Result: Scattering's documentation now leads with "N-register processor + transmission-line edges + inhale/exhale clock" framing. Polarity is demoted to a paradigm-specific labeling convention. Chapter 4's verdict leads with metric performance and naturalness; bridge-to-grid is a downstream consequence rather than the basis. Bounded-phase scope clarified as a charge-emergence question.
 
-### Chunk 2 — Unbounded phase variants
+### Chunk 2 — Unbounded phase variants ✓ DONE
 Items: **A2**.
-One flag added to [scripts/models.py](scripts/models.py); one new script [scripts/test_unbounded_phase.py](scripts/test_unbounded_phase.py); brief notes added to [models/telegrapher.md](models/telegrapher.md) and [models/relcos-both.md](models/relcos-both.md).
-Self-contained side-test. Doesn't reopen chapter 4 unless the result is dramatic.
+One flag added to [scripts/models.py](scripts/models.py); one new script [scripts/test_unbounded_phase.py](scripts/test_unbounded_phase.py); brief notes added to [models/telegrapher.md](models/telegrapher.md), [models/relcos-both.md](models/relcos-both.md), and [models/normalized.md](models/normalized.md).
 
-### Chunk 3 — RelCos-both fair-shake
-Items: **A3**, **B1**, **B2**, **B3**, **C1** (depends on A3 outcome).
-New scripts: [scripts/test_relcos_dial_ic.py](scripts/test_relcos_dial_ic.py), [scripts/test_2d_freewave_superposition.py](scripts/test_2d_freewave_superposition.py). Documentation updates in [models/relcos-both.md](models/relcos-both.md), [02-candidate-models.md](02-candidate-models.md). Possibly chapter 4 §3–§4 revisions if the verdict shifts.
-Highest-cost chunk. Should run before the project is fully closed; either confirms or revises the elimination of RelCos-both.
+Result: the mod 2π wrap is *not* a thermodynamic-cooling mechanism — it is a symptom-suppressor. In stable regimes (Normalized, RelCos-both free-wave) the wrap is bit-identically inert, "armed but never firing." In failing regimes (Telegrapher CFL divergence, RelCos-both Dirichlet-pinning divergence) the wrap caps the magnitude of failure (10⁵× instead of 10¹⁰⁵×) but does not fix the underlying instability. Cooling, where it appears (Normalized's relaxation to the substrate Laplacian under damping), comes from the damping term and the static-limit-equals-Laplacian property, not from phase wrapping.
 
-### Chunk 4 — Test-bench fairness fixes
-Items: **C2**, **C3**, **C4**, **C5**.
-One new script: [scripts/test_2d_dispersion.py](scripts/test_2d_dispersion.py). Wording updates in [03-test-bench.md](03-test-bench.md) and [01-foundation.md](01-foundation.md) §3. Energy-metric audit in [scripts/models.py](scripts/models.py).
+Chapter 4 verdict is unchanged. Documentation updates landed in the per-model spec files; chapter 4 was not reopened.
 
-### Chunk 5 — Light items
+### Chunk 3 — RelCos-both fair-shake ✓ DONE
+Items: **A3**, **B1**, **B2**, **B3**, **C1**.
+New scripts: [scripts/test_relcos_dial_ic.py](scripts/test_relcos_dial_ic.py), [scripts/test_2d_freewave_superposition.py](scripts/test_2d_freewave_superposition.py). Documentation updates in [models/relcos-both.md](models/relcos-both.md), [02-candidate-models.md](02-candidate-models.md), [03-test-bench.md](03-test-bench.md), [04-model-comparison.md](04-model-comparison.md).
+
+Result: RelCos-both's elimination is *strengthened*, not revised. Three independent failure modes confirmed:
+1. **Junction nonlinearity**: standard L2 result of 0.27/0.41/0.33 with arm-1/arm-2 asymmetry stands. Dial-aware IC gives 0.56/0.10/0.34 — *worse*, not better.
+2. **Dirichlet-pinning instability**: standard G2 result of 60,000× divergence stands. Reframed as a free-standing stability concern, not a gravity-test failure (C1 gating clarification).
+3. **Free-wave nonlinearity** (new): R² = 0.88 on free-wave superposition (vs Normalized and Scattering at machine ε). Previously the L3 R² = 0.005 conflated this with the Dirichlet failure; now we have clean separation. RelCos-both is intrinsically nonlinear in vacuum.
+
+Implementation issues documented (B1 gauge non-invariance under v → v + c, B2 verbal vs actual edge update, B3 v = 0 default IC imposing a preferred direction). Chapter 4 §3 (linearity), §4 (synthesis), and the results table updated to reflect the L3a/L3b split and the L4 dial-aware fair-shake. Chapter 3 has new test descriptions for L3b, L4, and a clarified G2 gating note.
+
+### Chunk 4 — Test-bench fairness fixes ✓ DONE
+Items: **C2**, **C3**, **C4**, **C5** (C5 was actually delivered as part of Chunk 1's chapter-1 §3 update).
+One new script: [scripts/test_2d_dispersion.py](scripts/test_2d_dispersion.py). Wording updates in [03-test-bench.md](03-test-bench.md), [04-model-comparison.md](04-model-comparison.md), and [01-foundation.md](01-foundation.md) §3. Energy-metric audit confirmed cross-paradigm absolute values differ by a constant factor (≈ 0.65 for typical wavepackets); ratios and fractions are paradigm-comparable.
+
+Result of C3 (the substantive new test): Scattering at coord 3 is *mildly* dispersive (v_g = 0.35 ± 0.06 across k ∈ [0.2, 2.6], spread ≈ 17%) — not the perfect non-dispersion seen in 1D, which was an artifact of the coord-2 swap matrix. Normalized at coord 3 has v_g = 0.19 ± 0.10 (relative spread > 50%). RelCos-both's centroid does not translate coherently. Chapter 4's L1 row split into L1a (1D coord 2) and L1b (2D coord 3); the verdict is unchanged but more accurately stated.
+
+### Chunk 5 — Light items ✓ DONE
 Items: remaining **E** (couplet.md cross-reference, matched-impedance definition).
+Brief additions to [01-foundation.md](01-foundation.md) §2 (couplet rationale for keeping primitives independent) and [03-test-bench.md](03-test-bench.md) §5/L2 (one-paragraph definition of "matched impedance" in transmission-line terms).
 
 ---
 

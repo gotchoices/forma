@@ -60,9 +60,17 @@ class Model:
 class Telegrapher(Model):
     """v on nodes ∈ U(1); i on edges ∈ ℝ. Signed sum at nodes (mod 2π);
     principal-branch difference at edges. Two-phase clock (node first).
+
+    The class attribute ``wrap_node`` controls whether v is reduced
+    mod 2π each step (the default, faithful to the U(1) compact-phase
+    interpretation) or kept on the unbounded real line. Setting
+    ``wrap_node = False`` on an instance turns the node variable into
+    an unbounded ℝ — useful for testing the user's theory that the
+    wrap is what enables thermodynamic-style cooling/relaxation.
     """
 
     name = "telegrapher"
+    wrap_node = True
 
     def init_state(self, lattice):
         return {
@@ -70,20 +78,30 @@ class Telegrapher(Model):
             "i": np.zeros(lattice.n_edges),
         }
 
+    def _wrap_v(self, v):
+        return v % TWO_PI if self.wrap_node else v
+
+    def _diff_v(self, v_tail, v_head):
+        """End-to-end v difference for the edge update. In bounded mode,
+        reduce to the principal branch (−π, π]; in unbounded mode, return
+        the raw difference."""
+        if self.wrap_node:
+            return _principal_branch(v_tail - v_head)
+        return v_tail - v_head
+
     def update(self, state, lattice):
         v = state["v"]
         i = state["i"]
-        # Phase 0 — node update: v_new = (v + Σ s · i) mod 2π
+        # Phase 0 — node update: v_new = (v + Σ s · i)  [optionally mod 2π]
         delta = lattice.M @ i
-        v_new = (v + delta) % TWO_PI
-        # Phase 1 — edge update: i_new = i + (v_tail − v_head)_pb
-        diff_pb = _principal_branch(v_new[lattice.tails] - v_new[lattice.heads])
-        i_new = i + diff_pb
+        v_new = self._wrap_v(v + delta)
+        # Phase 1 — edge update: i_new = i + (v_tail − v_head)
+        i_new = i + self._diff_v(v_new[lattice.tails], v_new[lattice.heads])
         return {"v": v_new, "i": i_new}
 
     def perturb_node(self, state, idx, value):
         new_v = state["v"].copy()
-        new_v[idx] = (new_v[idx] + value) % TWO_PI
+        new_v[idx] = self._wrap_v(new_v[idx] + value)
         return {"v": new_v, "i": state["i"]}
 
     def perturb_edge(self, state, idx, value):
@@ -92,8 +110,10 @@ class Telegrapher(Model):
         return {"v": state["v"], "i": new_i}
 
     def node_observable(self, state):
-        # Phase distance from 0 in (−π, π], for symmetric plotting around zero.
-        return _phase_distance(state["v"])
+        # In bounded mode, return the principal-branch reading of v in
+        # (−π, π]. In unbounded mode, return v directly — it is already
+        # a real number with sign and magnitude.
+        return _phase_distance(state["v"]) if self.wrap_node else state["v"].copy()
 
     def edge_observable(self, state):
         return state["i"].copy()
@@ -119,10 +139,9 @@ class NormalizedTelegrapher(Telegrapher):
         # Phase 0 — node update: averaged signed sum of incident edges
         # (1/N factor where N = local coordination)
         delta = (lattice.M @ i) / lattice.coord
-        v_new = (v + delta) % TWO_PI
+        v_new = self._wrap_v(v + delta)
         # Phase 1 — edge update: same as Telegrapher
-        diff_pb = _principal_branch(v_new[lattice.tails] - v_new[lattice.heads])
-        i_new = i + diff_pb
+        i_new = i + self._diff_v(v_new[lattice.tails], v_new[lattice.heads])
         return {"v": v_new, "i": i_new}
 
 
@@ -159,14 +178,20 @@ class RelativeCosBoth(Telegrapher):
     def update(self, state, lattice):
         v = state["v"]
         i = state["i"]
-        # Node update with cos weighting
+        # Node update with cos weighting (cos is 2π-periodic, so it gives
+        # the same result whether v is wrapped or not — the only effect of
+        # wrap_node is on the stored v itself).
         delta = _node_signed_sum_cos_relative(v, i, lattice)
-        v_new = (v + delta) % TWO_PI
-        # Edge update with cos weighting
+        v_new = self._wrap_v(v + delta)
+        # Edge update with cos weighting. In bounded mode, the amplitude
+        # factor is the principal-branch reading of v; in unbounded mode,
+        # use raw v (no wrap-pinning behind the scenes).
         v_tail = v_new[lattice.tails]
         v_head = v_new[lattice.heads]
-        amp_tail = _phase_distance(v_tail) * np.cos(lattice.theta - v_tail)
-        amp_head = _phase_distance(v_head) * np.cos(lattice.theta - v_head)
+        amp_tail_v = _phase_distance(v_tail) if self.wrap_node else v_tail
+        amp_head_v = _phase_distance(v_head) if self.wrap_node else v_head
+        amp_tail = amp_tail_v * np.cos(lattice.theta - v_tail)
+        amp_head = amp_head_v * np.cos(lattice.theta - v_head)
         i_new = i + (amp_tail - amp_head)
         return {"v": v_new, "i": i_new}
 
