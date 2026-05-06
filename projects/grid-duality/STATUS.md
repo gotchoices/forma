@@ -2,29 +2,37 @@
 
 This file tracks follow-ups arising from the independent review in [review.md](review.md). It is a working file, not a chapter; it gets pruned as items are resolved.
 
-The action items are grouped by user priority. The verdict (Scattering wins) is not in question; what changes is the story behind the verdict, the fairness of the elimination of RelCos-both, and the degree to which the substrate-level claims survive scrutiny.
+The action items are organized first by *priority* (within each block A–E) and then collected into *chunks* of work at the end of the file. Chunks are the unit of execution; an item may serve more than one chunk.
+
+The verdict (Scattering wins) is not in question. What changes is the story behind the verdict, the fairness of the elimination of RelCos-both, and the degree to which the substrate-level claims survive scrutiny.
 
 ---
 
 ## A. User-flagged priorities
 
-### A1. Reframe Scattering as a transmission-line network
+### A1. Reframe Scattering as register / transmission-line network
 
-The biggest single change. Scattering currently reads as "two parallel computation channels per edge (a_fwd, a_bwd)" — which makes it feel like a representational choice rather than a physical model. The right description is:
+The biggest single change. Scattering currently reads as "two parallel computation channels per edge (a_fwd, a_bwd)" — which makes it feel like a representational choice rather than a physical model. The right description, agreed during review:
 
-- Each **edge** is a one-dimensional extended object — a short length of lossless transmission line with two ends.
-- Each end carries a real-valued amplitude.
-- One **clock tick** = the time for a value at one end to propagate to the other end (the **propagation delay**, which sets the speed of light c).
-- After the tick, what was at end A is now at end B and vice versa — a synchronous full swap.
-- **Vertices** carry no state. They are *junctions* / a "marketplace" where incident edge-ends exchange values, enforcing voltage continuity and Kirchhoff current conservation. The matrix S = (2/N)·J − I is the unique solution to those two constraints; it is not an arbitrary update rule.
-- The "two values per edge" is not parallel computation — it is what every 1D wave needs (two real degrees of freedom per spatial location, the same as position+velocity in mechanics or d'Alembert characteristics on a string).
+- Each **node** is an N-register processor (one register per incident edge).
+- Each **edge** is a two-ended transmission line capable of carrying information in both directions.
+- A **register** is *not* owned by either side — it is the structural element formed where one end of an edge docks into a node. Each edge contributes two registers (one at each end). Each node hosts one register per incident edge. So a register sits at the boundary between an edge and a node and is "owned" jointly.
+- One **clock cycle** has two phases:
+  - **Inhale.** Each node samples its registers, applies the scattering matrix S = (2/N)·J − I, and overwrites the register values with the result.
+  - **Exhale.** Each edge transmits its two ends' values along itself, which has the effect of swapping the values in its two registers (one at each end node). One exhale = one edge transit; this is what sets the speed of light c.
+- Vertices enforce two physical constraints during inhale: voltage continuity (all incident lines see the same potential at the junction) and Kirchhoff current conservation. S = (2/N)·J − I is the *unique* solution to those constraints — not an arbitrary update rule.
+- The "two values per edge" is not parallel computation — it is what every 1D wave-carrier needs (two real degrees of freedom per spatial location, the same as position+velocity in mechanics or d'Alembert characteristics on a string). Under the register reading, the two values are simply the values at the edge's two ends.
+
+This framing closes the "two-channel cheating" objection (the values are at *physical ends*, not in parallel channels), makes the speed of light explicit (= one exhale), demotes edge polarity from substrate primitive to v-i-paradigm convenience (registers don't care which end is "head"), and makes energy conservation structurally obvious (inhale is a local unitary, exhale is a pure relabeling).
 
 **To do**:
-- [ ] Rewrite [models/scattering.md](models/scattering.md) "State" and "Update rules" sections in transmission-line language. Keep (a_fwd, a_bwd) as a notational alias only.
+- [ ] Rewrite [models/scattering.md](models/scattering.md) "State" and "Update rules" sections in register / inhale-exhale language. Keep (a_fwd, a_bwd) only as a footnote alias for sim-maxwell readers.
 - [ ] Rewrite chapter 2 §7 to match.
-- [ ] Add a paragraph to chapter 4 §4 (Synthesis) and §5 (Verdict) explaining *why* Scattering wins — not "passes the tests we chose" but "is the lattice analog of a transmission-line network, the natural physical model for wave propagation on a graph."
+- [ ] Update chapter 1 §2 ("Nodes and edges") to introduce the *register* as the structural meeting point of an edge end with a node — applicable when the model uses Scattering, and reducing to a v-i node-edge interaction otherwise.
+- [ ] Update chapter 1 §3 ("Edge polarity") to demote polarity to a v-i-paradigm convenience, not a substrate primitive, since Scattering is the winning model and its registers are unordered.
+- [ ] Add a paragraph to chapter 4 §4 (Synthesis) and §5 (Verdict) explaining *why* Scattering wins — not just "passes the tests we chose" but "is the natural register / transmission-line network on the substrate, with nodes as active processors and edges as wave-carriers; speed of light = exhale; energy conservation = unitary inhale + relabeling exhale."
 - [ ] Close the two-channel concern explicitly in chapter 4 §6.
-- [ ] Update the foundation chapter's treatment of edge polarity: under the transmission-line picture, edge polarity is not load-bearing for Scattering's dynamics. Note this and demote polarity to "convention" rather than "substrate primitive" — or scope it to the v-i paradigm only.
+- [ ] Optional follow-up: refactor [scripts/models.py](scripts/models.py) Scattering implementation to store state as `r[node, slot]` instead of `(a_fwd, a_bwd)[edge]`, so the code mirrors the description. Pure refactor, no functional change. Lower priority than the documentation rewrite.
 
 ### A2. Add unbounded-phase variants
 
@@ -154,16 +162,44 @@ Bounded phase (mod 2π on v) is not required for gravity emergence — both the 
 
 ---
 
-## Suggested order
+## Chunks
 
-1. **A1** (Scattering reframing) — biggest narrative shift, all-documentation, high impact.
-2. **A2** (unbounded variants) — cheap, addresses a real theoretical question.
-3. **A3** (RelCos-both fair-shake tests) — addresses biggest fairness concern in the elimination.
-4. **B1, B2, B3** (RelCos-both implementation notes) — once we know whether the model survives A3, document the implementation issues either way.
-5. **C1, C2** (G2 and pinning framing) — wording fixes that don't require new computation.
-6. **C3** (2D dispersion) — fills a real test-bench gap.
-7. **C4, C5** (energy metrics, bipartite asymmetry) — accuracy fixes.
-8. **D1, D2, D4** (verdict presentation) — wording fixes; D3 is closed by A1.
-9. **E** (light items) — only if the rest is in good shape.
+The items group naturally into five chunks.
 
-Items not in the action list are review points where I either disagreed or judged the cost-benefit not worth it. None of the review's individual points were rejected outright; the items above represent items where action is justified by the user's stated interests and the depth of the issue.
+### Chunk 1 — Scattering narrative reframe (pure documentation) ✓ DONE
+Items: **A1**, **D1**, **D2**, **D3** (closed by A1), **D4**, light wording from **E** that touches the same files.
+Files affected: [models/scattering.md](models/scattering.md), [01-foundation.md](01-foundation.md), [02-candidate-models.md](02-candidate-models.md), [04-model-comparison.md](04-model-comparison.md), [README.md](README.md).
+No new tests. No code changes (the optional implementation refactor in A1 is deferred — see B5 of A1, marked optional). Independent of every other chunk.
+
+Result: Scattering's documentation now leads with "N-register processor + transmission-line edges + inhale/exhale clock" framing. Polarity is demoted to a paradigm-specific labeling convention. Chapter 4's verdict leads with metric performance and naturalness; bridge-to-grid is a downstream consequence rather than the basis. Bounded-phase scope clarified as a charge-emergence question.
+
+### Chunk 2 — Unbounded phase variants
+Items: **A2**.
+One flag added to [scripts/models.py](scripts/models.py); one new script [scripts/test_unbounded_phase.py](scripts/test_unbounded_phase.py); brief notes added to [models/telegrapher.md](models/telegrapher.md) and [models/relcos-both.md](models/relcos-both.md).
+Self-contained side-test. Doesn't reopen chapter 4 unless the result is dramatic.
+
+### Chunk 3 — RelCos-both fair-shake
+Items: **A3**, **B1**, **B2**, **B3**, **C1** (depends on A3 outcome).
+New scripts: [scripts/test_relcos_dial_ic.py](scripts/test_relcos_dial_ic.py), [scripts/test_2d_freewave_superposition.py](scripts/test_2d_freewave_superposition.py). Documentation updates in [models/relcos-both.md](models/relcos-both.md), [02-candidate-models.md](02-candidate-models.md). Possibly chapter 4 §3–§4 revisions if the verdict shifts.
+Highest-cost chunk. Should run before the project is fully closed; either confirms or revises the elimination of RelCos-both.
+
+### Chunk 4 — Test-bench fairness fixes
+Items: **C2**, **C3**, **C4**, **C5**.
+One new script: [scripts/test_2d_dispersion.py](scripts/test_2d_dispersion.py). Wording updates in [03-test-bench.md](03-test-bench.md) and [01-foundation.md](01-foundation.md) §3. Energy-metric audit in [scripts/models.py](scripts/models.py).
+
+### Chunk 5 — Light items
+Items: remaining **E** (couplet.md cross-reference, matched-impedance definition).
+
+---
+
+## Suggested execution order
+
+1. **Chunk 1** first. Highest narrative impact, lowest risk, independent of every test outcome. Resets the framing so all subsequent work slots into the right story.
+2. **Chunk 2** second. Cheap, focused, addresses a user-stated theory.
+3. **Chunk 3** third. The expensive one — should land before the project is considered closed.
+4. **Chunk 4** fourth. Fills test-bench gaps; mostly mechanical.
+5. **Chunk 5** last (or rolled into Chunks 1/4 opportunistically).
+
+Chunks 1, 2, and 4 are mutually independent and can be done in any order or parallelised. Chunk 3 may force minor revisions to documents Chunk 1 produced; that revision cost is small (a few paragraphs of chapter 4 §3/§4) and worth paying, since Chunk 1 is the larger work and benefits from being "right" earlier.
+
+Items not in the action list are review points where I either disagreed or judged the cost-benefit not worth acting on. None were rejected outright.

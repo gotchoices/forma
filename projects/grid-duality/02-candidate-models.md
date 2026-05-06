@@ -21,11 +21,15 @@ Three v-i candidates differ only in the node-update rule:
 
 The two-phase clock and the v ∈ [0, 2π) / i ∈ ℝ state structure are common to all three.
 
-### Scattering (a-fwd / a-bwd)
+### Scattering (register / transmission-line network)
 
-Inspired by sim-maxwell's vertex-scattering construction. Nodes hold no state; each edge carries a pair (a_fwd, a_bwd) — the traveling-wave amplitudes in the tail→head and head→tail directions. The clock is single-phase: at each step, every vertex applies a scattering matrix S = (2/N)·J − I to its incoming amplitudes, producing the outgoing amplitudes. Energy is conserved exactly per step (S is unitary). Topological invariants live on edge cycles, not node loops.
+A network of N-register processors connected by two-ended transmission lines. Each node has one **register** per incident edge, where a register is the structural meeting point of an edge end with a node — owned jointly by both, contributing one real value to the lattice's state. A node of coordination N hosts N registers; an edge contributes two (one at each end node). The total state is exactly 2·|edges| real numbers.
 
-This is the model used in [grid/sim-maxwell](../../grid/sim-maxwell/).
+The clock is two-phase: an **inhale** in which each node samples its registers, applies the scattering matrix S = (2/N)·J − I locally, and overwrites the registers; and an **exhale** in which each edge transmits its end values to one another, swapping the values in the two registers it connects. The inhale enforces junction physics (voltage continuity + Kirchhoff current conservation, which together uniquely determine S); the exhale is a pure relabeling. Each phase is unitary, so energy is conserved exactly per cycle.
+
+The exhale duration sets the **speed of light** for the lattice: information moves at most one edge per cycle. Edge polarity is structurally inert under this model — the registers are unordered and neither phase reads polarity.
+
+This is the model used in [grid/sim-maxwell](../../grid/sim-maxwell/), and the (a_fwd, a_bwd) labeling commonly seen there is an equivalent direction-by-direction relabeling of the registers.
 
 ## §3. Comparative table
 
@@ -33,13 +37,15 @@ A reading guide. Rows are model properties; columns are candidates.
 
 | Property | Telegrapher | Normalized | RelCos-both | Scattering |
 |---|---|---|---|---|
-| Node state | v ∈ [0, 2π) | v ∈ [0, 2π) | v ∈ [0, 2π) | none |
-| Edge state | i ∈ ℝ | i ∈ ℝ | i ∈ ℝ | (a_fwd, a_bwd) ∈ ℝ² |
-| Clock | two-phase | two-phase | two-phase | single-phase |
-| Node update | Σ s·i | (1/N)·Σ s·i | Σ s·i·cos(θ−v) | (vertex scatter) |
-| Edge update | (v_t − v_h)_pb | (v_t − v_h)_pb | cos-weighted Δv | tail/head amplitude swap |
-| Static limit | graph Laplacian | graph Laplacian | nonlinear | not applicable (no node state) |
+| Node state | v ∈ [0, 2π) | v ∈ [0, 2π) | v ∈ [0, 2π) | N registers per node (joint with edges) |
+| Edge state | i ∈ ℝ | i ∈ ℝ | i ∈ ℝ | two registers per edge (joint with nodes) |
+| Clock | two-phase | two-phase | two-phase | two-phase (inhale + exhale) |
+| Node update | Σ s·i | (1/N)·Σ s·i | Σ s·i·cos(θ−v) | scatter S = (2/N)·J − I on registers |
+| Edge update | (v_t − v_h)_pb | (v_t − v_h)_pb | cos-weighted Δv | swap end-register values |
+| Static limit | graph Laplacian | graph Laplacian | nonlinear | wave equation (no relaxation) |
 | Energy conservation | linear (approximate) | linear (approximate) | nonlinear | exact (unitary by construction) |
+| Edge polarity used by dynamics? | yes (s_e = ±1) | yes (s_e = ±1) | yes (s_e = ±1) | no (registers unordered) |
+| Gauge invariance under v → v + c | yes | yes | no | trivially (no v) |
 | Lattice geometry needed | graph only | graph only | edge angles θ | graph only |
 | Reference spec | [telegrapher.md](models/telegrapher.md) | [normalized.md](models/normalized.md) | [relcos-both.md](models/relcos-both.md) | [scattering.md](models/scattering.md) |
 
@@ -73,15 +79,19 @@ The lattice for RelCos-both must carry per-edge angles θ — additional geometr
 
 ## §7. Scattering
 
-State on edges only, two amplitudes per edge: (a_fwd, a_bwd). At each vertex, the new outgoing amplitudes are determined from the incoming ones by
+State lives in **registers**: one real value per docking of an edge end into a node. A node of coordination N has N registers; an edge contributes two registers (one at each end). Each register is owned jointly by an edge and a node — it is the structural meeting point of the substrate's two primitives, not a separate primitive. The total state is exactly 2·|edges| real numbers.
 
-> outgoing = (2/N) · total_incoming − incoming
+The clock is two-phase. **Inhale.** Each node samples its registers, applies the scattering matrix S = (2/N)·J − I locally, and overwrites the registers:
 
-which is the matrix S = (2/N)·J − I applied to the incoming-amplitude vector. S is unitary, so total energy 0.5·Σ (a_fwd² + a_bwd²) is conserved exactly per step, with no roundoff drift in principle.
+> r_i ← (2/N) · (r₁ + … + r_N) − r_i      for each register i at the node
 
-The clock is single-phase: every vertex updates simultaneously per cycle, swapping outgoing into the neighboring edges' incoming slots. No node state, no two-phase staggering.
+S is the unique solution to two physical constraints at any junction — voltage continuity (all incident lines see the same potential) and Kirchhoff current conservation. It is not an arbitrary update rule; it is what those constraints require. S is unitary for any N, so the inhale preserves energy locally.
 
-This is the model used in [grid/sim-maxwell](../../grid/sim-maxwell/), and it sits at the heart of the "bridge to grid" question. Spec: [models/scattering.md](models/scattering.md).
+**Exhale.** Each edge swaps the values in its two registers (one at each end node), as if the value at one end has propagated across the edge body to the other end. One exhale = one edge transit; this defines the **speed of light** for the lattice. The exhale preserves energy trivially — it is a pure relabeling.
+
+A full cycle is therefore unitary, and energy is conserved exactly per step.
+
+Edge polarity is structurally inert under Scattering: the registers are unordered and neither phase reads polarity. This is the model used in [grid/sim-maxwell](../../grid/sim-maxwell/); the (a_fwd, a_bwd) labeling sometimes seen there is an equivalent direction-by-direction relabeling of the registers. Spec: [models/scattering.md](models/scattering.md).
 
 ## §8. Deferred and scrapped
 
