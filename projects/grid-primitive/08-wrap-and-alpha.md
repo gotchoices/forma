@@ -1,6 +1,6 @@
-# Chapter 8 — Wrapping a Sheet, and What α Turns Out To Be
+# Chapter 8 — Wrapping a Sheet, and What α Might Turn Out To Be
 
-This chapter takes up the project's α-derivation question. The framing is intentionally modest, picking up the user's reframing: chapters 1–7 already accomplished the project's primary deliverable — establishing a primitive substrate that properly supports vacuum Maxwell and entropic gravity at the lattice scale. The α derivation is an *equal-priority but separate* question: does any deeper understanding of α emerge from the cylinder primitive's geometry?
+This chapter takes up the project's α question. The framing is intentionally modest: chapters 1–7 already accomplished the project's primary deliverable — establishing a primitive substrate that properly supports vacuum Maxwell and entropic gravity at the lattice scale. The α exercise is an *equal-priority but separate* question: does any deeper understanding of α emerge from the cylinder primitive's geometry?
 
 The honest expectation is calibrated:
 
@@ -10,7 +10,7 @@ The honest expectation is calibrated:
 - α as an *interesting ratio* tying it to specific lattice structure would be valuable.
 - α resolving to *two or more* independent free variables would suggest the cylinder primitive hasn't added meaningful new insight beyond what was already in [grid/charge-emergence.md](../../grid/charge-emergence.md).
 
-With this calibration, we proceed to attempt the derivation. We take the polygonal-wrap formulation from [`dialogs/grid-3.md`](../../dialogs/grid-3.md) (which itself converged on this picture from a longer brainstorming arc) and apply it with the cylinder primitive's specific parameters. We see what comes out.
+A summary upfront, since the result is conditional. We attempt the derivation along the polygonal-wrap formulation from [`dialogs/grid-3.md`](../../dialogs/grid-3.md). Two limitations of that approach surface in §4 — the (Δθ)² perturbative expansion is not controlled at *N* = 6, and the assumed incoherent-kink-summation rule does not apply to a coherent closed loop. Both are the regime relevant to α. The chapter therefore arrives at an *inconclusive* result: a candidate physical picture for α (a kink-loss fraction on a closed wrap) and a sharpened target for a future calculation, but no controlled structural form for α at the *N* of interest. We mark the leading-order expressions as conditional throughout and collect the limitations explicitly in §9.
 
 ---
 
@@ -81,112 +81,122 @@ This is a substantial calculation that we do not carry out in detail here. The s
 
 ---
 
-## 4. Total loss per loop
+## 4. Total loss per loop — and the limits of the leading-order treatment
 
-Summing over the *N* kinks of a polygon with all kinks of equal angle Δθ = 2π/*N*:
+Naively summing over the *N* kinks of a polygon with all kinks of equal angle Δθ = 2π/*N*:
 
 η_loop ≈ *N* · *K*(χ̃) · (2π/*N*)² = 4π² *K*(χ̃) / *N*
 
-This is the central formula of the chapter. Two observations:
+Before reading anything into this expression, two warnings about the regime in which it can be trusted.
 
-**The 1/N scaling.** As the polygonal wrap is refined (*N* increases), each kink becomes shallower (Δθ ~ 1/*N*), and the per-kink loss decreases as 1/*N*². But we have *N* kinks per loop, so the total loop loss is ~ *N* · 1/*N*² = 1/*N*. *Smaller* *N* (sharper kinks) gives *more* loss per loop, not less. The smooth-bend limit *N* → ∞ gives η_loop → 0 — a smooth bend leaks no energy.
+### Warning 1 — the small-Δθ expansion is not controlled at N = 6
 
-**The chirality dependence.** *K*(χ̃) sits as the only χ̃-dependence in the formula. The natural shear value χ̃ = 1/√2 gives a specific *K*; other values of χ̃ give other *K*s. χ̃ enters once.
+η_kink(Δθ) is the leading term of a power series
 
-For α emerging from this, we identify
+η_kink(Δθ) = *K*₂(χ̃) Δθ² + *K*₄(χ̃) Δθ⁴ + *K*₆(χ̃) Δθ⁶ + …
 
-α = η_loop = 4π² *K*(χ̃) / *N*
+(the chapter's *K*(χ̃) is *K*₂(χ̃)). Summing over N kinks at Δθ = 2π/N gives
 
-— with both *N* and χ̃ as parameters of the wrap.
+η_loop = *K*₂(χ̃)·(2π)²/*N* + *K*₄(χ̃)·(2π)⁴/*N*³ + *K*₆(χ̃)·(2π)⁶/*N*⁵ + …
+
+The natural expansion parameter is (2π/*N*)². At *N* = 6 this is (π/3)² ≈ 1.10 — *order unity*, not small. Successive powers are 1.10, 1.21, 1.33, … — the geometric factor multiplying *K*₂ₙ does not shrink with *n*. For the leading-term truncation η_loop ≈ 4π²*K*₂(χ̃)/*N* to be the dominant contribution at *N* = 6, the higher-order coefficients *K*₄, *K*₆, … would have to fall off faster than the geometric factor grows. This chapter does not establish that they do.
+
+So 4π²*K*(χ̃)/*N* is the leading term of a series whose *convergence at N = 6* is unestablished. In the smooth-bend limit *N* → ∞ the series is well-behaved and the leading term dominates, but the smooth-bend limit gives η_loop → 0 — no α. The interesting case (*N* = 6) is exactly the case where the perturbative formula is least trustworthy.
+
+### Warning 2 — η_loop = N · η_kink assumes incoherent kink summation
+
+The summation step "η_loop = *N* · η_kink" treats each kink as scattering independently — an *incoherent* sum of losses. On a closed loop where the wave phase-coheres around the polygon, kink scattering generally interferes (constructively or destructively) depending on the phase the wave accumulates between kinks. The correct expression is the modulus-squared of an N-step amplitude sum, not *N* times the single-kink loss.
+
+For *N* = 6 with wavelengths comparable to the polygon size — the regime in which a single mode lives on the loop — interference is not negligible and η_loop ≠ *N* · η_kink in general. This chapter does not carry out the coherent-summation calculation.
+
+### What survives the warnings
+
+The structural observation — *that α can be cast as a kink-loss fraction per closed loop on a wrapped sheet* — survives. What does not survive without further work is the specific functional form 4π²*K*(χ̃)/*N* at *N* = 6.
+
+For the rest of this chapter we carry the leading-order formula forward as a **structural sketch** rather than a controlled result, and we explicitly mark its conditional status when we write it down.
 
 ---
 
 ## 5. The hexagonal wrap (N = 6)
 
-We need to make a choice for *N*. Two natural candidates:
+If we make a choice for *N*, two natural candidates appear:
 
 - *N* = 6, the symmetry of the underlying hexagonal lattice. A hexagonal-symmetric loop on the hexagonal lattice has 6 vertices; this is the geometrically simplest closed polygon that respects the lattice.
 - Some other *N* fixed by an external geometric requirement (size of a MaSt sheet, particle-specific structure, etc.).
 
-For the bare cylinder-primitive lattice — without committing to specific MaSt-particle structure — *N* = 6 is the natural choice. It comes from the hexagonal-lattice symmetry that the project committed to in chapter 5, and it does not introduce any new information beyond that lattice choice.
+For the bare cylinder-primitive lattice — without committing to specific MaSt-particle structure — *N* = 6 is the natural choice from the lattice symmetry of chapter 5.
 
-With *N* = 6:
+Substituting *N* = 6 into the leading-order formula:
 
-α = 4π² *K*(χ̃) / 6 = (2π²/3) · *K*(χ̃)
+α ~ 4π² *K*(χ̃) / 6 = (2π²/3) · *K*(χ̃)        *(leading-order, conditional)*
 
-For χ̃ pinned at the natural value 1/√2 (chapter 2 §7):
+For χ̃ tentatively at the natural midpoint 1/√2 (chapter 2 §7's geometric-center argument):
 
-α = (2π²/3) · *K*(1/√2)
+α ~ (2π²/3) · *K*(1/√2)        *(leading-order, conditional)*
 
-Both *N* and χ̃ are now pinned by independent considerations from earlier chapters (the hexagonal lattice from chapter 5; the natural shear from chapter 2 §7). What remains free is *K*(1/√2) — a single coefficient.
+The "~" rather than "=" is deliberate. Both warnings of §4 apply: the (Δθ)² expansion is not controlled at *N* = 6 (Δθ² ≈ 1.10), and η_loop = *N* · η_kink assumes incoherent summation that is not appropriate for a coherent closed loop. We are writing what the leading-order formula gives if it were trustworthy at this *N*; we are not asserting that it is.
 
-For α to be reproduced at its measured value, *K*(1/√2) must equal:
-
-*K*(1/√2) = 3 α / (2π²)
-
-Using the CODATA 2018 measured value α = 7.2973525693(11) × 10⁻³:
-
-*K*(1/√2) ≈ 1.109064598 × 10⁻³
-
-(reliable to about 10 significant figures, set by the precision of α). This is the specific number the cylinder primitive's per-kink leakage coefficient at χ̃ = 1/√2 would have to come out to. Whether it actually does so requires the explicit calculation outlined in §3.
+We do *not* back out a numerical value of *K*(1/√2) from the measured α. Even setting aside whether the calculation outlined in §3 produces a particular number, doing so would presume a controlled relationship between *K*(1/√2) and α that this chapter has not established.
 
 ---
 
-## 6. What α turns out to be
+## 6. What α might turn out to be
 
-The structural form is now visible. Under the cylinder primitive on a 2D hexagonal lattice, with χ̃ at the natural shear value and *N* fixed by the lattice's hexagonal symmetry:
+A structural sketch, under the conditional reading of §4–§5:
 
-α = (2π²/3) · *K*(1/√2)
+α ~ (2π²/3) · *K*(1/√2)        *(if the leading-order formula and incoherent summation applied at N = 6)*
 
-This is the headline result of the chapter, such as it is. α is *not* a free parameter floating above the lattice's dynamics; it is a specific geometric ratio. Its value is fixed once we specify (i) the hexagonal lattice geometry, (ii) the natural shear χ̃ = 1/√2, and (iii) the per-kink leakage coefficient *K*(1/√2) which is determined (in principle) by the cylinder primitive's wave equation.
+This says: *if* the leading-order kink-loss expression were controlled at *N* = 6, *and* if the incoherent-summation rule applied, *then* α would take this form on the cylinder primitive on a 2D hexagonal lattice with χ̃ = 1/√2.
 
-What this delivers, structurally:
+What the sketch identifies, conditional on those assumptions:
 
-- A clean *form* for α: it is the kink-loss fraction per hexagonal-symmetric loop on the cylinder primitive's lattice.
-- A *single* dimensionless parameter (*K*(1/√2)) determines its value once the lattice and shear are fixed. *N* and χ̃ are *not* additional free variables — they are pinned by independent reasoning in earlier chapters.
-- The factor of 2π²/3 is a definite geometric prefactor coming from the polygonal-wrap geometry; it is not adjustable.
+- A candidate *form* for α as a kink-loss fraction per hexagonal-symmetric closed loop.
+- A reduction (within the conditional) to a single calculable coefficient *K*(1/√2).
+- A definite geometric prefactor 2π²/3 if the leading-order treatment held.
 
-What this does *not* deliver:
+What the sketch does *not* deliver:
 
-- A predicted numerical value for α. *K*(1/√2) is calculable in principle from the cylinder primitive's wave equation, but doing the calculation requires substantial work that is not undertaken in this chapter.
-- A reason why α has the specific value 1/137. Even if we computed *K*(1/√2) and it came out to 1.11 × 10⁻³, that would be a consistency check, not an explanation of why nature picked this number.
+- An established structural form for α. The two warnings of §4 — uncontrolled (Δθ)² expansion at *N* = 6, and incoherent-summation assumption inappropriate for a coherent loop — are not addressed in this chapter, and either could change the form qualitatively.
+- A predicted numerical value for α.
+- A reason why α has the specific value 1/137.
+
+The cylinder primitive's contribution at this stage is therefore not the formula α = (2π²/3)·*K*(1/√2) but the more modest claim that *the question of α can be sharpened into a kink-loss-on-a-wrap calculation* — a calculation that becomes well-defined once a concrete lattice-level kink model and a coherent-summation treatment are supplied.
 
 ---
 
-## 7. Counting free variables
+## 7. Counting free variables — conditional answer
 
-Per the user's reframing, the project's outcome on α should be assessed by how many free variables α resolves to:
+Per the user's reframing, the project's outcome on α can be assessed by how many free variables α resolves to:
 
 - **0 free variables (full prediction):** α is completely determined by the cylinder primitive's structure, no fits anywhere. → Extremely surprising.
 - **1 free variable:** α reduces to a single parameter that the cylinder primitive's geometry fixes once you specify the lattice and shear. → Interesting ratio; structural understanding gained.
-- **2 free variables:** α depends on two independent parameters that the cylinder primitive does not pin. → Doubts about whether the α derivation has added insight.
+- **2 free variables:** α depends on two independent parameters that the cylinder primitive does not pin. → Doubts about whether the analysis has added insight.
 - **3 or more:** Worse.
 
-By the analysis above:
+If the leading-order formula η_loop = 4π²*K*(χ̃)/*N* with incoherent kink summation were controlled at *N* = 6, the count would be 1: *N* fixed by the hexagonal lattice, χ̃ fixed by the chapter-2 midpoint argument, and *K*(1/√2) the lone calculable coefficient.
 
-- *N* = 6 is fixed by the hexagonal lattice (chapter 5 commitment, not a new free parameter for chapter 8).
-- χ̃ = 1/√2 is fixed by the natural-shear argument (chapter 2 §7, not a new free parameter for chapter 8).
-- *K*(χ̃) is a function the cylinder primitive determines (in principle) — *one* coefficient, computable from the wave equation, evaluated at the natural χ̃.
+But §4 flagged that neither prerequisite is established. The actual count this chapter delivers is therefore:
 
-So α reduces to **one free variable** in this analysis: the value of *K*(1/√2). That is the count we hoped to get to. The chapter delivers a structural understanding of α as a kink-loss ratio depending on a single coefficient that the cylinder primitive's dynamics in principle determine.
+- **In the controlled regime (large *N*, small Δθ):** 1 free variable — but in this regime η_loop → 0 and the wrap doesn't produce α.
+- **At N = 6, where α-relevant physics would live:** unestablished. The leading-order count of 1 may underestimate the true number; the higher-order *K*₄, *K*₆, … carry their own χ̃-dependences, and coherent-summation interference adds N-specific structure that the leading-order formula doesn't capture. A faithful count at *N* = 6 awaits the calculation outlined in §3 plus a coherent-summation treatment.
 
-A caveat. If *K*(1/√2) can only be computed up to an O(1) factor that depends on conventions or normalizations, the "single free variable" count could effectively become "1 + a small uncertainty." The chapter's count of 1 is the cleanest interpretation; tightening it to a numerical prediction requires the explicit calculation.
+The honest version of the chapter's result is therefore "the structural picture is suggestive of a single-parameter reduction, *if* the calculation goes through cleanly at *N* = 6." The chapter does not establish that it does.
 
 ---
 
 ## 8. What we've learned
 
-The α-derivation exercise has produced:
+The α exercise has produced something more modest than the chapter originally framed:
 
-**A structural identification.** α is the per-loop fractional energy loss when a 2D sheet of cylinder primitives is folded into a hexagonally-symmetric torus. This identifies α with a *geometric ratio*, not with a coupling pulled out of nowhere.
+**A sharpening of the question.** The cylinder primitive lets us recast "where does α come from?" as "what is the per-loop fractional energy loss when a sheet of primitives is wrapped into a closed surface?" This is a sharpening — a kink-loss-on-a-wrap calculation, with a definite (if not yet specified) lattice-level kink model — not yet a structural form for α.
 
-**A reduction to one coefficient.** The structural form α = (2π²/3) · *K*(1/√2) reduces α to a single per-kink leakage coefficient. The hexagonal lattice and natural shear value are inputs from earlier chapters; *K*(1/√2) is the only "α-specific" parameter remaining.
+**An identification of the calculation that would settle the question.** Within this framework the well-defined calculation is the matched-chirality scattering problem at a lattice-level kink, plus a coherent-summation treatment around a closed N-kink loop. If carried out, this would either produce a definite structural form for α (best case) or reveal that the kink-loss picture doesn't survive coherent-loop physics at *N* = 6 (negative result).
 
-**A reframing of what an α-derivation could mean.** α is *not* derivable from pure number theory or pure geometry alone (per [primers/alpha-in-grid.md](../../primers/alpha-in-grid.md), this is consistent with the historical record — Eddington and others tried such derivations and they did not hold up). What the cylinder primitive contributes is a *picture* of α as the leakage rate of a specific wrap geometry, with one calculable coefficient. This is a *deeper understanding* in the user's framing — a structural picture — even if it is not a numerical prediction.
+**An identified obstacle.** At *N* = 6 the natural perturbative parameter (Δθ)² ≈ 1.10 is order unity, so the leading-order formula 4π²*K*(χ̃)/*N* is not a controlled approximation in the regime of interest. Combined with the incoherent-summation assumption being inappropriate for a coherent closed loop, this means the chapter's leading-order expressions are best read as a *placeholder* awaiting a non-perturbative or coherent-loop treatment.
 
-**A sharp future calculation.** If someone wanted to push for a full numerical prediction of α from this framework, the well-defined calculation is: *K*(1/√2) for the matched-chirality wave equation with kink-scattering boundary conditions. This is a piece of waveguide physics that can be computed, in principle, from chapter 2's wave equation alone. It is well-defined and bounded in scope; it is not undertaken here, but it is available as follow-up.
+**A reframing of what an α-derivation could mean.** α is not derivable from pure number theory or pure geometry alone (per [primers/alpha-in-grid.md](../../primers/alpha-in-grid.md), consistent with the historical record). What the cylinder primitive offers is a *candidate physical picture* — α as the leakage rate of a specific wrap geometry — that, *if* the underlying scattering and coherent-summation calculation goes through, would resolve to a structural form with a small number of parameters. The chapter does not establish that it goes through.
 
-**An honest assessment of how this compares to grid/charge-emergence.md.** [grid/charge-emergence.md](../../grid/charge-emergence.md) was candid that its account of the α magnitude was hand-wavey. The cylinder primitive's contribution is to give a *specific structural form* for α (the kink-loss ratio with one calculable coefficient), with the lattice parameters fixed by independent considerations from earlier chapters. This is an improvement over charge-emergence.md's framing — though still not a numerical prediction. If a follow-up calculates *K*(1/√2) explicitly, the comparison to α = 1/137 will be a real consistency test of the cylinder primitive's parameters against observation.
+**Comparison to grid/charge-emergence.md.** [grid/charge-emergence.md](../../grid/charge-emergence.md) was candid that its account of the α magnitude was hand-wavey. This chapter does not yet improve on that — what it adds is a more concrete *target* for a future calculation, not a structural answer. If the §3 calculation is performed with a concrete kink model and the coherent-loop summation is done correctly, *that* result would be the real comparison to charge-emergence.md.
 
 ---
 
@@ -194,25 +204,28 @@ The α-derivation exercise has produced:
 
 A brief observation that ties this chapter to the foundation. The cylinder primitive itself, viewed under the fractal-microgrid interpretation (chapter 1 §8), is a wrapped 2D microgrid — a sheet of microgrid wrapped into a tube of cross-section circumference 2π*r*. This is *another* 2π wrap, one fractal level below the sheet wrap that this chapter examines.
 
-Two structural observations follow from applying chapter 8's logic at the next-deeper fractal level:
+Two structural observations follow:
 
 **The cross-section wrap produces mass-analog, not charge.** The cross-section is a 1D ring (the circumference, parametrized by an angular coordinate). Wrapping a 1D direction into a closed loop is the standard Kaluza-Klein topology that produces mass-analog through quantized transverse momentum — exactly the mechanism that gives the cylinder its substrate inertia in chapter 1 §8. It does *not* produce charge: charge requires a *two*-dimensional wrap of a sheet into a closed surface (the sheet wrap of this chapter), not a 1D wrap of an angular coordinate. So the cross-section wrap contributes a "dark mass" at the substrate level (in MaSt terminology — mass-analog from compact-wrap quantization, not coupled to electromagnetism), not a substrate-level charge.
 
-**Any radial leakage at the cross-section level is dynamic, not static.** If we apply chapter 8's polygonal kink-loss formula at the cross-section scale, we would get some leakage rate per cross-section loop. But this leakage is not a *static* radial E-field analog around every cylinder. It is dynamically tied to the signals passing through the cylinder at any moment — the cross-section wrap leaks whatever waves are currently flowing through, in whatever direction, and over time-averages this integrates to zero (no net residual). So even if the leakage rate is nonzero per loop, the time-averaged radial signature is zero, and there is no observable static field from the substrate-level wrap.
+**Any radial leakage at the cross-section level is dynamic, not static.** If we naively applied chapter 8's polygonal kink-loss formula at the cross-section scale, we would get some leakage rate per cross-section loop — but with the same controlled-regime caveats as the sheet-wrap calculation (and again with order-unity Δθ if the cross-section is approximated by a small-N polygon). Setting the controlled-regime question aside, this leakage is dynamic rather than static: it is tied to whatever signals are passing through the cylinder at any moment, and time-averages to zero. Even if the per-loop rate is nonzero, the time-averaged radial signature is zero, so there is no observable static field from the substrate-level wrap.
 
-The combination of these two observations means the fractal recursion adds the substrate-level mass-analog (which we already accounted for as *D*) without adding any unaccounted-for static field at the lattice scale. The cross-section wrap is a *consistent* part of the cylinder primitive's structure, not a problem.
-
-This is as far as we pursue the fractal recursion. The detailed cross-section dynamics — exactly how the microgrid produces *D*, what *K_micro* values that microgrid would have, etc. — are deferred (per ground rule 3, "stop at the cylinder; the cylinder's internal dynamics are described by a stiffness matrix with symbolic entries; we do not derive those entries from sub-cylinder geometry"). What we have used here is just the structural observation that the cylinder primitive's *D* matrix has a natural microgrid origin parallel to metric-mass's compact-dimension story.
+These observations are qualitative — they explain why the cross-section wrap doesn't *add* an unaccounted feature, not why it produces any specific quantitative result. The detailed cross-section dynamics — exactly how the microgrid produces *D*, what coefficients a microgrid analog of *K*(χ̃) would have — are deferred per ground rule 3.
 
 ---
 
-## 9. Risks and caveats
+## 9. Limitations
 
-- **Risk: *K*(1/√2) might not be O(10⁻³).** If the actual calculation gives a wildly different value, the structural form α = (2π²/3) · *K*(1/√2) holds but the numerical match to α = 1/137 fails. That would be a real falsification — the cylinder primitive on a hexagonal lattice with χ̃ = 1/√2 simply doesn't reproduce the observed coupling. The follow-up calculation would tell us this.
-- **Risk: *N* = 6 might not be the right choice.** The hexagonal-symmetric loop is geometrically natural for the hexagonal lattice, but a MaSt-style charge-bearing torus might have a different *N* set by the particle's specific structure. If so, α would have residual *N*-dependence that we have not pinned. The chapter's claim of "1 free variable" depends on *N* = 6 being the right choice; a more careful analysis of which *N* applies to actual physical particles is downstream work.
-- **Risk: the polygonal approximation might miss continuous-bend physics.** The polygonal approximation cleanly separates per-kink scattering from continuous propagation, but in reality the lattice could have continuous-curvature contributions that the polygonal limit misses. Whether these are negligible in the long-wavelength regime is a calculation we have not done.
-- **Risk: the per-kink scaling (Δθ)² might break down for χ̃ = 1/√2.** Perturbation theory on the kink assumes Δθ is small. For *N* = 6, Δθ = 60° = 1.05 rad, which is not particularly small. Higher-order corrections (Δθ⁴, etc.) might matter at this order. The chapter's formula η_kink ≈ K · (Δθ)² is the leading-order term; the full expansion has more.
-- **Risk: the choice of MaSt-style closure interpretation.** The cylinder-primitive sheet-into-torus wrap is meant to correspond to MaSt-style particle structure (compact dimensions wrapped into closed surfaces). But the project explicitly does not commit to a specific MaSt particle (electron, proton, etc.), so the wrap geometry's connection to "the" α (as observed for, say, the electron) is not pinned. α might depend on *which* particle's wrap we're looking at — a possibility that grid/charge-emergence.md raised but did not resolve.
+The following are *limitations* of the chapter's analysis, not just downstream risks. Most are flagged inline above; collected here for clarity.
+
+- **The (Δθ)² expansion is uncontrolled at *N* = 6.** Natural expansion parameter (2π/*N*)² ≈ 1.10 at *N* = 6 is order unity. The leading-order formula 4π²*K*(χ̃)/*N* is not a controlled approximation in this regime; higher-order coefficients *K*₄(χ̃), *K*₆(χ̃), … contribute at the same order as the leading term and have not been computed.
+- **Coherent-loop interference is not addressed.** η_loop = *N* · η_kink assumes incoherent kink summation. On a closed loop where the wave phase-coheres around the polygon, the correct expression is the squared magnitude of an *N*-step amplitude sum, not *N* times the single-kink loss. This chapter does not perform that summation.
+- **Lattice-level kink model is not specified.** The "polygonal wrap" is described at the level of "*N* flat segments joined at *N* kinks of angle Δθ." How that maps to a concrete modification of the hexagonal-lattice cylinder primitive — which edges are bent, what matching conditions apply at the bend, what radiated channels exist — is not pinned down in this chapter. Without that specification the §3 calculation is not yet well-posed.
+- **Whether *K* depends only on χ̃ is asserted, not shown.** Step 4 of the §3 calculation outline (integrate over radiated channels) is what would determine whether *K* is a function of χ̃ alone or whether it carries additional dependence on *N* or local kink geometry. This step is not performed.
+- ***N* = 6 is a lattice-symmetry choice, not a physics-pinned value.** A MaSt-style charge-bearing torus might have a different *N* set by particle-specific structure, in which case α would have residual *N*-dependence beyond the lattice-symmetry choice.
+- **χ̃ = 1/√2 is a "natural midpoint" choice, not a derived value.** Chapter 2 §7 explicitly states that nothing in chapter 2 alone pins χ̃; the geometric-center argument identifies 1/√2 as natural, not necessary. Treating it as fixed in this chapter's α expression is a working choice, not a result.
+- **The polygonal approximation may miss continuous-bend physics.** Even if the per-kink picture were controlled at *N* = 6, the lattice could have continuous-curvature contributions that the polygonal limit treats incorrectly.
+- **The chapter does not commit to a specific MaSt particle.** The sheet-into-torus wrap is meant to correspond to MaSt-style particle structure, but no specific particle (electron, proton, etc.) is identified. The connection between "this wrap geometry" and "α as measured for the electron" is therefore not pinned; α might in principle depend on which particle's wrap is being considered.
 
 ---
 
@@ -220,11 +233,16 @@ This is as far as we pursue the fractal recursion. The detailed cross-section dy
 
 What this chapter establishes:
 
-- α takes a structural form on the cylinder primitive's lattice: it is the kink-loss fraction per loop when a 2D sheet of primitives is wrapped into a polygonal torus.
-- Under the polygonal-wrap formula η_loop = 4π² *K*(χ̃) / *N*, with *N* fixed at 6 by the hexagonal-lattice symmetry (chapter 5) and χ̃ fixed at 1/√2 by the natural-shear argument (chapter 2 §7), α reduces to (2π²/3) · *K*(1/√2).
-- This leaves *K*(1/√2) — a single coefficient computable in principle from the cylinder primitive's wave equation — as the only α-specific parameter.
-- A numerical prediction of α from this framework requires the explicit calculation of *K*(1/√2). That calculation is well-defined but not undertaken in this chapter; it is available as follow-up.
-- The α-derivation does not produce a numerical prediction. What it produces is a *structural understanding* of α as a kink-loss ratio with a single calculable coefficient — the user's "deeper understanding" outcome rather than the "true derivation" outcome.
-- The cylinder primitive's contribution to the α story is an improvement over [grid/charge-emergence.md](../../grid/charge-emergence.md)'s previous hand-wavey magnitude, in that the structural form is now specific and the parameters are mostly pinned by earlier chapters. It is not a complete answer to "where does α come from?" but it is a step toward making that question concrete.
+- A *candidate physical picture* for α: the per-loop fractional energy loss when a 2D sheet of cylinder primitives is wrapped into a closed polygonal surface.
+- A *concrete target* for a future calculation: the matched-chirality scattering problem at a lattice-level kink, summed coherently around an *N*-kink closed loop.
+- A leading-order formula η_loop ≈ 4π²*K*(χ̃)/*N* that *would*, if controlled, reduce α to a single calculable coefficient *K*(1/√2). The chapter does not establish that the formula is controlled at *N* = 6 — see §4 and §9 for the explicit limitations.
+
+What this chapter does *not* establish:
+
+- A controlled structural form for α at *N* = 6. The (Δθ)² expansion has order-unity expansion parameter at this *N*, and the incoherent-summation rule η_loop = *N* · η_kink is not appropriate for a coherent closed loop. Either limitation could change the leading-order form qualitatively.
+- A numerical prediction of α.
+- An improvement over [grid/charge-emergence.md](../../grid/charge-emergence.md)'s account of the α magnitude. What this chapter offers is a sharper *target* for follow-up work; the answer waits on that work.
+
+The α exercise is therefore inconclusive: a candidate picture and a well-defined calculation, both contingent on prerequisites the chapter cannot satisfy. Whether α emerges from the cylinder primitive's geometry — and in what functional form — remains open.
 
 The next chapter is the project's closing summary.

@@ -16,9 +16,9 @@ The answer the project arrived at is a specific geometric primitive — a 2D cyl
 - **Chapter 4** confirmed the entropic 1/r force scaling for 2D gravity, with three independent simulation tests in [scripts/](scripts/) at the percent level.
 - **Chapter 5** assembled the cylinder primitives into a hexagonal lattice and confirmed clean photon propagation at *c* with no anomalies.
 - **Chapters 6–7** built the bridges to grid/maxwell.md and grid/gravity.md, supplying the inputs each takes (cell-level phase θ, link-level connection *A_μ*, and the 2D analog ζ_2D = 1/3 of the per-cell information capacity).
-- **Chapter 8** examined the wrap-and-α question. α emerged as a structural ratio (a kink-loss coefficient at hexagonal-symmetric wraps) reducing to a single free parameter that the cylinder primitive's wave equation determines in principle.
+- **Chapter 8** examined the wrap-and-α question. The result was *inconclusive*: a candidate physical picture for α (the kink-loss fraction per closed wrap) and a sharper target for follow-up calculation, but no controlled structural form. The leading-order kink-loss formula has order-unity expansion parameter at the relevant *N* and assumes incoherent kink summation that is not appropriate for a coherent closed loop, so the chapter walked back its earlier "structural ratio with one free variable" claim to a conditional candidate.
 
-The project did not produce a numerical prediction of α. It produced something narrower but worth having: a *structural understanding* of where α lives in the cylinder primitive's geometry.
+The project did not produce either a numerical prediction of α or an established structural form. What it did produce is a sharper *target* for a future α-relevant calculation, contingent on prerequisites this project did not establish.
 
 ---
 
@@ -72,12 +72,12 @@ The project established the following at the level of derivation supported by th
 - Combined with the hexagonal-lattice geometric factor, this gives a per-node entropy of 1/3 — matching ζ_2D structural-form.
 - A full numerical match across all O(1) factors is a well-defined but tedious calculation, deferred to follow-up. The structural-form match is sufficient for the project's purposes.
 
-### α as a structural ratio (chapter 8)
+### α as an inconclusive candidate picture (chapter 8)
 
-- α emerges as the kink-loss fraction per loop when a 2D sheet of cylinder primitives is folded into a polygonal torus.
-- With *N* = 6 fixed by hexagonal symmetry (chapter 5) and χ̃ = 1/√2 fixed by the natural-shear argument (chapter 2 §7), α reduces to (2π²/3) · *K*(1/√2), where *K*(1/√2) is a single calculable coefficient from the cylinder primitive's matched-chirality wave equation.
-- For α to take its measured value (CODATA 7.2973525693 × 10⁻³), *K*(1/√2) must equal 1.109064598 × 10⁻³ — a specific number that an explicit follow-up calculation would either confirm or falsify.
-- The fractal-recursion observation: the cylinder primitive's cross-section wrap (one fractal level below the sheet wrap that gives α) produces mass-analog (substrate inertia, "dark mass" in MaSt terminology) via the standard KK mechanism. The 1D circumference wrap cannot produce charge (charge requires the 2D-sheet wrap of this chapter); any radial leakage at the cross-section level is dynamic and time-averages to zero.
+- A candidate physical picture for α: the per-loop fractional energy loss when a 2D sheet of cylinder primitives is wrapped into a closed polygonal surface.
+- A sharpened target for follow-up: the matched-chirality scattering problem at a lattice-level kink, summed coherently around an *N*-kink loop. If carried out with a concrete kink model and a coherent-summation treatment, this calculation would either produce a controlled structural form for α or rule the kink-loss picture out.
+- Two limitations of the leading-order treatment surface at *N* = 6: the (Δθ)² perturbative expansion has order-unity expansion parameter ((π/3)² ≈ 1.10), and the η_loop = *N* · η_kink rule assumes incoherent kink summation that does not apply to a coherent closed loop. Either limitation can change the leading-order form qualitatively at the *N* of interest. The leading-order formula α ≈ (2π²/3) · *K*(1/√2) is therefore a *placeholder*, marked conditional throughout chapter 8, not a controlled result.
+- The fractal-recursion observation: the cylinder primitive's cross-section wrap (one fractal level below the sheet wrap that motivates α) produces mass-analog (substrate inertia, "dark mass" in MaSt terminology) via the standard KK mechanism. The 1D circumference wrap cannot produce charge (charge requires a 2D wrap of a sheet into a closed surface); any radial leakage at the cross-section level is dynamic and time-averages to zero. This is qualitative — it explains why the cross-section wrap doesn't add an unaccounted feature, not why it produces any specific quantity.
 
 ---
 
@@ -105,9 +105,13 @@ Chapters 1–5 originally framed the cylinder primitive's inertia matrix *D* as 
 
 This unifies the project's foundations with metric-mass cleanly: both are mass-from-compact-wrap stories. They differ in scale, not in mechanism.
 
-### α is one free variable, not zero or two
+### α — controlled-regime free-variable count is not the regime of interest
 
-Per the user's reframing of chapter 8: the α-derivation outcome was assessed by how many free variables α reduces to. The chapter 8 analysis delivered the single-free-variable outcome — α = (2π²/3) · *K*(1/√2), with the geometric prefactor pinned by the hexagonal lattice and natural shear, and only the kink-loss coefficient *K*(1/√2) remaining to be calculated. This was the "interesting ratio" / "deeper understanding" outcome of the user's calibration, not the "true derivation" outcome (which was anticipated to be unattainable) or the "more than 2 free variables" outcome (which would have suggested no insight added).
+Per the user's reframing of chapter 8: the α outcome was to be assessed by how many free variables α reduces to. The leading-order analysis *would* give a single-free-variable outcome — α ≈ (2π²/3) · *K*(1/√2), with the geometric prefactor coming from the hexagonal lattice and the natural shear, and only the kink-loss coefficient *K*(1/√2) free — *if* the leading-order formula were controlled at *N* = 6.
+
+The mid-project discovery was that it isn't. The (Δθ)² expansion has order-unity expansion parameter at *N* = 6, and the incoherent-summation rule assumed in the leading-order formula is not appropriate for the coherent closed loop where α-relevant physics lives. The clean "1 free variable" count holds only in the controlled regime (large *N*, small Δθ), and in that regime the kink-loss vanishes — no α to count.
+
+The honest position: the count at *N* = 6 is *unestablished*. Whether α reduces to one parameter, several, or none — and in what functional form — is not settled by this project. This was a more conservative outcome than the "interesting ratio" hope of the original calibration, but it is what the math actually supports.
 
 ---
 
@@ -119,7 +123,8 @@ Some candidates that the project examined and rejected:
 - **Topological defects as the primary entropy mechanism.** The linear-Gaussian theory's Green's function structure is sufficient for Jacobson scaling (chapter 4). Defects survive as a possible refinement and as structural input for chapter 8.
 - **Charge from the cylinder cross-section.** The 1D circumference wrap is the wrong topology for charge. Charge requires the 2D-sheet-into-torus wrap of chapter 8. The cross-section wrap produces mass-analog only.
 - **Independent diagonal-*D* and non-diagonal-*M*.** This combination is inconsistent for a chirally-structured medium. Matched chirality is the only physically motivated choice.
-- **A "true derivation" of α from the cylinder primitive.** No such derivation emerged. α emerged as a structural ratio depending on a single calculable coefficient, not as a number predicted from first principles.
+- **A "true derivation" of α from the cylinder primitive.** No such derivation emerged.
+- **A controlled structural form for α at *N* = 6.** The leading-order kink-loss formula is not a controlled approximation in the regime where α would live. What chapter 8 produced is a candidate physical picture and a sharper target for follow-up calculation — not a controlled structural form.
 
 ---
 
@@ -129,7 +134,7 @@ Several questions are well-defined but not resolved in this project; they are av
 
 ### Calculations available as follow-up
 
-- **Compute *K*(1/√2) explicitly.** The kink-loss coefficient for the matched-chirality wave equation with kink-scattering boundary conditions is well-defined waveguide physics. An explicit calculation would either confirm or falsify the cylinder primitive on a hexagonal lattice with χ̃ = 1/√2 as the wrap geometry that produces the observed α.
+- **The α follow-up is a multi-step calculation, not just a single coefficient.** To make the chapter-8 picture concrete one must (i) specify a lattice-level kink model (which edges are bent on the hexagonal lattice and what matching conditions apply at the bend), (ii) solve the matched-chirality scattering problem at that kink to obtain *K*₂(χ̃), *K*₄(χ̃), … or, ideally, the full η_kink(Δθ), and (iii) sum *coherently* around the *N*-kink loop. Steps (ii) and (iii) together would either produce a controlled structural form for α or rule the kink-loss picture out at *N* = 6. The chapter-8 leading-order formula is the *first term* of step (ii), not a complete answer.
 - **Full numerical match of the gravity coefficient.** Chapter 7's structural-form match (1/(2π) × 2π/3 = 1/3) is sufficient at the structural level. A full O(1)-factor calculation would give a definite numerical comparison and either confirm or call attention to a residual discrepancy.
 
 ### Conceptual extensions
@@ -174,12 +179,10 @@ What the project did add: a substrate-level mechanical (or computational, if the
 
 ### What the project added relative to grid/charge-emergence.md
 
-[grid/charge-emergence.md](../../grid/charge-emergence.md) was candid that its account of the α magnitude was hand-wavey. Chapter 8 of this project does not produce a numerical prediction of α either, but it does give a *specific structural form* — α as the kink-loss fraction per hexagonal-symmetric loop, depending on a single calculable coefficient *K*(1/√2). This is an improvement over charge-emergence.md's framing in that it makes the α-derivation question concrete: the calculation that would either confirm or falsify the cylinder primitive's α contribution is well-defined and bounded in scope.
+[grid/charge-emergence.md](../../grid/charge-emergence.md) was candid that its account of the α magnitude was hand-wavey. Chapter 8 of this project does not improve on that magnitude either, and the analysis it does provide is conditional on prerequisites that have not been satisfied at the *N* of interest. What chapter 8 *does* add is a sharper *target* for a follow-up calculation: a specific candidate physical picture (kink-loss on a closed wrap), a specific calculation that would settle whether the picture is right (matched-chirality scattering plus coherent loop summation), and a specific regime where the calculation is non-trivial (order-unity Δθ, *N* of order few). Whether this constitutes an improvement over charge-emergence.md depends on whether the follow-up calculation is performed and what it produces; this project does not settle the question.
 
 ### Closing thought
 
-The project's primary deliverable was a primitive substrate that properly models EM and gravity at the lattice scale. That has been delivered, with the full chapter-by-chapter derivation and three confirming numerical tests. The α question was equal-priority but separate, with calibrated expectations: a deeper structural understanding was the realistic best case, and that is what the project produced.
+The project's primary deliverable was a primitive substrate that properly models EM and gravity at the lattice scale. That has been delivered, with the full chapter-by-chapter analysis and three confirming numerical tests for the gravity scaling. The α question was equal-priority but separate, with calibrated expectations. The outcome there is more modest than the "deeper structural understanding" hope of the original calibration: the analysis identified a candidate picture and a sharpened follow-up target, but did not establish a controlled structural form for α at the lattice configuration of interest.
 
-The cylinder primitive is one specific hypothesis about what the GRID lattice's substrate looks like at the next level of detail. Other primitives are possible — the dialog [`dialogs/grid-3.md`](../../dialogs/grid-3.md) brainstormed several. This project committed to one, worked through its consequences, and showed that it is consistent with what GRID requires from a substrate. Whether it is *the* right substrate, or one of several that could work equally well, is a question the project does not settle. What it does settle is that there exists at least one viable foundational picture for what sits below the cell-level abstractions of GRID's existing derivations.
-
-That is the project's contribution.
+The cylinder primitive is one specific hypothesis about what the GRID lattice's substrate looks like at the next level of detail. Other primitives are possible — the dialog [`dialogs/grid-3.md`](../../dialogs/grid-3.md) brainstormed several. This project committed to one, worked through its consequences for Maxwell and gravity, and arrived at an inconclusive but well-targeted result for α. Whether it is *the* right substrate, or one of several that could work equally well, is a question the project does not settle.
