@@ -43,6 +43,8 @@ So the rule is automatically Kirchhoff-conserving for uniform fields *regardless
 
 In simulation: 100-step Gaussian-perturbation test on a 14×14 hex torus shows energy ratio 0.96× (essentially flat); 80-step directional wavefront test shows ratio 2.05× (bounded oscillation). The wavefront-test slight-growth comes from the IC matched to a v-i model's wavefront, not perfectly natural to RelCos-both's compact-dial paradigm; sustained dial-aware drives may show tighter conservation.
 
+**Failure mode: Dirichlet pinning.** When source and sink nodes are pinned to constant values (the gravity-style static-field test), RelCos-both is *unstable*: energy diverges 60,000× over 800 steps and the time-averaged field bears no resemblance to the analytical Laplacian solution. The likely cause is that the pinned dial directions break the cos sum-to-zero property at the boundary nodes — at a pinned node the dial is held fixed instead of relaxing, so the implicit conservation no longer applies. Free-wave propagation is fine; static-source / static-defect problems are not. This disqualifies RelCos-both for gravity-style emergence tests.
+
 ## 3D extension
 
 In 3D, v becomes a direction on the 2-sphere S² rather than the circle S¹. Parameterize v as either (polar, azimuth) or as a unit 3-vector. Each edge has a fixed 3-vector direction θ_e. The cos weighting becomes the dot product of the dial unit-vector and the edge unit-vector:
