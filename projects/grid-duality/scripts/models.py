@@ -145,43 +145,10 @@ def _node_signed_sum_cos_relative(v, i, lattice):
     return ((lattice.M * cos_mat) @ i)
 
 
-class RelativeCosNode(Telegrapher):
-    """Variant A: cos on node update only (relative to v); plain edge update."""
-
-    name = "relcos-node"
-
-    def update(self, state, lattice):
-        v = state["v"]
-        i = state["i"]
-        delta = _node_signed_sum_cos_relative(v, i, lattice)
-        v_new = (v + delta) % TWO_PI
-        diff_pb = _principal_branch(v_new[lattice.tails] - v_new[lattice.heads])
-        i_new = i + diff_pb
-        return {"v": v_new, "i": i_new}
-
-
-class RelativeCosEdge(Telegrapher):
-    """Variant B: plain node update; cos on edge update (relative to v at each endpoint).
-
-    Edge update reads each endpoint's phase-distance scaled by cos(θ − v_end):
-        e_new = e + (φ(v_tail) · cos(θ − v_tail) − φ(v_head) · cos(θ − v_head))
-    where φ(v) is the principal-branch reading of v in (−π, π], so that v
-    is treated as a phase amplitude, not a raw [0, 2π) value.
-    """
-
-    name = "relcos-edge"
-
-    def update(self, state, lattice):
-        v = state["v"]
-        i = state["i"]
-        delta = lattice.M @ i
-        v_new = (v + delta) % TWO_PI
-        v_tail = v_new[lattice.tails]
-        v_head = v_new[lattice.heads]
-        amp_tail = _phase_distance(v_tail) * np.cos(lattice.theta - v_tail)
-        amp_head = _phase_distance(v_head) * np.cos(lattice.theta - v_head)
-        i_new = i + (amp_tail - amp_head)
-        return {"v": v_new, "i": i_new}
+# Note: the cos-on-one-phase variants (RelativeCosNode and RelativeCosEdge)
+# were tested during development and confirmed unstable in 2D. They are
+# documented in models/relcos-both.md as failure modes. Removed here to keep
+# the active model set clean.
 
 
 class RelativeCosBoth(Telegrapher):
@@ -202,3 +169,86 @@ class RelativeCosBoth(Telegrapher):
         amp_head = _phase_distance(v_head) * np.cos(lattice.theta - v_head)
         i_new = i + (amp_tail - amp_head)
         return {"v": v_new, "i": i_new}
+
+
+# ---------- Scattering (sim-maxwell paradigm) ----------
+
+class Scattering(Model):
+    """sim-maxwell-style scattering. State on edges only — (a_fwd, a_bwd) per edge.
+    No per-node state. Single-phase clock with unitary scattering matrix
+    S = (2/N)·J − I at each vertex, where N is the local coordination.
+
+    Reference: grid/sim-maxwell/run_hex.py.
+    """
+
+    name = "scattering"
+
+    def init_state(self, lattice):
+        # Cache lattice for paradigm-translation observables and perturbations
+        self._lattice = lattice
+        return {
+            "a_fwd": np.zeros(lattice.n_edges),
+            "a_bwd": np.zeros(lattice.n_edges),
+        }
+
+    def update(self, state, lattice):
+        a_fwd = state["a_fwd"]
+        a_bwd = state["a_bwd"]
+        M = lattice.M
+
+        # Incoming at each (node, edge): a_fwd if M=+1 (head), a_bwd if M=-1 (tail).
+        is_head = (M > 0)
+        is_tail = (M < 0)
+        incoming = (
+            np.where(is_head, a_fwd[None, :], 0.0)
+            + np.where(is_tail, a_bwd[None, :], 0.0)
+        )
+
+        total_per_node = incoming.sum(axis=1)
+        coord_safe = np.maximum(lattice.coord, 1.0)
+        # outgoing[n, e] = (2/N_n) · total_n − incoming[n, e]
+        outgoing = (
+            (2.0 / coord_safe[:, None]) * total_per_node[:, None] - incoming
+        ) * np.abs(M)
+
+        # New a_fwd at edge e = outgoing at tail vertex
+        # New a_bwd at edge e = outgoing at head vertex
+        idx = np.arange(lattice.n_edges)
+        new_a_fwd = outgoing[lattice.tails, idx]
+        new_a_bwd = outgoing[lattice.heads, idx]
+        return {"a_fwd": new_a_fwd, "a_bwd": new_a_bwd}
+
+    def perturb_node(self, state, idx, value):
+        """Translate a 'node-level v perturbation' to scattering state.
+
+        v_per_edge ≈ a_fwd + a_bwd. Adding `value` to v_per_edge on every
+        incident edge means adding value/2 to each of a_fwd and a_bwd there.
+        """
+        L = self._lattice
+        new_fwd = state["a_fwd"].copy()
+        new_bwd = state["a_bwd"].copy()
+        for ei in range(L.n_edges):
+            if L.M[idx, ei] != 0:
+                new_fwd[ei] += value / 2.0
+                new_bwd[ei] += value / 2.0
+        return {"a_fwd": new_fwd, "a_bwd": new_bwd}
+
+    def perturb_edge(self, state, idx, value):
+        """Add value to the forward amplitude on this edge."""
+        new_fwd = state["a_fwd"].copy()
+        new_fwd[idx] += value
+        return {"a_fwd": new_fwd, "a_bwd": state["a_bwd"]}
+
+    def node_observable(self, state):
+        """v-equivalent: average of (a_fwd + a_bwd) over incident edges per node."""
+        L = self._lattice
+        v_per_edge = state["a_fwd"] + state["a_bwd"]
+        return (np.abs(L.M) @ v_per_edge) / L.coord
+
+    def edge_observable(self, state):
+        """i-equivalent: a_fwd − a_bwd (current in tail-to-head direction)."""
+        return state["a_fwd"] - state["a_bwd"]
+
+    def total_energy(self, state):
+        """Wave-amplitude energy: 0.5 · Σ (a_fwd² + a_bwd²)."""
+        return 0.5 * (np.sum(state["a_fwd"] ** 2) + np.sum(state["a_bwd"] ** 2))

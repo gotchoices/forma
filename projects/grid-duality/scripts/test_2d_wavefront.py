@@ -20,9 +20,8 @@ from engine import make_2d_hex_torus
 from models import (
     Telegrapher,
     NormalizedTelegrapher,
-    RelativeCosNode,
-    RelativeCosEdge,
     RelativeCosBoth,
+    Scattering,
 )
 
 
@@ -30,9 +29,8 @@ OUTDIR = os.path.join(os.path.dirname(__file__), "output")
 os.makedirs(OUTDIR, exist_ok=True)
 
 
-def run_simulation(model, lattice, perturbation_fn, n_steps):
-    state = model.init_state(lattice)
-    state = perturbation_fn(model, state)
+def run_simulation_with_initial_state(model, lattice, initial_state, n_steps):
+    state = initial_state
     n_obs = [model.node_observable(state).copy()]
     energies = [model.total_energy(state)]
     for _ in range(n_steps):
@@ -45,43 +43,50 @@ def run_simulation(model, lattice, perturbation_fn, n_steps):
     }
 
 
-def perturb_2d_wavefront(amplitude=0.3, k=0.6, direction_deg=0.0, envelope_width=3.0):
-    """Launch a Gaussian-enveloped sinusoidal wavefront in `direction_deg`.
+def init_directional_wavefront(model, lattice, amplitude=0.3, k=0.6,
+                               direction_deg=0.0, envelope_width=3.0):
+    """Initialize a Gaussian-enveloped sinusoidal wavefront moving in
+    `direction_deg`. Dispatches to per-model native state representation:
 
-    The wavefront's perpendicular extent is the full lattice; its longitudinal
-    extent is the Gaussian envelope width. Edge currents are matched in
-    amplitude (same sign as v, projected onto the edge's geometric direction)
-    so the wave should propagate forward without backward-ghost components.
+    - Telegrapher / Normalized / RelCos*: matched v on nodes and i on edges
+      (i = A · env · cos(k · along) · projection).
+    - Scattering: matched (a_fwd, a_bwd) per edge such that
+      a_fwd + a_bwd = v_per_edge and a_fwd − a_bwd = i_per_edge.
     """
     direction = np.deg2rad(direction_deg)
     k_hat = np.array([np.cos(direction), np.sin(direction)])
+    state = model.init_state(lattice)
+    center = lattice.positions.mean(axis=0)
 
-    def _factory(lattice):
-        center = lattice.positions.mean(axis=0)
+    # Per-edge envelope and amplitude
+    edge_along = np.empty(lattice.n_edges)
+    for ei in range(lattice.n_edges):
+        tail_pos = lattice.positions[lattice.tails[ei]]
+        disp_edge = lattice.edge_displacements[ei]
+        edge_pos = tail_pos + 0.5 * disp_edge
+        edge_along[ei] = float(np.dot(edge_pos - center, k_hat))
+    edge_env = np.exp(-edge_along ** 2 / (2.0 * envelope_width ** 2))
+    edge_v = amplitude * edge_env * np.cos(k * edge_along)
+    edge_proj = np.cos(lattice.theta - direction)
+    edge_i = edge_v * edge_proj
 
-        def _fn(model, state):
-            # Node values: v(r) = A · env(along) · cos(k · along)
-            for ni in range(lattice.n_nodes):
-                disp = lattice.positions[ni] - center
-                along = float(np.dot(disp, k_hat))
-                env = np.exp(-along ** 2 / (2.0 * envelope_width ** 2))
-                value = amplitude * env * np.cos(k * along)
-                state = model.perturb_node(state, ni, value)
+    if isinstance(model, Scattering):
+        # a_fwd = (v + i) / 2;  a_bwd = (v − i) / 2  per edge.
+        return {
+            "a_fwd": (edge_v + edge_i) / 2.0,
+            "a_bwd": (edge_v - edge_i) / 2.0,
+        }
 
-            # Edge currents: matched amplitude × cos(θ − direction)
-            for ei in range(lattice.n_edges):
-                tail_pos = lattice.positions[lattice.tails[ei]]
-                disp_edge = lattice.edge_displacements[ei]
-                edge_pos = tail_pos + 0.5 * disp_edge
-                disp_from_center = edge_pos - center
-                along = float(np.dot(disp_from_center, k_hat))
-                env = np.exp(-along ** 2 / (2.0 * envelope_width ** 2))
-                projection = float(np.cos(lattice.theta[ei] - direction))
-                value = amplitude * env * np.cos(k * along) * projection
-                state = model.perturb_edge(state, ei, value)
-            return state
-        return _fn
-    return _factory
+    # v-i paradigm: set v on nodes, i on edges directly.
+    for ni in range(lattice.n_nodes):
+        disp = lattice.positions[ni] - center
+        along = float(np.dot(disp, k_hat))
+        env = np.exp(-along ** 2 / (2.0 * envelope_width ** 2))
+        value = amplitude * env * np.cos(k * along)
+        state = model.perturb_node(state, ni, value)
+    for ei in range(lattice.n_edges):
+        state = model.perturb_edge(state, ei, edge_i[ei])
+    return state
 
 
 def plot_2d_results(history, lattice, title, filename, snapshot_indices=None):
@@ -139,22 +144,20 @@ def main():
     print(f"Steps: {n_steps}, wave direction: {direction_deg}°")
     print()
 
-    perturbation_factory = perturb_2d_wavefront(
-        amplitude=0.3, k=0.6, direction_deg=direction_deg, envelope_width=3.0
-    )
-
     energy_traces = {}
     for ModelCls in [
         Telegrapher,
         NormalizedTelegrapher,
-        RelativeCosNode,
-        RelativeCosEdge,
         RelativeCosBoth,
+        Scattering,
     ]:
         model = ModelCls()
         print(f"--- Model: {model.name} ---")
-        perturbation_fn = perturbation_factory(lattice)
-        history = run_simulation(model, lattice, perturbation_fn, n_steps)
+        initial_state = init_directional_wavefront(
+            model, lattice,
+            amplitude=0.3, k=0.6, direction_deg=direction_deg, envelope_width=3.0,
+        )
+        history = run_simulation_with_initial_state(model, lattice, initial_state, n_steps)
         e0, eF = history["energy"][0], history["energy"][-1]
         print(f"  energy: {e0:.4f} → {eF:.4f}  (ratio {eF / max(e0, 1e-12):.2f}×)")
         plot_2d_results(

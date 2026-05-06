@@ -24,9 +24,8 @@ from engine import make_2d_hex_torus
 from models import (
     Telegrapher,
     NormalizedTelegrapher,
-    RelativeCosNode,
-    RelativeCosEdge,
     RelativeCosBoth,
+    Scattering,
 )
 
 
@@ -138,9 +137,8 @@ def main():
     for ModelCls in [
         Telegrapher,
         NormalizedTelegrapher,
-        RelativeCosNode,
-        RelativeCosEdge,
         RelativeCosBoth,
+        Scattering,
     ]:
         model = ModelCls()
         print(f"--- Model: {model.name} ---")

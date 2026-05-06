@@ -36,13 +36,17 @@ The lattice has two structural primitive types:
 
 Edges have **polarity** (head and tail), set when placed in the lattice. Edge orientations across the lattice are standardized in a common direction (1D rightward; 2D hex three-direction; 3D analog deferred).
 
-Beyond this substrate, the *state* held at each primitive type and the *update rules* governing their dynamics are **model-dependent**. Different candidate models make different choices, and bounding choices in particular have structural consequences. The principal candidates:
+Beyond this substrate, the *state* held at each primitive type and the *update rules* governing their dynamics are **model-dependent**. Different candidate models make different choices, and bounding choices in particular have structural consequences. After an initial round of 2D simulation, the **active candidates** are:
 
-- **Telegrapher** ([models/telegrapher.md](models/telegrapher.md)) — across variable bounded on nodes (U(1)); through variable unbounded on edges (ℝ). Topological invariants are *node-loop windings* (Higgs-matter-field flavor).
-- **Gauge** ([models/gauge.md](models/gauge.md)) — level unbounded on nodes (ℝ); gauge field bounded on edges (U(1)). Topological invariants are *plaquette flux* on edge cycles (Wilson-loop / lattice gauge flavor). Distinct from Telegrapher because the bounding is on the other lattice structure.
-- **Scattering** ([models/scattering.md](models/scattering.md)) — (a_fwd, a_bwd) on edges; no node state; single-phase clock; scattering matrix S = (2/N)·J − I at vertices. This is grid/sim-maxwell's model.
-- **Normalized telegrapher** ([models/normalized.md](models/normalized.md)) — Telegrapher with 1/N factor on the node update for CFL stability at any coordination.
-- **cos-weighted** ([models/cos-weighted.md](models/cos-weighted.md)) — grid-lab's v2 rule. Included for reference; expected to fail at coord 3.
+- **Telegrapher** ([models/telegrapher.md](models/telegrapher.md)) — across variable bounded on nodes (U(1)); through variable unbounded on edges (ℝ); two-phase clock with signed-sum at nodes. *Kept as the baseline failure mode at coord > 2 — pedagogically useful contrast.*
+- **Normalized telegrapher** ([models/normalized.md](models/normalized.md)) — Telegrapher with 1/N factor on the node update; an explicit CFL-stabilization tweak. **Stable in 2D, primary contender.**
+- **RelCos-both** ([models/relcos-both.md](models/relcos-both.md)) — cos-weighted node update **and** edge update, with cos taken relative to the node's dial direction. The cos sum-to-zero property of N evenly-spaced edge angles gives implicit current conservation. **Stable in 2D, primary contender.**
+- **Scattering** ([models/scattering.md](models/scattering.md)) — (a_fwd, a_bwd) on edges; no node state; single-phase clock; scattering matrix S = (2/N)·J − I at vertices. Unitary by construction — exact energy conservation per step. This is grid/sim-maxwell's model. **Stable in 2D, primary contender; bridge to grid is implicit.**
+
+Two further candidates have been **deferred or scrapped**:
+
+- **Gauge** — different state structure (compact gauge field on edges, real on nodes). Implementation requires more thought on the sin(A) coupling form. *Deferred until a later round if the active candidates leave open questions.*
+- **cos-weighted (grid-lab v2)** — fixed-angle cos node update. *Scrapped:* the cos-on-one-phase failure mode is already documented (RelCos-node and RelCos-edge variants tried during development both diverge in 2D within ~10 steps). Spec retained for reference but no longer actively tested.
 
 Each candidate is a full self-contained model: state + clock + update rules. Chapter 2 specifies each precisely. Chapter 3 defines the test bench (standardized inputs, observables, and signal translation between paradigms). Chapter 4 runs the comparison and selects a winner. Chapters 5 onwards build on the winning model.
 
@@ -117,26 +121,25 @@ projects/grid-duality/
 ├── README.md                       this file
 ├── couplet.md                      lessons from prior project
 ├── 01-foundation.md                lattice substrate
-├── 02-candidate-models.md          model overview / tour
-├── 03-test-bench.md                tests and observables
-├── 04-model-comparison.md          comparison results, winner selection
-├── 05-…                            chapters using the winning model
+├── 02-candidate-models.md          model overview / tour (TODO)
+├── 03-test-bench.md                tests and observables (TODO)
+├── 04-model-comparison.md          comparison results, winner selection (TODO)
+├── 05-…                            chapters using the winning model (TODO)
 ├── models/                         per-model specifications
 │   ├── telegrapher.md
-│   ├── telegrapher-dual.md
-│   ├── scattering.md
 │   ├── normalized.md
-│   └── cos-weighted.md
+│   ├── relcos-both.md              ← primary candidate, stable in 2D
+│   ├── scattering.md
+│   ├── gauge.md                    (deferred)
+│   └── cos-weighted.md             (scrapped — kept for reference)
 └── scripts/
-    ├── engine.py                   common lattice engine
-    ├── models/                     Python implementations of each model
-    ├── tests/                      standardized test scripts
-    ├── translate.py                signal translation between paradigms
-    ├── harness.py                  master comparison runner
-    └── output/                     results, plots, JSON metrics
+    ├── engine.py                   lattice engine (1D ring, 2D hex torus)
+    ├── models.py                   Python implementations of each model
+    ├── test_pulse.py               1D pulse test (delta, Gaussian, traveling wave)
+    ├── test_2d_pulse.py            2D Gaussian-perturbation comparison
+    ├── test_2d_wavefront.py        2D directional-wavefront comparison
+    └── output/                     plots and notes
 ```
-
-The split between `models/*.md` (specifications) and `scripts/models/*.py` (implementations) is deliberate: the markdown describes the model's physical content; the Python is the executable form. Each pair stays in sync.
 
 ## Chapters
 
