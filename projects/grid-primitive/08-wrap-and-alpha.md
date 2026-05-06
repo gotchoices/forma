@@ -10,7 +10,7 @@ The honest expectation is calibrated:
 - α as an *interesting ratio* tying it to specific lattice structure would be valuable.
 - α resolving to *two or more* independent free variables would suggest the cylinder primitive hasn't added meaningful new insight beyond what was already in [grid/charge-emergence.md](../../grid/charge-emergence.md).
 
-A summary upfront, since the result is conditional. We attempt the derivation along the polygonal-wrap formulation from [`dialogs/grid-3.md`](../../dialogs/grid-3.md). Two limitations of that approach surface in §4 — the (Δθ)² perturbative expansion is not controlled at *N* = 6, and the assumed incoherent-kink-summation rule does not apply to a coherent closed loop. Both are the regime relevant to α. The chapter therefore arrives at an *inconclusive* result: a candidate physical picture for α (a kink-loss fraction on a closed wrap) and a sharpened target for a future calculation, but no controlled structural form for α at the *N* of interest. We mark the leading-order expressions as conditional throughout and collect the limitations explicitly in §9.
+A summary upfront, since the result is conditional. We attempt the derivation along the polygonal-wrap formulation from [`dialogs/grid-3.md`](../../dialogs/grid-3.md). Two limitations of that approach surface in §4 — the (Δθ)² perturbative expansion is not controlled at *N* = 6, and the assumed incoherent-kink-summation rule does not apply to a coherent closed loop. Both are the regime relevant to α. The chapter therefore arrives at an *inconclusive* result: a candidate physical picture for α (a kink-loss fraction on a closed wrap) and a sharpened target for a future calculation, but no controlled structural form for α at the *N* of interest. We mark the leading-order expressions as conditional throughout and collect the limitations explicitly in §10.
 
 ---
 
@@ -26,8 +26,9 @@ A summary upfront, since the result is conditional. We attempt the derivation al
 | 6 | What α turns out to be |
 | 7 | Counting free variables |
 | 8 | What we've learned |
-| 9 | Risks and caveats |
-| 10 | Summary of givens |
+| 9 | The fractal recursion: another wrap one level down |
+| 10 | Limitations |
+| 11 | Summary of givens |
 
 ---
 
@@ -130,7 +131,7 @@ Substituting *N* = 6 into the leading-order formula:
 
 α ~ 4π² *K*(χ̃) / 6 = (2π²/3) · *K*(χ̃)        *(leading-order, conditional)*
 
-For χ̃ tentatively at the natural midpoint 1/√2 (chapter 2 §7's geometric-center argument):
+For χ̃ tentatively at the natural midpoint 1/√2 (chapter 2 §7's arithmetic-midpoint argument):
 
 α ~ (2π²/3) · *K*(1/√2)        *(leading-order, conditional)*
 
@@ -200,7 +201,7 @@ The α exercise has produced something more modest than the chapter originally f
 
 ---
 
-## 8.5. The fractal recursion: another wrap one level down
+## 9. The fractal recursion: another wrap one level down
 
 A brief observation that ties this chapter to the foundation. The cylinder primitive itself, viewed under the fractal-microgrid interpretation (chapter 1 §8), is a wrapped 2D microgrid — a sheet of microgrid wrapped into a tube of cross-section circumference 2π*r*. This is *another* 2π wrap, one fractal level below the sheet wrap that this chapter examines.
 
@@ -214,7 +215,7 @@ These observations are qualitative — they explain why the cross-section wrap d
 
 ---
 
-## 9. Limitations
+## 10. Limitations
 
 The following are *limitations* of the chapter's analysis, not just downstream risks. Most are flagged inline above; collected here for clarity.
 
@@ -223,19 +224,19 @@ The following are *limitations* of the chapter's analysis, not just downstream r
 - **Lattice-level kink model is not specified.** The "polygonal wrap" is described at the level of "*N* flat segments joined at *N* kinks of angle Δθ." How that maps to a concrete modification of the hexagonal-lattice cylinder primitive — which edges are bent, what matching conditions apply at the bend, what radiated channels exist — is not pinned down in this chapter. Without that specification the §3 calculation is not yet well-posed.
 - **Whether *K* depends only on χ̃ is asserted, not shown.** Step 4 of the §3 calculation outline (integrate over radiated channels) is what would determine whether *K* is a function of χ̃ alone or whether it carries additional dependence on *N* or local kink geometry. This step is not performed.
 - ***N* = 6 is a lattice-symmetry choice, not a physics-pinned value.** A MaSt-style charge-bearing torus might have a different *N* set by particle-specific structure, in which case α would have residual *N*-dependence beyond the lattice-symmetry choice.
-- **χ̃ = 1/√2 is a "natural midpoint" choice, not a derived value.** Chapter 2 §7 explicitly states that nothing in chapter 2 alone pins χ̃; the geometric-center argument identifies 1/√2 as natural, not necessary. Treating it as fixed in this chapter's α expression is a working choice, not a result.
+- **χ̃ = 1/√2 is a "natural midpoint" choice, not a derived value.** Chapter 2 §7 explicitly states that nothing in chapter 2 alone pins χ̃; the arithmetic-midpoint argument identifies 1/√2 as natural, not necessary. Treating it as fixed in this chapter's α expression is a working choice, not a result.
 - **The polygonal approximation may miss continuous-bend physics.** Even if the per-kink picture were controlled at *N* = 6, the lattice could have continuous-curvature contributions that the polygonal limit treats incorrectly.
 - **The chapter does not commit to a specific MaSt particle.** The sheet-into-torus wrap is meant to correspond to MaSt-style particle structure, but no specific particle (electron, proton, etc.) is identified. The connection between "this wrap geometry" and "α as measured for the electron" is therefore not pinned; α might in principle depend on which particle's wrap is being considered.
 
 ---
 
-## 10. Summary of givens
+## 11. Summary of givens
 
 What this chapter establishes:
 
 - A *candidate physical picture* for α: the per-loop fractional energy loss when a 2D sheet of cylinder primitives is wrapped into a closed polygonal surface.
 - A *concrete target* for a future calculation: the matched-chirality scattering problem at a lattice-level kink, summed coherently around an *N*-kink closed loop.
-- A leading-order formula η_loop ≈ 4π²*K*(χ̃)/*N* that *would*, if controlled, reduce α to a single calculable coefficient *K*(1/√2). The chapter does not establish that the formula is controlled at *N* = 6 — see §4 and §9 for the explicit limitations.
+- A leading-order formula η_loop ≈ 4π²*K*(χ̃)/*N* that *would*, if controlled, reduce α to a single calculable coefficient *K*(1/√2). The chapter does not establish that the formula is controlled at *N* = 6 — see §4 and §10 for the explicit limitations.
 
 What this chapter does *not* establish:
 

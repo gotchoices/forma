@@ -30,7 +30,23 @@ The 2D periodic lattice we work with is the **hexagonal (honeycomb) lattice** �
 
 The two "sublattices" of the honeycomb (the A-sublattice and the B-sublattice, where each A-node connects to three B-nodes and vice versa) form a 2-site unit cell. Each unit cell has 1 A-node, 1 B-node, and 3 edges — and each edge has 2 cylinder DoF (*e*, *φ*) — giving 6 DoF per unit cell.
 
-Why hexagonal? Per [grid/hexagonal.md](../../grid/hexagonal.md):
+### Continuity at a wye junction
+
+Chapter 1 §5 stated that nodes impose continuity of the stress vector at endpoints of meeting cylinders. At a wye junction, three cylinders meet at 120°, so the continuity rule needs a moment of attention.
+
+The cylinder's azimuthal direction *φ* is defined relative to a *local cross-section frame* — a choice of "where φ = 0 points" specific to that cylinder's geometry. Three cylinders meeting at 120° each carry their own local frame, and those frames are not the same. The polar coordinates (*e*, *φ*) of cylinder A's stress vector at the junction therefore do *not* equal the (*e*, *φ*) of cylinder B's stress vector at the same junction in numerical value, even when the two stress vectors agree as physical objects.
+
+So the continuity rule is on the **underlying stress vector ψ** — the 2D real vector in the cross-sectional plane, expressed in some shared lab frame:
+
+> At each node, the three incident cylinders' endpoint stress vectors all coincide as elements of the same 2D vector space.
+
+Equivalently: pick a lab frame at the node; convert each cylinder's local (*e*, *φ*) into the lab-frame (ψ_R, ψ_I); require those (ψ_R, ψ_I) values to match. Each cylinder's local-frame (*e*, *φ*) is then determined by the shared lab-frame ψ via the standard rotation between local frame and lab frame.
+
+This rule reduces to "(*e*_A, *φ*_A) = (*e*_B, *φ*_B)" only when adjacent cylinders share a common cross-section frame (e.g., in the chapter-2 single-edge analysis where two cylinders meet end-to-end along the same axis). At a general wye junction the rule must be expressed in lab-frame components.
+
+### Why hexagonal
+
+Per [grid/hexagonal.md](../../grid/hexagonal.md):
 
 - The hexagonal lattice has cleaner wave propagation than triangular (89% transmitted per junction vs 56%; each junction is a 3-port wye instead of a 6-port crossing).
 - It is flexible: hexagons can deform with fixed edge lengths, supporting curvature through pentagonal defects.

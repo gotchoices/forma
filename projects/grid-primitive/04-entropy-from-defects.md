@@ -138,17 +138,29 @@ Anything that satisfies ∇²ψ = 0 with a localized source carries this logarit
 
 ## 4. The cylinder primitive in equilibrium satisfies the 2D Laplace equation
 
-The next step is to show that the cylinder primitive on a 2D lattice has its stress vector field satisfy this same Laplace equation in equilibrium. The argument is short.
+The next step is to show that the cylinder primitive on a 2D lattice has its stress vector field satisfy this same Laplace equation in equilibrium. The argument is short, but it requires being careful about which coordinates we work in.
 
-Chapter 2 §2 gave the wave equation for a single 1D cylinder:
+### A note on coordinates: linearization around a non-zero background
 
-*D* ∂_t² **u** = *M* ∂_x² **u**
+Chapters 1–2 set up the cylinder primitive with two fields *e(x, t)* (stress magnitude) and *φ(x, t)* (azimuthal direction), parameterizing a 2D internal stress vector ψ in polar form. Chapter 2's wave equation *D* ∂_t² **u** = *M* ∂_x² **u** with **u** = (*e*, *φ*)ᵀ is the small-perturbation linearization in those polar coordinates. For a polar linearization to be well-defined the background magnitude must be non-zero — there must be some equilibrium ψ₀ with |ψ₀| ≠ 0 around which the small fluctuations (δ*e*, δ*φ*) are taken. (At ψ₀ = 0 the polar parameterization is singular and the linear theory in (*e*, *φ*) does not apply.)
 
-where **u** = (ψ_R, ψ_I), *D* is the 2 × 2 inertia matrix, and *M* is the 2 × 2 stiffness matrix. Generalizing this to a 2D lattice — bonds going both in the *x* direction and the *y* direction, each carrying the same stiffness *M* — the equation becomes:
+For this chapter's analysis we therefore *assume* such a background is present — a state in which the lattice carries a non-zero stress vector field — and work with small fluctuations around it. This is the natural regime: a localized inclusion (the next paragraph's setup) is precisely a place where ψ takes a definite non-zero value, so the surrounding lattice acquires a non-zero stress-vector field, and small-fluctuation analysis around that field is well-defined.
+
+Around such a background, polar fluctuations (δ*e*, δ*φ*) and Cartesian fluctuations (δψ_R, δψ_I) are related by a fixed linear transformation (the tangent-space basis change at ψ₀):
+
+δψ_R = cos(φ₀)·δ*e* − e₀ sin(φ₀)·δ*φ*,  δψ_I = sin(φ₀)·δ*e* + e₀ cos(φ₀)·δ*φ*
+
+Because this is a linear change of basis, the linear wave equation transforms covariantly: the matrix *M* in the (*e*, *φ*) basis becomes some matrix *M*' in the (ψ_R, ψ_I) basis (and similarly *D* → *D*'), with *M*' positive-definite iff *M* is. **The static-Laplacian argument does not depend on which basis we use** — *M*' is invertible iff *M* is, so multiplying the static equation *M*' ∇²**u**' = 0 by (*M*')⁻¹ gives ∇²**u**' = 0 component-wise, exactly as in (*e*, *φ*).
+
+For the rest of this chapter we therefore work in whichever basis is more convenient. The simulations in §7 use the Cartesian basis (pinning ψ = (1, 0) at an inclusion is exactly the kind of non-zero background the linearization needs); the analytical arguments are basis-independent.
+
+### The static Laplacian
+
+Generalizing chapter 2's 1D wave equation to a 2D lattice — bonds going both in the *x* direction and the *y* direction, each carrying the same stiffness *M* — the equation becomes:
 
 *D* ∂_t² **u** = *M* (∂_x² + ∂_y²) **u** = *M* ∇² **u**
 
-(Here ∇² = ∂_x² + ∂_y² is the 2D Laplacian; we treat the lattice in its long-wavelength continuum limit for this argument.)
+(Here ∇² = ∂_x² + ∂_y² is the 2D Laplacian; we treat the lattice in its long-wavelength continuum limit for this argument. **u** is the 2-component fluctuation field — either (δ*e*, δ*φ*) or (δψ_R, δψ_I) — at every spatial point.)
 
 In static equilibrium, the time-derivative term vanishes:
 

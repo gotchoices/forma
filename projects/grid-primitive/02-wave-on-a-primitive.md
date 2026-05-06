@@ -14,9 +14,9 @@ The math runs through coupled second-order PDEs, an eigenvalue problem, and a di
 | 2 | Equations of motion from Newton's law on a slice |
 | 3 | Looking for wave solutions: the sinusoidal trial |
 | 4 | Two propagation speeds: the dispersion relation |
-| 5 | The two natural modes: how strain and direction combine |
+| 5 | Polarizations: how strain and direction combine in the propagating wave |
 | 6 | Stability boundary and the degenerate limit χ̃ → 1 |
-| 7 | The natural shear value χ̃ = 1/√2 |
+| 7 | A natural midpoint: χ̃ = 1/√2 |
 | 8 | Left-going and right-going waves travel at equal speeds |
 | 9 | Linear superposition: pulses pass through each other |
 | 10 | Summary of givens |
@@ -225,17 +225,19 @@ These are independent uncoupled waves: a stretch wave that doesn't twist, and a 
 
 This is the cylinder primitive without chirality. It is not yet what we want — chapter 2's hypothesis is that *K_eφ* > 0 is what supports coupled wave behavior — but it is a useful baseline to compare to.
 
-### General case: with matched chirality
+### General case: with matched chirality and bare-speed equality
 
 Turn *K_eφ* back on. By the matched-chirality commitment of chapter 1 §8, the cross-inertia *D_eφ* is also non-zero, with both controlled by the single chirality parameter χ̃:
 
 *K_eφ* = χ̃ √(*K_ee* *K_φφ*),    *D_eφ* = χ̃ √(ρ *I_φ*)
 
-This has a striking algebraic consequence. With matched chirality, *M* and *D* have the same off-diagonal *structure*, and they are proportional to each other when the bare-speed condition
+The clean wave-dynamics result we are about to derive requires a *second* commitment of the cylinder primitive, on equal footing with matched chirality: the **bare-speed equality** of the two diagonal channels:
 
 *K_ee*/ρ = *K_φφ*/*I_φ* ≡ *c*²
 
-holds (where *c* is the bare propagation speed common to both channels — chapter 3 will identify this with the lattice signal speed). Under both conditions:
+This says: the longitudinal channel's "uncoupled natural speed" √(*K_ee*/ρ) and the azimuthal channel's "uncoupled natural speed" √(*K_φφ*/*I_φ*) are equal, and we name their common value *c*. Identification of this *c* with the lattice signal speed (GRID axiom A1) is taken up in chapter 3; here, bare-speed equality is the model assumption that enables the derivation. Without it, the two channels' diagonal speeds would differ and the eigenvalue problem of §3 would split into two distinct propagation speeds even with matched chirality. We carry both postulates — matched chirality and bare-speed equality — alongside each other from this point on.
+
+With both in hand, *M* and *D* are proportional throughout:
 
 <!-- M = c² D -->
 $$
@@ -246,7 +248,7 @@ To see this directly: with *K_ee* = *c*² ρ and *K_φφ* = *c*² *I_φ*, the di
 
 *K_eφ* = χ̃ √(*K_ee* *K_φφ*) = χ̃ √(*c*² ρ · *c*² *I_φ*) = *c*² · χ̃ √(ρ *I_φ*) = *c*² *D_eφ*
 
-so *K_eφ* = *c*² *D_eφ*. The two matrices are proportional throughout.
+so *K_eφ* = *c*² *D_eφ*. Matched chirality alone gives the off-diagonal proportionality; bare-speed equality gives the diagonal proportionality. Together they give *M* = *c*² *D*.
 
 ### What *M* = *c*² *D* does to the dispersion
 
@@ -273,17 +275,23 @@ The cylinder propagates at a single speed *c*, with no preferred polarization. B
 
 ### Why this matters
 
-This is the key consequence of matched chirality for the wave dynamics. Without it (with *D* diagonal), the cylinder would have produced two propagating modes at different speeds — chiral splitting, like optical activity in a sugar solution. *With* matched chirality, the two modes degenerate at *c*, exactly as vacuum Maxwell expects for the two photon polarizations.
+This is the consequence of matched chirality + bare-speed equality for the wave dynamics. Drop either postulate and the picture changes:
+
+- **Drop matched chirality** (independent off-diagonal terms in *M* and *D*): two propagating modes at different speeds — chiral splitting, like optical activity in a sugar solution.
+- **Drop bare-speed equality** (different diagonal ratios): again two distinct propagation speeds, now from the diagonal mismatch alone, even with matched chirality.
+- **Keep both:** *M* = *c*² *D*, the two modes degenerate at *c*, exactly as vacuum Maxwell expects for the two photon polarizations.
+
+Both postulates are doing structural work. Calling out only one would understate what the cylinder primitive is being asked to satisfy.
 
 The cylinder primitive is not a chiral medium in the propagation sense (no birefringence, no slow mode); it is a chirally-coupled medium where the chirality enters internally (in how the channels interact at any given point) but does not split the propagation speeds.
 
 A useful physical analog: in optics, a chiral medium splits left- and right-circular polarizations into different speeds (optical activity). The cylinder primitive is *not* such a medium. It is the chirally-coupled analog of vacuum, where both polarizations propagate at *c* despite the underlying chiral structure.
 
-### Without matched chirality
+### Without matched chirality + bare-speed equality
 
-For completeness, if matched chirality fails (independent chiralities in *D* and *M*), the analysis returns the two-eigenvalue problem of an earlier draft of this chapter — eigenvalues λ_± of *D*⁻¹*M*, with two distinct propagation speeds *c*_± = √λ_±. The earlier algebraic form (a quadratic in λ with discriminant determining the split) is the general case; matched chirality is the special case where the discriminant happens to vanish in such a way that the two eigenvalues coincide at *c*².
+For completeness, if either postulate fails the analysis returns the two-eigenvalue problem of an earlier draft of this chapter — eigenvalues λ_± of *D*⁻¹*M*, with two distinct propagation speeds *c*_± = √λ_±. The earlier algebraic form (a quadratic in λ with discriminant determining the split) is the general case; matched chirality + bare-speed equality together are the special case where the discriminant vanishes and the two eigenvalues coincide at *c*².
 
-The cylinder primitive *commits* to matched chirality; the general two-speed case is not the model we are working with.
+The cylinder primitive *commits* to both; the general two-speed case is not the model we are working with.
 
 ---
 
@@ -346,13 +354,13 @@ So the χ̃ < 1 condition is a stability requirement in its own right (positive-
 
 ---
 
-## 7. The natural shear value χ̃ = 1/√2
+## 7. A natural midpoint: χ̃ = 1/√2
 
-The stable range χ̃ ∈ (0, 1) is wide; nothing in §6 prefers any value of χ̃ over any other. To find a *natural* point in this range, we look for the geometric center.
+The stable range χ̃ ∈ (0, 1) is wide; nothing in §6 prefers any value of χ̃ over any other. To find a *natural* point in this range, we look for the value at which the chiral coupling sits at the midpoint between "absent" and "at the stability ceiling."
 
-The geometric mean of 0 and 1 — equivalently, the point halfway between them on a logarithmic scale — corresponds to *K_eφ*² being half the way to its stability ceiling *K_ee* · *K_φφ*:
+The relevant quantity is *K_eφ*², which ranges from 0 (no chiral coupling) to *K_ee* · *K_φφ* (the stability ceiling). Its arithmetic midpoint is
 
-*K_eφ*² = (½) *K_ee* · *K_φφ*
+*K_eφ*² = ½ *K_ee* · *K_φφ*
 
 Equivalently, χ̃² = 1/2, so
 
@@ -361,17 +369,17 @@ $$
 \tilde{\chi} = \frac{1}{\sqrt{2}} \approx 0.707
 $$
 
-What this point means structurally:
+(A historical note on the labeling: earlier drafts called this point the "geometric mean" of {0, 1} or the "equipartition" value. Both names are inaccurate. The geometric mean of 0 and 1 is √(0·1) = 0, not 1/√2. "Equipartition" usually means equal kinetic and potential energy contributions to a mode; the value 1/√2 is not derived from such an equipartition argument here. The correct characterization is *the value at which K_eφ² is the arithmetic midpoint of its stable range* — that is what χ̃ = 1/√2 actually picks out.)
 
-- The chiral coupling is well-engaged (χ̃ is well away from zero, so the two channels are genuinely coupled — the cylinder is a coupled-wave medium, not two unrelated channels).
-- The stability margin is substantial (χ̃ is well below 1, so neither *M* nor *D* is anywhere near singular).
+What this midpoint means structurally:
+
+- The chiral coupling is well-engaged: χ̃ is well away from zero, so the two channels are genuinely coupled and the cylinder is a coupled-wave medium rather than two unrelated channels.
+- The stability margin is substantial: χ̃ is well below 1, so neither *M* nor *D* is near singular.
 - The determinants are exactly half their diagonal products: det(*M*) = ½ *K_ee* *K_φφ*, det(*D*) = ½ ρ *I_φ*.
 
-Under matched chirality, the value χ̃ = 1/√2 does *not* affect the propagation speed — both polarizations propagate at *c* throughout the stable range, by the matched-chirality result of §4. What χ̃ affects is the *internal coupling strength* between the channels: how strongly a perturbation in one channel drives a response in the other. At χ̃ = 1/√2, this coupling is "well-tuned" — neither so weak that the channels are effectively independent, nor so strong that the medium is near instability.
+Under matched chirality + bare-speed equality, the value χ̃ = 1/√2 does *not* affect the propagation speed — both polarizations propagate at *c* throughout the stable range, by the result of §4. What χ̃ affects is the *internal coupling strength* between the channels: how strongly a perturbation in one channel drives a response in the other. At χ̃ = 1/√2, the coupling is "well-tuned" in the arithmetic-midpoint sense.
 
-The χ̃ = 1/√2 value is sometimes referred to as an "equipartition" or "impedance-matched" point in the literature. The mathematical content is the geometric-mean argument above; the physical interpretations don't change the value.
-
-A note on what this does and does not establish. The geometric-mean argument identifies χ̃ = 1/√2 as the *natural* value in the parameter space — but does not *force* the cylinder primitive to sit there. Nothing in chapter 2 alone pins χ̃ to any particular value within (0, 1). The further question of whether the lattice signal speed *c* (from GRID axiom A1) supplies an additional constraint that pins χ̃ is taken up in the next chapter.
+A note on what this does and does not establish. The midpoint argument identifies χ̃ = 1/√2 as a *natural* value in the parameter space — but does not *force* the cylinder primitive to sit there. Nothing in chapter 2 alone pins χ̃ to any particular value within (0, 1). The further question of whether the lattice signal speed *c* (from GRID axiom A1) supplies an additional constraint that pins χ̃ is taken up in the next chapter.
 
 ---
 
@@ -430,10 +438,10 @@ The cylinder primitive's wave dynamics, established in this chapter:
 - The cylinder's energy density has two parts: kinetic (from time-derivatives of the fields, weighted by the inertia matrix *D*) and elastic (from spatial gradients, weighted by the stiffness matrix *M*). Both matrices are non-diagonal under the matched-chirality commitment of chapter 1 §8.
 - Newton's law applied to a slice of cylinder gives a coupled pair of linear second-order PDEs for *e* and *φ*, written compactly as *D* ∂_t² **u** = *M* ∂_x² **u**.
 - The sinusoidal trial **u** = **A** *e^{i(kx − ωt)}* reduces the PDE to ω² *D* **A** = *k*² *M* **A**.
-- Under matched chirality plus bare-speed equality (*K_ee*/ρ = *K_φφ*/*I_φ* = *c*²), the matrices satisfy *M* = *c*² *D*. The eigenvalue problem then has a single eigenvalue *c*² with every direction in (*A_e*, *A_φ*)-space being an eigenvector. The dispersion is single-branch: ω = *c* |*k*|.
+- Under **two** postulates of equal status — matched chirality (chapter 1 §8) and bare-speed equality (*K_ee*/ρ = *K_φφ*/*I_φ* = *c*², introduced in §4 of this chapter) — the matrices satisfy *M* = *c*² *D*. The eigenvalue problem then has a single eigenvalue *c*² with every direction in (*A_e*, *A_φ*)-space being an eigenvector. The dispersion is single-branch: ω = *c* |*k*|. Drop either postulate and the two-speed split returns.
 - Both polarizations of the cylinder's stress vector — and any combination of them — propagate at the same speed *c*. The cylinder is the chirally-coupled analog of vacuum: chirality at the internal-coupling level, no birefringence at the propagation level.
 - Stability requires χ̃ ∈ (0, 1) strictly — bounded above by simultaneous singularity of *M* and *D*. Both modes propagate at *c* throughout the stable range.
-- The geometric mean of the stable range is χ̃ = 1/√2 ≈ 0.707 — a natural midpoint at which the chiral coupling is well-engaged but the stability margin is substantial. Under matched chirality, χ̃ governs internal coupling strength, not propagation speed.
+- A natural midpoint of the stable range is χ̃ = 1/√2 ≈ 0.707 — the value at which K_eφ² sits at the arithmetic midpoint of (0, K_ee K_φφ), so the chiral coupling is well-engaged and the stability margin is substantial. Under matched chirality + bare-speed equality, χ̃ governs internal coupling strength, not propagation speed. (This midpoint is *natural*, not forced; chapter 2 alone does not pin χ̃ to a specific value.)
 - The dispersion ω² depends on *k* only through *k*², so left-going and right-going waves propagate at identical speeds. The cylinder is direction-symmetric (no Faraday effect).
 - The wave equations are linear, so any two solutions can be superposed. Two opposing pulses pass through each other and emerge with original waveforms intact.
 

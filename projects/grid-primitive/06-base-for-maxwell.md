@@ -101,11 +101,11 @@ For grid/maxwell.md's derivation to run, *local gauge invariance* (axiom A4) is 
 
 The cylinder primitive has exactly this symmetry, by construction. The stress vector ψ in the (*e*, *φ*) plane is the physical object; the polar coordinates (*e*, *φ*) are *one parameterization* of that vector. A different choice of where φ = 0 points — a different polar frame at any point — gives different (*e*, *φ*) values for the same physical ψ. This is a U(1) gauge symmetry built into the cylinder primitive.
 
-Under a local relabeling *φ*(*x*) → *φ*(*x*) + χ(*x*), the gradient ∂_μ *φ* shifts by ∂_μ χ. This is exactly the transformation rule for a gauge connection. Defining *A_μ* via §4 (*A_μ* = ∂_μ *φ* / *e*, in the standard normalization), we get:
+Under a local relabeling *φ*(*x*) → *φ*(*x*) + χ(*x*), the gradient ∂_μ *φ* shifts by ∂_μ χ. This is exactly the transformation rule for a gauge connection. Defining *A_μ* via §4 (*A_μ* = ∂_μ *φ* / *q*, with *q* the elementary charge from axiom A6 — we use *q* in this chapter to avoid colliding with the cylinder primitive's *e* field), we get:
 
-*A_μ* → *A_μ* + (1/*e*) ∂_μ χ
+*A_μ* → *A_μ* + (1/*q*) ∂_μ χ
 
-— exactly grid/maxwell.md's gauge-transformation rule (where *e* is the elementary charge from axiom A6, not our *e* field — the notation collision is unfortunate but standard).
+— exactly grid/maxwell.md's gauge-transformation rule, with *q* playing the role usually written as "*e*" in the QED literature.
 
 The cylinder primitive's chirality structure (matched chirality between *M* and *D*) is preserved under this transformation: a local rotation of the polar coordinate frame doesn't change the underlying stress vector field's structure, so the matched-chirality condition that the cylinder primitive's wave dynamics rely on is gauge-invariant.
 
@@ -113,23 +113,23 @@ This means the cylinder primitive *automatically* has the local gauge symmetry t
 
 ---
 
-## 6. The two polarizations as Maxwell's photon
+## 6. The two polarizations and Maxwell's photon
 
-Chapter 5 §3 established that on the 2D hexagonal lattice, with matched chirality giving *M* = *c*² *D*, the dispersion relation is single-branch: ω(**k**) = *c* |**k**| for any amplitude vector. Both polarizations propagate at *c*.
+Chapter 5 §3 established that on the 2D hexagonal lattice, with matched chirality and bare-speed equality giving *M* = *c*² *D*, the dispersion relation is single-branch: ω(**k**) = *c* |**k**| for any amplitude vector. Both polarizations propagate at *c*.
 
-In Maxwell's framing on a 2D space:
-- A photon has 1 transverse polarization (perpendicular to its propagation direction in the 2D plane).
-- The longitudinal/Coulomb component of the gauge field is non-radiative (gauge-fixable, no propagation).
+This is *not* directly the structure of 2+1D Maxwell. In 2+1D Maxwell, a photon propagating in a given direction has only **one** transverse polarization (perpendicular to its propagation direction in the 2D plane), plus a non-radiative longitudinal/Coulomb mode that is fixed by sources rather than propagating. So 2+1D Maxwell expects 1 propagating mode, while the cylinder primitive's 2D lattice has 2.
 
-The cylinder primitive's two-polarization structure on the 2D lattice has two propagating modes both at *c*. Mapped to Maxwell:
-- One polarization corresponds to the transverse photon (the radiative degree of freedom).
-- The other polarization corresponds to the longitudinal/scalar gauge component (the non-radiative Coulomb potential).
+The cleanest reading of this mismatch is that the cylinder primitive's two propagating modes are best understood as the analogs of the *two transverse photon polarizations* of 3+1D Maxwell — not as "1 transverse + 1 Coulomb in 2+1D." The 2D restriction of this project misses the third (Coulomb) channel rather than splitting the photon's polarization budget across the existing two.
 
-In Coulomb gauge (∇ · **A** = 0), the longitudinal component is fixed by sources and does not propagate as a wave. The cylinder primitive's two modes both propagate at *c*, but at the level of *physical* (gauge-fixed) propagating degrees of freedom, only the transverse mode is the photon. The longitudinal mode is the static Coulomb potential, also propagating at *c* in the ungauged formulation but reduced to its gauge-fixed equivalent (a non-radiative source-determined field) in the physical theory.
+This reading is consistent with the structural arc of the project:
 
-This identification is consistent with chapter 4's static result: the 2D Laplacian Green's function (1/r force in 2D) is exactly the Coulomb potential of 2+1D Maxwell. The cylinder primitive at static equilibrium is producing the Coulomb component; at dynamic equilibrium it produces the transverse photon. Both are in the same wave equation, and both propagate at *c* in our model — consistent with vacuum Maxwell.
+- In 3+1D Maxwell, a photon has 2 transverse polarizations (both radiative at *c*) plus 1 non-radiative Coulomb mode.
+- The cylinder primitive on a 3D lattice (the natural extension of this project, deferred to follow-up per ground rule 7) would supply 3 modes per cell: 2 carrying the transverse polarizations and 1 carrying a separate Coulomb-channel role.
+- This project's 2D restriction supplies 2 of those 3 modes — the two transverse polarizations — without yet supplying the Coulomb channel. The two cylinder modes propagating at *c* are the lattice-scale realization of the two photon polarizations; the Coulomb channel emerges only when the spatial lattice is extended to 3D.
 
-For higher-dimensional generalizations: in 3+1D Maxwell, the photon has 2 transverse polarizations (both radiative), and the longitudinal/scalar potential is non-radiative. A 3D extension of the cylinder primitive lattice (cylinders along edges of a 3D lattice) would supply 3 photon modes per cell, of which 2 are transverse and 1 is longitudinal — the standard Maxwell structure. This extension is outside chapter 6's scope but is the natural next step.
+Chapter 4's static result fits this reading. The 2D Laplacian Green's function (1/r force in 2D) is the static-limit response of the cylinder primitive's two transverse fields. In standard Maxwell the static 1/r law would come from the Coulomb channel, but in this project's 2D restriction the same 1/r structure is produced by the same wave equation that supplies the transverse polarizations — there is no separate Coulomb sector to maintain the distinction. When the project extends to 3D, the static and dynamic responses will sit in different sectors (Coulomb vs transverse) and the standard Maxwell structure recovers.
+
+So the §3 and §4 identifications (φ ↔ θ at nodes; ∂_μ φ ↔ A_μ along edges) supply the inputs for the *transverse* sector of grid/maxwell.md cleanly, and grid/maxwell.md's transverse-photon derivation runs unchanged on top. The Coulomb sector of grid/maxwell.md is not directly supplied by this project's 2D primitive lattice; that supply requires the 3D extension.
 
 ---
 
@@ -141,8 +141,8 @@ For higher-dimensional generalizations: in 3+1D Maxwell, the photon has 2 transv
 - At each lattice node, the value of ψ is the cell-level state; the phase *φ* is the cell phase θ that grid/maxwell.md uses.
 - Along each edge, the variation of *φ* is the link-level gauge connection *A_μ* that grid/maxwell.md uses.
 - The cylinder primitive automatically has local U(1) gauge invariance from the polar-coordinate structure of the stress vector.
-- The two polarizations propagate at *c*, matching Maxwell's photon (with the longitudinal component being non-radiative under gauge fixing).
-- The wave equation of chapter 2 (with matched chirality giving single propagation speed *c*) reduces in the long-wavelength limit to Maxwell's wave equation in vacuum.
+- The two polarizations propagate at *c*, matching the *two transverse polarizations* of a 3+1D photon (the project's 2D restriction does not yet supply the Coulomb sector — see §6).
+- The wave equation of chapter 2 (with matched chirality + bare-speed equality giving single propagation speed *c*) reduces in the long-wavelength limit to the transverse-sector wave equation of Maxwell.
 
 ### What grid/maxwell.md takes from here
 
@@ -168,7 +168,7 @@ What this chapter establishes:
 - At lattice nodes, *φ* is the cell phase θ that grid/maxwell.md takes as input.
 - Along lattice edges, ∂_μ *φ* is the gauge connection *A_μ* that grid/maxwell.md takes as input.
 - Local U(1) gauge invariance is built into the cylinder primitive at the foundation level (the polar-coordinate freedom on the stress vector field).
-- The matched-chirality condition (chapter 1 §8) makes both polarizations propagate at *c*; in Maxwell, this corresponds to the transverse photon (radiative) and the longitudinal/Coulomb component (non-radiative under gauge fixing) both propagating at *c* in the ungauged formulation.
-- grid/maxwell.md's derivation runs unchanged on top of this lattice setup. The cylinder primitive supplies its inputs; Maxwell's equations follow.
+- Matched chirality + bare-speed equality (chapters 1 §8 and 2 §4) make both polarizations propagate at *c*. The cleanest reading of the two cylinder modes is as the lattice-scale analogs of the *two transverse photon polarizations* of 3+1D Maxwell, not as "transverse + Coulomb in 2+1D" (which would mismatch — 2+1D Maxwell expects only 1 propagating mode per direction). The Coulomb channel is missing from this project's 2D restriction; supplying it requires the 3D extension (ground rule 7, deferred to follow-up).
+- grid/maxwell.md's derivation runs unchanged on top of the *transverse* sector this project supplies. The Coulomb sector is not yet supplied at the 2D level.
 
 The next chapter takes up the gravity-coefficient calculation: matching the cylinder primitive's continuum Green's-function coefficient to GRID's geometrically-derived ζ.

@@ -15,7 +15,7 @@ The chapter is paced deliberately slowly. Once a definition is set here it is us
 | 1 | The lattice, the primitive, and where this project sits |
 | 2 | The cylinder's geometry (length, radius, transit time) |
 | 3 | The two fields: strain *e(x, t)* and azimuthal phase *φ(x, t)* |
-| 4 | Boundedness — why *φ* is compact and *e* is not |
+| 4 | The shape of the field: coordinates, winding, and three candidate entropy structures |
 | 5 | Nodes as passive continuity boundaries |
 | 6 | The stiffness matrix M |
 | 7 | The shear coupling *K_eφ* |
@@ -271,7 +271,7 @@ The viz remains a useful intuition tool for direct propagation (left-going pulse
 
 ---
 
-## 9. What is taken as input from GRID
+## 10. What is taken as input from GRID
 
 The project assumes — and does not re-derive — the following from [grid/foundations.md](../../grid/foundations.md):
 
@@ -283,7 +283,9 @@ The project assumes — and does not re-derive — the following from [grid/foun
 | Cell-level periodic phase θ ∈ [0, 2π) | Axiom A3 |
 | Local gauge invariance and connection A_μ on links | Axiom A4 |
 | Information-resolution parameter ζ = 1/4 per cell | Axiom A5 |
-| Coupling α ≈ 1/137 | Axiom A6 |
+| Coupling α ≈ 1/137 (numerical value) | Axiom A6 |
+
+A clarifying note on α. The *numerical value* α ≈ 1/137 is taken from axiom A6 as input. Whether the cylinder primitive's geometry illuminates the *form* of α (as a kink-loss fraction on a wrapped sheet) is a separate question taken up in chapter 8. That question turns out to be inconclusive at the lattice configuration of interest (see chapter 8 §4 and §9), so the cylinder primitive does not currently improve on A6's status as input.
 
 The "4D causal lattice" entry in the table refers to the GRID lattice as a whole — the spacetime structure on which Maxwell and gravity are derived. This project's primitive (the cylinder) is *dimensionally agnostic*: the same primitive can be assembled into 1D chains, 2D sheets, or 3D lattices, with only the connection topology of the nodes changing. The 1D chain is an intuition aid; the 2D sheet is what MaSt-style compact dimensions wrap into; the 3D lattice is what the spatial extent S is built from. Ground rule 7 commits the project to working in 2D periodic configurations as the minimum sufficient setting; lower dimensions are toys, and 3D is a natural extension once 2D is established.
 
