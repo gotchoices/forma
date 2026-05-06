@@ -29,7 +29,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 from engine import make_2d_hex_torus
-from models import NormalizedTelegrapher, Scattering
+from models import NormalizedTelegrapher, RelativeCosBoth, Scattering
 
 from test_2d_static_field import (
     torus_distances, pin_state, run_with_pins, rescaled_match,
@@ -102,10 +102,11 @@ def main():
     interior_mask[source_a] = False  # exclude pinned points themselves
     interior_mask[source_b] = False
 
-    fig, axes = plt.subplots(2, 4, figsize=(20, 9))
+    model_classes = [NormalizedTelegrapher, RelativeCosBoth, Scattering]
+    fig, axes = plt.subplots(len(model_classes), 4, figsize=(20, 4.5 * len(model_classes)))
 
     summary = {}
-    for row, ModelCls in enumerate([NormalizedTelegrapher, Scattering]):
+    for row, ModelCls in enumerate(model_classes):
         model = ModelCls()
         print(f"--- Model: {model.name} ---")
 

@@ -3,7 +3,7 @@
 **Type:** Educational project (see [../README.md](../README.md))
 **Scope:** A digital-first model of the GRID lattice with two structural primitive types — node and edge. The project does not pre-commit to a specific update rule or state structure; instead, it tests several **candidate models** against a standardized **test bench** and selects the one with the best combination of stability and fidelity to grid's existing simulations. sim-maxwell's model is one of the candidates, so the historical "bridge to grid" question becomes implicit in the model selection.
 **Method:** Mathematical derivation as discovery; computational verification via head-to-head model comparison; minimum verbosity.
-**Status:** Framing complete. Awaiting first chapter.
+**Status:** Chapters 1–4 complete. Verdict: Scattering is the substrate's dynamics; gravity emerges from the substrate's graph Laplacian directly. See [04-model-comparison.md](04-model-comparison.md).
 
 ## Why this project exists
 
@@ -38,10 +38,10 @@ Edges have **polarity** (head and tail), set when placed in the lattice. Edge or
 
 Beyond this substrate, the *state* held at each primitive type and the *update rules* governing their dynamics are **model-dependent**. Different candidate models make different choices, and bounding choices in particular have structural consequences. After an initial round of 2D simulation, the **active candidates** are:
 
-- **Telegrapher** ([models/telegrapher.md](models/telegrapher.md)) — across variable bounded on nodes (U(1)); through variable unbounded on edges (ℝ); two-phase clock with signed-sum at nodes. *Kept as the baseline failure mode at coord > 2 — pedagogically useful contrast.*
-- **Normalized telegrapher** ([models/normalized.md](models/normalized.md)) — Telegrapher with 1/N factor on the node update; an explicit CFL-stabilization tweak. **Stable in 2D, primary contender. Passes gravity test: per-node match to analytical Laplacian R²=1.0, force law |∇v|(r) ∝ r⁻¹·⁰¹⁷ matches the 2D Newton analog. *Strongly dispersive* — group velocity drops from 0.7 at low k to 0 at k=π (standard leapfrog dispersion).**
-- **RelCos-both** ([models/relcos-both.md](models/relcos-both.md)) — cos-weighted node update **and** edge update, with cos taken relative to the node's dial direction. The cos sum-to-zero property of N evenly-spaced edge angles gives implicit current conservation. *Stable for free wave propagation in 2D, but unstable under Dirichlet pinning (static-field test) — energy diverges 60,000× over 800 steps. Disqualified for gravity-style static problems.*
-- **Scattering** ([models/scattering.md](models/scattering.md)) — (a_fwd, a_bwd) on edges; no node state; single-phase clock; scattering matrix S = (2/N)·J − I at vertices. Unitary by construction — exact energy conservation per step. This is grid/sim-maxwell's model. **Stable in 2D, primary contender; bridge to grid is implicit. *Perfectly non-dispersive* in 1D — group velocity v_g = 1.0 for all k (the digital signature of light). *Caveat:* under naive node-pinning the static field stays localized near the source (force-law p ≈ −0.6 instead of −1); the Dirichlet BC may need a different formulation in the edge-only paradigm before the gravity test is conclusive for this model.**
+- **Telegrapher** ([models/telegrapher.md](models/telegrapher.md)) — across variable bounded on nodes (U(1)); through variable unbounded on edges (ℝ); two-phase clock with signed-sum at nodes. *Failure mode at coord > 2 — energy diverges ×45,000 in 100 steps on 2D hex. Kept as the contrast that motivates Normalized.*
+- **Normalized telegrapher** ([models/normalized.md](models/normalized.md)) — Telegrapher with 1/N factor on the node update. *Stable, linear, Y-junction within 0.5% of matched-impedance theory but with non-trivial energy drift; strongly dispersive. Static limit IS the graph Laplacian, so its dynamics (with damping) relax to the same gravity field the substrate solve produces directly. Documented as the pedagogically useful baseline, not the winner.*
+- **RelCos-both** ([models/relcos-both.md](models/relcos-both.md)) — cos-weighted node update **and** edge update, with cos taken relative to the node's dial direction. *Stable for free wave propagation in 2D, but unstable under Dirichlet pinning — energy diverges ×60,000. Removed from the active candidate set.*
+- **Scattering** ([models/scattering.md](models/scattering.md)) — (a_fwd, a_bwd) on edges; no node state; single-phase clock; scattering matrix S = (2/N)·J − I at vertices. **The winning model.** Unitary by construction (zero energy drift), perfectly non-dispersive in the regime tested (v_g = 1.000 at every k), matched-impedance Y-junction scattering to four decimals (0.1111 / 0.4444 / 0.4444 vs theory 1/9, 4/9, 4/9). This is grid/sim-maxwell's model — the bridge to grid is the choice itself. Gravity is computed on the substrate's graph Laplacian directly, the same way [grid/sim-gravity-2/run_scalar.py](../../grid/sim-gravity-2/run_scalar.py) does, separately from the dynamics.
 
 Two further candidates have been **deferred or scrapped**:
 
@@ -121,9 +121,9 @@ projects/grid-duality/
 ├── README.md                       this file
 ├── couplet.md                      lessons from prior project
 ├── 01-foundation.md                lattice substrate
-├── 02-candidate-models.md          model overview / tour (TODO)
-├── 03-test-bench.md                tests and observables (TODO)
-├── 04-model-comparison.md          comparison results, winner selection (TODO)
+├── 02-candidate-models.md          model overview / tour
+├── 03-test-bench.md                tests and observables
+├── 04-model-comparison.md          comparison results, winner selection
 ├── 05-…                            chapters using the winning model (TODO)
 ├── models/                         per-model specifications
 │   ├── telegrapher.md
@@ -138,9 +138,10 @@ projects/grid-duality/
     ├── test_pulse.py               1D pulse test (delta, Gaussian, traveling wave)
     ├── test_2d_pulse.py            2D Gaussian-perturbation comparison
     ├── test_2d_wavefront.py        2D directional-wavefront comparison
-    ├── test_2d_static_field.py     2D Dirichlet-pinned static field (gravity-style)
+    ├── test_2d_static_field.py     gravity test (substrate Laplacian + dynamics convergence)
     ├── test_1d_dispersion.py       1D group-velocity sweep (light-vs-medium signature)
-    ├── test_2d_superposition.py    Linearity check: does v_A + v_B = v_AB?
+    ├── test_2d_superposition.py    linearity check: does v_A + v_B = v_AB?
+    ├── test_y_junction.py          Y-tree matched-impedance reflection/transmission
     └── output/                     plots and notes
 ```
 

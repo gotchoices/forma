@@ -81,6 +81,49 @@ def make_1d_periodic(n):
     return Lattice(n, edges, positions, edge_displacements=edge_displacements)
 
 
+def make_y_tree(arm_length):
+    """A Y-junction tree: three linear arms of `arm_length` nodes each
+    meeting at a central coord-3 node.
+
+    Layout: central node at index 0; arm i (i=0,1,2) has nodes
+    `i*arm_length + 1 .. i*arm_length + arm_length`. Edges run from
+    center outward (0 → 1 → 2 → ... along each arm), so the edge
+    direction always points "away from the junction."
+
+    Used for explicit reflection/transmission measurements at a coord-3
+    vertex (the canonical sim-maxwell matched-impedance scattering test:
+    R = −1/3, T = +2/3 per branch).
+    """
+    arm_dirs = [
+        np.array([1.0, 0.0]),
+        np.array([-0.5, np.sqrt(3) / 2]),
+        np.array([-0.5, -np.sqrt(3) / 2]),
+    ]
+    n_nodes = 3 * arm_length + 1
+    positions = np.zeros((n_nodes, 2))
+    edges = []
+    edge_displacements = []
+    for arm_i in range(3):
+        d = arm_dirs[arm_i]
+        for k in range(1, arm_length + 1):
+            node_idx = arm_i * arm_length + k
+            positions[node_idx] = k * d
+        # Spoke edge: center → first arm node
+        first_arm_node = arm_i * arm_length + 1
+        edges.append((0, first_arm_node))
+        edge_displacements.append(d)
+        # Linear chain along the arm
+        for k in range(1, arm_length):
+            tail = arm_i * arm_length + k
+            head = arm_i * arm_length + k + 1
+            edges.append((tail, head))
+            edge_displacements.append(d)
+    return Lattice(
+        n_nodes, edges, positions,
+        edge_displacements=np.array(edge_displacements),
+    )
+
+
 def make_2d_hex_torus(nx, ny):
     """A 2D hexagonal lattice on a torus, with bipartite (A → B) edge orientation.
 

@@ -1,19 +1,26 @@
-"""2D static-field test: 1/r force law from a pinned source.
+"""2D static-field test: gravity emergence from the substrate.
 
-Reproduces grid/sim-gravity-2's static-field test. The continuum 2D Laplacian
-Green's function decays as log(r) from a localized source — equivalently the
-field gradient (force) decays as 1/r. Models compatible with grid's gravity
-emergence story should reproduce this.
+In grid/sim-gravity-2, gravity is computed by solving the graph Laplacian
+on the lattice directly (no time evolution): L·v = 0 with v pinned at a
+defect. The Green's function on a 2D hex graph decays as log(r), giving a
+1/r force law — the 2D analog of Newton. This emergence is a property of
+the *lattice substrate*, not of any particular dynamic update rule. It is
+the same Laplacian regardless of which model lives on the lattice.
 
-Setup: 2D hex torus with a pinned source at the centre AND a pinned sink at
-nodes far from the centre (a "boundary ring" of nodes pinned to zero). This
-gives a well-defined Dirichlet problem on the torus and an unambiguous static
-configuration. We compute it both ways:
+This test has two parts:
 
-  1. Analytical:  solve graph Laplacian L·v = 0 with the same pins. This is
-     the reference "what log decay should look like" on this lattice.
-  2. Dynamic:     run each model with both pins applied every clock step,
-     time-average the field over the second half of the run.
+  PART A — substrate test (paradigm-neutral). Solve the graph Laplacian
+  directly with Dirichlet pins. Verify log(r) potential and 1/r force.
+  This is the reference for what "gravity from the lattice" looks like.
+  Mirrors grid/sim-gravity-2/run_scalar.py's approach.
+
+  PART B — dynamics-convergence check (model-dependent). Does each
+  candidate model's dynamic update, with pins applied every step and a
+  small damping factor, *relax* toward the substrate's static solution?
+  Models whose static limit is the graph Laplacian (e.g., Normalized) do.
+  Models that are unitary wave equations (e.g., Scattering) need not —
+  their dynamics propagate but do not relax. This is informative but not
+  required for gravity emergence; gravity emerges via Part A.
 
 Plot |v|(r) and fit log + power-law decay. Compare each model's dynamic
 result to the analytical Laplacian result.
@@ -233,8 +240,12 @@ def main():
     # Mask of "interior" nodes — used for per-node match comparison.
     interior_mask = (distances >= fit_r_min) & (distances <= fit_r_max)
 
-    # ── Reference: analytical Laplacian solve ────────────────────────
-    print("--- Reference: graph Laplacian solve ---")
+    # ── PART A — Substrate test (paradigm-neutral graph Laplacian) ──
+    print("=== PART A: substrate test (graph Laplacian solve) ===")
+    print("This is the gravity-emergence reference — depends only on the")
+    print("lattice graph, not on any dynamic update rule. Mirrors")
+    print("grid/sim-gravity-2/run_scalar.py's static solve.")
+    print()
     v_ref = laplacian_solve(lattice, pinned_idxs, pinned_vals)
     log_ref = fit_log(distances, np.abs(v_ref), fit_r_min, fit_r_max)
     pwr_ref = fit_power(distances, np.abs(v_ref), fit_r_min, fit_r_max)
@@ -248,7 +259,15 @@ def main():
         print(f"  force fit:  |∇v|(r) = {grad_pwr_ref['C']:.4f}·r^{grad_pwr_ref['p']:+.4f}, R²={grad_pwr_ref['r2']:.4f}  (target p ≈ −1)")
     print()
 
-    # ── Each model: dynamic time-averaged ────────────────────────────
+    # ── PART B — Dynamics-convergence check (per-model) ─────────────
+    print("=== PART B: dynamics-convergence check ===")
+    print("Does each model's update rule, with pins applied every step")
+    print("and small damping, relax toward Part A's static solution? This")
+    print("is *not* a requirement for gravity emergence — gravity comes")
+    print("from Part A on any model's substrate — but it tells us which")
+    print("models have the graph Laplacian as their dynamic static limit.")
+    print()
+
     model_results = {"laplacian-ref": (v_ref, log_ref, pwr_ref, grad_pwr_ref, None)}
     for ModelCls in [NormalizedTelegrapher, RelativeCosBoth, Scattering]:
         model = ModelCls()

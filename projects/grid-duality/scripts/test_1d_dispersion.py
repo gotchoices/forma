@@ -29,7 +29,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 from engine import make_1d_periodic
-from models import NormalizedTelegrapher, Scattering
+from models import NormalizedTelegrapher, RelativeCosBoth, Scattering
 
 
 OUTDIR = os.path.join(os.path.dirname(__file__), "output")
@@ -134,7 +134,7 @@ def main():
     paths_at_kmid = {}
     k_mid_idx = len(ks) // 2
 
-    for ModelCls in [NormalizedTelegrapher, Scattering]:
+    for ModelCls in [NormalizedTelegrapher, RelativeCosBoth, Scattering]:
         model = ModelCls()
         print(f"--- Model: {model.name} ---")
         v_gs = []
