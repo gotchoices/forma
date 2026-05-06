@@ -32,7 +32,7 @@ class Lattice:
         M: ndarray shape (n_nodes, n_edges), the signed incidence matrix
     """
 
-    def __init__(self, n_nodes, edges, positions=None):
+    def __init__(self, n_nodes, edges, positions=None, edge_displacements=None):
         self.n_nodes = int(n_nodes)
         self.n_edges = len(edges)
         self.edges = list(edges)
@@ -53,6 +53,20 @@ class Lattice:
         # Coordination per node = number of incident edges (in or out)
         self.coord = np.abs(M).sum(axis=1)
 
+        # Edge geometric direction θ (radians).
+        # If displacements are provided (e.g., wrapped for a torus), use them;
+        # else compute from raw position differences.
+        if edge_displacements is None:
+            edge_displacements = self.positions[self.heads] - self.positions[self.tails]
+        self.edge_displacements = np.asarray(edge_displacements, dtype=float)
+        if self.edge_displacements.shape[-1] >= 2:
+            self.theta = np.arctan2(
+                self.edge_displacements[:, 1],
+                self.edge_displacements[:, 0],
+            )
+        else:
+            self.theta = np.zeros(self.n_edges)
+
 
 def make_1d_periodic(n):
     """A 1D periodic ring of n nodes connected by n right-pointing edges.
@@ -62,7 +76,9 @@ def make_1d_periodic(n):
     """
     edges = [(i, (i + 1) % n) for i in range(n)]
     positions = np.array([[i, 0.0] for i in range(n)], dtype=float)
-    return Lattice(n, edges, positions)
+    # All edges point in the +x direction (including the wraparound edge).
+    edge_displacements = np.tile(np.array([[1.0, 0.0]]), (n, 1))
+    return Lattice(n, edges, positions, edge_displacements=edge_displacements)
 
 
 def make_2d_hex_torus(nx, ny):
@@ -95,12 +111,22 @@ def make_2d_hex_torus(nx, ny):
             positions[B_idx(i, j)] = origin + d_AB
 
     # Edges: each A connects to 3 B's. All edges A → B (bipartite orientation).
+    # Displacement vectors per edge are computed from the *unwrapped*
+    # neighbor offsets so they reflect the short-image direction even
+    # when the edge wraps around the torus.
     edges = []
+    edge_displacements = []
+    # Local displacements from any A to its three B-neighbors:
+    disp_same = d_AB
+    disp_left = -a1 + d_AB
+    disp_below = -a2 + d_AB
+
     for j in range(ny):
         for i in range(nx):
             A = A_idx(i, j)
-            edges.append((A, B_idx(i, j)))           # B in same cell
-            edges.append((A, B_idx(i - 1, j)))       # B in cell to the left
-            edges.append((A, B_idx(i, j - 1)))       # B in cell below
+            edges.append((A, B_idx(i, j)));     edge_displacements.append(disp_same)
+            edges.append((A, B_idx(i - 1, j))); edge_displacements.append(disp_left)
+            edges.append((A, B_idx(i, j - 1))); edge_displacements.append(disp_below)
 
-    return Lattice(n_nodes, edges, positions)
+    edge_displacements = np.array(edge_displacements)
+    return Lattice(n_nodes, edges, positions, edge_displacements=edge_displacements)

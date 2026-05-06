@@ -124,3 +124,81 @@ class NormalizedTelegrapher(Telegrapher):
         diff_pb = _principal_branch(v_new[lattice.tails] - v_new[lattice.heads])
         i_new = i + diff_pb
         return {"v": v_new, "i": i_new}
+
+
+# ---------- Relative-cos variants ---------------------------------------------
+#
+# Experimental candidates exploring the user's "compass dial" intuition:
+# the node has a dial direction v ∈ [0, 2π); each edge has a fixed geometric
+# direction θ (the line direction in space, pointing tail → head); the cos
+# of (θ − v) acts as a directional weight.
+#
+# Polarity factor s_e (+1 head-here, −1 tail-here) is included so that at a
+# head node the contribution flips sign relative to the tail node — this is
+# necessary because θ is a property of the edge as a line in space (same at
+# both endpoints), not a per-endpoint angle.
+
+def _node_signed_sum_cos_relative(v, i, lattice):
+    """Σ_k s_k · i_k · cos(θ_k − v_node) per node, vectorised."""
+    # Broadcasting: cos has shape (n_nodes, n_edges); M (signs) has same shape.
+    cos_mat = np.cos(lattice.theta[None, :] - v[:, None])
+    return ((lattice.M * cos_mat) @ i)
+
+
+class RelativeCosNode(Telegrapher):
+    """Variant A: cos on node update only (relative to v); plain edge update."""
+
+    name = "relcos-node"
+
+    def update(self, state, lattice):
+        v = state["v"]
+        i = state["i"]
+        delta = _node_signed_sum_cos_relative(v, i, lattice)
+        v_new = (v + delta) % TWO_PI
+        diff_pb = _principal_branch(v_new[lattice.tails] - v_new[lattice.heads])
+        i_new = i + diff_pb
+        return {"v": v_new, "i": i_new}
+
+
+class RelativeCosEdge(Telegrapher):
+    """Variant B: plain node update; cos on edge update (relative to v at each endpoint).
+
+    Edge update reads each endpoint's phase-distance scaled by cos(θ − v_end):
+        e_new = e + (φ(v_tail) · cos(θ − v_tail) − φ(v_head) · cos(θ − v_head))
+    where φ(v) is the principal-branch reading of v in (−π, π], so that v
+    is treated as a phase amplitude, not a raw [0, 2π) value.
+    """
+
+    name = "relcos-edge"
+
+    def update(self, state, lattice):
+        v = state["v"]
+        i = state["i"]
+        delta = lattice.M @ i
+        v_new = (v + delta) % TWO_PI
+        v_tail = v_new[lattice.tails]
+        v_head = v_new[lattice.heads]
+        amp_tail = _phase_distance(v_tail) * np.cos(lattice.theta - v_tail)
+        amp_head = _phase_distance(v_head) * np.cos(lattice.theta - v_head)
+        i_new = i + (amp_tail - amp_head)
+        return {"v": v_new, "i": i_new}
+
+
+class RelativeCosBoth(Telegrapher):
+    """Variant C: cos relative to v on both phases."""
+
+    name = "relcos-both"
+
+    def update(self, state, lattice):
+        v = state["v"]
+        i = state["i"]
+        # Node update with cos weighting
+        delta = _node_signed_sum_cos_relative(v, i, lattice)
+        v_new = (v + delta) % TWO_PI
+        # Edge update with cos weighting
+        v_tail = v_new[lattice.tails]
+        v_head = v_new[lattice.heads]
+        amp_tail = _phase_distance(v_tail) * np.cos(lattice.theta - v_tail)
+        amp_head = _phase_distance(v_head) * np.cos(lattice.theta - v_head)
+        i_new = i + (amp_tail - amp_head)
+        return {"v": v_new, "i": i_new}

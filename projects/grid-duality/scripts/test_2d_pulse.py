@@ -21,7 +21,13 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 from engine import make_2d_hex_torus
-from models import Telegrapher, NormalizedTelegrapher
+from models import (
+    Telegrapher,
+    NormalizedTelegrapher,
+    RelativeCosNode,
+    RelativeCosEdge,
+    RelativeCosBoth,
+)
 
 
 OUTDIR = os.path.join(os.path.dirname(__file__), "output")
@@ -117,7 +123,7 @@ def plot_2d_results(history, lattice, title, filename, snapshot_indices=None):
 
 def main():
     nx, ny = 14, 14
-    n_steps = 36
+    n_steps = 100
 
     lattice = make_2d_hex_torus(nx, ny)
     print(f"Lattice: 2D hex torus, {nx}×{ny} cells "
@@ -128,7 +134,14 @@ def main():
 
     perturbation_factory = gaussian_at_center(amplitude=0.5, width=1.5)
 
-    for ModelCls in [Telegrapher, NormalizedTelegrapher]:
+    energy_traces = {}
+    for ModelCls in [
+        Telegrapher,
+        NormalizedTelegrapher,
+        RelativeCosNode,
+        RelativeCosEdge,
+        RelativeCosBoth,
+    ]:
         model = ModelCls()
         print(f"--- Model: {model.name} ---")
         perturbation_fn = perturbation_factory(lattice)
@@ -141,7 +154,23 @@ def main():
             f"{model.name} on 2D hex torus ({nx}×{ny}): Gaussian perturbation",
             f"{model.name}-2d-gaussian.png",
         )
+        energy_traces[model.name] = history["energy"]
         print()
+
+    # Summary plot of energy traces (log-y for fair comparison)
+    fig, ax = plt.subplots(figsize=(10, 5))
+    for name, e in energy_traces.items():
+        ax.semilogy(e, label=name, linewidth=1.4)
+    ax.set_xlabel("clock step")
+    ax.set_ylabel("total energy (log scale)")
+    ax.set_title(f"Energy vs time, all candidates, 2D hex torus ({nx}×{ny})")
+    ax.legend(loc="best", fontsize=9)
+    ax.grid(alpha=0.3)
+    plt.tight_layout()
+    out = os.path.join(OUTDIR, "energy-comparison.png")
+    plt.savefig(out, dpi=120, bbox_inches="tight")
+    plt.close()
+    print(f"wrote {out}")
 
 
 if __name__ == "__main__":
