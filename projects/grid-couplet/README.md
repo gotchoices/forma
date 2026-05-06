@@ -27,11 +27,9 @@ MaSt (particles, masses, charges)
 GRID lattice (Maxwell, gravity, charge-emergence, ζ)
    ↑
 grid-couplet (this project)        ← parallel to grid-primitive
-   ↑
-[fractal recursion below the working scale — acknowledged, not pursued]
 ```
 
-Same layer as grid-primitive, different model: analog-first cylinder vs. digital-first point/edge/dial. Both feed the same GRID lattice abstractions; both stop at their respective working scales. grid-primitive's distributed cylinder primitive is what one obtains, under coarse-graining, by closing grid-couplet's couplet chains into dials — the two models converge structurally even though one is analog-first and the other digital-first.
+Same layer as grid-primitive, different model. grid-primitive's analog-first cylinder primitive has physical dimensions: its length L sets the lattice signal speed c via the cylinder's transit time τ = L/c, so the model has a metric scale built in. grid-couplet's digital-first model treats edge length as logical, not topological — edges are graph-edges (connectivity plus stored state), and propagation speed is set by the clock cadence (one couplet per cycle). The two models converge structurally — grid-primitive's distributed cylinder is what one obtains, under coarse-graining, by closing grid-couplet's couplet chains into dials — but they handle scale differently, and grid-couplet correspondingly does not require any sub-scale recursion below its primitives.
 
 If the project lands cleanly, a natural outgrowth is to extend grid-lab so it can render 2D dial sheets wrapped as tori (matching the chapter-7 setup).
 
@@ -39,7 +37,7 @@ If the project lands cleanly, a natural outgrowth is to extend grid-lab so it ca
 
 1. **Discovery, not proof.** Mathematics that *yields* results, not asserts them. Where a result is already known, the chapter arc should still let the math reveal it.
 
-2. **Stop at the working scale.** The fractal recursion below the structural primitives is acknowledged but not opened. (Chapter 7's α question is the exception: thickness can be consequential at the working scale even without opening the recursion.)
+2. **No required sub-scale.** Points are 0D, edges are 1D — these are the model's structural primitives. Edge length is logical, not topological; nothing inside points or edges is required by the model. The thickness question that arises in chapter 7's α discussion is a separate modeling decision about whether wraps fold across emergent extent, not a question about opening any sub-scale recursion.
 
 3. **Variables stay symbolic.** Don't pin numerical values until the algebra forces it.
 
@@ -65,13 +63,13 @@ Claims to examine — derived where possible, stated explicitly when taken as in
 
 4. **The dial is the natural lattice node.** In a 2D hex tiling, each lattice vertex is a 2D dial whose connection multiplicity matches the lattice coordination (3 in hex), per [grid/hexagonal.md](../../grid/hexagonal.md), giving ζ_2D = 1/3.
 
-5. **The junction is a clock-rectified coupling.** The edge-point interface transmits in alternating directions on alternating clock phases — a bidirectional rectifier whose direction toggles with the clock. Whether the diode analogy extends to forward thresholds, breakdown, and leakage is open.
+5. **The junction is a clock-rectified coupling.** The edge-node interface transmits in alternating directions on alternating clock phases — a bidirectional rectifier whose direction toggles with the clock. Whether the diode analogy extends to forward thresholds, breakdown, and leakage is open.
 
 6. **The promotion ladder.** Each successive wrap promotes information one level: raw → light (open chain → directional traveling perturbation) → mass-analog (1D wrap → emergent dial) → charge (2D dial sheet → torus, per [grid/charge-emergence.md](../../grid/charge-emergence.md)). Each level may admit a leakage analog; whether it does is examined per level.
 
-7. **α and member thickness — a conditional prediction.** Whether α-type phenomena appear at L2 depends on whether the project's primitives have thickness from sub-scale structure. If they are truly thin, no leakage at L2 — α belongs at L3 only. If thickness emerges from fractal sub-structure that the working scale does not open but does feel, an α-analog appears at L2 and the relationship to the L3 α (from charge-emergence) becomes the substantive question.
+7. **α is a second-order-wrap phenomenon.** α-type coupling emerges only when a wrap operation folds across a dimension that already has extent. The L2 wrap (open chain → 1D dial) folds across a 0D point — no extent to fold across, no α. The L3 wrap (2D dial sheet → torus) folds across the dial's 1D extent inherited from L2 — and that is where α enters. The *fact* of folding-across-extent matters; the *amount* of extent (the torus's minor radius) does not, consistent with grid-primitive chapter 8's α coming from a structural ratio rather than from a length scale.
 
-8. **Bridge to grid/.** The convention "edge holds magnitude, point holds value" maps to [grid/fields.md](../../grid/fields.md)'s "E on edges, B at junctions." A subsidiary check: [grid/](../../grid/) appears to use cell phases as primary observables and to compute edges as differences. The bridge confirms or refines this mapping.
+8. **Bridge to grid/.** The convention "edge holds magnitude, node holds value" maps to [grid/fields.md](../../grid/fields.md)'s "E on edges, B at junctions." A subsidiary check: [grid/](../../grid/) appears to use cell phases as primary observables and to compute edges as differences. The bridge confirms or refines this mapping.
 
 ### Open questions
 
@@ -124,7 +122,7 @@ The arc is a sketch. Early chapters are framed in detail; later chapters as ques
 
 2. **`02-closure-and-bounding.md`** — *The closure derivation.* Show how an open 1D couplet chain carries continuous unbounded magnitude as an emergent edge, and how closing it into a 2π loop maps that magnitude into a discrete winding sector while leaving a bounded phase pattern — the emergent dial. Derive the information-capacity asymmetry. Establish that the asymmetry is one-directional.
 
-3. **`03-the-junction-as-diode.md`** — Examine the edge-point interface as the model's coupling object. Test the bidirectional-diode framing: clock-rectified information flow, analogs of forward conduction, reverse blocking, breakdown, and leakage.
+3. **`03-the-junction-as-diode.md`** — Examine the edge-node interface as the model's coupling object. Test the bidirectional-diode framing: clock-rectified information flow, analogs of forward conduction, reverse blocking, breakdown, and leakage.
 
 4. **`04-couplet-tiling.md`** — Whether the couplet admits exact tiling of a 2D hex sheet when built by recursive 120°/240° splits and wrapped periodically.
 
@@ -134,7 +132,7 @@ The arc is a sketch. Early chapters are framed in detail; later chapters as ques
 
 7. **`07-promotion-ladder.md`** — Formalize the L0 → L1 → L2 → L3 ladder. Examine each level's wrap, what emerges, and whether a leakage analog exists. The α question (theory 7) is the central content.
 
-8. **`08-bridge-to-grid.md`** — Bridge to [grid/](../../grid/). Map point values and edge magnitudes to the cell phases θ and link connections A_μ used in grid/'s derivations.
+8. **`08-bridge-to-grid.md`** — Bridge to [grid/](../../grid/). Map node values and edge magnitudes to the cell phases θ and link connections A_μ used in grid/'s derivations.
 
 9. **`09-closing-summary.md`** — Consolidate established results, ruled-out items, and unexpected findings. Compare with grid-primitive.
 
