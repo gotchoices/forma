@@ -53,7 +53,7 @@ The takeaway is the structure of the argument:
 
 This means our task as primitive-builders is narrow. We need to show that the cylinder primitive's lattice supports an entropy account with two key features:
 
-1. **Area scaling.** *S*/*A* must be a finite number — entropy proportional to area, not volume. (In 2D, "area" is the length of a 1D curve; that's the relevant "area" for a 2D-spacetime horizon.)
+1. **Area scaling.** *S*/*A* must be a finite number — entropy proportional to area, not volume. (In a 2-spatial-dimensional setting, the "area" of a horizon is a 1D curve length; that is the analog of "area" for a horizon in 2+1D spacetime.)
 2. **Locality.** The entropy is attached to the horizon itself, not to the bulk of the field on either side of it.
 
 Two things we *do not* need:
@@ -268,7 +268,7 @@ The simulation result for the static field is |ψ(*r*)| ≈ 1.451 − 0.348 · l
 
 |ψ(*r*)| = log(*R*/*r*) / log(*R*/*a*)
 
-— with slope d|ψ|/d(log *r*) = −1/log(*R*/*a*). For the simulation parameters *a* ≈ 4 and *R* ≈ 60 (the lattice half-width), log(*R*/*a*) = log 15 ≈ 2.71, giving a predicted slope of ≈ −0.37. The measured slope of −0.348 matches at the few-percent level — discrete-lattice and finite-box corrections are small but real.
+— with slope d|ψ|/d(ln *r*) = −1/ln(*R*/*a*) (natural log throughout). For the simulation parameters *a* ≈ 4 and *R* ≈ 60 (the lattice half-width), ln(*R*/*a*) = ln 15 ≈ 2.71, giving a predicted slope of ≈ −0.37. The measured slope of −0.348 matches at the few-percent level — discrete-lattice and finite-box corrections are small but real.
 
 This confirms the *form* of the response. To match the *coefficient* in Jacobson's expression *S* = ζ · *A* with ζ = 1/4, several normalizations need careful tracking:
 

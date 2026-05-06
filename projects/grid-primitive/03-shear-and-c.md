@@ -83,7 +83,11 @@ To make the structure visible without losing the substance, take the simplifying
 
 Three constraints relate four symbolic quantities (*K*, ρ₀, χ̃, *D_eφ*) — but matched chirality means *D_eφ* is already determined by χ̃ and ρ₀, so really we have three independent quantities (*K*, ρ₀, χ̃) and three constraints, with *K*/ρ₀ pinned to *c*².
 
-In the general case (without the simplifying ρ = *I_φ*, *K_ee* = *K_φφ*), the same structural conclusion holds: matched chirality + bare-speed equality gives the dimensionless stiffness ratios pinned in terms of *c* and χ̃. The specific formulas for the general case have more terms but the same shape.
+In the general case (without the simplifying ρ = *I_φ*, *K_ee* = *K_φφ*), the same structural conclusion holds: matched chirality + bare-speed equality gives the dimensionless stiffness ratios pinned in terms of *c* and χ̃. Concretely:
+
+*K_ee* = *c*² ρ,   *K_φφ* = *c*² *I_φ*,   *K_eφ* = χ̃ · *c*² · √(ρ *I_φ*),   *D_eφ* = χ̃ · √(ρ *I_φ*)
+
+— two diagonal-density scales (ρ, *I_φ*) and one dimensionless chirality (χ̃) determine all four stiffness entries and the cross-inertia. The simplification ρ = *I_φ* further collapses (ρ, *I_φ*) to a single scale ρ₀.
 
 ---
 

@@ -23,9 +23,9 @@ Chapter-by-chapter review. Issues categorized as:
 - **The "matched chirality is the simplest physically motivated choice" justification (§8) overstates.** Even for actual helical-fiber media, PE and KE chirality coefficients need not be identically coupled. The honest framing — which the chapter elsewhere supports — is that matched chirality is a *modeling choice* that prevents the slow-mode tension. The "simplest physically motivated" wording goes beyond that.
 
 ### Light
-- The "rubber cylinder reinforced with helical fibers" mechanical analog is reused several times (§2, §3, §5, §7) with overlapping detail. Could be tightened.
-- §3 has two adjacent paragraphs of mechanical picture (one before the polar-singularity discussion, one after) that are partly redundant.
-- §8 calls the entries of *D* "ρ" without restating it is a per-unit-length quantity (it was named in Notation but reintroduction here is brief).
+- The "rubber cylinder reinforced with helical fibers" mechanical analog is reused several times (§2, §3, §5, §7) with overlapping detail. Could still be tightened further; the cross-section redundancies at §2/§3/§5 remain by design (each section motivates the picture in a slightly different role).
+- ~~**§3 has two adjacent paragraphs of mechanical picture (one before the polar-singularity discussion, one after) that are partly redundant.**~~ **[ADDRESSED]** §3 trimmed: the "no body rotation" point is no longer repeated in the mechanical-picture paragraph, and the picture now references §2 explicitly rather than restating the rubber-tube setup.
+- ~~**§8 calls the entries of *D* "ρ" without restating it is a per-unit-length quantity.**~~ **[ADDRESSED]** §8 now describes ρ, *I_φ*, and *D_eφ* explicitly as per-unit-length quantities.
 
 ---
 
@@ -40,9 +40,10 @@ Chapter-by-chapter review. Issues categorized as:
 - ~~**Concept-table mismatch for §5.** Table lists "The two natural modes: how strain and direction combine"; actual heading is "Polarizations: how strain and direction combine in the propagating wave."~~ **[ADDRESSED]** Concept table updated.
 
 ### Light
-- §1 introduces *T̃* and *Ṽ* as densities by name in body text but the tilde notation isn't called out — a brief sentence would help readers parse it.
-- §3's "phasor representation familiar from electrical engineering" aside is fine for an engineering audience but adds little.
-- §5's circular-polarization sub-section is informative but unused in subsequent chapters; could be trimmed.
+- ~~**§1 introduces *T̃* and *Ṽ* as densities by name in body text but the tilde notation isn't called out.**~~ **[ADDRESSED]** §1 now explicitly names *T̃*, *Ṽ*, *L̃* as per-unit-length quantities and explains the tilde convention.
+- ~~**§3's "phasor representation familiar from electrical engineering" aside is fine but adds little.**~~ **[ADDRESSED]** Trimmed.
+- ~~**§5's circular-polarization sub-section is informative but unused in subsequent chapters.**~~ **[ADDRESSED]** Removed; §5 now flows directly from "Two independent polarizations" to "What chirality does affect."
+- **§5 "Maxwell's vacuum in 2D" over-claim** [propagated from Ch6 walk-back]. **[ADDRESSED]** Replaced with a pointer to Ch6 §6's interpretation of the two cylinder modes vis-à-vis Maxwell's photon.
 
 ---
 
@@ -56,7 +57,7 @@ Chapter-by-chapter review. Issues categorized as:
 - **Open question 1 from README is not directly restated and answered.** The chapter is supposed to settle "Does the lattice signal speed *c* fix χ̃ uniquely?" The answer (no — χ̃ stays free; the constraint pins two stiffness ratios, not χ̃) is implicit in §5's table but never stated as the answer to the open question.
 
 ### Light
-- §4's simplifying assumption (ρ = I_φ ≡ ρ₀, K_ee = K_φφ ≡ K) is mentioned and tabled, then the general case is waved through with "the same shape with more terms." A brief explicit form for the general case would tighten the chapter.
+- ~~**§4's simplifying assumption (ρ = I_φ ≡ ρ₀, K_ee = K_φφ ≡ K) is mentioned and tabled, then the general case is waved through.**~~ **[ADDRESSED]** §4 now gives the general-case formulas explicitly: K_ee = c²ρ, K_φφ = c² I_φ, K_eφ = χ̃ c² √(ρ I_φ), D_eφ = χ̃ √(ρ I_φ) — with the simplifying ρ = I_φ collapse explained as a special case.
 
 ---
 
@@ -72,8 +73,8 @@ Chapter-by-chapter review. Issues categorized as:
 - **§3 dimensional handwave.** "log *r* is dimensionless if *r* is in some chosen length units, and the constant absorbs the choice of units." More precisely, only log(r/r₀) is dimensionless for any reference scale r₀; the "constant absorbs" framing is loose.
 
 ### Light
-- §1 uses "1D-area scaling" for what is just "length" (since 2D horizons are curves). Conceptually correct but the phrasing is awkward.
-- §8 reports "log 15 ≈ 2.71" without specifying natural log; consistent with the Green's-function derivation (which uses natural log throughout) but a one-word note would prevent confusion.
+- ~~**§1 uses "1D-area scaling" awkward phrasing.**~~ **[ADDRESSED]** §1 reworded to "1D curve length" with explicit reference to a horizon in 2+1D spacetime.
+- ~~**§8 reports "log 15 ≈ 2.71" without specifying natural log.**~~ **[ADDRESSED]** Switched to ln throughout the §8 numerical comparison and noted "natural log throughout."
 
 ---
 
@@ -88,7 +89,8 @@ Chapter-by-chapter review. Issues categorized as:
 - **Inherited assumptions not foregrounded.** §3 reuses chapter 2's M = c² D result for the 2D lattice. Acceptable as inheritance, but the chapter could state more explicitly which postulates (matched chirality, bare-speed equality) are inherited and that no new ones are introduced.
 
 ### Light
-- The "no surprises arise" closing aside in §4 is hand-wavey; could be stated more concretely (or backed by a brief calculation).
+- ~~**The "no surprises arise" closing aside in §4 is hand-wavey.**~~ **[ADDRESSED]** §4 closing tightened: explains the absence of band-mixing as a consequence of the lattice having no local DoF that couples differently to different lattice directions.
+- **§3 "matches vacuum Maxwell exactly" over-claim** [propagated from Ch6 walk-back]. **[ADDRESSED]** Replaced with a pointer to Ch6 §6; §5 summary updated to match. §3 and §4 now describe two clean propagating modes at *c* without asserting a direct Maxwell match.
 
 ---
 
@@ -113,11 +115,11 @@ Chapter-by-chapter review. Issues categorized as:
 - None.
 
 ### Moderate
-- **§4's "lattice-geometry factor of 2π/3" is reverse-engineered, but the chapter's own framing softens this.** §1 and §5 explicitly say this chapter is a *consistency check* on an *assumed* ζ_2D = 1/3, not a derivation. Under that framing, §4 is an existence demonstration that *some* lattice-geometry factor of order unity could bridge the continuum coefficient (1/(2π)) to the per-node value (1/3) — i.e., the cylinder primitive does not preclude ζ_2D = 1/3. That is all the chapter actually claims. The remaining issue is just that §4's prose over-promises ("comes out to 2π/3", "matching ζ_2D = 1/3 exactly") in a way the rest of the chapter walks back. The fix is to soften §4's wording to match the consistency-check framing of §1 and §5.
+- ~~**§4's "lattice-geometry factor of 2π/3" is reverse-engineered, but the chapter's own framing softens this.**~~ **[ADDRESSED]** §4 reworded as an *existence demonstration* rather than a derivation: explicitly says "some lattice-geometry factor of order unity" would close the loop and "we do not derive this lattice factor explicitly here." §5 reworded to "existence rather than derivation." The reverse-engineered "2π/3 — the inverse of which is exactly 1/3" claim removed.
 - **The 2D entanglement-entropy log violation.** §8 raises this real concern and defers it to "the natural 3D extension would resolve this" — which is outside the project's scope. This leaves a substantive issue with chapter 4's area-scaling claim un-addressed within the project; worth flagging that it is *deferred*, not resolved.
 
 ### Light
-- The repeated phrase "structural-form match" is cumbersome; could be tightened.
+- ~~**The repeated phrase "structural-form match" is cumbersome.**~~ **[ADDRESSED]** Replaced with "consistency check" / "existence demonstration" throughout §5, §6, §7, and §9; the §8 summary is also tightened.
 
 ---
 
@@ -144,11 +146,11 @@ Chapter-by-chapter review. Issues categorized as:
 - None directly; the issues here are inherited from earlier chapters.
 
 ### Moderate
-- **§2 inherits the Ch7 §4 wording.** "Combined with the hexagonal-lattice geometric factor, this gives a per-node entropy of 1/3 — matching ζ_2D structural-form." Under the consistency-check framing this is fine, but the summary should match the softer language of Ch7 §1/§5: "consistent with ζ_2D = 1/3" rather than "matching."
-- **§3 "Linear-Gaussian theory carries the entropy account" inherits the Ch4 coordinate-switch issue.** Partially addressed by Ch4's new linearization-around-background paragraph; the Ch9 §3 summary could be tightened to reference that paragraph explicitly.
+- ~~**§2 inherits the Ch7 §4 wording.**~~ **[ADDRESSED]** §2 now says "consistent with ζ_2D = 1/3: a lattice-geometry factor of order unity bridges the two, and the chapter-7 consistency check confirms no obstruction."
+- ~~**§3 "Linear-Gaussian theory carries the entropy account" inherits the Ch4 coordinate-switch issue.**~~ **[ADDRESSED]** §3 now references Ch4 §4's polar/Cartesian-equivalence paragraph explicitly and notes that the simulations work in Cartesian.
 
 ### Light
-- §6 "Closing thought" has a promotional tone that could be tightened. Already partly walked back when Ch9 was updated for the Ch8 reframing; further tightening is possible.
+- ~~**§6 "Closing thought" has a promotional tone.**~~ **[ADDRESSED]** Closing thought tightened to a single paragraph: states what was delivered (chapters 1–7), what was inconclusive (chapter 8), and what the project does and does not settle. Also fixed the §6 "*A_μ* is the variation of that azimuthal direction" line, which was inconsistent with the Ch6 walk-back.
 
 ---
 

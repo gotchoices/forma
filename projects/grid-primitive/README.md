@@ -181,7 +181,7 @@ The chapters below are still in roadmap form — the questions are framed but th
 
 7. **`07-base-for-gravity.md`** — Bridge to [grid/gravity.md](../../grid/gravity.md), with the **coefficient calculation** as the substantive content. Chapter 4 settled the entropic 1/r *scaling*; this chapter computes the actual coefficient on the per-cell information capacity ζ from the cylinder primitive's continuum Green's function, normalizes the lattice geometry, and matches to ζ = 1/4 from [grid/foundations.md](../../grid/foundations.md) §A5. If the coefficient comes out cleanly, theory 9 lands. If there is a residual discrepancy, this is where topological-defect refinements (chapter 4 §9) get pulled back in. Cite gravity.md to run from there.
 
-8. **`08-wrap-and-alpha.md`** — The project's centerpiece. Fold a 2D sheet of primitives into a torus and examine two candidate mechanisms for the leakage:
+8. **`08-wrap-and-alpha.md`** — Fold a 2D sheet of primitives into a torus and examine two candidate mechanisms for the leakage:
    - **Discrete-kink picture:** η_joint = K(χ)(Δθ)², η_loop = 4π² K(χ)/N
    - **Continuous-bend picture:** inner-compression / outer-tension on the cylinder wall, energy concentration, leak rate per radian
 

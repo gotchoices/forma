@@ -69,8 +69,8 @@ The project established the following at the level of derivation supported by th
 ### Bridge to gravity (chapter 7)
 
 - The cylinder primitive's continuum entropy coefficient is 1/(2π) per log(distance), set by the 2D Laplacian Green's function.
-- Combined with the hexagonal-lattice geometric factor, this gives a per-node entropy of 1/3 — matching ζ_2D structural-form.
-- A full numerical match across all O(1) factors is a well-defined but tedious calculation, deferred to follow-up. The structural-form match is sufficient for the project's purposes.
+- This continuum coefficient is consistent with ζ_2D = 1/3: a lattice-geometry factor of order unity (specifically, 2π/3) bridges the two, and the chapter-7 consistency check confirms no obstruction stands in the way. The factor itself is not computed in this project.
+- A full numerical match across all O(1) factors is a well-defined but tedious calculation, deferred to follow-up.
 
 ### α as an inconclusive candidate picture (chapter 8)
 
@@ -95,9 +95,9 @@ The discovery here was that what looked like a real slow-mode tension (significa
 
 ### Linear-Gaussian theory carries the entropy account
 
-Chapter 4 was originally framed around the question of whether topological vortex defects in the 2D stress vector field could supply enough entropy for Jacobson's gravity. The chapter's discovery was that *they are not needed*: the linear-Gaussian theory's Laplacian Green's function structure already produces 1/r force scaling, with the right area-scaling for Jacobson.
+Chapter 4 was originally framed around the question of whether topological vortex defects in the 2D stress vector field could supply enough entropy for Jacobson's gravity. The chapter's discovery was that *they are not needed*: the linear-Gaussian theory's Laplacian Green's function structure already produces 1/r force scaling, with the right area-scaling for Jacobson. The argument runs in either polar or Cartesian fluctuation coordinates around a non-zero stress-vector background (Ch4 §4 establishes the equivalence), so the simulations — which work in Cartesian — test the right physics.
 
-Topological defects remain in the picture as a possible refinement at the coefficient level, and as the structural mechanism behind the chapter-8 α derivation (where a wrap of the lattice into a closed surface is exactly a topological-defect configuration). But for the entropy account itself, the linear-Gaussian theory is sufficient. This was not the original expectation.
+Topological defects remain in the picture as a possible refinement at the coefficient level, and as the structural element on which chapter 8's wrap picture would depend. But for the entropy account itself, the linear-Gaussian theory is sufficient. This was not the original expectation.
 
 ### Substrate inertia is mass-analog by KK mechanism
 
@@ -175,7 +175,7 @@ The grid/ derivations work at the lattice scale and take cell-level phase θ, li
 
 What the project did *not* do: it did not re-derive Maxwell or gravity. Those derivations live in grid/maxwell.md and grid/gravity.md respectively, and run unchanged on top of the lattice this project supplies.
 
-What the project did add: a substrate-level mechanical (or computational, if the rubber analog is too suggestive) picture of the lattice. Where GRID's foundations posit cells with phase θ and links with connection *A_μ*, this project says: a cell is a wye junction, a link is a cylinder primitive, the phase θ is the cylinder's azimuthal direction at the junction, and *A_μ* is the variation of that azimuthal direction along the cylinder. All of grid/maxwell.md and grid/gravity.md follow on top of that picture.
+What the project did add: a substrate-level mechanical (or computational, if the rubber analog is too suggestive) picture of the lattice. Where GRID's foundations posit cells with phase θ and links with connection *A_μ*, this project says: a cell is a wye junction, a link is a cylinder primitive, and the matter field ψ = *e* · exp(*i φ*) at each node *is* the matter field with phase θ that grid/maxwell.md takes as input. The gauge connection *A_μ* is *not* directly supplied by the cylinder primitive in its current 2D form (Ch6 §4); it is motivated by the cylinder primitive's U(1) gauge symmetry but enters as an additional field in grid/maxwell.md's gauge sector. The matter sector and the gauge symmetry are supplied; the gauge field itself awaits the 3D extension or topological winding (Ch8) to enter directly.
 
 ### What the project added relative to grid/charge-emergence.md
 
@@ -183,6 +183,4 @@ What the project did add: a substrate-level mechanical (or computational, if the
 
 ### Closing thought
 
-The project's primary deliverable was a primitive substrate that properly models EM and gravity at the lattice scale. That has been delivered, with the full chapter-by-chapter analysis and three confirming numerical tests for the gravity scaling. The α question was equal-priority but separate, with calibrated expectations. The outcome there is more modest than the "deeper structural understanding" hope of the original calibration: the analysis identified a candidate picture and a sharpened follow-up target, but did not establish a controlled structural form for α at the lattice configuration of interest.
-
-The cylinder primitive is one specific hypothesis about what the GRID lattice's substrate looks like at the next level of detail. Other primitives are possible — the dialog [`dialogs/grid-3.md`](../../dialogs/grid-3.md) brainstormed several. This project committed to one, worked through its consequences for Maxwell and gravity, and arrived at an inconclusive but well-targeted result for α. Whether it is *the* right substrate, or one of several that could work equally well, is a question the project does not settle.
+The project's primary deliverable was a substrate-level picture that produces vacuum-Maxwell-style propagation and 2D-Jacobson gravity at the lattice scale. The chapters 1–7 analysis delivers that picture, and three numerical tests confirm the gravity scaling. The α question of chapter 8 was equal-priority but separate; its outcome is inconclusive — a candidate physical picture and a sharpened follow-up target, but no controlled structural form at the lattice configuration of interest. Whether the cylinder primitive is *the* right substrate or one of several is a question the project does not settle.

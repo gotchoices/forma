@@ -107,9 +107,7 @@ $$
 
 ω(**k**) = *c* |**k**|
 
-Both polarizations propagate at *c*, isotropically in any direction in the 2D plane. This matches vacuum Maxwell exactly: two photon polarizations both at *c*.
-
-The 2D lattice does not modify the long-wavelength continuum result. Both polarizations propagate cleanly at *c*; there is no slow-mode tension.
+Both polarizations propagate at *c*, isotropically in any direction in the 2D plane. The 2D lattice does not modify the long-wavelength continuum result of chapter 2; both polarizations propagate cleanly at *c*, with no slow-mode tension. (How these two propagating modes relate to Maxwell's photon — specifically, why the natural mapping is to the two transverse polarizations of a 3+1D photon rather than to 2+1D Maxwell directly — is taken up in chapter 6 §6.)
 
 ---
 
@@ -121,11 +119,9 @@ For the honeycomb lattice with cylinder primitives on edges, the unit cell has 3
 
 Under matched chirality with *M* = *c*² *D* on every edge (the same matched-chirality structure that gave the long-wavelength single-speed result), all 6 bands are zone-folded copies of the single dispersion ω = *c* |**k**|. There is no band splitting between different polarizations or between sublattice A and B configurations — every Bloch state propagates at *c*.
 
-The photon at the lattice scale is therefore clean: the cylinder primitive's two polarizations on a 2D hexagonal lattice produce exactly two photon polarizations at *c*, with no extra modes, no birefringence, and no Planck-scale anomalies.
+The wave content at the lattice scale is therefore clean: the cylinder primitive on a 2D hexagonal lattice produces exactly two propagating modes at *c*, with no extra modes, no birefringence, and no Planck-scale anomalies. The interpretation of these two modes vis-à-vis Maxwell is the subject of chapter 6 §6.
 
-This is what we wanted to confirm before proceeding to the Maxwell-bridge chapter: at the level of single-primitive lattice assembly, the cylinder primitive is consistent with vacuum Maxwell's photon.
-
-A subtlety worth flagging: the matched-chirality structure assumed identical cylinders on every edge. If the lattice had asymmetries between sublattices, or different cylinders on different edges, band gaps and other features could emerge. Those are richer structures than this chapter develops; for the bare hexagonal lattice with identical matched-chirality cylinders, no surprises arise.
+A subtlety worth flagging: the matched-chirality structure assumed identical cylinders on every edge. If the lattice had asymmetries between sublattices, or different cylinders on different edges, band gaps and other features could emerge. Those are richer structures than this chapter develops; for the bare hexagonal lattice with identical matched-chirality cylinders, the band structure is simple by inspection — every band is a zone-folded copy of the single underlying dispersion because no local degree of freedom couples differently to different lattice directions.
 
 ---
 
@@ -135,8 +131,8 @@ What this chapter establishes:
 
 - The 2D *hexagonal* lattice with cylinder primitives on edges and wye-junction node continuity is the natural assembly: matches grid-docs preferences ([grid/hexagonal.md](../../grid/hexagonal.md), [grid/lattice-geometry.md](../../grid/lattice-geometry.md)), gives ζ_2D = 1/3 from the wye-junction count, and supports natural curvature through pentagonal defects.
 - The wave equation on the 2D lattice is *D* ∂_t² **u** = *M* ∇² **u**, with **u** = (*e*, *φ*)ᵀ at every spatial point.
-- Under matched chirality (*M* = *c*² *D*, from chapter 1 §8 plus chapter 3's bare-speed condition), the long-wavelength continuum gives a single dispersion ω = *c* |**k**|. Both polarizations propagate at *c*. There is no slow-mode split.
+- Under matched chirality + bare-speed equality (*M* = *c*² *D*, from chapters 1 §8 and 2 §4), the long-wavelength continuum gives a single dispersion ω = *c* |**k**|. Both polarizations propagate at *c*. There is no slow-mode split.
 - At lattice scale, the Bloch-wave analysis gives 6 bands per Brillouin-zone point, all of which are zone-folded copies of the single ω = *c* |**k**| dispersion. No Planck-scale anomalies for the bare hexagonal lattice with identical cylinders.
-- The cylinder primitive on a 2D hexagonal lattice produces a clean photon at *c* with two polarizations — exactly what vacuum Maxwell expects.
+- The cylinder primitive on a 2D hexagonal lattice produces two clean propagating modes at *c*. How these map to Maxwell's photon is the subject of chapter 6 §6.
 
-The next chapter takes up the Maxwell bridge: how the cylinder lattice's (*e*, *φ*) coarse-grain to the cell-level phase θ and link-level connection *A_μ* that grid/maxwell.md takes as input.
+The next chapter takes up the Maxwell bridge: what (*e*, *φ*) on the lattice supplies to grid/maxwell.md, and what it does not.

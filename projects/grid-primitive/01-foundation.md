@@ -74,7 +74,7 @@ The pair (*e*, *φ*) are polar coordinates of the stress vector; the underlying 
 
 There is no third state variable, no separate "twist" field, no body rotation of the cylinder. The cylinder body does not rotate around its long axis; *φ* is an angle in the cross-sectional plane (where the stress vector points), not a rotation angle of the cylinder mass.
 
-The mechanical picture: a rubber cylinder reinforced with helical fibers, glued at the endpoints to its neighbors. Pushing on one endpoint *off-center* — at azimuthal location *φ* with longitudinal force *e* — exerts a directional load that the helical fibers couple to a transverse bow of the cylinder body. The bow propagates along the length and emerges at the far end as a perturbation in the next cylinder's (*e*, *φ*). The off-center loading at the end is what carries the directional information; the cylinder body itself does not rotate.
+Filling in the mechanical picture from §2: the rubber tube is reinforced with helical fibers and glued at the endpoints to its neighbors. Pushing on one endpoint *off-center* — at azimuthal location *φ* with longitudinal force *e* — exerts a directional load that the helical fibers couple to a transverse bow of the cylinder body. The bow propagates along the length and emerges at the far end as a perturbation in the next cylinder's (*e*, *φ*). The off-center loading carries the directional information.
 
 Two consequences worth marking now:
 
@@ -197,7 +197,7 @@ $$
 D \;=\; \begin{pmatrix} \rho & D_{e\varphi} \\ D_{e\varphi} & I_\varphi \end{pmatrix}
 $$
 
-with diagonal entries ρ (longitudinal mass density) and *I_φ* (rotational moment of inertia per unit length), and off-diagonal entry *D_eφ* (chiral cross-inertia).
+with diagonal entries ρ (longitudinal mass per unit length) and *I_φ* (azimuthal moment of inertia per unit length), and off-diagonal entry *D_eφ* (chiral cross-inertia, also per unit length).
 
 The chirality of the medium is characterized by a single dimensionless number χ̃ ∈ (0, 1), and it appears identically in both matrices:
 

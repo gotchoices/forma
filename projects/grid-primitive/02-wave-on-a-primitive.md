@@ -27,7 +27,7 @@ The math runs through coupled second-order PDEs, an eigenvalue problem, and a di
 
 The cleanest starting point for working out how the cylinder moves is its *energy* at each position along its length. A cylinder primitive of length *L* has two fields varying with position *x* and time *t*: the stress magnitude *e(x, t)* and the azimuthal direction *φ(x, t)* (chapter 1 §3). Each contributes kinetic energy when it moves in time and elastic potential energy when it varies in space.
 
-We work with energy *per unit length* of cylinder (an energy *density*) and integrate along the cylinder to get the total. Two contributions, each familiar from undergraduate mechanics.
+We work with energy *per unit length* of cylinder (an energy *density*) and integrate along the cylinder to get the total. We use the tilde to mark per-unit-length quantities: *T̃* is kinetic-energy density, *Ṽ* is elastic-energy density, and *L̃* = *T̃* − *Ṽ* (introduced at the end of this section) is the Lagrangian density. Two contributions, each familiar from undergraduate mechanics.
 
 ### Kinetic density
 
@@ -173,9 +173,7 @@ $$
 \mathbf{u}(x, t) = \mathbf{A}\, e^{i(k x - \omega t)}
 $$
 
-with the understanding that we take the real part to get the physical fields. This is the standard phasor representation familiar from electrical engineering.
-
-The advantage of the complex form: the time and space derivatives become multiplications:
+with the understanding that we take the real part to get the physical fields. The advantage of the complex form: time and space derivatives become multiplications:
 
 - ∂_t **u** brings down a factor of (−*i*ω); ∂_t² **u** brings down (−*i*ω)² = −ω².
 - ∂_x **u** brings down a factor of (*i k*); ∂_x² **u** brings down (*i k*)² = −*k*².
@@ -306,18 +304,7 @@ Although every amplitude direction propagates at *c*, we can still pick a basis 
 - **e-polarized wave**: *A* = (1, 0)ᵀ. The stress magnitude oscillates while the azimuthal direction stays at zero.
 - **φ-polarized wave**: *A* = (0, 1)ᵀ. The azimuthal direction oscillates while the stress magnitude stays at zero.
 
-A general wave is any linear combination of these two: *A* = (*A_e*, *A_φ*) = *A_e*(1, 0) + *A_φ*(0, 1). All combinations propagate at *c*.
-
-This is exactly Maxwell's vacuum in 2D: two independent polarizations of a single wave field, both at *c*, with any superposition also at *c*.
-
-### Circularly polarized waves
-
-A particularly useful pair of polarizations is the **circular** combination:
-
-- **R-circular**: *A* = (1, *i*)ᵀ /√2 — at any spatial point, as time advances the (*e*, *φ*) amplitude rotates clockwise (if we identify (*e*, *φ*) with (*x*, *y*) Cartesian coordinates).
-- **L-circular**: *A* = (1, −*i*)ᵀ /√2 — counter-clockwise rotation.
-
-Under matched chirality, both circular polarizations propagate at *c*. There is no chiral-medium-style splitting between them — no "optical activity" in the propagation. The cylinder is structurally chiral (*K_eφ* > 0, *D_eφ* > 0), but its chirality affects only the *internal* coupling between channels, not the propagation speed of any polarization.
+A general wave is any linear combination of these two: *A* = (*A_e*, *A_φ*) = *A_e*(1, 0) + *A_φ*(0, 1). All combinations propagate at *c*. (Interpretation of the cylinder primitive's two propagating modes in relation to Maxwell's photon — and why the natural mapping is to the two transverse polarizations of a 3+1D photon rather than to 2+1D Maxwell directly — is taken up in chapter 6 §6.)
 
 ### What chirality *does* affect
 
