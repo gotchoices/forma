@@ -79,33 +79,27 @@ The clock can be operated as a manual half-step (a single inhale or exhale at a 
 
 ## §7. The update rule
 
-For each clock phase, every primitive of the active type evaluates a local update rule. The rule looks only at the primitive's own current value, the values of its directly connected neighbors, and a settable per-edge coupling that is not yet activated in this project.
+For each clock phase, every primitive of the active type evaluates a local update rule. The rule looks only at the primitive's own current value and the values of its directly connected neighbors.
 
 The project uses a single update rule, the Yee-style additive rule from [viz/grid-lab](../../viz/grid-lab.md). It is memory-bearing — both halves of the rule add to the primitive's current value rather than replacing it — and it supports stable, linear, propagating waves: two perturbations launched from opposite ends of a chain pass through each other without disrupting each other.
+
+The chapter uses **natural units** throughout: one unit of edge magnitude corresponds to one radian of node phase, with no scaling factor between them. This is a deliberate departure from grid-lab's translation factor k and per-edge coupling stub — both can be reintroduced if a downstream analysis requires them, but they would only obscure the structural arguments at this stage.
 
 ### Node on inhale
 
 A node adds to its current value the weighted sum of its connected edges:
 
-> φ_node ← φ_node + (1/k) · Σᵢ eᵢ · cos(φ_attach,ᵢ)
+> φ_node ← φ_node + Σᵢ eᵢ · cos(φ_attach,ᵢ)
 
 where eᵢ is the value of the *i*-th connected edge and φ_attach,ᵢ is the angular location at which that edge connects — measured from the node's intrinsic angular zero, set by its partner edge (§4). For a stand-alone point (a node with no dial structure around it), all attached edges connect at φ_attach = 0, and the rule reduces to a sum of edge values.
 
 ### Edge on exhale
 
-An edge adds to its current value k times the tail-minus-head value difference:
+An edge adds to its current value the tail-minus-head value difference:
 
-> e_edge ← e_edge + k · (φ_tail − φ_head)
+> e_edge ← e_edge + (φ_tail − φ_head)
 
 The tail-minus-head sign convention follows from stability: the edge stores a flux pointing from high-value tail to low-value head, so a positive tail-minus-head difference increases the edge's value.
-
-### Translation factor k
-
-The factor k translates between the two value units — edge magnitudes and node values. It is the same in both halves of the rule. Its default value is 1; the analyses that follow treat it symbolically and pin it numerically only where the algebra forces a choice.
-
-### Per-edge coupling
-
-A second per-edge coupling factor is present in the state of every edge. In the present rule it is stubbed at 1 and not used. Later work in the project may activate it as a function of the bending angle between primitives at a junction; the present chapter notes its existence and leaves it inert.
 
 ## §8. The junction
 
@@ -175,7 +169,7 @@ The chapter is explicit about what is taken as given and what remains open.
 
 ## §12. Bridge to viz/grid-lab
 
-The chapter has named points, edges, nodes, dials, the master clock, the inhale/exhale phases, the update rule, the translation factor k, the per-edge coupling stub, the junction, and the couplet. Each is one-to-one with the corresponding object in [viz/grid-lab](../../viz/grid-lab.md), with one exception: grid-lab specifies two update-rule versions (a v1 phase-replacement and a v2 Yee-style additive). This project uses the additive rule only; the replacement variant has no memory and is structurally inconsistent with the present chapter's edges-as-integrated-difference framing.
+The chapter has named points, edges, nodes, dials, the master clock, the inhale/exhale phases, the update rule, the junction, and the couplet. Each is one-to-one with the corresponding object in [viz/grid-lab](../../viz/grid-lab.md), with two adjustments. First, grid-lab specifies two update-rule versions (a v1 phase-replacement and a v2 Yee-style additive); this project uses the additive rule only — the replacement variant has no memory and is structurally inconsistent with edges-as-integrated-difference. Second, this project uses natural units throughout, dropping grid-lab's translation factor k and per-edge coupling stub; if either becomes algebraically necessary it can be reintroduced at that point.
 
 The model is *adopted*, not redefined. grid-lab is a working reference, not authoritative. As long as the analyses here remain consistent with grid-lab's specification, the two stay aligned; where the project produces a result that suggests a different choice, the result takes precedence and the visualizer is updated to match.
 
