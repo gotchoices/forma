@@ -1,0 +1,28 @@
+Drive: sinusoid at attach 0 (freq = 0.020, amp = 1.00)
+Attaches 1 and 2: external phase pinned to 0
+
+=== Model A: identical-share ===
+  internal φ amplitude: 0.3351
+  e_ext[0] amplitude: 5.2946, phase:  -86.40°
+  e_ext[1] amplitude: 2.6684, phase:  +93.60°
+  e_ext[2] amplitude: 2.6684, phase:  +93.60°
+  transmission |e_ext[1]/e_ext[0]| = 0.5040
+  transmission |e_ext[2]/e_ext[0]| = 0.5040
+
+=== Model B: cos-weighted (grid-lab style) ===
+  internal φ amplitude: 64.4014
+  e_ext[0] amplitude: 8689.6586, phase:  -86.82°
+  e_ext[1] amplitude: 8681.6958, phase:  -86.82°
+  e_ext[2] amplitude: 8681.6958, phase:  -86.82°
+  transmission |e_ext[1]/e_ext[0]| = 0.9991
+  transmission |e_ext[2]/e_ext[0]| = 0.9991
+
+=== Model C: composite (chapter 2) ===
+  φ_const[0] amplitude: 0.8396
+  φ_const[1] amplitude: 0.0890
+  φ_const[2] amplitude: 0.0890
+  e_ext[0] amplitude: 3.9373, phase:  -88.83°
+  e_ext[1] amplitude: 2.0324, phase:  +91.25°
+  e_ext[2] amplitude: 2.0324, phase:  +91.25°
+  transmission |e_ext[1]/e_ext[0]| = 0.5162
+  transmission |e_ext[2]/e_ext[0]| = 0.5162
