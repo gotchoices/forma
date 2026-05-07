@@ -36,7 +36,9 @@ The same wavepacket maps to traveling-wave amplitudes per edge:
 
 > a_fwd = (v + i) / 2,  a_bwd = (v − i) / 2
 
-For a right-mover (v = i), this gives a_fwd = v, a_bwd = 0 — all the energy is in the forward channel. For a left-mover (v = −i), a_fwd = 0 and a_bwd = v.
+In the register reading of Scattering used in chapter 2 §7 and [models/scattering.md](models/scattering.md), a_fwd is the value in the register at the edge's *head* end (the value that will arrive at the head after one exhale); a_bwd is the value in the register at the *tail* end. The (a_fwd, a_bwd) and per-edge-end-register descriptions are equivalent; the test code retains the (a_fwd, a_bwd) labels for compatibility with sim-maxwell.
+
+For a right-mover (v = i), this gives a_fwd = v, a_bwd = 0 — all the energy is in the head-end register. For a left-mover (v = −i), a_fwd = 0 and a_bwd = v.
 
 Both translations preserve the same physical wavepacket: same total energy, same propagation direction, same envelope shape. The dispatch lives in each test script's initialization function (`init_directional_wavefront`, `init_packet_1d`, `init_inbound_packet`).
 
