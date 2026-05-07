@@ -21,7 +21,7 @@ A lattice is fully specified by:
 
 Nodes and edges are the only structural objects; everything else (loops, plaquettes, sheets, wraps) is a derived configuration of them. Whether the lattice carries any *additional geometric structure* — for instance, the angular positions of edges incident at each node, useful only to models like cos-weighted that read those angles — is a property of the lattice's spatial embedding, separate from the abstract graph.
 
-The substrate deliberately stops at *two* primitive types and does not pair them up. The earlier project [grid-couplet](../grid-couplet/) attempted a 1:1 pairing of nodes and edges into "couplets" as the foundational unit; that approach drifted because real lattices have ≠ counts of nodes and edges (a hex sheet has 2 nodes and 3 edges per cell), so any global pairing was forced. The lesson — recorded in [couplet.md](couplet.md) — is what motivates leaving nodes and edges as independent primitives at this level.
+The substrate deliberately stops at *two* primitive types and does not pair them up. The earlier grid-couplet exploration attempted a 1:1 pairing of nodes and edges into "couplets" as the foundational unit; that approach drifted because real lattices have ≠ counts of nodes and edges (a hex sheet has 2 nodes and 3 edges per cell), so any global pairing was forced. The lesson — recorded in [couplet.md](couplet.md) — is what motivates leaving nodes and edges as independent primitives at this level.
 
 ### The register
 

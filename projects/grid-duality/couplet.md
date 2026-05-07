@@ -1,6 +1,6 @@
 # Couplet — reference and lessons learned
 
-This file captures what was learned during the [grid-couplet](../grid-couplet/) exploration that preceded grid-duality. It is *not* part of grid-duality's chapter sequence; it serves as a standalone reference. The grid-couplet directory will eventually be deleted, and this file is the surviving record. Anyone who wants more detail than is captured here can consult the git history.
+This file captures what was learned during the grid-couplet exploration that preceded grid-duality. It is *not* part of grid-duality's chapter sequence; it serves as a standalone reference and the surviving record after the grid-couplet project was retired. Anyone who wants more detail than is captured here can consult the git history.
 
 ## What grid-couplet was
 

@@ -1,6 +1,6 @@
 # Review — projects/grid-duality
 
-The original review was substantial and is now largely incorporated into the project (see [STATUS.md](STATUS.md) for the chunked execution plan). On a fresh re-read, the verdict (Scattering wins) is now well-grounded:
+The original review was substantial and has been incorporated into the project (the post-review chunked execution plan is now complete; this review file is retained as historical record of how the project responded to feedback). On a fresh re-read, the verdict (Scattering wins) is now well-grounded:
 
 - The transmission-line / register / inhale-exhale reframing of Scattering ([models/scattering.md](models/scattering.md), [chapter 2 §7](02-candidate-models.md), [chapter 4 §5](04-model-comparison.md)) closes the "two-channel cheating" concern definitively. The two values per edge are at the edge's two physical ends; nodes are N-register processors enforcing potential continuity and Kirchhoff's current law; the scattering matrix S = (2/N)·J − I is the unique solution to those constraints, not an arbitrary update rule.
 - The new 2D coord-3 dispersion test (L1b) shows Scattering is *mildly* dispersive (0.35 ± 0.06) rather than perfectly non-dispersive — and that the perfect non-dispersion of L1a was a coord-2 artifact. Verdict survives, more honestly stated.

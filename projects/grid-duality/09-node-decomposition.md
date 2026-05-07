@@ -6,7 +6,7 @@ Earlier chapters treated the node as a primitive: a coord-N vertex that applies 
 
 The answer is yes, and the chapter shows how. The construction it leads with — a **triangle** mesh of three inner edges with no shared central state — passes a stringent honesty test: nowhere inside the compound is there a register or operation that does not already belong to the edges themselves. The "context" that lets the three edges produce the S-matrix is a self-consistency condition on the edges' parameters, not a central coordinator. A second, simpler construction (the **star** with a shared junction register) is sketched as a less honest alternative; it works mathematically but reintroduces a small node-like computational element inside the compound and is therefore not a genuine "edges-only" reduction.
 
-The chapter does not change the substrate. The standard implementation in [scripts/models.py](scripts/models.py) keeps the node primitive intact for performance reasons. What this chapter establishes is *the structural fact that a functional equivalent of the node primitive exists in edge-and-context terms*, which settles the original [grid-couplet](../grid-couplet/) question about whether nodes and edges are independent primitives.
+The chapter does not change the substrate. The standard implementation in [scripts/models.py](scripts/models.py) keeps the node primitive intact for performance reasons. What this chapter establishes is *the structural fact that a functional equivalent of the node primitive exists in edge-and-context terms*, which settles the original grid-couplet question (see [couplet.md](couplet.md)) about whether nodes and edges are independent primitives.
 
 ## §2. The bare edge
 
@@ -192,7 +192,7 @@ The bare edge has *spatial extent*. Information at one end propagates to the oth
 
 A construction "build an edge from nodes" must produce spatial extent from non-extended primitives. The natural attempt — chain many small nodes together with internal connections of unit length — *uses edges in the construction*. The reduction terminates at smaller edges, not at pure nodes. Edges cannot be functionally reduced to nodes the way nodes can be functionally reduced to edges plus parameter context.
 
-This asymmetry is the chapter's substantive structural conclusion: *edges are the more fundamental of the two ingredients*. Nodes are derivable as compounds; edges are not. The original [grid-couplet](../grid-couplet/) question of whether nodes and edges are symmetric halves of one underlying primitive is answered: no, they are not symmetric, and the asymmetry favours the edge.
+This asymmetry is the chapter's substantive structural conclusion: *edges are the more fundamental of the two ingredients*. Nodes are derivable as compounds; edges are not. The original grid-couplet question (see [couplet.md](couplet.md)) of whether nodes and edges are symmetric halves of one underlying primitive is answered: no, they are not symmetric, and the asymmetry favours the edge.
 
 ## §8. Connection to chapter 4 and chapter 5
 
@@ -218,7 +218,7 @@ The simpler star construction, with a shared junction register V, also implement
 
 The reverse direction — building an edge from nodes — does not work the same way: edges have spatial extent that nodes lack. Edges remain the more fundamental of the two structural ingredients.
 
-This closes the substrate-structure portion of the project. The original [grid-couplet](../grid-couplet/) question about whether nodes and edges are symmetric primitives is settled: they are not symmetric; nodes have functional models in edge-and-parameter-context terms, while edges do not have the analogous reduction.
+This closes the substrate-structure portion of the project. The original grid-couplet question (see [couplet.md](couplet.md)) about whether nodes and edges are symmetric primitives is settled: they are not symmetric; nodes have functional models in edge-and-parameter-context terms, while edges do not have the analogous reduction.
 
 Chapter 10 (closing summary) consolidates the project's results.
 

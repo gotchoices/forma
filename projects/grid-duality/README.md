@@ -9,7 +9,7 @@
 
 [grid-primitive](../grid-primitive/) modeled the GRID lattice analog-first: a single distributed object (the cylinder primitive) carrying both magnitude and phase on one continuous body. A digital-first counterpart would be a graph of discrete primitives, with local update rules at each, evolving under a clock.
 
-The first attempt at a digital-first project — [grid-couplet](../grid-couplet/) — committed prematurely to one specific update rule and accumulated drift before the rule's 2D behavior was verified. Its findings are preserved in [couplet.md](couplet.md). grid-duality is a fresh start that takes a different approach: pin the *substrate* (lattice geometry + primitive types + clock concept) clearly, but leave the update rules and state structure as a discovery target. Multiple candidate models are tested side-by-side; the winner is the one that produces stable, wave-like behavior across 1D and 2D and matches the observable dynamics of [grid/sim-maxwell](../../grid/sim-maxwell/) and [grid/sim-gravity-2](../../grid/sim-gravity-2/).
+The first attempt at a digital-first project — grid-couplet — committed prematurely to one specific update rule and accumulated drift before the rule's 2D behavior was verified. Its findings are preserved in [couplet.md](couplet.md). grid-duality is a fresh start that takes a different approach: pin the *substrate* (lattice geometry + primitive types + clock concept) clearly, but leave the update rules and state structure as a discovery target. Multiple candidate models are tested side-by-side; the winner is the one that produces stable, wave-like behavior across 1D and 2D and matches the observable dynamics of [grid/sim-maxwell](../../grid/sim-maxwell/) and [grid/sim-gravity-2](../../grid/sim-gravity-2/).
 
 The central question:
 
@@ -90,7 +90,7 @@ Claims to examine — supported or refuted by the test bench in chapter 4.
 
 ### What was tried before
 
-- [grid-couplet](../grid-couplet/) — earlier digital-first project; lessons in [couplet.md](couplet.md). Adopted a single update rule (cos-weighted) without 2D verification; the rule turned out to be unstable at coord 3. The lesson is what motivates the test-multiple-models approach here.
+- grid-couplet — earlier digital-first project; lessons preserved in [couplet.md](couplet.md). Adopted a single update rule (cos-weighted) without 2D verification; the rule turned out to be unstable at coord 3. The lesson is what motivates the test-multiple-models approach here.
 - [grid-primitive](../grid-primitive/) — analog-first sibling. Sets the bar grid-duality's winning model should match in observable behavior.
 - [viz/grid-lab](../../viz/grid-lab.md) — earlier digital-first sketch. Inspiration for the substrate, but its specific update rule (cos-weighted v2) is one of the candidates being tested rather than an authoritative reference.
 - [grid/sim-maxwell](../../grid/sim-maxwell/) — wave-propagation simulation using vertex scattering with traveling-wave amplitudes. Its model is a candidate in the comparison.
@@ -119,7 +119,9 @@ Claims to examine — supported or refuted by the test bench in chapter 4.
 ```
 projects/grid-duality/
 ├── README.md                       this file
-├── couplet.md                      lessons from prior project
+├── couplet.md                      lessons from the prior grid-couplet project
+├── grid-quantizing.md              substrate-quantization side-doc with physical-substrate sketch
+├── review.md                       independent review record (post-review work was completed)
 ├── 01-foundation.md                lattice substrate
 ├── 02-candidate-models.md          model overview / tour
 ├── 03-test-bench.md                tests and observables
@@ -133,7 +135,7 @@ projects/grid-duality/
 ├── models/                         per-model specifications
 │   ├── telegrapher.md
 │   ├── normalized.md
-│   ├── relcos-both.md              ← primary candidate, stable in 2D
+│   ├── relcos-both.md              (eliminated — see chapter 4)
 │   ├── scattering.md
 │   ├── gauge.md                    (deferred)
 │   └── cos-weighted.md             (scrapped — kept for reference)
@@ -158,26 +160,13 @@ projects/grid-duality/
 
 ## Chapters
 
-The arc below is a sketch. Early chapters are framed in detail; later chapters as questions. The project may redirect when a chapter's results require it.
-
-1. **`01-foundation.md`** — The lattice substrate. Define the two primitive types (node, edge), edge polarity, common-direction orientation conventions, and the master-clock concept. Establish what is shared across all candidate models versus what is left to per-model specification. No update rules; no specific state structure.
-
-2. **`02-candidate-models.md`** — Tour of the candidate models. One-sentence summary per model, pointing at each model's full specification under [models/](models/). Comparative table of state structure, clock structure, expected stability, expected topological behavior. Identifies where each model is expected to succeed and where to fail.
-
-3. **`03-test-bench.md`** — Standardized test inputs and observables. Defines signal translation: how a paradigm-neutral "unit pulse" is realized in each model's native state. Defines paradigm-neutral observables (energy in a region, propagation speed, reflection/transmission coefficients, field decay laws). Each test specifies inputs, outputs, and metrics. Tests planned: 1D pulse propagation, 2D Y-junction scattering, 2D wavefront, 2D static-field with defect, sim-maxwell fidelity.
-
-4. **`04-model-comparison.md`** — Run all candidate models on all tests. Tabulate results. Identify which models pass / fail / partially-pass. Select the winning model. Document any model-specific surprises and how they affect downstream chapters.
-
-5. **`05-substrate-quantization.md`** — Replace each register's real-valued state with integers from a finite alphabet, eventually a single bit. At what alphabet size and lattice resolution does the chapter-4 test bench still pass? Lattice-gas-automaton scaling: does continuum behavior re-emerge by "zooming out" from a Planck-scale bit substrate to a Compton-scale effective theory? Decision point at the end: continue the rest of the project with the real-valued model as effective theory, or commit to bit-level dynamics. Subsumes [grid-quantizing.md](grid-quantizing.md).
-
-6. **`06-3d-extension-and-lattice-closures.md`** — Extend Scattering to 3D. Pick a 3D lattice (cubic, FCC, or diamond) and work out the edge-orientation conventions; verify the S-matrix S = (2/N)·J − I gives stable propagation at the new coordination. Define the lattice closures that anchor the wrap-promotion ladder: open chain (L0), ring (L1), plaquette (L2), 2-sheet wrap / torus (L3). Mostly mathematical / structural, with computational verification at the end.
-
-7. **`07-wrap-promotion-modeling.md`** — Mathematical modeling of each wrap level. For each closure: what observable on Scattering's dynamics corresponds to the physical phenomenon (mass at L1 / L2, charge at L3)? Computational tests where feasible — for instance, does Scattering on a closed ring host a stable circulating wavepacket whose effective mass can be read off the dispersion curve? Honest about what we *establish* (specific observables on specific closures) versus what we *interpret* (their identification with mass / charge).
-
-8. **`08-where-alpha-appears.md`** — Locate α on the wrap-promotion ladder. Working hypothesis: α lives at L3 only (mass → charge wrap). Identify candidate lattice invariants — combinatorial factors, ratios of winding numbers, fixed points of an RG-like flow — and check which (if any) approximate 1/137. Honest scope: this chapter probably proposes a candidate observable rather than deriving α exactly.
-
-9. **`09-node-decomposition.md`** — Y-tree decomposition: any N-port S-matrix factors into a network of 3-port S-matrices joined by zero-length internal edges. So a coord-N node *is* a configuration of mini-edges and mini-nodes inside a bubble. The reverse — building an edge from nodes — turns out to be asymmetric: edges are pure swap, with no internal degrees of freedom to decompose. This asymmetry is the substantive answer to the original grid-couplet question of whether the two primitives are genuinely distinct.
-
-10. **`10-closing-summary.md`** — Consolidate established results, ruled-out items, unexpected findings. Compare with grid-primitive: where the analog-first cylinder and digital-first winning-model converge / diverge.
-
-Each chapter is added one at a time. The arc is a sketch, not a contract.
+1. **[`01-foundation.md`](01-foundation.md)** — The lattice substrate: nodes, edges, polarity (paradigm-specific), the register concept, master clock.
+2. **[`02-candidate-models.md`](02-candidate-models.md)** — Tour of the four candidate models with comparative table.
+3. **[`03-test-bench.md`](03-test-bench.md)** — Tests, observables, and signal translation between paradigms.
+4. **[`04-model-comparison.md`](04-model-comparison.md)** — Comparison results and verdict (Scattering wins).
+5. **[`05-substrate-quantization.md`](05-substrate-quantization.md)** — Bit-level substrate via stochastic rounding; minimum 1 bit per cell.
+6. **[`06-3d-extension-and-lattice-closures.md`](06-3d-extension-and-lattice-closures.md)** — Scattering on 3D diamond; the four lattice closures (L0–L3).
+7. **[`07-wrap-promotion-modeling.md`](07-wrap-promotion-modeling.md)** — Each closure carries a phenomenon (substrate, light, mass, charge).
+8. **[`08-where-alpha-appears.md`](08-where-alpha-appears.md)** — α at L3 as a wrap-of-a-wrap invariant.
+9. **[`09-node-decomposition.md`](09-node-decomposition.md)** — Functional model of a node from edges plus cooperative context.
+10. **[`10-closing-summary.md`](10-closing-summary.md)** — Project consolidation; comparison with grid-primitive.
