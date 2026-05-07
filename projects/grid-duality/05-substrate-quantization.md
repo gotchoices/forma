@@ -176,6 +176,8 @@ There is no smaller meaningful alphabet: N = 1 collapses to a single fixed level
 
 So **1 bit per cell is the absolute floor**, and at that floor, holographic recovery delivers any desired macroscopic precision provided the window has at least (amp_max/ε)² cells. The user's hypothesis ("a 1-bit Planck-scale processor producing high-resolution Compton-scale waves") is mathematically supported with broad margin.
 
+The natural follow-on question — *what could a 1-bit cell physically be?* — is sketched in [grid-quantizing.md §11](grid-quantizing.md#11-a-physical-substrate-sketch). Briefly: each edge as a chirally rolled tube with a bistable latch ("the register") at each end and a radial breathing mode whose period equals the torsional transit time (one breathing cycle = one clock tick = the exhale phase). Each node as a small Boolean junction where the latches couple under a bit-conservation rule with the right symmetries. The sketch is a thought experiment, not a claim about literal Planck physics, but it shows that the 1-bit substrate is *physically conceivable*, not just mathematically self-consistent.
+
 ### §8.4 Empirical confirmation
 
 The script [scripts/test_holographic_recovery.py](scripts/test_holographic_recovery.py) tests the prediction on a 50×50 hex torus by quantizing a constant field of value 0.3 (with amp_max = 0.5) and computing the windowed-average error over a sweep of window radii. Results from the static test:
@@ -206,7 +208,8 @@ The chapter-5 verdict is now stronger and more precise:
 - **Stochastic rounding** does support holographic recovery, with M ∝ 1/(N−1)²/ε² scaling. The 1/√M slope is confirmed empirically across N from 257 down to 2.
 - **Minimum per-cell resolution is 1 bit**. Below that, no scheme can carry information.
 - **For long-time dynamics at very low N**, bit-conservative Boolean rules are the physically natural form. This is the FHP / lattice-Boltzmann / quantum-lattice-gas tradition, well-established in the literature and outside this chapter's scope.
-- **The user's hypothesis is mathematically and empirically supported.** Real-valued Scattering at the chapter-4 verdict scale is the *effective theory* of a binary-bit substrate at Planck scale, recovered via spatial averaging in the analog-averaging regime. The chapter-4 verdict survives this deeper substrate without modification.
+- **The hypothesis is mathematically and empirically supported.** Real-valued Scattering at the chapter-4 verdict scale is the *effective theory* of a binary-bit substrate at Planck scale, recovered via spatial averaging in the analog-averaging regime. The chapter-4 verdict survives this deeper substrate without modification.
+- **The physical-substrate sketch in [grid-quantizing.md §11](grid-quantizing.md#11-a-physical-substrate-sketch) converges with [grid-primitive](../grid-primitive/)'s analog-first cylinder primitive.** Two independent design paths — analog-first (continuous-amplitude cylinders carrying the wave) and digital-first (single-bit chiral tubes with bistable latches) — arrive at the same physical structure. That convergence is a positive sign: the structure isn't a contrivance of either path.
 
 The decision in §6 (continue chapters 6 onward with real-valued Scattering as effective theory) stands. The added information: that effective theory rests on solid binary-substrate foundations, not just a "moderate quantization survives" empirical clearance.
 

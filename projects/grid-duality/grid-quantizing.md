@@ -290,7 +290,62 @@ None of these are required by the hypothesis to be valid; they are what the hypo
 
 ---
 
-## 11. Summary
+## 11. A physical-substrate sketch
+
+The bit-level hypothesis raises a natural question: *what could the lattice physically be, at the Planck scale, if each register is one bit?* This section sketches one consistent answer. It is a thought experiment, not a claim that nature literally works this way; the point is to demonstrate that the binary hypothesis is physically conceivable, not just mathematically consistent.
+
+### The edge as a chiral tube
+
+Each edge is a 1D extended object — physically, a chiral nanotube-like structure: a 2D hex sheet rolled up with chirality (n, m). Each end of the tube carries a small bistable feature (a torsion latch, a chiral defect, or any structural element with two metastable states). The latch is the **register** — one bit per end.
+
+The tube also supports a **radial breathing mode** (RBM). Tube length L and breathing frequency f_RBM are matched so that one breathing period equals one torsional transit time (L = c_torsion / f_RBM). One full breathing cycle is therefore one **clock tick**.
+
+Three pieces of physics — all real and well-documented in carbon nanotubes — combine to drive the end-to-end transit:
+
+1. **Counter-propagating torsional waves coexist linearly.** Any 1D wave-carrier supports two independent torsional modes propagating in opposite directions; they do not interact in the linear regime. This handles "two signals in two directions at once" — it is d'Alembert decomposition on a torsional string. The two-channel structure of Scattering at the lattice level is a direct reflection of this physics, not a representational artifact.
+
+2. **Chirality couples radial breathing to torsion.** In a chiral tube, a radial deformation produces a small angular displacement of the helical fibers — the tube cannot expand radially without also twisting slightly, because the helix angle changes with diameter. The coupling vanishes for achiral (zigzag, armchair) tubes and grows with the chirality angle. This is what lets the breathing *drive* the transit.
+
+3. **The RBM acts as a clocked impulse generator.** Each breathing cycle delivers a torsional pulse along both directions of the tube. After one cycle, the right-going pulse from end A has arrived at end B, the left-going pulse from end B has arrived at end A, and the latches snap into their new states under the arriving torsional input. The two end values have effectively swapped.
+
+This is the **exhale** phase of the lattice clock, embodied in real tube physics. The Lim et al. paper ([forma/nanotube.pdf](../../nanotube.pdf)) documents RBM-coupled dynamics in real SWNTs at THz frequencies; at the Planck level the scale is many orders of magnitude higher, but the *mechanism* is the same.
+
+### The node as a small Boolean junction
+
+Each node is where N edge-ends meet (N = 3 for the 2D hex lattice, N = 4 for a tetrahedral 3D lattice). The N latches at a node are mechanically or quantum-mechanically coupled — when the torsional pulses arrive at end of an exhale, the latches enter the **inhale** phase: they settle into a new joint configuration determined by the node's coupling rule.
+
+For the 2D Y-junction (N = 3), the rule is a Boolean function on 2³ = 8 input configurations. Bit-count conservation partitions the inputs into orbits {000}, {001, 010, 100}, {011, 101, 110}, {111}; the rule permutes within each orbit. The specific permutation determines whether matched-impedance scattering averages (1/9 reflected, 4/9 to each transmission arm) emerge on coarse-graining. Such rules are designed in the FHP / lattice-Boltzmann tradition (§4.1).
+
+A physical realization could be three torsion latches mechanically coupled through a small shared element (a "joint" with its own bistable or rotational degree of freedom). When torsional pulses arrive simultaneously at the three latches, the joint relaxes to a configuration consistent with junction physics — which automatically enforces bit-count conservation and 3-fold rotational symmetry. The Boolean rule is what the joint physically *does*; it is not imposed externally.
+
+For a tetrahedral 3D node (N = 4), the same picture extends with four latches and 4-fold symmetry. The continuous scattering matrix becomes S = (1/2)·J − I (R = −1/2, T = +1/2 per arm; energy fractions 1/4 reflected, 1/4 to each of 3 transmissions, total Σ = 1). Bit-count conservation partitions 2⁴ = 16 input configurations into orbits {0000}, {0001 ×4}, {0011 ×6}, {0111 ×4}, {1111}, and a 4-fold-symmetric Boolean rule permutes within orbits. A physical four-latch joint could implement this in 3D the way the three-latch joint does in 2D.
+
+### Why a single-bit register produces a continuous wave at macro scale
+
+This is the punchline. A Planck-scale lattice cell is a single bit, but the lattice has *many cells per macroscopic feature*. A photon at the Compton wavelength (~10⁻¹³ m) spans roughly 10²² Planck cells along its propagation direction, ~10⁴⁴ cells in 2D area, ~10⁶⁶ in 3D volume. The macroscopic field is the coarse-grained statistical aggregate of the cell population.
+
+Two consequences:
+
+- **Effective amplitude resolution scales as 1/√M** (central limit theorem) with M the cell count per averaging region. With M ~ 10⁴⁴, the per-region resolution is ~10⁻²² — vastly more than any physical wave amplitude requires.
+- **Information density per cell is literally one bit**, but the *effective independent* density per macroscopic region matches Jacobson's ζ_2D = 1/3 because junction physics correlates the three latches at each node. Three bits per node, constrained by bit-conservation and Y-junction symmetry to one bit of independent information per node — exactly the 1/3 ratio. The 1/3 bit per cell is the *correlation bookkeeping*, not a literal per-cell alphabet.
+
+The macroscopic electromagnetic wave at Compton scale emerges from the statistical aggregation of many Planck-scale binary scattering events, in the same way smooth fluid flow emerges from many molecular collisions in a gas. The wave amplitude is not stored anywhere as a real number; it is what an observer measures by averaging over many cells.
+
+### Convergence with grid-primitive
+
+This sketch lands close to the [grid-primitive cylinder primitive](../../grid-primitive/) — a chiral 1D extended object with internal degrees of freedom that propagate end-to-end through chirality-mediated coupling. The two sibling projects converge on the same physical structure from different starting points: grid-primitive is the analog-first (continuous-valued) version; the sketch above is the digital-first (single-bit) version. That convergence is a positive sign — two independent design paths arriving at the same physical structure suggests the structure is right, not a contrivance of either path.
+
+### Honest caveats
+
+- Real SWNTs do not have bistable end-latches; engineering this would require either a different molecular structure or a different scale entirely. The Planck-scale "tube" is an analog, not a literal carbon nanotube.
+- The breathing-to-torsion coupling in real SWNTs is small (a few percent at typical chiralities); for the structure to function at full strength, the coupling would need to be O(1) at the Planck scale, which is engineering-by-fiat.
+- Designing the joint's coupling rule from physics (rather than imposing a Boolean scattering rule abstractly) is the harder problem. FHP-style construction is the closest precedent. We are claiming the rule *exists in principle* with the right symmetries and conservation properties; constructing it explicitly is a separate piece of work.
+
+This is a thought experiment. The aim is to show that *some* physical structure can implement the binary substrate hypothesis self-consistently — chirality-coupled wave propagation is real physics, RBM-clocked transit is consistent with established nanotube spectroscopy, and Boolean junction rules are well-studied. Whether nature actually does this at the Planck scale is beyond any computational test; what §7 measures is whether the binary lattice reproduces continuous-Scattering observables in the macroscopic limit. That is the substantive claim. The sketch above is what the lattice could *be* if it holds.
+
+---
+
+## 12. Summary
 
 The chapter-4 winning model (continuous Scattering on a 2D hex lattice) is plausibly the effective theory of a binary cellular automaton at the substrate scale. The hypothesis sits in a well-developed research tradition (FHP lattice gas, lattice Boltzmann methods, quantum lattice gases, deterministic-substrate interpretations). The trade-off between bits per cell and cells per macroscopic region follows quantization-noise scaling, with M ∝ 1/N² in the analog-averaging regime. The experimental program is a two-axis (N, s) sweep on the existing test bench, measuring how each test's error scales as the per-cell precision is reduced and the lattice is refined.
 
