@@ -13,32 +13,38 @@
  * headless test runner.
  *
  * State conventions:
- *   state = { nodes, edges, topology }
+ *   state = { nodes, edges, topology, positions }
  *   nodes[i] = { registers: number[] }   one register per incident edge end
- *   edges[k] = { tail, head, tailSlot, headSlot }
+ *   edges[k] = { tail, head, tailSlot, headSlot, displacement }
  *     tailSlot = index in nodes[tail].registers of this edge's tail-end value
  *     headSlot = index in nodes[head].registers of this edge's head-end value
+ *     displacement = [dx, dy] — short-image direction tail→head in lattice
+ *                    units (always unit length for hex/1D, irrespective of
+ *                    whether the edge wraps around a periodic boundary).
+ *   positions[i] = [x, y] — node position in lattice coords (unit cell size).
+ *                  In 1D, [i, 0]; in 2D hex, the natural xz layout.
  *
  * Each register is owned by exactly one (edge, end) pair, so swapping two
  * edges' end values is safe in place.
  */
 
 const TAU = Math.PI * 2;
+const SQRT3 = Math.sqrt(3);
 
 /* ── Topology builders ──────────────────────────────────── */
 
 function makeEmptyState(N, topology) {
   const nodes = [];
   for (let i = 0; i < N; i++) nodes.push({ registers: [] });
-  return { nodes, edges: [], topology };
+  return { nodes, edges: [], topology, positions: new Array(N) };
 }
 
-function addEdge(state, tail, head) {
+function addEdge(state, tail, head, displacement) {
   const tailSlot = state.nodes[tail].registers.length;
   state.nodes[tail].registers.push(0);
   const headSlot = state.nodes[head].registers.length;
   state.nodes[head].registers.push(0);
-  state.edges.push({ tail, head, tailSlot, headSlot });
+  state.edges.push({ tail, head, tailSlot, headSlot, displacement });
 }
 
 /**
@@ -49,17 +55,101 @@ function addEdge(state, tail, head) {
 export function build1D(N, { periodic = false } = {}) {
   if (N < 2) throw new Error('build1D: N must be at least 2');
   const state = makeEmptyState(N, { kind: '1D', N, periodic });
+  for (let i = 0; i < N; i++) state.positions[i] = [i, 0];
   const nEdges = periodic ? N : N - 1;
-  for (let i = 0; i < nEdges; i++) addEdge(state, i, (i + 1) % N);
+  for (let i = 0; i < nEdges; i++) addEdge(state, i, (i + 1) % N, [1, 0]);
   return state;
 }
 
-export function build2D(_nx, _ny, _opts = {}) {
-  throw new Error('build2D: not yet implemented (Step 2 of refactor)');
+/* Hex lattice basis chosen so every A→B edge has unit length. */
+const HEX_A1  = [SQRT3, 0];
+const HEX_A2  = [SQRT3 / 2, 1.5];
+const HEX_DAB = [(HEX_A1[0] + HEX_A2[0]) / 3, (HEX_A1[1] + HEX_A2[1]) / 3];
+// edge displacement classes (always unit length):
+const HEX_E_SAME  = [HEX_DAB[0], HEX_DAB[1]];                          // A → B(i, j)        (= +d_AB)
+const HEX_E_LEFT  = [HEX_DAB[0] - HEX_A1[0], HEX_DAB[1] - HEX_A1[1]];  // A → B(i-1, j)      (= -a₁ + d_AB)
+const HEX_E_BELOW = [HEX_DAB[0] - HEX_A2[0], HEX_DAB[1] - HEX_A2[1]];  // A → B(i, j-1)      (= -a₂ + d_AB)
+
+/**
+ * 2D hex/wye sheet of nx × ny unit cells. Two sublattices A, B per cell;
+ * each A connects to 3 B-neighbors (same cell, left cell, below cell)
+ * via three lattice direction classes 120° apart.
+ *
+ * Independent periodicity per axis:
+ *   periodic_x — wrap left↔right (i axis)
+ *   periodic_y — wrap top↔bottom (j axis)
+ *
+ * Coordination is 3 for every interior node and (under full periodic) for
+ * every node. Open boundaries reduce to coord 1 or 2 at edge cells.
+ */
+export function build2D(nx, ny, { periodic_x = false, periodic_y = false } = {}) {
+  if (nx < 2 || ny < 2) throw new Error('build2D: nx and ny must be at least 2');
+  const wrap = (k, n) => ((k % n) + n) % n;
+  const A = (i, j) => 2 * (wrap(j, ny) * nx + wrap(i, nx));
+  const B = (i, j) => A(i, j) + 1;
+
+  const N = 2 * nx * ny;
+  const state = makeEmptyState(N, { kind: '2D-hex', nx, ny, periodic_x, periodic_y });
+
+  for (let j = 0; j < ny; j++) {
+    for (let i = 0; i < nx; i++) {
+      const ox = i * HEX_A1[0] + j * HEX_A2[0];
+      const oy = i * HEX_A1[1] + j * HEX_A2[1];
+      state.positions[A(i, j)] = [ox, oy];
+      state.positions[B(i, j)] = [ox + HEX_DAB[0], oy + HEX_DAB[1]];
+    }
+  }
+
+  for (let j = 0; j < ny; j++) {
+    for (let i = 0; i < nx; i++) {
+      const tail = A(i, j);
+      addEdge(state, tail, B(i,     j),     HEX_E_SAME);
+      if (i > 0 || periodic_x) addEdge(state, tail, B(i - 1, j),     HEX_E_LEFT);
+      if (j > 0 || periodic_y) addEdge(state, tail, B(i,     j - 1), HEX_E_BELOW);
+    }
+  }
+
+  return state;
+}
+
+/**
+ * Y-tree: three linear arms of `armLength` nodes meeting at a central
+ * coord-3 hub at index 0. Used for explicit reflection/transmission tests
+ * on a single junction.
+ */
+export function buildYTree(armLength) {
+  if (armLength < 1) throw new Error('buildYTree: armLength must be at least 1');
+  const N = 3 * armLength + 1;
+  const state = makeEmptyState(N, { kind: 'Y-tree', armLength });
+  state.positions[0] = [0, 0];
+  for (let arm = 0; arm < 3; arm++) {
+    const theta = arm * (TAU / 3);
+    const dx = Math.cos(theta), dy = Math.sin(theta);
+    for (let k = 1; k <= armLength; k++) {
+      state.positions[arm * armLength + k] = [k * dx, k * dy];
+    }
+    const first = arm * armLength + 1;
+    const armDisp = [dx, dy];
+    addEdge(state, 0, first, armDisp);
+    for (let k = 1; k < armLength; k++) {
+      addEdge(state, arm * armLength + k, arm * armLength + k + 1, armDisp);
+    }
+  }
+  return state;
 }
 
 export function build3D(_nx, _ny, _nz, _opts = {}) {
   throw new Error('build3D: not yet implemented (Step 3 of refactor)');
+}
+
+/** True if the engine-coord distance between an edge's endpoints exceeds
+ *  ~1.5 lattice units, indicating a wrap-around edge. */
+export function isWrapEdge(state, edgeIdx) {
+  const e = state.edges[edgeIdx];
+  const tp = state.positions[e.tail];
+  const hp = state.positions[e.head];
+  const dx = hp[0] - tp[0], dy = hp[1] - tp[1];
+  return Math.hypot(dx, dy) > 1.5;
 }
 
 /* ── State helpers ──────────────────────────────────────── */

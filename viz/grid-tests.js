@@ -6,9 +6,10 @@
  */
 
 import {
-  build1D, clear, halfStep, fullStep,
+  build1D, build2D, buildYTree,
+  clear, halfStep, fullStep,
   applyInhale, applyExhale,
-  totalEnergy, coordOf,
+  totalEnergy, coordOf, isWrapEdge,
   getEdgeRegisters, setEdgeRegister, setRegister, getRegister,
   applyPreset, listPresets,
 } from './grid-engine.js';
@@ -392,6 +393,166 @@ group('presets', () => {
     applyPreset(s, 'sin', { amplitude: 5 });
     clear(s);
     for (const n of s.nodes) for (const r of n.registers) assertApprox(r, 0);
+  });
+});
+
+/* ── 2D hex/wye topology ─────────────────────────────────── */
+
+group('build2D — hex/wye topology', () => {
+  test('2×2 fully periodic: 8 nodes, 12 edges, all coord 3', () => {
+    const s = build2D(2, 2, { periodic_x: true, periodic_y: true });
+    assertEq(s.nodes.length, 8);
+    assertEq(s.edges.length, 12);
+    for (let i = 0; i < 8; i++) assertEq(coordOf(s, i), 3, `node ${i}:`);
+  });
+
+  test('3×3 fully periodic: 18 nodes, 27 edges', () => {
+    const s = build2D(3, 3, { periodic_x: true, periodic_y: true });
+    assertEq(s.nodes.length, 18);
+    assertEq(s.edges.length, 27);   // 3 edges per cell × 9 cells
+  });
+
+  test('2×2 open: 8 nodes, 8 edges; boundary nodes have lower coord', () => {
+    const s = build2D(2, 2);
+    assertEq(s.nodes.length, 8);
+    // Same-cell A→B: 4 edges (one per cell, always present).
+    // Left A→B (i>0): i=1 only, j=0,1 → 2 edges.
+    // Below A→B (j>0): j=1 only, i=0,1 → 2 edges.
+    // Total 8.
+    assertEq(s.edges.length, 8);
+    // At least one node should have coord < 3 (boundary effect).
+    let minCoord = 99;
+    for (let i = 0; i < s.nodes.length; i++) minCoord = Math.min(minCoord, coordOf(s, i));
+    assertTrue(minCoord < 3, `expected some boundary node coord < 3, got minCoord ${minCoord}`);
+  });
+
+  test('every edge has unit displacement length (hex)', () => {
+    const s = build2D(3, 3, { periodic_x: true, periodic_y: true });
+    for (const e of s.edges) {
+      const len = Math.hypot(e.displacement[0], e.displacement[1]);
+      assertApprox(len, 1.0, 1e-12, `edge displacement:`);
+    }
+  });
+
+  test('isWrapEdge detects wraps correctly', () => {
+    const s = build2D(3, 3, { periodic_x: true, periodic_y: true });
+    let wrapCount = 0;
+    for (let i = 0; i < s.edges.length; i++) if (isWrapEdge(s, i)) wrapCount++;
+    // Each periodic axis contributes wraps along its boundary cells.
+    // For 3×3 with both axes periodic, expect wrapCount > 0.
+    assertTrue(wrapCount > 0, 'no wrap edges detected on fully periodic 3×3');
+    // For non-wrap edges, the engine-position distance equals the
+    // displacement length (1.0).
+    for (let i = 0; i < s.edges.length; i++) {
+      if (isWrapEdge(s, i)) continue;
+      const e = s.edges[i];
+      const tp = s.positions[e.tail], hp = s.positions[e.head];
+      const dist = Math.hypot(hp[0] - tp[0], hp[1] - tp[1]);
+      assertApprox(dist, 1.0, 1e-12, `non-wrap edge ${i}:`);
+    }
+  });
+
+  test('partial periodic: y-only wraps along j axis', () => {
+    const s = build2D(3, 3, { periodic_x: false, periodic_y: true });
+    // A(0, j) has no left-cell edge for any j (x not periodic).
+    // A(i, 0) has a below-cell edge that wraps to j = ny-1 (y is periodic).
+    // Expected edges: same-cell 9 + left-cell (i>=1, j=0,1,2) = 6 + below-cell (j>=1 OR periodic_y) = 9 = 24.
+    assertEq(s.edges.length, 24);
+  });
+});
+
+/* ── Y-junction scattering at coord 3 ────────────────────── */
+
+group('Y-junction scattering S = (2/3)·J − I', () => {
+  test('hub register {1, 0, 0} after inhale → {−1/3, +2/3, +2/3}', () => {
+    const s = buildYTree(2);
+    s.nodes[0].registers[0] = 1.0;
+    applyInhale(s);
+    assertApprox(s.nodes[0].registers[0], -1/3, 1e-12, 'reflection R:');
+    assertApprox(s.nodes[0].registers[1],  2/3, 1e-12, 'T arm 1:');
+    assertApprox(s.nodes[0].registers[2],  2/3, 1e-12, 'T arm 2:');
+    // Energy preservation: R² + 2T² = 1/9 + 8/9 = 1
+    const E = s.nodes[0].registers.reduce((acc, r) => acc + r*r, 0);
+    assertApprox(E, 1.0, 1e-12, 'scattered energy:');
+  });
+
+  test('inhale-then-exhale: scattered values land at first arm nodes', () => {
+    // Seed arrives at the hub (in the arm-0 register) and then scatters.
+    // The natural order is inhale-first (scatter), then exhale (propagate
+    // the scattered values out along each arm). fullStep() starts with
+    // exhale, so we drive inhale + exhale directly here.
+    const armLength = 3;
+    const s = buildYTree(armLength);
+    s.nodes[0].registers[0] = 1.0;
+    applyInhale(s);
+    applyExhale(s);
+    // After scattering: hub is all zero, first nodes of each arm hold
+    // R = −1/3 (arm 0) and T = +2/3 (arms 1, 2).
+    assertApprox(s.nodes[1].registers[0], -1/3, 1e-12, 'arm 0 first node:');
+    const arm1First = 1 + armLength;
+    const arm2First = 1 + 2 * armLength;
+    assertApprox(s.nodes[arm1First].registers[0], 2/3, 1e-12, 'arm 1 first node:');
+    assertApprox(s.nodes[arm2First].registers[0], 2/3, 1e-12, 'arm 2 first node:');
+    // Hub fully evacuated.
+    for (let k = 0; k < 3; k++) assertApprox(s.nodes[0].registers[k], 0, 1e-12);
+  });
+});
+
+/* ── 2D energy conservation ──────────────────────────────── */
+
+group('2D energy conservation', () => {
+  test('hex torus 3×3: energy preserved over 50 cycles', () => {
+    const s = build2D(3, 3, { periodic_x: true, periodic_y: true });
+    // Seed every register with a deterministic-ish nonzero pattern.
+    let seed = 0;
+    for (const n of s.nodes) {
+      for (let k = 0; k < n.registers.length; k++) {
+        n.registers[k] = Math.sin(0.7 * (++seed)) * 2.0;
+      }
+    }
+    const E0 = totalEnergy(s);
+    let clock = 0;
+    for (let t = 0; t < 50; t++) clock = fullStep(s, null, clock);
+    assertApprox(totalEnergy(s), E0, 1e-9);
+  });
+
+  test('open hex 3×3: energy preserved over 50 cycles (mixed coordinations)', () => {
+    const s = build2D(3, 3);
+    let seed = 0;
+    for (const n of s.nodes) {
+      for (let k = 0; k < n.registers.length; k++) {
+        n.registers[k] = Math.cos(0.5 * (++seed));
+      }
+    }
+    const E0 = totalEnergy(s);
+    let clock = 0;
+    for (let t = 0; t < 50; t++) clock = fullStep(s, null, clock);
+    assertApprox(totalEnergy(s), E0, 1e-9);
+  });
+});
+
+/* ── 2D linearity ────────────────────────────────────────── */
+
+group('2D linearity', () => {
+  test('hex torus 3×3: A + B = AB after 5 cycles', () => {
+    const mkLat = () => build2D(3, 3, { periodic_x: true, periodic_y: true });
+    const sA = mkLat(), sB = mkLat(), sAB = mkLat();
+    sA.nodes[0].registers[0] = 1.0;
+    sB.nodes[5].registers[1] = -2.0;   // separate non-overlapping seed
+    sAB.nodes[0].registers[0] = 1.0;
+    sAB.nodes[5].registers[1] = -2.0;
+    let cA = 0, cB = 0, cAB = 0;
+    for (let t = 0; t < 5; t++) {
+      cA  = fullStep(sA, null, cA);
+      cB  = fullStep(sB, null, cB);
+      cAB = fullStep(sAB, null, cAB);
+    }
+    for (let n = 0; n < sA.nodes.length; n++) {
+      const ra = sA.nodes[n].registers, rb = sB.nodes[n].registers, rab = sAB.nodes[n].registers;
+      for (let s = 0; s < ra.length; s++) {
+        assertApprox(rab[s], ra[s] + rb[s], 1e-12, `node ${n} slot ${s}:`);
+      }
+    }
   });
 });
 

@@ -47,7 +47,7 @@ The visualizer supports three lattice dimensions, each with its own neighbor top
 - Open: N nodes, **N − 1 edges**.  No dangling stubs.  Boundary nodes have coordination 1.
 - Periodic: N nodes, **N edges**.  Every node has coordination 2.  The wrap edge connects node N − 1 back to node 0.
 
-The simple node and edge lay flat in xz so the chain runs along x and each node circle's plane is in xz, normal up (y).  The edge intersects the circle from outside.
+The simple node and edge lay flat in xz so the chain runs along x and each node circle's plane is in xz, normal up (y).  The edge intersects the circle from outside.  The `Edge` slider sets the **nominal center-to-center distance** between adjacent nodes; the visible tube length between rims is therefore `edgeLen − nodeDiam`.
 
 When **periodic** but **not wrapped** visually, the chain is drawn flat and the wrap edge is rendered as **two short half-edge stubs**, one extending past each end of the chain, faded slightly so the eye reads them as "this connects around to the other side."  The two stubs together represent the single wrap edge logically.  When **periodic** *and* **wrapped**, the chain rolls into a vertical ring (ferris wheel: axle along z, ring in the xy plane, nodes spaced around the rim).  When **open** *and* **wrapped**, the chain is rolled into an arc with one rim segment missing.
 
@@ -55,9 +55,27 @@ When **periodic** but **not wrapped** visually, the chain is drawn flat and the 
 
 Each interior node has coordination 3, with three edges meeting at 120° angles.  The lattice tiles the plane in a hexagonal pattern: when viewed by its hex *openings*, the pattern reads as hexagons; when viewed by the wye-junction at each node, the pattern reads as alternating Y and inverted-Y junctions (some nodes have one edge pointing up and two pointing down, others one edge pointing down and two pointing up).  These up- and down-wyes are *geometric mirror images*, not functionally different objects.
 
-Layout: nodes lie in the xz plane (y = 0); the lattice runs `nx` cells in one lattice direction and `ny` in the other.  Periodicity is per-axis: x can be periodic, z can be periodic, both, or neither.
+Layout: nodes lie in the xz plane (y = 0); the lattice runs `Nx` cells in one lattice direction and `Ny` in the other.  Periodicity is per-axis: x can be periodic, z can be periodic, both, or neither.
 
-When an axis is **periodic** but **not wrapped**, the wrap edges along that axis are rendered as short half-edge stubs at both ends of each affected row (1D treatment generalized).  When an axis is **wrapped** as well, that axis is rolled into a ring, and the sheet curves into a cylinder.  When *both* axes are periodic and wrapped, the sheet closes into a **torus**.  The torus geometry is computed so that the lattice tiles the surface cleanly — the major and minor radii are derived from `nx` and `ny` so that plaquettes close exactly when mapped onto the torus surface, no visible seam.
+#### Closure constraint
+
+The lattice's two basis vectors a₁ and a₂ are at 60°, not 90°, so a hex sheet does *not* tile an arbitrary rectangle on a torus surface.  For the lattice to close cleanly into a torus when wrapped, `Ny` must be a multiple of `2·Nx`:
+
+> Ny = 2·k·Nx     for some integer k ≥ 1
+
+This is the *untwisted closure condition* — going once around the minor loop (`Ny` rows in the a₂ direction) traverses `k` full revolutions of the major loop (k · `Nx` columns in the a₁ direction), which is identically zero in the major-loop quotient.  No shear in the embedding; cells line up cleanly at the seam.
+
+The user picks `Nx` freely; the `Ny` input is constrained to multiples of `2·Nx` (the spinner step matches, and any typed value snaps to the nearest multiple).  This rule applies in both the flat configuration and the wrapped configuration so that toggling **Wrap** on or off never invalidates the lattice.
+
+#### Wrap behavior
+
+A single global **Wrap** toggle governs visual closure for both 1D and 2D:
+
+- **1D + Wrap**: requires `Periodic`; rolls the chain into a vertical ring (ferris wheel).
+- **2D + Wrap**: requires both `Periodic X` and `Periodic Y`; embeds the sheet onto a 3D torus (axle along world Y, major loop in the XZ plane).
+- **Wrap with insufficient periodicity**: rendered as the corresponding flat layout (no-op).
+
+When a 2D axis is **periodic** but the sheet is **not wrapped**, the wrap edges along that axis are rendered as short half-edge stubs at both ends of each affected row (1D treatment generalized to 2D).
 
 ### 3D — diamond lattice
 

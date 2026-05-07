@@ -51,6 +51,7 @@
   border: 1px solid rgba(255,255,255,0.06);
 }
 .label.l-stub { color: #c0c0c0; opacity: 0.85; font-style: italic; }
+.dim-1d, .dim-2d { display: inline-flex; }   /* default; toggled by JS based on Dim */
 </style>
 </head>
 <body>
@@ -59,10 +60,33 @@
   <h1>Grid Lab</h1><div class="sep"></div>
 
   <div class="cg">
+    <label>Dim</label>
+    <select id="sel-dim">
+      <option value="1">1D</option>
+      <option value="2">2D hex</option>
+    </select>
+  </div>
+
+  <!-- 1D-only controls -->
+  <div class="cg dim-1d">
     <label>N</label>
     <input type="number" id="in-N" min="2" max="64" step="1" value="6">
   </div>
-  <div class="cg tog"><label><input type="checkbox" id="cb-periodic"> Periodic</label></div>
+  <div class="cg tog dim-1d"><label><input type="checkbox" id="cb-periodic"> Periodic</label></div>
+
+  <!-- 2D-only controls -->
+  <div class="cg dim-2d">
+    <label>Nx</label>
+    <input type="number" id="in-Nx" min="2" max="32" step="1" value="4">
+  </div>
+  <div class="cg dim-2d">
+    <label>Ny</label>
+    <input type="number" id="in-Ny" min="2" max="256" step="2" value="8">
+  </div>
+  <div class="cg tog dim-2d"><label><input type="checkbox" id="cb-px"> Periodic X</label></div>
+  <div class="cg tog dim-2d"><label><input type="checkbox" id="cb-py"> Periodic Y</label></div>
+
+  <!-- Shared wrap toggle: 1D ring (when periodic) or 2D torus (when both axes periodic). -->
   <div class="cg tog"><label><input type="checkbox" id="cb-wrap"> Wrap</label></div>
 
   <div class="sep"></div>
@@ -150,13 +174,14 @@
 <script type="module">
 import { THREE, createScene, autoResize, animLoop, PALETTE } from './totu-viz.js';
 import {
-  build1D,
+  build1D, build2D,
   clear as engineClear,
   halfStep as engineHalfStep,
   applyPreset as engineApplyPreset,
   getEdgeRegisters,
   setEdgeRegister,
   totalEnergy,
+  isWrapEdge,
 } from './grid-engine.js';
 
 const $ = id => document.getElementById(id);
@@ -168,9 +193,16 @@ const PROF_KEY  = 'grid-lab-profiles';
 /* ── State ─────────────────────────────────────────────── */
 
 const DEFAULT = {
+  dim: 1,
+  // 1D
   N: 6,
   periodic: false,      // logical wrap-around (engine-level)
-  wrap: false,          // visual ring layout (rendering-only)
+  wrap: false,          // visual ring layout (1D only, for now)
+  // 2D — Ny must be a multiple of 2·Nx for an untwisted-torus embedding.
+  Nx: 4, Ny: 8,
+  periodic_x: false,
+  periodic_y: false,
+  // Visual / global
   nodeDiam: 0.6,
   edgeLen: 1.0,
   speed: 2.0,
@@ -197,6 +229,26 @@ function hydrateEngine(engine, snap) {
   }
 }
 
+// Snap Ny to the nearest multiple of 2·Nx (clamped to [2·Nx, 2·Nx·MAX_K]).
+// This is the closure condition for an untwisted torus embedding of the
+// hex lattice: Ny = 2·k·Nx for some integer k ≥ 1.
+const MAX_K = 16;
+function snapNy(nx, ny) {
+  const step = 2 * nx;
+  let k = Math.round(ny / step);
+  if (k < 1) k = 1;
+  if (k > MAX_K) k = MAX_K;
+  return step * k;
+}
+
+function buildEngine(s) {
+  if (s.dim === 2) {
+    s.Ny = snapNy(s.Nx, s.Ny);
+    return build2D(s.Nx, s.Ny, { periodic_x: s.periodic_x, periodic_y: s.periodic_y });
+  }
+  return build1D(s.N, { periodic: s.periodic });
+}
+
 function loadState() {
   let raw = {};
   try {
@@ -205,7 +257,7 @@ function loadState() {
   } catch {}
   const s = { ...DEFAULT };
   for (const k of Object.keys(DEFAULT)) if (raw[k] !== undefined) s[k] = raw[k];
-  s.engine = build1D(s.N, { periodic: s.periodic });
+  s.engine = buildEngine(s);
   hydrateEngine(s.engine, raw.registers);
   return s;
 }
@@ -267,23 +319,37 @@ const NODE_RING_BASE = new THREE.Color(0.30, 0.30, 0.36);
 
 /* ── Geometry layout ───────────────────────────────────── */
 
-function nodeFrame1D(i) {
-  const r = S.nodeDiam / 2;
-  const step = S.nodeDiam + S.edgeLen;
-  const x = (i - (S.N - 1) / 2) * step;
+// edgeLen is the nominal center-to-center distance between adjacent nodes.
+// The visible tube length is edgeLen − nodeDiam (rim to rim).
+
+// Layout produces a per-node frame: { pos, localX, localY, localZ, r }
+// localX/Y/Z are an orthonormal basis; the node ring lies in the plane
+// spanned by localX/localY with normal along localZ.
+//
+// Three layout modes:
+//   - 1D flat  — chain along world X
+//   - 1D ring  — ferris wheel in world XY (axle = world Z)
+//   - 2D flat  — hex sheet in world XZ (normals = world +Y)
+//
+// All flat layouts share the same orientation; only positions differ.
+
+function flatBasis() {
   return {
-    pos:    new THREE.Vector3(x, 0, 0),
     localX: new THREE.Vector3(1, 0, 0),
     localY: new THREE.Vector3(0, 0, -1),
     localZ: new THREE.Vector3(0, 1, 0),
-    r,
   };
+}
+
+function nodeFrame1D(i) {
+  const r = S.nodeDiam / 2;
+  const x = (i - (S.N - 1) / 2) * S.edgeLen;
+  return { pos: new THREE.Vector3(x, 0, 0), ...flatBasis(), r };
 }
 
 function nodeFrameRing(i) {
   const r = S.nodeDiam / 2;
-  const chord = S.nodeDiam + S.edgeLen;
-  const R = chord / (2 * Math.sin(Math.PI / S.N));
+  const R = S.edgeLen / (2 * Math.sin(Math.PI / S.N));
   const theta = i * TAU / S.N;
   const c = Math.cos(theta), s = Math.sin(theta);
   return {
@@ -295,7 +361,125 @@ function nodeFrameRing(i) {
   };
 }
 
-function nodeFrame(i) { return S.wrap ? nodeFrameRing(i) : nodeFrame1D(i); }
+// 2D flat: read engine.positions (lattice coords), centroid-shift, scale by edgeLen.
+// Lattice (x, y) → world (x, 0, y). World y is up; the sheet lies in xz.
+function nodeFrame2DFlat(i, centroid) {
+  const r = S.nodeDiam / 2;
+  const p = S.engine.positions[i];
+  return {
+    pos: new THREE.Vector3(
+      (p[0] - centroid[0]) * S.edgeLen, 0,
+      (p[1] - centroid[1]) * S.edgeLen,
+    ),
+    ...flatBasis(),
+    r,
+  };
+}
+
+function computeCentroid(state) {
+  let sx = 0, sy = 0;
+  for (const p of state.positions) { sx += p[0]; sy += p[1]; }
+  return [sx / state.positions.length, sy / state.positions.length];
+}
+
+// 2D torus embedding (wrap mode with both axes periodic).
+//
+// With Ny = 2·k·Nx (the closure constraint), the lattice tiles a 3D torus
+// without twist. The embedding identifies:
+//   φ = 2π · (i + j/2) / Nx     (preserves hex skew along â₁)
+//   θ = 2π · j / Ny             (full minor revolution after Ny rows)
+//
+// World position (axle along Y, major loop in XZ plane):
+//   x = (R + r·cosθ) · cosφ
+//   y = r·sinθ
+//   z = (R + r·cosθ) · sinφ
+//
+// Major and minor radii are picked for visual aesthetic (R > r); the
+// lattice cells are slightly compressed in θ for k = 1 to keep the
+// torus non-self-intersecting.
+function torusRadii() {
+  const R = Math.max(1.0, S.Nx * S.edgeLen * 0.5);
+  const r = R * 0.45;
+  return { R, r };
+}
+
+function decompose2D(idx) {
+  const sublat = idx & 1;
+  const cell   = idx >> 1;
+  const i      = cell % S.Nx;
+  const j      = (cell - i) / S.Nx;
+  return { i, j, sublat };
+}
+
+function nodeFrame2DTorus(idx) {
+  const { R, r } = torusRadii();
+  const r_disk = S.nodeDiam / 2;
+  const { i, j, sublat } = decompose2D(idx);
+  // Sublattice B sits at d_AB within the cell (= a₁/3 + a₂/3).
+  let ie = i, je = j;
+  if (sublat === 1) { ie += 1/3; je += 1/3; }
+
+  const phi   = 2 * Math.PI * (ie + je / 2) / S.Nx;
+  const theta = 2 * Math.PI * je / S.Ny;
+  const cP = Math.cos(phi),   sP = Math.sin(phi);
+  const cT = Math.cos(theta), sT = Math.sin(theta);
+
+  const pos = new THREE.Vector3(
+    (R + r * cT) * cP,
+    r * sT,
+    (R + r * cT) * sP,
+  );
+  // localZ = surface normal (radially outward from tube center)
+  const localZ = new THREE.Vector3(cT * cP, sT, cT * sP);
+  // localX = tangent along major (φ) direction
+  const localX = new THREE.Vector3(-sP, 0, cP);
+  // localY = localZ × localX (tangent along minor (θ) direction)
+  const localY = new THREE.Vector3().crossVectors(localZ, localX).normalize();
+  return { pos, localX, localY, localZ, r: r_disk };
+}
+
+function isTorusLayout() {
+  return S.dim === 2 && S.wrap && S.periodic_x && S.periodic_y;
+}
+
+function makeFrames() {
+  const N = S.engine.nodes.length;
+  const frames = new Array(N);
+  if (S.dim === 1 && S.wrap) {
+    for (let i = 0; i < N; i++) frames[i] = nodeFrameRing(i);
+  } else if (S.dim === 1) {
+    for (let i = 0; i < N; i++) frames[i] = nodeFrame1D(i);
+  } else if (isTorusLayout()) {
+    for (let i = 0; i < N; i++) frames[i] = nodeFrame2DTorus(i);
+  } else {
+    const centroid = computeCentroid(S.engine);
+    for (let i = 0; i < N; i++) frames[i] = nodeFrame2DFlat(i, centroid);
+  }
+  return frames;
+}
+
+// World-space direction "from tail toward head" for a given edge.
+// In ring/torus layouts we use the chord direction (since the lattice
+// is bridged by the visual closure); in flat layouts we use the engine's
+// per-edge displacement (lattice short-image), which gives the right
+// direction for both wrap and non-wrap edges.
+function edgeWorldDir(state, ei, frames) {
+  const e = state.edges[ei];
+  if ((S.dim === 1 && S.wrap) || isTorusLayout()) {
+    return frames[e.head].pos.clone().sub(frames[e.tail].pos).normalize();
+  }
+  const d = e.displacement;
+  return new THREE.Vector3(d[0], 0, d[1]).normalize();
+}
+
+// Whether to render an edge as two faded boundary stubs. Ring/torus
+// layouts bridge their lattice wraps, so no stubs there; flat layouts
+// stub every wrap edge.
+function shouldStub(state, ei) {
+  if (S.dim === 1 && S.wrap) return false;
+  if (isTorusLayout()) return false;
+  return isWrapEdge(state, ei);
+}
 
 /* ── Build / rebuild ───────────────────────────────────── */
 
@@ -344,9 +528,11 @@ function buildHalfMesh(p0, p1, tag, opacity = 1.0) {
 function buildGraph() {
   clearGraph();
 
+  const frames = makeFrames();
+
   // Nodes — uniform circular ring, no phase dot.
-  for (let i = 0; i < S.N; i++) {
-    const f = nodeFrame(i);
+  for (let i = 0; i < frames.length; i++) {
+    const f = frames[i];
     const group = new THREE.Group();
     group.position.copy(f.pos);
     group.quaternion.setFromRotationMatrix(
@@ -363,26 +549,22 @@ function buildGraph() {
     nodes.push({ group, ringMat, ring, frame: f });
   }
 
-  // Edges — each edge → two half-meshes (tail half + head half).
-  // The wrap edge in flat-periodic mode renders as two stub half-meshes
-  // pointing outward from the boundary nodes; in any other configuration
-  // (open, or wrapped) it renders as a normal edge with two halves.
-  const step = S.nodeDiam + S.edgeLen;
-  const longThreshold = step * 1.5;
-
+  // Edges — each edge → two half-meshes (tail half + head half), or
+  // (when the edge wraps a periodic boundary in a flat layout) two
+  // faded stub half-meshes extending outward from the two boundary nodes.
   for (let ei = 0; ei < S.engine.edges.length; ei++) {
     const eng = S.engine.edges[ei];
-    const a = nodes[eng.tail].frame;
-    const b = nodes[eng.head].frame;
-    const tailAttach = a.pos.clone().addScaledVector(a.localX, +a.r);
-    const headAttach = b.pos.clone().addScaledVector(b.localX, -b.r);
-    const span = headAttach.clone().sub(tailAttach).length();
-    const isStub = span > longThreshold;
+    const a = frames[eng.tail], b = frames[eng.head];
+    const dir = edgeWorldDir(S.engine, ei, frames);
+    const tailAttach = a.pos.clone().addScaledVector(dir, +a.r);
+    const headAttach = b.pos.clone().addScaledVector(dir, -b.r);
+    const isStub = shouldStub(S.engine, ei);
 
     const halves = [];
     if (!isStub) {
-      // Normal edge: two halves meeting at midpoint
-      const mid = tailAttach.clone().addScaledVector(headAttach.clone().sub(tailAttach), 0.5);
+      const mid = tailAttach.clone().addScaledVector(
+        headAttach.clone().sub(tailAttach), 0.5,
+      );
       const tailHalf = buildHalfMesh(tailAttach, mid,
         { kind: 'reg', edgeIdx: ei, end: 'tail' });
       const headHalf = buildHalfMesh(mid, headAttach,
@@ -393,15 +575,13 @@ function buildGraph() {
         { ...headHalf, label: makeLabel(), end: 'head' },
       );
     } else {
-      // Stubbed wrap edge: each end gets a stub of length edgeLen·STUB_FRACTION
-      // pointing along the boundary node's outward direction.
-      const stubLen = S.edgeLen * STUB_FRACTION;
-      // tail stub: from tail node's rim outward along +localX
-      const tailFar = tailAttach.clone().addScaledVector(a.localX, stubLen);
+      const stubLen = Math.max(0.05, (S.edgeLen - S.nodeDiam) * STUB_FRACTION);
+      // tail stub: extends in +dir (outward at tail boundary)
+      const tailFar = tailAttach.clone().addScaledVector(dir, stubLen);
       const tailHalf = buildHalfMesh(tailAttach, tailFar,
         { kind: 'reg', edgeIdx: ei, end: 'tail' }, 0.7);
-      // head stub: from head node's rim outward along −localX (opposite side of head node)
-      const headFar = headAttach.clone().addScaledVector(b.localX, -stubLen);
+      // head stub: extends in −dir (outward at head boundary)
+      const headFar = headAttach.clone().addScaledVector(dir, -stubLen);
       const headHalf = buildHalfMesh(headAttach, headFar,
         { kind: 'reg', edgeIdx: ei, end: 'head' }, 0.7);
       graphGroup.add(tailHalf.mesh, headHalf.mesh);
@@ -590,26 +770,40 @@ $('pop-input').addEventListener('keydown', e => {
 /* ── Camera fit ────────────────────────────────────────── */
 
 function fitCamera() {
-  let extent;
-  if (S.wrap) {
-    const chord = S.nodeDiam + S.edgeLen;
-    const R = chord / (2 * Math.sin(Math.PI / S.N));
-    extent = R * 2 + S.nodeDiam;
-  } else {
-    extent = (S.N - 1) * (S.nodeDiam + S.edgeLen) + S.nodeDiam + S.edgeLen;
+  // Find the layout's extent by sampling node positions in the current frames.
+  const frames = makeFrames();
+  let minX =  Infinity, maxX = -Infinity;
+  let minZ =  Infinity, maxZ = -Infinity;
+  let minY =  Infinity, maxY = -Infinity;
+  for (const f of frames) {
+    minX = Math.min(minX, f.pos.x); maxX = Math.max(maxX, f.pos.x);
+    minY = Math.min(minY, f.pos.y); maxY = Math.max(maxY, f.pos.y);
+    minZ = Math.min(minZ, f.pos.z); maxZ = Math.max(maxZ, f.pos.z);
   }
+  const cx = (minX + maxX) / 2, cy = (minY + maxY) / 2, cz = (minZ + maxZ) / 2;
+  const extent = Math.max(maxX - minX, maxY - minY, maxZ - minZ) + S.edgeLen;
   const d = Math.max(2.5, extent * 0.85);
-  camera.position.set(0, d * 0.55, d * 1.1);
-  controls.target.set(0, 0, 0);
+  camera.position.set(cx, cy + d * 0.55, cz + d * 1.1);
+  controls.target.set(cx, cy, cz);
   controls.update();
 }
 
 /* ── Info line ─────────────────────────────────────────── */
 
 function updateInfo() {
-  const topo = (S.periodic ? 'periodic' : 'open') + (S.wrap ? ' · wrapped' : '');
+  let topo;
+  if (S.dim === 1) {
+    topo = `1D · ${S.periodic ? 'periodic' : 'open'}${S.wrap ? ' · ring' : ''} · N=${S.N}`;
+  } else {
+    const px = S.periodic_x ? 'X' : '';
+    const py = S.periodic_y ? 'Y' : '';
+    const pflag = (px || py) ? `periodic ${px}${py}` : 'open';
+    const k = S.Ny / (2 * S.Nx);
+    const toroidal = isTorusLayout() ? ` · torus (k=${k})` : '';
+    topo = `2D hex · ${pflag} · ${S.Nx}×${S.Ny}${toroidal}`;
+  }
   $('info').textContent =
-    `${topo} · N=${S.N} · edges=${S.engine.edges.length}` +
+    `${topo} · nodes=${S.engine.nodes.length} · edges=${S.engine.edges.length}` +
     ` · model: scattering` +
     ` · range: ±${S.heatRange.toFixed(1)}${S.autoScale ? ' (auto)' : ''}` +
     ` · energy: ${totalEnergy(S.engine).toFixed(3)}`;
@@ -654,9 +848,10 @@ $('sel-prof').onchange = () => {
   const loaded = profs[name];
   S = { ...DEFAULT };
   for (const k of Object.keys(DEFAULT)) if (loaded[k] !== undefined) S[k] = loaded[k];
-  S.engine = build1D(S.N, { periodic: S.periodic });
+  S.engine = buildEngine(S);
   hydrateEngine(S.engine, loaded.registers);
   syncControls();
+  applyDimVisibility();
   buildGraph();
   fitCamera();
   updateInfo();
@@ -666,9 +861,17 @@ $('sel-prof').onchange = () => {
 /* ── Control bindings ──────────────────────────────────── */
 
 function syncControls() {
+  $('sel-dim').value   = String(S.dim);
   $('in-N').value      = S.N;
   $('cb-periodic').checked = S.periodic;
   $('cb-wrap').checked = S.wrap;
+  $('in-Nx').value     = S.Nx;
+  $('in-Ny').value     = S.Ny;
+  // Ny step/min track Nx so up/down arrows produce valid (closeable) values.
+  $('in-Ny').step      = String(2 * S.Nx);
+  $('in-Ny').min       = String(2 * S.Nx);
+  $('cb-px').checked   = S.periodic_x;
+  $('cb-py').checked   = S.periodic_y;
   $('sel-preset').value = '';
   $('sl-diam').value   = S.nodeDiam;  $('v-diam').textContent = S.nodeDiam.toFixed(2);
   $('sl-edge').value   = S.edgeLen;   $('v-edge').textContent = S.edgeLen.toFixed(2);
@@ -679,15 +882,39 @@ function syncControls() {
   $('clock-display').textContent = clockState;
 }
 
+function applyDimVisibility() {
+  const d = S.dim;
+  for (const el of document.querySelectorAll('.dim-1d')) {
+    el.style.display = (d === 1) ? '' : 'none';
+  }
+  for (const el of document.querySelectorAll('.dim-2d')) {
+    el.style.display = (d === 2) ? '' : 'none';
+  }
+  // Presets are 1D-only for now; 2D MVP relies on click-to-set.
+  $('sel-preset').disabled = (d !== 1);
+}
+
 function rebuildGraphFromState() {
   const snap = snapshotRegisters(S.engine);
-  S.engine = build1D(S.N, { periodic: S.periodic });
+  S.engine = buildEngine(S);
   hydrateEngine(S.engine, snap);
   buildGraph();
   updateInfo();
   saveState();
 }
 
+$('sel-dim').onchange = e => {
+  S.dim = parseInt(e.target.value, 10);
+  applyDimVisibility();
+  // Switching dim discards register state (shapes don't match) and resets clock.
+  S.engine = buildEngine(S);
+  clockState = 0;
+  $('clock-display').textContent = 0;
+  buildGraph();
+  fitCamera();
+  updateInfo();
+  saveState();
+};
 $('in-N').oninput = e => {
   let n = parseInt(e.target.value, 10);
   if (!Number.isFinite(n)) return;
@@ -705,6 +932,30 @@ $('cb-wrap').onchange = e => {
   updateInfo();
   saveState();
 };
+$('in-Nx').oninput = e => {
+  let n = parseInt(e.target.value, 10);
+  if (!Number.isFinite(n)) return;
+  n = Math.max(2, Math.min(32, n));
+  if (n === S.Nx) return;
+  S.Nx = n;
+  S.Ny = snapNy(S.Nx, S.Ny);
+  $('in-Ny').value = S.Ny;
+  rebuildGraphFromState();
+  fitCamera();
+};
+$('in-Ny').oninput = e => {
+  let n = parseInt(e.target.value, 10);
+  if (!Number.isFinite(n)) return;
+  const snapped = snapNy(S.Nx, n);
+  if (snapped === S.Ny) return;
+  S.Ny = snapped;
+  // Reflect the snapped value back to the input so the user sees what landed.
+  $('in-Ny').value = S.Ny;
+  rebuildGraphFromState();
+  fitCamera();
+};
+$('cb-px').onchange = e => { S.periodic_x = e.target.checked; rebuildGraphFromState(); };
+$('cb-py').onchange = e => { S.periodic_y = e.target.checked; rebuildGraphFromState(); };
 $('sel-preset').onchange = e => {
   const name = e.target.value;
   if (!name) return;
@@ -758,6 +1009,7 @@ $('btn-fit').onclick = fitCamera;
 /* ── Bootstrap ─────────────────────────────────────────── */
 
 syncControls();
+applyDimVisibility();
 buildGraph();
 applyLabelVisibility();
 fitCamera();
