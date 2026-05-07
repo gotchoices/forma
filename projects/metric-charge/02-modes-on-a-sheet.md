@@ -9,7 +9,7 @@ This chapter takes the givens of [Chapter 1](01-foundation.md) — the manifold 
 
 This chapter does not re-derive any of those. It cites them and specializes their results to the metric-charge setting (continuum 2-torus rather than discrete lattice; spacetime embedding rather than abstract substrate).
 
-The chapter's distinctive job is the spacetime-side framing: identifying the (0, 0) zero mode with massless propagation in (S₁, S₂), naming the single-axis (m, 0) and (0, n) modes as **L2-embedded-in-L3** candidates for closure-failure mass-only states (a candidate structural origin of neutrino-class neutrality), and setting up the (m, n) labels for use in chapters 3–9.
+The chapter's distinctive job is the spacetime-side framing: identifying the (0, 0) zero mode with massless propagation in (S₁, S₂), naming the single-axis (m, 0) and (0, n) modes as **L2-embedded-in-L3** candidates for closure-failure mass-only states (candidate structural origins of *non-charged massive states* — neutrinos, dark matter, certain neutral hadrons, etc., without commitment to which), and setting up the (m, n) labels for use in chapters 3–9.
 
 ---
 
@@ -238,7 +238,7 @@ Per Chapter 1 §10's three-view formulation, single-axis modes **fail the closur
 - *Phase-pattern:* one of u or w lacks a complete standing wave (because the wave doesn't wind through that direction at all).
 - *Metric-side (chapter 5):* the off-diagonal metric entries sourced by these modes don't form a valid gauge-potential pattern.
 
-Single-axis modes therefore produce **mass without observable charge**. They are the candidate structural origin of neutrino-class neutrality on a single sheet — a geometric, not pair-cancellation, mechanism for "massive but neutral." Chapter 4 will interrogate them further.
+Single-axis modes therefore produce **mass without observable charge**. They are candidate structural origins of *non-charged massive states* on a single sheet — a geometric, not pair-cancellation, mechanism for "massive but neutral." Standard physics has multiple non-charged massive categories (neutrinos, dark matter, certain neutral hadrons, the Higgs); which (if any) of these correspond to the framework's single-axis modes is open MaSt-correspondence work. Chapter 4 will interrogate the closure-failing modes further.
 
 This distinction — between mass that arises from a single winding (L2-in-L3) and charge that requires both (full L3) — is a clean structural separation that grid-duality's wrap-promotion ladder makes available. The metric-charge framework imports the distinction directly.
 

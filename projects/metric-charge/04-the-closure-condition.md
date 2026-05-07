@@ -125,7 +125,7 @@ Modes with m = 1 (or by convention symmetry the equivalent m = n form with the r
 
 Notable members:
 
-- **(1, 2)**: a closure-satisfying T(1, 2) primitive. MaSt model-F (per [matter-from-light §4](../../papers/matter-from-light.md)) has independently proposed identifying this mode with what standard physics calls the electron, via the geometric derivation of spin-1/2 from the 1:2 winding ratio: ℓ = E/ω = ℏ/2. The framework here treats that proposal as a candidate correspondence — a reference target to compare results against — not an axiomatic input. Whether the framework's predictions for this mode match what standard physics calls "the electron" under detailed property comparison is downstream MaSt-correspondence work.
+- **(1, 2)**: a closure-satisfying T(1, 2) primitive. MaSt model-F has independently proposed identifying this mode with what standard physics calls the electron. The metric-charge framework here treats that proposal as a candidate correspondence — a reference target to compare results against — not an axiomatic input. The framework does not commit to a specific spin-derivation for this mode; observed pattern is that the 2-torus substrate appears to carry spin-1/2-like structure (per [Chapter 3 §5](03-knots-on-the-torus.md)), with the geometric derivation of spin from substrate dimensionality left as open work. Whether the framework's predictions for this mode match what standard physics calls "the electron" under detailed property comparison is downstream MaSt-correspondence work.
 - **(1, 3), (1, 4), ...**: closure-satisfying primitives with progressively larger n. Heavier than (1, 2) by the rest-mass formula of [Chapter 2 §3](02-modes-on-a-sheet.md). Candidate states that *might* correspond to what standard physics calls further-generation leptons; the identification is open.
 
 These are the framework's primitive charged states. Every closure-satisfying configuration is built from T(1, q) primitives — either as a singleton (this section) or as a multi-component repetition (§4.3).
@@ -175,7 +175,7 @@ The full inventory at the linearized wave-equation level:
 |---|---|---|---|
 | Light (0, 0) | Fails | — | photon |
 | Single-axis (m, 0), (0, n) | Fails (one winding zero) | — | candidate neutral massive state |
-| T(1, 2) primitive | ✓ | 1 | candidate electron (model-F per matter-from-light §4) |
+| T(1, 2) primitive | ✓ | 1 | candidate electron (MaSt model-F reference target) |
 | T(1, 3), T(1, 4), … primitives | ✓ | 1 | candidate further leptons; not yet specifically proposed |
 | Genuine torus knot T(2, 3), T(2, 5), T(3, 4), … | **Fails (synchronization)** | — | candidate neutral massive state — distinct from single-axis category |
 | Multi-link T(k, k·q) = k × T(1, q), k ≥ 2 | ✓ (k-fold) | 1/k | candidate quark (k = 3, q = 2) and other multi-link states |
@@ -236,7 +236,7 @@ Under the synchronization closure rule, the predicted inventory partitions into 
 
 ### 6.1 Charged states (closure-satisfying)
 
-- **T(1, q) primitives** — single charged particles built from the simplest closure-satisfying winding (m = 1 trivially divides any n). Topologically unknots in 3-space. (1, 2) is a candidate electron identification (model-F per matter-from-light §4); (1, 3), (1, 4), ... are candidate further generations.
+- **T(1, q) primitives** — single charged particles built from the simplest closure-satisfying winding (m = 1 trivially divides any n). Topologically unknots in 3-space. (1, 2) is a candidate electron identification (MaSt model-F reference target); (1, 3), (1, 4), ... are candidate further generations.
 
 - **Multi-link T(k, k·q) configurations = k × T(1, q)** — k phased copies of a T(1, q) primitive, with each component carrying 1/k of the link's total charge. (3, 6) = 3 × T(1, 2) at k = 3 is a candidate quark identification.
 

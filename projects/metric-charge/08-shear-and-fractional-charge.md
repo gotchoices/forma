@@ -143,7 +143,24 @@ So the framework's fractional-charge prediction is consistent with grid-duality'
 
 Whether the framework's specific predictions (k_opt, charge magnitudes, mass ratios, link-stability conditions) match standard physics' quark properties under detailed comparison is downstream MaSt-correspondence work.
 
-<!--EC Have we proven that fractional charge exists?  If so, have we proven that it can't exist for long (i.e. isn't stable)?  If not, is that possible?  Or need it be the subject of metric-binding?  This question will lead to quark stability. -->
+### 7.4 What is and is not yet proven about fractional charge
+
+Three distinct claims about fractional charge sit in this chapter; it is worth separating what the framework derives from what it leaves open.
+
+**Proven (structurally):**
+
+- *Fractional-charge configurations exist as closure-satisfying states.* Multi-component links of the form k × T(1, q) satisfy synchronization (Chapter 4 §4.3); each component carries 1/k of the link's integer total charge as a structural fact of the multi-link decomposition (this section, §7.1–§7.3). The 1/k per component is not a separate physical postulate — it falls out of the link's geometry plus integer total quantization.
+- *Components are not closure-satisfying alone.* A single (1, q) primitive at a phase position within a k × T(1, q) link does not satisfy the synchronization rule on its own (Chapter 4 §4.3). Only the collective configuration with all k components in proper phase distribution closes.
+
+**Not proven — and forwarded to [metric-binding](../metric-binding/):**
+
+- *Whether fractional-charge states are stable in time.* The structural prediction is that components cannot exist in isolation as closure-satisfying configurations — this is consistent with confinement-like behavior. But "cannot exist in isolation as closure-satisfying" is weaker than "cannot exist in isolation at all": a component without closure would be a mass-only mode (single-axis or non-synchronizing diagonal), which is a permitted state in the framework, just not a charged one. Whether the energetic cost of separating one component from a multi-link is finite-but-large (giving long-lived but separable states) or genuinely infinite-in-the-limit (true confinement) requires an explicit energetics calculation across the separation.
+- *The energy cost of separation as a function of distance.* For two parts of a multi-link pulled apart in (S₁, S₂), what does E(separation) look like? Standard-physics' quark confinement comes from a linear potential at large distances (string tension); whether the framework reproduces that, or some other functional form, is a multi-knot-energetics calculation.
+- *Whether fractional-charge components can be created/destroyed independently.* Linear theory (this project) conserves (m, n) labels exactly; pair creation/annihilation is a nonlinear/quantum phenomenon outside scope here.
+
+**Where the stability question lives.** The "is fractional charge stable / can it be observed in isolation?" question is fundamentally a *multi-knot energetics* question — it requires comparing the energy of a multi-link configuration to the energy of its separated components as a function of separation. That calculation is the subject of [metric-binding](../metric-binding/), which is the follow-up project specifically focused on multi-knot configurations and binding energetics. metric-binding's chapters on binding/unbinding energetics are where the quark-stability question gets resolved within the framework.
+
+This chapter's claim is therefore: **fractional charge structurally exists** (as the per-component association inside closure-satisfying multi-links) **and structurally requires the collective configuration** (since components alone fail closure), **but the question of dynamical stability — whether components can be ripped apart, with what energy cost, and at what timescales — is forwarded to metric-binding.**
 
 ### 8. Summary — what shear adds to the inventory
 
@@ -179,6 +196,7 @@ This is the framework's full structural inventory at the linearized level. Wheth
 - **Does not provide a complete baryogenesis mechanism.** The CP-violation analog from §3 is one of three Sakharov ingredients; the others are not provided.
 - **Does not derive nonlinear shear effects.** Linear theory only. Whether large σ produces qualitatively different behavior (beyond the linear approximation breaking down) is downstream work.
 - **Does not analyze interaction between distinct three-component links.** Multi-knot energetics is metric-binding territory.
+- **Does not derive the dynamical stability of fractional-charge components.** §7.4 establishes that components are *structurally* non-isolable (they are not closure-satisfying alone), but the *energetics* of separating components — whether the energy cost grows linearly with distance (true confinement), saturates at finite value (separable but bound), or some other functional form — is a multi-knot energetics calculation forwarded to [metric-binding](../metric-binding/).
 - **Does not explain why σ_uw takes a specific value** on any given sheet. ε and σ are both treated as free parameters; whether they are dynamically determined is open.
 - **Does not commit to MaSt-correspondence assignments.** The fractional-charge / three-phase prediction matches the structural pattern of standard physics' quarks; specific identifications (which (m, n) corresponds to which quark family, etc.) are downstream work.
 
@@ -188,6 +206,7 @@ This is the framework's full structural inventory at the linearized level. Wheth
 
 | Q | Where it goes |
 |---|---|
+| Are fractional-charge components dynamically stable, or only structurally non-isolable? What is E(separation) for pulling one component out of a k × T(1, q) multi-link? | [metric-binding](../metric-binding/) — multi-knot energetics. The framework structurally predicts components are not closure-satisfying alone (per §7.4), but the energetics of separation (string-tension-like vs finite barrier) is a multi-knot calculation. |
 | Does the k = 3 selection follow from the local shear-cross-term structure alone, or does it require global topology (Z₃ from grid-duality) as an input? | Open; possibly resolved by grid-duality's substrate analysis |
 | Does the shear-induced CP-violation analog quantitatively match observed CP-violation magnitudes? | Downstream MaSt-correspondence work + experimental data |
 | Are there other multi-component links (k = 5, k = 7, ...) energetically favored at specific σ values, corresponding to potential exotic states? | Open follow-up; downstream investigation |

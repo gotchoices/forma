@@ -339,7 +339,7 @@ Both gravitational and electromagnetic bending emerge from the same off-diagonal
 - **Gravitational case:** the diagonal-metric perturbations from energy density (T_tt) dominate. Massive matter near a passing wave produces curvature; the wave bends along geodesics on the curved metric. Gauge potentials A_μ, B_μ are active too but typically much weaker in their effect on the wave's worldline at long range.
 - **EM case (refractive-index physics):** the gauge-potential off-diagonals dominate. Charged matter (closure-satisfying modes) couples to passing EM waves through the gauge-potential channel; the wave's phase velocity slows. Gravitational coupling is also present but typically dwarfed by α-mediated EM effects in atomic-scale matter.
 
-For closure-failing modes (single-axis): the holonomy mechanism still operates for the diagonal-metric perturbations (gravitational lensing from energy density), but not for the gauge-potential channel. Single-axis modes bend light gravitationally but produce no EM holonomy. Consistent with the structural property of mass without EM coupling — what standard physics ascribes to neutrinos.
+For closure-failing modes (single-axis): the holonomy mechanism still operates for the diagonal-metric perturbations (gravitational lensing from energy density), but not for the gauge-potential channel. Single-axis modes bend light gravitationally but produce no EM holonomy. Consistent with the structural property of mass without EM coupling — a property standard physics ascribes to multiple non-charged massive categories (neutrinos, dark matter candidates, certain neutral hadrons, the Higgs).
 
 ### 7.3 Observable predictions from the mechanism
 
@@ -347,10 +347,9 @@ Three predictions follow from the chain:
 
 1. **Gravitational lensing of light by mass** — emerges quantitatively from the chain in the linearized regime, agreeing with standard GR predictions to the order of approximation.
 2. **EM refractive index of matter** — emerges from the gauge-potential channel; the standard Lorentz-oscillator picture of refractive index becomes a special case of the holonomy mechanism evaluated in the closure-satisfying mode's gauge-potential channel.
-3. **Distinct gravitational-only behavior of single-axis (neutrino-class) modes** — they bend light gravitationally but show no EM coupling. This matches what standard physics observes for neutrinos (gravitational interaction only, no EM coupling).
+3. **Distinct gravitational-only behavior of single-axis modes** — they bend light gravitationally but show no EM coupling. This matches structural properties standard physics ascribes to non-charged massive states (neutrinos, dark matter candidates, the Higgs, certain neutral hadrons-in-isolation): gravitational interaction only, no EM coupling.
 
-The third prediction is the most distinctive of the framework: it predicts the existence of mass-only modes structurally, as the L2-in-L3 mass-only states of Chapter 2 §4. Standard physics calls these neutrinos and ascribes the same property; whether the framework's predictions for *which specific particles* these are matches the standard-physics inventory is downstream MaSt-correspondence work.
-<!--EC Not sure standard physics exclusively calls them neutrinos.  Might be more accurate to say that they are candidates for non-charged masses such as neutrinos and dark matter.  Would you agree? -->
+The third prediction is the most distinctive of the framework: it predicts the existence of mass-only modes structurally, as the L2-in-L3 mass-only states of Chapter 2 §4. Standard physics has multiple categories of non-charged massive states (neutrinos in three flavors, dark matter candidates, neutral mesons, the Higgs boson, neutral baryons); the framework's structural mass-only modes are candidates for any of these. Which framework state corresponds to which standard-physics category — or whether some categories are absent or duplicated under the framework's three-mechanism partition (single-axis, synchronization-failure, cancellation-pair) — is downstream MaSt-correspondence work.
 ---
 
 ## 8. What the framework reproduces and where it might differ
@@ -362,7 +361,7 @@ What the framework **reproduces** at the linearized level:
 - U(1) × U(1) gauge symmetry — the topology of [grid-duality §7.5.3](../grid-duality/07-wrap-promotion-modeling.md) emerges from the metric-side off-diagonal pattern.
 - Gauge-potential transformation properties — the four standard-physics properties of A_μ are all reproduced for each compact direction's off-diagonal set.
 - The holonomy structure of EM coupling to charged matter — the §7 chain provides this directly.
-- Structural neutrality of mass-only modes (the property standard physics ascribes to neutrinos) — single-axis modes have partial gauge structure that doesn't produce observable EM.
+- Structural neutrality of mass-only modes (the property standard physics ascribes to non-charged massive states such as neutrinos and dark matter) — single-axis modes have partial gauge structure that doesn't produce observable EM.
 - Gravitational lensing and Shapiro delay — emerges from diagonal-metric perturbations as a special case of the holonomy mechanism.
 
 Where the framework **might differ** from standard physics:
