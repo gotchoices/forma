@@ -65,17 +65,17 @@ So when this chapter speaks of "the mirror reflection," it is referring to the t
 
 This is the simplest discrete symmetry on knot space — sign reflection of both windings simultaneously. Examine its content from three angles.
 
-### 2.1 Topological content
+### 2.1 Geometric content — traversal orientation
 
-The (−m, −n) curve traces the same path in 3-space as (m, n), just in the opposite direction. As an *unoriented* curve, the two are identical. As *oriented* curves, they are inverses — opposite traversal direction.
+The (−m, −n) curve traces the same point set in 3-space as (m, n), just visited in the opposite order. Per [Chapter 1 §6.1](01-foundation.md), every closed curve on the 2-torus admits two orientations; the (m, n) → (−m, −n) operation is exactly the operation that switches between them. As an *unoriented* curve, the two configurations are identical; as *oriented* curves, they are inverses.
 
-This is the simplest topological identification on knot space: forgetting orientation. For our framework, orientation matters at the wave-equation level (the (m, n) labels are conserved as an integer pair, including signs), so the topological identification does not reduce the physical state space.
+The framework's primary label is the signed integer pair (m, n), and the sign tracks traversal orientation as a geometric property of the closed curve — not as an internal field-theoretic label. The orientation distinction is therefore *not* eliminated by working with a real-valued φ; it lives in the manifold's topology, not in the field's value space.
 
 ### 2.2 (m, n)-labeling content
 
-The framework treats (m, n) and (−m, −n) as **distinct conserved sectors**. Their integer labels are different; the wave equation conserves them separately. A (1, 2) mode and a (−1, −2) mode are different physical states even though they trace the same unoriented curve.
+The framework treats (m, n) and (−m, −n) as **distinct conserved sectors**. Their integer labels are different; the wave equation conserves them separately. A (1, 2) mode and a (−1, −2) mode are different physical states — they trace the same unoriented curve but with opposite traversal direction, and they carry opposite-sign compact-direction momenta.
 
-### 2.3 Physical content under the gauge-potential identification of Chapter 5
+### 2.3 Physical content under the gauge-potential analysis of Chapter 5
 
 The (−m, −n) mode has compact-direction momenta of opposite sign to (m, n):
 
@@ -84,11 +84,23 @@ $$
 p_u^{(-m,-n)} = -p_u^{(m,n)},\qquad p_w^{(-m,-n)} = -p_w^{(m,n)}
 $$
 
-Under the linearized Einstein analysis of [Chapter 5](05-metric-self-consistency.md), the off-diagonal stress-energy is T_μu ∝ p_u and T_μw ∝ p_w. So the (−m, −n) mode sources off-diagonals of opposite sign — corresponding to opposite gauge-potential charge under the standard-physics identification.
+This is a kinematic statement: a wave packet traveling around the closed curve in the opposite direction carries opposite-sign compact momentum. No internal field-theoretic structure is invoked.
 
-In standard-physics terms: (m, n) and (−m, −n) are configurations of opposite charge but identical mass and identical closure-eligibility. This is the structural property of what standard physics calls a particle and its antiparticle — the matter/antimatter axis.
+Under the linearized Einstein analysis of [Chapter 5](05-metric-self-consistency.md), the off-diagonal stress-energy is T_μu ∝ p_u and T_μw ∝ p_w. So the (−m, −n) mode sources off-diagonals of opposite sign. Under the geometric KK identification of [Chapter 5 §4](05-metric-self-consistency.md), this corresponds to opposite-sign coupling in each of the two U(1) gauge potentials.
 
-The framework's reflection has the same structural property. Whether the framework's (m, n) → (−m, −n) reflection corresponds to standard physics' antimatter is a downstream MaSt-correspondence question. We treat it as a candidate identification; the structural correspondence at the property level (opposite charge, same mass) holds, but identifying specific framework states with specific standard-physics particles requires quantitative work beyond this chapter's scope.
+### 2.4 What does this opposite-sign property correspond to physically?
+
+Open at this stage. The framework establishes that:
+
+- (m, n) and (−m, −n) are configurations of identical mass (energy density depends on |m|, |n| only) and identical closure-eligibility (synchronization is a magnitude property).
+- They source opposite-sign off-diagonal metric perturbations — under the KK identification, opposite-sign couplings in both gauge channels.
+- They correspond to opposite traversal directions on the same closed curve.
+
+These structural properties are what standard physics ascribes to a particle and its antiparticle (same mass, opposite charges, complementary conservation labels). Whether the framework's (m, n) → (−m, −n) reflection actually corresponds to what standard physics calls antimatter — versus to some other physical distinction (or to no physical distinction beyond a redundant labeling) — is left open. The chapter's stance:
+
+- **The opposite-sign-momentum property is geometric and unambiguous.** It falls out of the orientation of closed curves on T² (per Ch 1 §6.1) and the kinematics of wave packets on those curves.
+- **The matter/antimatter identification is a candidate, not a commitment.** Whether (m, n) ↔ (−m, −n) corresponds to particle ↔ antiparticle requires that something physically distinguish the two beyond their structural opposite-charge property — for example, an asymmetric energetics (Chapter 8's shear-induced bias is a candidate mechanism that lifts the (m, n) ↔ (−m, −n) degeneracy and could provide such a distinction).
+- **If shear or some other mechanism breaks the (m, n) ↔ (−m, −n) symmetry, the matter/antimatter analog acquires physical content; if no mechanism breaks it, the two labels may be redundant presentations of the same physical state.** The framework lets the answer fall out of downstream analysis (Chapters 5 §6, 8 §3) rather than committing here.
 
 ---
 
@@ -134,12 +146,12 @@ Proceed with the analysis without committing to a specific standard-physics iden
 
 A single field configuration φ can contain both (m, n) and (−m, −n) components simultaneously:
 
-<!-- φ = α φ_(m,n) + β φ_(-m,-n) -->
+<!-- φ = α φ_(m,n) + β φ_(-m,-n) + c.c. -->
 $$
-\varphi = \alpha\,\varphi_{(m,n)} + \beta\,\varphi_{(-m,-n)}
+\varphi = \alpha\,\varphi_{(m,n)} + \beta\,\varphi_{(-m,-n)} + \text{c.c.}
 $$
 
-with α, β complex coefficients. Under linear superposition, both modes are present at once; the wave equation has no nonlinear coupling that would mix them, so both components evolve independently in their respective conserved sectors.
+with α, β complex amplitudes that set the magnitude (|α|, |β|) and phase of each traveling-wave component. The "+ c.c." (complex conjugate) makes the resulting field real-valued, consistent with [Chapter 1 §6](01-foundation.md); the complex-amplitude notation is calculational shorthand for two independent real-valued traveling waves on the same closed curve, traversing it in opposite directions per [Chapter 1 §6.1](01-foundation.md). Under linear superposition, both components are present at once; the wave equation has no nonlinear coupling that would mix them, so they evolve independently in their respective conserved sectors.
 
 ### 4.1 The stress-energy of the pair configuration
 

@@ -62,14 +62,16 @@ $$
 \varphi(t, u, w) = T(t)\cdot U(u)\cdot W(w)
 $$
 
-with T(t) ∝ e^(−iωt), U(u) and W(w) standing waves of integer winding number m and n respectively, the stress-energy tensor T_μν follows from the standard scalar-field formula:
+we use the standard complex-exponential notation T(t) ∝ e^(−iωt), U(u) ∝ e^(i k_u u), W(w) ∝ e^(i k_w w) as **calculational shorthand** for real-valued sinusoidal traveling waves. Per [Chapter 1 §6](01-foundation.md), φ is real-valued; the physical field is the real part of the complex form, and the imaginary part is bookkeeping for sinusoidal evolution. The signed integers (m, n) ∈ ℤ² label traveling-wave configurations on the closed curve T(m, n) per [Chapter 1 §6.1](01-foundation.md); the sign of (m, n) tracks which traversal direction the wave packet propagates. This is standard classical-wave-mechanics shorthand, not a commitment to a complex-valued field.
+
+The stress-energy tensor T_μν follows from the standard scalar-field formula:
 
 <!-- T_μν = ∂_μ φ ∂_ν φ* + ∂_ν φ ∂_μ φ* − g_μν L -->
 $$
 T_{\mu\nu} = \partial_\mu\varphi\,\partial_\nu\varphi^* + \partial_\nu\varphi\,\partial_\mu\varphi^* - g_{\mu\nu}\mathcal{L}
 $$
 
-with L the scalar-field Lagrangian density. [metric-mass Chapter 5 §2](../metric-mass/05-metric-self-consistency.md) computes T_μν for the 1D-compact case in factored form T_μν = 2|φ|² k_μ k_ν with k_μ = (−ω, k_S, n/R_u). The 2D-compact extension is mechanical:
+with L the scalar-field Lagrangian density. (For a real-valued physical field this evaluates to the mode-averaged result; the complex notation simplifies the algebra. See [metric-mass Chapter 5 §2](../metric-mass/05-metric-self-consistency.md) for the explicit calculation.) That chapter computes T_μν for the 1D-compact case in factored form T_μν = 2|φ|² k_μ k_ν with k_μ = (−ω, k_S, n/R_u). The 2D-compact extension is mechanical:
 
 <!-- k_μ = (−ω, k_S₁, k_S₂, n_u/R_u, n_w/R_w) for our 5D manifold -->
 $$
@@ -176,7 +178,7 @@ Standard physics defines a gauge potential A_μ by four properties. We use these
 
 **Property 1 — Index structure.** A_μ is a 4-vector field on spacetime: it has one index that runs over spacetime coordinates, and it transforms as a vector under spacetime coordinate changes (with the compact direction held fixed).
 
-**Property 2 — Gauge transformation.** Under a local U(1) phase rotation φ → e^(iα(x))φ, A_μ shifts by a gradient: A_μ → A_μ + (1/e)∂_μα. Equivalently, in KK language, A_μ shifts by ∂_μΛ when the compact coordinate is shifted by a function Λ(x).
+**Property 2 — Gauge transformation.** Under a coordinate shift of the compact direction, x^u → x^u + Λ(t, S₁, S₂), the off-diagonal metric component shifts as h_μu → h_μu + ∂_μΛ. This is a *geometric* gauge transformation — it follows from how metric components transform under a coordinate change of the compact direction. (Standard physics' equivalent statement, on a complex scalar field with internal U(1) symmetry, is that A_μ shifts by a gradient under a local U(1) phase rotation φ → e^(iα(x))φ; this is the field-theoretic translation of the same mechanism. The framework's underlying object is the geometric coordinate-shift form, per [Chapter 1 §6.1](01-foundation.md).)
 
 **Property 3 — Field strength.** F_μν = ∂_μA_ν − ∂_νA_μ is the antisymmetric field strength. The Lagrangian density −¼F_μν F^μν gives Maxwell's equations.
 

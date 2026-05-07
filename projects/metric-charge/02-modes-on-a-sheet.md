@@ -104,6 +104,8 @@ $$
 
 The mode is labeled by an **integer pair (m, n)**. This is the same kind of integer quantization metric-mass derived for a single compact direction, doubled.
 
+**Integers in ℤ, including negatives.** The integers m and n range over all of ℤ, including negative values. On a real-valued φ (per [Chapter 1 §6](01-foundation.md)), each (m, n) and its sign-reflected partner (−m, −n) corresponds to a distinct configuration: the standing-wave magnitude is the same (so the energy density and rest mass per §3 are the same), but the wave's traversal orientation along the closed curve T(m, n) is opposite. Per [Chapter 1 §6.1](01-foundation.md), this is the geometric origin of the sign — a topological property of oriented closed curves on the 2-torus, not an internal field-theoretic structure. Sign-of-(m, n) tracks which direction the wave packet's phase advances; magnitude-of-(m, n) tracks how often it wraps each cycle.
+
 The integer pair (m, n) is the substrate for everything in chapters 3–9. The closure condition (chapter 4) is a rule about which (m, n) pairs satisfy it. The knot family (chapter 3) is the geometric picture of (m, n) as closed paths on the torus. The gauge-promotion question (chapter 5) asks which (m, n) modes source off-diagonals with the right structure.
 
 ### Identification with grid-duality's winding pair
@@ -262,10 +264,12 @@ The standard quantum-mechanical identification p = ℏk gives:
 |---|---|---|
 | Energy | E = ℏω | continuous |
 | Spatial momentum | p_S = ℏ k_S (in the (S₁, S₂) plane) | continuous |
-| u-direction momentum | p_u = (2π ℏ/L_u) m | discrete |
-| w-direction momentum | p_w = (2π ℏ/L_w) n | discrete |
+| u-direction momentum | p_u = (2π ℏ/L_u) m | discrete, signed |
+| w-direction momentum | p_w = (2π ℏ/L_w) n | discrete, signed |
 
-The compact-direction momenta p_u and p_w are *internal* — they don't correspond to motion in observable spacetime. They are what shows up as off-diagonal sourcing in chapter 5's analysis (under the standard Kaluza-Klein identification, p_u and p_w map to electric charge in each compact direction).
+The compact-direction momenta p_u and p_w carry the sign of (m, n). Per [Chapter 1 §6.1](01-foundation.md), this sign reflects the *traversal orientation* of the wave packet along the closed curve T(m, n) — a geometric label, not an internal field structure. The compact momenta are *internal* in the sense that they do not correspond to motion in observable (S₁, S₂, t) spacetime: the wave packet is going "around" the compact direction, not propagating along S.
+
+These compact momenta are what shows up as off-diagonal sourcing in chapter 5's analysis. The identification of compact-direction momentum with electric-charge-like coupling comes from the geometric Kaluza-Klein mechanism: translations along a compact direction become a U(1) gauge symmetry of the effective theory under dimensional reduction, and the conserved Noether charge for that symmetry — which is just compact-direction momentum p_u or p_w — couples to the off-diagonal metric perturbation g_μu or g_μw (the KK gauge potential). [Chapter 5](05-metric-self-consistency.md) develops this explicitly. The mechanism is geometric (it lives in metric structure under dimensional reduction); standard-physics' identification of charge with KK compact-momentum is a translation target the framework's derivations may or may not match in detail.
 
 ### 5.2 The energy-momentum relation
 

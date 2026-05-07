@@ -20,7 +20,7 @@ The chapter is paced deliberately slowly. Once a concept is defined here, it is 
 | 3 | Aspect ratio ε ≡ L_u / L_w |
 | 4 | Off-diagonal shear σ_uw |
 | 5 | Visualization disposition (45° rendering) |
-| 6 | The wave field φ |
+| 6 | The wave field φ — and the geometric meaning of signed (m, n) labels |
 | 7 | Why a scalar field is enough — and what we choose not to track |
 | 8 | The wave equation on M |
 | 9 | Periodicity in (u, w) |
@@ -202,6 +202,23 @@ $$
 
 The choice to use a *scalar* (rather than a vector or tensor field) deserves its own discussion, since it elides a real piece of physics and we want to be explicit about what we are choosing not to track. That discussion is §7.
 
+### 6.1 Closed curves on the 2D compact sheet are oriented
+
+A closed curve traversing the (u, w) torus has two distinct traversal directions. The same point set in 3-space can be visited in either order — call the two orderings the **two orientations** of the curve. Every closed curve on a 2D manifold admits two orientations; this is a topological fact about closed curves, independent of any field built on top of the manifold.
+
+When chapter 2 derives the integer-pair labels (m, n) for wave modes on the 2-torus from the periodicity boundary conditions of §9, those integers will range over all of ℤ — positive and negative. On a real-valued φ, the sign pattern (sign m, sign n) does not encode anything about an internal field structure; it encodes which of the two orientations the wave packet traverses along T(m, n):
+
+- The wave's energy density (and therefore the rest mass derived from it in chapter 2 §3) depends only on the magnitudes (|m|, |n|).
+- The sign pattern is independent information — it tracks which way the wave's phase advances during traversal of the closed curve, equivalently the sign of the compact-direction momenta p_u, p_w that chapter 2 §5 introduces.
+
+Two consequences flow from this geometric reading:
+
+- **(m, n) and (−m, −n) are distinct configurations on a real field.** They trace the same closed curve in 3-space and have the same energy density (so the same gravitational mass), but their compact-direction momenta have opposite signs. Chapter 5 will show that the sign of compact momentum determines the sign of the off-diagonal metric perturbation each mode sources. Whether this sign distinction has further physical content — whether (m, n) and (−m, −n) correspond to what standard physics calls a particle and its antiparticle, for example — is a question chapters 5, 6, and 8 examine, with the answer left to fall out of the analysis rather than imposed here.
+
+- **No complex-field structure is required.** The (m, n) ↔ (−m, −n) distinction is supported by the manifold's intrinsic orientation of closed curves on a real-valued φ. It does not require an internal U(1) symmetry of a complex scalar field, a Noether current, or any other field-theoretic apparatus from quantum field theory. (Standard quantum field theory's complex-scalar bookkeeping is one possible *summary* of the same geometric content; the framework keeps the geometry as primary and treats field-theoretic summaries as downstream translation targets, not as inputs.)
+
+The convention for the rest of the project: **(m, n) labels are signed integer pairs in ℤ², and the sign pattern is a geometric label tracking traversal orientation of the closed curve T(m, n) on the 2-torus.** No additional structure on φ is invoked for this distinction.
+
 ---
 
 ## 7. Why a scalar field is enough — and what we choose not to track
@@ -382,6 +399,8 @@ The following are *not* given. They are to be derived, observed to arise from th
 
 - **Quantum field theory.** The wave equation is classical. We invoke quantization-of-momentum at the periodicity boundary conditions (§9) but otherwise treat φ classically. ℏ enters only at the step of identifying p = ℏk for a wave of wavenumber k.
 
+- **Complex-field structure for matter/antimatter labeling.** φ is real-valued (§6). The (m, n) ↔ (−m, −n) distinction the framework uses downstream (chapters 5, 6) is grounded in the geometric orientation of closed curves on T² (§6.1), not in an internal U(1) Noether structure of a complex scalar field. Standard quantum field theory's complex-scalar bookkeeping is a parallel summary of the same geometric content; whether that bookkeeping is the eventual most-natural description is left open, but the project's derivations operate on the real field with traversal orientation, not on a complex field with internal U(1).
+
 - **Nonlinear backreaction.** We use linearized Einstein equations to compute mass-mode-sourced off-diagonals (chapter 5). Full nonlinear self-consistency of the field-and-metric system is deferred — the linearized regime is sufficient for everything this project sets out to establish.
 
 ---
@@ -398,7 +417,7 @@ We have, in total:
 6. The massless wave equation □φ = 0.
 7. Two periodicity boundary conditions: φ(u + L_u) = φ(u) and φ(w + L_w) = φ(w) (with all other arguments held fixed).
 8. **The closure condition** of §10, as a statement about phase patterns, with equivalent topological (inherited from grid-duality) and metric-side (developed in chapter 5) formulations.
-9. **Inherited from [grid-duality](../grid-duality/) (chapters 7–8):** the L3 location of charge in the wrap-promotion ladder, the U(1) × U(1) gauge structure of the 2-torus closure, and the integer-quantization of winding numbers (w_α, w_β) ∈ ℤ². Used throughout but not re-derived.
+9. **Inherited from [grid-duality](../grid-duality/) (chapters 7–8):** the L3 location of charge in the wrap-promotion ladder, the U(1) × U(1) gauge structure of the 2-torus closure, and the integer-quantization of winding numbers (w_α, w_β) ∈ ℤ². The integer-quantization is also derived independently in Chapter 2 §2 from the periodicity boundary conditions of §9; the two derivations agree, and we use grid-duality's result and our own as mutually consistent.
 
 Methodological commitments:
 
