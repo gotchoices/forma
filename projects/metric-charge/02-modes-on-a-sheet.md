@@ -2,149 +2,85 @@
 
 **Status:** Sparse outline. Each section is one to three sentences describing the derivation step that section will perform. To be expanded into full prose once the outline is approved.
 
-This chapter takes the givens of [Chapter 1](01-foundation.md) — the manifold M, the bare diagonal metric, the real scalar field φ, the massless wave equation □φ = 0, and the periodicity conditions on (u, w) — and derives what kinds of solutions the wave equation actually admits.
+This chapter takes the givens of [Chapter 1](01-foundation.md) — the manifold M, the bare diagonal metric, the real scalar field φ, the massless wave equation □φ = 0, and the periodicity conditions on (u, w) — and works out which solutions the wave equation actually admits. The technical core is a Bloch decomposition on the 2-torus (u, w), which produces a discrete (m, n) mode family.
 
-The derivation arc parallels [metric-mass Chapter 2](../metric-mass/02-mass-from-u.md) but on a richer manifold: two compact directions instead of one, two extended spatial directions instead of one. Wherever the math is a routine extension of metric-mass's, we cite metric-mass and move on. Where the 2D compact sheet introduces genuinely new structure — the joint discrete (m, n) spectrum, the single-axis modes, the mass surface in mode space — we develop in detail.
+**Substantial inheritance from grid-duality.** The Bloch decomposition on a 2D periodic substrate, the band-extremum origin of mass, and the integer-quantization of winding numbers are all worked out in detail in [grid-duality §7](../grid-duality/07-wrap-promotion-modeling.md). This chapter does not re-derive them. We cite grid-duality and specialize its results to the metric-charge setting (continuum 2-torus rather than discrete lattice; spacetime embedding rather than abstract substrate).
+
+**Inheritance from metric-mass.** The slow-motion inertial-mass argument (metric-mass §6 of Chapter 2) carries over with one extra integer index. Cited, not re-derived.
+
+The chapter's distinctive job is the spacetime-side framing: identifying the (0, 0) zero mode with massless propagation in (S₁, S₂), naming the single-axis (m, 0) and (0, n) modes as **L2-embedded-in-L3** candidates for closure-failure mass-only states (the structural neutrino-class origin), and setting up the (m, n) labels for use in chapters 3–9.
 
 ---
 
 ## Bare outline
 
-### 1. Setting up: separation of variables on M
+### 1. Setup: wave equation, separation, periodicity
 
-Restate the wave equation from Chapter 1 §8. Note that it is now a PDE in five variables (t, S₁, S₂, u, w). Apply separation of variables: assume
+Restate the wave equation from Chapter 1 §8 on the 5D manifold (t, S₁, S₂, u, w). Apply separation of variables — routine 5D extension of metric-mass §1. The (t, S₁, S₂) part gives continuous plane-wave/oscillator solutions; the (u, w) part is constrained by the periodicity boundary conditions of Chapter 1 §9.
 
-φ(t, S₁, S₂, u, w) = T(t) · X₁(S₁) · X₂(S₂) · U(u) · W(w)
+The (u, w) sub-problem is a Bloch decomposition on a 2-torus. **Cite [grid-duality §7.3](../grid-duality/07-wrap-promotion-modeling.md) for the full Bloch machinery** (plane-wave decomposition, band structure, Brillouin zone). Specialize: in continuum (rather than lattice), the dispersion is exact and the (m, n) labels run over all of ℤ² rather than a finite set.
 
-and substitute. Divide through by the product to obtain five separated terms, each depending on only one variable. Standard separation-constant argument: each term must equal a constant, with the sum of constants equal to zero. This gives five ordinary differential equations linked by one algebraic constraint — the *dispersion relation* (§4).
+### 2. The (m, n) mode family
 
-Cite metric-mass §1 for the technique itself; this section is a routine 5D extension.
+Periodicity in u quantizes k_u = 2π m/L_u with m ∈ ℤ; periodicity in w quantizes k_w = 2π n/L_w with n ∈ ℤ. The mode is labeled by an **integer pair (m, n)** — the winding numbers in u and w. This is the substrate for everything in chapters 3–9.
 
-### 2. The u- and w-equations under periodicity
+**Identification with grid-duality's winding pair.** The (m, n) labels of this chapter are exactly the (w_α, w_β) ∈ ℤ² of [grid-duality §7.5](../grid-duality/07-wrap-promotion-modeling.md) — the topological winding numbers that classify wave configurations on T². The integer-quantization is the same fact viewed from two sides: phase-pattern (here) and topology (there).
 
-Each compact direction has the same form of equation:
+### 3. The dispersion relation and the rest-mass formula
 
-U″(u) = −k_u² U(u)
-W″(w) = −k_w² W(w)
+Substituting the separated solutions into the wave equation produces:
 
-with periodic boundary conditions φ(u + L_u) = φ(u) and φ(w + L_w) = φ(w). Periodicity quantizes k_u and k_w independently:
+ω²/c² = k_S² + (2π m/L_u)² + (2π n/L_w)²
 
-k_u = 2π m / L_u  (m ∈ ℤ)
-k_w = 2π n / L_w  (n ∈ ℤ)
+with k_S² = k_{S₁}² + k_{S₂}² the magnitude of the spatial momentum in the (S₁, S₂) plane. Setting k_S = 0 gives the rest energy and rest mass:
 
-The mode is labeled by an **integer pair (m, n)** — the winding numbers in u and w respectively. This is the analog of metric-mass's single integer n, doubled.
+m_(m,n) = (ℏ/c) · √((2π m/L_u)² + (2π n/L_w)²)
 
-Note immediately: the (m, n) labeling is the substrate for everything in chapters 3–9. The closure condition (Chapter 4) is a rule about which (m, n) pairs satisfy it; the knot family (Chapter 3) is the geometric picture of (m, n) as closed paths on the torus; the gauge-promotion question (Chapter 5) asks which (m, n) modes source off-diagonals with the right structure.
+The (m, n) ≠ (0, 0) modes carry rest mass; the (0, 0) mode is massless.
 
-### 3. The S₁, S₂, and t equations
+**Connection to band-extremum mass.** In grid-duality's framework, mass arises from band curvature at extrema (m_eff = ℏ²/(d²ω/dk²) — see [grid-duality §4.3](../grid-duality/07-wrap-promotion-modeling.md)). For our continuum dispersion, each (m, n) sector has its own dispersion in k_S; the rest mass m_(m,n) is the "gap" at k_S = 0 in that sector. The two pictures (closed-form spacetime calculation vs. band-extremum lattice calculation) agree on the rest-mass formula for the simple bare-metric case treated here.
 
-The three extended directions yield the standard plane-wave/oscillator pieces:
+**Inertial behavior.** The slow-motion proof that m_(m,n) acts operationally as inertial mass is identical in form to metric-mass §6, with one extra integer index. Cite metric-mass; do not re-derive.
 
-X₁(S₁) ∝ exp(i k_{S₁} S₁)
-X₂(S₂) ∝ exp(i k_{S₂} S₂)
-T(t) ∝ exp(−i ω t)
+### 4. Three mode classes
 
-with k_{S₁}, k_{S₂}, and ω all continuous (no periodicity to quantize them). This is identical to metric-mass §3, just with one extra spatial direction.
+The (m, n) mode family naturally partitions into three classes, each playing a distinct role in chapters 4–9:
 
-Note that nothing in the bare-metric derivation forces the S-momentum to lie along S₁ rather than S₂. We define **k_S** as the magnitude of the spatial momentum in the (S₁, S₂) plane:
+- **(0, 0): the zero mode.** No winding in either direction. Dispersion ω = c · k_S, massless, propagates at speed c through (S₁, S₂). The field is independent of both u and w. *This is ordinary light* in spacetime — it is unaware of the compact structure. Doesn't satisfy the closure condition (chapter 1 §10) and doesn't source any compact-direction off-diagonal metric entries.
 
-k_S² = k_{S₁}² + k_{S₂}²
+- **Single-axis modes (m, 0) and (0, n).** Wind in *one* compact direction only. Carry mass given by the formula in §3 with the other winding zero. Have *one* of (w_α, w_β) nonzero — in [grid-duality](../grid-duality/07-wrap-promotion-modeling.md) terms, these are **L2 phenomena** (mass-only) embedded in the L3 substrate. Per Chapter 1 §10's three-view formulation, they fail the closure condition: the topological view says one winding is zero; the phase-pattern view says one of u or w lacks a complete standing wave; the metric view (chapter 5) says the off-diagonals don't form a valid gauge potential. **Candidate structural origin of neutrino-class neutrality** — flagged for chapter 4 to interrogate.
 
-so that the dispersion relation can be written compactly using k_S alone. Single-knot derivations through chapter 7 will mostly use k_S without specifying its direction. (Chapter 8 of metric-binding distinguishes S₁ from S₂ when two knots sit at different positions.)
+- **Diagonal modes (m, n) with both nonzero.** Wind in both compact directions. Have both (w_α, w_β) nonzero — proper L3 charged-state candidates. Whether a given (m, n) actually carries observable EM depends on whether it satisfies the standing-wave alignment requirement in addition to the winding requirement (chapter 1 §10's phase-pattern statement). Chapter 4 examines which (m, n) pairs survive.
 
-### 4. The dispersion relation
+### 5. Energy and momentum
 
-Substituting the separated solutions back into the wave equation produces the **dispersion relation**:
+The four-momentum components for a generic (m, n) mode are a routine extension of metric-mass §5:
 
-ω²/c² = k_S² + k_u² + k_w²
+E = ℏω,  p_S = ℏ k_S  (in the (S₁, S₂) plane)
 
-with k_u = 2πm/L_u and k_w = 2πn/L_w from §2. Equivalently:
+and the **compact-direction momenta**:
 
-ω²/c² = k_S² + (2π/L_u)² m² + (2π/L_w)² n²
+p_u = (2π ℏ/L_u) m,   p_w = (2π ℏ/L_w) n
 
-This is the 2D-compact extension of metric-mass's ω²/c² = k_S² + (n/R_u)² dispersion. The new structure is the *joint* contribution from m and n.
+The energy-momentum relation reads
 
-### 5. The discrete mass spectrum
+E² = (p_S c)² + (m_(m,n) c²)²
 
-Set k_S = 0 (rest frame). The dispersion relation gives the rest energy:
+with the compact-direction momenta absorbed into m_(m,n). This is the standard relativistic form, as expected.
 
-E_rest = ℏω = ℏc · √((2π/L_u)² m² + (2π/L_w)² n²)
+**The compact-direction momenta are the topological windings.** In [grid-duality §7.5.2](../grid-duality/07-wrap-promotion-modeling.md), the conserved invariants on T² are the line integrals of the wavevector around each cycle: w_α = (1/2π) ∮_α k · dx. For our Bloch modes, this evaluates exactly to (m, n). So p_u and p_w (in physical-momentum units) are p_u = ℏ · (2π/L_u) · w_α and similarly for w_β — the same quantity expressed two ways. This identification is the bridge between the spacetime-momentum view (this chapter) and the topological-charge view (grid-duality §7.5, used in chapter 5 of this project).
 
-Using m = E_rest/c²:
+### 6. What's next
 
-m_{(m,n)} = (ℏ/c) · √((2π/L_u)² m² + (2π/L_w)² n²)
-
-The mass is parametrized by the integer pair (m, n) — a *2D* discrete spectrum, where metric-mass had a 1D spectrum. The (m, n) labeling is the project's primary mode index from this point forward.
-
-For the inertial proof (that this is operationally inertial mass via p_S = m · v_g in the slow-motion limit), cite [metric-mass Chapter 2 §6](../metric-mass/02-mass-from-u.md). The argument carries over without modification — it depends only on the dispersion-relation structure, not on the dimension of the compact direction.
-
-### 6. The (0, 0) zero mode is ordinary light
-
-The (m, n) = (0, 0) mode has no winding in either compact direction. From the dispersion relation:
-
-ω²/c² = k_S²    →    ω = c · k_S
-
-Massless. Propagates at speed c through (S₁, S₂). The field configuration is u-independent and w-independent — *no compact-direction structure at all.*
-
-This is the analog of metric-mass's n = 0 mode: ordinary light, unaware of the compact structure. It does *not* satisfy the closure condition (which requires winding in w by §10 of Chapter 1), so it is not a candidate for charge promotion. It also does not source any off-diagonal metric entries (no compact-direction momentum), confirmed against [metric-mass Chapter 5](../metric-mass/05-metric-self-consistency.md) — vacuum and pure-light configurations leave the bare metric self-consistent.
-
-### 7. The single-axis modes (m, 0) and (0, n)
-
-Two important sub-families:
-
-- **(m, 0) modes:** wind in u only, no w-winding. Carry mass m · 2πℏ/(L_u c). Source off-diagonal entries in g_μu but not g_μw.
-- **(0, n) modes:** wind in w only, no u-winding. Carry mass n · 2πℏ/(L_w c). Source off-diagonal entries in g_μw but not g_μu.
-
-Neither single-axis family satisfies the closure condition stated in Chapter 1 §10 — that condition requires *both* u and w to host a complete standing wave. The single-axis modes thus produce **mass without charge**: a structural form of neutrality, distinct from any pair-cancellation mechanism (Chapter 6).
-
-These are the candidate **closure-failure mass-only modes** that Chapter 4 will interrogate further as candidates for neutrino-class behavior on a single sheet. Flag them here; they will be central in chapters 4 and 5.
-
-### 8. The general (m, n) mode
-
-Modes with both m ≠ 0 and n ≠ 0 wind in both compact directions. They carry mass
-
-m_{(m,n)} = (ℏ/c) · √((2π m/L_u)² + (2π n/L_w)²)
-
-and are the candidates for satisfying the closure condition. Whether a given (m, n) satisfies it depends on the standing-wave alignment — which is a phase-pattern question, taken up in Chapter 4.
-
-Note that the mass spectrum is *not* just integer multiples of a single Compton wavelength; the two compact lengths give a **two-parameter discrete grid** in (m, n) space, with mass setting a curve (an ellipse) in the (m, n) plane for each value. This is structurally where the knot families of Chapter 3 will live.
-
-### 9. Energy and momentum of a mode
-
-Compute the four-momentum components for a generic (m, n) mode in motion. The result is a routine extension of metric-mass §5:
-
-E = ℏω
-p_S = ℏ k_S       (in the (S₁, S₂) plane)
-p_u = ℏ k_u = (2π ℏ/L_u) m   (compact, quantized)
-p_w = ℏ k_w = (2π ℏ/L_w) n   (compact, quantized)
-
-The compact-direction momenta p_u and p_w are *internal* — they don't correspond to motion in observable spacetime. They are what shows up as off-diagonal sourcing in Chapter 5 (under the standard KK identification, p_u and p_w map to electric charge in each compact direction).
-
-### 10. Reading the dispersion relation as energy-momentum
-
-State the energy-momentum relation:
-
-E² = (p_S c)² + (p_u c)² + (p_w c)² + (m c²)²
-
-where the *m* on the right is the rest mass of the (m, n) mode. Equivalently:
-
-E² = (p_S c)² + (m_{(m,n)} c²)²
-
-— the rest mass already incorporates the compact-direction momenta. Either form is useful; the second matches the standard relativistic E² = (pc)² + (mc²)² once we identify m_{(m,n)} as rest mass.
-
-This is the result that makes *m_{(m,n)}* operationally indistinguishable from inertial mass in the (t, S₁, S₂) sub-spacetime. The compact-direction structure is hidden inside m_{(m,n)} when viewed from extended spacetime alone.
-
-### 11. What's next
-
-[Chapter 3 — Knots on the torus](03-knots-on-the-torus.md). Take the (m, n) mode family derived here and reframe it geometrically: each (m, n) corresponds to a *closed curve* — a knot — traversing the (u, w) torus. Characterize the family by topological invariants (crossing number, genus, linking) and identify which (m, n) admit non-self-intersecting closures. The single-axis modes (m, 0) and (0, n) become trivially closed (parallel transport around one cycle); the diagonal (m, n) with both nonzero become genuine torus knots.
+[Chapter 3 — Knots on the torus](03-knots-on-the-torus.md). Take the (m, n) mode family derived here and reframe it geometrically as closed curves traversing the (u, w) sheet. grid-duality §7.5.1 establishes the topology side (π₁(T²) = ℤ², integer windings); chapter 3's distinctive job is the *geometric visualization* of these topological classes as actual torus knots, the mapping between (m, n) labels and standard torus-knot terminology, and any non-self-intersection constraints that pick out a sub-family of the full ℤ² label set.
 
 ---
 
-## Open questions flagged in this chapter
+## What this chapter does **not** do (deliberately)
 
-| Q | Where it goes |
-|---|---------------|
-| Are there mode families *other than* (m, n)? (e.g., non-separable solutions) | Chapter 4, when interrogating closure-condition variants |
-| What does the energy-momentum tensor T_μν look like for a generic (m, n) mode? | Chapter 5 (gauge promotion analysis builds on T_μν) |
-| Does the slow-motion inertial proof of metric-mass §6 generalize to the 2D-compact case? | Cited from metric-mass; verify in the prose expansion |
-| What if k_S has a direction (k_{S₁} ≠ k_{S₂}) — does anything depend on the direction? | Chapter 8 of metric-binding, when two knots sit at different (S₁, S₂) |
+- **Does not re-derive Bloch decomposition.** Cite grid-duality §7.3.
+- **Does not re-derive band-extremum mass.** Cite grid-duality §7.4.3.
+- **Does not re-derive integer-quantization of windings.** Cite grid-duality §7.5.4.
+- **Does not derive the inertial proof.** Cite metric-mass Chapter 2 §6.
+- **Does not develop the metric-side picture of charge.** That is chapter 5's job.
+- **Does not classify which (m, n) survive the closure condition.** That is chapter 4's job.

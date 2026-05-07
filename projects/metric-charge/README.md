@@ -11,7 +11,7 @@
 
 The naive next step would be to add a second independent compact dimension w and treat it the way Kaluza-Klein treats charge — momentum on w → quantized as charge. That step is well covered in [`primers/kaluza-klein.md`](../../primers/kaluza-klein.md), and metric-mass deliberately did not take it. Repeating it here would just rehearse the standard KK story.
 
-We jump instead to what MaSt's computational studies (R60–R64) suggest is the actual structure: **2D compact sheets** rather than pairs of independent 1D dimensions. The compact part of the manifold here is *one continuous 2D torus* with coordinates u and w, and charge is something the **geometry of the sheet** produces — not something a second independent CD provides.
+We jump instead to a **2D compact sheet** — one continuous 2D torus with coordinates u and w. The structural reason comes from [grid-duality §7](../grid-duality/07-wrap-promotion-modeling.md): charge first appears at **L3** of the wrap-promotion ladder, where the substrate has been wrapped twice and the closure produces a 2-torus T² = S¹ × S¹ with π₁(T²) = ℤ². Below L3 there is at most one winding direction; L3 is the *first* rung where the substrate has the U(1) × U(1) cross-coupling structure that charge structurally requires. metric-charge takes this L3 substrate and asks what additional structure emerges when it is embedded in extended spacetime. Charge becomes something the **geometry of the sheet** produces — not something a second independent CD provides.
 
 The central question:
 
@@ -54,13 +54,15 @@ x, y, z are Cartesian *visualization* axes — not metric coordinates.
 
 2. **Don't re-derive metric-mass.** If a result was established there, cite it. Re-deriving content from `papers/derivations.md`, R62, etc. is fine where it serves the narrative.
 
-3. **The closure condition is axiomatic, not derived.** This project takes "wraps satisfying condition X produce charge" as an *input* to be explored. The α-coupling-strength derivation belongs in [grid/](../../grid/) — we use the result here, we do not re-derive it.
+3. **Inherit from grid-duality.** The wrap-promotion ladder, the structural location of charge at L3, the U(1) × U(1) gauge structure of the 2-torus closure, and the integer-quantization of winding numbers are all established in [grid-duality](../grid-duality/) (chapters 7–8). We use them; we don't re-derive them. metric-charge's distinctive job is to render this L3 substrate in spacetime-metric terms and to do parameter sweeps (ε, σ_uw) that grid-duality's fixed-substrate construction does not.
 
-4. **One topic per chapter.** Bundling defeats the discovery arc.
+4. **The closure condition is axiomatic, not derived.** This project takes "wraps satisfying condition X produce charge" as an *input* to be explored. The α-coupling-strength derivation belongs in [grid/](../../grid/) — we use the result here, we do not re-derive it.
 
-5. **Variables stay symbolic.** Don't pin numerical values until the algebra forces it (per the no-premature-pinning rule).
+5. **One topic per chapter.** Bundling defeats the discovery arc.
 
-6. **Computation only when forced.** Paper math first; scripts only when algebra becomes intractable or visualization is the only way to see the geometry.
+6. **Variables stay symbolic.** Don't pin numerical values until the algebra forces it (per the no-premature-pinning rule).
+
+7. **Computation only when forced.** Paper math first; scripts only when algebra becomes intractable or visualization is the only way to see the geometry.
 
 ## Goals
 
@@ -122,13 +124,14 @@ To answer or sharpen along the way:
 
 ## Background reading
 
-- [metric-mass/](../metric-mass/) — the immediate predecessor; mass-from-u
+- [metric-mass/](../metric-mass/) — the dimensional-laddering predecessor; mass-from-u
+- [grid-duality/](../grid-duality/) — the substrate-level predecessor; charge as L3 phenomenon, U(1) × U(1) gauge structure, integer winding quantization. Especially [chapter 7](../grid-duality/07-wrap-promotion-modeling.md) (wrap-promotion ladder) and [chapter 8](../grid-duality/08-where-alpha-appears.md) (α at L3).
 - [primers/kaluza-klein.md](../../primers/kaluza-klein.md) — standard KK (and why this project deliberately skips repeating it)
 - [studies/R63-proton-tuning/](../../studies/R63-proton-tuning/) — proton sheet, three-phase structure
 - [studies/R64-nuclear-harmonic-stack/](../../studies/R64-nuclear-harmonic-stack/) — quarks on the p-sheet
 - [studies/R46-electron-filter/](../../studies/R46-electron-filter/) — electron sheet, fat aspect ratio
 - [studies/R49-neutrino-filter/](../../studies/R49-neutrino-filter/) — neutrino sheet mode spectrum
-- [grid/](../../grid/) — where the α-coupling derivation will live (taken as input here)
+- [grid/](../../grid/) — where the α numerical-value derivation will eventually live (structural location is settled in grid-duality)
 
 ## Chapters
 

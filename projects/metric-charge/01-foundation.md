@@ -57,13 +57,17 @@ $$
 
 **Why two extended dimensions** (whereas metric-mass had one). Most single-knot derivations in this project don't strictly need S₂ — the closure condition, knot topology, mode spectrum, aspect-ratio sweep, and shear-induced fractional charge all work in S₁ alone. S₂ is carried in the coordinate set as forward-looking infrastructure for the follow-up project [metric-binding](../metric-binding/), where two knots at different (S₁, S₂) positions become essential. Keeping the coordinate set consistent across the two projects avoids a notational reset at the boundary.
 
-**Why two compact dimensions** (whereas metric-mass had one). Three converging reasons:
+**Why two compact dimensions** (whereas metric-mass had one). Four converging reasons:
 
-1. **Knot families.** A 1D compact direction admits only winding number — no knot topology. A 2D torus admits a discrete family of knots labeled by winding pairs (m, n), with non-trivial topological invariants (crossing number, genus, linking number). The whole knot picture of charge is impossible without a 2D compact substrate.
+1. **Charge first appears at L3 of the wrap-promotion ladder.** Per [grid-duality §7.5](../grid-duality/07-wrap-promotion-modeling.md), the 2-torus closure T² = S¹ × S¹ has fundamental group π₁(T²) = ℤ², providing the U(1) × U(1) gauge structure that charge structurally requires. Below L3 there is at most one winding direction; charge is undefined there. The 2D compact sheet of this project *is* the spacetime-embedded L3 substrate.
 
-2. **The closure condition** (§10) requires winding in *both* u and w simultaneously. A single compact direction cannot host the rule.
+2. **Knot families.** A 1D compact direction admits only a single winding number — no knot topology. The 2-torus admits a discrete family of knots labeled by winding pairs (m, n) with non-trivial topological invariants (crossing number, genus, linking number). The geometric picture of charge as a closed curve traversing the sheet (chapter 3) requires the 2D substrate.
 
-3. **Polarization.** A real EM photon has E and B fields perpendicular to its propagation direction. A photon traveling along u with only u as a compact direction has nowhere internal for its polarization — it would have to point into S, which would put oscillating fields throughout observable spacetime. The 2D sheet gives polarization an internal home. We expand on this in §7.
+3. **The closure condition** (§10) requires winding in *both* u and w simultaneously. A single compact direction cannot host the rule.
+
+4. **Polarization.** A real EM photon has E and B fields perpendicular to its propagation direction. A photon traveling along u with only u as a compact direction has nowhere internal for its polarization — it would have to point into S, which would put oscillating fields throughout observable spacetime. The 2D sheet gives polarization an internal home. We expand on this in §7.
+
+These reasons converge: L3 is the structural reason, and (2)–(4) are particular manifestations of what the L3 substrate makes available.
 
 **Note on visualization.** When we render M to a screen later, we embed the compact (u, w) sheet at a tilted disposition relative to (t, S₁, S₂); the details are in §5. The Cartesian display axes (x, y, z) carry no metric meaning — they are just where on the screen each coordinate goes.
 
@@ -313,17 +317,17 @@ This is the centerpiece of the project. We state it now and explore its conseque
 
 This is **stated, not derived**. The "why" — the α-coupling-strength derivation that explains the *strength* of the resulting charge — lives in [grid/](../../grid/), to be developed there. This project takes the rule as given and explores its consequences.
 
-### Dual view
+### Three views, one rule
 
-The phase-pattern statement above is one of two equivalent formulations.
+The phase-pattern statement above is one of three equivalent formulations of the same condition.
 
-The other formulation is *metric-side*. metric-mass Chapter 5 already established that under linearized Einstein equations, a mass mode in a compact direction sources off-diagonal metric entries (g_tu in metric-mass's case). On the 2D sheet, the analogous calculation produces a richer set of off-diagonal entries — in principle, all of g_tu, g_S₁u, g_S₂u, g_tw, g_S₁w, g_S₂w can be sourced.
+**Topological view** (lattice-substrate side). Per [grid-duality §7.5](../grid-duality/07-wrap-promotion-modeling.md) and [§8](../grid-duality/08-where-alpha-appears.md), the L3 2-torus has fundamental group π₁(T²) = ℤ², giving each closed wave configuration two independent integer winding numbers (w_α, w_β). The U(1) × U(1) cross-coupling structure that supports α and observable EM requires both winding directions to be active simultaneously. Closure-failed configurations have at most one active winding direction and reduce to L2 (mass without charge) embedded in an L3 substrate. The closure condition is the rule that **both** winding numbers are nonzero.
 
-In the standard Kaluza-Klein identification, off-diagonals of this type (mixing extended spacetime with a compact direction) are physical electromagnetic gauge potentials A_μ and B_μ, one per compact direction. The closure condition, in this formulation, is the rule under which the off-diagonals sourced by a given mass mode actually form a valid gauge-potential pattern — i.e., are consistent with the gauge structure that makes them observable as EM fields.
+**Metric-side view** (spacetime-embedding side; developed in chapter 5). metric-mass Chapter 5 established that under linearized Einstein equations, a mass mode in a compact direction sources off-diagonal metric entries (g_tu in metric-mass's case). On the 2D sheet, the analogous calculation produces a richer set: in principle, all of g_tu, g_S₁u, g_S₂u, g_tw, g_S₁w, g_S₂w can be sourced. In the standard Kaluza-Klein identification, these off-diagonals are physical electromagnetic gauge potentials A_μ and B_μ, one per compact direction. The closure condition, in this formulation, is the rule under which the sourced off-diagonals actually form a valid gauge-potential pattern — consistent with the gauge structure that makes them observable as EM in 4D.
 
-Modes that fail closure source off-diagonals too, but the pattern doesn't satisfy the gauge structure. Those off-diagonals remain "internal" and produce no observable EM in 4D — a candidate structural origin for neutrino-class neutrality.
+**Phase-pattern view** (the box above). The wave's phase completes a full 2π winding on w *and* a complete standing wave on both u and w during a single closed traversal.
 
-The two formulations are equivalent: phase-pattern closure ↔ off-diagonals form a valid gauge potential. **Chapter 5 develops the metric-side view and proves the equivalence.** Chapter 1 only states it.
+The three formulations agree where they overlap. The topological ↔ phase-pattern equivalence is essentially the assertion that integer winding numbers manifest as 2π phase wraps. **Chapter 5 develops the metric-side view and shows its equivalence to the other two.** Chapter 1 only states all three. Closure failure under any one formulation corresponds to mass-only modes in all three: a candidate structural origin of neutrino-class neutrality, distinct from any pair-cancellation mechanism.
 
 ### Variants to keep open
 
@@ -368,7 +372,8 @@ We have, in total:
 5. A real scalar field φ : M → ℝ.
 6. The massless wave equation □φ = 0.
 7. Two periodicity boundary conditions: φ(u + L_u) = φ(u) and φ(w + L_w) = φ(w) (with all other arguments held fixed).
-8. **The closure condition** of §10, as a statement about phase patterns, with a pending equivalent metric-side statement (chapter 5).
+8. **The closure condition** of §10, as a statement about phase patterns, with equivalent topological (inherited from grid-duality) and metric-side (developed in chapter 5) formulations.
+9. **Inherited from [grid-duality](../grid-duality/) (chapters 7–8):** the L3 location of charge in the wrap-promotion ladder, the U(1) × U(1) gauge structure of the 2-torus closure, and the integer-quantization of winding numbers (w_α, w_β) ∈ ℤ². Used throughout but not re-derived.
 
 Methodological commitments:
 
