@@ -1,96 +1,159 @@
 # Grid Laboratory Specifications
 
-## Purpoose
-This is for visualizing various versions of the grid lattice
+## Purpose
+This is for visualizing the GRID lattice as it is now understood: a network of nodes and edges that exchanges information through a *register / scattering* model.  The visualizer lets you build 1D, 2D, and 3D arrays, optionally make any axis periodic, optionally roll a periodic axis into a visible loop or torus, drive the lattice with the master clock, and watch waves propagate.
+
+The model implemented here is the one selected by [grid-duality chapter 4](../projects/grid-duality/04-model-comparison.md): **Scattering**, specified in [grid-duality/models/scattering.md](../projects/grid-duality/models/scattering.md).  The Python implementation in [grid-duality/scripts/models.py](../projects/grid-duality/scripts/models.py) is the reference of record; this visualizer is a JavaScript port of the same algorithm.  Any divergence in observable behavior is a bug in the port.
 
 ## Viewer
-The viewer is 3D and will build structures the user can zoom and pan around to see.
-Use the standard visualizer componentry where possible.
-User settings should be savable under a named profile and selectively restored by that name.
+The viewer is 3D and lets the user zoom and pan around the structure. Use the standard visualizer componentry where possible (`createScene`, `autoResize`, `animLoop`, `PALETTE` from [`totu-viz.js`](totu-viz.js)).
+
+User settings save under a named profile and selectively restore by name.
+
 For purposes of this spec, x and z form the horizontal plane, y is up and down.
 
-## Dimensions and primitives
-We will build simple structures from scratch that can evolve from 1 to 2 to 3 dimensions.
-- The simplest building block (primitive) consists of an edge or a node.  We'll call this 0 dimensional.
-- To build structures, we connect nodes to edges in a graph network.
-- Each edge holds a value that behaves like a magnitude, a real number, positive, negative, or zero
-- Each node, a circle, holds a value that is periodic, settable in degrees or radians, also real.
-- The length of nodes and the diameter of circles is set to a default value of 1 each.  But these values are independently settable, but global (applies to all edges and nodes in the graph).
-- The node value is globally configurable to accumulate or not as it crosses the periodic boundary.  In accumulation mode, the value is unbounded — 360 → 361 is allowed, and values like 720 or -270 are valid.  In wrap mode, the value lives strictly in the half-open range [0, period): zero is valid, but the period itself (360° or 2π) is **not** — it is identical to zero and must fold back.  Implementations must enforce this so that floating-point noise near the period also snaps to zero; the user should never see a displayed 360 (or 2π) in wrap mode.  So the sequence is 358 → 359 → 0, never 358 → 359 → 360 → 0.
-- The simple node and edge lay flat in xz so the line is along x and the node circle is in the xz plane, centered on x.  The edge intersects the circle normal to the circle
-- To build a linear array of primitives, we repeat the (node, edge) unit cell N times along an axis: an array of N units has N nodes and N edges.  In an open chain (not periodic), the trailing edge has no head node — it is visualized as a stub for unit-cell symmetry but is inert (it does not participate in the update rules and is not seen by any node).  When the chain is periodic the trailing edge closes the loop, connecting node N-1 back to node 0.
-- Each node has an angular orientation where (for a 1D array) 0 points in the -x direction.  So each new node connected to the array connects to the previous edge at its own 0 point.  The 180 degree point (+x direction) will be where the next edge will connect to this node.
-- Likewise, each edge has a directional orientation, a tail and a head.  In the 1D case, each edge has its tail in -x and its head in +x (connecting to each new node).
-- The chain has two independent boolean properties: *periodic* (logically closed, the trailing edge connects back to node 0) and *wrap* (visually rolled into a ring).  Periodic without wrap leaves the array drawn flat with the trailing edge as a stub, but the engine still treats it as connected to node 0.  Wrap rolls the chain into a vertical ring — picture a ferris wheel with its axle along z, the wrap circle in the xy plane, centered at the origin, with nodes spaced around its rim at the wheel's radius (derived from the array length).  Going from one node to the next is a small rotation about the z axis.  Each node circle reorients so its normal points radially outward from the axle, and edges curve along the rim, tangent to the wheel.  In wrap mode without periodic, the trailing edge is hidden and the visible chain forms an arc with one segment missing.
-- The controls allow one to build a linear array with a specified number of unit cells (N), mark the array periodic, and toggle the visual wrap independently.  When wrapped, the diameter of the circle is derived from the number of unit cells.
+## Substrate
+
+Two structural primitive types:
+
+- **Node** — a vertex in the lattice graph.  Renders as a flat circle (a torus mesh), normal aligned with the local viewing plane.
+- **Edge** — a connection between two nodes.  Renders as a thin tube between the two nodes' rims.
+
+The substrate **does not** distinguish "A-nodes" and "B-nodes" or any other functional sublattice.  Every node is the same kind of object; every edge is the same kind of object.  The geometric distinction in 2D — some wye-junctions point up, some point down — is purely a property of how the hex lattice tiles, not a difference in the dynamics of the nodes.
+
+### Registers (where the state lives)
+
+Each edge has two ends.  Each end *docks into* the node it connects to, forming a **register** — the meeting point between an edge end and a node.  A register holds a single real-valued number; that real number is the lattice's only stored state.
+
+- An edge contributes **two registers** (one at each end).
+- A node hosts **one register per incident edge**.  A node of coordination N has N registers.
+- The register is owned jointly: the edge contributes the *end*, the node contributes the *socket*.  It is not a third primitive type — it is a derived structural element built from the two foundational ones.
+
+This replaces the older "node carries a phase, edge carries a magnitude" framing: there is no longer a per-node phase or a per-edge scalar.  All state is in registers.
+
+The total state count for any topology is exactly **2 · |edges|** real numbers, equivalently `Σ_node (coord of node)` since every edge contributes to two nodes.
+
+### Edge polarity
+
+Edges have a logical tail and head used as a layout convention (e.g., "the rightward edge in 1D").  The *Scattering dynamics does not use polarity* — both registers of an edge are unordered with respect to it.  Polarity is retained only as a labeling convenience for presets and rendering anchors.
+
+## Dimensions
+
+The visualizer supports three lattice dimensions, each with its own neighbor topology.  Higher dimensions are added in stages (1D first, then 2D, then 3D).
+
+### 1D — linear chain
+
+- N nodes spaced along the x axis.
+- Open: N nodes, **N − 1 edges**.  No dangling stubs.  Boundary nodes have coordination 1.
+- Periodic: N nodes, **N edges**.  Every node has coordination 2.  The wrap edge connects node N − 1 back to node 0.
+
+The simple node and edge lay flat in xz so the chain runs along x and each node circle's plane is in xz, normal up (y).  The edge intersects the circle from outside.
+
+When **periodic** but **not wrapped** visually, the chain is drawn flat and the wrap edge is rendered as **two short half-edge stubs**, one extending past each end of the chain, faded slightly so the eye reads them as "this connects around to the other side."  The two stubs together represent the single wrap edge logically.  When **periodic** *and* **wrapped**, the chain rolls into a vertical ring (ferris wheel: axle along z, ring in the xy plane, nodes spaced around the rim).  When **open** *and* **wrapped**, the chain is rolled into an arc with one rim segment missing.
+
+### 2D — hex / wye sheet
+
+Each interior node has coordination 3, with three edges meeting at 120° angles.  The lattice tiles the plane in a hexagonal pattern: when viewed by its hex *openings*, the pattern reads as hexagons; when viewed by the wye-junction at each node, the pattern reads as alternating Y and inverted-Y junctions (some nodes have one edge pointing up and two pointing down, others one edge pointing down and two pointing up).  These up- and down-wyes are *geometric mirror images*, not functionally different objects.
+
+Layout: nodes lie in the xz plane (y = 0); the lattice runs `nx` cells in one lattice direction and `ny` in the other.  Periodicity is per-axis: x can be periodic, z can be periodic, both, or neither.
+
+When an axis is **periodic** but **not wrapped**, the wrap edges along that axis are rendered as short half-edge stubs at both ends of each affected row (1D treatment generalized).  When an axis is **wrapped** as well, that axis is rolled into a ring, and the sheet curves into a cylinder.  When *both* axes are periodic and wrapped, the sheet closes into a **torus**.  The torus geometry is computed so that the lattice tiles the surface cleanly — the major and minor radii are derived from `nx` and `ny` so that plaquettes close exactly when mapped onto the torus surface, no visible seam.
+
+### 3D — diamond lattice
+
+Every node has coordination 4, with four edges at the tetrahedral angle (~109.5°).  The lattice tiles 3D space in the same connectivity pattern as the carbon atoms in diamond.
+
+Per-axis periodicity is independent (x, y, z each toggle).  Each periodic axis can independently be wrapped.  All three axes wrapped gives a 3-torus; visualizing this involves nesting three concentric loops and is sketched only after the 1D and 2D cases are working.  See [`nested-torus.html`](nested-torus.html) for the visual idiom.
 
 ## Clock
-- There is a master clock that displays as 0 or 1
-- It is controllable by single (half) stepping or with a run/stop button and a settable speed control
-- There are two clock edges:
-  - 0→1 (exhale, yang): information flows outward from nodes to edges
-  - 1→0 (inhale, yin): nodes gather information from their edges
+
+A master clock displays as `0` or `1`, controllable by half-stepping or run/stop with a settable speed.
+
+Two clock edges:
+
+- `0 → 1` (**exhale**, yang) — each edge transmits its two ends' values to one another.  The effect is a **swap** of the values in the edge's two registers.  Synchronous across the lattice.
+- `1 → 0` (**inhale**, yin) — each node samples its registers, applies the **scattering matrix** S = (2/N)·J − I where N is the local coordination, and overwrites the registers with the result.
+
+One full cycle (inhale + exhale) is one time tick.  An exhale is **one edge transit** — that is the **speed of light** on the lattice.
 
 ## Update rules
-Each type of primitive has its own local update rule.  
-The purpose of the update rule is to calculate the primitive's next value as a function of its inputs, the present values.
 
-Update rules consider only:
-- The current state of the primitive's value
-- The current state of its neighbors' values
-- A settable coupling value which will initially default to 1 (full coupling)
-There can be multiple versions of the update rules.  A global setting decides which update rule version is in play.
+There is one update rule, derived from the two physical constraints any junction must enforce: voltage continuity (all incident lines see the same potential at the junction) and Kirchhoff current conservation.  The matrix S = (2/N)·J − I is the *unique* solution to these constraints at an N-port equal-impedance junction.
 
-## Version 1 Update rules
-Node:
-- On inhale, my next value is the sum of:
-  - Each connected edge's value, times cos(phi) where phi is the angle where the edge connects to the node.  As an example, a node is connected by two edges, one to the left (-x) and one to the right (+x).  If the edge to the left has value 3 and the one to the right has value 2, the new node value will be 3 - 2 = 1.
-- On exhale, do nothing.
+**Inhale (node).**  At each node of coordination N with registers r₁, …, r_N (in any local ordering):
 
-Edge
-- On inhale, do nothing.
-- On exhale, my next value is the sum of the two nodes I am connected to
+> r_i ← (2/N) · (r₁ + r₂ + … + r_N) − r_i      for each i = 1, …, N
 
-Coupling value
-In the version 1, the individual coupling constant will not be used.  Later, it will become a function of the bending angle between primitives.  Keep it stubbed in, but do not consider it yet in the calculation.
+**Exhale (edge).**  For each edge with end-A register r_A and end-B register r_B:
 
-## Version 2 Update rules
+> r_A, r_B ← r_B, r_A      (swap)
 
-Yee-style additive coupling.  Each update *adds* a contribution from neighbors to the primitive's current value rather than replacing it.  Combined with the staggered geometry — nodes at integer positions, edges between them — this yields stable, linear wave propagation: a perturbation travels along the array in a definite direction, and two perturbations launched from opposite ends pass through each other without disrupting each other.
+Both phases are *unitary* — exactly energy-preserving (Σ r_i² is conserved per cycle to machine precision).  Unit time step is stable for any coordination; no normalization or sub-stepping needed.
 
-Node:
-- On inhale, my next value is my current value plus the sum of:
-  - Each connected edge's value, times cos(phi) where phi is the angle where the edge connects to the node, divided by the translation factor k.  As an example, a node currently at phase 10, connected by two edges (left at -x, phi=0, value 3; right at +x, phi=180°, value 2), becomes 10 + (3 − 2)/k.
-- On exhale, do nothing.
+For interior 1D nodes (N = 2): inhale sends (r₁, r₂) → (r₂, r₁).  Combined with the exhale-swap on edges, one full cycle moves the value pattern by one cell (in either direction, depending on the channel).
 
-Edge
-- On inhale, do nothing.
-- On exhale, my next value is my current value plus k times (the value of my tail node − the value of my head node).  The sign convention follows from stability: the edge stores a flux/gradient pointing from high-phase tail to low-phase head, so a positive tail-minus-head difference grows the edge value.  As an example, an edge currently at value 4, running from node A (tail, phase 30) to node B (head, phase 50), becomes 4 + k·(30 − 50) = 4 − 20·k.
+For 2D hex / wye junctions (N = 3): the diagonal of S is −1/3 (reflection coefficient at a junction) and the off-diagonal is 2/3 (transmission to each of the two other ports).  This matches the matched-impedance scattering result that grid-duality verified to four decimals.
 
-Coupling value
-Same stub as v1 — present in state, defaulting to 1, not yet used in the calculation.  When activated it will modulate the per-edge contribution as a function of the bending angle between primitives.
+For 3D diamond (N = 4): diagonal is −1/2, off-diagonal is 1/2.
 
-## Primitive scaling
-To translate values between primitives (edges and nodes), including a global translation value that is settable.  Default = 1.  This translates magnitudes to angles and vice versa.  Node phase is derived by dividing the sum of its inputs by the translation factor.  Edges multiply to get their value.  This is uniform across update versions.
+For a coordination-1 boundary node: S = 1 (identity).  A boundary register reflects perfectly back through the edge — equivalent to an open-circuit termination on a transmission line.
+
+There is no separate "v1 / v2 / cos-weighted" rule selector.  The earlier candidates (v-i Telegrapher, normalized telegrapher, RelCos-both, cos-weighted) are documented in [grid-duality/02-candidate-models.md](../projects/grid-duality/02-candidate-models.md) but are not implemented here.
+
+## Coupling factor
+
+A global coupling constant `c` (default 1) is stubbed into engine config for future use.  At c = 1 the dynamics is exactly the Scattering model above.  Future extensions may modulate the per-edge swap by a coupling that depends on the bending angle between adjacent edges; this is not active in MVP.
 
 ## Rendering
-Each edge should be rendered as a heatmap or color.  A global setting can determine scaling, specifying the range of allowable values.  Values that overflow or underflow the heat mapping should saturate.  Zero should be mapped to a color in the middle of the spectrum, allowing positive and negative colors to map to hot and cold colors according to the selected scaling.  If the graph looks saturated, the scaling can be adjusted.  A checkbox should be available for auto scaling where the scaling method will adapt to values on the graph according to some slow update method.
 
-Each node should be a uniform color but have a bright dot to indicate its current phase.  The dot is positioned over the correct location on the circle.  In cumulative mode, the base color of the node circle will change color according to scale (i.e. 0-360 is neutral, 361-720 is hotter, -360-0 is cooler).
+### Edges
 
-In addition to graphical rendering, each primitive shall be able to display a numeric value.  These should be legible at a single font regardless of zoom value and display in proximity, to the primitive and always right-side-up regardless of the primitive's rotation.  Near center of mass for each primitive is a good place for the numeric display, slightly elevated in y for edges (so it isn't buried in the edge thickness).  Numeric display may be turned on/off globally.
+Each edge renders as a tube between two nodes (or two stubs in periodic-but-not-wrapped mode).  The tube is **split into two halves**, one for each register.  Each half is colored by a heat map of its register's value:
+
+- Zero is mid-spectrum (neutral).
+- Positive values warm toward red/orange.
+- Negative values cool toward blue.
+- Out-of-range values saturate.
+
+The split point is at the midpoint of the edge, so each half visually attaches to the node it docks into.  An optional refinement is a smooth gradient interpolation across the midpoint instead of a hard split; the engine treats the two registers as independent values, so the visual choice is purely cosmetic.
+
+A global heat range slider sets the saturation thresholds.  An auto-scale checkbox slowly adapts the range to the current maximum register magnitude on the lattice.
+
+### Nodes
+
+Each node renders as a circular ring (torus mesh) in its local plane.  The ring is divided into **angular sectors**, one per incident edge, each sector spanning the arc nearest its register.  Each sector is colored by the same heat map applied to the corresponding register.  This makes the value continuous across the node-edge boundary — the edge half and the node sector that share a register show the same color.
+
+For nodes of coordination 1 (1D boundary), the sector spans the side of the ring facing the connected edge; the rest of the ring is neutral.
+
+If sector subdivision proves visually fussy, the fallback is a single uniform color per node ring with sector colors deferred to a future iteration.
+
+### Numeric labels
+
+Each register can display a numeric value, positioned near the edge end that hosts it (i.e., near the corresponding node, not at the edge midpoint).  Labels render at a constant font size in screen space, always upright regardless of camera orientation.  Numeric display toggles globally.
+
+### Half-edge stubs (periodic, not wrapped)
+
+When an axis is periodic but not visually wrapped, the wrap edges render as short half-stubs extending past the boundary nodes.  Each stub is a single-tube half-edge in the boundary node's outward direction, faded slightly (e.g., dashed or 60% opacity) and labeled with an arrow or short text indicating which node it logically connects to.  Two stubs per wrap edge — one at each end — together represent the single logical edge.  Their two register values are still part of the engine's state and can be read off the stubs.
 
 ## Initial Conditions
-The user can click on a primitive to set its value.  A small popup box will accept the value and write it in.  There is also a global clear button to reset all values to zero.
 
-A pulldown menu offers preloaded initial states for common test cases.  Selecting a preset clears the chain and overwrites all values.  In each delta-style preset, both a node phase and an edge value are set: in periodic mode the edge value is needed to cancel the would-be opposite-direction branch and yield a clean directional pulse, and in an open chain the boundary already breaks symmetry so the edge seed is cosmetic but kept for consistency.
+Click any primitive — a register on a node or an edge half — to open a popup that sets its value.  A global Clear button zeros every register.
 
-- **Delta L** — single impulse at the left end set up to propagate right.  Sets node 0's phase and the trailing edge's value (positive sign).
-- **Delta R** — single impulse at the right end set up to propagate left.  Sets node N-1's phase and the trailing edge's value (negative sign — opposite to Delta L).
-- **Delta 2** — both Delta L and Delta R simultaneously, so the two pulses meet and pass through each other in the middle.  Both endpoint nodes are set; the trailing-edge contributions cancel and it remains zero.
-- **Sin** — a smooth sinusoidal traveling-wave initial condition: nodes carry a cosine pattern around the chain, and edges carry the matching half-cell-shifted sine pattern (so on a periodic ring at k=1 it propagates right at one cell per cycle without distortion).
+A pulldown menu offers preloaded presets.  Each preset clears the lattice and overwrites register values:
 
-In later iterations, we will add additional injection presets (Gaussian wavepackets, multi-mode mixes, etc.).
+- **Delta L** — single rightward-traveling unit pulse seeded at the left end of the chain.  Sets the rightward-channel register at node 0 (the head-end register of the wrap edge, if periodic, or of the leftmost edge in open mode) to a unit amplitude.
+- **Delta R** — symmetric to Delta L, leftward-traveling, seeded at the right end.
+- **Delta 2** — both Delta L and Delta R simultaneously, so the two pulses meet and pass through each other.
+- **Sin** — a smooth right-going sinusoidal traveling wave: registers along the rightward channel carry a sine pattern around the chain, leftward-channel registers are zero.  On a periodic ring this is an exact eigenmode and propagates without distortion.
 
-## MVP
-For first iteration, we should be able to build the 1D array of specified length and optionally wrap it into a ring (ferris-wheel orientation).  Further, higher degrees will be deferred for now.
+In later iterations, additional presets (Gaussian wavepackets, multi-mode mixes, Y-junction probes for 2D) will be added.
+
+## MVP and refactor plan
+
+Per the user's intent, the refactor proceeds in three steps:
+
+1. **1D only** — port engine, tests, and visualization to the register / Scattering model on the existing 1D chain.  Drop v1/v2 selector, per-node phase, per-edge magnitude, accumulate-mode, units, and k.  Validate energy conservation and pulse propagation.  *(This MVP step.)*
+2. **2D** — add a `build2D(nx, ny, { periodic_x, periodic_y })` builder, hex/wye geometry, optional torus wrap, half-edge stubs for unwrapped periodic axes.
+3. **3D** — add a `build3D(nx, ny, nz, …)` builder for the diamond lattice, with per-axis periodicity and wrap; nested-torus visualization for fully wrapped 3D.
+
+After each step the visualizer should remain usable end-to-end; later steps don't break earlier ones.

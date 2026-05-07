@@ -138,14 +138,15 @@
       <span class="card-tag">GRID</span>
       <h2>Grid Lab — Node/Edge Lattice</h2>
     </div>
-    <p>Workbench for building and animating simple node/edge graph lattices.
-       Nodes carry a periodic phase (with optional accumulation across the
-       boundary), edges carry a signed magnitude shown as a hot/cold heatmap.
-       Build a 1D linear array of N primitives and optionally wrap it into a
-       ferris-wheel ring. A master clock half-steps between 0 and 1: rising
-       edges update node phases from cos-weighted edge sums, falling edges
-       update edge values from neighboring node phases. Click any primitive
-       to set its value. Profile save/load.</p>
+    <p>Workbench for building and animating node/edge graph lattices under
+       the Scattering model from grid-duality. Each edge has two registers
+       (one at each end); a master clock alternates an inhale (each node
+       applies S = (2/N)·J − I to its registers) and an exhale (each edge
+       swaps its two register values). Builds a 1D linear array of N
+       primitives, open or periodic, and optionally wraps it into a
+       ferris-wheel ring. Edges render as two heat-mapped halves; periodic
+       wraps in flat layout show as half-edge stubs. 2D and 3D forthcoming.
+       Click any edge half to set that register. Profile save/load.</p>
     <div class="card-file">grid-lab.html</div>
   </a>
 

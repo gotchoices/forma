@@ -44,15 +44,13 @@
   position: absolute; inset: 0; pointer-events: none; overflow: hidden;
 }
 .label {
-  position: absolute; font: 10px/1.2 monospace; color: #e0e0e0;
+  position: absolute; font: 10px/1.2 monospace; color: #f5f5f5;
   background: rgba(10,10,18,0.62); padding: 1px 5px; border-radius: 3px;
   transform: translate(-50%, -50%); white-space: nowrap;
   pointer-events: none; user-select: none;
   border: 1px solid rgba(255,255,255,0.06);
 }
-.label.l-edge { color: #f5f5f5; }
-.label.l-node { color: #fff2a0; }
-.label.l-inert { color: #888; opacity: 0.7; font-style: italic; }
+.label.l-stub { color: #c0c0c0; opacity: 0.85; font-style: italic; }
 </style>
 </head>
 <body>
@@ -95,29 +93,6 @@
 
   <div class="sep"></div>
 
-  <div class="cg">
-    <label>Units</label>
-    <select id="sel-units">
-      <option value="deg">deg</option>
-      <option value="rad">rad</option>
-    </select>
-  </div>
-  <div class="cg tog"><label><input type="checkbox" id="cb-accum"> Accumulate</label></div>
-  <div class="cg">
-    <label>Rule</label>
-    <select id="sel-rule">
-      <option value="1">v1 (replace)</option>
-      <option value="2">v2 (Yee)</option>
-    </select>
-  </div>
-  <div class="cg">
-    <label>k</label>
-    <input type="range" id="sl-k" min="0.05" max="5" step="0.05" value="1">
-    <span class="val" id="v-k">1.00</span>
-  </div>
-
-  <div class="sep"></div>
-
   <button class="btn" id="btn-step" title="Advance one half-step">Step ½</button>
   <span id="clock-display" title="Master clock (0 or 1)">0</span>
   <button class="btn" id="btn-run">▶ Run</button>
@@ -153,7 +128,7 @@
 </div>
 
 <div class="view-full" id="view">
-  <div id="hint">click a node or edge to set its value</div>
+  <div id="hint">click an edge half to set that register's value</div>
   <div id="labels"></div>
   <div id="popup">
     <span class="lbl" id="pop-label">Value</span>
@@ -178,59 +153,47 @@ import {
   build1D,
   clear as engineClear,
   halfStep as engineHalfStep,
-  wrapPhase as engineWrapPhase,
   applyPreset as engineApplyPreset,
-  NO_HEAD,
+  getEdgeRegisters,
+  setEdgeRegister,
+  totalEnergy,
 } from './grid-engine.js';
 
 const $ = id => document.getElementById(id);
 const TAU = Math.PI * 2;
-const RAD = Math.PI / 180;
 
-const STATE_KEY  = 'grid-lab-state';
-const PROF_KEY   = 'grid-lab-profiles';
+const STATE_KEY = 'grid-lab-state';
+const PROF_KEY  = 'grid-lab-profiles';
 
 /* ── State ─────────────────────────────────────────────── */
 
 const DEFAULT = {
   N: 6,
-  periodic: false,      // logical closure — engine treats trailing edge as connected
-  wrap: false,          // visual roll into a ferris-wheel ring
+  periodic: false,      // logical wrap-around (engine-level)
+  wrap: false,          // visual ring layout (rendering-only)
   nodeDiam: 0.6,
   edgeLen: 1.0,
-  units: 'deg',         // 'deg' | 'rad'
-  accumMode: false,     // false = wrap node phase to one period
-  k: 1.0,               // primitive scaling (translation factor)
-  coupling: 1.0,        // stubbed (v1/v2 ignore)
-  ruleVersion: 2,       // 1 = replacement (v1), 2 = Yee additive (v2)
   speed: 2.0,
   heatRange: 5.0,
   autoScale: false,
   showLabels: true,
 };
 
-const EDGE_LABEL_LIFT = 0.08;  // world-space y offset so the label clears the edge tube
+const STUB_FRACTION   = 0.5;   // length of a flat-periodic wrap stub, as a fraction of edgeLen
+const EDGE_LABEL_LIFT = 0.08;
 
-// Engine-config view of S — what the engine functions consume.
-function engineConfig() {
-  return {
-    k: S.k,
-    ruleVersion: S.ruleVersion,
-    units: S.units,
-    accumMode: S.accumMode,
-  };
+// Snapshot register values per node so we can restore after rebuilding the engine.
+function snapshotRegisters(state) {
+  return state.nodes.map(n => [...n.registers]);
 }
-
-// Restore phase/value arrays into a freshly-built engine state, padding/
-// truncating so the graph always matches the configured N + wrap.
-function hydrateEngine(engine, savedNodePhases, savedEdgeMags) {
-  if (Array.isArray(savedNodePhases)) {
-    const lim = Math.min(savedNodePhases.length, engine.nodes.length);
-    for (let i = 0; i < lim; i++) engine.nodes[i].phase = savedNodePhases[i];
-  }
-  if (Array.isArray(savedEdgeMags)) {
-    const lim = Math.min(savedEdgeMags.length, engine.edges.length);
-    for (let i = 0; i < lim; i++) engine.edges[i].value = savedEdgeMags[i];
+function hydrateEngine(engine, snap) {
+  if (!Array.isArray(snap)) return;
+  const nLim = Math.min(snap.length, engine.nodes.length);
+  for (let i = 0; i < nLim; i++) {
+    const src = snap[i] || [];
+    const dst = engine.nodes[i].registers;
+    const lim = Math.min(src.length, dst.length);
+    for (let j = 0; j < lim; j++) dst[j] = src[j];
   }
 }
 
@@ -240,27 +203,16 @@ function loadState() {
     const txt = localStorage.getItem(STATE_KEY);
     if (txt) raw = JSON.parse(txt);
   } catch {}
-  // Migration: legacy state had a single `wrap` flag that did both jobs.
-  // If `periodic` is missing but `wrap` is present, mirror it so old
-  // ring sessions stay periodic-and-wrapped after the split.
-  if (raw.periodic === undefined && raw.wrap !== undefined) {
-    raw.periodic = raw.wrap;
-  }
-  const s = { ...DEFAULT, ...raw };
+  const s = { ...DEFAULT };
+  for (const k of Object.keys(DEFAULT)) if (raw[k] !== undefined) s[k] = raw[k];
   s.engine = build1D(s.N, { periodic: s.periodic });
-  hydrateEngine(s.engine, raw.nodePhases, raw.edgeMags);
-  delete s.nodePhases;
-  delete s.edgeMags;
+  hydrateEngine(s.engine, raw.registers);
   return s;
 }
 
 function saveState() {
   const { engine, ...rest } = S;
-  const out = {
-    ...rest,
-    nodePhases: engine.nodes.map(n => n.phase),
-    edgeMags:   engine.edges.map(e => e.value),
-  };
+  const out = { ...rest, registers: snapshotRegisters(engine) };
   localStorage.setItem(STATE_KEY, JSON.stringify(out));
 }
 
@@ -287,15 +239,12 @@ controls.target.set(0, 0, 0);
 const graphGroup = new THREE.Group();
 scene.add(graphGroup);
 
-const nodes = []; // { group, ringMat, dot, pos, localX, localY, localZ }
-const edges = []; // { mesh, mat, a, b }
+// per-edge: { halves: [{ mesh, mat, label, mid, isStub }, { … }], stub: bool }
+const nodes = []; // { group, ringMat, frame }
+const edges = [];
 
-const RING_TUBE = 0.035;     // tube radius for the rim torus
-const EDGE_TUBE = 0.05;      // edge cylinder radius
-const DOT_R     = 0.07;      // phase dot radius
-
-const dotMat   = new THREE.MeshBasicMaterial({ color: 0xfff2a0 });
-const dotGeo   = new THREE.SphereGeometry(DOT_R, 14, 10);
+const RING_TUBE = 0.035;
+const EDGE_TUBE = 0.05;
 
 /* ── Color helpers ─────────────────────────────────────── */
 
@@ -314,20 +263,7 @@ function heatColor(val, range) {
   );
 }
 
-// Base node color: neutral gray, shifted hot/cool by accumulate-mode wrap count.
-function nodeBaseColor(phase) {
-  if (!S.accumMode) return new THREE.Color(0.30, 0.30, 0.36);
-  const fullTurn = S.units === 'deg' ? 360 : TAU;
-  const wraps = Math.floor(phase / fullTurn);
-  if (wraps === 0) return new THREE.Color(0.30, 0.30, 0.36);
-  const sign = Math.sign(wraps);
-  const mag  = Math.min(Math.abs(wraps), 5) / 5;
-  if (sign > 0) {
-    return new THREE.Color(0.30 + mag * 0.65, 0.30 - mag * 0.10, 0.36 - mag * 0.20);
-  } else {
-    return new THREE.Color(0.30 - mag * 0.10, 0.30 + mag * 0.25, 0.36 + mag * 0.55);
-  }
-}
+const NODE_RING_BASE = new THREE.Color(0.30, 0.30, 0.36);
 
 /* ── Geometry layout ───────────────────────────────────── */
 
@@ -346,129 +282,135 @@ function nodeFrame1D(i) {
 
 function nodeFrameRing(i) {
   const r = S.nodeDiam / 2;
-  // Place N nodes equally spaced on a wheel in xy plane (axle z).
-  // Chord between adjacent rim points = nodeDiam + edgeLen.
   const chord = S.nodeDiam + S.edgeLen;
   const R = chord / (2 * Math.sin(Math.PI / S.N));
   const theta = i * TAU / S.N;
   const c = Math.cos(theta), s = Math.sin(theta);
   return {
     pos:    new THREE.Vector3(R * c, R * s, 0),
-    localX: new THREE.Vector3(-s, c, 0),     // tangent toward next node
-    localY: new THREE.Vector3(0, 0, 1),      // axle
-    localZ: new THREE.Vector3(c, s, 0),      // radial outward (disk normal)
+    localX: new THREE.Vector3(-s, c, 0),
+    localY: new THREE.Vector3(0, 0, 1),
+    localZ: new THREE.Vector3(c, s, 0),
     r,
   };
 }
 
 function nodeFrame(i) { return S.wrap ? nodeFrameRing(i) : nodeFrame1D(i); }
 
-// Phase dot offset in node-local coords.  phi=0 → -localX (where prev edge enters);
-// phi=π → +localX (where next edge enters).  CCW when viewed from +localZ.
-function dotOffset(phi, r) {
-  return new THREE.Vector3(-r * Math.cos(phi), r * Math.sin(phi), 0);
-}
-
-// Convert phase value (in user units) to radians.
-function phiRad(phase) {
-  return S.units === 'deg' ? phase * RAD : phase;
-}
-
-// Local convenience wrapper around the engine's wrapPhase.
-function wrapPhase(v) { return engineWrapPhase(v, engineConfig()); }
-
 /* ── Build / rebuild ───────────────────────────────────── */
 
 function clearGraph() {
   graphGroup.clear();
-  for (const n of nodes) { n.ringMat.dispose(); n.label?.remove(); }
+  for (const n of nodes) n.ringMat.dispose();
   for (const e of edges) {
     if (!e) continue;
-    e.mat.dispose(); e.mesh.geometry.dispose(); e.label?.remove();
+    for (const h of e.halves) {
+      h.mat.dispose();
+      h.mesh.geometry.dispose();
+      h.label?.remove();
+    }
   }
   nodes.length = 0;
   edges.length = 0;
 }
 
-function makeLabel(cls) {
+function makeLabel(cls = '') {
   const el = document.createElement('div');
   el.className = 'label ' + cls;
   $('labels').appendChild(el);
   return el;
 }
 
+// Build a half-edge cylinder mesh from p0 (attached end) toward p1 (free end).
+// userData is set by caller via `tag`. `opacity < 1` fades stubs.
+function buildHalfMesh(p0, p1, tag, opacity = 1.0) {
+  const dir = p1.clone().sub(p0);
+  const len = dir.length();
+  const mid = p0.clone().addScaledVector(dir, 0.5);
+  const geo = new THREE.CylinderGeometry(EDGE_TUBE, EDGE_TUBE, len, 12);
+  const mat = new THREE.MeshStandardMaterial({
+    color: 0x808080, roughness: 0.55, metalness: 0.1,
+    transparent: opacity < 1.0, opacity,
+  });
+  const mesh = new THREE.Mesh(geo, mat);
+  mesh.position.copy(mid);
+  mesh.quaternion.setFromUnitVectors(
+    new THREE.Vector3(0, 1, 0), dir.clone().normalize(),
+  );
+  mesh.userData = tag;
+  return { mesh, mat, mid, len };
+}
+
 function buildGraph() {
   clearGraph();
 
-  // Nodes
+  // Nodes — uniform circular ring, no phase dot.
   for (let i = 0; i < S.N; i++) {
     const f = nodeFrame(i);
     const group = new THREE.Group();
     group.position.copy(f.pos);
     group.quaternion.setFromRotationMatrix(
-      new THREE.Matrix4().makeBasis(f.localX, f.localY, f.localZ)
+      new THREE.Matrix4().makeBasis(f.localX, f.localY, f.localZ),
     );
-
     const ringGeo = new THREE.TorusGeometry(f.r, RING_TUBE, 8, 48);
     const ringMat = new THREE.MeshStandardMaterial({
-      color: 0x505060, roughness: 0.6, metalness: 0.1,
+      color: NODE_RING_BASE, roughness: 0.6, metalness: 0.1,
     });
     const ring = new THREE.Mesh(ringGeo, ringMat);
     ring.userData = { kind: 'node', index: i };
     group.add(ring);
-
-    const dot = new THREE.Mesh(dotGeo, dotMat);
-    dot.userData = { kind: 'node', index: i };
-    group.add(dot);
-
     graphGroup.add(group);
-    const label = makeLabel('l-node');
-    nodes.push({ group, ringMat, ring, dot, frame: f, label });
+    nodes.push({ group, ringMat, ring, frame: f });
   }
 
-  // Edges — one per unit cell, index-aligned with S.engine.edges.
-  // Trailing edge (i = N-1):
-  //   periodic + wrap   → closes the chain visually (joins node N-1 → node 0)
-  //   periodic + flat   → rendered as a stub (logical closure not visualized)
-  //   open + flat       → rendered as a stub (cosmetic — engine treats as inert)
-  //   open + wrap       → hidden (gap on the wheel shows the chain is open)
-  for (let i = 0; i < S.N; i++) {
-    const isTrailing = (i === S.N - 1);
-    const closeRing  = isTrailing && S.periodic && S.wrap;
-    const hide       = isTrailing && !S.periodic && S.wrap;
+  // Edges — each edge → two half-meshes (tail half + head half).
+  // The wrap edge in flat-periodic mode renders as two stub half-meshes
+  // pointing outward from the boundary nodes; in any other configuration
+  // (open, or wrapped) it renders as a normal edge with two halves.
+  const step = S.nodeDiam + S.edgeLen;
+  const longThreshold = step * 1.5;
 
-    if (hide) { edges.push(null); continue; }
+  for (let ei = 0; ei < S.engine.edges.length; ei++) {
+    const eng = S.engine.edges[ei];
+    const a = nodes[eng.tail].frame;
+    const b = nodes[eng.head].frame;
+    const tailAttach = a.pos.clone().addScaledVector(a.localX, +a.r);
+    const headAttach = b.pos.clone().addScaledVector(b.localX, -b.r);
+    const span = headAttach.clone().sub(tailAttach).length();
+    const isStub = span > longThreshold;
 
-    const a = nodes[i].frame;
-    let pA = a.pos.clone().addScaledVector(a.localX, +a.r);
-    let pB;
-    if (isTrailing && !closeRing) {
-      // Stub: extend along the tail's +localX by edgeLen.
-      pB = pA.clone().addScaledVector(a.localX, S.edgeLen);
+    const halves = [];
+    if (!isStub) {
+      // Normal edge: two halves meeting at midpoint
+      const mid = tailAttach.clone().addScaledVector(headAttach.clone().sub(tailAttach), 0.5);
+      const tailHalf = buildHalfMesh(tailAttach, mid,
+        { kind: 'reg', edgeIdx: ei, end: 'tail' });
+      const headHalf = buildHalfMesh(mid, headAttach,
+        { kind: 'reg', edgeIdx: ei, end: 'head' });
+      graphGroup.add(tailHalf.mesh, headHalf.mesh);
+      halves.push(
+        { ...tailHalf, label: makeLabel(), end: 'tail' },
+        { ...headHalf, label: makeLabel(), end: 'head' },
+      );
     } else {
-      const b = nodes[(i + 1) % S.N].frame;
-      pB = b.pos.clone().addScaledVector(b.localX, -b.r);
+      // Stubbed wrap edge: each end gets a stub of length edgeLen·STUB_FRACTION
+      // pointing along the boundary node's outward direction.
+      const stubLen = S.edgeLen * STUB_FRACTION;
+      // tail stub: from tail node's rim outward along +localX
+      const tailFar = tailAttach.clone().addScaledVector(a.localX, stubLen);
+      const tailHalf = buildHalfMesh(tailAttach, tailFar,
+        { kind: 'reg', edgeIdx: ei, end: 'tail' }, 0.7);
+      // head stub: from head node's rim outward along −localX (opposite side of head node)
+      const headFar = headAttach.clone().addScaledVector(b.localX, -stubLen);
+      const headHalf = buildHalfMesh(headAttach, headFar,
+        { kind: 'reg', edgeIdx: ei, end: 'head' }, 0.7);
+      graphGroup.add(tailHalf.mesh, headHalf.mesh);
+      halves.push(
+        { ...tailHalf, label: makeLabel('l-stub'), end: 'tail', stub: true },
+        { ...headHalf, label: makeLabel('l-stub'), end: 'head', stub: true },
+      );
     }
-
-    const dir = pB.clone().sub(pA);
-    const len = dir.length();
-    const mid = pA.clone().addScaledVector(dir, 0.5);
-    const geo = new THREE.CylinderGeometry(EDGE_TUBE, EDGE_TUBE, len, 12);
-    const inert = isTrailing && !S.periodic;
-    const mat = new THREE.MeshStandardMaterial({
-      color: 0x808080, roughness: 0.55, metalness: 0.1,
-      transparent: inert, opacity: inert ? 0.55 : 1.0,
-    });
-    const mesh = new THREE.Mesh(geo, mat);
-    mesh.position.copy(mid);
-    mesh.quaternion.setFromUnitVectors(
-      new THREE.Vector3(0, 1, 0), dir.clone().normalize()
-    );
-    mesh.userData = { kind: 'edge', index: i };
-    graphGroup.add(mesh);
-    const label = makeLabel('l-edge');
-    if (inert) label.classList.add('l-inert');
-    edges.push({ mesh, mat, label, mid, inert });
+    edges.push({ halves, isStub });
   }
 
   applyValues();
@@ -477,63 +419,62 @@ function buildGraph() {
 /* ── Apply values to visuals ───────────────────────────── */
 
 function applyValues() {
-  // Edges → heat color
+  // Compute heat range, optionally auto-fitting to current max |register|.
   let range = S.heatRange;
   if (S.autoScale) {
     let mx = 0;
-    for (const e of S.engine.edges) mx = Math.max(mx, Math.abs(e.value));
+    for (const n of S.engine.nodes) for (const r of n.registers) mx = Math.max(mx, Math.abs(r));
     if (mx > 0) {
       const target = Math.max(0.5, mx * 1.05);
-      // gentle ease toward target (avoids flicker)
       range = S.heatRange + (target - S.heatRange) * 0.35;
       S.heatRange = range;
       $('sl-heat').value = Math.min(50, Math.max(0.5, range)).toFixed(1);
       $('v-heat').textContent = range.toFixed(1);
     }
   }
-  for (let i = 0; i < edges.length; i++) {
-    const visual = edges[i];
-    if (!visual) continue;
-    const v = S.engine.edges[i].value;
-    visual.mat.color = heatColor(v, range);
-    visual.label.textContent = fmtVal(v);
+
+  // Edges → per-half heat color, label = register value.
+  for (let ei = 0; ei < edges.length; ei++) {
+    const visual = edges[ei];
+    const [tailVal, headVal] = getEdgeRegisters(S.engine, ei);
+    const vals = { tail: tailVal, head: headVal };
+    for (const h of visual.halves) {
+      const v = vals[h.end];
+      h.mat.color = heatColor(v, range);
+      h.label.textContent = fmtVal(v);
+    }
   }
 
-  // Nodes → base color + phase dot position
-  for (let i = 0; i < nodes.length; i++) {
-    const n = nodes[i];
-    const phase = S.engine.nodes[i].phase;
-    n.ringMat.color = nodeBaseColor(phase);
-    n.dot.position.copy(dotOffset(phiRad(phase), n.frame.r));
-    n.label.textContent = fmtVal(phase);
-  }
+  // Nodes — uniform base color (register state already on attached edge halves).
+  for (const n of nodes) n.ringMat.color = NODE_RING_BASE;
 }
 
 /* ── Label positions (per-frame, screen-space) ─────────── */
 
 const _projV = new THREE.Vector3();
+function projectToScreen(world, w, h) {
+  _projV.copy(world).project(camera);
+  const off = _projV.z < -1 || _projV.z > 1;
+  return {
+    off,
+    left: ( _projV.x + 1) * 0.5 * w,
+    top:  (-_projV.y + 1) * 0.5 * h,
+  };
+}
+
 function updateLabelPositions() {
   if (!S.showLabels) return;
   const w = view.clientWidth, h = view.clientHeight;
-  for (const n of nodes) {
-    _projV.copy(n.frame.pos).project(camera);
-    const off = _projV.z < -1 || _projV.z > 1;
-    n.label.style.display = off ? 'none' : '';
-    if (!off) {
-      n.label.style.left = (( _projV.x + 1) * 0.5 * w) + 'px';
-      n.label.style.top  = ((-_projV.y + 1) * 0.5 * h) + 'px';
-    }
-  }
   for (const e of edges) {
     if (!e) continue;
-    _projV.copy(e.mid);
-    _projV.y += EDGE_LABEL_LIFT;
-    _projV.project(camera);
-    const off = _projV.z < -1 || _projV.z > 1;
-    e.label.style.display = off ? 'none' : '';
-    if (!off) {
-      e.label.style.left = (( _projV.x + 1) * 0.5 * w) + 'px';
-      e.label.style.top  = ((-_projV.y + 1) * 0.5 * h) + 'px';
+    for (const half of e.halves) {
+      const lift = half.mid.clone(); lift.y += EDGE_LABEL_LIFT;
+      const p = projectToScreen(lift, w, h);
+      half.label.style.display = p.off ? 'none' : '';
+      if (!p.off) {
+        half.label.style.left = p.left + 'px';
+        half.label.style.top  = p.top  + 'px';
+      }
     }
   }
 }
@@ -542,12 +483,13 @@ function applyLabelVisibility() {
   $('labels').style.display = S.showLabels ? '' : 'none';
 }
 
-/* ── Clock half-step (delegates to engine) ─────────────── */
+/* ── Clock half-step ───────────────────────────────────── */
 
 function halfStep() {
-  clockState = engineHalfStep(S.engine, engineConfig(), clockState);
+  clockState = engineHalfStep(S.engine, null, clockState);
   $('clock-display').textContent = clockState;
   applyValues();
+  updateInfo();
   saveState();
 }
 
@@ -565,7 +507,7 @@ function setRunning(r) {
 
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
-let pendingTarget = null;  // { kind, index }
+let pendingTarget = null;  // { kind: 'reg', edgeIdx, end }
 
 function pickAt(clientX, clientY) {
   const rect = view.getBoundingClientRect();
@@ -575,19 +517,16 @@ function pickAt(clientX, clientY) {
   const hits = raycaster.intersectObjects(graphGroup.children, true);
   for (const h of hits) {
     const ud = h.object.userData;
-    if (ud && ud.kind) return ud;
+    if (ud && ud.kind === 'reg') return ud;
   }
   return null;
 }
 
 let startX = 0, startY = 0, downTime = 0;
 view.addEventListener('pointerdown', e => {
-  // ignore if click hits popup or its children
   if (e.target.closest('#popup')) return;
-  // record so we can suppress orbit-drags from triggering the picker
   startX = e.clientX; startY = e.clientY; downTime = performance.now();
 });
-
 view.addEventListener('pointerup', e => {
   if (e.target.closest('#popup')) return;
   const dx = e.clientX - startX, dy = e.clientY - startY;
@@ -595,13 +534,10 @@ view.addEventListener('pointerup', e => {
   const hit = pickAt(e.clientX, e.clientY);
   if (!hit) { hidePopup(); return; }
   pendingTarget = hit;
-  const cur = hit.kind === 'node'
-    ? S.engine.nodes[hit.index].phase
-    : S.engine.edges[hit.index].value;
-  const unit = hit.kind === 'node' ? ` (${S.units})` : '';
+  const [tailVal, headVal] = getEdgeRegisters(S.engine, hit.edgeIdx);
+  const cur = hit.end === 'tail' ? tailVal : headVal;
   showPopup(e.clientX, e.clientY,
-    `${hit.kind === 'node' ? 'Node' : 'Edge'} ${hit.index} ${hit.kind === 'node' ? 'phase' : 'value'}${unit}`,
-    fmtVal(cur));
+    `Edge ${hit.edgeIdx} · ${hit.end} register`, fmtVal(cur));
 });
 
 function fmtVal(v) {
@@ -614,14 +550,10 @@ function showPopup(x, y, label, val) {
   const popup = $('popup');
   $('pop-label').textContent = label;
   $('pop-input').value = val;
-  // position within view
   const rect = view.getBoundingClientRect();
-  let lx = x - rect.left + 12;
-  let ly = y - rect.top + 12;
-  popup.style.left = lx + 'px';
-  popup.style.top  = ly + 'px';
+  popup.style.left = (x - rect.left + 12) + 'px';
+  popup.style.top  = (y - rect.top  + 12) + 'px';
   popup.style.display = 'block';
-  // clamp to viewport
   requestAnimationFrame(() => {
     const pr = popup.getBoundingClientRect();
     const vr = view.getBoundingClientRect();
@@ -642,11 +574,7 @@ function commitPopup() {
   const raw = $('pop-input').value.trim();
   const v = Number(raw);
   if (!Number.isFinite(v)) { hidePopup(); return; }
-  if (pendingTarget.kind === 'node') {
-    S.engine.nodes[pendingTarget.index].phase = wrapPhase(v);
-  } else {
-    S.engine.edges[pendingTarget.index].value = v;
-  }
+  setEdgeRegister(S.engine, pendingTarget.edgeIdx, pendingTarget.end, v);
   hidePopup();
   applyValues();
   saveState();
@@ -668,7 +596,6 @@ function fitCamera() {
     const R = chord / (2 * Math.sin(Math.PI / S.N));
     extent = R * 2 + S.nodeDiam;
   } else {
-    // Flat layout: N-1 unit cells between nodes plus the right-end stub.
     extent = (S.N - 1) * (S.nodeDiam + S.edgeLen) + S.nodeDiam + S.edgeLen;
   }
   const d = Math.max(2.5, extent * 0.85);
@@ -680,17 +607,12 @@ function fitCamera() {
 /* ── Info line ─────────────────────────────────────────── */
 
 function updateInfo() {
-  const topo =
-    (S.periodic ? 'periodic' : 'open') +
-    (S.wrap ? ' · wrapped' : '');
+  const topo = (S.periodic ? 'periodic' : 'open') + (S.wrap ? ' · wrapped' : '');
   $('info').textContent =
     `${topo} · N=${S.N} · edges=${S.engine.edges.length}` +
-    ` · rule: v${S.ruleVersion}` +
-    ` · units: ${S.units}` +
-    ` · k=${S.k.toFixed(2)}` +
-    ` · accum: ${S.accumMode ? 'on' : 'off'}` +
-    ` · range: ±${S.heatRange.toFixed(1)}` +
-    `${S.autoScale ? ' (auto)' : ''}`;
+    ` · model: scattering` +
+    ` · range: ±${S.heatRange.toFixed(1)}${S.autoScale ? ' (auto)' : ''}` +
+    ` · energy: ${totalEnergy(S.engine).toFixed(3)}`;
 }
 
 /* ── Profiles ──────────────────────────────────────────── */
@@ -708,11 +630,7 @@ $('btn-save').onclick = () => {
   if (!name) return;
   const profs = loadProfiles();
   const { engine, ...rest } = S;
-  profs[name] = {
-    ...rest,
-    nodePhases: engine.nodes.map(n => n.phase),
-    edgeMags:   engine.edges.map(e => e.value),
-  };
+  profs[name] = { ...rest, registers: snapshotRegisters(engine) };
   saveProfiles(profs);
   refreshProfileList();
   $('sel-prof').value = name;
@@ -734,12 +652,10 @@ $('sel-prof').onchange = () => {
   const profs = loadProfiles();
   if (!profs[name]) return;
   const loaded = profs[name];
-  S = { ...DEFAULT, ...loaded };
-  if (S.periodic === undefined && loaded.wrap !== undefined) S.periodic = loaded.wrap;
+  S = { ...DEFAULT };
+  for (const k of Object.keys(DEFAULT)) if (loaded[k] !== undefined) S[k] = loaded[k];
   S.engine = build1D(S.N, { periodic: S.periodic });
-  hydrateEngine(S.engine, loaded.nodePhases, loaded.edgeMags);
-  delete S.nodePhases;
-  delete S.edgeMags;
+  hydrateEngine(S.engine, loaded.registers);
   syncControls();
   buildGraph();
   fitCamera();
@@ -756,23 +672,17 @@ function syncControls() {
   $('sel-preset').value = '';
   $('sl-diam').value   = S.nodeDiam;  $('v-diam').textContent = S.nodeDiam.toFixed(2);
   $('sl-edge').value   = S.edgeLen;   $('v-edge').textContent = S.edgeLen.toFixed(2);
-  $('sel-units').value = S.units;
-  $('cb-accum').checked= S.accumMode;
-  $('sl-k').value      = S.k;         $('v-k').textContent    = S.k.toFixed(2);
   $('sl-speed').value  = S.speed;     $('v-speed').textContent= S.speed.toFixed(1);
   $('sl-heat').value   = S.heatRange; $('v-heat').textContent = S.heatRange.toFixed(1);
   $('cb-auto').checked = S.autoScale;
   $('cb-labels').checked = S.showLabels;
-  $('sel-rule').value  = String(S.ruleVersion);
   $('clock-display').textContent = clockState;
 }
 
 function rebuildGraphFromState() {
-  // Rebuild engine if topology changed; preserve as many values as possible.
-  const oldNodes = S.engine.nodes.map(n => n.phase);
-  const oldEdges = S.engine.edges.map(e => e.value);
+  const snap = snapshotRegisters(S.engine);
   S.engine = build1D(S.N, { periodic: S.periodic });
-  hydrateEngine(S.engine, oldNodes, oldEdges);
+  hydrateEngine(S.engine, snap);
   buildGraph();
   updateInfo();
   saveState();
@@ -786,11 +696,10 @@ $('in-N').oninput = e => {
 };
 $('cb-periodic').onchange = e => {
   S.periodic = e.target.checked;
-  rebuildGraphFromState();   // engine topology changed
+  rebuildGraphFromState();
 };
 $('cb-wrap').onchange = e => {
   S.wrap = e.target.checked;
-  // Visual-only change: rebuild meshes but engine state is untouched.
   buildGraph();
   fitCamera();
   updateInfo();
@@ -800,15 +709,11 @@ $('sel-preset').onchange = e => {
   const name = e.target.value;
   if (!name) return;
   engineApplyPreset(S.engine, name);
-  // Snap any preset-produced phases that are technically out of [0, period).
-  if (!S.accumMode) {
-    for (const n of S.engine.nodes) n.phase = wrapPhase(n.phase);
-  }
   clockState = 0;
   $('clock-display').textContent = clockState;
   applyValues();
+  updateInfo();
   saveState();
-  // Reset the dropdown so the same preset can be re-applied (re-trigger onchange).
   e.target.value = '';
 };
 $('sl-diam').oninput = e => {
@@ -821,31 +726,10 @@ $('sl-edge').oninput = e => {
   $('v-edge').textContent = S.edgeLen.toFixed(2);
   rebuildGraphFromState();
 };
-$('sel-units').onchange = e => {
-  // converting between units changes the numeric meaning of stored phases.
-  // simplest: leave numbers alone; user adjusts as needed.
-  S.units = e.target.value; applyValues(); updateInfo(); saveState();
-};
-$('sel-rule').onchange = e => {
-  S.ruleVersion = parseInt(e.target.value, 10);
-  updateInfo(); saveState();
-};
-$('cb-accum').onchange = e => {
-  S.accumMode = e.target.checked;
-  if (!S.accumMode) {
-    for (const n of S.engine.nodes) n.phase = wrapPhase(n.phase);
-  }
-  applyValues(); updateInfo(); saveState();
-};
-$('sl-k').oninput = e => {
-  S.k = parseFloat(e.target.value);
-  $('v-k').textContent = S.k.toFixed(2);
-  updateInfo(); saveState();
-};
 $('sl-speed').oninput = e => {
   S.speed = parseFloat(e.target.value);
   $('v-speed').textContent = S.speed.toFixed(1);
-  if (running) setRunning(true);  // restart with new interval
+  if (running) setRunning(true);
   saveState();
 };
 $('sl-heat').oninput = e => {
@@ -866,14 +750,13 @@ $('btn-clear').onclick = () => {
   clockState = 0;
   $('clock-display').textContent = 0;
   applyValues();
+  updateInfo();
   saveState();
 };
 $('btn-fit').onclick = fitCamera;
 
 /* ── Bootstrap ─────────────────────────────────────────── */
 
-// Snap any stale near-period phases to zero on load.
-for (const n of S.engine.nodes) n.phase = wrapPhase(n.phase);
 syncControls();
 buildGraph();
 applyLabelVisibility();
@@ -882,7 +765,7 @@ updateInfo();
 refreshProfileList();
 
 animLoop(() => {
-  if (S.autoScale && !running) applyValues();  // ease toward target while idle
+  if (S.autoScale && !running) applyValues();
   updateLabelPositions();
 }, { renderer, scene, camera, controls });
 </script>

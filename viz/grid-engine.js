@@ -1,201 +1,228 @@
 /**
- * grid-engine.js — pure data + rule application for the grid lattice.
+ * grid-engine.js — pure data + Scattering update for the GRID lattice.
  *
- * No DOM, no Three.js.  Importable from both the visualizer and a headless
- * test runner.  Higher-dimensional builders (build2D, build3D) will be
- * added later; the rule application code is already topology-agnostic.
+ * Implements the Scattering model from grid-duality (chapter 4). Each
+ * edge has two ends; each end docks into a node, forming a register —
+ * a single real-valued scalar at the meeting point of an edge end and
+ * a node. All lattice state lives in registers.
  *
- * Conventions:
- *   - A *node* carries a periodic phase (real number, in degrees or radians).
- *   - An *edge* carries a signed magnitude (real number).
- *   - Each node knows its incident edges and the angular position phi at
- *     which each connects (in radians).  In a 1D chain the previous edge
- *     attaches at phi=0 and the next edge at phi=π, per the spec.
- *   - Each edge knows its tail node and head node (a directed segment).
+ * Reference: ../projects/grid-duality/models/scattering.md
+ *            ../projects/grid-duality/scripts/models.py (class Scattering)
+ *
+ * No DOM, no Three.js. Importable from both the visualizer and a
+ * headless test runner.
+ *
+ * State conventions:
+ *   state = { nodes, edges, topology }
+ *   nodes[i] = { registers: number[] }   one register per incident edge end
+ *   edges[k] = { tail, head, tailSlot, headSlot }
+ *     tailSlot = index in nodes[tail].registers of this edge's tail-end value
+ *     headSlot = index in nodes[head].registers of this edge's head-end value
+ *
+ * Each register is owned by exactly one (edge, end) pair, so swapping two
+ * edges' end values is safe in place.
  */
 
 const TAU = Math.PI * 2;
 
-/* ── Topology builders ────────────────────────────────── */
+/* ── Topology builders ──────────────────────────────────── */
 
-/** Sentinel for an edge with no head node (inert dangling edge). */
-export const NO_HEAD = -1;
+function makeEmptyState(N, topology) {
+  const nodes = [];
+  for (let i = 0; i < N; i++) nodes.push({ registers: [] });
+  return { nodes, edges: [], topology };
+}
+
+function addEdge(state, tail, head) {
+  const tailSlot = state.nodes[tail].registers.length;
+  state.nodes[tail].registers.push(0);
+  const headSlot = state.nodes[head].registers.length;
+  state.nodes[head].registers.push(0);
+  state.edges.push({ tail, head, tailSlot, headSlot });
+}
 
 /**
- * Build a 1D chain of N (node, edge) unit cells.  Always N nodes and
- * N edges.  In `periodic` mode the trailing edge connects node N-1
- * back to node 0; in open mode (default) it dangles with head = NO_HEAD
- * and is inert — its update is skipped and it is not seen by any node.
+ * 1D chain of N nodes connected by edges.
+ *   open      — N nodes, N-1 edges. Boundary nodes have coordination 1.
+ *   periodic  — N nodes, N edges.   Wrap edge connects node N-1 → 0.
  */
 export function build1D(N, { periodic = false } = {}) {
   if (N < 2) throw new Error('build1D: N must be at least 2');
-  const nodes = [];
-  for (let i = 0; i < N; i++) nodes.push({ phase: 0, edges: [] });
-
-  const edges = [];
-  for (let i = 0; i < N; i++) {
-    const tail = i;
-    let head;
-    if (i < N - 1)        head = i + 1;
-    else if (periodic)    head = 0;
-    else                  head = NO_HEAD;
-    edges.push({ value: 0, tail, head });
-    if (head !== NO_HEAD) {
-      // From the tail's perspective, the edge departs at phi=π (the +x point);
-      // from the head's perspective it arrives at phi=0 (the -x point).
-      nodes[tail].edges.push({ idx: i, phi: Math.PI });
-      nodes[head].edges.push({ idx: i, phi: 0 });
-    }
-    // If head is NO_HEAD, the edge has no incidence on any node — it is
-    // purely cosmetic state that the rules never touch.
-  }
-  return { nodes, edges, topology: { kind: '1D', N, periodic } };
+  const state = makeEmptyState(N, { kind: '1D', N, periodic });
+  const nEdges = periodic ? N : N - 1;
+  for (let i = 0; i < nEdges; i++) addEdge(state, i, (i + 1) % N);
+  return state;
 }
 
-/** Stub.  Will lay out a 2D rectangular lattice with optional periodicity. */
-export function build2D(rows, cols, opts = {}) {
-  throw new Error('build2D: not yet implemented');
+export function build2D(_nx, _ny, _opts = {}) {
+  throw new Error('build2D: not yet implemented (Step 2 of refactor)');
 }
 
-/** Stub.  Will lay out a 3D cubic lattice. */
-export function build3D(L, M, N, opts = {}) {
-  throw new Error('build3D: not yet implemented');
+export function build3D(_nx, _ny, _nz, _opts = {}) {
+  throw new Error('build3D: not yet implemented (Step 3 of refactor)');
 }
 
-/* ── State helpers ────────────────────────────────────── */
+/* ── State helpers ──────────────────────────────────────── */
 
-/** Reset every node and edge value to zero. */
 export function clear(state) {
-  for (const n of state.nodes) n.phase = 0;
-  for (const e of state.edges) e.value = 0;
-}
-
-/** Wrap a phase into [0, period) per the spec's snap rule.  In accumulate
- *  mode, returns the value unchanged. */
-export function wrapPhase(v, { units = 'deg', accumMode = false } = {}) {
-  if (accumMode) return v;
-  const fullTurn = units === 'deg' ? 360 : TAU;
-  let p = ((v % fullTurn) + fullTurn) % fullTurn;
-  if (fullTurn - p < 1e-6 * fullTurn) p = 0;
-  return p;
-}
-
-/* ── Update rules ─────────────────────────────────────── */
-
-/**
- * On inhale (clock 1→0): each node integrates the cosine-weighted sum
- * of its incident edge values.  For ruleVersion=2 (Yee additive), the
- * result is added to the current phase; for ruleVersion=1 (replacement),
- * it replaces the phase.  Mutates state.
- */
-export function applyNodeRule(state, config) {
-  const { k = 1, ruleVersion = 2, units = 'deg', accumMode = false } = config;
-  const safeK = Math.max(1e-9, k);
-  const next = state.nodes.map(node => {
-    let sum = 0;
-    for (const ei of node.edges) sum += state.edges[ei.idx].value * Math.cos(ei.phi);
-    const inc = sum / safeK;
-    const v = ruleVersion === 2 ? node.phase + inc : inc;
-    return wrapPhase(v, { units, accumMode });
-  });
-  for (let i = 0; i < state.nodes.length; i++) state.nodes[i].phase = next[i];
-}
-
-/**
- * On exhale (clock 0→1): each edge updates from its endpoint phases.
- *   v1: edge ← (tail + head) · k                       (replacement, sum)
- *   v2: edge ← edge + (tail − head) · k                (Yee additive, gradient)
- * Mutates state.
- */
-export function applyEdgeRule(state, config) {
-  const { k = 1, ruleVersion = 2 } = config;
-  const next = state.edges.map(edge => {
-    if (edge.head === NO_HEAD) return edge.value;  // inert dangling edge
-    const tail = state.nodes[edge.tail].phase;
-    const head = state.nodes[edge.head].phase;
-    if (ruleVersion === 2) return edge.value + (tail - head) * k;
-    return (tail + head) * k;
-  });
-  for (let i = 0; i < state.edges.length; i++) state.edges[i].value = next[i];
-}
-
-/**
- * Advance the master clock by one half-step, applying the appropriate
- * rule.  Returns the new clock state.
- *   clock 0 → 1 fires the edge rule (exhale, yang)
- *   clock 1 → 0 fires the node rule (inhale, yin)
- */
-export function halfStep(state, config, clock) {
-  if (clock === 0) {
-    applyEdgeRule(state, config);
-    return 1;
+  for (const n of state.nodes) {
+    for (let i = 0; i < n.registers.length; i++) n.registers[i] = 0;
   }
-  applyNodeRule(state, config);
+}
+
+export function coordOf(state, nodeIdx) {
+  return state.nodes[nodeIdx].registers.length;
+}
+
+/** [tailEndValue, headEndValue] for the given edge. */
+export function getEdgeRegisters(state, edgeIdx) {
+  const e = state.edges[edgeIdx];
+  return [
+    state.nodes[e.tail].registers[e.tailSlot],
+    state.nodes[e.head].registers[e.headSlot],
+  ];
+}
+
+export function setEdgeRegister(state, edgeIdx, end, value) {
+  const e = state.edges[edgeIdx];
+  if (end === 'tail') state.nodes[e.tail].registers[e.tailSlot] = value;
+  else if (end === 'head') state.nodes[e.head].registers[e.headSlot] = value;
+  else throw new Error(`setEdgeRegister: end must be 'tail' or 'head', got ${end}`);
+}
+
+export function setRegister(state, nodeIdx, slot, value) {
+  state.nodes[nodeIdx].registers[slot] = value;
+}
+
+export function getRegister(state, nodeIdx, slot) {
+  return state.nodes[nodeIdx].registers[slot];
+}
+
+/** Σ r² over every register. Conserved exactly per full cycle. */
+export function totalEnergy(state) {
+  let e = 0;
+  for (const node of state.nodes) {
+    for (const r of node.registers) e += r * r;
+  }
+  return e;
+}
+
+/* ── Update rules: Scattering ───────────────────────────── */
+
+/**
+ * Inhale (clock 1 → 0): at each node of coordination N apply
+ *   r_i ← (2/N)·(Σ r_j) − r_i
+ * the unitary scattering matrix S = (2/N)·J − I.
+ */
+export function applyInhale(state) {
+  for (const node of state.nodes) {
+    const N = node.registers.length;
+    if (N === 0) continue;
+    let total = 0;
+    for (let i = 0; i < N; i++) total += node.registers[i];
+    const factor = 2 / N;
+    for (let i = 0; i < N; i++) {
+      node.registers[i] = factor * total - node.registers[i];
+    }
+  }
+}
+
+/**
+ * Exhale (clock 0 → 1): for each edge, swap the two register values.
+ * Each register is owned by exactly one edge end, so an in-place swap
+ * is safe — no register is touched by more than one edge.
+ */
+export function applyExhale(state) {
+  for (const e of state.edges) {
+    const t = state.nodes[e.tail].registers;
+    const h = state.nodes[e.head].registers;
+    const tmp = t[e.tailSlot];
+    t[e.tailSlot] = h[e.headSlot];
+    h[e.headSlot] = tmp;
+  }
+}
+
+/**
+ * Advance the master clock by one half-step.
+ *   clock 0 → 1 fires the exhale (edge swap, yang).
+ *   clock 1 → 0 fires the inhale (node scatter, yin).
+ * Returns the new clock state.
+ *
+ * `_config` is accepted for API symmetry; the current model has no tunable
+ * config. A future coupling factor will plug in here.
+ */
+export function halfStep(state, _config, clock) {
+  if (clock === 0) { applyExhale(state); return 1; }
+  applyInhale(state);
   return 0;
 }
 
-/** Advance two half-steps from `clock` (one full exhale+inhale cycle). */
+/** Advance one full cycle (two half-steps) starting from `clock`. */
 export function fullStep(state, config, clock) {
-  const c1 = halfStep(state, config, clock);
-  return halfStep(state, config, c1);
+  return halfStep(state, config, halfStep(state, config, clock));
 }
 
-/* ── Convenience accessors ────────────────────────────── */
+/* ── 1D channel helpers ─────────────────────────────────── */
 
-export function getPhase(state, i)  { return state.nodes[i].phase; }
-export function getEdge(state, i)   { return state.edges[i].value; }
-export function setPhase(state, i, v, config = {}) {
-  state.nodes[i].phase = wrapPhase(v, config);
+/** Edge whose tail is at this node, or null. (1D outgoing edge.) */
+function outgoingEdgeAt(state, nodeIdx) {
+  for (const e of state.edges) if (e.tail === nodeIdx) return e;
+  return null;
 }
-export function setEdge(state, i, v) { state.edges[i].value = v; }
 
-/* ── Presets (initial-condition library) ───────────────── */
+/** Edge whose head is at this node, or null. (1D incoming edge.) */
+function incomingEdgeAt(state, nodeIdx) {
+  for (const e of state.edges) if (e.head === nodeIdx) return e;
+  return null;
+}
+
+/* ── Presets ─────────────────────────────────────────────── */
 
 /**
- * Set up a clean right-going single-cell impulse at the left end.
- *   - In periodic mode, the trailing-edge value cancels the would-be
- *     left-going branch, leaving a pure right-going pulse.
- *   - In open mode, the boundary at node 0 already breaks symmetry; the
- *     edge value is cosmetic but kept for consistency.
+ * Delta L: rightward unit pulse seeded at the left end.
+ * Sets the tail-end register of the outgoing edge from node 0
+ * (= the rightward channel slot at node 0).
  */
 function presetDeltaL(state, { amplitude = 30 } = {}) {
   clear(state);
-  const N = state.nodes.length;
-  state.nodes[0].phase = amplitude;
-  state.edges[N - 1].value = amplitude;
-}
-
-/** Symmetric to Delta L but seeded at the right end and propagating left. */
-function presetDeltaR(state, { amplitude = 30 } = {}) {
-  clear(state);
-  const N = state.nodes.length;
-  state.nodes[N - 1].phase = amplitude;
-  state.edges[N - 1].value = -amplitude;
-}
-
-/** Two pulses (left-end going right, right-end going left).  The two
- *  edge biases sum to zero, so the trailing edge stays at zero. */
-function presetDelta2(state, { amplitude = 30 } = {}) {
-  clear(state);
-  const N = state.nodes.length;
-  state.nodes[0].phase = amplitude;
-  state.nodes[N - 1].phase = amplitude;
+  const e = outgoingEdgeAt(state, 0);
+  if (e) state.nodes[e.tail].registers[e.tailSlot] = amplitude;
 }
 
 /**
- * Smooth right-going traveling sinusoidal wave: cosine on nodes, sine
- * (half-cell shifted) on edges.  On a periodic ring at k=1 this is an
- * exact eigenmode of the Yee scheme and propagates without distortion.
+ * Delta R: leftward unit pulse seeded at the right end.
+ * Sets the head-end register of the incoming edge at node N-1
+ * (= the leftward channel slot at node N-1).
+ */
+function presetDeltaR(state, { amplitude = 30 } = {}) {
+  clear(state);
+  const N = state.nodes.length;
+  const e = incomingEdgeAt(state, N - 1);
+  if (e) state.nodes[e.head].registers[e.headSlot] = amplitude;
+}
+
+/** Both Delta L and Delta R simultaneously — pulses meet and pass through. */
+function presetDelta2(state, { amplitude = 30 } = {}) {
+  clear(state);
+  const N = state.nodes.length;
+  const eL = outgoingEdgeAt(state, 0);
+  if (eL) state.nodes[eL.tail].registers[eL.tailSlot] = amplitude;
+  const eR = incomingEdgeAt(state, N - 1);
+  if (eR) state.nodes[eR.head].registers[eR.headSlot] = amplitude;
+}
+
+/**
+ * Sin: right-going traveling sinusoidal eigenmode on the rightward channel.
+ * Each node n gets A·sin(2π·n/N) at its outgoing edge's tail-end.
+ * On a periodic ring this is an exact eigenmode and propagates one cell
+ * per cycle without distortion.
  */
 function presetSin(state, { amplitude = 30 } = {}) {
   clear(state);
   const N = state.nodes.length;
-  for (let i = 0; i < N; i++) {
-    state.nodes[i].phase = amplitude * Math.cos(2 * Math.PI * i / N);
-  }
-  for (let i = 0; i < state.edges.length; i++) {
-    if (state.edges[i].head === NO_HEAD) continue;
-    state.edges[i].value = amplitude * Math.sin(2 * Math.PI * (i + 0.5) / N);
+  for (let n = 0; n < N; n++) {
+    const e = outgoingEdgeAt(state, n);
+    if (e) state.nodes[n].registers[e.tailSlot] = amplitude * Math.sin(TAU * n / N);
   }
 }
 
