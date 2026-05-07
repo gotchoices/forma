@@ -3,7 +3,7 @@
 **Type:** Educational project (see [../README.md](../README.md))
 **Scope:** A digital-first model of the GRID lattice with two structural primitive types — node and edge. The project does not pre-commit to a specific update rule or state structure; instead, it tests several **candidate models** against a standardized **test bench** and selects the one with the best combination of stability and fidelity to grid's existing simulations. sim-maxwell's model is one of the candidates, so the historical "bridge to grid" question becomes implicit in the model selection.
 **Method:** Mathematical derivation as discovery; computational verification via head-to-head model comparison; minimum verbosity.
-**Status:** Chapters 1–4 complete. Verdict: Scattering is the substrate's dynamics; gravity emerges from the substrate's graph Laplacian directly. See [04-model-comparison.md](04-model-comparison.md).
+**Status:** Chapters 1–5 complete. Chapter-4 verdict: Scattering is the substrate's dynamics; gravity emerges from the substrate's graph Laplacian directly ([04-model-comparison.md](04-model-comparison.md)). Chapter-5 finding: real-valued Scattering survives naive quantization down to ~6 bits per cell; below that it breaks under naive rounding, and recovery requires bit-conservative Boolean rules (deferred). The project continues with the real-valued model as effective theory ([05-substrate-quantization.md](05-substrate-quantization.md)).
 
 ## Why this project exists
 
@@ -124,7 +124,12 @@ projects/grid-duality/
 ├── 02-candidate-models.md          model overview / tour
 ├── 03-test-bench.md                tests and observables
 ├── 04-model-comparison.md          comparison results, winner selection
-├── 05-…                            chapters using the winning model (TODO)
+├── 05-substrate-quantization.md    bit-level substrate; does the verdict survive?
+├── 06-3d-extension-and-lattice-closures.md  3D lattice + closure topology (TODO)
+├── 07-wrap-promotion-modeling.md   mass / charge as observables on closures (TODO)
+├── 08-where-alpha-appears.md       locating α on the ladder (TODO)
+├── 09-node-decomposition.md        Y-tree decomposition; edge ≠ node (TODO)
+├── 10-closing-summary.md           closing summary (TODO)
 ├── models/                         per-model specifications
 │   ├── telegrapher.md
 │   ├── normalized.md
@@ -146,6 +151,7 @@ projects/grid-duality/
     ├── test_relcos_dial_ic.py      RelCos-both fair-shake: dial-aware IC vs standard IC
     ├── test_2d_freewave_superposition.py    free-wave superposition (no pins)
     ├── test_2d_dispersion.py       2D group-velocity sweep at coord 3
+    ├── test_quantization_sweep.py  chapter-5 substrate-quantization experiments
     └── output/                     plots and notes
 ```
 
@@ -161,14 +167,16 @@ The arc below is a sketch. Early chapters are framed in detail; later chapters a
 
 4. **`04-model-comparison.md`** — Run all candidate models on all tests. Tabulate results. Identify which models pass / fail / partially-pass. Select the winning model. Document any model-specific surprises and how they affect downstream chapters.
 
-5. **`05-lattices-1d-2d-3d.md`** — Construct concrete lattices in 1D, 2D hex, and 3D (sketched) using the winning model. Edge orientation conventions made explicit per dimension. Periodic boundary handling.
+5. **`05-substrate-quantization.md`** — Replace each register's real-valued state with integers from a finite alphabet, eventually a single bit. At what alphabet size and lattice resolution does the chapter-4 test bench still pass? Lattice-gas-automaton scaling: does continuum behavior re-emerge by "zooming out" from a Planck-scale bit substrate to a Compton-scale effective theory? Decision point at the end: continue the rest of the project with the real-valued model as effective theory, or commit to bit-level dynamics. Subsumes [grid-quantizing.md](grid-quantizing.md).
 
-6. **`06-wrap-promotion-ladder.md`** — Map L0 → L1 → L2 → L3 onto specific lattice closures of the winning model: open chains, 1D loops, 2D plaquettes, 2D-sheet wraps into a torus. Identify what physical phenomenon (light, mass, charge) emerges at each level.
+6. **`06-3d-extension-and-lattice-closures.md`** — Extend Scattering to 3D. Pick a 3D lattice (cubic, FCC, or diamond) and work out the edge-orientation conventions; verify the S-matrix S = (2/N)·J − I gives stable propagation at the new coordination. Define the lattice closures that anchor the wrap-promotion ladder: open chain (L0), ring (L1), plaquette (L2), 2-sheet wrap / torus (L3). Mostly mathematical / structural, with computational verification at the end.
 
-7. **`07-where-alpha-appears.md`** — Test theory 7: does α emerge at L3 only (second-order wrap), or at L2 as well, or somewhere else? Concrete derivation or simulation evidence.
+7. **`07-wrap-promotion-modeling.md`** — Mathematical modeling of each wrap level. For each closure: what observable on Scattering's dynamics corresponds to the physical phenomenon (mass at L1 / L2, charge at L3)? Computational tests where feasible — for instance, does Scattering on a closed ring host a stable circulating wavepacket whose effective mass can be read off the dispersion curve? Honest about what we *establish* (specific observables on specific closures) versus what we *interpret* (their identification with mass / charge).
 
-8. **`08-edges-vs-nodes.md`** — Bonus chapter. Can a functional node be constructed from a configuration of edges? An edge from nodes? If yes, what are the mutation rules? If no, what makes each primitive structurally unique? The original [grid-couplet](../grid-couplet/) brainstorm's central question, settled with the foundation now solid.
+8. **`08-where-alpha-appears.md`** — Locate α on the wrap-promotion ladder. Working hypothesis: α lives at L3 only (mass → charge wrap). Identify candidate lattice invariants — combinatorial factors, ratios of winding numbers, fixed points of an RG-like flow — and check which (if any) approximate 1/137. Honest scope: this chapter probably proposes a candidate observable rather than deriving α exactly.
 
-9. **`09-closing-summary.md`** — Consolidate established results, ruled-out items, unexpected findings. Compare with grid-primitive: where the analog-first cylinder and digital-first winning-model converge / diverge.
+9. **`09-node-decomposition.md`** — Y-tree decomposition: any N-port S-matrix factors into a network of 3-port S-matrices joined by zero-length internal edges. So a coord-N node *is* a configuration of mini-edges and mini-nodes inside a bubble. The reverse — building an edge from nodes — turns out to be asymmetric: edges are pure swap, with no internal degrees of freedom to decompose. This asymmetry is the substantive answer to the original grid-couplet question of whether the two primitives are genuinely distinct.
+
+10. **`10-closing-summary.md`** — Consolidate established results, ruled-out items, unexpected findings. Compare with grid-primitive: where the analog-first cylinder and digital-first winning-model converge / diverge.
 
 Each chapter is added one at a time. The arc is a sketch, not a contract.

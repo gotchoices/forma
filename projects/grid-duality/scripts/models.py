@@ -277,3 +277,77 @@ class Scattering(Model):
     def total_energy(self, state):
         """Wave-amplitude energy: 0.5 · Σ (a_fwd² + a_bwd²)."""
         return 0.5 * (np.sum(state["a_fwd"] ** 2) + np.sum(state["a_bwd"] ** 2))
+
+
+# ---------- Quantized Scattering ---------------------------------------------
+
+class QuantizedScattering(Scattering):
+    """Scattering with each register's value rounded to one of `n_levels`
+    representable levels in [-amp_max, +amp_max] after every clock cycle.
+
+    Naive quantization (per chapter-5 grid-quantizing.md §6.1): apply the
+    continuous-real S-matrix update, then round to the nearest level.
+    Quantization noise of order amp_max / n_levels is introduced per step;
+    cumulative error scales as O(T / n_levels) systematic or O(√T / n_levels)
+    random. Energy is *not* exactly conserved per step.
+
+    n_levels = ∞ recovers the parent Scattering model exactly. n_levels = 2
+    is a single-bit register taking values {-amp_max, +amp_max}. The amp_max
+    range is fixed in advance — values that would round outside [-amp_max,
+    +amp_max] are clamped to the boundary (saturation arithmetic).
+    """
+
+    name = "quantized-scattering"
+
+    def __init__(self, n_levels=None, amp_max=1.0):
+        self.n_levels = n_levels  # None or float('inf') → no quantization
+        self.amp_max = amp_max
+
+    def _quantize(self, x):
+        if self.n_levels is None or not np.isfinite(self.n_levels):
+            return x
+        # Use odd-N, zero-centered levels: {-A, ..., -A/k, 0, +A/k, ..., +A}.
+        # For an even input n_levels, we reduce to n_levels-1 (odd) so that
+        # zero remains representable. Without this, the zero-initial state
+        # saturates instantly: every cell rounds to ±A, injecting huge
+        # spurious energy regardless of subsequent dynamics.
+        n = int(self.n_levels)
+        n_eff = n if n % 2 == 1 else max(n - 1, 1)
+        if n_eff < 1:
+            raise ValueError("n_levels must give at least 1 representable level")
+        if n_eff == 1:
+            return np.zeros_like(x)
+        half = (n_eff - 1) // 2  # Number of levels above (and below) zero
+        spacing = self.amp_max / half
+        x_clamped = np.clip(x, -self.amp_max, self.amp_max)
+        rounded = np.round(x_clamped / spacing)
+        return rounded * spacing
+
+    def update(self, state, lattice):
+        new_state = super().update(state, lattice)
+        if self.n_levels is None or not np.isfinite(self.n_levels):
+            return new_state
+        return {
+            "a_fwd": self._quantize(new_state["a_fwd"]),
+            "a_bwd": self._quantize(new_state["a_bwd"]),
+        }
+
+    def init_state(self, lattice):
+        # Apply quantization to the initial zero state (which is trivially
+        # representable, but this also caches lattice).
+        s = super().init_state(lattice)
+        return s
+
+    def perturb_node(self, state, idx, value):
+        s = super().perturb_node(state, idx, value)
+        return {
+            "a_fwd": self._quantize(s["a_fwd"]),
+            "a_bwd": self._quantize(s["a_bwd"]),
+        }
+
+    def perturb_edge(self, state, idx, value):
+        s = super().perturb_edge(state, idx, value)
+        return {
+            "a_fwd": self._quantize(s["a_fwd"]),
+            "a_bwd": self._quantize(s["a_bwd"]),
+        }
