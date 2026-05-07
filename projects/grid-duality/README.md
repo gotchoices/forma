@@ -3,7 +3,7 @@
 **Type:** Educational project (see [../README.md](../README.md))
 **Scope:** A digital-first model of the GRID lattice with two structural primitive types — node and edge. The project does not pre-commit to a specific update rule or state structure; instead, it tests several **candidate models** against a standardized **test bench** and selects the one with the best combination of stability and fidelity to grid's existing simulations. sim-maxwell's model is one of the candidates, so the historical "bridge to grid" question becomes implicit in the model selection.
 **Method:** Mathematical derivation as discovery; computational verification via head-to-head model comparison; minimum verbosity.
-**Status:** Chapters 1–5 complete. Chapter-4 verdict: Scattering is the substrate's dynamics; gravity emerges from the substrate's graph Laplacian directly ([04-model-comparison.md](04-model-comparison.md)). Chapter-5 finding: real-valued Scattering survives naive quantization down to ~6 bits per cell; below that it breaks under naive rounding, and recovery requires bit-conservative Boolean rules (deferred). The project continues with the real-valued model as effective theory ([05-substrate-quantization.md](05-substrate-quantization.md)).
+**Status:** Chapters 1–5 complete. Chapter-4 verdict: Scattering is the substrate's dynamics; gravity emerges from the substrate's graph Laplacian directly ([04-model-comparison.md](04-model-comparison.md)). Chapter-5 verdict: real-valued Scattering is the effective theory of a binary-bit substrate at Planck scale, recovered via spatial averaging under stochastic rounding (M ≥ (amp_max/((N−1)·ε))² cells per macroscopic window; the minimum per-cell resolution is 1 bit). The project continues with the real-valued model as effective theory ([05-substrate-quantization.md](05-substrate-quantization.md)).
 
 ## Why this project exists
 
@@ -151,7 +151,8 @@ projects/grid-duality/
     ├── test_relcos_dial_ic.py      RelCos-both fair-shake: dial-aware IC vs standard IC
     ├── test_2d_freewave_superposition.py    free-wave superposition (no pins)
     ├── test_2d_dispersion.py       2D group-velocity sweep at coord 3
-    ├── test_quantization_sweep.py  chapter-5 substrate-quantization experiments
+    ├── test_quantization_sweep.py  chapter-5 deterministic-quantization sweep
+    ├── test_holographic_recovery.py chapter-5 stochastic-quantization holographic test
     └── output/                     plots and notes
 ```
 

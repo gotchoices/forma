@@ -351,3 +351,75 @@ class QuantizedScattering(Scattering):
             "a_fwd": self._quantize(s["a_fwd"]),
             "a_bwd": self._quantize(s["a_bwd"]),
         }
+
+
+class StochasticQuantizedScattering(Scattering):
+    """Scattering with stochastic (probabilistic) rounding to one of N
+    representable levels in [−amp_max, +amp_max]. Unlike the deterministic
+    QuantizedScattering, this rounds each register's continuous value to
+    the two nearest levels with probabilities chosen so that
+    E[R(x)] = x exactly. The per-cell variance is bounded by amp_max²/(N−1)²
+    in the worst case (when x sits at the midpoint between two levels).
+
+    Because the rounding is unbiased and (with independent random draws)
+    uncorrelated across cells, spatial averaging of M cells reduces noise
+    by 1/√M (central limit theorem). This is the regime where the
+    holographic-recovery hypothesis (high macroscopic resolution from
+    low per-cell precision) becomes mathematically defensible. The
+    minimum non-degenerate alphabet is N = 2 (a single signed bit).
+
+    Levels are uniformly spaced over the full [−amp_max, +amp_max] range:
+        levels[i] = −amp_max + i · 2·amp_max / (N − 1),  i = 0..N−1
+    For N = 2: {−amp_max, +amp_max}. For N = 3: {−amp_max, 0, +amp_max}.
+    For N = 5: {−amp_max, −amp_max/2, 0, +amp_max/2, +amp_max}. Etc.
+    Even-N alphabets do not include zero; this is fine under stochastic
+    rounding because zero is recovered statistically by averaging cells
+    that randomly fall to ±amp_max with equal probability.
+    """
+
+    name = "stochastic-quantized-scattering"
+
+    def __init__(self, n_levels=None, amp_max=1.0, rng=None):
+        self.n_levels = n_levels
+        self.amp_max = amp_max
+        self.rng = rng if rng is not None else np.random.default_rng()
+
+    def _quantize(self, x):
+        if self.n_levels is None or not np.isfinite(self.n_levels):
+            return x
+        n = int(self.n_levels)
+        if n < 2:
+            raise ValueError("n_levels must be ≥ 2")
+        spacing = 2 * self.amp_max / (n - 1)
+        x_clamped = np.clip(x, -self.amp_max, self.amp_max)
+        # Map to [0, n-1] and stochastically round to floor or ceil.
+        idx = (x_clamped + self.amp_max) / spacing
+        floor_idx = np.floor(idx)
+        fraction = idx - floor_idx
+        rng_vals = self.rng.random(np.shape(x))
+        chosen_idx = np.where(rng_vals < fraction, floor_idx + 1, floor_idx)
+        chosen_idx = np.clip(chosen_idx, 0, n - 1)
+        return chosen_idx * spacing - self.amp_max
+
+    def update(self, state, lattice):
+        new_state = super().update(state, lattice)
+        if self.n_levels is None or not np.isfinite(self.n_levels):
+            return new_state
+        return {
+            "a_fwd": self._quantize(new_state["a_fwd"]),
+            "a_bwd": self._quantize(new_state["a_bwd"]),
+        }
+
+    def perturb_node(self, state, idx, value):
+        s = super().perturb_node(state, idx, value)
+        return {
+            "a_fwd": self._quantize(s["a_fwd"]),
+            "a_bwd": self._quantize(s["a_bwd"]),
+        }
+
+    def perturb_edge(self, state, idx, value):
+        s = super().perturb_edge(state, idx, value)
+        return {
+            "a_fwd": self._quantize(s["a_fwd"]),
+            "a_bwd": self._quantize(s["a_bwd"]),
+        }
