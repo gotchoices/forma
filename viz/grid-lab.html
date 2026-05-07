@@ -551,6 +551,20 @@ function shouldStub(state, ei) {
   return isWrapEdge(state, ei);
 }
 
+// For ring nodes (1D / 2D), project the world edge direction onto the
+// ring's plane (perpendicular to localZ) so that the rim attach lands
+// on the outer equator. For sphere nodes (3D), the sphere is rotationally
+// symmetric, so the unprojected direction works directly.
+const _tmpProj = new THREE.Vector3();
+function attachDirForFrame(frame, dir) {
+  if (frame.type !== 'ring') return dir;
+  const along = dir.dot(frame.localZ);
+  _tmpProj.copy(dir).addScaledVector(frame.localZ, -along);
+  const len = _tmpProj.length();
+  if (len < 1e-9) return dir;   // edge runs along the ring's normal — fall back
+  return _tmpProj.clone().divideScalar(len);
+}
+
 /* ── Build / rebuild ───────────────────────────────────── */
 
 function clearGraph() {
@@ -636,10 +650,16 @@ function buildGraph() {
     const eng = S.engine.edges[ei];
     const a = frames[eng.tail], b = frames[eng.head];
     const dir = edgeWorldDir(S.engine, ei, frames);
-    // Each frame carries its own attachR — the outer equator for ring
-    // nodes (r + RING_TUBE) and the sphere surface (r) for 3D nodes.
-    const tailAttach = a.pos.clone().addScaledVector(dir, +a.attachR);
-    const headAttach = b.pos.clone().addScaledVector(dir, -b.attachR);
+    // For ring nodes (1D / 2D), project the edge direction onto the
+    // ring's tangent plane (perpendicular to localZ) before scaling by
+    // attachR — otherwise, on curved layouts (1D ring, 2D torus) the
+    // chord direction has a component along localZ and the attach point
+    // ends up inward of the outer equator. Spheres (3D) are symmetric,
+    // no projection needed.
+    const tailDir = attachDirForFrame(a, dir);
+    const headDir = attachDirForFrame(b, dir);
+    const tailAttach = a.pos.clone().addScaledVector(tailDir, +a.attachR);
+    const headAttach = b.pos.clone().addScaledVector(headDir, -b.attachR);
     const isStub = shouldStub(S.engine, ei);
 
     const halves = [];
