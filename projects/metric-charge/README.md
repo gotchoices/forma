@@ -3,7 +3,7 @@
 **Type:** Educational project (see [../README.md](../README.md))
 **Scope:** Charge generation on a 2D compact sheet. Mass is covered in [metric-mass](../metric-mass/); multi-knot interactions are deferred to [metric-binding](../metric-binding/).
 **Method:** Mathematical derivation as discovery; minimal computation.
-**Status:** Framing complete. Awaiting first chapter.
+**Status:** Chapters 1–7 in full prose; Chapter 8 in outline form (energy-minimization computation pending). See [review.md](review.md) for the project's open-issues log.
 
 ## Why this project exists
 
@@ -15,7 +15,7 @@ We jump instead to a **2D compact sheet** — one continuous 2D torus with coord
 
 The central question:
 
-> *What does light alone on a manifold with one **2D compact sheet** produce, and under what conditions does the sheet's geometry promote a standing-wave mass mode into something that behaves like charge?*
+> *What does light alone on a manifold with one **2D compact sheet** produce, and under what conditions does the sheet's geometry cause a (massive) standing-wave mode to also carry something that behaves like charge?*
 
 ### Underlying targets
 
@@ -145,7 +145,7 @@ The chapters below are plausible follow-ups, not commitments.
 
 3. **`03-knots-on-the-torus.md`** — Reframe non-trivial modes geometrically as knots traversing the sheet. Characterize the knot family: which (m, n) pairs admit non-self-intersecting closures? Establish the topological invariants (crossing number, genus, linking) and how they index the family.
 
-4. **`04-the-closure-condition.md`** — When does a knot promote mass to charge? Work through the 2π-on-w + standing-wave-on-both rule explicitly. Identify which knots in the family satisfy it (charged modes) and which don't (mass-only modes — the closure-failure neutrino-class candidates from §6 of the goals).
+4. **`04-the-closure-condition.md`** — When does a (massive) mode also carry observable EM charge? Work through the synchronization rule (m | n with both nonzero) explicitly. Identify which (m, n) modes satisfy it (charged-state modes) and which don't (mass-only modes — single-axis, synchronization-failure, and cancellation-pair candidates for non-charged massive states).
 
 5. **`05-metric-self-consistency.md`** — *Metric self-consistency and gauge promotion.* Compute T_μν for representative modes. Show that under linearized Einstein equations, closure-satisfying modes source off-diagonal metric entries (g_μu, g_μw) whose pattern matches the standard Kaluza-Klein identification of compact-direction off-diagonals as gauge potentials A_μ and B_μ. Closure-failing modes source off-diagonals too, but in patterns that don't form a valid gauge potential — these stay internal (a candidate for neutrino-class structural neutrality). Treat ±n / pair-cancellation cases (analog of metric-mass §7). Establishes closure as the *metric-side* rule under which mass-induced off-diagonals become observable EM, parallel to metric-mass Chapter 5.
 

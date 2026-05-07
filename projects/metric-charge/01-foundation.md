@@ -59,7 +59,7 @@ $$
 
 **Why two compact dimensions** (whereas metric-mass had one). Four converging reasons:
 
-1. **Charge first appears at L3 of the wrap-promotion ladder.** Per [grid-duality §7.5](../grid-duality/07-wrap-promotion-modeling.md), the 2-torus closure T² = S¹ × S¹ has fundamental group π₁(T²) = ℤ², providing the U(1) × U(1) gauge structure that charge structurally requires. Below L3 there is at most one winding direction; charge is undefined there. The 2D compact sheet of this project *is* the spacetime-embedded L3 substrate.
+1. **Charge first appears at L3 of the wrap-promotion ladder.** Per [grid-duality §7.5](../grid-duality/07-wrap-promotion-modeling.md), the 2-torus closure T² = S¹ × S¹ has fundamental group π₁(T²) = ℤ² — supplying integer-valued conserved windings — and two independent U(1) isometries (one per compact direction), which under Kaluza-Klein dimensional reduction yield the **U(1) × U(1) gauge structure** that charge structurally requires. (The fundamental group is the topological invariant; the gauge group emerges from the metric's compact isometries under KK reduction. The two facts are parallel consequences of the 2-torus structure, not the same statement.) Below L3 there is at most one winding direction and one compact U(1) isometry; charge is undefined there. The 2D compact sheet of this project *is* the spacetime-embedded L3 substrate.
 
 2. **Knot families.** A 1D compact direction admits only a single winding number — no knot topology. The 2-torus admits a discrete family of knots labeled by winding pairs (m, n) with non-trivial topological invariants (crossing number, genus, linking number). The geometric picture of charge as a closed curve traversing the sheet (chapter 3) requires the 2D substrate.
 
@@ -391,7 +391,7 @@ The following are *not* given. They are to be derived, observed to arise from th
 
 - **Numerical α.** We do not commit to a numerical value of the fine-structure constant. Where α appears in interpretations or comparisons, it is taken as given; its derivation is [grid/](../../grid/)'s territory.
 
-- **Closure-condition uniqueness.** No claim that the closure condition of §10 is the unique rule that promotes mass to charge. Alternatives are examined in chapter 4.
+- **Closure-condition uniqueness.** No claim that the closure condition of §10 is the unique rule under which a (massive) mode also carries observable EM charge. Alternatives are examined in chapter 4.
 
 - **Vector polarization.** We do not track full vector polarization for the EM field. The scalar field φ carries phase but not polarization. See §7.
 

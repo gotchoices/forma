@@ -356,7 +356,9 @@ The third prediction is the most distinctive of the framework: it predicts the e
 
 This chapter set out to ask whether the off-diagonal sourcing produces a gauge structure matching standard physics. Section 4 answered yes for the four-property test, separately for each U(1). Section 6 confirmed consistency across the three views from Chapter 1 §10.
 
-What the framework **reproduces** at the linearized level:
+**Scope of the reproduction claim.** Everything below is *modulo the two-U(1)s issue* (third bullet under "where the framework might differ"). Standard physics observes one EM gauge potential; the framework structurally predicts two. Until the second U(1) is identified — as a known force (Hodge-dual magnetic-charge analog), as new physics, or as a redundancy that gauge-fixing eliminates — the "reproduces standard EM" claim is provisional rather than established. The list below records what the framework's machinery produces; whether that production *matches* standard EM depends on resolving the two-U(1)s question.
+
+What the framework **produces** at the linearized level (each item subject to the two-U(1)s qualifier above):
 
 - U(1) × U(1) gauge symmetry — the topology of [grid-duality §7.5.3](../grid-duality/07-wrap-promotion-modeling.md) emerges from the metric-side off-diagonal pattern.
 - Gauge-potential transformation properties — the four standard-physics properties of A_μ are all reproduced for each compact direction's off-diagonal set.
@@ -374,7 +376,7 @@ Where the framework **might differ** from standard physics:
 
 - **Nonlinear backreaction is deferred.** Linearized Einstein equations only. Whether the gauge-potential properties survive at higher orders, and whether full nonlinear self-consistency is achievable, is downstream work (cf. [Chapter 1 §11](01-foundation.md) non-assumptions).
 
-The framework reproduces standard EM at the structural level. Whether it reproduces standard EM *quantitatively* — exact mass and charge values, exact magnetic moments, full higher-order corrections — depends on the α derivation and nonlinear analysis downstream. At the level this chapter operates (linearized, structural), the correspondence holds.
+The framework produces a U(1) × U(1) gauge structure with the algebraic and holonomic properties standard EM has. Whether this *reproduces* standard EM depends on (a) resolving the two-U(1)s discrepancy (one of the framework's U(1)s mapping to observed EM, the other to a known force or to a redundancy) and (b) downstream quantitative work (α derivation, nonlinear backreaction, magnetic moments, higher-order corrections). At the level this chapter operates (linearized, structural, single-U(1) restricted), the correspondence holds; the full claim of EM reproduction is conditional on the open issues catalogued above.
 
 ---
 
