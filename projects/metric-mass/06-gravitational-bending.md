@@ -237,6 +237,56 @@ causal-information-network limit (a separate channel with its
 own coupling parameter, α). Both can be present simultaneously,
 but they have different microscopic origins.
 
+**The off-diagonal sourcing mechanism (internal to this
+framework).** The third candidate is one this project has
+already constructed without naming it as such.
+[Chapter 5 §5–§6](05-metric-self-consistency.md) derived that
+mass on M sources off-diagonal metric entries (g_tu in our
+1D-compact case; on a 2D-compact sheet also g_S₁u, g_tw, etc.).
+Under the standard Kaluza-Klein identification (Ch 5 §6), these
+off-diagonals are gauge potentials A_μ — fields against which a
+particle's worldline accumulates phase via the line integral
+∮ A_μ dx^μ. A passing wave traversing the perturbed metric near
+a mass picks up exactly such a phase holonomy, and that phase
+accumulation manifests as both **trajectory deflection**
+(gravitational lensing) and **coordinate-time slowdown**
+(Shapiro delay) to a distant observer. The two are not separate
+effects; they are two faces of the same holonomy.
+
+This mechanism is **internal to the framework and calculable**.
+The chain reads:
+
+1. Bound mass = standing wave with compact-direction momentum
+   p_u = ℏn/R_u
+2. p_u sources g_tu via linearized Einstein equations
+   (Chapter 5 §5)
+3. g_tu = A_t under the Kaluza-Klein identification
+   (Chapter 5 §6)
+4. A passing wave's geodesic on the perturbed metric picks up
+   phase ∮ A_μ dx^μ along its worldline
+5. That phase, evaluated for a wave grazing the mass, is
+   exactly the deflection plus Shapiro delay observed in
+   gravitational lensing
+
+Each step is computable with the apparatus already developed in
+Chapters 2 and 5. The mechanism is more granular than standard
+GR's "mass curves spacetime, particles follow geodesics" — it
+locates the mechanism in compact-direction momentum and
+gauge-potential holonomy rather than in unexplained metric
+curvature.
+
+This mechanism is also distinct from the entropic and
+GRID-substrate mechanisms above. Those locate gravity at the
+*substrate* level (information / horizon thermodynamics); this
+mechanism lives at the *metric* level (off-diagonal sourcing).
+The two layers need not conflict — the metric-level mechanism
+may itself be the macroscopic limit of the substrate-level
+one, with the entropic / GRID arguments deriving Einstein's
+equations and the off-diagonal-sourcing chain then operating
+within those equations to produce specific lensing predictions
+— but they answer "how does mass bend spacetime?" at different
+layers of abstraction.
+
 For our chapter's question — does ±n cancel gravitational
 bending? — the substrate-level mechanism does not change the
 answer. The total energy of the configuration is what
@@ -250,7 +300,12 @@ This chapter does not commit to any of these mechanism
 pictures. It notes that they exist, that they are consistent
 with the standard answer (otherwise they would not reproduce
 GR in the appropriate limit), and that their existence does
-not modify the cancellation question's resolution.
+not modify the cancellation question's resolution. The
+off-diagonal sourcing chain is the only one of the three that
+this project itself derives end-to-end; the entropic and
+GRID-substrate programs are external, cited because they are
+candidate substrates *underneath* the metric-level mechanism
+this project has built.
 
 ---
 

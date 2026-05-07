@@ -390,6 +390,27 @@ standard KK's charge are different concepts that happen to share
 a sourcing mechanism. Distinguishing (a) from (b) is beyond this
 chapter's scope.
 
+### Looking ahead to Chapter 6 — this is more than a cross-check
+
+What §5–§6 have constructed is more than a structural parallel
+with KK. Compact-direction momentum sources off-diagonal metric
+entries (§5); under the KK identification those entries are
+gauge potentials A_μ (§6); a passing wave's worldline through
+the perturbed metric picks up phase via the line integral
+∮ A_μ dx^μ; that phase manifests as **trajectory deflection**
+(gravitational lensing) and **coordinate-time slowdown**
+(Shapiro delay) to a distant observer.
+
+In other words: the chain compact momentum → off-diagonal
+sourcing → KK gauge potential → phase holonomy on passing
+worldlines is **a calculable mechanism for how mass bends
+light**, internal to this framework. It is more granular than
+standard GR's "mass curves spacetime; particles follow geodesics"
+postulate, because each step admits an explicit calculation.
+Chapter 6 §4 elevates this from cross-check to mechanism
+candidate, alongside the entropic-gravity and GRID-substrate
+mechanism programs.
+
 ---
 
 ## 7. The ±n superposition: cross-term cancellation
