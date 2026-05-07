@@ -20,7 +20,7 @@ The biggest single change. Scattering currently reads as "two parallel computati
 - One **clock cycle** has two phases:
   - **Inhale.** Each node samples its registers, applies the scattering matrix S = (2/N)·J − I, and overwrites the register values with the result.
   - **Exhale.** Each edge transmits its two ends' values along itself, which has the effect of swapping the values in its two registers (one at each end node). One exhale = one edge transit; this is what sets the speed of light c.
-- Vertices enforce two physical constraints during inhale: voltage continuity (all incident lines see the same potential at the junction) and Kirchhoff current conservation. S = (2/N)·J − I is the *unique* solution to those constraints — not an arbitrary update rule.
+- Vertices enforce two physical constraints during inhale: potential continuity (all incident lines share the same value at the junction) and Kirchhoff's current law. S = (2/N)·J − I is the *unique* solution to those constraints — not an arbitrary update rule.
 - The "two values per edge" is not parallel computation — it is what every 1D wave-carrier needs (two real degrees of freedom per spatial location, the same as position+velocity in mechanics or d'Alembert characteristics on a string). Under the register reading, the two values are simply the values at the edge's two ends.
 
 This framing closes the "two-channel cheating" objection (the values are at *physical ends*, not in parallel channels), makes the speed of light explicit (= one exhale), demotes edge polarity from substrate primitive to v-i-paradigm convenience (registers don't care which end is "head"), and makes energy conservation structurally obvious (inhale is a local unitary, exhale is a pure relabeling).

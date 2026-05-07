@@ -29,7 +29,7 @@ The exhale is what gives the lattice its **speed of light**: one exhale = one ed
 
 > r_i ← (2/N) · (r₁ + r₂ + … + r_N) − r_i      for each i = 1, …, N
 
-This is the matrix S = (2/N)·J − I applied to the register vector, where J is the N×N all-ones matrix and I is the N×N identity. S is the *unique* solution to two physical constraints that any junction must enforce: voltage continuity (all incident lines see the same potential at the node) and Kirchhoff current conservation. It is not an arbitrary update rule; it is what those two constraints require.
+This is the matrix S = (2/N)·J − I applied to the register vector, where J is the N×N all-ones matrix and I is the N×N identity. S is the *unique* solution to two physical constraints that any junction must enforce: **potential continuity** (all incident lines share the same value at the junction) and Kirchhoff's current law (the conserved-flow conservation rule, generalized from electrical-circuit terminology to any substrate-level conserved through-quantity). It is not an arbitrary update rule; it is what those two constraints require. ("Potential" is used at the substrate level rather than "voltage" because the lattice is pre-Maxwell; voltage and current are higher-level emergent concepts.)
 
 S is unitary for any N, so the inhale preserves the energy norm Σ r_i² locally at every node.
 
@@ -40,6 +40,15 @@ S is unitary for any N, so the inhale preserves the energy norm Σ r_i² locally
 The exhale preserves the energy norm trivially — it is a pure relabeling.
 
 A full cycle (inhale + exhale) is therefore a unitary operation on the global state vector. Energy is conserved exactly per step.
+
+## How to think about a junction tick
+
+The intuition behind the formula, in plain language: at each tick, a node *gathers* its register values, *computes* a single junction potential V = 2 × (the average of the inputs), and *writes back* output_i = V − input_i to each register. The two parts of S = (2/N)·J − I have distinct physical jobs:
+
+- The (2/N)·J term is the **share-the-average** step. If S were only this term, every register would receive the same V on every step, the dynamics would become local-neighborhood averaging, and the lattice would diffuse rather than propagate waves.
+- The −I term is the **subtract-your-own** correction. By subtracting input_i from output_i, the rule guarantees that a value coming *in* through register i is not sent *back out* through register i — it is actively cancelled, and its energy flows out the other N−1 registers (each carrying T = 2/N of it; what little remains in port i is the small reflection R = (2−N)/N). This input/output asymmetry is the directional structure of a wavefront.
+
+The −I term simultaneously enables wave propagation (physical reading) and makes the update orthogonal — S² = I (mathematical reading). Drop it and waves diffuse; keep it and waves propagate. Chapter 6 §2.5 develops this picture with the full algebra.
 
 ## Equivalent (a_fwd, a_bwd) labeling
 

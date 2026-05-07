@@ -23,7 +23,7 @@ The answer is that this is exactly the regime studied for decades under the name
 [Chapter 4](04-model-comparison.md) selected Scattering as the lattice's dynamics. Reframed as a transmission-line network (see [review.md](review.md) §"Final suggestions"):
 
 - Each **edge** is a 1D extended object with two ends. Each end carries a real-valued amplitude.
-- Each **vertex** is a junction. It enforces voltage continuity (all incident lines see the same potential) and current conservation (Kirchhoff). The scattering matrix S = (2/N)·J − I is the unique solution to these constraints at an N-port equal-impedance junction.
+- Each **vertex** is a junction. It enforces potential continuity (all incident lines share the same value at the junction) and Kirchhoff's current law. The scattering matrix S = (2/N)·J − I is the unique solution to these constraints at an N-port equal-impedance junction.
 - The **clock** has two phases (per [review.md](review.md)): nodes scatter (Phase 1), edges swap their end values (Phase 2). One full cycle propagates information by one edge length.
 
 Total state per 2D hex unit cell: 6 real values (3 edges per A-vertex × 2 ends). The model passes the test bench cleanly: exactly unitary, exactly non-dispersive at coord 2, matched-impedance scattering to four decimals at coord-3 vertices.

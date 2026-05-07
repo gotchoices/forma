@@ -3,7 +3,7 @@
 **Type:** Educational project (see [../README.md](../README.md))
 **Scope:** A digital-first model of the GRID lattice with two structural primitive types — node and edge. The project does not pre-commit to a specific update rule or state structure; instead, it tests several **candidate models** against a standardized **test bench** and selects the one with the best combination of stability and fidelity to grid's existing simulations. sim-maxwell's model is one of the candidates, so the historical "bridge to grid" question becomes implicit in the model selection.
 **Method:** Mathematical derivation as discovery; computational verification via head-to-head model comparison; minimum verbosity.
-**Status:** Chapters 1–5 complete. Chapter-4 verdict: Scattering is the substrate's dynamics; gravity emerges from the substrate's graph Laplacian directly ([04-model-comparison.md](04-model-comparison.md)). Chapter-5 verdict: real-valued Scattering is the effective theory of a binary-bit substrate at Planck scale, recovered via spatial averaging under stochastic rounding (M ≥ (amp_max/((N−1)·ε))² cells per macroscopic window; the minimum per-cell resolution is 1 bit). The project continues with the real-valued model as effective theory ([05-substrate-quantization.md](05-substrate-quantization.md)).
+**Status:** Chapters 1–6 complete. Chapter-4 verdict: Scattering is the substrate's dynamics; gravity emerges from the substrate's graph Laplacian directly ([04-model-comparison.md](04-model-comparison.md)). Chapter-5 verdict: real-valued Scattering is the effective theory of a binary-bit substrate at Planck scale, recovered via spatial averaging under stochastic rounding (M ≥ (amp_max/((N−1)·ε))² cells per macroscopic window; the minimum per-cell resolution is 1 bit). Chapter 6: Scattering generalizes to any coordination and any dimension by the algebraic properties of S = (2/N)·J − I; on 3D diamond R = −1/2, T = +1/2 per branch with energy conserved exactly. Four lattice closures (open chain, ring, plaquette, torus) form a topological ladder for chapter 7's wrap-promotion modeling.
 
 ## Why this project exists
 
@@ -125,7 +125,7 @@ projects/grid-duality/
 ├── 03-test-bench.md                tests and observables
 ├── 04-model-comparison.md          comparison results, winner selection
 ├── 05-substrate-quantization.md    bit-level substrate; does the verdict survive?
-├── 06-3d-extension-and-lattice-closures.md  3D lattice + closure topology (TODO)
+├── 06-3d-extension-and-lattice-closures.md  3D lattice + closure topology
 ├── 07-wrap-promotion-modeling.md   mass / charge as observables on closures (TODO)
 ├── 08-where-alpha-appears.md       locating α on the ladder (TODO)
 ├── 09-node-decomposition.md        Y-tree decomposition; edge ≠ node (TODO)

@@ -25,7 +25,7 @@ The two-phase clock and the v ∈ [0, 2π) / i ∈ ℝ state structure are commo
 
 A network of N-register processors connected by two-ended transmission lines. Each node has one **register** per incident edge, where a register is the structural meeting point of an edge end with a node — owned jointly by both, contributing one real value to the lattice's state. A node of coordination N hosts N registers; an edge contributes two (one at each end node). The total state is exactly 2·|edges| real numbers.
 
-The clock is two-phase: an **inhale** in which each node samples its registers, applies the scattering matrix S = (2/N)·J − I locally, and overwrites the registers; and an **exhale** in which each edge transmits its end values to one another, swapping the values in the two registers it connects. The inhale enforces junction physics (voltage continuity + Kirchhoff current conservation, which together uniquely determine S); the exhale is a pure relabeling. Each phase is unitary, so energy is conserved exactly per cycle.
+The clock is two-phase: an **inhale** in which each node samples its registers, applies the scattering matrix S = (2/N)·J − I locally, and overwrites the registers; and an **exhale** in which each edge transmits its end values to one another, swapping the values in the two registers it connects. The inhale enforces junction physics (potential continuity + Kirchhoff's current law, which together uniquely determine S); the exhale is a pure relabeling. Each phase is unitary, so energy is conserved exactly per cycle.
 
 The exhale duration sets the **speed of light** for the lattice: information moves at most one edge per cycle. Edge polarity is structurally inert under this model — the registers are unordered and neither phase reads polarity.
 
@@ -95,7 +95,7 @@ The clock is two-phase. **Inhale.** Each node samples its registers, applies the
 
 > r_i ← (2/N) · (r₁ + … + r_N) − r_i      for each register i at the node
 
-S is the unique solution to two physical constraints at any junction — voltage continuity (all incident lines see the same potential) and Kirchhoff current conservation. It is not an arbitrary update rule; it is what those constraints require. S is unitary for any N, so the inhale preserves energy locally.
+S is the unique solution to two physical constraints at any junction — potential continuity (all incident lines share the same value at the junction) and Kirchhoff's current law (the substrate-level conserved-flow rule). It is not an arbitrary update rule; it is what those constraints require. S is unitary for any N, so the inhale preserves energy locally.
 
 **Exhale.** Each edge swaps the values in its two registers (one at each end node), as if the value at one end has propagated across the edge body to the other end. One exhale = one edge transit; this defines the **speed of light** for the lattice. The exhale preserves energy trivially — it is a pure relabeling.
 
