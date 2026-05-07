@@ -315,7 +315,15 @@ This is the centerpiece of the project. We state it now and explore its conseque
 >
 > Mini-step traversals are allowed; what matters is that the closure pattern locks during one full traversal of the knot.
 
-This is **stated, not derived**. The "why" — the α-coupling-strength derivation that explains the *strength* of the resulting charge — lives in [grid/](../../grid/), to be developed there. This project takes the rule as given and explores its consequences.
+This is **stated, not derived**. Two distinct "why" questions sit behind the rule:
+
+- The "why" of *strength* — the α-coupling-strength derivation that explains the magnitude of the resulting charge — lives in [grid/](../../grid/), to be developed there.
+
+- The "why" of *direction* — why w-winding rather than u-winding — is convention. The bare topology presents two compact directions symmetrically and gives no internal reason to prefer one. We start with two options, not knowing in advance which one is which. The choice is arbitrary at the topological level. We adopt the convention that w is the direction whose 2π winding closure requires, and proceed with derivations under that adoption. This determines the **order in which we wrap the torus**: w becomes the *tube* (the 2π-winding direction whose modes carry charge), and u becomes the *ring* (where mass arises from standing-wave structure on the unselected direction). The alternative convention (u as tube, w as ring) is isomorphic up to (u, w) ↔ (w, u) swap with ε → 1/ε.
+
+Whether the adopted convention matches the way the universe seems to work — whether observed gauge fields line up with this assignment or with the swapped alternative — is a downstream comparison question, not a determination of this chapter. If something physical (handedness or chirality of the embedding, substrate constraint, or other) eventually *forces* the choice, that would be a derived result. If it remains a convention the math adopts for self-consistency, that is also defensible. [grid-duality §8](../grid-duality/08-where-alpha-appears.md) and alpha-derivation work may settle this.
+
+This project takes the rule as given (with the convention explicit) and explores its consequences.
 
 ### Three views, one rule
 

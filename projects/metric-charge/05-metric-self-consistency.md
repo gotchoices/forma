@@ -268,7 +268,9 @@ The three views agree on the partition into observable-EM modes vs. non-observab
 
 The three views also expose an interesting alignment: each view has a closure-asymmetry built in (preferring w over u for the phase-pattern view; preferring one of the two U(1)s as physical for the metric-side view; preferring tube over ring for the topological view per the conventions of [Chapter 3 §3.2](03-knots-on-the-torus.md)). All three asymmetries point the same direction.
 
-Whether to read this as one underlying convention manifesting three times, or as three independent conventions that happen to align, is a chapter-deep question. The most parsimonious reading is **one convention with three faces** — a single asymmetry-breaking choice (whatever its deeper origin) that shows up consistently in all three frameworks. Chapter 4 §5.1 noted this is open work for [grid-duality §8](../grid-duality/08-where-alpha-appears.md) and downstream alpha-derivation work.
+The reason they align: they reflect a *single convention* — the wrap-order choice adopted in [Chapter 1 §10](01-foundation.md), naming which compact direction is *tube* (where charges arise) versus *ring* (where mass arises). Once that adoption is made, all three views inherit the asymmetry consistently. They aren't three independent conventions that happen to align — they're one adopted convention projected three ways.
+
+Whether the adopted convention matches the way the universe actually works, or whether some deeper structural mechanism forces it, is a downstream question, not a determination of this chapter. If something physical eventually *forces* the choice — handedness of the embedding spacetime, substrate constraint, or other — the convention would be derived rather than adopted. At present the framework treats the choice as adopted-by-stipulation, with structural derivation as an open question for [grid-duality §8](../grid-duality/08-where-alpha-appears.md) and the alpha-derivation track.
 
 ---
 
