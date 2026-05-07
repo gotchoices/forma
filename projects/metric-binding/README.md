@@ -121,6 +121,7 @@ The arc below is a *sketch*. Early chapters are framed in detail; later chapters
    - When do two knots stack as a higher harmonic in Ma?
    - When do they cancel or refuse to coexist?
    - Pass-through vs. annihilation for opposite-handedness collisions.
+   - Phase-offset configurations: two distinct (m, n) modes at the same position with arbitrary phase relationships on the torus — when does the combined configuration relax to one component, when does it stabilize as a coexistence?
    
    Establishes the zero-separation limit that chapter 3's E(r) must approach as r → 0.
 
