@@ -1,158 +1,239 @@
-# Chapter 9: Node decomposition — working outline
-
-> **Status: working outline.** The chapter below is the section-by-section sketch produced during chapter-9 planning. The substantive claim has shifted from the original outline: the node is not a primitive, but it is *not* eliminated by impedance tricks or Y-Δ network reductions either. The cleanest reading is that the substrate has two structural ingredients of very different kinds — *bare edges* (the only dynamic primitive) and *connectivity* (static structural information) — and what we have been calling a "node" is the **compound** that emerges when N bare edges meet at a junction whose local connectivity says they meet there. The S-matrix is implicit in the compound's structure, not a rule that any primitive runs.
-
----
-
-## §0. Working questions
-
-These are the questions the chapter has identified. Most have provisional answers from the planning discussion; the chapter would develop them concretely.
-
-### W1. What is a node, structurally?
-
-The original [grid-couplet](../grid-couplet/) brainstorm asked whether nodes and edges are symmetric "couplet halves" of a single underlying primitive. The chapter's substantive answer: no — they are not symmetric, but neither is a node a primitive in the same sense as an edge. A node is a **compound**: what one gets when N bare edges meet at a junction, with the local connectivity making them coherent. The dynamic primitive is the bare edge; the structural primitive is the connectivity; the node is the compound of edges-meeting-under-connectivity.
-
-### W2. Can the substrate be described with edges as the only primitive?
-
-Provisional answer: yes, with one important qualifier. Bare edges are the only *dynamic* primitive. But the substrate also has a *structural* ingredient — the connectivity, which says how edges meet — and that ingredient is not made of edges. So "edges only" is true in the sense that nothing else evolves under the clock, false in the sense that connectivity is a separate kind of structural information.
-
-### W3. Where does the S-matrix live?
-
-Not in the bare edge (which only swaps its end-registers). Not in a separate node-as-primitive (which we have eliminated). It lives *implicitly* in the compound's structure — in the way N bare edges relate to each other through the junction's connectivity. The S-matrix is what the compound *is*, not what any primitive *does*.
-
-### W4. Does the reverse direction work — can an edge be built from nodes?
-
-Provisional answer: no, asymmetrically. Edges have spatial extent (transit time, end-to-end direction, propagation); nodes do not. A construction "build an edge from nodes" terminates at smaller edges, not at pure nodes. So edges are the more fundamental of the two structural ingredients.
-
----
+# Chapter 9: Node decomposition
 
 ## §1. The chapter's job
 
-Identify the substrate's irreducible primitives. The original grid-couplet question was "are nodes and edges two halves of one underlying primitive?" The chapter's answer:
+Earlier chapters treated the node as a primitive: a coord-N vertex that applies the scattering matrix S = (2/N)·J − I to its N registers per inhale phase. This chapter does not propose to remove the node primitive from the substrate. It asks a constructive question instead: *can the node's functional behavior be built from edge primitives plus some additional rules and context that operate only inside the node's compound?*
 
-- Edges are the only *dynamic* primitive — the only thing whose state changes under the clock.
-- Connectivity is a separate *structural* ingredient — fixed, not evolving — encoding which edges meet at which junctions.
-- Nodes are not primitives. A node is the **compound** that emerges when N bare edges meet at a junction, plus the connectivity making them coherent. The compound's S-matrix behavior is implicit in its structure.
+The answer is yes, and the chapter shows how. Two concrete constructions are developed: a **star** with a single shared register at the junction (the cleanest implementation), and a **triangle** mesh of three inner edges with no shared register (more conceptually pure but mathematically heavier). Both produce the S-matrix at the outer terminals; both use only edge-level operations on the inside, with sub-tick scheduling within the inhale phase. The chapter ends with the structural conclusions about edge-vs-node primacy that follow from the construction.
 
-This is a cleaner answer than "build a node out of edges via Y-Δ" (which the original outline overstated) or "edges are richer because they carry impedance" (which conflated this substrate with EM transmission lines). The substrate is pure information; impedance and EM are higher-level emergent concepts. At the substrate level, the only dynamic primitive is the bare edge, and the only structural ingredient added is connectivity.
-
-The chapter develops this substantively in §3–§5, then handles the asymmetry (§6) and the connection to chapter 4's transmission-line reframing (§7).
+The chapter does not change the substrate. The standard implementation (one node primitive, one S-matrix application per tick, [scripts/models.py](scripts/models.py)) is unchanged. What this chapter establishes is that *a functional equivalent of the node primitive can be constructed from edges-plus-context*, which settles the original [grid-couplet](../grid-couplet/) question about whether nodes and edges are independent primitives.
 
 ## §2. The bare edge
 
-The minimal edge primitive:
+The minimal edge primitive carries the smallest possible state and the simplest possible operation:
 
-- *State.* Two registers, one at each end. Each register holds a single value (real-valued in the chapter-4 model; bit-valued in the chapter-5 substrate-quantization reading).
-- *Operation.* During the exhale phase of the clock, swap the two end-registers. That is the only thing the edge does.
-- *No internal state beyond the two registers.* No parameters, no impedance, no transit-time variation, no awareness of other edges.
+- *State.* Two end-registers, each holding a single value.
+- *Operation.* During the exhale phase, swap the two end-registers.
 
-The bare edge is fully described by these properties. Anything richer is *not the edge*; it is some other structural element that the substrate also has.
+This is the entire bare edge. No parameters, no impedance, no transit-time variation, no awareness of other edges or junctions. When operating *outside* a compound, an edge does only this.
 
-## §3. Connectivity as a structural ingredient
+Inside a compound, the same edge primitive can be configured with additional rules — a sub-tick schedule and access to context registers — without changing what the bare edge fundamentally is. The richness lives in the compound's configuration, not in the edge itself.
 
-The substrate has a second kind of ingredient — connectivity — that is structurally distinct from the edge. Specifically:
+## §3. What we mean by "compound model of a node"
 
-- Connectivity says *which edges meet at which junctions*. This is the lattice's wiring diagram.
-- Connectivity is *static*: it is fixed when the lattice is constructed and does not change under the clock.
-- Connectivity carries *no register state*: it is structural information, not dynamic information.
+A compound is a configuration of bare edges, possibly together with one or more context elements (shared registers, sub-tick scheduling, local rules), arranged so that *viewed from the outside, the compound's behavior is indistinguishable from a single node primitive applying S = (2/N)·J − I*.
 
-Connectivity is what distinguishes a 1D ring from a 2D hex from a 3D diamond, even though the bare-edge primitive is the same in all three. Two lattices with different connectivities have different dynamics, even if their edges are identical.
+The "view from outside" criterion is precise. Imagine wiring the compound into the rest of the lattice through N outer terminals (one per outer edge that connects to the compound). After one full clock tick — inhale plus exhale — the values at the N outer terminals must match what they would be if a single node primitive at coord N had applied S and then exhaled.
 
-This is not a controversial claim — every chapter so far has implicitly used connectivity. What chapter 9 makes explicit is that connectivity is a *separate ingredient* from the bare edge, not a property of the edge itself. An edge does not "know" what it is connected to; the connectivity is information that lives outside the edge primitive.
+Two structural notes:
 
-## §4. The compound: what we have been calling a node
+- The compound's *internal* state (extra registers, intermediate values during sub-ticks) is invisible from outside. The construction may use as much internal state as needed, as long as it does not leak out.
+- The compound must complete its work within one inhale phase. No extra ticks of delay through the compound are allowed; from the outside, the compound's response is per-tick equivalent to a node primitive.
 
-When N bare edges meet at a junction whose connectivity says they meet there, the result is a compound. The compound has:
+## §4. The star construction
 
-- *N bare edges* contributing N pairs of end-registers — N of those registers are at the junction, N are at the far ends.
-- *Connectivity* saying which N edges meet here, and how (e.g., in what local order).
+The simplest construction. A central junction register V is added inside the compound, plus three inner connections (we will call them micro-edges) from V to the three outer-edge inner-end registers.
 
-The compound's behavior is derived from these two structural ingredients together. Specifically: when one inspects the compound's response to inputs at the N outer terminals, the behavior is exactly the S-matrix S = (2/N)·J − I from chapter 4. The S-matrix is not a rule that any primitive runs; it is *what the compound is*, structurally.
+### §4.1 Geometry
 
-This is parallel to the situation in classical transmission-line theory: a Y-junction of three lines does not "compute" anything; the scattering at the junction is what voltage continuity + Kirchhoff's law require, given the geometry. The geometry is the analog of our substrate's connectivity. Our substrate's connectivity is, similarly, what makes the compound's behavior be what it is.
+```
+                   outer terminal A
+                          ●
+                          │
+                          │ outer edge A (bare)
+                          │
+                          ● s_A  ──┐
+                                   │ inner micro-edge A
+                                   │
+                                  [V]  ← shared hub register (context)
+                                   │
+                          ┌── s_B ●│
+                          │        ●─── s_C ────┐
+                          │ inner  │            │
+                          │ edge B │ inner edge C
+                          │        │            │
+                          │        │            │
+                          ● s_B    ●            ● s_C
+                          │                     │
+                          │ outer edge B (bare) │ outer edge C (bare)
+                          │                     │
+                          ●                     ●
+                   outer terminal B      outer terminal C
+```
 
-### §4.1 Why this is not "rich edges"
+Three bare outer edges (A, B, C), each contributing two registers — an outer-terminal register and an inner-end register (s_A, s_B, s_C). One context register V at the hub. Three inner micro-edges, each connecting one s_i to V.
 
-A previous draft of this chapter framed the reduction as "edges with impedance" (an EM-flavored move) or "edges with context-aware update rules" (a per-edge richness). Both are incorrect framings of what the substrate actually is.
+Total state inside the compound: 3 inner-end registers (s_A, s_B, s_C) + 1 hub register V = 4 registers. From outside, only the three outer-terminal registers are visible.
 
-In the correct framing, edges remain bare. The "richness" — the S-matrix's complexity, the multi-input averaging, the subtract-your-own subtraction — is a property of the *compound*, not of any bare edge. The compound is a structural pattern (N bare edges plus the connectivity that makes them meet); the pattern has the S-matrix behavior; no individual edge does.
+### §4.2 The inhale algorithm
 
-### §4.2 Why this is not "computation at the node"
+The inhale phase is decomposed into three sub-ticks:
 
-A different previous framing said "nodes compute the S-matrix via an active update rule." This is also not quite the right reading. The S-matrix at a coord-N compound is the *unique algebraic consequence* of the compound's structure (the two physical constraints — potential continuity and Kirchhoff's current law — admit exactly one solution at the compound's terminals). That solution is the S-matrix. Calling this "computation" overstates the agency of the compound; it is doing what its structure forces, not running a rule.
+**Sub-tick 1 — gather.** Each inner micro-edge deposits its s_i value into V additively:
 
-A discrete-clock implementation must *enforce* this structural fact tick by tick (continuous physics enforces it automatically), so in our simulation engine there is an explicit per-tick operation that applies S. But the operation is *deriving the structural consequence*, not *implementing an arbitrary rule*. The rule is what the compound's structure forces.
+> V ← s_A + s_B + s_C.
 
-## §5. Where the S-matrix lives
+After sub-tick 1, V holds the sum of the three inner-end registers. The s_i registers retain their original values.
 
-To consolidate: the S-matrix is implicit in the structure formed by bare edges + connectivity. It does not live:
+**Sub-tick 2 — scale.** The hub register V is rescaled to the junction potential:
 
-- *In any bare edge.* Bare edges only swap their two end-registers; pure swaps are permutations and cannot produce the S-matrix's non-permutation entries.
-- *In any per-edge parameter.* No edge carries impedance, angle, delay, or other parameter that would let it execute a fragment of S on its own.
-- *In a separate "node" primitive.* There is no node-as-primitive in this chapter's framing.
+> V ← (2/N) · V = (2/3) · V.
 
-Where the S-matrix lives:
+After sub-tick 2, V holds the junction potential (2/3) · (s_A + s_B + s_C), which is what chapter 6 §2.5 called *V = 2 × the average of the inputs*.
 
-- *In the compound's structure.* When N bare edges meet under the connectivity that says they meet at a coord-N junction, the resulting compound's terminal behavior is exactly S. The matrix is what the structural pattern *is*.
+**Sub-tick 3 — broadcast.** Each inner micro-edge writes back V − s_i to its inner-end register:
 
-This is the chapter's substantive structural claim. Eliminating "node as primitive" does not displace the S-matrix into edges or registers; it relocates it from "primitive's update rule" to "compound's structural identity."
+> s_A ← V − s_A,
+> s_B ← V − s_B,
+> s_C ← V − s_C.
 
-## §6. The asymmetry: edges cannot be built from nodes
+After sub-tick 3, each inner-end register holds the S-matrix output for that channel.
 
-A short section establishing that the reduction is one-way.
+### §4.3 Verification
 
-### §6.1 Edges have spatial extent; nodes do not
+By direct computation, after the three sub-ticks:
 
-The bare edge has two end-registers separated by an exhale's worth of "transit." That transit is what propagates information across the lattice. A node — under any reading — does not have this property; it is a meeting point, not a path between meeting points.
+> s_A_new = V − s_A_old = (2/3)(s_A + s_B + s_C) − s_A = (−1/3)·s_A + (2/3)·s_B + (2/3)·s_C.
 
-A construction "build an edge from nodes" must somehow produce spatial extent from non-extended primitives. The natural attempt — chain many nodes with internal edges — *uses edges* in the construction, terminating at smaller edges rather than at pure nodes. The reduction does not work in this direction.
+This is exactly row 1 of S = (2/3)·J − I applied to (s_A, s_B, s_C). Similarly for s_B and s_C. The compound implements the S-matrix exactly.
 
-### §6.2 The conclusion
+After the inhale phase ends, the standard exhale runs on the outer edges (each outer edge swaps its two end-registers as usual). The result at the outer terminals is identical to what a single coord-3 node primitive would have produced.
 
-Edges are the more fundamental of the two ingredients. Connectivity is the second structural ingredient. Nodes are derived compounds, not primitives. The original grid-couplet "node and edge are symmetric halves of one primitive" framing is not correct: they are not symmetric, and the asymmetry favours the edge.
+### §4.4 What primitives are used
 
-## §7. Connection to the chapter-4 transmission-line reframing
+Inside the compound:
 
-The chapter's claim that the substrate has bare edges + connectivity, with nodes being derived compounds, is consistent with — and in some sense *required by* — the chapter-4 reframing of Scattering as a transmission-line network. A real transmission-line network does not have "node primitives" either; it has lines and the geometric points at which they meet. The S-matrix at any junction is what the line physics + the meeting geometry produce.
+- *Bare outer edges* — three of them, contributing s_A, s_B, s_C.
+- *Inner micro-edges* — three of them, with two specific operations each (deposit additively in sub-tick 1, write-back in sub-tick 3). These are not "rich edges" with parameters; they are bare-edge-like elements running a fixed two-phase rule.
+- *Hub register V* — one extra register, structurally a context element.
+- *Sub-tick clock* — three sub-ticks within the inhale phase.
 
-Our substrate inherits the same structure: bare edges in place of lines, connectivity in place of meeting geometry, compounds in place of physical junctions. The chapter-4 verdict — *Scattering is what a transmission-line network looks like on a graph* — is exactly what one would expect if the substrate's primitives are bare edges + connectivity, with the S-matrix being structural rather than algorithmic.
+The compound is *one shared register V* + *three inner micro-edges with a fixed two-phase rule* + *sub-tick scheduling*. No per-edge parameters, no impedance, no per-edge angles.
 
-## §8. The information-content reading (chapter-5 connection)
+## §5. The triangle construction
 
-Chapter 5 established that the substrate's information capacity scales with cell count. Under the bare-edges-plus-connectivity framing, the information content is precisely what bare edges' end-registers hold — that is, 2 × |edges| values total, with each register being one slot in the per-cell information budget.
+A more elegant construction in the sense of "edges only" (no shared central register) but mathematically heavier. Three inner micro-edges arranged as a triangle, each connecting two of the three outer-edge inner-end registers.
 
-Connectivity contributes *no per-tick information* to this count: it is structural, fixed, and does not evolve. The chapter-5 holographic-window argument (M ≥ (amp_max/((N−1)·ε))² cells per macroscopic resolution) implicitly counted edge-register state and not connectivity, because connectivity is not a state-bearing primitive.
+### §5.1 Geometry
 
-This is consistent and worth stating: the substrate's bit-counting all happens in bare edges. Connectivity wires the edges together; it does not contribute to the substrate's information capacity.
+```
+                   outer terminal A
+                          ●
+                          │
+                          │ outer edge A (bare)
+                          │
+                          ●  s_A
+                         ╱ ╲
+                        ╱   ╲
+            inner      ╱     ╲     inner
+            edge A-B  ╱       ╲    edge A-C
+                     ╱         ╲
+                    ╱           ╲
+                   ●─────────────●
+                  s_B    inner  s_C
+                          edge B-C
+                  │             │
+                  │ outer       │ outer
+                  │ edge B      │ edge C
+                  │             │
+                  ●             ●
+            outer term B    outer term C
+```
+
+Three bare outer edges contributing s_A, s_B, s_C. Three inner micro-edges forming a triangle: A-B, B-C, A-C. No central register.
+
+Total state inside the compound: 3 inner-end registers from the outer edges + 6 inner-end registers from the triangle micro-edges (each triangle edge has two ends, one at each pair of corners) = 9 registers, although we will see that the triangle micro-edges' end-registers coincide with the outer edges' inner-end registers in a specific way.
+
+### §5.2 The Givens-rotation decomposition
+
+Any orthogonal N×N matrix factors into a product of N(N−1)/2 Givens rotations, each acting on a pair of indices. For S = (2/3)·J − I (orthogonal because S² = I from chapter 6 §2), the decomposition has 3 rotations:
+
+> S = G_{12}(θ_1) · G_{23}(θ_2) · G_{13}(θ_3)
+
+where G_{ij}(θ) is the 2×2 rotation by angle θ acting on indices i and j (and the identity on the remaining index). Specific angles θ_1, θ_2, θ_3 can be solved analytically for the S-matrix.
+
+### §5.3 The inhale algorithm
+
+Each inner triangle micro-edge performs *one Givens rotation* on its pair of inner-end registers during one of three sub-ticks:
+
+**Sub-tick 1.** Inner edge A-B applies G_{12}(θ_1) to (s_A, s_B). Both registers update.
+
+**Sub-tick 2.** Inner edge B-C applies G_{23}(θ_2) to (s_B, s_C). Both registers update.
+
+**Sub-tick 3.** Inner edge A-C applies G_{13}(θ_3) to (s_A, s_C). Both registers update.
+
+### §5.4 Verification
+
+After the three sub-ticks, the composite operation applied to (s_A, s_B, s_C) is G_{12}(θ_1) · G_{23}(θ_2) · G_{13}(θ_3) = S. The outer-terminal behavior matches a coord-3 node primitive.
+
+### §5.5 Comparison with the star
+
+The triangle is "edges only" in the sense that it has no shared register V — the only registers inside the compound are at the corners of the triangle, which are also the inner-end registers of the outer edges. The cost: each inner micro-edge has a *parameterised* operation (a specific Givens-rotation angle), not a single fixed two-phase rule. The triangle's micro-edges carry numerical parameters; the star's micro-edges have a uniform two-phase rule.
+
+The star and triangle are both legitimate constructions. The star is simpler to specify (one fixed rule, one shared register) but uses an extra register. The triangle is more elegant (no extra register, only edge-pair operations) but requires three angle parameters that vary by edge.
+
+The chapter's substantive observation: *which one is "more primitive" depends on what one prefers to count as the cost.* If extra registers are cheap and parameter variety is expensive, the star wins. If parameter variety is cheap and extra registers are expensive, the triangle wins. Both implement the S-matrix; both use only edge-level operations plus sub-tick scheduling.
+
+## §6. Higher coord: tree decomposition
+
+A coord-N node decomposes into a tree of (N − 2) coord-3 sub-junctions linked by internal connections. This is well-known in network theory; the calculation is the cascade of coord-3 reductions, with each internal connection's parameters chosen so the overall N-terminal behavior matches the original coord-N S-matrix.
+
+For coord 4 (the relevant case for 3D diamond), the decomposition is one internal node linking two coord-3 sub-junctions:
+
+```
+              outer 1               outer 4
+                 ●                     ●
+                 │                     │
+               s_1                   s_4
+                  ╲                  ╱
+                   ╲                ╱
+                  [Y_a]──── int ──[Y_b]
+                   ╱                ╲
+                  ╱                  ╲
+               s_2                   s_3
+                 │                     │
+                 ●                     ●
+              outer 2               outer 3
+```
+
+Y_a and Y_b are coord-3 compounds (each implemented by the star or triangle from §4 or §5). The "int" register is the shared internal connection.
+
+Higher coord-N reduces to N − 2 cascaded coord-3 sub-junctions in this manner. The construction terminates at coord-3 compounds, each of which is implemented by §4 or §5.
+
+The chapter does not work out the parameters for coord ≥ 4 explicitly. The structural result is that any coord-N node has a functional model in terms of edge primitives plus context, with the model's complexity scaling linearly with N − 2.
+
+## §7. The reverse direction: edges from nodes
+
+The constructions of §4 and §5 give a functional model of the *node* in terms of edge primitives + context. The reverse direction — building an edge from nodes — does not work the same way.
+
+The bare edge has *spatial extent*. Information at one end propagates to the other end during one exhale; this transit is what makes the edge a propagation medium. A node is a *meeting point*, not a propagation medium; it has no spatial extent.
+
+A construction "build an edge from nodes" must produce spatial extent from non-extended primitives. The natural attempt — chain many small nodes together with internal edges of unit length — *uses edges in the construction*. The reduction terminates at smaller edges, not at pure nodes. Edges cannot be functionally reduced to nodes the way nodes can be functionally reduced to edges plus context.
+
+This asymmetry is the chapter's substantive structural conclusion: *edges are the more fundamental of the two ingredients*. Nodes are derivable as compounds; edges are not. The original [grid-couplet](../grid-couplet/) question of whether nodes and edges are symmetric halves of one underlying primitive is answered: no, they are not symmetric, and the asymmetry favors the edge.
+
+## §8. Connection to chapter 4 and chapter 5
+
+### §8.1 Consistency with the chapter-4 transmission-line reframing
+
+The constructions of §4 and §5 are consistent with — and in some sense suggested by — the chapter-4 reframing of Scattering as a transmission-line network. A real transmission-line network does not have a "node primitive" either; junctions are emergent meeting points where the line physics produces scattering through the geometry of the meeting. Our constructions inherit this structure: the outer edges carry information across the lattice; the compound at the junction (whether star or triangle) implements what the meeting demands.
+
+The chapter does not claim that the substrate is *literally* a transmission-line network. It claims that the structural pattern is the same — bare propagation primitives connected by a configuration that produces the scattering — and that the chapter-4 reframing's success is consistent with that pattern.
+
+### §8.2 Information content under the construction
+
+Chapter 5 established that the substrate's information capacity is in its register state, with the holographic-window scaling M ≥ (amp_max/((N−1)·ε))² cells per macroscopic resolution. Under the §4 star construction, each compound adds one extra register V relative to the standard node primitive — a small addition to the substrate's total information count. Under the §5 triangle construction, no extra registers are added, but each inner micro-edge carries a parameter (the rotation angle), which is structural information rather than dynamic state.
+
+Either way, the constructions do not change the substrate's *dynamic* information content (the per-tick evolving state) by more than a constant factor per junction. The bit-counting arguments of chapter 5 carry over with at most that constant adjustment.
 
 ## §9. Closing pointer
 
-The substrate has two structural ingredients of different kinds: the bare edge (dynamic, with two end-registers and a swap operation) and the connectivity (static, encoding how edges meet). The node is not a primitive; it is the compound that emerges when N bare edges meet at a junction with the connectivity that says they meet there. The S-matrix is implicit in the compound's structural identity, not a rule that any primitive runs.
+The functional behavior of a coord-N node primitive can be constructed from bare edges plus a small amount of additional context — either a shared junction register (the star construction of §4) or a triangle of parameter-bearing inner micro-edges (the triangle construction of §5). Both produce the S-matrix at the outer terminals; both use only edge-level operations plus sub-tick scheduling. Higher-coord nodes reduce to cascaded coord-3 sub-junctions.
 
-Edges are the more fundamental of the two ingredients (edges-from-nodes does not work the way nodes-from-edges does). The original grid-couplet "node and edge are symmetric primitives" question is settled: they are not symmetric; edges are primary; nodes are derived.
+The reverse direction — building an edge from nodes — does not work the same way: edges have spatial extent that nodes lack. Edges remain the more fundamental of the two structural ingredients.
 
-This closes the substrate-structure portion of the project. Chapter 10 (closing summary) consolidates the project's results.
+This closes the substrate-structure portion of the project. The original [grid-couplet](../grid-couplet/) question about whether nodes and edges are symmetric primitives is settled: they are not symmetric; nodes have functional models in edge-and-context terms, while edges do not have the analogous reduction. The chapter does not propose to change the substrate's primitive set; it establishes that a functional equivalent of the node primitive exists in edge-and-context terms.
+
+Chapter 10 (closing summary) consolidates the project's results.
 
 The chapter sequence is summarized in the project [README](README.md).
-
----
-
-## Appendix A: Notes for full chapter writing
-
-- §3 (connectivity as a structural ingredient) is the chapter's key conceptual move. Develop carefully: connectivity is *not* a property of edges and *not* a per-vertex computational state; it is wiring information that lives at the lattice level. Some readers may want to call connectivity "the graph"; this is fine and worth saying explicitly.
-- §4 (the compound) is the load-bearing structural claim. Make sharp the distinction between "the compound *runs* the S-matrix" (incorrect — implies agency) and "the compound *is* the S-matrix" (correct — structural identity). The §4.1 and §4.2 subsections defending against the "rich edges" and "computation at the node" misreadings are necessary.
-- §5 (where the S-matrix lives) is a one-sentence punchline, but worth its own subsection so the reader can land on the answer cleanly.
-- §6 (asymmetry) is short; the structural fact is that edges have transit and nodes don't. Belabouring it would dilute the punchline.
-- §7 (transmission-line reframing) closes the loop with chapter 4. The substrate's structural framing is consistent with — and in fact necessitated by — calling Scattering a transmission-line-network model.
-- §8 (information content) closes the loop with chapter 5. Edges hold all the dynamic information; connectivity is fixed wiring with no information-budget contribution.
-- The chapter does *not* attempt to reimplement [scripts/models.py](scripts/models.py) in any "edges-only" form. The structural claim does not depend on the implementation; in fact, the standard implementation already locates the S-matrix at the node primitive, but that is a *coding* convenience, not a structural claim about the substrate.
-
-## Appendix B: What was discarded from the prior outline
-
-The prior outline (committed earlier) leaned on Y-Δ network reduction and impedance as edge structure. Both were over-stated:
-
-- *Y-Δ doesn't actually eliminate coord-3 vertices in a periodic lattice.* It reorganises topology locally but increases coord at neighbouring vertices. The "all nodes vanish" reading I sketched does not survive contact with how Y-Δ actually works on a connected lattice. The current outline drops Y-Δ as the central reduction; the substantive reduction is "node is a compound," not "node is a Y-Δ-equivalent triangle."
-- *Impedance was an EM flavour applied to a substrate that is pre-Maxwell.* At the substrate level there are no voltages, currents, or impedances; there are only register values and connectivity. The original outline conflated the chapter-4 transmission-line *analogy* with literal EM physics; this draft removes that confusion. (The chapter-4 reframing of Scattering as "transmission-line network" remains, but it is a structural analogy, not a claim that the substrate carries voltage and current at the per-edge level. See chapter 6 §2.5's "potential" framing.)
-- The "edges with rich update rules" framing tried to put the S-matrix's computation at the edge level. That framing made edges richer than they need to be. The current outline keeps edges bare and locates the S-matrix in the compound's structural identity instead.
-
-These changes simplify the chapter substantially. The substantive claim is now: *bare edges + connectivity = substrate; nodes are compounds, not primitives; the S-matrix is structural, not algorithmic.* Everything else is supporting development.
