@@ -128,7 +128,7 @@ projects/grid-duality/
 ├── 06-3d-extension-and-lattice-closures.md  3D lattice + closure topology
 ├── 07-wrap-promotion-modeling.md   mass / charge as observables on closures
 ├── 08-where-alpha-appears.md       locating α on the ladder
-├── 09-node-decomposition.md        Y-tree decomposition; edge ≠ node (TODO)
+├── 09-node-decomposition.md        Y-tree decomposition; edge ≠ node (working outline)
 ├── 10-closing-summary.md           closing summary (TODO)
 ├── models/                         per-model specifications
 │   ├── telegrapher.md
