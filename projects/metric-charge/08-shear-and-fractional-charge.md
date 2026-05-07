@@ -101,37 +101,58 @@ Specifically: if the k components are at phases 2π·j/k for j = 0, 1, ..., k−
 
 The chapter computes this sum and asks: at what k is the multi-component configuration most energetically favorable under shear?
 
-### 6. Why k = 3 specifically — the three-phase mechanism
+### 6. Optimizing k under shear — what value emerges?
 
-This is the chapter's key derivation. Argue (in the prose expansion) that shear σ_uw selects k = 3 cleanly via:
+This is the chapter's central derivation, framed as a real optimization rather than a proof of a presupposed answer.
 
-- The shear's cross-term has a structure that favors 2π/3 phase separations between components.
-- Specifically, the energy of the k-component configuration as a function of σ has a minimum at k = 3 for nontrivial σ (in the small-shear limit, possibly extending to all σ in the framework's allowed range).
-- The k = 3 configuration also satisfies a Z₃-symmetry constraint that simpler k = 2 or k = 4 configurations don't satisfy. (Connect to grid-duality's Z₃ confinement at L3 — possibly a topological reason for k = 3.)
+Set up the optimization problem: given fixed (σ, ε), what value of k minimizes the total energy of a k-component multi-link configuration T(km, kn) at primitive (m, n) = (1, 1) (the lightest closure-eligible primitive at any ε per chapter 7)? Compute E(k; σ, ε), minimize over k, and report what optimal k(σ, ε) emerges.
 
-The result: under shear, three-component links T(3m, 3n) are the energetically preferred multi-component configuration, with each component carrying 1/3 of the primitive's charge.
+The framework's *prediction* about k is the result of this optimization, not an input. The prose expansion works through the calculation; here we sketch the argument structure.
 
-This derivation is the substantive new content of chapter 8; the outline only sketches the argument structure. The prose expansion will work through the calculation explicitly.
+Candidate mechanisms for what k might be favored under shear (to be tested in the optimization):
 
-### 7. The fractional-charge prediction
+- The shear's cross-term structure may favor specific phase separations between components on energetic grounds. If the structure is 2π/k-symmetric for some k, that k is a natural optimization candidate.
+- A Z_k-symmetry constraint may make some k values satisfy a structural property that others don't. (Connect to grid-duality's Z₃ confinement at L3 — *if* the optimization confirms k = 3, this may be the topological reason for it.)
+- Pure energetic minimization may pick out a k that doesn't correspond to any standard-physics analog, or k may vary non-trivially with (σ, ε).
+
+The result of the optimization is reported as the framework's prediction. If k = 3 emerges as the optimum across the natural range of (σ, ε) values, the framework's structural match to what standard physics ascribes to quark organization is genuine. If a different k emerges, or if k varies substantially with (σ, ε) in ways that do not match observation, the framework's prediction differs from standard physics' quark structure — and that should be reported honestly.
+
+This derivation is the substantive new content of chapter 8; the outline only sketches the argument structure. The prose expansion will work through the explicit energy minimization and report the answer.
+
+### 7. The fractional-charge prediction — and consistency with grid-duality's quantization
 
 Combine §5 and §6:
 
-- Shear is what produces the multi-component link structure (without shear, ε alone doesn't favor multi-component).
-- Shear specifically selects k = 3.
-- Each component of the resulting T(3m, 3n) link carries 1/3 of the primitive T(m, n)'s charge.
+- Shear is what produces the multi-component link structure (without shear, ε alone doesn't favor multi-component, per chapter 7).
+- The optimization in §6 identifies the favored k under shear; call this k_opt(σ, ε).
+- For a multi-link configuration with k_opt components, each component is *associated with* 1/k_opt of the link's total charge.
 
-So the framework predicts: **on a sheet with shear σ_uw ≠ 0, the dominant multi-component closure-satisfying configurations are 3-component links with fractional 1/3 charges per component.**
+**Consistency with grid-duality's integer charge quantization.** Per [grid-duality §7.5.4](../grid-duality/07-wrap-promotion-modeling.md), winding numbers are integer-valued and conserved. At first glance this conflicts with the per-component "fractional charges" above. The conflict is only apparent.
 
-This matches the structural pattern of standard physics' quark organization: 3 quarks per baryon, each with 1/3 fractional charge (or 2/3 for up-type quarks). Whether the framework's specific predictions for fractional-charge values, mass ratios, and other observables match standard physics' quark properties is a downstream MaSt-correspondence question.
+Grid-duality's integer quantization applies at the level of *complete closure-satisfying configurations*. A k-component link T(km, kn) is a single topological object — one winding pattern with definite integer (km, kn). The link as a whole carries integer charge under the quantization rule. The "1/k_opt charge per component" is not a *fractional charge of an individual closure-satisfying mode* — it is the *fractional association* of the link's integer total charge with each of its k structural components.
+
+Three points clarify the consistency:
+
+- **Components are not closure-satisfying on their own.** A single component of a multi-link, considered in isolation, is just a single (m, n) mode at primitive winding. Whether that single (m, n) satisfies closure depends on the standing-wave alignment requirement. For the multi-link case, it is the *collective configuration* (all k components together with their specific phase distribution) that satisfies closure. Individual components do not satisfy closure in isolation.
+
+- **Integer total charge is preserved.** The full multi-link has charge proportional to its winding (km, kn) — integer-valued in the grid-duality sense. Distributing across k components gives 1/k per component, but the total integer charge is unchanged. No quantization rule is violated.
+
+- **Confinement-like consequence.** Because individual components are not closure-satisfying alone, they are not isolable as physical states — they only exist as parts of the collective k-link. This is structurally analogous to what standard physics calls quark confinement: individual quarks carry fractional charge and are not observable in isolation; only color-neutral composite states are.
+
+So the framework's fractional-charge prediction is consistent with grid-duality's integer winding quantization, and predicts confinement-like behavior as a structural consequence: per-component fractional values exist only inside the collective configuration, with integer total preserved.
+
+**The framework's prediction:** on a sheet with shear σ_uw ≠ 0, the dominant multi-component closure-satisfying configurations are k_opt-component links with 1/k_opt charge associated per component, and individual components are not isolable. If §6's optimization yields k_opt = 3, this matches the structural pattern of standard physics' quark organization (3 components per baryon, each with 1/3 fractional charge under confinement). If §6 yields a different k_opt, or yields k_opt varying with (σ, ε), the framework's prediction differs from observed quark structure and should be reported honestly.
+
+Whether the framework's specific predictions (k_opt, charge magnitudes, mass ratios, link-stability conditions) match standard physics' quark properties under detailed comparison is downstream MaSt-correspondence work.
 
 ### 8. Summary — what shear adds to the inventory
 
 The ε sweep of [Chapter 7](07-aspect-ratio-and-character.md) gave three regimes of sheet character (mass-only-dominated at extremes, charge-friendly at ε ≈ 1). Adding shear σ_uw to that inventory:
 
 - **Breaks (m, n) ↔ (−m, −n) symmetry** — Sakharov-CP-violation analog, supporting matter/antimatter asymmetry.
-- **Selects three-component link structure** — k = 3 via the shear's energetic preference.
-- **Produces fractional 1/3 charges** — naturally, from the three-phase distribution.
+- **Selects a k_opt-component link structure** — the optimization in §6 picks out which k minimizes link energy under shear; the framework reports what k_opt(σ, ε) emerges.
+- **Produces 1/k_opt fractional charges per component** — distributed across the link's structural components, with integer total charge preserved (consistent with grid-duality §7.5.4).
+- **Predicts confinement-like behavior for individual components** — per §7, individual components of a multi-link are not closure-satisfying in isolation and therefore not isolable.
 
 Together with ε from chapter 7 and handedness from chapter 6, σ_uw gives the framework four parameters / structural choices that organize the closure-eligible inventory:
 
