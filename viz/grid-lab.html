@@ -117,6 +117,11 @@
     <input type="range" id="sl-edge" min="0.1" max="3" step="0.05" value="1.0">
     <span class="val" id="v-edge">1.00</span>
   </div>
+  <div class="cg">
+    <label>Wire</label>
+    <input type="range" id="sl-wire" min="0.005" max="0.15" step="0.005" value="0.035">
+    <span class="val" id="v-wire">0.035</span>
+  </div>
 
   <div class="sep"></div>
 
@@ -133,7 +138,7 @@
 
   <div class="cg">
     <label>Heat ±</label>
-    <input type="range" id="sl-heat" min="0.5" max="50" step="0.5" value="5">
+    <input type="range" id="sl-heat" min="0.1" max="500" step="0.1" value="5">
     <span class="val" id="v-heat">5.0</span>
   </div>
   <div class="cg tog"><label><input type="checkbox" id="cb-auto"> Auto</label></div>
@@ -225,6 +230,7 @@ const DEFAULT = {
   // Visual / global
   nodeDiam: 0.6,
   edgeLen: 1.0,
+  filamentR: 0.035,    // tube radius for both edges and node rings (= "Wire")
   speed: 2.0,
   heatRange: 5.0,
   autoScale: false,
@@ -320,24 +326,36 @@ scene.add(graphGroup);
 const nodes = []; // { group, ringMat, frame }
 const edges = [];
 
-const RING_TUBE = 0.035;
-const EDGE_TUBE = 0.05;
-
 /* ── Color helpers ─────────────────────────────────────── */
 
-const COLD = [0.10, 0.55, 1.00];
-const NEUT = [0.40, 0.40, 0.45];
-const HOT  = [1.00, 0.35, 0.10];
+// Diverging RdBu-like colormap, normalized to t ∈ [-1, 1]. Linear
+// interpolation between adjacent stops gives more visible color
+// distinction across the range than a single 3-stop gradient does.
+const COLOR_STOPS = [
+  { t: -1.00, c: [0.05, 0.10, 0.55] },  // deep blue
+  { t: -0.60, c: [0.10, 0.40, 0.85] },  // blue
+  { t: -0.25, c: [0.55, 0.75, 0.95] },  // light cyan-blue
+  { t:  0.00, c: [0.40, 0.40, 0.45] },  // neutral gray
+  { t: +0.25, c: [0.95, 0.75, 0.45] },  // light orange
+  { t: +0.60, c: [0.95, 0.45, 0.10] },  // orange-red
+  { t: +1.00, c: [0.55, 0.05, 0.10] },  // deep red
+];
 
 function heatColor(val, range) {
   const t = Math.max(-1, Math.min(1, val / range));
-  const tgt = t >= 0 ? HOT : COLD;
-  const a = Math.abs(t);
-  return new THREE.Color(
-    NEUT[0] + (tgt[0] - NEUT[0]) * a,
-    NEUT[1] + (tgt[1] - NEUT[1]) * a,
-    NEUT[2] + (tgt[2] - NEUT[2]) * a,
-  );
+  for (let i = 1; i < COLOR_STOPS.length; i++) {
+    const s0 = COLOR_STOPS[i - 1], s1 = COLOR_STOPS[i];
+    if (t <= s1.t) {
+      const f = (t - s0.t) / (s1.t - s0.t);
+      return new THREE.Color(
+        s0.c[0] + (s1.c[0] - s0.c[0]) * f,
+        s0.c[1] + (s1.c[1] - s0.c[1]) * f,
+        s0.c[2] + (s1.c[2] - s0.c[2]) * f,
+      );
+    }
+  }
+  const last = COLOR_STOPS[COLOR_STOPS.length - 1].c;
+  return new THREE.Color(last[0], last[1], last[2]);
 }
 
 const NODE_RING_BASE = new THREE.Color(0.30, 0.30, 0.36);
@@ -345,7 +363,7 @@ const NODE_RING_BASE = new THREE.Color(0.30, 0.30, 0.36);
 /* ── Geometry layout ───────────────────────────────────── */
 
 // edgeLen is the visible tube length (rim outer equator to rim outer
-// equator). Center-to-center distance is edgeLen + nodeDiam + 2·RING_TUBE.
+// equator). Center-to-center distance is edgeLen + nodeDiam + 2·S.filamentR.
 // Edges attach to the outer equator of each node ring, not the centerline.
 
 // Layout produces a per-node frame: { pos, localX, localY, localZ, r }
@@ -369,7 +387,7 @@ function flatBasis() {
 
 // Cell pitch: distance between adjacent node centers, including the rim
 // half-thickness on each side so the visible tube length matches edgeLen.
-function cellPitch() { return S.nodeDiam + S.edgeLen + 2 * RING_TUBE; }
+function cellPitch() { return S.nodeDiam + S.edgeLen + 2 * S.filamentR; }
 
 // Each frame carries:
 //   pos        — world position
@@ -379,7 +397,7 @@ function cellPitch() { return S.nodeDiam + S.edgeLen + 2 * RING_TUBE; }
 //   type       — 'ring' (1D / 2D) or 'sphere' (3D)
 function ringFrame(extra) {
   const r = S.nodeDiam / 2;
-  return { ...flatBasis(), r, attachR: r + RING_TUBE, type: 'ring', ...extra };
+  return { ...flatBasis(), r, attachR: r + S.filamentR, type: 'ring', ...extra };
 }
 
 function nodeFrame1D(i) {
@@ -398,7 +416,7 @@ function nodeFrameRing(i) {
     localY: new THREE.Vector3(0, 0, 1),
     localZ: new THREE.Vector3(c, s, 0),
     r,
-    attachR: r + RING_TUBE,
+    attachR: r + S.filamentR,
     type: 'ring',
   };
 }
@@ -595,7 +613,7 @@ function buildHalfMesh(p0, p1, tag, opacity = 1.0) {
   const dir = p1.clone().sub(p0);
   const len = dir.length();
   const mid = p0.clone().addScaledVector(dir, 0.5);
-  const geo = new THREE.CylinderGeometry(EDGE_TUBE, EDGE_TUBE, len, 12);
+  const geo = new THREE.CylinderGeometry(S.filamentR, S.filamentR, len, 12);
   const mat = new THREE.MeshStandardMaterial({
     color: 0x808080, roughness: 0.55, metalness: 0.1,
     transparent: opacity < 1.0, opacity,
@@ -628,7 +646,7 @@ function buildGraph() {
       mesh.userData = { kind: 'node', index: i };
       container = mesh;
     } else {
-      const ringGeo = new THREE.TorusGeometry(f.r, RING_TUBE, 8, 48);
+      const ringGeo = new THREE.TorusGeometry(f.r, S.filamentR, 8, 48);
       mesh = new THREE.Mesh(ringGeo, ringMat);
       mesh.userData = { kind: 'node', index: i };
       const group = new THREE.Group();
@@ -705,16 +723,25 @@ function buildGraph() {
 
 function applyValues() {
   // Compute heat range, optionally auto-fitting to current max |register|.
+  // Asymmetric tracking with a deadband: snap up quickly when peaks grow
+  // (saturation is an information loss), drift down slowly so wave-magnitude
+  // wobble doesn't make the colors flicker.
   let range = S.heatRange;
   if (S.autoScale) {
     let mx = 0;
     for (const n of S.engine.nodes) for (const r of n.registers) mx = Math.max(mx, Math.abs(r));
     if (mx > 0) {
-      const target = Math.max(0.5, mx * 1.05);
-      range = S.heatRange + (target - S.heatRange) * 0.35;
-      S.heatRange = range;
-      $('sl-heat').value = Math.min(50, Math.max(0.5, range)).toFixed(1);
-      $('v-heat').textContent = range.toFixed(1);
+      const target = Math.max(0.1, mx * 1.05);
+      let ease = 0;
+      if (target > S.heatRange * 1.05) ease = 0.30;       // peaks growing — react
+      else if (target < S.heatRange * 0.5) ease = 0.02;   // peaks shrunk well below range — drift down slowly
+      // else: deadband, leave the range alone for visual stability
+      if (ease > 0) {
+        range = S.heatRange + (target - S.heatRange) * ease;
+        S.heatRange = range;
+        $('sl-heat').value = Math.min(500, Math.max(0.1, range)).toFixed(1);
+        $('v-heat').textContent = range.toFixed(1);
+      }
     }
   }
 
@@ -994,6 +1021,7 @@ function syncControls() {
   $('sel-preset').value = '';
   $('sl-diam').value   = S.nodeDiam;  $('v-diam').textContent = S.nodeDiam.toFixed(2);
   $('sl-edge').value   = S.edgeLen;   $('v-edge').textContent = S.edgeLen.toFixed(2);
+  $('sl-wire').value   = S.filamentR; $('v-wire').textContent = S.filamentR.toFixed(3);
   $('sl-speed').value  = S.speed;     $('v-speed').textContent= S.speed.toFixed(1);
   $('sl-heat').value   = S.heatRange; $('v-heat').textContent = S.heatRange.toFixed(1);
   $('cb-auto').checked = S.autoScale;
@@ -1122,6 +1150,11 @@ $('sl-diam').oninput = e => {
 $('sl-edge').oninput = e => {
   S.edgeLen = parseFloat(e.target.value);
   $('v-edge').textContent = S.edgeLen.toFixed(2);
+  rebuildGraphFromState();
+};
+$('sl-wire').oninput = e => {
+  S.filamentR = parseFloat(e.target.value);
+  $('v-wire').textContent = S.filamentR.toFixed(3);
   rebuildGraphFromState();
 };
 $('sl-speed').oninput = e => {
