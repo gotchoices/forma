@@ -47,7 +47,7 @@ The visualizer supports three lattice dimensions, each with its own neighbor top
 - Open: N nodes, **N − 1 edges**.  No dangling stubs.  Boundary nodes have coordination 1.
 - Periodic: N nodes, **N edges**.  Every node has coordination 2.  The wrap edge connects node N − 1 back to node 0.
 
-The simple node and edge lay flat in xz so the chain runs along x and each node circle's plane is in xz, normal up (y).  The edge intersects the circle from outside.  The `Edge` slider sets the **nominal center-to-center distance** between adjacent nodes; the visible tube length between rims is therefore `edgeLen − nodeDiam`.
+The simple node and edge lay flat in xz so the chain runs along x and each node circle's plane is in xz, normal up (y).  Each edge tube attaches to the **outer equator** of the node ring (the outermost point of the torus mesh), so the edge visibly meets the rim of the node.  The `Edge` slider sets the **visible tube length** between adjacent nodes' outer equators; the underlying center-to-center distance is `edgeLen + nodeDiam + 2·ring_thickness`.
 
 When **periodic** but **not wrapped** visually, the chain is drawn flat and the wrap edge is rendered as **two short half-edge stubs**, one extending past each end of the chain, faded slightly so the eye reads them as "this connects around to the other side."  The two stubs together represent the single wrap edge logically.  When **periodic** *and* **wrapped**, the chain rolls into a vertical ring (ferris wheel: axle along z, ring in the xy plane, nodes spaced around the rim).  When **open** *and* **wrapped**, the chain is rolled into an arc with one rim segment missing.
 
@@ -79,9 +79,15 @@ When a 2D axis is **periodic** but the sheet is **not wrapped**, the wrap edges 
 
 ### 3D — diamond lattice
 
-Every node has coordination 4, with four edges at the tetrahedral angle (~109.5°).  The lattice tiles 3D space in the same connectivity pattern as the carbon atoms in diamond.
+Every node has coordination 4, with four edges at the tetrahedral angle (~109.5°).  The lattice tiles 3D space in the same connectivity pattern as the carbon atoms in diamond — two interpenetrating FCC sublattices offset by one quarter of the cubic diagonal.
 
-Per-axis periodicity is independent (x, y, z each toggle).  Each periodic axis can independently be wrapped.  All three axes wrapped gives a 3-torus; visualizing this involves nesting three concentric loops and is sketched only after the 1D and 2D cases are working.  See [`nested-torus.html`](nested-torus.html) for the visual idiom.
+Internally the engine uses primitive FCC basis vectors `a₁ = (0, 1, 1)·a/2`, `a₂ = (1, 0, 1)·a/2`, `a₃ = (1, 1, 0)·a/2` with cubic constant `a = 4/√3`, so every A→B edge has unit length.  Two atoms per primitive cell; each A connects to 4 B-neighbors via the four tetrahedral displacements `+d_AB`, `+d_AB − a₁`, `+d_AB − a₂`, `+d_AB − a₃`.
+
+Per-axis periodicity is independent (`Periodic X`, `Periodic Y`, `Periodic Z` toggle independently).  Open boundaries reduce coordination at edge cells (coord 1, 2, or 3 depending on which neighbors are missing); the Scattering matrix `S = (2/N)·J − I` works correctly at any local coord.
+
+In 3D, nodes render as **spheres** rather than torus rings — the four incident edges go in tetrahedral directions, so a single ring plane can't align with all of them.  Edges attach at the sphere surface.
+
+Visual closure of the 3-torus (all three axes wrapped) involves nested-torus geometry and is deferred to a later pass.  Until then, periodic axes show half-edge stubs at their boundaries (the 1D / 2D treatment, generalized).  See [`nested-torus.html`](nested-torus.html) for the visual idiom.
 
 ## Clock
 

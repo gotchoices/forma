@@ -6,7 +6,7 @@
  */
 
 import {
-  build1D, build2D, buildYTree,
+  build1D, build2D, build3D, buildYTree,
   clear, halfStep, fullStep,
   applyInhale, applyExhale,
   totalEnergy, coordOf, isWrapEdge,
@@ -380,12 +380,23 @@ group('open-chain boundary reflection', () => {
 /* ── Presets sanity ──────────────────────────────────────── */
 
 group('presets', () => {
-  test('listPresets returns the four documented names', () => {
+  test('listPresets() returns 1D and 2D presets', () => {
     const names = listPresets();
     assertTrue(names.includes('delta-L'));
     assertTrue(names.includes('delta-R'));
     assertTrue(names.includes('delta-2'));
     assertTrue(names.includes('sin'));
+    assertTrue(names.includes('2d-center'));
+    assertTrue(names.includes('knot-1-2'));
+  });
+
+  test('listPresets(dim) filters by dimension', () => {
+    const ones = listPresets(1);
+    assertEq(ones.includes('delta-L'), true, 'delta-L is 1D');
+    assertEq(ones.includes('knot-1-2'), false, 'knot-1-2 is not 1D');
+    const twos = listPresets(2);
+    assertEq(twos.includes('knot-1-2'), true, 'knot-1-2 is 2D');
+    assertEq(twos.includes('delta-L'), false, 'delta-L is not 2D');
   });
 
   test('clear zeros every register', () => {
@@ -393,6 +404,41 @@ group('presets', () => {
     applyPreset(s, 'sin', { amplitude: 5 });
     clear(s);
     for (const n of s.nodes) for (const r of n.registers) assertApprox(r, 0);
+  });
+});
+
+group('2D presets', () => {
+  test('2d-center places a single unit at the middle cell', () => {
+    const s = build2D(4, 8, { periodic_x: true, periodic_y: true });
+    applyPreset(s, '2d-center', { amplitude: 1 });
+    // Energy is exactly 1 — only one register set, at unit amplitude.
+    assertApprox(totalEnergy(s), 1, 1e-12);
+  });
+
+  test('knot-1-2 places a (p=1, q=2) torus-knot standing wave', () => {
+    const s = build2D(6, 12, { periodic_x: true, periodic_y: true });
+    applyPreset(s, 'knot-1-2', { amplitude: 1 });
+    // All registers at a node have the same value (preset sets uniformly per node).
+    for (const n of s.nodes) {
+      const r0 = n.registers[0];
+      for (const r of n.registers) assertApprox(r, r0, 1e-12);
+    }
+    // Inhale on a uniform-per-node pattern is the identity at every node
+    // (S = (2/N)·J − I sends (v, v, ..., v) → (v, v, ..., v)).
+    const before = s.nodes.map(n => [...n.registers]);
+    applyInhale(s);
+    for (let i = 0; i < s.nodes.length; i++) {
+      assertArr(s.nodes[i].registers, before[i], 1e-12, `node ${i}:`);
+    }
+  });
+
+  test('knot-1-2 energy is preserved over 30 cycles', () => {
+    const s = build2D(6, 12, { periodic_x: true, periodic_y: true });
+    applyPreset(s, 'knot-1-2', { amplitude: 1 });
+    const E0 = totalEnergy(s);
+    let clock = 0;
+    for (let t = 0; t < 30; t++) clock = fullStep(s, null, clock);
+    assertApprox(totalEnergy(s), E0, 1e-9);
   });
 });
 
@@ -553,6 +599,92 @@ group('2D linearity', () => {
         assertApprox(rab[s], ra[s] + rb[s], 1e-12, `node ${n} slot ${s}:`);
       }
     }
+  });
+});
+
+/* ── 3D diamond topology ─────────────────────────────────── */
+
+group('build3D — diamond topology', () => {
+  test('2×2×2 fully periodic: 16 nodes, 32 edges, all coord 4', () => {
+    const s = build3D(2, 2, 2, { periodic_x: true, periodic_y: true, periodic_z: true });
+    assertEq(s.nodes.length, 16);
+    assertEq(s.edges.length, 32);   // 4 edges per cell × 8 cells
+    for (let i = 0; i < 16; i++) assertEq(coordOf(s, i), 4, `node ${i}:`);
+  });
+
+  test('3×3×3 fully periodic: 54 nodes, 108 edges', () => {
+    const s = build3D(3, 3, 3, { periodic_x: true, periodic_y: true, periodic_z: true });
+    assertEq(s.nodes.length, 54);
+    assertEq(s.edges.length, 108);  // 4 × 27
+  });
+
+  test('2×2×2 open: 16 nodes, 8 edges (only same-cell), boundary coords < 4', () => {
+    const s = build3D(2, 2, 2);
+    assertEq(s.nodes.length, 16);
+    // Same-cell A→B: 8 edges (always present).
+    // Left-cell (i>0): i=1, j∈{0,1}, k∈{0,1} → 4
+    // Below-cell (j>0): j=1, i∈{0,1}, k∈{0,1} → 4
+    // Behind-cell (k>0): k=1, i∈{0,1}, j∈{0,1} → 4
+    assertEq(s.edges.length, 8 + 4 + 4 + 4);   // 20
+    let minCoord = 99;
+    for (let i = 0; i < 16; i++) minCoord = Math.min(minCoord, coordOf(s, i));
+    assertTrue(minCoord < 4, `expected boundary node coord < 4, got ${minCoord}`);
+  });
+
+  test('every edge has unit displacement length (diamond)', () => {
+    const s = build3D(2, 2, 2, { periodic_x: true, periodic_y: true, periodic_z: true });
+    for (const e of s.edges) {
+      const len = Math.hypot(e.displacement[0], e.displacement[1], e.displacement[2]);
+      assertApprox(len, 1.0, 1e-12, `edge displacement:`);
+    }
+  });
+
+  test('positions are 3D arrays, edges connect at unit distance', () => {
+    const s = build3D(2, 2, 2, { periodic_x: true, periodic_y: true, periodic_z: true });
+    assertEq(s.positions[0].length, 3);
+    // Non-wrap edges: position distance = 1; wrap edges: position distance > 1.
+    let nonWrapCount = 0;
+    for (let ei = 0; ei < s.edges.length; ei++) {
+      if (isWrapEdge(s, ei)) continue;
+      const e = s.edges[ei];
+      const tp = s.positions[e.tail], hp = s.positions[e.head];
+      const dist = Math.hypot(hp[0] - tp[0], hp[1] - tp[1], hp[2] - tp[2]);
+      assertApprox(dist, 1.0, 1e-12, `non-wrap edge ${ei}:`);
+      nonWrapCount++;
+    }
+    assertTrue(nonWrapCount > 0, 'expected some non-wrap edges');
+  });
+});
+
+/* ── 3D energy conservation ──────────────────────────────── */
+
+group('3D energy conservation', () => {
+  test('diamond torus 2×2×2: energy preserved over 30 cycles', () => {
+    const s = build3D(2, 2, 2, { periodic_x: true, periodic_y: true, periodic_z: true });
+    let seed = 0;
+    for (const n of s.nodes) {
+      for (let k = 0; k < n.registers.length; k++) {
+        n.registers[k] = Math.sin(0.3 * (++seed)) * 1.5;
+      }
+    }
+    const E0 = totalEnergy(s);
+    let clock = 0;
+    for (let t = 0; t < 30; t++) clock = fullStep(s, null, clock);
+    assertApprox(totalEnergy(s), E0, 1e-9);
+  });
+
+  test('open diamond 2×2×2: energy preserved over 30 cycles (mixed coords)', () => {
+    const s = build3D(2, 2, 2);
+    let seed = 0;
+    for (const n of s.nodes) {
+      for (let k = 0; k < n.registers.length; k++) {
+        n.registers[k] = Math.cos(0.4 * (++seed));
+      }
+    }
+    const E0 = totalEnergy(s);
+    let clock = 0;
+    for (let t = 0; t < 30; t++) clock = fullStep(s, null, clock);
+    assertApprox(totalEnergy(s), E0, 1e-9);
   });
 });
 

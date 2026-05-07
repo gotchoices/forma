@@ -51,7 +51,7 @@
   border: 1px solid rgba(255,255,255,0.06);
 }
 .label.l-stub { color: #c0c0c0; opacity: 0.85; font-style: italic; }
-.dim-1d, .dim-2d { display: inline-flex; }   /* default; toggled by JS based on Dim */
+.dim-1d, .dim-2d, .dim-3d, .dim-23 { display: inline-flex; }   /* default; toggled by JS */
 </style>
 </head>
 <body>
@@ -64,6 +64,7 @@
     <select id="sel-dim">
       <option value="1">1D</option>
       <option value="2">2D hex</option>
+      <option value="3">3D diamond</option>
     </select>
   </div>
 
@@ -74,32 +75,34 @@
   </div>
   <div class="cg tog dim-1d"><label><input type="checkbox" id="cb-periodic"> Periodic</label></div>
 
-  <!-- 2D-only controls -->
-  <div class="cg dim-2d">
+  <!-- Shared 2D / 3D controls -->
+  <div class="cg dim-23">
     <label>Nx</label>
     <input type="number" id="in-Nx" min="2" max="32" step="1" value="4">
   </div>
-  <div class="cg dim-2d">
+  <div class="cg dim-23">
     <label>Ny</label>
     <input type="number" id="in-Ny" min="2" max="256" step="2" value="8">
   </div>
-  <div class="cg tog dim-2d"><label><input type="checkbox" id="cb-px"> Periodic X</label></div>
-  <div class="cg tog dim-2d"><label><input type="checkbox" id="cb-py"> Periodic Y</label></div>
+  <div class="cg tog dim-23"><label><input type="checkbox" id="cb-px"> Periodic X</label></div>
+  <div class="cg tog dim-23"><label><input type="checkbox" id="cb-py"> Periodic Y</label></div>
 
-  <!-- Shared wrap toggle: 1D ring (when periodic) or 2D torus (when both axes periodic). -->
+  <!-- 3D-only controls -->
+  <div class="cg dim-3d">
+    <label>Nz</label>
+    <input type="number" id="in-Nz" min="2" max="10" step="1" value="3">
+  </div>
+  <div class="cg tog dim-3d"><label><input type="checkbox" id="cb-pz"> Periodic Z</label></div>
+
+  <!-- Shared wrap toggle: 1D ring (when periodic), 2D torus (when both axes periodic).
+       Has no effect in 3D (3-torus wrap deferred). -->
   <div class="cg tog"><label><input type="checkbox" id="cb-wrap"> Wrap</label></div>
 
   <div class="sep"></div>
 
   <div class="cg">
     <label>Preset</label>
-    <select id="sel-preset">
-      <option value="">—</option>
-      <option value="delta-L">Delta L</option>
-      <option value="delta-R">Delta R</option>
-      <option value="delta-2">Delta 2</option>
-      <option value="sin">Sin</option>
-    </select>
+    <select id="sel-preset"><option value="">—</option></select>
   </div>
 
   <div class="sep"></div>
@@ -174,15 +177,30 @@
 <script type="module">
 import { THREE, createScene, autoResize, animLoop, PALETTE } from './totu-viz.js';
 import {
-  build1D, build2D,
+  build1D, build2D, build3D,
   clear as engineClear,
   halfStep as engineHalfStep,
   applyPreset as engineApplyPreset,
+  listPresets as engineListPresets,
   getEdgeRegisters,
   setEdgeRegister,
   totalEnergy,
   isWrapEdge,
 } from './grid-engine.js';
+
+// Preset dropdown labels keyed by preset name.
+const PRESET_LABEL = {
+  'delta-L':   'Delta L',
+  'delta-R':   'Delta R',
+  'delta-2':   'Delta 2',
+  'sin':       'Sin',
+  '2d-center': 'Center pulse',
+  'knot-1-2':  'Knot (1,2) — WvM',
+  'knot-1-1':  'Knot (1,1)',
+  'knot-2-1':  'Knot (2,1)',
+  'knot-1-0':  'Knot (1,0) — pure ring',
+  'knot-0-1':  'Knot (0,1) — pure tube',
+};
 
 const $ = id => document.getElementById(id);
 const TAU = Math.PI * 2;
@@ -199,9 +217,11 @@ const DEFAULT = {
   periodic: false,      // logical wrap-around (engine-level)
   wrap: false,          // visual ring layout (1D only, for now)
   // 2D — Ny must be a multiple of 2·Nx for an untwisted-torus embedding.
-  Nx: 4, Ny: 8,
+  // 3D — Nx, Ny, Nz are independent integers ≥ 2.
+  Nx: 4, Ny: 8, Nz: 3,
   periodic_x: false,
   periodic_y: false,
+  periodic_z: false,
   // Visual / global
   nodeDiam: 0.6,
   edgeLen: 1.0,
@@ -245,6 +265,11 @@ function buildEngine(s) {
   if (s.dim === 2) {
     s.Ny = snapNy(s.Nx, s.Ny);
     return build2D(s.Nx, s.Ny, { periodic_x: s.periodic_x, periodic_y: s.periodic_y });
+  }
+  if (s.dim === 3) {
+    return build3D(s.Nx, s.Ny, s.Nz, {
+      periodic_x: s.periodic_x, periodic_y: s.periodic_y, periodic_z: s.periodic_z,
+    });
   }
   return build1D(s.N, { periodic: s.periodic });
 }
@@ -319,8 +344,9 @@ const NODE_RING_BASE = new THREE.Color(0.30, 0.30, 0.36);
 
 /* ── Geometry layout ───────────────────────────────────── */
 
-// edgeLen is the nominal center-to-center distance between adjacent nodes.
-// The visible tube length is edgeLen − nodeDiam (rim to rim).
+// edgeLen is the visible tube length (rim outer equator to rim outer
+// equator). Center-to-center distance is edgeLen + nodeDiam + 2·RING_TUBE.
+// Edges attach to the outer equator of each node ring, not the centerline.
 
 // Layout produces a per-node frame: { pos, localX, localY, localZ, r }
 // localX/Y/Z are an orthonormal basis; the node ring lies in the plane
@@ -341,15 +367,29 @@ function flatBasis() {
   };
 }
 
-function nodeFrame1D(i) {
+// Cell pitch: distance between adjacent node centers, including the rim
+// half-thickness on each side so the visible tube length matches edgeLen.
+function cellPitch() { return S.nodeDiam + S.edgeLen + 2 * RING_TUBE; }
+
+// Each frame carries:
+//   pos        — world position
+//   localX/Y/Z — orthonormal basis (only used when type === 'ring')
+//   r          — visible node radius (sphere or torus major radius)
+//   attachR    — distance from center to where edges connect (= outer rim)
+//   type       — 'ring' (1D / 2D) or 'sphere' (3D)
+function ringFrame(extra) {
   const r = S.nodeDiam / 2;
-  const x = (i - (S.N - 1) / 2) * S.edgeLen;
-  return { pos: new THREE.Vector3(x, 0, 0), ...flatBasis(), r };
+  return { ...flatBasis(), r, attachR: r + RING_TUBE, type: 'ring', ...extra };
+}
+
+function nodeFrame1D(i) {
+  const x = (i - (S.N - 1) / 2) * cellPitch();
+  return ringFrame({ pos: new THREE.Vector3(x, 0, 0) });
 }
 
 function nodeFrameRing(i) {
   const r = S.nodeDiam / 2;
-  const R = S.edgeLen / (2 * Math.sin(Math.PI / S.N));
+  const R = cellPitch() / (2 * Math.sin(Math.PI / S.N));
   const theta = i * TAU / S.N;
   const c = Math.cos(theta), s = Math.sin(theta);
   return {
@@ -358,28 +398,51 @@ function nodeFrameRing(i) {
     localY: new THREE.Vector3(0, 0, 1),
     localZ: new THREE.Vector3(c, s, 0),
     r,
+    attachR: r + RING_TUBE,
+    type: 'ring',
   };
 }
 
-// 2D flat: read engine.positions (lattice coords), centroid-shift, scale by edgeLen.
-// Lattice (x, y) → world (x, 0, y). World y is up; the sheet lies in xz.
+// 2D flat: read engine.positions (lattice coords, every edge unit-length),
+// centroid-shift, scale by cellPitch so the visible tube between adjacent
+// node rims matches edgeLen. Lattice (x, y) → world (x, 0, y); the sheet
+// lies in xz with normal up.
 function nodeFrame2DFlat(i, centroid) {
+  const p = S.engine.positions[i];
+  const pitch = cellPitch();
+  return ringFrame({
+    pos: new THREE.Vector3(
+      (p[0] - centroid[0]) * pitch, 0,
+      (p[1] - centroid[1]) * pitch,
+    ),
+  });
+}
+
+// 3D flat: lattice (x, y, z) → world (x, y, z) directly. Nodes render as
+// spheres (4 incident edges go in tetrahedral directions; a flat ring's
+// plane cannot align with all of them).
+function nodeFrame3DFlat(i, centroid) {
   const r = S.nodeDiam / 2;
   const p = S.engine.positions[i];
+  const pitch = cellPitch();
   return {
     pos: new THREE.Vector3(
-      (p[0] - centroid[0]) * S.edgeLen, 0,
-      (p[1] - centroid[1]) * S.edgeLen,
+      (p[0] - centroid[0]) * pitch,
+      (p[1] - centroid[1]) * pitch,
+      (p[2] - centroid[2]) * pitch,
     ),
-    ...flatBasis(),
     r,
+    attachR: r,
+    type: 'sphere',
   };
 }
 
 function computeCentroid(state) {
-  let sx = 0, sy = 0;
-  for (const p of state.positions) { sx += p[0]; sy += p[1]; }
-  return [sx / state.positions.length, sy / state.positions.length];
+  const dim = state.positions[0].length;
+  const c = new Array(dim).fill(0);
+  for (const p of state.positions) for (let k = 0; k < dim; k++) c[k] += p[k];
+  for (let k = 0; k < dim; k++) c[k] /= state.positions.length;
+  return c;
 }
 
 // 2D torus embedding (wrap mode with both axes periodic).
@@ -398,7 +461,8 @@ function computeCentroid(state) {
 // lattice cells are slightly compressed in θ for k = 1 to keep the
 // torus non-self-intersecting.
 function torusRadii() {
-  const R = Math.max(1.0, S.Nx * S.edgeLen * 0.5);
+  const pitch = cellPitch();
+  const R = Math.max(1.0, S.Nx * pitch * 0.5);
   const r = R * 0.45;
   return { R, r };
 }
@@ -451,6 +515,9 @@ function makeFrames() {
     for (let i = 0; i < N; i++) frames[i] = nodeFrame1D(i);
   } else if (isTorusLayout()) {
     for (let i = 0; i < N; i++) frames[i] = nodeFrame2DTorus(i);
+  } else if (S.dim === 3) {
+    const centroid = computeCentroid(S.engine);
+    for (let i = 0; i < N; i++) frames[i] = nodeFrame3DFlat(i, centroid);
   } else {
     const centroid = computeCentroid(S.engine);
     for (let i = 0; i < N; i++) frames[i] = nodeFrame2DFlat(i, centroid);
@@ -461,14 +528,17 @@ function makeFrames() {
 // World-space direction "from tail toward head" for a given edge.
 // In ring/torus layouts we use the chord direction (since the lattice
 // is bridged by the visual closure); in flat layouts we use the engine's
-// per-edge displacement (lattice short-image), which gives the right
-// direction for both wrap and non-wrap edges.
+// per-edge displacement, which gives the right direction for both wrap
+// and non-wrap edges.
 function edgeWorldDir(state, ei, frames) {
   const e = state.edges[ei];
   if ((S.dim === 1 && S.wrap) || isTorusLayout()) {
     return frames[e.head].pos.clone().sub(frames[e.tail].pos).normalize();
   }
   const d = e.displacement;
+  // 1D / 2D displacement is 2-component (lattice y → world z); 3D is
+  // 3-component (lattice xyz → world xyz directly).
+  if (d.length >= 3) return new THREE.Vector3(d[0], d[1], d[2]).normalize();
   return new THREE.Vector3(d[0], 0, d[1]).normalize();
 }
 
@@ -530,23 +600,33 @@ function buildGraph() {
 
   const frames = makeFrames();
 
-  // Nodes — uniform circular ring, no phase dot.
+  // Nodes — torus rings in 1D / 2D, spheres in 3D.
   for (let i = 0; i < frames.length; i++) {
     const f = frames[i];
-    const group = new THREE.Group();
-    group.position.copy(f.pos);
-    group.quaternion.setFromRotationMatrix(
-      new THREE.Matrix4().makeBasis(f.localX, f.localY, f.localZ),
-    );
-    const ringGeo = new THREE.TorusGeometry(f.r, RING_TUBE, 8, 48);
     const ringMat = new THREE.MeshStandardMaterial({
       color: NODE_RING_BASE, roughness: 0.6, metalness: 0.1,
     });
-    const ring = new THREE.Mesh(ringGeo, ringMat);
-    ring.userData = { kind: 'node', index: i };
-    group.add(ring);
-    graphGroup.add(group);
-    nodes.push({ group, ringMat, ring, frame: f });
+    let mesh, container;
+    if (f.type === 'sphere') {
+      const sphereGeo = new THREE.SphereGeometry(f.r, 16, 12);
+      mesh = new THREE.Mesh(sphereGeo, ringMat);
+      mesh.position.copy(f.pos);
+      mesh.userData = { kind: 'node', index: i };
+      container = mesh;
+    } else {
+      const ringGeo = new THREE.TorusGeometry(f.r, RING_TUBE, 8, 48);
+      mesh = new THREE.Mesh(ringGeo, ringMat);
+      mesh.userData = { kind: 'node', index: i };
+      const group = new THREE.Group();
+      group.position.copy(f.pos);
+      group.quaternion.setFromRotationMatrix(
+        new THREE.Matrix4().makeBasis(f.localX, f.localY, f.localZ),
+      );
+      group.add(mesh);
+      container = group;
+    }
+    graphGroup.add(container);
+    nodes.push({ group: container, ringMat, ring: mesh, frame: f });
   }
 
   // Edges — each edge → two half-meshes (tail half + head half), or
@@ -556,8 +636,10 @@ function buildGraph() {
     const eng = S.engine.edges[ei];
     const a = frames[eng.tail], b = frames[eng.head];
     const dir = edgeWorldDir(S.engine, ei, frames);
-    const tailAttach = a.pos.clone().addScaledVector(dir, +a.r);
-    const headAttach = b.pos.clone().addScaledVector(dir, -b.r);
+    // Each frame carries its own attachR — the outer equator for ring
+    // nodes (r + RING_TUBE) and the sphere surface (r) for 3D nodes.
+    const tailAttach = a.pos.clone().addScaledVector(dir, +a.attachR);
+    const headAttach = b.pos.clone().addScaledVector(dir, -b.attachR);
     const isStub = shouldStub(S.engine, ei);
 
     const halves = [];
@@ -575,7 +657,10 @@ function buildGraph() {
         { ...headHalf, label: makeLabel(), end: 'head' },
       );
     } else {
-      const stubLen = Math.max(0.05, (S.edgeLen - S.nodeDiam) * STUB_FRACTION);
+      // Stub length = half the visible tube length, so two stubs add up to
+      // one complete edge tube (visually telling the eye "this would be
+      // the wrap edge, halved at each boundary").
+      const stubLen = Math.max(0.05, S.edgeLen * STUB_FRACTION);
       // tail stub: extends in +dir (outward at tail boundary)
       const tailFar = tailAttach.clone().addScaledVector(dir, stubLen);
       const tailHalf = buildHalfMesh(tailAttach, tailFar,
@@ -781,7 +866,7 @@ function fitCamera() {
     minZ = Math.min(minZ, f.pos.z); maxZ = Math.max(maxZ, f.pos.z);
   }
   const cx = (minX + maxX) / 2, cy = (minY + maxY) / 2, cz = (minZ + maxZ) / 2;
-  const extent = Math.max(maxX - minX, maxY - minY, maxZ - minZ) + S.edgeLen;
+  const extent = Math.max(maxX - minX, maxY - minY, maxZ - minZ) + cellPitch();
   const d = Math.max(2.5, extent * 0.85);
   camera.position.set(cx, cy + d * 0.55, cz + d * 1.1);
   controls.target.set(cx, cy, cz);
@@ -794,13 +879,19 @@ function updateInfo() {
   let topo;
   if (S.dim === 1) {
     topo = `1D · ${S.periodic ? 'periodic' : 'open'}${S.wrap ? ' · ring' : ''} · N=${S.N}`;
-  } else {
+  } else if (S.dim === 2) {
     const px = S.periodic_x ? 'X' : '';
     const py = S.periodic_y ? 'Y' : '';
     const pflag = (px || py) ? `periodic ${px}${py}` : 'open';
     const k = S.Ny / (2 * S.Nx);
     const toroidal = isTorusLayout() ? ` · torus (k=${k})` : '';
     topo = `2D hex · ${pflag} · ${S.Nx}×${S.Ny}${toroidal}`;
+  } else {
+    const px = S.periodic_x ? 'X' : '';
+    const py = S.periodic_y ? 'Y' : '';
+    const pz = S.periodic_z ? 'Z' : '';
+    const pflag = (px || py || pz) ? `periodic ${px}${py}${pz}` : 'open';
+    topo = `3D diamond · ${pflag} · ${S.Nx}×${S.Ny}×${S.Nz}`;
   }
   $('info').textContent =
     `${topo} · nodes=${S.engine.nodes.length} · edges=${S.engine.edges.length}` +
@@ -867,11 +958,19 @@ function syncControls() {
   $('cb-wrap').checked = S.wrap;
   $('in-Nx').value     = S.Nx;
   $('in-Ny').value     = S.Ny;
-  // Ny step/min track Nx so up/down arrows produce valid (closeable) values.
-  $('in-Ny').step      = String(2 * S.Nx);
-  $('in-Ny').min       = String(2 * S.Nx);
+  // In 2D, Ny step/min track Nx so up/down arrows produce closeable values.
+  // In 3D, Ny is unconstrained.
+  if (S.dim === 2) {
+    $('in-Ny').step    = String(2 * S.Nx);
+    $('in-Ny').min     = String(2 * S.Nx);
+  } else {
+    $('in-Ny').step    = '1';
+    $('in-Ny').min     = '2';
+  }
+  $('in-Nz').value     = S.Nz;
   $('cb-px').checked   = S.periodic_x;
   $('cb-py').checked   = S.periodic_y;
+  $('cb-pz').checked   = S.periodic_z;
   $('sel-preset').value = '';
   $('sl-diam').value   = S.nodeDiam;  $('v-diam').textContent = S.nodeDiam.toFixed(2);
   $('sl-edge').value   = S.edgeLen;   $('v-edge').textContent = S.edgeLen.toFixed(2);
@@ -887,11 +986,20 @@ function applyDimVisibility() {
   for (const el of document.querySelectorAll('.dim-1d')) {
     el.style.display = (d === 1) ? '' : 'none';
   }
-  for (const el of document.querySelectorAll('.dim-2d')) {
-    el.style.display = (d === 2) ? '' : 'none';
+  for (const el of document.querySelectorAll('.dim-23')) {
+    el.style.display = (d === 2 || d === 3) ? '' : 'none';
   }
-  // Presets are 1D-only for now; 2D MVP relies on click-to-set.
-  $('sel-preset').disabled = (d !== 1);
+  for (const el of document.querySelectorAll('.dim-3d')) {
+    el.style.display = (d === 3) ? '' : 'none';
+  }
+  refreshPresetList();
+}
+
+function refreshPresetList() {
+  const sel = $('sel-preset');
+  const names = engineListPresets(S.dim);
+  sel.innerHTML = '<option value="">—</option>' +
+    names.map(n => `<option value="${n}">${PRESET_LABEL[n] || n}</option>`).join('');
 }
 
 function rebuildGraphFromState() {
@@ -938,24 +1046,43 @@ $('in-Nx').oninput = e => {
   n = Math.max(2, Math.min(32, n));
   if (n === S.Nx) return;
   S.Nx = n;
-  S.Ny = snapNy(S.Nx, S.Ny);
-  $('in-Ny').value = S.Ny;
+  if (S.dim === 2) {
+    // 2D: re-snap Ny to the new Nx's closeable multiples.
+    S.Ny = snapNy(S.Nx, S.Ny);
+    $('in-Ny').value = S.Ny;
+  }
   rebuildGraphFromState();
   fitCamera();
 };
 $('in-Ny').oninput = e => {
   let n = parseInt(e.target.value, 10);
   if (!Number.isFinite(n)) return;
-  const snapped = snapNy(S.Nx, n);
-  if (snapped === S.Ny) return;
-  S.Ny = snapped;
-  // Reflect the snapped value back to the input so the user sees what landed.
-  $('in-Ny').value = S.Ny;
+  if (S.dim === 2) {
+    // Snap to nearest closeable Ny.
+    const snapped = snapNy(S.Nx, n);
+    if (snapped === S.Ny) return;
+    S.Ny = snapped;
+    $('in-Ny').value = S.Ny;
+  } else {
+    n = Math.max(2, Math.min(256, n));
+    if (n === S.Ny) return;
+    S.Ny = n;
+  }
+  rebuildGraphFromState();
+  fitCamera();
+};
+$('in-Nz').oninput = e => {
+  let n = parseInt(e.target.value, 10);
+  if (!Number.isFinite(n)) return;
+  n = Math.max(2, Math.min(10, n));
+  if (n === S.Nz) return;
+  S.Nz = n;
   rebuildGraphFromState();
   fitCamera();
 };
 $('cb-px').onchange = e => { S.periodic_x = e.target.checked; rebuildGraphFromState(); };
 $('cb-py').onchange = e => { S.periodic_y = e.target.checked; rebuildGraphFromState(); };
+$('cb-pz').onchange = e => { S.periodic_z = e.target.checked; rebuildGraphFromState(); };
 $('sel-preset').onchange = e => {
   const name = e.target.value;
   if (!name) return;

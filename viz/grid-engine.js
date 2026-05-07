@@ -112,6 +112,68 @@ export function build2D(nx, ny, { periodic_x = false, periodic_y = false } = {})
   return state;
 }
 
+/* Diamond lattice basis chosen so every A→B edge has unit length.
+ * Cubic lattice constant a = 4/√3 makes |d_AB| = a·√3/4 = 1.
+ * Primitive FCC vectors: a₁ = (0, 1, 1)·a/2, a₂ = (1, 0, 1)·a/2, a₃ = (1, 1, 0)·a/2.
+ * B-atom offset within primitive cell: (1, 1, 1)·a/4 = (1, 1, 1)/√3. */
+const DIA_A1 = [0,        2 / SQRT3, 2 / SQRT3];
+const DIA_A2 = [2 / SQRT3, 0,        2 / SQRT3];
+const DIA_A3 = [2 / SQRT3, 2 / SQRT3, 0       ];
+const DIA_DAB = [1 / SQRT3, 1 / SQRT3, 1 / SQRT3];
+// 4 edge displacement classes (each unit length):
+const DIA_E0 = [ 1 / SQRT3,  1 / SQRT3,  1 / SQRT3];   // A → B(i,   j,   k  )
+const DIA_E1 = [ 1 / SQRT3, -1 / SQRT3, -1 / SQRT3];   // A → B(i-1, j,   k  )  ( = +d_AB − a₁ )
+const DIA_E2 = [-1 / SQRT3,  1 / SQRT3, -1 / SQRT3];   // A → B(i,   j-1, k  )  ( = +d_AB − a₂ )
+const DIA_E3 = [-1 / SQRT3, -1 / SQRT3,  1 / SQRT3];   // A → B(i,   j,   k-1)  ( = +d_AB − a₃ )
+
+/**
+ * 3D diamond lattice of nx × ny × nz primitive cells. Two sublattices
+ * A, B per cell; each A connects to 4 B-neighbors along the four
+ * tetrahedral directions (109.5° apart).  Coordination 3D-interior = 4.
+ *
+ * Independent periodicity per axis: periodic_x, periodic_y, periodic_z.
+ */
+export function build3D(nx, ny, nz, {
+  periodic_x = false, periodic_y = false, periodic_z = false,
+} = {}) {
+  if (nx < 2 || ny < 2 || nz < 2) {
+    throw new Error('build3D: nx, ny, and nz must each be at least 2');
+  }
+  const wrap = (v, n) => ((v % n) + n) % n;
+  const A = (i, j, k) => 2 * (wrap(k, nz) * nx * ny + wrap(j, ny) * nx + wrap(i, nx));
+  const B = (i, j, k) => A(i, j, k) + 1;
+
+  const N = 2 * nx * ny * nz;
+  const state = makeEmptyState(N, {
+    kind: '3D-diamond', nx, ny, nz, periodic_x, periodic_y, periodic_z,
+  });
+
+  for (let k = 0; k < nz; k++) {
+    for (let j = 0; j < ny; j++) {
+      for (let i = 0; i < nx; i++) {
+        const ox = i * DIA_A1[0] + j * DIA_A2[0] + k * DIA_A3[0];
+        const oy = i * DIA_A1[1] + j * DIA_A2[1] + k * DIA_A3[1];
+        const oz = i * DIA_A1[2] + j * DIA_A2[2] + k * DIA_A3[2];
+        state.positions[A(i, j, k)] = [ox, oy, oz];
+        state.positions[B(i, j, k)] = [ox + DIA_DAB[0], oy + DIA_DAB[1], oz + DIA_DAB[2]];
+      }
+    }
+  }
+
+  for (let k = 0; k < nz; k++) {
+    for (let j = 0; j < ny; j++) {
+      for (let i = 0; i < nx; i++) {
+        const tail = A(i, j, k);
+        addEdge(state, tail, B(i,     j,     k    ), DIA_E0);
+        if (i > 0 || periodic_x) addEdge(state, tail, B(i - 1, j,     k    ), DIA_E1);
+        if (j > 0 || periodic_y) addEdge(state, tail, B(i,     j - 1, k    ), DIA_E2);
+        if (k > 0 || periodic_z) addEdge(state, tail, B(i,     j,     k - 1), DIA_E3);
+      }
+    }
+  }
+  return state;
+}
+
 /**
  * Y-tree: three linear arms of `armLength` nodes meeting at a central
  * coord-3 hub at index 0. Used for explicit reflection/transmission tests
@@ -138,18 +200,19 @@ export function buildYTree(armLength) {
   return state;
 }
 
-export function build3D(_nx, _ny, _nz, _opts = {}) {
-  throw new Error('build3D: not yet implemented (Step 3 of refactor)');
-}
-
 /** True if the engine-coord distance between an edge's endpoints exceeds
- *  ~1.5 lattice units, indicating a wrap-around edge. */
+ *  ~1.5 lattice units, indicating a wrap-around edge. Works for any
+ *  position dimensionality. */
 export function isWrapEdge(state, edgeIdx) {
   const e = state.edges[edgeIdx];
   const tp = state.positions[e.tail];
   const hp = state.positions[e.head];
-  const dx = hp[0] - tp[0], dy = hp[1] - tp[1];
-  return Math.hypot(dx, dy) > 1.5;
+  let d2 = 0;
+  for (let k = 0; k < tp.length; k++) {
+    const d = hp[k] - tp[k];
+    d2 += d * d;
+  }
+  return Math.sqrt(d2) > 1.5;
 }
 
 /* ── State helpers ──────────────────────────────────────── */
@@ -316,17 +379,87 @@ function presetSin(state, { amplitude = 30 } = {}) {
   }
 }
 
+/* 2D presets ────────────────────────────────────────────── */
+
+/** Single unit at the central A-node's first register. Useful as a
+ *  "click this node and watch the wavefront expand" check. */
+function preset2DCenter(state, { amplitude = 1.0 } = {}) {
+  if (state.topology.kind !== '2D-hex') {
+    throw new Error('preset 2d-center requires a 2D hex lattice');
+  }
+  clear(state);
+  const { nx, ny } = state.topology;
+  const ic = Math.floor(nx / 2), jc = Math.floor(ny / 2);
+  const cell = jc * nx + ic;
+  const aIdx = 2 * cell;
+  state.nodes[aIdx].registers[0] = amplitude;
+}
+
+/**
+ * (p, q) torus-knot standing wave on the 2D hex lattice.
+ *   p winds around the tube (minor / θ axis)
+ *   q winds around the ring (major / φ axis)
+ *
+ * For each node at (φ, θ), all of its registers are set to
+ * A·cos(q·φ + p·θ). This is a true periodic eigenmode pattern only on
+ * a fully periodic lattice (i.e., a torus when wrapped); on an open
+ * sheet it just gives a sinusoidal pattern that won't propagate cleanly.
+ *
+ * The default (p, q) = (1, 2) is the Williamson–van der Mark electron
+ * topology: once around the tube, twice around the ring.
+ *
+ * Reference: ../reference/WvM-summary.md
+ */
+function preset2DKnot(state, { amplitude = 1.0, p = 1, q = 2 } = {}) {
+  if (state.topology.kind !== '2D-hex') {
+    throw new Error('preset 2d-knot requires a 2D hex lattice');
+  }
+  clear(state);
+  const { nx, ny } = state.topology;
+  for (let idx = 0; idx < state.nodes.length; idx++) {
+    const sublat = idx & 1;
+    const cell = idx >> 1;
+    const i = cell % nx;
+    const j = (cell - i) / nx;
+    let ie = i, je = j;
+    if (sublat === 1) { ie += 1/3; je += 1/3; }
+    const phi   = TAU * (ie + je / 2) / nx;
+    const theta = TAU * je / ny;
+    const val = amplitude * Math.cos(q * phi + p * theta);
+    const regs = state.nodes[idx].registers;
+    for (let s = 0; s < regs.length; s++) regs[s] = val;
+  }
+}
+
+/* ── Preset registry ─────────────────────────────────────── */
+
 const PRESETS = {
-  'delta-L': presetDeltaL,
-  'delta-R': presetDeltaR,
-  'delta-2': presetDelta2,
-  'sin':     presetSin,
+  'delta-L':   { fn: presetDeltaL,                                          dim: 1 },
+  'delta-R':   { fn: presetDeltaR,                                          dim: 1 },
+  'delta-2':   { fn: presetDelta2,                                          dim: 1 },
+  'sin':       { fn: presetSin,                                             dim: 1 },
+  '2d-center': { fn: preset2DCenter,                                        dim: 2 },
+  'knot-1-2':  { fn: (s, o) => preset2DKnot(s, { ...o, p: 1, q: 2 }),       dim: 2 },
+  'knot-1-1':  { fn: (s, o) => preset2DKnot(s, { ...o, p: 1, q: 1 }),       dim: 2 },
+  'knot-2-1':  { fn: (s, o) => preset2DKnot(s, { ...o, p: 2, q: 1 }),       dim: 2 },
+  'knot-1-0':  { fn: (s, o) => preset2DKnot(s, { ...o, p: 1, q: 0 }),       dim: 2 },
+  'knot-0-1':  { fn: (s, o) => preset2DKnot(s, { ...o, p: 0, q: 1 }),       dim: 2 },
 };
 
 export function applyPreset(state, name, opts = {}) {
-  const fn = PRESETS[name];
-  if (!fn) throw new Error(`Unknown preset: ${name}`);
-  fn(state, opts);
+  const entry = PRESETS[name];
+  if (!entry) throw new Error(`Unknown preset: ${name}`);
+  entry.fn(state, opts);
 }
 
-export function listPresets() { return Object.keys(PRESETS); }
+/** List preset names, optionally filtered to a given dimension. */
+export function listPresets(dim) {
+  const names = Object.keys(PRESETS);
+  if (dim === undefined) return names;
+  return names.filter(n => PRESETS[n].dim === dim);
+}
+
+/** Returns the dimension a preset is intended for, or undefined. */
+export function presetDim(name) {
+  return PRESETS[name]?.dim;
+}
