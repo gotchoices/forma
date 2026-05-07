@@ -30,184 +30,167 @@ The chapter is **structural rather than computational**: the math is mostly abou
 
 ## 1. The closure condition restated
 
-[Chapter 1 §10](01-foundation.md) introduced the closure condition as an axiom and presented three equivalent views of it. We restate them here so the rest of the chapter has a precise target.
+[Chapter 1 §10](01-foundation.md) introduced the closure condition as an axiom in synchronization form. We restate it here precisely so the rest of the chapter has a clean target.
 
-> **Closure condition (phase-pattern view).** A wave configuration on the 2D sheet promotes its mass mode to a charge mode when, during a single closed traversal of its phase pattern, **both** of the following are satisfied:
+> **Closure condition (synchronization).** A wave configuration on the 2D sheet promotes a (massive) mode to a charged-state mode when, during a single closed traversal of T(m, n), every time the tube-direction phase crosses zero, the ring-direction phase also crosses zero.
 >
-> 1. The phase completes a full **2π winding on w**.
-> 2. The phase completes a **complete standing wave** (full period — node-to-antinode-to-node) on **both u and w**.
+> Operationally: parametrize the traversal by s ∈ [0, 1] with u(s) = m·s·L_u and w(s) = n·s·L_w. The tube crosses zero (modulo L_u) at s = j/m for j = 0, 1, ..., m. At each such s, the ring is at w(s) = n·j/m·L_w. For the ring to also cross zero (modulo L_w) at every such s, we need n·j/m to be an integer for every j ∈ {0, 1, ..., m}.
+>
+> **This holds iff m divides n (m | n), with both m and n nonzero.**
 
-Two other formulations are equivalent. Each becomes the "natural" framing in different downstream contexts.
+Two equivalent formulations:
 
-**Topological view** (used as a structural cross-check throughout this chapter). Per [grid-duality §7.5](../grid-duality/07-wrap-promotion-modeling.md) and [§8](../grid-duality/08-where-alpha-appears.md), the L3 2-torus has fundamental group π₁(T²) = ℤ², and integer winding numbers (w_α, w_β) ∈ ℤ² are the conserved topological invariants. The U(1) × U(1) cross-coupling structure that supports α and observable EM requires both winding directions to be active simultaneously. Closure-failed configurations have at most one active winding direction and reduce to L2 (mass without charge) embedded in an L3 substrate.
+**Phase-pattern view (the box above).** Direct geometric statement of the synchronization requirement.
 
-**Metric-side view** (developed in chapter 5; previewed in [Chapter 1 §10](01-foundation.md)). metric-mass Chapter 5 established that mass sources off-diagonal metric entries g_tu via linearized Einstein equations. On a 2D sheet, this generalizes to a richer set including g_tw, g_S₁u, g_S₂u, g_S₁w, g_S₂w. Under the standard Kaluza-Klein identification, these off-diagonals are gauge potentials A_μ and B_μ. The closure condition, in this view, is the rule under which the off-diagonals sourced by a given mode actually form a *valid* gauge-potential pattern — consistent with the gauge structure that makes them observable as EM in 4D. Closure-failed modes source off-diagonals too, but in patterns that don't satisfy gauge structure and remain internal.
+**Topological view.** The synchronization condition has a clean topological reformulation. With m | n, write n = c·m for some positive integer c. Then T(m, n) = T(m, c·m) has gcd(m, n) = m and decomposes into **m disjoint copies** of the primitive T(1, c). So:
 
-This chapter operates **primarily on the phase-pattern view**. The topological view is invoked when we need to confirm that the phase-pattern judgment is consistent with conservation of integer windings; the metric-side view is referenced but its derivation is chapter 5's job.
+> *Closure-satisfying configurations are exactly the T(1, q) primitives and their k-component repetitions k × T(1, q).*
 
----
+The two views are mathematically equivalent — both reduce to "m | n with both nonzero." The closure-satisfying inventory consists entirely of T(1, q) primitives and their multi-component repetitions; nothing else.
 
-## 2. Eligibility versus satisfaction
+**Metric-side view** is developed in chapter 5. Whether the metric-side description (off-diagonals form valid Kaluza-Klein gauge potentials) is *equivalent to* synchronization or only *implied by* it is a question chapter 5 examines. If equivalent, the framework has three mutually consistent views; if the metric-side is broader, then synchronization-failing modes (genuine torus knots) might source locally-valid gauge potentials that nevertheless fail to combine into observable EM. Chapter 5 settles which.
 
-The closure condition naturally separates into two distinct requirements that earlier chapters conflated. Distinguishing them cleanly is the structural backbone of this chapter.
-
-**Eligibility — the topological prerequisite.** A mode is eligible for closure if both its winding numbers are nonzero: m ≠ 0 and n ≠ 0. From [chapter 2 §4](02-modes-on-a-sheet.md) and [chapter 3 §7](03-knots-on-the-torus.md):
-
-| Mode | Eligibility |
-|---|---|
-| Light (0, 0) | Not eligible (no winding) |
-| Single-axis (m, 0) or (0, n) | Not eligible (one winding zero) |
-| Weak-knot diagonal T(1, q), T(p, 1) | **Eligible** (both windings nonzero, even though topological unknot) |
-| Genuine torus knot T(p, q), p,q ≥ 2, gcd = 1 | **Eligible** |
-| Multi-component link T(km, kn), gcd > 1 | **Eligible** |
-
-Eligibility is a *necessary* condition for closure. It is also the structural reason single-axis modes are candidates for neutrino-class neutrality: they fail closure not just dynamically but *structurally* — the closure condition has no path to fire on a configuration with one winding zero.
-
-**Satisfaction — the standing-wave alignment requirement.** An eligible mode *satisfies* closure if its standing-wave structure on u and w is properly aligned to lock during one closed traversal of T(m, n). This is the additional dynamical condition beyond eligibility, and §3 develops it precisely.
-
-The chapter's central question becomes: **which eligible modes actually satisfy?** The hypothesis at outline stage — to be tested through this chapter — is that under the standard closure rule of Chapter 1 §10, **all eligible modes can satisfy closure for an appropriate sub-(m, n) phase choice**. The phase choice is what §3 must pin down.
+This chapter operates **primarily on the phase-pattern / topological views** (which are equivalent for the operational rule m | n). The metric-side question is forwarded to chapter 5.
 
 ---
 
-## 3. The standing-wave alignment requirement
+## 2. The closure-satisfying inventory
 
-What does "complete standing wave on both u and w during one closed traversal" mean precisely?
+The synchronization condition is a single atomic requirement: m | n with both nonzero. Earlier chapters distinguished "eligibility" (a topological prerequisite) from "satisfaction" (a phase requirement); under the precise synchronization rule, the two collapse into one condition that's checkable per (m, n) pair.
 
-For a separable solution of the wave equation, the field factorizes:
+The closure-satisfying inventory at the linearized wave-equation level:
+
+| (m, n) form | Topology in 3-space | Closure status |
+|---|---|---|
+| Light (0, 0) | No curve | Trivially fails (no winding) |
+| Single-axis (m, 0) or (0, n) | Unknot (one cycle wrapped) | Fails (one winding zero) |
+| T(1, q) for q ≥ 1 (and the equivalent T(p, 1)) | Unknot in 3-space | **Satisfies** — m = 1 trivially divides any n |
+| Genuine torus knot T(p, q), p, q ≥ 2, gcd(p, q) = 1 | Genuine torus knot in 3-space | **Fails** — m ∤ n under the synchronization rule |
+| Multi-component link T(k, k·q) for k ≥ 2, q ≥ 1 | k-component link with primitive T(1, q) | **Satisfies** — m = k divides n = k·q |
+| Multi-component link T(k·m', k·n') with gcd(m', n') = 1 and m' ≥ 2 | k-component link with primitive a genuine torus knot | **Fails** — primitive is itself synchronization-failing |
+
+Two structural observations follow.
+
+**(a) The closure-satisfying inventory is built from T(1, q) primitives.** Every closure-satisfying configuration is either a single T(1, q) primitive or a k-component repetition k × T(1, q). Genuine torus knots and their multi-component counterparts never satisfy closure. The framework's prediction: charged matter is built from T(1, q) primitives, period.
+
+**(b) Genuine torus knots are a *third* mass-only category.** Single-axis modes fail closure because one winding is zero. Genuine torus knots (with both ≥ 2, gcd = 1) fail closure because the windings don't synchronize. These are two structurally distinct mass-only mechanisms, alongside the cancellation neutrality of [Chapter 6 §4](README.md#chapters). All three produce massive but EM-neutral states; the framework distinguishes them.
+
+The synchronization rule is **operationally precise**: any (m, n) can be checked. There is no separate "phase alignment" requirement to derive — the geometric synchronization requirement is the rule, and m | n is its mathematical statement.
+
+---
+
+## 3. Synchronization at the wave level
+
+The synchronization rule has a natural reading at the level of the separable wave-equation modes from [Chapter 2 §2](02-modes-on-a-sheet.md). For a mode at (m, n):
 
 <!-- φ(t, u, w) = T(t) · U(u) · W(w) -->
 $$
 \varphi(t, u, w) = T(t)\cdot U(u) \cdot W(w)
 $$
 
-with T(t) the temporal factor, U(u) and W(w) standing waves in their respective compact directions. For a (m, n) mode with both nonzero, we can write:
+with U(u) ∝ cos(2π m u/L_u) and W(w) ∝ cos(2π n w/L_w) (or the analogous sin / complex-exponential basis).
 
-<!-- U(u) = A_u cos(2π m u/L_u + φ_u),  W(w) = A_w cos(2π n w/L_w + φ_w) -->
+Along the closed curve T(m, n) parametrized by s ∈ [0, 1], the wave's spatial pattern on the curve is:
+
+<!-- φ_curve(s) ∝ cos(2π m² s) · cos(2π n m s · n/n) — show synchronization explicitly -->
 $$
-U(u) = A_u\cos\!\left(\frac{2\pi m\,u}{L_u} + \phi_u\right),\qquad W(w) = A_w\cos\!\left(\frac{2\pi n\,w}{L_w} + \phi_w\right)
-$$
-
-The integer winding numbers m and n are fixed by the periodicity boundary conditions ([Chapter 2 §2](02-modes-on-a-sheet.md)). The phases φ_u and φ_w are *free continuous parameters* — sub-(m, n) labels that do not affect topology but can affect closure satisfaction.
-
-### What "closed traversal" means
-
-A torus knot T(m, n) is a closed curve on the (u, w) torus that wraps m times around the u-cycle and n times around the w-cycle before closing on itself. Parametrize the curve by s ∈ [0, 1]:
-
-<!-- u(s) = m · s · L_u (mod L_u),  w(s) = n · s · L_w (mod L_w) -->
-$$
-u(s) = m\,s\,L_u \pmod{L_u}, \qquad w(s) = n\,s\,L_w \pmod{L_w}
+\varphi(\text{curve}; s) \;\propto\; \cos\!\left(2\pi\,m\,(m\,s)\right) \cdot \cos\!\left(2\pi\,n\,(n\,s)\right) = \cos(2\pi\,m^2\,s)\cdot\cos(2\pi\,n^2\,s)
 $$
 
-As s advances from 0 to 1, the curve wraps m times around u (u(s) cycles through L_u m times) and n times around w. At s = 1, the curve closes upon itself.
+(Here m and n appear in the *winding* direction of the parametrization, so u(s) = m·s·L_u contributes a factor cos(2π m · m s) = cos(2π m² s), and similarly for w.)
 
-### The alignment requirement
+The product traces a pattern with mn-related node structure. The closure-relevant question: at the s-values where U has a zero, does W also have a zero?
 
-Along the curve, U(u) and W(w) cycle through their standing-wave patterns:
+U(u(s)) = 0 when 2π m² s = π/2 + k·π for integer k, i.e., when m² s = (2k+1)/4. *Tube zero crossings of the carrier wave* on the curve happen at these s-values.
 
-- U(u(s)) cycles through m periods of cos(·) as s goes from 0 to 1.
-- W(w(s)) cycles through n periods of cos(·) as s goes from 0 to 1.
+For W to simultaneously be zero, we need 2π n² s = π/2 + l·π for some integer l, i.e., n² s = (2l+1)/4 with the same s.
 
-Together, the product U(u(s)) · W(w(s)) is a function of s that has mn nodes/antinodes structure. The closure condition's "node-to-antinode-to-node" requirement on both u and w means: at each point of the closed traversal, the phases of U and W are consistent — they trace out a pattern that closes on itself in lockstep.
+Solving for the rational s = (2k+1)/(4m²) to also satisfy n² s = (2l+1)/4: requires n² · (2k+1)/(4m²) = (2l+1)/4, i.e., **n²(2k+1) / m² = 2l+1**. This is satisfiable for integer l iff m² divides n² for all k — equivalently, **m | n**.
 
-The alignment locks when:
+So the wave-level synchronization analysis gives the same condition as the geometric tube/ring-zero-crossing analysis from §1: **m | n**. The two analyses agree.
 
-<!-- φ_u + φ_w = 0 (mod π) -->
-$$
-\phi_u + \phi_w \;=\; 0 \pmod{\pi}
-$$
+For an alternative wave basis (sin instead of cos, or a phase-shifted cos), the condition is the same — synchronization is a property of the wave's *winding* on the curve, not of any specific phase choice. There is no "centered alignment" requirement separate from m | n; the synchronization rule itself does not pick out a sub-(m, n) phase parameter.
 
-This is the **centered alignment**. The phases are antinodal-to-antinodal; nodes coincide; the standing-wave product on T(m, n) traces a clean closed pattern. Any other choice of (φ_u, φ_w) corresponds to a *shifted alignment* where the closure pattern is offset.
-
-### Centered vs shifted alignment
-
-For the standard closure rule of Chapter 1 §10:
-
-- **Centered alignment** (φ_u + φ_w = 0 mod π): closure satisfied. The mode produces a valid charged state.
-- **Shifted alignment** (other phase choices): closure pattern does not lock. The mode is eligible (both windings nonzero) but does not fire closure. Chapter 5's metric-side picture will show that shifted alignments source off-diagonals that *don't* form a valid gauge potential — confirming the phase-pattern judgment from the metric side.
-
-The sub-(m, n) phase label introduced in [Chapter 3 §4.3](03-knots-on-the-torus.md) is exactly this (φ_u + φ_w mod π) value. It is not a topological invariant — two modes with the same (m, n) but different phases trace the same knot type T(m, n) — but it determines closure satisfaction.
-
-In practice, the wave equation does not pick a preferred phase; the choice is set by the field's preparation (initial conditions). The framework's claim is that *centered alignment is what produces observable EM in 4D*; other alignments produce internal modes that don't couple to spacetime EM and behave like additional mass-only states.
+This collapses what was previously a two-step "eligibility plus satisfaction" framing into a single atomic condition. Whether m | n holds depends only on the integer pair (m, n), not on continuous phase parameters.
 
 ---
 
-## 4. Which (m, n) satisfy closure (under the standard rule)
+## 4. Which (m, n) satisfy closure under synchronization
 
-Walk through the three eligible classes from [Chapter 3 §7](03-knots-on-the-torus.md), determining which (m, n) values within each class satisfy closure at centered alignment.
+Walk through the configurations from [Chapter 3 §7](03-knots-on-the-torus.md), checking each against m | n.
 
-### 4.1 Weak-knot diagonal — T(1, q) and T(p, 1) with both nonzero
+### 4.1 T(1, q) primitives — closure-satisfying
 
-This class consists of modes where one winding is exactly 1 and the other is any nonzero integer. Topologically, all such curves are the **unknot** in 3-space. But the modes are physically distinct — different (m, n), different masses, different compact-direction momenta.
-
-For closure under the standard rule:
-
-- **(1, q) with q ≠ 0:** m = 1, n = q. Both nonzero. Standing waves on both u (m = 1 period) and w (q periods). Closure: **satisfied** at centered alignment.
-- **(p, 1) with p ≠ 0:** m = p, n = 1. Same analysis with cycles swapped. Closure: **satisfied** at centered alignment.
+Modes with m = 1 (or by convention symmetry the equivalent m = n form with the roles relabeled). Topologically, all such curves are the **unknot** in 3-space. Under synchronization: **m = 1 trivially divides any n**, so closure is satisfied for every q.
 
 Notable members:
 
-- **(1, 2)**: a closure-eligible weak-knot diagonal mode. MaSt model-F (per [matter-from-light §4](../../papers/matter-from-light.md)) has independently proposed identifying this mode with what standard physics calls the electron, via the geometric derivation of spin-1/2 from the 1:2 winding ratio: ℓ = E/ω = ℏ/2. The framework here treats that proposal as a candidate correspondence — a reference target to compare results against — not an axiomatic input. The mode itself is a topologically trivial unknot with conserved (m, n) = (1, 2) labels; whether the framework's predictions for this mode (mass, charge, spin, magnetic moment, ...) match what standard physics calls "the electron" under detailed property comparison is downstream MaSt-correspondence work.
-- **(1, 3), (1, 4), ...**: closure-eligible weak-knot modes with progressively larger n. Heavier than (1, 2) by the rest-mass formula of [Chapter 2 §3](02-modes-on-a-sheet.md). Candidate states that *might* correspond to what standard physics calls further-generation leptons; the identification is open.
-- **(2, 1), (3, 1), ...**: cycle-swapped versions. Topologically equivalent to the above (T(p, q) ≡ T(q, p)) but physically distinct in metric-charge per [Chapter 3 §3.2](03-knots-on-the-torus.md) — different (m, n) labels, conserved as different sectors. Whether they correspond to the same particles as their (1, q) counterparts is a chapter 5 / convention question.
+- **(1, 2)**: a closure-satisfying T(1, 2) primitive. MaSt model-F (per [matter-from-light §4](../../papers/matter-from-light.md)) has independently proposed identifying this mode with what standard physics calls the electron, via the geometric derivation of spin-1/2 from the 1:2 winding ratio: ℓ = E/ω = ℏ/2. The framework here treats that proposal as a candidate correspondence — a reference target to compare results against — not an axiomatic input. Whether the framework's predictions for this mode match what standard physics calls "the electron" under detailed property comparison is downstream MaSt-correspondence work.
+- **(1, 3), (1, 4), ...**: closure-satisfying primitives with progressively larger n. Heavier than (1, 2) by the rest-mass formula of [Chapter 2 §3](02-modes-on-a-sheet.md). Candidate states that *might* correspond to what standard physics calls further-generation leptons; the identification is open.
 
-### 4.2 Genuine-knot diagonal — T(p, q) with p, q ≥ 2, gcd(p, q) = 1
+These are the framework's primitive charged states. Every closure-satisfying configuration is built from T(1, q) primitives — either as a singleton (this section) or as a multi-component repetition (§4.3).
 
-This class consists of modes where both windings are at least 2 and share no common factor. Topologically these are **genuine torus knots** in 3-space, with non-trivial crossing number.
+### 4.2 Genuine torus knots T(p, q), p, q ≥ 2, gcd(p, q) = 1 — closure-failing
 
-For closure under the standard rule:
+Modes with both windings at least 2 and no common factor. Topologically these are genuine torus knots in 3-space, with non-trivial crossing number.
 
-- All such (p, q) have m = p ≠ 0 and n = q ≠ 0. Standing waves on both directions cycle through p and q periods respectively during traversal.
-- Closure: **satisfied** at centered alignment.
+Under synchronization: **m = p does not divide n = q** (since gcd(p, q) = 1 and p ≥ 2 forces p ∤ q). So **closure fails** for every genuine torus knot.
 
-Notable members:
+Examples:
 
-- **(2, 3) trefoil**: simplest genuine torus knot, crossing number 3.
-- **(2, 5) cinquefoil**: c = 5.
-- **(3, 4)**: c = 8.
-- **(3, 5)**: c = 10.
-- **(2, 7), (3, 7), (4, 5), ...**: increasingly complex genuine torus knots.
+- **(2, 3) trefoil**: 2 ∤ 3, fails. The trefoil is mass-only.
+- **(2, 5) cinquefoil**: 2 ∤ 5, fails. Mass-only.
+- **(3, 4)**: 3 ∤ 4, fails. Mass-only.
+- **(3, 5), (2, 7), (3, 7), (4, 5), ...**: all genuine torus knots fail synchronization. Mass-only.
 
-The candidate organization here is **crossing-number tiers**. Each tier is a class of torus knots at a fixed range of crossing numbers; particles in the inventory might organize by tier. Whether tier-organized states correspond to what standard physics calls particle generations is a question for chapter 7 (where aspect-ratio dependence selects which (m, n) dominate) and downstream MaSt-correspondence work. MaSt model-F has not yet proposed specific identifications for the genuine-knot diagonal class.
+Genuine torus knots are a **third category of mass-only modes**, structurally distinct from single-axis (which fail by missing a winding) and from cancellation pairs (which fail by internal sign-cancellation, [Chapter 6 §4](06-handedness-and-pairs.md)). These modes have both windings nonzero but don't synchronize — the off-diagonals they source under linearized Einstein equations may form locally-coherent gauge-potential patterns (the chapter-5 metric-side analysis examines this) but the configuration as a whole does not produce observable EM coupling.
 
-### 4.3 Multi-component link — T(km, kn) with gcd(m, n) = 1, k > 1
+This is a substantive framework prediction: **the entire genuine-torus-knot tower** (T(2, 3), T(2, 5), T(3, 4), T(3, 5), T(2, 7), ...) **carries mass but no charge.** Whether any of these correspond to standard physics' neutral massive states (neutrinos, neutral mesons, dark-matter candidates, the Higgs) is downstream MaSt-correspondence work. The framework provides multiple structural-neutrality mechanisms; standard physics has multiple categories of neutral massive states; how they map is open.
 
-This class consists of modes whose winding numbers share a common factor k > 1. Topologically, T(km, kn) is **k disjoint copies** of the primitive T(m, n), arranged as a k-component link with each component shifted by 1/k of a cycle.
+### 4.3 Multi-component links — closure-satisfying iff primitive is T(1, q)
 
-For closure under the standard rule:
+Multi-component links T(k·m', k·n') decompose into k disjoint copies of the primitive T(m', n') with gcd(m', n') = 1. Two cases:
 
-- Each component has (km, kn) windings and is a phased copy of T(m, n).
-- The full configuration consists of all k components together.
-- Closure: **satisfied collectively**, with k-fold phase distribution along the shared cycle.
+**4.3a Closure-satisfying: T(k, k·q) = k × T(1, q).** When the primitive is T(1, q) — i.e., m' = 1 — the multi-link has total winding (k, k·q) with m = k dividing n = k·q. Synchronization is satisfied.
 
-The closure-rule analysis on multi-component links is the substrate for **chapter 8's fractional-charge mechanism**. k phased copies of the same primitive knot produce a configuration where each phase slot carries 1/k of the primitive's charge. This is the structural origin of quark-like fractional charge on a single sheet.
+These are the framework's **multi-link charged states**: k phased copies of a T(1, q) primitive, with each component carrying 1/k of the link's total charge (per the closure-rule analysis here, with the integer-quantization consistency argued in chapter 8).
 
-Notable members:
+Examples:
 
-- **(3, 6) = 3 × (1, 2)**: three phased copies of the (1, 2) primitive. Each component carries 1/3 of the primitive's charge. Candidate identification with what standard physics calls a quark — specifically, the down-flavor family, if MaSt model-F's proposed (1, 2) ↔ electron correspondence holds.
-- **(2, 4) = 2 × (1, 2)**: two phased copies of (1, 2). Each carries 1/2 the primitive's charge. No clear standard-physics counterpart; whether such states are stable or transient is a chapter 8 question.
-- **(4, 6) = 2 × (2, 3)**: two phased copies of the trefoil. Each carries 1/2 the trefoil's charge. Standard-physics correspondence open.
+- **(3, 6) = 3 × T(1, 2)**: three phased copies of the (1, 2) primitive. Each component carries 1/3 of the primitive's charge. Candidate identification with what standard physics calls a quark — specifically, a flavor family proportional to model-F's proposed (1, 2) ↔ electron correspondence.
+- **(2, 4) = 2 × T(1, 2)**: two phased copies of (1, 2). Each carries 1/2 of the primitive's charge. No obvious standard-physics counterpart; whether such states are stable or transient is a chapter 8 question.
+- **(3, 9) = 3 × T(1, 3)**: three phased copies of the heavier (1, 3) primitive.
+
+**4.3b Closure-failing: k × T(p, q) with primitive a genuine torus knot.** When the primitive is a genuine torus knot (p, q ≥ 2, gcd = 1), the multi-link has total winding (k·p, k·q) with m = k·p and n = k·q. Synchronization requires m | n, i.e., k·p | k·q, i.e., p | q — but gcd(p, q) = 1 and p ≥ 2 means p ∤ q. So synchronization **fails**.
+
+Example: T(4, 6) = 2 × T(2, 3). Two phased copies of the trefoil. The link inherits the trefoil's synchronization-failure: 4 ∤ 6 (since 6/4 = 1.5). Mass-only.
+
+So every multi-link configuration is closure-satisfying iff its primitive is T(1, q). Multi-links with genuine-torus-knot primitives are mass-only, in the same category as single genuine torus knots from §4.2.
 
 ### 4.4 Summary table
 
-The predicted charged-state inventory under the standard closure rule:
+The full inventory at the linearized wave-equation level:
 
-| Class | (m, n) example | Closure | Charge per component | External-identification proposals (model-F, exploratory) |
-|---|---|---|---|---|
-| Weak-knot diagonal | (1, 2) | ✓ | 1 | candidate electron (model-F per matter-from-light §4) |
-| Weak-knot diagonal | (1, 3), (1, 4), … | ✓ | 1 | candidate further leptons; not yet specifically proposed |
-| Genuine-knot diagonal | (2, 3) | ✓ | 1 | candidate hadronic state; no specific model-F proposal |
-| Genuine-knot diagonal | (2, 5), (3, 4), … | ✓ | 1 | candidate heavier hadrons; no specific model-F proposal |
-| Multi-component link | (3, 6) = 3 × (1, 2) | ✓ (3-fold) | 1/3 | candidate quark (down-flavor family if (1, 2) ↔ electron holds) |
-| Multi-component link | (2, 4) = 2 × (1, 2) | ✓ (2-fold) | 1/2 | no clear standard-physics counterpart |
+| (m, n) form | Closure | Charge per component | External-identification proposals (model-F, exploratory) |
+|---|---|---|---|
+| Light (0, 0) | Fails | — | photon |
+| Single-axis (m, 0), (0, n) | Fails (one winding zero) | — | candidate neutral massive state |
+| T(1, 2) primitive | ✓ | 1 | candidate electron (model-F per matter-from-light §4) |
+| T(1, 3), T(1, 4), … primitives | ✓ | 1 | candidate further leptons; not yet specifically proposed |
+| Genuine torus knot T(2, 3), T(2, 5), T(3, 4), … | **Fails (synchronization)** | — | candidate neutral massive state — distinct from single-axis category |
+| Multi-link T(k, k·q) = k × T(1, q), k ≥ 2 | ✓ (k-fold) | 1/k | candidate quark (k = 3, q = 2) and other multi-link states |
+| Multi-link with genuine-knot primitive | **Fails (synchronization)** | — | candidate neutral massive state — synchronization-failure category |
 
-The external-identifications column is **exploratory and not an input to this project's derivations**. Chapter 4 establishes only that closure is satisfied; whether each predicted state corresponds to a particle in the standard-physics inventory requires:
+The external-identifications column is **exploratory and not an input to this project's derivations**. Chapter 4 establishes only the closure-satisfaction structure; whether each predicted state corresponds to a particle in the standard-physics inventory requires:
 
 - Aspect-ratio analysis (chapter 7) to determine which (m, n) values are stable on the sheet.
-- Shear analysis (chapter 8) to determine which multi-component links produce three-phase structure.
+- Shear analysis (chapter 8) to determine which multi-component links are favored under shear.
 - Multi-knot energetics (metric-binding) to determine binding and composition.
-- MaSt-correspondence work (downstream) to compare metric-charge's inventory against MaSt model-F's identifications and against the standard-physics inventory.
+- MaSt-correspondence work (downstream) to compare metric-charge's inventory against standard-physics inventory.
 
-The framework's job in this chapter is to **derive the inventory of states the closure condition produces**, not to assert which standard-physics particles those states correspond to. Identification is a comparison task that happens *after* the framework has predicted its own properties for each state.
+The framework's job in this chapter is to **derive the inventory of states the closure condition produces**. Identification is a comparison task that happens *after* the framework has predicted its own properties.
+
+**Note on category richness.** The framework now has *three* mass-only categories (single-axis, genuine-torus-knot, cancellation-pair) and *two* charge-carrying categories (T(1, q) primitives, T(k, k·q) multi-links). Standard physics has multiple categories of charged particles (leptons, quarks, charged hadrons) and multiple categories of neutral massive states (neutrinos, neutral mesons, dark matter candidates, Higgs). The structural-shape correspondence is suggestive — the framework may have richer structural distinctions than a simpler "charged vs neutral" partition — but quantitative correspondence is downstream work.
 
 ---
 
@@ -215,99 +198,101 @@ The framework's job in this chapter is to **derive the inventory of states the c
 
 [Chapter 1 §10](01-foundation.md) flagged three open variants of the closure rule. Each gives a different particle inventory; examining each here helps identify what the standard rule actually buys us.
 
-### 5.1 Variant — 2π winding on u instead of w
+### 5.1 Variant — synchronization with cycles swapped
 
-The standard rule singles out w as the direction whose 2π winding is required. The mirror version singles out u: closure requires 2π winding on u, with standing waves on both u and w.
+The standard rule treats w as tube (the direction whose synchronization defines closure). The mirror variant treats u as tube: closure requires **n | m** instead of m | n.
 
-**Topologically**, this gives the same particles as the standard rule — T(p, q) ≡ T(q, p) per [Chapter 3 §3.2](03-knots-on-the-torus.md). At the abstract knot level, the variant and the standard rule are equivalent.
+**Topologically** this gives the same set of particles modulo cycle-swap: T(p, q) under "n | m" is the same as T(q, p) under "m | n." But the two are physically distinct in metric-charge per [Chapter 3 §3.2](03-knots-on-the-torus.md), since the (u, w) ↔ (w, u) symmetry is broken by the wrap-order convention adopted in [Chapter 1 §10](01-foundation.md) and the downstream conventions that inherit from it.
 
-**Physically**, the variant gives a *different* sub-family in metric-charge. The four conventions of [Chapter 3 §3.2](03-knots-on-the-torus.md) (closure asymmetry, aspect-ratio convention, shear, gauge convention) break the (u, w) ↔ (w, u) symmetry, so the variant's inventory is not metric-equivalent to the standard rule's.
+The variant is the alternative wrap-order convention. As discussed in Ch 1 §10, whether the convention's match to observation is genuine or is itself a labeling choice the math fixes for self-consistency is open work for [grid-duality §8](../grid-duality/08-where-alpha-appears.md).
 
-Whether u and w roles are unified at a deeper level — making the two variants physically indistinguishable — is a chapter 5 / [grid-duality §8](../grid-duality/08-where-alpha-appears.md) question. At present, the framework treats them as distinct conventional choices that lead to mirror-image physics.
+### 5.2 Variant — single-axis closure
 
-### 5.2 Variant — standing wave on only one direction
-
-A weaker rule: closure requires only a *complete standing wave on one direction* (say w), without requiring it on the other. The 2π-winding-on-w requirement is preserved.
+A weaker rule: closure requires only that one specific winding be nonzero, without the synchronization condition. Equivalently: closure ≡ "n ≠ 0" alone.
 
 Under this variant:
 
-- **Single-axis modes (0, n)** would satisfy closure: they have standing waves on w (n periods) and 2π winding on w; the absence of standing wave on u is no longer disqualifying.
-- **All eligible diagonal modes** continue to satisfy.
+- **Single-axis modes (0, n)** would satisfy closure (one winding nonzero, no synchronization needed).
+- **All other modes with n ≠ 0** would also satisfy.
+- **Modes with n = 0** (light, single-axis (m, 0)) would fail.
 
-Implication: the **L2-in-L3 structural neutrino-class candidate disappears**. Single-axis modes would carry observable charge under this rule. This is inconsistent with the framework's commitment to neutrino-class neutrality being a structural feature of single-axis modes.
+Implication: the framework's structural-neutrality category for single-axis modes disappears partially — (0, n) would carry observable EM. This is inconsistent with the framework's prediction of structurally neutral mass-only modes. The variant is therefore likely incorrect; the synchronization rule's two-winding requirement is what produces the structural-neutrality category.
 
-The variant is therefore likely **incorrect as a model of observable physics**. Including it as a candidate at all is just a sanity check: the standard rule's requirement of standing waves on *both* directions is what makes single-axis modes structurally neutral. Without that requirement, the structural neutrality story collapses.
+### 5.3 Variant — multi-knot collective synchronization
 
-### 5.3 Variant — multi-knot collective closure
+A different kind of variant: synchronization can be satisfied *collectively* by a configuration of multiple knots even when no single knot satisfies it. For example, a (1, 0) mode and a (0, 1) mode together have all the necessary windings collectively, even though neither single mode satisfies the closure condition individually.
 
-A different kind of variant: closure can be satisfied *collectively* by a configuration of multiple knots even when no single knot satisfies it. For example, a (1, 0) mode and a (0, 1) mode together cover both windings, even though neither single mode does.
+Whether this collective form of closure is meaningful — and whether it would give the same physics as a single closure-satisfying mode — depends on the field-theoretic interactions between the components. At the linear level (this project's scope), modes superpose without interaction and the "collective closure" idea is not well-defined as a wave-equation concept.
 
-This variant is not the closure rule of Chapter 1 §10, but it is structurally interesting:
+The variant becomes meaningful in [metric-binding](../metric-binding/)'s territory, where multi-knot interactions are the explicit subject of analysis. As a candidate description of *bound states* like atoms — composite particles whose closure-like behavior derives from interactions between non-closure-satisfying components — this variant is forwarded to metric-binding for treatment.
 
-- Two single-axis modes — each individually neutrino-class on its own — that collectively become charge-carrying when paired.
-- The pair would have observable EM signatures even though each individual mode is internal.
-- This is a candidate description of **bound states** like atoms — composite particles whose closure derives from the collective wrapping rather than from any individual constituent.
-
-Variant 5.3 connects directly to [metric-binding](../metric-binding/)'s bound-state regimen. Chapter 5 of metric-charge will not pursue it (its job is the gauge-promotion analysis for individual mode closure); it is forwarded to metric-binding for full treatment.
-
-The structural takeaway: variant 5.3 suggests a *second tier* of physical particles beyond the single-mode inventory — composites built from collectively-closing combinations of L2-in-L3 single-axis modes. Whether this corresponds to observed atomic / nuclear / hadronic bound states is a downstream MaSt-correspondence question.
+The structural takeaway: variant 5.3 suggests a *second tier* of physical configurations beyond the single-mode inventory — composite structures built from interacting non-closure components. Standard physics' atomic / nuclear / hadronic bound states are candidates; whether the variant correctly describes any of them is a downstream MaSt-correspondence question.
 
 ---
 
 ## 6. The distinguished particle inventory
 
-Under the standard closure rule of Chapter 1 §10, the predicted inventory partitions into two: charged states and neutral states.
+Under the synchronization closure rule, the predicted inventory partitions into two top-level categories: charged states and neutral massive states. The neutral category subdivides into three structurally distinct mechanisms.
 
-### 6.1 Charged states
+### 6.1 Charged states (closure-satisfying)
 
-- **Weak-knot diagonal modes** T(1, q), T(p, 1) — single charged particles with topological-unknot structure but nonzero windings in both directions. Electron candidate at T(1, 2); further leptons or heavier-generation particles at T(1, 3), T(1, 4), etc.
+- **T(1, q) primitives** — single charged particles built from the simplest closure-satisfying winding (m = 1 trivially divides any n). Topologically unknots in 3-space. (1, 2) is a candidate electron identification (model-F per matter-from-light §4); (1, 3), (1, 4), ... are candidate further generations.
 
-- **Genuine torus knots** T(p, q) with p, q ≥ 2 — heavier charged particles with non-trivial topology. Trefoil T(2, 3) and the tower above it. The framework predicts a tower of charged states organized by crossing-number tier; whether they correspond to what standard physics calls hadrons / proton-class particles or to particle generations is a downstream MaSt-correspondence question, not a determination of this chapter.
+- **Multi-link T(k, k·q) configurations = k × T(1, q)** — k phased copies of a T(1, q) primitive, with each component carrying 1/k of the link's total charge. (3, 6) = 3 × T(1, 2) at k = 3 is a candidate quark identification.
 
-- **Multi-component links** T(km, kn) with gcd > 1 — fractional-charge configurations. Three-phase distribution of T(km, kn) = k × T(m, n) gives 1/k charge per component. Quark candidate at T(3, 6); other multi-link configurations may correspond to less-observed exotic states.
+That's the entire charged inventory: T(1, q) primitives and their k-component repetitions. The framework predicts that **all charge-carrying configurations are built from T(1, q) primitives** — either as singletons or as multi-component links.
 
-### 6.2 Neutral / non-observable states
+### 6.2 Neutral massive states (closure-failing) — three distinct mechanisms
 
-- **Light** — the (0, 0) zero mode. Massless, no compact-direction structure, ordinary EM in spacetime.
+- **Light** (the (0, 0) zero mode) — massless, no compact-direction structure, ordinary EM-field-quantum in spacetime.
 
-- **Single-axis modes** (m, 0), (0, n) — L2-in-L3 mass-only modes. Carry rest mass m_(m,n) per [Chapter 2 §3](02-modes-on-a-sheet.md), but no observable EM. **Structural neutrino-class candidates**: their failure of closure is structural (one winding zero) and not a matter of phase or alignment. They exist as massive states without EM coupling — exactly the structural property required of a neutrino-class particle.
+- **Single-axis modes** (m, 0), (0, n) — fail closure because *one winding is zero*. The U(1) × U(1) cross-coupling structure is incomplete; one of the two compact-direction momenta is absent. Mass without observable EM by *structural* mechanism.
+
+- **Genuine-torus-knot modes** T(p, q) with p, q ≥ 2 and gcd(p, q) = 1 — fail closure because the *windings don't synchronize*. Both compact-direction momenta are present, but tube and ring zero crossings don't coincide along the closed traversal. Mass without observable EM by *synchronization-failure* mechanism. Examples: trefoil T(2, 3), cinquefoil T(2, 5), T(3, 4), and the rest of the genuine-torus-knot tower.
+
+- **Synchronization-failing multi-link modes** T(k·p, k·q) with primitive a genuine torus knot — the same synchronization-failure mechanism operating on multi-component links built from genuine-torus-knot primitives.
+
+(A *fourth* neutrality mechanism — cancellation neutrality from opposite-handedness pairs in a single field — operates on top of these. See [Chapter 6 §4](06-handedness-and-pairs.md). The cancellation mechanism is independent of which (m, n) sector the components live in; it can produce additional neutral configurations from any closure-satisfying base.)
 
 ### 6.3 What this inventory says
 
-This is the **geometric particle inventory of metric-charge** under the standard closure rule. It produces, structurally:
+The **geometric particle inventory of metric-charge** under synchronization closure has the following structural shape:
 
-- A massless EM field (light, the zero mode).
-- A class of unit-charge particles (weak-knot diagonal).
-- A class of higher-tier charged particles (genuine torus knots).
-- A class of fractional-charge particles (multi-component links).
-- A class of neutral massive states (single-axis modes).
+- A massless field (light / photon analog) — one category.
+- Charged states built from T(1, q) primitives — singletons (candidate leptons) and multi-links (candidate quarks). Two charge-carrying sub-categories.
+- Neutral massive states — at least three structurally distinct mechanisms (single-axis, synchronization-failure, cancellation pair). Possibly more.
 
-These five categories form a structural pattern. Standard particle physics also organizes its inventory into five categories — photons, charged leptons, charged hadrons, quarks, and neutrinos. **Whether the framework's categories correspond to standard physics' categories — at the level of specific particles or only at the structural-pattern level — is downstream MaSt-correspondence work that this project does not undertake.** The framework's closure condition produces an inventory of the right *shape* to potentially map onto standard physics' organization; whether the map holds at the level of individual particle properties (masses, charges, magnetic moments, decay rates, ...) is open and depends on quantitative analysis well beyond chapter 4's scope.
+Standard particle physics has multiple charge-carrying categories (charged leptons, quarks, charged hadrons-as-composites) and multiple neutral-massive categories (neutrinos in three flavors, neutral mesons, neutral baryons, dark matter candidates, the Higgs). The framework's category structure has the right *shape* to potentially map onto this, with the framework's *richer-than-binary* neutral structure suggesting multiple distinct neutral states rather than a single "neutrino" category.
+
+**Whether the framework's categories correspond to standard physics' categories — at the level of specific particles or only at the structural-pattern level — is downstream MaSt-correspondence work that this project does not undertake.** The closure condition produces an inventory of the right shape; whether the map holds at the level of individual particle properties is open work.
+
+A specific question worth flagging: **standard physics treats hadrons as composites** (3 quarks per baryon, 2 quarks for mesons), not as single fundamental particles. The framework's prediction that all *fundamental* charged states are T(1, q) primitives or k × T(1, q) multi-links — with no fundamental "hadron tier" of single torus knots — matches this composite-hadron view of standard physics better than the framework's earlier draft (which had a tower of single charged genuine torus knots as candidate hadrons). Hadrons in the framework would emerge as bound states of multiple T(k, k·q) multi-links — metric-binding's territory.
 
 The downstream chapters develop:
 
-- Chapter 5: the metric-side picture of the gauge potentials (or whatever the off-diagonals turn out to be) these modes source.
-- Chapter 6: handedness / matter-antimatter sign assignments within the inventory.
-- Chapter 7: how aspect ratio ε determines which (m, n) dominate — possibly accounting for what standard physics observes as extreme-aspect-ratio sheets (per MaSt model-F, e.g., the electron sheet's high ε).
-- Chapter 8: how shear σ_uw selects k = 3 cleanly for the multi-component link mechanism, producing the three-phase structure that MaSt model-F (and standard-physics quark organization) might correspond to.
+- Chapter 5: the metric-side picture of off-diagonals sourced by closure-satisfying and closure-failing modes; consistency of the synchronization condition with the metric-side analysis.
+- Chapter 6: handedness / matter-antimatter signs within the inventory, plus a fourth cancellation-neutrality mechanism.
+- Chapter 7: how aspect ratio ε determines which (m, n) dominate at low energy.
+- Chapter 8: how shear σ_uw favors specific k values for multi-link configurations — the optimization examines whether k = 3 emerges naturally.
 
 ---
 
 ## 7. What's next
 
-[Chapter 5 — Metric self-consistency and gauge promotion](05-metric-self-consistency.md). The closure-satisfying modes from this chapter source off-diagonal metric entries (per metric-mass Chapter 5) that form valid Kaluza-Klein gauge potentials A_μ and B_μ. Closure-failing modes (single-axis, zero mode) source off-diagonals too, but in patterns that don't satisfy gauge structure and stay internal — confirming the L2-in-L3 framing for single-axis modes as structural neutrino-class candidates. Chapter 5 develops the metric-side equivalence and shows the three views of [Chapter 1 §10](01-foundation.md) are mutually consistent. It also provides the calculable mechanism for how mass bends spacetime and how charged matter creates EM fields, building on metric-mass Chapter 5 §6 and Chapter 6 §4.
+[Chapter 5 — Metric self-consistency and gauge promotion](05-metric-self-consistency.md). The closure-satisfying modes from this chapter source off-diagonal metric entries (per metric-mass Chapter 5) that form valid Kaluza-Klein gauge potentials A_μ and B_μ. Closure-failing modes — both single-axis and synchronization-failing genuine torus knots — source off-diagonals too. Chapter 5's job is to determine whether the metric-side analysis confirms the synchronization rule by showing that off-diagonals from synchronization-failing modes do *not* form a valid gauge-potential pattern (in which case the three views are equivalent), or whether the metric-side picture is broader than synchronization (in which case genuine torus knots locally have valid gauge potentials but the configurations don't yield observable EM for some other reason). The chapter also provides the calculable mechanism for how mass bends spacetime and how charged matter creates EM fields, building on metric-mass Chapter 5 §6 and Chapter 6 §4.
 
 ---
 
 ## What this chapter does **not** do
 
 - **Does not derive numerical α.** Cited from [grid-duality §8](../grid-duality/08-where-alpha-appears.md) (structural location at L3) and future grid alpha-derivation work (numerical value).
-- **Does not develop the metric-side picture.** That is chapter 5's job.
+- **Does not develop the metric-side picture.** That is chapter 5's job — including whether the metric-side analysis is *equivalent to* synchronization or *broader than* it.
 - **Does not assign handedness / matter-antimatter signs** within the satisfying inventory. Chapter 6.
 - **Does not vary aspect ratio ε.** Chapter 7.
-- **Does not derive fractional charge from multi-component links.** Chapter 8 takes the link structure identified here and works through the energetics.
+- **Does not optimize k for multi-component links.** Chapter 8 takes the multi-link structure identified here and works through the energetics under shear.
 - **Does not analyze multi-knot energetics or bound states** beyond the closure-rule variant 5.3 mention. metric-binding territory.
-- **Does not commit to MaSt-correspondence assignments.** The MaSt-analog column in §4.4 is exploratory; rigorous correspondence is downstream work.
+- **Does not identify which standard-physics neutral states correspond to single-axis vs synchronization-failure mass-only categories.** Three structural mass-only mechanisms exist in the framework (single-axis, synchronization-failure, cancellation pair); their map to observed neutral-massive states (neutrinos, neutral mesons, dark matter, Higgs) is downstream MaSt-correspondence work.
+- **Does not commit to MaSt-correspondence assignments.** The external-identifications column in §4.4 is exploratory; rigorous correspondence is downstream work.
 
 ---
 
@@ -315,10 +300,10 @@ The downstream chapters develop:
 
 | Q | Where it goes |
 |---|---|
-| Does the centered standing-wave alignment uniquely characterize closure-satisfaction, or are there shifted variants that also satisfy? | Chapter 5 (gauge structure constrains alignment) |
-| Are closure-rule variants 5.1 (u-instead-of-w) and the standard rule physically distinct, or unified at a deeper level? | Chapter 5 / [grid-duality §8](../grid-duality/08-where-alpha-appears.md) |
-| Does closure-rule variant 5.3 (multi-knot collective) describe atoms or other composite bound states? | metric-binding |
-| Do crossing-number tiers (T(2, 3) → T(2, 5) → T(3, 4) → ...) organize particle generations? | Chapter 7 + downstream MaSt-correspondence |
+| Is the metric-side analysis (chapter 5) equivalent to synchronization, or is it broader (genuine torus knots have local gauge potentials that don't yield observable EM)? | Chapter 5 |
+| Do the three structural mass-only mechanisms (single-axis, synchronization-failure, cancellation pair) correspond to distinct standard-physics neutral categories (neutrinos, neutral mesons, dark matter, etc.) or do some collapse together? | Downstream MaSt-correspondence work |
+| Are closure-rule variants 5.1 (cycles-swapped) and the standard rule physically distinct, or are they the same physics with relabeled coordinates? | Chapter 5 / [grid-duality §8](../grid-duality/08-where-alpha-appears.md) |
+| Does closure-rule variant 5.3 (multi-knot collective synchronization) describe atoms or other composite bound states? | metric-binding |
+| What standard-physics state corresponds to the genuine-torus-knot tower of mass-only modes (T(2, 3), T(2, 5), T(3, 4), ...)? | Downstream MaSt-correspondence work |
 | Why is the closure condition asymmetric in (u, w) — is it a convention or derivable? | Chapter 5 (gauge convention) + grid alpha-derivation |
-| Is the unknot/genuine-knot distinction physically meaningful, or are weak-knot diagonal modes (T(1, q)) and genuine torus knots equally valid charged particles? | Chapter 7 (aspect-ratio dependence) |
 | Does the metric-charge inventory of §6 quantitatively match observed masses and charges of standard-model particles? | Downstream MaSt-correspondence work |

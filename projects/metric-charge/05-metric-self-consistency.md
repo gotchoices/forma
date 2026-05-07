@@ -208,61 +208,102 @@ This is the metric-side derivation of what the closure condition (Chapter 4) acc
 
 ---
 
-## 5. Closure-failing modes do not form valid gauge potentials
+## 5. Closure-failing modes — two distinct mechanisms
 
-For single-axis modes (m, 0) or (0, n), only one set of off-diagonals is sourced. The other set is identically zero.
+The synchronization closure rule of [Chapter 4](04-the-closure-condition.md) rules out two structurally distinct categories of modes from carrying observable EM:
 
-### 5.1 The structural deficiency
+- **Single-axis modes** (m, 0) or (0, n): one winding zero. Only one of the two off-diagonal sets is sourced.
+- **Genuine torus knots** T(p, q) with p, q ≥ 2 and gcd(p, q) = 1: both windings nonzero but synchronization fails (m ∤ n). Both off-diagonal sets are sourced.
 
-Take a single-axis mode (m, 0) for concreteness. The h_μu set has all the gauge-potential properties of §4.2 — the property tests pass for the u-direction:
+The metric-side analysis of these two mechanisms produces structurally different pictures, both consistent with the closure-failing classification.
 
-- h_μu transforms as a 4-vector ✓
-- Gauge transformation under u-shifts ✓
-- Field strength F^A_μν well-defined ✓
-- Coupling to compact-momentum-carrying matter ✓
+### 5.1 Single-axis modes — partial gauge structure
 
-Taken alone, this single U(1) gauge potential A_μ is structurally indistinguishable from standard EM at the linearized level. So why does this mode fail to produce observable EM?
+Take a single-axis mode (m, 0) for concreteness. The h_μu set has all the gauge-potential properties of §4.2 — the property tests pass for the u-direction. The h_μw set is identically zero.
+
+Taken alone, the single U(1) gauge potential A_μ from h_μu is structurally indistinguishable from standard EM at the linearized level. So why does this mode fail to produce observable EM?
 
 The answer lies in the **U(1) × U(1) cross-coupling structure** required by [grid-duality §8.2](../grid-duality/08-where-alpha-appears.md) for α-mediated EM. Per grid-duality's analysis, observable EM requires *both* winding directions to be active simultaneously. The α coupling is fundamentally a *cross-coupling* between the two U(1)s — without the second one, there is no cross-coupling structure for α to sit in, and the apparent gauge potential A_μ has no observable manifestation.
 
-A single-axis mode therefore carries **partial gauge structure** — one U(1) in isolation — but lacks the cross-coupling that produces observable EM. The gauge structure is incomplete in exactly the way grid-duality identifies as structurally required.
+A single-axis mode therefore carries **partial gauge structure** — one U(1) in isolation — but lacks the cross-coupling that produces observable EM.
 
-### 5.2 The metric-side confirmation
+### 5.2 Genuine torus knots — both U(1)s present, but synchronization fails
 
-This is the metric-side confirmation of the L2-in-L3 framing: single-axis modes have mass (energy density T_tt, T_uu source diagonal metric perturbations and gravitational mass) but no observable EM (the gauge structure is incomplete). The structural property here — massive states without EM coupling — is what standard physics ascribes to neutrinos; whether single-axis modes correspond to standard-physics neutrinos is a downstream MaSt-correspondence question.
+For genuine torus knots T(p, q) with p, q ≥ 2 and gcd(p, q) = 1, both winding numbers are nonzero, so both the h_μu and h_μw sets are sourced. The four-property test of §4.2 passes for each set considered individually — both A_μ and B_μ would be locally valid gauge potentials in the standard sense.
 
-What the metric-side analysis adds beyond the phase-pattern view of Chapter 4: it makes the structural deficiency *concrete*. Closure-failing modes are not just "not satisfying a phase pattern" — they are missing one of the two gauge potentials that the L3 substrate's α-mediated EM requires. The two views agree on which modes are EM-observable and which aren't, but the metric-side view shows *why* in terms of off-diagonal structure.
+But synchronization fails: m ∤ n means the wave's tube-zero crossings do not coincide with ring-zero crossings during the closed traversal. Per the closure condition's reading, this configuration does not produce observable EM despite having both gauge potentials present.
 
-### 5.3 What about light?
+What does this look like at the metric-side level? Two possibilities the framework leaves open:
+
+- **(a) Local gauge potentials, no observable EM.** The h_μu and h_μw sets *are* valid gauge potentials locally, but the configuration's lack of synchronization means the U(1) × U(1) cross-coupling that produces α-mediated EM is structurally absent. The two gauge potentials exist but don't combine into observable physics. In this reading, the metric-side analysis is *broader* than synchronization — the four-property test passes but observable EM still requires synchronization on top.
+
+- **(b) Off-diagonals fail some structural test that's not captured by the four-property test.** Perhaps a fifth property (related to the synchronization of the field's tube/ring nodes) is required for observable EM, and synchronization-failing modes fail this fifth property. In this reading, the metric-side analysis is *equivalent to* synchronization, with the four-property test being incomplete and a refinement needed.
+
+Distinguishing (a) from (b) requires a more careful metric-side analysis than this chapter undertakes. The chapter explicitly leaves the question open. Either way, **synchronization-failing modes do not produce observable EM** under the framework's closure rule, regardless of which interpretation is correct.
+
+### 5.3 The metric-side picture and the closure-failing inventory
+
+The two closure-failing categories produce structurally different metric-side fingerprints:
+
+| Category | h_μu sourced? | h_μw sourced? | Standard EM? |
+|---|---|---|---|
+| Light (0, 0) | No (no compact-direction momentum) | No | No (light is its own thing) |
+| Single-axis (m, 0) | Yes — partial gauge structure | No (zero) | No — incomplete cross-coupling |
+| Single-axis (0, n) | No (zero) | Yes — partial | No — incomplete cross-coupling |
+| Genuine torus knot T(p, q), gcd = 1 | Yes — locally valid | Yes — locally valid | No — synchronization fails (mechanism per (a) or (b) above) |
+
+All three closure-failing categories produce massive but EM-neutral states; the *mechanism* differs. This refinement at the metric-side level confirms the synchronization closure-rule's structural distinctions: single-axis modes fail by missing one U(1); genuine torus knots fail by lacking synchronization between two present U(1)s.
+
+The framework predicts at least two structurally distinct mass-only categories (single-axis and synchronization-failure), plus the cancellation-pair category from [Chapter 6 §4](06-handedness-and-pairs.md). Standard physics has multiple categories of neutral massive states (neutrinos in three flavors, neutral mesons, neutral baryons, dark matter, the Higgs); how the framework's three structural categories map to standard physics' inventory is downstream MaSt-correspondence work.
+
+### 5.4 What about light?
 
 The (0, 0) zero mode sources no off-diagonals at all (no compact-direction momentum). Its h_μν is purely diagonal — it bends spacetime gravitationally but has no gauge-potential content. From the metric-side view, light is the trivial case: it propagates at c on the perturbed metric, picking up gravitational deflection from any nearby matter (per metric-mass Ch 6) but contributing no gauge-potential perturbation itself. Consistent with light being its own propagation mode rather than a sourcing mass.
 
 ---
 
-## 6. The three views are mutually consistent
+## 6. Comparing the three views under synchronization closure
 
-[Chapter 1 §10](01-foundation.md) introduced the closure condition with three views. We can now confirm they agree on which (m, n) modes carry observable EM.
+[Chapter 1 §10](01-foundation.md) introduced the closure condition in two equivalent forms (phase-pattern / synchronization, and topological — both reducible to "m | n with both nonzero") plus a metric-side view developed in this chapter. We can now compare the three views and identify where they agree and where they may diverge.
 
 ### 6.1 The three views
 
 | View | Condition | Source chapter |
 |---|---|---|
-| Phase-pattern | 2π winding on w + standing waves on both u and w | [Chapter 4](04-the-closure-condition.md) |
-| Topological | Both winding integers (m, n) ≠ 0 — U(1) × U(1) cross-coupling active | [grid-duality §7.5–§8](../grid-duality/07-wrap-promotion-modeling.md) |
-| Metric-side | Both h_μu and h_μw sourced; both pass gauge-potential property tests | This chapter |
+| Phase-pattern (synchronization) | Tube-zero crossings synchronize with ring-zero crossings during one closed traversal — equivalently, **m \| n** with both nonzero | [Chapter 4](04-the-closure-condition.md) |
+| Topological | gcd-reduced primitive of T(m, n) is T(1, q) — equivalently, m \| n with both nonzero | [Chapter 3 §7](03-knots-on-the-torus.md) |
+| Metric-side (this chapter) | Both h_μu and h_μw sourced; pass gauge-potential property tests; configuration produces observable EM | This chapter §4 |
 
-### 6.2 The three views select the same modes
+### 6.2 Phase-pattern and topological views are equivalent
 
-For each (m, n) class:
+The first two views reduce to the same mathematical statement: **m | n with both nonzero**. The phase-pattern view comes from the geometric synchronization requirement; the topological view comes from the link decomposition of T(m, n). Both produce the same partition of (m, n) space into closure-satisfying and closure-failing.
+
+### 6.3 The metric-side view: equivalent or broader?
+
+The metric-side analysis applied to a generic (m, n) mode with both nonzero shows that both h_μu and h_μw are sourced and that each passes the four-property gauge-potential test (§4). For *closure-satisfying* modes (m | n) this confirms observable EM. For *closure-failing* modes that nevertheless have both windings nonzero — i.e., genuine torus knots T(p, q) with p, q ≥ 2 and gcd = 1 — the metric-side analysis as currently developed cannot distinguish them from closure-satisfying modes at the four-property level.
+
+The chapter explicitly leaves open whether:
+
+- **(a)** The metric-side analysis is strictly *broader* than synchronization — locally valid gauge potentials exist for all both-windings-nonzero modes, but observable EM requires synchronization on top. In this reading, the chapter 5 four-property test is necessary but not sufficient; the synchronization condition adds a fifth requirement not captured by the four properties.
+
+- **(b)** The metric-side analysis is *equivalent to* synchronization — the four-property test as stated in §4 is incomplete, and a refined test (capturing some structural property that synchronization-failing modes don't satisfy) would distinguish closure-satisfying from closure-failing on the metric side. The four-property test would need a fifth criterion.
+
+Either reading is consistent with the framework's claim that synchronization-failing modes do not produce observable EM. Distinguishing (a) from (b) is open work — and important, because it determines whether the framework's gauge-potential machinery can be derived purely from the linearized-Einstein-equations-plus-property-test approach of §4, or whether something extra is needed.
+
+### 6.4 Mode partition (under the synchronization rule)
+
+The current state of the framework's three-view comparison:
 
 | (m, n) class | Phase-pattern | Topological | Metric-side |
 |---|---|---|---|
 | (0, 0) | Fails (no winding) | Fails (no winding) | Fails (no off-diagonals) |
-| (m, 0) | Fails (no w-standing-wave) | Fails (one winding zero) | Partial gauge structure (only h_μu) |
-| (0, n) | Fails (no u-standing-wave) | Fails (one winding zero) | Partial gauge structure (only h_μw) |
-| (m, n) both ≠ 0 | Satisfies | Satisfies | Both gauge potentials active |
+| Single-axis (m, 0), (0, n) | Fails (one winding zero) | Fails (one winding zero) | Partial gauge structure — only one U(1) |
+| T(1, q) primitives | Satisfies | Satisfies (primitive is T(1, q)) | Both gauge potentials active; produces observable EM |
+| Genuine torus knot T(p, q), p,q ≥ 2, gcd = 1 | Fails (m ∤ n) | Fails (primitive is genuine torus knot) | Both gauge potentials present locally; observable EM open per §6.3 |
+| Multi-link k × T(1, q) | Satisfies (m \| n) | Satisfies | Both gauge potentials active; observable EM with k-fold structure (chapter 8) |
+| Multi-link with genuine-knot primitive | Fails | Fails | Open per §6.3 |
 
-The three views agree on the partition into observable-EM modes vs. non-observable. This consistency is a structural cross-check that the closure condition is well-defined across multiple framings — and that the framework's three-way framing in [Chapter 1 §10](01-foundation.md) was correct.
+The phase-pattern and topological views agree on every row. The metric-side view agrees with the others on the closure-satisfying rows; it agrees on the obviously-closure-failing rows (single-axis); it leaves the synchronization-failing rows (genuine torus knots and their multi-links) as open per §6.3. The framework's overall *prediction* is the synchronization condition; the metric-side view either confirms it (case b) or sits as a broader necessary condition (case a).
 
 ### 6.3 The asymmetry is one convention with three faces
 

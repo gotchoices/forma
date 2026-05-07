@@ -80,18 +80,14 @@ Claims to examine — derived where possible, stated explicitly when taken as in
 
 4. **Topological invariants as quantum numbers.** Crossing number, genus, and linking number map to physical labels: lighter particles correspond to lower-crossing knots; generations to higher-crossing knots in the same isotopy class. Worth checking whether this organizes the spectrum cleanly.
 
-5. **The closure condition (centerpiece).** A knot promotes mass to charge when, during a single traversal, it completes both:
-   - a full 2π winding on w, and
-   - a complete standing wave on both u and w.
-   
-   The mass produced by the u-mode is then "promoted" to a charge on w. Mini-step traversals are allowed; what matters is that the closure pattern locks.
+5. **The closure condition (centerpiece) — synchronization.** A wave configuration on the 2D sheet promotes a (massive) mode to a charged-state mode when, during a single closed traversal of T(m, n), every time the tube-direction phase crosses zero, the ring-direction phase also crosses zero. Operationally: this holds iff **m divides n (m | n) with both nonzero.** The closure-satisfying inventory is exactly the **T(1, q) primitives and their k-component repetitions k × T(1, q).**
 
-6. **Closure failure → mass without charge.** A knot that winds the sheet but does *not* satisfy the closure condition produces mass without charge:
-   - winds u but not w → mass only
-   - winds w but not u → mass only
-   - winds both but the SW conditions don't lock → mass only
+6. **Closure failure → mass without observable charge — three mechanisms.** A wave configuration that does *not* satisfy synchronization carries mass but no observable EM:
+   - **Single-axis** (one winding zero) — fails by missing one of the two compact-direction momenta
+   - **Synchronization-failure** (both windings nonzero but m ∤ n — e.g., genuine torus knots T(2, 3), T(2, 5), T(3, 4), ...) — fails by tube/ring desynchronization
+   - **Cancellation pair** (single field with both (m, n) and (−m, −n) at equal amplitude — see Chapter 6) — fails by internal sign cancellation
    
-   This is one structural origin of dark / neutrino-class behavior — geometric, not from pair cancellation.
+   Three structurally distinct mass-only mechanisms, each producing massive but EM-neutral states by a different route. Candidate identifications with what standard physics calls neutrinos, neutral mesons, the Higgs, and other neutral massive states are downstream MaSt-correspondence work.
 
 7. **Knot handedness as the matter/antimatter axis.** A knot has two traversal directions. The handedness carries the matter/antimatter distinction (and possibly the sign of spin) — the analog of MaSt's ±n on a 2D sheet.
 

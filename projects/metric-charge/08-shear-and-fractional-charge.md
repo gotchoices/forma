@@ -1,10 +1,8 @@
 # Chapter 8 — Shear and fractional charge
 
-**Status:** Sparse outline. Each section is one to three sentences describing the derivation step that section will perform. To be expanded into full prose once the outline is approved.
-
 This chapter turns on the off-diagonal shear σ_uw and examines what it adds to the framework. So far the framework has worked with the bare diagonal metric (σ_uw = 0); this chapter introduces shear as a parameter and traces its consequences through the inventory.
 
-The chapter has two main payloads. First, it carries the [Chapter 6 §6](06-handedness-and-pairs.md) shear-bias result through to the 2D-compact case explicitly, confirming the Sakharov-CP-violation analog for matter/antimatter asymmetry. Second, it derives the **fractional-charge mechanism**: N phased wraps distributed in w contribute 1/N charge each, with **shear specifically selecting k = 3** as the dominant multi-phase configuration. This is where the multi-component link structure of [Chapter 4 §4.3](04-the-closure-condition.md) connects to the three-phase organization that MaSt model-F (and standard physics' quark inventory) might correspond to.
+The chapter has two main payloads. First, it carries the [Chapter 6 §6](06-handedness-and-pairs.md) shear-bias result through to the 2D-compact case explicitly, confirming the Sakharov-CP-violation analog for matter/antimatter asymmetry. Second, it examines the **fractional-charge optimization**: closure-satisfying multi-component links of the form k × T(1, q) (per [Chapter 4 §4.3](04-the-closure-condition.md), where the synchronization rule restricts multi-links to those with T(1, q) primitives) carry 1/k of their primitive's charge per component; the chapter computes which k is energetically favored under shear and reports the result honestly. If k = 3 emerges, the framework matches the structural pattern that MaSt model-F associates with standard physics' quark inventory.
 
 **Inheritance.**
 
@@ -91,21 +89,21 @@ The chapter takes the conservative interpretation: closure operates on (m, n) la
 
 ### 5. Multi-component links under shear — energetics
 
-Take a multi-component link T(km, kn) at gcd = k > 1. Under shear, the energetics of the k phased components changes:
+Take a closure-satisfying multi-component link of the form T(k, k·q) = k × T(1, q), with k ≥ 2 and q ≥ 1. (Per the synchronization rule of [Chapter 4](04-the-closure-condition.md), only multi-links with T(1, q) primitives satisfy closure; multi-links with genuine-torus-knot primitives fail synchronization and are mass-only.) Under shear, the energetics of the k phased components changes:
 
-- Each component is a phase-shifted copy of the primitive T(m, n).
+- Each component is a phase-shifted copy of the primitive T(1, q).
 - Phase-shifts within the (u, w) cycle interact with the shear cross-term −2σ k_u k_w in mode-dependent ways.
 - The total energy of the k-component configuration depends on the *relative phases* of the components.
 
 Specifically: if the k components are at phases 2π·j/k for j = 0, 1, ..., k−1, the total energy summed over components contains cross-terms between different j values. The cross-terms are sensitive to σ and to the specific phase distribution.
 
-The chapter computes this sum and asks: at what k is the multi-component configuration most energetically favorable under shear?
+The chapter computes this sum and asks: at what k is the k × T(1, q) multi-link configuration most energetically favorable under shear?
 
 ### 6. Optimizing k under shear — what value emerges?
 
 This is the chapter's central derivation, framed as a real optimization rather than a proof of a presupposed answer.
 
-Set up the optimization problem: given fixed (σ, ε), what value of k minimizes the total energy of a k-component multi-link configuration T(km, kn) at primitive (m, n) = (1, 1) (the lightest closure-eligible primitive at any ε per chapter 7)? Compute E(k; σ, ε), minimize over k, and report what optimal k(σ, ε) emerges.
+Set up the optimization problem: given fixed (σ, ε), what value of k minimizes the total energy of a k × T(1, q) multi-link configuration? (The synchronization rule restricts multi-links to those with T(1, q) primitives — these are the only closure-satisfying multi-link configurations.) Compute E(k; σ, ε, q), minimize over k for the lightest q (q = 1 at most ε), and report what optimal k(σ, ε) emerges.
 
 The framework's *prediction* about k is the result of this optimization, not an input. The prose expansion works through the calculation; here we sketch the argument structure.
 
@@ -144,6 +142,8 @@ So the framework's fractional-charge prediction is consistent with grid-duality'
 **The framework's prediction:** on a sheet with shear σ_uw ≠ 0, the dominant multi-component closure-satisfying configurations are k_opt-component links with 1/k_opt charge associated per component, and individual components are not isolable. If §6's optimization yields k_opt = 3, this matches the structural pattern of standard physics' quark organization (3 components per baryon, each with 1/3 fractional charge under confinement). If §6 yields a different k_opt, or yields k_opt varying with (σ, ε), the framework's prediction differs from observed quark structure and should be reported honestly.
 
 Whether the framework's specific predictions (k_opt, charge magnitudes, mass ratios, link-stability conditions) match standard physics' quark properties under detailed comparison is downstream MaSt-correspondence work.
+
+<!--EC Have we proven that fractional charge exists?  If so, have we proven that it can't exist for long (i.e. isn't stable)?  If not, is that possible?  Or need it be the subject of metric-binding?  This question will lead to quark stability. -->
 
 ### 8. Summary — what shear adds to the inventory
 

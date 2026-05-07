@@ -186,7 +186,7 @@ The framing here is structurally similar to the standard Pauli exclusion princip
 ### Three additional structural facts
 
 - **Knot space is rich.** With (m, n) ∈ ℤ², chirality, multi-component count, position (S₁, S₂), standing-wave phase, and (in principle) finer invariants, the label space allows many distinguishable configurations at any given energy tier. The discrete state space is, if anything, *richer* than spin-1/2 fermion state space.
-
+<!--EC See review comment on this.  We shouldn't rely on (or cite) matter-from-light.  Same issue in chapter 4.  Also my observations seem to indicate that spin is a function of the dimensionality of the torus (i.e. a 2-torus always produces spin 1/2).  Other spins come from combinations of knots on various sheets.  Would be nice if we could derive this at some point. -->
 - **Spin candidates.** MaSt model-F (per [matter-from-light §4](../../papers/matter-from-light.md)) proposes that what standard physics calls spin-1/2 arises geometrically for T(1, 2) from the 1:2 winding ratio via ℓ = E/ω = ℏ/2. Cited here as an external reference derivation; spin may itself be a label derived from (m, n) rather than an independent quantum number. (Note: T(1, 2) topologically is the unknot per §2, so the "1:2 ratio" is the sub-(m, n) phase relationship, not a topological knot — this nuance is part of why standing-wave phase alignment from §4 matters.)
 
 - **Continuous unitary evolution preserves (m, n) and other topological invariants** ([grid-duality §7.5.2](../grid-duality/07-wrap-promotion-modeling.md)). Transitions between knot classes require non-unitary processes. The discrete-state condition is *structural*; whatever exclusion-like behavior emerges on top of it is *energetic*, not topological.
@@ -239,30 +239,30 @@ Chapters 4 and 8 of this project operate on the first two configurations: closur
 
 ## 7. The closure-eligibility partition (preview)
 
-Carry forward the three mode classes of [Chapter 2 §4](02-modes-on-a-sheet.md) into geometric form. Note carefully: closure eligibility operates on the **(m, n) label** (both windings nonzero), not on the topological knot type. Some closure-eligible modes are topologically the unknot — that is fine, and worth flagging.
+Carry forward the three mode classes of [Chapter 2 §4](02-modes-on-a-sheet.md) into geometric form. Closure operates on the **(m, n) label** under the synchronization rule of [Chapter 1 §10](01-foundation.md): both windings nonzero *and* m | n. Some closure-satisfying modes are topologically the unknot, and some genuinely-knotted modes (in 3-space) fail closure under the synchronization rule — both worth flagging.
 
 | Class | (m, n) | Topology in 3-space | Closure status | Role |
 |---|---|---|---|---|
 | Light | (0, 0) | No curve | Trivially fails (no winding) | Massless, no compact-direction structure |
-| Single-axis | (m, 0) or (0, n), exactly one nonzero | Unknot (single cycle wrapped) | Fails (one winding zero) | L2-in-L3, structural neutrino-class candidate |
-| "Weak knot" diagonal | (1, q) or (p, 1) with both nonzero | **Unknot** (no genuine knotting in 3-space, but both windings nonzero) | **Eligible** — both windings nonzero | Closure-eligible despite topological triviality; MaSt model-F (per matter-from-light §4) proposes T(1, 2) as a candidate identification with what standard physics calls the electron |
-| Genuine-knot diagonal | (p, q) with both ≥ 2, gcd = 1 | Torus knot in 3-space | Eligible | L3 charged-state candidate; trefoil T(2, 3), cinquefoil T(2, 5), etc. |
-| Multi-component link | (m, n) with gcd(m, n) > 1 | k-component link, k = gcd | Eligible | Chapter 8's fractional-charge mechanism |
+| Single-axis | (m, 0) or (0, n), exactly one nonzero | Unknot (single cycle wrapped) | **Fails** (one winding zero) | L2-in-L3, candidate structural-neutrality mass-only mode |
+| "Weak knot" diagonal | (1, q) for q ≥ 1 (and the equivalent T(p, 1)) | **Unknot** (no genuine knotting in 3-space) | **Satisfies** — m = 1 trivially divides n | Closure-satisfying primitive; MaSt model-F (per matter-from-light §4) proposes T(1, 2) as a candidate identification with what standard physics calls the electron |
+| Genuine-knot diagonal | (p, q) with both ≥ 2, gcd = 1 | Torus knot in 3-space (trefoil, cinquefoil, etc.) | **Fails** — m ∤ n under synchronization | A *third* category of mass-only modes — synchronization-failure neutrality, distinct from single-axis and from cancellation neutrality |
+| Multi-component link, m ∣ n form | (k, k·q) = k × T(1, q) for integer k ≥ 2, q ≥ 1 | k-component link, primitive T(1, q) | **Satisfies** — m = k divides n = k·q | Chapter 8's fractional-charge mechanism — k components each carrying 1/k of the link's total charge |
+| Multi-component link, m ∤ n form | (k·m', k·n') with gcd(m', n') = 1 and m' ≥ 2 | k-component link, primitive T(m', n') with m' ≥ 2 | **Fails** — primitive is a genuine torus knot | Mass-only multi-component configuration |
 
-The five rows give a finer breakdown than chapter 2's three mode classes. The two classes that are particularly worth distinguishing here:
+The six rows give a finer breakdown than chapter 2's three mode classes. Three classes are particularly worth distinguishing here:
 
-- **The "weak knot" diagonal class** (T(1, q) and T(p, 1)) is topologically the unknot but has both windings nonzero. The closure condition operates on windings, not on knot type, so these modes are closure-eligible. They include T(1, 2) — the (1, 2) winding ratio that MaSt model-F (per [matter-from-light §4](../../papers/matter-from-light.md)) proposes as a candidate identification with what standard physics calls the electron. **A topologically trivial unknot can in principle realize a charged particle as substantive as anything in the standard inventory.** Worth highlighting because the topology-vs-physics distinction is most consequential here.
+- **The "weak knot" diagonal class** (T(1, q)) is topologically the unknot but satisfies the synchronization rule (m = 1 divides every n). These are the framework's *primitive* charged states. They include T(1, 2) — the (1, 2) winding ratio that MaSt model-F (per [matter-from-light §4](../../papers/matter-from-light.md)) proposes as a candidate identification with what standard physics calls the electron. **A topologically trivial unknot can realize a charged-particle primitive as substantive as anything in the standard inventory.**
 
-- **The single-axis class** (T(m, 0) and T(0, n)) is also topologically the unknot, but with one winding zero. The closure condition requires *both* windings nonzero, so these fail closure structurally (not just dynamically). These are the L2-in-L3 candidates from chapter 2.
+- **The single-axis class** (T(m, 0) and T(0, n)) fails closure because one winding is zero. Structural-neutrality candidates from chapters 4 and 5.
 
-The bare-topology characterization (unknot vs. genuine knot vs. multi-component link) is useful for naming and organizing modes in standard mathematical terms, but it does *not* directly determine closure eligibility. The relevant criterion is the (m, n) winding pair:
+- **The genuine-knot diagonal class** (T(p, q) with both ≥ 2, gcd = 1) **also fails closure** under synchronization — the trefoil T(2, 3), cinquefoil T(2, 5), and the rest of the genuine-torus-knot tower carry mass but not observable charge. They are a *separate* mass-only category, distinct from single-axis modes (which fail by missing a winding) — failure here is by *desynchronization* of windings that are both nonzero.
 
-- Modes with no winding fail trivially.
-- Modes with one winding zero fail structurally.
-- Modes with both windings nonzero are eligible — regardless of whether they trace genuine knots or unknots in 3-space.
-- gcd > 1 adds the k-component link structure that chapter 8 exploits.
+Genuine torus knots being mass-only is a substantive framework prediction. Standard physics has multiple categories of neutral massive states (neutrinos, neutral mesons, dark matter candidates, the Higgs); the synchronization-failure category is a candidate home for some of these. Specific identification is downstream MaSt-correspondence work.
 
-This partition is the geometric face of the chapter-4 analysis. Chapter 4 examines which eligible (m, n) values actually satisfy the standing-wave alignment of [Chapter 1 §10](01-foundation.md), and what variants of the closure rule might select different sub-families.
+The closure-satisfying inventory is exactly the **T(1, q) primitives and their k-component repetitions k × T(1, q)** — the framework's prediction is that every charge-carrying configuration is built from T(1, q) primitives, either as a singleton or as a multi-link.
+
+This partition is the geometric face of the chapter-4 analysis. Chapter 4 examines the closure-satisfying inventory in detail and revisits the closure-rule's structural consequences.
 
 ---
 

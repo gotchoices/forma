@@ -308,12 +308,11 @@ These two periodicities together produce the **discrete 2D mode family** (m, n) 
 
 This is the centerpiece of the project. We state it now and explore its consequences in chapters 4 and 5.
 
-> **Closure condition.** A wave configuration on the 2D sheet promotes its mass mode to a charge mode when, during a single closed traversal of its phase pattern, **both** of the following are satisfied:
+> **Closure condition (synchronization).** A wave configuration on the 2D sheet promotes a (massive) mode to a charged-state mode when, during a single closed traversal of T(m, n), **every time the tube-direction phase crosses zero, the ring-direction phase also crosses zero**.
 >
-> 1. The phase completes a full **2π winding on w**.
-> 2. The phase completes a **complete standing wave** (full period — node-to-antinode-to-node) on **both u and w**.
+> Equivalently: parametrize the traversal by s ∈ [0, 1] with u(s) = m·s·L_u and w(s) = n·s·L_w. The tube crosses zero (modulo L_u) at s = j/m for j = 0, 1, ..., m. At each such s, the ring is at w(s) = n·j/m·L_w. For the ring to also cross zero (modulo L_w) at every such s, we need n·j/m to be an integer for every j ∈ {0, 1, ..., m}.
 >
-> Mini-step traversals are allowed; what matters is that the closure pattern locks during one full traversal of the knot.
+> **This holds if and only if m divides n (m | n), with both m and n nonzero.**
 
 This is **stated, not derived**. Two distinct "why" questions sit behind the rule:
 
@@ -325,17 +324,35 @@ Whether the adopted convention matches the way the universe seems to work — wh
 
 This project takes the rule as given (with the convention explicit) and explores its consequences.
 
-### Three views, one rule
+### The condition has a clean topological characterization
 
-The phase-pattern statement above is one of three equivalent formulations of the same condition.
+The synchronization condition m | n has a clean topological reformulation. Write n = c·m for some positive integer c. Then T(m, n) = T(m, c·m) has gcd(m, n) = m, and decomposes into **m disjoint copies** of the primitive T(1, c). So:
 
-**Topological view** (lattice-substrate side). Per [grid-duality §7.5](../grid-duality/07-wrap-promotion-modeling.md) and [§8](../grid-duality/08-where-alpha-appears.md), the L3 2-torus has fundamental group π₁(T²) = ℤ², giving each closed wave configuration two independent integer winding numbers (w_α, w_β). The U(1) × U(1) cross-coupling structure that supports α and observable EM requires both winding directions to be active simultaneously. Closure-failed configurations have at most one active winding direction and reduce to L2 (mass without charge) embedded in an L3 substrate. The closure condition is the rule that **both** winding numbers are nonzero.
+> **Synchronization closure (topological form):** T(m, n) closure-satisfies iff its gcd-reduced primitive is **T(1, q)** for some integer q ≥ 1. Equivalently: m | n with both nonzero. The closure-satisfying inventory is exactly **T(1, q) primitives and their k-component repetitions** k × T(1, q) (where k = m and q = n/m).
 
-**Metric-side view** (spacetime-embedding side; developed in chapter 5). metric-mass Chapter 5 established that under linearized Einstein equations, a mass mode in a compact direction sources off-diagonal metric entries (g_tu in metric-mass's case). On the 2D sheet, the analogous calculation produces a richer set: in principle, all of g_tu, g_S₁u, g_S₂u, g_tw, g_S₁w, g_S₂w can be sourced. In the standard Kaluza-Klein identification, these off-diagonals are physical electromagnetic gauge potentials A_μ and B_μ, one per compact direction. The closure condition, in this formulation, is the rule under which the sourced off-diagonals actually form a valid gauge-potential pattern — consistent with the gauge structure that makes them observable as EM in 4D. The same off-diagonal-sourcing chain is also the framework's calculable mechanism for how mass mechanically bends light (gravitational lensing, Shapiro delay) — see [metric-mass Chapter 6 §4](../metric-mass/06-gravitational-bending.md) for the elevation from cross-check to mechanism claim.
+This is the same rule, viewed two ways:
 
-**Phase-pattern view** (the box above). The wave's phase completes a full 2π winding on w *and* a complete standing wave on both u and w during a single closed traversal.
+- **Phase-pattern view (the box above).** The wave's tube-zero crossings synchronize with the ring's zero crossings during one closed traversal.
+- **Topological view.** The closure-satisfying configurations are exactly the T(1, q) primitives and their k-component repetitions.
 
-The three formulations agree where they overlap. The topological ↔ phase-pattern equivalence is essentially the assertion that integer winding numbers manifest as 2π phase wraps. **Chapter 5 develops the metric-side view and shows its equivalence to the other two.** Chapter 1 only states all three. Closure failure under any one formulation corresponds to mass-only modes in all three: a candidate structural origin of neutrino-class neutrality, distinct from any pair-cancellation mechanism.
+The two views are mathematically equivalent (m | n, with both nonzero, is what each says about (m, n)).
+
+### A third view (metric-side) — open in this project
+
+Chapter 5 develops a *metric-side* description: closure-satisfying modes source off-diagonal metric entries that form a valid Kaluza-Klein gauge potential pattern under linearized Einstein equations. Whether the metric-side characterization is *equivalent to* the synchronization condition (i.e., off-diagonals form a valid gauge potential iff m | n) or only *implied by* it (synchronization-satisfying modes form valid gauge potentials, but unsynchronized modes might also locally) is a question chapter 5 examines. If the metric-side is equivalent to synchronization, the framework has three mutually consistent views; if it's strictly broader (i.e., genuine torus knots like T(2, 3) source locally-valid gauge potentials but fail synchronization), then the framework has two equivalent views (phase-pattern and topological) plus a metric-side that selects a *superset* of closure-satisfying configurations.
+
+The same off-diagonal-sourcing chain is also the framework's calculable mechanism for how mass mechanically bends light (gravitational lensing, Shapiro delay) — see [metric-mass Chapter 6 §4](../metric-mass/06-gravitational-bending.md). The mechanism applies to *all* closure-eligible (both-windings-nonzero) modes regardless of synchronization status; observable EM is the additional question.
+
+### Genuine torus knots: closure-failing under synchronization
+
+A genuine torus knot T(p, q) with both p, q ≥ 2 and gcd(p, q) = 1 has m = p, n = q with m ∤ n (since gcd = 1 forces m = 1 if m | n). So **all genuine torus knots fail closure** under synchronization. T(2, 3), T(2, 5), T(3, 4), T(3, 5), T(2, 7), ... are all closure-failing.
+
+These modes have both windings nonzero but no synchronization. They source off-diagonal metric entries (per Chapter 5) but those entries' relationship to observable EM is the question. Within the framework's prediction, they are **mass-only modes** alongside single-axis modes — but the *mechanism* for their neutrality differs:
+
+- **Single-axis modes** ((m, 0) or (0, n)): one winding zero. Mass without charge by missing one of the two compact-direction momenta.
+- **Synchronization-failing modes** (genuine torus knots T(p, q), p, q ≥ 2, gcd = 1): both nonzero but synchronization fails. Mass without observable charge — possibly because the off-diagonals don't combine into a coherent observable gauge field (subject to chapter 5's metric-side analysis).
+
+A candidate third mass-only mechanism alongside the structural-neutrality of single-axis modes and the cancellation-neutrality of [Chapter 6 §4](README.md#chapters). Chapter 4 develops this partition.
 
 ### Variants to keep open
 

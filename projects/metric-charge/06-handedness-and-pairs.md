@@ -189,32 +189,34 @@ For comparison: standard physics treats matter and antimatter as distinct specie
 
 ---
 
-## 5. Two distinct neutrality mechanisms
+## 5. Three distinct neutrality mechanisms
 
-Compare the two mechanisms producing apparent EM-neutrality:
+The framework has *three* structurally distinct mechanisms producing apparent EM-neutrality. This chapter develops the third (cancellation); Chapters 4 and 5 developed the first two (single-axis structural neutrality and synchronization-failure neutrality). All three deserve to be compared explicitly.
 
-| Mechanism | Structural neutrality (Ch 4, 5) | Cancellation neutrality (this chapter) |
-|---|---|---|
-| Configuration | Single mode at (m, 0) or (0, n) | Single field with both (m, n) and (−m, −n) at equal amplitude |
-| Gauge structure | Partial — one U(1) only; lacks U(1)×U(1) cross-coupling | Both U(1)s present, but net contributions cancel |
-| Mass | Single mass m_(m, 0) or m_(0, n) | 2× mass: 2 m_(m, n) |
-| Net charge | Zero (one gauge potential is missing entirely) | Zero (internal cancellation between opposite-sign sources) |
-| Topological character | One winding zero; (m, n) → (m, 0) or (0, n) | Both windings nonzero in each component |
-| Distinction from light | Has mass; no propagation at c | Has mass; no propagation at c |
+| Mechanism | Single-axis (Ch 4, 5) | Synchronization-failure (Ch 4, 5) | Cancellation (this chapter) |
+|---|---|---|---|
+| Configuration | Single mode at (m, 0) or (0, n) | Single mode at T(p, q), p, q ≥ 2, gcd = 1 (genuine torus knot) | Single field with both (m, n) and (−m, −n) at equal amplitude |
+| Gauge structure | Partial — one U(1) only; lacks U(1)×U(1) cross-coupling | Both U(1)s present locally but configuration fails synchronization (per Ch 5 §6.3) | Both U(1)s present, but net contributions cancel |
+| Mass | Single mass m_(m, 0) or m_(0, n) | Single mass m_(p, q) | 2× mass: 2 m_(m, n) |
+| Net observable EM | Zero (one gauge potential structurally absent) | Zero (synchronization-failure mechanism — Ch 5 §6.3) | Zero (internal cancellation between opposite-sign sources) |
+| Topological character | One winding zero | Both windings nonzero, m ∤ n, gcd = 1 (genuine torus knot) | Both windings nonzero in each component |
+| Tunable? | No — fundamental, can't be made to carry charge | No — fundamental for the (m, n) sector | Yes — cancellation depends on equal amplitudes; adjusting α/β tunes the net charge from zero to full |
 
-Both mechanisms produce massive but EM-neutral states. The distinction matters for downstream identification:
+Each mechanism produces massive but EM-neutral states by a structurally distinct route. The distinction matters for downstream identification:
 
-- **Structural neutrality** is *fundamental* — it cannot be made to carry charge by adjusting amplitudes or phases. The mode structurally lacks one of the two gauge potentials.
-- **Cancellation neutrality** is *contingent* — it depends on equal amplitudes between the two components. Adjusting α/β tunes the configuration between fully charged and fully neutral.
+- **Single-axis neutrality** is fundamental and structural — the mode lacks one of the two gauge potentials.
+- **Synchronization-failure neutrality** is also fundamental but operates on a different structural deficit — both gauge potentials present, but the configuration's tube/ring nodes don't synchronize during traversal.
+- **Cancellation neutrality** is contingent — it depends on equal amplitudes between paired components; adjusting α/β tunes the configuration between fully charged and fully neutral.
 
-Standard physics identifies several massive but EM-neutral particles: neutrinos, certain neutral mesons (like K⁰), the Higgs boson, etc. Some of these have intrinsic-property neutrality (neutrinos' lack of EM coupling is fundamental), while others have neutrality through structure (K⁰ is a quark-antiquark pair whose charges cancel).
+Standard physics identifies several massive but EM-neutral particles: neutrinos (three flavors), neutral mesons (K⁰, B⁰, etc.), the Higgs boson, dark matter candidates, etc. Some have *intrinsic-property* neutrality (neutrinos' lack of EM coupling is fundamental); others have *structural-pair* neutrality (K⁰ is a quark-antiquark pair); still others have other origins.
 
-The framework's two mechanisms map structurally:
+The framework's three mechanisms map structurally onto multiple standard-physics neutral-mass categories:
 
-- Structural neutrality might correspond to what standard physics calls neutrinos (intrinsic, fundamental neutrality).
-- Cancellation neutrality might correspond to what standard physics calls neutral mesons or other composite-pair states (configuration-dependent neutrality).
+- **Single-axis neutrality** might correspond to neutrinos or to one specific category of fundamental neutral states.
+- **Synchronization-failure neutrality** might correspond to a different category — possibly neutral hadrons-in-isolation, the Higgs, or some standard-physics state with both gauge structures present but no observable EM.
+- **Cancellation neutrality** might correspond to what standard physics calls neutral mesons or other composite-pair states with configuration-dependent neutrality.
 
-Whether these candidate identifications hold depends on quantitative comparison and is downstream MaSt-correspondence work. The framework establishes that *both* mechanisms are structurally available and structurally distinct; which standard-physics particles correspond to which mechanism is open.
+Whether these candidate identifications hold depends on quantitative comparison and is downstream MaSt-correspondence work. The framework establishes that *three* structurally distinct neutrality mechanisms are available; which standard-physics particles correspond to which mechanism is open. The richness of the framework's neutral inventory — three structurally distinct categories — is suggestive of standard physics' multiple neutral categories, but the specific mapping is not determined here.
 
 ---
 
