@@ -126,7 +126,7 @@ projects/grid-duality/
 ├── 04-model-comparison.md          comparison results, winner selection
 ├── 05-substrate-quantization.md    bit-level substrate; does the verdict survive?
 ├── 06-3d-extension-and-lattice-closures.md  3D lattice + closure topology
-├── 07-wrap-promotion-modeling.md   mass / charge as observables on closures (TODO)
+├── 07-wrap-promotion-modeling.md   mass / charge as observables on closures (working outline)
 ├── 08-where-alpha-appears.md       locating α on the ladder (TODO)
 ├── 09-node-decomposition.md        Y-tree decomposition; edge ≠ node (TODO)
 ├── 10-closing-summary.md           closing summary (TODO)
