@@ -56,13 +56,15 @@ x, y, z are Cartesian *visualization* axes — not metric coordinates.
 
 3. **Inherit from grid-duality.** The wrap-promotion ladder, the structural location of charge at L3, the U(1) × U(1) gauge structure of the 2-torus closure, and the integer-quantization of winding numbers are all established in [grid-duality](../grid-duality/) (chapters 7–8). We use them; we don't re-derive them. metric-charge's distinctive job is to render this L3 substrate in spacetime-metric terms and to do parameter sweeps (ε, σ_uw) that grid-duality's fixed-substrate construction does not.
 
-4. **The closure condition is axiomatic, not derived.** This project takes "wraps satisfying condition X produce charge" as an *input* to be explored. The α-coupling-strength derivation belongs in [grid/](../../grid/) — we use the result here, we do not re-derive it.
+4. **MaSt identifications are reference targets, not inputs.** MaSt's existing model-versions (model-A through model-F) propose specific correspondences between geometric modes and standard-physics particles — for example, model-F (per [matter-from-light §4](../../papers/matter-from-light.md)) proposes T(1, 2) as a candidate identification with what standard physics calls the electron. **The framework here treats those proposals as reference targets to compare derivation results against, not as axiomatic inputs.** The project's job is to derive structural properties (mode labels, masses, charges, gauge structure) from the closure-condition machinery — and then, separately, to ask whether those properties match MaSt's model-F proposals or standard physics' inventory. Identification is a downstream comparison task, not a prior commitment. Standard Model terminology (electron, proton, neutrino, quark, gauge potential) appears as a reference vocabulary, not as something the framework imports.
 
-5. **One topic per chapter.** Bundling defeats the discovery arc.
+5. **The closure condition is axiomatic, not derived.** This project takes "wraps satisfying condition X produce charge" as an *input* to be explored. The α-coupling-strength derivation belongs in [grid/](../../grid/) — we use the result here, we do not re-derive it.
 
-6. **Variables stay symbolic.** Don't pin numerical values until the algebra forces it (per the no-premature-pinning rule).
+6. **One topic per chapter.** Bundling defeats the discovery arc.
 
-7. **Computation only when forced.** Paper math first; scripts only when algebra becomes intractable or visualization is the only way to see the geometry.
+7. **Variables stay symbolic.** Don't pin numerical values until the algebra forces it (per the no-premature-pinning rule).
+
+8. **Computation only when forced.** Paper math first; scripts only when algebra becomes intractable or visualization is the only way to see the geometry.
 
 ## Goals
 
@@ -153,7 +155,7 @@ The chapters below are plausible follow-ups, not commitments.
 
 6. **`06-handedness-and-pairs.md`** — Knot orientation as the matter/antimatter degree of freedom. Examine when complementary pairs *within a single field configuration* cancel net charge (giving apparent neutrality through internal cancellation, distinct from the structural neutrality of chapters 4 and 5) and when they don't. The two-distinct-knots version of pair behavior — pass-through vs. annihilation — is taken up in [metric-binding](../metric-binding/).
 
-7. **`07-aspect-ratio-and-character.md`** — Sweep ε = L_u / L_w. Discover what knot families dominate at small ε (thin sheet), large ε (fat sheet), and ε ≈ 1. Look — without targeting it — for the conditions under which a sheet supports single-phase, three-phase, or dark behaviors. The "extreme aspect ratio" question for the electron-class and the "diffuse charge" question for the neutrino-class are examined here.
+7. **`07-aspect-ratio-and-character.md`** — Sweep ε = L_u / L_w. Discover what knot families dominate at small ε (thin sheet), large ε (fat sheet), and ε ≈ 1. Look — without targeting it — for the conditions under which a sheet supports single-phase, three-phase, or dark behaviors. The "extreme aspect ratio" question (per MaSt model-F's electron-sheet identification) and the "diffuse charge" question (per model-F's neutrino-sheet identification) are examined here as reference targets, not as identifications this project pre-commits to.
 
 8. **`08-shear-and-fractional-charge.md`** — Turn on σ_uw. Which symmetries break? Test the prediction that shear biases matter over antimatter. Then derive the fractional-charge mechanism: N phased wraps distributed in w contribute 1/N charge each, and shear is what selects N = 3 cleanly. This is where the quark-like three-phase structure should emerge if the framework is right.
 
