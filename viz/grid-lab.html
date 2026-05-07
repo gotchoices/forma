@@ -290,12 +290,28 @@ function loadState() {
   for (const k of Object.keys(DEFAULT)) if (raw[k] !== undefined) s[k] = raw[k];
   s.engine = buildEngine(s);
   hydrateEngine(s.engine, raw.registers);
+  s._savedCamera = raw.camera || null;
   return s;
 }
 
+function captureCamera() {
+  return {
+    pos:    camera.position.toArray(),
+    target: controls.target.toArray(),
+  };
+}
+
+function restoreCamera(saved) {
+  if (!saved || !Array.isArray(saved.pos) || !Array.isArray(saved.target)) return false;
+  camera.position.fromArray(saved.pos);
+  controls.target.fromArray(saved.target);
+  controls.update();
+  return true;
+}
+
 function saveState() {
-  const { engine, ...rest } = S;
-  const out = { ...rest, registers: snapshotRegisters(engine) };
+  const { engine, _savedCamera, ...rest } = S;
+  const out = { ...rest, registers: snapshotRegisters(engine), camera: captureCamera() };
   localStorage.setItem(STATE_KEY, JSON.stringify(out));
 }
 
@@ -517,7 +533,12 @@ function nodeFrame2DTorus(idx) {
   const localX = new THREE.Vector3(-sP, 0, cP);
   // localY = localZ × localX (tangent along minor (θ) direction)
   const localY = new THREE.Vector3().crossVectors(localZ, localX).normalize();
-  return { pos, localX, localY, localZ, r: r_disk };
+  return {
+    pos, localX, localY, localZ,
+    r: r_disk,
+    attachR: r_disk + S.filamentR,
+    type: 'ring',
+  };
 }
 
 function isTorusLayout() {
@@ -961,8 +982,8 @@ $('btn-save').onclick = () => {
   const name = (prompt('Profile name?') || '').trim();
   if (!name) return;
   const profs = loadProfiles();
-  const { engine, ...rest } = S;
-  profs[name] = { ...rest, registers: snapshotRegisters(engine) };
+  const { engine, _savedCamera, ...rest } = S;
+  profs[name] = { ...rest, registers: snapshotRegisters(engine), camera: captureCamera() };
   saveProfiles(profs);
   refreshProfileList();
   $('sel-prof').value = name;
@@ -991,7 +1012,7 @@ $('sel-prof').onchange = () => {
   syncControls();
   applyDimVisibility();
   buildGraph();
-  fitCamera();
+  if (!restoreCamera(loaded.camera)) fitCamera();
   updateInfo();
   saveState();
 };
@@ -1084,7 +1105,6 @@ $('cb-periodic').onchange = e => {
 $('cb-wrap').onchange = e => {
   S.wrap = e.target.checked;
   buildGraph();
-  fitCamera();
   updateInfo();
   saveState();
 };
@@ -1100,7 +1120,6 @@ $('in-Nx').oninput = e => {
     $('in-Ny').value = S.Ny;
   }
   rebuildGraphFromState();
-  fitCamera();
 };
 $('in-Ny').oninput = e => {
   let n = parseInt(e.target.value, 10);
@@ -1117,7 +1136,6 @@ $('in-Ny').oninput = e => {
     S.Ny = n;
   }
   rebuildGraphFromState();
-  fitCamera();
 };
 $('in-Nz').oninput = e => {
   let n = parseInt(e.target.value, 10);
@@ -1126,7 +1144,6 @@ $('in-Nz').oninput = e => {
   if (n === S.Nz) return;
   S.Nz = n;
   rebuildGraphFromState();
-  fitCamera();
 };
 $('cb-px').onchange = e => { S.periodic_x = e.target.checked; rebuildGraphFromState(); };
 $('cb-py').onchange = e => { S.periodic_y = e.target.checked; rebuildGraphFromState(); };
@@ -1192,9 +1209,14 @@ syncControls();
 applyDimVisibility();
 buildGraph();
 applyLabelVisibility();
-fitCamera();
+// Restore the saved camera if there is one; otherwise frame the lattice.
+if (!restoreCamera(S._savedCamera)) fitCamera();
+delete S._savedCamera;
 updateInfo();
 refreshProfileList();
+
+// Persist the camera after every pan/zoom/rotate gesture.
+controls.addEventListener('end', saveState);
 
 animLoop(() => {
   if (S.autoScale && !running) applyValues();
