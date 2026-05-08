@@ -157,9 +157,9 @@ These are the framework's **multi-link charged states**: k phased copies of a T(
 
 Examples:
 
-- **(3, 6) = 3 × T(1, 2)**: three phased copies of the (1, 2) primitive. Each component carries 1/3 of the primitive's charge. Candidate identification with what standard physics calls a quark — specifically, a flavor family proportional to model-F's proposed (1, 2) ↔ electron correspondence.
-- **(2, 4) = 2 × T(1, 2)**: two phased copies of (1, 2). Each carries 1/2 of the primitive's charge. No obvious standard-physics counterpart; whether such states are stable or transient is a chapter 8 question.
-- **(3, 9) = 3 × T(1, 3)**: three phased copies of the heavier (1, 3) primitive.
+- **(3, 6) = 3 × T(1, 2)**: three phased copies of the (1, 2) primitive. Each component carries 1/3 of the primitive's charge. *If* [Chapter 8](08-shear-and-fractional-charge.md)'s k-optimization yields k_opt = 3, this configuration is the candidate identification with what standard physics calls a quark (specifically, a flavor family proportional to model-F's proposed (1, 2) ↔ electron correspondence). Whether k_opt = 3 is the actual optimization result is the chapter-8 question, not a presupposition here.
+- **(2, 4) = 2 × T(1, 2)**: two phased copies of (1, 2). Each carries 1/2 of the primitive's charge. Another closure-satisfying multi-link; whether (2, 4) or (3, 6) (or some other k × T(1, q)) is energetically favored under shear is the chapter-8 optimization question. The framework does not pre-commit to which k matches observed structure.
+- **(3, 9) = 3 × T(1, 3)**: three phased copies of the heavier (1, 3) primitive. Same k = 3 structure as (3, 6) but with a heavier primitive; one of the candidate configurations the chapter-8 optimization examines across (k, q).
 
 **4.3b Closure-failing: k × T(p, q) with primitive a genuine torus knot.** When the primitive is a genuine torus knot (p, q ≥ 2, gcd = 1), the multi-link has total winding (k·p, k·q) with m = k·p and n = k·q. Synchronization requires m | n, i.e., k·p | k·q, i.e., p | q — but gcd(p, q) = 1 and p ≥ 2 means p ∤ q. So synchronization **fails**.
 
@@ -178,7 +178,7 @@ The full inventory at the linearized wave-equation level:
 | T(1, 2) primitive | ✓ | 1 | candidate electron (MaSt model-F reference target) |
 | T(1, 3), T(1, 4), … primitives | ✓ | 1 | candidate further leptons; not yet specifically proposed |
 | Genuine torus knot T(2, 3), T(2, 5), T(3, 4), … | **Fails (synchronization)** | — | candidate neutral massive state — distinct from single-axis category |
-| Multi-link T(k, k·q) = k × T(1, q), k ≥ 2 | ✓ (k-fold) | 1/k | candidate quark (k = 3, q = 2) and other multi-link states |
+| Multi-link T(k, k·q) = k × T(1, q), k ≥ 2 | ✓ (k-fold) | 1/k | candidate fractional-charge composite — specific k_opt set by [chapter 8](08-shear-and-fractional-charge.md)'s optimization; *if* k_opt = 3 emerges, the (3, 6) = 3 × T(1, 2) case matches standard physics' quark structure |
 | Multi-link with genuine-knot primitive | **Fails (synchronization)** | — | candidate neutral massive state — synchronization-failure category |
 
 The external-identifications column is **exploratory and not an input to this project's derivations**. Chapter 4 establishes only the closure-satisfaction structure; whether each predicted state corresponds to a particle in the standard-physics inventory requires:

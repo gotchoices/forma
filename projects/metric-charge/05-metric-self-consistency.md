@@ -32,7 +32,7 @@ This is the discovery-not-proof philosophy of [metric-charge](README.md) applied
 | 3 | Off-diagonal sourcing under linearized Einstein equations |
 | 4 | Do the off-diagonals form a gauge potential? — testing against standard-physics properties |
 | 5 | Closure-failing modes do not form valid gauge potentials |
-| 6 | The three views are mutually consistent |
+| 6 | Comparing the three views; the four-conventions reduction (§6.5) |
 | 7 | The holonomy mechanism for bending |
 | 8 | What the framework reproduces and where it might differ |
 | 9 | What's next |
@@ -307,13 +307,54 @@ The current state of the framework's three-view comparison:
 
 The phase-pattern and topological views agree on every row. The metric-side view agrees with the others on the closure-satisfying rows; it agrees on the obviously-closure-failing rows (single-axis); it leaves the synchronization-failing rows (genuine torus knots and their multi-links) as open per §6.3. The framework's overall *prediction* is the synchronization condition; the metric-side view either confirms it (case b) or sits as a broader necessary condition (case a).
 
-### 6.3 The asymmetry is one convention with three faces
+### 6.5 The four asymmetric conventions reduce to one wrap-order choice — demonstration
 
-The three views also expose an interesting alignment: each view has a closure-asymmetry built in (preferring w over u for the phase-pattern view; preferring one of the two U(1)s as physical for the metric-side view; preferring tube over ring for the topological view per the conventions of [Chapter 3 §3.2](03-knots-on-the-torus.md)). All three asymmetries point the same direction.
+[Chapter 3 §3.2](03-knots-on-the-torus.md) flagged that four asymmetric conventions appear downstream of Chapter 1 — closure-rule selection of w-winding, aspect-ratio labeling, σ_uw shear placement, and gauge-potential identification — and asserted that they all inherit from a single adopted convention. The metric-side machinery developed in this chapter makes the demonstration tractable. We carry it out here and refine the count.
 
-The reason they align: they reflect a *single convention* — the wrap-order choice adopted in [Chapter 1 §10](01-foundation.md), naming which compact direction is *tube* (where charges arise) versus *ring* (where mass arises). Once that adoption is made, all three views inherit the asymmetry consistently. They aren't three independent conventions that happen to align — they're one adopted convention projected three ways.
+#### 6.5.1 The bare-framework involution
 
-Whether the adopted convention matches the way the universe actually works, or whether some deeper structural mechanism forces it, is a downstream question, not a determination of this chapter. If something physical eventually *forces* the choice — handedness of the embedding spacetime, substrate constraint, or other — the convention would be derived rather than adopted. At present the framework treats the choice as adopted-by-stipulation, with structural derivation as an open question for [grid-duality §8](../grid-duality/08-where-alpha-appears.md) and the alpha-derivation track.
+Define the swap:
+
+> **S:** (u, w) ↔ (w, u),  L_u ↔ L_w,  m ↔ n.
+
+Without any of the four conventions adopted, the framework is **invariant under S**:
+
+- *Bare diagonal metric* ([Ch 1 §2](01-foundation.md)) — symmetric in (u, w); S leaves the metric form unchanged.
+- *Wave equation* □φ = 0 ([Ch 1 §8](01-foundation.md)) — symmetric in u and w; S maps solutions to solutions.
+- *Periodicity boundary conditions* ([Ch 1 §9](01-foundation.md)) — independent in each compact direction; S permutes them.
+- *Bloch decomposition* ([Ch 2 §2](02-modes-on-a-sheet.md)) — labels (m, n) ∈ ℤ²; S relabels (m, n) ↔ (n, m).
+- *Rest-mass formula* ([Ch 2 §3](02-modes-on-a-sheet.md)), m_(m,n)² ∝ (2πm/L_u)² + (2πn/L_w)², invariant under simultaneous (m ↔ n, L_u ↔ L_w).
+
+Without an asymmetric convention, the framework does not distinguish the two compact directions.
+
+#### 6.5.2 How each convention transforms under S
+
+| # | Convention | Statement | Behavior under S |
+|---|---|---|---|
+| 1 | Closure rule ([Ch 1 §10](01-foundation.md)) | "m \| n with both nonzero" — selects the direction whose 2π winding closure requires | "m \| n" → "n \| m"; the rule now selects the formerly-w (now-u) direction as the 2π-winding tube — **flips** |
+| 2 | Aspect-ratio labels ([Ch 1 §3](01-foundation.md)) | ε ≡ L_u/L_w; "thin sheet" = small ε, "fat sheet" = large ε | ε ↔ 1/ε; what was "thin" is now labeled "fat" — **flips** |
+| 3 | σ_uw shear placement ([Ch 1 §4](01-foundation.md)) | σ_uw ≠ 0 introduces an off-diagonal entry in the (u, w) sub-block | g_uw = g_wu = σ is *symmetric*; under S, σ → σ — **does not flip** |
+| 4 | Gauge identification (this chapter, §4–§8) | "Physical photon" = A_μ from h_μu (rather than B_μ from h_μw) | A_μ ↔ B_μ; the physical photon is now associated with the formerly-w (now-u) direction — **flips** |
+
+#### 6.5.3 Three flip together; the fourth does not
+
+Conventions 1, 2, and 4 flip together under S. They are *projections of a single wrap-order choice* — each one specifies which compact direction is named u (equivalently, which plays the "ring" role and which the "tube" role). The three cannot be flipped independently without internal contradiction. For example, declaring "w is the tube" (Convention 1) while identifying B_μ = h_μw as the *non*-physical U(1) (an attempt to set Convention 4 against Convention 1) would mean closure-satisfying modes systematically fail to carry observable EM — incoherent. The framework's machinery enforces alignment among 1, 2, and 4.
+
+Convention 3 — σ_uw — is *symmetric* in (u, w) and does not flip under S. The σ_uw entry is invariant under the wrap-order swap. What σ_uw introduces is a *different* kind of asymmetry: a cross-term proportional to k_u·k_w in the dispersion relation that breaks a sign-flip symmetry on the (m, n) labels (analyzed in [Chapter 6 §6](06-handedness-and-pairs.md) and [Chapter 8 §2](08-shear-and-fractional-charge.md)). σ_uw is a *parallel but structurally distinct* asymmetry-introducing mechanism, not a fourth face of the wrap-order convention.
+
+#### 6.5.4 Refined claim
+
+[Chapter 3 §3.2](03-knots-on-the-torus.md)'s "four conventions reduce to one" framing is slightly imprecise. The accurate statement:
+
+> **The wrap-order convention has three faces (closure rule, aspect-ratio labeling, gauge identification), and these three flip together under S. The σ_uw shear is a structurally separate asymmetry-introducing mechanism that operates on a sign-flip symmetry of the (m, n) labels rather than on the (u, w) wrap-order symmetry.**
+
+This is what the demonstration shows. The three wrap-order conventions are *consistently aligned* under any chosen wrap-order; they are not three independent free choices.
+
+#### 6.5.5 What this demonstration leaves open
+
+The wrap-order convention is *adopted by stipulation* in [Chapter 1 §10](01-foundation.md). The demonstration here shows only that the three faces are *consistently aligned* under that adoption — fixing any one fixes the others — not that the adoption itself is *forced*. Whether something physical (handedness of the embedding spacetime, substrate constraint from grid-duality, or other) eventually selects one wrap-order over the other remains open work for [grid-duality §8](../grid-duality/08-where-alpha-appears.md) and the alpha-derivation track.
+
+Similarly, the σ_uw shear's sign is left open by this section; the σ-sign question is examined in [Chapter 8](08-shear-and-fractional-charge.md).
 
 ---
 
