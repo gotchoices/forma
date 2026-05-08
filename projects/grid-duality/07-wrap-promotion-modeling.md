@@ -10,7 +10,7 @@ The framing throughout is that **wraps live between levels, not on them**. Each 
 
 This noun/verb separation is what lets the L0 → L1 transition introduce periodicity without requiring it of L0 itself. Periodicity is what wrap 1 does, not a property of the substrate sitting still. §2 develops this carefully, since whether the L0 → L1 wrap is forced or merely natural is a non-trivial question.
 
-The chapter is mathematical end to end. Each phenomenon's modeling reduces to standard solid-state / lattice physics constructions (band structure, Bloch waves, effective mass, topological winding), now applied to the specific Scattering substrate of chapters 4–6.
+The chapter is mathematical end to end. Each phenomenon's modeling reduces to standard solid-state / lattice physics constructions (band structure, Bloch waves, effective mass, topological winding), now applied to the specific Scattering substrate of chapters 4–6. The Bloch / band-structure language is developed from scratch in [primers/bloch-band-structure.md](../../primers/bloch-band-structure.md); readers unfamiliar with these terms may want to skim that primer before §3 onward, since this chapter applies the primer's machinery rather than re-deriving it.
 
 ## §2. The role of periodicity in the ladder
 
@@ -26,9 +26,9 @@ The reflection is a real change in the dynamics, not a measurement artifact. To 
 
 ### §2.2 Dispersion and Brillouin structure
 
-The standard dispersion machinery — Bloch's theorem, plane-wave decomposition, the band structure ω(k) — requires *discrete translation invariance* of the update operator. On a periodic lattice, discrete translations form a finite abelian group, and Fourier-diagonalising the update gives a clean band structure with k taking discrete values k = 2π·m/n on a ring of length n (and similarly in higher dimensions). On an idealised infinite lattice, k becomes continuous in the Brillouin zone, but the structure is the same.
+The standard description of waves on a lattice — a *dispersion relation* ω(k) giving the angular frequency of each plane wave as a function of its wavevector, and a *band structure* listing those dispersion curves across the Brillouin zone (the fundamental domain of allowed wavevectors) — relies on a single underlying theorem. **Bloch's theorem** says that any linear, translation-invariant update on a periodic lattice has plane-wave eigenstates labelled by a wavevector **k**, with the lattice's dynamics decomposing into one independent phase rotation per **k**. The theorem is generic: it requires only linearity of the update and discrete translation invariance, both of which Scattering satisfies on a periodic substrate. A self-contained development is in [primers/bloch-band-structure.md](../../primers/bloch-band-structure.md); the rest of this chapter applies it.
 
-On an open finite lattice, translation invariance fails near the boundary, and the natural mode basis is sin/cos standing waves rather than e^{ikx} plane waves. The dispersion relation we used throughout chapters 4 and 6 — and on which the group velocity v_g = dω/dk and the speed of light c = 1 lattice unit per tick depend — is well-defined only with translation invariance. Without it, the familiar mathematical description of light does not apply.
+What matters here is the *converse*: if translation invariance is lost, Bloch's theorem does not apply, and the dispersion-relation language goes with it. On an open finite lattice, translation invariance fails near the boundary, and the natural mode basis becomes sin/cos standing waves rather than e^{ikx} plane waves. The dispersion relation used throughout chapters 4 and 6 — and on which the group velocity v_g = dω/dk and the speed of light c = 1 lattice unit per tick depend — is well-defined only with translation invariance. Without it, the familiar mathematical description of light does not apply.
 
 This is the strongest of the three arguments. *Light's known mathematical description requires periodicity.*
 
@@ -53,6 +53,8 @@ The chapter does not commit to a specific cosmological topology. It notes the co
 ## §3. L0 → L1: light as bulk wave propagation
 
 The first wrap — extend the substrate across space and close it — yields a periodic graph on which Scattering propagates as a wave. Light is what Scattering does on this closed substrate.
+
+The substrate now satisfies the conditions for Bloch's theorem (a linear, translation-invariant update on a periodic lattice — see [primers/bloch-band-structure.md §1](../../primers/bloch-band-structure.md)), so the per-substrate analysis that follows is one application of the same machinery: write the Bloch matrix at each wavevector **k**, diagonalise to get bands ω_n(**k**), and read off the dispersion. The 1D ring (§3.1) has the simplest possible Bloch matrix — 1 × 1 — and gives a single linear band; the 2D hex case (§3.2) has a 2 × 2 Bloch matrix and gives two bands; 3D diamond (§3.3) is the same with one more dimension. The conserved quantities in §3.4 are the universal ones the theorem produces on any periodic substrate.
 
 ### §3.1 Plane-wave solutions on a ring
 
@@ -109,7 +111,7 @@ The next subsection makes the structural point sharp: mass is not a phenomenon t
 
 ### §4.1 Why mass needs a higher-dimensional context
 
-A massive excitation on a lattice is a wavepacket that is *spatially localised* and *does not propagate*. From the dispersion analysis, "does not propagate" means v_g = dω/dk = 0 — the wavepacket sits at a band extremum. From the wavepacket-envelope expansion (worked out below in §4.3), the rest mass is finite when the band has curvature at that extremum.
+A massive excitation on a lattice is a wavepacket that is *spatially localised* and *does not propagate*. From the dispersion analysis, "does not propagate" means v_g = dω/dk = 0 — the wavepacket sits at a band extremum. From the wavepacket-envelope expansion (the standard solid-state effective-mass result; see §4.2 below and [primers/bloch-band-structure.md §10](../../primers/bloch-band-structure.md)), the rest mass is finite when the band has curvature at that extremum.
 
 Three structural facts chain together to lock this to L2:
 
@@ -121,58 +123,13 @@ Linking the three: mass → extremum → coord ≥ 3 → ≥ 2D substrate. L1's 
 
 The two observables L2 brings are then both consequences of the same dimensional extension: the rest-mass observable m_eff comes from the band curvature that coord ≥ 3 unlocks, and the plaquette flux observable φ comes from the bounded 2D region that the embedding produces. They are not two independent additions; they are two faces of the L1 → L2 wrap.
 
-### §4.2 Standing-wave modes on a ring
+### §4.2 The mass eigenstate at a band extremum
 
-A general state on a ring is a superposition of the discrete plane-wave modes:
+The substrate-level picture combines two standard facts of band theory: a wavepacket centred near a band extremum **k**_0 (a point where v_g = ∇_**k** ω vanishes) does not translate, and the second derivatives of ω at that extremum set an effective mass m_eff = ℏ² / (d²ω/dk²)|_{**k**_0} for the wavepacket's response to small perturbations (see [primers/bloch-band-structure.md §10](../../primers/bloch-band-structure.md) for the derivation). A mass eigenstate is therefore a stationary wavepacket with rest energy E_0 = ℏ·ω(**k**_0), effective mass m_eff set by the band's local curvature, a spatial extent set by its envelope, and persistent existence in time under the non-interacting Scattering dynamics. Different band extrema give different m_eff. On the L1 coord-2 ring (linear dispersion, v_g = 1 everywhere, no extremum to evaluate) no such state exists; on 2D hex or 3D diamond at coord ≥ 3 the band structure has interior extrema (typically at the Brillouin-zone centre or zone edges), and mass eigenstates live there. This is the substrate-level reading of §4.1's chain of structural facts.
 
-<!-- ψ(j, t) = Σ_m c_m exp(i(k_m j − ω(k_m)t)) -->
-$$
-\psi(j, t) \;=\; \sum_{m=0}^{n-1} c_m \, \exp\!\bigl[\, i\,(k_m\,j - \omega(k_m)\, t) \,\bigr].
-$$
+The *continuum-level* statement of mass — what the lattice's effective-mass parameter looks like at the metric level, viewed as a quantised standing-wave momentum on a compact dimension — is the subject of [metric-mass](../metric-mass/), which derives mass from a single compact extra coordinate via the standard Kaluza-Klein machinery. metric-mass is logically prior to this chapter: it establishes the continuum-side mass derivation that grid-duality presupposes when it identifies band-extremum eigenstates as massive. The substrate / continuum split is the natural one to keep in mind: this chapter's job is to show that the lattice produces band curvature exactly at the right rung; metric-mass's job is to say what that curvature *is* when viewed through a metric.
 
-For a *standing wave* the coefficients pair up into c_m and c_{n−m} (counter-propagating modes of opposite k); the spatial profile becomes ∝ sin(k_m j) or cos(k_m j), and the modes oscillate in time at frequency ω(k_m) without translating.
-
-The standing-wave eigenfrequencies are ω_m = ω(k_m) for k_m = 2π m/n. They are the n discrete eigenfrequencies of the Scattering operator on the ring. A standing wave at any one of these is a *localised energy mode* whose probability distribution is stationary in time.
-
-### §4.3 Wavepackets at band extrema
-
-Take a wavepacket built from modes near a fixed k_0:
-
-<!-- ψ(x, t) ≈ exp(i(k_0 x − ω_0 t)) · f(x − v_g t) -->
-$$
-\psi(x, t) \;\approx\; e^{\,i\,(k_0\, x - \omega_0\, t)} \, f(x - v_g\, t),
-$$
-
-with envelope f and group velocity v_g = dω/dk evaluated at k = k_0. If k_0 is an extremum of the band — a point where v_g = 0 — the envelope does not translate, and the wavepacket is *spatially localised and stationary*.
-
-Around the extremum, expand to second order:
-
-<!-- ω(k) ≈ ω(k_0) + ½·(d²ω/dk²)·(k − k_0)² -->
-$$
-\omega(k) \;\approx\; \omega(k_0) + \tfrac{1}{2} \frac{d^2\omega}{dk^2}\bigg|_{k_0} (k - k_0)^2.
-$$
-
-The wavepacket now has the dispersion of a non-relativistic free particle of mass
-
-<!-- m_eff = ℏ² / (d²ω/dk²)|_{k=k_0} -->
-$$
-m_{\text{eff}} \;=\; \frac{\hbar^2}{(d^2\omega/dk^2)\big|_{k = k_0}}.
-$$
-
-This is the standard solid-state effective-mass result. For the lattice, ℏ is set by the per-tick energy quantum and the curvature is the second derivative of the band structure at the extremum. *m_eff is finite*: a wavepacket trapped at the band extremum has a definite rest mass.
-
-### §4.4 The mass eigenstate
-
-Combining §4.2 and §4.3: a *mass eigenstate* is a standing wavepacket centred at a band extremum. It has:
-
-- A definite rest energy E_0 = ℏ·ω(k_0).
-- A definite rest mass m_eff = ℏ²/(d²ω/dk²)|_{k_0}.
-- A spatial extent set by the wavepacket envelope, which does not propagate.
-- A persistent existence in time (no decay channel for the eigenstate itself in the non-interacting Scattering dynamics).
-
-Different band extrema give different m_eff. On the L1 coord-2 ring (linear dispersion, no extremum, v_g = 1 everywhere) the formula above has nowhere to evaluate — there is no k_0 with v_g = 0, so there are no mass eigenstates. Light on the ring is structurally massless. On 2D hex or 3D diamond at coord ≥ 3, the band structure does have extrema (typically at the Brillouin-zone centre or the zone edges), and mass eigenstates exist there. This is the substrate-level statement of §4.1's argument: L1 has no mass because L1 is 1D; L2 has mass because L2 is ≥ 2D and the higher coord brings band extrema with it.
-
-### §4.5 The plaquette and the bounded region
+### §4.3 The plaquette and the bounded region
 
 The L1 → L2 wrap is, geometrically, the embedding of the 1D loop into a higher-dimensional region. On 2D hex this means the loop bounds a hexagonal plaquette; on 3D diamond, the loop bounds a chair-conformation 6-membered ring with a 2D plane of definite orientation in 3-space.
 
@@ -198,13 +155,15 @@ This is structurally close to a charged-particle eigenstate in lattice gauge the
 
 ## §5. L2 → L3: charge as topological winding
 
-The third wrap closes the second direction. The plaquette becomes a torus T² = S¹ × S¹. Two independent π₁-generators emerge, and topological invariants of the wave dynamics now take values in ℤ² rather than ℤ. Charge is the topological winding number that lives on these closed cycles.
+The third wrap closes the second direction. The plaquette becomes a torus T² = S¹ × S¹. Two independent π₁-generators emerge, and topological invariants of the wave dynamics now take values in ℤ² rather than ℤ. The substrate-level claim of this chapter is that *charge* — quantised, integer-valued, conserved under unitary dynamics — is the topological winding number that lives on these closed cycles, and that the L3 rung is the first rung where it becomes available.
+
+This is presented as a structural hypothesis here. The substrate produces exactly the right object (a pair of integer-valued conserved windings on T²); the *formal continuum derivation* — taking T² as a 2D compact sheet attached to extended spacetime, applying the standard Kaluza-Klein dimensional reduction, and showing that the resulting quantities transform and couple as electromagnetic charge — is the work of [metric-charge](../metric-charge/), which picks the L3 substrate up directly from this chapter and does the metric-level construction. The substrate / continuum split in §4 (band curvature here, KK mass derivation in metric-mass) carries over to charge: the lattice's job is to produce the right topological skeleton, and the continuum project's job is to dress that skeleton in metric-level language.
 
 ### §5.1 Topology of the 2-torus
 
 A torus has two independent first-homotopy generators α (going around the first periodic direction once) and β (around the second). Any closed loop on the torus is homotopic to a unique combination w_α α + w_β β with (w_α, w_β) ∈ ℤ². The pair (w_α, w_β) is the loop's *winding number* in the two directions.
 
-The fundamental group π₁(T²) = ℤ² is abelian (in contrast to the higher-genus cases where π₁ is non-abelian). This is what gives torus topology its U(1) × U(1) gauge-theoretic structure.
+The fundamental group π₁(T²) = ℤ² is abelian (in contrast to the higher-genus cases where π₁ is non-abelian). The torus also has two continuous translation symmetries — rotating each S¹ factor independently — which together form a U(1) × U(1) isometry group. The two facts are conceptually distinct (π₁ is a topological invariant; U(1) × U(1) is a Lie group of continuous symmetries), but on T² they share a common origin: each S¹ factor contributes one ℤ generator to π₁ *and* one U(1) factor to the isometry group. The substrate-level winding numbers (w_α, w_β) are π₁ invariants of trajectories on the torus; the U(1) × U(1) gauge structure that appears in metric-charge after Kaluza-Klein reduction is built on the isometry side. They are linked because the same two S¹ factors produce both.
 
 ### §5.2 Conservation of winding under unitary dynamics
 
@@ -222,11 +181,11 @@ For a Bloch state with wavevector **k** = (k_x, k_y) on a torus of size (L_x, L_
 
 So *w_α and w_β are integers*. They are conserved exactly under unitary Scattering. There is no continuous deformation between distinct integer pairs; transitions between charge sectors require non-unitary processes (e.g. emission of a particle with the requisite winding).
 
-### §5.3 Charge as the U(1) × U(1) structure
+### §5.3 The U(1) × U(1) structure at the lattice level
 
-The two independent windings furnish the substrate with a *U(1) × U(1) gauge structure*. Each winding direction is a U(1) charge — a discrete integer that classifies the wavepacket up to homotopy. The continuum limit of this lattice structure is precisely the U(1)_E × U(1)_M gauge theory of electromagnetism in (2+1) dimensions, where the two U(1)'s are the electric and magnetic charges related by Hodge duality.
+The two independent windings classify wavepackets on the torus up to homotopy: each (w_α, w_β) ∈ ℤ² is a topological sector, and unitary dynamics cannot connect different sectors. The two ℤ factors are the lattice-level shadow of a U(1) × U(1) structure — the same U(1) × U(1) that appears as the isometry group in §5.1. Identifying this structure with the U(1) × U(1) gauge theory of electromagnetism (in the (2+1)D continuum limit, with the two factors related by Hodge duality and assigned to electric and magnetic charge) is the metric-level move; this chapter does not perform that identification, but the natural reading of the substrate is that L3 produces exactly the topological skeleton on which such a continuum gauge theory rests. The formal reduction is in [metric-charge §1](../metric-charge/01-foundation.md).
 
-In the lattice picture, the duality is geometric: the two periodic directions of the torus are interchangeable, so the two windings (w_α, w_β) play symmetric roles. Which one we call "electric" and which "magnetic" is a labelling choice fixed by orientation conventions, not by intrinsic physics.
+The lattice does, however, make one feature of the gauge picture geometrically transparent: the two periodic directions of the torus are *interchangeable*, so the two windings (w_α, w_β) play symmetric roles. Which one is later labelled "electric" and which "magnetic" is a convention fixed by orientation choices in the metric-level construction, not by anything intrinsic to the substrate. This symmetry is part of why the L3 substrate is structurally well-suited to host an electromagnetic-style gauge theory: the duality between electric and magnetic charge that takes work to produce in continuum is already present in the topology of the wrap.
 
 ### §5.4 Charge quantisation
 

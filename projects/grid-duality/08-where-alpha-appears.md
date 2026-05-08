@@ -48,7 +48,7 @@ The two U(1) factors of L3 are related by Hodge duality: in (2+1)-dimensional el
 
 α is dimensionless. Its dimensionlessness depends critically on the quantisation of charge: e is integer-valued in units of the elementary charge, ℏ and c set natural energy and time scales, and α = e²/(4πε₀ℏc) is independent of the unit system because of the integer-quantisation of e.
 
-Below L3 there is at most a continuous-valued plaquette flux φ (chapter 7 §4.5). Without integer quantisation, "α" as a ratio depends on how flux is normalised — the would-be coupling rescales arbitrarily with conventions and has no fixed dimensionless value. At L3 charge becomes integer-quantised by topology, and α becomes a definite dimensionless number.
+Below L3 there is at most a continuous-valued plaquette flux φ (chapter 7 §4.3). Without integer quantisation, "α" as a ratio depends on how flux is normalised — the would-be coupling rescales arbitrarily with conventions and has no fixed dimensionless value. At L3 charge becomes integer-quantised by topology, and α becomes a definite dimensionless number.
 
 The three arguments converge: cross-coupling needs two invariants, the U(1) × U(1) provides them with a duality structure where α has a natural reading, and L3's integer-quantisation of charge is what makes α a definite dimensionless number rather than a unit-dependent placeholder. All three first hold at L3, which is why α first becomes available there.
 
