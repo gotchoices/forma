@@ -11,9 +11,9 @@ The two-distinct-knots version of pair behavior — when two separate closure-sa
 - *From [Chapter 3 §3.2](03-knots-on-the-torus.md):* the topological equivalences (sign reflection, mirror reflection) and the framing that they are *not* generally physical equivalences.
 - *From [Chapter 4](04-the-closure-condition.md):* the closure-satisfying inventory.
 - *From [Chapter 5](05-metric-self-consistency.md):* the gauge-potential structure that distinguishes EM-observable from internal modes.
-- *From [metric-mass Chapter 7](../metric-mass/07-shear-and-bias.md):* the analysis of ±n bias in a sheared metric — the Sakharov-CP-violation analog. metric-charge's chapter 6 carries this forward to 2D-compact configurations.
+- *From [metric-mass Chapter 7](../metric-mass/07-shear-and-bias.md):* the analysis of ±n bias in a sheared metric (under shear σ_Su, between extended and compact). metric-charge's σ_uw shear is structurally different (between two compacts) — see §6 for the explicit comparison.
 
-**Distinctive job.** Distinguish the two neutrality mechanisms (structural vs cancellation). Determine what physical content the (m, n) → (−m, −n) sign reflection carries. Cross-reference standard physics' matter/antimatter axis as a comparison target. Set up the multi-knot pair-behavior question for [metric-binding](../metric-binding/).
+**Distinctive job.** Distinguish the structural-neutrality and cancellation-neutrality mechanisms. Determine what physical content the (m, n) → (−m, −n) sign reflection carries. Derive what σ_uw shear actually breaks at the dispersion level. Set up the multi-knot pair-behavior question for [metric-binding](../metric-binding/).
 
 ---
 
@@ -25,8 +25,8 @@ The two-distinct-knots version of pair behavior — when two separate closure-sa
 | 2 | The (m, n) → (−m, −n) reflection — content and standard-physics correspondence |
 | 3 | The (m, n) → (m, −n) reflection — chirality and the ring/tube distinction |
 | 4 | Pair configurations within a single field |
-| 5 | Two distinct neutrality mechanisms — structural vs cancellation |
-| 6 | Sign-bias and the asymmetric metric |
+| 5 | Three distinct neutrality mechanisms (extended to four in §6.6) |
+| 6 | What σ_uw shear breaks: chirality, not sign reflection |
 | 7 | The multi-knot pair-behavior question |
 | 8 | What's next |
 
@@ -99,8 +99,8 @@ Open at this stage. The framework establishes that:
 These structural properties are what standard physics ascribes to a particle and its antiparticle (same mass, opposite charges, complementary conservation labels). Whether the framework's (m, n) → (−m, −n) reflection actually corresponds to what standard physics calls antimatter — versus to some other physical distinction (or to no physical distinction beyond a redundant labeling) — is left open. The chapter's stance:
 
 - **The opposite-sign-momentum property is geometric and unambiguous.** It falls out of the orientation of closed curves on T² (per Ch 1 §6.1) and the kinematics of wave packets on those curves.
-- **The matter/antimatter identification is a candidate, not a commitment.** Whether (m, n) ↔ (−m, −n) corresponds to particle ↔ antiparticle requires that something physically distinguish the two beyond their structural opposite-charge property — for example, an asymmetric energetics (Chapter 8's shear-induced bias is a candidate mechanism that lifts the (m, n) ↔ (−m, −n) degeneracy and could provide such a distinction).
-- **If shear or some other mechanism breaks the (m, n) ↔ (−m, −n) symmetry, the matter/antimatter analog acquires physical content; if no mechanism breaks it, the two labels may be redundant presentations of the same physical state.** The framework lets the answer fall out of downstream analysis (Chapters 5 §6, 8 §3) rather than committing here.
+- **The matter/antimatter identification is a candidate, not a commitment.** Whether (m, n) ↔ (−m, −n) corresponds to particle ↔ antiparticle requires that something physically distinguish the two beyond their structural opposite-charge property — i.e., something that breaks the (m, n) ↔ (−m, −n) symmetry of the dispersion. **σ_uw shear cannot do this** ([§6](#6-what-σ_uw-shear-breaks-chirality-reflection-not-sign-reflection) demonstrates: the σ_uw cross-term k_u·k_w is invariant under joint sign flip). The framework currently has no derived mechanism that breaks (m, n) ↔ (−m, −n); whether one exists at the substrate level (grid-primitive / grid-duality) or via a different shear in the metric is open ([§6.7](#67-matterantimatter-bias--open)).
+- **If some mechanism does break (m, n) ↔ (−m, −n), the matter/antimatter analog acquires physical content; if no mechanism breaks it, the two labels may be redundant presentations of the same physical state.** The framework does not pre-commit; the math is what determines this, and the math currently leaves it open.
 
 ---
 
@@ -142,7 +142,9 @@ Proceed with the analysis without committing to a specific standard-physics iden
 
 ---
 
-## 4. Pair configurations within a single field
+## 4. Pair configurations within a single field — the sign-conjugate case
+
+This section examines configurations of the form (m, n) + (−m, −n) — *sign-conjugate* pair configurations. The chirality-conjugate pair configuration (m, n) + (m, −n) is structurally distinct and is examined in [§6.6](#66-chirality-conjugate-cancellation-as-a-fourth-neutrality-mechanism), where the σ_uw analysis surfaces it.
 
 A single field configuration φ can contain both (m, n) and (−m, −n) components simultaneously:
 
@@ -201,9 +203,9 @@ For comparison: standard physics treats matter and antimatter as distinct specie
 
 ---
 
-## 5. Three distinct neutrality mechanisms
+## 5. Three distinct neutrality mechanisms (extended to four in §6.6)
 
-The framework has *three* structurally distinct mechanisms producing apparent EM-neutrality. This chapter develops the third (cancellation); Chapters 4 and 5 developed the first two (single-axis structural neutrality and synchronization-failure neutrality). All three deserve to be compared explicitly.
+The framework has *three* structurally distinct mechanisms producing apparent EM-neutrality, plus a fourth surfaced by [§6.6](#66-chirality-conjugate-cancellation-as-a-fourth-neutrality-mechanism)'s σ_uw analysis. This section develops the third (sign-conjugate cancellation); Chapters 4 and 5 developed the first two (single-axis structural neutrality and synchronization-failure neutrality); §6.6 develops the fourth (chirality-conjugate cancellation).
 
 | Mechanism | Single-axis (Ch 4, 5) | Synchronization-failure (Ch 4, 5) | Cancellation (this chapter) |
 |---|---|---|---|
@@ -232,27 +234,107 @@ Whether these candidate identifications hold depends on quantitative comparison 
 
 ---
 
-## 6. Sign-bias and the asymmetric metric
+## 6. What σ_uw shear breaks: chirality reflection, not sign reflection
 
-When σ_uw shear is on (chapter 8), or when an external bias is introduced through some other mechanism, the (m, n) ↔ (−m, −n) symmetry breaks. [metric-mass Chapter 7 §6](../metric-mass/07-shear-and-bias.md) examined this in the 1D-compact case: an off-diagonal shear g_Su lifted the ±n degeneracy via an n-linear cross-term in the dispersion relation. The framework's Sakharov-CP-violation analog lives there, and metric-charge inherits the same structural result on the 2D-compact substrate.
+This section works through the dispersion relation under σ_uw shear and asks which symmetries σ_uw breaks. The answer turns out to be precise and constraining: σ_uw breaks the **chirality reflection** (m, n) ↔ (m, −n), and it leaves the **sign reflection** (m, n) ↔ (−m, −n) invariant. Earlier framings of this chapter, and of [Chapter 8 §3](08-shear-and-fractional-charge.md), claimed σ_uw provides the sign-reflection bias by analogy to [metric-mass Chapter 7 §6](../metric-mass/07-shear-and-bias.md). The math says this is incorrect: the two shears (metric-mass's σ_Su and metric-charge's σ_uw) break different symmetries.
 
-### 6.1 The shear-induced bias
+The derivation is short and forced; we walk through it explicitly.
 
-With σ_uw ≠ 0, the dispersion relation acquires cross-terms that depend on the *signs* of m and n, not just their magnitudes. Consequently:
+### 6.1 The dispersion relation under σ_uw shear
 
-- (m, n) and (−m, −n) modes have slightly different dispersion ω(k_S; m, n) ≠ ω(k_S; −m, −n) when σ_uw ≠ 0.
-- In thermal equilibrium, the populations of (m, n) and (−m, −n) are not exactly equal — the asymmetry is direction-correlated.
-- The (k_S, m, n) ↔ (−k_S, −m, −n) symmetry of the sheared dispersion is exact, so pure thermal equilibrium gives direction-correlated asymmetry without net (m, n) → (−m, −n) population bias.
+From [Chapter 8 §1–§2](08-shear-and-fractional-charge.md), the wave equation on the sheared metric gives the Bloch-mode dispersion:
 
-### 6.2 Standard physics correspondence
+<!-- ω²/c² = k_S² + (k_u² - 2σ k_u k_w + k_w²) / (1 - σ²) -->
+$$
+\frac{\omega^2}{c^2} = k_S^2 + \frac{k_u^2 - 2\sigma\,k_u\,k_w + k_w^2}{1 - \sigma^2}
+$$
 
-This is the framework's analog of one of the three Sakharov conditions for baryogenesis:
+with k_u = 2πm/L_u and k_w = 2πn/L_w. The σ-dependence enters entirely through the **cross-term** −2σ·k_u·k_w. This is the only piece of the dispersion that distinguishes σ ≠ 0 from σ = 0 in a sign-sensitive way: k_u² and k_w² are even in (m, n) and unchanged by any sign flip.
 
-1. Baryon-number violation (or its analog): present.
-2. C-violation and CP-violation (or their analogs): the shear provides this — different dispersion for (m, n) vs (−m, −n).
-3. Departure from thermal equilibrium: not provided by the framework alone; requires cosmological inputs.
+### 6.2 Symmetry test on the cross-term
 
-So the framework provides one Sakharov ingredient (the CP-analog from shear-induced bias). Full baryogenesis requires additional ingredients — particularly a non-equilibrium phase, which the framework does not derive. The CP-analog *prediction* is consistent with what standard physics calls CP-violation (a known feature of weak interactions); whether the framework's mechanism quantitatively reproduces observed CP-violation is downstream work.
+Apply each candidate sign-flip symmetry to the cross-term k_u·k_w:
+
+| Symmetry | Maps (k_u, k_w) → | Cross-term k_u·k_w → | Dispersion invariant? |
+|---|---|---|---|
+| **(m, n) ↔ (−m, −n)** (sign reflection) | (−k_u, −k_w) | (−k_u)(−k_w) = +k_u k_w | **Yes — invariant** |
+| **(m, n) ↔ (m, −n)** (chirality, n flips) | (k_u, −k_w) | k_u·(−k_w) = −k_u k_w | **No — flips sign** |
+| **(m, n) ↔ (−m, n)** (chirality, m flips) | (−k_u, k_w) | (−k_u)·k_w = −k_u k_w | **No — flips sign** |
+| **Full sign flip** (k_S, m, n) ↔ (−k_S, −m, −n) | all flip | invariant | **Yes — invariant** |
+
+The math is forced: a bilinear cross-term is invariant under joint sign flip of both factors and flips under one-sided sign flip. This is purely algebra; nothing more sophisticated than that.
+
+**Concrete example.** Take k_u = k_w = K > 0 (so the magnitudes match). Compute the cross-term contribution for each pair:
+
+- Mode (1, 1) and mode (−1, −1): both have k_u·k_w = +K². *Identical contribution. Same dispersion. Same effective mass.*
+- Mode (1, 1) and mode (1, −1): one has +K², the other has −K². *Opposite contributions. Different dispersion.*
+
+For σ > 0, the explicit mass split between the chirality-conjugate pair is:
+
+<!-- m²(1, 1) ∝ 2K²(1 - σ),  m²(1, -1) ∝ 2K²(1 + σ) -->
+$$
+m^2_{(1, 1)} \;\propto\; 2K^2(1 - \sigma), \qquad m^2_{(1, -1)} \;\propto\; 2K^2(1 + \sigma)
+$$
+
+Mass split between the **chirality** partners; **no split** between the sign partners.
+
+### 6.3 What this means structurally
+
+The σ_uw entry is symmetric in (u, w) (g_uw = g_wu) and represents a non-orthogonal slant between the two compact directions. Geometrically: a wave going "along the slant" (k_u, k_w of like sign) experiences a different effective length than one going "against the slant" (opposite signs). Chirality is the natural axis a slant distinguishes; joint sign flip rotates the wave 180° in the (u, w) plane and leaves its alignment with the slant unchanged.
+
+This means σ_uw is, *purely from the geometry*, a chirality-bias mechanism. The framework's machinery does not allow it to be otherwise.
+
+### 6.4 Comparison with metric-mass's σ_Su shear
+
+[metric-mass Chapter 7](../metric-mass/07-shear-and-bias.md) introduces shear σ_Su between *extended S* and *compact u*. The cross-term in that case is k_S·k_u — bilinear in *one extended and one compact* wavenumber. Under (n) → (−n) (so k_u → −k_u), this cross-term flips sign — correctly breaking the (n) ↔ (−n) symmetry in the 1D-compact setting.
+
+metric-charge's σ_uw is a different shear: between two compact directions. The cross-term is k_u·k_w — bilinear in two compacts. The two shears break different symmetries:
+
+| Shear | Cross-term | Symmetry broken |
+|---|---|---|
+| σ_Su (metric-mass, 1D-compact) | k_S · k_u | (n) ↔ (−n) — sign reflection |
+| σ_uw (metric-charge, 2D-compact) | k_u · k_w | (m, n) ↔ (m, −n) — chirality reflection |
+
+Earlier framings in this chapter and Chapter 8 conflated the two and presented σ_uw as the "2D-compact extension" of metric-mass's mechanism. They are structurally distinct mechanisms operating on different symmetries. The 2D-compact extension of metric-mass's σ_Su would be σ_S₁u or σ_S₁w — extended-versus-compact shear — which metric-charge's [Chapter 1 §4](01-foundation.md) does not introduce.
+
+### 6.5 Consequences for the framework
+
+The chirality-bias result has several consequences that follow directly from the math:
+
+- **σ_uw provides chirality bias and only chirality bias.** Whatever asymmetry σ_uw introduces operates on the (m, n) ↔ (m, −n) axis. The (m, n) ↔ (−m, −n) axis — which the framework names the matter/antimatter axis (§2) — is unchanged by σ_uw.
+- **The framework does not derive a matter/antimatter bias from σ_uw.** Whether the framework can derive such a bias from any other mechanism is left open at this chapter. See §6.7.
+- **Sign-conjugate cancellation pairs (§4) remain neutral under shear.** A configuration with (m, n) + (−m, −n) at equal amplitude has *identical* dispersion for both components even at σ ≠ 0; the cancellation neutrality of §4 is robust under σ_uw shear.
+- **Chirality-conjugate pairs become non-degenerate under shear.** A configuration with (m, n) + (m, −n) at equal amplitude has *unequal* dispersion under σ ≠ 0; the two components sit at different energies. §6.6 examines this configuration.
+
+### 6.6 Chirality-conjugate cancellation as a fourth neutrality mechanism
+
+The σ_uw analysis above surfaces a configuration the chapter has not previously named: a pair of the form (m, n) + (m, −n), with equal amplitudes, which constitute a **chirality-conjugate pair** (rather than the sign-conjugate pair of §4). The off-diagonal sourcing for this pair:
+
+- Net p_u: (2π/L_u)·m + (2π/L_u)·m = 2·(2π/L_u)·m → **doubled** (same sign of m, contributions add)
+- Net p_w: (2π/L_w)·n + (2π/L_w)·(−n) = 0 → **cancelled** (opposite signs of n, contributions cancel)
+
+By the off-diagonal sourcing analysis of [Chapter 5 §3.2](05-metric-self-consistency.md), the metric perturbation has h_μu doubled (from the additive p_u contributions) and h_μw identically zero (from the cancelling p_w contributions). The metric-side picture is **structurally indistinguishable from a single-axis configuration** (2m, 0) at the linear level — only A_μ active, B_μ identically zero.
+
+This gives the framework a *fourth* structural neutrality mechanism, joining the three from §5:
+
+| Mechanism | Configuration | Net p_u | Net p_w | Metric-side appearance |
+|---|---|---|---|---|
+| Single-axis (Ch 4, 5) | (m, 0) or (0, n) — single mode | nonzero or 0 | 0 or nonzero | one U(1) only |
+| Synchronization-failure (Ch 4, 5) | T(p, q), p, q ≥ 2, gcd = 1 — single mode | nonzero | nonzero | both U(1)s, no observable EM |
+| Sign-conjugate cancellation (§4) | (m, n) + (−m, −n) at equal amplitude | 0 | 0 | both U(1)s cancel; doubled mass |
+| **Chirality-conjugate cancellation** (this section) | (m, n) + (m, −n) at equal amplitude | doubled | 0 | mimics single-axis (2m, 0); doubled mass |
+
+A note on the chirality-conjugate pair under shear: by §6.5, σ ≠ 0 splits the dispersion of (m, n) and (m, −n). The two components no longer sit at the same energy. A configuration prepared with equal amplitudes is therefore not in thermal equilibrium under shear and would tend to redistribute toward the lower-energy chirality unless prevented by another conservation law. This is the chirality-bias dynamics that σ_uw introduces — and it acts on chirality-conjugate cancellation pairs specifically, not on sign-conjugate ones.
+
+### 6.7 Matter/antimatter bias — open
+
+The framework derives chirality bias from σ_uw. It does **not** derive matter/antimatter bias from anything in this chapter or Chapter 8. If matter/antimatter asymmetry is a structural prediction of the framework, it must come from some other mechanism. Candidate locations the framework's broader stack might supply such a mechanism:
+
+- **A different shear in the metric.** Shear between an extended direction and a compact direction (σ_Su or σ_Sw) would break (m) ↔ (−m) or (n) ↔ (−n) by the metric-mass mechanism. metric-charge's [Chapter 1 §4](01-foundation.md) introduces only σ_uw; introducing a second shear would be a structural change the project does not currently take.
+- **Substrate-level chirality from the underlying lattice.** Inherited from [grid-primitive](../grid-primitive/) or [grid-duality](../grid-duality/), the substrate may carry a built-in preferred direction at the edge level (chiral edge twist, asymmetric edge orientation) that propagates upward and biases (m, n) ↔ (−m, −n) at the mode level. This would be a substrate boundary condition, not a metric-charge derivation.
+- **Some structural mechanism not yet identified.**
+
+The chapter does not commit to any of these. The math is honest: σ_uw alone cannot do it. The matter/antimatter bias question is forwarded to project-direction work and to the substrate-level projects.
 
 ---
 
@@ -269,7 +351,7 @@ Forward to [metric-binding](../metric-binding/) for:
 - **Bound states:** between pass-through and annihilation, is there a bound configuration where the modes orbit? metric-binding Chs 3–5.
 - **Pair-creation thresholds:** under what energy conditions does the wave equation (or its appropriate extension) allow creation/annihilation of (m, n) ↔ (−m, −n) pairs from light? Out of scope for this project (linear theory only); deferred to nonlinear/quantum extensions.
 
-This chapter's job is to establish the *single-field* pair structure (cancellation, sign-bias) that metric-binding's multi-knot energetics will operate on.
+This chapter's job is to establish the *single-field* pair structure (sign-conjugate and chirality-conjugate cancellation, plus σ_uw's chirality bias) that metric-binding's multi-knot energetics will operate on.
 
 ---
 
@@ -283,7 +365,8 @@ Chapter 7 changes the parameter focus from sign labels (Chapter 6) to magnitude 
 
 ## What this chapter does **not** do
 
-- **Does not derive the Sakharov mechanism for baryogenesis.** Cite [metric-mass Chapter 7](../metric-mass/07-shear-and-bias.md) for the shear-bias analog; full baryogenesis requires three Sakharov ingredients and is downstream work.
+- **Does not derive a matter/antimatter bias mechanism.** §6 demonstrates that σ_uw shear breaks chirality, not sign reflection — so σ_uw alone cannot bias the (m, n) ↔ (−m, −n) population. Whether the framework derives such a bias from any other mechanism is left open at this chapter (see §6.7).
+- **Does not derive the Sakharov mechanism for baryogenesis.** σ_uw provides a P-flavor (chirality) bias only; the C-flavor (sign reflection) side has no derived mechanism in this chapter or [Chapter 8](08-shear-and-fractional-charge.md). Full Sakharov baryogenesis would require both C and CP violation plus a non-equilibrium phase; the framework currently provides one P-flavor ingredient at most.
 - **Does not assign "matter" vs "antimatter" labels** to specific (m, n) sectors. The framework treats (m, n) and (−m, −n) as distinct sectors but does not pre-commit to which corresponds to what standard physics calls matter.
 - **Does not commit to whether parity (P) corresponds to mirror reflection or sign reflection** or some other operation. Open question; downstream comparison with standard physics' P, C, CP symmetries.
 - **Does not analyze multi-knot pair behavior** (pass-through, annihilation, bound states). [metric-binding](../metric-binding/).
@@ -299,8 +382,9 @@ Chapter 7 changes the parameter focus from sign labels (Chapter 6) to magnitude 
 |---|---|
 | Does the framework's (m, n) → (−m, −n) reflection correspond to what standard physics calls antimatter, or to something else? | Downstream MaSt-correspondence work |
 | Does the (m, n) → (m, −n) mirror reflection correspond to parity, chirality, charge conjugation, or none of these? | Open; downstream comparison with standard P/C/CP symmetries |
-| What fraction of observed neutrinos correspond to structural-neutrality (Ch 4/5) vs cancellation-neutrality (this chapter) vs a hybrid? | MaSt-correspondence + experimental data |
-| Does shear σ_uw produce a quantitatively meaningful matter/antimatter bias, or only a structural CP-violation analog? | Chapter 8 + downstream baryogenesis work |
+| What fraction of observed neutrinos correspond to single-axis (Ch 4/5), synchronization-failure (Ch 4/5), sign-conjugate cancellation (§4), or chirality-conjugate cancellation (§6.6)? | MaSt-correspondence + experimental data |
+| **Does the framework derive a matter/antimatter bias from any mechanism?** §6 shows σ_uw cannot do it (σ_uw breaks chirality, not sign reflection). Candidate alternatives include extended-compact shear (σ_Su), substrate-level chirality from grid-primitive/grid-duality, or other unidentified mechanisms. | Project-direction question; possibly resolved at substrate level |
+| Are chirality-conjugate cancellation pairs (§6.6) and single-axis modes (Ch 4/5) experimentally distinguishable, given that they share the same metric-side h_μν pattern? | Downstream; depends on access to higher-order or off-shell observables |
 | When a single field contains both (m, n) and (−m, −n) at unequal amplitudes, does the framework predict any observable consequence beyond standard EM? | Open; depends on the B_μ identification of Chapter 5 §8 |
 | Is the (m, n) → (−m, −n) reflection a *physical* symmetry of the framework, or is it broken by some convention we have not yet identified? | Chapter 5 + grid alpha-derivation |
 | If the conventions of Chapter 3 §3.2 distinguish u and w, do (m, −n) and (−m, n) correspond to physically distinguishable states or just to two presentations of the same mirror configuration? | Chapter 5 + grid alpha-derivation; the answer depends on whether one or both U(1)s are physical |

@@ -6,28 +6,6 @@ This file is a working todo for the project. It records unresolved issues from [
 
 ## Open todos — items I agree with
 
-### TODO-S4 — σ_uw shear breaks chirality, not matter/antimatter (newly discovered, **Serious**)
-
-**Status:** Mathematical finding verified. Project-direction decision needed before fixing chapter text.
-
-**Summary:** Chapters 6 §6 and 8 §2–§3 claim σ_uw shear breaks the (m, n) ↔ (−m, −n) sign-flip symmetry (matter/antimatter axis). The dispersion math says σ_uw actually breaks (m, n) ↔ (m, −n) — the chirality (mirror) reflection — and *preserves* (m, n) ↔ (−m, −n). This is a real consequence of the cross-term being k_u·k_w, which is invariant under simultaneous sign flip but flips under one-sided flip.
-
-Full analysis in [Section §σ-shear](#σ_uw-shear-detailed-analysis) below.
-
-**Implications:**
-- Ch 8 §6's multi-link optimization is unaffected (the optimization only needs σ_uw to break some symmetry; chirality bias works for that purpose).
-- Ch 6 §6 and Ch 8 §3's claims about Sakharov-CP-violation analog and matter/antimatter bias are structurally incorrect as stated.
-- The framework currently has *no derived mechanism* for matter/antimatter bias. Either:
-  - **(a)** The framework adds a different shear (σ_S₁u or σ_S₁w) to provide it, OR
-  - **(b)** The framework re-identifies its "matter/antimatter axis" with chirality reflection, treating σ_uw as the relevant bias mechanism for that, OR
-  - **(c)** The framework acknowledges that what it can derive is *chirality bias only*, with matter/antimatter bias as an open question.
-
-**Decision needed:** Which interpretation does the project adopt? See [§σ-shear detailed analysis](#σ_uw-shear-detailed-analysis) for what each implies.
-
-**Suggested order:** Decide on (a)/(b)/(c) **before** fixing chapter text, since the fix's scope depends on the decision.
-
----
-
 ### TODO-M2 — Four-property gauge-potential test asserted, not derived
 
 **Status:** Open. The most substantive of the remaining Moderate items.
@@ -144,82 +122,6 @@ Full analysis in [§M3 — what are the two fields?](#m3--understanding-the-two-
 
 ---
 
-## σ_uw shear — detailed analysis
-
-This is the math behind TODO-S4. The finding is mathematical, not interpretive; the math is firm.
-
-### Setup
-
-With σ_uw shear active ([Ch 1 §4](01-foundation.md)):
-
-ds² = −c²dt² + dS₁² + dS₂² + du² + 2σ du dw + dw²
-
-The (u, w) sub-block of g_μν is [[1, σ], [σ, 1]] with determinant (1 − σ²). Inverse:
-
-- g^uu = g^ww = 1/(1−σ²)
-- g^uw = g^wu = −σ/(1−σ²)
-
-For a Bloch mode φ ∝ exp(i(k_S·S + k_u·u + k_w·w − ωt)) with k_u = 2πm/L_u and k_w = 2πn/L_w, the wave equation g^μν ∂_μ ∂_ν φ = 0 gives:
-
-ω²/c² = k_S² + (k_u² − 2σ k_u k_w + k_w²) / (1 − σ²)
-
-The σ-dependence sits entirely in the **k_u · k_w cross-term**.
-
-### Symmetry analysis
-
-| Operation | Maps (k_u, k_w) → | k_u² | k_w² | k_u·k_w | Dispersion invariant? |
-|---|---|---|---|---|---|
-| **(m, n) → (−m, −n)** (sign reflection) | (−k_u, −k_w) | invariant | invariant | (−k_u)(−k_w) = +k_u k_w → **invariant** | **Yes** — σ_uw preserves this |
-| **(m, n) → (m, −n)** (mirror reflection) | (k_u, −k_w) | invariant | invariant | k_u·(−k_w) = −k_u k_w → **flips sign** | **No** — σ_uw breaks this |
-| **(m, n) → (−m, n)** (other mirror) | (−k_u, k_w) | invariant | invariant | −k_u k_w → **flips sign** | **No** — σ_uw breaks this |
-| **Full sign flip** (k_S, m, n) → (−k_S, −m, −n) | all flip | invariant | invariant | invariant | **Yes** — σ_uw preserves this |
-
-**Concrete example.** Take k_u = k_w = K > 0 vs k_u = K, k_w = −K:
-
-- (1, 1)-type: k_u² − 2σ k_u k_w + k_w² = 2K²(1 − σ)
-- (1, −1)-type: k_u² − 2σ k_u k_w + k_w² = 2K²(1 + σ)
-
-Different effective masses for σ ≠ 0. But (1, 1) and (−1, −1) both have k_u k_w = +K²; the dispersion is identical for them.
-
-**Conclusion (purely mathematical):** σ_uw breaks the chirality reflection (m, n) ↔ (m, −n). It preserves the sign reflection (m, n) ↔ (−m, −n).
-
-### Why this matters for the framework
-
-The framework currently uses σ_uw for two distinct purposes:
-
-1. **Multi-link energetics** ([Ch 8 §5–§6](08-shear-and-fractional-charge.md)) — σ_uw breaks symmetry between same-sign and opposite-sign multi-link phase distributions. **Unaffected by this finding.** σ_uw works for this purpose; the math just tells us *which* symmetry it breaks (chirality, not sign).
-
-2. **Sakharov-CP-violation analog / matter/antimatter bias** ([Ch 6 §6](06-handedness-and-pairs.md), [Ch 8 §3](08-shear-and-fractional-charge.md)) — σ_uw is claimed as the mechanism providing matter/antimatter asymmetry. **Affected by this finding.** σ_uw cannot provide (m, n) ↔ (−m, −n) bias because it preserves that symmetry. What σ_uw can provide is chirality bias.
-
-### Why the framework's framing was off
-
-[metric-mass Ch 7 §6](../metric-mass/07-shear-and-bias.md) introduces shear σ_Su (between extended S and compact u). The cross-term there is k_S · k_u, which under (n) → (−n) (so k_u → −k_u) flips sign — correctly breaking the (n) ↔ (−n) symmetry in the 1D-compact setting.
-
-metric-charge introduces σ_uw (between two compact directions). The cross-term is k_u · k_w. The framework calls this "the 2D-compact extension of metric-mass's σ_Su shear bias," but mathematically the two are *different mechanisms breaking different symmetries*:
-
-| Shear | Cross-term | Breaks |
-|---|---|---|
-| σ_Su (metric-mass, 1D-compact) | k_S · k_u | (m → −m) — sign reflection |
-| σ_uw (metric-charge, 2D-compact) | k_u · k_w | (m, n) ↔ (m, −n) — chirality reflection |
-
-The 2D-compact "extension" of metric-mass's σ_Su would be σ_S₁u or σ_S₁w (or a combination) — extended-vs-compact shear. σ_uw is a *structurally new* mechanism only available with two compact directions, and it does something different.
-
-### Resolution candidates
-
-The math is firm; the project decision is what to do with it.
-
-**Resolution (a) — Add a different shear for matter/antimatter bias.** Introduce σ_S₁u or σ_S₁w shear in addition to σ_uw, and use the new shear for the Sakharov-CP analog. Pro: keeps the matter/antimatter framing intact. Con: adds a new structural ingredient (an extended-compact shear) that the framework didn't previously commit to.
-
-**Resolution (b) — Re-identify "matter/antimatter axis" with chirality reflection.** Treat (m, n) ↔ (m, −n) as the matter/antimatter axis and σ_uw as its bias mechanism. The framework's Ch 6 §1 separates sign reflection (current matter/antimatter) from mirror reflection (current chirality). Resolution (b) would *swap* which is called what. Pro: minimal new ingredients; the framework already has σ_uw and uses it. Con: changes Ch 6's matter/antimatter framing significantly; standard physics' matter/antimatter is C (charge conjugation), which is more naturally sign-reflection-flavored than chirality-flavored.
-
-**Resolution (c) — Acknowledge the limit.** The framework with σ_uw alone provides chirality bias. Whether it *also* provides matter/antimatter bias requires either (a) a different shear or (b) the chirality re-identification. Ch 8's Sakharov-CP-violation analog is partial (P-flavor bias) without a C-flavor mechanism. Pro: most honest about what the framework currently derives. Con: weakens the framework's claim to a Sakharov mechanism.
-
-**Project-direction question:** Resolution (a) is the cleanest physically (matches standard-physics' C, P, CP separation) but adds a structural ingredient. Resolution (b) is the most parsimonious but requires re-thinking Ch 6's two-reflections framing. Resolution (c) is the most honest about current state.
-
-I lean toward (c) for the immediate fix (correcting the Ch 6 §6 / Ch 8 §3 statements to be mathematically accurate) with a note flagging (a)/(b) as open project-direction work. The user's call.
-
----
-
 ## M3 — understanding the two fields
 
 This is the explanation requested for what the framework's "two U(1)s" actually means physically, and why the discrepancy with standard EM is load-bearing.
@@ -280,6 +182,6 @@ My recommendation: Start with **Medium**. The framework's commitments (closure r
 
 ## Cross-cutting observations
 
-- The σ_uw chirality finding (TODO-S4) was discovered while working on M1's wrap-order demonstration. Once σ_uw was tested under (u, w) ↔ (w, u) and found to be invariant, the natural follow-up — what *does* it transform under? — exposed the chirality-vs-sign mismatch. This is an example of why the M1 demonstration was valuable beyond just resolving the reviewer's concern: it caught a substantive issue the chapters had been carrying without flagging.
-- M3 (two U(1)s) and TODO-S4 (σ_uw chirality) are both about the framework's predicted structure being *richer than standard physics*. The framework consistently predicts more than the SM has. Whether this means the framework is overpredicting (and needs constraints to reduce to SM) or underpredicting-as-recognized (the extra structure is real and observable in principle) is a recurring open question.
-- The remaining substantive Moderate items (M2, M3, M8(a)) and the new TODO-S4 are all about *carrying through* what the framework already structurally predicts. None of them require new framework ingredients; they require honest computation against the existing structure. This is the right kind of remaining work for a project that is mostly framing-complete.
+- M3 (two U(1)s) is about the framework's predicted structure being *richer than standard physics*. The framework consistently predicts more than the SM has. Whether this means the framework is overpredicting (and needs constraints to reduce to SM) or underpredicting-as-recognized (the extra structure is real and observable in principle) is a recurring open question.
+- The remaining substantive Moderate items (M2, M3, M8(a)) are all about *carrying through* what the framework already structurally predicts. None of them require new framework ingredients; they require honest computation against the existing structure. This is the right kind of remaining work for a project that is mostly framing-complete.
+- The matter/antimatter bias question — opened by Ch 6 §6's chirality finding — is the one place where the framework currently has *no* derived mechanism for a structural property the user expects to be physically meaningful. Resolution candidates (different shear in metric, substrate-level chirality) are forwarded to project-direction work; the user has indicated they have ideas to discuss separately.

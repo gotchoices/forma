@@ -2,18 +2,18 @@
 
 This chapter turns on the off-diagonal shear σ_uw and examines what it adds to the framework. So far the framework has worked with the bare diagonal metric (σ_uw = 0); this chapter introduces shear as a parameter and traces its consequences through the inventory.
 
-The chapter has two main payloads. First, it carries the [Chapter 6 §6](06-handedness-and-pairs.md) shear-bias result through to the 2D-compact case explicitly, confirming the Sakharov-CP-violation analog for matter/antimatter asymmetry. Second, it examines the **fractional-charge optimization**: closure-satisfying multi-component links of the form k × T(1, q) (per [Chapter 4 §4.3](04-the-closure-condition.md), where the synchronization rule restricts multi-links to those with T(1, q) primitives) carry 1/k of their primitive's charge per component; the chapter computes which k is energetically favored under shear and reports the result honestly. If k = 3 emerges, the framework matches the structural pattern that MaSt model-F associates with standard physics' quark inventory.
+The chapter has two main payloads. First, it quantifies the chirality-bias result from [Chapter 6 §6](06-handedness-and-pairs.md) — σ_uw breaks the (m, n) ↔ (m, −n) symmetry but preserves (m, n) ↔ (−m, −n) — computing the explicit mass split between chirality partners under shear. Second, it examines the **fractional-charge optimization**: closure-satisfying multi-component links of the form k × T(1, q) (per [Chapter 4 §4.3](04-the-closure-condition.md), where the synchronization rule restricts multi-links to those with T(1, q) primitives) carry 1/k of their primitive's charge per component; the chapter computes which k is energetically favored under shear and reports the result honestly. If k = 3 emerges, the framework matches the structural pattern that MaSt model-F associates with standard physics' quark inventory.
 
 **Inheritance.**
 
 - *From [Chapter 1 §4](01-foundation.md):* the σ_uw shear definition and its deferred status; the metric form with shear active.
-- *From [Chapter 6 §6](06-handedness-and-pairs.md):* the shear-bias / Sakharov-CP-violation analog; ±(m, n) symmetry breaking from off-diagonal coupling.
-- *From [Chapter 7 §6](07-aspect-ratio-and-character.md):* the finding that ε alone does not select three-phase character; chapter 8 must provide the missing mechanism.
-- *From [metric-mass Chapter 7](../metric-mass/07-shear-and-bias.md):* the 1D-compact shear-bias analysis. The 2D-compact extension is the immediate target.
+- *From [Chapter 6 §6](06-handedness-and-pairs.md):* the chirality-bias result. σ_uw breaks (m, n) ↔ (m, −n) at the dispersion level; this chapter quantifies that bias.
+- *From [Chapter 7 §6](07-aspect-ratio-and-character.md):* the finding that ε alone does not select multi-component-link character; chapter 8 examines whether σ_uw provides the missing mechanism.
+- *From [metric-mass Chapter 7](../metric-mass/07-shear-and-bias.md):* the 1D-compact shear-bias analysis. **Note:** metric-mass's σ_Su shear is structurally distinct from metric-charge's σ_uw. The two shears couple different wavenumber pairs and break different symmetries. Chapter 6 §6.4 works through the comparison.
 
-**Distinctive job.** Derive the framework's prediction for **why three-phase fractional charge** is the structurally favored configuration when shear is on, and confirm the shear-bias symmetry-breaking from Chapter 6 quantitatively. These are the two key open mechanisms the framework needs to provide for the inventory to map onto standard physics' organization (matter/antimatter asymmetry; quark-like three-phase fractional charge).
+**Distinctive job.** Quantify σ_uw's chirality bias on the (m, n) inventory, and derive the framework's prediction for the energetically favored multi-component link structure under shear (the optimal k, and what fractional charge it produces).
 
-The framework treats both predictions as **emergent results** of the framework's own machinery. Standard physics' three-phase quark organization and observed matter/antimatter asymmetry are reference targets to compare against, not inputs.
+The framework treats both as **emergent results** of the framework's own machinery. Standard physics' three-phase quark organization is a reference target to compare against, not an input. Matter/antimatter asymmetry is *not* derived from σ_uw — see [§3](#3-chirality-bias-from-shear) and [Chapter 6 §6.7](06-handedness-and-pairs.md) for the open question.
 
 ---
 
@@ -55,24 +55,42 @@ $$
 
 with k_u = 2πm/L_u, k_w = 2πn/L_w as before (modulo periodicity adjustments under shear).
 
-Several structural observations:
+Several structural observations follow directly from the bilinearity of the cross-term in (k_u, k_w):
 
-- The cross-term −2σ k_u k_w breaks the (m, n) ↔ (−m, −n) symmetry: a mode with k_u and k_w of the same sign sees a different effective mass than one with opposite signs.
-- This is the **shear-bias** mechanism — the 2D-compact extension of metric-mass's 1D-compact result ([metric-mass Chapter 7 §6](../metric-mass/07-shear-and-bias.md)).
-- The (1, 1) mode and the (−1, −1) mode acquire different masses under shear, by an amount proportional to σ.
-- Mode crossings: at specific σ values, the order of (1, 1) vs (1, −1) vs (−1, 1) vs (−1, −1) reorganizes, producing structurally interesting transition points.
+- **The cross-term −2σ k_u k_w is invariant under (m, n) ↔ (−m, −n)** (joint sign flip of both windings, which leaves the product k_u·k_w unchanged). The (1, 1) and (−1, −1) modes have *identical* dispersion under shear.
+- **The cross-term flips sign under (m, n) ↔ (m, −n)** (chirality reflection — flipping only one winding). The (1, 1) and (1, −1) modes acquire *different* masses under shear: m²_(1, 1) ∝ 2K²(1−σ) and m²_(1, −1) ∝ 2K²(1+σ) with K = 2π/L (taking L_u = L_w = L for illustration).
+- **σ_uw is therefore a chirality-bias mechanism, not a sign-bias mechanism.** This is structurally distinct from [metric-mass Chapter 7 §6](../metric-mass/07-shear-and-bias.md)'s σ_Su shear, whose cross-term k_S·k_u flips sign under (n) → (−n) and so breaks the sign-reflection symmetry. The two shears couple different wavenumber pairs and break different symmetries; σ_uw is *not* the 2D-compact extension of metric-mass's σ_Su.
+- Mode crossings: at specific σ values the order of (1, 1) vs (1, −1) — chirality partners — reorganizes, but the (1, 1) and (−1, −1) ordering is preserved. The σ-induced reorganization acts on the chirality axis only.
 
-### 3. Matter/antimatter bias from shear (the Sakharov-CP-violation analog)
+The full symmetry analysis and its consequences are worked through in [Chapter 6 §6](06-handedness-and-pairs.md), which also surfaces a fourth structural neutrality mechanism (chirality-conjugate cancellation pairs) that follows from the same math.
 
-Carry forward the [metric-mass Chapter 7](../metric-mass/07-shear-and-bias.md) analysis to 2D-compact:
+### 3. Chirality bias from shear
 
-- The ±(m, n) symmetry is broken by shear: m_(1, 1) ≠ m_(−1, −1) when σ ≠ 0.
-- However, the (k_S, m, n) → (−k_S, −m, −n) symmetry of the *full* dispersion relation (including spacetime momenta) is exact.
-- Pure thermal equilibrium gives direction-correlated asymmetry: at given (k_S₁, k_S₂), the (m, n) and (−m, −n) populations differ, but summed over all k_S directions they balance.
+Per [Chapter 6 §6](06-handedness-and-pairs.md), the σ_uw cross-term in the dispersion breaks the (m, n) ↔ (m, −n) **chirality** reflection while preserving the (m, n) ↔ (−m, −n) **sign** reflection. The framework's σ_uw shear therefore provides a chirality-bias mechanism, not a matter/antimatter-bias mechanism. This section quantifies the chirality bias and notes its consequences.
 
-This is the framework's analog of one Sakharov ingredient (CP-violation) for what standard physics calls baryogenesis. The other two Sakharov ingredients (baryon-number-violation analog; non-equilibrium phase) are not provided by this chapter alone.
+**Mass split between chirality partners.** From the dispersion of §2, with k_u = K_u and k_w = K_w (positive magnitudes), the mass-squared values for the four sign combinations are:
 
-The chapter establishes the CP-violation analog *quantitatively* (computing the mass split, predicting the direction-correlated asymmetry coefficient) — going beyond Chapter 6 §6's structural statement that the bias exists.
+| Mode | k_u·k_w | m² (proportional) |
+|---|---|---|
+| (m, n) and (−m, −n) | +K_u K_w | (K_u² − 2σ K_u K_w + K_w²)/(1−σ²) |
+| (m, −n) and (−m, n) | −K_u K_w | (K_u² + 2σ K_u K_w + K_w²)/(1−σ²) |
+
+The two **sign-reflection partners** ((m, n) and (−m, −n)) sit at the same mass; the two **chirality-reflection partners** ((m, n) and (m, −n)) sit at masses that differ by an amount proportional to σ. For small σ, the leading split is
+
+<!-- Δm²/m² ≈ 4σ K_u K_w / (K_u² + K_w²) -->
+$$
+\frac{\Delta m^2}{m^2_{\sigma = 0}} \;\approx\; \frac{4\sigma\,K_u K_w}{K_u^2 + K_w^2} \;+\; \mathcal{O}(\sigma^2)
+$$
+
+(The exact value also acquires σ²-corrections from the (1−σ²) denominator, which we set aside at the linearized level.)
+
+**(k_S, m, n) → (−k_S, −m, −n) symmetry of the full dispersion is exact.** Adding spatial momentum k_S does not change the analysis: k_S² is invariant under any of the sign-flip operations considered, and there is no σ-dependent cross-term involving k_S in the sheared dispersion of §2 (the framework introduces only σ_uw, not σ_Su or σ_Sw). The full sign flip is therefore exactly preserved.
+
+**What the chirality bias means dynamically.** Under thermal equilibrium with σ ≠ 0, the populations of (m, n) and (m, −n) are unequal — mass-Boltzmann-suppressed by the Δm² above. A configuration prepared with equal amplitudes of the two chirality components is not in thermal equilibrium and would tend to redistribute toward the lower-energy chirality unless prevented by another conservation law. This is the dynamical chirality bias σ_uw produces.
+
+**What it does not do.** The framework's σ_uw shear does *not* provide a Sakharov-CP-violation analog in the matter/antimatter sense. Standard-physics Sakharov requires both C and P violation; σ_uw provides P-flavor (chirality) bias only. The C-flavor (sign-reflection) side has no derived mechanism in this chapter or [Chapter 6](06-handedness-and-pairs.md). Earlier framings of this chapter and Chapter 6 conflated the two and presented σ_uw as a Sakharov-CP analog; the math shows this is incorrect — the two shears (metric-mass's σ_Su and metric-charge's σ_uw) break different symmetries.
+
+**Open: matter/antimatter bias.** Whether the framework derives a matter/antimatter bias from any mechanism is left open. Candidate locations the framework's broader stack might supply such a mechanism are summarized in [Chapter 6 §6.7](06-handedness-and-pairs.md): a different shear (σ_Su or σ_Sw, not currently in the metric), substrate-level chirality from grid-primitive/grid-duality, or a structural mechanism not yet identified. None of these is committed to here; the math is honest about what σ_uw alone can and cannot do.
 
 ### 4. The closure condition under shear
 
@@ -166,7 +184,7 @@ This chapter's claim is therefore: **fractional charge structurally exists** (as
 
 The ε sweep of [Chapter 7](07-aspect-ratio-and-character.md) gave three regimes of sheet character (mass-only-dominated at extremes, charge-friendly at ε ≈ 1). Adding shear σ_uw to that inventory:
 
-- **Breaks (m, n) ↔ (−m, −n) symmetry** — Sakharov-CP-violation analog, supporting matter/antimatter asymmetry.
+- **Breaks (m, n) ↔ (m, −n) chirality symmetry** (per §3 derivation; preserves (m, n) ↔ (−m, −n) sign reflection). σ_uw provides chirality bias only; matter/antimatter bias is not derived here.
 - **Selects a k_opt-component link structure** — the optimization in §6 picks out which k minimizes link energy under shear; the framework reports what k_opt(σ, ε) emerges.
 - **Produces 1/k_opt fractional charges per component** — distributed across the link's structural components, with integer total charge preserved (consistent with grid-duality §7.5.4).
 - **Predicts confinement-like behavior for individual components** — per §7, individual components of a multi-link are not closure-satisfying in isolation and therefore not isolable.
@@ -193,7 +211,7 @@ This is the framework's full structural inventory at the linearized level. Wheth
 
 - **Does not derive numerical α** or charge magnitudes. Cited from [grid-duality §8](../grid-duality/08-where-alpha-appears.md); structural location settled there, numerical values open.
 - **Does not derive specific quark masses or mixing angles.** The framework predicts the structural pattern (three-phase links with 1/3 fractional charge) but not specific mass values; quantitative predictions are downstream MaSt-correspondence work.
-- **Does not provide a complete baryogenesis mechanism.** The CP-violation analog from §3 is one of three Sakharov ingredients; the others are not provided.
+- **Does not derive a matter/antimatter bias mechanism.** §3 shows σ_uw cannot do it (σ_uw breaks chirality, not sign reflection). What σ_uw provides is a chirality bias only — at most a P-flavor ingredient toward a Sakharov-CP construction; the C-flavor side is not derived. Forwarded to [Chapter 6 §6.7](06-handedness-and-pairs.md) for candidate alternatives.
 - **Does not derive nonlinear shear effects.** Linear theory only. Whether large σ produces qualitatively different behavior (beyond the linear approximation breaking down) is downstream work.
 - **Does not analyze interaction between distinct three-component links.** Multi-knot energetics is metric-binding territory.
 - **Does not derive the dynamical stability of fractional-charge components.** §7.4 establishes that components are *structurally* non-isolable (they are not closure-satisfying alone), but the *energetics* of separating components — whether the energy cost grows linearly with distance (true confinement), saturates at finite value (separable but bound), or some other functional form — is a multi-knot energetics calculation forwarded to [metric-binding](../metric-binding/).
@@ -208,9 +226,10 @@ This is the framework's full structural inventory at the linearized level. Wheth
 |---|---|
 | Are fractional-charge components dynamically stable, or only structurally non-isolable? What is E(separation) for pulling one component out of a k × T(1, q) multi-link? | [metric-binding](../metric-binding/) — multi-knot energetics. The framework structurally predicts components are not closure-satisfying alone (per §7.4), but the energetics of separation (string-tension-like vs finite barrier) is a multi-knot calculation. |
 | Does the k = 3 selection follow from the local shear-cross-term structure alone, or does it require global topology (Z₃ from grid-duality) as an input? | Open; possibly resolved by grid-duality's substrate analysis |
-| Does the shear-induced CP-violation analog quantitatively match observed CP-violation magnitudes? | Downstream MaSt-correspondence work + experimental data |
+| Does the σ_uw chirality bias quantitatively match observed P-violation magnitudes (e.g., parity-violation in weak interactions)? | Downstream MaSt-correspondence work + experimental data |
+| Does the framework derive a matter/antimatter bias from any mechanism? §3 shows σ_uw cannot. Candidates: σ_Su or σ_Sw (different shear, not in current metric); substrate-level chirality from grid-primitive/grid-duality; other unidentified mechanisms. | Project-direction question (see [Chapter 6 §6.7](06-handedness-and-pairs.md)) |
 | Are there other multi-component links (k = 5, k = 7, ...) energetically favored at specific σ values, corresponding to potential exotic states? | Open follow-up; downstream investigation |
 | Does the framework predict any deviation from standard quark mass / charge ratios that could be experimentally tested? | Open; depends on quantitative completion of the framework |
-| What is the relationship between the framework's σ_uw and observed CP-violating phases (e.g., CKM matrix phases)? | Downstream MaSt-correspondence work |
+| If observed CP-violation has a chirality (P-flavor) component, can σ_uw's chirality bias quantitatively match its magnitude? (The framework does not derive the C-flavor component from σ_uw.) | Downstream MaSt-correspondence work |
 | Does the choice of which compact direction is "tube" (closure-asymmetric) vs "ring" force a specific sign convention on σ_uw, or is the sign free? | Convention question; possibly settled by combination of Chapters 3 §3.2 and 5 §6.3 |
 | At very large σ (approaching the |σ| < 1 boundary where the metric becomes degenerate), does the framework predict any structural transitions or singular behavior? | Out of scope; possibly relevant for nonlinear extensions |

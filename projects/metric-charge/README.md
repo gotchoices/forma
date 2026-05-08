@@ -82,19 +82,20 @@ Claims to examine — derived where possible, stated explicitly when taken as in
 
 5. **The closure condition (centerpiece) — synchronization.** A wave configuration on the 2D sheet promotes a (massive) mode to a charged-state mode when, during a single closed traversal of T(m, n), every time the tube-direction phase crosses zero, the ring-direction phase also crosses zero. Operationally: this holds iff **m divides n (m | n) with both nonzero.** The closure-satisfying inventory is exactly the **T(1, q) primitives and their k-component repetitions k × T(1, q).**
 
-6. **Closure failure → mass without observable charge — three mechanisms.** A wave configuration that does *not* satisfy synchronization carries mass but no observable EM:
+6. **Closure failure → mass without observable charge — four mechanisms.** A wave configuration that does *not* satisfy synchronization carries mass but no observable EM:
    - **Single-axis** (one winding zero) — fails by missing one of the two compact-direction momenta
    - **Synchronization-failure** (both windings nonzero but m ∤ n — e.g., genuine torus knots T(2, 3), T(2, 5), T(3, 4), ...) — fails by tube/ring desynchronization
-   - **Cancellation pair** (single field with both (m, n) and (−m, −n) at equal amplitude — see Chapter 6) — fails by internal sign cancellation
+   - **Sign-conjugate cancellation pair** (single field with both (m, n) and (−m, −n) at equal amplitude — see Chapter 6 §4) — both U(1)s cancel; doubled mass
+   - **Chirality-conjugate cancellation pair** (single field with both (m, n) and (m, −n) at equal amplitude — see Chapter 6 §6.6) — one U(1) doubled, the other cancels; metric-side appearance mimics single-axis (2m, 0)
    
-   Three structurally distinct mass-only mechanisms, each producing massive but EM-neutral states by a different route. Candidate identifications with what standard physics calls neutrinos, neutral mesons, the Higgs, and other neutral massive states are downstream MaSt-correspondence work.
+   Four structurally distinct mass-only mechanisms, each producing massive but EM-neutral states by a different route. Candidate identifications with what standard physics calls neutrinos, neutral mesons, the Higgs, and other neutral massive states are downstream MaSt-correspondence work.
 
-7. **Knot handedness as the matter/antimatter axis.** A knot has two traversal directions. The handedness carries the matter/antimatter distinction (and possibly the sign of spin) — the analog of MaSt's ±n on a 2D sheet.
+7. **Knot handedness as a candidate matter/antimatter axis.** A knot has two traversal directions. The (m, n) ↔ (−m, −n) sign reflection is the framework's candidate axis for what standard physics calls matter/antimatter. Whether the framework derives any *bias* on this axis (a population preference for one over the other) is open — Chapter 6 §6 demonstrates that σ_uw shear cannot provide such a bias (σ_uw breaks chirality, not sign reflection); candidate mechanisms (different shear, substrate-level chirality from grid-primitive/grid-duality) are forwarded for project-direction work.
 
-8. **Shear breaks symmetries.** σ_uw between u and w affects:
-   - matter/antimatter preference (bias-breaking)
-   - alignment of complementary nodes (proton-vs-neutron analog on a single sheet)
-   - whatever else falls out of the algebra
+8. **Shear breaks symmetries — but the symmetry it breaks is chirality, not sign reflection.** σ_uw between u and w produces:
+   - **Chirality bias** — (m, n) and (m, −n) acquire different masses under σ ≠ 0; the bias is on the mirror-reflection axis (Chapter 6 §6, Chapter 8 §3)
+   - **Selection of multi-component link structure** — the energetics of k × T(1, q) configurations under shear pick out a favored k_opt(σ, ε) (Chapter 8 §6)
+   - **No matter/antimatter bias.** σ_uw is *invariant* under (m, n) ↔ (−m, −n); the joint-sign-flip symmetry is preserved (Chapter 6 §6, derivation explicit)
 
 9. **Multi-phase knots on w produce fractional charge (the quark mechanism).** N knots distributed evenly in w-phase, all sharing the same closure pattern, contribute fractional 1/N charge each. Three-phase populations give thirds-of-a-charge — the structural origin of quark-like behavior on a single sheet. The closure condition still applies per knot, but the *embedding pattern* of multiple knots around the w-cycle is what produces fractional contributions.
 
@@ -149,11 +150,11 @@ The chapters below are plausible follow-ups, not commitments.
 
 5. **`05-metric-self-consistency.md`** — *Metric self-consistency and gauge promotion.* Compute T_μν for representative modes. Show that under linearized Einstein equations, closure-satisfying modes source off-diagonal metric entries (g_μu, g_μw) whose pattern matches the standard Kaluza-Klein identification of compact-direction off-diagonals as gauge potentials A_μ and B_μ. Closure-failing modes source off-diagonals too, but in patterns that don't form a valid gauge potential — these stay internal (a candidate for neutrino-class structural neutrality). Treat ±n / pair-cancellation cases (analog of metric-mass §7). Establishes closure as the *metric-side* rule under which mass-induced off-diagonals become observable EM, parallel to metric-mass Chapter 5.
 
-6. **`06-handedness-and-pairs.md`** — Knot orientation as the matter/antimatter degree of freedom. Examine when complementary pairs *within a single field configuration* cancel net charge (giving apparent neutrality through internal cancellation, distinct from the structural neutrality of chapters 4 and 5) and when they don't. The two-distinct-knots version of pair behavior — pass-through vs. annihilation — is taken up in [metric-binding](../metric-binding/).
+6. **`06-handedness-and-pairs.md`** — Knot orientation as the (candidate) matter/antimatter axis. Examine when complementary pairs *within a single field configuration* cancel net charge (giving apparent neutrality through internal cancellation, distinct from the structural neutrality of chapters 4 and 5) and when they don't. Derive what σ_uw shear actually breaks at the dispersion level — the chapter shows σ_uw breaks chirality (m, n) ↔ (m, −n), not sign reflection (m, n) ↔ (−m, −n) — surfacing both the framework's chirality bias and a fourth (chirality-conjugate) cancellation mechanism. The two-distinct-knots version of pair behavior — pass-through vs. annihilation — is taken up in [metric-binding](../metric-binding/).
 
 7. **`07-aspect-ratio-and-character.md`** — Sweep ε = L_u / L_w. Discover what knot families dominate at small ε (thin sheet), large ε (fat sheet), and ε ≈ 1. Look — without targeting it — for the conditions under which a sheet supports single-phase, three-phase, or dark behaviors. The "extreme aspect ratio" question (per MaSt model-F's electron-sheet identification) and the "diffuse charge" question (per model-F's neutrino-sheet identification) are examined here as reference targets, not as identifications this project pre-commits to.
 
-8. **`08-shear-and-fractional-charge.md`** — Turn on σ_uw. Which symmetries break? Test the prediction that shear biases matter over antimatter. Then derive the fractional-charge mechanism: N phased wraps distributed in w contribute 1/N charge each, and shear is what selects N = 3 cleanly. This is where the quark-like three-phase structure should emerge if the framework is right.
+8. **`08-shear-and-fractional-charge.md`** — Turn on σ_uw. Quantify the chirality bias derived in Chapter 6 §6 (the explicit mass split between chirality partners under shear). Then examine the fractional-charge optimization: closure-satisfying multi-component links of the form k × T(1, q) have 1/k charge per component; the chapter computes which k is energetically favored under shear and reports the result honestly. If k = 3 emerges, the framework matches the structural pattern that MaSt model-F associates with quark organization.
 
 9. **`09-closing-summary.md`** — Consolidate what the project established, ruled out, and unexpectedly found. Hand off to [metric-binding](../metric-binding/) for the multi-knot interaction story.
 
