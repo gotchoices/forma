@@ -1,6 +1,6 @@
-# Chapter 9 — Closing Summary
+# Chapter 10 — Closing Summary
 
-This project set out to develop a mathematical model of the GRID lattice's primitive — the smallest unit at which edges, nodes, and ultimately the lattice itself are modeled. Chapters 1–8 worked through the model in production form. This chapter consolidates what was established, what was discovered along the way (sometimes against early expectations), what was ruled out, and what remains for follow-up.
+This project set out to develop a mathematical model of the GRID lattice's primitive — the smallest unit at which edges, nodes, and ultimately the lattice itself are modeled. Chapters 1–9 worked through the model in production form. This chapter consolidates what was established, what was discovered along the way (sometimes against early expectations), what was ruled out, and what remains for follow-up.
 
 ---
 
@@ -17,8 +17,9 @@ The answer the project arrived at is a specific geometric primitive — a 2D cyl
 - **Chapter 5** assembled the cylinder primitives into a hexagonal lattice and confirmed clean propagation at *c* with no anomalies.
 - **Chapters 6–7** built the bridges to grid/maxwell.md and grid/gravity.md. **The bridges are made**: the cylinder primitive lattice is compatible with both. Grid/maxwell.md's derivation runs on top (matter substrate from the cylinder primitive, gauge symmetry built in, A_μ from axiom A4 in the standard gauge-theory way), and grid/gravity.md's Jacobson argument runs on top (area-scaling entropy supplied by chapter 4, consistency with ζ_2D = 1/3 confirmed by chapter 7). Maxwell and 2D-Jacobson gravity follow.
 - **Chapter 8** examined the wrap-and-α question. The result was *inconclusive*: a candidate physical picture for α (the kink-loss fraction per closed wrap) and a sharper target for follow-up calculation, but no controlled structural form. The leading-order kink-loss formula has order-unity expansion parameter at the relevant *N* and assumes incoherent kink summation that is not appropriate for a coherent closed loop, so the chapter walked back its earlier "structural ratio with one free variable" claim to a conditional candidate.
+- **Chapter 9** revisits the matched-chirality assumption of chapter 1 §8 and develops the structural option in which the assumption is relaxed by a small dimensionless parameter χ_anti. The chapter's mathematical content (firm) is the matter-field reading of the perturbation as a built-in substrate-level background gauge field, the Aharonov-Bohm pure-gauge invisibility of that field on extended space, and its observability on compact wraps as Wilson-loop phases. The chapter's interpretive content (speculative, flagged explicitly) raises anomalous magnetic moments and matter / antimatter sign asymmetry as candidate macroscopic interpretations of those phases, while leaving open whether the interpretation is correct. Whether observed anomalies actually arise from this mechanism is for downstream work to decide.
 
-The primary deliverable — a substrate-level lattice compatible with grid/maxwell.md and grid/gravity.md — is therefore made. Chapter 8's α exercise is inconclusive on its own narrower question; that does not affect chapters 1–7.
+The primary deliverable — a substrate-level lattice compatible with grid/maxwell.md and grid/gravity.md — is therefore made. Chapter 8's α exercise is inconclusive on its own narrower question; chapter 9's chirality-asymmetry option is a structural addendum that the rest of the project does not depend on. Neither affects chapters 1–7.
 
 ---
 

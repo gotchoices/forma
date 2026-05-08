@@ -140,7 +140,20 @@ Chapter-by-chapter review. Issues categorized as:
 
 ---
 
-## Chapter 9 — Closing Summary
+## Chapter 9 — Chirality Asymmetry
+
+### Serious
+- None.
+
+### Moderate
+- (No items yet — chapter is newly drafted as a structural addendum opening the matched-chirality assumption to a small antisymmetric perturbation χ_anti, with Aharonov-Bohm pure-gauge invisibility on extended space and Wilson-loop observability on compact wraps. Bridge to anomalous magnetic moments in metric-charge.)
+
+### Light
+- (No items yet.)
+
+---
+
+## Chapter 10 — Closing Summary
 
 ### Serious
 - None directly; the issues here are inherited from earlier chapters.

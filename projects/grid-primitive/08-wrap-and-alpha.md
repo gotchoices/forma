@@ -246,4 +246,4 @@ What this chapter does *not* establish:
 
 The α exercise is therefore inconclusive: a candidate picture and a well-defined calculation, both contingent on prerequisites the chapter cannot satisfy. Whether α emerges from the cylinder primitive's geometry — and in what functional form — remains open.
 
-The next chapter is the project's closing summary.
+The chapter sequence is summarised in the project [README](README.md).
