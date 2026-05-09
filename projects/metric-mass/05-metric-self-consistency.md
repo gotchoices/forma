@@ -1,4 +1,4 @@
-# Chapter 5 — Self-consistency of the bare metric
+# Chapter 5 — Self-consistency of the bare metric under standing-wave particles
 
 [Chapter 1](01-foundation.md) posited a bare diagonal metric on M
 as the *starting* condition, with the understanding (Chapter 1 §3)
@@ -9,17 +9,91 @@ project's central question, stated then, was:
 > manifold M, do we expect off-diagonal entries of the metric to
 > remain zero, or does something force them to develop?
 
-The intervening chapters have produced the modes (Chapter 2),
-examined them (Chapter 3), and characterized their behavior in
-mode interactions (Chapter 4). This chapter turns to the metric
-question. We compute the stress-energy of the wave field on the
-bare metric, look at which entries are nonzero, and ask what that
-implies for the metric.
+The intervening chapters produced the modes (Chapter 2), examined
+their phase structure (Chapter 3), and characterized their
+behavior under linear superposition (Chapter 4). Those chapters
+treated the wave equation generally — both ±n traveling-wave
+solutions are mathematically valid, and the analysis was
+agnostic about which combination corresponds to a physical
+particle. This chapter takes the next step and identifies the
+standing wave as the candidate particle, then asks the
+metric-self-consistency question for it.
 
-The chapter does not predetermine the answer. We compute, report
-what the math gives, and let the reader interpret. The
-"must / can't / may / may not" question is answered by the math
-case by case.
+#### The standing-wave reading
+
+The structural argument is short. A traveling wave around the
+compact direction has a definite direction of propagation
+around the loop — the sign of n labels which way the phase
+rotates around u. A particle on M, however, should not carry a
+built-in direction of propagation around a compact internal
+coordinate; nothing about "being a particle" picks out one
+direction around the loop over the other.
+
+The natural construction without a preferred direction is the
+**standing wave**: the equal-amplitude superposition of the +n
+and −n traveling-wave components. The standing wave travels
+"both ways or neither way" around the loop — equivalently, its
+phase has fixed nodes and antinodes in u rather than rotating in
+one direction. The ±n components are not separate physical
+objects that occasionally meet; they are the *two solutions of
+the same wave equation that, together, build the directionless
+standing wave that is the particle*.
+
+This reading aligns with the broader project arc. In
+[metric-charge](../metric-charge/), particles are knots on a 2D
+compact sheet — closed wavefronts of standing waves on T². The
+1D analog that lives on metric-mass's compact circle is exactly
+the ±n superposition: a standing wave on S¹.
+
+#### What this chapter does
+
+For the standing-wave particle, this chapter computes the
+stress-energy and reads off what the metric must do. The
+calculation proceeds in two stages:
+
+- **Per-component (§§2–5).** Compute the stress-energy of a
+  single +n traveling-wave component as an intermediate. This
+  *would* source off-diagonal cross terms. The math here is
+  textbook KK and reproduces the standard result.
+- **Standing-wave particle (§§7–8).** Combine the +n and −n
+  components into the standing wave. The n-linear cross-terms
+  cancel exactly, and the standing-wave particle's stress-energy
+  is purely diagonal (in the rest case). The bare diagonal metric
+  is preserved.
+
+Chapter 1's stance was to *not* impose Einstein's equations as
+part of the project's setup ("Gravity. Einstein's equations are
+not in play"). This chapter examines what would happen *if we
+did*. The choice to look at this question is a deliberate
+extension of scope: we keep the bare metric as Chapter 1 set it,
+and ask what extra structure Einstein's equations would source on
+top of it.
+
+The headline result, in short: **the standing-wave particle is
+consistent with the bare diagonal metric**. The single-component
+analysis of §§2–5 *would* source off-diagonal cross terms, but
+the standing wave is the sum of two oppositely-directed
+components whose n-linear cross-term contributions cancel
+exactly, leaving only the diagonal modifications (g_tt, g_uu)
+that the rest energy naturally produces.
+
+#### A note on chapter-3 / chapter-4 framing
+
+Chapters 3 and 4 spoke loosely of ±n as a "matter/antimatter
+analog," in line with how canonical Kaluza-Klein theory
+identifies ±n traveling-wave components as charge sign (particle
+and antiparticle). Under the standing-wave reading developed here,
+that framing does not survive: ±n components are not separate
+particles that occasionally meet — they are the two components
+of a *single* standing-wave particle, always present together.
+The framework on the minimal manifold (t, S, u) does not, on its
+own, supply a clear antimatter analog; whether antimatter
+corresponds to a standing wave of opposite polarity, requires
+additional structure (e.g., the second compact direction in
+metric-charge, or a substrate-level chirality asymmetry as in
+grid-primitive chapter 9), or is simply not present at this
+level, is left open. This chapter does not commit to an
+antimatter interpretation.
 
 ---
 
@@ -28,13 +102,13 @@ case by case.
 | § | Concept |
 |---|---------|
 | 1 | Two senses of "self-consistent" |
-| 2 | Stress-energy of a wave mode |
-| 3 | Reading the cross-terms: what's nonzero, when |
+| 2 | Per-component stress-energy: a single ±n traveling wave |
+| 3 | Reading the cross-terms: what's nonzero per component |
 | 4 | The chicken-and-egg problem |
-| 5 | Back-reaction: what Einstein's equations would source |
+| 5 | Per-component back-reaction: what a single component would source |
 | 6 | The Kaluza-Klein parallel |
-| 7 | The ±n superposition: cross-term cancellation |
-| 8 | Putting the chart together: must / can't / may / may not |
+| 7 | The standing-wave particle: cross-term cancellation |
+| 8 | Putting the chart together: standing-wave vs single-component |
 | 9 | What this chapter does not settle |
 | 10 | End of Chapter 5 |
 
@@ -78,7 +152,18 @@ impose Einstein's equations on M.
 
 ---
 
-## 2. Stress-energy of a wave mode
+## 2. Per-component stress-energy: a single ±n traveling wave
+
+We compute the stress-energy of a single traveling-wave component
+of the form φ_n = e^{i(k_S S − ωt + nu/R_u)} for a fixed sign of
+n. This is *not yet the particle* — under the standing-wave
+reading the physical particle is the ±n superposition, computed
+in §7. But the per-component stress-energy is the building block
+the standing wave is constructed from, and the cross-term
+structure that surfaces here is what §7 will show cancels in the
+full superposition. Working through the per-component case first
+gives the cross-term pattern that the standing-wave construction
+will partially undo.
 
 The stress-energy tensor of a complex scalar field with
 Lagrangian L = g^μν ∂_μ φ* ∂_ν φ is
@@ -278,7 +363,40 @@ differ.
 
 ---
 
-## 5. Back-reaction: what Einstein's equations would source
+## 5. Per-component back-reaction: what a single component would source
+
+This section reads off the metric implications of the
+single-component stress-energy from §3. A +n traveling-wave
+component, treated as if it were itself the particle, would
+source g_tu (and additionally g_tS, g_Su when moving). §7 then
+combines the +n and −n components into the standing wave that
+*is* the particle and shows that the n-linear cross-term
+sourcings cancel.
+
+A note on the relationship to Kaluza-Klein theory before
+proceeding. The cross-term pattern that emerges in this section
+is *similar in form* to what KK produces — both involve
+off-diagonal entries between a 4D direction and the compact
+direction sourced by compact-direction wavenumber — but the
+underlying physical setups are different. Standard KK
+([primers/kaluza-klein.md](../../primers/kaluza-klein.md))
+posits a 4D theory of gravity *plus a massive* (or charged)
+particle on a manifold with one compact extra direction; the
+off-diagonal cross-term that emerges is identified with the
+electromagnetic potential and is *real and lingering* — it does
+not cancel, because KK takes definite-charge particles as input
+(particles and antiparticles are separate states, not coherent
+superpositions). This project, by contrast, posits *light only*
+(no mass, no charge) on a manifold with one compact direction;
+mass emerges from the wave's compact-direction structure
+(Chapter 2), and the per-component cross-term that surfaces
+here is then a candidate for cancellation when the per-component
+intermediates are assembled into the directionless standing-wave
+particle that the project commits to as the physical state.
+The two frameworks share mathematical machinery at the
+per-component level but differ in starting point and in what
+the cross-term ultimately does. §7 shows that ours, hopefully,
+vanishes.
 
 Linearized Einstein equations around the bare metric η_μν take
 the form
@@ -325,102 +443,138 @@ Three things follow:
    *exactly one* off-diagonal entry to develop, and it is the
    one that mixes time with the compact direction.
 
-The third point is the most novel. It says the bare metric of
-Chapter 1 is consistent with no-field and with light, but is *not*
-consistent with massive modes if Einstein's equations are
-imposed: a g_tu cross-term must develop.
+The third point is the most novel for the per-component picture.
+A single +n (or single −n) traveling-wave component, treated as
+if it were a particle, would force the bare metric to develop a
+g_tu cross-term — the same form of off-diagonal that KK's
+external-mass calculation produces.
 
-This answers the project's central question
-([Chapter 1 §3](01-foundation.md)) for the case of mass on the
-minimal manifold: **off-diagonals are forced** — specifically
-g_tu, and additionally g_tS, g_Su when the mass is moving.
+This is **not** yet the answer to the project's central question.
+Under the standing-wave reading developed in this chapter's
+intro, the physical particle is the ±n superposition, not a
+single component. §7 carries out the standing-wave calculation
+and shows that the n-linear cross-term sourcings (g_tu, and at
+non-zero k_S also g_Su) cancel exactly — the directionless
+standing-wave particle has no compact-direction current to
+source those off-diagonals. Only the n-independent cross-term
+(g_tS, present only for moving particles, sourced by the
+conventional Poynting-like flux of the moving energy density)
+survives. This is where our framework diverges from KK's
+"lingering cross term" picture: KK's particle is the per-component
+object and its cross term is real; our particle is the standing
+wave and its corresponding cross term cancels.
+
+The summary at the end of §8 brings the per-component (this
+section) and standing-wave (§7) results together side by side.
 
 ---
 
 ## 6. The Kaluza-Klein parallel
 
-The structure of §5 lines up with standard Kaluza-Klein theory
-in a specific and informative way.
+This project is a Kaluza-Klein-style construction
+([primers/kaluza-klein.md](../../primers/kaluza-klein.md)) — a
+manifold with one compact extra dimension, with off-diagonal
+metric components arising from compact-direction wave structure.
+The math at the per-component level is recognisably the
+KK calculation. But the project's setup and the resulting
+fate of the cross-term differ from canonical KK in two
+specific ways worth flagging.
 
-In standard KK ([primers/kaluza-klein.md §5](../../primers/kaluza-klein.md)),
-the off-diagonal metric component g_μ5 (mixing a 4D direction
-with the compact 5th direction) is identified with the
-electromagnetic potential A_μ. A particle with compact-direction
-momentum p_w (interpreted in standard KK as electric charge)
-sources A_μ via Einstein's equations, exactly as a charged
-particle sources the electromagnetic field via Maxwell's
-equations.
+#### Different starting points
 
-In our framework, compact-direction momentum is being
-interpreted as **mass** (m = ℏ|n|/(R_u c)) rather than as
-charge ([Chapter 2 §6](02-mass-from-u.md)). But the math of
-§5 says that this compact-direction momentum *does* source the
-analogous off-diagonal metric component g_tu (the "time"
-component of the KK-style potential). The mechanism is the same;
-only the interpretation has shifted.
+Canonical KK begins with 4D gravity plus a *massive* (or
+charged) particle on a 5D manifold with one compact direction.
+The starting object is a particle that already carries mass and
+charge; the off-diagonal cross-term g_μ5 then appears in
+Einstein's equations and is identified with the electromagnetic
+potential A_μ. The KK punchline is that adding one compact
+extra dimension to gravity (plus an external particle) produces
+electromagnetism.
 
-This is one of those points where the project's choice of
-interpretation has consequences worth flagging:
+This project begins with **light only** (no mass, no charge) on
+the (t, S, u) manifold with u compact. There is no externally
+postulated particle; mass *emerges* from the compact-direction
+wave structure (Chapter 2). The per-component cross-term that
+arises in §§2–5 has the same off-diagonal index structure as
+KK's g_μ5, but its origin is sourced by the wave's
+compact-direction wavenumber n rather than by an externally-given
+charge. The KK machinery applies; the input differs.
 
-- *In standard KK*: ±n is charge sign, and ±n in superposition
-  gives matter/antimatter cancellation of charge (g_t5 cancels
-  for ±n superposition; Chapter 4 §3 noted the analog cross-
-  check for our case).
-- *In our framework*: ±n is read as a mass-direction handedness.
-  The same cross-term g_tu cancels for ±n superposition (we
-  compute this explicitly in §7 below). What standard KK would
-  call "anti-matter cancels matter's charge" we are looking at
-  as "anti-handed-mass cancels handed-mass's compact-direction
-  flux."
+#### Different fates of the cross-term
 
-Whether these are different framings of the same physics or
-genuinely different physical readings is a question this
-project cannot settle on its own. It is worth noting, though,
-that the math doesn't distinguish: the same off-diagonal
-sourcing mechanism is at play under both interpretations.
+The more substantive difference is what happens to the
+cross-term. Canonical KK's g_μ5 *lingers*: a definite-charge
+particle and its antiparticle are treated as separate states
+(not coherent superpositions), each sources its own cross-term,
+and the cross-term does not cancel. The lingering g_μ5 *is* the
+EM potential — it is the entire point of canonical KK.
 
-The project's choice to read compact-direction momentum as mass
-(not charge) is a *framing* choice. If the framing turns out to
-be incompatible with the off-diagonal structure that the math
-requires — i.e., if the g_tu cross-term that mass sources is
-*exactly* what standard physics calls electromagnetism — then
-either (a) our framing is a notational rename of standard KK
-with mass and charge swapped, or (b) the project's mass and
-standard KK's charge are different concepts that happen to share
-a sourcing mechanism. Distinguishing (a) from (b) is beyond this
-chapter's scope.
+This project's per-component cross-term, by contrast, is hoped
+(and §7 will confirm) to *vanish* for the directionless
+standing-wave particle. The standing wave is the equal-amplitude
+superposition of +n and −n components; its compact-direction
+"current" is zero by construction; its per-component
+cross-terms cancel structurally. There is no lingering EM
+potential — and therefore no electromagnetism — produced by
+this framework's mass particle on the minimal manifold.
 
-### Looking ahead to Chapter 6 — this is more than a cross-check
+That asymmetry between canonical KK and this project is what the
+standing-wave reading is doing. KK produces a lingering cross
+term and gets EM out of it; this project produces a cross term
+that cancels and gets a clean diagonal metric for rest mass.
+The shared KK machinery (off-diagonal sourcing by
+compact-direction wavenumber) does not force a shared physical
+outcome — what survives the construction depends on what kind of
+particle is taken as the physical state.
 
-What §5–§6 have constructed is more than a structural parallel
-with KK. Compact-direction momentum sources off-diagonal metric
-entries (§5); under the KK identification those entries are
-gauge potentials A_μ (§6); a passing wave's worldline through
-the perturbed metric picks up phase via the line integral
-∮ A_μ dx^μ; that phase manifests as **trajectory deflection**
-(gravitational lensing) and **coordinate-time slowdown**
-(Shapiro delay) to a distant observer.
+#### What this means for the project
 
-In other words: the chain compact momentum → off-diagonal
-sourcing → KK gauge potential → phase holonomy on passing
-worldlines is **a calculable mechanism for how mass bends
-light**, internal to this framework. It is more granular than
-standard GR's "mass curves spacetime; particles follow geodesics"
-postulate, because each step admits an explicit calculation.
-Chapter 6 §4 elevates this from cross-check to mechanism
-candidate, alongside the entropic-gravity and GRID-substrate
-mechanism programs.
+The metric-mass project does not produce electromagnetism. It
+produces mass, via the compact-direction wave structure of
+Chapter 2 and the diagonal stress-energy of §7. Whether *charge*
+exists in this framework — and if so, where — is the question
+[metric-charge](../metric-charge/) takes up. There the answer
+involves a *second* compact direction (a 2D compact sheet
+rather than a single compact circle), and the topological
+structure of T² supplies the gauge structure that one compact
+direction alone does not.
+
+One way to read the relationship: canonical KK's "compact
+dimension produces EM" works because it puts mass in by hand
+and gets EM out via the lingering cross-term. This project puts
+light in only, and the same KK machinery produces *just mass* —
+the cross-term cancels for the directionless standing-wave
+particle, leaving rest mass as the sole macroscopic signature.
+EM (or its analog) requires the second compact direction. The
+metric-mass result that the bare diagonal metric is preserved
+by the rest standing-wave particle is therefore consistent with
+"no EM at this level," not in conflict with the KK parallel.
+
+#### Looking ahead to Chapter 6
+
+Chapter 6 picks up the gravitational consequences. Under the
+standing-wave reading, the rest-mass particle is purely diagonal
+in stress-energy, so its leading gravitational signature is the
+diagonal modification of the metric (g_tt and g_uu). Off-diagonal
+contributions appear only when the particle is *moving* (g_tS
+from the conventional Poynting-like flux). The relevant
+perturbations for the standing-wave particle are the diagonal
+ones — rest-energy density curving spacetime in the conventional
+GR way — not the off-diagonal g_tu of the per-component
+intermediate.
 
 ---
 
-## 7. The ±n superposition: cross-term cancellation
+## 7. The standing-wave particle: cross-term cancellation
 
-[Chapter 4](04-mode-interactions.md) examined the static
-superposition of +n and −n at the same S. The energy was 2 m_n c²
-(no cancellation at the diagonal level). Now we ask the
-analogous question at the off-diagonal level.
+This is the central calculation of the chapter. The
+per-component analysis of §§2–5 was the intermediate; this
+section assembles the standing-wave particle from its ±n
+components and reads off what its stress-energy actually
+requires of the metric.
 
-For the superposition φ_+ + φ_-, where
+The standing-wave particle is by construction the equal-amplitude
+superposition φ = φ_+ + φ_-, where
 
 <!-- φ_+ = exp(i(k_S S - ω t + n u/R_u)),  φ_- = exp(i(k_S S - ω t - n u/R_u)) -->
 $$
@@ -463,159 +617,211 @@ k^-_μ = (−ω, k_S, −n/R_u). Adding:
 | T_tu | −2ω(n/R_u) − 2ω(−n/R_u) | **0 (cancels)** |
 | T_Su | 2k_S(n/R_u) + 2k_S(−n/R_u) | **0 (cancels)** |
 
-Two cross-terms vanish in the superposition. The cancellation is
-exact and is a direct consequence of T being bilinear in n: the
-+n and −n contributions to entries linear in n have opposite
-signs and cancel, while entries quadratic in n (like T_uu) have
-the same sign and add.
+The two n-linear cross-terms vanish identically. The
+cancellation is exact and follows from the per-component T being
+linear in n for those entries: the +n and −n contributions to
+T_tu and T_Su have opposite signs and cancel, while entries that
+involve n quadratically (T_uu) or not at all (T_tt, T_SS, T_tS)
+have matching signs and add.
 
-So:
+So for the standing-wave particle:
 
-- **Diagonal entries (T_tt, T_SS, T_uu) double** in the
-  superposition. Energy and pressure are additive, and the
-  superposition has 2× the rest mass of a single component.
-- **The "n-dependent" cross-terms (T_tu, T_Su) cancel** in the
-  superposition. The off-diagonal entries that involve the
-  compact-direction wavenumber linearly are exactly canceled
-  when ±n are superposed.
-- **The "n-independent" cross-term T_tS doubles**. The
-  k_S-related cross-term has no n-dependence, so it is not
-  affected by the ±n cancellation.
+- **Diagonal entries (T_tt, T_SS, T_uu) double** relative to a
+  single component. Energy and pressure are additive across the
+  two components, and the integrated rest energy of the
+  standing wave is twice that of either component alone.
+- **The n-linear cross-terms (T_tu, T_Su) cancel structurally**.
+  These are the off-diagonal entries that involve the
+  compact-direction wavenumber linearly; they are exactly absent
+  in the standing-wave configuration by virtue of the
+  directionless construction.
+- **The n-independent cross-term T_tS survives, doubled**. This
+  cross-term is non-zero only when k_S ≠ 0 (the standing-wave
+  particle is moving in S). It has no n-dependence, so the
+  ±n cancellation does not touch it; it is the conventional
+  Poynting-like flux of moving energy density, present for any
+  moving mass.
 
-In particular, for a static ±n superposition (k_S = 0): all
-off-diagonals cancel except none-that-survive (since T_tS = 0
-when k_S = 0). The total stress-energy is purely diagonal:
+In particular, for a **standing-wave particle at rest**
+(k_S = 0): T_tS also vanishes, and the total stress-energy is
+purely diagonal:
 
-<!-- For ±n at rest: T_μν = diag(4ω², 0, 4(n/R_u)²) -->
+<!-- For standing wave at rest: T_μν = 2|φ|² · diag(2ω², 0, 2(n/R_u)²) -->
 $$
-T_{\mu\nu}^\text{static } \pm n = 2|\varphi|^2 \cdot \mathrm{diag}\bigl(2\omega^2,\; 0,\; 2(n/R_u)^2\bigr)
+T_{\mu\nu}^\text{rest standing-wave particle} = 2|\varphi|^2 \cdot \mathrm{diag}\bigl(2\omega^2,\; 0,\; 2(n/R_u)^2\bigr)
 $$
 
 (written here in matrix form with coordinate ordering (t, S, u);
 the factor of 2 inside the diag comes from the doubled
-contributions from ±n, and the prefactor 2|φ|² is the standard
-stress-energy normalization).
+contributions from the ±n components, and the prefactor 2|φ|²
+is the standard stress-energy normalization).
 
 #### Implication for the metric
 
-Following §5: a static ±n superposition would source no
+Following §5: a rest standing-wave particle sources *no*
 off-diagonal entries in g_μν. The metric modification it
-produces, under linearized Einstein's equations, would be
-*purely diagonal*. Specifically:
+produces, under linearized Einstein's equations, is
+**purely diagonal**:
 
-- g_tu cross-term: not sourced (cancelled by ±n).
-- g_Su cross-term: not sourced.
+- g_tu cross-term: not sourced (cancelled by the standing-wave
+  construction).
+- g_Su cross-term: not sourced (k_S = 0; would also cancel for
+  k_S ≠ 0).
 - g_tS cross-term: not sourced (k_S = 0).
-- Diagonal entries (g_tt, g_SS, g_uu) modified by 2× the rest
-  energy density.
+- Diagonal entries (g_tt, g_uu) modified by the rest-energy
+  density.
 
-This is striking: the **static ±n superposition cancels
-exactly the off-diagonals that a single mass mode would
-source**. The diagonal energy density still doubles
-([Chapter 4](04-mode-interactions.md) result), so total
-gravitational coupling — measured by the diagonal stress-energy
-trace — is doubled, not cancelled. But the off-diagonal
-KK-style structures are cancelled cleanly.
+This is the chapter's central result: **the bare diagonal metric
+of Chapter 1 is preserved by the rest standing-wave particle**.
+What appeared at the per-component level (§5) as a mandatory
+off-diagonal sourcing — the KK-style single-mode g_tu — vanishes
+when the per-component intermediate is assembled into the actual
+physical particle. The off-diagonal cross-terms
+do not "dangle"; they cancel structurally.
 
-The intuition that ±n superposition could "shield" something
-([Chapter 4 §6](04-mode-interactions.md)) turns out to be
-correct at the off-diagonal level: the cross-terms that
-distinguish a mass-like configuration from a light-like one
-(the "compact-direction couplings") *do* cancel in the
-symmetric superposition. They do not cancel at the diagonal
-level: the energy and rest mass still add.
+The non-zero diagonal stress-energy still curves spacetime in the
+ordinary way: a localised standing-wave particle's rest energy
+modifies g_tt and g_uu in its vicinity, producing the
+gravitational signature of mass. Chapter 6 takes up the
+gravitational consequences in detail. What this section
+establishes is the *off-diagonal* result: the standing-wave
+particle does not source the KK-style off-diagonal gauge
+potential that a single traveling-wave component would.
+
+#### Why the cancellation is structural, not coincidental
+
+A useful way to see why the cancellation is forced rather than
+fortunate: the n-linear cross-terms T_tu and T_Su exist only
+because a per-component configuration carries a *direction*
+around the compact loop. T_tu = −2ω(n/R_u) is, physically, a
+flux of the compact-direction wavenumber n in the time
+direction — a "current" of compact-direction winding. T_Su is
+the analogous spatial component of that current.
+
+A traveling wave with definite n carries this current; the sign
+of the current is set by the sign of n (the direction of the
+phase rotation around u). A directionless standing wave does
+not carry a current of n in any direction — it has no preferred
+direction around the loop, so no flux of n to flow. The
+cancellation in the summed stress-energy is the algebraic
+expression of this physical fact: the per-component T_tu and
+T_Su flip sign under n → −n, so the standing-wave sum (which is
+symmetric in ±n by construction) annihilates them.
+
+The n-independent cross-term T_tS, by contrast, expresses
+ordinary Poynting flux that has nothing to do with the loop
+direction; it survives because the standing wave can still move
+bodily in S even though it has no internal direction around u.
 
 ---
 
-## 8. Putting the chart together: must / can't / may / may not
+## 8. Putting the chart together: standing-wave vs single-component
 
-The framing question — under what conditions must cross-terms
-exist, can't exist, may exist, may not exist? — can now be
-answered case by case from the math.
+The chapter's analysis splits cleanly into two readings of "the
+particle" — the per-component intermediate and the standing
+wave that the project commits to. The chart below records what
+each reading would source under Einstein's equations.
 
-**Must cross-terms exist?**
-
-The answer depends on the field configuration:
-
-| Configuration | Cross-terms forced |
+| Configuration | Off-diagonals that would be sourced |
 |---|---|
-| No field (vacuum) | None must exist. Bare metric is consistent. |
-| Light at rest | Degenerate (no field). None must exist. |
-| Light moving | g_tS must exist (sourced by T_tS = −2ωk_S). |
-| Mass at rest (single mode) | g_tu must exist (sourced by T_tu). g_tS and g_Su do not. |
-| Mass at rest (±n superposition) | None must exist. ±n cancellation eliminates g_tu. |
-| Mass moving (single mode) | g_tu, g_tS, g_Su all must exist. |
-| Mass moving (±n superposition) | g_tS only must exist. g_tu and g_Su cancel. |
+| No field (vacuum) | none — bare diagonal metric is fully consistent |
+| Light moving (n = 0, k_S ≠ 0) | g_tS only (n-independent Poynting flux) |
+| Single ±n component at rest (per-component intermediate) | g_tu only |
+| Single ±n component moving (per-component intermediate) | g_tu, g_tS, g_Su all |
+| **Standing-wave particle at rest** (this project's reading) | **none — bare metric preserved** |
+| **Standing-wave particle moving** (this project's reading) | **g_tS only** (n-independent Poynting flux) |
 
-**Can't cross-terms exist?**
-
-In vacuum, all cross-terms must be zero (no source for them).
-The bare metric is uniquely consistent with vacuum.
-
-For specific configurations, certain cross-terms cannot be
-sourced. For instance, a single light mode (n = 0) cannot
-source g_tu or g_Su, because both of those require n ≠ 0.
-
-**May or may not?**
-
-Beyond what the math of §§3, 5, 7 has settled, the residual
-freedom is in the choice of:
-
-- *Whether to impose Einstein's equations.* If Chapter 1's
-  stance is maintained (no Einstein's equations), no
-  cross-terms are forced regardless of T_μν — the metric is
-  whatever we say. Cross-terms *may* exist by stipulation but
-  are not forced.
-- *What field configuration to consider.* The chart shows
-  cross-term presence for various configurations; "may not"
-  configurations (e.g., light only) keep the metric diagonal
-  by construction.
-
-So the answer to "must, can't, may, may not" is **all of
-the above, depending on configuration**. Mass at rest (single
-mode) forces g_tu. ±n superposition cancels it. Light alone
-keeps the metric diagonal (with possibly g_tS for light
-moving). Vacuum forces nothing.
+The two single-component rows are the canonical KK result for
+a definite-charge particle, included for comparison and as the
+per-component intermediates the standing-wave particle is
+built from. The two
+boldface rows are the project's primary results: under the
+standing-wave reading, the n-linear cross-terms (g_tu and g_Su)
+cancel structurally, and what survives is exactly the
+n-independent Poynting cross-term (g_tS) that any moving energy
+density produces.
 
 The bare diagonal metric of Chapter 1 is therefore:
 
-- **Self-consistent in vacuum and for light only.** No
-  cross-terms forced.
-- **Inconsistent under Einstein's equations whenever a single
-  massive mode is present.** g_tu (at minimum) must develop.
-- **Self-consistent again** for a static ±n superposition,
-  where the ±n cancellation eliminates the g_tu source.
+- **Self-consistent in vacuum.** No cross-terms forced.
+- **Self-consistent for light only.** g_tS appears for moving
+  light, but rest light is degenerate (no field).
+- **Self-consistent for the rest standing-wave particle.** The
+  particle's stress-energy is purely diagonal; the
+  per-component g_tu cancels by the standing-wave construction.
+- **Sources g_tS for moving particles.** This is the
+  conventional flux-of-energy cross-term, present for any
+  moving mass; it does not depend on the compact-direction
+  structure.
 
-This is the structural answer the math gives.
+The diagonal entries (g_tt, g_uu) are still modified by the
+particle's rest-energy density — that is the gravitational
+signature of mass, taken up in Chapter 6.
+
+This is the structural answer the math gives under the
+standing-wave reading: **the bare diagonal metric is preserved
+by rest mass, and only the conventional Poynting-flux
+cross-term g_tS appears for moving mass**. There is no g_tu
+"frame-dragging in u" of the kind that appeared for the
+single-component intermediate.
 
 #### Reading the result: the metric *is* the gravitational field
 
-A natural interpretation worth making explicit: what the
-chapter has shown is that **mass on M sources off-diagonal
-metric components, and the off-diagonals (together with the
-modifications to the diagonal entries) are the gravitational
-field**. The g_tu component, in particular, is one piece of
-the gravitational field that a mass at rest produces.
+The metric *is* the gravitational field, in the standard
+general-relativistic sense — the gravitational field is the
+deviation of the metric from a flat reference
+([primers/metric.md §9](../../primers/metric.md)). For the
+standing-wave particle on M, this deviation is purely diagonal
+in the rest case: the rest-energy density modifies g_tt and
+g_uu, and those modifications constitute the particle's
+gravitational signature.
 
-This lines up with how gravity works in standard general
-relativity: the gravitational field *is* the metric, or more
-precisely the deviation of the metric from a flat reference
-([primers/metric.md §9](../../primers/metric.md)). A particle
-of mass M sources a metric perturbation h_μν whose
-non-trivial entries (in suitable coordinates) include both
-diagonal modifications (the g_tt = −(1−2GM/(r c²)) factor
-familiar from Schwarzschild) and, when motion or angular
-momentum is involved, off-diagonals like the frame-dragging
-g_tφ in Kerr. The "field" is the full deformation of g_μν
-away from flat. There isn't a separate "gravitational field"
-distinct from the metric — they are the same object.
+This is qualitatively the same picture as a localised energy
+density in standard 1+3D general relativity (Schwarzschild-style
+diagonal-only metric for a static mass); the off-diagonal
+"frame-dragging" entries that appear in Kerr require actual
+rotation, and they appear here only for a moving particle (and
+then only as the conventional Poynting cross-term g_tS, not as
+a compact-direction g_tu). The standing-wave reading therefore
+brings the project's gravitational picture back into agreement
+with the standard GR intuition for a static mass: a localised
+diagonal modification of the metric, no off-diagonal mystery.
 
-In our framework, the g_tu component is the off-diagonal
-piece of that deformation associated specifically with mass
-at rest on a manifold with a compact dimension. Together with
-the modifications to T_tt and T_uu (which would source g_tt
-and g_uu modifications), it is the project's full
-gravitational signature of mass on the minimal manifold.
+#### Two masses: superposition of contributions
+
+For two masses on M, there is **one** metric that satisfies
+Einstein's equations sourced by both stress-energies together,
+not two separate metrics. In the linearized regime
+(g_μν = η_μν + h_μν with h small), the equation
+□ h_μν ∝ T_μν is linear, so contributions add:
+
+<!-- h_μν^total = h_μν^[mass 1] + h_μν^[mass 2]  (linearized) -->
+$$
+h_{\mu\nu}^\text{total} = h_{\mu\nu}^{[\text{mass 1}]} + h_{\mu\nu}^{[\text{mass 2}]}
+$$
+
+Each mass independently sources its own diagonal modifications
+(g_tt and g_uu, plus g_tS if moving), and the total at any
+spacetime point is the sum of the contributions from each
+source. This linear superposition of metric perturbations is
+the standard formalism by which "two masses each warp
+spacetime" produces an interference pattern of warps —
+exactly the picture observers expect from two gravitating
+bodies.
+
+Outside the linearized regime, this superposition is only
+approximate: at higher orders, the contributions interact via
+the nonlinearity of the Einstein tensor. But for any
+physically realistic field amplitude on M, the linearized
+picture is exact to extraordinary precision.
+
+So the reading is: the chapter has effectively *shown the
+mechanism* for how mass on M produces gravitational warping.
+Multiple masses produce multiple linearly-superposed
+contributions, and the total diagonal metric deformation at
+any point is the gravitational field there. This is the
+spacetime warping we expect from masses, derived inside the
+framework's own machinery rather than imposed from outside.
 
 #### Two masses: superposition of contributions
 
@@ -656,8 +862,8 @@ outside.
 
 #### Comparison with Schwarzschild and Kerr
 
-A specific point of comparison with standard general relativity
-is worth flagging. In standard 1+3D GR:
+The standing-wave reading aligns the project's static-mass
+result with the standard general-relativistic picture:
 
 - The **Schwarzschild** metric (a static, non-rotating spherical
   mass in vacuum) is *purely diagonal*. A particle at rest
@@ -672,53 +878,51 @@ is worth flagging. In standard 1+3D GR:
   the rotation, mixing time with the azimuthal direction. This
   off-diagonal vanishes when the mass stops spinning.
 
-In our framework, the g_tu off-diagonal sourced by a *static*
-mass at rest is structurally analogous to **Kerr's
-frame-dragging g_tφ**, with two important wrinkles:
+In our framework, the rest standing-wave particle on M sources
+a *purely diagonal* metric perturbation — the same qualitative
+structure as Schwarzschild's static mass. There is no g_tu
+"frame-dragging in u" when the particle is at rest; the
+n-linear cross-term that would have given a Kerr-like signature
+under the per-component intermediate is precisely the term that
+the standing-wave construction cancels.
 
-1. The compact direction u plays the role that φ plays in Kerr —
-   it is the direction "around" which the dragging happens.
-2. The mass is producing the off-diagonal even though it is
-   *not rotating in the usual sense*. The role that φ-rotation
-   plays in Kerr is played here by the wave's compact-direction
-   *winding*, which is non-zero for any massive mode (n ≠ 0)
-   at any state of motion, including rest. The winding is a
-   kind of "intrinsic compact-direction angular momentum" that
-   the wave carries by virtue of being massive.
+This is an alignment, not a coincidence. The Kerr g_tφ
+off-diagonal in standard GR requires the mass to actually
+rotate — the rotation breaks time-reversal symmetry by
+selecting a definite rotational direction, and that breaking is
+what sources the off-diagonal entry. Under the standing-wave
+reading, a particle on M *also* has no rotational direction
+(both ±n components are present), so by the same physical
+argument it sources no analogous cross-term. The
+Schwarzschild-like diagonal-only result for the rest particle
+on M is the natural outcome of having no preferred direction
+around the compact loop.
 
-So our minimal-manifold framework produces a *Kerr-like*
-gravitational signature even for a non-rotating rest mass.
-This is a non-trivial qualitative difference from standard
-1+3D GR's static-mass result. Whether it is a deep feature of
-the wave-realist mass picture, or a peculiarity of the 1+1+1D
-manifold, is a question this project does not settle. It is
-worth flagging for the future charge project (where standard
-KK identifies the same g_μ5 entries as the EM potential, not
-as gravitational frame-dragging — yet another instance of the
-mass-vs-charge framing tension noted in §6 of this chapter).
+A moving standing-wave particle does source g_tS, the
+n-independent Poynting-flux cross-term. This is the analog of
+the off-diagonal piece a moving mass produces in any GR
+calculation; it has no compact-direction-specific structure and
+is not Kerr-like.
 
 #### Orbits and extended dimensions
 
-The g_tu off-diagonal does not directly produce orbits. Orbits
-in standard GR are extended-space trajectories driven by the
-geodesic equation applied to the *diagonal* curvature of
-spacetime; Schwarzschild gives orbits with no off-diagonals.
+The diagonal modifications of g_tt and g_uu produced by the
+rest standing-wave particle are the gravitational signature
+that bends nearby trajectories. If the framework were extended
+to multiple S dimensions (S_1, S_2, ... — beyond the scope of
+this project), localised masses would source position-dependent
+diagonal modifications g_tt(S), g_S_iS_i(S), and orbital
+trajectories would emerge from those diagonal pieces in the
+standard GR way — exactly as in Schwarzschild.
 
-If the framework were extended to multiple S dimensions
-(S_1, S_2, ... — beyond the scope of this project), localized
-masses would source position-dependent diagonal modifications
-g_tt(S), g_S_iS_i(S), and orbital trajectories would emerge
-from those diagonal pieces in the standard GR way. The g_tu
-off-diagonal is a compact-direction-specific feature
-("frame-dragging in u") with no direct extended-space orbital
-analog. It would coexist with the diagonal modifications that
-produce orbits, but it would not contribute to them.
-
-In other words: gravity on a multi-S manifold would still
-produce orbits via the standard mechanism (diagonal curvature),
-*and* would carry an additional compact-direction
-off-diagonal (g_tu) signature for any masses present. The two
-features live in independent components of the metric.
+The standing-wave reading therefore makes the project's
+gravity story qualitatively continuous with standard GR's
+diagonal-only picture for static masses. There is no extra
+compact-direction-specific off-diagonal signature for the rest
+particle on M; the only place compact-direction structure
+shows up gravitationally is via the modification of g_uu (the
+"size" of the compact direction near the mass), which is a
+diagonal effect, not an off-diagonal one.
 
 ---
 
@@ -763,59 +967,71 @@ fixed background. Several things this chapter does not address:
 
 #### What was computed
 
-- Stress-energy of a single mode in the factored form
+- Per-component stress-energy in the factored form
   T_μν = 2|φ|² k_μ k_ν, with k_μ = (−ω, k_S, n/R_u).
-- Pattern of nonzero cross-terms in T_μν, by configuration:
-  vacuum (none), light moving (T_tS only), mass at rest (T_tu
-  only), mass moving (all three of T_tS, T_tu, T_Su).
+- Pattern of nonzero cross-terms in the per-component T_μν, by
+  configuration: vacuum (none), light moving (T_tS only),
+  single-component mass at rest (T_tu only), single-component
+  mass moving (all three of T_tS, T_tu, T_Su).
 - Pattern of off-diagonal entries that linearized Einstein's
-  equations would source in the metric, mirroring T_μν.
-- The ±n superposition: T_tu and T_Su cancel exactly; T_tt,
-  T_SS, T_uu, T_tS double.
+  equations would source for the per-component intermediate.
+- The standing-wave construction: ±n components combined into
+  one particle. T_tu and T_Su cancel exactly; T_tt, T_SS, T_uu
+  double; T_tS doubles when k_S ≠ 0 (n-independent).
 
 #### What this chapter establishes
 
+- The standing wave (±n superposition) is the candidate
+  physical particle on M; the per-component traveling-wave
+  pieces are intermediates the standing wave is built from.
 - The bare diagonal metric of Chapter 1 is self-consistent in
   vacuum.
-- Under Einstein's equations, the bare metric is *not*
-  self-consistent in the presence of a single massive mode:
-  g_tu must develop.
-- The static ±n superposition cancels the g_tu source: under
-  this configuration, the bare diagonal metric remains
-  self-consistent at the off-diagonal level (though its
-  diagonal entries would still be modified by the doubled
-  energy density).
-- The off-diagonal sourcing parallels standard Kaluza-Klein
-  theory, where compact-direction momentum sources off-diagonal
-  metric entries.
+- **Under Einstein's equations, the bare diagonal metric is
+  preserved by the rest standing-wave particle.** The particle
+  sources purely diagonal stress-energy; no off-diagonals are
+  forced.
+- A *moving* standing-wave particle additionally sources
+  g_tS (the conventional Poynting-flux cross-term, present for
+  any moving mass), but no compact-direction-specific
+  off-diagonal.
+- The off-diagonal cross-terms that the per-component
+  intermediate appears to require (g_tu, g_Su) cancel
+  structurally in the standing-wave construction.
+- The cancellation is the algebraic expression of the physical
+  fact that a directionless standing wave has no preferred
+  direction around the compact loop; there is no compact-direction
+  current to source the corresponding cross-terms.
 
 #### What this chapter does not establish
 
 - Whether the project should commit to imposing Einstein's
   equations on M.
-- The numerical magnitudes of the metric modifications
+- The numerical magnitudes of the diagonal metric modifications
   (qualitative pattern only is given).
 - The behavior of the system under full nonlinear GR or under
   quantization.
-- Whether our project's "mass" interpretation and standard KK's
-  "charge" interpretation are different framings of the same
-  physics.
+- Whether the per-component intermediate has any independent
+  physical interpretation in this framework, or is purely a
+  mathematical building block of the standing-wave particle.
+- Whether the framework's "mass" reading and canonical KK's
+  "charge" reading are different framings of the same physics
+  — a separate framing question that the standing-wave reading
+  does not resolve.
+- Whether antimatter has any analog in this framework (the
+  ±n distinction does not survive as a particle/antiparticle
+  distinction under the standing-wave reading; what, if
+  anything, plays the role of antimatter on this manifold is
+  left open).
 
 #### What this chapter leaves open for downstream chapters
 
-- *If the diagonal metric is to remain*: the project would
-  need to either decline to impose Einstein's equations, or
-  restrict to ±n-symmetric field configurations where the
-  off-diagonals cancel.
-- *If the metric is to develop g_tu in response to mass*: the
-  consequences for the mode structure (does the wave equation
-  on the corrected metric still have the same mode spectrum?
-  do new effects appear?) are downstream questions for
-  chapters 7 and beyond.
-- *The Kaluza-Klein parallel*: whether to engage seriously
-  with the question of whether our "mass" framing is a
-  rename of standard KK's "charge" framing is a project-level
-  question worth flagging for follow-up work.
+- The standing-wave particle's *diagonal* metric modifications
+  (g_tt, g_uu) are the gravitational signature taken up in
+  Chapter 6.
+- Chapter 7 examines the converse question: what a separately
+  introduced metric shear γ would do to the ±n modes — useful
+  as a "what if a sheared metric is given" study, independent
+  of whether the particles themselves source it.
 
 ---
 

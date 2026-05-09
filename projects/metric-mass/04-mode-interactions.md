@@ -3,7 +3,7 @@
 [Chapter 3](03-examining-the-modes.md) examined each mode family
 in isolation: the n = 0 light mode, and the ±n massive modes
 considered one at a time. It left an open question — what does
-the *sign* of n carry physically? — and noted that the standard
+the *sign* of n carry physically? — and noted that the canonical
 KK reading interprets ±n as a particle/antiparticle distinction.
 
 This chapter takes that question to the math. What does the wave
@@ -24,6 +24,26 @@ The wave equation we have is **linear** ([Chapter 1
 admits a clean computation via superposition. We compute and
 report what the math gives. Where the math is silent, we say so
 explicitly.
+
+#### Forward note on framing
+
+This chapter is written in the general "what happens when ±n
+meet?" framing inherited from Chapter 3 — two packets, each
+with its own definite n, brought into contact. The math (linear
+superposition, orthogonality of ±n modes over u, doubled rest
+energy) is correct under that framing and useful as the
+general analysis of mode interactions. [Chapter 5](05-metric-self-consistency.md)
+adopts a *more committed* reading: the directionless **standing
+wave** — the equal-amplitude superposition of +n and −n
+components, present together by construction — is identified as
+the candidate physical particle on M. Under the standing-wave
+reading, the static ±n superposition this chapter computes is
+not "two particles meeting" but rather the structure of a
+*single* particle. The math carries over directly; the framing
+shifts. Where this chapter speaks of two packets, two
+particles, or a meeting, those are useful intermediates for
+the general analysis, not commitments about what physical
+particles are. Chapter 5 settles the particle question.
 
 ---
 
@@ -461,15 +481,19 @@ important questions:
   force couples to the field. The linear free wave equation
   does not specify a coupling, so the inertial response of the
   superposition cannot be computed without external input.
-- **Quantum-mechanical particle-number changes.** In quantum
-  field theory, particle/antiparticle annihilation is described
-  by creation and annihilation operators that are inherently
-  beyond classical wave mechanics. Even with linear field
-  equations at the classical level, the QFT version of mode
-  interactions can produce number-changing processes via
-  underlying non-classical structure that our framework does
-  not contain.
-  <!--EM Not sure what I think about an appeal to QM here.  We have _derived_ quantum behavior by making u periodic.  QM is emergent from our geometry, not an axiomatic framework we can appeal to for fundamental behaviors. -->
+- **Number-changing processes (creation/annihilation).** The
+  classical free wave equation contains no nonlinear or coupling
+  terms that would change the field's mode content. Any
+  mechanism that creates or destroys modes would have to come
+  from richer structure — couplings between modes, nonlinear
+  terms, or interaction with an off-diagonal-modified metric;
+  the bare □φ = 0 of this project does not supply one. (Note
+  that this project does not appeal to quantum field theory as
+  a separate framework: discrete mode quantization in our setup
+  *emerges* from the geometric periodicity of u rather than
+  being imposed axiomatically. Number-changing processes, if
+  they exist, must be derivable within the same wave-mechanical
+  structure.)
 - **Coupling to off-diagonal metric components.** If
   [Chapter 5](05-metric-self-consistency.md) finds that the
   bare diagonal metric does not survive — that off-diagonals

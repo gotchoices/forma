@@ -597,8 +597,34 @@ So this section closes with:
   once richer structure is introduced — and that the
   ±n-symmetry of mass may itself be a *constraint* on what
   forms of off-diagonal structure are allowed in the metric.
-  [Chapter 4](04-metric-self-consistency.md) is the relevant
-  follow-up.
+  [Chapter 4](04-mode-interactions.md) and especially
+  [Chapter 5](05-metric-self-consistency.md) are the relevant
+  follow-ups.
+
+#### Forward note: how Chapter 5 reconsiders this
+
+The matter/antimatter reading listed above as
+"hypothesis worth tracking" does not survive Chapter 5's
+analysis. There the project commits to the **standing wave** —
+the equal-amplitude superposition of +n and −n traveling-wave
+components — as the candidate physical particle on M, on the
+structural argument that a particle should not carry a built-in
+direction of propagation around a compact internal coordinate.
+Under that reading, ±n components are not separate
+particles/antiparticles that occasionally meet; they are the
+two halves of a single directionless standing-wave particle,
+always present together. The framework on (t, S, u) does not,
+on its own, supply a clear antimatter analog. Reading (2)
+(internal handedness or chirality of a single component) and
+the standing-wave assembly that builds the particle from both
+±n components are the readings that survive into Chapter 5;
+reading (1) is downgraded, not as wrong-on-the-math but as
+incompatible with the standing-wave commitment Chapter 5
+adopts.
+
+This section's analysis of *what the sign of n carries* is
+still useful at the per-component level; it is just not, on
+this manifold, a particle/antiparticle distinction.
 
 The minimal manifold of this project is the right place to
 notice the question and the wrong place to answer it. Both
