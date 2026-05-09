@@ -1,8 +1,10 @@
-# work1.md — competing derivation: one gauge field from substrate-asymmetric standing-wave construction
+# work1.md — competing derivation: one gauge field from wrap-order-asymmetric standing-wave construction
 
-**Purpose.** Alternative derivation of how metric-mass's standing-wave-as-particle reading extends to 2D-compact metric-charge. Companion to [work.md](work.md), which arrived at "no gauge field" by applying the metric-mass principle uniformly across both compact directions. This file argues that uniformity is the wrong move: the substrate distinguishes the two compact directions (one is *ring*, the other is *tube*), and the standing-wave construction must respect that asymmetry. Doing so yields exactly one gauge field, on solid topological and substrate-level grounds.
+**Purpose.** Alternative derivation of how metric-mass's standing-wave-as-particle reading extends to 2D-compact metric-charge. Companion to [work.md](work.md), which arrived at "no gauge field" by applying the metric-mass principle uniformly across both compact directions. This file argues that uniformity is the wrong move: the **wrap-order convention** of [Chapter 1 §10](01-foundation.md) distinguishes the two compact directions (one is *ring*, the other is *tube*), and the standing-wave construction must respect that asymmetry. Doing so yields exactly one gauge field, on solid topological and wrap-order-level grounds.
 
-**Discipline:** math first, interpretation second. Sections 1–4 establish the algebra. Section 5 introduces the substrate asymmetry. Sections 6–9 derive the particle construction and verify its KK consistency. Section 10 covers closure-failing modes and matter/antimatter.
+**Terminology.** The asymmetry this file relies on is the **wrap-order asymmetry**: the substrate-level fact, fixed in [Chapter 1 §10](01-foundation.md) and inherited from grid-duality's wrap-promotion ladder, that one compact direction plays the *ring* role and the other plays the *tube* role. This is distinct from any other substrate-level asymmetry the broader framework may invoke (for example, a separate handedness in grid-primitive that biases matter populations over antimatter). Throughout this file, "wrap-order asymmetry" names *this specific* ring-vs-tube role assignment, and nothing else.
+
+**Discipline:** math first, interpretation second. Sections 1–4 establish the algebra. Section 5 introduces the wrap-order asymmetry. Sections 6–9 derive the particle construction and verify its KK consistency. Section 10 covers closure-failing modes and matter/antimatter.
 
 ---
 
@@ -129,36 +131,36 @@ Three constructions, three different physical particles. The math is unambiguous
 
 ---
 
-## 5. The substrate distinguishes u and w — wrap-order asymmetry
+## 5. The wrap-order asymmetry distinguishes u and w
 
 The bare manifold T² is symmetric in (u, w): the metric is diagonal with no preferred direction, and the wave equation treats u and w identically. *On the bare manifold alone*, all three of R_J, R_u, R_w are equally available symmetries, and the framework would have to make an interpretive choice between them (which is where work.md got stuck).
 
-The asymmetry comes from the substrate. Per [Chapter 1 §10](01-foundation.md), the wrap-order convention *adopts* one direction as the **tube** (the 2π-winding direction whose modes carry charge) and the other as the **ring** (where mass arises from standing-wave structure). Per the convention adopted in [Chapter 1 §10 line 338](01-foundation.md):
+The asymmetry comes from the wrap-order convention. Per [Chapter 1 §10](01-foundation.md), one direction is *adopted* as the **tube** (the 2π-winding direction whose modes carry charge) and the other as the **ring** (where mass arises from standing-wave structure). Per the convention adopted in [Chapter 1 §10 line 338](01-foundation.md):
 
 > **u = ring** (mass-bearing, multi-wrap structure)
 > **w = tube** (charge-bearing, single-wrap structure for primitives)
 
-This is not a rendering choice or a labeling preference — it is inherited from [grid-duality](../grid-duality/)'s wrap-promotion ladder, where L0→L1 (which gives the ring direction) and L1→L2 (which gives the tube direction) are *structurally distinct* substrate operations. Once the substrate-level wrap-order is fixed, u and w are no longer interchangeable.
+This is not a rendering choice or a labeling preference — it is inherited from [grid-duality](../grid-duality/)'s wrap-promotion ladder, where L0→L1 (which gives the ring direction) and L1→L2 (which gives the tube direction) are *structurally distinct* operations. Once the wrap-order is fixed, u and w are no longer interchangeable.
 
 What the wrap-order asymmetry says about reflections:
 
-- **R_u acts on the ring direction.** The ring is the "mass" direction in the user's framing — the direction analogous to metric-mass's single u-loop. Just as metric-mass's u-loop has u → −u as a topological symmetry (unoriented circle), so does our ring direction. R_u *is* a topological symmetry of the configuration the substrate sees.
+- **R_u acts on the ring direction.** The ring is the "mass" direction — the direction analogous to metric-mass's single u-loop. Just as metric-mass's u-loop has u → −u as a topological symmetry (unoriented circle), so does our ring direction. R_u *is* a topological symmetry of the configuration the wrap-order distinguishes.
 - **R_w acts on the tube direction.** The tube is the "charge promotion" direction — the direction analogous to KK's compact circle. KK's compact direction does *not* have w → −w as a particle symmetry, because the sign of compact-direction wavenumber is the charge sign and a charged particle has definite charge. R_w is *not* a topological symmetry of a charged particle's configuration.
-- **R_J = R_u · R_w.** Since R_w is not a particle symmetry, R_J is also not (it is the product of a true symmetry and a non-symmetry). Enforcing R_J is enforcing more than the substrate warrants for a charged particle.
+- **R_J = R_u · R_w.** Since R_w is not a particle symmetry, R_J is also not (it is the product of a true symmetry and a non-symmetry). Enforcing R_J is enforcing more than the wrap-order warrants for a charged particle.
 
-The user's hint — "metric-mass has a single symmetric loop, going one way is identical to the other; a knot in 2D is not symmetrical, two candidates and we should rule one out" — names exactly this asymmetry. The "single symmetric loop" of metric-mass corresponds to our **ring direction** (u): symmetric, R_u is a particle symmetry. The "knot in 2D not being symmetrical" corresponds to our **tube direction** (w): not symmetric in the relevant sense, R_w is not a particle symmetry.
+A useful framing of this asymmetry: *metric-mass has a single symmetric loop, where going one way is identical to the other; a knot in 2D is not symmetrical, so there are two candidates for which symmetry to enforce and one must be ruled out.* The "single symmetric loop" of metric-mass corresponds to our **ring direction** (u): symmetric, R_u is a particle symmetry. The "knot in 2D not being symmetrical" corresponds to our **tube direction** (w): not symmetric in the relevant sense, R_w is not a particle symmetry.
 
 ---
 
 ## 6. The natural particle on closure-satisfying T(m, 1)
 
-Apply the substrate-aware principle to closure-satisfying T(m, 1) — the canonical primitive (m wraps in ring, 1 wrap in tube) per [Chapter 4 §2](04-the-closure-condition.md). Two facts about this curve:
+Apply the wrap-order-aware principle to closure-satisfying T(m, 1) — the canonical primitive (m wraps in ring, 1 wrap in tube) per [Chapter 4 §2](04-the-closure-condition.md). Two facts about this curve:
 
 **Fact A: T(m, 1) is the unknot in 3-space.** Per [Chapter 3 §7](03-knots-on-the-torus.md), any T(p, q) with one winding equal to ±1 is topologically trivial (the unknot). The unknot is *achiral* — it is isotopic to its mirror image in 3-space. So T(m, 1) and its u-mirror T(−m, 1) are the same knot in 3-space, just embedded with different orientation.
 
-This validates the substrate's claim that R_u is a topological symmetry: the ring-direction reflection takes T(m, 1) to itself (as a knot in 3-space). For closure-satisfying modes specifically, the substrate-level claim that R_u symmetrizes the ring direction is *also* a topological claim — the underlying knot doesn't distinguish R_u-related configurations.
+This validates the wrap-order's claim that R_u is a topological symmetry: the ring-direction reflection takes T(m, 1) to itself (as a knot in 3-space). For closure-satisfying modes specifically, the wrap-order's selection of R_u as the symmetrizer of the ring direction is *also* a topological claim — the underlying knot doesn't distinguish R_u-related configurations.
 
-**Fact B: R_w is not a topological symmetry — even for the unknot — because of the substrate.** It is true that T(m, 1) and T(m, −1) are *both* unknots and therefore topologically equivalent as knots in 3-space. But they are *distinct oriented configurations* on T², and the substrate's wrap-order assigns charge to the sign of the tube-direction circulation. R_w flips that sign — it sends a "positive-charge" configuration to a "negative-charge" configuration. These are physically distinct (matter and antimatter), so R_w is not a particle symmetry.
+**Fact B: R_w is not a topological symmetry — even for the unknot — because of the wrap-order.** It is true that T(m, 1) and T(m, −1) are *both* unknots and therefore topologically equivalent as knots in 3-space. But they are *distinct oriented configurations* on T², and the wrap-order assigns charge to the sign of the tube-direction circulation. R_w flips that sign — it sends a "positive-charge" configuration to a "negative-charge" configuration. These are physically distinct (matter and antimatter), so R_w is not a particle symmetry.
 
 The natural particle construction for closure-satisfying T(m, 1) is therefore the **R_u-symmetrized, definite-tube-direction** combination:
 
@@ -178,7 +180,7 @@ This is the chirality-conjugate construction in u, with definite +n in w. By §4
 
 **Exactly one gauge potential**, B_μ from h_μw, in the tube direction. Mass from the diagonal entries. The matter/antimatter axis is the sign of n (covered in §10).
 
-The ruled-out alternative is **{(++), (+−)}** — chirality-conjugate in *w* (tube), keeping +m definite. This would standing-wave the tube and travel the ring, giving T_tu instead of T_tw. The wrap-order convention rules it out: it would invert the assignment "ring carries mass, tube carries charge" that the substrate-level wrap-order has fixed. By inspection, it inverts the framework's own labels.
+The ruled-out alternative is **{(++), (+−)}** — chirality-conjugate in *w* (tube), keeping +m definite. This would standing-wave the tube and travel the ring, giving T_tu instead of T_tw. The wrap-order convention rules it out: it would invert the assignment "ring carries mass, tube carries charge" that the wrap-order has fixed. By inspection, it inverts the framework's own labels.
 
 (The R_J construction (++) + (−−) is also ruled out, on a different ground: R_J = R_u · R_w, and enforcing R_w would force R_J to fix the tube-direction sign, which we have established is not a particle symmetry. R_J cancels both cross-terms and so produces the mass-only configuration that would describe an *uncharged* particle on the same closure-satisfying knot, which is not what we are constructing here.)
 
@@ -218,7 +220,7 @@ $$
 
 ## 8. Why this is a Kaluza-Klein derivation, not hand-waving
 
-The user asked specifically: "How do we make the case for a single gauge field term emerging that is solid, not hand-waving?" The answer is that the construction above is a *direct* Kaluza-Klein derivation, with the 2D-compact extension respecting both the KK mechanism and the metric-mass mechanism in the directions where each properly applies.
+The case for a single gauge field term emerging on solid ground rather than by hand-waving rests on this: the construction above is a *direct* Kaluza-Klein derivation, with the 2D-compact extension respecting both the KK mechanism and the metric-mass mechanism in the directions where each properly applies.
 
 **Mapping to standard KK.** Standard 5D KK ([primers/kaluza-klein.md](../../primers/kaluza-klein.md)) has 4D extended spacetime + 1 compact direction. It treats a particle with definite compact-direction wavenumber n; the cross-term g_μ5 = A_μ is the gauge potential, charge is q ∝ n, and Maxwell's equations follow from 5D Einstein equations. KK does *not* standing-wave the compact direction — the particle has definite n, and the cross-term survives precisely because it does.
 
@@ -226,13 +228,13 @@ In our 2D-compact construction, the **tube direction (w) plays the role of stand
 
 The **ring direction (u) plays the role of metric-mass's single compact direction.** The natural particle has the standing-wave structure cos(k_u u), the wave is *not* traveling in u (no definite ±m direction), and the would-be cross-term h_μu cancels by the same mechanism that cancels metric-mass's g_tu. This is metric-mass applied to the ring — one compact direction, no gauge field, mass contribution from compact-direction wavenumber via the dispersion relation.
 
-**The 2D-compact T² is decomposed by the substrate into "1D-compact for KK + 1D-compact for mass-only."** The two mechanisms compose naturally; neither contradicts the other because they apply to different directions, with the substrate-level wrap-order picking which is which.
+**The 2D-compact T² is decomposed by the wrap-order into "1D-compact for KK + 1D-compact for mass-only."** The two mechanisms compose naturally; neither contradicts the other because they apply to different directions, with the wrap-order picking which is which.
 
-**Why this isn't double-counting.** A single traveling-wave mode (the per-component intermediate of §3) would source two cross-terms. Combining (++) + (−+) cancels exactly the cross-term whose direction has the metric-mass-style standing-wave structure (the ring), and preserves exactly the cross-term whose direction has the KK-style traveling-wave structure (the tube). The math is forced by the choice of which symmetry to enforce; the choice is forced by the substrate.
+**Why this isn't double-counting.** A single traveling-wave mode (the per-component intermediate of §3) would source two cross-terms. Combining (++) + (−+) cancels exactly the cross-term whose direction has the metric-mass-style standing-wave structure (the ring), and preserves exactly the cross-term whose direction has the KK-style traveling-wave structure (the tube). The math is forced by the choice of which symmetry to enforce; the choice is forced by the wrap-order.
 
-**Why this isn't free choice.** The substrate's wrap-order is not a per-particle interpretive parameter. It is fixed once for the framework as a whole, and applies the same way to all modes. The "two candidates, rule one out" framing is settled by inspection of the wrap-order: travel in the tube (single wrap, charge), stand in the ring (multi-wrap, mass). The opposite choice would invert the framework's labels and force us to call the multi-wrap direction "tube" — which is what the convention forbids.
+**Why this isn't free choice.** The wrap-order is not a per-particle interpretive parameter. It is fixed once for the framework as a whole, and applies the same way to all modes. The "two candidates, rule one out" framing is settled by inspection of the wrap-order: travel in the tube (single wrap, charge), stand in the ring (multi-wrap, mass). The opposite choice would invert the framework's labels and force us to call the multi-wrap direction "tube" — which is what the convention forbids.
 
-The argument is a Kaluza-Klein derivation in the strict sense: it uses standard KK machinery (5D metric ansatz, off-diagonal entries as gauge potentials, charge as compact-direction momentum), applied to the substrate-distinguished tube direction, with the additional ring direction acting as a metric-mass-style mass source. No new principles, no interpretive moves beyond reading off the substrate's wrap-order.
+The argument is a Kaluza-Klein derivation in the strict sense: it uses standard KK machinery (5D metric ansatz, off-diagonal entries as gauge potentials, charge as compact-direction momentum), applied to the tube direction selected by the wrap-order, with the additional ring direction acting as a metric-mass-style mass source. No new principles, no interpretive moves beyond reading off the wrap-order.
 
 ---
 
@@ -262,13 +264,13 @@ The only available symmetry is R_J. The natural particle is the joint-reversal-s
 
 Mass + chirality field (in T_uw, the σ_uw-style cross), no EM cross-terms. Genuine torus knots are mass-only at the EM level, with a chirality signature in T_uw.
 
-This recovers the framework's existing prediction (chapter 4) that genuine torus knots are mass-only — and it derives the prediction from the same substrate-asymmetry principle that produces charged particles for closure-satisfying knots. Single mechanism, two outcomes depending on the knot's topological-chirality status.
+This recovers the framework's existing prediction (chapter 4) that genuine torus knots are mass-only — and it derives the prediction from the same wrap-order-asymmetry mechanism that produces charged particles for closure-satisfying knots. Single mechanism, two outcomes depending on the knot's topological-chirality status.
 
 ### 9.3 Why closure-satisfying and closure-failing diverge
 
-The substrate's claim that R_u is a particle symmetry holds for closure-satisfying T(m, 1) because the underlying knot is the unknot (achiral) — so R_u-related configurations are topologically equivalent. For genuine torus knots, the underlying knot *is* chiral, so R_u-related configurations are topologically distinct, and the substrate's claim no longer applies. Falling back to R_J (which is always a topological symmetry, since unoriented curves are unoriented) yields the mass-only configuration.
+The wrap-order's claim that R_u is a particle symmetry holds for closure-satisfying T(m, 1) because the underlying knot is the unknot (achiral) — so R_u-related configurations are topologically equivalent. For genuine torus knots, the underlying knot *is* chiral, so R_u-related configurations are topologically distinct, and the wrap-order's claim no longer applies. Falling back to R_J (which is always a topological symmetry, since unoriented curves are unoriented) yields the mass-only configuration.
 
-The closure rule (m | n with both nonzero, equivalent to "the gcd-reduced primitive is T(1, q) — an unknot") is precisely the condition under which R_u (acting on the ring direction) is a topological symmetry. It is therefore exactly the condition under which the natural particle has one gauge potential (charged) rather than zero (mass-only). **The closure rule and the gauge-promotion mechanism agree because they are descriptions of the same underlying fact:** the topological-chirality status of the curve, which controls which substrate symmetries the natural particle inherits.
+The closure rule (m | n with both nonzero, equivalent to "the gcd-reduced primitive is T(1, q) — an unknot") is precisely the condition under which R_u (acting on the ring direction) is a topological symmetry. It is therefore exactly the condition under which the natural particle has one gauge potential (charged) rather than zero (mass-only). **The closure rule and the gauge-promotion mechanism agree because they are descriptions of the same underlying fact:** the topological-chirality status of the curve, which controls which wrap-order-aligned symmetries the natural particle inherits.
 
 ---
 
@@ -285,7 +287,7 @@ Both are R_u-symmetrized in the ring (chirality degenerate for unknots). They di
 
 Joint-reversal R_J relates the two: applying R_J to the matter particle's modes gives the antimatter particle's modes. R_J is therefore the matter/antimatter operation, *not* a particle symmetry. The framework correctly distinguishes "particle symmetry" (cancels cross-terms; mass-only outcome) from "matter/antimatter axis" (preserves the magnitude of cross-terms but flips their sign; opposite-charge particles).
 
-This resolves a tension in metric-mass: there, the standing wave was constructed by enforcing R_J (over the only available compact direction), which had the side effect of identifying matter and antimatter as the same particle (metric-mass Ch5 §0 acknowledges this and leaves the matter/antimatter question open). In metric-charge with two compact directions, the substrate-asymmetric construction enforces R_u alone for the natural particle, leaving R_J free to act as the matter/antimatter operation. **Matter and antimatter become structurally distinct only in the 2D-compact case** — exactly when the substrate has two compact directions to play differently asymmetric roles. This is consistent with metric-mass's note that antimatter "requires additional structure (e.g., the second compact direction in metric-charge)" ([metric-mass Ch5 §0](../metric-mass/05-metric-self-consistency.md)).
+This resolves a tension in metric-mass: there, the standing wave was constructed by enforcing R_J (over the only available compact direction), which had the side effect of identifying matter and antimatter as the same particle (metric-mass Ch5 §0 acknowledges this and leaves the matter/antimatter question open). In metric-charge with two compact directions, the wrap-order-asymmetric construction enforces R_u alone for the natural particle, leaving R_J free to act as the matter/antimatter operation. **Matter and antimatter become structurally distinct only in the 2D-compact case** — exactly when the wrap-order has two compact directions to assign differently asymmetric roles to. Note: this only renders matter and antimatter as *distinct* natural particles; what *populates* one over the other (the actual matter excess in the universe) is not addressed here, and remains forwarded to a separate substrate-level mechanism — for example, a chirality bias in the underlying lattice from grid-primitive, or σ_uw shear at the population level per [Chapter 6 §6](06-handedness-and-pairs.md). This is consistent with metric-mass's note that antimatter "requires additional structure (e.g., the second compact direction in metric-charge)" ([metric-mass Ch5 §0](../metric-mass/05-metric-self-consistency.md)).
 
 ---
 
@@ -296,7 +298,7 @@ This resolves a tension in metric-mass: there, the standing wave was constructed
 | Light (0, 0) | No curve | — | None (no compact wavenumber) | Light |
 | Single-axis (m, 0) | Trivial cycle | R_u (only available) | None (T_tw = 0 from k_w = 0; T_tu = 0 from R_u) | Mass-only |
 | Single-axis (0, n) | Trivial cycle | R_w (only available) | None (T_tu = 0 from k_u = 0; T_tw = 0 from R_w) | Mass-only |
-| T(m, 1) primitive | Unknot in 3-space (achiral) | R_u (substrate-aligned with topology) | **T_tw alone** | **Mass + 1 gauge field B_μ** |
+| T(m, 1) primitive | Unknot in 3-space (achiral) | R_u (wrap-order-aligned with topology) | **T_tw alone** | **Mass + 1 gauge field B_μ** |
 | Multi-link k × T(m, 1) | k-component unlink | R_u per component | T_tw per component, summing across k | Mass + charge (k components) |
 | T(p, q), p, q ≥ 2, gcd = 1 | Genuine torus knot (chiral) | R_J (only available) | None EM (T_uw ≠ 0; chirality field) | Mass + chirality |
 
@@ -312,13 +314,13 @@ If the work1.md derivation holds up, [Chapter 5](05-metric-self-consistency.md) 
 
 - **§§2–3 unchanged.** The single-mode stress-energy is a per-component intermediate, not a particle. Two cross-terms appear at this level.
 - **§§4 reframed.** The four-property test of gauge-potential structure is applied to the *natural-particle* h_μν (after R_u-symmetrization), not to the per-component h_μν. Only one set of off-diagonals (h_μw for the convention u=ring, w=tube) survives the symmetrization, so only one U(1) is tested. It passes — gauge potential structure is recovered for one U(1), exactly matching standard physics.
-- **§5 reframed.** Closure-failing modes are mass-only by the natural-particle construction (single-axis: degenerate; genuine torus knots: forced to R_J by topological chirality). The current §5's "two distinct mechanisms" become two flavors of the same underlying mechanism (substrate-asymmetric standing-wave construction) applied to different topological situations.
-- **§6.5 simplified.** The four (now three) "asymmetric conventions" all derive from a single substrate fact (the wrap-order). Convention 4 (gauge identification) becomes a *consequence* of the construction rather than an independent stipulation: once the substrate fixes which direction is the ring, R_u (acting on the ring) is automatically the symmetry to enforce, and h_μw is automatically the surviving gauge potential.
+- **§5 reframed.** Closure-failing modes are mass-only by the natural-particle construction (single-axis: degenerate; genuine torus knots: forced to R_J by topological chirality). The current §5's "two distinct mechanisms" become two flavors of the same underlying mechanism (wrap-order-asymmetric standing-wave construction) applied to different topological situations.
+- **§6.5 simplified.** The four (now three) "asymmetric conventions" all derive from the wrap-order alone. Convention 4 (gauge identification) becomes a *consequence* of the construction rather than an independent stipulation: once the wrap-order fixes which direction is the ring, R_u (acting on the ring) is automatically the symmetry to enforce, and h_μw is automatically the surviving gauge potential.
 - **§8 simplified.** The "two-U(1)s differ from standard physics" caveat goes away. The framework produces one U(1) for charged particles, matching standard EM.
 
 Open work this reading does not address:
 
-1. **The substrate-level wrap-order itself.** Why u rather than w is the ring (or equivalently, why R_u rather than R_w is the substrate-aligned symmetry). This is downstream from grid-duality's L0→L1 vs L1→L2 asymmetry. Forwarded to the alpha-derivation track.
+1. **The wrap-order itself.** Why u rather than w is the ring (or equivalently, why R_u rather than R_w is the wrap-order-aligned symmetry). This is downstream from grid-duality's L0→L1 vs L1→L2 asymmetry. Forwarded to the alpha-derivation track.
 2. **The numerical strength of the gauge coupling (α).** Cited from grid-duality §8. Structural location settled here; numerical value is open.
 3. **Higher-order corrections.** Linearized Einstein equations only; nonlinear backreaction is downstream.
 4. **MaSt-correspondence for the three mass-only categories.** Single-axis modes, genuine torus knots, and chirality-conjugate-cancellation-pair (Chapter 6) are three structurally distinct mass-only mechanisms. How they map to neutrinos, dark matter candidates, neutral hadrons, etc., is downstream MaSt-correspondence work.
@@ -327,11 +329,11 @@ Open work this reading does not address:
 
 ## 13. Comparison with work.md
 
-Two derivations, same problem. work.md reaches "no gauge field" by enforcing the metric-mass principle (R_J) uniformly across both compact directions. work1.md reaches "exactly one gauge field" by enforcing only the substrate-aligned reflection (R_u for closure-satisfying configurations).
+Two derivations, same problem. work.md reaches "no gauge field" by enforcing the metric-mass principle (R_J) uniformly across both compact directions. work1.md reaches "exactly one gauge field" by enforcing only the wrap-order-aligned reflection (R_u for closure-satisfying configurations).
 
-The core disagreement: work.md treats metric-mass's standing-wave principle as "always combine ±k for every compact direction." work1.md treats it as "combine ±k only in the directions where the substrate makes ±k a topological symmetry of the configuration." The first interpretation is uniform but wrong; the second respects the wrap-order asymmetry that the framework has built into its substrate.
+The core disagreement: work.md treats metric-mass's standing-wave principle as "always combine ±k for every compact direction." work1.md treats it as "combine ±k only in the directions where the wrap-order makes ±k a topological symmetry of the configuration." The first interpretation is uniform but wrong; the second respects the wrap-order asymmetry that the framework has built into its conventions.
 
-work.md acknowledges in §11.7 that the user's "two directions don't cancel in 2D" comment points away from the uniform R_J reading — and offers a reading that drops the standing-wave principle entirely (Reading B+, two single-mode cross-terms) as the alternative. work1.md identifies a *third* path that work.md missed: keep the standing-wave principle but apply it asymmetrically, with the asymmetry sourced from the substrate. This produces one cross-term, matches the user's "two candidates, rule one out by inspection" framing, and is internally consistent with both metric-mass (as the ring-direction mechanism) and Kaluza-Klein (as the tube-direction mechanism).
+work.md acknowledges in §11.7 that the "two directions don't cancel in 2D" observation points away from the uniform R_J reading — and offers a reading that drops the standing-wave principle entirely (Reading B+, two single-mode cross-terms) as the alternative. work1.md identifies a *third* path that work.md missed: keep the standing-wave principle but apply it asymmetrically, with the asymmetry sourced from the wrap-order convention. This produces one cross-term, matches the "two candidates, rule one out by inspection" framing, and is internally consistent with both metric-mass (as the ring-direction mechanism) and Kaluza-Klein (as the tube-direction mechanism).
 
 The math of §§3–4 is shared with work.md §§3–6; the interpretive work of §§5–10 is what this file does differently.
 
@@ -343,11 +345,11 @@ If the asymmetric-standing-wave reading holds up under further checks, [Chapter 
 
 1. Open with the per-component intermediate (§3 here) and acknowledge its two cross-terms.
 2. Introduce the three candidate symmetrizations (§4 here) and their cross-term outcomes.
-3. Bring in the substrate's wrap-order (§5 here) as the principle that selects R_u for closure-satisfying configurations.
+3. Bring in the wrap-order (§5 here) as the principle that selects R_u for closure-satisfying configurations.
 4. Compute the natural particle's stress-energy explicitly (§7 here) and read off the single surviving gauge potential.
 5. Cover closure-failing modes (§9 here) via the same principle, recovering mass-only outcomes for both single-axis and genuine torus knots.
 6. Address matter/antimatter (§10 here) as the R_J operation that the natural particle does *not* enforce.
 
 The current Chapter 5 still has useful content in §6.5 (the conventions reduction) and §7 (the holonomy mechanism); both survive the rewrite with minor adjustments.
 
-The substantive scientific claim is that the framework predicts exactly one gauge potential for closure-satisfying particles, with that prediction inheriting from the substrate-level asymmetry between the ring (u) and tube (w) directions. This matches standard physics (one EM U(1) per charged particle) and is consistent with both the metric-mass mechanism (ring) and the Kaluza-Klein mechanism (tube). It is a clean derivation, not an interpretive choice.
+The substantive scientific claim is that the framework predicts exactly one gauge potential for closure-satisfying particles, with that prediction inheriting from the wrap-order asymmetry between the ring (u) and tube (w) directions. This matches standard physics (one EM U(1) per charged particle) and is consistent with both the metric-mass mechanism (ring) and the Kaluza-Klein mechanism (tube). It is a clean derivation, not an interpretive choice.
