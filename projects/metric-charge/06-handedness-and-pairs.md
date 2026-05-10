@@ -25,8 +25,8 @@ The two-distinct-knots version of pair behavior — when two separate closure-sa
 | 2 | The (m, n) → (−m, −n) reflection — content and standard-physics correspondence |
 | 3 | The (m, n) → (m, −n) reflection — chirality and the ring/tube distinction |
 | 4 | Pair configurations within a single field |
-| 5 | Three distinct neutrality mechanisms (extended to four in §6.6) |
-| 6 | What σ_uw shear breaks: chirality, not sign reflection |
+| 5 | Three distinct neutrality mechanisms |
+| 6 | What σ_uw shear breaks: chirality within particles, not matter/antimatter populations |
 | 7 | The multi-knot pair-behavior question |
 | 8 | What's next |
 
@@ -49,13 +49,13 @@ Topologically these two operations both produce the **mirror image** of the orig
 
 ### 1.1 Are (m, −n) and (−m, n) equivalent in metric-charge?
 
-This is a sharp question worth addressing. The two operations agree at the topological-curve level — both produce the same mirror knot up to traversal reversal. But the metric-charge framework distinguishes ring (u) and tube (w) by the four conventions of [Chapter 3 §3.2](03-knots-on-the-torus.md): closure asymmetry, aspect-ratio labeling, shear, gauge convention. Once those conventions are stacked, are (m, −n) and (−m, n) still equivalent?
+This is a sharp question worth addressing. The two operations agree at the topological-curve level — both produce the same mirror knot up to traversal reversal. But the metric-charge framework distinguishes ring (u) and tube (w) via the wrap-order convention of [Chapter 1 §10](01-foundation.md). Once the wrap-order is fixed, are (m, −n) and (−m, n) still equivalent?
 
 **Topologically: yes.** The bare knot type is the same.
 
-**Physically in metric-charge: no.** The two configurations have different (m, n) integer labels, conserved in different sectors of the wave equation. They source different patterns of off-diagonals — (−m, n) reverses the u-direction's gauge potential A_μ while keeping B_μ; (m, −n) reverses B_μ while keeping A_μ. If both U(1)s in the framework's prediction are physical, the two operations correspond to different physical states with opposite charges in *different* gauge sectors. Even if only one U(1) is physical (open question per [Chapter 5 §8](05-metric-self-consistency.md)), the two operations would correspond to charge-conjugate states in different roles depending on which U(1) is identified as the physical EM.
+**Physically in metric-charge: no.** The two configurations have different (m, n) integer labels, conserved in different sectors of the wave equation. Under the natural-particle construction of [Chapter 5 §4](05-metric-self-consistency.md), they relate differently to the wrap-order's R_u-symmetrization: (−m, n) is the R_u-conjugate of (m, n) (combining them gives the natural particle's R_u-symmetrized form, with cross-term in h_μw); (m, −n) is the R_w-conjugate (combining them would standing-wave the tube direction, which the wrap-order rules out as a particle symmetry — see Ch 5 §4.3). So the two operations play structurally different roles in the natural-particle construction.
 
-This is consistent with the broader topology-vs-physics pattern of Chapter 3: topology is symmetric under (u, w) ↔ (w, u) and under their independent reflections; physics with conventions is not. The mirror reflection inherits the same asymmetry.
+This is consistent with the broader topology-vs-physics pattern of Chapter 3: topology is symmetric under (u, w) ↔ (w, u) and under their independent reflections; physics with the wrap-order convention is not. The mirror reflection inherits the same asymmetry.
 
 So when this chapter speaks of "the mirror reflection," it is referring to the topological operation. The two physical realizations (m, −n) and (−m, n) are distinct states; we treat them as two members of the mirror-reflection class rather than identifying them.
 
@@ -73,7 +73,7 @@ The framework's primary label is the signed integer pair (m, n), and the sign tr
 
 ### 2.2 (m, n)-labeling content
 
-The framework treats (m, n) and (−m, −n) as **distinct conserved sectors**. Their integer labels are different; the wave equation conserves them separately. A (1, 2) mode and a (−1, −2) mode are different physical states — they trace the same unoriented curve but with opposite traversal direction, and they carry opposite-sign compact-direction momenta.
+The framework treats (m, n) and (−m, −n) as **distinct conserved sectors**. Their integer labels are different; the wave equation conserves them separately. A (2, 1) mode and a (−2, −1) mode are different physical states — they trace the same unoriented curve but with opposite traversal direction, and they carry opposite-sign compact-direction momenta.
 
 ### 2.3 Physical content under the gauge-potential analysis of Chapter 5
 
@@ -86,14 +86,14 @@ $$
 
 This is a kinematic statement: a wave packet traveling around the closed curve in the opposite direction carries opposite-sign compact momentum. No internal field-theoretic structure is invoked.
 
-Under the linearized Einstein analysis of [Chapter 5](05-metric-self-consistency.md), the off-diagonal stress-energy is T_μu ∝ p_u and T_μw ∝ p_w. So the (−m, −n) mode sources off-diagonals of opposite sign. Under the geometric KK identification of [Chapter 5 §4](05-metric-self-consistency.md), this corresponds to opposite-sign coupling in each of the two U(1) gauge potentials.
+Under the linearized Einstein analysis of [Chapter 5](05-metric-self-consistency.md), the per-component off-diagonal stress-energy is T_μu ∝ p_u and T_μw ∝ p_w. The natural particle's surviving cross-term h_μw scales with p_w, so the (−m, −n) mode sources h_μw of opposite sign — opposite-sign coupling under the framework's single gauge potential B_μ. (The would-be h_μu cross-term cancels in the natural particle by R_u-symmetrization, regardless of mode labels.)
 
 ### 2.4 What does this opposite-sign property correspond to physically?
 
 Open at this stage. The framework establishes that:
 
-- (m, n) and (−m, −n) are configurations of identical mass (energy density depends on |m|, |n| only) and identical closure-eligibility (synchronization is a magnitude property).
-- They source opposite-sign off-diagonal metric perturbations — under the KK identification, opposite-sign couplings in both gauge channels.
+- (m, n) and (−m, −n) are configurations of identical mass (energy density depends on |m|, |n| only) and identical closure-eligibility (the closure rule depends only on magnitudes via n | m or equivalently the chirality criterion).
+- They source opposite-sign h_μw — under the natural-particle construction of [Ch 5 §4](05-metric-self-consistency.md), opposite-sign coupling under the single gauge potential B_μ.
 - They correspond to opposite traversal directions on the same closed curve.
 
 These structural properties are what standard physics ascribes to a particle and its antiparticle (same mass, opposite charges, complementary conservation labels). Whether the framework's (m, n) → (−m, −n) reflection actually corresponds to what standard physics calls antimatter — versus to some other physical distinction (or to no physical distinction beyond a redundant labeling) — is left open. The chapter's stance:
@@ -112,7 +112,7 @@ A different operation: reverse only one winding. Examine its content.
 
 The (m, −n) curve is the **mirror image** of (m, n) in 3-space. For genuine torus knots T(p, q) with both p, q ≥ 2 and gcd = 1, the mirror image is *chirally distinct* — a different knot type that cannot be deformed to the original without going through 4-space or breaking the curve. Trefoil T(2, 3) and its mirror T(2, −3) are the prototype: they are different (chiral) torus knots.
 
-For "weak knot" diagonal modes (T(1, q) and T(p, 1)), both the original and mirror are unknots — chirally trivial — but the (m, n) labels are different and the modes are still physically distinct in metric-charge per Chapter 3.
+For "weak knot" diagonal modes (T(m, 1) primitives — and equivalently T(1, q) under cycle swap, which is *not* a closure-satisfying form in the framework's wrap-order), both the original and mirror are unknots — chirally trivial — but the (m, n) labels are different and the modes are still physically distinct in metric-charge per Chapter 3.
 
 ### 3.2 (m, n)-labeling content
 
@@ -127,7 +127,7 @@ $$
 p_u^{(m,-n)} = p_u^{(m,n)},\qquad p_w^{(m,-n)} = -p_w^{(m,n)}
 $$
 
-So the off-diagonal sourcing is mixed: A_μ (from h_μu) is unchanged, B_μ (from h_μw) is reversed. The configuration carries the same charge under one gauge potential but opposite charge under the other.
+So under the natural-particle construction, the surviving cross-term h_μw is *reversed* under the mirror reflection — the gauge potential B_μ flips sign. (The would-be h_μu cross-term cancels in the natural particle anyway, so the per-component-level reversal of its sign has no consequence in the natural particle.) The configuration carries opposite charge under B_μ.
 
 ### 3.4 What standard-physics symmetry does this correspond to?
 
@@ -144,7 +144,7 @@ Proceed with the analysis without committing to a specific standard-physics iden
 
 ## 4. Pair configurations within a single field — the sign-conjugate case
 
-This section examines configurations of the form (m, n) + (−m, −n) — *sign-conjugate* pair configurations. The chirality-conjugate pair configuration (m, n) + (m, −n) is structurally distinct and is examined in [§6.6](#66-chirality-conjugate-cancellation-as-a-fourth-neutrality-mechanism), where the σ_uw analysis surfaces it.
+This section examines configurations of the form (m, n) + (−m, −n) — *sign-conjugate* pair configurations. Under the natural-particle construction of [Chapter 5 §4](05-metric-self-consistency.md), this is R_J-symmetrization (joint reversal). For closure-satisfying modes, R_u was the natural choice (giving one gauge potential); choosing R_J instead is a *voluntary* construction that cancels the gauge potential and gives a mass-only configuration with chirality field T_uw — what this section calls cancellation-pair neutrality.
 
 A single field configuration φ can contain both (m, n) and (−m, −n) components simultaneously:
 
@@ -182,7 +182,7 @@ When both components have equal amplitude, the off-diagonals cancel exactly. The
 - **Gravitationally massive** with mass 2 m_(m, n) (twice a single mode).
 - **EM-neutral** at the linearized level — no net gauge potential, no observable EM coupling.
 
-This is **cancellation neutrality**: a configuration that is massive but EM-neutral due to internal cancellation of opposite-handed components. Both U(1)s are present in the configuration, but their charges sum to zero.
+This is **cancellation neutrality**: a configuration that is massive but EM-neutral due to internal cancellation of opposite-handed components. The natural-particle construction (R_u-symmetrization) is replaced by R_J-symmetrization, which cancels the spacetime↔compact gauge potential and leaves only diagonal mass plus the chirality-encoded compact-compact cross-term T_uw.
 
 ### 4.3 The unequal case |α| ≠ |β|
 
@@ -203,32 +203,31 @@ For comparison: standard physics treats matter and antimatter as distinct specie
 
 ---
 
-## 5. Three distinct neutrality mechanisms (extended to four in §6.6)
+## 5. Three distinct neutrality mechanisms
 
-The framework has *three* structurally distinct mechanisms producing apparent EM-neutrality, plus a fourth surfaced by [§6.6](#66-chirality-conjugate-cancellation-as-a-fourth-neutrality-mechanism)'s σ_uw analysis. This section develops the third (sign-conjugate cancellation); Chapters 4 and 5 developed the first two (single-axis structural neutrality and synchronization-failure neutrality); §6.6 develops the fourth (chirality-conjugate cancellation).
+The framework has *three* structurally distinct mechanisms producing apparent EM-neutrality. Chapters 4 and 5 developed the first two (single-axis structural neutrality and chirality-non-degenerate neutrality of genuine torus knots); this section develops the third (sign-conjugate cancellation pair).
 
-| Mechanism | Single-axis (Ch 4, 5) | Synchronization-failure (Ch 4, 5) | Cancellation (this chapter) |
+| Mechanism | Single-axis (Ch 4, 5) | Chirality-non-degenerate (Ch 4, 5) | Cancellation pair (this chapter) |
 |---|---|---|---|
-| Configuration | Single mode at (m, 0) or (0, n) | Single mode at T(p, q), p, q ≥ 2, gcd = 1 (genuine torus knot) | Single field with both (m, n) and (−m, −n) at equal amplitude |
-| Gauge structure | Partial — one U(1) only; lacks U(1)×U(1) cross-coupling | Both U(1)s present locally but configuration fails synchronization (per Ch 5 §6.3) | Both U(1)s present, but net contributions cancel |
+| Configuration | Single mode at (m, 0) or (0, n) | Single mode at T(p, q), p, q ≥ 2, gcd = 1 (genuine torus knot) | Single field with both (m, n) and (−m, −n) at equal amplitude (closure-satisfying mode in R_J-symmetrized form) |
+| Particle symmetry enforced | R_u or R_w (only one available; no chirality structure to test) | R_J only (R_u and R_w not topological symmetries; chirality is non-degenerate) | R_J chosen voluntarily over the available R_u (closure-satisfying mode would be charged under R_u; R_J cancels the gauge potential instead) |
 | Mass | Single mass m_(m, 0) or m_(0, n) | Single mass m_(p, q) | 2× mass: 2 m_(m, n) |
-| Net observable EM | Zero (one gauge potential structurally absent) | Zero (synchronization-failure mechanism — Ch 5 §6.3) | Zero (internal cancellation between opposite-sign sources) |
-| Topological character | One winding zero | Both windings nonzero, m ∤ n, gcd = 1 (genuine torus knot) | Both windings nonzero in each component |
-| Tunable? | No — fundamental, can't be made to carry charge | No — fundamental for the (m, n) sector | Yes — cancellation depends on equal amplitudes; adjusting α/β tunes the net charge from zero to full |
+| Net cross-terms | T_tu, T_tw, T_uw all zero | T_tu, T_tw zero; T_uw nonzero (chirality field) | T_tu, T_tw zero; T_uw nonzero (chirality field) |
+| Tunable? | No — fundamental (curve admits no chirality structure) | No — fundamental for the (m, n) sector (chirality is topologically non-degenerate) | Yes — cancellation depends on equal amplitudes; adjusting α/β tunes the configuration between fully charged (R_u-symmetrized natural particle) and fully cancelled (R_J pair) |
 
-Each mechanism produces massive but EM-neutral states by a structurally distinct route. The distinction matters for downstream identification:
+Each mechanism produces a massive but EM-neutral state by a structurally distinct route. The distinction matters for downstream identification:
 
-- **Single-axis neutrality** is fundamental and structural — the mode lacks one of the two gauge potentials.
-- **Synchronization-failure neutrality** is also fundamental but operates on a different structural deficit — both gauge potentials present, but the configuration's tube/ring nodes don't synchronize during traversal.
-- **Cancellation neutrality** is contingent — it depends on equal amplitudes between paired components; adjusting α/β tunes the configuration between fully charged and fully neutral.
+- **Single-axis neutrality** is fundamental and structural — the curve admits no chirality structure (one winding is zero), so the natural-particle construction reduces to metric-mass's standing wave on a single direction.
+- **Chirality-non-degenerate neutrality** is fundamental for genuine torus knots — the curve is chirally distinct from its mirror, so R_u is not a topological symmetry, and the natural particle falls back to R_J-symmetrization, sourcing T_uw (chirality field) but no spacetime↔compact gauge potential.
+- **Cancellation-pair neutrality** is contingent — it operates on a closure-satisfying mode that *could* be charged (R_u was available) but is configured as an R_J-symmetrized pair instead. Adjusting α/β tunes the configuration between fully charged and fully cancelled.
 
 Standard physics identifies several massive but EM-neutral particles: neutrinos (three flavors), neutral mesons (K⁰, B⁰, etc.), the Higgs boson, dark matter candidates, etc. Some have *intrinsic-property* neutrality (neutrinos' lack of EM coupling is fundamental); others have *structural-pair* neutrality (K⁰ is a quark-antiquark pair); still others have other origins.
 
 The framework's three mechanisms map structurally onto multiple standard-physics neutral-mass categories:
 
 - **Single-axis neutrality** might correspond to neutrinos or to one specific category of fundamental neutral states.
-- **Synchronization-failure neutrality** might correspond to a different category — possibly neutral hadrons-in-isolation, the Higgs, or some standard-physics state with both gauge structures present but no observable EM.
-- **Cancellation neutrality** might correspond to what standard physics calls neutral mesons or other composite-pair states with configuration-dependent neutrality.
+- **Chirality-non-degenerate neutrality** might correspond to a different category — possibly neutral hadrons-in-isolation, the Higgs, or some standard-physics state with chirality structure but no observable EM.
+- **Cancellation-pair neutrality** might correspond to what standard physics calls neutral mesons or other composite-pair states with configuration-dependent neutrality (matter-antimatter bound state of a closure-satisfying mode).
 
 Whether these candidate identifications hold depends on quantitative comparison and is downstream MaSt-correspondence work. The framework establishes that *three* structurally distinct neutrality mechanisms are available; which standard-physics particles correspond to which mechanism is open. The richness of the framework's neutral inventory — three structurally distinct categories — is suggestive of standard physics' multiple neutral categories, but the specific mapping is not determined here.
 
@@ -236,7 +235,7 @@ Whether these candidate identifications hold depends on quantitative comparison 
 
 ## 6. What σ_uw shear breaks: chirality reflection, not sign reflection
 
-This section works through the dispersion relation under σ_uw shear and asks which symmetries σ_uw breaks. The answer turns out to be precise and constraining: σ_uw breaks the **chirality reflection** (m, n) ↔ (m, −n), and it leaves the **sign reflection** (m, n) ↔ (−m, −n) invariant. Earlier framings of this chapter, and of [Chapter 8 §3](08-shear-and-fractional-charge.md), claimed σ_uw provides the sign-reflection bias by analogy to [metric-mass Chapter 7 §6](../metric-mass/07-shear-and-bias.md). The math says this is incorrect: the two shears (metric-mass's σ_Su and metric-charge's σ_uw) break different symmetries.
+This section works through the dispersion relation under σ_uw shear and asks which symmetries σ_uw breaks. The answer is precise and constraining: σ_uw breaks the **chirality reflection** (m, n) ↔ (m, −n) (and equivalently (m, n) ↔ (−m, n)), and it leaves the **sign reflection** (m, n) ↔ (−m, −n) invariant. Under work1's natural-particle construction (Ch 5 §4), this means σ_uw biases the *internal amplitude balance of a particle* (its R_u-symmetrized (++) vs (−+) components) rather than its matter/antimatter populations.
 
 The derivation is short and forced; we walk through it explicitly.
 
@@ -299,36 +298,19 @@ Earlier framings in this chapter and Chapter 8 conflated the two and presented �
 
 ### 6.5 Consequences for the framework
 
-The chirality-bias result has several consequences that follow directly from the math:
+The chirality-bias result has consequences that follow directly from the math, made sharper under work1's natural-particle construction:
 
-- **σ_uw provides chirality bias and only chirality bias.** Whatever asymmetry σ_uw introduces operates on the (m, n) ↔ (m, −n) axis. The (m, n) ↔ (−m, −n) axis — which the framework names the matter/antimatter axis (§2) — is unchanged by σ_uw.
-- **The framework does not derive a matter/antimatter bias from σ_uw.** Whether the framework can derive such a bias from any other mechanism is left open at this chapter. See §6.7.
-- **Sign-conjugate cancellation pairs (§4) remain neutral under shear.** A configuration with (m, n) + (−m, −n) at equal amplitude has *identical* dispersion for both components even at σ ≠ 0; the cancellation neutrality of §4 is robust under σ_uw shear.
-- **Chirality-conjugate pairs become non-degenerate under shear.** A configuration with (m, n) + (m, −n) at equal amplitude has *unequal* dispersion under σ ≠ 0; the two components sit at different energies. §6.6 examines this configuration.
+- **σ_uw biases chirality *within particles*, not matter/antimatter populations.** Whatever asymmetry σ_uw introduces operates on the (m, n) ↔ (m, −n) axis (and equivalently (m, n) ↔ (−m, n) — the R_u and R_w reflections, which σ_uw breaks). For a natural particle (R_u-symmetrized configuration of (++) and (−+) per Ch 5 §4), σ_uw shifts the energies of the (++) and (−+) components in opposite directions, producing an internal amplitude bias within the particle. This is *intra-particle chirality bias*.
 
-### 6.6 Chirality-conjugate cancellation as a fourth neutrality mechanism
+- **σ_uw does not bias matter vs antimatter.** The (m, n) ↔ (−m, −n) sign reflection — which the framework treats as the matter/antimatter axis (§2) — is invariant under σ_uw (the cross-term k_u·k_w is unchanged under joint sign flip). σ_uw shifts matter and antimatter rest energies *equally*; it cannot bias their populations at the dispersion level. **Whatever produces the universe's matter/antimatter asymmetry, it is not σ_uw.**
 
-The σ_uw analysis above surfaces a configuration the chapter has not previously named: a pair of the form (m, n) + (m, −n), with equal amplitudes, which constitute a **chirality-conjugate pair** (rather than the sign-conjugate pair of §4). The off-diagonal sourcing for this pair:
+- **Sign-conjugate cancellation pairs (§4) remain neutral under shear.** A configuration with (m, n) + (−m, −n) at equal amplitude has identical dispersion for both components even at σ ≠ 0; the cancellation neutrality of §4 is robust under σ_uw shear.
 
-- Net p_u: (2π/L_u)·m + (2π/L_u)·m = 2·(2π/L_u)·m → **doubled** (same sign of m, contributions add)
-- Net p_w: (2π/L_w)·n + (2π/L_w)·(−n) = 0 → **cancelled** (opposite signs of n, contributions cancel)
+- **The R_w-symmetrized configuration is energetically disfavored under shear.** A configuration of the form (m, n) + (m, −n) — combining chirality-conjugates in the *tube* direction — is not a natural particle under the wrap-order convention (Ch 5 §4.3 rules out R_w as a particle symmetry). Under σ_uw ≠ 0, the two components sit at different energies (per §6.2), so this configuration is also not in thermal equilibrium. It would tend to redistribute toward whichever component the σ_uw shear favors energetically — settling into either (m, n) alone or (m, −n) alone, neither of which is by itself a natural particle. The configuration is structurally and energetically marginal.
 
-By the off-diagonal sourcing analysis of [Chapter 5 §3.2](05-metric-self-consistency.md), the metric perturbation has h_μu doubled (from the additive p_u contributions) and h_μw identically zero (from the cancelling p_w contributions). The metric-side picture is **structurally indistinguishable from a single-axis configuration** (2m, 0) at the linear level — only A_μ active, B_μ identically zero.
+### 6.6 Matter/antimatter bias — open
 
-This gives the framework a *fourth* structural neutrality mechanism, joining the three from §5:
-
-| Mechanism | Configuration | Net p_u | Net p_w | Metric-side appearance |
-|---|---|---|---|---|
-| Single-axis (Ch 4, 5) | (m, 0) or (0, n) — single mode | nonzero or 0 | 0 or nonzero | one U(1) only |
-| Synchronization-failure (Ch 4, 5) | T(p, q), p, q ≥ 2, gcd = 1 — single mode | nonzero | nonzero | both U(1)s, no observable EM |
-| Sign-conjugate cancellation (§4) | (m, n) + (−m, −n) at equal amplitude | 0 | 0 | both U(1)s cancel; doubled mass |
-| **Chirality-conjugate cancellation** (this section) | (m, n) + (m, −n) at equal amplitude | doubled | 0 | mimics single-axis (2m, 0); doubled mass |
-
-A note on the chirality-conjugate pair under shear: by §6.5, σ ≠ 0 splits the dispersion of (m, n) and (m, −n). The two components no longer sit at the same energy. A configuration prepared with equal amplitudes is therefore not in thermal equilibrium under shear and would tend to redistribute toward the lower-energy chirality unless prevented by another conservation law. This is the chirality-bias dynamics that σ_uw introduces — and it acts on chirality-conjugate cancellation pairs specifically, not on sign-conjugate ones.
-
-### 6.7 Matter/antimatter bias — open
-
-The framework derives chirality bias from σ_uw. It does **not** derive matter/antimatter bias from anything in this chapter or Chapter 8. If matter/antimatter asymmetry is a structural prediction of the framework, it must come from some other mechanism. Candidate locations the framework's broader stack might supply such a mechanism:
+The framework derives chirality bias *within particles* from σ_uw. It does **not** derive matter/antimatter bias on populations from any mechanism in this chapter or [Chapter 8](08-shear-and-fractional-charge.md). If matter/antimatter asymmetry is a structural prediction of the framework, it must come from some other mechanism. Candidate locations the framework's broader stack might supply such a mechanism:
 
 - **A different shear in the metric.** Shear between an extended direction and a compact direction (σ_Su or σ_Sw) would break (m) ↔ (−m) or (n) ↔ (−n) by the metric-mass mechanism. metric-charge's [Chapter 1 §4](01-foundation.md) introduces only σ_uw; introducing a second shear would be a structural change the project does not currently take.
 - **Substrate-level chirality from the underlying lattice.** Inherited from [grid-primitive](../grid-primitive/) or [grid-duality](../grid-duality/), the substrate may carry a built-in preferred direction at the edge level (chiral edge twist, asymmetric edge orientation) that propagates upward and biases (m, n) ↔ (−m, −n) at the mode level. This would be a substrate boundary condition, not a metric-charge derivation.
@@ -365,8 +347,8 @@ Chapter 7 changes the parameter focus from sign labels (Chapter 6) to magnitude 
 
 ## What this chapter does **not** do
 
-- **Does not derive a matter/antimatter bias mechanism.** §6 demonstrates that σ_uw shear breaks chirality, not sign reflection — so σ_uw alone cannot bias the (m, n) ↔ (−m, −n) population. Whether the framework derives such a bias from any other mechanism is left open at this chapter (see §6.7).
-- **Does not derive the Sakharov mechanism for baryogenesis.** σ_uw provides a P-flavor (chirality) bias only; the C-flavor (sign reflection) side has no derived mechanism in this chapter or [Chapter 8](08-shear-and-fractional-charge.md). Full Sakharov baryogenesis would require both C and CP violation plus a non-equilibrium phase; the framework currently provides one P-flavor ingredient at most.
+- **Does not derive a matter/antimatter bias mechanism.** §6 demonstrates that σ_uw shear biases chirality *within particles* (the R_u-symmetrized (++) vs (−+) amplitude balance), not matter/antimatter populations — σ_uw is invariant under (m, n) ↔ (−m, −n) joint sign flip. Whether the framework derives matter/antimatter bias from any other mechanism is left open at this chapter (see §6.6).
+- **Does not derive the Sakharov mechanism for baryogenesis.** σ_uw provides intra-particle chirality bias only; the C-flavor (sign reflection) bias on populations has no derived mechanism in this chapter or [Chapter 8](08-shear-and-fractional-charge.md). Full Sakharov baryogenesis would require both C and CP violation plus a non-equilibrium phase; the framework currently provides at most a P-flavor intra-particle ingredient.
 - **Does not assign "matter" vs "antimatter" labels** to specific (m, n) sectors. The framework treats (m, n) and (−m, −n) as distinct sectors but does not pre-commit to which corresponds to what standard physics calls matter.
 - **Does not commit to whether parity (P) corresponds to mirror reflection or sign reflection** or some other operation. Open question; downstream comparison with standard physics' P, C, CP symmetries.
 - **Does not analyze multi-knot pair behavior** (pass-through, annihilation, bound states). [metric-binding](../metric-binding/).
@@ -382,9 +364,8 @@ Chapter 7 changes the parameter focus from sign labels (Chapter 6) to magnitude 
 |---|---|
 | Does the framework's (m, n) → (−m, −n) reflection correspond to what standard physics calls antimatter, or to something else? | Downstream MaSt-correspondence work |
 | Does the (m, n) → (m, −n) mirror reflection correspond to parity, chirality, charge conjugation, or none of these? | Open; downstream comparison with standard P/C/CP symmetries |
-| What fraction of observed neutrinos correspond to single-axis (Ch 4/5), synchronization-failure (Ch 4/5), sign-conjugate cancellation (§4), or chirality-conjugate cancellation (§6.6)? | MaSt-correspondence + experimental data |
-| **Does the framework derive a matter/antimatter bias from any mechanism?** §6 shows σ_uw cannot do it (σ_uw breaks chirality, not sign reflection). Candidate alternatives include extended-compact shear (σ_Su), substrate-level chirality from grid-primitive/grid-duality, or other unidentified mechanisms. | Project-direction question; possibly resolved at substrate level |
-| Are chirality-conjugate cancellation pairs (§6.6) and single-axis modes (Ch 4/5) experimentally distinguishable, given that they share the same metric-side h_μν pattern? | Downstream; depends on access to higher-order or off-shell observables |
-| When a single field contains both (m, n) and (−m, −n) at unequal amplitudes, does the framework predict any observable consequence beyond standard EM? | Open; depends on the B_μ identification of Chapter 5 §8 |
-| Is the (m, n) → (−m, −n) reflection a *physical* symmetry of the framework, or is it broken by some convention we have not yet identified? | Chapter 5 + grid alpha-derivation |
-| If the conventions of Chapter 3 §3.2 distinguish u and w, do (m, −n) and (−m, n) correspond to physically distinguishable states or just to two presentations of the same mirror configuration? | Chapter 5 + grid alpha-derivation; the answer depends on whether one or both U(1)s are physical |
+| What fraction of observed neutrinos correspond to single-axis (Ch 4/5), chirality-non-degenerate (Ch 4/5), or sign-conjugate cancellation (§4)? | MaSt-correspondence + experimental data |
+| **Does the framework derive a matter/antimatter bias from any mechanism?** §6 shows σ_uw cannot do it (σ_uw biases chirality within particles, not matter/antimatter populations). Candidate alternatives include extended-compact shear (σ_Su), substrate-level chirality from grid-primitive/grid-duality, or other unidentified mechanisms. | Project-direction question; possibly resolved at substrate level |
+| When a single field contains both (m, n) and (−m, −n) at unequal amplitudes, does the framework predict any observable consequence? | Open; couples to the substrate-level matter/antimatter origin question |
+| Is the (m, n) → (−m, −n) reflection a *physical* symmetry of the framework, or is it broken by some convention we have not yet identified? | Substrate-level work; possibly grid-primitive's chirality |
+| If the wrap-order convention distinguishes u and w, do (m, −n) and (−m, n) correspond to physically distinguishable states or just to two presentations of the same mirror configuration? | Chapter 5 §4.3 (R_w-symmetrization is wrap-order-ruled-out as a particle symmetry; the configurations are distinct from natural particles) |

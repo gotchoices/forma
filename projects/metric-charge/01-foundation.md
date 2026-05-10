@@ -325,59 +325,77 @@ These two periodicities together produce the **discrete 2D mode family** (m, n) 
 
 This is the centerpiece of the project. We state it now and explore its consequences in chapters 4 and 5.
 
-> **Closure condition (synchronization).** A wave configuration on the 2D sheet promotes a (massive) mode to a charged-state mode when, during a single closed traversal of T(m, n), **every time the tube-direction phase crosses zero, the ring-direction phase also crosses zero**.
+### The wrap-order convention
+
+The bare topology presents the two compact directions u and w symmetrically: nothing in §§1–9 distinguishes them. To make the framework's downstream derivations definite, we adopt a convention naming one direction the *ring* and the other the *tube*:
+
+> **u = ring** — the multi-wrap direction where mass arises from standing-wave structure (the metric-mass-style compact direction extended to 2D).
 >
-> Equivalently: parametrize the traversal by s ∈ [0, 1] with u(s) = m·s·L_u and w(s) = n·s·L_w. The tube crosses zero (modulo L_u) at s = j/m for j = 0, 1, ..., m. At each such s, the ring is at w(s) = n·j/m·L_w. For the ring to also cross zero (modulo L_w) at every such s, we need n·j/m to be an integer for every j ∈ {0, 1, ..., m}.
+> **w = tube** — the single-wrap direction (in primitives) where charge arises from KK-style traveling-wave structure.
+
+This convention is inherited from [grid-duality](../grid-duality/)'s wrap-promotion ladder, where L0→L1 (which produces the ring direction) and L1→L2 (which produces the tube direction) are *structurally distinct* substrate operations. The alternative convention (u as tube, w as ring) is isomorphic up to (u, w) ↔ (w, u) swap with ε → 1/ε; we adopt the convention above and proceed.
+
+### The closure condition (chirality form)
+
+> **Closure condition.** A configuration T(m, n) is closure-satisfying — i.e., a (massive) mode also carries observable EM charge — if and only if:
 >
-> **This holds if and only if m divides n (m | n), with both m and n nonzero.**
+> (i) the closed curve T(m, n) is **achiral** in 3-space — its chirality reflections are topological symmetries of the curve up to ambient isotopy — *and*
+>
+> (ii) the wrap-order's ring-direction reflection R_u (m ↔ −m) is among those topological symmetries.
+>
+> Within the torus-knot family realizable on T², (i) is the condition that the gcd-reduced primitive has tube winding ±1 (the curve is the unknot in 3-space, or a multi-link of unknots), and (ii) is automatic given (i).
 
-This is **stated, not derived**. Two distinct "why" questions sit behind the rule:
+This is **stated, not derived**. The deeper "why" — the α-coupling-strength derivation that explains the magnitude of the resulting charge — lives in [grid/](../../grid/), to be developed there. The chirality criterion above is what *selects* closure-satisfying configurations; the strength of the resulting coupling is a separate question.
 
-- The "why" of *strength* — the α-coupling-strength derivation that explains the magnitude of the resulting charge — lives in [grid/](../../grid/), to be developed there.
+The criterion is not fundamentally about "unknot status" — it is a chirality-symmetry condition that, applied to any T(m, n), produces a definite yes/no answer. For the torus knots that T² admits, the criterion happens to select unknots and their multi-links. The criterion itself is general (it would extend naturally to other manifolds where non-torus closed curves could be embedded — for example, an amphicheiral knot like the figure-eight would qualify on (i) grounds if it could be embedded).
 
-- The "why" of *direction* — why w-winding rather than u-winding — is convention. The bare topology presents two compact directions symmetrically and gives no internal reason to prefer one. We start with two options, not knowing in advance which one is which. The choice is arbitrary at the topological level. We adopt the convention that w is the direction whose 2π winding closure requires, and proceed with derivations under that adoption. This determines the **order in which we wrap the torus**: w becomes the *tube* (the 2π-winding direction whose modes carry charge), and u becomes the *ring* (where mass arises from standing-wave structure on the unselected direction). The alternative convention (u as tube, w as ring) is isomorphic up to (u, w) ↔ (w, u) swap with ε → 1/ε.
+### Equivalent operational test (synchronization)
 
-Whether the adopted convention matches the way the universe seems to work — whether observed gauge fields line up with this assignment or with the swapped alternative — is a downstream comparison question, not a determination of this chapter. If something physical (handedness or chirality of the embedding, substrate constraint, or other) eventually *forces* the choice, that would be a derived result. If it remains a convention the math adopts for self-consistency, that is also defensible. [grid-duality §8](../grid-duality/08-where-alpha-appears.md) and alpha-derivation work may settle this.
+The chirality criterion has a clean operational test in terms of phase synchronization during traversal:
 
-This project takes the rule as given (with the convention explicit) and explores its consequences.
+> **Synchronization test.** Parametrize the traversal of T(m, n) by s ∈ [0, 1] with u(s) = m·s·L_u and w(s) = n·s·L_w. The tube phase crosses zero (modulo L_w) at s = j/n for j = 0, 1, ..., n. At each such s, the ring is at u(s) = (m·j/n)·L_u. For the ring to also cross zero (modulo L_u) at every such s, we need m·j/n to be an integer for every j ∈ {0, 1, ..., n}.
+>
+> **This holds if and only if n divides m (n | m), with both m and n nonzero.**
 
-### The condition has a clean topological characterization
+The synchronization test selects the same set of (m, n) as the chirality criterion: configurations for which the gcd-reduced primitive has tube winding 1 (T(m', 1) form). Within the torus-knot family on T², the chirality view (criterion (i)+(ii) above) and the synchronization view (operational test n | m) agree by construction.
 
-The synchronization condition m | n has a clean topological reformulation. Write n = c·m for some positive integer c. Then T(m, n) = T(m, c·m) has gcd(m, n) = m, and decomposes into **m disjoint copies** of the primitive T(1, c). So:
+### Topological characterization
 
-> **Synchronization closure (topological form):** T(m, n) closure-satisfies iff its gcd-reduced primitive is **T(1, q)** for some integer q ≥ 1. Equivalently: m | n with both nonzero. The closure-satisfying inventory is exactly **T(1, q) primitives and their k-component repetitions** k × T(1, q) (where k = m and q = n/m).
+> **Topological form.** T(m, n) closure-satisfies iff its gcd-reduced primitive is **T(m', 1)** for some integer m' ≥ 1. Equivalently: n | m with both nonzero. The closure-satisfying inventory is exactly **T(m', 1) primitives** and their **k-component repetitions** k × T(m', 1) (where k = n and m = k·m').
 
-This is the same rule, viewed two ways:
+This is the same rule, viewed three ways:
 
-- **Phase-pattern view (the box above).** The wave's tube-zero crossings synchronize with the ring's zero crossings during one closed traversal.
-- **Topological view.** The closure-satisfying configurations are exactly the T(1, q) primitives and their k-component repetitions.
+- **Chirality view (the box above).** The closed curve is achiral and the wrap-order's R_u is among its topological symmetries.
+- **Synchronization view.** The wave's tube-zero crossings coincide with ring-zero crossings during one closed traversal.
+- **Topological view.** The closure-satisfying configurations are exactly the T(m', 1) primitives and their k-component repetitions.
 
-The two views are mathematically equivalent (m | n, with both nonzero, is what each says about (m, n)).
+Within the torus-knot family on T², the three views are mathematically equivalent — they all select the same partition of (m, n) ∈ ℤ² with both nonzero into closure-satisfying and closure-failing.
 
-### A third view (metric-side) — open in this project
+### Metric-side derivation — chapter 5
 
-Chapter 5 develops a *metric-side* description: closure-satisfying modes source off-diagonal metric entries that form a valid Kaluza-Klein gauge potential pattern under linearized Einstein equations. Whether the metric-side characterization is *equivalent to* the synchronization condition (i.e., off-diagonals form a valid gauge potential iff m | n) or only *implied by* it (synchronization-satisfying modes form valid gauge potentials, but unsynchronized modes might also locally) is a question chapter 5 examines. If the metric-side is equivalent to synchronization, the framework has three mutually consistent views; if it's strictly broader (i.e., genuine torus knots like T(2, 3) source locally-valid gauge potentials but fail synchronization), then the framework has two equivalent views (phase-pattern and topological) plus a metric-side that selects a *superset* of closure-satisfying configurations.
+Chapter 5 develops a *metric-side* derivation: under the wrap-order-asymmetric standing-wave construction, closure-satisfying modes source one off-diagonal metric entry that forms a single Kaluza-Klein gauge potential pattern under linearized Einstein equations, while closure-failing modes source no EM gauge potential. The metric-side derivation is exactly equivalent to the chirality criterion (i)+(ii) — both are descriptions of the same underlying fact: the curve's chirality status, which controls which wrap-order-aligned symmetries the natural particle inherits.
 
-The same off-diagonal-sourcing chain is also the framework's calculable mechanism for how mass mechanically bends light (gravitational lensing, Shapiro delay) — see [metric-mass Chapter 6 §4](../metric-mass/06-gravitational-bending.md). The mechanism applies to *all* closure-eligible (both-windings-nonzero) modes regardless of synchronization status; observable EM is the additional question.
+The same off-diagonal-sourcing machinery is also the framework's calculable mechanism for how mass mechanically bends light (gravitational lensing, Shapiro delay) — see [metric-mass Chapter 6 §4](../metric-mass/06-gravitational-bending.md) and Chapter 5 below.
 
-### Genuine torus knots: closure-failing under synchronization
+### Genuine torus knots: closure-failing
 
-A genuine torus knot T(p, q) with both p, q ≥ 2 and gcd(p, q) = 1 has m = p, n = q with m ∤ n (since gcd = 1 forces m = 1 if m | n). So **all genuine torus knots fail closure** under synchronization. T(2, 3), T(2, 5), T(3, 4), T(3, 5), T(2, 7), ... are all closure-failing.
+A genuine torus knot T(p, q) with both p, q ≥ 2 and gcd(p, q) = 1 is *chirally distinct* from its mirror in 3-space — T(p, q) and T(p, −q) (or T(−p, q)) are different knots, not isotopic to each other. Neither chirality reflection is a topological symmetry of the curve, so criterion (i) fails. **All genuine torus knots are closure-failing.** T(2, 3), T(2, 5), T(3, 4), T(3, 5), T(2, 7), ... are all closure-failing.
 
-These modes have both windings nonzero but no synchronization. They source off-diagonal metric entries (per Chapter 5) but those entries' relationship to observable EM is the question. Within the framework's prediction, they are **mass-only modes** alongside single-axis modes — but the *mechanism* for their neutrality differs:
+These modes source diagonal stress-energy (mass) and a chirality-encoded compact-compact cross-term that records which chirality of knot is present, but they source no EM gauge potential. Chapter 4 develops the resulting mass-only inventory; chapter 5 derives the metric-side picture.
 
-- **Single-axis modes** ((m, 0) or (0, n)): one winding zero. Mass without charge by missing one of the two compact-direction momenta.
-- **Synchronization-failing modes** (genuine torus knots T(p, q), p, q ≥ 2, gcd = 1): both nonzero but synchronization fails. Mass without observable charge — possibly because the off-diagonals don't combine into a coherent observable gauge field (subject to chapter 5's metric-side analysis).
+### Why this convention? — open
 
-A candidate third mass-only mechanism alongside the structural-neutrality of single-axis modes and the cancellation-neutrality of [Chapter 6 §4](README.md#chapters). Chapter 4 develops this partition.
+The choice of which direction is the ring and which is the tube is a *convention* the framework adopts. Whether something physical eventually *forces* this choice — handedness or chirality of the embedding spacetime, substrate constraints from grid-primitive, or other — is a downstream question, not a determination of this chapter. If a structural mechanism eventually forces it, the convention becomes a derived result; if it remains adopted-by-stipulation, that is also defensible. [grid-duality §8](../grid-duality/08-where-alpha-appears.md) and alpha-derivation work may settle this.
+
+This project takes the convention as adopted and explores its consequences.
 
 ### Variants to keep open
 
-The closure condition stated above is one specific rule. Several variants are conceivable and will be examined in chapter 4:
+The closure condition stated above adopts a specific wrap-order. Several variants are conceivable and are examined in chapter 4:
 
-- 2π winding on **u** instead of w — does this give a different particle class?
-- A standing wave on only one of u or w (rather than both)
-- A configuration where multiple knots collectively satisfy closure but no single one does individually
+- The opposite wrap-order (u as tube, w as ring) — gives an isomorphic framework with labels swapped per (u, w) ↔ (w, u).
+- A configuration where one of the two windings is zero (single-axis modes) — closure-failing because there is no chirality structure to test.
+- A configuration where multiple knots collectively satisfy closure but no single one does individually.
 
 Whether these variants describe additional particle classes, redundant labelings of the same class, or unphysical configurations is a chapter-4 question.
 
@@ -391,7 +409,7 @@ The following are *not* given. They are to be derived, observed to arise from th
 
 - **Numerical α.** We do not commit to a numerical value of the fine-structure constant. Where α appears in interpretations or comparisons, it is taken as given; its derivation is [grid/](../../grid/)'s territory.
 
-- **Closure-condition uniqueness.** No claim that the closure condition of §10 is the unique rule under which a (massive) mode also carries observable EM charge. Alternatives are examined in chapter 4.
+- **Closure-condition uniqueness.** No claim that the chirality-based closure condition of §10 is the unique rule under which a (massive) mode also carries observable EM charge. Alternatives (different wrap-orders, alternative particle-symmetry choices) are examined in chapter 4.
 
 - **Vector polarization.** We do not track full vector polarization for the EM field. The scalar field φ carries phase but not polarization. See §7.
 
@@ -416,7 +434,7 @@ We have, in total:
 5. A real scalar field φ : M → ℝ.
 6. The massless wave equation □φ = 0.
 7. Two periodicity boundary conditions: φ(u + L_u) = φ(u) and φ(w + L_w) = φ(w) (with all other arguments held fixed).
-8. **The closure condition** of §10, as a statement about phase patterns, with equivalent topological (inherited from grid-duality) and metric-side (developed in chapter 5) formulations.
+8. **The closure condition** of §10, as a chirality-symmetry criterion on the closed curve T(m, n), with equivalent operational (synchronization), topological (gcd-reduced primitive form), and metric-side (chapter 5) formulations.
 9. **Inherited from [grid-duality](../grid-duality/) (chapters 7–8):** the L3 location of charge in the wrap-promotion ladder, the U(1) × U(1) gauge structure of the 2-torus closure, and the integer-quantization of winding numbers (w_α, w_β) ∈ ℤ². The integer-quantization is also derived independently in Chapter 2 §2 from the periodicity boundary conditions of §9; the two derivations agree, and we use grid-duality's result and our own as mutually consistent.
 
 Methodological commitments:

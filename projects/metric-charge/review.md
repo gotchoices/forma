@@ -36,38 +36,32 @@ Chapter 8 §6 has been reframed as "Optimizing k under shear — what value emer
 
 ## Moderate
 
-### M1. The "four conventions reduce to one" claim is asserted, not derived
+### ~~M1. The "four conventions reduce to one" claim is asserted, not derived~~ **[Resolved by work1 refactor]**
 
-Chapters 3 §3.2 and 5 §6.3 claim that four asymmetric conventions in the framework — (i) the closure condition's preference for w-winding, (ii) the aspect-ratio labeling of "tube" vs "ring," (iii) the placement of σ_uw in one off-diagonal entry, (iv) the gauge convention selecting one U(1) as the physical photon — all reduce to a single underlying "wrap-order" convention adopted in Chapter 1 §10.
+Original concern: Chapters 3 §3.2 and 5 §6.3 claimed four asymmetric conventions reduce to a single wrap-order choice without explicit demonstration.
 
-This is plausible but not derived. The argument is: "Under (u, w) ↔ (w, u) swap with ε → 1/ε, the bare framework is symmetric; once the wrap-order convention is adopted, the four downstream conventions inherit the asymmetry consistently." The claim that the four conventions inherit consistently isn't shown; it's asserted.
-
-The reason this matters: the framework would be much cleaner if there were a single convention rather than four. If they don't actually reduce, the framework has four independent free choices, each of which could in principle be set differently and produce different physics.
-
-A demonstration would walk through each of the four conventions, show that flipping any one of them is equivalent to flipping the wrap-order, and that the others adjust accordingly. The chapters claim this without doing it.
+The work1 refactor folded the convention-reduction into the chapter-5 derivation directly. Convention 4 (gauge identification) is no longer an independent stipulation — it is a *consequence* of the wrap-order's selection of R_u as the particle symmetry. Once the wrap-order fixes which compact direction is the ring (R_u-symmetrized in the natural particle), the surviving cross-term h_μw is automatically the gauge potential. The standalone §6.5 demonstration has been folded into Chapter 5 §6.4. The σ_uw shear is recognized as a structurally separate asymmetry-introducing mechanism, not a fourth face of the wrap-order convention; the wrap-order convention has *three* faces (closure rule, aspect-ratio labeling, gauge identification), all aligned by construction.
 
 ### M2. Chapter 5's gauge-potential four-property test is asserted to pass
 
-Chapter 5 §4.2 walks through four standard-physics properties of a gauge potential and asserts each is reproduced by the framework's off-diagonal h_μu pattern:
+**Status under work1 refactor: simplified, not resolved.** The work1 refactor reduces the four-property test from two U(1) gauge potentials to one (the surviving h_μw under the natural-particle construction; Ch 5 §4.6). The test still asserts each property without explicit calculation.
+
+Chapter 5 §4.6 walks through four standard-physics properties of a gauge potential and asserts each is reproduced by the framework's surviving h_μw cross-term:
 
 - Property 1 (index structure): asserted to transform as a 4-vector under spacetime coordinate change. Plausible but not shown explicitly.
-- Property 2 (gauge transformation): asserted that h_μu shifts as ∂_μΛ under x^u → x^u + Λ. This is the standard KK result; the chapter cites it but doesn't compute it.
-- Property 3 (field strength): F^A_μν = ∂_μ h_νu − ∂_ν h_μu asserted to be antisymmetric and gauge-invariant. The first follows from definition; the second requires the specific gauge transformation of property 2.
-- Property 4 (coupling to charged matter): "A particle on the perturbed metric h_μu follows a geodesic equation that, in the slow-motion limit, picks up a force term ∝ p^u (∂_μ h_νu − ∂_ν h_μu) ẋ^ν." This is the most substantive claim — it requires expanding the geodesic equation, identifying the slow-motion limit, isolating the force term, and showing it has the precise structure of the Lorentz force with p^u as charge. None of this calculation is in the chapter.
+- Property 2 (gauge transformation): asserted that h_μw shifts as ∂_μΛ under x^w → x^w + Λ. This is the standard KK result; the chapter cites it but doesn't compute it.
+- Property 3 (field strength): F^B_μν = ∂_μ h_νw − ∂_ν h_μw asserted to be antisymmetric and gauge-invariant.
+- Property 4 (coupling to charged matter): "A particle on the perturbed metric h_μw follows a geodesic equation that, in the slow-motion limit, picks up a force term ∝ p^w (∂_μ h_νw − ∂_ν h_μw) ẋ^ν." This is the most substantive claim — it requires expanding the geodesic equation, identifying the slow-motion limit, isolating the force term, and showing it has the precise structure of the Lorentz force with p^w as charge. None of this calculation is in the chapter.
 
 These are well-known KK results in standard form and there's no reason to doubt them in principle. The issue is that the chapter is making a *positive* claim ("the framework reproduces standard EM at the linearized level — emergent, not postulated") and the demonstration of that claim is reduced to citing properties without calculating them.
 
-A separate refinement has been added in §5.2 (genuine-torus-knot mass-only category): the chapter now explicitly acknowledges that the four-property test as currently developed cannot distinguish synchronization-failing from synchronization-satisfying modes, and leaves open whether the metric-side picture is "equivalent to" or "broader than" the synchronization rule. This is a positive honesty gain — the chapter is no longer asserting full equivalence — but the underlying four-property test itself still asserts each property without calculation.
+A version that did the calculation explicitly (perhaps citing metric-mass Chapter 5 for property 2 with an explicit extension to the tube direction, then computing properties 3 and 4 from there) would be substantially more convincing. Tracked in [STATUS.md](STATUS.md) as TODO-M2.
 
-A version that did the calculation explicitly (perhaps citing metric-mass Chapter 5 for property 2 with an explicit extension to two compact directions, then computing properties 3 and 4 from there) would be substantially more convincing.
+### ~~M3. The two-U(1)s discrepancy with standard physics~~ **[Resolved by work1 refactor]**
 
-### M3. The two-U(1)s discrepancy with standard physics is flagged but not pursued
+Original concern: Chapter 5 predicted two gauge potentials (A_μ from h_μu, B_μ from h_μw) while standard physics observes one EM gauge potential. The chapter offered three candidate resolutions (Hodge-dual magnetic, new physics, gauge-fixing redundancy) without selecting one.
 
-Chapter 5 §8 honestly notes that the framework predicts two gauge potentials (A_μ from h_μu, B_μ from h_μw) while standard physics observes one. The chapter offers three possible resolutions: B_μ corresponds to a Hodge-dual magnetic-charge analog, B_μ is new physics, or B_μ is a redundancy that gauge-fixing eliminates. None is selected.
-
-This is honest framing for a partial result, but it's load-bearing for the framework's claim to "reproduce standard EM at the linearized level." If the second U(1) is new physics with no standard-model counterpart, then standard EM is *not* reproduced — there's an extra force the framework predicts that standard physics doesn't have. If it's a redundancy, then the framework has two-fold redundant accounting where standard physics has none.
-
-The chapter's "what the framework reproduces" claim in §8 should be qualified by "modulo the two-U(1)s issue." Currently the chapter says reproduction holds "at the linearized level" with the two-U(1)s flagged separately, but a reader could come away thinking the reproduction is established when in fact it depends on resolving the open question.
+The work1 refactor resolves this by introducing the wrap-order-asymmetric standing-wave construction (Ch 5 §4). The natural particle is R_u-symmetrized: standing in the ring direction, traveling in the tube direction. Under this construction, only one cross-term survives — h_μw (the tube-direction's, identified with B_μ). The would-be h_μu cross-term cancels by the metric-mass mechanism applied to the ring direction. **The framework now produces a single gauge potential per closure-satisfying particle**, matching standard EM's single observed U(1).
 
 ### ~~M4. "Single-axis modes are neutrino-class candidates" is overstated~~ **[Resolved]**
 
@@ -87,11 +81,11 @@ Original concern: chapter 6 §2.3 asserted that the (m,n) → (−m,−n) reflec
 
 Chapter 6 §2.4 has been added explicitly framing the question. The chapter now distinguishes between the *geometric* opposite-momentum property (well-grounded; falls out of Ch 1 §6.1's traversal-orientation framing) and the *physical* matter/antimatter identification (a candidate, not a commitment, requiring an asymmetry-breaking mechanism such as Chapter 8's shear-induced bias to acquire physical content). Now reads: *"The matter/antimatter identification is a candidate, not a commitment. Whether (m, n) ↔ (−m, −n) corresponds to particle ↔ antiparticle requires that something physically distinguish the two beyond their structural opposite-charge property."* The S2 dependency is also cleared by the §6.1 resolution.
 
-### M7. The "promotion" language in the closure condition
+### ~~M7. The "promotion" language in the closure condition~~ **[Resolved]**
 
-Mostly addressed but not entirely. Chapter 1 §10's centerpiece statement now reads "promotes a (massive) mode to a charged-state mode" — the *(massive)* parenthetical clarifies that mass is preserved, fixing the worst of the previous ambiguity. The README and Chapter 4 §1 use the same updated phrasing.
+Original concern: residual instances of "promotes mass to charge" wording in Ch 1 §11 and the README implied mass-becomes-charge rather than mass-and-charge-coexist.
 
-Residual instances of the older "promotes mass to charge" wording remain in a few places (Chapter 1 §11 line 394: "the unique rule that promotes mass to charge"; README §Chapters line 148: "When does a knot promote mass to charge?"). These are minor consistency issues — the dominant phrasing now correctly preserves mass under closure, but a sweep would catch the residuals.
+The residuals have been swept. Ch 1 §11 now reads "the unique rule under which a (massive) mode also carries observable EM charge"; the README's chapter-4 description reads "When does a (massive) mode also carry observable EM charge?" The dominant phrasing throughout the project consistently preserves mass under closure.
 
 ### M8. Chapter 8 is in outline form; the k_opt computation is pending
 
@@ -113,11 +107,11 @@ But MaSt model-F's particle identifications appear repeatedly throughout the cha
 
 This isn't a fatal issue (the rhetoric of discovery while using known targets as comparison points is common in theoretical physics). But the claim of discovery mode is somewhat overstated when the chapter targets are already MaSt-shaped.
 
-### L2. "U(1) × U(1) cross-coupling structure" conflates topology and gauge group
+### ~~L2. "U(1) × U(1) cross-coupling structure" conflates topology and gauge group~~ **[Resolved]**
 
-The project uses "π₁(T²) = ℤ²" and "U(1) × U(1) gauge structure" as if they were equivalent or directly related (Chapter 1 §10, Chapter 2 §4.2, Chapter 5 §4.3). The fundamental group of a manifold is a topological invariant; the gauge group of a field theory is a Lie group acting on the field space. They're conceptually distinct objects — the relationship between them in Kaluza-Klein theory comes from compact U(1) factors in the metric, not from π₁.
+Original concern: the project conflated π₁(T²) = ℤ² (topological invariant) with U(1) × U(1) gauge group (Lie group from KK reduction).
 
-The project's compact directions are circles, so their isometry groups are U(1) factors and π₁(T²) = ℤ² — the framework's observations are correct at the surface level. But the language is imprecise enough that a reader could come away with the wrong impression of why the gauge structure is what it is. Tightening to "the compact 2-torus has two U(1) isometries, giving the framework U(1) × U(1) gauge structure under Kaluza-Klein dimensional reduction" would be cleaner.
+Chapter 1 §10 now distinguishes them: "the 2-torus closure T² = S¹ × S¹ has fundamental group π₁(T²) = ℤ² — supplying integer-valued conserved windings — and two independent U(1) isometries (one per compact direction), which under Kaluza-Klein dimensional reduction yield the U(1) × U(1) gauge structure that charge structurally requires." The fundamental group is the topological invariant; the gauge group emerges from KK reduction. The two facts are parallel consequences of the 2-torus structure, not the same statement. (Note: under the work1 refactor, the natural particle uses only one of the two U(1)s — see Ch 5 §4.)
 
 ### L3. "Knot" vs "(m,n) mode" terminology drifts
 
@@ -157,9 +151,11 @@ Originally a Light note about earlier-chapter references to chapter 8; promoted 
 
 ## New issues from this re-evaluation
 
-### N1. README status field is stale
+### ~~N1. README status field is stale~~ **[Resolved]**
 
-The README's status field reads *"Status: Framing complete. Awaiting first chapter."* The project now has eight chapters of substantial prose (with Chapter 8 still in outline form, per M8). A reader hitting the README would be misled about how much of the project is written. Update to something like *"Chapters 1–7 complete; Chapter 8 in outline form (see M8 in [review.md](review.md))"* or similar.
+Original concern: README said "Framing complete. Awaiting first chapter" while 8 chapters existed.
+
+README status now reads "Chapters 1–7 in full prose; Chapter 8 in outline form (energy-minimization computation pending). See [review.md](review.md) for the project's open-issues log."
 
 ### N2. The new mass-only inventory under synchronization is a substantive prediction worth more analysis
 
@@ -181,10 +177,8 @@ This is a Light/Moderate issue depending on how seriously one reads the framewor
 
 The project is admirably honest about its open questions, conventions, and inheritance dependencies. Each chapter ends with explicit "what this chapter does not do" and "open questions flagged" sections, and the README is clear that MaSt's identifications are reference targets, not inputs.
 
-The latest editing pass has substantially improved the framework. Of the original three Serious findings, all are resolved (S1 by the synchronization reformulation; S2 by the orientation-on-real-field treatment in Chapter 1 §6.1; S3 by Chapter 8's optimization-framing rewrite). Of the seven Moderate findings, three (M4, M5, M6) are fully resolved by reformulations that match what the original review asked for, M7 is mostly resolved with a few residual instances, M8 is partially resolved with the actual computation still pending, and M1–M3 remain. Of the original seven Light findings, two (L4, L6) are resolved with explicit explanations / acknowledgments added, L7 is subsumed, and three (L1, L2, L3, L5) remain as the same items they were before.
+After the work1 refactor pass: all three Serious findings (S1, S2, S3) and seven of the eleven Moderate / New findings (M1, M3, M4, M5, M6, M7, N1) are resolved. Of the original seven Light findings, three (L2, L4, L6) are resolved, L7 is subsumed into M8, and three (L1, L3, L5) remain. Two Moderate findings remain open (M2 — gauge-property test still asserted not derived; M8 — Chapter 8 optimization computation pending), plus N2 (infinite mass-only tower needs engagement). All remaining open items are tracked in [STATUS.md](STATUS.md).
 
-What remains is genuinely about open work — the four-conventions reduction (M1) and the gauge-potential test (M2) need explicit derivations; the two-U(1)s discrepancy (M3) needs to be either resolved or qualified more strongly in §8; chapter 8 needs the prose expansion (M8); and the new infinite-tower-of-mass-only-states prediction (N2) deserves engagement.
+The framework's overall arc after the work1 refactor is internally consistent: the closure condition is a chirality criterion on the closed curve in 3-space, equivalent to the synchronization n | m and topological "gcd-reduced primitive is T(m, 1)" forms; closure-satisfying particles produce a single gauge potential B_μ from h_μw via the wrap-order-asymmetric standing-wave construction; closure-failing modes produce mass-only outcomes via the same construction with R_J fallback. The framework's predictions for the charged inventory (T(m, 1) primitives and their k-component multi-link repetitions) are clean and falsifiable in principle.
 
-The framework's overall arc is now coherent and tighter than at the previous review pass. The synchronization reformulation in particular is a substantive improvement — the closure condition is now precise, operationally checkable, and consistent across the phase-pattern, topological, and (modulo §5.2's open question) metric-side views. The framework's predictions for the charged inventory (T(1, q) primitives and their k-component multi-link repetitions) are clean and falsifiable in principle.
-
-Resolving the remaining Moderate items would make the framework's claims rigorous enough for the downstream MaSt-correspondence work the project explicitly defers. The Light items are presentation polish.
+Resolving the remaining items (M2, M8, N2, L5) would make the framework's claims rigorous enough for the downstream MaSt-correspondence work the project explicitly defers. The Light items (L1, L3) are presentation polish.

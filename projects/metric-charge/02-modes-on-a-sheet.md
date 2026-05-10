@@ -234,9 +234,9 @@ These are the **L2-embedded-in-L3** modes. They have the topology of an L2 pheno
 
 Per Chapter 1 §10's three-view formulation, single-axis modes **fail the closure condition under all three formulations**:
 
-- *Topological:* one of (w_α, w_β) is zero. The U(1) × U(1) cross-coupling structure that supports α and observable EM (per [grid-duality §8.2](../grid-duality/08-where-alpha-appears.md)) requires both windings to be active simultaneously.
-- *Phase-pattern:* one of u or w lacks a complete standing wave (because the wave doesn't wind through that direction at all).
-- *Metric-side (chapter 5):* the off-diagonal metric entries sourced by these modes don't form a valid gauge-potential pattern.
+- *Chirality:* with one winding zero, there is no chirality structure on the curve to test — the achirality criterion (i) of Ch 1 §10 is vacuous, and the wrap-order's R_u-symmetrization reduces to metric-mass's 1D-compact standing wave (no EM cross-term sourced).
+- *Synchronization:* the operational test n | m is undefined when one of m, n is zero — single-axis modes are excluded by the "both nonzero" requirement of the rule.
+- *Metric-side (chapter 5):* the natural particle (R_u-symmetrized) sources only the diagonal stress-energy and no spacetime-extended-to-compact off-diagonal — pure mass, no gauge potential.
 
 Single-axis modes therefore produce **mass without observable charge**. They are candidate structural origins of *non-charged massive states* on a single sheet — a geometric, not pair-cancellation, mechanism for "massive but neutral." Standard physics has multiple non-charged massive categories (neutrinos, dark matter, certain neutral hadrons, the Higgs); which (if any) of these correspond to the framework's single-axis modes is open MaSt-correspondence work. Chapter 4 will interrogate the closure-failing modes further.
 
@@ -244,11 +244,11 @@ This distinction — between mass that arises from a single winding (L2-in-L3) a
 
 ### 4.3 Diagonal modes — (m, n) with both nonzero
 
-These modes wind in *both* compact directions. They have both topological windings nonzero, so the U(1) × U(1) cross-coupling structure is active. Per Chapter 1 §10, this is the *necessary* condition for charge promotion under all three views.
+These modes wind in *both* compact directions. Both topological windings are nonzero, which means the closed curve T(m, n) on T² has nontrivial chirality structure that the closure criterion (Chapter 1 §10) can test. Per Chapter 1 §10's chirality formulation, this is the *necessary* condition for closure satisfaction.
 
-It is not sufficient. The closure condition requires the winding to be accompanied by a complete standing-wave pattern on both u and w. Whether a given (m, n) actually satisfies that requirement depends on the standing-wave alignment — a phase-pattern question we defer to chapter 4. Our task in this chapter is only to identify which modes are *eligible* for charge under the necessary topological condition.
+It is not sufficient. The closure condition further requires the curve to be **achiral** in 3-space (criterion (i)) — i.e., its chirality reflections must be topological symmetries of the curve. Whether a given (m, n) actually satisfies the achirality criterion depends on the curve's knot type, a topological question we defer to chapter 4. Our task in this chapter is only to identify which modes are *eligible* for closure under the necessary "both nonzero" condition.
 
-The diagonal modes are the eligible candidates. Chapter 4 will examine which (m, n) values survive the additional standing-wave alignment constraint — and what variants of the closure condition (Chapter 1 §10) might select different sub-families.
+The diagonal modes are the eligible candidates. Chapter 4 will examine which (m, n) values survive the additional achirality constraint — and what variants of the closure condition (Chapter 1 §10) might select different sub-families.
 
 ---
 
@@ -309,13 +309,13 @@ $$
 
 The compact-direction momenta in spacetime units (this chapter) and the topological winding numbers (grid-duality) are the same quantity, expressed two different ways.
 
-This identification is the bridge between this chapter's spacetime-momentum view and chapter 5's metric-side picture. In chapter 5 we will see that p_u and p_w are the source terms that drive the off-diagonal metric entries g_μu and g_μw; under the Kaluza-Klein identification, those off-diagonals are the EM gauge potentials A_μ and B_μ. The chain reads:
+This identification is the bridge between this chapter's spacetime-momentum view and chapter 5's metric-side picture. In chapter 5 we will see that the natural particle (constructed via the wrap-order-asymmetric standing-wave principle) sources a single off-diagonal metric entry h_μw, which under the Kaluza-Klein identification is the EM gauge potential B_μ. The other compact direction's would-be cross-term h_μu cancels by the standing-wave construction (the metric-mass mechanism applied to the ring direction). The chain reads:
 
-> topological windings (grid-duality) ↔ compact-direction momenta (this chapter) ↔ off-diagonal metric sourcing (chapter 5) ↔ KK gauge potentials A_μ, B_μ
+> topological windings (grid-duality) ↔ compact-direction momenta (this chapter) ↔ off-diagonal metric sourcing in the tube direction (chapter 5) ↔ KK gauge potential B_μ
 
-Each step is an identification, not a derivation. The math agrees on all four sides; we are just reading the same physical content through four different lenses.
+Each step is an identification, not a derivation. The math agrees across all sides; we are reading the same physical content through different lenses.
 
-**The chain is also a calculable mechanism for bending.** A passing wave traversing the perturbed metric near a bound mass picks up phase via the line integral ∮ A_μ dx^μ along its worldline. In the gravitational case (mass-sourced gauge potentials, no closure required), the holonomy manifests as gravitational lensing and Shapiro delay; in the electromagnetic case (closure-promoted charge with full A_μ, B_μ), the holonomy manifests as the EM refractive-index physics that slows light through matter. Both are quantitatively computable from this chapter's mode structure plus chapter 5's off-diagonal sourcing. See [metric-mass Chapter 6 §4](../metric-mass/06-gravitational-bending.md) for the gravitational version named explicitly as a mechanism candidate; chapter 5 of this project extends it to the EM case.
+**The chain is also a calculable mechanism for bending.** A passing wave traversing the perturbed metric near a bound mass picks up phase via the line integral ∮ B_μ dx^μ along its worldline. In the gravitational case (diagonal h_μν sourced by rest energy, no closure required), the holonomy manifests as gravitational lensing and Shapiro delay; in the electromagnetic case (closure-promoted charge sourcing h_μw), the holonomy manifests as the EM refractive-index physics that slows light through matter. Both are quantitatively computable from this chapter's mode structure plus chapter 5's off-diagonal sourcing. See [metric-mass Chapter 6 §4](../metric-mass/06-gravitational-bending.md) for the gravitational version named explicitly as a mechanism candidate; chapter 5 of this project extends it to the EM case.
 
 ### 5.4 Conservation
 
@@ -342,7 +342,7 @@ Six things are cited rather than re-derived:
 - **Integer-quantization of topological winding.** Cite [grid-duality §7.5.4](../grid-duality/07-wrap-promotion-modeling.md). The identification with our (m, n) is explicit (§2).
 - **The slow-motion inertial-mass proof.** Cite [metric-mass Chapter 2 §6](../metric-mass/02-mass-from-u.md). It carries over with one extra integer index.
 - **The metric-side picture of charge promotion.** Deferred to chapter 5. This chapter establishes only the mode family; chapter 5 does the off-diagonal sourcing analysis.
-- **The classification of which (m, n) survive the closure condition.** Deferred to chapter 4. This chapter establishes only which modes are *eligible* (the diagonal modes of §4.3); chapter 4 examines whether they actually satisfy the standing-wave alignment requirement.
+- **The classification of which (m, n) survive the closure condition.** Deferred to chapter 4. This chapter establishes only which modes are *eligible* (the diagonal modes of §4.3); chapter 4 examines which satisfy the achirality criterion (i) of Chapter 1 §10.
 
 Six things are also *not* in scope at all, in this project:
 

@@ -10,7 +10,7 @@ The chapter is in **discovery mode**: it does not pre-commit to which (m, n) mod
 - *From [Chapter 2 §3](02-modes-on-a-sheet.md):* the rest-mass formula m_(m,n) = (ℏ/c)·√((2πm/L_u)² + (2πn/L_w)²) — explicitly ε-dependent.
 - *From [Chapter 4 §6](04-the-closure-condition.md):* the closure-satisfying inventory.
 - *From [Chapter 5](05-metric-self-consistency.md):* the gauge-potential structure for closure-satisfying modes; structural neutrality of single-axis modes.
-- *From [Chapter 6](06-handedness-and-pairs.md):* the handedness structure within each (m, n) sector; the distinction between *structural* neutrality (single-axis modes, missing one of two U(1)s) and *cancellation* neutrality (single field with both (m, n) and (−m, −n)).
+- *From [Chapter 6](06-handedness-and-pairs.md):* the handedness structure within each (m, n) sector; the distinction between *structural* neutrality (single-axis modes, no chirality structure on the curve) and *cancellation* neutrality (closure-satisfying mode in R_J-symmetrized form, gauge potential cancels).
 
 **Distinctive job.** Determine how varying ε across (0, ∞) changes the mode mass spectrum, the closure-eligibility partition, and which modes are energetically accessible / stable. Identify any qualitatively different regimes (small ε "thin sheet," large ε "fat sheet," ε ≈ 1 symmetric). Connect (without committing) to MaSt model-F's identifications of electron / proton / neutrino sheets at specific ε values.
 
@@ -69,12 +69,12 @@ For each closure-satisfying class from [Chapter 4 §6](04-the-closure-condition.
 
 The lightest mode satisfying closure (both windings nonzero) at given ε is determined by minimizing √((m/ε)² + n²) over (m, n) with both nonzero. The candidates:
 
-- **(1, 1):** mass scales as √(1/ε² + 1)·(ℏ/c)·(2π/L_w). Light when ε is moderate; rises as 1/ε at small ε; saturates at (ℏ/c)·(2π/L_w) for large ε.
-- **(1, 2):** mass scales as √(1/ε² + 4)·(ℏ/c)·(2π/L_w). Heavier than (1, 1) for any ε > 0.
-- **(2, 1):** mass scales as √(4/ε² + 1)·(ℏ/c)·(2π/L_w). Heavier than (1, 1) for any ε > 0.
+- **T(1, 1):** mass scales as √(1/ε² + 1)·(ℏ/c)·(2π/L_w). Light when ε is moderate; rises as 1/ε at small ε; saturates at (ℏ/c)·(2π/L_w) for large ε.
+- **T(2, 1) (closure-satisfying primitive — 2 ring wraps, 1 tube wrap):** mass scales as √(4/ε² + 1)·(ℏ/c)·(2π/L_w). Heavier than T(1, 1) for any ε > 0.
+- **T(1, 2) (closure-*failing* — 1 ring wrap, 2 tube wraps; n = 2 does not divide m = 1):** mass scales as √(1/ε² + 4)·(ℏ/c)·(2π/L_w). Heavier than T(1, 1) for any ε > 0.
 - General (m, n) with both ≥ 1: mass increases as either |m| or |n| grows.
 
-So **(1, 1) is the lightest closure-eligible mode at every ε > 0**.
+So **T(1, 1) is the lightest closure-eligible mode at every ε > 0**.
 
 How m_(1,1) varies with ε:
 
@@ -90,9 +90,9 @@ The lightest closure-satisfying mode goes from infinitely heavy (at small ε) to
 
 The mode tower's organization changes with ε:
 
-- **ε ≪ 1:** the (m/ε)² term dominates. Mass tower ordered primarily by |m|, with n contributing weakly. (1, 1), (1, 2), (1, 3), ... are the lightest closure-satisfying levels (heavy but ordered by n at fixed m = 1); (2, q), (3, q), ... are very heavy.
+- **ε ≪ 1:** the (m/ε)² term dominates. Mass tower ordered primarily by |m|, with n contributing weakly. Modes with m = 1 are lightest. Among them, T(1, 1) is closure-satisfying; T(1, 2), T(1, 3), ... are closure-failing under the wrap-order's closure rule (n does not divide m for q ≥ 2). Modes with m ≥ 2 are very heavy.
 - **ε = 1:** mass tower ordered by √(m² + n²); roughly equal contributions from m and n.
-- **ε ≫ 1:** the n² term dominates. Mass tower ordered primarily by |n|. (1, 1), (2, 1), (3, 1), ... are the lightest closure-satisfying levels; modes with n = 2, 3, ... are heavier.
+- **ε ≫ 1:** the n² term dominates. Mass tower ordered primarily by |n|. Modes with n = 1 are lightest — these are exactly the closure-satisfying T(m, 1) primitives. T(1, 1), T(2, 1), T(3, 1), ... are the lightest closure-satisfying levels; modes with n = 2, 3, ... are heavier.
 
 The *organization* of the mass tower reorganizes as ε changes. At small ε, modes are organized by their u-winding. At large ε, by their w-winding. At ε = 1, by their total winding magnitude.
 
@@ -124,21 +124,21 @@ The qualitative observation: **whether a sheet at given ε hosts predominantly c
 
 The ε sweep produces three qualitatively different regimes based on which mode classes dominate at low energy.
 
-**Important clarification on neutrality.** The neutrality that emerges from single-axis modes dominating at low energy is **structural neutrality** in the sense developed in [Chapters 4 and 5](04-the-closure-condition.md) — single-axis modes have one of the two winding numbers exactly zero, so they source only one of the two U(1) gauge potentials and lack the U(1) × U(1) cross-coupling that produces observable EM. This is *not* the **cancellation neutrality** of [Chapter 6 §4](06-handedness-and-pairs.md), where a single field configuration contains both (m, n) and (−m, −n) at equal amplitude and the off-diagonals cancel.
+**Important clarification on neutrality.** The neutrality that emerges from single-axis modes dominating at low energy is **structural neutrality** in the sense developed in [Chapters 4 and 5](04-the-closure-condition.md) — single-axis modes have one of the two winding numbers exactly zero, so the curve has no chirality structure to test, and the natural-particle construction (per [Ch 5 §5.1](05-metric-self-consistency.md)) reduces to metric-mass's standing wave on a single direction with no spacetime↔compact gauge potential. This is *not* the **cancellation neutrality** of [Chapter 6 §4](06-handedness-and-pairs.md), where a closure-satisfying mode is configured as a sign-conjugate pair (R_J-symmetrization instead of R_u-symmetrization) and the gauge potential cancels.
 
 Both are mechanisms for "massive but EM-neutral" states; this chapter's regimes distinguish themselves through *which mode class is energetically accessible*, which is a structural-neutrality question. Cancellation neutrality is independent of ε and operates in any regime where opposite-handedness pair configurations are populated.
 
 ### 4.1 Small ε regime — "single-axis-dominated character"
 
-At small ε (thin sheet, L_u ≪ L_w), the lightest modes are (0, n) single-axis. These are *closure-failing structurally*: they have exactly one winding number nonzero, and per [Chapter 4](04-the-closure-condition.md) they cannot satisfy the closure condition regardless of phase or amplitude — one of the two U(1) gauge potentials is structurally absent. The closure-eligible modes (1, q), (1, 1), etc. are heavier by a factor scaling as 1/ε.
+At small ε (thin sheet, L_u ≪ L_w), the lightest modes are (0, n) single-axis. These are *closure-failing structurally*: they have exactly one winding number nonzero, and per [Chapter 4](04-the-closure-condition.md) they cannot satisfy the closure condition regardless of phase or amplitude — there is no chirality structure on the curve for the closure rule to test. The closure-satisfying modes (T(m, 1) primitives) are heavier by a factor scaling as 1/ε.
 
-A sheet at small ε that is energetically constrained to its lightest modes is dominated by **mass-without-charge** states via the structural mechanism. The sheet's character at low energy is "massive but EM-neutral by missing a U(1)."
+A sheet at small ε that is energetically constrained to its lightest modes is dominated by **mass-without-charge** states via the structural mechanism. The sheet's character at low energy is "massive but EM-neutral by structural degeneracy."
 
 This matches a structural pattern that MaSt model-F's neutrino-sheet identification ascribes: a sheet whose dominant low-energy modes are massive but EM-neutral. Whether the framework's small-ε regime corresponds quantitatively to standard physics' neutrinos is downstream MaSt-correspondence work; the structural pattern (mass-only modes dominating low energy via the structural mechanism) matches.
 
 ### 4.2 Symmetric ε ≈ 1 regime — "single-phase charge character"
 
-At ε ≈ 1 (symmetric Clifford torus, L_u ≈ L_w), the lightest closure-satisfying mode is (1, 1) with mass m_(1,1) = √2·(ℏ/c)·(2π/L_w) — comparable to the lightest single-axis modes m_(0, 1) = m_(1, 0) = (ℏ/c)·(2π/L_w). The sheet supports charged states as low-mass excitations — closure-eligible (m, n) modes are not particularly suppressed relative to single-axis modes at this ε.
+At ε ≈ 1 (symmetric Clifford torus, L_u ≈ L_w), the lightest closure-satisfying mode is T(1, 1) with mass m_(1,1) = √2·(ℏ/c)·(2π/L_w) — comparable to the lightest single-axis modes m_(0, 1) = m_(1, 0) = (ℏ/c)·(2π/L_w). The sheet supports charged states as low-mass excitations — closure-satisfying (m, n) modes are not particularly suppressed relative to single-axis modes at this ε.
 
 A sheet at ε ≈ 1 hosts both single-axis (mass-only) and closure-satisfying (charged) states at similar energies. From a low-temperature equilibrium perspective, both are populated, with charged states comparable in abundance to single-axis modes.
 
@@ -146,7 +146,7 @@ This regime supports what could be called "single-phase charge character" — si
 
 ### 4.3 Large ε regime — "extreme-asymmetry character"
 
-At very large ε (fat sheet, L_u ≫ L_w), the situation is structurally similar to the small-ε regime but with u and w swapped. The lightest modes are (m, 0) single-axis — closure-failing, with the m-winding alone. The lightest closure-eligible mode (1, 1) saturates at finite mass (ℏ/c)·(2π/L_w), but the single-axis modes (m, 0) become correspondingly lighter (mass ∝ m/ε → 0 for fixed m as ε → ∞).
+At very large ε (fat sheet, L_u ≫ L_w), the situation is structurally similar to the small-ε regime but with u and w swapped. The lightest modes are (m, 0) single-axis — closure-failing, with the m-winding alone. The lightest closure-satisfying mode T(1, 1) saturates at finite mass (ℏ/c)·(2π/L_w), but the single-axis modes (m, 0) become correspondingly lighter (mass ∝ m/ε → 0 for fixed m as ε → ∞).
 
 So the large-ε regime is again dominated by mass-only single-axis modes at low energy, with closure-satisfying modes accessible only at energies above the saturation scale (ℏ/c)·(2π/L_w). The structural pattern is mirror to the small-ε regime under cycle-swap u ↔ w.
 
@@ -156,7 +156,7 @@ Possible resolutions:
 
 - **Convention mismatch.** Model-F's ε might be defined with the opposite sign convention from this chapter's (e.g., ε = L_w/L_u rather than L_u/L_w). Under that convention, model-F's ε ≈ 397 maps to this chapter's ε ≈ 0.0025 — small ε, also a mass-only-dominated regime under the framework's analysis. Either way, the framework's prediction does not place electron-class behavior at extreme ε.
 
-- **Mechanism not captured by linearized analysis.** At very large (or very small) ε, perhaps some nonlinear effect, dynamical mechanism, or substructure makes (1, q) closure-eligible modes the relevant low-energy excitations despite the linearized mass formula. The framework's analysis here is linear; a deeper analysis might find the "right" mode emerges from corrections.
+- **Mechanism not captured by linearized analysis.** At very large (or very small) ε, perhaps some nonlinear effect, dynamical mechanism, or substructure makes T(m, 1) closure-satisfying modes the relevant low-energy excitations despite the linearized mass formula. The framework's analysis here is linear; a deeper analysis might find the "right" mode emerges from corrections.
 
 - **Model-F identification is provisional.** The model's identification of electron-sheet ε ≈ 397 may be specific to the model's choice of overall scale and aspect ratio convention; it may not be a robust prediction across alternative conventions.
 
@@ -190,28 +190,28 @@ MaSt model-F's neutrino-sheet identification interprets neutrino "diffuseness" a
 
 ## 6. Multi-link structure — does it emerge from ε alone?
 
-[Chapter 4 §4.3](04-the-closure-condition.md) identified multi-component links of the form **k × T(1, q)** as the closure-satisfying multi-component configurations under the synchronization rule. (Multi-links with genuine-torus-knot primitives fail synchronization and are mass-only.) Each component carries 1/k of the link's total charge.
+[Chapter 4 §4.3](04-the-closure-condition.md) identified multi-component links of the form **k × T(m, 1)** as the closure-satisfying multi-component configurations under the closure rule. (Multi-links with genuine-torus-knot primitives fail closure — chirality is non-degenerate — and are mass-only.) Each component carries 1/k of the link's total charge.
 
-Does the multi-component structure emerge naturally at any specific ε regime — i.e., does ε alone favor multi-component links of the form k × T(1, q) over single-component T(1, q) primitives?
+Does the multi-component structure emerge naturally at any specific ε regime — i.e., does ε alone favor multi-component links of the form k × T(m, 1) over single-component T(m, 1) primitives?
 
-The mass formula says no. At any ε, the lightest closure-satisfying mode is the single-component T(1, 1) primitive. Multi-component links of the form k × T(1, q) have winding (k, k·q) and correspondingly larger mass:
+The mass formula says no. At any ε, the lightest closure-satisfying mode is the single-component T(1, 1) primitive. Multi-component links of the form k × T(m, 1) have winding (k·m, k) and correspondingly larger mass:
 
-- **(2, 2) = 2 × T(1, 1)** has mass m_(2,2) = √2 · m_(1,1) at any ε. Heavier; not favored.
-- **(3, 3) = 3 × T(1, 1)** has mass √3 · m_(1,1). Even heavier.
-- **(2, 4) = 2 × T(1, 2)** has mass 2·m_(1,2). Heavier than T(1, 2).
-- **(3, 6) = 3 × T(1, 2)** has mass 3·m_(1,2). Heavier still.
+- **T(2, 2) = 2 × T(1, 1)** has mass m_(2,2) = √2 · m_(1,1) at any ε. Heavier; not favored.
+- **T(3, 3) = 3 × T(1, 1)** has mass √3 · m_(1,1). Even heavier.
+- **T(4, 2) = 2 × T(2, 1)** has mass 2·m_(2,1). Heavier than T(2, 1).
+- **T(6, 3) = 3 × T(2, 1)** has mass 3·m_(2,1). Heavier still.
 
-Energetic minimization at any ε prefers single-component T(1, q) primitives over their multi-component repetitions.
+Energetic minimization at any ε prefers single-component T(m, 1) primitives over their multi-component repetitions.
 
 At each ε regime:
 
 - **Small ε:** the dominant closure-satisfying modes are heavy single-component types. Multi-component links are heavier still. ε does not favor them.
-- **ε ≈ 1:** lightest closure-satisfying is T(1, 1) = single-component. Multi-component (2, 2) is heavier. Not favored.
+- **ε ≈ 1:** lightest closure-satisfying is T(1, 1) = single-component. Multi-component T(2, 2) is heavier. Not favored.
 - **Large ε:** symmetric to small ε. Same conclusion.
 
 The chapter's tentative finding: **ε alone does not select multi-component structure.** Some additional mechanism is needed to make k-component links energetically competitive with their single-component counterparts.
 
-[Chapter 8](08-shear-and-fractional-charge.md) provides the candidate mechanism: shear σ_uw breaks the symmetry between equal-mass configurations and may favor specific k values for k × T(1, q) multi-links. The optimization in chapter 8 examines whether a specific k emerges as preferred — k = 3 in particular would match the three-phase structure that MaSt model-F associates with quark organization. The framework reports the optimal k(σ, ε) honestly; whether it matches k = 3 is the chapter-8 result, not a presupposition.
+[Chapter 8](08-shear-and-fractional-charge.md) provides the candidate mechanism: shear σ_uw breaks the symmetry between equal-mass configurations and may favor specific k values for k × T(m, 1) multi-links. The optimization in chapter 8 examines whether a specific k emerges as preferred — k = 3 in particular would match the three-phase structure that MaSt model-F associates with quark organization. The framework reports the optimal k(σ, ε) honestly; whether it matches k = 3 is the chapter-8 result, not a presupposition.
 
 This is a substantive finding of chapter 7: ε is not the parameter that produces three-phase character. ε produces three structural regimes (mass-only-dominated at extreme ε, charge-friendly at ε ≈ 1) but doesn't differentiate among the closure-satisfying *sub-classes* (single-component primitives vs k-component links). That differentiation comes from shear in chapter 8.
 

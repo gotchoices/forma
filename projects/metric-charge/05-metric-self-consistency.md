@@ -2,24 +2,26 @@
 
 This chapter takes the closure-satisfying modes identified in [Chapter 4](04-the-closure-condition.md) and asks the **metric-side** question: under linearized Einstein equations, what off-diagonal metric entries do these modes source, and do those entries have the structure that standard physics calls a *gauge potential*?
 
-The chapter's job is structurally parallel to [metric-mass Chapter 5](../metric-mass/05-metric-self-consistency.md), but on a 2D-compact substrate where the off-diagonal sourcing has more places to go. metric-mass found that a 1D-compact mass mode sources g_tu under linearized Einstein equations; the 2D-compact extension produces a richer set of off-diagonals (g_tu, g_S₁u, g_S₂u, g_tw, g_S₁w, g_S₂w), and the question of whether these collectively form a "gauge potential" — in the sense standard physics uses the term — becomes substantive.
+The chapter's structural parallel is [metric-mass Chapter 5](../metric-mass/05-metric-self-consistency.md), but on a 2D-compact substrate. metric-mass found that a 1D-compact mass mode's per-component (single traveling-wave) stress-energy sources g_tu under linearized Einstein equations; the metric-mass standing-wave principle then *cancelled* that cross-term in the directionless ±n superposition, leaving only diagonal modifications — pure mass, no gauge structure. The 2D-compact extension introduces a second compact direction, with two per-component cross-terms (g_tu and g_tw) instead of one, and the chapter's central question is what the standing-wave principle does to them under the framework's wrap-order convention.
 
-**Framing convention.** Standard Model terminology (gauge potential, U(1) × U(1) symmetry, Maxwell's equations) is used in this chapter as a **reference target** — a structure the framework's derivations may or may not reproduce. We do not adopt the Standard Model as axiomatic. The questions are:
+The answer this chapter derives: under the wrap-order convention of [Chapter 1 §10](01-foundation.md), one cross-term cancels (the ring direction's, by the metric-mass mechanism) and the other survives (the tube direction's, as the standard Kaluza-Klein gauge potential). Closure-satisfying particles produce **a single gauge field B_μ from h_μw**, matching standard EM at the structural level.
+
+**Framing convention.** Standard Model terminology (gauge potential, Maxwell's equations) is used in this chapter as a **reference target** — a structure the framework's derivations may or may not reproduce. We do not adopt the Standard Model as axiomatic. The questions are:
 
 - Do the off-diagonal entries our closure-satisfying modes source have the algebraic and geometric properties standard physics uses to define a gauge potential?
 - If yes, the framework *reproduces* the standard gauge structure — emergent, not postulated.
 - If partially, the framework *predicts* deviations from standard EM that may or may not match observation.
-- If no, the framework's "charge" concept is structurally different from standard EM and the correspondence breaks down.
 
 This is the discovery-not-proof philosophy of [metric-charge](README.md) applied to the gauge structure: let the math reveal what emerges, with standard physics as the comparison target rather than the starting point.
 
 **Inheritance.**
 
-- *From [metric-mass Chapter 5](../metric-mass/05-metric-self-consistency.md):* the 1D-compact stress-energy and off-diagonal sourcing analysis. The 2D-compact extension follows the same machinery with one more index.
-- *From [Chapter 4](04-the-closure-condition.md):* the closure-satisfying inventory and the centered-alignment phase requirement.
-- *From [grid-duality §7.5–§8](../grid-duality/07-wrap-promotion-modeling.md):* the topological U(1) × U(1) cross-coupling structure at L3, which is what we want to see emerge from the metric-side analysis.
+- *From [metric-mass Chapter 5](../metric-mass/05-metric-self-consistency.md):* the standing-wave-as-particle reading, the per-component stress-energy machinery, and the off-diagonal cancellation that produces mass-only configurations from the equal-amplitude ±n superposition. The 2D-compact extension uses the same machinery, applied asymmetrically per the wrap-order.
+- *From [Chapter 1 §10](01-foundation.md):* the wrap-order convention (u = ring, w = tube) and the chirality form of the closure rule.
+- *From [Chapter 4](04-the-closure-condition.md):* the closure-satisfying inventory (T(m, 1) primitives and their k × T(m, 1) multi-link repetitions).
+- *From [grid-duality §7.5–§8](../grid-duality/07-wrap-promotion-modeling.md):* the L3 location of charge in the wrap-promotion ladder.
 
-**Distinctive job.** Demonstrate (or refute) the equivalence of the three views from [Chapter 1 §10](01-foundation.md): phase-pattern, topological, and metric-side. Provide the calculable mechanism for gravitational and EM bending flagged in [metric-mass Chapter 6 §4](../metric-mass/06-gravitational-bending.md) and forward-referenced in [Chapter 1 §10](01-foundation.md). Make any standard-EM correspondence a consequence rather than an assumption.
+**Distinctive job.** Derive the single gauge potential per closure-satisfying particle via the wrap-order-asymmetric standing-wave construction. Confirm the metric-side derivation is exactly equivalent to the chirality criterion of Chapter 1 §10 (i.e., the four views — chirality, synchronization, topological, metric-side — all agree on which (m, n) carry observable EM). Provide the calculable mechanism for gravitational and EM bending flagged in [metric-mass Chapter 6 §4](../metric-mass/06-gravitational-bending.md). Make any standard-EM correspondence a consequence rather than an assumption.
 
 ---
 
@@ -28,32 +30,34 @@ This is the discovery-not-proof philosophy of [metric-charge](README.md) applied
 | § | Concept |
 |---|---------|
 | 1 | The chapter's job — three guiding questions |
-| 2 | Stress-energy of a 2D-compact mode |
-| 3 | Off-diagonal sourcing under linearized Einstein equations |
-| 4 | Do the off-diagonals form a gauge potential? — testing against standard-physics properties |
-| 5 | Closure-failing modes do not form valid gauge potentials |
-| 6 | Comparing the three views; the four-conventions reduction (§6.5) |
+| 2 | Per-component stress-energy of a 2D-compact mode |
+| 3 | Per-component off-diagonal sourcing under linearized Einstein equations |
+| 4 | The wrap-order-asymmetric standing-wave construction — one gauge field |
+| 5 | Closure-failing modes — mass-only outcomes via the same construction |
+| 6 | Equivalence of the four views (chirality, synchronization, topological, metric-side) |
 | 7 | The holonomy mechanism for bending |
-| 8 | What the framework reproduces and where it might differ |
+| 8 | What the framework reproduces |
 | 9 | What's next |
 
 ---
 
 ## 1. The chapter's job
 
-Take the closure-satisfying inventory from [Chapter 4 §6](04-the-closure-condition.md). For each mode class, compute T_μν, identify the off-diagonal entries it sources via linearized Einstein equations, and examine whether the resulting metric perturbation has the algebraic structure standard physics ascribes to a gauge potential.
+Take the closure-satisfying inventory from [Chapter 4 §6](04-the-closure-condition.md). For each mode class, compute T_μν, identify the off-diagonal entries it sources via linearized Einstein equations, and apply the standing-wave-as-particle principle inherited from [metric-mass Chapter 5](../metric-mass/05-metric-self-consistency.md) — applied asymmetrically per the wrap-order convention to determine which cross-terms survive in the natural particle.
 
 Three questions guide the chapter:
 
-1. What off-diagonal entries does each closure-satisfying mode source?
-2. Do those entries have the structure of A_μ and B_μ in the standard-physics sense?
-3. How do closure-failing modes (single-axis, zero-mode) behave in the same analysis — do their off-diagonals fail to satisfy gauge structure, confirming the L2-in-L3 framing?
+1. What off-diagonal entries does each closure-satisfying mode source *per-component* (i.e., for a single traveling-wave component before the standing-wave construction)?
+2. Under the wrap-order-asymmetric standing-wave construction, which cross-terms survive in the natural particle, and do they form a valid gauge potential in the standard-physics sense?
+3. How do closure-failing modes (single-axis, genuine torus knots) behave under the same construction — do their natural particles source EM cross-terms?
 
-We answer (1) in §2–§3 by computing T_μν and the perturbation it sources. We answer (2) in §4 by checking the off-diagonals against four standard-physics properties of a gauge potential. We answer (3) in §5 by repeating the analysis for closure-failing modes and showing the gauge structure breaks down. §6 confirms that the metric-side answer agrees with the phase-pattern (Chapter 4) and topological ([grid-duality](../grid-duality/)) views. §7 develops the holonomy mechanism that connects all of this to physical bending. §8 audits what the framework reproduces vs. where it might differ from standard physics.
+§§2–3 establish the per-component intermediate (the single traveling-wave stress-energy and what it would source). §4 introduces the wrap-order-asymmetric standing-wave construction and derives that exactly *one* gauge potential survives per closure-satisfying particle. §5 confirms closure-failing modes produce no EM cross-term under the same construction (mass-only outcomes). §6 confirms the metric-side derivation is exactly equivalent to the chirality criterion of Chapter 1 §10. §7 develops the holonomy mechanism that connects all of this to physical bending. §8 audits what the framework reproduces.
 
 ---
 
-## 2. Stress-energy of a 2D-compact mode
+## 2. Per-component stress-energy of a 2D-compact mode
+
+This section computes the stress-energy of a *single traveling-wave component* at fixed (m, n). Per [metric-mass Chapter 5](../metric-mass/05-metric-self-consistency.md), the single traveling-wave is a **per-component intermediate**, not a particle: it has a definite direction of phase advance around the compact loops, and the physical particle is the equal-amplitude superposition that enforces the appropriate topological symmetries (§4 develops which superposition is appropriate under the wrap-order). The per-component stress-energy is the building block the standing-wave construction operates on.
 
 For a separable mode at fixed (m, n):
 
@@ -114,14 +118,14 @@ The off-diagonals between extended-spacetime indices and compact indices are the
 
 For a mode at rest in S (k_{S₁} = k_{S₂} = 0), only T_tu and T_tw are nonzero. For a moving mode, additional entries activate. The structure of which entries are nonzero depends on the mode class:
 
-| Mode class | T_μν off-diagonals nonzero |
+| Mode class | T_μν off-diagonals nonzero (per-component) |
 |---|---|
 | Light (0, 0) | None (no compact-direction structure) |
 | Single-axis (m, 0) | T_tu only at rest; T_tu, T_S₁u, T_S₂u when moving — *u-set only* |
 | Single-axis (0, n) | T_tw only at rest; *w-set only* |
-| Diagonal (m, n) both nonzero | At rest: T_tu and T_tw. When moving: full six-entry pattern. *Both u-set and w-set sourced* |
+| Diagonal (m, n) both nonzero | At rest: T_tu *and* T_tw. When moving: full six-entry pattern. *Both u-set and w-set sourced* |
 
-Already at the T_μν level, the structural distinction emerges: closure-satisfying (diagonal) modes source *both* off-diagonal sets simultaneously, while closure-failing (single-axis) modes source only one. This is the metric-side fingerprint of the closure condition.
+The diagonal-mode entry has *two* spacetime↔compact off-diagonals at the per-component level — one too many relative to standard EM's single U(1) gauge potential. **Resolving this two-cross-term apparent over-prediction is what §4's standing-wave construction does.**
 
 ### 2.3 Cross-compact entry T_uw
 
@@ -129,9 +133,9 @@ For diagonal modes, the entry T_uw = k_u · k_w is also nonzero. This is *not* a
 
 ---
 
-## 3. Off-diagonal sourcing under linearized Einstein equations
+## 3. Per-component off-diagonal sourcing under linearized Einstein equations
 
-For each nonzero T_μν entry, the linearized Einstein equation sources a corresponding metric perturbation h_μν. [metric-mass Chapter 5 §5](../metric-mass/05-metric-self-consistency.md) develops the linearized-EE machinery for the 1D-compact case; we cite it and apply the same machinery to our 2D-compact setting.
+For each nonzero T_μν entry of §2, the linearized Einstein equation sources a corresponding metric perturbation h_μν. [metric-mass Chapter 5 §5](../metric-mass/05-metric-self-consistency.md) develops the linearized-EE machinery for the 1D-compact case; we apply the same machinery here. As in §2, this is the per-component intermediate sourcing — what §4's standing-wave construction will operate on.
 
 ### 3.1 The linearized sourcing relation
 
@@ -158,9 +162,9 @@ For a closure-satisfying mode (m ≠ 0, n ≠ 0), the sourced off-diagonal metri
 | T_S₂w | h_S₂w | B_{S₂} (spatial component of w-gauge potential) |
 | T_uw | h_uw | (cross-compact perturbation; distinct from spacetime gauge potentials) |
 
-Six spacetime↔compact off-diagonals, organized into two sets of three. Per the standard Kaluza-Klein identification (see [metric-mass Ch 5 §6](../metric-mass/05-metric-self-consistency.md) for the 1D version), each set of three is naturally read as the four-vector gauge potential associated with one compact direction — A_μ for u, B_μ for w. The "Standard-physics correspondence" column above states what the entries *would be* under the KK identification; whether they actually have the gauge-potential properties is the question §4 addresses.
+Six spacetime↔compact off-diagonals at the per-component level, organized into two sets of three. The "Standard-physics correspondence" column states what the entries *would be* under the standard Kaluza-Klein identification — A_μ for the ring direction's set, B_μ for the tube direction's set. **At the per-component level, the framework over-predicts: standard EM has one gauge potential, the framework's per-component analysis has two.** §4's standing-wave construction resolves this by cancelling one of them.
 
-For closure-failing modes:
+For closure-failing modes (per-component):
 
 - **Light (0, 0)** sources no off-diagonals. Diagonal h_μν only — no gravitational coupling beyond the trivial vacuum.
 - **Single-axis (m, 0)** sources only the u-set: h_tu, h_S₁u, h_S₂u. The w-set is identically zero.
@@ -168,193 +172,215 @@ For closure-failing modes:
 
 ---
 
-## 4. Do the off-diagonals form a gauge potential?
+## 4. The wrap-order-asymmetric standing-wave construction
 
-This is the chapter's central question. We examine whether the six-entry off-diagonal pattern h_μu, h_μw (with μ ∈ {t, S₁, S₂}) has the structural properties standard physics ascribes to a gauge potential.
+This is the chapter's central derivation. The per-component analysis of §§2–3 produces two spacetime↔compact cross-terms (h_μu and h_μw) for closure-satisfying modes. The metric-mass standing-wave principle (single Bloch mode = per-component intermediate, particle = directionless ±n superposition) cancels n-linear cross-terms in 1D; this section applies the same principle to 2D-compact, with the asymmetry sourced from the wrap-order convention. The result is that exactly *one* cross-term survives in the natural particle.
 
-### 4.1 Standard-physics properties (used as reference target)
+### 4.1 The principle restated
 
-Standard physics defines a gauge potential A_μ by four properties. We use these as the reference target — what the framework's off-diagonals would have to satisfy to be called gauge potentials in the standard sense.
+Per [metric-mass Chapter 5 §7](../metric-mass/05-metric-self-consistency.md), the metric-mass standing-wave principle is **not** "uniformly standing-wave every compact direction." It is the more careful statement:
 
-**Property 1 — Index structure.** A_μ is a 4-vector field on spacetime: it has one index that runs over spacetime coordinates, and it transforms as a vector under spacetime coordinate changes (with the compact direction held fixed).
+> Symmetrize the field over each topological symmetry the configuration *actually has*; enforce only the symmetries the substrate makes available.
 
-**Property 2 — Gauge transformation.** Under a coordinate shift of the compact direction, x^u → x^u + Λ(t, S₁, S₂), the off-diagonal metric component shifts as h_μu → h_μu + ∂_μΛ. This is a *geometric* gauge transformation — it follows from how metric components transform under a coordinate change of the compact direction. (Standard physics' equivalent statement, on a complex scalar field with internal U(1) symmetry, is that A_μ shifts by a gradient under a local U(1) phase rotation φ → e^(iα(x))φ; this is the field-theoretic translation of the same mechanism. The framework's underlying object is the geometric coordinate-shift form, per [Chapter 1 §6.1](01-foundation.md).)
+In 1D-compact, u → −u is a topological symmetry of the unoriented circle; the particle inherits it as a particle symmetry, and combining ±n at equal amplitude is what enforces the symmetry. The cross-term cancellation is the algebraic consequence.
 
-**Property 3 — Field strength.** F_μν = ∂_μA_ν − ∂_νA_μ is the antisymmetric field strength. The Lagrangian density −¼F_μν F^μν gives Maxwell's equations.
+In 2D-compact, three sign-flip operations on the (m, n) labels are available, and each generates a candidate symmetrization. The wrap-order convention selects which of these is actually a *particle* symmetry of the natural particle.
 
-**Property 4 — Coupling to charged matter.** A_μ couples to charged matter via the covariant derivative D_μ = ∂_μ + ieA_μ. In the geodesic equation for a charged particle on the perturbed metric, A_μ appears as a Lorentz-force term proportional to the particle's compact-direction momentum.
+### 4.2 The three candidate symmetrizations
 
-### 4.2 Testing the framework's off-diagonals against the four properties
+The four traveling-wave components at fixed (|m|, |n|) — call them (++), (+−), (−+), (−−) by sign pattern — admit three independent equal-amplitude pair superpositions, each enforcing a different sign-flip symmetry:
 
-For the closure-satisfying mode's h_μu set (and equivalently the h_μw set), we test each property in turn.
+| Symmetry enforced | Modes combined | Resulting wave |
+|---|---|---|
+| **R_J: (m, n) ↔ (−m, −n)** (joint sign reversal) | (++) + (−−) | 2A·cos(k_u u + k_w w)·cos(ωt) — directionless standing wave on T(m, n) |
+| **R_u: m ↔ −m** (chirality of ring) | (++) + (−+) | 2A·cos(k_u u)·cos(k_w w − ωt) — *standing in u, traveling in w* |
+| **R_w: n ↔ −n** (chirality of tube) | (++) + (+−) | 2A·cos(k_w w)·cos(k_u u − ωt) — standing in w, traveling in u |
 
-**Property 1 (index structure):** h_μu has one spacetime index (μ) and one compact-direction index (u). Under a spacetime-only coordinate change (one that holds u fixed), h_μu transforms as a covariant 4-vector — exactly as a gauge potential A_μ does. ✓ *Property reproduced.*
+For each, compute the surviving stress-energy entries (using ⟨cos²⟩ = ⟨sin²⟩ = 1/2 and ⟨sin·cos⟩ = 0 over a full period):
 
-**Property 2 (gauge transformation):** Under a coordinate change x^u → x^u + Λ(t, S₁, S₂), the metric component h_μu shifts as h_μu → h_μu + ∂_μΛ. This is precisely the U(1) gauge transformation of standard physics. The KK identification A_μ = h_μu / (some normalization) makes the transformation properties of A_μ and h_μu coincide. ✓ *Property reproduced.*
+| Symmetry enforced | T_tu | T_tw | T_uw |
+|---|---|---|---|
+| R_J (joint reversal) | 0 | 0 | nonzero |
+| **R_u (ring chirality)** | **0** | **nonzero** | **0** |
+| R_w (tube chirality) | nonzero | 0 | 0 |
 
-**Property 3 (field strength):** Construct the antisymmetric combination F^A_μν = ∂_μ h_νu − ∂_ν h_μu. This is invariant under the gauge transformation of property 2 (the gauge term ∂_μΛ cancels in the antisymmetric combination). The 6 components of F^A_μν organize into electric and magnetic parts under the 3+1 split (3 components for E^A, 3 for B^A). The Lagrangian density −¼F^A_μν (F^A)^μν follows from the standard Einstein-Hilbert action restricted to the off-diagonal sector. ✓ *Property reproduced.*
+Three constructions, three different cross-term inventories. The math is unambiguous; what differs is *which symmetry to enforce*.
 
-**Property 4 (coupling to charged matter):** A particle on the perturbed metric h_μu follows a geodesic equation that, in the slow-motion limit, picks up a force term ∝ p^u (∂_μ h_νu − ∂_ν h_μu) ẋ^ν. This is precisely the Lorentz-force coupling, with p^u playing the role of charge and F^A_μν = ∂_μh_νu − ∂_νh_μu playing the role of the EM field strength. ✓ *Property reproduced.*
+### 4.3 The wrap-order asymmetry selects R_u
 
-### 4.3 Both U(1)s
+The bare manifold T² is symmetric in (u, w): the metric is diagonal with no preferred direction, and the wave equation treats u and w identically. *On the bare manifold alone*, all three reflections are equally available. The wrap-order convention of [Chapter 1 §10](01-foundation.md) — u = ring, w = tube — distinguishes them.
 
-The same analysis applied to the h_μw set produces a second gauge potential B_μ, with field strength F^B_μν = ∂_μ h_νw − ∂_ν h_μw, and coupling proportional to p^w. The two U(1)s are independent: a coordinate change of u does not affect h_μw, and vice versa.
+We need to distinguish two notions of symmetry:
 
-So the framework structurally reproduces a **U(1) × U(1) gauge structure** at the linearized level — exactly the topology that [grid-duality §7.5.3](../grid-duality/07-wrap-promotion-modeling.md) identifies for the 2-torus closure at L3. The metric-side and topological views agree: the L3 substrate carries two independent U(1) gauge potentials, and our linearized Einstein analysis produces both.
+- **Topological symmetry of the curve.** Whether R takes T(m, n) to itself as a knot in 3-space.
+- **Particle symmetry of the construction.** Whether R is enforced as a symmetrization in the natural-particle definition (modes combined in equal amplitude under R).
 
-### 4.4 What's been shown
+For closure-satisfying T(m, 1) — the unknot — both R_u and R_w are *topological* symmetries of the curve in 3-space (the unknot is achiral; reflecting it in either compact direction takes it to itself up to ambient isotopy). Topology alone does not distinguish them. The wrap-order's role is to single out which of the two chirality reflections gets enforced as a *particle* symmetry:
 
-For closure-satisfying modes, the off-diagonal metric perturbations h_μu and h_μw satisfy all four properties standard physics uses to define gauge potentials, separately for each compact direction. The KK identification is not assumed — it emerges from the linearized-EE analysis applied to the closure-satisfying mode's stress-energy.
+- **R_u (chirality reflection of the ring) — particle symmetry.** The wrap-order assigns the ring direction the metric-mass-style symmetric role: standing-wave construction in the ring, with the ring's chirality treated as a particle symmetry. Ring-direction wavenumber sign carries no observable.
+- **R_w (chirality reflection of the tube) — *not* a particle symmetry.** The wrap-order assigns the tube direction the KK-style charge-bearing role: the sign of compact-direction wavenumber is a physical observable (charge sign). R_w would flip that sign and so cannot be enforced as a symmetrization, even though it remains a topological symmetry of the unknot.
+- **R_J = R_u · R_w — *not* a particle symmetry.** Since R_w is not a particle symmetry, R_J is also not. Enforcing R_J overshoots — it cancels both cross-terms, including the one the wrap-order says should survive.
 
-This is the metric-side derivation of what the closure condition (Chapter 4) accomplishes: closure-satisfaction is the rule under which the off-diagonals form valid gauge potentials, with both U(1)s active. We have not assumed standard EM; we have derived a structure that satisfies the standard-physics definitions of gauge potentials, given the closure-satisfaction prerequisite.
+The distinction is sourced from the wrap-order, not from topology alone. The natural-particle construction enforces **R_u alone**: standing in the ring (u), traveling in the tube (w). One spacetime↔compact cross-term survives — the tube-direction's, h_μw — and is identified with the EM gauge potential B_μ.
+
+### 4.4 Stress-energy of the natural particle, explicitly
+
+Compute T_μν for φ_natural = 2A·cos(k_u u)·cos(k_w w − ωt) at rest in 4D. Derivatives:
+
+- ∂_t φ = +2A·ω·cos(k_u u)·sin(k_w w − ωt)
+- ∂_u φ = −2A·k_u·sin(k_u u)·cos(k_w w − ωt)
+- ∂_w φ = −2A·k_w·cos(k_u u)·sin(k_w w − ωt)
+
+Spatial-temporal averages:
+
+| Entry | Average | Note |
+|---|---|---|
+| T_tt | A²·ω² | Doubled (relative to single component); rest-energy density |
+| T_uu | A²·k_u² | Doubled; ring compact pressure |
+| T_ww | A²·k_w² | Doubled; tube compact pressure |
+| T_tu | **0** | cos·sin in u → 0; ring cross-term cancels by R_u-symmetrization |
+| T_tw | **−A²·ω·k_w** | Doubled and surviving; tube cross-term sources gauge potential B_μ |
+| T_uw | **0** | cos·sin in u → 0; cross-compact cancels |
+
+The three off-diagonals reduce to one nonzero entry: **T_tw = −A²·ω·k_w**, doubled relative to a single traveling-wave component (which would give −A²·ω·k_w/2). Diagonal entries are also doubled, giving the rest-mass contribution
+
+<!-- m² c² = (ℏk_u)² + (ℏk_w)² -->
+$$
+m_\text{rest}^2 c^2 \;=\; (\hbar k_u)^2 + (\hbar k_w)^2
+$$
+
+— the metric-mass mass formula extended to two compact directions, with both ring and tube contributing to rest energy. The natural particle has **rest mass plus exactly one gauge potential B_μ from h_μw**.
+
+### 4.5 KK consistency
+
+Standard 5D Kaluza-Klein theory ([primers/kaluza-klein.md](../../primers/kaluza-klein.md)) has 4D extended spacetime + 1 compact direction, treats a particle with definite compact-direction wavenumber, and identifies the cross-term g_μ5 = A_μ as the gauge potential. KK does *not* standing-wave the compact direction — the particle has definite charge, and the cross-term survives precisely because it does.
+
+In this chapter's 2D-compact construction:
+
+- The **tube direction (w) plays the role of standard KK's single compact direction.** The natural particle has definite n in the tube, the wave is traveling in w, and h_μw = B_μ survives — standard KK applied to the tube.
+- The **ring direction (u) plays the role of metric-mass's single compact direction.** The natural particle has the standing-wave structure cos(k_u u), the wave is *not* traveling in u, and the per-component cross-term h_μu cancels — metric-mass applied to the ring.
+
+The 2D-compact T² is decomposed by the wrap-order into "1D-compact for KK + 1D-compact for mass-only." Neither mechanism contradicts the other because they apply to different directions. The choice of which direction is which is forced by the wrap-order, which is fixed once for the framework as a whole and applies the same way to all modes. No new principles, no per-particle interpretive moves — standard KK on the tube, metric-mass on the ring.
+
+### 4.6 Gauge-potential properties of the surviving B_μ
+
+The single surviving cross-term h_μw satisfies the four standard-physics properties of a gauge potential, separately for each entry in the spacetime index μ:
+
+**Property 1 — Index structure.** h_μw has one spacetime index (μ ∈ {t, S₁, S₂}) and transforms as a covariant 4-vector under spacetime coordinate changes that hold w fixed. ✓
+
+**Property 2 — Gauge transformation.** Under a coordinate shift x^w → x^w + Λ(t, S₁, S₂), the metric component shifts as h_μw → h_μw + ∂_μΛ — the standard KK gauge transformation. ✓
+
+**Property 3 — Field strength.** F^B_μν = ∂_μ h_νw − ∂_ν h_μw is antisymmetric and gauge-invariant (the gauge term ∂_μΛ cancels in the antisymmetric combination). The 6 components of F^B_μν organize into electric and magnetic parts under the standard 3+1 split. ✓
+
+**Property 4 — Coupling to charged matter.** A particle on the perturbed metric h_μw follows a geodesic equation that, in the slow-motion limit, picks up a force term proportional to p^w (∂_μ h_νw − ∂_ν h_μw) ẋ^ν — the Lorentz-force coupling, with p^w playing the role of charge. ✓
+
+The four properties are reproduced for the single surviving gauge potential. No second U(1) is left over; the framework's prediction matches standard physics' single observed EM gauge potential at the structural level.
 
 ---
 
-## 5. Closure-failing modes — two distinct mechanisms
+## 5. Closure-failing modes — mass-only outcomes via the same construction
 
-The synchronization closure rule of [Chapter 4](04-the-closure-condition.md) rules out two structurally distinct categories of modes from carrying observable EM:
+For closure-failing configurations, the topological status of R_u and R_w changes, and the natural-particle construction follows the same principle as §4: enforce only the topological symmetries the configuration actually has. Both closure-failing categories yield mass-only outcomes, confirming the construction is not ad hoc — the wrap-order-asymmetric standing-wave principle handles charged and neutral particles uniformly.
 
-- **Single-axis modes** (m, 0) or (0, n): one winding zero. Only one of the two off-diagonal sets is sourced.
-- **Genuine torus knots** T(p, q) with p, q ≥ 2 and gcd(p, q) = 1: both windings nonzero but synchronization fails (m ∤ n). Both off-diagonal sets are sourced.
+### 5.1 Single-axis modes
 
-The metric-side analysis of these two mechanisms produces structurally different pictures, both consistent with the closure-failing classification.
+Modes (m, 0) or (0, n) — one winding zero. Take (m, 0):
 
-### 5.1 Single-axis modes — partial gauge structure
+- The wave has no w-dependence; reflections in w act trivially.
+- R_u (sign of m) is the only nontrivial reflection. There is no chirality structure on the closed curve to test.
+- Natural particle: (++) + (−+) → 2A·cos(k_u u)·cos(ωt). This is metric-mass's standing wave restricted to the u-direction, with no w-structure at all.
+- T_tu = 0 (R_u cancellation, by the metric-mass mechanism). T_tw = 0 (no k_w to source it). T_uw = 0. **Mass only — no spacetime↔compact gauge potential.**
 
-Take a single-axis mode (m, 0) for concreteness. The h_μu set has all the gauge-potential properties of §4.2 — the property tests pass for the u-direction. The h_μw set is identically zero.
+The (0, n) case gives mass-only by the symmetric calculation in w.
 
-Taken alone, the single U(1) gauge potential A_μ from h_μu is structurally indistinguishable from standard EM at the linearized level. So why does this mode fail to produce observable EM?
+### 5.2 Genuine torus knots
 
-The answer lies in the **U(1) × U(1) cross-coupling structure** required by [grid-duality §8.2](../grid-duality/08-where-alpha-appears.md) for α-mediated EM. Per grid-duality's analysis, observable EM requires *both* winding directions to be active simultaneously. The α coupling is fundamentally a *cross-coupling* between the two U(1)s — without the second one, there is no cross-coupling structure for α to sit in, and the apparent gauge potential A_μ has no observable manifestation.
+For T(p, q) with p, q ≥ 2 and gcd(p, q) = 1, the curve is a *genuine* torus knot — chirally distinct from its mirror in 3-space.
 
-A single-axis mode therefore carries **partial gauge structure** — one U(1) in isolation — but lacks the cross-coupling that produces observable EM.
+- **R_u changes the knot type.** T(p, q) and T(−p, q) are mirror-chirality torus knots, distinct in 3-space. R_u is *not* a topological symmetry.
+- **R_w changes the knot type.** Similarly distinct. R_w is *not* a topological symmetry.
+- **R_J = R_u · R_w preserves the knot type.** T(p, q) and T(−p, −q) are the same unoriented curve (just opposite traversal). R_J *is* a topological symmetry.
 
-### 5.2 Genuine torus knots — both U(1)s present, but synchronization fails
+The only available symmetry is R_J. Natural particle: (++) + (−−) → 2A·cos(k_u u + k_w w)·cos(ωt). By §4.2's table:
 
-For genuine torus knots T(p, q) with p, q ≥ 2 and gcd(p, q) = 1, both winding numbers are nonzero, so both the h_μu and h_μw sets are sourced. The four-property test of §4.2 passes for each set considered individually — both A_μ and B_μ would be locally valid gauge potentials in the standard sense.
+- T_tu = 0 (R_J cancels both spacetime↔compact cross-terms — including the one R_u alone would have preserved).
+- T_tw = 0 (same).
+- T_uw ≠ 0 (the compact↔compact cross-term is even under R_J, so it doubles rather than cancels — chirality-encoded T_uw, distinct from σ_uw shear).
 
-But synchronization fails: m ∤ n means the wave's tube-zero crossings do not coincide with ring-zero crossings during the closed traversal. Per the closure condition's reading, this configuration does not produce observable EM despite having both gauge potentials present.
+**Mass + chirality field (in T_uw), no EM gauge potential.** Genuine torus knots are mass-only at the spacetime↔compact level, with a chirality signature in the compact↔compact cross-term that records which chirality of knot is present.
 
-What does this look like at the metric-side level? Two possibilities the framework leaves open:
+### 5.3 Why closure-satisfying and closure-failing diverge under the same construction
 
-- **(a) Local gauge potentials, no observable EM.** The h_μu and h_μw sets *are* valid gauge potentials locally, but the configuration's lack of synchronization means the U(1) × U(1) cross-coupling that produces α-mediated EM is structurally absent. The two gauge potentials exist but don't combine into observable physics. In this reading, the metric-side analysis is *broader* than synchronization — the four-property test passes but observable EM still requires synchronization on top.
+For closure-satisfying T(m, 1), the underlying curve is achiral in 3-space, so its chirality reflections (both R_u and R_w) are topological symmetries; R_u in particular is among them, and the wrap-order's selection of R_u as the particle symmetry is consistent with topology. For genuine torus knots, the underlying curve is chiral, so neither R_u nor R_w is a topological symmetry; R_u cannot be enforced as a particle symmetry without combining topologically distinct configurations. The construction falls back to R_J (the only remaining topological symmetry — joint reversal preserves the unoriented curve), yielding the mass-only configuration.
 
-- **(b) Off-diagonals fail some structural test that's not captured by the four-property test.** Perhaps a fifth property (related to the synchronization of the field's tube/ring nodes) is required for observable EM, and synchronization-failing modes fail this fifth property. In this reading, the metric-side analysis is *equivalent to* synchronization, with the four-property test being incomplete and a refinement needed.
+The closure rule of [Chapter 1 §10](01-foundation.md), expressed as a chirality criterion on the closed curve in 3-space, is **exactly equivalent** to the metric-side criterion "the wrap-order's R_u is enforceable as a particle symmetry, hence the natural particle sources a single gauge potential B_μ from h_μw." Both are descriptions of the same underlying fact: the curve's chirality status, which controls which wrap-order-aligned symmetries the natural particle inherits.
 
-Distinguishing (a) from (b) requires a more careful metric-side analysis than this chapter undertakes. The chapter explicitly leaves the question open. Either way, **synchronization-failing modes do not produce observable EM** under the framework's closure rule, regardless of which interpretation is correct.
+### 5.4 The closure-failing inventory at the metric-side level
 
-### 5.3 The metric-side picture and the closure-failing inventory
+| Category | Particle symmetry | T_tu | T_tw | T_uw | Outcome |
+|---|---|---|---|---|---|
+| Light (0, 0) | — (no compact structure) | 0 | 0 | 0 | Light, no EM |
+| Single-axis (m, 0) | R_u (only available) | 0 | 0 (k_w = 0) | 0 | Mass only |
+| Single-axis (0, n) | R_w (only available) | 0 (k_u = 0) | 0 | 0 | Mass only |
+| Genuine torus knot T(p, q), gcd = 1 | R_J (only available) | 0 | 0 | nonzero | Mass + chirality field |
 
-The two closure-failing categories produce structurally different metric-side fingerprints:
+All closure-failing categories produce massive but EM-neutral states under the natural-particle construction. The *mechanism* differs: single-axis modes fail by structural degeneracy (no chirality structure to test); genuine torus knots fail by chirality non-degeneracy (R_u not a topological symmetry, fall back to R_J). The framework distinguishes them by which particle symmetry the natural-particle construction can enforce.
 
-| Category | h_μu sourced? | h_μw sourced? | Standard EM? |
-|---|---|---|---|
-| Light (0, 0) | No (no compact-direction momentum) | No | No (light is its own thing) |
-| Single-axis (m, 0) | Yes — partial gauge structure | No (zero) | No — incomplete cross-coupling |
-| Single-axis (0, n) | No (zero) | Yes — partial | No — incomplete cross-coupling |
-| Genuine torus knot T(p, q), gcd = 1 | Yes — locally valid | Yes — locally valid | No — synchronization fails (mechanism per (a) or (b) above) |
+Standard physics has multiple categories of neutral massive states (neutrinos in three flavors, neutral mesons, neutral baryons, dark matter, the Higgs); how the framework's structural categories map to standard physics' inventory is downstream MaSt-correspondence work. Plus a separate cancellation-pair mechanism from [Chapter 6 §4](06-handedness-and-pairs.md) operates on top of these.
 
-All three closure-failing categories produce massive but EM-neutral states; the *mechanism* differs. This refinement at the metric-side level confirms the synchronization closure-rule's structural distinctions: single-axis modes fail by missing one U(1); genuine torus knots fail by lacking synchronization between two present U(1)s.
-
-The framework predicts at least two structurally distinct mass-only categories (single-axis and synchronization-failure), plus the cancellation-pair category from [Chapter 6 §4](06-handedness-and-pairs.md). Standard physics has multiple categories of neutral massive states (neutrinos in three flavors, neutral mesons, neutral baryons, dark matter, the Higgs); how the framework's three structural categories map to standard physics' inventory is downstream MaSt-correspondence work.
-
-### 5.4 What about light?
+### 5.5 What about light?
 
 The (0, 0) zero mode sources no off-diagonals at all (no compact-direction momentum). Its h_μν is purely diagonal — it bends spacetime gravitationally but has no gauge-potential content. From the metric-side view, light is the trivial case: it propagates at c on the perturbed metric, picking up gravitational deflection from any nearby matter (per metric-mass Ch 6) but contributing no gauge-potential perturbation itself. Consistent with light being its own propagation mode rather than a sourcing mass.
 
 ---
 
-## 6. Comparing the three views under synchronization closure
+## 6. Equivalence of the four views
 
-[Chapter 1 §10](01-foundation.md) introduced the closure condition in two equivalent forms (phase-pattern / synchronization, and topological — both reducible to "m | n with both nonzero") plus a metric-side view developed in this chapter. We can now compare the three views and identify where they agree and where they may diverge.
+[Chapter 1 §10](01-foundation.md) introduced the closure condition in three equivalent forms (chirality, synchronization, topological) and announced a metric-side derivation in this chapter. We can now confirm that the four views agree on which (m, n) carry observable EM.
 
-### 6.1 The three views
+### 6.1 The four views
 
-| View | Condition | Source chapter |
+| View | Condition | Source |
 |---|---|---|
-| Phase-pattern (synchronization) | Tube-zero crossings synchronize with ring-zero crossings during one closed traversal — equivalently, **m \| n** with both nonzero | [Chapter 4](04-the-closure-condition.md) |
-| Topological | gcd-reduced primitive of T(m, n) is T(1, q) — equivalently, m \| n with both nonzero | [Chapter 3 §7](03-knots-on-the-torus.md) |
-| Metric-side (this chapter) | Both h_μu and h_μw sourced; pass gauge-potential property tests; configuration produces observable EM | This chapter §4 |
+| Chirality (primary) | The closed curve T(m, n) is achiral in 3-space *and* the wrap-order's R_u is a topological symmetry | [Ch 1 §10](01-foundation.md) |
+| Synchronization (operational test) | n \| m with both nonzero | [Ch 1 §10](01-foundation.md), [Ch 4 §1](04-the-closure-condition.md) |
+| Topological | gcd-reduced primitive of T(m, n) is T(m', 1) | [Ch 4 §1](04-the-closure-condition.md) |
+| Metric-side | The wrap-order's R_u-symmetrization of the natural particle preserves a single spacetime↔compact cross-term h_μw | This chapter §4 |
 
-### 6.2 Phase-pattern and topological views are equivalent
+### 6.2 The four views all agree
 
-The first two views reduce to the same mathematical statement: **m | n with both nonzero**. The phase-pattern view comes from the geometric synchronization requirement; the topological view comes from the link decomposition of T(m, n). Both produce the same partition of (m, n) space into closure-satisfying and closure-failing.
+| (m, n) class | Chirality | Synchronization | Topological | Metric-side |
+|---|---|---|---|---|
+| (0, 0) | N/A (no curve) | Fails (no winding) | Fails (no winding) | No off-diagonals (light) |
+| Single-axis (m, 0), (0, n) | Vacuous (no chirality structure) | Fails (one winding zero) | Fails | R_u or R_w-only symmetrization gives mass only |
+| T(m, 1) primitives | Achiral; R_u is a symmetry → satisfies | n=1 \| m → satisfies | Primitive is T(m, 1) → satisfies | R_u-symmetrization yields one gauge potential h_μw |
+| Genuine torus knot T(p, q), p,q ≥ 2, gcd = 1 | Chirally distinct from mirror → criterion (i) fails | n ∤ m → fails | Primitive is genuine torus knot → fails | R_u not a topological symmetry → fall back to R_J → mass only with chirality field T_uw |
+| Multi-link k × T(m', 1) | Achiral per component → satisfies | n = k \| m = k·m' → satisfies | Primitive is T(m', 1) → satisfies | R_u-symmetrization per component yields k-fold gauge potential structure |
+| Multi-link with genuine-knot primitive | Chirally non-degenerate per component → fails | Fails | Fails | R_J fallback per component → mass only |
 
-### 6.3 The metric-side view: equivalent or broader?
+All four views agree on every row. The closure rule's partition of (m, n) into charged-vs-neutral is the same regardless of which view we use to derive it.
 
-The metric-side analysis applied to a generic (m, n) mode with both nonzero shows that both h_μu and h_μw are sourced and that each passes the four-property gauge-potential test (§4). For *closure-satisfying* modes (m | n) this confirms observable EM. For *closure-failing* modes that nevertheless have both windings nonzero — i.e., genuine torus knots T(p, q) with p, q ≥ 2 and gcd = 1 — the metric-side analysis as currently developed cannot distinguish them from closure-satisfying modes at the four-property level.
+### 6.3 Why all four agree
 
-The chapter explicitly leaves open whether:
+The four views are descriptions of the same underlying fact: the curve's chirality status in 3-space, which controls (a) whether the synchronization test n | m holds, (b) whether the gcd-reduced primitive is the unknot T(m', 1), and (c) whether the wrap-order's R_u can be enforced as a particle symmetry under the standing-wave construction. All three downstream consequences are equivalent because the wrap-order's selection of R_u as the particle symmetry is exactly the condition under which the natural particle sources a single gauge potential.
 
-- **(a)** The metric-side analysis is strictly *broader* than synchronization — locally valid gauge potentials exist for all both-windings-nonzero modes, but observable EM requires synchronization on top. In this reading, the chapter 5 four-property test is necessary but not sufficient; the synchronization condition adds a fifth requirement not captured by the four properties.
+The chirality view is the most fundamental — it ties directly to the topological character of the curve in 3-space and explains *why* the closure rule selects the (m, n) it does. The synchronization view is operationally cleanest (just check n | m). The topological view is structurally cleanest (the gcd-reduced primitive form). The metric-side view is the derivation that produces the gauge field. Each is useful in its own context; all four select the same set of (m, n) configurations as charged.
 
-- **(b)** The metric-side analysis is *equivalent to* synchronization — the four-property test as stated in §4 is incomplete, and a refined test (capturing some structural property that synchronization-failing modes don't satisfy) would distinguish closure-satisfying from closure-failing on the metric side. The four-property test would need a fifth criterion.
+### 6.4 The wrap-order convention's three faces
 
-Either reading is consistent with the framework's claim that synchronization-failing modes do not produce observable EM. Distinguishing (a) from (b) is open work — and important, because it determines whether the framework's gauge-potential machinery can be derived purely from the linearized-Einstein-equations-plus-property-test approach of §4, or whether something extra is needed.
+The wrap-order convention of [Chapter 1 §10](01-foundation.md) has three distinct projections — each of them a consequence of the single choice "u = ring, w = tube":
 
-### 6.4 Mode partition (under the synchronization rule)
+- **Closure rule.** The closure condition selects the chirality reflection R_u of the ring direction as the particle symmetry. (Equivalently, the synchronization test reads n | m, picking the direction-pair where the tube divides the ring.)
+- **Aspect-ratio labels.** ε ≡ L_u/L_w; "thin sheet" = small ε labels the ring as the small direction, the tube as the large direction (or the reverse, depending on the regime).
+- **Gauge identification.** The single surviving cross-term h_μw is identified with the EM gauge potential B_μ — chosen by the wrap-order's selection of w as the tube direction whose KK-style traveling-wave structure produces the gauge potential.
 
-The current state of the framework's three-view comparison:
+These three faces flip together under the bare-framework swap S: (u, w) ↔ (w, u) with L_u ↔ L_w and (m, n) ↔ (n, m). A consistent framework requires all three to align with a single wrap-order choice; flipping one without the others would invert the framework's labels. The wrap-order's three faces are not three independent stipulations — they are projections of a single substrate-level convention inherited from [grid-duality](../grid-duality/)'s wrap-promotion ladder.
 
-| (m, n) class | Phase-pattern | Topological | Metric-side |
-|---|---|---|---|
-| (0, 0) | Fails (no winding) | Fails (no winding) | Fails (no off-diagonals) |
-| Single-axis (m, 0), (0, n) | Fails (one winding zero) | Fails (one winding zero) | Partial gauge structure — only one U(1) |
-| T(1, q) primitives | Satisfies | Satisfies (primitive is T(1, q)) | Both gauge potentials active; produces observable EM |
-| Genuine torus knot T(p, q), p,q ≥ 2, gcd = 1 | Fails (m ∤ n) | Fails (primitive is genuine torus knot) | Both gauge potentials present locally; observable EM open per §6.3 |
-| Multi-link k × T(1, q) | Satisfies (m \| n) | Satisfies | Both gauge potentials active; observable EM with k-fold structure (chapter 8) |
-| Multi-link with genuine-knot primitive | Fails | Fails | Open per §6.3 |
+(σ_uw shear is a *separate* asymmetry-introducing mechanism, structurally distinct from the wrap-order convention. The σ_uw entry is symmetric in (u, w) — invariant under S — and what it breaks is a chirality reflection on the (m, n) labels (R_u or R_w) rather than the wrap-order swap. σ_uw operates *within* the natural particle to bias chirality balance, not at the wrap-order level. See [Chapter 6 §6](06-handedness-and-pairs.md) and [Chapter 8 §3](08-shear-and-fractional-charge.md).)
 
-The phase-pattern and topological views agree on every row. The metric-side view agrees with the others on the closure-satisfying rows; it agrees on the obviously-closure-failing rows (single-axis); it leaves the synchronization-failing rows (genuine torus knots and their multi-links) as open per §6.3. The framework's overall *prediction* is the synchronization condition; the metric-side view either confirms it (case b) or sits as a broader necessary condition (case a).
+### 6.5 What this demonstration leaves open
 
-### 6.5 The four asymmetric conventions reduce to one wrap-order choice — demonstration
-
-[Chapter 3 §3.2](03-knots-on-the-torus.md) flagged that four asymmetric conventions appear downstream of Chapter 1 — closure-rule selection of w-winding, aspect-ratio labeling, σ_uw shear placement, and gauge-potential identification — and asserted that they all inherit from a single adopted convention. The metric-side machinery developed in this chapter makes the demonstration tractable. We carry it out here and refine the count.
-
-#### 6.5.1 The bare-framework involution
-
-Define the swap:
-
-> **S:** (u, w) ↔ (w, u),  L_u ↔ L_w,  m ↔ n.
-
-Without any of the four conventions adopted, the framework is **invariant under S**:
-
-- *Bare diagonal metric* ([Ch 1 §2](01-foundation.md)) — symmetric in (u, w); S leaves the metric form unchanged.
-- *Wave equation* □φ = 0 ([Ch 1 §8](01-foundation.md)) — symmetric in u and w; S maps solutions to solutions.
-- *Periodicity boundary conditions* ([Ch 1 §9](01-foundation.md)) — independent in each compact direction; S permutes them.
-- *Bloch decomposition* ([Ch 2 §2](02-modes-on-a-sheet.md)) — labels (m, n) ∈ ℤ²; S relabels (m, n) ↔ (n, m).
-- *Rest-mass formula* ([Ch 2 §3](02-modes-on-a-sheet.md)), m_(m,n)² ∝ (2πm/L_u)² + (2πn/L_w)², invariant under simultaneous (m ↔ n, L_u ↔ L_w).
-
-Without an asymmetric convention, the framework does not distinguish the two compact directions.
-
-#### 6.5.2 How each convention transforms under S
-
-| # | Convention | Statement | Behavior under S |
-|---|---|---|---|
-| 1 | Closure rule ([Ch 1 §10](01-foundation.md)) | "m \| n with both nonzero" — selects the direction whose 2π winding closure requires | "m \| n" → "n \| m"; the rule now selects the formerly-w (now-u) direction as the 2π-winding tube — **flips** |
-| 2 | Aspect-ratio labels ([Ch 1 §3](01-foundation.md)) | ε ≡ L_u/L_w; "thin sheet" = small ε, "fat sheet" = large ε | ε ↔ 1/ε; what was "thin" is now labeled "fat" — **flips** |
-| 3 | σ_uw shear placement ([Ch 1 §4](01-foundation.md)) | σ_uw ≠ 0 introduces an off-diagonal entry in the (u, w) sub-block | g_uw = g_wu = σ is *symmetric*; under S, σ → σ — **does not flip** |
-| 4 | Gauge identification (this chapter, §4–§8) | "Physical photon" = A_μ from h_μu (rather than B_μ from h_μw) | A_μ ↔ B_μ; the physical photon is now associated with the formerly-w (now-u) direction — **flips** |
-
-#### 6.5.3 Three flip together; the fourth does not
-
-Conventions 1, 2, and 4 flip together under S. They are *projections of a single wrap-order choice* — each one specifies which compact direction is named u (equivalently, which plays the "ring" role and which the "tube" role). The three cannot be flipped independently without internal contradiction. For example, declaring "w is the tube" (Convention 1) while identifying B_μ = h_μw as the *non*-physical U(1) (an attempt to set Convention 4 against Convention 1) would mean closure-satisfying modes systematically fail to carry observable EM — incoherent. The framework's machinery enforces alignment among 1, 2, and 4.
-
-Convention 3 — σ_uw — is *symmetric* in (u, w) and does not flip under S. The σ_uw entry is invariant under the wrap-order swap. What σ_uw introduces is a *different* kind of asymmetry: a cross-term proportional to k_u·k_w in the dispersion relation that breaks a sign-flip symmetry on the (m, n) labels (analyzed in [Chapter 6 §6](06-handedness-and-pairs.md) and [Chapter 8 §2](08-shear-and-fractional-charge.md)). σ_uw is a *parallel but structurally distinct* asymmetry-introducing mechanism, not a fourth face of the wrap-order convention.
-
-#### 6.5.4 Refined claim
-
-[Chapter 3 §3.2](03-knots-on-the-torus.md)'s "four conventions reduce to one" framing is slightly imprecise. The accurate statement:
-
-> **The wrap-order convention has three faces (closure rule, aspect-ratio labeling, gauge identification), and these three flip together under S. The σ_uw shear is a structurally separate asymmetry-introducing mechanism that operates on a sign-flip symmetry of the (m, n) labels rather than on the (u, w) wrap-order symmetry.**
-
-This is what the demonstration shows. The three wrap-order conventions are *consistently aligned* under any chosen wrap-order; they are not three independent free choices.
-
-#### 6.5.5 What this demonstration leaves open
-
-The wrap-order convention is *adopted by stipulation* in [Chapter 1 §10](01-foundation.md). The demonstration here shows only that the three faces are *consistently aligned* under that adoption — fixing any one fixes the others — not that the adoption itself is *forced*. Whether something physical (handedness of the embedding spacetime, substrate constraint from grid-duality, or other) eventually selects one wrap-order over the other remains open work for [grid-duality §8](../grid-duality/08-where-alpha-appears.md) and the alpha-derivation track.
-
-Similarly, the σ_uw shear's sign is left open by this section; the σ-sign question is examined in [Chapter 8](08-shear-and-fractional-charge.md).
+The wrap-order convention is *adopted by stipulation* in [Chapter 1 §10](01-foundation.md). This chapter's derivation assumes the wrap-order is already fixed and reads off the consequences. Whether something physical (handedness of the embedding spacetime, substrate constraint from grid-primitive, or other) *forces* one wrap-order over the other is downstream work for [grid-duality §8](../grid-duality/08-where-alpha-appears.md) and the alpha-derivation track. The σ_uw shear's sign is similarly left open here; it is examined in [Chapter 8](08-shear-and-fractional-charge.md).
 
 ---
 
@@ -365,10 +391,10 @@ Drawing the chapter's results together, we have the **calculable mechanism** for
 ### 7.1 The chain
 
 1. A closure-satisfying mode at fixed (m, n) carries compact-direction momenta p_u = ℏk_u, p_w = ℏk_w (Chapter 2 §5).
-2. These compact momenta source off-diagonal stress-energy T_tu, T_S₁u, ..., T_S₂w (this chapter §2).
-3. Linearized Einstein equations source off-diagonal metric perturbations h_tu, h_S₁u, ..., h_S₂w (this chapter §3).
-4. These off-diagonals satisfy the four properties of standard-physics gauge potentials (this chapter §4) — they are A_μ and B_μ in the KK identification.
-5. A passing wave's worldline through the perturbed metric picks up phase via the line integral ∮ A_μ dx^μ (and similarly for B_μ).
+2. The natural particle (R_u-symmetrized per §4) sources diagonal stress-energy (T_tt, T_uu, T_ww) and a single off-diagonal stress-energy entry T_tw (and its moving-particle extensions T_S₁w, T_S₂w when k_S ≠ 0).
+3. Linearized Einstein equations source the diagonal metric perturbation (gravitational mass) and the single off-diagonal metric perturbation h_μw (the surviving gauge potential).
+4. The off-diagonal h_μw satisfies the four properties of standard-physics gauge potentials (this chapter §4.6) — it is B_μ in the KK identification.
+5. A passing wave's worldline through the perturbed metric picks up phase via the line integral ∮ B_μ dx^μ.
 6. That phase manifests as **trajectory deflection** (gravitational lensing) and **coordinate-time slowdown** (Shapiro delay) for the gravitational case, and as **EM refractive-index physics** (charged matter slowing light in materials) for the EM case.
 
 Each step is explicitly computable from the apparatus developed in this chapter and Chapter 2. The mechanism is more granular than standard GR's "mass curves spacetime, particles follow geodesics" postulate — it locates the mechanism in compact-direction momentum, off-diagonal sourcing, and gauge-potential holonomy.
@@ -377,10 +403,10 @@ Each step is explicitly computable from the apparatus developed in this chapter 
 
 Both gravitational and electromagnetic bending emerge from the same off-diagonal-sourcing chain. The difference is which specific off-diagonal entries dominate the holonomy in a given regime:
 
-- **Gravitational case:** the diagonal-metric perturbations from energy density (T_tt) dominate. Massive matter near a passing wave produces curvature; the wave bends along geodesics on the curved metric. Gauge potentials A_μ, B_μ are active too but typically much weaker in their effect on the wave's worldline at long range.
-- **EM case (refractive-index physics):** the gauge-potential off-diagonals dominate. Charged matter (closure-satisfying modes) couples to passing EM waves through the gauge-potential channel; the wave's phase velocity slows. Gravitational coupling is also present but typically dwarfed by α-mediated EM effects in atomic-scale matter.
+- **Gravitational case:** the diagonal-metric perturbations from energy density (T_tt) dominate. Massive matter near a passing wave produces curvature; the wave bends along geodesics on the curved metric. The gauge potential B_μ is active too but typically much weaker in its effect on the wave's worldline at long range.
+- **EM case (refractive-index physics):** the gauge-potential off-diagonal h_μw dominates. Charged matter (closure-satisfying modes) couples to passing EM waves through the gauge-potential channel; the wave's phase velocity slows. Gravitational coupling is also present but typically dwarfed by α-mediated EM effects in atomic-scale matter.
 
-For closure-failing modes (single-axis): the holonomy mechanism still operates for the diagonal-metric perturbations (gravitational lensing from energy density), but not for the gauge-potential channel. Single-axis modes bend light gravitationally but produce no EM holonomy. Consistent with the structural property of mass without EM coupling — a property standard physics ascribes to multiple non-charged massive categories (neutrinos, dark matter candidates, certain neutral hadrons, the Higgs).
+For closure-failing modes (single-axis or genuine torus knots): the holonomy mechanism still operates for the diagonal-metric perturbations (gravitational lensing from energy density), but not for the gauge-potential channel — neither configuration sources h_μw under the natural-particle construction. Closure-failing modes bend light gravitationally but produce no EM holonomy. Consistent with the structural property of mass without EM coupling — a property standard physics ascribes to multiple non-charged massive categories (neutrinos, dark matter candidates, certain neutral hadrons, the Higgs).
 
 ### 7.3 Observable predictions from the mechanism
 
@@ -388,54 +414,50 @@ Three predictions follow from the chain:
 
 1. **Gravitational lensing of light by mass** — emerges quantitatively from the chain in the linearized regime, agreeing with standard GR predictions to the order of approximation.
 2. **EM refractive index of matter** — emerges from the gauge-potential channel; the standard Lorentz-oscillator picture of refractive index becomes a special case of the holonomy mechanism evaluated in the closure-satisfying mode's gauge-potential channel.
-3. **Distinct gravitational-only behavior of single-axis modes** — they bend light gravitationally but show no EM coupling. This matches structural properties standard physics ascribes to non-charged massive states (neutrinos, dark matter candidates, the Higgs, certain neutral hadrons-in-isolation): gravitational interaction only, no EM coupling.
+3. **Distinct gravitational-only behavior of closure-failing modes** — they bend light gravitationally but show no EM coupling. This matches structural properties standard physics ascribes to non-charged massive states (neutrinos, dark matter candidates, the Higgs, certain neutral hadrons-in-isolation): gravitational interaction only, no EM coupling.
 
-The third prediction is the most distinctive of the framework: it predicts the existence of mass-only modes structurally, as the L2-in-L3 mass-only states of Chapter 2 §4. Standard physics has multiple categories of non-charged massive states (neutrinos in three flavors, dark matter candidates, neutral mesons, the Higgs boson, neutral baryons); the framework's structural mass-only modes are candidates for any of these. Which framework state corresponds to which standard-physics category — or whether some categories are absent or duplicated under the framework's three-mechanism partition (single-axis, synchronization-failure, cancellation-pair) — is downstream MaSt-correspondence work.
+The third prediction is the most distinctive of the framework: it predicts the existence of mass-only modes structurally, as the closure-failing states of Chapter 4. Standard physics has multiple categories of non-charged massive states (neutrinos in three flavors, dark matter candidates, neutral mesons, the Higgs boson, neutral baryons); the framework's structural mass-only modes are candidates for any of these. Which framework state corresponds to which standard-physics category — or whether some categories are absent or duplicated under the framework's three-mechanism partition (single-axis, chirality-non-degenerate, cancellation-pair) — is downstream MaSt-correspondence work.
 ---
 
-## 8. What the framework reproduces and where it might differ
+## 8. What the framework reproduces
 
-This chapter set out to ask whether the off-diagonal sourcing produces a gauge structure matching standard physics. Section 4 answered yes for the four-property test, separately for each U(1). Section 6 confirmed consistency across the three views from Chapter 1 §10.
+This chapter set out to ask whether the off-diagonal sourcing produces a gauge structure matching standard physics. The wrap-order-asymmetric standing-wave construction of §4 answers yes — exactly one gauge potential B_μ from h_μw per closure-satisfying particle, with the four standard-physics gauge-potential properties reproduced (§4.6).
 
-**Scope of the reproduction claim.** Everything below is *modulo the two-U(1)s issue* (third bullet under "where the framework might differ"). Standard physics observes one EM gauge potential; the framework structurally predicts two. Until the second U(1) is identified — as a known force (Hodge-dual magnetic-charge analog), as new physics, or as a redundancy that gauge-fixing eliminates — the "reproduces standard EM" claim is provisional rather than established. The list below records what the framework's machinery produces; whether that production *matches* standard EM depends on resolving the two-U(1)s question.
+What the framework **reproduces** at the linearized level:
 
-What the framework **produces** at the linearized level (each item subject to the two-U(1)s qualifier above):
+- **A single U(1) gauge potential per charged particle** — matching standard EM's single observed U(1)_em. The natural particle (R_u-symmetrized per §4) sources h_μw alone; the would-be h_μu cross-term cancels by the metric-mass mechanism applied to the ring direction.
+- **Gauge-potential transformation properties** — the four standard-physics properties of an EM gauge potential are reproduced for h_μw (§4.6).
+- **The holonomy structure of EM coupling to charged matter** — the §7 chain provides this directly.
+- **Structural neutrality of mass-only modes** (the property standard physics ascribes to non-charged massive states such as neutrinos and dark matter) — single-axis and genuine-torus-knot modes source no spacetime↔compact gauge potential under the natural-particle construction.
+- **Gravitational lensing and Shapiro delay** — emerge from diagonal-metric perturbations as a special case of the holonomy mechanism.
 
-- U(1) × U(1) gauge symmetry — the topology of [grid-duality §7.5.3](../grid-duality/07-wrap-promotion-modeling.md) emerges from the metric-side off-diagonal pattern.
-- Gauge-potential transformation properties — the four standard-physics properties of A_μ are all reproduced for each compact direction's off-diagonal set.
-- The holonomy structure of EM coupling to charged matter — the §7 chain provides this directly.
-- Structural neutrality of mass-only modes (the property standard physics ascribes to non-charged massive states such as neutrinos and dark matter) — single-axis modes have partial gauge structure that doesn't produce observable EM.
-- Gravitational lensing and Shapiro delay — emerges from diagonal-metric perturbations as a special case of the holonomy mechanism.
+Where the framework's results are **conditional on downstream work**:
 
-Where the framework **might differ** from standard physics:
-
-- **Two U(1)s, not one.** The framework structurally has both A_μ (from h_μu) and B_μ (from h_μw). Standard physics observes one EM gauge potential. Whether the second U(1) corresponds to a known force (e.g., a magnetic-charge analog under Hodge duality, per [grid-duality §7.5.3](../grid-duality/07-wrap-promotion-modeling.md)), to something not yet identified, or to a redundancy that gauge fixing eliminates, is open. The framework predicts a structural duality at L3 that may or may not have a Standard Model counterpart.
-
-- **The closure-asymmetry origin is conventional.** The choice of which U(1) is "physical EM" comes from the conventions of [Chapter 3 §3.2](03-knots-on-the-torus.md) — closure asymmetry, aspect ratio convention, gauge convention. Standard physics treats the EM gauge structure as observationally determined. The framework treats the asymmetry as conventional and notes that the convention itself may be derivable downstream.
+- **The wrap-order convention's origin is adopted, not derived.** The choice of "u = ring, w = tube" is fixed once for the framework as a whole and applies the same way to all modes ([Ch 1 §10](01-foundation.md)). Whether something physical (handedness of the embedding spacetime, substrate constraint from grid-primitive, or other) eventually forces this choice is downstream work for [grid-duality §8](../grid-duality/08-where-alpha-appears.md) and the alpha-derivation track.
 
 - **α coupling strength is not derived here.** The structural location of α at L3 is settled by [grid-duality §8](../grid-duality/08-where-alpha-appears.md); the numerical value is open work for grid alpha-derivation. This chapter's analysis is at the linearized level where the coupling strength's specific value does not affect structural conclusions.
 
 - **Nonlinear backreaction is deferred.** Linearized Einstein equations only. Whether the gauge-potential properties survive at higher orders, and whether full nonlinear self-consistency is achievable, is downstream work (cf. [Chapter 1 §11](01-foundation.md) non-assumptions).
 
-The framework produces a U(1) × U(1) gauge structure with the algebraic and holonomic properties standard EM has. Whether this *reproduces* standard EM depends on (a) resolving the two-U(1)s discrepancy (one of the framework's U(1)s mapping to observed EM, the other to a known force or to a redundancy) and (b) downstream quantitative work (α derivation, nonlinear backreaction, magnetic moments, higher-order corrections). At the level this chapter operates (linearized, structural, single-U(1) restricted), the correspondence holds; the full claim of EM reproduction is conditional on the open issues catalogued above.
+The framework reproduces standard EM at the structural level: a single gauge potential per charged particle, with the standard-physics gauge-potential properties and the holonomic mechanism for both gravitational and EM bending. Whether it reproduces standard EM *quantitatively* — exact mass and charge values, exact magnetic moments, full higher-order corrections — depends on the α derivation and nonlinear analysis downstream. At the level this chapter operates (linearized, structural), the correspondence holds.
 
 ---
 
 ## 9. What's next
 
-[Chapter 6 — Handedness and pairs](06-handedness-and-pairs.md). Take the closure-satisfying inventory from Chapter 4 and the gauge-potential structure from this chapter, and examine the **chirality / handedness** structure: when do (m, n) and (−m, −n) correspond to physically distinguishable particles (in the sense of what standard physics calls matter vs antimatter), and when do they represent the same particle viewed two different ways? Examine when complementary pairs *within a single field configuration* cancel net charge (apparent neutrality through internal cancellation, distinct from the structural neutrality of single-axis modes from this chapter).
+[Chapter 6 — Handedness and pairs](06-handedness-and-pairs.md). Take the closure-satisfying inventory from Chapter 4 and the single-gauge-potential structure from this chapter, and examine the **chirality / handedness** structure: when do (m, n) and (−m, −n) correspond to physically distinguishable particles (in the sense of what standard physics calls matter vs antimatter), and when do they represent the same particle viewed two different ways? Examine when complementary pairs *within a single field configuration* cancel net charge (apparent neutrality through internal cancellation, distinct from the structural neutrality of closure-failing modes from this chapter). Sharpen σ_uw shear's role: under work1's framing, σ_uw biases chirality *within particles* (the (++) vs (−+) amplitude balance), not matter/antimatter populations.
 
-The closure-condition structure that was settled in chapters 4 and 5 — which (m, n) modes carry observable EM and which don't — is the substrate. Chapter 6 adds handedness as a sub-(m, n) label and asks what physical content the sign-reflection symmetry carries.
+The closure-condition structure that was settled in chapters 4 and 5 — which (m, n) modes carry observable EM and which don't, and how the natural particle is constructed — is the substrate. Chapter 6 adds handedness as a sub-(m, n) label and asks what physical content the sign-reflection symmetry carries.
 
 ---
 
 ## What this chapter does **not** do
 
-- **Does not postulate gauge symmetry.** The Standard Model gauge structure appears as a target the chapter examines, not an input. The four-property test in §4 was applied to determine whether the off-diagonals satisfy standard-physics gauge-potential properties — a positive test, not an assumption.
+- **Does not postulate gauge symmetry.** The Standard Model gauge structure appears as a target the chapter examines, not an input. The four-property test in §4.6 was applied to determine whether the surviving cross-term satisfies standard-physics gauge-potential properties — a positive test, not an assumption.
 - **Does not derive numerical α.** Cited from [grid-duality §8](../grid-duality/08-where-alpha-appears.md); structural location is settled there, numerical value is grid alpha-derivation work.
 - **Does not derive Maxwell's equations.** Standard EM is a reference target. Whether Maxwell's equations follow from the off-diagonal sourcing in some appropriate limit is downstream work.
 - **Does not assign handedness or matter/antimatter.** Chapter 6.
-- **Does not commit to whether B_μ is a known Standard Model force or new physics.** Open question forwarded to grid alpha-derivation and downstream MaSt-correspondence work.
+- **Does not derive the wrap-order convention itself.** The convention is adopted in [Chapter 1 §10](01-foundation.md); whether something physical forces it is open work for [grid-duality §8](../grid-duality/08-where-alpha-appears.md) and the alpha-derivation track.
 - **Does not analyze nonlinear backreaction.** Linearized Einstein equations only; nonlinear self-consistency is deferred (per [Chapter 1 §11](01-foundation.md)).
 - **Does not analyze multi-knot energetics.** [metric-binding](../metric-binding/) territory.
 
@@ -445,10 +467,8 @@ The closure-condition structure that was settled in chapters 4 and 5 — which (
 
 | Q | Where it goes |
 |---|---|
-| Are the two U(1) gauge potentials (A_μ from h_μu, B_μ from h_μw) both physical, or is only one observed? | Convention question; possibly settled by grid alpha-derivation |
-| Does B_μ correspond to a known force (Hodge-dual of EM, magnetic charge, etc.) or to new physics? | Downstream grid + MaSt-correspondence work |
+| What forces the wrap-order convention's specific direction (u = ring rather than u = tube)? Is it adopted-by-stipulation or substrate-derived? | [grid-duality §8](../grid-duality/08-where-alpha-appears.md) + alpha-derivation track |
 | Does the holonomy mechanism (§7) reproduce standard gravitational lensing predictions quantitatively? | Cross-check with metric-mass Chapter 6 + standard GR |
-| Why are the closure-rule, aspect-ratio, and gauge conventions all aligned (one convention with three faces)? | Structural question; possibly forced by deeper symmetry; grid alpha-derivation |
-| Does the framework's prediction of a U(1) × U(1) gauge structure quantitatively match standard EM at every order, or only at linearized order? | Nonlinear backreaction work, deferred |
-| Does T_uw (cross-compact stress-energy) interact with σ_uw shear in chapter 8 in a structurally meaningful way? | Chapter 8 |
-| Does the framework predict any deviation from standard EM that could be experimentally tested? | Open; depends on B_μ identification and nonlinear corrections |
+| Does the framework's single-U(1) gauge structure quantitatively match standard EM at every order, or only at linearized order? | Nonlinear backreaction work, deferred |
+| Does T_uw (the chirality-encoded compact-compact cross-term sourced by genuine torus knots) interact with σ_uw shear in chapter 8 in a structurally meaningful way? | Chapter 8 |
+| Does the framework predict any deviation from standard EM that could be experimentally tested? | Open; depends on nonlinear corrections and the alpha-derivation track |
