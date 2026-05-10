@@ -86,6 +86,75 @@ This file tracks items that remain open after the work1 refactor pass (which res
 
 ---
 
+## Open todos — post-refactor review findings
+
+The three items below come from the post-refactor pass of [review.md](review.md) (recorded under "New issues / Light"). Each is a small targeted edit; none affects substantive conclusions. I agree with all three.
+
+### TODO-P1 — Write `09-closing-summary.md`
+
+**Status:** Open. The file is referenced from [README §Chapters](README.md) line 158 and from [Chapter 8 §9](08-shear-and-fractional-charge.md) line 206 but does not exist.
+
+**What review.md says:** With the refactor making the chapter 1–8 substrate solid, the missing summary chapter is more visible. Cross-references should either be removed/conditionalized, or the file should be added so the project's table of contents is self-consistent.
+
+**Why I agree:** Two live cross-references point at a non-existent file. Of the two fixes (remove pointers vs. write the chapter), writing the chapter is the right one — chapters 1–8 now have a coherent single-derivation arc that benefits from a consolidating summary, and the project needs a clean hand-off point to metric-binding.
+
+**Scope of fix:** Write a brief `09-closing-summary.md` that:
+- consolidates what chapters 1–8 establish (chirality criterion → wrap-order-asymmetric standing wave → single gauge field per closure-satisfying particle → mass-only fallback for closure-failing modes → fractional-charge picture);
+- points at STATUS for what remains open;
+- hands off to [metric-binding](../metric-binding/) for binding/decay/multi-link energetics not in scope here.
+
+**Estimate:** Half-day to a day.
+
+**Suggested order:** Best done after TODO-M8(a) and TODO-L5 settle, so the summary can report the optimization outcome and quark-charge structure honestly. If those slip, write a placeholder summary that flags them as pending.
+
+---
+
+### TODO-P2 — Replace stale closure-condition quote in Ch 8 §4
+
+**Status:** Open. Trivial fix; flagged by post-refactor pass as a stale quote left over from the pre-chirality-criterion framing.
+
+**What review.md says:** [Chapter 8 §4](08-shear-and-fractional-charge.md) line 99 reads:
+
+> The phase-pattern view of [Chapter 1 §10](01-foundation.md): "2π winding on w + standing wave on both u and w." This is stated in the bare-metric basis.
+
+The quoted phrasing predates both the synchronization-rule reformulation and the work1 chirality criterion. Current Ch 1 §10 frames closure as a chirality criterion with synchronization (n | m) as the operational test. The chapter's downstream reasoning is sound; only the quoted formulation is stale.
+
+**Why I agree:** The quote no longer matches what Ch 1 §10 says. Anyone clicking the cross-reference would find a different formulation. The fix is a one-line replacement.
+
+**Scope of fix:** Replace line 99's quoted phrasing with a current one — e.g., "The chirality criterion of [Chapter 1 §10](01-foundation.md), with the operational synchronization condition n | m on (m, n) integer labels, is stated in the bare-metric basis."
+
+**Estimate:** Trivial. Single line edit.
+
+**Suggested order:** Independent. Can be done immediately.
+
+---
+
+### TODO-P3 — Split Ch 6 §4.1's off-diagonal formula into two cases
+
+**Status:** Open. Targeted formula correction.
+
+**What review.md says:** [Chapter 6 §4.1](06-handedness-and-pairs.md) lines 158–176 summarizes the stress-energy of a sign-conjugate pair with a single off-diagonal formula:
+
+> $$T_{\mu\nu}^{\text{off-diag}} \propto |\alpha|^2 - |\beta|^2$$
+
+This treats "T_off-diagonal" as a single category that cancels under equal amplitudes. Correct for spacetime↔compact entries (T_tu, T_tw — odd under (m, n) ↔ (−m, −n)). **Incorrect for the compact↔compact entry T_uw**, which is bilinear in (k_u, k_w) and *invariant* under joint reversal — under equal amplitudes T_uw doubles rather than cancels.
+
+The §4.1 imprecision is in tension with §4.2's claim that R_J-symmetrization "cancels the spacetime↔compact gauge potential and leaves only diagonal mass plus the chirality-encoded compact-compact cross-term T_uw," and with [Chapter 5 §4.2 / §5.2](05-metric-self-consistency.md), which explicitly computes T_uw ≠ 0 under R_J.
+
+**Why I agree:** The math is wrong as written. A reader following §4.1 alone could conclude all off-diagonals cancel, contradicting the explicit Ch 5 calculation and the §4.2 lead paragraph in the same chapter. T_uw and T_tu/T_tw transform differently under R_J and need separate tabulation.
+
+**Scope of fix:** Replace §4.1's single off-diagonal formula with two:
+- spacetime↔compact (T_tu, T_tw): ∝ |α|² − |β|², cancels under equal amplitudes;
+- compact↔compact (T_uw): ∝ |α|² + |β|², doubles under equal amplitudes, recording the chirality-field cross-term.
+
+Add one sentence noting the different transformation properties under R_J that explain the asymmetric outcome.
+
+**Estimate:** Small targeted edit; under an hour.
+
+**Suggested order:** Independent. Can be done immediately.
+
+---
+
 ## Open todos — items I disagree with or am ambivalent about
 
 ### L1 — "Discovery mode" rhetorical framing inconsistent with content
