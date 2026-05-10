@@ -239,6 +239,18 @@ turn out to matter more than the technical results:
   mass spectrum; the project did not need to introduce a mass
   scale beyond R_u. This is a non-trivial result: in standard
   particle physics, masses are inputs; here they are outputs.
+- **The standing-wave-as-particle reading has a zitterbewegung
+  antecedent.** Chapter 5's commitment to the directionless
+  standing wave (the ±n superposition) as the candidate physical
+  particle is structurally the same picture that Schrödinger's
+  zitterbewegung points at: rest mass as the energy of a
+  circulating wave at the Compton scale. The compact radius in
+  this project equals the reduced Compton wavelength of the
+  n = 1 particle (R_u = ℏ / (m_1 c)) by construction, which is
+  the scale zitterbewegung lives at. The naming is historical
+  context for a construction the math delivers independently.
+  See [Chapter 2 §6](02-mass-from-u.md) and
+  [Chapter 5](05-metric-self-consistency.md) for the development.
 
 ---
 

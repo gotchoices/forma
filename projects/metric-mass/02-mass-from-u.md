@@ -1520,6 +1520,48 @@ The mass identification is now complete:
 | The kinetic energy of a slow n-mode is p_S² / (2 m_n) | Established as a consistency check |
 | Mass is *geometric* — sourced by R_u, not by a mass term | Established (R_u is the only dimensionful parameter producing mass) |
 
+#### A note on the scale: R_u is the reduced Compton wavelength
+
+The relation m_1 = ℏ/(R_u c) inverts to
+
+<!-- R_u = ℏ / (m_1 c) -->
+$$
+R_u \;=\; \frac{\hbar}{m_1\, c}
+$$
+
+— the compact radius equals the **reduced Compton wavelength**
+of the n = 1 particle. This is not a coincidence; it is the
+content of the mass identification. A wave whose wavelength
+matches the compact circumference (n = 1, λ_u = L_u = 2π R_u)
+is a wave whose extent equals the Compton scale of the mass it
+carries.
+
+This is the same scale at which Schrödinger's *zitterbewegung*
+lives. Schrödinger (1930) found that a free Dirac electron's
+position operator contains a rapid oscillation at angular
+frequency 2 m c² / ℏ with amplitude on the order of ℏ / (mc) —
+the Compton wavelength. The mathematical origin in Dirac is
+interference between positive- and negative-frequency components
+of the wave packet; the realist reading (Hestenes and others)
+treats this as the electron being a circulating wave whose
+internal wavelength is the Compton wavelength, with rest mass
+arising as the energy of that internal circulation.
+
+The metric-mass setup makes this picture concrete. Mass is the
+energy of a wave wrapping a compact dimension whose radius is
+exactly the Compton wavelength of the resulting particle. The
+"mass-as-circulation-at-the-Compton-scale" intuition that
+zitterbewegung points at is what the math of §§1–6 has just
+delivered, on a manifold where the compact direction's scale
+*is* the relevant Compton scale by construction.
+
+[Chapter 5](05-metric-self-consistency.md) develops this
+further, identifying the standing-wave configuration (the
+±n superposition) as the candidate physical particle on M and
+noting the structural parallel between the standing-wave
+particle and the Hestenes-style circulating-wave reading of
+zitterbewegung.
+
 What §6 has *not* asserted:
 
 - That the modes are *physical particles* (we have only demonstrated

@@ -45,6 +45,67 @@ compact sheet — closed wavefronts of standing waves on T². The
 1D analog that lives on metric-mass's compact circle is exactly
 the ±n superposition: a standing wave on S¹.
 
+#### Historical context: zitterbewegung
+
+The standing-wave-as-particle reading is not new. It is
+structurally the same picture that Schrödinger's
+*zitterbewegung* points at, made concrete on a manifold whose
+compact direction has the right scale by construction.
+
+Schrödinger (1930) derived the position operator for a free
+Dirac electron and found it contains a rapid oscillation at
+angular frequency 2 m c² / ℏ with amplitude on the order of the
+Compton wavelength ℏ / (mc). Mathematically, this oscillation
+arises from interference between positive- and negative-frequency
+components of the wave packet — the "rest" state of a Dirac
+particle is not a quiet point but a superposition whose
+interference produces internal wave structure at the Compton
+scale. In the realist reading developed by Hestenes and others,
+this trembling is real: the electron is a *circulating wave at
+the Compton scale*, with rest mass arising as the energy of the
+internal circulation, and the angular momentum of the
+circulation is the spin.
+
+The metric-mass setup gives the zitterbewegung picture a
+clean geometric home. [Chapter 2 §6](02-mass-from-u.md)
+established that the compact radius equals the reduced Compton
+wavelength of the n = 1 particle: R_u = ℏ / (m_1 c). The
+compact dimension *is* the Compton scale, by construction. The
+standing wave on it (the directionless ±n superposition committed
+to here) is precisely the "circulating wave whose extent is the
+Compton wavelength" that zitterbewegung points at — translated
+from extended-space trembling into compact-direction standing-wave
+structure.
+
+The structural correspondences:
+
+| Feature | Hestenes-style zitterbewegung | This project's standing wave |
+|---|---|---|
+| Scale | Compton wavelength ℏ / (mc) | Compact radius R_u = ℏ / (m_1 c) |
+| Two components | Positive and negative frequency | +n and −n winding |
+| Their interference produces | Trembling in extended position | Standing wave in u |
+| Rest mass equals | Energy of internal circulation | Rest energy of the standing wave |
+| "At rest" means | Center of internal motion | Standing-wave nodes don't translate |
+
+The factor-of-2 mismatch between the frequencies (zitterbewegung
+at 2mc²/ℏ, the standing-wave components each at mc²/ℏ) is a
+consequence of the geometric setting. Dirac's zitterbewegung
+mixes E = +mc² and E = −mc² states, so the interference period
+is set by the energy difference 2mc². The ±n components in this
+project both sit at the *same* ω = mc²/ℏ (sign of n affects
+winding direction, not energy), so their interference produces
+spatial standing-wave structure rather than time oscillation in
+|φ|². Two ways to assemble "trembling at the Compton scale" from
+two complementary components, with the geometry deciding which
+of position-trembling or spatial-standing-wave is the natural
+expression.
+
+The naming is therefore historical context, not novel claim:
+zitterbewegung's "circulating wave at the Compton scale" reading
+is the standing-wave construction this chapter commits to,
+realised on a manifold where the Compton scale is supplied by
+the compact direction's geometry.
+
 #### What this chapter does
 
 For the standing-wave particle, this chapter computes the
