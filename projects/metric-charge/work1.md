@@ -117,13 +117,18 @@ The asymmetry comes from the wrap-order convention. Per [Chapter 1 §10](01-foun
 
 This is not a labeling preference — it is inherited from [grid-duality](../grid-duality/)'s wrap-promotion ladder, where L0→L1 (which gives the ring direction) and L1→L2 (which gives the tube direction) are *structurally distinct* operations. Once the wrap-order is fixed, u and w are no longer interchangeable.
 
-What the wrap-order asymmetry says about the three reflections:
+What the wrap-order asymmetry says about the three reflections requires distinguishing two notions of symmetry:
 
-- **R_u acts on the ring direction.** The ring is the "mass" direction — analogous to metric-mass's single u-loop, where u → −u is a topological symmetry. R_u *is* a topological symmetry of the configuration the wrap-order distinguishes.
-- **R_w acts on the tube direction.** The tube is the "charge promotion" direction — analogous to KK's compact circle, where the sign of compact-direction wavenumber is the charge sign. R_w flips that sign and is *not* a topological symmetry of a charged particle's configuration.
-- **R_J = R_u · R_w.** Since R_w is not a particle symmetry, R_J is also not. Enforcing R_J overshoots — it cancels both cross-terms, including the one the wrap-order says should survive.
+- **Topological symmetry of the curve.** Whether R takes T(m, n) to itself as a knot in 3-space.
+- **Particle symmetry of the construction.** Whether R is enforced as a symmetrization in the natural-particle definition (i.e., whether modes are combined in equal amplitude under R).
 
-The "two candidates, rule one out" framing is settled here: R_u is the wrap-order-aligned reflection (ring symmetric → standing wave there); R_w is the alternative ruled out (tube has definite charge sign, not symmetric under sign flip). R_J is ruled out as overshoot.
+For closure-satisfying T(m, 1) — the unknot — *both* R_u and R_w are topological symmetries of the curve in 3-space (the unknot is achiral; reflecting it in either compact direction takes it to itself up to ambient isotopy). Topology alone does not distinguish them. The wrap-order's role is to single out *which* of the two chirality reflections gets enforced as a particle symmetry:
+
+- **R_u (chirality reflection of the ring) — particle symmetry.** The wrap-order assigns the ring direction the metric-mass-style symmetric role: standing-wave construction in the ring, with the ring's chirality treated as a particle symmetry. Ring-direction wavenumber sign carries no observable.
+- **R_w (chirality reflection of the tube) — *not* a particle symmetry.** The wrap-order assigns the tube direction the KK-style charge-bearing role: the sign of compact-direction wavenumber is a physical observable (charge). R_w would flip that sign and so cannot be enforced as a symmetrization, even though it remains a topological symmetry of the unknot.
+- **R_J = R_u · R_w — *not* a particle symmetry.** Since R_w is not a particle symmetry, R_J is also not. Enforcing R_J overshoots — it cancels both cross-terms, including the one the wrap-order says should survive.
+
+The distinction is sourced from the wrap-order, not from topology alone. The "two candidates, rule one out" framing is settled here: R_u is the wrap-order-aligned reflection (ring direction has no observable sign → standing-wave construction is natural); R_w is the alternative ruled out (tube direction has definite charge sign → cannot be symmetrized away); R_J is ruled out as overshoot.
 
 ---
 
@@ -218,11 +223,21 @@ The only available symmetry is R_J. Natural particle: (++) + (−−). By §4's 
 
 ### 9.3 Why closure-satisfying and closure-failing diverge
 
-The wrap-order's claim that R_u is a particle symmetry holds for closure-satisfying T(m, 1) because the underlying knot is achiral — so R_u-related configurations are topologically equivalent. For genuine torus knots, the underlying knot *is* chiral, so R_u-related configurations are topologically distinct, and the wrap-order's claim no longer applies. Falling back to R_J yields the mass-only configuration.
+For closure-satisfying T(m, 1), the underlying curve is achiral in 3-space, so its chirality reflections (both R_u and R_w) are topological symmetries; R_u in particular is among them, and the wrap-order's selection of R_u as the particle symmetry is consistent with topology. For genuine torus knots, the underlying curve is chiral, so neither R_u nor R_w is a topological symmetry; R_u cannot be enforced as a particle symmetry without combining topologically distinct configurations. The construction falls back to R_J (the only remaining topological symmetry — joint reversal preserves the unoriented curve), yielding the mass-only configuration.
 
-The closure rule, properly stated, is a *chirality condition*: T(m, n) is closure-satisfying iff R_u (chirality reflection of the ring) is a topological symmetry of the closed curve in 3-space. Within the torus-knot family that T² admits, this reduces to "the gcd-reduced primitive has tube winding 1," which is the same partition the synchronization rule produces. The unknot status is a *consequence* of the criterion in our specific manifold setting, not the criterion itself — the same chirality test would extend naturally to other manifolds where non-torus closed curves could be embedded (e.g., amphicheiral knots like the figure-eight would qualify on chirality grounds), with the math determining what the answer is in each case.
+The closure rule, properly stated, has two parts:
 
-**The closure rule and the gauge-promotion mechanism agree because they are descriptions of the same underlying fact:** the chirality status of the curve, which controls which wrap-order-aligned symmetries the natural particle inherits.
+> T(m, n) is closure-satisfying iff
+>
+> (i) the curve is *achiral* in 3-space — its chirality reflections are topological symmetries of the curve — *and*
+>
+> (ii) the wrap-order's ring-direction reflection R_u is among those topological symmetries.
+>
+> For genuine torus knots, (i) fails. For unknots and their multi-links, (i) holds and (ii) is automatic (R_u is one of the two chirality reflections, and if all of them are topological symmetries, R_u is among them).
+
+Within the torus-knot family that T² admits, the criterion reduces to "the gcd-reduced primitive has tube winding 1," producing the same partition the synchronization rule produces. The unknot status is a *consequence* of (i) in our specific manifold setting, not the criterion itself — the same achirality test would extend naturally to other manifolds where non-torus closed curves could be embedded (e.g., the amphicheiral figure-eight knot would qualify on (i) grounds if it could be embedded), with the wrap-order's role in (ii) selecting which particle symmetry to enforce.
+
+**The closure rule and the gauge-promotion mechanism agree because they are descriptions of the same underlying fact:** the curve's achirality permits the wrap-order's R_u to be enforced as a particle symmetry, which is what produces the single surviving cross-term.
 
 ---
 
@@ -248,9 +263,13 @@ Adopting this derivation as the canonical chapter-5 mechanism implies a coordina
 
 ### 11.1 Chapter 1 §10 — closure condition
 
-Two changes, one editorial and one framing.
+Two changes, both substantive: a content-touching convention swap and a framing reframe.
 
-**Editorial: fix the u/w convention.** The current text has line 330's closure formula treating u as the tube (the formula reads "tube crosses zero (modulo L_u) at s = j/m"), while line 338's convention statement says u = ring. Adopt line 338's convention consistently — u is the ring (mass-bearing, multi-wrap), w is the tube (charge-bearing, single-wrap). This matches metric-mass's use of u as mass generator and resolves the internal contradiction. Under this convention, the closure formula is restated with ring (u) carrying m wraps and tube (w) carrying n wraps; the closure rule reads **n | m** (tube wraps divide ring wraps, with both nonzero), and the closure-satisfying primitives are **T(m, 1)** rather than T(1, q). Same mode partition, just expressed in the canonical form aligned with the wrap-order convention.
+**Content: convention swap.** The current text has line 330's closure formula treating u as the tube (the formula reads "tube crosses zero (modulo L_u) at s = j/m"), while line 338's convention statement says u = ring. Adopt line 338's convention consistently — u is the ring (mass-bearing, multi-wrap), w is the tube (charge-bearing, single-wrap). This matches metric-mass's use of u as mass generator and resolves the internal contradiction.
+
+Under this convention, the closure formula is restated with ring (u) carrying m wraps and tube (w) carrying n wraps; the closure rule reads **n | m** (tube wraps divide ring wraps, with both nonzero), and the closure-satisfying primitives are **T(m, 1)** rather than T(1, q).
+
+This is a labeling change that propagates through every chapter's examples and inventory tables — mechanical but not local. The partition of *physical configurations* into charged-vs-neutral is preserved; the (m, n) integer labels naming each configuration change. A configuration formerly labeled (1, q) — one wrap in the formerly-tube, q wraps in the formerly-ring — is the same physical configuration now labeled (q, 1) under the new convention (q wraps in the new ring u, one wrap in the new tube w). Each (m, n)-labeled example in Chapters 1, 3, 4, 6, 8, and the README must be updated. See §11.2 for Chapter 4's relabeling load specifically — that chapter has the most examples.
 
 **Framing: rationale is a chirality condition.** The current §10 grounds the closure rule in *phase synchronization*. The deeper grounding is in *chirality of the closed curve*: the closure rule selects exactly those (m, n) for which the chirality reflection of the ring direction (R_u) is a topological symmetry of the curve in 3-space. The synchronization view becomes an equivalent operational test (within the torus-knot family); the chirality view becomes the primary explanation because it ties directly to why one gauge field emerges (rather than zero or two) — see §§5–8 above.
 
@@ -264,13 +283,15 @@ The chirality framing makes clear that the rule is not fundamentally about "unkn
 
 ### 11.2 Chapter 4 — the closure condition
 
-Framing only — no content changes.
+**Structural rewrite of the central argument plus convention-swap relabeling.** Not "framing only" — the chapter's prose flow shifts to lead with the chirality view, and every (m, n)-labeled example in §§4.1–4.4 needs the convention-swap relabeling per §11.1.
 
-**Preserve.** The five-row partition (light, single-axis, weak-knot diagonal, genuine-knot diagonal, multi-component link). The inventory of T(m, 1) primitives and their multi-links as closure-satisfying. The identification of genuine torus knots and single-axis modes as closure-failing. The phase-pattern view as an operational test.
+**Preserve at the partition level.** The five-row partition (light, single-axis, weak-knot diagonal, genuine-knot diagonal, multi-component link), the inventory of closure-satisfying primitives and their multi-links, and the identification of genuine torus knots and single-axis modes as closure-failing. Physical content unchanged.
 
-**Update.** The chapter currently presents the phase-pattern (synchronization) and topological views as the two equivalent characterizations. Add the **chirality view** as the third, and promote it to primary — it is the one that ties directly to the work1 derivation and to the gauge-field count. The phase-pattern view remains an operational test; the topological view (gcd-reduced primitive) remains a structural description; the chirality view is the *why*.
+**Promote chirality to primary.** Chapter 4 currently builds its central argument around the synchronization framing — the phase-pattern view as the load-bearing derivation. Under the rewrite, the chirality view becomes primary: closure-satisfying iff the curve is achiral in 3-space and the wrap-order's R_u is among its topological symmetries (per §9.3 here). The synchronization condition becomes a *derived equivalent test* — an operational way to check the chirality criterion in concrete cases. The topological view (gcd-reduced primitive form) remains a structural description. This is a rewrite of the chapter's argument flow, not an additive third view alongside two existing ones.
 
-§6.3 currently flags an open question about whether the metric-side analysis is "broader than" or "equivalent to" the synchronization rule. Under the work1 derivation, this is resolved: the metric-side analysis under the wrap-order-asymmetric construction is exactly equivalent to the closure rule, because both are descriptions of the same chirality condition.
+**Relabel every example.** Per §11.1, each (m, n) example in Chapter 4 requires the convention swap. The closure-satisfying primitive form changes from T(1, q) throughout to T(m, 1), and "m | n" becomes "n | m." The §§4.1–4.4 inventory tables and worked examples are mechanically updated.
+
+**Resolve §6.3's open question.** The chapter currently flags an open question about whether the metric-side analysis is "broader than" or "equivalent to" the synchronization rule. Under work1, this is resolved: the metric-side analysis under the wrap-order-asymmetric construction is exactly equivalent to the closure rule, because both are descriptions of the same chirality condition. The §6.3 hedging is removed; the equivalence is asserted.
 
 ### 11.3 Chapter 5 — metric self-consistency and gauge promotion
 
@@ -280,37 +301,57 @@ Major content rewrite — this is where the work1 derivation lives.
 
 **Preserve.** §§1–3 (introduction, single-mode stress-energy, off-diagonal sourcing under linearized Einstein equations) are largely unchanged at the math level. The framing shifts from "two cross-terms is the *result*" toward "two cross-terms is the per-component intermediate that the standing-wave construction reduces to one." §7 (the holonomy mechanism) survives the rewrite with minor adjustments — the chain operates on the single surviving gauge potential rather than on two.
 
-**Simplify.** §6.5 (the four conventions reduce) becomes simpler under work1. Convention 4 (gauge identification) is no longer an independent stipulation but a direct *consequence* of the wrap-order's selection of R_u — once the wrap-order fixes which direction is the ring, the surviving cross-term is automatically in the tube. The "four conventions reduce" framing collapses to "the wrap-order, with three faces (closure rule, aspect-ratio labels, gauge identification), all aligned by construction."
+**Fold §6.5 into the new derivation.** §6.5 (the four conventions reduce) was added in a previous editing pass to resolve review item M1. Under work1, the §6.5 demonstration is implicit in the derivation itself: convention 4 (gauge identification) is a direct *consequence* of the wrap-order's selection of R_u — once the wrap-order fixes which direction is the ring, the surviving cross-term is automatically in the tube. A standalone §6.5 alongside the new derivation would be redundant. Fold its content in: the work1 derivation makes the alignment of the wrap-order's three faces (closure rule, aspect-ratio labels, gauge identification) explicit at the construction stage, replacing the freestanding §6.5 demonstration.
 
 §8 (what the framework reproduces) drops the "two-U(1)s differ from standard physics" caveat. The framework now produces one U(1) per charged particle, matching standard EM at the structural level. The remaining open issues (numerical α, nonlinear backreaction) are unaffected.
 
 ### 11.4 Chapter 6 — handedness and pairs
 
-Light framing updates; preserve content.
+Framing sharpening; preserve content.
 
-The chapter develops handedness primarily via σ_uw shear breaking a chirality reflection. Under work1, the wrap-order-aligned chirality reflection is R_u (acting on the ring); the *un*aligned reflection R_w is the one σ_uw breaks. The σ_uw analysis is preserved; the rephrasing is to clarify that σ_uw operates on the chirality reflection that the wrap-order does *not* select as a particle symmetry — i.e., σ_uw is a population-level mechanism distinct from the per-particle wrap-order construction.
+The chapter develops handedness via σ_uw shear breaking a chirality reflection. Under work1, the σ_uw cross-term k_u·k_w transforms under the three reflections as:
 
-The chapter's §4 (the four neutrality mechanisms) is preserved. The cancellation-pair mechanism becomes cleaner under work1 — it is a special case of the natural-particle construction where two R_u-symmetrized configurations of opposite tube-direction sign appear as a bound pair, with their cross-terms summing to zero net charge.
+- **Invariant under R_J** (joint sign flip) — both k_u and k_w flip, product unchanged.
+- **Flips sign under R_u** (u-only) — k_u flips, k_w fixed.
+- **Flips sign under R_w** (w-only) — k_w flips, k_u fixed.
 
-**Do not commit.** The current chapter's matter/antimatter identification via σ_uw is preserved as a candidate population-level mechanism. The per-particle observation that the R_u-symmetrized construction admits two sign-of-n alternatives is recorded as a structural feature without claiming this resolves the matter/antimatter question. The two threads (per-particle pair structure; population-level σ_uw bias) are kept distinct.
+This sharpens the existing Ch 6 §6 / Ch 8 §3 finding that σ_uw breaks chirality (not sign reflection) into a pair of definite claims under work1's framing:
 
-### 11.5 Chapters 2, 3, 7, 8 — minor checks
+- **σ_uw does not bias matter/antimatter populations.** Since σ_uw is invariant under R_J, and R_J is the matter/antimatter operation under work1's natural-particle construction, σ_uw shifts matter and antimatter rest energies *equally*. It cannot bias their populations at the dispersion level. Whatever produces the universe's matter excess, it is not σ_uw.
+- **σ_uw biases chirality within particles.** Since σ_uw flips sign under R_u, it shifts the energies of the (++) and (−+) components of an R_u-symmetrized natural particle in opposite directions, biasing their internal amplitude balance. Within an antimatter particle, σ_uw biases (+−) vs (−−) similarly. This is *intra-particle chirality bias*, not a population mechanism.
 
-These chapters are largely independent of the gauge-field count.
+**Update.** The chapter currently leaves σ_uw's role partly hedged ("a candidate matter/antimatter mechanism"). Under work1, the math is sharper than the hedging suggests: σ_uw is *clearly* a chirality-bias mechanism within particles, not a matter/antimatter-bias mechanism. The candidate-mechanism language is removed; the role is committed to.
 
-**Chapter 2 (modes on a sheet).** No content changes. The mode structure (separable traveling-wave modes labeled by (m, n)) is the foundation work1 builds on. Minor terminology only if needed.
+**Preserve.** The chapter's §4 (the four neutrality mechanisms) — including the cancellation-pair mechanism, which under work1 is a special case of the natural-particle construction where two R_u-symmetrized configurations of opposite tube-direction sign form a bound pair with cross-terms summing to zero net charge.
 
-**Chapter 3 (knots on the torus).** No changes to the knot inventory. Minor terminology updates if "tube" / "ring" labels change per §11.1.
+**Do not commit on matter/antimatter origin.** What does bias matter over antimatter populations is not addressed by σ_uw under work1, and work1 itself does not derive it. The matter/antimatter origin question is recorded as open and forwarded to a separate substrate-level mechanism (e.g., handedness in grid-primitive). The sign-of-n alternative within R_u-symmetrized pairs is a structural feature of the construction; whether it corresponds to physical matter and antimatter, and what populates one over the other, remain outside the scope of this derivation.
 
-**Chapter 7 (aspect ratio).** Verify that the energetics of T(m, 1) primitives align with the new wrap-order convention. The aspect-ratio analysis itself is preserved.
+### 11.5 Chapters 2, 3, 7, 8
 
-**Chapter 8 (shear and fractional charge).** σ_uw analysis is preserved per §11.4. Fractional-charge predictions (1/3, 2/3 fractions for k-component multi-links) survive — they emerge from the R_u-symmetrized construction applied per component of a k×T(m, 1) link, with no change to the numeric outcome.
+These chapters are largely independent of the gauge-field count, but several need the convention-swap relabeling per §11.1.
+
+**Chapter 2 (modes on a sheet).** No content changes. The mode structure (separable traveling-wave modes labeled by (m, n)) is the foundation work1 builds on. Convention-swap impact is minimal — Chapter 2 doesn't pin specific (m, n) configurations as charged-vs-neutral.
+
+**Chapter 3 (knots on the torus).** Mechanical relabeling of every (m, n) example. The knot inventory and topological partition (genuine torus knots vs unknots vs links) is unchanged; the (m, n) labels naming each row of the inventory tables are swapped per §11.1. This is straightforward but extensive — every figure caption and example T(p, q) needs the convention applied.
+
+**Chapter 7 (aspect ratio).** Verify the energetics of closure-satisfying primitives (now T(m, 1) form) under the new convention. Aspect-ratio analysis itself is preserved; example labels updated.
+
+**Chapter 8 (shear and fractional charge).** σ_uw analysis is preserved and sharpened per §11.4 (chirality-bias not matter/antimatter-bias). Fractional-charge predictions (1/3, 2/3 fractions for k-component multi-links) survive at the numeric level — they emerge from the R_u-symmetrized construction applied per component of a k×T(m, 1) link. Multi-link example labels updated.
 
 ### 11.6 README, STATUS, review.md
 
-**README, STATUS.** Update the headline framing: replace the previous "framework structurally has two U(1)s, one observed" caveat with "framework produces one U(1) per charged particle, matching standard physics." The status of the alpha-derivation track is unchanged.
+**README, STATUS.** Update the headline framing: replace the previous "framework structurally has two U(1)s, one observed" caveat with "framework produces one U(1) per charged particle, matching standard physics." Update example (m, n) configurations per §11.1's convention swap. The status of the alpha-derivation track is unchanged.
 
-**review.md.** Finding M3 (two U(1)s) is resolved by adopting work1. Finding M2 (gauge property test) becomes more directly addressable — the natural particle's h_μw is the only gauge potential, and the four-property test applies to it alone. Findings M1 (four conventions reduction), M7 (promotion language), and M8 (chapter 8 outline) are unaffected.
+**review.md — explicit finding-by-finding mapping under adoption of work1:**
+
+- **M1 (four conventions reduce).** Folded into the work1 derivation per §11.3 — convention 4 (gauge identification) becomes a consequence of the wrap-order's R_u selection rather than an independent stipulation. The standalone §6.5 demonstration is removed.
+- **M2 (gauge-property test).** The four-property test of standard-physics gauge-potential structure now applies to the *single* surviving gauge potential h_μw, not to two. Test is simpler and more directly defensible. Whether to actually carry out the explicit Property-4 geodesic expansion is a scope question unchanged by work1.
+- **M3 (two U(1)s).** Resolved by adopting work1. The framework now produces one gauge potential per closure-satisfying particle.
+- **σ_uw chirality finding (formerly TODO-S4 / Ch 6 §6 rewrite).** Already implemented in the existing Ch 6 / Ch 8 rewrites; under work1 it becomes the natural reading rather than a flagged correction. Sharpened per §11.4 — σ_uw is a chirality-bias mechanism within particles, not a matter/antimatter-bias mechanism.
+- **M7 (residual promotion language).** Unaffected by work1.
+- **M8 (chapter 8 outline status).** Unaffected by work1.
+- **N2 (infinite tower of mass-only torus knot states).** Unaffected by work1; the genuine-torus-knot mass-only category remains and continues to predict an infinite tower of mass-only states.
+- **L5 (charge-sign assignments for fractional charges).** Unaffected by work1; the fractional-charge predictions for k-component multi-links survive numerically per §11.5.
 
 ### 11.7 Cohesion target
 
