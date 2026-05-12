@@ -8,7 +8,7 @@ The σ-alone analysis (what shear does to a single sheet's spectrum, gauge struc
 
 Conventions follow the rest of the project ([Ch 1](01-foundation.md): u = ring, w = tube; ε ≡ L_u/L_w). M ≡ (ℏ/c)·(2π/L_w) is the natural mass scale.
 
-**Naming note.** This file predates [work-discipline.md](work-discipline.md). Where it discusses parametrization in "View A vs View B" terms (§7), View A's shear corresponds to work-discipline's bare σ and View B's shear corresponds to work-discipline's s. The structural content is unchanged; only the labels differ. When this file is consumed by the eventual Ch 9 writing, View A's σ → bare σ and View B's s → s (already aligned with studies' usage).
+**Naming note.** This file predates the parametrization-naming pass that's now settled in [Ch 1 §3, §4](01-foundation.md). Where it discusses parametrization in "View A vs View B" terms (§7), View A's shear corresponds to Ch 1's bare σ and View B's shear corresponds to Ch 1's s. The structural content is unchanged; only the labels differ. When this file is consumed by the eventual Ch 9 writing, View A's σ → bare σ and View B's s → s (already aligned with studies' usage).
 
 ---
 

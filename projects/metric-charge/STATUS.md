@@ -129,6 +129,30 @@ The quoted phrasing predates both the synchronization-rule reformulation and the
 
 ---
 
+### TODO-Disc1 — Multi-sheet metric composition (forwarded to metric-binding)
+
+**Status:** Open. Forwarded.
+
+**What's at stake.** When metric-binding considers two or more closure-satisfying species sharing extended spacetime, each species has its own (ε, σ_uw) pair. Three architectural questions arise: (i) substrate sharing — one 2D compact bundle hosting multiple sheets, or separate compact bundles per species? (ii) diagonal normalization across species — g_uu = g_ww = 1 for each species under the current convention, but species-specific normalization may be required for consistency in multi-species settings; (iii) shear composition — how do per-species σ_uw values compose when sheets share extended spacetime?
+
+**Why this is metric-binding's, not metric-charge's.** metric-charge's scope is charge generation in the general case for one sheet at a time. The multi-species composition rules are downstream architectural commitments. Ch 1 §11 now flags this explicitly as a non-assumption.
+
+**Scope of resolution:** metric-binding's architectural framing should commit to (i)–(iii). No work required within metric-charge.
+
+---
+
+### TODO-Disc2 — Diagonal normalization choice for multi-species (forwarded to metric-binding)
+
+**Status:** Open. Forwarded.
+
+**What's at stake.** Current metric-charge convention writes g_uu = g_ww = 1 in periodicity-form coordinates (with ε in the periodicities). An equivalent parametrization moves ε into the (u, u) diagonal (g_uu = ε², g_ww = 1) with unit periodicities. The two forms describe the same sheet — same ε in two homes (Ch 1 §3). The choice doesn't affect single-particle predictions but may matter when multiple species share a metric.
+
+**Why this is metric-binding's, not metric-charge's.** Same as TODO-Disc1: it's a multi-species architectural choice. Ch 1 §11 now flags it explicitly as a non-assumption.
+
+**Scope of resolution:** metric-binding's architectural framing should commit to one diagonal-normalization convention or accommodate both with a clear rule for which is used when. No work required within metric-charge.
+
+---
+
 ### TODO-P3 — Split Ch 6 §4.1's off-diagonal formula into two cases
 
 **Status:** Open. Targeted formula correction.

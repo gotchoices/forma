@@ -48,6 +48,10 @@ x, y, z are Cartesian *visualization* axes — not metric coordinates.
 
 **Why two S dimensions** (whereas metric-mass had one): single-knot derivations in this project largely don't require S₂ — most results work in S₁ alone. S₂ is carried in the coordinate set as forward-looking infrastructure for [metric-binding](../metric-binding/), where the second spatial dimension is essential for placing two knots at different (S₁, S₂) positions. Keeping the coordinate set consistent across the two projects avoids a notational reset at the boundary.
 
+## Strategic stance
+
+The metric is the framework's primary structural object. For each closure-satisfying particle species, the framework should ultimately provide a metric prescription — specific values of the diagonals, ε, σ_uw (with the equivalent lattice-shear label s where helpful) — derived from the species' structural properties (mass, charge, generation, chirality). This project sets up the single-particle case and characterizes what charge looks like given a sheet; deriving the parameter values from species identity is downstream work, in [metric-binding](../metric-binding/) and beyond.
+
 ## Ground rules
 
 1. **Discovery, not proof.** Where possible, do mathematics that *discovers* a result rather than confirms a prior one. We may know roughly what to expect from MaSt, but the chapter arc should let the math reveal it. (Acknowledged: this is not strictly possible when the result is already known — but the arc should still feel like discovery, not appeal-to-authority.)

@@ -128,7 +128,9 @@ It is a free, dimensionless parameter of the sheet.
 - **ε ≪ 1** is a "thin" sheet — small u-circumference, large w-circumference.
 - **ε ≫ 1** is a "fat" sheet — large u-circumference, small w-circumference.
 
-In the bare-metric form (§2), ε lives entirely in the periodicities (§9); it does not appear in the metric components themselves. (One could absorb ε into the metric coefficients by rescaling u or w; we do not, because keeping ε in the periodicities matches the convention used in MaSt's R-track.)
+In the bare-metric form (§2), ε lives entirely in the periodicities (§9); it does not appear in the metric components themselves.
+
+**Two homes for the same number.** ε has an equivalent alternate placement: under the rescaling u' = u/L_u, w' = w/L_w (both unit-period), the metric becomes g_u'u' = ε², g_w'w' = 1, and ε sits in the (u, u) diagonal entry instead of in the periodicity. The value is the same in both placements — the choice is whether ε lives in the boundary conditions (working convention) or in the metric matrix (metric-form display). The framework adopts the periodicity-form as its working convention to match MaSt's R-track, and uses the metric-form display only where showing all structural information inside the metric matrix is the cleaner object (relevant to the strategic stance of deriving each sheet's metric from species properties; see [metric-binding](../metric-binding/)). Either way, the symbol is bare ε; the home is identified by the surrounding equation, not by a subscript.
 
 ε is left symbolic throughout this chapter and chapter 2. It will be **swept** as a parameter in chapter 7, where varying ε is the mechanism by which different knot families dominate, including the candidate single-phase, three-phase, and dark behaviors.
 
@@ -152,7 +154,20 @@ $$
 g^{\text{(u,w)}}_{\mu\nu} = \begin{pmatrix} 1 & \sigma_{uw} \\ \sigma_{uw} & 1 \end{pmatrix}
 $$
 
-Geometric meaning: u and w are no longer orthogonal in the metric sense. σ_uw tilts the local (u, w) basis. The metric remains Lorentzian as long as |σ_uw| < 1 (otherwise the (u, w) sub-block becomes degenerate or signature-flipped).
+Geometric meaning: u and w are no longer orthogonal in the metric sense. σ_uw tilts the local (u, w) basis. The metric remains Lorentzian as long as |σ_uw| < 1 (otherwise the (u, w) sub-block becomes degenerate or signature-flipped). **|σ_uw| < 1 is a binding constraint** — a real positive-definiteness requirement, not a parametrization artifact.
+
+**Equivalent form: lattice-shear s.** The same physical shear can be expressed in coordinates where the metric is flat (Euclidean) and the periodicity lattice is sheared instead. R-track studies (R60, R63, R64) work in this form and label the shear coefficient **s**. The two forms are related by
+
+<!-- s = σ_uw / ε,  L_w^B = √(1 − σ_uw²) · L_w -->
+$$
+s \;=\; \frac{\sigma_{uw}}{\varepsilon},\qquad L_w^B \;=\; \sqrt{1 - \sigma_{uw}^2}\;L_w
+$$
+
+(the lattice-form's "tube length" L_w^B differs from this chapter's L_w by the √(1 − σ_uw²) factor). The two values are **different numbers** describing the same physical sheet — same intrinsic geometry, different labels. They diverge non-trivially at second order in shear: a value reported as σ_uw cannot be plugged into a formula written for s, and vice versa. The two are **not interchangeable**, only translatable via the transform above.
+
+The framework adopts σ_uw (with bare σ as shorthand) as the working parametrization, because σ_uw is the metric off-diagonal entry directly — same object that produces all of the framework's other structural results, including the gauge-potential identification of [Chapter 5 §4](05-metric-self-consistency.md). The lattice-shear s appears where the framework references R-track studies' parameter values or where the lattice-form is the cleaner display.
+
+The σ_uw < 1 bound and the studies' s being unbounded are consistent: s → ∞ at fixed L_u corresponds to L_w^B → 0 (the second lattice basis vector flattens onto the first) — the same degenerate-torus limit that σ_uw → 1 approaches in the metric form. Same geometric wall, different labels.
 
 For most of the project (chapters 2–7) we keep **σ_uw = 0**. Shear is turned on in chapter 8, where it becomes the parameter that biases matter over antimatter, aligns complementary nodes (proton-vs-neutron analog), and drives the quark-like fractional-charge mechanism.
 
@@ -421,6 +436,10 @@ The following are *not* given. They are to be derived, observed to arise from th
 
 - **Nonlinear backreaction.** We use linearized Einstein equations to compute mass-mode-sourced off-diagonals (chapter 5). Full nonlinear self-consistency of the field-and-metric system is deferred — the linearized regime is sufficient for everything this project sets out to establish.
 
+- **Multi-sheet composition.** This project treats one compact sheet at a time. How two or more sheets share an extended-spacetime metric — whether they inhabit a common compact bundle or separate ones, whether their diagonal normalizations match across species, how their shears compose — is forwarded to [metric-binding](../metric-binding/).
+
+- **Diagonal normalization choice.** The metric is written with g_uu = g_ww = 1 in the periodicity-form coordinates of §2. An equivalent parametrization moves ε into the (u, u) diagonal (g_uu = ε², g_ww = 1) and uses unit periodicities. The two are the same sheet — same ε in two homes (§3). The choice between them does not affect single-particle predictions and is left to downstream work to commit on for multi-species settings.
+
 ---
 
 ## 12. Summary of givens
@@ -430,7 +449,7 @@ We have, in total:
 1. A manifold M with coordinates (t, S₁, S₂, u, w) — t, S₁, S₂ are extended (real-line); u and w are compact (circles of circumferences L_u and L_w respectively).
 2. A starting metric ds² = −c²dt² + dS₁² + dS₂² + du² + dw², diagonal and constant. Subject to revision in chapter 5 (mass-induced off-diagonals) and chapter 8 (externally imposed shear σ_uw).
 3. The aspect-ratio parameter ε ≡ L_u/L_w, free and symbolic; swept in chapter 7.
-4. The shear parameter σ_uw, equal to zero in chapters 2–7; turned on in chapter 8.
+4. The shear parameter σ_uw (working symbol σ; equivalent lattice-shear label s = σ/ε used for R-track-study correspondence, see §4), equal to zero in chapters 2–7; turned on in chapter 8. The bound |σ_uw| < 1 is a binding positive-definiteness requirement.
 5. A real scalar field φ : M → ℝ.
 6. The massless wave equation □φ = 0.
 7. Two periodicity boundary conditions: φ(u + L_u) = φ(u) and φ(w + L_w) = φ(w) (with all other arguments held fixed).
