@@ -128,6 +128,27 @@ It is a free, dimensionless parameter of the sheet.
 - **ε ≪ 1** is a "thin" sheet — small u-circumference, large w-circumference.
 - **ε ≫ 1** is a "fat" sheet — large u-circumference, small w-circumference.
 
+**Visualizing ε.** The 2-torus T² has a flat unrolled representation as a rectangle (the *fundamental domain*) in which opposite edges are identified — the left edge to the right edge, and the top edge to the bottom edge. Drawn this way, with **ring (u) as width** and **tube (w) as height**, the rectangle's shape directly displays the aspect ratio ε = width/height:
+
+```
+   ε ≪ 1 (thin sheet)       ε = 1 (Clifford torus)        ε ≫ 1 (fat sheet)
+   ── small ring,           ── equal ring                 ── large ring,
+      large tube               and tube                      small tube
+
+         L_u                       L_u                              L_u
+        ←──→                     ←────→                ←──────────────────→
+        ┌──┐ ↑                   ┌────┐ ↑              ┌──────────────────┐ ↑
+        │  │ │                   │    │ │              │                  │ │ L_w
+        │  │ │                   │    │ │              └──────────────────┘ ↓
+        │  │ │ L_w               │    │ │ L_w
+        │  │ │                   │    │ │
+        │  │ │                   └────┘ ↓
+        │  │ ↓
+        └──┘
+```
+
+Topology reminder: in each panel the left and right edges are the same circle (the ring, with u-coordinate identification u ~ u + L_u), and the top and bottom edges are the same circle (the tube, with w ~ w + L_w). A closed curve traversing T(m, n) — m wraps in ring, n wraps in tube — crosses the right edge m times (reappearing at the left) and the top edge n times (reappearing at the bottom). This unrolled flat view is the working diagram for chapters 2–9; it is distinct from the 3D-torus embedding of §5, which renders the same topology as a donut surface for spatial visualization purposes.
+
 In the bare-metric form (§2), ε lives entirely in the periodicities (§9); it does not appear in the metric components themselves.
 
 **Two homes for the same number.** ε has an equivalent alternate placement: under the rescaling u' = u/L_u, w' = w/L_w (both unit-period), the metric becomes g_u'u' = ε², g_w'w' = 1, and ε sits in the (u, u) diagonal entry instead of in the periodicity. The value is the same in both placements — the choice is whether ε lives in the boundary conditions (working convention) or in the metric matrix (metric-form display). The framework adopts the periodicity-form as its working convention to match MaSt's R-track, and uses the metric-form display only where showing all structural information inside the metric matrix is the cleaner object (relevant to the strategic stance of deriving each sheet's metric from species properties; see [metric-binding](../metric-binding/)). Either way, the symbol is bare ε; the home is identified by the surrounding equation, not by a subscript.

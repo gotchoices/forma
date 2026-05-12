@@ -25,25 +25,25 @@ This file tracks items that remain open after the work1 refactor pass (which res
 
 ---
 
-### TODO-M8(a) — Chapter 8 optimization computation (partially answered + redirected)
+### TODO-M8(a) — Chapter 8 optimization computation
 
-**Status:** Partially answered, with the substantive open work redirected. The [Ch 8 refactor](08-shear-and-fractional-charge.md) (Sept 2026) carried out the linear-theory analysis and found the original framing's "k_opt from energy minimization" is **degenerate at the linearized level** — all k give identical total energy under Configuration Y. The honest finding is now in Ch 8 §6; the load-bearing open work has shifted.
+**Status:** ✅ **Resolved** by the [Ch 8 refactor](08-shear-and-fractional-charge.md) (Sept 2026). The optimization computation is settled within metric-charge's declared scope (linear theory; see [Ch 1 §11](01-foundation.md)'s "nonlinear backreaction deferred" non-assumption). The original framing's "k_opt from energy minimization" was found to be **degenerate at the linearized level** — all k give identical total energy under Configuration Y. This is the framework's honest answer.
 
-**What was answered (Ch 8 §§2–6):**
+**What was established (Ch 8 §§2–6):**
 - The σε product is the structural lever for the closure-satisfying primitive spectrum: m_opt = round(σε) selects the lightest T(m, 1) primitive, with mass exactly M at integer σε (Ch 8 §2.3).
 - σ_uw breaks both R_u and R_w chirality reflections by 4σmn/ε in μ², preserving only R_J (Ch 8 §3).
 - The natural particle under shear is the single Bloch mode (Ch 8 §2.2); the σ = 0 R_u-symmetrization breaks down at σ ≠ 0.
 - Multi-link interpretation: Configuration Y (k phased copies, k gauge-potential cross-terms) is the framework's commitment (Ch 8 §5).
 - Linear scalar-field theory does not select k (Ch 8 §6.1); phase-coherence around closed curves is automatically integer regardless of σ, so it does not produce σ-dependent k-selection (Ch 8 §6.2).
 
-**What's now load-bearing (the redirected open work):**
-- **φ⁴ inter-component coupling calculation** (Ch 8 §6.3). Write the φ⁴ self-interaction energy of a k-component link configuration on a sheared sheet; minimize over k; report which k wins at the (σ, ε) regime where production studies find k = 3 numerically. This is the most-tractable mechanism within metric-charge's scope for first-principles k-selection.
-  - If k = 3 emerges: framework derives the multi-link structure.
-  - If no preference or different k: forward to grid-duality (substrate Z_k input) or metric-binding (multi-knot energetics).
+**Where k-selection lives:** Outside metric-charge's linear scope. Candidate mechanisms identified in Ch 8 §6.3–6.4 are forwarded:
+- **Nonlinear self-interaction (φ⁴ inter-component coupling):** Forwarded to [metric-binding](../metric-binding/) along with other multi-knot energetics. The φ⁴ term is exactly the kind of nonlinear inter-component coupling metric-binding's scope addresses.
+- **Substrate Z_k input:** Forwarded to [grid-duality §8](../grid-duality/08-where-alpha-appears.md).
+- **Confinement-like binding:** Forwarded to [metric-binding](../metric-binding/).
 
-**Estimate:** Multi-day; involves real algebra (φ⁴ inter-component cross-term expansion under shear) and possibly numerical exploration. Structurally the largest single open todo.
+metric-charge sets up the inventory (which (m, n) configurations are closure-satisfying, what structural consequences flow under Configuration Y, what fractional-charge organization a k-component multi-link produces); the k-selection question itself is downstream.
 
-**Suggested order:** Couples to TODO-L5 (sign assignments). Best done before TODO-P1 (closing summary) so the chapter can report the optimization outcome.
+**Minor follow-on (non-blocking):** Ch 8 §6.5 currently says the framework "should attempt the φ⁴ calculation before forwarding." This wording overcommits relative to Ch 1 §11's nonlinear-backreaction deferral. A small framing tightening in Ch 8 §6.5 (and parallel mentions in Ch 9 §5.2 / §5.4 / §8) would align the prose with the forwarded-to-metric-binding stance. Single editing pass.
 
 ---
 
@@ -63,9 +63,9 @@ This file tracks items that remain open after the work1 refactor pass (which res
 - Examine whether different multi-link configurations might naturally give the −1/3 vs +2/3 pattern.
 - Note explicitly where +2/3 charges would come from in the framework (different multi-link configurations, or not predicted?).
 
-**Estimate:** Half-day if approached as a careful sign/magnitude audit; more if it requires the Ch 8 optimization to be done first (since k_opt is needed to identify which multi-link is "the quark").
+**Estimate:** Half-day as a careful sign/magnitude audit. The audit can proceed independently of k_opt: trace how (m, n) signs determine charge sign under the single-Bloch-mode interpretation of Ch 8 §2.2, working in a generic-k framing.
 
-**Suggested order:** Couples to TODO-M8(a). Probably best done after the Ch 8 optimization, so the configuration in question is settled.
+**Suggested order:** Independent of remaining TODOs. The empirical identification "which multi-link is the up-type vs down-type quark" is downstream (depends on k-selection, which is forwarded per TODO-M8(a)); but the *structural* sign analysis lives in metric-charge and can be tightened in Ch 6 / Ch 8 §7 directly.
 
 ---
 
@@ -232,9 +232,14 @@ Add one sentence noting the different transformation properties under R_J that e
 
 ## Cross-cutting observations
 
-- The remaining substantive items partition into three classes after the Ch 8 refactor (Sept 2026):
-  - **Computations within or adjacent to linear theory** (M2 at σ = 0 properties 1–4, L5 sign audit, N2 tower selection): honest computation against existing structure. Tractable.
-  - **The single load-bearing linear-adjacent computation** (M8(a)'s φ⁴ inter-component coupling): the calculation that determines whether metric-charge derives k = 3 internally or forwards to grid-duality / metric-binding. Multi-day.
-  - **Chapter-level write-ups** (TODO-Ch9 Ratio-and-shear unified chapter; TODO-Ch8a Configuration Y propagation to Ch 4/Ch 5; TODO-P1 closing summary): structural-finding consolidation work. These depend on the computations settling first.
-- The matter/antimatter origin question — opened by Ch 6 §6's chirality finding and confirmed by the Ch 8 refactor — is the one place where the framework has *no* derived mechanism for a structural property the user expects to be physically meaningful. σ_uw biases chirality *within particles*, not matter/antimatter populations. Where matter/antimatter bias does come from is forwarded to substrate-level (grid-primitive) work.
-- The Ch 8 refactor sharpened *what shear does on its own*; the Ch 9 work-up (when done) will sharpen *what ratio and shear do together*, including how the (σ, ε) parameter space supports the framework's three sheet types and how a sheet's metric can be derived from its observed properties — the substrate for sheet-specific downstream work.
+- After the Ch 8 refactor (Sept 2026) and the Ch 9 chapter write-up, the remaining substantive items are all editing-pass quality. There is no remaining load-bearing computation at metric-charge's linear scope; the structural framework is complete.
+- Remaining items partition into two classes:
+  - **Localized computations / cleanups** within metric-charge's linear scope (M2 four-property gauge test at σ = 0 and σ ≠ 0; L5 sign audit; N2 tower selection; P3 Ch 6 §4.1 formula fix; Ch8a Configuration Y propagation): honest tightening against existing structure. Tractable.
+  - **Chapter-level bookkeeping** (P1 closing summary — needs renaming to `10-closing-summary.md` since Ch 9 now occupies the `09-` slot; updates to README chapter list and Ch 7/Ch 8 "What's next" pointers).
+- **What's forwarded out of metric-charge:**
+  - k-selection mechanism (the φ⁴ inter-component calculation, substrate Z_k, confinement) → grid-duality / metric-binding.
+  - Multi-sheet composition rules (Disc1, Disc2) → metric-binding.
+  - Matter/antimatter bias mechanism → substrate-level (grid-primitive) work.
+  - The "metric from observables" inversion exercise for specific empirical sheets → downstream sheet-specific follow-on work.
+- The matter/antimatter origin question — opened by Ch 6 §6's chirality finding and confirmed by the Ch 8 refactor — is the one place where the framework has *no* derived mechanism for a structural property the user expects to be physically meaningful. σ_uw biases chirality *within particles*, not matter/antimatter populations.
+- The framework is now structurally complete for the single-sheet model. The Ch 9 chapter consolidates *what ratio and shear do together*, including how the (σ_uw, ε) parameter space supports the framework's three sheet types and how a sheet's metric can be derived from its observed properties — the substrate for sheet-specific downstream work in metric-binding and beyond.
