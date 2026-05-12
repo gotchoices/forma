@@ -285,13 +285,15 @@ Linear theory at this regime:
 - m_opt = round(σε) ≈ 0, rounded to 1. T(1, 1) is the lightest closure-satisfying primitive.
 - Adjacent T(m, 1) primitives are even heavier (T(2, 1) at μ² ≈ 4/ε², etc.).
 
-**Linear theory does not, by itself, produce three-component organization at this regime.** The empirical evidence for k = 3 at the proton sheet's parameters (from production studies that fit multi-observable target sets) requires a mechanism outside pure linear scalar-field theory. Two candidate mechanisms within metric-charge's scope, and one substrate-level forwarding:
+**Linear theory does not, by itself, produce three-component organization at this regime.** The empirical evidence for k = 3 at the proton sheet's parameters (from production studies that fit multi-observable target sets) requires a mechanism outside pure linear scalar-field theory. Per [Chapter 1 §11](01-foundation.md)'s deferral of nonlinear backreaction, metric-charge does not derive k itself — k-selection is forwarded.
 
-- **Internal-mode dynamics with σ-induced coupling.** Per [Chapter 8 §6.3](08-shear-and-fractional-charge.md), adding a small inter-component coupling (the smallest departure from pure linear theory — a φ⁴-style quadratic-in-amplitude term) introduces dynamics among the relative phases of components. Under shear, the coupling acquires σ-dependent modulation that may favor specific k values energetically. The calculation — write the φ⁴ self-interaction energy of a k-component link at the proton sheet's (σ, ε), minimize over k, report which k wins — is flagged in [STATUS](STATUS.md) as the load-bearing pending work; if k = 3 emerges, the framework derives the hadronic structure from shear and ratio together.
-- **Lattice-shear basis rephrasing.** In the lattice-shear (s) form used by R-track studies (§6), the "shortest closure-satisfying curve" at the proton sheet's parameters may *be* a 3-component configuration in lattice-shear integer labels. This is a basis-rephrasing question rather than a new mechanism, but its structural content matters because the studies operate in s-form natively.
-- **Substrate Z_3 from grid-duality.** If neither internal-mode dynamics nor lattice-shear rephrasing yields k = 3, the framework forwards k-selection to grid-duality's substrate Z_k input at L3 (per [grid-duality §7.5](../grid-duality/07-wrap-promotion-modeling.md)).
+Three candidate mechanisms with their downstream destinations:
 
-The chapter's stance is that the φ⁴ calculation must be attempted before forwarding; the answer determines whether the hadronic-like sheet's three-component structure is derivable internally or substrate-supplied.
+- **Internal-mode dynamics with σ-induced coupling.** Per [Chapter 8 §6.3](08-shear-and-fractional-charge.md), adding a small inter-component coupling (a φ⁴-style quadratic-in-amplitude term) introduces dynamics among the relative phases of components. The calculation — write the φ⁴ self-interaction energy of a k-component link at the hadronic-like (σ, ε), minimize over k — is a nonlinear self-interaction calculation, forwarded to [metric-binding](../metric-binding/) along with the rest of multi-knot energetics.
+- **Lattice-shear basis rephrasing.** In the lattice-shear (s) form used by R-track studies (§6), the "shortest closure-satisfying curve" at the hadronic parameters may *be* a 3-component configuration in lattice-shear integer labels. This is a basis-rephrasing question that may settle within metric-charge once the §6 translation analysis is done.
+- **Substrate Z_3 from grid-duality.** k = 3 selection from substrate Z_k input at L3 (per [grid-duality §7.5](../grid-duality/07-wrap-promotion-modeling.md)).
+
+metric-charge's contribution to this sheet is the structural framing: the inventory of closure-satisfying configurations, what a k-component multi-link looks like under Configuration Y, and how the fractional-charge structure emerges once a k has been selected. The k-selection itself comes from downstream — whichever of the three candidate mechanisms above turns out to apply.
 
 ### 5.3 Neutrino-like sheet — "near-degenerate chirality pairs"
 
@@ -314,7 +316,7 @@ The chapter's structural prediction for this sheet: the framework's small-σ, ε
 The three-sheet correspondence above is qualitative. Converting it to quantitative predictions — specific σ_uw and ε values per sheet, specific oscillation periods, specific multi-link masses — requires the following pending calculations:
 
 - **Lepton-like:** Rigorous σ → 1 analysis at non-integer ε, plus translation of the predictions to s-form for empirical correspondence with R-track studies (§6). The σ_uw ↔ s transform diverges at second order, so the substantive quantitative work is verifying that the structural picture survives the translation at large σ.
-- **Hadronic-like:** The φ⁴ inter-component coupling calculation at the proton sheet's (σ, ε), with the prediction "k = 3 minimizes" tested explicitly.
+- **Hadronic-like:** The φ⁴ inter-component coupling calculation lives in [metric-binding](../metric-binding/) (per §5.2 — it is a nonlinear self-interaction outside metric-charge's scope); the substrate Z_k input lives in grid-duality. metric-charge's contribution is the structural framing (Configuration Y consequences, sign audit per [TODO-L5](STATUS.md)), independent of k-selection.
 - **Neutrino-like:** Oscillation period from σ computed explicitly via the time-evolution of a chirality-eigenstate prepared as (cos θ)·(m, n) + (sin θ)·(m, −n) under the sheared dispersion, then checked structurally against observed oscillation magnitudes.
 
 Each is a concrete tractable calculation; together they convert this chapter from a structural map to a quantitative framework. [STATUS](STATUS.md) tracks these as the chapter's main pending dependencies.
@@ -477,7 +479,7 @@ This is metric-charge's contribution to the framework's particle-sheet model. Mu
 | Q | Where it goes |
 |---|---|
 | Does the σ → 1 mechanism's predicted sheet character survive translation to s-form at large σ, matching R-track-study lepton-like-sheet values? | §6.4 of this chapter. The most consequential single quantitative question. |
-| Does the φ⁴ inter-component coupling calculation yield k = 3 at the hadronic-like regime, deriving the three-component structure from σ_uw and ε together? | Follow-on to [TODO-M8(a)](STATUS.md); the load-bearing piece for §5.2's hadronic derivation. |
+| Does the φ⁴ inter-component coupling calculation (forwarded to [metric-binding](../metric-binding/) per [Ch 1 §11](01-foundation.md)) yield k = 3 at the hadronic-like regime, or does k-selection come from substrate Z_k (grid-duality §8) or another mechanism? | [metric-binding](../metric-binding/) (nonlinear multi-knot energetics) or [grid-duality §8](../grid-duality/08-where-alpha-appears.md) (substrate Z_k). |
 | If mechanism (d) fails the §6 translation, which of resolutions (a)/(b)/(c) does the framework commit to for the §2 architectural question? | §2.2 / §6.4 of this chapter, contingent. |
 | What is the explicit neutrino-oscillation period derived from σ_uw, and does it structurally match observed magnitudes? | §5.3 / §5.4 of this chapter; calculation pending. |
 | What does the "metric from observables" inversion exercise look like in detail for each of the three empirical sheets? | §7 of this chapter, then downstream of the chapter (sheet-specific follow-on work). |

@@ -326,9 +326,9 @@ $$
 
 — introduces dynamics among the relative phases. Under shear, this coupling acquires σ-dependent modulation through the cross-term in each component's kinetic energy. The internal modes (relative-phase oscillations between the k components) form a k-dimensional system with a σ-dependent coupling matrix. Stability and energy ordering depend on k. For specific (σ, ε), specific k may have the lowest-energy stable internal-mode configuration.
 
-This mechanism is **outside [Chapter 5 §4](05-metric-self-consistency.md)'s linearized scope** but is the *linear-adjacent* candidate that comes closest to derivable within the framework's existing apparatus. It is the most concrete candidate for a first-principles k-selection.
+This mechanism is **outside metric-charge's declared scope** per [Chapter 1 §11](01-foundation.md)'s explicit deferral of nonlinear backreaction: the φ⁴ self-coupling is a nonlinear self-interaction term, and the framework does not undertake its analysis. The calculation — write the φ⁴ self-interaction energy of a k-component link on a sheared sheet, minimize over k, report which k wins — is therefore forwarded to [metric-binding](../metric-binding/), which is the project specifically charged with multi-knot energetics (binding, separation, inter-component dynamics).
 
-**The candidate calculation** — write the φ⁴ self-interaction energy of a k-component link configuration on a sheared sheet, minimize over k, report which k wins at any given (σ, ε) — has not been carried out and is the natural follow-on to [TODO-M8(a)](STATUS.md). If k = 3 emerges at the regime where production studies' empirical optimization (R60, R63, R64) finds k = 3 numerically, the framework has a first-principles derivation. If not, the framework forwards k-selection to grid-duality (substrate Z_k input) or metric-binding (multi-knot energetics).
+metric-charge identifies the mechanism as the closest linear-adjacent candidate so that downstream work has a concrete target; the actual calculation lives in metric-binding's territory. If k = 3 emerges at the regime where production studies' empirical optimization (R60, R63, R64) finds k = 3 numerically, the framework has the candidate first-principles derivation. If not, k-selection comes from substrate Z_k via grid-duality (§6.4(b)) or another route.
 
 ### 6.4 Other candidate mechanisms
 
@@ -336,19 +336,19 @@ Ordered by closeness to the framework's existing apparatus:
 
 | Mechanism | Status |
 |---|---|
-| **(a) Internal-mode dynamics with σ-induced coupling (§6.3).** | Most promising within metric-charge's scope. φ⁴ calculation pending. |
+| **(a) Internal-mode dynamics with σ-induced coupling (§6.3).** | Nonlinear self-interaction; forwarded to [metric-binding](../metric-binding/) per [Ch 1 §11](01-foundation.md). |
 | **(b) Substrate Z_k from grid-duality.** Z_k constraint at L3 forces specific k. | Forwarded to [grid-duality §8](../grid-duality/08-where-alpha-appears.md). |
 | **(c) Confinement-like binding.** k components bound by interaction with separation cost. | Forwarded to [metric-binding](../metric-binding/). |
 | **(d) Pauli-like exclusion.** Requires spin/statistics commitment not yet made. | Out of scope. |
-| **(e) Topological commensurability under shear.** Basis-rephrasing in lattice-shear coordinates. | Open. |
+| **(e) Topological commensurability under shear.** Basis-rephrasing in lattice-shear coordinates. | Open (may resolve within metric-charge once σ ↔ s translation is worked out — see [Ch 9 §6](09-ratio-and-shear.md)). |
 
 ### 6.5 The framework's commitment
 
 Linear scalar-field theory on a sheared 2D-compact substrate gives no preferred k. The σε product of §2.3 selects m_opt for primitives; it does not select k for multi-links.
 
-The framework's honest reading: **the k-selection question is open at the linear level.** The φ⁴ inter-component calculation (mechanism (a)) is the calculation the framework should attempt before forwarding. If carried out and yielding k = 3 at relevant (σ, ε), the framework derives the three-component multi-link structure that standard physics associates with quark organization. If yielding no preference or a different k, the framework forwards k-selection to grid-duality (substrate Z_3 input) or metric-binding (multi-knot energetics).
+The framework's commitment: **k-selection is forwarded.** Per [Chapter 1 §11](01-foundation.md)'s deferral of nonlinear backreaction, mechanisms (a) and (c) of §6.4 are forwarded to [metric-binding](../metric-binding/) as multi-knot energetics; mechanism (b) is forwarded to [grid-duality §8](../grid-duality/08-where-alpha-appears.md) as substrate input. metric-charge does not derive k.
 
-§7 below works through the *structural* consequences of a k-component multi-link configuration — what fractional-charge structure it produces and how that's consistent with grid-duality's integer quantization — assuming a k has been selected by some mechanism. The structural analysis is independent of which mechanism selects k.
+What metric-charge *does* deliver: §7 below works through the *structural* consequences of a k-component multi-link configuration — what fractional-charge structure it produces and how that's consistent with grid-duality's integer quantization — assuming a k has been selected by some downstream mechanism. The structural analysis is independent of which mechanism selects k.
 
 ---
 
