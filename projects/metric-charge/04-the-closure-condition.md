@@ -165,7 +165,7 @@ Multi-component links T(k·m', k·n') decompose into k disjoint copies of the pr
 
 **4.3a Closure-satisfying: T(k·m', k) = k × T(m', 1).** When the primitive is T(m', 1) — i.e., n' = 1 — the multi-link has total winding (k·m', k) with n = k dividing m = k·m'. Each component is achiral (an unknot), so the chirality criterion holds for the link. Closure is satisfied.
 
-These are the framework's **multi-link charged states**: k phased copies of a T(m', 1) primitive, with each component carrying 1/k of the link's total charge (per the closure-rule analysis here, with the integer-quantization consistency argued in chapter 8).
+These are the framework's **multi-link charged states**: **k phased copies of a T(m', 1) primitive** (the framework's Configuration Y reading — see [Ch 8 §5](08-shear-and-fractional-charge.md) for the X-vs-Y distinction and the commitment), with each component carrying 1/k of the link's total charge. Under Configuration Y, the link sources k surviving h_μw cross-terms — one per component — not a single cross-term for the link as a whole. The per-component fractional-charge structure follows from the link's geometry plus integer total quantization, consistent with [grid-duality §7.5.4](../grid-duality/07-wrap-promotion-modeling.md) (the link's integer total is preserved; the 1/k per component is a *fractional association* across the k structural components, not a fractional value of a single quantity).
 
 Examples:
 

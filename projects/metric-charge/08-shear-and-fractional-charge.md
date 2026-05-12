@@ -2,24 +2,41 @@
 
 This chapter turns on the off-diagonal shear σ_uw and examines what it adds to the framework. So far the framework has worked with the bare diagonal metric (σ_uw = 0); this chapter introduces shear as a parameter and traces its consequences through the inventory.
 
-The chapter has two main payloads. First, it quantifies the chirality-bias result from [Chapter 6 §6](06-handedness-and-pairs.md) — σ_uw breaks the (m, n) ↔ (m, −n) symmetry but preserves (m, n) ↔ (−m, −n) — computing the explicit mass split between chirality partners under shear. Second, it examines the **fractional-charge optimization**: closure-satisfying multi-component links of the form k × T(m, 1) (per [Chapter 4 §4.3](04-the-closure-condition.md), where the closure rule restricts multi-links to those with T(m, 1) primitives) carry 1/k of their primitive's charge per component; the chapter computes which k is energetically favored under shear and reports the result honestly. If k = 3 emerges, the framework matches the structural pattern that MaSt model-F associates with standard physics' quark inventory.
+The chapter has three main payloads. First, it derives shear's structural effect on the closure-satisfying primitive spectrum — the **σε product** selects which T(m, 1) primitive is lightest, with the lightest mass sitting at exactly M = (ℏ/c)·(2π/L_w) for integer σε. Second, it quantifies the chirality-bias result of [Chapter 6 §6](06-handedness-and-pairs.md) — σ_uw breaks both single-axis chirality reflections (R_u and R_w) and preserves only joint reversal R_J, with the **R_w-conjugate split** between (m, n) and (m, −n) carrying the framework's chirality-bias content. Third, it examines the **fractional-charge structure** of multi-component links of the form k × T(m, 1) — committing the framework to the Configuration-Y reading (k phased copies of a T(m', 1) primitive, with k surviving gauge-potential cross-terms and 1/k charge associated per component) — and reports honestly that **linear theory does not by itself select a preferred k**.
+
+The shear-alone analysis in this chapter is the σ-side of a broader (σ, ε) story. How σ and ε *together* produce the framework's three qualitative sheet types — and how the metric structure of a specific sheet can be derived from its measured properties — is the work of the planned [Chapter 9](#9-whats-next) (currently scoped in work-ch9.md). Ch 8 sets up shear's mechanisms; Ch 9 will bring them together with ratio.
+
+**Framing convention.** Where standard-physics terminology appears — "quarks," "fractional charge," "P-violation" — it is used as **reference targets** for what the framework's structural mechanisms could correspond to. The framework's commitments are derived from its own machinery; correspondence is downstream comparison work.
 
 **Inheritance.**
 
-- *From [Chapter 1 §4](01-foundation.md):* the σ_uw shear definition and its deferred status; the metric form with shear active.
-- *From [Chapter 6 §6](06-handedness-and-pairs.md):* the chirality-bias result. σ_uw breaks (m, n) ↔ (m, −n) at the dispersion level; this chapter quantifies that bias.
-- *From [Chapter 7 §6](07-aspect-ratio-and-character.md):* the finding that ε alone does not select multi-component-link character; chapter 8 examines whether σ_uw provides the missing mechanism.
-- *From [metric-mass Chapter 7](../metric-mass/07-shear-and-bias.md):* the 1D-compact shear-bias analysis. **Note:** metric-mass's σ_Su shear is structurally distinct from metric-charge's σ_uw. The two shears couple different wavenumber pairs and break different symmetries. Chapter 6 §6.4 works through the comparison.
+- *From [Chapter 1 §4](01-foundation.md):* the σ_uw shear definition, the metric form with shear active, the binding positive-definiteness bound |σ_uw| < 1, and the relationship to the lattice-shear coefficient s = σ_uw/ε used by R-track studies.
+- *From [Chapter 5 §4](05-metric-self-consistency.md):* the wrap-order-asymmetric standing-wave construction defining the natural particle at σ = 0. The construction extends to σ ≠ 0 under the single-Bloch-mode interpretation developed in §2.2 below.
+- *From [Chapter 6 §6](06-handedness-and-pairs.md):* the chirality-bias structure under shear. This chapter quantifies the bias and tracks its consequences for the gauge-potential analysis.
+- *From [Chapter 7 §6](07-aspect-ratio-and-character.md):* the finding that ε alone does not select multi-component-link character; this chapter examines whether σ_uw provides the missing mechanism.
+- *From [metric-mass Chapter 7](../metric-mass/07-shear-and-bias.md):* the 1D-compact shear-bias analysis. metric-mass's σ_Su shear is structurally distinct from metric-charge's σ_uw: they couple different wavenumber pairs and break different symmetries. See [Chapter 6 §6.5](06-handedness-and-pairs.md) for the comparison.
 
-**Distinctive job.** Quantify σ_uw's chirality bias on the (m, n) inventory, and derive the framework's prediction for the energetically favored multi-component link structure under shear (the optimal k, and what fractional charge it produces).
-
-The framework treats both as **emergent results** of the framework's own machinery. Standard physics' three-phase quark organization is a reference target to compare against, not an input. Matter/antimatter asymmetry is *not* derived from σ_uw — see [§3](#3-chirality-bias-from-shear) and [Chapter 6 §6.7](06-handedness-and-pairs.md) for the open question.
+**Distinctive job.** Characterize how σ_uw modifies the closure-satisfying primitive spectrum, the chirality structure, and the multi-link inventory at the linearized level — and report honestly what linear theory does and does not derive about the fractional-charge value k.
 
 ---
 
-## Bare outline
+## Concepts introduced in this chapter
 
-### 1. Setting up the shear σ_uw
+| § | Concept |
+|---|---------|
+| 1 | Setting up shear σ_uw |
+| 2 | Effects on the mass spectrum — the σε product |
+| 3 | Chirality bias from shear |
+| 4 | The closure condition under shear |
+| 5 | Multi-component links — Configuration X vs Configuration Y |
+| 6 | k-selection — linear-theory degeneracy and the φ⁴ candidate |
+| 7 | The fractional-charge prediction |
+| 8 | Summary — what shear adds to the inventory |
+| 9 | What's next |
+
+---
+
+## 1. Setting up shear σ_uw
 
 Restate the metric with shear active (from [Chapter 1 §4](01-foundation.md)):
 
@@ -28,168 +45,376 @@ $$
 ds^2 = -c^2\,dt^2 + dS_1^2 + dS_2^2 + du^2 + 2\,\sigma_{uw}\,du\,dw + dw^2
 $$
 
-The (u, w) sub-block is now:
+The (u, w) sub-block is:
 
 <!-- (u, w) sub-block -->
 $$
-g^{(u,w)}_{ab} = \begin{pmatrix} 1 & \sigma_{uw} \\ \sigma_{uw} & 1 \end{pmatrix}
+g^{(u,w)}_{ab} = \begin{pmatrix} 1 & \sigma_{uw} \\ \sigma_{uw} & 1 \end{pmatrix},
+\qquad \det g^{(u,w)} = 1 - \sigma_{uw}^2
 $$
 
-The wave equation acquires cross-terms from the off-diagonal inverse metric. The compact-direction Laplacian becomes:
+Per [Ch 1 §4](01-foundation.md), **|σ_uw| < 1 is binding** — a positive-definiteness requirement of the (u, w) sub-block, not a parametrization artifact. We write σ ≡ σ_uw where context is unambiguous.
+
+The wave equation acquires cross-terms from the off-diagonal inverse metric:
 
 <!-- Laplacian with σ shear -->
 $$
-\nabla_{(u,w)}^2 \;\to\; \frac{1}{1-\sigma^2}\left(\partial_u^2 - 2\sigma\,\partial_u\partial_w + \partial_w^2\right)
+\nabla_{(u,w)}^2 \;=\; \frac{1}{1-\sigma^2}\left(\partial_u^2 - 2\sigma\,\partial_u\partial_w + \partial_w^2\right)
 $$
 
-Periodicity boundary conditions need to be applied along sheared lattice vectors, not the rectangular (u, w) basis. Defer detailed treatment of the sheared lattice to §2.
+Periodicity remains rectangular in (u, w) coordinates (per [Ch 1 §9](01-foundation.md)); the shear lives in the metric, not in the lattice. (R-track studies use the lattice-shear parametrization with shear coefficient s = σ_uw/ε on a flat metric with sheared periodicities; the two parametrizations describe the same physical sheet but use different numerical labels for the shear and diverge at second order — see [Ch 1 §4](01-foundation.md). This chapter uses σ_uw throughout, consistent with the rest of the framework.)
 
-### 2. Effects on the mass spectrum
+---
 
-With σ ≠ 0, the dispersion relation acquires σ-dependent cross-terms. For a (m, n) mode:
+## 2. Effects on the mass spectrum — the σε product
+
+### 2.1 Dispersion under shear
+
+For a Bloch mode φ ∝ exp(i(k_u u + k_w w − ωt)) with k_u = 2πm/L_u and k_w = 2πn/L_w:
 
 <!-- ω²/c² = k_S² + (k_u² - 2σ k_u k_w + k_w²)/(1-σ²) -->
 $$
-\frac{\omega^2}{c^2} = k_S^2 + \frac{k_u^2 - 2\sigma\,k_u\,k_w + k_w^2}{1 - \sigma^2}
+\frac{\omega^2}{c^2} \;=\; k_S^2 \;+\; \frac{k_u^2 - 2\sigma\,k_u\,k_w + k_w^2}{1 - \sigma^2}
 $$
 
-with k_u = 2πm/L_u, k_w = 2πn/L_w as before (modulo periodicity adjustments under shear).
+Rest mass-squared (k_S = 0):
 
-Several structural observations follow directly from the bilinearity of the cross-term in (k_u, k_w):
+<!-- m²_(m,n) = M²·(1/(1-σ²))·(m²/ε² - 2σmn/ε + n²) -->
+$$
+m_{(m,n)}^2 \;=\; \frac{M^2}{1-\sigma^2}\left[\frac{m^2}{\varepsilon^2} - \frac{2\sigma\,mn}{\varepsilon} + n^2\right]
+$$
 
-- **The cross-term −2σ k_u k_w is invariant under (m, n) ↔ (−m, −n)** (joint sign flip of both windings, which leaves the product k_u·k_w unchanged). The (1, 1) and (−1, −1) modes have *identical* dispersion under shear.
-- **The cross-term flips sign under (m, n) ↔ (m, −n)** (chirality reflection — flipping only one winding). The (1, 1) and (1, −1) modes acquire *different* masses under shear: m²_(1, 1) ∝ 2K²(1−σ) and m²_(1, −1) ∝ 2K²(1+σ) with K = 2π/L (taking L_u = L_w = L for illustration).
-- **σ_uw is therefore a chirality-bias mechanism, not a sign-bias mechanism.** This is structurally distinct from [metric-mass Chapter 7 §6](../metric-mass/07-shear-and-bias.md)'s σ_Su shear, whose cross-term k_S·k_u flips sign under (n) → (−n) and so breaks the sign-reflection symmetry. The two shears couple different wavenumber pairs and break different symmetries; σ_uw is *not* the 2D-compact extension of metric-mass's σ_Su.
-- Mode crossings: at specific σ values the order of (1, 1) vs (1, −1) — chirality partners — reorganizes, but the (1, 1) and (−1, −1) ordering is preserved. The σ-induced reorganization acts on the chirality axis only.
+with M ≡ (ℏ/c)·(2π/L_w). Define the dimensionless coefficient:
 
-The full symmetry analysis and its consequences are worked through in [Chapter 6 §6](06-handedness-and-pairs.md), which also surfaces a fourth structural neutrality mechanism (chirality-conjugate cancellation pairs) that follows from the same math.
+<!-- μ²(m, n; σ, ε) = m²/ε² - 2σmn/ε + n² -->
+$$
+\mu^2(m, n;\,\sigma, \varepsilon) \;\equiv\; \frac{m^2}{\varepsilon^2} - \frac{2\sigma\,mn}{\varepsilon} + n^2
+$$
 
-### 3. Chirality bias from shear
+so m²_{(m,n)} = M²·μ²/(1−σ²). The (1−σ²)⁻¹ factor is a global rescaling that affects every (m, n) uniformly; the σ-dependent *structure* of the spectrum lives in μ². Several structural observations follow directly from the bilinearity of the cross-term −2σmn/ε:
 
-Per [Chapter 6 §6](06-handedness-and-pairs.md), the σ_uw cross-term in the dispersion breaks the (m, n) ↔ (m, −n) **chirality** reflection while preserving the (m, n) ↔ (−m, −n) **sign** reflection. Under [Chapter 5 §4](05-metric-self-consistency.md)'s natural-particle construction, this means σ_uw biases the *internal amplitude balance of a particle* (R_u-symmetrized (++) vs (−+) components) rather than its matter/antimatter populations. This section quantifies the intra-particle chirality bias and notes its consequences.
+- **The cross-term is invariant under (m, n) ↔ (−m, −n)** (joint sign flip, which leaves mn unchanged). Sign-conjugate partners remain mass-degenerate under shear; the R_J reflection of [Chapter 6](06-handedness-and-pairs.md) is preserved.
+- **The cross-term flips sign under (m, n) ↔ (−m, n)** (R_u: ring-chirality reflection). R_u-conjugate Bloch modes acquire mass splits proportional to σmn/ε.
+- **The cross-term flips sign under (m, n) ↔ (m, −n)** (R_w: tube-chirality reflection). R_w-conjugate Bloch modes also split.
+- σ_uw thus breaks *both* single-axis chirality reflections (R_u and R_w) by the same algebraic amount (μ² split of 4σmn/ε) and preserves only R_J.
 
-**Mass split between chirality partners.** From the dispersion of §2, with k_u = K_u and k_w = K_w (positive magnitudes), the mass-squared values for the four sign combinations are:
+§3 develops the R_u/R_w/R_J distinction's physical consequences. First, we address what "the particle" means under shear.
 
-| Mode | k_u·k_w | m² (proportional) |
+### 2.2 The natural particle under shear
+
+[Chapter 5 §4](05-metric-self-consistency.md) defines the natural particle for a closure-satisfying mode as the **R_u-symmetrized** combination (m, n) + (−m, n) at equal amplitude — enforcing the wrap-order's ring-direction reflection as a particle symmetry. At σ = 0, R_u is exact: the two R_u-conjugate Bloch modes have identical mass, and the equal-amplitude combination is a stationary state of the wave equation.
+
+Under σ ≠ 0, R_u is broken (per §2.1). The two Bloch modes (m, n) and (−m, n) acquire different masses:
+
+<!-- μ²(m, n) - μ²(-m, n) = -4σmn/ε -->
+$$
+\mu^2(m, n) - \mu^2(-m, n) \;=\; -\frac{4\sigma\,mn}{\varepsilon}
+$$
+
+The equal-amplitude R_u-symmetrized combination is no longer stationary; it oscillates between the two mass eigenstates with period proportional to 1/Δm. Chapter 5 §4's σ = 0 natural-particle construction does not strictly transfer.
+
+**This chapter commits to the single-Bloch-mode interpretation of the natural particle under shear.** The particle at the (m, n) sector is the single Bloch mode itself, with mass μ²(m, n; σ, ε) as in §2.1. The wrap-order selects which chirality sector — by convention, the sign of m for which μ² is lower at the operating σ. For mn > 0 with σ > 0: μ²(m, n) < μ²(−m, n), so positive-mn is the picked sector. Flipping σ flips the pick. This is the structural locus of the chapter's intra-particle chirality bias (§3).
+
+The σ = 0 R_u-symmetrized construction recovers as a small-σ limit: the chirality-eigenstate basis and the mass-eigenstate basis coincide at σ = 0 and rotate together as σ grows. At any σ > 0, the single Bloch mode is what the framework counts as "the particle." Sign-conjugate pairs (m, n) ↔ (−m, −n) remain mass-degenerate under shear (R_J preserved); the [Chapter 6 §4](06-handedness-and-pairs.md) sign-conjugate cancellation construction operates the same at σ ≠ 0 as at σ = 0.
+
+(A consequence: the [Ch 5 §4.6](05-metric-self-consistency.md) four-property gauge-potential test was derived for the σ = 0 R_u-symmetrized particle. Under shear, the test must be redone for the single Bloch mode — the surviving cross-term pattern (T_tu, T_tw, T_uw) under the single-mode construction differs from the σ = 0 symmetrized version. This is an extension of [TODO-M2](STATUS.md) flagged here as a follow-on to the chapter.)
+
+### 2.3 The σε product — the structural lever for closure-satisfying primitives
+
+For a closure-satisfying T(m, 1) primitive:
+
+<!-- μ²(m, 1; σ, ε) = m²/ε² - 2σm/ε + 1 -->
+$$
+\mu^2(m, 1;\,\sigma, \varepsilon) \;=\; \frac{m^2}{\varepsilon^2} - \frac{2\sigma\,m}{\varepsilon} + 1
+$$
+
+Complete the square in m:
+
+<!-- μ²(m, 1) = (m/ε - σ)² + (1 - σ²) -->
+$$
+\mu^2(m, 1) \;=\; \left(\frac{m}{\varepsilon} - \sigma\right)^{\!2} + (1 - \sigma^2)
+$$
+
+A parabola in m with minimum at **m_opt = σε**, where μ²_min = 1 − σ². Restoring the (1−σ²)⁻¹ factor:
+
+<!-- m²_phys(m_opt, 1) = M² -->
+$$
+m^2_\text{phys}\bigl(m_\text{opt}, 1\bigr) \;=\; M^2 \cdot \frac{1 - \sigma^2}{1 - \sigma^2} \;=\; M^2
+$$
+
+**The minimum mass of the lightest T(m, 1) primitive is exactly M, independent of σ — for any (σ, ε) such that σε is integer.** The σ-dependence cancels between μ²_min = 1 − σ² and the global (1−σ²)⁻¹ rescaling. The lightest closure-satisfying primitive sits at exactly the natural mass scale M = (ℏ/c)·(2π/L_w); its identity (which integer m) shifts with σε, but its mass does not.
+
+m must be a positive integer; σε generally is not. Let m̂ = round(σε) (the nearest positive integer ≥ 1). The actual minimum is
+
+<!-- m²_phys = M²·[1 + Δ²/(1-σ²)],  |Δ| ≤ 1/(2ε) -->
+$$
+m^2_\text{phys} \;=\; M^2\left[1 + \frac{\Delta^2}{1 - \sigma^2}\right],
+\qquad \Delta \;\equiv\; \frac{\hat m}{\varepsilon} - \sigma,\quad |\Delta| \le \frac{1}{2\varepsilon}
+$$
+
+For ε ≫ 1, the residual Δ²/(1−σ²) is small and the lightest closure-satisfying primitive sits at ≈ M for any σ. For ε ≲ 1, the residual is order unity and the mass sits noticeably above M except at special σε values that put m_opt exactly on an integer.
+
+**Level crossings.** Two adjacent T(m, 1) primitives are mass-degenerate at σε = m + 1/2:
+
+<!-- σε = m + 1/2 → T(m, 1) and T(m+1, 1) degenerate -->
+$$
+\sigma\varepsilon \;=\; m + \tfrac{1}{2} \;\implies\; \mu^2(m, 1) = \mu^2(m+1, 1)
+$$
+
+So T(1, 1) is the lightest closure-satisfying primitive for σε < 1.5, T(2, 1) for 1.5 < σε < 2.5, and so on. At a crossing, both primitives sit at μ² = 1/(4ε²) + (1−σ²) — slightly above the M-mass minimum.
+
+**No simultaneous three-fold degeneracy.** For T(m−1, 1), T(m, 1), T(m+1, 1) to be all three degenerate, two pairwise crossings would have to coincide: σε = m − 1/2 *and* σε = m + 1/2. Impossible. Near-three-fold-degeneracy (three primitives separated only by residuals of order 1/ε²) is an ε ≫ 1 phenomenon, not a special σε value.
+
+The σε product is therefore the structural lever for closure-satisfying primitive selection under shear: it picks out m_opt = round(σε), drives the spacing of nearby primitives, and locates the level crossings. The σ-alone or ε-alone view of these effects is partial; **the combined σε product is what controls them**.
+
+The σε result depends on the metric-shear parametrization where the (1−σ²)⁻¹ factor exactly cancels the parabola minimum's (1−σ²) value. This cancellation is structural to the framework's choice in [Ch 1 §4](01-foundation.md). The combined (σ, ε) regime structure — including what happens near the σ → 1 boundary and how the three sheet types map onto regions of the (σ, ε) plane — is the planned [Ch 9](#9-whats-next)'s work.
+
+---
+
+## 3. Chirality bias from shear
+
+Per §2.1, σ_uw breaks both single-axis chirality reflections (R_u and R_w) and preserves only joint reversal R_J. The R_u-broken split is between (m, n) and (−m, n) — what would have been the natural particle's two components at σ = 0. The R_w-broken split is between (m, n) and (m, −n) — the chirality-conjugate pair under tube-direction reflection. The two splits are equal in magnitude (4σmn/ε in μ²) but play distinct physical roles:
+
+| Pair | Δμ² under shear | Physical role |
 |---|---|---|
-| (m, n) and (−m, −n) | +K_u K_w | (K_u² − 2σ K_u K_w + K_w²)/(1−σ²) |
-| (m, −n) and (−m, n) | −K_u K_w | (K_u² + 2σ K_u K_w + K_w²)/(1−σ²) |
+| (m, n) ↔ (−m, n) — **R_u-conjugate** | 4σmn/ε | Ring-chirality split — natural-particle symmetrization axis at σ = 0 (now broken; particle is single Bloch mode) |
+| (m, n) ↔ (m, −n) — **R_w-conjugate** | 4σmn/ε | Tube-chirality split — the framework's chirality-bias variable |
+| (m, n) ↔ (−m, −n) — **R_J-conjugate** | 0 | Sign-conjugate pair — mass-degenerate under shear |
 
-The two **sign-reflection partners** ((m, n) and (−m, −n)) sit at the same mass; the two **chirality-reflection partners** ((m, n) and (m, −n)) sit at masses that differ by an amount proportional to σ. For small σ, the leading split is
+### 3.1 Mass splits, explicit
+
+From the dispersion of §2.1, the four sign combinations of (m, n) at fixed magnitudes (|m|, |n|) have mass-squared values:
+
+| Mode | k_u·k_w | μ² |
+|---|---|---|
+| (m, n) and (−m, −n) | +K_u K_w | m²/ε² − 2σ|mn|/ε + n² |
+| (m, −n) and (−m, n) | −K_u K_w | m²/ε² + 2σ|mn|/ε + n² |
+
+The two R_J-conjugate partners (m, n) and (−m, −n) sit at the same mass; the two R_w-conjugate partners (m, n) and (m, −n) sit at masses that differ by 4σ|mn|/ε. For small σ, the leading split is:
 
 <!-- Δm²/m² ≈ 4σ K_u K_w / (K_u² + K_w²) -->
 $$
 \frac{\Delta m^2}{m^2_{\sigma = 0}} \;\approx\; \frac{4\sigma\,K_u K_w}{K_u^2 + K_w^2} \;+\; \mathcal{O}(\sigma^2)
 $$
 
-(The exact value also acquires σ²-corrections from the (1−σ²) denominator, which we set aside at the linearized level.)
+(σ² corrections come from the (1−σ²)⁻¹ denominator and are set aside at the linearized level.)
 
-**(k_S, m, n) → (−k_S, −m, −n) symmetry of the full dispersion is exact.** Adding spatial momentum k_S does not change the analysis: k_S² is invariant under any of the sign-flip operations considered, and there is no σ-dependent cross-term involving k_S in the sheared dispersion of §2 (the framework introduces only σ_uw, not σ_Su or σ_Sw). The full sign flip is therefore exactly preserved.
+### 3.2 What the chirality bias means dynamically
 
-**What the chirality bias means dynamically.** Under thermal equilibrium with σ ≠ 0, the populations of (m, n) and (m, −n) are unequal — mass-Boltzmann-suppressed by the Δm² above. A configuration prepared with equal amplitudes of the two chirality components is not in thermal equilibrium and would tend to redistribute toward the lower-energy chirality unless prevented by another conservation law. This is the dynamical chirality bias σ_uw produces.
+Under thermal equilibrium with σ ≠ 0, the populations of (m, n) and (m, −n) Bloch modes are unequal — Boltzmann-suppressed by Δm². A configuration prepared with equal amplitudes of the two R_w-conjugate components is not in thermal equilibrium and would redistribute toward the lower-energy chirality unless prevented by a conservation law. This is the dynamical chirality bias that σ_uw produces.
 
-**What it does not do.** The framework's σ_uw shear does *not* provide a Sakharov-CP-violation analog in the matter/antimatter sense. Standard-physics Sakharov requires both C and P violation; σ_uw provides P-flavor (chirality) bias only. The C-flavor (sign-reflection) side has no derived mechanism in this chapter or [Chapter 6](06-handedness-and-pairs.md). Earlier framings of this chapter and Chapter 6 conflated the two and presented σ_uw as a Sakharov-CP analog; the math shows this is incorrect — the two shears (metric-mass's σ_Su and metric-charge's σ_uw) break different symmetries.
+Under the single-Bloch-mode interpretation of §2.2, the wrap-order selects which Bloch mode is "the particle" — the one with lower mass under the operating σ. The R_u-conjugate partner sits at higher mass; the R_w-conjugate partner sits at higher mass and represents a chirality-flipped configuration. Both are physically distinct states from "the particle," with different (m, n) labels and different observable consequences.
 
-**Open: matter/antimatter bias.** Whether the framework derives a matter/antimatter bias from any mechanism is left open. Candidate locations the framework's broader stack might supply such a mechanism are summarized in [Chapter 6 §6.6](06-handedness-and-pairs.md): a different shear (σ_Su or σ_Sw, not currently in the metric), substrate-level chirality from grid-primitive/grid-duality, or a structural mechanism not yet identified. None of these is committed to here; the math is honest about what σ_uw alone can and cannot do.
+### 3.3 What σ_uw does not do — the matter/antimatter question
 
-### 4. The closure condition under shear
+σ_uw provides **chirality bias**, not sign-reflection bias. The R_J pair (m, n) ↔ (−m, −n) — the framework's candidate matter/antimatter labeling per [Chapter 6 §3](06-handedness-and-pairs.md) — is mass-degenerate under shear. **σ_uw therefore biases chirality within a particle, not matter/antimatter populations.**
+
+This is structurally distinct from [metric-mass Chapter 7 §6](../metric-mass/07-shear-and-bias.md)'s σ_Su shear, whose cross-term k_S·k_u flips sign under n → −n alone and breaks the sign-reflection symmetry. The two shears couple different wavenumber pairs and break different symmetries; σ_uw is *not* the 2D-compact extension of σ_Su.
+
+The framework's σ_uw shear does not provide a Sakharov-CP-violation analog in the matter/antimatter sense. Standard Sakharov requires both C and P violation; σ_uw provides P-flavor (chirality) bias only. The C-flavor (sign-reflection) side has no derived mechanism here. Earlier framings (pre-refactor) conflated the two; the math distinguishes them clearly.
+
+**Whether the framework derives a matter/antimatter bias from any mechanism is left open.** Candidates the framework's broader stack might supply such a mechanism are summarized in [Chapter 6 §6.7](06-handedness-and-pairs.md): a different shear (σ_Su or σ_Sw, not currently in the metric), substrate-level chirality from grid-primitive / grid-duality, or a structural mechanism not yet identified. None is committed to here; the math is honest about what σ_uw alone does and does not do.
+
+---
+
+## 4. The closure condition under shear
 
 Does the closure condition itself change under σ ≠ 0?
 
-The phase-pattern view of [Chapter 1 §10](01-foundation.md): "2π winding on w + standing wave on both u and w." This is stated in the bare-metric basis. Under shear, the natural "windings on u" and "windings on w" become entangled through the sheared lattice — a single closed traversal in the sheared-coordinate basis advances by mixed amounts in (u, w) directions.
+The chirality criterion of [Chapter 1 §10](01-foundation.md), with the operational synchronization condition n | m on (m, n) integer labels, is stated in the bare-metric basis. Under shear, the geometric relationship between "winding on u" and "winding on w" becomes entangled through the sheared metric — a single closed traversal in the rectangular (u, w) basis advances along a curve whose geometric length and orientation depend on σ.
 
 Two ways to interpret:
 
-- **Conservative:** the closure condition in the bare basis is unchanged; the wave equation's modes adjust their behavior under shear. (m, n) labels remain meaningful.
-- **Sheared-basis:** the closure condition is naturally stated in the sheared basis, where the relevant labels are mass-eigenvalue pairs (m̃, ñ) related to (m, n) by σ-dependent linear combinations.
+- **Conservative:** the closure condition operates on (m, n) labels in the bare basis. Shear is a perturbation that affects masses and dispersion but not the closure condition itself. (m, n) labels remain meaningful.
+- **Sheared-basis:** the closure condition is naturally stated in coordinates aligned with the sheared metric, where the relevant labels are linear combinations of (m, n) involving σ.
 
-The chapter takes the conservative interpretation: closure operates on (m, n) labels in the bare basis; shear is a perturbation that affects masses and dispersion but not the closure condition itself. This is consistent with closure being a phase-pattern statement that doesn't depend on which basis is used to describe the wave.
+The chapter takes the **conservative interpretation**: closure operates on (m, n) labels in the bare basis; shear modifies dispersion but not the closure rule. This is consistent with closure being a chirality criterion on the closed curve in 3-space, which depends on the curve's topology rather than on the metric in which the wave propagates. The downstream consequence — which (m, n) configurations carry observable EM under shear — is identical to the bare-metric inventory of [Chapter 4](04-the-closure-condition.md).
 
-### 5. Multi-component links under shear — energetics
+---
 
-Take a closure-satisfying multi-component link of the form T(k·m', k) = k × T(m', 1), with k ≥ 2 and m' ≥ 1. (Per the closure rule of [Chapter 4](04-the-closure-condition.md), only multi-links with T(m, 1) primitives satisfy closure; multi-links with genuine-torus-knot primitives fail closure — chirality is non-degenerate — and are mass-only.) Under shear, the energetics of the k phased components changes:
+## 5. Multi-component links — Configuration X vs Configuration Y
 
-- Each component is a phase-shifted copy of the primitive T(m', 1).
-- Phase-shifts within the (u, w) cycle interact with the shear cross-term −2σ k_u k_w in mode-dependent ways.
-- The total energy of the k-component configuration depends on the *relative phases* of the components.
+[Chapter 4 §4.3a](04-the-closure-condition.md) describes a closure-satisfying multi-component link of the form T(k·m', k) = k × T(m', 1) as "k phased copies of a T(m', 1) primitive, with each component carrying 1/k of the link's total charge." Under linear theory, this phrase admits two physically distinct interpretations that must be distinguished before the link's energetics and gauge structure can be analyzed.
 
-Specifically: if the k components are at phases 2π·j/k for j = 0, 1, ..., k−1, the total energy summed over components contains cross-terms between different j values. The cross-terms are sensitive to σ and to the specific phase distribution.
+### 5.1 Two interpretations
 
-The chapter computes this sum and asks: at what k is the k × T(m', 1) multi-link configuration most energetically favorable under shear?
+**Configuration X — single Bloch mode at (km', k).** A single excitation with wavevector (k_u, k_w) = (2πkm'/L_u, 2πk/L_w). The wave function has km'-fold ring structure and k-fold tube structure. Mass read directly off the dispersion at (km', k):
 
-### 6. Optimizing k under shear — what value emerges?
+<!-- m²_X(km', k) = (M²/(1-σ²))·k²·μ²(m', 1; σ, ε) -->
+$$
+m^2_\text{X}(km', k) \;=\; \frac{M^2}{1-\sigma^2}\cdot k^2\,\mu^2(m', 1)
+$$
 
-This is the chapter's central derivation, framed as a real optimization rather than a proof of a presupposed answer.
+so m_X = k · m(m', 1). The [Chapter 5 §4](05-metric-self-consistency.md) gauge-potential derivation, applied to this mode, gives *one* surviving cross-term h_μw — one gauge potential per such Bloch mode.
 
-Set up the optimization problem: given fixed (σ, ε), what value of k minimizes the total energy of a k × T(m', 1) multi-link configuration? (The closure rule restricts multi-links to those with T(m, 1) primitives — these are the only closure-satisfying multi-link configurations.) Compute E(k; σ, ε, m'), minimize over k for the lightest m' (m' = 1 at most ε), and report what optimal k(σ, ε) emerges.
+**Configuration Y — k phased copies of T(m', 1).** A superposition of k Bloch modes at the same wavevector (2πm'/L_u, 2π/L_w) but at distinct phase positions:
 
-The framework's *prediction* about k is the result of this optimization, not an input. The prose expansion works through the calculation; here we sketch the argument structure.
+<!-- ψ_Y = Σ_j A·exp(i(k_u u + k_w w + 2πj/k - ωt)) -->
+$$
+\psi_\text{Y} \;=\; \sum_{j=0}^{k-1} A\cdot e^{i(k_u u + k_w w + 2\pi j/k - \omega t)}
+$$
 
-Candidate mechanisms for what k might be favored under shear (to be tested in the optimization):
+Each component contributes its own primitive mass; total mass is k · m(m', 1) by additivity. Each component sources its own h_μw — **k surviving cross-terms total**, organized as k phased copies of the primitive's gauge structure.
 
-- The shear's cross-term structure may favor specific phase separations between components on energetic grounds. If the structure is 2π/k-symmetric for some k, that k is a natural optimization candidate.
-- A Z_k-symmetry constraint may make some k values satisfy a structural property that others don't. (Connect to grid-duality's Z₃ confinement at L3 — *if* the optimization confirms k = 3, this may be the topological reason for it.)
-- Pure energetic minimization may pick out a k that doesn't correspond to any standard-physics analog, or k may vary non-trivially with (σ, ε).
+The two configurations have *identical total mass* at the linearized level (both equal to k · m(m', 1)). They differ in their *gauge-potential structure*: Configuration X has one gauge potential per multi-link instance, Configuration Y has k.
 
-The result of the optimization is reported as the framework's prediction. If k = 3 emerges as the optimum across the natural range of (σ, ε) values, the framework's structural match to what standard physics ascribes to quark organization is genuine. If a different k emerges, or if k varies substantially with (σ, ε) in ways that do not match observation, the framework's prediction differs from standard physics' quark structure — and that should be reported honestly.
+### 5.2 The framework commits to Configuration Y
 
-This derivation is the substantive new content of chapter 8; the outline only sketches the argument structure. The prose expansion will work through the explicit energy minimization and report the answer.
+[Chapter 4 §4.3a](04-the-closure-condition.md)'s phrasing — "k phased copies" — and the framework's "1/k charge per component" structural claim are both natural under Configuration Y. Under X, the per-component charge interpretation is not available; the link carries integer charge k·m' as a single mode.
 
-### 7. The fractional-charge prediction — and consistency with grid-duality's quantization
+This chapter therefore reads "k × T(m', 1) multi-link" as **Configuration Y throughout**. Consequences:
 
-Combine §5 and §6:
+- **Total mass:** k · m(m', 1) — same as k separate independent primitives at the same wavevector.
+- **Gauge structure:** k surviving h_μw cross-terms per multi-link.
+- **Charge per component:** 1/k of the link's integer total charge.
+- **Closure:** the link satisfies closure iff each component does (each is T(m', 1), n=1 trivially divides any m').
 
-- Shear is what produces the multi-component link structure (without shear, ε alone doesn't favor multi-component, per chapter 7).
-- The optimization in §6 identifies the favored k under shear; call this k_opt(σ, ε).
-- For a multi-link configuration with k_opt components, each component is *associated with* 1/k_opt of the link's total charge.
+(A propagation note: [Chapter 4 §4.3](04-the-closure-condition.md) and [Chapter 5 §4](05-metric-self-consistency.md) have been tacitly using the Configuration-Y reading without making the choice explicit. The commitment here should be propagated to those chapters in a coordinated pass. [STATUS](STATUS.md) flags this as a follow-on.)
 
-**Consistency with grid-duality's integer charge quantization.** Per [grid-duality §7.5.4](../grid-duality/07-wrap-promotion-modeling.md), winding numbers are integer-valued and conserved. At first glance this conflicts with the per-component "fractional charges" above. The conflict is only apparent.
+### 5.3 Energetics under shear, per-component
 
-Grid-duality's integer quantization applies at the level of *complete closure-satisfying configurations*. A k-component link T(km, kn) is a single topological object — one winding pattern with definite integer (km, kn). The link as a whole carries integer charge under the quantization rule. The "1/k_opt charge per component" is not a *fractional charge of an individual closure-satisfying mode* — it is the *fractional association* of the link's integer total charge with each of its k structural components.
+Under Configuration Y, each component of a k × T(m', 1) multi-link is a phase-shifted copy of the primitive T(m', 1) at the same wavevector. Each component's individual mass is m(m', 1) — the σε analysis of §2.3 applies to the primitive directly. The total link mass scales linearly with k.
+
+Phase-shifts within the (u, w) cycle do interact with the shear cross-term −2σ k_u k_w in mode-dependent ways. Specifically: with the k components at phases 2π·j/k for j = 0, ..., k−1, the total energy summed over components contains cross-terms between different j values that depend on σ and on the specific phase distribution. The chapter computes this sum in §6 and asks: at what k is the configuration most energetically favorable under shear?
+
+---
+
+## 6. k-selection — linear-theory degeneracy and the φ⁴ candidate
+
+§5 established that a Configuration-Y multi-link has total mass k · m(m', 1) at the linearized level. This section examines whether shear selects a preferred k. The honest finding: **linear scalar-field theory does not.** The chapter identifies the linear-adjacent mechanism (φ⁴ inter-component coupling) as the candidate within the framework's scope, and forwards the open calculation.
+
+### 6.1 Linear-theory non-derivability of k_opt
+
+Under Configuration Y, two configurations of total integer charge k carry identical total energy at the linearized level:
+
+- **One instance of a k × T(m', 1) multi-link:** total mass k · m(m', 1), gauge structure k-fold (k surviving h_μw cross-terms).
+- **k separate independent T(m', 1) primitives:** total mass k · m(m', 1), gauge structure k-fold (one cross-term per primitive, k total).
+
+Linear theory does not distinguish "1 instance of the k-link as a single bound configuration" from "k separate primitives." They have identical total energy density and identical gauge-potential structure. Any optimization over k is therefore degenerate.
+
+So the question "what k minimizes E(k; σ, ε, m')?" — asked of pure linearized scalar-field analysis — has the answer: **all k are degenerate at the energy level. No preferred k emerges from energetic minimization.**
+
+This is a substantive negative finding. A real k-selection requires a structural ingredient distinguishing the bound k-link from k independent primitives. That ingredient is not in linear theory.
+
+### 6.2 Phase coherence — a negative finding
+
+The most promising *linear-theory* candidate for distinguishing the k-link from k independent primitives is phase coherence around the link's closed curve. The hope: in a sheared metric, going around a multi-link curve picks up holonomy phases that depend on σ, and Z_k commensurability of these phases selects specific k.
+
+Compute phase advance around a T(m', 1) primitive once: traversal Δu = m'·L_u, Δw = L_w; the Bloch mode at wavevector (2πm'/L_u, 2π/L_w) accumulates phase:
+
+<!-- Δφ = k_u · m' L_u + k_w · L_w = 2π(m'² + 1) -->
+$$
+\Delta\varphi \;=\; k_u\,m' L_u + k_w\,L_w \;=\; 2\pi(m'^2 + 1)
+$$
+
+This is 2π × integer regardless of σ. Phase coherence is automatic for integer-winding modes; **no σ-dependence enters the phase advance**.
+
+Per Configuration Y, each component of the multi-link traces its own primitive curve with the same phase advance 2π(m'² + 1). The relative phases {2π·j/k} between components are *imposed by the configuration* (they define which Y-configuration is meant), not *derived from σ*.
+
+**Pure linear scalar-field theory therefore does not produce σ-dependent phase-coherence constraints that select specific k.** Shear enters the energy via the dispersion's cross-term, but not the phase coherence of going around integer-winding closed curves. Phase coherence is *not* the linear-theory mechanism for k-selection.
+
+### 6.3 Internal-mode dynamics — the linear-adjacent φ⁴ candidate
+
+What is *almost* linear theory but actually does give k-selection: **internal-mode dynamics of the multi-link with shear-induced inter-component coupling.**
+
+A multi-link with k components has internal degrees of freedom — relative phases (and amplitudes) of the components. In pure linear scalar-field theory these are free parameters; the components do not interact. Adding the smallest departure from pure linear theory — a quadratic-in-amplitude inter-component coupling of the form
+
+<!-- L_coupling = -λ · Σ_{j ≠ j'} φ_j² φ_{j'}² -->
+$$
+\mathcal{L}_\text{coupling} \;=\; -\lambda \sum_{j \ne j'} \varphi_j^2\,\varphi_{j'}^2
+$$
+
+— introduces dynamics among the relative phases. Under shear, this coupling acquires σ-dependent modulation through the cross-term in each component's kinetic energy. The internal modes (relative-phase oscillations between the k components) form a k-dimensional system with a σ-dependent coupling matrix. Stability and energy ordering depend on k. For specific (σ, ε), specific k may have the lowest-energy stable internal-mode configuration.
+
+This mechanism is **outside [Chapter 5 §4](05-metric-self-consistency.md)'s linearized scope** but is the *linear-adjacent* candidate that comes closest to derivable within the framework's existing apparatus. It is the most concrete candidate for a first-principles k-selection.
+
+**The candidate calculation** — write the φ⁴ self-interaction energy of a k-component link configuration on a sheared sheet, minimize over k, report which k wins at any given (σ, ε) — has not been carried out and is the natural follow-on to [TODO-M8(a)](STATUS.md). If k = 3 emerges at the regime where production studies' empirical optimization (R60, R63, R64) finds k = 3 numerically, the framework has a first-principles derivation. If not, the framework forwards k-selection to grid-duality (substrate Z_k input) or metric-binding (multi-knot energetics).
+
+### 6.4 Other candidate mechanisms
+
+Ordered by closeness to the framework's existing apparatus:
+
+| Mechanism | Status |
+|---|---|
+| **(a) Internal-mode dynamics with σ-induced coupling (§6.3).** | Most promising within metric-charge's scope. φ⁴ calculation pending. |
+| **(b) Substrate Z_k from grid-duality.** Z_k constraint at L3 forces specific k. | Forwarded to [grid-duality §8](../grid-duality/08-where-alpha-appears.md). |
+| **(c) Confinement-like binding.** k components bound by interaction with separation cost. | Forwarded to [metric-binding](../metric-binding/). |
+| **(d) Pauli-like exclusion.** Requires spin/statistics commitment not yet made. | Out of scope. |
+| **(e) Topological commensurability under shear.** Basis-rephrasing in lattice-shear coordinates. | Open. |
+
+### 6.5 The framework's commitment
+
+Linear scalar-field theory on a sheared 2D-compact substrate gives no preferred k. The σε product of §2.3 selects m_opt for primitives; it does not select k for multi-links.
+
+The framework's honest reading: **the k-selection question is open at the linear level.** The φ⁴ inter-component calculation (mechanism (a)) is the calculation the framework should attempt before forwarding. If carried out and yielding k = 3 at relevant (σ, ε), the framework derives the three-component multi-link structure that standard physics associates with quark organization. If yielding no preference or a different k, the framework forwards k-selection to grid-duality (substrate Z_3 input) or metric-binding (multi-knot energetics).
+
+§7 below works through the *structural* consequences of a k-component multi-link configuration — what fractional-charge structure it produces and how that's consistent with grid-duality's integer quantization — assuming a k has been selected by some mechanism. The structural analysis is independent of which mechanism selects k.
+
+---
+
+## 7. The fractional-charge prediction
+
+### 7.1 The combined picture
+
+Combine §§5 and §6:
+
+- Under shear, multi-component closure-satisfying links of the form k × T(m', 1) are structurally available (per the closure rule of [Chapter 4 §4.3](04-the-closure-condition.md), with Configuration-Y reading per §5).
+- Some mechanism — internal-mode dynamics (§6.3), substrate Z_k (§6.4(b)), or other — selects a specific k (call it k_sel; for present purposes its value is left open per §6.5).
+- For a k_sel-component multi-link, each component is associated with 1/k_sel of the link's total integer charge.
+
+### 7.2 Consistency with grid-duality's integer quantization
+
+Per [grid-duality §7.5.4](../grid-duality/07-wrap-promotion-modeling.md), winding numbers are integer-valued and conserved. At first glance this conflicts with the per-component "1/k_sel fractional charges" above. The conflict is only apparent.
+
+Grid-duality's integer quantization applies at the level of *complete closure-satisfying configurations*. A k-component link T(km', k) is a single topological object — one winding pattern with definite integer (km', k). The link as a whole carries integer charge under the quantization rule. The "1/k_sel charge per component" is not a *fractional charge of an individual closure-satisfying mode* — it is the *fractional association* of the link's integer total charge with each of its k structural components.
 
 Three points clarify the consistency:
 
-- **Components are not closure-satisfying on their own.** A single component of a multi-link, considered in isolation, is just a single (m, n) mode at primitive winding. Whether that single (m, n) satisfies closure depends on the standing-wave alignment requirement. For the multi-link case, it is the *collective configuration* (all k components together with their specific phase distribution) that satisfies closure. Individual components do not satisfy closure in isolation.
+- **Components are not closure-satisfying on their own.** A single component of a multi-link, considered in isolation, is just a single (m, n) mode at primitive winding. Whether that single (m, n) satisfies closure depends on the chirality-criterion alignment requirement (per [Ch 4 §1](04-the-closure-condition.md)). For the multi-link case, it is the *collective configuration* (all k components together in the proper phase distribution) that satisfies closure as a single integer-winding object. Individual components are *fragments* of the configuration, not closure-satisfying configurations themselves.
 
-- **Integer total charge is preserved.** The full multi-link has charge proportional to its winding (km, kn) — integer-valued in the grid-duality sense. Distributing across k components gives 1/k per component, but the total integer charge is unchanged. No quantization rule is violated.
+- **Integer total charge is preserved.** The full multi-link has charge proportional to its winding (km', k) — integer-valued in the grid-duality sense. Distributing the link's integer total across k components gives 1/k per component, but the total integer is unchanged. No quantization rule is violated.
 
 - **Confinement-like consequence.** Because individual components are not closure-satisfying alone, they are not isolable as physical states — they only exist as parts of the collective k-link. This is structurally analogous to what standard physics calls quark confinement: individual quarks carry fractional charge and are not observable in isolation; only color-neutral composite states are.
 
-So the framework's fractional-charge prediction is consistent with grid-duality's integer winding quantization, and predicts confinement-like behavior as a structural consequence: per-component fractional values exist only inside the collective configuration, with integer total preserved.
+So the framework's fractional-charge structure is consistent with grid-duality's integer winding quantization, and predicts confinement-like behavior as a structural consequence: per-component fractional values exist only inside the collective configuration, with integer total preserved.
 
-**The framework's prediction:** on a sheet with shear σ_uw ≠ 0, the dominant multi-component closure-satisfying configurations are k_opt-component links with 1/k_opt charge associated per component, and individual components are not isolable. If §6's optimization yields k_opt = 3, this matches the structural pattern of standard physics' quark organization (3 components per baryon, each with 1/3 fractional charge under confinement). If §6 yields a different k_opt, or yields k_opt varying with (σ, ε), the framework's prediction differs from observed quark structure and should be reported honestly.
+### 7.3 What is and is not yet proven
 
-Whether the framework's specific predictions (k_opt, charge magnitudes, mass ratios, link-stability conditions) match standard physics' quark properties under detailed comparison is downstream MaSt-correspondence work.
-
-### 7.4 What is and is not yet proven about fractional charge
-
-Three distinct claims about fractional charge sit in this chapter; it is worth separating what the framework derives from what it leaves open.
+Three distinct claims about fractional charge sit in this chapter; separating what the framework derives from what it leaves open:
 
 **Proven (structurally):**
 
-- *Fractional-charge configurations exist as closure-satisfying states.* Multi-component links of the form k × T(m', 1) satisfy the closure rule (Chapter 4 §4.3); each component carries 1/k of the link's integer total charge as a structural fact of the multi-link decomposition (this section, §7.1–§7.3). The 1/k per component is not a separate physical postulate — it falls out of the link's geometry plus integer total quantization.
-- *Components are not closure-satisfying alone.* A single T(m', 1) primitive at a phase position within a k × T(m', 1) link does not satisfy the closure rule on its own (Chapter 4 §4.3). Only the collective configuration with all k components in proper phase distribution closes.
+- *Fractional-charge configurations exist as closure-satisfying states.* Multi-component links of the form k × T(m', 1) satisfy the closure rule ([Ch 4 §4.3](04-the-closure-condition.md)); each component carries 1/k of the link's integer total charge as a structural fact of the multi-link decomposition under Configuration Y (§5). The 1/k per component is not a separate physical postulate — it falls out of the link's geometry plus integer total quantization.
+- *Components are not closure-satisfying alone.* A single T(m', 1) primitive at a phase position within a k × T(m', 1) link does not satisfy the closure rule in isolation; only the collective configuration closes.
+
+**Open at the linear-theory level:**
+
+- *Which k is selected.* §6 establishes that linear theory does not pick a specific k. The framework's specific prediction (e.g., k_sel = 3 for the hadronic regime) depends on the φ⁴ inter-component calculation or substrate Z_k input. Until carried out, the framework predicts that *some* k-component structure exists, not that k = 3.
 
 **Not proven — and forwarded to [metric-binding](../metric-binding/):**
 
-- *Whether fractional-charge states are stable in time.* The structural prediction is that components cannot exist in isolation as closure-satisfying configurations — this is consistent with confinement-like behavior. But "cannot exist in isolation as closure-satisfying" is weaker than "cannot exist in isolation at all": a component without closure would be a mass-only mode (single-axis or non-synchronizing diagonal), which is a permitted state in the framework, just not a charged one. Whether the energetic cost of separating one component from a multi-link is finite-but-large (giving long-lived but separable states) or genuinely infinite-in-the-limit (true confinement) requires an explicit energetics calculation across the separation.
-- *The energy cost of separation as a function of distance.* For two parts of a multi-link pulled apart in (S₁, S₂), what does E(separation) look like? Standard-physics' quark confinement comes from a linear potential at large distances (string tension); whether the framework reproduces that, or some other functional form, is a multi-knot-energetics calculation.
+- *Whether fractional-charge states are stable in time.* The structural prediction is that components cannot exist in isolation as closure-satisfying configurations — consistent with confinement-like behavior. But "cannot exist in isolation as closure-satisfying" is weaker than "cannot exist in isolation at all": a component without closure would be a mass-only mode (single-axis or non-synchronizing diagonal), which is a permitted state in the framework, just not a charged one. Whether the energetic cost of separating one component from a multi-link is finite-but-large (giving long-lived but separable states) or genuinely infinite-in-the-limit (true confinement) requires an explicit energetics calculation across the separation.
+- *The energy cost of separation as a function of distance.* For two parts of a multi-link pulled apart in (S₁, S₂), what does E(separation) look like? Standard physics' quark confinement comes from a linear potential at large distances (string tension); whether the framework reproduces that, or some other functional form, is a multi-knot energetics calculation.
 - *Whether fractional-charge components can be created/destroyed independently.* Linear theory (this project) conserves (m, n) labels exactly; pair creation/annihilation is a nonlinear/quantum phenomenon outside scope here.
 
-**Where the stability question lives.** The "is fractional charge stable / can it be observed in isolation?" question is fundamentally a *multi-knot energetics* question — it requires comparing the energy of a multi-link configuration to the energy of its separated components as a function of separation. That calculation is the subject of [metric-binding](../metric-binding/), which is the follow-up project specifically focused on multi-knot configurations and binding energetics. metric-binding's chapters on binding/unbinding energetics are where the quark-stability question gets resolved within the framework.
+The "is fractional charge stable / can it be observed in isolation?" question is fundamentally a multi-knot energetics question — it requires comparing the energy of a multi-link configuration to the energy of its separated components as a function of separation. That calculation is the subject of [metric-binding](../metric-binding/), the follow-up project specifically focused on multi-knot configurations and binding energetics.
 
-This chapter's claim is therefore: **fractional charge structurally exists** (as the per-component association inside closure-satisfying multi-links) **and structurally requires the collective configuration** (since components alone fail closure), **but the question of dynamical stability — whether components can be ripped apart, with what energy cost, and at what timescales — is forwarded to metric-binding.**
+This chapter's claim is therefore: **fractional charge structurally exists** (as the per-component association inside closure-satisfying multi-links) **and structurally requires the collective configuration** (since components alone fail closure). **The value of k is not derived in linear theory** and is forwarded to either an internal φ⁴ calculation or substrate Z_k input. **The dynamical stability of components — whether they can be ripped apart, with what energy cost — is forwarded to metric-binding.**
 
-### 8. Summary — what shear adds to the inventory
+---
 
-The ε sweep of [Chapter 7](07-aspect-ratio-and-character.md) gave three regimes of sheet character (mass-only-dominated at extremes, charge-friendly at ε ≈ 1). Adding shear σ_uw to that inventory:
+## 8. Summary — what shear adds to the inventory
 
-- **Breaks (m, n) ↔ (m, −n) chirality symmetry** (per §3 derivation; preserves (m, n) ↔ (−m, −n) sign reflection). σ_uw provides chirality bias only; matter/antimatter bias is not derived here.
-- **Selects a k_opt-component link structure** — the optimization in §6 picks out which k minimizes link energy under shear; the framework reports what k_opt(σ, ε) emerges.
-- **Produces 1/k_opt fractional charges per component** — distributed across the link's structural components, with integer total charge preserved (consistent with grid-duality §7.5.4).
-- **Predicts confinement-like behavior for individual components** — per §7, individual components of a multi-link are not closure-satisfying in isolation and therefore not isolable.
+Adding shear σ_uw to the ε-swept inventory of [Chapter 7](07-aspect-ratio-and-character.md):
 
-Together with ε from chapter 7 and handedness from chapter 6, σ_uw gives the framework four parameters / structural choices that organize the closure-eligible inventory:
+- **Selects the lightest closure-satisfying primitive via the σε product** (§2.3). m_opt = round(σε) is the integer ring-winding for the lightest T(m, 1); at integer σε, the lightest primitive sits at mass exactly M. Level crossings at half-integer σε; no simultaneous three-fold degeneracy.
+- **Redefines the natural particle as the single Bloch mode** under shear (§2.2). The σ = 0 R_u-symmetrization breaks at σ ≠ 0; the wrap-order selects a chirality sector by picking the lower-mass Bloch mode.
+- **Breaks chirality reflections R_u and R_w independently** (§3). The R_w-conjugate split between (m, n) and (m, −n) is the framework's chirality-bias variable. σ_uw provides P-flavor (chirality) bias only; C-flavor (matter/antimatter) bias is not derived from σ_uw.
+- **Commits to Configuration Y for multi-component links** (§5). k × T(m', 1) is k phased copies of the primitive, with k surviving h_μw cross-terms and 1/k charge associated per component.
+- **Does not by itself select a preferred k** (§6). Linear theory is degenerate. The φ⁴ inter-component candidate (§6.3) is the framework's most-tractable open calculation for first-principles k-selection.
+- **Predicts confinement-like behavior for individual components** (§7). Components are not closure-satisfying alone and so are not isolable; integer total charge is preserved as 1/k per component within the collective configuration.
+
+Together with ε from [Chapter 7](07-aspect-ratio-and-character.md) and handedness from [Chapter 6](06-handedness-and-pairs.md), σ_uw gives the framework five structural parameters that organize the closure-eligible inventory:
 
 | Parameter | What it controls |
 |---|---|
@@ -197,26 +422,33 @@ Together with ε from chapter 7 and handedness from chapter 6, σ_uw gives the f
 | Closure satisfaction | Charge vs no-charge (chapter 4) |
 | Handedness sign | Matter/antimatter (chapter 6) |
 | Aspect ratio ε | Sheet character / regime (chapter 7) |
-| Shear σ_uw | Three-phase structure / fractional charge (this chapter) |
+| Shear σ_uw | Primitive selection via σε; chirality bias; multi-link structure (this chapter) |
 
-This is the framework's full structural inventory at the linearized level. Whether it corresponds to standard physics' particle inventory at the level of specific particle properties — masses, charges, decay rates, magnetic moments — is the downstream MaSt-correspondence work the framework leaves open.
+This is the framework's structural inventory at the linearized level for a single sheet under given (ε, σ_uw). How σ and ε *together* select sheet character — and how that combined structure can be inverted to recover (ε, σ_uw) from observed sheet properties — is the planned [Chapter 9](#9-whats-next) work.
 
-### 9. What's next
+---
 
-[Chapter 9 — Closing summary](09-closing-summary.md). Consolidate what the project established, ruled out, and unexpectedly found across all eight chapters. Hand off to [metric-binding](../metric-binding/) for the multi-knot interaction story (multi-knot energetics, force laws, bound states, candidate strong-force mechanism).
+## 9. What's next
+
+**Chapter 9 — Ratio and shear together** (planned, scoped in work-ch9.md). Bring Ch 7 (ratio alone) and this chapter (shear alone) together into a unified treatment of the (σ, ε) parameter space — how the two metric parameters jointly determine which closure-satisfying configurations dominate, what the sheet's structural character is, and how the framework's qualitative sheet types (lepton-like, neutrino-like, hadronic-like) emerge as different regions of the combined landscape. Ch 9 is the substrate for the eventual downstream exercise: given a sheet's measured properties, derive the metric values (diagonals + cross-term) for that sheet.
+
+Then **closing summary**, then hand-off to [metric-binding](../metric-binding/) for multi-knot energetics (binding/decay, confinement-as-energetics, candidate strong-force mechanism).
 
 ---
 
 ## What this chapter does **not** do
 
 - **Does not derive numerical α** or charge magnitudes. Cited from [grid-duality §8](../grid-duality/08-where-alpha-appears.md); structural location settled there, numerical values open.
-- **Does not derive specific quark masses or mixing angles.** The framework predicts the structural pattern (three-phase links with 1/3 fractional charge) but not specific mass values; quantitative predictions are downstream MaSt-correspondence work.
-- **Does not derive a matter/antimatter bias mechanism.** §3 shows σ_uw cannot do it (σ_uw biases chirality within particles, not matter/antimatter populations). What σ_uw provides is intra-particle chirality bias only — at most a P-flavor ingredient toward a Sakharov-CP construction; the C-flavor side is not derived. Forwarded to [Chapter 6 §6.6](06-handedness-and-pairs.md) for candidate alternatives.
-- **Does not derive nonlinear shear effects.** Linear theory only. Whether large σ produces qualitatively different behavior (beyond the linear approximation breaking down) is downstream work.
-- **Does not analyze interaction between distinct three-component links.** Multi-knot energetics is metric-binding territory.
-- **Does not derive the dynamical stability of fractional-charge components.** §7.4 establishes that components are *structurally* non-isolable (they are not closure-satisfying alone), but the *energetics* of separating components — whether the energy cost grows linearly with distance (true confinement), saturates at finite value (separable but bound), or some other functional form — is a multi-knot energetics calculation forwarded to [metric-binding](../metric-binding/).
+- **Does not derive specific quark masses or mixing angles.** The framework predicts the structural pattern (multi-component links with 1/k fractional charge under Configuration Y); specific mass and charge values are downstream MaSt-correspondence work.
+- **Does not derive the value of k.** §6 shows linear theory is degenerate. The φ⁴ inter-component calculation that *could* select k is flagged as the open follow-on.
+- **Does not derive a matter/antimatter bias mechanism.** §3 shows σ_uw cannot do it. σ_uw provides intra-particle chirality bias only — at most a P-flavor ingredient toward a Sakharov-CP construction; the C-flavor side is not derived. Forwarded to [Chapter 6 §6.7](06-handedness-and-pairs.md) for candidate alternatives.
+- **Does not engage the combined (σ, ε) landscape.** The σε product analysis of §2.3 is a per-parameter result; how σ and ε *together* produce the three sheet types, including the σ → 1 single-axis-suppression mechanism that's central to charged-sheet character at large ε, is forwarded to Chapter 9 (planned).
+- **Does not redo the four-property gauge-potential test at σ ≠ 0.** [Ch 5 §4.6](05-metric-self-consistency.md)'s test was derived for the σ = 0 R_u-symmetrized particle; the single-Bloch-mode interpretation under shear (§2.2) requires the test to be redone, with potentially different surviving cross-term structure. Flagged as an extension of [TODO-M2](STATUS.md).
+- **Does not derive nonlinear shear effects.** Linear theory only. Whether large σ produces qualitatively different behavior beyond linear-approximation breakdown is downstream work.
+- **Does not analyze interaction between distinct multi-component links.** Multi-knot energetics is metric-binding territory.
+- **Does not derive the dynamical stability of fractional-charge components.** §7.3 establishes structural non-isolability; energetics of separation forwards to [metric-binding](../metric-binding/).
 - **Does not explain why σ_uw takes a specific value** on any given sheet. ε and σ are both treated as free parameters; whether they are dynamically determined is open.
-- **Does not commit to MaSt-correspondence assignments.** The fractional-charge / three-phase prediction matches the structural pattern of standard physics' quarks; specific identifications (which (m, n) corresponds to which quark family, etc.) are downstream work.
+- **Does not commit to MaSt-correspondence assignments.** The fractional-charge / multi-component prediction matches the structural pattern of standard physics' quark inventory under k = 3; specific identifications are downstream work.
 
 ---
 
@@ -224,12 +456,12 @@ This is the framework's full structural inventory at the linearized level. Wheth
 
 | Q | Where it goes |
 |---|---|
-| Are fractional-charge components dynamically stable, or only structurally non-isolable? What is E(separation) for pulling one component out of a k × T(m', 1) multi-link? | [metric-binding](../metric-binding/) — multi-knot energetics. The framework structurally predicts components are not closure-satisfying alone (per §7.4), but the energetics of separation (string-tension-like vs finite barrier) is a multi-knot calculation. |
-| Does the k = 3 selection follow from the local shear-cross-term structure alone, or does it require global topology (Z₃ from grid-duality) as an input? | Open; possibly resolved by grid-duality's substrate analysis |
-| Does the σ_uw chirality bias quantitatively match observed P-violation magnitudes (e.g., parity-violation in weak interactions)? | Downstream MaSt-correspondence work + experimental data |
-| Does the framework derive a matter/antimatter bias from any mechanism? §3 shows σ_uw cannot. Candidates: σ_Su or σ_Sw (different shear, not in current metric); substrate-level chirality from grid-primitive/grid-duality; other unidentified mechanisms. | Project-direction question (see [Chapter 6 §6.6](06-handedness-and-pairs.md)) |
-| Are there other multi-component links (k = 5, k = 7, ...) energetically favored at specific σ values, corresponding to potential exotic states? | Open follow-up; downstream investigation |
-| Does the framework predict any deviation from standard quark mass / charge ratios that could be experimentally tested? | Open; depends on quantitative completion of the framework |
-| If observed CP-violation has a chirality (P-flavor) component, can σ_uw's chirality bias quantitatively match its magnitude? (The framework does not derive the C-flavor component from σ_uw.) | Downstream MaSt-correspondence work |
-| Does the choice of which compact direction is "tube" (closure-asymmetric) vs "ring" force a specific sign convention on σ_uw, or is the sign free? | Convention question; possibly settled by combination of Chapters 3 §3.2 and 5 §6.3 |
-| At very large σ (approaching the |σ| < 1 boundary where the metric becomes degenerate), does the framework predict any structural transitions or singular behavior? | Out of scope; possibly relevant for nonlinear extensions |
+| Does the φ⁴ inter-component coupling calculation (§6.3) yield a specific k_sel at relevant (σ, ε)? Specifically, does k = 3 fall out at the regime where production studies find it numerically? | Follow-on to [TODO-M8(a)](STATUS.md). Within metric-charge's scope if pursued. |
+| Are fractional-charge components dynamically stable, or only structurally non-isolable? What is E(separation) for pulling one component out of a k × T(m', 1) multi-link? | [metric-binding](../metric-binding/) — multi-knot energetics. |
+| Does k-selection ultimately come from local internal-mode dynamics (§6.3), substrate Z_k input from grid-duality (§6.4(b)), or some combination? | Open; needs both candidates pursued. |
+| Does the σ_uw chirality bias quantitatively match observed P-violation magnitudes (e.g., parity-violation in weak interactions)? | Downstream MaSt-correspondence work + experimental data. |
+| Does the framework derive a matter/antimatter bias from any mechanism? §3 shows σ_uw cannot. Candidates: σ_Su or σ_Sw (different shear, not in current metric); substrate-level chirality from grid-primitive / grid-duality; other unidentified mechanisms. | Project-direction question (see [Chapter 6 §6.7](06-handedness-and-pairs.md)). |
+| Under the single-Bloch-mode interpretation of §2.2, does the [Ch 5 §4.6](05-metric-self-consistency.md) four-property gauge-potential test still hold? What is the surviving cross-term pattern (T_tu, T_tw, T_uw)? | Extension of [TODO-M2](STATUS.md). |
+| Are there other multi-component links (k = 5, k = 7, ...) energetically favored at specific σ values, corresponding to potential exotic states? | Open follow-up; downstream investigation after §6.3's calculation. |
+| Does the framework predict any deviation from standard quark mass / charge ratios that could be experimentally tested? | Open; depends on quantitative completion of the framework. |
+| Does the choice of which compact direction is "tube" (closure-asymmetric) vs "ring" force a specific sign convention on σ_uw, or is the sign free? | Convention question; possibly settled by combination of [Chapter 3 §3.2](03-knots-on-the-torus.md) and [Chapter 5 §6.3](05-metric-self-consistency.md). |

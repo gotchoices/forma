@@ -8,7 +8,7 @@ The σ-alone analysis (what shear does to a single sheet's spectrum, gauge struc
 
 Conventions follow the rest of the project ([Ch 1](01-foundation.md): u = ring, w = tube; ε ≡ L_u/L_w). M ≡ (ℏ/c)·(2π/L_w) is the natural mass scale.
 
-**Naming note.** This file predates the parametrization-naming pass that's now settled in [Ch 1 §3, §4](01-foundation.md). Where it discusses parametrization in "View A vs View B" terms (§7), View A's shear corresponds to Ch 1's bare σ and View B's shear corresponds to Ch 1's s. The structural content is unchanged; only the labels differ. When this file is consumed by the eventual Ch 9 writing, View A's σ → bare σ and View B's s → s (already aligned with studies' usage).
+**Naming note.** This file uses σ as the working symbol for the metric off-diagonal throughout §§2–6, consistent with [Ch 1 §4](01-foundation.md)'s convention. Where §7 contrasts parametrizations using "View A vs View B" language, View A corresponds to Ch 1's σ_uw (metric-shear, the framework's primary parametrization) and View B corresponds to Ch 1's s (lattice-shear, used for R-track-study correspondence).
 
 ---
 
@@ -22,7 +22,7 @@ Conventions follow the rest of the project ([Ch 1](01-foundation.md): u = ring, 
 | 4 | The σ → 1 principal-axis suppression mechanism |
 | 5 | Three structural regimes by combined (σ, ε) |
 | 6 | Three sheet types — qualitative correspondence |
-| 7 | Parametrization choice — View A vs View B |
+| 7 | The σ → 1 mechanism and translation to s-form for empirical correspondence |
 | 8 | Open questions for Ch 9 |
 | 9 | Recommendations |
 
@@ -70,7 +70,7 @@ This is the central derivable result tying σ and ε together at the linearized 
 
 ### 2.3 Where the σε result is parametrization-specific
 
-The "mass exactly M at integer σε" cancellation arises because the (1−σ²)⁻¹ overall factor exactly cancels the parabola's (1−σ²) bottom value. This cancellation is specific to the metric-shear (View A) parametrization where the (1−σ²)⁻¹ factor appears. In the lattice-shear (View B) parametrization scoped in §7, the cancellation does not arise the same way; the σε analog needs to be redone in View B if View B is adopted.
+The "mass exactly M at integer σε" cancellation arises because the (1−σ²)⁻¹ overall factor exactly cancels the parabola's (1−σ²) bottom value. This cancellation is specific to the metric-shear (View A) parametrization where the (1−σ²)⁻¹ factor appears — which is the framework's primary parametrization per [Ch 1 §4](01-foundation.md). When predictions are translated to s for R-track-study correspondence, the translation is non-trivial at large σ (see §7); the σε result and the cleanest σ → 1 statements live in View A.
 
 ---
 
@@ -163,11 +163,11 @@ $$
 
 **The mechanism works cleanly at integer ε, partially at large ε.** It requires σ near 1 *and* ε near integer (or ε ≫ 1).
 
-### 4.4 The View B caveat
+### 4.4 Translation to s-form for empirical correspondence
 
-§4's derivation is entirely in metric-shear (View A). View B has no σ → 1 boundary — the (1−σ²)⁻¹ divergence does not exist. The principal-axis suppression mechanism *as formulated here* does not transfer to View B.
+§4's derivation is entirely in metric-shear (View A) — and per [Ch 1 §4](01-foundation.md), View A is the framework's primary parametrization. The (1−σ²)⁻¹ factor that drives the suppression is structural to that choice.
 
-Whether an analogous "large-s" suppression mechanism exists in View B is an **open question that Ch 9 must address before the parametrization commitment of §7 is final.** If §7 adopts View B and the suppression mechanism evaporates, the single-axis-dominance puzzle (§3) loses its main candidate resolution; another resolution mechanism must be identified or the puzzle accepted as open.
+For empirical correspondence with R-track studies (which work in s-form), structural predictions must be translated to s using the σ = s·ε transform documented in [Ch 1 §4](01-foundation.md). The translation is straightforward at small σ but **non-trivial at large σ near the |σ_uw| < 1 boundary** — the σ ↔ s relationship diverges at second order (see §7). Whether the σ → 1 suppression mechanism's quantitative predictions (suppression rates, mass ratios at non-integer ε) survive the translation cleanly enough to match the studies' lepton-like-sheet parameter region is an open quantitative question for Ch 9. §7 develops the transform.
 
 ---
 
@@ -225,7 +225,7 @@ A single isolable charged primitive at moderate mass, no fractional decompositio
 
 **Why single-particle?** At m_opt isolated as lightest, multi-link configurations cost k × M, Boltzmann-suppressed.
 
-The architectural question of §3 is resolved here by mechanism (d). This is the cleanest structural picture metric-charge can offer for the lepton-like sheet — *if* View A is the framework's parametrization (§7).
+The architectural question of §3 is resolved here by mechanism (d). This is the cleanest structural picture metric-charge can offer for the lepton-like sheet. Given [Ch 1 §4](01-foundation.md)'s commitment to σ_uw (View A) as the framework's parametrization, the mechanism is well-defined; the open quantitative question is whether its predictions translate to s-form (used by R-track studies) cleanly enough at large σ to match empirical sheet character — see §7.
 
 ### 6.2 Hadronic-like sheet — "near-3-fold-degenerate charge tower"
 
@@ -264,7 +264,7 @@ Combined picture: small σ + ε near 1 gives sign-conjugate pairs (mass-only) pl
 
 The qualitative patterns are what linear theory + the §4 σ → 1 mechanism + the small-σ near-degeneracy supports. Quantitative engagement requires:
 
-- **Lepton-like:** rigorous σ → 1 analysis at non-integer ε, plus resolution of the parametrization issue (§7). The empirical "shear" parameter from studies may not directly correspond to σ_uw.
+- **Lepton-like:** rigorous σ → 1 analysis at non-integer ε, plus translation of the σ → 1 predictions to s-form for empirical correspondence with R-track studies (§7). The σ_uw ↔ s transform diverges at second order, so verifying that the structural picture survives the translation at large σ is the substantive quantitative work.
 - **Hadronic-like:** the φ⁴ inter-component coupling calculation at the proton sheet's (σ, ε), with the prediction "k = 3 minimizes" tested explicitly.
 - **Neutrino-like:** oscillation period from σ computed explicitly and checked structurally against observed magnitudes.
 
@@ -272,20 +272,22 @@ Each of these is a concrete tractable calculation; together they constitute the 
 
 ---
 
-## 7. Parametrization choice — View A vs View B
+## 7. The σ → 1 mechanism and translation to s-form for empirical correspondence
 
-The framework's σ_uw is bounded by |σ| < 1 (positive-definiteness of the (u, w) block). Production studies (R60, R63, R64) use a shear parameter s with no such bound. The two are related but **non-equivalent at second order in shear**.
+The parametrization choice is settled at the framework level. [Ch 1 §4](01-foundation.md) commits to σ_uw (bare σ as shorthand) as the working parametrization, with the lattice-shear coefficient s = σ_uw/ε used as the translation label for R-track-study correspondence. The two are different numbers (not interchangeable; the transform is documented in Ch 1 §4) describing the same physical sheet. **|σ_uw| < 1 is a binding positive-definiteness requirement**, not a parametrization artifact.
 
-### 7.1 The two views
+This is effectively a "use both with translation rules, σ_uw primary" settlement, made at the Ch 1 framing level rather than at Ch 9. For Ch 9, the substantive remaining question is not which parametrization to adopt — that's settled — but rather **whether the §4 σ → 1 principal-axis suppression mechanism's quantitative predictions survive translation to s-form for empirical correspondence at large σ**, where the σ_uw ↔ s transform diverges at second order.
 
-**Metric-shear (View A): sheared metric, rectangular periodicity.** The framework's current choice.
+### 7.1 The two parametrizations
+
+**Metric-shear (View A — framework primary):** sheared metric, rectangular periodicity. The dispersion (with the (1−σ²)⁻¹ overall factor):
 
 <!-- μ²_A_phys = (1/(1-σ²))(m²/ε² - 2σmn/ε + n²) -->
 $$
 \mu^2_{A, \text{phys}}(m, n;\,\sigma, \varepsilon) \;=\; \frac{1}{1-\sigma^2}\Bigl[\tfrac{m^2}{\varepsilon^2} - \tfrac{2\sigma\,m n}{\varepsilon} + n^2\Bigr]
 $$
 
-**Lattice-shear (View B): flat metric, sheared periodicity.** The studies' choice. Basis vectors e_1 = (L_u, 0), e_2 = (sL_u, L_w).
+**Lattice-shear (View B — used by R-track studies for correspondence):** flat metric, sheared periodicity. Basis vectors e_1 = (L_u, 0), e_2 = (sL_u, L_w). The studies' dispersion:
 
 <!-- μ²_B = (n_t/ε)² + (n_r - s·n_t)² -->
 $$
@@ -305,29 +307,20 @@ At first order: σ = s·ε.
 
 At second order, expanding View A in σ²: + σ²·(m²/ε² + n²). View B at order s²: + s²·m² = + (σ/ε)²·m² = σ²·m²/ε².
 
-**Difference at order σ²:** View A has extra σ²·ε²·n² that View B doesn't (after substituting s = σ/ε).
+**Difference at order σ²:** View A has extra σ²·ε²·n² that View B doesn't (after substituting s = σ/ε). For closure-satisfying primitives T(m, 1): n = 1, so the difference is σ²·ε² per mode — *substantial* at large ε and not small σ. The empirical lepton-like sheet (small ε, large s in studies' fit) sits in the regime where this divergence is non-trivial: studies fit "s" of order unity at large ε (s·ε of order hundreds), whereas σ_uw stays bounded by 1. The two parameters describe the same physical sheet but the numerical values differ substantially.
 
-For closure-satisfying primitives T(m, 1): n = 1, so the difference is σ²·ε² per mode — *substantial* at large ε. This is the parametrization mismatch the empirical sheets sit in: studies fit "s" of order unity at large ε (sε of order hundreds in View A units), well outside the σ_uw < 1 bound.
+### 7.3 The open quantitative question — translation at large σ
 
-### 7.3 Implications and commitment
+The σ → 1 principal-axis suppression of §4 is the framework's main structural candidate for resolving the single-axis-dominance puzzle on extreme-ε sheets. It is in View A by construction — the (1−σ²)⁻¹ factor is what scales single-axis masses up faster than closure-satisfying masses near the metric boundary.
 
-The σ_uw < 1 bound is a *parametrization artifact* of metric-shear: View B has no such bound. The lepton-like sheet's empirical "shear" approaching unity in studies' parametrization is **not** the same as metric-charge's σ_uw approaching 1; they diverge at second order.
+Translating this structural picture to s-form for empirical correspondence is mechanical at small σ (σ ≈ s·ε, second-order corrections small) but **substantively non-trivial at large σ** near the |σ_uw| < 1 boundary, where the σ²·ε²·n² discrepancy between the two parametrizations dominates. The open quantitative question for Ch 9 is:
 
-**Commitment options:**
+- **Does the σ → 1 mechanism's predicted sheet character (single charged primitive at mass M, single-axis modes suppressed, substantial chirality bias) survive the σ → s translation at the large-σ regime where the lepton-like sheet's empirical s-values are reported?**
+- **If yes:** the framework predicts the lepton-like sheet quantitatively. If no, either (i) the σ → 1 mechanism is the wrong candidate for the architectural question of §3 and another resolution (a)/(b)/(c) must be pursued, or (ii) the empirical s-values from studies require re-interpretation under the σ_uw parametrization.
 
-(I) **Adopt View B as primary.** Replaces σ_uw with s, removes the |σ| < 1 bound, aligns with the studies' parametrization. Requires reformulating §§4 of [work-m8a.md](work-m8a.md), §§4–6 of this file, and Ch 1 §4 (where σ_uw is defined). The σε product result and the σ → 1 suppression mechanism need to be redone — and as §4.4 notes, the suppression mechanism does *not* trivially transfer.
+The question is substantive because the σ → 1 mechanism is the load-bearing piece for the lepton-like sheet's character in §6.1. Without it, that sheet's structural picture rests on architectural-question resolutions (a)–(c) that the framework has not concretely worked out.
 
-(II) **Keep View A and accept the parametrization gap.** σ_uw < 1 is the framework's parameter; studies' s is a different parametrization, only first-order equivalent. For quantitative correspondence, downstream work translates from one to the other.
-
-(III) **Use both, with translation rules.** View A for derivations involving the σ → 1 mechanism; View B for empirical correspondence and large-shear regimes. The framework documents both and the translation between them.
-
-Each option has costs:
-
-- (I): the cleanest result of [work-m8a.md §4](work-m8a.md) (mass exactly M at integer σε) is View-A-specific. May not survive in View B. And the σ → 1 suppression mechanism evaporates.
-- (II): the framework cannot directly predict empirical sheet parameters; "why does each sheet land at its specific (ε, σ)" is structurally untestable.
-- (III): more complex and risks the framework looking incoherent.
-
-The decision is consequential and not derivable from math alone. **Ch 9 should commit explicitly.** A recommended ordering: first work out what the §4 σ → 1 mechanism looks like in View B (or whether it has any analog there) — if there is no equivalent, then View A has structural value the framework cannot give up, and option (II) or (III) is forced.
+§7's payload for Ch 9: confirm the parametrization settlement from Ch 1 §4 (above), present the σ_uw ↔ s transform with its first-order match and second-order divergence (§7.1, §7.2), and frame the σ → 1 translation as the substantive quantitative work remaining (§7.3). The mathematical content of §§7.1–7.2 is needed because the translation analysis at large σ uses it.
 
 ---
 
@@ -341,54 +334,46 @@ The decision is consequential and not derivable from math alone. **Ch 9 should c
 
 §6.2 identifies the φ⁴ inter-component coupling calculation ([work-m8a.md §6.5](work-m8a.md)) as the load-bearing piece. If the calculation yields k = 3 at the proton's (σ, ε), the framework derives the 3-quark structure. If not, forwarding to grid-duality.
 
-### 8.3 Parametrization commitment
+### 8.3 σ → 1 mechanism's translation to s-form at large σ
 
-§7's three options. Resolution affects all chapters using shear. The decision needs to be made before Ch 9 can be written; this is the most consequential single open question.
+The parametrization is settled at Ch 1 (σ_uw primary, s = σ_uw/ε for studies' correspondence). The open quantitative question is whether the §4 σ → 1 suppression mechanism's predictions translate cleanly to s-form at large σ — where the second-order divergence between σ_uw and s is non-trivial — to match empirical lepton-like-sheet parameter values from R-track studies (§7.3). This is the most consequential single open question for the lepton-like sheet's quantitative engagement.
 
-### 8.4 σ → 1 analog in View B
-
-If §7 commits to View B (option I), §4's σ → 1 suppression mechanism needs reformulation. Whether an analog exists at "large s" in View B is an open calculation.
-
-### 8.5 Neutrino oscillation period
+### 8.4 Neutrino oscillation period
 
 §6.3's mechanism α gives oscillation period ∝ 1/σ but needs explicit time-evolution calculation: chirality-eigenstate prepared as (cos θ)·(m,n) + (sin θ)·(m,−n), evolved under the sheared dispersion, period identified.
 
-### 8.6 Towards "metric from observables"
+### 8.5 Towards "metric from observables"
 
-Ch 9's end-state should equip downstream work to plug in a sheet's measured properties (mass, gauge structure, observable charge) and derive (σ, ε) — i.e., invert the structural map. The inversion's invertibility depends on the framework's having committed to:
+Ch 9's end-state should equip downstream work to plug in a sheet's measured properties (mass, gauge structure, observable charge) and derive (σ_uw, ε) — i.e., invert the structural map. The inversion's invertibility depends on the framework's having committed to:
 
-- The parametrization (View A or B).
-- The natural-particle definition under shear (single Bloch mode per [work-m8a.md §2.3](work-m8a.md)).
-- The multi-link interpretation (Configuration Y).
-- The single-axis-dominance resolution mechanism.
-- The k-selection mechanism (or its forwarding).
+- The natural-particle definition under shear (single Bloch mode per [work-m8a.md §2.3](work-m8a.md), committed in [Ch 8 §2.2](08-shear-and-fractional-charge.md)).
+- The multi-link interpretation (Configuration Y, committed in [Ch 8 §5.2](08-shear-and-fractional-charge.md)).
+- The single-axis-dominance resolution mechanism (§3.2 candidates (a)–(d)).
+- The k-selection mechanism (or its forwarding, per [Ch 8 §6.5](08-shear-and-fractional-charge.md)).
+- The σ → 1 mechanism's translation behavior for s-form correspondence (§7.3).
 
-With those commitments, the map (σ, ε) → sheet character becomes derivable and invertible. The actual "metric from observables" exercise is downstream of Ch 9 and may warrant its own chapter or follow-on project.
+The parametrization itself is already committed at Ch 1 (σ_uw primary, s for studies' correspondence). With the remaining commitments above, the map (σ_uw, ε) → sheet character becomes derivable and invertible. The actual "metric from observables" exercise is downstream of Ch 9 and may warrant its own chapter or follow-on project.
 
 ---
 
 ## 9. Recommendations
 
-### 9.1 Commit to the parametrization first
-
-Before any further analytic work, decide View A vs View B (or both with translation rules). This decision affects every downstream derivation. The recommended sequence: work out the §4 mechanism's View B analog (or lack thereof) explicitly, then commit.
-
-### 9.2 Carry out the φ⁴ inter-component coupling calculation
+### 9.1 Carry out the φ⁴ inter-component coupling calculation
 
 [work-m8a.md §6.5](work-m8a.md) outlines the calculation. The result determines whether Ch 9 derives the hadronic 3-component structure or forwards it. Most consequential single piece of work for the chapter.
 
-### 9.3 Develop the σ → 1 suppression (or its View B equivalent) for non-integer ε
+### 9.2 Develop the σ → 1 suppression for non-integer ε, and its s-form translation
 
-§4.3 has the integer-ε case clean and the non-integer case at "partial suppression with factor 1/(2ε)." For lepton-like sheets at non-integer ε near σ = 1, whether this suppression is sufficient for the empirical character is an open quantitative question. The Ch 9 chapter should commit to whether the partial suppression suffices or whether integer ε is structurally required.
+§4.3 has the integer-ε case clean and the non-integer case at "partial suppression with factor 1/(2ε)." For lepton-like sheets at non-integer ε near σ = 1, whether this partial suppression is sufficient for the empirical character is an open quantitative question. Then translate the suppression's predictions to s-form per §7.3 and check against R-track studies' lepton-like-sheet parameter region.
 
-### 9.4 Compute the neutrino oscillation period
+### 9.3 Compute the neutrino oscillation period
 
-§8.5's calculation is straightforward at the linearized level. Carrying it out gives the framework a quantitative structural prediction (oscillation period as a function of σ).
+§8.4's calculation is straightforward at the linearized level. Carrying it out gives the framework a quantitative structural prediction (oscillation period as a function of σ).
 
-### 9.5 Add Ch 9 to the project's chapter list
+### 9.4 Add Ch 9 to the project's chapter list
 
-Update [README.md](README.md)'s chapter list. Update [Ch 7 §8](07-aspect-ratio-and-character.md) and [Ch 8 §9](08-shear-and-fractional-charge.md) "What's next" pointers to direct to Ch 9 before Ch 10 / closing summary.
+Update [README.md](README.md)'s chapter list. Update [Ch 7 §8](07-aspect-ratio-and-character.md) and [Ch 8 §9](08-shear-and-fractional-charge.md) "What's next" pointers to direct to Ch 9 before the closing summary.
 
-### 9.6 Re-scope Ch 7 and Ch 8 to forward combined-parameter content to Ch 9
+### 9.5 Re-scope Ch 7 and Ch 8 to forward combined-parameter content to Ch 9
 
 Ch 7 (ratio alone) and Ch 8 (shear alone) currently each gesture at combined-parameter character. With Ch 9 added, each chapter should keep its single-parameter analysis tight and forward the combined story to Ch 9. The Ch 8 refactor scope is in [work-m8a.md §8](work-m8a.md). A parallel scoping for Ch 7's tightening may be worth doing.

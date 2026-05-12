@@ -264,7 +264,11 @@ The 2D-compact T² is decomposed by the wrap-order into "1D-compact for KK + 1D-
 
 ### 4.6 Gauge-potential properties of the surviving B_μ
 
-The single surviving cross-term h_μw satisfies the four standard-physics properties of a gauge potential, separately for each entry in the spacetime index μ:
+**Scope: σ = 0.** The four-property test below applies to the σ = 0 R_u-symmetrized natural particle of §4. Under shear (σ ≠ 0), R_u is broken and the natural particle is redefined as the single Bloch mode (per [Chapter 8 §2.2](08-shear-and-fractional-charge.md)); the test must then be redone for that mode, with potentially different surviving cross-term structure (T_tu, T_tw, T_uw). The σ ≠ 0 extension is flagged in [STATUS](STATUS.md) as part of TODO-M2.
+
+**Scope: single closure-satisfying mode.** The derivation below also applies to a single closure-satisfying T(m, 1) primitive. For multi-component links of the form k × T(m', 1) — committed to the **Configuration Y** reading per [Chapter 8 §5](08-shear-and-fractional-charge.md) — the analysis applies *per component*: each phased copy sources its own h_μw cross-term, so a k-component multi-link has **k surviving gauge-potential cross-terms** (one per component), each carrying 1/k of the link's integer total charge.
+
+The single surviving cross-term h_μw (per closure-satisfying mode, σ = 0) satisfies the four standard-physics properties of a gauge potential, separately for each entry in the spacetime index μ:
 
 **Property 1 — Index structure.** h_μw has one spacetime index (μ ∈ {t, S₁, S₂}) and transforms as a covariant 4-vector under spacetime coordinate changes that hold w fixed. ✓
 
@@ -274,7 +278,7 @@ The single surviving cross-term h_μw satisfies the four standard-physics proper
 
 **Property 4 — Coupling to charged matter.** A particle on the perturbed metric h_μw follows a geodesic equation that, in the slow-motion limit, picks up a force term proportional to p^w (∂_μ h_νw − ∂_ν h_μw) ẋ^ν — the Lorentz-force coupling, with p^w playing the role of charge. ✓
 
-The four properties are reproduced for the single surviving gauge potential. No second U(1) is left over; the framework's prediction matches standard physics' single observed EM gauge potential at the structural level.
+The four properties are reproduced for the single surviving gauge potential. No second U(1) is left over; the framework's prediction matches standard physics' single observed EM gauge potential at the structural level (σ = 0; for σ ≠ 0 see the scope note above).
 
 ---
 

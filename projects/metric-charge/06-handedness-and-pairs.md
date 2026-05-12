@@ -283,7 +283,21 @@ The σ_uw entry is symmetric in (u, w) (g_uw = g_wu) and represents a non-orthog
 
 This means σ_uw is, *purely from the geometry*, a chirality-bias mechanism. The framework's machinery does not allow it to be otherwise.
 
-### 6.4 Comparison with metric-mass's σ_Su shear
+### 6.4 R_u-conjugate and R_w-conjugate pairs — distinct physical roles
+
+§§6.1–6.3 establish that σ_uw breaks both R_u and R_w (the two chirality reflections) by the same algebraic amount (Δμ² = 4σmn/ε for each split). The two splits are *algebraically symmetric* but play **distinct physical roles** in the framework, and conflating them obscures what σ_uw is doing.
+
+| Conjugate pair | Reflection | Physical role under σ_uw |
+|---|---|---|
+| (m, n) ↔ (−m, n) | **R_u** (ring chirality) | These are the two components the σ = 0 R_u-symmetrized natural particle combined at equal amplitude (per [Ch 5 §4](05-metric-self-consistency.md)). Under σ ≠ 0 the split makes the symmetrization non-stationary; the framework's natural particle is redefined as the *single Bloch mode* (per [Ch 8 §2.2](08-shear-and-fractional-charge.md)). |
+| (m, n) ↔ (m, −n) | **R_w** (tube chirality) | The framework's **chirality-bias variable**. Under σ ≠ 0 these are two physically distinct Bloch modes (different (m, n) labels, different particles under the single-Bloch-mode reading) at different masses. The R_w split is what observable parity-violation-like effects would couple to. |
+| (m, n) ↔ (−m, −n) | **R_J** (joint reversal) | Sign-conjugate pair. **Mass-degenerate under shear** (preserved by σ_uw). [§4](#4-pair-configurations-within-a-single-field--the-sign-conjugate-case) cancellation operates the same at σ ≠ 0 as at σ = 0. |
+
+The first row is about *the natural-particle definition shifting under shear* (R_u-symmetrization no longer works; single Bloch mode replaces it). The second row is about *which two physically distinct Bloch modes the framework treats as chirality-conjugate partners*. The same algebraic split (4σmn/ε) plays out in both, but the physical interpretation differs: R_u tracks a *redefinition of what "the particle" is*, while R_w tracks a *split between two distinct particle states*.
+
+Under [Ch 8 §2.2](08-shear-and-fractional-charge.md)'s single-Bloch-mode commitment, the framework's chirality-bias variable is the **R_w-conjugate pair**: (m, n) and (m, −n) are two distinct Bloch modes with different masses under shear, and the wrap-order picks one. The R_u-conjugate pair (m, n) and (−m, n) is what the σ = 0 natural-particle construction would have symmetrized; under shear it has the same algebraic split but is no longer the "symmetrize me" pair.
+
+### 6.5 Comparison with metric-mass's σ_Su shear
 
 [metric-mass Chapter 7](../metric-mass/07-shear-and-bias.md) introduces shear σ_Su between *extended S* and *compact u*. The cross-term in that case is k_S·k_u — bilinear in *one extended and one compact* wavenumber. Under (n) → (−n) (so k_u → −k_u), this cross-term flips sign — correctly breaking the (n) ↔ (−n) symmetry in the 1D-compact setting.
 
@@ -296,7 +310,7 @@ metric-charge's σ_uw is a different shear: between two compact directions. The 
 
 Earlier framings in this chapter and Chapter 8 conflated the two and presented σ_uw as the "2D-compact extension" of metric-mass's mechanism. They are structurally distinct mechanisms operating on different symmetries. The 2D-compact extension of metric-mass's σ_Su would be σ_S₁u or σ_S₁w — extended-versus-compact shear — which metric-charge's [Chapter 1 §4](01-foundation.md) does not introduce.
 
-### 6.5 Consequences for the framework
+### 6.6 Consequences for the framework
 
 The chirality-bias result has consequences that follow directly from the math, made sharper under work1's natural-particle construction:
 
@@ -308,7 +322,7 @@ The chirality-bias result has consequences that follow directly from the math, m
 
 - **The R_w-symmetrized configuration is energetically disfavored under shear.** A configuration of the form (m, n) + (m, −n) — combining chirality-conjugates in the *tube* direction — is not a natural particle under the wrap-order convention (Ch 5 §4.3 rules out R_w as a particle symmetry). Under σ_uw ≠ 0, the two components sit at different energies (per §6.2), so this configuration is also not in thermal equilibrium. It would tend to redistribute toward whichever component the σ_uw shear favors energetically — settling into either (m, n) alone or (m, −n) alone, neither of which is by itself a natural particle. The configuration is structurally and energetically marginal.
 
-### 6.6 Matter/antimatter bias — open
+### 6.7 Matter/antimatter bias — open
 
 The framework derives chirality bias *within particles* from σ_uw. It does **not** derive matter/antimatter bias on populations from any mechanism in this chapter or [Chapter 8](08-shear-and-fractional-charge.md). If matter/antimatter asymmetry is a structural prediction of the framework, it must come from some other mechanism. Candidate locations the framework's broader stack might supply such a mechanism:
 
@@ -347,7 +361,7 @@ Chapter 7 changes the parameter focus from sign labels (Chapter 6) to magnitude 
 
 ## What this chapter does **not** do
 
-- **Does not derive a matter/antimatter bias mechanism.** §6 demonstrates that σ_uw shear biases chirality *within particles* (the R_u-symmetrized (++) vs (−+) amplitude balance), not matter/antimatter populations — σ_uw is invariant under (m, n) ↔ (−m, −n) joint sign flip. Whether the framework derives matter/antimatter bias from any other mechanism is left open at this chapter (see §6.6).
+- **Does not derive a matter/antimatter bias mechanism.** §6 demonstrates that σ_uw shear biases chirality *within particles* (the R_u-symmetrized (++) vs (−+) amplitude balance), not matter/antimatter populations — σ_uw is invariant under (m, n) ↔ (−m, −n) joint sign flip. Whether the framework derives matter/antimatter bias from any other mechanism is left open at this chapter (see §6.7).
 - **Does not derive the Sakharov mechanism for baryogenesis.** σ_uw provides intra-particle chirality bias only; the C-flavor (sign reflection) bias on populations has no derived mechanism in this chapter or [Chapter 8](08-shear-and-fractional-charge.md). Full Sakharov baryogenesis would require both C and CP violation plus a non-equilibrium phase; the framework currently provides at most a P-flavor intra-particle ingredient.
 - **Does not assign "matter" vs "antimatter" labels** to specific (m, n) sectors. The framework treats (m, n) and (−m, −n) as distinct sectors but does not pre-commit to which corresponds to what standard physics calls matter.
 - **Does not commit to whether parity (P) corresponds to mirror reflection or sign reflection** or some other operation. Open question; downstream comparison with standard physics' P, C, CP symmetries.

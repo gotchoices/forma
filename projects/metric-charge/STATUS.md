@@ -8,39 +8,42 @@ This file tracks items that remain open after the work1 refactor pass (which res
 
 ### TODO-M2 — Four-property gauge-potential test asserted, not derived
 
-**Status:** Open. The work1 refactor simplified the test to one gauge potential (Ch 5 §4.6) but did not actually carry out the geodesic-equation calculation.
+**Status:** Open. The work1 refactor simplified the test to one gauge potential (Ch 5 §4.6) but did not actually carry out the geodesic-equation calculation. The [Ch 8 refactor](08-shear-and-fractional-charge.md) (Sept 2026) extends the scope: under shear, the natural-particle definition shifts to the single-Bloch-mode interpretation (Ch 8 §2.2), and the four-property test must be redone for σ ≠ 0 as well.
 
 **What review.md says:** Ch 5's gauge-potential property test currently asserts each of four properties without explicit calculation. Properties 1–3 are bookkeeping (transformation under coordinate change, antisymmetric field strength, gauge invariance). **Property 4 is the substantive one** — the geodesic equation for a particle on the perturbed metric, in the slow-motion limit, picks up a Lorentz-force-like term proportional to compact-direction momentum. This is asserted; the calculation is not in the chapter.
 
 **Why I agree:** The chapter's distinctive methodological commitment is to *test* the standard-physics correspondence rather than assume it. The four-property test as written reduces this to citation. A genuine test would compute the geodesic equation expansion explicitly.
 
 **Scope of fix:**
-- Properties 1–3: short tightening; cite metric-mass Ch 5 (which does Property 2 explicitly for 1D-compact) and extend to the 2D-compact tube direction in 1–2 paragraphs.
-- Property 4: real calculation. Expand the geodesic equation for a charged particle on the surviving gauge potential h_μw, take the slow-motion limit, isolate the force term, show it has the structure of the Lorentz force.
+- Properties 1–3 at σ = 0: short tightening; cite metric-mass Ch 5 (which does Property 2 explicitly for 1D-compact) and extend to the 2D-compact tube direction in 1–2 paragraphs.
+- Property 4 at σ = 0: real calculation. Expand the geodesic equation for a charged particle on the surviving gauge potential h_μw, take the slow-motion limit, isolate the force term, show it has the structure of the Lorentz force.
+- **σ ≠ 0 extension (added by Ch 8 refactor):** redo all four properties for the single-Bloch-mode particle under shear. The surviving cross-term pattern (T_tu, T_tw, T_uw) differs from the σ = 0 R_u-symmetrized version; the gauge-potential structure under shear is not derivable from a simple translation of the σ = 0 result.
 
-**Estimate:** Half-day, mostly Property 4.
+**Estimate:** Half-day for σ = 0 (mostly Property 4). Additional half-day or more for the σ ≠ 0 extension.
 
-**Suggested approach:** Write Property 4 as a new sub-subsection in Ch 5 §4.6 with the explicit calculation. This converts the chapter's gauge-potential claim from "asserted" to "derived for a single charged-test-particle on a closure-satisfying mode's metric perturbation."
+**Suggested approach:** Write Property 4 as a new sub-subsection in Ch 5 §4.6 with the explicit calculation at σ = 0 first, then extend to σ ≠ 0 in a second pass once the single-Bloch-mode framing is propagated through Ch 5.
 
 ---
 
-### TODO-M8(a) — Chapter 8 optimization computation pending
+### TODO-M8(a) — Chapter 8 optimization computation (partially answered + redirected)
 
-**Status:** Open. Substantive work.
+**Status:** Partially answered, with the substantive open work redirected. The [Ch 8 refactor](08-shear-and-fractional-charge.md) (Sept 2026) carried out the linear-theory analysis and found the original framing's "k_opt from energy minimization" is **degenerate at the linearized level** — all k give identical total energy under Configuration Y. The honest finding is now in Ch 8 §6; the load-bearing open work has shifted.
 
-**What review.md says:** Ch 8's framing is honest (§6 an open optimization rather than a presupposed-answer derivation; §7 addresses integer-quantization consistency), but the actual energy-minimization computation across (σ, ε) space — the calculation that determines k_opt(σ, ε) — has not been done. The chapter remains effectively an outline.
+**What was answered (Ch 8 §§2–6):**
+- The σε product is the structural lever for the closure-satisfying primitive spectrum: m_opt = round(σε) selects the lightest T(m, 1) primitive, with mass exactly M at integer σε (Ch 8 §2.3).
+- σ_uw breaks both R_u and R_w chirality reflections by 4σmn/ε in μ², preserving only R_J (Ch 8 §3).
+- The natural particle under shear is the single Bloch mode (Ch 8 §2.2); the σ = 0 R_u-symmetrization breaks down at σ ≠ 0.
+- Multi-link interpretation: Configuration Y (k phased copies, k gauge-potential cross-terms) is the framework's commitment (Ch 8 §5).
+- Linear scalar-field theory does not select k (Ch 8 §6.1); phase-coherence around closed curves is automatically integer regardless of σ, so it does not produce σ-dependent k-selection (Ch 8 §6.2).
 
-**Why I agree:** The framework's three-phase / quark-like prediction is contingent on Ch 8's optimization yielding k_opt = 3 across the natural (σ, ε) range. Until done, the prediction is pending rather than established. The framework's claim to predict fractional charge in a quark-like pattern depends on this.
+**What's now load-bearing (the redirected open work):**
+- **φ⁴ inter-component coupling calculation** (Ch 8 §6.3). Write the φ⁴ self-interaction energy of a k-component link configuration on a sheared sheet; minimize over k; report which k wins at the (σ, ε) regime where production studies find k = 3 numerically. This is the most-tractable mechanism within metric-charge's scope for first-principles k-selection.
+  - If k = 3 emerges: framework derives the multi-link structure.
+  - If no preference or different k: forward to grid-duality (substrate Z_k input) or metric-binding (multi-knot energetics).
 
-**Scope of fix:**
-- Compute E(k; σ, ε, m') for k × T(m', 1) multi-link configurations under σ_uw shear.
-- Minimize over k for the lightest m' (m' = 1 at most ε, possibly m' = 2 elsewhere).
-- Plot or tabulate k_opt(σ, ε) across the natural parameter range.
-- Report the result honestly — k_opt = 3 if it falls out, some other k otherwise.
+**Estimate:** Multi-day; involves real algebra (φ⁴ inter-component cross-term expansion under shear) and possibly numerical exploration. Structurally the largest single open todo.
 
-**Estimate:** Multi-day; involves real algebra and possibly numerical exploration. Structurally the largest single open todo.
-
-**Suggested order:** Couples to TODO-L5 (which depends on knowing k_opt to identify "the quark configuration").
+**Suggested order:** Couples to TODO-L5 (sign assignments). Best done before TODO-P1 (closing summary) so the chapter can report the optimization outcome.
 
 ---
 
@@ -111,21 +114,9 @@ The three items below come from the post-refactor pass of [review.md](review.md)
 
 ### TODO-P2 — Replace stale closure-condition quote in Ch 8 §4
 
-**Status:** Open. Trivial fix; flagged by post-refactor pass as a stale quote left over from the pre-chirality-criterion framing.
+**Status:** ✅ **Resolved** by the [Ch 8 refactor](08-shear-and-fractional-charge.md) (Sept 2026). The stale "2π winding on w + standing wave on both u and w" quotation has been replaced with current chirality-criterion phrasing referencing the operational synchronization condition n | m. Ch 8 §4 now reads consistently with Ch 1 §10.
 
-**What review.md says:** [Chapter 8 §4](08-shear-and-fractional-charge.md) line 99 reads:
-
-> The phase-pattern view of [Chapter 1 §10](01-foundation.md): "2π winding on w + standing wave on both u and w." This is stated in the bare-metric basis.
-
-The quoted phrasing predates both the synchronization-rule reformulation and the work1 chirality criterion. Current Ch 1 §10 frames closure as a chirality criterion with synchronization (n | m) as the operational test. The chapter's downstream reasoning is sound; only the quoted formulation is stale.
-
-**Why I agree:** The quote no longer matches what Ch 1 §10 says. Anyone clicking the cross-reference would find a different formulation. The fix is a one-line replacement.
-
-**Scope of fix:** Replace line 99's quoted phrasing with a current one — e.g., "The chirality criterion of [Chapter 1 §10](01-foundation.md), with the operational synchronization condition n | m on (m, n) integer labels, is stated in the bare-metric basis."
-
-**Estimate:** Trivial. Single line edit.
-
-**Suggested order:** Independent. Can be done immediately.
+**Original issue:** [Chapter 8 §4](08-shear-and-fractional-charge.md)'s opening quoted a pre-chirality-criterion phrasing that no longer appeared in Ch 1 §10 — a stale cross-reference making the chapter's framing inconsistent with the rest of the project.
 
 ---
 
@@ -150,6 +141,44 @@ The quoted phrasing predates both the synchronization-rule reformulation and the
 **Why this is metric-binding's, not metric-charge's.** Same as TODO-Disc1: it's a multi-species architectural choice. Ch 1 §11 now flags it explicitly as a non-assumption.
 
 **Scope of resolution:** metric-binding's architectural framing should commit to one diagonal-normalization convention or accommodate both with a clear rule for which is used when. No work required within metric-charge.
+
+---
+
+### TODO-Ch8a — Propagate Configuration Y commitment to Ch 4 §4.3 and Ch 5 §4 — **DONE**
+
+**Status:** Done (May 2026).
+
+**What was done:**
+- [Ch 4 §4.3a](04-the-closure-condition.md): added explicit Configuration Y commitment with cross-reference to Ch 8 §5 and a note on the k-cross-terms-per-link structure with grid-duality consistency.
+- [Ch 5 §4.6](05-metric-self-consistency.md): added scope-note blocks for (i) σ = 0 caveat with forward pointer to Ch 8 §2.2 (extending TODO-M2 to the σ ≠ 0 case); (ii) Configuration Y commitment with the k-cross-terms-per-link statement.
+- [Ch 6 §6.4](06-handedness-and-pairs.md) (new subsection): added the R_u-conjugate vs R_w-conjugate distinct-roles framing from Ch 8 §3, with subsequent §§6.5–6.7 renumbered. The new subsection clarifies that R_u-conjugate split is about "natural-particle definition shifting under shear" while R_w-conjugate split is the framework's chirality-bias variable.
+- [Ch 8 §inheritance](08-shear-and-fractional-charge.md): cross-reference to Ch 6 updated from §6.4 to §6.5 to track the renumbering.
+
+---
+
+### TODO-Ch9 — Write Chapter 9: Ratio and shear together
+
+**Status:** Open. Scoped in [work-ch9.md](work-ch9.md) (Sept 2026).
+
+**What's at stake.** Chapters 7 (ratio alone) and 8 (shear alone) treat the two metric parameters as independent. But the framework's three qualitative sheet types — lepton-like, neutrino-like, hadronic-like — each correspond to a *specific combination* of σ and ε, not to a single parameter alone. The lepton-like sheet's character (single isolable charged primitive at moderate mass, substantial parity violation) needs both large ε and substantial σ. The neutrino-like sheet's character (near-degenerate chirality pairs, oscillation) needs both ε near 1 and σ near zero. The hadronic-like sheet's 3-component structure needs both small ε and moderate σ. Neither Ch 7 nor Ch 8 derives these joint structural patterns.
+
+Ch 9 is also the substrate for the eventual downstream exercise: given a sheet's measured properties (mass, gauge structure, observable charge), derive the metric values (diagonals + cross-term) for that sheet. Metric-charge does not handle specific sheets; Ch 9 provides the general-sheet model from which sheet-specific work can build.
+
+**Scope of fix (per [work-ch9.md](work-ch9.md)):**
+- Combined (σ, ε) parameter space (§§1–2 of work-ch9.md)
+- Single-axis dominance puzzle and resolution candidates (§3)
+- σ → 1 principal-axis suppression mechanism — rigorous treatment with integer-ε / non-integer-ε cases (§4)
+- Three structural regimes by combined (σ, ε) (§5)
+- Three sheet types — qualitative correspondence (§6)
+- Towards "metric from observables" (§8.6)
+
+**Dependencies:**
+- TODO-M8(a)'s φ⁴ inter-component calculation feeds Ch 9's hadronic-sheet derivation. Best done before Ch 9's write-up so the chapter can commit to mechanism (a) or forward.
+- TODO-Ch8a (Configuration Y propagation) should be done first so Ch 9 inherits the commitment cleanly.
+
+**Estimate:** Multi-day chapter write-up after dependencies settle.
+
+**Suggested order:** After TODO-M8(a)'s φ⁴ calculation. Before TODO-P1 (closing summary), which needs Ch 9's combined-parameter structure to be present.
 
 ---
 
@@ -203,5 +232,9 @@ Add one sentence noting the different transformation properties under R_J that e
 
 ## Cross-cutting observations
 
-- The remaining substantive items (M2, M8(a), L5, N2) are all about *carrying through* what the framework already structurally predicts. None of them require new framework ingredients; they require honest computation against the existing structure. This is the right kind of remaining work for a project that is framing-complete after the work1 refactor.
-- The matter/antimatter origin question — opened by Ch 6 §6's chirality finding — is the one place where the framework currently has *no* derived mechanism for a structural property the user expects to be physically meaningful. The framework now sharply commits: σ_uw biases chirality *within particles*, not matter/antimatter populations. Where matter/antimatter bias does come from is forwarded to substrate-level (grid-primitive) work; the user has indicated they have ideas to discuss separately.
+- The remaining substantive items partition into three classes after the Ch 8 refactor (Sept 2026):
+  - **Computations within or adjacent to linear theory** (M2 at σ = 0 properties 1–4, L5 sign audit, N2 tower selection): honest computation against existing structure. Tractable.
+  - **The single load-bearing linear-adjacent computation** (M8(a)'s φ⁴ inter-component coupling): the calculation that determines whether metric-charge derives k = 3 internally or forwards to grid-duality / metric-binding. Multi-day.
+  - **Chapter-level write-ups** (TODO-Ch9 Ratio-and-shear unified chapter; TODO-Ch8a Configuration Y propagation to Ch 4/Ch 5; TODO-P1 closing summary): structural-finding consolidation work. These depend on the computations settling first.
+- The matter/antimatter origin question — opened by Ch 6 §6's chirality finding and confirmed by the Ch 8 refactor — is the one place where the framework has *no* derived mechanism for a structural property the user expects to be physically meaningful. σ_uw biases chirality *within particles*, not matter/antimatter populations. Where matter/antimatter bias does come from is forwarded to substrate-level (grid-primitive) work.
+- The Ch 8 refactor sharpened *what shear does on its own*; the Ch 9 work-up (when done) will sharpen *what ratio and shear do together*, including how the (σ, ε) parameter space supports the framework's three sheet types and how a sheet's metric can be derived from its observed properties — the substrate for sheet-specific downstream work.
