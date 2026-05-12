@@ -206,7 +206,7 @@ At half-integer σε, two adjacent T(m, 1) primitives are mass-degenerate. The s
 
 ## 6. Three sheet types — qualitative correspondence
 
-The framework needs to accommodate three structurally distinct sheet types. **The analysis below is qualitative.** Quantitative engagement requires resolving the parametrization issue (§7), carrying out the φ⁴ inter-component calculation ([work-m8a.md §6.5](work-m8a.md)), and computing the neutrino oscillation period explicitly.
+The framework needs to accommodate three structurally distinct sheet types. **The analysis below is qualitative.** Quantitative engagement requires the σ → 1 mechanism's translation to s-form for empirical correspondence (§7), carrying out the φ⁴ inter-component calculation ([work-m8a.md §6.5](work-m8a.md)), and computing the neutrino oscillation period explicitly. The parametrization itself is already settled at [Ch 1 §4](01-foundation.md); §7 below addresses the remaining quantitative-translation question.
 
 ### 6.1 Lepton-like sheet — "principal-axis-aligned charge"
 
