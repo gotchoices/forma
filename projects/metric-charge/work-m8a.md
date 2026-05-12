@@ -2,7 +2,7 @@
 
 This file scopes a Chapter 8 refactor focused on **what shear σ_uw does to a particle sheet in isolation** — the spectrum, the gauge structure, the multi-link inventory, and the natural-particle definition under shear. It is the σ-alone half of the broader (σ, ε) story; the combined-parameter content (regime map, three sheet types, σ → 1 principal-axis suppression, parametrization choice) lives in [work-ch9.md](work-ch9.md).
 
-The file responds to [TODO-M8(a)](STATUS.md) and to the prior reviews [review.md](review.md) and [review-m8a.md](review-m8a.md). The central honest finding: **linear theory does not select a preferred k for multi-link configurations.** The σε product selects the lightest closure-satisfying primitive's ring-winding; nothing in pure linear theory selects k for multi-links. Identifying the next-most-tractable mechanism within metric-charge's scope (φ⁴ inter-component coupling) is the load-bearing open work.
+The file responds to [TODO-M8(a)](STATUS.md) and to [review.md](review.md). The central honest finding: **linear theory does not select a preferred k for multi-link configurations.** The σε product selects the lightest closure-satisfying primitive's ring-winding; nothing in pure linear theory selects k for multi-links. Identifying the next-most-tractable mechanism within metric-charge's scope (φ⁴ inter-component coupling) is the load-bearing open work.
 
 Conventions follow the rest of the project ([Ch 1](01-foundation.md): u = ring, w = tube; ε ≡ L_u/L_w; closure rule n | m on (m, n) integer labels). M ≡ (ℏ/c)·(2π/L_w) is the natural mass scale.
 
