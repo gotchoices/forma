@@ -6,6 +6,8 @@ The file responds to [TODO-M8(a)](STATUS.md) and to the prior reviews [review.md
 
 Conventions follow the rest of the project ([Ch 1](01-foundation.md): u = ring, w = tube; ε ≡ L_u/L_w; closure rule n | m on (m, n) integer labels). M ≡ (ℏ/c)·(2π/L_w) is the natural mass scale.
 
+**Naming note.** This file predates [work-discipline.md](work-discipline.md) and uses **σ_m** for what work-discipline (and the eventual chapter rewrite) names as bare σ — the off-diagonal metric entry of the (u, w) sub-block — and **σ_L** for what work-discipline names as s — the lattice-shear coefficient used by R-track studies. The transforms and structural content are unchanged; only the labels differ. When this file is consumed by the chapter rewrite, σ_m → σ and σ_L → s.
+
 ---
 
 ## Sections
