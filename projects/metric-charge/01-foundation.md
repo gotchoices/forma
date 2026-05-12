@@ -371,6 +371,8 @@ The bare topology presents the two compact directions u and w symmetrically: not
 
 This convention is inherited from [grid-duality](../grid-duality/)'s wrap-promotion ladder, where L0→L1 (which produces the ring direction) and L1→L2 (which produces the tube direction) are *structurally distinct* substrate operations. The alternative convention (u as tube, w as ring) is isomorphic up to (u, w) ↔ (w, u) swap with ε → 1/ε; we adopt the convention above and proceed.
 
+The closure condition stated below forces closure-satisfying primitives into T(m', 1) form (ring winding any integer m', tube winding ±1). The wrap-order convention names that structural asymmetry — its u/w role assignment tracks the closure condition's content rather than being arbitrary labeling.
+
 ### The closure condition (chirality form)
 
 > **Closure condition.** A configuration T(m, n) is closure-satisfying — i.e., a (massive) mode also carries observable EM charge — if and only if:

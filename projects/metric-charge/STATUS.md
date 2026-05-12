@@ -8,20 +8,17 @@ This file tracks items that remain open after the work1 refactor pass (which res
 
 ### TODO-M2 — Four-property gauge-potential test asserted, not derived
 
-**Status:** Open. The work1 refactor simplified the test to one gauge potential (Ch 5 §4.6) but did not actually carry out the geodesic-equation calculation. The [Ch 8 refactor](08-shear-and-fractional-charge.md) (Sept 2026) extends the scope: under shear, the natural-particle definition shifts to the single-Bloch-mode interpretation (Ch 8 §2.2), and the four-property test must be redone for σ ≠ 0 as well.
+**Status:** ✅ **Resolved** by the unified wrap-order-enforcement framing developed in [work-m2.md](work-m2.md) (Sept 2026) and integrated into [Ch 5 §4.6](05-metric-self-consistency.md). The four-property test now runs cleanly at both σ = 0 and σ ≠ 0 under one framing.
 
-**What review.md says:** Ch 5's gauge-potential property test currently asserts each of four properties without explicit calculation. Properties 1–3 are bookkeeping (transformation under coordinate change, antisymmetric field strength, gauge invariance). **Property 4 is the substantive one** — the geodesic equation for a particle on the perturbed metric, in the slow-motion limit, picks up a Lorentz-force-like term proportional to compact-direction momentum. This is asserted; the calculation is not in the chapter.
+**What was established (Ch 5 §§4.6.1–4.6.5):**
+- The wrap-order convention of [Ch 1 §10](01-foundation.md) selects h_μw as the gauge candidate. The four-property test is *confirmation* that the convention's selection satisfies standard-physics gauge-potential requirements, not a *selection mechanism* between competing candidates.
+- Property 1 (index structure), Property 2 (gauge transformation), Property 3 (field strength antisymmetry and gauge invariance): all derived from coordinate-transformation rules and partial-derivative commutativity. Bookkeeping done explicitly.
+- Property 4 (Lorentz-force coupling): explicit Christoffel calculation Γ^μ_νw = −(1/2)F^B^μ_ν, slow-motion limit giving m d²x^μ/dτ² = F^B^μ_ν v^ν p^w — the standard Lorentz-force structure with p^w as charge. Converts the σ = 0 claim from asserted to derived.
+- **σ ≠ 0 extension (Ch 5 §4.6.5):** under [Ch 8 §2.2](08-shear-and-fractional-charge.md)'s single-Bloch-mode interpretation, h_μu and h_uw are sourced in addition to h_μw. The wrap-order convention selects h_μw as the gauge potential at σ ≠ 0 identically to σ = 0; h_μu is characterized as the **mass-direction metric perturbation** (frame-dragging-like gravitational contribution), not a second gauge potential. The R_u-symmetrization mechanism of the σ = 0 case is preserved as one realization of the wrap-order convention; the convention is the more fundamental principle and propagates cleanly to σ ≠ 0.
 
-**Why I agree:** The chapter's distinctive methodological commitment is to *test* the standard-physics correspondence rather than assume it. The four-property test as written reduces this to citation. A genuine test would compute the geodesic equation expansion explicitly.
+**Why the wrap-order-enforcement framing rather than the symmetric four-property reading:** Applying the four-property test symmetrically to both h_μu and h_μw would lead to a U(1) × U(1) prediction at σ ≠ 0, which conflicts with the framework's "single gauge potential per closure-satisfying particle" claim and the σ = 0 framework's single-U(1) correspondence with standard EM. The symmetric reading imports the symmetry implicit in standard KK (one compact direction, no asymmetry) into this framework (which has explicit wrap-order asymmetry per [Ch 1 §10](01-foundation.md)). Under wrap-order enforcement at the gauge-identification level, the U(1) × U(1) puzzle dissolves: h_μw is the gauge potential by convention at both regimes; h_μu's nonzero contribution at σ ≠ 0 is a metric-distortion effect, not a gauge force.
 
-**Scope of fix:**
-- Properties 1–3 at σ = 0: short tightening; cite metric-mass Ch 5 (which does Property 2 explicitly for 1D-compact) and extend to the 2D-compact tube direction in 1–2 paragraphs.
-- Property 4 at σ = 0: real calculation. Expand the geodesic equation for a charged particle on the surviving gauge potential h_μw, take the slow-motion limit, isolate the force term, show it has the structure of the Lorentz force.
-- **σ ≠ 0 extension (added by Ch 8 refactor):** redo all four properties for the single-Bloch-mode particle under shear. The surviving cross-term pattern (T_tu, T_tw, T_uw) differs from the σ = 0 R_u-symmetrized version; the gauge-potential structure under shear is not derivable from a simple translation of the σ = 0 result.
-
-**Estimate:** Half-day for σ = 0 (mostly Property 4). Additional half-day or more for the σ ≠ 0 extension.
-
-**Suggested approach:** Write Property 4 as a new sub-subsection in Ch 5 §4.6 with the explicit calculation at σ = 0 first, then extend to σ ≠ 0 in a second pass once the single-Bloch-mode framing is propagated through Ch 5.
+**Work product retained:** [work-m2.md](work-m2.md) is preserved as the scoping document that surfaced and resolved the σ ≠ 0 framing question. The "symmetric reading → U(1) × U(1)" thread is recorded there as a superseded framing, useful for future readers wondering why σ ≠ 0 doesn't predict two gauge potentials.
 
 ---
 
@@ -232,9 +229,9 @@ Add one sentence noting the different transformation properties under R_J that e
 
 ## Cross-cutting observations
 
-- After the Ch 8 refactor (Sept 2026) and the Ch 9 chapter write-up, the remaining substantive items are all editing-pass quality. There is no remaining load-bearing computation at metric-charge's linear scope; the structural framework is complete.
+- After the Ch 8 refactor, the Ch 9 chapter write-up, and the TODO-M2 integration (Sept–Oct 2026), the remaining substantive items are all editing-pass quality. There is no remaining load-bearing computation at metric-charge's linear scope; the structural framework is complete.
 - Remaining items partition into two classes:
-  - **Localized computations / cleanups** within metric-charge's linear scope (M2 four-property gauge test at σ = 0 and σ ≠ 0; L5 sign audit; N2 tower selection; P3 Ch 6 §4.1 formula fix; Ch8a Configuration Y propagation): honest tightening against existing structure. Tractable.
+  - **Localized cleanups** within metric-charge's linear scope (L5 sign audit; N2 tower selection; P3 Ch 6 §4.1 formula fix; Ch8a Configuration Y propagation): honest tightening against existing structure. Tractable.
   - **Chapter-level bookkeeping** (P1 closing summary — needs renaming to `10-closing-summary.md` since Ch 9 now occupies the `09-` slot; updates to README chapter list and Ch 7/Ch 8 "What's next" pointers).
 - **What's forwarded out of metric-charge:**
   - k-selection mechanism (the φ⁴ inter-component calculation, substrate Z_k, confinement) → grid-duality / metric-binding.

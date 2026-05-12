@@ -272,6 +272,8 @@ Three structural-mechanism observations support this fit:
 
 The architectural question of §2 is resolved here by mechanism (d). This is the cleanest structural picture metric-charge can offer for the lepton-like sheet, contingent on the §6 translation analysis confirming that the σ → 1 mechanism's predictions survive to the s-form used by R-track studies.
 
+**Gauge structure at σ near 1.** The wrap-order convention of [Ch 1 §10](01-foundation.md) keeps the gauge-potential identification clean across σ regimes: h_μw is the single U(1) gauge potential, and h_μu's contribution under shear is the mass-direction metric perturbation rather than a second gauge field (see [Ch 5 §4.6.5](05-metric-self-consistency.md)). The lepton-like sheet's "single isolable charged primitive" framing is preserved at σ near 1 — the strong shear that activates the §3 suppression mechanism does not introduce additional gauge structure.
+
 ### 5.2 Hadronic-like sheet — "three-component charge tower"
 
 Multiple closure-satisfying primitives in a three-component structural organization, with each component carrying 1/3 of the link's integer total charge.
