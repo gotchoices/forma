@@ -166,14 +166,23 @@ $$
 
 Both components contribute additively. When |α| = |β|, the total energy density (and gravitational mass) is **doubled** compared to a single mode.
 
-The off-diagonal entries:
+The off-diagonal entries fall into two categories that transform differently under joint reversal (m, n) ↔ (−m, −n) and therefore behave differently under the equal-amplitude pair:
 
-<!-- T_off-diagonal ∝ |α|² - |β|² -->
+**Spacetime↔compact entries (T_tu, T_tw).** These are linear in each compact-direction wavenumber individually (T_tu ∝ ω·k_u, T_tw ∝ ω·k_w). Under joint reversal, each flips sign — the (−m, −n) component's contribution is opposite to the (m, n) component's:
+
+<!-- T_tu, T_tw ∝ |α|² - |β|² -->
 $$
-T_{\mu\nu}^{\text{off-diag}} \;\propto\; |\alpha|^2 - |\beta|^2
+T^{\,\text{spacetime}\leftrightarrow\text{compact}}_{\mu\nu} \;\propto\; |\alpha|^2 - |\beta|^2
 $$
 
-The opposite-handedness components source off-diagonals of opposite sign (per §2.3), so the contributions subtract. This generalizes the [metric-mass Chapter 5 §7](../metric-mass/05-metric-self-consistency.md) ±n cancellation result to the 2D-compact setting; the same structural cancellation operates in both projects.
+**Compact↔compact entry (T_uw).** This is bilinear in (k_u, k_w). Under joint reversal both wavenumbers flip, so the product k_u·k_w is *invariant*. The two components contribute additively:
+
+<!-- T_uw ∝ |α|² + |β|² -->
+$$
+T^{\,\text{compact}\leftrightarrow\text{compact}}_{uw} \;\propto\; |\alpha|^2 + |\beta|^2
+$$
+
+So spacetime↔compact off-diagonals (the gauge-potential channel) generalize the [metric-mass Chapter 5 §7](../metric-mass/05-metric-self-consistency.md) ±n cancellation result to the 2D-compact setting — the same structural cancellation operates in both projects, eliminating the EM gauge potential under equal amplitudes. T_uw, by contrast, doubles under equal amplitudes and survives as the chirality-encoding compact-compact cross-term ([Chapter 5 §5.2](05-metric-self-consistency.md)). The asymmetric behavior of the two categories under R_J is what distinguishes the cancellation-pair construction's outcome: gauge potentials cancel, chirality field doubles.
 
 ### 4.2 The cancellation case |α| = |β|
 

@@ -159,6 +159,15 @@ Genuine torus knots are a **separate mass-only category** from single-axis modes
 
 This is a substantive framework prediction: **the entire genuine-torus-knot tower** (T(2, 3), T(2, 5), T(3, 4), T(3, 5), T(2, 7), ...) **carries mass but no observable EM charge.** Whether any of these correspond to standard physics' neutral massive states (neutrinos, neutral mesons, dark-matter candidates, the Higgs) is downstream MaSt-correspondence work. The framework provides multiple structural-neutrality mechanisms; standard physics has multiple categories of neutral massive states; how they map is open.
 
+**The tower is large; what selects which members populate.** Standard physics observes only a small number of stable neutral massive species; the framework's tower (T(2, 3), T(2, 5), T(3, 4), T(3, 5), T(2, 7), T(3, 7), T(4, 5), …) is much larger. This is not a contradiction — it is a distinction between what the framework *predicts as possible* (every closure-failing genuine torus knot configuration is structurally allowed) and what *gets populated* (which depends on energetics and stability mechanisms not derivable at this project's linear-theory scope). Candidate selection mechanisms operating on the tower:
+
+- **Mass cost.** Heavier modes (larger √((m/ε)² + n²) in the dispersion of [Chapter 2 §3](02-modes-on-a-sheet.md)) are energetically more costly to populate; thermal/equilibrium occupation suppresses high-(m, n) members.
+- **Aspect-ratio dependence.** Per [Chapter 7](07-aspect-ratio-and-character.md), the relative mass of (m, n) modes shifts with ε; at extreme ε, only specific (m, n) values are competitive at low energy, so the tower is not uniformly populated even before energetics is considered.
+- **Multi-knot decay.** Heavier members of the tower may decay into multi-link configurations of T(m, 1) primitives via energetics not captured at this project's linear-theory level — forwarded to [metric-binding](../metric-binding/) for the multi-knot energetics treatment.
+- **Predictive content distinction.** What the framework predicts is *which configurations are possible* under the closure rule; what is *populated* (and how stable each is) depends on energetics outside metric-charge's scope.
+
+The framework's commitment is therefore: the tower is part of the predicted structural inventory; specific selection among its members is downstream work. This is consistent with the framework being a structural classifier of closure-eligible configurations rather than a populated-state predictor.
+
 ### 4.3 Multi-component links — closure-satisfying iff primitive is T(m, 1)
 
 Multi-component links T(k·m', k·n') decompose into k disjoint copies of the primitive T(m', n') with gcd(m', n') = 1. Two cases:

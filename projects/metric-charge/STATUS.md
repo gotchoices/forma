@@ -40,8 +40,6 @@ This file tracks items that remain open after the work1 refactor pass (which res
 
 metric-charge sets up the inventory (which (m, n) configurations are closure-satisfying, what structural consequences flow under Configuration Y, what fractional-charge organization a k-component multi-link produces); the k-selection question itself is downstream.
 
-**Minor follow-on (non-blocking):** Ch 8 §6.5 currently says the framework "should attempt the φ⁴ calculation before forwarding." This wording overcommits relative to Ch 1 §11's nonlinear-backreaction deferral. A small framing tightening in Ch 8 §6.5 (and parallel mentions in Ch 9 §5.2 / §5.4 / §8) would align the prose with the forwarded-to-metric-binding stance. Single editing pass.
-
 ---
 
 ### TODO-L5 — Fractional-charge sign assignments not worked out
@@ -68,21 +66,9 @@ metric-charge sets up the inventory (which (m, n) configurations are closure-sat
 
 ### TODO-N2 — Infinite tower of mass-only states needs engagement
 
-**Status:** Open. Identified as Light/Moderate by reviewer.
+**Status:** ✅ **Resolved** (May 2026). Added a short paragraph to [Ch 4 §4.2](04-the-closure-condition.md) after the "substantive framework prediction" claim about the genuine-torus-knot tower, listing the four candidate selection mechanisms (mass cost, aspect-ratio dependence, multi-knot decay, predictive-content distinction). The framework's stance is now explicit: the tower is part of the *predicted* structural inventory; specific *population* selection is downstream work, with multi-knot decay forwarded to [metric-binding](../metric-binding/).
 
-**What review.md says:** The closure rule predicts the entire genuine-torus-knot tower (T(2, 3), T(2, 5), T(3, 4), T(3, 5), T(2, 7), …) as closure-failing — mass + chirality field, no observable EM. Standard physics has only a small number of stable neutral massive species. The framework currently lists the prediction without engaging with the tension.
-
-**Why I agree:** This is a substantive consequence of the closure rule. The framework's predictive content for non-charged massive states is significantly larger than standard physics observes. Brief engagement with selection mechanisms (mass cost, decay channels, aspect-ratio cuts) would clarify what the framework actually predicts vs what it merely allows.
-
-**Scope of fix (modest):** Add a short subsection or paragraph to Ch 4 or Ch 9 acknowledging the tower and listing candidate selection mechanisms using the framework's existing machinery:
-- *Mass cost* — heavier modes (larger √(m² + n²)) are energetically more costly to populate.
-- *Aspect-ratio dependence* (Ch 7) — at extreme ε, only specific (m, n) values are stable; the tower is not uniformly populated.
-- *Multi-knot decay* — forwarded to [metric-binding](../metric-binding/) — heavier members of the tower may decay into multi-link configurations of T(m, 1) primitives via energetics not captured at this project's linear-theory level.
-- *Predictive content distinction* — what the framework predicts is *what's possible*; what's *populated* depends on energetics not in scope here.
-
-**Estimate:** Single editing pass; one paragraph or short subsection.
-
-**Suggested order:** Easy. Can be done independently of other todos.
+**Original issue:** The framework predicts a much larger tower of closure-failing mass-only states than standard physics observes; without engagement with selection mechanisms, the predictive content read ambiguously as either "framework predicts many neutral massive species" or "framework allows many but doesn't predict their populations."
 
 ---
 
@@ -155,53 +141,23 @@ The three items below come from the post-refactor pass of [review.md](review.md)
 
 ### TODO-Ch9 — Write Chapter 9: Ratio and shear together
 
-**Status:** Open. Scoped in [work-ch9.md](work-ch9.md) (Sept 2026).
+**Status:** ✅ **Resolved** (May 2026). Chapter 9 written and integrated as [09-ratio-and-shear.md](09-ratio-and-shear.md) (~490 lines, finished form). The chapter brings ratio ε and shear σ_uw together into a unified treatment of the (σ_uw, ε) parameter space, identifies the three structural regimes, characterizes the three sheet types qualitatively, develops the σ → 1 principal-axis suppression mechanism, addresses the single-axis dominance puzzle, treats the σ ↔ s translation for empirical correspondence, and sets up the "metric from observables" inversion substrate.
 
-**What's at stake.** Chapters 7 (ratio alone) and 8 (shear alone) treat the two metric parameters as independent. But the framework's three qualitative sheet types — lepton-like, neutrino-like, hadronic-like — each correspond to a *specific combination* of σ and ε, not to a single parameter alone. The lepton-like sheet's character (single isolable charged primitive at moderate mass, substantial parity violation) needs both large ε and substantial σ. The neutrino-like sheet's character (near-degenerate chirality pairs, oscillation) needs both ε near 1 and σ near zero. The hadronic-like sheet's 3-component structure needs both small ε and moderate σ. Neither Ch 7 nor Ch 8 derives these joint structural patterns.
+**Predecessor scoping document:** [work-ch9.md](work-ch9.md) — preserved as the scoping document that surfaced the chapter's structural content and the parametrization decisions.
 
-Ch 9 is also the substrate for the eventual downstream exercise: given a sheet's measured properties (mass, gauge structure, observable charge), derive the metric values (diagonals + cross-term) for that sheet. Metric-charge does not handle specific sheets; Ch 9 provides the general-sheet model from which sheet-specific work can build.
-
-**Scope of fix (per [work-ch9.md](work-ch9.md)):**
-- Combined (σ, ε) parameter space (§§1–2 of work-ch9.md)
-- Single-axis dominance puzzle and resolution candidates (§3)
-- σ → 1 principal-axis suppression mechanism — rigorous treatment with integer-ε / non-integer-ε cases (§4)
-- Three structural regimes by combined (σ, ε) (§5)
-- Three sheet types — qualitative correspondence (§6)
-- Towards "metric from observables" (§8.6)
-
-**Dependencies:**
-- TODO-M8(a)'s φ⁴ inter-component calculation feeds Ch 9's hadronic-sheet derivation. Best done before Ch 9's write-up so the chapter can commit to mechanism (a) or forward.
-- TODO-Ch8a (Configuration Y propagation) should be done first so Ch 9 inherits the commitment cleanly.
-
-**Estimate:** Multi-day chapter write-up after dependencies settle.
-
-**Suggested order:** After TODO-M8(a)'s φ⁴ calculation. Before TODO-P1 (closing summary), which needs Ch 9's combined-parameter structure to be present.
+**Remaining follow-on bookkeeping** (tracked under TODO-P1 below): update [README.md](README.md) chapter list to include Ch 9 and shift the closing summary to `10-closing-summary.md`; update Ch 7 §8 and Ch 8 §9 "What's next" pointers to direct to Ch 9 before the closing summary.
 
 ---
 
 ### TODO-P3 — Split Ch 6 §4.1's off-diagonal formula into two cases
 
-**Status:** Open. Targeted formula correction.
+**Status:** ✅ **Resolved** (May 2026). [Ch 6 §4.1](06-handedness-and-pairs.md) now splits the off-diagonal entries into two categories with explicit derivations of how each transforms under joint reversal (m, n) ↔ (−m, −n):
+- **Spacetime↔compact (T_tu, T_tw)** ∝ |α|² − |β|² — linear in each wavenumber individually, flips sign under joint reversal, cancels under equal amplitudes (the gauge-potential channel).
+- **Compact↔compact (T_uw)** ∝ |α|² + |β|² — bilinear in (k_u, k_w), invariant under joint reversal, doubles under equal amplitudes (the chirality-field channel).
 
-**What review.md says:** [Chapter 6 §4.1](06-handedness-and-pairs.md) lines 158–176 summarizes the stress-energy of a sign-conjugate pair with a single off-diagonal formula:
+The split removes the tension between §4.1's previous single-formula presentation and §4.2's claim that R_J-symmetrization "cancels the spacetime↔compact gauge potential and leaves only diagonal mass plus the chirality-encoded compact-compact cross-term T_uw."
 
-> $$T_{\mu\nu}^{\text{off-diag}} \propto |\alpha|^2 - |\beta|^2$$
-
-This treats "T_off-diagonal" as a single category that cancels under equal amplitudes. Correct for spacetime↔compact entries (T_tu, T_tw — odd under (m, n) ↔ (−m, −n)). **Incorrect for the compact↔compact entry T_uw**, which is bilinear in (k_u, k_w) and *invariant* under joint reversal — under equal amplitudes T_uw doubles rather than cancels.
-
-The §4.1 imprecision is in tension with §4.2's claim that R_J-symmetrization "cancels the spacetime↔compact gauge potential and leaves only diagonal mass plus the chirality-encoded compact-compact cross-term T_uw," and with [Chapter 5 §4.2 / §5.2](05-metric-self-consistency.md), which explicitly computes T_uw ≠ 0 under R_J.
-
-**Why I agree:** The math is wrong as written. A reader following §4.1 alone could conclude all off-diagonals cancel, contradicting the explicit Ch 5 calculation and the §4.2 lead paragraph in the same chapter. T_uw and T_tu/T_tw transform differently under R_J and need separate tabulation.
-
-**Scope of fix:** Replace §4.1's single off-diagonal formula with two:
-- spacetime↔compact (T_tu, T_tw): ∝ |α|² − |β|², cancels under equal amplitudes;
-- compact↔compact (T_uw): ∝ |α|² + |β|², doubles under equal amplitudes, recording the chirality-field cross-term.
-
-Add one sentence noting the different transformation properties under R_J that explain the asymmetric outcome.
-
-**Estimate:** Small targeted edit; under an hour.
-
-**Suggested order:** Independent. Can be done immediately.
+**Original issue:** [Chapter 6 §4.1](06-handedness-and-pairs.md) previously presented the off-diagonal stress-energy with a single formula T_off-diag ∝ |α|² − |β|², treating all off-diagonals as cancelling under equal amplitudes. This was wrong for T_uw (which transforms differently under joint reversal) and in tension with §4.2's R_J-symmetrization claim and Chapter 5's explicit T_uw ≠ 0 calculation under R_J.
 
 ---
 
@@ -229,10 +185,10 @@ Add one sentence noting the different transformation properties under R_J that e
 
 ## Cross-cutting observations
 
-- After the Ch 8 refactor, the Ch 9 chapter write-up, and the TODO-M2 integration (Sept–Oct 2026), the remaining substantive items are all editing-pass quality. There is no remaining load-bearing computation at metric-charge's linear scope; the structural framework is complete.
-- Remaining items partition into two classes:
-  - **Localized cleanups** within metric-charge's linear scope (L5 sign audit; N2 tower selection; P3 Ch 6 §4.1 formula fix; Ch8a Configuration Y propagation): honest tightening against existing structure. Tractable.
-  - **Chapter-level bookkeeping** (P1 closing summary — needs renaming to `10-closing-summary.md` since Ch 9 now occupies the `09-` slot; updates to README chapter list and Ch 7/Ch 8 "What's next" pointers).
+- After the Ch 8 refactor, the Ch 9 chapter write-up, the TODO-M2 integration, the N2 tower-selection paragraph, and the P3 formula split (Sept 2026–May 2026), the framework is **structurally complete** for the single-sheet model. There is no remaining load-bearing computation at metric-charge's linear scope.
+- Two items remain open within metric-charge:
+  - **TODO-L5** — Fractional-charge sign audit. Half-day structural sign analysis tracing how (m, n) signs determine charge sign under the single-Bloch-mode interpretation.
+  - **TODO-P1** — Closing summary chapter. Half-day-to-day write-up consolidating Chapters 1–9, plus the bookkeeping rename (`09-` → `10-closing-summary.md`), README chapter-list update, and Ch 7/Ch 8/Ch 9 "What's next" pointer updates. Best done last so it can incorporate L5's finding.
 - **What's forwarded out of metric-charge:**
   - k-selection mechanism (the φ⁴ inter-component calculation, substrate Z_k, confinement) → grid-duality / metric-binding.
   - Multi-sheet composition rules (Disc1, Disc2) → metric-binding.
