@@ -55,5 +55,14 @@ Each project's README should:
   sheet. **Status: framed; awaiting first chapter.**
 - [metric-binding/](metric-binding/) — Follow-up to metric-charge,
   taking up multi-knot interactions on a 2D sheet — energy at
-  separation, force laws, bound-state regimes. **Status: framed;
-  awaiting first chapter.**
+  separation, force laws, bound-state regimes. General-framework
+  work files in [work/](metric-binding/work/) (cancellation,
+  partial knots, Z₃ confinement, particle/mediator vocabulary).
+  **Status: work-file-driven; holding pattern while sheet-proton
+  advances.**
+- [sheet-proton/](sheet-proton/) — Proton-sheet-specific
+  exploration: what does the sheet hosting the proton, neutron,
+  and nuclear physics uniquely look like? Quark-flavor mappings,
+  meson spectrum, Yukawa mediator for strong force, corrugated-
+  torus geometry candidate. **Status: active; work-file-driven;
+  initial computational results pending.**
