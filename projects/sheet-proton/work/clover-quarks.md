@@ -401,15 +401,16 @@ This is analogous to σ_uw in spirit (a deformation parameter beyond the bare as
 
 ### 8.3 Parameter count summary
 
-The corrugated proton sheet, with twist τ = 1/3 fixed, has:
+The corrugated proton sheet has the following open variables:
 
-| Parameter | Role | Analog in metric-charge |
-|---|---|---|
-| ε = L_total / L_θ | Aspect ratio (tube-circumference / ring-circumference) | L_u / L_w (directly) |
-| χ = r_saddle / r_lobe | Corrugation depth | σ_uw (analogous, different origin) |
-| τ | Twist (lobes per ring revolution) | New parameter — no analog in flat torus |
+| Variable | Role | Status | Analog in metric-charge |
+|---|---|---|---|
+| ε = L_total / L_θ | Aspect ratio (tube-circumference / ring-circumference) | **Open** | L_u / L_w (directly) |
+| χ = r_saddle / r_lobe | Corrugation depth | **Open** | σ_uw (analogous; different origin) |
+| τ | Twist (cross-section advance per radian of θ) | **Open** — pinned to 1/3 only by the choice to enforce Z₃ closure in one revolution | New parameter; for the parameter-shift embedding, τ also plays the role of the metric shear σ_uw |
+| Embedding | Parameter-shift vs rotation surface (see §9) | **Open** — binary choice | No analog; the flat torus has no embedding ambiguity |
 
-With τ fixed at 1/3 (forced by 3-fold symmetry alignment), the corrugated sheet has the **same 2-parameter family** as metric-charge's flat sheet. The structural mapping is:
+Holding all four open, the corrugated sheet has a **richer parameter space** than metric-charge's flat sheet — but the topological proton structure (§§1–3) does not depend on τ's exact value or on the embedding choice. Only the **dynamical predictions** (mode frequencies, masses) depend on τ and on the embedding. The structural mapping at τ = 1/3 with parameter-shift embedding is:
 
 - ε ↔ L_u/L_w (direct)
 - χ ↔ σ_uw (analogous; σ_uw measures the tilt-between-compact-directions, χ measures the geometric corrugation depth)
@@ -419,6 +420,15 @@ Whether χ and σ_uw produce *the same physics* (just two languages for the same
 ### 8.4 Overall scale
 
 R_major is an overall length scale (and through ε, sets the absolute size of r_lobe and r_saddle once ε and χ are fixed). Per the no-premature-pinning rule, R_major remains symbolic at this stage; it scales mass by R_major and dimensionful quantities accordingly.
+
+### 8.5 Why these variables stay open
+
+Per the no-premature-pinning rule, none of (ε, χ, τ, embedding) is fixed until the analysis forces a value. Concretely:
+
+- **ε** is constrained by the proton's mass-to-Compton-length scale, once we solve the eigenvalue problem in §11/13. Until then, it carries forward symbolically.
+- **χ** is constrained by mass ratios (e.g. m_u/m_d) and by the lobe/saddle arc-degree split (already forced to 240°/120° by D₆ + Gauss–Bonnet; χ remains free to set the corrugation depth).
+- **τ** is constrained by Z₃ closure to be of the form k/3 for integer k. The choice τ = 1/3 minimises the winding required for closure; whether nature picks 1/3 or some other k/3 is open.
+- **Embedding** is constrained by which surface produces the right mode spectrum. The two choices have identical topology, so any test that depends only on path-windings (quark assignment, β-decay topology, Z₃ confinement) is insensitive. Any test that depends on the metric (frequencies, masses) will distinguish them.
 
 ---
 
@@ -448,16 +458,29 @@ $$
 
 The cross-section plane at θ is spanned by N̂(θ) and B̂.
 
-### 9.3 Surface position with twist
+### 9.3 Surface position with twist — two embedding choices
 
-Embed the profile P(φ) = (P_x(φ), P_y(φ)) in the cross-section plane, with twist τ applied as a shift in φ:
+The twist τ can be realised in the embedding in two distinct ways. Both produce a closed T² with the same identification rules (§9.4) and so the same path-winding topology, but they describe *different surfaces in ℝ³* and *different induced metrics*. Which one is physical is an open question — see §9.5.
+
+**Embedding A: parameter-shift.** Apply τ as a shift in the profile parameter:
 
 <!-- r(θ, φ) = R_ring(θ) + P_x(φ + τθ) · N̂(θ) + P_y(φ + τθ) · B̂ -->
 $$
-\boxed{\;\vec{r}(\theta, \varphi) \;=\; \vec{R}_{\mathrm{ring}}(\theta) \;+\; P_x(\varphi + \tau\theta)\,\hat{N}(\theta) \;+\; P_y(\varphi + \tau\theta)\,\hat{B}\;}
+\vec{r}_A(\theta, \varphi) \;=\; \vec{R}_{\mathrm{ring}}(\theta) \;+\; P_x(\varphi + \tau\theta)\,\hat{N}(\theta) \;+\; P_y(\varphi + \tau\theta)\,\hat{B}
 $$
 
-With τ = 1/3.
+Under the change of coordinates ψ = φ + τθ, this becomes r_A = R_ring(θ) + P_x(ψ) N̂(θ) + P_y(ψ) B̂ — i.e. an **untwisted** corrugated torus carrying the twist purely in its boundary identification. The embedded clover cross-section is static (does not rotate with θ); only the φ-labels slide.
+
+**Embedding B: rotation.** Apply τ as a physical rotation of the cross-section in the (N̂, B̂) plane:
+
+<!-- r(θ, φ) = R_ring(θ) + [cos(τθ) P_x − sin(τθ) P_y] N̂(θ) + [sin(τθ) P_x + cos(τθ) P_y] B̂ -->
+$$
+\vec{r}_B(\theta, \varphi) \;=\; \vec{R}_{\mathrm{ring}}(\theta) \;+\; \bigl[\cos(\tau\theta)\,P_x(\varphi) - \sin(\tau\theta)\,P_y(\varphi)\bigr]\,\hat{N}(\theta) \;+\; \bigl[\sin(\tau\theta)\,P_x(\varphi) + \cos(\tau\theta)\,P_y(\varphi)\bigr]\,\hat{B}
+$$
+
+The clover cross-section physically rotates by τθ as θ advances. The embedded surface genuinely carries the twist; no reparameterisation makes it untwisted.
+
+With τ = 1/3, both embeddings close after one ring revolution (one Z₃ symmetry step).
 
 ### 9.4 Closure of the surface
 
@@ -484,9 +507,34 @@ $$
 
 This is a **twisted torus** — same topology as the flat T² (since the identifications are still generated by two independent cycles), but a different geometric realization.
 
+### 9.5 What the two embeddings share, and where they differ
+
+The two embeddings A and B agree on everything that is purely topological and disagree on everything that is metric-dependent:
+
+| Quantity | Embedding A (parameter-shift) | Embedding B (rotation) |
+|---|---|---|
+| Closure identification (θ, φ) ~ (θ+2π, φ+2π/3) | ✓ | ✓ |
+| Path winding numbers (n_θ, n_φ) | same | same |
+| Closure-condition rules (§2, §3) | same | same |
+| Z₃ confinement structure (§3.3) | same | same |
+| 1/3 precession per revolution | same | same |
+| Mode quantization rule k_θ = q − p/3 (§11) | same | same |
+| Embedded shape in ℝ³ | untwisted clover; lobes at fixed angular positions | clover rotates by τθ; lobes physically precess |
+| Induced metric g_ij (§10) | g_θφ = τ\|P'\|² | extra terms from cross-section rotation |
+| Laplacian eigenvalues / mode frequencies | spectrum_A | spectrum_B (different in general) |
+| Mass predictions from §13 | mass_A | mass_B (different in general) |
+
+The choice between A and B is therefore an **open variable** at the same level as ε, χ, and τ. It will be pinned only by the mass-spectrum analysis of §13 (or by an independent geometric argument we have not yet identified).
+
+§10 below derives the induced metric for **embedding A** (the parameter-shift formula). The corresponding derivation for embedding B is a one-page calculation deferred until we commit to one embedding.
+
+The numerical scripts in `scripts/corrugated_torus.py` support both via the `--embedding` flag. The accompanying renderings `outputs/torus_chi1.00_R5.0_pshift_phi-band.png` and `outputs/torus_chi1.00_R5.0_rot_phi-band.png` show the visual contrast: same phi-band coloring, but only embedding B visibly twists the clover around the ring.
+
 ---
 
 ## 10. The induced metric
+
+This section derives the induced metric for **embedding A (parameter-shift)** from §9.3. The corresponding derivation for embedding B (rotation) is structurally similar but produces additional g_θφ contributions from the cross-section rotation; it is deferred until §9.5's open question is resolved.
 
 ### 10.1 Tangent vectors
 
@@ -905,15 +953,17 @@ Using the helical translation symmetry (§10.3), reduce the 2D problem to 1D in 
 
 1. **Choice of parameterization (A vs B in §3.2).** Does the up-quark/down-quark distinction depend on whether we use equal-arc or literal-arc parameterization? Probably yes; need to commit to one.
 
-2. **Does the proton-as-3-precessing-quarks construction actually close cleanly?** §3.3 sketches it; verification requires the full path analysis.
+2. **Choice of embedding (A vs B in §9.3).** Parameter-shift vs rotation. Topology and path winding are identical; metric and spectrum differ. Pinning to one of these is part of the Phase C numerical work.
 
-3. **What about the neutron?** udd. Under the closure pattern, does it close in 3 revolutions (because 1 up + 2 downs)? Or some other count?
+3. **Does the proton-as-3-precessing-quarks construction actually close cleanly?** §3.3 sketches it; verification requires the full path analysis.
 
-4. **Does this geometry produce the correct mass split** between proton and neutron? The shear-and-aspect-ratio framework of metric-charge (chapter 7-8) operates on the standard T² without corrugation. The corrugated torus would need its own dispersion analysis.
+4. **What about the neutron?** udd. Under the closure pattern, does it close in 3 revolutions (because 1 up + 2 downs)? Or some other count?
 
-5. **How does the user's specific (1, +2) / (−1, +2) hypothesis** (from [quark-flavor.md](quark-flavor.md)) map onto path topology on the corrugated torus? Is there a natural relabeling?
+5. **Does this geometry produce the correct mass split** between proton and neutron? The shear-and-aspect-ratio framework of metric-charge (chapter 7-8) operates on the standard T² without corrugation. The corrugated torus would need its own dispersion analysis.
 
-6. **Mass and charge from corrugation.** The traditional MaSt mass formula μ² = (n_t/ε)² + (n_r − s·n_t)² is for the smooth torus. On the corrugated torus, the dispersion is modified. What's the modified mass formula? Does it predict different (and possibly better) values for the proton sheet's (ε, s)?
+6. **How does the user's specific (1, +2) / (−1, +2) hypothesis** (from [quark-flavor.md](quark-flavor.md)) map onto path topology on the corrugated torus? Is there a natural relabeling?
+
+7. **Mass and charge from corrugation.** The traditional MaSt mass formula μ² = (n_t/ε)² + (n_r − s·n_t)² is for the smooth torus. On the corrugated torus, the dispersion is modified. What's the modified mass formula? Does it predict different (and possibly better) values for the proton sheet's (ε, s)?
 
 ---
 
