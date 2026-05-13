@@ -49,27 +49,59 @@ arc-length monotonically into `φ`.
 ### 1.2 The corrugated torus
 
 Sweep the profile around a major ring of radius `R_major` lying in the
-horizontal plane, with the cross-section rotating as the ring angle `θ`
-advances:
+horizontal plane. The **surface mesh** is built by sampling the
+*un-rotated* clover `P(φ)` and then **physically rotating** that 2D
+sample by an angle `α = τ·θ` in the cross-section plane before embedding
+it:
 
 ```
-r⃗(θ, φ) = R_ring(θ) + Px(φ + τ·θ + s)·N̂(θ) + Py(φ + τ·θ + s)·B̂
+samp        = P(φ)                                      (un-rotated)
+(Pxr, Pyr)  = R_α · (samp.x, samp.y)        where α = τ·θ
+r⃗(θ, φ)   = R_ring(θ) + Pxr · N̂(θ) + Pyr · B̂
+R_ring(θ)   = R_major · (cos θ, sin θ, 0)
+N̂(θ)       = (cos θ, sin θ, 0)         (outward radial)
+B̂          = (0, 0, 1)                 (vertical)
 ```
 
-where
-- `R_ring(θ) = R_major · (cos θ, sin θ, 0)`
-- `N̂(θ) = (−cos θ, −sin θ, 0)` (inward-radial direction)
-- `B̂ = (0, 0, 1)` (vertical)
-- **`τ`** is the **physical twist rate** — how much the profile rotates
-  per radian of θ. Closure of the surface requires `τ · 2π` to be a
-  multiple of `2π/3` (the symmetry period of the profile). So
-  `τ ∈ {…, −1/3, 0, 1/3, 2/3, 1, …}` — selectable in **1/3 steps**.
-- **`s`** is a **continuous coordinate shear** — an extra angular offset
-  added to `φ` everywhere. This does **not** affect closure (it is just
-  a global re-labeling of which cross-section angle we call "φ = 0"),
-  but it lets the user rotate the profile relative to grid lines and
-  paths drawn on the surface, exposing the relationship between the
-  coordinate frame and the embedding.
+That is — the *clover itself rotates* about the ring spine as θ advances.
+This is a genuine 2D rotation applied to the cross-section coordinates,
+not a parameter shift inside P. The visual effect is that the three
+lobes form a 3D helix.
+
+The two control parameters affect the visualizer differently:
+
+- **`τ`** is the **physical twist rate** — the rotation `R_{τ·θ}` applied
+  to every cross-section. The surface *itself deforms* when `τ` changes.
+  Closure (the surface meeting itself after one ring rev) requires
+  `R_{2π·τ}` to map the clover to itself. By the clover's 3-fold
+  symmetry `P(φ + 2π/3) = R_{2π/3}·P(φ)`, this is satisfied iff `τ` is
+  a multiple of `1/3`. So `τ ∈ {…, −1/3, 0, 1/3, 2/3, 1, …}` —
+  selectable in **1/3 steps**.
+
+- **`s`** is a **coordinate shear** — it does **not** appear in the
+  surface mesh, and it does **not** affect particle paths (which are
+  intrinsic surface curves). Shear only modifies how **constant-φ grid
+  lines** are drawn. A grid line for coord-φ = ph uses the rotation
+  rate `(τ − s)` instead of `τ`:
+
+  ```
+  α_grid(θ) = (τ − s) · θ
+  ```
+
+  - `s = 0`: grid lines align with the surface's natural twist (they
+    follow the same helical lobes).
+  - `s = τ`: grid lines become horizontal rings (zero rotation) — they
+    sit at constant cross-section direction and cut *across* the
+    physical lobe pattern.
+  - other `s`: grid lines spiral at a rate different from the surface's
+    lobes, exposing the misalignment between coordinate frame and
+    embedding.
+
+  Particle paths are *not* re-parameterized by shear — they are
+  intrinsic surface curves with the natural rotation rate `τ`. Their
+  closure condition is `n_θ · τ ∈ ℤ`: for `τ = 1/3` or `2/3`, a path
+  closes iff `n_θ` is a multiple of 3. The preset proton/neutron paths
+  use `(n_θ, n_φ) = (3, 0)` so they close cleanly for any allowed `τ`.
 
 ### 1.3 The three independent geometric scalars
 
@@ -78,8 +110,8 @@ where
 | Ring radius | `R_major` | 3.0 | 1.0 – 8.0 |
 | Lobe radius | `r_lobe` | 0.80 | 0.05 – 2.0 |
 | Saddle radius | `r_saddle` | 0.40 | 0.05 – 2.0 |
-| Twist | `τ` | 1/3 | discrete: −2/3, −1/3, 0, +1/3, +2/3, +1 |
-| Shear | `s` | 0.0 rad | continuous: 0 – 2π |
+| Twist | `τ` | 1/3 | discrete steps of 1/3; deforms the surface |
+| Shear | `s` | 0.0 | continuous, −1.5 – 1.5; tilts overlays only |
 
 `d = r_lobe + r_saddle` is derived (not a slider). When the profile would
 self-intersect (`d < 0`) or when `r_lobe + d > R_major` (the inner lobe

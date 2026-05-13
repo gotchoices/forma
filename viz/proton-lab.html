@@ -167,7 +167,7 @@
 
   <div class="cg">
     <label>shear s</label>
-    <input type="range" id="sl-s" min="0" max="6.2832" step="0.01" value="0">
+    <input type="range" id="sl-s" min="-1.5" max="1.5" step="0.01" value="0">
     <span class="val" id="v-s">0.00</span>
   </div>
 
@@ -208,11 +208,11 @@
       <div id="custom-path-controls" style="display:none; margin-top: 8px;">
         <div class="row">
           <label>n<sub>θ</sub></label>
-          <input type="number" id="in-nth" value="1" min="-9" max="9" step="1">
+          <input type="number" id="in-nth" value="3" min="-9" max="9" step="1">
         </div>
         <div class="row">
           <label>n<sub>φ</sub></label>
-          <input type="number" id="in-nph" value="1" min="-9" max="9" step="1">
+          <input type="number" id="in-nph" value="0" min="-9" max="9" step="1">
         </div>
       </div>
     </div>
@@ -352,8 +352,8 @@ const S = {
   shear: 0,             // continuous offset in φ
   opacity: 0.55,
   particle: 'proton',
-  customNth: 1,
-  customNph: 1,
+  customNth: 3,
+  customNph: 0,
   showSurface: true,
   showWire: false,
   showColor: true,
@@ -365,14 +365,17 @@ const S = {
 
 /*
  * Particle path conventions:
- *   - u, d: no path overlay (the single-arc highlighting on the surface
- *     and in the cross-section preview shows the quark on its own).
- *   - proton/neutron: three (1, 1)-topology paths offset by 120° in φ_0.
- *     This shows the Z₃ three-constituent structure cleanly. The
- *     differentiation between proton and neutron is in the region
- *     highlighting (which 3 of the 6 arcs are members), not in the path
- *     topology.
- *   - custom: a single user-defined path.
+ *   - u, d: no path overlay (single-arc highlighting on the surface and
+ *     cross-section preview is enough).
+ *   - proton/neutron: three closed helical paths offset by 120° in φ₀.
+ *     Each path uses (n_θ=3, n_φ=0) so it closes for any τ in multiples
+ *     of 1/3 (the constraint for surface closure too). With τ=1/3 each
+ *     path wraps the ring 3 times while the cross-section sample rotates
+ *     once — exactly the Z₃ "precession" picture from clover-quarks §3.3.
+ *     The differentiation between proton and neutron is in the *region
+ *     highlighting* on the surface (which 3 of the 6 arcs are members),
+ *     not the path topology.
+ *   - custom: a single user-defined path. May not close if n_θ·τ ∉ ℤ.
  */
 const PARTICLES = {
   none:    { Q: 0,       content: '—',                    paths: [],
@@ -383,21 +386,21 @@ const PARTICLES = {
              closure: 'single-arc quark' },
   proton:  { Q: '+1',    content: '2 lobes + 1 saddle (uud)',
              paths: [
-               { nTh: 1, nPh: 1, ph0: 0,         color: 0xff5252 },
-               { nTh: 1, nPh: 1, ph0: TAU/3,     color: 0x66ff99 },
-               { nTh: 1, nPh: 1, ph0: 2*TAU/3,   color: 0x40c4ff },
+               { nTh: 3, nPh: 0, ph0: 0,         color: 0xff5252 },
+               { nTh: 3, nPh: 0, ph0: TAU/3,     color: 0x66ff99 },
+               { nTh: 3, nPh: 0, ph0: 2*TAU/3,   color: 0x40c4ff },
              ],
-             closure: '3 constituents at 120° offset' },
+             closure: '3 constituents · 3 ring revs' },
   neutron: { Q: '0',     content: '1 lobe + 2 saddles (udd)',
              paths: [
-               { nTh: 1, nPh: 1, ph0: 0,         color: 0xff5252 },
-               { nTh: 1, nPh: 1, ph0: TAU/3,     color: 0x66ff99 },
-               { nTh: 1, nPh: 1, ph0: 2*TAU/3,   color: 0x40c4ff },
+               { nTh: 3, nPh: 0, ph0: 0,         color: 0xff5252 },
+               { nTh: 3, nPh: 0, ph0: TAU/3,     color: 0x66ff99 },
+               { nTh: 3, nPh: 0, ph0: 2*TAU/3,   color: 0x40c4ff },
              ],
-             closure: '3 constituents at 120° offset' },
+             closure: '3 constituents · 3 ring revs' },
   custom:  { Q: '—',     content: 'custom (n_θ, n_φ)',
-             paths: [{ nTh: 1, nPh: 1, ph0: 0, color: 0xfdd835 }],
-             closure: '1 path' },
+             paths: [{ nTh: 3, nPh: 0, ph0: 0, color: 0xfdd835 }],
+             closure: 'closes iff n_θ·τ ∈ ℤ' },
 };
 
 /* ─── Profile (2D cross-section P(φ)) ───────────────────── */
@@ -481,18 +484,24 @@ function lookupProfile(prof, phi) {
 
 /* ─── 3D Surface mesh ───────────────────────────────────── */
 /*
- * Embedding (with outward-radial convention so positive profile-x
- * sticks away from the donut hole — visually intuitive):
+ * The clover is sampled at the *unshifted* parameter P(φ), then PHYSICALLY
+ * ROTATED in 2D by α = τ·θ before being embedded in the cross-section
+ * plane spanned by N̂(θ) and B̂. This makes the actual clover orientation
+ * twist around the ring spine as θ advances (3-fold helical lobes for
+ * τ = 1/3) — not just a coordinate relabeling.
  *
- *   r⃗(θ, φ) = R_ring(θ) + P_x(arg)·N̂(θ) + P_y(arg)·B̂
- *   arg = φ + τ·θ + s
- *   R_ring(θ) = R · (cos θ, sin θ, 0)
- *   N̂(θ)     = (cos θ, sin θ, 0)       (outward radial)
- *   B̂        = (0, 0, 1)               (vertical)
+ *   samp        = P(φ)                              (un-rotated clover)
+ *   (Pxr, Pyr)  = R_{τθ} · (samp.x, samp.y)         (2D rotation)
+ *   r⃗(θ, φ)   = R_ring(θ) + Pxr·N̂(θ) + Pyr·B̂
+ *   R_ring(θ)   = R · (cos θ, sin θ, 0)
+ *   N̂(θ)       = (cos θ, sin θ, 0)                  (outward radial)
+ *   B̂          = (0, 0, 1)                          (vertical)
  *
- * Net: position = ((R + P_x)·cos θ, P_y, (R + P_x)·sin θ).
- * (This is the same geometry as clover-quarks.md §9 — just sign-flipped
- * on N̂ so lobes protrude outward in the 3D view.)
+ * Net: position = ((R + Pxr)·cos θ, Pyr, (R + Pxr)·sin θ).
+ *
+ * Closure: by the profile's 3-fold symmetry P(φ + 2π/3) = R_{2π/3}·P(φ),
+ * the surface closes onto itself whenever 2π·τ is a multiple of 2π/3
+ * (i.e., τ ∈ multiples of 1/3). Shear (s) does NOT appear in the surface.
  */
 
 const COL_LOBE_ACTIVE   = new THREE.Color(0xff5252);
@@ -504,7 +513,7 @@ const COL_NEUTRAL       = new THREE.Color(0x8090a0);
 const N_TH = 240;
 const N_PH = 180;
 
-function buildSurfaceMesh(prof, R, tau, shear, particleMembership) {
+function buildSurfaceMesh(prof, R, tau, particleMembership) {
   const positions = new Float32Array((N_TH + 1) * (N_PH + 1) * 3);
   const colors    = new Float32Array((N_TH + 1) * (N_PH + 1) * 3);
   const indices = [];
@@ -512,21 +521,26 @@ function buildSurfaceMesh(prof, R, tau, shear, particleMembership) {
   for (let i = 0; i <= N_TH; i++) {
     const th = (i / N_TH) * TAU;
     const cTh = Math.cos(th), sTh = Math.sin(th);
-    // Outward-radial N̂(θ) = (cos θ, sin θ, 0); B̂ = (0, 0, 1)
+    // Physical twist: rotate (P_x, P_y) by α = τ·θ in the cross-section plane
+    const alpha = tau * th;
+    const cA = Math.cos(alpha), sA = Math.sin(alpha);
     for (let j = 0; j <= N_PH; j++) {
       const ph = (j / N_PH) * TAU;
-      const arg = ph + tau * th + shear;
-      const samp = lookupProfile(prof, arg);
+      const samp = lookupProfile(prof, ph);
+      // 2D rotation of (samp.x, samp.y) by alpha
+      const Pxr = samp.x * cA - samp.y * sA;
+      const Pyr = samp.x * sA + samp.y * cA;
 
-      // 3D position: (R + P_x)·(cos θ, 0, sin θ) + P_y·(0, 1, 0)
+      // 3D position
       const ix = (i * (N_PH + 1) + j) * 3;
-      const rr = R + samp.x;
+      const rr = R + Pxr;
       positions[ix    ] = rr * cTh;
-      positions[ix + 1] = samp.y;
+      positions[ix + 1] = Pyr;
       positions[ix + 2] = rr * sTh;
 
-      // Color
-      const col = colorForVertex(arg, samp.kind, particleMembership);
+      // Color: classify by un-rotated φ so the lobe identity is intrinsic
+      // (the same physical lobe is the same color along its helical track).
+      const col = colorForVertex(ph, samp.kind, particleMembership);
       colors[ix    ] = col.r;
       colors[ix + 1] = col.g;
       colors[ix + 2] = col.b;
@@ -596,37 +610,44 @@ function membershipFor(particle) {
   return [true, true, true, true, true, true];
 }
 
-/* ─── Path overlay (homotopy-class winding paths) ─────────── */
+/* ─── Path overlay (intrinsic surface curves) ────────────── */
 /*
- * Parameter trajectory for a path with topology (n_θ, n_φ), starting at φ=ph0:
- *   θ(t) = 2π·n_θ·t
- *   φ(t) = ph0 + 2π·n_φ·t          (in the "physical cross-section" sense)
+ * Paths live on the physical surface. They use the SAME rotation
+ * embedding as the surface (rotate (P_x, P_y) by τ·θ). The parameter
+ * trajectory is straight-line in (θ, φ):
  *
- * The 3D position is the surface embedding evaluated at (θ(t), φ_param(t)) where
- *   φ_param(t) = φ(t) − τ·θ(t)    so that  arg = φ_param + τ·θ + shear = ph0 + 2π·n_φ·t + shear.
+ *   θ(t) = 2π · n_θ · t
+ *   φ(t) = ph0 + 2π · n_φ · t
  *
- * In effect the path sweeps both ring and cross-section directions linearly.
+ * Closure: at t=1, θ=2π·n_θ and φ=ph0+2π·n_φ. P is 2π-periodic so the
+ * sample returns to P(ph0). The rotation R_{2π·n_θ·τ} returns to identity
+ * when n_θ·τ is an integer. So paths close iff n_θ·τ ∈ ℤ:
+ *
+ *   τ = 0:                  any n_θ closes
+ *   τ = 1/3 or 2/3:         n_θ must be a multiple of 3
+ *   τ = 1:                  any integer n_θ closes
+ *
+ * The preset proton/neutron paths use (n_θ=3, n_φ=0) so they close for
+ * any τ ∈ multiples of 1/3.
  */
-function buildPathTube(prof, R, tau, shear, pathSpec, tubeR) {
+function buildPathTube(prof, R, tau, pathSpec, tubeR) {
   const N = 600;
   const { nTh, nPh, ph0 } = pathSpec;
   const pts = [];
+  const offset = tubeR * 0.6;
 
   for (let i = 0; i <= N; i++) {
     const t = i / N;
     const th = TAU * nTh * t;
-    const arg = ph0 + TAU * nPh * t + shear;
-    const samp = lookupProfile(prof, arg);
+    const ph = ph0 + TAU * nPh * t;
+    const samp = lookupProfile(prof, ph);
+    const alpha = tau * th;
+    const cA = Math.cos(alpha), sA = Math.sin(alpha);
+    const Pxr = samp.x * cA - samp.y * sA;
+    const Pyr = samp.x * sA + samp.y * cA;
     const cTh = Math.cos(th), sTh = Math.sin(th);
-    const rr = R + samp.x;
-    // Push the path slightly outward along the local outward normal so
-    // it sits on top of the surface rather than embedded inside it.
-    const offset = tubeR * 0.6;
-    pts.push(new THREE.Vector3(
-      (rr + offset) * cTh,
-      samp.y,
-      (rr + offset) * sTh
-    ));
+    const rr = R + Pxr + offset;
+    pts.push(new THREE.Vector3(rr * cTh, Pyr, rr * sTh));
   }
 
   const curve = new THREE.CatmullRomCurve3(pts, true);
@@ -765,7 +786,7 @@ function rebuildAll() {
   }
 
   const tau = S.tauNum / 3;
-  const geom = buildSurfaceMesh(cachedProfile, S.R, tau, S.shear, membership);
+  const geom = buildSurfaceMesh(cachedProfile, S.R, tau, membership);
   surfMesh = new THREE.Mesh(geom, surfMaterial);
   surfMesh.visible = S.showSurface;
   scene.add(surfMesh);
@@ -787,7 +808,7 @@ function rebuildAll() {
       paths = PARTICLES[S.particle].paths;
     }
     for (const p of paths) {
-      const pgeom = buildPathTube(cachedProfile, S.R, tau, S.shear, p, tubeR);
+      const pgeom = buildPathTube(cachedProfile, S.R, tau, p, tubeR);
       const mat = new THREE.MeshBasicMaterial({ color: p.color, transparent: true, opacity: 0.95 });
       const pmesh = new THREE.Mesh(pgeom, mat);
       pathGroup.add(pmesh);
@@ -832,19 +853,26 @@ function rebuildAll() {
 function addGridLines(prof, R, tau, shear) {
   const tau_ = tau;
   const eps = 0.015;   // tiny outward offset so grid lines sit above the surface
-  // Constant-φ lines
+
+  // Constant-coord-φ lines. Shear modulates the effective rotation
+  // rate used for these lines from τ → (τ − s). With s = 0 they trace
+  // the natural surface twist; with s = τ they become horizontal
+  // rings (rotation rate 0) that do NOT follow the lobes.
   const Nph_lines = 12;
   for (let g = 0; g < Nph_lines; g++) {
     const ph = (g / Nph_lines) * TAU;
+    const samp = lookupProfile(prof, ph);
     const pts = [];
     const Nth = 200;
     for (let i = 0; i <= Nth; i++) {
       const th = (i / Nth) * TAU;
-      const arg = ph + tau_ * th + shear;
-      const samp = lookupProfile(prof, arg);
+      const alpha = (tau_ - shear) * th;
+      const cA = Math.cos(alpha), sA = Math.sin(alpha);
+      const Pxr = samp.x * cA - samp.y * sA;
+      const Pyr = samp.x * sA + samp.y * cA;
       const cTh = Math.cos(th), sTh = Math.sin(th);
-      const rr = R + samp.x + eps;
-      pts.push(new THREE.Vector3(rr * cTh, samp.y, rr * sTh));
+      const rr = R + Pxr + eps;
+      pts.push(new THREE.Vector3(rr * cTh, Pyr, rr * sTh));
     }
     gridGroup.add(new THREE.Line(
       new THREE.BufferGeometry().setFromPoints(pts),
@@ -852,19 +880,24 @@ function addGridLines(prof, R, tau, shear) {
     ));
   }
 
-  // Constant-θ rings
+  // Constant-θ rings (cross-section slices at fixed θ). Each slice
+  // shows the actual cross-section (un-rotated profile sampled around
+  // φ, then rotated by τ·θ for that θ).
   const Nth_lines = 12;
   for (let g = 0; g < Nth_lines; g++) {
     const th = (g / Nth_lines) * TAU;
     const cTh = Math.cos(th), sTh = Math.sin(th);
+    const alpha = tau_ * th;
+    const cA = Math.cos(alpha), sA = Math.sin(alpha);
     const pts = [];
     const Nph = 240;
     for (let j = 0; j <= Nph; j++) {
       const ph = (j / Nph) * TAU;
-      const arg = ph + tau_ * th + shear;
-      const samp = lookupProfile(prof, arg);
-      const rr = R + samp.x + eps;
-      pts.push(new THREE.Vector3(rr * cTh, samp.y, rr * sTh));
+      const samp = lookupProfile(prof, ph);
+      const Pxr = samp.x * cA - samp.y * sA;
+      const Pyr = samp.x * sA + samp.y * cA;
+      const rr = R + Pxr + eps;
+      pts.push(new THREE.Vector3(rr * cTh, Pyr, rr * sTh));
     }
     gridGroup.add(new THREE.Line(
       new THREE.BufferGeometry().setFromPoints(pts),
@@ -1116,7 +1149,7 @@ function resetToDefaults() {
     R: 3.0, rL: 0.80, rS: 0.40,
     tauNum: 1, shear: 0, opacity: 0.55,
     particle: 'proton',
-    customNth: 1, customNph: 1,
+    customNth: 3, customNph: 0,
     showSurface: true, showWire: false, showColor: true,
     showGrid: false, showPath: true, showSpine: false, showAxes: false,
   });
