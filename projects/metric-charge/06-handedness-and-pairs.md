@@ -71,6 +71,8 @@ The (−m, −n) curve traces the same point set in 3-space as (m, n), just visi
 
 The framework's primary label is the signed integer pair (m, n), and the sign tracks traversal orientation as a geometric property of the closed curve — not as an internal field-theoretic label. The orientation distinction is therefore *not* eliminated by working with a real-valued φ; it lives in the manifold's topology, not in the field's value space.
 
+A useful supplementary visualizer mental model treats the (m, n) → (−m, −n) operation as a 180° rotation of the torus about a diameter through its center. This rotation reverses both ring and tube directions simultaneously and inverts every traversal arrow on the embedded curve — the same content as the same-point-set-opposite-traversal description above. The rotational picture can be easier to read off a 3D torus diagram; either mental model is faithful to R_J.
+
 ### 2.2 (m, n)-labeling content
 
 The framework treats (m, n) and (−m, −n) as **distinct conserved sectors**. Their integer labels are different; the wave equation conserves them separately. A (1, 2) mode and a (−1, −2) mode are different physical states — they trace the same unoriented curve but with opposite traversal direction, and they carry opposite-sign compact-direction momenta.
@@ -88,7 +90,22 @@ This is a kinematic statement: a wave packet traveling around the closed curve i
 
 Under the linearized Einstein analysis of [Chapter 5](05-metric-self-consistency.md), the per-component off-diagonal stress-energy is T_μu ∝ p_u and T_μw ∝ p_w. The natural particle's surviving cross-term h_μw scales with p_w, so the (−m, −n) mode sources h_μw of opposite sign — opposite-sign coupling under the framework's single gauge potential B_μ. (The would-be h_μu cross-term cancels in the natural particle by R_u-symmetrization, regardless of mode labels.)
 
-### 2.4 What does this opposite-sign property correspond to physically?
+### 2.4 Charge-sign assignment across the four reflection partners
+
+The Lorentz-force coupling derived in [Chapter 5 §4.6.4](05-metric-self-consistency.md) — m_phys d²x^μ/dτ² = F^B^μ_ν v^ν p^w — gives the framework's operational definition of charge sign: **charge sign is the sign of p^w**. Since p^w = ℏ·k_w = ℏ·(2π/L_w)·m, charge sign tracks the sign of the tube winding m.
+
+This single rule organizes all four discrete reflections of a closure-satisfying primitive T(±1, ±n') into a complete tabulation of charge and mass at σ ≠ 0. The R_J row is the structural content of this section; the R_u and R_w rows are included for completeness and developed in [§3](#3-the-m-n--m-n-reflection-chirality) and [§6.4](#64-r_u-conjugate-and-r_w-conjugate-pairs--distinct-physical-roles).
+
+| Mode | p^w sign | Charge sign | Mass at σ ≠ 0 | Role |
+|---|---|---|---|---|
+| T(+1, n') | + | + | μ²(1, n'; σ, ε) | "particle" (wrap-order picks n' sign for lower mass) |
+| T(−1, n') | − | − | μ²(1, n') + 4σn'/ε | R_w-conjugate — opposite charge, mass-split |
+| T(+1, −n') | + | + | μ²(1, n') + 4σn'/ε | R_u-conjugate — same charge, mass-split |
+| T(−1, −n') | − | − | μ²(1, n') | R_J-conjugate — opposite charge, mass-degenerate |
+
+The R_J pair T(+1, n') ↔ T(−1, −n') sits at identical mass at any σ (joint sign flip preserves the dispersion's cross-term, per [§6.2](#62-symmetry-test-on-the-cross-term)) and carries opposite charge under B_μ (p^w flips). These are the framework's matter/antimatter pair candidates.
+
+### 2.5 What does this opposite-sign property correspond to physically?
 
 Open at this stage. The framework establishes that:
 

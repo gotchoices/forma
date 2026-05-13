@@ -403,6 +403,30 @@ The "is fractional charge stable / can it be observed in isolation?" question is
 
 This chapter's claim is therefore: **fractional charge structurally exists** (as the per-component association inside closure-satisfying multi-links) **and structurally requires the collective configuration** (since components alone fail closure). **The value of k is not derived in linear theory** and is forwarded to either an internal φ⁴ calculation or substrate Z_k input. **The dynamical stability of components — whether they can be ripped apart, with what energy cost — is forwarded to metric-binding.**
 
+### 7.4 Mixed-orientation compounds — structural inventory
+
+§§7.1–7.3 work with uniform-phase Configuration Y: all k components of a k × T(1, n') multi-link share the same primitive (e.g., all T(+1, n')), so per-component charge sign is uniform and the link's external integer charge is ±k. This is what the framework's structural derivation gives for a single coherent k × T(1, n') multi-link.
+
+A broader class of configurations sits in the framework's mode-language inventory by construction: **mixed-orientation compounds**, where different components of a multi-mode configuration carry different orientations of the primitive. A field configuration containing three independent Bloch modes at, say, (+1, n'), (+1, n'), and (−1, n') is a superposition of three Bloch modes — each evolving in its own conserved (m, n) sector under the linearized wave equation — admissible by linear superposition without new mechanism. Its external integer charge follows the same tube-winding-sum rule (per [Ch 6 §2.4](06-handedness-and-pairs.md), charge sign tracks the sign of p^w = ℏ·(2π/L_w)·m) that governs the uniform case:
+
+| Compound | Per-component charges | External integer charge (tube-winding sum) |
+|---|---|---|
+| 3 × T(+1, n') (uniform) | +1, +1, +1 | +3 |
+| 2 × T(+1, n') + 1 × T(−1, n') | +1, +1, −1 | +1 |
+| 1 × T(+1, n') + 2 × T(−1, n') | +1, −1, −1 | −1 |
+| 3 × T(−1, n') (uniform) | −1, −1, −1 | −3 |
+
+R_J-conjugates (e.g., replacing T(+1, n') by T(−1, −n') throughout) give the antiparticle direction of each row at identical mass per [Ch 6 §2.4](06-handedness-and-pairs.md).
+
+**Metric-charge's structural commitment:** mixed-orientation compounds *exist* in the inventory with the charge arithmetic above. The mode-language is rich enough to describe configurations whose external integer charge is, e.g., +1 with three internal components of mixed sign — a structural building block for the candidate proton-like state.
+
+**Forwarded — binding-mechanism work outside metric-charge's linear scope:**
+
+- **Stability.** Whether a mixed-orientation compound is stable as a bound multi-component object, versus relaxing to its uniform counterpart or separating into independent primitives, is a multi-knot binding-energetics question. Forwarded to [metric-binding](../metric-binding/).
+- **Empirical identification.** Whether the 2:1 mixed compound corresponds to standard physics' proton — and what the neutron analog is — is a downstream phenomenology question. The compounds tabulated above all have odd external integer charge for any 3-component configuration of T(±1, n') primitives; a neutral 3-component baryon therefore requires either a different mode-content reading (zero-sum mix involving components that fail closure) or a different framework reading entirely.
+- **Integer vs fractional charge reading.** Whether per-component charges read as integer ±1 in framework units or as fractional ±1/3 in standard-model units — a units convention, a deep-inelastic-averaging artifact, or a genuine structural mechanism — is downstream phenomenology, not metric-charge's structural derivation.
+- **Alternative readings.** The R-track studies after R60 — [R53-three-generations](../../studies/R53-three-generations/), [R54-compound-modes](../../studies/R54-compound-modes/), [R63-proton-tuning](../../studies/R63-proton-tuning/), [R64-nuclear-harmonic-stack](../../studies/R64-nuclear-harmonic-stack/) — take a structurally different approach: each quark is its own (m, n) mode on the proton sheet, with mass hierarchies from shear-resonance numerics and per-mode charge from a separate phase-locking rule. The proton in that picture is a compound of three independent mode-assignments, not a single 3-component Configuration Y multi-link. R53's unresolved two-shear puzzle (R53 F16, ≈ 19 for up-types vs ≈ 0.8 for down-types on the same physical sheet) is the active barrier to a closed downstream picture. Reconciling the compound-inventory reading with the R-track mode-by-mode reading is downstream binding-side work.
+
 ---
 
 ## 8. Summary — what shear adds to the inventory
@@ -415,6 +439,7 @@ Adding shear σ_uw to the ε-swept inventory of [Chapter 7](07-aspect-ratio-and-
 - **Commits to Configuration Y for multi-component links** (§5). k × T(1, n') is k phased copies of the primitive, with k surviving h_μw cross-terms and 1/k charge associated per component.
 - **Does not by itself select a preferred k** (§6). Linear theory is degenerate. The φ⁴ inter-component candidate (§6.3) is the framework's most-tractable open calculation for first-principles k-selection.
 - **Predicts confinement-like behavior for individual components** (§7). Components are not closure-satisfying alone and so are not isolable; integer total charge is preserved as 1/k per component within the collective configuration.
+- **Admits mixed-orientation compounds in the mode-language inventory** (§7.4). Configurations such as 2 × T(+1, n') + 1 × T(−1, n') exist as superpositions of independent Bloch modes; external integer charge is the tube-winding sum. Stability and empirical identification are forwarded.
 
 Together with ε from [Chapter 7](07-aspect-ratio-and-character.md) and handedness from [Chapter 6](06-handedness-and-pairs.md), σ_uw gives the framework five structural parameters that organize the closure-eligible inventory:
 
@@ -434,7 +459,7 @@ This is the framework's structural inventory at the linearized level for a singl
 
 **Chapter 9 — Ratio and shear together** (planned, scoped in work-ch9.md). Bring Ch 7 (ratio alone) and this chapter (shear alone) together into a unified treatment of the (σ, ε) parameter space — how the two metric parameters jointly determine which closure-satisfying configurations dominate, what the sheet's structural character is, and how the framework's qualitative sheet types (lepton-like, neutrino-like, hadronic-like) emerge as different regions of the combined landscape. Ch 9 is the substrate for the eventual downstream exercise: given a sheet's measured properties, derive the metric values (diagonals + cross-term) for that sheet.
 
-Then **closing summary**, then hand-off to [metric-binding](../metric-binding/) for multi-knot energetics (binding/decay, confinement-as-energetics, candidate strong-force mechanism).
+Then **closing summary**, then hand-off to [metric-binding](../metric-binding/) for multi-knot energetics: k-selection for fractional-charge multi-links (§6.5, candidate φ⁴ inter-component dynamics), stability of mixed-orientation compounds (§7.4, candidate baryon-like structures), and reconciliation with the R-track studies' mode-by-mode quark assignments.
 
 ---
 

@@ -42,25 +42,22 @@ metric-charge sets up the inventory (which (m, n) configurations are closure-sat
 
 ---
 
-### TODO-L5 — Fractional-charge sign assignments not worked out
+### TODO-L5 — Fractional-charge sign assignments
 
-**Status:** Open. Acknowledged in Ch 8 §6.3 and in open-questions, but flagged as a substantive missing piece.
+**Status:** ✅ **Resolved** by the [work-L5.md](work-L5.md) scoping and the chapter integration pass (May 2026). The framework's structural commitments on charge sign are now explicit: per-component sign tracks the sign of p^w = ℏ·(2π/L_w)·m (the tube winding), uniform-phase Configuration Y predicts uniform per-component sign, and the mode-language inventory also admits **mixed-orientation compounds** with external integer charge given by tube-winding sum.
 
-**What review.md says:** The framework's "1/k fractional charge per component" prediction (e.g., 3-component multi-link gives 1/3 per component) doesn't address sign or value structure. Down-type quarks have charge −1/3; up-type have +2/3. The framework currently:
-- (i) doesn't say why fractional charge would be specifically −1/3 vs +1/3
-- (ii) doesn't explain where +2/3 (up-type) comes from
-- (iii) doesn't relate the three quark families' relative signs and magnitudes
+**What was established:**
+- [Ch 6 §2.4](06-handedness-and-pairs.md) (new subsection): explicit charge-sign rule from the Lorentz-force coupling of [Ch 5 §4.6.4](05-metric-self-consistency.md) — *charge sign is the sign of p^w*. Four-mode table tabulates charge and mass at σ ≠ 0 for all four discrete reflections of T(±1, ±n').
+- [Ch 8 §7.4](08-shear-and-fractional-charge.md) (new subsection): the framework's mode-language admits mixed-orientation compounds (e.g., 2 × T(+1, n') + 1 × T(−1, n') with external integer charge +1). Compound-inventory table records per-component and external-charge arithmetic.
+- [Ch 8 §9](08-shear-and-fractional-charge.md) forward-pointer tightened: specific open questions named (k-selection, stability of mixed-orientation compounds, reconciliation with R-track mode-by-mode reading) rather than vague "multi-knot energetics."
 
-**Why I agree:** A reader could mistake the multi-link entry's "1/k" for a derived prediction of fractional-charge magnitude when the calculation hasn't been done. The "candidate quark" identification is preliminary in a way that should be explicit.
+**What is forwarded — binding-mechanism work outside metric-charge's linear scope:**
+- *Stability of mixed-orientation compounds* (proton candidate structure) → [metric-binding](../metric-binding/).
+- *Empirical identification of the proton, the neutron analog* (no 3-component compound of T(±1, n') primitives has external integer charge 0) → downstream phenomenology + metric-binding.
+- *Integer vs fractional charge reading* (±1 in framework units vs ±1/3 in standard-model units) → downstream phenomenology.
+- *Alternative reading*: the R-track studies' mode-by-mode quark assignments ([R53](../../studies/R53-three-generations/), [R54](../../studies/R54-compound-modes/), [R63](../../studies/R63-proton-tuning/), [R64](../../studies/R64-nuclear-harmonic-stack/)) with the unresolved two-shear puzzle (R53 F16) — alternative downstream reading to the compound-inventory picture.
 
-**Scope of fix:**
-- Trace how the framework's (m, n) signs determine charge sign of each component (under the natural-particle R_u-symmetrized construction, this is the sign of the tube-direction wavenumber m).
-- Examine whether different multi-link configurations might naturally give the −1/3 vs +2/3 pattern.
-- Note explicitly where +2/3 charges would come from in the framework (different multi-link configurations, or not predicted?).
-
-**Estimate:** Half-day as a careful sign/magnitude audit. The audit can proceed independently of k_opt: trace how (m, n) signs determine charge sign under the single-Bloch-mode interpretation of Ch 8 §2.2, working in a generic-k framing.
-
-**Suggested order:** Independent of remaining TODOs. The empirical identification "which multi-link is the up-type vs down-type quark" is downstream (depends on k-selection, which is forwarded per TODO-M8(a)); but the *structural* sign analysis lives in metric-charge and can be tightened in Ch 6 / Ch 8 §7 directly.
+**Work product retained:** [work-L5.md](work-L5.md) is preserved as the scoping document that surfaced the Layer 1 (in-scope structural inventory) vs Layer 2 (forwarded binding-mechanism) split, and the three hypotheses H1/H2/H3 (with H1 confirmed as the existing Configuration Y picture, H2 recovered as the framework's R_J labeling, H3a as the new mixed-orientation-compound inventory, H3b as the forwarded binding-side work).
 
 ---
 
@@ -185,10 +182,9 @@ The split removes the tension between §4.1's previous single-formula presentati
 
 ## Cross-cutting observations
 
-- After the Ch 8 refactor, the Ch 9 chapter write-up, the TODO-M2 integration, the N2 tower-selection paragraph, and the P3 formula split (Sept 2026–May 2026), the framework is **structurally complete** for the single-sheet model. There is no remaining load-bearing computation at metric-charge's linear scope.
-- Two items remain open within metric-charge:
-  - **TODO-L5** — Fractional-charge sign audit. Half-day structural sign analysis tracing how (m, n) signs determine charge sign under the single-Bloch-mode interpretation.
-  - **TODO-P1** — Closing summary chapter. Half-day-to-day write-up consolidating Chapters 1–9, plus the bookkeeping rename (`09-` → `10-closing-summary.md`), README chapter-list update, and Ch 7/Ch 8/Ch 9 "What's next" pointer updates. Best done last so it can incorporate L5's finding.
+- After the Ch 8 refactor, the Ch 9 chapter write-up, the TODO-M2 integration, the N2 tower-selection paragraph, the P3 formula split, and the L5 charge-sign integration (Sept 2026–May 2026), the framework is **structurally complete** for the single-sheet model. There is no remaining load-bearing computation at metric-charge's linear scope.
+- One item remains open within metric-charge:
+  - **TODO-P1** — Closing summary chapter. Half-day-to-day write-up consolidating Chapters 1–9, plus the bookkeeping rename (`09-` → `10-closing-summary.md`), README chapter-list update, and Ch 7/Ch 8/Ch 9 "What's next" pointer updates. With L5 now integrated, the summary can report the framework's structural commitments on charge sign and compound inventory honestly.
 - **What's forwarded out of metric-charge:**
   - k-selection mechanism (the φ⁴ inter-component calculation, substrate Z_k, confinement) → grid-duality / metric-binding.
   - Multi-sheet composition rules (Disc1, Disc2) → metric-binding.
