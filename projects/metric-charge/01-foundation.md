@@ -465,6 +465,8 @@ The following are *not* given. They are to be derived, observed to arise from th
 
 - **Diagonal normalization choice.** The metric is written with g_uu = g_ww = 1 in the periodicity-form coordinates of §2. An equivalent parametrization moves ε into the (u, u) diagonal (g_uu = ε², g_ww = 1) and uses unit periodicities. The two are the same sheet — same ε in two homes (§3). The choice between them does not affect single-particle predictions and is left to downstream work to commit on for multi-species settings.
 
+- **Constant metric parameters.** ε (§3) and σ_uw (§4) are scalar constants throughout this project — the same numbers at every point of the sheet and at every point of extended spacetime. Promoting either or both to functions of (t, S₁, S₂, u, w), introducing additional metric components (σ_Su, σ_Sw, σ_tu, σ_tw, σ_S₁S₂), relaxing strict periodicity to twisted or anti-periodic boundary conditions, lifting the scalar-field abstraction, or admitting non-trivial T² fibration over extended space are all structural extensions outside this project's scope. They are enumerated in [Chapter 10 §7](10-closing-summary.md) as the most likely-relevant directions for future work that needs to model phenomena constant-(ε, σ_uw) cannot accommodate.
+
 ---
 
 ## 12. Summary of givens

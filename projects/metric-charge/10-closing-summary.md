@@ -30,7 +30,8 @@ The chapter is *recap*, not new content. It cites each earlier chapter's main pa
 | 4 | Metric parameters and the (σ, ε) landscape |
 | 5 | Structural commitments — what is derived |
 | 6 | Forwarded — open questions and their downstream homes |
-| 7 | Hand-off to metric-binding |
+| 7 | Structural extensions not explored |
+| 8 | Hand-off to metric-binding |
 
 ---
 
@@ -218,7 +219,7 @@ metric-charge's deliverable to that work is the structural inventory of this cha
 - **Does not settle questions left open in earlier chapters.** Open questions remain open here; §6 routes them downstream without resolving them.
 - **Does not commit to MaSt-correspondence identifications.** Reference targets named in earlier chapters — T(1, 2) as electron candidate, 2:1 mixed compound as proton candidate, ε ≈ 1 sheets as neutrino candidates — remain reference targets, not commitments.
 - **Does not engage downstream phenomenology.** The integer-vs-fractional-charge reading, specific quark masses and mixing angles, and the empirical (ε, σ_uw) values for individual sheets are downstream work flagged at §6.
-- **Does not preview metric-binding's mechanisms.** §7 names what metric-binding picks up; how metric-binding handles each item is metric-binding's chapter arc to develop.
+- **Does not preview metric-binding's mechanisms.** §8 names what metric-binding picks up; how metric-binding handles each item is metric-binding's chapter arc to develop.
 
 ---
 
