@@ -2,10 +2,10 @@
 
 This file frames [TODO-L5](STATUS.md): the framework's "1/k charge per component" prediction (Configuration Y, [Ch 8 §5](08-shear-and-fractional-charge.md)) gives uniform per-component fractional charge, which does not match the observed quark pattern (proton = u + u + d = +2/3 + 2/3 − 1/3 = +1).
 
-The work falls into two layers:
+The work falls into two layers, separated by metric-charge's structural scope (what the sheet supports) vs metric-binding's territory (what binds multi-component systems into observed particles):
 
-- **Layer 1 (in scope):** Sign-tracing audit. What charge sign does a single closure-satisfying T(1, n') primitive carry? What about its R_u-, R_w-, and R_J-conjugates? What about a uniform-phase k × T(1, n') Configuration Y multi-link? This is tractable as a half-day editing pass.
-- **Layer 2 (out of scope for metric-charge):** Baryon composition — the +2/3, +2/3, −1/3 pattern within a bound multi-particle state. The R-track studies (R53 / R54 / R63 / R64) and the structural hypotheses H1–H3 below are the candidate inputs to this question. Resolution is forwarded to [metric-binding](../metric-binding/) and the R-track.
+- **Layer 1 (in scope for metric-charge):** Structural audit of what charge-sign configurations a single sheet supports. Sign-tracing per primitive (T(±1, ±n')), per-component charge in uniform-phase Configuration Y multi-links, and the existence-as-inventory-items of mixed-orientation compound configurations (e.g., 2 × T(1, n') + 1 × T(−1, n')) with their external charge given by tube-winding sum. All of this is "what mode configurations the framework's mode-language describes," independent of stability or empirical identification. Half-day editing pass.
+- **Layer 2 (out of scope for metric-charge — forwarded to [metric-binding](../metric-binding/)):** Why specific compounds are stable as observed particles. Why the proton's quark mix is 2:1 rather than 3:0. What binds the components. How internal substructure manifests in scattering. The fractional vs integer per-component charge reading. The R-track studies (R53 / R54 / R63 / R64) and the R-track's mode-by-mode picture are the empirical inputs feeding this downstream resolution.
 
 Conventions follow the rest of the project. M ≡ (ℏ/c)·(2π/L_w). σ ≡ σ_uw.
 
@@ -44,9 +44,20 @@ The R_J pair T(+1, n') ↔ T(−1, −n') is the framework's matter/antimatter l
 
 For a uniform-phase Configuration Y k × T(1, n') multi-link: all k components share the same primitive (+1, n'), all carry charge +1/k of the link's integer total charge k, all phases at 2πj/k for j = 0, ..., k−1. **Per-component charge sign is uniform** — no mixed-sign structure from intra-link phasing.
 
-**Audit conclusion:** the framework's existing prediction is uniform-sign per component within a Configuration Y multi-link. Mixed-sign baryon composition (u + u + d) is not within the natural prediction of Configuration Y at uniform phasing. The framework would need either (a) non-uniform Configuration Y with mixed-orientation components, (b) a different multi-link construct entirely, or (c) a compound-mode picture in which the "baryon" is built from independent mode-assignments rather than a single primitive multi-link.
+**Mixed-orientation compounds as inventory items.** The framework's mode-language can also describe configurations with non-uniform per-component orientations on a single sheet — for example, 2 × T(+1, n') + 1 × T(−1, n'). Such a compound is just a sum of three independent Bloch modes; it sits in the framework's inventory by construction. Its external integer charge follows the same tube-winding-sum rule as a uniform multi-link:
 
-This audit is in scope for metric-charge. The result is a clean statement of what the framework currently predicts — useful regardless of whether downstream work later supplies a different baryon-composition mechanism.
+| Compound | Per-component charges | External integer charge (tube-winding sum) |
+|---|---|---|
+| 3 × T(+1, n') (uniform) | +1, +1, +1 | +3 |
+| 2 × T(+1, n') + 1 × T(−1, n') | +1, +1, −1 | +1 |
+| 1 × T(+1, n') + 2 × T(−1, n') | +1, −1, −1 | −1 |
+| 3 × T(−1, n') | −1, −1, −1 | −3 |
+
+The R_J-conjugates (e.g., T(−1, −n') replacing T(+1, n')) give the antiparticle direction of each row at equal mass.
+
+Metric-charge's structural commitment: such compounds *exist* in the mode-language inventory with the charge arithmetic above. Whether any of them is *stable as a bound multi-component object* — and which of them realizes any particular observed particle — is a binding-mechanism question and is forwarded.
+
+**Audit conclusion:** the framework's existing prediction is uniform-sign per component within a uniform-phase Configuration Y multi-link, but the broader mode-language also supports mixed-orientation compounds with sum-based external charge. The framework therefore *can* describe configurations whose external charge is +1 with three internal components (e.g., 2 × T(+1, n') + 1 × T(−1, n')) — but does not say what makes such a configuration stable or whether it realizes a proton-like state. That belongs to [metric-binding](../metric-binding/).
 
 ---
 
@@ -73,15 +84,15 @@ If this is the right framing, Configuration Y is not the place metric-charge sho
 
 Three structural ideas worth recording as concrete hypotheses, with the existing framework's stance on each and what would close it.
 
-### 3.1 H1 — 120° phase separation produces spatial separation
-<!--EC the word "spacial" is confusing as it might imply S.  I think we are talking about space in the material dimensions, correct? -->
-> Phase rotation around the ring (e.g., 120° for k = 3) produces spatial separation between components.
+### 3.1 H1 — 120° phase separation produces ring-position separation
 
-**Framework status:** Already in Configuration Y per [Ch 8 §5](08-shear-and-fractional-charge.md). The k × T(1, n') multi-link at relative phases 2πj/k for j = 0, ..., k−1 is exactly this construction. The 120° spacing is the k = 3 specialization; each component is a phase-shifted copy of the same primitive at the same wavevector.
+> Phase rotation around the ring (e.g., 120° for k = 3) produces ring-position separation between components on the compact sheet — *not* spatial separation in extended S₁/S₂.
 
-**Charge consequence:** Each component carries the same per-component charge magnitude (1/k of the link's integer charge) with uniform sign. The 120° phasing produces spatial separation, not charge-sign asymmetry between components.
+**Framework status:** Already in Configuration Y per [Ch 8 §5](08-shear-and-fractional-charge.md). The k × T(1, n') multi-link at relative phases 2πj/k for j = 0, ..., k−1 is exactly this construction. The 120° spacing is the k = 3 specialization; each component is a phase-shifted copy of the same primitive at the same wavevector, with the phase offset translating to a positional offset around the ring (u-cycle).
 
-**Conclusion:** H1 is the existing Configuration Y picture. Accounts for the magnitude prediction (1/k per component) but not for the sign-mix (u + u + d). Confirms what the framework already has; does not deliver the asymmetry.
+**Charge consequence:** Each component carries the same per-component charge magnitude (1/k of the link's integer charge) with uniform sign. The 120° phasing produces ring-position separation, not charge-sign asymmetry between components.
+
+**Conclusion:** H1 is the existing Configuration Y picture. Accounts for the magnitude prediction (1/k per component) but not for the sign-mix. Confirms what the framework already has; does not by itself deliver mixed-sign per-component charge — that requires the mixed-orientation extension noted in §1.
 
 ### 3.2 H2 — "Upside-down" knot carries opposite charge
 
@@ -98,30 +109,26 @@ The natural geometric interpretation of "rotated 180° around a diameter through
 
 **Conclusion:** H2 recovers the existing R_J = matter/antimatter symmetry from the visualizer-level "inverted embedding" intuition. Audit-completeness item: state this geometric interpretation explicitly in [Ch 6 §3](06-handedness-and-pairs.md)'s R_J discussion as supporting intuition. The framework already has the structural content.
 
-### 3.3 H3 — Compound knot with 2 regular + 1 inverted components, forced by topology
+### 3.3 H3 — Mixed-orientation compound as a candidate baryon
 
-> A complex knot structure that fails to close as 3 uniform components but closes only as 2 components in regular orientation + 1 inverted. This would naturally give a +q, +q, −q charge ratio across the three components — the +2/3, +2/3, −1/3 pattern of the proton if total integer charge is +1.
+> A compound of 2 components in regular orientation + 1 inverted gives external integer charge +1 by tube-winding sum, with internal per-component charges (+1, +1, −1). The mass of the compound at small ε is approximately that of the single mode T(1, 3n'), since the windings sum to (1, 3n') and the masses of the components add. A candidate structural picture for the proton.
 
-**Framework status:** This is the genuinely novel hypothesis. The standard torus-link multi-component object T(k, k·n') decomposes into k linked components *all in the same orientation*. Configuration Y formalizes this as k uniformly-phased copies. To get a 2 : 1 orientation split, the multi-link would have to be:
+This hypothesis cleanly splits across the metric-charge / metric-binding boundary:
 
-- **Not a standard torus link.** A mixed-orientation compound is not naturally of T(k, k·n') form.
-- **A topologically distinct compound.** Candidates: a multi-component link of distinct knot types (Hopf-link-like), a satellite construction, a connected sum, or a multi-link structure on a higher-genus or higher-dimensional compact that does not admit uniform-orientation embedding.
-- **Forced by a generalization of the closure rule.** [Ch 1 §10](01-foundation.md)'s chirality criterion applies per-component. A compound-level generalization could conceivably forbid uniform orientation and force a 2 : 1 split.
+**H3a — Structural availability (in scope for metric-charge).** Does the framework's mode-language admit mixed-orientation compounds on a single sheet? *Yes, trivially* — see §1's "Mixed-orientation compounds as inventory items." Three independent Bloch modes at (±1, ±n') can be present simultaneously in the field configuration; their stress-energies superpose, their external integer charge is the tube-winding sum, and their mass at linearized level (σ = 0) is the sum of per-component masses. This is structurally available and does not require new mechanism.
 
-**What would close H3:** identify a multi-component link structure such that:
+**H3b — Stability and identification (out of scope for metric-charge — forwarded to [metric-binding](../metric-binding/)).** What metric-charge cannot decide:
 
-1. The structure is topologically realizable as a closed object on T² (or on the framework's natural compact substrate including cross-sheet structure per [R54](../../studies/R54-compound-modes/)).
-2. The structure does *not* admit a uniform-orientation embedding — closure as a single object requires mixed orientations.
-3. The forced orientation ratio is 2 : 1 across 3 components.
-4. The resulting per-component charge ratios are +q, +q, −q with q = 1/3 of the integer total charge.
+- **Why the 2:1 orientation mix is the realized configuration for a baryon-like state**, rather than 3:0 (uniform) or 1:2 (antibaryon-like) or other compositions. Stability is a multi-knot binding question.
+- **What holds the three components together as a single object** versus letting them fly apart as three independent primitives. This requires inter-component interaction energetics — explicitly nonlinear, explicitly forwarded per [Ch 1 §11](01-foundation.md).
+- **Why the per-component charge reads as fractional (±2/3, ±1/3 in standard-model units)** rather than integer (±1 in framework units). Whether this is a units convention, a deep-inelastic-averaging artifact, or a genuine structural mechanism is a phenomenological reading downstream of the framework's structural primitives.
+- **The neutron analog.** The compound 1 × T(+1, n') + 2 × T(−1, n') has external integer charge −1, which is the antiproton direction under framework-units, not neutron (charge 0). A neutral 3-component baryon structurally requires either zero tube-winding sum from a different mix, or a different mode-content reading entirely (e.g., the R-track's mode-by-mode picture). This is downstream architectural work.
 
-This is a substantive open question. It is not derivable from the existing closure rule and Configuration Y as stated. Three avenues for investigation:
+**What metric-charge delivers via H3a:** the existence of mixed-orientation compounds as inventory items, with explicit charge arithmetic. This is what §1's table records.
 
-- **Substrate-level forcing from grid-duality's wrap-promotion ladder.** L0 → L1 → L2 are structurally distinct substrate operations ([Ch 1 §10](01-foundation.md), [grid-duality §7.5](../grid-duality/07-wrap-promotion-modeling.md)). A compound at L2 might require mixed orientations as a consequence of how L0 phasing propagates upward. Forwarded to [grid-duality](../grid-duality/).
-- **Compound modes on cross-coupled sheets.** [R54](../../studies/R54-compound-modes/) explores compound-mode structure with cross-sheet couplings (σ_ep, σ_eν, σ_νp). A 3-component proton compound may require mixed orientations once cross-sheet structure is included — exactly the picture R54 is working toward. Forwarded to the R-track / [metric-binding](../metric-binding/).
-- **Generalized closure rule under compound multi-sheet structure.** The chirality criterion of [Ch 1 §10](01-foundation.md) operates per-component on T². A compound generalization is conceivable but not currently formulated. Open structural question.
+**What metric-binding receives via H3b:** the candidate compound structures, the open stability question, the neutron-analog puzzle, and the fractional-vs-integer charge reading. These are the natural inputs for binding-energetics work.
 
-**Conclusion:** H3 is forwarded. It is not investigable within metric-charge's current framework-level commitments — the existing closure rule and Configuration Y do not produce mixed-orientation compounds, and generalizing them is downstream architectural work. If H3 closes, it would explain the +2/3, +2/3, −1/3 pattern from topological necessity — the "home-run" scenario. Recording H3 as a specific structural-topology question gives downstream work (metric-binding, grid-duality, R-track) a sharp target rather than a vague "fractional-charge asymmetry" placeholder.
+The R-track studies ([R53](../../studies/R53-three-generations/), [R54](../../studies/R54-compound-modes/), [R63](../../studies/R63-proton-tuning/), [R64](../../studies/R64-nuclear-harmonic-stack/)) supply the empirical companion thread — their two-shear puzzle and mode-by-mode assignments are alternative candidate readings of the same downstream question.
 
 ---
 
@@ -129,28 +136,28 @@ This is a substantive open question. It is not derivable from the existing closu
 
 ### 4.1 In scope for metric-charge — half-day editing pass
 
-The sign-tracing audit of §1 should be propagated into the chapters where charge-sign assignments are currently implicit:
+The structural audit of §1 should be propagated into the chapters where charge-sign assignments and multi-component compounds are currently implicit:
 
 - **Ch 6 §3** ([handedness-and-pairs §3](06-handedness-and-pairs.md)): R_J already identified as matter/antimatter. Add an explicit statement that charge sign flips under R_J via p^w → −p^w, and include the four-mode table of §1 above as the framework's natural charge-sign assignment. Add H2's visualizer-level "inverted embedding" interpretation as supporting intuition.
-- **Ch 8 §6 or §7** ([shear-and-fractional-charge](08-shear-and-fractional-charge.md)): tighten the fractional-charge claim. State what Configuration Y predicts (uniform per-component sign at 1/k charge magnitude) and what it does *not* predict (the +2/3, +2/3, −1/3 baryon pattern). Replace any language suggesting the asymmetry might emerge from further Configuration Y refinement.
-- **Ch 8 forward-pointer:** add an explicit reference to the R-track's mode-by-mode picture (§2 above) and to H3 (§3.3) as the structural-topology candidate that downstream work would need to close. The forward-pointer should be specific about what is being deferred, not a vague placeholder.
+- **Ch 8 §6 or §7** ([shear-and-fractional-charge](08-shear-and-fractional-charge.md)): tighten the fractional-charge claim. State what uniform-phase Configuration Y predicts (uniform per-component sign at 1/k charge magnitude) and what it does *not* predict (mixed-sign baryon patterns). Note that the framework's mode-language *does* support mixed-orientation compounds as inventory items, with external integer charge given by tube-winding sum (per §1's table) — but their stability and any empirical identification is forwarded.
+- **Ch 8 forward-pointer:** add an explicit reference to the R-track's mode-by-mode picture (§2 above) and to H3b (§3.3, the binding-stability and identification questions) as the downstream work needed to close baryon composition. The forward-pointer should be specific about what is being deferred, not a vague placeholder.
 
 Estimate: half-day editing pass. Independent of TODO-N2 / TODO-P3 / Ch8a — can be done at any time.
 
 ### 4.2 Forwarded — concrete pointers
 
-- **R-track ([R53](../../studies/R53-three-generations/), [R54](../../studies/R54-compound-modes/), [R63](../../studies/R63-proton-tuning/), [R64](../../studies/R64-nuclear-harmonic-stack/)):** Empirical mode-by-mode quark identification, including the two-shear puzzle and its in-progress resolution attempts.
-- **[metric-binding](../metric-binding/):** Multi-knot energetics, baryon composition, mechanism for binding mixed-orientation components.
-- **[grid-duality](../grid-duality/):** Substrate-level structure that might force mixed-orientation compounds at the L2 promotion level.
+- **[metric-binding](../metric-binding/):** Stability of mixed-orientation compounds (H3b), inter-component binding mechanism, the neutron-analog question, and the fractional-vs-integer per-component charge reading. Receives §1's compound inventory table and the H3 picture as candidate input.
+- **R-track ([R53](../../studies/R53-three-generations/), [R54](../../studies/R54-compound-modes/), [R63](../../studies/R63-proton-tuning/), [R64](../../studies/R64-nuclear-harmonic-stack/)):** Empirical mode-by-mode quark identification, including the two-shear puzzle and its in-progress resolution attempts. Alternative reading to the H3a compound-inventory picture; downstream work will need to reconcile or choose between them.
+- **[grid-duality](../grid-duality/):** Substrate-level structure that might constrain which mixed-orientation compounds are realizable at the L2 promotion level. Open structural question.
 
 ### 4.3 What this work product delivers
 
-- A clean statement of what metric-charge predicts for charge signs under existing commitments.
-- An honest delineation of what is in-scope (sign-tracing audit) and what is downstream (baryon composition).
-- Three concrete hypotheses (H1, H2, H3) recorded for downstream investigation, with H3 marked as the structural-topology candidate that would deliver the up/down asymmetry from first principles.
-- A forward-pointer that accurately reflects the state of downstream work, not a placeholder that suggests metric-charge will eventually solve the problem itself.
+- A clean statement of what charge signs metric-charge predicts per primitive and per uniform-phase Configuration Y multi-link.
+- The structural existence of mixed-orientation compounds as inventory items, with explicit per-component and external-charge arithmetic.
+- An honest scope boundary: what metric-charge can decide (mode-language support, structural inventory) vs what is binding-mechanism work (stability, identification, fractional-charge reading).
+- Concrete forward-pointers naming H3b's open questions and the R-track's empirical thread as candidate inputs for metric-binding.
 
-The audit's half-day editing pass is the actionable next step. H1 and H2 are recoveries of existing framework content; H3 is the open structural question whose downstream resolution would close baryon composition.
+The audit's half-day editing pass is the actionable next step. H1 and H2 are recoveries of existing framework content; H3a is the new in-scope structural item (mixed-orientation compound inventory); H3b is the cleanly-bounded handoff to metric-binding.
 
 ---
 
@@ -158,4 +165,4 @@ The audit's half-day editing pass is the actionable next step. H1 and H2 are rec
 
 The R-track's two-shear puzzle (R53 F16) is the active barrier to a clean closed picture in downstream work. metric-charge does not need to resolve it; the forward-pointer should reflect that the downstream picture is still settling.
 
-H3 is recorded as the framework's most promising structural avenue for delivering the +2/3, +2/3, −1/3 pattern from topological necessity. If a downstream investigation closes H3 affirmatively, the result feeds back into metric-charge as a refinement of Configuration Y or a generalization of the closure rule. If H3 closes negatively, the pattern remains an empirical input rather than a derived structure — the framework's predictive content for fractional-charge magnitude (1/k per component) still stands, but the sign-mix becomes a downstream-supplied input.
+The H3a / H3b split clarifies what metric-charge can honestly deliver (mixed-orientation compound inventory + charge arithmetic) versus what is genuinely binding-mechanism work (stability, identification, the neutron-analog puzzle, the fractional-vs-integer reading). Metric-charge does not commit the framework to any specific compound being the proton; it supplies the structural building blocks and a clean handoff. If a downstream investigation produces a stable mixed-orientation reading of the proton, the result feeds back to metric-charge only as a citation; if a different reading wins (e.g., the R-track's mode-by-mode picture), the framework's compound-inventory table still stands as honest structural content.

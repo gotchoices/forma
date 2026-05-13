@@ -87,6 +87,15 @@ For full notation conventions including the visualization disposition, see [metr
 
 6. **Asymptotic behaviors.** What does E(r) do at large r (far separation)? At small r (near coincidence)? At specific resonant separations? The asymptotic structure should constrain what physical force laws the geometry can support.
 
+7. **Mixed-orientation compounds as candidate baryons.** Metric-charge's [work-L5](../metric-charge/work-L5.md) records that the framework's mode-language admits compound configurations on a single sheet with non-uniform per-component orientations — for instance, 2 × T(+1, n') + 1 × T(−1, n') with per-component charges (+1, +1, −1) and external integer charge +1 (the proton's external charge by tube-winding sum). The structural existence of such compounds is in metric-charge's scope; **whether any such compound is stable, what binds it, and which compound (if any) realizes the observed proton are downstream questions native to this project.** Open structural questions feeding in:
+   - **Why a 2:1 mix and not 3:0 or other ratios?** The uniform 3 × T(+1, n') compound has external charge +3 (or, per Configuration Y, internally distributed as +1/3 per component summing to +1 in scaled units). The 2:1 mix gives external +1 with non-uniform per-component sign. Which is the ground state for a given sheet's (ε, σ_uw)? Is there a binding-energetics reason for one mix to be favored?
+   - **What forces three primitives to bind as one object?** Three independent primitives on the same sheet are not automatically bound. The binding mechanism — inter-component interaction, confinement-like potential, or substrate-level constraint — is the central thing to derive.
+   - **The neutron analog.** Among 3-component compounds of T(±1, n') primitives on a single sheet, the available external integer charges by tube-winding sum are {−3, −1, +1, +3}. Charge 0 is *not* among them. A neutral 3-component baryon would require either a different mode-content (e.g., zero net tube winding from non-(±1, n') primitives, or cross-sheet structure per R54), or a different reading of the baryon composition altogether. This is a structural puzzle worth taking up here.
+   - **Fractional vs integer per-component charge.** The compound-inventory picture has each primitive carrying integer charge ±1 in framework units. Standard-model quarks have fractional charges (±2/3, ±1/3). Is the framework's primitive charge units-different from the SM charge, or does the binding mechanism redistribute charge non-uniformly among components, or is the SM fractional reading itself a binding-state artifact (deep-inelastic averaging, anomalous moment)? Open downstream question.
+   - **Mass approximation to single-mode T(1, 3n').** At small ε, the 3-component compound's mass approximates that of a single Bloch mode at the summed windings (1, 3n'). Is this near-degeneracy structural, or coincidental? Could the compound be the *substructure* of an apparently-single mode at large mass? Relevant to proton internal-structure questions.
+   
+   See also the alternative R-track empirical reading ([R53](../../studies/R53-three-generations/), [R54](../../studies/R54-compound-modes/), [R63](../../studies/R63-proton-tuning/)) in which each quark is its own (m, n) mode rather than a component of a single-sheet compound — a different structural picture that this project's binding analysis should engage with or choose between.
+
 ### Open questions
 
 To answer or sharpen along the way:
@@ -106,9 +115,12 @@ To answer or sharpen along the way:
 ## Background reading
 
 - [metric-charge/](../metric-charge/) — the immediate predecessor; closure condition, charge from geometry, sheet character (single-knot)
+- [metric-charge/work-L5.md](../metric-charge/work-L5.md) — fractional-charge sign-tracing audit + mixed-orientation compound inventory; hands off the H3b stability and identification questions (proton/neutron candidate compounds) to this project
 - [metric-mass/](../metric-mass/) — the grand-predecessor; mass-from-u, ±n superposition pass-through (Chapter 4)
 - [studies/R64-nuclear-harmonic-stack/](../../studies/R64-nuclear-harmonic-stack/) — multi-knot harmonics on the p-sheet, nuclear binding context
 - [studies/R63-proton-tuning/](../../studies/R63-proton-tuning/) — proton/neutron pair structure, complementary nodes
+- [studies/R53-three-generations/](../../studies/R53-three-generations/) — empirical mode-by-mode quark identification; alternative reading to the mixed-orientation compound picture (R-track's two-shear puzzle is the live downstream issue)
+- [studies/R54-compound-modes/](../../studies/R54-compound-modes/) — cross-sheet couplings as candidate resolution mechanism
 - [grid/](../../grid/) — α-coupling derivation (taken as input)
 
 ## Chapters
