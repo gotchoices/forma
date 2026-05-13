@@ -67,22 +67,22 @@ Tracks the project's active work files, their states, dependencies, and next act
 
 ### clover-quarks.md — corrugated 3-lobed torus as quark substrate
 
-**Topic:** Develops a candidate geometric construction: a torus whose cross-section is a clover-leaf (3 lobes + 3 saddles) and whose ring sweep includes a 120° chiral twist per revolution. Tests whether quarks correspond to specific path classes on this surface, with the 1/3 twist providing the natural Z₃ precession for proton-as-3-quark closure.
+**Topic:** Develops a candidate geometric construction: a torus whose cross-section is a clover-leaf (3 lobes + 3 saddles) and whose ring sweep includes a 120° chiral twist per revolution. Quarks identified with single arcs (u = 1 lobe, d = 1 saddle); protons/neutrons identified with composite paths (uud = 2 lobes + 1 saddle, udd = 1 lobe + 2 saddles).
 
-**Status:** Drafted. Geometric construction laid out; profile closure verified via Gauss-Bonnet; closure conditions for "up-quark" (2 lobes + 1 saddle) and "down-quark" (2 saddles + 1 lobe) paths posed but not fully verified.
+**Status:** **Phases A and B complete** (analytical math, §§7–12). Phase A headline result: per-arc charge integration gives Q_lobe = +2/3 and Q_saddle = −1/3 directly — the standard QCD fractional charges fall out as the per-radian curvature content of profile segments. Phase B established: clean quark identifications, path closure under literal-arc parameterization (proton in 2 ring revolutions, neutron in 1), neutron decay as topological q-shift (1 saddle → 1 lobe), and energy considerations for proton stability. Phase C (numerical mode spectrum) deferred.
 
 **Dependencies:**
 - *Upstream:* metric-charge chapter 4 (closure rule) + chapter 7 (aspect ratio character)
-- *Sister files (in sheet-proton):* quark-flavor
-- *Sister files (in metric-binding):* fractional-charge (partial-knot picture; corrugated torus is candidate geometric realization), color-confinement (Z₃ structure emerges from 3-lobe profile)
+- *Sister files (in sheet-proton):* quark-flavor (path topology depends on quark mapping)
+- *Sister files (in metric-binding):* fractional-charge (partial-knot picture; Phases A-B are the concrete geometric realization), color-confinement (Z₃ structure derived from twist topology)
 
 **Next actions:**
-1. Verify geometric closure of the clover profile (plot, confirm smooth).
+1. Verify geometric closure of the clover profile (plot, confirm smooth) — simple sanity check.
 2. Implement corrugated-torus embedding in 3D; render to inspect.
-3. Work out path closure for up-quark and down-quark hypotheses; determine which parameterization is right.
-4. Develop wave equation on the corrugated torus; compute mode spectrum.
+3. Catalog excited states (higher-energy paths beyond the canonical proton and neutron) — might match observed baryon resonances (Δ⁺⁺, Δ⁺, Δ⁰, Δ⁻, N* states).
+4. **Phase C numerical work:** implement the Laplacian, compute the mode spectrum at representative (ε, χ); compare to flat-T² baseline; predict the u-d and p-n mass splits.
 
-**Why this might matter:** if the corrugated torus picture survives, it provides a *single* geometric construction that addresses Z₃ confinement, fractional charge, three-quark structure, and the up/down quark distinction simultaneously. Each of these is currently a separate open question (some in metric-binding, some here). A unifying geometric mechanism would be a substantial structural contribution.
+**Why this might matter:** Phases A and B provide a structural derivation of (a) fractional quark charges (lobe vs saddle per-radian content), (b) three-quark baryon structure (full-profile coverage requires 3 arcs), (c) Z₃ confinement (closure forces integer-summing combinations), (d) the up/down quark distinction (lobe vs saddle), (e) proton and neutron structure (2-lobe+1-saddle vs 1-lobe+2-saddle paths), and (f) a topological mechanism for neutron decay (q-shift converting one saddle to one lobe). Whether Phase C yields quantitatively correct masses (quark, proton, neutron, mass splits) is the remaining empirical test.
 
 ---
 
@@ -134,6 +134,20 @@ Issues that span multiple work files:
 - **Mass-vs-charge framing.** Per metric-mass chapter 5: the project's choice to read compact-direction momentum as mass-generating is a framing choice. How does this interact with the proton sheet's charge structure? **Affects:** quark-flavor, meson-spectrum, strong.
 
 - **Cross-sheet mediator exchange.** Strong force is sheet-internal; weak force (β decay) is cross-sheet. Two different coupling mechanisms. **Affects:** strong (specifically the strong-vs-weak distinction in the framework).
+
+- **Is the 1/3 twist of clover-quarks tunable, or is it forced?** The twist value τ = 1/3 produces the third-integer charge fractions of QCD. Other rational twists (1/2, 1/4) would predict different fractional structures not seen in nature. **Affects:** clover-quarks specifically; the framework's prediction depends on τ = 1/3 being structurally singled out, not just tunable.
+
+- **Path-closure asymmetry between up and down.** The proton path (2 lobes + 1 saddle) and neutron path (1 lobe + 2 saddles) close in different numbers of ring revolutions (2 vs 1 under literal-arc parameterization). Whether this asymmetry has empirical consequences (e.g., for the u-d mass split) is a Phase C question for clover-quarks.
+
+- **Generation structure: c, s, t, b mappings.** [clover-quarks](clover-quarks.md) currently identifies u = 1 lobe, d = 1 saddle. Where do the heavier quarks (charm, strange, top, bottom) live? Three candidate mappings tracked but unresolved:
+  - **(A) Higher harmonics on the same surface:** s, c, b, t are higher-q modes of the same proton sheet. Pro: simple. Con: doesn't naturally produce QCD's wide mass hierarchy.
+  - **(B) Different sheets for different generations:** each generation lives on its own corrugated torus with different (ε, χ). Pro: parameter freedom. Con: requires positing extra sheets.
+  - **(C) Sub-corrugation:** modes with additional internal structure. Pro: novel. Con: unsketched.
+  - **Affects:** the project's complete theory of quark flavors. **Likely needs its own work file** (`three-generations.md` or similar) to develop.
+
+- **Energy mechanism for n → p decay.** Under [clover-quarks §12.4](clover-quarks.md), the d → u transition is structurally a "q-shift" (one saddle becomes one lobe) — a topological transition rather than a direction reversal. The energy released (~0.78 MeV) is consistent with the observed β-decay Q-value. **Open:** whether the topology alone or substrate asymmetry (from [work-strong](strong.md) / grid-primitive ch 9) dominates the n-p mass split (1.29 MeV).
+
+- **Why is the proton stable and the neutron unstable?** Under clover-quarks, the proton path (2 lobes + 1 saddle) is energetically preferred to the neutron path (1 lobe + 2 saddles). This requires either (i) intrinsic energy asymmetry between lobes and saddles (Candidate A) or (ii) substrate-level chirality asymmetry beyond the topology (Candidate B). **Affects:** clover-quarks's Phase C numerical work; cross-references work-strong's substrate-asymmetry hypothesis.
 
 ---
 

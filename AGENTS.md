@@ -33,6 +33,8 @@ $$
 ```
 The comment is invisible when rendered but readable in raw source. The `$$` block renders as typeset math in any math-aware viewer (GitHub, Obsidian, etc.).
 
+When answering user prompts interactively (not in markdown files) use only inline unicode and not TeX.
+
 ## Tickets (tess)
 
 This project uses [tess](tess/) for AI-driven ticket management.
