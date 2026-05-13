@@ -4,7 +4,7 @@ This chapter brings ratio ε ([Chapter 7](07-aspect-ratio-and-character.md)) and
 
 The chapter's mission is to produce a **general model of a particle sheet** — characterizing how the two metric parameters jointly determine which closure-satisfying configurations dominate, what the sheet's structural character is, and how the framework's three qualitative sheet types (lepton-like, neutrino-like, hadronic-like) emerge as different regions of the combined landscape. This is the substrate for the eventual downstream exercise of *inverting* the structural map: given a sheet's measured properties, derive the metric parameter values for that sheet. metric-charge does not handle specific sheets; this chapter provides the general-sheet model from which sheet-specific downstream work can build.
 
-**Framing convention.** Where standard-physics terminology appears — "lepton," "hadron," "neutrino" — it is used as **reference target** for what the framework's structural mechanisms could correspond to. The chapter is **qualitatively complete** for the structural shape of the (σ_uw, ε) landscape; quantitative predictions (specific σ_uw and ε values for each empirical sheet) require calculations flagged in [STATUS](STATUS.md) as the chapter's main pending dependencies.
+**Framing convention.** Where standard-physics terminology appears — "lepton," "hadron," "neutrino" — it is used as **reference target** for what the framework's structural mechanisms could correspond to. The chapter is **qualitatively complete** for the structural shape of the (σ_uw, ε) landscape; quantitative predictions (specific σ_uw and ε values for each empirical sheet) require the pending calculations enumerated in [§5.4](#54-what-quantitative-engagement-requires) and consolidated in [Ch 10 §6](10-closing-summary.md) as forwarded items.
 
 **Inheritance.**
 
@@ -318,10 +318,10 @@ The chapter's structural prediction for this sheet: the framework's small-σ, ε
 The three-sheet correspondence above is qualitative. Converting it to quantitative predictions — specific σ_uw and ε values per sheet, specific oscillation periods, specific multi-link masses — requires the following pending calculations:
 
 - **Lepton-like:** Rigorous σ → 1 analysis at non-integer ε, plus translation of the predictions to s-form for empirical correspondence with R-track studies (§6). The σ_uw ↔ s transform diverges at second order, so the substantive quantitative work is verifying that the structural picture survives the translation at large σ.
-- **Hadronic-like:** The φ⁴ inter-component coupling calculation lives in [metric-binding](../metric-binding/) (per §5.2 — it is a nonlinear self-interaction outside metric-charge's scope); the substrate Z_k input lives in grid-duality. metric-charge's contribution is the structural framing (Configuration Y consequences, sign audit per [TODO-L5](STATUS.md)), independent of k-selection.
+- **Hadronic-like:** The φ⁴ inter-component coupling calculation lives in [metric-binding](../metric-binding/) (per §5.2 — it is a nonlinear self-interaction outside metric-charge's scope); the substrate Z_k input lives in grid-duality. metric-charge's contribution is the structural framing (Configuration Y consequences, sign-tracing audit in [Ch 6 §2.4](06-handedness-and-pairs.md) and mixed-orientation compound inventory in [Ch 8 §7.4](08-shear-and-fractional-charge.md)), independent of k-selection.
 - **Neutrino-like:** Oscillation period from σ computed explicitly via the time-evolution of a chirality-eigenstate prepared as (cos θ)·(m, n) + (sin θ)·(m, −n) under the sheared dispersion, then checked structurally against observed oscillation magnitudes.
 
-Each is a concrete tractable calculation; together they convert this chapter from a structural map to a quantitative framework. [STATUS](STATUS.md) tracks these as the chapter's main pending dependencies.
+Each is a concrete tractable calculation; together they convert this chapter from a structural map to a quantitative framework. [Ch 10 §6](10-closing-summary.md) lists these alongside the project's other forwarded items.
 
 ---
 
@@ -464,7 +464,7 @@ This is metric-charge's contribution to the framework's particle-sheet model. Mu
 
 ## What this chapter does **not** do
 
-- **Does not carry out the φ⁴ inter-component coupling calculation.** Scoped in [Ch 8 §6.3](08-shear-and-fractional-charge.md); identified in §5.2 as load-bearing for the hadronic-like sheet's three-component derivation. Tracked in [STATUS](STATUS.md) as TODO-M8(a)'s redirected open work.
+- **Does not carry out the φ⁴ inter-component coupling calculation.** Scoped in [Ch 8 §6.3](08-shear-and-fractional-charge.md); identified in §5.2 as load-bearing for the hadronic-like sheet's three-component derivation. Forwarded to [metric-binding](../metric-binding/) as nonlinear self-interaction outside metric-charge's linear scope.
 - **Does not predict specific (σ_uw, ε) values** for the three empirical sheets. The chapter provides the qualitative structural map and the regime classification; quantitative predictions per sheet require the §5.4 pending calculations and §6.4's translation analysis.
 - **Does not carry out the "metric from observables" inversion exercise.** §7 establishes the substrate and prerequisites; the actual inversion application to specific sheets is downstream of this chapter and may warrant its own follow-on chapter or project.
 - **Does not handle multi-sheet composition.** Per [Ch 1 §11](01-foundation.md), the framework treats one sheet at a time. How multiple sheets share extended spacetime, how their diagonal normalizations compose, how their shears interact — forwarded to [metric-binding](../metric-binding/).

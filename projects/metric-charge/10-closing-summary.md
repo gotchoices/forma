@@ -143,7 +143,7 @@ What the framework does *not* settle, with explicit routing:
 | Quantitative (σ_uw, ε) values for specific empirical sheets | Sheet-specific downstream work; [shear-ratio.md](shear-ratio.md) records current production-study estimates |
 | Quantitative α derivation | [grid/](../../grid/); structural location of α settled in [grid-duality §8](../grid-duality/08-where-alpha-appears.md) |
 
-The detailed open-issues log lives in [STATUS.md](STATUS.md); the table above names the load-bearing items.
+The table above is the canonical record of what metric-charge does not settle and where each forwarded item lives.
 
 The matter/antimatter bias question is the framework's one location where a property standard physics treats as physically meaningful has no derived mechanism in this project. σ_uw cannot produce it; whether substrate-level chirality at grid-primitive supplies the missing ingredient, or whether a different shear mode in the metric does, is the project-direction question that follows out of metric-charge.
 
@@ -151,7 +151,7 @@ The matter/antimatter bias question is the framework's one location where a prop
 
 ## 7. Hand-off to metric-binding
 
-[metric-binding](../metric-binding/) inherits the binding-mechanism work that metric-charge forwards: k-selection through the φ⁴ inter-component calculation, stability of mixed-orientation compounds as candidate baryon-like structures, multi-knot interaction (pass-through, annihilation, bound states), and the architectural commitments on multi-sheet composition flagged by [TODO-Disc1 and TODO-Disc2](STATUS.md). The R-track studies — [R53](../../studies/R53-three-generations/), [R54](../../studies/R54-compound-modes/), [R63](../../studies/R63-proton-tuning/), [R64](../../studies/R64-nuclear-harmonic-stack/) — supply the empirical companion thread for that work; their unresolved two-shear puzzle (R53 F16) is a downstream binding-side concern that metric-binding's architectural framing will need to engage.
+[metric-binding](../metric-binding/) inherits the binding-mechanism work that metric-charge forwards: k-selection through the φ⁴ inter-component calculation, stability of mixed-orientation compounds as candidate baryon-like structures, multi-knot interaction (pass-through, annihilation, bound states), and the architectural commitments on multi-sheet composition flagged in [Ch 1 §11](01-foundation.md) as non-assumptions (substrate sharing, diagonal normalization for multi-species). The R-track studies — [R53](../../studies/R53-three-generations/), [R54](../../studies/R54-compound-modes/), [R63](../../studies/R63-proton-tuning/), [R64](../../studies/R64-nuclear-harmonic-stack/) — supply the empirical companion thread for that work; their unresolved two-shear puzzle (R53 F16) is a downstream binding-side concern that metric-binding's architectural framing will need to engage.
 
 metric-charge's deliverable to that work is the structural inventory of this chapter: which configurations the framework's mode-language admits, what their per-component and external-charge structure is, and which questions belong on the binding side rather than the metric side. metric-charge's job ends with the inventory and the scope boundary; the binding-side investigation begins in metric-binding.
 

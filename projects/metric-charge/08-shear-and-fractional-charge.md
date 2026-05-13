@@ -271,7 +271,7 @@ This chapter therefore reads "k × T(1, n') multi-link" as **Configuration Y thr
 - **Charge per component:** 1/k of the link's integer total charge.
 - **Closure:** the link satisfies closure iff each component does (each is T(1, n'), m=1 trivially divides any n').
 
-(A propagation note: [Chapter 4 §4.3](04-the-closure-condition.md) and [Chapter 5 §4](05-metric-self-consistency.md) have been tacitly using the Configuration-Y reading without making the choice explicit. The commitment here should be propagated to those chapters in a coordinated pass. [STATUS](STATUS.md) flags this as a follow-on.)
+(The Configuration-Y commitment is propagated explicitly to [Chapter 4 §4.3a](04-the-closure-condition.md) and [Chapter 5 §4.6](05-metric-self-consistency.md), which read consistently with this section.)
 
 ### 5.3 Energetics under shear, per-component
 
@@ -468,7 +468,7 @@ This is the framework's structural inventory at the linearized level for a singl
 - **Does not derive the value of k.** §6 shows linear theory is degenerate. The φ⁴ inter-component calculation that *could* select k is flagged as the open follow-on.
 - **Does not derive a matter/antimatter bias mechanism.** §3 shows σ_uw cannot do it. σ_uw provides intra-particle chirality bias only — at most a P-flavor ingredient toward a Sakharov-CP construction; the C-flavor side is not derived. Forwarded to [Chapter 6 §6.7](06-handedness-and-pairs.md) for candidate alternatives.
 - **Does not engage the combined (σ, ε) landscape.** The σε product analysis of §2.3 is a per-parameter result; how σ and ε *together* produce the three sheet types, including the σ → 1 single-axis-suppression mechanism that's central to charged-sheet character at large ε, is forwarded to Chapter 9 (planned).
-- **Does not redo the four-property gauge-potential test at σ ≠ 0.** [Ch 5 §4.6](05-metric-self-consistency.md)'s test was derived for the σ = 0 R_u-symmetrized particle; the single-Bloch-mode interpretation under shear (§2.2) requires the test to be redone, with potentially different surviving cross-term structure. Flagged as an extension of [TODO-M2](STATUS.md).
+- **Does not itself redo the four-property gauge-potential test at σ ≠ 0.** The σ ≠ 0 extension is carried out in [Ch 5 §4.6.5](05-metric-self-consistency.md) under wrap-order enforcement; h_μw remains the gauge potential and h_μu's σ ≠ 0 contribution is characterized as the mass-direction metric perturbation. This chapter only feeds in the single-Bloch-mode interpretation (§2.2) and the stress-energy pattern Ch 5 §4.6.5 then operates on.
 - **Does not derive nonlinear shear effects.** Linear theory only. Whether large σ produces qualitatively different behavior beyond linear-approximation breakdown is downstream work.
 - **Does not analyze interaction between distinct multi-component links.** Multi-knot energetics is metric-binding territory.
 - **Does not derive the dynamical stability of fractional-charge components.** §7.3 establishes structural non-isolability; energetics of separation forwards to [metric-binding](../metric-binding/).
@@ -481,12 +481,12 @@ This is the framework's structural inventory at the linearized level for a singl
 
 | Q | Where it goes |
 |---|---|
-| Does the φ⁴ inter-component coupling calculation (§6.3) yield a specific k_sel at relevant (σ, ε)? Specifically, does k = 3 fall out at the regime where production studies find it numerically? | Follow-on to [TODO-M8(a)](STATUS.md). Within metric-charge's scope if pursued. |
+| Does the φ⁴ inter-component coupling calculation (§6.3) yield a specific k_sel at relevant (σ, ε)? Specifically, does k = 3 fall out at the regime where production studies find it numerically? | Forwarded to [metric-binding](../metric-binding/) — nonlinear self-interaction outside metric-charge's linear scope. |
 | Are fractional-charge components dynamically stable, or only structurally non-isolable? What is E(separation) for pulling one component out of a k × T(1, n') multi-link? | [metric-binding](../metric-binding/) — multi-knot energetics. |
 | Does k-selection ultimately come from local internal-mode dynamics (§6.3), substrate Z_k input from grid-duality (§6.4(b)), or some combination? | Open; needs both candidates pursued. |
 | Does the σ_uw chirality bias quantitatively match observed P-violation magnitudes (e.g., parity-violation in weak interactions)? | Downstream MaSt-correspondence work + experimental data. |
 | Does the framework derive a matter/antimatter bias from any mechanism? §3 shows σ_uw cannot. Candidates: σ_Su or σ_Sw (different shear, not in current metric); substrate-level chirality from grid-primitive / grid-duality; other unidentified mechanisms. | Project-direction question (see [Chapter 6 §6.7](06-handedness-and-pairs.md)). |
-| Under the single-Bloch-mode interpretation of §2.2, does the [Ch 5 §4.6](05-metric-self-consistency.md) four-property gauge-potential test still hold? What is the surviving cross-term pattern (T_tu, T_tw, T_uw)? | Extension of [TODO-M2](STATUS.md). |
+| Under the single-Bloch-mode interpretation of §2.2, does the [Ch 5 §4.6](05-metric-self-consistency.md) four-property gauge-potential test still hold? What is the surviving cross-term pattern (T_tu, T_tw, T_uw)? | **Resolved** in [Ch 5 §4.6.5](05-metric-self-consistency.md): h_μw remains the gauge potential under wrap-order enforcement; h_μu's σ ≠ 0 contribution is the mass-direction metric perturbation, not a second gauge field. |
 | Are there other multi-component links (k = 5, k = 7, ...) energetically favored at specific σ values, corresponding to potential exotic states? | Open follow-up; downstream investigation after §6.3's calculation. |
 | Does the framework predict any deviation from standard quark mass / charge ratios that could be experimentally tested? | Open; depends on quantitative completion of the framework. |
 | Does the choice of which compact direction is "tube" (closure-asymmetric) vs "ring" force a specific sign convention on σ_uw, or is the sign free? | Convention question; possibly settled by combination of [Chapter 3 §3.2](03-knots-on-the-torus.md) and [Chapter 5 §6.3](05-metric-self-consistency.md). |
