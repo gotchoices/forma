@@ -149,7 +149,62 @@ The matter/antimatter bias question is the framework's one location where a prop
 
 ---
 
-## 7. Hand-off to metric-binding
+## 7. Structural extensions not explored
+
+The framework's commitments characterize a single closure-satisfying primitive on a single 2D compact sheet with **constant** (ε, σ_uw) — scalar parameters, the same numbers everywhere. Several structural extensions of this setup are mathematically available and likely relevant for downstream work; this section enumerates the most likely-relevant ones so future work knows where to look when constant (ε, σ_uw) cannot accommodate a modeling target.
+
+### 7.1 Non-constant metric parameters
+
+Both ε and σ_uw can be promoted from scalar constants to **functions of one or more coordinates**:
+
+- **Functions of (S₁, S₂)** — the sheet's aspect ratio or shear varies with position in extended space. Different regions of space then host effectively different sheet characters; transitions between regions support edge-like and interface phenomena. Likely-relevant whenever multi-knot interactions, sheet defects, or position-dependent species need modeling (metric-binding territory).
+- **Functions of t** — time-evolving compactification. Comparable to cosmological radion or modulus fields.
+- **Functions of (u, w)** — parameters varying around the compact sheet itself ("warped" compactification). The mode spectrum is no longer clean integer pairs; modes become solutions of a Schrödinger-like equation on the varying compact metric, with potential mode localization, mode-mixing, and trapping.
+
+Both ε and σ_uw admit this promotion. Promoting either makes the linearized Einstein equations nontrivial in the compact directions, breaks the clean integer-mode picture, and introduces mode coupling. The framework's derivations would need to be redone for any specific function form. **This is probably the first place to look when constant-(ε, σ_uw) analysis cannot describe a target phenomenon** — it preserves the general framework while admitting position- or time-dependence.
+
+### 7.2 Additional metric components
+
+The framework's metric uses one off-diagonal entry (σ_uw, the compact-compact shear). Other off-diagonals are mathematically available:
+
+- **Extended-compact shears σ_Su, σ_Sw** — between an extended dimension (S₁, S₂) and a compact one. metric-mass Ch 7 uses σ_Su to derive a sign-reflection bias mechanism on a 1D-compact substrate; either σ_Su or σ_Sw is a candidate matter/antimatter bias mechanism per [Ch 6 §6.7](06-handedness-and-pairs.md).
+- **Time-compact shears σ_tu, σ_tw** — between time and a compact direction. Not engaged anywhere in the framework's stack.
+- **Extended-extended shear σ_S₁S₂** — observable gravitational curvature in standard GR.
+
+Each of these is an additional free parameter that could vary independently, and (per §7.1) each could itself be a function rather than a constant.
+
+### 7.3 Boundary conditions and field content
+
+- **Twisted periodicities / spin structures.** The framework assumes strict periodicity: φ(u + L_u, w) = φ(u, w) and similarly in w. Anti-periodic boundary conditions (φ(u + L_u, w) = −φ(u, w)) shift the integer spectrum to half-integers; phase-twisted conditions (φ(u + L_u, w) = e^{iα} φ(u, w)) introduce a continuous twist. T² admits four distinct spin structures (PP, PA, AP, AA); in standard field theory these are how fermion fields acquire different mode families than boson fields. Engagement with spin structure is the natural place to look for fermion-like content within this framework's scope.
+- **Non-scalar field content.** φ is currently a real scalar. Vector, spinor, and tensor fields on T² carry internal polarization indices and richer mode families. Polarization is explicitly forwarded to [grid/](../../grid/) per [Ch 1 §7](01-foundation.md); engagement with non-scalar field content on the sheet would lift that elision.
+
+### 7.4 Substrate topology
+
+- **Non-trivial T² fibration over extended space.** Currently the manifold is M = ℝ × ℝ × ℝ × T² — a trivial product. If the T² fiber were "twisted" as a function of (S₁, S₂) (Möbius-like bundle structure), compact and extended directions would couple in ways no single (ε, σ_uw) captures.
+- **Higher-genus compact substrate.** Going beyond T² to genus-2 (double-torus) or higher. π₁ becomes non-abelian; knot/winding structure changes substantially. A deep structural extension, not just a parameter addition.
+
+### 7.5 Multiple coupled fields
+
+Two or more φ fields on the same sheet with a coupling term produce mixed modes. The φ⁴ self-interaction of [Ch 8 §6.3](08-shear-and-fractional-charge.md) — forwarded to metric-binding for k-selection — is the framework's one explicit case. Other couplings (φ₁·φ₂², φ²·ψ, gauge-couplings, etc.) are structurally available and may be relevant for inter-species interactions in metric-binding.
+
+### Summary
+
+| Extension | Likely-relevant question it bears on |
+|---|---|
+| Non-constant (ε, σ_uw) as functions of (S₁, S₂, t, u, w) | Spatial / temporal inhomogeneities; mode localization |
+| σ_Su / σ_Sw (extended-compact shears) | Matter/antimatter bias |
+| σ_tu / σ_tw (time-compact shears) | Untouched |
+| Twisted periodicities / spin structures | Fermion-vs-boson distinction |
+| Non-scalar field content | Polarization, electromagnetic vector structure (→ grid) |
+| Non-trivial T² fibration | Coupling compact and extended sectors |
+| Higher-genus substrate | Non-abelian topology, exotic species |
+| Multiple coupled compact fields | Inter-species interactions in metric-binding |
+
+These are *structural neighborhoods* outside the current commitment, not items the framework will eventually engage with. The non-constant parameter promotion of §7.1 is the most general and the least disruptive — it preserves the framework's structure while admitting position or time dependence. The remaining extensions add new parameters or change the manifold itself, and engaging them is a substantive structural commitment beyond the scope of this project.
+
+---
+
+## 8. Hand-off to metric-binding
 
 [metric-binding](../metric-binding/) inherits the binding-mechanism work that metric-charge forwards: k-selection through the φ⁴ inter-component calculation, stability of mixed-orientation compounds as candidate baryon-like structures, multi-knot interaction (pass-through, annihilation, bound states), and the architectural commitments on multi-sheet composition flagged in [Ch 1 §11](01-foundation.md) as non-assumptions (substrate sharing, diagonal normalization for multi-species). The R-track studies — [R53](../../studies/R53-three-generations/), [R54](../../studies/R54-compound-modes/), [R63](../../studies/R63-proton-tuning/), [R64](../../studies/R64-nuclear-harmonic-stack/) — supply the empirical companion thread for that work; their unresolved two-shear puzzle (R53 F16) is a downstream binding-side concern that metric-binding's architectural framing will need to engage.
 
