@@ -4,7 +4,7 @@ This file frames [TODO-L5](STATUS.md): the framework's "1/k charge per component
 
 The work falls into two layers:
 
-- **Layer 1 (in scope):** Sign-tracing audit. What charge sign does a single closure-satisfying T(m', 1) primitive carry? What about its R_u-, R_w-, and R_J-conjugates? What about a uniform-phase k × T(m', 1) Configuration Y multi-link? This is tractable as a half-day editing pass.
+- **Layer 1 (in scope):** Sign-tracing audit. What charge sign does a single closure-satisfying T(1, n') primitive carry? What about its R_u-, R_w-, and R_J-conjugates? What about a uniform-phase k × T(1, n') Configuration Y multi-link? This is tractable as a half-day editing pass.
 - **Layer 2 (out of scope for metric-charge):** Baryon composition — the +2/3, +2/3, −1/3 pattern within a bound multi-particle state. The R-track studies (R53 / R54 / R63 / R64) and the structural hypotheses H1–H3 below are the candidate inputs to this question. Resolution is forwarded to [metric-binding](../metric-binding/) and the R-track.
 
 Conventions follow the rest of the project. M ≡ (ℏ/c)·(2π/L_w). σ ≡ σ_uw.
@@ -24,25 +24,25 @@ Conventions follow the rest of the project. M ≡ (ℏ/c)·(2π/L_w). σ ≡ σ_
 
 ## 1. Layer 1 — sign-tracing audit
 
-Under the single-Bloch-mode interpretation of [Ch 8 §2.2](08-shear-and-fractional-charge.md) and the wrap-order convention of [Ch 1 §10](01-foundation.md), the closure-satisfying primitive is T(m', 1). EM charge couples to tube-direction momentum p^w (per [Ch 5 §4.6.4](05-metric-self-consistency.md) Lorentz-force structure m d²x^μ/dτ² = F^B^μ_ν v^ν p^w). For a Bloch mode at (m, n) = (m', ±1):
+Under the single-Bloch-mode interpretation of [Ch 8 §2.2](08-shear-and-fractional-charge.md) and the wrap-order convention of [Ch 1 §10](01-foundation.md), the closure-satisfying primitive is T(1, n'). EM charge couples to tube-direction momentum p^w (per [Ch 5 §4.6.4](05-metric-self-consistency.md) Lorentz-force structure m_phys d²x^μ/dτ² = F^B^μ_ν v^ν p^w). Under the tuple convention, m is the tube winding label, so k_w = 2πm/L_w and:
 
-<!-- p^w = ℏ k_w = ℏ (2π/L_w) n -->
+<!-- p^w = ℏ k_w = ℏ (2π/L_w) m -->
 $$
-p^w \;=\; \hbar\, k_w \;=\; \hbar\,\frac{2\pi}{L_w}\, n
+p^w \;=\; \hbar\, k_w \;=\; \hbar\,\frac{2\pi}{L_w}\, m
 $$
 
-The framework's natural charge-sign assignment for a single primitive then organizes by the four discrete reflections of [Ch 8 §2.1](08-shear-and-fractional-charge.md):
+For a Bloch mode at (m, n) = (±1, ±n'), the framework's natural charge-sign assignment organizes by the four discrete reflections of [Ch 8 §2.1](08-shear-and-fractional-charge.md):
 
 | Mode | p^w sign | Charge sign | Mass at σ ≠ 0 | Role |
 |---|---|---|---|---|
-| T(m', +1) | + | +1 | μ²(m', 1; σ, ε) | "particle" (wrap-order picks m' sign for lower mass) |
-| T(m', −1) | − | −1 | μ²(m', −1; σ, ε) = μ²(m', 1) + 4σm'/ε | R_w-conjugate — opposite charge, mass-split |
-| T(−m', +1) | + | +1 | μ²(−m', 1; σ, ε) = μ²(m', 1) + 4σm'/ε | R_u-conjugate — same charge, mass-split |
-| T(−m', −1) | − | −1 | μ²(−m', −1; σ, ε) = μ²(m', 1) | R_J-conjugate — opposite charge, mass-degenerate |
+| T(+1, n') | + | +1 | μ²(1, n'; σ, ε) | "particle" (wrap-order picks n' sign for lower mass) |
+| T(−1, n') | − | −1 | μ²(−1, n'; σ, ε) = μ²(1, n') + 4σn'/ε | R_w-conjugate — opposite charge, mass-split |
+| T(+1, −n') | + | +1 | μ²(1, −n'; σ, ε) = μ²(1, n') + 4σn'/ε | R_u-conjugate — same charge, mass-split |
+| T(−1, −n') | − | −1 | μ²(−1, −n'; σ, ε) = μ²(1, n') | R_J-conjugate — opposite charge, mass-degenerate |
 
-The R_J pair T(m', +1) ↔ T(−m', −1) is the framework's matter/antimatter labeling per [Ch 6 §3](06-handedness-and-pairs.md) — mass-degenerate under shear, opposite charge.
+The R_J pair T(+1, n') ↔ T(−1, −n') is the framework's matter/antimatter labeling per [Ch 6 §3](06-handedness-and-pairs.md) — mass-degenerate under shear, opposite charge.
 
-For a uniform-phase Configuration Y k × T(m', 1) multi-link: all k components share the same primitive (m', +1), all carry charge +1/k of the link's integer total charge k, all phases at 2πj/k for j = 0, ..., k−1. **Per-component charge sign is uniform** — no mixed-sign structure from intra-link phasing.
+For a uniform-phase Configuration Y k × T(1, n') multi-link: all k components share the same primitive (+1, n'), all carry charge +1/k of the link's integer total charge k, all phases at 2πj/k for j = 0, ..., k−1. **Per-component charge sign is uniform** — no mixed-sign structure from intra-link phasing.
 
 **Audit conclusion:** the framework's existing prediction is uniform-sign per component within a Configuration Y multi-link. Mixed-sign baryon composition (u + u + d) is not within the natural prediction of Configuration Y at uniform phasing. The framework would need either (a) non-uniform Configuration Y with mixed-orientation components, (b) a different multi-link construct entirely, or (c) a compound-mode picture in which the "baryon" is built from independent mode-assignments rather than a single primitive multi-link.
 
@@ -74,10 +74,10 @@ If this is the right framing, Configuration Y is not the place metric-charge sho
 Three structural ideas worth recording as concrete hypotheses, with the existing framework's stance on each and what would close it.
 
 ### 3.1 H1 — 120° phase separation produces spatial separation
-
+<!--EC the word "spacial" is confusing as it might imply S.  I think we are talking about space in the material dimensions, correct? -->
 > Phase rotation around the ring (e.g., 120° for k = 3) produces spatial separation between components.
 
-**Framework status:** Already in Configuration Y per [Ch 8 §5](08-shear-and-fractional-charge.md). The k × T(m', 1) multi-link at relative phases 2πj/k for j = 0, ..., k−1 is exactly this construction. The 120° spacing is the k = 3 specialization; each component is a phase-shifted copy of the same primitive at the same wavevector.
+**Framework status:** Already in Configuration Y per [Ch 8 §5](08-shear-and-fractional-charge.md). The k × T(1, n') multi-link at relative phases 2πj/k for j = 0, ..., k−1 is exactly this construction. The 120° spacing is the k = 3 specialization; each component is a phase-shifted copy of the same primitive at the same wavevector.
 
 **Charge consequence:** Each component carries the same per-component charge magnitude (1/k of the link's integer charge) with uniform sign. The 120° phasing produces spatial separation, not charge-sign asymmetry between components.
 
@@ -89,12 +89,12 @@ Three structural ideas worth recording as concrete hypotheses, with the existing
 
 **Framework status:** Geometrically, "upside-down" on T² admits several interpretations under the four discrete reflections of [Ch 8 §2.1](08-shear-and-fractional-charge.md):
 
-- **R_w reflection** — (u, w) ↔ (u, −w). Maps T(m, n) → T(m, −n). Flips tube winding → flips p^w → flips charge. Mass differs at σ ≠ 0 (R_w-split).
+- **R_w reflection** — (u, w) ↔ (u, −w). Maps T(m, n) → T(−m, n). Flips tube winding label m → flips p^w → flips charge. Mass differs at σ ≠ 0 (R_w-split).
 - **R_J = R_u ∘ R_w** — (u, w) ↔ (−u, −w). Maps T(m, n) → T(−m, −n). Flips both windings → flips p^w → flips charge. Mass unchanged at any σ (R_J preserved).
 
 The natural geometric interpretation of "rotated 180° around a diameter through the torus, filling complementary space" is closest to R_J: simultaneous flip of both ring and tube directions, mass-preserving, charge-flipping. This is the framework's existing matter/antimatter labeling.
 
-**Charge consequence:** T(m', +1) (particle) and T(−m', −1) (antiparticle) form a mass-degenerate, opposite-charge pair under R_J. Confirms the H2 intuition directly.
+**Charge consequence:** T(+1, n') (particle) and T(−1, −n') (antiparticle) form a mass-degenerate, opposite-charge pair under R_J. Confirms the H2 intuition directly.
 
 **Conclusion:** H2 recovers the existing R_J = matter/antimatter symmetry from the visualizer-level "inverted embedding" intuition. Audit-completeness item: state this geometric interpretation explicitly in [Ch 6 §3](06-handedness-and-pairs.md)'s R_J discussion as supporting intuition. The framework already has the structural content.
 
@@ -102,9 +102,9 @@ The natural geometric interpretation of "rotated 180° around a diameter through
 
 > A complex knot structure that fails to close as 3 uniform components but closes only as 2 components in regular orientation + 1 inverted. This would naturally give a +q, +q, −q charge ratio across the three components — the +2/3, +2/3, −1/3 pattern of the proton if total integer charge is +1.
 
-**Framework status:** This is the genuinely novel hypothesis. The standard torus-link multi-component object T(km', k) decomposes into k linked components *all in the same orientation*. Configuration Y formalizes this as k uniformly-phased copies. To get a 2 : 1 orientation split, the multi-link would have to be:
+**Framework status:** This is the genuinely novel hypothesis. The standard torus-link multi-component object T(k, k·n') decomposes into k linked components *all in the same orientation*. Configuration Y formalizes this as k uniformly-phased copies. To get a 2 : 1 orientation split, the multi-link would have to be:
 
-- **Not a standard torus link.** A mixed-orientation compound is not naturally of T(km', k) form.
+- **Not a standard torus link.** A mixed-orientation compound is not naturally of T(k, k·n') form.
 - **A topologically distinct compound.** Candidates: a multi-component link of distinct knot types (Hopf-link-like), a satellite construction, a connected sum, or a multi-link structure on a higher-genus or higher-dimensional compact that does not admit uniform-orientation embedding.
 - **Forced by a generalization of the closure rule.** [Ch 1 §10](01-foundation.md)'s chirality criterion applies per-component. A compound-level generalization could conceivably forbid uniform orientation and force a 2 : 1 split.
 

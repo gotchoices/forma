@@ -147,7 +147,7 @@ It is a free, dimensionless parameter of the sheet.
         └──┘
 ```
 
-Topology reminder: in each panel the left and right edges are the same circle (the ring, with u-coordinate identification u ~ u + L_u), and the top and bottom edges are the same circle (the tube, with w ~ w + L_w). A closed curve traversing T(m, n) — m wraps in ring, n wraps in tube — crosses the right edge m times (reappearing at the left) and the top edge n times (reappearing at the bottom). This unrolled flat view is the working diagram for chapters 2–9; it is distinct from the 3D-torus embedding of §5, which renders the same topology as a donut surface for spatial visualization purposes.
+Topology reminder: in each panel the left and right edges are the same circle (the ring, with u-coordinate identification u ~ u + L_u), and the top and bottom edges are the same circle (the tube, with w ~ w + L_w). A closed curve traversing T(m, n) — n wraps in ring, m wraps in tube — crosses the right edge n times (reappearing at the left) and the top edge m times (reappearing at the bottom). This unrolled flat view is the working diagram for chapters 2–9; it is distinct from the 3D-torus embedding of §5, which renders the same topology as a donut surface for spatial visualization purposes.
 
 In the bare-metric form (§2), ε lives entirely in the periodicities (§9); it does not appear in the metric components themselves.
 
@@ -371,7 +371,9 @@ The bare topology presents the two compact directions u and w symmetrically: not
 
 This convention is inherited from [grid-duality](../grid-duality/)'s wrap-promotion ladder, where L0→L1 (which produces the ring direction) and L1→L2 (which produces the tube direction) are *structurally distinct* substrate operations. The alternative convention (u as tube, w as ring) is isomorphic up to (u, w) ↔ (w, u) swap with ε → 1/ε; we adopt the convention above and proceed.
 
-The closure condition stated below forces closure-satisfying primitives into T(m', 1) form (ring winding any integer m', tube winding ±1). The wrap-order convention names that structural asymmetry — its u/w role assignment tracks the closure condition's content rather than being arbitrary labeling.
+The closure condition stated below forces closure-satisfying primitives into T(1, n') form (tube winding ±1, ring winding any integer n'). The wrap-order convention names that structural asymmetry — its u/w role assignment tracks the closure condition's content rather than being arbitrary labeling.
+
+**Tuple convention.** Throughout the project we write `T(m, n)` with **m as the tube-direction winding** (first index) and **n as the ring-direction winding** (second index). This matches the R-track-studies convention (R60, R63, R64) and standard torus-knot notation, in which closure-satisfying primitives appear as `T(1, n')` — the "1" in the first slot indicating trivial tube winding. The framework's letter bindings are therefore `m ↔ w (tube)` and `n ↔ u (ring)`.
 
 ### The closure condition (chirality form)
 
@@ -379,7 +381,7 @@ The closure condition stated below forces closure-satisfying primitives into T(m
 >
 > (i) the closed curve T(m, n) is **achiral** in 3-space — its chirality reflections are topological symmetries of the curve up to ambient isotopy — *and*
 >
-> (ii) the wrap-order's ring-direction reflection R_u (m ↔ −m) is among those topological symmetries.
+> (ii) the wrap-order's ring-direction reflection R_u (n ↔ −n) is among those topological symmetries.
 >
 > Within the torus-knot family realizable on T², (i) is the condition that the gcd-reduced primitive has tube winding ±1 (the curve is the unknot in 3-space, or a multi-link of unknots), and (ii) is automatic given (i).
 
@@ -391,21 +393,21 @@ The criterion is not fundamentally about "unknot status" — it is a chirality-s
 
 The chirality criterion has a clean operational test in terms of phase synchronization during traversal:
 
-> **Synchronization test.** Parametrize the traversal of T(m, n) by s ∈ [0, 1] with u(s) = m·s·L_u and w(s) = n·s·L_w. The tube phase crosses zero (modulo L_w) at s = j/n for j = 0, 1, ..., n. At each such s, the ring is at u(s) = (m·j/n)·L_u. For the ring to also cross zero (modulo L_u) at every such s, we need m·j/n to be an integer for every j ∈ {0, 1, ..., n}.
+> **Synchronization test.** Parametrize the traversal of T(m, n) by s ∈ [0, 1] with u(s) = n·s·L_u (ring) and w(s) = m·s·L_w (tube). The tube phase crosses zero (modulo L_w) at s = j/m for j = 0, 1, ..., m. At each such s, the ring is at u(s) = (n·j/m)·L_u. For the ring to also cross zero (modulo L_u) at every such s, we need n·j/m to be an integer for every j ∈ {0, 1, ..., m}.
 >
-> **This holds if and only if n divides m (n | m), with both m and n nonzero.**
+> **This holds if and only if m divides n (m | n), with both m and n nonzero.**
 
-The synchronization test selects the same set of (m, n) as the chirality criterion: configurations for which the gcd-reduced primitive has tube winding 1 (T(m', 1) form). Within the torus-knot family on T², the chirality view (criterion (i)+(ii) above) and the synchronization view (operational test n | m) agree by construction.
+The synchronization test selects the same set of (m, n) as the chirality criterion: configurations for which the gcd-reduced primitive has tube winding 1 (T(1, n') form). Within the torus-knot family on T², the chirality view (criterion (i)+(ii) above) and the synchronization view (operational test m | n) agree by construction.
 
 ### Topological characterization
 
-> **Topological form.** T(m, n) closure-satisfies iff its gcd-reduced primitive is **T(m', 1)** for some integer m' ≥ 1. Equivalently: n | m with both nonzero. The closure-satisfying inventory is exactly **T(m', 1) primitives** and their **k-component repetitions** k × T(m', 1) (where k = n and m = k·m').
+> **Topological form.** T(m, n) closure-satisfies iff its gcd-reduced primitive is **T(1, n')** for some integer n' ≥ 1. Equivalently: m | n with both nonzero. The closure-satisfying inventory is exactly **T(1, n') primitives** and their **k-component repetitions** k × T(1, n') (where k = m and n = k·n').
 
 This is the same rule, viewed three ways:
 
 - **Chirality view (the box above).** The closed curve is achiral and the wrap-order's R_u is among its topological symmetries.
 - **Synchronization view.** The wave's tube-zero crossings coincide with ring-zero crossings during one closed traversal.
-- **Topological view.** The closure-satisfying configurations are exactly the T(m', 1) primitives and their k-component repetitions.
+- **Topological view.** The closure-satisfying configurations are exactly the T(1, n') primitives and their k-component repetitions.
 
 Within the torus-knot family on T², the three views are mathematically equivalent — they all select the same partition of (m, n) ∈ ℤ² with both nonzero into closure-satisfying and closure-failing.
 
@@ -417,7 +419,7 @@ The same off-diagonal-sourcing machinery is also the framework's calculable mech
 
 ### Genuine torus knots: closure-failing
 
-A genuine torus knot T(p, q) with both p, q ≥ 2 and gcd(p, q) = 1 is *chirally distinct* from its mirror in 3-space — T(p, q) and T(p, −q) (or T(−p, q)) are different knots, not isotopic to each other. Neither chirality reflection is a topological symmetry of the curve, so criterion (i) fails. **All genuine torus knots are closure-failing.** T(2, 3), T(2, 5), T(3, 4), T(3, 5), T(2, 7), ... are all closure-failing.
+A genuine torus knot T(p, q) with both p, q ≥ 2 and gcd(p, q) = 1 is *chirally distinct* from its mirror in 3-space — T(p, q) and T(p, −q) (or T(−p, q)) are different knots, not isotopic to each other. Neither chirality reflection is a topological symmetry of the curve, so criterion (i) fails. **All genuine torus knots are closure-failing.** T(3, 2), T(5, 2), T(4, 3), T(5, 3), T(7, 2), ... are all closure-failing.
 
 These modes source diagonal stress-energy (mass) and a chirality-encoded compact-compact cross-term that records which chirality of knot is present, but they source no EM gauge potential. Chapter 4 develops the resulting mass-only inventory; chapter 5 derives the metric-side picture.
 

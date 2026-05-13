@@ -10,7 +10,7 @@ The chapter's mission is to produce a **general model of a particle sheet** — 
 
 - *From [Chapter 1 §4](01-foundation.md):* the parametrization commitment — σ_uw (bare σ as shorthand) is the framework's primary parametrization, bounded by the binding constraint |σ_uw| < 1; the lattice-shear coefficient s = σ_uw/ε is the translation label for R-track-study correspondence.
 - *From [Chapter 7](07-aspect-ratio-and-character.md):* the ε-alone analysis — three regimes (small ε, ε ≈ 1, large ε) and the finding that ε alone does not select multi-component-link structure.
-- *From [Chapter 8](08-shear-and-fractional-charge.md):* the σ-alone analysis — the σε product as structural lever, m_opt = round(σε), single-Bloch-mode interpretation of the natural particle under shear, Configuration Y for multi-links, and the linear-theory non-derivability of k.
+- *From [Chapter 8](08-shear-and-fractional-charge.md):* the σ-alone analysis — the σε product as structural lever, n_opt = round(σε), single-Bloch-mode interpretation of the natural particle under shear, Configuration Y for multi-links, and the linear-theory non-derivability of k.
 
 **Distinctive job.** Map the (σ_uw, ε) parameter space; identify the structural regimes; characterize each regime's qualitative sheet character; relate the framework's three sheet types to specific regions; and equip downstream work with the invertible structural map needed to derive a specific sheet's metric values from its observed properties.
 
@@ -52,7 +52,7 @@ The sheet metric has two free parameters: ε ≡ L_u/L_w (ratio) and σ ≡ σ_u
 
 | Combination | What it controls | Where developed |
 |---|---|---|
-| σε product | m_opt = round(σε) for the lightest closure-satisfying T(m, 1) primitive | [Ch 8 §2.3](08-shear-and-fractional-charge.md) |
+| σε product | n_opt = round(σε) for the lightest closure-satisfying T(1, n) primitive | [Ch 8 §2.3](08-shear-and-fractional-charge.md) |
 | ε alone | Single-axis-vs-closure-satisfying mass competition | [Ch 7 §4](07-aspect-ratio-and-character.md), this chapter §2 |
 | σ alone | R_w-conjugate chirality-bias amplitude (Δμ² = 4σmn/ε) | [Ch 8 §3](08-shear-and-fractional-charge.md) |
 | (1 − σ²)⁻¹ | Global mass-scaling factor | [Ch 8 §2.1](08-shear-and-fractional-charge.md) |
@@ -61,28 +61,28 @@ The σε product appears most consequentially because it is what couples the two
 
 ### 1.3 The σε product as the primary structural variable
 
-The central derivable result tying σ_uw and ε together at the linearized level comes from completing the square in the dispersion of [Chapter 8 §2.3](08-shear-and-fractional-charge.md). For a closure-satisfying T(m, 1) primitive:
+The central derivable result tying σ_uw and ε together at the linearized level comes from completing the square in the dispersion of [Chapter 8 §2.3](08-shear-and-fractional-charge.md). For a closure-satisfying T(1, n) primitive:
 
-<!-- μ²(m, 1) = (m/ε − σ)² + (1 − σ²) -->
+<!-- μ²(1, n) = (n/ε − σ)² + (1 − σ²) -->
 $$
-\mu^2(m, 1;\,\sigma, \varepsilon) \;=\; \left(\frac{m}{\varepsilon} - \sigma\right)^{\!2} + (1 - \sigma^2)
-$$
-
-This is a parabola in m with minimum at m_opt = σε, where μ²_min = 1 − σ². Restoring the (1 − σ²)⁻¹ overall factor of the dispersion:
-
-<!-- m²_phys(m_opt, 1) = M² -->
-$$
-m^2_\text{phys}\bigl(m_\text{opt}, 1\bigr) \;=\; M^2 \cdot \frac{1 - \sigma^2}{1 - \sigma^2} \;=\; M^2
+\mu^2(1, n;\,\sigma, \varepsilon) \;=\; \left(\frac{n}{\varepsilon} - \sigma\right)^{\!2} + (1 - \sigma^2)
 $$
 
-with M ≡ (ℏ/c)·(2π/L_w). **The lightest T(m, 1) primitive sits at exactly the natural mass scale M whenever σε is integer**, independent of the specific values of σ_uw and ε individually. The identity of "which integer m" shifts as σε varies, but the mass stays at M.
+This is a parabola in n with minimum at n_opt = σε, where μ²_min = 1 − σ². Restoring the (1 − σ²)⁻¹ overall factor of the dispersion:
+
+<!-- m²_phys(1, n_opt) = M² -->
+$$
+m^2_\text{phys}\bigl(1, n_\text{opt}\bigr) \;=\; M^2 \cdot \frac{1 - \sigma^2}{1 - \sigma^2} \;=\; M^2
+$$
+
+with M ≡ (ℏ/c)·(2π/L_w). **The lightest T(1, n) primitive sits at exactly the natural mass scale M whenever σε is integer**, independent of the specific values of σ_uw and ε individually. The identity of "which integer n" shifts as σε varies, but the mass stays at M.
 
 This cancellation is parametrization-specific: the (1 − σ²)⁻¹ factor exactly cancels the parabola's (1 − σ²) bottom value, which is structural to the metric-shear parametrization adopted in [Ch 1 §4](01-foundation.md). Predictions translated to lattice-shear (s) form for R-track-study correspondence acquire second-order corrections; §6 below develops the translation.
 
 Two facts follow from the σε structural lever:
 
-- **The σε product is the primary structural variable for closure-satisfying primitives**, not σ alone or ε alone. Different (σ, ε) values producing the same σε product give the same lightest closure-satisfying primitive identity (m_opt = round(σε)).
-- **Level crossings between adjacent T(m, 1) primitives occur at half-integer σε** (σε = m + 1/2). Near these crossings, two closure-satisfying primitives are nearly degenerate at mass ≈ M.
+- **The σε product is the primary structural variable for closure-satisfying primitives**, not σ alone or ε alone. Different (σ, ε) values producing the same σε product give the same lightest closure-satisfying primitive identity (n_opt = round(σε)).
+- **Level crossings between adjacent T(1, n) primitives occur at half-integer σε** (σε = n + 1/2). Near these crossings, two closure-satisfying primitives are nearly degenerate at mass ≈ M.
 
 The σε product appears again in §4's regime classification.
 
@@ -98,9 +98,9 @@ The mass landscape across ε regimes, comparing the lightest single-axis mode to
 
 | ε regime | Lightest single-axis | Lightest closure-satisfying | Which is lighter? |
 |---|---|---|---|
-| ε < 1 | (0, 1) at μ² = 1 | T(m_opt, 1) at μ² ≈ 1 − σ² | T(m_opt, 1) for σ > 0 |
-| ε > 1 | (1, 0) at μ² = 1/ε² | T(m_opt, 1) at μ² ≈ 1 − σ² | (1, 0) unless σ > √(1 − 1/ε²) |
-| ε ≫ 1 | (1, 0) at μ² ≈ 0 | T(m_opt, 1) at μ² ≈ 1 − σ² | (1, 0) *much* lighter |
+| ε < 1 | (1, 0) at μ² = 1 (tube-only) | T(1, n_opt) at μ² ≈ 1 − σ² | T(1, n_opt) for σ > 0 |
+| ε > 1 | (0, 1) at μ² = 1/ε² (ring-only) | T(1, n_opt) at μ² ≈ 1 − σ² | (0, 1) unless σ > √(1 − 1/ε²) |
+| ε ≫ 1 | (0, 1) at μ² ≈ 0 | T(1, n_opt) at μ² ≈ 1 − σ² | (0, 1) *much* lighter |
 
 For ε > 1, single-axis modes dominate the lowest-energy spectrum. By the structural-degeneracy mechanism of [Chapter 4 §1](04-the-closure-condition.md), single-axis modes are mass-only — one winding is zero, no chirality structure on the curve, no spacetime↔compact gauge potential. **The lowest-energy excitations of an extreme-ε sheet are therefore mass-only, not charged.**
 
@@ -134,7 +134,7 @@ The commitment is **contingent on §6's translation analysis**: whether the σ �
 
 ## 3. The σ → 1 principal-axis suppression mechanism
 
-This section derives mechanism (d) of §2.2 rigorously. The claim is precise: as σ_uw approaches 1 (the positive-definiteness boundary), single-axis mode masses diverge as (1 − σ²)⁻¹, while the lightest closure-satisfying T(m, 1) primitive's mass stays finite (at integer ε) or diverges more slowly (at non-integer ε). The mechanism therefore selects closure-satisfying modes as the dominant low-energy excitations near the metric boundary.
+This section derives mechanism (d) of §2.2 rigorously. The claim is precise: as σ_uw approaches 1 (the positive-definiteness boundary), single-axis mode masses diverge as (1 − σ²)⁻¹, while the lightest closure-satisfying T(1, n) primitive's mass stays finite (at integer ε) or diverges more slowly (at non-integer ε). The mechanism therefore selects closure-satisfying modes as the dominant low-energy excitations near the metric boundary.
 
 ### 3.1 Setup
 
@@ -155,38 +155,38 @@ Both single-axis modes diverge as 1/δ as σ → 1. The (1 − σ²)⁻¹ factor
 
 ### 3.3 Closure-satisfying primitive — two cases
 
-The lightest closure-satisfying primitive sits at m̂ = round(σε). At σ = 1 − δ: m̂ ≈ round((1 − δ)·ε) = round(ε) for small δ. The residual Δ ≡ m̂/ε − σ controls the mass.
+The lightest closure-satisfying primitive sits at n̂ = round(σε). At σ = 1 − δ: n̂ ≈ round((1 − δ)·ε) = round(ε) for small δ. The residual Δ ≡ n̂/ε − σ controls the mass.
 
-**Case A: ε is integer.** Then m̂ = ε exactly and m̂/ε = 1, so Δ = 1 − σ = δ. The residual squared (m̂/ε − σ)² = δ². Dividing by (1 − σ²) ≈ 2δ:
+**Case A: ε is integer.** Then n̂ = ε exactly and n̂/ε = 1, so Δ = 1 − σ = δ. The residual squared (n̂/ε − σ)² = δ². Dividing by (1 − σ²) ≈ 2δ:
 
 <!-- residual contribution = δ²/(2δ) = δ/2 → 0 -->
 $$
 \frac{\Delta^2}{1 - \sigma^2} \;\approx\; \frac{\delta^2}{2\delta} \;=\; \frac{\delta}{2} \;\to\; 0
 $$
 
-So m²_phys(m̂, 1) → M² as δ → 0. **At integer ε, the closure-satisfying primitive's mass stays at exactly M while single-axis modes diverge.** This is the σε product result of §1.3 evaluated at the σ → 1 limit: with integer ε and σ = 1 − δ, the product σε approaches the integer ε, putting the lightest primitive exactly at the parabola minimum, where the (1 − σ²) factors cancel.
+So m²_phys(1, n̂) → M² as δ → 0. **At integer ε, the closure-satisfying primitive's mass stays at exactly M while single-axis modes diverge.** This is the σε product result of §1.3 evaluated at the σ → 1 limit: with integer ε and σ = 1 − δ, the product σε approaches the integer ε, putting the lightest primitive exactly at the parabola minimum, where the (1 − σ²) factors cancel.
 
-**Case B: ε is not integer.** Let Δ_0 ≡ m̂/ε − 1, a fixed nonzero number with |Δ_0| ≤ 1/(2ε). At σ = 1 − δ: Δ ≈ Δ_0 for small δ. Residual squared: Δ_0². Dividing by (1 − σ²) ≈ 2δ:
+**Case B: ε is not integer.** Let Δ_0 ≡ n̂/ε − 1, a fixed nonzero number with |Δ_0| ≤ 1/(2ε). At σ = 1 − δ: Δ ≈ Δ_0 for small δ. Residual squared: Δ_0². Dividing by (1 − σ²) ≈ 2δ:
 
-<!-- m²_phys(m̂, 1) ≈ M²·Δ_0²/(2δ) for non-integer ε -->
+<!-- m²_phys(1, n̂) ≈ M²·Δ_0²/(2δ) for non-integer ε -->
 $$
-m^2_\text{phys}(\hat m, 1) \;\approx\; \frac{M^2\Delta_0^2}{2\delta}
-$$
-
-Both modes diverge as 1/δ. Compare the divergence rates of closure-satisfying to single-axis:
-
-<!-- m²_phys(m̂, 1)/m²_phys(1, 0) = Δ_0²·ε² ≤ 1/4 -->
-$$
-\frac{m^2_\text{phys}(\hat m, 1)}{m^2_\text{phys}(1, 0)} \;=\; \Delta_0^2\cdot\varepsilon^2 \;\le\; \frac{1}{4}
+m^2_\text{phys}(1, \hat n) \;\approx\; \frac{M^2\Delta_0^2}{2\delta}
 $$
 
-The closure-satisfying mass-squared is at most one-fourth of the (1, 0) single-axis mass-squared — equivalent to a factor of 2 lighter in mass — and is bounded below by 1/(4ε²) of the (1, 0) mass-squared. Closure-satisfying still wins, but the suppression is *partial* rather than *total*.
+Both modes diverge as 1/δ. Compare the divergence rates of closure-satisfying to single-axis (0, 1) (ring-only, the lightest single-axis at large ε under new convention):
+
+<!-- m²_phys(1, n̂)/m²_phys(0, 1) = Δ_0²·ε² ≤ 1/4 -->
+$$
+\frac{m^2_\text{phys}(1, \hat n)}{m^2_\text{phys}(0, 1)} \;=\; \Delta_0^2\cdot\varepsilon^2 \;\le\; \frac{1}{4}
+$$
+
+The closure-satisfying mass-squared is at most one-fourth of the (0, 1) single-axis mass-squared — equivalent to a factor of 2 lighter in mass — and is bounded below by 1/(4ε²) of the (0, 1) mass-squared. Closure-satisfying still wins, but the suppression is *partial* rather than *total*.
 
 ### 3.4 Summary of suppression
 
 The mechanism's behavior across ε:
 
-| ε | Closure-satisfying mass at σ → 1 | Single-axis (1, 0) mass | Suppression |
+| ε | Closure-satisfying mass at σ → 1 | Single-axis (0, 1) mass | Suppression |
 |---|---|---|---|
 | Integer | Finite, equal to M | Diverges as 1/δ | **Total** |
 | Non-integer, ε ≫ 1 | Diverges; bounded by ≈ M·Δ_0/√(2δ) | Diverges as M/(ε√(2δ)) | Strong (ε-suppressed) |
@@ -212,7 +212,7 @@ The (σ_uw, ε) plane partitions into structurally distinct regions based on whi
 - Closure-satisfying T(1, 1) at μ² = 1/ε² − 2σ/ε + 1 ≈ 2 − 2σ ≈ 2 (for ε ≈ 1, σ ≪ 1).
 - Single-axis (1, 0) and (0, 1) both at μ² ≈ 1.
 - Chirality-bias R_w-conjugate split between (m, n) and (m, −n) small, scaling as σ.
-- m_opt = round(σ·1) = 1; T(1, 1) is the lightest closure-satisfying primitive.
+- n_opt = round(σ·1) = 1; T(1, 1) is the lightest closure-satisfying primitive.
 
 Two structural features of this regime matter for sheet character:
 
@@ -224,7 +224,7 @@ Two structural features of this regime matter for sheet character:
 - T(1, 1) at μ² ≈ 1/ε² + 1 ≈ 1/ε², dominated by the 1/ε² term for small ε.
 - Single-axis (0, 1) at μ² = 1.
 - Single-axis (1, 0) at μ² = 1/ε² — heavy, comparable to T(1, 1).
-- σε ≪ 1; m_opt = 1.
+- σε ≪ 1; n_opt = 1.
 
 Single-axis (0, 1) is by far the lightest mode and dominates the low-energy spectrum. The closure-satisfying tier sits at mass ≈ M/ε — substantially heavier. The architectural question of §2 applies in its sharpest form: the lowest-energy excitations are mass-only, not charged.
 
@@ -232,16 +232,16 @@ This regime is where mechanism (d) of §2.3 does *not* operate cleanly (σ is sm
 
 ### 4.3 Regime III — wide sheet, sheared near boundary (σ near 1, large ε)
 
-- T(m_opt, 1) at mass ≈ M, with m_opt = round(σε) — a specific large integer.
+- T(n_opt, 1) at mass ≈ M, with n_opt = round(σε) — a specific large integer.
 - Single-axis modes scaled out by (1 − σ²)⁻¹ (the §3 mechanism).
 - Substantial chirality bias from σ near unity.
-- Many T(m, 1) primitives near m_opt have similar masses, with residual splitting ~ 1/ε² per step in m.
+- Many T(1, n) primitives near n_opt have similar masses, with residual splitting ~ 1/ε² per step in n.
 
-The σ → 1 principal-axis suppression activates in this regime: single-axis modes diverge, closure-satisfying modes stay at moderate mass, and the spectrum's low-energy tier is dominated by T(m_opt, 1) and its nearby neighbors. This is **the regime where charged-sheet character is structurally clean** within metric-charge's existing apparatus.
+The σ → 1 principal-axis suppression activates in this regime: single-axis modes diverge, closure-satisfying modes stay at moderate mass, and the spectrum's low-energy tier is dominated by T(1, n_opt) and its nearby neighbors. This is **the regime where charged-sheet character is structurally clean** within metric-charge's existing apparatus.
 
 ### 4.4 Regime IV — level crossings (σε ≈ k + 1/2)
 
-At half-integer values of the σε product, two adjacent T(m, 1) primitives are mass-degenerate (per [Ch 8 §2.3](08-shear-and-fractional-charge.md)). The sheet hosts a near-degenerate pair of closure-satisfying primitives, separated from the third-closest by residual ~ 1/ε². For ε ≫ 1, three primitives can sit at nearly the same mass (no exact three-fold degeneracy — [Ch 8 §2.3](08-shear-and-fractional-charge.md) shows this is impossible at any single σε — but the spread is small).
+At half-integer values of the σε product, two adjacent T(1, n) primitives are mass-degenerate (per [Ch 8 §2.3](08-shear-and-fractional-charge.md)). The sheet hosts a near-degenerate pair of closure-satisfying primitives, separated from the third-closest by residual ~ 1/ε². For ε ≫ 1, three primitives can sit at nearly the same mass (no exact three-fold degeneracy — [Ch 8 §2.3](08-shear-and-fractional-charge.md) shows this is impossible at any single σε — but the spread is small).
 
 Regime IV is a feature within Regimes II and III (at the σε values that produce level crossings); it is called out separately because the level-crossing structure is itself a structural mechanism worth noting.
 
@@ -259,16 +259,16 @@ A single isolable charged primitive at moderate mass, no fractional decompositio
 
 Under Regime III:
 
-- The lightest closure-satisfying primitive T(m_opt, 1) sits at mass M, with m_opt = round(σε) — a specific large integer determined by the sheet's σ and ε together.
+- The lightest closure-satisfying primitive T(1, n_opt) sits at mass M, with n_opt = round(σε) — a specific large integer determined by the sheet's σ and ε together.
 - Single-axis modes are scaled out by (1 − σ²)⁻¹ → ∞ via the §3 mechanism.
-- The R_w-conjugate split between (m_opt, 1) and (m_opt, −1) is substantial, producing the parity-violation-like asymmetry observed for the empirical lepton.
-- Single-particle character: at m_opt isolated as the unique lightest, multi-link configurations cost k × M and are Boltzmann-suppressed at any modest temperature.
+- The R_w-conjugate split between (1, n_opt) and (−1, n_opt) is substantial, producing the parity-violation-like asymmetry observed for the empirical lepton.
+- Single-particle character: at n_opt isolated as the unique lightest, multi-link configurations cost k × M and are Boltzmann-suppressed at any modest temperature.
 
 Three structural-mechanism observations support this fit:
 
-- **Why large ε?** Large ε permits σ to approach 1 while keeping the σε product large enough that m_opt is a specific large integer rather than 1. Additionally, the residual ~ 1/ε is small, keeping T(m_opt, 1) close to M even at non-integer ε.
+- **Why large ε?** Large ε permits σ to approach 1 while keeping the σε product large enough that n_opt is a specific large integer rather than 1. Additionally, the residual ~ 1/ε is small, keeping T(n_opt, 1) close to M even at non-integer ε.
 - **Why σ near 1?** The §3 mechanism's suppression of single-axis modes is the framework's primary structural-mechanism candidate for resolving the §2 architectural question. σ near 1 is what activates the suppression.
-- **Why single-particle?** When m_opt is isolated as the unique lightest closure-satisfying primitive (away from level-crossings), only one closure-satisfying mass tier is populated at low energy. Multi-link configurations and other primitives sit at higher mass.
+- **Why single-particle?** When n_opt is isolated as the unique lightest closure-satisfying primitive (away from level-crossings), only one closure-satisfying mass tier is populated at low energy. Multi-link configurations and other primitives sit at higher mass.
 
 The architectural question of §2 is resolved here by mechanism (d). This is the cleanest structural picture metric-charge can offer for the lepton-like sheet, contingent on the §6 translation analysis confirming that the σ → 1 mechanism's predictions survive to the s-form used by R-track studies.
 
@@ -284,8 +284,8 @@ Linear theory at this regime:
 
 - T(1, 1) sits at μ² ≈ 1/ε² — heavy because ε is small.
 - Single-axis (0, 1) at μ² = 1 — heavy in absolute terms but much lighter than T(1, 1).
-- m_opt = round(σε) ≈ 0, rounded to 1. T(1, 1) is the lightest closure-satisfying primitive.
-- Adjacent T(m, 1) primitives are even heavier (T(2, 1) at μ² ≈ 4/ε², etc.).
+- n_opt = round(σε) ≈ 0, rounded to 1. T(1, 1) is the lightest closure-satisfying primitive.
+- Adjacent T(1, n) primitives are even heavier (T(1, 2) at μ² ≈ 4/ε², etc.).
 
 **Linear theory does not, by itself, produce three-component organization at this regime.** The empirical evidence for k = 3 at the proton sheet's parameters (from production studies that fit multi-observable target sets) requires a mechanism outside pure linear scalar-field theory. Per [Chapter 1 §11](01-foundation.md)'s deferral of nonlinear backreaction, metric-charge does not derive k itself — k-selection is forwarded.
 
@@ -339,23 +339,23 @@ This chapter therefore does not relitigate the parametrization choice. The remai
 
 **Metric-shear (σ_uw form, framework primary):** sheared metric, rectangular periodicity. The dispersion includes the (1 − σ²)⁻¹ overall factor that makes the σ → 1 mechanism possible:
 
-<!-- μ²_phys = (1/(1-σ²))(m²/ε² - 2σmn/ε + n²) -->
+<!-- μ²_phys = (1/(1-σ²))(n²/ε² - 2σmn/ε + m²) -->
 $$
-\mu^2_\text{phys}(m, n;\,\sigma, \varepsilon) \;=\; \frac{1}{1-\sigma^2}\Bigl[\frac{m^2}{\varepsilon^2} - \frac{2\sigma\,m n}{\varepsilon} + n^2\Bigr]
-$$
-
-**Lattice-shear (s form, used by R-track studies):** flat metric, sheared periodicity with basis vectors e_1 = (L_u, 0), e_2 = (s·L_u, L_w). The studies' dispersion (relating wavenumber labels n_t, n_r to integers m, n by n_t = m, n_r = n):
-
-<!-- μ²_B = (n_t/ε)² + (n_r - s·n_t)² -->
-$$
-\mu^2_B(n_t, n_r;\,s, \varepsilon) \;=\; \frac{n_t^2}{\varepsilon^2} + (n_r - s\,n_t)^2 \;=\; \frac{n_t^2}{\varepsilon^2} + n_r^2 - 2s\,n_t n_r + s^2\,n_t^2
+\mu^2_\text{phys}(m, n;\,\sigma, \varepsilon) \;=\; \frac{1}{1-\sigma^2}\Bigl[\frac{n^2}{\varepsilon^2} - \frac{2\sigma\,m n}{\varepsilon} + m^2\Bigr]
 $$
 
-The two parametrizations describe the same physical sheet under a coordinate change documented in [Ch 1 §4](01-foundation.md). The translation between them — for sheet parameters and for predictions — is the subject of this section.
+**Lattice-shear (s form, used by R-track studies):** flat metric, sheared periodicity with basis vectors e_1 = (L_u, 0), e_2 = (s·L_u, L_w). The studies' dispersion (relating wavenumber labels n_t, n_r to integers m, n by n_t = m (tube), n_r = n (ring)):
+
+<!-- μ²_B = (n_r/ε)² + (n_t − s·n_r)² with n_t = tube, n_r = ring; ε = L_u/L_w as in metric-charge. -->
+$$
+\mu^2_B(n_t, n_r;\,s, \varepsilon) \;=\; \frac{n_r^2}{\varepsilon^2} + (n_t - s\,n_r)^2
+$$
+
+(Under metric-charge's tuple convention with m = n_t (tube) and n = n_r (ring), this becomes μ²_B = n²/ε² + (m − s·n)² at this s-form's leading structure. The two parametrizations describe the same physical sheet under a coordinate change documented in [Ch 1 §4](01-foundation.md); the precise sheared-lattice form depends on conventions but the structural points below are robust to those choices.)
 
 ### 6.3 First-order match, second-order divergence
 
-Matching the linear-in-shear cross-term −2s·n_t·n_r between the two dispersions to the σ_uw-form's −2σ·mn/ε:
+Matching the linear-in-shear cross-term in the two dispersions to the σ_uw-form's −2σ·mn/ε:
 
 <!-- s = σ_uw/ε at first order -->
 $$
@@ -369,9 +369,7 @@ $$
 \frac{1}{1 - \sigma^2} \;\approx\; 1 + \sigma^2 + O(\sigma^4)
 $$
 
-The σ² correction contributes + σ²·(m²/ε² + n²) to μ²_phys. The s-form (which has no overall (1 − s²)⁻¹ factor) contributes only + s²·m² = + (σ/ε)²·m² = σ²·m²/ε² at order s².
-
-**Difference at order σ²:** σ_uw-form has an extra + σ²·n² term that s-form does not. For closure-satisfying primitives T(m, 1) where n = 1, this difference is σ² — substantial at large σ. The two parametrizations describe the same physical sheet, but the specific numerical values of σ_uw and s diverge at second order: the empirical lepton-like sheet fits to "s of order unity" in R-track studies' s-form gives "σ_uw·ε of order ε" via the first-order transform, but the second-order correction means the same sheet's σ_uw is bounded by 1 by the positive-definiteness wall.
+At order σ² the two forms differ in their cross-corrections; for closure-satisfying primitives T(1, n) where m = 1, the leading difference is order σ² — substantial at large σ. The two parametrizations describe the same physical sheet, but the specific numerical values of σ_uw and s diverge at second order: the empirical lepton-like sheet fits to "s of order unity" in R-track studies' s-form gives "σ_uw·ε of order ε" via the first-order transform, but the second-order correction means the same sheet's σ_uw is bounded by 1 by the positive-definiteness wall.
 
 ### 6.4 The open quantitative question
 
@@ -400,7 +398,7 @@ The chapter's end-state equips downstream work with the substrate for the eventu
 
 The forward map established in §§1–5 reads (σ_uw, ε) → sheet character, where "sheet character" includes:
 
-- The lightest closure-satisfying primitive's identity (m_opt = round(σε)) and mass (≈ M at integer σε).
+- The lightest closure-satisfying primitive's identity (n_opt = round(σε)) and mass (≈ M at integer σε).
 - The single-axis-vs-closure-satisfying competition (which mode tier dominates).
 - The R_w-conjugate chirality-bias magnitude (∝ σ).
 - The regime classification (I, II, III, IV) and corresponding qualitative pattern.
@@ -436,7 +434,7 @@ The actual "metric from observables" inversion exercise is **downstream of this 
 
 The chapter's structural payoff for the framework:
 
-- **The σε product** is the framework's primary structural lever for closure-satisfying primitive selection. Neither σ_uw nor ε alone is sufficient; the product σε determines which integer m is m_opt and produces the "mass exactly M at integer σε" cancellation that anchors the closure-satisfying tier near the natural mass scale.
+- **The σε product** is the framework's primary structural lever for closure-satisfying primitive selection. Neither σ_uw nor ε alone is sufficient; the product σε determines which integer n is n_opt and produces the "mass exactly M at integer σε" cancellation that anchors the closure-satisfying tier near the natural mass scale.
 - **The single-axis dominance puzzle** is a sharp architectural question at large ε: linear theory says single-axis modes are lighter than closure-satisfying modes, yet the framework wants charged-sheet character at large ε. The chapter commits to mechanism (d) — σ → 1 principal-axis suppression — as the primary candidate resolution, contingent on §6's translation analysis.
 - **Four structural regimes** partition the (σ_uw, ε) plane: near-symmetric near-bare (I), thin sheet near-bare (II), wide sheet sheared near boundary (III), and level crossings (IV). Each regime has a characteristic structural signature and a characteristic candidate sheet-type correspondence.
 - **The three sheet types** map onto specific regions of the landscape: lepton-like in Regime III (with mechanism (d) supplying the single-axis suppression), hadronic-like in Regime II (with the φ⁴ inter-component or substrate Z_3 supplying the three-component organization), neutrino-like in Regime I (with chirality-pair near-degeneracy supplying the oscillation pattern). Each correspondence is qualitative; quantitative engagement requires pending calculations.
@@ -448,7 +446,7 @@ The framework's structural inventory at the single-sheet level is now complete:
 | Parameter / structural choice | What it controls |
 |---|---|
 | (m, n) labels | Primary mode identity (Chapters 2, 3) |
-| Closure satisfaction (n | m) | Charge vs no-charge (Chapter 4) |
+| Closure satisfaction (m | n) | Charge vs no-charge (Chapter 4) |
 | Handedness sign | Matter/antimatter (Chapter 6) |
 | Aspect ratio ε | Single-axis-vs-closure-satisfying competition (Chapter 7, this chapter) |
 | Shear σ_uw | Chirality bias; σε primitive selection; σ → 1 suppression (Chapter 8, this chapter) |

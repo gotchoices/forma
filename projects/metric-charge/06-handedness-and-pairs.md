@@ -53,7 +53,7 @@ This is a sharp question worth addressing. The two operations agree at the topol
 
 **Topologically: yes.** The bare knot type is the same.
 
-**Physically in metric-charge: no.** The two configurations have different (m, n) integer labels, conserved in different sectors of the wave equation. Under the natural-particle construction of [Chapter 5 §4](05-metric-self-consistency.md), they relate differently to the wrap-order's R_u-symmetrization: (−m, n) is the R_u-conjugate of (m, n) (combining them gives the natural particle's R_u-symmetrized form, with cross-term in h_μw); (m, −n) is the R_w-conjugate (combining them would standing-wave the tube direction, which the wrap-order rules out as a particle symmetry — see Ch 5 §4.3). So the two operations play structurally different roles in the natural-particle construction.
+**Physically in metric-charge: no.** The two configurations have different (m, n) integer labels, conserved in different sectors of the wave equation. Under the natural-particle construction of [Chapter 5 §4](05-metric-self-consistency.md), they relate differently to the wrap-order's R_u-symmetrization: (m, −n) is the R_u-conjugate of (m, n) (combining them gives the natural particle's R_u-symmetrized form, with cross-term in h_μw); (−m, n) is the R_w-conjugate (combining them would standing-wave the tube direction, which the wrap-order rules out as a particle symmetry — see Ch 5 §4.3). So the two operations play structurally different roles in the natural-particle construction.
 
 This is consistent with the broader topology-vs-physics pattern of Chapter 3: topology is symmetric under (u, w) ↔ (w, u) and under their independent reflections; physics with the wrap-order convention is not. The mirror reflection inherits the same asymmetry.
 
@@ -73,7 +73,7 @@ The framework's primary label is the signed integer pair (m, n), and the sign tr
 
 ### 2.2 (m, n)-labeling content
 
-The framework treats (m, n) and (−m, −n) as **distinct conserved sectors**. Their integer labels are different; the wave equation conserves them separately. A (2, 1) mode and a (−2, −1) mode are different physical states — they trace the same unoriented curve but with opposite traversal direction, and they carry opposite-sign compact-direction momenta.
+The framework treats (m, n) and (−m, −n) as **distinct conserved sectors**. Their integer labels are different; the wave equation conserves them separately. A (1, 2) mode and a (−1, −2) mode are different physical states — they trace the same unoriented curve but with opposite traversal direction, and they carry opposite-sign compact-direction momenta.
 
 ### 2.3 Physical content under the gauge-potential analysis of Chapter 5
 
@@ -92,7 +92,7 @@ Under the linearized Einstein analysis of [Chapter 5](05-metric-self-consistency
 
 Open at this stage. The framework establishes that:
 
-- (m, n) and (−m, −n) are configurations of identical mass (energy density depends on |m|, |n| only) and identical closure-eligibility (the closure rule depends only on magnitudes via n | m or equivalently the chirality criterion).
+- (m, n) and (−m, −n) are configurations of identical mass (energy density depends on |m|, |n| only) and identical closure-eligibility (the closure rule depends only on magnitudes via m | n or equivalently the chirality criterion).
 - They source opposite-sign h_μw — under the natural-particle construction of [Ch 5 §4](05-metric-self-consistency.md), opposite-sign coupling under the single gauge potential B_μ.
 - They correspond to opposite traversal directions on the same closed curve.
 
@@ -110,9 +110,9 @@ A different operation: reverse only one winding. Examine its content.
 
 ### 3.1 Topological content
 
-The (m, −n) curve is the **mirror image** of (m, n) in 3-space. For genuine torus knots T(p, q) with both p, q ≥ 2 and gcd = 1, the mirror image is *chirally distinct* — a different knot type that cannot be deformed to the original without going through 4-space or breaking the curve. Trefoil T(2, 3) and its mirror T(2, −3) are the prototype: they are different (chiral) torus knots.
+The (m, −n) curve is the **mirror image** of (m, n) in 3-space. For genuine torus knots T(p, q) with both p, q ≥ 2 and gcd = 1, the mirror image is *chirally distinct* — a different knot type that cannot be deformed to the original without going through 4-space or breaking the curve. Trefoil T(3, 2) and its mirror T(3, −2) are the prototype: they are different (chiral) torus knots.
 
-For "weak knot" diagonal modes (T(m, 1) primitives — and equivalently T(1, q) under cycle swap, which is *not* a closure-satisfying form in the framework's wrap-order), both the original and mirror are unknots — chirally trivial — but the (m, n) labels are different and the modes are still physically distinct in metric-charge per Chapter 3.
+For "weak knot" diagonal modes (T(1, n) primitives — and equivalently T(p, 1) under cycle swap, which is *not* a closure-satisfying form in the framework's wrap-order), both the original and mirror are unknots — chirally trivial — but the (m, n) labels are different and the modes are still physically distinct in metric-charge per Chapter 3.
 
 ### 3.2 (m, n)-labeling content
 
@@ -244,7 +244,7 @@ Whether these candidate identifications hold depends on quantitative comparison 
 
 ## 6. What σ_uw shear breaks: chirality reflection, not sign reflection
 
-This section works through the dispersion relation under σ_uw shear and asks which symmetries σ_uw breaks. The answer is precise and constraining: σ_uw breaks the **chirality reflection** (m, n) ↔ (m, −n) (and equivalently (m, n) ↔ (−m, n)), and it leaves the **sign reflection** (m, n) ↔ (−m, −n) invariant. Under work1's natural-particle construction (Ch 5 §4), this means σ_uw biases the *internal amplitude balance of a particle* (its R_u-symmetrized (++) vs (−+) components) rather than its matter/antimatter populations.
+This section works through the dispersion relation under σ_uw shear and asks which symmetries σ_uw breaks. The answer is precise and constraining: σ_uw breaks the **chirality reflection** (m, n) ↔ (m, −n) (and equivalently (m, n) ↔ (−m, n)), and it leaves the **sign reflection** (m, n) ↔ (−m, −n) invariant. Under work1's natural-particle construction (Ch 5 §4), this means σ_uw biases the *internal amplitude balance of a particle* (its R_u-symmetrized (++) vs (+−) components) rather than its matter/antimatter populations.
 
 The derivation is short and forced; we walk through it explicitly.
 
@@ -257,7 +257,7 @@ $$
 \frac{\omega^2}{c^2} = k_S^2 + \frac{k_u^2 - 2\sigma\,k_u\,k_w + k_w^2}{1 - \sigma^2}
 $$
 
-with k_u = 2πm/L_u and k_w = 2πn/L_w. The σ-dependence enters entirely through the **cross-term** −2σ·k_u·k_w. This is the only piece of the dispersion that distinguishes σ ≠ 0 from σ = 0 in a sign-sensitive way: k_u² and k_w² are even in (m, n) and unchanged by any sign flip.
+with k_u = 2πn/L_u (ring) and k_w = 2πm/L_w (tube). The σ-dependence enters entirely through the **cross-term** −2σ·k_u·k_w. This is the only piece of the dispersion that distinguishes σ ≠ 0 from σ = 0 in a sign-sensitive way: k_u² and k_w² are even in (m, n) and unchanged by any sign flip.
 
 ### 6.2 Symmetry test on the cross-term
 
@@ -266,8 +266,8 @@ Apply each candidate sign-flip symmetry to the cross-term k_u·k_w:
 | Symmetry | Maps (k_u, k_w) → | Cross-term k_u·k_w → | Dispersion invariant? |
 |---|---|---|---|
 | **(m, n) ↔ (−m, −n)** (sign reflection) | (−k_u, −k_w) | (−k_u)(−k_w) = +k_u k_w | **Yes — invariant** |
-| **(m, n) ↔ (m, −n)** (chirality, n flips) | (k_u, −k_w) | k_u·(−k_w) = −k_u k_w | **No — flips sign** |
-| **(m, n) ↔ (−m, n)** (chirality, m flips) | (−k_u, k_w) | (−k_u)·k_w = −k_u k_w | **No — flips sign** |
+| **(m, n) ↔ (m, −n)** (R_u, n flips → k_u flips) | (−k_u, k_w) | (−k_u)·k_w = −k_u k_w | **No — flips sign** |
+| **(m, n) ↔ (−m, n)** (R_w, m flips → k_w flips) | (k_u, −k_w) | k_u·(−k_w) = −k_u k_w | **No — flips sign** |
 | **Full sign flip** (k_S, m, n) ↔ (−k_S, −m, −n) | all flip | invariant | **Yes — invariant** |
 
 The math is forced: a bilinear cross-term is invariant under joint sign flip of both factors and flips under one-sided sign flip. This is purely algebra; nothing more sophisticated than that.
@@ -298,13 +298,13 @@ This means σ_uw is, *purely from the geometry*, a chirality-bias mechanism. The
 
 | Conjugate pair | Reflection | Physical role under σ_uw |
 |---|---|---|
-| (m, n) ↔ (−m, n) | **R_u** (ring chirality) | These are the two components the σ = 0 R_u-symmetrized natural particle combined at equal amplitude (per [Ch 5 §4](05-metric-self-consistency.md)). Under σ ≠ 0 the split makes the symmetrization non-stationary; the framework's natural particle is redefined as the *single Bloch mode* (per [Ch 8 §2.2](08-shear-and-fractional-charge.md)). |
-| (m, n) ↔ (m, −n) | **R_w** (tube chirality) | The framework's **chirality-bias variable**. Under σ ≠ 0 these are two physically distinct Bloch modes (different (m, n) labels, different particles under the single-Bloch-mode reading) at different masses. The R_w split is what observable parity-violation-like effects would couple to. |
+| (m, n) ↔ (m, −n) | **R_u** (ring chirality) | These are the two components the σ = 0 R_u-symmetrized natural particle combined at equal amplitude (per [Ch 5 §4](05-metric-self-consistency.md)). Under σ ≠ 0 the split makes the symmetrization non-stationary; the framework's natural particle is redefined as the *single Bloch mode* (per [Ch 8 §2.2](08-shear-and-fractional-charge.md)). |
+| (m, n) ↔ (−m, n) | **R_w** (tube chirality) | The framework's **chirality-bias variable**. Under σ ≠ 0 these are two physically distinct Bloch modes (different (m, n) labels, different particles under the single-Bloch-mode reading) at different masses. The R_w split is what observable parity-violation-like effects would couple to. |
 | (m, n) ↔ (−m, −n) | **R_J** (joint reversal) | Sign-conjugate pair. **Mass-degenerate under shear** (preserved by σ_uw). [§4](#4-pair-configurations-within-a-single-field--the-sign-conjugate-case) cancellation operates the same at σ ≠ 0 as at σ = 0. |
 
 The first row is about *the natural-particle definition shifting under shear* (R_u-symmetrization no longer works; single Bloch mode replaces it). The second row is about *which two physically distinct Bloch modes the framework treats as chirality-conjugate partners*. The same algebraic split (4σmn/ε) plays out in both, but the physical interpretation differs: R_u tracks a *redefinition of what "the particle" is*, while R_w tracks a *split between two distinct particle states*.
 
-Under [Ch 8 §2.2](08-shear-and-fractional-charge.md)'s single-Bloch-mode commitment, the framework's chirality-bias variable is the **R_w-conjugate pair**: (m, n) and (m, −n) are two distinct Bloch modes with different masses under shear, and the wrap-order picks one. The R_u-conjugate pair (m, n) and (−m, n) is what the σ = 0 natural-particle construction would have symmetrized; under shear it has the same algebraic split but is no longer the "symmetrize me" pair.
+Under [Ch 8 §2.2](08-shear-and-fractional-charge.md)'s single-Bloch-mode commitment, the framework's chirality-bias variable is the **R_w-conjugate pair**: (m, n) and (−m, n) are two distinct Bloch modes with different masses under shear, and the wrap-order picks one. The R_u-conjugate pair (m, n) and (m, −n) is what the σ = 0 natural-particle construction would have symmetrized; under shear it has the same algebraic split but is no longer the "symmetrize me" pair.
 
 ### 6.5 Comparison with metric-mass's σ_Su shear
 
@@ -315,7 +315,7 @@ metric-charge's σ_uw is a different shear: between two compact directions. The 
 | Shear | Cross-term | Symmetry broken |
 |---|---|---|
 | σ_Su (metric-mass, 1D-compact) | k_S · k_u | (n) ↔ (−n) — sign reflection |
-| σ_uw (metric-charge, 2D-compact) | k_u · k_w | (m, n) ↔ (m, −n) — chirality reflection |
+| σ_uw (metric-charge, 2D-compact) | k_u · k_w | (m, n) ↔ (m, −n) — chirality reflection (R_u) |
 
 Earlier framings in this chapter and Chapter 8 conflated the two and presented σ_uw as the "2D-compact extension" of metric-mass's mechanism. They are structurally distinct mechanisms operating on different symmetries. The 2D-compact extension of metric-mass's σ_Su would be σ_S₁u or σ_S₁w — extended-versus-compact shear — which metric-charge's [Chapter 1 §4](01-foundation.md) does not introduce.
 
@@ -323,13 +323,13 @@ Earlier framings in this chapter and Chapter 8 conflated the two and presented �
 
 The chirality-bias result has consequences that follow directly from the math, made sharper under work1's natural-particle construction:
 
-- **σ_uw biases chirality *within particles*, not matter/antimatter populations.** Whatever asymmetry σ_uw introduces operates on the (m, n) ↔ (m, −n) axis (and equivalently (m, n) ↔ (−m, n) — the R_u and R_w reflections, which σ_uw breaks). For a natural particle (R_u-symmetrized configuration of (++) and (−+) per Ch 5 §4), σ_uw shifts the energies of the (++) and (−+) components in opposite directions, producing an internal amplitude bias within the particle. This is *intra-particle chirality bias*.
+- **σ_uw biases chirality *within particles*, not matter/antimatter populations.** Whatever asymmetry σ_uw introduces operates on the (m, n) ↔ (m, −n) axis (and equivalently (m, n) ↔ (−m, n) — the R_u and R_w reflections, which σ_uw breaks). For a natural particle (R_u-symmetrized configuration of (++) and (+−) per Ch 5 §4), σ_uw shifts the energies of the (++) and (+−) components in opposite directions, producing an internal amplitude bias within the particle. This is *intra-particle chirality bias*.
 
 - **σ_uw does not bias matter vs antimatter.** The (m, n) ↔ (−m, −n) sign reflection — which the framework treats as the matter/antimatter axis (§2) — is invariant under σ_uw (the cross-term k_u·k_w is unchanged under joint sign flip). σ_uw shifts matter and antimatter rest energies *equally*; it cannot bias their populations at the dispersion level. **Whatever produces the universe's matter/antimatter asymmetry, it is not σ_uw.**
 
 - **Sign-conjugate cancellation pairs (§4) remain neutral under shear.** A configuration with (m, n) + (−m, −n) at equal amplitude has identical dispersion for both components even at σ ≠ 0; the cancellation neutrality of §4 is robust under σ_uw shear.
 
-- **The R_w-symmetrized configuration is energetically disfavored under shear.** A configuration of the form (m, n) + (m, −n) — combining chirality-conjugates in the *tube* direction — is not a natural particle under the wrap-order convention (Ch 5 §4.3 rules out R_w as a particle symmetry). Under σ_uw ≠ 0, the two components sit at different energies (per §6.2), so this configuration is also not in thermal equilibrium. It would tend to redistribute toward whichever component the σ_uw shear favors energetically — settling into either (m, n) alone or (m, −n) alone, neither of which is by itself a natural particle. The configuration is structurally and energetically marginal.
+- **The R_w-symmetrized configuration is energetically disfavored under shear.** A configuration of the form (m, n) + (−m, n) — combining chirality-conjugates in the *tube* direction — is not a natural particle under the wrap-order convention (Ch 5 §4.3 rules out R_w as a particle symmetry). Under σ_uw ≠ 0, the two components sit at different energies (per §6.2), so this configuration is also not in thermal equilibrium. It would tend to redistribute toward whichever component the σ_uw shear favors energetically — settling into either (m, n) alone or (−m, n) alone, neither of which is by itself a natural particle. The configuration is structurally and energetically marginal.
 
 ### 6.7 Matter/antimatter bias — open
 
@@ -370,7 +370,7 @@ Chapter 7 changes the parameter focus from sign labels (Chapter 6) to magnitude 
 
 ## What this chapter does **not** do
 
-- **Does not derive a matter/antimatter bias mechanism.** §6 demonstrates that σ_uw shear biases chirality *within particles* (the R_u-symmetrized (++) vs (−+) amplitude balance), not matter/antimatter populations — σ_uw is invariant under (m, n) ↔ (−m, −n) joint sign flip. Whether the framework derives matter/antimatter bias from any other mechanism is left open at this chapter (see §6.7).
+- **Does not derive a matter/antimatter bias mechanism.** §6 demonstrates that σ_uw shear biases chirality *within particles* (the R_u-symmetrized (++) vs (+−) amplitude balance), not matter/antimatter populations — σ_uw is invariant under (m, n) ↔ (−m, −n) joint sign flip. Whether the framework derives matter/antimatter bias from any other mechanism is left open at this chapter (see §6.7).
 - **Does not derive the Sakharov mechanism for baryogenesis.** σ_uw provides intra-particle chirality bias only; the C-flavor (sign reflection) bias on populations has no derived mechanism in this chapter or [Chapter 8](08-shear-and-fractional-charge.md). Full Sakharov baryogenesis would require both C and CP violation plus a non-equilibrium phase; the framework currently provides at most a P-flavor intra-particle ingredient.
 - **Does not assign "matter" vs "antimatter" labels** to specific (m, n) sectors. The framework treats (m, n) and (−m, −n) as distinct sectors but does not pre-commit to which corresponds to what standard physics calls matter.
 - **Does not commit to whether parity (P) corresponds to mirror reflection or sign reflection** or some other operation. Open question; downstream comparison with standard physics' P, C, CP symmetries.

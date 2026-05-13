@@ -18,7 +18,7 @@ This is the discovery-not-proof philosophy of [metric-charge](README.md) applied
 
 - *From [metric-mass Chapter 5](../metric-mass/05-metric-self-consistency.md):* the standing-wave-as-particle reading, the per-component stress-energy machinery, and the off-diagonal cancellation that produces mass-only configurations from the equal-amplitude ±n superposition. The 2D-compact extension uses the same machinery, applied asymmetrically per the wrap-order.
 - *From [Chapter 1 §10](01-foundation.md):* the wrap-order convention (u = ring, w = tube) and the chirality form of the closure rule.
-- *From [Chapter 4](04-the-closure-condition.md):* the closure-satisfying inventory (T(m, 1) primitives and their k × T(m, 1) multi-link repetitions).
+- *From [Chapter 4](04-the-closure-condition.md):* the closure-satisfying inventory (T(1, n') primitives and their k × T(1, n') multi-link repetitions).
 - *From [grid-duality §7.5–§8](../grid-duality/07-wrap-promotion-modeling.md):* the L3 location of charge in the wrap-promotion ladder.
 
 **Distinctive job.** Derive the single gauge potential per closure-satisfying particle via the wrap-order-asymmetric standing-wave construction. Confirm the metric-side derivation is exactly equivalent to the chirality criterion of Chapter 1 §10 (i.e., the four views — chirality, synchronization, topological, metric-side — all agree on which (m, n) carry observable EM). Provide the calculable mechanism for gravitational and EM bending flagged in [metric-mass Chapter 6 §4](../metric-mass/06-gravitational-bending.md). Make any standard-EM correspondence a consequence rather than an assumption.
@@ -82,7 +82,7 @@ $$
 k_\mu = (-\omega,\,k_{S_1},\,k_{S_2},\,k_u,\,k_w)
 $$
 
-with k_u = 2πm/L_u and k_w = 2πn/L_w. The stress-energy in factored form is:
+with k_u = 2πn/L_u (ring) and k_w = 2πm/L_w (tube), per the tuple convention of [Chapter 1 §10](01-foundation.md) and [Chapter 2 §2](02-modes-on-a-sheet.md). The stress-energy in factored form is:
 
 <!-- T_μν = 2|φ|² k_μ k_ν -->
 $$
@@ -109,10 +109,10 @@ The off-diagonals between extended-spacetime indices and compact indices are the
 
 | Component | Value | Mode class for which it's nonzero |
 |---|---|---|
-| T_tu | −ω · k_u | any mode with k_u ≠ 0 (m ≠ 0) |
+| T_tu | −ω · k_u | any mode with k_u ≠ 0 (n ≠ 0, ring) |
 | T_S₁u | k_{S₁} · k_u | any mode with both k_{S₁} ≠ 0 and k_u ≠ 0 |
 | T_S₂u | k_{S₂} · k_u | any mode with both k_{S₂} ≠ 0 and k_u ≠ 0 |
-| T_tw | −ω · k_w | any mode with k_w ≠ 0 (n ≠ 0) |
+| T_tw | −ω · k_w | any mode with k_w ≠ 0 (m ≠ 0, tube) |
 | T_S₁w | k_{S₁} · k_w | any mode with both k_{S₁} ≠ 0 and k_w ≠ 0 |
 | T_S₂w | k_{S₂} · k_w | any mode with both k_{S₂} ≠ 0 and k_w ≠ 0 |
 
@@ -121,8 +121,8 @@ For a mode at rest in S (k_{S₁} = k_{S₂} = 0), only T_tu and T_tw are nonzer
 | Mode class | T_μν off-diagonals nonzero (per-component) |
 |---|---|
 | Light (0, 0) | None (no compact-direction structure) |
-| Single-axis (m, 0) | T_tu only at rest; T_tu, T_S₁u, T_S₂u when moving — *u-set only* |
-| Single-axis (0, n) | T_tw only at rest; *w-set only* |
+| Single-axis (m, 0) (tube-only) | T_tw only at rest; T_tw, T_S₁w, T_S₂w when moving — *w-set only* |
+| Single-axis (0, n) (ring-only) | T_tu only at rest; *u-set only* |
 | Diagonal (m, n) both nonzero | At rest: T_tu *and* T_tw. When moving: full six-entry pattern. *Both u-set and w-set sourced* |
 
 The diagonal-mode entry has *two* spacetime↔compact off-diagonals at the per-component level — one too many relative to standard EM's single U(1) gauge potential. **Resolving this two-cross-term apparent over-prediction is what §4's standing-wave construction does.**
@@ -167,8 +167,8 @@ Six spacetime↔compact off-diagonals at the per-component level, organized into
 For closure-failing modes (per-component):
 
 - **Light (0, 0)** sources no off-diagonals. Diagonal h_μν only — no gravitational coupling beyond the trivial vacuum.
-- **Single-axis (m, 0)** sources only the u-set: h_tu, h_S₁u, h_S₂u. The w-set is identically zero.
-- **Single-axis (0, n)** sources only the w-set: h_tw, h_S₁w, h_S₂w. The u-set is identically zero.
+- **Single-axis (m, 0)** (tube-only) sources only the w-set: h_tw, h_S₁w, h_S₂w. The u-set is identically zero.
+- **Single-axis (0, n)** (ring-only) sources only the u-set: h_tu, h_S₁u, h_S₂u. The w-set is identically zero.
 
 ---
 
@@ -193,8 +193,8 @@ The four traveling-wave components at fixed (|m|, |n|) — call them (++), (+−
 | Symmetry enforced | Modes combined | Resulting wave |
 |---|---|---|
 | **R_J: (m, n) ↔ (−m, −n)** (joint sign reversal) | (++) + (−−) | 2A·cos(k_u u + k_w w)·cos(ωt) — directionless standing wave on T(m, n) |
-| **R_u: m ↔ −m** (chirality of ring) | (++) + (−+) | 2A·cos(k_u u)·cos(k_w w − ωt) — *standing in u, traveling in w* |
-| **R_w: n ↔ −n** (chirality of tube) | (++) + (+−) | 2A·cos(k_w w)·cos(k_u u − ωt) — standing in w, traveling in u |
+| **R_u: n ↔ −n** (chirality of ring) | (++) + (+−) | 2A·cos(k_u u)·cos(k_w w − ωt) — *standing in u, traveling in w* |
+| **R_w: m ↔ −m** (chirality of tube) | (++) + (−+) | 2A·cos(k_w w)·cos(k_u u − ωt) — standing in w, traveling in u |
 
 For each, compute the surviving stress-energy entries (using ⟨cos²⟩ = ⟨sin²⟩ = 1/2 and ⟨sin·cos⟩ = 0 over a full period):
 
@@ -215,7 +215,7 @@ We need to distinguish two notions of symmetry:
 - **Topological symmetry of the curve.** Whether R takes T(m, n) to itself as a knot in 3-space.
 - **Particle symmetry of the construction.** Whether R is enforced as a symmetrization in the natural-particle definition (modes combined in equal amplitude under R).
 
-For closure-satisfying T(m, 1) — the unknot — both R_u and R_w are *topological* symmetries of the curve in 3-space (the unknot is achiral; reflecting it in either compact direction takes it to itself up to ambient isotopy). Topology alone does not distinguish them. The wrap-order's role is to single out which of the two chirality reflections gets enforced as a *particle* symmetry:
+For closure-satisfying T(1, n') — the unknot — both R_u and R_w are *topological* symmetries of the curve in 3-space (the unknot is achiral; reflecting it in either compact direction takes it to itself up to ambient isotopy). Topology alone does not distinguish them. The wrap-order's role is to single out which of the two chirality reflections gets enforced as a *particle* symmetry:
 
 - **R_u (chirality reflection of the ring) — particle symmetry.** The wrap-order assigns the ring direction the metric-mass-style symmetric role: standing-wave construction in the ring, with the ring's chirality treated as a particle symmetry. Ring-direction wavenumber sign carries no observable.
 - **R_w (chirality reflection of the tube) — *not* a particle symmetry.** The wrap-order assigns the tube direction the KK-style charge-bearing role: the sign of compact-direction wavenumber is a physical observable (charge sign). R_w would flip that sign and so cannot be enforced as a symmetrization, even though it remains a topological symmetry of the unknot.
@@ -257,7 +257,7 @@ Standard 5D Kaluza-Klein theory ([primers/kaluza-klein.md](../../primers/kaluza-
 
 In this chapter's 2D-compact construction:
 
-- The **tube direction (w) plays the role of standard KK's single compact direction.** The natural particle has definite n in the tube, the wave is traveling in w, and h_μw = B_μ survives — standard KK applied to the tube.
+- The **tube direction (w) plays the role of standard KK's single compact direction.** The natural particle has definite m in the tube, the wave is traveling in w, and h_μw = B_μ survives — standard KK applied to the tube.
 - The **ring direction (u) plays the role of metric-mass's single compact direction.** The natural particle has the standing-wave structure cos(k_u u), the wave is *not* traveling in u, and the per-component cross-term h_μu cancels — metric-mass applied to the ring.
 
 The 2D-compact T² is decomposed by the wrap-order into "1D-compact for KK + 1D-compact for mass-only." Neither mechanism contradicts the other because they apply to different directions. The choice of which direction is which is forced by the wrap-order, which is fixed once for the framework as a whole and applies the same way to all modes. No new principles, no per-particle interpretive moves — standard KK on the tube, metric-mass on the ring.
@@ -268,7 +268,7 @@ The 2D-compact T² is decomposed by the wrap-order into "1D-compact for KK + 1D-
 
 **Scope: σ = 0 and σ ≠ 0.** The derivation runs cleanly at both regimes under the wrap-order framing. §§4.6.1–4.6.4 work through Properties 1–4 explicitly at σ = 0 (R_u-symmetrized natural particle, with h_μu mechanically cancelled by R_u-symmetrization in addition to being structurally non-gauge by convention). §4.6.5 extends to σ ≠ 0 (single-Bloch-mode natural particle per [Chapter 8 §2.2](08-shear-and-fractional-charge.md)), where h_μu is sourced but interpreted as a mass-direction metric distortion via the same wrap-order convention. h_μw remains the unique gauge potential at both regimes.
 
-**Scope: single closure-satisfying mode.** The derivation applies to a single closure-satisfying T(m, 1) primitive. For multi-component links of the form k × T(m', 1) — committed to the **Configuration Y** reading per [Chapter 8 §5](08-shear-and-fractional-charge.md) — the analysis applies *per component*: each phased copy sources its own h_μw cross-term, so a k-component multi-link has **k surviving gauge-potential cross-terms** (one per component), each carrying 1/k of the link's integer total charge.
+**Scope: single closure-satisfying mode.** The derivation applies to a single closure-satisfying T(1, n) primitive. For multi-component links of the form k × T(1, n') — committed to the **Configuration Y** reading per [Chapter 8 §5](08-shear-and-fractional-charge.md) — the analysis applies *per component*: each phased copy sources its own h_μw cross-term, so a k-component multi-link has **k surviving gauge-potential cross-terms** (one per component), each carrying 1/k of the link's integer total charge.
 
 #### 4.6.1 Property 1 — Index structure
 
@@ -376,7 +376,7 @@ $$
 
 The first term is the Lorentz force from B_μ ≡ h_μw, with p^w as EM charge. The second term is a **metric-distortion effect** from the mass-direction perturbation h_μu, coupling to the particle's ring-direction (mass-direction) momentum p^u.
 
-Physical reading: at σ ≠ 0, a single-Bloch-mode closure-satisfying particle has definite p^u (the wrap-order picks one sign of m for the natural particle). This ring-direction momentum is part of the particle's mass structure (per [Chapter 1 §10](01-foundation.md)'s identification of u as the mass direction). It creates the metric perturbation h_μu in extended spacetime, and other particles moving through this perturbation experience a velocity-dependent metric distortion. The structure of this contribution is analogous to gravitational frame-dragging from mass-energy current rather than to a Lorentz force from a separate gauge field. The framework's wrap-order convention is what determines the categorization — h_μu is a mass-direction metric perturbation, not a gauge potential — independently of the gravitational analogy; whether the analogy extends into a definite assignment of h_μu to the gravitational sector is a question for downstream physics work, not part of the present derivation.
+Physical reading: at σ ≠ 0, a single-Bloch-mode closure-satisfying particle has definite p^u (the wrap-order picks one sign of n for the natural particle, n being the ring winding label). This ring-direction momentum is part of the particle's mass structure (per [Chapter 1 §10](01-foundation.md)'s identification of u as the mass direction). It creates the metric perturbation h_μu in extended spacetime, and other particles moving through this perturbation experience a velocity-dependent metric distortion. The structure of this contribution is analogous to gravitational frame-dragging from mass-energy current rather than to a Lorentz force from a separate gauge field. The framework's wrap-order convention is what determines the categorization — h_μu is a mass-direction metric perturbation, not a gauge potential — independently of the gravitational analogy; whether the analogy extends into a definite assignment of h_μu to the gravitational sector is a question for downstream physics work, not part of the present derivation.
 
 The framework's "single gauge potential per closure-satisfying particle" claim is preserved at σ ≠ 0 — grounded in the wrap-order axiom rather than in R_u-symmetrization specifically. R_u-symmetrization was one realization of the convention at σ = 0 (additionally cancelling h_μu mechanically); under shear, the convention does the gauge-identification work alone. No second U(1) is left over at either regime.
 
@@ -388,14 +388,14 @@ For closure-failing configurations, the topological status of R_u and R_w change
 
 ### 5.1 Single-axis modes
 
-Modes (m, 0) or (0, n) — one winding zero. Take (m, 0):
+Modes (m, 0) or (0, n) — one winding zero. Take (m, 0) (tube-only: m ≠ 0, n = 0):
 
-- The wave has no w-dependence; reflections in w act trivially.
-- R_u (sign of m) is the only nontrivial reflection. There is no chirality structure on the closed curve to test.
-- Natural particle: (++) + (−+) → 2A·cos(k_u u)·cos(ωt). This is metric-mass's standing wave restricted to the u-direction, with no w-structure at all.
-- T_tu = 0 (R_u cancellation, by the metric-mass mechanism). T_tw = 0 (no k_w to source it). T_uw = 0. **Mass only — no spacetime↔compact gauge potential.**
+- The wave has no u-dependence (k_u = 2πn/L_u = 0 when n = 0); reflections in u act trivially.
+- R_w (sign of m, the tube winding) is the only nontrivial reflection. There is no chirality structure on the closed curve to test.
+- Natural particle: (++) + (−+) → 2A·cos(k_w w)·cos(ωt). This is metric-mass's standing wave restricted to the w-direction, with no u-structure at all.
+- T_tw = 0 (R_w cancellation, by the metric-mass mechanism). T_tu = 0 (no k_u to source it). T_uw = 0. **Mass only — no spacetime↔compact gauge potential.**
 
-The (0, n) case gives mass-only by the symmetric calculation in w.
+The (0, n) case (ring-only: n ≠ 0, m = 0) gives mass-only by the symmetric calculation in u — natural particle 2A·cos(k_u u)·cos(ωt) standing in the ring direction, R_u-symmetrized.
 
 ### 5.2 Genuine torus knots
 
@@ -415,7 +415,7 @@ The only available symmetry is R_J. Natural particle: (++) + (−−) → 2A·co
 
 ### 5.3 Why closure-satisfying and closure-failing diverge under the same construction
 
-For closure-satisfying T(m, 1), the underlying curve is achiral in 3-space, so its chirality reflections (both R_u and R_w) are topological symmetries; R_u in particular is among them, and the wrap-order's selection of R_u as the particle symmetry is consistent with topology. For genuine torus knots, the underlying curve is chiral, so neither R_u nor R_w is a topological symmetry; R_u cannot be enforced as a particle symmetry without combining topologically distinct configurations. The construction falls back to R_J (the only remaining topological symmetry — joint reversal preserves the unoriented curve), yielding the mass-only configuration.
+For closure-satisfying T(1, n'), the underlying curve is achiral in 3-space, so its chirality reflections (both R_u and R_w) are topological symmetries; R_u in particular is among them, and the wrap-order's selection of R_u as the particle symmetry is consistent with topology. For genuine torus knots, the underlying curve is chiral, so neither R_u nor R_w is a topological symmetry; R_u cannot be enforced as a particle symmetry without combining topologically distinct configurations. The construction falls back to R_J (the only remaining topological symmetry — joint reversal preserves the unoriented curve), yielding the mass-only configuration.
 
 The closure rule of [Chapter 1 §10](01-foundation.md), expressed as a chirality criterion on the closed curve in 3-space, is **exactly equivalent** to the metric-side criterion "the wrap-order's R_u is enforceable as a particle symmetry, hence the natural particle sources a single gauge potential B_μ from h_μw." Both are descriptions of the same underlying fact: the curve's chirality status, which controls which wrap-order-aligned symmetries the natural particle inherits.
 
@@ -424,8 +424,8 @@ The closure rule of [Chapter 1 §10](01-foundation.md), expressed as a chirality
 | Category | Particle symmetry | T_tu | T_tw | T_uw | Outcome |
 |---|---|---|---|---|---|
 | Light (0, 0) | — (no compact structure) | 0 | 0 | 0 | Light, no EM |
-| Single-axis (m, 0) | R_u (only available) | 0 | 0 (k_w = 0) | 0 | Mass only |
-| Single-axis (0, n) | R_w (only available) | 0 (k_u = 0) | 0 | 0 | Mass only |
+| Single-axis (m, 0) (tube-only) | R_w (only available) | 0 (k_u = 0) | 0 | 0 | Mass only |
+| Single-axis (0, n) (ring-only) | R_u (only available) | 0 | 0 (k_w = 0) | 0 | Mass only |
 | Genuine torus knot T(p, q), gcd = 1 | R_J (only available) | 0 | 0 | nonzero | Mass + chirality field |
 
 All closure-failing categories produce massive but EM-neutral states under the natural-particle construction. The *mechanism* differs: single-axis modes fail by structural degeneracy (no chirality structure to test); genuine torus knots fail by chirality non-degeneracy (R_u not a topological symmetry, fall back to R_J). The framework distinguishes them by which particle symmetry the natural-particle construction can enforce.
@@ -447,8 +447,8 @@ The (0, 0) zero mode sources no off-diagonals at all (no compact-direction momen
 | View | Condition | Source |
 |---|---|---|
 | Chirality (primary) | The closed curve T(m, n) is achiral in 3-space *and* the wrap-order's R_u is a topological symmetry | [Ch 1 §10](01-foundation.md) |
-| Synchronization (operational test) | n \| m with both nonzero | [Ch 1 §10](01-foundation.md), [Ch 4 §1](04-the-closure-condition.md) |
-| Topological | gcd-reduced primitive of T(m, n) is T(m', 1) | [Ch 4 §1](04-the-closure-condition.md) |
+| Synchronization (operational test) | m \| n with both nonzero | [Ch 1 §10](01-foundation.md), [Ch 4 §1](04-the-closure-condition.md) |
+| Topological | gcd-reduced primitive of T(m, n) is T(1, n') | [Ch 4 §1](04-the-closure-condition.md) |
 | Metric-side | The wrap-order's R_u-symmetrization of the natural particle preserves a single spacetime↔compact cross-term h_μw | This chapter §4 |
 
 ### 6.2 The four views all agree
@@ -457,24 +457,24 @@ The (0, 0) zero mode sources no off-diagonals at all (no compact-direction momen
 |---|---|---|---|---|
 | (0, 0) | N/A (no curve) | Fails (no winding) | Fails (no winding) | No off-diagonals (light) |
 | Single-axis (m, 0), (0, n) | Vacuous (no chirality structure) | Fails (one winding zero) | Fails | R_u or R_w-only symmetrization gives mass only |
-| T(m, 1) primitives | Achiral; R_u is a symmetry → satisfies | n=1 \| m → satisfies | Primitive is T(m, 1) → satisfies | R_u-symmetrization yields one gauge potential h_μw |
-| Genuine torus knot T(p, q), p,q ≥ 2, gcd = 1 | Chirally distinct from mirror → criterion (i) fails | n ∤ m → fails | Primitive is genuine torus knot → fails | R_u not a topological symmetry → fall back to R_J → mass only with chirality field T_uw |
-| Multi-link k × T(m', 1) | Achiral per component → satisfies | n = k \| m = k·m' → satisfies | Primitive is T(m', 1) → satisfies | R_u-symmetrization per component yields k-fold gauge potential structure |
+| T(1, n') primitives | Achiral; R_u is a symmetry → satisfies | m=1 \| n → satisfies | Primitive is T(1, n') → satisfies | R_u-symmetrization yields one gauge potential h_μw |
+| Genuine torus knot T(p, q), p,q ≥ 2, gcd = 1 | Chirally distinct from mirror → criterion (i) fails | m ∤ n → fails | Primitive is genuine torus knot → fails | R_u not a topological symmetry → fall back to R_J → mass only with chirality field T_uw |
+| Multi-link k × T(1, n') | Achiral per component → satisfies | m = k \| n = k·n' → satisfies | Primitive is T(1, n') → satisfies | R_u-symmetrization per component yields k-fold gauge potential structure |
 | Multi-link with genuine-knot primitive | Chirally non-degenerate per component → fails | Fails | Fails | R_J fallback per component → mass only |
 
 All four views agree on every row. The closure rule's partition of (m, n) into charged-vs-neutral is the same regardless of which view we use to derive it.
 
 ### 6.3 Why all four agree
 
-The four views are descriptions of the same underlying fact: the curve's chirality status in 3-space, which controls (a) whether the synchronization test n | m holds, (b) whether the gcd-reduced primitive is the unknot T(m', 1), and (c) whether the wrap-order's R_u can be enforced as a particle symmetry under the standing-wave construction. All three downstream consequences are equivalent because the wrap-order's selection of R_u as the particle symmetry is exactly the condition under which the natural particle sources a single gauge potential.
+The four views are descriptions of the same underlying fact: the curve's chirality status in 3-space, which controls (a) whether the synchronization test m | n holds, (b) whether the gcd-reduced primitive is the unknot T(1, n'), and (c) whether the wrap-order's R_u can be enforced as a particle symmetry under the standing-wave construction. All three downstream consequences are equivalent because the wrap-order's selection of R_u as the particle symmetry is exactly the condition under which the natural particle sources a single gauge potential.
 
-The chirality view is the most fundamental — it ties directly to the topological character of the curve in 3-space and explains *why* the closure rule selects the (m, n) it does. The synchronization view is operationally cleanest (just check n | m). The topological view is structurally cleanest (the gcd-reduced primitive form). The metric-side view is the derivation that produces the gauge field. Each is useful in its own context; all four select the same set of (m, n) configurations as charged.
+The chirality view is the most fundamental — it ties directly to the topological character of the curve in 3-space and explains *why* the closure rule selects the (m, n) it does. The synchronization view is operationally cleanest (just check m | n). The topological view is structurally cleanest (the gcd-reduced primitive form). The metric-side view is the derivation that produces the gauge field. Each is useful in its own context; all four select the same set of (m, n) configurations as charged.
 
 ### 6.4 The wrap-order convention's three faces
 
 The wrap-order convention of [Chapter 1 §10](01-foundation.md) has three distinct projections — each of them a consequence of the single choice "u = ring, w = tube":
 
-- **Closure rule.** The closure condition selects the chirality reflection R_u of the ring direction as the particle symmetry. (Equivalently, the synchronization test reads n | m, picking the direction-pair where the tube divides the ring.)
+- **Closure rule.** The closure condition selects the chirality reflection R_u of the ring direction as the particle symmetry. (Equivalently, the synchronization test reads m | n, picking the direction-pair where the tube divides the ring.)
 - **Aspect-ratio labels.** ε ≡ L_u/L_w; "thin sheet" = small ε labels the ring as the small direction, the tube as the large direction (or the reverse, depending on the regime).
 - **Gauge identification.** The single surviving cross-term h_μw is identified with the EM gauge potential B_μ — chosen by the wrap-order's selection of w as the tube direction whose KK-style traveling-wave structure produces the gauge potential.
 
@@ -549,7 +549,7 @@ The framework reproduces standard EM at the structural level: a single gauge pot
 
 ## 9. What's next
 
-[Chapter 6 — Handedness and pairs](06-handedness-and-pairs.md). Take the closure-satisfying inventory from Chapter 4 and the single-gauge-potential structure from this chapter, and examine the **chirality / handedness** structure: when do (m, n) and (−m, −n) correspond to physically distinguishable particles (in the sense of what standard physics calls matter vs antimatter), and when do they represent the same particle viewed two different ways? Examine when complementary pairs *within a single field configuration* cancel net charge (apparent neutrality through internal cancellation, distinct from the structural neutrality of closure-failing modes from this chapter). Sharpen σ_uw shear's role: under work1's framing, σ_uw biases chirality *within particles* (the (++) vs (−+) amplitude balance), not matter/antimatter populations.
+[Chapter 6 — Handedness and pairs](06-handedness-and-pairs.md). Take the closure-satisfying inventory from Chapter 4 and the single-gauge-potential structure from this chapter, and examine the **chirality / handedness** structure: when do (m, n) and (−m, −n) correspond to physically distinguishable particles (in the sense of what standard physics calls matter vs antimatter), and when do they represent the same particle viewed two different ways? Examine when complementary pairs *within a single field configuration* cancel net charge (apparent neutrality through internal cancellation, distinct from the structural neutrality of closure-failing modes from this chapter). Sharpen σ_uw shear's role: under work1's framing, σ_uw biases chirality *within particles* (the (++) vs (+−) amplitude balance), not matter/antimatter populations.
 
 The closure-condition structure that was settled in chapters 4 and 5 — which (m, n) modes carry observable EM and which don't, and how the natural particle is constructed — is the substrate. Chapter 6 adds handedness as a sub-(m, n) label and asks what physical content the sign-reflection symmetry carries.
 

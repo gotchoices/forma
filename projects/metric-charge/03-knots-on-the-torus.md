@@ -30,22 +30,22 @@ This chapter does **not** compute energetics, force laws, or any quantitative be
 
 ## 1. From modes to curves — the geometric reframing
 
-[Chapter 2](02-modes-on-a-sheet.md) labeled solutions of the wave equation by integer pairs (m, n) — winding numbers in u and w. Each non-trivial (m, n) corresponds to a wavefunction that varies sinusoidally with u and w in a specific pattern: m oscillations around the u-cycle and n around the w-cycle.
+[Chapter 2](02-modes-on-a-sheet.md) labeled solutions of the wave equation by integer pairs (m, n) — winding numbers in u and w. Each non-trivial (m, n) corresponds to a wavefunction that varies sinusoidally with u and w in a specific pattern: n oscillations around the u-cycle (ring) and m around the w-cycle (tube), per the tuple convention of [Chapter 1 §10](01-foundation.md) (m = tube, n = ring).
 
-The geometric content is that **the wavefunction's nodes form a closed curve on the (u, w) sheet, and that curve wraps m times around the u-cycle (the ring) and n times around the w-cycle (the tube) as it closes upon itself.** Per the wrap-order convention of [Chapter 1 §10](01-foundation.md), u is the ring (multi-wrap, mass-bearing) and w is the tube (single-wrap-in-primitives, charge-bearing). A wave with winding (2, 1), for example, is a closed curve that goes twice around the ring (u) and once around the tube (w) before closing — a closure-satisfying primitive. A genuinely-knotted curve like T(2, 3) (the trefoil) wraps twice around the ring and three times around the tube; gcd(2, 3) = 1, so it is a single closed curve, but it is a *genuine* torus knot in 3-space (chirally distinct from its mirror).
+The geometric content is that **the wavefunction's nodes form a closed curve on the (u, w) sheet, and that curve wraps m times around the w-cycle (the tube) and n times around the u-cycle (the ring) as it closes upon itself.** Per the wrap-order convention of [Chapter 1 §10](01-foundation.md), u is the ring (multi-wrap, mass-bearing) and w is the tube (single-wrap-in-primitives, charge-bearing); m and n label tube and ring windings respectively. A wave with winding (1, 2), for example, is a closed curve that goes once around the tube (w) and twice around the ring (u) before closing — a closure-satisfying primitive. A genuinely-knotted curve like T(3, 2) (the trefoil) wraps three times around the tube and twice around the ring; gcd(3, 2) = 1, so it is a single closed curve, but it is a *genuine* torus knot in 3-space (chirally distinct from its mirror).
 
 Reframing each (m, n) mode as a geometric curve:
 
 | Mode label | Geometric object |
 |---|---|
 | (0, 0) | No curve at all; the wavefunction is constant on the sheet |
-| (m, 0) with m ≠ 0 | A closed loop wrapping the u-cycle m times, no w-winding |
-| (0, n) with n ≠ 0 | A closed loop wrapping the w-cycle n times, no u-winding |
+| (m, 0) with m ≠ 0 | A closed loop wrapping the w-cycle (tube) m times, no u-winding |
+| (0, n) with n ≠ 0 | A closed loop wrapping the u-cycle (ring) n times, no w-winding |
 | (m, n) with both nonzero | A *torus knot*, in the standard mathematical sense |
 
 This reframing sets the language for the rest of the chapter and for chapter 4's closure analysis. The wave-equation modes of chapter 2 and the geometric closed curves of this chapter are the same underlying objects, viewed through different lenses. We will move back and forth between the two views as convenient.
 
-The visualization is intuitive: imagine a small donut shape (the (u, w) torus) with a piece of string wrapped around it. The string goes around the ring m times (the u-cycle) and around the tube n times (the w-cycle) before closing on itself. For (m, n) = (1, 0), the string just goes once around the ring — a simple loop. For (m, n) = (2, 1), it makes two ring traversals while passing the tube once — a closure-satisfying primitive that is topologically still the unknot in 3-space (no genuine knotting), even though it traces a non-trivial path on the torus surface.
+The visualization is intuitive: imagine a small donut shape (the (u, w) torus) with a piece of string wrapped around it. The string goes around the tube m times (the w-cycle) and around the ring n times (the u-cycle) before closing on itself. For (m, n) = (0, 1), the string just goes once around the ring — a simple loop. For (m, n) = (1, 2), it makes one tube traversal while wrapping the ring twice — a closure-satisfying primitive that is topologically still the unknot in 3-space (no genuine knotting), even though it traces a non-trivial path on the torus surface.
 
 ---
 
@@ -71,15 +71,15 @@ These are equivalences at the level of *abstract knot type* — two curves that 
 
 **Trivial cases — the unknot:**
 
-- **T(p, 1) and T(1, q) are the unknot for any p, q.** A curve that wraps one of the cycles exactly once can be slid off the torus surface entirely without crossing itself — it bounds a disc in 3-space and has no genuine knotting. T(2, 1), T(3, 1), T(100, 1) are all the unknot. So are T(1, 2), T(1, 3), etc.; topologically the unknot status is symmetric under cycle swap, even though physically the wrap-order distinguishes T(p, 1) (multi-ring, single-tube — closure-satisfying) from T(1, q) (single-ring, multi-tube — *not* closure-satisfying for q ≥ 2 under the closure rule of [Ch 1 §10](01-foundation.md)).
+- **T(1, q) and T(p, 1) are the unknot for any p, q.** A curve that wraps one of the cycles exactly once can be slid off the torus surface entirely without crossing itself — it bounds a disc in 3-space and has no genuine knotting. T(1, 2), T(1, 3), T(1, 100) are all the unknot. So are T(2, 1), T(3, 1), etc.; topologically the unknot status is symmetric under cycle swap, even though physically the wrap-order distinguishes T(1, q) (single-tube, multi-ring — closure-satisfying) from T(p, 1) (multi-tube, single-ring — *not* closure-satisfying for p ≥ 2 under the closure rule of [Ch 1 §10](01-foundation.md)).
 - **T(0, 0)** is the empty loop — no curve at all.
 
-> **Topological triviality does not imply physical triviality.** This point is structurally important and easy to miss. T(2, 1) and T(3, 1) are both unknots topologically — but in metric-charge they are different *physical states* with different (m, n) labels, different rest masses, different compact-direction momenta, conserved as distinct sectors of the wave equation. The "unknot" label classifies the embedded curve in 3-space; the (m, n) label classifies the mode in this framework. They are different things, and physics in metric-charge cares about the latter. A topologically trivial unknot mode can still be closure-eligible (chapter 4), can carry observable charge, and can play a substantive role in the particle inventory. As an external reference: MaSt model-F has independently proposed identifying T(2, 1) — a topological unknot — with what standard physics calls the electron. The metric-charge framework here treats that proposal as a candidate correspondence to compare against, not an axiom of this project. §3 develops the topology-vs-physics distinction in full.
+> **Topological triviality does not imply physical triviality.** This point is structurally important and easy to miss. T(1, 2) and T(1, 3) are both unknots topologically — but in metric-charge they are different *physical states* with different (m, n) labels, different rest masses, different compact-direction momenta, conserved as distinct sectors of the wave equation. The "unknot" label classifies the embedded curve in 3-space; the (m, n) label classifies the mode in this framework. They are different things, and physics in metric-charge cares about the latter. A topologically trivial unknot mode can still be closure-eligible (chapter 4), can carry observable charge, and can play a substantive role in the particle inventory. As an external reference: MaSt model-F has independently proposed identifying T(1, 2) — a topological unknot — with what standard physics calls the electron. The metric-charge framework here treats that proposal as a candidate correspondence to compare against, not an axiom of this project. §3 develops the topology-vs-physics distinction in full.
 
 **Genuine knots:**
 
-- **T(2, 3) is the trefoil**, the simplest non-trivial knot, crossing number 3.
-- T(2, 5), T(3, 4), T(3, 5), ... — a tower of progressively complex torus knots, all with both p, q ≥ 2 and gcd(p, q) = 1.
+- **T(3, 2) is the trefoil**, the simplest non-trivial knot, crossing number 3.
+- T(5, 2), T(4, 3), T(5, 3), ... — a tower of progressively complex torus knots, all with both p, q ≥ 2 and gcd(p, q) = 1.
 
 **Crossing number formula:**
 
@@ -87,7 +87,7 @@ For T(p, q) with gcd(p, q) = 1 and p, q ≥ 2:
 
 c(T(p, q)) = min(p(q − 1), q(p − 1))
 
-So c(T(2, 3)) = min(4, 3) = 3 (trefoil); c(T(2, 5)) = min(8, 5) = 5 (cinquefoil); c(T(3, 4)) = min(9, 8) = 8; etc. For p = 1 or q = 1, c = 0 (unknot, no crossings).
+So c(T(3, 2)) = min(3, 4) = 3 (trefoil); c(T(5, 2)) = min(5, 8) = 5 (cinquefoil); c(T(4, 3)) = min(8, 9) = 8; etc. For p = 1 or q = 1, c = 0 (unknot, no crossings).
 
 The mapping (m, n) → T(m, n) is the bridge from mode label to standard knot terminology; we will use both notations as convenient for the rest of the chapter.
 
@@ -97,7 +97,7 @@ The mapping (m, n) → T(m, n) is the bridge from mode label to standard knot te
 
 The primary state space of metric-charge's modes is **ℤ²** — each state is labeled by an integer pair (m, n). The wave equation conserves these labels exactly under unitary evolution ([grid-duality §7.5.2](../grid-duality/07-wrap-promotion-modeling.md)); distinct (m, n) values are distinct conserved sectors. **(m, n) is the framework's primary physical label.**
 
-Topological knot type is a *derived* invariant. Each (m, n) traces a closed curve T(m, n) on the embedded 2-torus, and that curve has a knot type in 3-space. Different (m, n) values can map to the *same* knot type — for example, all of T(2, 1), T(3, 1), T(100, 1) are the unknot in 3-space; T(2, 3) and T(3, 2) are the same trefoil. Topological knot type is therefore a *coarser* classification than (m, n) and does not by itself organize the state space.
+Topological knot type is a *derived* invariant. Each (m, n) traces a closed curve T(m, n) on the embedded 2-torus, and that curve has a knot type in 3-space. Different (m, n) values can map to the *same* knot type — for example, all of T(1, 2), T(1, 3), T(1, 100) are the unknot in 3-space; T(3, 2) and T(2, 3) are the same trefoil. Topological knot type is therefore a *coarser* classification than (m, n) and does not by itself organize the state space.
 
 The chapter's view: **(m, n) is the primary physical label; topological invariants are useful organizing tools but they do not reduce the state space.** Two modes with the same knot type but different (m, n) are different physical states. The "equivalences" of §2 (swap, reverse) operate at the *topological* level — they identify knot types but they do not identify modes.
 
@@ -119,7 +119,7 @@ For torus knots specifically, all topological invariants (crossing number, genus
 
 The following equivalences hold *in topology* — they identify knot *types*. They do *not* generally correspond to physical equivalence in metric-charge, because they relate different (m, n) values which the framework treats as distinct conserved sectors.
 
-- **Cycle swap:** T(p, q) ≡ T(q, p) topologically. Swapping cycles is a coordinate-relabel for *bare* topology. The (m, n) and (n, m) modes are nevertheless *different physical states* in metric-charge: the (u, w) ↔ (w, u) symmetry is broken by the wrap-order convention of [Chapter 1 §10](01-foundation.md), which assigns u as the *ring* (multi-wrap, mass-bearing) and w as the *tube* (single-wrap-in-primitives, charge-bearing). Under the wrap-order, T(2, 1) (closure-satisfying primitive — 2 ring wraps, 1 tube wrap) and T(1, 2) (1 ring wrap, 2 tube wraps — *not* closure-satisfying) are physically distinct, even though topologically both are unknots in 3-space.
+- **Cycle swap:** T(p, q) ≡ T(q, p) topologically. Swapping cycles is a coordinate-relabel for *bare* topology. The (m, n) and (n, m) modes are nevertheless *different physical states* in metric-charge: the (u, w) ↔ (w, u) symmetry is broken by the wrap-order convention of [Chapter 1 §10](01-foundation.md), which assigns u as the *ring* (multi-wrap, mass-bearing) and w as the *tube* (single-wrap-in-primitives, charge-bearing). Under the wrap-order, T(1, 2) (closure-satisfying primitive — 1 tube wrap, 2 ring wraps) and T(2, 1) (2 tube wraps, 1 ring wrap — *not* closure-satisfying) are physically distinct, even though topologically both are unknots in 3-space.
 
 The wrap-order's role propagates to all downstream conventions (closure rule, aspect-ratio labels, gauge identification). Under (u, w) ↔ (w, u) swap with ε → 1/ε, the bare framework is symmetric; once the wrap-order is adopted, the downstream conventions flip together under the swap. The wrap-order is the single convention with multiple structural consequences. Whether the adopted wrap-order matches the way the universe seems to work, or whether some substrate-level mechanism forces it, is a downstream question for [grid-duality §8](../grid-duality/08-where-alpha-appears.md) and alpha-derivation work, not a determination this chapter makes.
 
@@ -129,7 +129,7 @@ The wrap-order's role propagates to all downstream conventions (closure rule, as
 
 - **Mirror reflection:** T(p, q) and T(p, −q) are *chirally distinct* in 3-space for genuine torus knots — mirror images that cannot be deformed into each other under orientation-preserving deformations. For unknots (one of p, q is ±1), the mirror is also an unknot, so chirality is degenerate at the unoriented-curve level. The wrap-order convention plays a separate role from this topological chirality: even when topology makes mirror-reflected unknots equivalent, the wrap-order's role assignment (ring vs tube) makes T(p, q) and T(q, p) physically distinct.
 
-- **Trivial reductions:** T(p, 1) and T(1, q) are both topologically the unknot for any p, q. **Even though all such curves are topologically the unknot, T(2, 1), T(3, 1), T(100, 1), ... are distinct physical states** — they have different (m, n), different masses, different compact-direction momenta, and the wave equation conserves them in different sectors. T(1, q) for q ≥ 2 is *also* the unknot topologically, but the wrap-order rules it out as a closure-satisfying primitive (multi-tube-wrapping with single ring wrap doesn't satisfy the closure rule). The unknot label says only that the embedded curve has no crossings; physics in metric-charge cares about (m, n) and the wrap-order's role assignment.
+- **Trivial reductions:** T(1, q) and T(p, 1) are both topologically the unknot for any p, q. **Even though all such curves are topologically the unknot, T(1, 2), T(1, 3), T(1, 100), ... are distinct physical states** — they have different (m, n), different masses, different compact-direction momenta, and the wave equation conserves them in different sectors. T(p, 1) for p ≥ 2 is *also* the unknot topologically, but the wrap-order rules it out as a closure-satisfying primitive (multi-tube-wrapping with single ring wrap doesn't satisfy the closure rule). The unknot label says only that the embedded curve has no crossings; physics in metric-charge cares about (m, n) and the wrap-order's role assignment.
 
 - **Composite knots:** T(km, kn) with gcd(m, n) = 1 and k > 1 is a *k-component link* — k disjoint parallel loops, each topologically T(m, n) on its own (see §6). This is structurally distinct from k separate T(m, n) curves at different positions in S.
 
@@ -153,7 +153,7 @@ Useful for organization, but redundant with (m, n) for torus-knot states.
 
 - **sign(m), sign(n).** Chirality / handedness components. The (m, n) → (−m, −n) reflection is the simplest discrete symmetry in knot space; the full chirality structure also includes the mirror reflection (m, n) → (m, −n). Candidate matter/antimatter and chirality labels ([Chapter 6](README.md#chapters)).
 
-- **Crossing number c(T(m, n)).** Counts how many crossings the embedded curve has in 3-space, in its minimal projection. Formula from §2: c = min(p(q − 1), q(p − 1)) for p, q ≥ 2 with gcd = 1; c = 0 for unknots. **Candidate organization for generation structure** — particle generations might correspond to crossing-number tiers. The trefoil T(2, 3) at c = 3 is the simplest non-trivial torus knot; T(2, 5) at c = 5, T(3, 4) at c = 8, T(3, 5) at c = 10, etc. form an ascending tower. Whether tier-m knots correspond to generation-m particles is open work for chapters downstream and follow-up projects.
+- **Crossing number c(T(m, n)).** Counts how many crossings the embedded curve has in 3-space, in its minimal projection. Formula from §2: c = min(p(q − 1), q(p − 1)) for p, q ≥ 2 with gcd = 1; c = 0 for unknots. **Candidate organization for generation structure** — particle generations might correspond to crossing-number tiers. The trefoil T(3, 2) at c = 3 is the simplest non-trivial torus knot; T(5, 2) at c = 5, T(4, 3) at c = 8, T(5, 3) at c = 10, etc. form an ascending tower. Whether tier-c knots correspond to generation-c particles is open work for chapters downstream and follow-up projects.
 
 - **Genus, Alexander polynomial, signature, Jones polynomial.** For *torus knots*, all of these are determined by (m, n) — closed-form expressions in p and q. (For example, g(T(p, q)) = ½(p − 1)(q − 1) for p, q ≥ 1 with gcd = 1.) They are useful for *naming* knots in standard mathematical terms but add no information beyond (m, n) for the framework's purposes.
 
@@ -208,7 +208,7 @@ This is the simplest configuration. All quantum-number labels apply directly. Ch
 
 A *single topological object* that consists of k disjoint parallel loops, each topologically T(m, n). All k loops have the same shape, the same winding, the same chirality. They differ only by their *position* (phase offset) along the cycle they share.
 
-Concretely: imagine a single trefoil T(2, 3). Now imagine k = 3 of them, all with the same (2, 3) winding, but starting at three equally spaced points around the u-cycle (or the w-cycle, or both). Each individual trefoil is shifted by 1/3 of a cycle from the previous one. Together they form a 3-component link T(6, 9).
+Concretely: imagine a single trefoil T(3, 2). Now imagine k = 3 of them, all with the same (3, 2) winding, but starting at three equally spaced points around the u-cycle (or the w-cycle, or both). Each individual trefoil is shifted by 1/3 of a cycle from the previous one. Together they form a 3-component link T(9, 6).
 
 **This is the structure used in [Chapter 8](README.md#chapters) for the multi-phase fractional-charge mechanism.** k phased copies of the same primitive knot give a k-component link, and the closure condition's behavior on it produces 1/k charge per phase. The "fractional charge of quarks" maps onto the number of phase slots in a k-component link.
 
@@ -240,28 +240,28 @@ Chapters 4 and 8 of this project operate on the first two configurations: closur
 
 ## 7. The closure-eligibility partition (preview)
 
-Carry forward the three mode classes of [Chapter 2 §4](02-modes-on-a-sheet.md) into geometric form. Closure operates on the **(m, n) label** under the chirality criterion of [Chapter 1 §10](01-foundation.md): both windings nonzero, the curve is achiral in 3-space, and the wrap-order's R_u is among its topological symmetries. Equivalently in operational form: n | m with both nonzero. Some closure-satisfying modes are topologically the unknot, and some genuinely-knotted modes (in 3-space) fail closure — both worth flagging.
+Carry forward the three mode classes of [Chapter 2 §4](02-modes-on-a-sheet.md) into geometric form. Closure operates on the **(m, n) label** under the chirality criterion of [Chapter 1 §10](01-foundation.md): both windings nonzero, the curve is achiral in 3-space, and the wrap-order's R_u is among its topological symmetries. Equivalently in operational form: m | n with both nonzero. Some closure-satisfying modes are topologically the unknot, and some genuinely-knotted modes (in 3-space) fail closure — both worth flagging.
 
 | Class | (m, n) | Topology in 3-space | Closure status | Role |
 |---|---|---|---|---|
 | Light | (0, 0) | No curve | Trivially fails (no winding) | Massless, no compact-direction structure |
 | Single-axis | (m, 0) or (0, n), exactly one nonzero | Unknot (single cycle wrapped) | **Fails** (one winding zero) | L2-in-L3, candidate structural-neutrality mass-only mode |
-| "Weak knot" diagonal | T(m, 1) for m ≥ 1 | **Unknot** (no genuine knotting in 3-space) | **Satisfies** — n = 1 trivially divides m | Closure-satisfying primitive; MaSt model-F proposes T(2, 1) as a candidate identification with what standard physics calls the electron |
+| "Weak knot" diagonal | T(1, n) for n ≥ 1 | **Unknot** (no genuine knotting in 3-space) | **Satisfies** — m = 1 trivially divides n | Closure-satisfying primitive; MaSt model-F proposes T(1, 2) as a candidate identification with what standard physics calls the electron |
 | Genuine-knot diagonal | (p, q) with both ≥ 2, gcd = 1 | Torus knot in 3-space (trefoil, cinquefoil, etc.) | **Fails** — chirality criterion (i) fails (curve is chirally distinct from its mirror) | Mass-only modes with chirality field, distinct from single-axis and from cancellation neutrality |
-| Multi-component link (closure-satisfying form) | (k·m, k) = k × T(m, 1) for integer k ≥ 2, m ≥ 1 | k-component unlink, each component an unknot | **Satisfies** — n = k divides m = k·m' (where the primitive is T(m, 1)) | Chapter 8's fractional-charge mechanism — k components each carrying 1/k of the link's total charge |
+| Multi-component link (closure-satisfying form) | (k, k·n') = k × T(1, n') for integer k ≥ 2, n' ≥ 1 | k-component unlink, each component an unknot | **Satisfies** — m = k divides n = k·n' (where the primitive is T(1, n')) | Chapter 8's fractional-charge mechanism — k components each carrying 1/k of the link's total charge |
 | Multi-component link (closure-failing form) | (k·m', k·n') with gcd(m', n') = 1 and (m', n') a genuine torus knot | k-component link of genuine-knot primitives | **Fails** — primitive is a genuine torus knot | Mass-only multi-component configuration |
 
 The six rows give a finer breakdown than chapter 2's three mode classes. Three classes are particularly worth distinguishing here:
 
-- **The "weak knot" diagonal class** (T(m, 1)) is topologically the unknot but satisfies the closure rule (n = 1 trivially divides every m). These are the framework's *primitive* charged states. They include T(2, 1) — the canonical primitive that MaSt model-F proposes as a candidate identification with what standard physics calls the electron. **A topologically trivial unknot can realize a charged-particle primitive as substantive as anything in the standard inventory.**
+- **The "weak knot" diagonal class** (T(1, n)) is topologically the unknot but satisfies the closure rule (m = 1 trivially divides every n). These are the framework's *primitive* charged states. They include T(1, 2) — the canonical primitive that MaSt model-F proposes as a candidate identification with what standard physics calls the electron. **A topologically trivial unknot can realize a charged-particle primitive as substantive as anything in the standard inventory.**
 
 - **The single-axis class** (T(m, 0) and T(0, n)) fails closure because one winding is zero — there is no chirality structure to test. Structural-neutrality candidates from chapters 4 and 5.
 
-- **The genuine-knot diagonal class** (T(p, q) with both ≥ 2, gcd = 1) **also fails closure** — the trefoil T(2, 3), cinquefoil T(2, 5), and the rest of the genuine-torus-knot tower carry mass but not observable charge. They are a *separate* mass-only category, distinct from single-axis modes (which fail by missing a winding) — failure here is by *chirality* (the curve is chirally distinct from its mirror in 3-space, so the achirality criterion (i) of the closure rule fails).
+- **The genuine-knot diagonal class** (T(p, q) with both ≥ 2, gcd = 1) **also fails closure** — the trefoil T(3, 2), cinquefoil T(5, 2), and the rest of the genuine-torus-knot tower carry mass but not observable charge. They are a *separate* mass-only category, distinct from single-axis modes (which fail by missing a winding) — failure here is by *chirality* (the curve is chirally distinct from its mirror in 3-space, so the achirality criterion (i) of the closure rule fails).
 
 Genuine torus knots being mass-only is a substantive framework prediction. Standard physics has multiple categories of neutral massive states (neutrinos, neutral mesons, dark matter candidates, the Higgs); the chirality-failing category is a candidate home for some of these. Specific identification is downstream MaSt-correspondence work.
 
-The closure-satisfying inventory is exactly the **T(m, 1) primitives and their k-component repetitions k × T(m, 1)** — the framework's prediction is that every charge-carrying configuration is built from T(m, 1) primitives, either as a singleton or as a multi-link.
+The closure-satisfying inventory is exactly the **T(1, n') primitives and their k-component repetitions k × T(1, n')** — the framework's prediction is that every charge-carrying configuration is built from T(1, n') primitives, either as a singleton or as a multi-link.
 
 This partition is the geometric face of the chapter-4 analysis. Chapter 4 examines the closure-satisfying inventory in detail and revisits the closure-rule's structural consequences.
 

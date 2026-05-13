@@ -1,6 +1,6 @@
 # STATUS — metric-charge open issues
 
-This file tracks items that remain open after the work1 refactor pass (which restructured Chapter 5 around the wrap-order-asymmetric standing-wave construction, swapped the closure-rule convention to n | m with T(m, 1) primitives, and propagated the labeling and framing changes through chapters 1–8 plus README). The items below are remaining open work *after* that refactor.
+This file tracks items that remain open after the work1 refactor pass (which restructured Chapter 5 around the wrap-order-asymmetric standing-wave construction, established the chirality-criterion closure rule with T(1, n') primitives, and propagated the labeling and framing changes through chapters 1–8 plus README). The items below are remaining open work *after* that refactor.
 
 ---
 
@@ -27,7 +27,7 @@ This file tracks items that remain open after the work1 refactor pass (which res
 **Status:** ✅ **Resolved** by the [Ch 8 refactor](08-shear-and-fractional-charge.md) (Sept 2026). The optimization computation is settled within metric-charge's declared scope (linear theory; see [Ch 1 §11](01-foundation.md)'s "nonlinear backreaction deferred" non-assumption). The original framing's "k_opt from energy minimization" was found to be **degenerate at the linearized level** — all k give identical total energy under Configuration Y. This is the framework's honest answer.
 
 **What was established (Ch 8 §§2–6):**
-- The σε product is the structural lever for the closure-satisfying primitive spectrum: m_opt = round(σε) selects the lightest T(m, 1) primitive, with mass exactly M at integer σε (Ch 8 §2.3).
+- The σε product is the structural lever for the closure-satisfying primitive spectrum: n_opt = round(σε) selects the lightest T(1, n) primitive, with mass exactly M at integer σε (Ch 8 §2.3).
 - σ_uw breaks both R_u and R_w chirality reflections by 4σmn/ε in μ², preserving only R_J (Ch 8 §3).
 - The natural particle under shear is the single Bloch mode (Ch 8 §2.2); the σ = 0 R_u-symmetrization breaks down at σ ≠ 0.
 - Multi-link interpretation: Configuration Y (k phased copies, k gauge-potential cross-terms) is the framework's commitment (Ch 8 §5).
@@ -54,7 +54,7 @@ metric-charge sets up the inventory (which (m, n) configurations are closure-sat
 **Why I agree:** A reader could mistake the multi-link entry's "1/k" for a derived prediction of fractional-charge magnitude when the calculation hasn't been done. The "candidate quark" identification is preliminary in a way that should be explicit.
 
 **Scope of fix:**
-- Trace how the framework's (m, n) signs determine charge sign of each component (under the natural-particle R_u-symmetrized construction, this is the sign of the tube-direction wavenumber n).
+- Trace how the framework's (m, n) signs determine charge sign of each component (under the natural-particle R_u-symmetrized construction, this is the sign of the tube-direction wavenumber m).
 - Examine whether different multi-link configurations might naturally give the −1/3 vs +2/3 pattern.
 - Note explicitly where +2/3 charges would come from in the framework (different multi-link configurations, or not predicted?).
 
@@ -97,7 +97,7 @@ The three items below come from the post-refactor pass of [review.md](review.md)
 
 ### TODO-P2 — Replace stale closure-condition quote in Ch 8 §4
 
-**Status:** ✅ **Resolved** by the [Ch 8 refactor](08-shear-and-fractional-charge.md) (Sept 2026). The stale "2π winding on w + standing wave on both u and w" quotation has been replaced with current chirality-criterion phrasing referencing the operational synchronization condition n | m. Ch 8 §4 now reads consistently with Ch 1 §10.
+**Status:** ✅ **Resolved** by the [Ch 8 refactor](08-shear-and-fractional-charge.md) (Sept 2026). The stale "2π winding on w + standing wave on both u and w" quotation has been replaced with current chirality-criterion phrasing referencing the operational synchronization condition m | n. Ch 8 §4 now reads consistently with Ch 1 §10.
 
 **Original issue:** [Chapter 8 §4](08-shear-and-fractional-charge.md)'s opening quoted a pre-chirality-criterion phrasing that no longer appeared in Ch 1 §10 — a stale cross-reference making the chapter's framing inconsistent with the rest of the project.
 

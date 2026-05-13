@@ -95,14 +95,14 @@ $$
 W''(w) = -k_w^2\,W(w), \qquad W(w + L_w) = W(w)
 $$
 
-For each direction independently, the periodicity condition picks out the discrete spectrum:
+For each direction independently, the periodicity condition picks out the discrete spectrum. Following the framework's tuple convention ([Chapter 1 §10](01-foundation.md): m ↔ tube/w, n ↔ ring/u), the wavenumbers are:
 
-<!-- k_u = 2π m / L_u, m ∈ ℤ;  k_w = 2π n / L_w, n ∈ ℤ -->
+<!-- k_u = 2π n / L_u (ring); k_w = 2π m / L_w (tube) -->
 $$
-k_u = \frac{2\pi\,m}{L_u}, \quad m \in \mathbb{Z}; \qquad k_w = \frac{2\pi\,n}{L_w}, \quad n \in \mathbb{Z}
+k_u = \frac{2\pi\,n}{L_u}, \quad n \in \mathbb{Z}; \qquad k_w = \frac{2\pi\,m}{L_w}, \quad m \in \mathbb{Z}
 $$
 
-The mode is labeled by an **integer pair (m, n)**. This is the same kind of integer quantization metric-mass derived for a single compact direction, doubled.
+The mode is labeled by an **integer pair (m, n)** with m the tube-direction winding and n the ring-direction winding. This is the same kind of integer quantization metric-mass derived for a single compact direction, doubled.
 
 **Integers in ℤ, including negatives.** The integers m and n range over all of ℤ, including negative values. On a real-valued φ (per [Chapter 1 §6](01-foundation.md)), each (m, n) and its sign-reflected partner (−m, −n) corresponds to a distinct configuration: the standing-wave magnitude is the same (so the energy density and rest mass per §3 are the same), but the wave's traversal orientation along the closed curve T(m, n) is opposite. Per [Chapter 1 §6.1](01-foundation.md), this is the geometric origin of the sign — a topological property of oriented closed curves on the 2-torus, not an internal field-theoretic structure. Sign-of-(m, n) tracks which direction the wave packet's phase advances; magnitude-of-(m, n) tracks how often it wraps each cycle.
 
@@ -117,7 +117,7 @@ $$
 w_\alpha = \frac{1}{2\pi}\oint_\alpha \mathbf{k}\cdot d\mathbf{x}, \qquad w_\beta = \frac{1}{2\pi}\oint_\beta \mathbf{k}\cdot d\mathbf{x}
 $$
 
-For our Bloch modes with k_u = 2πm/L_u and k_w = 2πn/L_w, these line integrals evaluate exactly to (m, n).
+For our Bloch modes with k_u = 2πn/L_u and k_w = 2πm/L_w, these line integrals evaluate to (m, n) when α is identified with the tube cycle (w_α = m) and β with the ring cycle (w_β = n) — the integer-pair correspondence is preserved as an ordered identification.
 
 So the (m, n) labels of this chapter and the (w_α, w_β) windings of grid-duality are **the same integers**, viewed from two sides. The phase-pattern view (here) and the topological view (grid-duality) agree on the integer-quantization of winding by construction.
 
@@ -129,9 +129,9 @@ This is one of the equivalences flagged in Chapter 1 §10: integer winding numbe
 
 Substituting the quantized (k_u, k_w) into the dispersion relation gives
 
-<!-- ω²/c² = k_S² + (2πm/L_u)² + (2πn/L_w)² -->
+<!-- ω²/c² = k_S² + (2πn/L_u)² + (2πm/L_w)² -->
 $$
-\frac{\omega^2}{c^2} = k_S^2 + \left(\frac{2\pi\,m}{L_u}\right)^2 + \left(\frac{2\pi\,n}{L_w}\right)^2
+\frac{\omega^2}{c^2} = k_S^2 + \left(\frac{2\pi\,n}{L_u}\right)^2 + \left(\frac{2\pi\,m}{L_w}\right)^2
 $$
 
 where we have collected the spatial momentum into a single magnitude k_S² = k_{S₁}² + k_{S₂}².
@@ -142,16 +142,16 @@ This is the 2D-compact extension of metric-mass's ω²/c² = k_S² + (n/R_u)² d
 
 Set k_S = 0 (rest frame). The rest energy is
 
-<!-- E_rest = ℏω = ℏc · √((2πm/L_u)² + (2πn/L_w)²) -->
+<!-- E_rest = ℏω = ℏc · √((2πn/L_u)² + (2πm/L_w)²) -->
 $$
-E_{\text{rest}} = \hbar\omega = \hbar c \,\sqrt{\left(\frac{2\pi\,m}{L_u}\right)^2 + \left(\frac{2\pi\,n}{L_w}\right)^2}
+E_{\text{rest}} = \hbar\omega = \hbar c \,\sqrt{\left(\frac{2\pi\,n}{L_u}\right)^2 + \left(\frac{2\pi\,m}{L_w}\right)^2}
 $$
 
 and the corresponding rest mass m_(m,n) = E_rest / c²:
 
-<!-- m_(m,n) = (ℏ/c) · √((2πm/L_u)² + (2πn/L_w)²) -->
+<!-- m_(m,n) = (ℏ/c) · √((2πn/L_u)² + (2πm/L_w)²) -->
 $$
-m_{(m,n)} = \frac{\hbar}{c}\,\sqrt{\left(\frac{2\pi\,m}{L_u}\right)^2 + \left(\frac{2\pi\,n}{L_w}\right)^2}
+m_{(m,n)} = \frac{\hbar}{c}\,\sqrt{\left(\frac{2\pi\,n}{L_u}\right)^2 + \left(\frac{2\pi\,m}{L_w}\right)^2}
 $$
 
 The mass is parametrized by the integer pair (m, n) — a 2D discrete spectrum, where metric-mass had a 1D spectrum.
@@ -169,9 +169,9 @@ where k_0 is a point in the Brillouin zone with v_g = dω/dk = 0.
 
 For our continuum dispersion, fix (m, n) and treat ω as a function of k_S alone:
 
-<!-- ω(k_S) = c · √(k_S² + (2πm/L_u)² + (2πn/L_w)²) -->
+<!-- ω(k_S) = c · √(k_S² + (2πn/L_u)² + (2πm/L_w)²) -->
 $$
-\omega(k_S) = c\,\sqrt{k_S^2 + \left(\frac{2\pi\,m}{L_u}\right)^2 + \left(\frac{2\pi\,n}{L_w}\right)^2}
+\omega(k_S) = c\,\sqrt{k_S^2 + \left(\frac{2\pi\,n}{L_u}\right)^2 + \left(\frac{2\pi\,m}{L_w}\right)^2}
 $$
 
 This has v_g = dω/dk_S = 0 at k_S = 0 — the rest frame is the band extremum for that (m, n) sector. Expanding to second order around k_S = 0:
@@ -181,11 +181,11 @@ $$
 \omega(k_S) \approx \omega_0 + \frac{c^2}{2\omega_0}\,k_S^2
 $$
 
-with ω_0 = c · √((2πm/L_u)² + (2πn/L_w)²). Reading off m_eff = ℏ²/(d²ω/dk_S²) gives
+with ω_0 = c · √((2πn/L_u)² + (2πm/L_w)²). Reading off m_eff = ℏ²/(d²ω/dk_S²) gives
 
-<!-- m_eff = ℏω_0 / c² = ℏ/c · √((2πm/L_u)² + (2πn/L_w)²) -->
+<!-- m_eff = ℏω_0 / c² = ℏ/c · √((2πn/L_u)² + (2πm/L_w)²) -->
 $$
-m_{\text{eff}} = \frac{\hbar\omega_0}{c^2} = \frac{\hbar}{c}\sqrt{\left(\frac{2\pi\,m}{L_u}\right)^2 + \left(\frac{2\pi\,n}{L_w}\right)^2}
+m_{\text{eff}} = \frac{\hbar\omega_0}{c^2} = \frac{\hbar}{c}\sqrt{\left(\frac{2\pi\,n}{L_u}\right)^2 + \left(\frac{2\pi\,m}{L_w}\right)^2}
 $$
 
 — exactly m_(m,n). The two pictures agree: spacetime-closed-form (here) and lattice-band-extremum (grid-duality §7.4) yield the same rest mass for the bare-metric case treated in this chapter.
@@ -227,15 +227,15 @@ This is the analog of metric-mass's n = 0 zero mode and is structurally what we 
 
 These modes wind in *one* compact direction only:
 
-- **(m, 0):** winds m times around u, zero times around w. Carries mass m · 2πℏ/(L_u c). In topological terms, w_α = m, w_β = 0.
-- **(0, n):** winds zero times around u, n times around w. Carries mass n · 2πℏ/(L_w c). In topological terms, w_α = 0, w_β = n.
+- **(m, 0):** winds m times around w (tube), zero times around u (ring). Carries mass m · 2πℏ/(L_w c). In topological terms, w_α = m, w_β = 0.
+- **(0, n):** winds zero times around w (tube), n times around u (ring). Carries mass n · 2πℏ/(L_u c). In topological terms, w_α = 0, w_β = n.
 
 These are the **L2-embedded-in-L3** modes. They have the topology of an L2 phenomenon (a single winding direction; per [grid-duality §7.4](../grid-duality/07-wrap-promotion-modeling.md), L2 supports mass via band curvature) but live on an L3 substrate (the 2-torus, with both directions geometrically available).
 
 Per Chapter 1 §10's three-view formulation, single-axis modes **fail the closure condition under all three formulations**:
 
 - *Chirality:* with one winding zero, there is no chirality structure on the curve to test — the achirality criterion (i) of Ch 1 §10 is vacuous, and the wrap-order's R_u-symmetrization reduces to metric-mass's 1D-compact standing wave (no EM cross-term sourced).
-- *Synchronization:* the operational test n | m is undefined when one of m, n is zero — single-axis modes are excluded by the "both nonzero" requirement of the rule.
+- *Synchronization:* the operational test m | n is undefined when one of m, n is zero — single-axis modes are excluded by the "both nonzero" requirement of the rule.
 - *Metric-side (chapter 5):* the natural particle (R_u-symmetrized) sources only the diagonal stress-energy and no spacetime-extended-to-compact off-diagonal — pure mass, no gauge potential.
 
 Single-axis modes therefore produce **mass without observable charge**. They are candidate structural origins of *non-charged massive states* on a single sheet — a geometric, not pair-cancellation, mechanism for "massive but neutral." Standard physics has multiple non-charged massive categories (neutrinos, dark matter, certain neutral hadrons, the Higgs); which (if any) of these correspond to the framework's single-axis modes is open MaSt-correspondence work. Chapter 4 will interrogate the closure-failing modes further.
@@ -264,8 +264,8 @@ The standard quantum-mechanical identification p = ℏk gives:
 |---|---|---|
 | Energy | E = ℏω | continuous |
 | Spatial momentum | p_S = ℏ k_S (in the (S₁, S₂) plane) | continuous |
-| u-direction momentum | p_u = (2π ℏ/L_u) m | discrete, signed |
-| w-direction momentum | p_w = (2π ℏ/L_w) n | discrete, signed |
+| u-direction momentum | p_u = (2π ℏ/L_u) n | discrete, signed |
+| w-direction momentum | p_w = (2π ℏ/L_w) m | discrete, signed |
 
 The compact-direction momenta p_u and p_w carry the sign of (m, n). Per [Chapter 1 §6.1](01-foundation.md), this sign reflects the *traversal orientation* of the wave packet along the closed curve T(m, n) — a geometric label, not an internal field structure. The compact momenta are *internal* in the sense that they do not correspond to motion in observable (S₁, S₂, t) spacetime: the wave packet is going "around" the compact direction, not propagating along S.
 
@@ -302,9 +302,9 @@ For our Bloch modes the integrand is constant along each cycle (k is uniform in 
 
 Translating between the two notations:
 
-<!-- p_u = ℏ · k_u = ℏ · (2π/L_u) · w_α -->
+<!-- p_u = ℏ · k_u = ℏ · (2π/L_u) · w_β; p_w = ℏ · k_w = ℏ · (2π/L_w) · w_α -->
 $$
-p_u = \hbar\,k_u = \hbar\cdot\frac{2\pi}{L_u}\cdot w_\alpha, \qquad p_w = \hbar\,k_w = \hbar\cdot\frac{2\pi}{L_w}\cdot w_\beta
+p_u = \hbar\,k_u = \hbar\cdot\frac{2\pi}{L_u}\cdot w_\beta, \qquad p_w = \hbar\,k_w = \hbar\cdot\frac{2\pi}{L_w}\cdot w_\alpha
 $$
 
 The compact-direction momenta in spacetime units (this chapter) and the topological winding numbers (grid-duality) are the same quantity, expressed two different ways.

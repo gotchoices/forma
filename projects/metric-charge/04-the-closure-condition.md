@@ -38,7 +38,7 @@ The chapter is **structural rather than computational**: the math is mostly abou
 >
 > (i) the closed curve T(m, n) is **achiral** in 3-space — its chirality reflections are topological symmetries of the curve up to ambient isotopy — *and*
 >
-> (ii) the wrap-order's ring-direction reflection R_u (m ↔ −m) is among those topological symmetries.
+> (ii) the wrap-order's ring-direction reflection R_u (n ↔ −n) is among those topological symmetries.
 
 The chirality view is the framework's *primary* explanation. It ties directly to chapter 5's derivation: under the wrap-order-asymmetric standing-wave construction, R_u (acting on the ring direction) is what produces the single surviving cross-term, and the chirality criterion is exactly the condition under which R_u can be enforced as a particle symmetry.
 
@@ -46,21 +46,21 @@ The chirality view is the framework's *primary* explanation. It ties directly to
 
 The chirality criterion has a clean operational test in terms of phase synchronization during closed-curve traversal:
 
-> **Synchronization test.** Parametrize the traversal of T(m, n) by s ∈ [0, 1] with u(s) = m·s·L_u and w(s) = n·s·L_w. The tube phase crosses zero (modulo L_w) at s = j/n for j = 0, 1, ..., n. At each such s, the ring is at u(s) = (m·j/n)·L_u. For the ring to also cross zero (modulo L_u) at every such s, we need m·j/n to be an integer for every j.
+> **Synchronization test.** Parametrize the traversal of T(m, n) by s ∈ [0, 1] with u(s) = n·s·L_u (ring) and w(s) = m·s·L_w (tube). The tube phase crosses zero (modulo L_w) at s = j/m for j = 0, 1, ..., m. At each such s, the ring is at u(s) = (n·j/m)·L_u. For the ring to also cross zero (modulo L_u) at every such s, we need n·j/m to be an integer for every j.
 >
-> **This holds iff n divides m (n | m), with both m and n nonzero.**
+> **This holds iff m divides n (m | n), with both m and n nonzero.**
 
-The synchronization test selects the same set of (m, n) as the chirality criterion. It is operationally simpler — given a specific (m, n) integer pair, just check whether n | m — but the criterion's *meaning* is the chirality view.
+The synchronization test selects the same set of (m, n) as the chirality criterion. It is operationally simpler — given a specific (m, n) integer pair, just check whether m | n — but the criterion's *meaning* is the chirality view.
 
 ### 1.3 Topological view
 
-> **Topological form.** T(m, n) closure-satisfies iff its gcd-reduced primitive is **T(m', 1)** for some integer m' ≥ 1.
+> **Topological form.** T(m, n) closure-satisfies iff its gcd-reduced primitive is **T(1, n')** for some integer n' ≥ 1.
 
-With n | m, write m = c·n for some positive integer c. Then T(m, n) = T(c·n, n) has gcd(m, n) = n and decomposes into **n disjoint copies** of the primitive T(c, 1). So:
+With m | n, write n = c·m for some positive integer c. Then T(m, n) = T(m, c·m) has gcd(m, n) = m and decomposes into **m disjoint copies** of the primitive T(1, c). So:
 
-> *Closure-satisfying configurations are exactly the T(m, 1) primitives and their k-component repetitions k × T(m, 1).*
+> *Closure-satisfying configurations are exactly the T(1, n') primitives and their k-component repetitions k × T(1, n').*
 
-The three views are mathematically equivalent. The closure-satisfying inventory consists entirely of T(m, 1) primitives and their multi-component repetitions; nothing else.
+The three views are mathematically equivalent. The closure-satisfying inventory consists entirely of T(1, n') primitives and their multi-component repetitions; nothing else.
 
 ### 1.4 Metric-side view (chapter 5)
 
@@ -72,24 +72,24 @@ The four views (chirality, synchronization, topological, metric-side) are all mu
 
 ## 2. The closure-satisfying inventory
 
-The closure rule is a single atomic requirement at the operational level: n | m with both nonzero (equivalently, the chirality criterion (i)+(ii) of §1.1). The closure-satisfying inventory at the linearized wave-equation level:
+The closure rule is a single atomic requirement at the operational level: m | n with both nonzero (equivalently, the chirality criterion (i)+(ii) of §1.1). The closure-satisfying inventory at the linearized wave-equation level:
 
 | (m, n) form | Topology in 3-space | Closure status |
 |---|---|---|
 | Light (0, 0) | No curve | Trivially fails (no winding) |
 | Single-axis (m, 0) or (0, n) | Unknot (one cycle wrapped) | Fails (one winding zero — no chirality structure to test) |
-| T(m, 1) for m ≥ 1 | Unknot in 3-space | **Satisfies** — n = 1 trivially divides any m |
+| T(1, n) for n ≥ 1 | Unknot in 3-space | **Satisfies** — m = 1 trivially divides any n |
 | Genuine torus knot T(p, q), p, q ≥ 2, gcd(p, q) = 1 | Genuine torus knot in 3-space | **Fails** — chirality criterion (i) fails (curve is chirally distinct from its mirror) |
-| Multi-component link T(k·m', k) for k ≥ 2, m' ≥ 1 | k-component unlink with primitive T(m', 1) | **Satisfies** — n = k divides m = k·m' |
+| Multi-component link T(k, k·n') for k ≥ 2, n' ≥ 1 | k-component unlink with primitive T(1, n') | **Satisfies** — m = k divides n = k·n' |
 | Multi-component link T(k·p, k·q) with gcd(p, q) = 1 and p, q ≥ 2 | k-component link with primitive a genuine torus knot | **Fails** — primitive is itself closure-failing |
 
 Two structural observations follow.
 
-**(a) The closure-satisfying inventory is built from T(m, 1) primitives.** Every closure-satisfying configuration is either a single T(m, 1) primitive or a k-component repetition k × T(m, 1). Genuine torus knots and their multi-component counterparts never satisfy closure. The framework's prediction: charged matter is built from T(m, 1) primitives, period.
+**(a) The closure-satisfying inventory is built from T(1, n') primitives.** Every closure-satisfying configuration is either a single T(1, n') primitive or a k-component repetition k × T(1, n'). Genuine torus knots and their multi-component counterparts never satisfy closure. The framework's prediction: charged matter is built from T(1, n') primitives, period.
 
 **(b) Genuine torus knots are a *separate* mass-only category from single-axis modes.** Single-axis modes fail closure because one winding is zero, leaving no chirality structure to test. Genuine torus knots fail closure because they are chirally distinct from their mirrors in 3-space — the achirality criterion (i) of §1.1 fails. These are two structurally distinct mass-only mechanisms, alongside the cancellation neutrality of [Chapter 6 §4](06-handedness-and-pairs.md). All three produce massive but EM-neutral states; the framework distinguishes them by mechanism.
 
-The closure rule is **operationally precise**: any (m, n) can be checked against n | m. The chirality criterion is its structural meaning.
+The closure rule is **operationally precise**: any (m, n) can be checked against m | n. The chirality criterion is its structural meaning.
 
 ---
 
@@ -102,91 +102,91 @@ $$
 \varphi(t, u, w) = T(t)\cdot U(u) \cdot W(w)
 $$
 
-with U(u) ∝ cos(2π m u/L_u) and W(w) ∝ cos(2π n w/L_w) (or the analogous sin / complex-exponential basis).
+with U(u) ∝ cos(2π n u/L_u) (ring) and W(w) ∝ cos(2π m w/L_w) (tube) (or the analogous sin / complex-exponential basis), following the convention that n labels the ring winding and m labels the tube winding.
 
 Along the closed curve T(m, n) parametrized by s ∈ [0, 1], the wave's spatial pattern on the curve is:
 
-<!-- φ_curve(s) ∝ cos(2π m² s) · cos(2π n² s) -->
+<!-- φ_curve(s) ∝ cos(2π n² s) · cos(2π m² s) -->
 $$
-\varphi(\text{curve}; s) \;\propto\; \cos\!\left(2\pi\,m\,(m\,s)\right) \cdot \cos\!\left(2\pi\,n\,(n\,s)\right) = \cos(2\pi\,m^2\,s)\cdot\cos(2\pi\,n^2\,s)
+\varphi(\text{curve}; s) \;\propto\; \cos\!\left(2\pi\,n\,(n\,s)\right) \cdot \cos\!\left(2\pi\,m\,(m\,s)\right) = \cos(2\pi\,n^2\,s)\cdot\cos(2\pi\,m^2\,s)
 $$
 
-(Here m and n appear in the *winding* direction of the parametrization, so u(s) = m·s·L_u contributes a factor cos(2π m · m s) = cos(2π m² s), and similarly for w.)
+(Here m and n appear in the *winding* direction of the parametrization, so u(s) = n·s·L_u contributes a factor cos(2π n · n s) = cos(2π n² s), and similarly w(s) = m·s·L_w contributes cos(2π m² s).)
 
 The closure-relevant question: at the s-values where the *tube* factor W has a zero, does the *ring* factor U also have a zero?
 
-W(w(s)) = 0 when 2π n² s = π/2 + l·π for integer l, i.e., when n² s = (2l+1)/4. *Tube zero crossings of the carrier wave* on the curve happen at these s-values.
+W(w(s)) = 0 when 2π m² s = π/2 + l·π for integer l, i.e., when m² s = (2l+1)/4. *Tube zero crossings of the carrier wave* on the curve happen at these s-values.
 
-For U to simultaneously be zero, we need 2π m² s = π/2 + k·π for some integer k, i.e., m² s = (2k+1)/4 with the same s.
+For U to simultaneously be zero, we need 2π n² s = π/2 + k·π for some integer k, i.e., n² s = (2k+1)/4 with the same s.
 
-Solving for the rational s = (2l+1)/(4n²) to also satisfy m² s = (2k+1)/4: requires m²(2l+1) / n² = 2k+1, satisfiable for integer k iff n² divides m² for all l — equivalently, **n | m**.
+Solving for the rational s = (2l+1)/(4m²) to also satisfy n² s = (2k+1)/4: requires n²(2l+1) / m² = 2k+1, satisfiable for integer k iff m² divides n² for all l — equivalently, **m | n**.
 
-So the wave-level synchronization analysis gives the same condition as the geometric tube/ring-zero-crossing analysis from §1.2: **n | m**. The two analyses agree.
+So the wave-level synchronization analysis gives the same condition as the geometric tube/ring-zero-crossing analysis from §1.2: **m | n**. The two analyses agree.
 
-For an alternative wave basis (sin instead of cos, or a phase-shifted cos), the condition is the same — synchronization is a property of the wave's *winding* on the curve, not of any specific phase choice. There is no "centered alignment" requirement separate from n | m; the synchronization test depends only on the integer pair (m, n), not on continuous phase parameters.
+For an alternative wave basis (sin instead of cos, or a phase-shifted cos), the condition is the same — synchronization is a property of the wave's *winding* on the curve, not of any specific phase choice. There is no "centered alignment" requirement separate from m | n; the synchronization test depends only on the integer pair (m, n), not on continuous phase parameters.
 
 ---
 
 ## 4. Which (m, n) satisfy closure
 
-Walk through the configurations from [Chapter 3 §7](03-knots-on-the-torus.md), checking each against the chirality criterion (i)+(ii) of §1.1, with the synchronization test n | m as the operational equivalent.
+Walk through the configurations from [Chapter 3 §7](03-knots-on-the-torus.md), checking each against the chirality criterion (i)+(ii) of §1.1, with the synchronization test m | n as the operational equivalent.
 
-### 4.1 T(m, 1) primitives — closure-satisfying
+### 4.1 T(1, n) primitives — closure-satisfying
 
-Modes with n = 1. Topologically, all such curves are the **unknot** in 3-space (per [Chapter 3 §2](03-knots-on-the-torus.md)). The unknot is *achiral* — isotopic to its mirror image — so criterion (i) of §1.1 holds. The wrap-order's R_u is among its topological symmetries, so criterion (ii) holds automatically. Operationally: **n = 1 trivially divides any m**.
+Modes with m = 1. Topologically, all such curves are the **unknot** in 3-space (per [Chapter 3 §2](03-knots-on-the-torus.md)). The unknot is *achiral* — isotopic to its mirror image — so criterion (i) of §1.1 holds. The wrap-order's R_u is among its topological symmetries, so criterion (ii) holds automatically. Operationally: **m = 1 trivially divides any n**.
 
 Notable members:
 
-- **T(2, 1)**: a closure-satisfying primitive. MaSt model-F has independently proposed identifying this mode with what standard physics calls the electron. The metric-charge framework here treats that proposal as a candidate correspondence — a reference target to compare results against — not an axiomatic input. The framework does not commit to a specific spin-derivation for this mode; observed pattern is that the 2-torus substrate appears to carry spin-1/2-like structure (per [Chapter 3 §5](03-knots-on-the-torus.md)), with the geometric derivation of spin from substrate dimensionality left as open work. Whether the framework's predictions for this mode match what standard physics calls "the electron" under detailed property comparison is downstream MaSt-correspondence work.
-- **T(3, 1), T(4, 1), ...**: closure-satisfying primitives with progressively larger m. Heavier than T(2, 1) by the rest-mass formula of [Chapter 2 §3](02-modes-on-a-sheet.md). Candidate states that *might* correspond to what standard physics calls further-generation leptons; the identification is open.
+- **T(1, 2)**: a closure-satisfying primitive. MaSt model-F has independently proposed identifying this mode with what standard physics calls the electron. The metric-charge framework here treats that proposal as a candidate correspondence — a reference target to compare results against — not an axiomatic input. The framework does not commit to a specific spin-derivation for this mode; observed pattern is that the 2-torus substrate appears to carry spin-1/2-like structure (per [Chapter 3 §5](03-knots-on-the-torus.md)), with the geometric derivation of spin from substrate dimensionality left as open work. Whether the framework's predictions for this mode match what standard physics calls "the electron" under detailed property comparison is downstream MaSt-correspondence work.
+- **T(1, 3), T(1, 4), ...**: closure-satisfying primitives with progressively larger n. Heavier than T(1, 2) by the rest-mass formula of [Chapter 2 §3](02-modes-on-a-sheet.md). Candidate states that *might* correspond to what standard physics calls further-generation leptons; the identification is open.
 
-These are the framework's primitive charged states. Every closure-satisfying configuration is built from T(m, 1) primitives — either as a singleton (this section) or as a multi-component repetition (§4.3).
+These are the framework's primitive charged states. Every closure-satisfying configuration is built from T(1, n') primitives — either as a singleton (this section) or as a multi-component repetition (§4.3).
 
 ### 4.2 Genuine torus knots T(p, q), p, q ≥ 2, gcd(p, q) = 1 — closure-failing
 
 Modes with both windings at least 2 and no common factor. Topologically these are genuine torus knots in 3-space, with non-trivial crossing number, and **chirally distinct from their mirrors** — T(p, q) and T(p, −q) are different knots, not isotopic to each other under orientation-preserving deformations.
 
-Under the chirality criterion (§1.1): the chirality reflections of a genuine torus knot are *not* topological symmetries of the curve, so criterion (i) fails. **Closure fails for every genuine torus knot.** Operationally (the synchronization test): n = q does not divide m = p (since gcd(p, q) = 1 and p ≥ 2 forces q ∤ p in general). The two views agree.
+Under the chirality criterion (§1.1): the chirality reflections of a genuine torus knot are *not* topological symmetries of the curve, so criterion (i) fails. **Closure fails for every genuine torus knot.** Operationally (the synchronization test): m = p does not divide n = q (since gcd(p, q) = 1 and p ≥ 2 forces p ∤ q in general). The two views agree.
 
 Examples:
 
-- **T(2, 3) trefoil**: 3 ∤ 2, fails synchronization; chirally distinct from its mirror T(2, −3), so criterion (i) fails. Mass-only.
-- **T(2, 5) cinquefoil**: 5 ∤ 2, fails. Mass-only.
-- **T(3, 4)**: 4 ∤ 3, fails. Mass-only.
-- **T(3, 5), T(2, 7), T(3, 7), T(4, 5), ...**: all genuine torus knots are chirally distinct from their mirrors — closure-failing. Mass-only.
+- **T(3, 2) trefoil**: 3 ∤ 2, fails synchronization; chirally distinct from its mirror T(3, −2), so criterion (i) fails. Mass-only.
+- **T(5, 2) cinquefoil**: 5 ∤ 2, fails. Mass-only.
+- **T(4, 3)**: 4 ∤ 3, fails. Mass-only.
+- **T(5, 3), T(7, 2), T(7, 3), T(5, 4), ...**: all genuine torus knots are chirally distinct from their mirrors — closure-failing. Mass-only.
 
 Genuine torus knots are a **separate mass-only category** from single-axis modes, with a different structural reason for failure: chirality is non-degenerate (genuine torus knots are not isotopic to their mirrors), so the wrap-order's R_u cannot be enforced as a particle symmetry without combining topologically distinct configurations. Per chapter 5's metric-side analysis (chapter 5 §6), the natural particle on a genuine torus knot falls back to the joint-reversal R_J symmetrization — yielding a mass-only configuration with no spacetime-extended-to-compact gauge potential, plus a chirality-encoded compact-compact cross-term that records which chirality of knot is present.
 
-This is a substantive framework prediction: **the entire genuine-torus-knot tower** (T(2, 3), T(2, 5), T(3, 4), T(3, 5), T(2, 7), ...) **carries mass but no observable EM charge.** Whether any of these correspond to standard physics' neutral massive states (neutrinos, neutral mesons, dark-matter candidates, the Higgs) is downstream MaSt-correspondence work. The framework provides multiple structural-neutrality mechanisms; standard physics has multiple categories of neutral massive states; how they map is open.
+This is a substantive framework prediction: **the entire genuine-torus-knot tower** (T(3, 2), T(5, 2), T(4, 3), T(5, 3), T(7, 2), ...) **carries mass but no observable EM charge.** Whether any of these correspond to standard physics' neutral massive states (neutrinos, neutral mesons, dark-matter candidates, the Higgs) is downstream MaSt-correspondence work. The framework provides multiple structural-neutrality mechanisms; standard physics has multiple categories of neutral massive states; how they map is open.
 
-**The tower is large; what selects which members populate.** Standard physics observes only a small number of stable neutral massive species; the framework's tower (T(2, 3), T(2, 5), T(3, 4), T(3, 5), T(2, 7), T(3, 7), T(4, 5), …) is much larger. This is not a contradiction — it is a distinction between what the framework *predicts as possible* (every closure-failing genuine torus knot configuration is structurally allowed) and what *gets populated* (which depends on energetics and stability mechanisms not derivable at this project's linear-theory scope). Candidate selection mechanisms operating on the tower:
+**The tower is large; what selects which members populate.** Standard physics observes only a small number of stable neutral massive species; the framework's tower (T(3, 2), T(5, 2), T(4, 3), T(5, 3), T(7, 2), T(7, 3), T(5, 4), …) is much larger. This is not a contradiction — it is a distinction between what the framework *predicts as possible* (every closure-failing genuine torus knot configuration is structurally allowed) and what *gets populated* (which depends on energetics and stability mechanisms not derivable at this project's linear-theory scope). Candidate selection mechanisms operating on the tower:
 
-- **Mass cost.** Heavier modes (larger √((m/ε)² + n²) in the dispersion of [Chapter 2 §3](02-modes-on-a-sheet.md)) are energetically more costly to populate; thermal/equilibrium occupation suppresses high-(m, n) members.
+- **Mass cost.** Heavier modes (larger √((n/ε)² + m²) in the dispersion of [Chapter 2 §3](02-modes-on-a-sheet.md)) are energetically more costly to populate; thermal/equilibrium occupation suppresses high-(m, n) members.
 - **Aspect-ratio dependence.** Per [Chapter 7](07-aspect-ratio-and-character.md), the relative mass of (m, n) modes shifts with ε; at extreme ε, only specific (m, n) values are competitive at low energy, so the tower is not uniformly populated even before energetics is considered.
-- **Multi-knot decay.** Heavier members of the tower may decay into multi-link configurations of T(m, 1) primitives via energetics not captured at this project's linear-theory level — forwarded to [metric-binding](../metric-binding/) for the multi-knot energetics treatment.
+- **Multi-knot decay.** Heavier members of the tower may decay into multi-link configurations of T(1, n') primitives via energetics not captured at this project's linear-theory level — forwarded to [metric-binding](../metric-binding/) for the multi-knot energetics treatment.
 - **Predictive content distinction.** What the framework predicts is *which configurations are possible* under the closure rule; what is *populated* (and how stable each is) depends on energetics outside metric-charge's scope.
 
 The framework's commitment is therefore: the tower is part of the predicted structural inventory; specific selection among its members is downstream work. This is consistent with the framework being a structural classifier of closure-eligible configurations rather than a populated-state predictor.
 
-### 4.3 Multi-component links — closure-satisfying iff primitive is T(m, 1)
+### 4.3 Multi-component links — closure-satisfying iff primitive is T(1, n')
 
 Multi-component links T(k·m', k·n') decompose into k disjoint copies of the primitive T(m', n') with gcd(m', n') = 1. Two cases:
 
-**4.3a Closure-satisfying: T(k·m', k) = k × T(m', 1).** When the primitive is T(m', 1) — i.e., n' = 1 — the multi-link has total winding (k·m', k) with n = k dividing m = k·m'. Each component is achiral (an unknot), so the chirality criterion holds for the link. Closure is satisfied.
+**4.3a Closure-satisfying: T(k, k·n') = k × T(1, n').** When the primitive is T(1, n') — i.e., m' = 1 — the multi-link has total winding (k, k·n') with m = k dividing n = k·n'. Each component is achiral (an unknot), so the chirality criterion holds for the link. Closure is satisfied.
 
-These are the framework's **multi-link charged states**: **k phased copies of a T(m', 1) primitive** (the framework's Configuration Y reading — see [Ch 8 §5](08-shear-and-fractional-charge.md) for the X-vs-Y distinction and the commitment), with each component carrying 1/k of the link's total charge. Under Configuration Y, the link sources k surviving h_μw cross-terms — one per component — not a single cross-term for the link as a whole. The per-component fractional-charge structure follows from the link's geometry plus integer total quantization, consistent with [grid-duality §7.5.4](../grid-duality/07-wrap-promotion-modeling.md) (the link's integer total is preserved; the 1/k per component is a *fractional association* across the k structural components, not a fractional value of a single quantity).
+These are the framework's **multi-link charged states**: **k phased copies of a T(1, n') primitive** (the framework's Configuration Y reading — see [Ch 8 §5](08-shear-and-fractional-charge.md) for the X-vs-Y distinction and the commitment), with each component carrying 1/k of the link's total charge. Under Configuration Y, the link sources k surviving h_μw cross-terms — one per component — not a single cross-term for the link as a whole. The per-component fractional-charge structure follows from the link's geometry plus integer total quantization, consistent with [grid-duality §7.5.4](../grid-duality/07-wrap-promotion-modeling.md) (the link's integer total is preserved; the 1/k per component is a *fractional association* across the k structural components, not a fractional value of a single quantity).
 
 Examples:
 
-- **T(6, 3) = 3 × T(2, 1)**: three phased copies of the (2, 1) primitive. Each component carries 1/3 of the primitive's charge. *If* [Chapter 8](08-shear-and-fractional-charge.md)'s k-optimization yields k_opt = 3, this configuration is the candidate identification with what standard physics calls a quark (specifically, a flavor family proportional to model-F's proposed T(2, 1) ↔ electron correspondence). Whether k_opt = 3 is the actual optimization result is the chapter-8 question, not a presupposition here.
-- **T(4, 2) = 2 × T(2, 1)**: two phased copies of T(2, 1). Each carries 1/2 of the primitive's charge. Another closure-satisfying multi-link; whether T(4, 2) or T(6, 3) (or some other k × T(m', 1)) is energetically favored under shear is the chapter-8 optimization question. The framework does not pre-commit to which k matches observed structure.
-- **T(9, 3) = 3 × T(3, 1)**: three phased copies of the heavier T(3, 1) primitive. Same k = 3 structure as T(6, 3) but with a heavier primitive; one of the candidate configurations the chapter-8 optimization examines across (k, m').
+- **T(3, 6) = 3 × T(1, 2)**: three phased copies of the (1, 2) primitive. Each component carries 1/3 of the primitive's charge. *If* [Chapter 8](08-shear-and-fractional-charge.md)'s k-optimization yields k_opt = 3, this configuration is the candidate identification with what standard physics calls a quark (specifically, a flavor family proportional to model-F's proposed T(1, 2) ↔ electron correspondence). Whether k_opt = 3 is the actual optimization result is the chapter-8 question, not a presupposition here.
+- **T(2, 4) = 2 × T(1, 2)**: two phased copies of T(1, 2). Each carries 1/2 of the primitive's charge. Another closure-satisfying multi-link; whether T(2, 4) or T(3, 6) (or some other k × T(1, n')) is energetically favored under shear is the chapter-8 optimization question. The framework does not pre-commit to which k matches observed structure.
+- **T(3, 9) = 3 × T(1, 3)**: three phased copies of the heavier T(1, 3) primitive. Same k = 3 structure as T(3, 6) but with a heavier primitive; one of the candidate configurations the chapter-8 optimization examines across (k, n').
 
-**4.3b Closure-failing: k × T(p, q) with primitive a genuine torus knot.** When the primitive is a genuine torus knot (p, q ≥ 2, gcd = 1), the multi-link has total winding (k·p, k·q). Each component is chirally distinct from its mirror, so the chirality criterion fails for the link. Operationally: n = k·q does not divide m = k·p (since q ∤ p with gcd = 1 and p, q ≥ 2). Closure **fails**.
+**4.3b Closure-failing: k × T(p, q) with primitive a genuine torus knot.** When the primitive is a genuine torus knot (p, q ≥ 2, gcd = 1), the multi-link has total winding (k·p, k·q). Each component is chirally distinct from its mirror, so the chirality criterion fails for the link. Operationally: m = k·p does not divide n = k·q (since p ∤ q with gcd = 1 and p, q ≥ 2). Closure **fails**.
 
-Example: T(6, 4) = 2 × T(3, 2). Two phased copies of a trefoil-class knot. The link inherits its primitive's chirality non-degeneracy: 4 ∤ 6 (since 6/4 = 1.5). Mass-only.
+Example: T(4, 6) = 2 × T(2, 3). Two phased copies of a trefoil-class knot. The link inherits its primitive's chirality non-degeneracy: 4 ∤ 6 (since 6/4 = 1.5). Mass-only.
 
-So every multi-link configuration is closure-satisfying iff its primitive is T(m, 1). Multi-links with genuine-torus-knot primitives are mass-only, in the same category as single genuine torus knots from §4.2.
+So every multi-link configuration is closure-satisfying iff its primitive is T(1, n'). Multi-links with genuine-torus-knot primitives are mass-only, in the same category as single genuine torus knots from §4.2.
 
 ### 4.4 Summary table
 
@@ -196,10 +196,10 @@ The full inventory at the linearized wave-equation level:
 |---|---|---|---|
 | Light (0, 0) | Fails | — | photon |
 | Single-axis (m, 0), (0, n) | Fails (one winding zero) | — | candidate neutral massive state |
-| T(2, 1) primitive | ✓ | 1 | candidate electron (MaSt model-F reference target) |
-| T(3, 1), T(4, 1), … primitives | ✓ | 1 | candidate further leptons; not yet specifically proposed |
-| Genuine torus knot T(2, 3), T(2, 5), T(3, 4), … | **Fails (chirality criterion)** | — | candidate neutral massive state — distinct from single-axis category |
-| Multi-link T(k·m', k) = k × T(m', 1), k ≥ 2 | ✓ (k-fold) | 1/k | candidate fractional-charge composite — specific k_opt set by [chapter 8](08-shear-and-fractional-charge.md)'s optimization; *if* k_opt = 3 emerges, the T(6, 3) = 3 × T(2, 1) case matches standard physics' quark structure |
+| T(1, 2) primitive | ✓ | 1 | candidate electron (MaSt model-F reference target) |
+| T(1, 3), T(1, 4), … primitives | ✓ | 1 | candidate further leptons; not yet specifically proposed |
+| Genuine torus knot T(3, 2), T(5, 2), T(4, 3), … | **Fails (chirality criterion)** | — | candidate neutral massive state — distinct from single-axis category |
+| Multi-link T(k, k·n') = k × T(1, n'), k ≥ 2 | ✓ (k-fold) | 1/k | candidate fractional-charge composite — specific k_opt set by [chapter 8](08-shear-and-fractional-charge.md)'s optimization; *if* k_opt = 3 emerges, the T(3, 6) = 3 × T(1, 2) case matches standard physics' quark structure |
 | Multi-link with genuine-knot primitive | **Fails (chirality criterion)** | — | candidate neutral massive state — chirality-non-degenerate category |
 
 The external-identifications column is **exploratory and not an input to this project's derivations**. Chapter 4 establishes only the closure-satisfaction structure; whether each predicted state corresponds to a particle in the standard-physics inventory requires:
@@ -211,7 +211,7 @@ The external-identifications column is **exploratory and not an input to this pr
 
 The framework's job in this chapter is to **derive the inventory of states the closure condition produces**. Identification is a comparison task that happens *after* the framework has predicted its own properties.
 
-**Note on category richness.** The framework has *three* mass-only categories (single-axis, genuine-torus-knot via chirality non-degeneracy, cancellation-pair) and *two* charge-carrying categories (T(m, 1) primitives, k × T(m, 1) multi-links). Standard physics has multiple categories of charged particles (leptons, quarks, charged hadrons) and multiple categories of neutral massive states (neutrinos, neutral mesons, dark matter candidates, Higgs). The structural-shape correspondence is suggestive — the framework may have richer structural distinctions than a simpler "charged vs neutral" partition — but quantitative correspondence is downstream work.
+**Note on category richness.** The framework has *three* mass-only categories (single-axis, genuine-torus-knot via chirality non-degeneracy, cancellation-pair) and *two* charge-carrying categories (T(1, n') primitives, k × T(1, n') multi-links). Standard physics has multiple categories of charged particles (leptons, quarks, charged hadrons) and multiple categories of neutral massive states (neutrinos, neutral mesons, dark matter candidates, Higgs). The structural-shape correspondence is suggestive — the framework may have richer structural distinctions than a simpler "charged vs neutral" partition — but quantitative correspondence is downstream work.
 
 ---
 
@@ -221,9 +221,9 @@ The framework's job in this chapter is to **derive the inventory of states the c
 
 ### 5.1 Variant — opposite wrap-order
 
-The standard rule treats u as ring and w as tube (the convention adopted in [Chapter 1 §10](01-foundation.md)). The mirror variant flips this: u as tube, w as ring. Closure under the mirror variant requires **m | n** instead of n | m.
+The standard rule treats u as ring and w as tube (the convention adopted in [Chapter 1 §10](01-foundation.md)). The mirror variant flips this: u as tube, w as ring. Closure under the mirror variant requires **n | m** instead of m | n.
 
-**Topologically** this gives the same set of particles modulo cycle-swap: T(p, q) under "m | n" is the same as T(q, p) under "n | m." But the two are physically distinct in metric-charge per [Chapter 3 §3.2](03-knots-on-the-torus.md), since the (u, w) ↔ (w, u) symmetry is broken by the wrap-order convention and the downstream conventions that inherit from it.
+**Topologically** this gives the same set of particles modulo cycle-swap: T(p, q) under "n | m" is the same as T(q, p) under "m | n." But the two are physically distinct in metric-charge per [Chapter 3 §3.2](03-knots-on-the-torus.md), since the (u, w) ↔ (w, u) symmetry is broken by the wrap-order convention and the downstream conventions that inherit from it.
 
 The variant is just the alternative wrap-order convention. As discussed in Ch 1 §10, whether the convention's match to observation is genuine or is itself a labeling choice the math fixes for self-consistency is open work for [grid-duality §8](../grid-duality/08-where-alpha-appears.md).
 
@@ -257,11 +257,11 @@ Under the chirality closure rule, the predicted inventory partitions into two to
 
 ### 6.1 Charged states (closure-satisfying)
 
-- **T(m, 1) primitives** — single charged particles built from the simplest closure-satisfying form (n = 1 trivially divides any m, achiral curve in 3-space). Topologically unknots. T(2, 1) is a candidate electron identification (MaSt model-F reference target); T(3, 1), T(4, 1), ... are candidate further generations.
+- **T(1, n') primitives** — single charged particles built from the simplest closure-satisfying form (m = 1 trivially divides any n, achiral curve in 3-space). Topologically unknots. T(1, 2) is a candidate electron identification (MaSt model-F reference target); T(1, 3), T(1, 4), ... are candidate further generations.
 
-- **Multi-link T(k·m', k) configurations = k × T(m', 1)** — k phased copies of a T(m', 1) primitive, with each component carrying 1/k of the link's total charge. T(6, 3) = 3 × T(2, 1) at k = 3 is a candidate quark identification (subject to chapter 8's k-optimization confirming k_opt = 3).
+- **Multi-link T(k, k·n') configurations = k × T(1, n')** — k phased copies of a T(1, n') primitive, with each component carrying 1/k of the link's total charge. T(3, 6) = 3 × T(1, 2) at k = 3 is a candidate quark identification (subject to chapter 8's k-optimization confirming k_opt = 3).
 
-That's the entire charged inventory: T(m, 1) primitives and their k-component repetitions. The framework predicts that **all charge-carrying configurations are built from T(m, 1) primitives** — either as singletons or as multi-component links.
+That's the entire charged inventory: T(1, n') primitives and their k-component repetitions. The framework predicts that **all charge-carrying configurations are built from T(1, n') primitives** — either as singletons or as multi-component links.
 
 ### 6.2 Neutral massive states (closure-failing) — three distinct mechanisms
 
@@ -269,7 +269,7 @@ That's the entire charged inventory: T(m, 1) primitives and their k-component re
 
 - **Single-axis modes** (m, 0), (0, n) — fail closure because *one winding is zero* and there is no chirality structure to test. The natural particle reduces to the metric-mass standing wave on a single compact direction; no spacetime-extended-to-compact off-diagonal is sourced. Mass without observable EM by *structural-degeneracy* mechanism.
 
-- **Genuine-torus-knot modes** T(p, q) with p, q ≥ 2 and gcd(p, q) = 1 — fail closure because the *curve is chirally distinct from its mirror in 3-space*. The chirality criterion (i) of [Ch 1 §10](01-foundation.md) fails — the wrap-order's R_u cannot be enforced as a particle symmetry without combining topologically distinct knot types. The natural particle falls back to joint-reversal R_J symmetrization, yielding mass + chirality field but no observable EM gauge potential. Examples: trefoil T(2, 3), cinquefoil T(2, 5), T(3, 4), and the rest of the genuine-torus-knot tower.
+- **Genuine-torus-knot modes** T(p, q) with p, q ≥ 2 and gcd(p, q) = 1 — fail closure because the *curve is chirally distinct from its mirror in 3-space*. The chirality criterion (i) of [Ch 1 §10](01-foundation.md) fails — the wrap-order's R_u cannot be enforced as a particle symmetry without combining topologically distinct knot types. The natural particle falls back to joint-reversal R_J symmetrization, yielding mass + chirality field but no observable EM gauge potential. Examples: trefoil T(3, 2), cinquefoil T(5, 2), T(4, 3), and the rest of the genuine-torus-knot tower.
 
 - **Multi-link modes with genuine-torus-knot primitives** T(k·p, k·q) — the same chirality-non-degeneracy mechanism operating on multi-component links built from genuine-torus-knot primitives.
 
@@ -280,14 +280,14 @@ That's the entire charged inventory: T(m, 1) primitives and their k-component re
 The **geometric particle inventory of metric-charge** under chirality closure has the following structural shape:
 
 - A massless field (light / photon analog) — one category.
-- Charged states built from T(m, 1) primitives — singletons (candidate leptons) and multi-links (candidate quarks). Two charge-carrying sub-categories.
+- Charged states built from T(1, n') primitives — singletons (candidate leptons) and multi-links (candidate quarks). Two charge-carrying sub-categories.
 - Neutral massive states — at least three structurally distinct mechanisms (single-axis, chirality-non-degenerate genuine torus knots, cancellation pair). Possibly more.
 
 Standard particle physics has multiple charge-carrying categories (charged leptons, quarks, charged hadrons-as-composites) and multiple neutral-massive categories (neutrinos in three flavors, neutral mesons, neutral baryons, dark matter candidates, the Higgs). The framework's category structure has the right *shape* to potentially map onto this, with the framework's *richer-than-binary* neutral structure suggesting multiple distinct neutral states rather than a single "neutrino" category.
 
 **Whether the framework's categories correspond to standard physics' categories — at the level of specific particles or only at the structural-pattern level — is downstream MaSt-correspondence work that this project does not undertake.** The closure condition produces an inventory of the right shape; whether the map holds at the level of individual particle properties is open work.
 
-A specific question worth flagging: **standard physics treats hadrons as composites** (3 quarks per baryon, 2 quarks for mesons), not as single fundamental particles. The framework's prediction that all *fundamental* charged states are T(m, 1) primitives or k × T(m, 1) multi-links — with no fundamental "hadron tier" of single torus knots — matches this composite-hadron view of standard physics better than the framework's earlier draft (which had a tower of single charged genuine torus knots as candidate hadrons). Hadrons in the framework would emerge as bound states of multiple k × T(m, 1) multi-links — metric-binding's territory.
+A specific question worth flagging: **standard physics treats hadrons as composites** (3 quarks per baryon, 2 quarks for mesons), not as single fundamental particles. The framework's prediction that all *fundamental* charged states are T(1, n') primitives or k × T(1, n') multi-links — with no fundamental "hadron tier" of single torus knots — matches this composite-hadron view of standard physics better than the framework's earlier draft (which had a tower of single charged genuine torus knots as candidate hadrons). Hadrons in the framework would emerge as bound states of multiple k × T(1, n') multi-links — metric-binding's territory.
 
 The downstream chapters develop:
 
@@ -324,6 +324,6 @@ The downstream chapters develop:
 | Do the three structural mass-only mechanisms (single-axis, chirality-non-degenerate, cancellation pair) correspond to distinct standard-physics neutral categories (neutrinos, neutral mesons, dark matter, etc.) or do some collapse together? | Downstream MaSt-correspondence work |
 | Are closure-rule variants 5.1 (opposite wrap-order) and the standard rule physically distinct, or are they the same physics with relabeled coordinates? | Chapter 5 / [grid-duality §8](../grid-duality/08-where-alpha-appears.md) |
 | Does closure-rule variant 5.3 (multi-knot collective closure) describe atoms or other composite bound states? | metric-binding |
-| What standard-physics state corresponds to the genuine-torus-knot tower of mass-only modes (T(2, 3), T(2, 5), T(3, 4), ...)? | Downstream MaSt-correspondence work |
+| What standard-physics state corresponds to the genuine-torus-knot tower of mass-only modes (T(3, 2), T(5, 2), T(4, 3), ...)? | Downstream MaSt-correspondence work |
 | Why is the wrap-order convention asymmetric in (u, w) — is it adopted or derivable? | [grid-duality §8](../grid-duality/08-where-alpha-appears.md) + grid alpha-derivation |
 | Does the metric-charge inventory of §6 quantitatively match observed masses and charges of standard-model particles? | Downstream MaSt-correspondence work |
