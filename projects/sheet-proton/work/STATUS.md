@@ -65,6 +65,27 @@ Tracks the project's active work files, their states, dependencies, and next act
 
 ---
 
+### clover-mass.md — analytical mass spectrum on the corrugated torus
+
+**Topic:** Derive m(ε, χ, τ; embedding) analytically by reducing the 2D Laplacian on the corrugated torus to a 1D Hill equation (via the helical translation symmetry of clover-quarks §10.3), expanding perturbatively in χ around the constant-radius flat-twisted-torus limit, and inverting two observables (m_p, m_n) to extract two unknowns (ε, χ).
+
+**Status:** Phase-A draft. Analytical reduction is complete; first-order χ-corrections shown to vanish by 3-fold symmetry; second-order structure set up but not closed. Toy inversion under one candidate (n, m)-to-particle identification gives ε ≈ 0.01 — physically plausible but contingent on identification.
+
+**Dependencies:**
+- *Upstream:* clover-quarks (the surface, the metric, the path-winding identifications)
+- *Sister files:* clover-quarks (mode-particle identification is a shared open question)
+
+**Next actions:**
+1. Compute Fourier coefficients a_n(χ) of P_x for the clover profile (six analytic integrals).
+2. Evaluate F(n, m, ε) explicitly for proton and neutron candidate modes.
+3. Resolve the mode-particle identification — wave-function structure analysis or independent semiclassical argument.
+4. Run inversion with χ-corrections; check uniqueness.
+5. Redo §1–6 for embedding B (rotation) and compare spectra.
+
+**Why this might matter:** If the inversion finds clean (ε, χ) values reproducing m_p and m_n simultaneously, the corrugated-torus geometry passes a major empirical test without numerical sweeping. If no values work, that constrains the surface choice or the embedding choice.
+
+---
+
 ### clover-quarks.md — corrugated 3-lobed torus as quark substrate
 
 **Topic:** Develops a candidate geometric construction: a torus whose cross-section is a clover-leaf (3 lobes + 3 saddles) and whose ring sweep includes a 120° chiral twist per revolution. Quarks identified with single arcs (u = 1 lobe, d = 1 saddle); protons/neutrons identified with composite paths (uud = 2 lobes + 1 saddle, udd = 1 lobe + 2 saddles).
