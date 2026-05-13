@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Proton Lab — totu viz</title>
+<link rel="stylesheet" href="totu-viz.css">
+<style>
+  body { overflow: hidden; }
+  .top-bar { position: relative; z-index: 30; }
+
+  .layout {
+    display: flex; flex: 1; min-height: 0;
+  }
+
+  #left-panel, #right-panel {
+    width: 260px; height: 100%;
+    background: rgba(14,14,18,0.94);
+    overflow-y: auto;
+    font-size: 11px;
+    backdrop-filter: blur(8px);
+    flex-shrink: 0;
+  }
+  #left-panel  { border-right: 1px solid var(--border); }
+  #right-panel { border-left:  1px solid var(--border); }
+
+  #left-panel::-webkit-scrollbar, #right-panel::-webkit-scrollbar { width: 4px; }
+  #left-panel::-webkit-scrollbar-thumb, #right-panel::-webkit-scrollbar-thumb {
+    background: #333; border-radius: 2px;
+  }
+
+  .pnl-section {
+    border-bottom: 1px solid var(--border);
+    padding: 10px 12px;
+  }
+  .pnl-head {
+    font-size: 10px; font-weight: 600;
+    color: var(--accent); letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .row {
+    display: flex; align-items: center; gap: 6px;
+    margin: 4px 0; font-size: 11px;
+  }
+  .row label { color: #888; min-width: 72px; }
+  .row .val { color: var(--accent); font-weight: 600; min-width: 36px; text-align: right; }
+
+  select, input[type=text], input[type=number] {
+    background: #111; border: 1px solid var(--border);
+    color: var(--text); border-radius: 3px;
+    padding: 3px 6px; font-size: 11px; font-family: inherit;
+    min-width: 0; flex: 1;
+  }
+
+  .full-btn {
+    width: 100%; margin-top: 4px;
+  }
+
+  #view {
+    flex: 1; min-width: 0; position: relative;
+  }
+
+  #info {
+    position: absolute; bottom: 8px; left: 14px;
+    font: 11px/1.4 monospace; color: #555; pointer-events: none;
+    max-width: 480px;
+  }
+
+  .swatch {
+    width: 14px; height: 14px; display: inline-block; vertical-align: middle;
+    border-radius: 2px; margin-right: 5px;
+    border: 1px solid rgba(255,255,255,0.18);
+  }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 3px 8px;
+    font-family: monospace;
+    font-size: 10.5px;
+  }
+  .info-grid .k { color: #888; }
+  .info-grid .v { color: #c8d8e8; text-align: right; }
+
+  #profile-canvas {
+    width: 232px; height: 232px;
+    background: #06070a;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .warning {
+    color: #ffa726;
+    font-size: 10.5px;
+    line-height: 1.4;
+    padding: 5px 8px;
+    margin-top: 6px;
+    background: rgba(255,167,38,0.08);
+    border: 1px solid rgba(255,167,38,0.25);
+    border-radius: 3px;
+  }
+
+  .tau-stepper {
+    display: flex; gap: 4px; align-items: center;
+  }
+  .tau-stepper .tau-val {
+    min-width: 56px; text-align: center;
+    background: #111; border: 1px solid var(--border);
+    border-radius: 3px; padding: 2px 4px;
+    color: var(--accent); font-weight: 600;
+    font-family: monospace; font-size: 11px;
+  }
+  .step-btn {
+    width: 22px; height: 22px; padding: 0;
+    font-size: 14px; line-height: 1;
+  }
+
+  .particle-info {
+    margin-top: 6px;
+    padding: 6px 8px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 3px;
+    font-size: 10.5px;
+    line-height: 1.5;
+  }
+
+  .particle-info .pcharge {
+    font-weight: 600; color: #ffd54f;
+  }
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <h1>Proton Lab</h1><div class="sep"></div>
+
+  <div class="cg">
+    <label>R<sub>major</sub></label>
+    <input type="range" id="sl-R" min="1.0" max="8.0" step="0.05" value="3.0">
+    <span class="val" id="v-R">3.00</span>
+  </div>
+
+  <div class="cg">
+    <label>r<sub>lobe</sub></label>
+    <input type="range" id="sl-rL" min="0.05" max="2.0" step="0.01" value="0.80">
+    <span class="val" id="v-rL">0.80</span>
+  </div>
+
+  <div class="cg">
+    <label>r<sub>saddle</sub></label>
+    <input type="range" id="sl-rS" min="0.05" max="2.0" step="0.01" value="0.40">
+    <span class="val" id="v-rS">0.40</span>
+  </div>
+
+  <div class="sep"></div>
+
+  <div class="cg">
+    <label>τ</label>
+    <div class="tau-stepper">
+      <button class="btn step-btn" id="btn-tau-dec">−</button>
+      <span class="tau-val" id="v-tau">1/3</span>
+      <button class="btn step-btn" id="btn-tau-inc">+</button>
+    </div>
+  </div>
+
+  <div class="cg">
+    <label>shear s</label>
+    <input type="range" id="sl-s" min="0" max="6.2832" step="0.01" value="0">
+    <span class="val" id="v-s">0.00</span>
+  </div>
+
+  <div class="sep"></div>
+
+  <div class="cg">
+    <label>opacity</label>
+    <input type="range" id="sl-op" min="0.1" max="1.0" step="0.02" value="0.55">
+    <span class="val" id="v-op">0.55</span>
+  </div>
+
+  <div class="sep"></div>
+
+  <button class="btn" id="btn-reset">Reset</button>
+</div>
+
+<div class="layout">
+
+  <!-- LEFT PANEL ─────────────────────────────────────── -->
+  <div id="left-panel">
+
+    <div class="pnl-section">
+      <div class="pnl-head">Particle</div>
+      <select id="sel-particle">
+        <option value="none">— none —</option>
+        <option value="u">u — up quark</option>
+        <option value="d">d — down quark</option>
+        <option value="proton" selected>p — proton (uud)</option>
+        <option value="neutron">n — neutron (udd)</option>
+        <option value="custom">custom path…</option>
+      </select>
+      <div class="particle-info" id="particle-info">
+        <div>Q = <span class="pcharge" id="p-Q">+1</span> e</div>
+        <div>Content: <span id="p-content">2 lobes + 1 saddle</span></div>
+        <div>Closure: <span id="p-closure">n<sub>θ</sub> = 2 ring revs</span></div>
+      </div>
+
+      <div id="custom-path-controls" style="display:none; margin-top: 8px;">
+        <div class="row">
+          <label>n<sub>θ</sub></label>
+          <input type="number" id="in-nth" value="1" min="-9" max="9" step="1">
+        </div>
+        <div class="row">
+          <label>n<sub>φ</sub></label>
+          <input type="number" id="in-nph" value="1" min="-9" max="9" step="1">
+        </div>
+      </div>
+    </div>
+
+    <div class="pnl-section">
+      <div class="pnl-head">Toggles</div>
+      <div class="tog" style="margin: 4px 0;">
+        <label><input type="checkbox" id="cb-surf" checked> Surface</label>
+      </div>
+      <div class="tog" style="margin: 4px 0;">
+        <label><input type="checkbox" id="cb-wire"> Wireframe</label>
+      </div>
+      <div class="tog" style="margin: 4px 0;">
+        <label><input type="checkbox" id="cb-color" checked> Lobe/saddle color</label>
+      </div>
+      <div class="tog" style="margin: 4px 0;">
+        <label><input type="checkbox" id="cb-grid"> Grid lines</label>
+      </div>
+      <div class="tog" style="margin: 4px 0;">
+        <label><input type="checkbox" id="cb-path" checked> Path overlay</label>
+      </div>
+      <div class="tog" style="margin: 4px 0;">
+        <label><input type="checkbox" id="cb-spine"> Ring spine</label>
+      </div>
+      <div class="tog" style="margin: 4px 0;">
+        <label><input type="checkbox" id="cb-axes"> XYZ axes</label>
+      </div>
+    </div>
+
+    <div class="pnl-section">
+      <div class="pnl-head">Profiles</div>
+      <div class="row">
+        <select id="sel-profile">
+          <option value="">— select profile —</option>
+        </select>
+      </div>
+      <button class="btn full-btn" id="btn-save">Save current…</button>
+      <button class="btn full-btn" id="btn-delete">Delete selected</button>
+    </div>
+
+    <div class="pnl-section">
+      <div class="pnl-head">Built-in presets</div>
+      <select id="sel-builtin">
+        <option value="">— pick a preset —</option>
+        <option value="canonical">Canonical (τ=1/3)</option>
+        <option value="fat-saddle">Fat saddle (χ=1.5)</option>
+        <option value="thin-saddle">Thin saddle (χ=0.25)</option>
+        <option value="symmetric">Symmetric (χ=1)</option>
+        <option value="flat">Flat torus (τ=0)</option>
+        <option value="double-twist">Double twist (τ=2/3)</option>
+      </select>
+    </div>
+
+  </div>
+
+  <!-- 3D VIEWPORT ────────────────────────────────────── -->
+  <div id="view">
+    <div id="info"></div>
+  </div>
+
+  <!-- RIGHT PANEL ───────────────────────────────────── -->
+  <div id="right-panel">
+
+    <div class="pnl-section">
+      <div class="pnl-head">Cross-section profile</div>
+      <canvas id="profile-canvas" width="232" height="232"></canvas>
+      <div style="margin-top:6px;">
+        <span class="swatch" style="background:#ff5252"></span>
+        <span style="color:#bbb; font-size: 10.5px;">lobe (Q = +2/3)</span>
+      </div>
+      <div style="margin-top:2px;">
+        <span class="swatch" style="background:#4fc3f7"></span>
+        <span style="color:#bbb; font-size: 10.5px;">saddle (Q = −1/3)</span>
+      </div>
+    </div>
+
+    <div class="pnl-section">
+      <div class="pnl-head">Geometry</div>
+      <div class="info-grid">
+        <span class="k">d</span> <span class="v" id="i-d">1.20</span>
+        <span class="k">r_max</span> <span class="v" id="i-rmax">2.00</span>
+        <span class="k">r_min</span> <span class="v" id="i-rmin">0.80</span>
+        <span class="k">χ = r_S/r_L</span> <span class="v" id="i-chi">0.50</span>
+        <span class="k">ε</span> <span class="v" id="i-eps">0.67</span>
+        <span class="k">L_total</span> <span class="v" id="i-L">12.57</span>
+      </div>
+      <div id="geom-warning" class="warning hide"></div>
+    </div>
+
+    <div class="pnl-section">
+      <div class="pnl-head">Path topology</div>
+      <div class="info-grid">
+        <span class="k">n_θ</span> <span class="v" id="i-nth">3</span>
+        <span class="k">n_φ</span> <span class="v" id="i-nph">5</span>
+        <span class="k">paths</span> <span class="v" id="i-paths">3</span>
+      </div>
+    </div>
+
+    <div class="pnl-section">
+      <div class="pnl-head">References</div>
+      <div style="font-size: 10.5px; line-height: 1.6; color: #888;">
+        <a href="../projects/sheet-proton/work/clover-quarks.md"
+           style="color: var(--accent);" target="_blank">clover-quarks.md</a>
+        <br>
+        <a href="proton-lab.md"
+           style="color: var(--accent);" target="_blank">proton-lab spec</a>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<script type="importmap">
+{"imports":{
+  "three":"https://cdn.jsdelivr.net/npm/three@0.163.0/build/three.module.js",
+  "three/addons/":"https://cdn.jsdelivr.net/npm/three@0.163.0/examples/jsm/"
+}}
+</script>
+
+<script type="module">
+import {
+  THREE, createScene, autoResize, animLoop, PALETTE
+} from './totu-viz.js';
+
+const $ = id => document.getElementById(id);
+const TAU = Math.PI * 2;
+
+/* ─── State ──────────────────────────────────────────────── */
+
+const S = {
+  R: 3.0,
+  rL: 0.80,
+  rS: 0.40,
+  // Twist as a fraction: numerator/3 so τ = tauNum/3 (steps of 1/3)
+  tauNum: 1,            // τ = 1/3
+  shear: 0,             // continuous offset in φ
+  opacity: 0.55,
+  particle: 'proton',
+  customNth: 1,
+  customNph: 1,
+  showSurface: true,
+  showWire: false,
+  showColor: true,
+  showGrid: false,
+  showPath: true,
+  showSpine: false,
+  showAxes: false,
+};
+
+/*
+ * Particle path conventions:
+ *   - u, d: no path overlay (the single-arc highlighting on the surface
+ *     and in the cross-section preview shows the quark on its own).
+ *   - proton/neutron: three (1, 1)-topology paths offset by 120° in φ_0.
+ *     This shows the Z₃ three-constituent structure cleanly. The
+ *     differentiation between proton and neutron is in the region
+ *     highlighting (which 3 of the 6 arcs are members), not in the path
+ *     topology.
+ *   - custom: a single user-defined path.
+ */
+const PARTICLES = {
+  none:    { Q: 0,       content: '—',                    paths: [],
+             closure: '—' },
+  u:       { Q: '+2/3',  content: '1 lobe',               paths: [],
+             closure: 'single-arc quark' },
+  d:       { Q: '-1/3',  content: '1 saddle',             paths: [],
+             closure: 'single-arc quark' },
+  proton:  { Q: '+1',    content: '2 lobes + 1 saddle (uud)',
+             paths: [
+               { nTh: 1, nPh: 1, ph0: 0,         color: 0xff5252 },
+               { nTh: 1, nPh: 1, ph0: TAU/3,     color: 0x66ff99 },
+               { nTh: 1, nPh: 1, ph0: 2*TAU/3,   color: 0x40c4ff },
+             ],
+             closure: '3 constituents at 120° offset' },
+  neutron: { Q: '0',     content: '1 lobe + 2 saddles (udd)',
+             paths: [
+               { nTh: 1, nPh: 1, ph0: 0,         color: 0xff5252 },
+               { nTh: 1, nPh: 1, ph0: TAU/3,     color: 0x66ff99 },
+               { nTh: 1, nPh: 1, ph0: 2*TAU/3,   color: 0x40c4ff },
+             ],
+             closure: '3 constituents at 120° offset' },
+  custom:  { Q: '—',     content: 'custom (n_θ, n_φ)',
+             paths: [{ nTh: 1, nPh: 1, ph0: 0, color: 0xfdd835 }],
+             closure: '1 path' },
+};
+
+/* ─── Profile (2D cross-section P(φ)) ───────────────────── */
+/*
+ * Three-fold symmetric clover from D₃ symmetry under kissing-circles.
+ * d = rL + rS (forced). 3 lobes (240° each) + 3 saddles (120° each).
+ * Profile parameterized so φ ∈ [0, 2π) with constant arc-speed.
+ *
+ * Within fundamental domain [k·2π/3, (k+1)·2π/3]:
+ *   lobe-k portion:    φ ∈ [k·2π/3, k·2π/3 + φ_L)
+ *   saddle-k portion:  φ ∈ [k·2π/3 + φ_L, (k+1)·2π/3)
+ *
+ * For lobe-k: ψ_L from -2π/3 → +2π/3 as we move through the lobe
+ * For saddle-k: ψ_S from +π/3 → -π/3 as we move through the saddle
+ */
+function profileAt(phi, rL, rS) {
+  const d = rL + rS;
+  const phiL = (TAU / 3) * (2 * rL) / (2 * rL + rS);   // lobe φ-extent
+  const phiS = (TAU / 3) - phiL;                       // saddle φ-extent
+
+  // Wrap to [0, 2π)
+  let p = phi % TAU;
+  if (p < 0) p += TAU;
+
+  // Which fundamental domain (k = 0, 1, 2)?
+  const k = Math.floor(p / (TAU / 3));
+  const sLocal = p - k * (TAU / 3);
+
+  const axisAng = k * (TAU / 3);  // lobe-(k) axis angle from +x
+
+  let x, y, kind;  // kind: 0 = lobe, 1 = saddle
+
+  if (sLocal < phiL) {
+    // Lobe portion
+    const psiL = -TAU/3 + (2 * TAU / 3) * (sLocal / phiL);
+    const ang = axisAng + psiL;
+    x = d * Math.cos(axisAng) + rL * Math.cos(ang);
+    y = d * Math.sin(axisAng) + rL * Math.sin(ang);
+    kind = 0;
+  } else {
+    // Saddle portion
+    const sSaddle = sLocal - phiL;
+    const psiS = (TAU/6) - (TAU/3) * (sSaddle / phiS);   // π/3 → -π/3
+    const saddleAxis = axisAng + (TAU / 6);              // saddle at +π/3 from lobe
+    const inwardDir = saddleAxis + Math.PI;
+    const ang = inwardDir + psiS;
+    x = d * Math.cos(saddleAxis) + rS * Math.cos(ang);
+    y = d * Math.sin(saddleAxis) + rS * Math.sin(ang);
+    kind = 1;
+  }
+  return { x, y, kind };
+}
+
+/* Pre-sample profile to a typed array for fast surface mesh construction. */
+function sampleProfile(N, rL, rS) {
+  const xs = new Float32Array(N + 1);
+  const ys = new Float32Array(N + 1);
+  const ks = new Uint8Array(N + 1);
+  for (let j = 0; j <= N; j++) {
+    const phi = (j / N) * TAU;
+    const p = profileAt(phi, rL, rS);
+    xs[j] = p.x; ys[j] = p.y; ks[j] = p.kind;
+  }
+  return { xs, ys, ks, N };
+}
+
+/* Look up the profile at arbitrary φ via linear interpolation. */
+function lookupProfile(prof, phi) {
+  const N = prof.N;
+  let p = (phi % TAU + TAU) % TAU;
+  const t = (p / TAU) * N;
+  const j0 = Math.floor(t);
+  const j1 = (j0 + 1) % N;
+  const f = t - j0;
+  return {
+    x: prof.xs[j0] * (1 - f) + prof.xs[j1] * f,
+    y: prof.ys[j0] * (1 - f) + prof.ys[j1] * f,
+    kind: prof.ks[j0],   // nearest classification
+  };
+}
+
+/* ─── 3D Surface mesh ───────────────────────────────────── */
+/*
+ * Embedding (with outward-radial convention so positive profile-x
+ * sticks away from the donut hole — visually intuitive):
+ *
+ *   r⃗(θ, φ) = R_ring(θ) + P_x(arg)·N̂(θ) + P_y(arg)·B̂
+ *   arg = φ + τ·θ + s
+ *   R_ring(θ) = R · (cos θ, sin θ, 0)
+ *   N̂(θ)     = (cos θ, sin θ, 0)       (outward radial)
+ *   B̂        = (0, 0, 1)               (vertical)
+ *
+ * Net: position = ((R + P_x)·cos θ, P_y, (R + P_x)·sin θ).
+ * (This is the same geometry as clover-quarks.md §9 — just sign-flipped
+ * on N̂ so lobes protrude outward in the 3D view.)
+ */
+
+const COL_LOBE_ACTIVE   = new THREE.Color(0xff5252);
+const COL_SADDLE_ACTIVE = new THREE.Color(0x4fc3f7);
+const COL_LOBE_DIM      = new THREE.Color(0x6e3232);
+const COL_SADDLE_DIM    = new THREE.Color(0x32546e);
+const COL_NEUTRAL       = new THREE.Color(0x8090a0);
+
+const N_TH = 240;
+const N_PH = 180;
+
+function buildSurfaceMesh(prof, R, tau, shear, particleMembership) {
+  const positions = new Float32Array((N_TH + 1) * (N_PH + 1) * 3);
+  const colors    = new Float32Array((N_TH + 1) * (N_PH + 1) * 3);
+  const indices = [];
+
+  for (let i = 0; i <= N_TH; i++) {
+    const th = (i / N_TH) * TAU;
+    const cTh = Math.cos(th), sTh = Math.sin(th);
+    // Outward-radial N̂(θ) = (cos θ, sin θ, 0); B̂ = (0, 0, 1)
+    for (let j = 0; j <= N_PH; j++) {
+      const ph = (j / N_PH) * TAU;
+      const arg = ph + tau * th + shear;
+      const samp = lookupProfile(prof, arg);
+
+      // 3D position: (R + P_x)·(cos θ, 0, sin θ) + P_y·(0, 1, 0)
+      const ix = (i * (N_PH + 1) + j) * 3;
+      const rr = R + samp.x;
+      positions[ix    ] = rr * cTh;
+      positions[ix + 1] = samp.y;
+      positions[ix + 2] = rr * sTh;
+
+      // Color
+      const col = colorForVertex(arg, samp.kind, particleMembership);
+      colors[ix    ] = col.r;
+      colors[ix + 1] = col.g;
+      colors[ix + 2] = col.b;
+    }
+  }
+
+  for (let i = 0; i < N_TH; i++) {
+    for (let j = 0; j < N_PH; j++) {
+      const a = i * (N_PH + 1) + j;
+      const b = a + N_PH + 1;
+      indices.push(a, b, a + 1, b, b + 1, a + 1);
+    }
+  }
+
+  const geom = new THREE.BufferGeometry();
+  geom.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+  geom.setAttribute('color',    new THREE.Float32BufferAttribute(colors, 3));
+  geom.setIndex(indices);
+  geom.computeVertexNormals();
+  return geom;
+}
+
+/*
+ * Classify φ-arg into (arc_index, kind) and decide if it's "active" for this particle.
+ * Returns a THREE.Color.
+ */
+function colorForVertex(arg, kind, membership) {
+  const tmp = new THREE.Color();
+  // 6 arcs: indices 0..5 alternating lobe/saddle (lobe-0, sad-0, lobe-1, sad-1, lobe-2, sad-2)
+  // Use the profile classification with sub-index based on arg.
+  const a = ((arg % TAU) + TAU) % TAU;
+  // Each fundamental domain is 2π/3 long, containing 1 lobe + 1 saddle.
+  // We need to distinguish individual lobes/saddles for particle membership.
+  const k = Math.floor(a / (TAU / 3));   // 0, 1, or 2 (which fundamental domain)
+  let arcIdx;
+  if (kind === 0) arcIdx = k * 2;       // lobes at indices 0, 2, 4
+  else            arcIdx = k * 2 + 1;   // saddles at indices 1, 3, 5
+
+  if (!S.showColor) {
+    tmp.setHex(0x8090a0);
+    return tmp;
+  }
+
+  const isMember = membership[arcIdx];
+
+  if (kind === 0) {
+    tmp.copy(isMember ? COL_LOBE_ACTIVE : COL_LOBE_DIM);
+  } else {
+    tmp.copy(isMember ? COL_SADDLE_ACTIVE : COL_SADDLE_DIM);
+  }
+  return tmp;
+}
+
+/*
+ * Membership: array of 6 booleans [lobe0, saddle0, lobe1, saddle1, lobe2, saddle2]
+ * indicating whether each arc is part of the active particle.
+ */
+function membershipFor(particle) {
+  switch (particle) {
+    case 'none':    return [true, true, true, true, true, true];      // all neutral-active (color-coded fully)
+    case 'u':       return [true, false, false, false, false, false]; // 1 lobe
+    case 'd':       return [false, true, false, false, false, false]; // 1 saddle
+    case 'proton':  return [true, false, true, true, false, false];   // 2 lobes + 1 saddle (lobe-0, lobe-1, saddle-1)
+    case 'neutron': return [true, true, false, true, false, false];   // 1 lobe + 2 saddles (lobe-0, saddle-0, saddle-1)
+    case 'custom':  return [true, true, true, true, true, true];
+  }
+  return [true, true, true, true, true, true];
+}
+
+/* ─── Path overlay (homotopy-class winding paths) ─────────── */
+/*
+ * Parameter trajectory for a path with topology (n_θ, n_φ), starting at φ=ph0:
+ *   θ(t) = 2π·n_θ·t
+ *   φ(t) = ph0 + 2π·n_φ·t          (in the "physical cross-section" sense)
+ *
+ * The 3D position is the surface embedding evaluated at (θ(t), φ_param(t)) where
+ *   φ_param(t) = φ(t) − τ·θ(t)    so that  arg = φ_param + τ·θ + shear = ph0 + 2π·n_φ·t + shear.
+ *
+ * In effect the path sweeps both ring and cross-section directions linearly.
+ */
+function buildPathTube(prof, R, tau, shear, pathSpec, tubeR) {
+  const N = 600;
+  const { nTh, nPh, ph0 } = pathSpec;
+  const pts = [];
+
+  for (let i = 0; i <= N; i++) {
+    const t = i / N;
+    const th = TAU * nTh * t;
+    const arg = ph0 + TAU * nPh * t + shear;
+    const samp = lookupProfile(prof, arg);
+    const cTh = Math.cos(th), sTh = Math.sin(th);
+    const rr = R + samp.x;
+    // Push the path slightly outward along the local outward normal so
+    // it sits on top of the surface rather than embedded inside it.
+    const offset = tubeR * 0.6;
+    pts.push(new THREE.Vector3(
+      (rr + offset) * cTh,
+      samp.y,
+      (rr + offset) * sTh
+    ));
+  }
+
+  const curve = new THREE.CatmullRomCurve3(pts, true);
+  return new THREE.TubeGeometry(curve, N, tubeR, 8, true);
+}
+
+/* ─── Cross-section preview (2D canvas) ─────────────────── */
+
+function drawProfileCanvas(prof, particle) {
+  const canvas = $('profile-canvas');
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+
+  ctx.fillStyle = '#06070a';
+  ctx.fillRect(0, 0, W, H);
+
+  const d = S.rL + S.rS;
+  const rMax = 2 * S.rL + S.rS;
+  const margin = 16;
+  const scale = (Math.min(W, H) / 2 - margin) / rMax;
+  const cx = W / 2, cy = H / 2;
+
+  // Crosshair / origin marker
+  ctx.strokeStyle = 'rgba(255,255,255,0.06)';
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(margin, cy); ctx.lineTo(W - margin, cy);
+  ctx.moveTo(cx, margin); ctx.lineTo(cx, H - margin);
+  ctx.stroke();
+
+  const membership = membershipFor(particle);
+
+  // Draw circle centers
+  ctx.fillStyle = 'rgba(255,255,255,0.18)';
+  for (let k = 0; k < 3; k++) {
+    const lobeAng = k * TAU / 3;
+    const saddleAng = k * TAU / 3 + TAU / 6;
+    const lx = cx + d * Math.cos(lobeAng) * scale;
+    const ly = cy - d * Math.sin(lobeAng) * scale;
+    const sx = cx + d * Math.cos(saddleAng) * scale;
+    const sy = cy - d * Math.sin(saddleAng) * scale;
+    ctx.beginPath(); ctx.arc(lx, ly, 1.8, 0, TAU); ctx.fill();
+    ctx.beginPath(); ctx.arc(sx, sy, 1.8, 0, TAU); ctx.fill();
+  }
+
+  // Draw the profile in segments, color by arc
+  const Nseg = 480;
+  let lastKind = -1, lastArcIdx = -1;
+  let active = true;
+  for (let j = 0; j < Nseg; j++) {
+    const phi  = (j / Nseg) * TAU;
+    const phi2 = ((j + 1) / Nseg) * TAU;
+    const p1 = lookupProfile(prof, phi);
+    const p2 = lookupProfile(prof, phi2);
+    const a = ((phi % TAU) + TAU) % TAU;
+    const k = Math.floor(a / (TAU / 3));
+    const arcIdx = (p1.kind === 0) ? (k * 2) : (k * 2 + 1);
+    const isMember = membership[arcIdx];
+
+    let color;
+    if (p1.kind === 0) color = isMember ? '#ff5252' : '#6e3232';
+    else               color = isMember ? '#4fc3f7' : '#32546e';
+
+    ctx.strokeStyle = color;
+    ctx.lineWidth = isMember ? 2.5 : 1.5;
+    ctx.beginPath();
+    ctx.moveTo(cx + p1.x * scale, cy - p1.y * scale);
+    ctx.lineTo(cx + p2.x * scale, cy - p2.y * scale);
+    ctx.stroke();
+  }
+
+  // Label
+  ctx.fillStyle = '#999';
+  ctx.font = '10px monospace';
+  ctx.fillText(`d=${d.toFixed(2)}`, 8, H - 8);
+  ctx.fillText(`rmax=${rMax.toFixed(2)}`, W - 80, H - 8);
+}
+
+/* ─── Scene setup ──────────────────────────────────────── */
+
+const view = $('view');
+const { scene, camera, renderer, controls, clock } = createScene(view, {
+  camPos: [3 * 3.0, 2 * 3.0, 4 * 3.0],
+});
+autoResize(renderer, camera, view);
+controls.maxDistance = 60;
+
+const surfMaterial = new THREE.MeshPhongMaterial({
+  vertexColors: true,
+  transparent: true,
+  opacity: 0.55,
+  side: THREE.DoubleSide,
+  depthWrite: false,
+  shininess: 40,
+});
+const wireMaterial = new THREE.MeshBasicMaterial({
+  color: 0xffffff,
+  wireframe: true,
+  transparent: true,
+  opacity: 0.08,
+  side: THREE.DoubleSide,
+});
+
+let surfMesh = null;
+let wireMesh = null;
+let pathGroup = new THREE.Group();
+let gridGroup = new THREE.Group();
+let spineLine = null;
+let axesHelper = null;
+
+scene.add(pathGroup);
+scene.add(gridGroup);
+
+/* ─── Build all geometry from current state ─────────────── */
+
+let cachedProfile = null;
+let profileDirty = true;
+
+function rebuildAll() {
+  // Profile sampling (only if rL/rS changed)
+  if (profileDirty || !cachedProfile) {
+    cachedProfile = sampleProfile(540, S.rL, S.rS);
+    profileDirty = false;
+  }
+
+  const membership = membershipFor(S.particle);
+
+  // Surface
+  if (surfMesh) {
+    scene.remove(surfMesh);
+    surfMesh.geometry.dispose();
+  }
+  if (wireMesh) {
+    scene.remove(wireMesh);
+    wireMesh.geometry.dispose();
+  }
+
+  const tau = S.tauNum / 3;
+  const geom = buildSurfaceMesh(cachedProfile, S.R, tau, S.shear, membership);
+  surfMesh = new THREE.Mesh(geom, surfMaterial);
+  surfMesh.visible = S.showSurface;
+  scene.add(surfMesh);
+
+  wireMesh = new THREE.Mesh(geom, wireMaterial);
+  wireMesh.visible = S.showWire;
+  scene.add(wireMesh);
+
+  surfMaterial.opacity = S.opacity;
+
+  // Paths
+  pathGroup.clear();
+  if (S.showPath) {
+    const tubeR = 0.04 + 0.02 * Math.min(S.rL, S.rS);
+    let paths;
+    if (S.particle === 'custom') {
+      paths = [{ nTh: S.customNth, nPh: S.customNph, ph0: 0, color: 0xfdd835 }];
+    } else {
+      paths = PARTICLES[S.particle].paths;
+    }
+    for (const p of paths) {
+      const pgeom = buildPathTube(cachedProfile, S.R, tau, S.shear, p, tubeR);
+      const mat = new THREE.MeshBasicMaterial({ color: p.color, transparent: true, opacity: 0.95 });
+      const pmesh = new THREE.Mesh(pgeom, mat);
+      pathGroup.add(pmesh);
+    }
+  }
+
+  // Grid lines
+  gridGroup.clear();
+  if (S.showGrid) {
+    addGridLines(cachedProfile, S.R, tau, S.shear);
+  }
+
+  // Spine
+  if (spineLine) {
+    scene.remove(spineLine);
+    spineLine.geometry.dispose();
+  }
+  if (S.showSpine) {
+    const pts = [];
+    for (let i = 0; i <= 256; i++) {
+      const th = (i / 256) * TAU;
+      pts.push(new THREE.Vector3(S.R * Math.cos(th), 0, S.R * Math.sin(th)));
+    }
+    spineLine = new THREE.Line(
+      new THREE.BufferGeometry().setFromPoints(pts),
+      new THREE.LineBasicMaterial({ color: 0xffd54f })
+    );
+    scene.add(spineLine);
+  }
+
+  // Axes
+  if (axesHelper) { scene.remove(axesHelper); axesHelper = null; }
+  if (S.showAxes) {
+    axesHelper = new THREE.AxesHelper(S.R * 0.9);
+    scene.add(axesHelper);
+  }
+
+  drawProfileCanvas(cachedProfile, S.particle);
+  updateInfo();
+}
+
+function addGridLines(prof, R, tau, shear) {
+  const tau_ = tau;
+  const eps = 0.015;   // tiny outward offset so grid lines sit above the surface
+  // Constant-φ lines
+  const Nph_lines = 12;
+  for (let g = 0; g < Nph_lines; g++) {
+    const ph = (g / Nph_lines) * TAU;
+    const pts = [];
+    const Nth = 200;
+    for (let i = 0; i <= Nth; i++) {
+      const th = (i / Nth) * TAU;
+      const arg = ph + tau_ * th + shear;
+      const samp = lookupProfile(prof, arg);
+      const cTh = Math.cos(th), sTh = Math.sin(th);
+      const rr = R + samp.x + eps;
+      pts.push(new THREE.Vector3(rr * cTh, samp.y, rr * sTh));
+    }
+    gridGroup.add(new THREE.Line(
+      new THREE.BufferGeometry().setFromPoints(pts),
+      new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.22 })
+    ));
+  }
+
+  // Constant-θ rings
+  const Nth_lines = 12;
+  for (let g = 0; g < Nth_lines; g++) {
+    const th = (g / Nth_lines) * TAU;
+    const cTh = Math.cos(th), sTh = Math.sin(th);
+    const pts = [];
+    const Nph = 240;
+    for (let j = 0; j <= Nph; j++) {
+      const ph = (j / Nph) * TAU;
+      const arg = ph + tau_ * th + shear;
+      const samp = lookupProfile(prof, arg);
+      const rr = R + samp.x + eps;
+      pts.push(new THREE.Vector3(rr * cTh, samp.y, rr * sTh));
+    }
+    gridGroup.add(new THREE.Line(
+      new THREE.BufferGeometry().setFromPoints(pts),
+      new THREE.LineBasicMaterial({ color: 0xaaccff, transparent: true, opacity: 0.22 })
+    ));
+  }
+}
+
+/* ─── Info readouts ────────────────────────────────────── */
+
+function updateInfo() {
+  const d = S.rL + S.rS;
+  const rMax = 2 * S.rL + S.rS;
+  const rMin = S.rL;
+  const chi  = S.rS / S.rL;
+  const eps  = (2 * S.rL + S.rS) / S.R;
+  const L    = TAU * (2 * S.rL + S.rS);
+
+  $('i-d').textContent    = d.toFixed(3);
+  $('i-rmax').textContent = rMax.toFixed(3);
+  $('i-rmin').textContent = rMin.toFixed(3);
+  $('i-chi').textContent  = chi.toFixed(3);
+  $('i-eps').textContent  = eps.toFixed(3);
+  $('i-L').textContent    = L.toFixed(3);
+
+  // Warnings
+  const warn = $('geom-warning');
+  let warnMsg = '';
+  if (rMax > S.R - 0.05) {
+    warnMsg = 'Lobes intersect or graze the donut hole (r_max ≈ R_major). Decrease lobe radius or increase ring radius.';
+  } else if (S.tauNum !== 0 && S.tauNum !== Math.round(S.tauNum)) {
+    warnMsg = 'τ is a multiple of 1/3 by symmetry.';
+  }
+  if (warnMsg) {
+    warn.textContent = warnMsg;
+    warn.classList.remove('hide');
+  } else {
+    warn.classList.add('hide');
+  }
+
+  // Path topology
+  let paths;
+  if (S.particle === 'custom') {
+    paths = [{ nTh: S.customNth, nPh: S.customNph }];
+  } else {
+    paths = PARTICLES[S.particle].paths;
+  }
+  if (paths.length > 0) {
+    $('i-nth').textContent = paths[0].nTh;
+    $('i-nph').textContent = paths[0].nPh;
+    $('i-paths').textContent = paths.length;
+  } else {
+    $('i-nth').textContent = '—';
+    $('i-nph').textContent = '—';
+    $('i-paths').textContent = '0';
+  }
+
+  // Particle info card
+  const pi = PARTICLES[S.particle];
+  if (S.particle === 'custom') {
+    $('p-Q').textContent = '—';
+    $('p-content').textContent = `(n_θ, n_φ) = (${S.customNth}, ${S.customNph})`;
+    $('p-closure').textContent = `1 path`;
+  } else {
+    $('p-Q').textContent = pi.Q;
+    $('p-content').textContent = pi.content;
+    $('p-closure').textContent = pi.closure || '—';
+  }
+
+  // Bottom-left info overlay
+  $('info').innerHTML =
+    `τ=${formatTau(S.tauNum)} &nbsp; s=${S.shear.toFixed(2)} &nbsp; ` +
+    `R=${S.R.toFixed(2)} &nbsp; rL=${S.rL.toFixed(2)} &nbsp; rS=${S.rS.toFixed(2)} &nbsp; ` +
+    `χ=${chi.toFixed(2)} &nbsp; ε=${eps.toFixed(2)} &nbsp; ` +
+    `particle=${S.particle}`;
+}
+
+function formatTau(num) {
+  if (num === 0) return '0';
+  // Simplify n/3 fractions
+  if (num % 3 === 0) return String(num / 3);
+  return `${num}/3`;
+}
+
+/* ─── Controls wiring ────────────────────────────────────── */
+
+function bindSlider(id, key, vId, formatter, callback) {
+  const el = $(id);
+  const vel = $(vId);
+  el.addEventListener('input', () => {
+    S[key] = parseFloat(el.value);
+    vel.textContent = formatter(S[key]);
+    if (callback) callback();
+  });
+  vel.textContent = formatter(S[key]);
+  el.value = S[key];
+}
+
+bindSlider('sl-R', 'R', 'v-R', v => v.toFixed(2), () => rebuildAll());
+bindSlider('sl-rL', 'rL', 'v-rL', v => v.toFixed(2), () => { profileDirty = true; rebuildAll(); });
+bindSlider('sl-rS', 'rS', 'v-rS', v => v.toFixed(2), () => { profileDirty = true; rebuildAll(); });
+bindSlider('sl-s', 'shear', 'v-s', v => v.toFixed(2), () => rebuildAll());
+bindSlider('sl-op', 'opacity', 'v-op', v => v.toFixed(2), () => { surfMaterial.opacity = S.opacity; });
+
+$('btn-tau-dec').addEventListener('click', () => {
+  S.tauNum -= 1;
+  $('v-tau').textContent = formatTau(S.tauNum);
+  rebuildAll();
+});
+$('btn-tau-inc').addEventListener('click', () => {
+  S.tauNum += 1;
+  $('v-tau').textContent = formatTau(S.tauNum);
+  rebuildAll();
+});
+
+$('btn-reset').addEventListener('click', () => {
+  resetToDefaults();
+});
+
+$('sel-particle').addEventListener('change', () => {
+  S.particle = $('sel-particle').value;
+  $('custom-path-controls').style.display = (S.particle === 'custom') ? 'block' : 'none';
+  rebuildAll();
+});
+
+$('in-nth').addEventListener('input', () => {
+  S.customNth = parseInt($('in-nth').value, 10) || 1;
+  if (S.particle === 'custom') rebuildAll();
+});
+$('in-nph').addEventListener('input', () => {
+  S.customNph = parseInt($('in-nph').value, 10) || 0;
+  if (S.particle === 'custom') rebuildAll();
+});
+
+const toggles = {
+  'cb-surf':  'showSurface',
+  'cb-wire':  'showWire',
+  'cb-color': 'showColor',
+  'cb-grid':  'showGrid',
+  'cb-path':  'showPath',
+  'cb-spine': 'showSpine',
+  'cb-axes':  'showAxes',
+};
+for (const [id, key] of Object.entries(toggles)) {
+  const el = $(id);
+  el.checked = S[key];
+  el.addEventListener('change', () => {
+    S[key] = el.checked;
+    rebuildAll();
+  });
+}
+
+/* ─── Save/load profiles (localStorage) ─────────────────── */
+
+const STORAGE_KEY = 'protonLab.profiles';
+
+function loadProfiles() {
+  try {
+    return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+  } catch { return {}; }
+}
+function saveProfiles(obj) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(obj));
+}
+function refreshProfileList() {
+  const list = loadProfiles();
+  const sel = $('sel-profile');
+  sel.innerHTML = '<option value="">— select profile —</option>';
+  for (const name of Object.keys(list).sort()) {
+    const opt = document.createElement('option');
+    opt.value = name;
+    opt.textContent = name;
+    sel.appendChild(opt);
+  }
+}
+
+$('btn-save').addEventListener('click', () => {
+  const name = prompt('Profile name:');
+  if (!name) return;
+  const list = loadProfiles();
+  list[name] = JSON.parse(JSON.stringify(S));
+  saveProfiles(list);
+  refreshProfileList();
+  $('sel-profile').value = name;
+});
+
+$('btn-delete').addEventListener('click', () => {
+  const name = $('sel-profile').value;
+  if (!name) return;
+  if (!confirm(`Delete profile "${name}"?`)) return;
+  const list = loadProfiles();
+  delete list[name];
+  saveProfiles(list);
+  refreshProfileList();
+});
+
+$('sel-profile').addEventListener('change', () => {
+  const name = $('sel-profile').value;
+  if (!name) return;
+  const list = loadProfiles();
+  const data = list[name];
+  if (!data) return;
+  Object.assign(S, data);
+  syncControlsFromState();
+  profileDirty = true;
+  rebuildAll();
+});
+
+refreshProfileList();
+
+/* ─── Built-in presets ──────────────────────────────────── */
+
+const BUILTINS = {
+  'canonical':    { R: 3.0, rL: 0.80, rS: 0.40, tauNum: 1, shear: 0, particle: 'proton' },
+  'fat-saddle':   { R: 3.0, rL: 0.50, rS: 0.75, tauNum: 1, shear: 0, particle: 'proton' },
+  'thin-saddle':  { R: 3.0, rL: 1.00, rS: 0.25, tauNum: 1, shear: 0, particle: 'proton' },
+  'symmetric':    { R: 3.0, rL: 0.60, rS: 0.60, tauNum: 1, shear: 0, particle: 'none'   },
+  'flat':         { R: 3.0, rL: 0.80, rS: 0.40, tauNum: 0, shear: 0, particle: 'none'   },
+  'double-twist': { R: 3.0, rL: 0.80, rS: 0.40, tauNum: 2, shear: 0, particle: 'proton' },
+};
+
+$('sel-builtin').addEventListener('change', () => {
+  const name = $('sel-builtin').value;
+  if (!name) return;
+  Object.assign(S, BUILTINS[name]);
+  syncControlsFromState();
+  profileDirty = true;
+  rebuildAll();
+});
+
+function syncControlsFromState() {
+  $('sl-R').value = S.R;       $('v-R').textContent  = S.R.toFixed(2);
+  $('sl-rL').value = S.rL;     $('v-rL').textContent = S.rL.toFixed(2);
+  $('sl-rS').value = S.rS;     $('v-rS').textContent = S.rS.toFixed(2);
+  $('sl-s').value = S.shear;   $('v-s').textContent  = S.shear.toFixed(2);
+  $('sl-op').value = S.opacity; $('v-op').textContent = S.opacity.toFixed(2);
+  $('v-tau').textContent = formatTau(S.tauNum);
+  $('sel-particle').value = S.particle;
+  $('custom-path-controls').style.display = (S.particle === 'custom') ? 'block' : 'none';
+  if (S.customNth !== undefined) $('in-nth').value = S.customNth;
+  if (S.customNph !== undefined) $('in-nph').value = S.customNph;
+  for (const [id, key] of Object.entries(toggles)) {
+    $(id).checked = S[key];
+  }
+}
+
+function resetToDefaults() {
+  Object.assign(S, {
+    R: 3.0, rL: 0.80, rS: 0.40,
+    tauNum: 1, shear: 0, opacity: 0.55,
+    particle: 'proton',
+    customNth: 1, customNph: 1,
+    showSurface: true, showWire: false, showColor: true,
+    showGrid: false, showPath: true, showSpine: false, showAxes: false,
+  });
+  syncControlsFromState();
+  profileDirty = true;
+  rebuildAll();
+}
+
+/* ─── Keyboard shortcuts ────────────────────────────────── */
+
+window.addEventListener('keydown', (e) => {
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') return;
+  switch (e.key) {
+    case 'r':
+      controls.reset();
+      camera.position.set(3 * S.R, 2 * S.R, 4 * S.R);
+      camera.lookAt(0, 0, 0);
+      break;
+    case 'g':
+      S.showGrid = !S.showGrid;
+      $('cb-grid').checked = S.showGrid;
+      rebuildAll();
+      break;
+    case 'p': {
+      const order = ['none', 'u', 'd', 'proton', 'neutron'];
+      const idx = order.indexOf(S.particle);
+      S.particle = order[(idx + 1) % order.length];
+      $('sel-particle').value = S.particle;
+      rebuildAll();
+      break;
+    }
+    case '+': case '=':
+      S.tauNum += 1;
+      $('v-tau').textContent = formatTau(S.tauNum);
+      rebuildAll();
+      break;
+    case '-': case '_':
+      S.tauNum -= 1;
+      $('v-tau').textContent = formatTau(S.tauNum);
+      rebuildAll();
+      break;
+  }
+});
+
+/* ─── Render loop ──────────────────────────────────────── */
+
+rebuildAll();
+
+animLoop(() => {}, { renderer, scene, camera, controls });
+
+</script>
+
+</body>
+</html>
