@@ -13,7 +13,7 @@ The naive next step would be to import standard EM and ask how two charged objec
 
 The central question:
 
-> *Given two knots on the same 2D compact sheet, what does the energy of the configuration depend on, and what regimes (bound, partially separated, free) does the math support?*
+> *Given two (or more) knots on the same 2D compact sheet, what does the energy of the configuration depend on, and what regimes (bound, partially separated, free) does the math support?*
 
 ### Underlying targets
 
