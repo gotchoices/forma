@@ -67,22 +67,21 @@ Tracks the project's active work files, their states, dependencies, and next act
 
 ### clover-mass.md — analytical mass spectrum on the corrugated torus
 
-**Topic:** Derive m(ε, χ, τ; embedding) analytically by reducing the 2D Laplacian on the corrugated torus to a 1D Hill equation (via the helical translation symmetry of clover-quarks §10.3), expanding perturbatively in χ around the constant-radius flat-twisted-torus limit, and inverting two observables (m_p, m_n) to extract two unknowns (ε, χ).
+**Topic:** Derive m(ε, χ, τ; embedding) analytically by reducing the 2D Laplacian on the corrugated torus to a 1D Hill equation (via the helical translation symmetry of clover-quarks §10.3), expanding perturbatively in η = r_lobe/R_major around the constant-radius flat-twisted-torus limit, and inverting two observables (m_p, m_n) to extract two unknowns (ε, χ).
 
-**Status:** Phase-A draft. Analytical reduction is complete; first-order χ-corrections shown to vanish by 3-fold symmetry; second-order structure set up but not closed. Toy inversion under one candidate (n, m)-to-particle identification gives ε ≈ 0.01 — physically plausible but contingent on identification.
+**Status:** Phase-A complete through O(η²). Forward map μ²(n, m, ε, χ) given in closed form: zeroth-order μ² = (n − 2m/3)² + (m/ε)²; first-order vanishes by ⟨P_x⟩ = 0; second-order computed numerically from Fourier coefficients of P_x. **Headline negative result:** no low-(n, m) identification tested fits the observed m_n/m_p ≈ 1.001378 in any regime where the η-expansion converges. The framework is falsifiable, and at this level of analysis it fails.
 
 **Dependencies:**
 - *Upstream:* clover-quarks (the surface, the metric, the path-winding identifications)
 - *Sister files:* clover-quarks (mode-particle identification is a shared open question)
 
 **Next actions:**
-1. Compute Fourier coefficients a_n(χ) of P_x for the clover profile (six analytic integrals).
-2. Evaluate F(n, m, ε) explicitly for proton and neutron candidate modes.
-3. Resolve the mode-particle identification — wave-function structure analysis or independent semiclassical argument.
-4. Run inversion with χ-corrections; check uniqueness.
-5. Redo §1–6 for embedding B (rotation) and compare spectra.
+1. Solve the Hill equation directly (non-perturbatively) on a small grid of (ε, χ) — scipy 1D ODE eigenvalues, very cheap.
+2. Expand the (n, m) search to higher integers (smaller second-order shifts).
+3. Redo for embedding B (rotation) and compare.
+4. Check wavefunction overlaps with lobe/saddle regions for the candidate modes.
 
-**Why this might matter:** If the inversion finds clean (ε, χ) values reproducing m_p and m_n simultaneously, the corrugated-torus geometry passes a major empirical test without numerical sweeping. If no values work, that constrains the surface choice or the embedding choice.
+**Why this matters:** This is the first concrete falsifiable test of the corrugated-torus geometry as a particle-physics substrate. Phase A (qualitative results: charges, Z₃ confinement, β-decay topology) succeeded. Phase C (quantitative: mass ratio) so far fails. If the non-perturbative ODE solve also fails, the geometry as currently specified cannot produce the standard model's mass spectrum, and the next step is to either modify the geometry (different τ, different profile, different embedding) or accept that this surface explains the *qualitative* structure but the masses come from elsewhere.
 
 ---
 

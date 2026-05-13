@@ -1,6 +1,6 @@
 # clover-mass.md — Analytical mass spectrum on the corrugated torus
 
-**Status:** Phase-A draft. Analytical reduction is complete; perturbative expansion through second order is set up but not fully closed; inversion to (ε, χ) requires resolving the wave-mode → particle identification.
+**Status:** Phase-A complete through second-order perturbation theory. The forward map μ²(n, m, ε, χ) is now in closed form (§4 + §6.3) and numerically verified. **Headline negative result:** no low-(n, m) identification we have tested matches the observed m_n/m_p = 1.001378 in any regime where the perturbation series converges (§6.4). The next test is a non-perturbative 1D Hill-equation solve.
 
 This file derives the mass spectrum on the corrugated torus surface of [clover-quarks.md](clover-quarks.md), exploits the helical symmetry of §10.3 to reduce the 2D eigenvalue problem to a 1D Hill equation, and attempts the inversion to extract (ε, χ) from observed proton and neutron masses.
 
@@ -176,8 +176,7 @@ The (m/ε)² piece is the dominant contribution for nonzero m at small ε, but t
 | (1, −1) | 4/3 | 5/3 | 25/9 + 1/ε² |
 | (2, 3) | 1 | 0 | 0 + 9/ε² = 9/ε² |
 
-<!--EC I'm not sure 2,3 meets metric-charge's closure criteria.  It should evaluate at 1,1.5 reduction which does not seem to close.  -->
-The mode (2, 3) is curious: its effective ring momentum vanishes (n − 2m/3 = 0), so it is **massless in the ring direction**, with mass purely from the cross-section term. Such modes exist whenever 2m is a multiple of 3 (i.e., m ∈ 3ℤ) with n = 2m/3.
+The mode (2, 3) has vanishing effective ring momentum (n − 2m/3 = 0), so its mass is purely from the cross-section term. **However, this is a wavemode label, not a closed knot.** Metric-charge's closure rule (m | n) tests whether a (m, n) winding maps to a self-closing path on the torus. The wavemode labels here are momentum quantum numbers (k_θ, k_φ), not path windings — they coincide only for specific (n, m) families. For (2, 3) interpreted as windings, we'd have 3 ∤ 2 and 2 ∤ 3, so no closure: this wavemode is not a particle. The mass formula gives a frequency for every (n, m) ∈ ℤ², but **the physical-particle subset is filtered by an additional closure / path-winding condition** (clover-quarks §2–3). I'll restrict to closure-satisfying (n, m) before reading off particle masses.
 
 At small ε (thin tube, cross-section dominates), the lowest finite-mass modes are integer-ring modes (m = 0, n ≠ 0) with mass 1, 4, 9, .... At larger ε (~ unity or above), the |n − 2m/3| < 1 modes (such as (1,1) and (1,2)) become competitive.
 
@@ -226,56 +225,100 @@ $$
 
 where V is the perturbing operator (the χ-dependent piece of L = Δ_g acting on ψ), and the sum runs over allowed Bloch states p' ≡ p (mod 3) — the corrugation can only couple states within the same Bloch sector (because P_x(u) is periodic in 2π, not 2π/3).
 
-### 6.1 Fourier structure of P_x(u)
+### 6.1 The correct small parameter
+
+It is **not** χ that controls the size of the perturbation — it is the ratio of profile size to ring radius. Writing P_x = r_lobe · P̃_x(u) where P̃_x is order-1 in r_lobe units, and noting r_lobe / R_major = ε/(2 + χ), the natural small parameter is
+
+<!-- η ≡ r_lobe / R_major = ε / (2 + χ) -->
+$$
+\eta \;\equiv\; \frac{r_{\mathrm{lobe}}}{R_{\mathrm{major}}} \;=\; \frac{\varepsilon}{2 + \chi}
+$$
+
+Corrections enter at order η², and the perturbation series is convergent only when η ≪ 1. For ε ≈ 0.5, χ ≈ 1 we have η ≈ 0.17 (acceptable); for ε ≈ 3 we have η ≈ 1 (PT breaks down). This is an important calibration we did not have at the start of §5.
+
+### 6.2 Fourier structure of P_x(u)
 
 The clover profile satisfies P(u + 2π/3) = R_{2π/3} P(u). In complex form P_± ≡ P_x ± i P_y:
 
-<!-- P_+(u + 2π/3) = e^{2πi/3} P_+(u) ; P_- = conjugate -->
+<!-- P_+(u + 2π/3) = e^{2πi/3} P_+(u) -->
 $$
 P_+(u + 2\pi/3) \;=\; e^{2\pi i / 3}\, P_+(u)
 $$
 
-So P_+ has Fourier modes only at indices n ≡ 1 (mod 3), and P_− only at n ≡ 2 (mod 3):
+So P_+ has Fourier modes only at indices q ≡ 1 (mod 3), and P_− only at q ≡ 2 (mod 3). Therefore P_x has Fourier support only on q ≡ ±1 (mod 3), with no q ≡ 0 (mod 3) component. **Numerically computed Fourier coefficients** ã_q ≡ (1/2π) ∫₀^{2π} P̃_x(u) e^{−iqu} du for the clover (in r_lobe units, with r_lobe = 1, r_saddle = χ):
 
-<!-- P_+(u) = Σ_{k ∈ ℤ} a_{3k+1} e^{i(3k+1)u} -->
+| q | \|ã_q\| at χ=0.5 | \|ã_q\| at χ=1.0 | \|ã_q\| at χ=2.0 |
+|---|---|---|---|
+| ±1 | 0.85 | 1.06 | 1.41 |
+| ±2 | 0.22 | 0.29 | 0.39 |
+| ±4 | 0.18 | 0.20 | 0.16 |
+| ±5 | 0.05 | 0.07 | 0.07 |
+
+(Verified: |ã_q| at q ≡ 0 (mod 3) is < 10⁻⁹.) The series is dominated by |q| ≤ 5; higher harmonics contribute < 5% to second-order sums in the cases checked.
+
+### 6.3 Coupling and the second-order shift
+
+Working in R_major = 1 units and treating L = −∂_u² − [η P̃_x'/(1+η P̃_x)] ∂_u + ε² k_v²/(1+η P̃_x)² as the operator with eigenvalue E = ε² ω², the first-order perturbation operator is
+
+<!-- L_1 ψ = -P̃_x' ∂_u ψ - 2 ε² k_v² P̃_x ψ -->
 $$
-P_+(u) \;=\; \sum_{k \in \mathbb{Z}}\, a_{3k+1}\, e^{i (3k+1) u}
-$$
-
-and the same with conjugate coefficients for P_−. Therefore P_x = (P_+ + P_−)/2 has Fourier components at n ≡ ±1 (mod 3), with no n ≡ 0 (mod 3) component. The lowest nonvanishing Fourier modes are:
-
-| Fourier index | Allowed in P_x? | First non-zero index family |
-|---|---|---|
-| n = 0 | ❌ (forces ⟨P_x⟩ = 0) | — |
-| n = ±1, ±2 | ✓ | dominant low-mode contribution |
-| n = ±4, ±5 | ✓ | next-order |
-| n = ±7, ±8 | ✓ | … |
-
-For the symmetric χ = 1 clover profile, the n = ±1 and n = ±2 coefficients can be computed analytically by integrating P_x(u) e^{−inu} du over the three lobe-arcs and three saddle-arcs. This is a routine calculation but tedious (six piecewise integrals, parameterised by the lobe/saddle radii). The result for general χ is
-
-<!-- a_n = (function of r_lobe, r_saddle) — explicit form deferred to Appendix -->
-$$
-a_n(\chi) \;=\; \text{explicit function of } r_{\mathrm{lobe}},\, r_{\mathrm{saddle}} \;[\text{deferred}]
+L_1 \psi \;=\; -\tilde P_x'(u)\, \partial_u \psi \;-\; 2 \varepsilon^2 k_v^2\, \tilde P_x(u)\, \psi
 $$
 
-### 6.2 Coupling and the second-order shift
+Matrix elements between unperturbed plane waves ψ_p = e^{ipu}/√(2π) evaluate to
 
-The perturbation V acting on ψ_0 = e^{i p u} produces
-
-<!-- V ψ_0 = [(R/(R+P_x))^{-1} − 1 in suitable form] e^{ipu} -->
-
-The dominant terms in V at order P_x/R have Fourier content tied to P_x(u). The coupling matrix element ⟨p'|V|p⟩ is non-zero only when p' − p is a non-vanishing Fourier index of P_x — i.e., when p' − p ≡ ±1, ±2 (mod 3).
-
-For a given unperturbed state (n, m), the second-order shift δ²μ² takes the **structural form**
-
-<!-- δ²μ²_{(n,m)} = χ² · F(n, m, ε) + O(χ⁴) -->
+<!-- ⟨ψ_{p+q}|L_1|ψ_p⟩ = ã_q · (pq - 2ε² k_v²) -->
 $$
-\delta^2 \mu^2_{(n, m)} \;=\; \chi^2 \cdot F(n,\, m,\, \varepsilon) \;+\; O(\chi^4)
+\langle\psi_{p+q} \,|\, L_1 \,|\, \psi_p\rangle \;=\; \tilde a_q \cdot (p\,q \;-\; 2\varepsilon^2 k_v^2)
 $$
 
-where F(n, m, ε) is a finite sum of energy-denominator terms determined by the Fourier expansion of P_x and the unperturbed spectrum. Crucially, **F depends on (n, m)** — different modes have different second-order shifts, and the χ-correction can split the proton from the neutron even when their flat-limit masses coincide.
+with energy denominator E_p − E_{p+q} = −q(2p+q). The second-order shift in **dimensionless mass squared** is
 
-**Where this is now.** I have a clean structural form for δ²μ²; the explicit form of F (and the χ → 0 limit a_n(χ)) is set up but not closed in this draft. Computing F(n, m, ε) explicitly for the proton and neutron mode labels (§7) is the next concrete step.
+<!-- δ²μ²_{(n,m)}(ε, χ) = -1/(2+χ)² · Σ_{q≠0} |ã_q(χ)|² · (mq - 2ε² k_v²)² / (q(2m+q)) -->
+$$
+\boxed{\;\delta^2 \mu^2_{(n, m)}(\varepsilon, \chi) \;=\; -\,\frac{1}{(2+\chi)^2}\,\sum_{q \neq 0}\, \frac{|\tilde a_q(\chi)|^2\,\bigl(m\,q \;-\; 2\varepsilon^2\, k_v^2\bigr)^2}{q\,(2m + q)} \;}
+$$
+
+with k_v = n − 2m/3 and p = m, summed over q ≡ ±1 (mod 3). **This is the closed-form O(η²) correction.** The total mass squared through this order is
+
+<!-- μ²_(n, m)(ε, χ) = (n - 2m/3)² + (m/ε)² + δ²μ²_(n,m)(ε, χ) + O(η⁴) -->
+$$
+\mu^2_{(n, m)}(\varepsilon, \chi) \;=\; \left(n - \tfrac{2m}{3}\right)^2 \;+\; \left(\tfrac{m}{\varepsilon}\right)^2 \;+\; \delta^2\mu^2_{(n,m)}(\varepsilon, \chi) \;+\; O(\eta^4)
+$$
+
+### 6.4 Numerical evaluation: the corrections are LARGE
+
+Plugging the Fourier coefficients ã_q(χ) into the formula above and evaluating for the candidate (proton, neutron) modes from §7–8:
+
+| (n_p, m_p) → (n_n, m_n) | ε | χ | η | μ²_p (0th) | δ²μ²_p | μ²_n (0th) | δ²μ²_n | m_n/m_p (corrected) |
+|---|---|---|---|---|---|---|---|---|
+| (1, 2) → (0, 1) | 3.0 | 1.0 | 1.00 | 0.556 | +0.725 | 0.556 | +7.91 | 2.57 |
+| (1, 2) → (0, 1) | 1.0 | 1.0 | 0.33 | 4.111 | +0.136 | 1.444 | +0.425 | 0.66 |
+| (1, 2) → (0, 1) | 0.5 | 1.0 | 0.17 | 16.111 | +0.087 | 4.444 | +0.143 | 0.53 |
+| (1, 1) → (2, 0) | 0.5 | 1.0 | 0.17 | 4.111 | +0.084 | 4.000 | −1.016 | 0.84 |
+| (1, 1) → (2, 0) | 0.5 | 2.0 | 0.13 | 4.111 | +0.063 | 4.000 | −0.844 | 0.87 |
+
+**Target m_n/m_p = 1.001378.** The corrections move the ratio away from the target in every PT-valid regime tested.
+
+**Three findings:**
+
+1. **The PT expansion is valid only for ε ≪ 2 + χ.** At ε = 3 (where the zeroth-order Identification II suggested) η = 1 and the corrections are larger than the zeroth-order μ². The toy inversion of §8 sat in the wrong regime.
+
+2. **Different modes respond very differently to corrugation.** The mode (2, 0) (a pure ring mode with k_φ = 0, k_v = 2) has δ²μ² ≈ −1 at ε = 0.5, χ = 1 — a 25% downward shift. The mode (1, 1) at the same point shifts by only +2%. The corrugation strongly favours integer-ring modes through energy-denominator resonances with neighbouring states.
+
+3. **No tested (n, m) → (proton, neutron) assignment fits the observed m_n/m_p in any PT-valid regime.** The zeroth-order inversion's apparent matches (§8.1's clusters) are artifacts of ignoring χ-dependence; once it's included, the matches dissolve.
+
+### 6.5 What this means
+
+The framework is **falsifiable at this stage**, not merely under-determined. The forward map μ²(n, m, ε, χ) is now in closed form through O(η²), and we can ask whether any (low-)integer (n, m) labels give the observed m_n/m_p ≈ 1.001378 for some (ε, χ) with η small enough for PT to make sense. So far the answer is **no**.
+
+Three possible resolutions:
+
+- **(R1) The mode labels for proton and neutron are higher than I've considered.** A high-(n, m) mode has smaller relative second-order shift (more available decoupled neighbours).
+- **(R2) Perturbation theory at second order is insufficient.** The corrugated torus may need a non-perturbative or higher-order treatment. The 1D Hill equation (§2) admits direct numerical solution at any (ε, χ); this would be the natural next computational step.
+- **(R3) The corrugated-torus geometry is the wrong substrate for the proton sheet.** The mass relations of the standard model may not be reproducible from a clover-symmetric corrugation alone.
+
+(R2) is the cheapest to test: a scipy-based ODE solver on the Hill equation gives exact (ε, χ)-dependent eigenvalues, and we can rerun the inversion using those. Only after (R2) fails should we reach for (R1) or (R3).
 
 ## 7. The mode-particle identification
 
@@ -366,7 +409,9 @@ The major-ring radius is roughly the proton Compton wavelength (0.21 fm), and th
 4. The (0, 1) ↔ (1, 2) split could equally be u-d (proton/neutron internal quarks) rather than p-n. Need to clarify whether each (n, m) is a single particle or an internal degree of freedom.
 5. Quantum/loop corrections are entirely absent — this is a tree-level standing-wave calculation.
 
-**Headline.** The leading-order formula gives **a discrete result for ε** when we pick a pair of (n, m) modes for (p, n). Under the most parsimonious assignment we get ε ≈ 3 with R ≈ 0.16 fm, which is in the right physical ballpark. The χ-dependence enters only at second order in PT (§5–6), so the **leading-order inversion is already an algebraic 1-equation–1-unknown problem**, not a numerical sweep.
+**Headline (zeroth order only).** The leading-order formula gives **a discrete result for ε** when we pick a pair of (n, m) modes. Under Identification II we get ε ≈ 3, R ≈ 0.16 fm.
+
+**Important caveat — see §6.4.** Once the second-order χ-corrections are computed numerically, the ε ≈ 3 point sits at η = 1 where perturbation theory fails outright, and the corrections invalidate the toy inversion. The ε ≈ 0.5 cluster from §8.1 also fails when corrected. **No low-(n, m) identification tested so far matches the observed m_n/m_p when χ-corrections are included.** The leading-order toy inversion is misleading; reading §8 in isolation overstates the result. Proceed to §6.4–6.5 for the corrected picture.
 
 ### 8.1 Survey of low-(n, m) identifications
 
@@ -381,8 +426,16 @@ A brute survey over all ordered pairs ((n_p, m_p), (n_n, m_n)) with |n|, |m| ≤
 | 0.65 | 3.07 | 0.65 | 0.42 | (2, −1) → (1, 2) |
 | 3.0 | 0.74 | 0.16 | 0.47 | (1, 2) → (0, 1) |
 
-**The cluster near ε ≈ 0.5, R ≈ 0.42 fm is particularly interesting:** R_major comes out at half the proton charge radius (0.84 fm), and the surface diameter ≈ R + 2 R = ~1 fm is well-matched to the measured proton size. Multiple identifications produce this same (ε, R) — e.g. (proton, neutron) = ((1, 1), ±(2, 0)) or ((0, 1), ±(2, 0)) — suggesting it is a robust solution of the leading-order constraint, with the choice of which (n, m) is "the proton" being a labelling question.
-<!--EC Is this a tautology (or coincidence) that we hit 1/2 the measured charge radius?  Or is it truly a significant finding?  -->
+**The cluster near ε ≈ 0.5, R ≈ 0.42 fm is robust** in that several distinct identifications converge on this same (ε, R_major) — e.g. (proton, neutron) = ((1, 1), ±(2, 0)) or ((0, 1), ±(2, 0)) — so the value isn't an artefact of a single arbitrary pairing.
+
+**Is R_major ≈ 0.42 fm ≈ R_p/2 a real prediction?** Not yet. We used **only two inputs** in the inversion: m_p (sets the overall mass scale) and m_n/m_p (sets ε). The proton charge radius R_p = 0.84 fm was *not* an input. Three concerns before claiming significance:
+
+1. **R_major is not R_p.** R_p is the RMS electromagnetic radius — for our torus, R_p² ≈ R_major² + (cross-section RMS)² + (charge-distribution-shape corrections). A back-of-envelope estimate gives R_RMS_torus ≈ 0.44 fm at this point, comparable to R_major but well below R_p = 0.84 fm.
+2. **The 0.42 fm is not unique** — the survey also gives clusters at 2.3 fm (much too large), 4.0 fm (way too large), 0.65 fm, 0.16 fm, etc. The 0.42 fm cluster is one of several.
+3. **No first-principles reason** has been given for which (n, m) family is "the proton." If a different identification is the physical one, R_major could be anywhere in the survey range.
+
+**Conservative reading.** The 0.42 fm value is *not* shown to be coincidence (it survives across identifications within one cluster), but it's also not shown to be a prediction of the geometry (multiple clusters exist; R_major ≠ R_p; no identification pinned). Treat as a hint to revisit once the identification is fixed and a proper ⟨r²⟩ calculation is done on the surface.
+
 **Pinning the identification.** The leading-order constraint produces a *family* of solutions, not a unique answer. To collapse the family we need additional input:
 
 1. **A third observable** (e.g., the Δ⁺ resonance mass, the electron mass, or the muon mass) — gives a second algebraic equation.
@@ -393,23 +446,38 @@ The fact that ε ≈ 0.5 emerges robustly across multiple identifications is the
 
 ## 9. What we have, what we don't
 
-**Established analytically:**
-<!--EC Explain these results in plainer terms.  Less jargon.  -->
-1. The Laplacian on the corrugated torus reduces to a 1D Hill equation (§2). No closed form for the general spectrum, but a clean ODE.
-2. The Bloch boundary conditions force k_θ = n − m/3 — third-integer ring momenta — *independent of χ and embedding*.
-3. The zeroth-order spectrum is μ²_{(n,m)} = (n − 2m/3)² + (m/ε)², the standard twisted-torus form with effective shear σ = 2τ = 2/3 (verified numerically against the direct metric calculation).
-4. First-order χ-corrections vanish for *every* (n, m) due to ⟨P_x⟩ = 0.
-5. Second-order χ-corrections take the form δ²μ²_{(n,m)} = χ² · F(n, m, ε), with F a known finite sum over Fourier modes of P_x.
-6. Under the parsimonious identification (proton, neutron) = ((1, 2), (0, 1)), the leading-order inversion gives ε ≈ 3.0, R_major ≈ 0.16 fm — physically plausible but identification-dependent.
+**Established analytically — plain-language summary:**
+
+1. **The wave problem on a 2D corrugated torus collapses to a 1D wave problem along one helical coordinate.** Because the corrugation has a helical translation symmetry, the wave can be decomposed: one component is a plain oscillation around the ring, and the other is a periodic function along the cross-section. We only need to solve a 1D ordinary differential equation.
+
+2. **Allowed waves carry ring-momentum in steps of 1/3, not 1.** Going once around the ring also shifts the cross-section by 120° (the twist). For a wave to come back to itself, its ring-momentum must be an integer-plus-multiple-of-1/3. This is the same "third-integer momenta" structure that gives the up/down quark fractional charges in §11 of clover-quarks. It is a property of the topology, not of corrugation depth or of which embedding we pick.
+
+3. **The bare mass formula is μ² = (n − 2m/3)² + (m/ε)².** Two integers (n, m) label each wave. The first term measures ring-oscillation energy after accounting for the twist's effect on the wavenumber. The second term is cross-section energy, scaled by the aspect ratio ε (thin tube ⇒ small ε ⇒ large cross-section frequencies). This is exactly the standard MaSt twisted-torus formula with shear σ = 2/3.
+
+4. **Shallow corrugation doesn't shift masses at leading order.** The corrugation depth χ averages out: ⟨P_x⟩ = 0 by 3-fold symmetry. So the bare formula in point 3 is accurate to better-than-linear order in χ; corrections start at order χ².
+
+5. **The first correction enters at χ², via Fourier mixing.** The corrugation couples each wave to its neighbours through the Fourier components of P_x(u). The mass shift takes the form δ²μ² = χ² · F(n, m, ε) where F is a finite sum over Fourier indices that is, in principle, computable analytically.
+
+6. **A toy zeroth-order inversion gives discrete (ε, R) for each chosen (n, m) → particle map**, but these zeroth-order matches DO NOT survive once the χ-correction is included. The first non-trivial result of this analysis is **negative**: no low-(n, m) identification we have tested fits the observed m_n/m_p ≈ 1.001378 in any regime where perturbation theory is valid (η ≪ 1). See §6.4 for details. This is not a tuning failure; it is a **falsifiable test** of the corrugated-torus geometry that the present setup fails to pass.
+
+**Done in this draft (since the original outline):**
+1. ~~Fourier coefficients a_q(χ) for the clover profile~~ — done numerically (§6.2).
+2. ~~Evaluate F(n, m, ε) for candidate (p, n) modes~~ — done (§6.3–6.4); closed-form formula given.
+3. ~~Run the inversion with χ-corrections~~ — done numerically; no low-(n, m) identification fits.
 
 **Open / next steps:**
-1. **Compute the Fourier coefficients a_n(χ) of P_x for the clover profile.** Six analytic integrals; ~half a page.
-2. **Evaluate F(n, m, ε) for candidate proton and neutron modes.** Plugging a_n into the second-order PT formula. ~1 page.
-3. **Pin the mode-particle identification.** Either by deriving the wave-function structure of (0, 1) vs (1, 2) and matching to lobe/saddle weights, or by a separate argument (path-integral semiclassics, gauge-invariance).
-4. **Run the inversion with χ-corrections.** Two equations (m_p, m_n) in two unknowns (ε, χ) — should produce a discrete solution set.
-5. **Repeat the derivation for embedding B (rotation).** §10's metric must be redone; second-order PT picks up extra terms from the cross-section rotation. The unperturbed spectrum (§4) is the same for both embeddings.
+1. **Solve the Hill equation directly (non-perturbatively)** for a small grid of (ε, χ). This is a 1D ODE eigenvalue problem — scipy can do it in milliseconds. Sweep small grids and check whether *any* (ε, χ, identification) gives m_n/m_p = 1.001378.
+2. **Expand the search over (n, m).** Higher-(n, m) modes have smaller second-order corrections (more accessible decoupled neighbours), and might satisfy the inversion in a PT-valid regime.
+3. **Redo for embedding B (rotation).** Embedding B has a different metric and hence different δ²μ². The structural conclusion (whether the geometry can or cannot produce m_n/m_p) might depend on the embedding.
+4. **Cross-check the mode-particle identification** by computing wavefunction overlaps with lobe vs saddle regions for the candidate (n, m).
+5. **If all of the above fail**, accept that the corrugated-torus geometry as currently specified does not reproduce the proton-neutron mass ratio quantitatively, even though it succeeds qualitatively (Q_lobe = +2/3, Q_saddle = −1/3, three-quark structure, Z₃ confinement, β-decay topology).
 
-**The structural payoff** of this work: even before the explicit numbers come out, we now have a **closed-form parameter family** m(ε, χ, τ; embedding) accurate to O(χ²) and exact to all orders in ε (since the flat-torus piece is exact). The inverse problem is well-posed: 4 parameters, 2–3 strong observables, expect a finite set of solutions. **No numerical grid sweeping should be necessary** until step 4 — and that's two algebraic equations, not a Laplacian eigensolver.
+**Structural payoff** of this work, regardless of the negative inversion outcome:
+
+- The Laplacian on this surface is now in closed form through O(η²).
+- The forward map μ² → (ε, χ, n, m) is explicit and verified numerically.
+- We have a concrete falsifiable observable (m_n/m_p) and can say whether the geometry passes or fails.
+- The next step is one 1D ODE eigensolver, not a 2D PDE eigensolver — *much* cheaper than the original Phase-C plan.
 
 ## 10. Cross-references
 
