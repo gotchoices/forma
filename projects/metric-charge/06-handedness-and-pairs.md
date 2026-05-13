@@ -379,9 +379,7 @@ This chapter's job is to establish the *single-field* pair structure (sign-conju
 
 ## 8. What's next
 
-[Chapter 7 — Aspect ratio and character](07-aspect-ratio-and-character.md). Sweep ε = L_u / L_w and discover what knot families dominate at small ε (thin sheet), large ε (fat sheet), and ε ≈ 1. Look — without targeting it — for the conditions under which a sheet supports single-phase, three-phase, or dark behaviors. The "extreme aspect ratio" question (per MaSt model-F's electron-sheet identification) and the "diffuse charge" question (per model-F's neutrino-sheet identification) are examined there as reference targets, not as identifications this project pre-commits to.
-
-Chapter 7 changes the parameter focus from sign labels (Chapter 6) to magnitude scales (the aspect ratio ε). Together, chapters 6 and 7 cover the two most important sub-(m, n) parameters: handedness and aspect ratio.
+[Chapter 7 — Aspect ratio and character](07-aspect-ratio-and-character.md).
 
 ---
 

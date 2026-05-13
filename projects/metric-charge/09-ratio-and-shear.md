@@ -458,7 +458,7 @@ This is metric-charge's contribution to the framework's particle-sheet model. Mu
 
 ## 9. What's next
 
-[**Chapter 10 — Closing summary**](10-closing-summary.md). Consolidates what the project established across all nine chapters, what was ruled out, what was unexpectedly found, and what remains open. Hands off to [metric-binding](../metric-binding/) for the multi-knot interaction story — multi-knot energetics, force laws, bound states, multi-sheet composition rules, and the candidate strong-force mechanism.
+[Chapter 10 — Closing summary](10-closing-summary.md).
 
 ---
 

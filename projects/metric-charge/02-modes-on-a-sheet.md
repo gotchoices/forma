@@ -327,9 +327,7 @@ The spacetime view and the topological view make the same statement: a mode's (m
 
 ## 6. What's next
 
-[Chapter 3 — Knots on the torus](03-knots-on-the-torus.md). Take the (m, n) mode family derived here and reframe it geometrically as **closed curves traversing the (u, w) sheet**. The topological setup — that closed loops on T² fall into homotopy classes labeled by (m, n) ∈ ℤ² — is established in [grid-duality §7.5.1](../grid-duality/07-wrap-promotion-modeling.md). Chapter 3's distinctive job is the *geometric visualization* of these topological classes as actual torus knots, the mapping between (m, n) labels and standard torus-knot terminology, and any non-self-intersection or self-consistency constraints that pick out a sub-family of the full ℤ² label set.
-
-The diagonal modes (m, n) of §4.3 will be the geometrically interesting cases in chapter 3: each gives a non-trivial torus knot. The single-axis modes (m, 0) and (0, n) of §4.2 reduce to trivial wrappings around one cycle — closed curves but not properly *knotted* in the topological sense. The (0, 0) zero mode is a point (no curve at all). This three-class partition will reappear at the topological level in chapter 3 just as it appeared at the dispersion-relation level here.
+[Chapter 3 — Knots on the torus](03-knots-on-the-torus.md).
 
 ---
 

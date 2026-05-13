@@ -269,9 +269,7 @@ This partition is the geometric face of the chapter-4 analysis. Chapter 4 examin
 
 ## 8. What's next
 
-[Chapter 4 — The closure condition](04-the-closure-condition.md). Take the diagonal-knot subset identified in §7 and work through which (m, n) actually satisfy the chirality criterion of [Chapter 1 §10](01-foundation.md) — i.e., which closed curves are achiral in 3-space such that the wrap-order's R_u is among their topological symmetries. Examine variants of the closure rule (opposite wrap-order, alternative particle-symmetry choices) and what particle classes each variant would select. Identify the distinguished sub-family of knots that carry observable charge in this framework.
-
-The geometric and topological language built in this chapter — torus knots, winding pairs, gcd structure, knot-space labels, single-knot vs. multi-component vs. multi-knot configurations — is the substrate that chapters 4 through 8 operate on.
+[Chapter 4 — The closure condition](04-the-closure-condition.md).
 
 ---
 

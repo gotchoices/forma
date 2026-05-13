@@ -493,4 +493,4 @@ That is the entire content of this chapter. Everything else in the project must 
 
 ## What's next
 
-[Chapter 2 — Modes on a sheet](02-modes-on-a-sheet.md). Solve the wave equation on M. Derive the mode family (m, n) labeled by winding pairs in (u, w), the dispersion relation, and the discrete mass spectrum. Confirm the (0, 0) zero mode behaves as ordinary light. Establish the (m, 0) and (0, n) "single-axis" modes as candidate closure-failure mass-only states for chapter 4 to interrogate.
+[Chapter 2 — Modes on a sheet](02-modes-on-a-sheet.md).

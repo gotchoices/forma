@@ -457,9 +457,7 @@ This is the framework's structural inventory at the linearized level for a singl
 
 ## 9. What's next
 
-**Chapter 9 — Ratio and shear together** (planned, scoped in work-ch9.md). Bring Ch 7 (ratio alone) and this chapter (shear alone) together into a unified treatment of the (σ, ε) parameter space — how the two metric parameters jointly determine which closure-satisfying configurations dominate, what the sheet's structural character is, and how the framework's qualitative sheet types (lepton-like, neutrino-like, hadronic-like) emerge as different regions of the combined landscape. Ch 9 is the substrate for the eventual downstream exercise: given a sheet's measured properties, derive the metric values (diagonals + cross-term) for that sheet.
-
-Then **closing summary**, then hand-off to [metric-binding](../metric-binding/) for multi-knot energetics: k-selection for fractional-charge multi-links (§6.5, candidate φ⁴ inter-component dynamics), stability of mixed-orientation compounds (§7.4, candidate baryon-like structures), and reconciliation with the R-track studies' mode-by-mode quark assignments.
+[Chapter 9 — Ratio and shear together](09-ratio-and-shear.md).
 
 ---
 

@@ -243,9 +243,7 @@ What the chapter does establish:
 
 ## 8. What's next
 
-[Chapter 8 — Shear and fractional charge](08-shear-and-fractional-charge.md). Turn on σ_uw and examine its effects. Test the prediction (Chapter 6 §6) that shear biases matter over antimatter. Then derive the fractional-charge mechanism: N phased wraps distributed in w contribute 1/N charge each, and shear is what selects N = 3 cleanly. This is where the multi-component link structure of [Chapter 4 §4.3](04-the-closure-condition.md) connects to the three-phase structure that MaSt model-F (and standard physics' quark organization) might correspond to.
-
-Chapter 8 changes the parameter focus from sheet shape (ε, this chapter) to sheet skew (σ_uw). Together, chapters 7 and 8 cover the two metric-sheet parameters that shape the inventory at the linear level.
+[Chapter 8 — Shear and fractional charge](08-shear-and-fractional-charge.md).
 
 ---
 

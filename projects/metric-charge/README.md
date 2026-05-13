@@ -159,6 +159,8 @@ The chapters below are plausible follow-ups, not commitments.
 
 8. **`08-shear-and-fractional-charge.md`** — Turn on σ_uw. Quantify the chirality bias derived in Chapter 6 §6 (the explicit mass split between chirality partners within a natural particle under shear). Then examine the fractional-charge optimization: closure-satisfying multi-component links of the form k × T(1, n') have 1/k charge per component; the chapter computes which k is energetically favored under shear and reports the result honestly. If k = 3 emerges, the framework matches the structural pattern that MaSt model-F associates with quark organization.
 
-9. **`09-closing-summary.md`** — Consolidate what the project established, ruled out, and unexpectedly found. Hand off to [metric-binding](../metric-binding/) for the multi-knot interaction story.
+9. **`09-ratio-and-shear.md`** — Bring ε and σ_uw together into a unified treatment of the (σ_uw, ε) parameter space. Identify three structural regimes mapping to three qualitative sheet types (lepton-like, neutrino-like, hadronic-like). Develop the σ → 1 principal-axis suppression mechanism and set up the substrate for the downstream inversion exercise of deriving (ε, σ_uw) from a sheet's observed properties.
+
+10. **`10-closing-summary.md`** — Consolidate what the project established, ruled out, and unexpectedly found. Hand off to [metric-binding](../metric-binding/) for the multi-knot interaction story.
 
 Each chapter is added one at a time. The arc is a sketch, not a contract.

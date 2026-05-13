@@ -300,7 +300,7 @@ The downstream chapters develop:
 
 ## 7. What's next
 
-[Chapter 5 — Metric self-consistency and gauge promotion](05-metric-self-consistency.md). The closure-satisfying modes from this chapter source off-diagonal metric entries (per metric-mass Chapter 5) under the wrap-order-asymmetric standing-wave construction. Chapter 5 derives that closure-satisfying modes produce **a single gauge potential B_μ** (from the tube-direction off-diagonal h_μw); the ring-direction would-be cross-term cancels by the metric-mass mechanism. Closure-failing modes — both single-axis and chirality-non-degenerate genuine torus knots — source no spacetime-extended-to-compact off-diagonal under the natural-particle construction, yielding mass-only outcomes (with a chirality-encoded compact-compact cross-term in the genuine-torus-knot case). The chapter also provides the calculable mechanism for how mass bends spacetime and how charged matter creates EM fields, building on metric-mass Chapter 5 §6 and Chapter 6 §4.
+[Chapter 5 — Metric self-consistency and gauge promotion](05-metric-self-consistency.md).
 
 ---
 

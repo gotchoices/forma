@@ -549,9 +549,7 @@ The framework reproduces standard EM at the structural level: a single gauge pot
 
 ## 9. What's next
 
-[Chapter 6 — Handedness and pairs](06-handedness-and-pairs.md). Take the closure-satisfying inventory from Chapter 4 and the single-gauge-potential structure from this chapter, and examine the **chirality / handedness** structure: when do (m, n) and (−m, −n) correspond to physically distinguishable particles (in the sense of what standard physics calls matter vs antimatter), and when do they represent the same particle viewed two different ways? Examine when complementary pairs *within a single field configuration* cancel net charge (apparent neutrality through internal cancellation, distinct from the structural neutrality of closure-failing modes from this chapter). Sharpen σ_uw shear's role: under work1's framing, σ_uw biases chirality *within particles* (the (++) vs (+−) amplitude balance), not matter/antimatter populations.
-
-The closure-condition structure that was settled in chapters 4 and 5 — which (m, n) modes carry observable EM and which don't, and how the natural particle is constructed — is the substrate. Chapter 6 adds handedness as a sub-(m, n) label and asks what physical content the sign-reflection symmetry carries.
+[Chapter 6 — Handedness and pairs](06-handedness-and-pairs.md).
 
 ---
 
