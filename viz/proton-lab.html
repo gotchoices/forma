@@ -167,8 +167,11 @@
 
   <div class="cg">
     <label>shear s</label>
-    <input type="range" id="sl-s" min="-1.5" max="1.5" step="0.01" value="0">
-    <span class="val" id="v-s">0.00</span>
+    <div class="tau-stepper">
+      <button class="btn step-btn" id="btn-s-dec">−</button>
+      <span class="tau-val" id="v-s">0</span>
+      <button class="btn step-btn" id="btn-s-inc">+</button>
+    </div>
   </div>
 
   <div class="sep"></div>
@@ -349,7 +352,8 @@ const S = {
   rS: 0.40,
   // Twist as a fraction: numerator/3 so τ = tauNum/3 (steps of 1/3)
   tauNum: 1,            // τ = 1/3
-  shear: 0,             // continuous offset in φ
+  // Shear quantized in 1/3 steps for cleaner closure of paths: s = shearNum/3
+  shearNum: 0,          // s = 0
   opacity: 0.55,
   particle: 'proton',
   customNth: 3,
@@ -610,38 +614,35 @@ function membershipFor(particle) {
   return [true, true, true, true, true, true];
 }
 
-/* ─── Path overlay (intrinsic surface curves) ────────────── */
+/* ─── Path overlay (surface curves in the sheared frame) ──── */
 /*
- * Paths live on the physical surface. They use the SAME rotation
- * embedding as the surface (rotate (P_x, P_y) by τ·θ). The parameter
- * trajectory is straight-line in (θ, φ):
+ * Paths live on the surface but inherit the same coordinate frame as
+ * the grid lines: a constant-φ_coord path uses rotation rate (τ − s).
+ * So whenever the user shears the grid, the paths shear with it.
  *
- *   θ(t) = 2π · n_θ · t
- *   φ(t) = ph0 + 2π · n_φ · t
+ *   θ(t)   = 2π · n_θ · t
+ *   φ(t)   = ph0 + 2π · n_φ · t
+ *   α(θ)   = (τ − s) · θ                 (effective rotation rate)
  *
- * Closure: at t=1, θ=2π·n_θ and φ=ph0+2π·n_φ. P is 2π-periodic so the
- * sample returns to P(ph0). The rotation R_{2π·n_θ·τ} returns to identity
- * when n_θ·τ is an integer. So paths close iff n_θ·τ ∈ ℤ:
- *
- *   τ = 0:                  any n_θ closes
- *   τ = 1/3 or 2/3:         n_θ must be a multiple of 3
- *   τ = 1:                  any integer n_θ closes
- *
- * The preset proton/neutron paths use (n_θ=3, n_φ=0) so they close for
- * any τ ∈ multiples of 1/3.
+ * Closure: at t=1, the rotation accumulates to 2π·n_θ·(τ − s). It
+ * returns to identity when n_θ·(τ − s) ∈ ℤ. With τ and s both
+ * restricted to multiples of 1/3, (τ − s) is also a multiple of 1/3,
+ * so closure is achieved by any n_θ that is a multiple of 3 (or n_θ
+ * unrestricted when (τ − s) is an integer).
  */
-function buildPathTube(prof, R, tau, pathSpec, tubeR) {
+function buildPathTube(prof, R, tau, shear, pathSpec, tubeR) {
   const N = 600;
   const { nTh, nPh, ph0 } = pathSpec;
   const pts = [];
   const offset = tubeR * 0.6;
+  const rate = tau - shear;
 
   for (let i = 0; i <= N; i++) {
     const t = i / N;
     const th = TAU * nTh * t;
     const ph = ph0 + TAU * nPh * t;
     const samp = lookupProfile(prof, ph);
-    const alpha = tau * th;
+    const alpha = rate * th;
     const cA = Math.cos(alpha), sA = Math.sin(alpha);
     const Pxr = samp.x * cA - samp.y * sA;
     const Pyr = samp.x * sA + samp.y * cA;
@@ -785,7 +786,8 @@ function rebuildAll() {
     wireMesh.geometry.dispose();
   }
 
-  const tau = S.tauNum / 3;
+  const tau   = S.tauNum   / 3;
+  const shear = S.shearNum / 3;
   const geom = buildSurfaceMesh(cachedProfile, S.R, tau, membership);
   surfMesh = new THREE.Mesh(geom, surfMaterial);
   surfMesh.visible = S.showSurface;
@@ -808,7 +810,7 @@ function rebuildAll() {
       paths = PARTICLES[S.particle].paths;
     }
     for (const p of paths) {
-      const pgeom = buildPathTube(cachedProfile, S.R, tau, p, tubeR);
+      const pgeom = buildPathTube(cachedProfile, S.R, tau, shear, p, tubeR);
       const mat = new THREE.MeshBasicMaterial({ color: p.color, transparent: true, opacity: 0.95 });
       const pmesh = new THREE.Mesh(pgeom, mat);
       pathGroup.add(pmesh);
@@ -818,7 +820,7 @@ function rebuildAll() {
   // Grid lines
   gridGroup.clear();
   if (S.showGrid) {
-    addGridLines(cachedProfile, S.R, tau, S.shear);
+    addGridLines(cachedProfile, S.R, tau, shear);
   }
 
   // Spine
@@ -969,7 +971,7 @@ function updateInfo() {
 
   // Bottom-left info overlay
   $('info').innerHTML =
-    `τ=${formatTau(S.tauNum)} &nbsp; s=${S.shear.toFixed(2)} &nbsp; ` +
+    `τ=${formatTau(S.tauNum)} &nbsp; s=${formatTau(S.shearNum)} &nbsp; ` +
     `R=${S.R.toFixed(2)} &nbsp; rL=${S.rL.toFixed(2)} &nbsp; rS=${S.rS.toFixed(2)} &nbsp; ` +
     `χ=${chi.toFixed(2)} &nbsp; ε=${eps.toFixed(2)} &nbsp; ` +
     `particle=${S.particle}`;
@@ -999,7 +1001,6 @@ function bindSlider(id, key, vId, formatter, callback) {
 bindSlider('sl-R', 'R', 'v-R', v => v.toFixed(2), () => rebuildAll());
 bindSlider('sl-rL', 'rL', 'v-rL', v => v.toFixed(2), () => { profileDirty = true; rebuildAll(); });
 bindSlider('sl-rS', 'rS', 'v-rS', v => v.toFixed(2), () => { profileDirty = true; rebuildAll(); });
-bindSlider('sl-s', 'shear', 'v-s', v => v.toFixed(2), () => rebuildAll());
 bindSlider('sl-op', 'opacity', 'v-op', v => v.toFixed(2), () => { surfMaterial.opacity = S.opacity; });
 
 $('btn-tau-dec').addEventListener('click', () => {
@@ -1010,6 +1011,16 @@ $('btn-tau-dec').addEventListener('click', () => {
 $('btn-tau-inc').addEventListener('click', () => {
   S.tauNum += 1;
   $('v-tau').textContent = formatTau(S.tauNum);
+  rebuildAll();
+});
+$('btn-s-dec').addEventListener('click', () => {
+  S.shearNum -= 1;
+  $('v-s').textContent = formatTau(S.shearNum);
+  rebuildAll();
+});
+$('btn-s-inc').addEventListener('click', () => {
+  S.shearNum += 1;
+  $('v-s').textContent = formatTau(S.shearNum);
   rebuildAll();
 });
 
@@ -1111,12 +1122,12 @@ refreshProfileList();
 /* ─── Built-in presets ──────────────────────────────────── */
 
 const BUILTINS = {
-  'canonical':    { R: 3.0, rL: 0.80, rS: 0.40, tauNum: 1, shear: 0, particle: 'proton' },
-  'fat-saddle':   { R: 3.0, rL: 0.50, rS: 0.75, tauNum: 1, shear: 0, particle: 'proton' },
-  'thin-saddle':  { R: 3.0, rL: 1.00, rS: 0.25, tauNum: 1, shear: 0, particle: 'proton' },
-  'symmetric':    { R: 3.0, rL: 0.60, rS: 0.60, tauNum: 1, shear: 0, particle: 'none'   },
-  'flat':         { R: 3.0, rL: 0.80, rS: 0.40, tauNum: 0, shear: 0, particle: 'none'   },
-  'double-twist': { R: 3.0, rL: 0.80, rS: 0.40, tauNum: 2, shear: 0, particle: 'proton' },
+  'canonical':    { R: 3.0, rL: 0.80, rS: 0.40, tauNum: 1, shearNum: 0, particle: 'proton' },
+  'fat-saddle':   { R: 3.0, rL: 0.50, rS: 0.75, tauNum: 1, shearNum: 0, particle: 'proton' },
+  'thin-saddle':  { R: 3.0, rL: 1.00, rS: 0.25, tauNum: 1, shearNum: 0, particle: 'proton' },
+  'symmetric':    { R: 3.0, rL: 0.60, rS: 0.60, tauNum: 1, shearNum: 0, particle: 'none'   },
+  'flat':         { R: 3.0, rL: 0.80, rS: 0.40, tauNum: 0, shearNum: 0, particle: 'none'   },
+  'double-twist': { R: 3.0, rL: 0.80, rS: 0.40, tauNum: 2, shearNum: 0, particle: 'proton' },
 };
 
 $('sel-builtin').addEventListener('change', () => {
@@ -1132,9 +1143,9 @@ function syncControlsFromState() {
   $('sl-R').value = S.R;       $('v-R').textContent  = S.R.toFixed(2);
   $('sl-rL').value = S.rL;     $('v-rL').textContent = S.rL.toFixed(2);
   $('sl-rS').value = S.rS;     $('v-rS').textContent = S.rS.toFixed(2);
-  $('sl-s').value = S.shear;   $('v-s').textContent  = S.shear.toFixed(2);
   $('sl-op').value = S.opacity; $('v-op').textContent = S.opacity.toFixed(2);
   $('v-tau').textContent = formatTau(S.tauNum);
+  $('v-s').textContent   = formatTau(S.shearNum);
   $('sel-particle').value = S.particle;
   $('custom-path-controls').style.display = (S.particle === 'custom') ? 'block' : 'none';
   if (S.customNth !== undefined) $('in-nth').value = S.customNth;
@@ -1147,7 +1158,7 @@ function syncControlsFromState() {
 function resetToDefaults() {
   Object.assign(S, {
     R: 3.0, rL: 0.80, rS: 0.40,
-    tauNum: 1, shear: 0, opacity: 0.55,
+    tauNum: 1, shearNum: 0, opacity: 0.55,
     particle: 'proton',
     customNth: 3, customNph: 0,
     showSurface: true, showWire: false, showColor: true,
@@ -1164,9 +1175,10 @@ window.addEventListener('keydown', (e) => {
   if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') return;
   switch (e.key) {
     case 'r':
-      controls.reset();
       camera.position.set(3 * S.R, 2 * S.R, 4 * S.R);
-      camera.lookAt(0, 0, 0);
+      controls.target.set(0, 0, 0);
+      controls.update();
+      saveCamera();
       break;
     case 'g':
       S.showGrid = !S.showGrid;
@@ -1193,6 +1205,36 @@ window.addEventListener('keydown', (e) => {
       break;
   }
 });
+
+/* ─── Camera persistence ──────────────────────────────── */
+
+const CAMERA_KEY = 'protonLab.camera';
+
+function captureCamera() {
+  return {
+    pos:    camera.position.toArray(),
+    target: controls.target.toArray(),
+  };
+}
+
+function saveCamera() {
+  try {
+    localStorage.setItem(CAMERA_KEY, JSON.stringify(captureCamera()));
+  } catch {}
+}
+
+function restoreCamera() {
+  let saved = null;
+  try { saved = JSON.parse(localStorage.getItem(CAMERA_KEY)); } catch {}
+  if (!saved || !Array.isArray(saved.pos) || !Array.isArray(saved.target)) return false;
+  camera.position.fromArray(saved.pos);
+  controls.target.fromArray(saved.target);
+  controls.update();
+  return true;
+}
+
+restoreCamera();
+controls.addEventListener('end', saveCamera);
 
 /* ─── Render loop ──────────────────────────────────────── */
 

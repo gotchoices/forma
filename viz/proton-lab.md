@@ -79,29 +79,32 @@ The two control parameters affect the visualizer differently:
   selectable in **1/3 steps**.
 
 - **`s`** is a **coordinate shear** — it does **not** appear in the
-  surface mesh, and it does **not** affect particle paths (which are
-  intrinsic surface curves). Shear only modifies how **constant-φ grid
-  lines** are drawn. A grid line for coord-φ = ph uses the rotation
-  rate `(τ − s)` instead of `τ`:
+  surface mesh, but it *does* apply to both grid lines and path tubes
+  so they share a single coordinate frame. A line or path uses the
+  effective rotation rate `(τ − s)` instead of `τ`:
 
   ```
-  α_grid(θ) = (τ − s) · θ
+  α_overlay(θ) = (τ − s) · θ
   ```
 
-  - `s = 0`: grid lines align with the surface's natural twist (they
+  - `s = 0`: overlays align with the surface's natural twist (they
     follow the same helical lobes).
-  - `s = τ`: grid lines become horizontal rings (zero rotation) — they
-    sit at constant cross-section direction and cut *across* the
-    physical lobe pattern.
-  - other `s`: grid lines spiral at a rate different from the surface's
-    lobes, exposing the misalignment between coordinate frame and
-    embedding.
+  - `s = τ`: overlays use zero rotation rate — grid lines become
+    horizontal rings and paths trace fixed-cross-section circles. Both
+    cut *across* the physical lobe pattern.
+  - other `s ∈ multiples of 1/3`: overlays spiral at a different rate
+    from the surface's lobes, exposing the misalignment between the
+    coordinate frame and the embedding.
 
-  Particle paths are *not* re-parameterized by shear — they are
-  intrinsic surface curves with the natural rotation rate `τ`. Their
-  closure condition is `n_θ · τ ∈ ℤ`: for `τ = 1/3` or `2/3`, a path
-  closes iff `n_θ` is a multiple of 3. The preset proton/neutron paths
-  use `(n_θ, n_φ) = (3, 0)` so they close cleanly for any allowed `τ`.
+  Shear is **quantized to 1/3 steps** (selectable via a stepper, just
+  like `τ`) so that overlay rotations under the corrugated torus's 3-fold
+  closure are always clean.
+
+  Path closure condition: `n_θ · (τ − s) ∈ ℤ`. With both `τ` and `s` in
+  1/3 steps, this is satisfied for any `n_θ` that is a multiple of 3
+  (and trivially for any integer `n_θ` when `(τ − s)` happens to be
+  integer). The preset proton/neutron paths use `(n_θ, n_φ) = (3, 0)`
+  so they close cleanly for every allowed `(τ, s)` pair.
 
 ### 1.3 The three independent geometric scalars
 
@@ -111,7 +114,7 @@ The two control parameters affect the visualizer differently:
 | Lobe radius | `r_lobe` | 0.80 | 0.05 – 2.0 |
 | Saddle radius | `r_saddle` | 0.40 | 0.05 – 2.0 |
 | Twist | `τ` | 1/3 | discrete steps of 1/3; deforms the surface |
-| Shear | `s` | 0.0 | continuous, −1.5 – 1.5; tilts overlays only |
+| Shear | `s` | 0   | discrete steps of 1/3; tilts overlays only |
 
 `d = r_lobe + r_saddle` is derived (not a slider). When the profile would
 self-intersect (`d < 0`) or when `r_lobe + d > R_major` (the inner lobe
