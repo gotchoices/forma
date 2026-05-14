@@ -1,24 +1,27 @@
 """
 Compare the corrugated-torus mass spectrum against the PDG light-hadron table.
 
-Workflow:
+Two modes:
+
+  (default) Single-point mode — compute the spectrum at one (ε, χ), calibrate
+            from a designated proton (n, m), match every predicted mode to its
+            best PDG candidate within tolerance, and report matches/misses.
+
+  --sweep   Parameter-grid mode — compute a "PDG fitness score" at each (ε, χ)
+            on a grid, to check whether matches concentrate at a specific
+            parameter point (real signal) or scatter (statistical coincidence
+            from the dense spectrum). Outputs a CSV grid and a heatmap PNG.
+
+Workflow (single-point):
   1. Compute the lowest-N eigenvalues of the Hill operator at given (ε, χ),
      using the Bloch-restricted Fourier solver from laplacian_spectrum.py.
   2. Calibrate the mass scale by demanding that one designated (n, m) mode
-     matches the observed proton mass (938.27 MeV). This pins R_major in
-     physical units (fm).
+     matches the observed proton mass (938.27 MeV). This pins R_major in fm.
   3. Convert every eigenvalue to a physical mass (MeV).
   4. Match against a hard-coded PDG table of light hadrons (p, n, π, K, η, ρ,
      ω, φ, Δ, N* up to ~1500 MeV).
-  5. Apply the user's interpretation filters:
-       (F1) flag predicted modes at integer multiples of m_p as candidate
-            multi-nucleon configurations, not new particles
-       (F2) note neutral predicted modes with no observed match (candidate
-            "dark" / decoupled)
-       (F3) for SM composite recipes (q + q̄ for mesons, qqq for baryons),
-            sum the (n, m) labels of the constituents and check whether the
-            sum lands on an eigenmode
-  6. Report matches, gaps, and over-predictions.
+  5. Apply interpretation filters: flag harmonics that could be multi-nucleon;
+     note unmatched modes (candidate "dark"); report missing observations.
 
 This script does NOT use clover-mass.md's perturbative formula. It just
 discretises the Hill operator and reads the spectrum directly — the
@@ -30,9 +33,15 @@ Usage:
                                       [--n-max N] [--m-max M]
                                       [--match-tol MEV]
 
+    python scripts/spectrum_vs_pdg.py --sweep
+                                      [--sweep-eps "e1,e2,..."]
+                                      [--sweep-chi "c1,c2,..."]
+                                      [--proton-label "n,m"]
+
 Outputs:
-    outputs/pdg_match_eps<E>_chi<C>.csv
-    outputs/pdg_match_eps<E>_chi<C>.txt  (human-readable report)
+    Single-point: outputs/pdg_match_eps<E>_chi<C>.csv
+    Sweep:        outputs/pdg_sweep_proton<n>,<m>.csv
+                  outputs/pdg_sweep_proton<n>,<m>.png
 """
 
 from __future__ import annotations
@@ -202,6 +211,176 @@ def is_likely_multinucleon(mass_mev: float, m_p: float = 938.272,
 # Mapping Clover.
 
 
+# ----- Fitness scoring at a single (ε, χ) -----
+def fitness_at_point(eps: float, chi: float, proton_n: int, proton_m: int,
+                      n_max: int, m_max: int, tolerances_mev: list,
+                      N_grid: int) -> dict:
+    """Compute several PDG-fit metrics at one (ε, χ) point.
+
+    Returns a dict with keys:
+      R_fm, mu_p, n_matches_at_each_tol (dict tol→int), mean_abs_delta_at_each_tol,
+      total_abs_delta_at_each_tol, max_predicted_mass_MeV.
+    """
+    spectrum = generate_spectrum(eps, chi, n_max, m_max, N_grid=N_grid)
+    try:
+        R_fm, m_per_mu, mu_p = calibrate_scale(spectrum, proton_n, proton_m)
+    except ValueError:
+        return None
+    # Build predicted-mass list
+    predicted_masses = []
+    for n, m, mu2 in spectrum:
+        mass = np.sqrt(max(mu2, 0)) * m_per_mu
+        predicted_masses.append((n, m, mass))
+    # For each PDG hadron, find closest predicted mode's |Δ|
+    pdg_deltas = []
+    for name, obs_mev, charge, _comment in PDG_LIGHT_HADRONS:
+        if obs_mev > max(p[2] for p in predicted_masses):
+            continue
+        d_best = min(abs(mass - obs_mev) for _, _, mass in predicted_masses)
+        pdg_deltas.append((name, obs_mev, d_best))
+    # Compute per-tolerance metrics
+    n_matches = {}
+    mean_delta = {}
+    total_delta = {}
+    for tol in tolerances_mev:
+        within = [d for _, _, d in pdg_deltas if d < tol]
+        n_matches[tol] = len(within)
+        if within:
+            mean_delta[tol] = sum(within) / len(within)
+            total_delta[tol] = sum(within)
+        else:
+            mean_delta[tol] = float("nan")
+            total_delta[tol] = 0.0
+    return {
+        "R_fm": R_fm,
+        "mu_p": mu_p,
+        "n_matches": n_matches,
+        "mean_delta": mean_delta,
+        "total_delta": total_delta,
+        "max_predicted_mass_MeV": max(p[2] for p in predicted_masses),
+        "pdg_deltas": pdg_deltas,
+    }
+
+
+def run_sweep(args) -> None:
+    """Sweep (ε, χ) over a grid and report fitness."""
+    import matplotlib.pyplot as plt
+    proton_n, proton_m = (int(x) for x in args.proton_label.split(","))
+    eps_list = [float(x) for x in args.sweep_eps.split(",")]
+    chi_list = [float(x) for x in args.sweep_chi.split(",")]
+    tolerances = [10.0, 30.0, 80.0]
+
+    print(f"# Clover spectrum × PDG fitness sweep")
+    print(f"# Proton label: (n, m) = ({proton_n}, {proton_m})")
+    print(f"# ε grid: {eps_list}")
+    print(f"# χ grid: {chi_list}")
+    print(f"# Tolerances tested: {tolerances} MeV")
+    print()
+
+    n_eps, n_chi = len(eps_list), len(chi_list)
+    n_matches_grid = {tol: np.zeros((n_chi, n_eps)) for tol in tolerances}
+    mean_delta_grid = {tol: np.full((n_chi, n_eps), np.nan) for tol in tolerances}
+    R_grid = np.zeros((n_chi, n_eps))
+
+    rows = []
+    for j, chi in enumerate(chi_list):
+        for i, eps in enumerate(eps_list):
+            print(f"  evaluating ε={eps:.3f}, χ={chi:.2f} ...", end="", flush=True)
+            f = fitness_at_point(eps, chi, proton_n, proton_m,
+                                  args.n_max, args.m_max, tolerances,
+                                  N_grid=args.n_grid)
+            if f is None:
+                print(" SKIP (proton label not in spectrum)")
+                continue
+            R_grid[j, i] = f["R_fm"]
+            for tol in tolerances:
+                n_matches_grid[tol][j, i] = f["n_matches"][tol]
+                mean_delta_grid[tol][j, i] = f["mean_delta"][tol]
+            print(f" R={f['R_fm']:.3f} fm  "
+                  f"matches@10={f['n_matches'][10]:2d}  "
+                  f"@30={f['n_matches'][30]:2d}  "
+                  f"@80={f['n_matches'][80]:2d}  "
+                  f"meanΔ@30={f['mean_delta'][30]:.1f} MeV")
+            rows.append((eps, chi, f))
+
+    # Save CSV
+    args.outputs_dir.mkdir(parents=True, exist_ok=True)
+    csv_path = args.outputs_dir / f"pdg_sweep_proton{proton_n},{proton_m}.csv"
+    with open(csv_path, "w") as fout:
+        cols = ["epsilon", "chi", "R_fm", "mu_p"]
+        for tol in tolerances:
+            cols += [f"n_matches_tol{int(tol)}", f"mean_delta_tol{int(tol)}",
+                     f"total_delta_tol{int(tol)}"]
+        fout.write(",".join(cols) + "\n")
+        for eps, chi, f in rows:
+            row = [f"{eps:.4f}", f"{chi:.4f}", f"{f['R_fm']:.4f}", f"{f['mu_p']:.4f}"]
+            for tol in tolerances:
+                row += [str(f["n_matches"][tol]),
+                        f"{f['mean_delta'][tol]:.4f}",
+                        f"{f['total_delta'][tol]:.4f}"]
+            fout.write(",".join(row) + "\n")
+    print(f"\nSaved: {csv_path}")
+
+    # Heatmap PNG: 3 columns (one per tolerance), two rows (matches and mean Δ)
+    fig, axes = plt.subplots(2, 3, figsize=(15, 8))
+    for col, tol in enumerate(tolerances):
+        ax = axes[0, col]
+        im = ax.imshow(n_matches_grid[tol], origin="lower", aspect="auto",
+                       extent=[min(eps_list), max(eps_list),
+                               min(chi_list), max(chi_list)],
+                       cmap="viridis")
+        ax.set_title(f"# PDG matches within ±{int(tol)} MeV")
+        ax.set_xlabel("ε")
+        ax.set_ylabel("χ")
+        # Annotate cells
+        for j, chi in enumerate(chi_list):
+            for i, eps in enumerate(eps_list):
+                v = int(n_matches_grid[tol][j, i])
+                ax.text(eps, chi, str(v), ha="center", va="center",
+                        color="white" if v < n_matches_grid[tol].max() / 2 else "black",
+                        fontsize=9)
+        plt.colorbar(im, ax=ax)
+
+        ax = axes[1, col]
+        # Mean delta (lower is better); cap nan to a sentinel for plotting
+        plot_md = np.where(np.isnan(mean_delta_grid[tol]), tol, mean_delta_grid[tol])
+        im = ax.imshow(plot_md, origin="lower", aspect="auto",
+                       extent=[min(eps_list), max(eps_list),
+                               min(chi_list), max(chi_list)],
+                       cmap="viridis_r")
+        ax.set_title(f"mean |Δ| of matched (MeV), tol ±{int(tol)}")
+        ax.set_xlabel("ε")
+        ax.set_ylabel("χ")
+        for j, chi in enumerate(chi_list):
+            for i, eps in enumerate(eps_list):
+                v = mean_delta_grid[tol][j, i]
+                lbl = f"{v:.1f}" if not np.isnan(v) else "—"
+                ax.text(eps, chi, lbl, ha="center", va="center",
+                        color="white", fontsize=8)
+        plt.colorbar(im, ax=ax)
+
+    fig.suptitle(f"PDG fit vs (ε, χ); proton at (n, m) = ({proton_n}, {proton_m})")
+    fig.tight_layout()
+    png_path = args.outputs_dir / f"pdg_sweep_proton{proton_n},{proton_m}.png"
+    fig.savefig(png_path, dpi=120, bbox_inches="tight")
+    print(f"Saved: {png_path}")
+
+    # Headline summary: best grid point per tolerance
+    print()
+    print(f"## Best grid points per tolerance")
+    for tol in tolerances:
+        # Best = most matches, then smallest mean Δ as tiebreaker
+        best_j, best_i = np.unravel_index(np.argmax(n_matches_grid[tol]),
+                                           n_matches_grid[tol].shape)
+        best_eps = eps_list[best_i]
+        best_chi = chi_list[best_j]
+        n = int(n_matches_grid[tol][best_j, best_i])
+        md = mean_delta_grid[tol][best_j, best_i]
+        R = R_grid[best_j, best_i]
+        print(f"  tol ±{int(tol)} MeV: best at ε={best_eps:.3f}, χ={best_chi:.2f} "
+              f"→ {n} matches, mean |Δ|={md:.2f} MeV, R={R:.3f} fm")
+
+
 # ----- Main -----
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
@@ -216,9 +395,22 @@ def main() -> None:
     parser.add_argument("--match-tol", type=float, default=80.0,
                         help="Mass-match tolerance in MeV. Default 80.")
     parser.add_argument("--n-grid", type=int, default=1024)
+    parser.add_argument("--sweep", action="store_true",
+                        help="Run a parameter sweep over (ε, χ) instead of "
+                        "a single-point report.")
+    parser.add_argument("--sweep-eps", type=str,
+                        default="0.10,0.15,0.20,0.25,0.30,0.40,0.50,0.70,1.00",
+                        help="Comma-separated ε values to sweep.")
+    parser.add_argument("--sweep-chi", type=str,
+                        default="0.50,1.00,1.50,2.00",
+                        help="Comma-separated χ values to sweep.")
     parser.add_argument("--outputs-dir", type=Path,
                         default=Path(__file__).resolve().parents[1] / "outputs")
     args = parser.parse_args()
+
+    if args.sweep:
+        run_sweep(args)
+        return
 
     proton_n, proton_m = (int(x) for x in args.proton_label.split(","))
 
