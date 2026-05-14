@@ -4,6 +4,8 @@
 
 **Tone:** Exploratory. The meson spectrum is empirically well-measured; this file's job is to see whether MaSt's compound-mode framework reproduces it.
 
+**Substrate note.** This file uses R64's round-tube proton sheet for its baseline analysis. The corrugated-clover substrate ([clover-quarks.md](clover-quarks.md), [clover-mass.md](clover-mass.md)) has been developed for baryons (proton, neutron) but **not yet extended to qq̄ mesons**. The qq̄ → (0, 0) summed-winding structure (and hence the pion-mass-from-zero problem) is the same in both substrates — see §9 below.
+
 ---
 
 ## 1. The question
@@ -153,3 +155,35 @@ For the framework to predict the meson spectrum, several pieces are missing:
 2. Test whether σ_uw shear lifts (0, 0) compounds from zero mass to observed values.
 3. Frame the strangeness assignment question; either commit to T(1, +3) or examine alternatives.
 4. Identify whether the spin-0 vs spin-1 splitting can come from relative-phase structure in the 2-component compound.
+
+---
+
+## 9. Relationship to the clover substrate
+
+[clover-quarks.md](clover-quarks.md) and [clover-mass.md](clover-mass.md) have developed an alternative proton-sheet geometry — a corrugated 3-lobed torus — that derives fractional charges and Z₃ confinement from cross-section geometry rather than from tuned (m, n) windings. The clover work has been carried far enough to make falsifiable mass predictions for baryons; for mesons it is not yet developed. This section records what's known about meson-clover compatibility.
+
+### 9.1 Antiquark = sign-flipped wave-mode (matter/antimatter still works)
+
+Per [quark-flavor.md Mapping Clover](quark-flavor.md), the mass formula μ²(n, m) = (n − 2m/3)² + (m/ε)² on the clover surface satisfies
+
+μ²(−n, −m) = μ²(n, m)
+
+so (n, m) and (−n, −m) are degenerate — same mass, opposite (k_θ, k_φ). This is exactly the matter/antimatter pairing structure. **q̄ = the sign-flipped wave-mode partner of q on the same corrugated surface.**
+
+### 9.2 qq̄ compounds sum to (0, 0)
+
+A meson built from q = (n, m) and q̄ = (−n, −m) has summed winding (0, 0) on the clover, identically to the round-tube case. Naive μ² = 0 from the zeroth-order formula. So the **pion-mass-from-zero question is structurally identical** in both substrates — the candidates in §3 (σ_uw shear, binding energy, chiral-symmetry-breaking analog, compound stress-energy) apply equally to either.
+
+### 9.3 Open: what does the clover Hilbert space look like for qq̄?
+
+The clover baryon picture identifies particles with wave-modes of a single corrugated torus. For mesons, three different physical pictures remain possible:
+
+- **(M-a)** Mesons live on the same corrugated torus as baryons, but as different mode configurations (e.g., a wave that samples lobe + adjacent saddle in a particular phase relationship → a "qq̄ internal pair"). The naive dispersion mass would be computed by the same Hill equation but for these specific configurations.
+- **(M-b)** Mesons live on a *different surface* — perhaps the round tube or a torus with different twist τ. In that case the work in §§1–8 of this file is the right framework, independent of clover.
+- **(M-c)** Mesons are excited modes of the proton sheet whose collective behaviour mimics a "qq̄ compound" without being separable into two distinct constituents. Then "qq̄" is a useful but misleading language.
+
+These are not yet distinguished. The first concrete test would be to compute the qq̄-like mode spectrum on the clover surface and compare to observed pion mass. **Not done.**
+
+### 9.4 Open: spin-0 vs spin-1 splittings under clover
+
+The clover work has not addressed angular momentum / spin structure of the wave modes. The pseudoscalar vs vector splittings (π vs ρ, etc.) need a spin assignment which clover-quarks.md and clover-mass.md do not currently provide.

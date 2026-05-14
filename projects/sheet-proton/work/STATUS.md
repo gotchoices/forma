@@ -169,6 +169,11 @@ Issues that span multiple work files:
 
 - **Why is the proton stable and the neutron unstable?** Under clover-quarks, the proton path (2 lobes + 1 saddle) is energetically preferred to the neutron path (1 lobe + 2 saddles). This requires either (i) intrinsic energy asymmetry between lobes and saddles (Candidate A) or (ii) substrate-level chirality asymmetry beyond the topology (Candidate B). **Affects:** clover-quarks's Phase C numerical work; cross-references work-strong's substrate-asymmetry hypothesis.
 
+- **Weak and strong forces as least-energy calculus (hypothesis).** A unifying structural framing is being tracked:
+  - **Weak** (clover-quarks §12.4.1): d → u transition is the least-energy phase-shift of one quark mode on the clover surface. Energy difference emitted as leptonic kinetic energy. Predicts that W/Z bosons are propagating phase-shift modes, parity violation maps to twist chirality, CKM mixing maps to which (n', m') neighbours are accessible.
+  - **Strong** (strong.md §6a): deuteron binding is the energy lowering when proton-like and neutron-like modes share a corrugated-torus substrate. Nuclear binding is the multi-baryon mode-coexistence calculus. Yukawa picture is the long-wavelength limit.
+  - **Affects:** strong.md (deuteron prediction is the first test); clover-quarks/clover-mass (weak-force least-energy is the first test); whole framework if confirmed.
+
 ---
 
 ## Cross-reference: files in sibling projects

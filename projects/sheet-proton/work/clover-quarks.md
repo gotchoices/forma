@@ -855,6 +855,29 @@ In the corrugated-torus q-shift: q is the integer winding around the ring direct
 
 This is the user's intuition: **the corrugated-torus topology makes neutron decay structurally easier than the standing-wave reading would suggest.** The d → u transition doesn't require any wave running backwards; it requires the wave's helical winding to gain one extra revolution.
 
+### 12.4.1 Weak interaction as a least-energy phase-shift (hypothesis)
+
+The Standard Model often describes the weak force as "the thing that turns an up quark into a down quark" — a flavour-changing current rather than a positional force. The clover/wave-mode picture suggests an even cleaner reading: **the weak interaction is the least-energy phase-shift between neighbouring (n, m) modes on the corrugated torus**.
+
+The idea, stated as a hypothesis to develop:
+
+- Each of the three quark-mode "slots" in a baryon is a localised wave-mode sitting at some (n, m) label on the surface.
+- The clover dispersion μ²(n, m) = (n − 2m/3)² + (m/ε)² is not flat across (n, m) — different modes have slightly different energies, depending on ε and corrugation depth.
+- If one mode is sitting at a higher-than-minimum (n, m) for its compatible-with-the-other-two configuration, there exists a *neighbouring* (n', m') with lower μ² that the mode can slide to (subject to charge conservation, baryon-number conservation, and the closure constraint).
+- The transition emits the energy difference μ² → μ'² as wave modes on other sheets (electron sheet + neutrino sheet).
+- The "weak coupling" g_W is whatever determines the matrix element for the phase-slip — small because the modes are well-separated in (n, m) space and the coupling operator is geometric, not direct.
+
+Reading neutron β decay this way: the neutron's udd content (1 lobe + 2 saddles) has a "saddle slot" that, geometrically, sits at slightly higher energy than the corresponding "lobe slot" would. The configuration is metastable. A small perturbation (the weak coupling) lets one saddle slide phase to become a lobe — *because that's the lower-energy nearby configuration*. The 0.78 MeV is released as leptonic kinetic energy.
+
+**Implications if this framing holds:**
+
+1. **The weak force is not a separate field**; it's the calculus of which (n, m) reassignments lower total energy. The W and Z bosons of the Standard Model would correspond to the *propagating* phase-shift modes — the disturbance that carries the energy/momentum off to other sheets.
+2. **Parity violation** of the weak force would map to an asymmetry of the corrugated surface (e.g., chirality of the τ = +1/3 twist vs −1/3 twist).
+3. **Flavour mixing (CKM)** would correspond to the structure of which (n', m') neighbours are accessible from a given (n, m).
+4. **Decay rates** would emerge from a least-energy calculus: time-to-slide = phase-space factor × |matrix element|², with both computable from the surface metric.
+
+**Status:** This is currently a structural hypothesis, not derived. To develop it would require (a) showing that the (n_d, m_d) → (n_u, m_u) shift is indeed energy-lowering for the neutron's specific configuration (Phase C numerical check), and (b) showing that the inter-sheet coupling factor naturally gives the observed weak coupling strength g_W. Both are concrete next steps.
+
 ### 12.5 Why is the proton lower-energy than the neutron?
 
 Empirically: m_n − m_p ≈ 1.29 MeV. The neutron is heavier, so β decay is energetically favorable.

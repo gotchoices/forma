@@ -4,6 +4,8 @@
 
 **Tone:** Catalog candidate mappings, evaluate against observables, mark which match and which don't.
 
+**Geometric substrate note.** Four of the five candidate mappings below assume a **round-tube** proton sheet (smooth circular cross-section, continuous shear σ_uw, standard MaSt (m, n) winding pairs). The fifth ("Mapping Clover") works on a **corrugated 3-lobed torus** — see [clover-quarks.md](clover-quarks.md) and [clover-mass.md](clover-mass.md). Both substrates remain live hypotheses pending convergent empirical fits. R64's round-tube calibration is empirically well-tested; clover provides structural derivations (fractional charges, three-quark count, Z₃ confinement) but hasn't yet matched R64's predictive scope.
+
 ---
 
 ## 1. The question
@@ -72,6 +74,31 @@ For each mapping, list:
 
 This mapping fails the "d is matter" check.
 
+### Mapping Clover: arc-segments of a corrugated cross-section
+
+Substrate: corrugated 3-lobed torus, not round tube. Quarks are not separable T(m, n) wave-modes — they are **segments of the cross-section profile**.
+
+| Particle | Geometric identification | Comment |
+|---|---|---|
+| u | one **lobe arc** (240° convex, radius r_lobe) | Q = +2/3 from ∫κ ds = (1/2π)(1/r_l)(4π r_l/3) |
+| d | one **saddle arc** (120° concave, radius r_saddle) | Q = −1/3 from ∫κ ds = (1/2π)(−1/r_s)(2π r_s/3) |
+| ū | the (−n, −m) wave-mode partner of u | sign-flipped wavenumbers on the same surface; same μ², opposite (k_θ, k_φ) — runs in the opposite direction |
+| d̄ | the (−n, −m) wave-mode partner of d | likewise |
+| Proton uud | path covering **2 lobes + 1 saddle** of the cross-section profile | total Q = 2(+2/3) + (−1/3) = +1 ✓; closes after 2 ring revolutions (clover-quarks §12.2) |
+| Neutron udd | path covering **1 lobe + 2 saddles** | total Q = (+2/3) + 2(−1/3) = 0 ✓; closes after 1 ring revolution |
+
+**Structural interpretation:** Flavor = lobe-vs-saddle = convex-vs-concave arc segment of the closed cross-section profile. The two are intrinsically different geometric objects (positive vs negative curvature), with different arc-degree extents (240° vs 120°) forced by D₃ symmetry plus the kissing-circles constraint plus Gauss-Bonnet closure. The fractional charges fall out of curvature integration; the three-quark structure is forced by three lobes + three saddles filling one cross-section.
+
+**Antiquark mechanism (matter/antimatter still alive):** Per the mass formula μ²(n, m) = (n − 2m/3)² + (m/ε)² on the corrugated torus (clover-mass.md §4), the modes (n, m) and (−n, −m) are degenerate — same mass, opposite wavenumbers. So **q̄ = the sign-flipped wave-mode partner of q**. A qq̄ compound has summed labels (0, 0) — zero net winding, naive μ² = 0, exactly the same "pion-mass-from-zero" problem as the round-tube picture.
+
+**β decay under clover (saddle ↔ lobe shift):** Per clover-quarks.md §12.4, the d → u transition is a *q-shift*: one saddle becomes one lobe. In the wave-mode language: a (n_d, m_d) mode slides to a (n_u, m_u) mode on the same surface. The energy difference is released as the leptonic pair.
+
+**Closure:** Compound paths must satisfy the twisted boundary identification (θ, φ) ~ (θ + 2π, φ + 2π/3) under τ = 1/3. The proton's (2, 1) and neutron's (1, 1) closure pairs are derived in clover-quarks.md §12.2.
+
+**Concerns:**
+- The clover picture hasn't yet been extended to mesons, generations (s, c, b, t), or to quantitative cross-checks like magnetic moments. Each is on the next-actions list for clover-quarks / clover-mass.
+- Whether the (n, m) wave-mode labels of clover correspond to (n, m) of the round tube isn't a clean translation — they live on different surfaces.
+
 ### Mapping Alternative-3: independent primitives
 
 | Particle | (m, n) | Comment |
@@ -112,13 +139,15 @@ For each mapping, check:
 
 ## 4. Open structural questions
 
-- **Is m-sign or n-sign the flavor coordinate?** Equivalent: does flavor correspond to chirality reflection (n-sign) or charge-direction reflection (m-sign)? The empirical pattern of QCD's isospin should match one of these specifically.
+- **Is m-sign or n-sign the flavor coordinate?** (Applies to round-tube mappings only.) Does flavor correspond to chirality reflection (n-sign) or charge-direction reflection (m-sign)? The empirical pattern of QCD's isospin should match one of these specifically. **Under Mapping Clover this question dissolves:** flavor = lobe-vs-saddle, geometric distinction with no (m, n) sign-choice involved.
 
-- **What's the structural difference between (m, n) and (−m, n)?** [metric-charge chapter 6](../../metric-charge/06-handedness-and-pairs.md) discusses handedness pairs. If (1, +2) and (−1, +2) are handedness-flipped versions of the same particle, they're different from "matter and antimatter." But they're also not the same particle. What are they?
+- **What's the structural difference between (m, n) and (−m, n)?** [metric-charge chapter 6](../../metric-charge/06-handedness-and-pairs.md) discusses handedness pairs. If (1, +2) and (−1, +2) are handedness-flipped versions of the same particle, they're different from "matter and antimatter." But they're also not the same particle. What are they? **Under Mapping Clover:** (m, n) and (−m, n) are different excited modes of the clover surface (different k_v sectors), not handedness partners; the matter/antimatter partners are (n, m) ↔ (−n, −m) (simultaneous sign-flip of both labels).
 
-- **Why three components?** Whatever the (m, n) assignment, baryons in QCD have exactly three constituents. The Z₃ confinement structure is what enforces this. Is the choice of (m, n) assignment compatible with Z₃ confinement? See [color-confinement.md](../../metric-binding/work/color-confinement.md).
+- **Why three components?** Whatever the (m, n) assignment, baryons in QCD have exactly three constituents. The Z₃ confinement structure is what enforces this. Is the choice of (m, n) assignment compatible with Z₃ confinement? See [color-confinement.md](../../metric-binding/work/color-confinement.md). **Under Mapping Clover this is answered directly:** three lobes + three saddles fill one cross-section, and the τ = 1/3 twist gives third-integer ring-momenta k_θ = n − m/3 — Z₃ confinement falls out of geometry.
 
-- **How does this affect strong.md's mediator search?** The pion (a qq̄ compound) depends on which quark mapping is right. R64 mapping: pion = (1, +2) + (−1, −2) → (0, 0) compound. User-1 mapping: pion = (1, +2) + (−1, −2) → also (0, 0). Same form but different physical interpretation of the components.
+- **How does this affect strong.md's mediator search?** The pion (a qq̄ compound) depends on which quark mapping is right. R64 mapping: pion = (1, +2) + (−1, −2) → (0, 0) compound. User-1 mapping: pion = (1, +2) + (−1, −2) → also (0, 0). Same form but different physical interpretation of the components. **Under Mapping Clover:** pion = (n, m) + (−n, −m) → (0, 0), same summed-winding structure; the "lifting from zero" mechanism (chiral-symmetry-breaking analog) needs derivation in either substrate.
+
+- **Is the weak-force phase-shift a least-energy calculus?** (New, see Mapping Clover.) The d → u transition in β decay reads, under clover, as one (n, m) wave-mode sliding to a lower-energy neighbour (n', m'), with the energy difference carried off by leptons. Whether the full weak interaction is *characterised* by this least-energy sliding (rather than being a separate field) is an open structural question — see clover-quarks.md §12.5.
 
 ---
 

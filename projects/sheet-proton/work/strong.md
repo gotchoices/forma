@@ -184,6 +184,39 @@ A running list of issues that aren't fully resolved and might bite:
 
 ---
 
+## 6a. Strong force as least-energy multi-baryon coexistence (hypothesis)
+
+The Yukawa-mediator picture (§§1–4) treats the strong force as a propagator exchange between two distinct nucleons. A complementary structural reading is available, especially relevant once the clover-substrate picture from [clover-quarks.md](clover-quarks.md) and [clover-mass.md](clover-mass.md) is in play:
+
+**The strong force is the least-energy calculus of multi-baryon mode coexistence on a shared (or coupled) compact-dimension space.**
+
+The leading test case is the deuteron (np bound state, binding energy 2.224 MeV). Under the clover picture each nucleon is a wave-mode configuration on a corrugated torus. The deuteron would then be a configuration where:
+
+- Both a proton-like (uud, 2 lobes + 1 saddle) and a neutron-like (udd, 1 lobe + 2 saddles) mode coexist on *the same* corrugated torus (or two strongly coupled tori).
+- The total energy of this joint configuration is *lower* than the sum of two isolated nucleons by exactly 2.224 MeV.
+- The binding is a structural feature — modes that share the surface naturally reorganize to a lower-energy collective state.
+
+If this reading is correct, the strong force is **not** a separate field with its own mediator-particle in the usual QFT sense. It is the geometric tendency of compatible wave modes to lower their total energy when sharing a compact-dimension substrate. The "Yukawa propagator" of §§1–4 would then be the long-wavelength approximation of this geometric tendency, valid at distances large compared to the surface scale.
+
+**Concrete consequences if this framing holds:**
+
+1. **The deuteron binding 2.224 MeV is computable** from a single mass-eigenvalue calculation on a "two-nucleon-sharing" surface, with no free coupling constant. Compare to the proton-mass setup of clover-mass.md §6.
+2. **Nuclear binding energies of larger nuclei** follow the same calculus: A nucleons share a (suitably enlarged) surface; the total mode-energy of the collective configuration is the bound-state energy.
+3. **The strong force range** ≈ 1.5 fm emerges as the surface size — modes farther apart than that can't share the same substrate efficiently.
+4. **The "pion as mediator"** picture (§§1–4) is then a particle-physics phenomenology: when nucleons exchange long-range disturbances, those disturbances look like pion-shaped wavepackets. But the *underlying* physics is geometric coexistence, not particle exchange.
+
+**Status:** Hypothesis. To develop, we would need to:
+
+- Define what "two nucleons sharing a surface" means geometrically — a larger corrugated torus? Two surfaces with cross-coupling? A direct sum of two clover spaces?
+- Compute the lowest-energy mode of this joint configuration and verify it differs from 2 × m_nucleon by ~2.2 MeV.
+- Show that the predicted scaling for larger A matches the semi-empirical mass formula (volume, surface, asymmetry, Coulomb, pairing terms).
+
+These are not done. The first concrete step is the deuteron — one extra constraint on top of the m_p/m_n inversion already worked through in clover-mass.md.
+
+**Relationship to Yukawa (§§1–4):** the two are not mutually exclusive. The Yukawa picture is *empirically* well-tested at distances ≳ 1 fm and matches phenomenology; the least-energy-coexistence picture is *structurally* simpler and matches the framework's geometric foundation. Both should converge if correct — the Yukawa exchange should fall out of the long-wavelength limit of the geometric calculation.
+
+---
+
 ## 7. Connection to the standing-wave reading
 
 The metric-mass chapter 5 commitment — particles are directionless standing waves, not single-direction traveling modes — should carry through into metric-binding. In the Yukawa-mediator picture:
