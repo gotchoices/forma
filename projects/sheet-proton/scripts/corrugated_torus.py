@@ -4,18 +4,30 @@ Render the corrugated torus surface in 3D.
 Usage:
     python scripts/corrugated_torus.py [--r-lobe R_LOBE] [--r-saddle R_SADDLE]
                                        [--R-major R_MAJOR] [--tau TAU]
+                                       [--sigma SIGMA]
                                        [--n-theta N] [--n-phi N]
                                        [--show] [--view ELEV AZIM]
 
 Outputs:
-    outputs/torus_chi<chi>_R<R_major>.png
+    outputs/torus_chi<chi>_R<R_major>_<embed>_<color>[_sigma<sigma>].png
 
-Per work/clover-quarks.md §9, the surface is:
+Per work/clover-quarks.md §9, the surface (in the parameter-shift embedding) is:
     r(theta, phi) = (R_major + P_x(phi + tau*theta)) * (cos theta, sin theta, 0)
                   + P_y(phi + tau*theta) * (0, 0, 1)
 
 with profile P(phi) defined by ProfileParams(r_lobe, r_saddle) and tau = 1/3
 by default.
+
+The optional --sigma flag is the rolled-leaf intrinsic shear of
+work/clover-quarks.md §1.3, §10.3. In the actual metric, sigma is a
+constant addition to g_{theta,phi} only; it does not enter the 3D embedding
+in a strictly isometric way. For visualization, this script uses an
+effective twist (sigma + tau) for the parameter shift / rotation rate so
+that sigma's "extra shear rate" effect is visible. The metric distinction
+between sigma and tau (only tau is tied to the Z_3 Bloch-sector
+quantization) is not visible in 3D; it lives in the spectroscopic sector
+structure. See the sigma-comparison renderings in outputs/ at
+(sigma, tau) = (0, 1/3), (0.10, 1/3), (0.30, 1/3) for the visual contrast.
 """
 
 from __future__ import annotations
@@ -48,6 +60,14 @@ def main() -> None:
         type=float,
         default=1.0 / 3.0,
         help="Twist parameter (default: 1/3)",
+    )
+    parser.add_argument(
+        "--sigma",
+        type=float,
+        default=0.0,
+        help="Rolled-leaf intrinsic shear (default: 0.0; see "
+        "work/clover-quarks.md §1.3 and §10.3). Same units as tau. "
+        "Visualised as an additional twist sigma+tau in the embedding.",
     )
     parser.add_argument(
         "--embedding",
@@ -115,6 +135,7 @@ def main() -> None:
     print(f"  chi      = {params.chi:.4f}")
     print(f"  R_major  = {args.R_major}")
     print(f"  tau      = {args.tau}")
+    print(f"  sigma    = {args.sigma}")
     print(f"  L_total  = {params.L_total:.4f}")
     print(f"  epsilon  = L_total/(2*pi*R_major) = {eps:.4f}")
     print()
@@ -126,11 +147,15 @@ def main() -> None:
 
     # Compute surface positions
     X, Y, Z = corrugated_torus_surface(
-        Theta, Phi, params, args.R_major, args.tau, embedding=args.embedding
+        Theta, Phi, params, args.R_major, args.tau,
+        embedding=args.embedding, sigma=args.sigma,
     )
 
-    # Compute the twisted phi values for coloring
-    twisted_phi = (Phi + args.tau * Theta) % (2.0 * pi)
+    # Compute the twisted phi values for coloring (uses the effective twist
+    # sigma + tau, matching what corrugated_torus_surface uses internally so
+    # the color bands track the visible cross-section).
+    twist_eff = args.sigma + args.tau
+    twisted_phi = (Phi + twist_eff * Theta) % (2.0 * pi)
 
     # Color the surface
     fund_period = 2.0 * pi / 3.0
@@ -262,6 +287,7 @@ def main() -> None:
                 args.R_major,
                 args.tau,
                 embedding=args.embedding,
+                sigma=args.sigma,
             )
             color = helix_cmap(i / args.helices)
             ax.plot(Hx, Hy, Hz, color=color, linewidth=1.8, alpha=0.95)
@@ -283,19 +309,21 @@ def main() -> None:
     ax.set_xlabel("x")
     ax.set_ylabel("y")
     ax.set_zlabel("z")
+    sigma_title = f", sigma={args.sigma:.4f}" if args.sigma != 0.0 else ""
     ax.set_title(
         f"Corrugated torus ({args.embedding}): chi={params.chi:.2f}, "
-        f"R_major={args.R_major}, tau={args.tau:.4f}\n"
+        f"R_major={args.R_major}, tau={args.tau:.4f}{sigma_title}\n"
         f"epsilon = L_total/(2*pi*R_major) = {eps:.4f}; coloring: {clabel}"
     )
 
     args.outputs_dir.mkdir(parents=True, exist_ok=True)
     helix_suffix = f"_helices{args.helices}" if args.helices > 0 else ""
+    sigma_suffix = f"_sigma{args.sigma:.2f}" if args.sigma != 0.0 else ""
     embed_tag = "pshift" if args.embedding == "parameter-shift" else "rot"
     out_path = (
         args.outputs_dir
         / f"torus_chi{params.chi:.2f}_R{args.R_major:.1f}"
-        f"_{embed_tag}_{args.color_by}{helix_suffix}.png"
+        f"_{embed_tag}_{args.color_by}{sigma_suffix}{helix_suffix}.png"
     )
     fig.savefig(out_path, dpi=120, bbox_inches="tight")
     print(f"Saved: {out_path}")

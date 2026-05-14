@@ -79,7 +79,7 @@ The status of σ as an independent parameter is being clarified in the restart (
 
 ### 0.5 Key mathematical terms
 
-- **Hill equation** — a one-dimensional wave equation whose coefficients depend on position periodically (e.g. coefficients that vary with the lobe/saddle pattern around the tube). It's the kind of equation that describes a wave moving through a periodic medium, and it has well-developed solution techniques (band structure, Bloch sums). When we reduce our 2D torus problem to one direction by exploiting the helical symmetry (§10.3), what's left is a Hill equation in the tube coordinate u.
+- **Hill equation** — a one-dimensional wave equation whose coefficients depend on position periodically (e.g. coefficients that vary with the lobe/saddle pattern around the tube). It's the kind of equation that describes a wave moving through a periodic medium, and it has well-developed solution techniques (band structure, Bloch sums). When we reduce our 2D torus problem to one direction by exploiting the helical symmetry (§10.4), what's left is a Hill equation in the tube coordinate u.
 
 - **Sturm–Liouville form** — a symmetric way to write the Hill equation so that the operator is self-adjoint with respect to a weighted inner product. Numerically, discretising in this form preserves the symmetry, which is important for getting accurate (real, ordered) eigenvalues.
 
@@ -169,6 +169,33 @@ With this choice, going around the ring once (θ: 0 → 2π) advances φ by 2π/
 **Topology check.** The surface closes onto itself because the profile has 3-fold symmetry: the rotated profile at θ = 2π is identical to the profile at θ = 0 (just relabeled). So the surface is genuinely a closed 2-torus T², not an open spiral.
 
 **Effective identification.** A point (θ, φ) on the surface is identified with (θ + 2π, φ + 2π/3) — the twist modifies the standard torus identification (θ, φ) ~ (θ + 2π, φ) by adding the 2π/3 shift in φ.
+
+### 1.3 An alternative construction: the rolled leaf (introduces σ)
+
+The §1.2 swept-profile construction has a single twist parameter τ that fuses two physically distinct effects — a discrete topological identification at the boundary and a continuous off-diagonal coupling in the induced metric. The **rolled-leaf** construction below builds the same surface (in a limit) but exposes these as two independent knobs: a continuous **intrinsic metric shear σ** in the sheet's underlying geometry, and the discrete twist τ in how the tube wraps the ring. σ pairs naturally with metric-charge's σ_uw; τ remains the topological wrap parameter of §1.2.
+
+**Step 1 — Sheared parallelogram sheet.** Start with a flat 2D sheet of coordinates (u, w), and give it intrinsic shear σ ∈ ℝ:
+
+<!-- ds² = du² + 2σ du dw + dw² -->
+$$
+ds^2 \;=\; du^2 \;+\; 2\sigma\,du\,dw \;+\; dw^2
+$$
+
+σ = 0 is the rectangular metric. σ ≠ 0 is a continuous tilt between u (which will become the tube direction) and w (which will become the ring direction) — directly analogous to metric-charge's σ_uw.
+
+**Step 2 — Bend each strip into a leaf.** Bend a strip of u-width 2π/3 so that its cross-section traces one **leaf**: a half-saddle arc (π/3 of saddle-arc, concave) + a full lobe arc (4π/3, convex) + a second half-saddle (π/3, concave). The arc-lengths sum to π/3 + 4π/3 + π/3 = 2π. Each leaf's body runs along w; its cross-section is one lobe flanked by two half-saddles.
+
+**Step 3 — Three leaves around a centerline → straight clover tube.** Place 3 leaves at 120° spacing around a common longitudinal axis (along w). Adjacent leaves join at the half-saddles: leaf-A's right half-saddle and leaf-B's left half-saddle together form one full 2π/3 saddle arc. The three joined leaves' cross-section is the three-lobe / three-saddle clover of §1.1.
+
+Because the parallelogram was sheared (σ ≠ 0), each leaf's far edge (w = L_w) is offset in u relative to its near edge (w = 0). The tube's two ends are **jagged** — not aligned with the cross-section structure at either end.
+
+**Step 4 — Wrap the centerline → clover torus.** Curl the length-axis into a circle of radius R_major (so w runs around a ring rather than along a line). The two jagged ends now meet head-to-head; the σ-induced u-offset around the loop becomes a constant off-diagonal entry in the induced metric (g_θφ), with no quantization required at the metric level. σ thus surfaces in the rolled torus as a continuous off-diagonal coupling.
+
+**Step 5 — Add the discrete twist τ on top.** Independently of σ, rotate the cross-section by 2π τ per ring revolution. τ is forced to k/3 by the profile's Z₃ symmetry (the profile must map to itself under the boundary identification when the ring closes); σ has no such constraint. **σ and τ are then two distinct knobs**: σ a continuous metric property of the underlying sheet, τ a discrete topological property of the wrap.
+
+**Reduction to §1.2.** Setting σ = 0 produces an un-jagged straight clover tube; wrapping it with τ = 1/3 in Step 5 reproduces the §1.2 surface exactly. §§7–10 (the closed-form profile and the induced-metric derivation) are therefore the σ = 0 special case of this construction.
+
+**Solvability is preserved at σ ≠ 0.** σ enters the induced metric as a *constant* off-diagonal addition: it modifies g_θφ but does not modify any metric component's dependence on θ or φ. The helical translation symmetry of §10.4 — which depends only on θ/φ-independence of the metric — therefore survives, the Hill-equation reduction of [clover-mass.md §2](clover-mass.md) still goes through, and the closed-form leading-order mass formula still emerges from the same Bloch-sector analysis. σ enters the m_r ↔ m_t cross-term as σ_eff = σ + 2τ (replacing the bare 2τ at σ = 0). The detailed metric derivation, including the σ-dependent determinant correction, is worked out in §10.3.
 
 ---
 
@@ -603,9 +630,9 @@ The numerical scripts in `scripts/corrugated_torus.py` support both via the `--e
 
 ## 10. The induced metric
 
-This section derives the induced metric for **embedding A (parameter-shift)** from §9.3. The corresponding derivation for embedding B (rotation) is structurally similar but produces additional g_θφ contributions from the cross-section rotation; it is deferred until §9.5's open question is resolved.
+This section derives the induced metric for **embedding A (parameter-shift)** from §9.3, then augments it with the **intrinsic shear σ** from §1.3's rolled-leaf construction. The corresponding derivation for embedding B (rotation) is structurally similar but produces additional g_θφ contributions from the cross-section rotation; it is deferred until §9.5's open question is resolved.
 
-**Phase-C commitment.** All Phase C numerical work in [clover-mass.md](clover-mass.md) — the Hill-equation reduction, the closed-form mass formula μ² = (m_r − 2 m_t/3)² + (m_t/ε)², the perturbative expansion in η = ε/(2+χ), and the independent numerical Bloch-restricted Fourier solver — assumes **embedding A throughout**. The mass-spectrum predictions of [clover-mass.md](clover-mass.md) are therefore predictions of embedding A specifically. Whether embedding B would give the same predictions is a separate question whose answer requires redoing §10–§11 for embedding B's metric (a finite, deferred calculation). Until that is done, "the corrugated-torus mass prediction" refers unambiguously to embedding A.
+All mass-spectrum analysis in [clover-mass.md](clover-mass.md) — the Hill-equation reduction, the closed-form mass formula, the η-expansion, and the numerical Bloch-restricted Fourier solver — runs against the embedding-A metric derived below.
 
 ### 10.1 Tangent vectors
 
@@ -644,34 +671,70 @@ $$
 g_{\varphi\varphi} \;=\; |P'(\varphi + \tau\theta)|^2
 $$
 
-In arc-length parameterization, |P'(φ)| = L_total/(2π) ≡ c_arc (constant). So:
+In arc-length parameterization, |P'(φ)| = L_total/(2π) ≡ c_arc (constant). So the embedding-A metric is:
 
 <!-- g_θθ = (R_major + P_x)² + τ² c_arc², g_θφ = τ c_arc², g_φφ = c_arc² -->
 $$
-\boxed{\;g_{\theta\theta} = (R_{\mathrm{major}} + P_x)^2 + \tau^2 c_{\mathrm{arc}}^2, \quad g_{\theta\varphi} = \tau\,c_{\mathrm{arc}}^2, \quad g_{\varphi\varphi} = c_{\mathrm{arc}}^2\;}
+g_{\theta\theta}^{(A)} = (R_{\mathrm{major}} + P_x)^2 + \tau^2 c_{\mathrm{arc}}^2, \qquad g_{\theta\varphi}^{(A)} = \tau\,c_{\mathrm{arc}}^2, \qquad g_{\varphi\varphi}^{(A)} = c_{\mathrm{arc}}^2
+$$
+
+(P_x evaluated at u = φ + τθ throughout). The dependence on (θ, φ) is entirely through u; P_x ranges from r_min = r_lobe (saddle midpoint) to r_max = 2 r_lobe + r_saddle (lobe midpoint).
+
+### 10.3 Rolled-leaf overlay: adding the intrinsic shear σ
+
+The metric of §10.2 is the σ = 0 special case of the rolled-leaf construction from §1.3. Turning on σ adds the intrinsic shear of the underlying parallelogram sheet (Step 1 there) to the rolled torus. Because the bending and ring-wrapping that take the sheet to the torus are isometric, the shear survives unchanged in the intrinsic metric as a constant off-diagonal contribution.
+
+In the convention where σ combines additively with τ (i.e., σ has units of "rotation per ring revolution", matching τ), the rolled-leaf contribution adds σ c²_arc to g_θφ and leaves the other entries alone:
+
+<!-- g_θφ_sheet = σ c_arc²  -->
+$$
+\Delta g_{\theta\varphi}^{(\sigma)} \;=\; \sigma\,c_{\mathrm{arc}}^2, \qquad \Delta g_{\theta\theta}^{(\sigma)} \;=\; 0, \qquad \Delta g_{\varphi\varphi}^{(\sigma)} \;=\; 0
+$$
+
+σ enters only the off-diagonal entry — *not* g_θθ, *not* g_φφ, and *not* the parameter shift u inside P_x. (The asymmetry between σ and τ is essential: σ is a property of the *intrinsic* sheet metric and shows up only as an off-diagonal coupling, whereas τ enters via the 3D embedding's chain rule and so contributes to both g_θφ and g_θθ. See the independence note in §10.5 below.)
+
+The combined embedding-A + rolled-leaf metric is therefore:
+
+<!-- g_θθ = (R_major + P_x)² + τ² c_arc², g_θφ = (σ + τ) c_arc², g_φφ = c_arc² -->
+$$
+\boxed{\;g_{\theta\theta} = (R_{\mathrm{major}} + P_x)^2 + \tau^2 c_{\mathrm{arc}}^2, \quad g_{\theta\varphi} = (\sigma + \tau)\,c_{\mathrm{arc}}^2, \quad g_{\varphi\varphi} = c_{\mathrm{arc}}^2\;}
 $$
 
 Determinant of the metric:
 
-<!-- |g| = g_θθ g_φφ − g_θφ² = ((R_major + P_x)² + τ² c²) c² − τ² c⁴ = (R_major + P_x)² c² -->
+<!-- |g| = g_θθ g_φφ − g_θφ² = ((R_major + P_x)² + τ² c²) c² − (σ+τ)² c⁴ = ((R_major + P_x)² − σ(σ+2τ) c²) c² -->
 $$
-|g| \;=\; (R_{\mathrm{major}} + P_x)^2 \cdot c_{\mathrm{arc}}^2
-$$
-
-Inverse metric:
-
-<!-- g^θθ = 1/((R_major + P_x)²), g^θφ = -τ/((R_major + P_x)²), g^φφ = ((R_major + P_x)² + τ² c²) / ((R_major + P_x)² c²) -->
-$$
-g^{\theta\theta} = \frac{1}{(R_{\mathrm{major}} + P_x)^2}, \quad g^{\theta\varphi} = -\frac{\tau}{(R_{\mathrm{major}} + P_x)^2}, \quad g^{\varphi\varphi} = \frac{(R_{\mathrm{major}} + P_x)^2 + \tau^2 c_{\mathrm{arc}}^2}{(R_{\mathrm{major}} + P_x)^2 \cdot c_{\mathrm{arc}}^2}
+|g| \;=\; \bigl((R_{\mathrm{major}} + P_x)^2 \;-\; \sigma(\sigma + 2\tau)\,c_{\mathrm{arc}}^2\bigr) \cdot c_{\mathrm{arc}}^2
 $$
 
-The position-dependence is entirely through P_x(φ + τθ), the radial component of the profile at the corresponding point. P_x ranges from r_min = r_lobe (saddle midpoint) to r_max = 2r_lobe + r_saddle (lobe midpoint).
+At σ = 0 this reduces to (R_major + P_x)² · c_arc². For σ ≠ 0 there is a small correction proportional to σ(σ + 2τ) · c²_arc — a higher-order-in-ε effect that is negligible whenever the rolled-leaf small-shear assumption σ ≲ 1 holds and ε ≪ 1.
 
-### 10.3 Helical translation symmetry
+Inverse metric (to leading order, treating ε² σ(σ + 2τ) as small):
 
-The metric depends on (θ, φ) only through the combination u = φ + τθ. So translations of the form (θ, φ) → (θ + δθ, φ − τδθ) leave u — and hence the metric — invariant. This is a **continuous symmetry** of the surface, "helical translation" along the twisted axis.
+<!-- g^θθ ≈ 1/(R_major + P_x)², g^θφ ≈ -(σ+τ)/(R_major + P_x)², g^φφ ≈ 1/c_arc² + τ²/(R_major + P_x)² -->
+$$
+g^{\theta\theta} \approx \frac{1}{(R_{\mathrm{major}} + P_x)^2}, \quad g^{\theta\varphi} \approx -\frac{\sigma + \tau}{(R_{\mathrm{major}} + P_x)^2}, \quad g^{\varphi\varphi} \approx \frac{1}{c_{\mathrm{arc}}^2} \;+\; \frac{\tau^2}{(R_{\mathrm{major}} + P_x)^2}
+$$
 
-This symmetry will let us reduce the Laplacian eigenvalue problem from 2D to effectively 1D in u (with a separate label for the orthogonal direction).
+Crucially, σ appears in the inverse off-diagonal g^θφ but **not** in g^φφ (since σ does not contribute to g_θθ in the original metric). This asymmetry is what drives the σ_eff = σ + 2τ form of the cross-term in the generalized mass formula (worked out in [clover-mass.md §4](clover-mass.md); the σ ≠ 0 derivation parallels the σ = 0 one with two changes: τ → σ + τ in g^θφ and τ → τ (unchanged) in g^φφ).
+
+### 10.4 Helical translation symmetry (at σ ≠ 0)
+
+The metric of §10.3 depends on (θ, φ) only through the combination u = φ + τθ — note that σ enters only as a constant off-diagonal entry, with no σ-dependent terms in u. So translations of the form (θ, φ) → (θ + δθ, φ − τ δθ) leave u — and hence the metric — invariant. This is a **continuous symmetry** of the surface, "helical translation" along the twisted axis.
+
+This symmetry will let us reduce the Laplacian eigenvalue problem from 2D to effectively 1D in u (with a separate label for the orthogonal direction). The σ ≠ 0 generalization does not perturb the symmetry — σ shows up as an extra constant in g_θφ, which the symmetry transformation moves over uniformly. The Hill-equation reduction in [clover-mass.md §2](clover-mass.md) therefore proceeds unchanged at σ ≠ 0; only the coefficients shift.
+
+### 10.5 σ and τ are independent
+
+The metric of §10.3 makes the σ/τ independence explicit:
+
+- **τ enters everywhere.** It sits inside the parameter shift u = φ + τθ (so it controls how P_x depends on (θ, φ)), it contributes τ²c²_arc to g_θθ, it contributes τc²_arc to g_θφ, and it sets the boundary identification (θ, φ) ~ (θ + 2π, φ + 2πτ). Because the boundary identification must map the profile to itself, **τ is quantized to k/3** by the Z₃ symmetry of the profile.
+
+- **σ enters only off-diagonally.** It contributes σc²_arc to g_θφ and nothing else. It does not enter u, does not enter g_θθ or g_φφ, and — crucially — does not enter the boundary identification. **σ is therefore not subject to the Z₃ constraint**; it is a free real parameter.
+
+The asymmetry is geometric in origin: τ comes from the 3D embedding's chain rule (∂_θ acting on P(φ + τθ) generates τP' along the cross-section directions), so it sees the profile structure. σ comes from the underlying sheet's intrinsic metric (a property that survives isometric bending and wrapping), so it sees nothing about the cross-section's structural features.
+
+A wave on the surface feels both — both appear together in the leading-order mass formula via σ_eff = σ + 2τ. But the Z₃ structure of the Bloch-sector labels (m_t mod 3) is set entirely by τ via the boundary identification; σ shifts every sector continuously without changing how many sectors there are. This is the spectroscopic fingerprint that separates the two: τ's discreteness lives in the sector count, σ's continuity lives in within-sector mass shifts.
 
 ---
 

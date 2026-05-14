@@ -2,7 +2,7 @@
 
 **Status:** Phase-A complete through second-order perturbation theory + independent numerical validation. The zeroth-order formula μ² = (m_r − 2m_t/3)² + (m_t/ε)² is **validated to machine precision** by a Bloch-restricted Fourier-basis Hill solver. The §6.3 second-order PT formula derived in this file is **INCORRECT** — it failed to restrict to the proper Bloch sector and overpredicts corrections by ~10×. The numerical solver (which does enforce the Bloch restriction) finds candidate pairs (e.g. (m_t, m_r) = (2, 1) ↔ (±2, ±2) at ε ≈ 0.2) that fit m_n/m_p to within 0.03%. The earlier "negative result" of §6.4 is overturned. Next step: fine-tune (ε, χ) with the numerical solver to fit m_p and m_n simultaneously.
 
-This file derives the mass spectrum on the corrugated torus surface of [clover-quarks.md](clover-quarks.md), exploits the helical symmetry of §10.3 to reduce the 2D eigenvalue problem to a 1D Hill equation, and attempts the inversion to extract (ε, χ) from observed proton and neutron masses.
+This file derives the mass spectrum on the corrugated torus surface of [clover-quarks.md](clover-quarks.md), exploits the helical symmetry of §10.4 to reduce the 2D eigenvalue problem to a 1D Hill equation, and attempts the inversion to extract (ε, χ) from observed proton and neutron masses.
 
 The aim is to **avoid brute-force numerical sweeping** by getting m(ε, χ, τ; embedding) far enough analytically that a few-variable algebraic inversion becomes tractable.
 
@@ -37,7 +37,7 @@ where u ≡ φ + τθ, c ≡ L_total/(2π) is the constant arc-length speed of t
 
 ## 2. Helical symmetry → 1D Hill equation
 
-§10.3 noted that the metric depends on (θ, φ) only through u = φ + τθ. Switch to helical coordinates
+§10.4 noted that the metric depends on (θ, φ) only through u = φ + τθ. Switch to helical coordinates
 
 <!-- v = θ, u = φ + τθ -->
 $$

@@ -149,6 +149,7 @@ def corrugated_torus_surface(
     R_major: float,
     tau: float = 1.0 / 3.0,
     embedding: str = "parameter-shift",
+    sigma: float = 0.0,
 ) -> Tuple[np.ndarray, np.ndarray, np.ndarray]:
     """Compute 3D positions on the corrugated torus surface.
 
@@ -175,6 +176,23 @@ def corrugated_torus_surface(
     spectra, differ -- which embedding is physical is an open question, see
     work/clover-quarks.md §9.5.
 
+    The optional `sigma` parameter is the rolled-leaf intrinsic shear of
+    work/clover-quarks.md §1.3, §10.3. In the metric, sigma is a constant
+    addition to g_{theta,phi} that does NOT enter g_{theta,theta},
+    g_{phi,phi}, or the boundary identification (only tau enters those).
+    The 3D embedding shape is therefore strictly independent of sigma --
+    a sigma-only deformation lives entirely in intrinsic geometry, with
+    no isometric realization in R^3 by these embeddings.
+
+    For visualization, this function approximates the sigma contribution by
+    using an effective twist (sigma + tau) for the parameter shift /
+    rotation rate. This makes sigma visually act like extra tau, which
+    captures the "increasing shear rate" intuition of the rolled-leaf
+    construction but conflates sigma and tau at the embedded-shape level.
+    The metric distinction between sigma and tau (the latter being the
+    only one tied to the Z_3 Bloch-sector quantization) is not visible
+    in the 3D shape; it lives in the spectroscopic sector structure.
+
     Parameters
     ----------
     theta, phi : array_like (same shape)
@@ -186,6 +204,10 @@ def corrugated_torus_surface(
         Twist parameter (cross-section advance per radian of theta).
     embedding : {"parameter-shift", "rotation"}, default "parameter-shift"
         Choice of surface embedding.
+    sigma : float, default 0.0
+        Rolled-leaf intrinsic shear (rotation per ring revolution, same
+        units as tau). Visualised as an effective additional twist
+        sigma + tau in the embedding; see note above.
 
     Returns
     -------
@@ -197,8 +219,10 @@ def corrugated_torus_surface(
     if theta_arr.shape != phi_arr.shape:
         raise ValueError("theta and phi must have the same shape")
 
+    twist_eff = sigma + tau
+
     if embedding == "parameter-shift":
-        twisted_phi = (phi_arr + tau * theta_arr) % (2.0 * pi)
+        twisted_phi = (phi_arr + twist_eff * theta_arr) % (2.0 * pi)
         Px, Py = profile(twisted_phi.ravel(), params)
         Px = Px.reshape(theta_arr.shape)
         Py = Py.reshape(theta_arr.shape)
@@ -208,8 +232,8 @@ def corrugated_torus_surface(
         Px, Py = profile((phi_arr % (2.0 * pi)).ravel(), params)
         Px = Px.reshape(theta_arr.shape)
         Py = Py.reshape(theta_arr.shape)
-        cos_t = np.cos(tau * theta_arr)
-        sin_t = np.sin(tau * theta_arr)
+        cos_t = np.cos(twist_eff * theta_arr)
+        sin_t = np.sin(twist_eff * theta_arr)
         local_N = cos_t * Px - sin_t * Py
         local_B = sin_t * Px + cos_t * Py
     else:
