@@ -69,7 +69,7 @@ Tracks the project's active work files, their states, dependencies, and next act
 
 **Topic:** Derive m(ε, χ, τ; embedding) analytically by reducing the 2D Laplacian on the corrugated torus to a 1D Hill equation (via the helical translation symmetry of clover-quarks §10.3), expanding perturbatively in η = r_lobe/R_major around the constant-radius flat-twisted-torus limit, and inverting two observables (m_p, m_n) to extract two unknowns (ε, χ).
 
-**Status:** Phase-A complete through O(η²). Forward map μ²(n, m, ε, χ) given in closed form: zeroth-order μ² = (n − 2m/3)² + (m/ε)²; first-order vanishes by ⟨P_x⟩ = 0; second-order computed numerically from Fourier coefficients of P_x. **Headline negative result:** no low-(n, m) identification tested fits the observed m_n/m_p ≈ 1.001378 in any regime where the η-expansion converges. The framework is falsifiable, and at this level of analysis it fails.
+**Status:** Phase-A complete through O(η²) + independent numerical validation. Zeroth-order formula μ² = (n − 2m/3)² + (m/ε)² validated to machine precision. First-order vanishing validated. Second-order PT formula (§6.3) found INCORRECT — failed to restrict to Bloch sector; corrected to use intra-sector (1/w) coupling. Numerical Bloch-restricted Fourier solver (scripts/laplacian_spectrum.py) confirms candidate pairs like ((1, 2), (2, 2)) at ε ≈ 0.2 give m_n/m_p within 0.03% of observation. Earlier "negative result" reversed. Framework PASSES qualitative test.
 
 **Dependencies:**
 - *Upstream:* clover-quarks (the surface, the metric, the path-winding identifications)

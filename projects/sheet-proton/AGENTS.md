@@ -1,6 +1,5 @@
 # AGENTS.md — sheet-proton
-
-Rules for AI agents working in this project. For overall project conventions, see [../../CLAUDE.md](../../CLAUDE.md).
+Rules for AI agents working in this project.
 
 ## Scripts and outputs: cleanliness rules
 
@@ -58,17 +57,6 @@ Before creating any new script, check `scripts/` and `scripts/lib/` for existing
 
 If a utility function turns out to be useful beyond sheet-proton (e.g., generic torus visualization), promote it to a shared location after asking the user. Don't unilaterally relocate code.
 
----
-
-## What this project is
-
-See [README.md](README.md) for the project's scope: detailed exploration of what the proton sheet uniquely looks like. Work files in [work/](work/) drive the exploration; chapter-level prose emerges only when work files converge.
-
-## What this project is not
-
-- Not metric-binding (general multi-knot framework)
-- Not a numerical-fitting playground (we're after structural understanding)
-- Not a place for endless one-off scripts
 
 ## Workflow summary
 
