@@ -127,6 +127,52 @@ If r_saddle < r_lobe (the typical clover regime), these are **the heaviest** mod
 
 The hierarchy of inverse-length scales (c > r_lobe > r_saddle in the typical clover regime) gives a natural mass ordering: whole-circumference modes are lightest, lobe-localized intermediate, saddle-localized heaviest.
 
+### 3.5 Wavelength resolution and inter-region hopping
+
+Why does each compartment have its own characteristic frequency, and how does a localized wave move between geometrically separated regions of the same type? Two physical arguments connect the mode hierarchy to its underlying mechanism.
+
+#### 3.5.1 Long wavelengths cannot resolve sub-features
+
+A standing wave of wavelength λ can only "see" geometric structure on scales larger than ~λ. Smaller features average out — the wave samples them as a smooth background.
+
+For the clover cross-section:
+
+- **λ ~ 2π c** (long wavelength): the wave sees only the *aggregate* cross-section perimeter. The internal three-lobe structure is below resolution. These are the whole-circumference modes of §3.1 — the lightest because the longest-wavelength standing waves require the lowest energy.
+- **λ ~ 2π r_lobe** (intermediate): the wave begins to resolve the three-fold lobe structure. Lobe interiors become available as localization regions. These are §3.2's lobe-localized modes.
+- **λ ~ 2π r_saddle** (short): the wave resolves the finer saddle structure. Saddle interiors become available. These are §3.3's saddle-localized modes — the heaviest because they require the shortest wavelength.
+
+This gives the physical reason for the mass hierarchy: it is the **diffraction limit** of standing waves on a structured cross-section. Lower-energy waves cannot "fit inside" smaller geometric features.
+
+#### 3.5.2 Lobe-to-lobe hopping (delta topology)
+
+For a lobe-localized wave, the three lobes form a **triangular (delta) graph** of accessible regions. A wave residing in one lobe can transition to either of the other two by traversing the intervening saddle.
+
+The geometric question: when a wavefront exits one lobe arc, does its tangent direction point toward the entry tangent of the adjacent lobe?
+
+By the clover's kissing-circle construction (clover-quarks §7), the lobe and saddle arcs join with C¹ continuity at the tangent points. The wavefront direction at a lobe exit is therefore the same as the saddle entry direction at the same point — there is no direction discontinuity. The wave continues smoothly across the saddle and into the next lobe.
+
+Two structural consequences:
+
+- **Hopping is geometrically allowed.** The wavefront direction at one lobe's exit matches the next lobe's entry direction; no discontinuity blocks the transition.
+- **The hop is a "long" excursion** — the wave must traverse a 60° saddle arc of length r_saddle · (2π/3) before reaching the next lobe. The hopping amplitude is suppressed by the saddle traversal cost.
+
+In tight-binding language: the three lobes form a 3-site ring with hopping matrix element t set by the saddle-traversal action. This gives the Bloch decomposition into three quasimomentum sectors automatically.
+
+#### 3.5.3 Saddle-to-saddle hopping (wye topology) and the Maslov phase
+
+For a saddle-localized wave, the three saddles also form a triangular graph, but with a structurally different visualization: each saddle is connected to its two neighbours through the intervening *lobe*, so the connectivity graph (saddles as nodes, intervening lobes as edges) is a **wye (Y)** when drawn around the centroid — the three saddles point outward from a central hub formed by the convex bulge interconnecting them.
+
+A saddle-to-saddle hop traverses a 240° lobe arc — the longer of the two arc segments, and the one passing through a region of *positive* geodesic curvature (lobes are convex).
+
+Two structural features distinguish saddle hops from lobe hops:
+
+- **Counter-intuitive but geometrically valid.** A wave living in concave (saddle) regions can hop through a convex (lobe) region, because the wave equation does not require the wavefunction to share the sign of the underlying curvature. The wavefunction is a scalar on the surface; geodesic curvature affects only the *path metric*, not whether amplitude can pass through.
+- **Possible 180° phase flip at each hop (Maslov phase).** When a semi-classical trajectory traverses a region where the second variation of the action changes sign (a *focal point* or *caustic*), the wavefunction picks up a phase of π — this is the Maslov index. Saddle regions on the embedded clover surface have *negative* Gaussian curvature, so trajectories defocus there. The transition from a defocusing saddle to a focusing lobe crosses a focal point, contributing a π phase shift.
+
+If each saddle-to-saddle hop carries a 180° phase, then traversing the three-site wye cycle (saddle 1 → lobe → saddle 2 → lobe → saddle 3 → lobe → saddle 1) accumulates **3 × 180° = 540° ≡ 180° (mod 360°)** — an antiperiodic boundary condition. The saddle band would be naturally antiperiodic around the Z₃ cycle, in contrast to the lobe band's periodic structure.
+
+Antiperiodic boundary conditions on a closed loop are the structural signature of **fermionic statistics**. If lobe modes are periodic (bosonic-like) and saddle modes are antiperiodic (fermionic-like), this would be a candidate geometric origin for the up-type / down-type spin-statistics distinction. **Highly speculative**; needs both a careful Maslov calculation on the embedded surface and a clear connection to the path-integral derivation of fermionic statistics in [metric-binding](../../metric-binding/) framework.
+
 ---
 
 ## 4. Charge from arc curvature — invariant across compartments
@@ -277,6 +323,7 @@ The natural prediction: **only N = 1, 2, 3 are independent**. For N = 4, 5, 6, .
 - **Three generations are forced, not chosen.** The 3-fold corrugation periodicity gives Bloch periodicity 3 on the cross-section; only m = 1, 2, 3 (mod 3) are distinct. No spurious fourth generation predicted.
 - **Z₃ resonance distinguishes gen 3.** The third generation is structurally special — its three waves naturally lock to the three corrugation lobes. This could explain why the third generation has the largest mass scale, the largest CKM mixing angles, and is the most "extreme" in observed phenomenology.
 - **Two indices, two empirical labels.** Generation and flavor map to two distinct geometric quantum numbers (N and amplitude-focus), matching the Standard Model's two-axis (generation, isospin) classification of quarks.
+- **Possible geometric origin of fermionic statistics (speculative).** Per §3.5.3, saddle-to-saddle hopping may carry a 180° Maslov phase per hop, giving the saddle-focused (down-type) band an antiperiodic boundary condition around the Z₃ cycle — the structural signature of fermionic statistics. Lobe-to-lobe hopping has no analogous focal-point crossing and is periodic (bosonic-like). If verified by a Maslov-index calculation on the embedded surface, this would propose a geometric mechanism by which the down-type flavor differs from the up-type at the level of spin-statistics, not just curvature sign.
 
 **Weaknesses:**
 
@@ -291,6 +338,8 @@ The natural prediction: **only N = 1, 2, 3 are independent**. For N = 4, 5, 6, .
 1. **Doublet structure.** For each cross-section wavenumber m, the eigenvalue spectrum should contain *two* eigenstates with similar mass but distinct amplitude patterns. One has antinodes at u = 0, 2π/3, 4π/3 (lobe centers in the typical clover parameterization); the other at u = π/3, π, 5π/3 (saddle centers). Compute eigenvectors with [scripts/laplacian_spectrum.py](../scripts/laplacian_spectrum.py); inspect the spatial localization.
 
 2. **Splitting magnitude scales with resonance.** The lobe-focused / saddle-focused energy gap should be largest at m = 3 (resonant) and smaller at m = 1, 2 (frustrated). This is structurally distinctive of Mechanism D and absent in Mechanisms A–C.
+
+3. **Maslov phase on saddle-to-saddle hops (speculative).** Compute the Maslov index of a semi-classical trajectory traversing a saddle → lobe → saddle path on the embedded clover surface. Predicted value: π per saddle-to-saddle hop. If the prediction holds, the saddle band carries antiperiodic boundary conditions around the Z₃ cycle while the lobe band remains periodic — a candidate geometric mechanism for the up/down spin-statistics distinction.
 
 3. **No m = 4 eigenstate beyond Bloch periodicity.** Beyond m = 3, additional eigenstates should fold back into the m = 1, 2, 3 Bloch sectors rather than introducing new fundamental modes. Check the spectrum for m > 3; if a fresh independent eigenstate appears, the natural-cutoff argument fails.
 
@@ -396,3 +445,4 @@ These can be done as extensions to the existing Hill-equation solver; no new mat
 4. Check the natural-cutoff prediction of Mechanism D (§9.5): no spurious m > 3 eigenstates beyond Bloch periodicity.
 5. Compute the predicted inter-generation mass ratios and compare to observed (§9.4).
 6. Address the flavor-ordering anomaly (§7 item 5) — the most demanding empirical test. Failure here likely refutes the geometric-generations idea in its current form, regardless of which mechanism is favored.
+7. Compute the Maslov phase on a saddle → lobe → saddle trajectory (§3.5.3 and §5.4 prediction 3). A nonzero π phase per saddle hop would support the saddle band as antiperiodic / fermionic-like. This is speculative but cheap to test analytically.

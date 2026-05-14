@@ -6,113 +6,97 @@ Tracks the project's active work files, their states, dependencies, and next act
 
 ---
 
-## Work files
+## Restart from first principles — checklist
 
-### strong.md — Yukawa-mediator path to strong force
+The clover-quarks and clover-mass development accumulated terminology drift, conflated wave-mode labels with path-winding labels, and didn't separately account for continuous shear σ vs discrete twist τ. Starting 2026-05-14 we are working through both files from first principles, updating in place. Steps in suggested order; check off as completed.
 
-**Topic:** Derive strong force as Yukawa exchange via a wave-mediator on the proton sheet. The mediator's Compton wavelength sets the force range; Coulomb-α applies at long range; the two regimes combine smoothly.
+### Phase 0 — Nomenclature reset
 
-**Status:** Drafted; full 9-section outline complete. Ready for computational work.
+- [ ] Adopt `(n_t, n_r)` (tube-first per metric-charge) for path winding numbers
+- [ ] Adopt a distinct notation for wave-mode quantum labels (currently conflated with path windings)
+- [ ] Clarify the **σ vs τ** distinction (open question; pin during Phase 1):
+  - **τ** (discrete twist, locked to k/3): a rotation of the cross-section by 2π/3 per ring revolution. Changes the **boundary identification** on the surface — that's a topological operation, which forces Bloch sectors and m mod 3 constraints. Discreteness is forced by Z₃ symmetry of the profile.
+  - **σ** (continuous internal sheet shear, free parameter): an intrinsic **metric** property of the sheet before rolling. Affects only the off-diagonal g_θφ coupling; does *not* change boundary identifications.
+  - **From the wave's perspective:** both appear in the mass formula additively in something like σ_eff = σ + 2τ. So a wave alone cannot distinguish geometric origin from topological — only the *spectrum's discreteness* (sector structure) carries τ's topological fingerprint.
+- [ ] Define key mathematical terms in a "Conventions" block at the top of clover-quarks.md: **Hill equation** (1D ODE of the form ψ'' + p(u)ψ' + q(u)ψ = 0 with periodic coefficients, named after George William Hill); **Sturm–Liouville form**; **helical translation symmetry**; **Bloch sector** (subspace of wavefunctions sharing a single twist-identification phase); **zeroth/first/second-order perturbation theory** (zeroth = unperturbed eigenvalues; first/second-order = correction in powers of the small parameter η = r_lobe/R_major)
+- [ ] Add the Conventions section to clover-quarks.md
+- [ ] Sweep all existing files (clover-quarks, clover-mass, quark-flavor, meson-spectrum, 3-gen, strong) and scripts (corrugated_torus, laplacian_spectrum, spectrum_vs_pdg, validate_mass_formula) for terminology consistency
 
-**Dependencies:**
-- *Upstream:* metric-charge (sheet structure, closure rule); metric-mass chapter 5 (standing-wave reading); metric-binding (general binding framework)
-- *Sister files (in sheet-proton):* quark-flavor, meson-spectrum, clover-quarks
-- *Sister files (in metric-binding):* mass-from-cancellation, standing-wave-vs-mediator
+### Phase 1 — Generalized clover-torus geometry (new: σ + τ as independent parameters)
 
-**Next actions:**
-1. Implement `mode-spectrum-sweep.py` — catalog proton-sheet mode spectrum at R64 parameters; find candidate mediator modes.
-2. Implement `qq-bar-compound.py` — compute 2-component compound masses.
-3. Run phenomenological Compton-switching probe in parallel as sanity check.
-4. Build Coulomb+Yukawa Schrödinger solver and test against R64 Phase 7d's QM gate.
+- [ ] Document the rolled-leaf construction in clover-quarks §7 (or new subsection):
+  - Sheared parallelogram sheet → leaf (central 4π/3 convex lobe arc + 2 × π/3 concave half-saddle arcs = full 2π leaf)
+  - 3 leaves replicated around a centerline → straight clover tube (jagged ends due to σ)
+  - Wrap centerline as ring spine → jagged ends meet continuously (clover torus with intrinsic σ)
+  - Add the discrete 2π/3 twist τ on top → torus with **both** continuous σ and discrete τ
+- [ ] **Compatibility check:** verify the σ → 0 limit of the rolled-leaf construction reduces to the existing clover-quarks model (§§7–10). If it doesn't, reconcile or retract.
+- [ ] Resolve whether σ and τ are truly independent or interrelated. Working hypothesis: independent (σ from sheet's internal metric, τ from how the rolled tube is closed). Document the rolled-leaf algebra that proves it (or identify the coupling, if found).
+- [ ] Re-derive metric components (clover-quarks §10) with σ and τ as separate inputs
+- [ ] Update `scripts/corrugated_torus.py` to accept σ as a separate CLI flag (independent of τ)
+- [ ] Render visualization comparisons at (σ, τ) = (0, 1/3), (small σ, 1/3), (moderate σ, 1/3) to verify the picture
 
----
+### Phase 2 — Mass formula re-derivation
 
-### quark-flavor.md — quark structure as canceling primitives
+(Definitions of *Hill equation* and *zeroth/first/second order* are added to clover-quarks's Conventions section in Phase 0; this phase uses them.)
 
-**Topic:** Catalog candidate (m, n) mappings for u and d quarks on the proton sheet. Test each against observed proton/neutron mass, mass split, decay structure.
+- [ ] Re-derive Hill equation reduction with the σ + τ metric (clover-mass §2)
+- [ ] Recompute zeroth-order spectrum (= eigenvalues of the *unperturbed*, flat-twisted-torus limit where the corrugation P_x has vanishing amplitude): derive μ²(n_t, n_r, ε, σ, τ) explicitly
+- [ ] State explicitly when higher orders enter — first/second-order corrections are series in η = r_lobe/R_major (corrugation depth measured relative to the ring scale); for the η-values we care about, document when truncation is justified
+- [ ] Determine effective shear σ_eff (combination of intrinsic σ and twist τ)
+- [ ] Update clover-mass §§3–4 with the generalized formula
+- [ ] Re-validate numerically: extend `scripts/validate_mass_formula.py` to test σ-dependence
 
-**Status:** Drafted. Four candidate mappings identified: R64 (n-flipped), User-1 (m-flipped), User-2 (full sign-flip), Alternative-3 (independent primitives).
+### Phase 3 — Three generations (the strategic priority)
 
-**Dependencies:**
-- *Upstream:* metric-charge chapter 4 (closure rule), R64 empirical fit
-- *Sister files (in sheet-proton):* strong, meson-spectrum, clover-quarks
-- *Sister files (in metric-binding):* mass-from-cancellation, fractional-charge, color-confinement
+- [ ] Review the various candidate mechanisms in 3-gen.md (A: compartments, B: excitation tower, C: hybrid, D: wave count + amplitude focus)
+- [ ] Implement χ-sweep in `scripts/laplacian_spectrum.py` to expose band structure
+- [ ] Compute wavefunction localization patterns (whole-circumference, lobe-localized, saddle-localized)
+- [ ] Run Mechanism-D doublet test (the sharpest discriminator: for each m ∈ {1, 2, 3}, look for lobe-focused / saddle-focused antinode pairs)
+- [ ] Identify the surviving mechanism; pin (σ, τ, ε, χ, r_lobe, r_saddle) from the 6 quark masses
+- [ ] Update 3-gen.md to document the selected mechanism (or rule them all out)
+- [ ] Update clover-quarks.md §12 with the 6-quark identification
 
-**Next actions:**
-1. Implement `quark-mapping-spectrum.py` — compute proton and neutron predicted masses for all four mappings.
-2. Rank mappings by empirical fit.
-3. Check closure compatibility for the top-ranked mapping(s).
-4. Feed result into strong (mediator content depends on quark mapping) and meson-spectrum.
+### Phase 4 — Other particles via SM recipes
 
----
+- [ ] Build mesons (q + q̄) using the pinned quark identifications
+- [ ] Build other baryons (Λ, Σ, Ξ, Δ, ...) using SM 3-quark recipes
+- [ ] Cross-reference predictions with PDG via `scripts/spectrum_vs_pdg.py`
+- [ ] Update meson-spectrum.md with results
+- [ ] Update quark-flavor.md to reflect the generalized framework
 
-### meson-spectrum.md — light mesons as 2-component compounds
+### Phase 5 — Cleanup and consolidation
 
-**Topic:** Identify light mesons (π, K, η, ρ, ω, φ) as 2-component qq̄ compounds in MaSt. Naive dispersion mass predictions; structural questions about pion's small mass; strangeness assignment.
-
-**Status:** Drafted. Naive predictions tabulated; significant gaps identified (pion mass mechanism, strangeness assignment, spin-0/spin-1 splittings).
-
-**Dependencies:**
-- *Upstream:* metric-charge chapter 8 (σ_uw shear effects); R53 (three-generation structure)
-- *Sister files (in sheet-proton):* strong, quark-flavor, clover-quarks
-- *Sister files (in metric-binding):* mass-from-cancellation
-
-**Next actions:**
-1. Compute naive dispersion masses for all light mesons at R64 parameters. Identify gaps.
-2. Test σ_uw shear effects on (0, 0)-summed-winding compounds (might lift pion mass from zero).
-3. Frame strangeness as T(1, +3) on proton sheet; compute kaon mass.
-4. Investigate spin-0 vs spin-1 splitting mechanism.
-
----
-
-### clover-mass.md — analytical mass spectrum on the corrugated torus
-
-**Topic:** Derive m(ε, χ, τ; embedding) analytically by reducing the 2D Laplacian on the corrugated torus to a 1D Hill equation (via the helical translation symmetry of clover-quarks §10.3), expanding perturbatively in η = r_lobe/R_major around the constant-radius flat-twisted-torus limit, and inverting two observables (m_p, m_n) to extract two unknowns (ε, χ).
-
-**Status:** Phase-A complete through O(η²) + independent numerical validation. Zeroth-order formula μ² = (n − 2m/3)² + (m/ε)² validated to machine precision. First-order vanishing validated. Second-order PT formula (§6.3) found INCORRECT — failed to restrict to Bloch sector; corrected to use intra-sector (1/w) coupling. Numerical Bloch-restricted Fourier solver (scripts/laplacian_spectrum.py) confirms candidate pairs like ((1, 2), (2, 2)) at ε ≈ 0.2 give m_n/m_p within 0.03% of observation. Earlier "negative result" reversed. Framework PASSES qualitative test.
-
-**Three open quantitative concerns (clover-mass.md §9.1):**
-- (A) The (n, m) → particle identification is unpinned — 372 candidate pairings clustering at multiple ε values.
-- (B) The m_n/m_p ratio (0.03% off at ε ≈ 0.2) and the overall PDG fit + R_p (peaks at ε ≈ 0.5) now pull in different directions under the (1, 2) ↔ (2, 2) identification; either the neutron identification is wrong at ε ≈ 0.5 or χ-corrections substantively shift the picture. Active open question.
-- (C) **RESOLVED at ε = 0.5**: PDG sweep (`scripts/spectrum_vs_pdg.py --sweep`) finds R_major = 0.844 fm matching the observed proton charge radius R_p = 0.84 fm to 0.5%. This is a third independent observable (alongside m_p and m_n/m_p) pointing to the same operating point.
-
-**Latest PDG sweep results** (`outputs/pdg_sweep_proton1,2.{csv,png}`):
-- At ε = 0.5: 12 matches within ±10 MeV, mean error 3.57 MeV. Includes ω (vector meson), Λ (strange baryon), Δ⁺⁺ (delta resonance) — particles that were misses at ε = 0.2.
-- χ has essentially no effect at zeroth order (consistent with theory; χ enters at O(η²)).
-- The fitness peaks sharply at one ε value, indicating real signal rather than statistical coincidence from the dense spectrum.
-
-**Dependencies:**
-- *Upstream:* clover-quarks (the surface, the metric, the path-winding identifications)
-- *Sister files:* clover-quarks (mode-particle identification is a shared open question)
-
-**Next actions:**
-1. Solve the Hill equation directly (non-perturbatively) on a small grid of (ε, χ) — scipy 1D ODE eigenvalues, very cheap.
-2. Expand the (n, m) search to higher integers (smaller second-order shifts).
-3. Redo for embedding B (rotation) and compare.
-4. Check wavefunction overlaps with lobe/saddle regions for the candidate modes.
-
-**Why this matters:** This is the first concrete falsifiable test of the corrugated-torus geometry as a particle-physics substrate. Phase A (qualitative results: charges, Z₃ confinement, β-decay topology) succeeded. Phase C (quantitative: mass ratio) so far fails. If the non-perturbative ODE solve also fails, the geometry as currently specified cannot produce the standard model's mass spectrum, and the next step is to either modify the geometry (different τ, different profile, different embedding) or accept that this surface explains the *qualitative* structure but the masses come from elsewhere.
+- [ ] Verify all work files use consistent terminology
+- [ ] Verify scripts produce outputs consistent with the new framework
+- [ ] Archive or delete old/inconsistent outputs in `outputs/`
+- [ ] Retire this checklist by updating STATUS.md to reflect the post-restart state
 
 ---
 
-### clover-quarks.md — corrugated 3-lobed torus as quark substrate
+## Work files — pending todos
 
-**Topic:** Develops a candidate geometric construction: a torus whose cross-section is a clover-leaf (3 lobes + 3 saddles) and whose ring sweep includes a 120° chiral twist per revolution. Quarks identified with single arcs (u = 1 lobe, d = 1 saddle); protons/neutrons identified with composite paths (uud = 2 lobes + 1 saddle, udd = 1 lobe + 2 saddles).
+One-line per file, plus only todos we are tracking *here*. Detailed status, dependencies, and rationale live inside the files themselves.
 
-**Status:** **Phases A and B complete** (analytical math, §§7–12). Phase A headline result: per-arc charge integration gives Q_lobe = +2/3 and Q_saddle = −1/3 directly — the standard QCD fractional charges fall out as the per-radian curvature content of profile segments. Phase B established: clean quark identifications, path closure under literal-arc parameterization (proton in 2 ring revolutions, neutron in 1), neutron decay as topological q-shift (1 saddle → 1 lobe), and energy considerations for proton stability. Phase C (numerical mode spectrum) deferred.
+### [clover-quarks.md](clover-quarks.md) — corrugated 3-lobed torus as quark substrate
+- Restart todos: covered by the Phase 0–3 checklist above. No additional standalone todos at present.
 
-**Dependencies:**
-- *Upstream:* metric-charge chapter 4 (closure rule) + chapter 7 (aspect ratio character)
-- *Sister files (in sheet-proton):* quark-flavor (path topology depends on quark mapping)
-- *Sister files (in metric-binding):* fractional-charge (partial-knot picture; Phases A-B are the concrete geometric realization), color-confinement (Z₃ structure derived from twist topology)
+### [clover-mass.md](clover-mass.md) — analytical mass spectrum on the corrugated torus
+- Restart todos: covered by the Phase 0, 2, 3 checklist above. No additional standalone todos at present.
 
-**Next actions:**
-1. Verify geometric closure of the clover profile (plot, confirm smooth) — simple sanity check.
-2. Implement corrugated-torus embedding in 3D; render to inspect.
-3. Catalog excited states (higher-energy paths beyond the canonical proton and neutron) — might match observed baryon resonances (Δ⁺⁺, Δ⁺, Δ⁰, Δ⁻, N* states).
-4. **Phase C numerical work:** implement the Laplacian, compute the mode spectrum at representative (ε, χ); compare to flat-T² baseline; predict the u-d and p-n mass splits.
+### [3-gen.md](3-gen.md) — three-generation candidate mechanisms (A/B/C/D)
+- Restart todos: covered by Phase 3 above (review mechanisms; pick the surviving one; update with conclusion).
 
-**Why this might matter:** Phases A and B provide a structural derivation of (a) fractional quark charges (lobe vs saddle per-radian content), (b) three-quark baryon structure (full-profile coverage requires 3 arcs), (c) Z₃ confinement (closure forces integer-summing combinations), (d) the up/down quark distinction (lobe vs saddle), (e) proton and neutron structure (2-lobe+1-saddle vs 1-lobe+2-saddle paths), and (f) a topological mechanism for neutron decay (q-shift converting one saddle to one lobe). Whether Phase C yields quantitatively correct masses (quark, proton, neutron, mass splits) is the remaining empirical test.
+### [quark-flavor.md](quark-flavor.md) — quark structure as canceling primitives
+- [ ] Pending restart work: update terminology and Mapping Clover to match the new (n_t, n_r) + (σ, τ) framework once Phase 0–3 settle.
+
+### [meson-spectrum.md](meson-spectrum.md) — light mesons as 2-component compounds
+- [ ] Pending restart work: covered by Phase 4 (build mesons via SM recipes once quark identifications are pinned in Phase 3).
+
+### [strong.md](strong.md) — Yukawa-mediator path to the strong force
+- [ ] Implement `mode-spectrum-sweep.py` (catalogue mediator-mode candidates on the proton sheet)
+- [ ] Implement `qq-bar-compound.py` (2-component compound masses)
+- [ ] Coulomb+Yukawa Schrödinger solver against R64 Phase 7d's QM gate
+- [ ] Test the deuteron-binding-as-mode-coexistence hypothesis (strong.md §6a) once Phase 3 pins parameters
 
 ---
 
@@ -139,50 +123,18 @@ metric-binding/work/ ──→ general framework ─────────┘
 
 ---
 
-## Project priorities
-
-**Phase 1 (immediate):** Resolve the quark-flavor question.
-
-1. **quark-flavor.md** — implement `quark-mapping-spectrum.py`; determine which mapping fits.
-2. **clover-quarks.md** (parallel track) — verify geometric closure of the clover profile; render the corrugated-torus surface; work out up-quark and down-quark path closure conditions. If the geometric construction holds, it may obsolete or refocus several other work files.
-
-**Phase 2 (medium-term):** Build the Yukawa-mediator picture.
-
-3. **strong.md** — identify the mediator mode; compute Coulomb+Yukawa potential; pass R64 Phase 7d's QM gate.
-4. **meson-spectrum.md** — predict the light-meson spectrum; check pion mass mechanism.
-
----
-
 ## Open architectural questions
 
-Issues that span multiple work files:
+Cross-cutting issues not owned by a single work file. The restart checklist (above) addresses several of these; others remain open.
 
-- **The R64 two-point proton fit (Point A vs Point B).** Which (ε, σ_uw) parameters does sheet-proton adopt? Point A fits the deuteron; Point B fits heavy nuclei. The two are mutually exclusive in R64. **Affects:** all work files here.
+- **R64 two-point proton fit (Point A vs Point B).** Which (ε, σ_uw) parameters does sheet-proton adopt? Open across all files.
+- **Mass-vs-charge framing** (metric-mass ch. 5 standing-wave reading). Cross-cuts quark-flavor, meson-spectrum, strong.
+- **Cross-sheet mediator exchange** — strong is sheet-internal, weak is cross-sheet. See strong.md for details.
+- **Is τ = 1/3 tunable or forced?** See clover-quarks; restart Phase 1 may reframe.
+- **Why is the proton stable and the neutron unstable?** See clover-quarks §12.5–12.6; restart Phase 3 may resolve via quark identification.
+- **Weak and strong forces as least-energy calculus** (hypothesis). See clover-quarks §12.4.1 (weak) and strong.md §6a (strong / deuteron). First test: deuteron prediction.
 
-- **Smooth vs corrugated proton-sheet geometry.** Is the proton sheet flat (metric-charge's assumption) or corrugated (clover-quarks's hypothesis)? **Affects:** all work files; commitment shifts the whole project.
-
-- **Mass-vs-charge framing.** Per metric-mass chapter 5: the project's choice to read compact-direction momentum as mass-generating is a framing choice. How does this interact with the proton sheet's charge structure? **Affects:** quark-flavor, meson-spectrum, strong.
-
-- **Cross-sheet mediator exchange.** Strong force is sheet-internal; weak force (β decay) is cross-sheet. Two different coupling mechanisms. **Affects:** strong (specifically the strong-vs-weak distinction in the framework).
-
-- **Is the 1/3 twist of clover-quarks tunable, or is it forced?** The twist value τ = 1/3 produces the third-integer charge fractions of QCD. Other rational twists (1/2, 1/4) would predict different fractional structures not seen in nature. **Affects:** clover-quarks specifically; the framework's prediction depends on τ = 1/3 being structurally singled out, not just tunable.
-
-- **Path-closure asymmetry between up and down.** The proton path (2 lobes + 1 saddle) and neutron path (1 lobe + 2 saddles) close in different numbers of ring revolutions (2 vs 1 under literal-arc parameterization). Whether this asymmetry has empirical consequences (e.g., for the u-d mass split) is a Phase C question for clover-quarks.
-
-- **Generation structure: c, s, t, b mappings.** [clover-quarks](clover-quarks.md) currently identifies u = 1 lobe, d = 1 saddle. Where do the heavier quarks (charm, strange, top, bottom) live? Three candidate mappings tracked but unresolved:
-  - **(A) Higher harmonics on the same surface:** s, c, b, t are higher-q modes of the same proton sheet. Pro: simple. Con: doesn't naturally produce QCD's wide mass hierarchy.
-  - **(B) Different sheets for different generations:** each generation lives on its own corrugated torus with different (ε, χ). Pro: parameter freedom. Con: requires positing extra sheets.
-  - **(C) Sub-corrugation:** modes with additional internal structure. Pro: novel. Con: unsketched.
-  - **Affects:** the project's complete theory of quark flavors. **Likely needs its own work file** (`three-generations.md` or similar) to develop.
-
-- **Energy mechanism for n → p decay.** Under [clover-quarks §12.4](clover-quarks.md), the d → u transition is structurally a "q-shift" (one saddle becomes one lobe) — a topological transition rather than a direction reversal. The energy released (~0.78 MeV) is consistent with the observed β-decay Q-value. **Open:** whether the topology alone or substrate asymmetry (from [work-strong](strong.md) / grid-primitive ch 9) dominates the n-p mass split (1.29 MeV).
-
-- **Why is the proton stable and the neutron unstable?** Under clover-quarks, the proton path (2 lobes + 1 saddle) is energetically preferred to the neutron path (1 lobe + 2 saddles). This requires either (i) intrinsic energy asymmetry between lobes and saddles (Candidate A) or (ii) substrate-level chirality asymmetry beyond the topology (Candidate B). **Affects:** clover-quarks's Phase C numerical work; cross-references work-strong's substrate-asymmetry hypothesis.
-
-- **Weak and strong forces as least-energy calculus (hypothesis).** A unifying structural framing is being tracked:
-  - **Weak** (clover-quarks §12.4.1): d → u transition is the least-energy phase-shift of one quark mode on the clover surface. Energy difference emitted as leptonic kinetic energy. Predicts that W/Z bosons are propagating phase-shift modes, parity violation maps to twist chirality, CKM mixing maps to which (n', m') neighbours are accessible.
-  - **Strong** (strong.md §6a): deuteron binding is the energy lowering when proton-like and neutron-like modes share a corrugated-torus substrate. Nuclear binding is the multi-baryon mode-coexistence calculus. Yukawa picture is the long-wavelength limit.
-  - **Affects:** strong.md (deuteron prediction is the first test); clover-quarks/clover-mass (weak-force least-energy is the first test); whole framework if confirmed.
+Items now subsumed by the restart checklist: smooth-vs-corrugated geometry (Phase 1 commits to clover with σ + τ); path-closure asymmetry (Phase 2/3); generation structure (Phase 3 + 3-gen.md).
 
 ---
 
@@ -211,4 +163,4 @@ When work files in this project cite framework mechanisms (cancellation, partial
 
 ## Last updated
 
-Initial set up of sheet-proton with four proton-specific work files inherited from metric-binding. General-framework files (mass-from-cancellation, fractional-charge, color-confinement, standing-wave-vs-mediator) remain in metric-binding. Next milestone: first computational result from quark-flavor or clover-quarks.
+2026-05-14 — Restart from first principles initiated. Added a 6-phase checklist (Phase 0 nomenclature → Phase 5 cleanup) at the top; slimmed the Work files section to one-line + open todos (per the user's principle that STATUS.md tracks todos, not duplicates other files' content); retired the obsolete "Project priorities" section (now superseded by the restart checklist); slimmed Open architectural questions to bullets. Next milestone: complete restart Phase 0 (nomenclature reset and Conventions section in clover-quarks.md).
