@@ -4,7 +4,7 @@ Compare the corrugated-torus mass spectrum against the PDG light-hadron table.
 Two modes:
 
   (default) Single-point mode — compute the spectrum at one (ε, χ), calibrate
-            from a designated proton (n, m), match every predicted mode to its
+            from a designated proton (m_t, m_r), match every predicted mode to its
             best PDG candidate within tolerance, and report matches/misses.
 
   --sweep   Parameter-grid mode — compute a "PDG fitness score" at each (ε, χ)
@@ -15,7 +15,7 @@ Two modes:
 Workflow (single-point):
   1. Compute the lowest-N eigenvalues of the Hill operator at given (ε, χ),
      using the Bloch-restricted Fourier solver from laplacian_spectrum.py.
-  2. Calibrate the mass scale by demanding that one designated (n, m) mode
+  2. Calibrate the mass scale by demanding that one designated (m_t, m_r) mode
      matches the observed proton mass (938.27 MeV). This pins R_major in fm.
   3. Convert every eigenvalue to a physical mass (MeV).
   4. Match against a hard-coded PDG table of light hadrons (p, n, π, K, η, ρ,
@@ -30,7 +30,7 @@ analytical predictions are comparison targets, not inputs.
 Usage:
     python scripts/spectrum_vs_pdg.py [--epsilon E] [--chi CHI]
                                       [--proton-label "n,m"]
-                                      [--n-max N] [--m-max M]
+                                      [--mt-max MT] [--mr-max MR]
                                       [--match-tol MEV]
 
     python scripts/spectrum_vs_pdg.py --sweep
@@ -88,52 +88,56 @@ PDG_LIGHT_HADRONS = [
 ]
 
 
-# ----- Charge inference from (n, m) -----
-def k_theta_label(n: int, m: int) -> float:
-    """k_θ = n − m/3 (the boundary-identification wavenumber)."""
-    return n - m / 3.0
+# ----- Charge inference from (m_t, m_r) -----
+def k_theta_label(m_t: int, m_r: int) -> float:
+    """k_θ = m_r − m_t/3 (the boundary-identification wavenumber).
+
+    Tube-first wave-mode labels per clover-quarks §0.3.
+    """
+    return m_r - m_t / 3.0
 
 
-def fractional_charge(n: int, m: int) -> float:
+def fractional_charge(m_t: int, m_r: int) -> float:
     """Charge from third-integer-momentum reading (clover-quarks §11.5/§11.7).
 
-    The wave-mode (n, m) has k_θ = n − m/3. The "fractional charge" reading:
-      m mod 3 = 0  →  integer charge offset (= n mod ??)
-      m mod 3 = 1  →  charge offset of −1/3 (or +2/3 if we read +2π/3 winding as +q)
-      m mod 3 = 2  →  charge offset of −2/3 (or +1/3)
+    The wave-mode (m_t, m_r) has k_θ = m_r − m_t/3. The "fractional charge" reading:
+      m_t mod 3 = 0  →  integer charge offset
+      m_t mod 3 = 1  →  charge offset of −1/3 (or +2/3 if we read +2π/3 winding as +q)
+      m_t mod 3 = 2  →  charge offset of −2/3 (or +1/3)
 
     This is an UNSETTLED conversion in the framework. We adopt the convention
     that the third-integer offset = charge mod 1, and read out the integer part
-    from n.  This means for (n, m), Q = (n − m/3) interpreted as a rational —
+    from m_r. This means for (m_t, m_r), Q = (m_r − m_t/3) interpreted as a rational —
     the integer plus fractional contributions both come into the charge.
 
     NOTE: this is a best-guess convention; the framework does not pin a unique
-    charge-from-(n,m) reading. The matches below should be read accordingly.
+    charge-from-(m_t, m_r) reading. The matches below should be read accordingly.
     """
-    return n - m / 3.0  # Q identified with k_θ — provisional
+    return m_r - m_t / 3.0  # Q identified with k_θ — provisional
 
 
 # ----- Spectrum generation -----
-def generate_spectrum(eps: float, chi: float, n_max: int, m_max: int,
+def generate_spectrum(eps: float, chi: float, mt_max: int, mr_max: int,
                        N_grid: int = 1024) -> list:
-    """Compute eigenvalues for (n, m) with |n| ≤ n_max, |m| ≤ m_max.
+    """Compute eigenvalues for wave-modes (m_t, m_r) with |m_t| ≤ mt_max,
+    |m_r| ≤ mr_max. Tube-first convention per clover-quarks §0.3.
 
-    Returns a list of (n, m, mu_squared) tuples sorted by mu_squared.
+    Returns a list of (m_t, m_r, mu_squared) tuples sorted by mu_squared.
     """
     seen_k_v = {}  # k_v → eigenvalue list (avoid recomputing per sector)
     results = []
-    for m in range(-m_max, m_max + 1):
-        for n in range(-n_max, n_max + 1):
-            if (n, m) == (0, 0):
+    for m_t in range(-mt_max, mt_max + 1):
+        for m_r in range(-mr_max, mr_max + 1):
+            if (m_t, m_r) == (0, 0):
                 continue
-            # Bloch sector is determined by k_v = q/3 where q = 3n − 2m
-            # (per clover-mass.md §3); but the Hill solver takes k_v as input
-            # and the sector is set by p ≡ q (mod 3). Each (n, m) maps to
-            # a specific (k_v, p) where p = m.
-            k_v = n - 2 * m / 3.0
-            p = m
+            # Bloch sector is determined by k_v = q/3 where q = 3 m_r − 2 m_t
+            # (per clover-mass.md §3); the Hill solver takes k_v as input
+            # and the sector is set by p ≡ q (mod 3). Each (m_t, m_r) maps to
+            # a specific (k_v, p) where p = m_t.
+            k_v = m_r - 2 * m_t / 3.0
+            p = m_t
             # Cache the eigenvalue list at each (k_v, sector) pair
-            cache_key = (round(k_v * 9) / 9, m % 3)
+            cache_key = (round(k_v * 9) / 9, m_t % 3)
             if cache_key not in seen_k_v:
                 seen_k_v[cache_key] = hill_eigenvalues(k_v, eps, chi, N_grid, n_eigs=10)
             eigs = seen_k_v[cache_key]
@@ -142,35 +146,39 @@ def generate_spectrum(eps: float, chi: float, n_max: int, m_max: int,
             # closest to the predicted zeroth-order value.
             predicted_mu2 = k_v ** 2 + (p / eps) ** 2
             idx = int(np.argmin(np.abs(eigs - predicted_mu2)))
-            results.append((n, m, float(eigs[idx])))
+            results.append((m_t, m_r, float(eigs[idx])))
     results.sort(key=lambda x: x[2])
     return results
 
 
 # ----- Calibrate physical mass scale from proton -----
-def calibrate_scale(spectrum: list, proton_n: int, proton_m: int) -> tuple:
-    """Find the proton candidate's μ² and return (R_major_fm, m_per_mu)."""
-    for n, m, mu2 in spectrum:
-        if (n, m) == (proton_n, proton_m):
+def calibrate_scale(spectrum: list, proton_mt: int, proton_mr: int) -> tuple:
+    """Find the proton candidate's μ² and return (R_major_fm, m_per_mu, mu_p).
+
+    proton_mt, proton_mr: the tube and ring Bloch labels of the proton mode
+    (tube-first convention).
+    """
+    for mt, mr, mu2 in spectrum:
+        if (mt, mr) == (proton_mt, proton_mr):
             mu_p = np.sqrt(mu2)
             # m_p (in MeV) = μ_p * (ℏc / R_major). ℏc = 197.327 MeV·fm.
             # m_p_observed = 938.272 MeV ⇒ R_major = μ_p * 197.327 / 938.272
             R_fm = mu_p * 197.327 / 938.272
             m_per_mu = 938.272 / mu_p  # MeV per dimensionless μ
             return R_fm, m_per_mu, mu_p
-    raise ValueError(f"Proton label ({proton_n}, {proton_m}) not in spectrum")
+    raise ValueError(f"Proton label (m_t, m_r) = ({proton_mt}, {proton_mr}) "
+                     f"not in spectrum")
 
 
 # ----- Matching predicted to observed -----
 def match_spectrum_to_pdg(spectrum: list, m_per_mu: float, tol_mev: float):
-    """For each predicted mode, find the closest PDG hadron within tol_mev.
-
-    Returns (matches, unmatched_predictions, missing_observations).
+    """For each predicted mode (m_t, m_r), find the closest PDG hadron
+    within tol_mev. Returns (matches, unmatched_predictions, missing_observations).
     """
-    predicted = [(n, m, np.sqrt(mu2) * m_per_mu, mu2) for n, m, mu2 in spectrum]
+    predicted = [(mt, mr, np.sqrt(mu2) * m_per_mu, mu2) for mt, mr, mu2 in spectrum]
     matches = []
     unmatched = []
-    for n, m, mass_mev, mu2 in predicted:
+    for mt, mr, mass_mev, mu2 in predicted:
         # Find closest PDG entry
         best = None
         best_d = float("inf")
@@ -180,9 +188,9 @@ def match_spectrum_to_pdg(spectrum: list, m_per_mu: float, tol_mev: float):
                 best_d = d
                 best = (name, obs_mev, charge, comment)
         if best is not None and best_d < tol_mev:
-            matches.append(((n, m), mass_mev, best, best_d))
+            matches.append(((mt, mr), mass_mev, best, best_d))
         else:
-            unmatched.append(((n, m), mass_mev, mu2))
+            unmatched.append(((mt, mr), mass_mev, mu2))
     # Find PDG hadrons with no near match
     matched_obs_names = {m_best[0] for _, _, m_best, _ in matches}
     missing = [
@@ -205,15 +213,15 @@ def is_likely_multinucleon(mass_mev: float, m_p: float = 938.272,
 
 
 # NOTE: a future extension can add SM-composite recipes that sum constituent
-# (n, m) labels (q̄ → (−n, −m)) and look up the resulting label in the spectrum.
-# That requires first committing to clover quark-flavor identifications (u, d,
-# and especially s/c/b/t), which is the open question in quark-flavor.md
+# (m_t, m_r) labels (q̄ → (−m_t, −m_r)) and look up the resulting label in the
+# spectrum. That requires first committing to clover quark-flavor identifications
+# (u, d, and especially s/c/b/t), which is the open question in quark-flavor.md
 # Mapping Clover.
 
 
 # ----- Fitness scoring at a single (ε, χ) -----
-def fitness_at_point(eps: float, chi: float, proton_n: int, proton_m: int,
-                      n_max: int, m_max: int, tolerances_mev: list,
+def fitness_at_point(eps: float, chi: float, proton_mt: int, proton_mr: int,
+                      mt_max: int, mr_max: int, tolerances_mev: list,
                       N_grid: int) -> dict:
     """Compute several PDG-fit metrics at one (ε, χ) point.
 
@@ -221,9 +229,9 @@ def fitness_at_point(eps: float, chi: float, proton_n: int, proton_m: int,
       R_fm, mu_p, n_matches_at_each_tol (dict tol→int), mean_abs_delta_at_each_tol,
       total_abs_delta_at_each_tol, max_predicted_mass_MeV.
     """
-    spectrum = generate_spectrum(eps, chi, n_max, m_max, N_grid=N_grid)
+    spectrum = generate_spectrum(eps, chi, mt_max, mr_max, N_grid=N_grid)
     try:
-        R_fm, m_per_mu, mu_p = calibrate_scale(spectrum, proton_n, proton_m)
+        R_fm, m_per_mu, mu_p = calibrate_scale(spectrum, proton_mt, proton_mr)
     except ValueError:
         return None
     # Build predicted-mass list
@@ -265,13 +273,13 @@ def fitness_at_point(eps: float, chi: float, proton_n: int, proton_m: int,
 def run_sweep(args) -> None:
     """Sweep (ε, χ) over a grid and report fitness."""
     import matplotlib.pyplot as plt
-    proton_n, proton_m = (int(x) for x in args.proton_label.split(","))
+    proton_mt, proton_mr = (int(x) for x in args.proton_label.split(","))
     eps_list = [float(x) for x in args.sweep_eps.split(",")]
     chi_list = [float(x) for x in args.sweep_chi.split(",")]
     tolerances = [10.0, 30.0, 80.0]
 
     print(f"# Clover spectrum × PDG fitness sweep")
-    print(f"# Proton label: (n, m) = ({proton_n}, {proton_m})")
+    print(f"# Proton label (m_t, m_r) = ({proton_mt}, {proton_mr})  [tube-first per clover-quarks §0.3]")
     print(f"# ε grid: {eps_list}")
     print(f"# χ grid: {chi_list}")
     print(f"# Tolerances tested: {tolerances} MeV")
@@ -286,8 +294,8 @@ def run_sweep(args) -> None:
     for j, chi in enumerate(chi_list):
         for i, eps in enumerate(eps_list):
             print(f"  evaluating ε={eps:.3f}, χ={chi:.2f} ...", end="", flush=True)
-            f = fitness_at_point(eps, chi, proton_n, proton_m,
-                                  args.n_max, args.m_max, tolerances,
+            f = fitness_at_point(eps, chi, proton_mt, proton_mr,
+                                  args.mt_max, args.mr_max, tolerances,
                                   N_grid=args.n_grid)
             if f is None:
                 print(" SKIP (proton label not in spectrum)")
@@ -303,9 +311,9 @@ def run_sweep(args) -> None:
                   f"meanΔ@30={f['mean_delta'][30]:.1f} MeV")
             rows.append((eps, chi, f))
 
-    # Save CSV
+    # Save CSV (filename uses tube-first label: mt,mr)
     args.outputs_dir.mkdir(parents=True, exist_ok=True)
-    csv_path = args.outputs_dir / f"pdg_sweep_proton{proton_n},{proton_m}.csv"
+    csv_path = args.outputs_dir / f"pdg_sweep_proton{proton_mt},{proton_mr}.csv"
     with open(csv_path, "w") as fout:
         cols = ["epsilon", "chi", "R_fm", "mu_p"]
         for tol in tolerances:
@@ -359,9 +367,9 @@ def run_sweep(args) -> None:
                         color="white", fontsize=8)
         plt.colorbar(im, ax=ax)
 
-    fig.suptitle(f"PDG fit vs (ε, χ); proton at (n, m) = ({proton_n}, {proton_m})")
+    fig.suptitle(f"PDG fit vs (ε, χ); proton at (m_t, m_r) = ({proton_mt}, {proton_mr})")
     fig.tight_layout()
-    png_path = args.outputs_dir / f"pdg_sweep_proton{proton_n},{proton_m}.png"
+    png_path = args.outputs_dir / f"pdg_sweep_proton{proton_mt},{proton_mr}.png"
     fig.savefig(png_path, dpi=120, bbox_inches="tight")
     print(f"Saved: {png_path}")
 
@@ -388,10 +396,14 @@ def main() -> None:
                         help="Aspect ratio (default 0.2 — robust cluster value)")
     parser.add_argument("--chi", type=float, default=1.0,
                         help="Corrugation ratio (default 1.0)")
-    parser.add_argument("--proton-label", type=str, default="1,2",
-                        help="(n, m) label assigned to the proton. Default '1,2'.")
-    parser.add_argument("--n-max", type=int, default=3, help="|n| range. Default 3.")
-    parser.add_argument("--m-max", type=int, default=3, help="|m| range. Default 3.")
+    parser.add_argument("--proton-label", type=str, default="2,1",
+                        help="(m_t, m_r) tube-first wave-mode label assigned to "
+                        "the proton, per clover-quarks §0.3. Default '2,1' = (m_t=2, m_r=1), "
+                        "which corresponds to the old (n=1, m=2) under the pre-restart convention.")
+    parser.add_argument("--mt-max", type=int, default=3,
+                        help="|m_t| range (tube). Default 3.")
+    parser.add_argument("--mr-max", type=int, default=3,
+                        help="|m_r| range (ring). Default 3.")
     parser.add_argument("--match-tol", type=float, default=80.0,
                         help="Mass-match tolerance in MeV. Default 80.")
     parser.add_argument("--n-grid", type=int, default=1024)
@@ -412,21 +424,21 @@ def main() -> None:
         run_sweep(args)
         return
 
-    proton_n, proton_m = (int(x) for x in args.proton_label.split(","))
+    proton_mt, proton_mr = (int(x) for x in args.proton_label.split(","))
 
     print(f"# Clover-torus spectrum vs PDG light hadrons")
     print(f"# (ε, χ) = ({args.epsilon}, {args.chi})")
-    print(f"# Proton label: (n, m) = ({proton_n}, {proton_m})")
-    print(f"# (n, m) range: |n| ≤ {args.n_max}, |m| ≤ {args.m_max}")
+    print(f"# Proton label (m_t, m_r) = ({proton_mt}, {proton_mr})  [tube-first per clover-quarks §0.3]")
+    print(f"# (m_t, m_r) range: |m_t| ≤ {args.mt_max}, |m_r| ≤ {args.mr_max}")
     print()
 
     # Generate spectrum
-    spectrum = generate_spectrum(args.epsilon, args.chi, args.n_max, args.m_max,
+    spectrum = generate_spectrum(args.epsilon, args.chi, args.mt_max, args.mr_max,
                                   N_grid=args.n_grid)
 
     # Calibrate scale
     try:
-        R_fm, m_per_mu, mu_p = calibrate_scale(spectrum, proton_n, proton_m)
+        R_fm, m_per_mu, mu_p = calibrate_scale(spectrum, proton_mt, proton_mr)
     except ValueError as e:
         print(f"ERROR: {e}")
         sys.exit(1)
@@ -438,43 +450,43 @@ def main() -> None:
 
     # Predicted spectrum in physical units
     print(f"## Predicted spectrum (lowest 25 modes)")
-    print(f"{'(n, m)':>10}  {'k_θ':>8}  {'μ²':>10}  {'mass (MeV)':>12}  {'Q?':>6}  {'multi?':>8}")
-    print("-" * 70)
-    for n, m, mu2 in spectrum[:25]:
+    print(f"{'(m_t, m_r)':>12}  {'k_θ':>8}  {'μ²':>10}  {'mass (MeV)':>12}  {'Q?':>6}  {'multi?':>8}")
+    print("-" * 72)
+    for mt, mr, mu2 in spectrum[:25]:
         mass = np.sqrt(max(mu2, 0)) * m_per_mu
-        kth = k_theta_label(n, m)
+        kth = k_theta_label(mt, mr)
         mn = is_likely_multinucleon(mass)
         multi_str = f"≈{mn}·p" if mn else ""
-        Q = fractional_charge(n, m)
-        print(f"({n:+d}, {m:+d})  {kth:+8.4f}  {mu2:10.5f}  {mass:12.2f}  "
+        Q = fractional_charge(mt, mr)
+        print(f"({mt:+d}, {mr:+d})  {kth:+8.4f}  {mu2:10.5f}  {mass:12.2f}  "
               f"{Q:+6.3f}  {multi_str:>8}")
 
     # Match to PDG
     print()
     print(f"## Matches against PDG (tolerance {args.match_tol} MeV)")
     matches, unmatched, missing = match_spectrum_to_pdg(spectrum, m_per_mu, args.match_tol)
-    print(f"{'(n, m)':>10}  {'Predicted (MeV)':>16}  {'Best PDG match':>20}  "
+    print(f"{'(m_t, m_r)':>12}  {'Predicted (MeV)':>16}  {'Best PDG match':>20}  "
           f"{'Δ (MeV)':>10}")
-    print("-" * 70)
-    for (n, m), mass_mev, (name, obs_mev, charge, comment), d in matches:
-        print(f"({n:+d}, {m:+d})  {mass_mev:16.2f}  {name + ' (' + str(obs_mev) + ')':>20}  "
+    print("-" * 72)
+    for (mt, mr), mass_mev, (name, obs_mev, charge, comment), d in matches:
+        print(f"({mt:+d}, {mr:+d})  {mass_mev:16.2f}  {name + ' (' + str(obs_mev) + ')':>20}  "
               f"{d:+10.2f}")
 
     print()
     print(f"## Unmatched predicted modes (no PDG hadron within {args.match_tol} MeV):")
-    print(f"{'(n, m)':>10}  {'Predicted (MeV)':>16}  {'Q (best guess)':>14}  "
+    print(f"{'(m_t, m_r)':>12}  {'Predicted (MeV)':>16}  {'Q (best guess)':>14}  "
           f"{'multinucleon?':>14}")
-    print("-" * 70)
-    for (n, m), mass_mev, mu2 in unmatched[:15]:
+    print("-" * 72)
+    for (mt, mr), mass_mev, mu2 in unmatched[:15]:
         mn = is_likely_multinucleon(mass_mev)
         multi_str = f"yes (≈{mn}·p)" if mn else "no"
-        Q = fractional_charge(n, m)
-        print(f"({n:+d}, {m:+d})  {mass_mev:16.2f}  {Q:14.3f}  {multi_str:>14}")
+        Q = fractional_charge(mt, mr)
+        print(f"({mt:+d}, {mr:+d})  {mass_mev:16.2f}  {Q:14.3f}  {multi_str:>14}")
 
     print()
     print(f"## PDG hadrons with no nearby predicted mode (under mass ceiling):")
     print(f"{'Name':>10}  {'Observed (MeV)':>16}  {'Charge':>8}  Comment")
-    print("-" * 70)
+    print("-" * 72)
     for name, obs_mev, charge, comment in missing:
         print(f"{name:>10}  {obs_mev:16.2f}  {charge:+8d}  {comment}")
 
@@ -482,13 +494,13 @@ def main() -> None:
     args.outputs_dir.mkdir(parents=True, exist_ok=True)
     csv_path = args.outputs_dir / f"pdg_match_eps{args.epsilon:.2f}_chi{args.chi:.2f}.csv"
     with open(csv_path, "w") as f:
-        f.write("n,m,k_theta,mu_squared,predicted_mass_MeV,charge_guess,multinucleon_N\n")
-        for n, m, mu2 in spectrum:
+        f.write("m_t,m_r,k_theta,mu_squared,predicted_mass_MeV,charge_guess,multinucleon_N\n")
+        for mt, mr, mu2 in spectrum:
             mass = np.sqrt(max(mu2, 0)) * m_per_mu
-            kth = k_theta_label(n, m)
+            kth = k_theta_label(mt, mr)
             mn = is_likely_multinucleon(mass)
-            Q = fractional_charge(n, m)
-            f.write(f"{n},{m},{kth:.6f},{mu2:.8f},{mass:.4f},{Q:.6f},{mn}\n")
+            Q = fractional_charge(mt, mr)
+            f.write(f"{mt},{mr},{kth:.6f},{mu2:.8f},{mass:.4f},{Q:.6f},{mn}\n")
     print()
     print(f"Saved: {csv_path}")
 

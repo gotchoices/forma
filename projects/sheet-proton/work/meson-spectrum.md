@@ -164,15 +164,15 @@ For the framework to predict the meson spectrum, several pieces are missing:
 
 ### 9.1 Antiquark = sign-flipped wave-mode (matter/antimatter still works)
 
-Per [quark-flavor.md Mapping Clover](quark-flavor.md), the mass formula μ²(n, m) = (n − 2m/3)² + (m/ε)² on the clover surface satisfies
+Per [quark-flavor.md Mapping Clover](quark-flavor.md), the mass formula μ²(m_t, m_r) = (m_r − 2m_t/3)² + (m_t/ε)² on the clover surface (tube-first wave-mode labels per clover-quarks §0.3) satisfies
 
-μ²(−n, −m) = μ²(n, m)
+μ²(−m_t, −m_r) = μ²(m_t, m_r)
 
-so (n, m) and (−n, −m) are degenerate — same mass, opposite (k_θ, k_φ). This is exactly the matter/antimatter pairing structure. **q̄ = the sign-flipped wave-mode partner of q on the same corrugated surface.**
+so (m_t, m_r) and (−m_t, −m_r) are degenerate — same mass, opposite (k_θ, k_φ). This is exactly the matter/antimatter pairing structure. **q̄ = the sign-flipped wave-mode partner of q on the same corrugated surface.**
 
 ### 9.2 qq̄ compounds sum to (0, 0)
 
-A meson built from q = (n, m) and q̄ = (−n, −m) has summed winding (0, 0) on the clover, identically to the round-tube case. Naive μ² = 0 from the zeroth-order formula. So the **pion-mass-from-zero question is structurally identical** in both substrates — the candidates in §3 (σ_uw shear, binding energy, chiral-symmetry-breaking analog, compound stress-energy) apply equally to either.
+A meson built from q = (m_t, m_r) and q̄ = (−m_t, −m_r) has summed labels (0, 0) on the clover, identically to the round-tube case. Naive μ² = 0 from the zeroth-order formula. So the **pion-mass-from-zero question is structurally identical** in both substrates — the candidates in §3 (σ_uw shear, binding energy, chiral-symmetry-breaking analog, compound stress-energy) apply equally to either.
 
 ### 9.3 Open: what does the clover Hilbert space look like for qq̄?
 

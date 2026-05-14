@@ -10,7 +10,7 @@ several (ε, χ) points and checks four claims:
   C1. The lowest eigenvalues at k_v = q/3 match the third-integer momentum
       structure of the boundary condition.
   C2. At small η = ε/(2+χ), the lowest eigenvalues converge to the
-      zeroth-order formula μ² = (n - 2m/3)² + (m/ε)².
+      zeroth-order formula μ² = (m_r - 2 m_t/3)² + (m_t/ε)².
   C3. The χ-dependence at fixed ε is O(η²) (not O(η)) — first-order
       perturbations vanish.
   C4. The numerical second-order shift δ²μ²(n, m, ε, χ) matches the analytical
@@ -51,11 +51,11 @@ def fourier_coeffs(chi: float, n_max: int = 30, N: int = 12000) -> dict:
     return {q: (1 / N) * np.sum(px * np.exp(-1j * q * u)) for q in range(-n_max, n_max + 1)}
 
 
-def predicted_second_order(n: int, m: int, eps: float, chi: float) -> float:
-    """δ²μ²(n, m, ε, χ) per clover-mass.md §6.3."""
+def predicted_second_order(m_t: int, m_r: int, eps: float, chi: float) -> float:
+    """δ²μ²(m_t, m_r, ε, χ) per clover-mass.md §6.3 (tube-first wave-mode labels)."""
     a = fourier_coeffs(chi)
-    k_v = n - 2 * m / 3.0
-    p = m
+    k_v = m_r - 2 * m_t / 3.0
+    p = m_t
     total = 0.0
     for q, aq in a.items():
         if q == 0:
@@ -153,21 +153,21 @@ def test_second_order_formula(N_grid: int) -> tuple[bool, str]:
     msg.append("[C4] Second-order formula:")
     msg.append("  Test: numerical (μ²_num − μ²_zeroth) ≈ δ²μ²_analytical from §6.3")
     msg.append("")
-    msg.append(f"  {'(n, m)':>10}  {'ε':>5}  {'χ':>5}  {'η':>6}  "
+    msg.append(f"  {'(m_t, m_r)':>10}  {'ε':>5}  {'χ':>5}  {'η':>6}  "
                f"{'μ²_num':>10}  {'μ²_0th':>10}  {'δ_num':>10}  {'δ_PT':>10}  {'agreement':>12}")
     passes = []
     cases = [
-        # (n, m, ε, χ, p_target)
-        (0, 1, 0.3, 1.0, 1),   # k_v = -2/3, lowest with that sign of k_v
+        # (m_t, m_r, ε, χ, p_target) — tube-first labels per clover-quarks §0.3
+        (1, 0, 0.3, 1.0, 1),   # k_v = -2/3, lowest with that sign of k_v
         (1, 1, 0.3, 1.0, 1),   # k_v = +1/3
-        (1, 2, 0.3, 1.0, 2),   # k_v = -1/3
+        (2, 1, 0.3, 1.0, 2),   # k_v = -1/3
         (1, 1, 0.5, 1.0, 1),
-        (1, 2, 0.5, 1.0, 2),
+        (2, 1, 0.5, 1.0, 2),
         (1, 1, 0.5, 0.5, 1),
         (1, 1, 0.5, 2.0, 1),
     ]
-    for n, m, eps, chi, p in cases:
-        k_v = n - 2 * m / 3.0
+    for m_t, m_r, eps, chi, p in cases:
+        k_v = m_r - 2 * m_t / 3.0
         eta = eps / (2 + chi)
         # Numerical
         e_num = lowest_eig_for_kv_with_target(eps, chi, k_v, p, N_grid)
@@ -175,41 +175,42 @@ def test_second_order_formula(N_grid: int) -> tuple[bool, str]:
         e_0 = k_v**2 + (p / eps) ** 2
         d_num = e_num - e_0
         # Analytical PT:
-        d_PT = predicted_second_order(n, m, eps, chi)
+        d_PT = predicted_second_order(m_t, m_r, eps, chi)
         # Agreement: relative difference. Pass if within 30% (PT is asymptotic; this is a
         # qualitative check that the *sign* and *order of magnitude* match).
         agreement = abs(d_num - d_PT) / max(abs(d_PT), 1e-6)
         ok = agreement < 0.3
         passes.append(ok)
-        msg.append(f"  ({n:+d}, {m:+d})  {eps:5.2f}  {chi:5.2f}  {eta:6.4f}  "
+        msg.append(f"  ({m_t:+d}, {m_r:+d})  {eps:5.2f}  {chi:5.2f}  {eta:6.4f}  "
                    f"{e_num:+10.5f}  {e_0:+10.5f}  {d_num:+10.5f}  {d_PT:+10.5f}  "
                    f"{('PASS' if ok else 'FAIL'):>12}")
     return all(passes), "\n".join(msg)
 
 
 def test_proton_neutron_inversion(N_grid: int) -> tuple[bool, str]:
-    """C5: Survey low-(n, m) identifications using numerical eigenvalues; is there any
+    """C5: Survey low-(m_t, m_r) identifications using numerical eigenvalues; is there any
     (ε, χ, identification) that fits m_n/m_p = 1.001378 in a PT-valid regime?"""
     msg = []
     msg.append("[C5] Proton-neutron inversion using numerical eigenvalues:")
-    msg.append("  Question: is there ANY low-(n, m) pair giving m_n/m_p = 1.001378 at small η?")
+    msg.append("  Question: is there ANY low-(m_t, m_r) pair giving m_n/m_p = 1.001378 at small η?")
     msg.append("")
     target = 1.001378
     target_sq = target**2
 
-    # Try several (ε, χ) and several (n_p, m_p), (n_n, m_n) candidates
+    # Try several (ε, χ) and several proton/neutron candidate pairs.
+    # Tube-first wave-mode labels: (m_t, m_r) per clover-quarks §0.3.
     candidates = []
-    for n_p in range(-2, 3):
-        for m_p in range(-2, 3):
-            for n_n in range(-2, 3):
-                for m_n in range(-2, 3):
-                    if (n_p, m_p) == (0, 0) or (n_n, m_n) == (0, 0):
+    for mt_p in range(-2, 3):
+        for mr_p in range(-2, 3):
+            for mt_n in range(-2, 3):
+                for mr_n in range(-2, 3):
+                    if (mt_p, mr_p) == (0, 0) or (mt_n, mr_n) == (0, 0):
                         continue
-                    if (n_p, m_p) == (n_n, m_n):
+                    if (mt_p, mr_p) == (mt_n, mr_n):
                         continue
-                    candidates.append(((n_p, m_p), (n_n, m_n)))
+                    candidates.append(((mt_p, mr_p), (mt_n, mr_n)))
 
-    best = []  # (η, ratio_diff, (np,mp), (nn,mn), ε, χ)
+    best = []  # (η, ratio_diff, (mt_p, mr_p), (mt_n, mr_n), ε, χ, ratio)
     for eps in [0.2, 0.3, 0.5, 0.7, 1.0]:
         for chi in [0.5, 1.0, 2.0]:
             eta = eps / (2 + chi)
@@ -217,37 +218,38 @@ def test_proton_neutron_inversion(N_grid: int) -> tuple[bool, str]:
                 continue
             # Pre-compute all relevant eigenvalues
             eig_cache = {}
-            for nn, mm in {pair for c in candidates for pair in c}:
-                k_v = nn - 2 * mm / 3.0
-                p_t = mm
+            for mt, mr in {pair for c in candidates for pair in c}:
+                k_v = mr - 2 * mt / 3.0
+                p_t = mt
                 if (k_v, p_t) not in eig_cache:
                     eig_cache[(k_v, p_t)] = lowest_eig_for_kv_with_target(
                         eps, chi, k_v, p_t, N_grid
                     )
-            for (np_, mp_), (nn_, mn_) in candidates:
-                k_v_p = np_ - 2 * mp_ / 3.0
-                k_v_n = nn_ - 2 * mn_ / 3.0
-                e_p = eig_cache[(k_v_p, mp_)]
-                e_n = eig_cache[(k_v_n, mn_)]
+            for (mt_p, mr_p), (mt_n, mr_n) in candidates:
+                k_v_p = mr_p - 2 * mt_p / 3.0
+                k_v_n = mr_n - 2 * mt_n / 3.0
+                e_p = eig_cache[(k_v_p, mt_p)]
+                e_n = eig_cache[(k_v_n, mt_n)]
                 if e_p <= 0 or e_n <= 0:
                     continue
                 if e_n <= e_p:
                     continue  # neutron must be heavier than proton
                 ratio = (e_n / e_p) ** 0.5
                 if abs(ratio - target) < 1e-2:
-                    best.append((eta, abs(ratio - target), (np_, mp_), (nn_, mn_), eps, chi, ratio))
+                    best.append((eta, abs(ratio - target), (mt_p, mr_p),
+                                  (mt_n, mr_n), eps, chi, ratio))
     best.sort(key=lambda x: (x[1], x[0]))
     msg.append(f"  Target m_n/m_p = {target}")
     msg.append(f"  Candidates with |ratio - target| < 0.01 in PT regime (η ≤ 0.5):")
-    msg.append(f"  {'η':>6}  {'(n_p,m_p)':>10}  {'(n_n,m_n)':>10}  {'ε':>5}  {'χ':>5}  {'ratio':>9}  {'|Δ|':>10}")
+    msg.append(f"  {'η':>6}  {'(mt_p,mr_p)':>12}  {'(mt_n,mr_n)':>12}  {'ε':>5}  {'χ':>5}  {'ratio':>9}  {'|Δ|':>10}")
     for eta, diff, p_lbl, n_lbl, eps, chi, ratio in best[:10]:
-        msg.append(f"  {eta:6.4f}  {p_lbl!s:>10}  {n_lbl!s:>10}  "
+        msg.append(f"  {eta:6.4f}  {p_lbl!s:>12}  {n_lbl!s:>12}  "
                    f"{eps:5.2f}  {chi:5.2f}  {ratio:9.5f}  {diff:10.6f}")
     if not best:
         msg.append("  (no candidates within 1%)")
     msg.append("")
     msg.append("  Note: this confirms or refutes the analytical claim in clover-mass.md §6.4")
-    msg.append("  that no low-(n, m) identification fits in any PT-valid regime.")
+    msg.append("  that no low-(m_t, m_r) identification fits in any PT-valid regime.")
     # The "test" here doesn't pass/fail in the usual sense — we just report.
     # Pass if no candidate is found (matches the analytical negative result).
     return len(best) == 0, "\n".join(msg)

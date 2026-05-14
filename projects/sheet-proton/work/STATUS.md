@@ -12,15 +12,15 @@ The clover-quarks and clover-mass development accumulated terminology drift, con
 
 ### Phase 0 — Nomenclature reset
 
-- [ ] Adopt `(n_t, n_r)` (tube-first per metric-charge) for path winding numbers
-- [ ] Adopt a distinct notation for wave-mode quantum labels (currently conflated with path windings)
-- [ ] Clarify the **σ vs τ** distinction (open question; pin during Phase 1):
+- [x] Adopt `(n_t, n_r)` (tube-first per metric-charge) for path winding numbers
+- [x] Adopt a distinct notation for wave-mode quantum labels: **(m_t, m_r)** tube-first
+- [x] Clarify the **σ vs τ** distinction (open question; pin during Phase 1):
   - **τ** (discrete twist, locked to k/3): a rotation of the cross-section by 2π/3 per ring revolution. Changes the **boundary identification** on the surface — that's a topological operation, which forces Bloch sectors and m mod 3 constraints. Discreteness is forced by Z₃ symmetry of the profile.
   - **σ** (continuous internal sheet shear, free parameter): an intrinsic **metric** property of the sheet before rolling. Affects only the off-diagonal g_θφ coupling; does *not* change boundary identifications.
   - **From the wave's perspective:** both appear in the mass formula additively in something like σ_eff = σ + 2τ. So a wave alone cannot distinguish geometric origin from topological — only the *spectrum's discreteness* (sector structure) carries τ's topological fingerprint.
-- [ ] Define key mathematical terms in a "Conventions" block at the top of clover-quarks.md: **Hill equation** (1D ODE of the form ψ'' + p(u)ψ' + q(u)ψ = 0 with periodic coefficients, named after George William Hill); **Sturm–Liouville form**; **helical translation symmetry**; **Bloch sector** (subspace of wavefunctions sharing a single twist-identification phase); **zeroth/first/second-order perturbation theory** (zeroth = unperturbed eigenvalues; first/second-order = correction in powers of the small parameter η = r_lobe/R_major)
-- [ ] Add the Conventions section to clover-quarks.md
-- [ ] Sweep all existing files (clover-quarks, clover-mass, quark-flavor, meson-spectrum, 3-gen, strong) and scripts (corrugated_torus, laplacian_spectrum, spectrum_vs_pdg, validate_mass_formula) for terminology consistency
+- [x] Define key mathematical terms in a "Conventions" block at the top of clover-quarks.md: **Hill equation** (1D ODE of the form ψ'' + p(u)ψ' + q(u)ψ = 0 with periodic coefficients, named after George William Hill); **Sturm–Liouville form**; **helical translation symmetry**; **Bloch sector** (subspace of wavefunctions sharing a single twist-identification phase); **zeroth/first/second-order perturbation theory** (zeroth = unperturbed eigenvalues; first/second-order = correction in powers of the small parameter η = r_lobe/R_major)
+- [x] Add the Conventions section to clover-quarks.md (now §0 — see Conventions block; includes a migration table mapping old (n, m) → new (m_t, m_r) tube-first)
+- [x] Sweep all existing files (clover-quarks, clover-mass, quark-flavor, meson-spectrum) and scripts (spectrum_vs_pdg, validate_mass_formula) for terminology consistency. 3-gen and strong already had no old-convention usage; corrugated_torus and laplacian_spectrum use coordinate names (k_v, k_θ, k_φ) that don't require renaming.
 
 ### Phase 1 — Generalized clover-torus geometry (new: σ + τ as independent parameters)
 
@@ -163,4 +163,4 @@ When work files in this project cite framework mechanisms (cancellation, partial
 
 ## Last updated
 
-2026-05-14 — Restart from first principles initiated. Added a 6-phase checklist (Phase 0 nomenclature → Phase 5 cleanup) at the top; slimmed the Work files section to one-line + open todos (per the user's principle that STATUS.md tracks todos, not duplicates other files' content); retired the obsolete "Project priorities" section (now superseded by the restart checklist); slimmed Open architectural questions to bullets. Next milestone: complete restart Phase 0 (nomenclature reset and Conventions section in clover-quarks.md).
+2026-05-14 — Restart from first principles initiated. Added a 6-phase checklist (Phase 0 nomenclature → Phase 5 cleanup) at the top; slimmed the Work files section to one-line + open todos (per the user's principle that STATUS.md tracks todos, not duplicates other files' content); retired the obsolete "Project priorities" section (now superseded by the restart checklist); slimmed Open architectural questions to bullets. **Phase 0 complete:** clover-quarks.md §0 Conventions section drafted; (n_t, n_r) for path windings and (m_t, m_r) for wave-mode labels adopted with tube-first convention; clover-quarks.md, clover-mass.md, quark-flavor.md, meson-spectrum.md, scripts/spectrum_vs_pdg.py, scripts/validate_mass_formula.py swept for consistency. Next milestone: Phase 1 (generalized clover-torus geometry with σ + τ as independent parameters).
