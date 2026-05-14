@@ -20,21 +20,23 @@ Combined with §8's identification of (ε, χ) as the two free parameters analog
 
 ## 0. Conventions
 
-This section pins terminology and notation used throughout this file (and across [clover-mass.md](clover-mass.md), [3-gen.md](3-gen.md), [quark-flavor.md](quark-flavor.md), [meson-spectrum.md](meson-spectrum.md)). Earlier drafts mixed several notations; what's documented here is what we use going forward.
+This section pins terminology and notation used throughout this file and across [clover-mass.md](clover-mass.md), [3-gen.md](3-gen.md), [quark-flavor.md](quark-flavor.md), and [meson-spectrum.md](meson-spectrum.md).
 
 ### 0.1 Coordinates
 
 Two coordinate axes on the surface, both with period 2π:
 
-- **θ** — angular coordinate around the **ring** (the large direction; circumference 2π R_major).
-- **φ** — angular coordinate around the **tube** (the small direction; circumference c = L_total).
+- **θ** — angular coordinate around the **ring** (the large direction; ring circumference 2π R_major).
+- **φ** — angular coordinate around the **tube** (the small direction; tube circumference L_total).
 
-Aspect ratio:
-<!--EC should epsilon be a ratio of circumferences rather than a circumference/radius?  How would we best keep this compatible with epsilon as used in forma studies? -->
-<!-- ε = c / R_major = (cross-section perimeter) / (ring circumference) -->
+Define c ≡ L_total / (2π) — the tube's *effective radius* (so that the tube circumference is 2π c). With this:
+
+<!-- ε = c / R_major = (tube effective radius) / (ring radius) = (tube circumference) / (ring circumference) -->
 $$
-\varepsilon \;\equiv\; \frac{c}{R_{\mathrm{major}}}
+\varepsilon \;\equiv\; \frac{c}{R_{\mathrm{major}}} \;=\; \frac{2\pi c}{2\pi R_{\mathrm{major}}} \;=\; \frac{\text{tube circumference}}{\text{ring circumference}}
 $$
+
+ε is a pure ratio of the two compact circumferences (the 2π's cancel), so the same dimensionless aspect ratio used elsewhere in forma studies. Small ε = thin tube; ε of order 1 = comparable circumferences.
 
 The convention is **tube-first** wherever pairs appear (matching metric-charge's (n_t, n_r) convention).
 
@@ -45,17 +47,16 @@ For a *classical closed path* on the surface (e.g., the trajectory traced by a q
 - **n_t** ∈ ℤ — number of times the path wraps around the **tube** direction.
 - **n_r** ∈ ℤ — number of times the path wraps around the **ring** direction.
 
-<!--EC define homotopy parenthetically on first usage.  -->
-These are properties of a closed loop's homotopy class, not of any particular wave-mode.
+These are properties of a closed loop's **homotopy class** (the family of loops that can be continuously deformed into one another without breaking — two loops with the same windings (n_t, n_r) are in the same class), not of any particular wave-mode.
 
 Example (per §12.2): the proton path covers 2 lobes + 1 saddle (= 600° of arc) and closes with **(n_t, n_r) = (1, 2)** — 1 tube turn and 2 ring revolutions. The neutron path covers 1 lobe + 2 saddles and closes with **(n_t, n_r) = (1, 1)**.
 
 ### 0.3 Wave-mode quantum labels — (m_t, m_r)
 
-For a *quantum eigenmode* on the surface (a wavefunction Ψ that solves the Laplace–Beltrami eigenvalue equation), the Bloch quantum labels are
-<!--EC Define Bloch index just prior to first usage.  Or use a simpler explanation like: how many time the wave circles the tube/ring (if that is accurate).  -->
-- **m_t** ∈ ℤ — tube-direction Bloch index (corresponds to k_φ = m_t).
-- **m_r** ∈ ℤ — ring-direction Bloch index (under the twisted closure with τ = 1/3, k_θ = m_r − m_t/3).
+For a *quantum eigenmode* on the surface (a wavefunction Ψ that solves the Laplace–Beltrami eigenvalue equation), each mode is labelled by two integers that count how many times the wave's phase cycles around each direction as you traverse it:
+
+- **m_t** ∈ ℤ — the number of phase cycles the wave makes going once around the tube. Equivalently, k_φ = m_t (the tube-direction wavenumber).
+- **m_r** ∈ ℤ — the analogous count for the ring direction. Because of the twist, the ring-direction wavenumber becomes k_θ = m_r − m_t/3 (the m_t/3 term is the contribution from the twist's mod-3 shift, see §11).
 
 The mass formula for the unperturbed (flat-twisted-torus) limit becomes
 
@@ -64,7 +65,7 @@ $$
 \mu^2 \;=\; \left(m_r \;-\; \frac{2\,m_t}{3}\right)^2 \;+\; \left(\frac{m_t}{\varepsilon}\right)^2
 $$
 
-(see [clover-mass.md §4](clover-mass.md) — derived; the factor-of-2 in 2m_t/3 is the metric-shear contribution stacking with the boundary-identification shift). **(n_t, n_r) and (m_t, m_r) are different objects** — path-windings vs wave-mode labels. Earlier drafts conflated them by using (n, m) for both; we now keep them apart.
+(see [clover-mass.md §4](clover-mass.md) — derived; the factor-of-2 in 2m_t/3 is the metric-shear contribution stacking with the boundary-identification shift). **(n_t, n_r) and (m_t, m_r) are different objects** — path-windings vs wave-mode labels. We keep them apart throughout.
 
 ### 0.4 Shear σ versus twist τ
 
@@ -78,19 +79,17 @@ The status of σ as an independent parameter is being clarified in the restart (
 
 ### 0.5 Key mathematical terms
 
-- **Hill equation** — a 1D linear ODE of the form ψ''(u) + p(u) ψ'(u) + q(u) ψ(u) = E ψ(u) with periodic coefficients p, q. Named for George William Hill (1877). Our reduced cross-section eigenvalue problem (§10.3 helical reduction) is a Hill equation in u.
-<!--EC rather than tell me who it is named for (Hill), tell me what it does, or is good for in our context -->
+- **Hill equation** — a one-dimensional wave equation whose coefficients depend on position periodically (e.g. coefficients that vary with the lobe/saddle pattern around the tube). It's the kind of equation that describes a wave moving through a periodic medium, and it has well-developed solution techniques (band structure, Bloch sums). When we reduce our 2D torus problem to one direction by exploiting the helical symmetry (§10.3), what's left is a Hill equation in the tube coordinate u.
 
-- **Sturm–Liouville form** — the symmetric form −(p ψ')' + q ψ = λ w ψ with positive weight w. Conservative SL discretisation preserves self-adjointness numerically.
+- **Sturm–Liouville form** — a symmetric way to write the Hill equation so that the operator is self-adjoint with respect to a weighted inner product. Numerically, discretising in this form preserves the symmetry, which is important for getting accurate (real, ordered) eigenvalues.
 
-- **Helical translation symmetry** — the symmetry of the corrugated-torus metric under (θ, φ) → (θ + δ, φ − τδ). It diagonalises the metric in helical coordinates (v = θ, u = φ + τθ) and reduces the 2D PDE eigenvalue problem to a 1D Hill equation per ring-direction wavenumber.
+- **Helical translation symmetry** — sliding around the ring while simultaneously rotating around the tube by the twist angle leaves the surface metric unchanged. Practically: it lets us change coordinates so that the wave equation factors into a ring-direction part (just a plane wave) times a tube-direction part (the Hill equation above).
 
-- **Bloch sector** — the subspace of wave-modes sharing a single phase factor under the twisted closure. For τ = 1/3, the three Bloch sectors are labelled by m_t mod 3 ∈ {0, 1, 2}.
+- **Bloch sector** — when a wave's tube wavenumber m_t is fixed (or fixed modulo 3), it defines a subspace of allowed waves. Because of the τ = 1/3 twist there are three distinct sectors (m_t mod 3 = 0, 1, 2). Different sectors don't mix under the surface's symmetries.
 
-- **Zeroth-order spectrum** — eigenvalues of the unperturbed problem (flat-twisted-torus limit, corrugation amplitude vanishing). Given by the boxed formula in §0.3.
-<!--EC Does zeroth-order mean DC?  BTW, all the descriptions in 0.5 are hard to understand. -->
+- **Zeroth-order spectrum** — the masses of waves on the surface *before* we account for the corrugation (i.e., imagine the cross-section is a perfect circle with the same circumference). Analogous to a DC baseline: it's the leading-order answer that we then add small corrections to. The boxed formula in §0.3 is this leading-order mass.
 
-- **First-, second-order corrections** — successive terms in a perturbation series in the small parameter η = r_lobe / R_major (i.e., how much the corrugation amplitude is relative to the ring scale). [clover-mass.md §5–§6] derives first-order = 0 by symmetry, and second-order = O(χ²) with structure documented in §6.3.
+- **First-, second-order corrections** — successive terms in a series expansion where the small parameter is η = r_lobe / R_major (how big the corrugation amplitude is relative to the ring). First-order = the correction proportional to η; second-order = the correction proportional to η². [clover-mass.md §5–§6] shows first-order = 0 by symmetry, and second-order is O(χ²) (smaller than naive expectation; see §6.3 there).
 
 ### 0.6 Particles
 
@@ -100,20 +99,6 @@ The status of σ as an independent parameter is being clarified in the restart (
 - **d quark** = single saddle arc, charge −1/3.
 
 The wave-mode (m_t, m_r) that *represents* the proton/neutron quantum-mechanically is a separate identification question (still open; see [clover-mass.md §9.1](clover-mass.md) Concern A).
-
-### 0.7 Migration from earlier drafts
-<!--EC I don't want to preserve any reference to older versions of the file.  Just abandon the old nomenclature rather than bloat our file with explanations. -->
-For readers of older versions of this file (or sister files). Tube-first ordering everywhere:
-
-| Earlier notation | Now use |
-|---|---|
-| (n, m) for wave-mode | (m_t, m_r) — *tube-first; rename letters; old n = new m_r, old m = new m_t* |
-| (n_θ, n_φ) for path winding | (n_t, n_r) — *tube-first; old n_θ = new n_r, old n_φ = new n_t* |
-| τ alone in mass formula | σ_eff = σ + 2τ — *acknowledge both* |
-| k_θ = n − m/3 | k_θ = m_r − m_t/3 |
-| k_φ = m | k_φ = m_t |
-
-So under the migration, a wave-mode that earlier appeared as old-(n, m) = (1, 2) is now written as new-(m_t, m_r) = (2, 1). Path windings shift similarly.
 
 ---
 
@@ -209,89 +194,65 @@ This is structurally suggestive: **three minimal closed paths together fill the 
 
 ---
 
-## 3. Quark identification — the user's hypothesis
+## 3. Quark and baryon identification
 
-### 3.1 The proposal
-<!--EC I don't think we should claim that the quark path is closed.  Isn't that the whole point of confinement?  Is the path only closed in the case of uud or udd? -->
-- **Up quark** = a closed path traversing **2 lobes and 1 saddle** of the cross-section per ring revolution
-- **Down quark** = a closed path traversing **2 saddles and 1 lobe** of the cross-section per ring revolution
+### 3.1 Quarks as arc segments; baryons as 3-arc paths
 
-In terms of arc-degree (lobe = 240°, saddle = 120°):
-- Up-quark path covers 240° + 240° + 120° = 600° of profile arc
-- Down-quark path covers 240° + 120° + 120° = 480° of profile arc
+- **u quark** = one lobe arc (240° = 4π/3 of profile arc length)
+- **d quark** = one saddle arc (120° = 2π/3 of profile arc length)
 
-Both exceed one full cross-section traversal (360°). So neither closes in one ring revolution; both require multiple ring revolutions to close.
+Individual quarks do not close as standalone paths — that's the geometric expression of QCD confinement. They are *fragments* of a closed profile.
 
-### 3.2 Closure condition for these paths
+A **baryon** is the closed path obtained by concatenating three quark-arcs:
 
-Using §2's identification: a path that wraps n_r times around the ring with Δφ covering some total cross-section angle Φ_path must satisfy
+- **Proton** (uud) = 2 lobes + 1 saddle = 240° + 240° + 120° = 600° of profile arc
+- **Neutron** (udd) = 1 lobe + 2 saddles = 240° + 120° + 120° = 480° of profile arc
+- **Δ⁺⁺** (uuu) = 3 lobes = 720° of arc
+- **Δ⁻** (ddd) = 3 saddles = 360° of arc
 
-<!-- Φ_path = 2π n_t + n_r · 2π/3 -->
+Each baryon covers more than one full profile circumference (360°). The twisted closure rule of §2 determines how many ring revolutions are needed for the path to return to its starting point.
+
+### 3.2 Closure condition for baryon paths
+
+The path closure rule from §2 (tube-first, twist τ = 1/3): a closed path with total cross-section arc Φ_path must satisfy
+
+<!-- Φ_path = 2π n_t + (2π/3) n_r -->
 $$
-\Phi_{\mathrm{path}} \;=\; 2\pi\, n_t \;+\; n_r \cdot \frac{2\pi}{3}
-$$
-
-for integer n_t. Equivalently:
-
-<!-- (Φ_path - n_r · 2π/3) / (2π) ∈ ℤ -->
-$$
-\frac{\Phi_{\mathrm{path}} \;-\; n_r \cdot 2\pi/3}{2\pi} \;\in\; \mathbb{Z}
+\Phi_{\mathrm{path}} \;=\; 2\pi\, n_t \;+\; \frac{2\pi}{3}\, n_r
 $$
 
-Converting the user's arc-degree numbers to cross-section-angle: this requires committing to a parameterization relating arc-degree to φ-angle. Two natural choices:
+for some integer (n_t, n_r). Dividing both sides by 2π/3 gives the integer relation **3 n_t + n_r = (Φ_path)/(2π/3)** — i.e., the RHS is the path arc measured in units of one saddle-arc (since 2π/3 = saddle arc length). Equivalently, **3 n_t + n_r = 2 N_u + N_d** for a baryon with N_u up-quarks and N_d down-quarks (since one lobe = two saddle units, one saddle = one saddle unit).
 
-**Choice A: equal-arc parameterization.** Treat each lobe as covering 240°/(240°+120°) = 2/3 of the φ between lobe-junction events; each saddle as 1/3. Then each fundamental domain (one lobe + one saddle) covers 2π/3 of φ regardless of arc-degree. In this case:
-- Up-quark path (2 lobes + 1 saddle) covers... but what does "2 lobes + 1 saddle" mean in φ?
-  - If the quark's wave is a localised pattern that *prefers* lobes over saddles (or vice versa), this is about the wave's amplitude distribution, not literally about path length on the profile.
+Applied to the four 3-quark baryon combinations:
 
-**Choice B: literal arc-length parameterization.** Arc-degree directly = φ-angle. Then:
-- Up-quark path: Φ = 600° = 10π/3
-- Down-quark path: Φ = 480° = 8π/3
+| Baryon | (N_u, N_d) | 2N_u + N_d | Smallest (n_t, n_r) |
+|---|---|---|---|
+| Δ⁺⁺ (uuu) | (3, 0) | 6 | (2, 0) — 2 tube turns, 0 ring revolutions |
+| Proton (uud) | (2, 1) | 5 | (1, 2) — 1 tube turn, 2 ring revolutions |
+| Neutron (udd) | (1, 2) | 4 | (1, 1) — 1 tube turn, 1 ring revolution |
+| Δ⁻ (ddd) | (0, 3) | 3 | (1, 0) — 1 tube turn, 0 ring revolutions |
 
-Apply the closure condition for n_r = 1 (single ring revolution):
-- Up: (10π/3 − 2π/3)/(2π) = 8π/3 / 2π = 4/3 — **not integer** — doesn't close in 1 revolution
-- Down: (8π/3 − 2π/3)/(2π) = 6π/3 / 2π = 1 — **integer!** — closes in 1 revolution
+The full §12 discussion derives these closure numbers and uses them in the proton/neutron mass analysis.
 
-For n_r = 3:
-- Up: (10π·3/3 − 3·2π/3)/(2π) = (10π − 2π)/(2π) = 4 — **integer** — closes after 3 revolutions
-- Down: closes after 1 revolution already
+### 3.3 The "1/3 precession" reading — lobe-label precession, not path closure
 
-So under literal arc-length: **down-quark path closes in 1 ring revolution, up-quark path closes in 3 ring revolutions.** This is a striking asymmetry — and it suggests the up and down quarks are *fundamentally different topological objects* on this surface, not just two species of similar paths.
+An appealing picture: "the tube twist advances the phase so that a proton could forever keep traversing 2 lobes and 1 saddle (with 1/3 precession)." There are two distinct things this can mean, and they're easy to conflate.
 
-### 3.3 The user's "1/3 precession" reading — lobe-label precession, not path closure
-<!--EC Let's not refer to 'the user'. -->
-The user's hope: "the tube twist would advance the phase such that a proton could forever keep traversing 2 lobes and 1 saddle (with 1/3 precession)."
+1. **Path-locus closure** — when does the geometric trajectory return to its starting point? Per §3.2, the proton path's locus closes at **(n_t, n_r) = (1, 2)** — 1 tube turn, 2 ring revolutions.
 
-**Important distinction (added in revision).** Sections §3.1–§3.2 above used the *original* quark identification in which the "up-quark" was the entire 2 lobes + 1 saddle path. §12.1 later refactors this: a single up-quark is one lobe arc; the 2-lobes-and-1-saddle path is the **proton** (composite of three quarks). The "1/3 precession" picture is best read in two parts, which describe *different things*:
+2. **Lobe-label precession** — the geometric twist shifts which Z₃ lobe a wave occupies by 120° per ring revolution. After 3 revolutions the lobe-label returns to itself. This is the "1/3 precession" the framing refers to: how the *labels* rotate, not how the *locus* closes.
 
-1. **The path's locus closes after some number of ring revolutions.** Under the refactored identification, the proton path (2 lobes + 1 saddle = 600° of profile arc) closes after **n_r = 2 ring revolutions, n_t = 1 cross-section wind** — derived properly in §12.2.
+These coexist: a wave whose locus closes in 2 ring revolutions still has its lobe-labels cycling on a 3-revolution period. The two observables are independent — locus-closure depends on the path's total Δφ; label-precession depends on how Z₃ labels rotate per revolution.
 
-2. **The wave's lobe-label cycles through three positions over 3 ring revolutions.** Each ring revolution shifts the cross-section's Z₃ labels by 120° (the twist). After 3 revolutions the lobe-labels return to themselves. This is what "1/3 precession" originally referred to: not where the wave goes, but how its lobe-label rotates as it goes around.
-
-These coexist: a wave whose locus closes in 2 revolutions still has its lobe-labels cycling on a 3-revolution period. The two observables are independent — locus-closure depends on the path's total Δφ; label-precession depends on how Z₃ labels rotate per revolution.
-
-**Earlier framing under the original identification:** the "up-quark" (= entire proton path under the old labels) was claimed to close after 3 revolutions. This claim conflated the two observables above: the path's actual locus closes after 2 revolutions (per §12.2's correct derivation), while the label rotation completes after 3 revolutions. The "3 revolutions" claim is correct as *label rotation*, wrong as *path closure*. See §12.2 for the locus closure analysis.
-
-**What survives.** The Z₃ confinement reading is unchanged: three quarks together cover the cross-section, and the geometric twist enforces a 120° label shift per revolution. The user's intuition about a 1/3 precession structure is geometrically real — it just refers to *label rotation*, not to a *path-closure* count.
+The Z₃ confinement structure rides on the second reading: three quarks together cover the cross-section, and the geometric twist enforces a 120° label shift per revolution. The "1/3 precession" intuition is geometrically real — it just refers to *label rotation*, not to a *path-closure* count.
 
 ---
 
-## 4. Quark mappings to compare
+## 4. Relation to other quark mappings
 
-Connect to [quark-flavor.md](quark-flavor.md): the corrugated-torus picture suggests specific identifications for u, d, p, n.
+The clover construction's particle identification (§3.1) is specific to the corrugated-torus substrate. It does not directly translate into the round-tube T(m, n) winding language used by [quark-flavor.md](quark-flavor.md)'s competing mappings (R64, User-1, User-2, Alternative-3) — under those mappings each quark is a separable T(m, n) wave-mode of a smooth torus; under clover each quark is an arc-segment of a closed cross-section profile. The (m_t, m_r) wave-mode labels of [clover-mass.md](clover-mass.md) apply to the *whole baryon's* wavefunction, not to individual quarks.
 
-**Note (revision):** the original table here used the pre-§12 identification "up-quark = full proton path." §12.1 refactors this: an up-quark is *one lobe arc* and a down-quark is *one saddle arc*. The corrected table follows the §12 identification and uses §12.2's closure counts:
-
-| Particle | Geometric content | (n_t, n_r) to close (per §12.2) |
-|---|---|---|
-| u (up) | one lobe arc (240° convex segment, +2/3 charge) | n/a — a single arc, not a full closed path |
-| d (down) | one saddle arc (120° concave segment, −1/3 charge) | n/a — a single arc, not a full closed path |
-| proton uud | path covering 2 lobes + 1 saddle (600° profile arc) | **(1, 2)** — 1 tube turn, 2 ring revolutions |
-| neutron udd | path covering 1 lobe + 2 saddles (480° profile arc) | **(1, 1)** — 1 tube turn, 1 ring revolution |
-
-**Original (m, n) mapping question.** The original §4 framing asked "what T(m, n) winding pair is the up-quark?" That question is **specific to the round-tube substrate** ([quark-flavor.md mappings R64, User-1, User-2, Alternative-3](quark-flavor.md)). Under the clover identification, individual quarks are arc-segments rather than separable T(m, n) wave-modes, so no (m, n) is associated with a single quark. The (m_t, m_r) wave-mode labels of [clover-mass.md](clover-mass.md) apply to the *whole baryon's* wavefunction.
-
-**On color confinement.** Z₃ confinement under the clover construction comes from the third-integer momentum quantization k_θ = m_r − m_t/3 (§11), forced by the τ = 1/3 twist's boundary identification. Three quarks (three arcs) together cover the cross-section; observable baryons correspond to integer-summing combinations of three arcs.
+**On color confinement.** Z₃ confinement under the clover construction comes from the third-integer momentum quantization k_θ = m_r − m_t/3 (§11), forced by the τ = 1/3 twist's boundary identification. Three quarks (three arcs) together cover the cross-section; observable baryons correspond to integer-charge combinations of three arcs.
 
 **TODO:** match the (m, n) windings of metric-charge's primitive inventory to the (n_t, n_r) topology of these clover-torus paths.
 
@@ -299,7 +260,7 @@ Connect to [quark-flavor.md](quark-flavor.md): the corrugated-torus picture sugg
 
 ## 5. Phase carried along the path
 
-The user's deeper point: the 120° twist advances the *phase* of a wave along the path. If a wave has phase Θ(θ, φ), then after one ring revolution, the wave's phase is shifted by some amount that includes the geometric twist contribution.
+The 120° twist advances the *phase* of a wave along the path. If a wave has phase Θ(θ, φ), then after one ring revolution, the wave's phase is shifted by some amount that includes the geometric twist contribution.
 
 A wave's phase along a path:
 
@@ -644,7 +605,7 @@ The numerical scripts in `scripts/corrugated_torus.py` support both via the `--e
 
 This section derives the induced metric for **embedding A (parameter-shift)** from §9.3. The corresponding derivation for embedding B (rotation) is structurally similar but produces additional g_θφ contributions from the cross-section rotation; it is deferred until §9.5's open question is resolved.
 
-**Phase-C commitment (revision).** All Phase C numerical work in [clover-mass.md](clover-mass.md) — the Hill-equation reduction, the closed-form mass formula μ² = (n − 2m/3)² + (m/ε)², the perturbative expansion in η = ε/(2+χ), and the independent numerical Bloch-restricted Fourier solver — assumes **embedding A throughout**. The mass-spectrum predictions of [clover-mass.md](clover-mass.md) are therefore predictions of embedding A specifically. Whether embedding B would give the same predictions is a separate question whose answer requires redoing §10–§11 for embedding B's metric (a finite, deferred calculation). Until that is done, "the corrugated-torus mass prediction" refers unambiguously to embedding A.
+**Phase-C commitment.** All Phase C numerical work in [clover-mass.md](clover-mass.md) — the Hill-equation reduction, the closed-form mass formula μ² = (m_r − 2 m_t/3)² + (m_t/ε)², the perturbative expansion in η = ε/(2+χ), and the independent numerical Bloch-restricted Fourier solver — assumes **embedding A throughout**. The mass-spectrum predictions of [clover-mass.md](clover-mass.md) are therefore predictions of embedding A specifically. Whether embedding B would give the same predictions is a separate question whose answer requires redoing §10–§11 for embedding B's metric (a finite, deferred calculation). Until that is done, "the corrugated-torus mass prediction" refers unambiguously to embedding A.
 
 ### 10.1 Tangent vectors
 
@@ -764,7 +725,7 @@ This is **the geometric realization of fractional momentum quantization**. It fa
 
 The flat T² (no twist) gives k_θ and k_φ both integer. The corrugated torus with τ = 1/3 splits k_θ into three sub-lattices indexed by m_t mod 3.
 
-**Labeling vs. spectrum (clarification added in revision).** The result k_θ = m_r − m_t/3 is a **labeling of admissible Bloch sectors** (per §0.5) — it tells you which (k_θ, k_φ) pairs correspond to single-valued wavefunctions on the closed surface. Plain plane waves exp(i k_θ θ + i k_φ φ) are *not* eigenmodes of the corrugated Laplace–Beltrami operator (whose metric coefficients depend on u = φ + τθ); the true eigenmodes are Bloch sums of plane waves within each sector. **However**, the leading-order mass spectrum derived in [clover-mass.md §4](clover-mass.md), μ² = (m_r − 2m_t/3)² + (m_t/ε)², treats each Bloch sector's lowest-energy mode as the plane wave at its smallest |m_t|, and this approximation is **validated to machine precision at small η** by the independent numerical solver in `scripts/laplacian_spectrum.py` (see [clover-mass.md §6.6](clover-mass.md)). So §11's labeling correctly organises both the Hilbert space and the leading-order spectrum; the corrugation corrections that distinguish eigenmodes from plane waves are O(η²) and have been computed numerically.
+**Labeling vs. spectrum.** The result k_θ = m_r − m_t/3 is a **labeling of admissible Bloch sectors** (per §0.5) — it tells you which (k_θ, k_φ) pairs correspond to single-valued wavefunctions on the closed surface. Plain plane waves exp(i k_θ θ + i k_φ φ) are *not* eigenmodes of the corrugated Laplace–Beltrami operator (whose metric coefficients depend on u = φ + τθ); the true eigenmodes are Bloch sums of plane waves within each sector. **However**, the leading-order mass spectrum derived in [clover-mass.md §4](clover-mass.md), μ² = (m_r − 2m_t/3)² + (m_t/ε)², treats each Bloch sector's lowest-energy mode as the plane wave at its smallest |m_t|, and this approximation is **validated to machine precision at small η** by the independent numerical solver in `scripts/laplacian_spectrum.py` (see [clover-mass.md §6.6](clover-mass.md)). So §11's labeling correctly organises both the Hilbert space and the leading-order spectrum; the corrugation corrections that distinguish eigenmodes from plane waves are O(η²) and have been computed numerically.
 
 ### 11.4 Mode count per fundamental domain
 
@@ -772,18 +733,15 @@ For modes with given k_φ = m_t, the spacing of allowed k_θ values is 1 (since 
 
 ### 11.5 Connection to physical charge
 
-In MaSt's framework, particle charge is related to the integer winding number on one of the compact directions. If "charge" corresponds to (some linear combination of) k_θ and k_φ on the proton sheet, then the third-integer quantization translates directly to fractional-charge quantization for the constituent modes.
-<!--EC I'm not sure MaSt really allows for fractional charge.  The closest we get is grid's charge/radian but it is contingent upon eventual 2pi closure.  This section seems misleading, especially  the table below.  Under metric-charge closure rules, I think we really only contmplate m_t = 0 or 1.  If it is > 1, then we are contemplating multiple particles.  Does that sound right?  Section 11.7 seems more clear on this topic. -->
-For example: if charge ∝ k_θ (the ring-direction wave number), then:
-- m_t = 0 modes: integer charge (0, ±1, ±2, ...)
-- m_t = 1 modes: charge ∈ {..., −4/3, −1/3, 2/3, 5/3, ...}
-- m_t = 2 modes: charge ∈ {..., −5/3, −2/3, 1/3, 4/3, ...}
+Physical charge in MaSt is well-defined only for paths that close on the surface — equivalently, that wrap a full 2π of the profile. What the third-integer momenta describe:
 
-The m_t = 1 sub-lattice gives charges of magnitude 1/3, 2/3, 4/3, 5/3, ... — including the famous **+2/3 (up-like)** and **−1/3 (down-like)** quark fractions!
+- The **per-radian curvature contribution** of an arc segment is fractional — for one lobe it integrates to +2/3 of a full charge; for one saddle, −1/3 (see §11.7 for the precise integration). This is the "convex = +, concave = −" content of the geometry.
+- These per-radian fractions are not standalone physical charges. They become observable only when a 3-arc combination (a baryon) sums them to an integer.
+- The mode-quantization rule k_θ = m_r − m_t/3 is the quantum-mechanical reflection: third-integer momenta are mathematically allowed as fragments, but single-valuedness on the closed surface restricts physical particles to combinations whose total is integer.
 
-The m_t = 2 sub-lattice mirrors these with opposite signs: +1/3 (corresponding to ū antiquark) and −2/3 (corresponding to d̄ antiquark).
+Under metric-charge's closure rules, the cases of physical interest are essentially **m_t = 0 (integer-charge composite)** and **m_t mod 3 ≠ 0 (fragment that must combine with others to become observable)**. A mode with |m_t| > 1 is best understood as describing multiple constituents in the same compact direction, not a single "highly charged" particle.
 
-This is **the structural payoff of Phase A**: the third-fractional charges of QCD are a direct consequence of the corrugated torus's twist topology. They are not postulated; they fall out of the geometry once the closure conditions are imposed.
+§11.7 below is the precise statement of how the per-arc curvature integration yields Q_lobe = +2/3 and Q_saddle = −1/3 as the per-radian contributions, with the integer-charge restriction emerging from full closure.
 
 ### 11.6 Z₃ confinement as topological
 
@@ -1007,9 +965,7 @@ One possibility: lobes have "more space" (positive curvature, broader physical e
 
 Such a bias would also produce a small preference between proton-orientation and neutron-orientation configurations, energetically. The 1.29 MeV proton-neutron mass split might come partly from intrinsic topology (Candidate A) and partly from substrate asymmetry (Candidate B).
 
-**Phase C numerics** (corrugated-torus mode spectrum + substrate-asymmetry perturbation) would distinguish these two contributions. For now, the picture is: the proton is naturally lower-energy than the neutron via some combination of geometric content and substrate bias, and the exact mass split depends on parameters that need numerical fitting.
-
-**Update from [clover-mass.md](clover-mass.md):** Phase C has been carried out for embedding A. The closed-form leading-order mass formula μ² = (m_r − 2m_t/3)² + (m_t/ε)² was derived (clover-mass §4), validated numerically to machine precision at small η (clover-mass §6.6), and used to search for (m_t, m_r) identifications that reproduce m_n/m_p = 1.001378. Candidate pairs — e.g. (proton, neutron) = ((m_t, m_r) = (2, 1), (m_t, m_r) = (2, 2)) at ε ≈ 0.2, χ ∈ [0.5, 2] — fit the observed mass ratio to within **0.03%**. This does not yet derive E_S > E_L explicitly as the mass-split mechanism, but it does confirm that **the corrugated-torus geometry alone can reproduce the proton/neutron mass ratio at the percent level** without invoking electromagnetic, bare-mass, or chiral-symmetry-breaking corrections. Whether such corrections are needed to close the remaining 0.03% gap, or whether the gap is closable by fine-tuning (ε, χ) within clover, is the next quantitative test.
+**Phase C numerics** (corrugated-torus mode spectrum + substrate-asymmetry perturbation) is needed to distinguish these two contributions and to pin the magnitude of E_S − E_L. This work has been carried out for embedding A in [clover-mass.md](clover-mass.md). The closed-form leading-order mass formula μ² = (m_r − 2 m_t/3)² + (m_t/ε)² was derived there (clover-mass §4), validated numerically to machine precision at small η (clover-mass §6.6), and used to search for (m_t, m_r) identifications that reproduce m_n/m_p = 1.001378. Candidate pairs — e.g. (proton, neutron) = ((m_t, m_r) = (2, 1), (m_t, m_r) = (2, 2)) at ε ≈ 0.2, χ ∈ [0.5, 2] — fit the observed mass ratio to within **0.03%**. This does not derive E_S > E_L explicitly as the mass-split mechanism, but it does confirm that **the corrugated-torus geometry alone can reproduce the proton/neutron mass ratio at the percent level** without invoking electromagnetic, bare-mass, or chiral-symmetry-breaking corrections. Whether such corrections are needed to close the remaining 0.03% gap, or whether the gap is closable by fine-tuning (ε, χ) within clover, is the next quantitative test.
 
 ### 12.6 Net effect: the proton is stable, the neutron decays
 
@@ -1048,37 +1004,9 @@ These remaining items are computationally tractable but require care; they're li
 
 ---
 
-## 13. Phase C — Mass spectrum from the Laplacian (deferred)
-<!--EC Is this section obsolete?  Is it now replaced with clover-mass?  If so, delete this section -->
-Phase C is the numerical eigenvalue problem.
+## 13. Mass spectrum — see clover-mass.md
 
-The wave equation on the surface: (∂_t² − Δ_g) ψ = 0, with Δ_g the Laplace-Beltrami operator from the metric of §10.
-
-For an eigenmode ψ = exp(-iω t) Ψ(θ, φ) with Ψ satisfying the periodicity of §11, the eigenvalue equation is:
-
-<!-- Δ_g Ψ = -ω² Ψ -->
-$$
-\Delta_g \Psi \;=\; -\omega^2\,\Psi
-$$
-
-The Laplace-Beltrami operator:
-
-<!-- Δ_g Ψ = (1/√|g|) ∂_i(√|g| g^{ij} ∂_j Ψ) -->
-$$
-\Delta_g \Psi \;=\; \frac{1}{\sqrt{|g|}}\,\partial_i\!\left(\sqrt{|g|}\, g^{ij}\, \partial_j \Psi\right)
-$$
-
-Using the helical translation symmetry (§10.3), reduce the 2D problem to 1D in u = φ + τθ. The result is a 1D ODE with periodic coefficients (period 2π/3 from the profile's 3-fold symmetry) — a **Hill equation** in general.
-
-**Phase C** would:
-
-1. Implement the 1D ODE numerically for representative (ε, χ) parameter values.
-2. Compute the lowest eigenvalues (mass spectrum).
-3. Compare to the flat-T² spectrum at the same ε.
-4. Identify which modes correspond to up-quark, down-quark, proton, etc.
-5. Compute the proton mass and check against 938 MeV.
-
-**Phase C** is computational, ~100-300 lines of Python with scipy, perhaps a day of work. It builds directly on the Phase A foundation; nothing new analytical is needed.
+The Phase C numerical eigenvalue work (Hill-equation reduction of the Laplacian, perturbative expansion in η, numerical Bloch-restricted solver, mass-spectrum prediction) lives in [clover-mass.md](clover-mass.md).
 
 ---
 
