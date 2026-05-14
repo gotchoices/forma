@@ -159,31 +159,40 @@ For n_θ = 3:
 
 So under literal arc-length: **down-quark path closes in 1 ring revolution, up-quark path closes in 3 ring revolutions.** This is a striking asymmetry — and it suggests the up and down quarks are *fundamentally different topological objects* on this surface, not just two species of similar paths.
 
-### 3.3 The user's "1/3 precession" reading
+### 3.3 The user's "1/3 precession" reading — lobe-label precession, not path closure
 
 The user's hope: "the tube twist would advance the phase such that a proton could forever keep traversing 2 lobes and 1 saddle (with 1/3 precession)."
 
-Under Choice B: the up-quark path doesn't close in 1 revolution; instead, the path's "endpoint" is offset by 2π·4/3 − 2π = 2π/3 in the cross-section — exactly one fundamental domain shifted. So the up-quark path *precesses by 120° per ring revolution*, and closes only after 3 revolutions.
+**Important distinction (added in revision).** Sections §3.1–§3.2 above used the *original* quark identification in which the "up-quark" was the entire 2 lobes + 1 saddle path. §12.1 later refactors this: a single up-quark is one lobe arc; the 2-lobes-and-1-saddle path is the **proton** (composite of three quarks). The "1/3 precession" picture is best read in two parts, which describe *different things*:
 
-A proton (uud composite) has three constituents. If each is an up-quark-like path or a down-quark-like path, and their precessions are correlated, the composite can close in fewer revolutions than any individual.
+1. **The path's locus closes after some number of ring revolutions.** Under the refactored identification, the proton path (2 lobes + 1 saddle = 600° of profile arc) closes after **n_θ = 2 ring revolutions, n_φ = 1 cross-section wind** — derived properly in §12.2.
 
-**Specifically:** if the three constituents of a proton are mutually offset by 120° in their starting positions (so they together cover the surface), and each precesses by 120° per ring revolution, then *each revolution rotates the three constituents to the next-clockwise positions* — and after 3 revolutions, each has returned to its original spot. The proton as a whole closes in 3 revolutions; each constituent closes in 3 revolutions; but at any given revolution they collectively cover the full cross-section.
+2. **The wave's lobe-label cycles through three positions over 3 ring revolutions.** Each ring revolution shifts the cross-section's Z₃ labels by 120° (the twist). After 3 revolutions the lobe-labels return to themselves. This is what "1/3 precession" originally referred to: not where the wave goes, but how its lobe-label rotates as it goes around.
 
-This is the "1/3 precession" the user is pointing at. It's structurally consistent with the proton-as-3-quark composite, with Z₃ confinement realized geometrically by the 120° twist.
+These coexist: a wave whose locus closes in 2 revolutions still has its lobe-labels cycling on a 3-revolution period. The two observables are independent — locus-closure depends on the path's total Δφ; label-precession depends on how Z₃ labels rotate per revolution.
+
+**Earlier framing under the original identification:** the "up-quark" (= entire proton path under the old labels) was claimed to close after 3 revolutions. This claim conflated the two observables above: the path's actual locus closes after 2 revolutions (per §12.2's correct derivation), while the label rotation completes after 3 revolutions. The "3 revolutions" claim is correct as *label rotation*, wrong as *path closure*. See §12.2 for the locus closure analysis.
+
+**What survives.** The Z₃ confinement reading is unchanged: three quarks together cover the cross-section, and the geometric twist enforces a 120° label shift per revolution. The user's intuition about a 1/3 precession structure is geometrically real — it just refers to *label rotation*, not to a *path-closure* count.
 
 ---
 
 ## 4. Quark mappings to compare
 
-Connect to [quark-flavor.md](quark-flavor.md): the corrugated-torus picture suggests specific (m, n) identifications for u and d.
+Connect to [quark-flavor.md](quark-flavor.md): the corrugated-torus picture suggests specific identifications for u, d, p, n.
 
-| Particle | Path topology | n_θ to close | Conjectured (m, n) mapping |
-|---|---|---|---|
-| u (up) | 2 lobes + 1 saddle per revolution | 3 | T(1, ?) — needs literal-arc analysis |
-| d (down) | 2 saddles + 1 lobe per revolution | 1 | T(1, ?) — closes faster |
-| proton uud | 3 constituents at 120° offsets, collectively cover surface | 3 | (3, ?) composite via path superposition |
+**Note (revision):** the original table here used the pre-§12 identification "up-quark = full proton path." §12.1 refactors this: an up-quark is *one lobe arc* and a down-quark is *one saddle arc*. The corrected table follows the §12 identification and uses §12.2's closure counts:
 
-**Note the n_θ = 3 closure for the up-quark path** is interesting: it might be the "color confinement" pattern realized geometrically. A free up-quark (single path) doesn't close in 1 revolution; it requires the 3-fold structure (three offset paths) for closure within one round.
+| Particle | Geometric content | n_θ to close (per §12.2) |
+|---|---|---|
+| u (up) | one lobe arc (240° convex segment, +2/3 charge) | n/a — a single arc, not a full closed path |
+| d (down) | one saddle arc (120° concave segment, −1/3 charge) | n/a — a single arc, not a full closed path |
+| proton uud | path covering 2 lobes + 1 saddle (600° profile arc) | **2** ring revolutions, n_φ = 1 cross-section wind |
+| neutron udd | path covering 1 lobe + 2 saddles (480° profile arc) | **1** ring revolution, n_φ = 1 cross-section wind |
+
+**Original (m, n) mapping question.** The original §4 framing asked "what T(m, n) winding pair is the up-quark?" That question is **specific to the round-tube substrate** ([quark-flavor.md mappings R64, User-1, User-2, Alternative-3](quark-flavor.md)). Under the clover identification, individual quarks are arc-segments rather than separable T(m, n) wave-modes, so no (m, n) is associated with a single quark. The (n, m) wave-mode labels of [clover-mass.md](clover-mass.md) apply to the *whole baryon's* wavefunction.
+
+**On color confinement.** Z₃ confinement under the clover construction comes from the third-integer momentum quantization k_θ = n − m/3 (§11), forced by the τ = 1/3 twist's boundary identification. Three quarks (three arcs) together cover the cross-section; observable baryons correspond to integer-summing combinations of three arcs.
 
 **TODO:** match the (m, n) windings of metric-charge's primitive inventory to the (n_θ, n_φ) topology of these clover-torus paths.
 
@@ -536,6 +545,8 @@ The numerical scripts in `scripts/corrugated_torus.py` support both via the `--e
 
 This section derives the induced metric for **embedding A (parameter-shift)** from §9.3. The corresponding derivation for embedding B (rotation) is structurally similar but produces additional g_θφ contributions from the cross-section rotation; it is deferred until §9.5's open question is resolved.
 
+**Phase-C commitment (revision).** All Phase C numerical work in [clover-mass.md](clover-mass.md) — the Hill-equation reduction, the closed-form mass formula μ² = (n − 2m/3)² + (m/ε)², the perturbative expansion in η = ε/(2+χ), and the independent numerical Bloch-restricted Fourier solver — assumes **embedding A throughout**. The mass-spectrum predictions of [clover-mass.md](clover-mass.md) are therefore predictions of embedding A specifically. Whether embedding B would give the same predictions is a separate question whose answer requires redoing §10–§11 for embedding B's metric (a finite, deferred calculation). Until that is done, "the corrugated-torus mass prediction" refers unambiguously to embedding A.
+
 ### 10.1 Tangent vectors
 
 The basis vectors on the surface, ∂_θ r and ∂_φ r:
@@ -653,6 +664,8 @@ The quantization rule k_θ = q − p/3 says that **k_θ takes third-integer valu
 This is **the geometric realization of fractional momentum quantization**. It falls directly out of the surface's twist topology — the (θ, φ) identification with the 2π/3 offset.
 
 The flat T² (no twist) gives k_θ and k_φ both integer. The corrugated torus with τ = 1/3 splits k_θ into three sub-lattices indexed by p mod 3.
+
+**Labeling vs. spectrum (clarification added in revision).** The result k_θ = q − p/3 is a **labeling of admissible Bloch sectors** — it tells you which (k_θ, k_φ) pairs correspond to single-valued wavefunctions on the closed surface. Plain plane waves exp(i k_θ θ + i k_φ φ) are *not* eigenmodes of the corrugated Laplace–Beltrami operator (whose metric coefficients depend on u = φ + τθ); the true eigenmodes are Bloch sums of plane waves within each sector. **However**, the leading-order mass spectrum derived in [clover-mass.md §4](clover-mass.md), μ² = (n − 2m/3)² + (m/ε)², treats each Bloch sector's lowest-energy mode as the plane wave at its smallest |p|, and this approximation is **validated to machine precision at small η** by the independent numerical solver in `scripts/laplacian_spectrum.py` (see [clover-mass.md §6.6](clover-mass.md)). So §11's labeling correctly organises both the Hilbert space and the leading-order spectrum; the corrugation corrections that distinguish eigenmodes from plane waves are O(η²) and have been computed numerically.
 
 ### 11.4 Mode count per fundamental domain
 
@@ -901,6 +914,8 @@ Such a bias would also produce a small preference between proton-orientation and
 
 **Phase C numerics** (corrugated-torus mode spectrum + substrate-asymmetry perturbation) would distinguish these two contributions. For now, the picture is: the proton is naturally lower-energy than the neutron via some combination of geometric content and substrate bias, and the exact mass split depends on parameters that need numerical fitting.
 
+**Update from [clover-mass.md](clover-mass.md):** Phase C has been carried out for embedding A. The closed-form leading-order mass formula μ² = (n − 2m/3)² + (m/ε)² was derived (clover-mass §4), validated numerically to machine precision at small η (clover-mass §6.6), and used to search for (n, m) identifications that reproduce m_n/m_p = 1.001378. Candidate pairs — e.g. (proton, neutron) = ((1, 2), (2, 2)) at ε ≈ 0.2, χ ∈ [0.5, 2] — fit the observed mass ratio to within **0.03%**. This does not yet derive E_S > E_L explicitly as the mass-split mechanism, but it does confirm that **the corrugated-torus geometry alone can reproduce the proton/neutron mass ratio at the percent level** without invoking electromagnetic, bare-mass, or chiral-symmetry-breaking corrections. Whether such corrections are needed to close the remaining 0.03% gap, or whether the gap is closable by fine-tuning (ε, χ) within clover, is the next quantitative test.
+
 ### 12.6 Net effect: the proton is stable, the neutron decays
 
 Combining the threads:
@@ -926,7 +941,7 @@ All three contribute to the slow decay rate. The corrugated-torus framework prov
 | Does the user's "1/3 precession" picture work? | Yes: the surface twist produces a 120° lobe-relabeling per ring revolution, with closure after 2 (proton) or 1 (neutron) full revolution |
 | How does n → p decay topologically? | A q-shift: 1 saddle → 1 lobe at a localized site (1 down → 1 up). No direction reversal required. |
 | Why is the proton stable? | The proton is lower-energy than the neutron; the n → p transition requires tunneling between topological classes and emitting energy to other sheets |
-| Does topology alone explain the n-p mass split? | Partially: lobe vs saddle energy contributions differ. Substrate asymmetry (work-strong) is also a candidate contributor. Phase C numerics needed. |
+| Does topology alone explain the n-p mass split? | Phase C numerics in [clover-mass.md](clover-mass.md) confirm: candidate (n, m) wave-mode identifications reproduce m_n/m_p = 1.001378 to within 0.03% from geometry alone (no EM/bare-mass/chiral inputs). Whether the residual 0.03% requires those QCD effects, or closes with fine-tuned (ε, χ), is the next test. |
 
 **Remaining Phase B work to do:**
 

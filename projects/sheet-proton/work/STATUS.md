@@ -71,6 +71,11 @@ Tracks the project's active work files, their states, dependencies, and next act
 
 **Status:** Phase-A complete through O(η²) + independent numerical validation. Zeroth-order formula μ² = (n − 2m/3)² + (m/ε)² validated to machine precision. First-order vanishing validated. Second-order PT formula (§6.3) found INCORRECT — failed to restrict to Bloch sector; corrected to use intra-sector (1/w) coupling. Numerical Bloch-restricted Fourier solver (scripts/laplacian_spectrum.py) confirms candidate pairs like ((1, 2), (2, 2)) at ε ≈ 0.2 give m_n/m_p within 0.03% of observation. Earlier "negative result" reversed. Framework PASSES qualitative test.
 
+**Three open quantitative concerns (clover-mass.md §9.1):**
+- (A) The (n, m) → particle identification is unpinned — 372 candidate pairings clustering at multiple ε values, giving R_major from 0.16 fm to 4.0 fm.
+- (B) The 0.03% m_n/m_p residual has not been closed by fine-tuning (ε, χ) — needed before claiming quantitative reproduction.
+- (C) Predicted R_major ≈ 0.42 fm at the robust cluster is ~half the observed proton charge radius R_p ≈ 0.84 fm; proper charge-weighted ⟨r²⟩ calculation needed.
+
 **Dependencies:**
 - *Upstream:* clover-quarks (the surface, the metric, the path-winding identifications)
 - *Sister files:* clover-quarks (mode-particle identification is a shared open question)

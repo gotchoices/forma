@@ -336,6 +336,8 @@ Validation results (scripts/validate_mass_formula.py):
 
 The error of 0.03% can plausibly be closed by fine-tuning (ε, χ) or by going to slightly higher (n, m) labels.
 
+**Important caveat.** The 0.03% residual is **not yet closed**. The numerical solver gives 1.00168 against a target of 1.00138 — close, but a factor of ~5 from agreement on a 0.14% observable. Until the fine-tune in §6.7 is actually run (which would tune ε and χ jointly using both the m_n/m_p constraint and the χ-correction structure), this is a "framework reaches the right neighbourhood" result, not a confirmed quantitative prediction. The right reading is: "no low-(n, m) identification has been ruled out at the 0.03% level, and the gap is small enough to plausibly close" — which is materially different from "the framework reproduces m_n/m_p quantitatively." Both readings are honest; the file's existing "plausibly close" / "toy result" wording is appropriately calibrated to the former.
+
 ### 6.7 New next steps
 
 The cheap perturbative analysis was wrong. The expensive numerical solver works. So:
@@ -503,6 +505,35 @@ The fact that ε ≈ 0.5 emerges robustly across multiple identifications is the
 - The forward map μ² → (ε, χ, n, m) is explicit and verified numerically.
 - We have a concrete falsifiable observable (m_n/m_p) and can say whether the geometry passes or fails.
 - The next step is one 1D ODE eigensolver, not a 2D PDE eigensolver — *much* cheaper than the original Phase-C plan.
+
+### 9.1 Open quantitative concerns
+
+Three quantitative gaps remain open. They are listed here explicitly (rather than buried in §§7–8 commentary) because each is a real concern for the framework's empirical adequacy, not just a technical loose end.
+
+**Concern A — (n, m) → particle identification is unpinned.**
+The leading-order m_n/m_p constraint admits a 372-element family of compatible (n_p, m_p) → (n_n, m_n) pairings (§8.1 survey, |n|, |m| ≤ 3). These clusters at several distinct ε values (0.16, 0.18, 0.42, 0.53, 0.65, 3.0 in the survey), giving R_major values spanning more than an order of magnitude (0.16 fm to 4.0 fm). **Until a first-principles argument or a third observable picks one identification, the framework does not produce a unique mass prediction — it produces a family.** This is not a technical detail; the family is genuinely physical, and collapsing it requires extra input the framework does not currently provide.
+
+Possible collapse mechanisms (§8.1):
+- A third observable (Δ⁺ mass, m_μ/m_e, etc.).
+- A first-principles identification argument (wavefunction overlap with lobe regions; semiclassical path-integral derivation; gauge-invariance constraint).
+- The χ-corrections at O(η²) discriminating identifications that the zeroth-order constraint cannot.
+
+None has been done.
+
+**Concern B — the m_n/m_p fine-tune has not been run.**
+The closest candidate identification gives m_n/m_p = 1.00168 against the observed 1.00138 — a 0.03% residual on a 0.14% observable, factor-of-~5 from agreement. The χ-correction is the natural fine-tune knob (see §6.7 item 2), but the joint (ε, χ) fit at the candidate identification has not been carried out. Until it is, "framework reaches the right neighbourhood" is the correct reading; "framework reproduces m_n/m_p quantitatively" is not yet warranted. The fine-tune could either close the gap (confirming the geometry) or fail (revealing that low-(n, m) identifications cannot reach 1.00138 even with both knobs).
+
+**Concern C — predicted R_major is roughly half the observed proton charge radius.**
+The "robust cluster" at ε ≈ 0.5 gives R_major ≈ 0.42 fm. The observed proton charge radius is R_p ≈ 0.84 fm. The file's back-of-envelope ⟨r²⟩ estimate for the torus gives R_RMS_torus ≈ 0.44 fm — comparable to R_major, **well below R_p**. This is a factor-of-2 mismatch on a well-measured observable.
+
+Caveats that may shrink (or grow) this gap:
+- R_p is the *electromagnetic* RMS radius — it depends on the proton's charge distribution, which for our torus is +1/r_l on lobes and −1/r_s on saddles, integrated over the wave-mode's |ψ|² on the surface. The proper charge-weighted ⟨r²⟩ has not been computed; the 0.44 fm estimate is geometric extent only.
+- Other clusters in the §8.1 survey give very different R_major (0.16 fm, 4.0 fm). Pinning the identification (Concern A) determines which R_major to compare.
+- The framework treats m_p as the primary input to set the scale. If a different scale-setting choice is preferred (e.g., R_p directly), the relationship inverts.
+
+These mitigations should be tracked, but **a factor-of-2 gap on R_p is a real open concern** that the file's §8.1 paragraph did not flag prominently enough.
+
+---
 
 ## 10. Cross-references
 
