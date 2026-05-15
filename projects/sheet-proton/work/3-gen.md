@@ -1,6 +1,8 @@
 # 3-gen.md — Three generations of quarks from the clover torus
 
-**Status:** Exploratory. Outlines candidate mechanisms by which the three Standard Model fermion generations could emerge from distinct families of cross-section modes on the corrugated clover torus. Sister to [clover-quarks.md](clover-quarks.md) (per-arc charge derivation, single-generation structure) and [clover-mass.md](clover-mass.md) (mass spectrum on the corrugated torus). Open architectural question from [STATUS.md](STATUS.md): "Where do the heavier quarks (charm, strange, top, bottom) live?"
+**Status:** Mechanisms A–D investigated through a numerical attempt followed by analytical follow-on. **The 2D-surface picture (the framework used by clover-quarks / clover-mass) structurally cannot host the hoped-for whole-circumference < lobe-localized < saddle-localized mass hierarchy** — in the 2D Hill equation, lobes are *wells* in the effective potential, so localized states sit *below* the plane-wave continuum (the opposite of "smaller cavity → higher frequency"). See [clover-modes-analytical.md](clover-modes-analytical.md) for the structural derivation and §12 below for the synthesis. **The 3D wave-guide extension** (treating the tube as having a 3D interior with the clover as the cross-section, [tube-waveguide.md](tube-waveguide.md)) *does* recover the hoped-for hierarchy qualitatively and reaches gen-1↔gen-2 mass ratios (~10²–10³) naturally; reaching the heaviest generation ratios (~10⁵) likely requires cross-sheet structure.
+
+Sister to [clover-quarks.md](clover-quarks.md) (per-arc charge derivation, single-generation structure) and [clover-mass.md](clover-mass.md) (mass spectrum on the corrugated torus, 2D-surface analysis). Open architectural question from [STATUS.md](STATUS.md): "Where do the heavier quarks (charm, strange, top, bottom) live?" — partially answered: in the 2D-surface picture they don't live in the spectrum at all; in the 3D wave-guide extension gen-2 quarks can plausibly live on the proton sheet (with mild asymmetry χ ~ 0.05–0.1) but gen-3 quarks more naturally live on separate sheets.
 
 **Tone:** Catalog candidate mechanisms; identify the structural ingredients each requires; note what would need to be tested numerically. The general framework comes first; specific mechanisms are sketches.
 
@@ -437,12 +439,90 @@ These can be done as extensions to the existing Hill-equation solver; no new mat
 
 ---
 
-## 11. Next actions
+## 11. Numerical infrastructure available
 
-1. Extend [scripts/laplacian_spectrum.py](../scripts/laplacian_spectrum.py) to perform a χ-sweep and classify eigenmodes by localization pattern (§9.1–9.2).
-2. Run the Mechanism-D doublet test (§9.3): for each m ∈ {1, 2, 3}, examine the two lowest eigenstates and verify the lobe-focused / saddle-focused antinode structure. This is the single sharpest discriminator among A/B/C/D.
-3. Once classification works, test whether the band structure predicted by Mechanism A actually emerges. If three distinct families (whole-circumference, lobe-localized, saddle-localized) are visible, A is the working hypothesis; if only the whole-circumference family is found, A is refuted and D becomes the lead.
-4. Check the natural-cutoff prediction of Mechanism D (§9.5): no spurious m > 3 eigenstates beyond Bloch periodicity.
-5. Compute the predicted inter-generation mass ratios and compare to observed (§9.4).
-6. Address the flavor-ordering anomaly (§7 item 5) — the most demanding empirical test. Failure here likely refutes the geometric-generations idea in its current form, regardless of which mechanism is favored.
-7. Compute the Maslov phase on a saddle → lobe → saddle trajectory (§3.5.3 and §5.4 prediction 3). A nonzero π phase per saddle hop would support the saddle band as antiperiodic / fermionic-like. This is speculative but cheap to test analytically.
+Two scripts are available for follow-on numerical work on this question:
+
+- [scripts/laplacian_spectrum.py](../scripts/laplacian_spectrum.py) — solves the 1D Hill equation in u for the 2D-surface mode spectrum. Includes a `--sweep-chi` mode that sweeps χ at fixed ε; `hill_eigenvalues` returns eigenvectors (Fourier coefficients) when `return_eigvecs=True`. Useful for any follow-on 2D-surface analysis.
+- [scripts/wavefunction_viz.py](../scripts/wavefunction_viz.py) — wavefunction localization classifier. Evaluates Hill-equation eigenfunctions on a u-grid and computes (i) lobe vs saddle overlap fractions with geometric-baseline subtraction L − L_baseline; (ii) Z₃-alignment Re(c₃/c₀) of |ψ|²; (iii) classification into whole-circumference / lobe-localized / saddle-localized; also runs the Mechanism-D doublet test across m ∈ {1, 2, 3}.
+
+These tools operate on the *1D Hill equation* derived from the 2D-surface picture. Per §12, the natural next numerical instrument — not yet implemented — is a **2D Helmholtz solver for the clover-shaped cross-section domain**, which would address the 3D wave-guide picture of [tube-waveguide.md](tube-waveguide.md) directly. That solver would consume similar geometry-utility code from `scripts/lib/` but with a 2D meshing step in place of the 1D u-grid.
+
+---
+
+## 12. Outcome — 2D-only ruled out; 3D wave-guide qualitatively viable
+
+The investigation proceeded in two stages: a numerical attempt at finding compartmentalized band structure in the 2D Hill spectrum, then an analytical follow-on that explained the numerical result structurally and identified the natural extension. The two stages are reported here together.
+
+### 12.1 The numerical attempt (2D-surface, Hill equation)
+
+A χ-sweep at ε ∈ {0.5, 1.5, 3.0} and a doublet test for m ∈ {1, 2, 3} were carried out on the 1D Hill equation in u (using `scripts/laplacian_spectrum.py` and `scripts/wavefunction_viz.py`). The sweep was sparse (15 (ε, χ) grid points; ground state per Bloch sector only) and did not reach the deep-corrugation regime (η < 0.05) where compartmentalized modes were hoped to appear.
+
+Findings within this sample:
+
+- No clear lobe-localized vs whole-circumference band separation in the lowest few eigenvalues. The spectrum is a single approximately-arithmetic ladder.
+- The m = 3 sector contains a degenerate lobe/saddle doublet (both members at μ² = 4.000 in the test case); m = 1 and m = 2 give one eigenstate per Bloch sector. The "doublet at every m" prediction of Mechanism D fails at m = 1, 2 by Bloch-sector argument (+m and −m sit in different sectors for m ≠ 0 mod 3 and are related by Z₃).
+- Inter-m mass ratios fall in the range 1.0–3.0 across the explored grid, vs observed inter-generation ratios of 10²–10⁵.
+
+These findings prompted an analytical investigation of whether the absence of compartmentalized band structure is a coverage issue (the sweep was too sparse) or structural (the 2D Hill equation cannot produce it).
+
+### 12.2 The analytical answer: 2D Hill equation structurally rules out the picture
+
+[clover-modes-analytical.md](clover-modes-analytical.md) carries the WKB analysis of the Hill equation's effective potential U(ξ) = k_v²/(R + P_x(u))² in Schrödinger form. The structural findings:
+
+1. **U(ξ) vanishes at k_v = 0.** No localization in the trivial Bloch sector.
+2. **Lobes are wells in U(u), not cavities.** R + P_x is largest at lobe-1 apex, so U is smallest there. Localization in a well *lowers* the eigenvalue below the free continuum — opposite of the "smaller cavity → higher frequency" intuition.
+3. **Saddle troughs are intermediate U-values, not local maxima.** The Hill potential's actual barriers are on the sides of lobes 2 and 3 (where P_x reaches its global minimum). Saddle troughs don't host bound states.
+4. **When lobe-localized bound states do exist** (well depth > HO ground-state energy, achievable at ε ≳ 1.5), they are **lighter** than the lowest plane-wave whole-circumference modes — exactly opposite to the user's hope. Numerical: at ε = 1.5, χ = 1, k_v = 1/3, ω²_lobe ≈ 0.16 vs ω²_wc ≈ 0.55.
+
+**The 2D Hill equation cannot produce the whole-circumference < lobe-localized < saddle-localized hierarchy** by construction. The Phase-3 numerical absence of compartmentalized band structure is not a sparse-sweep artifact; it is the expected result of the structural geometry.
+
+This rules out Mechanism A (three compartments = three generations) and the lobe/saddle-localization parts of Mechanism C (hybrid) **in the 2D-surface interpretation**. Mechanism B (excitation tower) gives at most factor-of-3 mass ratios in 2D — also insufficient. Mechanism D's doublet structure exists at m = 3 but with zero mass split — also insufficient for within-generation flavor mass differences.
+
+### 12.3 The 3D wave-guide extension recovers the qualitative hierarchy
+
+[tube-waveguide.md](tube-waveguide.md) carries the math for the natural extension: treat the corrugated 2-torus as the boundary of a 3D solid torus whose 2D cross-section is the clover-shaped interior region. The compact substrate becomes 3-dimensional rather than 2-dimensional. Modes have an additional transverse quantum number set by the 2D Helmholtz spectrum on the cross-section domain.
+
+The structural findings:
+
+- **The user's hierarchy emerges naturally.** In the 3D wave-guide picture, the lobes are *wider* regions of the cross-section domain and saddles are *narrower* constrictions. Modes confined to smaller cavities have higher frequencies: ω_wc ~ 1/r_max < ω_lobe ~ 1/r_lobe < ω_saddle ~ 1/r_saddle. The user's "smaller cavity → higher frequency" intuition applies correctly here.
+- **Quantitative reach is bounded by cross-section asymmetry.** Mass ratios m_saddle/m_lobe scale as 1/χ. Symmetric clover (χ = 1) gives ratios ~1. Asymmetric clover (χ ~ 0.01) gives ratios ~100. Extreme asymmetry (χ ~ 10⁻⁵) is needed to reach m_t/m_u ≈ 78,000 — structurally implausible.
+- **Plausible regime: gen-1↔gen-2 on the proton sheet, gen-3 cross-sheet.** Mass ratios up to ~10²–10³ are reachable with moderate cross-section asymmetry (χ ~ 0.05–0.001), covering m_s/m_d ≈ 20 and m_b/m_d ≈ 880 cleanly and approaching m_c/m_u ≈ 580. Reaching m_t/m_u ≈ 78,000 on a single sheet exceeds the natural range; the heaviest generation more plausibly lives on a separate sheet in the [metric-binding](../../metric-binding/) framework.
+
+### 12.4 Mechanism reassessment
+
+The four mechanisms re-evaluated under the 2D-vs-3D distinction:
+
+| Mechanism | 2D-surface interpretation | 3D wave-guide interpretation |
+|---|---|---|
+| **A (compartments)** | Refuted — lobes are wells, not cavities; no band separation. | Qualitatively viable — lobes and saddles are cavities of distinct sizes; cross-section Helmholtz spectrum gives the hierarchy. |
+| **B (excitation tower)** | Bounded factor ~3, insufficient. | Same bound for ring-direction excitations; cross-section excitations add 2 more dimensions but still bounded by Bessel-zero ratios (~ few). |
+| **C (hybrid)** | Refuted (inherits A's failure). | Qualitatively viable (inherits 3D-A's compartment picture). |
+| **D (wave count + amplitude focus)** | m = 3 doublet exists but degenerate (zero mass split); m = 1, 2 single eigenstates per Bloch sector. | The cross-section eigenmode spectrum has a Z₃-classification structure; lobe-focused vs saddle-focused doublets exist at all m in the 3D picture, with non-zero splits set by cross-section asymmetry χ. |
+
+The 2D analysis rules out all four mechanisms cleanly. The 3D wave-guide analysis recovers mechanisms A, C, and D qualitatively. Mechanism B (purely-longitudinal tower) remains quantitatively limited.
+
+### 12.5 What is preserved across both analyses
+
+- The per-arc curvature accounting (Q_lobe = +2/3, Q_saddle = −1/3) of [clover-quarks.md §11](clover-quarks.md) is independent of mode-type. It comes from the geometry of the profile and the sign of geodesic curvature, not from the eigenvalue spectrum.
+- The Z₃ Bloch-sector structure is real and forced by the τ = 1/3 twist's boundary identification. It accounts for *three* of *something* on the cross-section.
+- The proton, neutron, and Δ-resonance fits at ε ≈ 0.2 and ε ≈ 0.5 from [clover-mass §6.6, §9.1](clover-mass.md) remain intact within the 2D-surface picture.
+
+### 12.6 What's open
+
+The investigation has produced a structural answer (the 2D-only picture rules out the hierarchy; the 3D extension recovers it qualitatively) but no quantitative spectrum on the corrugated cross-section. Concrete follow-ons:
+
+1. **2D Helmholtz solver for the clover cross-section.** A direct numerical eigenvalue computation of the cross-section's Dirichlet spectrum, with proper 3-fold-symmetry classification, would replace [tube-waveguide.md](tube-waveguide.md)'s disc-approximation estimates with accurate eigenvalues. ~1 day of focused numerical work. This is the natural next instrument for the 3D wave-guide picture.
+2. **Cross-sheet mechanism for gen-3.** Whether the corrugated-clover picture on one sheet supports gen-1 + gen-2 quark masses (m_s/m_d ≈ 20 and m_c/m_u ≈ 580 should be reachable with moderate asymmetry), and gen-3 lives on a separate sheet, is the natural reading. Developing this is downstream metric-binding work.
+3. **Radiation BCs and α-coupling.** The Dirichlet boundary conditions in [tube-waveguide.md](tube-waveguide.md) are a simplification. Replacing them with absorbing BCs at coupling strength α (matching grid's "leakage" mechanism) gives modes as finite-lifetime resonances — same mass scale but with calculable widths.
+4. **Within-generation flavor mass split.** The mechanism D doublet structure (lobe-focused = up-type, saddle-focused = down-type) is degenerate in 2D and acquires non-zero splitting in 3D via cross-section asymmetry. Quantifying this from the 2D Helmholtz spectrum is part of the same follow-on.
+
+### 12.7 What this means for STATUS.md
+
+The Phase 3 outcome is **mixed-signed**, not purely negative:
+
+- **Negative:** the 2D-surface picture (the framework used by clover-quarks / clover-mass §§1–6) structurally cannot host the multi-generation mode hierarchy. This rules out interpreting the framework's existing eigenvalue spectrum as the three-generation source.
+- **Positive:** the 3D wave-guide extension qualitatively recovers the hoped-for hierarchy and reaches gen-1↔gen-2 mass scales naturally. This is a *constructive* finding — the framework can host multi-generation structure, but in an extension not currently implemented numerically.
+- **Open:** quantitative validation requires a 2D Helmholtz solver on the clover cross-section. This is a tractable next step.
+
+Phase 4 should be reframed around the 3D wave-guide extension rather than the original "cross-sheet generations as the only path" reading. The cross-sheet reading remains the natural home for gen-3, but gen-2 may yet live on the proton sheet via the 3D extension.

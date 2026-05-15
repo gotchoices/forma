@@ -22,10 +22,20 @@ Usage:
                                           [--k-v K1,K2,...]
                                           [--n-grid N] [--n-eigenvalues NE]
                                           [--compare]
+                                          [--sweep-chi CHI_MIN,CHI_MAX,N]
 
 Outputs:
     outputs/spectrum_eps<E>_chi<C>.csv
     outputs/spectrum_eps<E>_chi<C>.png (if --compare)
+    outputs/spectrum_chi_sweep_eps<E>_sigma<S>*.{csv,png} (if --sweep-chi)
+
+Scope note: this script solves the 1D Hill equation from the 2D-surface
+picture. Per work/clover-modes-analytical.md and work/3-gen.md §12, the
+2D-surface picture structurally rules out the lobe/saddle mass-hierarchy
+question. The natural follow-on for the 3D wave-guide picture (the extension
+that does support the hierarchy qualitatively — see work/tube-waveguide.md)
+is a separate 2D Helmholtz solver for the clover-shaped cross-section
+domain, not yet implemented.
 """
 
 from __future__ import annotations
@@ -44,7 +54,8 @@ from lib.geometry import ProfileParams, profile
 
 
 def hill_eigenvalues(k_v: float, eps: float, chi: float, N: int, n_eigs: int,
-                     sigma: float = 0.0, tau: float = 1.0 / 3.0) -> np.ndarray:
+                     sigma: float = 0.0, tau: float = 1.0 / 3.0,
+                     return_eigvecs: bool = False):
     """Lowest n_eigs eigenvalues μ² of the Hill operator at k_v, with
     correct Bloch sector restriction.
 
@@ -92,7 +103,9 @@ def hill_eigenvalues(k_v: float, eps: float, chi: float, N: int, n_eigs: int,
         raise ValueError(f"k_v = {k_v} not of form q/3 for integer q")
     q_int = int(round(q_int))
 
-    P_max = max(10, n_eigs + 5)
+    # Need ≥ n_eigs modes in the Bloch sector. Sector density is 1/3 of integers,
+    # so P_max ≥ (3 n_eigs + 5) / 2 ensures the sector has at least n_eigs+1 modes.
+    P_max = max(15, 2 * n_eigs + 5)
     p_values = [p for p in range(-P_max, P_max + 1)
                 if (p - q_int) % 3 == 0]
     n_modes = len(p_values)
@@ -142,6 +155,14 @@ def hill_eigenvalues(k_v: float, eps: float, chi: float, N: int, n_eigs: int,
             M[i, j] = coef(M_coefs, kappa)
 
     # Solve generalized eigenvalue (Hermitian)
+    if return_eigvecs:
+        eigs, vecs = sla.eigh(K, M)
+        order = np.argsort(eigs.real)
+        eigs_sorted = eigs.real[order][:n_eigs]
+        vecs_sorted = vecs[:, order][:, :n_eigs]
+        # Return eigenvalues, eigenvectors (in Fourier basis), and the p_values
+        # so downstream code can evaluate ψ(u) = Σ_p c_p e^{ipu}.
+        return eigs_sorted, vecs_sorted, np.array(p_values, dtype=int)
     eigs = sla.eigh(K, M, eigvals_only=True)
     return np.sort(eigs.real)[:n_eigs]
 
@@ -165,6 +186,84 @@ def predicted_zeroth_order(k_v: float, eps: float, n_eigs: int,
     return np.array(predicted[:n_eigs])
 
 
+def run_chi_sweep(args, eps: float, sigma: float, tau: float,
+                  k_v_values: list) -> None:
+    """χ-sweep: compute the lowest --n-eigenvalues at each χ in a range,
+    for each requested k_v. Writes one CSV per k_v plus a combined plot.
+
+    Per work/3-gen.md §9.1, the χ-sweep is the cheapest first probe of
+    cross-section band structure. Watch for:
+      - Eigenvalue clustering (lobe-localized band splitting off from the
+        whole-circumference continuum as χ grows)
+      - Avoided crossings between Bloch sectors
+      - Saddle-localized band emergence at higher energy
+    """
+    parts = args.sweep_chi.split(",")
+    if len(parts) != 3:
+        raise SystemExit(
+            f"--sweep-chi expects 'CHI_MIN,CHI_MAX,N_STEPS', got {args.sweep_chi!r}"
+        )
+    chi_min = float(parts[0])
+    chi_max = float(parts[1])
+    n_steps = int(parts[2])
+    chi_values = np.linspace(chi_min, chi_max, n_steps)
+
+    print(f"χ-sweep: ε={eps}, σ={sigma}, τ={tau}, χ ∈ [{chi_min}, {chi_max}] "
+          f"in {n_steps} steps, N_grid={args.n_grid}, n_eigs={args.n_eigenvalues}")
+    print(f"  k_v values: {k_v_values}")
+    print()
+
+    args.outputs_dir.mkdir(parents=True, exist_ok=True)
+
+    # One CSV per k_v; one PNG showing all on same plot.
+    csv_paths = []
+    fig, axes = plt.subplots(1, len(k_v_values), figsize=(5 * len(k_v_values), 6),
+                              squeeze=False)
+    for col, k_v in enumerate(k_v_values):
+        eigs_matrix = np.zeros((n_steps, args.n_eigenvalues))
+        for i, chi in enumerate(chi_values):
+            try:
+                e = hill_eigenvalues(k_v, eps, chi, args.n_grid, args.n_eigenvalues,
+                                      sigma=sigma, tau=tau)
+            except ValueError as exc:
+                print(f"  χ={chi:.4f}: skipped ({exc})")
+                eigs_matrix[i, :] = np.nan
+                continue
+            eigs_matrix[i, :] = e
+        # CSV
+        csv_path = (args.outputs_dir
+                    / f"spectrum_chi_sweep_eps{eps:.2f}_sigma{sigma:.3f}"
+                      f"_kv{k_v:.4f}.csv")
+        with open(csv_path, "w") as f:
+            header = ["chi"] + [f"mu2_{i}" for i in range(args.n_eigenvalues)]
+            f.write(",".join(header) + "\n")
+            for chi, row in zip(chi_values, eigs_matrix):
+                f.write(f"{chi:.6f}," + ",".join(f"{e:.8f}" for e in row) + "\n")
+        csv_paths.append(csv_path)
+        print(f"  k_v={k_v:.4f}: wrote {csv_path.name}")
+
+        # Plot all eigenvalues vs χ
+        ax = axes[0, col]
+        for j in range(args.n_eigenvalues):
+            ax.plot(chi_values, eigs_matrix[:, j], "-", linewidth=1.2,
+                    alpha=0.8, label=f"μ²_{j}")
+        ax.set_xlabel("χ = r_saddle / r_lobe")
+        ax.set_ylabel("μ² (dimensionless, R=1 units)")
+        ax.set_title(f"k_v = {k_v:.4f}  (ε={eps}, σ={sigma:.3g}, τ={tau:.3g})")
+        ax.set_yscale("log")
+        ax.grid(True, alpha=0.3)
+        if col == 0:
+            ax.legend(loc="best", fontsize=7, ncol=2)
+
+    fig.suptitle(f"Hill-equation spectrum vs χ  "
+                 f"(ε={eps}, σ={sigma}, τ={tau:.4f})", fontsize=12)
+    fig.tight_layout()
+    plot_path = (args.outputs_dir
+                 / f"spectrum_chi_sweep_eps{eps:.2f}_sigma{sigma:.3f}.png")
+    fig.savefig(plot_path, dpi=120, bbox_inches="tight")
+    print(f"  Saved combined plot: {plot_path.name}")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--epsilon", type=float, default=0.5,
@@ -186,6 +285,13 @@ def main() -> None:
                         help="Lowest N eigenvalues to compute per k_v. Default 6.")
     parser.add_argument("--compare", action="store_true",
                         help="Generate comparison plot vs zeroth-order analytical formula.")
+    parser.add_argument("--sweep-chi", type=str, default="",
+                        help="χ-sweep mode: pass 'CHI_MIN,CHI_MAX,N_STEPS' "
+                        "(e.g. '0.1,5.0,50'). Sweeps χ and plots the lowest "
+                        "--n-eigenvalues eigenvalues at each k_v from --k-v. "
+                        "Outputs spectrum_chi_sweep_*.csv and .png. Per "
+                        "work/3-gen.md §9 — looks for band structure / "
+                        "localized-mode emergence as χ increases.")
     parser.add_argument("--outputs-dir", type=Path,
                         default=Path(__file__).resolve().parents[1] / "outputs")
     args = parser.parse_args()
@@ -196,6 +302,10 @@ def main() -> None:
     tau = args.tau
     k_v_values = [float(x) for x in args.k_v.split(",")]
     eta = eps / (2.0 + chi)
+
+    if args.sweep_chi:
+        run_chi_sweep(args, eps, sigma, tau, k_v_values)
+        return
 
     print(f"Hill spectrum: ε={eps}, χ={chi}, σ={sigma}, τ={tau}, "
           f"N={args.n_grid}, n_eigs={args.n_eigenvalues}")
