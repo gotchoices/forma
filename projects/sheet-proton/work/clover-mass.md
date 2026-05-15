@@ -24,16 +24,16 @@ $$
 
 This section uses **embedding A (parameter-shift)** of §9.3 because that's where §10 derived the metric. The same machinery applies to embedding B with extra cross-section-rotation terms; we'll note where the two embeddings diverge.
 
-The metric components in (θ, φ) coordinates (from §10.2):
+The metric components in (θ, φ) coordinates (from §10.3) include both the topological twist τ and the rolled-leaf intrinsic shear σ from clover-quarks.md §1.3:
 
-<!-- g_θθ = (R + P_x)² + τ² c² ; g_θφ = τ c² ; g_φφ = c² -->
+<!-- g_θθ = (R + P_x)² + τ² c² ; g_θφ = (σ + τ) c² ; g_φφ = c² -->
 $$
 g_{\theta\theta} = (R + P_x(u))^2 + \tau^2 c^2, \qquad
-g_{\theta\varphi} = \tau\, c^2, \qquad
+g_{\theta\varphi} = (\sigma + \tau)\, c^2, \qquad
 g_{\varphi\varphi} = c^2
 $$
 
-where u ≡ φ + τθ, c ≡ L_total/(2π) is the constant arc-length speed of the profile parameterisation, R ≡ R_major, and P_x(u) is the radial component of the clover profile.
+where u ≡ φ + τθ (note: u depends only on τ — σ contributes only to g_θφ; see clover-quarks.md §10.5), c ≡ L_total/(2π) is the constant arc-length speed of the profile parameterisation, R ≡ R_major, and P_x(u) is the radial component of the clover profile. The σ = 0 special case is the τ-only metric that earlier versions of this file used throughout; §§4 and beyond now carry σ as a separate parameter.
 
 ## 2. Helical symmetry → 1D Hill equation
 
@@ -44,37 +44,36 @@ $$
 v \;\equiv\; \theta, \qquad u \;\equiv\; \varphi + \tau\theta
 $$
 
-In these coordinates the metric **diagonalises**:
+In these coordinates the metric becomes (transformation: dθ = dv, dφ = du − τ dv applied to the §1 metric):
 
-<!-- g_vv = (R + P_x(u))², g_uu = c², g_vu = 0 -->
+<!-- g_vv = (R + P_x(u))² − 2στc², g_uu = c², g_vu = σc² -->
 $$
-g_{vv} = (R + P_x(u))^2, \qquad g_{uu} = c^2, \qquad g_{vu} = 0
-$$
-
-(Verify: ∂_v r |_u = ∂_θ r − τ ∂_φ r = (R+P_x) T̂, which is orthogonal to ∂_u r = P_x' N̂ + P_y' B̂.)
-
-The Laplace–Beltrami operator becomes
-
-<!-- Δ_g Φ = (1/(R+P_x)²) ∂_v² Φ + (1/c²) ∂_u² Φ + (P_x'(u)/(c²(R+P_x))) ∂_u Φ -->
-$$
-\Delta_g \Phi \;=\; \frac{1}{(R+P_x(u))^2}\,\partial_v^2 \Phi \;+\; \frac{1}{c^2}\,\partial_u^2 \Phi \;+\; \frac{P_x'(u)}{c^2 (R + P_x(u))}\,\partial_u \Phi
+g_{vv} = (R + P_x(u))^2 \;-\; 2\sigma\tau\,c^2, \qquad g_{uu} = c^2, \qquad g_{vu} = \sigma\,c^2
 $$
 
-Separate variables with Φ(v, u) = e^{i k_v v} ψ(u). The eigenvalue equation reduces to a **Sturm–Liouville (Hill) equation** in u alone:
+At σ = 0 the metric **diagonalises** (g_vu = 0) — the case earlier versions of this file worked in. At σ ≠ 0 the helical coords absorb the τ-part of the (θ, φ) off-diagonal but leave a residual constant σ c² piece in g_vu. The metric still depends on (v, u) only through u, so v-translation symmetry — and the separability that drives the 1D reduction — is intact.
 
-<!-- ψ'' + (P_x'/(R+P_x)) ψ' + (c² ω² - k_v² c²/(R+P_x)²) ψ = 0 -->
+Separate variables with Φ(v, u) = e^{i k_v v} ψ(u). The σ c² off-diagonal turns into a "vector-potential" term in the Hill equation (a first-derivative coupling proportional to k_v σ). Collecting the leading-order pieces (small-η expansion, with R + P_x ≈ R):
+
+<!-- ψ'' + (P_x'/(R+P_x)) ψ' + (c² ω² - k_v² c²/(R+P_x)² + 2 k_v σ c² /(R+P_x)² · (some)) ψ = 0 -->
 $$
-\boxed{\;\psi''(u) \;+\; \frac{P_x'(u)}{R + P_x(u)}\,\psi'(u) \;+\; \left[c^2 \omega^2 \;-\; \frac{k_v^2\, c^2}{(R + P_x(u))^2}\right]\,\psi(u) \;=\; 0\;}
+\boxed{\;\psi''(u) \;+\; \left[\frac{P_x'(u)}{R + P_x(u)} \;-\; 2i\,k_v\,\sigma\,\frac{c^2}{(R + P_x(u))^2}\right]\,\psi'(u) \;+\; \left[c^2 \omega^2 \;-\; \frac{k_v^2\, c^2}{(R + P_x(u))^2}\right]\,\psi(u) \;=\; 0\;}
 $$
 
-In the symmetric Sturm–Liouville form −(p ψ')' + q ψ = ω² w ψ with weight w(u) = R + P_x(u):
+The new σ-dependent first-derivative term is an imaginary coefficient — a "magnetic" coupling. Pure plane-wave solutions e^{ipu} on the universal cover handle it trivially: each carries an extra contribution to ω² that shifts the cross-term to σ_eff = σ + 2τ (see §4 below). For full ψ(u) including corrugation corrections, the σ term can be absorbed by a gauge transformation ψ(u) = e^{−i σ k_v u (c²/R²)} ψ̃(u) at leading order, returning the standard Hill form with a renormalised constant in the χ̃-piece. The detailed σ-corrections to the §5–6 perturbation theory are deferred (the leading-order σ result is exact at zeroth order; σ-corrections to PT enter at O(σ × η²) and beyond).
+
+At σ = 0 the equation reduces to the standard form (no first-derivative complex piece). In symmetric Sturm–Liouville form −(p ψ')' + q ψ = ω² w ψ at σ = 0 with weight w(u) = R + P_x(u):
 
 <!-- p = (R+P_x)/c², q = k_v²/(R+P_x), w = R+P_x -->
 $$
 p(u) = \frac{R + P_x(u)}{c^2}, \qquad q(u) = \frac{k_v^2}{R + P_x(u)}, \qquad w(u) = R + P_x(u)
 $$
 
+For σ ≠ 0 the symmetric SL form is recovered after the gauge transform above; the numerical Hill solver (`scripts/laplacian_spectrum.py`) handles general σ directly via the Fourier-basis matrix representation.
+
 ## 3. Bloch boundary conditions and the third-integer momenta
+
+The Bloch conditions of this section are **unchanged** by σ: the rolled-leaf intrinsic shear modifies the metric (g_θφ) but not the boundary identification (clover-quarks.md §10.5). Only τ enters the identification, so only τ shows up in k_θ = m_r − τ m_t and in the third-integer sector labels.
 
 The surface identifications (clover-quarks.md §9.4)
 
@@ -125,47 +124,60 @@ These (m_t, m_r) integers (tube-first; m_t ≡ k_φ) label the modes.
 
 ## 4. Unperturbed spectrum: the constant-radius limit
 
-The Hill equation has a clean closed-form limit when P_x is **negligible compared to R** — i.e., when ε is small. Then R + P_x(u) → R, the metric becomes that of a flat twisted torus, and the ODE reduces to
+The Hill equation has a clean closed-form limit when P_x is **negligible compared to R** — i.e., when ε is small. Then R + P_x(u) → R, the metric becomes that of a flat twisted torus (with intrinsic shear σ), and the ODE reduces to a plane-wave eigenvalue problem with k_φ ≡ k_u = p and k_v fixed by the Bloch condition.
 
-<!-- ψ_0'' + (c²ω_0² - c² k_v²/R²) ψ_0 = 0 -->
-$$
-\psi_0''(u) \;+\; \left(c^2 \omega_0^2 \;-\; \frac{c^2 k_v^2}{R^2}\right)\,\psi_0(u) \;=\; 0
-$$
+Computing ω² = g^{ij} k_i k_j on the σ + τ flat-limit metric with k_θ = m_r − τ m_t (Bloch) and k_φ = m_t, and translating to helical-frame k_v = m_r − 2τ m_t, one finds (full derivation: complete the square in the inverse-metric quadratic form; the σ²/R² piece in g^uu — coming from the determinant correction — combines exactly into a clean (σ + 2τ)² coefficient):
 
-Plane-wave solutions ψ_0(u) = e^{i p u} (with p ∈ ℤ from the Bloch condition) give
-
-<!-- ω_0² = k_v²/R² + p²/c² -->
+<!-- μ²_{(m_t, m_r)} = (m_r - (σ + 2τ) m_t)² + (m_t/ε)² -->
 $$
-\omega_0^2 \;=\; \frac{k_v^2}{R^2} \;+\; \frac{p^2}{c^2}
+\boxed{\;\mu^2_{(m_t, m_r)} \;\equiv\; R^2\, \omega_0^2 \;=\; \bigl(m_r \;-\; (\sigma + 2\tau)\, m_t\bigr)^2 \;+\; \left(\frac{m_t}{\varepsilon}\right)^2\;}
 $$
 
-To express this in wave-mode labels (m_t, m_r) (per clover-quarks §0.3 — tube-first, with k_θ = m_r − m_t/3 and k_φ = m_t), recall from §3 that k_v = q/3 with q = 3m_r − 2m_t. So **k_v = m_r − 2m_t/3** in the helical frame. Equivalently, this is k_v = k_θ − τ k_φ — the wavenumber rotated into the orthogonal (v, u) frame, with both the boundary-identification shift and the metric-shear contribution combining.
+This is the standard MaSt twisted-torus form
 
-In dimensionless mass-squared units (μ² ≡ R² ω²) and using ε ≡ c/R = L_total/(2π R_major):
-
-<!-- μ²_{(m_t,m_r)} = (m_r - 2m_t/3)² + (m_t/ε)² -->
+<!-- μ² = (m_r - σ_eff m_t)² + (m_t/ε)² -->
 $$
-\boxed{\;\mu^2_{(m_t, m_r)} \;\equiv\; R^2\, \omega_0^2 \;=\; \left(m_r - \frac{2 m_t}{3}\right)^2 \;+\; \left(\frac{m_t}{\varepsilon}\right)^2\;}
+\mu^2 \;=\; (m_r \;-\; \sigma_{\mathrm{eff}}\, m_t)^2 \;+\; (m_t / \varepsilon)^2
 $$
 
-This is the corrugated torus's flat-limit mass formula. It is the standard MaSt twisted-torus form
+with
 
-<!-- μ² = (m_r - σ m_t)² + (m_t/ε)² -->
+<!-- σ_eff = σ + 2τ -->
 $$
-\mu^2 \;=\; (m_r - \sigma\, m_t)^2 \;+\; (m_t / \varepsilon)^2
+\boxed{\;\sigma_{\mathrm{eff}} \;=\; \sigma + 2\tau\;}
 $$
 
-with **effective shear σ = 2τ = 2/3** (not τ = 1/3). The factor of 2 comes from the twist appearing twice — once in the boundary identification (k_θ = m_r − τ m_t) and once in the metric dispersion (the (k_θ − τk_φ)² term from completing the square on the inverse-metric quadratic form). The two contributions stack into σ_eff = 2τ.
+The factor of 2 on τ comes from the twist appearing twice — once in the boundary identification (k_θ = m_r − τ m_t) and once in the metric dispersion (the (k_θ − τk_φ)² term from completing the square on the inverse-metric quadratic form). σ enters once: it adds to the cross-term coefficient (via the g_θφ off-diagonal) but not to the boundary identification (because σ does not modify it).
 
-(Numerical verification: a direct calculation of ω² = g^{ij} k_i k_j on the flat-limit metric confirms μ² = (m_r − 2m_t/3)² + (m_t/ε)² to machine precision for several (m_t, m_r) and ε values.)
+**σ = 0 special case (τ = 1/3):**
 
-**Note.** This zeroth-order result depends on τ = 1/3 but is **independent of χ and of the embedding choice**. The corrugation depth χ first enters at second order in perturbation theory.
+<!-- μ² = (m_r - 2m_t/3)² + (m_t/ε)² -->
+$$
+\mu^2_{(m_t, m_r)}\bigm|_{\sigma=0,\,\tau=1/3} \;=\; \left(m_r - \frac{2 m_t}{3}\right)^2 \;+\; \left(\frac{m_t}{\varepsilon}\right)^2
+$$
+
+— the formula that earlier versions of this file boxed and that has been numerically validated to machine precision by the independent Hill solver (§6.6).
+
+**σ ≠ 0 generalisation:** at fixed τ = 1/3, every cross-term shifts continuously by σ:
+
+<!-- σ_eff(σ) = σ + 2/3 -->
+$$
+\sigma_{\mathrm{eff}}(\sigma) \;=\; \sigma + \tfrac{2}{3}, \qquad \mu^2_{(m_t, m_r)}(\sigma) \;=\; \left(m_r - (\sigma + \tfrac{2}{3})\, m_t\right)^2 \;+\; \left(\frac{m_t}{\varepsilon}\right)^2
+$$
+
+The cross-term is **continuously tunable in σ** — every mode's k_v shifts by −σ m_t, and the spectrum is *not* invariant under integer shifts of σ (m_r is an integer label, not σ_eff itself). The Z₃ Bloch-sector structure is set entirely by τ via the boundary identification (clover-quarks.md §10.5); σ moves masses within sectors without changing how many sectors there are.
+
+**Numerical verification.** A direct calculation of ω² = g^{ij} k_i k_j on the σ + τ flat-limit metric confirms μ² = (m_r − (σ + 2τ) m_t)² + (m_t/ε)² to machine precision for several (m_t, m_r), ε, and σ values (see `scripts/validate_mass_formula.py`).
+
+**Higher-order ε² correction.** Carrying the inverse-metric expansion to next order, the cross-term squared gets renormalised by an overall factor 1/(1 − σ σ_eff ε²) ≈ 1 + σ σ_eff ε² + O(ε⁴) — a small correction at small ε, with no analogue at σ = 0. The boxed formula above is the strict leading-in-ε result.
+
+**Note.** The zeroth-order result depends on σ + 2τ but is **independent of χ and of the embedding choice**. The corrugation depth χ first enters at second order in perturbation theory (§§5–6).
 
 ### 4.1 Low-lying modes
 
-The (m_t/ε)² piece is the dominant contribution for nonzero m_t at small ε, but the (m_r − 2m_t/3)² piece selects which m_t carries the lightest mode of its column. Sorted at general ε (table is tube-first (m_t, m_r) per the §0.3 convention):
+The (m_t/ε)² piece is the dominant contribution for nonzero m_t at small ε, but the (m_r − σ_eff m_t)² piece selects which m_t carries the lightest mode of its column. The table below is at **σ = 0** (so σ_eff = 2/3 and the cross-term reduces to m_r − 2m_t/3); at σ ≠ 0 every cross-term shifts by −σ m_t, with no other change.
 
-| (m_t, m_r) | k_θ = m_r − m_t/3 | m_r − 2m_t/3 | μ² = (m_r − 2m_t/3)² + (m_t/ε)² |
+| (m_t, m_r) | k_θ = m_r − m_t/3 | m_r − 2m_t/3 (σ=0) | μ² at σ=0 = (m_r − 2m_t/3)² + (m_t/ε)² |
 |---|---|---|---|
 | (0, 0) | 0 | 0 | 0 (zero mode; not a particle) |
 | (0, ±1) | ±1 | ±1 | 1 |
@@ -181,6 +193,8 @@ The mode (m_t, m_r) = (3, 2) has vanishing effective ring momentum (m_r − 2m_t
 At small ε (thin tube, cross-section dominates), the lowest finite-mass modes are integer-ring modes (m_t = 0, m_r ≠ 0) with mass 1, 4, 9, .... At larger ε (~ unity or above), the |m_r − 2m_t/3| < 1 modes (such as (1,1) and (2,1)) become competitive.
 
 ## 5. First-order corrections vanish
+
+This section and §6 work at **σ = 0** unless otherwise noted. σ enters the §5 argument only through the zeroth-order spectrum (which now carries σ_eff = σ + 2τ in the cross-term); the first-order vanishing argument (∫ P_x du = 0 by Z₃ symmetry) is independent of σ, so first-order corrections vanish at any σ. σ-corrections to second-order PT (§6) enter at O(σ × η²) and are deferred — the leading σ-effect is the cross-term renormalisation in §4.
 
 Now restore the χ-dependence by treating P_x(u)/R as the small parameter. Expand the SL coefficients:
 

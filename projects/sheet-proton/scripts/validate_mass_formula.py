@@ -5,16 +5,20 @@ This script does NOT use the analytical mass formula or perturbation-theory
 result to compute anything. It only uses them as COMPARISON TARGETS.
 
 It runs the numerical Hill-equation eigensolver from laplacian_spectrum.py at
-several (ε, χ) points and checks four claims:
+several (ε, χ) points and checks five claims:
 
   C1. The lowest eigenvalues at k_v = q/3 match the third-integer momentum
       structure of the boundary condition.
   C2. At small η = ε/(2+χ), the lowest eigenvalues converge to the
-      zeroth-order formula μ² = (m_r - 2 m_t/3)² + (m_t/ε)².
+      zeroth-order formula μ² = (m_r - 2 m_t/3)² + (m_t/ε)² (σ = 0 case).
   C3. The χ-dependence at fixed ε is O(η²) (not O(η)) — first-order
       perturbations vanish.
   C4. The numerical second-order shift δ²μ²(n, m, ε, χ) matches the analytical
       sum -1/(2+χ)² · Σ |ã_q|² (mq - 2ε²k_v²)² / (q(2m+q)).
+  C6. At nonzero rolled-leaf shear σ and small η, μ² matches the σ-generalised
+      zeroth-order formula (k_v − σ p)² + (p/ε)² — equivalently
+      (m_r − (σ + 2τ) m_t)² + (m_t/ε)² in (m_t, m_r) labels. Validates the
+      Phase 1/2 σ + τ generalisation of clover-mass.md §§1–4.
 
 Outputs a written report and exit code 0 = all pass, 1 = at least one fail.
 
@@ -35,12 +39,14 @@ from laplacian_spectrum import hill_eigenvalues
 from lib.geometry import ProfileParams, profile
 
 
-def predicted_zeroth(k_v: float, eps: float, n_eigs: int = 8) -> np.ndarray:
-    """μ² = k_v² + (p/ε)² for integer p in the Bloch sector
-    p ≡ q (mod 3), q = 3·k_v. Sorted ascending."""
+def predicted_zeroth(k_v: float, eps: float, n_eigs: int = 8,
+                     sigma: float = 0.0) -> np.ndarray:
+    """μ² = (k_v − σ p)² + (p/ε)² for integer p in the Bloch sector
+    p ≡ q (mod 3), q = 3·k_v. Sorted ascending. σ = 0 recovers the
+    original τ-only formula."""
     q = int(round(3 * k_v))
     p_range = [p for p in range(-30, 31) if (p - q) % 3 == 0]
-    return np.array(sorted([k_v**2 + (p / eps) ** 2 for p in p_range])[:n_eigs])
+    return np.array(sorted([(k_v - sigma * p) ** 2 + (p / eps) ** 2 for p in p_range])[:n_eigs])
 
 
 def fourier_coeffs(chi: float, n_max: int = 30, N: int = 12000) -> dict:
@@ -68,10 +74,11 @@ def predicted_second_order(m_t: int, m_r: int, eps: float, chi: float) -> float:
 
 
 def lowest_eig_for_kv_with_target(eps: float, chi: float, k_v: float,
-                                   p_target: int, N_grid: int) -> float:
+                                   p_target: int, N_grid: int,
+                                   sigma: float = 0.0) -> float:
     """Numerical μ² at k_v, picking the eigenvalue closest to the predicted p_target."""
-    eigs = hill_eigenvalues(k_v, eps, chi, N_grid, n_eigs=10)
-    expected = k_v**2 + (p_target / eps) ** 2
+    eigs = hill_eigenvalues(k_v, eps, chi, N_grid, n_eigs=10, sigma=sigma)
+    expected = (k_v - sigma * p_target) ** 2 + (p_target / eps) ** 2
     # Pick the eigenvalue closest to expected — for low-mode identification
     idx = int(np.argmin(np.abs(eigs - expected)))
     return float(eigs[idx])
@@ -255,6 +262,48 @@ def test_proton_neutron_inversion(N_grid: int) -> tuple[bool, str]:
     return len(best) == 0, "\n".join(msg)
 
 
+def test_sigma_dependence(N_grid: int) -> tuple[bool, str]:
+    """C6: at small η, numerical μ²(σ) matches (k_v − σ p)² + (p/ε)²
+    for several σ values, validating the rolled-leaf σ generalisation of
+    the zeroth-order formula (work/clover-mass.md §4)."""
+    msg = []
+    msg.append("[C6] σ-dependence of zeroth-order spectrum:")
+    msg.append("  Test: at small η, numerical μ²(σ) should match (k_v − σ p)² + (p/ε)²")
+    msg.append("  for several σ values. σ enters the cross-term as σ_eff = σ + 2τ in (m_t, m_r) labels.")
+    msg.append("")
+    msg.append(f"  {'σ':>5}  {'ε':>5}  {'χ':>5}  {'η':>6}  {'k_v':>7}  {'p':>3}  "
+               f"{'μ²_num':>12}  {'μ²_pred':>12}  {'rel err':>10}  {'verdict':>8}")
+    all_pass = True
+    # Small η for clean comparison; sweep σ.
+    cases = [
+        # (σ, ε, χ, k_v, p_target)
+        (0.00, 0.05, 1.0, 1.0/3.0, 1),
+        (0.05, 0.05, 1.0, 1.0/3.0, 1),
+        (0.10, 0.05, 1.0, 1.0/3.0, 1),
+        (0.20, 0.05, 1.0, 1.0/3.0, 1),
+        (0.30, 0.05, 1.0, 1.0/3.0, 1),
+        (0.10, 0.05, 1.0, 2.0/3.0, 2),
+        (0.10, 0.10, 1.0, 1.0/3.0, 1),  # slightly larger η
+    ]
+    for sigma, eps, chi, k_v, p in cases:
+        eta = eps / (2.0 + chi)
+        e_num = lowest_eig_for_kv_with_target(eps, chi, k_v, p, N_grid, sigma=sigma)
+        e_pred = (k_v - sigma * p) ** 2 + (p / eps) ** 2
+        rel_err = abs(e_num - e_pred) / max(e_pred, 1e-10)
+        # Threshold: η² accuracy plus σ²ε² correction; allow modest headroom.
+        threshold = max(5 * eta**2, 5 * (sigma * eta) ** 2, 1e-5)
+        ok = rel_err < threshold
+        all_pass = all_pass and ok
+        msg.append(f"  {sigma:5.2f}  {eps:5.2f}  {chi:5.2f}  {eta:6.4f}  {k_v:7.4f}  "
+                   f"{p:3d}  {e_num:12.6f}  {e_pred:12.6f}  {rel_err:10.2e}  "
+                   f"{('PASS' if ok else 'FAIL'):>8}")
+    msg.append("")
+    msg.append("  Note: in (m_t, m_r) wave-mode labels with k_v = m_r − 2τ m_t and p = m_t,")
+    msg.append("  the formula (k_v − σ p)² + (p/ε)² rewrites as (m_r − (σ+2τ) m_t)² + (m_t/ε)²,")
+    msg.append("  giving the rolled-leaf σ_eff = σ + 2τ generalisation of the τ-only cross-term.")
+    return all_pass, "\n".join(msg)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--n-grid", type=int, default=256,
@@ -270,6 +319,7 @@ def main() -> None:
         test_first_order_vanishes,
         test_second_order_formula,
         test_proton_neutron_inversion,
+        test_sigma_dependence,
     ]:
         ok, report = test_fn(args.n_grid)
         print(report)
