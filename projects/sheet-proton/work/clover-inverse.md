@@ -19,11 +19,23 @@ Three feature types arranged with 3-fold rotational symmetry (D₃):
 
 | Feature | Count | Type | Angular extent | Per-arc charge Q |
 |---|---|---|---|---|
-| Outer lobe | 3 | convex (sign +1) | 240° | +2/3 |
-| Inner lobe | 3 | concave (sign −1) | 240° | −2/3 |
+| Outer lobe | 3 | convex (sign +1) | θ_lobe | +θ_lobe/360° |
+| Inner lobe | 3 | concave (sign −1) | θ_lobe | −θ_lobe/360° |
 | Connector | 6 | convex (sign +1) | 60° | +1/6 |
 
-Total ∫κ ds: 3·(+240°) + 3·(−240°) + 6·(+60°) = **+360° = 2π** ✓ simple closed plane curve.
+The outer- and inner-lobe extents are **equal in V2 by construction** (otherwise their geodesic-curvature contributions wouldn't cancel and the connectors couldn't carry the full closure budget). Because their contributions to ∫κ ds cancel exactly, the 6 connectors must together sum to the full 360° — i.e. each connector is **60° independent of θ_lobe**:
+
+  ∫κ ds = 3·(+θ_lobe) + 3·(−θ_lobe) + 6·(+60°) = **+360° = 2π** ✓
+
+This leaves θ_lobe ∈ (0°, 360°) as the one free angular parameter. Notable values:
+
+| θ_lobe | Construction reads as |
+|---|---|
+| ≈ 360° | outer arcs wrap nearly-full circles; geometry becomes singular (lobes nearly-closed loops touching only at connectors). |
+| 240° | the **canonical V2** as documented in §1.3 (outer and inner lobes are 240° each; saddle complex = inner + 2 connectors = −240° + 120° = −120° → Q = −1/3, matching V1's saddle). |
+| 120° | each inner lobe is a 120° concave arc — geometrically *identical* to a V1 simple saddle. But the 6 × 60° connectors are still present, so the construction is *not* identical to V1: V1 has zero-extent connectors, V2 at θ_lobe = 120° has six. The per-feature charges also change (Q_outer = +1/3, Q_saddle_complex = 0), so this is a distinct geometry with a different charge pattern. |
+
+The canonical V2 in the rest of this file uses θ_lobe = 240°. The angle is fixed there because the saddle-complex charge analysis of §3.1 requires it. Other θ_lobe values give different per-feature charges and would represent different physics. Implementations of θ_lobe ≠ 240° additionally require regenerating the tangency math in §1.2 — the radii constraints change with the angle.
 
 ### 1.2 Placement and radii
 
@@ -108,21 +120,24 @@ The per-arc charges Q = (1/2π) ∫_arc κ ds depend only on the angular extent 
   Q_inner = (1/2π) × (−1/r_inner) × (240° · r_inner / 180° · π) = **−240°/360° = −2/3**
   Q_conn  = (1/2π) × (1/r_conn) × (60° · r_conn / 180° · π) = **+60°/360° = +1/6**
 
-**Comparison with V1:**
+### 3.1 The "saddle complex" reading: inner lobe + 2 flanking connectors
 
-| Feature | V1 charge | V2 charge | Standard model? |
+The natural V2 grouping is not "each arc one charge" but "each contiguous concave region one charge." A V2 saddle complex consists of one inner-lobe arc flanked by two connectors (one on each side, since 6 connectors pair off between 3 inner-lobes). The complex's net angular sweep:
+
+  Q_saddle_complex = Q_inner + 2 · Q_conn = (−240° + 2 · 60°) / 360° = **−120°/360° = −1/3**
+
+This matches the V1 saddle's charge exactly. Under this grouping the V2 cross-section has three +2/3 outer lobes alternating with three −1/3 saddle complexes — the same charge structure as V1, just with three independently-tuneable radii instead of two.
+
+| Feature | V1 charge | V2 charge (grouped) | Standard model |
 |---|---|---|---|
-| Outer lobe | +2/3 (V1 lobe) | +2/3 | matches up-type |
-| Inner lobe | −1/3 (V1 saddle) | **−2/3** | matches up-type anti, not down |
-| Connector | n/a | +1/6 | non-standard |
+| Outer lobe | +2/3 (V1 lobe) | +2/3 | up-type quark |
+| Saddle complex | −1/3 (V1 saddle) | −1/3 (= inner + 2 connectors) | down-type quark |
 
-V2's inner lobe carries charge **−2/3**, which doesn't directly map to a Standard Model quark (down-type quarks have −1/3, anti-up-type have −2/3). Interpretations to consider:
+The +1/6 per-connector charge is not a separate particle assignment; it is a fragment of the saddle complex's −1/3 winding that happens to be visible at the per-arc level. Half-arc decompositions of the V1 saddle have the same property.
 
-- **Anti-up reading.** Inner lobe = anti-quark of an up-type quark. Combined with the +2/3 outer lobe, V2 might represent a meson-like substrate (uū pair) rather than a quark-content substrate.
-- **Half-arc decomposition.** If each 240° inner lobe is read as two 120° half-arcs, each half contributes −1/3 — recovering the V1 down-quark assignment. Then a "down quark" is half of an inner lobe.
-- **Connector ambiguity.** The +1/6 connector charge doesn't fit any quark fraction. Could be a feature requiring physical reinterpretation, or an artifact of the geometric construction not corresponding to a particle.
+### 3.2 Implication for V2's role
 
-These interpretations are open; this file does not commit to one.
+V2 is *charge-equivalent* to V1 under the saddle-complex grouping. The extra degree of freedom is geometric (three radii instead of two), not topological. V2 differs from V1 in *what cross-section shapes are admissible*, not in what fractional charges appear.
 
 ---
 
@@ -130,17 +145,21 @@ These interpretations are open; this file does not commit to one.
 
 A V2 fractal recursion analogous to [clover-on-clover.md](clover-on-clover.md) §3:
 
-- For each outer lobe (parent A = 240°): bisect, remove central 120°, insert primitive with sub-lobes of A/2 = 120° each and sub-saddles of A/4 = 60° each. Net primitive rotation +120° matches removed parent rotation. Preserves closure.
-- For each inner lobe (parent A = 240°, concave): bisect, remove central 120°. Insert *inverted* primitive: sub-lobes concave 120° and sub-saddles convex 60°. Net rotation −120° matches removed concave rotation.
+- For each outer lobe (parent A = θ_lobe): bisect, remove a central wedge, insert primitive with sub-lobes and sub-saddles matching the V1 recursion algebra. Preserves closure.
+- For each inner lobe (parent A = θ_lobe, concave): bisect; insert *inverted* primitive (sub-lobes concave, sub-saddles convex). Net rotation matches removed concave rotation.
 - Connectors are not bisected (only lobes are).
 
 Closure constraint for level-2 primitives, parameterized by parent's angular extent A:
 
   r_p = 2 r_L_new · cos(A/4) + r_S_new · (2 cos(A/4) − 1)
 
-Same form as V1. For A = 240° (parent extent here), this gives a per-level shrinkage cap analogous to V1's; the exact bound depends on the parent type (outer vs inner lobe).
+Same form as V1. For A = 240° this gives the same level-1→2 shrinkage cap as V1's outermost level (r_p / r_L_new ≤ 4 cos(60°) − 1 = 1, so the recursion is *degenerate* at A = 240°: no shrinkage possible). For A = 120° (the V1-like saddle case), the cap is r_p / r_L_new ≤ 4 cos(30°) − 1 ≈ 2.46 — same as V1 level-1→2.
 
-Level-2 recursion is implemented as a sketch in `scripts/clover_inverse.py` (deferred from initial implementation; see file's docstring for the build_clover_inverse_arcs function which currently builds level 1 only).
+### 4.1 Match-to-connector-angle recursion
+
+A more interesting recursion: choose the level-1 sub-arc angles to match the connector angle θ_conn. Under this match, the sub-lobes of an inner-lobe become indistinguishable in angle from the existing connectors, and the recursion adds new features at a *third* radius scale without introducing a new angular feature. The sub-lobe shrinkage cap then becomes r_p / r_L_new ≤ 4 cos(θ_conn / 4) − 1, which for θ_conn = 20° (canonical V2) is large (≈ 2.97) but for θ_conn = 60° (canonical V1) is again ≈ 2.46. This is the most natural site for a "heaviest generation" feature if recursion is to be added at all.
+
+Level-2 recursion is implemented as a sketch in `scripts/clover_inverse.py` (deferred from initial implementation; the `build_clover_inverse_arcs` function currently builds level 1 only).
 
 ---
 
@@ -175,9 +194,16 @@ Two cross-section variants now exist; both are candidates for the eigenmode-base
 
 After the V1 verdict (see [3-gen.md](3-gen.md) §13), V2 was tested as a candidate to escape V1's closure-constraint cap by providing three radii at level 1 (no fractal recursion required).
 
+**Reader's guide.** This section reports two distinct findings, both negative for the original V2 hypothesis:
+
+- **§7.2–§7.4 (Problem A — structural-identification failure).** The hoped-for "three radii → three cavity-mode bands" picture does not survive numerical test. Even at 10:1 ratios between adjacent feature scales, the cross-section spectrum gives only ~3.5× dynamic range, and all low-lying modes localize on the outer lobes.
+- **§7.5 (Problem B — wave-guide tower over-supplies states).** Once ring excitations are turned on, the (n_θ, α) tower contains states at arbitrary mass ratios — including all observed quark ratios — but with no rule for picking which six cells correspond to the six quarks.
+
+Problem A is V2-specific (it asks whether V2's geometric structure encodes a band pattern). Problem B is universal to any wave-guide construction (it asks whether the ring tower can predict a finite spectrum). Either one alone would block the picture from working; both must be addressed.
+
 ### 7.1 Setup
 
-The forward solver [scripts/fractal_eigenmodes.py](../scripts/fractal_eigenmodes.py) was extended with a `--variant clover-inverse` dispatch that builds the V2 cross-section via `clover_inverse.build_clover_inverse_arcs(r_outer, r_inner, r_conn)` and feeds the resulting boundary polygon into the existing 2D Helmholtz solver. The hypothesis under test:
+The forward solver [scripts/fractal_eigenmodes.py](../scripts/fractal_eigenmodes.py) was extended with a `--variant clover-inverse` dispatch that builds the V2 cross-section via `clover_inverse.build_clover_inverse_arcs(r_outer, r_inner, r_conn)` and feeds the resulting boundary polygon into the existing 2D Helmholtz solver. The hypothesis under test (the original V2 motivation):
 
 > Three independent radii host three distinct mode bands, with cavity-mode mass scaling m ~ 1/r giving mass scales at 1/r_outer, 1/r_inner, 1/r_conn. The three bands correspond to three generations.
 
@@ -206,30 +232,58 @@ The cavity modes are governed by the **overall cavity size** (~ r_outer), not by
 
 This is the same fundamental issue as V1: features need *barriers* (deep saddles, narrow throats with steep curvature transitions) to localize modes. V2's geometry has *thin* features but no barriers. Modes don't localize at the small scales until very high frequency (where wavelength ≲ feature size), which falls above the lowest ~60 modes.
 
-### 7.4 The high-frequency probe (partial)
+### 7.4 Extreme-tuning test
 
-A targeted probe at sigma = 400 (predicted r_conn-band frequency for test B, m ≈ 20) was attempted to check whether very-high-frequency modes localize at the smallest features. The probe was interrupted by a transient classifier outage before completing; the partial result is not conclusive. Re-running with `EIGS_SIGMA=400 .venv/bin/python scripts/fractal_eigenmodes.py --variant clover-inverse --r-outer 1.0 --r-inner 0.15 --r-conn 0.05 --grid 400 --n-modes 20 --plot` would resolve this. The expected outcome: even if high-frequency modes do localize at r_conn-scale, they live at mode indices ~hundreds, far above where "first/second/third generation" mode identification would naturally place them.
+A second test pushed the radii to extreme ratios (r_outer = 1.0, r_inner = 0.1, r_conn = 0.01, predicted bands at m ≈ 1, 10, 100). Across the lowest 25 cross-section modes:
 
-### 7.5 V2 verdict
+- Cross-section spectrum spans m ≈ 1.78 → 6.38, a factor of 3.59.
+- All 25 modes classify as `lobe_L1` (outer-lobe-localized). None localize at the inner lobes or connectors.
+- Predicted bands at m = 10 and m = 100 do **not** appear in this window.
 
-**V2 doesn't solve the mass-ratio problem either, but for a different reason than V1.**
+This confirms §7.3: even at 10:1 ratios between adjacent feature scales, the cavity spectrum is dominated by the largest feature (the outer lobe). Smaller features are passively connected to the bulk and do not host separate bands of low-lying modes.
 
-- V1 had a hard *geometric* cap on inter-generation ratios (closure constraint).
-- V2 has *no* geometric cap on ratios, but the *wave equation* doesn't read off the geometric scales — the spectrum is dominated by the overall cavity size.
+### 7.5 Ring-excitation (wave-guide tower) test
 
-V2 trades V1's structural deficiency for a dynamical one. Same outcome: cavity-mode scaling on the 2D Helmholtz problem cannot reproduce the observed inter-generation quark mass ratios.
+Per [tube-waveguide.md §1](tube-waveguide.md), the full mass spectrum on the 3D wave-guide is μ²(n_θ, α) = ε² · n_θ² + λ_α with ring-direction winding n_θ. The solver was extended with `--epsilon` and `--n-theta-max` flags to build this tower and report the lowest few hundred (n_θ, α) states.
 
-### 7.6 What this leaves open for V2
+Findings for V2 (canonical and extreme tunings, ε = 1.0, n_θ_max up to 1000):
 
-1. **Barrier-amplified modes.** If we deepened the indentation between adjacent outer-lobes (made the inner-lobe more "tunnel-barrier-like"), modes might localize at smaller scales with exponentially-amplified frequency gaps. This requires extending V2 with additional parameters (e.g., a "depth" knob beyond the current r_inner) and a corresponding update to the construction's closure constraints.
+1. **The tower contains states at any ratio,** including m_s/m_d ≈ 19.89 (hit at n_θ = 35, α = 21 for the extreme tuning), but reaching m_c/m_u ≈ 589 requires n_θ ≳ 1000 and reaching m_t/m_u ≈ 78,000 requires n_θ ≳ 1.3 × 10⁵.
+2. **No identification rule.** Whichever six (n_θ, α) cells one picks to be the six quarks, no structural principle distinguishes them from neighbouring cells with similar masses. ε and n_θ are not independent: ε → ε/k, n_θ → k·n_θ produces the same spectrum. The natural quantity ε·n_θ has no ceiling.
+3. **Same identification problem as V1.** The wave-guide tower neither helps nor hurts V2 relative to V1; both share the lack of a substrate-level rule for selecting cells.
 
-2. **Charge interpretation.** V2's inner lobe carries Q = −2/3 per closure winding (not the standard down-quark −1/3). This is independent of the mass-mechanism question — even if V2 hosted three mode bands, the within-generation u/d assignment doesn't match the Standard Model cleanly. Possible readings (anti-up-stacked-pair, half-arc decomposition, non-standard) are listed in §3 and need clearer physical motivation regardless of the mass result.
+### 7.6 V2 verdict — two distinct obstructions
 
-3. **Fractal recursion on V2.** The bisect-and-insert recursion analogous to V1's was found to be geometrically degenerate at A = 240° (the closure constraint gives r_L_new = r_p forced, no shrinkage). A different recursion family (different angular fractions, different primitive structure) is required if V2 is to host sub-features at finer scales — analogous to V1's level-2/3 but with different math.
+V2 fails as a predictive three-generation cross-section. The failure has **two independent components**, and only one is V2-specific:
 
-### 7.7 Cross-link to V1 verdict
+**Problem A (V2-specific, §7.2–§7.4) — structural identification doesn't hold.** The original hypothesis ("three radii host three bands") is wrong. V2's cross-section spectrum behaves like one big cavity dominated by its largest feature, regardless of how small r_inner and r_conn are made. Compare to V1's analogous obstruction: V1 has a *geometric* cap on inter-generation cross-section ratios (closure constraint pins shrinkage at ≤ 2.5×); V2 has *no* geometric cap, but the wave equation refuses to localize at the small scales. The V2 failure is more fundamental in a sense — V1's cap is at least quantitative ("how much shrinkage you get per level"); V2's failure is qualitative ("the bands you want don't exist").
 
-The combined V1+V2 verdict and its implications are documented in [3-gen.md](3-gen.md) §13.6–§13.7.
+**Problem B (universal to any wave-guide, §7.5) — ring tower over-supplies states.** Once n_θ excitations are admitted, the (n_θ, α) spectrum contains arbitrary mass ratios. The six observed quark masses are *all present* somewhere in the tower, but no principle picks them out: the tower has too many modes, not too few. This problem applies identically to V1 and V2; choosing a different cross-section doesn't help.
+
+The two problems are independent in the sense that solving one without solving the other still leaves the picture broken:
+
+- If Problem A is solved (some V2 variant produces three clean cavity bands) but Problem B is not, the bands exist but ring excitations dilute them into an undifferentiated mass continuum.
+- If Problem B is solved (a substrate-level rule pins n_θ as a function of α) but Problem A is not, the selection rule has nothing meaningful to select among in the V2 cross-section spectrum.
+
+Either route requires substantive additional work; the current V2 specification addresses neither.
+
+### 7.7 What this leaves open for V2
+
+Routes that would address Problem A (cross-section identification):
+
+1. **Barrier-amplified modes.** Deepening the indentation between adjacent outer-lobes (making the inner-lobe "tunnel-barrier-like") would let modes localize at smaller scales with exponentially-amplified frequency gaps. This requires extending V2 with an amplitude/depth parameter beyond the current radii, and a corresponding update to the closure analysis.
+
+2. **Lobe-angle generalization.** The variable θ_lobe (see §1.1) lets V2 interpolate between the canonical 240° geometry and other angles. Whether the connectors at intermediate θ_lobe contribute separate localization sites in the cross-section spectrum has not been tested. (Likely no, since the underlying obstruction is "no barriers", not "wrong angle" — but worth checking.)
+
+3. **Match-to-connector-angle recursion.** The recursion sketched in §4.1 (sub-lobe angle = connector angle = 60°) is the natural site for adding a third scale to V2 without introducing a new angular feature. Same caveat: adds a scale, not a barrier; likely won't fix Problem A on its own.
+
+Route that would address Problem B (ring-tower over-supply):
+
+4. **A selection rule on (n_θ, α).** Any substrate-level rule pinning n_θ as a function of α — Z₃-allowed cells, a winding-charge constraint, a coupling-to-substrate condition — would convert the tower from "everything in there somewhere" into a finite prediction. This is independent of which cross-section is chosen, and would help V1 equally.
+
+### 7.8 Cross-link to V1 verdict
+
+The combined V1+V2 verdict (including the wave-guide tower analysis) and its implications are documented in [3-gen.md](3-gen.md) §13.5–§13.8.
 
 ---
 

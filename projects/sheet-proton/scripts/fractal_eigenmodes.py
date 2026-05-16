@@ -1,33 +1,48 @@
 """
-Forward solver: 2D Helmholtz eigenmodes on the fractal clover cross-section.
+Forward solver: 2D Helmholtz eigenmodes on the fractal clover cross-section,
+extended with ring-direction (tube-waveguide) excitations.
 
 Computes the lowest K eigenvalues of −Δψ = λψ with Dirichlet boundary
 conditions on the 2D region bounded by the fractal clover-on-clover profile.
 Each eigenmode is classified by which feature region its amplitude
-concentrates in (level-1 lobe, level-1 saddle, level-2 sub-lobe, level-2
-sub-saddle, level-3 sub-lobe, level-3 sub-saddle), and the lowest mode in
-each (level, flavor) class is reported as the predicted quark mass.
+concentrates in. Mass for each (n_θ, α) state in the wave-guide picture:
+
+    μ²(n_θ, α) = ε² n_θ² + λ_α              (per tube-waveguide.md §1)
+
+where:
+    λ_α          cross-section Helmholtz eigenvalue (this script computes these)
+    n_θ          ring-direction winding number (integer ≥ 0)
+    ε            aspect ratio = cross-section scale / R_major
+    μ            mass (in script units)
+
+With --n-theta-max 0 the script reports only the cross-section spectrum
+(equivalent to the original n_θ = 0 calculation). With --n-theta-max > 0
+the full wave-guide spectrum is built across all (n_θ, α) pairs.
 
 Usage:
     .venv/bin/python scripts/fractal_eigenmodes.py
-        [--level N]                  fractal level (1, 2, or 3)
-        [--r-lobe-1 R]               level-1 lobe radius
-        [--r-saddle-1 R]             level-1 saddle radius
-        [--rL2-frac F]               r_L2 / r_L1 fraction (default 0.50)
-        [--rL3-frac F]               r_L3 / r_L2 fraction (default 0.45)
+        [--variant V]                clover | clover-inverse
+        [--level N]                  fractal level (1, 2, or 3, V1 only)
+        [--r-lobe-1 R]               V1 level-1 lobe radius
+        [--r-saddle-1 R]             V1 level-1 saddle radius
+        [--rL2-frac F]               V1 r_L2 / r_L1 fraction (default 0.50)
+        [--rL3-frac F]               V1 r_L3 / r_L2 fraction (default 0.45)
+        [--r-outer R]                V2 outer lobe radius
+        [--r-inner R]                V2 inner lobe radius
+        [--r-conn R]                 V2 connector radius
+        [--epsilon E]                wave-guide aspect ratio (default 1.0)
+        [--n-theta-max N]            max ring winding to include (default 0)
         [--grid N]                   grid resolution per axis (default 200)
-        [--n-modes K]                number of lowest eigenmodes to compute
+        [--n-modes K]                number of cross-section eigenmodes
         [--plot]                     save eigenmode visualization
 
 Outputs to stdout:
-    eigenvalue table + classification + predicted mass-ratio summary
+    cross-section eigenvalue table + classification
+    full wave-guide spectrum (if n-theta-max > 0) sorted by mass
+    predicted mass-ratio summary vs PDG quark masses
 
-Per work/clover-on-clover.md §3 (rewritten), each level's lobe radius is a
-free parameter; saddle radius is solved from the closure constraint.
-
-The model: mass(α) = sqrt(eigenvalue(α)) (in cross-section units; multiply
-by an overall scale to get physical units). For comparison, observed quark
-mass ratios are computed using PDG current-quark masses.
+The model: cavity-mode mass for the lowest band μ_α = sqrt(λ_α). Wave-guide
+mass tower per cross-section mode α: μ(n_θ, α) = sqrt(ε² n_θ² + λ_α).
 """
 
 from __future__ import annotations
@@ -240,6 +255,8 @@ def forward_solver(
     r_conn: float = 0.1,
     grid_n: int = 200,
     n_modes: int = 25,
+    epsilon: float = 1.0,
+    n_theta_max: int = 0,
 ) -> dict:
     """Run the forward solver for given parameters; return results dict.
 
@@ -300,6 +317,7 @@ def forward_solver(
             rL2_frac=rL2_frac, rL3_frac=rL3_frac,
             r_outer=r_outer, r_inner=r_inner, r_conn=r_conn,
             sub_saddles=sub_saddles,
+            epsilon=epsilon, n_theta_max=n_theta_max,
         ),
         "n_inside": n_inside,
         "h": h,
@@ -311,6 +329,7 @@ def forward_solver(
         "interior_ij": interior_ij,
         "grid": (X, Y, inside),
         "feature_centers": feature_centers,
+        "waveguide_spectrum": build_waveguide_spectrum(eigvals, classes, epsilon, n_theta_max),
     }
 
 
@@ -351,6 +370,29 @@ def assign_quark_masses(result: dict) -> Dict[str, Tuple[float, int]]:
         if quark not in out or mass < out[quark][0]:
             out[quark] = (mass, k)
     return out
+
+
+def build_waveguide_spectrum(
+    eigvals: np.ndarray,
+    classes: List[str],
+    epsilon: float,
+    n_theta_max: int,
+) -> List[Tuple[float, int, int, str]]:
+    """Build the full wave-guide spectrum across (n_θ, α) pairs.
+
+    For each cross-section eigenvalue λ_α (with classification class_α),
+    generate the ring tower at n_θ = 0, 1, ..., n_theta_max with mass
+        μ(n_θ, α) = sqrt(ε² n_θ² + λ_α)
+
+    Returns a list of (mass, n_θ, α, class_α) tuples sorted by mass.
+    """
+    entries: List[Tuple[float, int, int, str]] = []
+    for alpha, (lam, cls) in enumerate(zip(eigvals, classes)):
+        for n_theta in range(n_theta_max + 1):
+            m_sq = (epsilon ** 2) * (n_theta ** 2) + max(0.0, lam)
+            entries.append((sqrt(m_sq), n_theta, alpha, cls))
+    entries.sort(key=lambda x: x[0])
+    return entries
 
 
 def report(result: dict) -> None:
@@ -466,9 +508,57 @@ def report(result: dict) -> None:
     print(f"    r_L2 / r_L3 ≤ {max_cap_lvl3:.3f}   "
           f"(level 2 → 3 maximum)")
 
+    # Wave-guide spectrum (if n_theta_max > 0)
+    n_theta_max = result["params"].get("n_theta_max", 0)
+    epsilon = result["params"].get("epsilon", 1.0)
+    waveguide = result.get("waveguide_spectrum", [])
+    if n_theta_max > 0 and waveguide:
+        print(f"\n--- Wave-guide spectrum (ε = {epsilon}, n_θ ∈ [0, {n_theta_max}]) ---")
+        print(f"μ²(n_θ, α) = ε² · n_θ² + λ_α (per tube-waveguide.md §1)")
+        n_show = min(40, len(waveguide))
+        print(f"\nLowest {n_show} states from the (n_θ, α) lattice:")
+        print(f"{'#':>4} {'mass':>10} {'n_θ':>4} {'α':>4} {'ratio vs #0':>12}  class")
+        m_lowest = waveguide[0][0]
+        for k, (mass, n_th, alpha, cls) in enumerate(waveguide[:n_show]):
+            ratio = mass / m_lowest if m_lowest > 0 else 0
+            print(f"{k:>4} {mass:>10.4f} {n_th:>4} {alpha:>4} {ratio:>12.3f}  {cls}")
+
+        m_max_wg = waveguide[-1][0]
+        print(f"\n  full wave-guide dynamic range across {len(waveguide)} states:")
+        print(f"    m_max / m_min = {m_max_wg / m_lowest:.2f}")
+        print(f"    (lowest = α={waveguide[0][2]} n_θ={waveguide[0][1]}; "
+              f"highest = α={waveguide[-1][2]} n_θ={waveguide[-1][1]})")
+
+        # Check if any pair of states matches m_c/m_u ≈ 580 or m_t/m_u ≈ 78000
+        print(f"\n  scanning for state pairs matching observed inter-gen ratios:")
+        obs_ratios = {
+            "m_c/m_u": 589.4,
+            "m_t/m_u": 78636.4,
+            "m_s/m_d": 19.89,
+            "m_b/m_d": 889.4,
+        }
+        for label, target in obs_ratios.items():
+            # Find any (n_θ, α) such that mass / m_lowest ≈ target
+            best = None
+            for (mass, n_th, alpha, cls) in waveguide:
+                if m_lowest <= 0:
+                    continue
+                r = mass / m_lowest
+                if best is None or abs(r - target) < abs(best[0] / m_lowest - target):
+                    best = (mass, n_th, alpha, cls)
+            if best is not None:
+                m, n, a, c = best
+                print(f"    {label:8s} target {target:>9.1f}, closest state: "
+                      f"ratio {m / m_lowest:>9.2f}  (n_θ={n} α={a}  {c})")
+
     print("\n--- Verdict ---")
     print(f"  Eigenvalue spread across {len(eigvals)} computed modes:")
     print(f"    sqrt(λ_max) / sqrt(λ_min) = {m_max/m0:.2f}")
+    if n_theta_max > 0 and waveguide:
+        m_max_wg = waveguide[-1][0]
+        m_lowest = waveguide[0][0]
+        print(f"  Wave-guide dynamic range (n_θ up to {n_theta_max}, ε = {epsilon}):")
+        print(f"    full m_max/m_min = {m_max_wg / m_lowest:.2f}")
     if variant == "clover":
         print()
         print(f"  Within-generation gen-1 split (m_d/m_u ≈ {obs['d']/obs['u']:.2f}):")
@@ -587,6 +677,10 @@ def main() -> None:
                         help="Grid resolution per axis (default 200)")
     parser.add_argument("--n-modes", type=int, default=25,
                         help="Number of lowest eigenmodes to compute")
+    parser.add_argument("--epsilon", type=float, default=1.0,
+                        help="Wave-guide aspect ratio = cross-section scale / R_major (default 1.0)")
+    parser.add_argument("--n-theta-max", type=int, default=0,
+                        help="Max ring-direction winding to include in spectrum (default 0; tube-waveguide.md §1)")
     parser.add_argument("--plot", action="store_true",
                         help="Save eigenmode visualization to outputs/")
     parser.add_argument(
@@ -608,6 +702,8 @@ def main() -> None:
         r_conn=args.r_conn,
         grid_n=args.grid,
         n_modes=args.n_modes,
+        epsilon=args.epsilon,
+        n_theta_max=args.n_theta_max,
     )
     report(result)
 

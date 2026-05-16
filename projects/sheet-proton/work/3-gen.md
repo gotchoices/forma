@@ -618,12 +618,21 @@ For each of fractal levels 1, 2, 3 at canonical-extent parameters (r_lobe_1 = 1.
 - Built the cross-section boundary as an arc list via `build_fractal_clover`.
 - Sampled the boundary as a closed polygon, masked an N×N grid (N up to 200) for interior points.
 - Built the sparse 5-point Laplacian on interior nodes with Dirichlet BC.
-- Computed the lowest 30 eigenvalues with `scipy.sparse.linalg.eigsh` (shift-invert mode at σ = 0).
-- Read off the eigenvalue spread (sqrt(λ_max)/sqrt(λ_min)) across the lowest 30 modes.
+- Computed the lowest 25–30 eigenvalues with `scipy.sparse.linalg.eigsh` (shift-invert mode at σ = 0).
+- Read off the eigenvalue spread (sqrt(λ_max)/sqrt(λ_min)) across the lowest 25–30 modes.
+
+Per [tube-waveguide.md §1](tube-waveguide.md), the full mass spectrum on the 3D wave-guide is
+
+<!-- μ²(n_θ, α) = ε² · n_θ² + λ_α -->
+$$
+\mu^2(n_\theta, \alpha) \;=\; \varepsilon^2 \, n_\theta^2 \;+\; \lambda_\alpha
+$$
+
+with cross-section eigenvalue λ_α, ring-direction winding n_θ, and aspect ratio ε = (cross-section scale)/R_major. The forward solver builds this (n_θ, α) tower via `build_waveguide_spectrum` and reports the sorted mass spectrum across all pairs up to a user-specified n_θ_max.
 
 ### 13.2 What the spectrum shows
 
-At level 3 with canonical parameters, the lowest 30 mass eigenvalues span only **m_max / m_min ≈ 3.6**. The mode-band cluster ratios are 1.0, 1.25, 1.81, 2.18, 2.62, 3.27 against band 0. Smooth, continuous spread — no clean inter-generation gap.
+At level 3 with canonical parameters, the lowest 30 mass eigenvalues span only **m_max / m_min ≈ 3.6** *on the cross-section alone* (n_θ = 0). The mode-band cluster ratios are 1.0, 1.25, 1.81, 2.18, 2.62, 3.27 against band 0. Smooth, continuous spread — no clean inter-generation gap. The §13.5 wave-guide tower extends this with ring excitations.
 
 ### 13.3 The closure-constraint cap
 
@@ -642,13 +651,29 @@ Since cavity modes scale as m ~ 1/r, these are also the inter-generation mass-ra
 | m_s / m_d | 19.9 | ≤ 2.46 | 8× |
 | m_b / m_s | 44.7 | ≤ 2.86 | 16× |
 
-### 13.4 Verdict
+### 13.4 Verdict on cross-section alone
 
-**The clover-on-clover construction with the bisect-and-insert recursion, under cavity-mode mass scaling, cannot reproduce the observed inter-generation quark mass ratios.** Within-generation splits (m_d/m_u) are reachable; inter-generation ratios are two orders of magnitude short of observation. The closure-constraint cap is a hard structural limit — adjusting fractal-level radii inside the valid range does not change the result. Within-band cavity-mode multipoles (the lowest 30 computed) give at most a factor of ~4 dynamic range.
+**The clover-on-clover construction with the bisect-and-insert recursion, under cross-section cavity-mode scaling alone, cannot reproduce the observed inter-generation quark mass ratios.** Within-generation splits (m_d/m_u) are reachable; inter-generation ratios are two orders of magnitude short of observation. The closure-constraint cap is a hard structural limit — adjusting fractal-level radii inside the valid range does not change the result. Within-band cavity-mode multipoles (the lowest 30 computed) give at most a factor of ~4 dynamic range.
 
-### 13.5 What this rules out vs. leaves open
+### 13.5 Ring excitations (n_θ tower) — they reach the masses but provide no identification rule
 
-**Ruled out:** the leading candidate from §12 — "three nested geometric scales on a single clover-on-clover sheet, with each level hosting one generation via cavity-mode scaling" — does not work quantitatively. The structural compatibility identified in §5.5–§12 is real, but the mass-mechanism cannot be the simple "mode at scale r has mass ~ 1/r" reading.
+The cross-section computation in §13.2 is only the n_θ = 0 slice of the full wave-guide spectrum. The script was extended (`--n-theta-max`, `--epsilon`) to build the full (n_θ, α) tower, and both V1 and V2 were tested across a range of (ε, n_θ_max).
+
+**This section identifies a problem distinct from §13.3–§13.4's "ratios are too small." Here the problem is the opposite: with the ring tower turned on, the spectrum contains states at *every* ratio, but no rule says which six are the quarks.**
+
+Findings:
+
+1. **Mass ratios are bounded by ε · n_θ_max relative to the lowest cross-section mode.** For V1 with √λ_min ≈ 1.71, the largest mass ratio is ≈ ε · n_θ_max / 1.71 once n_θ_max is large. With (ε = 1.0, n_θ_max = 100), max ratio ≈ 58. With (ε = 1.0, n_θ_max = 1000), max ratio ≈ 584 — close to m_c/m_u. To reach m_t/m_u ≈ 78,000 the script needs n_θ_max ≳ 1.3 × 10⁵.
+2. **ε and n_θ are not independent knobs.** Rescaling ε → ε/10 while n_θ → 10·n_θ produces the *same* spectrum. The relevant quantity is ε · n_θ, i.e. the ring-direction wavenumber times the cross-section scale. There is no "natural" ceiling on n_θ — physical bound is only that the de Broglie wavelength fit around the ring once.
+3. **No identification rule for which (n_θ, α) pair is which quark.** The scan finds states that match each observed inter-generation ratio (e.g. m_s/m_d = 19.89 hits *exactly* at n_θ = 34, α = 1 for V1; m_c/m_u = 583.95 at n_θ = 1000, α = 19), but the n_θ values needed are arbitrary integers in the hundreds-to-thousands range with no rationale for picking one over another. The wave-guide picture says "infinite tower of ring excitations exists" — it does not say "the 6 quark masses sit on these 6 specific (n_θ, α) cells."
+
+The net statement: the wave-guide tower *can* be made to contain states at arbitrary mass ratios, but only by inflating n_θ_max indefinitely with no physical principle for selecting which states to identify with the quarks. The tower has "too many modes," not too few.
+
+This applies to V1 and V2 equally — both are 3D wave-guides over a 2D cross-section domain, so both inherit the same ring-excitation structure. The §13.5 finding is independent of which cross-section is chosen.
+
+### 13.6 What this rules out vs. leaves open
+
+**Ruled out:** the leading candidate from §12 — "three nested geometric scales on a single clover-on-clover sheet, with each level hosting one generation via cavity-mode scaling" — does not work quantitatively. The structural compatibility identified in §5.5–§12 is real, but the mass-mechanism cannot be the simple "mode at scale r has mass ~ 1/r" reading, and the wave-guide tower (§13.5) does not rescue it because it offers no identification rule.
 
 **Still open:**
 
@@ -656,19 +681,50 @@ Since cavity modes scale as m ~ 1/r, these are also the inter-generation mass-ra
 
 2. **Multi-sheet architecture (per [STATUS.md](STATUS.md))**. Each generation lives on its own sheet at its own scale, bypassing the closure constraint entirely. The clover-on-clover construction is dead as a single-sheet mechanism but lives on as the *level-1* structure with each generation on a separate sheet.
 
-3. **Non-cavity-mode mass mechanism.** The mass-from-eigenvalue identification (μ² = n_θ² + λ_α) is a leading-order ansatz from tube-waveguide.md §1. Higher-order corrections, interactions between modes, or a different identification (e.g., mass-from-topological-winding) could amplify cross-band ratios. None of these have been computed for this geometry.
+3. **A selection rule on (n_θ, α).** Section 13.5 shows the (n_θ, α) tower contains states at the right ratios but provides no principle picking which six. Any rule that pins n_θ as a function of α (e.g., a Z₃-allowed cell condition, a winding-charge quantization, or a coupling-to-substrate constraint) would convert the tower from "everything is in there somewhere" into a predictive identification. None has yet been derived from the substrate-level physics.
 
-### 13.6 Companion test: clover-inverse (V2)
+4. **V2 lobe-angle and recursion freedom (not yet tested).** [clover-inverse.md](clover-inverse.md) currently fixes θ_outer = θ_inner = 240°. Closure forces θ_outer = θ_inner and pins each of the 6 connectors at exactly 60°, but θ_lobe ∈ (0°, 360°) is free. The canonical 240° is the value that gives the −1/3 saddle-complex charge; other values give different per-feature charges (e.g., at θ_lobe = 120° the inner-lobe arc geometrically *coincides* with a V1 120° simple saddle, but the saddle-complex charge becomes 0 rather than −1/3, so the construction is not equivalent to V1). Adding a level of fractal recursion onto the inner lobes — particularly with sub-arcs matching the 60° connector angle, since 60° is constant under closure — would add a third scale that the cross-section spectrum *might* read off if it ever localizes there. Neither the lobe-angle generalization nor the recursion has been implemented in the geometry builder.
+
+### 13.7 Companion test: clover-inverse (V2)
 
 A second cross-section geometry — [clover-inverse.md](clover-inverse.md) — was constructed during Phase 4 to test whether a topology with three independent radii (rather than fractal recursion) could escape the closure-constraint cap. The V2 geometry has 3 outer convex lobes + 3 inner concave lobes + 6 connectors at level 1, giving three free radii (r_outer, r_inner, r_conn) whose ratios are unbounded above.
 
-Numerical verdict: same problem, different cause. See [clover-inverse.md](clover-inverse.md) §7 for the V2 test results. The eigenvalue spectrum doesn't separate into three bands at the three radii — modes spread across the whole cavity and are governed by the overall cavity size, not by individual feature scales. The smaller features (inner lobes, connectors) need barriers to localize modes, not just thin geometry.
+The original V2 hypothesis: three radii host three distinct cavity-mode bands at scales 1/r_outer, 1/r_inner, 1/r_conn, corresponding to three generations.
 
-### 13.7 Combined conclusion
+Numerical test (full details in [clover-inverse.md](clover-inverse.md) §7):
 
-Both V1 (clover-on-clover) and V2 (clover-inverse) fail to host three distinct mass bands under the cavity-mode mass mechanism, for related but distinct reasons:
+| Test | r_outer : r_inner : r_conn | Predicted bands | Actual cross-section spectrum |
+|---|---|---|---|
+| Default | 1 : 0.3 : 0.1 | m ≈ 1.0, 3.33, 10.0 | 1.0 → 2.78 (×2.78); all 25 modes localize on outer lobes |
+| Extreme | 1 : 0.1 : 0.01 | m ≈ 1, 10, 100 | 1.0 → 3.59 (×3.59); all 25 modes localize on outer lobes |
 
-- **V1**: closure constraint caps the radius shrinkage at ~2.5× per fractal level. The construction *cannot* support large inter-generation ratios geometrically.
-- **V2**: closure permits arbitrary radius ratios, but the *cavity-mode spectrum* doesn't localize at the smaller features (no barriers). The construction *could* support large ratios geometrically but the wave equation doesn't read them off.
+**V2's structural hypothesis fails.** The predicted secondary/tertiary bands at m ≈ 10, 100 never appear in the cross-section spectrum, even at 10:1 ratios between adjacent feature scales. Every low-lying mode localizes on the outer lobes; smaller features (inner lobes, connectors) host no modes of their own because there are no potential barriers separating them from the bulk cavity. The wave equation reads the cross-section as one big cavity dominated by its largest feature, not as three nested cavities at three scales.
 
-The common lesson: the 2D Helmholtz cavity-mode scaling is not the mass mechanism for either geometry. Future work must either find a different physical reading of "mass on the surface" (tunneling-amplification, multi-sheet, non-eigenvalue identification) or accept that the geometric structure encodes only the qualitative features (Z₃, fractional charges, three-quark structure) and not the quantitative mass spectrum.
+### 13.8 Combined conclusion — two distinct obstructions
+
+The investigation has surfaced **two distinct problems** that block the wave-guide picture from predicting the quark spectrum on a single sheet. Both must be addressed (or sidestepped) for the picture to work:
+
+**Problem A — The structural-identification hypothesis fails for both V1 and V2 on cross-section alone.** The "geometric scales encode mass bands" picture doesn't survive numerical test:
+- V1's closure constraint caps cross-section radius shrinkage at ~2.5× per fractal level — too small even *if* the bands existed cleanly.
+- V2's radii are unbounded above, but the cross-section wave equation doesn't read them off. All low-lying modes live on the dominant scale.
+
+In both cases the cross-section spectrum gives at most a factor of ~4 dynamic range. The "three feature scales → three generations" identification — appealing in §12.4's Mechanism E — does not hold.
+
+**Problem B — The wave-guide ring tower over-supplies states with no selection rule.** Adding ring excitations (§13.5) gives access to arbitrary mass ratios — the right ratios for the observed quarks are *all present in the spectrum*. But:
+- States at arbitrary n_θ are equally allowed; nothing picks out six cells.
+- The needed n_θ values are integers in the hundreds to ~10⁵, with no structural meaning.
+- The tower behaves identically for V1 and V2; the choice of cross-section doesn't help.
+
+V2 trades Problem A's V1 form (geometric cap) for Problem A's V2 form (localization failure) but still suffers from it; both V1 and V2 suffer Problem B equally.
+
+**Routes forward** (any one would resolve at least one problem):
+
+(a) **A substrate-level selection rule on (n_θ, α).** Resolves Problem B. Any rule that pins n_θ as a function of α — Z₃-allowed cells, a winding-charge quantization, a coupling-to-substrate condition — converts the tower from "everything in there" to a finite, predictive set. Without such a rule, Problem B is fatal regardless of cross-section.
+
+(b) **Barrier-like features that localize cross-section modes at smaller scales.** Resolves Problem A. The current geometries have *thin* features but no barriers; modes spread across the whole cavity. Adding a depth or amplitude parameter that creates potential barriers between features would let smaller scales host their own mode bands. This is a substantive extension of either V1 or V2 (new parameter, new closure analysis).
+
+(c) **Multi-sheet architecture.** Sidesteps both problems by putting one generation on each sheet, at its own scale. Per [STATUS.md](STATUS.md), this is the parallel candidate; details belong to the [metric-binding](../../metric-binding/) framework.
+
+(d) **Accept the geometric content as qualitative only.** The clover structure encodes Z₃, fractional charges (+2/3 / −1/3), and three-quark structure correctly. The quantitative mass spectrum may come from a different mechanism entirely.
+
+A solution to (a) without (b) would still let either V1 or V2 work, with quarks identified at specific (n_θ, α) cells. A solution to (b) without (a) would resurrect Mechanism E on a single sheet via cross-section eigenvalues alone. (c) and (d) are architectural alternatives.
