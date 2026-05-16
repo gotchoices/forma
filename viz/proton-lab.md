@@ -115,10 +115,42 @@ The two control parameters affect the visualizer differently:
 | Saddle radius | `r_saddle` | 0.40 | 0.05 – 2.0 |
 | Twist | `τ` | 1/3 | discrete steps of 1/3; deforms the surface |
 | Shear | `s` | 0   | discrete steps of 1/3; tilts overlays only |
+| Fractal level | `L` | 1 | 1, 2, or 3 — see §1.6 |
+| `r_L2 / r_p` | — | 0.50 | (0.406, 0.577) when L ≥ 2 |
+| `r_L3 / r_p` | — | 0.45 | (0.349, 0.518) when L ≥ 3 |
 
 `d = r_lobe + r_saddle` is derived (not a slider). When the profile would
 self-intersect (`d < 0`) or when `r_lobe + d > R_major` (the inner lobe
 crosses the donut hole) we warn but still render.
+
+### 1.6 Fractal cross-section (clover-on-clover)
+
+Per [projects/sheet-proton/work/clover-on-clover.md](../projects/sheet-proton/work/clover-on-clover.md)
+(rewritten §3), the cross-section can recurse beyond the base clover.
+
+- **Level 1:** the base clover described in §1.1.
+- **Level 2:** each level-1 lobe arc (each L120) is bisected and its central
+  60° replaced by a smaller-scale primitive S30-L60-L60-S30.
+- **Level 3:** each level-2 sub-lobe (each L60) is similarly bisected.
+
+The level-(n+1) primitive's lobe radius `r_L_(n+1)` is the user-controlled
+free parameter; the saddle radius `r_S_(n+1)` is determined by the closure
+constraint
+
+  r_p = 2·r_L_new·cos(A/4) + r_S_new·(2·cos(A/4) − 1)
+
+where `r_p` is the parent's kissing-circle radius and `A` is the parent's
+angular extent (120° at level 2, 60° at level 3). The valid range for
+`r_L_new / r_p` is shown above and matches the slider bounds.
+
+When `L ≥ 2`, the analytical `profileAt(...)` path is bypassed and the
+cross-section is built as a list of arcs (`buildFractalArcs`), sampled by
+arc length into the same `(xs, ys, ks)` arrays consumed by the surface
+mesh and the 2D preview canvas.
+
+Saddle arcs are never bisected. Only sub-lobes from the immediately
+previous level are bisected at each new level — remnants from earlier
+bisections retain their original parent radius and are skipped.
 
 ### 1.4 Particle assignments
 

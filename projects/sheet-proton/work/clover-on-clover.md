@@ -2,7 +2,46 @@
 
 **Status:** Specification for the nested fractal clover construction proposed as the geometric substrate for [3-gen.md](3-gen.md) Mechanism E. Defines the construction precisely enough to be programmed and rendered, with explicit parametric flexibility for fitting observed inter-generation mass ratios. Companion to [clover-quarks.md](clover-quarks.md) (level-0 kissing-circle profile) and [tube-waveguide.md](tube-waveguide.md) (the 3D wave-guide framework the cross-section feeds into).
 
+**Implementation status (2026-05-16):** `scripts/clover_on_clover.py` implements the bisect-and-insert construction described in §3 (rewritten) and §4 (rewritten). Levels 1–3 render correctly with Gauss-Bonnet preserved (∫κ ds = 2π at every level) and canonical angular extents at every level. Sections §3–4 below reflect the implemented construction; §5 onward is preserved as reference for the original (deprecated) inscription approach.
+
 **Tone:** Mathematical specification. Geometric choices are recorded as defaults with named alternatives where applicable. Each free parameter is named and its role in mass-fitting identified.
+
+---
+
+## 0. Lessons from implementation attempts
+
+Three construction variants were explored before converging on the working one. They are documented here because the geometric subtleties matter for understanding what works and why.
+
+### 0.1 What did not work
+
+**Attempt A — "Balanced unit" inscription (1 sub-lobe + 2 sub-saddles inscribed on each parent arc as a zero-mean perturbation; original §3 of this spec).** Geometrically self-inconsistent: a "zero net curvature" wobble inscribed on an arc requires the wobble to enter and exit at the same point with zero parent-extent replaced. With finite sub-feature radii, the wobble replaces a nonzero portion of the parent, and the rotation accounting breaks. Implementing this produced visually-correct-looking outputs at early levels but the per-arc charge audit showed canonical ±2/3 / ∓1/3 only at level 0, drifting at deeper levels.
+
+**Attempt B — Full L120 replacement with the 2-lobe-on-one-circle primitive.** Replacing each level-1 L120 with a smaller primitive (S60-L120-L120-S60 at smaller scale) preserves the parent's +120° rotation contribution *only* in the degenerate case r_L_new = r_p. For r_L_new < r_p, the geometric tangency forces non-canonical sub-arc extents and the curve self-intersects (rotation index > 1).
+
+### 0.2 What works — bisect-and-insert
+
+The construction implemented in `scripts/clover_on_clover.py` and described in §3 (rewritten) below:
+
+1. **Each parent lobe arc is bisected at its angular midpoint.**
+2. **The central HALF of the parent (A/2 of its angular extent, where A is the parent's full extent) is removed.**
+3. **A smaller-scale primitive (S-L-L-S with each sub-lobe of extent A/2 and each sub-saddle of extent A/4 on their own kissing circles) is inserted into the gap.**
+4. **The primitive's net rotation (+A/2) exactly matches the removed parent rotation, so Gauss-Bonnet is preserved (∫κ ds = 2π at every level).**
+
+Key geometric properties:
+
+- The construction's closure requires a constraint linking r_L_new, r_S_new, and the parent's radius r_p and angular extent A (see §3.4 below).
+- The constraint depends on A. Level-2 parents have A = 120°; level-3 parents (the new sub-lobes from level 2) have A = 60°; level n has A = 240° / 2^(n−1).
+- At each level n ≥ 2, only **one** radius can be freely chosen (typically r_L_new); the other is determined by the constraint.
+- Only the previous level's *new sub-lobes* are bisected at the next level; remnants of earlier-level bisections are not re-bisected (their parent radii differ from the current level's parent radius, so the closure constraint would force non-canonical extents).
+
+### 0.3 Free-parameter accounting
+
+| Level | What's freely settable | What's determined |
+|---|---|---|
+| 1 (base clover) | r_L1, r_S1 (both independently) | nothing — the base is the kissing-circle clover |
+| n ≥ 2 | one of {r_L_n, r_S_n} (within bounds) | the other, by closure constraint with parent geometry |
+
+For a 3-level fit (Mechanism E parameter scheme): **4 free parameters total** — r_L1, r_S1, r_L2, r_L3 (or equivalently r_L1, r_S1, r_S2, r_S3). Plus the overall scale (e.g., D_lobe or R_major). Total **5 parameters**, against 6 observed quark masses + 1 charge radius = 7 observables.
 
 ---
 
@@ -77,29 +116,127 @@ Radii cancel — only the angular extents (240°, 120°) matter. These are the u
 
 ---
 
-## 3. Recursive rule: level n → level n+1
+## 3. Recursive rule: bisect-and-insert (level n → level n+1)
 
-At each fractal level, every arc segment of the level-n profile (whether a lobe arc or a saddle arc) receives a **balanced sub-feature unit** inscribed on it.
+**This section replaces the original "balanced unit" recursion, which was found to be geometrically self-inconsistent (see §0.1 and §0.2).** The construction below is what `scripts/clover_on_clover.py` implements.
 
-### 3.1 The balanced unit
+### 3.1 The primitive
 
-Per parent arc at level n, one inscribed unit at level n+1 consists of:
+The level-1 base clover is reinterpreted as **3 primitives joined into a closed curve**, where each primitive has the structure
 
-- **1 sub-lobe**: 240° arc of radius **r_lobe_{n+1}**
-- **2 sub-saddles**: each a 120° arc of radius **r_saddle_{n+1}**
+  **S(α/4) − L(α/2) − L(α/2) − S(α/4)**
 
-Curvature contribution of the unit:
+where α is the primitive's "characteristic extent." For level 1, α = 240°, so the primitive is S60° − L120° − L120° − S60° (the level-1 saddle is split into two halves bookending the level-1 lobe-pair, and each L120 is half of the level-1 240° lobe — same kissing circle, split at the midpoint).
 
-<!-- ∫ κ ds = (4π/3) + 2 × (−2π/3) = 0 -->
+Net rotation per primitive: 2(α/2) − 2(α/4) = α/2. For α = 240°, this is 120°. Three primitives in sequence: 3 × 120° = 360° = 2π → simple closed curve. ✓
+
+At level n + 1, each primitive is a smaller-scale instance of the same structure with characteristic extent halved: α_(n+1) = α_n / 2.
+
+### 3.2 The recursion
+
+For each lobe arc at level n (extent A on a kissing circle of radius r_p):
+
+1. **Bisect**: identify the arc midpoint.
+2. **Remove central half**: delete the angular range from (midpoint − A/4) to (midpoint + A/4), leaving two **remnant** arcs of extent A/4 each at the parent radius.
+3. **Insert primitive** in the resulting gap: a level-(n+1) primitive with sub-lobe extent A/2 and sub-saddle extent A/4, at smaller radii r_L_(n+1), r_S_(n+1).
+4. **Sub-saddles are never modified** by this rule — only lobe arcs are bisected.
+
+Net rotation accounting per replacement:
+- Removed parent rotation: +A/2 (the central half of a CCW convex arc).
+- Inserted primitive rotation: 2(A/2) − 2(A/4) = +A/2.
+- Net change: 0. **Gauss-Bonnet preserved exactly.** ∫κ ds = 2π at every recursion level.
+
+### 3.3 Sub-arc extent halving
+
+At each level the characteristic extent halves:
+
+| Level | Lobe-arc extent A | Sub-lobe extent (= A/2) | Sub-saddle extent (= A/4) |
+|---|---|---|---|
+| 1 (base) | 120° (per L120 sub-arc) | n/a (base) | n/a (base) |
+| 2 | 60° (the new sub-lobes inserted at level 2) | 60° | 30° |
+| 3 | 30° | 30° | 15° |
+| n | 240° / 2^(n−1) | 240° / 2^n | 240° / 2^(n+1) |
+
+(Note: at level 1, the 120° figure is the extent of each L120 sub-arc of a primitive; the full level-1 lobe is L240 made of two L120 on the same circle. The bisection at level 2 operates on each L120 individually.)
+
+### 3.4 Geometric closure constraint (the key formula)
+
+For the inserted primitive to satisfy C¹ continuity at every junction (and have canonical extents at each level), the new radii r_L_(n+1) and r_S_(n+1) must satisfy, given parent radius r_p and parent angular extent A:
+
+<!-- r_p = 2 r_L_new cos(A/4) + r_S_new × (2 cos(A/4) − 1) -->
 $$
-\sum_{\mathrm{unit}} \int \kappa\, ds \;=\; \frac{4\pi}{3} + 2 \cdot \left(-\frac{2\pi}{3}\right) \;=\; 0
+r_p \;=\; 2\, r_{L_\text{new}}\, \cos(A/4) \;+\; r_{S_\text{new}}\, \bigl(2\cos(A/4) - 1\bigr)
 $$
 
-**The unit's net curvature contribution to the parent arc is zero.** Consequently the parent arc's ∫κ ds is preserved, and the parent-level closure-path charge (±2/3 or ∓1/3) is preserved at the parent's level.
+This is **one constraint with two unknowns**. Either r_L_new or r_S_new can be chosen freely; the other is determined:
 
-The balanced unit applies uniformly to both parent lobes and parent saddles — the geometric arrangement differs (orientation depends on parent convexity) but the composition (1L + 2S) is identical.
+  r_S_new = (r_p − 2 r_L_new cos(A/4)) / (2 cos(A/4) − 1)
 
-### 3.2 Spatial arrangement along parent arc
+  r_L_new = (r_p − r_S_new (2 cos(A/4) − 1)) / (2 cos(A/4))
+
+**Specializations:**
+
+- **Level 1 → 2 (A = 120°)**, cos(A/4) = cos(30°) = √3/2 ≈ 0.866:
+  
+  r_p = √3 · r_L_new + (√3 − 1) · r_S_new
+  
+- **Level 2 → 3 (A = 60°)**, cos(A/4) = cos(15°) ≈ 0.9659:
+  
+  r_p ≈ 1.932 · r_L_new + 0.932 · r_S_new
+
+- **Level n → n+1**: as A halves, cos(A/4) approaches 1, and the constraint approaches r_p ≈ 2 r_L_new + r_S_new in the deep-recursion limit.
+
+### 3.5 Valid range for r_L_new
+
+For both r_L_new > 0 and 0 ≤ r_S_new ≤ r_L_new (saddle no bigger than lobe), the free parameter r_L_new / r_p is bounded:
+
+- **Lower bound** (r_S_new = r_L_new, "symmetric"):  r_L_new / r_p = 1 / (4 cos(A/4) − 1)
+- **Upper bound** (r_S_new = 0):  r_L_new / r_p = 1 / (2 cos(A/4))
+
+Numerical ranges:
+
+| Parent extent A | cos(A/4) | r_L_new / r_p range |
+|---|---|---|
+| 120° (level 1 → 2) | √3/2 ≈ 0.8660 | (0.4058, 0.5774) |
+| 60° (level 2 → 3) | cos(15°) ≈ 0.9659 | (0.3489, 0.5176) |
+| 30° (level 3 → 4) | cos(7.5°) ≈ 0.9914 | (0.3360, 0.5043) |
+
+So at every level the lobe shrinks by a factor of roughly 0.4–0.55 per recursion step.
+
+### 3.6 Which arcs get bisected at each level
+
+Only **previous-level sub-lobes** are bisected at the next level:
+
+- **Level 1 → 2:** bisect the 6 level-1 lobe sub-arcs (the L120 arcs of the 3 base primitives).
+- **Level 2 → 3:** bisect only the 12 *new* level-2 sub-lobes (the L60 arcs inserted at level 2). The 12 L30 remnants from the level-2 bisection retain their level-1 parent radius, so applying the level-3 constraint to them would force the wrong r_S — they remain unchanged at level 3.
+- **Level n → n+1:** bisect only the previous level's new sub-lobes.
+
+Saddle arcs (level-1 saddles, level-2 sub-saddles, etc.) are **never bisected**.
+
+### 3.7 Per-feature charges preserved at every level
+
+Per-arc charges by Gauss-Bonnet:
+
+  Q = (1/2π) ∫_arc κ ds = (1/2π) × (sign) × (angular extent)
+
+For convex (sign +1) arcs with angular extent A_arc on their kissing circle:
+  Q = A_arc / (2π × 360° / radians) = A_arc / (2π) in radians.
+
+For the construction's canonical extents:
+- L240 (level-1 full lobe, two L120 on one circle) → Q = +2/3 per full traversal.
+- L120 sub-arc → Q = +1/3 contribution.
+- L60 (level-2 sub-lobe), L30 (level-3 sub-lobe) → progressively smaller contributions.
+- Saddle arcs: negative contributions of the corresponding fractions.
+
+The **full-lobe charge** of +2/3 (and full-saddle −1/3) is preserved at every level because the per-arc curvature integration sums to the same total along any closed sub-path around a feature.
+
+---
+
+## ⚠ DEPRECATED — the original "balanced unit inscription" recursion below
+
+**The sections that follow (former §3.2 through §5) describe the original recursion that was found to be geometrically self-inconsistent (see §0.1).** They are retained as reference to document the failed approach, but the implementation follows §3 (rewritten above), not these sections.
+
+### 3.2 (deprecated) Spatial arrangement along parent arc
 
 The default placement is **single-unit, centered, symmetric**:
 

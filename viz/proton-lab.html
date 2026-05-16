@@ -157,6 +157,29 @@
   <div class="sep"></div>
 
   <div class="cg">
+    <label>fractal</label>
+    <select id="sel-fractal" style="background:#111; border:1px solid var(--border); color:var(--text); border-radius:3px; padding:3px 6px; font-size:11px;">
+      <option value="1" selected>Level 1</option>
+      <option value="2">Level 2</option>
+      <option value="3">Level 3</option>
+    </select>
+  </div>
+
+  <div class="cg" id="cg-rL2" style="display:none;">
+    <label>r<sub>L2</sub>/r<sub>p</sub></label>
+    <input type="range" id="sl-rL2" min="0.41" max="0.575" step="0.005" value="0.5">
+    <span class="val" id="v-rL2">0.500</span>
+  </div>
+
+  <div class="cg" id="cg-rL3" style="display:none;">
+    <label>r<sub>L3</sub>/r<sub>p</sub></label>
+    <input type="range" id="sl-rL3" min="0.35" max="0.515" step="0.005" value="0.45">
+    <span class="val" id="v-rL3">0.450</span>
+  </div>
+
+  <div class="sep"></div>
+
+  <div class="cg">
     <label>τ</label>
     <div class="tau-stepper">
       <button class="btn step-btn" id="btn-tau-dec">−</button>
@@ -358,6 +381,16 @@ const S = {
   particle: 'proton',
   customNth: 3,
   customNph: 0,
+  // Fractal construction (per work/clover-on-clover.md §3 rewritten):
+  //  fractalLevel = 1 : base clover (no recursion).
+  //  fractalLevel = 2 : bisect each level-1 L120, insert primitive at r_L2/r_p.
+  //  fractalLevel = 3 : also bisect each level-2 sub-lobe at r_L3/r_p.
+  // r_L_n is the FRACTION (level-n lobe radius / parent radius). The parent
+  // radius is r_L_(n-1). The saddle radius is derived from the closure
+  // constraint r_p = 2 r_L cos(A/4) + r_S (2 cos(A/4) - 1).
+  fractalLevel: 1,
+  rL2Frac: 0.50,        // r_L2 / r_L1, within ~(0.406, 0.577)
+  rL3Frac: 0.45,        // r_L3 / r_L2, within ~(0.349, 0.518)
   showSurface: true,
   showWire: false,
   showColor: true,
@@ -458,17 +491,243 @@ function profileAt(phi, rL, rS) {
   return { x, y, kind };
 }
 
-/* Pre-sample profile to a typed array for fast surface mesh construction. */
-function sampleProfile(N, rL, rS) {
+/* ─── Fractal cross-section (clover-on-clover) ────────────── */
+/*
+ * Per projects/sheet-proton/work/clover-on-clover.md §3 (rewritten):
+ *
+ *   Level 1: 12-arc base clover (6 L120 + 6 S60, viewed as 3 primitives).
+ *   Level n+1: each previous-level sub-lobe is bisected; central HALF is
+ *              removed; a smaller primitive (S(A/4) - L(A/2) - L(A/2) - S(A/4))
+ *              is inserted in the gap. Closure constraint:
+ *
+ *                r_p = 2·r_L_new·cos(A/4) + r_S_new·(2·cos(A/4) − 1)
+ *
+ *              where r_p is the parent's kissing-circle radius and A is the
+ *              parent's angular extent. Saddle radius is DERIVED from this
+ *              constraint given r_L_new. Saddles are NEVER bisected.
+ */
+
+/* Build the level-1 clover as 12 arcs in primitive order:
+ *   for k = 0..2: [S60_prev_half, L120_a, L120_b, S60_next_half]
+ * Each arc: { cx, cy, r, a0, a1, sign, levelCreated, isSubLobe, kind }.
+ * kind: 0 = lobe, 1 = saddle (matches existing prof.ks convention).
+ */
+function buildLevel1Arcs(rL, rS) {
+  const d = rL + rS;
+  const arcs = [];
+  for (let k = 0; k < 3; k++) {
+    const alphaL = TAU * k / 3;
+    // Second half of saddle (k-1 -> k), from inward midpoint to next lobe
+    const alphaSp = alphaL - Math.PI / 3;
+    const cxSp = d * Math.cos(alphaSp), cySp = d * Math.sin(alphaSp);
+    arcs.push({
+      cx: cxSp, cy: cySp, r: rS,
+      a0: alphaSp - Math.PI,
+      a1: alphaSp - 4 * Math.PI / 3,
+      sign: -1, levelCreated: 1, isSubLobe: false, kind: 1,
+    });
+    // Lobe k: 240° split into 2 L120
+    const cxL = d * Math.cos(alphaL), cyL = d * Math.sin(alphaL);
+    arcs.push({
+      cx: cxL, cy: cyL, r: rL,
+      a0: alphaL - 2 * Math.PI / 3, a1: alphaL,
+      sign: +1, levelCreated: 1, isSubLobe: true, kind: 0,
+    });
+    arcs.push({
+      cx: cxL, cy: cyL, r: rL,
+      a0: alphaL, a1: alphaL + 2 * Math.PI / 3,
+      sign: +1, levelCreated: 1, isSubLobe: true, kind: 0,
+    });
+    // First half of saddle (k -> k+1)
+    const alphaSn = alphaL + Math.PI / 3;
+    const cxSn = d * Math.cos(alphaSn), cySn = d * Math.sin(alphaSn);
+    arcs.push({
+      cx: cxSn, cy: cySn, r: rS,
+      a0: alphaSn - 2 * Math.PI / 3,
+      a1: alphaSn - Math.PI,
+      sign: -1, levelCreated: 1, isSubLobe: false, kind: 1,
+    });
+  }
+  return arcs;
+}
+
+/* Bisect one parent lobe arc and insert a level-(level+1) primitive.
+ * Returns 6 new arcs replacing the parent:
+ *   [parent_left_remnant, sub_saddle_a, sub_lobe_a, sub_lobe_b, sub_saddle_b, parent_right_remnant]
+ *
+ * rLNew is the new lobe radius (caller provides absolute value, not ratio).
+ * rSNew is computed from the constraint based on the parent's angular extent.
+ */
+function bisectAndInsert(parent, rLNew, level) {
+  const A = Math.abs(parent.a1 - parent.a0);
+  const c = Math.cos(A / 4);
+  const denom = 2 * c - 1;
+  if (denom < 1e-9) return null;  // degenerate
+  const rSNew = (parent.r - 2 * rLNew * c) / denom;
+  if (rSNew < 0 || rSNew > rLNew) return null;  // out of valid range
+  const tangentSum = rLNew + rSNew;
+
+  const cx = parent.cx, cy = parent.cy, rp = parent.r;
+  const aStart = parent.a0, aEnd = parent.a1;
+  const sweep = aEnd - aStart;
+  const aLeftInnerEnd = aStart + sweep / 4;
+  const aRightInnerStart = aStart + 3 * sweep / 4;
+
+  const PL = [cx + rp * Math.cos(aLeftInnerEnd), cy + rp * Math.sin(aLeftInnerEnd)];
+  const PR = [cx + rp * Math.cos(aRightInnerStart), cy + rp * Math.sin(aRightInnerStart)];
+
+  // Exterior normals at PL, PR (parent convex, sign +1)
+  const nL = [(PL[0] - cx) / rp, (PL[1] - cy) / rp];
+  const nR = [(PR[0] - cx) / rp, (PR[1] - cy) / rp];
+
+  const CSa = [PL[0] + rSNew * nL[0], PL[1] + rSNew * nL[1]];
+  const CSb = [PR[0] + rSNew * nR[0], PR[1] + rSNew * nR[1]];
+
+  const Mss = [(CSa[0] + CSb[0]) / 2, (CSa[1] + CSb[1]) / 2];
+  const h = Math.hypot(CSb[0] - CSa[0], CSb[1] - CSa[1]) / 2;
+  if (tangentSum < h) return null;
+  const dPerp = Math.sqrt(tangentSum * tangentSum - h * h);
+
+  // Interior direction from Mss toward parent center
+  const vToCp = [cx - Mss[0], cy - Mss[1]];
+  const vLen = Math.hypot(vToCp[0], vToCp[1]);
+  const uToCp = vLen < 1e-12 ? [1, 0] : [vToCp[0] / vLen, vToCp[1] / vLen];
+  const CL = [Mss[0] + dPerp * uToCp[0], Mss[1] + dPerp * uToCp[1]];
+
+  // Junction points
+  function junction(C1, C2, r1) {
+    const dx = C2[0] - C1[0], dy = C2[1] - C1[1];
+    const d = Math.hypot(dx, dy);
+    return [C1[0] + r1 * dx / d, C1[1] + r1 * dy / d];
+  }
+  const J1 = junction(CSa, CL, rSNew);
+  const J2 = junction(CSb, CL, rSNew);
+
+  function angleOf(P, C) { return Math.atan2(P[1] - C[1], P[0] - C[0]); }
+  const saddleExtent = A / 4;
+  const lobeExtent = A / 2;
+
+  // Sub-saddle 1: CW sweep -saddleExtent from PL
+  const aS1Start = angleOf(PL, CSa);
+  const aS1End = aS1Start - saddleExtent;
+
+  // Sub-saddle 2: CW sweep -saddleExtent ending at PR
+  const aS2End = angleOf(PR, CSb);
+  const aS2Start = aS2End + saddleExtent;
+
+  // Sub-lobes: CCW on CL from J1 through outward midpoint to J2
+  const aLJ1 = angleOf(J1, CL);
+  const aLJ2 = angleOf(J2, CL);
+  let totalSweep = 2 * lobeExtent;
+  // The CCW arc from J1 to J2 of length totalSweep should pass through the
+  // outward midpoint (opposite to uToCp from CL). We pick the direction by
+  // checking which CCW path matches.
+  let ccwDelta = ((aLJ2 - aLJ1) % TAU + TAU) % TAU;
+  // If ccwDelta is close to totalSweep, use it; otherwise we need to flip.
+  let actualSweep = ccwDelta;
+  if (Math.abs(actualSweep - totalSweep) > Math.PI) {
+    // Swap direction
+    actualSweep = ccwDelta - TAU;
+  }
+  const aLMid = aLJ1 + actualSweep / 2;
+
+  return [
+    { cx, cy, r: rp,
+      a0: aStart, a1: aLeftInnerEnd,
+      sign: +1, levelCreated: parent.levelCreated, isSubLobe: false, kind: 0 },
+    { cx: CSa[0], cy: CSa[1], r: rSNew,
+      a0: aS1Start, a1: aS1End,
+      sign: -1, levelCreated: level, isSubLobe: false, kind: 1 },
+    { cx: CL[0], cy: CL[1], r: rLNew,
+      a0: aLJ1, a1: aLMid,
+      sign: +1, levelCreated: level, isSubLobe: true, kind: 0 },
+    { cx: CL[0], cy: CL[1], r: rLNew,
+      a0: aLMid, a1: aLJ1 + actualSweep,
+      sign: +1, levelCreated: level, isSubLobe: true, kind: 0 },
+    { cx: CSb[0], cy: CSb[1], r: rSNew,
+      a0: aS2Start, a1: aS2End,
+      sign: -1, levelCreated: level, isSubLobe: false, kind: 1 },
+    { cx, cy, r: rp,
+      a0: aRightInnerStart, a1: aEnd,
+      sign: +1, levelCreated: parent.levelCreated, isSubLobe: false, kind: 0 },
+  ];
+}
+
+/* Build the full arc list at a given fractal level. */
+function buildFractalArcs(rL, rS, level, rL2Frac, rL3Frac) {
+  let arcs = buildLevel1Arcs(rL, rS);
+  if (level >= 2) {
+    const next = [];
+    for (const a of arcs) {
+      if (a.isSubLobe && a.levelCreated === 1) {
+        const result = bisectAndInsert(a, rL2Frac * a.r, 2);
+        if (result) next.push(...result); else next.push(a);
+      } else {
+        next.push(a);
+      }
+    }
+    arcs = next;
+  }
+  if (level >= 3) {
+    const next = [];
+    for (const a of arcs) {
+      if (a.isSubLobe && a.levelCreated === 2) {
+        const result = bisectAndInsert(a, rL3Frac * a.r, 3);
+        if (result) next.push(...result); else next.push(a);
+      } else {
+        next.push(a);
+      }
+    }
+    arcs = next;
+  }
+  return arcs;
+}
+
+/* Sample arcs by arc-length into the same xs/ys/ks/N format as sampleProfile.
+ * Each arc gets samples proportional to its arc-length. φ ∈ [0, 2π) maps
+ * monotonically through the arc sequence. */
+function sampleProfileFromArcs(N, arcs) {
+  const lengths = arcs.map(a => a.r * Math.abs(a.a1 - a.a0));
+  const total = lengths.reduce((s, v) => s + v, 0);
   const xs = new Float32Array(N + 1);
   const ys = new Float32Array(N + 1);
   const ks = new Uint8Array(N + 1);
+  // Cumulative length boundaries normalized to [0, 1]
+  const cum = [0];
+  for (const L of lengths) cum.push(cum[cum.length - 1] + L);
   for (let j = 0; j <= N; j++) {
-    const phi = (j / N) * TAU;
-    const p = profileAt(phi, rL, rS);
-    xs[j] = p.x; ys[j] = p.y; ks[j] = p.kind;
+    const t = (j / N) * total;
+    // Find arc that contains t
+    let idx = 0;
+    while (idx < arcs.length && cum[idx + 1] < t) idx++;
+    if (idx >= arcs.length) idx = arcs.length - 1;
+    const a = arcs[idx];
+    const tInArc = (t - cum[idx]) / lengths[idx];
+    const ang = a.a0 + tInArc * (a.a1 - a.a0);
+    xs[j] = a.cx + a.r * Math.cos(ang);
+    ys[j] = a.cy + a.r * Math.sin(ang);
+    ks[j] = a.kind;
   }
   return { xs, ys, ks, N };
+}
+
+/* Pre-sample profile to a typed array for fast surface mesh construction. */
+function sampleProfile(N, rL, rS) {
+  // For level 1, use the analytical profile (faster).
+  if (S.fractalLevel === 1) {
+    const xs = new Float32Array(N + 1);
+    const ys = new Float32Array(N + 1);
+    const ks = new Uint8Array(N + 1);
+    for (let j = 0; j <= N; j++) {
+      const phi = (j / N) * TAU;
+      const p = profileAt(phi, rL, rS);
+      xs[j] = p.x; ys[j] = p.y; ks[j] = p.kind;
+    }
+    return { xs, ys, ks, N };
+  }
+  // For levels 2+, build the fractal arc list and sample by arc-length.
+  const arcs = buildFractalArcs(rL, rS, S.fractalLevel, S.rL2Frac, S.rL3Frac);
+  return sampleProfileFromArcs(N, arcs);
 }
 
 /* Look up the profile at arbitrary φ via linear interpolation. */
@@ -1002,6 +1261,16 @@ bindSlider('sl-R', 'R', 'v-R', v => v.toFixed(2), () => rebuildAll());
 bindSlider('sl-rL', 'rL', 'v-rL', v => v.toFixed(2), () => { profileDirty = true; rebuildAll(); });
 bindSlider('sl-rS', 'rS', 'v-rS', v => v.toFixed(2), () => { profileDirty = true; rebuildAll(); });
 bindSlider('sl-op', 'opacity', 'v-op', v => v.toFixed(2), () => { surfMaterial.opacity = S.opacity; });
+bindSlider('sl-rL2', 'rL2Frac', 'v-rL2', v => v.toFixed(3), () => { profileDirty = true; rebuildAll(); });
+bindSlider('sl-rL3', 'rL3Frac', 'v-rL3', v => v.toFixed(3), () => { profileDirty = true; rebuildAll(); });
+
+$('sel-fractal').addEventListener('change', () => {
+  S.fractalLevel = parseInt($('sel-fractal').value, 10);
+  $('cg-rL2').style.display = (S.fractalLevel >= 2) ? '' : 'none';
+  $('cg-rL3').style.display = (S.fractalLevel >= 3) ? '' : 'none';
+  profileDirty = true;
+  rebuildAll();
+});
 
 $('btn-tau-dec').addEventListener('click', () => {
   S.tauNum -= 1;
@@ -1150,6 +1419,11 @@ function syncControlsFromState() {
   $('custom-path-controls').style.display = (S.particle === 'custom') ? 'block' : 'none';
   if (S.customNth !== undefined) $('in-nth').value = S.customNth;
   if (S.customNph !== undefined) $('in-nph').value = S.customNph;
+  $('sel-fractal').value = String(S.fractalLevel);
+  $('sl-rL2').value = S.rL2Frac; $('v-rL2').textContent = S.rL2Frac.toFixed(3);
+  $('sl-rL3').value = S.rL3Frac; $('v-rL3').textContent = S.rL3Frac.toFixed(3);
+  $('cg-rL2').style.display = (S.fractalLevel >= 2) ? '' : 'none';
+  $('cg-rL3').style.display = (S.fractalLevel >= 3) ? '' : 'none';
   for (const [id, key] of Object.entries(toggles)) {
     $(id).checked = S[key];
   }
@@ -1161,6 +1435,7 @@ function resetToDefaults() {
     tauNum: 1, shearNum: 0, opacity: 0.55,
     particle: 'proton',
     customNth: 3, customNph: 0,
+    fractalLevel: 1, rL2Frac: 0.50, rL3Frac: 0.45,
     showSurface: true, showWire: false, showColor: true,
     showGrid: false, showPath: true, showSpine: false, showAxes: false,
   });
