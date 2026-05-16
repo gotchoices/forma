@@ -2,7 +2,9 @@
 
 Tracks the project's active work files, their states, dependencies, and next actions. Living document — update as work progresses.
 
-**Project state:** Work-file-driven exploration. The proton sheet's specific structure (geometry, quark content, mediator physics) is being investigated through focused work files; chapter-level prose emerges only after work files converge on stable conclusions.
+**Project state:** **On hold** as of 2026-05-16. The dim-sharing reframe explored in 3-torus.md and ma-share-6.md (both since moved to [ma-6](../../ma-6/)) suggested that the three-sheet architecture should be reconceived as a single 6-dim Ma domain with sparse cross-terms. The new architecture is being developed in [ma-6](../../ma-6/); sheet-proton's clover-quarks 1/3-twist mechanism and R53 / model-F charged-lepton fit are inherited as working results there. This project resumes when ma-6 either converges on the unified architecture (in which case sheet-proton is retired or refactored) or finds the reframe untenable (in which case sheet-proton picks up where it left off).
+
+**Project state (pre-hold):** Work-file-driven exploration. The proton sheet's specific structure (geometry, quark content, mediator physics) is being investigated through focused work files; chapter-level prose emerges only after work files converge on stable conclusions.
 
 ---
 

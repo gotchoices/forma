@@ -2,7 +2,7 @@
 
 **Status:** Two-test investigation of the hypothesis that each particle sheet is a *3-torus* (three compact dimensions with dramatically different circumferences L₁ ≪ L₂ ≪ L₃) rather than a 2-torus, with the three Standard Model generations corresponding to modes living in the three coordinate planes (12, 13, 23).
 
-**Why this is worth testing.** Phase 3 / Phase 4 of the corrugated-clover work ([3-gen.md §12–§13](3-gen.md)) ruled out the multi-generation mass hierarchy from a 2D-surface picture, both with the bisect-and-insert fractal recursion ([clover-on-clover.md](clover-on-clover.md)) and with the alternative three-radius cross-section ([clover-inverse.md](clover-inverse.md)). The 3D wave-guide extension recovers the hierarchy qualitatively but with no quantitative discriminator. This file tests a structurally different reframing: instead of fitting hierarchy by extreme ε or fractal nesting on a 2D sheet, let *each sheet itself* be 3D and let the three coordinate planes carry the three generations directly.
+**Why this is worth testing.** Phase 3 / Phase 4 of the corrugated-clover work ([sheet-proton 3-gen.md §12–§13](../../sheet-proton/work/3-gen.md)) ruled out the multi-generation mass hierarchy from a 2D-surface picture, both with the bisect-and-insert fractal recursion ([sheet-proton clover-on-clover.md](../../sheet-proton/work/clover-on-clover.md)) and with the alternative three-radius cross-section ([sheet-proton clover-inverse.md](../../sheet-proton/work/clover-inverse.md)). The 3D wave-guide extension recovers the hierarchy qualitatively but with no quantitative discriminator. This file tests a structurally different reframing: instead of fitting hierarchy by extreme ε or fractal nesting on a 2D sheet, let *each sheet itself* be 3D and let the three coordinate planes carry the three generations directly.
 
 ---
 
@@ -214,10 +214,10 @@ Until that calculation is done, the 3-torus three-generations hypothesis sits at
 
 ## 6. Cross-references
 
-- [3-gen.md §12–§13](3-gen.md) — Phase 3 / Phase 4 multi-generation analyses (the negative results that motivate this file).
-- [clover-on-clover.md](clover-on-clover.md) — fractal-recursion attempt (V1), failed.
-- [clover-inverse.md](clover-inverse.md) — three-radius cross-section attempt (V2), also failed.
-- [clover-quarks.md §11](clover-quarks.md) — per-arc curvature charges (the one-generation result that is preserved across both 2D and 3D pictures).
+- [sheet-proton 3-gen.md §12–§13](../../sheet-proton/work/3-gen.md) — Phase 3 / Phase 4 multi-generation analyses (the negative results that motivate this file).
+- [sheet-proton clover-on-clover.md](../../sheet-proton/work/clover-on-clover.md) — fractal-recursion attempt (V1), failed.
+- [sheet-proton clover-inverse.md](../../sheet-proton/work/clover-inverse.md) — three-radius cross-section attempt (V2), also failed.
+- [sheet-proton clover-quarks.md §11](../../sheet-proton/work/clover-quarks.md) — per-arc curvature charges (the one-generation result that is preserved across both 2D and 3D pictures).
 - [studies/R19-charge-from-shear](../../../studies/R19-charge-from-shear) — original 2D-MaSt derivation of "charge requires tube winding" (the rule whose 3D extension is the linchpin of this file's hypothesis).
 - [studies/R46-electron-filter](../../../studies/R46-electron-filter) — 2D-MaSt analysis of (1, 1) ghost-filtering mechanisms (waveguide cutoff, helicity selection); analogs would extend to the 3D case.
 - [studies/Q94-compton-window-and-dark-modes](../../../qa/Q94-compton-window-and-dark-modes.md) — the dark-modes-as-dark-matter hypothesis; relevant if Test B confirms the selection rule, since the 1D-line tower would then be a dark-matter candidate.
