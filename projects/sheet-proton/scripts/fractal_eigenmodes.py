@@ -50,6 +50,7 @@ from clover_on_clover import (
     build_fractal_clover,
     saddle_radius_for_lobe,
 )
+from clover_inverse import build_clover_inverse_arcs
 
 
 # Observed quark masses (PDG current-quark masses, MeV).
@@ -228,23 +229,36 @@ def classify_mode(
 
 
 def forward_solver(
-    level: int,
-    r_lobe_1: float,
-    r_saddle_1: float,
-    rL2_frac: float,
-    rL3_frac: float,
+    variant: str = "clover",
+    level: int = 1,
+    r_lobe_1: float = 1.0,
+    r_saddle_1: float = 0.5,
+    rL2_frac: float = 0.5,
+    rL3_frac: float = 0.45,
+    r_outer: float = 1.0,
+    r_inner: float = 0.3,
+    r_conn: float = 0.1,
     grid_n: int = 200,
     n_modes: int = 25,
 ) -> dict:
-    """Run the forward solver for given parameters; return results dict."""
-    # Build fractal arc list using the existing clover_on_clover module
-    shrinks = []
-    if level >= 2:
-        shrinks.append(rL2_frac)
-    if level >= 3:
-        shrinks.append(rL3_frac)
-    levels_arcs, sub_saddles = build_fractal_clover(r_lobe_1, r_saddle_1, shrinks)
-    arcs = levels_arcs[-1]
+    """Run the forward solver for given parameters; return results dict.
+
+    variant: "clover" (V1, bisect-and-insert fractal at levels 1-3) or
+             "clover-inverse" (V2, outer/inner lobes + connectors at level 1).
+    """
+    if variant == "clover":
+        shrinks = []
+        if level >= 2:
+            shrinks.append(rL2_frac)
+        if level >= 3:
+            shrinks.append(rL3_frac)
+        levels_arcs, sub_saddles = build_fractal_clover(r_lobe_1, r_saddle_1, shrinks)
+        arcs = levels_arcs[-1]
+    elif variant == "clover-inverse":
+        arcs = build_clover_inverse_arcs(r_outer, r_inner, r_conn)
+        sub_saddles = []
+    else:
+        raise ValueError(f"unknown variant: {variant}")
 
     # Sample boundary and build grid
     boundary = sample_boundary(arcs, samples_per_arc=40)
@@ -256,8 +270,12 @@ def forward_solver(
 
     # Build Laplacian and solve
     L, idx_grid, interior_ij = build_laplacian(inside, h)
-    # Use shift-invert mode for lowest eigenvalues.
-    eigvals, eigvecs = eigsh(L, k=n_modes, sigma=0.0, which="LM")
+    # Use shift-invert mode. sigma=0 picks lowest eigenvalues.
+    # For exploring higher-frequency modes (e.g., near a predicted band),
+    # pass sigma != 0 via the global SIGMA env hack — kept simple here.
+    import os as _os
+    sigma_val = float(_os.environ.get("EIGS_SIGMA", "0.0"))
+    eigvals, eigvecs = eigsh(L, k=n_modes, sigma=sigma_val, which="LM")
     order = np.argsort(eigvals)
     eigvals = eigvals[order]
     eigvecs = eigvecs[:, order]
@@ -275,10 +293,12 @@ def forward_solver(
         fraction_table.append(fracs)
 
     return {
+        "variant": variant,
         "level": level,
         "params": dict(
             r_lobe_1=r_lobe_1, r_saddle_1=r_saddle_1,
             rL2_frac=rL2_frac, rL3_frac=rL3_frac,
+            r_outer=r_outer, r_inner=r_inner, r_conn=r_conn,
             sub_saddles=sub_saddles,
         ),
         "n_inside": n_inside,
@@ -335,14 +355,29 @@ def assign_quark_masses(result: dict) -> Dict[str, Tuple[float, int]]:
 
 def report(result: dict) -> None:
     print(f"\n=== Forward solver results ===")
-    print(
-        f"Level {result['level']}, "
-        f"r_lobe_1 = {result['params']['r_lobe_1']:.3f}, "
-        f"r_saddle_1 = {result['params']['r_saddle_1']:.3f}"
-    )
-    if result["params"]["sub_saddles"]:
-        for k, rS in enumerate(result["params"]["sub_saddles"], start=2):
-            print(f"  level-{k} saddle radius (computed): {rS:.4f}")
+    variant = result.get("variant", "clover")
+    print(f"Variant: {variant}")
+    if variant == "clover":
+        print(
+            f"Level {result['level']}, "
+            f"r_lobe_1 = {result['params']['r_lobe_1']:.3f}, "
+            f"r_saddle_1 = {result['params']['r_saddle_1']:.3f}"
+        )
+        if result["params"]["sub_saddles"]:
+            for k, rS in enumerate(result["params"]["sub_saddles"], start=2):
+                print(f"  level-{k} saddle radius (computed): {rS:.4f}")
+    else:
+        print(
+            f"r_outer = {result['params']['r_outer']:.4f}, "
+            f"r_inner = {result['params']['r_inner']:.4f}, "
+            f"r_conn = {result['params']['r_conn']:.4f}"
+        )
+        print(
+            f"  predicted mass scales (1/r): "
+            f"1/r_outer = {1/result['params']['r_outer']:.2f}, "
+            f"1/r_inner = {1/result['params']['r_inner']:.2f}, "
+            f"1/r_conn  = {1/result['params']['r_conn']:.2f}"
+        )
     print(
         f"  grid: {result['grid'][0].shape[0]}^2, "
         f"interior nodes: {result['n_inside']}"
@@ -392,19 +427,31 @@ def report(result: dict) -> None:
     print(f"  observed m_b/m_s = {obs['b']/obs['s']:.2f}   "
           f"(inter-generation s → b)")
     print()
-    print(f"  geometric ratios available in this construction:")
-    rL1 = result['params']['r_lobe_1']
-    rS1 = result['params']['r_saddle_1']
-    rL2_frac = result['params'].get('rL2_frac')
-    rL3_frac = result['params'].get('rL3_frac')
-    print(f"    r_L1 / r_S1            = {rL1/rS1:.3f}   "
-          f"(within-gen-1 cap)")
-    if rL2_frac:
-        print(f"    r_L1 / r_L2            = {1/rL2_frac:.3f}   "
-              f"(gen-1 → gen-2 cap)")
-    if rL3_frac:
-        print(f"    r_L2 / r_L3            = {1/rL3_frac:.3f}   "
-              f"(gen-2 → gen-3 cap)")
+    if variant == "clover":
+        print(f"  geometric ratios available in this construction:")
+        rL1 = result['params']['r_lobe_1']
+        rS1 = result['params']['r_saddle_1']
+        rL2_frac = result['params'].get('rL2_frac')
+        rL3_frac = result['params'].get('rL3_frac')
+        print(f"    r_L1 / r_S1            = {rL1/rS1:.3f}   "
+              f"(within-gen-1 cap)")
+        if rL2_frac:
+            print(f"    r_L1 / r_L2            = {1/rL2_frac:.3f}   "
+                  f"(gen-1 → gen-2 cap)")
+        if rL3_frac:
+            print(f"    r_L2 / r_L3            = {1/rL3_frac:.3f}   "
+                  f"(gen-2 → gen-3 cap)")
+    else:  # clover-inverse
+        ro = result['params']['r_outer']
+        ri = result['params']['r_inner']
+        rc = result['params']['r_conn']
+        print(f"  inter-scale ratios (V2 level 1):")
+        print(f"    r_outer / r_inner    = {ro/ri:.3f}   "
+              f"(gen-1 → gen-2 if cavity-mode scaling)")
+        print(f"    r_inner / r_conn     = {ri/rc:.3f}   "
+              f"(gen-2 → gen-3 if cavity-mode scaling)")
+        print(f"    r_outer / r_conn     = {ro/rc:.3f}   "
+              f"(gen-1 → gen-3 if cavity-mode scaling)")
 
     # Absolute caps from the closure constraint.
     # Maximum r_p / r_L_new is at the lower bound of r_L_new / r_p:
@@ -422,24 +469,43 @@ def report(result: dict) -> None:
     print("\n--- Verdict ---")
     print(f"  Eigenvalue spread across {len(eigvals)} computed modes:")
     print(f"    sqrt(λ_max) / sqrt(λ_min) = {m_max/m0:.2f}")
-    print(f"")
-    print(f"  Within-generation gen-1 split (m_d/m_u ≈ {obs['d']/obs['u']:.2f}):")
-    print(f"    REACHABLE — set r_L1 / r_S1 to match.")
-    print(f"")
-    print(f"  Inter-generation gen-1 → gen-2 (m_c/m_u ≈ {obs['c']/obs['u']:.0f}):")
-    print(f"    NOT REACHABLE — closure constraint caps r_L1/r_L2 at "
-          f"{max_cap_lvl2:.2f},")
-    print(f"    short by a factor of ~{(obs['c']/obs['u'])/max_cap_lvl2:.0f}.")
-    print(f"")
-    print(f"  Inter-generation gen-2 → gen-3 (m_t/m_c ≈ {obs['t']/obs['c']:.0f}):")
-    print(f"    NOT REACHABLE — closure constraint caps r_L2/r_L3 at "
-          f"{max_cap_lvl3:.2f},")
-    print(f"    short by a factor of ~{(obs['t']/obs['c'])/max_cap_lvl3:.0f}.")
-    print()
-    print(f"  Conclusion: this fractal construction's geometric shrinkage cap")
-    print(f"  (~2x per level) cannot reproduce the observed cross-generation")
-    print(f"  mass ratios (~20-600x). Cavity-mode scaling on the bisect-and-")
-    print(f"  insert clover gives at most 4× across all 30 computed modes.")
+    if variant == "clover":
+        print()
+        print(f"  Within-generation gen-1 split (m_d/m_u ≈ {obs['d']/obs['u']:.2f}):")
+        print(f"    REACHABLE — set r_L1 / r_S1 to match.")
+        print()
+        print(f"  Inter-generation gen-1 → gen-2 (m_c/m_u ≈ {obs['c']/obs['u']:.0f}):")
+        print(f"    NOT REACHABLE — closure constraint caps r_L1/r_L2 at "
+              f"{max_cap_lvl2:.2f},")
+        print(f"    short by a factor of ~{(obs['c']/obs['u'])/max_cap_lvl2:.0f}.")
+        print()
+        print(f"  Inter-generation gen-2 → gen-3 (m_t/m_c ≈ {obs['t']/obs['c']:.0f}):")
+        print(f"    NOT REACHABLE — closure constraint caps r_L2/r_L3 at "
+              f"{max_cap_lvl3:.2f},")
+        print(f"    short by a factor of ~{(obs['t']/obs['c'])/max_cap_lvl3:.0f}.")
+        print()
+        print(f"  Conclusion: this fractal construction's geometric shrinkage cap")
+        print(f"  (~2x per level) cannot reproduce the observed cross-generation")
+        print(f"  mass ratios (~20-600x).")
+    else:  # clover-inverse
+        ro = result['params']['r_outer']
+        ri = result['params']['r_inner']
+        rc = result['params']['r_conn']
+        print()
+        print(f"  Predicted bands (cavity-mode 1/r scaling):")
+        print(f"    band-1 (r_outer-scale):  m ≈ {1/ro:.2f}")
+        print(f"    band-2 (r_inner-scale):  m ≈ {1/ri:.2f}")
+        print(f"    band-3 (r_conn-scale):   m ≈ {1/rc:.2f}")
+        print(f"    predicted m_2/m_1 = {ro/ri:.2f}, m_3/m_2 = {ri/rc:.2f}")
+        print()
+        print(f"  Observed:  m_c/m_u ≈ {obs['c']/obs['u']:.0f}, "
+              f"m_t/m_c ≈ {obs['t']/obs['c']:.0f}")
+        print()
+        print(f"  Conclusion: V2's three radii are unbounded above (unlike V1's")
+        print(f"  closure-constrained fractal levels). Whether the cavity actually")
+        print(f"  hosts modes at all three scales must be read from the spectrum")
+        print(f"  above — look for gaps/bands at sqrt(λ) ≈ 1/r_outer, 1/r_inner,")
+        print(f"  and 1/r_conn.")
 
 
 # -----------------------------------------------------------------------------
@@ -501,13 +567,22 @@ def plot_modes(result: dict, output_path: Path, max_panels: int = 12) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--level", type=int, default=2, help="Fractal level (1-3)")
-    parser.add_argument("--r-lobe-1", type=float, default=1.0)
-    parser.add_argument("--r-saddle-1", type=float, default=0.5)
+    parser.add_argument("--variant", type=str, default="clover",
+                        choices=["clover", "clover-inverse"],
+                        help="Geometry variant (default: clover)")
+    parser.add_argument("--level", type=int, default=2, help="Fractal level (1-3, V1 only)")
+    parser.add_argument("--r-lobe-1", type=float, default=1.0, help="V1: level-1 lobe radius")
+    parser.add_argument("--r-saddle-1", type=float, default=0.5, help="V1: level-1 saddle radius")
     parser.add_argument("--rL2-frac", type=float, default=0.50,
-                        help="r_L2 / r_L1 (within (0.406, 0.577))")
+                        help="V1: r_L2 / r_L1 (within (0.406, 0.577))")
     parser.add_argument("--rL3-frac", type=float, default=0.45,
-                        help="r_L3 / r_L2 (within (0.349, 0.518))")
+                        help="V1: r_L3 / r_L2 (within (0.349, 0.518))")
+    parser.add_argument("--r-outer", type=float, default=1.0,
+                        help="V2: outer lobe radius")
+    parser.add_argument("--r-inner", type=float, default=0.3,
+                        help="V2: inner lobe radius (must be < (r_outer-r_conn)*sqrt(3)/2)")
+    parser.add_argument("--r-conn", type=float, default=0.1,
+                        help="V2: connector radius (must be < r_outer)")
     parser.add_argument("--grid", type=int, default=200,
                         help="Grid resolution per axis (default 200)")
     parser.add_argument("--n-modes", type=int, default=25,
@@ -522,11 +597,15 @@ def main() -> None:
     args = parser.parse_args()
 
     result = forward_solver(
+        variant=args.variant,
         level=args.level,
         r_lobe_1=args.r_lobe_1,
         r_saddle_1=args.r_saddle_1,
         rL2_frac=args.rL2_frac,
         rL3_frac=args.rL3_frac,
+        r_outer=args.r_outer,
+        r_inner=args.r_inner,
+        r_conn=args.r_conn,
         grid_n=args.grid,
         n_modes=args.n_modes,
     )
@@ -534,11 +613,17 @@ def main() -> None:
 
     if args.plot:
         args.outputs_dir.mkdir(parents=True, exist_ok=True)
-        out = args.outputs_dir / (
-            f"eigenmodes_L{args.level}_rL{args.r_lobe_1:.2f}_"
-            f"rS{args.r_saddle_1:.2f}_rL2{args.rL2_frac:.2f}_"
-            f"rL3{args.rL3_frac:.2f}.png"
-        )
+        if args.variant == "clover":
+            out = args.outputs_dir / (
+                f"eigenmodes_clover_L{args.level}_rL{args.r_lobe_1:.2f}_"
+                f"rS{args.r_saddle_1:.2f}_rL2{args.rL2_frac:.2f}_"
+                f"rL3{args.rL3_frac:.2f}.png"
+            )
+        else:
+            out = args.outputs_dir / (
+                f"eigenmodes_clover-inverse_rO{args.r_outer:.3f}_"
+                f"rI{args.r_inner:.3f}_rC{args.r_conn:.3f}.png"
+            )
         plot_modes(result, out)
 
 

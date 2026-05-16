@@ -171,7 +171,69 @@ Two cross-section variants now exist; both are candidates for the eigenmode-base
 
 ---
 
-## 7. Cross-references
+## 7. Eigenmode test results (Phase 4)
+
+After the V1 verdict (see [3-gen.md](3-gen.md) §13), V2 was tested as a candidate to escape V1's closure-constraint cap by providing three radii at level 1 (no fractal recursion required).
+
+### 7.1 Setup
+
+The forward solver [scripts/fractal_eigenmodes.py](../scripts/fractal_eigenmodes.py) was extended with a `--variant clover-inverse` dispatch that builds the V2 cross-section via `clover_inverse.build_clover_inverse_arcs(r_outer, r_inner, r_conn)` and feeds the resulting boundary polygon into the existing 2D Helmholtz solver. The hypothesis under test:
+
+> Three independent radii host three distinct mode bands, with cavity-mode mass scaling m ~ 1/r giving mass scales at 1/r_outer, 1/r_inner, 1/r_conn. The three bands correspond to three generations.
+
+### 7.2 Results: moderate ratios
+
+Two parameter sets were tested (both well within the radius bounds):
+
+| Test | r_outer | r_inner | r_conn | r_outer/r_inner | r_inner/r_conn | n_modes | Spectrum range (m) |
+|---|---|---|---|---|---|---|---|
+| A | 1.0 | 0.30 | 0.10 | 3.33 | 3.00 | 60 | 2.33 – 9.80 |
+| B | 1.0 | 0.15 | 0.05 | 6.67 | 3.00 | 40 | 1.94 – 7.95 |
+
+**Predicted bands** (1/r scaling) for test A: m ≈ {1.00, 3.33, 10.0}.
+**Actual spectrum**: smooth, continuous, no gaps separating three bands. Ground state at m = 2.33 (not at 1.00 as predicted). Highest computed mode at m ≈ 9.8 — just barely reaches the predicted band-3 frequency but with no visible band gap.
+
+**Predicted bands** for test B: m ≈ {1.00, 6.67, 20.0}.
+**Actual spectrum**: still continuous, m = 1.94 to 7.95. The predicted band-3 at m = 20 lies above the lowest 40 modes.
+
+### 7.3 What the spectrum is doing
+
+The cavity modes are governed by the **overall cavity size** (~ r_outer), not by the three feature scales. Specifically:
+
+- The lowest mode's eigenvalue corresponds to the cavity's coarsest "size mode" — analogous to the ground state of a disc of radius ~r_outer.
+- Higher modes are excitations on the SAME overall cavity, with progressively shorter wavelengths.
+- The smaller features (inner lobes, connectors) are **tangentially connected** to the outer-lobes — there are no barriers to confine modes inside the smaller features. So modes spread across the whole cavity.
+
+This is the same fundamental issue as V1: features need *barriers* (deep saddles, narrow throats with steep curvature transitions) to localize modes. V2's geometry has *thin* features but no barriers. Modes don't localize at the small scales until very high frequency (where wavelength ≲ feature size), which falls above the lowest ~60 modes.
+
+### 7.4 The high-frequency probe (partial)
+
+A targeted probe at sigma = 400 (predicted r_conn-band frequency for test B, m ≈ 20) was attempted to check whether very-high-frequency modes localize at the smallest features. The probe was interrupted by a transient classifier outage before completing; the partial result is not conclusive. Re-running with `EIGS_SIGMA=400 .venv/bin/python scripts/fractal_eigenmodes.py --variant clover-inverse --r-outer 1.0 --r-inner 0.15 --r-conn 0.05 --grid 400 --n-modes 20 --plot` would resolve this. The expected outcome: even if high-frequency modes do localize at r_conn-scale, they live at mode indices ~hundreds, far above where "first/second/third generation" mode identification would naturally place them.
+
+### 7.5 V2 verdict
+
+**V2 doesn't solve the mass-ratio problem either, but for a different reason than V1.**
+
+- V1 had a hard *geometric* cap on inter-generation ratios (closure constraint).
+- V2 has *no* geometric cap on ratios, but the *wave equation* doesn't read off the geometric scales — the spectrum is dominated by the overall cavity size.
+
+V2 trades V1's structural deficiency for a dynamical one. Same outcome: cavity-mode scaling on the 2D Helmholtz problem cannot reproduce the observed inter-generation quark mass ratios.
+
+### 7.6 What this leaves open for V2
+
+1. **Barrier-amplified modes.** If we deepened the indentation between adjacent outer-lobes (made the inner-lobe more "tunnel-barrier-like"), modes might localize at smaller scales with exponentially-amplified frequency gaps. This requires extending V2 with additional parameters (e.g., a "depth" knob beyond the current r_inner) and a corresponding update to the construction's closure constraints.
+
+2. **Charge interpretation.** V2's inner lobe carries Q = −2/3 per closure winding (not the standard down-quark −1/3). This is independent of the mass-mechanism question — even if V2 hosted three mode bands, the within-generation u/d assignment doesn't match the Standard Model cleanly. Possible readings (anti-up-stacked-pair, half-arc decomposition, non-standard) are listed in §3 and need clearer physical motivation regardless of the mass result.
+
+3. **Fractal recursion on V2.** The bisect-and-insert recursion analogous to V1's was found to be geometrically degenerate at A = 240° (the closure constraint gives r_L_new = r_p forced, no shrinkage). A different recursion family (different angular fractions, different primitive structure) is required if V2 is to host sub-features at finer scales — analogous to V1's level-2/3 but with different math.
+
+### 7.7 Cross-link to V1 verdict
+
+The combined V1+V2 verdict and its implications are documented in [3-gen.md](3-gen.md) §13.6–§13.7.
+
+---
+
+## 8. Cross-references
 
 - [clover-on-clover.md](clover-on-clover.md) — V1 spec.
 - [scripts/clover_on_clover.py](../scripts/clover_on_clover.py) — V1 implementation.

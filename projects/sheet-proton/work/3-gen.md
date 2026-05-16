@@ -604,3 +604,71 @@ The Phase 3 outcome is **constructive**, not negative, with one leading candidat
 - **Open:** quantitative validation via a 2D Helmholtz solver on the (nested-clover) cross-section is the natural next step. Predictive content of E rests on finding a substrate-level mechanism that explains the χ-growth and ρ-shrinkage patterns observed in the fit.
 
 Phase 4 should be reframed around the nested-corrugation extension as the leading candidate for the full quark spectrum on a single sheet, with cross-sheet structure (one sheet per generation) as the alternative architectural reading. The two pictures may turn out to be different decompositions of the same substrate-level physics.
+
+---
+
+## 13. Phase 4 verdict — bisect-and-insert clover-on-clover cannot reach observed ratios
+
+Phase 4 was performed by the forward solver in [scripts/fractal_eigenmodes.py](../scripts/fractal_eigenmodes.py), which computes the 2D Helmholtz eigenmodes on the fractal cross-section defined by [scripts/clover_on_clover.py](../scripts/clover_on_clover.py) (the bisect-and-insert construction specified in [clover-on-clover.md](clover-on-clover.md) §3).
+
+### 13.1 What was computed
+
+For each of fractal levels 1, 2, 3 at canonical-extent parameters (r_lobe_1 = 1.0, r_saddle_1 = 0.5, ρ = 0.5, χ = 0.5 at each sub-level — within the closure-constraint valid range):
+
+- Built the cross-section boundary as an arc list via `build_fractal_clover`.
+- Sampled the boundary as a closed polygon, masked an N×N grid (N up to 200) for interior points.
+- Built the sparse 5-point Laplacian on interior nodes with Dirichlet BC.
+- Computed the lowest 30 eigenvalues with `scipy.sparse.linalg.eigsh` (shift-invert mode at σ = 0).
+- Read off the eigenvalue spread (sqrt(λ_max)/sqrt(λ_min)) across the lowest 30 modes.
+
+### 13.2 What the spectrum shows
+
+At level 3 with canonical parameters, the lowest 30 mass eigenvalues span only **m_max / m_min ≈ 3.6**. The mode-band cluster ratios are 1.0, 1.25, 1.81, 2.18, 2.62, 3.27 against band 0. Smooth, continuous spread — no clean inter-generation gap.
+
+### 13.3 The closure-constraint cap
+
+The bisect-and-insert recursion's closure constraint forces the sub-lobe-to-parent radius ratio into a narrow window:
+
+  level 1 → 2 (parent extent A = 120°): r_L1 / r_L2 ≤ **2.46** (at r_S2 = r_L2 symmetric limit)
+  level 2 → 3 (parent extent A = 60°):  r_L2 / r_L3 ≤ **2.86**
+
+Since cavity modes scale as m ~ 1/r, these are also the inter-generation mass-ratio caps:
+
+| Ratio | Observed | Cap from construction | Shortfall |
+|---|---|---|---|
+| m_d / m_u | 2.18 | reachable via r_L1/r_S1 | ✓ |
+| m_c / m_u | 589 | 2.46 | 240× |
+| m_t / m_c | 136 | 2.86 | 47× |
+| m_s / m_d | 19.9 | ≤ 2.46 | 8× |
+| m_b / m_s | 44.7 | ≤ 2.86 | 16× |
+
+### 13.4 Verdict
+
+**The clover-on-clover construction with the bisect-and-insert recursion, under cavity-mode mass scaling, cannot reproduce the observed inter-generation quark mass ratios.** Within-generation splits (m_d/m_u) are reachable; inter-generation ratios are two orders of magnitude short of observation. The closure-constraint cap is a hard structural limit — adjusting fractal-level radii inside the valid range does not change the result. Within-band cavity-mode multipoles (the lowest 30 computed) give at most a factor of ~4 dynamic range.
+
+### 13.5 What this rules out vs. leaves open
+
+**Ruled out:** the leading candidate from §12 — "three nested geometric scales on a single clover-on-clover sheet, with each level hosting one generation via cavity-mode scaling" — does not work quantitatively. The structural compatibility identified in §5.5–§12 is real, but the mass-mechanism cannot be the simple "mode at scale r has mass ~ 1/r" reading.
+
+**Still open:**
+
+1. **Tunneling / barrier suppression.** If the saddles between lobes (or sub-lobes) were *deep* enough to act as semiclassical barriers, lobe-localized modes would have masses that split exponentially in barrier width. Exponential amplification can reach arbitrary ratios. The current construction's saddles are not barriers in this sense; they are just curvature transitions. Investigating whether barrier-like features can be added (e.g., via the corrugation amplitude as a separate parameter) is a candidate next direction.
+
+2. **Multi-sheet architecture (per [STATUS.md](STATUS.md))**. Each generation lives on its own sheet at its own scale, bypassing the closure constraint entirely. The clover-on-clover construction is dead as a single-sheet mechanism but lives on as the *level-1* structure with each generation on a separate sheet.
+
+3. **Non-cavity-mode mass mechanism.** The mass-from-eigenvalue identification (μ² = n_θ² + λ_α) is a leading-order ansatz from tube-waveguide.md §1. Higher-order corrections, interactions between modes, or a different identification (e.g., mass-from-topological-winding) could amplify cross-band ratios. None of these have been computed for this geometry.
+
+### 13.6 Companion test: clover-inverse (V2)
+
+A second cross-section geometry — [clover-inverse.md](clover-inverse.md) — was constructed during Phase 4 to test whether a topology with three independent radii (rather than fractal recursion) could escape the closure-constraint cap. The V2 geometry has 3 outer convex lobes + 3 inner concave lobes + 6 connectors at level 1, giving three free radii (r_outer, r_inner, r_conn) whose ratios are unbounded above.
+
+Numerical verdict: same problem, different cause. See [clover-inverse.md](clover-inverse.md) §7 for the V2 test results. The eigenvalue spectrum doesn't separate into three bands at the three radii — modes spread across the whole cavity and are governed by the overall cavity size, not by individual feature scales. The smaller features (inner lobes, connectors) need barriers to localize modes, not just thin geometry.
+
+### 13.7 Combined conclusion
+
+Both V1 (clover-on-clover) and V2 (clover-inverse) fail to host three distinct mass bands under the cavity-mode mass mechanism, for related but distinct reasons:
+
+- **V1**: closure constraint caps the radius shrinkage at ~2.5× per fractal level. The construction *cannot* support large inter-generation ratios geometrically.
+- **V2**: closure permits arbitrary radius ratios, but the *cavity-mode spectrum* doesn't localize at the smaller features (no barriers). The construction *could* support large ratios geometrically but the wave equation doesn't read them off.
+
+The common lesson: the 2D Helmholtz cavity-mode scaling is not the mass mechanism for either geometry. Future work must either find a different physical reading of "mass on the surface" (tunneling-amplification, multi-sheet, non-eigenvalue identification) or accept that the geometric structure encodes only the qualitative features (Z₃, fractional charges, three-quark structure) and not the quantitative mass spectrum.
