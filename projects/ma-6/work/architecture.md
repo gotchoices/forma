@@ -1,6 +1,6 @@
 # architecture.md — ma-6 metric layout, nomenclature, and operational rules
 
-**Status:** Phase 0 deliverable (per [plan.md](plan.md)). Pins the conventions used by everything downstream — the 11-component metric ordering, the mode-label nomenclature, and the operational rules that translate a 6-dim Ma domain into closure analysis on dim-pairs.
+**Status:** Phase 0 deliverable (per [STATUS.md](STATUS.md)). Pins the conventions used by everything downstream — the 11-component metric ordering, the mode-label nomenclature, and the operational rules that translate a 6-dim Ma domain into closure analysis on dim-pairs.
 
 This file does **not** yet specify the cross-term sparsity pattern (which off-diagonals carry τ-twists, which carry R53 shears, which are zero). That is the second half of Phase 0 and comes after the conventions below are stable.
 
@@ -124,7 +124,7 @@ The working hypothesis (pair-triplet) is **provisional** and chosen because it m
 
 ## 4. Open questions deferred to later phases
 
-- **Cross-term sparsity pattern** (second half of Phase 0). Which off-diagonals are non-zero, and which carry τ-twists vs R53 shears vs other coupling types? See [plan.md §1](plan.md) for the working assumption (3 τ-twists for the quark sector, some shears for the e-sector, rest zero).
+- **Cross-term sparsity pattern** (second half of Phase 0). Which off-diagonals are non-zero, and which carry τ-twists vs R53 shears vs other coupling types? See [STATUS.md §1](STATUS.md) for the working assumption (3 τ-twists for the quark sector, some shears for the e-sector, rest zero).
 - **Whether the sheet-region subscripts (p, e, v) survive** as the architecture matures. If the cross-term pattern reveals a single dim participating in (say) both a quark-bearing pair and a charged-lepton-bearing pair, the subscript becomes misleading and should be dropped in favor of plain `m1..m6`.
 - **Signature pinning** for the 11×11 metric. R60 used exactly one negative eigenvalue; whether that survives the 6-dim-pool reformulation needs checking once the cross-terms are specified.
 - **The aleph entry's coupling structure**. R59 / R60 derive α from the tube↔ℵ↔t chain. Under the per-pair tube reading of §3.1, each Ma dim might individually couple to aleph (with strength σ_ta — the model-F symbol). Whether the 6 dims share one σ_ta or each has its own is a Phase 0-or-1 question depending on how the cross-term template is read.
@@ -135,7 +135,7 @@ The working hypothesis (pair-triplet) is **provisional** and chosen because it m
 
 ## 5. Cross-references
 
-- [plan.md](plan.md) — phased work plan; this file is the Phase 0 first-half deliverable.
+- [STATUS.md](STATUS.md) — phased work plan; this file is the Phase 0 first-half deliverable.
 - [3-torus.md](3-torus.md) — supports §3.3 (plane-over-diagonal) and §3.2 (smallest-as-tube) operational rules.
 - [ma-share-6.md](ma-share-6.md) — establishes the 6-dim-pool topology this file's nomenclature serves.
 - [../../../studies/R60-metric-11/](../../../studies/R60-metric-11/) — 11D metric ordering precedent (Material → Space → Time inherited from there).

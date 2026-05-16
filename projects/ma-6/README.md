@@ -2,7 +2,7 @@
 
 **Type:** Exploratory architectural project (see [../README.md](../README.md))
 **Scope:** A six-dimensional compact Ma domain hosting all Standard Model fermions, with the apparent particle-sheet structure emerging from a sparse cross-term pattern in the 6×6 metric rather than imposed a priori.
-**Status:** Early. Initial work files moved from [sheet-proton](../sheet-proton/) (3-torus.md, ma-share-6.md, the corresponding scripts and outputs). Work plan in [work/plan.md](work/plan.md). The original sheet-proton project is on hold while this reframe is explored.
+**Status:** Early. Initial work files moved from [sheet-proton](../sheet-proton/) (3-torus.md, ma-share-6.md, the corresponding scripts and outputs). Active checklist + work plan in [work/STATUS.md](work/STATUS.md). The original sheet-proton project is on hold while this reframe is explored.
 
 ## Why this project exists
 
@@ -29,7 +29,7 @@ Both are taken as given here; this project's job is to fit them — and the rest
 
 ## Approach
 
-See [work/plan.md](work/plan.md) for the phased work plan. Briefly:
+See [work/STATUS.md](work/STATUS.md) for the phased work plan. Briefly:
 
 1. **Phase 0** — naming convention for the 6 Ma dims (reconciling with existing study notation where possible).
 2. **Phase 1 (quark sector)** — pin the 3 mutually-twisted dims that host the quark structure; find the range of dim scales that works for all 3 quark generations.

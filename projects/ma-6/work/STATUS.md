@@ -1,4 +1,4 @@
-# plan.md — ma-6 work plan
+# STATUS.md — ma-6 checklist and work plan
 
 **Status:** Phased plan for the 6-dim Ma domain investigation. Each phase produces concrete work files in this directory; coherence across phases is the gate for promoting from `work/` to the top level `ma-6/` (Phase 5).
 
@@ -17,13 +17,9 @@
 
 ## Phase 1 — Quark sector
 
-- [ ] Identify the **3 dims that the quarks access**. These are the dim-pairs that carry the τ = 1/3 twist (per the inherited clover-quarks 1/3-twist mechanism from [sheet-proton clover-quarks.md](../../sheet-proton/work/clover-quarks.md)).
-- [ ] Decide whether the 3 twists are **independent** (one τ per pair, different k allowed) or **mutually constrained** (all three τ = 1/3, same k forced by some structural rule). Working hypothesis: mutually constrained, since the quark generations all have the same Z₃-singlet structure.
-- [ ] Find the **range of scales** for the three p-dims that works for the three quark generations. Constraints:
-  - Each generation's (tube, ring) dim-pair must give a 2D-mode mass at the right scale.
-  - Up vs down within a generation comes from the clover-arc charge mechanism (+2/3 lobe / −1/3 saddle), per [sheet-proton clover-quarks.md §11](../../sheet-proton/work/clover-quarks.md). Inherited from sheet-proton, not re-derived.
-- [ ] Determine whether the 3 quark dims **completely pin** the scale ratios or leave degrees of freedom. (Hopefully not fully pinned — leaves room for the electron and ν sectors to share dims.)
-- [ ] Write `work/quark-sector.md` with the dim assignment, the mass-prediction, and the (ε, χ, σ) free-parameter analysis.
+- [x] **First-cut attempt: lowest-closure modes + per-pair (σ, χ, τ) on 3 dims.** Documented and analytically + numerically falsified in [quark-search.md](quark-search.md). The dim-sharing constraint (P_{12} and P_{13} both have L_b = L_1) ties two pairs' lighter-mode mass ratios to their f-detuning ratios in a way that contradicts every (gen → pair) assignment by 130×–26,000×. Negative result is robust.
+- [ ] **Next move: Relaxation 1 — allow m_t = 2 as the second-lowest mode per pair** (per [quark-search.md §8](quark-search.md)). The m_t = 2 mode has mass independent of L_b in the pure-ring regime, breaking the sharing correlation. To be implemented in a `quark-search-2mt.md` extension if approved.
+- [ ] If Relaxation 1 fails, fall back to Relaxation 2 (drop "3 dims" to 4 or 5) or Relaxation 3 (drop the simple-clover working hypothesis, try an alternative from [architecture.md §3.4](architecture.md)).
 
 ## Phase 2 — Electron sector
 

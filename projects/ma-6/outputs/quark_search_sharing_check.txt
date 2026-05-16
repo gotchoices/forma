@@ -1,0 +1,13 @@
+Sharing-constraint spot-check for work/quark-search.md §4
+==========================================================================================
+
+For each assignment, derive L_b from the lighter quark of each pair, given f from the within-pair mass ratio.
+Sharing requires L_b(P12) = L_b(P13) = L_1.  Inconsistency falsifies the 3-dim hypothesis.
+
+A   P12 gen      P13 gen          f_{12}     f_{13}     L_b from P12     L_b from P13      ratio    OK?
+-----------------------------------------------------------------------------------------------
+A   (u,d)       (s,c)           0.3163     0.0682       181.5288fm         0.9096fm      199.6     NO
+B   (u,d)       (b,t)           0.3163     0.0236       181.5288fm         0.0070fm    25941.4     NO
+C   (s,c)       (b,t)           0.0682     0.0236         0.9096fm         0.0070fm      130.0     NO
+
+Verdict: every assignment fails by ≥100×. The 3-dim ground rules (lowest-mode windings + per-pair σ/χ/τ + 3 dims) cannot fit the 6 observed quark masses.
