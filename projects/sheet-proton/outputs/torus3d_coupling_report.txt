@@ -1,0 +1,104 @@
+==============================================================================
+R19-extension test: EM-coupling integral candidates on the 3-torus
+==============================================================================
+
+Three candidate per-mode 'charge magnitudes' on (n1,n2,n3) plane waves:
+
+  Cand I  — per-direction 1-cycle integrals:
+           |Q_i|^2 ∝ (n_i/L_i)^2  — picks up each direction's winding
+           1D-line modes have ONE nonzero Q_i, others zero
+           => 1D modes are NOT dark under this rule
+
+  Cand II — per-plane 2-cycle flux of perpendicular derivative:
+           |Φ_{ij}|^2 ∝ (n_k/L_k)^2 * (L_i L_j)^2 * δ(n_i=0) * δ(n_j=0)
+           Nonzero ONLY for 1D-line modes (along the perp direction)
+           => 2D and 3D modes are dark; only 1D 'shines' — opposite of what we want
+
+  Cand III— per-plane circulation/curl-like (bilinear in n_i, n_j):
+           |C_{ij}|^2 ∝ (n_i n_j / (L_i L_j))^2
+           Nonzero IFF both n_i AND n_j are nonzero
+           => 1D modes are dark; 2D-planar and 3D-mixed are charged
+           => THIS implements the hypothesis's selection rule
+
+------------------------------------------------------------------------------
+Per-mode evaluations (totals summed over all i,j,k):
+------------------------------------------------------------------------------
+
+** L1, L2, L3 = 1, 580, 78000  (natural-quark) **
+
+  Mode                     class                   ω         ΣQ_I        ΣΦ_II       ΣC_III
+  1D along L3 (0, 0, 1)    1D-line         8.055e-05    1.644e-10    5.529e-05            0
+  1D along L2 (0, 1, 0)    1D-line           0.01083    2.973e-06    1.809e+04            0
+  1D along L1 (1, 0, 0)    1D-line             6.283            1    2.047e+15            0
+  2D in (23)-plane (0, 1, 1) 2D-planar         0.01083    2.973e-06            0    4.886e-16
+  2D in (13)-plane (1, 0, 1) 2D-planar           6.283            1            0    1.644e-10
+  2D in (12)-plane (1, 1, 0) 2D-planar           6.283            1            0    2.973e-06
+  3D fully-mixed (1, 1, 1) 3D-mixed            6.283            1            0    2.973e-06
+
+** L1, L2, L3 = 1, 1, 1  (uniform) **
+
+  Mode                     class                   ω         ΣQ_I        ΣΦ_II       ΣC_III
+  1D along L3 (0, 0, 1)    1D-line             6.283            1            1            0
+  1D along L2 (0, 1, 0)    1D-line             6.283            1            1            0
+  1D along L1 (1, 0, 0)    1D-line             6.283            1            1            0
+  2D in (23)-plane (0, 1, 1) 2D-planar           8.886            2            0            1
+  2D in (13)-plane (1, 0, 1) 2D-planar           8.886            2            0            1
+  2D in (12)-plane (1, 1, 0) 2D-planar           8.886            2            0            1
+  3D fully-mixed (1, 1, 1) 3D-mixed            10.88            3            0            3
+
+** L1, L2, L3 = 1, 10, 100  (mild) **
+
+  Mode                     class                   ω         ΣQ_I        ΣΦ_II       ΣC_III
+  1D along L3 (0, 0, 1)    1D-line           0.06283       0.0001         0.01            0
+  1D along L2 (0, 1, 0)    1D-line            0.6283         0.01          100            0
+  1D along L1 (1, 0, 0)    1D-line             6.283            1        1e+06            0
+  2D in (23)-plane (0, 1, 1) 2D-planar          0.6315       0.0101            0        1e-06
+  2D in (13)-plane (1, 0, 1) 2D-planar           6.283            1            0       0.0001
+  2D in (12)-plane (1, 1, 0) 2D-planar           6.315         1.01            0         0.01
+  3D fully-mixed (1, 1, 1) 3D-mixed            6.315         1.01            0       0.0101
+
+** L1, L2, L3 = 1, 20, 400  (moderate) **
+
+  Mode                     class                   ω         ΣQ_I        ΣΦ_II       ΣC_III
+  1D along L3 (0, 0, 1)    1D-line           0.01571     6.25e-06       0.0025            0
+  1D along L2 (0, 1, 0)    1D-line            0.3142       0.0025          400            0
+  1D along L1 (1, 0, 0)    1D-line             6.283            1      6.4e+07            0
+  2D in (23)-plane (0, 1, 1) 2D-planar          0.3146     0.002506            0    1.562e-08
+  2D in (13)-plane (1, 0, 1) 2D-planar           6.283            1            0     6.25e-06
+  2D in (12)-plane (1, 1, 0) 2D-planar           6.291        1.002            0       0.0025
+  3D fully-mixed (1, 1, 1) 3D-mixed            6.291        1.003            0     0.002506
+
+** L1, L2, L3 = 1, 580, 5800  (gen-2-only) **
+
+  Mode                     class                   ω         ΣQ_I        ΣΦ_II       ΣC_III
+  1D along L3 (0, 0, 1)    1D-line          0.001083    2.973e-08         0.01            0
+  1D along L2 (0, 1, 0)    1D-line           0.01083    2.973e-06          100            0
+  1D along L1 (1, 0, 0)    1D-line             6.283            1    1.132e+13            0
+  2D in (23)-plane (0, 1, 1) 2D-planar         0.01089    3.002e-06            0    8.837e-14
+  2D in (13)-plane (1, 0, 1) 2D-planar           6.283            1            0    2.973e-08
+  2D in (12)-plane (1, 1, 0) 2D-planar           6.283            1            0    2.973e-06
+  3D fully-mixed (1, 1, 1) 3D-mixed            6.283            1            0    3.002e-06
+
+------------------------------------------------------------------------------
+Selection rule verdict (read down each column):
+
+  Cand I  (per-direction 1-cycle):
+    1D modes carry charge.  Picture is killed: predicted ghost flood.
+
+  Cand II (per-plane perpendicular flux):
+    Only 1D modes carry charge; 2D and 3D are dark.
+    Inverted picture; if this is the physical rule, the 2D-planar
+    'three generations' would all be dark — equally bad.
+
+  Cand III (per-plane curl/circulation, bilinear in n_i n_j):
+    1D-line modes have ΣC_III = 0.  2D and 3D modes are nonzero.
+    This is the rule the hypothesis needs.  If this is the correct
+    extension of R19 to 3D, then 1D modes ARE dark (no EM coupling
+    to S) and the 2D-planar 'three generations' picture works.
+
+WHICH candidate is the physical one is NOT decided here.  It requires
+re-running R19's 2D derivation on the 3-torus, identifying which
+topological integral measures asymptotic monopole charge.  This is
+a finite analytical extension of R19, not implemented here.
+
+==============================================================================
