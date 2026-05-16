@@ -54,23 +54,30 @@ For everyday compact-domain analysis, the spatial and time entries are usually z
 
 ## 3. Operational rules
 
-### 3.1 Smaller dim = tube; larger dim = ring (per dim-pair)
+### 3.1 Tube and ring are per-pair structural roles (not size-determined)
 
-There is **no global tube/ring assignment** under the 6-dim-pool reading. The role is *per-pair*: in any pair `(m_a, m_b)` with `m_a < m_b` (size order, so L_{m_a} < L_{m_b}):
+There is **no global tube/ring assignment** under the 6-dim-pool reading. The role is *per-pair* and is a **structural choice** carried by the pair's cross-term content, not determined by which dim is smaller. In any pair `(m_a, m_b)`:
 
-- m_a plays the **tube** role (analog of MaSt's small / topological / charge-bearing dim).
-- m_b plays the **ring** role (analog of MaSt's large / dynamical / mass-bearing dim).
+- One of the two dims is assigned the **tube** role (analog of MaSt's topological / cross-term-bearing / charge-coupled dim — winds m_t).
+- The other dim is assigned the **ring** role (analog of MaSt's mass-bearing dim — winds m_r and carries the cross-term-driven shift to (m_r − σ_eff m_t)).
 
-A single dim can therefore be the *tube* for one particle's pair (e.g., m3 paired with m5) and the *ring* for another particle's pair (e.g., m3 paired with m1). This is intentional and a consequence of the pool reading.
+A single dim can therefore play tube in one pair and ring in another. The role assignment is part of the pair-triplet specification (cf. §3.4 working hypothesis) and emerges from the cross-term structure, not from the dim sizes per se.
 
-### 3.2 Smallest dim as tube governs closure
+**Convention from prior MaSt work** held that the smaller dim plays tube. This is true at the proton-sheet operating point (ε_p ≈ 0.55, thin torus) but does *not* generalize: the R53 charged-lepton fit has ε_e ≈ 397 (fat torus), with the *larger* dim playing tube. The user's quark-sector topology in [quark-search.md §9](quark-search.md) similarly requires the *larger* dim (the common dim 3) to play tube in all 3 quark pairs. So the smaller-as-tube assumption is a special case, not a rule. **Per-pair tube/ring assignment is free** and must be specified by the cross-term structure for each pair.
 
-For closure analysis on a dim-pair `(m_a, m_b)`:
+**Two natural rule-of-thumb consequences** that survive even without smaller-as-tube:
 
-- The smaller dim **m_a** governs the topological / closure side — counts tube windings, hosts the boundary identification, carries any τ-twist.
-- The larger dim **m_b** governs the mass side — its winding contributes the mode's mass-energy budget.
+- **The mass scale of the lowest mode is set by the smaller dim of the pair** (the L_R in the formula `m² ≈ (2π ℏc)² · ((1/L_T)² + (δ/L_R)²)`, which dominates when L_T ≫ L_R and which is also the relevant scale when L_T ≈ L_R).
+- **Within-pair mass splits are controlled by the detuning f**, and become observable when L_T/L_R is large enough that (δ/L_R)² ≫ (1/L_T)² for the smallest physical δ.
 
-This is the natural extension of how MaSt 2D sheets work (where the tube and ring roles are fixed per-sheet) to the per-pair convention of the pool reading.
+### 3.2 The tube dim governs closure
+
+For closure analysis on a dim-pair `(m_a, m_b)`, the tube role (per §3.1, per-pair-assigned) governs the topological / closure side:
+
+- The **tube** dim counts tube windings, hosts the boundary identification, carries any τ-twist.
+- The **ring** dim governs the mass side — its winding contributes the mode's mass-energy budget via the (m_r − σ_eff m_t)/L_ring term.
+
+Whether the tube dim is *smaller* or *larger* than the ring dim is a per-pair structural choice; both regimes appear in successful particle fits (thin-torus proton sheet vs fat-torus R53 charged leptons vs the user's quark topology in [quark-search.md §9](quark-search.md) with one fat common tube).
 
 ### 3.3 Plane over diagonal (2D-planar preferred over 3D-mixed)
 

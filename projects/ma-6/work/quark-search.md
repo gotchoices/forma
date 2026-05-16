@@ -194,6 +194,99 @@ If you agree, the natural follow-up is a `quark-search-2mt.md` extension impleme
 
 ---
 
+## 9. The user's alternative topology — closes the fit at < 1% accuracy
+
+The user proposed the alternative topology
+
+  **quark pairs: (1, 3), (2, 3), (3, 4)**
+
+with **dim 3 common to all 3 pairs**, and 4 total quark-region dims (1, 2, 3, 4) instead of 3. This is *structurally different* from the §1 topology in a decisive way: dim 3 can play the **tube** (larger) role in every pair, with dims 1, 2, 4 each playing **ring** in their respective pairs.
+
+### 9.1 Why this works where §1 failed
+
+The §1 topology (1,2)(1,3)(2,3) shared L_b (the smaller, ring-role dim) between pairs P_{12} and P_{13}. That forced two pairs' lighter-mode masses into a fixed ratio set by their f-detunings — the §4 obstruction.
+
+The user's topology has all three pairs share **L_T (the larger, tube-role dim)**. In the pure-ring regime (L_T ≫ L_R), the mass formula
+
+  m² ≈ (2π ℏc)² · ((1/L_T²) + (δ²/L_R²)) ≈ (2π ℏc)² · δ²/L_R²
+
+is dominated by 1/L_R, *not* 1/L_T. **A shared L_T does not couple the lighter-mode masses across pairs.** Each pair has its own L_R, giving its own mass scale independently.
+
+### 9.2 The fit
+
+Compute f per pair from the within-pair mass ratio (1−f)/f, then solve for L_R per pair from the lighter quark mass. Script: [scripts/quark_search_user_topology.py](../scripts/quark_search_user_topology.py); output: [outputs/quark_search_user_topology.txt](../outputs/quark_search_user_topology.txt).
+
+| Pair | Quarks | within-pair ratio | f | L_ring (fm) |
+|---|---|---:|---:|---:|
+| (1, 3) | (u, d) | 2.17 | 0.3163 | **L_1 = 181.5** |
+| (2, 3) | (s, c) | 13.65 | 0.0682 | **L_2 = 0.9096** |
+| (3, 4) | (b, t) | 41.39 | 0.0236 | **L_4 = 0.007** |
+
+L_3 (the common tube) only needs to be large enough that L_T ≫ L_R/f in each pair — the strictest is L_3 ≫ 574 fm. **Pick L_3 = 5740 fm** (10× margin).
+
+### 9.3 Verification — all 6 quark masses fit to < 1%
+
+Using the **full** mass formula (not just the pure-ring approximation):
+
+| Pair | Mode | δ | m predicted | m observed | % error |
+|---|---|---:|---:|---:|---:|
+| (1, 3) | u (lighter) | 0.3163 | 2.171 MeV | 2.16 MeV | **+0.50%** |
+| (1, 3) | d (heavier) | 0.6837 | 4.675 MeV | 4.67 MeV | **+0.11%** |
+| (2, 3) | s (lighter) | 0.0682 | 93.0 MeV | 93.0 MeV | **+0.00%** |
+| (2, 3) | c (heavier) | 0.9318 | 1270 MeV | 1270 MeV | **+0.00%** |
+| (3, 4) | b (lighter) | 0.0236 | 4180 MeV | 4180 MeV | **+0.00%** |
+| (3, 4) | t (heavier) | 0.9764 | 173,000 MeV | 173,000 MeV | **+0.00%** |
+
+**Maximum |Δ%| = 0.499%** (the u quark; the rest are below 0.2%). All six quark masses are reproduced from a structural geometry plus 3 free f-values (equivalently, 3 free σ-shears per pair) and a small (sub-percent) approximation correction from the L_T residual.
+
+### 9.4 The fitted geometry
+
+The 4 quark-region dim sizes (sorted smallest → largest):
+
+| Dim role | Size | Note |
+|---|---:|---|
+| L_4 (b/t ring) | 0.007 fm | ≈ top-quark Compton wavelength |
+| L_2 (s/c ring) | 0.91 fm | ≈ charm Compton wavelength |
+| L_1 (u/d ring) | 181 fm | ≈ electron-scale (!) |
+| L_3 (common tube) | ≳ 5740 fm | ≈ μm-scale; "fat" dim shared across all 3 pairs |
+
+The L_3 lower bound (5740 fm) is set by the pure-ring regime; larger values work equally well. So L_3 is one continuous free parameter, with the fit determining only L_1, L_2, L_4, and 3 f-values.
+
+### 9.5 Architectural implication: per-pair tube/ring choice (not size-determined)
+
+This result invalidates the architecture.md §3.1 "smaller = tube" convention. The user's topology requires the **larger** dim (L_3) to play tube in all 3 quark pairs (the R53-style fat-torus regime, applied per-pair to a single common tube). The tube/ring assignment is therefore a **per-pair structural choice**, not determined by which dim is smaller.
+
+To be reflected in architecture.md: §3.1 needs revision to make tube/ring assignment per-pair-free, with the user's topology providing the existence proof.
+
+### 9.6 Generalization to electron and neutrino sectors — open
+
+The user's full proposal:
+
+- e pairs: (2, 4), (3, 5), (4, 5)
+- ν pair: (5, 6)
+
+With dims 2, 3, 4 inherited from the quark fit, this constrains the electron L's to (L_2 = 0.91 fm, L_3 = 5740 fm, L_4 = 0.007 fm) — the quark values must continue to apply in the electron pairs they appear in. L_5 (and L_6) are free.
+
+The electron sector then has to fit (m_e, m_μ, m_τ) using these inherited L's plus L_5 and per-pair (σ, τ, χ). This is the next phase 2 deliverable; not yet computed.
+
+### 9.7 What this resolves and what's next
+
+**Resolved (the immediate Phase 1 goal):**
+
+- A 4-dim quark sector (not 3-dim) with the user's topology fits all 6 quark masses to < 1%.
+- The lowest-energy windings (m_t = 1, m_r = closest integer to σ_eff) suffice — no need to invoke higher modes.
+- The simple clover (per [architecture.md §3.4](architecture.md)) is consistent; χ values can be anything (the fit doesn't constrain them at leading order).
+- The smaller-as-tube convention is *not* universal; per-pair tube/ring is the correct architectural rule.
+
+**Open next steps:**
+
+1. **Update [architecture.md §3.1](architecture.md)** to remove the smaller-as-tube assumption; replace with per-pair-choice convention.
+2. **Phase 2 (electron sector)**: solve for L_5 + e-pair (σ, τ, χ) values that reproduce (m_e, m_μ, m_τ) with the inherited L_2, L_3, L_4 from the quark fit.
+3. **Phase 3 (neutrino sector)**: check whether L_5, L_6 + ν-pair structure works for the 3 neutrino masses.
+4. **Mathematical formalization** (Phase 5 per STATUS.md): if Phases 2 and 3 also close, write up the unified architecture in `ma-6/` proper as a derivation, not a fit.
+
+---
+
 ## 8. Cross-references
 
 - [architecture.md](architecture.md) — sets the per-pair (σ, τ, χ) free-parameter structure used here.

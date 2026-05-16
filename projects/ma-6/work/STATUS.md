@@ -17,9 +17,11 @@
 
 ## Phase 1 — Quark sector
 
-- [x] **First-cut attempt: lowest-closure modes + per-pair (σ, χ, τ) on 3 dims.** Documented and analytically + numerically falsified in [quark-search.md](quark-search.md). The dim-sharing constraint (P_{12} and P_{13} both have L_b = L_1) ties two pairs' lighter-mode mass ratios to their f-detuning ratios in a way that contradicts every (gen → pair) assignment by 130×–26,000×. Negative result is robust.
-- [ ] **Next move: Relaxation 1 — allow m_t = 2 as the second-lowest mode per pair** (per [quark-search.md §8](quark-search.md)). The m_t = 2 mode has mass independent of L_b in the pure-ring regime, breaking the sharing correlation. To be implemented in a `quark-search-2mt.md` extension if approved.
-- [ ] If Relaxation 1 fails, fall back to Relaxation 2 (drop "3 dims" to 4 or 5) or Relaxation 3 (drop the simple-clover working hypothesis, try an alternative from [architecture.md §3.4](architecture.md)).
+- [x] **First-cut attempt: lowest-closure modes + per-pair (σ, χ, τ) on 3 dims (topology (1,2)(1,3)(2,3)).** Analytically + numerically falsified in [quark-search.md §1–§7](quark-search.md). The dim-sharing constraint (P_{12} and P_{13} both have L_b = L_1) was the obstruction.
+- [x] **User's alternative topology: 4 dims with pairs (1,3), (2,3), (3,4) — dim 3 common, plays tube in all three. FITS ALL 6 QUARKS to < 1%.** Documented in [quark-search.md §9](quark-search.md); verified numerically by [scripts/quark_search_user_topology.py](../scripts/quark_search_user_topology.py); output in [outputs/quark_search_user_topology.txt](../outputs/quark_search_user_topology.txt). Maximum |Δ%| = 0.499% (u quark; rest below 0.2%). Geometry: L_4 = 0.007 fm (b/t ring), L_2 = 0.91 fm (s/c ring), L_1 = 181 fm (u/d ring), L_3 ≳ 5740 fm (common tube). Lowest-energy windings sufficient (m_t = 1, m_r ∈ {round(σ_eff), round(σ_eff)±1}); per-pair simple-clover with per-pair σ.
+- [x] **Architectural implication: tube/ring is per-pair structural choice, not size-determined.** [architecture.md §3.1, §3.2](architecture.md) updated.
+- [ ] **Cross-term sparsity pattern (Phase 0 second half).** The user's fit pins 3 quark-bearing cross-terms with τ ∈ {±1/3, ±2/3} per pair and σ ≠ 0 (since each pair's f differs from the bare τ-induced detuning). The actual (σ, τ) values per pair are degenerate — many combinations give the same f. Identify the canonical assignment.
+- [ ] **Phase 2 prep: the e-sector inherits L_2, L_3, L_4 from the quark fit.** Electron pairs (2,4), (3,5), (4,5) must reproduce (m_e, m_μ, m_τ) using these L's plus L_5 and per-pair (σ, τ, χ). This is the next concrete deliverable.
 
 ## Phase 2 — Electron sector
 
