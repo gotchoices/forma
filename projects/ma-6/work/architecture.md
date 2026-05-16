@@ -80,6 +80,46 @@ A wave that uses *two* dimensions has lower energy than a wave that uses *three*
 
 The companion rule from [3-torus.md §3.2–§3.3](3-torus.md) — that *1D-line* modes are also unphysical (no EM coupling) under the Candidate-III R19 extension — completes the picture: physical particles are exactly the 2D-planar modes on dim-pairs that have the right cross-term structure.
 
+### 3.4 How a single dim can be simple ring in one context, complicated tube in another (working hypothesis)
+
+[sheet-proton clover-quarks.md](../../sheet-proton/work/clover-quarks.md) explains the quark sector via a clover-shaped corrugated cross-section (3 lobes of 240° + 3 saddles of 120°, Z₃ symmetric). Under the 6-dim-pool reading, that clover shape cannot belong to a single dim — a single dim is just a circle of size L. The shape has to be a property of how two dims combine, so that one of those dims can be a *plain ring* when paired with a different partner.
+
+**Working hypothesis: pair-triplet (σ, τ, P).** Replace the scalar cross-term σ_{ab} between two dims (m_a, m_b) with a triplet:
+
+  - **σ_{ab}** — the constant off-diagonal shear (scalar; the metric off-diagonal entry as in current MaSt).
+  - **τ_{ab}** — the discrete topological twist (scalar; k/3 for some integer k, or 0).
+  - **P_{ab}(u)** — a *shape function* periodic on the helical coordinate u = u_a + τ_{ab} u_b, modulating the ring-direction metric entry.
+
+The pair-metric is then
+
+  g_{aa}^{(ab)} = (L_a + P_{ab}(u))² + τ_{ab}² L_b² ,
+  g_{ab}^{(ab)} = (σ_{ab} + τ_{ab}) L_b² ,
+  g_{bb}^{(ab)} = L_b² ,
+
+adapting the form from [clover-quarks.md §10.3](../../sheet-proton/work/clover-quarks.md). P_{ab} = 0 gives a flat-twisted torus on the pair; P_{ab} = the 3-lobe clover gives the corrugated-torus quark machinery. The clover is a property of the **pair**, not of either dim alone.
+
+The proton sheet then maps to the pair (m_a, m_b) with τ_{ab} = 1/3 and P_{ab} = clover. The same m_a paired with a different m_c could have P_{ac} = 0 and host a plain electron-region mode.
+
+**Adopted as the project standard for now**, on the strength of:
+
+  - It is the most direct way to extend the existing MaSt cross-section machinery to the pool reading without re-deriving anything.
+  - It transports the per-arc curvature charges (Q_lobe = +2/3, Q_saddle = −1/3) unchanged, because the geodesic-curvature integral is a property of P_{ab} on the pair's 2-torus — it doesn't care whether P "belongs to" a dim or to a pair.
+  - It leaves a clean signature analysis: shape functions live in diagonal entries (g_{aa}^{(ab)}), so the off-diagonal signature analysis from R60 transports.
+
+**But it is one possible mechanism, not the only one.** Several alternatives could produce the same dual-role behavior; the math may reveal that one of these is the correct deeper structure. Candidates to keep in mind:
+
+1. **Mode-resolution / wavelength filtering** ([3-gen.md §3.5.1](../../sheet-proton/work/3-gen.md)). The dim *does* have a fixed underlying shape, but modes of long wavelength "average over" the corrugation and see a smooth ring, while short-wavelength modes resolve the lobes/saddles. In this reading, the clover shape is "always there" on m_a, but only the modes that fit inside it see it.
+
+2. **Effective metric from a deeper substrate.** The 6 dims are simple at the metric level, but the wave equation on top of them lives on a richer substrate (GRID lattice, sub-Planck aleph structure, R55–R59 mediator chain). The "clover" emerges as the effective potential the wave equation sees in a particular regime, not as a fundamental metric feature.
+
+3. **GRID / lattice fingerprint.** Each dim's compact circle is paved by a discrete GRID lattice. In some pairings, the lattice's site spacing matches the wave's wavelength and imprints the clover-like 3-fold periodicity; in others it doesn't and the dim looks smooth.
+
+4. **Composite dim structure.** What we call a single dim m_a is actually a compound — multiple sub-circles with internal structure. The clover is the envelope of the compound; some pairings resolve the envelope, others see only the gross structure.
+
+5. **Symmetry-broken pair coupling.** The dim has multiple possible shapes in superposition, and the pairing context selects one via a symmetry-breaking interaction.
+
+The working hypothesis (pair-triplet) is **provisional** and chosen because it makes Phases 1–4 of the work plan immediately tractable. If a downstream derivation (Phase 5 mathematical work, or earlier inconsistencies surfaced by the per-pair consistency check in §4 open questions) forces one of the alternatives, we swap to that mechanism without changing the project's scientific content — the per-arc charges and the proton-mass results survive any of these readings, because they all reduce to "there is a clover-shaped influence on the proton-bearing pair's modes," differing only in *what underlying object* hosts that influence.
+
 ---
 
 ## 4. Open questions deferred to later phases
@@ -88,6 +128,8 @@ The companion rule from [3-torus.md §3.2–§3.3](3-torus.md) — that *1D-line
 - **Whether the sheet-region subscripts (p, e, v) survive** as the architecture matures. If the cross-term pattern reveals a single dim participating in (say) both a quark-bearing pair and a charged-lepton-bearing pair, the subscript becomes misleading and should be dropped in favor of plain `m1..m6`.
 - **Signature pinning** for the 11×11 metric. R60 used exactly one negative eigenvalue; whether that survives the 6-dim-pool reformulation needs checking once the cross-terms are specified.
 - **The aleph entry's coupling structure**. R59 / R60 derive α from the tube↔ℵ↔t chain. Under the per-pair tube reading of §3.1, each Ma dim might individually couple to aleph (with strength σ_ta — the model-F symbol). Whether the 6 dims share one σ_ta or each has its own is a Phase 0-or-1 question depending on how the cross-term template is read.
+- **Pair-shape mechanism** (§3.4). Pair-triplet (σ, τ, P) is adopted as the working hypothesis; if the math reveals that mode-resolution filtering, GRID-lattice fingerprinting, or another mechanism is the correct deeper structure, the architecture swaps to that without losing the per-arc charges or the proton-mass results.
+- **Per-pair consistency at shared dims** (§3.4). When a dim m_a appears in two pairs (a, b) and (a, c) with different P-functions, the diagonal entry g_{aa} on the underlying 11-torus must be one consistent function. The pair-restrictions of g_{aa} must reduce to P_{ab} on the (a,b)-slice and to P_{ac} on the (a,c)-slice. Whether this is structurally always possible, or imposes constraints on the allowed P-functions, is a Phase 1 consistency check.
 
 ---
 
