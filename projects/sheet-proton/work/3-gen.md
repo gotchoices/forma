@@ -349,6 +349,12 @@ The natural prediction: **only N = 1, 2, 3 are independent**. For N = 4, 5, 6, .
 
 A structural refinement of the 3D wave-guide picture of [tube-waveguide.md](tube-waveguide.md), combined with Mechanism D's amplitude-focus flavor split, extended by adding **nested levels of corrugation**: the parent clover cross-section has its own sub-corrugation inside each lobe, and that sub-corrugation has its own sub-sub-corrugation, giving three nested geometric scales for three generations.
 
+**The clover's angular structure is not Koch's.** A standard Koch snowflake iteration has a more complex per-bump structure than the clover: each Koch bump consists of two small 60° convex base-kinks flanking a 120° concave apex (when the sharp kinks are smoothed into arcs), plus the original triangle's 120° convex corners between bumps. There is no 240° feature anywhere in standard Koch. The clover's specific 240°/120° structure — three large convex arcs alternating with three small concave arcs — is structurally distinct, not a smoothed Koch.
+
+The 240°/120° ratio is forced by Gauss-Bonnet on a 3-fold-symmetric closed curve: for any N-fold cross-section with N convex and N concave features, θ_convex + θ_concave = 360°/N. The 3-fold clover takes θ_convex = 240° and θ_concave = −120° (sums to 360°/3 = 120°). This particular choice produces the standard quark fractional charges (+2/3 from each 240° convex arc, −1/3 from each 120° concave arc) by the per-arc curvature accounting of [clover-quarks §11](clover-quarks.md). A 6-fold variant with θ_convex = 240° would force θ_concave = −180° (giving charges +2/3, −1/2 — *not* the standard quark charges), so the 3-fold clover is the unique simple symmetric construction that produces (+2/3, −1/3) per arc.
+
+The nested-corrugation construction for Mechanism E ([clover-on-clover.md](clover-on-clover.md)) preserves the 240°/120° angular structure at every level by recursively inscribing balanced (1L + 2S) units inside parent arcs — a net-zero-turning recipe that maintains both Gauss-Bonnet and the per-arc charges. This is its own recursive fractal-friendly construction, sharing with Koch only the recursive-replacement-of-arcs structural pattern, not the specific replacement rule.
+
 **Topology/closure distinction between the outer level and inner sub-levels.** The level-1 corrugation (the parent clover) must close into a 2-torus cross-section — its profile is a closed curve, constrained by Gauss-Bonnet (∑ signed turning = 2π, fixing the lobe/saddle arc-angle ratio at 240°/120° per [clover-quarks §7.3](clover-quarks.md)) and by the kissing-circles geometry (d = r_lobe + r_saddle). These closure constraints couple r_lobe^(1) and r_saddle^(1) through the *outer surface's topology*.
 
 Sub-levels are different. A sub-corrugation living *inside* a level-1 lobe is an **open module** — a bumpy decoration of the inner surface of a parent lobe, not a full closed curve. Sub-modules have no closure-Gauss-Bonnet constraint linking r_sublobe^(n) and r_subsaddle^(n); these radii are independent parameters.
@@ -364,15 +370,26 @@ Charges are unchanged across levels (Q_lobe = +2/3, Q_saddle = −1/3 from curva
 
 **Quantitative fit to observed quark masses** (PDG values, with m_u set to 1):
 
-| Mass ratio (observed) | Fixes parameter | Numerical value |
-|---|---|---|
-| m_d / m_u ≈ 2.14 | χ_1 = r_saddle^(1) / r_lobe^(1) | **0.468** (< 1, closure-constrained side) |
-| m_c / m_u ≈ 577 | ρ_2 = r_lobe^(1) / r_lobe^(2) | **577** |
-| m_c / m_s ≈ 13.66 | χ_2 = r_saddle^(2) / r_lobe^(2) | **13.66** (> 1, inverted) |
-| m_t / m_c ≈ 136 | ρ_3 = r_lobe^(2) / r_lobe^(3) | **136** |
-| m_t / m_b ≈ 41.4 | χ_3 = r_saddle^(3) / r_lobe^(3) | **41.4** (> 1, inverted) |
+| Mass ratio (observed) | Fixes parameter | Numerical value (naive 1/r) | Wedge-corrected |
+|---|---|---|---|
+| m_d / m_u ≈ 2.14 | χ_1 = r_saddle^(1) / r_lobe^(1) | **0.468** | **0.756** (< 1) |
+| m_c / m_u ≈ 577 | ρ_2 = r_lobe^(1) / r_lobe^(2) | **577** | **577** (unchanged) |
+| m_c / m_s ≈ 13.66 | χ_2 = r_saddle^(2) / r_lobe^(2) | **13.66** | **22.10** (> 1, inverted) |
+| m_t / m_c ≈ 136 | ρ_3 = r_lobe^(2) / r_lobe^(3) | **136** | **136** (unchanged) |
+| m_t / m_b ≈ 41.4 | χ_3 = r_saddle^(3) / r_lobe^(3) | **41.4** | **66.97** (> 1, inverted) |
 
 5 parameters fit 5 independent mass ratios. The 6th observed ratio m_b/m_d = (m_t/m_u) × χ_1/χ_3 = 889 matches the observed 889 trivially — this is a self-consistency check, not an independent prediction (the relation is forced by structural arithmetic).
+
+**Per-curve wedge-mass formula.** A more careful treatment of the cavity-mode eigenvalue uses the 2D Helmholtz spectrum of a *wedge* (the arc-bounded region a mode is localized in) with Dirichlet BCs, not just the inverse cavity radius. For a wedge of angular extent θ and radius r, the lowest mode has eigenvalue λ = (z_{ν,1}/r)² where ν = π/θ and z_{ν,1} is the first positive zero of the Bessel function J_ν:
+
+| Wedge type | θ | ν = π/θ | z_{ν,1} | Mass coefficient |
+|---|---|---|---|---|
+| Lobe (240° arc) | 4π/3 | 3/4 | 2.778 | **2.78 / r_lobe** |
+| Saddle (120° arc) | 2π/3 | 3/2 | 4.493 | **4.49 / r_saddle** |
+
+The ratio z_{3/2,1}/z_{3/4,1} ≈ 1.618 is an **intrinsic** factor by which the 120° saddle wedge is heavier than the 240° lobe wedge at the same radius — independent of χ or any free parameter, fixed by Bessel-zero ratios. This shifts the within-generation mass relation to **m_saddle / m_lobe = 1.618 / χ** (for χ < 1; lobes bigger) or **m_lobe / m_saddle = χ / 1.618** (for χ > 1; saddles bigger, sub-levels). The χ values in the fit table above shift correspondingly (right column). Inter-generation ratios (ρ_n) are unchanged because the wedge angular extent is the same at every level (240° lobe maps to 240° lobe across gens).
+
+The wedge formula is valid in the deep-tight-binding limit where modes are strongly localized in their respective wedges. For loose localization (modes that penetrate into neighboring regions), the wedge formula overestimates the eigenvalue and a full numerical solution of the 2D Helmholtz problem on the corrugated domain is needed.
 
 **Geometric self-consistency** (each sub-level's lobe + saddle widths must fit inside the parent's lobe radius):
 - Level 2 inside level 1: (1 + χ_2)/ρ_2 = 14.66/577 = 0.025 < 1 ✓ (sub-level 2 occupies ~2.5% of parent lobe)
@@ -398,6 +415,7 @@ Both nested levels fit with substantial margin.
 2. **Charge accounting independent of level.** Q_up = +2/3, Q_down = −1/3 at every generation. The user's per-arc curvature accounting works recursively: each level's lobe gives +2/3, each level's saddle gives −1/3.
 3. **m_b/m_d structural relation.** The 6th mass ratio is fixed by the other 5: m_b/m_d = (m_t/m_u) × χ_1/χ_3 = (m_t/m_u) × (m_u/m_d)/(m_t/m_b). This is trivial arithmetic once the framework is adopted but is non-trivially consistent with observation — the observed quark mass spectrum *does* satisfy this relation.
 4. **Z₃ degeneracy at every level.** Each nested corrugation has 3-fold symmetry (3 lobes + 3 saddles per level). Each cross-section eigenmode therefore comes in a Z₃ triplet, plausibly accounting for the 3-color structure of QCD per [color-confinement.md](../../metric-binding/work/color-confinement.md).
+5. **Soft scaling pattern between sub-levels** (suggestive, not predictive with 3 data points). With wedge-corrected χ values: χ_2 ≈ 22, χ_3 ≈ 67 (ratio ≈ 3.0); ρ_2 ≈ 1/577, ρ_3 ≈ 1/136 (ρ_3/ρ_2 ≈ 4.2). A naive extrapolation assuming χ_{n+1} ≈ 3 χ_n and ρ_{n+1} ≈ ρ_n / 4 at sub-levels would predict gen-4 quarks at m_t4 ≈ 94 TeV (up-type) and m_b4 ≈ 470 GeV (down-type). The 470 GeV down-type would be within LHC reach and is not observed (existing 4th-generation bounds are around 1.5 TeV for b'-like states). The non-observation of gen-4 is consistent with the framework's "exactly 3 nested levels" prediction (#1 above) — the soft scaling pattern, if real, *terminates* at 3 levels. If a substrate-physics derivation produces the χ × 3 / ρ × 1/4 pattern *and* a natural cutoff at 3 levels, Mechanism E becomes genuinely predictive.
 
 **Relation to other mechanisms.** Mechanism E is the natural fractal extension of Mechanism D, layered on the 3D wave-guide picture of [tube-waveguide.md](tube-waveguide.md). It inherits D's amplitude-focus flavor split (lobe-focused = up-type, saddle-focused = down-type) at each level, and adds the recursion in the structural-scale axis. The topology/closure distinction it introduces is what makes the level-1 vs sub-level asymmetry structural rather than parametric.
 
