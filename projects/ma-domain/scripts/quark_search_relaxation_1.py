@@ -1,18 +1,25 @@
 """
-Relaxation 1 sweep on the (1,2)(1,3)(2,3) topology.
+Relaxation 1 sweep on the triangle topology Ma((1, 2), (1, 3), (2, 3)).
+
+This is the *fallback* path: the wye topology in quark_search_wye.py is the
+primary working result (< 0.5% fit). This script keeps the historical 3-dim
+triangle alive as a structural comparison.
 
 Goal: revisit the negative result from work/quark-search.md §1-§7 with TWO
 relaxations:
   (1) Allow m_t=2 as the second-lowest closure mode per pair (rather than
       always (m_t=1, m_r=round(σ_eff)±1)).
-  (2) Allow per-pair tube/ring assignment (per the updated architecture.md
-      §3.1) — each pair independently picks which dim is tube and which
-      is ring.
+  (2) Allow per-pair tube/ring assignment (per architecture.md §3.1) —
+      each pair independently picks which dim is tube and which is ring.
+
+The 3 dim labels here (1, 2, 3) are internal indices for this analysis
+only and are not committed to the project's global size-ordered m1..m_N
+scheme.
 
 For each of (6 gen→pair perms) × (2³ mode-B choices) × (2³ tube/ring
 choices) = 384 configurations, attempt a least-squares fit of (L_1, L_2,
-L_3, σ_eff_{12}, σ_eff_{13}, σ_eff_{23}) to the 6 observed quark masses.
-Report all configurations that fit to < 5% across all 6 quarks.
+L_3, σ_eff for each pair) to the 6 observed quark masses.  Report all
+configurations that fit to < 5% across all 6 quarks.
 
 Outputs to outputs/quark_search_relaxation_1.txt
 """

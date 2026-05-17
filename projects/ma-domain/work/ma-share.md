@@ -1,6 +1,8 @@
-# ma-share.md — Six compact dimensions shared across MaSt sheets
+# ma-share.md — Compact Ma dimensions shared across MaSt sheets
 
-**Status:** Hypothesis + computational sanity-check. Companion to [3-torus.md](3-torus.md) (the per-sheet 3D extension) — proposes that the 3-torus framework's apparent 9-dim count (3 sheets × 3 dims) collapses to **6** under a sheet-sharing topology, with each pair of sheets sharing exactly 1 dim. The observed mass clustering across particle types (tau ≈ proton ≈ charm ≈ bottom at ~1 GeV; muon ≈ strange at ~100 MeV; electron ≈ u ≈ d at ~MeV) becomes a *structural prediction* of which dims are shared.
+**Status:** Historical hypothesis + computational sanity-check (predates the current candidate analysis). Companion to [3-torus.md](3-torus.md) (the per-sheet 3D extension) — proposes that the 3-torus framework's apparent 9-dim count (3 sheets × 3 dims) collapses to a smaller count (originally N = 6) under a sheet-sharing topology, with each pair of sheets sharing exactly 1 dim. The observed mass clustering across particle types (tau ≈ proton ≈ charm ≈ bottom at ~1 GeV; muon ≈ strange at ~100 MeV; electron ≈ u ≈ d at ~MeV) becomes a *structural prediction* of which dims are shared.
+
+The current working topologies in [candidates.md](candidates.md) supersede this file's specific bare-mode predictions, but the *dim-sharing across sheets* hypothesis carried forward and motivates the wye/delta structures of all three candidates. Pair notation in this file uses prose-only labels (S_ep, U_e, etc.) rather than the `Ma(i, j)` convention; for the current candidate topologies see [candidates.md](candidates.md).
 
 ---
 
@@ -41,7 +43,7 @@ Each pair of sheets overlaps in 1 dim. No triple overlap (e ∩ p ∩ ν = ∅).
 
 Under the [3-torus.md](3-torus.md) hypothesis, each sheet has three 2D-planar mode towers (one per coordinate-pair within the sheet). Under the present sharing topology, *the shared-dim plane on two adjacent sheets uses the same compact direction*, so modes on that shared plane inherit the same mass scale 1/L_shared on both sheets.
 
-The user's specific claim: **the lightest p-sheet mode and the heaviest e-sheet mode share a dimension**. Under the topology above, the shared dim is **S_ep**. The lightest plane on the p-sheet is the one with the *largest* min(L_a, L_b); the heaviest plane on the e-sheet is the one with the *smallest* min(L_a, L_b). For both to live on the shared S_ep, S_ep needs to be (a) the LARGEST of the p-sheet dims (so p-modes there are lightest) and (b) the SMALLEST of the e-sheet dims (so e-modes there are heaviest). In other words: **S_ep is "small for e but large for p"** — the bridging dimension between the two sheets' length-scale hierarchies.
+The specific claim being tested: **the lightest p-sheet mode and the heaviest e-sheet mode share a dimension**. Under the topology above, the shared dim is **S_ep**. The lightest plane on the p-sheet is the one with the *largest* min(L_a, L_b); the heaviest plane on the e-sheet is the one with the *smallest* min(L_a, L_b). For both to live on the shared S_ep, S_ep needs to be (a) the LARGEST of the p-sheet dims (so p-modes there are lightest) and (b) the SMALLEST of the e-sheet dims (so e-modes there are heaviest). In other words: **S_ep is "small for e but large for p"** — the bridging dimension between the two sheets' length-scale hierarchies.
 
 The analogous statement for **S_eν** (shared between e and ν): bridges the e-sheet's largest dim with the ν-sheet's smallest dim. Whether this works numerically is exactly what Test 5 checks below.
 
@@ -110,7 +112,7 @@ No variant gets more than 4 of 12 fermions within a factor-of-3 of the predicted
 
 ### 5.2 The e-p sharing claim — confirmed structurally
 
-The user's specific claim — that tau (heaviest e-sheet mode) and proton-scale particles (lightest p-sheet modes) share a dimension — is validated in the test. In v2_tuned_GeV (S_ep = 0.7 fm):
+The specific claim — that tau (heaviest e-sheet mode) and proton-scale particles (lightest p-sheet modes) share a dimension — is validated in the test. In v2_tuned_GeV (S_ep = 0.7 fm):
 
 - **Tau best match** = (S_ep, U_e) plane, windings (1, 5), predicted mass 1777 MeV vs observed 1777 MeV. **log_err = 0.00.** ✓
 - **The (1, 1) mode on the S_ep–S_pv plane on the p-sheet** = 17.8 GeV — places the heavier p-sheet modes (bottom 4.18 GeV, top 173 GeV, charm 1.27 GeV) all in the same plane as tau's bridging dim.
@@ -127,7 +129,7 @@ The ratio (lowest p-sheet mode using S_ep) / (e-sheet tau mode) = 17,800 / 1777 
 
 ### 5.3 The ν-(e or p) sharing claim — fails in the bare test
 
-The user's secondary claim ("a common dimension might serve neutrino and electron") fails decisively under bare 2D-mode quantization. In every variant tested:
+The secondary claim ("a common dimension might serve neutrino and electron") fails decisively under bare 2D-mode quantization. In every variant tested:
 
 - **All three neutrinos are off by ~5–7 orders of magnitude** (log_err = +5.32 to +6.62 across variants). The smallest predicted ν-sheet mode mass is ~0.012 MeV (limited by the smaller of the two ν-sheet dims, S_eν or S_pν, which can't be made arbitrarily large without breaking the e-sheet's and p-sheet's mass-scale constraints).
 - **The ν-sheet's largest dim U_v** (10⁹–10¹⁰ fm) does have the right natural scale (~μeV), but the *mass formula* on a (L_small, L_large) plane is dominated by the smaller L. So the ν modes always land at 1/L_small, not 1/L_large.
@@ -140,7 +142,7 @@ This is a structural failure of the bare ν-sharing claim: the ν-sheet's small 
 
 3. **Sharing of a μm-scale dim** that just doesn't appear in e or p sheets (a dim *unique to ν* that's much larger than anything on e or p). This brings the ν-sheet back to having its own length scale rather than sharing across the cluster.
 
-Variants (1) and (3) are equivalent — they both say the ν-sheet has its own size scale. (2) is the model-F prescription and is what the existing framework already does. The bare-test failure is therefore not surprising: **the ν-(e or p) sharing claim, in the simple form the user proposed, is not consistent with the meV ν masses without an additional shear-resonance mechanism.**
+Variants (1) and (3) are equivalent — they both say the ν-sheet has its own size scale. (2) is the model-F prescription and is what the existing framework already does. The bare-test failure is therefore not surprising: **the ν-(e or p) sharing claim, in the simple form proposed, is not consistent with the meV ν masses without an additional shear-resonance mechanism.**
 
 ### 5.4 Within-sheet 3-generation splitting — fails (same as 3-torus.md)
 

@@ -1,6 +1,8 @@
 # 3-torus.md — Three generations from three compact dimensions
 
-**Status:** Two-test investigation of the hypothesis that each particle sheet is a *3-torus* (three compact dimensions with dramatically different circumferences L₁ ≪ L₂ ≪ L₃) rather than a 2-torus, with the three Standard Model generations corresponding to modes living in the three coordinate planes (12, 13, 23).
+**Status:** Historical investigation of the hypothesis that each particle sheet is a *3-torus* (three compact dimensions with dramatically different circumferences L_a ≪ L_b ≪ L_c) rather than a 2-torus, with the three Standard Model generations corresponding to modes living in the three coordinate planes. Predates the current candidate analysis in [candidates.md](candidates.md), which adopts a dim-pool reading rather than per-sheet 3-toruses. The "plane over diagonal" rule (§5.1, §5.3 — 2D-planar modes preferred over 3D-mixed modes) is carried forward into [architecture.md §3.3](architecture.md).
+
+Pair notation in this file uses generic indices `(L_a, L_b)` rather than the project's `Ma(i, j)` convention; for current topology labels see [candidates.md](candidates.md).
 
 **Why this is worth testing.** Phase 3 / Phase 4 of the corrugated-clover work ([sheet-proton 3-gen.md §12–§13](../../sheet-proton/work/3-gen.md)) ruled out the multi-generation mass hierarchy from a 2D-surface picture, both with the bisect-and-insert fractal recursion ([sheet-proton clover-on-clover.md](../../sheet-proton/work/clover-on-clover.md)) and with the alternative three-radius cross-section ([sheet-proton clover-inverse.md](../../sheet-proton/work/clover-inverse.md)). The 3D wave-guide extension recovers the hierarchy qualitatively but with no quantitative discriminator. This file tests a structurally different reframing: instead of fitting hierarchy by extreme ε or fractal nesting on a 2D sheet, let *each sheet itself* be 3D and let the three coordinate planes carry the three generations directly.
 
@@ -194,7 +196,7 @@ The relative magnitudes of ΣC_III across the three 2D-planar mode classes are t
 
 The 3-torus three-generations hypothesis has a **clean structural form** but its viability turns on a single open question:
 
-1. ✓ **Mode counting works.** Three pairs (12, 13, 23) give three distinct 2D-planar mode towers; mass scales follow L₃/L₂ and L₃/L₁ as the user proposed.
+1. ✓ **Mode counting works.** Three pairs (12, 13, 23) give three distinct 2D-planar mode towers; mass scales follow L₃/L₂ and L₃/L₁ as the hypothesis proposed.
 
 2. ✓ **Hierarchy is achievable.** Setting L₂/L₁ ≈ 580 and L₃/L₁ ≈ 78,000 puts the three 2D-planar mode classes at the right relative energies for the three observed quark generations. The magnitude problem hasn't disappeared — it's just been redistributed across three lengths instead of one extreme ε — but the redistribution gives the *right* structural answer (three families, naturally) rather than a single parameter fitted post-hoc.
 

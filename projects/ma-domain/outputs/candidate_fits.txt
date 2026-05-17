@@ -1,11 +1,12 @@
 ==========================================================================================
 ma-domain candidate fits
+(dim labels m1..m_N size-ordered; m1 smallest, m_N largest)
 ==========================================================================================
 
-### Candidate A (original)  (6 dims)
-  Quark    topology: (1,3) (2,3) (3,4) — wye/star, hub=dim 3
-  Electron topology: (2,4) (3,5) (4,5) — 4 dims, no hub
-  Neutrino topology: (5,6) — pair
+### Candidate A (wye + path)  (6 dims)
+  Quark    topology: Ma((1,4), (2,4), (3,4)) — wye, hub at m4
+  Electron topology: Ma((1,2), (1,5), (4,5)) — 4-dim path
+  Neutrino topology: Ma(5, 6) — single pair
 
   QUARK FIT: max |Δ%| = 0.499%  (6 quarks)
     u   pred =      2.171  obs =       2.16  Δ% = +0.50%
@@ -14,20 +15,24 @@ ma-domain candidate fits
     c   pred =       1270  obs =       1270  Δ% = +0.00%
     b   pred =       4180  obs =       4180  Δ% = +0.00%
     t   pred =   1.73e+05  obs =   1.73e+05  Δ% = +0.00%
-  Quark L's: {3: 5740.009184997196, 1: 181.5288409896624, 2: 0.9096419544823136, 4: 0.006997640726715192}
+  Quark L's (size-ordered):
+    L_1 = 0.006998 fm
+    L_2 = 0.9096 fm
+    L_3 = 181.5 fm
+    L_4 = 5740 fm
 
-  ELECTRON FIT: 4 dims, not a pure shape. e-sector fit not implemented here (mixed-dim topology requires a separate analysis). Shares L_2, L_3, L_4 with quarks via pairs (2,4), (3,5), (4,5).
+  ELECTRON FIT: 4-dim path topology (m2—m1—m5—m4), not a clean shape. e-sector fit not implemented here (mixed-shape topology requires a separate analysis). Shares L_1, L_2, L_4 with quarks via the pairs (1,2), (1,5)*, (4,5)*.
 
-  NEUTRINO check: NOT VIABLE: a single pair has at most 2 closure modes at m_t=1, but 3 ν mass eigenstates are observed; AND the inherited L_5 from e-sector is far below the 4.1e+10 fm floor required for meV-scale modes.
+  NEUTRINO check: NOT VIABLE: a single pair Ma(5, 6) has at most 2 closure modes at m_t=1, but 3 ν mass eigenstates are observed; AND the inherited L_5 from e-sector is far below the 4.1e+10 fm floor required for meV-scale modes.
     L_5 inherited from e-fit: None fm
     L floor required for m_ν₁ = 30 meV: 4.1e+10 fm
 
 ------------------------------------------------------------------------------------------
 
-### Candidate B (wye+delta, 6 dims)  (6 dims)
-  Quark    topology: (1,2) (2,3) (2,4) — wye/star, hub=dim 2
-  Electron topology: (3,4) (3,5) (4,5) — delta on 3 dims
-  Neutrino topology: (5,6) — pair
+### Candidate B (wye + delta, 6 dims)  (6 dims)
+  Quark    topology: Ma((1,4), (2,4), (3,4)) — wye, hub at m4
+  Electron topology: Ma((1,2), (1,5), (2,5)) — delta on m1, m2, m5
+  Neutrino topology: Ma(5, 6) — single pair
 
   QUARK FIT: max |Δ%| = 0.499%  (6 quarks)
     u   pred =      2.171  obs =       2.16  Δ% = +0.50%
@@ -36,25 +41,29 @@ ma-domain candidate fits
     c   pred =       1270  obs =       1270  Δ% = +0.00%
     b   pred =       4180  obs =       4180  Δ% = +0.00%
     t   pred =   1.73e+05  obs =   1.73e+05  Δ% = +0.00%
-  Quark L's: {2: 5740.009184997196, 1: 181.5288409896624, 3: 0.9096419544823136, 4: 0.006997640726715192}
+  Quark L's (size-ordered):
+    L_1 = 0.006998 fm
+    L_2 = 0.9096 fm
+    L_3 = 181.5 fm
+    L_4 = 5740 fm
 
   ELECTRON FIT (1 mode per pair, T(1,2)): max |Δ%| = 0.000%
-    e    pred =      0.511  obs =      0.511  Δ% = +0.00%
-    mu   pred =      105.7  obs =      105.7  Δ% = +0.00%
+    e    pred =      0.511  obs =      0.511  Δ% = -0.00%
+    mu   pred =      105.7  obs =      105.7  Δ% = -0.00%
     tau  pred =       1777  obs =       1777  Δ% = +0.00%
-  Electron lepton→pair: [((3, 4), 'tau'), ((3, 5), 'mu'), ((4, 5), 'e')]
-  L_5 = 1.83e+05 fm
+  Electron lepton→pair: [((1, 2), 'tau'), ((1, 5), 'e'), ((2, 5), 'mu')]
+  L_5 = 1.199e+05 fm
 
-  NEUTRINO check: NOT VIABLE: a single pair has at most 2 closure modes at m_t=1, but 3 ν mass eigenstates are observed; AND the inherited L_5 from e-sector is far below the 4.1e+10 fm floor required for meV-scale modes.
-    L_5 inherited from e-fit: 182950.3424664471 fm
+  NEUTRINO check: NOT VIABLE: a single pair Ma(5, 6) has at most 2 closure modes at m_t=1, but 3 ν mass eigenstates are observed; AND the inherited L_5 from e-sector is far below the 4.1e+10 fm floor required for meV-scale modes.
+    L_5 inherited from e-fit: 119939.68568871373 fm
     L floor required for m_ν₁ = 30 meV: 4.1e+10 fm
 
 ------------------------------------------------------------------------------------------
 
-### Candidate C (wye+delta+delta, 7 dims)  (7 dims)
-  Quark    topology: (1,2) (2,3) (2,4) — wye/star, hub=dim 2
-  Electron topology: (3,4) (3,5) (4,5) — delta on 3 dims
-  Neutrino topology: (5,6) (5,7) (6,7) — delta on 3 dims
+### Candidate C (wye + delta + delta, 7 dims)  (7 dims)
+  Quark    topology: Ma((1,4), (2,4), (3,4)) — wye, hub at m4
+  Electron topology: Ma((1,2), (1,5), (2,5)) — delta on m1, m2, m5
+  Neutrino topology: Ma((5,6), (5,7), (6,7)) — delta on m5, m6, m7
 
   QUARK FIT: max |Δ%| = 0.499%  (6 quarks)
     u   pred =      2.171  obs =       2.16  Δ% = +0.50%
@@ -63,20 +72,24 @@ ma-domain candidate fits
     c   pred =       1270  obs =       1270  Δ% = +0.00%
     b   pred =       4180  obs =       4180  Δ% = +0.00%
     t   pred =   1.73e+05  obs =   1.73e+05  Δ% = +0.00%
-  Quark L's: {2: 5740.009184997196, 1: 181.5288409896624, 3: 0.9096419544823136, 4: 0.006997640726715192}
+  Quark L's (size-ordered):
+    L_1 = 0.006998 fm
+    L_2 = 0.9096 fm
+    L_3 = 181.5 fm
+    L_4 = 5740 fm
 
   ELECTRON FIT (1 mode per pair, T(1,2)): max |Δ%| = 0.000%
-    e    pred =      0.511  obs =      0.511  Δ% = +0.00%
-    mu   pred =      105.7  obs =      105.7  Δ% = +0.00%
+    e    pred =      0.511  obs =      0.511  Δ% = -0.00%
+    mu   pred =      105.7  obs =      105.7  Δ% = -0.00%
     tau  pred =       1777  obs =       1777  Δ% = +0.00%
-  Electron lepton→pair: [((3, 4), 'tau'), ((3, 5), 'mu'), ((4, 5), 'e')]
-  L_5 = 1.83e+05 fm
+  Electron lepton→pair: [((1, 2), 'tau'), ((1, 5), 'e'), ((2, 5), 'mu')]
+  L_5 = 1.199e+05 fm
 
   NEUTRINO FIT: max |Δ%| = 0.000%
-    nu1  pred =      3e-08  obs =      3e-08  Δ% = -0.00%
+    nu1  pred =      3e-08  obs =      3e-08  Δ% = +0.00%
     nu2  pred =    3.3e-08  obs =    3.3e-08  Δ% = +0.00%
     nu3  pred =      6e-08  obs =      6e-08  Δ% = -0.00%
-  L_6 = 3.053e+10 fm,  L_7 = 5.991e+13 fm
+  L_6 = 2.591e+14 fm,  L_7 = 3.757e+10 fm
 
 ------------------------------------------------------------------------------------------
 

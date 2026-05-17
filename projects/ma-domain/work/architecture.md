@@ -1,8 +1,10 @@
 # architecture.md — ma-domain metric layout, nomenclature, and operational rules
 
-**Status:** Phase 0 deliverable (per [STATUS.md](STATUS.md)). Pins the conventions used by everything downstream — the 11-component metric ordering, the mode-label nomenclature, and the operational rules that translate a 6-dim Ma domain into closure analysis on dim-pairs.
+**Status:** Phase 0 deliverable (per [STATUS.md](STATUS.md)). Pins the conventions used by everything downstream — the metric ordering, mode-label and pair-label nomenclature, and the operational rules that translate a multi-dim Ma domain into closure analysis on dim-pairs.
 
-This file does **not** yet specify the cross-term sparsity pattern (which off-diagonals carry τ-twists, which carry R53 shears, which are zero). That is the second half of Phase 0 and comes after the conventions below are stable.
+This file does **not** yet specify the cross-term sparsity pattern (which off-diagonals carry τ-twists, which carry shears, which are zero). That is the second half of Phase 0 and comes after the conventions below are stable.
+
+The working dim count is N = 6; the architecture is not bound to that count and 5 or 7 are permitted if the structure demands it. Most concrete worked examples below use N = 6 (so a 6×6 Material block); the size-ordering and labelling conventions extend uniformly.
 
 ---
 
@@ -27,7 +29,7 @@ Order the 11 metric components Material → Space → Time, top to bottom:
 **Conventions:**
 
 - **Size order in Material** (smallest → largest): aleph, m1, m2, m3, m4, m5, m6. By construction, aleph is sub-Planck and is always the smallest; the 6 Ma dims (m1..m6) are size-ordered with m1 smallest among them.
-- **Material → Space → Time** reading top to bottom. Matches the [R60 metric-11](../../../studies/R60-metric-11/) ordering. Reads backward from the usual relativity convention (which puts t first), but the user's preference is for the present "Material-Space-Time" sequence and we adopt it project-wide.
+- **Material → Space → Time** reading top to bottom. Matches the [R60 metric-11](../../../studies/R60-metric-11/) ordering. Reads backward from the usual relativity convention (which puts t first); the present "Material-Space-Time" sequence is adopted project-wide.
 - **Signature** to be pinned alongside the cross-term matrix (Phase 0 second half). The R60 11D work uses a specific signature with exactly one negative eigenvalue; we inherit unless the cross-term structure forces otherwise.
 
 The 11×11 metric tensor under this convention is conventionally written with the diagonal entries reading down the labels above in order; off-diagonals (15 in the Material block plus various Material↔Space, Material↔Time entries) are the project's free architectural content.
@@ -46,9 +48,21 @@ For everyday compact-domain analysis, the spatial and time entries are usually z
 
     { n_1, n_2, n_3, n_4, n_5, n_6 }   (with n_aleph = 0 and Sx,Sy,Sz,t entries dropped)
 
-**Optional sheet-region hints.** The 6 Ma dims may carry a mnemonic subscript indicating their dominant particle-region: m1p, m2p (proton/quark region), m3e, m4e (electron/charged-lepton region), m5v, m6v (neutrino region). Example: { aleph, m1p, m2p, m3e, m4e, m5v, m6v, Sx, Sy, Sz, t }. **These subscripts are mnemonic only** — they reflect the *primary* access pattern; under the 6-dim-pool reading, a single dim may participate in modes belonging to particles from any region. Drop them if they become misleading.
+**Optional sheet-region hints.** The Ma dims may carry a mnemonic subscript indicating their dominant particle-region: m1p, m2p (proton/quark region), m3e, m4e (electron/charged-lepton region), m5v, m6v (neutrino region). Example: { aleph, m1p, m2p, m3e, m4e, m5v, m6v, Sx, Sy, Sz, t }. **These subscripts are mnemonic only** — they reflect the *primary* access pattern; under the dim-pool reading, a single dim may participate in modes belonging to particles from any region. Drop them if they become misleading.
 
-**Smallest first.** Within any pair `(a, b)` referenced in closure or coupling analysis, the convention is `m_a` smaller than `m_b` — i.e., `a < b` in the index order. (Section 3.1 below.)
+**Smallest first.** Within any pair `Ma(i, j)` referenced in closure or coupling analysis, the convention is `m_i` smaller than `m_j` — i.e., `i < j` in the index order. (Section 3.1 below.)
+
+### 2.1 Pair-label notation: Ma(i, j)
+
+A dim-pair is written `Ma(i, j)` with the two dim indices size-ordered (`i < j`). A set of pairs (a topology) is written `Ma((i₁, j₁), (i₂, j₂), …)`. Examples:
+
+- `Ma(1, 4)` — the pair built from dims m1 and m4.
+- `Ma((1, 4), (2, 4), (3, 4))` — the wye/star topology with hub at m4 and spokes at m1, m2, m3.
+- `Ma((3, 4), (3, 5), (4, 5))` — the delta/triangle topology on dims m3, m4, m5.
+
+This notation is deliberately distinct from the mode-winding tuple `T(m_t, m_r)` (per metric-charge's torus-knot mode labels), so a pair `Ma(1, 2)` and a mode `T(1, 2)` are never confused.
+
+When pairs are tabulated in prose without the `Ma()` wrapper, the size-ordered form `(m_i, m_j)` is used. The mode tuple is always written `T(m_t, m_r)` or `(m_t, m_r)` with explicit `m_t`/`m_r` headers when ambiguity is possible.
 
 ---
 
@@ -56,14 +70,14 @@ For everyday compact-domain analysis, the spatial and time entries are usually z
 
 ### 3.1 Tube and ring are per-pair structural roles (not size-determined)
 
-There is **no global tube/ring assignment** under the 6-dim-pool reading. The role is *per-pair* and is a **structural choice** carried by the pair's cross-term content, not determined by which dim is smaller. In any pair `(m_a, m_b)`:
+There is **no global tube/ring assignment** under the dim-pool reading. The role is *per-pair* and is a **structural choice** carried by the pair's cross-term content, not determined by which dim is smaller. In any pair `Ma(i, j)`:
 
 - One of the two dims is assigned the **tube** role (analog of MaSt's topological / cross-term-bearing / charge-coupled dim — winds m_t).
 - The other dim is assigned the **ring** role (analog of MaSt's mass-bearing dim — winds m_r and carries the cross-term-driven shift to (m_r − σ_eff m_t)).
 
 A single dim can therefore play tube in one pair and ring in another. The role assignment is part of the pair-triplet specification (cf. §3.4 working hypothesis) and emerges from the cross-term structure, not from the dim sizes per se.
 
-**Convention from prior MaSt work** held that the smaller dim plays tube. This is true at the proton-sheet operating point (ε_p ≈ 0.55, thin torus) but does *not* generalize: the R53 charged-lepton fit has ε_e ≈ 397 (fat torus), with the *larger* dim playing tube. The user's quark-sector topology in [quark-search.md §9](quark-search.md) similarly requires the *larger* dim (the common dim 3) to play tube in all 3 quark pairs. So the smaller-as-tube assumption is a special case, not a rule. **Per-pair tube/ring assignment is free** and must be specified by the cross-term structure for each pair.
+**Convention from prior MaSt work** held that the smaller dim plays tube. This is true at the proton-sheet operating point (ε_p ≈ 0.55, thin torus) but does *not* generalize: the R53 charged-lepton fit has ε_e ≈ 397 (fat torus), with the *larger* dim playing tube. The quark-sector wye topology in [quark-search.md §9](quark-search.md) similarly requires the *larger* dim (the common hub m4) to play tube in all 3 quark pairs. So the smaller-as-tube assumption is a special case, not a rule. **Per-pair tube/ring assignment is free** and must be specified by the cross-term structure for each pair.
 
 **Two natural rule-of-thumb consequences** that survive even without smaller-as-tube:
 
@@ -72,18 +86,18 @@ A single dim can therefore play tube in one pair and ring in another. The role a
 
 ### 3.2 The tube dim governs closure
 
-For closure analysis on a dim-pair `(m_a, m_b)`, the tube role (per §3.1, per-pair-assigned) governs the topological / closure side:
+For closure analysis on a dim-pair `Ma(i, j)`, the tube role (per §3.1, per-pair-assigned) governs the topological / closure side:
 
 - The **tube** dim counts tube windings, hosts the boundary identification, carries any τ-twist.
 - The **ring** dim governs the mass side — its winding contributes the mode's mass-energy budget via the (m_r − σ_eff m_t)/L_ring term.
 
-Whether the tube dim is *smaller* or *larger* than the ring dim is a per-pair structural choice; both regimes appear in successful particle fits (thin-torus proton sheet vs fat-torus R53 charged leptons vs the user's quark topology in [quark-search.md §9](quark-search.md) with one fat common tube).
+Whether the tube dim is *smaller* or *larger* than the ring dim is a per-pair structural choice; both regimes appear in successful particle fits (thin-torus proton sheet vs fat-torus R53 charged leptons vs the quark wye topology in [quark-search.md §9](quark-search.md) with one fat common tube).
 
 ### 3.3 Plane over diagonal (2D-planar preferred over 3D-mixed)
 
-A wave that uses *two* dimensions has lower energy than a wave that uses *three* dimensions of the same domain at comparable windings, because the 3D-mixed mode pays a quadratic energy cost in the third dim's winding. From the [3-torus.md §5.1](3-torus.md) Test A results at L₁:L₂:L₃ = 1:580:78,000, the lowest 3D-mixed mode sits at 78,000× the lowest 1D-line mode and 580× the lowest 2D-planar mode.
+A wave that uses *two* dimensions has lower energy than a wave that uses *three* dimensions of the same domain at comparable windings, because the 3D-mixed mode pays a quadratic energy cost in the third dim's winding. From the [3-torus.md §5.1](3-torus.md) Test A results at L_a : L_b : L_c = 1 : 580 : 78,000, the lowest 3D-mixed mode sits at 78,000× the lowest 1D-line mode and 580× the lowest 2D-planar mode.
 
-**Rule (working hypothesis):** particles form on 2D-planar modes (dim-pairs); 3D-mixed modes (full triple-dim excitations) are energy-unfavored and reduce to the *dark / unobserved* class. This is the **sheet-constraining rule** for the project: a particle = a mode on a single dim-pair from the multi-dim Ma pool.
+**Rule (working hypothesis):** particles form on 2D-planar modes (dim-pairs `Ma(i, j)`); 3D-mixed modes (full triple-dim excitations) are energy-unfavored and reduce to the *dark / unobserved* class. This is the **sheet-constraining rule** for the project: a particle = a mode on a single dim-pair from the multi-dim Ma pool.
 
 The companion rule from [3-torus.md §3.2–§3.3](3-torus.md) — that *1D-line* modes are also unphysical (no EM coupling) under the Candidate-III R19 extension — completes the picture: physical particles are exactly the 2D-planar modes on dim-pairs that have the right cross-term structure.
 
@@ -97,32 +111,32 @@ I.e., m_t must divide m_r, and neither m_t nor m_r is zero. This is equivalent t
 
 Consequences relevant to ma-domain mode searches:
 
-- **Closure-satisfying primitives are exactly T(1, n) for n ≥ 1.** So per-pair, the closure-satisfying modes at m_t = 1 are (1, 1), (1, 2), (1, 3), … indefinitely. Lowest two are **(1, 1)** and **(1, 2)**.
-- **(m_t, 0) and (0, m_r) both fail.** Single-axis modes are closure-failing (no chirality structure to test).
-- **(2, 3), (3, 2), (3, 4), …** (genuine torus knots with gcd-primitive p, q ≥ 2) fail closure — chirally distinct from their mirrors. They are mass-only (no EM charge) per metric-charge §4.2.
-- **Multi-component links T(k, k·n) for k ≥ 2, n ≥ 1** are closure-satisfying (k-component repetitions of T(1, n)). (3, 6) for example is closure-satisfying as 3 copies of T(1, 2) — this is the (3, 6) proton-as-3-quark identification in model-F.
+- **Closure-satisfying primitives are exactly T(1, n) for n ≥ 1.** So per-pair, the closure-satisfying modes at m_t = 1 are T(1, 1), T(1, 2), T(1, 3), … indefinitely. Lowest two are **T(1, 1)** and **T(1, 2)**.
+- **T(m_t, 0) and T(0, m_r) both fail.** Single-axis modes are closure-failing (no chirality structure to test).
+- **T(2, 3), T(3, 2), T(3, 4), …** (genuine torus knots with gcd-primitive p, q ≥ 2) fail closure — chirally distinct from their mirrors. They are mass-only (no EM charge) per metric-charge §4.2.
+- **Multi-component links T(k, k·n) for k ≥ 2, n ≥ 1** are closure-satisfying (k-component repetitions of T(1, n)). T(3, 6) for example is closure-satisfying as 3 copies of T(1, 2) — this is the (3, 6) proton-as-3-quark identification in model-F.
 
-For ma-domain Phase 1+ work, this means: when picking the "lowest two closure modes" per pair, the candidates are T(1, 1) and T(1, 2) — *not* (1, 0) (which is closure-failing) and *not* (2, 3) (genuine knot, mass-only). Earlier ma-domain analyses that used (1, 0) as a candidate mode have been corrected to use (1, 1) and (1, 2).
+For ma-domain Phase 1+ work, this means: when picking the "lowest two closure modes" per pair `Ma(i, j)`, the candidates are T(1, 1) and T(1, 2) — *not* T(1, 0) (closure-failing) and *not* T(2, 3) (genuine knot, mass-only). Earlier ma-domain analyses that used T(1, 0) as a candidate mode have been corrected to use T(1, 1) and T(1, 2).
 
 ### 3.4 How a single dim can be simple ring in one context, complicated tube in another (working hypothesis)
 
-[sheet-proton clover-quarks.md](../../sheet-proton/work/clover-quarks.md) explains the quark sector via a clover-shaped corrugated cross-section (3 lobes of 240° + 3 saddles of 120°, Z₃ symmetric). Under the 6-dim-pool reading, that clover shape cannot belong to a single dim — a single dim is just a circle of size L. The shape has to be a property of how two dims combine, so that one of those dims can be a *plain ring* when paired with a different partner.
+[sheet-proton clover-quarks.md](../../sheet-proton/work/clover-quarks.md) explains the quark sector via a clover-shaped corrugated cross-section (3 lobes of 240° + 3 saddles of 120°, Z₃ symmetric). Under the dim-pool reading, that clover shape cannot belong to a single dim — a single dim is just a circle of size L. The shape has to be a property of how two dims combine, so that one of those dims can be a *plain ring* when paired with a different partner.
 
-**Working hypothesis: pair-triplet (σ, τ, P).** Replace the scalar cross-term σ_{ab} between two dims (m_a, m_b) with a triplet:
+**Working hypothesis: pair-triplet (σ, τ, P).** Replace the scalar cross-term σ_{ij} between two dims of a pair `Ma(i, j)` with a triplet:
 
-  - **σ_{ab}** — the constant off-diagonal shear (scalar; the metric off-diagonal entry as in current MaSt).
-  - **τ_{ab}** — the discrete topological twist (scalar; k/3 for some integer k, or 0).
-  - **P_{ab}(u)** — a *shape function* periodic on the helical coordinate u = u_a + τ_{ab} u_b, modulating the ring-direction metric entry.
+  - **σ_{ij}** — the constant off-diagonal shear (scalar; the metric off-diagonal entry as in current MaSt).
+  - **τ_{ij}** — the discrete topological twist (scalar; k/3 for some integer k, or 0).
+  - **P_{ij}(u)** — a *shape function* periodic on the helical coordinate u = u_i + τ_{ij} u_j, modulating the ring-direction metric entry.
 
 The pair-metric is then
 
-  g_{aa}^{(ab)} = (L_a + P_{ab}(u))² + τ_{ab}² L_b² ,
-  g_{ab}^{(ab)} = (σ_{ab} + τ_{ab}) L_b² ,
-  g_{bb}^{(ab)} = L_b² ,
+  g_{ii}^{(ij)} = (L_i + P_{ij}(u))² + τ_{ij}² L_j² ,
+  g_{ij}^{(ij)} = (σ_{ij} + τ_{ij}) L_j² ,
+  g_{jj}^{(ij)} = L_j² ,
 
-adapting the form from [clover-quarks.md §10.3](../../sheet-proton/work/clover-quarks.md). P_{ab} = 0 gives a flat-twisted torus on the pair; P_{ab} = the 3-lobe clover gives the corrugated-torus quark machinery. The clover is a property of the **pair**, not of either dim alone.
+adapting the form from [clover-quarks.md §10.3](../../sheet-proton/work/clover-quarks.md). P_{ij} = 0 gives a flat-twisted torus on the pair; P_{ij} = the 3-lobe clover gives the corrugated-torus quark machinery. The clover is a property of the **pair `Ma(i, j)`**, not of either dim alone.
 
-The proton sheet then maps to the pair (m_a, m_b) with τ_{ab} = 1/3 and P_{ab} = clover. The same m_a paired with a different m_c could have P_{ac} = 0 and host a plain electron-region mode.
+A quark-sector pair then maps to some `Ma(i, j)` with τ_{ij} = 1/3 and P_{ij} = clover. The same m_i paired with a different m_k could have P_{ik} = 0 and host a plain electron-region mode.
 
 **Adopted as the project standard for now**, on the strength of:
 
@@ -153,7 +167,7 @@ The working hypothesis (pair-triplet) is **provisional** and chosen because it m
 - **Signature pinning** for the 11×11 metric. R60 used exactly one negative eigenvalue; whether that survives the 6-dim-pool reformulation needs checking once the cross-terms are specified.
 - **The aleph entry's coupling structure**. R59 / R60 derive α from the tube↔ℵ↔t chain. Under the per-pair tube reading of §3.1, each Ma dim might individually couple to aleph (with strength σ_ta — the model-F symbol). Whether the 6 dims share one σ_ta or each has its own is a Phase 0-or-1 question depending on how the cross-term template is read.
 - **Pair-shape mechanism** (§3.4). Pair-triplet (σ, τ, P) is adopted as the working hypothesis; if the math reveals that mode-resolution filtering, GRID-lattice fingerprinting, or another mechanism is the correct deeper structure, the architecture swaps to that without losing the per-arc charges or the proton-mass results.
-- **Per-pair consistency at shared dims** (§3.4). When a dim m_a appears in two pairs (a, b) and (a, c) with different P-functions, the diagonal entry g_{aa} on the underlying 11-torus must be one consistent function. The pair-restrictions of g_{aa} must reduce to P_{ab} on the (a,b)-slice and to P_{ac} on the (a,c)-slice. Whether this is structurally always possible, or imposes constraints on the allowed P-functions, is a Phase 1 consistency check.
+- **Per-pair consistency at shared dims** (§3.4). When a dim m_i appears in two pairs `Ma(i, j)` and `Ma(i, k)` with different P-functions, the diagonal entry g_{ii} on the underlying 11-torus must be one consistent function. The pair-restrictions of g_{ii} must reduce to P_{ij} on the (i,j)-slice and to P_{ik} on the (i,k)-slice. Whether this is structurally always possible, or imposes constraints on the allowed P-functions, is a Phase 1 consistency check.
 
 ---
 
@@ -161,6 +175,6 @@ The working hypothesis (pair-triplet) is **provisional** and chosen because it m
 
 - [STATUS.md](STATUS.md) — phased work plan; this file is the Phase 0 first-half deliverable.
 - [3-torus.md](3-torus.md) — supports §3.3 (plane-over-diagonal) and §3.2 (smallest-as-tube) operational rules.
-- [ma-share.md](ma-share.md) — establishes the 6-dim-pool topology this file's nomenclature serves.
+- [ma-share.md](ma-share.md) — establishes the dim-pool topology this file's nomenclature serves.
 - [../../../studies/R60-metric-11/](../../../studies/R60-metric-11/) — 11D metric ordering precedent (Material → Space → Time inherited from there).
 - [../../../studies/R59-clifford-torus/](../../../studies/R59-clifford-torus/) — aleph dim introduction and the α-coupling chain.
