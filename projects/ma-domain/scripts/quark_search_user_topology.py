@@ -51,14 +51,18 @@ GEN_PAIRS = [
 ]
 
 
-def f_from_ratio(r: float) -> float:
-    """Solve (1 - f) / f = r for f ∈ [0, 1/2]."""
-    return 1.0 / (1.0 + r)
+def sigma_eff_from_ratio(r: float) -> float:
+    """For modes at (1, 1) and (1, 2) with σ_eff in (1.5, 2):
+    lighter mode (1, 2) has δ = 2 − σ_eff, heavier (1, 1) has δ = 1 − σ_eff.
+    Ratio m_heavier/m_lighter = (σ_eff − 1)/(2 − σ_eff) = r.
+    Solve: σ_eff = (2r + 1)/(r + 1).
+    """
+    return (2 * r + 1) / (r + 1)
 
 
-def mass(L_T_fm: float, L_R_fm: float, delta: float) -> float:
-    """m = 2π·ℏc·√(1/L_T² + δ²/L_R²) MeV."""
-    return COEFF * sqrt(1.0 / L_T_fm**2 + delta**2 / L_R_fm**2)
+def mass(L_T_fm: float, L_R_fm: float, m_t: int, delta: float) -> float:
+    """m = 2π·ℏc·√((m_t/L_T)² + (δ/L_R)²) MeV."""
+    return COEFF * sqrt((m_t / L_T_fm)**2 + (delta / L_R_fm)**2)
 
 
 def main() -> None:
@@ -75,17 +79,24 @@ def main() -> None:
     lines.append("            dims 1, 2, 4 play RING (small L), one per pair.")
     lines.append("")
 
-    # Step 1: solve for f and L_ring per pair from observed masses
+    # Step 1: solve for σ_eff and L_ring per pair from observed masses.
+    # The two closure modes on each pair are (m_t=1, m_r=1) and (m_t=1, m_r=2).
+    # σ_eff in (1.5, 2): m_r=2 closer → lighter; m_r=1 → heavier.
+    # f = |δ_lighter| = 2 - σ_eff is the smaller detuning.
+    sigma_eff_per_pair = {}
     f_per_pair = {}
     L_ring_per_pair = {}
     for pair, q_light, q_heavy in GEN_PAIRS:
         ratio = QUARK_MASSES_MEV[q_heavy] / QUARK_MASSES_MEV[q_light]
-        f = f_from_ratio(ratio)
+        sigma_eff = sigma_eff_from_ratio(ratio)
+        f = 2 - sigma_eff
         L_ring = COEFF * f / QUARK_MASSES_MEV[q_light]
+        sigma_eff_per_pair[pair] = sigma_eff
         f_per_pair[pair] = f
         L_ring_per_pair[pair] = L_ring
-        lines.append(f"  Pair {pair} → quarks ({q_light}, {q_heavy})  "
-                     f"within-pair ratio = {ratio:.3f}  ⇒  f = {f:.4f}  "
+        lines.append(f"  Pair {pair} → quarks ({q_light} (1,2) = lighter, "
+                     f"{q_heavy} (1,1) = heavier), within-pair ratio = {ratio:.3f}")
+        lines.append(f"    ⇒  σ_eff = {sigma_eff:.4f}, f = |δ_lighter| = {f:.4f}, "
                      f"L_ring = {L_ring:.4g} fm")
 
     L_1 = L_ring_per_pair["(1,3)"]
@@ -94,6 +105,9 @@ def main() -> None:
     f_13 = f_per_pair["(1,3)"]
     f_23 = f_per_pair["(2,3)"]
     f_34 = f_per_pair["(3,4)"]
+    sigma_13 = sigma_eff_per_pair["(1,3)"]
+    sigma_23 = sigma_eff_per_pair["(2,3)"]
+    sigma_34 = sigma_eff_per_pair["(3,4)"]
 
     # Step 2: solve for L_3 minimum (pure-ring regime: L_T >> L_R/f for each pair)
     L_3_min = max(L_1/f_13, L_2/f_23, L_4/f_34) * 10  # 10× margin
@@ -106,28 +120,31 @@ def main() -> None:
     lines.append("")
 
     # Step 3: compute predicted masses using FULL formula
-    lines.append("Predicted vs observed masses (FULL formula, not just pure-ring approximation):")
+    lines.append("Predicted vs observed masses (FULL formula, modes (1,1) and (1,2) per pair):")
     lines.append("")
-    lines.append(f"  {'Pair':<8s} {'Mode':<22s} {'L_T fm':>10s} {'L_R fm':>12s} "
-                 f"{'δ':>8s} {'m_pred MeV':>14s} {'m_obs MeV':>14s} {'Δ%':>8s}")
-    lines.append("  " + "-" * 95)
+    lines.append(f"  {'Pair':<8s} {'Mode (m_t,m_r)':<16s} {'Quark':<7s} "
+                 f"{'L_T fm':>10s} {'L_R fm':>12s} {'δ':>8s} "
+                 f"{'m_pred MeV':>14s} {'m_obs MeV':>14s} {'Δ%':>8s}")
+    lines.append("  " + "-" * 100)
 
+    # δ = m_r − σ_eff · m_t.  For m_t=1: δ = m_r − σ_eff.
     cases = [
-        ("(1,3)", "u (lighter, m_r close)", L_3, L_1, f_13, "u"),
-        ("(1,3)", "d (heavier, m_r far)",   L_3, L_1, 1.0 - f_13, "d"),
-        ("(2,3)", "s (lighter)",            L_3, L_2, f_23, "s"),
-        ("(2,3)", "c (heavier)",            L_3, L_2, 1.0 - f_23, "c"),
-        ("(3,4)", "b (lighter)",            L_3, L_4, f_34, "b"),
-        ("(3,4)", "t (heavier)",            L_3, L_4, 1.0 - f_34, "t"),
+        ("(1,3)", "(1, 2)", "u", L_3, L_1, 2 - sigma_13, "u"),
+        ("(1,3)", "(1, 1)", "d", L_3, L_1, 1 - sigma_13, "d"),
+        ("(2,3)", "(1, 2)", "s", L_3, L_2, 2 - sigma_23, "s"),
+        ("(2,3)", "(1, 1)", "c", L_3, L_2, 1 - sigma_23, "c"),
+        ("(3,4)", "(1, 2)", "b", L_3, L_4, 2 - sigma_34, "b"),
+        ("(3,4)", "(1, 1)", "t", L_3, L_4, 1 - sigma_34, "t"),
     ]
     max_err_pct = 0.0
-    for pair, mode_label, L_T, L_R, delta, q in cases:
-        m_pred = mass(L_T, L_R, delta)
+    for pair, mode_label, q_label, L_T, L_R, delta, q in cases:
+        m_pred = mass(L_T, L_R, 1, delta)  # m_t = 1 for all quark modes
         m_obs = QUARK_MASSES_MEV[q]
         err_pct = 100.0 * (m_pred - m_obs) / m_obs
         max_err_pct = max(max_err_pct, abs(err_pct))
-        lines.append(f"  {pair:<8s} {mode_label:<22s} {L_T:>10.4g} {L_R:>12.4g} "
-                     f"{delta:>8.4f} {m_pred:>14.4g} {m_obs:>14.4g} {err_pct:>+7.2f}%")
+        lines.append(f"  {pair:<8s} {mode_label:<16s} {q_label:<7s} "
+                     f"{L_T:>10.4g} {L_R:>12.4g} {delta:>+8.4f} "
+                     f"{m_pred:>14.4g} {m_obs:>14.4g} {err_pct:>+7.2f}%")
 
     lines.append("")
     lines.append(f"  Maximum |Δ%| = {max_err_pct:.3f}%")

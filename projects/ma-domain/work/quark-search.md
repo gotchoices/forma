@@ -9,7 +9,7 @@
 4. **τ ∈ {±1/3, ±2/3} per pair.** Discrete choice.
 5. **Quarks live on 3 dims**: m1, m2, m3.
 
-The deliverable here is a *rough cut*; the formalization moves to `ma-6/` proper if the rough cut closes (per [STATUS.md](STATUS.md) Phase 5).
+The deliverable here is a *rough cut*; the formalization moves to `ma-domain/` proper if the rough cut closes (per [STATUS.md](STATUS.md) Phase 5).
 
 ---
 
@@ -212,32 +212,40 @@ The user's topology has all three pairs share **L_T (the larger, tube-role dim)*
 
 is dominated by 1/L_R, *not* 1/L_T. **A shared L_T does not couple the lighter-mode masses across pairs.** Each pair has its own L_R, giving its own mass scale independently.
 
-### 9.2 The fit
+### 9.2 The fit — uses only the (1, 1) and (1, 2) closure modes per pair
 
-Compute f per pair from the within-pair mass ratio (1−f)/f, then solve for L_R per pair from the lighter quark mass. Script: [scripts/quark_search_user_topology.py](../scripts/quark_search_user_topology.py); output: [outputs/quark_search_user_topology.txt](../outputs/quark_search_user_topology.txt).
+Each pair hosts its two lowest **valid closure modes**: **(m_t, m_r) = (1, 2) for the lighter quark and (1, 1) for the heavier quark of each generation**. These are the natural closure-compatible windings inherited from [sheet-proton clover-quarks.md §12](../../sheet-proton/work/clover-quarks.md) (neutron path = (1, 1), proton path = (1, 2)) and from R46's "first charged mode = (1, 2)" rule.
 
-| Pair | Quarks | within-pair ratio | f | L_ring (fm) |
-|---|---|---:|---:|---:|
-| (1, 3) | (u, d) | 2.17 | 0.3163 | **L_1 = 181.5** |
-| (2, 3) | (s, c) | 13.65 | 0.0682 | **L_2 = 0.9096** |
-| (3, 4) | (b, t) | 41.39 | 0.0236 | **L_4 = 0.007** |
+With σ_eff in (1.5, 2), (1, 2) sits closer to σ_eff (smaller detuning, lighter) and (1, 1) sits further (larger detuning, heavier). Solve σ_eff per pair from within-pair mass ratio R = m_heavier/m_lighter:
+
+  σ_eff = (2R + 1)/(R + 1)
+
+then L_ring from m_lighter ≈ 2π·ℏc·(2−σ_eff)/L_ring. Script: [scripts/quark_search_user_topology.py](../scripts/quark_search_user_topology.py); output: [outputs/quark_search_user_topology.txt](../outputs/quark_search_user_topology.txt).
+
+| Pair | Quarks (light, heavy) | (m_t, m_r) per mode | within-pair ratio | σ_eff | L_ring (fm) |
+|---|---|---|---:|---:|---:|
+| (1, 3) | (u, d) | u=(1,2), d=(1,1) | 2.17 | **1.6837** | **L_1 = 181.5** |
+| (2, 3) | (s, c) | s=(1,2), c=(1,1) | 13.65 | **1.9318** | **L_2 = 0.9096** |
+| (3, 4) | (b, t) | b=(1,2), t=(1,1) | 41.39 | **1.9764** | **L_4 = 0.007** |
+
+Notice σ_eff for the heaviest pair (b, t) sits at **1.976** — essentially the same value as R53's e-sheet "magic shear" σ_eff ≈ 2.004 (which produces the electron at (1, 2)). The quark sector's σ_eff values converge toward 2 as the generation gets heavier; the (b, t) pair is essentially at the R53 charged-lepton operating point. **This is suggestive of a structural relation** between the quark and electron sectors of the architecture.
 
 L_3 (the common tube) only needs to be large enough that L_T ≫ L_R/f in each pair — the strictest is L_3 ≫ 574 fm. **Pick L_3 = 5740 fm** (10× margin).
 
 ### 9.3 Verification — all 6 quark masses fit to < 1%
 
-Using the **full** mass formula (not just the pure-ring approximation):
+Using the **full** mass formula (not just the pure-ring approximation), with all 6 quarks at (m_t, m_r) ∈ {(1, 1), (1, 2)}:
 
-| Pair | Mode | δ | m predicted | m observed | % error |
-|---|---|---:|---:|---:|---:|
-| (1, 3) | u (lighter) | 0.3163 | 2.171 MeV | 2.16 MeV | **+0.50%** |
-| (1, 3) | d (heavier) | 0.6837 | 4.675 MeV | 4.67 MeV | **+0.11%** |
-| (2, 3) | s (lighter) | 0.0682 | 93.0 MeV | 93.0 MeV | **+0.00%** |
-| (2, 3) | c (heavier) | 0.9318 | 1270 MeV | 1270 MeV | **+0.00%** |
-| (3, 4) | b (lighter) | 0.0236 | 4180 MeV | 4180 MeV | **+0.00%** |
-| (3, 4) | t (heavier) | 0.9764 | 173,000 MeV | 173,000 MeV | **+0.00%** |
+| Pair | (m_t, m_r) | Quark | δ = m_r − σ_eff | m predicted | m observed | % error |
+|---|---|---|---:|---:|---:|---:|
+| (1, 3) | (1, 2) | u | +0.3163 | 2.171 MeV | 2.16 MeV | **+0.50%** |
+| (1, 3) | (1, 1) | d | −0.6837 | 4.675 MeV | 4.67 MeV | **+0.11%** |
+| (2, 3) | (1, 2) | s | +0.0682 | 93.0 MeV | 93.0 MeV | **+0.00%** |
+| (2, 3) | (1, 1) | c | −0.9318 | 1270 MeV | 1270 MeV | **+0.00%** |
+| (3, 4) | (1, 2) | b | +0.0236 | 4180 MeV | 4180 MeV | **+0.00%** |
+| (3, 4) | (1, 1) | t | −0.9764 | 173,000 MeV | 173,000 MeV | **+0.00%** |
 
-**Maximum |Δ%| = 0.499%** (the u quark; the rest are below 0.2%). All six quark masses are reproduced from a structural geometry plus 3 free f-values (equivalently, 3 free σ-shears per pair) and a small (sub-percent) approximation correction from the L_T residual.
+**Maximum |Δ%| = 0.499%** (the u quark; the rest are below 0.2%). All six quark masses are reproduced from a structural geometry plus 3 free σ_eff-values per pair, with **every quark at one of the two valid closure modes (1, 1) or (1, 2)** — no exotic windings, no m_t > 1.
 
 ### 9.4 The fitted geometry
 
@@ -280,10 +288,92 @@ The electron sector then has to fit (m_e, m_μ, m_τ) using these inherited L's 
 
 **Open next steps:**
 
-1. **Update [architecture.md §3.1](architecture.md)** to remove the smaller-as-tube assumption; replace with per-pair-choice convention.
+1. **Update [architecture.md §3.1](architecture.md)** to remove the smaller-as-tube assumption; replace with per-pair-choice convention. ✓ done.
 2. **Phase 2 (electron sector)**: solve for L_5 + e-pair (σ, τ, χ) values that reproduce (m_e, m_μ, m_τ) with the inherited L_2, L_3, L_4 from the quark fit.
-3. **Phase 3 (neutrino sector)**: check whether L_5, L_6 + ν-pair structure works for the 3 neutrino masses.
-4. **Mathematical formalization** (Phase 5 per STATUS.md): if Phases 2 and 3 also close, write up the unified architecture in `ma-6/` proper as a derivation, not a fit.
+3. **Phase 3 (neutrino sector)**: check whether L_5, L_6 + ν-pair structure works for the 3 neutrino masses. **Concern (see §11 below):** ν masses ~30–60 meV imply L_R ≳ mm under any regime, while the e-sector solve will likely force L_5 to fm-pm scale. The ν fit then needs L_6 to carry the meV scale alone.
+4. **Mathematical formalization** (Phase 5 per STATUS.md): if Phases 2 and 3 also close, write up the unified architecture in `ma-domain/` proper as a derivation, not a fit.
+
+---
+
+## 10. Parallel path: Relaxation 1 on the original 3-dim (1,2)(1,3)(2,3) topology
+
+Per user request, the §1–§8 negative result was revisited with the "lowest energy windings" rule relaxed to allow **m_t = 2 as the second-lowest closure mode per pair**, AND the per-pair tube/ring choice now available from [architecture.md §3.1](architecture.md). Script: [scripts/quark_search_relaxation_1.py](../scripts/quark_search_relaxation_1.py); output: [outputs/quark_search_relaxation_1.txt](../outputs/quark_search_relaxation_1.txt).
+
+### 10.1 What was tested
+
+Sweep over (6 gen→pair) × (2³ mode-B per pair: `mr-shift` or `mt-2`) × (2³ tube/ring per pair: `smaller` or `larger`) = **384 configurations**. For each, attempt a least-squares fit of (L_1, L_2, L_3, σ_eff_{12}, σ_eff_{13}, σ_eff_{23}) — 6 free continuous unknowns vs 6 observed masses.
+
+### 10.2 Result — Relaxation 1 does find fits, but worse than the user's topology
+
+| Threshold | Configs hitting it |
+|---|---:|
+| < 200% | 64 / 384 |
+| < 50% | 6 / 384 |
+| < 10% | 5 / 384 |
+| < 5% | 5 / 384 |
+| < 1% | **0 / 384** |
+
+**Best fit: max |Δ%| = 3.97%**, achieved by 4 mirror-equivalent configurations. One representative:
+
+- **Assignment**: (u, d) → P_{13}, (s, c) → P_{23}, (b, t) → P_{12}
+- **Mode-B per pair**: P_{12} = `mr-shift`, P_{13} = `mt-2`, P_{23} = `mr-shift`
+- **Tube/ring**: all three pairs in **fat-torus** regime (larger dim as tube)
+- **Dim sizes**: L_1 = 0.0073 fm, L_2 = 1.05 fm, L_3 = 80 μm — span 7 orders of magnitude
+- **σ_eff per pair**: 0.92, 0.024, 0.00 — mix of near-resonance and mid-detuning
+
+Notably:
+
+- The fit *requires* both relaxations (m_t = 2 and per-pair tube/ring); neither alone closes the obstruction.
+- Best 5 configs all have similar L's and σ's (mirror permutations), suggesting a unique solution up to relabeling.
+- The 4% residual cannot be driven below ~3.9% without further relaxations — suggests the 3-dim topology is structurally tight even with both relaxations.
+
+### 10.3 Comparison to the user's topology
+
+| Topology | Best fit | Dims needed | Mode B per pair | Tube/ring per pair | DOF margin |
+|---|---:|---:|---|---|---|
+| User's (1,3)(2,3)(3,4) | **0.50%** | 4 (+ L_3 free) | uniform `mr-shift` | uniform `larger` | 1 free L |
+| Original (1,2)(1,3)(2,3) | 3.97% | 3 | mixed `mr-shift`/`mt-2` | uniform `larger` | 0 free |
+
+**The user's 4-dim topology is the clear winner.** It achieves an 8× tighter fit with the simpler "lowest 2 modes" rule (no m_t = 2 needed) and a uniform fat-torus convention across pairs. The 3-dim Relaxation 1 fit is feasible but tighter and structurally less clean.
+
+### 10.4 Verdict on parallel paths
+
+Both paths give viable quark sectors, but with different cost/quality trade-offs:
+
+- **Path A (user's 4-dim topology)**: ✓ confirmed working at 0.5%; preferred.
+- **Path B (3-dim with Relaxation 1)**: ✓ works at 4%; deprioritized but kept as fallback.
+
+If the Phase 2/3 electron and neutrino sectors run into trouble with Path A (e.g., the ν concern in §11), Path B is the natural fallback because it uses one fewer dim and may leave more room for e and ν assignments.
+
+---
+
+## 11. ν-sector viability concern under the user's topology
+
+Under the user's full proposal, the ν pair is (5, 6), with L_5 inherited from the electron sector solve (Phase 2) and L_6 free.
+
+ν mass scales (R49 / R61 / model-F): m_ν₁ ≈ 30 meV, m_ν₃ ≈ 60 meV. That's 3 × 10⁻⁸ to 6 × 10⁻⁸ MeV.
+
+For a mode in any regime, the mass formula
+
+  m ≈ 2πℏc × max(1/L_T, δ/L_R)
+
+requires at least one of L_T or L_R to be at the macroscopic scale:
+
+- **Fat-torus, δ = 0.1**: L_R = 2πℏc × δ / m = 1240 × 0.1 / 3 × 10⁻⁸ MeV ≈ **4 × 10⁹ fm = 4 mm**.
+- **Fat-torus, δ = 0.001 (very near resonance)**: L_R ≈ **40 μm**.
+- **Thin-torus**: L_T ≈ **4 cm** (much larger).
+
+So the ν pair (5, 6) needs at least one dim at mm–cm scale (or μm at very tight near-resonance).
+
+If the Phase 2 electron sector forces L_5 to be at fm–pm scale (which is plausible given electron masses ≈ MeV), then L_6 *alone* must carry the macroscopic scale — i.e., L_6 ≳ mm. This is allowable in principle (L_6 is unique to ν and unconstrained by other sectors), but it's a *big* free parameter and a large stretch from the rest of the spectrum (the largest quark-region dim was L_3 ≈ 5.7 μm in the user's fit; L_6 would be ~10⁶× larger).
+
+**Open question:** is the meV–GeV scale gap structurally allowed (a free dim L_6 can be anything), or does some deeper consistency requirement (cross-term sparsity rule, GRID lattice argument, etc.) put an upper bound on the ratio between adjacent dims in the pool?
+
+This is **flagged for resolution during Phase 2/3**. If L_5 from the Phase 2 fit turns out to be at μm scale or larger, the ν sector is straightforward. If L_5 is sub-fm, the ν fit requires either:
+
+1. **A macroscopic L_6** with no structural problem (the most likely answer if the architecture allows arbitrary L's).
+2. **A different topology for ν** — e.g., the ν pair shares with a non-e dim, or the ν sector lives on its own isolated dim-pair outside the 6-dim pool.
+3. **An R49-style shear-resonance mechanism**, with extreme σ_eff cancellation pushing mass much below the bare 1/L scale (which is already how model-F handles ν).
 
 ---
 

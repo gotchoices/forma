@@ -1,4 +1,4 @@
-# ma-share-6.md — Six compact dimensions shared across MaSt sheets
+# ma-share.md — Six compact dimensions shared across MaSt sheets
 
 **Status:** Hypothesis + computational sanity-check. Companion to [3-torus.md](3-torus.md) (the per-sheet 3D extension) — proposes that the 3-torus framework's apparent 9-dim count (3 sheets × 3 dims) collapses to **6** under a sheet-sharing topology, with each pair of sheets sharing exactly 1 dim. The observed mass clustering across particle types (tau ≈ proton ≈ charm ≈ bottom at ~1 GeV; muon ≈ strange at ~100 MeV; electron ≈ u ≈ d at ~MeV) becomes a *structural prediction* of which dims are shared.
 
@@ -67,7 +67,7 @@ Under the 6-dim shared topology with each pair-shared dim at the bridging scale:
 
 Implement a 6-dim shared-MaSt mass-prediction calculator and check whether the observed 12-fermion mass spectrum can be reproduced under this topology.
 
-Script: [scripts/ma_share_6.py](../scripts/ma_share_6.py).
+Script: [scripts/ma_share.py](../scripts/ma_share.py).
 
 ### 4.1 What the script does
 
@@ -95,7 +95,7 @@ Script: [scripts/ma_share_6.py](../scripts/ma_share_6.py).
 
 ## 5. Results
 
-Four L-variants were tested in [scripts/ma_share_6.py](../scripts/ma_share_6.py). Each picks specific values for the six dims; modes computed are bare 2D-planar (no shear) at windings ±1 to ±5. Outputs in `outputs/ma_share_6_*.csv` and `outputs/ma_share_6_summary.txt`.
+Four L-variants were tested in [scripts/ma_share.py](../scripts/ma_share.py). Each picks specific values for the six dims; modes computed are bare 2D-planar (no shear) at windings ±1 to ±5. Outputs in `outputs/ma_share_*.csv` and `outputs/ma_share_summary.txt`.
 
 ### 5.1 Per-variant match quality
 
@@ -172,7 +172,7 @@ This is a *constructive* result: the topology simplifies, the GeV-cluster fact g
 
 1. **Re-derive model-F's L_ring_e ≈ L_ring_p as a structural identity.** If e-sheet and p-sheet share their ring dim (S_ep in this nomenclature), the values must be the *same* up to fine corrections. Variance currently 15% — investigate whether the small discrepancy in model-F is a measurement uncertainty or a structural prediction.
 
-2. **Extend `ma_share_6.py` with shears.** Once shear-resonance is added (σ ≠ 0 on each plane), the within-sheet 3-generation splitting can be reproduced, and the full 12-fermion fit becomes feasible. The fit would have 6 dim sizes + 3 shears (one per pair-shared plane) = 9 parameters for 12 observables — over-determined enough to be predictive if the geometry is right.
+2. **Extend `ma_share.py` with shears.** Once shear-resonance is added (σ ≠ 0 on each plane), the within-sheet 3-generation splitting can be reproduced, and the full 12-fermion fit becomes feasible. The fit would have 6 dim sizes + 3 shears (one per pair-shared plane) = 9 parameters for 12 observables — over-determined enough to be predictive if the geometry is right.
 
 3. **Cross-link with R64 nuclear scaling.** If the (3, 6) proton on p-sheet uses S_ep as its ring dim, and (3, 6) nuclear scaling holds (n_pt = 3A, n_pr = 6A), then the nuclear mass spectrum becomes a constraint on S_ep beyond just the proton/tau ratio.
 

@@ -1,0 +1,102 @@
+Relaxation 1 sweep on (1,2)(1,3)(2,3) topology
+==========================================================================================
+
+Configurations tested: 384
+Configurations with max |Δ%| < 200%: 64
+Configurations with max |Δ%| < 50%:  6
+Configurations with max |Δ%| < 10%:  5
+Configurations with max |Δ%| <  5%:  5
+Configurations with max |Δ%| <  1%:  0
+
+Top 10 best fits:
+
+  #1: max |Δ%| = 3.972%
+    assignment: u/d→(1,3), s/c→(2,3), b/t→(1,2)
+    mode-B: P12=mr-shift P13=mt-2 P23=mr-shift
+    tube/ring: P12=larger P13=larger P23=larger
+    L_1=0.00734fm L_2=1.05fm L_3=7.97e+04fm
+    σ_eff: P12=0.024 P13=0.000 P23=0.921
+    predicted:  u=2.25  d=4.49  s=93  c=1.27e+03  b=4.18e+03  t=1.73e+05
+    observed:   u=2.16  d=4.67  s=93  c=1.27e+03  b=4.18e+03  t=1.73e+05
+
+  #2: max |Δ%| = 3.972%
+    assignment: u/d→(1,2), s/c→(1,3), b/t→(2,3)
+    mode-B: P12=mt-2 P13=mr-shift P23=mr-shift
+    tube/ring: P12=larger P13=larger P23=larger
+    L_1=8.49e+05fm L_2=0.00734fm L_3=1.05fm
+    σ_eff: P12=0.000 P13=0.921 P23=0.976
+    predicted:  u=2.25  d=4.49  s=93  c=1.27e+03  b=4.18e+03  t=1.73e+05
+    observed:   u=2.16  d=4.67  s=93  c=1.27e+03  b=4.18e+03  t=1.73e+05
+
+  #3: max |Δ%| = 3.972%
+    assignment: u/d→(2,3), s/c→(1,2), b/t→(1,3)
+    mode-B: P12=mr-shift P13=mr-shift P23=mt-2
+    tube/ring: P12=larger P13=larger P23=larger
+    L_1=1.05fm L_2=5.47e+05fm L_3=0.00734fm
+    σ_eff: P12=0.079 P13=0.024 P23=1.000
+    predicted:  u=2.25  d=4.49  s=93  c=1.27e+03  b=4.18e+03  t=1.73e+05
+    observed:   u=2.16  d=4.67  s=93  c=1.27e+03  b=4.18e+03  t=1.73e+05
+
+  #4: max |Δ%| = 3.972%
+    assignment: u/d→(1,2), s/c→(2,3), b/t→(1,3)
+    mode-B: P12=mt-2 P13=mr-shift P23=mr-shift
+    tube/ring: P12=larger P13=larger P23=larger
+    L_1=0.00734fm L_2=3.27e+04fm L_3=1.05fm
+    σ_eff: P12=0.000 P13=0.976 P23=0.079
+    predicted:  u=2.25  d=4.49  s=93  c=1.27e+03  b=4.18e+03  t=1.73e+05
+    observed:   u=2.16  d=4.67  s=93  c=1.27e+03  b=4.18e+03  t=1.73e+05
+
+  #5: max |Δ%| = 3.972%
+    assignment: u/d→(1,3), s/c→(1,2), b/t→(2,3)
+    mode-B: P12=mr-shift P13=mt-2 P23=mt-2
+    tube/ring: P12=larger P13=larger P23=larger
+    L_1=7.44e+07fm L_2=1.05fm L_3=0.00355fm
+    σ_eff: P12=0.921 P13=0.000 P23=0.505
+    predicted:  u=2.25  d=4.49  s=93  c=1.27e+03  b=4.18e+03  t=1.73e+05
+    observed:   u=2.16  d=4.67  s=93  c=1.27e+03  b=4.18e+03  t=1.73e+05
+
+  #6: max |Δ%| = 33.652%
+    assignment: u/d→(1,2), s/c→(1,3), b/t→(2,3)
+    mode-B: P12=mt-2 P13=mr-shift P23=mt-2
+    tube/ring: P12=larger P13=larger P23=larger
+    L_1=2.9e+08fm L_2=0.004fm L_3=0.927fm
+    σ_eff: P12=0.000 P13=0.954 P23=0.495
+    predicted:  u=2.25  d=4.49  s=61.7  c=1.4e+03  b=3.93e+03  t=1.54e+05
+    observed:   u=2.16  d=4.67  s=93  c=1.27e+03  b=4.18e+03  t=1.73e+05
+
+  #7: max |Δ%| = 56.452%
+    assignment: u/d→(1,3), s/c→(1,2), b/t→(2,3)
+    mode-B: P12=mr-shift P13=mt-2 P23=mr-shift
+    tube/ring: P12=larger P13=larger P23=larger
+    L_1=1.11e+09fm L_2=1.22fm L_3=0.0179fm
+    σ_eff: P12=0.902 P13=0.000 P23=0.913
+    predicted:  u=2.25  d=4.49  s=99.9  c=1.11e+03  b=6.1e+03  t=7.53e+04
+    observed:   u=2.16  d=4.67  s=93  c=1.27e+03  b=4.18e+03  t=1.73e+05
+
+  #8: max |Δ%| = 161.247%
+    assignment: u/d→(1,3), s/c→(2,3), b/t→(1,2)
+    mode-B: P12=mr-shift P13=mt-2 P23=mt-2
+    tube/ring: P12=larger P13=larger P23=smaller
+    L_1=0.0119fm L_2=5.1fm L_3=4.74e+05fm
+    σ_eff: P12=0.950 P13=0.000 P23=0.258
+    predicted:  u=2.25  d=4.49  s=243  c=486  b=5.25e+03  t=1.1e+05
+    observed:   u=2.16  d=4.67  s=93  c=1.27e+03  b=4.18e+03  t=1.73e+05
+
+  #9: max |Δ%| = 161.301%
+    assignment: u/d→(1,2), s/c→(1,3), b/t→(2,3)
+    mode-B: P12=mt-2 P13=mt-2 P23=mr-shift
+    tube/ring: P12=smaller P13=larger P23=larger
+    L_1=2.67e+09fm L_2=552fm L_3=0.00735fm
+    σ_eff: P12=0.995 P13=0.001 P23=0.975
+    predicted:  u=2.25  d=4.49  s=243  c=486  b=4.18e+03  t=1.73e+05
+    observed:   u=2.16  d=4.67  s=93  c=1.27e+03  b=4.18e+03  t=1.73e+05
+
+  #10: max |Δ%| = 161.303%
+    assignment: u/d→(2,3), s/c→(1,3), b/t→(1,2)
+    mode-B: P12=mr-shift P13=mt-2 P23=mt-2
+    tube/ring: P12=larger P13=larger P23=larger
+    L_1=1.2fm L_2=0.00734fm L_3=4.7e+04fm
+    σ_eff: P12=0.024 P13=0.765 P23=1.000
+    predicted:  u=2.25  d=4.49  s=243  c=486  b=4.18e+03  t=1.73e+05
+    observed:   u=2.16  d=4.67  s=93  c=1.27e+03  b=4.18e+03  t=1.73e+05
+

@@ -1,4 +1,4 @@
-# architecture.md — ma-6 metric layout, nomenclature, and operational rules
+# architecture.md — ma-domain metric layout, nomenclature, and operational rules
 
 **Status:** Phase 0 deliverable (per [STATUS.md](STATUS.md)). Pins the conventions used by everything downstream — the 11-component metric ordering, the mode-label nomenclature, and the operational rules that translate a 6-dim Ma domain into closure analysis on dim-pairs.
 
@@ -83,9 +83,26 @@ Whether the tube dim is *smaller* or *larger* than the ring dim is a per-pair st
 
 A wave that uses *two* dimensions has lower energy than a wave that uses *three* dimensions of the same domain at comparable windings, because the 3D-mixed mode pays a quadratic energy cost in the third dim's winding. From the [3-torus.md §5.1](3-torus.md) Test A results at L₁:L₂:L₃ = 1:580:78,000, the lowest 3D-mixed mode sits at 78,000× the lowest 1D-line mode and 580× the lowest 2D-planar mode.
 
-**Rule (working hypothesis):** particles form on 2D-planar modes (dim-pairs); 3D-mixed modes (full triple-dim excitations) are energy-unfavored and reduce to the *dark / unobserved* class. This is the **sheet-constraining rule** for the project: a particle = a mode on a single dim-pair from the 6-dim pool.
+**Rule (working hypothesis):** particles form on 2D-planar modes (dim-pairs); 3D-mixed modes (full triple-dim excitations) are energy-unfavored and reduce to the *dark / unobserved* class. This is the **sheet-constraining rule** for the project: a particle = a mode on a single dim-pair from the multi-dim Ma pool.
 
 The companion rule from [3-torus.md §3.2–§3.3](3-torus.md) — that *1D-line* modes are also unphysical (no EM coupling) under the Candidate-III R19 extension — completes the picture: physical particles are exactly the 2D-planar modes on dim-pairs that have the right cross-term structure.
+
+#### 3.3.1 Closure-satisfying mode inventory per pair (from metric-charge)
+
+The valid (m_t, m_r) windings on each dim-pair come from [metric-charge chapter 4](../../metric-charge/04-the-closure-condition.md), specifically §1–§4. The operational closure rule is:
+
+  **m_t | m_r with both nonzero.**
+
+I.e., m_t must divide m_r, and neither m_t nor m_r is zero. This is equivalent to the chirality form (a chirally-trivial knot under R_u) and to the topological form (the gcd-reduced primitive is T(1, n′) for some integer n′ ≥ 1).
+
+Consequences relevant to ma-domain mode searches:
+
+- **Closure-satisfying primitives are exactly T(1, n) for n ≥ 1.** So per-pair, the closure-satisfying modes at m_t = 1 are (1, 1), (1, 2), (1, 3), … indefinitely. Lowest two are **(1, 1)** and **(1, 2)**.
+- **(m_t, 0) and (0, m_r) both fail.** Single-axis modes are closure-failing (no chirality structure to test).
+- **(2, 3), (3, 2), (3, 4), …** (genuine torus knots with gcd-primitive p, q ≥ 2) fail closure — chirally distinct from their mirrors. They are mass-only (no EM charge) per metric-charge §4.2.
+- **Multi-component links T(k, k·n) for k ≥ 2, n ≥ 1** are closure-satisfying (k-component repetitions of T(1, n)). (3, 6) for example is closure-satisfying as 3 copies of T(1, 2) — this is the (3, 6) proton-as-3-quark identification in model-F.
+
+For ma-domain Phase 1+ work, this means: when picking the "lowest two closure modes" per pair, the candidates are T(1, 1) and T(1, 2) — *not* (1, 0) (which is closure-failing) and *not* (2, 3) (genuine knot, mass-only). Earlier ma-domain analyses that used (1, 0) as a candidate mode have been corrected to use (1, 1) and (1, 2).
 
 ### 3.4 How a single dim can be simple ring in one context, complicated tube in another (working hypothesis)
 
@@ -144,6 +161,6 @@ The working hypothesis (pair-triplet) is **provisional** and chosen because it m
 
 - [STATUS.md](STATUS.md) — phased work plan; this file is the Phase 0 first-half deliverable.
 - [3-torus.md](3-torus.md) — supports §3.3 (plane-over-diagonal) and §3.2 (smallest-as-tube) operational rules.
-- [ma-share-6.md](ma-share-6.md) — establishes the 6-dim-pool topology this file's nomenclature serves.
+- [ma-share.md](ma-share.md) — establishes the 6-dim-pool topology this file's nomenclature serves.
 - [../../../studies/R60-metric-11/](../../../studies/R60-metric-11/) — 11D metric ordering precedent (Material → Space → Time inherited from there).
 - [../../../studies/R59-clifford-torus/](../../../studies/R59-clifford-torus/) — aleph dim introduction and the α-coupling chain.

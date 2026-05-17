@@ -1,5 +1,5 @@
 """
-6-dim shared-MaSt structural test for work/ma-share-6.md.
+6-dim shared-MaSt structural test for work/ma-share.md.
 
 Tests whether a 6-dim compact topology (3 sheet-unique + 3 sheet-pair-shared
 dims) can reproduce the observed 12-fermion mass spectrum under bare 2D-planar
@@ -20,11 +20,11 @@ splitting (the R53 shear-resonance regime) is a separate problem (see
 work/3-torus.md §5).
 
 Usage:
-    python scripts/ma_share_6.py [--max-winding N] [--variant VARIANT_NAME]
+    python scripts/ma_share.py [--max-winding N] [--variant VARIANT_NAME]
 
 Outputs to outputs/:
-    ma_share_6_<variant>.csv    — per-fermion match results
-    ma_share_6_summary.txt      — variant comparison and verdict
+    ma_share_<variant>.csv    — per-fermion match results
+    ma_share_summary.txt      — variant comparison and verdict
 """
 
 from __future__ import annotations
@@ -297,7 +297,7 @@ def main() -> None:
 
     summary_lines = []
     summary_lines.append("=" * 80)
-    summary_lines.append("ma-share-6 numerical test summary")
+    summary_lines.append("ma-share numerical test summary")
     summary_lines.append("=" * 80)
     summary_lines.append("")
     summary_lines.append(f"Topology: 6 dims; sheets share 1 dim per pair")
@@ -311,7 +311,7 @@ def main() -> None:
         results = run_variant(name, L_dict, args.max_winding)
         print_variant(name, L_dict, results)
 
-        csv_path = args.outputs_dir / f"ma_share_6_{name}.csv"
+        csv_path = args.outputs_dir / f"ma_share_{name}.csv"
         write_results_csv(results, csv_path)
         print(f"  → wrote {csv_path.name}")
 
@@ -340,7 +340,7 @@ def main() -> None:
                          f"(total = {best_total:.2f})")
     summary_lines.append("=" * 80)
 
-    summary_path = args.outputs_dir / "ma_share_6_summary.txt"
+    summary_path = args.outputs_dir / "ma_share_summary.txt"
     with open(summary_path, "w") as f:
         f.write("\n".join(summary_lines))
     print(f"\n\nWrote: {summary_path.name}")

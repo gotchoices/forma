@@ -1,5 +1,5 @@
 ================================================================================
-ma-share-6 numerical test summary
+ma-share numerical test summary
 ================================================================================
 
 Topology: 6 dims; sheets share 1 dim per pair
