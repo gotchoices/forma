@@ -34,6 +34,27 @@ Two parallel paths now run in parallel:
 - Result: **5 configurations fit all 6 quarks within 5%** (best: 3.97%). All require both relaxations simultaneously; neither alone closes the obstruction. L's span 7 orders of magnitude (L_1 = 0.0073 fm, L_2 = 1.05 fm, L_3 = 80 μm). Less clean than Path A (4× worse fit, more complex per-pair choices) but viable.
 - Kept as fallback in case Path A runs into trouble in Phase 2/3 (e.g., the ν concern above).
 
+---
+
+## Active candidate comparison ([candidates.md](candidates.md))
+
+Three current Path A topology variants tracked. Numerics in [outputs/candidate_fits.txt](../outputs/candidate_fits.txt); driver in [scripts/candidate_fits.py](../scripts/candidate_fits.py).
+
+| Candidate | Quark | Electron | ν | Total dims |
+|---|---|---|---|---:|
+| **A — original** | wye, hub=3 | 4 dims, irregular | pair (5,6) | 6 |
+| **B — wye + delta** | wye, hub=2 | delta on {3,4,5} | pair (5,6) | 6 |
+| **C — wye + delta + delta** | wye, hub=2 | delta on {3,4,5} | delta on {5,6,7} | 7 |
+
+| Sector | A | B | C |
+|---|:---:|:---:|:---:|
+| Quark fit | ✓ 0.5% | ✓ 0.5% | ✓ 0.5% |
+| Electron fit | not tested | ✓ 0.0% | ✓ 0.0% |
+| ν fit (strict modes) | ✗ (1 pair → 2 modes < 3 ν) | ✗ same | ✓ 0.0% |
+| ν fit (sign-flipped modes, L_5 ≳ cm) | unknown | ~1% (spot check) | not needed |
+
+**Recommendation:** adopt **Candidate C** as the working topology. Cleanest fit, no mode-relaxations needed in any sector. Cost: 1 extra dim (7 vs 6). Hold Candidate B as fallback.
+
 ## Phase 2 — Electron sector
 
 - [ ] Identify the **3 dims that electrons access** (which may include some shared with the quark sector — the e-p sharing hypothesis from [ma-share.md §2](ma-share.md)).
