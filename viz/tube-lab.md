@@ -78,7 +78,7 @@ The colour scale auto-normalises against max |κ| on the profile.
 | Circle | a₁ = a₂ = 0 | Mean radius R_c |
 | Bilobe (electron-tube limit) | N = 2, a₁ ≈ 0.3, a₂ ≈ 0 | Smooth ellipse-like, all convex |
 | Rounded N-gon | small a₁, a₂ ≈ 0 | All-convex N-lobed shape (triangle/square/pentagon/hexagon as N varies) |
-| Smooth clover | N = 3, a₁ ≈ 0.48, a₂ ≈ 0.12, R_c ≈ 1.25 | Three convex lobes + three concave saddles (smooth replacement for the 240°/120° arc clover; matches the arc-clover's peak 2.0 / trough 0.8) |
+| Smooth clover | N = 3, a₁ ≈ 0.43, a₂ = 0, R_c ≈ 1.4 | Single-harmonic three-lobe with concave saddles. Matches the arc-clover's peak 2.0 / trough 0.8 at the symmetry points. (Use a₂ > 0 for fine-tuning the per-lobe turning A_lobe; see [tube-function.md §5.2.1](../projects/ma-domain/work/tube-function.md).) |
 | Deep clover | N = 3, a₁ ≈ 0.55, a₂ ≈ 0.25 | Sharp narrow valleys, large lobes |
 
 ### 1.4 Surface embedding (corrugated torus)
@@ -159,8 +159,8 @@ on a bilobe with τ = 2.
 | Control | Type | Default | Notes |
 |---|---|---|---|
 | N | slider (int) | 3 | Lobe count, 2–8 |
-| a₁ | slider | 0.48 | Fundamental amplitude |
-| a₂ | slider | 0.12 | Second-harmonic amplitude |
+| a₁ | slider | 0.43 | Fundamental amplitude |
+| a₂ | slider | 0.00 | Second-harmonic amplitude |
 | R_major | slider | 3.0 | Ring radius |
 | R_c | slider | 1.00 | Mean cross-section radius |
 | τ | slider | 1/3 | Twist rate (continuous) |
@@ -261,11 +261,12 @@ The discrete-arc clover at (r_lobe, r_saddle) = (0.8, 0.4) has
 - C¹ everywhere, but **curvature jumps** at the six junction points
   (κ = +1/r_lobe = +1.25 inside lobes, κ = −1/r_saddle = −2.5 inside saddles).
 
-The smooth-clover preset in this lab (N=3, a₁=0.48, a₂=0.12, R_c=1.25) has
-the same peak/trough at the symmetry points (2.0 / 0.8) **and** is C^∞
-everywhere. (a₁ ≥ 4|a₂| is enforced so the global extrema sit at the
-symmetry points; setting R_c = 1.25 then fixes peak − R_c = 0.75 and
-R_c − trough = 0.45 as in the arc clover.) The two curves coincide at the six tangency points but differ
+The single-harmonic smooth-clover preset in this lab (N=3, a₁=0.43, a₂=0,
+R_c=1.4) has the same peak/trough at the symmetry points (2.0 / 0.8) **and**
+is C^∞ everywhere. (a₂ = 0 keeps all extrema at the symmetry points, so the
+named peak/trough are the true global extrema. The saddle midpoint is
+genuinely concave with κ ≈ −10 — well past the threshold a₁ > 1/(N²+1) =
+1/10 for N=3.) The two curves coincide at the six tangency points but differ
 in the middle of each arc — the smooth version's curvature varies
 continuously instead of being piecewise constant.
 
