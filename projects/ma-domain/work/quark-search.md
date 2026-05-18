@@ -2,7 +2,7 @@
 
 **Status:** Rough cut. Sets up the mass-formula structure for 6 quarks on a candidate dim-pair topology, works the analytical structure to see whether the dim-sharing leaves enough freedom to fit, and reports honestly on what does and does not close.
 
-**Sections.** §1–§8 document the **first-cut failure**: a 3-dim triangle topology `Ma((1,2), (1,3), (2,3))` on dims m1, m2, m3 cannot fit all 6 quarks under the strict ground rules — the sharing constraint between pairs that have the same smaller dim is a hard analytical obstruction. §9 documents the **working positive result**: a 4-dim wye/star topology `Ma((1,4), (2,4), (3,4))` with m4 as the common hub fits all 6 quarks to **< 0.5%** using only T(1, 1) and T(1, 2) closure modes. §10 documents a parallel relaxation path that also closes (4% accuracy, more elaborate). §11 raises a ν-sector viability concern that motivated subsequent work in [candidates.md](candidates.md).
+**Sections.** §1–§8 document the **first-cut failure**: a 3-dim triangle topology `Ma((1,2), (1,3), (2,3))` on local dim indices (not tied to the project-wide size-ordered labels) cannot fit all 6 quarks under the strict ground rules — the sharing constraint between pairs that have the same smaller dim is a hard analytical obstruction. §9 documents the **working positive result**: a 4-dim wye/star topology `Ma((1,5), (3,5), (4,5))` (project-wide size-ordered labels; m2 reserved for the electron sector) with m5 as the common hub fits all 6 quarks to **< 0.5%** using only T(1, 1) and T(1, 2) closure modes. §10 documents a parallel relaxation path that also closes (4% accuracy, more elaborate). §11 raises a ν-sector viability concern that motivated subsequent work in [candidates.md](candidates.md).
 
 **Working ground rules for §1–§8** (the first-cut attempt):
 1. **Only lowest-energy closure modes.** Each pair hosts its 2 lowest closure modes; those 2 modes are the 2 quarks of one generation.
@@ -197,19 +197,19 @@ The 4-dim wye is the working choice. Relaxation 1 on the 3-dim triangle is kept 
 
 ---
 
-## 9. The wye topology Ma((1,4), (2,4), (3,4)) — closes the fit at < 1% accuracy
+## 9. The wye topology Ma((1,5), (3,5), (4,5)) — closes the fit at < 1% accuracy
 
 After the §1–§8 obstruction, the topology was revised to a **wye/star** on 4 dims:
 
-  **quark pairs: `Ma((1, 4), (2, 4), (3, 4))`**
+  **quark pairs: `Ma((1, 5), (3, 5), (4, 5))`**
 
-with **m4 common to all 3 pairs**, and 4 total quark-region dims (m1, m2, m3, m4) instead of 3. This is *structurally different* from the §1 triangle in a decisive way: m4 (the largest, after size-ordering) can play the **tube** role in every pair, with m1, m2, m3 each playing **ring** in their respective pairs.
+with **m5 common to all 3 pairs**, and 4 total quark-region dims (m1, m3, m4, m5; m2 is reserved for the electron sector — see [candidates.md](candidates.md)). This is *structurally different* from the §1 triangle in a decisive way: m5 (the largest of the quark-region dims) can play the **tube** role in every pair, with m1, m3, m4 each playing **ring** in their respective pairs.
 
 ### 9.1 Why this works where §1 failed
 
 The §1 triangle `Ma((1,2), (1,3), (2,3))` shared L_b (the smaller, ring-role dim) between two pairs. That forced two pairs' lighter-mode masses into a fixed ratio set by their f-detunings — the §4 obstruction.
 
-The wye topology has all three pairs share **L_T (the larger, tube-role dim)** = L_4. In the pure-ring regime (L_T ≫ L_R), the mass formula
+The wye topology has all three pairs share **L_T (the larger, tube-role dim)** = L_5. In the pure-ring regime (L_T ≫ L_R), the mass formula
 
   m² ≈ (2π ℏc)² · ((1/L_T²) + (δ²/L_R²)) ≈ (2π ℏc)² · δ²/L_R²
 
@@ -227,15 +227,15 @@ then L_ring from m_lighter ≈ 2π·ℏc·(2−σ_eff)/L_ring. Size-ordered assi
 
 | Pair | Generation (lighter, heavier) | Modes | within-pair ratio | σ_eff | L_ring (fm) |
 |---|---|---|---:|---:|---:|
-| `Ma(1, 4)` | (b, t) — generation 3 | b at T(1, 2), t at T(1, 1) | 41.39 | **1.9764** | **L_1 = 0.007** |
-| `Ma(2, 4)` | (s, c) — generation 2 | s at T(1, 2), c at T(1, 1) | 13.65 | **1.9318** | **L_2 = 0.9096** |
-| `Ma(3, 4)` | (u, d) — generation 1 | u at T(1, 2), d at T(1, 1) | 2.17 | **1.6837** | **L_3 = 181.5** |
+| `Ma(1, 5)` | (b, t) — generation 3 | b at T(1, 2), t at T(1, 1) | 41.39 | **1.9764** | **L_1 = 0.007** |
+| `Ma(3, 5)` | (s, c) — generation 2 | s at T(1, 2), c at T(1, 1) | 13.65 | **1.9318** | **L_3 = 0.9096** |
+| `Ma(4, 5)` | (u, d) — generation 1 | u at T(1, 2), d at T(1, 1) | 2.17 | **1.6837** | **L_4 = 181.5** |
 
-(Note: in our convention T(1, 2) is the *lighter* mode of a pair — smaller detuning δ = 2 − σ_eff — and T(1, 1) is the *heavier* — larger detuning δ = 1 − σ_eff. Size-ordering of the ring dims puts the heaviest generation on the smallest ring m1: top and bottom both live on `Ma(1, 4)`.)
+(Note: in our convention T(1, 2) is the *lighter* mode of a pair — smaller detuning δ = 2 − σ_eff — and T(1, 1) is the *heavier* — larger detuning δ = 1 − σ_eff. Size-ordering of the ring dims puts the heaviest generation on the smallest ring m1: top and bottom both live on `Ma(1, 5)`. Index m2 is skipped because it is the lepton-scale dim, not part of the quark wye.)
 
-Notice σ_eff for the heaviest pair `Ma(1, 4)` sits at **1.976** — essentially the same value as R53's e-sheet "magic shear" σ_eff ≈ 2.004 (which produces the electron at T(1, 2)). The quark sector's σ_eff values converge toward 2 as the generation gets heavier; the (t, b) pair is essentially at the R53 charged-lepton operating point. **This is suggestive of a structural relation** between the quark and electron sectors of the architecture.
+Notice σ_eff for the heaviest pair `Ma(1, 5)` sits at **1.976** — essentially the same value as R53's e-sheet "magic shear" σ_eff ≈ 2.004 (which produces the electron at T(1, 2)). The quark sector's σ_eff values converge toward 2 as the generation gets heavier; the (t, b) pair is essentially at the R53 charged-lepton operating point. **This is suggestive of a structural relation** between the quark and electron sectors of the architecture.
 
-L_4 (the common tube) only needs to be large enough that L_T ≫ L_R/f in each pair — the strictest is L_4 ≫ 574 fm. **Pick L_4 = 5740 fm** (10× margin).
+L_5 (the common tube) only needs to be large enough that L_T ≫ L_R/f in each pair — the strictest is L_5 ≫ 574 fm. **Pick L_5 = 5740 fm** (10× margin).
 
 ### 9.3 Verification — all 6 quark masses fit to < 1%
 
@@ -243,35 +243,35 @@ Using the **full** mass formula (not just the pure-ring approximation), with all
 
 | Pair | Mode | Quark | δ = m_r − σ_eff | m predicted | m observed | % error |
 |---|---|---|---:|---:|---:|---:|
-| `Ma(3, 4)` | T(1, 2) | u | +0.3163 | 2.171 MeV | 2.16 MeV | **+0.50%** |
-| `Ma(3, 4)` | T(1, 1) | d | −0.6837 | 4.675 MeV | 4.67 MeV | **+0.11%** |
-| `Ma(2, 4)` | T(1, 2) | s | +0.0682 | 93.0 MeV | 93.0 MeV | **+0.00%** |
-| `Ma(2, 4)` | T(1, 1) | c | −0.9318 | 1270 MeV | 1270 MeV | **+0.00%** |
-| `Ma(1, 4)` | T(1, 2) | b | +0.0236 | 4180 MeV | 4180 MeV | **+0.00%** |
-| `Ma(1, 4)` | T(1, 1) | t | −0.9764 | 173,000 MeV | 173,000 MeV | **+0.00%** |
+| `Ma(4, 5)` | T(1, 2) | u | +0.3163 | 2.171 MeV | 2.16 MeV | **+0.50%** |
+| `Ma(4, 5)` | T(1, 1) | d | −0.6837 | 4.675 MeV | 4.67 MeV | **+0.11%** |
+| `Ma(3, 5)` | T(1, 2) | s | +0.0682 | 93.0 MeV | 93.0 MeV | **+0.00%** |
+| `Ma(3, 5)` | T(1, 1) | c | −0.9318 | 1270 MeV | 1270 MeV | **+0.00%** |
+| `Ma(1, 5)` | T(1, 2) | b | +0.0236 | 4180 MeV | 4180 MeV | **+0.00%** |
+| `Ma(1, 5)` | T(1, 1) | t | −0.9764 | 173,000 MeV | 173,000 MeV | **+0.00%** |
 
 **Maximum |Δ%| = 0.499%** (the u quark; the rest are below 0.2%). All six quark masses are reproduced from a structural geometry plus 3 free σ_eff-values per pair, with **every quark at one of the two valid closure modes T(1, 1) or T(1, 2)** — no exotic windings, no m_t > 1.
 
 ### 9.4 The fitted geometry
 
-The 4 quark-region dim sizes (size-ordered, smallest first):
+The 4 quark-region dim sizes (size-ordered; m2 is skipped, reserved for the e-sector):
 
 | Dim | Size | Role | Note |
 |---|---:|---|---|
 | L_1 | 0.007 fm | (t, b) ring | ≈ top-quark Compton wavelength |
-| L_2 | 0.91 fm | (c, s) ring | ≈ charm Compton wavelength |
-| L_3 | 181 fm | (u, d) ring | ≈ electron-scale (!) |
-| L_4 | ≳ 5740 fm | common tube (hub of wye) | ≈ μm-scale; "fat" dim shared across all 3 pairs |
+| L_3 | 0.91 fm | (c, s) ring | ≈ charm Compton wavelength |
+| L_4 | 181 fm | (u, d) ring | ≈ electron-scale (!) |
+| L_5 | ≳ 5740 fm | common tube (hub of wye) | ≈ μm-scale; "fat" dim shared across all 3 pairs |
 
-The L_4 lower bound (5740 fm) is set by the pure-ring regime; larger values work equally well. So L_4 is one continuous free parameter, with the fit determining only L_1, L_2, L_3, and 3 f-values.
+The L_5 lower bound (5740 fm) is set by the pure-ring regime; larger values work equally well. So L_5 is one continuous free parameter, with the fit determining only L_1, L_3, L_4, and 3 f-values.
 
 ### 9.5 Architectural implication: per-pair tube/ring choice (not size-determined)
 
-This result invalidates the older "smaller = tube" convention. The wye topology requires the **larger** dim (L_4) to play tube in all 3 quark pairs (the R53-style fat-torus regime, applied per-pair to a single common tube). The tube/ring assignment is therefore a **per-pair structural choice**, not determined by which dim is smaller. Reflected in [architecture.md §3.1](architecture.md).
+This result invalidates the older "smaller = tube" convention. The wye topology requires the **larger** dim (L_5) to play tube in all 3 quark pairs (the R53-style fat-torus regime, applied per-pair to a single common tube). The tube/ring assignment is therefore a **per-pair structural choice**, not determined by which dim is smaller. Reflected in [architecture.md §3.1](architecture.md).
 
 ### 9.6 Generalization to electron and neutrino sectors
 
-The full multi-sector proposal is documented in [candidates.md](candidates.md). In brief: the electron sector adds dim m5 and uses three pairs in a delta `Ma((1, 2), (1, 5), (2, 5))` (Candidates B and C), reusing m1 and m2 from the quark sector. The neutrino sector either uses a single pair `Ma(5, 6)` (Candidates A/B) or a third delta `Ma((5, 6), (5, 7), (6, 7))` on its own ν-region dims (Candidate C, the working choice).
+The full multi-sector proposal is documented in [candidates.md](candidates.md). In brief: the electron sector adds a new lepton-scale dim m2 (≈ 0.7 fm) and uses three pairs in a delta `Ma((2, 4), (2, 5), (4, 5))` (Candidates B and C), reusing m4 and m5 from the quark sector. The neutrino sector either uses a single pair `Ma(6, 7)` on fresh dims (Candidates A/B) or a third delta `Ma((6, 7), (6, 8), (7, 8))` on its own ν-region dims (Candidate C, the working choice).
 
 ### 9.7 What this resolves and what's next
 
@@ -285,8 +285,8 @@ The full multi-sector proposal is documented in [candidates.md](candidates.md). 
 **Open next steps:**
 
 1. **Update [architecture.md §3.1](architecture.md)** to remove the smaller-as-tube assumption; replace with per-pair-choice convention. ✓ done.
-2. **Phase 2 (electron sector)**: documented in [candidates.md §2](candidates.md). Delta `Ma((1, 2), (1, 5), (2, 5))` fits (m_e, m_μ, m_τ) to machine precision with L_5 ≈ 0.18 mm.
-3. **Phase 3 (neutrino sector)**: documented in [candidates.md §3](candidates.md). Candidate C uses a ν-region delta `Ma((5, 6), (5, 7), (6, 7))` with L_6 ≈ 3 cm, L_7 ≈ 60 m; closes to machine precision. **Original concern** (see §11 below) — that a single ν pair couldn't host 3 mass eigenstates and would need a macroscopic L_6 — was resolved by giving the ν sector its own delta.
+2. **Phase 2 (electron sector)**: documented in [candidates.md §2](candidates.md). Delta `Ma((2, 4), (2, 5), (4, 5))` fits (m_e, m_μ, m_τ) to machine precision with L_2 ≈ 0.7 fm and σ_eff values in the natural range (no R53 fine-tuning).
+3. **Phase 3 (neutrino sector)**: documented in [candidates.md §3](candidates.md). Candidate C uses a ν-region delta `Ma((6, 7), (6, 8), (7, 8))` on fresh dims (decoupled from the e-sector), with L_6, L_7, L_8 in the cm-m range; closes to machine precision. The original concern (§11 below) — that a single ν pair couldn't host 3 mass eigenstates and would need a macroscopic L — was resolved by giving the ν sector its own delta on fresh dims.
 4. **Mathematical formalization** (Phase 5 per STATUS.md): if Phase 4 coherence checks pass, write up the unified architecture in `ma-domain/` proper as a derivation, not a fit.
 
 ---
@@ -327,7 +327,7 @@ Notably:
 
 | Topology | Best fit | Dims needed | Mode B per pair | Tube/ring per pair | DOF margin |
 |---|---:|---:|---|---|---|
-| Wye `Ma((1,4),(2,4),(3,4))` | **0.50%** | 4 (+ L_4 free) | uniform `T(1, 1)` (no relaxation) | uniform `larger` (hub as tube) | 1 free L |
+| Wye `Ma((1,5),(3,5),(4,5))` | **0.50%** | 4 (+ L_5 free) | uniform `T(1, 1)` (no relaxation) | uniform `larger` (hub as tube) | 1 free L |
 | Triangle `Ma((1,2),(1,3),(2,3))` (+ relaxation) | 3.97% | 3 | mixed `mr-shift`/`mt-2` | uniform `larger` | 0 free |
 
 **The wye topology is the clear winner.** It achieves an 8× tighter fit with the simpler "lowest 2 modes" rule (no m_t = 2 needed) and a uniform fat-torus convention across pairs. The 3-dim triangle with Relaxation 1 is feasible but tighter and structurally less clean.
@@ -341,9 +341,9 @@ Both paths give viable quark sectors, but with different cost/quality trade-offs
 
 ---
 
-## 11. ν-sector viability concern (raised when ν was a single pair)
+## 11. ν-sector viability concern (raised when ν was planned to share dims with the e-sector)
 
-This concern arose when the ν sector was planned as a single pair `Ma(5, 6)` (Candidates A and B), with L_5 inherited from the electron sector solve (Phase 2) and L_6 free.
+This concern arose when the ν sector was planned as a single pair sharing the e-sector's new dim, with the other ν dim free.
 
 ν mass scales: m_ν₁ ≈ 30 meV, m_ν₃ ≈ 60 meV. That's 3 × 10⁻⁸ to 6 × 10⁻⁸ MeV.
 
@@ -357,13 +357,13 @@ requires at least one of L_T or L_R to be at the macroscopic scale:
 - **Fat-torus, δ = 0.001 (very near resonance)**: L_R ≈ **40 μm**.
 - **Thin-torus**: L_T ≈ **4 cm** (much larger).
 
-So a ν pair `Ma(5, 6)` needs at least one dim at mm–cm scale.
+So any ν pair needs at least one dim at mm–cm scale.
 
-If Phase 2 forces L_5 to fm–pm scale (which is plausible given electron masses ≈ MeV), then L_6 *alone* must carry the macroscopic scale — i.e., L_6 ≳ mm. The Phase 2 electron fit indeed produced L_5 ≈ 0.18 mm, leaving L_6 needing to be ≳ cm–m on its own.
+If the e-sector pins its new dim L_2 ≈ 0.7 fm (which the natural-scale fit does — see [candidates.md §3](candidates.md)), then sharing m2 with the ν sector is no longer viable: any pair containing m2 has a mass floor of 2πℏc/L_2 ≈ 1770 MeV, ~10 orders of magnitude above the meV ν scale.
 
-**Resolution: Candidate C adopts a ν delta** `Ma((5, 6), (5, 7), (6, 7))`, giving the ν sector its own three ring-scale free dims. The fit closes to machine precision with L_6 ≈ 3 cm, L_7 ≈ 60 m. The macroscopic L_6, L_7 are accepted as free architectural parameters; their structural justification (or whether the dim-size hierarchy admits an upper bound on adjacent ratios) remains open and is tracked in [STATUS.md Phase 3](STATUS.md).
+**Resolution: the ν sector lives on FRESH dims.** Candidate C adopts a ν-delta `Ma((6, 7), (6, 8), (7, 8))` on three fresh dims (m6, m7, m8), all free parameters. The fit closes to machine precision with L_6 ≈ 7 cm, L_7 ≈ 2 cm, L_8 ≈ 4 cm. The macroscopic L's are accepted as free architectural parameters; their structural justification (or whether the dim-size hierarchy admits an upper bound on adjacent ratios) remains open and is tracked in [STATUS.md Phase 3](STATUS.md).
 
-Alternative resolution (Candidate B fallback): keep the single pair `Ma(5, 6)`, admit sign-flipped m_t modes per metric-charge ch. 4 (T(1, 1), T(−1, 1), T(1, 2) — 3 modes), and force L_5 ≳ 4 cm. Closes to ~1% — see [candidates.md §4](candidates.md).
+Alternative resolution (Candidate B fallback): keep the single pair `Ma(6, 7)` on fresh dims, admit sign-flipped m_t modes per metric-charge ch. 4 (T(1, 1), T(−1, 1), T(1, 2) — 3 modes), and force L_6 ≳ 4 cm. Closes to ~1% — see [candidates.md §4](candidates.md).
 
 ---
 

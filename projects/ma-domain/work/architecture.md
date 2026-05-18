@@ -56,9 +56,9 @@ For everyday compact-domain analysis, the spatial and time entries are usually z
 
 A dim-pair is written `Ma(i, j)` with the two dim indices size-ordered (`i < j`). A set of pairs (a topology) is written `Ma((i₁, j₁), (i₂, j₂), …)`. Examples:
 
-- `Ma(1, 4)` — the pair built from dims m1 and m4.
-- `Ma((1, 4), (2, 4), (3, 4))` — the wye/star topology with hub at m4 and spokes at m1, m2, m3.
-- `Ma((3, 4), (3, 5), (4, 5))` — the delta/triangle topology on dims m3, m4, m5.
+- `Ma(1, 5)` — the pair built from dims m1 and m5.
+- `Ma((1, 5), (3, 5), (4, 5))` — the wye/star topology with hub at m5 and spokes at m1, m3, m4 (the quark wye in [candidates.md](candidates.md)).
+- `Ma((2, 4), (2, 5), (4, 5))` — the delta/triangle topology on dims m2, m4, m5 (the electron delta in [candidates.md](candidates.md)).
 
 This notation is deliberately distinct from the mode-winding tuple `T(m_t, m_r)` (per metric-charge's torus-knot mode labels), so a pair `Ma(1, 2)` and a mode `T(1, 2)` are never confused.
 

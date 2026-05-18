@@ -6,20 +6,29 @@ All dim labels are size-ordered: m1 is the smallest compact circumference
 (hosting the heaviest mass scales), m_N is the largest. Pair notation:
 Ma(i, j) for a single pair, Ma((i,j), ...) for a topology.
 
+Dim-size hierarchy after the natural-scale e-refactor:
+    m1 ≈ 0.007 fm    (b/t ring)
+    m2 ≈ 0.7 fm      (electron-sector new dim)
+    m3 ≈ 0.91 fm     (s/c ring)
+    m4 ≈ 181 fm      (u/d ring)
+    m5 ≈ 5740 fm     (quark wye hub)
+    m6, m7, m8       (ν-region, ~cm scale; fit-determined)
+
 All three candidates share the same quark wye:
-    Ma((1, 4), (2, 4), (3, 4))   hub at m4 (largest, common tube)
+    Ma((1, 5), (3, 5), (4, 5))   hub at m5 (largest of the quark-region dims)
 
 Candidates B and C share the same electron delta:
-    Ma((3, 4), (3, 5), (4, 5))
-(natural scale placement: uses the two largest quark-region dims m3, m4
-which are nearer the lepton Compton-wavelength scale)
+    Ma((2, 4), (2, 5), (4, 5))
+(natural scale placement: uses the lepton-scale m2 with the two largest
+quark-region dims m4, m5, hosting τ, e, μ on the three pairs without
+R53 fine-tuning)
 
-Candidate C adds a neutrino delta:
-    Ma((5, 6), (5, 7), (6, 7))
+Candidate C adds a neutrino delta on fresh dims (decoupled from the e-sector):
+    Ma((6, 7), (6, 8), (7, 8))
 
-Candidate A uses an electron path Ma((1, 2), (1, 5), (4, 5)) which is not
+Candidate A uses an electron path Ma((1, 3), (1, 2), (2, 5)) which is not
 fit here (mixed-shape, requires separate analysis); and a single neutrino
-pair Ma(5, 6) which is not viable under strict closure modes.
+pair Ma(6, 7) which is not viable under strict closure modes.
 
 For each candidate, this script computes:
 
@@ -61,26 +70,28 @@ NEUTRINO = {  # R49 / model-F Family A values
 
 
 # ===============================================================
-# Quark sector: wye/star with hub at m4, rings at m1, m2, m3
+# Quark sector: wye/star with hub at m5, rings at m1, m3, m4
 # Size-ordered: m1 (smallest) hosts the heaviest pair (t, b)
+# (m2 is reserved for the electron-sector new dim)
 # ===============================================================
 
 def quark_wye_fit() -> dict:
     """
-    Fit the 6 quarks on the wye topology Ma((1,4), (2,4), (3,4)).
-    m4 is the common hub (plays tube in every pair, ~5740 fm).
-    m1, m2, m3 are the rings; heaviest pair on smallest ring.
+    Fit the 6 quarks on the wye topology Ma((1,5), (3,5), (4,5)).
+    m5 is the common hub (plays tube in every pair, ~5740 fm).
+    m1, m3, m4 are the rings; heaviest pair on smallest ring.
 
     Each pair hosts one generation: lighter quark at T(1, 2), heavier
     at T(1, 1) (per metric-charge §4 closure rule).
     """
     # Size-ordered: heaviest generation on smallest ring m1
+    # (m2 is intentionally skipped — reserved for the electron-sector dim)
     gen_to_spoke = [
         ("b/t", 1),   # m1 (smallest, ~0.007 fm) hosts (t, b)
-        ("s/c", 2),   # m2 (~0.91 fm) hosts (c, s)
-        ("u/d", 3),   # m3 (~181 fm) hosts (d, u)
+        ("s/c", 3),   # m3 (~0.91 fm) hosts (c, s)
+        ("u/d", 4),   # m4 (~181 fm) hosts (d, u)
     ]
-    hub_dim = 4
+    hub_dim = 5
 
     rings = {}
     sigmas = {}
@@ -95,10 +106,10 @@ def quark_wye_fit() -> dict:
 
     # Hub L: large enough for pure-ring regime in tightest pair
     L_hub_min = max(rings[s] / (2 - sigmas[(s, hub_dim)])
-                    for s in (1, 2, 3)) * 10
+                    for s in (1, 3, 4)) * 10
     L_hub = max(L_hub_min, 5000.0)
     Ls = {hub_dim: L_hub}
-    for s in (1, 2, 3):
+    for s in (1, 3, 4):
         Ls[s] = rings[s]
 
     predictions = {}
@@ -125,23 +136,24 @@ def quark_wye_fit() -> dict:
 
 
 # ===============================================================
-# Electron sector: delta Ma((3, 4), (3, 5), (4, 5))  (candidates B and C)
+# Electron sector: delta Ma((2, 4), (2, 5), (4, 5))  (candidates B and C)
 # Hypothesis: 1 lepton per pair (no clover doublet on charged leptons)
 # Mode: T(1, 2) per pair
-# Natural-scale placement: uses m3 (181 fm, near electron Compton λ ~ 386 fm)
-# and m4 (5740 fm, the quark hub) plus a new free dim m5.
+# Natural-scale placement: uses m4 (181 fm, near electron Compton λ ~ 386 fm)
+# and m5 (5740 fm, the quark hub), plus a new lepton-scale dim m2 (~0.7 fm)
+# which sets the τ Compton wavelength.
 # ===============================================================
 
 def electron_delta_fit(L_fixed: dict, n_seeds: int = 20) -> dict:
     """
-    Fit (e, μ, τ) on the delta Ma((3, 4), (3, 5), (4, 5)).
-    L_fixed: dict of inherited L values, e.g. {3: 181, 4: 5740}
-    Unknowns: L_5, σ for each pair, plus tube/ring assignment per pair.
+    Fit (e, μ, τ) on the delta Ma((2, 4), (2, 5), (4, 5)).
+    L_fixed: dict of inherited L values, e.g. {4: 181, 5: 5740}
+    Unknowns: L_2 (lepton-scale dim), σ for each pair, plus tube/ring per pair.
 
     Each pair hosts ONE charged lepton at T(1, 2).
     Try all 6 (lepton → pair) assignments and all 2^3 tube/ring choices.
     """
-    pairs = [(3, 4), (3, 5), (4, 5)]
+    pairs = [(2, 4), (2, 5), (4, 5)]
     leptons = list(LEPTON.keys())
 
     def mass(L_T: float, L_R: float, sigma_eff: float) -> float:
@@ -149,10 +161,10 @@ def electron_delta_fit(L_fixed: dict, n_seeds: int = 20) -> dict:
         return COEFF * sqrt((1 / L_T) ** 2 + (delta / L_R) ** 2)
 
     def predict(x: np.ndarray, lepton_to_pair: list, tube_is_first: list) -> dict:
-        """x = [log10 L_5, σ for each of 3 pairs]"""
-        L_5 = 10 ** x[0]
+        """x = [log10 L_2, σ for each of 3 pairs]"""
+        L_2 = 10 ** x[0]
         sigmas = {pairs[i]: x[1 + i] for i in range(3)}
-        Ls = {3: L_fixed[3], 4: L_fixed[4], 5: L_5}
+        Ls = {2: L_2, 4: L_fixed[4], 5: L_fixed[5]}
         out = {}
         for i, lepton in enumerate(lepton_to_pair):
             d1, d2 = pairs[i]
@@ -198,7 +210,7 @@ def electron_delta_fit(L_fixed: dict, n_seeds: int = 20) -> dict:
                         "max_err": max_err,
                         "lepton_to_pair_arrangement": list(zip(pairs, lepton_to_pair)),
                         "tube_is_first": list(tube_combo),
-                        "L_5": 10 ** res.x[0],
+                        "L_2": 10 ** res.x[0],
                         "sigma_eff": {pairs[i]: res.x[1 + i] for i in range(3)},
                         "predictions": pred,
                     }
@@ -209,43 +221,45 @@ def electron_delta_fit(L_fixed: dict, n_seeds: int = 20) -> dict:
 # Neutrino sector
 # ===============================================================
 
-def neutrino_pair_fit_check(L_fixed: dict) -> dict:
+def neutrino_pair_fit_check(L_inherited: float = None) -> dict:
     """
-    Candidates A and B: ν is a single pair Ma(5, 6). L_5 inherited from
-    e-sector fit.
+    Candidates A and B: ν is a single pair on fresh dims (e.g. Ma(6, 7)).
 
     Under strict closure modes (T(1, 1) and T(1, 2) only), a single pair
     has at most 2 modes — can't host 3 ν mass eigenstates.
 
     Even ignoring that, the mass floor m ≥ 2π·ℏc/min(L_T, L_R) requires
     min(L_T, L_R) ≥ 4e10 fm ≈ 4 cm for m ≈ 30 meV.
+
+    After the natural-scale e-refactor, the ν pair does NOT inherit L_5
+    from the electron fit (L_5 ≈ 0.7 fm is way too small for ν).  Both ν
+    dims are fresh free parameters.
     """
-    L_5 = L_fixed.get(5, None)
     min_L_required = COEFF / NEUTRINO["nu1"]  # ≈ 4 × 10¹⁰ fm
-    verdict = {
-        "L_5_inherited": L_5,
+    return {
+        "L_inherited": L_inherited,
         "min_L_required_for_nu1": min_L_required,
-        "L_5_sufficient": L_5 is not None and L_5 >= min_L_required,
         "modes_per_pair": 2,
         "n_observed_nu_masses": 3,
         "modes_sufficient": False,
-        "verdict": ("NOT VIABLE: a single pair Ma(5, 6) has at most 2 closure "
-                   "modes at m_t=1, but 3 ν mass eigenstates are observed; "
-                   "AND the inherited L_5 from e-sector is far below the "
-                   f"{min_L_required:.2g} fm floor required for meV-scale modes."),
+        "verdict": ("NOT VIABLE under strict closure: a single pair has at "
+                   "most 2 modes at m_t=1, but 3 ν mass eigenstates are "
+                   "observed.  Both ν dims are fresh; meV scale requires "
+                   f"min(L_T, L_R) ≥ {min_L_required:.2g} fm. The B-candidate "
+                   "rescue uses sign-flipped m_t modes — see candidates.md §4."),
     }
-    return verdict
 
 
-def neutrino_delta_fit(L_fixed: dict) -> dict:
+def neutrino_delta_fit() -> dict:
     """
-    Candidate C: ν delta Ma((5, 6), (5, 7), (6, 7)) — analogous to e delta.
-    L_5 inherited from e-fit. L_6, L_7 free.
+    Candidate C: ν delta Ma((6, 7), (6, 8), (7, 8)) — on fresh dims,
+    decoupled from the e-sector (the previous m5-shared design breaks
+    after the natural-scale e-refactor).
 
-    Fit (ν₁, ν₂, ν₃) under 1-lepton-per-pair hypothesis (no doublet).
+    All three dim sizes L_6, L_7, L_8 are free parameters.  Fit
+    (ν₁, ν₂, ν₃) under 1-mass-per-pair hypothesis at T(1, 2).
     """
-    L_5 = L_fixed[5]
-    pairs = [(5, 6), (5, 7), (6, 7)]
+    pairs = [(6, 7), (6, 8), (7, 8)]
     nu_list = ["nu1", "nu2", "nu3"]
 
     def mass(L_T: float, L_R: float, sigma_eff: float) -> float:
@@ -253,11 +267,12 @@ def neutrino_delta_fit(L_fixed: dict) -> dict:
         return COEFF * sqrt((1 / L_T) ** 2 + (delta / L_R) ** 2)
 
     def predict(x, nu_to_pair, tube_is_first):
-        """x = [log10 L_6, log10 L_7, σ for each of 3 pairs]"""
+        """x = [log10 L_6, log10 L_7, log10 L_8, σ for each of 3 pairs]"""
         L_6 = 10 ** x[0]
         L_7 = 10 ** x[1]
-        sigmas = {pairs[i]: x[2 + i] for i in range(3)}
-        Ls = {5: L_5, 6: L_6, 7: L_7}
+        L_8 = 10 ** x[2]
+        sigmas = {pairs[i]: x[3 + i] for i in range(3)}
+        Ls = {6: L_6, 7: L_7, 8: L_8}
         out = {}
         for i, nu in enumerate(nu_to_pair):
             d1, d2 = pairs[i]
@@ -284,13 +299,14 @@ def neutrino_delta_fit(L_fixed: dict) -> dict:
                 x0 = [
                     rng.uniform(5, 15),
                     rng.uniform(5, 15),
+                    rng.uniform(5, 15),
                     rng.uniform(1, 2), rng.uniform(1, 2), rng.uniform(1, 2),
                 ]
                 try:
                     res = least_squares(
                         residuals, x0,
                         args=(nu_to_pair, list(tube_combo)),
-                        bounds=([-5, -5, 0, 0, 0], [15, 15, 3, 3, 3]),
+                        bounds=([-5, -5, -5, 0, 0, 0], [15, 15, 15, 3, 3, 3]),
                         method="trf", max_nfev=1500,
                     )
                 except Exception:
@@ -305,7 +321,8 @@ def neutrino_delta_fit(L_fixed: dict) -> dict:
                         "tube_is_first": list(tube_combo),
                         "L_6": 10 ** res.x[0],
                         "L_7": 10 ** res.x[1],
-                        "sigma_eff": {pairs[i]: res.x[2 + i] for i in range(3)},
+                        "L_8": 10 ** res.x[2],
+                        "sigma_eff": {pairs[i]: res.x[3 + i] for i in range(3)},
                         "predictions": pred,
                     }
     return best
@@ -316,35 +333,35 @@ def neutrino_delta_fit(L_fixed: dict) -> dict:
 # ===============================================================
 
 def candidate_A():
-    """Wye + 4-dim electron path + ν pair."""
+    """Wye + 4-dim electron path + ν pair (on fresh dim m6/m7)."""
     quark = quark_wye_fit()
     return {
         "name": "Candidate A (wye + path)",
-        "quark_topology": "Ma((1,4), (2,4), (3,4)) — wye, hub at m4",
-        "electron_topology": "Ma((1,2), (1,5), (4,5)) — 4-dim path",
-        "neutrino_topology": "Ma(5, 6) — single pair",
-        "n_dims": 6,
+        "quark_topology": "Ma((1,5), (3,5), (4,5)) — wye, hub at m5",
+        "electron_topology": "Ma((1,3), (1,2), (2,5)) — 4-dim path (m3—m1—m2—m5)",
+        "neutrino_topology": "Ma(6, 7) — single pair (fresh dims)",
+        "n_dims": 7,
         "quark": quark,
-        "electron_note": ("4-dim path topology (m2—m1—m5—m4), not a clean shape. "
+        "electron_note": ("4-dim path topology (m3—m1—m2—m5), not a clean shape. "
                           "e-sector fit not implemented here (mixed-shape topology "
-                          "requires a separate analysis). Shares L_1, L_2, L_4 with "
-                          "quarks via the pairs (1,2), (1,5)*, (4,5)*."),
-        "neutrino": neutrino_pair_fit_check({}),
+                          "requires a separate analysis). Shares L_1, L_3, L_5 with "
+                          "quarks via the pairs (1,3), (1,2)*, (2,5)*."),
+        "neutrino": neutrino_pair_fit_check(),
     }
 
 
 def candidate_B():
-    """Wye + e delta + ν pair."""
+    """Wye + e delta + ν pair (on fresh dims, decoupled from e-sector)."""
     quark = quark_wye_fit()
-    L_e_inherit = {3: quark["Ls"][3], 4: quark["Ls"][4]}
+    L_e_inherit = {4: quark["Ls"][4], 5: quark["Ls"][5]}
     electron = electron_delta_fit(L_e_inherit)
-    nu_check = neutrino_pair_fit_check({5: electron["L_5"]})
+    nu_check = neutrino_pair_fit_check()
     return {
-        "name": "Candidate B (wye + delta, 6 dims)",
-        "quark_topology": "Ma((1,4), (2,4), (3,4)) — wye, hub at m4",
-        "electron_topology": "Ma((3,4), (3,5), (4,5)) — delta on m3, m4, m5",
-        "neutrino_topology": "Ma(5, 6) — single pair",
-        "n_dims": 6,
+        "name": "Candidate B (wye + delta + ν pair, 7 dims)",
+        "quark_topology": "Ma((1,5), (3,5), (4,5)) — wye, hub at m5",
+        "electron_topology": "Ma((2,4), (2,5), (4,5)) — delta on m2, m4, m5",
+        "neutrino_topology": "Ma(6, 7) — single pair (fresh dims, decoupled from e-sector)",
+        "n_dims": 7,
         "quark": quark,
         "electron": electron,
         "neutrino": nu_check,
@@ -352,18 +369,17 @@ def candidate_B():
 
 
 def candidate_C():
-    """Wye + e delta + ν delta."""
+    """Wye + e delta + ν delta (ν delta on fresh dims, decoupled)."""
     quark = quark_wye_fit()
-    L_e_inherit = {3: quark["Ls"][3], 4: quark["Ls"][4]}
+    L_e_inherit = {4: quark["Ls"][4], 5: quark["Ls"][5]}
     electron = electron_delta_fit(L_e_inherit)
-    L_nu_inherit = {5: electron["L_5"]}
-    neutrino = neutrino_delta_fit(L_nu_inherit)
+    neutrino = neutrino_delta_fit()
     return {
-        "name": "Candidate C (wye + delta + delta, 7 dims)",
-        "quark_topology": "Ma((1,4), (2,4), (3,4)) — wye, hub at m4",
-        "electron_topology": "Ma((3,4), (3,5), (4,5)) — delta on m3, m4, m5",
-        "neutrino_topology": "Ma((5,6), (5,7), (6,7)) — delta on m5, m6, m7",
-        "n_dims": 7,
+        "name": "Candidate C (wye + delta + delta, 8 dims)",
+        "quark_topology": "Ma((1,5), (3,5), (4,5)) — wye, hub at m5",
+        "electron_topology": "Ma((2,4), (2,5), (4,5)) — delta on m2, m4, m5",
+        "neutrino_topology": "Ma((6,7), (6,8), (7,8)) — delta on m6, m7, m8 (fresh dims)",
+        "n_dims": 8,
         "quark": quark,
         "electron": electron,
         "neutrino": neutrino,
@@ -411,7 +427,7 @@ def main():
                 lines.append(f"    {lep:4s} pred = {e['predictions'][lep]:>10.4g}  "
                              f"obs = {LEPTON[lep]:>10.4g}  Δ% = {err:+.2f}%")
             lines.append(f"  Electron lepton→pair: {e['lepton_to_pair_arrangement']}")
-            lines.append(f"  L_5 = {e['L_5']:.4g} fm")
+            lines.append(f"  L_2 (new e-sector dim) = {e['L_2']:.4g} fm")
             lines.append("")
         elif "electron_note" in c:
             lines.append(f"  ELECTRON FIT: {c['electron_note']}")
@@ -425,11 +441,9 @@ def main():
                 lines.append(f"    {n:4s} pred = {nu['predictions'][n]:>10.4g}  "
                              f"obs = {NEUTRINO[n]:>10.4g}  Δ% = {err:+.2f}%")
             if "L_6" in nu:
-                lines.append(f"  L_6 = {nu['L_6']:.4g} fm,  L_7 = {nu['L_7']:.4g} fm")
+                lines.append(f"  L_6 = {nu['L_6']:.4g} fm,  L_7 = {nu['L_7']:.4g} fm,  L_8 = {nu['L_8']:.4g} fm")
         else:
             lines.append(f"  NEUTRINO check: {nu['verdict']}")
-            lines.append(f"    L_5 inherited from e-fit: "
-                         f"{nu.get('L_5_inherited', 'n/a')} fm")
             lines.append(f"    L floor required for m_ν₁ = 30 meV: "
                          f"{nu['min_L_required_for_nu1']:.2g} fm")
         lines.append("")

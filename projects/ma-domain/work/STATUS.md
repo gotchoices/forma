@@ -22,14 +22,14 @@ Pair notation: `Ma(i, j)` for a single pair (size-ordered, `i < j`); `Ma((i,j), 
 
 Two parallel paths now run in parallel:
 
-### Path A (preferred): wye/star topology Ma((1,4), (2,4), (3,4))
+### Path A (preferred): wye/star topology Ma((1,5), (3,5), (4,5))
 
 - [x] **First-cut attempt: 3-dim triangle topology `Ma((1,2), (1,3), (2,3))`.** Analytically + numerically falsified in [quark-search.md §1–§7](quark-search.md). The dim-sharing constraint was the obstruction.
-- [x] **Wye topology: 4 dims with pairs `Ma((1,4), (2,4), (3,4))` — m4 is the common hub, plays tube in all three pairs. FITS ALL 6 QUARKS to < 1%.** Documented in [quark-search.md §9](quark-search.md); verified by [scripts/quark_search_wye.py](../scripts/quark_search_wye.py). Max |Δ%| = **0.499%**. Geometry: L_1 = 0.007 fm, L_2 = 0.91 fm, L_3 = 181 fm, L_4 ≳ 5740 fm. **All 6 quarks at (m_t, m_r) ∈ {(1, 1), (1, 2)} — the valid closure modes per [sheet-proton clover-quarks §12](../../sheet-proton/work/clover-quarks.md).** Lighter quark of each gen at T(1, 2), heavier at T(1, 1). σ_eff per pair = 1.684, 1.932, 1.976 (the heaviest pair sits essentially at R53's σ_eff ≈ 2 magic-shear value).
+- [x] **Wye topology: 4 dims with pairs `Ma((1,5), (3,5), (4,5))` — m5 is the common hub (m2 is reserved for the e-sector). FITS ALL 6 QUARKS to < 1%.** Documented in [quark-search.md §9](quark-search.md); verified by [scripts/quark_search_wye.py](../scripts/quark_search_wye.py). Max |Δ%| = **0.499%**. Geometry: L_1 = 0.007 fm, L_3 = 0.91 fm, L_4 = 181 fm, L_5 ≳ 5740 fm. **All 6 quarks at (m_t, m_r) ∈ {(1, 1), (1, 2)} — the valid closure modes per [sheet-proton clover-quarks §12](../../sheet-proton/work/clover-quarks.md).** Lighter quark of each gen at T(1, 2), heavier at T(1, 1). σ_eff per pair = 1.684, 1.932, 1.976 (the heaviest pair sits essentially at R53's σ_eff ≈ 2 magic-shear value).
 - [x] **Architectural implication**: tube/ring is per-pair structural choice, not size-determined ([architecture.md §3.1, §3.2](architecture.md) updated).
 - [ ] **Cross-term sparsity pattern**: the fit pins each pair's σ_eff = σ + 2τ; many (σ, τ ∈ {±1/3, ±2/3}) combinations give the same f. Choose the canonical assignment.
-- [ ] **Phase 2 prep**: e-sector inherits some subset of L_1, L_2, L_3, L_4. Electron pairs (chosen from the dim pool) must reproduce (m_e, m_μ, m_τ) using these + L_5 + per-pair (σ, τ, χ).
-- [ ] **ν-sector viability concern**: ν masses (30–60 meV) require L_R ≳ mm in any regime. If Phase 2 fits L_5 at fm–pm scale (likely from electron-mass constraints), the ν pair (and/or any additional ν dims) needs at least one macroscopic dim, a 10⁶× jump from the rest of the spectrum. See [quark-search.md §11](quark-search.md). Resolved in Candidate C by giving the ν sector its own ν-region dims (m6, m7) free of inherited e-scale constraints.
+- [x] **Phase 2 prep**: e-sector reuses L_4, L_5 from the quark wye and adds L_2 ≈ 0.7 fm. e-delta `Ma((2,4), (2,5), (4,5))` fits to machine precision with σ_eff in the natural range. Details in [candidates.md §2, §3](candidates.md).
+- [x] **ν-sector viability concern**: resolved in Candidate C by giving the ν-delta its own fresh dims `Ma((6,7), (6,8), (7,8))` decoupled from the e-sector. L_6, L_7, L_8 land in the cm-m range.
 
 ### Path B (fallback): 3-dim topology with relaxations
 
@@ -41,41 +41,41 @@ Two parallel paths now run in parallel:
 
 ## Active candidate comparison ([candidates.md](candidates.md))
 
-Three current Path A topology variants tracked. Numerics in [outputs/candidate_fits.txt](../outputs/candidate_fits.txt); driver in [scripts/candidate_fits.py](../scripts/candidate_fits.py). All use size-ordered dim labels (m1 smallest).
+Three current Path A topology variants tracked. Numerics in [outputs/candidate_fits.txt](../outputs/candidate_fits.txt); driver in [scripts/candidate_fits.py](../scripts/candidate_fits.py). All use size-ordered dim labels (m1 smallest, m8 largest in C).
 
 | Candidate | Quark | Electron | ν | Total dims |
 |---|---|---|---|---:|
-| **A — wye + path** | `Ma((1,4),(2,4),(3,4))` | `Ma((1,2),(1,5),(4,5))` (4-dim path) | `Ma(5,6)` | 6 |
-| **B — wye + delta** | `Ma((1,4),(2,4),(3,4))` | `Ma((1,2),(1,5),(2,5))` (delta) | `Ma(5,6)` | 6 |
-| **C — wye + delta + delta** | `Ma((1,4),(2,4),(3,4))` | `Ma((1,2),(1,5),(2,5))` (delta) | `Ma((5,6),(5,7),(6,7))` (delta) | 7 |
+| **A — wye + path** | `Ma((1,5),(3,5),(4,5))` | `Ma((1,3),(1,2),(2,5))` (4-dim path) | `Ma(6,7)` | 7 |
+| **B — wye + delta** | `Ma((1,5),(3,5),(4,5))` | `Ma((2,4),(2,5),(4,5))` (delta) | `Ma(6,7)` | 7 |
+| **C — wye + delta + delta** | `Ma((1,5),(3,5),(4,5))` | `Ma((2,4),(2,5),(4,5))` (delta) | `Ma((6,7),(6,8),(7,8))` (delta) | 8 |
 
 | Sector | A | B | C |
 |---|:---:|:---:|:---:|
 | Quark fit | ✓ 0.5% | ✓ 0.5% | ✓ 0.5% |
-| Electron fit | not tested | ✓ 0.0% | ✓ 0.0% |
+| Electron fit (natural σ_eff) | not tested | ✓ 0.0% | ✓ 0.0% |
 | ν fit (strict modes) | ✗ (1 pair → 2 modes < 3 ν) | ✗ same | ✓ 0.0% |
-| ν fit (sign-flipped modes, L_5 ≳ cm) | unknown | ~1% (spot check) | not needed |
+| ν fit (sign-flipped modes, L_6 ≳ cm) | unknown | ~1% (spot check) | not needed |
 
-**Working choice:** **Candidate C** as the active topology. Cleanest fit, no mode-relaxations needed in any sector. Cost: 1 extra dim (7 vs 6). Candidate B held as a 6-dim fallback.
+**Working choice:** **Candidate C** as the active topology. All twelve charged fermions + 3 ν mass eigenstates fit to machine precision (modulo 0.5% on u). σ_eff values in a natural range (1.00 to 1.98) across all sectors. No mode-relaxations needed. Cost: 8 dims. Candidate B held as a 7-dim fallback.
 
 ### Refactor for natural mass-scale ↔ dim-size matching
 
-- [x] **Revisit which quark dims the electron sector reuses.** Done. The e-delta in B/C is now `Ma((3,4), (3,5), (4,5))` using the LARGER quark dims (m3 = 181 fm, m4 = 5740 fm) and a new m5. Closes to machine precision with σ_eff = 1.93, 1.00, 1.94 — all natural, no R53 fine-tuning. L_5 ≈ 0.7 fm (set by τ Compton wavelength). Details in [candidates.md §2, §3](candidates.md).
-- [ ] **Re-fit C's ν-delta on fresh dims.** The e-refactor pins L_5 to ~0.7 fm, which breaks the old m5-shared `Ma((5,6),(5,7),(6,7))` ν-delta (mass floor 1770 MeV ≫ meV ν scale). Replace with `Ma((6,7), (6,8), (7,8))` (8 dims total) and run the script to verify the ν-fit closes. The algebra has the same DOF as before; expected to close cleanly.
-- [ ] **Apply a strict size-ordering relabeling pass.** After the e-refactor, L_5 ≈ 0.7 fm is smaller than L_2, L_3, L_4 — violating the size-ordered labels convention. The relabeling cascade: m1 = 0.007 fm; m2 = 0.7 fm (new); m3 = 0.91 fm; m4 = 181 fm; m5 = 5740 fm; m6..m8 = ν dims. Cascades into rewriting all Ma(i, j) references throughout the project — to be batched with the ν re-fit so the script only changes once.
+- [x] **Revisit which quark dims the electron sector reuses.** Done. The e-delta in B/C is now `Ma((2,4), (2,5), (4,5))` using the larger quark-region dims (m4 = 181 fm, m5 = 5740 fm) plus a new m2 ≈ 0.7 fm (lepton-scale). Closes to machine precision with σ_eff = 1.932, 1.000, 1.941 — all natural, no R53 fine-tuning. Details in [candidates.md §2, §3](candidates.md).
+- [x] **Re-fit C's ν-delta on fresh dims.** Done. The ν-delta is now `Ma((6,7), (6,8), (7,8))` (8 dims total). Closes to machine precision with L_6 ≈ 7 cm, L_7 ≈ 2 cm, L_8 ≈ 4 cm.
+- [x] **Apply a strict size-ordering relabeling pass.** Done. The size hierarchy is now m1 = 0.007 fm; m2 = 0.7 fm; m3 = 0.91 fm; m4 = 181 fm; m5 = 5740 fm; m6..m8 = ν dims. All `Ma(i, j)` references throughout the project use these labels.
 
 ## Phase 2 — Electron sector
 
-- [x] **Working topology**: electron delta `Ma((1,2), (1,5), (2,5))` under Candidates B/C — three pairs hosting one charged lepton each at T(1, 2). All three (m_e, m_μ, m_τ) fit to machine precision via the per-pair σ_eff with L_5 in the 10⁵-fm (~0.1 mm) range. The system is underdetermined, so multiple lepton↔pair assignments work; e.g. τ → `Ma(1, 2)`, e → `Ma(1, 5)`, μ → `Ma(2, 5)`.
-- [ ] Verify the electron-sector dim assignment is structurally coherent with the quark sector's shared dims (m1 and m2 are also quark rings; the e-sector reuses them as one tube + one ring per e-pair).
+- [x] **Working topology**: electron delta `Ma((2,4), (2,5), (4,5))` under Candidates B/C — three pairs hosting one charged lepton each at T(1, 2). All three (m_e, m_μ, m_τ) fit to machine precision via the per-pair σ_eff with L_2 ≈ 0.7 fm (set by the τ Compton wavelength). Assignment: τ → `Ma(2, 4)`, μ → `Ma(2, 5)`, e → `Ma(4, 5)`.
+- [x] The shared pair `Ma(4, 5)` (in both the quark wye and the e-delta) hosts two different cross-section modes — quark clover (u, d) with σ_eff = 1.684, and electron ellipse with σ_eff = 1.932. Consistent with the pair-triplet (σ, τ, P) hypothesis where the cross-section P is per-mode, not per-pair.
 - [ ] Determine whether the electron dim-pairs need **clover-style internal structure** (e.g., a doublet analog of the lobe/saddle distinction in the quark sector). Open question — the current fit treats each pair as a single-mode host (one lepton per pair), no doublet required.
 - [ ] Determine whether the electron dim-pairs need their own **twist** (a τ-equivalent for the e-sheet). The current fit uses σ_eff per pair without separately resolving (σ, τ); R53's mechanism uses *shear* (σ ≈ 2), not τ, so the answer may be "no twist, only shear" — but worth confirming.
 - [ ] Promote the e-sector results from [candidates.md](candidates.md) into a dedicated `work/electron-sector.md`.
 
 ## Phase 3 — Neutrino sector
 
-- [x] **Working topology (Candidate C)**: ν delta `Ma((5,6), (5,7), (6,7))` — three pairs each hosting one ν mass eigenstate at T(1, 2). Fit closes to machine precision with L_5 inherited from e-sector; L_6 and L_7 land in the cm–m range (one valid solution has L_6 ≈ 260 m, L_7 ≈ 4 cm; the m6–m7 labelling is symmetric so the two free parameters can swap across runs).
-- [ ] **Alternative (Candidate B fallback)**: single ν pair `Ma(5, 6)` with sign-flipped modes per metric-charge ch. 4 (T(1, 1), T(−1, 1), T(1, 2)) — viable to ~1% with L_5 ≳ 4 cm; trade-off documented in [candidates.md §4](candidates.md).
+- [x] **Working topology (Candidate C)**: ν delta `Ma((6,7), (6,8), (7,8))` on fresh dims (decoupled from the e-sector). Three pairs each host one ν mass eigenstate at T(1, 2). Fit closes to machine precision with L_6 ≈ 7 cm, L_7 ≈ 2 cm, L_8 ≈ 4 cm (one valid solution; the indices can swap across seeds since the three pairs are symmetric).
+- [ ] **Alternative (Candidate B fallback)**: single ν pair `Ma(6, 7)` with sign-flipped modes per metric-charge ch. 4 (T(1, 1), T(−1, 1), T(1, 2)) — viable to ~1% with L_6 ≳ 4 cm; trade-off documented in [candidates.md §4](candidates.md).
 - [ ] Check whether the ν-sector dim sizes (cm–m scale) admit a structural justification or are simply free parameters of the architecture.
 - [ ] Promote the ν-sector results from [candidates.md](candidates.md) into a dedicated `work/neutrino-sector.md`.
 
