@@ -41,72 +41,98 @@ Candidate A differs in the electron sector only: its electron topology is a 4-di
 
 In the diagrams below, nodes are Ma dims (m1..m_N), edges are dim-pairs labelled by sector: `p` = quark/proton, `e` = electron, `v` = neutrino. Shared dims appear in both the sub-graphs they participate in (so the same `m1` in the quark wye is the same `m1` in the electron sector below it).
 
-**Candidate C — wye + e-delta + ν-delta** (quark wye and e-delta SHARE the pair (m4, m5) — that pair carries both a `p` edge (quark clover mode hosting u, d) and an `e` edge (electron ellipse mode hosting electron), as different cross-section modes coexisting on the same dim-pair geometry; the ν-delta is decoupled onto fresh dims m6, m7, m8):
+Each candidate is drawn as three (or fewer) per-sector subgraphs. **Shared dims** (a node that appears in more than one sub-graph) are called out in text below each sub-graph; the same label name always refers to the same dim.
+
+**Candidate C — wye + e-delta + ν-delta:**
 
 ```
-   Quark wye + e-delta (shared edge m4–m5):
+  Quark wye (hub m5):
 
-           m1                 m3
-            \                 /
-             p               p
-              \             /
-               \           /
-              ┌─m5(hub)──p──m4
-              │   \         │
-              e    e        e          (e-delta closes via m2-m5, m2-m4)
-              │     \       │
-              │      \      │
-              └──── m2 ─────┘
-                    │
-                    (m2 = 0.7 fm — lepton-scale dim, between m1 and m3 in size)
+         m1   m3   m4
+          \   |   /
+           p  p  p
+            \ | /
+             m5
 
-   Neutrino delta (decoupled — fresh dims):
 
-           m6 ── v ── m7
-             \       /
-              v     v
-               \   /
-                m8
+  Electron delta on (m2, m4, m5):
+
+           m2
+          /  \
+         e    e
+        /      \
+       m4 -e- m5
+
+  (m4 and m5 are also in the quark wye; the pair (m4, m5) carries
+   both a `p` edge — quark u/d on a clover cross-section — and an
+   `e` edge — electron on an ellipse cross-section. Different
+   cross-sections, different σ_eff, same dim-pair geometry.)
+
+
+  Neutrino delta on (m6, m7, m8):
+
+           m8
+          /  \
+         v    v
+        /      \
+       m6 -v- m7
+
+  (no shared dims with quark wye or e-delta)
 ```
 
-**Candidate B — wye + e-delta + ν pair** (same quark+e structure as C; ν is a single pair on fresh dims):
+**Candidate B — wye + e-delta + ν pair:**
 
 ```
-   Quark wye + e-delta (shared edge m4–m5):
+  Quark wye (hub m5):
 
-           m1                 m3
-            \                 /
-             p               p
-              \             /
-               \           /
-              ┌─m5(hub)──p──m4
-              │   \         │
-              e    e        e
-              │     \       │
-              └──── m2 ─────┘
-                    
-   Neutrino pair (decoupled — fresh dims):
-   
-           m6 ── v ── m7
+         m1   m3   m4
+          \   |   /
+           p  p  p
+            \ | /
+             m5
+
+
+  Electron delta on (m2, m4, m5):
+
+           m2
+          /  \
+         e    e
+        /      \
+       m4 -e- m5    (m4, m5 also in quark wye)
+
+
+  Neutrino pair on (m6, m7):
+
+       m6 -v- m7    (no shared dims)
 ```
 
-**Candidate A — wye + e-path + ν pair** (the e-sector is a 4-dim chain that wraps back through the quark hub m5, so it can't be drawn in a single clean spine — shown here as wye + horizontal path):
+**Candidate A — wye + e-path + ν pair:**
 
 ```
-   Quark wye:                Electron path (4 dims, 3 e-edges):
+  Quark wye (hub m5):
 
-         m4                    m3 --e-- m1 --e-- m2 --e-- m5
-         |                     ↑        ↑                  ↑
-         p                     (ring)   (ring)             (quark hub)
-         |
-         m5 (hub)            Neutrino pair:
-        /  \                   m6 --v-- m7   (fresh dims)
-       p    p
-      /      \
-    m1      m3
+         m1   m3   m4
+          \   |   /
+           p  p  p
+            \ | /
+             m5
+
+
+  Electron path m3—m1—m2—m5  (chain of 3 e-edges through 4 dims):
+
+       m3 -e- m1 -e- m2 -e- m5
+
+  (m1, m3, m5 also in quark wye; m2 is a new lepton-scale dim.
+   No clean shape — the chain reuses three quark dims and threads
+   through the lepton dim m2.)
+
+
+  Neutrino pair on (m6, m7):
+
+       m6 -v- m7    (no shared dims)
 ```
 
-The visual awkwardness of A — the e-path reusing three of the four quark-region dims (m1, m3, m5) and threading through the lepton-scale m2 — is the same structural awkwardness called out in §5 below: A has no clean per-sector geometric shape, while B and C do.
+The visual awkwardness of A — the e-path threading through three quark-region dims in a chain rather than forming a clean delta — is the same structural awkwardness called out in §5 below: A has no clean per-sector geometric shape, while B and C do.
 
 ---
 
