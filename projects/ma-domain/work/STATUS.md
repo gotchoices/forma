@@ -76,6 +76,7 @@ Three current Path A topology variants tracked. Numerics in [outputs/candidate_f
 
 - [x] **Working topology (Candidate C)**: ν delta `Ma((6,7), (6,8), (7,8))` on fresh dims (decoupled from the e-sector). Three pairs each host one ν mass eigenstate at T(1, 2). Fit closes to machine precision with L_6 ≈ 7 cm, L_7 ≈ 2 cm, L_8 ≈ 4 cm (one valid solution; the indices can swap across seeds since the three pairs are symmetric).
 - [ ] **Alternative (Candidate B fallback)**: single ν pair `Ma(6, 7)` with sign-flipped modes per metric-charge ch. 4 (T(1, 1), T(−1, 1), T(1, 2)) — viable to ~1% with L_6 ≳ 4 cm; trade-off documented in [candidates.md §4](candidates.md).
+- [ ] **Alternative (1D-curve substrate)**: neutrinos on a 1D closed curve with N=3 shape; the lowest band carries 1 singlet + 1 doublet, matching the three-generation count, with the doublet split by a small C_3 breaking. Unifies with charged leptons via the tiny-tube limit (per-generation Ma(i,j) pair with charged lepton at m_t=1 and neutrino at m_t=0). Theory and development strategy in [neutrino-1D.md](neutrino-1D.md).
 - [ ] Check whether the ν-sector dim sizes (cm–m scale) admit a structural justification or are simply free parameters of the architecture.
 - [ ] Promote the ν-sector results from [candidates.md](candidates.md) into a dedicated `work/neutrino-sector.md`.
 

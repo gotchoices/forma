@@ -178,33 +178,63 @@ Observed particle decays are universal: every massive particle heavier than the 
 
 So the leakage mechanism is not a speculative addition. It is the *expected* behavior of any geometrically-connected mode spectrum. The non-trivial task is to show that the geometric leakage rates match the observed lifetimes — that is the test, not the postulate.
 
-### 5.3 Geometric basis
+### 5.3 Geometric basis — the leaky-resonance picture
 
-Three ingredients together produce a non-zero leakage rate from pair A to pair B:
+A "particle" in the sym-ladder is a **pair-localized wavepacket**: a state concentrated mostly on one pair, with small-amplitude tails reaching through shared dims into adjacent pairs. Such a state is generally *not* an eigenstate of the full ladder's Laplace–Beltrami operator — its true eigenstates are delocalized across the whole connected manifold. Time-evolved under the full Hamiltonian, the localized wavepacket's amplitude on the source pair decays exponentially for short-to-medium times, at a rate set by the **complex resonance pole** of the full ladder's Green's function for that initial state:
 
-1. **A shared dim m_k.** The two pairs must overlap geometrically at at least one dim. Without overlap there is no matrix element.
-
-2. **Mode-overlap at the shared dim.** The wavefunctions ψ_A(x_k) and ψ_B(x_k) must have non-zero overlap integral on the shared dim. For Bloch-labeled modes this means matching k_θ values modulo the relevant Bloch sector mismatch; off-diagonal σ-coupling provides the required sector mixing.
-
-3. **Energy ordering.** E_B < E_A. The rate vanishes by Fermi's golden rule if there is no available lower target.
-
-The rate takes the schematic form
-
-<!-- Γ_{A → B} = (2π/ℏ) · |⟨ψ_B | V_k | ψ_A⟩|² · ρ_B(E_A) -->
+<!-- Γ = -2 Im(E_resonance) / ℏ -->
 $$
-\Gamma_{A \to B} \;=\; \frac{2\pi}{\hbar} \,\bigl| \langle \psi_B \,|\, V_k \,|\, \psi_A \rangle \bigr|^2 \, \rho_B(E_A)
+\Gamma \;=\; -\frac{2\,\mathrm{Im}(E_{\text{resonance}})}{\hbar}
 $$
 
-where V_k is the coupling operator at the shared dim m_k and ρ_B(E_A) is the density of states on pair B at the source energy. The matrix element depends on:
+This is the Gamow / quasi-stationary state formalism. It is purely geometric — derived from the wave equation on the connected manifold without any external rate axiom.
+
+Three ingredients together produce a non-zero Im(E_resonance):
+
+1. **A shared dim m_k.** The two pairs must overlap geometrically at at least one dim. Without overlap the resonance pole stays on the real axis (no decay).
+
+2. **Mode-overlap at the shared dim.** The wavefunctions ψ_A(x_k) and ψ_B(x_k) must have non-zero overlap integral on the shared dim. For Bloch-labelled modes this means matching k_θ values modulo Bloch-sector mismatch; off-diagonal σ-coupling provides the required sector mixing.
+
+3. **Lower-energy targets accessible.** E_B < E_A for some target mode. Energy conservation forces Im(E_resonance) = 0 if no lower-energy continuum is available.
+
+In the **weak-coupling limit** (small σ at junctions, narrow geometric overlap regions), the resonance-pole rate reduces analytically to the familiar Fermi's-golden-rule expression:
+
+<!-- Γ_{A → B} ≈ (2π/ℏ) · |⟨ψ_B | V_k | ψ_A⟩|² · ρ_B(E_A) -->
+$$
+\Gamma_{A \to B} \;\approx\; \frac{2\pi}{\hbar} \,\bigl| \langle \psi_B \,|\, V_k \,|\, \psi_A \rangle \bigr|^2 \, \rho_B(E_A)
+$$
+
+FGR is a useful tool for hand calculation, but the **underlying object is the resonance pole** — FGR is its leading-order approximation, valid where the coupling is small and target spectra are dense. At strong coupling, near level crossings, or where target spectra are sparse, FGR breaks down and the resonance-pole formulation is needed directly.
+
+The matrix element (or equivalently, the residue of the resonance pole) depends on:
 
 - L_k (the size of the shared dim — affects mode normalisation)
 - σ values on both pairs (the off-diagonal m_t mixing strength)
 - Cross-section shape on both pairs (the lobe/saddle geometry at the junction)
-- The Bloch sector mismatch (no leakage if the sectors are orthogonal and σ does not mix them)
+- Bloch-sector mismatch (zero unless σ-coupling bridges the source and target sectors)
 
-When the source mode is charged and the target is uncharged, charge must be carried away by a byproduct (lepton + neutrino in the Standard Model picture). The byproduct's existence requires that an even-further sheet (typically the electron-Y) couples in the same channel. This is what makes β-decay a *three-sheet process* rather than a two-sheet process in the sym-ladder.
+### 5.4 Channel classes
 
-### 5.4 The leakage channel map
+When the source mode is charged and the target is uncharged, charge must be carried away by a byproduct. Three byproduct classes give three channel classes, each carrying its own geometric prefactor in the rate formula:
+
+- **Weak channels** — byproduct is one or more leptons (electron, neutrino). The decay path traverses the electron-Y and ν-Δ. The rate factors into per-sheet overlap integrals at each shared dim. The product is the geometric analog of the Fermi coupling G_F. Sargent-rule m⁵ scaling for 3-body decays emerges from the phase-space integration over the byproducts, not from G_F itself.
+
+- **EM channels** — byproduct is one or more photons. The decay path traverses whatever sheet hosts EM modes ([model-F](../../../models/model-F.md) places these on dedicated photon sheets in the 11D architecture). The rate carries a factor of α. Under [model-F](../../../models/model-F.md), α is a **derived** geometric ratio (cross-section / ring radius on the photon sheet), not a free coupling constant. Validating this derivation is a sub-program of the rate calculation (see §8 open questions).
+
+- **Strong channels** — internal rearrangement within a sheet's bound-state structure (e.g., quark hadronisation). The rate carries a factor of α_S, much larger than α, set by the quark-sheet's geometric structure.
+
+Every decay rate factors as
+
+<!-- Γ = (geometric coupling factor) × (phase space) × (matrix-element overlap) -->
+$$
+\Gamma \;=\; (\text{geometric coupling factor}) \,\times\, (\text{phase space}) \,\times\, (\text{matrix-element overlap})
+$$
+
+with the first factor distinguishing weak/EM/strong, the second purely kinematic, and the third capturing the wavefunction overlap at shared dims. Many empirical regularities (Sargent's rule, the α-suppression of radiative decays, the α_S enhancement of hadronic widths) are statements about *which factor dominates* in a given channel — they're not separate inputs in the geometric framework.
+
+This is what makes β-decay a *three-sheet process* rather than a two-sheet process in the sym-ladder: the neutron's downward transition on Ma(2, 3) emits both an electron (path through the e-Y) and an antineutrino (path through the ν-Δ), so the matrix element is a product of overlap integrals at *two* shared-dim hops, not one.
+
+### 5.5 The leakage channel map
 
 The shared-dim topology of the ladder defines exactly which leakage transitions are geometrically allowed. Reading off the diagram in §1:
 
@@ -224,7 +254,7 @@ The shared-dim topology of the ladder defines exactly which leakage transitions 
 
 This is a complete catalogue: every shared dim is an allowed channel; every pair-pair leakage in the Standard Model corresponds to one or a chain of these.
 
-### 5.5 Reframing the §3 negative result
+### 5.6 Reframing the §3 negative result
 
 Under the dynamic reading, the §3 Tests A and B are correctly diagnostic — they show that no exact mass eigenvalues for c, s, b, t are realized on the proton-Δ as stable modes. The Standard Model agrees: c, s, b, t are never observed as free stable particles. The framework is consistent with that observation. What §3 misses is that the *transient* resonances at the c, s, b, t energies need not be exact mass eigenvalues — they are quasi-stable peaks whose finite lifetime is set by the leakage rate.
 
@@ -243,19 +273,38 @@ If the geometric Γ values from the formula in §5.3 reproduce these lifetimes w
 
 Five phases, ordered to minimize new computation in early phases (using already-fitted L and σ values where possible) and to maximize falsifiability.
 
-### 6.1 Phase 1 — Formalize the leakage rate
+### 6.1 Phase 1 — Formalize the leakage rate from the resonance pole
 
-Derive a concrete formula for Γ_{A → B} in terms of the ladder's geometric parameters. The Fermi's-golden-rule expression in §5.3 is the right starting point but needs to be unpacked:
+The fundamental object is **the resonance pole of the Green's function** for a pair-localized initial state, evaluated on the full ladder's Laplace–Beltrami operator (§5.3). Phase 1 is the mathematical derivation of this pole structure in a form usable for the rest of the program.
 
-- **Express V_k explicitly.** The coupling operator at the shared dim m_k comes from the Laplacian's boundary condition at the junction between pairs A and B. For pairs sharing one dim, the natural continuity condition is the wavefunction and its normal derivative matching at x_k = 0. The matrix element ⟨ψ_B | V_k | ψ_A⟩ is then an integral over the shared dim of ψ_A* ψ_B times a junction factor.
+Two equivalent formulations are available, with different trade-offs:
+
+**Formulation A — direct resonance pole.** Construct the Green's function G(E) for the full ladder's wave operator, find its complex pole nearest to each pair-localized state's unperturbed energy, and extract Γ = −2 Im(E_pole) / ℏ. This is exact at any coupling strength but typically requires either complex-scaling techniques or numerical contour analysis.
+
+**Formulation B — Fermi's-golden-rule limit.** Assume weak coupling between pairs and dense target spectra; expand the resonance pole's imaginary part to leading order in the coupling. This recovers
+
+<!-- Γ_{A → B} ≈ (2π/ℏ) · |⟨ψ_B|V_k|ψ_A⟩|² · ρ_B(E_A) -->
+$$
+\Gamma_{A \to B} \;\approx\; \frac{2\pi}{\hbar} \,\bigl| \langle \psi_B \,|\, V_k \,|\, \psi_A \rangle \bigr|^2 \, \rho_B(E_A)
+$$
+
+which is analytically tractable for closed-form sheet geometries (ellipse, clover, Fourier polar curves).
+
+**Phase 1 approach: use Formulation B as the working tool, validate against Formulation A in test cases.** FGR is *not* an external axiom — it is a derived consequence of Formulation A in the weak-coupling regime. Treat it as a tool, not as a foundation. Once Formulation B's predictions agree with Formulation A in a tractable test geometry (e.g., two pairs sharing one dim with a single mode each), trust FGR for the rest of the calculations.
+
+The unpacking work that Phase 1 must produce, in either formulation:
+
+- **Express V_k (or the equivalent junction operator) explicitly.** The coupling at the shared dim m_k comes from the Laplacian's matching condition at the junction between pairs A and B — wavefunction and normal derivative continuous at x_k = 0. The matrix element ⟨ψ_B | V_k | ψ_A⟩ is then an integral over the shared dim of ψ_A* ψ_B times a junction factor.
 
 - **Express ρ_B(E_A) explicitly.** Density of states on pair B at energy E_A. For a 2D Helmholtz spectrum, ρ_B(E) scales as L_T · L_R / E (Weyl law in 2D). Refinements include the specific Bloch sector and cross-section shape.
 
 - **Identify the small parameters.** The Bloch-sector mismatch between (m_t^A, m_r^A) on pair A and accessible (m_t^B, m_r^B) on pair B is the leading suppression. Without σ-coupling the matrix element is identically zero for mismatched sectors; with σ ≠ 0 it scales as σ^|Δm_t| (multiplicative in successive sector hops).
 
-- **Account for charge conservation.** If E_A is a charged-mode energy and E_B is uncharged, then the process needs a byproduct (lepton + neutrino) to carry the charge. In the ladder this means *the matrix element is non-zero only if a further pair (the electron-Y for fractional → integer transitions, the neutrino-Δ for integer → zero-charge transitions) is also coupled in the same step.* The full Γ is the product of overlaps at every intermediate sheet, picking up a small factor per shared-dim hop.
+- **Factor by channel class.** Following §5.4, write Γ explicitly as the product (channel-class coupling factor) × (phase-space integral) × (overlap matrix element). For weak channels the coupling factor is the geometric G_F analog (a product of per-sheet overlaps at the byproducts' sheets); for EM channels it carries α (geometric on a photon sheet, see §8 open questions); for strong channels it carries α_S.
 
-**Deliverable:** A closed-form expression Γ_{A → B}(L_A, L_B, σ_A, σ_B, shape, sector) suitable for numerical evaluation.
+- **Verify Sargent emergence.** For 3-body lepton decays (μ → e + 2ν, τ → e + 2ν, β-decay), check that the phase-space integral reproduces Sargent's m⁵ / 192π³ scaling without it being put in by hand. This is a structural prediction: if m⁵ does not fall out of the geometric phase-space integration, the formulation is wrong.
+
+**Deliverable:** A closed-form expression for Γ that factors transparently into (geometric coupling factor, phase space, matrix element), with each factor traceable to a specific geometric ingredient. Suitable for analytical evaluation on the e-Y in Phase 2.
 
 ### 6.2 Phase 2 — Test on the electron wye (lepton lifetimes)
 
@@ -366,7 +415,13 @@ The lifetime span is 26 orders of magnitude. The framework must reproduce this d
 
 6. **What sets the scale of σ values?** σ ∈ [0, 5] is the search range in current scripts. The leakage rate depends on σ through the matrix element. Are there structural constraints (gauge-symmetry-like, or geometric like the rolled-leaf intrinsic shear in [clover-quarks §1.3](../../sheet-proton/work/clover-quarks.md)) that fix σ values from first principles?
 
-7. **Connection to the wye and to candidates B/C.** Candidates B/C use a wye for quarks plus a delta for electrons; sym-ladder reverses this. If both turn out to admit consistent leakage interpretations, the choice between them rests on which one reproduces the full lifetime hierarchy with fewer parameters. The Phase-2 calculation on the electron-Y is identical for both architectures (both have an electron-Y); Phase 3 is where they diverge.
+7. **Connection to the wye and to candidates B/C.** Candidates B/C use a wye for quarks plus a delta for electrons; sym-ladder reverses this. If both turn out to admit consistent leakage interpretations, the choice between them rests on which one reproduces the full lifetime hierarchy with fewer parameters. Note also that candidates.md's electron sector is a **Δ** on (m1, m2, m5), while sym-ladder's electron sector is a **Y** on (m2, m3, m4, m5). The Y's tighter "all three pairs share m4" constraint may or may not still admit a 0.000% mass fit for (e, μ, τ); confirming this is **Step 0** of the actual program, before any leakage calculation begins.
+
+8. **Resonance-pole vs FGR — when does the approximation fail?** Phase 1 uses FGR (Formulation B in §6.1) as the working tool, validated against the exact resonance pole (Formulation A) in test geometries. The known failure modes of FGR are: (i) strong coupling, where higher-order corrections in σ become significant; (ii) near-degeneracies between source and target energies, where level repulsion dominates; (iii) sparse target spectra, where the continuum-density approximation breaks down. Cataloguing where in the ladder these regimes apply — and computing Formulation-A corrections where they do — is a separate sub-program of Phase 1.
+
+9. **α from geometry — required for EM channels.** The §5.4 channel-class decomposition assigns α as the geometric coupling factor for EM channels, and assumes that α is *derived* from sheet geometry rather than fitted ([model-F](../../../models/model-F.md) claims this derivation). Validating model-F's geometric-α derivation is a prerequisite for trusting any EM-mediated decay rate in this framework. If model-F's α derivation does not survive scrutiny, EM-channel rates would need α as an input — reducing the framework's predictive power for radiative decays. This is the single open question with the largest impact on the strategy: a working geometric α makes the framework genuinely predictive; a failed one shifts EM-channel rates into the "fitted with one parameter per channel class" regime.
+
+10. **What if FGR-equivalent Γ fails Phase 2?** The strategy assumes that the leakage mechanism, evaluated on the e-Y, will reproduce τ_τ and τ_μ at the right order. If it does not — e.g., gives Γ wrong by 10⁵× — the diagnosis is one of: (a) the Y geometry is wrong (electron sector is actually a Δ, per candidates B/C); (b) the FGR limit is not valid here (need Formulation A); (c) the matrix element is missing a structural factor (e.g., spin/Dirac–Kähler structure, see open question 3); (d) α is not what model-F says it is. The Phase-2 calculation should be designed so that its failure mode is diagnostic — i.e., the residual ratio identifies which of (a)-(d) is responsible.
 
 ---
 
