@@ -26,6 +26,72 @@ Candidates B and C share the **same electron delta** as well. The difference bet
 
 Candidate A differs in the electron sector only: its electron topology is a 4-dim path (m2—m1—m5—m4) rather than a 3-dim delta. The path uses one dim from each end of the quark hierarchy (m1 small, m4 large) plus the small m2 and the new m5, in a non-regular shape.
 
+### 1.1 Topology diagrams
+
+In the diagrams below, nodes are Ma dims (m1..m_N), edges are dim-pairs labelled by sector: `p` = quark/proton, `e` = electron, `v` = neutrino. Shared dims appear in both the sub-graphs they participate in (so the same `m1` in the quark wye is the same `m1` in the electron sector below it).
+
+**Candidate C — wye + e-delta + ν-delta** (all-in-one: quark wye flows into e-delta via shared m1, m2; e-delta flows into ν-delta via shared m5):
+
+```
+         m3
+         |
+         p
+         |
+         m4         (hub of quark wye; plays tube in all 3 p-edges)
+        /  \
+       p    p
+      /      \
+    m1 --e-- m2     (m1, m2 also host e-edges in the e-delta)
+     \      /
+      e    e
+       \  /
+        m5          (shared between e-delta and ν-delta)
+       /  \
+      v    v
+     /      \
+    m6 --v- m7
+```
+
+**Candidate B — wye + e-delta + ν pair** (same as C above the ν section; ν is a single edge m5–m6 instead of a delta):
+
+```
+         m3
+         |
+         p
+         |
+         m4         (hub)
+        /  \
+       p    p
+      /      \
+    m1 --e-- m2     (m1, m2 also host e-edges)
+     \      /
+      e    e
+       \  /
+        m5
+        |
+        v
+        |
+        m6
+```
+
+**Candidate A — wye + e-path + ν pair** (the e-sector is a 4-dim chain that wraps back to the quark hub m4, so it can't be drawn in a single clean spine — shown here as wye + horizontal path):
+
+```
+   Quark wye:                Electron path (4 dims, 3 e-edges):
+
+         m3                    m4 --e-- m5 --e-- m1 --e-- m2
+         |                     ↑                 ↑         ↑
+         p                     (quark hub)       (ring)    (ring)
+         |
+         m4 (hub)            Neutrino pair:
+        /  \                   m5 --v-- m6
+       p    p                  ↑
+      /      \                 (shared with e-path)
+    m1      m2
+```
+
+The visual awkwardness of A — the e-path having to reuse three of the four quark-region dims (m4, m1, m2) with a single new dim (m5) — is the same structural awkwardness called out in §5 below: A has no clean per-sector geometric shape, while B and C do.
+
 ---
 
 ## 2. Mode assignments per sector (all three candidates)

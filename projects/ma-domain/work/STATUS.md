@@ -58,6 +58,12 @@ Three current Path A topology variants tracked. Numerics in [outputs/candidate_f
 
 **Working choice:** **Candidate C** as the active topology. Cleanest fit, no mode-relaxations needed in any sector. Cost: 1 extra dim (7 vs 6). Candidate B held as a 6-dim fallback.
 
+### Open: refactor candidates for natural mass-scale ↔ dim-size matching
+
+- [ ] **Revisit which quark dims the electron sector reuses.** The current `Ma((1,2), (1,5), (2,5))` topology in B/C uses the two SMALLEST quark rings (m1 = 0.007 fm, m2 = 0.91 fm). That mathematically closes to machine precision but only by driving σ_eff to within ~10⁻⁶ of the R53 magic-shear value 2 — an extreme fine-tuning. The physically natural pairing would put the electron sector on m3 (181 fm, ≈ electron Compton scale) and m4 (5740 fm, the quark hub): topology `Ma((3,4), (3,5), (4,5))`. That alternative would give σ_eff ≈ 1.92 — comfortably off-resonance — matching the quark-sector σ_eff range. Untested.
+- [ ] **Guiding principle to apply when redoing the candidate set:** smallest dims associate with the heaviest particles, largest dims with the lightest. The quark wye already satisfies this within its own sector (m1 hosts t/b, m3 hosts u/d). The same principle should pick which quark dims propagate into the e-sector and ν-sector.
+- [ ] **Define the refreshed candidate set in-place** in [candidates.md](candidates.md) — don't spawn new variant files. Replace or augment the A/B/C set with the natural-scale variants; preserve the historical numbers but flag them clearly as superseded.
+
 ## Phase 2 — Electron sector
 
 - [x] **Working topology**: electron delta `Ma((1,2), (1,5), (2,5))` under Candidates B/C — three pairs hosting one charged lepton each at T(1, 2). All three (m_e, m_μ, m_τ) fit to machine precision via the per-pair σ_eff with L_5 in the 10⁵-fm (~0.1 mm) range. The system is underdetermined, so multiple lepton↔pair assignments work; e.g. τ → `Ma(1, 2)`, e → `Ma(1, 5)`, μ → `Ma(2, 5)`.
