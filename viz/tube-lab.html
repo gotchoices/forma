@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Tube Lab — totu viz</title>
+<link rel="stylesheet" href="totu-viz.css">
+<style>
+  body { overflow: hidden; }
+  .top-bar { position: relative; z-index: 30; }
+
+  .layout {
+    display: flex; flex: 1; min-height: 0;
+  }
+
+  #left-panel, #right-panel {
+    width: 260px; height: 100%;
+    background: rgba(14,14,18,0.94);
+    overflow-y: auto;
+    font-size: 11px;
+    backdrop-filter: blur(8px);
+    flex-shrink: 0;
+  }
+  #left-panel  { border-right: 1px solid var(--border); }
+  #right-panel { border-left:  1px solid var(--border); }
+
+  #left-panel::-webkit-scrollbar, #right-panel::-webkit-scrollbar { width: 4px; }
+  #left-panel::-webkit-scrollbar-thumb, #right-panel::-webkit-scrollbar-thumb {
+    background: #333; border-radius: 2px;
+  }
+
+  .pnl-section {
+    border-bottom: 1px solid var(--border);
+    padding: 10px 12px;
+  }
+  .pnl-head {
+    font-size: 10px; font-weight: 600;
+    color: var(--accent); letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .row {
+    display: flex; align-items: center; gap: 6px;
+    margin: 4px 0; font-size: 11px;
+  }
+  .row label { color: #888; min-width: 72px; }
+  .row .val { color: var(--accent); font-weight: 600; min-width: 36px; text-align: right; }
+
+  select, input[type=text], input[type=number] {
+    background: #111; border: 1px solid var(--border);
+    color: var(--text); border-radius: 3px;
+    padding: 3px 6px; font-size: 11px; font-family: inherit;
+    min-width: 0; flex: 1;
+  }
+
+  .full-btn {
+    width: 100%; margin-top: 4px;
+  }
+
+  #view {
+    flex: 1; min-width: 0; position: relative;
+  }
+
+  #info {
+    position: absolute; bottom: 8px; left: 14px;
+    font: 11px/1.4 monospace; color: #555; pointer-events: none;
+    max-width: 520px;
+  }
+
+  .swatch {
+    width: 14px; height: 14px; display: inline-block; vertical-align: middle;
+    border-radius: 2px; margin-right: 5px;
+    border: 1px solid rgba(255,255,255,0.18);
+  }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 3px 8px;
+    font-family: monospace;
+    font-size: 10.5px;
+  }
+  .info-grid .k { color: #888; }
+  .info-grid .v { color: #c8d8e8; text-align: right; }
+
+  #profile-canvas {
+    width: 232px; height: 232px;
+    background: #06070a;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .warning {
+    color: #ffa726;
+    font-size: 10.5px;
+    line-height: 1.4;
+    padding: 5px 8px;
+    margin-top: 6px;
+    background: rgba(255,167,38,0.08);
+    border: 1px solid rgba(255,167,38,0.25);
+    border-radius: 3px;
+  }
+
+  .formula {
+    font-family: monospace; font-size: 10.5px; color: #aab;
+    background: #0a0d12; padding: 6px 8px; border-radius: 3px;
+    border: 1px solid var(--border);
+    line-height: 1.4;
+  }
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <h1>Tube Lab</h1><div class="sep"></div>
+
+  <div class="cg">
+    <label>N</label>
+    <input type="range" id="sl-N" min="2" max="8" step="1" value="3">
+    <span class="val" id="v-N">3</span>
+  </div>
+
+  <div class="cg">
+    <label>a<sub>1</sub></label>
+    <input type="range" id="sl-a1" min="0.0" max="0.9" step="0.005" value="0.48">
+    <span class="val" id="v-a1">0.480</span>
+  </div>
+
+  <div class="cg">
+    <label>a<sub>2</sub></label>
+    <input type="range" id="sl-a2" min="-0.4" max="0.4" step="0.005" value="0.12">
+    <span class="val" id="v-a2">0.120</span>
+  </div>
+
+  <div class="sep"></div>
+
+  <div class="cg">
+    <label>R<sub>major</sub></label>
+    <input type="range" id="sl-R" min="1.0" max="8.0" step="0.05" value="3.0">
+    <span class="val" id="v-R">3.00</span>
+  </div>
+
+  <div class="cg">
+    <label>R<sub>cross</sub></label>
+    <input type="range" id="sl-Rc" min="0.2" max="2.0" step="0.01" value="1.00">
+    <span class="val" id="v-Rc">1.00</span>
+  </div>
+
+  <div class="sep"></div>
+
+  <div class="cg">
+    <label>τ</label>
+    <input type="range" id="sl-tau" min="-3.0" max="3.0" step="0.01" value="0.333">
+    <span class="val" id="v-tau">0.333</span>
+  </div>
+
+  <button class="btn" id="btn-tau-snap" title="Snap τ to nearest k/N for closure">snap</button>
+
+  <div class="cg">
+    <label>shear</label>
+    <input type="range" id="sl-s" min="-3.0" max="3.0" step="0.01" value="0.0">
+    <span class="val" id="v-s">0.00</span>
+  </div>
+
+  <div class="sep"></div>
+
+  <div class="cg">
+    <label>opacity</label>
+    <input type="range" id="sl-op" min="0.1" max="1.0" step="0.02" value="0.55">
+    <span class="val" id="v-op">0.55</span>
+  </div>
+
+  <div class="sep"></div>
+
+  <button class="btn" id="btn-reset">Reset</button>
+</div>
+
+<div class="layout">
+
+  <!-- LEFT PANEL -->
+  <div id="left-panel">
+
+    <div class="pnl-section">
+      <div class="pnl-head">Cross-section formula</div>
+      <div class="formula">
+        r(φ) = R<sub>c</sub> · [ 1<br>
+        &nbsp;&nbsp;+ a<sub>1</sub>·cos(Nφ)<br>
+        &nbsp;&nbsp;+ a<sub>2</sub>·cos(2Nφ) ]
+      </div>
+      <div style="margin-top:8px; color:#888; font-size:10.5px; line-height:1.5;">
+        Truncated Fourier polar curve with N-fold symmetry. C<sup>∞</sup>
+        everywhere — no curvature jumps. Surface twists by α = τ·θ as θ
+        traverses the ring.
+      </div>
+    </div>
+
+    <div class="pnl-section">
+      <div class="pnl-head">Presets</div>
+      <select id="sel-builtin">
+        <option value="">— pick a preset —</option>
+        <option value="circle">Circle (degenerate, a₁ = 0)</option>
+        <option value="ellipse">Ellipse-like bilobe (N=2)</option>
+        <option value="electron-tube">Electron tube (N=2, τ=2)</option>
+        <option value="rounded-tri">Rounded triangle (N=3, convex)</option>
+        <option value="smooth-clover">Smooth clover (N=3, τ=1/3)</option>
+        <option value="deep-clover">Deep clover (N=3, sharp valleys)</option>
+        <option value="rounded-square">Rounded square (N=4)</option>
+        <option value="quad-clover">Quad clover (N=4, valleys)</option>
+        <option value="pentagon">Rounded pentagon (N=5)</option>
+        <option value="hexagon">Rounded hexagon (N=6)</option>
+      </select>
+    </div>
+
+    <div class="pnl-section">
+      <div class="pnl-head">Path overlay</div>
+      <div class="row">
+        <label>n<sub>θ</sub></label>
+        <input type="number" id="in-nth" value="2" min="-9" max="9" step="1">
+      </div>
+      <div class="row">
+        <label>n<sub>φ</sub></label>
+        <input type="number" id="in-nph" value="1" min="-9" max="9" step="1">
+      </div>
+      <div class="row">
+        <label>copies</label>
+        <input type="number" id="in-copies" value="1" min="1" max="6" step="1">
+      </div>
+      <div style="color:#888; font-size:10.5px; margin-top:6px;">
+        Closes iff n<sub>θ</sub>·(τ − s) gives an integer angular drift
+        modulo the profile symmetry (k/N).
+      </div>
+    </div>
+
+    <div class="pnl-section">
+      <div class="pnl-head">Toggles</div>
+      <div class="tog" style="margin: 4px 0;">
+        <label><input type="checkbox" id="cb-surf" checked> Surface</label>
+      </div>
+      <div class="tog" style="margin: 4px 0;">
+        <label><input type="checkbox" id="cb-wire"> Wireframe</label>
+      </div>
+      <div class="tog" style="margin: 4px 0;">
+        <label><input type="checkbox" id="cb-color" checked> κ-shaded color</label>
+      </div>
+      <div class="tog" style="margin: 4px 0;">
+        <label><input type="checkbox" id="cb-grid"> Grid lines</label>
+      </div>
+      <div class="tog" style="margin: 4px 0;">
+        <label><input type="checkbox" id="cb-path"> Path overlay</label>
+      </div>
+      <div class="tog" style="margin: 4px 0;">
+        <label><input type="checkbox" id="cb-spine"> Ring spine</label>
+      </div>
+      <div class="tog" style="margin: 4px 0;">
+        <label><input type="checkbox" id="cb-axes"> XYZ axes</label>
+      </div>
+    </div>
+
+    <div class="pnl-section">
+      <div class="pnl-head">Profiles</div>
+      <div class="row">
+        <select id="sel-profile">
+          <option value="">— select profile —</option>
+        </select>
+      </div>
+      <button class="btn full-btn" id="btn-save">Save current…</button>
+      <button class="btn full-btn" id="btn-delete">Delete selected</button>
+    </div>
+
+  </div>
+
+  <!-- 3D VIEWPORT -->
+  <div id="view">
+    <div id="info"></div>
+  </div>
+
+  <!-- RIGHT PANEL -->
+  <div id="right-panel">
+
+    <div class="pnl-section">
+      <div class="pnl-head">Cross-section profile</div>
+      <canvas id="profile-canvas" width="232" height="232"></canvas>
+      <div style="margin-top:6px;">
+        <span class="swatch" style="background:#ff5252"></span>
+        <span style="color:#bbb; font-size: 10.5px;">κ &gt; 0 (convex / lobe)</span>
+      </div>
+      <div style="margin-top:2px;">
+        <span class="swatch" style="background:#4fc3f7"></span>
+        <span style="color:#bbb; font-size: 10.5px;">κ &lt; 0 (concave / saddle)</span>
+      </div>
+    </div>
+
+    <div class="pnl-section">
+      <div class="pnl-head">Geometry</div>
+      <div class="info-grid">
+        <span class="k">r at lobe (φ=0)</span> <span class="v" id="i-rpeak">1.60</span>
+        <span class="k">r at saddle</span>    <span class="v" id="i-rvalley">0.40</span>
+        <span class="k">r_max (numeric)</span><span class="v" id="i-rmax">1.60</span>
+        <span class="k">r_min (numeric)</span><span class="v" id="i-rmin">0.40</span>
+        <span class="k">peak − R</span>       <span class="v" id="i-peak">0.60</span>
+        <span class="k">R − trough</span>     <span class="v" id="i-valley">0.60</span>
+        <span class="k">κ_min</span>          <span class="v" id="i-kmin">−0.50</span>
+        <span class="k">κ_max</span>          <span class="v" id="i-kmax">2.00</span>
+        <span class="k">ε = R_c / R</span>    <span class="v" id="i-eps">0.33</span>
+        <span class="k">L (perim.)</span>     <span class="v" id="i-L">6.28</span>
+      </div>
+      <div id="geom-warning" class="warning hide"></div>
+    </div>
+
+    <div class="pnl-section">
+      <div class="pnl-head">Closure</div>
+      <div class="info-grid">
+        <span class="k">τ · N</span>       <span class="v" id="i-tauN">1.00</span>
+        <span class="k">closure</span>     <span class="v" id="i-closure">✓</span>
+        <span class="k">path drift</span>  <span class="v" id="i-drift">0.00</span>
+      </div>
+      <div style="color:#888; font-size:10.5px; margin-top:6px; line-height:1.5;">
+        Surface closes iff τ·N ∈ ℤ. Off-integer values leave a seam where
+        θ wraps; surface still renders but the lobes don't match across
+        the join.
+      </div>
+    </div>
+
+    <div class="pnl-section">
+      <div class="pnl-head">References</div>
+      <div style="font-size: 10.5px; line-height: 1.6; color: #888;">
+        <a href="../projects/ma-domain/work/electron-tube.md"
+           style="color: var(--accent);" target="_blank">electron-tube.md</a>
+        <br>
+        <a href="../projects/sheet-proton/work/clover-quarks.md"
+           style="color: var(--accent);" target="_blank">clover-quarks.md</a>
+        <br>
+        <a href="tube-lab.md"
+           style="color: var(--accent);" target="_blank">tube-lab spec</a>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<script type="importmap">
+{"imports":{
+  "three":"https://cdn.jsdelivr.net/npm/three@0.163.0/build/three.module.js",
+  "three/addons/":"https://cdn.jsdelivr.net/npm/three@0.163.0/examples/jsm/"
+}}
+</script>
+
+<script type="module">
+import {
+  THREE, createScene, autoResize, animLoop, PALETTE
+} from './totu-viz.js';
+
+const $ = id => document.getElementById(id);
+const TAU = Math.PI * 2;
+
+/* ─── State ──────────────────────────────────────────────── */
+
+const S = {
+  N: 3,
+  a1: 0.48,
+  a2: 0.12,
+  R: 3.0,        // major (ring) radius
+  Rc: 1.00,      // mean cross-section radius
+  tau: 1/3,
+  shear: 0.0,
+  opacity: 0.55,
+  pathNth: 2,
+  pathNph: 1,
+  pathCopies: 1,
+  showSurface: true,
+  showWire: false,
+  showColor: true,
+  showGrid: false,
+  showPath: false,
+  showSpine: false,
+  showAxes: false,
+};
+
+/* ─── Cross-section profile r(φ) = Rc·[1 + a1 cos(Nφ) + a2 cos(2Nφ)] ─── */
+
+function rOf(phi)   { return S.Rc * (1 + S.a1 * Math.cos(S.N * phi) + S.a2 * Math.cos(2 * S.N * phi)); }
+function rpOf(phi)  { return -S.Rc * (S.a1 * S.N * Math.sin(S.N * phi) + 2 * S.a2 * S.N * Math.sin(2 * S.N * phi)); }
+function rppOf(phi) { return -S.Rc * (S.a1 * S.N * S.N * Math.cos(S.N * phi) + 4 * S.a2 * S.N * S.N * Math.cos(2 * S.N * phi)); }
+
+/* Curvature of a polar curve r(φ): κ = (r² + 2r'² − r·r'') / (r² + r'²)^{3/2} */
+function kappaOf(phi) {
+  const r = rOf(phi);
+  const rp = rpOf(phi);
+  const rpp = rppOf(phi);
+  const num = r * r + 2 * rp * rp - r * rpp;
+  const den = Math.pow(r * r + rp * rp, 1.5);
+  return num / den;
+}
+
+/* Pre-sample profile to a typed array for fast surface mesh construction.
+ * Returns { xs, ys, ks (curvature), N: count }.
+ */
+function sampleProfile(N) {
+  const xs = new Float32Array(N + 1);
+  const ys = new Float32Array(N + 1);
+  const ks = new Float32Array(N + 1);
+  for (let j = 0; j <= N; j++) {
+    const phi = (j / N) * TAU;
+    const r = rOf(phi);
+    xs[j] = r * Math.cos(phi);
+    ys[j] = r * Math.sin(phi);
+    ks[j] = kappaOf(phi);
+  }
+  return { xs, ys, ks, N };
+}
+
+function lookupProfile(prof, phi) {
+  const N = prof.N;
+  let p = (phi % TAU + TAU) % TAU;
+  const t = (p / TAU) * N;
+  const j0 = Math.floor(t) % N;
+  const j1 = (j0 + 1) % N;
+  const f = t - Math.floor(t);
+  return {
+    x: prof.xs[j0] * (1 - f) + prof.xs[j1] * f,
+    y: prof.ys[j0] * (1 - f) + prof.ys[j1] * f,
+    kappa: prof.ks[j0] * (1 - f) + prof.ks[j1] * f,
+  };
+}
+
+/* ─── 3D Surface mesh ───────────────────────────────────── */
+/*
+ * Sample P(φ) = (rOf(φ)·cos φ, rOf(φ)·sin φ), then physically rotate the
+ * 2D sample by α = τ·θ before embedding in the cross-section plane.
+ *
+ *   samp        = P(φ)
+ *   (Pxr, Pyr)  = R_α · (samp.x, samp.y)
+ *   r⃗(θ, φ)   = R_ring(θ) + Pxr·N̂(θ) + Pyr·B̂
+ *   R_ring(θ)   = R · (cos θ, sin θ, 0)
+ *   N̂(θ)       = (cos θ, sin θ, 0)
+ *   B̂          = (0, 0, 1)
+ *
+ * Position: ((R + Pxr)·cos θ, Pyr, (R + Pxr)·sin θ).
+ *
+ * Closure: surface meets itself after one ring rev iff R_{2π·τ} maps the
+ * profile to itself, i.e., τ ∈ {k/N : k ∈ ℤ}. The mesh always renders;
+ * non-integer τ·N produces a visible seam at θ = 2π.
+ */
+
+const COL_LOBE   = new THREE.Color(0xff5252);
+const COL_SADDLE = new THREE.Color(0x4fc3f7);
+const COL_NEUTRAL = new THREE.Color(0x8090a0);
+
+const N_TH = 240;
+const N_PH = 180;
+
+function buildSurfaceMesh(prof, R, tau, kappaScale) {
+  const positions = new Float32Array((N_TH + 1) * (N_PH + 1) * 3);
+  const colors    = new Float32Array((N_TH + 1) * (N_PH + 1) * 3);
+  const indices = [];
+
+  const tmpCol = new THREE.Color();
+
+  for (let i = 0; i <= N_TH; i++) {
+    const th = (i / N_TH) * TAU;
+    const cTh = Math.cos(th), sTh = Math.sin(th);
+    const alpha = tau * th;
+    const cA = Math.cos(alpha), sA = Math.sin(alpha);
+    for (let j = 0; j <= N_PH; j++) {
+      const ph = (j / N_PH) * TAU;
+      const samp = lookupProfile(prof, ph);
+      const Pxr = samp.x * cA - samp.y * sA;
+      const Pyr = samp.x * sA + samp.y * cA;
+
+      const ix = (i * (N_PH + 1) + j) * 3;
+      const rr = R + Pxr;
+      positions[ix    ] = rr * cTh;
+      positions[ix + 1] = Pyr;
+      positions[ix + 2] = rr * sTh;
+
+      // Curvature-shaded color. t ∈ [-1, 1].
+      let t = samp.kappa / kappaScale;
+      if (t > 1) t = 1; if (t < -1) t = -1;
+      if (!S.showColor) {
+        tmpCol.copy(COL_NEUTRAL);
+      } else if (t >= 0) {
+        tmpCol.copy(COL_NEUTRAL).lerp(COL_LOBE, t);
+      } else {
+        tmpCol.copy(COL_NEUTRAL).lerp(COL_SADDLE, -t);
+      }
+      colors[ix    ] = tmpCol.r;
+      colors[ix + 1] = tmpCol.g;
+      colors[ix + 2] = tmpCol.b;
+    }
+  }
+
+  for (let i = 0; i < N_TH; i++) {
+    for (let j = 0; j < N_PH; j++) {
+      const a = i * (N_PH + 1) + j;
+      const b = a + N_PH + 1;
+      indices.push(a, b, a + 1, b, b + 1, a + 1);
+    }
+  }
+
+  const geom = new THREE.BufferGeometry();
+  geom.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+  geom.setAttribute('color',    new THREE.Float32BufferAttribute(colors, 3));
+  geom.setIndex(indices);
+  geom.computeVertexNormals();
+  return geom;
+}
+
+/* ─── Path overlay ──────────────────────────────────────── */
+/*
+ *   θ(t) = 2π · n_θ · t
+ *   φ(t) = ph0 + 2π · n_φ · t
+ *   α(θ) = (τ − s) · θ
+ */
+function buildPathTube(prof, R, tau, shear, nTh, nPh, ph0, tubeR) {
+  const N = 600;
+  const pts = [];
+  const offset = tubeR * 0.6;
+  const rate = tau - shear;
+
+  for (let i = 0; i <= N; i++) {
+    const t = i / N;
+    const th = TAU * nTh * t;
+    const ph = ph0 + TAU * nPh * t;
+    const samp = lookupProfile(prof, ph);
+    const alpha = rate * th;
+    const cA = Math.cos(alpha), sA = Math.sin(alpha);
+    const Pxr = samp.x * cA - samp.y * sA;
+    const Pyr = samp.x * sA + samp.y * cA;
+    const cTh = Math.cos(th), sTh = Math.sin(th);
+    const rr = R + Pxr + offset;
+    pts.push(new THREE.Vector3(rr * cTh, Pyr, rr * sTh));
+  }
+
+  const curve = new THREE.CatmullRomCurve3(pts, true);
+  return new THREE.TubeGeometry(curve, N, tubeR, 8, true);
+}
+
+/* ─── Cross-section preview (2D canvas) ─────────────────── */
+
+function drawProfileCanvas(prof) {
+  const canvas = $('profile-canvas');
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+
+  ctx.fillStyle = '#06070a';
+  ctx.fillRect(0, 0, W, H);
+
+  // Find max radius for autoscale
+  let rMax = 0;
+  for (let j = 0; j < prof.N; j++) {
+    const r = Math.hypot(prof.xs[j], prof.ys[j]);
+    if (r > rMax) rMax = r;
+  }
+  const margin = 16;
+  const scale = (Math.min(W, H) / 2 - margin) / rMax;
+  const cx = W / 2, cy = H / 2;
+
+  // Crosshair
+  ctx.strokeStyle = 'rgba(255,255,255,0.06)';
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(margin, cy); ctx.lineTo(W - margin, cy);
+  ctx.moveTo(cx, margin); ctx.lineTo(cx, H - margin);
+  ctx.stroke();
+
+  // Reference circle at r = Rc (the mean radius)
+  ctx.strokeStyle = 'rgba(180,200,220,0.18)';
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.arc(cx, cy, S.Rc * scale, 0, TAU);
+  ctx.stroke();
+
+  // Find global kappa range for normalizing color
+  let kAbs = 0;
+  for (let j = 0; j < prof.N; j++) {
+    if (Math.abs(prof.ks[j]) > kAbs) kAbs = Math.abs(prof.ks[j]);
+  }
+  if (kAbs < 1e-9) kAbs = 1;
+
+  // Draw the profile segment-by-segment, color by sign(κ)
+  const Nseg = 480;
+  for (let j = 0; j < Nseg; j++) {
+    const phi  = (j / Nseg) * TAU;
+    const phi2 = ((j + 1) / Nseg) * TAU;
+    const p1 = lookupProfile(prof, phi);
+    const p2 = lookupProfile(prof, phi2);
+
+    let t = p1.kappa / kAbs;
+    if (t > 1) t = 1; if (t < -1) t = -1;
+
+    let color;
+    if (t >= 0) {
+      // Blend neutral → red as t goes 0 → 1
+      const r = Math.round(128 + (255 - 128) * t);
+      const g = Math.round(144 + (82 - 144) * t);
+      const b = Math.round(160 + (82 - 160) * t);
+      color = `rgb(${r}, ${g}, ${b})`;
+    } else {
+      // Blend neutral → blue as t goes 0 → -1
+      const tt = -t;
+      const r = Math.round(128 + (79 - 128) * tt);
+      const g = Math.round(144 + (195 - 144) * tt);
+      const b = Math.round(160 + (247 - 160) * tt);
+      color = `rgb(${r}, ${g}, ${b})`;
+    }
+
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 2.0;
+    ctx.beginPath();
+    ctx.moveTo(cx + p1.x * scale, cy - p1.y * scale);
+    ctx.lineTo(cx + p2.x * scale, cy - p2.y * scale);
+    ctx.stroke();
+  }
+
+  // Lobe-tip markers (at φ = 2πk/N)
+  ctx.fillStyle = '#ff7070';
+  for (let k = 0; k < S.N; k++) {
+    const phi = (k / S.N) * TAU;
+    const p = lookupProfile(prof, phi);
+    ctx.beginPath();
+    ctx.arc(cx + p.x * scale, cy - p.y * scale, 2.5, 0, TAU);
+    ctx.fill();
+  }
+  // Saddle-midpoint markers (at φ = π(2k+1)/N)
+  ctx.fillStyle = '#7ad0ff';
+  for (let k = 0; k < S.N; k++) {
+    const phi = ((2 * k + 1) / (2 * S.N)) * TAU;
+    const p = lookupProfile(prof, phi);
+    ctx.beginPath();
+    ctx.arc(cx + p.x * scale, cy - p.y * scale, 2.5, 0, TAU);
+    ctx.fill();
+  }
+
+  // Label
+  ctx.fillStyle = '#777';
+  ctx.font = '10px monospace';
+  ctx.fillText(`N=${S.N}`, 8, H - 8);
+  ctx.fillText(`R_c=${S.Rc.toFixed(2)}`, W - 80, H - 8);
+}
+
+/* ─── Scene setup ──────────────────────────────────────── */
+
+const view = $('view');
+const { scene, camera, renderer, controls, clock } = createScene(view, {
+  camPos: [3 * 3.0, 2 * 3.0, 4 * 3.0],
+});
+autoResize(renderer, camera, view);
+controls.maxDistance = 60;
+
+const surfMaterial = new THREE.MeshPhongMaterial({
+  vertexColors: true,
+  transparent: true,
+  opacity: 0.55,
+  side: THREE.DoubleSide,
+  depthWrite: false,
+  shininess: 40,
+});
+const wireMaterial = new THREE.MeshBasicMaterial({
+  color: 0xffffff,
+  wireframe: true,
+  transparent: true,
+  opacity: 0.08,
+  side: THREE.DoubleSide,
+});
+
+let surfMesh = null;
+let wireMesh = null;
+let pathGroup = new THREE.Group();
+let gridGroup = new THREE.Group();
+let spineLine = null;
+let axesHelper = null;
+
+scene.add(pathGroup);
+scene.add(gridGroup);
+
+/* ─── Profile + geometry stats ─────────────────────────── */
+
+let cachedProfile = null;
+let profileDirty = true;
+let cachedStats = null;
+
+function computeStats(prof) {
+  let rMin = Infinity, rMax = -Infinity;
+  let kMin = Infinity, kMax = -Infinity;
+  let perim = 0;
+  let prevX = prof.xs[prof.N - 1], prevY = prof.ys[prof.N - 1];
+  for (let j = 0; j < prof.N; j++) {
+    const r = Math.hypot(prof.xs[j], prof.ys[j]);
+    if (r < rMin) rMin = r;
+    if (r > rMax) rMax = r;
+    if (prof.ks[j] < kMin) kMin = prof.ks[j];
+    if (prof.ks[j] > kMax) kMax = prof.ks[j];
+    const dx = prof.xs[j] - prevX, dy = prof.ys[j] - prevY;
+    perim += Math.hypot(dx, dy);
+    prevX = prof.xs[j]; prevY = prof.ys[j];
+  }
+  return {
+    rMin, rMax, kMin, kMax, perim,
+    rPeak: rOf(0),                  // r at lobe-axis (φ = 0)
+    rValley: rOf(Math.PI / S.N),    // r at midway between lobes
+  };
+}
+
+/* ─── Build all geometry from current state ─────────────── */
+
+function rebuildAll() {
+  if (profileDirty || !cachedProfile) {
+    cachedProfile = sampleProfile(720);
+    cachedStats = computeStats(cachedProfile);
+    profileDirty = false;
+  }
+
+  // Determine kappa-color scale: use max |κ|, clamped
+  const kappaScale = Math.max(Math.abs(cachedStats.kMin), Math.abs(cachedStats.kMax), 1e-3);
+
+  // Surface
+  if (surfMesh) {
+    scene.remove(surfMesh);
+    surfMesh.geometry.dispose();
+  }
+  if (wireMesh) {
+    scene.remove(wireMesh);
+    wireMesh.geometry.dispose();
+  }
+
+  const geom = buildSurfaceMesh(cachedProfile, S.R, S.tau, kappaScale);
+  surfMesh = new THREE.Mesh(geom, surfMaterial);
+  surfMesh.visible = S.showSurface;
+  scene.add(surfMesh);
+
+  wireMesh = new THREE.Mesh(geom, wireMaterial);
+  wireMesh.visible = S.showWire;
+  scene.add(wireMesh);
+
+  surfMaterial.opacity = S.opacity;
+
+  // Paths
+  pathGroup.clear();
+  if (S.showPath) {
+    const tubeR = 0.03 + 0.015 * S.Rc;
+    const colors = [0xff5252, 0x66ff99, 0x40c4ff, 0xfdd835, 0xba68c8, 0xff8a65];
+    for (let k = 0; k < S.pathCopies; k++) {
+      const ph0 = (k / S.pathCopies) * TAU;
+      const pgeom = buildPathTube(cachedProfile, S.R, S.tau, S.shear, S.pathNth, S.pathNph, ph0, tubeR);
+      const mat = new THREE.MeshBasicMaterial({ color: colors[k % colors.length], transparent: true, opacity: 0.95 });
+      pathGroup.add(new THREE.Mesh(pgeom, mat));
+    }
+  }
+
+  // Grid lines
+  gridGroup.clear();
+  if (S.showGrid) addGridLines(cachedProfile, S.R, S.tau, S.shear);
+
+  // Spine
+  if (spineLine) {
+    scene.remove(spineLine);
+    spineLine.geometry.dispose();
+    spineLine = null;
+  }
+  if (S.showSpine) {
+    const pts = [];
+    for (let i = 0; i <= 256; i++) {
+      const th = (i / 256) * TAU;
+      pts.push(new THREE.Vector3(S.R * Math.cos(th), 0, S.R * Math.sin(th)));
+    }
+    spineLine = new THREE.Line(
+      new THREE.BufferGeometry().setFromPoints(pts),
+      new THREE.LineBasicMaterial({ color: 0xffd54f })
+    );
+    scene.add(spineLine);
+  }
+
+  // Axes
+  if (axesHelper) { scene.remove(axesHelper); axesHelper = null; }
+  if (S.showAxes) {
+    axesHelper = new THREE.AxesHelper(S.R * 0.9);
+    scene.add(axesHelper);
+  }
+
+  drawProfileCanvas(cachedProfile);
+  updateInfo();
+}
+
+function addGridLines(prof, R, tau, shear) {
+  const eps = 0.015;
+
+  // Constant-φ lines (helical along ring)
+  const Nph_lines = Math.max(6, 2 * S.N);
+  for (let g = 0; g < Nph_lines; g++) {
+    const ph = (g / Nph_lines) * TAU;
+    const samp = lookupProfile(prof, ph);
+    const pts = [];
+    const Nth = 200;
+    for (let i = 0; i <= Nth; i++) {
+      const th = (i / Nth) * TAU;
+      const alpha = (tau - shear) * th;
+      const cA = Math.cos(alpha), sA = Math.sin(alpha);
+      const Pxr = samp.x * cA - samp.y * sA;
+      const Pyr = samp.x * sA + samp.y * cA;
+      const cTh = Math.cos(th), sTh = Math.sin(th);
+      const rr = R + Pxr + eps;
+      pts.push(new THREE.Vector3(rr * cTh, Pyr, rr * sTh));
+    }
+    gridGroup.add(new THREE.Line(
+      new THREE.BufferGeometry().setFromPoints(pts),
+      new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.22 })
+    ));
+  }
+
+  // Constant-θ rings
+  const Nth_lines = 12;
+  for (let g = 0; g < Nth_lines; g++) {
+    const th = (g / Nth_lines) * TAU;
+    const cTh = Math.cos(th), sTh = Math.sin(th);
+    const alpha = tau * th;
+    const cA = Math.cos(alpha), sA = Math.sin(alpha);
+    const pts = [];
+    const Nph = 240;
+    for (let j = 0; j <= Nph; j++) {
+      const ph = (j / Nph) * TAU;
+      const samp = lookupProfile(prof, ph);
+      const Pxr = samp.x * cA - samp.y * sA;
+      const Pyr = samp.x * sA + samp.y * cA;
+      const rr = R + Pxr + eps;
+      pts.push(new THREE.Vector3(rr * cTh, Pyr, rr * sTh));
+    }
+    gridGroup.add(new THREE.Line(
+      new THREE.BufferGeometry().setFromPoints(pts),
+      new THREE.LineBasicMaterial({ color: 0xaaccff, transparent: true, opacity: 0.22 })
+    ));
+  }
+}
+
+/* ─── Info readouts ────────────────────────────────────── */
+
+function updateInfo() {
+  const st = cachedStats;
+  $('i-rpeak').textContent   = st.rPeak.toFixed(3);
+  $('i-rvalley').textContent = st.rValley.toFixed(3);
+  $('i-rmax').textContent    = st.rMax.toFixed(3);
+  $('i-rmin').textContent    = st.rMin.toFixed(3);
+  $('i-peak').textContent    = (st.rPeak - S.Rc).toFixed(3);
+  $('i-valley').textContent  = (S.Rc - st.rValley).toFixed(3);
+  $('i-kmin').textContent    = st.kMin.toFixed(3);
+  $('i-kmax').textContent    = st.kMax.toFixed(3);
+  $('i-eps').textContent     = (S.Rc / S.R).toFixed(3);
+  $('i-L').textContent       = st.perim.toFixed(3);
+
+  // Closure
+  const tauN = S.tau * S.N;
+  const closes = Math.abs(tauN - Math.round(tauN)) < 1e-3;
+  $('i-tauN').textContent = tauN.toFixed(3);
+  $('i-closure').textContent = closes ? '✓ (τ·N integer)' : '✗ seam';
+  $('i-closure').style.color = closes ? '#69f0ae' : '#ffa726';
+
+  const drift = S.pathNth * (S.tau - S.shear);
+  $('i-drift').textContent = drift.toFixed(3);
+
+  // Warnings
+  const warn = $('geom-warning');
+  const warnings = [];
+  if (st.rMax >= S.R - 0.05) {
+    warnings.push('Cross-section reaches the ring center (r_max ≥ R_major − 0.05). Lower R_c or raise R_major.');
+  }
+  if (st.rMin <= 0) {
+    warnings.push('Cross-section self-intersects: r_min ≤ 0. Reduce |a₁| or |a₂|.');
+  }
+  if (warnings.length) {
+    warn.textContent = warnings.join(' ');
+    warn.classList.remove('hide');
+  } else {
+    warn.classList.add('hide');
+  }
+
+  // Bottom-left overlay
+  $('info').innerHTML =
+    `N=${S.N} &nbsp; a₁=${S.a1.toFixed(3)} &nbsp; a₂=${S.a2.toFixed(3)} &nbsp; ` +
+    `R=${S.R.toFixed(2)} &nbsp; R_c=${S.Rc.toFixed(2)} &nbsp; ` +
+    `τ=${S.tau.toFixed(3)} &nbsp; s=${S.shear.toFixed(2)} &nbsp; ` +
+    `ε=${(S.Rc / S.R).toFixed(3)}`;
+}
+
+/* ─── Controls wiring ────────────────────────────────────── */
+
+function bindSlider(id, key, vId, formatter, callback) {
+  const el = $(id);
+  const vel = $(vId);
+  el.addEventListener('input', () => {
+    const raw = parseFloat(el.value);
+    S[key] = (key === 'N') ? Math.round(raw) : raw;
+    vel.textContent = formatter(S[key]);
+    if (callback) callback();
+  });
+  vel.textContent = formatter(S[key]);
+  el.value = S[key];
+}
+
+bindSlider('sl-N',  'N',  'v-N',  v => String(v), () => { profileDirty = true; rebuildAll(); });
+bindSlider('sl-a1', 'a1', 'v-a1', v => v.toFixed(3), () => { profileDirty = true; rebuildAll(); });
+bindSlider('sl-a2', 'a2', 'v-a2', v => v.toFixed(3), () => { profileDirty = true; rebuildAll(); });
+bindSlider('sl-R',  'R',  'v-R',  v => v.toFixed(2), () => rebuildAll());
+bindSlider('sl-Rc', 'Rc', 'v-Rc', v => v.toFixed(2), () => { profileDirty = true; rebuildAll(); });
+bindSlider('sl-tau','tau','v-tau',v => v.toFixed(3), () => rebuildAll());
+bindSlider('sl-s',  'shear','v-s',v => v.toFixed(2), () => rebuildAll());
+bindSlider('sl-op', 'opacity', 'v-op', v => v.toFixed(2), () => { surfMaterial.opacity = S.opacity; });
+
+$('btn-tau-snap').addEventListener('click', () => {
+  // Snap τ to nearest k/N
+  const k = Math.round(S.tau * S.N);
+  S.tau = k / S.N;
+  $('sl-tau').value = S.tau;
+  $('v-tau').textContent = S.tau.toFixed(3);
+  rebuildAll();
+});
+
+$('btn-reset').addEventListener('click', () => resetToDefaults());
+
+$('in-nth').addEventListener('input', () => {
+  S.pathNth = parseInt($('in-nth').value, 10) || 0;
+  if (S.showPath) rebuildAll();
+});
+$('in-nph').addEventListener('input', () => {
+  S.pathNph = parseInt($('in-nph').value, 10) || 0;
+  if (S.showPath) rebuildAll();
+});
+$('in-copies').addEventListener('input', () => {
+  S.pathCopies = Math.max(1, parseInt($('in-copies').value, 10) || 1);
+  if (S.showPath) rebuildAll();
+});
+
+const toggles = {
+  'cb-surf':  'showSurface',
+  'cb-wire':  'showWire',
+  'cb-color': 'showColor',
+  'cb-grid':  'showGrid',
+  'cb-path':  'showPath',
+  'cb-spine': 'showSpine',
+  'cb-axes':  'showAxes',
+};
+for (const [id, key] of Object.entries(toggles)) {
+  const el = $(id);
+  el.checked = S[key];
+  el.addEventListener('change', () => {
+    S[key] = el.checked;
+    rebuildAll();
+  });
+}
+
+/* ─── Save/load profiles (localStorage) ─────────────────── */
+
+const STORAGE_KEY = 'tubeLab.profiles';
+
+function loadProfiles() {
+  try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; } catch { return {}; }
+}
+function saveProfiles(obj) {
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(obj));
+}
+function refreshProfileList() {
+  const list = loadProfiles();
+  const sel = $('sel-profile');
+  sel.innerHTML = '<option value="">— select profile —</option>';
+  for (const name of Object.keys(list).sort()) {
+    const opt = document.createElement('option');
+    opt.value = name;
+    opt.textContent = name;
+    sel.appendChild(opt);
+  }
+}
+
+$('btn-save').addEventListener('click', () => {
+  const name = prompt('Profile name:');
+  if (!name) return;
+  const list = loadProfiles();
+  list[name] = JSON.parse(JSON.stringify(S));
+  saveProfiles(list);
+  refreshProfileList();
+  $('sel-profile').value = name;
+});
+
+$('btn-delete').addEventListener('click', () => {
+  const name = $('sel-profile').value;
+  if (!name) return;
+  if (!confirm(`Delete profile "${name}"?`)) return;
+  const list = loadProfiles();
+  delete list[name];
+  saveProfiles(list);
+  refreshProfileList();
+});
+
+$('sel-profile').addEventListener('change', () => {
+  const name = $('sel-profile').value;
+  if (!name) return;
+  const list = loadProfiles();
+  const data = list[name];
+  if (!data) return;
+  Object.assign(S, data);
+  syncControlsFromState();
+  profileDirty = true;
+  rebuildAll();
+});
+
+refreshProfileList();
+
+/* ─── Built-in presets ──────────────────────────────────── */
+
+const BUILTINS = {
+  'circle':         { N: 3, a1: 0.0,  a2: 0.0,  Rc: 1.00, R: 3.0, tau: 0,     shear: 0, pathNth: 1, pathNph: 0, pathCopies: 1, showPath: false },
+  'ellipse':        { N: 2, a1: 0.30, a2: 0.0,  Rc: 1.00, R: 3.0, tau: 0,     shear: 0, pathNth: 1, pathNph: 0, pathCopies: 1, showPath: false },
+  'electron-tube':  { N: 2, a1: 0.30, a2: 0.0,  Rc: 1.00, R: 3.0, tau: 2,     shear: 0, pathNth: 2, pathNph: 1, pathCopies: 1, showPath: true  },
+  'rounded-tri':    { N: 3, a1: 0.15, a2: 0.0,  Rc: 1.00, R: 3.0, tau: 1/3,   shear: 0, pathNth: 3, pathNph: 0, pathCopies: 3, showPath: false },
+  'smooth-clover':  { N: 3, a1: 0.48, a2: 0.12, Rc: 1.25, R: 3.0, tau: 1/3,   shear: 0, pathNth: 3, pathNph: 0, pathCopies: 3, showPath: true  },
+  'deep-clover':    { N: 3, a1: 0.55, a2: 0.25, Rc: 0.85, R: 3.0, tau: 1/3,   shear: 0, pathNth: 3, pathNph: 0, pathCopies: 3, showPath: true  },
+  'rounded-square': { N: 4, a1: 0.10, a2: 0.0,  Rc: 1.00, R: 3.0, tau: 1/4,   shear: 0, pathNth: 4, pathNph: 0, pathCopies: 1, showPath: false },
+  'quad-clover':    { N: 4, a1: 0.35, a2: 0.10, Rc: 1.00, R: 3.0, tau: 1/4,   shear: 0, pathNth: 4, pathNph: 0, pathCopies: 4, showPath: false },
+  'pentagon':       { N: 5, a1: 0.08, a2: 0.0,  Rc: 1.00, R: 3.0, tau: 1/5,   shear: 0, pathNth: 5, pathNph: 0, pathCopies: 1, showPath: false },
+  'hexagon':        { N: 6, a1: 0.06, a2: 0.0,  Rc: 1.00, R: 3.0, tau: 1/6,   shear: 0, pathNth: 6, pathNph: 0, pathCopies: 1, showPath: false },
+};
+
+$('sel-builtin').addEventListener('change', () => {
+  const name = $('sel-builtin').value;
+  if (!name) return;
+  Object.assign(S, BUILTINS[name]);
+  syncControlsFromState();
+  profileDirty = true;
+  rebuildAll();
+});
+
+function syncControlsFromState() {
+  $('sl-N').value  = S.N;       $('v-N').textContent  = String(S.N);
+  $('sl-a1').value = S.a1;      $('v-a1').textContent = S.a1.toFixed(3);
+  $('sl-a2').value = S.a2;      $('v-a2').textContent = S.a2.toFixed(3);
+  $('sl-R').value  = S.R;       $('v-R').textContent  = S.R.toFixed(2);
+  $('sl-Rc').value = S.Rc;      $('v-Rc').textContent = S.Rc.toFixed(2);
+  $('sl-tau').value= S.tau;     $('v-tau').textContent= S.tau.toFixed(3);
+  $('sl-s').value  = S.shear;   $('v-s').textContent  = S.shear.toFixed(2);
+  $('sl-op').value = S.opacity; $('v-op').textContent = S.opacity.toFixed(2);
+  $('in-nth').value    = S.pathNth;
+  $('in-nph').value    = S.pathNph;
+  $('in-copies').value = S.pathCopies;
+  for (const [id, key] of Object.entries(toggles)) {
+    $(id).checked = S[key];
+  }
+}
+
+function resetToDefaults() {
+  Object.assign(S, {
+    N: 3, a1: 0.48, a2: 0.12, R: 3.0, Rc: 1.00, tau: 1/3, shear: 0,
+    opacity: 0.55,
+    pathNth: 2, pathNph: 1, pathCopies: 1,
+    showSurface: true, showWire: false, showColor: true,
+    showGrid: false, showPath: false, showSpine: false, showAxes: false,
+  });
+  syncControlsFromState();
+  profileDirty = true;
+  rebuildAll();
+}
+
+/* ─── Keyboard shortcuts ────────────────────────────────── */
+
+window.addEventListener('keydown', (e) => {
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT') return;
+  switch (e.key) {
+    case 'r':
+      camera.position.set(3 * S.R, 2 * S.R, 4 * S.R);
+      controls.target.set(0, 0, 0);
+      controls.update();
+      saveCamera();
+      break;
+    case 'g':
+      S.showGrid = !S.showGrid;
+      $('cb-grid').checked = S.showGrid;
+      rebuildAll();
+      break;
+    case 'p':
+      S.showPath = !S.showPath;
+      $('cb-path').checked = S.showPath;
+      rebuildAll();
+      break;
+  }
+});
+
+/* ─── Camera persistence ──────────────────────────────── */
+
+const CAMERA_KEY = 'tubeLab.camera';
+
+function captureCamera() {
+  return {
+    pos:    camera.position.toArray(),
+    target: controls.target.toArray(),
+  };
+}
+function saveCamera() {
+  try { localStorage.setItem(CAMERA_KEY, JSON.stringify(captureCamera())); } catch {}
+}
+function restoreCamera() {
+  let saved = null;
+  try { saved = JSON.parse(localStorage.getItem(CAMERA_KEY)); } catch {}
+  if (!saved || !Array.isArray(saved.pos) || !Array.isArray(saved.target)) return false;
+  camera.position.fromArray(saved.pos);
+  controls.target.fromArray(saved.target);
+  controls.update();
+  return true;
+}
+restoreCamera();
+controls.addEventListener('end', saveCamera);
+
+/* ─── Render loop ──────────────────────────────────────── */
+
+rebuildAll();
+animLoop(() => {}, { renderer, scene, camera, controls });
+
+</script>
+
+</body>
+</html>
