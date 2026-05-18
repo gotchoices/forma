@@ -31,7 +31,7 @@ ma-domain candidate fits
 
 ### Candidate B (wye + delta, 6 dims)  (6 dims)
   Quark    topology: Ma((1,4), (2,4), (3,4)) — wye, hub at m4
-  Electron topology: Ma((1,2), (1,5), (2,5)) — delta on m1, m2, m5
+  Electron topology: Ma((3,4), (3,5), (4,5)) — delta on m3, m4, m5
   Neutrino topology: Ma(5, 6) — single pair
 
   QUARK FIT: max |Δ%| = 0.499%  (6 quarks)
@@ -51,18 +51,18 @@ ma-domain candidate fits
     e    pred =      0.511  obs =      0.511  Δ% = -0.00%
     mu   pred =      105.7  obs =      105.7  Δ% = -0.00%
     tau  pred =       1777  obs =       1777  Δ% = +0.00%
-  Electron lepton→pair: [((1, 2), 'tau'), ((1, 5), 'e'), ((2, 5), 'mu')]
-  L_5 = 1.199e+05 fm
+  Electron lepton→pair: [((3, 4), 'e'), ((3, 5), 'tau'), ((4, 5), 'mu')]
+  L_5 = 0.6978 fm
 
   NEUTRINO check: NOT VIABLE: a single pair Ma(5, 6) has at most 2 closure modes at m_t=1, but 3 ν mass eigenstates are observed; AND the inherited L_5 from e-sector is far below the 4.1e+10 fm floor required for meV-scale modes.
-    L_5 inherited from e-fit: 119939.68568871373 fm
+    L_5 inherited from e-fit: 0.6977843032324992 fm
     L floor required for m_ν₁ = 30 meV: 4.1e+10 fm
 
 ------------------------------------------------------------------------------------------
 
 ### Candidate C (wye + delta + delta, 7 dims)  (7 dims)
   Quark    topology: Ma((1,4), (2,4), (3,4)) — wye, hub at m4
-  Electron topology: Ma((1,2), (1,5), (2,5)) — delta on m1, m2, m5
+  Electron topology: Ma((3,4), (3,5), (4,5)) — delta on m3, m4, m5
   Neutrino topology: Ma((5,6), (5,7), (6,7)) — delta on m5, m6, m7
 
   QUARK FIT: max |Δ%| = 0.499%  (6 quarks)
@@ -82,14 +82,14 @@ ma-domain candidate fits
     e    pred =      0.511  obs =      0.511  Δ% = -0.00%
     mu   pred =      105.7  obs =      105.7  Δ% = -0.00%
     tau  pred =       1777  obs =       1777  Δ% = +0.00%
-  Electron lepton→pair: [((1, 2), 'tau'), ((1, 5), 'e'), ((2, 5), 'mu')]
-  L_5 = 1.199e+05 fm
+  Electron lepton→pair: [((3, 4), 'e'), ((3, 5), 'tau'), ((4, 5), 'mu')]
+  L_5 = 0.6978 fm
 
-  NEUTRINO FIT: max |Δ%| = 0.000%
-    nu1  pred =      3e-08  obs =      3e-08  Δ% = +0.00%
-    nu2  pred =    3.3e-08  obs =    3.3e-08  Δ% = +0.00%
-    nu3  pred =      6e-08  obs =      6e-08  Δ% = -0.00%
-  L_6 = 2.591e+14 fm,  L_7 = 3.757e+10 fm
+  NEUTRINO FIT: max |Δ%| = 1084535094.754%
+    nu1  pred =  2.596e-08  obs =      3e-08  Δ% = -13.46%
+    nu2  pred =  8.429e-05  obs =    3.3e-08  Δ% = +255312.37%
+    nu3  pred =     0.6507  obs =      6e-08  Δ% = +1084535094.75%
+  L_6 = 9.915e+09 fm,  L_7 = 5.734e+10 fm
 
 ------------------------------------------------------------------------------------------
 

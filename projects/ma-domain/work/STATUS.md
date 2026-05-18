@@ -58,11 +58,11 @@ Three current Path A topology variants tracked. Numerics in [outputs/candidate_f
 
 **Working choice:** **Candidate C** as the active topology. Cleanest fit, no mode-relaxations needed in any sector. Cost: 1 extra dim (7 vs 6). Candidate B held as a 6-dim fallback.
 
-### Open: refactor candidates for natural mass-scale ↔ dim-size matching
+### Refactor for natural mass-scale ↔ dim-size matching
 
-- [ ] **Revisit which quark dims the electron sector reuses.** The current `Ma((1,2), (1,5), (2,5))` topology in B/C uses the two SMALLEST quark rings (m1 = 0.007 fm, m2 = 0.91 fm). That mathematically closes to machine precision but only by driving σ_eff to within ~10⁻⁶ of the R53 magic-shear value 2 — an extreme fine-tuning. The physically natural pairing would put the electron sector on m3 (181 fm, ≈ electron Compton scale) and m4 (5740 fm, the quark hub): topology `Ma((3,4), (3,5), (4,5))`. That alternative would give σ_eff ≈ 1.92 — comfortably off-resonance — matching the quark-sector σ_eff range. Untested.
-- [ ] **Guiding principle to apply when redoing the candidate set:** smallest dims associate with the heaviest particles, largest dims with the lightest. The quark wye already satisfies this within its own sector (m1 hosts t/b, m3 hosts u/d). The same principle should pick which quark dims propagate into the e-sector and ν-sector.
-- [ ] **Define the refreshed candidate set in-place** in [candidates.md](candidates.md) — don't spawn new variant files. Replace or augment the A/B/C set with the natural-scale variants; preserve the historical numbers but flag them clearly as superseded.
+- [x] **Revisit which quark dims the electron sector reuses.** Done. The e-delta in B/C is now `Ma((3,4), (3,5), (4,5))` using the LARGER quark dims (m3 = 181 fm, m4 = 5740 fm) and a new m5. Closes to machine precision with σ_eff = 1.93, 1.00, 1.94 — all natural, no R53 fine-tuning. L_5 ≈ 0.7 fm (set by τ Compton wavelength). Details in [candidates.md §2, §3](candidates.md).
+- [ ] **Re-fit C's ν-delta on fresh dims.** The e-refactor pins L_5 to ~0.7 fm, which breaks the old m5-shared `Ma((5,6),(5,7),(6,7))` ν-delta (mass floor 1770 MeV ≫ meV ν scale). Replace with `Ma((6,7), (6,8), (7,8))` (8 dims total) and run the script to verify the ν-fit closes. The algebra has the same DOF as before; expected to close cleanly.
+- [ ] **Apply a strict size-ordering relabeling pass.** After the e-refactor, L_5 ≈ 0.7 fm is smaller than L_2, L_3, L_4 — violating the size-ordered labels convention. The relabeling cascade: m1 = 0.007 fm; m2 = 0.7 fm (new); m3 = 0.91 fm; m4 = 181 fm; m5 = 5740 fm; m6..m8 = ν dims. Cascades into rewriting all Ma(i, j) references throughout the project — to be batched with the ν re-fit so the script only changes once.
 
 ## Phase 2 — Electron sector
 

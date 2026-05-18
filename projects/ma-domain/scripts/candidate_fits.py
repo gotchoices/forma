@@ -10,7 +10,9 @@ All three candidates share the same quark wye:
     Ma((1, 4), (2, 4), (3, 4))   hub at m4 (largest, common tube)
 
 Candidates B and C share the same electron delta:
-    Ma((1, 2), (1, 5), (2, 5))
+    Ma((3, 4), (3, 5), (4, 5))
+(natural scale placement: uses the two largest quark-region dims m3, m4
+which are nearer the lepton Compton-wavelength scale)
 
 Candidate C adds a neutrino delta:
     Ma((5, 6), (5, 7), (6, 7))
@@ -123,21 +125,23 @@ def quark_wye_fit() -> dict:
 
 
 # ===============================================================
-# Electron sector: delta Ma((1, 2), (1, 5), (2, 5))  (candidates B and C)
+# Electron sector: delta Ma((3, 4), (3, 5), (4, 5))  (candidates B and C)
 # Hypothesis: 1 lepton per pair (no clover doublet on charged leptons)
 # Mode: T(1, 2) per pair
+# Natural-scale placement: uses m3 (181 fm, near electron Compton λ ~ 386 fm)
+# and m4 (5740 fm, the quark hub) plus a new free dim m5.
 # ===============================================================
 
 def electron_delta_fit(L_fixed: dict, n_seeds: int = 20) -> dict:
     """
-    Fit (e, μ, τ) on the delta Ma((1, 2), (1, 5), (2, 5)).
-    L_fixed: dict of inherited L values, e.g. {1: 0.007, 2: 0.91}
+    Fit (e, μ, τ) on the delta Ma((3, 4), (3, 5), (4, 5)).
+    L_fixed: dict of inherited L values, e.g. {3: 181, 4: 5740}
     Unknowns: L_5, σ for each pair, plus tube/ring assignment per pair.
 
     Each pair hosts ONE charged lepton at T(1, 2).
     Try all 6 (lepton → pair) assignments and all 2^3 tube/ring choices.
     """
-    pairs = [(1, 2), (1, 5), (2, 5)]
+    pairs = [(3, 4), (3, 5), (4, 5)]
     leptons = list(LEPTON.keys())
 
     def mass(L_T: float, L_R: float, sigma_eff: float) -> float:
@@ -148,7 +152,7 @@ def electron_delta_fit(L_fixed: dict, n_seeds: int = 20) -> dict:
         """x = [log10 L_5, σ for each of 3 pairs]"""
         L_5 = 10 ** x[0]
         sigmas = {pairs[i]: x[1 + i] for i in range(3)}
-        Ls = {1: L_fixed[1], 2: L_fixed[2], 5: L_5}
+        Ls = {3: L_fixed[3], 4: L_fixed[4], 5: L_5}
         out = {}
         for i, lepton in enumerate(lepton_to_pair):
             d1, d2 = pairs[i]
@@ -332,13 +336,13 @@ def candidate_A():
 def candidate_B():
     """Wye + e delta + ν pair."""
     quark = quark_wye_fit()
-    L_e_inherit = {1: quark["Ls"][1], 2: quark["Ls"][2]}
+    L_e_inherit = {3: quark["Ls"][3], 4: quark["Ls"][4]}
     electron = electron_delta_fit(L_e_inherit)
     nu_check = neutrino_pair_fit_check({5: electron["L_5"]})
     return {
         "name": "Candidate B (wye + delta, 6 dims)",
         "quark_topology": "Ma((1,4), (2,4), (3,4)) — wye, hub at m4",
-        "electron_topology": "Ma((1,2), (1,5), (2,5)) — delta on m1, m2, m5",
+        "electron_topology": "Ma((3,4), (3,5), (4,5)) — delta on m3, m4, m5",
         "neutrino_topology": "Ma(5, 6) — single pair",
         "n_dims": 6,
         "quark": quark,
@@ -350,14 +354,14 @@ def candidate_B():
 def candidate_C():
     """Wye + e delta + ν delta."""
     quark = quark_wye_fit()
-    L_e_inherit = {1: quark["Ls"][1], 2: quark["Ls"][2]}
+    L_e_inherit = {3: quark["Ls"][3], 4: quark["Ls"][4]}
     electron = electron_delta_fit(L_e_inherit)
     L_nu_inherit = {5: electron["L_5"]}
     neutrino = neutrino_delta_fit(L_nu_inherit)
     return {
         "name": "Candidate C (wye + delta + delta, 7 dims)",
         "quark_topology": "Ma((1,4), (2,4), (3,4)) — wye, hub at m4",
-        "electron_topology": "Ma((1,2), (1,5), (2,5)) — delta on m1, m2, m5",
+        "electron_topology": "Ma((3,4), (3,5), (4,5)) — delta on m3, m4, m5",
         "neutrino_topology": "Ma((5,6), (5,7), (6,7)) — delta on m5, m6, m7",
         "n_dims": 7,
         "quark": quark,
