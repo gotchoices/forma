@@ -96,13 +96,27 @@ Two physical pictures of the substrate:
 
 The substrate's circumference L_a must satisfy L_a ≳ 4 cm (~4 × 10¹⁰ fm) for the lowest mode to be at the meV scale. The shape parameters (a₁, a₂, N) control band gaps and thus the splittings ν₁–ν₂ and ν₂–ν₃.
 
-### N1.4 — Fit status
+### N1.4 — Fit status (intrinsic-operator picture)
 
-**Not yet numerically tested.** A dedicated script `scripts/neutrino_1d_fit.py` would solve the Schrödinger problem on the shaped curve (either picture) and fit (R, a₁, a₂, N) to the three observed mass eigenstates. The math is laid out in [neutrino-1D.md §2–§4](neutrino-1D.md); the implementation is open.
+**Numerically tested; hits a ~6% wall.** Script: [scripts/neutrino_1d_fit.py](../scripts/neutrino_1d_fit.py); output: [outputs/neutrino_1d_fit.txt](../outputs/neutrino_1d_fit.txt). The intrinsic Laplace-Beltrami operator on the shaped curve was solved for several N values (2, 3, 4), with shape parameters (R, a₁, a₂, δ, φ₀) fit to the (30, 33, 60) meV targets and the validity constraint r(φ) > 0 enforced.
 
-### N1.5 — Verdict
+**Best max |Δ%| ≈ 6%.** All fits converge to mass ratios near (1.03 : 1.03 : 2.06), i.e., m_1 ≈ m_2 ≈ 31 meV and m_3 ≈ 62 meV. The optimizer cannot produce the ~10% doublet split needed for m_2 = 33 meV.
 
-**Architecturally appealing** — Q = 0 and Majorana fall out from the substrate dimensionality rather than from imposed structure, and only one new dim is added. **Not yet numerically validated** — the band-structure fit hasn't been done. Pursuit cost: ~80–120 lines of new script code per [neutrino-1D.md §4](neutrino-1D.md).
+**Why this happens — the doublet is structurally robust under polar-curve shape perturbations.** The lowest three eigenvalues on a closed 1D curve are the n = ±1 doublet (degenerate on a circle) plus n = +2 (one half of the next doublet) at twice the mass. The polar parameterization `r(φ) = R · [1 + Σ harmonics]` produces curves *close to an offset-circle / shape-symmetric structure*, and the n = ±1 doublet stays nearly degenerate even under strong shape perturbations. Diagnostic check: a pronounced limaçon r(φ) = R(1 + 0.5·cos(φ)) splits the doublet by only ~10⁻⁵ relative — far below the 10% needed.
+
+So the 1:1:2 spectral pattern is what this substrate-and-operator combination naturally produces. The observed (30, 33, 60) hierarchy with its 10% doublet split is not reachable via this family.
+
+### N1.5 — Verdict and remaining paths
+
+**Architecturally appealing but the intrinsic-operator fit on a polar `cos`-harmonic curve doesn't reproduce the observed hierarchy.** Q = 0 and Majorana fall out for free. But the curve family + intrinsic operator naturally produces 1:1:2, not 1:1.1:2.
+
+Two paths remain unexplored that could change this:
+
+1. **Embedding picture with V_geom = −ℏ²κ²/(8m)** (Jensen-Koppe / da Costa). The intrinsic operator ignores the geometric potential coming from how the curve sits in its embedding plane. The κ² potential is highly localized at high-curvature regions and acts very differently on cos- vs sin-symmetric modes — a strong candidate for splitting the doublet. Worth coding as a separate script using a uniform arc-length grid.
+
+2. **Richer shape parameterization.** The polar `r(φ)` with only cos-harmonics produces curves with approximate reflection or rotational symmetries. A Cartesian / Fourier mix of cos and sin terms — or an arc-length parameterization that doesn't go through polar coordinates — might break the residual symmetry that protects the doublet.
+
+In the absence of one of these rescues, **N2 is the preferred ν config**: the 2D-sheet topology with sign-flipped m_t modes is spot-checked at ~1%, and the 10% doublet split is structurally easy on a 2D pair (two independent dim scales available).
 
 ---
 

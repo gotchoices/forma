@@ -1,0 +1,46 @@
+================================================================================
+1D shaped neutrino substrate fit  (lowest-3-modes reading)
+Substrate: r(φ) = R·[1 + a1·cos(Nφ) + a2·cos(2Nφ) + δ·cos(φ + φ0)]
+Operator:  intrinsic Laplace-Beltrami on the closed curve
+Targets:   m_ν₁ = 30 meV,  m_ν₂ = 33 meV,  m_ν₃ = 60 meV
+Per neutrino-1D.md §4.1: the three masses are the lowest band's
+doublet (m_1, m_2, q=±1) plus singlet (m_3, q=0). NO grouping.
+================================================================================
+
+--- Baseline: featureless circle (a1=a2=δ=0) ---
+  R = 6.578e+09 fm  ≈  0.658 cm  (set so n=1 mode = 30 meV)
+  Lowest 3 eigenvalue masses (with doublet kept as two states):
+    m_1 = 30 meV  (ratio to m_1: 1.000)
+    m_2 = 30 meV  (ratio to m_1: 1.000)
+    m_3 = 59.98 meV  (ratio to m_1: 1.999)
+
+  Circle gives 1 : 1 : 2 — the doublet n=±1 is exactly degenerate,
+  n=+2 (one half of next doublet) sits at 2× the mass.
+  Observed 1 : 1.10 : 2.00 needs a small C-symmetry breaker to
+  lift m_1 ≠ m_2 by ~10%, while keeping m_3 ≈ 2·m_1.
+
+--- N = 3 fit (3 lobes; q=±1 doublet + q=0 singlet) ---
+  Best max |Δ%| = 6.0747%
+  R  = 3.538e+09 fm  ≈  0.354 cm
+  a1 = +0.4938  (cos(3φ) amplitude)
+  a2 = +0.2733  (cos(6φ) amplitude)
+  δ  = -0.7076  (1-fold C_3 breaker)
+  φ₀ = 0.0097  rad
+  ν_1: pred =  30.9766 meV  obs =  30.0 meV  Δ% =  +3.2554
+  ν_2: pred =  30.9953 meV  obs =  33.0 meV  Δ% =  -6.0747
+  ν_3: pred =  61.8665 meV  obs =  60.0 meV  Δ% =  +3.1109
+
+--- N = 2 fit (for comparison) ---
+  Best max |Δ%| = 6.0513%
+  R = 3.374e+09 fm  a1 = +0.8500  a2 = +0.4910  δ = -0.0011
+  ν_1: pred =  30.9865 meV  obs =  30.0 meV  Δ% =  +3.2882
+  ν_2: pred =  31.0031 meV  obs =  33.0 meV  Δ% =  -6.0513
+  ν_3: pred =  61.8315 meV  obs =  60.0 meV  Δ% =  +3.0524
+
+--- N = 4 fit (for comparison) ---
+  Best max |Δ%| = 6.0855%
+  R = 1.729e+09 fm  a1 = -0.8500  a2 = +0.5968  δ = +0.0066
+  ν_1: pred =  30.9918 meV  obs =  30.0 meV  Δ% =  +3.3059
+  ν_2: pred =  30.9918 meV  obs =  33.0 meV  Δ% =  -6.0855
+  ν_3: pred =  61.8435 meV  obs =  60.0 meV  Δ% =  +3.0724
+
