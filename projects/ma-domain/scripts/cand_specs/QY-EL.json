@@ -1,0 +1,13 @@
+{
+  "name": "QY-EL",
+  "note": "quark wye + electron linear path (former Candidate A, quark+electron sectors). Neutrino sector left open. See work/cand-QY-EL.md.",
+  "dims": ["m1", "m2", "m3", "m4", "m5"],
+  "sheets": [
+    {"pair": ["m1", "m5"], "sector": "quark"},
+    {"pair": ["m3", "m5"], "sector": "quark"},
+    {"pair": ["m4", "m5"], "sector": "quark"},
+    {"pair": ["m1", "m3"], "sector": "electron"},
+    {"pair": ["m1", "m2"], "sector": "electron"},
+    {"pair": ["m2", "m5"], "sector": "electron"}
+  ]
+}

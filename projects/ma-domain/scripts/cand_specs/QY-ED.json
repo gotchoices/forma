@@ -1,0 +1,13 @@
+{
+  "name": "QY-ED",
+  "note": "quark wye + electron delta (former Candidates B/C, quark+electron sectors). Neutrino sector left open. See work/cand-QY-ED.md.",
+  "dims": ["m1", "m2", "m3", "m4", "m5"],
+  "sheets": [
+    {"pair": ["m1", "m5"], "sector": "quark"},
+    {"pair": ["m3", "m5"], "sector": "quark"},
+    {"pair": ["m4", "m5"], "sector": "quark"},
+    {"pair": ["m2", "m4"], "sector": "electron"},
+    {"pair": ["m2", "m5"], "sector": "electron"},
+    {"pair": ["m4", "m5"], "sector": "electron"}
+  ]
+}
