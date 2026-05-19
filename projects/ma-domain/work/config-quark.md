@@ -1,10 +1,12 @@
-# quark-configs.md — quark-sector topology configurations
+# config-quark.md — quark-sector topology configurations
 
 **Purpose:** catalog the topology configurations available for producing 3 generations of quarks on a set of sheets shared between a set of common dimensions.
 
 **Quark sector requirements:** host all 6 quarks (u, d, s, c, b, t) at their observed masses (2 MeV to 173 GeV — 5 orders of magnitude). Each pair hosts one generation (heavier quark at T(1, 1), lighter at T(1, 2)). Per-pair (σ, τ, P) triplet free per [architecture.md §3.4](architecture.md).
 
 **Labelling convention (local to this file):** dims are named `m_a`, `m_b`, … abstractly. The configs say nothing about which globally-labelled dims they map onto — that is a candidate-level choice ([candidates.md](candidates.md)).
+
+**Scope note:** numbers reported here are *sector-internal* — the quark sector's six mass constraints alone fix the per-pair sizes and σ_eff values. The configs make no assumptions about whether any of these dims are shared with the electron or neutrino sectors; that is a candidate-level question.
 
 ---
 
@@ -88,9 +90,9 @@ is dominated by 1/L_R. **A shared L_T does NOT couple the masses across pairs.**
 
 The trade is 1 extra dim (4 vs 3) for full mass-spectrum freedom.
 
-### QY.2 — Mode assignments and fit
+### QY.2 — Mode assignments and sector-internal fit
 
-Each pair hosts one quark generation, lighter quark at T(1, 2), heavier at T(1, 1). The within-pair mass ratio fixes σ_eff via σ_eff = (2R + 1)/(R + 1) where R = m_heavier/m_lighter. Heavier generations sit on smaller rings (since mass ∝ 1/L_R in the pure-ring regime).
+Each pair hosts one quark generation, lighter quark at T(1, 2), heavier at T(1, 1). The within-pair mass ratio fixes σ_eff via σ_eff = (2R + 1)/(R + 1) where R = m_heavier/m_lighter. Heavier generations sit on smaller rings (since mass ∝ 1/L_R in the pure-ring regime). All values below come from a fit using the six observed quark masses alone — no cross-sector inheritance.
 
 | Pair | Generation | Modes (lighter / heavier) | σ_eff | L_ring |
 |---|---|---|---:|---:|
@@ -98,7 +100,7 @@ Each pair hosts one quark generation, lighter quark at T(1, 2), heavier at T(1, 
 | `Ma(b, h)` | (s, c) | s at T(1, 2) / c at T(1, 1) | **1.9318** | L_b = 0.91 fm |
 | `Ma(c, h)` | (u, d) | u at T(1, 2) / d at T(1, 1) | **1.6837** | L_c = 181 fm |
 
-L_h ≳ 5740 fm (pure-ring constraint; the hub only needs to be much larger than the largest ring).
+L_h ≳ 5740 fm (pure-ring constraint; the hub only needs to be much larger than the largest ring; the exact value is a sector-internal free parameter).
 
 The (b, t) pair's σ_eff = 1.976 sits microscopically close to R53's "magic shear" value of 2 — interesting cross-sector resonance hint, but not load-bearing for QY's fit.
 
@@ -135,7 +137,8 @@ L_h is a free parameter as long as it satisfies the pure-ring constraint. The fi
 | Pairs | 3 | 3 |
 | Topology | triangle | wye/star with hub |
 | Shared tube dim | none | m_h (universal) |
-| Best fit (strict modes) | analytically falsified (no clean numerical fit) | **0.499%** |
+| Sector-internal DOF | 0 (over-determined; can't fit) | 1 (L_h above the floor) |
+| Best fit (strict modes) | analytically falsified | **0.499%** |
 | Best fit (with relaxations) | 3.97% (Relaxation 1) | not needed |
 | σ_eff range | scattered, fit-dependent | 1.68 to 1.98 (natural) |
 | Within-generation mechanism | clover (lobe/saddle) | clover (lobe/saddle) |
@@ -153,3 +156,4 @@ QY is the working choice. QD is kept as a fallback and as the "what doesn't work
 - [architecture.md §3.3.1](architecture.md) — closure-mode inventory per pair (the default T(1, 1) + T(1, 2) rule that Relaxation 1 relaxes)
 - [scripts/quark_search_wye.py](../scripts/quark_search_wye.py) — QY fit driver (produces the 0.499% result)
 - [scripts/quark_search_relaxation_1.py](../scripts/quark_search_relaxation_1.py) — QD with Relaxation 1 (produces the 3.97% best fit)
+- [config-electron.md](config-electron.md), [config-neutrino.md](config-neutrino.md) — sibling sector configs
