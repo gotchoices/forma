@@ -2,6 +2,21 @@
 
 **Status:** Historical investigation of the hypothesis that each particle sheet is a *3-torus* (three compact dimensions with dramatically different circumferences L_a ≪ L_b ≪ L_c) rather than a 2-torus, with the three Standard Model generations corresponding to modes living in the three coordinate planes. Predates the current candidate analysis in [candidates.md](candidates.md), which adopts a dim-pool reading rather than per-sheet 3-toruses. The "plane over diagonal" rule (§5.1, §5.3 — 2D-planar modes preferred over 3D-mixed modes) is carried forward into [architecture.md §3.3](architecture.md).
 
+---
+
+## The result in plain terms
+
+This investigation did the job it set out to do, and uncovered one unresolved catch. In four sentences:
+
+1. The 3-torus **produces the three generations** as three separate families of modes, at the correct relative masses (§5.1).
+2. It **also produces a dense extra tower of simpler modes** — the "1D-line" modes, each exciting only one compact direction — and these sit *below* the generation modes in energy (§5.1).
+3. That extra tower is **fatal only if those 1D modes carry electric charge**: if they do, they are ~134 predicted-but-never-observed particles (a "ghost flood" that kills the hypothesis); if they do not carry charge, they are simply invisible to electromagnetism — a harmless, even useful, dark sector / dark-matter candidate (§5.2).
+4. **Which case holds has not been decided.** It depends on a charge-selection rule; a natural candidate exists (§3.2, "Candidate III") and has exactly the property the hypothesis needs, but proving it is the *physically correct* rule requires a calculation — extending [R19](../../../studies/R19-charge-from-shear) to a 3-torus — that has not yet been done.
+
+So the verdict is **conditionally open, not failed**: the mode-finding works; the picture lives or dies on one tractable, not-yet-attempted derivation. The rest of this file is the detail behind those four sentences.
+
+---
+
 Pair notation in this file uses generic indices `(L_a, L_b)` rather than the project's `Ma(i, j)` convention; for current topology labels see [candidates.md](candidates.md).
 
 **Why this is worth testing.** Phase 3 / Phase 4 of the corrugated-clover work ([sheet-proton 3-gen.md §12–§13](../../sheet-proton/work/3-gen.md)) ruled out the multi-generation mass hierarchy from a 2D-surface picture, both with the bisect-and-insert fractal recursion ([sheet-proton clover-on-clover.md](../../sheet-proton/work/clover-on-clover.md)) and with the alternative three-radius cross-section ([sheet-proton clover-inverse.md](../../sheet-proton/work/clover-inverse.md)). The 3D wave-guide extension recovers the hierarchy qualitatively but with no quantitative discriminator. This file tests a structurally different reframing: instead of fitting hierarchy by extreme ε or fractal nesting on a 2D sheet, let *each sheet itself* be 3D and let the three coordinate planes carry the three generations directly.
@@ -49,11 +64,11 @@ For L₁ ≪ L₂ ≪ L₃, the bare ordering is:
 2. **2D-planar modes** (the generation candidates) sit at significantly higher energy.
 3. **3D-mixed modes** are even higher.
 
-This is *bad* for the hypothesis: if all mode classes show up as physical particles, the low-energy spectrum is dominated by an infinite tower of 1D modes (~L₃/L₂ of them before the first 2D mode), which we don't observe.
+This looks like a problem for the hypothesis — but it is a *conditional* problem, and the condition is the whole story. **If** every mode class shows up as an observable particle, then the low-energy spectrum is dominated by an infinite tower of 1D modes (~L₃/L₂ of them before the first 2D mode), which we do not observe — and the hypothesis is dead. **But** not every mode need be observable. A mode is observable as a charged particle only if it couples to electromagnetism; a mode that does not couple is "dark" — it carries energy but no charge, like a neutrino or a dark-matter particle, and its absence from the observed particle list is expected, not a contradiction.
 
-**The hypothesis only works if 1D-line modes are systematically dark** — predicted but not coupled to the ambient EM. The 2D analog (R19) says EM monopole charge requires *tube winding*. The 3D extension would say: **EM monopole charge requires winding in at least two of the three dimensions**, with 1D-line modes naturally dark for the same reason that uncharged 2D modes are dark.
+So the dense 1D tower is fatal only if those 1D modes are *charged*. **The hypothesis works if and only if 1D-line modes are systematically dark** — predicted by the geometry but not coupled to the ambient EM. The 2D analog (R19) says EM monopole charge requires *tube winding*. The 3D extension would say: **EM monopole charge requires winding in at least two of the three dimensions**, which would make 1D-line modes (winding in only one direction) automatically dark — for the same reason that uncharged 2D modes are dark.
 
-The hypothesis stands or falls on this selection rule.
+The hypothesis stands or falls on this selection rule. §3 builds the test that checks it.
 
 ---
 
@@ -200,9 +215,13 @@ The 3-torus three-generations hypothesis has a **clean structural form** but its
 
 2. ✓ **Hierarchy is achievable.** Setting L₂/L₁ ≈ 580 and L₃/L₁ ≈ 78,000 puts the three 2D-planar mode classes at the right relative energies for the three observed quark generations. The magnitude problem hasn't disappeared — it's just been redistributed across three lengths instead of one extreme ε — but the redistribution gives the *right* structural answer (three families, naturally) rather than a single parameter fitted post-hoc.
 
-3. ✗ **A selection rule is required.** The bare Laplacian spectrum has ~L₃/L₂ ≈ 134 1D-line modes below the lightest 2D-planar mode. Without a rule that darkens the 1D class, the picture predicts ~134 unobserved particles (per (n, 0, 0) ladder direction) below the lightest charged fermion. This is a *worse* ghost problem than the model-D / R53 charged-ghost census (78 lepton-like ghosts above the electron).
+3. ⚠ **The catch: a charge-selection rule is required, and it decides everything.** The bare Laplacian spectrum has ~L₃/L₂ ≈ 134 1D-line modes below the lightest 2D-planar mode. Two outcomes are possible, and they are opposite:
+   - **If the 1D modes are charged:** the picture predicts ~134 unobserved particles (per (n, 0, 0) ladder direction) below the lightest charged fermion — a "ghost flood" *worse* than the model-D / R53 charged-ghost census (78 lepton-like ghosts above the electron). The hypothesis is dead.
+   - **If the 1D modes are uncharged (dark):** there is no ghost problem at all. The 1D tower is an unobserved dark sector — energy-carrying but EM-invisible, a dark-matter candidate (cf. [Q94](../../../qa/Q94-compton-window-and-dark-modes.md)). The hypothesis survives.
 
-4. ⚠ **The needed selection rule has one natural candidate** but its derivation has not been done. Candidate III (per-plane bilinear circulation, |C_{ij}|² ∝ (n_i n_j)²) has the structural property the hypothesis needs: 1D-line modes have zero coupling, 2D-planar modes have nonzero coupling. This is the 3D analog of R19's tube-circle integral generalised from "winding requires the cycle direction" to "winding requires *two* cycle directions for net EM flux." Whether this is the *physically correct* extension is a finite analytical question that would require re-running R19's monopole-moment derivation on a 3-torus, not yet attempted.
+   This point is not itself a failure — it is the open question on which the verdict hangs.
+
+4. ⚠ **The selection rule has one natural candidate, but the candidate has not been proven correct.** Candidate III (per-plane bilinear circulation, |C_{ij}|² ∝ (n_i n_j)²) has exactly the structural property the hypothesis needs: 1D-line modes get zero EM coupling (dark), 2D-planar modes get nonzero coupling (observable). It is the 3D analog of R19's tube-circle integral, generalised from "winding requires the cycle direction" to "winding requires *two* cycle directions for net EM flux." But Test B only confirms that Candidate III *has* the needed property — it does not show Candidate III *is* the physically correct rule. Settling that requires re-running R19's monopole-moment derivation on a 3-torus (see Recommended next step below). Until that is done, point 3's two outcomes both remain on the table.
 
 **If Cand III turns out to be the correct R19 extension**, the 3-torus picture is a clean and quantitatively viable structural reframing — it gives three generations from coordinate-plane Z₃ structure, explains the mass hierarchy from three compact-length ratios in the 1 : 580 : 78,000 range, and naturally makes the 1D-tower a dark-matter candidate (cf. [Q94 Compton-window / dark-modes](../../../qa/Q94-compton-window-and-dark-modes.md)).
 
