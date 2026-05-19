@@ -3,7 +3,9 @@
 Interactive workbench for **smooth N-fold-symmetric tube cross-sections** swept
 into a corrugated torus with adjustable twist. Generalizes the discrete-arc
 clover of [proton-lab](proton-lab.html) to any lobe count and any valley
-depth, using a C^∞ Fourier polar curve so curvature is continuous everywhere.
+depth, using a C^∞ harmonic curve so curvature is continuous everywhere. The
+family contains — as exact members — the circle, rounded N-gons, the
+three-lobe quark clover, and a **true ellipse**.
 
 Single HTML file, no build step. Uses the standard `totu-viz.js` /
 `totu-viz.css` infrastructure (Three.js 0.163.0).
@@ -19,51 +21,62 @@ Related references:
 
 ## 1. Physics model
 
-### 1.1 Cross-section profile (polar form)
+### 1.1 Cross-section profile (harmonic form)
 
-The cross-section is a closed plane curve parameterised by
+The cross-section is a closed plane curve, written in complex coordinates
+z = x + i·y and parameterised by a free parameter t:
 
 ```
-r(φ) = R_c · [ 1 + a₁ · cos(N · φ) + a₂ · cos(2 · N · φ) ]
-P(φ) = ( r(φ) · cos φ , r(φ) · sin φ )
+z(t) = R_c · e^{i t} · w(t)
+w(t) = [ 1 + a₁·cos(Nt) + a₂·cos(2Nt) ]  +  i·[ b₁·sin(Nt) + b₂·sin(2Nt) ]
 ```
 
-with three independent shape parameters:
+with five independent shape parameters:
 
 | Parameter | Symbol | Role |
 |---|---|---|
 | Lobe count | `N` ∈ ℤ, 2 ≤ N ≤ 8 | Number of N-fold symmetric features around the cross-section |
-| Fundamental amplitude | `a₁` ∈ [0, 0.9] | Sets the gross peak-to-trough swing |
+| Fundamental amplitude | `a₁` ∈ [0, 1.5] | Sets the gross peak-to-trough swing |
+| First-harmonic split | `b₁` ∈ [−0.9, 0.9] | Asymmetry of the first harmonic; b₁ = −a₁ at N=2 gives a true ellipse |
 | Second harmonic | `a₂` ∈ [−0.4, 0.4] | Sharpens or flattens valleys; introduces concave saddles when large |
-| Mean radius | `R_c` | Sets the absolute size of the cross-section (mean r = R_c) |
+| Second-harmonic split | `b₂` ∈ [−0.4, 0.4] | Asymmetry of the second harmonic (fine-tuning; usually 0) |
+| Mean radius | `R_c` | Sets the absolute size of the cross-section |
 
-The relationship between (a₁, a₂) and the named knobs *peak prominence* and
-*valley depth* — measured at the symmetric extrema — is
+**The polar slice.** With `b₁ = b₂ = 0` the shape function w(t) is real,
+z = w(t)·R_c·e^{it}, and the parameter t coincides with the geometric polar
+angle φ. The curve reduces to the familiar polar form
+`r(φ) = R_c·[1 + a₁cos(Nφ) + a₂cos(2Nφ)]`. This slice covers the circle,
+rounded N-gons, and the quark clover — leave the splits at 0 for those.
 
-- **Peak** at φ = 0: r(0) = R_c · (1 + a₁ + a₂) ⟹ peak − R_c = R_c · (a₁ + a₂)
-- **Trough** at φ = π/N: r(π/N) = R_c · (1 − a₁ + a₂) ⟹ R_c − trough = R_c · (a₁ − a₂)
+**The split parameters** b₁, b₂ let the inner/outer harmonic partners differ
+(see [tube-function.md §2.3](../projects/ma-domain/work/tube-function.md)).
+This is the freedom the polar form lacks: at N=2, a₂=b₂=0, **b₁ = −a₁**
+produces an *exact ellipse* with semi-axes R_c(1±a₁) and foci separation
+4·R_c·√a₁.
 
-so if you want a peak prominence p and a valley depth v (both as fractions of R_c),
-set **a₁ = (p + v) / 2**, **a₂ = (p − v) / 2**.
+The named knobs *peak prominence* p and *valley depth* v are measured at the
+symmetric extrema (which are split-independent — sin(Nt) vanishes there):
 
-This identification is exact when (a₁, a₂) are small enough that the global
-peak and trough actually sit at the symmetry points. For larger |a₂/a₁|,
-additional extrema appear off-axis at cos(Nφ) = −a₁/(4a₂); the readout shows
-the numerical `r_min`, `r_max`, `κ_min`, `κ_max` so the user always sees the
-true bounds.
+- **Peak** at t = 0: r = R_c·(1 + a₁ + a₂) ⟹ peak − R_c = R_c·(a₁ + a₂)
+- **Trough** at t = π/N: r = R_c·(1 − a₁ + a₂) ⟹ R_c − trough = R_c·(a₁ − a₂)
+
+so a₁ = (p + v)/2, a₂ = (p − v)/2. For larger amplitudes additional extrema
+appear off-axis; the readout shows numerical `r_min`, `r_max`, `κ_min`,
+`κ_max` so the true bounds are always visible.
 
 ### 1.2 Curvature
 
-The signed curvature of a polar curve r(φ) is
+The signed curvature of the parametric curve z(t) is
 
 ```
-κ(φ) = ( r² + 2·r'² − r·r'' ) / ( r² + r'² )^{3/2}
+κ(t) = Im( conj(z'(t)) · z''(t) ) / |z'(t)|³
 ```
 
-with r' = dr/dφ, r'' = d²r/dφ². All three quantities are closed-form sums of
-sin/cos for the Fourier form above, so curvature is computed analytically
-with no discretisation artefacts. The 2D preview and 3D surface are coloured
-by κ via a warm-to-cool ramp:
+with z′, z″ the first and second t-derivatives. Since z = R_c·e^{it}·w(t)
+and w is a finite sum of sin/cos, z′ and z″ are closed-form and curvature is
+computed analytically with no discretisation artefacts. (In the polar slice
+b = 0 this reduces to the familiar κ = (r² + 2r′² − r·r″)/(r² + r′²)^{3/2}.)
+The 2D preview and 3D surface are coloured by κ via a warm-to-cool ramp:
 
 - κ > 0 → warm (red) — convex, lobe-like
 - κ ≈ 0 → neutral grey
@@ -75,19 +88,21 @@ The colour scale auto-normalises against max |κ| on the profile.
 
 | Case | Parameters | Geometry |
 |---|---|---|
-| Circle | a₁ = a₂ = 0 | Mean radius R_c |
-| Bilobe (electron-tube limit) | N = 2, a₁ ≈ 0.3, a₂ ≈ 0 | Smooth ellipse-like, all convex |
-| Rounded N-gon | small a₁, a₂ ≈ 0 | All-convex N-lobed shape (triangle/square/pentagon/hexagon as N varies) |
-| Smooth clover | N = 3, a₁ ≈ 0.43, a₂ = 0, R_c ≈ 1.4 | Single-harmonic three-lobe with concave saddles. Matches the arc-clover's peak 2.0 / trough 0.8 at the symmetry points. (Use a₂ > 0 for fine-tuning the per-lobe turning A_lobe; see [tube-function.md §5.2.1](../projects/ma-domain/work/tube-function.md).) |
-| Deep clover | N = 3, a₁ ≈ 0.55, a₂ ≈ 0.25 | Sharp narrow valleys, large lobes |
+| Circle | a₁ = a₂ = b₁ = b₂ = 0 | Mean radius R_c |
+| True ellipse | N = 2, b₁ = −a₁, a₂ = b₂ = 0 | Exact ellipse, semi-axes R_c(1±a₁), all convex |
+| Rounded N-gon | small a₁, others ≈ 0 | All-convex N-lobed shape (triangle/square/pentagon/hexagon as N varies) |
+| Smooth clover | N = 3, a₁ ≈ 0.43, others 0, R_c ≈ 1.4 | Single-harmonic three-lobe with concave saddles. Matches the arc-clover's peak 2.0 / trough 0.8 at the symmetry points. |
+| Quark clover | N = 3, a₁ ≈ 0.707, b = 0 | Polar-slice three-lobe with A_lobe = 4π/3 (Q_lobe = +2/3). |
+| Quark clover (fat lobe) | N = 3, a₁ ≈ 0.294, b₁ = 0.2 | Same A_lobe = 4π/3 charge, reached with much less radial swing; sharper valley. See [tube-function.md §5.2](../projects/ma-domain/work/tube-function.md). |
+| Deep clover | N = 3, a₁ ≈ 0.85, b = 0 | Sharp narrow valleys, large lobes |
 
 ### 1.4 Surface embedding (corrugated torus)
 
-Same construction as proton-lab. Sample P(φ), rotate by α = τ·θ in the
-cross-section plane, then place at the ring at angle θ:
+Same construction as proton-lab. Sample the cross-section z(t), rotate by
+α = τ·θ in the cross-section plane, then place at the ring at angle θ:
 
 ```
-samp        = P(φ)
+samp        = z(t)
 (Pxr, Pyr)  = R_α · (samp.x, samp.y)        with α = τ · θ
 r⃗(θ, φ)   = R_ring(θ) + Pxr · N̂(θ) + Pyr · B̂
 R_ring(θ)   = R_major · (cos θ, sin θ, 0)
@@ -160,7 +175,9 @@ on a bilobe with τ = 2.
 |---|---|---|---|
 | N | slider (int) | 3 | Lobe count, 2–8 |
 | a₁ | slider | 0.43 | Fundamental amplitude |
+| b₁ | slider | 0.00 | First-harmonic split (b₁ = −a₁ at N=2 → true ellipse) |
 | a₂ | slider | 0.00 | Second-harmonic amplitude |
+| b₂ | slider | 0.00 | Second-harmonic split |
 | R_major | slider | 3.0 | Ring radius |
 | R_c | slider | 1.00 | Mean cross-section radius |
 | τ | slider | 1/3 | Twist rate (continuous) |
@@ -171,13 +188,16 @@ on a bilobe with τ = 2.
 
 ### 2.2 Left panel — Formula, presets, paths, toggles, profiles
 
-- **Cross-section formula** — fixed reminder of `r(φ) = R_c · [1 + a₁ cos Nφ + a₂ cos 2Nφ]`.
+- **Cross-section formula** — fixed reminder of the harmonic form
+  `z(t) = R_c·e^{it}·[1 + a₁cos Nt + a₂cos 2Nt + i(b₁sin Nt + b₂sin 2Nt)]`.
 - **Presets**:
   - Circle (degenerate)
-  - Ellipse-like bilobe (N=2, τ=0)
-  - **Electron tube** (N=2, τ=2, T(1,2) path on)
+  - **True ellipse** (N=2, b₁ = −a₁, τ=0)
+  - **Electron tube** (N=2 ellipse, τ=2, T(1,2) path on)
   - Rounded triangle (N=3, all convex)
   - **Smooth clover** (N=3, τ=1/3, three-fold symmetric paths on)
+  - **Quark clover** (N=3, A_lobe = 4π/3, polar slice)
+  - **Quark clover (fat lobe)** (N=3, b₁ = 0.2 — same charge, less swing)
   - Deep clover (N=3, sharp valleys)
   - Rounded square / Quad clover (N=4)
   - Rounded pentagon (N=5)
@@ -192,10 +212,13 @@ on a bilobe with τ = 2.
   coloured by signed curvature, with markers at the N lobe-axis points (red dots)
   and the N saddle midpoints (blue dots), and a faint dashed circle at r = R_c.
 - **Geometry readouts**:
-  - `r at lobe` = r(0) — symmetric peak.
-  - `r at saddle` = r(π/N) — symmetric trough.
+  - `r at lobe` = |z(0)| — symmetric peak.
+  - `r at saddle` = |z(π/N)| — symmetric trough.
   - `r_max`, `r_min` — true numerical bounds (catches off-axis extrema).
-  - `peak − R_c`, `R_c − trough` — the user's "foci separation" and "valley depth".
+  - `peak − R_c`, `R_c − trough` — radial prominence and valley depth.
+  - `ellipse foci sep` — focal distance, shown for N = 2. Exact for the
+    true ellipse (b₁ = −a₁, a₂ = b₂ = 0); approximate for other N = 2 curves
+    (focal distance of the ellipse with the same numeric r_max, r_min).
   - `κ_min`, `κ_max` — signed curvature extremes.
   - `ε = R_c / R_major` — aspect parameter (matches metric-charge's L_u/L_w analog).
   - `L` — numeric perimeter of the cross-section.
@@ -235,23 +258,28 @@ OrbitControls + camera persistence to localStorage (`tubeLab.camera`).
 
 ## 4. Implementation notes
 
-### 4.1 Why Fourier polar rather than Cartesian Fourier?
+### 4.1 Why the harmonic form rather than a polar curve?
 
-For lobed / star-shaped cross-sections, r(φ) > 0 single-valued in φ is the
-natural representation. Polar form makes the symmetry group ℤ_N explicit
-(harmonics are `cos(kNφ)`) and the curvature has a clean closed form. A
-Cartesian (x(t), y(t)) Fourier series would also work but doubles the
-parameter count and obscures the N-fold structure.
+An earlier version used a polar curve r(φ). It is the b₁ = b₂ = 0 slice of
+the present family — convenient, but it cannot express a true ellipse: an
+ellipse is not a finite cosine series in its own polar angle. The harmonic
+form z(t) = R_c·e^{it}·w(t) parameterises the curve by a free parameter t,
+keeps the N-fold symmetry explicit (every term is N-periodic in t), still has
+a clean closed-form curvature, and *does* contain the exact ellipse (and
+exact rounded N-gons, circle, etc.). It is strictly more general than the
+polar form at the cost of two extra parameters. See
+[tube-function.md §2](../projects/ma-domain/work/tube-function.md).
 
-### 4.2 Why exactly two harmonics?
+### 4.2 Why two harmonic levels, each with an amplitude and a split?
 
-Two harmonics give independent control of *lobe prominence* and *valley
-depth* at the symmetry points. One harmonic alone couples them (a single
-amplitude `a` sets both peak height and valley depth simultaneously, via
-the same N²-eigenvalue scaling). A third harmonic at 3Nφ would add control
-over the curvature at the lobe peak (sharpening or flattening the lobe top)
-but is not required for the user's stated knobs. The architecture supports
-adding it (`a₃` in `rOf` / `rpOf` / `rppOf`) if a future need arises.
+Two harmonic levels (Nt and 2Nt) give independent control of *lobe
+prominence* and *valley depth* at the symmetry points — one level alone
+couples them. Each level carries an amplitude aₘ (the symmetric, polar
+part) and a split bₘ (the asymmetric part that lets the inner/outer harmonic
+partners differ). The split is what unlocks the ellipse and the
+fat-lobe quark family. b₂ is rarely needed; it is exposed for completeness.
+A third level at 3Nt would add lobe-peak sharpening but is not required for
+the stated knobs.
 
 ### 4.3 Relationship to the arc-clover (proton-lab)
 
@@ -281,10 +309,10 @@ continuous-curvature substrate.
 
 ### 4.4 Performance
 
-Profile cache (`cachedProfile`) is rebuilt only when N, a₁, a₂, or R_c
-change. Other slider drags (R_major, τ, shear, opacity) reuse the cached
-profile and only rebuild the surface mesh and overlays. All operations
-should complete < 16 ms in modern browsers.
+Profile cache (`cachedProfile`) is rebuilt only when a shape parameter
+(N, a₁, b₁, a₂, b₂, R_c) changes. Other slider drags (R_major, τ, shear,
+opacity) reuse the cached profile and only rebuild the surface mesh and
+overlays. All operations should complete < 16 ms in modern browsers.
 
 ---
 
@@ -298,8 +326,10 @@ should complete < 16 ms in modern browsers.
 
 ## 6. Future extensions (out of scope for v1)
 
-- **Third harmonic (a₃)** for independent lobe-peak sharpening.
-- **Asymmetric profiles** with sin terms — chiral cross-sections.
+- **Third harmonic level (a₃, b₃)** for independent lobe-peak sharpening.
+- **Chiral cross-sections** — a relative phase between the inner and outer
+  harmonic partners (complex coefficients) breaks the mirror symmetry that
+  the real a/b coefficients preserve.
 - **True geodesics** on the corrugated tube (replace `(n_θ, n_φ)` straight
   lines in parameter space with geodesic integration).
 - **Mass-formula overlay** — compute μ²(m_t, m_r) = (m_r − σ_eff m_t)² +

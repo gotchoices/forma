@@ -1,0 +1,50 @@
+==============================================================================
+Harmonic-basis tube cross-section — verification
+z(t) = R e^{it} [ 1 + a1 cos(Nt) + a2 cos(2Nt)
+                      + i ( b1 sin(Nt) + b2 sin(2Nt) ) ]
+polar slice: b1 = b2 = 0  (then t = phi, recovers old r(phi))
+==============================================================================
+
+--- 1. Ellipse exactness  (N=2, a2=b2=0, b1 = -a1) ---
+      a1     semi-A     semi-B   foci sep    max |ellipse residual|
+    0.10    1.10000    0.90000    1.26491                  6.66e-16
+    0.20    1.20000    0.80000    1.78885                  6.66e-16
+    0.30    1.30000    0.70000    2.19089                  6.66e-16
+    0.50    1.50000    0.50000    2.82843                  7.77e-16
+    0.70    1.70000    0.30000    3.34664                  1.33e-15
+
+  Residual ~1e-15 confirms z(t) is an EXACT ellipse there.
+  (semi-A = R(1+a1), semi-B = R(1-a1), foci sep = 4R*sqrt(a1).)
+  The polar family can only approximate this shape.
+
+--- 2. Gauss-Bonnet check: total turning should be 2pi ---
+  N=3 a1=0.5 a2=0.0 b1=0.0 b2=0.0:  total turning / 2pi = 1.000000
+  N=3 a1=0.5 a2=0.1 b1=0.3 b2=0.0:  total turning / 2pi = 4.000000
+  N=2 a1=0.3 a2=0.0 b1=-0.3 b2=0.0:  total turning / 2pi = 1.000000
+
+--- 3. A_lobe = 4.18879 (= 4pi/3) locus at N=3 ---
+    Q_lobe = A_lobe/2pi = 2/3, Q_saddle = 1/3 — the quark charges.
+
+  3a. POLAR SLICE (b1 = b2 = 0) — the old tube-function:
+         a2    a1 solving 4pi/3    kappa_min   simple?
+      -0.10              0.5337      -59.888      True
+      -0.05              0.6206      -65.037      True
+       0.00              0.7071      -70.770      True
+       0.05              0.7928      -76.782      True
+       0.10              0.8771      -81.929      True
+
+  3b. b1 UNLOCKED (a2 = b2 = 0) — does the new knob help?
+         b1    a1 solving 4pi/3   r_peak/r_mean    kappa_min   simple?
+      -0.30              1.2914          2.2914      -27.309      True
+      -0.20              1.0995          2.0995      -35.110      True
+      -0.10              0.9050          1.9050      -47.751      True
+       0.00              0.7071          1.7071      -70.770      True
+       0.10              0.5044          1.5044     -121.379      True
+       0.20              0.2942          1.2942     -280.500      True
+       0.30              0.0696          1.0696    -1617.927      True
+
+  Reading 3b: if a1 needed to hit 4pi/3 DROPS as b1 moves one
+  way, that direction 'fattens' the lobe — less radial swing
+  buys the same lobe charge.  kappa_min shows how deep the
+  valley has gone concave at that point.
+

@@ -123,14 +123,26 @@
 
   <div class="cg">
     <label>a<sub>1</sub></label>
-    <input type="range" id="sl-a1" min="0.0" max="0.9" step="0.005" value="0.43">
+    <input type="range" id="sl-a1" min="0.0" max="1.5" step="0.005" value="0.43">
     <span class="val" id="v-a1">0.430</span>
+  </div>
+
+  <div class="cg">
+    <label>b<sub>1</sub></label>
+    <input type="range" id="sl-b1" min="-0.9" max="0.9" step="0.005" value="0.00">
+    <span class="val" id="v-b1">0.000</span>
   </div>
 
   <div class="cg">
     <label>a<sub>2</sub></label>
     <input type="range" id="sl-a2" min="-0.4" max="0.4" step="0.005" value="0.00">
     <span class="val" id="v-a2">0.000</span>
+  </div>
+
+  <div class="cg">
+    <label>b<sub>2</sub></label>
+    <input type="range" id="sl-b2" min="-0.4" max="0.4" step="0.005" value="0.00">
+    <span class="val" id="v-b2">0.000</span>
   </div>
 
   <div class="sep"></div>
@@ -184,14 +196,16 @@
     <div class="pnl-section">
       <div class="pnl-head">Cross-section formula</div>
       <div class="formula">
-        r(φ) = R<sub>c</sub> · [ 1<br>
-        &nbsp;&nbsp;+ a<sub>1</sub>·cos(Nφ)<br>
-        &nbsp;&nbsp;+ a<sub>2</sub>·cos(2Nφ) ]
+        z(t) = R<sub>c</sub> · e<sup>i t</sup> · [ 1<br>
+        &nbsp;&nbsp;+ a<sub>1</sub>·cos(Nt) + a<sub>2</sub>·cos(2Nt)<br>
+        &nbsp;&nbsp;+ i ( b<sub>1</sub>·sin(Nt) + b<sub>2</sub>·sin(2Nt) ) ]
       </div>
       <div style="margin-top:8px; color:#888; font-size:10.5px; line-height:1.5;">
-        Truncated Fourier polar curve with N-fold symmetry. C<sup>∞</sup>
-        everywhere — no curvature jumps. Surface twists by α = τ·θ as θ
-        traverses the ring.
+        Harmonic curve with N-fold symmetry, C<sup>∞</sup> everywhere. The
+        splits b<sub>1</sub>, b<sub>2</sub> = 0 give the polar slice
+        r(φ) = R<sub>c</sub>[1 + a₁cos Nφ + a₂cos 2Nφ] (t = φ). At N=2,
+        b<sub>1</sub> = −a<sub>1</sub> gives a <b>true ellipse</b>. Surface
+        twists by α = τ·θ as θ traverses the ring.
       </div>
     </div>
 
@@ -200,11 +214,12 @@
       <select id="sel-builtin">
         <option value="">— pick a preset —</option>
         <option value="circle">Circle (degenerate, a₁ = 0)</option>
-        <option value="ellipse">Ellipse-like bilobe (N=2)</option>
-        <option value="electron-tube">Electron tube (N=2, τ=2)</option>
+        <option value="ellipse">True ellipse (N=2, b₁ = −a₁)</option>
+        <option value="electron-tube">Electron tube (N=2 ellipse, τ=2)</option>
         <option value="rounded-tri">Rounded triangle (N=3, convex)</option>
         <option value="smooth-clover">Smooth clover (N=3, extrema-match)</option>
         <option value="quark-clover">Quark clover (N=3, A_lobe = 4π/3)</option>
+        <option value="quark-clover-fat">Quark clover (fat lobe, b₁ = 0.2)</option>
         <option value="deep-clover">Deep clover (N=3, sharp valleys)</option>
         <option value="rounded-square">Rounded square (N=4)</option>
         <option value="quad-clover">Quad clover (N=4, valleys)</option>
@@ -295,12 +310,13 @@
     <div class="pnl-section">
       <div class="pnl-head">Geometry</div>
       <div class="info-grid">
-        <span class="k">r at lobe (φ=0)</span> <span class="v" id="i-rpeak">1.60</span>
+        <span class="k">r at lobe (t=0)</span> <span class="v" id="i-rpeak">1.60</span>
         <span class="k">r at saddle</span>    <span class="v" id="i-rvalley">0.40</span>
         <span class="k">r_max (numeric)</span><span class="v" id="i-rmax">1.60</span>
         <span class="k">r_min (numeric)</span><span class="v" id="i-rmin">0.40</span>
         <span class="k">peak − R</span>       <span class="v" id="i-peak">0.60</span>
         <span class="k">R − trough</span>     <span class="v" id="i-valley">0.60</span>
+        <span class="k">ellipse foci sep</span><span class="v" id="i-foci">—</span>
         <span class="k">κ_min</span>          <span class="v" id="i-kmin">−0.50</span>
         <span class="k">κ_max</span>          <span class="v" id="i-kmax">2.00</span>
         <span class="k">ε = R_c / R</span>    <span class="v" id="i-eps">0.33</span>
@@ -362,6 +378,8 @@ const S = {
   N: 3,
   a1: 0.43,      // single-harmonic smooth clover by default (saddle concave at midpoint)
   a2: 0.00,
+  b1: 0.00,      // first-harmonic split (0 = polar slice; -a1 at N=2 = true ellipse)
+  b2: 0.00,      // second-harmonic split
   R: 3.0,        // major (ring) radius
   Rc: 1.40,      // mean cross-section radius — matches arc-clover peak/trough (2.0/0.8)
   tau: 1/3,
@@ -379,37 +397,69 @@ const S = {
   showAxes: false,
 };
 
-/* ─── Cross-section profile r(φ) = Rc·[1 + a1 cos(Nφ) + a2 cos(2Nφ)] ─── */
+/* ─── Cross-section: harmonic curve ─────────────────────────
+ *   z(t) = Rc · e^{i t} · w(t)
+ *   w(t) = [1 + a1 cos Nt + a2 cos 2Nt] + i[b1 sin Nt + b2 sin 2Nt]
+ *
+ * b1 = b2 = 0 is the polar slice: w is real, z = r(t)·e^{it}, and the
+ * parameter t coincides with the geometric polar angle φ. Non-zero
+ * splits let the inner/outer harmonic partners differ — at N=2,
+ * b1 = -a1 gives an exact ellipse.
+ */
 
-function rOf(phi)   { return S.Rc * (1 + S.a1 * Math.cos(S.N * phi) + S.a2 * Math.cos(2 * S.N * phi)); }
-function rpOf(phi)  { return -S.Rc * (S.a1 * S.N * Math.sin(S.N * phi) + 2 * S.a2 * S.N * Math.sin(2 * S.N * phi)); }
-function rppOf(phi) { return -S.Rc * (S.a1 * S.N * S.N * Math.cos(S.N * phi) + 4 * S.a2 * S.N * S.N * Math.cos(2 * S.N * phi)); }
+/* Return {x, y, kappa, speed} for the cross-section at parameter t.
+ * Curvature of a parametric curve z(t): κ = Im(conj(z')·z'') / |z'|³. */
+function curveAt(t) {
+  const N = S.N, Rc = S.Rc;
+  const cN = Math.cos(N * t),     sN = Math.sin(N * t);
+  const c2 = Math.cos(2 * N * t), s2 = Math.sin(2 * N * t);
 
-/* Curvature of a polar curve r(φ): κ = (r² + 2r'² − r·r'') / (r² + r'²)^{3/2} */
-function kappaOf(phi) {
-  const r = rOf(phi);
-  const rp = rpOf(phi);
-  const rpp = rppOf(phi);
-  const num = r * r + 2 * rp * rp - r * rpp;
-  const den = Math.pow(r * r + rp * rp, 1.5);
-  return num / den;
+  // w, w', w'' as (real, imag)
+  const wRe   = 1 + S.a1 * cN + S.a2 * c2;
+  const wIm   = S.b1 * sN + S.b2 * s2;
+  const wpRe  = -S.a1 * N * sN - 2 * S.a2 * N * s2;
+  const wpIm  =  S.b1 * N * cN + 2 * S.b2 * N * c2;
+  const wppRe = -S.a1 * N * N * cN - 4 * S.a2 * N * N * c2;
+  const wppIm = -S.b1 * N * N * sN - 4 * S.b2 * N * N * s2;
+
+  const eRe = Math.cos(t), eIm = Math.sin(t);
+
+  // z = Rc · e · w
+  const zx = Rc * (eRe * wRe - eIm * wIm);
+  const zy = Rc * (eRe * wIm + eIm * wRe);
+
+  // z' = Rc · e · (i·w + w')
+  const uRe = -wIm + wpRe, uIm = wRe + wpIm;
+  const zpx = Rc * (eRe * uRe - eIm * uIm);
+  const zpy = Rc * (eRe * uIm + eIm * uRe);
+
+  // z'' = Rc · e · (-w + 2i·w' + w'')
+  const qRe = -wRe - 2 * wpIm + wppRe;
+  const qIm = -wIm + 2 * wpRe + wppIm;
+  const zppx = Rc * (eRe * qRe - eIm * qIm);
+  const zppy = Rc * (eRe * qIm + eIm * qRe);
+
+  const speed2 = zpx * zpx + zpy * zpy;
+  const speed = Math.sqrt(speed2);
+  const kappa = (zpx * zppy - zpy * zppx) / Math.pow(speed2, 1.5);
+  return { x: zx, y: zy, kappa, speed };
 }
 
-/* Pre-sample profile to a typed array for fast surface mesh construction.
- * Returns { xs, ys, ks (curvature), N: count }.
+/* Pre-sample profile to typed arrays for fast surface mesh construction.
+ * Returns { xs, ys, ks (curvature), N: sample count }.
  */
-function sampleProfile(N) {
-  const xs = new Float32Array(N + 1);
-  const ys = new Float32Array(N + 1);
-  const ks = new Float32Array(N + 1);
-  for (let j = 0; j <= N; j++) {
-    const phi = (j / N) * TAU;
-    const r = rOf(phi);
-    xs[j] = r * Math.cos(phi);
-    ys[j] = r * Math.sin(phi);
-    ks[j] = kappaOf(phi);
+function sampleProfile(M) {
+  const xs = new Float32Array(M + 1);
+  const ys = new Float32Array(M + 1);
+  const ks = new Float32Array(M + 1);
+  for (let j = 0; j <= M; j++) {
+    const t = (j / M) * TAU;
+    const p = curveAt(t);
+    xs[j] = p.x;
+    ys[j] = p.y;
+    ks[j] = p.kappa;
   }
-  return { xs, ys, ks, N };
+  return { xs, ys, ks, N: M };
 }
 
 function lookupProfile(prof, phi) {
@@ -428,10 +478,11 @@ function lookupProfile(prof, phi) {
 
 /* ─── 3D Surface mesh ───────────────────────────────────── */
 /*
- * Sample P(φ) = (rOf(φ)·cos φ, rOf(φ)·sin φ), then physically rotate the
- * 2D sample by α = τ·θ before embedding in the cross-section plane.
+ * Sample the cross-section curve z(t) (= curveAt(t)), then physically
+ * rotate the 2D sample by α = τ·θ before embedding in the cross-section
+ * plane.
  *
- *   samp        = P(φ)
+ *   samp        = z(t)
  *   (Pxr, Pyr)  = R_α · (samp.x, samp.y)
  *   r⃗(θ, φ)   = R_ring(θ) + Pxr·N̂(θ) + Pyr·B̂
  *   R_ring(θ)   = R · (cos θ, sin θ, 0)
@@ -697,10 +748,12 @@ function computeStats(prof) {
     perim += Math.hypot(dx, dy);
     prevX = prof.xs[j]; prevY = prof.ys[j];
   }
+  // Radii at the symmetry points are split-independent (tube-function §2.4):
+  // sin(Nt) and sin(2Nt) vanish at t = 0 and t = π/N.
   return {
     rMin, rMax, kMin, kMax, perim,
-    rPeak: rOf(0),                  // r at lobe-axis (φ = 0)
-    rValley: rOf(Math.PI / S.N),    // r at midway between lobes
+    rPeak:   S.Rc * (1 + S.a1 + S.a2),   // r at lobe axis (t = 0)
+    rValley: S.Rc * (1 - S.a1 + S.a2),   // r at saddle midpoint (t = π/N)
   };
 }
 
@@ -844,6 +897,16 @@ function updateInfo() {
   $('i-rmin').textContent    = st.rMin.toFixed(3);
   $('i-peak').textContent    = (st.rPeak - S.Rc).toFixed(3);
   $('i-valley').textContent  = (S.Rc - st.rValley).toFixed(3);
+  // Foci separation: meaningful at N=2. For the true ellipse (b1 = -a1)
+  // this is exact; for other N=2 curves it is the focal distance of the
+  // ellipse with the same numeric semi-axes (r_max, r_min).
+  if (S.N === 2 && st.rMax > st.rMin) {
+    const fsep = 2 * Math.sqrt(Math.max(0, st.rMax * st.rMax - st.rMin * st.rMin));
+    const exact = Math.abs(S.b1 + S.a1) < 1e-6 && Math.abs(S.a2) < 1e-6 && Math.abs(S.b2) < 1e-6;
+    $('i-foci').textContent = fsep.toFixed(3) + (exact ? ' (exact)' : ' (approx)');
+  } else {
+    $('i-foci').textContent = '—';
+  }
   $('i-kmin').textContent    = st.kMin.toFixed(3);
   $('i-kmax').textContent    = st.kMax.toFixed(3);
   $('i-eps').textContent     = (S.Rc / S.R).toFixed(3);
@@ -866,7 +929,7 @@ function updateInfo() {
     warnings.push('Cross-section reaches the ring center (r_max ≥ R_major − 0.05). Lower R_c or raise R_major.');
   }
   if (st.rMin <= 0) {
-    warnings.push('Cross-section self-intersects: r_min ≤ 0. Reduce |a₁| or |a₂|.');
+    warnings.push('Cross-section reaches the origin: r_min ≤ 0. Reduce the harmonic amplitudes (a₁, a₂, b₁, b₂).');
   }
   if (warnings.length) {
     warn.textContent = warnings.join(' ');
@@ -877,7 +940,8 @@ function updateInfo() {
 
   // Bottom-left overlay
   $('info').innerHTML =
-    `N=${S.N} &nbsp; a₁=${S.a1.toFixed(3)} &nbsp; a₂=${S.a2.toFixed(3)} &nbsp; ` +
+    `N=${S.N} &nbsp; a₁=${S.a1.toFixed(3)} &nbsp; b₁=${S.b1.toFixed(3)} &nbsp; ` +
+    `a₂=${S.a2.toFixed(3)} &nbsp; b₂=${S.b2.toFixed(3)} &nbsp; ` +
     `R=${S.R.toFixed(2)} &nbsp; R_c=${S.Rc.toFixed(2)} &nbsp; ` +
     `τ=${S.tau.toFixed(3)} &nbsp; s=${S.shear.toFixed(2)} &nbsp; ` +
     `ε=${(S.Rc / S.R).toFixed(3)}`;
@@ -900,7 +964,9 @@ function bindSlider(id, key, vId, formatter, callback) {
 
 bindSlider('sl-N',  'N',  'v-N',  v => String(v), () => { profileDirty = true; rebuildAll(); });
 bindSlider('sl-a1', 'a1', 'v-a1', v => v.toFixed(3), () => { profileDirty = true; rebuildAll(); });
+bindSlider('sl-b1', 'b1', 'v-b1', v => v.toFixed(3), () => { profileDirty = true; rebuildAll(); });
 bindSlider('sl-a2', 'a2', 'v-a2', v => v.toFixed(3), () => { profileDirty = true; rebuildAll(); });
+bindSlider('sl-b2', 'b2', 'v-b2', v => v.toFixed(3), () => { profileDirty = true; rebuildAll(); });
 bindSlider('sl-R',  'R',  'v-R',  v => v.toFixed(2), () => rebuildAll());
 bindSlider('sl-Rc', 'Rc', 'v-Rc', v => v.toFixed(2), () => { profileDirty = true; rebuildAll(); });
 bindSlider('sl-tau','tau','v-tau',v => v.toFixed(3), () => rebuildAll());
@@ -1008,19 +1074,23 @@ refreshProfileList();
 /* ─── Built-in presets ──────────────────────────────────── */
 
 const BUILTINS = {
-  'circle':         { N: 3, a1: 0.0,  a2: 0.0,  Rc: 1.00, R: 3.0, tau: 0,     shear: 0, pathNth: 1, pathNph: 0, pathCopies: 1, showPath: false },
-  'ellipse':        { N: 2, a1: 0.30, a2: 0.0,  Rc: 1.00, R: 3.0, tau: 0,     shear: 0, pathNth: 1, pathNph: 0, pathCopies: 1, showPath: false },
-  'electron-tube':  { N: 2, a1: 0.30, a2: 0.0,  Rc: 1.00, R: 3.0, tau: 2,     shear: 0, pathNth: 2, pathNph: 1, pathCopies: 1, showPath: true  },
-  'rounded-tri':    { N: 3, a1: 0.08, a2: 0.0,    Rc: 1.00, R: 3.0, tau: 1/3, shear: 0, pathNth: 3, pathNph: 0, pathCopies: 3, showPath: false },
-  'smooth-clover':  { N: 3, a1: 0.43, a2: 0.0,    Rc: 1.40, R: 3.0, tau: 1/3, shear: 0, pathNth: 3, pathNph: 0, pathCopies: 3, showPath: true  },
-  // Quark clover: a1 = 1/sqrt(2), a2 = 0 gives A_lobe = 4*pi/3 exactly (to numerical precision),
-  // hence Q_lobe = +2/3 and Q_saddle = -1/3 — matches the arc-clover's charge bookkeeping.
-  'quark-clover':   { N: 3, a1: 0.7071, a2: 0.0,  Rc: 1.00, R: 3.0, tau: 1/3, shear: 0, pathNth: 3, pathNph: 0, pathCopies: 3, showPath: true  },
-  'deep-clover':    { N: 3, a1: 0.85, a2: 0.0,    Rc: 0.90, R: 3.0, tau: 1/3, shear: 0, pathNth: 3, pathNph: 0, pathCopies: 3, showPath: true  },
-  'rounded-square': { N: 4, a1: 0.05, a2: 0.0,  Rc: 1.00, R: 3.0, tau: 1/4,   shear: 0, pathNth: 4, pathNph: 0, pathCopies: 1, showPath: false },
-  'quad-clover':    { N: 4, a1: 0.30, a2: 0.0,  Rc: 1.00, R: 3.0, tau: 1/4,   shear: 0, pathNth: 4, pathNph: 0, pathCopies: 4, showPath: false },
-  'pentagon':       { N: 5, a1: 0.03, a2: 0.0,  Rc: 1.00, R: 3.0, tau: 1/5,   shear: 0, pathNth: 5, pathNph: 0, pathCopies: 1, showPath: false },
-  'hexagon':        { N: 6, a1: 0.02, a2: 0.0,  Rc: 1.00, R: 3.0, tau: 1/6,   shear: 0, pathNth: 6, pathNph: 0, pathCopies: 1, showPath: false },
+  'circle':           { N: 3, a1: 0.0,    b1: 0.0,  a2: 0.0, b2: 0.0, Rc: 1.00, R: 3.0, tau: 0,   shear: 0, pathNth: 1, pathNph: 0, pathCopies: 1, showPath: false },
+  // True ellipse: N=2, b1 = -a1 cancels the outer harmonic. semi-axes Rc(1±a1).
+  'ellipse':          { N: 2, a1: 0.40,   b1: -0.40, a2: 0.0, b2: 0.0, Rc: 1.00, R: 3.0, tau: 0,   shear: 0, pathNth: 1, pathNph: 0, pathCopies: 1, showPath: false },
+  'electron-tube':    { N: 2, a1: 0.30,   b1: -0.30, a2: 0.0, b2: 0.0, Rc: 1.00, R: 3.0, tau: 2,   shear: 0, pathNth: 2, pathNph: 1, pathCopies: 1, showPath: true  },
+  'rounded-tri':      { N: 3, a1: 0.08,   b1: 0.0,  a2: 0.0, b2: 0.0, Rc: 1.00, R: 3.0, tau: 1/3, shear: 0, pathNth: 3, pathNph: 0, pathCopies: 3, showPath: false },
+  'smooth-clover':    { N: 3, a1: 0.43,   b1: 0.0,  a2: 0.0, b2: 0.0, Rc: 1.40, R: 3.0, tau: 1/3, shear: 0, pathNth: 3, pathNph: 0, pathCopies: 3, showPath: true  },
+  // Quark clover (polar slice): a1 = 1/sqrt(2) gives A_lobe = 4pi/3 exactly,
+  // hence Q_lobe = +2/3, Q_saddle = -1/3 — the up/down quark charges.
+  'quark-clover':     { N: 3, a1: 0.7071, b1: 0.0,  a2: 0.0, b2: 0.0, Rc: 1.00, R: 3.0, tau: 1/3, shear: 0, pathNth: 3, pathNph: 0, pathCopies: 3, showPath: true  },
+  // Same A_lobe = 4pi/3 charge, but b1 = 0.2 lets the lobe reach it with
+  // far less radial swing (a1 = 0.294 vs 0.707) — "fatter" lobes, sharper valley.
+  'quark-clover-fat': { N: 3, a1: 0.294,  b1: 0.20, a2: 0.0, b2: 0.0, Rc: 1.00, R: 3.0, tau: 1/3, shear: 0, pathNth: 3, pathNph: 0, pathCopies: 3, showPath: true  },
+  'deep-clover':      { N: 3, a1: 0.85,   b1: 0.0,  a2: 0.0, b2: 0.0, Rc: 0.90, R: 3.0, tau: 1/3, shear: 0, pathNth: 3, pathNph: 0, pathCopies: 3, showPath: true  },
+  'rounded-square':   { N: 4, a1: 0.05,   b1: 0.0,  a2: 0.0, b2: 0.0, Rc: 1.00, R: 3.0, tau: 1/4, shear: 0, pathNth: 4, pathNph: 0, pathCopies: 1, showPath: false },
+  'quad-clover':      { N: 4, a1: 0.30,   b1: 0.0,  a2: 0.0, b2: 0.0, Rc: 1.00, R: 3.0, tau: 1/4, shear: 0, pathNth: 4, pathNph: 0, pathCopies: 4, showPath: false },
+  'pentagon':         { N: 5, a1: 0.03,   b1: 0.0,  a2: 0.0, b2: 0.0, Rc: 1.00, R: 3.0, tau: 1/5, shear: 0, pathNth: 5, pathNph: 0, pathCopies: 1, showPath: false },
+  'hexagon':          { N: 6, a1: 0.02,   b1: 0.0,  a2: 0.0, b2: 0.0, Rc: 1.00, R: 3.0, tau: 1/6, shear: 0, pathNth: 6, pathNph: 0, pathCopies: 1, showPath: false },
 };
 
 $('sel-builtin').addEventListener('change', () => {
@@ -1035,7 +1105,9 @@ $('sel-builtin').addEventListener('change', () => {
 function syncControlsFromState() {
   $('sl-N').value  = S.N;       $('v-N').textContent  = String(S.N);
   $('sl-a1').value = S.a1;      $('v-a1').textContent = S.a1.toFixed(3);
+  $('sl-b1').value = S.b1;      $('v-b1').textContent = S.b1.toFixed(3);
   $('sl-a2').value = S.a2;      $('v-a2').textContent = S.a2.toFixed(3);
+  $('sl-b2').value = S.b2;      $('v-b2').textContent = S.b2.toFixed(3);
   $('sl-R').value  = S.R;       $('v-R').textContent  = S.R.toFixed(2);
   $('sl-Rc').value = S.Rc;      $('v-Rc').textContent = S.Rc.toFixed(2);
   $('sl-tau').value= S.tau;     $('v-tau').textContent= S.tau.toFixed(3);
@@ -1051,7 +1123,7 @@ function syncControlsFromState() {
 
 function resetToDefaults() {
   Object.assign(S, {
-    N: 3, a1: 0.43, a2: 0.0, R: 3.0, Rc: 1.40, tau: 1/3, shear: 0,
+    N: 3, a1: 0.43, b1: 0.0, a2: 0.0, b2: 0.0, R: 3.0, Rc: 1.40, tau: 1/3, shear: 0,
     opacity: 0.55,
     pathNth: 2, pathNph: 1, pathCopies: 1,
     showSurface: true, showWire: false, showColor: true,
