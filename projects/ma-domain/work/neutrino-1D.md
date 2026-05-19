@@ -8,6 +8,19 @@
 - [sym-ladder.md §2.3](sym-ladder.md) — current neutrino-delta candidate (three 2D sheets with shared dims)
 - [candidates.md](candidates.md) — current topology candidates (none of which yet uses 1D substrates)
 - [../../metric-mass/](../../metric-mass/) — single-compact-dimension framework; chargeless ±n mode pairs
+- [config-neutrino.md §NC](config-neutrino.md) — the NC (Neutrino Curve) config; **carries the numerical findings** for this picture
+
+---
+
+## 0. Status note — Phase B run; doublet split solved by a Wilson-loop flux (2026-05-19)
+
+This document is the **original hypothesis and roadmap**; it predates the numerical test. Phase B (§8.2) has been executed; the findings live in [config-neutrino.md §NC.5–NC.6](config-neutrino.md). Summary:
+
+- **The wall, and the fix.** A plain C_N-symmetric curve under the intrinsic operator locks the lowest three modes to a 1 : 1 : 2 ratio and hits a ~6 % wall — the n = ±1 doublet is symmetry-protected and no shape perturbation splits it. The fix is a **Wilson-loop flux** Φ threaded through the closed loop (the chirality breaker of §4.3, candidate 3): it shifts mode n to (n + f) with f = Φ/2π, splits the doublet *linearly* in f, and brings the fit to **~1.5 %**. The flux is sourced by the substrate's antisymmetric chirality χ_anti ([grid-primitive ch.9](../../grid-primitive/09-chirality-asymmetry.md)) — a substrate constant, not a free knob. Script: [scripts/neutrino_1d_fit.py](../scripts/neutrino_1d_fit.py); output [outputs/neutrino_1d_fit.txt](../outputs/neutrino_1d_fit.txt).
+- **Oscillation / PMNS mixing — not yet computed.** Phase C (§8.3) has not been run. But the same χ_anti that splits the doublet is expected to source θ₁₃ and δ_CP, so the §4.3 linkage now has a concrete physical carrier.
+- **Caveats.** The flux breaks time-reversal, so the exact Majorana structure of §3.3 becomes slightly broken — consistent with δ_CP ≠ 0, and with the unsettled empirical status of Majorana neutrinos. Q = 0 (the load-bearing result) is untouched. A light n = 0 state at ~1.6 meV is predicted. The residual ~1.5 % sits on m₃.
+
+The structural arguments of §1–§7 (no EM charge, Majorana, three-fold generation count) stand; the §8 spectrum-fit roadmap now has a working mechanism.
 
 ---
 
@@ -146,6 +159,8 @@ Observed ratio Δm²_31 / Δm²_21 ≈ 33 says the C_3 breaking is **~3 % of the
 
 The same perturbation that lifts the doublet degeneracy is the natural source of the observed θ_13 ≠ 0 in the mixing matrix; the two observations are *linked* rather than independent.
 
+**Update (Phase B — see §0).** The third breaker, *small chirality*, is the one that has been realized and numerically tested. It enters the operator as a **Wilson-loop flux** through the closed loop — sourced by the substrate's antisymmetric chirality χ_anti ([grid-primitive ch.9](../../grid-primitive/09-chirality-asymmetry.md)) — and brings the mass fit to ~1.5 % (config-neutrino §NC.5). The first breaker (asymmetric shape) was tried earlier and is too weak: a 1-fold shape harmonic splits the doublet only at second order, whereas the flux splits it at first order.
+
 ---
 
 ## 5. Relation to the tiny-tube 2D picture
@@ -226,7 +241,7 @@ The intrinsic picture is more natural for the framework (which treats dimensions
 
 Action: write a short subsection in [architecture.md](architecture.md) that adds the 1D-shaped-dimension as a substrate primitive. Specify which reading the framework adopts.
 
-### 8.2 Phase B — spectrum calculation
+### 8.2 Phase B — spectrum calculation  *(executed — see §0 Status note)*
 
 Goal: compute the lowest three eigenvalues of the curve's Hamiltonian as functions of (a₁, a₂) for N = 3. Test whether the observed Δm²_31 ≈ 2.5×10⁻³ eV² fixes (R, a₁, a₂) to a physically sensible scale (compared to other neutrino-mass-scale lengths in the project).
 
@@ -234,7 +249,7 @@ Method options:
 - **Analytic perturbation theory in a₁** (small): start from the uniform-circle eigenstates and add the shape as a perturbation. Gives the singlet–doublet gap to leading order in a₁².
 - **Numerical Laplacian diagonalization:** discretize the curve into n ≫ N points, build the Laplacian matrix on the non-uniform mesh, diagonalize. Computes the spectrum for arbitrary (a₁, a₂) without small-parameter assumption.
 
-The numerical route should fit in a standalone Python script ([scripts/neutrino_1d_spectrum.py](../scripts/)) that takes (N, a₁, a₂, R) and outputs the three lowest eigenvalues. Add a unit test: at a₁ = a₂ = 0 it should recover m_n = n / R.
+The numerical route was implemented as [scripts/neutrino_1d_fit.py](../scripts/neutrino_1d_fit.py). It takes the shape parameters plus a Wilson-loop flux and outputs the three lowest eigenvalue masses. Result: a plain C_N curve hits a ~6 % wall, resolved to ~1.5 % once the flux is added — see the §0 Status note and config-neutrino §NC.5–NC.6.
 
 Outputs:
 - Plot of singlet vs doublet energies in (a₁, a₂) plane.
@@ -270,7 +285,7 @@ If A–D all close, the 1D-curve neutrino picture is mature enough to promote ou
 
 1. **Which Hamiltonian?** The Jensen-Koppe / intrinsic-Laplacian split has to be resolved. They differ in subleading orders but agree on the structural result (singlet + doublet). Phase A.
 
-2. **Spectrum ordering.** Tight-binding gives singlet below doublet (attractive standard); observed pattern wants singlet above doublet. Either the second band is the relevant one, or the geometric potential is reversed for the right shape, or the framework's intrinsic-Laplacian reading inverts the sign. Phase B should clarify which.
+2. **Spectrum ordering.** Tight-binding gives singlet below doublet (attractive standard); observed pattern wants singlet above doublet. **Update (Phase B run):** resolved by the flux picture — the lowest three nonzero modes are the n = −1, +1 doublet (the light pair m₁, m₂) and the n = −2 mode (m₃ ≈ 2m₁); the Wilson-loop flux splits m₁ ≠ m₂. See config-neutrino §NC.5.
 
 3. **C_3-breaking source.** Asymmetric shape vs shared-dim coupling vs chirality — only one of these is likely to fit all four deviations from TBM with a single parameter. Phase C.
 

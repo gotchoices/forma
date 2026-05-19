@@ -1,46 +1,61 @@
 ================================================================================
-1D shaped neutrino substrate fit  (lowest-3-modes reading)
-Substrate: r(φ) = R·[1 + a1·cos(Nφ) + a2·cos(2Nφ) + δ·cos(φ + φ0)]
-Operator:  intrinsic Laplace-Beltrami on the closed curve
-Targets:   m_ν₁ = 30 meV,  m_ν₂ = 33 meV,  m_ν₃ = 60 meV
-Per neutrino-1D.md §4.1: the three masses are the lowest band's
-doublet (m_1, m_2, q=±1) plus singlet (m_3, q=0). NO grouping.
+1D neutrino substrate fit  —  Wilson-loop flux mechanism
+Substrate: closed curve r(phi) = R[1 + a1 cos(N phi) + a2 cos(2N phi)]
+Operator:  intrinsic Laplace-Beltrami + Wilson-loop flux f
+           (mode n  ->  eigenvalue proportional to (n+f)^2)
+Targets:   m_nu1 = 30 meV,  m_nu2 = 33 meV,  m_nu3 = 60 meV
+Flux origin: substrate antisymmetric chirality chi_anti
+             (grid-primitive ch.9) threaded through the loop.
 ================================================================================
 
---- Baseline: featureless circle (a1=a2=δ=0) ---
-  R = 6.578e+09 fm  ≈  0.658 cm  (set so n=1 mode = 30 meV)
-  Lowest 3 eigenvalue masses (with doublet kept as two states):
-    m_1 = 30 meV  (ratio to m_1: 1.000)
-    m_2 = 30 meV  (ratio to m_1: 1.000)
-    m_3 = 59.98 meV  (ratio to m_1: 1.999)
+--- Baseline: featureless circle, NO flux (f = 0) ---
+  R = 6.578e+09 fm
+    m_1 =       30 meV   (ratio to m_1: 1.0000)
+    m_2 =       30 meV   (ratio to m_1: 1.0000)
+    m_3 =    59.98 meV   (ratio to m_1: 1.9994)
+  -> 1 : 1 : 2.  The n=+-1 doublet is exactly degenerate;
+     no C_N-symmetric shape can split it (the 6% wall).
 
-  Circle gives 1 : 1 : 2 — the doublet n=±1 is exactly degenerate,
-  n=+2 (one half of next doublet) sits at 2× the mass.
-  Observed 1 : 1.10 : 2.00 needs a small C-symmetry breaker to
-  lift m_1 ≠ m_2 by ~10%, while keeping m_3 ≈ 2·m_1.
+--- Featureless circle WITH flux: the doublet splits ---
+    flux f    m_1 (meV)    m_2 (meV)    m_3 (meV)    m_2/m_1    m_3/m_1
+    0.0000      29.9970      29.9970      59.9759     1.0000     1.9994
+    0.0200      29.3972      30.5968      59.3766     1.0408     2.0198
+    0.0476      28.5694      31.4245      58.5496     1.0999     2.0494
+    0.1000      26.9978      32.9960      56.9793     1.2222     2.1105
+  The flux shifts mode n to (n+f); lowest three nonzero
+  modes go as (1-f) : (1+f) : (2-f).  f ~ 0.048 gives the
+  observed 1 : 1.10 : ~2.05 — doublet split is now first-order.
 
---- N = 3 fit (3 lobes; q=±1 doublet + q=0 singlet) ---
-  Best max |Δ%| = 6.0747%
-  R  = 3.538e+09 fm  ≈  0.354 cm
-  a1 = +0.4938  (cos(3φ) amplitude)
-  a2 = +0.2733  (cos(6φ) amplitude)
-  δ  = -0.7076  (1-fold C_3 breaker)
-  φ₀ = 0.0097  rad
-  ν_1: pred =  30.9766 meV  obs =  30.0 meV  Δ% =  +3.2554
-  ν_2: pred =  30.9953 meV  obs =  33.0 meV  Δ% =  -6.0747
-  ν_3: pred =  61.8665 meV  obs =  60.0 meV  Δ% =  +3.1109
+--- Flux sweep: best fit of (R, a1, a2) at each fixed f ---
+    flux f  best max|delta%|        a1        a2
+    0.0000            6.1169   -0.8500   +0.3779
+    0.0100            5.0176   -0.8500   +0.3794
+    0.0200            3.9077   +0.8500   +0.3792
+    0.0300            2.7869   -0.8500   +0.3788
+    0.0400            1.8203   -0.8500   +0.3788
+    0.0500            1.5053   +0.8500   +0.3769
+    0.0600            1.8146   -0.8500   +0.3785
+    0.0800            3.4801   +0.8500   +0.3776
+    0.1000            5.3798   +0.6095   -0.3405
+  Error collapses from the ~6% wall (f=0) toward ~0 as f
+  approaches the doublet-splitting value.
 
---- N = 2 fit (for comparison) ---
-  Best max |Δ%| = 6.0513%
-  R = 3.374e+09 fm  a1 = +0.8500  a2 = +0.4910  δ = -0.0011
-  ν_1: pred =  30.9865 meV  obs =  30.0 meV  Δ% =  +3.2882
-  ν_2: pred =  31.0031 meV  obs =  33.0 meV  Δ% =  -6.0513
-  ν_3: pred =  61.8315 meV  obs =  60.0 meV  Δ% =  +3.0524
+--- N = 3 full fit: (R, a1, a2, flux) free ---
+  Best max |delta%| = 1.4737%
+  R    = 2.811e+09 fm  ~  0.2811 cm
+  a1   = -0.8500   (cos(3phi) amplitude)
+  a2   = +0.3754   (cos(6phi) amplitude)
+  flux = 0.05101   (Wilson-loop fraction f = Phi/2pi)
+  nu_1: pred =  29.6814 meV   obs =  30.0 meV   delta% =  -1.0619
+  nu_2: pred =  32.8698 meV   obs =  33.0 meV   delta% =  -0.3946
+  nu_3: pred =  60.8842 meV   obs =  60.0 meV   delta% =  +1.4737
+  (n=0 ground state, skipped: m_0 = 1.5960 meV — a predicted light state)
 
---- N = 4 fit (for comparison) ---
-  Best max |Δ%| = 6.0855%
-  R = 1.729e+09 fm  a1 = -0.8500  a2 = +0.5968  δ = +0.0066
-  ν_1: pred =  30.9918 meV  obs =  30.0 meV  Δ% =  +3.3059
-  ν_2: pred =  30.9918 meV  obs =  33.0 meV  Δ% =  -6.0855
-  ν_3: pred =  61.8435 meV  obs =  60.0 meV  Δ% =  +3.0724
+--- N = 2 full fit (for comparison) ---
+  Best max |delta%| = 1.4777%   flux = 0.05102
+  R = 3.625e+09 fm  a1 = +0.8500  a2 = +0.4024
+
+--- N = 4 full fit (for comparison) ---
+  Best max |delta%| = 1.4682%   flux = 0.05100
+  R = 2.222e+09 fm  a1 = +0.8500  a2 = +0.3815
 

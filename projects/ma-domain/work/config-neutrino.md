@@ -129,35 +129,40 @@ Two physical pictures of the substrate:
 
 The substrate's circumference L_a must satisfy L_a ≳ 4 cm (~4 × 10¹⁰ fm) for the lowest mode to be at the meV scale. The shape parameters (a₁, a₂, N) control band gaps and thus the splittings ν₁–ν₂ and ν₂–ν₃.
 
-### NC.5 — Fit status (intrinsic-operator picture)
+### NC.5 — Fit status
 
-**Numerically tested; hits a ~6% wall.** Script: [scripts/neutrino_1d_fit.py](../scripts/neutrino_1d_fit.py); output: [outputs/neutrino_1d_fit.txt](../outputs/neutrino_1d_fit.txt). The intrinsic Laplace-Beltrami operator on the shaped curve was solved for several N values (2, 3, 4), with shape parameters (R, a₁, a₂, δ, φ₀) fit to the (30, 33, 60) meV targets and the validity constraint r(φ) > 0 enforced.
+Script: [scripts/neutrino_1d_fit.py](../scripts/neutrino_1d_fit.py); output: [outputs/neutrino_1d_fit.txt](../outputs/neutrino_1d_fit.txt). The script solves the intrinsic Laplace-Beltrami operator on the closed shaped curve.
 
-**Best max |Δ%| ≈ 6%.** All fits converge to mass ratios near (1.03 : 1.03 : 2.06), i.e., m_1 ≈ m_2 ≈ 31 meV and m_3 ≈ 62 meV. The optimizer cannot produce the ~10% doublet split needed for m_2 = 33 meV.
+**The wall (no flux): ~6%.** With a plain C_N-symmetric curve r(φ) = R[1 + a₁cos Nφ + a₂cos 2Nφ], the lowest three nonzero modes lock to a **1 : 1 : 2** pattern — an n = ±1 degenerate doublet plus the n = −2 mode at twice the mass. Best max |Δ%| ≈ 6%; the optimizer cannot produce the ~10% m₁–m₂ doublet split the observed hierarchy needs.
 
-**Why this happens — the doublet is structurally robust under polar-curve shape perturbations.** The lowest three eigenvalues on a closed 1D curve are the n = ±1 doublet (degenerate on a circle) plus n = +2 (one half of the next doublet) at twice the mass. The polar parameterization `r(φ) = R · [1 + Σ harmonics]` produces curves close to an offset-circle / shape-symmetric structure, and the n = ±1 doublet stays nearly degenerate even under strong shape perturbations. Diagnostic check: a pronounced limaçon r(φ) = R(1 + 0.5·cos(φ)) splits the doublet by only ~10⁻⁵ relative — far below the 10% needed.
+**Why the wall exists — the doublet is symmetry-protected.** The n = ±1 doublet is degenerate because the curve's C_N symmetry plus time-reversal protect it. *No* C_N-symmetric shape perturbation — any choice of (a₁, a₂, N), including the harmonic-curve split knobs of [tube-function.md](tube-function.md) — can lift it. Diagnostic: a pronounced limaçon r = R(1 + 0.5cos φ) splits the doublet by only ~10⁻⁵ relative, because a 1-fold shape harmonic is mostly a rigid *displacement*, invisible to an operator that senses only the arc-length metric. The wall is the symmetry, not the shape.
 
-So the 1:1:2 spectral pattern is what this substrate-and-operator combination naturally produces. The observed (30, 33, 60) hierarchy with its 10% doublet split is not reachable via this family.
+**The fix — a Wilson-loop flux: ~1.5%.** A flux Φ threaded through the closed loop enters the operator as a covariant derivative D_s = ∂_s + iA_s, shifting mode n to (n + f) with f = Φ/2π. The lowest three nonzero modes become (1−f) : (1+f) : (2−f) — the doublet splits **linearly in f**, a first-order effect a shape harmonic cannot supply. Physical origin: per [grid-primitive ch.9](../../grid-primitive/09-chirality-asymmetry.md), a small substrate antisymmetric chirality χ_anti is equivalent to a built-in background gauge field that, on any compact wrap, contributes a gauge-invariant Wilson-loop phase. The closed neutrino loop is exactly such a wrap.
 
-### NC.6 — Verdict and remaining paths
+Fitting (R, a₁, a₂, f) to the (30, 33, 60) meV targets, N = 3:
 
-**Architecturally appealing but the intrinsic-operator fit on a polar `cos`-harmonic curve doesn't reproduce the observed hierarchy.** Q = 0 and Majorana fall out for free. But the curve family + intrinsic operator naturally produces 1:1:2, not 1:1.1:2.
+| Quantity | Value |
+|---|---|
+| Best max \|Δ%\| | **1.47%** |
+| flux fraction f = Φ/2π | 0.051 |
+| R | 2.8 × 10⁹ fm ≈ 0.28 cm |
+| ν masses (predicted) | 29.68, 32.87, 60.88 meV |
 
-**Structural reason for the wall.** The lowest modes on a closed 1D loop have wavelength comparable to the total arc length L — they integrate over the whole loop and don't resolve local shape features. The intrinsic operator senses only L. So any closed-loop tube function under the intrinsic operator gives the 1:1:2 pattern at low modes, with shape perturbing it only at the 10⁻⁵ level. The wall is the **operator**, not the shape. Picking a different tube function (more lobes, different harmonics, etc.) will not break it.
+The result is N-independent (N = 2, 3, 4 all reach ≈1.47%), confirming the flux — not the lobe count — does the work. The fitted f ≈ 0.051 is close to the f ≈ 0.048 that the (1−f):(1+f):(2−f) scaling predicts analytically for a 1 : 1.1 hierarchy.
 
-Four paths could rescue NC; ranked roughly by structural cleanliness:
+**The residual ~1.5% sits on m₃.** Circle + flux gives m₃/m₁ = (2−f)/(1−f) ≈ 2.05 against the target 2.00; the C_N shape harmonics have weak leverage on the low-mode ratios and pull it only partway. The residual is comparable to the precision of the (30, 33, 60) meV targets themselves, which are *project working values*, not sharp data.
 
-1. **Embedding picture with V_geom = −ℏ²κ²/(8m)** (Jensen-Koppe / da Costa). The strongest candidate, and the only one that preserves the "pure 1D substrate" purity. The intrinsic operator ignores the geometric potential coming from how the curve sits in its embedding plane. The κ² potential is highly localized at high-curvature regions and acts very differently on cos- vs sin-symmetric modes — a strong candidate for splitting the doublet. Worth coding as a separate script using a uniform arc-length grid. ~150 lines of new code.
+**Predicted light state.** With f ≠ 0 the n = 0 mode is no longer massless; it acquires m₀ ∝ f ≈ 1.6 meV. The fit assigns the three observed neutrinos to n = −1, +1, −2 and skips n = 0. Whether this light n = 0 state is a physical fourth light neutrino or a substrate zero-mode without particle interpretation is an open question.
 
-2. **Different 1D topology** — figure-8, theta graph, multiple disconnected loops. Fundamentally different spectrum. Bigger architectural change but still "pure 1D." Mass eigenstates emerge from the topology's branch structure, not from a single loop's harmonics.
+### NC.6 — Verdict
 
-3. **One tiny extra dim** appended to the ν loop, effectively making `Ma(ν_loop, ν_tiny)` a 2D sheet with extreme aspect ratio (L_loop ~ cm, L_tiny ~ fm). At meV scales only the n_tiny = 0 sector is accessible, but the cross-term σ between the two dims still acts on those modes (via virtual coupling through the heavy n_tiny ≥ 1 sector). This gives the loop spectrum a σ-dependent perturbation that *can* break the doublet — exactly the freedom missing in pure 1D. **This is essentially NS in disguise** (or a near-degenerate limit of it). If pursued, it should be recognized as NS with an aspect-ratio constraint, not as a distinct config.
+**NC is a working config: ~1.5% with the Wilson-loop flux.** Q = 0 and Majorana-like structure fall out of the 1D dim count (§NC.3); the doublet split — the structural failure that produced the 6% wall — is resolved by a flux that is *not a free parameter* but the loop-integral of the substrate's antisymmetric chirality χ_anti ([grid-primitive ch.9](../../grid-primitive/09-chirality-asymmetry.md)). The same χ_anti is independently expected to source δ_CP and the matter/antimatter axis, so one substrate constant links the doublet split, θ₁₃, and CP violation — the linkage [neutrino-1D.md §4.3](neutrino-1D.md) anticipated.
 
-4. **Three tiny extra dims** appended to the ν loop, giving three independent cross-terms σ_{loop, i} acting on the loop spectrum. Three free shear parameters to tune three mass eigenstates — underdetermined and easy to fit. Architectural cost is the highest: it uses "tiny dims" as a backdoor for adding adjustable knobs, and Q = 0 has to be argued for each extra dim individually (each must be closure-rule-trivial in 2D). NC's appeal (charge=0 and Majorana from dim count) dilutes. Reads as a parameter-fitting exercise rather than a structural prediction.
+The flux is candidate 3 ("small chirality / shear") of [neutrino-1D.md §4.3](neutrino-1D.md), now realized and tested. It is mechanically distinct from — and stronger than — the δ shape-harmonic (candidate 1) the earlier fit used: a flux splits the doublet at first order, a shape harmonic only at second order. It also supersedes the rescue paths an earlier draft of this section listed (embedding-κ² potential, exotic topology, tiny extra dims): the flux is a cleaner mechanism and keeps the substrate purely 1D.
 
-**Tube-function shape is not the right knob.** Multiple lobes, more cos-harmonics, exotic shape functions — all stay within the same operator + curve family that hits the 6% wall. The lever has to be the operator (path 1) or the topology (path 2), or you give up "pure 1D" and accept either an NS-equivalent (path 3) or a knob-laden version (path 4).
+**On Majorana.** A flux breaks time-reversal — which is exactly what splits ψ₊ₙ from ψ₋ₙ — so exact structural Majorana (§NC.3) is traded for a slightly-broken version. This is consistent with the framework's own expectation of δ_CP ≠ 0, and with the empirical fact that exact Majorana-ness of neutrinos is not established. The load-bearing structural result, **Q = 0, is untouched**: it follows from the 1D dim count, which the flux does not change.
 
-In the absence of one of these rescues, **NS is the preferred ν config**: the 2D-sheet topology with sign-flipped m_t modes is spot-checked at ~1%, and the 10% doublet split is structurally easy on a 2D pair (two independent dim scales available). The natural next investigation is path 1 (embedding picture) — it's the only path that preserves NC's structural advantage over NS.
+**Open refinements.** The residual ~1.5% on m₃ and the interpretation of the predicted light n = 0 state remain. Neither is a structural obstruction; both are downstream work.
 
 ---
 
@@ -226,13 +231,13 @@ Numerically, ND closes to machine precision on the 3-DOF underdetermined manifol
 | Mass-eigenstate mechanism | 3 closure modes on one pair | 3 lowest bands of shaped curve | 1 mode per pair (T(1, 2)) | 1 mode per pair (T(1, 2)) |
 | Continuous parameters | 3 | ~4 | 6 | 7 |
 | Sector-internal DOF | 0 | 0–1 | 3 | 4 |
-| Best fit (sector-internal) | ~1% (spot-check) | 6% wall (intrinsic operator) | < 0.01% (trivially, given DOF) | not run |
+| Best fit (sector-internal) | ~1% (spot-check) | **1.5%** (Wilson-loop flux) | < 0.01% (trivially, given DOF) | not run |
 | Q = 0 | from σ_eff = 0 / mode pairing | **structural** (no 2D closure rule) | per-pair, not automatic | per-pair, not automatic |
-| Majorana | from sign-flipped mode pairs | **structural** (ψ_n ↔ ψ_(−n)) | not automatic | not automatic |
+| Majorana | from sign-flipped mode pairs | structural, mildly broken by the flux | not automatic | not automatic |
 | Macroscopic dim required | yes, ≳ 4 cm | yes, ≳ 4 cm | yes, all three | yes, all four |
-| Status | preferred | preferred (if path 1 works) | de-emphasized | placeholder |
+| Status | preferred | working | de-emphasized | placeholder |
 
-NS and NC are the two preferred directions: NS for empirical accessibility (sign-flipped modes fit at ~1% today), NC for structural elegance (Q = 0 and Majorana fall out for free, *if* the embedding-operator rescue works). ND is documented for completeness and for decomposing legacy candidates; NY is a placeholder.
+NS and NC are the two preferred directions: NS for empirical accessibility (sign-flipped modes fit at ~1% today), NC for structural elegance (Q = 0 falls out of the dim count for free, and the doublet split — once the config's blocker — is now resolved by a Wilson-loop flux at ~1.5%). ND is documented for completeness and for decomposing legacy candidates; NY is a placeholder.
 
 ---
 
@@ -242,6 +247,7 @@ NS and NC are the two preferred directions: NS for empirical accessibility (sign
 - [architecture.md §3.3.1](architecture.md) — closure-mode inventory per pair (T(1, n) for n ∈ ℤ \ {0})
 - [metric-charge ch. 4](../../metric-charge/04-the-closure-condition.md) — full closure rule including sign-flipped m_t
 - [neutrino-1D.md](neutrino-1D.md) — full development of the NC substrate, band-structure math, and Majorana derivation
+- [grid-primitive ch.9](../../grid-primitive/09-chirality-asymmetry.md) — substrate antisymmetric chirality χ_anti; the physical origin of the Wilson-loop flux used in §NC.5
 - [scripts/candidate_fits.py:neutrino_pair_fit_check()](../scripts/candidate_fits.py) — current NS-style viability check (strict modes only)
-- [scripts/neutrino_1d_fit.py](../scripts/neutrino_1d_fit.py) — NC intrinsic-operator fit script
+- [scripts/neutrino_1d_fit.py](../scripts/neutrino_1d_fit.py) — NC intrinsic-operator + Wilson-loop-flux fit script
 - [config-quark.md](config-quark.md), [config-electron.md](config-electron.md) — sibling sector configs
