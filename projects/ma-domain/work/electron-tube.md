@@ -3,6 +3,7 @@
 **Status:** Working hypothesis / how-to. Documents the geometric construction that makes T(1, 2) the lightest mode on a convex-only (lobe-only, no saddles) tube cross-section, and the project history that motivates favoring T(1, 2) over T(1, 1) as the electron candidate.
 
 **Cross-references:**
+- [tube-function.md](tube-function.md) — the harmonic cross-section family; supplies the exact ellipse used here as its N = 2 member
 - [candidates.md](candidates.md) — ma-domain's three topology candidates; charged leptons are already placed at T(1, 2) in B and C
 - [sheet-proton clover-mass §4](../../sheet-proton/work/clover-mass.md) — mass formula μ² = (m_r − σ_eff m_t)² + (m_t/ε)² and σ_eff = σ + 2τ derivation
 - [sheet-proton clover-quarks §11](../../sheet-proton/work/clover-quarks.md) — boundary identification k_θ = m_r − τ m_t
@@ -42,6 +43,8 @@ where ε is the tube/ring size ratio and σ_eff is the effective cross-coupling.
 | Trivial monodromy (cross-section maps back to identity after one ring rev) | **σ + τ** | τ enters only via the metric; boundary identification gives k_θ ∈ ℤ |
 
 For a convex-only profile aimed at integer-charge modes, we want **trivial monodromy** (so k_θ ∈ ℤ, no Z_n fragments). Then **σ_eff = σ + τ**.
+
+**Shape and embedding are independent layers.** This formula takes two kinds of input: the *cross-section shape* (a closed plane curve) and the *embedding* (the twist τ and shear σ that say how that curve is swept and rotated around the ring). They compose but do not interact — σ_eff is built entirely from the embedding parameters, while the cross-section shape only has to supply the right symmetry (here C₂) and convexity. The harmonic cross-section family of [tube-function.md](tube-function.md) is the shape layer; everything in §3–§7 below lives in the embedding layer and is unchanged by which member of that family is chosen.
 
 ---
 
@@ -87,6 +90,12 @@ To achieve σ_eff = 2 with trivial monodromy (integer k_θ) and a convex-only pr
 
 All three give σ_eff = 2 and put T(1, 2) at the floor. Construction A is the minimal choice — it uses the lowest-symmetry non-circular convex profile (an ellipse) and a single geometric parameter (τ = 2) to do the work.
 
+**Construction A's ellipse is an exact member of the harmonic cross-section family.** In [tube-function.md §5.1](tube-function.md), the ellipse is the N = 2 curve with first-harmonic split b₁ = −a₁ (and a₂ = b₂ = 0): z(t) = R·e^{it}·(1 + a₁·e^{−2it}), giving semi-axes R(1 ± a₁) and foci separation 4R√a₁. Three consequences for the electron substrate:
+
+- **It is a literal ellipse, not an approximation.** An earlier polar version of the tube-function approximated the ellipse with a single cosine harmonic; the harmonic form reproduces the true ellipse to machine precision. The "C₂ profile with a face" that the WvM strip picture (§4, §6.2) calls for is now an exactly-specified curve.
+- **It is convex for the entire aspect-ratio range.** An ellipse has κ > 0 everywhere for every a₁ ∈ (0, 1). The convex-only requirement of §1 and §3 is therefore satisfied automatically — there is no upper bound on the eccentricity beyond which concave regions (and unwanted fractional Z_n charge) would appear. The polar single-harmonic bilobe, by contrast, goes concave for a₁ > 1/5; using the true ellipse removes that constraint entirely.
+- **N = 2 is the minimal choice.** §4 requires only that rotational symmetry be broken; C₂ is the lowest symmetry that does so. Higher-C_n members of the family (the N = 3 rounded triangle and up) also admit τ = 2 and σ_eff = 2, but add rotational symmetry the WvM "strip with a face" picture does not call for. The ellipse is thus not merely an aesthetic pick — it is the least-structured member of the family that works.
+
 ### 5.1 Why τ = 2 for an ellipse?
 
 On an ellipse (C_2 symmetry), the cross-section maps to itself under any 180° rotation. So allowed twist values are τ ∈ {0, 1/2, 1, 3/2, 2, ...} (half-integer multiples). Of these:
@@ -104,6 +113,8 @@ On an ellipse (C_2 symmetry), the cross-section maps to itself under any 180° r
 2. Achieves σ_eff ≥ 2 (so T(1, 2) is the unique lightest m_t = 1 mode).
 
 τ = 1 gets only σ_eff = 1 (T(1, 1) wins). τ = 1/2 gets σ_eff = 1 *and* fractional charge (wrong for an electron). τ = 3/2 sits right at the degeneracy with fractional charge. Only **τ = 2 cleanly delivers integer-charge T(1, 2)-lightest**.
+
+The set of allowed twists τ ∈ {0, 1/2, 1, 3/2, 2, …} for the C₂ ellipse is the N = 2 case of the general twist-closure condition τ·N ∈ ℤ in [tube-function.md §6](tube-function.md).
 
 ---
 
@@ -157,7 +168,7 @@ So: closure admits both; WvM requires (1, 2); ma-domain assumes (1, 2); the prop
 
 For an electron sheet in the ma-domain framework:
 
-**Cross-section:** Ellipse (C_2 symmetry — the lowest-symmetry convex profile that admits non-trivial twist). Aspect ratio is a free parameter; the only requirement is that the cross-section is *not* a perfect circle.
+**Cross-section:** Ellipse (C₂ symmetry — the lowest-symmetry convex profile that admits non-trivial twist), realized exactly as the N = 2, b₁ = −a₁ member of the harmonic family in [tube-function.md §5.1](tube-function.md). Aspect ratio is a free parameter — an ellipse is convex at every eccentricity, so no value of it can spoil the convex-only / integer-charge requirement. The only excluded case is the perfect circle (§4).
 
 **Embedding twist:** τ = 2 — the cross-section's major axis traces a double helix, completing two full revolutions per ring revolution.
 
@@ -177,13 +188,13 @@ This is the geometric realisation of the WvM electron postulate inside the ma-do
 
 1. **Does the spin-½ derivation transfer cleanly?** WvM's spin argument uses a confined photon with fixed total angular momentum. The metric-charge / ma-domain framework treats wavemodes as Bloch states on a compact surface. The structural argument ("field vectors return to orientation after 720° → fermion") should carry over, but a clean derivation of L = ℏ/2 from T(1, 2) on the ellipse-tube has not been written down here.
 
-2. **What sets ε (the cross-section size)?** The ground-state mass is μ_e = 1/ε, so the electron mass fixes ε. In WvM, the size is constrained to be approximately the Compton wavelength λ_C; here, ε would correspond to L_minor / L_major of the host dim-pair in the candidates.md fits. Are these consistent?
+2. **What sets ε (the cross-section aspect)?** The ground-state mass is μ_e = 1/ε. The harmonic ellipse makes the aspect explicit: its semi-axes are R(1 ± a₁), so the minor/major ratio is (1 − a₁)/(1 + a₁) — a single function of the shape parameter a₁. What remains open is what physically pins a₁ (equivalently the eccentricity), and whether the resulting ε is consistent with the L_minor / L_major of the host dim-pair in the [candidates.md](candidates.md) fits and with WvM's Compton-wavelength size constraint.
 
 3. **Is τ = 2 stable against geometric fluctuations?** A small deviation in the twist (τ = 2 − δ) keeps σ_eff just below 2 and the cross term (m_r − σ_eff m_t)² becomes δ² for T(1, 2), so the ground state is perturbed but doesn't switch. The construction is robust at the leading order, but second-order corrections (analogous to clover-mass §6) have not been computed.
 
-4. **Why ellipse rather than higher-C_n?** Aesthetic minimality. A C_5 or C_6 profile with τ = 2 also works (still σ_eff = 2), but adds rotational symmetry that the WvM strip picture does not require. The ellipse matches the WvM "strip with a face" most directly.
+4. **Connection to per-pair σ_eff values in candidates.md.** The fits report σ_eff ∈ [1.684, 1.976] for quark pairs and presumably ≈ 2 for lepton pairs (since T(1, 2) is the ground state on each lepton pair). Confirming that the fitted σ_eff values are physical (i.e., correspond to realisable τ, σ combinations) is the natural next step.
 
-5. **Connection to per-pair σ_eff values in candidates.md.** The fits report σ_eff ∈ [1.684, 1.976] for quark pairs and presumably ≈ 2 for lepton pairs (since T(1, 2) is the ground state on each lepton pair). Confirming that the fitted σ_eff values are physical (i.e., correspond to realisable τ, σ combinations) is the natural next step.
+*(The earlier open question "why ellipse rather than higher-C_n?" is now resolved in §5: the ellipse is the least-structured — lowest non-trivial symmetry — member of the harmonic family that meets §4's broken-rotational-symmetry requirement.)*
 
 ---
 
