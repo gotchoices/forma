@@ -43,6 +43,8 @@ In the diagrams below, nodes are Ma dims (m1..m_N), edges are dim-pairs labelled
 
 Each candidate is drawn as three (or fewer) per-sector subgraphs. **Shared dims** (a node that appears in more than one sub-graph) are called out in text below each sub-graph; the same label name always refers to the same dim.
 
+Edges are labelled with the particle pair (or single particle) they host where this is determined by the fit; placeholder labels where the assignment is permutation-symmetric; left unlabelled where the fit has not been done.
+
 **Candidate C — wye + e-delta + ν-delta:**
 
 ```
@@ -50,7 +52,7 @@ Each candidate is drawn as three (or fewer) per-sector subgraphs. **Shared dims*
 
          m1   m3   m4
           \   |   /
-           p  p  p
+          tb  cs  ud
             \ | /
              m5
 
@@ -59,12 +61,12 @@ Each candidate is drawn as three (or fewer) per-sector subgraphs. **Shared dims*
 
            m2
           /  \
-         e    e
+         τ    μ
         /      \
-       m4 -e- m5
+       m4 - e- m5
 
   (m4 and m5 are also in the quark wye; the pair (m4, m5) carries
-   both a `p` edge — quark u/d on a clover cross-section — and an
+   both a `ud` edge — quark u/d on a clover cross-section — and an
    `e` edge — electron on an ellipse cross-section. Different
    cross-sections, different σ_eff, same dim-pair geometry.)
 
@@ -73,11 +75,13 @@ Each candidate is drawn as three (or fewer) per-sector subgraphs. **Shared dims*
 
            m8
           /  \
-         v    v
+         ν₁   ν₂
         /      \
-       m6 -v- m7
+       m6 -ν₃- m7
 
-  (no shared dims with quark wye or e-delta)
+  (ν label assignment is permutation-symmetric — the three pairs are
+   structurally interchangeable; different fit seeds map ν₁, ν₂, ν₃
+   onto different pairs. No shared dims with quark wye or e-delta.)
 ```
 
 **Candidate B — wye + e-delta + ν pair:**
@@ -87,7 +91,7 @@ Each candidate is drawn as three (or fewer) per-sector subgraphs. **Shared dims*
 
          m1   m3   m4
           \   |   /
-           p  p  p
+          tb  cs  ud
             \ | /
              m5
 
@@ -96,40 +100,74 @@ Each candidate is drawn as three (or fewer) per-sector subgraphs. **Shared dims*
 
            m2
           /  \
-         e    e
+         τ    μ
         /      \
-       m4 -e- m5    (m4, m5 also in quark wye)
+       m4 - e- m5    (m4, m5 also in quark wye)
 
 
   Neutrino pair on (m6, m7):
 
-       m6 -v- m7    (no shared dims)
+       m6 --ν-- m7    (no shared dims)
+
+  (single pair cannot host 3 ν mass eigenstates under strict closure;
+   ν₁, ν₂, ν₃ can only be placed if sign-flipped m_t modes are
+   admitted — see §4.)
 ```
 
 **Candidate A — wye + e-path + ν pair:**
+
+```mermaid
+%%{init: { "flowchart": { "nodeSpacing": 25, "rankSpacing": 40, "curve": "basis" }, "themeVariables": { "fontSize": "12px" } } }%%
+graph LR
+    m1[m1: 0.007 fm]
+    m2[m2: 0.7 fm]
+    m3[m3: 0.91 fm]
+    m4[m4: 181 fm]
+    m5[m5: 5740 fm]
+    m6[m6]
+    m7[m7]
+
+    %% --- quark sector (red) ---
+    m1 ==>|tb| m5
+    m3 ==>|cs| m5
+    m4 ==>|ud| m5
+    linkStyle 0,1,2 stroke:red
+
+    %% --- electron sector (blue) ---
+    m1 ==>|e| m3
+    m1 ==>|e| m2
+    m2 ==>|e| m5
+    linkStyle 3,4,5 stroke:blue
+
+    %% --- neutrino sector (green) ---
+    m6 ==>|ν| m7
+    linkStyle 6 stroke:green
+```
+
+*(Convention used: rectangles `[label]` for tighter bubbles; thick `==>` arrows for all 2D-torus pairs, ring→tube; `linkStyle` declarations immediately after each sector group, so colors live next to their edges. For 1D substrates (e.g., wye-ladder's m7), use `-.->` dotted thin arrows instead.)*
 
 ```
   Quark wye (hub m5):
 
          m1   m3   m4
           \   |   /
-           p  p  p
+          tb  cs  ud
             \ | /
              m5
 
 
   Electron path m3—m1—m2—m5  (chain of 3 e-edges through 4 dims):
 
-       m3 -e- m1 -e- m2 -e- m5
+       m3 --e- m1 --e- m2 --e- m5
 
-  (m1, m3, m5 also in quark wye; m2 is a new lepton-scale dim.
-   No clean shape — the chain reuses three quark dims and threads
-   through the lepton dim m2.)
+  (lepton-to-edge assignment NOT fit for A; m1, m3, m5 also in
+   quark wye; m2 is a new lepton-scale dim. No clean shape — the
+   chain reuses three quark dims and threads through m2.)
 
 
   Neutrino pair on (m6, m7):
 
-       m6 -v- m7    (no shared dims)
+       m6 --ν-- m7    (single pair, same caveat as B)
 ```
 
 The visual awkwardness of A — the e-path threading through three quark-region dims in a chain rather than forming a clean delta — is the same structural awkwardness called out in §5 below: A has no clean per-sector geometric shape, while B and C do.
