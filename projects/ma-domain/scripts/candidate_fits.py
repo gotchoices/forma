@@ -218,6 +218,98 @@ def electron_delta_fit(L_fixed: dict, n_seeds: int = 20) -> dict:
 
 
 # ===============================================================
+# Electron sector — wye variant (wye-ladder topology)
+# Ma((1, 6), (3, 6), (6, 7))  — hub at m6, spokes m1 (shared with quark
+# wye), m3 (shared with quark wye), and m7 (new e-region dim).
+# Hypothesis: 1 lepton per pair at T(1, 2); the same small dims m1 and
+# m3 that play ring for the heaviest quarks (b/t, c/s) also play ring
+# for the heaviest leptons (τ, μ).  m2 is unused in wye-ladder
+# (was the lepton-scale dim in Candidate C; reserved/skipped here).
+# ===============================================================
+
+def electron_wye_fit(L_fixed: dict, n_seeds: int = 30) -> dict:
+    """
+    Fit (e, μ, τ) on the wye Ma((1, 6), (3, 6), (6, 7))  [wye-ladder].
+    L_fixed: dict of inherited L values, e.g. {1: 0.007, 3: 0.91}
+    Unknowns: L_6 (e-wye hub), L_7 (e-region dim), σ for each pair,
+    plus tube/ring assignment per pair.
+
+    Each pair hosts ONE charged lepton at T(1, 2).
+    Try all 6 (lepton → pair) assignments and all 2^3 tube/ring choices.
+    5 free continuous params vs 3 lepton masses → underdetermined.
+    """
+    pairs = [(1, 6), (3, 6), (6, 7)]
+    leptons = list(LEPTON.keys())
+
+    def mass(L_T: float, L_R: float, sigma_eff: float) -> float:
+        delta = 2 - sigma_eff
+        return COEFF * sqrt((1 / L_T) ** 2 + (delta / L_R) ** 2)
+
+    def predict(x: np.ndarray, lepton_to_pair: list, tube_is_first: list) -> dict:
+        """x = [log10 L_6, log10 L_7, σ for each of 3 pairs]"""
+        L_6 = 10 ** x[0]
+        L_7 = 10 ** x[1]
+        sigmas = {pairs[i]: x[2 + i] for i in range(3)}
+        Ls = {1: L_fixed[1], 3: L_fixed[3], 6: L_6, 7: L_7}
+        out = {}
+        for i, lepton in enumerate(lepton_to_pair):
+            d1, d2 = pairs[i]
+            if tube_is_first[i]:
+                L_T, L_R = Ls[d1], Ls[d2]
+            else:
+                L_T, L_R = Ls[d2], Ls[d1]
+            out[lepton] = mass(L_T, L_R, sigmas[pairs[i]])
+        return out
+
+    def residuals(x, lepton_to_pair, tube_is_first):
+        try:
+            pred = predict(x, lepton_to_pair, tube_is_first)
+            return [log10(pred[lep] / LEPTON[lep]) if pred[lep] > 0 else 1e6
+                    for lep in leptons]
+        except (ValueError, ZeroDivisionError):
+            return [1e6] * 3
+
+    best = None
+    for lepton_perm in permutations(leptons):
+        lepton_to_pair = list(lepton_perm)
+        for tube_combo in [(a, b, c) for a in (True, False)
+                                       for b in (True, False)
+                                       for c in (True, False)]:
+            for seed in range(n_seeds):
+                rng = np.random.default_rng(seed)
+                x0 = [
+                    rng.uniform(-3, 6),    # log10 L_6 (e-wye hub)
+                    rng.uniform(-3, 6),    # log10 L_7 (e-region dim)
+                    rng.uniform(0.5, 2.5),
+                    rng.uniform(0.5, 2.5),
+                    rng.uniform(0.5, 2.5),
+                ]
+                try:
+                    res = least_squares(
+                        residuals, x0,
+                        args=(lepton_to_pair, list(tube_combo)),
+                        bounds=([-5, -5, 0, 0, 0], [10, 10, 3, 3, 3]),
+                        method="trf", max_nfev=2000,
+                    )
+                    pred = predict(res.x, lepton_to_pair, list(tube_combo))
+                    max_err = max(abs(100 * (pred[lep] - LEPTON[lep]) / LEPTON[lep])
+                                  for lep in leptons)
+                    if best is None or max_err < best["max_err"]:
+                        best = {
+                            "max_err": max_err,
+                            "lepton_to_pair_arrangement": list(zip(pairs, lepton_to_pair)),
+                            "tube_is_first": list(tube_combo),
+                            "L_6": 10 ** res.x[0],
+                            "L_7": 10 ** res.x[1],
+                            "sigma_eff": {pairs[i]: res.x[2 + i] for i in range(3)},
+                            "predictions": pred,
+                        }
+                except Exception:
+                    continue
+    return best
+
+
+# ===============================================================
 # Neutrino sector
 # ===============================================================
 
@@ -386,12 +478,37 @@ def candidate_C():
     }
 
 
+def candidate_W():
+    """Wye-ladder: quark wye + electron wye (sharing rings m1, m3) + 1D ν on m8.
+
+    The electron wye uses m1 (b/t quark ring) and m3 (c/s quark ring)
+    as its own ring dims, plus a new hub m6 and a new e-region dim m7.
+    The ν sector is a 1D shaped substrate on m8 (per neutrino-1D.md);
+    not fit here.
+    """
+    quark = quark_wye_fit()
+    L_e_inherit = {1: quark["Ls"][1], 3: quark["Ls"][3]}
+    electron = electron_wye_fit(L_e_inherit)
+    return {
+        "name": "Wye-ladder (wye + wye + 1D ν, 7 dims)",
+        "quark_topology": "Ma((1,5), (3,5), (4,5)) — wye, hub at m5",
+        "electron_topology": "Ma((1,6), (3,6), (6,7)) — wye, hub at m6 (rings m1, m3 SHARED with quark wye)",
+        "neutrino_topology": "1D shaped substrate on m8 (see neutrino-1D.md); not fit here",
+        "n_dims": 7,  # m1, m3, m4, m5, m6, m7, m8 — m2 is unused
+        "quark": quark,
+        "electron": electron,
+        "neutrino_note": ("1D substrate; band-structure fit requires a separate "
+                          "neutrino_1d_fit.py per neutrino-1D.md. Not implemented "
+                          "in this script."),
+    }
+
+
 def main():
     out_dir = Path(__file__).resolve().parents[1] / "outputs"
     out_dir.mkdir(parents=True, exist_ok=True)
     out_path = out_dir / "candidate_fits.txt"
 
-    candidates = [candidate_A(), candidate_B(), candidate_C()]
+    candidates = [candidate_A(), candidate_B(), candidate_C(), candidate_W()]
     lines = []
     lines.append("=" * 90)
     lines.append("ma-domain candidate fits")
@@ -427,12 +544,25 @@ def main():
                 lines.append(f"    {lep:4s} pred = {e['predictions'][lep]:>10.4g}  "
                              f"obs = {LEPTON[lep]:>10.4g}  Δ% = {err:+.2f}%")
             lines.append(f"  Electron lepton→pair: {e['lepton_to_pair_arrangement']}")
-            lines.append(f"  L_2 (new e-sector dim) = {e['L_2']:.4g} fm")
+            if "L_2" in e:
+                lines.append(f"  L_2 (new e-sector dim) = {e['L_2']:.4g} fm")
+            if "L_6" in e:
+                lines.append(f"  L_6 (e-wye hub) = {e['L_6']:.4g} fm,  "
+                             f"L_7 (e-region dim) = {e['L_7']:.4g} fm")
+            lines.append(f"  σ_eff per pair:")
+            for pair, s in e['sigma_eff'].items():
+                lines.append(f"    Ma{pair}: σ_eff = {s:.4f}")
             lines.append("")
         elif "electron_note" in c:
             lines.append(f"  ELECTRON FIT: {c['electron_note']}")
             lines.append("")
         # Neutrino
+        if "neutrino" not in c and "neutrino_note" in c:
+            lines.append(f"  NEUTRINO: {c['neutrino_note']}")
+            lines.append("")
+            lines.append("-" * 90)
+            lines.append("")
+            continue
         nu = c["neutrino"]
         if "max_err" in nu:
             lines.append(f"  NEUTRINO FIT: max |Δ%| = {nu['max_err']:.3f}%")

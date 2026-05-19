@@ -52,6 +52,10 @@ ma-domain candidate fits
     tau  pred =       1777  obs =       1777  Δ% = +0.00%
   Electron lepton→pair: [((2, 4), 'tau'), ((2, 5), 'mu'), ((4, 5), 'e')]
   L_2 (new e-sector dim) = 0.6978 fm
+  σ_eff per pair:
+    Ma(2, 4): σ_eff = 1.2051
+    Ma(2, 5): σ_eff = 1.9405
+    Ma(4, 5): σ_eff = 1.9322
 
   NEUTRINO check: NOT VIABLE under strict closure: a single pair has at most 2 modes at m_t=1, but 3 ν mass eigenstates are observed.  Both ν dims are fresh; meV scale requires min(L_T, L_R) ≥ 4.1e+10 fm. The B-candidate rescue uses sign-flipped m_t modes — see candidates.md §4.
     L floor required for m_ν₁ = 30 meV: 4.1e+10 fm
@@ -82,12 +86,49 @@ ma-domain candidate fits
     tau  pred =       1777  obs =       1777  Δ% = +0.00%
   Electron lepton→pair: [((2, 4), 'tau'), ((2, 5), 'mu'), ((4, 5), 'e')]
   L_2 (new e-sector dim) = 0.6978 fm
+  σ_eff per pair:
+    Ma(2, 4): σ_eff = 1.2051
+    Ma(2, 5): σ_eff = 1.9405
+    Ma(4, 5): σ_eff = 1.9322
 
   NEUTRINO FIT: max |Δ%| = 0.000%
     nu1  pred =      3e-08  obs =      3e-08  Δ% = -0.00%
     nu2  pred =    3.3e-08  obs =    3.3e-08  Δ% = +0.00%
     nu3  pred =      6e-08  obs =      6e-08  Δ% = -0.00%
   L_6 = 7.138e+11 fm,  L_7 = 2.15e+10 fm,  L_8 = 3.759e+10 fm
+
+------------------------------------------------------------------------------------------
+
+### Wye-ladder (wye + wye + 1D ν, 7 dims)  (7 dims)
+  Quark    topology: Ma((1,5), (3,5), (4,5)) — wye, hub at m5
+  Electron topology: Ma((1,6), (3,6), (6,7)) — wye, hub at m6 (rings m1, m3 SHARED with quark wye)
+  Neutrino topology: 1D shaped substrate on m8 (see neutrino-1D.md); not fit here
+
+  QUARK FIT: max |Δ%| = 0.499%  (6 quarks)
+    u   pred =      2.171  obs =       2.16  Δ% = +0.50%
+    d   pred =      4.675  obs =       4.67  Δ% = +0.11%
+    s   pred =         93  obs =         93  Δ% = +0.00%
+    c   pred =       1270  obs =       1270  Δ% = +0.00%
+    b   pred =       4180  obs =       4180  Δ% = +0.00%
+    t   pred =   1.73e+05  obs =   1.73e+05  Δ% = +0.00%
+  Quark L's (size-ordered):
+    L_1 = 0.006998 fm
+    L_3 = 0.9096 fm
+    L_4 = 181.5 fm
+    L_5 = 5740 fm
+
+  ELECTRON FIT (1 mode per pair, T(1,2)): max |Δ%| = 0.000%
+    e    pred =      0.511  obs =      0.511  Δ% = -0.00%
+    mu   pred =      105.7  obs =      105.7  Δ% = -0.00%
+    tau  pred =       1777  obs =       1777  Δ% = +0.00%
+  Electron lepton→pair: [((1, 6), 'mu'), ((3, 6), 'tau'), ((6, 7), 'e')]
+  L_6 (e-wye hub) = 1916 fm,  L_7 (e-region dim) = 1.077e+05 fm
+  σ_eff per pair:
+    Ma(1, 6): σ_eff = 1.9994
+    Ma(3, 6): σ_eff = 0.6964
+    Ma(6, 7): σ_eff = 1.2105
+
+  NEUTRINO: 1D substrate; band-structure fit requires a separate neutrino_1d_fit.py per neutrino-1D.md. Not implemented in this script.
 
 ------------------------------------------------------------------------------------------
 

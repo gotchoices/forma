@@ -1,6 +1,6 @@
 # wye-ladder.md — Two-wye ladder with shared rings
 
-**Status:** Active candidate. Replaces sym-ladder's failed proton-delta with a proton-wye, and uses a matching electron-wye that *shares ring dims* with the quark wye. The neutrino sector lives on a 1D shaped substrate per [neutrino-1D.md](neutrino-1D.md). Aims to combine the wye's empirical fit success (Candidate C's quark sector) with sym-ladder's "stable center, unstable legs" interpretation.
+**Status:** Tested and deprioritized. Replaces sym-ladder's failed proton-delta with a proton-wye, and uses a matching electron-wye that *shares ring dims* with the quark wye. The neutrino sector was to live on a 1D shaped substrate per [neutrino-1D.md](neutrino-1D.md). The architecture's headline appeal was a *unified R53 mechanism* across all charged leptons. **The numerical e-wye fit (§3.3) does not support that appeal** — the σ_eff values come out scattered (one extremely fine-tuned to 1.9994), wider in range than Candidate C's. Wye-ladder is documented here as a tested alternative; Candidate C remains the working topology. See §7 for the net assessment and conditions under which wye-ladder should be re-pursued.
 
 **Cross-references:**
 - [sym-ladder.md](sym-ladder.md) — previous ladder candidate; its proton-delta failed (Test A 137%, Test B 1784%). The structural lessons learned there motivate the wye-only ladder here.
@@ -110,21 +110,46 @@ This is consistent with [architecture.md §3.4](architecture.md)'s pair-triplet 
 
 Identical to Candidate C's quark sector. See [quark-search.md §9](quark-search.md) for the full derivation. Result: 6 quarks fit at max |Δ%| = 0.499% with σ_eff = 1.976 (t/b), 1.932 (c/s), 1.684 (u/d). Geometry: L_1 = 0.007 fm, L_2 = 0.91 fm, L_3 = 181 fm, L_4 ≳ 5740 fm.
 
-### 3.2 Electron wye
+### 3.2 Electron wye — analytical estimate
 
-The e-wye hosts (e, μ, τ) on pairs Ma((1, 5), (2, 5), (5, 6)), inheriting L_1, L_2 from the quark wye and adding two new dims L_5, L_6. Per-pair tube/ring choice is free; expected assignment (heaviest lepton on tightest ring):
+The e-wye hosts (e, μ, τ) on pairs Ma((1, 6), (3, 6), (6, 7)) (candidates.md labels), inheriting L_1, L_3 from the quark wye and adding two new dims L_6, L_7. Per-pair tube/ring choice is free. **The analytical heuristic** (heaviest lepton on tightest ring; all σ_eff near R53 value 2):
 
-| Pair | Lepton | Tube | Ring | σ_eff (estimated) | Mass formula | Solves to |
-|---|---|---|---|---:|---|---|
-| Ma(1, 5) | τ | m5 (≈ 2400 fm) | m1 (0.007 fm) | **≈ 1.990** | m_τ ≈ 1240 · δ / L_1 | δ ≈ 0.01 |
-| Ma(2, 5) | μ | m5 | m2 (0.91 fm) | **≈ 1.917** | m_μ ≈ 1240 · δ / L_2 | δ ≈ 0.078 |
-| Ma(5, 6) | e | m5 | m6 (free, ~1000s of fm) | various | m_e ≈ 1240 / L_5 | sets L_5 ≈ 2426 fm |
+| Pair | Lepton (predicted) | Tube | Ring | σ_eff (predicted) |
+|---|---|---|---|---:|
+| Ma(1, 6) | τ | m6 (≈ 2400 fm) | m1 (0.007 fm) | ≈ 1.990 |
+| Ma(3, 6) | μ | m6 | m3 (0.91 fm) | ≈ 1.917 |
+| Ma(6, 7) | e | m6 | m7 (free) | various |
 
-All three σ_eff values land at or near σ_eff = 2 — the R53 magic-shear value. The deviations from 2 are 1% for τ and 8% for μ — comparable to or smaller than R53's own published deviation of 0.2% from σ_eff = 2.004. **This is consistent with the R53 mechanism, not extreme fine-tuning.**
+**Predicted appeal:** all three σ_eff near 2 — unified R53 mechanism across the charged-lepton sector.
 
-**L_5 is pinned by the electron mass.** With m_e at the floor of the (5, 6) pair (mass = 2πℏc/L_5), L_5 ≈ 2426 fm — comparable to the τ Compton wavelength's wider-cousin. This same L_5 plays tube in the τ and μ pairs, where its 1/L_5 contribution is negligible compared to the much larger δ/L_R contribution.
+### 3.3 Electron wye — actual numerical fit (December 2025)
 
-**L_6 is loosely constrained.** Since m_e is set by L_5 alone (the 1/L_T term dominates the e mass formula), L_6 contributes only via the small δ/L_6 correction. L_6 can sit anywhere within ~1 order of magnitude of L_5 and the e mass still fits. This is one fewer fully-pinned dim than Candidate C's e-delta — a structural freedom that should be either justified or constrained.
+The script [scripts/candidate_fits.py:electron_wye_fit()](../scripts/candidate_fits.py) implements the e-wye fit and was run; results in [outputs/candidate_fits.txt](../outputs/candidate_fits.txt) under "Wye-ladder". The fit closes (max |Δ%| = 0.000%) but **the σ_eff values do NOT support the unified-R53 prediction**:
+
+| Pair | Lepton (FOUND) | Tube | Ring | σ_eff (FOUND) |
+|---|---|---|---|---:|
+| Ma(1, 6) | **μ** (not τ) | m6 | m1 | **1.9994** (extreme R53 fine-tuning, 0.06% off from 2) |
+| Ma(3, 6) | **τ** (not μ) | m6 | m3 | **0.6964** (NOT R53; near T(1, 1) center) |
+| Ma(6, 7) | e | m7 (large) | m6 | **1.2105** (mid-range, between T(1, 1) and T(1, 2) centers) |
+
+L_6 (e-wye hub) ≈ 1916 fm; L_7 (e-region dim) ≈ 1.077 × 10⁵ fm (~0.1 mm — same scale as the *pre-refactor* C electron dim that we identified as unphysical).
+
+**Three findings that undermine wye-ladder's claimed advantage:**
+
+1. **σ_eff range (0.70 to 1.9994) is *wider* than Candidate C's (1.00 to 1.94)** — wye-ladder is *less* unified, not more.
+2. **The 1.9994 fine-tuning on μ is more extreme than anything in Candidate C** — it's the same flavor of R53 over-tuning that motivated us to abandon the pre-refactor C electron placement.
+3. **The fit is underdetermined** — 5 free continuous params (L_6, L_7, 3 σ_eff) vs 3 masses leaves a 2-parameter family of solutions; the optimizer returned one of them, not "the" solution. A different starting point could land elsewhere on the manifold.
+
+**The "unified R53 mechanism" prediction in §3.2 was wrong.** The mathematical fit doesn't naturally pick out σ_eff ≈ 2 for all three leptons; the underdetermination gives the optimizer freedom to spread σ_eff across the full (0, 2) range, and it does so. Without an additional constraint (e.g., "all σ_eff must be near 2"), wye-ladder doesn't deliver on the structural unification it promised.
+
+Candidate C is now strictly cleaner on the σ_eff naturalness comparison:
+
+| Property | Candidate C | Wye-ladder |
+|---|:---:|:---:|
+| σ_eff range across all charged leptons | 1.00 to 1.94 | 0.70 to 1.9994 |
+| Most-fine-tuned σ_eff | 1.94 (μ, 3% off from 2) | **1.9994 (μ, 0.06% off from 2)** |
+| Fit underdetermination | 4 params for 3 masses (1 DOF) | 5 params for 3 masses (2 DOF) |
+| Unified mechanism? | partial — τ at different center | no — σ_eff scattered |
 
 ### 3.3 Neutrino sector (1D substrate)
 
@@ -209,10 +234,24 @@ If wye-ladder is to compete with Candidate C as the working topology, the follow
 
 ---
 
-## 7. Net assessment
+## 7. Net assessment (updated after e-wye fit)
 
-Wye-ladder is a strong candidate that combines the wye's empirical fit success with sym-ladder's structural elegance. It uses fewer dims than Candidate C, provides a unified R53 mechanism for charged leptons, and gives a structural reason for the observed stability hierarchy. The 1D neutrino substrate is novel but already partially developed in [neutrino-1D.md](neutrino-1D.md).
+Wye-ladder PROMISED two main advantages over Candidate C:
+1. **Unified R53 mechanism** across all charged leptons (single σ_eff regime ≈ 2)
+2. **Fewer dims** (7 vs 8) via 1D neutrino substrate
 
-**The decisive test** is whether the e-wye numerical fit closes with σ_eff values within R53's natural range. The analytical estimates in §3.2 suggest it will. Once that's verified, wye-ladder becomes a serious alternative to Candidate C — possibly the preferred working topology, depending on the §4 comparison criteria.
+The e-wye numerical fit (§3.3) **falsifies advantage #1**. The σ_eff values come out as (1.9994, 0.70, 1.21) — wider range than Candidate C's (1.94, 1.00, 1.93), with one value (1.9994 for μ) more fine-tuned than anything in C. The "unified mechanism" prediction was an analytical heuristic that the actual fit doesn't deliver — the fit is underdetermined (5 params for 3 masses) and the optimizer's preferred solution spreads σ_eff broadly.
 
-**Status going forward:** track in parallel with Candidate C. Run the numerical tests in §6.1 and §6.2. Update [candidates.md](candidates.md) with wye-ladder as a fourth candidate once verified. Defer the choice of which to promote (Candidate C vs wye-ladder) until both have been fully tested through Phase 4 coherence checks.
+Advantage #2 (fewer dims) is still potentially real, but it depends on the 1D neutrino substrate working — and developing/testing that machinery is a substantial new investment.
+
+The remaining structural appeals (shared-ring β-decay coupling, structural stability hierarchy) are interpretively interesting but don't constitute fit-quality wins.
+
+**Current status: tested and not preferred.** Candidate C remains the working topology. Wye-ladder is documented as a tested-and-deprioritized alternative.
+
+**Conditions under which wye-ladder should be re-pursued:**
+- An additional constraint emerges that picks out a more natural σ_eff solution from the e-wye solution manifold (e.g., "all σ_eff must lie in [1, 2]") and produces a unified R53 fit
+- A different e-wye topology (different shared dims, or compound modes) gives σ_eff values cleaner than Candidate C's
+- Candidate C runs into a structural obstruction in Phase 4 (cross-term sparsity, σ vs τ pinning) that wye-ladder's geometry avoids
+- The 1D neutrino substrate proves so structurally compelling (charge=0 + Majorana falling out from dim count) that it's worth developing for its own sake — in which case wye-ladder could be revived as the natural quark+e+ν host
+
+Until one of these holds, wye-ladder development is paused.
