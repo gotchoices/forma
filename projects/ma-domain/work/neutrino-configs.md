@@ -110,13 +110,21 @@ So the 1:1:2 spectral pattern is what this substrate-and-operator combination na
 
 **Architecturally appealing but the intrinsic-operator fit on a polar `cos`-harmonic curve doesn't reproduce the observed hierarchy.** Q = 0 and Majorana fall out for free. But the curve family + intrinsic operator naturally produces 1:1:2, not 1:1.1:2.
 
-Two paths remain unexplored that could change this:
+**Structural reason for the wall.** The lowest modes on a closed 1D loop have wavelength comparable to the total arc length L — they integrate over the whole loop and don't resolve local shape features. The intrinsic operator senses only L. So any closed-loop tube function under the intrinsic operator gives the 1:1:2 pattern at low modes, with shape perturbing it only at the 10⁻⁵ level. The wall is the **operator**, not the shape. Picking a different tube function (more lobes, different harmonics, etc.) will not break it.
 
-1. **Embedding picture with V_geom = −ℏ²κ²/(8m)** (Jensen-Koppe / da Costa). The intrinsic operator ignores the geometric potential coming from how the curve sits in its embedding plane. The κ² potential is highly localized at high-curvature regions and acts very differently on cos- vs sin-symmetric modes — a strong candidate for splitting the doublet. Worth coding as a separate script using a uniform arc-length grid.
+Four paths could rescue N1; ranked roughly by structural cleanliness:
 
-2. **Richer shape parameterization.** The polar `r(φ)` with only cos-harmonics produces curves with approximate reflection or rotational symmetries. A Cartesian / Fourier mix of cos and sin terms — or an arc-length parameterization that doesn't go through polar coordinates — might break the residual symmetry that protects the doublet.
+1. **Embedding picture with V_geom = −ℏ²κ²/(8m)** (Jensen-Koppe / da Costa). The strongest candidate, and the only one that preserves the "pure 1D substrate" purity. The intrinsic operator ignores the geometric potential coming from how the curve sits in its embedding plane. The κ² potential is highly localized at high-curvature regions and acts very differently on cos- vs sin-symmetric modes — a strong candidate for splitting the doublet. Worth coding as a separate script using a uniform arc-length grid. ~150 lines of new code.
 
-In the absence of one of these rescues, **N2 is the preferred ν config**: the 2D-sheet topology with sign-flipped m_t modes is spot-checked at ~1%, and the 10% doublet split is structurally easy on a 2D pair (two independent dim scales available).
+2. **Different 1D topology** — figure-8, theta graph, multiple disconnected loops. Fundamentally different spectrum. Bigger architectural change but still "pure 1D." Mass eigenstates emerge from the topology's branch structure, not from a single loop's harmonics.
+
+3. **One tiny extra dim** appended to the ν loop, effectively making `Ma(ν_loop, ν_tiny)` a 2D sheet with extreme aspect ratio (L_loop ~ cm, L_tiny ~ fm). At meV scales only the n_tiny = 0 sector is accessible, but the cross-term σ between the two dims still acts on those modes (via virtual coupling through the heavy n_tiny ≥ 1 sector). This gives the loop spectrum a σ-dependent perturbation that *can* break the doublet — exactly the freedom missing in pure 1D. **This is essentially N2 in disguise** (or a near-degenerate limit of it). If pursued, it should be recognized as N2 with an aspect-ratio constraint, not as a distinct config.
+
+4. **Three tiny extra dims** appended to the ν loop, giving three independent cross-terms σ_{loop, i} acting on the loop spectrum. Three free shear parameters to tune three mass eigenstates — underdetermined and easy to fit. Architectural cost is the highest: it uses "tiny dims" as a backdoor for adding adjustable knobs, and Q = 0 has to be argued for each extra dim individually (each must be closure-rule-trivial in 2D). The N1 appeal (charge=0 and Majorana from dim count) dilutes. Reads as a parameter-fitting exercise rather than a structural prediction.
+
+**Tube-function shape is not the right knob.** Multiple lobes, more cos-harmonics, exotic shape functions — all stay within the same operator + curve family that hits the 6% wall. The lever has to be the operator (path 1) or the topology (path 2), or you give up "pure 1D" and accept either an N2-equivalent (path 3) or a knob-laden version (path 4).
+
+In the absence of one of these rescues, **N2 is the preferred ν config**: the 2D-sheet topology with sign-flipped m_t modes is spot-checked at ~1%, and the 10% doublet split is structurally easy on a 2D pair (two independent dim scales available). The natural next investigation is path 1 (embedding picture) — it's the only path that preserves N1's structural advantage over N2.
 
 ---
 
