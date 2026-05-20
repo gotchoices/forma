@@ -24,53 +24,67 @@ FIT: compliant solution found (best max |Delta%| = 0.0000%).
   -> multiple discrete solutions exist (see list below).
 
 Compliant discrete combos (best first):
-  err=0.0000%  tube/ring=RTRRRT  Ma('m1', 'm5'):b/t, Ma('m3', 'm5'):u/d, Ma('m4', 'm5'):s/c, Ma('m1', 'm3'):mu, Ma('m1', 'm2'):tau, Ma('m2', 'm5'):e
-  err=0.0000%  tube/ring=RRRTTR  Ma('m1', 'm5'):u/d, Ma('m3', 'm5'):b/t, Ma('m4', 'm5'):s/c, Ma('m1', 'm3'):mu, Ma('m1', 'm2'):tau, Ma('m2', 'm5'):e
-  err=0.0000%  tube/ring=RRRTTR  Ma('m1', 'm5'):u/d, Ma('m3', 'm5'):b/t, Ma('m4', 'm5'):s/c, Ma('m1', 'm3'):tau, Ma('m1', 'm2'):mu, Ma('m2', 'm5'):e
   err=0.0000%  tube/ring=RRRTRR  Ma('m1', 'm5'):u/d, Ma('m3', 'm5'):s/c, Ma('m4', 'm5'):b/t, Ma('m1', 'm3'):tau, Ma('m1', 'm2'):mu, Ma('m2', 'm5'):e
-  err=0.0000%  tube/ring=RRTTRT  Ma('m1', 'm5'):s/c, Ma('m3', 'm5'):b/t, Ma('m4', 'm5'):u/d, Ma('m1', 'm3'):tau, Ma('m1', 'm2'):mu, Ma('m2', 'm5'):e
   err=0.0000%  tube/ring=RRRTRR  Ma('m1', 'm5'):u/d, Ma('m3', 'm5'):b/t, Ma('m4', 'm5'):s/c, Ma('m1', 'm3'):tau, Ma('m1', 'm2'):mu, Ma('m2', 'm5'):e
-  err=0.0000%  tube/ring=RRRRRT  Ma('m1', 'm5'):b/t, Ma('m3', 'm5'):s/c, Ma('m4', 'm5'):u/d, Ma('m1', 'm3'):tau, Ma('m1', 'm2'):mu, Ma('m2', 'm5'):e
+  err=0.0000%  tube/ring=RTRRRT  Ma('m1', 'm5'):b/t, Ma('m3', 'm5'):u/d, Ma('m4', 'm5'):s/c, Ma('m1', 'm3'):mu, Ma('m1', 'm2'):tau, Ma('m2', 'm5'):e
+  err=0.0000%  tube/ring=RTRRRT  Ma('m1', 'm5'):s/c, Ma('m3', 'm5'):u/d, Ma('m4', 'm5'):b/t, Ma('m1', 'm3'):tau, Ma('m1', 'm2'):mu, Ma('m2', 'm5'):e
+  err=0.0000%  tube/ring=RRRRRT  Ma('m1', 'm5'):b/t, Ma('m3', 'm5'):u/d, Ma('m4', 'm5'):s/c, Ma('m1', 'm3'):tau, Ma('m1', 'm2'):mu, Ma('m2', 'm5'):e
   err=0.0000%  tube/ring=RRRRRR  Ma('m1', 'm5'):b/t, Ma('m3', 'm5'):u/d, Ma('m4', 'm5'):s/c, Ma('m1', 'm3'):tau, Ma('m1', 'm2'):mu, Ma('m2', 'm5'):e
+  err=0.0000%  tube/ring=RRRTTR  Ma('m1', 'm5'):u/d, Ma('m3', 'm5'):b/t, Ma('m4', 'm5'):s/c, Ma('m1', 'm3'):tau, Ma('m1', 'm2'):mu, Ma('m2', 'm5'):e
   err=0.0000%  tube/ring=RRRTRR  Ma('m1', 'm5'):s/c, Ma('m3', 'm5'):b/t, Ma('m4', 'm5'):u/d, Ma('m1', 'm3'):tau, Ma('m1', 'm2'):mu, Ma('m2', 'm5'):e
   err=0.0000%  tube/ring=RRRTRT  Ma('m1', 'm5'):s/c, Ma('m3', 'm5'):b/t, Ma('m4', 'm5'):u/d, Ma('m1', 'm3'):tau, Ma('m1', 'm2'):mu, Ma('m2', 'm5'):e
+  err=0.0000%  tube/ring=RRRTTR  Ma('m1', 'm5'):u/d, Ma('m3', 'm5'):b/t, Ma('m4', 'm5'):s/c, Ma('m1', 'm3'):mu, Ma('m1', 'm2'):tau, Ma('m2', 'm5'):e
   err=0.0000%  tube/ring=RTRRRT  Ma('m1', 'm5'):s/c, Ma('m3', 'm5'):u/d, Ma('m4', 'm5'):b/t, Ma('m1', 'm3'):mu, Ma('m1', 'm2'):tau, Ma('m2', 'm5'):e
-  err=0.0000%  tube/ring=RTRRRT  Ma('m1', 'm5'):s/c, Ma('m3', 'm5'):u/d, Ma('m4', 'm5'):b/t, Ma('m1', 'm3'):tau, Ma('m1', 'm2'):mu, Ma('m2', 'm5'):e
+  err=0.0000%  tube/ring=RRRRRT  Ma('m1', 'm5'):b/t, Ma('m3', 'm5'):u/d, Ma('m4', 'm5'):s/c, Ma('m1', 'm3'):mu, Ma('m1', 'm2'):tau, Ma('m2', 'm5'):e
   ... and 11 more
 
 Best discrete solution — assignment:
-  Ma('m1', 'm5') [quark]  hosts b/t  (tube=m5, ring=m1)
-  Ma('m3', 'm5') [quark]  hosts u/d  (tube=m3, ring=m5)
-  Ma('m4', 'm5') [quark]  hosts s/c  (tube=m5, ring=m4)
-  Ma('m1', 'm3') [electron]  hosts mu  (tube=m3, ring=m1)
-  Ma('m1', 'm2') [electron]  hosts tau  (tube=m2, ring=m1)
-  Ma('m2', 'm5') [electron]  hosts e  (tube=m2, ring=m5)
+  Ma('m1', 'm5') [quark]  hosts u/d  (tube=m5, ring=m1)
+  Ma('m3', 'm5') [quark]  hosts s/c  (tube=m5, ring=m3)
+  Ma('m4', 'm5') [quark]  hosts b/t  (tube=m5, ring=m4)
+  Ma('m1', 'm3') [electron]  hosts tau  (tube=m1, ring=m3)
+  Ma('m1', 'm2') [electron]  hosts mu  (tube=m2, ring=m1)
+  Ma('m2', 'm5') [electron]  hosts e  (tube=m5, ring=m2)
 
-Continuous-parameter manifold (17 sampled solutions):
-  L[m1]                        PINNED  ~= 0.007344 fm
-  L[m2]                        RANGED  >= 2453 fm (unbounded above)
-  L[m3]                        RANGED  >= 597.8 fm (unbounded above)
-  L[m4]                        RANGED  [0.9097, 1.053] fm
-  L[m5]                        RANGED  [181.5, 493.5] fm
-  sigma_eff[Ma('m1', 'm5')]    RANGED  [1.976, 2.025] 
-  sigma_eff[Ma('m3', 'm5')]    RANGED  [1.684, 2.858] 
-  sigma_eff[Ma('m4', 'm5')]    RANGED  [1.932, 2.079] 
-  sigma_eff[Ma('m1', 'm3')]    PINNED  ~= 2.0006
-  sigma_eff[Ma('m1', 'm2')]    PINNED  ~= 1.9900
-  sigma_eff[Ma('m2', 'm5')]    RANGED  [1.797, 2.203] 
+Continuous-parameter manifold (8 sampled solutions):
+  L[m1]                        RANGED  [181.5, 493.8] fm
+  L[m2]                        PINNED  ~= 11.83 fm
+  L[m3]                        RANGED  [0.9096, 1.053] fm
+  L[m4]                        PINNED  ~= 0.007169 fm
+  L[m5]                        RANGED  >= 1.475e+04 fm (unbounded above)
+  sigma_eff[Ma('m1', 'm5')]    RANGED  [1.684, 2.86] 
+  sigma_eff[Ma('m3', 'm5')]    RANGED  [1.932, 2.079] 
+  sigma_eff[Ma('m4', 'm5')]    RANGED  [1.976, 2.025] 
+  sigma_eff[Ma('m1', 'm3')]    RANGED  [0.4903, 0.6964] 
+  sigma_eff[Ma('m1', 'm2')]    RANGED  [1.412e-09, 2.222] 
+  sigma_eff[Ma('m2', 'm5')]    PINNED  ~= 2.0000
 
   8 parameter(s) vary across the solution manifold; 3 are invariant (pinned).
   The manifold is 2-dimensional (DOF = 2). A parameter is 'ranged' if it moves anywhere on that manifold, so the ranged count is >= DOF, not equal to it.
 
+sigma/tau decomposition  (sigma_eff = sigma + c*tau; tau and c posited per sector):
+  Ma('m1', 'm5') [quark   ] clover (N=3), tau = 0.3333, c = 2:
+                sigma_eff in [1.684, 2.860]  ->  sigma in [+1.017, +2.193]
+  Ma('m3', 'm5') [quark   ] clover (N=3), tau = 0.3333, c = 2:
+                sigma_eff in [1.932, 2.079]  ->  sigma in [+1.265, +1.412]
+  Ma('m4', 'm5') [quark   ] clover (N=3), tau = 0.3333, c = 2:
+                sigma_eff in [1.976, 2.025]  ->  sigma in [+1.310, +1.358]
+  Ma('m1', 'm3') [electron] ellipse (N=2), tau = 2, c = 1:
+                sigma_eff in [0.490, 0.696]  ->  sigma in [-1.510, -1.304]  [TENSION: posited sigma = 0]
+  Ma('m1', 'm2') [electron] ellipse (N=2), tau = 2, c = 1:
+                sigma_eff in [0.000, 2.222]  ->  sigma in [-2.000, +0.222]  [OK: matches posited sigma = 0]
+  Ma('m2', 'm5') [electron] ellipse (N=2), tau = 2, c = 1:
+                sigma_eff = 2.0000  ->  sigma = +0.0000  [OK: matches posited sigma = 0]
+
 Predicted vs observed masses (best solution, max |Delta%| = 0.0000%):
-  b     pred =        4180  obs =        4180  Delta% = +0.000%
-  t     pred =    1.73e+05  obs =    1.73e+05  Delta% = +0.000%
-  u     pred =        2.16  obs =        2.16  Delta% = +0.000%
-  d     pred =        4.67  obs =        4.67  Delta% = +0.000%
-  s     pred =          93  obs =          93  Delta% = +0.000%
+  u     pred =        2.16  obs =        2.16  Delta% = -0.000%
+  d     pred =        4.67  obs =        4.67  Delta% = -0.000%
+  s     pred =          93  obs =          93  Delta% = -0.000%
   c     pred =        1270  obs =        1270  Delta% = -0.000%
-  mu    pred =      105.66  obs =      105.66  Delta% = -0.000%
-  tau   pred =      1776.9  obs =      1776.9  Delta% = -0.000%
-  e     pred =       0.511  obs =       0.511  Delta% = +0.000%
+  b     pred =        4180  obs =        4180  Delta% = +0.000%
+  t     pred =    1.73e+05  obs =    1.73e+05  Delta% = -0.000%
+  tau   pred =      1776.9  obs =      1776.9  Delta% = +0.000%
+  mu    pred =      105.66  obs =      105.66  Delta% = +0.000%
+  e     pred =       0.511  obs =       0.511  Delta% = -0.000%
 
 ==============================================================================

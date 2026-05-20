@@ -87,6 +87,25 @@ SECTOR_ITEMS = {
     "neutrino": list(NEUTRINO.keys()),
 }
 
+# Per-sector cross-section construction (posited by the framework). The fit
+# returns a composite sigma_eff per sheet; it decomposes as
+#     sigma_eff = sigma + monodromy_c * tau
+# where tau is the posited twist of that sector's cross-section and the
+# monodromy coefficient c is 2 for a Z_N-monodromy sheet (fractional twist,
+# fractional charge) and 1 for a trivial-monodromy sheet (integer twist,
+# integer charge). See electron-tube.md §2 and config-quark.md.
+#   quark    — clover (N=3), tau = 1/3, Z_3 monodromy            -> c = 2
+#   electron — ellipse (N=2), tau = 2, trivial monodromy         -> c = 1
+# The derived shear  sigma = sigma_eff - c*tau  is then checked against the
+# posited construction (the electron-tube posits sigma = 0).
+SECTOR_CONSTRUCTION = {
+    "quark":    {"shape": "clover (N=3)",  "tau": 1.0 / 3.0, "monodromy_c": 2,
+                 "sigma_posited": None},
+    "electron": {"shape": "ellipse (N=2)", "tau": 2.0,       "monodromy_c": 1,
+                 "sigma_posited": 0.0},
+    # neutrino — cross-section construction not yet settled (Phase 3)
+}
+
 # log10(L/fm) search/seed bounds and sigma_eff bounds.
 LOG_L_LO, LOG_L_HI = -5.0, 16.0
 SIGMA_LO, SIGMA_HI = 0.0, 3.0
@@ -510,6 +529,43 @@ def format_report(result: dict) -> str:
         L.append(f"  The manifold is {d['dof']}-dimensional (DOF = {d['dof']}). "
                  f"A parameter is 'ranged' if it moves anywhere on that "
                  f"manifold, so the ranged count is >= DOF, not equal to it.")
+        L.append("")
+
+        # sigma/tau decomposition — split each fitted sigma_eff into the
+        # shear sigma and the posited twist tau (sigma_eff = sigma + c*tau).
+        n_dims = len(spec.dims)
+        L.append("sigma/tau decomposition  (sigma_eff = sigma + c*tau; "
+                 "tau and c posited per sector):")
+        for j, sh in enumerate(spec.sheets):
+            sector = sh["sector"]
+            con = SECTOR_CONSTRUCTION.get(sector)
+            p = m["params"][n_dims + j]
+            tag = f"Ma{tuple(sh['pair'])}"
+            if con is None:
+                L.append(f"  {tag:13s} [{sector:8s}] construction not yet "
+                         f"settled — no decomposition")
+                continue
+            tau, c = con["tau"], con["monodromy_c"]
+            if p["kind"] == "pinned":
+                sig = p["value"] - c * tau
+                seff_s = f"sigma_eff = {p['value']:.4f}"
+                sigma_s = f"sigma = {sig:+.4f}"
+            else:
+                slo, shi = p["lo"] - c * tau, p["hi"] - c * tau
+                seff_s = f"sigma_eff in [{p['lo']:.3f}, {p['hi']:.3f}]"
+                sigma_s = f"sigma in [{slo:+.3f}, {shi:+.3f}]"
+            note = ""
+            sp = con["sigma_posited"]
+            if sp is not None:
+                if p["kind"] == "pinned":
+                    ok = abs(sig - sp) < 0.05
+                else:
+                    ok = (slo - 0.05) <= sp <= (shi + 0.05)
+                note = (f"  [OK: matches posited sigma = {sp:g}]" if ok
+                        else f"  [TENSION: posited sigma = {sp:g}]")
+            L.append(f"  {tag:13s} [{sector:8s}] {con['shape']}, tau = "
+                     f"{tau:.4g}, c = {c}:")
+            L.append(f"  {'':13s} {seff_s}  ->  {sigma_s}{note}")
         L.append("")
 
         # Predicted masses

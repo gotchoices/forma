@@ -52,6 +52,20 @@ Continuous-parameter manifold (10 sampled solutions):
   6 parameter(s) vary across the solution manifold; 4 are invariant (pinned).
   The manifold is 1-dimensional (DOF = 1). A parameter is 'ranged' if it moves anywhere on that manifold, so the ranged count is >= DOF, not equal to it.
 
+sigma/tau decomposition  (sigma_eff = sigma + c*tau; tau and c posited per sector):
+  Ma('m1', 'm4') [quark   ] clover (N=3), tau = 0.3333, c = 2:
+                sigma_eff in [1.684, 2.855]  ->  sigma in [+1.017, +2.188]
+  Ma('m2', 'm4') [quark   ] clover (N=3), tau = 0.3333, c = 2:
+                sigma_eff in [1.932, 2.079]  ->  sigma in [+1.265, +1.412]
+  Ma('m3', 'm4') [quark   ] clover (N=3), tau = 0.3333, c = 2:
+                sigma_eff in [1.976, 2.025]  ->  sigma in [+1.310, +1.358]
+  Ma('m1', 'm2') [electron] ellipse (N=2), tau = 2, c = 1:
+                sigma_eff = 2.0000  ->  sigma = -0.0000  [OK: matches posited sigma = 0]
+  Ma('m1', 'm3') [electron] ellipse (N=2), tau = 2, c = 1:
+                sigma_eff = 2.0000  ->  sigma = +0.0000  [OK: matches posited sigma = 0]
+  Ma('m2', 'm3') [electron] ellipse (N=2), tau = 2, c = 1:
+                sigma_eff = 2.0075  ->  sigma = +0.0075  [OK: matches posited sigma = 0]
+
 Predicted vs observed masses (best solution, max |Delta%| = 0.0000%):
   u     pred =        2.16  obs =        2.16  Delta% = +0.000%
   d     pred =        4.67  obs =        4.67  Delta% = -0.000%
