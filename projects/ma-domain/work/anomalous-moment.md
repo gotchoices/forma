@@ -33,11 +33,18 @@ Two features of the data set the targets for any model:
 
 ---
 
-## 3. The unifying model — chirality as a knob
+## 3. The unifying model — chirality, and how firmly it is known
 
-Rather than testing H1 and H2 separately, model them as one object: introduce a **chirality parameter χ** that the substrate contributes to the moment integral. By construction χ = 0 recovers H1 (shape only) and χ ≠ 0 is H2. χ is a **single universal parameter** — one substrate, one handedness, shared by every sheet, lepton and quark alike; that sharing is what gives the model predictive teeth (§5).
+Model H1 and H2 as one object: a **chirality parameter χ** the substrate contributes to the moment integral. χ = 0 recovers H1 (shape only); χ ≠ 0 is H2. χ is a *single* parameter — one substrate, one handedness — shared by every sheet, lepton and quark alike.
 
-This is a clean design, with one honesty caveat to keep in front: **χ is a posited phenomenological parameter, not a derived one.** The framework has no concrete model of the grid substrate's handedness yet, so the script can *fit* a χ that reproduces data within an assumed coupling — it cannot *derive* the grid's chirality. Likewise, "χ = 0 gives g = 2" is true *by construction* (χ is built as the only anomaly source); it is a property of the model, not an independent validation. The model's real content is entirely in the χ ≠ 0 prediction.
+**χ is not a new invention — it is χ_anti.** The substrate's antisymmetric chirality is already defined: [grid-primitive ch.9](../../grid-primitive/09-chirality-asymmetry.md) introduces χ_anti as a small antisymmetric mismatch in the cylinder primitive's stiffness, and — in its §8 — *already* floats anomalous magnetic moments as a "possible" macroscopic reading of the Wilson-loop phases χ_anti produces. Hypothesis H2 of this file is the development of that §8 speculation. The same χ_anti also sources the Wilson-loop flux that splits the neutrino mass doublet ([neutrino-1D.md](neutrino-1D.md)).
+
+**But χ_anti is not pinned — keep this in front.** grid-primitive ch.9 is explicit that it "does not pin χ_anti to a value," does not derive it, and does not claim matched chirality is wrong: **χ_anti = 0 — no substrate chirality at all — remains a viable commitment.** The neutrino sector gives only a *soft* handle: [neutrino_1d_fit](../outputs/neutrino_1d_fit.txt) fits a Wilson-loop flux f ≈ 0.051 as a *free parameter* against the neutrino masses, and even at its best reaches only ~1.5% (not machine precision). So χ_anti today is: defined, plausibly one universal substrate constant, but **neither pinned in value nor settled in existence.**
+
+Two consequences for honesty:
+
+- "χ = 0 gives g = 2" is true *by construction* (χ is built as the only anomaly source) — a property of the model, not a validation.
+- **A null AMM result would not by itself falsify H2.** If the exercise finds no consistent χ, the cause could be any of three, and they must not be collapsed: (a) the χ_anti → anomalous-moment link is simply wrong — grid-primitive ch.9 §8's own "not at all" option; (b) χ_anti = 0, matched chirality holds, and the neutrino flux needs another source; (c) χ_anti ≠ 0 but its value differs from what the soft, ~1.5%-quality neutrino fit suggests. Only (a) is a verdict on H2; (b) and (c) are verdicts on χ_anti itself. The AMM exercise is a **cross-check across arenas, not a clean one-way test** — and the arenas (neutrino doublet, lepton AMM, hadron AMM) gain force only by *converging*, never by one alone.
 
 ---
 
@@ -74,6 +81,8 @@ Two disciplines keep that test honest:
 1. **The profile ranges are whatever charge and closure independently allow — never widened to fit an anomaly.** Fitting the profiles to the anomalies would be circular; the ranges are an input from other physics, not an output of the AMM fit.
 2. **The strength of the test scales with how narrow those ranges are.** If the clover range is wide, "one χ plus some clover in a wide range hits the hadron anomaly" proves little; if charge and Z₃ confine the clover tightly, a single χ working for both sectors is a strong, low-freedom result. Quantifying the clover range from the charge constraint is therefore a prerequisite, not a detail.
 
+And the test is a *cross-check across arenas*, not a one-way pin. The same χ_anti appears in a third place — the neutrino mass-doublet splitting (§3) — but its value there is itself soft (a fitted flux at ~1.5%). The arenas gain force by converging; a failure of the one-χ test admits the several readings §3 enumerates, and must not be read as a verdict on H2 alone.
+
 ---
 
 ## 6. Scope of targets
@@ -90,10 +99,10 @@ Two disciplines keep that test honest:
 |---|---|
 | Shape ranges the profiles are allowed — clover from the +2/3/−1/3 charges + Z₃, ellipse from τ = 2 + convexity | **computable now** — pure geometry on the harmonic family ([scripts/harmonic_tube.py](../scripts/harmonic_tube.py)); the §5 prerequisite, and the one ungated step with decision value |
 | Magnetic moment of a winding current on a shaped cross-section | partially — a classical *orbital* moment is computable, but in isolation it is not g and not yet interpretable |
-| Shape + χ modulation (the H1-vs-H2 study) | not yet — requires first *positing a mechanism* for how χ enters the moment integral; there is none |
+| Shape + χ modulation (the H1-vs-H2 study) | not yet — grid-primitive ch.9 §§6–7 give the Wilson-loop phase on a compact wrap; converting that phase into a magnetic-moment shift on a shaped tube (ch.9 §8's speculative step) is unwritten |
 | Absolute anomaly a = (g − 2)/2 | needs the per-sheet Dirac–Kähler spin account carried onto the candidate tubes and connected to the moment integral |
 | The g = 2 Dirac baseline | structural — model-F's per-sheet Dirac–Kähler spin (R62 7d); open only as to its survival in K4 |
-| χ derived from a substrate model (rather than fitted) | gated on a grid-substrate chirality model |
+| χ — identity and value | χ is χ_anti ([grid-primitive ch.9](../../grid-primitive/09-chirality-asymmetry.md)) — *defined* there, but **not pinned**: ch.9 fixes no value and leaves χ_anti = 0 (matched chirality) viable; the neutrino fit gives only a soft flux f ≈ 0.05 at ~1.5% |
 | Quark-level → nucleon moment | gated on a composite (bound-state) treatment |
 
 ---
@@ -101,7 +110,7 @@ Two disciplines keep that test honest:
 ## 8. Open questions
 
 1. **Per-sheet spin on the candidate tubes.** The spin account exists — model-F's per-sheet Dirac–Kähler field (R62 7d): spin ½ per 2-torus sheet, every winding. What is open is a clean derivation of the magnetic moment and L = ℏ/2 for that field on the *ellipse* and *clover* tubes ([electron-tube.md](electron-tube.md) notes it is unwritten even for the ellipse), and whether the account survives unchanged in K4.
-2. **A substrate-chirality model.** χ is phenomenological until the grid substrate's handedness is modelled from the [grid-primitive](../../grid-primitive/) level.
+2. **Pinning χ_anti.** The substrate-chirality model exists — [grid-primitive ch.9](../../grid-primitive/09-chirality-asymmetry.md) defines χ_anti — but ch.9 deliberately does not pin its value and leaves χ_anti = 0 (matched chirality, no substrate chirality) a live option. Pinning χ_anti, and settling whether it is nonzero at all, is open; the neutrino fit and the AMM exercise are two arenas that bear on it, neither decisive alone.
 3. **Relation to leakage.** The anomaly may have a second contribution — *virtual* leakage through shared dims (an excursion that returns), the geometric analog of a radiative correction, using the same junction machinery as decay ([mode-stability.md §4](mode-stability.md)). Whether the intrinsic (shape + χ) account of this file and a leakage account are two effects or one description is itself open.
 4. **The charge-sign / anomaly-sign correlation.** If one substrate handedness sets both (§2), the framework predicts a definite correlation — a falsifiable consequence to pin down once the model computes signs.
 
@@ -115,3 +124,5 @@ Two disciplines keep that test honest:
 - [clover-quarks.md](../../sheet-proton/work/clover-quarks.md) — the clover and the per-arc charges that range its profile
 - [mode-stability.md](mode-stability.md) — the leakage machinery a virtual-leakage anomaly would reuse (§4)
 - [models/model-F.md](../../../models/model-F.md) — per-sheet Dirac–Kähler spin (R62 7d): the g = 2 baseline, spin ½ from the 2-torus sheet, not the winding ratio
+- [grid-primitive ch.9](../../grid-primitive/09-chirality-asymmetry.md) — defines χ_anti, the substrate antisymmetric chirality; §8 already floats the anomalous-moment reading, by its own statement speculative and unsettled
+- [neutrino-1D.md](neutrino-1D.md) — the other arena for χ_anti: the Wilson-loop flux that splits the neutrino mass doublet (fitted, ~1.5%)
