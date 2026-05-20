@@ -78,7 +78,42 @@ The §4 work shows this fork separates cleanly into two questions:
 - **The junction operator's form** — its structure, and hence its dimension. This sets the mass-power p of the rate (§4.1) and **cannot be deferred**: the ratio test reads p. It must be derived — by committing to a junction condition (the natural choice: ψ and normal derivative continuous).
 - **The value of g_J** — its magnitude. This cancels in lifetime *ratios* and can be deferred, calibrated later from a measured lifetime as one universal channel coupling (the G_F analogue).
 
-So the form is derived now; the value is calibrated later. §4 develops the consequences.
+So the form is derived now (§3.4–§3.5); the value is calibrated later. §4 develops the consequences.
+
+### 3.4 The junction as a figure-eight quantum graph
+
+The junction's form becomes concrete once the connected geometry is written out. Sheets A = `Ma(i, j)` and B = `Ma(i, k)` are the 2-tori S¹_i × S¹_j and S¹_i × S¹_k; sharing dimension i makes the S¹_i factor common, so the connected manifold is
+
+  M = S¹_i × Y ,  with  Y = S¹_j ∨ S¹_k
+
+— the shared circle times a **figure-eight** Y (two circles joined at one point, the junction). The two loops are the leaking sheets' *own* non-shared dimensions — circle-j and circle-k — and the crossing-point is where the two sheets meet; the figure-eight is part of the K4 compact architecture itself. It is **not** the neutrino reservoir (a separate macroscopic structure, §3.2, attached only later) and **not** a tube cross-section shape (the clover and ellipse of [tube-function.md](tube-function.md) are unrelated objects).
+
+Because M is a product the wave operator separates: every mode is
+
+  ψ(u_i, y) = e^{i k_i u_i} · φ(y) ,  k_i = 2π n_i / L_i ,
+
+with φ a mode on the figure-eight and the shared-dim winding n_i a **conserved spectator**. That conservation *is* the §3.1 selection rule — now derived from the geometry rather than asserted: leakage cannot change n_i because n_i labels a product factor the junction never touches. (With twist the spectator is the helical k_θ; the structure is unchanged.)
+
+So the two-sheet leakage problem reduces to a standard, well-studied object — a **figure-eight quantum graph coupled to a reservoir**. The reduction turned an ill-posed "two tori sharing a circle" into a concrete calculation; §3.5 takes its first step.
+
+### 3.5 The vertex condition — the figure-eight secular equation
+
+What vertex condition holds at the crossing-point of the figure-eight? The self-adjoint vertex conditions form a family; its natural minimal member — symmetric among the edges, reducing smoothly to the free case — is the **δ-vertex**: φ continuous at the vertex, and the summed outgoing derivative fixed by one parameter α,
+
+  Σ φ′(V) = α · φ(V) .
+
+With loop lengths a = L_j and b = L_k, imposing continuity and the δ-condition on φ = A cos κs + B sin κs on each loop gives the figure-eight's secular equation (for modes with φ ≠ 0 at the vertex):
+
+  2κ [ tan(κa/2) + tan(κb/2) ] = α ,  κ = √E .
+
+Its two limits bracket the junction physics:
+
+- **α = 0** — standard Kirchhoff: tan(κa/2) + tan(κb/2) = 0, the two loops' modes hybridised. This is the literal reading of [mode-stability.md §8 Phase 1](mode-stability.md)'s "ψ and normal-derivative continuous."
+- **α → ∞** — Dirichlet: κa/2 or κb/2 → π/2 + nπ; the spectrum becomes the *union of the two loops' independent Dirichlet spectra* — the sheets decoupled, leakage zero.
+
+So the junction carries exactly **one parameter, α**, interpolating strong coupling (α = 0) to fully decoupled (α → ∞). This is §3.3's "form," now derived modulo the minimal-vertex choice: the form is the δ-vertex; the value is α.
+
+Which α is physical — and so whether the observed long lifetimes are carried by the *vertex* (large α) or by the *geometric overlap* of modes spread thin on large sheets (§4.2) — is **not settled by the matching condition**; it is an output of the rate calculation. The closed figure-eight has a real spectrum (no decay, [mode-stability.md §5](mode-stability.md)); the width, and the mass-power p, appear once the reservoir is attached to this secular structure — the next step.
 
 ---
 
