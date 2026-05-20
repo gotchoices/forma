@@ -260,6 +260,12 @@ The family is a clean monotonic ladder: **more sharing → fewer dims → tighte
 
 None of the three fixes the neutrino sector. Any [config-neutrino.md](config-neutrino.md) config — NS, NC, ND, NY — attaches additively on fresh macroscopic dims (the meV ν scale needs dims ≳ 4 cm, incompatible with the fm-scale dims here, so no ν config can collide with the quark or electron pairs). The full topology name, once a ν config is chosen, would be e.g. `cand-QY-ED-share3-Nx`.
 
+The figure below shows the assembled picture with the **NC** option attached — the 1D neutrino curve as an outer loop coupled to the three delta corners. It is illustrative of one ν-sector choice: the charged-fermion content (the quark wye inside the electron delta = K4) is fixed; the neutrino attachment is the open part.
+
+![QY-ED-share3 (K4) with the neutrino curve](../outputs/candidate-map.svg)
+
+Heavy lines are **2D-sheet** connections — the six K4 `Ma(i, j)` pairs: three quark wye legs and three electron delta legs (labelled with the §4.1 Solution A assignment). The dotted lines are the **1D-curve** couplings of the neutrino loop to the three delta corners. The neutrino loop carries its N = 3 three-lobed tube-function shape — the shape the neutrino fit prefers ([neutrino-1D.md §2.3, §6.4](neutrino-1D.md)); the lobe depth drawn is schematic. Figure script: [scripts/draw_candidate_map.py](../scripts/draw_candidate_map.py).
+
 ---
 
 ## 7. Relation to QY-EL and candidates.md

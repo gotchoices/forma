@@ -9,6 +9,9 @@
 - [candidates.md](candidates.md) — current topology candidates (none of which yet uses 1D substrates)
 - [../../metric-mass/](../../metric-mass/) — single-compact-dimension framework; chargeless ±n mode pairs
 - [config-neutrino.md §NC](config-neutrino.md) — the NC (Neutrino Curve) config; **carries the numerical findings** for this picture
+- [cand-QY-ED.md](cand-QY-ED.md) — the K4 candidate (QY-ED-share3) this curve interconnects to (§6.4)
+- [baryon-number.md](baryon-number.md) — the cycle/cut graph language used in §2.3 and §6.4
+- [mode-stability.md](mode-stability.md) — the decay-dynamics picture; the neutrino as the energy-and-charge-neutral sink
 
 ---
 
@@ -83,6 +86,14 @@ The two pictures give the same band structure to leading order but differ in sub
 Pragmatic: the tube-function family is the simplest closed-form C^∞ N-fold-symmetric closed curve, parameterized by knobs already understood. The visualizer ([viz/tube-lab](../../../viz/tube-lab.html)) already plots it. The lobe / saddle vocabulary carries over even though the physics interpretation differs.
 
 Conceptual: a 1D substrate is the **degenerate limit of a 2D sheet with one infinitesimal dim**. The [tiny-tube reading on Ma(5, 6)](#5-relation-to-the-tiny-tube-2d-picture) makes this concrete: as L_tube → 0, the 2D sheet's m_t = 0 sector loses its closure label and becomes an effectively-1D curve. The cross-section's shape *becomes* the 1D dimension's shape in this limit.
+
+### 2.3 The marked loop is a 1D delta
+
+A neutrino curve does not sit in isolation; it couples to a host candidate at a few points (§6.4). Mark those attachment points on the loop and the closed curve becomes a graph: with **three** attachment points the loop is a **3-cycle** — three nodes, three arcs — a triangle, i.e. a **1D delta**. The three arcs are the curve's three legs.
+
+This gives the substrate a natural three-fold decomposition for free: the three arcs are a ready-made three-component basis (used as the flavor basis in §6.4). It also places the curve cleanly in the cycle/cut language of [baryon-number.md](baryon-number.md) — a 1D delta is a **cycle**, and a cycle is what carries a winding. The Wilson-loop flux that splits the doublet (§0, §4.3) is exactly such a winding, so the substrate **must** be a cycle to host it.
+
+A 1D **wye** — a Y-graph: a hub with three arcs and no closed loop — is the other three-fold 1D graph. It is a *tree*, not a cycle: it carries no winding, so it cannot host the flux, and it predicts no mass pattern (three free arm lengths fitting three masses is an underdetermined exercise). The 1D wye is therefore not a substrate candidate. It reappears only as the *connector* structure of §6.4 — the three spokes that join the loop to the host.
 
 ---
 
@@ -210,6 +221,25 @@ The exact observed PMNS deviates from TBM in the same way the doublet deviates f
 3. Shift θ_12 from 35.3° to 33° and θ_23 from 45° to ≈ 49°.
 
 If a single physical parameter can reproduce all four deviations within experimental error, that is strong evidence for the 1D-curve picture. If multiple independent parameters are required, the structural fit is weaker.
+
+### 6.4 Interconnection to a host candidate
+
+§6.2 placed three lepton couplings at 2π/3 on the curve and obtained tribimaximal mixing. On the K4 candidate QY-ED-share3 ([cand-QY-ED.md](cand-QY-ED.md)) those couplings have a concrete home: the **three corners of the electron delta** — shared dims the candidate already carries. The neutrino curve attaches to the three corners at 120°, C₃-symmetrically, and the assembled neutrino structure is two parts:
+
+- a **cycle** — the neutrino delta-loop (§2.3): it carries the masses (the NC band structure) and the doublet-splitting Wilson flux;
+- a **wye of three connectors** — one 1D-curve link from the loop out to each corner.
+
+So the full structure is a cycle plus a connector-wye — the cycle/cut pairing of [baryon-number.md](baryon-number.md) again, with the mass-bearing part a cycle and the connecting part a tree.
+
+**Why the 120°, C₃-symmetric attachment matters.** The three arcs of the 1D delta (§2.3) are the **flavor-localized basis**: a packet on one arc couples to one corner, hence to one charged-lepton flavor. The delocalized q = 0, ±1 modes are the **mass basis**. Sampling the doublet modes at three points 120° apart evaluates them at the three cube roots of unity, so the flavor↔mass change of basis is the C₃ discrete Fourier transform — the tribimaximal matrix of §6.2. And because the attachment is C₃-symmetric it does **not** break C₃: it adds no uncontrolled doublet-splitter, leaving the Wilson flux as the sole, controlled source of m₁ ≠ m₂.
+
+**Connection type.** The K4 sheets are 2D `Ma(i, j)` pairs; the neutrino's three links are **1D-curve** couplings — a lighter kind of connection. Their precise form is open (config-neutrino §NC; [mode-stability.md §10](mode-stability.md)): it is the cross-sector channel by which the neutrino — the energy-and-charge-neutral sink of mode-stability §5 — reaches the rest of the candidate.
+
+The assembled candidate is shown below: the quark wye centred in the electron delta, the 1D neutrino curve as the outer loop, the two connection kinds drawn heavy (2D sheet) versus dotted (1D-curve).
+
+![QY-ED-share3 (K4) with the neutrino curve](../outputs/candidate-map.svg)
+
+The concentric "enclosing" layout is a drawing device — it makes the C₃ symmetry legible at a glance. It carries no physics: the masses are intrinsic and embedding-blind, and the Wilson flux is W = A·L, independent of what the loop encircles ([grid-primitive ch.9](../../grid-primitive/09-chirality-asymmetry.md)).
 
 ---
 

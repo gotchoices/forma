@@ -10,6 +10,17 @@
 
 ---
 
+## Substrate kinds — 2D sheets and the 1D curve
+
+The configs below divide into two **substrate kinds**, and the distinction is load-bearing rather than cosmetic:
+
+- **2D-sheet substrates — NS, ND, NY.** The neutrino lives on one or more 2D `Ma(i, j)` torus pairs — the same kind of sheet the quark and electron sectors use. The three mass eigenstates come from closure modes on the pair(s).
+- **1D-curve substrate — NC.** The neutrino lives on a single 1D closed curve — no pair, no sheet. The three mass eigenstates come from the curve's band structure.
+
+What the kind buys: on the **1D curve**, **Q = 0 and Majorana-like equivalence fall out structurally** — a 1D dimension has no closure-rule slot for a charge label, and the loop's ψ_n ↔ ψ_−n pairing makes particle and antiparticle equivalent for free (§NC.3). On the **2D-sheet** configs both must instead be arranged pair-by-pair and are not automatic (§ND.2, §NS.5). NC's full development — the band structure, the doublet-splitting flux, and how the 1D curve interconnects to a host candidate — is carried in [neutrino-1D.md](neutrino-1D.md).
+
+---
+
 ## NS — Neutrino Sheet (2D pair)
 
 Single pair topology `Ma(a, b)` — one 2D sheet hosting all three ν mass eigenstates via multiple closure modes on the one pair.
@@ -166,7 +177,7 @@ The flux is candidate 3 ("small chirality / shear") of [neutrino-1D.md §4.3](ne
 
 ---
 
-## ND — Neutrino Delta (de-emphasized)
+## ND — Neutrino Delta (2D, de-emphasized)
 
 3-dim triangle topology `Ma((a, b), (a, c), (b, c))`. Each pair hosts one ν mass eigenstate at T(1, 2). Each dim participates in two of the three pairs.
 
@@ -214,7 +225,7 @@ Numerically, ND closes to machine precision on the 3-DOF underdetermined manifol
 
 ---
 
-## NY — Neutrino Wye (placeholder)
+## NY — Neutrino Wye (2D, placeholder)
 
 4-dim star topology `Ma((a, h), (b, h), (c, h))`, mirror of QY/EY structure for the ν sector. Three rings, one shared hub. Each pair hosts one ν mass eigenstate at T(1, 2).
 
