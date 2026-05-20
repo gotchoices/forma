@@ -1,0 +1,66 @@
+==============================================================================
+CANDIDATE: QY-ED-share3
+  quark wye + electron delta, sharing 3 nodes (all spokes) = the complete graph K4. Quark wye: hub m4, spokes m1/m2/m3 (the 3 spoke-hub edges). Electron delta: the 3 spokes m1/m2/m3 (the 3 spoke-spoke edges). Together every dim-pair of the 4 dims carries exactly one sheet -> R1-compliant by construction. Fewest dims (4), tightest DOF (1). Neutrino sector open.
+==============================================================================
+
+Topology: 4 dims, 6 sheets
+  Ma('m1', 'm4')  [quark]
+  Ma('m2', 'm4')  [quark]
+  Ma('m3', 'm4')  [quark]
+  Ma('m1', 'm2')  [electron]
+  Ma('m1', 'm3')  [electron]
+  Ma('m2', 'm3')  [electron]
+
+R1 (one sheet per dim-pair): SATISFIED
+
+Degrees of freedom:
+  free params  = 10  (4 dim sizes + 6 sigma_eff)
+  constraints  = 9  (one per hosted mass)
+  DOF          = 1  (underdetermined — 1-parameter solution family)
+
+FIT: compliant solution found (best max |Delta%| = 0.0000%).
+  discrete (assignment + tube/ring) combos scanned : 2304
+  discrete combos that reach a compliant fit       : 4
+  -> multiple discrete solutions exist (see list below).
+
+Compliant discrete combos (best first):
+  err=0.0000%  tube/ring=TRRTTT  Ma('m1', 'm4'):u/d, Ma('m2', 'm4'):s/c, Ma('m3', 'm4'):b/t, Ma('m1', 'm2'):e, Ma('m1', 'm3'):mu, Ma('m2', 'm3'):tau
+  err=0.0000%  tube/ring=TRRTTR  Ma('m1', 'm4'):u/d, Ma('m2', 'm4'):b/t, Ma('m3', 'm4'):s/c, Ma('m1', 'm2'):e, Ma('m1', 'm3'):mu, Ma('m2', 'm3'):tau
+  err=0.0000%  tube/ring=RTRRTT  Ma('m1', 'm4'):s/c, Ma('m2', 'm4'):u/d, Ma('m3', 'm4'):b/t, Ma('m1', 'm2'):e, Ma('m1', 'm3'):tau, Ma('m2', 'm3'):mu
+  err=0.0000%  tube/ring=TRRTTT  Ma('m1', 'm4'):u/d, Ma('m2', 'm4'):s/c, Ma('m3', 'm4'):b/t, Ma('m1', 'm2'):mu, Ma('m1', 'm3'):e, Ma('m2', 'm3'):tau
+
+Best discrete solution — assignment:
+  Ma('m1', 'm4') [quark]  hosts u/d  (tube=m1, ring=m4)
+  Ma('m2', 'm4') [quark]  hosts s/c  (tube=m4, ring=m2)
+  Ma('m3', 'm4') [quark]  hosts b/t  (tube=m4, ring=m3)
+  Ma('m1', 'm2') [electron]  hosts e  (tube=m1, ring=m2)
+  Ma('m1', 'm3') [electron]  hosts mu  (tube=m1, ring=m3)
+  Ma('m2', 'm3') [electron]  hosts tau  (tube=m2, ring=m3)
+
+Continuous-parameter manifold (10 sampled solutions):
+  L[m1]                        RANGED  [3876, 1.339e+15] fm
+  L[m2]                        RANGED  [0.9098, 1.053] fm
+  L[m3]                        PINNED  ~= 0.007344 fm
+  L[m4]                        RANGED  [181.5, 493] fm
+  sigma_eff[Ma('m1', 'm4')]    RANGED  [1.684, 2.855] 
+  sigma_eff[Ma('m2', 'm4')]    RANGED  [1.932, 2.079] 
+  sigma_eff[Ma('m3', 'm4')]    RANGED  [1.976, 2.025] 
+  sigma_eff[Ma('m1', 'm2')]    PINNED  ~= 2.0000
+  sigma_eff[Ma('m1', 'm3')]    PINNED  ~= 2.0000
+  sigma_eff[Ma('m2', 'm3')]    PINNED  ~= 2.0075
+
+  6 parameter(s) vary across the solution manifold; 4 are invariant (pinned).
+  The manifold is 1-dimensional (DOF = 1). A parameter is 'ranged' if it moves anywhere on that manifold, so the ranged count is >= DOF, not equal to it.
+
+Predicted vs observed masses (best solution, max |Delta%| = 0.0000%):
+  u     pred =        2.16  obs =        2.16  Delta% = +0.000%
+  d     pred =        4.67  obs =        4.67  Delta% = -0.000%
+  s     pred =          93  obs =          93  Delta% = +0.000%
+  c     pred =        1270  obs =        1270  Delta% = -0.000%
+  b     pred =        4180  obs =        4180  Delta% = +0.000%
+  t     pred =    1.73e+05  obs =    1.73e+05  Delta% = -0.000%
+  e     pred =       0.511  obs =       0.511  Delta% = +0.000%
+  mu    pred =      105.66  obs =      105.66  Delta% = -0.000%
+  tau   pred =      1776.9  obs =      1776.9  Delta% = -0.000%
+
+==============================================================================

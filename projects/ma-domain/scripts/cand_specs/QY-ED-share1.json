@@ -1,0 +1,13 @@
+{
+  "name": "QY-ED-share1",
+  "note": "quark wye + electron delta, sharing 1 node (one spoke). Quark wye: hub m5, spokes m1/m3/m4. Electron delta: spoke m4 + fresh m2, m6. One shared spoke keeps every dim-pair distinct -> R1-compliant. 6 dims. Neutrino sector open.",
+  "dims": ["m1", "m2", "m3", "m4", "m5", "m6"],
+  "sheets": [
+    {"pair": ["m1", "m5"], "sector": "quark"},
+    {"pair": ["m3", "m5"], "sector": "quark"},
+    {"pair": ["m4", "m5"], "sector": "quark"},
+    {"pair": ["m2", "m4"], "sector": "electron"},
+    {"pair": ["m2", "m6"], "sector": "electron"},
+    {"pair": ["m4", "m6"], "sector": "electron"}
+  ]
+}

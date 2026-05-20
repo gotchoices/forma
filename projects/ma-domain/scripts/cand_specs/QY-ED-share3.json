@@ -1,0 +1,13 @@
+{
+  "name": "QY-ED-share3",
+  "note": "quark wye + electron delta, sharing 3 nodes (all spokes) = the complete graph K4. Quark wye: hub m4, spokes m1/m2/m3 (the 3 spoke-hub edges). Electron delta: the 3 spokes m1/m2/m3 (the 3 spoke-spoke edges). Together every dim-pair of the 4 dims carries exactly one sheet -> R1-compliant by construction. Fewest dims (4), tightest DOF (1). Neutrino sector open.",
+  "dims": ["m1", "m2", "m3", "m4"],
+  "sheets": [
+    {"pair": ["m1", "m4"], "sector": "quark"},
+    {"pair": ["m2", "m4"], "sector": "quark"},
+    {"pair": ["m3", "m4"], "sector": "quark"},
+    {"pair": ["m1", "m2"], "sector": "electron"},
+    {"pair": ["m1", "m3"], "sector": "electron"},
+    {"pair": ["m2", "m3"], "sector": "electron"}
+  ]
+}

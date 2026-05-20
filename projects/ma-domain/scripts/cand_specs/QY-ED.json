@@ -1,13 +1,13 @@
 {
   "name": "QY-ED",
-  "note": "quark wye + electron delta (former Candidates B/C, quark+electron sectors). Neutrino sector left open. See work/cand-QY-ED.md.",
+  "note": "quark wye + electron delta, sharing 2 nodes (both spokes). Quark wye: hub m5, spokes m1/m3/m4. Electron delta: m2 (fresh) + m3, m4 (two quark-wye spokes). Sharing spokes (not the hub) keeps every dim-pair distinct -> R1-compliant. Replaces the earlier hub-sharing version, which violated R1. Neutrino sector open.",
   "dims": ["m1", "m2", "m3", "m4", "m5"],
   "sheets": [
     {"pair": ["m1", "m5"], "sector": "quark"},
     {"pair": ["m3", "m5"], "sector": "quark"},
     {"pair": ["m4", "m5"], "sector": "quark"},
+    {"pair": ["m2", "m3"], "sector": "electron"},
     {"pair": ["m2", "m4"], "sector": "electron"},
-    {"pair": ["m2", "m5"], "sector": "electron"},
-    {"pair": ["m4", "m5"], "sector": "electron"}
+    {"pair": ["m3", "m4"], "sector": "electron"}
   ]
 }

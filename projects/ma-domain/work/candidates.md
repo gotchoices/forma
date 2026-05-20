@@ -21,7 +21,15 @@ Each candidate is documented in a file named `cand-<Q>-<E>.md` — e.g. [cand-QY
 
 **R1 — one sheet per dim-pair.** At most one 2D sheet may occupy any dim-pair `Ma(i, j)`. Each pair carries exactly one (σ, τ, P) triplet per [architecture.md §3.4](architecture.md) — one shear, one twist, one cross-section shape — so a pair defines exactly one sheet. If two particles need different cross-sections (a quark clover vs. an electron ellipse, say), they must occupy two *different* dim-pairs. They cannot share one pair with two P-functions; the "P is a property of the mode" reading is not what §3.4 states (§3.4: "the clover is a property of the pair `Ma(i, j)`, not of either dim alone").
 
-> **Current R1 status.** [cand-QY-EL.md](cand-QY-EL.md) satisfies R1 (six distinct pairs). [cand-QY-ED.md](cand-QY-ED.md) **violates** R1 — its electron delta reuses the quark sheet `Ma(4, 5)`. Resolving this is an open architectural question (see cand-QY-EL.md §7).
+> **The R1 rule for QY + ED — share spokes, not the hub.** A quark wye's three sheets are exactly the three *spoke-hub* pairs. An electron delta that reuses a quark **spoke** forms only spoke-spoke or spoke-fresh pairs — none of which is a wye sheet, so R1 holds. An electron delta that reuses the **hub** forms hub-spoke pairs, which *are* wye sheets — collision. So every QY + ED candidate is R1-compliant iff its electron delta shares only spokes. The shareable-spoke count drives a clean family:
+>
+> | Shared nodes | Electron delta on | Dims | R1 | DOF |
+> |---|---|---:|:---:|:---:|
+> | 1 spoke | 1 spoke + 2 fresh | 6 | ✓ | 3 |
+> | 2 spokes | 2 spokes + 1 fresh | 5 | ✓ | 2 |
+> | 3 spokes | the 3 spokes (= complete graph K4) | 4 | ✓ | 1 |
+>
+> The earlier QY-ED shared the *hub* (m5) and so violated R1; that was a construction error, since corrected (it now shares two spokes).
 
 *(R1 is the only formation rule identified so far. Others may be added as they surface — e.g. rules on which cross-sector dim sharing is admissible, or on closure consistency at shared dims per [architecture.md §3.4 open questions](architecture.md).)*
 
@@ -38,14 +46,22 @@ Each candidate is documented in a file named `cand-<Q>-<E>.md` — e.g. [cand-QY
 
 ## 4. Candidate index
 
-| Candidate | Quark | Electron | Neutrino | File | R1 | Status |
-|---|:---:|:---:|:---:|---|:---:|---|
-| **QY-ED** | QY | ED | open | [cand-QY-ED.md](cand-QY-ED.md) | ✗ violates (`Ma(4,5)` doubled) | quark + electron fit; ν open |
-| **QY-EL** | QY | EL | open | [cand-QY-EL.md](cand-QY-EL.md) | ✓ satisfies | quark fit; electron path unfit; ν open |
+All quark+electron fits are at machine precision; the entries below are R1 status, dim count, DOF, and the count of discrete (assignment + tube/ring) combinations that reach a compliant fit (fewer = more predictive). Neutrino sector open for all.
 
-**Former Candidates A / B / C.** The three candidates previously compared in this file map onto the index above:
-- old **B** and **C** were identical in quark + electron (QY + ED) → both subsumed by **QY-ED**; they differed only in the neutrino config (NS vs ND), now an open per-candidate choice.
-- old **A** (QY + EL) → **QY-EL**.
+The three QY-ED rows are one **candidate family** — same configs (QY + ED), differing only in how many quark spokes the electron delta reuses — and are written up together in [cand-QY-ED.md](cand-QY-ED.md).
+
+| Candidate | Quark | Electron | Dims | R1 | DOF | Fitting combos | Spec / report |
+|---|:---:|:---:|:---:|:---:|:---:|:---:|---|
+| **QY-ED-share1** | QY | ED (share 1 spoke) | 6 | ✓ | 3 | 101 | [cand-QY-ED.md §2](cand-QY-ED.md) · [spec](../scripts/cand_specs/QY-ED-share1.json) · [report](../outputs/cand_QY-ED-share1.txt) |
+| **QY-ED** | QY | ED (share 2 spokes) | 5 | ✓ | 2 | 27 | [cand-QY-ED.md §3](cand-QY-ED.md) · [spec](../scripts/cand_specs/QY-ED.json) · [report](../outputs/cand_QY-ED.txt) |
+| **QY-ED-share3** | QY | ED (share 3 spokes, K4) | **4** | ✓ | **1** | **4** | [cand-QY-ED.md §4](cand-QY-ED.md) · [spec](../scripts/cand_specs/QY-ED-share3.json) · [report](../outputs/cand_QY-ED-share3.txt) |
+| **QY-EL** | QY | EL (path) | 5 | ✓ | 2 | 23 | [cand-QY-EL.md](cand-QY-EL.md) · [spec](../scripts/cand_specs/QY-EL.json) |
+
+**QY-ED-share3 (K4) is the standout.** It is the complete graph on 4 dims, R1-compliant by construction, with the fewest dims, the tightest DOF, and only 4 compliant discrete combos — so it nearly determines the particle→sheet assignment. Its solver run also pins all three electron σ_eff values to ≈ 2 (the R53 magic-shear value) rather than leaving them free.
+
+**QY-EL is now dominated.** With QY-ED corrected to share spokes, QY-EL no longer has a unique selling point: both are R1-compliant and use 5 dims, but QY-ED has a clean rotationally-symmetric delta where QY-EL has the awkward linear path. QY-EL is retained for the record; QY-ED supersedes it.
+
+**Former Candidates A / B / C.** old **B** and **C** (QY + ED) → subsumed by **QY-ED**; old **A** (QY + EL) → **QY-EL**.
 
 **Ladder candidates.** [wye-ladder.md](wye-ladder.md) (QY + EY) and [sym-ladder.md](sym-ladder.md) (QD + EY) are also under consideration but have not yet been converted to the `cand-*.md` format. They will become `cand-QY-EY.md` and `cand-QD-EY.md` when converted; R1 should be checked for each at that time.
 

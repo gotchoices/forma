@@ -1,13 +1,13 @@
 # cand-QY-EL.md — consolidated candidate: quark wye + electron linear path
 
-**Status:** Documented candidate, quark + electron sectors fully fit. Subsumes the quark + electron content of the former Candidate A ([candidates.md](candidates.md)). The neutrino sector is left open — see §6. The electron linear path is fit by the general solver — see §4.
+**Status:** Superseded. Documented for the record; quark + electron sectors fit at machine precision, R1-compliant, but **dominated by [cand-QY-ED.md](cand-QY-ED.md)** — see §5, §7. Subsumes the quark + electron content of the former Candidate A. The neutrino sector is left open.
 
 **Composition:**
 - Quark sector — **QY** (quark wye), per [config-quark.md](config-quark.md)
 - Electron sector — **EL** (electron linear path), per [config-electron.md](config-electron.md)
 - Neutrino sector — **open** (any of NS / NC / ND / NY from [config-neutrino.md](config-neutrino.md))
 
-**Why this candidate is documented despite being awkward.** The electron path has no clean rotational shape. But it has one structural property the cleaner-looking QY-ED candidate lacks: it **satisfies rule R1** (one sheet per dim-pair — see [candidates.md §2](candidates.md)). All six of its dim-pairs are distinct. QY-ED, by contrast, places two sheets on `Ma(4, 5)`. The general solver fits QY-EL to machine precision (§4), so on fit quality it now ties QY-ED; the structural R1 difference is the live distinction. See §5.
+**Why this candidate is no longer carried forward.** QY-EL satisfies R1 (one sheet per dim-pair) and fits to machine precision. It was briefly the preferred quark+electron candidate — but only because the *then-broken* QY-ED shared the quark hub and violated R1. Once QY-ED is corrected to share two spokes instead, it too is R1-compliant, and it has a clean rotationally-symmetric electron delta where QY-EL has an awkward linear path. Same dim count (5), same fit, same R1 status — but QY-ED wins on shape. QY-EL is kept as the QY + electron-path option of record, not as a working candidate. See §5.
 
 **Notation.** Dim labels m1..m5 are size-ordered, smallest first. A 2D sheet is a dim-pair `Ma(i, j)`. Mode-windings are `T(m_t, m_r)` per [metric-charge ch. 4](../../metric-charge/04-the-closure-condition.md).
 
@@ -98,16 +98,16 @@ This candidate's six sheets occupy six **distinct** dim-pairs:
 
 No pair appears twice. **Candidate QY-EL satisfies R1.**
 
-Contrast with [cand-QY-ED.md](cand-QY-ED.md): the electron *delta* uses pairs `Ma((2,4), (2,5), (4,5))`, and `Ma(4,5)` is also a quark sheet — so QY-ED places two sheets on one pair and **violates R1**.
+QY-EL satisfies R1 — but so does the corrected QY-ED, and that removes QY-EL's reason for existing.
 
-**Why the path is contorted — and why that is the price of R1.** The quark wye occupies every hub-spoke pair `Ma(i, 5)` for i ∈ {1, 3, 4}. An electron *delta* on three dims drawn from {m1, m3, m4, m5} would inevitably reuse one of those hub-spoke pairs (pigeonhole) — which is exactly what QY-ED's `Ma(4,5)` collision is. To avoid any collision, the electron sheets must use pairs the quark wye does not: ring-ring pairs (`Ma(1,3)`) and pairs involving the fresh dim m2 (`Ma(1,2)`, `Ma(2,5)`). Threading those three pairs into a connected sub-graph forces the linear-chain shape. **The awkward path is not a flaw of taste — it is the geometric consequence of demanding R1 while reusing quark-region dims.**
+**Correction — the pigeonhole argument was wrong.** An earlier version of this section argued that *any* electron delta reusing quark dims must collide with a wye sheet, so the linear path was "the price of R1." That is false. The quark wye's sheets are exactly the three spoke-hub pairs. An electron delta on quark **spokes** forms only spoke-spoke pairs, which are never wye sheets — no collision. Concretely:
 
-So the choice between QY-ED and QY-EL is a genuine structural trade:
+- electron delta on **2 spokes + 1 fresh dim** → R1-compliant. *This is the corrected [cand-QY-ED.md](cand-QY-ED.md).*
+- electron delta on **3 spokes** → R1-compliant (the complete graph K4 — `QY-ED-share3`).
 
-- **QY-ED** — clean rotationally-symmetric electron delta, fits to machine precision, but violates R1 (one pair doubled).
-- **QY-EL** — R1-compliant, fits to machine precision, but the electron sector has no clean rotational shape (the linear path).
+The pigeonhole only bites a delta that reuses the **hub** — which was the bug in the old QY-ED, not a property of deltas in general. So the linear path is **not** forced by R1; an R1-compliant delta exists, and it has a cleaner shape than the path.
 
-Resolving this trade is an open architectural question (see §7).
+**Consequence — QY-EL is dominated.** At equal dim count (5), corrected QY-ED is R1-compliant *and* has a clean rotationally-symmetric delta; QY-EL is R1-compliant but uses the awkward linear path. Both fit to machine precision. QY-EL therefore has no remaining advantage. It is retained here for the record, but **corrected QY-ED supersedes it**.
 
 ---
 
@@ -119,13 +119,13 @@ As with [cand-QY-ED.md §6](cand-QY-ED.md), the neutrino sector is left open. An
 
 ## 7. Relation to candidates.md and open questions
 
-This file consolidates the quark + electron content of the former **Candidate A** (QY + EL + single-pair ν). Candidate A was previously deprioritized as "structurally awkward." That judgment stands on shape grounds — but R1 (§5) reframes it: A is the only one of the original three candidates whose quark + electron sectors satisfy the one-sheet-per-pair rule.
+This file consolidates the quark + electron content of the former **Candidate A** (QY + EL + single-pair ν). Candidate A was deprioritized as "structurally awkward." For a while R1 seemed to rehabilitate it — QY-EL satisfied R1 while the (then-broken) QY-ED did not. That reprieve has lapsed: once QY-ED is corrected to share spokes rather than the hub, it is also R1-compliant, with a cleaner shape (§5). **QY-EL is now superseded by corrected QY-ED.**
 
-**Open questions this raises:**
+**Where things stand:**
 
-1. **Is R1 binding?** If R1 is adopted as a hard rule, QY-ED is invalid as written and either (a) QY-EL becomes the working quark+electron candidate, or (b) QY-ED must be reworked so the electron sector avoids the `Ma(4,5)` collision. R1 follows from [architecture.md §3.4](architecture.md) (each pair has one (σ, τ, P) triplet, hence one shape, hence one sheet); the "P is per-mode" reading that would permit two sheets per pair is not what §3.4 states.
-2. **QY-EL's electron path fits.** The general solver closes the joint QY-EL candidate at machine precision (DOF = 2, 23 compliant discrete combos; see [outputs/cand_QY-EL.txt](../outputs/cand_QY-EL.txt)). On fit quality QY-EL and QY-ED are now tied — both close exactly. The live distinction is purely structural: QY-EL satisfies R1, QY-ED does not.
-3. **Is there an R1-compliant electron topology with a cleaner shape than the path?** A delta is impossible without a collision (pigeonhole, §5). A wye hub at a *fresh* dim might work — an electron wye whose hub is a new dim and whose spokes avoid the quark hub-spoke pairs. Worth checking as a third electron option.
+1. **R1 is binding, and corrected QY-ED meets it.** R1 follows from [architecture.md §3.4](architecture.md) (each pair has one (σ, τ, P) triplet → one sheet). The old QY-ED violated it by sharing the quark hub; the corrected QY-ED shares two spokes and complies. QY-EL's linear path is no longer the unique R1-compliant option.
+2. **QY-EL's electron path fits.** The general solver closes the joint QY-EL candidate at machine precision (DOF = 2, 23 compliant discrete combos; [outputs/cand_QY-EL.txt](../outputs/cand_QY-EL.txt)). So QY-EL is a *valid* candidate — it just isn't a *preferred* one, since QY-ED matches it on dims, R1, and fit while beating it on shape.
+3. **Disposition.** QY-EL is kept on the record as the QY + electron-path option but is not carried forward as a working candidate. The QY + ED family (share 1 / 2 / 3 spokes — see [candidates.md §4](candidates.md)) is the live line.
 
 ---
 
@@ -135,7 +135,7 @@ This file consolidates the quark + electron content of the former **Candidate A*
 - [config-electron.md](config-electron.md) — EL config definition
 - [config-neutrino.md](config-neutrino.md) — NS / NC / ND / NY options for the open neutrino sector
 - [candidates.md](candidates.md) — candidate formation rules (R1) and the candidate index
-- [cand-QY-ED.md](cand-QY-ED.md) — the sibling quark+electron candidate (QY + ED); violates R1
+- [cand-QY-ED.md](cand-QY-ED.md) — the sibling quark+electron candidate (QY + ED); R1-compliant and supersedes this one
 - [architecture.md §3.4](architecture.md) — pair-triplet (σ, τ, P) hypothesis; the basis for R1
 - [scripts/cand_solver.py](../scripts/cand_solver.py), [scripts/cand_specs/QY-EL.json](../scripts/cand_specs/QY-EL.json) — general solver and the QY-EL spec
 - [outputs/cand_QY-EL.txt](../outputs/cand_QY-EL.txt) — solver report for this candidate
