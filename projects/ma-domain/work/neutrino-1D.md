@@ -5,7 +5,7 @@
 **Cross-references:**
 - [electron-tube.md](electron-tube.md) — bilobe (N=2) tube hosting T(1, 2) as the electron; sets the framework's "shape × twist" vocabulary
 - [tube-function.md](tube-function.md) — generalized N-fold-symmetric polar curve r(φ) = R·[1 + a₁·cos(Nφ) + a₂·cos(2Nφ)]; supplies the shapes used here on a 1D substrate
-- [sym-ladder.md §2.3](sym-ladder.md) — current neutrino-delta candidate (three 2D sheets with shared dims)
+- [config-neutrino.md §ND](config-neutrino.md) — the neutrino-delta config (three 2D sheets), the multi-pair alternative to the 1D substrate
 - [candidates.md](candidates.md) — current topology candidates (none of which yet uses 1D substrates)
 - [../../metric-mass/](../../metric-mass/) — single-compact-dimension framework; chargeless ±n mode pairs
 - [config-neutrino.md §NC](config-neutrino.md) — the NC (Neutrino Curve) config; **carries the numerical findings** for this picture

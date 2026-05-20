@@ -50,20 +50,24 @@ All quark+electron fits are at machine precision; the entries below are R1 statu
 
 The three QY-ED rows are one **candidate family** — same configs (QY + ED), differing only in how many quark spokes the electron delta reuses — and are written up together in [cand-QY-ED.md](cand-QY-ED.md).
 
-| Candidate | Quark | Electron | Dims | R1 | DOF | Fitting combos | Spec / report |
-|---|:---:|:---:|:---:|:---:|:---:|:---:|---|
-| **QY-ED-share1** | QY | ED (share 1 spoke) | 6 | ✓ | 3 | 101 | [cand-QY-ED.md §2](cand-QY-ED.md) · [spec](../scripts/cand_specs/QY-ED-share1.json) · [report](../outputs/cand_QY-ED-share1.txt) |
-| **QY-ED** | QY | ED (share 2 spokes) | 5 | ✓ | 2 | 27 | [cand-QY-ED.md §3](cand-QY-ED.md) · [spec](../scripts/cand_specs/QY-ED.json) · [report](../outputs/cand_QY-ED.txt) |
-| **QY-ED-share3** | QY | ED (share 3 spokes, K4) | **4** | ✓ | **1** | **4** | [cand-QY-ED.md §4](cand-QY-ED.md) · [spec](../scripts/cand_specs/QY-ED-share3.json) · [report](../outputs/cand_QY-ED-share3.txt) |
-| **QY-EL** | QY | EL (path) | 5 | ✓ | 2 | 23 | [cand-QY-EL.md](cand-QY-EL.md) · [spec](../scripts/cand_specs/QY-EL.json) |
+| Candidate | Quark | Electron | Dims | R1 | DOF | Status | File |
+|---|:---:|:---:|:---:|:---:|:---:|---|---|
+| **QY-ED-share1** | QY | ED (share 1 spoke) | 6 | ✓ | 3 | fit (101 combos) | [cand-QY-ED.md §2](cand-QY-ED.md) |
+| **QY-ED** | QY | ED (share 2 spokes) | 5 | ✓ | 2 | fit (27 combos) | [cand-QY-ED.md §3](cand-QY-ED.md) |
+| **QY-ED-share3** | QY | ED (share 3 spokes, K4) | **4** | ✓ | **1** | fit (4 combos) | [cand-QY-ED.md §4](cand-QY-ED.md) |
+| **QY-EY** | QY | EY (electron wye) | 6 | ✓ | — | solve deferred | [cand-QY-EY.md](cand-QY-EY.md) |
+| QY-EL | QY | EL (path) | 5 | ✓ | 2 | fit (23 combos); dominated by QY-ED | [cand-QY-EL.md](cand-QY-EL.md) |
+| QD-EY | QD | EY (electron wye) | — | ✓ | — | **not viable** — QD quark sector falsified | [cand-QD-EY.md](cand-QD-EY.md) |
 
-**QY-ED-share3 (K4) is the standout.** It is the complete graph on 4 dims, R1-compliant by construction, with the fewest dims, the tightest DOF, and only 4 compliant discrete combos — so it nearly determines the particle→sheet assignment. Its solver run also pins all three electron σ_eff values to ≈ 2 (the R53 magic-shear value) rather than leaving them free.
+The three QY-ED rows are one **candidate family** (same configs, varying how many quark spokes the electron delta reuses), written up together in [cand-QY-ED.md](cand-QY-ED.md). Quark+electron fits, where run, are at machine precision; the "fit" status gives the count of discrete (assignment + tube/ring) combinations that reach a compliant fit — fewer = more predictive. Neutrino sector open for all.
 
-**QY-EL is now dominated.** With QY-ED corrected to share spokes, QY-EL no longer has a unique selling point: both are R1-compliant and use 5 dims, but QY-ED has a clean rotationally-symmetric delta where QY-EL has the awkward linear path. QY-EL is retained for the record; QY-ED supersedes it.
+**QY-ED-share3 (K4) is the standout** — the complete graph on 4 dims, fewest dims, tightest DOF, only 4 compliant combos, and it pins all three electron σ_eff to ≈ 2 (the R53 magic-shear value) structurally.
 
-**Former Candidates A / B / C.** old **B** and **C** (QY + ED) → subsumed by **QY-ED**; old **A** (QY + EL) → **QY-EL**.
+**QY-EL is dominated** by corrected QY-ED (both R1-compliant, 5 dims; QY-ED has the clean delta). **QD-EY is not viable** — its QD quark sector cannot host the six quarks (see cand-QD-EY.md, which also records the compound-3D-mode falsification).
 
-**Ladder candidates.** [wye-ladder.md](wye-ladder.md) (QY + EY) and [sym-ladder.md](sym-ladder.md) (QD + EY) are also under consideration but have not yet been converted to the `cand-*.md` format. They will become `cand-QY-EY.md` and `cand-QD-EY.md` when converted; R1 should be checked for each at that time.
+**Former Candidates A / B / C.** old **B** and **C** (QY + ED) → subsumed by the **QY-ED** family; old **A** (QY + EL) → **QY-EL**.
+
+**Former ladder candidates.** "sym-ladder" → **QD-EY**; "wye-ladder" → **QY-EY**. Both are now in `cand-*.md` form; the standalone ladder files have been retired. Their surviving non-topology content — the stable-center / unstable-leg stability mechanism — lives in [mode-stability.md](mode-stability.md).
 
 ---
 

@@ -77,7 +77,7 @@ A bare-mode mass calculator (a script, since removed as superseded by [cand_solv
 | (d) ν-sheet shares a dim with e-sheet, relating ν₃ (60 meV) to the electron (511 keV) | **✗ Fails** in the bare mode formula; the ν-sheet needs an independent length scale or shear resonance. |
 | (e) Within-sheet 3-generation splitting follows from the 3 coordinate planes per sheet | **✗ Fails** (inherited from [3-torus.md §5.3](3-torus.md)); needs shears. |
 
-**What carried forward.** The cross-sheet *bridging via shared dims* is the durable result. It is the conceptual seed of the dim-pool topology used by every candidate in [candidates.md](candidates.md), and it makes model-F's L_ring_e ≈ L_ring_p near-coincidence a structural fact rather than an accident. The specific 6-dim triangle and the bare-mode mass predictions were superseded; the dim-sharing idea was not. The orthogonal within-sheet 3-generation problem remained open in the same place it always was — see [sym-ladder.md](sym-ladder.md) and [candidates.md](candidates.md) for the current treatment.
+**What carried forward.** The cross-sheet *bridging via shared dims* is the durable result. It is the conceptual seed of the dim-pool topology used by every candidate in [candidates.md](candidates.md), and it makes model-F's L_ring_e ≈ L_ring_p near-coincidence a structural fact rather than an accident. The specific 6-dim triangle and the bare-mode mass predictions were superseded; the dim-sharing idea was not. The orthogonal within-sheet 3-generation problem remained open in the same place it always was — see [candidates.md](candidates.md) for the current treatment.
 
 ---
 
