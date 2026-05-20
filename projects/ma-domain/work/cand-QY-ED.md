@@ -7,7 +7,7 @@
 - Electron sector — **ED** (electron delta), per [config-electron.md](config-electron.md)
 - Neutrino sector — **open** (any of NS / NC / ND / NY from [config-neutrino.md](config-neutrino.md))
 
-**Goal of this file:** record a single set of compact-dimension sizes on which the required quark and charged-lepton masses all come out in range, with one consolidated topology graph. Fits are computed by [scripts/candidate_fits.py](../scripts/candidate_fits.py); numerical output in [outputs/candidate_fits.txt](../outputs/candidate_fits.txt).
+**Goal of this file:** record a single set of compact-dimension sizes on which the required quark and charged-lepton masses all come out in range, with one consolidated topology graph. Fits are computed by the general solver [scripts/cand_solver.py](../scripts/cand_solver.py) from the spec [scripts/cand_specs/QY-ED.json](../scripts/cand_specs/QY-ED.json); the full report is [outputs/cand_QY-ED.txt](../outputs/cand_QY-ED.txt).
 
 **Notation.** Dim labels m1..m5 are size-ordered, smallest first. A 2D sheet is a dim-pair `Ma(i, j)`. Mode-windings are `T(m_t, m_r)` per [metric-charge ch. 4](../../metric-charge/04-the-closure-condition.md): closure-valid modes are T(1, n) for n ∈ ℤ\{0}; the two lowest |m_t|=1 modes per pair are T(1, 1) and T(1, 2).
 
@@ -74,7 +74,7 @@ The quark wye: hub m5 plays tube in all three sheets, each spoke plays ring. Eac
 | `Ma(3, 5)` | m5 | m3 (0.91 fm) | 1.932 | s — 93 MeV | c — 1270 MeV |
 | `Ma(4, 5)` | m5 | m4 (181 fm) | 1.684 | u — 2.17 MeV | d — 4.68 MeV |
 
-**Fit:** max |Δ%| = **0.499%** across all 6 quark masses (u carries nearly all the residual; d, s, c, b, t fit at < 0.2%). Within-generation ratios reproduced: m_d/m_u = 2.17, m_c/m_s = 13.7, m_t/m_b = 41.4. Driver: [scripts/quark_search_wye.py](../scripts/quark_search_wye.py).
+**Fit:** max |Δ%| = **0.499%** across all 6 quark masses (u carries nearly all the residual; d, s, c, b, t fit at < 0.2%). Within-generation ratios reproduced: m_d/m_u = 2.17, m_c/m_s = 13.7, m_t/m_b = 41.4. (The 0.499% is the older pure-ring estimate; the joint solve closes the quark sector to machine precision.) Driver: [scripts/cand_solver.py](../scripts/cand_solver.py); report [outputs/cand_QY-ED.txt](../outputs/cand_QY-ED.txt).
 
 The quark sector is self-contained: its four dim sizes and three σ_eff values are fixed by the six quark masses alone, with one residual free parameter (L_5 above its floor).
 
@@ -90,9 +90,9 @@ The electron delta: triangle on m2, m4, m5. Each sheet hosts one charged lepton 
 | `Ma(2, 5)` | μ | m5 (5740 fm) | m2 (0.70 fm) | 1.941 | T(1, 2) | 105.7 MeV |
 | `Ma(4, 5)` | e | m5 (5740 fm) | m4 (181 fm) | 1.932 | T(1, 2) | 0.511 MeV |
 
-**Fit:** max |Δ%| = **0.000%** (machine precision on all three lepton masses). Driver: [scripts/candidate_fits.py:electron_delta_fit()](../scripts/candidate_fits.py).
+**Fit:** max |Δ%| = **0.000%** (machine precision on all three lepton masses). Driver: [scripts/cand_solver.py](../scripts/cand_solver.py); report [outputs/cand_QY-ED.txt](../outputs/cand_QY-ED.txt).
 
-**Residual freedom.** With m4 and m5 inherited from the quark sector, the electron delta has four free continuous parameters (L_2 + three σ_eff) against three lepton masses — **1 residual DOF**. The values above are one self-consistent solution: a uniform "larger-as-tube" convention with τ landing cleanly at σ_eff = 1.000. A different point on the 1-DOF manifold (e.g., τ with m2-as-tube and σ_eff ≈ 1.21) fits equally well; [scripts/candidate_fits.py](../scripts/candidate_fits.py)'s current optimizer run returns one such alternative. The dimension size L_2 ≈ 0.70 fm is robust across the manifold — it is the genuine deliverable; the per-pair σ_eff/tube-ring split is not yet uniquely pinned.
+**Residual freedom — see the solver report.** Solved as a joint candidate (all 5 dims + 6 σ_eff fit together against all 9 masses), QY-ED is **underdetermined with DOF = 2**: the solution set is a 2-parameter family, not a point. The general solver [scripts/cand_solver.py](../scripts/cand_solver.py) maps this manifold — see [outputs/cand_QY-ED.txt](../outputs/cand_QY-ED.txt). Across the sampled manifold only **L[m1] and the σ_eff of the shared sheet Ma(4,5)** come out pinned; the other dim sizes — **L[m2] among them, ranging ≈ 0.8–2.2 fm** — and most σ_eff values vary over the family. The σ_eff and tube/ring values in the table above are therefore *one point* on the manifold, not pinned predictions; the solver finds **43 distinct discrete (assignment + tube/ring) combinations** that each reach a compliant fit.
 
 ---
 
@@ -131,7 +131,7 @@ This file consolidates and replaces the quark + electron content of [candidates.
 - **Candidate B** (QY + ED + NS) and **Candidate C** (QY + ED + ND) are *identical* in their quark and electron sectors — both are exactly the QY + ED content of this file. They differed only in the neutrino sector, which this file leaves open. So B and C both collapse into `cand-QY-ED.md` + a neutrino choice.
 - **Candidate A** (QY + EL + NS) used the electron *linear path* (EL) instead of the delta. EL was never fit and is structurally awkward ([config-electron.md](config-electron.md) EL). A is not carried forward.
 
-candidates.md is retained for now as the historical comparison record; it is slated for deletion once the cand-* files cover all the topologies under consideration.
+candidates.md has been trimmed to a rules-and-index file: it now holds the candidate-formation rules (R1) and the index of candidates, with per-candidate detail living in the `cand-*.md` files.
 
 ---
 
@@ -143,5 +143,5 @@ candidates.md is retained for now as the historical comparison record; it is sla
 - [architecture.md §2.1, §3.4](architecture.md) — `Ma(i, j)` notation; pair-triplet (σ, τ, P) hypothesis
 - [quark-search.md §9](quark-search.md) — full quark-wye derivation
 - [electron-tube.md](electron-tube.md) — the τ = 2 ellipse that puts T(1, 2) at the floor on a lepton sheet
-- [scripts/candidate_fits.py](../scripts/candidate_fits.py), [outputs/candidate_fits.txt](../outputs/candidate_fits.txt) — fit driver and numerical output
-- [candidates.md](candidates.md) — superseded comparison record (to be deleted)
+- [scripts/cand_solver.py](../scripts/cand_solver.py), [scripts/cand_specs/QY-ED.json](../scripts/cand_specs/QY-ED.json), [outputs/cand_QY-ED.txt](../outputs/cand_QY-ED.txt) — general solver, candidate spec, and report
+- [candidates.md](candidates.md) — candidate formation rules (R1) and the candidate index

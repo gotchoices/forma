@@ -124,7 +124,7 @@ The e-wye hosts (e, μ, τ) on pairs Ma((1, 6), (3, 6), (6, 7)) (candidates.md l
 
 ### 3.3 Electron wye — actual numerical fit (December 2025)
 
-The script [scripts/candidate_fits.py:electron_wye_fit()](../scripts/candidate_fits.py) implements the e-wye fit and was run; results in [outputs/candidate_fits.txt](../outputs/candidate_fits.txt) under "Wye-ladder". The fit closes (max |Δ%| = 0.000%) but **the σ_eff values do NOT support the unified-R53 prediction**:
+The e-wye fit was run by the now-retired `candidate_fits.py:electron_wye_fit()` routine; re-verification with the general solver [scripts/cand_solver.py](../scripts/cand_solver.py) (via a QY-EY spec) is pending. The recorded result: the fit closes (max |Δ%| = 0.000%) but **the σ_eff values do NOT support the unified-R53 prediction**:
 
 | Pair | Lepton (FOUND) | Tube | Ring | σ_eff (FOUND) |
 |---|---|---|---|---:|
@@ -200,7 +200,7 @@ The numerical fit hasn't been done in this file; see [neutrino-1D.md §4](neutri
 
 ## 5. Open questions and concerns
 
-1. **Numerical verification of the e-wye fit.** All §3.2 numbers are analytical estimates. Need to add a `wye_ladder_electron_fit()` to [scripts/candidate_fits.py](../scripts/candidate_fits.py) (or a fresh script) that fits the e-wye against (m_e, m_μ, m_τ). Expected to close cleanly; need to confirm σ_eff values are within R53's natural range.
+1. **Numerical verification of the e-wye fit.** All §3.2 numbers are analytical estimates. Write a QY-EY spec for the general solver [scripts/cand_solver.py](../scripts/cand_solver.py) and run it against (m_e, m_μ, m_τ). Expected to close cleanly; need to confirm σ_eff values are within R53's natural range.
 
 2. **L_5 vs L_6 — what fixes L_6?** The e-mass pins L_5 ≈ 2426 fm; L_6 is loosely constrained. Is there a structural rule (e.g., L_5 / L_6 ratio matches an empirical value, or L_6 plays a role in a not-yet-identified mode) that fixes L_6? Without one, L_6 is an unmotivated free parameter — a regression from Candidate C's L_2 = 0.7 fm being pinned cleanly by the τ mass alone.
 
@@ -220,7 +220,7 @@ The numerical fit hasn't been done in this file; see [neutrino-1D.md §4](neutri
 
 If wye-ladder is to compete with Candidate C as the working topology, the following steps make it concrete:
 
-1. **Numerical e-wye fit.** Add a function to [scripts/candidate_fits.py](../scripts/candidate_fits.py) (or a new script) that fits the e-wye Ma((1, 5), (2, 5), (5, 6)) against (m_e, m_μ, m_τ) using L_1, L_2 inherited from the quark wye and L_5, L_6 free. Report σ_eff values and verify they sit in R53's natural range. Goal: max |Δ%| < 1%.
+1. **Numerical e-wye fit.** Write a QY-EY spec for [scripts/cand_solver.py](../scripts/cand_solver.py) (the e-wye is Ma((1, 5), (2, 5), (5, 6))) and run it. Report σ_eff values and verify they sit in R53's natural range. Goal: max |Δ%| < 1%.
 
 2. **1D neutrino fit.** Add a script that solves the Schrödinger problem on the shaped 1D curve from [neutrino-1D.md §2](neutrino-1D.md) and fits the three lowest band gaps to the observed ν mass hierarchy. Use the tube-function family parameters (N, a₁, a₂) plus L as free parameters.
 

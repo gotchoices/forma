@@ -142,7 +142,7 @@ Same DOF count as EY but without rotational symmetry across pairs. No structural
 
 ### EL.3 — Verdict
 
-**Structural placeholder, not pursued.** Without a fit, EL can't be evaluated against ED or EY. If pursued, would need a dedicated `electron_path_fit()` in [scripts/candidate_fits.py](../scripts/candidate_fits.py).
+**Fittable, structurally awkward.** EL is fit by the general solver [scripts/cand_solver.py](../scripts/cand_solver.py), which handles arbitrary topologies (the linear path included). The QY-EL candidate closes to machine precision (see [cand-QY-EL.md](cand-QY-EL.md)). The shape awkwardness — no rotational or reflection symmetry across pairs — remains, but EL is no longer un-evaluated.
 
 ---
 
@@ -167,5 +167,5 @@ Same DOF count as EY but without rotational symmetry across pairs. No structural
 - [architecture.md §3.3.1](architecture.md) — closure modes per pair (default T(1, 2) for lepton sheets)
 - [architecture.md §3.4](architecture.md) — pair-triplet (σ, τ, P) hypothesis
 - [electron-tube.md](electron-tube.md) — convex-only tube construction; supplies the τ = 2 ellipse that puts T(1, 2) at the floor on a lepton sheet
-- [scripts/candidate_fits.py](../scripts/candidate_fits.py) — fits driven from specific candidates; report sector-internal fit residuals
+- [scripts/cand_solver.py](../scripts/cand_solver.py) — general candidate solver; fits any candidate built from these configs
 - [config-quark.md](config-quark.md), [config-neutrino.md](config-neutrino.md) — sibling sector configs

@@ -268,7 +268,7 @@ This is a model-building exercise: the comparison should be quantitative (sum of
 
 If the 1D-collapse / tiny-tube reading of §5 is adopted, each lepton generation lives on one Ma(i, j) pair, with the charged lepton at m_t = 1 and the neutrino at m_t = 0 (1D-curve sector). Three pairs, six L parameters (three L_tube, three L_ring), six masses to fit.
 
-Method: per-generation fit, using the existing [candidate_fits.py](../scripts/candidate_fits.py) machinery extended to include the neutrino sector. If the fit closes to a few percent across both charged leptons and neutrinos using the same six geometric parameters, that is strong evidence for the unification.
+Method: per-generation fit, using the general solver [cand_solver.py](../scripts/cand_solver.py) extended to include the neutrino sector. If the fit closes to a few percent across both charged leptons and neutrinos using the same six geometric parameters, that is strong evidence for the unification.
 
 ### 8.5 Phase E — promotion to derivation
 

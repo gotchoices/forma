@@ -154,7 +154,7 @@ In [candidates.md §1.2](candidates.md), all three working topology candidates (
 
 > "Each of the three pairs in the [electron] delta hosts one charged lepton at its lowest closure mode T(1, 2) — no within-pair doublet on leptons (Q = ±1 doesn't need the lobe/saddle split that quark fractional charges require)."
 
-The fits in [outputs/candidate_fits.txt](../outputs/candidate_fits.txt) reach 0.000% error on (e, μ, τ) masses *using T(1, 2) modes only* with per-pair σ_eff values as free parameters. The values found by the fit need a structural reason — this document supplies that reason: **T(1, 2)-lightest is automatic on a convex-only ellipse-tube with twist τ = 2**.
+The fits in [outputs/cand_QY-ED.txt](../outputs/cand_QY-ED.txt) reach 0.000% error on (e, μ, τ) masses *using T(1, 2) modes only* with per-pair σ_eff values as free parameters. The values found by the fit need a structural reason — this document supplies that reason: **T(1, 2)-lightest is automatic on a convex-only ellipse-tube with twist τ = 2**.
 
 ### 6.4 metric-charge: closure rule admits both T(1, 1) and T(1, 2)
 

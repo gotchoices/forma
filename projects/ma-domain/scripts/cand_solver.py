@@ -31,10 +31,14 @@ Usage:
     python cand_solver.py --all [<spec-dir>] [options]
 
 Options:
-    --seeds N        random restarts per discrete combo, mapping phase (default 60)
-    --scan-seeds N   random restarts per discrete combo, scan phase (default 3)
+    --seeds N        random restarts for the mapping phase (default 50)
+    --scan-seeds N   random restarts per discrete combo, scan phase (default 2)
     --threshold PCT  max |Delta%| for a fit to count as compliant (default 1.0)
     --out PATH       output report path (default outputs/cand_<name>.txt)
+
+Performance: the residual and its Jacobian are vectorized numpy; the
+Jacobian is exact (analytic), so least_squares runs no finite differences.
+Progress is printed to stderr during the scan phase.
 
 Spec format (JSON):
     {
@@ -168,11 +172,14 @@ def dof_analysis(spec: Spec) -> dict:
 
 
 # ---------------------------------------------------------------------------
-# Fit machinery
+# Fit machinery — vectorized residual with analytic Jacobian
 # ---------------------------------------------------------------------------
 
-def _obs_mass(sector: str, item) -> list:
-    """Observed (particle, mass, m_r) tuples a sheet contributes."""
+LN10 = float(np.log(10.0))
+
+
+def _hosted(sector: str, item) -> list:
+    """(particle name, observed mass, m_r) for each mode a sheet hosts."""
     if sector == "quark":
         light, heavy = item
         return [(light, QUARK[light], 2), (heavy, QUARK[heavy], 1)]
@@ -181,59 +188,79 @@ def _obs_mass(sector: str, item) -> list:
     return [(item, NEUTRINO[item], 2)]
 
 
-def make_residuals(spec: Spec, assignment: list, tube_first: tuple):
-    """Build the residual function for one discrete combo.
+def build_fit(spec: Spec, assignment: list, tube_first: tuple):
+    """Precompute per-mode arrays for one discrete combo.
 
-    x = [log10 L for each dim] + [sigma_eff for each sheet].
-    Residual per hosted particle = log10(predicted / observed).
+    Parameter vector x = [log10 L for each dim] + [sigma_eff per sheet].
+    Returns (residual, jac, predict, targets, n_params), where residual and
+    jac are vectorized numpy functions (jac is the exact analytic Jacobian
+    of log10(pred/obs), so least_squares needs no finite differences).
     """
     dims = spec.dims
     n_dims = len(dims)
-    sheets = spec.sheets
+    n_sheets = len(spec.sheets)
+    n_params = n_dims + n_sheets
+    dim_idx = {d: i for i, d in enumerate(dims)}
 
-    def predict(x) -> dict:
-        Ls = {d: 10.0 ** x[i] for i, d in enumerate(dims)}
-        out = {}
-        for s_idx, sh in enumerate(sheets):
-            d1, d2 = sh["pair"]
-            if tube_first[s_idx]:
-                L_T, L_R = Ls[d1], Ls[d2]
-            else:
-                L_T, L_R = Ls[d2], Ls[d1]
-            sigma = x[n_dims + s_idx]
-            for name, _obs, m_r in _obs_mass(sh["sector"], assignment[s_idx]):
-                delta = m_r - sigma  # m_t = 1
-                out[name] = COEFF * sqrt((1.0 / L_T) ** 2 + (delta / L_R) ** 2)
-        return out
+    mt_idx, mr_idx, sheet_idx, mr_val, obs_l, names = [], [], [], [], [], []
+    for s, sh in enumerate(spec.sheets):
+        d1, d2 = sh["pair"]
+        tube, ring = (d1, d2) if tube_first[s] else (d2, d1)
+        for name, m_obs, m_r in _hosted(sh["sector"], assignment[s]):
+            mt_idx.append(dim_idx[tube])
+            mr_idx.append(dim_idx[ring])
+            sheet_idx.append(s)
+            mr_val.append(float(m_r))
+            obs_l.append(m_obs)
+            names.append(name)
+    mt_idx = np.array(mt_idx)
+    mr_idx = np.array(mr_idx)
+    sheet_idx = np.array(sheet_idx)
+    mr_val = np.array(mr_val, dtype=float)
+    obs = np.array(obs_l, dtype=float)
+    n_modes = len(names)
+    rows = np.arange(n_modes)
 
-    targets = []
-    for s_idx, sh in enumerate(sheets):
-        for name, obs, _m_r in _obs_mass(sh["sector"], assignment[s_idx]):
-            targets.append((name, obs))
+    def _common(x):
+        L = 10.0 ** np.asarray(x[:n_dims], dtype=float)
+        sig = np.asarray(x[n_dims:], dtype=float)
+        LT = L[mt_idx]
+        LR = L[mr_idx]
+        delta = mr_val - sig[sheet_idx]  # m_t = 1
+        A = (1.0 / LT) ** 2 + (delta / LR) ** 2
+        return LT, LR, delta, A
 
-    def residuals(x):
-        pred = predict(x)
-        r = []
-        for name, obs in targets:
-            p = pred[name]
-            r.append(log10(p / obs) if p > 0 else 1e6)
-        return r
+    def residual(x):
+        LT, LR, delta, A = _common(x)
+        pred = COEFF * np.sqrt(A)
+        return np.log10(pred / obs)
 
-    return residuals, predict, targets
+    def jac(x):
+        LT, LR, delta, A = _common(x)
+        J = np.zeros((n_modes, n_params))
+        # r = log10(COEFF*sqrt(A)/obs);  dr/dx via the chain rule (see header).
+        J[rows, mt_idx] = -1.0 / (A * LT ** 2)
+        J[rows, mr_idx] = -(delta ** 2) / (A * LR ** 2)
+        J[rows, n_dims + sheet_idx] = -delta / (LN10 * A * LR ** 2)
+        return J
 
+    def predict(x):
+        _, _, _, A = _common(x)
+        pred = COEFF * np.sqrt(A)
+        return {names[k]: float(pred[k]) for k in range(n_modes)}
 
-def max_err_pct(pred: dict, targets: list) -> float:
-    return max(abs(100.0 * (pred[n] - obs) / obs) for n, obs in targets)
+    targets = list(zip(names, obs.tolist()))
+    return residual, jac, predict, targets, n_params
 
 
 def fit_combo(spec: Spec, assignment: list, tube_first: tuple,
-              n_seeds: int, rng_offset: int = 0):
+              n_seeds: int, rng_offset: int = 0, max_nfev: int = 300):
     """Fit one discrete combo from n_seeds random restarts.
 
     Returns a list of {x, max_err, pred} for every restart that converged,
     sorted by max_err ascending.
     """
-    residuals, predict, targets = make_residuals(spec, assignment, tube_first)
+    residual, jac, predict, targets, _ = build_fit(spec, assignment, tube_first)
     n_dims = len(spec.dims)
     n_sheets = len(spec.sheets)
     lo = [LOG_L_LO] * n_dims + [SIGMA_LO] * n_sheets
@@ -241,15 +268,16 @@ def fit_combo(spec: Spec, assignment: list, tube_first: tuple,
     sols = []
     for s in range(n_seeds):
         rng = np.random.default_rng(s + rng_offset)
-        x0 = list(rng.uniform(-4, 14, n_dims)) + list(rng.uniform(0.3, 2.7, n_sheets))
+        x0 = np.concatenate([rng.uniform(-4, 14, n_dims),
+                             rng.uniform(0.3, 2.7, n_sheets)])
         try:
-            res = least_squares(residuals, x0, bounds=(lo, hi),
-                                method="trf", max_nfev=800)
+            res = least_squares(residual, x0, jac=jac, bounds=(lo, hi),
+                                method="trf", max_nfev=max_nfev)
         except Exception:
             continue
         pred = predict(res.x)
-        sols.append({"x": res.x, "max_err": max_err_pct(pred, targets),
-                     "pred": pred})
+        merr = max(abs(100.0 * (pred[n] - o) / o) for n, o in targets)
+        sols.append({"x": res.x, "max_err": merr, "pred": pred})
     sols.sort(key=lambda d: d["max_err"])
     return sols
 
@@ -317,12 +345,21 @@ def solve(spec: Spec, scan_seeds: int, map_seeds: int, threshold: float) -> dict
     dof = dof_analysis(spec)
 
     # Scan phase — every discrete combo, few seeds, keep the best per combo.
+    combos = list(enumerate_combos(spec))
+    total = len(combos)
+    print(f"  scan phase: {total} discrete combos x {scan_seeds} seeds",
+          file=sys.stderr, flush=True)
     scan = []
-    for assignment, tube_first in enumerate_combos(spec):
+    step = max(1, total // 20)
+    for i, (assignment, tube_first) in enumerate(combos):
         sols = fit_combo(spec, assignment, tube_first, scan_seeds)
         if sols:
             scan.append({"assignment": assignment, "tube_first": tube_first,
                          "best_err": sols[0]["max_err"]})
+        if (i + 1) % step == 0 or (i + 1) == total:
+            best = min((c["best_err"] for c in scan), default=float("inf"))
+            print(f"    scanned {i + 1}/{total}  best max|Delta%| so far = "
+                  f"{best:.4g}", file=sys.stderr, flush=True)
     scan.sort(key=lambda d: d["best_err"])
 
     compliant = [c for c in scan if c["best_err"] <= threshold]
@@ -341,6 +378,8 @@ def solve(spec: Spec, scan_seeds: int, map_seeds: int, threshold: float) -> dict
 
     # Mapping phase — re-fit the best discrete combo with many seeds to
     # trace the continuous solution manifold.
+    print(f"  mapping phase: best combo x {map_seeds} seeds",
+          file=sys.stderr, flush=True)
     best = compliant[0]
     sols = fit_combo(spec, best["assignment"], best["tube_first"],
                      map_seeds, rng_offset=1000)
@@ -465,9 +504,12 @@ def format_report(result: dict) -> str:
                              f"[{p['lo']:.4g}, {p['hi']:.4g}] {p['unit']}")
         n_ranged = sum(1 for p in m["params"] if p["kind"] == "ranged")
         L.append("")
-        L.append(f"  {n_ranged} parameter(s) free over a range; "
-                 f"{len(m['params']) - n_ranged} pinned. "
-                 f"(Expected free directions = DOF = {d['dof']}.)")
+        L.append(f"  {n_ranged} parameter(s) vary across the solution "
+                 f"manifold; {len(m['params']) - n_ranged} are invariant "
+                 f"(pinned).")
+        L.append(f"  The manifold is {d['dof']}-dimensional (DOF = {d['dof']}). "
+                 f"A parameter is 'ranged' if it moves anywhere on that "
+                 f"manifold, so the ranged count is >= DOF, not equal to it.")
         L.append("")
 
         # Predicted masses
@@ -494,10 +536,10 @@ def main(argv=None):
     ap.add_argument("spec", nargs="?", help="path to a candidate spec JSON")
     ap.add_argument("--all", nargs="?", const="cand_specs", metavar="DIR",
                     help="solve every *.json spec in DIR (default cand_specs/)")
-    ap.add_argument("--seeds", type=int, default=60,
-                    help="restarts per discrete combo, mapping phase (default 60)")
-    ap.add_argument("--scan-seeds", type=int, default=3,
-                    help="restarts per discrete combo, scan phase (default 3)")
+    ap.add_argument("--seeds", type=int, default=50,
+                    help="restarts for the mapping phase (default 50)")
+    ap.add_argument("--scan-seeds", type=int, default=2,
+                    help="restarts per discrete combo, scan phase (default 2)")
     ap.add_argument("--threshold", type=float, default=1.0,
                     help="max |Delta%%| for a compliant fit (default 1.0)")
     ap.add_argument("--out", default=None,
@@ -523,7 +565,7 @@ def main(argv=None):
 
     for spec_path in spec_paths:
         spec = load_spec(str(spec_path))
-        print(f"solving {spec.name} ...", file=sys.stderr)
+        print(f"solving {spec.name} ...", file=sys.stderr, flush=True)
         result = solve(spec, args.scan_seeds, args.seeds, args.threshold)
         report = format_report(result)
         print(report)

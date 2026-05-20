@@ -25,7 +25,7 @@ Two parallel paths now run in parallel:
 ### Path A (preferred): wye/star topology Ma((1,5), (3,5), (4,5))
 
 - [x] **First-cut attempt: 3-dim triangle topology `Ma((1,2), (1,3), (2,3))`.** Analytically + numerically falsified in [quark-search.md §1–§7](quark-search.md). The dim-sharing constraint was the obstruction.
-- [x] **Wye topology: 4 dims with pairs `Ma((1,5), (3,5), (4,5))` — m5 is the common hub (m2 is reserved for the e-sector). FITS ALL 6 QUARKS to < 1%.** Documented in [quark-search.md §9](quark-search.md); verified by [scripts/quark_search_wye.py](../scripts/quark_search_wye.py). Max |Δ%| = **0.499%**. Geometry: L_1 = 0.007 fm, L_3 = 0.91 fm, L_4 = 181 fm, L_5 ≳ 5740 fm. **All 6 quarks at (m_t, m_r) ∈ {(1, 1), (1, 2)} — the valid closure modes per [sheet-proton clover-quarks §12](../../sheet-proton/work/clover-quarks.md).** Lighter quark of each gen at T(1, 2), heavier at T(1, 1). σ_eff per pair = 1.684, 1.932, 1.976 (the heaviest pair sits essentially at R53's σ_eff ≈ 2 magic-shear value).
+- [x] **Wye topology: 4 dims with pairs `Ma((1,5), (3,5), (4,5))` — m5 is the common hub (m2 is reserved for the e-sector). FITS ALL 6 QUARKS to < 1%.** Documented in [quark-search.md §9](quark-search.md); verified by [scripts/cand_solver.py](../scripts/cand_solver.py). Max |Δ%| = **0.499%** (pure-ring analytic estimate; the joint solve closes it to machine precision). Geometry: L_1 = 0.007 fm, L_3 = 0.91 fm, L_4 = 181 fm, L_5 ≳ 5740 fm. **All 6 quarks at (m_t, m_r) ∈ {(1, 1), (1, 2)} — the valid closure modes per [sheet-proton clover-quarks §12](../../sheet-proton/work/clover-quarks.md).** Lighter quark of each gen at T(1, 2), heavier at T(1, 1). σ_eff per pair = 1.684, 1.932, 1.976 (the heaviest pair sits essentially at R53's σ_eff ≈ 2 magic-shear value).
 - [x] **Architectural implication**: tube/ring is per-pair structural choice, not size-determined ([architecture.md §3.1, §3.2](architecture.md) updated).
 - [ ] **Cross-term sparsity pattern**: the fit pins each pair's σ_eff = σ + 2τ; many (σ, τ ∈ {±1/3, ±2/3}) combinations give the same f. Choose the canonical assignment.
 - [x] **Phase 2 prep**: e-sector reuses L_4, L_5 from the quark wye and adds L_2 ≈ 0.7 fm. e-delta `Ma((2,4), (2,5), (4,5))` fits to machine precision with σ_eff in the natural range. Details in [candidates.md §2, §3](candidates.md).
@@ -41,7 +41,7 @@ Two parallel paths now run in parallel:
 
 ## Active candidate comparison ([candidates.md](candidates.md))
 
-Three current Path A topology variants tracked. Numerics in [outputs/candidate_fits.txt](../outputs/candidate_fits.txt); driver in [scripts/candidate_fits.py](../scripts/candidate_fits.py). All use size-ordered dim labels (m1 smallest, m8 largest in C).
+Three current Path A topology variants tracked. Solved by [scripts/cand_solver.py](../scripts/cand_solver.py) from per-candidate specs in [scripts/cand_specs/](../scripts/cand_specs/); reports written to `outputs/cand_<name>.txt`. All use size-ordered dim labels (m1 smallest, m8 largest in C).
 
 | Candidate | Quark | Electron | ν | Total dims |
 |---|---|---|---|---:|

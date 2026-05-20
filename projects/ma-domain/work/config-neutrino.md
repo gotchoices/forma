@@ -248,6 +248,6 @@ NS and NC are the two preferred directions: NS for empirical accessibility (sign
 - [metric-charge ch. 4](../../metric-charge/04-the-closure-condition.md) — full closure rule including sign-flipped m_t
 - [neutrino-1D.md](neutrino-1D.md) — full development of the NC substrate, band-structure math, and Majorana derivation
 - [grid-primitive ch.9](../../grid-primitive/09-chirality-asymmetry.md) — substrate antisymmetric chirality χ_anti; the physical origin of the Wilson-loop flux used in §NC.5
-- [scripts/candidate_fits.py:neutrino_pair_fit_check()](../scripts/candidate_fits.py) — current NS-style viability check (strict modes only)
+- [scripts/cand_solver.py](../scripts/cand_solver.py) — general candidate solver; fits one-particle-per-sheet configs (ND, NY). The multi-mode-per-pair NS and the 1D-substrate NC are not yet supported by it.
 - [scripts/neutrino_1d_fit.py](../scripts/neutrino_1d_fit.py) — NC intrinsic-operator + Wilson-loop-flux fit script
 - [config-quark.md](config-quark.md), [config-electron.md](config-electron.md) — sibling sector configs

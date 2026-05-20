@@ -56,4 +56,4 @@ Each candidate is documented in a file named `cand-<Q>-<E>.md` — e.g. [cand-QY
 - [config-quark.md](config-quark.md), [config-electron.md](config-electron.md), [config-neutrino.md](config-neutrino.md) — per-sector topology configs
 - [architecture.md §2.1, §3.1, §3.3.1, §3.4](architecture.md) — dim notation; per-pair tube/ring rule; closure-mode inventory; pair-triplet (σ, τ, P) hypothesis (basis for R1)
 - [metric-charge ch. 4](../../metric-charge/04-the-closure-condition.md) — closure rule for valid (m_t, m_r) modes
-- [scripts/candidate_fits.py](../scripts/candidate_fits.py), [outputs/candidate_fits.txt](../outputs/candidate_fits.txt) — fit driver and numerical output
+- [scripts/cand_solver.py](../scripts/cand_solver.py), [scripts/cand_specs/](../scripts/cand_specs/) — general candidate solver and the per-candidate spec files; each solve writes a report to `outputs/cand_<name>.txt`

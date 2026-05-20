@@ -223,7 +223,7 @@ With σ_eff in (1.5, 2), T(1, 2) sits closer to σ_eff (smaller detuning, lighte
 
   σ_eff = (2R + 1)/(R + 1)
 
-then L_ring from m_lighter ≈ 2π·ℏc·(2−σ_eff)/L_ring. Size-ordered assignment: the **smallest** ring holds the **heaviest** generation (since m ~ 1/L_ring). Script: [scripts/quark_search_wye.py](../scripts/quark_search_wye.py); output: [outputs/quark_search_wye.txt](../outputs/quark_search_wye.txt).
+then L_ring from m_lighter ≈ 2π·ℏc·(2−σ_eff)/L_ring. Size-ordered assignment: the **smallest** ring holds the **heaviest** generation (since m ~ 1/L_ring). The QY quark wye is fit within any candidate by [scripts/cand_solver.py](../scripts/cand_solver.py); see [outputs/cand_QY-ED.txt](../outputs/cand_QY-ED.txt).
 
 | Pair | Generation (lighter, heavier) | Modes | within-pair ratio | σ_eff | L_ring (fm) |
 |---|---|---|---:|---:|---:|

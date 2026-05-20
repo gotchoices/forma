@@ -1,13 +1,13 @@
 # cand-QY-EL.md — consolidated candidate: quark wye + electron linear path
 
-**Status:** Documented candidate, partially solved. Subsumes the quark + electron content of the former Candidate A ([candidates.md](candidates.md)). The neutrino sector is left open — see §6. The electron sector (a linear path) has not been numerically fit; see §4.
+**Status:** Documented candidate, quark + electron sectors fully fit. Subsumes the quark + electron content of the former Candidate A ([candidates.md](candidates.md)). The neutrino sector is left open — see §6. The electron linear path is fit by the general solver — see §4.
 
 **Composition:**
 - Quark sector — **QY** (quark wye), per [config-quark.md](config-quark.md)
 - Electron sector — **EL** (electron linear path), per [config-electron.md](config-electron.md)
 - Neutrino sector — **open** (any of NS / NC / ND / NY from [config-neutrino.md](config-neutrino.md))
 
-**Why this candidate is documented despite being awkward.** The electron path has no clean rotational shape, and its fit has not been done. But it has one structural property the cleaner-looking QY-ED candidate lacks: it **satisfies rule R1** (one sheet per dim-pair — see [candidates.md §2](candidates.md)). All six of its dim-pairs are distinct. QY-ED, by contrast, places two sheets on `Ma(4, 5)`. So this candidate is kept as the rule-compliant alternative. See §5.
+**Why this candidate is documented despite being awkward.** The electron path has no clean rotational shape. But it has one structural property the cleaner-looking QY-ED candidate lacks: it **satisfies rule R1** (one sheet per dim-pair — see [candidates.md §2](candidates.md)). All six of its dim-pairs are distinct. QY-ED, by contrast, places two sheets on `Ma(4, 5)`. The general solver fits QY-EL to machine precision (§4), so on fit quality it now ties QY-ED; the structural R1 difference is the live distinction. See §5.
 
 **Notation.** Dim labels m1..m5 are size-ordered, smallest first. A 2D sheet is a dim-pair `Ma(i, j)`. Mode-windings are `T(m_t, m_r)` per [metric-charge ch. 4](../../metric-charge/04-the-closure-condition.md).
 
@@ -52,12 +52,12 @@ graph LR
 | Dim | L | Sector role | Pinned by |
 |---|---:|---|---|
 | m1 | 0.007 fm | quark ring (t, b); electron-path dim | quark fit |
-| m2 | ~0.7 fm (est.) | electron-path dim — lepton scale | **not pinned** — electron path unfit (§4) |
+| m2 | ranged | electron-path dim | joint solve: free direction of the DOF = 2 manifold (§4) |
 | m3 | 0.91 fm | quark ring (c, s); electron-path dim | quark fit |
 | m4 | 181 fm | quark ring (u, d) | quark fit |
 | m5 | 5740 fm | quark hub (common tube); electron-path dim | quark fit |
 
-The quark sector pins four of the five dims (m1, m3, m4, m5) — identical to [cand-QY-ED.md §2](cand-QY-ED.md). m2 is the one electron-only dim; its size is estimated at the τ Compton scale (~0.7 fm) by analogy with the QY-ED electron fit, but the path topology has not been fit so this is not a solved value.
+The sizes above are the canonical quark-wye layout (heaviest generation on the smallest ring). The full joint solve (§4) searches every generation/lepton-to-sheet assignment and is underdetermined at **DOF = 2**, so most dim sizes come out *ranged* rather than pinned — see [outputs/cand_QY-EL.txt](../outputs/cand_QY-EL.txt) for the pinned/ranged breakdown. This table is one reference point on that manifold, not the unique solution.
 
 ---
 
@@ -71,25 +71,17 @@ Identical to the quark sector of [cand-QY-ED.md §3](cand-QY-ED.md) — the quar
 | `Ma(3, 5)` | m5 | m3 (0.91 fm) | 1.932 | s — 93 MeV | c — 1270 MeV |
 | `Ma(4, 5)` | m5 | m4 (181 fm) | 1.684 | u — 2.17 MeV | d — 4.68 MeV |
 
-**Fit:** max |Δ%| = **0.499%** across all 6 quark masses. Driver: [scripts/quark_search_wye.py](../scripts/quark_search_wye.py).
+**Fit:** max |Δ%| = **0.499%** across all 6 quark masses (pure-ring estimate; the joint solve closes the quark sector to machine precision). Driver: [scripts/cand_solver.py](../scripts/cand_solver.py); report [outputs/cand_QY-EL.txt](../outputs/cand_QY-EL.txt).
 
 ---
 
-## 4. Electron sheets (EL) — not fit
+## 4. Electron sheets (EL) — fit
 
-The electron sector is the linear path m3 — m1 — m2 — m5, i.e., the three sheets:
+The electron sector is the linear path m3 — m1 — m2 — m5, i.e., the three sheets `Ma(1,3)`, `Ma(1,2)`, `Ma(2,5)`. The general solver [scripts/cand_solver.py](../scripts/cand_solver.py) fits it as part of the joint QY-EL candidate — the chain topology needs no special handling; the solver searches every lepton-to-sheet assignment and tube/ring choice.
 
-| Sheet | Dims | Available L's |
-|---|---|---|
-| `Ma(1, 3)` | m1, m3 | 0.007 fm, 0.91 fm |
-| `Ma(1, 2)` | m1, m2 | 0.007 fm, ~0.7 fm (m2 unfit) |
-| `Ma(2, 5)` | m2, m5 | ~0.7 fm (unfit), 5740 fm |
+**Status: fit, machine precision.** The joint solve closes all 9 quark + lepton masses at **max |Δ%| = 0.0000%** (report [outputs/cand_QY-EL.txt](../outputs/cand_QY-EL.txt)). The path having no rotational symmetry is not an obstacle. The solver finds **23 distinct discrete (assignment + tube/ring) combinations** that each reach a compliant fit.
 
-**Status: not numerically fit.** The lepton-to-sheet assignment (which of e, μ, τ on which pair), the per-sheet tube/ring choice, and the per-sheet σ_eff are all open. The path has no rotational or reflection symmetry across its sheets, so there is no symmetry argument to constrain the assignment — every permutation must be tested.
-
-Fitting this sector would require a dedicated `electron_path_fit()` in [scripts/candidate_fits.py](../scripts/candidate_fits.py), analogous to `electron_delta_fit()` and `electron_wye_fit()` but for the chain topology. Per [config-electron.md](config-electron.md) (EL), the path has 7 continuous parameters (4 L's + 3 σ_eff) against 3 lepton masses — 4 sector-internal DOF, the same underdetermination as the electron wye EY.
-
-Until that fit is run, this candidate's electron sector is a **topology only**. The dimension m2 ≈ 0.7 fm in §2 is an estimate, not a solved value.
+**Underdetermined at DOF = 2.** The joint candidate has 11 free continuous parameters (5 dim sizes + 6 σ_eff) against 9 mass constraints, so the solution is a 2-parameter family. Across the sampled manifold the solver finds only **one parameter pinned — the smallest quark ring, L ≈ 0.0072 fm** (it hosts the b/t generation); every other dim size and σ_eff ranges over the family. In particular **L[m2] is essentially unconstrained**, ranging over many orders of magnitude. So m2's size is a free direction of the manifold, not a pinned value — the §2 table is one reference point, not the solution.
 
 ---
 
@@ -113,7 +105,7 @@ Contrast with [cand-QY-ED.md](cand-QY-ED.md): the electron *delta* uses pairs `M
 So the choice between QY-ED and QY-EL is a genuine structural trade:
 
 - **QY-ED** — clean rotationally-symmetric electron delta, fits to machine precision, but violates R1 (one pair doubled).
-- **QY-EL** — R1-compliant, but the electron sector has no clean shape and has not been fit.
+- **QY-EL** — R1-compliant, fits to machine precision, but the electron sector has no clean rotational shape (the linear path).
 
 Resolving this trade is an open architectural question (see §7).
 
@@ -132,7 +124,7 @@ This file consolidates the quark + electron content of the former **Candidate A*
 **Open questions this raises:**
 
 1. **Is R1 binding?** If R1 is adopted as a hard rule, QY-ED is invalid as written and either (a) QY-EL becomes the working quark+electron candidate, or (b) QY-ED must be reworked so the electron sector avoids the `Ma(4,5)` collision. R1 follows from [architecture.md §3.4](architecture.md) (each pair has one (σ, τ, P) triplet, hence one shape, hence one sheet); the "P is per-mode" reading that would permit two sheets per pair is not what §3.4 states.
-2. **Can QY-EL's electron path be fit?** The 4-DOF underdetermined path should close numerically (like EY did), but the fit has not been run. Until it is, QY-EL cannot be compared to QY-ED on fit quality.
+2. **QY-EL's electron path fits.** The general solver closes the joint QY-EL candidate at machine precision (DOF = 2, 23 compliant discrete combos; see [outputs/cand_QY-EL.txt](../outputs/cand_QY-EL.txt)). On fit quality QY-EL and QY-ED are now tied — both close exactly. The live distinction is purely structural: QY-EL satisfies R1, QY-ED does not.
 3. **Is there an R1-compliant electron topology with a cleaner shape than the path?** A delta is impossible without a collision (pigeonhole, §5). A wye hub at a *fresh* dim might work — an electron wye whose hub is a new dim and whose spokes avoid the quark hub-spoke pairs. Worth checking as a third electron option.
 
 ---
@@ -145,5 +137,5 @@ This file consolidates the quark + electron content of the former **Candidate A*
 - [candidates.md](candidates.md) — candidate formation rules (R1) and the candidate index
 - [cand-QY-ED.md](cand-QY-ED.md) — the sibling quark+electron candidate (QY + ED); violates R1
 - [architecture.md §3.4](architecture.md) — pair-triplet (σ, τ, P) hypothesis; the basis for R1
-- [scripts/quark_search_wye.py](../scripts/quark_search_wye.py) — quark-wye fit driver
-- [scripts/candidate_fits.py](../scripts/candidate_fits.py) — fit driver (no `electron_path_fit()` yet)
+- [scripts/cand_solver.py](../scripts/cand_solver.py), [scripts/cand_specs/QY-EL.json](../scripts/cand_specs/QY-EL.json) — general solver and the QY-EL spec
+- [outputs/cand_QY-EL.txt](../outputs/cand_QY-EL.txt) — solver report for this candidate

@@ -104,7 +104,7 @@ L_h ≳ 5740 fm (pure-ring constraint; the hub only needs to be much larger than
 
 The (b, t) pair's σ_eff = 1.976 sits microscopically close to R53's "magic shear" value of 2 — interesting cross-sector resonance hint, but not load-bearing for QY's fit.
 
-**Max |Δ%| = 0.499%** across all 6 quark masses. The u quark accounts for nearly all the residual; d, s, c, b, t fit at < 0.2%. Reproduces the within-generation ratios m_d/m_u = 2.17, m_c/m_s = 13.7, m_t/m_b = 41.4. Script: [scripts/quark_search_wye.py](../scripts/quark_search_wye.py); output: [outputs/quark_search_wye.txt](../outputs/quark_search_wye.txt).
+**Max |Δ%| = 0.499%** across all 6 quark masses. The u quark accounts for nearly all the residual; d, s, c, b, t fit at < 0.2%. Reproduces the within-generation ratios m_d/m_u = 2.17, m_c/m_s = 13.7, m_t/m_b = 41.4. The QY quark wye is fit within any candidate by the general solver [scripts/cand_solver.py](../scripts/cand_solver.py); see e.g. [outputs/cand_QY-ED.txt](../outputs/cand_QY-ED.txt). (With every σ_eff treated as a free parameter the joint solve closes the quark sector to machine precision; the 0.499% above is the older pure-ring analytic estimate.)
 
 ### QY.3 — Size hierarchy
 
@@ -154,6 +154,6 @@ QY is the working choice. QD is kept as a fallback and as the "what doesn't work
 - [quark-search.md](quark-search.md) — full derivation: §1–§8 (QD analytical falsification), §9 (QY working result), §10 (QD Relaxation 1)
 - [architecture.md §3.1, §3.4](architecture.md) — per-pair tube/ring rule; (σ, τ, P) triplet hypothesis
 - [architecture.md §3.3.1](architecture.md) — closure-mode inventory per pair (the default T(1, 1) + T(1, 2) rule that Relaxation 1 relaxes)
-- [scripts/quark_search_wye.py](../scripts/quark_search_wye.py) — QY fit driver (produces the 0.499% result)
+- [scripts/cand_solver.py](../scripts/cand_solver.py) — general candidate solver; fits the QY quark wye inside any candidate that uses it
 - [scripts/quark_search_relaxation_1.py](../scripts/quark_search_relaxation_1.py) — QD with Relaxation 1 (produces the 3.97% best fit)
 - [config-electron.md](config-electron.md), [config-neutrino.md](config-neutrino.md) — sibling sector configs
