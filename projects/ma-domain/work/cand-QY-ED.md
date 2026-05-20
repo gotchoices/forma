@@ -111,18 +111,18 @@ graph LR
     m3["m3<br/>shared spoke"]
     m4["m4<br/>quark hub"]
 
-    m1 ==>|u/d| m4
-    m2 ==>|s/c| m4
-    m3 ==>|b/t| m4
-    m1 ===|e| m2
-    m1 ===|μ| m3
-    m2 ===|τ| m3
+    m1 ==>|q| m4
+    m2 ==>|q| m4
+    m3 ==>|q| m4
+    m1 ===|ℓ| m2
+    m1 ===|ℓ| m3
+    m2 ===|ℓ| m3
 
     linkStyle 0,1,2 stroke:red,stroke-width:2px
     linkStyle 3,4,5 stroke:blue,stroke-width:2px
 ```
 
-Quark wye `Ma((1,4),(2,4),(3,4))`; electron delta `Ma((1,2),(1,3),(2,3))`. All three spokes shared. Edge labels are the solver's best assignment — **and here it is nearly determined**: only 4 discrete combinations reach a compliant fit, all with the quark generations on the spoke-hub legs and the leptons on the spoke-spoke legs (exactly the "u/d on a hub leg, electron on a spoke-spoke leg" layout — the spoke labels are free).
+Quark wye `Ma((1,4),(2,4),(3,4))` (red `q` legs, spoke→hub); electron delta `Ma((1,2),(1,3),(2,3))` (blue `ℓ` legs, spoke–spoke). All three spokes shared. The particle→leg assignment is nearly determined — only 4 discrete combinations fit, collapsing to **two** physically distinct solutions, both graphed in §4.1.
 
 **Result — the standout of the family:**
 
@@ -132,6 +132,65 @@ Quark wye `Ma((1,4),(2,4),(3,4))`; electron delta `Ma((1,2),(1,3),(2,3))`. All t
 - **All three electron σ_eff pin to ≈ 2.0** — the R53 magic-shear value — across the *entire* 1-parameter solution manifold. This is a *structural* output, forced by the topology, not a value the fit was free to choose. It is the "unified R53 mechanism" the wye-ladder analysis hoped for and could not get from an underdetermined fit; K4 produces it because it is so tightly constrained.
 
 Report: [outputs/cand_QY-ED-share3.txt](../outputs/cand_QY-ED-share3.txt).
+
+### 4.1 The two solutions, and why e sits next to u/d
+
+K4 has exactly **two physically distinct compliant solutions**. The solver's 4 combos are these two, each appearing once more as a spoke-relabelled twin (the three spokes are interchangeable). All fit at exactly machine precision — **the solver does not discriminate between them**.
+
+**The leg geometry.** u/d sits on a quark (wye) leg, which touches one spoke — the *u/d spoke*. The three electron (delta) legs divide by their relation to it:
+
+- **two** delta legs *touch* the u/d spoke — **adjacent** to u/d;
+- **one** delta leg connects the *other two* spokes — **opposite** u/d (it shares no dim with u/d's leg).
+
+In every solution **τ occupies the opposite leg** and **e occupies an adjacent leg**. The two solutions are just the two choices of *which* adjacent leg e takes — equivalently, an e ↔ μ swap:
+
+**Solution A** — e on the leg shared with the s/c spoke:
+
+```mermaid
+%%{init: { "flowchart": { "nodeSpacing": 30, "rankSpacing": 55, "curve": "basis" }, "themeVariables": { "fontSize": "12px" } } }%%
+graph LR
+    m1["m1 · u/d spoke"]
+    m2["m2 · s/c spoke"]
+    m3["m3 · b/t spoke"]
+    m4["m4 · hub"]
+    m1 ==>|u/d| m4
+    m2 ==>|s/c| m4
+    m3 ==>|b/t| m4
+    m1 ===|e| m2
+    m1 ===|μ| m3
+    m2 ===|τ| m3
+    linkStyle 0,1,2 stroke:red,stroke-width:2px
+    linkStyle 3,4,5 stroke:blue,stroke-width:2px
+```
+
+**Solution B** — e ↔ μ swapped, e now on the leg shared with the b/t spoke:
+
+```mermaid
+%%{init: { "flowchart": { "nodeSpacing": 30, "rankSpacing": 55, "curve": "basis" }, "themeVariables": { "fontSize": "12px" } } }%%
+graph LR
+    m1["m1 · u/d spoke"]
+    m2["m2 · s/c spoke"]
+    m3["m3 · b/t spoke"]
+    m4["m4 · hub"]
+    m1 ==>|u/d| m4
+    m2 ==>|s/c| m4
+    m3 ==>|b/t| m4
+    m1 ===|μ| m2
+    m1 ===|e| m3
+    m2 ===|τ| m3
+    linkStyle 0,1,2 stroke:red,stroke-width:2px
+    linkStyle 3,4,5 stroke:blue,stroke-width:2px
+```
+
+In both, u/d is on `Ma(m1,m4)` and τ on `Ma(m2,m3)` — the delta leg **opposite** u/d's wye leg. The e ↔ μ swap moves e between the two **adjacent** legs (`Ma(m1,m2)` ↔ `Ma(m1,m3)`); it never reaches the opposite leg.
+
+**Why e cannot take the opposite leg.** A mode of mass *m* needs a hosting dimension L ≳ 2πℏc/m; for the electron (0.511 MeV) that is **L ≳ 2400 fm**. The only dimension that large is the **u/d spoke** — large precisely because u/d is the lightest quark generation. So e's leg *must* touch the u/d spoke. The opposite leg connects the s/c and b/t spokes — both small (heavy quark generations, ~1 fm and ~0.007 fm) — so any lepton there is ≳ 1 GeV. Only τ fits. This holds across the entire DOF = 1 manifold: **"e opposite u/d" has no valid K4 assignment.**
+
+The structural symmetry K4 *does* produce:
+
+> **τ (heaviest lepton) sits opposite u/d (lightest quark generation); e (lightest lepton) is forced adjacent, sharing u/d's large dimension.**
+
+K4 binds the lightest lepton and the lightest quark generation to the same large compact dimension. Discriminating Solution A from Solution B needs an input beyond the charged-fermion masses — the neutrino sector, or decay rates.
 
 ---
 
