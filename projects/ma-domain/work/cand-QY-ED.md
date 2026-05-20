@@ -224,6 +224,18 @@ The structural symmetry K4 *does* produce:
 
 K4 binds the lightest lepton and the lightest quark generation to the same large compact dimension. Discriminating Solution A from Solution B needs an input beyond the charged-fermion masses — the neutrino sector, or decay rates.
 
+### 4.2 Metric-consistency check at the shared spokes
+
+When several sheets share a dimension, what must they agree on? This is the [architecture.md §3.4–§4](architecture.md) open question, and K4 — sharing every spoke across three sheets — is where to test it.
+
+**A dimension carries no shape.** A single compact dimension is a circle; its only geometry is its size L. "Clover" and "ellipse" are not properties of a dimension — shape is curvature, and curvature is a 2-D quantity. A shape belongs to a **sheet**: it is the sectional curvature of that sheet's 2-torus. Twist τ and shear σ, by contrast, are the *constant* part of the pair metric (a flat twisted torus); shape is the position-varying part.
+
+**Shapes of distinct sheets are independent.** Where two sheets meet at a shared dimension — say the quark sheet `Ma(spoke, hub)` and an electron sheet `Ma(spoke, spoke′)` — their shapes are different components of the curvature tensor: the sectional curvatures of two different 2-planes. One geometry carries a clover on the first and an ellipse on the second with no contradiction. The shared dimension contributes only its length L to each sheet.
+
+**So the consistency requirement is just: one size L per dimension.** Every sheet through a dimension winds the same physical circle, so all must use the same L; the twist, shear, and shape are per-sheet. The solver already enforces this — it fits one L per dimension across every sheet that dimension appears in.
+
+**K4 passes.** Its four dimensions each carry a single solved size, used consistently by all sheets through them (§4, §5). Tube vs ring stays a per-sheet label, set by the closure condition ([architecture.md §3.2](architecture.md)); it carries no shape-sharing constraint.
+
 ---
 
 ## 5. Family comparison
@@ -240,7 +252,7 @@ K4 binds the lightest lepton and the lightest quark generation to the same large
 | Quark + lepton fit | machine precision | machine precision | machine precision |
 | Electron σ_eff pinned to ≈ 2 | 0 of 3 | 2 of 3 | **3 of 3** |
 
-The family is a clean monotonic ladder: **more sharing → fewer dims → tighter DOF → fewer compliant assignments → more of the electron σ_eff forced to the R53 value**. QY-ED-share3 (K4) sits at the predictive extreme — minimal dims, near-determined assignment, and the R53 σ_eff = 2 mechanism falling out as a structural consequence. It is the most attractive member by every economy / predictivity measure; QY-ED (share 2) is the moderate middle; QY-ED-share1 is the loosest.
+The family is a clean monotonic ladder: **more sharing → fewer dims → tighter DOF → fewer compliant assignments → more of the electron σ_eff forced to the R53 value**. QY-ED-share3 (K4) sits at the predictive extreme — minimal dims, near-determined assignment, and the R53 σ_eff = 2 mechanism falling out as a structural consequence. It is the most attractive member by every economy / predictivity measure; QY-ED (share 2) is the moderate middle; QY-ED-share1 is the loosest. All three pass the shared-dimension metric-consistency check (§4.2).
 
 ---
 
