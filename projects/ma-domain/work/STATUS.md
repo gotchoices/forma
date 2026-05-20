@@ -43,6 +43,8 @@ Remaining work to pin and verify the candidate:
 
 [mode-stability.md](mode-stability.md) — the leakage mechanism and a five-phase plan for deriving decay rates from geometry. Decay rates and lifetimes are the over-constraining observable set (26 orders of magnitude, measured to < 1%) that will further pin the architecture. Phase 1 of that plan — deriving the leakage rate from the resonance pole — is itself mathematical-derivation work and would be an early chapter of the parent-folder arc.
 
+A second precision-observable thread — the anomalous magnetic moment — is scoped in [anomalous-moment.md](anomalous-moment.md): a parked hypothesis file, **off the critical path**, gated on the per-sheet spin account being carried onto the shaped tubes. Its one ungated, useful computation now is mapping the cross-section shape ranges the charge constraints admit.
+
 ## Phase 6 — Promotion to math derivation
 
 When the architecture is settled (Phases 3–4 closed):

@@ -7,6 +7,7 @@
 - [sheet-proton clover-quarks.md §1.1, §3](../../sheet-proton/work/clover-quarks.md) — arc-clover three-lobe construction and the +2/3 / −1/3 charge accounting
 - [viz/tube-lab](../../../viz/tube-lab.md) — interactive visualizer for this function family
 - [scripts/harmonic_tube.py](../scripts/harmonic_tube.py) — verification script (ellipse exactness, A_lobe loci); output in [outputs/harmonic_tube.txt](../outputs/harmonic_tube.txt)
+- [anomalous-moment.md](anomalous-moment.md) — uses these cross-section profiles (and their charge-admitted ranges) for the anomalous-magnetic-moment hypothesis
 
 ---
 
