@@ -39,6 +39,24 @@ See [work/STATUS.md](work/STATUS.md) for the phased work plan. Briefly:
 4. **Phase 3 (neutrino sector)** — find the best fit to match known neutrino behavior. May need to extend the dim count if necessary.
 5. **Phase 4** — if preliminary results cohere across all three sectors, promote from exploratory `work/` files to a mathematical derivation in `ma-domain/` proper.
 
+## Derivation arc
+
+The mathematical derivation will live in `ma-domain/` proper as a sequence of chapters, each promoted from the `work/` hypotheses once it is settled. What follows is the **chapter-role skeleton** — deliberately lean, and provisional: the arc is revised as each chapter is developed and the later roles re-evaluated against what the earlier ones establish.
+
+The roles split into a **settled foundation** — the quark + charged-lepton architecture, fit to machine precision and ready to write up — and **contingent** roles, still maturing in `work/`, whose shape (and whether they stay distinct chapters) depends on what the prototypes return.
+
+| Role | Develops | Rests on | Status |
+|---|---|---|---|
+| **A — The Ma domain and its modes** | N compact dimensions as a dim-graph (dims = nodes, sheets = edges); closure modes T(m_t, m_r); winding → charge | [architecture.md](work/architecture.md), [metric-charge ch. 4](../metric-charge/04-the-closure-condition.md) | foundation — settled |
+| **B — The pair metric: shape, twist, shear** | the per-pair (σ, τ, P) metric; clover and ellipse as per-sheet curvature; twist activates shape; per-arc charges | [architecture.md §3.4](work/architecture.md), [tube-function.md](work/tube-function.md) | foundation — settled |
+| **C — The mass formula** | mass from the metric; the (m_t/L_T, δ/L_R) structure; σ_eff and the σ_eff = 2 floor | [cand-QY-ED.md](work/cand-QY-ED.md), solver outputs | foundation — settled |
+| **D — The architecture: QY + ED → K4** | the topology; rule R1; why K4; the nine-mass machine-precision fit; the one benign DOF | [cand-QY-ED.md](work/cand-QY-ED.md) | foundation — settled |
+| **E — Leakage and decay rates** | the resonance-pole rate; FGR as its weak-coupling limit; channel classes; lifetimes | [mode-stability.md](work/mode-stability.md) | contingent — gated on the `work/` leakage prototype |
+| **F — The neutrino sector** | the 1D substrate; χ_anti and the Wilson-loop flux; masses and oscillation | [neutrino-1D.md](work/neutrino-1D.md), [config-neutrino.md](work/config-neutrino.md) | maturing — doublet fit at ~1.5%; oscillation unrun |
+| **G — Outlook: Standard-Model phenomenology** | what the architecture reproduces and predicts; the open fronts (anomalous moments, mixing matrices, the dark sector) | [anomalous-moment.md](work/anomalous-moment.md) | contingent — written last |
+
+**How the arc adapts.** A–D are independent of E–G and can be written now. **E is the first chapter that can fail:** it is held until the [mode-stability.md](work/mode-stability.md) Phase 1–2 prototype — built and run in `work/` — shows the leakage rate reproduces the cleanly-measured lepton lifetimes. If it does, E is written and F–G follow; if it does not, the arc is re-cut around what the prototype reveals. F matures on its own track. G is the closing synthesis, written last, its content whatever A–F have established.
+
 ## Working assumptions
 
 - The lowest modes that satisfy closure conditions (see [metric-charge](../metric-charge/)) are the observable particles.
