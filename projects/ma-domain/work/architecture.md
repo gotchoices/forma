@@ -126,15 +126,17 @@ For ma-domain Phase 1+ work, this means: when picking the "lowest two closure mo
 
   - **σ_{ij}** — the constant off-diagonal shear (scalar; the metric off-diagonal entry as in current MaSt).
   - **τ_{ij}** — the discrete topological twist (scalar; k/3 for some integer k, or 0).
-  - **P_{ij}(u)** — a *shape function* periodic on the helical coordinate u = u_i + τ_{ij} u_j, modulating the ring-direction metric entry.
+  - **P_{ij}(u)** — a *shape function* periodic on the helical coordinate u = u_i + τ_{ij} u_j; it is the position-varying part of the off-diagonal entry, and it carries the sheet's cross-section shape.
 
 The pair-metric is then
 
-  g_{ii}^{(ij)} = (L_i + P_{ij}(u))² + τ_{ij}² L_j² ,
-  g_{ij}^{(ij)} = (σ_{ij} + τ_{ij}) L_j² ,
+  g_{ii}^{(ij)} = L_i² ,
   g_{jj}^{(ij)} = L_j² ,
+  g_{ij}^{(ij)} = (σ_{ij} + τ_{ij}) L_j² + P_{ij}(u) ,
 
-adapting the form from [clover-quarks.md §10.3](../../sheet-proton/work/clover-quarks.md). P_{ij} = 0 gives a flat-twisted torus on the pair; P_{ij} = the 3-lobe clover gives the corrugated-torus quark machinery. The clover is a property of the **pair `Ma(i, j)`**, not of either dim alone.
+a regauged form of [clover-quarks.md §10.3](../../sheet-proton/work/clover-quarks.md). The diagonal entries are the plain dimension sizes; the off-diagonal carries the shear, the twist, and — through P_{ij}(u) — the shape. P_{ij} = 0 gives a flat twisted torus on the pair (constant off-diagonal: pure shear + twist); a non-zero P_{ij} curves it — a 3-lobe profile gives the quark clover, a 2-lobe profile the electron ellipse.
+
+**Shape is the pair's curvature, and it is per-sheet.** What is invariant is the Gaussian curvature K(u) of the pair's 2-torus — that scalar function *is* the clover, or the ellipse. Which metric component is written as a function to realize a given K(u) is a gauge choice; the form above adopts the gauge that keeps every diagonal entry a plain L². That gauge is deliberate: a dimension then contributes the *same* diagonal entry L_i² to every sheet it joins, and each shape sits in an off-diagonal component g_{ij} that belongs to exactly one pair. Sheets sharing a dimension therefore share only its size L — never a shape (see §4, per-pair consistency). The clover is a property of the **pair `Ma(i, j)`**, not of either dim alone.
 
 A quark-sector pair then maps to some `Ma(i, j)` with τ_{ij} = 1/3 and P_{ij} = clover. The same m_i paired with a different m_k could have P_{ik} = 0 and host a plain electron-region mode.
 
@@ -142,7 +144,7 @@ A quark-sector pair then maps to some `Ma(i, j)` with τ_{ij} = 1/3 and P_{ij} =
 
   - It is the most direct way to extend the existing MaSt cross-section machinery to the pool reading without re-deriving anything.
   - It transports the per-arc curvature charges (Q_lobe = +2/3, Q_saddle = −1/3) unchanged, because the geodesic-curvature integral is a property of P_{ab} on the pair's 2-torus — it doesn't care whether P "belongs to" a dim or to a pair.
-  - It leaves a clean signature analysis: shape functions live in diagonal entries (g_{aa}^{(ab)}), so the off-diagonal signature analysis from R60 transports.
+  - It keeps the diagonal entries at the plain sizes L_a², so a dimension contributes one and the same diagonal entry to every sheet it joins — making shared-dim consistency manifest (§4). The R60 signature analysis applies pointwise, the off-diagonal now varying with position.
 
 **But it is one possible mechanism, not the only one.** Several alternatives could produce the same dual-role behavior; the math may reveal that one of these is the correct deeper structure. Candidates to keep in mind:
 
@@ -167,7 +169,7 @@ The working hypothesis (pair-triplet) is **provisional** and chosen because it m
 - **Signature pinning** for the 11×11 metric. R60 used exactly one negative eigenvalue; whether that survives the 6-dim-pool reformulation needs checking once the cross-terms are specified.
 - **The aleph entry's coupling structure**. R59 / R60 derive α from the tube↔ℵ↔t chain. Under the per-pair tube reading of §3.1, each Ma dim might individually couple to aleph (with strength σ_ta — the model-F symbol). Whether the 6 dims share one σ_ta or each has its own is a Phase 0-or-1 question depending on how the cross-term template is read.
 - **Pair-shape mechanism** (§3.4). Pair-triplet (σ, τ, P) is adopted as the working hypothesis; if the math reveals that mode-resolution filtering, GRID-lattice fingerprinting, or another mechanism is the correct deeper structure, the architecture swaps to that without losing the per-arc charges or the proton-mass results.
-- **Per-pair consistency at shared dims** (§3.4). When a dim m_i appears in two pairs `Ma(i, j)` and `Ma(i, k)` with different P-functions, the diagonal entry g_{ii} on the underlying 11-torus must be one consistent function. The pair-restrictions of g_{ii} must reduce to P_{ij} on the (i,j)-slice and to P_{ik} on the (i,k)-slice. Whether this is structurally always possible, or imposes constraints on the allowed P-functions, is a Phase 1 consistency check. *Examined for the K4 candidate in [cand-QY-ED.md §4.2](cand-QY-ED.md): shape is the sectional curvature of a sheet's 2-torus, and the sectional curvatures of distinct sheets sharing a dimension are independent components of the curvature tensor — they never collide. The genuine shared-dim requirement is only that every sheet through a dimension use one size L for it. Writing the shape into one per-dim diagonal entry g_{ii} (the form above) misrepresents a per-sheet quantity as a global one; the form should be revised so the shape is carried per sheet (pair).*
+- **Per-pair consistency at shared dims** (§3.4) — *resolved.* The pair-metric of §3.4 keeps every diagonal entry at the plain size L_i², so a shared dimension contributes one identical diagonal entry to every sheet through it; each shape sits in an off-diagonal P_{ij} belonging to exactly one pair. Shape is the sheet's Gaussian curvature, and the curvatures of distinct sheets are independent — they never collide. The only quantity a shared dimension imposes on its sheets is its size L. Worked for the K4 candidate in [cand-QY-ED.md §4.2](cand-QY-ED.md).
 
 ---
 
