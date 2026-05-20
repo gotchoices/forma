@@ -67,6 +67,17 @@ Quark wye `Ma((1,5),(3,5),(4,5))`; electron delta `Ma((2,4),(2,6),(4,6))`. Only 
 
 **Result:** R1 satisfied; fit machine-precision; **DOF = 3** (loosest of the family — a 3-parameter solution family). Only one parameter is pinned across the manifold (the smallest quark ring, the b/t ring, ≈ 0.0073 fm); every other dim size and σ_eff ranges. With 101 compliant combos the particle→sheet assignment is barely constrained. Report: [outputs/cand_QY-ED-share1.txt](../outputs/cand_QY-ED-share1.txt).
 
+**Dimension sizes** (solver's best discrete combo; ranges are *sampled* across the solution manifold — indicative, not rigorous bounds):
+
+| Dim | Role in best combo | Solved L |
+|---|---|---|
+| m1 | u/d quark spoke | ranged [594, 2×10¹⁵] fm |
+| m2 | electron dim | ranged [2.4×10³, 2.8×10¹⁰] fm |
+| m3 | b/t quark spoke | **pinned ≈ 0.0073 fm** |
+| m4 | s/c quark spoke (shared) | ranged [0.91, 1.05] fm |
+| m5 | quark hub | ranged [181, 493] fm |
+| m6 | electron dim | ranged [0.93, 9.5×10¹⁰] fm |
+
 ---
 
 ## 3. QY-ED — electron delta shares 2 spokes (5 dims) — the canonical member
@@ -96,6 +107,16 @@ graph LR
 Quark wye `Ma((1,5),(3,5),(4,5))`; electron delta `Ma((2,3),(2,4),(3,4))`. Spokes m3, m4 are shared. Edge labels are the solver's best assignment — **representative**, since 27 discrete combinations reach a compliant fit.
 
 **Result:** R1 satisfied; fit machine-precision; **DOF = 2** (a 2-parameter solution family). Three parameters pin across the manifold — the b/t ring (≈ 0.0073 fm) and **two of the three electron σ_eff, both at ≈ 2** (the R53 magic-shear value); the rest range. The R53 σ_eff = 2 pinning is starting to appear here and becomes complete at share 3 (§4). Report: [outputs/cand_QY-ED.txt](../outputs/cand_QY-ED.txt).
+
+**Dimension sizes** (solver's best discrete combo; ranges *sampled* across the manifold — indicative, not rigorous):
+
+| Dim | Role in best combo | Solved L |
+|---|---|---|
+| m1 | s/c quark spoke | ranged [0.91, 1.05] fm |
+| m2 | electron dim | ranged [2.4×10³, 4.4×10¹⁰] fm |
+| m3 | u/d quark spoke (shared) | ranged ≳ 578 fm (unbounded above) |
+| m4 | b/t quark spoke (shared) | **pinned ≈ 0.0073 fm** |
+| m5 | quark hub | ranged [181, 494] fm |
 
 ---
 
@@ -132,6 +153,17 @@ Quark wye `Ma((1,4),(2,4),(3,4))` (red `q` legs, spoke→hub); electron delta `M
 - **All three electron σ_eff pin to ≈ 2.0** — the R53 magic-shear value — across the *entire* 1-parameter solution manifold. This is a *structural* output, forced by the topology, not a value the fit was free to choose. It is the "unified R53 mechanism" the wye-ladder analysis hoped for and could not get from an underdetermined fit; K4 produces it because it is so tightly constrained.
 
 Report: [outputs/cand_QY-ED-share3.txt](../outputs/cand_QY-ED-share3.txt).
+
+**Dimension sizes** (solver's best discrete combo; ranges *sampled* across the 1-parameter manifold — indicative, not rigorous):
+
+| Dim | Role in best combo | Solved L |
+|---|---|---|
+| m1 | u/d quark spoke | ranged [3.9×10³, 1.3×10¹⁵] fm |
+| m2 | s/c quark spoke | ranged [0.91, 1.05] fm |
+| m3 | b/t quark spoke | **pinned ≈ 0.0073 fm** |
+| m4 | quark hub | ranged [181, 493] fm |
+
+(All three electron-leg σ_eff are *pinned* at ≈ 2.0 — the structural result of §4. The three quark-leg σ_eff range.)
 
 ### 4.1 The two solutions, and why e sits next to u/d
 

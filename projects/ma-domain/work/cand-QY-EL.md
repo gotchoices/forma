@@ -81,7 +81,19 @@ The electron sector is the linear path m3 — m1 — m2 — m5, i.e., the three 
 
 **Status: fit, machine precision.** The joint solve closes all 9 quark + lepton masses at **max |Δ%| = 0.0000%** (report [outputs/cand_QY-EL.txt](../outputs/cand_QY-EL.txt)). The path having no rotational symmetry is not an obstacle. The solver finds **23 distinct discrete (assignment + tube/ring) combinations** that each reach a compliant fit.
 
-**Underdetermined at DOF = 2.** The joint candidate has 11 free continuous parameters (5 dim sizes + 6 σ_eff) against 9 mass constraints, so the solution is a 2-parameter family. Across the sampled manifold the solver finds only **one parameter pinned — the smallest quark ring, L ≈ 0.0072 fm** (it hosts the b/t generation); every other dim size and σ_eff ranges over the family. In particular **L[m2] is essentially unconstrained**, ranging over many orders of magnitude. So m2's size is a free direction of the manifold, not a pinned value — the §2 table is one reference point, not the solution.
+**Underdetermined at DOF = 2.** The joint candidate has 11 free continuous parameters (5 dim sizes + 6 σ_eff) against 9 mass constraints, so the solution is a 2-parameter family. Across the sampled manifold the solver finds only **one parameter pinned — the smallest quark ring, L ≈ 0.0072 fm** (it hosts the b/t generation); every other dim size and σ_eff ranges over the family.
+
+**Dimension sizes** (solver's best discrete combo; ranges *sampled* across the manifold — indicative, not rigorous bounds):
+
+| Dim | Role in best combo | Solved L |
+|---|---|---|
+| m1 | s/c quark spoke | ranged [0.91, 1.05] fm |
+| m2 | electron-path dim | ranged [2.3×10⁴, 6.2×10¹²] fm |
+| m3 | u/d quark spoke | ranged ≳ 575 fm (unbounded above) |
+| m4 | b/t quark spoke | **pinned ≈ 0.0072 fm** |
+| m5 | quark hub | ranged [181, 494] fm |
+
+m2 (the electron-path dim) is essentially unconstrained — a free direction of the manifold, not a pinned value.
 
 ---
 
