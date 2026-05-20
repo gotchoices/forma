@@ -1,0 +1,34 @@
+==============================================================================
+leakage_rate.py  -  resonance-pole vs Fermi-golden-rule machinery check
+flat-band Friedrichs model   (hbar = 1)
+==============================================================================
+
+  discrete state eps0 = +0.0000    continuum band [-1.0000, +1.0000]
+  eps0 is inside the band  ->  a genuine resonance
+
+  method A  resonance pole    : Gamma = -2 Im(E_pole)
+  method B  Fermi golden rule : Gamma_FGR = 2*pi*gamma
+
+       gamma    Gamma_FGR (B)   Gamma_pole (A)          A / B    level shift
+  --------------------------------------------------------------------------
+     0.00001    6.2831853e-05    6.2833110e-05    1.000020000   +0.00000e+00
+     0.00010    6.2831853e-04    6.2844422e-04    1.000200040   +0.00000e+00
+     0.00100    6.2831853e-03    6.2957768e-03    1.002004001   +0.00000e+00
+     0.01000    6.2831853e-02    6.4113688e-02    1.020401034   +0.00000e+00
+     0.03000    1.8849556e-01    2.0048458e-01    1.063603752   +0.00000e+00
+     0.10000    6.2831853e-01    7.7644313e-01    1.235747622   +0.00000e+00
+     0.20000    1.2566371e+00    1.8548458e+00    1.476039411   +0.00000e+00
+     0.30000    1.8849556e+00    3.0785509e+00    1.633221979   +0.00000e+00
+
+  Reading:
+   - weak coupling  (gamma = 1e-05): A/B = 1.000020000   (deviation 2.0e-05)
+   - strong coupling (gamma = 0.30000): A/B = 1.633222   (deviation 6.3e-01)
+   - leading correction: A/B = 1 + c*gamma  with  c = 2.0000  (stable across the low-gamma rows)
+
+  MACHINERY VALIDATED: the resonance pole reduces to FGR as
+  gamma -> 0 (A/B -> 1, linearly), and the two separate as the
+  coupling grows. FGR is the leading term; the pole supplies the
+  O(gamma) and higher corrections - exactly the relation
+  mode-stability.md sec.4 posits. Pole-finder and FGR evaluator
+  are mutually consistent on a model with a known answer.
+==============================================================================

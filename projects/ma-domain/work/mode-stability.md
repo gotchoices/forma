@@ -139,7 +139,7 @@ The fundamental object is the resonance pole of the Green's function (§4). Two 
 - **A — direct resonance pole.** Construct G(E) for the full manifold's wave operator, find its complex pole nearest each pair-localized state, extract Γ = −2 Im(E_pole)/ℏ. Exact at any coupling; needs complex-scaling or numerical contour analysis.
 - **B — FGR limit.** Weak coupling + dense target spectra; expand the pole's imaginary part to leading order. Analytically tractable for closed-form sheet geometries.
 
-**Approach:** use B as the working tool, validate against A in a tractable test case (two sheets, one shared dim, one mode each). FGR is not an axiom — it is B's regime of A.
+**Approach:** use B as the working tool, validate against A in a tractable test case (two sheets, one shared dim, one mode each). FGR is not an axiom — it is B's regime of A. *Executed in [leakage-rate.md](leakage-rate.md): the machinery check is done — A and B are validated against each other on the flat-band Friedrichs model (A/B = 1 + 2γ; FGR is the leading term, the pole supplies the corrections); the geometric case and the lepton-lifetime test continue there.*
 
 Phase 1 must produce:
 - **V_k explicit** — the junction operator from the Laplacian's matching condition at the shared dim (ψ and normal derivative continuous); ⟨ψ_B|V_k|ψ_A⟩ is then an integral over m_k of ψ_A* ψ_B times a junction factor.
@@ -154,7 +154,7 @@ Phase 1 must produce:
 
 The charged-lepton sheets are the cleanest test bed: geometry already fitted (machine-precision (e, μ, τ) fit), decay rates precisely measured (τ_τ = 2.903×10⁻¹³ s, τ_μ = 2.197×10⁻⁶ s), no QCD complications.
 
-Tests: (1) **magnitude** — does the Phase 1 Γ give τ_τ ≈ 0.3 ps, τ_μ ≈ 2 μs? (2) **ratio** — Γ_τ/Γ_μ ≈ 1.7×10⁷; phase space (m⁵) gives ≈ 4.5×10⁵, the rest from couplings — does the formula reproduce both? (3) **branching** — μ has one channel (~100%); τ has e (~17%), μ (~17%), hadronic (~64%) — does the leakage map predict these?
+Tests: (1) **magnitude** — does the Phase 1 Γ give τ_τ ≈ 0.3 ps, τ_μ ≈ 2 μs? (2) **ratio** — the total-width ratio Γ_τ/Γ_μ = τ_μ/τ_τ ≈ 7.6×10⁶; its leptonic part Γ(τ→eν̄ν)/Γ(μ→eν̄ν) ≈ 1.35×10⁶ should come from the m⁵ Sargent factor (m_τ/m_μ)⁵ ≈ 1.34×10⁶ alone, the total then being that times the ~5–6 open τ channels — does the formula give both? (3) **branching** — μ has one channel (~100%); τ has e (~17%), μ (~17%), hadronic (~64%) — does the leakage map predict these?
 
 **Deliverable:** a script that takes the fitted (L, σ) and outputs Γ_τ, Γ_μ and τ branching ratios, compared to PDG.
 
