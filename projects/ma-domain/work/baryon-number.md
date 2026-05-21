@@ -85,6 +85,8 @@ $$
 
 For K4 the dimensions check: 3 + 3 = 6. This split is the **discrete Hodge decomposition** — the graph analog of the Helmholtz theorem that any vector field is a curl-free part plus a divergence-free part. A cycle is the divergence-free ("circulation") part; a cut is the gradient-like ("flux across a boundary") part. Any edge-vector is uniquely a cycle part plus a cut part, and because the two subspaces are orthogonal those parts are independent.
 
+**A scope note on "circulation" and "flux."** These terms — and every cycle/cut statement in this document — describe the *graph's* edge-space. At this level a sheet is a single edge, a line; whatever structure lives *inside* it (a twist, windings, a cross-section shape) is below the graph's resolution. So "the quark sector is a cut, not a circulation" means *no circulation in the graph* — it makes no claim about circulation at the finer, sheet-internal level (§8, §9).
+
 ---
 
 ## 4. The quark sheets form a cut; the lepton sheets form a cycle
@@ -158,6 +160,8 @@ The asymmetry in §1 is resolved: energy and charge permitted proton decay becau
 
 **Out of scope — charge.** Electric charge is **not** a cut/cycle quantity and is not treated here. Charge is the winding number of a sheet's *cross-section* curve ([metric-charge ch. 4](../../metric-charge/04-the-closure-condition.md)) — a topology internal to each individual sheet, one level below the dim-graph. It is carried by quark and lepton sheets alike, so it is not confined to either the cut or the cycle; it is orthogonal to the decomposition this document uses. Charge conservation is already grounded on its own terms in [mode-stability.md §3](mode-stability.md) and needs nothing from here. (The neutrino is the clean illustration: it carries the lepton-sector cycle quantity but, having no 2D cross-section, carries no charge — the two are independent.)
 
+**Graph-level only.** Every "cut," "cycle," "circulation," and "flux" statement in this document lives in the graph's edge-space, where each sheet is a single edge. A sheet is itself a 2D object with internal structure the graph cannot see — a twist, windings, a cross-section shape. The quark sheets in particular carry the N = 3 clover with twist τ = 1/3: the cross-section screws a third of a turn per ring circuit, a Z₃ monodromy ([tube-function.md §6](tube-function.md)) — which is a *helix*. So calling baryon number a "cut — a flux, not a circulation" is a statement *in the graph*; it does not preclude the quark sector's twist being genuinely helical one level down. The graph-level cut may be the coarse-grained shadow of a sheet-internal helix — §9 leaves that open.
+
 **Singles out K4.** The clean split of the six sheets into one cut and one cycle is a property of the K4 graph specifically. In QY-ED-share1 and QY-ED-share2 the electron delta uses fresh dims, the graph is larger, and the quark and lepton sheet-sets do not fall into complementary orthogonal subspaces. So if baryon-number conservation is this graph structure, it emerges cleanly **only in QY-ED-share3**. This is a further independent reason — alongside the minimal dim count — that K4 is the distinguished candidate.
 
 ---
@@ -169,6 +173,7 @@ The asymmetry in §1 is resolved: energy and charge permitted proton decay becau
 3. **B − L and anomalies.** This argument gives baryon and lepton number *separately* conserved — which matches the Standard Model at the classical level. The Standard Model's quantum anomalies violate B and L individually while preserving B − L exactly. Whether the graph picture sees only a quantum refinement it misses, or whether B − L has a distinguished topological status here, is open.
 4. **Survival under the decay dynamics.** [mode-stability.md](mode-stability.md) treats decay as energy leaking between sheets through shared dims. The hub-anchoring of §5 must be shown to be preserved by that leakage dynamics — energy crosses the cut freely, and the argument needs the cut *invariant* to be untouched while energy flows.
 5. **Lepton number's own development.** §6 uses lepton number only as the complementary sector. Its full treatment — the winding of a single lepton, its relation to the neutrino line's own topology, the matter/antimatter sign — is left to a dedicated treatment.
+6. **Graph-level cut vs. sheet-internal helix.** The cut/cycle classification is scoped to the dim-graph (§3, §8). One level down, each quark sheet carries a real helix — the τ = 1/3, N = 3 clover twist whose Z₃ monodromy already produces the fractional quark charge. Is the graph-level cut the *coarse-graining* of that helix — baryon number being one quantity at two scales, a circulation inside the edge and a cut once the edge collapses to a line? If so, the "cut, not a helix" reading and a helical reading are not rivals but two resolutions of one object. Showing that the graph-level cut role is *determined by* the internal twist would complete that picture; failing to would fix the cut as irreducible.
 
 ---
 
@@ -179,5 +184,6 @@ The asymmetry in §1 is resolved: energy and charge permitted proton decay becau
 - [config-quark.md](config-quark.md), [config-electron.md](config-electron.md) — the QY and ED sector configs
 - [config-neutrino.md](config-neutrino.md) — the neutrino sheet, attached to the lepton-delta corners (the cycle side)
 - [sheet-proton clover-quarks.md](../../sheet-proton/work/clover-quarks.md) — the three-arc clover and the quark fractional charges
+- [tube-function.md §6](tube-function.md) — the τ = 1/3, N = 3 clover twist (Z₃ monodromy): the sheet-internal helix below the graph level (§8, §9)
 - [metric-charge ch. 4](../../metric-charge/04-the-closure-condition.md) — electric charge as a cross-section winding (the separate topology, §8)
 - [architecture.md](architecture.md) — `Ma(i, j)` dim-pair notation; the dim-graph reading used here
