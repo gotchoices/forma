@@ -12,11 +12,12 @@
 
 — the imaginary part of a complex pole of the connected manifold's Green's function — and that Fermi's golden rule (FGR) is the *weak-coupling limit* of that pole, not a separate axiom. Before that rate is evaluated on candidate geometry, the **machinery** has to be checked: a pole-finder and an FGR evaluator that agree on a model whose answer is already known.
 
-This file builds the calculation in three steps:
+This file builds the calculation in stages:
 
 - **§2 — the machinery check** *(done)* — resonance pole vs FGR on the flat-band Friedrichs model, the minimal system where both methods apply.
-- **§3 — the geometric two-sheet case** *(structure derived)* — the leakage rate factored; the shared-dim selection rule derived; the junction strength flagged as an open modelling decision.
-- **§4 — the lepton-lifetime test** *(structure derived; derivation-grade)* — Γ_τ/Γ_μ factors into a phase-space power and an overlap ratio; the power is junction-determined, so the §3.3 model feeds in here too.
+- **§3 — the geometric two-sheet case** *(structure derived)* — the leakage rate factored; the shared-dim selection rule derived; the junction reduced to a figure-eight δ-vertex.
+- **§4 — the lepton-lifetime test** *(done — negative)* — the phase-space factor is the Sargent m⁵; the overlap factor surfaces a lepton-universality problem.
+- **§5 — family-wide universality scan** *(done — negative)* — the electron-delta topology fails lepton universality *structurally*: every QY-ED member, not K4 alone.
 
 ---
 
@@ -133,19 +134,74 @@ So the leptonic decay rate is ∝ m⁵. For the ratio Γ_τ/Γ_μ, a universal w
 
 The architecture's fitted masses give (m_τ/m_μ)⁵ = 1.345×10⁶; the measured leptonic partial-width ratio Γ(τ→eν̄ν)/Γ(μ→eν̄ν) = BR(τ→eν̄ν)·τ_μ/τ_τ = 1.35×10⁶. They agree to ~0.2%. So the §4 test reduces to one sharp question — **is the geometric overlap ratio ≈ 1?** If it is, the framework reproduces lepton universality and the m⁵ match becomes a genuine prediction; the overlap ratio is §4.2.
 
-### 4.2 The geometric overlap ratio
+### 4.2 The geometric overlap — the naive estimate
 
-The other factor is |O_τ|²/|O_μ|². All charged leptons are T(1, 2), so every lepton-to-lepton transition is k_θ-allowed at leading order (§3.1) — no σ-suppression — and the ratio is purely geometric. A naive O ~ L_shared fails by orders of magnitude: K4's shared dims span fifteen decades (m1 ≈ 10³–10¹⁵ fm, m2 ≈ 1 fm, m3 ≈ 0.007 fm), which no few-fold residual can absorb. The overlap needs the *normalised* Bloch wavefunctions and the junction profile worked out properly — a derivation, not a plug-in.
+The other factor is |O_τ|²/|O_μ|². All charged leptons are T(1, 2), so every lepton-to-lepton transition is k_θ-allowed at leading order (§3.1) — no σ-suppression — and the ratio is purely geometric.
 
-With the figure-eight reduction (§3.4) and its δ-vertex secular equation (§3.5) now in hand, that overlap is a definite, well-posed calculation — the figure-eight modes evaluated at the K4 loop lengths — and it is the concrete next step.
+With each lepton mode a Bloch state normalised over its sheet (|ψ|² = 1/area), the leakage matrix element on the shared dimension works out to
 
-### 4.3 Status and the next step
+  O ~ 1 / √(L_a · L_b) ,  a, b = the two *non-shared* dimensions
 
-§4 is **derivation-grade**, not a prototype script — the Phase-1 work [mode-stability.md §8](mode-stability.md) itself calls "mathematical-derivation work." The §2 machinery check was clean because it was a textbook model; the geometric rate is the real physics, and from here the leakage program is the arc's chapter E — derived, not scripted.
+— the shared dimension's length cancels in the integral; the overlap is set by the two non-shared dims. For the three K4 lepton transitions (Solution A: e on `Ma(m1,m2)`, μ on `Ma(m1,m3)`, τ on `Ma(m2,m3)`):
 
-The phase-space factor is now resolved (§4.1): the leptonic rate is ∝ m⁵, and the ratio test reduces to whether the geometric overlap ratio ≈ 1. The next concrete step is therefore the **overlap-ratio calculation** (§4.2) — the figure-eight modes (§3.5) evaluated at the K4 loop lengths. With the figure-eight reduction in hand this is, finally, scriptable: the δ-vertex secular equation plus the overlap integral.
+| Decay | shared dim | non-shared dims | naive O |
+|---|---|---|---|
+| μ → e | m1 | m3, m2 | 1 / √(L_m3·L_m2) |
+| τ → e | m2 | m3, m1 | 1 / √(L_m3·L_m1) |
+| τ → μ | m3 | m2, m1 | 1 / √(L_m2·L_m1) |
 
-If the eventual ratio reproduces the measurement, §1–4 promote to arc chapter E; if not, the result re-cuts the arc ([../README.md](../README.md) §Derivation arc).
+The μ → e overlap does *not* contain the huge u/d-spoke dimension m1 — m1 is its *shared* dim, and the shared length cancels. Both τ overlaps *do* contain m1. So O_{τ→e}/O_{μ→e} ~ √(L_m2/L_m1) and O_{τ→μ}/O_{μ→e} ~ √(L_m3/L_m1), both ≪ 1: the τ leptonic decays come out geometrically suppressed relative to μ → e. §4.3 weighs whether that survives a rigorous calculation.
+
+### 4.3 The lepton-universality tension
+
+The naive suppression is not a naive artefact — its *scaling* is robust. The 1/√(L_a·L_b) comes from **mode normalisation**: a closure mode spread over a region of size L has amplitude ~ 1/√L everywhere, so a *local* matrix element at the junction, between two such extended modes, unavoidably carries 1/√(L_a)·1/√(L_b). The vertex structure (§3.5) and the mode masses modulate this by O(1)–O(10²) factors; they do not change the 1/√(L) power.
+
+And the suppression is **structural to K4**, not a feature of one assignment. The electron, the lightest lepton, must occupy the largest dimension to be light — the u/d-spoke m1 ([cand-QY-ED.md §4.1](cand-QY-ED.md): the electron needs L ≳ 2400 fm, and only the u/d spoke is that large). The τ, heaviest, must occupy the *only* m1-free sheet, `Ma(m2,m3)` — the one small enough to host a heavy mode. The two K4 solutions are the e↔μ swap on the two m1-sheets:
+
+- **Solution A** — e on `Ma(m1,m2)`, μ on `Ma(m1,m3)`: τ→e shares m2, τ→μ shares m3.
+- **Solution B** — e on `Ma(m1,m3)`, μ on `Ma(m1,m2)`: τ→e shares m3, τ→μ shares m2.
+
+In *both*, μ→e shares m1 (it cancels — clean) and *both* τ decays carry m1 as a non-shared loop (it suppresses). The A↔B swap only exchanges which small dim each τ decay shares; the m1 suppression is identical. No K4 assignment escapes it — the τ cannot host m1 without becoming light, and these two are the only assignments consistent with the mass ordering.
+
+Quantitatively: even at the *smallest* allowed L_m1 ≈ 3.9×10³ fm (the DOF floor), √(L_m1/L_m2) ≈ 60 — a suppression of ≳ 60 in amplitude, ≳ 3.6×10³ in rate; larger L_m1 makes it worse.
+
+Observed lepton universality holds to < 1% — the τ and μ leptonic partial widths follow the pure Sargent m⁵, i.e. overlap ratio ≈ 1. K4's geometry gives an overlap ratio ≳ 10³ from 1. Reproducing universality would require the junction coupling g_J to be **non-universal** — larger for τ by exactly the compensating factor — which is per-transition fine-tuning, not a derivation.
+
+**This is a serious tension, and a probable falsification of the K4 charged-lepton sector** — surfaced by the decay-rate program over-constraining the architecture, exactly the role decay rates were expected to play ([STATUS.md](STATUS.md) Phase 5). The hedge: a fully rigorous junction matrix element versus this normalisation-scaling argument. But the 1/√(L) scaling is hard to evade, and an O(1)–O(10²) vertex factor cannot close a ≳ 10³ gap.
+
+*Superseded by §5.* §4.3 first read the suppression as K4-specific — the electron forced onto the u/d spoke — and pointed at the looser members as a possible escape. The family-wide scan (§5) shows that was wrong: share-1 and share-2 fail too. The failure is the electron-*delta* topology itself; the K4 analysis above is a correct special case of it.
+
+### 4.4 Status and the next step
+
+§4 is **derivation-grade** — the Phase-1 work [mode-stability.md §8](mode-stability.md) itself calls "mathematical-derivation work." The phase-space factor is resolved (§4.1, Sargent m⁵); the overlap factor (§4.2–4.3) has surfaced a probable falsification of K4's charged-lepton sector.
+
+The overlap factor proved decisive on its own. §5's family-wide scan shows the electron-*delta* topology violates lepton universality structurally — every QY-ED member, not K4 alone. The rigorous junction matrix element (the figure-eight δ-vertex amplitudes, §3.5) would refine the O(1) factors but cannot close a 10³–10⁶ gap, so it is no longer the gating step. The next move is architecture-level — see §5.
+
+---
+
+## 5. Family-wide universality scan
+
+Running the overlap calculation across the whole QY-ED family — [scripts/leakage_overlap.py](../scripts/leakage_overlap.py), output [outputs/leakage_overlap.txt](../outputs/leakage_overlap.txt) — overturns §4.3's reading. **The universality failure is not K4-specific; it is structural to the electron-delta topology, and every QY-ED member has it.**
+
+**The structural argument.** The electron delta puts the three charged leptons on the three edges of a triangle whose nodes are three dimensions X, Y, Z. The three leptonic decays are the three edge-to-edge leakages, and by §4.2 each overlap is 1/√(product of the two non-shared dims):
+
+  O(μ→e), O(τ→e), O(τ→μ)  ~  1/√(L_X·L_Z),  1/√(L_Y·L_Z),  1/√(L_X·L_Y)
+
+— the three node-omitted pairwise products. Lepton universality requires the three overlaps **equal**; that holds ⟺ L_X·L_Z = L_Y·L_Z = L_X·L_Y ⟺ **L_X = L_Y = L_Z**. But three equal node dimensions make the three lepton sheets identical — three equal lepton masses. The observed masses span a factor ~3500. So the electron delta **cannot** carry the charged-lepton sector consistently with *both* the mass hierarchy and lepton universality: the hierarchy forces the nodes apart, universality needs them equal.
+
+**The scan confirms it** — with each candidate's fitted dimension sizes:
+
+| Candidate | overlap spread (max / min) | verdict |
+|---|---:|---|
+| QY-ED-share1 | 2.9×10³ | universality violated |
+| QY-ED-share2 | 3.8×10⁴ | universality violated |
+| QY-ED-share3 (K4) | 5.6×10⁵ | universality violated |
+
+Universality requires spread ≈ 1; the family gives 10³–10⁶.
+
+**Consequence.** The charged-lepton sector cannot be an electron delta. This un-supersedes [cand-QY-EL.md](cand-QY-EL.md) (the QY + electron-*path* candidate that [cand-QY-ED.md §7](cand-QY-ED.md) had set aside) and sends the electron topology back to [config-electron.md](config-electron.md). But a caution from the same overlap structure: an electron *wye* puts the three leptons on a triangle of spokes — the same equilateral requirement, the same failure; an electron *path* makes one decay (τ→e) a two-hop process, predicting τ→e ≪ τ→μ, which is also not observed. So the tension may be deeper than the delta — *any* "three leptons on three distinct sheets, decay = inter-sheet leakage" topology faces universality (equal overlaps) against the mass hierarchy (unequal sheets). Whether *any* topology resolves it is now an open architecture-level question — forced open by the decay-rate program, exactly its intended role ([STATUS.md](STATUS.md) Phase 5).
+
+**Next.** [leakage_overlap.py](../scripts/leakage_overlap.py) is candidate-spec-driven, so scanning EL and EY is two more entries — but the structural argument already says they will not simply pass. The real question is architecture-level: whether the charged leptons should be three separate sheets at all.
 
 ---
 

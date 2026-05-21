@@ -1,0 +1,61 @@
+========================================================================
+leakage_overlap.py  -  lepton-universality scan, QY-ED family
+========================================================================
+
+O ~ 1/sqrt(L_a L_b),  a,b = the non-shared dims (leakage-rate.md 4.2).
+Universality requires the three leptonic-decay overlaps to be equal.
+
+QY-ED-share1  -  electron delta on 1 quark spoke (m4) + 2 fresh dims (m2, m6)
+  --------------------------------------------------------------------
+  mu->e      shared = m2   non-shared = (m4, m6)   O ~ 1.856e-03
+  tau->e     shared = m6   non-shared = (m2, m4)   O ~ 3.533e-04
+  tau->mu    shared = m4   non-shared = (m2, m6)   O ~ 6.408e-07
+
+  universality ratios O/O[mu->e]  (all must be ~ 1):
+    O[mu->e] / O[mu->e]  =  1.000e+00
+    O[tau->e] / O[mu->e]  =  1.903e-01
+    O[tau->mu] / O[mu->e]  =  3.452e-04
+
+  overlap spread (max/min) = 2.90e+03
+  -> universality VIOLATED by ~3e+03 (the three overlaps must be equal)
+
+QY-ED-share2  -  electron delta on 2 quark spokes (m3, m4) + 1 fresh dim (m2); m3 at its floor (range unbounded above)
+  --------------------------------------------------------------------
+  mu->e      shared = m3   non-shared = (m2, m4)   O ~ 3.647e-03
+  tau->e     shared = m2   non-shared = (m3, m4)   O ~ 4.868e-01
+  tau->mu    shared = m4   non-shared = (m2, m3)   O ~ 1.296e-05
+
+  universality ratios O/O[mu->e]  (all must be ~ 1):
+    O[mu->e] / O[mu->e]  =  1.000e+00
+    O[tau->e] / O[mu->e]  =  1.335e+02
+    O[tau->mu] / O[mu->e]  =  3.554e-03
+
+  overlap spread (max/min) = 3.76e+04
+  -> universality VIOLATED by ~4e+04 (the three overlaps must be equal)
+
+QY-ED-share3 (K4)  -  electron delta on the 3 quark spokes (Solution A)
+  --------------------------------------------------------------------
+  mu->e      shared = m1   non-shared = (m2, m3)   O ~ 1.184e+01
+  tau->e     shared = m2   non-shared = (m1, m3)   O ~ 2.467e-04
+  tau->mu    shared = m3   non-shared = (m1, m2)   O ~ 2.133e-05
+
+  universality ratios O/O[mu->e]  (all must be ~ 1):
+    O[mu->e] / O[mu->e]  =  1.000e+00
+    O[tau->e] / O[mu->e]  =  2.084e-05
+    O[tau->mu] / O[mu->e]  =  1.801e-06
+
+  overlap spread (max/min) = 5.55e+05
+  -> universality VIOLATED by ~6e+05 (the three overlaps must be equal)
+
+========================================================================
+SUMMARY
+  QY-ED-share1            overlap spread 2.90e+03   universality VIOLATED
+  QY-ED-share2            overlap spread 3.76e+04   universality VIOLATED
+  QY-ED-share3 (K4)       overlap spread 5.55e+05   universality VIOLATED
+
+Every QY-ED member uses the electron-delta topology: three leptons
+on the three edges of a triangle. The three decay overlaps are equal
+only if the three triangle-node dimensions are equal - which the
+lepton mass hierarchy forbids. The violation is structural to the
+electron delta, not specific to one member.
+========================================================================
