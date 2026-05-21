@@ -106,7 +106,7 @@ graph LR
 
 Quark wye `Ma((1,5),(3,5),(4,5))`; electron delta `Ma((2,3),(2,4),(3,4))`. Spokes m3, m4 are shared. Edge labels are the solver's best assignment — **representative**, since 27 discrete combinations reach a compliant fit.
 
-**Result:** R1 satisfied; fit machine-precision; **DOF = 2** (a 2-parameter solution family). Three parameters pin across the manifold — the b/t ring (≈ 0.0073 fm) and **two of the three electron σ_eff, both at ≈ 2** (the R53 magic-shear value); the rest range. The R53 σ_eff = 2 pinning is starting to appear here and becomes complete at share 3 (§4). Report: [outputs/cand_QY-ED.txt](../outputs/cand_QY-ED.txt).
+**Result:** R1 satisfied; fit machine-precision; **DOF = 2** (a 2-parameter solution family). Three parameters pin across the manifold — the b/t ring (≈ 0.0073 fm) and two of the three electron σ_eff, which the fit places near 2; the rest range. Note σ_eff is a *free per-sheet fit parameter*, not a structural constant — the "near 2" values are fit outputs, and the small deviations from 2 are physical (they carry the mass splits). The earlier "R53 magic-shear" reading is withdrawn ([STATUS.md](STATUS.md) shear-cleanup). Report: [outputs/cand_QY-ED.txt](../outputs/cand_QY-ED.txt).
 
 **Dimension sizes** (solver's best discrete combo; ranges *sampled* across the manifold — indicative, not rigorous):
 
@@ -150,7 +150,7 @@ Quark wye `Ma((1,4),(2,4),(3,4))` (red `q` legs, spoke→hub); electron delta `M
 - R1-compliant **by construction** (K4: each of the 6 dim-pairs carries exactly one sheet).
 - Fewest dims (**4**), tightest **DOF = 1** — the most predictive member.
 - Only **4 compliant discrete combos** — the topology nearly pins the particle→leg assignment.
-- **All three electron σ_eff pin to ≈ 2.0** — the R53 magic-shear value — across the *entire* 1-parameter solution manifold. This is a *structural* output, forced by the topology, not a value the fit was free to choose. It is the "unified R53 mechanism" the wye-ladder analysis hoped for and could not get from an underdetermined fit; K4 produces it because it is so tightly constrained.
+- **All three electron σ_eff are fit-pinned near 2** across the 1-parameter manifold — the solver finds them invariant. But σ_eff is a *free per-sheet fit parameter*, not a structural constant: the report's "2.0000" is rounded; the true fitted values sit at 2 − (3–6)×10⁻⁴, differ between the e- and μ-sheets, and those ~10⁻⁴ deviations are load-bearing — they carry the e/μ/τ mass splits. σ_eff = 2 *exactly* is in fact falsified here (it would force m_e = m_μ). The earlier reading — "a structural R53 output forced by the topology" — is withdrawn ([STATUS.md](STATUS.md) shear-cleanup).
 
 Report: [outputs/cand_QY-ED-share3.txt](../outputs/cand_QY-ED-share3.txt).
 
@@ -163,7 +163,7 @@ Report: [outputs/cand_QY-ED-share3.txt](../outputs/cand_QY-ED-share3.txt).
 | m3 | b/t quark spoke | **pinned ≈ 0.0073 fm** |
 | m4 | quark hub | ranged [181, 493] fm |
 
-(All three electron-leg σ_eff are *pinned* at ≈ 2.0 — the structural result of §4. The three quark-leg σ_eff range.)
+(The three electron-leg σ_eff are fit-pinned near 2 — as fit outputs, not a structural value; see the §4 result bullet. The three quark-leg σ_eff range over O(1).)
 
 ### 4.1 The two solutions, and why e sits next to u/d
 
@@ -250,9 +250,9 @@ When several sheets share a dimension, what must they agree on? This is the [arc
 | DOF | 3 | 2 | **1** |
 | Compliant discrete combos | 101 | 27 | **4** |
 | Quark + lepton fit | machine precision | machine precision | machine precision |
-| Electron σ_eff pinned to ≈ 2 | 0 of 3 | 2 of 3 | **3 of 3** |
+| Electron σ_eff fit-determined (invariant on the manifold) | 0 of 3 | 2 of 3 | **3 of 3** |
 
-The family is a clean monotonic ladder: **more sharing → fewer dims → tighter DOF → fewer compliant assignments → more of the electron σ_eff forced to the R53 value**. QY-ED-share3 (K4) sits at the predictive extreme — minimal dims, near-determined assignment, and the R53 σ_eff = 2 mechanism falling out as a structural consequence. It is the most attractive member by every economy / predictivity measure; QY-ED (share 2) is the moderate middle; QY-ED-share1 is the loosest. All three pass the shared-dimension metric-consistency check (§4.2).
+The family is a clean monotonic ladder: **more sharing → fewer dims → tighter DOF → fewer compliant assignments → more parameters fit-determined**. QY-ED-share3 (K4) sits at the predictive extreme — minimal dims, near-determined assignment. (An earlier draft also credited K4 with the electron σ_eff "structurally pinned at the R53 value 2"; that is withdrawn — σ_eff is a free fit parameter, see [STATUS.md](STATUS.md) shear-cleanup. K4's economy case rests on the dim count, DOF, and compliant-combo count, which stand.) It is the most attractive member by those measures; QY-ED (share 2) is the moderate middle; QY-ED-share1 is the loosest. All three pass the shared-dimension metric-consistency check (§4.2).
 
 ---
 

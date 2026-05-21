@@ -61,7 +61,7 @@ The three QY-ED rows are one **candidate family** — same configs (QY + ED), di
 
 The three QY-ED rows are one **candidate family** (same configs, varying how many quark spokes the electron delta reuses), written up together in [cand-QY-ED.md](cand-QY-ED.md). Quark+electron fits, where run, are at machine precision; the "fit" status gives the count of discrete (assignment + tube/ring) combinations that reach a compliant fit — fewer = more predictive. Neutrino sector open for all.
 
-**QY-ED-share3 (K4) is the standout** — the complete graph on 4 dims, fewest dims, tightest DOF, only 4 compliant combos, and it pins all three electron σ_eff to ≈ 2 (the R53 magic-shear value) structurally.
+**QY-ED-share3 (K4) is the standout** — the complete graph on 4 dims, fewest dims, tightest DOF, only 4 compliant combos.
 
 **QY-EL is dominated** by corrected QY-ED (both R1-compliant, 5 dims; QY-ED has the clean delta). **QD-EY is not viable** — its QD quark sector cannot host the six quarks (see cand-QD-EY.md, which also records the compound-3D-mode falsification).
 

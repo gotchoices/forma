@@ -243,6 +243,8 @@ So a₁ directly controls the eccentricity, and the foci separation is 4R√a₁
 
 The ellipse named in [electron-tube.md §5](electron-tube.md) is therefore not an approximation forced by a truncated series — it is an exact, single-parameter member of the same family that produces the quark clover.
 
+*(τ = 2, σ = 0, σ_eff = 2 above are the electron-tube construction's design point — a naturalness target, not a structural pinning. σ_eff is in practice a free per-sheet fit parameter; the fitted electron sheets land near σ_eff = 2, not exactly at it — see [STATUS.md](STATUS.md) shear-cleanup.)*
+
 (The polar slice b₁ = 0 at N = 2 still gives the *ellipse-like bilobe* r = R(1 + a₁cos 2φ). It agrees with the true ellipse to a few percent for small a₁ but is a genuinely different curve — it goes concave for a₁ > 1/5, whereas the true ellipse never does. Use b₁ = −a₁ for the literal ellipse.)
 
 ### 5.2 Quark / proton tube — reproducing +2/3 / −1/3 charges

@@ -2,9 +2,32 @@
 
 **Status:** Phased plan for the Ma-domain investigation. Hypotheses develop as work files in this `work/` folder; the gate for promoting to the top-level `ma-domain/` (for the mathematical derivation) is a settled, self-consistent architecture.
 
-**Where things stand:** The quark and charged-lepton sectors are solved — the **QY + ED candidate family** ([cand-QY-ED.md](cand-QY-ED.md)) fits all 9 fundamental fermion masses at machine precision, with the K4 member (share-3 spokes) the standout: 4 dims, DOF 1, R1-compliant. The neutrino sector is in active development. The immediate work is Phase 4 — tighten and verify the candidate. The decay-rate program (Phase 5) and promotion to derivation (Phase 6) follow.
+**Where things stand:** The quark and charged-lepton sectors are solved — the **QY + ED candidate family** ([cand-QY-ED.md](cand-QY-ED.md)) fits all 9 fundamental fermion masses at machine precision, with the K4 member (share-3 spokes) the standout: 4 dims, DOF 1, R1-compliant. The neutrino sector is in active development. The immediate work is the **shear-cleanup** below — truing up a σ_eff over-read that propagated through several files — after which Phase 4 (tighten and verify the candidate), the decay-rate program (Phase 5), and promotion to derivation (Phase 6) follow.
 
 Notation: `Ma(i, j)` for a dim-pair; `T(m_t, m_r)` for a closure mode. See [architecture.md §2.1](architecture.md).
+
+---
+
+## Shear-cleanup — un-pinning σ_eff  (current priority)
+
+A σ_eff over-read propagated through several files and must be trued up before further work.
+
+**The error.** "σ_eff = 2 on every sheet — the R53 magic-shear value, structurally forced by the topology" was an over-read. σ_eff is a *free per-sheet fit parameter* — the mass formula contains it (δ = m_r − σ_eff·m_t), and the solver fits one σ_eff per sheet. The K4 report rounds σ_eff to four decimals; reading "2.0000" as exact, and reading the quark sheets' wide ranges as "≈ 2", manufactured a false universal value. **Honest reading:** electron-sheet σ_eff are fit-pinned *near* 2 (to ~10⁻⁴, sheet-dependent — and those 10⁻⁴ deviations are load-bearing, they carry the e/μ/τ mass splits); quark-sheet σ_eff range over O(1) ([1.68, 2.86] etc.). σ_eff = 2 *exactly* is in fact falsified by K4's own fit — it would force m_e = m_μ.
+
+**Scope — no file is useless.** Every work file is a sound excursion; the σ_eff = 2 reading is a framing error layered on real topologies, real machine-precision mass fits, and sound geometric constructions. The cleanup is a *true-up*, not an archival — no `old/` folder is needed.
+
+**True-up todos** (priority order; do not start downstream work until done):
+
+- [ ] **cand-QY-ED.md** — most affected. Correct §3, §4 ("all three electron σ_eff pin to ≈ 2.0 — the R53 magic-shear value — a structural output forced by the topology"), and §5 (the family-table row "Electron σ_eff pinned to ≈ 2" and the narrative that makes it a predictivity virtue and a K4-standout pillar). Replace with: σ_eff is a free per-sheet fit parameter; electron-sheet values pin near 2 with load-bearing ~10⁻⁴ structure; the "structural R53" reading is withdrawn.
+- [ ] **candidates.md** — the K4-standout sentence (~line 64) cites "pins all three electron σ_eff to ≈ 2 structurally." Drop that as a standout reason.
+- [ ] **baryon-number.md** — drop the citation of "the structural σ_eff = 2" as a third K4-distinguishing reason (~line 161); the cut/cycle argument stands without it.
+- [ ] **electron-tube.md** — clarify σ_eff = 2 is the *clean value of the mass formula* (δ = 0 for T(1, 2)), which the electron sheets land *near* — not a structurally-forced exact value.
+- [ ] **config-electron.md** — light touch: the file already hedges σ_eff = 2 as a "working hypothesis / naturalness target"; keep it only as an optional constraint one *could* impose, and note the "structural" over-read is withdrawn.
+- [ ] **tube-function.md (§5.1), leakage-rate.md** — minor σ_eff = 2 references; light touch / point at this section.
+
+**Confirmed solid — no action.** These either treat σ_eff correctly (as a free per-pair fit parameter) or do not touch it: architecture.md, cand-QY-EL.md, cand-QY-EY.md (which already carries the correct caution that underdetermined-fit σ_eff values are "not a structural result"), cand-QD-EY.md, config-quark.md (explicitly "not load-bearing for QY's fit"), config-neutrino.md, mode-stability.md, neutrino-1D.md, quark-search.md, anomalous-moment.md, 3-torus.md, ma-share.md.
+
+**The deeper question this leaves open** (not a cleanup task — feeds the Phase 4 cross-term item): is σ_eff genuinely a free per-sheet metric parameter, or determined by independent physics? If determined, K4 is over-determined (4 dims vs 9 masses) — a real pass/fail test never run. Resolving it also needs the model-F mass-formula discrepancy settled.
 
 ---
 
@@ -29,15 +52,15 @@ Notation: `Ma(i, j)` for a dim-pair; `T(m_t, m_r)` for a closure mode. See [arch
 
 ## Phase 4 — Candidate consolidation & constraint-tightening — current work
 
-The quark+electron architecture is the **QY + ED family** ([cand-QY-ED.md](cand-QY-ED.md)): the electron delta shares 1, 2, or 3 quark-wye spokes; **K4 (share-3)** is the standout — 4 dims, DOF 1, R1-compliant, electron σ_eff structurally pinned to ≈ 2. [candidates.md](candidates.md) holds the formation rules (R1) and the candidate index; the solver is [scripts/cand_solver.py](../scripts/cand_solver.py).
+The quark+electron architecture is the **QY + ED family** ([cand-QY-ED.md](cand-QY-ED.md)): the electron delta shares 1, 2, or 3 quark-wye spokes; **K4 (share-3)** is the standout — 4 dims, DOF 1, R1-compliant. [candidates.md](candidates.md) holds the formation rules (R1) and the candidate index; the solver is [scripts/cand_solver.py](../scripts/cand_solver.py).
 
 Remaining work to pin and verify the candidate:
 
-- [x] **σ/τ decomposition.** The solver fits a composite σ_eff per sheet; σ_eff = σ + (monodromy)·τ. Decomposed into shear σ and twist τ per sector (quark clover τ = 1/3 → Z₃ monodromy c = 2; electron ellipse τ = 2 → trivial monodromy c = 1); the solver reports it per sheet (see [outputs/](../outputs/)). Electron sheets decompose to σ ≈ 0, confirming the electron-tube construction; the result feeds the σ_eff = 2 rule in the item below.
+- [x] **σ/τ decomposition.** The solver fits a composite σ_eff per sheet and reports the split σ_eff = σ + (monodromy)·τ per sector (quark clover τ = 1/3, c = 2; electron ellipse τ = 2, c = 1). The decomposition *machinery* is sound. **Its earlier conclusion — "electron σ ≈ 0; a universal σ_eff = 2" — is withdrawn as an over-read** (see the shear-cleanup section). Honest reading: σ_eff is a free per-sheet fit parameter — electron-sheet values pin near 2 to ~10⁻⁴, quark-sheet values range over O(1).
 - [x] **Shared-dim metric consistency.** Worked for K4 in [cand-QY-ED.md §4.2](cand-QY-ED.md). Shape is the sectional curvature of a sheet's 2-torus, so the shapes of distinct sheets sharing a dimension are independent curvature components; the only genuine requirement is one size L per dimension, which the solver already enforces — so **K4 passes**, as do all family members. Lesson for the cross-term step and Phase 6: [architecture.md §3.4](architecture.md)'s pair-metric form writes the shape into a per-dimension diagonal entry; it should be revised or demoted so the metric carries shape per sheet (pair).
-- [ ] **Cross-term sparsity / what fixes σ, τ.** *Working answer from the σ/τ decomposition (whole QY-ED family):* one rule — **σ_eff = 2 on every sheet**, the R53 / T(1, 2)-floor value. Every sheet's σ_eff range contains 2; the well-constrained sheets pin there (K4's electron sheets 2.00–2.01, the b/t quark sheet [1.976, 2.025]), the loose ones bracket it. It decomposes cleanly: electron (c = 1, τ = 2) → σ = σ_eff − 2 ≈ 0; quark (c = 2, τ = 1/3) → σ = σ_eff − 2/3 ≈ 4/3. So σ is not an independent parameter — it is σ_eff minus the sector monodromy. Mechanism: every sheet hosts a T(1, 2) mode (each charged lepton; each generation's lighter quark), and σ_eff = 2 is that mode's energetic floor. Not yet exact (~±0.01 residuals; the loose sheets permit rather than force it), so σ_eff is left ranged, not pinned — deriving σ_eff = 2 from the floor condition is Phase 6 work. (QY-EL breaks the pattern — one electron sheet at σ_eff ≈ 0.5–0.7 — further evidence the QY-ED family supersedes it.) The off-diagonal *sparsity* pattern proper — which g_{ij} vanish — is downstream of this.
+- [ ] **Cross-term sparsity / what fixes σ, τ.** *Open — the earlier "working answer" (σ_eff = 2 on every sheet) is withdrawn; see the shear-cleanup section.* The question is now sharper: **is σ_eff a genuinely free per-sheet metric parameter, or is it determined by independent physics?** The solver treats it as free — which is the whole reason K4 carries a DOF-1 family (10 fitted parameters: 4 dims + 6 σ_eff, against 9 masses). If σ_eff is instead determined, K4 becomes 4 dims vs 9 masses — over-determined by 5, a genuine pass/fail test the solver has never run. Settling this also needs the model-F mass-formula discrepancy resolved (does model-F pin a sheet's diagonal shear-independently, as recalled?). The off-diagonal *sparsity* pattern proper — which g_{ij} vanish — is downstream of this.
 
-**Note on DOF.** K4's DOF = 1 is the benign hub-style freedom — one dimension is free above a size floor (it enters the masses only through a negligible 1/L term), exactly as the quark wye's hub is. The topology, the particle→leg assignment, and the small dims are all pinned. So K4 is effectively determined for architectural purposes; the σ/τ and metric-consistency checks verify self-consistency rather than remove the free direction.
+**Note on DOF.** K4's DOF = 1 — 10 fitted parameters (4 dims + 6 σ_eff) against 9 masses — is the benign hub-style freedom: the one free direction is a dimension free above a size floor, entering the masses only through a negligible 1/L term. But the count *includes the 6 shears as free parameters* (see the Cross-term item above). "K4 is effectively determined" holds only if the shears are genuinely free metric parameters; if they are determined by other physics, the count — and the claim — change.
 
 ## Phase 5 — Decay-rate program
 
@@ -64,14 +87,14 @@ Imported from sheet-proton / model-F and used as given:
 |---|---|---|
 | τ = 1/3 twist gives Q_lobe = +2/3, Q_saddle = −1/3 per-arc charges | [sheet-proton clover-quarks §11](../../sheet-proton/work/clover-quarks.md) | Adopted; applied to the quark-bearing pairs. |
 | Proton, neutron path-windings T(1, 2), T(1, 1) tube-first | [sheet-proton clover-quarks §12](../../sheet-proton/work/clover-quarks.md) | Adopted as the baryon-composition rule. |
-| Electron tube: convex ellipse, τ = 2, σ = 0 → σ_eff = 2 puts T(1, 2) at the floor | [electron-tube.md](electron-tube.md) | Adopted for charged-lepton sheets. |
+| Electron tube: convex ellipse; σ_eff = 2 is the clean value where T(1, 2) sits at the floor (δ = 0) | [electron-tube.md](electron-tube.md) | A naturalness reference — *not* an exact pinning. Fitted electron σ_eff land near 2 (~10⁻⁴ off), not at it; see the shear-cleanup section. |
 | α = α_Coulomb structural from the tube↔ℵ↔t chain | [models/model-F.md](../../models/model-F.md) | Useful guide; the project may rederive the EM-coupling chain. |
 | Z₃ confinement and the (3, 6) proton interpretation | [R60](../../studies/R60-metric-11) | Adopted as the proton-as-bound-state rule. |
 
 ## Inherited open questions
 
 - What *enforces* the cross-term sparsity pattern in the metric? (GRID lattice rule? compact-dim topology?)
-- What *enforces* the specific σ, τ values per pair? (The σ/τ decomposition in Phase 4 is the first concrete attack on this.)
+- What *enforces* the specific σ, τ values per pair? (Still open. The Phase 4 σ/τ decomposition was a first attempt; its "σ_eff = 2" answer was withdrawn — see the shear-cleanup section.)
 - What is the GRID-level mechanism that produces the N compact Ma dimensions?
 
 ## Out of scope

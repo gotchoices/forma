@@ -2,7 +2,7 @@
 
 **Purpose:** catalog the topology configurations available for the electron (charged lepton) sector.
 
-**Electron sector requirements:** host all 3 charged leptons (e, μ, τ) at their observed masses (0.511 MeV, 105.66 MeV, 1776.86 MeV — span ~3500×). Each pair hosts one lepton at T(1, 2) per [architecture.md §3.3.1](architecture.md) (no within-pair doublet — Q = ±1 doesn't need a lobe/saddle split). Per-pair (σ, τ, P) triplet free per [architecture.md §3.4](architecture.md). Electrons sit on the *ellipse* cross-section per [electron-tube.md](electron-tube.md), with τ = 2 and σ_eff near 2 (the R53 magic-shear value).
+**Electron sector requirements:** host all 3 charged leptons (e, μ, τ) at their observed masses (0.511 MeV, 105.66 MeV, 1776.86 MeV — span ~3500×). Each pair hosts one lepton at T(1, 2) per [architecture.md §3.3.1](architecture.md) (no within-pair doublet — Q = ±1 doesn't need a lobe/saddle split). Per-pair (σ, τ, P) triplet free per [architecture.md §3.4](architecture.md). Electrons sit on the *ellipse* cross-section per [electron-tube.md](electron-tube.md), with τ = 2 and σ_eff near 2 — a clean value of the mass formula and a naturalness target, *not* a structural pinning (σ_eff is a free per-sheet fit parameter; see [STATUS.md](STATUS.md) shear-cleanup).
 
 **Labelling convention (local to this file):** dims are named `m_a`, `m_b`, … abstractly. The configs say nothing about which globally-labelled dims they map onto, nor whether any of these dims are shared with other sectors — those are candidate-level questions handled in [candidates.md](candidates.md).
 
@@ -45,7 +45,7 @@ Each pair has its own tube/ring assignment and its own (σ, τ, P) triplet. The 
 A few features are pinned by sector-internal physics alone, before any cross-sector inheritance:
 
 - **Smallest dim's size scale is set by the τ Compton wavelength.** The heaviest lepton sits on the pair with the smallest ring; in the pure-ring regime that ring's circumference satisfies L_R ≈ 2πℏc·δ/m_τ, with δ small. For δ ≈ 0.01 (a single R53-style detuning) this gives L ≈ a few fm.
-- **R53 σ_eff naturalness target.** The framework's working hypothesis for charged-lepton sheets is σ_eff near 2 (the magic-shear value from [electron-tube.md](electron-tube.md)). ED admits this constraint on at least two of the three pairs without over-constraining the mass fit; the third pair's σ_eff absorbs the remaining freedom.
+- **σ_eff naturalness target.** A working hypothesis for charged-lepton sheets is σ_eff near 2 — a clean value of the mass formula ([electron-tube.md §3](electron-tube.md)), not a structural pinning (σ_eff is a free per-sheet fit parameter — see [STATUS.md](STATUS.md) shear-cleanup). ED admits σ_eff ≈ 2 as an optional *target* on at least two of the three pairs without over-constraining the mass fit; the third pair's σ_eff absorbs the remaining freedom.
 
 ### ED.3 — Fit status (sector-internal)
 

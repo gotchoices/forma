@@ -68,6 +68,8 @@ The clean sweet spot is **σ_eff = 2**: at this value, T(1, 2) becomes a *zero-e
 
 At σ_eff = 2 the mass of the electron mode is **μ_e = 1/ε** — set entirely by the cross-section size, with no ring-momentum contribution. This is structurally analogous to the clover's T(1, 1) at σ_eff = 2/3 (the proton's "zero-effective-ring-momentum" mode), but on a different sector.
 
+**σ_eff = 2 is a clean value of the formula and the naturalness target of this construction — not a structural pinning.** σ_eff is a free per-sheet parameter (fit, not derived); in the K4 candidate fit the electron sheets land *near* 2 (within ~10⁻⁴), with the small deviations physical and load-bearing. Treating "σ_eff = 2" as an exact, topology-forced value was an over-read, since corrected — see [STATUS.md](STATUS.md) shear-cleanup.
+
 ---
 
 ## 4. Why a featureless circle won't do it
