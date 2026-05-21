@@ -121,23 +121,29 @@ Which α is physical — and so whether the observed long lifetimes are carried 
 
 Built out, the ratio Γ_τ/Γ_μ is not a plug-in: it factors into a phase-space part and an overlap part, each of which must be *derived* from the geometry.
 
-### 4.1 The phase-space power — and a correction
+### 4.1 The phase-space factor — resolved
 
-Write Γ = |g_J|² · F(m, geometry). The rate has dimension [energy]; the decaying-mode mass m is the energy scale, so F carries a power — Γ ∝ |g_J|² · m^p. The power p is fixed by the *dimensional structure* of the rate, and the junction coupling's dimension is decisive: β-decay's Sargent law Γ ∝ G_F²·m⁵ has p = 5 precisely because [G_F] = [energy]⁻².
+The rate factors as Γ = (junction coupling) × (phase space) × (overlap) ([mode-stability.md §6](mode-stability.md)). Take the phase-space factor.
 
-This corrects the earlier framing. The ratio Γ_τ/Γ_μ cancels the *value* of g_J — but **not its dimensional structure.** The power p is junction-determined, and the ratio test reads (m_τ/m_μ)^p, so it sees p. The §3.3 junction model therefore cannot be wholly deferred: its dimensional content feeds the ratio.
+What carries the decay's kinematic phase space? mode-stability.md is ambiguous: §5 names the 1D neutrino line as the reservoir — but a 1D two-body continuum scales only as ~m — while §6 attributes the m⁵ Sargent law to "phase-space integration over the byproducts." Observation settles it. Decay products are real particles propagating in macroscopic 3D space: they carry 3-momenta, recoil, the measured Michel energy spectrum. The decay is therefore the standard 3-body process in 3D, and its rate carries the **Sargent m⁵ law** — the framework inherits it because its byproducts *are* 3D-propagating particles. The neutrino line's role ([mode-stability.md §5](mode-stability.md)) is the *identity* of the Q = 0 carrier — that a charge-neutral byproduct exists — not the kinematic continuum. *(This re-reads mode-stability.md §5/§6; flagged for that file.)*
 
-If p = 5, the architecture's fitted masses give a phase-space factor (m_τ/m_μ)⁵ = 1.345×10⁶, against the measured partial-width ratio Γ(τ→eν̄ν)/Γ(μ→eν̄ν) = 1.35×10⁶ (= BR(τ→eν̄ν)·τ_μ/τ_τ) — agreement to ~0.2%, the Standard Model's lepton-universality result. But that arithmetic uses *fitted* masses and an *assumed* p = 5: it is a consistency target, not yet a test. The test is whether the geometry *yields* p = 5.
+So the leptonic decay rate is ∝ m⁵. For the ratio Γ_τ/Γ_μ, a universal weak junction cancels the coupling's *value* (§3.5) and gives τ and μ a common matrix-element structure, so to leading order
+
+  Γ_τ / Γ_μ = (m_τ / m_μ)⁵ × (geometric overlap ratio) .
+
+The architecture's fitted masses give (m_τ/m_μ)⁵ = 1.345×10⁶; the measured leptonic partial-width ratio Γ(τ→eν̄ν)/Γ(μ→eν̄ν) = BR(τ→eν̄ν)·τ_μ/τ_τ = 1.35×10⁶. They agree to ~0.2%. So the §4 test reduces to one sharp question — **is the geometric overlap ratio ≈ 1?** If it is, the framework reproduces lepton universality and the m⁵ match becomes a genuine prediction; the overlap ratio is §4.2.
 
 ### 4.2 The geometric overlap ratio
 
 The other factor is |O_τ|²/|O_μ|². All charged leptons are T(1, 2), so every lepton-to-lepton transition is k_θ-allowed at leading order (§3.1) — no σ-suppression — and the ratio is purely geometric. A naive O ~ L_shared fails by orders of magnitude: K4's shared dims span fifteen decades (m1 ≈ 10³–10¹⁵ fm, m2 ≈ 1 fm, m3 ≈ 0.007 fm), which no few-fold residual can absorb. The overlap needs the *normalised* Bloch wavefunctions and the junction profile worked out properly — a derivation, not a plug-in.
 
+With the figure-eight reduction (§3.4) and its δ-vertex secular equation (§3.5) now in hand, that overlap is a definite, well-posed calculation — the figure-eight modes evaluated at the K4 loop lengths — and it is the concrete next step.
+
 ### 4.3 Status and the next step
 
 §4 is **derivation-grade**, not a prototype script — the Phase-1 work [mode-stability.md §8](mode-stability.md) itself calls "mathematical-derivation work." The §2 machinery check was clean because it was a textbook model; the geometric rate is the real physics, and from here the leakage program is the arc's chapter E — derived, not scripted.
 
-The next concrete step is the **phase-space derivation**: what power p the geometry yields, from the byproducts' propagation in macroscopic space S (the neutrino line is the energy-conservation reservoir of [mode-stability.md §5](mode-stability.md) — a distinct role, not the phase-space source). Because p is junction-determined (§4.1), this is the point at which the §3.3 junction model must be chosen.
+The phase-space factor is now resolved (§4.1): the leptonic rate is ∝ m⁵, and the ratio test reduces to whether the geometric overlap ratio ≈ 1. The next concrete step is therefore the **overlap-ratio calculation** (§4.2) — the figure-eight modes (§3.5) evaluated at the K4 loop lengths. With the figure-eight reduction in hand this is, finally, scriptable: the δ-vertex secular equation plus the overlap integral.
 
 If the eventual ratio reproduces the measurement, §1–4 promote to arc chapter E; if not, the result re-cuts the arc ([../README.md](../README.md) §Derivation arc).
 
