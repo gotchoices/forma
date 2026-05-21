@@ -2,6 +2,8 @@
 
 **Status:** Prototype / working calculation. [mode-stability.md](mode-stability.md) is the standing *plan* — the leakage mechanism and the five-phase strategy; this file is the *calculation* that executes it. It is built smallest-first. When the calculation reproduces measured lifetimes it becomes the draft of arc **chapter E** ([../README.md](../README.md) §Derivation arc); until then it stays here in `work/`.
 
+> **Foundational caveat (2026-05-20).** Everything from §3 onward rests on one assumption, inherited from [mode-stability.md](mode-stability.md) §2/§4: that leakage flows *only* between sheets that share a dimension. **That assumption is unverified and probably too strong.** The N-dim metric is a single object; off-diagonal shears give certain dim-pairs an *enhanced* relationship, not an *exclusive* one. Coupling without a shared dimension demonstrably exists — a charged closure mode radiates energy into macroscopic space S at rate ~α with no shared dimension and no Ma↔S shear. (mode-stability.md is itself inconsistent here: §2/§4 require a shared dim for decay, while §6's EM channel sheds energy into the photon field, which is not one.) So the leakage graph is richer than the metric-sharing graph. Consequently the §5 lepton-universality result is **contingent on this assumption and does NOT disqualify the QY-ED candidate.** §2's resonance-pole/FGR machinery and §4.1's m⁵ phase space are assumption-free and stand; §3.1–§5 are conditional and await a verified leakage law.
+
 ---
 
 ## 1. Purpose
@@ -16,8 +18,8 @@ This file builds the calculation in stages:
 
 - **§2 — the machinery check** *(done)* — resonance pole vs FGR on the flat-band Friedrichs model, the minimal system where both methods apply.
 - **§3 — the geometric two-sheet case** *(structure derived)* — the leakage rate factored; the shared-dim selection rule derived; the junction reduced to a figure-eight δ-vertex.
-- **§4 — the lepton-lifetime test** *(done — negative)* — the phase-space factor is the Sargent m⁵; the overlap factor surfaces a lepton-universality problem.
-- **§5 — family-wide universality scan** *(done — negative)* — the electron-delta topology fails lepton universality *structurally*: every QY-ED member, not K4 alone.
+- **§4 — the lepton-lifetime test** *(contingent — see caveat)* — the phase-space factor is the Sargent m⁵; the shared-dim overlap factor surfaces an apparent lepton-universality problem.
+- **§5 — family-wide universality scan** *(contingent — see caveat)* — *if* leakage is shared-dim-gated, the electron-delta topology fails universality family-wide; that premise is unverified, so this does not disqualify QY-ED.
 
 ---
 
@@ -181,7 +183,9 @@ The overlap factor proved decisive on its own. §5's family-wide scan shows the 
 
 ## 5. Family-wide universality scan
 
-Running the overlap calculation across the whole QY-ED family — [scripts/leakage_overlap.py](../scripts/leakage_overlap.py), output [outputs/leakage_overlap.txt](../outputs/leakage_overlap.txt) — overturns §4.3's reading. **The universality failure is not K4-specific; it is structural to the electron-delta topology, and every QY-ED member has it.**
+> **Contingent — see the foundational caveat at the top of this file.** Everything below assumes leakage flows *only* through shared dimensions. That assumption is unverified, and the EM channel shows coupling without a shared dimension exists. If the leptonic decays run through a coupling that is not a shared-dim overlap — in particular a *universal baseline* coupling — the overlap structure below is the wrong model and this argument does not go through. §5 is a **conditional** result; it does **not** falsify QY-ED.
+
+Running the overlap calculation across the whole QY-ED family — [scripts/leakage_overlap.py](../scripts/leakage_overlap.py), output [outputs/leakage_overlap.txt](../outputs/leakage_overlap.txt) — overturns §4.3's K4-specific reading: **if** leakage is shared-dim-gated, the universality failure is not K4-specific but structural to the electron-delta topology, and every QY-ED member has it.
 
 **The structural argument.** The electron delta puts the three charged leptons on the three edges of a triangle whose nodes are three dimensions X, Y, Z. The three leptonic decays are the three edge-to-edge leakages, and by §4.2 each overlap is 1/√(product of the two non-shared dims):
 
