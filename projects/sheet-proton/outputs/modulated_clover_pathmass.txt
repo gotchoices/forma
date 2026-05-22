@@ -1,0 +1,30 @@
+==============================================================================
+modulated-clover — STEP 7: path-length mass mechanism
+mass = 2πℏc / L  (standing wave; wavelength = closed-track length).
+proton and neutron are the two (1/2,1) tracks: m_n/m_p = L_p/L_n.
+==============================================================================
+
+observed  m_n/m_p = 1.0013784   (target for L_proton/L_neutron)
+
+--- baseline: the Step-3 charge-correct surface, vs R_major ---
+    R_major      L_proton     L_neutron      L_p/L_n
+      3.000      23.62399      19.66743    1.2011732
+      6.000      40.43429      38.03654    1.0630381
+     12.000      77.01042      75.50704    1.0199104
+     24.000     151.82723     150.79394    1.0068523
+  (L_p > L_n  =>  proton path longer  =>  m_p < m_n, the right sign)
+
+--- best charge-correct surface for L_p/L_n = m_n/m_p (5028 evals) ---
+  Ac = [+0.17512, -0.48886]   As = [+0.15451, +0.65579]
+  Bc = [-0.01223]   Bs = [+0.03243]   a2 = 0.32977   b2 = +0.03196   R_major = 60.0002
+  charge:  Q_proton = +1.000000   Q_neutron = -0.000000   (error 4.6e-08)
+  L_proton = 377.535449   L_neutron = 377.015764
+  L_p/L_n = 1.0013784   target 1.0013784   residual +1.09e-09
+
+RESULT: a charge-correct, simple modulated-clover surface DOES
+reproduce the observed proton/neutron mass ratio as the ratio
+of its two track lengths.  Charge and mass both come from the
+tracks — one consistent picture, and the construction is
+mass-viable (unlike the Step-6 eigenmode mechanism).  This is
+a consistency fit — parameters tuned to one ratio, the
+absolute mass scale set separately — not a free prediction.

@@ -976,13 +976,177 @@ def run_step6(args):
     print(f"\nWrote: {out_path}")
 
 
+# ======================================================================
+# STEP 7 — path-length mass:  mass = 2(pi)hbar c / L_track
+# ======================================================================
+#
+# A baryon is a standing wave on its closed (1/2,1) track; the fundamental
+# has wavelength = the track's arc length L, so mass = 2(pi)hbar c / L.
+# Proton and neutron are the two tracks (the same objects the charge
+# construction uses), so  m_n / m_p = L_proton / L_neutron.  Charge and mass
+# then both come from the track — one consistent picture.
+
+
+def modulation_deriv(theta, cos_c, sin_c):
+    """d/dθ of modulation(theta, cos_c, sin_c)."""
+    th = np.asarray(theta, dtype=float)
+    out = np.zeros_like(th)
+    for k, c in enumerate(cos_c):
+        m = (2 * k + 1) / 2.0
+        out = out - c * m * np.sin(m * th)
+    for k, c in enumerate(sin_c):
+        m = (2 * k + 1) / 2.0
+        out = out + c * m * np.cos(m * th)
+    return out
+
+
+def track_length(t0, Ac, As, Bc, Bs, a2, b2, rho, Rmajor, Nth=4000):
+    """Arc length of the (1/2,1) track t(θ)=t0+θ/2 on the modulated-clover
+    surface, from the induced metric (work file §7.2).  Along the track
+    dt = (1/2)dθ, so ds^2 = (g_tt/4 + g_tθ + g_θθ) dθ^2."""
+    theta = np.linspace(0.0, 2 * pi, Nth + 1)
+    t = t0 + theta / 2.0
+    a1 = modulation(theta, Ac, As)
+    b1 = modulation(theta, Bc, Bs)
+    a1p = modulation_deriv(theta, Ac, As)
+    b1p = modulation_deriv(theta, Bc, Bs)
+    c3, s3 = np.cos(3 * t), np.sin(3 * t)
+    c6, s6 = np.cos(6 * t), np.sin(6 * t)
+    w = 1.0 + a1 * c3 + a2 * c6 + 1j * (b1 * s3 + b2 * s6)
+    wt = (-3.0 * a1 * s3 - 6.0 * a2 * s6) + 1j * (3.0 * b1 * c3 + 6.0 * b2 * c6)
+    wth = a1p * c3 + 1j * (b1p * s3)                  # ∂_θ w  (a2, b2 constant)
+    phase = rho * np.exp(1j * (theta / 2.0 + t))
+    zeta = phase * w
+    zeta_t = phase * (1j * w + wt)
+    zeta_th = phase * (0.5j * w + wth)                # twist  α' = 1/2
+    g_tt = np.abs(zeta_t) ** 2
+    g_tth = np.real(np.conj(zeta_t) * zeta_th)
+    g_thth = np.abs(zeta_th) ** 2 + (Rmajor + zeta.real) ** 2
+    ds = np.sqrt(np.maximum(g_tt / 4.0 + g_tth + g_thth, 0.0))
+    return float(np.trapezoid(ds, theta))
+
+
+def run_step7(args):
+    """STEP 7: the path-length mass mechanism.  Mass = 2πℏc / L_track, so
+    m_n/m_p = L_proton/L_neutron.  Reports the proton and neutron track
+    lengths for the Step-3 charge-correct surface, then sweeps the full
+    charge-correct parameter space for L_proton/L_neutron equal to the
+    observed m_n/m_p — charge and mass both read off the tracks."""
+    from scipy.optimize import differential_evolution
+    N = args.N
+    t0_p, t0_n = -pi / 6.0, +pi / 6.0
+    TARGET = 939.56542 / 938.27209           # observed m_n/m_p = L_p/L_n
+    W_CHG, REJECT = 1.0e4, 9.0
+
+    def unpack(x):
+        return (np.array([x[0], x[1]]), np.array([x[2], x[3]]),
+                np.array([x[4]]), np.array([x[5]]),
+                float(x[6]), float(x[7]), float(x[8]))
+
+    def lengths(Ac, As, Bc, Bs, a2, b2, Rm):
+        return (track_length(t0_p, Ac, As, Bc, Bs, a2, b2, args.rho, Rm),
+                track_length(t0_n, Ac, As, Bc, Bs, a2, b2, args.rho, Rm))
+
+    # baseline: the Step-3 charge-correct modulation
+    ref = refine_to_target(N, np.array([args.b1]), np.array([0.0]),
+                           args.a2, args.b2, t0_p, t0_n,
+                           x0=[0.0, 0.5, args.a1, 0.0])
+    Acb = np.array([ref["Ac0"], ref["Ac1"]])
+    Asb = np.array([ref["As0"], ref["As1"]])
+
+    R = []
+    R.append("=" * 78)
+    R.append("modulated-clover — STEP 7: path-length mass mechanism")
+    R.append("mass = 2πℏc / L  (standing wave; wavelength = closed-track length).")
+    R.append("proton and neutron are the two (1/2,1) tracks: m_n/m_p = L_p/L_n.")
+    R.append("=" * 78)
+    R.append("")
+    R.append(f"observed  m_n/m_p = {TARGET:.7f}   (target for L_proton/L_neutron)")
+    R.append("")
+    R.append("--- baseline: the Step-3 charge-correct surface, vs R_major ---")
+    R.append(f"  {'R_major':>9}  {'L_proton':>12}  {'L_neutron':>12}  {'L_p/L_n':>11}")
+    for Rm in [3.0, 6.0, 12.0, 24.0]:
+        Lp, Ln = lengths(Acb, Asb, np.array([args.b1]), np.array([0.0]),
+                         args.a2, args.b2, Rm)
+        R.append(f"  {Rm:>9.3f}  {Lp:>12.5f}  {Ln:>12.5f}  {Lp / Ln:>11.7f}")
+    R.append("  (L_p > L_n  =>  proton path longer  =>  m_p < m_n, the right sign)")
+    R.append("")
+
+    bounds = [(-1.0, 1.0), (-1.0, 1.0), (-1.5, 1.5), (-1.5, 1.5),
+              (-0.40, 0.40), (-0.40, 0.40), (0.05, 0.60), (-0.20, 0.20),
+              (2.0, 300.0)]
+    x0 = np.array([ref["Ac0"], ref["Ac1"], ref["As0"], ref["As1"],
+                   args.b1, 0.0, args.a2, args.b2, 60.0])
+    neval = [0]
+
+    def objective(x):
+        neval[0] += 1
+        Ac, As, Bc, Bs, a2, b2, Rm = unpack(x)
+        for th in np.linspace(0.0, 2 * pi, 15, endpoint=False):
+            if star_margin(N, float(modulation(th, Ac, As)), a2,
+                           float(modulation(th, Bc, Bs)), b2, K=1500) <= 0.02:
+                return REJECT
+        Qp, _ = track_charge(t0_p, Ac, As, Bc, Bs, a2, b2, Nth=1500)
+        Qn, _ = track_charge(t0_n, Ac, As, Bc, Bs, a2, b2, Nth=1500)
+        cerr = (Qp - 1.0) ** 2 + Qn ** 2
+        Lp, Ln = lengths(Ac, As, Bc, Bs, a2, b2, Rm)
+        return abs(Lp / Ln - TARGET) + W_CHG * cerr
+
+    print(f"STEP 7: differential evolution for L_p/L_n = {TARGET:.7f} ...",
+          flush=True)
+    res = differential_evolution(objective, bounds, x0=x0, seed=1,
+                                 maxiter=args.de_iters, popsize=12,
+                                 tol=1e-14, polish=True)
+    x = res.x
+    Ac, As, Bc, Bs, a2, b2, Rm = unpack(x)
+    Qp, _ = track_charge(t0_p, Ac, As, Bc, Bs, a2, b2)
+    Qn, _ = track_charge(t0_n, Ac, As, Bc, Bs, a2, b2)
+    cerr = max(abs(Qp - 1.0), abs(Qn))
+    Lp, Ln = lengths(Ac, As, Bc, Bs, a2, b2, Rm)
+    ratio = Lp / Ln
+
+    R.append(f"--- best charge-correct surface for L_p/L_n = m_n/m_p "
+             f"({neval[0]} evals) ---")
+    R.append(f"  Ac = [{x[0]:+.5f}, {x[1]:+.5f}]   As = [{x[2]:+.5f}, {x[3]:+.5f}]")
+    R.append(f"  Bc = [{x[4]:+.5f}]   Bs = [{x[5]:+.5f}]   a2 = {x[6]:.5f}   "
+             f"b2 = {x[7]:+.5f}   R_major = {x[8]:.4f}")
+    R.append(f"  charge:  Q_proton = {Qp:+.6f}   Q_neutron = {Qn:+.6f}   "
+             f"(error {cerr:.1e})")
+    R.append(f"  L_proton = {Lp:.6f}   L_neutron = {Ln:.6f}")
+    R.append(f"  L_p/L_n = {ratio:.7f}   target {TARGET:.7f}   "
+             f"residual {ratio - TARGET:+.2e}")
+    R.append("")
+    if cerr < 1e-3 and abs(ratio - TARGET) < 1e-5:
+        R.append("RESULT: a charge-correct, simple modulated-clover surface DOES")
+        R.append("reproduce the observed proton/neutron mass ratio as the ratio")
+        R.append("of its two track lengths.  Charge and mass both come from the")
+        R.append("tracks — one consistent picture, and the construction is")
+        R.append("mass-viable (unlike the Step-6 eigenmode mechanism).  This is")
+        R.append("a consistency fit — parameters tuned to one ratio, the")
+        R.append("absolute mass scale set separately — not a free prediction.")
+    elif cerr < 1e-3:
+        R.append(f"RESULT: closest charge-correct L_p/L_n = {ratio:.6f} vs target")
+        R.append(f"{TARGET:.6f}  (off by {abs(ratio - TARGET):.1e}).  The track-")
+        R.append("length ratio could not be tuned onto the nucleon mass ratio.")
+    else:
+        R.append("RESULT: the search did not hold charge — inspect / re-weight.")
+
+    text = "\n".join(R)
+    print(text)
+    out_dir = Path(__file__).resolve().parents[1] / "outputs"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    out_path = out_dir / "modulated_clover_pathmass.txt"
+    out_path.write_text(text + "\n")
+    print(f"\nWrote: {out_path}")
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--step", choices=["1", "3", "4", "5", "6"], default="3",
+    ap.add_argument("--step", choices=["1", "3", "4", "5", "6", "7"], default="3",
                     help="1 = cross-section budget; 3 = modulation/track "
                          "solver; 4 = mass spectrum; 5 = mass-fit sweep; "
-                         "6 = global parameter sweep")
+                         "6 = global parameter sweep; 7 = path-length mass")
     ap.add_argument("--N", type=int, default=3, help="lobe-pair count (default 3)")
     ap.add_argument("--a1", type=float, default=0.62,
                     help="step 1: eval a1;  step 3: initial a1-modulation amplitude")
@@ -1022,8 +1186,10 @@ def main():
         run_step4(args)
     elif args.step == "5":
         run_step5(args)
-    else:
+    elif args.step == "6":
         run_step6(args)
+    else:
+        run_step7(args)
 
 
 if __name__ == "__main__":

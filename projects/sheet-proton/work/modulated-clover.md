@@ -9,11 +9,15 @@ surface closure (§3) are worked out and hold. The proton and neutron tracks (§
 the two (1/2, 1) half-tube tracks, each closing in one ring revolution. **Step 3 done
 (2026-05-22):** a single modulation profile closes the proton track at charge Q = +1 and
 the neutron at Q = 0 on a simple, smooth surface — the **charge** construction works
-(§4.5). The **mass** mechanism — proton and neutron as two low eigenmodes of one
-modulated-clover surface — was tested in §6–§7 and **fails**: a global sweep of all nine
-parameters cannot bring the smallest low-mode split below ≈ 1.9× the observed nucleon
-split (§6 step 5). The charge construction stands; the mass side needs a different
-mechanism.
+(§4.5). **Mass** was attacked two ways. The *eigenmode* mechanism — proton and neutron as
+two low eigenmodes of one surface — **fails** (§6 step 5): a nine-parameter sweep cannot
+bring the smallest low-mode split below ≈ 1.9× the observed nucleon split. The
+*path-length* mechanism — each baryon a standing wave on its own closed track, mass =
+2πℏc/L — is **viable and gets the mass-difference sign for free** (§6 step 6): the
+charge-correct surface already makes the proton track longer, hence the proton lighter,
+unforced. But the ratio's *magnitude* is a one-parameter fit (the charge-neutral ring
+aspect ratio), not a prediction. The charge construction stands; mass has a consistent
+picture but no predictive grip on the scale.
 
 **Origin.** The arc-clover baryon paths do not close: [clover-quarks.md §3.2/§12.2](clover-quarks.md)
 derive the (1,2)/(1,1) closure numbers by summing per-arc *turning angles* (lobe 240°,
@@ -413,13 +417,49 @@ what "a baryon" is.
    0.0027 across deepening runs, 14,698 evaluations). That is **≈ 1.9× the observed
    split and does not reach it**.
 
-   **Verdict — the mass mechanism fails.** Proton and neutron as two low eigenmodes of
-   one modulated-clover surface does not work: the smallest split is ~2× too large, the
-   near-degenerate pair is modes 3,4 (not the lightest), and nothing structurally marks
-   that pair as the nucleon. The parameter freedom is exhausted. A different bridge from
-   the (working) charge/track picture to mass is needed — e.g. the distinct-(m_t, m_r)
-   wave-mode mass formula of [clover-mass.md](clover-mass.md), or proton and neutron as
-   two near-identical *separate* surfaces. The charge construction (§§2–4) stands.
+   **Verdict — the eigenmode mass mechanism fails.** Proton and neutron as two low
+   eigenmodes of one modulated-clover surface does not work: the smallest split is ~2×
+   too large, the near-degenerate pair is modes 3,4 (not the lightest), and nothing
+   structurally marks that pair as the nucleon. The parameter freedom is exhausted. A
+   different bridge from the (working) charge/track picture to mass is needed. The charge
+   construction (§§2–4) stands.
+
+6. **Path-length mass.** *(Done — 2026-05-22, `--step 7`.)* A different mass bridge,
+   structurally matched to the charge picture: a baryon is a **standing wave on its own
+   closed (1/2, 1) track**, the same curve the charge integral runs along. The
+   fundamental has one wavelength per circuit, so mass = 2πℏc / L_track, and the two
+   tracks give m_n / m_p = L_proton / L_neutron directly — charge *and* mass both read
+   off the tracks, one consistent picture. Track length is the arc length of t(θ) =
+   t₀ + θ/2 in the §7.2 induced metric, ds² = (g_tt/4 + g_tθ + g_θθ) dθ².
+
+   Two distinct findings, kept separate:
+
+   - **The sign is a genuine retrodiction.** On the *untuned* Step-3 charge-correct
+     surface the proton track is already the longer of the two (L_p/L_n ≈ 1.20, 1.06,
+     1.02, 1.007 at R_major = 3, 6, 12, 24). Longer track → longer wavelength → lower
+     mass, so the construction makes the **proton lighter than the neutron** — the
+     observed sign — *before any fitting*. The proton is the charged track; carrying
+     +1 unit of experienced curvature lengthens its path. This 1-bit prediction is not
+     tuned: had the charged track come out shorter, the sign would be wrong.
+
+   - **The magnitude is a one-parameter fit, not a prediction.** L_p/L_n decreases
+     monotonically from ≈1.2 toward 1 as R_major grows, and R_major (the ring aspect
+     ratio) does **not** enter the charge integral at all — it is a free knob decoupled
+     from charge. So for *any* charge-correct modulation there is exactly one R_major
+     (intermediate-value theorem) hitting any target ratio in (1, ≈1.2). The DE search
+     confirms this trivially: it lands a charge-exact surface (Q_p = 1.0000000,
+     Q_n = −0.0000000) with L_p/L_n = 1.0013784 — the observed m_n/m_p to 9 digits — at
+     R_major ≈ 60. The match is guaranteed by construction; it tunes one real number
+     (R_major) to one real number (the ratio). The absolute mass scale is separate and
+     also unpredicted.
+
+   **Verdict — the path-length mechanism is viable and gets the sign for free, but the
+   mass ratio is a consistency fit.** This is a real advance over the eigenmode
+   mechanism (Step 5/6), which could not reach the target *at all* with nine parameters;
+   here the right sign emerges unforced from the charge construction. But the ratio's
+   magnitude carries no predictive content — it is set by a charge-neutral aspect-ratio
+   knob. A genuine mass prediction would need that knob fixed by independent physics
+   (e.g. the absolute scale or R_major pinned by another constraint).
 
 **Computational (fallback / verification).**
 
