@@ -183,7 +183,96 @@ every closed track would have integer charge equal to its winding — proton +1,
 neutron; the modulation is exactly what breaks the identity and reopens room for a
 charge-0 track.
 
-### 4.3 Proton and neutron as parallel tracks
+### 4.3 The experienced-curvature functional — definition
+
+This pins what "charge of a track" means. The rest of the construction and the solver
+(§6) depend on it.
+
+**Setup.** Write a surface point as (t, θ): t the cross-section parameter, θ ∈ [0, 4π)
+the ring angle (a track closes after two ring revolutions, §4.1). The cross-section at
+ring angle θ is the modulated, twisted tube-function
+
+<!-- z(t;θ) = e^{i α(θ)} R e^{i t} [ 1 + a1(θ) cos3t + a2 cos6t + i(b1(θ) sin3t + b2 sin6t) ] -->
+$$
+z(t;\theta) \;=\; e^{i\alpha(\theta)}\,R\,e^{i t}\,\Bigl[\,1 + a_1(\theta)\cos 3t + a_2\cos 6t + i\bigl(b_1(\theta)\sin 3t + b_2\sin 6t\bigr)\,\Bigr]
+$$
+
+with twist α(θ) = θ/2 and modulation a₁(θ) = a₁cos(θ/2), b₁(θ) = b₁cos(θ/2) (§3).
+
+**Profile tangent angle.** The tangent of the cross-section profile, at parameter t and
+ring angle θ, points along ∂_t z. Its angle is
+
+  χ(t; θ) = arg ∂_t z(t; θ).
+
+The turning of any piece of the profile, *at fixed θ*, is the change Δχ across it; the
+whole profile gives ∮ ∂_t χ dt = 2π (Gauss–Bonnet). The piece turnings T_maj, T_min of
+§2.3 are exactly Δχ over a major / minor piece.
+
+**A track** is a curve on the surface, (t(s), θ(s)) for a parameter s, winding the tube
+once (t advances by 2π net) and the ring twice (θ: 0 → 4π).
+
+**Definition — the experienced-curvature charge.** As the track advances, its foot moves
+along the cross-section profile; the curvature it *experiences* is the profile's own
+turning, ∂_t χ, evaluated in the cross-section shape at the track's *current* ring angle.
+The track's charge is the accumulation of that turning, normalized:
+
+<!-- Q_track = (1/2π) ∫_track ∂_t χ(t;θ) dt = (1/2π) ∫ (∂χ/∂t)(t(s),θ(s)) (dt/ds) ds -->
+$$
+Q_{\text{track}} \;=\; \frac{1}{2\pi}\int_{\text{track}} \partial_t\chi(t;\theta)\,dt
+\;=\; \frac{1}{2\pi}\int_{0}^{s_{\text{end}}} \frac{\partial\chi}{\partial t}\bigl(t(s),\theta(s)\bigr)\,\frac{dt}{ds}\,ds
+$$
+
+**Three properties that make this the right object:**
+
+1. **Static limit gives the proton.** Freeze θ (no modulation): a track winding the tube
+   once integrates ∮ ∂_t χ dt = 2π, so Q = +1. A static full-tube traversal is always
+   charge +1 — there is no static neutron. The neutron exists only because θ varies.
+
+2. **The modulation is the whole story.** With θ(s) advancing along the track, ∂_t χ is
+   sampled in a continuously morphing cross-section, and the integral is no longer pinned
+   to 2π. The proton-phase and neutron-phase tracks cross the same six pieces but at
+   different modulation phases (§4.4), so they integrate differently — that is the room
+   for Q = +1 versus Q = 0.
+
+3. **Two components — the charge is the tube one.** The change in the profile-tangent
+   angle along the track splits as dχ = ∂_t χ dt + ∂_θ χ dθ: a **tube-direction**
+   component (turning from moving along the profile) and a **ring-direction** component
+   (turning from the shape morphing under the track). The proton/neutron charge is the
+   *tube* component, Q_track above. The shape morphing is fully in the model — it enters
+   the charge through the θ-dependence of ∂_t χ (the track samples the profile's turning
+   in the *morphed* cross-section at its current ring angle), and the ring component
+   ∮∂_θ χ dθ is a real, separate quantity computed alongside, not discarded. Neither
+   component is the track's own geodesic curvature (the "locus turning" of §4.2, which
+   would force Q = winding number); both are turnings of the cross-section profile.
+
+4. **The two components sum to a topological integer.** Around the closed track,
+
+     ∮ dχ = ∮ ∂_t χ dt + ∮ ∂_θ χ dθ = 2π·n,    n ∈ ℤ,
+
+   where n is the winding number of the profile-tangent field ∂_t z around the loop.
+   Each component alone is real-valued and continuously tunable; their *sum* is locked to
+   2π·n. This is why the charge must be the **tube** component and not the total: the
+   total ∮dχ is quantized and could never be tuned to land on +2π (proton) versus 0
+   (neutron), whereas Q_track = (1/2π)∮∂_t χ dt is a genuine tunable functional. Once
+   Q_track is fixed, the ring component follows: ∮∂_θ χ dθ = 2π(n − Q_track).
+
+**Explicit form.** With z = e^{iα} R e^{it} w(t;θ), w the bracket, ∂_t z =
+e^{iα} R e^{it}(i w + ∂_t w), so χ = α + t + arg(i w + ∂_t w) and
+
+  ∂_t χ = 1 + Im[ (i ∂_t w + ∂_t² w) / (i w + ∂_t w) ].
+
+This is explicit trigonometry in t with θ-dependent coefficients — the same closed-form
+curvature machinery already in [harmonic_tube.py](../../ma-domain/scripts/harmonic_tube.py).
+
+**Sudden-approximation shortcut.** If the track crosses each piece quickly compared with
+the modulation timescale, ∂_t χ is evaluated at a nearly constant θ over each piece, and
+
+  Q_track ≈ (1/2π) · Σ (k = 0..5) T_k(θ_k),
+
+a sum of six closed-form piece-turnings T_k at the six ring angles θ_k where the track
+crosses them. A fast first estimate; the solver (§6) does the full integral.
+
+### 4.4 Proton and neutron as parallel tracks
 
 The proton and neutron tracks are two **parallel (1, 2) curves**, offset around the tube
 by 60° — one starting on a major lobe, the other on a minor lobe. This is the "where you
@@ -203,7 +292,7 @@ it is the solver task of §6.
 
 ## 5. Fallback readings if the parallel-track tuning fails
 
-If §4.3's tuning cannot drive the proton-phase and neutron-phase curves to (+2π, 0)
+If §4.4's tuning cannot drive the proton-phase and neutron-phase curves to (+2π, 0)
 simultaneously, three alternative readings of the neutron remain:
 
 **(a) Neutron as an out-and-back track.** A closed track with zero net tube winding must
@@ -235,10 +324,11 @@ what "a baryon" is.
    (a₁, a₂). Verify T_min = −2π/3 and that all six pieces are simple, non-self-intersecting.
 2. Fix the modulation a₁(θ), b₁(θ) and twist α(θ) = θ/2; confirm S(2π) = S(0) and the
    C¹ seam analytically.
-3. Define the proton-phase and neutron-phase tracks as curves (θ(s), ψ(s)) on the
-   surface. Choose the precise "experienced curvature" integrand (per §4.2–§4.3). Impose
-   proton → +2π, neutron → 0 and solve for the modulation profile and tracks that
-   realize both.
+3. Define the proton-phase and neutron-phase tracks as curves (t(s), θ(s)) on the
+   surface (§4.4). Evaluate the experienced-curvature functional Q_track of §4.3 on
+   each. Impose Q_proton = +1, Q_neutron = 0 and solve for the shape parameters and
+   modulation profile that realize both. Compute the ring component ∮∂_θχ dθ alongside
+   as a quantization check (tube + ring ∈ 2πℤ, §4.3).
 
 **Computational (fallback / verification).**
 
