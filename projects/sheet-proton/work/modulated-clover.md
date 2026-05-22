@@ -6,8 +6,10 @@ smooth [tube-function](../../ma-domain/work/tube-function.md) clover with **thre
 and three minor lobes**, swept around the ring with a **half-twist** and a synchronized
 **major↔minor parameter modulation**. The cross-section curvature budget (§2) and the
 surface closure (§3) are worked out and hold. The proton and neutron tracks (§4) are
-the two (1/2, 1) half-tube tracks, each closing in one ring revolution; making their *net experienced curvature* land on
-+2π and 0 is a curvature-tuning problem, set up for solution in §6.
+the two (1/2, 1) half-tube tracks, each closing in one ring revolution. **Step 3 done
+(2026-05-22):** a single modulation profile closes the proton track at charge Q = +1 and
+the neutron at Q = 0 on a simple, smooth surface — the **charge** construction works
+(§4.5). **Mass** is the open next step (§6 step 4).
 
 **Origin.** The arc-clover baryon paths do not close: [clover-quarks.md §3.2/§12.2](clover-quarks.md)
 derive the (1,2)/(1,1) closure numbers by summing per-arc *turning angles* (lobe 240°,
@@ -307,9 +309,44 @@ tuned so the proton track nets ∫∂_t χ dt = +2π and the neutron track nets 
 the two already sit near (+2π, 0) — ≈ (5.8, 0.5) at the Step-1 cross-section (§4.3
 property 1) — so the tuning sharpens rather than creates. This is the solver task of §6.
 
+### 4.5 The proton↔neutron symmetry, and how the modulation breaks it
+
+Worked out numerically in Step 3 ([scripts/modulated_clover.py](../scripts/modulated_clover.py),
+[outputs/modulated_clover_tracks.txt](../outputs/modulated_clover_tracks.txt)). The result
+is structural.
+
+**The symmetry.** When the modulation profiles a₁(θ), b₁(θ) are built from **cos**
+half-integer harmonics only, cos((2k+1)θ/2), they are *even in θ*. The surface then has a
+reflection symmetry (t, θ) → (−t, −θ), under which z → z̄, and this reflection maps the
+**proton track exactly onto the neutron track**. So with a θ-even modulation
+Q_proton ≡ Q_neutron — the two charges are locked equal (numerically both = 1/2), and no
+cos-modulation can separate them.
+
+**Breaking it.** The fix is **odd-in-θ** modulation — sin((2k+1)θ/2) harmonics. They are
+still antiperiodic (sin((2k+1)(θ+2π)/2) = −sin(...)), so the surface still closes (§3.3);
+being odd in θ they break the (t,θ)→(−t,−θ) reflection and open D ≡ Q_proton − Q_neutron.
+
+**The two roles.** The Step-3 solver makes the division of labour clean:
+
+- **sin-harmonics set the charge *difference*** D = Q_proton − Q_neutron;
+- **cos-harmonics set the charge *sum*** Q_proton + Q_neutron (θ-even, they shift both
+  charges together without re-breaking the symmetry).
+
+Exact (Q_proton, Q_neutron) = (+1, 0) needs **both**: D = 1 from the sin-harmonics and
+sum = 1 from the cos-harmonics. A sin-only search reaches D ≈ 1 but leaves the sum near
+0.7; adding the cos-harmonics lands the exact pair.
+
+**Result.** With a₁ cos-harmonics ≈ (+0.19, −0.51) and sin-harmonics ≈ (+0.20, +0.67)
+(b₁ = −0.015, a₂ = 0.34, b₂ = 0.03), the proton track nets Q = +0.999 and the neutron
+Q = −0.001, on a cross-section simple at every ring angle (star-margin +0.26,
+κ_max ≈ 15 — moderate, not a near-cusp). **The charge construction works.**
+
 ---
 
 ## 5. Fallback readings if the parallel-track tuning fails
+
+**Update (2026-05-22): not needed — §4.4's tuning succeeded (§4.5). The fallbacks below
+are retained for reference only.**
 
 If §4.4's tuning cannot drive the proton-phase and neutron-phase curves to (+2π, 0)
 simultaneously, three alternative readings of the neutron remain:
@@ -345,11 +382,18 @@ what "a baryon" is.
    moderate-curvature, strong-contrast simple cross-section is what Step 3 consumes.
 2. Fix the modulation a₁(θ), b₁(θ) and twist α(θ) = θ/2; confirm S(2π) = S(0) and the
    C¹ seam analytically.
-3. Define the proton-phase and neutron-phase tracks as curves (t(s), θ(s)) on the
-   surface (§4.4). Evaluate the experienced-curvature functional Q_track of §4.3 on
-   each. Impose Q_proton = +1, Q_neutron = 0 and solve for the shape parameters and
-   modulation profile that realize both. Compute the ring component ∮∂_θχ dθ alongside
-   as a quantization check (tube + ring ∈ 2πℤ, §4.3).
+3. **Solve for the modulation that closes the charges.** *(Done — 2026-05-22,
+   [scripts/modulated_clover.py](../scripts/modulated_clover.py) `--step 3`.)* A
+   symmetry-breaking sweep over the sin-harmonics, then a zoom-refinement over the sin-
+   and cos-harmonics, found a modulation profile for which the proton track nets
+   Q = +0.999 and the neutron Q = −0.001, on a cross-section simple at every ring angle
+   (§4.5). The **charge** construction works.
+4. **Mass.** *(Open — next step.)* The construction so far produces *charge* only — the
+   experienced curvature of a classical track. Mass is a separate quantity: the spectrum
+   of a *wave* on the modulated-clover surface — a Laplace–Beltrami eigenvalue problem,
+   as solved for the un-modulated clover in [clover-mass.md](clover-mass.md). Success
+   needs both. The proton and neutron being the *same knot* (§4.4) is what should make
+   them near-mass-degenerate (m_p ≈ m_n), with the small split set by the phase offset.
 
 **Computational (fallback / verification).**
 

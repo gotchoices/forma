@@ -1,0 +1,51 @@
+==============================================================================
+modulated-clover — STEP 3: symmetry-breaking sweep
+surface z(t;θ)=e^{iθ/2}e^{it}[1+a1(θ)cos3t+a2cos6t+i(b1(θ)sin3t+b2sin6t)]
+a1(θ)=Σ[c_k cos((2k+1)θ/2)+s_k sin((2k+1)θ/2)] ; tracks close in 1 ring rev
+D = Q_proton - Q_neutron ;  success needs D=1 with a simple surface
+==============================================================================
+
+fixed:  a1 cos-harmonics [0.62, 0.0],  b1 cos -0.015,  a2=0.34, b2=0.03
+swept:  a1 sin-harmonics As0 (rows) x As1 (cols)
+
+baseline As=(0,0):  Q_p=+0.5000  Q_n=+0.5000  D=+0.0000  margin=+0.631
+  (cos-only is θ-even -> reflection symmetry -> Q_p=Q_n, D=0)
+
+--- D = Q_p - Q_n   (suffix s = simple surface, X = self-intersecting) ---
+  As0\As1    -1.50    -1.00    -0.50     0.00     0.50     1.00     1.50
+     0.00  -1.840X  -2.179X  -1.033s   0.000s   1.033s   2.179X   1.840X
+     0.33  -1.001X  -3.006X  -1.048s  -0.003s   0.990X   0.416X   1.887X
+     0.67  -0.571X  -0.662X  -1.043X  -0.005s   0.909X   0.188X   0.948X
+     1.00  -0.578X  -0.010X  -0.935X  -0.006X   0.820X   0.012X   0.317X
+     1.33  -0.115X   0.159X   0.554X  -0.000X  -0.395X  -0.162X  -0.086X
+     1.67  -0.020X   0.253X   0.647X   1.155X  -0.544X  -0.307X  -0.125X
+     2.00   0.030X   0.322X   0.712X   1.336X  -0.691X  -0.424X  -0.175X
+
+--- min star-margin over the ring  (< 0 = self-intersecting) ---
+  As0\As1    -1.50    -1.00    -0.50     0.00     0.50     1.00     1.50
+     0.00  -169.61   -47.51     0.32     0.63     0.32   -47.51  -169.61
+     0.33  -139.85   -17.45     0.49     0.61    -0.25   -74.00  -156.32
+     0.67  -235.60   -99.95    -0.08     0.50   -12.08  -100.04  -182.93
+     1.00  -353.87  -190.13   -61.37    -0.03   -52.39  -234.48  -212.93
+     1.33  -498.95  -294.57  -147.13   -40.49   -87.77  -167.41  -250.76
+     1.67  -654.44  -430.56  -243.66  -111.66  -126.06  -204.30  -326.11
+     2.00  -850.69  -581.95  -363.43  -197.64  -172.06  -241.46  -526.13
+
+largest D reached with a SIMPLE surface : +1.0332
+simple point nearest D=1 : As=(+0.00,+0.50)  D=+1.0332  Q_p=+0.8602  Q_n=-0.1730  margin=+0.321
+
+--- refinement: zoom-search for exact (Q_p, Q_n) = (1, 0) ---
+  knobs: a1 sin-harmonics (set the charge difference) +
+         a1 cos-harmonics (set the charge sum)
+  a1 cos-harmonics Ac = [+0.19160, -0.50680]
+  a1 sin-harmonics As = [+0.20160, +0.67360]
+  Q_proton  = +0.999014   (target +1)
+  Q_neutron = -0.000837   (target  0)
+  max |residual| = 9.86e-04
+  surface: simple at every θ = True   min margin = +0.264   kappa_max = 15.0
+
+RESULT: SUCCESS — the modulated-clover construction closes the
+proton track at Q = +1 and the neutron at Q = 0 on a simple,
+self-consistent half-twisted surface.  The CHARGE construction
+works.  (Mass — the wave spectrum on this surface — is a
+separate calculation, not yet built.)
