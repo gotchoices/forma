@@ -16,6 +16,21 @@ Neutron β decay is structurally a **localized q-shift** converting one saddle t
 
 Combined with §8's identification of (ε, χ) as the two free parameters analogous to metric-charge's (L_u/L_w, σ_uw), the corrugated torus is a *2-parameter family* providing concrete geometric origins for fractional charges, Z₃ confinement, the up/down quark distinction, proton/neutron structure, and β-decay topology — all from a single construction.
 
+> **⚠ Closure-problem annotation (2026-05-22).** The Phase B path-closure claims above
+> — proton "closes in 2 ring revolutions," neutron "closes in 1 ring revolution" — rest
+> on the *literal piecewise-arc* clover. That construction has a closure problem: a
+> literal-arc proton path (2 lobes + 1 saddle) covers a cross-section φ-displacement
+> 2φ_L + φ_S that lies strictly in (2π/3, 4π/3) for **every** geometry, so it never
+> completes a whole tube wrap and the locus does not actually close (the §14 open
+> questions already flag this; the derivation is in
+> [modulated-clover.md §1](modulated-clover.md)). The per-arc **charge** accounting
+> (Phase A: Q_lobe = +2/3, Q_saddle = −1/3, from Q = (1/2π)∫κ ds) does not depend on
+> path closure and stands. The current **best-candidate** construction — one that
+> *does* close the proton and neutron tracks, on a smooth, simple (non-self-intersecting)
+> surface, with exact charges (+1, 0) and track lengths consistent with the nucleon
+> masses — is [modulated-clover.md](modulated-clover.md), which replaces the piecewise
+> arcs with a smooth harmonic cross-section plus a half-twist and parameter modulation.
+
 ---
 
 ## 0. Conventions

@@ -52,7 +52,19 @@ The clover-quarks and clover-mass development accumulated terminology drift, con
 
 **Outcome: 2D-surface picture structurally rules out the hierarchy; 3D wave-guide + nested corrugation (Mechanism E) is the leading candidate.** See [3-gen.md §12](3-gen.md) for the synthesis. Investigation proceeded in three stages: (1) a numerical attempt at finding compartmentalized band structure in the 2D Hill spectrum (sparse 15-point sweep; found no compartmentalized structure); (2) analytical follow-on in [clover-modes-analytical.md](clover-modes-analytical.md) explaining the negative result structurally — in the 2D Hill equation, lobes are *wells* in the effective potential and lobe-localized states sit *below* the plane-wave continuum, opposite of "smaller cavity → higher frequency"; (3) analytical work in [tube-waveguide.md](tube-waveguide.md) showing the 3D wave-guide extension recovers the hierarchy qualitatively, plus a natural fractal-nested extension (added to 3-gen.md as Mechanism E §5.5) that **fits all 6 observed quark masses on a single sheet** with three nested geometric scales (parent corrugation + sub-corrugation + sub-sub-corrugation, with 5 parameters fitting 5 independent mass ratios and the 6th falling out by structural relation). Mechanism E resolves the within-generation flavor-ordering anomaly via the closure-vs-openness distinction between the outermost level (closure-Gauss-Bonnet-constrained) and inner sub-levels (open modules with free χ).
 
-The framework's one-generation results (per-arc curvature charges Q_lobe = +2/3, Q_saddle = −1/3; proton/neutron path-winding structure; Z₃ Bloch-sector structure; proton/neutron mass fits at ε ≈ 0.2 and ε ≈ 0.5) are unaffected by either analysis.
+The framework's one-generation results (per-arc curvature charges Q_lobe = +2/3, Q_saddle = −1/3; Z₃ Bloch-sector structure) are unaffected by either analysis.
+
+> **⚠ Closure-problem annotation (2026-05-22).** One previously-listed "unaffected"
+> result — the **proton/neutron path-winding structure** of [clover-quarks.md §12](clover-quarks.md)
+> — has since been found to have a closure problem: the literal piecewise-arc baryon
+> paths never wrap a whole tube (φ-displacement stays in (2π/3, 4π/3)), so they do not
+> close. It has accordingly been removed from the sentence above. The replacement
+> construction — proton and neutron as closing tracks on a smooth modulated, half-twisted
+> clover — is [modulated-clover.md](modulated-clover.md), the **current best candidate**:
+> its charge construction works exactly (Q = +1, 0), and a path-length mass mechanism
+> reproduces the nucleon mass-difference sign and ratio (the ratio as a one-parameter
+> consistency fit). The per-arc charge result and the curvature-based mass fits are
+> independent of path closure and still stand.
 
 - [x] Review the various candidate mechanisms in 3-gen.md. Done — mechanisms A/B/C/D reviewed in [3-gen.md §5](3-gen.md). Under the 2D-surface interpretation all four fail (per [§12.4](3-gen.md)'s reassessment table); under the 3D wave-guide interpretation A, C, D are qualitatively viable, B remains bounded.
 - [x] Implement χ-sweep infrastructure in `scripts/laplacian_spectrum.py`. Done — `--sweep-chi CHI_MIN,CHI_MAX,N_STEPS` flag added; reusable for future 2D-surface numerical work.

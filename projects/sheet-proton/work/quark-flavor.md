@@ -95,6 +95,15 @@ Substrate: corrugated 3-lobed torus, not round tube. Quarks are not separable T(
 
 **Closure:** Compound paths must satisfy the twisted boundary identification (θ, φ) ~ (θ + 2π, φ + 2π/3) under τ = 1/3. The proton's (2, 1) and neutron's (1, 1) closure pairs are derived in clover-quarks.md §12.2.
 
+> **⚠ Closure-problem annotation (2026-05-22).** The Mapping Clover closure counts cited
+> here (proton "closes after 2 ring revolutions," neutron "after 1") inherit the
+> piecewise-arc clover's closure problem: a literal-arc baryon path never wraps a whole
+> tube, so the locus does not close (see [clover-quarks.md](clover-quarks.md) §14 and the
+> annotation there). The flavor = lobe-vs-saddle / charge = curvature-integral content of
+> Mapping Clover is independent of this and stands. The current best-candidate
+> construction that closes the proton and neutron tracks is
+> [modulated-clover.md](modulated-clover.md).
+
 **Concerns:**
 - The clover picture hasn't yet been extended to mesons, generations (s, c, b, t), or to quantitative cross-checks like magnetic moments. Each is on the next-actions list for clover-quarks / clover-mass.
 - Whether the (m_t, m_r) wave-mode labels of clover correspond to (m, n) of the round tube isn't a clean translation — they live on different surfaces and use different conventions (clover is tube-first per clover-quarks §0.3; round-tube (m, n) per metric-charge keeps its own meaning).
