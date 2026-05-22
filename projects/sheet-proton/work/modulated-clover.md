@@ -6,7 +6,7 @@ smooth [tube-function](../../ma-domain/work/tube-function.md) clover with **thre
 and three minor lobes**, swept around the ring with a **half-twist** and a synchronized
 **major↔minor parameter modulation**. The cross-section curvature budget (§2) and the
 surface closure (§3) are worked out and hold. The proton and neutron tracks (§4) are
-parallel (n_t, n_r) = (1, 2) curves on the surface; making their *net experienced curvature* land on
+the two (1/2, 1) half-tube tracks, each closing in one ring revolution; making their *net experienced curvature* land on
 +2π and 0 is a curvature-tuning problem, set up for solution in §6.
 
 **Origin.** The arc-clover baryon paths do not close: [clover-quarks.md §3.2/§12.2](clover-quarks.md)
@@ -78,7 +78,7 @@ Equal pieces is the key improvement over the arc-clover, where a lobe and a sadd
 unequal, geometry-dependent φ-extents. Here "half the tube = exactly three pieces" holds
 for any parameter choice.
 
-### 2.3 The curvature budget — solid
+### 2.3 The curvature budget
 
 The net turning of a piece is ∫κ ds over it (κ the signed geodesic curvature, in
 closed form from [tube-function.md §2.5](../../ma-domain/work/tube-function.md)). For a
@@ -107,9 +107,17 @@ This is pure Gauss–Bonnet bookkeeping and is the same charge arithmetic as
 [clover-quarks.md §12.3](clover-quarks.md); the only new thing is the repackaging into
 six *equal* pieces.
 
-**Tuning.** T_maj = 4π/3 is a *single* scalar condition (T_min then follows) on the four
-shape parameters (a₁, b₁, a₂, b₂) — a 3-parameter family of solutions. Easily solved
-(§6).
+**Realizability.** The +4π/3 / −2π/3 split is the *idealized target* — what the proton
+would net if its track saw three pieces at full contrast. It is **not** a constraint the
+static cross-section must satisfy: per §4.3–§4.4 the operative charge is the modulated
+track integral, not the static piece split. And T_maj = 4π/3 is in any case **not
+reachable** by the smooth tube-function family — it is the κ → ∞ cusp limit (the
+arc-clover). A numerical scan ([scripts/modulated_clover.py](../scripts/modulated_clover.py),
+[outputs/modulated_clover_crosssection.txt](../outputs/modulated_clover_crosssection.txt))
+finds the smooth family caps near Q_maj ≈ 0.63 (T_maj ≈ 3.95) before the major lobe
+degenerates to a cusp; moderate, well-behaved shapes reach Q_maj ≈ 0.55–0.59. What the
+static cross-section actually needs is strong major/minor **contrast**; the modulation
+(§3) and the track tuning (§6) do the rest.
 
 ---
 
@@ -143,53 +151,60 @@ the major↔minor swap then restores majors to t = 0, 2π/3, 4π/3. Hence
 the surface closes as a genuine torus of period 2π in θ. The seam is C¹ because
 a₁′(2π) = a₁′(0) = 0 and α′ is constant.
 
-**Note — the net monodromy is trivial.** The twist (180°) and the modulation
-(major↔minor swap) cancel: the surface closes with *no* residual rotation of the
-cross-section. Individual lobes, however, have period 4π — a given major lobe returns to
-"major at its original position" only after two ring revolutions.
+**The closure is a half-twist.** Carrying z(t; θ) through the modulation and twist gives,
+for every θ, the exact identity
+
+  z(t; θ+2π) = z(t+π; θ)
+
+— the e^{iπ} twist composes with the a₁ → −a₁ swap and the clover's C₃ symmetry into a
+parameter shift of π. So the (t, θ) coordinate chart glues as
+
+  (t, θ+2π) ~ (t+π, θ).
+
+The surface closes in one ring revolution, but with a **half-twist**: going once around
+the ring shifts the tube coordinate by π — half the tube. This is the modulated-clover
+analogue of the clover-torus's 1/3-twist identification; here it is a 1/2-twist. (An
+earlier draft of this file wrongly called the monodromy trivial — it is not, and the
+half-twist is exactly what makes §4 close.)
 
 ---
 
 ## 4. Tracks and closure
 
-### 4.1 A twist-riding track closes in two ring revolutions
+### 4.1 A track closes in one ring revolution
 
-A track riding the twist gains ½ a tube-turn per ring revolution from the twist, plus
-its own integer winding w. Over n ring revolutions the accumulated tube-turns are
-n(w + ½). Closure needs this to be an integer **and** n even (the modulation has period
-2 revolutions). The minimal solution is n = 2, giving 2w + 1 tube windings.
+A track riding the twist advances in t at the twist rate, t(θ) = t₀ + θ/2. After one
+ring revolution its endpoint is (t₀ + π, 2π), which the §3.3 half-twist gluing
+identifies with (t₀ + 2π, 0) ≡ (t₀, 0) — the start. **So a twist-riding track closes
+after a single ring revolution**, having advanced t by π: it traverses **half the tube,
+three of the six pieces**.
 
-So every closed twist-riding track winds the tube an **odd** number of times
-(1, 3, 5, …); the minimal one covers the full tube once over two ring revolutions.
+In (tube, ring)-winding language the track is **(n_t, n_r) = (1/2, 1)** — one ring
+winding and a *half* tube winding. The half-integer tube winding is forced by the
+half-twist gluing, the modulated-clover counterpart of the third-integer momenta the
+1/3-twist forces on the clover-torus ([clover-quarks.md §11](clover-quarks.md)).
 
 ### 4.2 What a closed track is, and what its charge means
 
-A closed track on this surface is a **(n_t, n_r) = (1, 2) torus curve** — winding the
-**tube once** and the **ring twice** (tube-first convention, [clover-quarks.md §0.2](clover-quarks.md)).
-Riding the 180°-per-revolution twist, it returns to its start only after **two ring
-revolutions** (§4.1), having covered the full tube — all six pieces — once. No closed track covers a
-half-tube: closure forces the total tube angle to be a multiple of 2π, so "2 major + 1
-minor" is never the literal piece-count of a closed track.
+A closed twist-riding track is the **(1/2, 1) curve** of §4.1: one ring revolution,
+three pieces, half the tube. It does *not* cover all six pieces — the half-twist gluing
+(§3.3) supplies the other half of the closure. This resolves the long-standing puzzle
+(how can a proton, less than a full trip around the tube, close?): on the half-twisted
+surface a three-piece track is a genuine closed loop.
 
-So **"proton = 2 major + 1 minor = +2π" is a statement about the track's net curvature
-*experienced*, not its piece count.** The operative charge is
-
-  Q_track = (1/2π) ∫_track κ(ψ; θ) — the cross-section curvature at the track's foot,
-  integrated along the track.
-
-Because the §3.2 modulation makes the curvature at a given piece depend on θ, this is
-**not** equal to (locus turning) = (tube-winding number) × 2π. Under that naive identity
-every closed track would have integer charge equal to its winding — proton +1, and no
-neutron; the modulation is exactly what breaks the identity and reopens room for a
-charge-0 track.
+Its charge is **not** the track's own locus-bending. The operative charge is the
+curvature *experienced* — the cross-section profile's turning ∂_t χ sampled at the
+track's foot, integrated along the track (defined precisely in §4.3). Because the §3.2
+modulation makes ∂_t χ at a given piece depend on θ, this is not pinned to a winding
+number — which is what leaves room for a proton at +2π and a neutron at 0.
 
 ### 4.3 The experienced-curvature functional — definition
 
 This pins what "charge of a track" means. The rest of the construction and the solver
 (§6) depend on it.
 
-**Setup.** Write a surface point as (t, θ): t the cross-section parameter, θ ∈ [0, 4π)
-the ring angle (a track closes after two ring revolutions, §4.1). The cross-section at
+**Setup.** Write a surface point as (t, θ): t the cross-section parameter, θ ∈ [0, 2π)
+the ring angle (a track closes after one ring revolution, §4.1). The cross-section at
 ring angle θ is the modulated, twisted tube-function
 
 <!-- z(t;θ) = e^{i α(θ)} R e^{i t} [ 1 + a1(θ) cos3t + a2 cos6t + i(b1(θ) sin3t + b2 sin6t) ] -->
@@ -208,8 +223,9 @@ The turning of any piece of the profile, *at fixed θ*, is the change Δχ acros
 whole profile gives ∮ ∂_t χ dt = 2π (Gauss–Bonnet). The piece turnings T_maj, T_min of
 §2.3 are exactly Δχ over a major / minor piece.
 
-**A track** is a curve on the surface, (t(s), θ(s)) for a parameter s, winding the tube
-once (t advances by 2π net) and the ring twice (θ: 0 → 4π).
+**A track** is a curve on the surface, (t(s), θ(s)) for a parameter s, winding the ring
+once (θ: 0 → 2π); t advances by π — three pieces, half the tube — with the §3.3
+half-twist gluing supplying closure.
 
 **Definition — the experienced-curvature charge.** As the track advances, its foot moves
 along the cross-section profile; the curvature it *experiences* is the profile's own
@@ -224,15 +240,17 @@ $$
 
 **Three properties that make this the right object:**
 
-1. **Static limit gives the proton.** Freeze θ (no modulation): a track winding the tube
-   once integrates ∮ ∂_t χ dt = 2π, so Q = +1. A static full-tube traversal is always
-   charge +1 — there is no static neutron. The neutron exists only because θ varies.
+1. **Static limit — the split is already there.** Freeze θ (no modulation): the proton
+   track (three pieces, major–minor–major) integrates 2T_maj + T_min; the neutron track
+   (minor–major–minor) integrates 2T_min + T_maj; the two sum to 2π. So even statically
+   the tracks separate — ≈ (5.8, 0.5) at the Step-1 evaluation cross-section. The
+   modulation only has to *sharpen* that to exactly (+2π, 0), not create it.
 
-2. **The modulation is the whole story.** With θ(s) advancing along the track, ∂_t χ is
-   sampled in a continuously morphing cross-section, and the integral is no longer pinned
-   to 2π. The proton-phase and neutron-phase tracks cross the same six pieces but at
-   different modulation phases (§4.4), so they integrate differently — that is the room
-   for Q = +1 versus Q = 0.
+2. **The modulation sharpens the split.** Each track closes in one ring revolution, over
+   which the modulation runs a full a₁ → −a₁ swing; the track watches its three pieces
+   morph from full +contrast through the neutral midpoint to full −contrast. The proton
+   and neutron tracks, offset by one piece, sample that morphing out of step — which is
+   what tunes them from their static starting values (property 1) onto exactly +2π and 0.
 
 3. **Two components — the charge is the tube one.** The change in the profile-tangent
    angle along the track splits as dχ = ∂_t χ dt + ∂_θ χ dθ: a **tube-direction**
@@ -267,26 +285,27 @@ curvature machinery already in [harmonic_tube.py](../../ma-domain/scripts/harmon
 **Sudden-approximation shortcut.** If the track crosses each piece quickly compared with
 the modulation timescale, ∂_t χ is evaluated at a nearly constant θ over each piece, and
 
-  Q_track ≈ (1/2π) · Σ (k = 0..5) T_k(θ_k),
+  Q_track ≈ (1/2π) · Σ T_k(θ_k)   (k over the track's three pieces),
 
-a sum of six closed-form piece-turnings T_k at the six ring angles θ_k where the track
+a sum of three closed-form piece-turnings T_k at the ring angles θ_k where the track
 crosses them. A fast first estimate; the solver (§6) does the full integral.
 
-### 4.4 Proton and neutron as parallel tracks
+### 4.4 Proton and neutron as the two half-tube tracks
 
-The proton and neutron tracks are two **parallel (1, 2) curves**, offset around the tube
-by 60° — one starting on a major lobe, the other on a minor lobe. This is the "where you
-start" of the construction. Both cover all six pieces over their two-revolution closure;
-they differ only in the **modulation phase** at which they cross each piece (the
-neutron-phase curve is one piece-width — 2π/3 of θ — out of step with the proton-phase
-curve).
+The proton and neutron are the two **(1/2, 1) tracks** of §4.1, offset around the tube
+by one piece (π/3 in t) — equivalently, by *where they start*:
 
-The construction succeeds if the shape (a₁, b₁, a₂, b₂) and the modulation profile can
-be tuned so the proton-phase curve nets ∫κ = +2π and the neutron-phase curve nets 0.
-Because each curve crosses every piece at a *varying* modulation phase rather than at
-full contrast, the cross-section must "overshoot" — start more extreme — so the
-phase-averaged totals still land on +2π and 0. This is a well-posed tuning problem, and
-it is the solver task of §6.
+- **proton** — starts on a major piece; covers major–minor–major;
+- **neutron** — starts on a minor piece; covers minor–major–minor.
+
+Each closes in one ring revolution. They share two of their three pieces and differ in
+the third; because of the π/3 offset they cross corresponding pieces at modulation phases
+one piece-width (2π/3 of θ) apart.
+
+The construction succeeds if the cross-section shape and the modulation profile can be
+tuned so the proton track nets ∫∂_t χ dt = +2π and the neutron track nets 0. Statically
+the two already sit near (+2π, 0) — ≈ (5.8, 0.5) at the Step-1 cross-section (§4.3
+property 1) — so the tuning sharpens rather than creates. This is the solver task of §6.
 
 ---
 
@@ -319,9 +338,11 @@ what "a baryon" is.
 
 **Mathematical.**
 
-1. Solve T_maj(a₁, b₁, a₂, b₂) = 4π/3 for the cross-section. One scalar equation; pick a
-   convenient slice (e.g. b₁ = b₂ = 0, or the user's small-b values) and solve for
-   (a₁, a₂). Verify T_min = −2π/3 and that all six pieces are simple, non-self-intersecting.
+1. **Characterize the cross-section's achievable contrast.** *(Done —
+   [scripts/modulated_clover.py](../scripts/modulated_clover.py).)* Scan T_maj over the
+   shape parameters. Result: T_maj = 4π/3 is the κ → ∞ cusp limit, not reachable with a
+   smooth bounded-curvature curve; the smooth family caps near Q_maj ≈ 0.63. A
+   moderate-curvature, strong-contrast simple cross-section is what Step 3 consumes.
 2. Fix the modulation a₁(θ), b₁(θ) and twist α(θ) = θ/2; confirm S(2π) = S(0) and the
    C¹ seam analytically.
 3. Define the proton-phase and neutron-phase tracks as curves (t(s), θ(s)) on the
