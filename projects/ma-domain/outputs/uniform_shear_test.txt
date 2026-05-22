@@ -1,0 +1,50 @@
+==============================================================================
+UNIFORM-SHEAR TEST — can QY-ED fit with the shear not free per sheet?
+==============================================================================
+
+  free  : per-sheet sigma_eff (unconstrained baseline)
+  bare  : one global bare shear; sigma_eff = sigma + c*tau per sector
+  seff  : one global sigma_eff shared verbatim by every sheet
+  compliance threshold: max|Delta%| <= 1%
+
+------------------------------------------------------------------------------
+CANDIDATE: QY-ED-share1   (6 dims, 6 sheets, 9 masses)
+------------------------------------------------------------------------------
+  free : 12 params vs 9 masses (        DOF +3)   best max|Delta%| = 2.611e-13%  -> CLEARS
+  bare :  7 params vs 9 masses (        DOF -2)   best max|Delta%| = 242.9%  -> FAILS   shear g = 1.4304
+        per-mass Delta%: mu=+2.4e+02  d=+95  b=+91  tau=-71  u=-58  t=-48  e=+21  s=+10  c=-9.2
+  seff :  7 params vs 9 masses (        DOF -2)   best max|Delta%| = 38.84%  -> FAILS   shear g = 2.0489
+        per-mass Delta%: b=+39  t=-28  c=+25  s=-20  tau=+10  mu=-9.4  d=+0.081  u=-0.012  e=-8.2e-11
+
+------------------------------------------------------------------------------
+CANDIDATE: QY-ED-share3   (4 dims, 6 sheets, 9 masses)
+------------------------------------------------------------------------------
+  free : 10 params vs 9 masses (        DOF +1)   best max|Delta%| = 6.19e-10%  -> CLEARS
+  bare :  5 params vs 9 masses (        DOF -4)   best max|Delta%| = 96.96%  -> FAILS   shear g = 0.0000
+        per-mass Delta%: t=-97  tau=-91  d=-87  c=-87  s=+74  u=-72  mu=+53  b=+26  e=+16
+  seff :  5 params vs 9 masses (        DOF -4)   best max|Delta%| = 132.9%  -> FAILS   shear g = 2.0000
+        per-mass Delta%: s=+1.3e+02  mu=+1.1e+02  t=-99  e=+95  tau=-88  c=-83  b=-69  d=-50  u=-2.5
+
+------------------------------------------------------------------------------
+CANDIDATE: QY-ED   (5 dims, 6 sheets, 9 masses)
+------------------------------------------------------------------------------
+  free : 11 params vs 9 masses (        DOF +2)   best max|Delta%| = 3.847e-12%  -> CLEARS
+  bare :  6 params vs 9 masses (        DOF -3)   best max|Delta%| = 98.83%  -> FAILS   shear g = 0.0000
+        per-mass Delta%: t=-99  c=-99  u=+98  b=-52  s=-22  tau=+14  mu=-13  d=-9.8  e=+3.8
+  seff :  6 params vs 9 masses (        DOF -3)   best max|Delta%| = 40.76%  -> FAILS   shear g = 1.9543
+        per-mass Delta%: b=+41  c=+37  t=-29  mu=-21  s=-10  tau=+2.7  d=+0.081  u=-0.01  e=+3e-09
+
+==============================================================================
+SUMMARY
+==============================================================================
+candidate          mode    params   DOF  best max|D%|  verdict
+QY-ED-share1       free        12    +3     2.611e-13  CLEARS
+QY-ED-share1       bare         7    -2         242.9  FAILS
+QY-ED-share1       seff         7    -2         38.84  FAILS
+QY-ED-share3       free        10    +1      6.19e-10  CLEARS
+QY-ED-share3       bare         5    -4         96.96  FAILS
+QY-ED-share3       seff         5    -4         132.9  FAILS
+QY-ED              free        11    +2     3.847e-12  CLEARS
+QY-ED              bare         6    -3         98.83  FAILS
+QY-ED              seff         6    -3         40.76  FAILS
+
