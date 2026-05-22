@@ -137,26 +137,36 @@
   <h1>Proton Lab</h1><div class="sep"></div>
 
   <div class="cg">
-    <label>R<sub>major</sub></label>
-    <input type="range" id="sl-R" min="1.0" max="8.0" step="0.05" value="3.0">
-    <span class="val" id="v-R">3.00</span>
-  </div>
-
-  <div class="cg">
-    <label>r<sub>lobe</sub></label>
-    <input type="range" id="sl-rL" min="0.05" max="2.0" step="0.01" value="0.80">
-    <span class="val" id="v-rL">0.80</span>
-  </div>
-
-  <div class="cg">
-    <label>r<sub>saddle</sub></label>
-    <input type="range" id="sl-rS" min="0.05" max="2.0" step="0.01" value="0.40">
-    <span class="val" id="v-rS">0.40</span>
+    <label>construction</label>
+    <select id="sel-construction" style="background:#111; border:1px solid var(--border); color:var(--text); border-radius:3px; padding:3px 6px; font-size:11px;">
+      <option value="modulated" selected>Modulated clover</option>
+      <option value="arc">Naive arc clover</option>
+    </select>
   </div>
 
   <div class="sep"></div>
 
   <div class="cg">
+    <label>R<sub>major</sub></label>
+    <input type="range" id="sl-R" min="1.0" max="8.0" step="0.05" value="3.0">
+    <span class="val" id="v-R">3.00</span>
+  </div>
+
+  <div class="cg" id="cg-rL">
+    <label>r<sub>lobe</sub></label>
+    <input type="range" id="sl-rL" min="0.05" max="2.0" step="0.01" value="0.80">
+    <span class="val" id="v-rL">0.80</span>
+  </div>
+
+  <div class="cg" id="cg-rS">
+    <label>r<sub>saddle</sub></label>
+    <input type="range" id="sl-rS" min="0.05" max="2.0" step="0.01" value="0.40">
+    <span class="val" id="v-rS">0.40</span>
+  </div>
+
+  <div class="sep" id="sep-fractal"></div>
+
+  <div class="cg" id="cg-fractal">
     <label>fractal</label>
     <select id="sel-fractal" style="background:#111; border:1px solid var(--border); color:var(--text); border-radius:3px; padding:3px 6px; font-size:11px;">
       <option value="1" selected>Level 1</option>
@@ -177,9 +187,9 @@
     <span class="val" id="v-rL3">0.450</span>
   </div>
 
-  <div class="sep"></div>
+  <div class="sep" id="sep-twist"></div>
 
-  <div class="cg">
+  <div class="cg" id="cg-tau">
     <label>τ</label>
     <div class="tau-stepper">
       <button class="btn step-btn" id="btn-tau-dec">−</button>
@@ -188,7 +198,7 @@
     </div>
   </div>
 
-  <div class="cg">
+  <div class="cg" id="cg-shear">
     <label>shear s</label>
     <div class="tau-stepper">
       <button class="btn step-btn" id="btn-s-dec">−</button>
@@ -283,12 +293,14 @@
       <div class="pnl-head">Built-in presets</div>
       <select id="sel-builtin">
         <option value="">— pick a preset —</option>
-        <option value="canonical">Canonical (τ=1/3)</option>
-        <option value="fat-saddle">Fat saddle (χ=1.5)</option>
-        <option value="thin-saddle">Thin saddle (χ=0.25)</option>
-        <option value="symmetric">Symmetric (χ=1)</option>
-        <option value="flat">Flat torus (τ=0)</option>
-        <option value="double-twist">Double twist (τ=2/3)</option>
+        <option value="mod-proton">Modulated · proton track</option>
+        <option value="mod-neutron">Modulated · neutron track</option>
+        <option value="canonical">Arc · canonical (τ=1/3)</option>
+        <option value="fat-saddle">Arc · fat saddle (χ=1.5)</option>
+        <option value="thin-saddle">Arc · thin saddle (χ=0.25)</option>
+        <option value="symmetric">Arc · symmetric (χ=1)</option>
+        <option value="flat">Arc · flat torus (τ=0)</option>
+        <option value="double-twist">Arc · double twist (τ=2/3)</option>
       </select>
     </div>
 
@@ -306,12 +318,12 @@
       <div class="pnl-head">Cross-section profile</div>
       <canvas id="profile-canvas" width="232" height="232"></canvas>
       <div style="margin-top:6px;">
-        <span class="swatch" style="background:#ff5252"></span>
-        <span style="color:#bbb; font-size: 10.5px;">lobe (Q = +2/3)</span>
+        <span class="swatch" id="sw-major" style="background:#ff7043"></span>
+        <span style="color:#bbb; font-size: 10.5px;" id="lbl-major">major lobe</span>
       </div>
       <div style="margin-top:2px;">
-        <span class="swatch" style="background:#4fc3f7"></span>
-        <span style="color:#bbb; font-size: 10.5px;">saddle (Q = −1/3)</span>
+        <span class="swatch" id="sw-minor" style="background:#42a5f5"></span>
+        <span style="color:#bbb; font-size: 10.5px;" id="lbl-minor">minor lobe</span>
       </div>
     </div>
 
@@ -338,8 +350,20 @@
     </div>
 
     <div class="pnl-section">
+      <div class="pnl-head">Closure test</div>
+      <div class="info-grid">
+        <span class="k">status</span> <span class="v" id="i-closure-status">—</span>
+        <span class="k">end-gap</span> <span class="v" id="i-closure-gap">—</span>
+      </div>
+      <div id="closure-note" style="font-size: 10px; line-height: 1.5; color: #999; margin-top: 6px;"></div>
+    </div>
+
+    <div class="pnl-section">
       <div class="pnl-head">References</div>
       <div style="font-size: 10.5px; line-height: 1.6; color: #888;">
+        <a href="../projects/sheet-proton/work/modulated-clover.md"
+           style="color: var(--accent);" target="_blank">modulated-clover.md</a>
+        <br>
         <a href="../projects/sheet-proton/work/clover-quarks.md"
            style="color: var(--accent);" target="_blank">clover-quarks.md</a>
         <br>
@@ -370,6 +394,10 @@ const TAU = Math.PI * 2;
 /* ─── State ──────────────────────────────────────────────── */
 
 const S = {
+  // Construction: 'modulated' = smooth modulated-clover (default, the current
+  // best-candidate proton/neutron construction); 'arc' = the naive piecewise-
+  // arc clover (kept so its closure problem can be seen and compared).
+  construction: 'modulated',
   R: 3.0,
   rL: 0.80,
   rS: 0.40,
@@ -866,8 +894,8 @@ function membershipFor(particle) {
     case 'none':    return [true, true, true, true, true, true];      // all neutral-active (color-coded fully)
     case 'u':       return [true, false, false, false, false, false]; // 1 lobe
     case 'd':       return [false, true, false, false, false, false]; // 1 saddle
-    case 'proton':  return [true, false, true, true, false, false];   // 2 lobes + 1 saddle (lobe-0, lobe-1, saddle-1)
-    case 'neutron': return [true, true, false, true, false, false];   // 1 lobe + 2 saddles (lobe-0, saddle-0, saddle-1)
+    case 'proton':  return [true, true, true, false, false, false];   // contiguous: lobe-0, saddle-0, lobe-1
+    case 'neutron': return [false, true, true, true, false, false];   // contiguous: saddle-0, lobe-1, saddle-1
     case 'custom':  return [true, true, true, true, true, true];
   }
   return [true, true, true, true, true, true];
@@ -914,7 +942,227 @@ function buildPathTube(prof, R, tau, shear, pathSpec, tubeR) {
   return new THREE.TubeGeometry(curve, N, tubeR, 8, true);
 }
 
+/* ═══ Modulated-clover construction ═══════════════════════ */
+/*
+ * The current best-candidate proton/neutron construction
+ * (projects/sheet-proton/work/modulated-clover.md). The cross-section is a
+ * SMOOTH harmonic tube-function with 3 major + 3 minor lobes:
+ *
+ *   w(t;θ) = 1 + a1(θ)·cos 3t + a2·cos 6t
+ *              + i·( b1(θ)·sin 3t + b2·sin 6t )
+ *
+ * swept around the ring with a HALF-TWIST α(θ) = θ/2 and a θ-dependent
+ * major↔minor modulation a1(θ), b1(θ):
+ *
+ *   ζ(t,θ) = ρ · e^{i(θ/2 + t)} · w(t;θ)
+ *
+ * embedded as  position = ((R + Re ζ)·cosθ, Im ζ, (R + Re ζ)·sinθ).
+ *
+ * The modulation uses odd half-integer harmonics cos/sin((2k+1)θ/2), all
+ * antiperiodic in θ — so the surface still closes, via the half-twist
+ * identification (t, θ+2π) ~ (t+π, θ). The coefficients below are the
+ * charge-correct set from modulated_clover.py step 7 (Q_proton = +1,
+ * Q_neutron = 0 exactly). R is free for visualization — it does not enter
+ * the charge integral.
+ */
+const MOD = {
+  rho: 1.0,
+  a2: 0.32977,
+  b2: 0.03196,
+  Ac: [0.17512, -0.48886],   // a1(θ) cos-harmonic coefficients
+  As: [0.15451, 0.65579],    // a1(θ) sin-harmonic coefficients
+  Bc: [-0.01223],            // b1(θ) cos-harmonic coefficients
+  Bs: [0.03243],             // b1(θ) sin-harmonic coefficients
+  t0Proton:  -Math.PI / 6,   // the two (1/2,1) tracks, offset by one piece
+  t0Neutron: +Math.PI / 6,
+};
+
+/* Half-integer harmonic modulation Σ cosC[k]·cos((2k+1)θ/2) + sinC[k]·sin(…). */
+function modulation(theta, cosC, sinC) {
+  let v = 0;
+  for (let k = 0; k < cosC.length; k++) v += cosC[k] * Math.cos((2*k+1) * theta / 2);
+  for (let k = 0; k < sinC.length; k++) v += sinC[k] * Math.sin((2*k+1) * theta / 2);
+  return v;
+}
+
+/* The modulated-clover surface point ζ(t,θ) → {x, y} = (Re ζ, Im ζ). */
+function modPoint(t, theta) {
+  const a1 = modulation(theta, MOD.Ac, MOD.As);
+  const b1 = modulation(theta, MOD.Bc, MOD.Bs);
+  const wx = 1 + a1 * Math.cos(3*t) + MOD.a2 * Math.cos(6*t);
+  const wy = b1 * Math.sin(3*t) + MOD.b2 * Math.sin(6*t);
+  const ph = theta / 2 + t;                       // half-twist α(θ)=θ/2 plus t
+  const c = Math.cos(ph), s = Math.sin(ph);
+  return {
+    x: MOD.rho * (c * wx - s * wy),
+    y: MOD.rho * (s * wx + c * wy),
+  };
+}
+
+/* Which of the 6 equal cross-section pieces t belongs to (0..5). Pieces are
+ * offset by π/6 so each is centred on a lobe: even = major lobe (centres at
+ * t = 0, 2π/3, 4π/3), odd = minor lobe. The proton track (t0 = −π/6) then
+ * covers pieces major-minor-major; the neutron (t0 = +π/6) minor-major-minor. */
+function modPiece(t) {
+  const tt = (((t + Math.PI / 6) % TAU) + TAU) % TAU;
+  return Math.floor(tt / (Math.PI / 3));
+}
+
+const COL_MAJOR = new THREE.Color(0xff7043);
+const COL_MINOR = new THREE.Color(0x42a5f5);
+
+/* Modulated-clover surface mesh: sweep θ (ring) × t (cross-section). */
+function buildModulatedSurfaceMesh(R) {
+  const positions = new Float32Array((N_TH + 1) * (N_PH + 1) * 3);
+  const colors    = new Float32Array((N_TH + 1) * (N_PH + 1) * 3);
+  const indices = [];
+  const tmp = new THREE.Color();
+
+  for (let i = 0; i <= N_TH; i++) {
+    const th = (i / N_TH) * TAU;
+    const cTh = Math.cos(th), sTh = Math.sin(th);
+    for (let j = 0; j <= N_PH; j++) {
+      const t = (j / N_PH) * TAU;
+      const p = modPoint(t, th);
+      const ix = (i * (N_PH + 1) + j) * 3;
+      const rr = R + p.x;
+      positions[ix    ] = rr * cTh;
+      positions[ix + 1] = p.y;
+      positions[ix + 2] = rr * sTh;
+
+      if (S.showColor) tmp.copy((modPiece(t) % 2 === 0) ? COL_MAJOR : COL_MINOR);
+      else             tmp.setHex(0x8090a0);
+      colors[ix    ] = tmp.r;
+      colors[ix + 1] = tmp.g;
+      colors[ix + 2] = tmp.b;
+    }
+  }
+  for (let i = 0; i < N_TH; i++) {
+    for (let j = 0; j < N_PH; j++) {
+      const a = i * (N_PH + 1) + j;
+      const b = a + N_PH + 1;
+      indices.push(a, b, a + 1, b, b + 1, a + 1);
+    }
+  }
+  const geom = new THREE.BufferGeometry();
+  geom.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+  geom.setAttribute('color',    new THREE.Float32BufferAttribute(colors, 3));
+  geom.setIndex(indices);
+  geom.computeVertexNormals();
+  return geom;
+}
+
+/* Polyline of a (1/2,1) track t(θ) = t0 + θ/2 on the modulated clover. */
+function modulatedTrackPoints(R, t0) {
+  const N = 600;
+  const pts = [];
+  for (let i = 0; i <= N; i++) {
+    const th = (i / N) * TAU;
+    const t = t0 + th / 2;
+    const p = modPoint(t, th);
+    const cTh = Math.cos(th), sTh = Math.sin(th);
+    const rr = R + p.x;
+    pts.push(new THREE.Vector3(rr * cTh, p.y, rr * sTh));
+  }
+  return pts;
+}
+
+/* ─── Naive-arc literal baryon path (for the closure problem) ─── */
+/*
+ * The HONEST literal-arc path: in one ring revolution it traverses the
+ * baryon's arc inventory of the cross-section — proton = 2 lobes + 1
+ * saddle, neutron = 1 lobe + 2 saddles. Its φ-advance per revolution is
+ * 2φ_L + φ_S (proton) or φ_L + 2φ_S (neutron), both strictly inside
+ * (2π/3, 4π/3) — never a whole 2π tube wrap. So the locus does not return
+ * to its start: the naive arc clover has a closure problem. This path is
+ * drawn exactly (no artificial (3,0) preset) so the gap is visible.
+ */
+function arcLiteralTrackPoints(prof, R, tau, particle) {
+  const N = 600;
+  const phiL = (TAU / 3) * (2 * S.rL) / (2 * S.rL + S.rS);   // lobe φ-extent
+  let phiStart, dPhi;
+  if (particle === 'neutron') { phiStart = phiL;  dPhi = phiL + 2 * (TAU/3 - phiL); }
+  else                        { phiStart = 0;     dPhi = (TAU/3) + phiL;            }
+  const pts = [];
+  for (let i = 0; i <= N; i++) {
+    const t = i / N;
+    const th = TAU * t;
+    const ph = phiStart + dPhi * t;
+    const samp = lookupProfile(prof, ph);
+    const alpha = tau * th;
+    const cA = Math.cos(alpha), sA = Math.sin(alpha);
+    const Pxr = samp.x * cA - samp.y * sA;
+    const Pyr = samp.x * sA + samp.y * cA;
+    const cTh = Math.cos(th), sTh = Math.sin(th);
+    const rr = R + Pxr;
+    pts.push(new THREE.Vector3(rr * cTh, Pyr, rr * sTh));
+  }
+  return { pts, dPhi };
+}
+
+/* Tube geometry from a polyline; also returns the start↔end gap distance.
+ * A path that closes (tiny gap) is rendered as a closed tube; one that does
+ * not is left open so the gap is visible. */
+function tubeFromPolyline(pts, tubeR) {
+  const gap = pts[0].distanceTo(pts[pts.length - 1]);
+  const closes = gap < 0.04 * S.R;
+  const curve = new THREE.CatmullRomCurve3(closes ? pts.slice(0, -1) : pts, closes);
+  const tube = new THREE.TubeGeometry(curve, pts.length, tubeR, 8, closes);
+  return { tube, gap };
+}
+
 /* ─── Cross-section preview (2D canvas) ─────────────────── */
+
+function drawModulatedCanvas() {
+  const canvas = $('profile-canvas');
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  ctx.fillStyle = '#06070a';
+  ctx.fillRect(0, 0, W, H);
+
+  const Nseg = 360;
+  const pts0 = [], ptsH = [];
+  let rmax = 1e-6;
+  for (let j = 0; j <= Nseg; j++) {
+    const t = (j / Nseg) * TAU;
+    const p0 = modPoint(t, 0), pH = modPoint(t, Math.PI);
+    pts0.push(p0); ptsH.push(pH);
+    rmax = Math.max(rmax, Math.hypot(p0.x, p0.y), Math.hypot(pH.x, pH.y));
+  }
+  const margin = 16;
+  const scale = (Math.min(W, H) / 2 - margin) / rmax;
+  const cx = W / 2, cy = H / 2;
+
+  ctx.strokeStyle = 'rgba(255,255,255,0.06)'; ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(margin, cy); ctx.lineTo(W - margin, cy);
+  ctx.moveTo(cx, margin); ctx.lineTo(cx, H - margin);
+  ctx.stroke();
+
+  // θ=π cross-section faint — shows how the modulation morphs the shape
+  ctx.strokeStyle = 'rgba(150,170,200,0.30)'; ctx.lineWidth = 1;
+  ctx.beginPath();
+  for (let j = 0; j <= Nseg; j++) {
+    const x = cx + ptsH[j].x * scale, y = cy - ptsH[j].y * scale;
+    j ? ctx.lineTo(x, y) : ctx.moveTo(x, y);
+  }
+  ctx.stroke();
+
+  // θ=0 cross-section, coloured by major/minor piece
+  for (let j = 0; j < Nseg; j++) {
+    const t = (j / Nseg) * TAU;
+    ctx.strokeStyle = (modPiece(t) % 2 === 0) ? '#ff7043' : '#42a5f5';
+    ctx.lineWidth = 2.4;
+    ctx.beginPath();
+    ctx.moveTo(cx + pts0[j].x * scale,     cy - pts0[j].y * scale);
+    ctx.lineTo(cx + pts0[j + 1].x * scale, cy - pts0[j + 1].y * scale);
+    ctx.stroke();
+  }
+
+  ctx.fillStyle = '#999';
+  ctx.font = '10px monospace';
+  ctx.fillText('θ=0 solid · θ=π faint', 8, H - 8);
+}
 
 function drawProfileCanvas(prof, particle) {
   const canvas = $('profile-canvas');
@@ -1015,78 +1263,141 @@ let surfMesh = null;
 let wireMesh = null;
 let pathGroup = new THREE.Group();
 let gridGroup = new THREE.Group();
+let closureGroup = new THREE.Group();
 let spineLine = null;
 let axesHelper = null;
 
 scene.add(pathGroup);
 scene.add(gridGroup);
+scene.add(closureGroup);
 
 /* ─── Build all geometry from current state ─────────────── */
 
 let cachedProfile = null;
 let profileDirty = true;
 
+// Result of the most recent closure test (filled by the path builders).
+let closureState = { status: '—', gap: null, note: '' };
+
+/* Add bright start/end spheres + a dashed connector wherever a path fails
+ * to close. gap < threshold → the path is closed → nothing is drawn. */
+function addClosureMarkers(pts, gap, tubeR) {
+  if (gap < 0.04 * S.R) return;
+  const r = tubeR * 3.0;
+  const s0 = new THREE.Mesh(new THREE.SphereGeometry(r, 16, 16),
+                            new THREE.MeshBasicMaterial({ color: 0x00e676 }));
+  s0.position.copy(pts[0]);
+  const s1 = new THREE.Mesh(new THREE.SphereGeometry(r, 16, 16),
+                            new THREE.MeshBasicMaterial({ color: 0xff1744 }));
+  s1.position.copy(pts[pts.length - 1]);
+  closureGroup.add(s0, s1);
+  const ln = new THREE.Line(
+    new THREE.BufferGeometry().setFromPoints([pts[0], pts[pts.length - 1]]),
+    new THREE.LineDashedMaterial({ color: 0xffffff, dashSize: 0.10, gapSize: 0.07 }));
+  ln.computeLineDistances();
+  closureGroup.add(ln);
+}
+
+/* Modulated-clover paths: the proton/neutron (1/2,1) tracks. */
+function buildModulatedPaths() {
+  const specs = [];
+  if (S.particle === 'proton')  specs.push({ t0: MOD.t0Proton,  color: 0xff5252 });
+  if (S.particle === 'neutron') specs.push({ t0: MOD.t0Neutron, color: 0x40c4ff });
+  if (specs.length === 0) { closureState = { status: '—', gap: null, note: '' }; return; }
+  let maxGap = 0;
+  for (const sp of specs) {
+    const pts = modulatedTrackPoints(S.R, sp.t0);
+    const { tube, gap } = tubeFromPolyline(pts, 0.05);
+    pathGroup.add(new THREE.Mesh(tube,
+      new THREE.MeshBasicMaterial({ color: sp.color, transparent: true, opacity: 0.97 })));
+    addClosureMarkers(pts, gap, 0.05);
+    maxGap = Math.max(maxGap, gap);
+  }
+  const closed = maxGap < 0.04 * S.R;
+  closureState = {
+    status: closed ? '✓ closes' : '✗ open',
+    gap: maxGap,
+    note: closed
+      ? 'The (1/2,1) track closes in one ring revolution — start and end '
+        + 'meet. Half-twist + modulation make the proton and neutron closed '
+        + 'tracks on one smooth surface: the modulated-clover solution.'
+      : 'Unexpected open track — check parameters.',
+  };
+}
+
+/* Naive-arc paths: literal-arc baryon path (closure problem) or custom. */
+function buildArcPaths(tau, shear) {
+  const tubeR = 0.04 + 0.02 * Math.min(S.rL, S.rS);
+  if (S.particle === 'proton' || S.particle === 'neutron') {
+    const { pts, dPhi } = arcLiteralTrackPoints(cachedProfile, S.R, tau, S.particle);
+    const { tube, gap } = tubeFromPolyline(pts, tubeR);
+    pathGroup.add(new THREE.Mesh(tube, new THREE.MeshBasicMaterial({
+      color: S.particle === 'proton' ? 0xff5252 : 0x40c4ff,
+      transparent: true, opacity: 0.97 })));
+    addClosureMarkers(pts, gap, tubeR);
+    const closed = gap < 0.04 * S.R;
+    closureState = {
+      status: closed ? '✓ closes' : '✗ open',
+      gap,
+      note: 'Literal-arc ' + S.particle + ': φ-advance per ring revolution = '
+        + (dPhi / Math.PI).toFixed(3) + 'π, strictly inside (2π/3, '
+        + '4π/3) — never a whole tube wrap, so the locus does not '
+        + 'return to its start. This is the naive clover’s closure problem.',
+    };
+  } else if (S.particle === 'custom') {
+    const p = { nTh: S.customNth, nPh: S.customNph, ph0: 0, color: 0xfdd835 };
+    pathGroup.add(new THREE.Mesh(
+      buildPathTube(cachedProfile, S.R, tau, shear, p, tubeR),
+      new THREE.MeshBasicMaterial({ color: p.color, transparent: true, opacity: 0.95 })));
+    closureState = { status: '—', gap: null,
+      note: 'Custom path closes iff n_θ·(τ−s) ∈ ℤ.' };
+  } else {
+    closureState = { status: '—', gap: null, note: '' };
+  }
+}
+
 function rebuildAll() {
-  // Profile sampling (only if rL/rS changed)
-  if (profileDirty || !cachedProfile) {
+  const modulated = (S.construction === 'modulated');
+
+  // Profile sampling — arc mode only (modulated is analytic).
+  if (!modulated && (profileDirty || !cachedProfile)) {
     cachedProfile = sampleProfile(540, S.rL, S.rS);
     profileDirty = false;
   }
 
-  const membership = membershipFor(S.particle);
-
   // Surface
-  if (surfMesh) {
-    scene.remove(surfMesh);
-    surfMesh.geometry.dispose();
-  }
-  if (wireMesh) {
-    scene.remove(wireMesh);
-    wireMesh.geometry.dispose();
-  }
+  if (surfMesh) { scene.remove(surfMesh); surfMesh.geometry.dispose(); }
+  if (wireMesh) { scene.remove(wireMesh); }
 
   const tau   = S.tauNum   / 3;
   const shear = S.shearNum / 3;
-  const geom = buildSurfaceMesh(cachedProfile, S.R, tau, membership);
+  const geom = modulated
+    ? buildModulatedSurfaceMesh(S.R)
+    : buildSurfaceMesh(cachedProfile, S.R, tau, membershipFor(S.particle));
   surfMesh = new THREE.Mesh(geom, surfMaterial);
   surfMesh.visible = S.showSurface;
   scene.add(surfMesh);
-
   wireMesh = new THREE.Mesh(geom, wireMaterial);
   wireMesh.visible = S.showWire;
   scene.add(wireMesh);
-
   surfMaterial.opacity = S.opacity;
 
-  // Paths
+  // Paths + closure test
   pathGroup.clear();
+  closureGroup.clear();
   if (S.showPath) {
-    const tubeR = 0.04 + 0.02 * Math.min(S.rL, S.rS);
-    let paths;
-    if (S.particle === 'custom') {
-      paths = [{ nTh: S.customNth, nPh: S.customNph, ph0: 0, color: 0xfdd835 }];
-    } else {
-      paths = PARTICLES[S.particle].paths;
-    }
-    for (const p of paths) {
-      const pgeom = buildPathTube(cachedProfile, S.R, tau, shear, p, tubeR);
-      const mat = new THREE.MeshBasicMaterial({ color: p.color, transparent: true, opacity: 0.95 });
-      const pmesh = new THREE.Mesh(pgeom, mat);
-      pathGroup.add(pmesh);
-    }
+    if (modulated) buildModulatedPaths();
+    else           buildArcPaths(tau, shear);
+  } else {
+    closureState = { status: '—', gap: null, note: '' };
   }
 
-  // Grid lines
+  // Grid lines (arc mode only)
   gridGroup.clear();
-  if (S.showGrid) {
-    addGridLines(cachedProfile, S.R, tau, shear);
-  }
+  if (!modulated && S.showGrid) addGridLines(cachedProfile, S.R, tau, shear);
 
   // Spine
-  if (spineLine) {
-    scene.remove(spineLine);
-    spineLine.geometry.dispose();
-  }
+  if (spineLine) { scene.remove(spineLine); spineLine.geometry.dispose(); }
   if (S.showSpine) {
     const pts = [];
     for (let i = 0; i <= 256; i++) {
@@ -1107,7 +1418,8 @@ function rebuildAll() {
     scene.add(axesHelper);
   }
 
-  drawProfileCanvas(cachedProfile, S.particle);
+  if (modulated) drawModulatedCanvas();
+  else           drawProfileCanvas(cachedProfile, S.particle);
   updateInfo();
 }
 
@@ -1170,70 +1482,87 @@ function addGridLines(prof, R, tau, shear) {
 /* ─── Info readouts ────────────────────────────────────── */
 
 function updateInfo() {
-  const d = S.rL + S.rS;
-  const rMax = 2 * S.rL + S.rS;
-  const rMin = S.rL;
-  const chi  = S.rS / S.rL;
-  const eps  = (2 * S.rL + S.rS) / S.R;
-  const L    = TAU * (2 * S.rL + S.rS);
+  const modulated = (S.construction === 'modulated');
+  const isBaryon = (S.particle === 'proton' || S.particle === 'neutron');
 
-  $('i-d').textContent    = d.toFixed(3);
-  $('i-rmax').textContent = rMax.toFixed(3);
-  $('i-rmin').textContent = rMin.toFixed(3);
-  $('i-chi').textContent  = chi.toFixed(3);
-  $('i-eps').textContent  = eps.toFixed(3);
-  $('i-L').textContent    = L.toFixed(3);
-
-  // Warnings
+  // Geometry grid + warnings
   const warn = $('geom-warning');
-  let warnMsg = '';
-  if (rMax > S.R - 0.05) {
-    warnMsg = 'Lobes intersect or graze the donut hole (r_max ≈ R_major). Decrease lobe radius or increase ring radius.';
-  } else if (S.tauNum !== 0 && S.tauNum !== Math.round(S.tauNum)) {
-    warnMsg = 'τ is a multiple of 1/3 by symmetry.';
-  }
-  if (warnMsg) {
-    warn.textContent = warnMsg;
-    warn.classList.remove('hide');
-  } else {
+  if (modulated) {
+    for (const id of ['i-d', 'i-rmax', 'i-rmin', 'i-chi', 'i-eps', 'i-L'])
+      $(id).textContent = '—';
     warn.classList.add('hide');
+  } else {
+    const d = S.rL + S.rS;
+    const rMax = 2 * S.rL + S.rS;
+    const chi  = S.rS / S.rL;
+    const eps  = (2 * S.rL + S.rS) / S.R;
+    $('i-d').textContent    = d.toFixed(3);
+    $('i-rmax').textContent = rMax.toFixed(3);
+    $('i-rmin').textContent = S.rL.toFixed(3);
+    $('i-chi').textContent  = chi.toFixed(3);
+    $('i-eps').textContent  = eps.toFixed(3);
+    $('i-L').textContent    = (TAU * (2 * S.rL + S.rS)).toFixed(3);
+    if (rMax > S.R - 0.05) {
+      warn.textContent = 'Lobes intersect or graze the donut hole '
+        + '(r_max ≈ R_major). Decrease lobe radius or increase ring radius.';
+      warn.classList.remove('hide');
+    } else {
+      warn.classList.add('hide');
+    }
   }
 
   // Path topology
-  let paths;
-  if (S.particle === 'custom') {
-    paths = [{ nTh: S.customNth, nPh: S.customNph }];
-  } else {
-    paths = PARTICLES[S.particle].paths;
+  let nth = '—', nph = '—', npaths = '0';
+  if (modulated && isBaryon) {
+    nth = '1'; nph = '½'; npaths = '1';
+  } else if (!modulated && isBaryon) {
+    const phiL = (TAU / 3) * (2 * S.rL) / (2 * S.rL + S.rS);
+    const dPhi = (S.particle === 'neutron')
+      ? phiL + 2 * (TAU / 3 - phiL) : (TAU / 3) + phiL;
+    nth = '1'; nph = (dPhi / TAU).toFixed(3); npaths = '1';
+  } else if (S.particle === 'custom') {
+    nth = String(S.customNth); nph = String(S.customNph); npaths = '1';
   }
-  if (paths.length > 0) {
-    $('i-nth').textContent = paths[0].nTh;
-    $('i-nph').textContent = paths[0].nPh;
-    $('i-paths').textContent = paths.length;
-  } else {
-    $('i-nth').textContent = '—';
-    $('i-nph').textContent = '—';
-    $('i-paths').textContent = '0';
-  }
+  $('i-nth').textContent = nth;
+  $('i-nph').textContent = nph;
+  $('i-paths').textContent = npaths;
 
   // Particle info card
   const pi = PARTICLES[S.particle];
   if (S.particle === 'custom') {
     $('p-Q').textContent = '—';
     $('p-content').textContent = `(n_θ, n_φ) = (${S.customNth}, ${S.customNph})`;
-    $('p-closure').textContent = `1 path`;
+    $('p-closure').textContent = '1 path';
   } else {
     $('p-Q').textContent = pi.Q;
-    $('p-content').textContent = pi.content;
-    $('p-closure').textContent = pi.closure || '—';
+    if (modulated && isBaryon) {
+      $('p-content').textContent = (S.particle === 'proton')
+        ? 'major-minor-major track (uud)' : 'minor-major-minor track (udd)';
+      $('p-closure').textContent = '(1/2,1) track · closes in 1 ring rev';
+    } else {
+      $('p-content').textContent = pi.content;
+      $('p-closure').textContent = pi.closure || '—';
+    }
   }
 
+  // Closure test readout
+  $('i-closure-status').textContent = closureState.status;
+  $('i-closure-gap').textContent =
+    (closureState.gap == null) ? '—' : closureState.gap.toFixed(3);
+  $('closure-note').textContent = closureState.note;
+
   // Bottom-left info overlay
-  $('info').innerHTML =
-    `τ=${formatTau(S.tauNum)} &nbsp; s=${formatTau(S.shearNum)} &nbsp; ` +
-    `R=${S.R.toFixed(2)} &nbsp; rL=${S.rL.toFixed(2)} &nbsp; rS=${S.rS.toFixed(2)} &nbsp; ` +
-    `χ=${chi.toFixed(2)} &nbsp; ε=${eps.toFixed(2)} &nbsp; ` +
-    `particle=${S.particle}`;
+  if (modulated) {
+    $('info').innerHTML =
+      `construction=modulated &nbsp; R=${S.R.toFixed(2)} &nbsp; ` +
+      `half-twist α=θ/2 &nbsp; particle=${S.particle}`;
+  } else {
+    $('info').innerHTML =
+      `construction=arc &nbsp; τ=${formatTau(S.tauNum)} &nbsp; ` +
+      `s=${formatTau(S.shearNum)} &nbsp; R=${S.R.toFixed(2)} &nbsp; ` +
+      `rL=${S.rL.toFixed(2)} &nbsp; rS=${S.rS.toFixed(2)} &nbsp; ` +
+      `particle=${S.particle}`;
+  }
 }
 
 function formatTau(num) {
@@ -1264,10 +1593,40 @@ bindSlider('sl-op', 'opacity', 'v-op', v => v.toFixed(2), () => { surfMaterial.o
 bindSlider('sl-rL2', 'rL2Frac', 'v-rL2', v => v.toFixed(3), () => { profileDirty = true; rebuildAll(); });
 bindSlider('sl-rL3', 'rL3Frac', 'v-rL3', v => v.toFixed(3), () => { profileDirty = true; rebuildAll(); });
 
+/* Show only the controls relevant to the active construction. */
+function applyConstructionUI() {
+  const arc = (S.construction === 'arc');
+  for (const id of ['cg-rL', 'cg-rS', 'sep-fractal', 'cg-fractal',
+                     'sep-twist', 'cg-tau', 'cg-shear'])
+    $(id).style.display = arc ? '' : 'none';
+  $('cg-rL2').style.display = (arc && S.fractalLevel >= 2) ? '' : 'none';
+  $('cg-rL3').style.display = (arc && S.fractalLevel >= 3) ? '' : 'none';
+  $('sel-construction').value = S.construction;
+
+  // Cross-section legend follows the active construction.
+  if (arc) {
+    $('sw-major').style.background = '#ff5252';
+    $('sw-minor').style.background = '#4fc3f7';
+    $('lbl-major').textContent = 'lobe (Q = +2/3)';
+    $('lbl-minor').textContent = 'saddle (Q = −1/3)';
+  } else {
+    $('sw-major').style.background = '#ff7043';
+    $('sw-minor').style.background = '#42a5f5';
+    $('lbl-major').textContent = 'major lobe';
+    $('lbl-minor').textContent = 'minor lobe';
+  }
+}
+
+$('sel-construction').addEventListener('change', () => {
+  S.construction = $('sel-construction').value;
+  applyConstructionUI();
+  profileDirty = true;
+  rebuildAll();
+});
+
 $('sel-fractal').addEventListener('change', () => {
   S.fractalLevel = parseInt($('sel-fractal').value, 10);
-  $('cg-rL2').style.display = (S.fractalLevel >= 2) ? '' : 'none';
-  $('cg-rL3').style.display = (S.fractalLevel >= 3) ? '' : 'none';
+  applyConstructionUI();
   profileDirty = true;
   rebuildAll();
 });
@@ -1391,12 +1750,14 @@ refreshProfileList();
 /* ─── Built-in presets ──────────────────────────────────── */
 
 const BUILTINS = {
-  'canonical':    { R: 3.0, rL: 0.80, rS: 0.40, tauNum: 1, shearNum: 0, particle: 'proton' },
-  'fat-saddle':   { R: 3.0, rL: 0.50, rS: 0.75, tauNum: 1, shearNum: 0, particle: 'proton' },
-  'thin-saddle':  { R: 3.0, rL: 1.00, rS: 0.25, tauNum: 1, shearNum: 0, particle: 'proton' },
-  'symmetric':    { R: 3.0, rL: 0.60, rS: 0.60, tauNum: 1, shearNum: 0, particle: 'none'   },
-  'flat':         { R: 3.0, rL: 0.80, rS: 0.40, tauNum: 0, shearNum: 0, particle: 'none'   },
-  'double-twist': { R: 3.0, rL: 0.80, rS: 0.40, tauNum: 2, shearNum: 0, particle: 'proton' },
+  'mod-proton':   { construction: 'modulated', R: 3.0, particle: 'proton'  },
+  'mod-neutron':  { construction: 'modulated', R: 3.0, particle: 'neutron' },
+  'canonical':    { construction: 'arc', R: 3.0, rL: 0.80, rS: 0.40, tauNum: 1, shearNum: 0, particle: 'proton' },
+  'fat-saddle':   { construction: 'arc', R: 3.0, rL: 0.50, rS: 0.75, tauNum: 1, shearNum: 0, particle: 'proton' },
+  'thin-saddle':  { construction: 'arc', R: 3.0, rL: 1.00, rS: 0.25, tauNum: 1, shearNum: 0, particle: 'proton' },
+  'symmetric':    { construction: 'arc', R: 3.0, rL: 0.60, rS: 0.60, tauNum: 1, shearNum: 0, particle: 'none'   },
+  'flat':         { construction: 'arc', R: 3.0, rL: 0.80, rS: 0.40, tauNum: 0, shearNum: 0, particle: 'none'   },
+  'double-twist': { construction: 'arc', R: 3.0, rL: 0.80, rS: 0.40, tauNum: 2, shearNum: 0, particle: 'proton' },
 };
 
 $('sel-builtin').addEventListener('change', () => {
@@ -1422,15 +1783,15 @@ function syncControlsFromState() {
   $('sel-fractal').value = String(S.fractalLevel);
   $('sl-rL2').value = S.rL2Frac; $('v-rL2').textContent = S.rL2Frac.toFixed(3);
   $('sl-rL3').value = S.rL3Frac; $('v-rL3').textContent = S.rL3Frac.toFixed(3);
-  $('cg-rL2').style.display = (S.fractalLevel >= 2) ? '' : 'none';
-  $('cg-rL3').style.display = (S.fractalLevel >= 3) ? '' : 'none';
   for (const [id, key] of Object.entries(toggles)) {
     $(id).checked = S[key];
   }
+  applyConstructionUI();
 }
 
 function resetToDefaults() {
   Object.assign(S, {
+    construction: 'modulated',
     R: 3.0, rL: 0.80, rS: 0.40,
     tauNum: 1, shearNum: 0, opacity: 0.55,
     particle: 'proton',
@@ -1513,6 +1874,7 @@ controls.addEventListener('end', saveCamera);
 
 /* ─── Render loop ──────────────────────────────────────── */
 
+applyConstructionUI();
 rebuildAll();
 
 animLoop(() => {}, { renderer, scene, camera, controls });

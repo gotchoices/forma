@@ -152,6 +152,50 @@ Saddle arcs are never bisected. Only sub-lobes from the immediately
 previous level are bisected at each new level — remnants from earlier
 bisections retain their original parent radius and are skipped.
 
+### 1.7 Construction toggle — modulated clover (default)
+
+A top-bar **construction** selector switches between two geometries:
+
+- **Modulated clover** *(default)* — the current best-candidate proton/
+  neutron construction from
+  [projects/sheet-proton/work/modulated-clover.md](../projects/sheet-proton/work/modulated-clover.md).
+  The cross-section is a *smooth* harmonic tube-function with three major
+  and three minor lobes,
+
+  ```
+  w(t;θ) = 1 + a₁(θ)·cos 3t + a₂·cos 6t + i·( b₁(θ)·sin 3t + b₂·sin 6t )
+  ```
+
+  swept around the ring with a **half-twist** α(θ) = θ/2 and a θ-dependent
+  major↔minor **modulation** a₁(θ), b₁(θ), embedded as
+  ζ(t,θ) = ρ·e^{i(θ/2+t)}·w(t;θ). The modulation uses odd half-integer
+  harmonics cos/sin((2k+1)θ/2), all antiperiodic in θ, so the surface still
+  closes — via the half-twist identification (t, θ+2π) ~ (t+π, θ). The
+  coefficients shipped are the charge-correct set from `modulated_clover.py`
+  step 7 (Q_proton = +1, Q_neutron = 0 exactly). The proton and neutron are
+  the two **(1/2, 1) tracks** t(θ) = t₀ + θ/2, offset by one cross-section
+  piece (t₀ = ∓π/6); each closes in **one** ring revolution.
+
+- **Naive arc clover** — the original piecewise-arc construction (§1.1–1.2).
+  Kept so its **closure problem** can be seen directly: a literal-arc baryon
+  path traverses its arc inventory (proton = 2 lobes + 1 saddle) with a
+  φ-advance per ring revolution of 2φ_L + φ_S, strictly inside (2π/3, 4π/3)
+  — never a whole tube wrap, so the locus does not return to its start.
+
+When the construction is **modulated**, the arc-only controls (r_lobe,
+r_saddle, fractal, τ, shear) are hidden; only R_major and opacity apply.
+
+### 1.8 Closure test
+
+For the selected baryon, the right panel shows a **closure test**: the path
+is drawn *honestly* (no artificially-closing preset) and the 3D distance
+between its start and end is reported. When that end-gap is non-zero the two
+endpoints are marked with a green (start) and red (end) sphere joined by a
+dashed line — making the closure failure visible. In the **naive arc**
+construction the proton/neutron paths show a large gap (the closure
+problem); in the **modulated clover** the (1/2, 1) tracks close to within
+numerical zero (the solution).
+
 ### 1.4 Particle assignments
 
 Per [clover-quarks.md §3 & §12](../projects/sheet-proton/work/clover-quarks.md):
