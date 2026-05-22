@@ -1,0 +1,40 @@
+==============================================================================
+modulated-clover — STEP 4: mass spectrum and the nucleon doublet
+-Δ_g ψ = μ² ψ ; cotangent Laplacian on the §7 embedded surface
+As = lambda * As_solved :  lambda=0 cos-only (θ-even, symmetric);
+lambda=1 the charge-closing modulation.  Doublets split as λ grows.
+==============================================================================
+
+  Ac = [+0.1916, -0.5068]   As_solved = [+0.2016, +0.6736]
+  scales rho=1.0 R_major=3.0   mesh 120x120
+
+--- mu^2  vs  lambda ---
+   mode  λ=0.00  λ=0.25  λ=0.50  λ=0.75  λ=1.00
+      0   0.00000  -0.00000   0.00000   0.00000  -0.00000
+      1   0.09860   0.09780   0.09550   0.09191   0.08733
+      2   0.10667   0.10646   0.10580   0.10468   0.10307
+      3   0.29755   0.29260   0.27897   0.25919   0.23585
+      4   0.34106   0.33965   0.33451   0.32143   0.29978
+      5   0.35259   0.35018   0.34133   0.32907   0.31403
+      6   0.35589   0.35328   0.34781   0.34063   0.33166
+      7   0.36190   0.36088   0.35762   0.35172   0.34270
+      8   0.38404   0.38110   0.37261   0.36000   0.34656
+      9   0.54430   0.54022   0.52801   0.50796   0.48110
+     10   0.56039   0.55736   0.54809   0.53257   0.51155
+     11   0.65776   0.65230   0.63870   0.62041   0.59977
+  simple     yes      yes      yes      yes      yes 
+
+--- cos-only (λ=0) degeneracy check ---
+  near-degenerate pairs at λ=0 (within 2%): modes 5,6
+
+Reading (Step-4 finding). The cos-only (λ=0) spectrum has no clean
+degenerate doublets — a θ-even modulation has only a Z2 reflection
+symmetry, which sorts the eigenmodes into even/odd SINGLETS and
+does NOT force degeneracy.  So m_n - m_p is not 'a degenerate
+nucleon doublet that the sin-harmonics split' — that §7.5 draft
+premise is wrong (now corrected in the work file).  The deeper
+issue: the proton and neutron are two tracks, the SAME knot, on
+ONE surface; how one Laplace-Beltrami spectrum assigns them two
+distinct masses needs a mode<->track identification that is not
+yet resolved (§7.5).  The spectrum above is real data; its
+proton/neutron reading is not yet pinned.

@@ -388,12 +388,16 @@ what "a baryon" is.
    and cos-harmonics, found a modulation profile for which the proton track nets
    Q = +0.999 and the neutron Q = −0.001, on a cross-section simple at every ring angle
    (§4.5). The **charge** construction works.
-4. **Mass.** *(Open — next step.)* The construction so far produces *charge* only — the
-   experienced curvature of a classical track. Mass is a separate quantity: the spectrum
-   of a *wave* on the modulated-clover surface — a Laplace–Beltrami eigenvalue problem,
-   as solved for the un-modulated clover in [clover-mass.md](clover-mass.md). Success
-   needs both. The proton and neutron being the *same knot* (§4.4) is what should make
-   them near-mass-degenerate (m_p ≈ m_n), with the small split set by the phase offset.
+4. **Mass.** *(Metric derived — §7; eigensolver built and validated; the
+   mode↔track identification is the open conceptual problem.)* Mass is the spectrum of a
+   *wave* on the modulated-clover surface — the 2-D Laplace–Beltrami problem of §7. The
+   eigensolver is built ([scripts/modulated_clover.py](../scripts/modulated_clover.py)
+   `--step 4`, cotangent Laplacian on a triangle mesh) and validated (constant mode at
+   μ² = 0). But Step 4 also **falsified** the §7.5-draft "cos-only degenerate nucleon
+   doublet" idea: a ℤ₂ reflection gives even/odd singlets, not degeneracy. The genuine
+   open problem (§7.5): the proton and neutron are two tracks — the same knot — on one
+   surface; assigning them two distinct masses from one wave spectrum needs a mode↔track
+   identification not yet in hand. The charge construction (steps 1–3) is unaffected.
 
 **Computational (fallback / verification).**
 
@@ -409,7 +413,142 @@ what "a baryon" is.
 
 ---
 
-## 7. Cross-references
+## 7. Mass — the induced metric and the eigenvalue problem
+
+§§2–6 settle the **charge** construction. **Mass** (§6 step 4) is a *wave* on the
+modulated-clover surface. This section derives the surface's induced metric and states
+the mass eigenvalue problem precisely — the "derive first" step before any numerics.
+
+### 7.1 The embedding
+
+The cross-section, with the twist and modulation baked in (§3, §4.3), is the complex
+coordinate
+
+<!-- ζ(t,θ) = ρ e^{i α(θ)} e^{i t} w(t;θ),  α(θ) = θ/2 -->
+$$
+\zeta(t,\theta) \;=\; \rho\,e^{i\alpha(\theta)}\,e^{i t}\,w(t;\theta),
+\qquad \alpha(\theta) = \theta/2,
+$$
+
+with ρ the cross-section scale and w(t;θ) = 1 + a₁(θ)cos3t + a₂cos6t +
+i(b₁(θ)sin3t + b₂sin6t). The real pair P_x = Re ζ, P_y = Im ζ is the cross-section
+point. Sweeping it around a ring of radius R_major gives the corrugated-torus embedding
+
+<!-- r(t,θ) = ( (R_major+P_x)cosθ, (R_major+P_x)sinθ, P_y ) -->
+$$
+\vec r(t,\theta) \;=\; \bigl(\,(R_{\rm major}+P_x)\cos\theta,\;\;
+(R_{\rm major}+P_x)\sin\theta,\;\; P_y \,\bigr)
+$$
+
+(ring centreline R_major(cosθ,sinθ,0); outward normal N̂ = (cosθ,sinθ,0); binormal
+B̂ = (0,0,1)). The twist is a *physical rotation* of the cross-section — embedding "B"
+of [clover-quarks.md §9.3](clover-quarks.md) — carried inside ζ by the e^{iα(θ)} factor.
+
+### 7.2 The induced metric
+
+The first fundamental form is g_ij = ∂_i r⃗ · ∂_j r⃗, with i, j ∈ {t, θ}. Writing
+ζ_t = ∂_t ζ and ζ_θ = ∂_θ ζ, and A = Re ζ_θ, W = R_major + P_x,
+
+  ∂_t r⃗ = ( (Re ζ_t)cosθ, (Re ζ_t)sinθ, Im ζ_t ),
+  ∂_θ r⃗ = ( A cosθ − W sinθ, A sinθ + W cosθ, Im ζ_θ ).
+
+The cosθ/sinθ cross-terms collapse on taking dot products, leaving
+
+<!-- g_tt = |ζ_t|² ;  g_tθ = Re(conj(ζ_t) ζ_θ) ;  g_θθ = |ζ_θ|² + (R_major + Re ζ)² -->
+$$
+g_{tt} = |\zeta_t|^2,\qquad
+g_{t\theta} = \operatorname{Re}\!\bigl(\overline{\zeta_t}\,\zeta_\theta\bigr),\qquad
+g_{\theta\theta} = |\zeta_\theta|^2 + (R_{\rm major}+\operatorname{Re}\zeta)^2 .
+$$
+
+g_tt and g_tθ are exactly the flat first-fundamental-form of the curve ζ in the plane;
+g_θθ adds the ring-radius term (R_major + P_x)². **Sanity check:** a plain circular tube
+ζ = ρe^{it} gives g_tt = ρ², g_tθ = 0, g_θθ = (R_major + ρcos t)² — the standard torus
+metric. ✓
+
+The partials, with α′ = 1/2 and w_θ = a₁′(θ)cos3t + i b₁′(θ)sin3t (a₂, b₂ are
+θ-constant):
+
+  ζ_t = ρ e^{iα}e^{it}(i w + w_t),   ζ_θ = ρ e^{iα}e^{it}(i α′ w + w_θ).
+
+The e^{iα}e^{it} phase cancels in the metric — e.g.
+g_tθ = ρ² Re[ (−i w̄ + w̄_t)(i α′ w + w_θ) ] — so every component is explicit
+trigonometry in t with θ-dependent coefficients a₁(θ), b₁(θ) and their derivatives.
+
+### 7.3 The mass eigenvalue problem
+
+Mass-squared is the Laplace–Beltrami eigenvalue of a wave ψ on the surface (as in
+[clover-mass.md §1](clover-mass.md)):
+
+<!-- -Δ_g ψ = μ² ψ,  Δ_g ψ = (1/√g) ∂_i ( √g g^{ij} ∂_j ψ ) -->
+$$
+-\Delta_g\psi = \mu^2\psi,\qquad
+\Delta_g\psi = \frac{1}{\sqrt g}\,\partial_i\!\bigl(\sqrt g\;g^{ij}\,\partial_j\psi\bigr),
+$$
+
+with determinant g = g_tt g_θθ − g_tθ², inverse metric g^{tt} = g_θθ/g,
+g^{θθ} = g_tt/g, g^{tθ} = −g_tθ/g, and area element dA = √g dt dθ. Δ_g is self-adjoint
+with respect to ∫ ψ̄φ dA, so the spectrum {μ²} is real and ordered; m_proton and
+m_neutron are particular eigenvalues μ.
+
+### 7.4 Boundary conditions — the half-twist
+
+Single-valuedness of ψ on the surface requires
+
+  ψ(t + 2π, θ) = ψ(t, θ)        (tube periodicity),
+  ψ(t, θ + 2π) = ψ(t + π, θ)    (ring, the half-twist gluing of §3.3).
+
+A plane wave e^{i(k_t t + k_θ θ)} obeys these iff k_t ∈ ℤ and k_θ = k_t/2 + m, m ∈ ℤ —
+**half-integer-related ring momenta**, the half-twist's Bloch structure (the counterpart
+of the third-integer momenta the 1/3-twist forces on the plain clover,
+[clover-quarks.md §11](clover-quarks.md)). The metric is not flat, so plane waves are
+not eigenmodes; but they label the Bloch sectors the true eigenmodes decompose into.
+
+### 7.5 What remains, and one structural point
+
+To obtain masses: build g_ij(t,θ) from §7.2, discretise −Δ_g on the (t,θ) torus with the
+§7.4 twisted boundary conditions, and compute the low eigenvalues. **No 1-D reduction is
+available** — the modulation breaks the helical translation symmetry that gave
+[clover-mass.md](clover-mass.md) its Hill equation — so this is a genuine 2-D sparse
+eigenvalue problem.
+
+Two things mass adds that charge did not:
+
+- **Scale.** Charge was scale-invariant; mass is not. ρ and R_major (equivalently the
+  aspect ratio ε ≈ ρ/R_major) set the mass scale and become fit parameters: can the
+  modulation that gives the right charges also give m_p, m_n, and the ≈ 1.3 MeV split?
+- **Mode ↔ track identification.** Which eigenmode is the proton and which the neutron —
+  the modes in the Bloch sectors compatible with the (1/2, 1) proton/neutron tracks
+  (§4.4). An identification step, not just computation.
+
+**A conceptual gap, surfaced by the Step-4 computation.** §4.5's reflection
+(t,θ) → (−t,−θ) makes the *classical tracks'* charges equal, Q_proton = Q_neutron,
+because the reflection maps one track onto the other — two distinct objects, equal
+charge. An earlier draft of this section carried that over to mass: "the reflection
+forces m_proton = m_neutron, a degenerate nucleon doublet that the sin-harmonics split."
+**That is wrong.** A ℤ₂ reflection does not force degeneracy — it only sorts the
+Laplace–Beltrami eigenmodes into reflection-even and reflection-odd *singlets*. The
+Step-4 cos-only spectrum ([scripts/modulated_clover.py](../scripts/modulated_clover.py)
+`--step 4`) confirms it: no clean degenerate doublets appear.
+
+The deeper issue the computation exposes: the proton and neutron are two *tracks* on
+**one** surface — and the *same* knot (§4.4), heavily overlapping (they share two of
+three pieces). One surface has one Laplace–Beltrami spectrum. **How that single spectrum
+assigns the proton and the neutron two distinct masses is not yet well-posed.** Two
+readings are open:
+
+- the proton and neutron are two distinct low eigenmodes of the one surface, identified
+  by a (1/2,1)-track ↔ mode link — m_n − m_p is the gap between them; or
+- they are the symmetric/antisymmetric superpositions of two overlapping
+  track-localized states (a two-level system) — m_n − m_p the bonding/antibonding split.
+
+Either way the missing piece is the **mode ↔ track identification**, and the cos-only
+"degenerate doublet" shortcut does not exist. The charge construction (§§2–4) stands;
+the mass side needs this resolved before its numbers mean anything.
+
+---
+
+## 8. Cross-references
 
 - [clover-quarks.md](clover-quarks.md) — arc-clover quark/baryon identification; §3.2/§12.2
   closure (the conflation this file routes around); §11.7 per-arc charge; §14 open

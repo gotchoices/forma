@@ -8,6 +8,7 @@ Two work-file steps, selected by --step (default 3):
 
   --step 1 : the six-piece cross-section curvature budget (work file §2, §6.1).
   --step 3 : the modulation + track solver (work file §4, §6.3).
+  --step 4 : mass — the Laplace-Beltrami spectrum of the surface (work file §7).
 
 The cross-section is the harmonic tube-function (same family as
 ma-domain/work/tube-function.md):
@@ -548,12 +549,181 @@ def run_step3(args):
     print(f"\nWrote: {out_path}")
 
 
+# ======================================================================
+# STEP 4 — mass: the Laplace-Beltrami spectrum of the surface (work file §7)
+# ======================================================================
+
+
+def build_surface_mesh(Ac, As, Bc, Bs, a2, b2, rho, Rmajor, Nt, Nth):
+    """Triangle mesh of the embedded modulated-clover surface (work file §7.1).
+
+    Nt must be even: the half-twist θ-wrap (t,θ+2π)~(t+π,θ) identifies the
+    θ-seam with a shift of π = Nt/2 tube-grid steps.  Returns (verts[V,3] float,
+    tris[F,3] int), V = Nt*Nth, grid point (i,j) at vertex i*Nth + j."""
+    assert Nt % 2 == 0, "Nt must be even for the half-twist wrap"
+    t = np.linspace(0.0, 2 * pi, Nt, endpoint=False)
+    th = np.linspace(0.0, 2 * pi, Nth, endpoint=False)
+    T, TH = np.meshgrid(t, th, indexing="ij")
+    a1 = modulation(TH, Ac, As)
+    b1 = modulation(TH, Bc, Bs)
+    w = (1.0 + a1 * np.cos(3 * T) + a2 * np.cos(6 * T)
+         + 1j * (b1 * np.sin(3 * T) + b2 * np.sin(6 * T)))
+    zeta = rho * np.exp(1j * TH / 2.0) * np.exp(1j * T) * w
+    Px, Py = zeta.real, zeta.imag
+    X = (Rmajor + Px) * np.cos(TH)
+    Y = (Rmajor + Px) * np.sin(TH)
+    verts = np.stack([X.ravel(), Y.ravel(), Py.ravel()], axis=1)
+
+    half = Nt // 2
+    tris = []
+    for i in range(Nt):
+        for j in range(Nth):
+            sh = half if j + 1 == Nth else 0          # half-twist at the seam
+            v00 = (i % Nt) * Nth + j
+            v10 = ((i + 1) % Nt) * Nth + j
+            v01 = ((i + sh) % Nt) * Nth + (j + 1) % Nth
+            v11 = ((i + 1 + sh) % Nt) * Nth + (j + 1) % Nth
+            tris.append((v00, v10, v11))
+            tris.append((v00, v11, v01))
+    return verts, np.array(tris, dtype=np.int64)
+
+
+def cotan_laplacian(verts, tris):
+    """Cotangent-weighted discrete Laplace-Beltrami L and lumped mass M for a
+    triangle mesh.  L psi = mu^2 M psi discretises -Δ_g psi = mu^2 psi
+    (work file §7.3).  L is symmetric positive-semidefinite, M diagonal."""
+    from scipy.sparse import coo_matrix, diags
+    V = len(verts)
+    p = verts[tris]                                   # [F, 3, 3]
+    rows, cols, vals = [], [], []
+    mass = np.zeros(V)
+    for c in range(3):
+        b, d = (c + 1) % 3, (c + 2) % 3
+        u = p[:, b] - p[:, c]
+        v = p[:, d] - p[:, c]
+        area2 = np.linalg.norm(np.cross(u, v), axis=1)   # = 2 * triangle area
+        cot = np.sum(u * v, axis=1) / np.maximum(area2, 1e-30)
+        w = 0.5 * cot                                 # weight for edge (b,d)
+        ib, idd = tris[:, b], tris[:, d]
+        rows += [ib, idd, ib, idd]
+        cols += [idd, ib, ib, idd]
+        vals += [-w, -w, w, w]
+        if c == 0:
+            per_vert = area2 / 6.0                    # triangle area / 3
+            for k in range(3):
+                np.add.at(mass, tris[:, k], per_vert)
+    L = coo_matrix((np.concatenate(vals),
+                    (np.concatenate(rows), np.concatenate(cols))),
+                   shape=(V, V)).tocsr()
+    L = 0.5 * (L + L.T)                               # symmetrise (float)
+    return L, diags(mass)
+
+
+def run_step4(args):
+    """STEP 4: mass — Laplace-Beltrami spectrum, with the cos-only vs solved
+    comparison that identifies the proton/neutron doublet and its split.
+
+    A θ-even (cos-only, As=0) modulation has the (t,θ)->(-t,-θ) reflection
+    symmetry; under it the eigenmodes are reflection-singlets or
+    reflection-swapped DOUBLETS (degenerate).  The proton/neutron modes are
+    such a doublet — the reflection swaps the proton and neutron tracks.
+    Turning the sin-harmonics on (As -> As_solved) splits every doublet; the
+    nucleon doublet's split is m_neutron - m_proton.  This routine sweeps
+    As = lambda * As_solved and reports the spectrum vs lambda, so the
+    doublets and their splitting are visible."""
+    from scipy.sparse.linalg import eigsh
+    N, a2, b2 = args.N, args.a2, args.b2
+    t0_p, t0_n = -pi / 6.0, +pi / 6.0
+    Bc, Bs = np.array([args.b1]), np.array([0.0])
+
+    # Modulation that closes the charges (Step 3 / §4.5).
+    ref = refine_to_target(N, Bc, Bs, a2, b2, t0_p, t0_n,
+                           x0=[0.0, 0.5, args.a1, 0.0])
+    Ac = np.array([ref["Ac0"], ref["Ac1"]])
+    As_sol = np.array([ref["As0"], ref["As1"]])
+
+    lambdas = [0.0, 0.25, 0.5, 0.75, 1.0]
+    K = 12
+    spectra, margins = [], []
+    for lam in lambdas:
+        As = lam * As_sol
+        verts, tris = build_surface_mesh(Ac, As, Bc, Bs, a2, b2, args.rho,
+                                         args.rmajor, args.nt, args.ntheta)
+        L, M = cotan_laplacian(verts, tris)
+        ev = eigsh(L, k=K, M=M, sigma=-1e-5, which="LM",
+                   return_eigenvectors=False)
+        spectra.append(np.sort(np.real(ev)))
+        margins.append(min(
+            star_margin(N, float(modulation(th, Ac, As)), a2,
+                        float(modulation(th, Bc, Bs)), b2, K=3000)
+            for th in np.linspace(0.0, 2 * pi, 19, endpoint=False)))
+
+    cos0 = spectra[0]
+    # doublets in the cos-only spectrum: consecutive near-equal mu^2 (n >= 1)
+    doublets, n = [], 1
+    while n < K - 1:
+        avg = 0.5 * (cos0[n] + cos0[n + 1])
+        if avg > 1e-6 and abs(cos0[n + 1] - cos0[n]) < 0.02 * avg:
+            doublets.append(n)
+            n += 2
+        else:
+            n += 1
+
+    R = []
+    R.append("=" * 78)
+    R.append("modulated-clover — STEP 4: mass spectrum and the nucleon doublet")
+    R.append("-Δ_g ψ = μ² ψ ; cotangent Laplacian on the §7 embedded surface")
+    R.append("As = lambda * As_solved :  lambda=0 cos-only (θ-even, symmetric);")
+    R.append("lambda=1 the charge-closing modulation.  Doublets split as λ grows.")
+    R.append("=" * 78)
+    R.append("")
+    R.append(f"  Ac = [{ref['Ac0']:+.4f}, {ref['Ac1']:+.4f}]   "
+             f"As_solved = [{ref['As0']:+.4f}, {ref['As1']:+.4f}]")
+    R.append(f"  scales rho={args.rho} R_major={args.rmajor}   "
+             f"mesh {args.nt}x{args.ntheta}")
+    R.append("")
+    R.append("--- mu^2  vs  lambda ---")
+    R.append(f"  {'mode':>5}  " + "  ".join(f"λ={l:>4.2f}" for l in lambdas))
+    for m in range(K):
+        R.append(f"  {m:>5}  " + "  ".join(f"{spectra[i][m]:>8.5f}"
+                                           for i in range(len(lambdas))))
+    R.append(f"  {'simple':>5}  " + "  ".join(
+        ("   yes " if mm > 0 else "   NO  ") for mm in margins))
+    R.append("")
+    R.append("--- cos-only (λ=0) degeneracy check ---")
+    if doublets:
+        R.append("  near-degenerate pairs at λ=0 (within 2%): "
+                 + ", ".join(f"modes {nd},{nd+1}" for nd in doublets))
+    else:
+        R.append("  no near-degenerate pairs among the lowest modes.")
+    R.append("")
+    R.append("Reading (Step-4 finding). The cos-only (λ=0) spectrum has no clean")
+    R.append("degenerate doublets — a θ-even modulation has only a Z2 reflection")
+    R.append("symmetry, which sorts the eigenmodes into even/odd SINGLETS and")
+    R.append("does NOT force degeneracy.  So m_n - m_p is not 'a degenerate")
+    R.append("nucleon doublet that the sin-harmonics split' — that §7.5 draft")
+    R.append("premise is wrong (now corrected in the work file).  The deeper")
+    R.append("issue: the proton and neutron are two tracks, the SAME knot, on")
+    R.append("ONE surface; how one Laplace-Beltrami spectrum assigns them two")
+    R.append("distinct masses needs a mode<->track identification that is not")
+    R.append("yet resolved (§7.5).  The spectrum above is real data; its")
+    R.append("proton/neutron reading is not yet pinned.")
+
+    text = "\n".join(R)
+    print(text)
+    out_dir = Path(__file__).resolve().parents[1] / "outputs"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    out_path = out_dir / "modulated_clover_mass.txt"
+    out_path.write_text(text + "\n")
+    print(f"\nWrote: {out_path}")
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--step", choices=["1", "3"], default="3",
-                    help="1 = cross-section curvature budget; "
-                         "3 = modulation/track solver (default)")
+    ap.add_argument("--step", choices=["1", "3", "4"], default="3",
+                    help="1 = cross-section budget; 3 = modulation/track "
+                         "solver; 4 = mass (Laplace-Beltrami spectrum)")
     ap.add_argument("--N", type=int, default=3, help="lobe-pair count (default 3)")
     ap.add_argument("--a1", type=float, default=0.62,
                     help="step 1: eval a1;  step 3: initial a1-modulation amplitude")
@@ -567,12 +737,22 @@ def main():
                     help="step 1 target T_major (default 4pi/3)")
     ap.add_argument("--K", type=int, default=4000,
                     help="step 1 integration resolution per piece")
+    ap.add_argument("--rho", type=float, default=1.0,
+                    help="step 4: cross-section scale")
+    ap.add_argument("--rmajor", type=float, default=3.0,
+                    help="step 4: ring (major) radius")
+    ap.add_argument("--nt", type=int, default=120,
+                    help="step 4: tube-direction mesh resolution (must be even)")
+    ap.add_argument("--ntheta", type=int, default=120,
+                    help="step 4: ring-direction mesh resolution")
     args = ap.parse_args()
 
     if args.step == "1":
         run_step1(args)
-    else:
+    elif args.step == "3":
         run_step3(args)
+    else:
+        run_step4(args)
 
 
 if __name__ == "__main__":
