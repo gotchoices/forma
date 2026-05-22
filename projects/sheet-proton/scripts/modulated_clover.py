@@ -9,6 +9,8 @@ Two work-file steps, selected by --step (default 3):
   --step 1 : the six-piece cross-section curvature budget (work file §2, §6.1).
   --step 3 : the modulation + track solver (work file §4, §6.3).
   --step 4 : mass — the Laplace-Beltrami spectrum of the surface (work file §7).
+  --step 5 : mass-fit sweep — low spectrum vs the aspect ratio.
+  --step 6 : global parameter sweep — differential evolution over all 9 params.
 
 The cross-section is the harmonic tube-function (same family as
 ma-domain/work/tube-function.md):
@@ -554,26 +556,12 @@ def run_step3(args):
 # ======================================================================
 
 
-def build_surface_mesh(Ac, As, Bc, Bs, a2, b2, rho, Rmajor, Nt, Nth):
-    """Triangle mesh of the embedded modulated-clover surface (work file §7.1).
-
-    Nt must be even: the half-twist θ-wrap (t,θ+2π)~(t+π,θ) identifies the
-    θ-seam with a shift of π = Nt/2 tube-grid steps.  Returns (verts[V,3] float,
-    tris[F,3] int), V = Nt*Nth, grid point (i,j) at vertex i*Nth + j."""
+def triangulation(Nt, Nth):
+    """Triangle connectivity for the Nt x Nth half-twisted-torus grid.  Nt must
+    be even: the half-twist θ-wrap (t,θ+2π)~(t+π,θ) shifts the θ-seam by
+    π = Nt/2 tube steps.  Connectivity is modulation-independent — build once,
+    reuse.  Grid point (i,j) is vertex i*Nth + j."""
     assert Nt % 2 == 0, "Nt must be even for the half-twist wrap"
-    t = np.linspace(0.0, 2 * pi, Nt, endpoint=False)
-    th = np.linspace(0.0, 2 * pi, Nth, endpoint=False)
-    T, TH = np.meshgrid(t, th, indexing="ij")
-    a1 = modulation(TH, Ac, As)
-    b1 = modulation(TH, Bc, Bs)
-    w = (1.0 + a1 * np.cos(3 * T) + a2 * np.cos(6 * T)
-         + 1j * (b1 * np.sin(3 * T) + b2 * np.sin(6 * T)))
-    zeta = rho * np.exp(1j * TH / 2.0) * np.exp(1j * T) * w
-    Px, Py = zeta.real, zeta.imag
-    X = (Rmajor + Px) * np.cos(TH)
-    Y = (Rmajor + Px) * np.sin(TH)
-    verts = np.stack([X.ravel(), Y.ravel(), Py.ravel()], axis=1)
-
     half = Nt // 2
     tris = []
     for i in range(Nt):
@@ -585,7 +573,30 @@ def build_surface_mesh(Ac, As, Bc, Bs, a2, b2, rho, Rmajor, Nt, Nth):
             v11 = ((i + 1 + sh) % Nt) * Nth + (j + 1) % Nth
             tris.append((v00, v10, v11))
             tris.append((v00, v11, v01))
-    return verts, np.array(tris, dtype=np.int64)
+    return np.array(tris, dtype=np.int64)
+
+
+def surface_vertices(Ac, As, Bc, Bs, a2, b2, rho, Rmajor, Nt, Nth):
+    """3D vertex positions of the modulated-clover surface (work file §7.1),
+    flattened so grid point (i,j) is row i*Nth + j."""
+    t = np.linspace(0.0, 2 * pi, Nt, endpoint=False)
+    th = np.linspace(0.0, 2 * pi, Nth, endpoint=False)
+    T, TH = np.meshgrid(t, th, indexing="ij")
+    a1 = modulation(TH, Ac, As)
+    b1 = modulation(TH, Bc, Bs)
+    w = (1.0 + a1 * np.cos(3 * T) + a2 * np.cos(6 * T)
+         + 1j * (b1 * np.sin(3 * T) + b2 * np.sin(6 * T)))
+    zeta = rho * np.exp(1j * TH / 2.0) * np.exp(1j * T) * w
+    Px, Py = zeta.real, zeta.imag
+    X = (Rmajor + Px) * np.cos(TH)
+    Y = (Rmajor + Px) * np.sin(TH)
+    return np.stack([X.ravel(), Y.ravel(), Py.ravel()], axis=1)
+
+
+def build_surface_mesh(Ac, As, Bc, Bs, a2, b2, rho, Rmajor, Nt, Nth):
+    """Triangle mesh (verts[V,3], tris[F,3]) of the modulated-clover surface."""
+    return (surface_vertices(Ac, As, Bc, Bs, a2, b2, rho, Rmajor, Nt, Nth),
+            triangulation(Nt, Nth))
 
 
 def cotan_laplacian(verts, tris):
@@ -718,12 +729,260 @@ def run_step4(args):
     print(f"\nWrote: {out_path}")
 
 
+def run_step5(args):
+    """STEP 5: mass-fit sweep.  Vary the charge-neutral free parameter — the
+    aspect ratio (ring radius R_major) — and report the low Laplace-Beltrami
+    spectrum as scale-free mass ratios μ_n/μ_1, looking for a configuration
+    whose two lowest modes could be the proton/neutron (ratio ≈ 1.0014).
+
+    R_major does not affect charge (the experienced curvature is a
+    cross-section quantity), so the whole sweep stays charge-correct without
+    re-solving Step 3.  The other free parameters (the charge-modulation
+    family, b1/a2/b2) do affect charge and are left fixed here — opening them
+    is the natural Step-5 extension."""
+    from scipy.sparse.linalg import eigsh
+    N, a2, b2 = args.N, args.a2, args.b2
+    t0_p, t0_n = -pi / 6.0, +pi / 6.0
+    Bc, Bs = np.array([args.b1]), np.array([0.0])
+
+    ref = refine_to_target(N, Bc, Bs, a2, b2, t0_p, t0_n,
+                           x0=[0.0, 0.5, args.a1, 0.0])
+    Ac = np.array([ref["Ac0"], ref["Ac1"]])
+    As = np.array([ref["As0"], ref["As1"]])
+
+    Rvals = np.geomspace(2.0, 24.0, args.r_steps)
+    K = 10
+    rows = []
+    for Rm in Rvals:
+        verts, tris = build_surface_mesh(Ac, As, Bc, Bs, a2, b2,
+                                         args.rho, Rm, args.nt, args.ntheta)
+        L, M = cotan_laplacian(verts, tris)
+        ev = np.sort(np.real(eigsh(L, k=K, M=M, sigma=-1e-5, which="LM",
+                                   return_eigenvectors=False)))
+        rows.append((Rm, np.sqrt(np.clip(ev, 0.0, None))))
+
+    R = []
+    R.append("=" * 78)
+    R.append("modulated-clover — STEP 5: mass-fit sweep over the aspect ratio")
+    R.append("low Laplace-Beltrami spectrum vs R_major (a charge-neutral knob);")
+    R.append("μ_n/μ_1 are scale-free mass ratios.  Nucleon target μ_2/μ_1 ≈ 1.0014.")
+    R.append("=" * 78)
+    R.append("")
+    R.append(f"  charge modulation: Ac=[{ref['Ac0']:+.4f}, {ref['Ac1']:+.4f}]  "
+             f"As=[{ref['As0']:+.4f}, {ref['As1']:+.4f}]")
+    R.append(f"  (Q_proton={ref['Qp']:+.4f}, Q_neutron={ref['Qn']:+.4f})   "
+             f"rho={args.rho}, mesh {args.nt}x{args.ntheta}")
+    R.append("")
+    R.append("--- mass ratios μ_n/μ_1  and the lowest-pair fractional split ---")
+    R.append(f"  {'R_major':>8}  {'mu2/mu1':>9}  {'mu3/mu1':>9}  {'mu4/mu1':>9}"
+             f"  {'mu5/mu1':>9}  {'split(2,1)':>11}")
+    best = None
+    for (Rm, mu) in rows:
+        m1 = mu[1]
+        ratios = [mu[n] / m1 for n in range(2, 6)]
+        split = (mu[2] - mu[1]) / (0.5 * (mu[1] + mu[2]))
+        R.append(f"  {Rm:>8.3f}  " + "  ".join(f"{r:>9.5f}" for r in ratios)
+                 + f"  {split:>11.5f}")
+        if best is None or split < best[1]:
+            best = (Rm, split)
+    R.append("")
+    R.append(f"smallest lowest-pair split in the sweep: {best[1]:.5f} "
+             f"at R_major = {best[0]:.3f}")
+    R.append("observed proton/neutron:  (m_n - m_p)/m_N ≈ 0.00140")
+    R.append("")
+    if best[1] < 0.003:
+        R.append("The two lowest modes CAN be brought near-degenerate by the")
+        R.append("aspect-ratio knob — a 0.0014-level split is reachable by")
+        R.append("dialling R_major near the crossing.  CAVEAT: this is an")
+        R.append("accidental mode crossing, not by itself a structural")
+        R.append("proton/neutron doublet; the two modes' character and charges")
+        R.append("must be checked before identifying them as the nucleon.")
+    else:
+        R.append(f"The lowest-pair split stays well above 0.0014 across the")
+        R.append(f"sweep (minimum {best[1]:.4f}).  The aspect ratio alone does")
+        R.append("not bring two low modes near-degenerate; the charge-modulation")
+        R.append("family and b1/a2/b2 would need to be opened (Step-5 extension).")
+
+    text = "\n".join(R)
+    print(text)
+    out_dir = Path(__file__).resolve().parents[1] / "outputs"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    out_path = out_dir / "modulated_clover_massfit.txt"
+    out_path.write_text(text + "\n")
+    print(f"\nWrote: {out_path}")
+
+
+def run_step6(args):
+    """STEP 6: global parameter sweep.  Differential evolution over all nine
+    parameters (a1/b1 modulation harmonics, a2, b2, R_major) for the
+    charge-correct, simple surface whose low Laplace-Beltrami spectrum has the
+    smallest pair-split — i.e. the best shot at a near-degenerate nucleon pair
+    (target split ≈ 0.0014).  Charge is enforced by a heavy penalty;
+    self-intersecting surfaces are rejected.  The DE runs on a coarse mesh; the
+    winner is re-evaluated on the fine mesh."""
+    from scipy.optimize import differential_evolution
+    from scipy.sparse.linalg import eigsh
+    N = args.N
+    t0_p, t0_n = -pi / 6.0, +pi / 6.0
+    msh = args.sweep_mesh + (args.sweep_mesh % 2)      # force even
+    tris_c = triangulation(msh, msh)
+    W_CHG, REJECT = 1.0e4, 5.0
+
+    # x = [Ac0, Ac1, As0, As1, Bc0, Bs0, a2, b2, R_major]
+    bounds = [(-1.0, 1.0), (-1.0, 1.0), (-1.5, 1.5), (-1.5, 1.5),
+              (-0.40, 0.40), (-0.40, 0.40), (0.05, 0.60), (-0.20, 0.20),
+              (2.0, 16.0)]
+    x0 = np.array([0.1916, -0.5068, 0.2016, 0.6736,
+                   args.b1, 0.0, args.a2, args.b2, 6.0])
+
+    def unpack(x):
+        return (np.array([x[0], x[1]]), np.array([x[2], x[3]]),
+                np.array([x[4]]), np.array([x[5]]),
+                float(x[6]), float(x[7]), float(x[8]))
+
+    def min_pair_split(Ac, As, Bc, Bs, a2, b2, Rm, Nt, Nth, tris):
+        """Smallest fractional split among the low eigenmode pairs (1,2)..(4,5).
+        Returns (split, pair_index, mu) or (None, None, None) on failure."""
+        verts = surface_vertices(Ac, As, Bc, Bs, a2, b2, args.rho, Rm, Nt, Nth)
+        Lm, Mm = cotan_laplacian(verts, tris)
+        try:
+            ev = np.sort(np.real(eigsh(Lm, k=6, M=Mm, sigma=-1e-5,
+                                       which="LM", return_eigenvectors=False)))
+        except Exception:
+            return None, None, None
+        mu = np.sqrt(np.clip(ev, 0.0, None))
+        if mu[1] < 1e-6:
+            return None, None, None
+        sp = [(mu[n + 1] - mu[n]) / (0.5 * (mu[n] + mu[n + 1]))
+              for n in range(1, 5)]
+        k = int(np.argmin(sp))
+        return sp[k], k + 1, mu
+
+    neval = [0]
+
+    def objective(x):
+        neval[0] += 1
+        Ac, As, Bc, Bs, a2, b2, Rm = unpack(x)
+        for th in np.linspace(0.0, 2 * pi, 15, endpoint=False):
+            if star_margin(N, float(modulation(th, Ac, As)), a2,
+                           float(modulation(th, Bc, Bs)), b2, K=1200) <= 0.02:
+                return REJECT                          # self-intersecting
+        Qp, _ = track_charge(t0_p, Ac, As, Bc, Bs, a2, b2, Nth=1200)
+        Qn, _ = track_charge(t0_n, Ac, As, Bc, Bs, a2, b2, Nth=1200)
+        cerr = (Qp - 1.0) ** 2 + Qn ** 2
+        sp, _, _ = min_pair_split(Ac, As, Bc, Bs, a2, b2, Rm, msh, msh, tris_c)
+        if sp is None:
+            return REJECT
+        return sp + W_CHG * cerr
+
+    print(f"STEP 6: differential evolution — 9 params, coarse mesh {msh}x{msh}, "
+          f"maxiter={args.de_iters} ...", flush=True)
+    res = differential_evolution(objective, bounds, x0=x0, seed=1,
+                                 maxiter=args.de_iters, popsize=12,
+                                 tol=1e-9, polish=True)
+    # ---- fine-mesh local polish of the DE winner ----
+    # The DE minimised a coarse-mesh proxy; polish on the fine mesh so the
+    # reported split is trustworthy and not a coarse-mesh artifact.
+    from scipy.optimize import minimize
+    tris_f = triangulation(args.nt, args.ntheta)
+
+    def fine_objective(x):
+        Ac, As, Bc, Bs, a2, b2, Rm = unpack(x)
+        for th in np.linspace(0.0, 2 * pi, 15, endpoint=False):
+            if star_margin(N, float(modulation(th, Ac, As)), a2,
+                           float(modulation(th, Bc, Bs)), b2, K=1500) <= 0.02:
+                return REJECT
+        Qp, _ = track_charge(t0_p, Ac, As, Bc, Bs, a2, b2)
+        Qn, _ = track_charge(t0_n, Ac, As, Bc, Bs, a2, b2)
+        sp, _, _ = min_pair_split(Ac, As, Bc, Bs, a2, b2, Rm,
+                                  args.nt, args.ntheta, tris_f)
+        if sp is None:
+            return REJECT
+        return sp + W_CHG * ((Qp - 1.0) ** 2 + Qn ** 2)
+
+    print("STEP 6: fine-mesh local polish of the DE winner ...", flush=True)
+    pol = minimize(fine_objective, res.x, method="Nelder-Mead",
+                   options={"maxiter": args.polish_iters,
+                            "xatol": 1e-5, "fatol": 1e-9})
+    x = pol.x if fine_objective(pol.x) <= fine_objective(res.x) else res.x
+
+    Ac, As, Bc, Bs, a2, b2, Rm = unpack(x)
+    Qp, _ = track_charge(t0_p, Ac, As, Bc, Bs, a2, b2)
+    Qn, _ = track_charge(t0_n, Ac, As, Bc, Bs, a2, b2)
+    cerr = max(abs(Qp - 1.0), abs(Qn))
+    csp, _, _ = min_pair_split(Ac, As, Bc, Bs, a2, b2, Rm, msh, msh, tris_c)
+    fsp, fpair, fmu = min_pair_split(Ac, As, Bc, Bs, a2, b2, Rm,
+                                     args.nt, args.ntheta, tris_f)
+
+    R = []
+    R.append("=" * 78)
+    R.append("modulated-clover — STEP 6: global parameter sweep")
+    R.append("differential evolution over all 9 parameters; objective = smallest")
+    R.append("low-mode-pair split; charge penalised; self-intersecting rejected.")
+    R.append("Question: can a charge-correct simple surface put two low modes")
+    R.append("within the proton/neutron ratio (split ≈ 0.0014)?")
+    R.append("=" * 78)
+    R.append("")
+    R.append(f"function evaluations: {neval[0]}    "
+             f"coarse mesh {msh}x{msh}, fine {args.nt}x{args.ntheta}")
+    R.append("")
+    R.append("--- best point found ---")
+    R.append(f"  a1 cos Ac = [{x[0]:+.5f}, {x[1]:+.5f}]")
+    R.append(f"  a1 sin As = [{x[2]:+.5f}, {x[3]:+.5f}]")
+    R.append(f"  b1 cos Bc = [{x[4]:+.5f}]   b1 sin Bs = [{x[5]:+.5f}]")
+    R.append(f"  a2 = {x[6]:.5f}   b2 = {x[7]:+.5f}   R_major = {x[8]:.4f}")
+    R.append(f"  charge:  Q_proton = {Qp:+.5f}   Q_neutron = {Qn:+.5f}"
+             f"   (max error {cerr:.2e})")
+    R.append("")
+    if fsp is not None:
+        R.append(f"  smallest low-pair split (fine mesh): {fsp:.5f}"
+                 f"   (modes {fpair},{fpair+1})")
+        R.append("  fine-mesh low spectrum  mu_n/mu_1 (n=2..5): "
+                 + ", ".join(f"{fmu[n] / fmu[1]:.5f}" for n in range(2, 6)))
+    if csp is not None:
+        R.append(f"  coarse-mesh smallest split (for comparison): {csp:.5f}")
+    R.append("")
+    R.append("observed proton/neutron:  (m_n - m_p)/m_N  ~  0.00140")
+    R.append("")
+    use = fsp if fsp is not None else csp
+    if use is None:
+        R.append("RESULT: the search returned no usable surface — inspect.")
+    else:
+        R.append(f"RESULT: smallest low-pair split found = {use:.5f}  "
+                 f"(~{use / 0.00140:.1f}x the observed 0.00140).")
+        if use <= 0.0016:
+            R.append("At the proton/neutron level — a charge-correct, simple")
+            R.append("surface CAN host a near-degenerate nucleon pair; dial the")
+            R.append("split onto 0.00140.  (This is a consistency fit, 9 params")
+            R.append("to one ratio — not a parameter-free prediction.)")
+        elif use < 0.010:
+            R.append("Within a small factor of the target.  Treat as an UPPER")
+            R.append("bound, not a proven floor — if differential evolution had")
+            R.append("not plateaued, a deeper run can lower it.  Whether it")
+            R.append("crosses 0.00140 is not yet settled.")
+        else:
+            R.append("Far above the target — the parameter freedom looks")
+            R.append("exhausted; a different mass mechanism would be needed.")
+            R.append("(The charge construction, steps 1-3, is independent.)")
+        if cerr >= 1e-3:
+            R.append(f"NOTE: charge error {cerr:.1e} is loose — re-polish charge.")
+
+    text = "\n".join(R)
+    print(text)
+    out_dir = Path(__file__).resolve().parents[1] / "outputs"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    out_path = out_dir / "modulated_clover_globalsweep.txt"
+    out_path.write_text(text + "\n")
+    print(f"\nWrote: {out_path}")
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--step", choices=["1", "3", "4"], default="3",
+    ap.add_argument("--step", choices=["1", "3", "4", "5", "6"], default="3",
                     help="1 = cross-section budget; 3 = modulation/track "
-                         "solver; 4 = mass (Laplace-Beltrami spectrum)")
+                         "solver; 4 = mass spectrum; 5 = mass-fit sweep; "
+                         "6 = global parameter sweep")
     ap.add_argument("--N", type=int, default=3, help="lobe-pair count (default 3)")
     ap.add_argument("--a1", type=float, default=0.62,
                     help="step 1: eval a1;  step 3: initial a1-modulation amplitude")
@@ -744,15 +1003,27 @@ def main():
     ap.add_argument("--nt", type=int, default=120,
                     help="step 4: tube-direction mesh resolution (must be even)")
     ap.add_argument("--ntheta", type=int, default=120,
-                    help="step 4: ring-direction mesh resolution")
+                    help="step 4/5: ring-direction mesh resolution")
+    ap.add_argument("--r-steps", type=int, default=9,
+                    help="step 5: number of R_major values in the sweep")
+    ap.add_argument("--de-iters", type=int, default=60,
+                    help="step 6: differential-evolution maxiter")
+    ap.add_argument("--sweep-mesh", type=int, default=48,
+                    help="step 6: coarse mesh resolution for the DE search")
+    ap.add_argument("--polish-iters", type=int, default=250,
+                    help="step 6: fine-mesh Nelder-Mead polish iterations")
     args = ap.parse_args()
 
     if args.step == "1":
         run_step1(args)
     elif args.step == "3":
         run_step3(args)
-    else:
+    elif args.step == "4":
         run_step4(args)
+    elif args.step == "5":
+        run_step5(args)
+    else:
+        run_step6(args)
 
 
 if __name__ == "__main__":

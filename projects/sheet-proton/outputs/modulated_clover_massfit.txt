@@ -1,0 +1,28 @@
+==============================================================================
+modulated-clover — STEP 5: mass-fit sweep over the aspect ratio
+low Laplace-Beltrami spectrum vs R_major (a charge-neutral knob);
+μ_n/μ_1 are scale-free mass ratios.  Nucleon target μ_2/μ_1 ≈ 1.0014.
+==============================================================================
+
+  charge modulation: Ac=[+0.1916, -0.5068]  As=[+0.2016, +0.6736]
+  (Q_proton=+0.9990, Q_neutron=-0.0008)   rho=1.0, mesh 120x120
+
+--- mass ratios μ_n/μ_1  and the lowest-pair fractional split ---
+   R_major    mu2/mu1    mu3/mu1    mu4/mu1    mu5/mu1   split(2,1)
+     2.000    1.09416    1.34261    1.53470    1.59333      0.08993
+     2.729    1.08823    1.55353    1.76546    1.80461      0.08451
+     3.722    1.08265    1.89623    1.99296    2.01161      0.07937
+     5.078    1.07852    2.05148    2.06560    2.44413      0.07555
+     6.928    1.07593    2.07742    2.09096    3.06788      0.07316
+     9.452    1.07448    2.08512    2.09777    3.10724      0.07180
+    12.895    1.07370    2.08692    2.09907    3.11797      0.07108
+    17.592    1.07328    2.08715    2.09902    3.12084      0.07069
+    24.000    1.07306    2.08704    2.09878    3.12149      0.07049
+
+smallest lowest-pair split in the sweep: 0.07049 at R_major = 24.000
+observed proton/neutron:  (m_n - m_p)/m_N ≈ 0.00140
+
+The lowest-pair split stays well above 0.0014 across the
+sweep (minimum 0.0705).  The aspect ratio alone does
+not bring two low modes near-degenerate; the charge-modulation
+family and b1/a2/b2 would need to be opened (Step-5 extension).

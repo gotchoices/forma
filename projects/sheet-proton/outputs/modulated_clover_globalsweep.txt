@@ -1,0 +1,28 @@
+==============================================================================
+modulated-clover — STEP 6: global parameter sweep
+differential evolution over all 9 parameters; objective = smallest
+low-mode-pair split; charge penalised; self-intersecting rejected.
+Question: can a charge-correct simple surface put two low modes
+within the proton/neutron ratio (split ≈ 0.0014)?
+==============================================================================
+
+function evaluations: 14698    coarse mesh 52x52, fine 120x120
+
+--- best point found ---
+  a1 cos Ac = [+0.08799, -0.54401]
+  a1 sin As = [+0.15614, +0.73164]
+  b1 cos Bc = [+0.01433]   b1 sin Bs = [+0.00766]
+  a2 = 0.37805   b2 = +0.03837   R_major = 22.3746
+  charge:  Q_proton = +1.00002   Q_neutron = +0.00000   (max error 2.45e-05)
+
+  smallest low-pair split (fine mesh): 0.00267   (modes 3,4)
+  fine-mesh low spectrum  mu_n/mu_1 (n=2..5): 1.04496, 2.06291, 2.06843, 3.08068
+  coarse-mesh smallest split (for comparison): 0.00272
+
+observed proton/neutron:  (m_n - m_p)/m_N  ~  0.00140
+
+RESULT: smallest low-pair split found = 0.00267  (~1.9x the observed 0.00140).
+Within a small factor of the target.  Treat as an UPPER
+bound, not a proven floor — if differential evolution had
+not plateaued, a deeper run can lower it.  Whether it
+crosses 0.00140 is not yet settled.

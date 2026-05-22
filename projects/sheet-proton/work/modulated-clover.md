@@ -9,7 +9,11 @@ surface closure (§3) are worked out and hold. The proton and neutron tracks (§
 the two (1/2, 1) half-tube tracks, each closing in one ring revolution. **Step 3 done
 (2026-05-22):** a single modulation profile closes the proton track at charge Q = +1 and
 the neutron at Q = 0 on a simple, smooth surface — the **charge** construction works
-(§4.5). **Mass** is the open next step (§6 step 4).
+(§4.5). The **mass** mechanism — proton and neutron as two low eigenmodes of one
+modulated-clover surface — was tested in §6–§7 and **fails**: a global sweep of all nine
+parameters cannot bring the smallest low-mode split below ≈ 1.9× the observed nucleon
+split (§6 step 5). The charge construction stands; the mass side needs a different
+mechanism.
 
 **Origin.** The arc-clover baryon paths do not close: [clover-quarks.md §3.2/§12.2](clover-quarks.md)
 derive the (1,2)/(1,1) closure numbers by summing per-arc *turning angles* (lobe 240°,
@@ -398,6 +402,24 @@ what "a baryon" is.
    open problem (§7.5): the proton and neutron are two tracks — the same knot — on one
    surface; assigning them two distinct masses from one wave spectrum needs a mode↔track
    identification not yet in hand. The charge construction (steps 1–3) is unaffected.
+5. **Mass-fit sweeps.** *(Done — `--step 5`, `--step 6`.)* Sidestepping the
+   mode↔track identification, the question becomes pragmatic: can *any* charge-correct,
+   simple surface put two low eigenmodes within the proton/neutron ratio,
+   (m_n − m_p)/m_N ≈ 0.0014? Step 5 (sweep the charge-neutral aspect ratio only) left the
+   lowest pair split by ≈ 7–9%. Step 6 (differential evolution over **all nine**
+   parameters — a1/b1 modulation harmonics, a2, b2, R_major — charge held exact,
+   self-intersecting surfaces rejected, fine-mesh polished) drove the smallest low-pair
+   split down to **≈ 0.0027** (modes 3,4), and **plateaued there** (0.0044 → 0.0030 →
+   0.0027 across deepening runs, 14,698 evaluations). That is **≈ 1.9× the observed
+   split and does not reach it**.
+
+   **Verdict — the mass mechanism fails.** Proton and neutron as two low eigenmodes of
+   one modulated-clover surface does not work: the smallest split is ~2× too large, the
+   near-degenerate pair is modes 3,4 (not the lightest), and nothing structurally marks
+   that pair as the nucleon. The parameter freedom is exhausted. A different bridge from
+   the (working) charge/track picture to mass is needed — e.g. the distinct-(m_t, m_r)
+   wave-mode mass formula of [clover-mass.md](clover-mass.md), or proton and neutron as
+   two near-identical *separate* surfaces. The charge construction (§§2–4) stands.
 
 **Computational (fallback / verification).**
 
