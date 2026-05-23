@@ -302,8 +302,9 @@ crosses them. A fast first estimate; the solver (§6) does the full integral.
 
 ### 4.4 Proton and neutron as the two half-tube tracks
 
-The proton and neutron are the two **(1/2, 1) tracks** of §4.1, offset around the tube
-by one piece (π/3 in t) — equivalently, by *where they start*:
+The proton and neutron are the two **(1/2, 1) tracks** of §4.1 (more precisely, two C₃
+orbits of three tracks each — see §4.6), offset around the tube by one piece (π/3 in t)
+— equivalently, by *where they start*:
 
 - **proton** — starts on a major piece; covers major–minor–major;
 - **neutron** — starts on a minor piece; covers minor–major–minor.
@@ -348,6 +349,51 @@ sum = 1 from the cos-harmonics. A sin-only search reaches D ≈ 1 but leaves the
 (b₁ = −0.015, a₂ = 0.34, b₂ = 0.03), the proton track nets Q = +0.999 and the neutron
 Q = −0.001, on a cross-section simple at every ring angle (star-margin +0.26,
 κ_max ≈ 15 — moderate, not a near-cusp). **The charge construction works.**
+
+### 4.6 C₃ multiplicity — three tracks per orbit, and the color reading
+
+§4.4 spoke of "the" proton and "the" neutron, collapsing each C₃ orbit into a single
+representative. Geometrically there are **three tracks in each orbit** — one starting on
+each major lobe (t₀ = 0, 2π/3, 4π/3) for the proton, and one on each minor lobe
+(t₀ = π/3, π, 5π/3) for the neutron. The three are related by the cross-section's C₃
+symmetry:
+
+<!-- z(t + 2π/3, θ) = e^{2πi/3} z(t, θ) -->
+$$
+z(t + 2\pi/3,\,\theta) \;=\; e^{2\pi i/3}\,z(t,\theta)
+$$
+
+at every θ — the 3-fold harmonics cos(3t), sin(3t) are invariant under t → t + 2π/3, and
+the e^{it} prefactor supplies the 120° phase. This C₃ action is an isometry of the swept
+surface, so the experienced-curvature integral (§4.3) is identical across the orbit.
+Within each piece there is also a continuous parameter (where in a major / minor you
+start), but the lobe center is the natural representative; small shifts give a small
+variation around the orbit-average.
+
+**The natural reading is color (working hypothesis).** Treat the C₃ rotation as the
+geometric realization of SU(3)_color: the three C₃-related tracks are color-basis states,
+and the physical proton is the Z₃-singlet combination
+
+<!-- |proton> ~ |t0=0> + |t0=2π/3> + |t0=4π/3> -->
+$$
+\lvert\mathrm{proton}\rangle \;\propto\; \lvert t_0{=}0\rangle
+  \;+\; \lvert t_0{=}2\pi/3\rangle \;+\; \lvert t_0{=}4\pi/3\rangle
+$$
+
+— colorless by construction. Under this reading the cross-section's 3-fold rotational
+symmetry *is* the geometric source of color SU(3), consistent with the Z₃ confinement
+framing in [clover-quarks.md §11.6](clover-quarks.md). The per-track charge integral of
+§4.3 equals the orbit-average by C₃, so the Q_p ≈ +1, Q_n ≈ 0 numbers from §4.5 hold
+whether one reads them as "the proton's charge" or "one color's contribution" — the
+conceptual content differs, the numerical answer is the same. The reward of adopting the
+color reading: the construction generates an SU(3)_color symmetry geometrically, on top
+of the closure + charge result.
+
+**The "three quarks" vs "three colors" distinction.** A pitfall worth naming: the 3
+quarks of the proton (uud) are the 3 *pieces* a single track covers — 2 majors
+(u, Q = +2/3) and 1 minor (d, Q = −1/3), summing to Q = +1 (§2.3). The 3 *tracks* in a C₃
+orbit are color labels, not quark constituents. These are different threes; conflating
+them would attribute quark structure to color rotations and vice versa.
 
 ---
 
