@@ -196,6 +196,29 @@ construction the proton/neutron paths show a large gap (the closure
 problem); in the **modulated clover** the (1/2, 1) tracks close to within
 numerical zero (the solution).
 
+### 1.9 Sheet view — κ(t, θ) heatmap
+
+A second small canvas under the cross-section profile shows the **unrolled
+(θ, t) sheet** (or (θ, φ) in arc mode) as a diverging heatmap of the
+cross-section's planar tube curvature κ: red = convex (lobe), blue =
+concave (saddle), brightness = magnitude (normalised by the 95th
+percentile to suppress junction spikes in arc mode). Light gridlines mark
+the six cross-section piece boundaries (modulated) or three fundamental
+domains (arc).
+
+When a baryon is selected, its track is overlaid as a diagonal:
+
+- **Modulated** — t(θ) = t₀ + θ/2, a straight slope-½ diagonal that
+  wraps once in t (consistent with the half-twist identification
+  (t, θ+2π) ~ (t+π, θ)).
+- **Arc (naive)** — φ(θ) = φ_start + (2φ_L+φ_S)·θ/2π for the proton,
+  φ_L + 2φ_S for the neutron. The diagonal visibly **does not return to
+  its starting φ** at θ = 2π — that vertical mismatch is the closure
+  problem viewed in parameter space.
+
+Green dot = track start; red dot = track end. The same colour code used
+by the 3D closure markers, so the two views tell the same story.
+
 ### 1.4 Particle assignments
 
 Per [clover-quarks.md §3 & §12](../projects/sheet-proton/work/clover-quarks.md):

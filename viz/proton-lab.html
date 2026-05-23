@@ -328,6 +328,17 @@
     </div>
 
     <div class="pnl-section">
+      <div class="pnl-head">Sheet — κ(t, θ)</div>
+      <canvas id="sheet-canvas" width="232" height="140"></canvas>
+      <div style="margin-top:4px; font-size:10px; color:#888; line-height:1.4;">
+        Unrolled (θ, t) sheet. Heatmap = cross-section tube curvature κ —
+        red = convex (lobe), blue = concave (saddle). Diagonal = the
+        baryon's track t(θ); the green/red dots mark its start and end on
+        the sheet.
+      </div>
+    </div>
+
+    <div class="pnl-section">
       <div class="pnl-head">Geometry</div>
       <div class="info-grid">
         <span class="k">d</span> <span class="v" id="i-d">1.20</span>
@@ -1234,6 +1245,152 @@ function drawProfileCanvas(prof, particle) {
   ctx.fillText(`rmax=${rMax.toFixed(2)}`, W - 80, H - 8);
 }
 
+/* ─── Sheet view (κ heatmap on the (θ, t) sheet) ────────── */
+/*
+ * The "sheet" is the unrolled (θ, t) — or (θ, φ) in arc mode — parameter
+ * domain. The heatmap is the planar curvature κ of the cross-section
+ * curve at each (t, θ): red = convex (lobe), blue = concave (saddle). The
+ * proton/neutron tracks appear as diagonals; the modulated (1/2, 1) track
+ * has slope 1/2 in t/θ; the naive-arc literal track has slope dφ/dθ =
+ * (2φ_L + φ_S)/2π (proton) or (φ_L + 2φ_S)/2π (neutron), and visibly does
+ * NOT return to its starting φ-value at θ = 2π — that vertical mismatch
+ * IS the closure problem, seen from another angle.
+ */
+function drawSheetCanvas() {
+  const canvas = $('sheet-canvas');
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  ctx.fillStyle = '#06070a';
+  ctx.fillRect(0, 0, W, H);
+
+  const modulated = (S.construction === 'modulated');
+  const phiL = (TAU / 3) * (2 * S.rL) / (2 * S.rL + S.rS);
+
+  function pointAt(t, theta) {
+    if (modulated) return modPoint(t, theta);
+    return lookupProfile(cachedProfile, t);    // arc: θ-independent
+  }
+
+  // Sample κ on a coarse grid; central differences in t at fixed θ.
+  const Nx = 120, Ny = 80;
+  const grid = new Float32Array(Nx * Ny);
+  const h = TAU * 5e-4;
+  let kAbsMax = 0;
+  for (let iy = 0; iy < Ny; iy++) {
+    const t = (iy / Ny) * TAU;
+    for (let ix = 0; ix < Nx; ix++) {
+      const th = (ix / Nx) * TAU;
+      const p  = pointAt(t,     th);
+      const pP = pointAt(t + h, th);
+      const pM = pointAt(t - h, th);
+      const xt  = (pP.x - pM.x) / (2 * h);
+      const yt  = (pP.y - pM.y) / (2 * h);
+      const xtt = (pP.x - 2 * p.x + pM.x) / (h * h);
+      const ytt = (pP.y - 2 * p.y + pM.y) / (h * h);
+      const sp2 = xt * xt + yt * yt;
+      const k = Number.isFinite(sp2) && sp2 > 1e-12
+        ? (xt * ytt - yt * xtt) / Math.pow(sp2, 1.5) : 0;
+      grid[iy * Nx + ix] = k;
+      const ak = Math.abs(k);
+      if (Number.isFinite(ak) && ak > kAbsMax) kAbsMax = ak;
+    }
+  }
+
+  // Normalise by the 95th percentile so junction-spikes (arc mode) and
+  // any high-curvature ridges (modulated) don't wash out the rest.
+  const sorted = Array.from(grid).map(Math.abs).sort((a, b) => a - b);
+  const norm = Math.max(sorted[Math.floor(sorted.length * 0.95)] || 1, 1e-6);
+
+  const cellW = W / Nx, cellH = H / Ny;
+  for (let iy = 0; iy < Ny; iy++) {
+    for (let ix = 0; ix < Nx; ix++) {
+      let v = grid[iy * Nx + ix] / norm;
+      if (v > 1) v = 1; else if (v < -1) v = -1;
+      let r, g, b;
+      if (v >= 0) {
+        const u = v;
+        r = 255;
+        g = Math.round(255 * (1 - u));
+        b = Math.round(255 * (1 - u));
+      } else {
+        const u = -v;
+        r = Math.round(255 * (1 - u));
+        g = Math.round(255 * (1 - u));
+        b = 255;
+      }
+      ctx.fillStyle = `rgb(${r},${g},${b})`;
+      ctx.fillRect(ix * cellW, iy * cellH, cellW + 1, cellH + 1);
+    }
+  }
+
+  // Light grid lines at the six piece boundaries (modulated) or at the
+  // arc-fundamental-domain boundaries (arc).
+  ctx.strokeStyle = 'rgba(0,0,0,0.18)';
+  ctx.lineWidth = 1;
+  if (modulated) {
+    for (let k = 1; k < 6; k++) {
+      // pieces centred on lobe at t=0,2π/3,4π/3 → boundaries shifted by π/6
+      const tBoundary = (k * Math.PI / 3) - Math.PI / 6;
+      const tt = ((tBoundary % TAU) + TAU) % TAU;
+      const y = (tt / TAU) * H;
+      ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke();
+    }
+  } else {
+    for (let k = 1; k < 3; k++) {
+      const y = (k * TAU / 3) / TAU * H;
+      ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke();
+    }
+  }
+
+  // Track overlay
+  if (S.showPath && (S.particle === 'proton' || S.particle === 'neutron')) {
+    let getT, color;
+    if (modulated) {
+      const t0 = (S.particle === 'proton') ? MOD.t0Proton : MOD.t0Neutron;
+      getT = th => t0 + th / 2;
+      color = (S.particle === 'proton') ? '#ff5252' : '#40c4ff';
+    } else {
+      const dPhi = (S.particle === 'neutron')
+        ? phiL + 2 * (TAU / 3 - phiL) : (TAU / 3) + phiL;
+      const phiStart = (S.particle === 'neutron') ? phiL : 0;
+      getT = th => phiStart + dPhi * (th / TAU);
+      color = (S.particle === 'proton') ? '#ff5252' : '#40c4ff';
+    }
+    // Plot the diagonal, splitting at t-wraps.
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 1.8;
+    ctx.beginPath();
+    const N = 400;
+    let prevY = null;
+    for (let i = 0; i <= N; i++) {
+      const th = (i / N) * TAU;
+      const tWrapped = ((getT(th) % TAU) + TAU) % TAU;
+      const x = (th / TAU) * W;
+      const y = (tWrapped / TAU) * H;
+      if (i === 0 || (prevY !== null && Math.abs(y - prevY) > H * 0.5)) {
+        ctx.moveTo(x, y);
+      } else {
+        ctx.lineTo(x, y);
+      }
+      prevY = y;
+    }
+    ctx.stroke();
+    // Start (green) and end (red) markers
+    const tStart = ((getT(0) % TAU) + TAU) % TAU;
+    const tEnd   = ((getT(TAU) % TAU) + TAU) % TAU;
+    ctx.fillStyle = '#00e676';
+    ctx.beginPath(); ctx.arc(0, (tStart / TAU) * H, 3.2, 0, TAU); ctx.fill();
+    ctx.fillStyle = '#ff1744';
+    ctx.beginPath(); ctx.arc(W, (tEnd / TAU) * H, 3.2, 0, TAU); ctx.fill();
+  }
+
+  // Axis labels
+  ctx.fillStyle = '#aaa';
+  ctx.font = '9px monospace';
+  ctx.fillText(modulated ? 'θ →' : 'θ →', W - 22, H - 4);
+  ctx.fillText(modulated ? 't ↓' : 'φ ↓', 4, 11);
+}
+
 /* ─── Scene setup ──────────────────────────────────────── */
 
 const view = $('view');
@@ -1420,6 +1577,7 @@ function rebuildAll() {
 
   if (modulated) drawModulatedCanvas();
   else           drawProfileCanvas(cachedProfile, S.particle);
+  drawSheetCanvas();
   updateInfo();
 }
 
