@@ -22,8 +22,9 @@ This document is the **original hypothesis and roadmap**; it predates the numeri
 - **The wall, and the fix.** A plain C_N-symmetric curve under the intrinsic operator locks the lowest three modes to a 1 : 1 : 2 ratio and hits a ~6 % wall — the n = ±1 doublet is symmetry-protected and no shape perturbation splits it. The fix is a **Wilson-loop flux** Φ threaded through the closed loop (the chirality breaker of §4.3, candidate 3): it shifts mode n to (n + f) with f = Φ/2π, splits the doublet *linearly* in f, and brings the fit to **~1.5 %**. The flux is sourced by the substrate's antisymmetric chirality χ_anti ([grid-primitive ch.9](../../grid-primitive/09-chirality-asymmetry.md)) — a substrate constant, not a free knob. Script: [scripts/neutrino_1d_fit.py](../scripts/neutrino_1d_fit.py); output [outputs/neutrino_1d_fit.txt](../outputs/neutrino_1d_fit.txt).
 - **Oscillation / PMNS mixing — not yet computed.** Phase C (§8.3) has not been run. But the same χ_anti that splits the doublet is expected to source θ₁₃ and δ_CP, so the §4.3 linkage now has a concrete physical carrier.
 - **Caveats.** The flux breaks time-reversal, so the exact Majorana structure of §3.3 becomes slightly broken — consistent with δ_CP ≠ 0, and with the unsettled empirical status of Majorana neutrinos. Q = 0 (the load-bearing result) is untouched. A light n = 0 state at ~1.6 meV is predicted. The residual ~1.5 % sits on m₃.
+- **Mode-occupancy fork — two candidates kept open (2026-05-23).** The Phase B fit hard-codes the assignment (ν₁, ν₂, ν₃) ↔ modes (n = −1, +1, −2) — a "1 : 1 : 2" triple, predicting **normal mass ordering**. An equally consistent alternative takes the three *genuine lowest rungs* of the loop ladder, (ν₃, ν₁, ν₂) ↔ (n = 0, −1, +1), predicting **inverted mass ordering** with one near-massless eigenstate. Both fit the measured Δm² splittings with the same two knobs (R/c, f). See §4.4 for the arithmetic and §9 open question 2. JUNO / DUNE will pick between them this decade.
 
-The structural arguments of §1–§7 (no EM charge, Majorana, three-fold generation count) stand; the §8 spectrum-fit roadmap now has a working mechanism.
+The structural arguments of §1–§7 (no EM charge, Majorana, three-fold generation count) stand; the §8 spectrum-fit roadmap now has a working mechanism — with a live ordering fork in §4.4.
 
 ---
 
@@ -172,6 +173,44 @@ The same perturbation that lifts the doublet degeneracy is the natural source of
 
 **Update (Phase B — see §0).** The third breaker, *small chirality*, is the one that has been realized and numerically tested. It enters the operator as a **Wilson-loop flux** through the closed loop — sourced by the substrate's antisymmetric chirality χ_anti ([grid-primitive ch.9](../../grid-primitive/09-chirality-asymmetry.md)) — and brings the mass fit to ~1.5 % (config-neutrino §NC.5). The first breaker (asymmetric shape) was tried earlier and is too weak: a 1-fold shape harmonic splits the doublet only at second order, whereas the flux splits it at first order.
 
+### 4.4 Mode-occupancy fork: which three rungs?
+
+The §0 update assigned the three observed neutrinos to loop modes **n = −1, +1, −2**. That is one of *two* equally consistent assignments to the same flux-shifted ladder; the other takes the three genuine *lowest* rungs, **n = 0, −1, +1**. The choice is not internal to the curve's mode structure — it commits the framework to a specific neutrino mass ordering.
+
+**Common arithmetic.** Under flux fraction f = Φ/2π the closed-loop modes have m ∝ |n + f| (linear dispersion; eigenvalue (n+f)²). The plain ladder n ∈ {0, ±1, ±2, ±3, …} is the spectrum from which three rungs become (ν₁, ν₂, ν₃). Two assignments survive structurally — they both produce a "1 + 2" pattern (one isolated mode plus a tight doublet) that matches the observed shape of the neutrino spectrum.
+
+| Choice | Modes | Masses (∝) | Isolated mode | Ordering |
+|---|---|---|---|---|
+| **A** (current §0 fit) | n = −1, +1, −2 | \|1−f\|, \|1+f\|, \|2−f\| | n = −2 at top | **normal** (m₁, m₂ light; m₃ ≈ 2 m₁ above) |
+| **B** (alternative) | n = 0, −1, +1 | \|f\|, \|1−f\|, \|1+f\| | n = 0 at bottom | **inverted** (m₃ ≈ 0 alone; m₁, m₂ close above) |
+
+**Knob count is the same for both** — c (overall dispersion scale) and f (flux fraction) — two free parameters, two measured splittings (Δm²_sol ≈ 7.5×10⁻⁵ eV², Δm²_atm ≈ 2.5×10⁻³ eV², ratio ≈ 1/33). Solving each:
+
+| | A: {−1, +1, −2} | B: {0, −1, +1} |
+|---|---|---|
+| Δm²_small / Δm²_large formula | 4f / (3 − 2f) | 4f / (1 − 2f) |
+| f reproducing ratio 1/33 | ≈ 0.022 | ≈ 0.0075 |
+| c reproducing Δm²_large | ≈ 29 meV | ≈ 50 meV |
+| Predicted masses (meV) | 28.5, 29.7, 57.6 | 0.4, 50.0, 50.8 |
+| Σm_ν (meV) | ≈ 116 | ≈ 101 |
+| Frequency triple (THz) | 6.9, 7.2, 13.9 | 0.09, 12.1, 12.3 |
+| Lightest eigenstate | m₁ ≈ 28 meV (compressed spectrum) | m₃ ≈ 0.4 meV (near-massless) |
+| Mass ordering predicted | **normal** | **inverted** |
+
+(The §NC.5 fit used f ≈ 0.051, not 0.022 — it was fit to working masses 30 / 33 / 60 meV, not to the measured Δm² ratio directly. Retuning to the measured ratio gives the table values above.)
+
+**Why the ordering is forced for choice B.** Under any flux with |f| < ½, the constant mode n = 0 has the smallest |n+f| and is necessarily the *lightest* — the constant function always minimizes the Rayleigh quotient on the loop. So choice B is locked to inverted ordering (light isolated ν₃ = n = 0); no shape perturbation, deformation, or further chirality moves n = 0 off the bottom. Choice A excludes n = 0 entirely and grabs the n = −2 mode instead, leaving the (n = ±1) doublet as the *light* pair and the lone heavy mode (n = −2) on top — that is normal ordering.
+
+**Why both are kept open.**
+
+- *Cleanliness.* Choice B is the natural "three lowest rungs"; choice A excludes n = 0 and skips a rung to reach n = −2. The choice-A reading needs a *structural* reason n = 0 is omitted — that the constant mode is the loop's non-propagating zero/gauge mode, with no particle interpretation. That reason is plausible but not yet derived.
+- *Fingerprint.* The "two near 7 THz + one near 14 THz" pattern referenced informally for the framework's neutrino spectrum is the choice-A signature (the n = −2 rung is literally ~2× the doublet). Choice B replaces it with a near-zero mode plus a tight pair near 12 THz — a quite different observable triple.
+- *Experimental status.* Global oscillation fits currently *mildly* favor normal ordering (≈ 2σ, not decisive). Cosmology mildly disfavors inverted (choice B's Σm_ν ≈ 0.10 eV is uncomfortably close to the ≈ 0.12 eV bound). JUNO and DUNE will resolve the ordering this decade — the same experiment selects between A and B.
+
+**Honest summary.** The "why not n = 0" gap flagged earlier in this section is *the same question* as the mass-ordering choice. Adopting choice A commits the framework to normal ordering plus a structural exclusion of the n = 0 mode; adopting choice B commits to inverted ordering with n = 0 as the lightest physical neutrino (ν₃). Both are live; the document holds them as parallel candidates until experiment selects, and §NC.7 in [config-neutrino.md](config-neutrino.md) carries the same fork at the config level.
+
+**Operational note.** The fit script [scripts/neutrino_1d_fit.py](../scripts/neutrino_1d_fit.py) presently hard-codes choice A. To genuinely keep both candidates symmetric, the mode triple needs to be a CLI parameter (e.g. `--modes=-1,1,-2` vs `--modes=0,-1,1`) so a choice-B fit can be run and compared at the same precision. This is downstream work, not part of the present documentation pass.
+
 ---
 
 ## 5. Relation to the tiny-tube 2D picture
@@ -315,7 +354,11 @@ If A–D all close, the 1D-curve neutrino picture is mature enough to promote ou
 
 1. **Which Hamiltonian?** The Jensen-Koppe / intrinsic-Laplacian split has to be resolved. They differ in subleading orders but agree on the structural result (singlet + doublet). Phase A.
 
-2. **Spectrum ordering.** Tight-binding gives singlet below doublet (attractive standard); observed pattern wants singlet above doublet. **Update (Phase B run):** resolved by the flux picture — the lowest three nonzero modes are the n = −1, +1 doublet (the light pair m₁, m₂) and the n = −2 mode (m₃ ≈ 2m₁); the Wilson-loop flux splits m₁ ≠ m₂. See config-neutrino §NC.5.
+2. **Spectrum ordering — live fork between mass orderings.** Tight-binding gives singlet below doublet (attractive standard); observed pattern wants singlet above doublet. **Update (Phase B run + 2026-05-23 review):** the flux picture admits *two* equally consistent mode-occupancy choices, each fitting the measured Δm² ratio with the same two knobs (R/c, f):
+   - **Choice A:** modes (n = −1, +1, −2) → light doublet + heavy ≈ 2× singleton → **normal mass ordering** (m₁, m₂ light; m₃ above). Requires a structural reason the n = 0 mode is excluded.
+   - **Choice B:** modes (n = 0, −1, +1) → near-massless ν₃ + heavy close pair → **inverted mass ordering**. Forced by the constant mode always sitting at the bottom for |f| < ½.
+
+   The framework therefore *predicts* the mass ordering, depending on which choice is structurally correct. See §4.4 for the arithmetic and config-neutrino §NC.7. The ordering is experimentally decidable by JUNO / DUNE; cosmology (Σm_ν bound) is an independent mild discriminator.
 
 3. **C_3-breaking source.** Asymmetric shape vs shared-dim coupling vs chirality — only one of these is likely to fit all four deviations from TBM with a single parameter. Phase C.
 

@@ -262,6 +262,8 @@ None of the three fixes the neutrino sector. Any [config-neutrino.md](config-neu
 
 The figure below shows the assembled picture with the **NC** option attached — the 1D neutrino curve as an outer loop coupled to the three delta corners. It is illustrative of one ν-sector choice: the charged-fermion content (the quark wye inside the electron delta = K4) is fixed; the neutrino attachment is the open part.
 
+NC itself carries an open structural fork that the candidate does not fix: which three rungs of the neutrino curve's flux-shifted mode ladder host the three mass eigenstates — modes **(n = −1, +1, −2)** (predicting **normal** mass ordering) or **(n = 0, −1, +1)** (predicting **inverted** mass ordering). Both are equally compatible with the K4 attachment shown below; experiment (JUNO / DUNE, cosmology) selects. See [neutrino-1D.md §4.4](neutrino-1D.md) and [config-neutrino.md §NC.7](config-neutrino.md).
+
 ![QY-ED-share3 (K4) with the neutrino curve](../outputs/candidate-map.svg)
 
 Heavy lines are **2D-sheet** connections — the six K4 `Ma(i, j)` pairs: three quark wye legs and three electron delta legs (labelled with the §4.1 Solution A assignment). The dotted lines are the **1D-curve** couplings of the neutrino loop to the three delta corners. The neutrino loop carries its N = 3 three-lobed tube-function shape — the shape the neutrino fit prefers ([neutrino-1D.md §2.3, §6.4](neutrino-1D.md)); the lobe depth drawn is schematic. Figure script: [scripts/draw_candidate_map.py](../scripts/draw_candidate_map.py).

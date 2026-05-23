@@ -173,7 +173,22 @@ The flux is candidate 3 ("small chirality / shear") of [neutrino-1D.md §4.3](ne
 
 **On Majorana.** A flux breaks time-reversal — which is exactly what splits ψ₊ₙ from ψ₋ₙ — so exact structural Majorana (§NC.3) is traded for a slightly-broken version. This is consistent with the framework's own expectation of δ_CP ≠ 0, and with the empirical fact that exact Majorana-ness of neutrinos is not established. The load-bearing structural result, **Q = 0, is untouched**: it follows from the 1D dim count, which the flux does not change.
 
-**Open refinements.** The residual ~1.5% on m₃ and the interpretation of the predicted light n = 0 state remain. Neither is a structural obstruction; both are downstream work.
+**Open refinements.** The residual ~1.5% on m₃ and the interpretation of the predicted light n = 0 state remain. Neither is a structural obstruction; both are downstream work — and the n = 0 question is part of the larger mode-occupancy fork (§NC.7).
+
+### NC.7 — Mode-occupancy fork (normal vs inverted ordering)
+
+The §NC.5 fit assigns the three observed neutrinos to loop modes **(n = −1, +1, −2)** — the "1 : 1 : 2 pattern." A second assignment to the same flux-shifted ladder, **(n = 0, −1, +1)** — the three genuine *lowest* rungs — is equally consistent with the curve's mode structure and fits the measured Δm² ratio with the same two knobs (overall scale c, flux fraction f). The choice commits the framework to a different neutrino **mass ordering**:
+
+| Choice | Modes | Mass ordering | Lightest eigenstate | f for ratio 1/33 | Σm_ν (meV) |
+|---|---|---|---|---:|---:|
+| **A** (current fit) | n = −1, +1, −2 | **normal** | m₁ ≈ 28 meV | ≈ 0.022 | ≈ 116 |
+| **B** (alternative) | n = 0, −1, +1 | **inverted** | m₃ ≈ 0.4 meV (= n = 0 mode) | ≈ 0.0075 | ≈ 101 |
+
+Both candidates live within the NC config; the choice is which three rungs of the loop's mode ladder the three observed mass eigenstates occupy. Choice B is the cleaner "three genuine lowest modes"; choice A requires a structural reason the n = 0 mode is excluded (likely the loop's non-propagating zero/gauge mode). Choice B's ordering is *forced*: the constant mode always sits at the bottom of |n+f| for |f| < ½.
+
+Full derivation, the per-mode mass predictions, and the predicted frequency triples (THz) are in [neutrino-1D.md §4.4](neutrino-1D.md). The fork resolves experimentally — global oscillation fits mildly favor normal ordering (~2σ); cosmology mildly disfavors inverted (Σm pushes near the bound); JUNO and DUNE will settle it this decade. Until then, both A and B are held as live candidates.
+
+**Scope note for §NC.5.** The 1.5%, f ≈ 0.051, and 29.68 / 32.87 / 60.88 meV numbers above are **choice-A** results, with f fit to *working* (30, 33, 60) meV mass targets rather than to the measured Δm² ratio directly. A choice-B fit at comparable precision has not been run; it requires the script's mode triple to become a CLI parameter (currently hardcoded). See [neutrino-1D.md §4.4](neutrino-1D.md), operational note.
 
 ---
 
@@ -249,6 +264,8 @@ Numerically, ND closes to machine precision on the 3-DOF underdetermined manifol
 | Status | preferred | working | de-emphasized | placeholder |
 
 NS and NC are the two preferred directions: NS for empirical accessibility (sign-flipped modes fit at ~1% today), NC for structural elegance (Q = 0 falls out of the dim count for free, and the doublet split — once the config's blocker — is now resolved by a Wilson-loop flux at ~1.5%). ND is documented for completeness and for decomposing legacy candidates; NY is a placeholder.
+
+NC itself carries an open **mode-occupancy fork** (§NC.7): the same flux-shifted ladder admits two physically distinct assignments of the three observed eigenstates, one giving normal mass ordering and one giving inverted. Both are held live until experiment selects.
 
 ---
 
