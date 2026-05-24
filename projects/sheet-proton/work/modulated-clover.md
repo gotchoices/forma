@@ -350,50 +350,68 @@ sum = 1 from the cos-harmonics. A sin-only search reaches D ≈ 1 but leaves the
 Q = −0.001, on a cross-section simple at every ring angle (star-margin +0.26,
 κ_max ≈ 15 — moderate, not a near-cusp). **The charge construction works.**
 
-### 4.6 C₃ multiplicity — three tracks per orbit, and the color reading
+### 4.6 What "the" proton means — color from C₃, spin from the half-twist
 
-§4.4 spoke of "the" proton and "the" neutron, collapsing each C₃ orbit into a single
-representative. Geometrically there are **three tracks in each orbit** — one starting on
-each major lobe (t₀ = 0, 2π/3, 4π/3) for the proton, and one on each minor lobe
-(t₀ = π/3, π, 5π/3) for the neutron. The three are related by the cross-section's C₃
-symmetry:
+§4.4 spoke of "the" proton and "the" neutron. Two features of the surface give each more
+internal structure than a single track suggests: the cross-section's C₃ symmetry (color)
+and the half-twist gluing (spin). Together they fix what "the" proton physically *is* on
+this surface, and how many of them the surface holds.
+
+**Color from C₃ — one physical proton, three color basis states.** Geometrically there are
+three (1/2, 1) tracks in each orbit — one starting on each major lobe (t₀ = 0, 2π/3, 4π/3)
+for the proton, one on each minor (t₀ = π/3, π, 5π/3) for the neutron — related by the
+cross-section's C₃ isometry
 
 <!-- z(t + 2π/3, θ) = e^{2πi/3} z(t, θ) -->
 $$
-z(t + 2\pi/3,\,\theta) \;=\; e^{2\pi i/3}\,z(t,\theta)
+z(t + 2\pi/3,\,\theta) \;=\; e^{2\pi i/3}\,z(t,\theta) ,
 $$
 
-at every θ — the 3-fold harmonics cos(3t), sin(3t) are invariant under t → t + 2π/3, and
-the e^{it} prefactor supplies the 120° phase. This C₃ action is an isometry of the swept
-surface, so the experienced-curvature integral (§4.3) is identical across the orbit.
-Within each piece there is also a continuous parameter (where in a major / minor you
-start), but the lobe center is the natural representative; small shifts give a small
-variation around the orbit-average.
-
-**The natural reading is color (working hypothesis).** Treat the C₃ rotation as the
-geometric realization of SU(3)_color: the three C₃-related tracks are color-basis states,
-and the physical proton is the Z₃-singlet combination
+(the 3-fold harmonics cos(3t), sin(3t) are invariant under t → t + 2π/3; the e^{it}
+prefactor supplies the 120° phase). So the experienced-curvature integral (§4.3) is
+identical across the orbit. **The three tracks are not three particles:** under the
+natural reading — that C₃ is the geometric realization of SU(3)_color — they are
+color-basis states, and the physical proton is the Z₃-singlet superposition
 
 <!-- |proton> ~ |t0=0> + |t0=2π/3> + |t0=4π/3> -->
 $$
 \lvert\mathrm{proton}\rangle \;\propto\; \lvert t_0{=}0\rangle
-  \;+\; \lvert t_0{=}2\pi/3\rangle \;+\; \lvert t_0{=}4\pi/3\rangle
+  \;+\; \lvert t_0{=}2\pi/3\rangle \;+\; \lvert t_0{=}4\pi/3\rangle ,
 $$
 
-— colorless by construction. Under this reading the cross-section's 3-fold rotational
-symmetry *is* the geometric source of color SU(3), consistent with the Z₃ confinement
-framing in [clover-quarks.md §11.6](clover-quarks.md). The per-track charge integral of
-§4.3 equals the orbit-average by C₃, so the Q_p ≈ +1, Q_n ≈ 0 numbers from §4.5 hold
-whether one reads them as "the proton's charge" or "one color's contribution" — the
-conceptual content differs, the numerical answer is the same. The reward of adopting the
-color reading: the construction generates an SU(3)_color symmetry geometrically, on top
-of the closure + charge result.
+colorless by construction (likewise the neutron). The Q_p ≈ +1, Q_n ≈ 0 numbers from §4.5
+are per-track integrals, which equal the orbit-average by C₃ — so they apply directly to
+the singlet, no rescaling needed. (Within each piece there is also a continuous
+starting-position parameter, but the lobe center is the natural representative; small
+shifts give a small variation around the orbit-average.) The reward: the construction
+generates an SU(3)_color symmetry geometrically, on top of the closure + charge result.
+This is consistent with the Z₃-confinement framing in [clover-quarks.md §11.6](clover-quarks.md).
 
-**The "three quarks" vs "three colors" distinction.** A pitfall worth naming: the 3
+**Spin from the half-twist — two states per particle.** Independently of C₃, the
+half-twist gluing forces the wave-mode quantization k_θ = k_t/2 + m (§7.4). For *odd* k_t
+— the sector that hosts the (1/2, 1) tracks at the wave level — k_θ is half-integer, and
+the lowest modes form a k_θ = ±1/2 doublet. That is fermionic Bloch quantization, the
+standard geometric signature of spin-1/2. Each color-singlet proton (and neutron)
+therefore carries a 2-fold spin doublet on top of its 3-fold color structure.
+
+**Net occupancy — 2 protons + 2 neutrons in the lowest shell.** With color collapsed to
+a singlet and spin supplying a 2-fold doublet, the lowest-energy proton state has two
+Pauli-distinguishable occupants (spin-↑, spin-↓), and likewise the neutron. The surface's
+lowest-occupancy state therefore holds exactly **2 protons + 2 neutrons**, the two of
+each kind of opposite spin — the 1s nuclear shell. A third proton would duplicate an
+occupied (singlet + spin) state; Pauli forbids it.
+
+**Three quarks vs three colors — different threes.** A pitfall worth naming: the 3
 quarks of the proton (uud) are the 3 *pieces* a single track covers — 2 majors
 (u, Q = +2/3) and 1 minor (d, Q = −1/3), summing to Q = +1 (§2.3). The 3 *tracks* in a C₃
 orbit are color labels, not quark constituents. These are different threes; conflating
 them would attribute quark structure to color rotations and vice versa.
+
+**Caveats.** The color reading is a working hypothesis — the C₃ → SU(3)_color
+identification is natural but not yet derived from a deeper principle. The spin doublet
+rests on §7.4's Bloch-sector labeling (solid) plus the standard expectation that the
+lowest mode in the odd-k_t sector forms an SU(2) doublet — true for a flat reference but
+waiting on the §7 eigensolve to confirm on the curved surface.
 
 ---
 
@@ -611,6 +629,13 @@ A plane wave e^{i(k_t t + k_θ θ)} obeys these iff k_t ∈ ℤ and k_θ = k_t/2
 of the third-integer momenta the 1/3-twist forces on the plain clover,
 [clover-quarks.md §11](clover-quarks.md)). The metric is not flat, so plane waves are
 not eigenmodes; but they label the Bloch sectors the true eigenmodes decompose into.
+
+**This is the spin-1/2 sector.** For *odd* k_t — the sector that hosts the (1/2, 1)
+proton/neutron tracks at the wave level — k_θ is half-integer, with a lowest doublet at
+k_θ = ±1/2. Antiperiodic boundary conditions, fermionic Bloch quantization, the standard
+geometric origin of spin-1/2. Combined with the C₃-color structure of §4.6, this is what
+gives the surface its **2 protons + 2 neutrons** lowest-shell occupancy — the 1s nuclear
+shell, with the two of each kind of opposite spin.
 
 ### 7.5 What remains, and one structural point
 
