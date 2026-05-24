@@ -474,6 +474,16 @@ lowest-occupancy state therefore holds exactly **2 protons + 2 neutrons**, the t
 each kind of opposite spin — the 1s nuclear shell. A third proton would duplicate an
 occupied (singlet + spin) state; Pauli forbids it.
 
+*Where the second proton lives.* Both 1s protons share the same (1/2, 1) track structure
+and the same Z₃-singlet color superposition over the three C₃-related tracks; they differ
+only in the sign of the ring-circulation. The two are labeled (n_t, n_r) = (1/2, +1) and
+(1/2, −1) — equivalently k_θ = +1/2 and k_θ = −1/2 in the wave picture. The geometric
+picture: two waves on the same closed track, one circulating one way around the ring, the
+other the opposite way — same surface, same track, same color content, opposite
+circulation. Likewise the two neutrons. The second proton is **not** a separate set of
+three tracks, and **not** an octave-harmonic excitation on the same knot; it is the
+counter-rotating spin partner on the same knot.
+
 **Three quarks vs three colors — different threes.** A pitfall worth naming: the 3
 quarks of the proton (uud) are the 3 *pieces* a single track covers — 2 majors
 (u, Q = +2/3) and 1 minor (d, Q = −1/3), summing to Q = +1 (§2.3). The 3 *tracks* in a C₃
