@@ -253,6 +253,26 @@ inline in §"The identification" above; not a separate open question.)
    structure is open. Worth flagging as a sibling question for
    later projects, not for this back-edit.
 
+   MaSt currently carries two distinct candidate readings for why
+   the fundamental fermion spin is 1/2, alluded to elsewhere in the
+   repo and not adjudicated here:
+
+   - **Two-dimension reading.** Spin 1/2 because the compact
+     substrate for matter sheets is 2D — two compact directions
+     produce a half-integer spectrum naturally when the closure
+     condition mixes the two windings.
+   - **Winding-ratio reading.** Spin 1/2 because of the specific
+     ratio of windings on the sheet — configurations of type
+     (1, 2) or (1/2, 1) and their relatives carry an effective
+     "half" through the way the two windings synchronize, not
+     through the dimensionality of the substrate per se.
+
+   The two readings are not equivalent (one is about the *number*
+   of compact directions, the other about *how* a given pair of
+   windings combines), and which one — or whether some combination
+   — is correct is open. Both should be tracked when the spin
+   question is taken up systematically.
+
 2. **Reverse direction (framework hypothesis, not a derived
    consequence).** If rest mass = quantized angular momentum around
    a compact loop, does any observed rest mass imply a compact
