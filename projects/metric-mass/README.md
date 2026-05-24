@@ -109,6 +109,8 @@ mass.
 
 8. [08-closing-summary.md](08-closing-summary.md) — *Closing summary.* What the project established, ruled out, and unexpectedly found. Open questions made legible. Hand-off to follow-up projects (charge, gravity mechanism, cosmological shear dynamics).
 
+9. [09-harmonic-oscillator-bridge.md](09-harmonic-oscillator-bridge.md) — *Appendix — A second reading: the 1D harmonic-oscillator translation.* Recasts the Chapter 2 spectrum in operator-algebra clothing. Translation table between the classical wave reading and a 1D HO, plus signposts to what the HO reading opens up — coherent-state localized particles, vacuum amplitude, and the U(1)×U(1) (or, in the equal-radii limit, SU(2)) symmetry of multi-direction extensions that [metric-charge](../metric-charge/) will lean on. Forward-looking hand-off; no machinery imported into the rest of metric-mass.
+
 ## TODOs / pending work
 
 The project is structurally finished, but several pieces of work remain available if desired:
