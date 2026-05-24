@@ -41,10 +41,14 @@ $$
 — a quantized integer angular momentum in units of ℏ. Same form as
 the orbital angular momentum spectrum of standard quantum mechanics,
 but here arising from the *periodicity* of the compact direction
-rather than from diagonalizing L̂² and L̂_z. (Symbol convention:
-**J_u** for the angular momentum about the loop, to avoid clash
-with **L_u** = 2π R_u, the compact circumference used as a metric
-parameter throughout metric-charge.)
+rather than from the angular-momentum eigenvalue problem in 3D
+extended space.
+
+**Symbol convention.** **J_u** is used for the angular momentum
+about the loop, distinct from **L_u** = 2π R_u, which is the
+compact circumference (a metric parameter used throughout
+metric-charge). Where confusion is possible, J denotes angular
+momentum and L denotes a length.
 
 **Embedding caveat.** The phrase "angular momentum about the loop's
 center" requires the compact direction to be embedded in a plane
@@ -74,9 +78,21 @@ $$
 — **rest mass × compact radius × c = angular momentum about the
 loop**.
 
-Equivalently, define ω_rot = c/R_u — the angular rate at which a
-massless wave goes once around the loop (independent of n). Then
-for any n:
+Two frequencies show up in the wave on the loop. They give the
+same rest energy but mean different things, and conflating them is
+easy:
+
+| Frequency | Formula | Meaning |
+|---|---|---|
+| ω_rot | c / R_u (independent of n) | The angular rate at which a massless wave goes once around the loop |
+| ω_n | \|n\| c / R_u (scales with n) | The temporal oscillation rate at a fixed point on the loop |
+
+The two are related by ω_n = |n| · ω_rot.
+
+Each gives the rest energy through its own identity:
+
+- **Rotor identity (E = J · ω_rot).** The massless-on-a-ring
+  result E = pc, applied around the loop with p = J/R, gives
 
 <!-- m_n c² = |J_u| · ω_rot = |n| ℏ · (c / R_u) -->
 $$
@@ -84,27 +100,22 @@ m_n\,c^2 \;=\; |J_u| \cdot \omega_{\text{rot}}
 \;=\; |n|\,\hbar \cdot \frac{c}{R_u}
 $$
 
-— rest energy equals angular momentum times the
-(n-independent) loop circumnavigation rate. This is the
-massless-on-a-ring identity E = p c applied around the loop, with
-p = J/R. It is *not* the non-relativistic rotor identity
-E = ½ J ω, which the form E = J · ω might otherwise suggest.
+  *Not* the non-relativistic rotor identity E = ½Jω, which the
+  form E = J·ω might otherwise suggest — the factor of ½ does not
+  appear here because the wave is massless and relativistic.
 
-A separate (and equal) reading uses the **temporal** oscillation
-frequency ω_n = |n| c/R_u — the rate at which U_n e^{−i ω_n t}
-oscillates at a fixed point on the loop, which scales linearly with
-n. By the Planck–Einstein relation E = ℏ ω applied to ω_n:
+- **Planck–Einstein identity (E = ℏω_n).** The standard
+  identification of energy with temporal oscillation frequency
+  gives
 
 <!-- m_n c² = ℏ ω_n -->
 $$
 m_n\,c^2 \;=\; \hbar\,\omega_n
 $$
 
-The two readings (rotor identity with ω_rot, Planck–Einstein with
-ω_n) give the same E because ω_n = |n| · ω_rot — they are
-consistent but distinct frequencies; ω_rot is the pattern's
-rotation rate around the loop, ω_n is the field's temporal
-oscillation rate at a fixed point.
+Both are correct and equivalent; they just emphasize different
+features of the same wave (geometric rotation vs. temporal
+oscillation).
 
 ## Physical reading
 
