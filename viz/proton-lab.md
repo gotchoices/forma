@@ -219,6 +219,24 @@ When a baryon is selected, its track is overlaid as a diagonal:
 Green dot = track start; red dot = track end. The same colour code used
 by the 3D closure markers, so the two views tell the same story.
 
+### 1.10 Charge-segment overlay
+
+A "**show charge segments**" checkbox under the particle controls switches
+every active baryon's track from its solid identity-colour to a *segmented*
+rendering: red where the tube-direction curvature κ is positive (convex —
+the u-like contribution to the experienced-curvature integral) and blue
+where κ is negative (concave — the d-like contribution). This visualises
+the **operative charge integrand** the modulated-clover construction
+relies on (§4.3 of [modulated-clover.md](../projects/sheet-proton/work/modulated-clover.md)):
+the per-track sum of signed κ along the path is the baryon charge (+1
+proton, 0 neutron). Both 3D paths and the (θ, t) sheet diagonals respect
+the toggle, so the same red/blue pattern appears in both views.
+
+When the option is **off** (default), each particle is drawn in its
+identity colour: red shades for protons (`#ff5252`, `#d32f2f`, `#ff8a80`)
+and yellow shades for neutrons (`#ffd54f`, `#ffb300`, `#fff176`). Blue is
+reserved for the electron and green for the neutrino in future viz work.
+
 ### 1.4 Particle assignments
 
 Per [clover-quarks.md §3 & §12](../projects/sheet-proton/work/clover-quarks.md):

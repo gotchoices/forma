@@ -243,6 +243,14 @@
           <button class="btn step-btn" id="btn-nN-inc">+</button>
         </div>
       </div>
+      <div class="tog" style="margin:8px 0 4px 0;">
+        <label><input type="checkbox" id="cb-charge"> show charge segments</label>
+      </div>
+      <div style="font-size:10px; color:#888; line-height:1.4; margin-bottom:6px;">
+        Splits each track into red (convex, u-like, κ &gt; 0) and blue
+        (concave, d-like, κ &lt; 0) by the sign of the experienced tube
+        curvature — the operative integrand for the track's charge.
+      </div>
       <div class="particle-info" id="particle-info">
         <div>Q<sub>total</sub> = <span class="pcharge" id="p-Q">+1</span> e</div>
         <div>Content: <span id="p-content">1 proton</span></div>
@@ -424,6 +432,12 @@ const S = {
   protonN:   1,
   neutronOn: false,
   neutronN:  1,
+  // When on, each track is segmented red (convex / u-like) and blue
+  // (concave / d-like) by the sign of the tube-direction curvature at
+  // every point — i.e. the operative experienced-curvature density that
+  // integrates to the track's net charge. Off: each particle is drawn in
+  // its identity colour (red shades = proton, yellow shades = neutron).
+  showCharge: false,
   // Fractal construction (per work/clover-on-clover.md §3 rewritten):
   //  fractalLevel = 1 : base clover (no recursion).
   //  fractalLevel = 2 : bisect each level-1 L120, insert primitive at r_L2/r_p.
@@ -449,12 +463,21 @@ const S = {
  * on the 3 major lobes and the 3 neutron phases on the 3 minor lobes,
  * disjoint from each other. Colours are slightly varied per phase so the
  * phases can be told apart at a glance; the underlying particle identity
- * (red = proton, cyan = neutron) is preserved.
+ * (red shades = proton, yellow shades = neutron) is preserved. Blue is
+ * reserved for the electron and green for the neutrino in future work.
  */
-const PROTON_COLORS  = [0xff5252, 0xff8a65, 0xffab40];
-const NEUTRON_COLORS = [0x40c4ff, 0x4dd0e1, 0x80deea];
-const PROTON_COLORS_CSS  = ['#ff5252', '#ff8a65', '#ffab40'];
-const NEUTRON_COLORS_CSS = ['#40c4ff', '#4dd0e1', '#80deea'];
+const PROTON_COLORS  = [0xff5252, 0xd32f2f, 0xff8a80];
+const NEUTRON_COLORS = [0xffd54f, 0xffb300, 0xfff176];
+const PROTON_COLORS_CSS  = ['#ff5252', '#d32f2f', '#ff8a80'];
+const NEUTRON_COLORS_CSS = ['#ffd54f', '#ffb300', '#fff176'];
+
+/* Colours for the charge-segment overlay: red where the tube-direction
+ * curvature is positive (convex, u-like contribution to the track integral)
+ * and blue where it is negative (concave, d-like contribution). */
+const CHARGE_POS_COLOR = 0xff3030;
+const CHARGE_NEG_COLOR = 0x2196f3;
+const CHARGE_POS_CSS   = '#ff3030';
+const CHARGE_NEG_CSS   = '#2196f3';
 
 /* Returns the list of currently-active particle specs.
  *   {kind: 'proton'|'neutron', phase: 0..2, color: int, colorCss: string}
@@ -1023,6 +1046,30 @@ function modPiece(t) {
 const COL_MAJOR = new THREE.Color(0xff7043);
 const COL_MINOR = new THREE.Color(0x42a5f5);
 
+/* Planar curvature κ of the cross-section curve at parameter t and ring
+ * angle θ. Computed by central finite differences on the same point
+ * function the surface mesh uses; rotation by the twist is rigid and so
+ * doesn't affect κ. In arc mode the cross-section is θ-independent, so
+ * lookupProfile is consulted directly. Sign convention: κ > 0 on convex
+ * arcs (the cross-section's outward-bulging lobes), κ < 0 on concave
+ * valleys/saddles between them. */
+function tubeCurvature(t, theta) {
+  const h = TAU * 5e-4;
+  const modulated = (S.construction === 'modulated');
+  const fAt = modulated
+    ? (tt) => modPoint(tt, theta)
+    : (tt) => lookupProfile(cachedProfile, tt);
+  const p  = fAt(t);
+  const pP = fAt(t + h);
+  const pM = fAt(t - h);
+  const xt  = (pP.x - pM.x) / (2 * h);
+  const yt  = (pP.y - pM.y) / (2 * h);
+  const xtt = (pP.x - 2 * p.x + pM.x) / (h * h);
+  const ytt = (pP.y - 2 * p.y + pM.y) / (h * h);
+  const sp2 = xt * xt + yt * yt;
+  return sp2 > 1e-12 ? (xt * ytt - yt * xtt) / Math.pow(sp2, 1.5) : 0;
+}
+
 /* Modulated-clover surface mesh: sweep θ (ring) × t (cross-section). */
 function buildModulatedSurfaceMesh(R) {
   const positions = new Float32Array((N_TH + 1) * (N_PH + 1) * 3);
@@ -1064,10 +1111,13 @@ function buildModulatedSurfaceMesh(R) {
   return geom;
 }
 
-/* Polyline of a (1/2,1) track t(θ) = t0 + θ/2 on the modulated clover. */
+/* Polyline of a (1/2,1) track t(θ) = t0 + θ/2 on the modulated clover.
+ * Returns {pts, kappas}: 3D points plus the tube-direction curvature κ at
+ * each sample (used by the charge-segment overlay). */
 function modulatedTrackPoints(R, t0) {
   const N = 600;
   const pts = [];
+  const kappas = [];
   for (let i = 0; i <= N; i++) {
     const th = (i / N) * TAU;
     const t = t0 + th / 2;
@@ -1075,8 +1125,9 @@ function modulatedTrackPoints(R, t0) {
     const cTh = Math.cos(th), sTh = Math.sin(th);
     const rr = R + p.x;
     pts.push(new THREE.Vector3(rr * cTh, p.y, rr * sTh));
+    kappas.push(tubeCurvature(t, th));
   }
-  return pts;
+  return { pts, kappas };
 }
 
 /* ─── Naive-arc literal baryon path (for the closure problem) ─── */
@@ -1097,6 +1148,7 @@ function arcLiteralTrackPoints(prof, R, tau, kind, phase) {
   if (kind === 'neutron') { phiStart = phiL + phaseShift; dPhi = phiL + 2 * (TAU/3 - phiL); }
   else                    { phiStart = phaseShift;        dPhi = (TAU/3) + phiL;            }
   const pts = [];
+  const kappas = [];
   for (let i = 0; i <= N; i++) {
     const t = i / N;
     const th = TAU * t;
@@ -1109,8 +1161,9 @@ function arcLiteralTrackPoints(prof, R, tau, kind, phase) {
     const cTh = Math.cos(th), sTh = Math.sin(th);
     const rr = R + Pxr;
     pts.push(new THREE.Vector3(rr * cTh, Pyr, rr * sTh));
+    kappas.push(tubeCurvature(ph, th));     // arc: θ-independent
   }
-  return { pts, dPhi };
+  return { pts, kappas, dPhi };
 }
 
 /* Tube geometry from a polyline; also returns the start↔end gap distance.
@@ -1122,6 +1175,46 @@ function tubeFromPolyline(pts, tubeR) {
   const curve = new THREE.CatmullRomCurve3(closes ? pts.slice(0, -1) : pts, closes);
   const tube = new THREE.TubeGeometry(curve, pts.length, tubeR, 8, closes);
   return { tube, gap };
+}
+
+/* Add charge-segmented tube meshes for a polyline whose kappas-by-sample
+ * record the tube-direction curvature κ. Each maximal run of same-sign κ
+ * becomes one tube segment, coloured red (κ > 0) or blue (κ < 0). Returns
+ * the start↔end gap of the underlying polyline so closure markers still
+ * work, plus the integral ∫κ dℓ ≈ Σ |κ|·Δℓ split by sign (the operative
+ * charge contributions, up to a normalisation). */
+function addSegmentedTubes(pts, kappas, tubeR) {
+  const gap = pts[0].distanceTo(pts[pts.length - 1]);
+  const N = pts.length;
+  let posLen = 0, negLen = 0;
+  for (let i = 1; i < N; i++) {
+    const dℓ = pts[i].distanceTo(pts[i - 1]);
+    const kavg = 0.5 * (kappas[i] + kappas[i - 1]);
+    if (kavg >= 0) posLen += kavg * dℓ; else negLen += kavg * dℓ;
+  }
+  // Walk samples; group consecutive same-sign κ into segments.
+  let segStart = 0;
+  let curSign = (kappas[0] >= 0) ? 1 : -1;
+  const emit = (lo, hi, sign) => {
+    if (hi - lo < 1) return;
+    const seg = pts.slice(lo, hi + 1);
+    const curve = new THREE.CatmullRomCurve3(seg, false);
+    const tube = new THREE.TubeGeometry(curve, seg.length, tubeR, 8, false);
+    pathGroup.add(new THREE.Mesh(tube, new THREE.MeshBasicMaterial({
+      color: sign > 0 ? CHARGE_POS_COLOR : CHARGE_NEG_COLOR,
+      transparent: true, opacity: 0.97,
+    })));
+  };
+  for (let i = 1; i < N; i++) {
+    const s = (kappas[i] >= 0) ? 1 : -1;
+    if (s !== curSign) {
+      emit(segStart, i, curSign);
+      segStart = i;
+      curSign = s;
+    }
+  }
+  emit(segStart, N - 1, curSign);
+  return { gap, posIntegral: posLen, negIntegral: negLen };
 }
 
 /* ─── Cross-section preview (2D canvas) ─────────────────── */
@@ -1344,8 +1437,11 @@ function drawSheetCanvas() {
     }
   }
 
-  // Track overlay — one diagonal per active particle.
+  // Track overlay — one diagonal per active particle. When showCharge is
+  // on the diagonal is segmented red (κ > 0) / blue (κ < 0) per sample;
+  // otherwise it's drawn as a solid line in the particle's identity colour.
   if (S.showPath) {
+    const N = 400;
     for (const sp of activeParticles()) {
       let getT;
       if (modulated) {
@@ -1359,25 +1455,31 @@ function drawSheetCanvas() {
           ? phiL + phaseShift : phaseShift;
         getT = th => phiStart + dPhi * (th / TAU);
       }
-      ctx.strokeStyle = sp.colorCss;
-      ctx.lineWidth = 1.8;
-      ctx.beginPath();
-      const N = 400;
-      let prevY = null;
+      // Pre-sample all (x, y, κ).
+      const xs = new Float32Array(N + 1);
+      const ys = new Float32Array(N + 1);
+      const ks = new Float32Array(N + 1);
       for (let i = 0; i <= N; i++) {
         const th = (i / N) * TAU;
-        const tWrapped = ((getT(th) % TAU) + TAU) % TAU;
-        const x = (th / TAU) * W;
-        const y = (tWrapped / TAU) * H;
-        if (i === 0 || (prevY !== null && Math.abs(y - prevY) > H * 0.5)) {
-          ctx.moveTo(x, y);
-        } else {
-          ctx.lineTo(x, y);
-        }
-        prevY = y;
+        const tRaw = getT(th);
+        const tWrapped = ((tRaw % TAU) + TAU) % TAU;
+        xs[i] = (th / TAU) * W;
+        ys[i] = (tWrapped / TAU) * H;
+        ks[i] = tubeCurvature(tRaw, th);
       }
-      ctx.stroke();
-      const tStart = ((getT(0) % TAU) + TAU) % TAU;
+      ctx.lineWidth = 1.8;
+      for (let i = 1; i <= N; i++) {
+        // Skip vertical-wrap jumps (when t crosses 2π → 0).
+        if (Math.abs(ys[i] - ys[i - 1]) > H * 0.5) continue;
+        ctx.strokeStyle = S.showCharge
+          ? ((ks[i - 1] + ks[i] >= 0) ? CHARGE_POS_CSS : CHARGE_NEG_CSS)
+          : sp.colorCss;
+        ctx.beginPath();
+        ctx.moveTo(xs[i - 1], ys[i - 1]);
+        ctx.lineTo(xs[i], ys[i]);
+        ctx.stroke();
+      }
+      const tStart = ((getT(0)   % TAU) + TAU) % TAU;
       const tEnd   = ((getT(TAU) % TAU) + TAU) % TAU;
       ctx.fillStyle = '#00e676';
       ctx.beginPath(); ctx.arc(0, (tStart / TAU) * H, 2.6, 0, TAU); ctx.fill();
@@ -1468,16 +1570,27 @@ function modT0(kind, phase) {
 function buildModulatedPaths() {
   const specs = activeParticles();
   if (specs.length === 0) { closureState = { status: '—', gap: null, note: '' }; return; }
+  const tubeR = 0.05;
   let maxGap = 0;
   for (const sp of specs) {
-    const pts = modulatedTrackPoints(S.R, modT0(sp.kind, sp.phase));
-    const { tube, gap } = tubeFromPolyline(pts, 0.05);
-    pathGroup.add(new THREE.Mesh(tube,
-      new THREE.MeshBasicMaterial({ color: sp.color, transparent: true, opacity: 0.97 })));
-    addClosureMarkers(pts, gap, 0.05);
+    const { pts, kappas } = modulatedTrackPoints(S.R, modT0(sp.kind, sp.phase));
+    let gap;
+    if (S.showCharge) {
+      ({ gap } = addSegmentedTubes(pts, kappas, tubeR));
+    } else {
+      const r = tubeFromPolyline(pts, tubeR); gap = r.gap;
+      pathGroup.add(new THREE.Mesh(r.tube, new THREE.MeshBasicMaterial({
+        color: sp.color, transparent: true, opacity: 0.97 })));
+    }
+    addClosureMarkers(pts, gap, tubeR);
     maxGap = Math.max(maxGap, gap);
   }
   const closed = maxGap < 0.04 * S.R;
+  const segNote = S.showCharge
+    ? ' Red segments contribute κ > 0 (u-like) and blue κ < 0 (d-like) to '
+      + 'the experienced-curvature integral; the net of those signed integrals '
+      + 'is the track’s baryon charge (+1 for proton, 0 for neutron).'
+    : '';
   closureState = {
     status: closed ? `✓ all ${specs.length} close` : '✗ open',
     gap: maxGap,
@@ -1485,7 +1598,7 @@ function buildModulatedPaths() {
       ? 'Each (1/2,1) track closes in one ring revolution — start and end '
         + 'meet. Half-twist + modulation make the proton and neutron closed '
         + 'tracks on one smooth surface: the modulated-clover solution. '
-        + 'Phases sit on disjoint pieces, so the tracks never overlap.'
+        + 'Phases sit on disjoint pieces, so the tracks never overlap.' + segNote
       : 'Unexpected open track — check parameters.',
   };
 }
@@ -1499,21 +1612,30 @@ function buildArcPaths(tau, shear) {
   let maxGap = 0, dPhi = 0;
   for (const sp of specs) {
     const res = arcLiteralTrackPoints(cachedProfile, S.R, tau, sp.kind, sp.phase);
-    const { tube, gap } = tubeFromPolyline(res.pts, tubeR);
-    pathGroup.add(new THREE.Mesh(tube, new THREE.MeshBasicMaterial({
-      color: sp.color, transparent: true, opacity: 0.97 })));
+    let gap;
+    if (S.showCharge) {
+      ({ gap } = addSegmentedTubes(res.pts, res.kappas, tubeR));
+    } else {
+      const r = tubeFromPolyline(res.pts, tubeR); gap = r.gap;
+      pathGroup.add(new THREE.Mesh(r.tube, new THREE.MeshBasicMaterial({
+        color: sp.color, transparent: true, opacity: 0.97 })));
+    }
     addClosureMarkers(res.pts, gap, tubeR);
     maxGap = Math.max(maxGap, gap);
     dPhi = res.dPhi;
   }
   const closed = maxGap < 0.04 * S.R;
+  const segNote = S.showCharge
+    ? ' Red segments are convex lobe arcs (u-like, κ > 0); blue segments '
+      + 'are concave saddle arcs (d-like, κ < 0).'
+    : '';
   closureState = {
     status: closed ? '✓ closes' : `✗ ${specs.length} open`,
     gap: maxGap,
     note: 'Literal-arc baryon path: φ-advance per ring revolution = '
       + (dPhi / Math.PI).toFixed(3) + 'π, strictly inside (2π/3, 4π/3) — '
       + 'never a whole tube wrap, so the locus does not return to its '
-      + 'start. Every phase shows the same closure problem.',
+      + 'start. Every phase shows the same closure problem.' + segNote,
   };
 }
 
@@ -1822,6 +1944,9 @@ $('cb-proton').addEventListener('change', () => {
 $('cb-neutron').addEventListener('change', () => {
   S.neutronOn = $('cb-neutron').checked; rebuildAll();
 });
+$('cb-charge').addEventListener('change', () => {
+  S.showCharge = $('cb-charge').checked; rebuildAll();
+});
 function bumpCount(key, vId, delta) {
   S[key] = Math.max(1, Math.min(3, S[key] + delta));
   $(vId).textContent = String(S[key]);
@@ -1947,6 +2072,7 @@ function syncControlsFromState() {
   $('v-s').textContent   = formatTau(S.shearNum);
   $('cb-proton').checked  = S.protonOn;
   $('cb-neutron').checked = S.neutronOn;
+  $('cb-charge').checked  = S.showCharge;
   $('v-pN').textContent   = String(S.protonN);
   $('v-nN').textContent   = String(S.neutronN);
   $('sel-fractal').value = String(S.fractalLevel);
@@ -1963,7 +2089,7 @@ function resetToDefaults() {
     construction: 'modulated',
     R: 3.0, rL: 0.80, rS: 0.40,
     tauNum: 1, shearNum: 0, opacity: 0.55,
-    protonOn: true, protonN: 1, neutronOn: false, neutronN: 1,
+    protonOn: true, protonN: 1, neutronOn: false, neutronN: 1, showCharge: false,
     fractalLevel: 1, rL2Frac: 0.50, rL3Frac: 0.45,
     showSurface: true, showWire: false, showColor: true,
     showGrid: false, showPath: true, showSpine: false, showAxes: false,
