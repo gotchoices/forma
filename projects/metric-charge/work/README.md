@@ -37,6 +37,18 @@ would benefit from being worked through informally first.
   mechanism. Not appendix-grade; aimed at later work in ma-domain
   and [metric-binding](../../metric-binding/).
 
+- **[per-arc-curvature-as-charge.md](per-arc-curvature-as-charge.md)** —
+  Bridge attempt to ground sheet-proton's per-arc fractional charge
+  reading (Q_lobe = +2/3, Q_saddle = −1/3 from integrated geodesic
+  curvature) in the framework's existing charge mechanism (grid
+  charge-emergence + Gauss–Bonnet). Distinguishes per-arc fractional
+  *value* from ch. 8 §7's per-knot fractional *association* and shows
+  both as complementary axes of the same confinement principle. Step 1
+  (grid bend → continuum κ_g) is heuristic and needs a grid-primitive
+  companion; remaining steps are clean modulo non-trivial-topology
+  cases. Candidate for a metric-charge appendix once Step 1 is
+  hardened.
+
 ## Status convention
 
 Each file ends with an explicit **Status** block stating whether
