@@ -33,15 +33,29 @@ If u is read as an angle around the compact loop (u = R_u θ with
 θ ∈ [0, 2π)), then p_u is the linear momentum tangent to the loop
 and the **angular momentum about the loop's center** is:
 
-<!-- L_u = R_u · p_u = R_u · (ℏ n / R_u) = ℏ n -->
+<!-- J_u = R_u · p_u = R_u · (ℏ n / R_u) = ℏ n -->
 $$
-L_u \;=\; R_u \cdot p_u \;=\; R_u \cdot \frac{\hbar\,n}{R_u} \;=\; \hbar\,n
+J_u \;=\; R_u \cdot p_u \;=\; R_u \cdot \frac{\hbar\,n}{R_u} \;=\; \hbar\,n
 $$
 
 — a quantized integer angular momentum in units of ℏ. Same form as
 the orbital angular momentum spectrum of standard quantum mechanics,
 but here arising from the *periodicity* of the compact direction
-rather than from diagonalizing L̂² and L̂_z.
+rather than from diagonalizing L̂² and L̂_z. (Symbol convention:
+**J_u** for the angular momentum about the loop, to avoid clash
+with **L_u** = 2π R_u, the compact circumference used as a metric
+parameter throughout metric-charge.)
+
+**Embedding caveat.** The phrase "angular momentum about the loop's
+center" requires the compact direction to be embedded in a plane
+with a definite rotation axis. The abstract S¹ (the quotient of ℝ
+by L_u) does not by itself supply such a center. What *is*
+embedding-independent is that n is the eigenvalue of the translation
+generator P̂_u = −iℏ ∂/∂u acting on e^{i n u / R_u}, and that the
+mass identification m_n = ℏ|n|/(R_u c) uses only |n|. The
+"angular momentum" *labelling* of n adds physical intuition under a
+natural embedding (the standard rolled-up cylinder picture) but is
+not load-bearing for the mass identification.
 
 The metric-mass rest-mass identification
 
@@ -52,31 +66,51 @@ $$
 
 rearranged:
 
-<!-- m_n · R_u · c = ℏ |n| = |L_u| -->
+<!-- m_n · R_u · c = ℏ |n| = |J_u| -->
 $$
-m_n \cdot R_u \cdot c \;=\; \hbar\,|n| \;=\; |L_u|
+m_n \cdot R_u \cdot c \;=\; \hbar\,|n| \;=\; |J_u|
 $$
 
 — **rest mass × compact radius × c = angular momentum about the
 loop**.
 
-Equivalently, defining ω_n = |n|c/R_u as the loop's rotational
-angular frequency:
+Equivalently, define ω_rot = c/R_u — the angular rate at which a
+massless wave goes once around the loop (independent of n). Then
+for any n:
 
-<!-- m_n c² = ω_n ℏ -->
+<!-- m_n c² = |J_u| · ω_rot = |n| ℏ · (c / R_u) -->
 $$
-m_n\,c^2 \;=\; \omega_n\,\hbar
+m_n\,c^2 \;=\; |J_u| \cdot \omega_{\text{rot}}
+\;=\; |n|\,\hbar \cdot \frac{c}{R_u}
 $$
 
-— rest energy equals one quantum of angular-momentum × angular
-frequency, the standard rotational energy of a quantum at angular
-momentum L = ℏn rotating at angular frequency ω_n.
+— rest energy equals angular momentum times the
+(n-independent) loop circumnavigation rate. This is the
+massless-on-a-ring identity E = p c applied around the loop, with
+p = J/R. It is *not* the non-relativistic rotor identity
+E = ½ J ω, which the form E = J · ω might otherwise suggest.
+
+A separate (and equal) reading uses the **temporal** oscillation
+frequency ω_n = |n| c/R_u — the rate at which U_n e^{−i ω_n t}
+oscillates at a fixed point on the loop, which scales linearly with
+n. By the Planck–Einstein relation E = ℏ ω applied to ω_n:
+
+<!-- m_n c² = ℏ ω_n -->
+$$
+m_n\,c^2 \;=\; \hbar\,\omega_n
+$$
+
+The two readings (rotor identity with ω_rot, Planck–Einstein with
+ω_n) give the same E because ω_n = |n| · ω_rot — they are
+consistent but distinct frequencies; ω_rot is the pattern's
+rotation rate around the loop, ω_n is the field's temporal
+oscillation rate at a fixed point.
 
 ## Physical reading
 
 From inside the loop: a wave wraps around the compact direction with
-phase advancing by 2πn per circuit and angular momentum ℏn about the
-loop's center.
+phase advancing by 2πn per circuit and angular momentum J_u = ℏn
+about the loop's center (under the natural embedding).
 
 From outside (in extended spacetime t, S): the loop is too small to
 be resolved. The angular momentum is not observable as such — it
@@ -90,101 +124,117 @@ exactly the rest mass.
 ## Connection to the Compton scale
 
 Metric-mass [Ch 2 §6](../../metric-mass/02-mass-from-u.md) already
-notes that R_u = ℏ/(m_1 c) is the reduced Compton wavelength of the
-n = 1 particle, and connects this to Schrödinger's *zitterbewegung*.
-The angular-momentum reading sharpens the connection:
+notes that R_u = ℏ/(m_1 c) is the **reduced** Compton wavelength
+λ̄ = ℏ/(mc) of the n = 1 particle (distinct from the full Compton
+wavelength λ = h/(mc) = 2π λ̄), and connects this to Schrödinger's
+*zitterbewegung*. The angular-momentum reading **re-states** the
+connection:
 
-> **A particle's Compton wavelength is the radius at which one
-> quantum of orbital angular momentum produces the particle's rest
-> energy.**
+> **A particle's reduced Compton wavelength is the radius at which
+> one quantum of orbital angular momentum produces the particle's
+> rest energy.**
 
-This is a clean physically intuitive statement that metric-mass's
-existing framing approaches but does not state directly.
+This is tautologically equivalent to the n = 1 mass formula
+m_1 = ℏ/(R_u c) — it adds no derivational content. Its value is
+purely interpretive: the Compton scale gets a one-line physical
+reading instead of appearing only as the algebraic relation between
+R_u and m_1.
 
 ## Extension to 2D
 
-On a 2D compact sheet (metric-charge), each direction has its own
-angular momentum:
+On a 2D compact sheet (metric-charge), each direction carries its
+own linear compact momentum (and a corresponding angular momentum
+under the natural embedding, with the same caveat as in the 1D
+case):
 
-<!-- L_u = ℏn,  L_w = ℏm -->
+<!-- p_u = ℏn / R_u,  p_w = ℏm / R_w;  J_u = ℏn,  J_w = ℏm -->
 $$
-L_u \;=\; \hbar\,n,
+p_u \;=\; \frac{\hbar\,n}{R_u},
+\quad
+p_w \;=\; \frac{\hbar\,m}{R_w};
 \qquad
-L_w \;=\; \hbar\,m
+J_u \;=\; \hbar\,n,
+\quad
+J_w \;=\; \hbar\,m
 $$
 
-and the [Ch 2 §3](../02-modes-on-a-sheet.md) Pythagorean mass
-formula reads as a vector-magnitude of angular momentum:
+The [Ch 2 §3](../02-modes-on-a-sheet.md) Pythagorean mass formula
+combines the two **compact linear momenta** in quadrature:
 
-<!-- (m_(m,n) · c)² = (L_u · 2π/L_u)² + (L_w · 2π/L_w)² -->
+<!-- (m · c)² = p_u² + p_w² = (ℏn/R_u)² + (ℏm/R_w)² -->
 $$
-(m_{(m,n)}\,c)^2 \;=\;
-\left(\frac{2\pi\,\hbar\,n}{L_u}\right)^2
-+ \left(\frac{2\pi\,\hbar\,m}{L_w}\right)^2
+(m_{(m,n)}\,c)^2
+\;=\; p_u^2 + p_w^2
+\;=\; \left(\frac{\hbar\,n}{R_u}\right)^2
+   + \left(\frac{\hbar\,m}{R_w}\right)^2
 $$
 
-— a quadrature combination of two angular-momentum contributions,
-each weighted by 2π/L_i, exactly as expected for two independent
-rotations whose energies add in quadrature in the relativistic
-combination. This generalizes cleanly to N compact directions and
-makes the Pythagorean form of the mass formula intuitive rather than
-formal.
+— this is the standard relativistic E² = (**p** c)² + (m c²)²
+applied at p_S = 0 with a 2-component compact momentum (p_u, p_w).
+It is **not** a relativistic combination of two separate systems'
+energies (which does not combine Pythagoreanly).
+
+The quadrature uses **p_i = J_i / R_i**, not J_i itself. When the
+two radii differ (R_u ≠ R_w, the generic anisotropic case the work
+folder commits to in [ho-bridge-2d.md](ho-bridge-2d.md) §"Symmetry
+payoffs"), angular momenta on different-radius loops carry
+different "weight" per unit J — the combination is not (J_u, J_w)
+read as a 2-vector. Only at the **isotropic point R_u = R_w** does
+the formula collapse to (m c)² ∝ J_u² + J_w², and only there can
+one read the right-hand side as the magnitude-squared of an
+angular-momentum 2-vector. This isotropic point is precisely where
+the U(1) × U(1) ladder symmetry enlarges to SU(2) — see
+[ho-bridge-2d.md §"Symmetry payoffs"](ho-bridge-2d.md). The
+"vector angular momentum" reading and the SU(2) enlargement are
+two faces of the same symmetry.
+
+For N compact directions the same picture extends:
+(m c)² = Σ p_i² = Σ (J_i / R_i)², with the angular-momentum-vector
+reading available only for fully isotropic radial patterns.
 
 ## Where this reframing should live
 
 The angular-momentum identification is a **re-reading** of existing
-content, not new derivation. Options:
+content, not new derivation. Further, the n ↔ orbital-angular-
+momentum identification is itself the standard "particle on a ring"
+interpretation from undergraduate QM — periodicity ⇒ integer n ⇒
+L_z = n ℏ — and metric-mass Ch 2 §2 already brushes against it
+explicitly ("the same logic that quantizes notes on a guitar
+string, **quantizes angular momentum**, and quantizes electron
+orbitals"). The placement should therefore be light, not duplicated.
 
-**(a) Back-edit to [metric-mass Ch 2](../../metric-mass/02-mass-from-u.md).**
-Add a short paragraph (likely in §3 where the rest-mass formula is
-derived, or §6 where the Compton-scale connection is drawn) noting
-that n is the quantized angular-momentum quantum number around the
-compact loop and that m·R·c = L is the resulting identification. The
-change is small (~1 paragraph) and clarifying for any reader of
-metric-mass.
+**(a) One-sentence inline addition in
+[metric-mass Ch 2 §6](../../metric-mass/02-mass-from-u.md).** §6 is
+where the Compton-scale connection is already drawn. A single
+sentence there — noting that n is the quantized
+angular-momentum quantum number around the compact loop, and that
+the rest-mass identity reads m·R·c = J — sits naturally next to
+the existing Compton paragraph without disrupting §6's flow.
 
-**(b) Paragraph in
-[metric-mass Ch 9 HO bridge](../../metric-mass/09-harmonic-oscillator-bridge.md).**
-The HO formalism naturally hosts angular-momentum operators on the
-loop (L̂ = −iℏ ∂/∂θ, eigenvalues ℏn on e^{inθ}). A short paragraph
-there ties the angular-momentum reading directly to the HO framework
-and makes the "L̂ has integer eigenvalues" → "rest mass quantized in
-units of ℏ/(R_u c)" chain explicit.
+**(b) Section in the prospective metric-charge HO bridge
+appendix.** The 2D case is what genuinely adds new content here:
+two compact linear momenta in quadrature, the J-reading available
+only at the isotropic point, and the connection to the SU(2)
+enlargement. This belongs in the appendix that introduces the 2D
+HO translation, since the multi-direction extension is what the
+appendix already needs to cover.
 
-**(c) Treatment in the prospective metric-charge HO bridge appendix.**
-The 2D case has two angular momenta and the Pythagorean mass formula
-is naturally read as a vector-magnitude of angular momentum (the
-extension section above). Including the 2D angular-momentum framing
-here would make Ch 2 of metric-charge feel more physically motivated
-without disrupting the existing derivation.
+**Considered and rejected: a separate paragraph in
+[metric-mass Ch 9](../../metric-mass/09-harmonic-oscillator-bridge.md).**
+Ch 9's translation table already covers the 1D mode ↔ ladder
+correspondence. Adding "and also it is an angular momentum" as a
+separate paragraph there would be redundant with the inline
+sentence in Ch 2 §6.
 
-**Tentative recommendation.** All three. The change is small enough
-in each location that no one of them gets bloated:
-
-- (a) is a one-paragraph back-edit that improves metric-mass on its
-  own merits.
-- (b) is a one-paragraph addition to the existing HO appendix.
-- (c) is one section of the prospective metric-charge appendix and
-  is the natural place to introduce the multi-direction extension.
-
-Collectively the framing lands the physical interpretation cleanly
-without any single chapter carrying the whole load.
+The two places (a) and (b) collectively land the framing without
+duplication.
 
 ## Open questions
 
-1. **Direction of angular momentum.** The "angular momentum about
-   the loop's center" reading assumes the compact direction is
-   embedded with a natural rotation axis (perpendicular to the loop
-   plane). For an abstract S¹ as a quotient of the real line, this
-   axis is a *choice* — there is no embedding-independent direction.
-   In a 2D sheet (S¹ × S¹) the two axes are mutually orthogonal in
-   the natural embedding. Is the angular-momentum framing
-   embedding-dependent in any way that matters? Probably not for
-   the mass identification (which only uses the magnitude), but
-   worth a one-line acknowledgment in whichever document carries
-   it.
+(Embedding-dependence of the "loop's center" reading is addressed
+inline in §"The identification" above; not a separate open question.)
 
-2. **Spin.** The framing identifies *orbital* angular momentum
+1. **Spin.** The framing identifies *orbital* angular momentum
    (around the loop) with rest mass. It says nothing about *spin*
    (intrinsic angular momentum of the field). Whether spin in this
    framework is a separate object (e.g., a polarization label on
@@ -192,21 +242,50 @@ without any single chapter carrying the whole load.
    structure is open. Worth flagging as a sibling question for
    later projects, not for this back-edit.
 
-3. **Reverse direction.** If rest mass = quantized angular momentum
-   around a compact loop, does *any* observed rest mass imply a
-   compact loop? The framework would say yes (mass requires winding
-   on some compact direction). This is the framework's central
-   claim; the angular-momentum reading just makes it physically
-   transparent.
+2. **Reverse direction (framework hypothesis, not a derived
+   consequence).** If rest mass = quantized angular momentum around
+   a compact loop, does any observed rest mass imply a compact
+   loop? The framework's working hypothesis is yes: mass requires
+   winding on some compact direction. But this is **assumed** — the
+   manifold has a compact direction by construction
+   ([metric-mass Ch 1](../../metric-mass/01-foundation.md)) and
+   mass arises from winding on it (Ch 2). The angular-momentum
+   reading restates this hypothesis in different vocabulary; it
+   does not strengthen the implication or convert the hypothesis
+   into a derivation. The reverse direction (mass ⇒ compact loop)
+   remains a framework hypothesis to be tested against alternative
+   mass-generation mechanisms, not something this reframing
+   establishes.
 
 ## Status
 
 The identification is correct (algebra checked above) and physically
-clarifying. The "where it lives" question is the only remaining
-decision before edits. The recommendation above (back-edit metric-mass
-Ch 2 + one paragraph in metric-mass Ch 9 + a section in the
-prospective metric-charge appendix) is tentative; the user may
-prefer to land it in fewer places.
+clarifying within its limits. Items adjusted per
+[angular-momentum-as-mass-review.md](angular-momentum-as-mass-review.md):
+
+- Symbol J_u introduced to disambiguate the angular momentum from
+  the compact circumference L_u (item 1).
+- Rest-energy rewrite uses ω_rot = c/R_u (n-independent) for the
+  rotor identity, and Planck–Einstein separately for ω_n; the
+  conflation has been removed (item 2).
+- 2D extension now combines compact **linear** momenta in
+  quadrature; the J-vector reading is restricted to the isotropic
+  case and tied to the SU(2) point at ε = 1 (item 3).
+- Inline embedding caveat added in §"The identification"; original
+  Open Question 1 dropped as redundant (item 4).
+- "Reduced Compton wavelength" used throughout (item 5).
+- "Sharpens" softened to "re-states" and the tautology
+  acknowledged explicitly (item 6).
+- Placement narrowed to (a) one inline sentence in metric-mass
+  Ch 2 §6 + (b) a section in the prospective metric-charge HO
+  appendix; the metric-mass Ch 9 paragraph dropped as redundant
+  (item 7).
+- Reverse-direction Open Question 2 marked explicitly as framework
+  hypothesis, not a derived consequence of this reframing (item 8).
+
+The "where it lives" decision is the only remaining step before
+edits to existing chapters. The current recommendation (a)+(b)
+above is tentative; the user may prefer to land it in fewer places.
 
 No edits to existing chapters have been made; this file documents
-the reframing and the placement options for review.
+the reframing and placement options for review.
