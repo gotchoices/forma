@@ -7,9 +7,12 @@ and three minor lobes**, swept around the ring with a **half-twist** and a synch
 **major↔minor parameter modulation**. The cross-section curvature budget (§2) and the
 surface closure (§3) are worked out and hold. The proton and neutron tracks (§4) are
 the two (1/2, 1) half-tube tracks, each closing in one ring revolution. **Step 3 done
-(2026-05-22):** a single modulation profile closes the proton track at charge Q = +1 and
-the neutron at Q = 0 on a simple, smooth surface — the **charge** construction works
-(§4.5). **Mass** was attacked two ways. The *eigenmode* mechanism — proton and neutron as
+(2026-05-22):** a single modulation profile lands the proton track at Q = +1 and the
+neutron track at Q = 0 on a simple, smooth surface (§4.5). The **integer baryon charges**
+are recovered as a 2-condition tuning of the modulation (sin- and cos-harmonics → Q_p −
+Q_n = 1 and Q_p + Q_n = 1), not as a forced consequence of the static cross-section. The
+per-piece "quark" charges (+2/3, −1/3) of §2.3 are an *idealized labelling* the smooth
+cross-section approximates (Q_maj ≈ 0.63 vs ideal 0.667) but cannot literally realize. **Mass** was attacked two ways. The *eigenmode* mechanism — proton and neutron as
 two low eigenmodes of one surface — **fails** (§6 step 5): a nine-parameter sweep cannot
 bring the smallest low-mode split below ≈ 1.9× the observed nucleon split. The
 *path-length* mechanism — each baryon a standing wave on its own closed track, mass =
@@ -18,6 +21,13 @@ charge-correct surface already makes the proton track longer, hence the proton l
 unforced. But the ratio's *magnitude* is a one-parameter fit (the charge-neutral ring
 aspect ratio), not a prediction. The charge construction stands; mass has a consistent
 picture but no predictive grip on the scale.
+
+*Foundational note.* The curvature → EM charge identification throughout this document
+rests on upstream sources ([clover-quarks.md §11.7](clover-quarks.md),
+[metric-charge ch. 4](../../metric-charge/04-the-closure-condition.md)); §4.3's
+foundational-assumption paragraph names it explicitly. The half-integer tube winding of
+the (1/2, 1) tracks sits outside the standard closure-mode derivation — a real
+foundational gap (open question 1 in §6).
 
 **Origin.** The arc-clover baryon paths do not close: [clover-quarks.md §3.2/§12.2](clover-quarks.md)
 derive the (1,2)/(1,1) closure numbers by summing per-arc *turning angles* (lobe 240°,
@@ -90,6 +100,17 @@ for any parameter choice.
 
 ### 2.3 The curvature budget
 
+**This section is the idealized target — not what the smooth tube-function family
+literally achieves.** Under the assumption Q_major = +2/3, the Gauss–Bonnet bookkeeping
+below gives the proton track Q = +1 and the neutron Q = 0 exactly. But the smooth
+tube-function family **caps at Q_maj ≈ 0.63 < 2/3** — the +2/3 ideal lives at the κ → ∞
+cusp limit of the arc-clover (see *Realizability* below). The **operative charge is the
+track integral of §4.3**, not the per-piece split: the (+1, 0) baryon-charge result of
+§4.5 is recovered by *tuning the modulation* (a 2-condition fit over the sin- and
+cos-harmonics), not by the cross-section literally hitting the per-piece ideal. Read this
+section as *the idealized labelling the modulation is tuned toward*, not as a forced
+output of the static cross-section.
+
 The net turning of a piece is ∫κ ds over it (κ the signed geodesic curvature, in
 closed form from [tube-function.md §2.5](../../ma-domain/work/tube-function.md)). For a
 closed curve ∮κ ds = 2π, so with three major-pieces (turning T_maj) and three
@@ -129,6 +150,24 @@ degenerates to a cusp; moderate, well-behaved shapes reach Q_maj ≈ 0.55–0.59
 static cross-section actually needs is strong major/minor **contrast**; the modulation
 (§3) and the track tuning (§6) do the rest.
 
+**Why the gap, physically — overlap (interpretation).** The cross-section is one
+continuous curve; the "major" and "minor" pieces are not isolated objects on it. Each
+ideal per-piece profile (turning +4π/3 for a major, −2π/3 for a minor) has tails that
+extend past its own piece's angular extent into the neighbouring pieces. The per-piece
+integral within a single piece's extent is therefore *(clipped central profile) + (leaked
+tails from neighbours)*, and both effects pull the per-piece Q toward zero — a major loses
+some +4π/3 to its neighbours, a minor's −2π/3 is offset by their positive tails. By
+Gauss–Bonnet the two shifts are locked equal in magnitude (3·Q_maj + 3·Q_min = 1 is
+exact for any smooth closed curve, so any drop in Q_maj forces an equal-magnitude rise in
+Q_min). This is the geometric analogue of constituent-quark cloud overlap inside a real
+hadron: the bare per-quark charges are sharp, but inside a bound state the per-quark
+distribution is smeared by overlap, and only the *total* baryon charge is robust (here,
+Gauss–Bonnet-protected; in QCD, charge conservation). State this as an *interpretation*
+of the gap, not a derivation — the decomposition into "per-piece ideal profiles" is
+non-unique (gaussians, sincs, cusp-limit pieces all work), and the reading does *not*
+predict the cap value (~0.63 vs ~0.667 specifically); that is a property of the harmonic
+basis.
+
 ---
 
 ## 3. The swept surface
@@ -137,6 +176,15 @@ static cross-section actually needs is strong major/minor **contrast**; the modu
 
 The cross-section rotates physically by α(θ) = θ/2 as the ring angle advances — a
 **half-twist**, 180° per ring revolution.
+
+**Note — the half-twist is engineered, not derived.** The choice α(θ) = θ/2 is dictated
+by the *target* of §4: the proton and neutron tracks are to cover three of six pieces and
+close in one ring revolution. A track riding the twist advances in t at rate α′ = 1/2, so
+over one ring revolution it covers t-extent 2π·(1/2) = π — exactly three of the six
+π/3 pieces. A 1/3-twist (cf. the clover-torus of [clover-quarks.md](clover-quarks.md))
+would sweep only two pieces; no twist sweeps a single t-slice; a full twist sweeps the
+whole tube. The half-twist is the unique uniform twist that makes the 3-piece track a
+closed (1/2, 1) curve — engineered for the target, not forced by an upstream principle.
 
 ### 3.2 Major↔minor modulation
 
@@ -213,6 +261,18 @@ number — which is what leaves room for a proton at +2π and a neutron at 0.
 This pins what "charge of a track" means. The rest of the construction and the solver
 (§6) depend on it.
 
+**Foundational assumption (carried from upstream).** Throughout this document, "charge"
+means the framework's geometric definition: profile-tangent turning accumulated around a
+closure, normalized by 2π. The identification *integrated geodesic curvature ↔ EM charge*
+is derived upstream in [clover-quarks.md §11.7](clover-quarks.md) (per-arc Q from
+∫κ ds / 2π, giving Q_lobe = +2/3 and Q_saddle = −1/3), which in turn rests on the
+grid-primitive substrate's boundary-winding ledger and [metric-charge ch. 4](../../metric-charge/04-the-closure-condition.md)'s
+closure rule k_θ = m_r − τ·m_t as the 2D-pair specialization. The Q_track functional
+defined below is the (1/2, 1)-track analogue of that ledger on the half-twisted
+modulated-clover surface. This file inherits the identification rather than re-deriving
+it; **re-deriving the closure-mode charge formula under a *half-integer* tube winding is
+itself foundational work that has not been done here** — see the open question in §6.
+
 **Setup.** Write a surface point as (t, θ): t the cross-section parameter, θ ∈ [0, 2π)
 the ring angle (a track closes after one ring revolution, §4.1). The cross-section at
 ring angle θ is the modulated, twisted tube-function
@@ -284,6 +344,12 @@ $$
    (neutron), whereas Q_track = (1/2π)∮∂_t χ dt is a genuine tunable functional. Once
    Q_track is fixed, the ring component follows: ∮∂_θ χ dθ = 2π(n − Q_track).
 
+   *Constituent-overlap analogue.* The protection of the *total* by Gauss–Bonnet while
+   the per-piece (or per-component) decomposition is not protected is the geometric
+   analogue of total hadron charge being conserved while the per-constituent-quark
+   distribution is smeared by overlap. The track-integrated baryon charge is the robust
+   quantity; the per-piece +2/3 / −1/3 of §2.3 is the overlap-distorted decomposition.
+
 **Explicit form.** With z = e^{iα} R e^{it} w(t;θ), w the bracket, ∂_t z =
 e^{iα} R e^{it}(i w + ∂_t w), so χ = α + t + arg(i w + ∂_t w) and
 
@@ -341,9 +407,11 @@ being odd in θ they break the (t,θ)→(−t,−θ) reflection and open D ≡ Q
 - **cos-harmonics set the charge *sum*** Q_proton + Q_neutron (θ-even, they shift both
   charges together without re-breaking the symmetry).
 
-Exact (Q_proton, Q_neutron) = (+1, 0) needs **both**: D = 1 from the sin-harmonics and
+Hitting (Q_proton, Q_neutron) = (+1, 0) needs **both**: D = 1 from the sin-harmonics and
 sum = 1 from the cos-harmonics. A sin-only search reaches D ≈ 1 but leaves the sum near
-0.7; adding the cos-harmonics lands the exact pair.
+0.7; adding the cos-harmonics lands the target pair to within solver precision (residual
+≈ 10⁻³, §4.5 result line below). "Exact" here means *tuned to (+1, 0) within solver
+precision*, not analytically forced.
 
 **Result.** With a₁ cos-harmonics ≈ (+0.19, −0.51) and sin-harmonics ≈ (+0.20, +0.67)
 (b₁ = −0.015, a₂ = 0.34, b₂ = 0.03), the proton track nets Q = +0.999 and the neutron
@@ -353,9 +421,14 @@ Q = −0.001, on a cross-section simple at every ring angle (star-margin +0.26,
 ### 4.6 What "the" proton means — color from C₃, spin from the half-twist
 
 §4.4 spoke of "the" proton and "the" neutron. Two features of the surface give each more
-internal structure than a single track suggests: the cross-section's C₃ symmetry (color)
-and the half-twist gluing (spin). Together they fix what "the" proton physically *is* on
-this surface, and how many of them the surface holds.
+internal structure than a single track suggests: the cross-section's C₃ symmetry (read as
+color) and the half-twist gluing (read as spin). **Both readings are working hypotheses,
+not derived in this file.** Two open structural questions specifically for the color
+reading: (a) what physical observable distinguishes one C₃ track from another, given that
+Q_track is invariant across the orbit; and (b) what promotes the discrete Z₃ orbital
+symmetry of the cross-section to the continuous SU(3) of QCD color. Neither is settled
+here. Under both hypotheses, the construction then fixes what "the" proton physically
+*is* on this surface, and how many of them the surface holds.
 
 **Color from C₃ — one physical proton, three color basis states.** Geometrically there are
 three (1/2, 1) tracks in each orbit — one starting on each major lobe (t₀ = 0, 2π/3, 4π/3)
@@ -536,6 +609,30 @@ what "a baryon" is.
 - Visualization: [viz/tube-lab](../../viz/tube-lab.md) renders the static cross-section
   already; [viz/proton-lab](../../viz/proton-lab.md) is the natural host for the swept
   modulated surface and the tracks.
+
+**Open questions (foundational).**
+
+1. **Half-integer tube winding and the closure-mode charge formula.** The (1/2, 1) tracks
+   of §4.1 have *half-integer* tube winding, forced by the §3.3 half-twist gluing. The
+   standard metric-charge closure-mode charge formula k_θ = m_r − τ·m_t
+   ([clover-quarks.md §11.3](clover-quarks.md), [metric-charge ch. 4](../../metric-charge/04-the-closure-condition.md))
+   is derived for *integer* m_t. §4.3's Q_track functional is treated as the charge label
+   of the (1/2, 1) tracks without re-deriving the closure formula under that gluing.
+   Re-deriving the closure-mode charge under half-integer winding — and confirming that
+   the resulting charge label coincides with Q_track — is required before the (+1, 0)
+   result sits on the same foundational footing as charges on integer-winding 2D pairs.
+   See the foundational-assumption paragraph at the top of §4.3.
+
+2. **What observable distinguishes one C₃ track from another?** The §4.6 color hypothesis
+   identifies the three C₃-related tracks with color-basis states. But Q_track is
+   invariant across the orbit (the C₃ rotation is an isometry of the surface), so the
+   construction itself supplies no observable that would distinguish one track from
+   another. Calling them color labels is a naming move pending such an observable.
+
+3. **Z₃ → SU(3): from discrete rotational symmetry to continuous color SU(3).** Real QCD
+   color is continuous SU(3); a Z₃ rotational symmetry of the cross-section is not by
+   itself a derivation of SU(3). Promoting Z₃ → SU(3) — and identifying the SU(3)
+   generators within the framework — is separate work.
 
 ---
 
