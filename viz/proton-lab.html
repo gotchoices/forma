@@ -227,21 +227,42 @@
 
     <div class="pnl-section">
       <div class="pnl-head">Particles</div>
-      <div style="display:flex; align-items:center; gap:10px; margin:6px 0;">
-        <label style="flex:1;"><input type="checkbox" id="cb-proton" checked> proton</label>
-        <div class="tau-stepper">
-          <button class="btn step-btn" id="btn-pN-dec">−</button>
-          <span class="tau-val" id="v-pN">1</span>
-          <button class="btn step-btn" id="btn-pN-inc">+</button>
-        </div>
+      <div style="display:flex; align-items:center; gap:6px; margin:6px 0;">
+        <span style="flex:1; font-size:11.5px;">proton</span>
+        <label style="display:inline-flex; align-items:center; gap:3px;">
+          <input type="checkbox" id="cb-p0" checked>
+          <span class="swatch" style="background:#ff5252"></span>
+        </label>
+        <label style="display:inline-flex; align-items:center; gap:3px;">
+          <input type="checkbox" id="cb-p1">
+          <span class="swatch" style="background:#d32f2f"></span>
+        </label>
+        <label style="display:inline-flex; align-items:center; gap:3px;">
+          <input type="checkbox" id="cb-p2">
+          <span class="swatch" style="background:#ff8a80"></span>
+        </label>
       </div>
-      <div style="display:flex; align-items:center; gap:10px; margin:6px 0;">
-        <label style="flex:1;"><input type="checkbox" id="cb-neutron"> neutron</label>
-        <div class="tau-stepper">
-          <button class="btn step-btn" id="btn-nN-dec">−</button>
-          <span class="tau-val" id="v-nN">1</span>
-          <button class="btn step-btn" id="btn-nN-inc">+</button>
-        </div>
+      <div style="display:flex; align-items:center; gap:6px; margin:6px 0;">
+        <span style="flex:1; font-size:11.5px;">neutron</span>
+        <label style="display:inline-flex; align-items:center; gap:3px;">
+          <input type="checkbox" id="cb-n0">
+          <span class="swatch" style="background:#ffd54f"></span>
+        </label>
+        <label style="display:inline-flex; align-items:center; gap:3px;">
+          <input type="checkbox" id="cb-n1">
+          <span class="swatch" style="background:#ffb300"></span>
+        </label>
+        <label style="display:inline-flex; align-items:center; gap:3px;">
+          <input type="checkbox" id="cb-n2">
+          <span class="swatch" style="background:#fff176"></span>
+        </label>
+      </div>
+      <div style="font-size:10px; color:#888; line-height:1.4; margin-bottom:6px;">
+        Each box selects one of the three phase-shifted geodesics (Z₃
+        replica) for that particle. Phase k of the proton and phase k of
+        the neutron share two cross-section pieces — paired as one
+        nucleon-replica; the three indices are the three replicas around
+        the surface.
       </div>
       <div class="tog" style="margin:8px 0 4px 0;">
         <label><input type="checkbox" id="cb-charge"> show charge segments</label>
@@ -428,10 +449,12 @@ const S = {
   // offset in t (or φ in arc mode) by multiples of 2π/3 so distinct phases
   // sit on disjoint pieces of the cross-section and the tracks don't
   // overlap. Up to 3 protons + 3 neutrons can be shown together.
-  protonOn:  true,
-  protonN:   1,
-  neutronOn: false,
-  neutronN:  1,
+  // Per-phase visibility for the three Z₃-replicas of each baryon. Index k
+  // is the phase k geodesic — its t₀ (or φ_start in arc mode) is offset by
+  // k·2π/3 from the canonical position. Phase k of proton and phase k of
+  // neutron are paired as one nucleon-replica.
+  protonPhases:  [true,  false, false],
+  neutronPhases: [false, false, false],
   // When on, each track is segmented red (convex / u-like) and blue
   // (concave / d-like) by the sign of the tube-direction curvature at
   // every point — i.e. the operative experienced-curvature density that
@@ -484,10 +507,10 @@ const CHARGE_NEG_CSS   = '#2196f3';
  */
 function activeParticles() {
   const out = [];
-  if (S.protonOn)  for (let i = 0; i < S.protonN;  i++)
+  for (let i = 0; i < 3; i++) if (S.protonPhases[i])
     out.push({ kind: 'proton',  phase: i,
                color: PROTON_COLORS[i],  colorCss: PROTON_COLORS_CSS[i] });
-  if (S.neutronOn) for (let i = 0; i < S.neutronN; i++)
+  for (let i = 0; i < 3; i++) if (S.neutronPhases[i])
     out.push({ kind: 'neutron', phase: i,
                color: NEUTRON_COLORS[i], colorCss: NEUTRON_COLORS_CSS[i] });
   return out;
@@ -1767,8 +1790,8 @@ function addGridLines(prof, R, tau, shear) {
 
 function updateInfo() {
   const modulated = (S.construction === 'modulated');
-  const nProton  = S.protonOn  ? S.protonN  : 0;
-  const nNeutron = S.neutronOn ? S.neutronN : 0;
+  const nProton  = S.protonPhases.filter(Boolean).length;
+  const nNeutron = S.neutronPhases.filter(Boolean).length;
   const nTotal = nProton + nNeutron;
 
   // Geometry grid + warnings
@@ -1938,24 +1961,17 @@ $('btn-reset').addEventListener('click', () => {
   resetToDefaults();
 });
 
-$('cb-proton').addEventListener('change', () => {
-  S.protonOn = $('cb-proton').checked; rebuildAll();
-});
-$('cb-neutron').addEventListener('change', () => {
-  S.neutronOn = $('cb-neutron').checked; rebuildAll();
-});
+for (let i = 0; i < 3; i++) {
+  $(`cb-p${i}`).addEventListener('change', () => {
+    S.protonPhases[i] = $(`cb-p${i}`).checked; rebuildAll();
+  });
+  $(`cb-n${i}`).addEventListener('change', () => {
+    S.neutronPhases[i] = $(`cb-n${i}`).checked; rebuildAll();
+  });
+}
 $('cb-charge').addEventListener('change', () => {
   S.showCharge = $('cb-charge').checked; rebuildAll();
 });
-function bumpCount(key, vId, delta) {
-  S[key] = Math.max(1, Math.min(3, S[key] + delta));
-  $(vId).textContent = String(S[key]);
-  rebuildAll();
-}
-$('btn-pN-dec').addEventListener('click', () => bumpCount('protonN',  'v-pN', -1));
-$('btn-pN-inc').addEventListener('click', () => bumpCount('protonN',  'v-pN', +1));
-$('btn-nN-dec').addEventListener('click', () => bumpCount('neutronN', 'v-nN', -1));
-$('btn-nN-inc').addEventListener('click', () => bumpCount('neutronN', 'v-nN', +1));
 
 const toggles = {
   'cb-surf':  'showSurface',
@@ -2035,15 +2051,16 @@ refreshProfileList();
 
 /* ─── Built-in presets ──────────────────────────────────── */
 
-const _P1 = { protonOn: true,  protonN: 1, neutronOn: false, neutronN: 1 };
-const _P3 = { protonOn: true,  protonN: 3, neutronOn: false, neutronN: 1 };
-const _N0 = { protonOn: false, protonN: 1, neutronOn: false, neutronN: 1 };
-const _PN = { protonOn: true,  protonN: 1, neutronOn: true,  neutronN: 1 };
+const _P1 = { protonPhases: [true,  false, false], neutronPhases: [false, false, false] };
+const _P3 = { protonPhases: [true,  true,  true ], neutronPhases: [false, false, false] };
+const _N0 = { protonPhases: [false, false, false], neutronPhases: [false, false, false] };
+const _PN = { protonPhases: [true,  false, false], neutronPhases: [true,  false, false] };
 
 const BUILTINS = {
   'mod-proton':   { construction: 'modulated', R: 3.0, ..._P1 },
   'mod-neutron':  { construction: 'modulated', R: 3.0,
-                    protonOn: false, protonN: 1, neutronOn: true, neutronN: 1 },
+                    protonPhases: [false, false, false],
+                    neutronPhases: [true, false, false] },
   'mod-3p':       { construction: 'modulated', R: 3.0, ..._P3 },
   'mod-pn':       { construction: 'modulated', R: 3.0, ..._PN },
   'canonical':    { construction: 'arc', R: 3.0, rL: 0.80, rS: 0.40, tauNum: 1, shearNum: 0, ..._P1 },
@@ -2070,11 +2087,11 @@ function syncControlsFromState() {
   $('sl-op').value = S.opacity; $('v-op').textContent = S.opacity.toFixed(2);
   $('v-tau').textContent = formatTau(S.tauNum);
   $('v-s').textContent   = formatTau(S.shearNum);
-  $('cb-proton').checked  = S.protonOn;
-  $('cb-neutron').checked = S.neutronOn;
+  for (let i = 0; i < 3; i++) {
+    $(`cb-p${i}`).checked = !!S.protonPhases[i];
+    $(`cb-n${i}`).checked = !!S.neutronPhases[i];
+  }
   $('cb-charge').checked  = S.showCharge;
-  $('v-pN').textContent   = String(S.protonN);
-  $('v-nN').textContent   = String(S.neutronN);
   $('sel-fractal').value = String(S.fractalLevel);
   $('sl-rL2').value = S.rL2Frac; $('v-rL2').textContent = S.rL2Frac.toFixed(3);
   $('sl-rL3').value = S.rL3Frac; $('v-rL3').textContent = S.rL3Frac.toFixed(3);
@@ -2089,7 +2106,9 @@ function resetToDefaults() {
     construction: 'modulated',
     R: 3.0, rL: 0.80, rS: 0.40,
     tauNum: 1, shearNum: 0, opacity: 0.55,
-    protonOn: true, protonN: 1, neutronOn: false, neutronN: 1, showCharge: false,
+    protonPhases:  [true,  false, false],
+    neutronPhases: [false, false, false],
+    showCharge: false,
     fractalLevel: 1, rL2Frac: 0.50, rL3Frac: 0.45,
     showSurface: true, showWire: false, showColor: true,
     showGrid: false, showPath: true, showSpine: false, showAxes: false,
@@ -2116,13 +2135,13 @@ window.addEventListener('keydown', (e) => {
       rebuildAll();
       break;
     case 'p':
-      S.protonOn = !S.protonOn;
-      $('cb-proton').checked = S.protonOn;
+      S.protonPhases[0] = !S.protonPhases[0];
+      $('cb-p0').checked = S.protonPhases[0];
       rebuildAll();
       break;
     case 'n':
-      S.neutronOn = !S.neutronOn;
-      $('cb-neutron').checked = S.neutronOn;
+      S.neutronPhases[0] = !S.neutronPhases[0];
+      $('cb-n0').checked = S.neutronPhases[0];
       rebuildAll();
       break;
     case '+': case '=':
