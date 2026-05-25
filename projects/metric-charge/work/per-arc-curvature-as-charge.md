@@ -85,26 +85,95 @@ and the per-vertex leakage becomes a local density. The qualitative agreement is
 what is missing is the rigorous derivation that the continuum limit gives specifically
 (1/2π) κ_g and not some other function of the bend field.
 
-**Why G1 is not derived in grid-primitive (2026-05-24 substrate survey).** grid-primitive
-ch. 1–8 has no local-bend continuum field, no constitutive relation between bend and
-the cylinder primitive's (e, φ) wave-fields under deformation, no continuum limit
-producing κ_g, and no leakage-rate identification. The closest existing structure —
-ch. 8's polygonal-kink picture — is discrete and explicitly marked as having an
-uncontrolled (Δθ)² expansion at N = 6. The coupling magnitude α is explicitly not
-derived from the bending mechanism even at the junction level. Making G1 rigorous
-requires a multi-chapter structural addition to grid-primitive — see "Path to
-promotion" and "Open question 1" below.
+**Why G1 is not yet a derivation (2026-05-24 / 2026-05-25 substrate surveys).** The
+strong supporting material is in grid/ (the top-level folder) — see "Framework
+support for G1" below — but it stops short of locality. grid-primitive ch. 1–8 has no
+local-bend continuum field, no constitutive relation between bend and the cylinder
+primitive's (e, φ) wave-fields under deformation, no continuum limit producing κ_g,
+and no leakage-rate identification at the pointwise level. The closest existing
+structure — ch. 8's polygonal-kink picture — is discrete and explicitly marked as
+having an uncontrolled (Δθ)² expansion at N = 6. The coupling magnitude α is
+explicitly not derived from the bending mechanism even at the junction level. So G1
+extends the framework's existing uniform-distribution premise (F12, T12) to pointwise
+locality — a narrower extension than re-deriving from scratch, but still real work.
+See "Path to promotion" below.
 
 **Why naming G1 is honest rather than cheating.** G1 is a single, definite,
 falsifiable claim that bundles the load-bearing missing identification into one named
-hypothesis. It can be tested: if a future grid-primitive companion derives the
-bend → κ_g identification with a different functional form, G1 is wrong and this
-file's chain breaks at Step 1. If it derives the form G1 asserts, this file's chain
-is promoted to a derivation. The pattern (carry a named hypothesis, complete the
-downstream work, identify the promotion path) is established framework practice —
-ch. 8 §5 explicitly forwards k-selection to downstream work while developing the
-structural consequences in §7; metric-mass ch. 9 carries the HO translation as a
-bridge without claiming derivation.
+hypothesis. It can be tested: if a future companion derives the bend → κ_g
+identification with a different functional form, G1 is wrong and this file's chain
+breaks at Step 1. If it derives the form G1 asserts, this file's chain is promoted
+to a derivation. The pattern (carry a named hypothesis, complete the downstream work,
+identify the promotion path) is established framework practice — ch. 8 §5 explicitly
+forwards k-selection to downstream work while developing the structural consequences
+in §7; metric-mass ch. 9 carries the HO translation as a bridge without claiming
+derivation.
+
+## Framework support for G1 (already in the repo)
+
+G1 is not pulled from thin air. The framework has several pieces already on the books
+that establish its essential content for the uniform-circulation case, plus a stated
+operational premise that matches G1's form. The remaining gap is locality (extension
+to varying κ_g along a curve).
+
+**[grid/charge-emergence.md](../../grid/charge-emergence.md) line 96.** *"One full 2π
+circulation of the tube = one full unit of charge."* This is the framework's
+foundational integer-quantization statement — the closed-loop case of G1's continuum
+form integrated over a 2π wrap. The 2π comes from full tube periodicity; the unit
+charge is e = √(4πα) by GRID axiom A3.
+
+**[grid/sim-impedance/F12-charge-per-radian.md](../../grid/sim-impedance/F12-charge-per-radian.md)
+§F2 (Gauss–Bonnet on the lattice).** *"The sum of surface-normal turning angles
+across all junctions is exactly 4π for the minimal torus. This is the Gauss–Bonnet
+theorem … This 4π is the total 'bending budget' distributed across all junctions."*
+The framework explicitly invokes Gauss–Bonnet on the discrete lattice — exactly the
+topological identity G1 leans on in the continuum limit.
+
+**F12 §F3 (charge-per-radian premise).** *"If the known total charge e = √(4πα) is
+distributed uniformly per radian of tube turning (2π total), the charge per radian is
+e/(2π) = √(α/π) ≈ 0.0482. This is a definite α-dependent quantity — NOT a derivation
+of α, but a prediction for the per-radian micro-charge assuming uniform distribution."*
+
+**[grid/sim-impedance/T12-charge-per-radian.md](../../grid/sim-impedance/T12-charge-per-radian.md)
+main premise.** Frames the entire track around the identification: *"GRID tells us …
+A 2π phase winding (topological defect) produces exactly one unit of charge … A torus
+IS a 2π defect … The total distortion around the tube sums to 2π (Gauss–Bonnet). If
+charge is proportional to distortion, then e = (charge per radian) × 2π, charge per
+radian = e/(2π) = √(α/π)."* The "if" in T12 is exactly the locality premise of G1.
+
+**Other supporting context:** [R48-helicity-charge](../../studies/R48-helicity-charge/findings.md)
+ties circulation to charge at the mode-selection level (n₁ = 1; charge requires
+circulation, not just topology). [metric-charge ch. 4](../04-the-closure-condition.md)
+establishes integer winding charges T(m_t, m_r) on a complete 2D-pair closure — the
+KK-momentum reading equivalent to G1's closed-loop form. metric-charge ch. 8 §7
+develops a different, complementary fractional axis (per-knot 1/k distribution of an
+integer total) consistent with the per-arc reading developed here.
+
+**What this gives us — and what still needs locality.** Putting the citations on a
+table:
+
+| Element of G1 | Where it's already established | Status |
+|---|---|---|
+| Closed-loop integer total = unit charge per 2π wrap | charge-emergence.md L96; metric-charge ch. 4 | ✓ established |
+| Gauss–Bonnet on the framework's substrate (4π turning budget on a torus) | F12 §F2 | ✓ established (discrete lattice form) |
+| Charge per radian of tangent rotation = e/(2π), under uniform distribution | F12 §F3, T12 main premise | ✓ established as operational premise |
+| **Locality** — dQ/ds = (1/2π)·κ_g pointwise, valid for curves with κ_g varying | — | **not derived** (still G1's load-bearing piece) |
+| Coupling magnitude α tied to lattice geometry | — | acknowledged unsolved by F12 |
+
+**The substantive remaining gap is locality.** The framework already has G1 *for the
+uniform-circulation case* (constant κ_g over a 2π winding): charge per radian = e/(2π)
+translates directly to dQ/ds = (1/2π)·(1/r) = κ_g/(2π) for a circle of radius r. G1
+generalizes this by asserting that the same per-radian density applies *pointwise*
+to curves with κ_g(s) varying along them — where κ_g(s) plays the role of "local
+angular distortion rate per unit arc length." F12 line 83 acknowledges this gap
+explicitly: *"There is no way to attribute the total charge to a per-wye-distortion
+basis using pure geometric projection alone."*
+
+So G1 carries a narrower gap than the file's earlier framing suggested — it is the
+**locality extension** of an identification the framework already uses for the
+uniform case, not a free-standing assumption pulled in from outside. T12's "if charge
+is proportional to distortion" is the same claim G1 makes; T12 entertains it as an
+operational premise and the present file does the same.
 
 ## Derivation under G1
 
@@ -246,27 +315,39 @@ recovery of all sheet-proton clover quantities.
 
 ## Path to promotion
 
-To promote this file from "complete under G1" to "complete unconditionally," **G1 must
-be derived from grid-primitive**. That requires a multi-chapter structural addition:
+To promote this file from "complete under G1" to "complete unconditionally," **G1's
+locality extension must be derived**. The framework already supplies the
+uniform-circulation form (F12 §F3, T12) and the topological identity it leans on
+(F12 §F2 — Gauss–Bonnet on the lattice; charge-emergence.md L96 — 2π wrap = unit
+charge). What remains is showing that the per-radian density is *pointwise* on a
+curve with varying κ_g, not just an average over a uniform 2π winding.
 
-1. **Define local lattice bend as a continuum field** — θ_bend(x, y) or κ_ij on the
-   lattice surface — with a clean continuum limit.
-2. **Derive the constitutive relation** between the bend field and the cylinder
-   primitive's (e, φ) wave-fields under deformation. (How the wave equation D ∂_t² u =
-   M ∂_x² u is modified when the underlying lattice is bent.)
-3. **Take the continuum limit** and identify the resulting bend field with κ_g, the
-   standard geodesic curvature in the differential-geometric sense.
-4. **Derive the leakage rate** per arc length, identify it with (1/2π) κ_g, and show
-   that this is the local EM charge density that G1 posits.
+Two complementary routes are available:
 
-These four items are the same work the original "Step 1" demanded, now bundled and
-named as a single deliverable: **derive G1**. They are real chapter-grade additions to
-grid-primitive, not work-file extensions.
+**Route A — locality from the discrete lattice.** Extend T12's uniform-distribution
+premise to non-uniform bend. Requires either (a) a constitutive relation between
+the local lattice bend at a junction and the per-junction charge contribution (a
+grid-primitive-level addition along the lines of the original four-step program:
+local-bend continuum field, constitutive relation with (e, φ), continuum limit,
+leakage-rate identification), or (b) a coherent-wave argument showing that the
+leakage from a non-uniform bend pattern factors pointwise into per-location
+contributions. Either supplies locality directly. This route is real chapter-grade
+work in grid-primitive.
 
-Once G1 is derived, this file's chain (Steps 1–5 under G1) becomes a metric-charge
-chapter, structurally parallel to metric-mass ch. 9 — a translation/bridge layer that
-downstream projects (sheet-proton, ma-domain) can cite when using the per-arc
-fractional reading.
+**Route B — Berry-phase / holonomy framework.** A wave parallel-transported around a
+closed loop on a curved surface picks up a holonomy phase that, for the geodesic
+side, equals ∮κ_g ds (Gauss–Bonnet). This is rigorous differential geometry. If
+this holonomy IS the framework's EM charge — which charge-emergence.md L96 and
+metric-charge ch. 4 jointly support for the *integrated* form — then locality
+follows *automatically* from the holonomy framework's own pointwise structure: the
+holonomy along an arc is intrinsically the integral of a local density. No
+constitutive-relation work in grid-primitive needed for locality. This is the
+lighter route and worth investigating first (open question 5 below).
+
+Once G1 is derived by either route, this file's chain (Steps 1–5 under G1) becomes a
+metric-charge chapter, structurally parallel to metric-mass ch. 9 — a translation/
+bridge layer that downstream projects (sheet-proton, ma-domain) can cite when using
+the per-arc fractional reading.
 
 ## Open questions
 
@@ -311,10 +392,16 @@ probable to short-wavelength probes — exactly the picture sheet-proton's clove
 actually rely on, and the "stacking jacks" intuition is recovered as the short-
 wavelength regime.
 
-**G1 is not derived from grid-primitive.** The 2026-05-24 substrate survey identified
-what would need to be added to derive G1 (open question 1) — a multi-chapter
-structural addition. Until that work is done, this file's chain is
-complete-conditional-on-G1, not unconditionally derived.
+**G1 is partially supported, not fully derived.** The 2026-05-25 broader survey
+(see "Framework support for G1" above) found that grid/ already has G1's essential
+content for the uniform-circulation case: charge-emergence.md L96 (2π wrap = unit
+charge), F12 §F2 (Gauss–Bonnet on the lattice), F12 §F3 and T12 (charge per radian
+= e/(2π) as operational premise). The remaining gap is **locality** — extension from
+uniform-distribution to pointwise dQ/ds = (1/2π)κ_g for curves with varying κ_g.
+This is a narrower gap than the original "no support at all" reading suggested.
+Two routes for promotion are identified above; the Berry-phase / holonomy route
+(open question 5) likely closes it without needing additional grid-primitive
+structural work.
 
 **This file's contribution.**
 
@@ -323,8 +410,11 @@ complete-conditional-on-G1, not unconditionally derived.
 - A clean Steps 1–5 chain showing what follows from G1, including the
   local-manifestation step (Step 5) that answers what sheet-proton's clovers actually
   rely on — fractional charges visible up close with sign tracking convex/concave.
-- A specific path to promotion (derive G1 in grid-primitive) so the open work is
-  named and bounded.
+- Citations to existing framework material that already supports G1 for the
+  uniform-circulation case (charge-emergence.md L96; F12 §F2, §F3; T12 main premise),
+  so G1 is not freestanding but a locality extension of an established premise.
+- A specific path to promotion (two routes — discrete-lattice locality or
+  Berry-phase / holonomy) so the open work is named and bounded.
 - A demarcation between what is mathematically rigorous (Steps 2–4 differential
   geometry plus algebra; Step 5 standard EM under G1) and what depends on G1
   (Step 1 — the load-bearing identification).

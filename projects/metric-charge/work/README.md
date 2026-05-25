@@ -38,16 +38,29 @@ would benefit from being worked through informally first.
   and [metric-binding](../../metric-binding/).
 
 - **[per-arc-curvature-as-charge.md](per-arc-curvature-as-charge.md)** —
-  Bridge attempt to ground sheet-proton's per-arc fractional charge
-  reading (Q_lobe = +2/3, Q_saddle = −1/3 from integrated geodesic
-  curvature) in the framework's existing charge mechanism (grid
-  charge-emergence + Gauss–Bonnet). Distinguishes per-arc fractional
-  *value* from ch. 8 §7's per-knot fractional *association* and shows
-  both as complementary axes of the same confinement principle. Step 1
-  (grid bend → continuum κ_g) is heuristic and needs a grid-primitive
-  companion; remaining steps are clean modulo non-trivial-topology
-  cases. Candidate for a metric-charge appendix once Step 1 is
-  hardened.
+  Bridge that grounds sheet-proton's per-arc fractional charge reading
+  (Q_lobe = +2/3, Q_saddle = −1/3 from integrated geodesic curvature)
+  in the framework's existing charge mechanism, under one explicit
+  working hypothesis **G1**: the continuum-limit normal-E-field leakage
+  density along a curve on a bent surface equals (1/2π) κ_g. Carries
+  G1 in the same pattern that ch. 8 §7 carries k as input and metric-
+  mass ch. 9 carries the HO bridge as translation. With G1 the chain
+  runs through cleanly (Steps 1–5): per-arc Q_i is a real local charge
+  contribution; sign tracks convex/concave; per-arc fractions sum to
+  integer closed-loop totals by Gauss–Bonnet; standalone fractions
+  forbidden but locally probable to short-wavelength probes; long-
+  wavelength probes see only the integer monopole. Aligns structurally
+  with ch. 8 §7's per-knot reading as complementary axes of the same
+  confinement principle. The 2026-05-25 broader survey found that
+  grid/ already supports G1 for the uniform-circulation case
+  (charge-emergence.md L96 — 2π wrap = unit charge; F12 §F2 —
+  Gauss–Bonnet on the lattice; F12 §F3 and T12 — charge per radian =
+  e/(2π) as operational premise). **The remaining gap is locality** —
+  extending the per-radian density pointwise to curves with varying
+  κ_g. Two promotion routes identified: discrete-lattice locality work
+  in grid-primitive, or a lighter Berry-phase / holonomy route that
+  may close locality automatically from differential-geometric
+  structure.
 
 ## Status convention
 
