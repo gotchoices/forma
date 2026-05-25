@@ -38,40 +38,103 @@ in isolation. The (m, n) mode family is identified with topological
 winding pairs (Ch 2 §5.3); compact-direction momenta p_u, p_w are
 identified with Kaluza-Klein conserved charges (Ch 2 §5.1, Ch 5).
 
+**Convention used throughout this file:** (m, n) = (w-direction
+winding, u-direction winding) per Ch 2. The tube count m goes with
+w; the ring count n goes with u. Ladder operators and joint
+occupation numbers are ordered the same way: a_w paired with the
+m label, a_u paired with the n label.
+
+## Interpretive status of the bridge
+
+Before the translation, one interpretive choice has to be made
+explicit. Quantising the wave equation on T² admits two distinct
+ladder structures, and which one the bridge adopts determines what
+the bridge actually claims.
+
+- **Picture A (QFT on T²).** Canonical quantisation of the field
+  on T² gives **one ladder per mode** — operator pair
+  (a_{m,n}, a†_{m,n}) for every winding pair (m, n) ∈ ℤ². The
+  Fock space is the tensor product over all (m, n). Single-quantum
+  states have one quantum in some specific mode; multi-quantum
+  states populate multiple modes. The continuous symmetries of the
+  spectrum are the U(1) × U(1) of compact-direction translations,
+  plus a discrete dihedral group acting on the (m, n) integer
+  lattice at R_u = R_w. There is **no** continuous SU(2).
+
+- **Picture B (2D HO overlay).** Treat the system as a 2D
+  harmonic oscillator with **two ladders** (a_w, a_u), one per
+  compact direction. The joint occupation (m, n) is the number of
+  quanta of each ladder. The Fock space is the tensor product of
+  two single-oscillator Fock spaces. The continuous symmetries
+  include U(1) × U(1) and, at ω_u = ω_w (equivalent to R_u = R_w
+  for the massless wave), a full continuous SU(2) mixing the two
+  ladder operators.
+
+The two pictures share the same one-quantum-per-mode spectrum
+({(m, n)} ↔ {|m, n⟩}) but **differ at multi-quantum level and in
+their continuous-symmetry algebras.** Picture A is what canonical
+quantisation of the wave equation gives directly; picture B is a
+structural overlay that imports HO algebraic content onto the
+spectrum.
+
+**This file works in picture B**, parallel to
+[metric-mass Ch 9](../../metric-mass/09-harmonic-oscillator-bridge.md)'s
+adoption of the 1D HO overlay. The choice is interpretive, not
+derivational: the wave equation does *not* require picture B.
+What picture B buys is algebraic machinery (continuous SU(2) at
+isotropy, coherent states, etc.) that picture A does not carry;
+what it gives up is strict equivalence with the canonical
+quantisation. **Where picture B's predictions are specific (e.g.,
+continuous SU(2) at ε = 1), they are overlay-conditional, not
+derived consequences of the wave equation.** Any appendix has to
+say this up front.
+
 ## The 2D HO translation
 
-The u- and w-pieces of the separated wave equation are each 1D simple
-harmonic oscillators in the same sense
+Working in picture B (per the previous section), the u- and
+w-pieces of the separated wave equation are each treated as 1D
+simple harmonic oscillators in the same overlay sense
 [metric-mass Ch 9 §2](../../metric-mass/09-harmonic-oscillator-bridge.md)
 made explicit for the single-direction case. Promoting to operator
-algebra: two independent ladders, one per compact direction:
+algebra gives two independent ladders, one per compact direction:
 
-<!-- [a_u, a_u†] = 1,  [a_w, a_w†] = 1,  [a_u, a_w] = [a_u, a_w†] = 0 -->
+<!-- [a_w, a_w†] = 1,  [a_u, a_u†] = 1,  [a_w, a_u] = [a_w, a_u†] = 0 -->
 $$
-[\,a_u,\;a_u^\dagger\,] = 1,
-\qquad
 [\,a_w,\;a_w^\dagger\,] = 1,
 \qquad
-[\,a_u,\;a_w\,] = [\,a_u,\;a_w^\dagger\,] = 0
+[\,a_u,\;a_u^\dagger\,] = 1,
+\qquad
+[\,a_w,\;a_u\,] = [\,a_w,\;a_u^\dagger\,] = 0
 $$
 
-Joint occupation numbers (n, m) label basis states |n, m⟩ on the
-tensor-product Fock space.
+Joint occupation numbers (m, n) label basis states |m, n⟩ on the
+tensor-product Fock space: m quanta of the w-ladder, n quanta of
+the u-ladder.
 
 Translation, line by line:
 
-| Classical wave reading (Chapter 2) | 2D HO reading |
+| Classical wave reading (Chapter 2) | 2D HO overlay reading |
 |---|---|
-| Mode function e^{i(n u/R_u + m w/R_w)} | Number eigenstate \|n, m⟩ |
-| Winding pair (m, n) from periodicity on both cycles | Joint occupation numbers (n, m) |
-| Compact momenta p_u = ℏn/R_u, p_w = ℏm/R_w | Canonical momenta of the two ladders |
-| Rest mass m² = m_u² + m_w² (Pythagorean) | Sum of two ladder-energy contributions, *squared* |
-| KK gauge potential B_μ from h_μw ([Ch 5](../05-metric-self-consistency.md)) | Generator of the w-tower U(1) under dimensional reduction |
-| Standing-wave (R_u-symmetrized) particle | Symmetric superposition of ±n number states on the u-tower |
+| Mode function e^{i(m w/R_w + n u/R_u)} | Number eigenstate \|m, n⟩ |
+| Winding pair (m, n) = (w, u) from periodicity on both cycles | Joint occupation numbers (m, n) |
+| Compact momenta p_w = ℏm/R_w, p_u = ℏn/R_u | Canonical momenta of the two ladders |
+| Rest mass m² = m_u² + m_w² (Pythagorean *sum of squares* of two single-direction rest masses) | Spectrum collapses to the same one-quantum-per-mode values; *not* the HO additive sum ℏω_w m + ℏω_u n |
+| Off-diagonal metric h_μw on extended spacetime | KK gauge *field* B_μ — a 1-form on extended spacetime that the dimensional reduction reads off h_μw ([Ch 5](../05-metric-self-consistency.md)) |
+| Compact-direction momentum p_w | Conserved U(1) *charge*, eigenvalue of the w-tower generator; couples to B_μ |
 
-The structural shift from 1D to 2D is the appearance of a **second
-ladder**. Everything that was a single-tower story in metric-mass
-becomes a joint-tower story here.
+The structural shift from 1D to 2D is the appearance of a
+**second ladder**. Everything that was a single-tower story in
+metric-mass becomes a joint-tower story here.
+
+(One feature of the Ch 2 reading that does not transfer cleanly
+into picture B: the ±n traversal-orientation distinction of Ch 2
+§5.1. In picture A each (m, n) and (m, −n) is a separate mode
+with its own ladder; in picture B the u-ladder occupation n is
+non-negative, and the sign-of-winding information is carried by a
+separate orientation label. The R_u- vs R_J-symmetrisation
+constructions of Ch 5–6 belong naturally to picture A, not to the
+bare picture B; importing them into the overlay requires extra
+structure not specified here.)
 
 ### One reconciliation worth being explicit about
 
@@ -102,9 +165,12 @@ other.
 
 **Where the layered intuition is valid as a re-derivation.** The
 same Pythagorean answer can be reached sequentially: treat m_u as
-the rest mass of a 1D-compact particle, then put it in motion along
-the (now treated as kinematic) w-direction. The relativistic
-dispersion gives
+the rest mass of a 1D-compact particle, then add a second compact
+direction w carrying its own Kaluza-Klein momentum p_w = ℏ·2πm/L_w.
+(The w-direction stays *compact* throughout — it is not promoted to
+an extended/non-compact direction; the layering is over how the
+mass formula is assembled, not over whether w is geometrically
+compact.) The relativistic dispersion gives
 
 <!-- E² = (p_w c)² + (m_u c²)² -->
 $$
@@ -141,17 +207,25 @@ results.
 creates observable EM charge only if the previous layer had its own
 winding (its own "mass").
 
-**Test against Ch 4.** The closure condition is that **both**
-windings be nonzero. Ch 2 §4.2 names (m, 0) and (0, n) "single-axis
-modes" that produce mass without observable EM. Ch 4 develops the
-m | n synchronization criterion within the both-nonzero family. So:
-charge requires non-trivial winding in *both* compact directions.
+**Test against Ch 4.** The closure condition has two parts:
+- **Necessary condition (Ch 2 §4.2):** both windings be nonzero.
+  Single-axis modes (m, 0) and (0, n) produce mass without
+  observable EM.
+- **Sufficient condition (Ch 4):** within the both-nonzero family,
+  the m | n synchronisation criterion must also hold.
+
+So the correct headline is: **charge requires non-trivial winding
+in both compact directions** *and* **the m | n synchronisation
+that Ch 4 develops within the both-nonzero family.** The "prior
+mass" hypothesis captures the necessary half of this, not the
+sufficient half.
 
 The hypothesis's "prior mass" reading is one way to narrate the
-closure condition: dim 1 winding gives the first ladder a
-non-trivial state ("prior mass"), dim 2 winding gives the second
-ladder a non-trivial state, and only joint excitation supports the
-chirality structure that the closure condition tests.
+necessary part: dim 1 winding gives the first ladder a non-trivial
+state ("prior mass"), dim 2 winding gives the second ladder a
+non-trivial state, and only joint excitation provides the
+chirality structure that the synchronisation criterion can then
+test.
 
 **Conclusion.** The hypothesis maps cleanly onto the existing
 closure condition as a re-narration. It does not introduce a new
@@ -159,57 +233,93 @@ mechanism. It does provide an intuitive sequential story —
 *build mass first, then add charge by adding a second
 winding* — that is appendix-grade pedagogy.
 
-## Symmetry payoffs (the real prize)
+## Symmetry payoffs (overlay-conditional)
 
-**Generic anisotropic case (L_u ≠ L_w): U(1) × U(1).** Each ladder
-carries its own phase symmetry; the two associated Noether-conserved
-charges are p_u and p_w. The KK identification of compact momenta
-with charge that Ch 2 §5 and Ch 5 already use is exactly this
-U(1) × U(1).
+**Generic anisotropic case (L_u ≠ L_w): U(1) × U(1) — robust in
+both pictures.** Each ladder carries its own phase symmetry; the
+two associated Noether-conserved charges are p_w and p_u. The KK
+identification of compact momenta with charge that Ch 2 §5 and
+Ch 5 already use is exactly this U(1) × U(1). This is realised in
+*both* pictures (A and B) and is structural, not
+overlay-conditional.
 
-The two U(1)'s are independent because the spectrum
-m² = m_u² + m_w² has no cross term that would couple them at the
-free-wave level.
+**Isotropic case (L_u = L_w, ε = 1): continuous SU(2) in picture
+B only.** At equal radii the 2D-HO Hamiltonian becomes invariant
+under arbitrary unitary mixing of the two ladder operators
+(a_w, a_u) → U·(a_w, a_u). The unitary group is
+U(2) = U(1) × SU(2); the extra SU(2)/U(1) generators act on the
+overlay's ladder operators.
 
-**Isotropic case (L_u = L_w, i.e., ε = 1): SU(2).** When the two
-radii are equal, the spectrum m² ∝ n² + m² is degenerate under any
-SO(2) rotation of the (n, m) plane and, more strongly, under
-arbitrary unitary mixing of the two ladders. The unitary group is
-U(2) = U(1) × SU(2); the extra SU(2)/U(1) generators that this
-brings are **invisible in the classical wave reading** of Ch 2 and
-arise only once the operator-algebra perspective is in place.
+**The wave equation on T² at R_u = R_w does *not* carry a
+continuous SU(2).** Its spectrum m² ∝ m² + n² is invariant under
+the discrete *dihedral* group D_4 (90° rotations + reflections of
+the integer (m, n) lattice) plus a Z_2 of overall sign flip. A
+continuous SO(2) acting on (m, n) as real coordinates would not
+preserve the integer lattice — irrational rotations take integer
+modes to non-existent intermediate values — so it is *not* a
+symmetry of the actual mode spectrum.
+
+So the SU(2) "prize" is overlay-conditional. Whether it is
+physically realised depends on whether picture B is the right
+quantisation of the geometry, not on the geometry alone.
 
 [Chapter 7](../07-aspect-ratio-and-character.md) currently treats
-ε = 1 as the boundary between thin-sheet and fat-sheet regimes. The
-HO reading sharpens this:
+ε = 1 as the boundary between thin-sheet and fat-sheet regimes.
+The reading depends on the picture:
 
-> **ε = 1 is a structurally distinguished point — a degeneracy line
-> in the spectrum and a symmetry-enhancement line in the operator
-> algebra.**
+| Picture | What happens at ε = 1 |
+|---|---|
+| A (wave equation on T²) | Discrete D_4 lattice symmetry: a point of *finite-group* symmetry enhancement |
+| B (2D HO overlay) | Continuous SU(2): a point of *Lie-group* symmetry enhancement |
 
-Whether this SU(2) is realized as any framework target (a candidate
-for weak isospin? a different internal symmetry? not realized at all
-because no physical mechanism enforces ε = 1?) is open and deferred.
-The geometric fact that the symmetry appears at ε = 1 is robust.
+Both pictures agree that ε = 1 is structurally distinguished; they
+disagree on whether the enhancement is continuous or discrete.
+
+Whether the continuous SU(2) of picture B is realised as any
+framework target (a candidate for weak isospin? for spin? a
+different internal symmetry?) cannot be settled until the picture-
+faithfulness question is settled. The framework's existing
+posture, mirrored in
+[higher-order-charges.md](higher-order-charges.md), treats
+isotropy-enhanced continuous symmetries as *structural shadows* —
+real algebraic facts about the overlay, but not yet derived
+symmetries of the physical geometry. The 2D SU(2) story belongs
+in the same category.
 
 ## Coherent-state knots
 
-A single (m, n) mode is delocalized over the entire sheet. The HO
-reading provides **coherent states** |α_u, α_w⟩ that are joint
-eigenstates of the lowering operators (a_u, a_w), are
-minimum-uncertainty Gaussian wavepackets on T², and trace classical
-trajectories without spreading. This is the natural formalism for
-talking about a *knot as a localized wavepacket on T²*, rather than
-as a plane-wave Fourier mode.
+A single (m, n) mode is delocalised over the entire sheet. Picture
+B (the 2D HO overlay) provides **coherent states** |α_w, α_u⟩ —
+joint eigenstates of the lowering operators (a_w, a_u) — that
+are minimum-uncertainty Gaussian wavepackets on T² and trace
+classical trajectories without spreading. Coherent states make
+"where the wavepacket is on T²" a well-defined question, replacing
+the plane-wave delocalisation with localised blobs.
+
+**What coherent states do *not* automatically give:** the
+classical trajectory of a standard 2D-HO coherent state is an
+**ellipse** in (w, u) at frequencies ω_w and ω_u — *not* a torus
+knot T(m, n). To produce a wavepacket that follows the T(m, n)
+torus-knot trajectory you need a more specific construction
+(e.g., a coherent state built from the (m, n)-momentum eigenmode
+itself, which is *not* the standard 2D-HO coherent state), and
+the construction depends on which classical orbit you want to
+follow.
+
+So the upgrade gives wavepacket *localisation* automatically;
+*knot-trajectory tracking* is an additional construction not
+supplied by the bare 2D-HO coherent state.
 
 [Chapter 3](../03-knots-on-the-torus.md) currently reframes the
-(m, n) modes geometrically as knots traversing the sheet. The
-geometry is built on plane-wave mode functions. A coherent-state
-upgrade would let "where on T² the knot is" become a well-defined
-question rather than a metaphor.
+(m, n) modes geometrically as knots traversing the sheet, built
+on plane-wave mode functions. The coherent-state upgrade is
+useful for the localisation half of what Ch 3 needs; the
+knot-trajectory half is an open construction, not a clean
+translation.
 
-Not developed here. Flagged as a candidate appendix paragraph, or as
-a follow-up that may want its own short chapter.
+Not developed here. Flagged as candidate appendix material whose
+scope (wavepacket localisation, or also knot-trajectory tracking
+once the construction is worked out) is itself an open question.
 
 ## Open questions before an appendix is writable
 
@@ -217,19 +327,32 @@ a follow-up that may want its own short chapter.
    additive-vs-Pythagorean distinction explicit so the reader is
    not misled. (Resolved here in principle; needs careful prose.)
 
-2. **What does the ε = 1 SU(2) actually generate geometrically?**
-   The unitary mixing a_u ↔ a_w must correspond to some
-   transformation of the wrap basis. Is it a continuous rotation of
-   the (u, w) coordinate frame? A relabeling of which direction is
-   tube vs. ring? Something else? Work this out before writing
-   "SU(2) at ε = 1" as a clean appendix claim.
+2. **Is picture B (the 2D HO overlay) faithful to the physics, or
+   only an algebraic structure laid over picture A?** The
+   continuous SU(2) at ε = 1 is a property of picture B; the
+   wave equation on T² (picture A) carries only discrete D_4 at
+   the same point. For the SU(2) "prize" to land as a real
+   geometric symmetry of the framework, one of two things has to
+   happen: (a) the framework supplies a physical mechanism that
+   upgrades the wave equation's D_4 to continuous SU(2), or
+   (b) picture B is established as the *physically correct*
+   quantisation of the geometry, not just an algebraic overlay
+   that happens to share the one-quantum spectrum. Currently
+   neither path is in scope. Until this is resolved, any appendix
+   has to report the SU(2) as overlay-conditional rather than as
+   a derived geometric symmetry. This is the most consequential
+   open question in the file.
 
-3. **Coherent-state knot dynamics.** What is the equation of motion
-   of a coherent-state knot on T²? Does it reduce to closed-orbit
-   motion along the (m, n) torus knot? If so, this gives a clean
-   "knot as classical orbit, particle as coherent quantum state of
-   the orbit" reading. Open whether this stays as an appendix
-   paragraph or becomes its own chapter.
+3. **Coherent-state knot dynamics.** A standard 2D-HO coherent
+   state gives wavepacket localisation but follows an *elliptical*
+   classical orbit, not a T(m, n) torus knot. What construction is
+   needed for a wavepacket that follows the (m, n) torus-knot
+   trajectory? If such a construction exists, this would give a
+   clean "knot as classical orbit, particle as coherent quantum
+   state of the orbit" reading. Open whether the localisation
+   alone (without knot-trajectory tracking) is enough for the
+   appendix, or whether the full construction has to be worked out
+   first.
 
 4. **Closure condition in operator language.** Does the m | n
    closure condition have a natural characterization in terms of
@@ -244,18 +367,55 @@ a follow-up that may want its own short chapter.
 
 ## Status
 
-The 2D HO bridge is conceptually ready. Three things should be
-settled before an appendix is written:
+The 2D HO bridge is conceptually ready, with the major caveat that
+the bridge works in **picture B (2D HO overlay)** rather than in
+the canonical quantisation of the wave equation (picture A). Items
+adjusted per
+[ho-bridge-2d-review.md](ho-bridge-2d-review.md):
 
-- Resolution of open question 2 (geometric content of the ε = 1
-  SU(2))
-- Decision on coherent-state knot framing's scope (appendix
-  paragraph vs. its own chapter)
-- Decision on whether any of this lands as back-edits to existing
-  chapters rather than as a new appendix
+- New §"Interpretive status of the bridge" makes the picture-A vs
+  picture-B choice explicit and identifies the file as working in
+  picture B as an overlay, not a derivation (items 1, 9).
+- Convention (m, n) = (w-direction winding, u-direction winding)
+  per Ch 2 standardised throughout; ladders ordered (a_w, a_u) and
+  joint occupation states written |m, n⟩ consistently (item 5).
+- Translation table split the KK-gauge row into field (h_μw ↔ B_μ)
+  and charge (p_w ↔ U(1) generator eigenvalue) (item 3); the
+  ambiguous "Sum...squared" row replaced with explicit Pythagorean
+  *sum-of-squares* language vs HO additive (item 4); a note added
+  on the ±n / R_u-symmetrisation features of picture A that do not
+  transfer cleanly into picture B.
+- §"Symmetry payoffs" rewritten as overlay-conditional: U(1) ×
+  U(1) is robust in both pictures; continuous SU(2) at ε = 1
+  belongs to picture B only, while picture A carries only discrete
+  D_4 at the same point. The "real prize" framing has been
+  downgraded to match the same posture
+  [higher-order-charges.md](higher-order-charges.md) takes toward
+  SU(3) → color (structural shadow, not derived symmetry)
+  (items 2, 9).
+- §"Coherent-state knots" reconciled with Open Question 3:
+  localisation is automatic; knot-trajectory tracking is a
+  separate, open construction (item 6).
+- §"Hypothesis A" reworded to make w's compact status explicit
+  ("now treated as kinematic" replaced with KK-momentum framing)
+  (item 7).
+- §"Hypothesis B" headline augmented to include the Ch 4
+  synchronisation criterion as the sufficient condition (necessary
+  + sufficient now both present) (item 8).
+- Open Question 2 updated to the sharper picture-faithfulness
+  question that is now the file's chief open issue.
+
+Three things should be settled before an appendix is written:
+
+- **Resolution of OQ 2** (whether picture B is faithful or just
+  algebraic overlay) — the most consequential.
+- **Decision on coherent-state knot framing's scope** (localisation
+  alone, or also knot-trajectory tracking once constructed).
+- **Decision on whether any of this lands as back-edits to existing
+  chapters** rather than as a new appendix.
 
 Hypotheses A and B (incremental mass, charge requires prior mass)
-are both valid **pedagogical re-narrations** of derivations that
-Chapter 2 and Chapter 4 already contain. They are appendix-grade if
-treated honestly as narration; they should not be presented as new
-derivations producing new content.
+remain valid **pedagogical re-narrations** of derivations that
+Chapter 2 and Chapter 4 already contain. They are appendix-grade
+if treated honestly as narration; they should not be presented as
+new derivations producing new content.
