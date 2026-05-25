@@ -234,8 +234,34 @@ the toggle, so the same red/blue pattern appears in both views.
 
 When the option is **off** (default), each particle is drawn in its
 identity colour: red shades for protons (`#ff5252`, `#d32f2f`, `#ff8a80`)
-and yellow shades for neutrons (`#ffd54f`, `#ffb300`, `#fff176`). Blue is
+and violet shades for neutrons (`#ab47bc`, `#8e24aa`, `#ce93d8`). Blue is
 reserved for the electron and green for the neutrino in future viz work.
+
+### 1.11 Master particle checkboxes
+
+To the left of each particle's row sits a master checkbox that gates the
+whole group. With the master unchecked, no track for that particle type
+is drawn regardless of which per-phase checkboxes are ticked; with it
+checked, the three per-phase checkboxes determine which Z₃-replicas
+appear. This makes it one click to toggle all protons (or all neutrons)
+on and off without disturbing the individual phase selection.
+
+### 1.12 Settings persistence
+
+The full UI state (construction mode, particle-master + per-phase
+checkboxes, show-charge toggle, view toggles, all geometric sliders,
+fractal level) is auto-saved to `localStorage` under
+`protonLab.state` on every change and restored on page reload. The
+camera position continues to persist under its existing key
+(`protonLab.camera`); named profiles continue to live under
+`protonLab.profiles`.
+
+### 1.13 Surface STL export
+
+An **Export → Surface → STL** button in the left panel saves the current
+surface mesh as binary STL using `three/addons/exporters/STLExporter.js`.
+Particle paths, closure markers, and overlays are not included — only the
+torus surface, suitable for 3D-printing or import into a modelling tool.
 
 ### 1.4 Particle assignments
 

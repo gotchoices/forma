@@ -228,6 +228,7 @@
     <div class="pnl-section">
       <div class="pnl-head">Particles</div>
       <div style="display:flex; align-items:center; gap:6px; margin:6px 0;">
+        <input type="checkbox" id="cb-p-all" checked title="show/hide all proton phases">
         <span style="flex:1; font-size:11.5px;">proton</span>
         <label style="display:inline-flex; align-items:center; gap:3px;">
           <input type="checkbox" id="cb-p0" checked>
@@ -243,18 +244,19 @@
         </label>
       </div>
       <div style="display:flex; align-items:center; gap:6px; margin:6px 0;">
+        <input type="checkbox" id="cb-n-all" checked title="show/hide all neutron phases">
         <span style="flex:1; font-size:11.5px;">neutron</span>
         <label style="display:inline-flex; align-items:center; gap:3px;">
           <input type="checkbox" id="cb-n0">
-          <span class="swatch" style="background:#ffd54f"></span>
+          <span class="swatch" style="background:#ab47bc"></span>
         </label>
         <label style="display:inline-flex; align-items:center; gap:3px;">
           <input type="checkbox" id="cb-n1">
-          <span class="swatch" style="background:#ffb300"></span>
+          <span class="swatch" style="background:#8e24aa"></span>
         </label>
         <label style="display:inline-flex; align-items:center; gap:3px;">
           <input type="checkbox" id="cb-n2">
-          <span class="swatch" style="background:#fff176"></span>
+          <span class="swatch" style="background:#ce93d8"></span>
         </label>
       </div>
       <div style="font-size:10px; color:#888; line-height:1.4; margin-bottom:6px;">
@@ -330,6 +332,15 @@
         <option value="flat">Arc · flat torus (τ=0)</option>
         <option value="double-twist">Arc · double twist (τ=2/3)</option>
       </select>
+    </div>
+
+    <div class="pnl-section">
+      <div class="pnl-head">Export</div>
+      <button class="btn full-btn" id="btn-export-stl">Surface → STL</button>
+      <div style="font-size:10px; color:#888; line-height:1.4; margin-top:4px;">
+        Saves the current surface mesh as binary STL (paths and overlays
+        not included).
+      </div>
     </div>
 
   </div>
@@ -426,6 +437,7 @@
 import {
   THREE, createScene, autoResize, animLoop, PALETTE
 } from './totu-viz.js';
+import { STLExporter } from 'three/addons/exporters/STLExporter.js';
 
 const $ = id => document.getElementById(id);
 const TAU = Math.PI * 2;
@@ -452,14 +464,18 @@ const S = {
   // Per-phase visibility for the three Z₃-replicas of each baryon. Index k
   // is the phase k geodesic — its t₀ (or φ_start in arc mode) is offset by
   // k·2π/3 from the canonical position. Phase k of proton and phase k of
-  // neutron are paired as one nucleon-replica.
+  // neutron are paired as one nucleon-replica. A particle-type "active"
+  // flag gates the whole group: if protonActive is false, no proton track
+  // is shown regardless of which phase checkboxes are ticked.
+  protonActive:  true,
+  neutronActive: true,
   protonPhases:  [true,  false, false],
   neutronPhases: [false, false, false],
   // When on, each track is segmented red (convex / u-like) and blue
   // (concave / d-like) by the sign of the tube-direction curvature at
   // every point — i.e. the operative experienced-curvature density that
   // integrates to the track's net charge. Off: each particle is drawn in
-  // its identity colour (red shades = proton, yellow shades = neutron).
+  // its identity colour (red shades = proton, violet shades = neutron).
   showCharge: false,
   // Fractal construction (per work/clover-on-clover.md §3 rewritten):
   //  fractalLevel = 1 : base clover (no recursion).
@@ -486,13 +502,13 @@ const S = {
  * on the 3 major lobes and the 3 neutron phases on the 3 minor lobes,
  * disjoint from each other. Colours are slightly varied per phase so the
  * phases can be told apart at a glance; the underlying particle identity
- * (red shades = proton, yellow shades = neutron) is preserved. Blue is
+ * (red shades = proton, violet shades = neutron) is preserved. Blue is
  * reserved for the electron and green for the neutrino in future work.
  */
 const PROTON_COLORS  = [0xff5252, 0xd32f2f, 0xff8a80];
-const NEUTRON_COLORS = [0xffd54f, 0xffb300, 0xfff176];
+const NEUTRON_COLORS = [0xab47bc, 0x8e24aa, 0xce93d8];
 const PROTON_COLORS_CSS  = ['#ff5252', '#d32f2f', '#ff8a80'];
-const NEUTRON_COLORS_CSS = ['#ffd54f', '#ffb300', '#fff176'];
+const NEUTRON_COLORS_CSS = ['#ab47bc', '#8e24aa', '#ce93d8'];
 
 /* Colours for the charge-segment overlay: red where the tube-direction
  * curvature is positive (convex, u-like contribution to the track integral)
@@ -507,10 +523,10 @@ const CHARGE_NEG_CSS   = '#2196f3';
  */
 function activeParticles() {
   const out = [];
-  for (let i = 0; i < 3; i++) if (S.protonPhases[i])
+  if (S.protonActive)  for (let i = 0; i < 3; i++) if (S.protonPhases[i])
     out.push({ kind: 'proton',  phase: i,
                color: PROTON_COLORS[i],  colorCss: PROTON_COLORS_CSS[i] });
-  for (let i = 0; i < 3; i++) if (S.neutronPhases[i])
+  if (S.neutronActive) for (let i = 0; i < 3; i++) if (S.neutronPhases[i])
     out.push({ kind: 'neutron', phase: i,
                color: NEUTRON_COLORS[i], colorCss: NEUTRON_COLORS_CSS[i] });
   return out;
@@ -1414,16 +1430,20 @@ function drawSheetCanvas() {
     }
   }
 
-  // Normalise by the 95th percentile so junction-spikes (arc mode) and
-  // any high-curvature ridges (modulated) don't wash out the rest.
+  // Normalise by the 95th percentile, then map through a SIGNED-SQRT
+  // compression: v = sign(κ)·√(|κ|/norm). This keeps the [−1, 1] dynamic
+  // range but lifts moderate-|κ| points (where the proton/neutron tracks
+  // typically sit) into visible saturation, instead of letting off-track
+  // near-cusp spikes wash them out under a linear mapping.
   const sorted = Array.from(grid).map(Math.abs).sort((a, b) => a - b);
   const norm = Math.max(sorted[Math.floor(sorted.length * 0.95)] || 1, 1e-6);
 
   const cellW = W / Nx, cellH = H / Ny;
   for (let iy = 0; iy < Ny; iy++) {
     for (let ix = 0; ix < Nx; ix++) {
-      let v = grid[iy * Nx + ix] / norm;
-      if (v > 1) v = 1; else if (v < -1) v = -1;
+      const kn = grid[iy * Nx + ix] / norm;
+      const absClamped = Math.min(Math.abs(kn), 1);
+      const v = Math.sign(kn) * Math.sqrt(absClamped);
       let r, g, b;
       if (v >= 0) {
         const u = v;
@@ -1969,6 +1989,12 @@ for (let i = 0; i < 3; i++) {
     S.neutronPhases[i] = $(`cb-n${i}`).checked; rebuildAll();
   });
 }
+$('cb-p-all').addEventListener('change', () => {
+  S.protonActive = $('cb-p-all').checked; rebuildAll();
+});
+$('cb-n-all').addEventListener('change', () => {
+  S.neutronActive = $('cb-n-all').checked; rebuildAll();
+});
 $('cb-charge').addEventListener('change', () => {
   S.showCharge = $('cb-charge').checked; rebuildAll();
 });
@@ -2049,6 +2075,24 @@ $('sel-profile').addEventListener('change', () => {
 
 refreshProfileList();
 
+/* ─── STL export ─────────────────────────────────────────── */
+
+$('btn-export-stl').addEventListener('click', () => {
+  if (!surfMesh) return;
+  const exporter = new STLExporter();
+  const data = exporter.parse(surfMesh, { binary: true });
+  const blob = new Blob([data], { type: 'application/octet-stream' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  const tag = (S.construction === 'modulated') ? 'modulated' : 'arc';
+  a.href = url;
+  a.download = `proton-lab-${tag}.stl`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+});
+
 /* ─── Built-in presets ──────────────────────────────────── */
 
 const _P1 = { protonPhases: [true,  false, false], neutronPhases: [false, false, false] };
@@ -2091,6 +2135,8 @@ function syncControlsFromState() {
     $(`cb-p${i}`).checked = !!S.protonPhases[i];
     $(`cb-n${i}`).checked = !!S.neutronPhases[i];
   }
+  $('cb-p-all').checked = !!S.protonActive;
+  $('cb-n-all').checked = !!S.neutronActive;
   $('cb-charge').checked  = S.showCharge;
   $('sel-fractal').value = String(S.fractalLevel);
   $('sl-rL2').value = S.rL2Frac; $('v-rL2').textContent = S.rL2Frac.toFixed(3);
@@ -2106,6 +2152,8 @@ function resetToDefaults() {
     construction: 'modulated',
     R: 3.0, rL: 0.80, rS: 0.40,
     tauNum: 1, shearNum: 0, opacity: 0.55,
+    protonActive: true,
+    neutronActive: true,
     protonPhases:  [true,  false, false],
     neutronPhases: [false, false, false],
     showCharge: false,
@@ -2187,9 +2235,46 @@ function restoreCamera() {
 restoreCamera();
 controls.addEventListener('end', saveCamera);
 
+/* ─── State persistence ──────────────────────────────────
+ * Auto-save the full S object to localStorage on every rebuild, and
+ * restore it on startup. Settings that survive reloads: construction
+ * mode, R, all arc parameters, particle activity and phase
+ * checkboxes, the show-charge toggle, the view toggles, and the
+ * fractal level. (Camera is handled separately above; named profiles
+ * still go through the existing Save/Load UI.)
+ */
+const STATE_KEY = 'protonLab.state';
+function saveState() {
+  try { localStorage.setItem(STATE_KEY, JSON.stringify(S)); } catch {}
+}
+function loadState() {
+  let saved = null;
+  try { saved = JSON.parse(localStorage.getItem(STATE_KEY)); } catch {}
+  if (!saved || typeof saved !== 'object') return false;
+  // Merge into S, preserving any keys S has that the saved object
+  // doesn't (forward compatibility) and ignoring keys the current
+  // build doesn't know about.
+  for (const k of Object.keys(S)) {
+    if (k in saved) S[k] = saved[k];
+  }
+  // Defensive: phase arrays must be length-3 booleans.
+  for (const k of ['protonPhases', 'neutronPhases']) {
+    if (!Array.isArray(S[k]) || S[k].length !== 3) S[k] = [false, false, false];
+    S[k] = S[k].map(Boolean);
+  }
+  return true;
+}
+
+// Persist on every rebuild (event-driven; one localStorage write per
+// state change).
+const __rebuildAll_inner = rebuildAll;
+rebuildAll = function () { __rebuildAll_inner(); saveState(); };
+
+loadState();
+syncControlsFromState();
+
 /* ─── Render loop ──────────────────────────────────────── */
 
-applyConstructionUI();
 rebuildAll();
 
 animLoop(() => {}, { renderer, scene, camera, controls });
