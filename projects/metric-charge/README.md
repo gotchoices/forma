@@ -3,7 +3,7 @@
 **Type:** Educational project (see [../README.md](../README.md))
 **Scope:** Charge generation on a 2D compact sheet. Mass is covered in [metric-mass](../metric-mass/); multi-knot interactions are deferred to [metric-binding](../metric-binding/).
 **Method:** Mathematical derivation as discovery; minimal computation.
-**Status:** Chapters 1–7 in full prose; Chapter 8 in outline form (energy-minimization computation pending). See [review.md](review.md) for the project's open-issues log.
+**Status:** Chapters 1–7 in full prose; Chapter 8 in outline form (energy-minimization computation pending); Ch 11 appendix in place as a stable foundation for downstream wave-equation-based modeling. See [review.md](review.md) for the project's open-issues log.
 
 ## Why this project exists
 
@@ -162,5 +162,7 @@ The chapters below are plausible follow-ups, not commitments.
 9. **`09-ratio-and-shear.md`** — Bring ε and σ_uw together into a unified treatment of the (σ_uw, ε) parameter space. Identify three structural regimes mapping to three qualitative sheet types (lepton-like, neutrino-like, hadronic-like). Develop the σ → 1 principal-axis suppression mechanism and set up the substrate for the downstream inversion exercise of deriving (ε, σ_uw) from a sheet's observed properties.
 
 10. **`10-closing-summary.md`** — Consolidate what the project established, ruled out, and unexpectedly found. Hand off to [metric-binding](../metric-binding/) for the multi-knot interaction story.
+
+11. **`11-modeling-foundation.md`** — *Appendix.* Foundation for downstream wave-equation-based modeling on metric-charge's substrate. Gathers (in chapter-grade form) the foundation that downstream projects ([ma-domain](../ma-domain/), [sheet-proton](../sheet-proton/), [metric-binding](../metric-binding/)) will lean on. Picture A (the wave equation on the substrate) throughout; seven citable foundation results (F1–F7) plus two carried-under-named-hypothesis results (H1 under G1 for per-arc fractional charge; H2 for picture B borrowing if needed). Addresses the shape-vs-HO-complex duality (both views of picture A) and the angular-momentum reading of rest mass. Picture B (the bare 2D HO as a separate physical system) noted as a future borrowing option, not currently used. Stable citation target via F- and H-numbers.
 
 Each chapter is added one at a time. The arc is a sketch, not a contract.
