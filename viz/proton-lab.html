@@ -325,6 +325,7 @@
         <option value="mod-neutron">Modulated · 1 neutron</option>
         <option value="mod-3p">Modulated · 3 protons</option>
         <option value="mod-pn">Modulated · proton + neutron</option>
+        <option value="mod-mass">Modulated · mass-ratio (R=36.17)</option>
         <option value="canonical">Arc · canonical (τ=1/3)</option>
         <option value="fat-saddle">Arc · fat saddle (χ=1.5)</option>
         <option value="thin-saddle">Arc · thin saddle (χ=0.25)</option>
@@ -1039,14 +1040,21 @@ function buildPathTube(prof, R, tau, shear, pathSpec, tubeR) {
  * Q_neutron = 0 exactly). R is free for visualization — it does not enter
  * the charge integral.
  */
+// Z₂ × Z₃-symmetric coefficients from the derived-clover work file
+// (sheet-proton/work/derived-clover.md, "Finding"). The k=0 half-integer
+// harmonics that broke 3-fold ring symmetry are zeroed; only the k=1
+// (3θ/2) harmonics carry the modulation. The surface is exactly 3-fold
+// symmetric around the central axis. Mass-ratio match L_p/L_n = m_n/m_p
+// requires R_major ≈ 36.17; for visualisation the default R is left as
+// 3.0 (surface symmetry is unaffected by R_major).
 const MOD = {
   rho: 1.0,
-  a2: 0.32977,
-  b2: 0.03196,
-  Ac: [0.17512, -0.48886],   // a1(θ) cos-harmonic coefficients
-  As: [0.15451, 0.65579],    // a1(θ) sin-harmonic coefficients
-  Bc: [-0.01223],            // b1(θ) cos-harmonic coefficients
-  Bs: [0.03243],             // b1(θ) sin-harmonic coefficients
+  a2: 0.32994,
+  b2: 0.03201,
+  Ac: [0.0, -0.48765],       // a1(θ) cos-harmonic coefficients
+  As: [0.0, +0.65694],       // a1(θ) sin-harmonic coefficients
+  Bc: [0.0, -0.00038],       // b1(θ) cos-harmonic coefficients
+  Bs: [0.0, +0.00032],       // b1(θ) sin-harmonic coefficients
   t0Proton:  -Math.PI / 6,   // the two (1/2,1) tracks, offset by one piece
   t0Neutron: +Math.PI / 6,
 };
@@ -2107,6 +2115,7 @@ const BUILTINS = {
                     neutronPhases: [true, false, false] },
   'mod-3p':       { construction: 'modulated', R: 3.0, ..._P3 },
   'mod-pn':       { construction: 'modulated', R: 3.0, ..._PN },
+  'mod-mass':     { construction: 'modulated', R: 36.17, ..._PN },
   'canonical':    { construction: 'arc', R: 3.0, rL: 0.80, rS: 0.40, tauNum: 1, shearNum: 0, ..._P1 },
   'fat-saddle':   { construction: 'arc', R: 3.0, rL: 0.50, rS: 0.75, tauNum: 1, shearNum: 0, ..._P1 },
   'thin-saddle':  { construction: 'arc', R: 3.0, rL: 1.00, rS: 0.25, tauNum: 1, shearNum: 0, ..._P1 },
