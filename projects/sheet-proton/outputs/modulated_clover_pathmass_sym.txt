@@ -1,0 +1,22 @@
+==============================================================================
+modulated-clover — STEP 7 (symmetric): path-length mass mechanism
+mass = 2πℏc / L  (standing wave; wavelength = closed-track length).
+proton and neutron are the two (1/2,1) tracks: m_n/m_p = L_p/L_n.
+symmetric: modulation restricted to Z₂×Z₃-compatible k=1
+half-integer harmonics cos(3θ/2), sin(3θ/2) only.
+==============================================================================
+
+observed  m_n/m_p = 1.0013784   (target for L_proton/L_neutron)
+
+--- best charge-correct surface for L_p/L_n = m_n/m_p (5204 evals) ---
+  Ac = [+0.00000, -0.48765]   As = [+0.00000, +0.65694]
+  Bc = [+0.00000, -0.00038]   Bs = [+0.00000, +0.00032]
+  a2 = 0.32994   b2 = +0.03201   R_major = 60.0000
+  charge:  Q_proton = +1.000000   Q_neutron = -0.000000   (error 4.9e-09)
+  L_proton = 377.219514   L_neutron = 377.030590
+  L_p/L_n = 1.0005011   target 1.0013784   residual -8.77e-04
+
+RESULT: closest charge-correct L_p/L_n = 1.000501 vs target
+1.001378  (off by 8.8e-04). The track-
+length ratio could not be tuned onto the nucleon mass ratio
+within the symmetric subspace — may require k=4 harmonics.
