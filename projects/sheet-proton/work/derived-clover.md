@@ -97,6 +97,110 @@ Chain (sketch):
 
 ---
 
+## Inverse-problem formulation (modes-first)
+
+The constructive chain C1–C5 builds the substrate forwards from
+hypotheses. The same target can be stated **inversely** — what we
+are really looking for is:
+
+> A compact substrate metric whose Laplace-Beltrami spectrum has
+> **two low modes** with the following properties:
+>
+> - KK winding (+1, 0) — i.e. mode charges m_p = +1, m_n = 0.
+> - Characteristic curves of length-ratio L_p / L_n = m_n / m_p
+>   (observed nucleon mass ratio).
+> - Per-arc κ_g profile along each characteristic curve summing
+>   to the integer global charge (+1 for proton, 0 for neutron),
+>   under hypothesis G1.
+> - The substrate is invariant under Z₂ × Z₃ (3-fold ring
+>   symmetry + the half-twist modulation flip).
+> - Lowest free-parameter count compatible with the above.
+
+This is the **inverse spectral problem** — "find a substrate
+whose spectrum looks like this." The constructive chain C1–C5 is
+*one candidate route* into this inverse problem. There may be
+others (different cross-section ansätze, different twists,
+3D-cavity rather than 2D-surface substrate). Holding both
+formulations in view lets us tell *forced* features (those that
+fall out of the inverse problem's constraints) from *chosen*
+features (those that come from the C1–C5 ansatz alone).
+
+---
+
+## Physical reading — helix-on-helix interpretation
+
+Recording the physical reading the construction sits inside, as
+motivation rather than derivation. (None of these is load-bearing
+for the math; they are framework-consistent restatements.)
+
+- **Mass = standing wave in a compact dimension, viewed as a
+  helix through time.** A real standing wave φ_n + φ_{−n} carries
+  *equal and opposite* handedness around the compact loop. Mass
+  depends on |n|, so it is unsigned — and gravity, sourced by
+  mass-energy, is correspondingly unsigned. (Metric-mass Ch 2.)
+- **Charge = second-order helix, on a second compact direction
+  orthogonal to the mass one.** Its handedness *is* signed — the
+  sign of the second-direction winding m is the sign of EM
+  charge under the KK identification. (Metric-charge Ch 5.)
+- **Fractional charge = micro-structure of the second helix.**
+  When the helix's cross-section is non-round, its convex and
+  concave regions carry locally + and − signed contributions to
+  the integrated charge. (Per-arc reading under G1; Ch 11 §6.)
+- **Force (gravity / EM) = mutual spacetime warping.** A wave
+  warps spacetime via its stress-energy (gravity); via the
+  off-diagonal compact-direction metric components (EM, by KK
+  reduction). Two waves interact through this warping, and the
+  resulting trajectory deflections *are* the forces.
+
+These readings are the physical narrative *of* the framework
+content, not extra commitments.
+
+---
+
+## A candidate brainstorm: unifying Coulomb with the residual
+## nuclear force via micro-multipole structure
+
+Out of the readings above falls a forward-looking candidate worth
+flagging:
+
+- A nucleon-as-modulated-clover surface has an integer **+1 monopole
+  charge** (per-arc integral around its characteristic curve).
+- It *also* has a non-trivial **multipole structure**: small
+  concave (−) pockets nested between large convex (+) lobes, in
+  3-fold symmetry.
+- At large separations between two such nucleons, the
+  monopole–monopole interaction dominates → ordinary Coulomb
+  repulsion (+1 vs +1).
+- At small separations (≲ characteristic substrate size), the
+  higher multipoles dominate over the monopole. Two clovers
+  rotated by 60° relative to each other would have their + lobes
+  geometrically *interlocking with the other's − pockets* → short-
+  range attractive force, with 3-way Z₃ alignment.
+- This mechanism would unify Coulomb with the **residual nuclear
+  force** between nucleons — same EM-via-KK channel, but
+  multipole-dominated at short range and monopole-dominated at
+  long range.
+
+**What this is and is not.** This is *not* a unification with the
+fundamental colour force of QCD (which is a Yang–Mills gauge
+theory, a different mechanism). It is a candidate unification
+with the *residual* nuclear force — the force between colourless
+nucleons, which in QCD is itself an effective theory built from
+exchange of mesons (pions, ω, …) carrying various multipole
+moments. The candidate here says the modulated-clover surface
+*directly carries* those multipole moments via its concave-
+convex cross-section structure, with the same EM-KK channel
+mediating both long- and short-range interactions.
+
+Worth flagging as a downstream calculation target once the
+derived-clover substrate is in hand: compute the monopole +
+leading multipole moments of the proton/neutron modes, and check
+whether the short-range potential they produce qualitatively
+matches the observed nucleon–nucleon potential (binding around
+~1 fm, hard repulsive core inside).
+
+---
+
 ## Brainstorming items to resolve before expanding the chain
 
 - **Framing: "particle on surface" vs "wave in cavity"?** The
