@@ -1,9 +1,16 @@
 # Derived clover — toward a first-principles modulated-clover
 
-**Status:** Hypothesis chain (C1–C6) defined; computational
-verification that the chain hits all targets exactly in the
-Z₂ × Z₃-symmetric subspace (see Finding). Ready to attempt the
-mathematical derivation under the named hypotheses.
+**Status:** Groundwork file. The C1–C6 hypothesis chain is defined,
+the per-arc charge integral is set up analytically, the symmetric
+construction has been computationally verified to hit every target
+(see Finding), and the framework's discrete symmetries (chirality,
+charge conjugation, multi-sheet caveat) are written down. The
+exploratory work is complete; **the next step is the formal
+mathematical derivation, which belongs in the parent sheet-proton
+folder (chapter arc), not here.** This file's role is the
+*ansatz / fit-derivation* (i.e., "what type of substrate could
+host the observed quark-domain physics?") whose conclusions feed
+the formal derivation.
 
 ## Scope
 
@@ -137,6 +144,67 @@ derived here is the cleaner one that respects C4.
 
 ---
 
+## Per-arc charge integral — the analytical machinery
+
+Under G1 (Ch 11 §6), the charge along a closed track is the
+integrated geodesic curvature:
+
+  Q(t₀) = (1/2π) ∫_track ∂_t χ dt,
+
+where χ = arg(∂_t ζ) is the tangent direction of the cross-section
+curve at fixed θ. For a (1/2, 1) track t(θ) = t₀ + θ/2 on the
+half-twisted surface, ζ = ρ·e^{i(α+t)}·w(t;θ) with α(θ) = θ/2 and
+A ≡ ∂_t w + i w; differentiation gives
+
+  ∂_t χ = 1 + Im(Ā · ∂_t A) / |A|².
+
+The "1" integrates trivially over the track to give the **base
+charge ½ per track** (a "half-turn in cross-section tangent over
+half the loop"). The modulation-dependent correction M(t₀) supplies
+the integer-completing piece:
+
+  **Q(t₀) = ½ + M(t₀)**,
+  M(t₀) = (1/4π) ∫₀^{2π} [Im(Ā ∂_t A) / |A|²]|_{t=t₀+θ/2} dθ.
+
+For (Q_proton, Q_neutron) = (+1, 0), the modulation must supply
+M(−π/6) = +½ and M(+π/6) = −½ — a unit jump between the two
+tracks. **This is the core analytical statement the construction
+needs to satisfy.**
+
+### Allowed twists from closure
+
+The surface closes as a torus iff τ = α′(θ) is a multiple of 1/6.
+Two sub-cases:
+
+- **Periodic modulation** in θ: allowed twists τ ∈ {0, 1/3, 2/3, …}
+  (multiples of 1/3).
+- **Antiperiodic modulation** (a₁(θ+2π) = −a₁(θ)): allowed twists
+  τ ∈ {1/6, 1/2, 5/6, …} (half-integer in units of 1/3).
+
+τ = 1/2 (half-twist + antiperiodic modulation) is the **unique choice
+compatible with symmetric per-baryon target charges (+½, −½) at
+first-order perturbative modulation.** Other twists either don't
+support the target topology or produce asymmetric magnitudes that
+the perturbative formula can't accommodate.
+
+### First-order constraint
+
+A perturbative expansion around the unit-circle gives, to first
+order in modulation amplitudes,
+
+  M(t₀) ≈ (9A/4) cos 3t₀ + (3B/4) cos(3t₀ + φ),
+
+where (A, φ_a) and (B, φ_b) are the amplitudes and phases of the
+k=1 symmetric harmonics (cos(3θ/2), sin(3θ/2)) in a₁(θ) and b₁(θ),
+with φ ≡ φ_b − φ_a (one phase absorbed by θ-origin shift). At
+t₀ = ±π/6 the A-term vanishes; the constraint is then **B sin φ =
+2/3**. The 6-fold backbone (a₂, b₂) does not contribute at first
+order. The constraint requires non-small amplitudes, so the
+quantitative match needs the full (non-perturbative) integral —
+which the Finding below verifies numerically.
+
+---
+
 ## Inverse-problem formulation (modes-first)
 
 The constructive chain C1–C5 builds the substrate forwards from
@@ -197,95 +265,6 @@ content, not extra commitments.
 
 ---
 
-## A candidate brainstorm: unifying Coulomb with the residual
-## nuclear force via micro-multipole structure
-
-Out of the readings above falls a forward-looking candidate worth
-flagging:
-
-- A nucleon-as-modulated-clover surface has an integer **+1 monopole
-  charge** (per-arc integral around its characteristic curve).
-- It *also* has a non-trivial **multipole structure**: small
-  concave (−) pockets nested between large convex (+) lobes, in
-  3-fold symmetry.
-- At large separations between two such nucleons, the
-  monopole–monopole interaction dominates → ordinary Coulomb
-  repulsion (+1 vs +1).
-- At small separations (≲ characteristic substrate size), the
-  higher multipoles dominate over the monopole. Two clovers
-  rotated by 60° relative to each other would have their + lobes
-  geometrically *interlocking with the other's − pockets* → short-
-  range attractive force, with 3-way Z₃ alignment.
-- This mechanism would unify Coulomb with the **residual nuclear
-  force** between nucleons — same EM-via-KK channel, but
-  multipole-dominated at short range and monopole-dominated at
-  long range.
-
-**What this is and is not.** This is *not* a unification with the
-fundamental colour force of QCD (which is a Yang–Mills gauge
-theory, a different mechanism). It is a candidate unification
-with the *residual* nuclear force — the force between colourless
-nucleons, which in QCD is itself an effective theory built from
-exchange of mesons (pions, ω, …) carrying various multipole
-moments. The candidate here says the modulated-clover surface
-*directly carries* those multipole moments via its concave-
-convex cross-section structure, with the same EM-KK channel
-mediating both long- and short-range interactions.
-
-Worth flagging as a downstream calculation target once the
-derived-clover substrate is in hand: compute the monopole +
-leading multipole moments of the proton/neutron modes, and check
-whether the short-range potential they produce qualitatively
-matches the observed nucleon–nucleon potential (binding around
-~1 fm, hard repulsive core inside).
-
----
-
-## Open questions for the math derivation
-
-Items still open. Resolved items have been folded into the chain or
-the Finding.
-
-- **Particle-on-surface vs wave-in-cavity framing.** Cavity is
-  primary at the wave level; particle-on-track is the semi-classical
-  projection along the mode's characteristic curve. Pick which the
-  formal derivation leads with — they coincide at the (1/2, 1) tracks
-  but differ in how the math is set up.
-- **What is "the proton" relative to the 3 phases?** Three readings
-  to choose between: (a) a single phase = one proton, (b) a
-  superposition over the 3 phases = one proton (color superposition),
-  (c) a color-singlet combination = one baryon (à la QCD's
-  colour-singlet baryon). The mathematical setup for the per-arc
-  charge integral and the mass-ratio formula doesn't distinguish
-  (a)–(c) at the substrate level, but downstream physics (matrix
-  elements, magnetic moments) will.
-- **Is the (1/2, 1) topology forced or chosen?** C3 is currently an
-  *input* hypothesis. Whether anything upstream (e.g. a spin-1/2
-  requirement enforced at the wave-equation level) *forces* the
-  half-integer winding, or whether it remains an input choice, is the
-  cleanest hypothesis-shrinking question.
-- **Can the cross-section's harmonic content be derived from a
-  variational principle** rather than postulated? Would graduate
-  C2 + C3 from ansatz to derived. (Possible angle: minimise some
-  combination of intrinsic-curvature integral + closure-constraint
-  Lagrange multipliers under the Z₂ × Z₃ symmetry.)
-- **Reconcile with Ch 8 §7's k = 3 component-link mechanism.** Both
-  give 3-fold structure but on different structural axes (per-knot
-  vs per-arc). Are they the same physics in different language, or
-  two complementary mechanisms?
-- **Operational meaning of "quark" in the derivation.** If the
-  proton = single (1/2, 1) track covering 3 cross-section pieces,
-  the 3 pieces are *candidate* quarks. How rigid is this
-  identification, and what SM quark properties (colour assignment,
-  flavour identification, current-quark masses) does the
-  identification have to match?
-- **R_major as the mass-ratio knob.** Currently the only free
-  parameter that survives the constrained construction. Is there an
-  independent input that pins R_major (e.g., the Compton scale of
-  the lightest stable baryon), or does R_major stay free?
-
----
-
 ## Finding — Z₂ × Z₃ symmetry is fully compatible with all targets
 
 (Computational result, 2026-05-26. `scripts/modulated_clover.py --step 7
@@ -329,6 +308,57 @@ to the minimal symmetric family.
 
 ---
 
+## Symmetries — chirality, C, multi-sheet
+
+The construction natively supplies a **Z₂ × Z₂ space of discrete
+internal symmetries** on each (m, n) baryon mode, organised as
+*chirality × charge-conjugation*. Three Z₂ operations act on the
+mode labels:
+
+| Operation | (m, n) → | Identification |
+|---|---|---|
+| t-reflection (P_t) | (−m, n) | chirality flip |
+| θ-reflection (P_θ) | (m, −n) | chirality flip (equivalently P_t) |
+| Complex conjugation (C) | (−m, −n) | matter ↔ antimatter |
+
+C is *not* (m, ±n) vs (m, ∓n); that pair has the same matter/antimatter
+status but opposite *chirality*. The C-conjugate of a (+½, +1) RH
+proton is (−½, −1), an RH antiproton — both signs flip.
+
+Per (|m|, |n|), four distinct modes:
+
+  (+½, +1) RH proton, (+½, −1) LH proton  — same matter/antimatter, opposite chirality.
+  (−½, −1) RH antiproton, (−½, +1) LH antiproton  — C-conjugates of the above.
+
+The framework's chirality is **geometric** (sign of relative winding
+direction; equivalently, the helical sense of phase advance on the
+torus). It is *not* yet γ⁵-chirality in the Dirac sense — that would
+require promoting the scalar field to a spinor field with spin
+structure on the substrate. The two pictures coincide at the
+*combinatorial* level (4 modes organised as 2×2 = Z₂×Z₂); formal
+identification with γ⁵ chirality needs the spinor upgrade and is
+deferred.
+
+### Multi-sheet caveat
+
+The construction is single-sheet — u and d quarks both on this
+substrate, heavier-quark sheets (s, c, b, t) presumed to live on
+separate substrates per the framework's standard "one generation per
+sheet" reading. But several observed hadrons require
+**mixed-generation quark content**: Λ (uds), Σ (uds/uus/dds), Ξ
+(uss/dss), Ω⁻ (sss). These cannot be hosted by a single-sheet
+baryon construction without a *multi-sheet coupling* that lets a
+wave mode span more than one substrate.
+
+This is not a problem derived-clover has to solve; the multi-sheet
+mechanism belongs to metric-binding. But it *is* a constraint
+downstream: any future multi-sheet mechanism has to be compatible
+with the single-sheet construction here, and the construction
+should not depend on "every baryon lives on exactly one sheet"
+anywhere load-bearing. Currently it does not.
+
+---
+
 ## Hypothesis dependency
 
 The chain depends on the following named hypotheses:
@@ -356,3 +386,42 @@ the symmetric modulation coefficients (Ac₁, As₁, Bc₁, Bs₁), the
 backbone (a₂, b₂), and R_major. The first four are pinned by
 demanding Q_proton = +1, Q_neutron = 0. R_major is set by the
 mass-ratio match. The construction is then complete.
+
+---
+
+## Open questions for the formal derivation
+
+Items the parent-folder mathematical derivation should address.
+Resolved items are folded into the chain, the per-arc machinery,
+the Finding, or the Symmetries section above.
+
+- **Particle-on-track vs wave-in-cavity framing.** The cavity
+  framing is primary at the wave level; particle-on-track is the
+  semi-classical projection along the mode's characteristic curve.
+  They coincide at the (1/2, 1) tracks but differ in how the math
+  is set up.
+- **Is the (1/2, 1) topology forced or chosen?** C3 is currently
+  *input*. Whether anything upstream (a spin-½ requirement at the
+  wave-equation level) *forces* the half-integer winding is the
+  cleanest hypothesis-shrinking question.
+- **Can the cross-section's harmonic content be derived from a
+  variational principle** rather than postulated? Would graduate
+  C2 + C3 from ansatz to derived. (Possible angle: minimise an
+  intrinsic-curvature functional under the Z₂ × Z₃ symmetry.)
+- **Reconcile with Ch 8 §7's k = 3 component-link mechanism.**
+  Both give 3-fold structure on different structural axes — same
+  physics in different language, or two complementary mechanisms?
+- **What is "the proton" relative to the 3 phases?** (a) single
+  phase = one proton, (b) superposition over 3 phases = one
+  proton, or (c) color-singlet combination = one baryon. The
+  per-arc charge integral and the mass-ratio formula don't
+  distinguish (a)–(c) at the substrate level; downstream
+  observables (magnetic moments, matrix elements) will.
+- **R_major as the only surviving free parameter.** Is there an
+  independent input that pins R_major (e.g., a Compton-scale
+  identification for the lightest stable baryon), or does it
+  stay free? Without that, m_n/m_p is calibration, not
+  prediction.
+- **Promotion of geometric chirality to γ⁵ chirality** requires a
+  spinor upgrade of the scalar field (spin structure on the
+  substrate). Forward-looking; not in scope here.
