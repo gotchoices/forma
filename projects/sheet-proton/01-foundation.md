@@ -1,5 +1,7 @@
 # Chapter 1 — Foundation
 
+**Status:** Draft. Reviewed (see [01-foundation-review.md](01-foundation-review.md) for issues addressed). Iteration ongoing.
+
 This chapter is the entry point for sheet-proton's mathematical derivation. It states the central question, declares the inputs the rest of the arc rests on, fixes coordinates and conventions, and commits to the *framing* — what kind of object a baryon is in this framework and what kind of structure a quark is — that every subsequent chapter inherits. It also draws the scope: the construction models one quark generation (u, d), and its form is generation-agnostic in a sense that hands off cleanly to [ma-domain](../ma-domain/).
 
 **Prerequisites.**
@@ -8,7 +10,7 @@ This chapter is the entry point for sheet-proton's mathematical derivation. It s
 - [metric-mass/](../metric-mass/) — the single-compact-dimension precursor. Standing-wave reading of mass.
 - [metric-binding/](../metric-binding/) — the generic multi-knot framework. This project is the proton-sheet specialisation.
 
-The chapter is **structural and declarative**. The math lives in chapters 2–6. Chapter 1 says what we are about to do and why; it does not yet build the substrate (Ch 2), find the modes (Ch 3), compute charges (Ch 4), or derive masses (Ch 5).
+This chapter is the *framing chapter*. It declares the equations and hypotheses the rest of the arc inherits — the per-arc charge integral, the path-length mass formula, hypothesis G1, the (1/2, 1) baryon modes — but does not derive their *consequences*. The derivations live in chapters 2–6, which take the commitments here and build the substrate, find the modes, compute the charges, and derive the masses from them.
 
 ---
 
@@ -48,6 +50,8 @@ The proton sheet is not a generic sheet. The hadrons it hosts make specific dema
 | Standard u-quark electric charge | +2/3 (in units of |e|) |
 | Standard d-quark electric charge | −1/3 |
 
+(Particle Data Group; numerical values follow the PDG conventions and are quoted to a precision the arc actually engages with. The constituent quark mass is the standard model-dependent working value, not a directly-measured observable like m_p.)
+
 The central question this project answers is:
 
 > *What 2-D substrate, with what cross-section shape, mode topology, modulation, and parameter values, hosts the observed u-d hadron generation, in the sense that every quantum number the standard model assigns to a u-d hadron has a clean structural identification on this substrate?*
@@ -72,7 +76,14 @@ Picture A is the operative framing throughout sheet-proton. When this arc says "
 
 [metric-charge Ch 4](../metric-charge/04-the-closure-condition.md) defines the closure condition that selects which (m, n) winding configurations on T² correspond to observable physical modes. The closure rule has equivalent chirality, synchronization, topological, and metric-side formulations; this project uses whichever formulation is cleanest in each chapter's context.
 
-The closure-satisfying inventory of a generic T² is a discrete set of (m, n) pairs. This project's construction picks out a specific subset of those — the (1/2, 1) modes — and inherits closure as the rule that justifies the choice. Half-integer m is unusual; it requires the substrate to carry a matching half-twist that makes the boundary identification well-defined. Chapter 2 builds that half-twist into the substrate; Chapter 3 confirms the (1/2, 1) modes are closure-satisfying on it.
+The closure-satisfying inventory of a generic T² is a discrete set of *integer* (m, n) pairs. This project's construction picks out the *half-integer*-m modes (1/2, 1) — modes that sit **outside** metric-charge Ch 4's standard closure derivation. The construction works around this by building a matching half-twist into the substrate so that the boundary identification
+
+<!-- (t, θ + 2π) ~ (t + π, θ) -->
+$$
+(t,\, \theta + 2\pi) \;\sim\; (t + \pi,\, \theta)
+$$
+
+makes the (1/2, 1) modes close in one ring revolution. Under this substrate-extended boundary identification, the (1/2, 1) modes are closure-satisfying. But whether the half-twist substrate is the *unique* extension of the closure rule to half-integer m, and what the precise substrate-extended closure rule says about non-(1/2, 1) half-integer modes, is a real foundational gap — flagged in [work/modulated-clover.md §6](work/modulated-clover.md) as the construction's open question 1 and carried in the project's [README §Open questions](README.md#open-questions-inside-the-constructions-scope). The arc commits to this extension without deriving its uniqueness.
 
 ### 2.3 The per-arc curvature bridge — hypothesis G1
 
@@ -93,11 +104,13 @@ From [metric-charge Ch 6](../metric-charge/06-handedness-and-pairs.md): on any c
 - **Geometric chirality:** (m, n) ↔ (m, −n). Flipping the sign of one winding while keeping the other fixed reverses the handedness of the helical phase advance on the substrate.
 - **Matter / antimatter (C-conjugation):** (m, n) ↔ (−m, −n). Flipping both signs is the substrate-level antiparticle operation.
 
-Their product, (m, n) ↔ (−m, n), is the other Z₂. This Z₂ × Z₂ structure is inherited without modification. Chapter 6 of sheet-proton picks it up on the specific baryon modes (1/2, ±1) and discusses how it organises proton vs neutron and matter vs antimatter on this substrate.
+Their product, (m, n) ↔ (−m, n), is the other Z₂.
+
+[metric-charge Ch 6](../metric-charge/06-handedness-and-pairs.md) builds the Z₂ × Z₂ on integer (m, n). For the half-integer-m baryon modes (1/2, ±1), the same Z₂ × Z₂ action — flipping ± signs on m and n independently — lifts to the substrate-extended modes through the half-twist gluing of §2.2. The flips remain well-defined geometric operations on the modulated-clover (a sign flip of m is a t-reflection; a sign flip of n is a θ-reflection), and they commute with the half-twist identification (t, θ + 2π) ~ (t + π, θ). The chapter inherits the Z₂ × Z₂ structure on (1/2, ±1) baryon modes on this basis (use on baryon modes: Ch 6).
 
 ### 2.5 metric-binding as the home of multi-knot composition
 
-[metric-binding](../metric-binding/) is the framework's general multi-knot project. Sheet-proton is the *single-knot* specialisation to the proton sheet — the proton and neutron are each one (1/2, 1) mode on the substrate, not a composite of three independent modes. metric-binding's machinery becomes relevant in this arc only at the multi-sheet handoff (mentioned in Chapter 7) where multi-flavor hadrons like Λ, Σ would require cross-sheet composition.
+[metric-binding](../metric-binding/) is the framework's general multi-knot project. Sheet-proton is the *single-knot* specialisation to the proton sheet — the proton and neutron are each one (1/2, 1) mode on the substrate, not a composite of three independent modes. (The three quarks introduced in §4.4 are *sub-track structure* of one mode — three pieces of the same closed curve — not three independent modes.) metric-binding's machinery becomes relevant in this arc only at the multi-sheet handoff (Ch 7) where multi-flavor hadrons like Λ, Σ would require cross-sheet composition.
 
 ---
 
@@ -114,7 +127,7 @@ The construction uses two compact coordinates:
 | **t** | t ∈ [0, 2π), wraps | The *tube* (cross-section) direction. At fixed θ, varying t traces the cross-section curve. |
 | **θ** | θ ∈ [0, 2π), wraps | The *ring* (major-circle) direction. Sweeping the cross-section around the major ring with θ generates the embedded surface. |
 
-The substrate also carries an extended-space embedding into (X, Y, Z) ∈ ℝ³, which Chapter 2 builds explicitly. The (t, θ) coordinates are the intrinsic coordinates; (X, Y, Z) is just where the substrate sits in 3-D when rendered.
+The substrate also carries an extended-space embedding into (X, Y, Z) ∈ ℝ³ (construction: Ch 2). The (t, θ) coordinates are the intrinsic coordinates; (X, Y, Z) is just where the substrate sits in 3-D when rendered.
 
 **Correspondence with metric-charge's (u, w).** metric-charge writes the generic 2-torus coordinates as (u, w). In the proton-sheet construction, t plays the role of u (it is the direction with cross-section structure) and θ plays the role of w (it is the direction with the ring topology and the half-twist). Both notations appear in this arc; whichever is clearer in context is used, and equivalence with metric-charge results is by the (u, w) ↔ (t, θ) correspondence.
 
@@ -129,7 +142,7 @@ A closure-satisfying mode is labelled by winding numbers (m, n):
 - **m** = tube winding. The number of times the mode wraps the cross-section as θ goes once around the ring.
 - **n** = ring winding. The number of times the mode wraps the ring as t goes once around the cross-section.
 
-The baryon modes of this project are (m, n) = (1/2, ±1) — half-integer tube winding, full ring winding, in either of two handedness choices. The 1/2 in m is *not* a fractional integer of the type m mod 1; it is the half-twist topology's distinguishing label. The half-twist makes (1/2, 1) a well-defined closed mode by identifying (t, θ + 2π) ~ (t + π, θ) — derived in Ch 2.
+The baryon modes of this project are (m, n) = (1/2, ±1) — half-integer tube winding, full ring winding, in either of two handedness choices. The "1/2" in m is *not* a generic non-integer rational; it is the half-twist topology's distinguishing label. The substrate's half-twist identification (t, θ + 2π) ~ (t + π, θ) makes (1/2, 1) a well-defined closed mode on the modulated-clover (Ch 2).
 
 ### 3.4 Sign conventions
 
@@ -139,7 +152,7 @@ The baryon modes of this project are (m, n) = (1/2, ±1) — half-integer tube w
 
 The framework's chirality is *geometric* — a property of the helical phase advance on the substrate. It is *not* yet the γ⁵-chirality of Dirac spinors; identifying the two requires a spinor upgrade and is forward-looking.
 
-### 3.5 Greek letters in the construction
+### 3.5 Greek letters and modulation parameters in the construction
 
 A small reference table the arc cites back to:
 
@@ -147,10 +160,19 @@ A small reference table the arc cites back to:
 |---|---|
 | α(θ) | Twist rate around the ring. In this construction α(θ) = θ/2 — the *half-twist*. |
 | κ_g | Geodesic curvature of a closed curve on the substrate; the input to G1. |
-| ρ | Overall cross-section scale. |
-| R_major | Major-ring radius of the embedding. |
-| t₀ | Track label; the proton's track is at t₀ = −π/6, the neutron's at t₀ = +π/6. |
-| (a₁, b₁, a₂, b₂) | Modulation coefficients of the cross-section harmonic content. |
+| ρ | Overall cross-section scale; sets the tube-radius unit. |
+| R_major | Major-ring radius of the embedding, *measured in units of ρ*. The dimensionless ratio R_major / ρ is what the construction works with; a physical scale is set by choosing ρ. |
+| t₀ | Track label; the proton's track is at t₀ = −π/6, the neutron's at t₀ = +π/6 (convention discussed in §3.6). |
+| a₁(θ), b₁(θ) | k = 1 cross-section modulation amplitudes (real and imaginary parts). Each = Ac₁ cos(3θ/2) + As₁ sin(3θ/2) in the Z₂ × Z₃-symmetric subspace; together they carry four real parameters Ac₁, As₁, Bc₁, Bs₁. |
+| a₂, b₂ | k = 2 cross-section backbone amplitudes (3-fold-symmetric Z₆ dihedral). Real constants. |
+
+The full Z₂ × Z₃-symmetric modulation thus has six real parameters: (Ac₁, As₁, Bc₁, Bs₁, a₂, b₂). Together with R_major (the seventh free parameter setting the absolute mass scale), this is the construction's full parameter space. The fit values that hit the empirical baryon doublet are reported in §4.3.
+
+### 3.6 The t₀ convention
+
+The two operative track labels in this arc are t₀ = ∓π/6 — chosen so that the (1/2, 1) track at that t₀ passes through exactly three full arc-pieces of the cross-section over θ ∈ [0, 2π]: lobe-saddle-lobe for the proton, saddle-lobe-saddle for the neutron. This is the convention §4.4 uses to make the three-quark substructure clean.
+
+An equivalent labelling appears in [work/modulated-clover.md](work/modulated-clover.md), which anchors the proton track at t₀ ∈ {0, 2π/3, 4π/3} (each lobe centre) and the neutron at t₀ ∈ {π/3, π, 5π/3} (each saddle centre). These are *different starting points on the same closed track*, related by a π/6 shift in the t₀ label. Both conventions describe the same closed 3-D curve; this arc uses t₀ = ∓π/6 throughout.
 
 ---
 
@@ -177,53 +199,55 @@ $$
 Q \;=\; \frac{1}{2\pi}\!\int_{\text{track}}\!\kappa_g(s)\,ds
 $$
 
-gives the topological integer charge of the mode. For the proton track Q = +1; for the neutron track Q = 0. Chapter 4 derives this from the modulated-clover's specific modulation; here we just record that the construction's *charge mechanism* is this integral, that its integer total is the baryon's electric charge in units of |e|, and that *fractional partials* of the integral over sub-arcs of the closed track are what we identify with quark substructure (§4.4).
+gives the topological integer charge of the mode. For the proton track Q = +1; for the neutron track Q = 0 (derivation: Ch 4). The construction's *charge mechanism* is this integral; its integer total is the baryon's electric charge in units of |e|; and *fractional partials* of the integral over sub-arcs of the closed track are what the framework identifies with quark substructure (§4.4).
 
-The integral is *Berry-phase-like*: it depends on how the cross-section tangent winds along the curve, not on where the wave's amplitude is concentrated. This is the structural compatibility between (i) the spread-amplitude wave-quantum of §4.1 and (ii) the per-arc charge content that distinguishes proton from neutron. The amplitude can be global while the charge content is along-the-track.
+The integral has one further structural feature the arc relies on. Its integrand is the geodesic-curvature 1-form along the characteristic curve — a property of *how the cross-section tangent winds* along the curve, not of *where the wave's amplitude is concentrated*. In this respect the integral is **Berry-phase-like**: its value comes from the curve's geometric content, not from a probability-density weight. This is what makes the per-arc reading compatible with the global-amplitude wave-quantum of §4.1.
+
+The Berry-phase-like reading is an **additional structural commitment on top of G1**, not a consequence of G1 alone. G1 identifies the local geodesic curvature with the local charge density; the additional claim here is that the integral over the closed characteristic curve gives the wave-quantum's electric charge *without amplitude weighting*. The framework currently asserts this; deriving it from first principles is open work, and the assertion is named as such in the project's [README §Framing](README.md#framing--one-wave-quantum-per-baryon-with-quark-substructure-along-the-track).
 
 ### 4.3 Mass from the closed-track wavelength
 
-The wave-quantum's rest mass is set by the closed-track standing-wave wavelength:
+The wave-quantum's rest mass is set by the closed-track standing-wave wavelength. Treating the closed (1/2, 1) track as a 1-D standing wave whose wavelength equals the track's arc length L_track, the de Broglie / Compton relation E = h c / λ at the standing-wave wavelength gives the rest energy and therefore the rest mass:
 
 <!-- m = 2π ℏ c / L_track -->
 $$
 m \;=\; \frac{2\pi\,\hbar c}{L_{\text{track}}}
 $$
 
-where L_track is the arc length of the closed (1/2, 1) curve on the embedded surface. The ratio m_n / m_p is therefore L_p / L_n — a purely geometric ratio that depends on the substrate's modulation and the ring radius R_major. Chapter 5 derives this; for orientation, the modulated-clover with the symmetric Step-7 modulation and R_major ≈ 36.17 (in script units) reproduces the observed m_n / m_p = 1.001 378 4 to machine precision.
+Here L_track is the arc length of the closed (1/2, 1) curve on the *embedded* substrate surface in ℝ³. It is computed by integrating the induced 1-D metric along t(θ) = t₀ + θ/2 from θ = 0 to θ = 2π; the construction's specific recipe is in [work/derived-clover.md §Per-arc charge integral](work/derived-clover.md) and [work/modulated-clover.md Step 7](work/modulated-clover.md).
 
-R_major itself is a free parameter of the construction. It sets the *absolute* mass scale but the construction does not currently derive it from a deeper principle. This is named openly in the README as one of the project's two open questions inside its scope.
+The ratio m_n / m_p is therefore L_p / L_n — a purely geometric ratio that depends on the substrate's modulation and on R_major. The *sign* m_n > m_p (equivalently L_p > L_n) is forced by the construction's symmetric modulation; the *magnitude* m_n / m_p is a one-parameter fit on R_major. For orientation: in the symmetric Step-7 modulation with R_major ≈ 36.17 (in units of ρ), the construction fits the observed m_n / m_p = 1.001 378 4 at numerical precision. This is a fit, not a prediction; the *absolute* baryon mass scale m_p remains calibration (derivation and fit details: Ch 5).
 
-### 4.4 Quark substructure as a three-arc-piece series
+R_major itself is a free parameter of the construction; the framework does not yet derive it from a deeper principle. This is named openly in the [README §Open questions](README.md#open-questions-inside-the-constructions-scope) as one of the construction's open items.
 
-The closed (1/2, 1) track on the symmetric modulated-clover passes through three arc-pieces of the cross-section in series. The cross-section has six arc-pieces total (3 convex *lobes* + 3 concave *saddles* under the Z₂ × Z₃ symmetry); the (1/2, 1) track samples three of them as θ runs from 0 to 2π:
+### 4.4 Quark substructure as a three-arc-piece series along the single mode
+
+The single-wave-quantum reading of §4.1 and the three-quark substructure of this section need to be reconciled explicitly, because they sound contradictory on first reading: one knot, but three quarks? The reading is *one knot, with sub-track structure exposed by the per-arc charge integral*. The wave-quantum is one mode on the substrate; the *integral along its closed track* decomposes into three sub-integrals, one per arc-piece, that the framework identifies with three quarks. There are not three independent quark-quanta; there are three sub-track contributions to the single mode's charge content.
+
+Concretely: the closed (1/2, 1) track on the symmetric modulated-clover passes through three arc-pieces of the cross-section in series. The cross-section has six arc-pieces total (3 convex *lobes* + 3 concave *saddles* under the Z₂ × Z₃ symmetry); the (1/2, 1) track samples three of them as θ runs from 0 to 2π:
 
 - The *proton* track at t₀ = −π/6 passes through *lobe → saddle → lobe* — three arc-pieces in the sequence (u, d, u), i.e. uud-ordered.
 - The *neutron* track at t₀ = +π/6 passes through *saddle → lobe → saddle* — sequence (d, u, d), i.e. udd-ordered.
 
-A **quark** is identified with one arc-piece in this series. The proton's three quark-pieces are two u's (the two lobes) and one d (the saddle). The neutron's are one u and two d's. The constituent-quark mass is m_baryon / 3 (~ 313 MeV when m_baryon = m_proton).
+A **quark** is identified with one arc-piece in this series. The proton's three quark-pieces are two u's (the two lobes) and one d (the saddle); the neutron's are one u and two d's. By construction, the constituent-quark mass is m_baryon / 3 — this is the framework's *definition*, not a derived result. The numerical value m_proton / 3 ≈ 312.8 MeV is in the same range as the "constituent quark mass" (~ 313 MeV) used in the constituent-quark model of QCD; the comparison is to that model-dependent working value rather than to a directly-measured observable.
 
-The per-arc *fractional charge values* (±2/3 / ∓1/3) deserve a careful statement, since the framework's textbook values come out only in a specific idealised limit. On the piecewise-circular kissing-circles clover — three 240° lobe arcs of constant geodesic curvature κ = +1/r and three 120° saddle arcs of constant κ = −1/r — the per-arc integral gives exactly +2/3 (lobe, u) and −1/3 (saddle, d). On the smooth Fourier-series cross-section that the construction actually uses (a₁(θ) cos 3t + a₂ cos 6t and its imaginary counterpart), the per-arc readings are *smeared* (numerically ~+0.59 per arc on the proton, ~−0.26 per arc on the neutron) because the continuous-curvature distribution does not concentrate the winding at sharp arc boundaries. The *integer* baryon charges Q_p = +1 and Q_n = 0 are preserved exactly in both representations.
+The per-arc *fractional charge values* (±2/3 / ∓1/3) come out only in a specific idealised limit. On the piecewise-circular kissing-circles clover — three 240° lobe arcs of constant geodesic curvature κ = +1/r and three 120° saddle arcs of constant κ = −1/r — the per-arc integral gives exactly +2/3 (lobe, u) and −1/3 (saddle, d). On the smooth Fourier-series cross-section that the construction actually uses, the per-arc readings are *smeared* (numerically ~+0.59 per arc on the proton, ~−0.26 per arc on the neutron) because the continuous-curvature distribution does not concentrate the winding at sharp arc boundaries. The *integer* baryon charges Q_p = +1 and Q_n = 0 are preserved exactly in both representations.
 
-This arc treats the smeared per-arc values as a *structural prediction* of the smooth construction, not as a fitting failure. The textbook ±2/3 / ∓1/3 are the kissing-circles limit; the construction's actual values would need to be checked against integrated observables (the R-ratio analog, magnetic-moment ratios, parton-distribution shapes) in future work to see whether the smearing is empirically tolerated. Chapter 5 develops the per-arc machinery; the work file [quark-decomposition.md](work/quark-decomposition.md) records the computational evidence.
+The relationship between the smooth-substrate per-arc values and the standard-model ±2/3 / ∓1/3 — which are well-established empirically (DIS, R-ratio, parton distributions) — is an **open identification question**, not a derivation the construction has yet completed. The arc records the construction's smooth-substrate values; whether they are empirically tolerated depends on which observables they actually feed and on whether the smearing matches what those observables resolve. Work file: [quark-decomposition.md](work/quark-decomposition.md).
 
-### 4.5 Color as the Z₃ phase-track index
+### 4.5 Color: the substrate's Z₃ as a structural analog of SU(3)
 
-The modulated-clover substrate has exact Z₃ rotational symmetry around the major-ring axis — a 120° rotation of the 3-D embedding maps the surface to itself. Under this Z₃, the proton's closed track maps to two other 3-fold-related closed tracks (and similarly for the neutron). These three Z₃-related closed tracks are not three different particles; they are three *color states* of the same baryon.
+The substrate's exact Z₃ rotational symmetry around the major-ring axis produces three structurally-equivalent track families. Under the Z₃ screw, the proton's closed track maps to two other 3-fold-related closed tracks (and similarly for the neutron). The framework identifies these three families with what the standard model calls color, with one important caveat: the standard-model color group is the continuous SU(3) gauge group (8 generators); the substrate's symmetry is the discrete Z₃ (1 generator). These are different mathematical objects. The framework recovers the **structural analog of color** that survives gauge-fixing to a color singlet — the 3-fold confinement-like structure — but it does *not* construct SU(3) gauge theory.
 
-**Color is geometric in this framework.** It labels which of the three Z₃-related phase tracks the wave-quantum is currently observed on. It is not an internal Hilbert-space quantum number bolted onto the wave-quantum from outside; it is a substrate-level structural feature. The standard-model color SU(3) and our construction's Z₃ are different objects — SU(3) is continuous while Z₃ is discrete — and identifying them rigorously is an open structural item. What the construction does deliver is the discrete 3-fold structure that the standard-model SU(3) collapses to in the *color-singlet* sector.
+This is the same distinction [metric-charge Ch 11 §7](../metric-charge/11-modeling-foundation.md) draws between the framework's Z₃ structural analog and the standard-model gauge SU(3); see that section for parallel language. The promotion from the Z₃ analog to full SU(3) gauge structure is a route the framework lacks a mechanism for and is deferred.
 
-### 4.6 The framing this arc commits to, and the alternatives that were tried
+Under this reading, "color" labels which Z₃-related phase track the wave-quantum is currently observed on — a substrate-level structural feature, not an internal Hilbert-space quantum number bolted on from outside.
 
-The framing is: *single wave-quantum per baryon, with charge content organised as a 3-arc-piece series along its characteristic curve, and three Z₃-related color states by substrate symmetry*.
+### 4.6 The framing this arc commits to
 
-This was not the first framing the framework tried. The work files [lb-mode-localization.md](work/lb-mode-localization.md), [quark-decomposition.md](work/quark-decomposition.md), and [quark-wannier-decomposition.md](work/quark-wannier-decomposition.md) record the alternatives that were explored before this reading settled:
+The framing this chapter commits to is: *single wave-quantum per baryon, with charge content organised as a 3-arc-piece series along its characteristic curve, and three Z₃-related color states by substrate symmetry*.
 
-- *Single quantum as a track-localised LB eigenmode.* Ruled out by direct numerical computation — no LB eigenmode and no low-energy superposition is appreciably track-localised on the substrate.
-- *Three quark-quanta combined as a Slater determinant.* Would require a fermionic spinor upgrade of the substrate field; held in reserve for downstream work that the scalar-field construction cannot reach.
-- *Nine wave functions in a 3×3 quark × color matrix, with Wannier-function localisation on each track.* Agreed with the simpler 3-arc-piece-in-series reading without adding predictive content; demoted to exploratory record.
-
-The 3-arc-piece-in-series reading is what this arc commits to. The demoted alternatives remain in the work files; if downstream chapters (Δ baryons, mesons, magnetic moments) require richer structure than the scalar-field construction supports, those work files are the entry points to revisiting the framing.
+Three earlier framings were considered and set aside (track-localised LB eigenmode; three quark-quanta in a Slater determinant; nine wave functions in a 3 × 3 quark × color Wannier matrix); their records are in [work/lb-mode-localization.md](work/lb-mode-localization.md), [work/quark-decomposition.md](work/quark-decomposition.md), and [work/quark-wannier-decomposition.md](work/quark-wannier-decomposition.md). If downstream chapters require richer structure than the scalar-field construction supports, those work files are the entry points to revisiting the framing. See [work/STATUS.md](work/STATUS.md) for the full work-file index.
 
 ---
 
@@ -233,7 +257,7 @@ A short declarative section that draws the scope.
 
 ### 5.1 In scope: the u-d hadron generation
 
-The arc derives the proton and neutron as the two (1/2, ±1) baryon modes of one modulated-clover substrate, with one set of parameter values (R_major ≈ 36.17 and the symmetric Step-7 modulation coefficients). Subsequent chapters add the per-arc charge derivation (Ch 4), the path-length mass derivation (Ch 5), and the discrete symmetries (Ch 6). The arc does not extend to the Δ baryons, the light mesons, or multi-flavor hadrons; these are listed in the README's §What we don't predict.
+The arc derives the proton and neutron as the two (1/2, ±1) baryon modes of one modulated-clover substrate, with one set of parameter values (R_major ≈ 36.17 and the symmetric Step-7 modulation coefficients). The Δ baryons, the light mesons, and multi-flavor hadrons are deferred — see the [README §What we don't predict](README.md#what-we-dont-predict) for the full list.
 
 ### 5.2 The construction's form is structural
 
@@ -245,7 +269,7 @@ Only the *parameter values* of the modulation are generation-specific. R_major s
 
 ### 5.4 Handoff to ma-domain
 
-[ma-domain](../ma-domain/) is the project that takes the single-generation result and asks whether three generations + the charged-lepton sector + the neutrino sector can be hosted in one multi-dimensional compact domain, with each sheet emerging as one cross-term in a sparse N×N metric. Sheet-proton supplies the *worked example* of one generation on one cross-term. The half-twist τ = 1/2 modulated-clover that this project settles on supersedes the older τ = 1/3 clover-quarks precedent that ma-domain's current scaffolding inherits; ma-domain's multi-generation architecture should adapt to τ = 1/2 rather than the older convention.
+[ma-domain](../ma-domain/) is the project that takes the single-generation result and asks whether three generations + the charged-lepton sector + the neutrino sector can be hosted in one multi-dimensional compact domain, with each sheet emerging as one cross-term in a sparse N×N metric. Sheet-proton supplies the *worked example* of one generation on one cross-term. The half-twist τ = 1/2 modulated-clover that this project settles on supersedes the older τ = 1/3 clover-quarks precedent that ma-domain's current scaffolding inherits; ma-domain may adapt its multi-generation architecture to τ = 1/2 rather than the older convention, as a coordination decision between the two projects.
 
 ---
 
@@ -256,7 +280,7 @@ The chapter sets up what every subsequent chapter inherits.
 - The arc's *empirical target* is the u-d hadron generation, with the quantum numbers listed in §1.
 - The arc's *foundational inputs* are picture A (the scalar wave equation on T²), the closure condition, the Z₂ × Z₂ handedness structure, and the load-bearing hypothesis G1 (per-arc geodesic curvature = local charge density). All inherited from metric-charge (§2).
 - The arc's *coordinates* are the substrate (t, θ), the mode labels (m, n) with the (1/2, ±1) baryon modes, and the sign conventions for geometric chirality and C-conjugation (§3).
-- The arc's *framing* is: each baryon is one wave-quantum on the substrate; its electric charge is a per-arc geodesic-curvature integral along its closed (1/2, 1) characteristic curve; its mass is the closed-track standing-wave wavelength; its quark substructure is the series of three arc-pieces the track passes through (lobe-saddle-lobe = uud for the proton, saddle-lobe-saddle = udd for the neutron); its three color states are the three Z₃-related phase tracks. The framing is a commitment, not yet a derivation — chapters 2–6 derive that the commitment is *consistent* (§4).
+- The arc's *framing* is: each baryon is one wave-quantum on the substrate; its electric charge is a per-arc geodesic-curvature integral along its closed (1/2, 1) characteristic curve; its mass is the closed-track standing-wave wavelength; its quark substructure is the series of three arc-pieces the track passes through (lobe-saddle-lobe = uud for the proton, saddle-lobe-saddle = udd for the neutron); its three color states are the three Z₃-related phase tracks (a structural analog of standard-model color SU(3), not gauge SU(3) itself). The framing is a commitment, not a derivation — its consistency is what subsequent chapters develop (§4).
 - The arc's *scope* is one generation, with a structurally generation-agnostic form whose parameter range may or may not accommodate the heavier generations — that question is left to ma-domain (§5).
 
 The next chapter builds the substrate.
