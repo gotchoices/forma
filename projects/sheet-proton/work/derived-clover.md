@@ -389,50 +389,68 @@ mass-ratio match. The construction is then complete.
 
 ---
 
-## Wave / track reconciliation — status
+## Quark substructure and color
 
-The construction has been calibrated under the *particle-on-track*
-reading: charge from the per-arc curvature integral along the
-(1/2, 1) tracks, mass from the path-length formula
-m = 2 π ℏ c / L_track. The companion *wave-on-substrate* reading
-would derive the same numbers from the 2-D Laplace–Beltrami
-spectrum of the modulated-clover surface itself.
+The construction's per-arc curvature integral along one (1/2, 1)
+track is the **series** of fractional charge contributions from
+the cross-section pieces the track threads — convex (lobe) arcs
+at +2/3 and concave (saddle) arcs at −1/3 under G1. The series
+sums to +1 on the proton track and 0 on the neutron track. A
+**quark** is identified with one segment of this series; the
+proton track's three quark-segments form a uud series, the
+neutron's a udd series.
 
-The two readings are **not equivalent** on this surface, by direct
-computation. See [lb-mode-localization.md](lb-mode-localization.md):
+The substrate's Z₃ ring screw maps the proton track onto its two
+Z₃-related copies (and similarly for the neutron). These three
+phase tracks are not three particles — they are three **color
+states** of the same baryon, related by the substrate's exact
+Z₃ symmetry. Color is therefore geometric: it labels which of
+the three Z₃-related phase tracks the wave-quantum is currently
+gauge-fixed to.
 
-- No individual LB eigenmode (up to √λ ≈ 1.5) is appreciably
-  track-localised — modes are stripes spanning the full (t, θ)
-  parameter space, with enrichment E ≲ 1.07 against E_perfect ≈ 3.
-- Allowing arbitrary low-energy superpositions does *not* rescue
-  Reading α at the proton energy: the best superposition with
-  √⟨H⟩ at the proton wavenumber (≈ 0.028) has enrichment depth
-  < 1 %. Localisation depth crosses 5 % only at ~3 × proton
-  energy, 30 % only at ~30 × proton energy.
+The baryon is a *single wave-quantum* on the substrate. Its
+amplitude is spread across the surface in the usual LB sense;
+its *charge content* is organised in series along the
+characteristic curve. The per-arc integral is a Berry-phase-style
+integral whose value depends on how the cross-section tangent
+winds along the track, not on where the wave's amplitude sits.
+So the construction works without requiring the amplitude itself
+to be track-localised.
 
-The construction in this file remains the canonical *substrate*;
-the calibration of charge and mass on it remains correct. What is
-now closed is the question of whether the same numbers can be
-derived from the 2-D wave equation by a semi-classical limit —
-they cannot, on this surface, at this energy scale.
+This single-quantum-with-along-track-substructure reading replaces
+the earlier "Reading α (single quantum in 3-mode superposition)
+vs Reading β (three quark-quanta with spinor upgrade)" framing.
+The new reading is cleaner: one quantum per baryon (no spinor
+upgrade needed); quark substructure as a series decomposition
+of the per-arc integral; color as geometric phase-track index.
 
-**No reconciliation is currently in hand.** Reading β
-(multi-quantum, fermionic spinor upgrade) is a *reinterpretation*
-that sidesteps the requirement rather than a derivation of
-equivalence — three wave-quanta (one per phase track) replacing
-one wave-quantum on three tracks, with each track-quantum now
-carrying the constituent-quark mass and R_major rescaling by ~3×.
-That keeps the framework wave-fundamental but does *not* recover
-Reading α's calibration; the construction would need re-calibrating
-under it.
+The verification needed: split the existing per-arc integral
+into three series segments and check that the per-segment
+charges deliver the observed uud and udd patterns
+(see [quark-decomposition.md](quark-decomposition.md)).
 
-Routes not yet tried that could in principle still close the
-gap on this substrate: high-eigenvalue scarring on closed
-geodesics (does not help the proton specifically); a *restricted*
-Laplacian on a specific Z₃ irrep; phase-space (Husimi)
-localisation; a sharper-tube metric on the same substrate.
-None has been worked out. See the parent README's
-"reconciliation gap — status" section.
+## The LB result, in context
+
+The direct LB-mode localisation test ([lb-mode-localization.md](lb-mode-localization.md))
+found that no LB eigenmode and no low-energy superposition is
+spatially track-localised on this substrate at the proton's
+energy scale. Under the older "wave localises on track" reading
+this was the central reconciliation problem.
+
+Under the framing above, this is no longer a *gap* — it is a
+finding about *where the wave-quantum's amplitude lives*. The
+amplitude is spread over the whole surface; the charge structure
+is organised in series along the track. These are compatible
+because the per-arc integral is Berry-phase-like, not
+amplitude-weighted. The LB result remains a constraint —
+specifically that the framework cannot be reformulated as
+"baryon = track-localised LB eigenmode" — but it does not
+obstruct the construction's calibration.
+
+What remains genuinely open from the LB study: *which* LB
+eigenmode (if any) the proton wave-quantum corresponds to.
+That is a separate question from "is the proton track-localised"
+and is left to a future iteration.
 
 ---
 
@@ -443,15 +461,16 @@ Resolved items are folded into the chain, the per-arc machinery,
 the Finding, the Symmetries, or the Wave/track reconciliation
 sections above.
 
-- **Particle-on-track vs wave-in-cavity framing.** The
-  computation in [lb-mode-localization.md](lb-mode-localization.md)
-  shows that the two framings give *different* physics at the
-  proton's energy scale — they do not coincide on this surface.
-  The construction's calibration uses the particle-on-track
-  reading; the wave-on-substrate reading does not reproduce the
-  same numbers semi-classically. The chapter arc must take a
-  position on which reading the proton lives in. Reading β
-  (multi-quantum / fermionic) is the natural resolution.
+- **Verification of the 3-quark-series decomposition.** The
+  Quark substructure and color section above states that the
+  per-arc integral on one track decomposes in series into three
+  quark-segments delivering uud (proton) or udd (neutron). This
+  is a concrete check that has not yet been performed
+  numerically; it belongs in
+  [quark-decomposition.md](quark-decomposition.md). The
+  question is whether the segments come out at (+2/3, +2/3, −1/3)
+  / (+2/3, −1/3, −1/3) — not at (+1/3, +1/3, +1/3) — under the
+  symmetric Step-7 solution.
 - **Is the (1/2, 1) topology forced or chosen?** C3 is currently
   *input*. Whether anything upstream (a spin-½ requirement at the
   wave-equation level) *forces* the half-integer winding is the

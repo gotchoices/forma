@@ -358,6 +358,34 @@ def track_charge(t0, Ac, As, Bc, Bs, a2, b2, Nth=3000):
     return Q_tube, n_total
 
 
+def track_charge_segments(t0, Ac, As, Bc, Bs, a2, b2, Nth=3000, n_seg=3):
+    """Per-segment decomposition of the tube charge.
+
+    Splits θ ∈ [0, 2π] into n_seg equal sub-intervals and returns
+    [Q_1, Q_2, ..., Q_n] with Σ Q_i = Q_tube.  For n_seg = 3 on the
+    Z₂ × Z₃-symmetric clover, each segment corresponds to one arc-piece
+    along the (1/2, 1) track:
+      proton t₀ = -π/6  →  segments cover  lobe / saddle / lobe   (uud)
+      neutron t₀ = +π/6 →  segments cover  saddle / lobe / saddle (udd)
+    so the per-segment charges should resolve into the per-quark fractional
+    charges +2/3, -1/3 expected under hypothesis G1."""
+    # Use a finer grid that's a multiple of n_seg.
+    Nth_local = (Nth // n_seg) * n_seg
+    theta = np.linspace(0.0, 2 * pi, Nth_local + 1)
+    t = t0 + theta / 2.0
+    dcdt = dchi_dt(t, theta, Ac, As, Bc, Bs, a2, b2)
+    seg_size = Nth_local // n_seg
+    Qs = []
+    for k in range(n_seg):
+        i0 = k * seg_size
+        i1 = (k + 1) * seg_size
+        # Slice [i0:i1+1] so adjacent segments share the boundary point;
+        # the trapezoid rule then sums cleanly.
+        Q_k = 0.5 * np.trapezoid(dcdt[i0:i1 + 1], theta[i0:i1 + 1]) / (2 * pi)
+        Qs.append(float(Q_k))
+    return Qs
+
+
 def refine_to_target(N, Bc, Bs, a2, b2, t0_p, t0_n, x0, levels=4, npts=5):
     """Zoom-grid over (As0, As1, Ac0, Ac1) for the SIMPLE-surface point closest
     to (Q_proton, Q_neutron) = (1, 0).  The a1 sin-harmonics (As0, As1) break
@@ -1184,13 +1212,137 @@ def run_step7(args):
     print(f"\nWrote: {out_path}")
 
 
+def run_step8(args):
+    """STEP 8: per-segment quark-charge decomposition.
+
+    The per-arc charge integral on one closed (1/2, 1) track decomposes
+    in series into three sub-segments (θ ∈ [0, 2π/3], [2π/3, 4π/3],
+    [4π/3, 2π]).  On the Z₂×Z₃-symmetric clover these line up with
+    the three arc pieces the track crosses — lobe/saddle/lobe for the
+    proton t₀ = -π/6 and saddle/lobe/saddle for the neutron t₀ = +π/6.
+    Each segment is identified with one *quark*; the expected
+    per-segment charges are (+2/3, -1/3, +2/3) for uud and
+    (-1/3, +2/3, -1/3) for udd under G1.
+
+    The Z₂×Z₃-symmetric Step-7 modulation is reproduced from work/derived-
+    clover.md §Finding and used directly (no DE re-fit).
+    """
+    N, a2, b2 = args.N, args.a2, args.b2
+    # Symmetric Step-7 solution (work/derived-clover.md §Finding).
+    Ac = np.array([0.0, -0.48765])
+    As = np.array([0.0, +0.65694])
+    Bc = np.array([0.0, -0.00038])
+    Bs = np.array([0.0, +0.00032])
+    a2_sym, b2_sym = 0.32994, 0.03201
+
+    t0_p, t0_n = -pi / 6.0, +pi / 6.0
+    Qp_tot, _ = track_charge(t0_p, Ac, As, Bc, Bs, a2_sym, b2_sym, Nth=6000)
+    Qn_tot, _ = track_charge(t0_n, Ac, As, Bc, Bs, a2_sym, b2_sym, Nth=6000)
+    Qp_seg = track_charge_segments(t0_p, Ac, As, Bc, Bs, a2_sym, b2_sym,
+                                    Nth=6000, n_seg=3)
+    Qn_seg = track_charge_segments(t0_n, Ac, As, Bc, Bs, a2_sym, b2_sym,
+                                    Nth=6000, n_seg=3)
+
+    # Comparison runs: unmodulated (a1 = b1 = 0, Z_6 backbone only) and
+    # cos-only modulation (which preserves a proton-neutron reflection
+    # symmetry but breaks Z_6 → Z_3).  These help isolate where the
+    # lobe/saddle distinction lives in the integrand.
+    zero = np.array([0.0, 0.0])
+    Qp_seg_unmod = track_charge_segments(t0_p, zero, zero, zero, zero,
+                                          a2_sym, b2_sym, Nth=6000, n_seg=3)
+    Qn_seg_unmod = track_charge_segments(t0_n, zero, zero, zero, zero,
+                                          a2_sym, b2_sym, Nth=6000, n_seg=3)
+    Qp_seg_cos = track_charge_segments(t0_p, Ac, zero, zero, zero,
+                                        a2_sym, b2_sym, Nth=6000, n_seg=3)
+    Qn_seg_cos = track_charge_segments(t0_n, Ac, zero, zero, zero,
+                                        a2_sym, b2_sym, Nth=6000, n_seg=3)
+    # Per-segment at 6 segments (one per arc on the full closed track)
+    Qp_seg6 = track_charge_segments(t0_p, Ac, As, Bc, Bs, a2_sym, b2_sym,
+                                     Nth=6000, n_seg=6)
+    Qn_seg6 = track_charge_segments(t0_n, Ac, As, Bc, Bs, a2_sym, b2_sym,
+                                     Nth=6000, n_seg=6)
+    Qp_seg6_unmod = track_charge_segments(t0_p, zero, zero, zero, zero,
+                                           a2_sym, b2_sym, Nth=6000, n_seg=6)
+    Qn_seg6_unmod = track_charge_segments(t0_n, zero, zero, zero, zero,
+                                           a2_sym, b2_sym, Nth=6000, n_seg=6)
+
+    R = []
+    R.append("=" * 78)
+    R.append("modulated-clover — STEP 8: per-segment quark-charge decomposition")
+    R.append("=" * 78)
+    R.append("")
+    R.append("Each closed (1/2, 1) track is split into 3 equal-θ segments.")
+    R.append("Under G1, each segment is a quark; expected charges are")
+    R.append("  proton (uud, lobe/saddle/lobe):   (+2/3, -1/3, +2/3) = (+0.6667, -0.3333, +0.6667)")
+    R.append("  neutron (udd, saddle/lobe/saddle): (-1/3, +2/3, -1/3) = (-0.3333, +0.6667, -0.3333)")
+    R.append("")
+    R.append(f"Z₂ × Z₃-symmetric Step-7 modulation:")
+    R.append(f"  Ac = [{Ac[0]:+.5f}, {Ac[1]:+.5f}]  As = [{As[0]:+.5f}, {As[1]:+.5f}]")
+    R.append(f"  Bc = [{Bc[0]:+.5f}, {Bc[1]:+.5f}]  Bs = [{Bs[0]:+.5f}, {Bs[1]:+.5f}]")
+    R.append(f"  a2 = {a2_sym:.5f}   b2 = {b2_sym:+.5f}")
+    R.append("")
+    R.append(f"PROTON (t₀ = -π/6):")
+    R.append(f"  total Q_tube              = {Qp_tot:+.6f}  (target +1.0)")
+    R.append(f"  3 equal-θ segments,  full mod  = ({Qp_seg[0]:+.5f}, {Qp_seg[1]:+.5f}, {Qp_seg[2]:+.5f})")
+    R.append(f"  3 equal-θ segments,  unmod     = ({Qp_seg_unmod[0]:+.5f}, {Qp_seg_unmod[1]:+.5f}, {Qp_seg_unmod[2]:+.5f})")
+    R.append(f"  3 equal-θ segments,  cos-only  = ({Qp_seg_cos[0]:+.5f}, {Qp_seg_cos[1]:+.5f}, {Qp_seg_cos[2]:+.5f})")
+    R.append(f"  6 equal-θ segments,  full mod  = ({Qp_seg6[0]:+.5f}, {Qp_seg6[1]:+.5f}, {Qp_seg6[2]:+.5f},")
+    R.append(f"                                    {Qp_seg6[3]:+.5f}, {Qp_seg6[4]:+.5f}, {Qp_seg6[5]:+.5f})")
+    R.append(f"  6 equal-θ segments,  unmod     = ({Qp_seg6_unmod[0]:+.5f}, {Qp_seg6_unmod[1]:+.5f}, {Qp_seg6_unmod[2]:+.5f},")
+    R.append(f"                                    {Qp_seg6_unmod[3]:+.5f}, {Qp_seg6_unmod[4]:+.5f}, {Qp_seg6_unmod[5]:+.5f})")
+    R.append(f"  expected (uud)    = (+0.666667, -0.333333, +0.666667)")
+    R.append("")
+    R.append(f"NEUTRON (t₀ = +π/6):")
+    R.append(f"  total Q_tube              = {Qn_tot:+.6f}  (target  0.0)")
+    R.append(f"  3 equal-θ segments,  full mod  = ({Qn_seg[0]:+.5f}, {Qn_seg[1]:+.5f}, {Qn_seg[2]:+.5f})")
+    R.append(f"  3 equal-θ segments,  unmod     = ({Qn_seg_unmod[0]:+.5f}, {Qn_seg_unmod[1]:+.5f}, {Qn_seg_unmod[2]:+.5f})")
+    R.append(f"  3 equal-θ segments,  cos-only  = ({Qn_seg_cos[0]:+.5f}, {Qn_seg_cos[1]:+.5f}, {Qn_seg_cos[2]:+.5f})")
+    R.append(f"  6 equal-θ segments,  full mod  = ({Qn_seg6[0]:+.5f}, {Qn_seg6[1]:+.5f}, {Qn_seg6[2]:+.5f},")
+    R.append(f"                                    {Qn_seg6[3]:+.5f}, {Qn_seg6[4]:+.5f}, {Qn_seg6[5]:+.5f})")
+    R.append(f"  6 equal-θ segments,  unmod     = ({Qn_seg6_unmod[0]:+.5f}, {Qn_seg6_unmod[1]:+.5f}, {Qn_seg6_unmod[2]:+.5f},")
+    R.append(f"                                    {Qn_seg6_unmod[3]:+.5f}, {Qn_seg6_unmod[4]:+.5f}, {Qn_seg6_unmod[5]:+.5f})")
+    R.append(f"  expected (udd)    = (-0.333333, +0.666667, -0.333333)")
+    R.append("")
+    # Verdict
+    exp_p = np.array([2.0 / 3.0, -1.0 / 3.0, 2.0 / 3.0])
+    exp_n = np.array([-1.0 / 3.0, 2.0 / 3.0, -1.0 / 3.0])
+    err_p = np.max(np.abs(np.array(Qp_seg) - exp_p))
+    err_n = np.max(np.abs(np.array(Qn_seg) - exp_n))
+    R.append(f"max |Q_seg - expected|:  proton {err_p:.4f}   neutron {err_n:.4f}")
+    R.append("")
+    if err_p < 0.05 and err_n < 0.05:
+        R.append("RESULT: per-segment charges match the uud / udd pattern.")
+        R.append("The 3-quarks-in-series decomposition holds under the symmetric")
+        R.append("Step-7 modulation — quark substructure is geometric and color is")
+        R.append("the Z₃ phase-track index.")
+    elif err_p < 0.20 and err_n < 0.20:
+        R.append("RESULT: per-segment charges are CLOSE to the uud / udd pattern")
+        R.append("but show modulation-distortion in the per-segment values.")
+        R.append("The series structure is right; the exact per-quark fractions")
+        R.append("may require refinement (e.g. variable segment boundaries,")
+        R.append("or attribution by arc-content rather than equal-θ).")
+    else:
+        R.append("RESULT: per-segment charges do NOT match the uud / udd pattern.")
+        R.append("Either the segment decomposition is wrong, or the per-arc-curvature")
+        R.append("identification of quarks needs a different mathematical embodiment.")
+
+    text = "\n".join(R)
+    print(text)
+    out_dir = Path(__file__).resolve().parents[1] / "outputs"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    out_path = out_dir / "modulated_clover_per_segment.txt"
+    out_path.write_text(text + "\n")
+    print(f"\nWrote: {out_path}")
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--step", choices=["1", "3", "4", "5", "6", "7"], default="3",
+    ap.add_argument("--step", choices=["1", "3", "4", "5", "6", "7", "8"], default="3",
                     help="1 = cross-section budget; 3 = modulation/track "
                          "solver; 4 = mass spectrum; 5 = mass-fit sweep; "
-                         "6 = global parameter sweep; 7 = path-length mass")
+                         "6 = global parameter sweep; 7 = path-length mass; "
+                         "8 = per-segment quark charge")
     ap.add_argument("--N", type=int, default=3, help="lobe-pair count (default 3)")
     ap.add_argument("--a1", type=float, default=0.62,
                     help="step 1: eval a1;  step 3: initial a1-modulation amplitude")
@@ -1235,8 +1387,10 @@ def main():
         run_step5(args)
     elif args.step == "6":
         run_step6(args)
-    else:
+    elif args.step == "7":
         run_step7(args)
+    else:
+        run_step8(args)
 
 
 if __name__ == "__main__":

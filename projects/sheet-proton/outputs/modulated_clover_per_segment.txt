@@ -1,0 +1,41 @@
+==============================================================================
+modulated-clover — STEP 8: per-segment quark-charge decomposition
+==============================================================================
+
+Each closed (1/2, 1) track is split into 3 equal-θ segments.
+Under G1, each segment is a quark; expected charges are
+  proton (uud, lobe/saddle/lobe):   (+2/3, -1/3, +2/3) = (+0.6667, -0.3333, +0.6667)
+  neutron (udd, saddle/lobe/saddle): (-1/3, +2/3, -1/3) = (-0.3333, +0.6667, -0.3333)
+
+Z₂ × Z₃-symmetric Step-7 modulation:
+  Ac = [+0.00000, -0.48765]  As = [+0.00000, +0.65694]
+  Bc = [+0.00000, -0.00038]  Bs = [+0.00000, +0.00032]
+  a2 = 0.32994   b2 = +0.03201
+
+PROTON (t₀ = -π/6):
+  total Q_tube              = +1.000002  (target +1.0)
+  3 equal-θ segments,  full mod  = (+0.33333, +0.33333, +0.33333)
+  3 equal-θ segments,  unmod     = (+0.16667, +0.16667, +0.16667)
+  3 equal-θ segments,  cos-only  = (+0.21229, +0.21229, +0.21229)
+  6 equal-θ segments,  full mod  = (+0.04062, +0.29271, +0.04062,
+                                    +0.29271, +0.04062, +0.29271)
+  6 equal-θ segments,  unmod     = (+0.08333, +0.08333, +0.08333,
+                                    +0.08333, +0.08333, +0.08333)
+  expected (uud)    = (+0.666667, -0.333333, +0.666667)
+
+NEUTRON (t₀ = +π/6):
+  total Q_tube              = -0.000001  (target  0.0)
+  3 equal-θ segments,  full mod  = (-0.00000, -0.00000, -0.00000)
+  3 equal-θ segments,  unmod     = (+0.16667, +0.16667, +0.16667)
+  3 equal-θ segments,  cos-only  = (+0.21229, +0.21229, +0.21229)
+  6 equal-θ segments,  full mod  = (+0.24279, -0.24279, +0.24279,
+                                    -0.24279, +0.24279, -0.24279)
+  6 equal-θ segments,  unmod     = (+0.08333, +0.08333, +0.08333,
+                                    +0.08333, +0.08333, +0.08333)
+  expected (udd)    = (-0.333333, +0.666667, -0.333333)
+
+max |Q_seg - expected|:  proton 0.6667   neutron 0.6667
+
+RESULT: per-segment charges do NOT match the uud / udd pattern.
+Either the segment decomposition is wrong, or the per-arc-curvature
+identification of quarks needs a different mathematical embodiment.

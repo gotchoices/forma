@@ -125,7 +125,10 @@ One-line per file, plus only todos we are tracking *here*. Detailed status, depe
 - Status: groundwork complete (C1–C6 hypothesis chain, per-arc charge integral, Z₂ × Z₃ symmetric finding, discrete symmetries, wave/track reconciliation status).  Feeds the chapter arc in the parent [README.md](../README.md).
 
 ### [lb-mode-localization.md](lb-mode-localization.md) — 2-D LB localization test on the modulated-clover
-- Status: complete.  Direct computation (`scripts/track_localization.py`) showing that no LB eigenmode and no low-energy superposition track-localises at the proton's energy scale on this surface.  Closes the wave/track reconciliation question with a negative result and moves Reading β (multi-quantum / fermionic spinor upgrade) to the live position.
+- Status: complete.  Direct computation (`scripts/track_localization.py`) showing that no LB eigenmode and no low-energy superposition track-localises at the proton's energy scale on this surface.  Reframed under the single-quantum-with-along-track-substructure reading: the LB amplitude doesn't need to be track-localised because the per-arc charge integral is Berry-phase-like, not amplitude-weighted.
+
+### [quark-decomposition.md](quark-decomposition.md) — 3-quarks-in-series test on the per-arc track integral
+- Status: first pass complete.  The simplest reading (equal-θ segments of the existing track-charge integral yield per-quark +2/3 / −1/3 charges) does *not* work — Z₃ screw symmetry of the substrate forces all 3 segments to integrate identically.  Two refined repairs identified (cross-section per-arc integral vs Z₃-irrep decomposition); neither tested yet.  **Action item:** test Repair A before drafting Chapter 5.
 
 ---
 
