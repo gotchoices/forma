@@ -389,17 +389,69 @@ mass-ratio match. The construction is then complete.
 
 ---
 
+## Wave / track reconciliation — status
+
+The construction has been calibrated under the *particle-on-track*
+reading: charge from the per-arc curvature integral along the
+(1/2, 1) tracks, mass from the path-length formula
+m = 2 π ℏ c / L_track. The companion *wave-on-substrate* reading
+would derive the same numbers from the 2-D Laplace–Beltrami
+spectrum of the modulated-clover surface itself.
+
+The two readings are **not equivalent** on this surface, by direct
+computation. See [lb-mode-localization.md](lb-mode-localization.md):
+
+- No individual LB eigenmode (up to √λ ≈ 1.5) is appreciably
+  track-localised — modes are stripes spanning the full (t, θ)
+  parameter space, with enrichment E ≲ 1.07 against E_perfect ≈ 3.
+- Allowing arbitrary low-energy superpositions does *not* rescue
+  Reading α at the proton energy: the best superposition with
+  √⟨H⟩ at the proton wavenumber (≈ 0.028) has enrichment depth
+  < 1 %. Localisation depth crosses 5 % only at ~3 × proton
+  energy, 30 % only at ~30 × proton energy.
+
+The construction in this file remains the canonical *substrate*;
+the calibration of charge and mass on it remains correct. What is
+now closed is the question of whether the same numbers can be
+derived from the 2-D wave equation by a semi-classical limit —
+they cannot, on this surface, at this energy scale.
+
+**No reconciliation is currently in hand.** Reading β
+(multi-quantum, fermionic spinor upgrade) is a *reinterpretation*
+that sidesteps the requirement rather than a derivation of
+equivalence — three wave-quanta (one per phase track) replacing
+one wave-quantum on three tracks, with each track-quantum now
+carrying the constituent-quark mass and R_major rescaling by ~3×.
+That keeps the framework wave-fundamental but does *not* recover
+Reading α's calibration; the construction would need re-calibrating
+under it.
+
+Routes not yet tried that could in principle still close the
+gap on this substrate: high-eigenvalue scarring on closed
+geodesics (does not help the proton specifically); a *restricted*
+Laplacian on a specific Z₃ irrep; phase-space (Husimi)
+localisation; a sharper-tube metric on the same substrate.
+None has been worked out. See the parent README's
+"reconciliation gap — status" section.
+
+---
+
 ## Open questions for the formal derivation
 
 Items the parent-folder mathematical derivation should address.
 Resolved items are folded into the chain, the per-arc machinery,
-the Finding, or the Symmetries section above.
+the Finding, the Symmetries, or the Wave/track reconciliation
+sections above.
 
-- **Particle-on-track vs wave-in-cavity framing.** The cavity
-  framing is primary at the wave level; particle-on-track is the
-  semi-classical projection along the mode's characteristic curve.
-  They coincide at the (1/2, 1) tracks but differ in how the math
-  is set up.
+- **Particle-on-track vs wave-in-cavity framing.** The
+  computation in [lb-mode-localization.md](lb-mode-localization.md)
+  shows that the two framings give *different* physics at the
+  proton's energy scale — they do not coincide on this surface.
+  The construction's calibration uses the particle-on-track
+  reading; the wave-on-substrate reading does not reproduce the
+  same numbers semi-classically. The chapter arc must take a
+  position on which reading the proton lives in. Reading β
+  (multi-quantum / fermionic) is the natural resolution.
 - **Is the (1/2, 1) topology forced or chosen?** C3 is currently
   *input*. Whether anything upstream (a spin-½ requirement at the
   wave-equation level) *forces* the half-integer winding is the

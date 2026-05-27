@@ -126,10 +126,16 @@ settling) on:
    metric-binding; the proton-sheet construction must remain
    compatible with whatever multi-sheet mechanism is adopted there.
 
-5. **Spinor upgrade for γ⁵ chirality.** Currently the framework
-   carries scalar field on the substrate; identifying its geometric
-   chirality with Dirac γ⁵ requires a spin structure / spinor field.
-   Forward-looking.
+5. **Spinor upgrade.** Currently the framework carries a scalar
+   field on the substrate. The same upgrade addresses two
+   downstream needs: (a) identifying geometric chirality with
+   Dirac γ⁵; (b) supplying the fermionic Pauli structure that
+   underlies Reading β (three quark-quanta, one per phase track),
+   which the LB-localisation computation
+   ([work/lb-mode-localization.md](work/lb-mode-localization.md))
+   makes the natural single-quantum account. Forward-looking,
+   but identifying these two needs as one structural step is
+   itself a finding of the present iteration.
 
 ## Background reading
 
@@ -154,63 +160,101 @@ symmetries → spectrum extension → observables → handoff. Chapters
 be sketchier on first draft, iterating with the work files. Chapter
 10 is the closing summary, parallel to metric-charge Ch 10.
 
-### Framing — wave-on-substrate as fundamental, particle-on-track as calculational tool
+### Framing — two readings, and what the computation says about them
 
-Throughout the arc we work in two equivalent languages, picking
-whichever is clearest per result:
+Throughout the arc we work in two languages:
 
 - **Wave-on-substrate (cavity).** The substrate is a 2-D resonator
   (a closed Riemannian surface). Particles are eigenmodes of the
   Laplace–Beltrami operator on it. Charges come from the Noether
-  current; masses come from LB eigenvalues. This is the
-  *fundamental* framing, inherited from [metric-charge Ch 11
-  picture A](../metric-charge/11-modeling-foundation.md). It
-  generalises cleanly to higher-spin baryons, mesons, magnetic
-  moments, and the eventual spinor upgrade.
+  current; masses come from LB eigenvalues. This is the framing
+  inherited from [metric-charge Ch 11 picture A](../metric-charge/11-modeling-foundation.md).
 - **Particle-on-track (semi-classical).** A particle's wavefunction
-  localises to a **characteristic curve** — for our construction
-  the (1/2, 1) torus knots on the modulated-clover. Charge along
-  that curve is the per-arc curvature integral (under G1); mass is
-  the closed-loop wavelength 2πℏc/L. This is the *calculational
-  tool* — easier to write down, faster to compute, and what the
-  modulated-clover work files have used to actually pin charges and
-  the mass ratio.
+  is assumed to localise to a **characteristic curve** — for our
+  construction the (1/2, 1) torus knots on the modulated-clover.
+  Charge along that curve is the per-arc curvature integral (under
+  G1); mass is the closed-loop wavelength 2πℏc/L. This is the
+  framing the modulated-clover work files have used to actually
+  pin charges and the mass ratio.
 
-The two readings *coincide* on the modes of interest because the
-modulated-clover modes localise to (1/2, 1) tracks. They are not
-two physical systems — they are two languages for the same physics.
+The framework had taken these to be **two languages for the same
+physics**, with the particle-on-track picture as the
+semi-classical projection of the wave picture. Direct computation
+(see the next subsection) shows that this equivalence does **not
+hold on the modulated-clover surface at the proton's energy
+scale.** The chapter arc treats the particle-on-track calibration
+as the empirically working description, and the wave-on-substrate
+reading as a structural target the framework will reach only
+under a spinor upgrade (Reading β).
 
-### A known reconciliation gap
+### A known reconciliation gap — status updated by direct computation
 
-The framework currently *assumes* that the proton/neutron correspond
-to track-localised modes of the 2D Laplace–Beltrami operator. It has
-not derived that localisation. Three honest gaps follow (carried in
-Chapter 5 explicitly):
+The framework had assumed that the proton/neutron correspond
+to track-localised modes of the 2D Laplace–Beltrami operator on
+the modulated-clover. The direct computation in
+[work/lb-mode-localization.md](work/lb-mode-localization.md)
+returns a **negative answer** to that assumption on this surface:
 
-1. **Semi-classical localisation not derived.** Why the proton
-   corresponds to a track-localised mode rather than a spread-out
-   2D LB eigenmode is currently a posit. Step 6 of
-   [modulated-clover.md](work/modulated-clover.md) showed the
-   *lowest* 2D LB modes don't match observed nucleon masses — so
-   the proton is not the lowest 2D LB mode, but we have not
-   identified which mode it *is*.
-2. **2D-LB-vs-1D-path coincidence not verified.** We've used the
-   1D restriction (path-length) to get the right mass; we have
-   not located the actual 2D LB eigenmode in the spectrum and
-   confirmed its eigenvalue matches.
-3. **Color-singlet structure is informal.** The three Z₃-related
+- No individual LB eigenmode (up to √λ ≈ 1.5) is appreciably
+  track-localised — the modes are stripes spanning (t, θ)
+  parameter space, with enrichment never exceeding ~7 % of
+  perfect track confinement.
+- Even allowing arbitrary low-energy *superpositions* of LB
+  modes, the best achievable localisation at the proton's energy
+  (√⟨H⟩ = 2π/L_track ≈ 0.028 in script units) has depth < 1 %.
+  Modest localisation (≳ 5 %) costs ≈ 3 × the proton's energy;
+  substantial localisation (≳ 30 %) costs ≈ 30 × the proton's
+  energy. The trade-off has the expected Heisenberg shape, and
+  the cost on this substrate is far higher than the proton can
+  pay.
+
+So the two readings — *wave-on-substrate* (2-D LB) and
+*particle-on-track* (path-length) — do **not** agree on this
+surface at the proton's energy scale. The particle-on-track
+calibration is empirically correct (charge +1/0, mass ratio).
+The wave-on-substrate reading is not reachable from it by a
+semi-classical limit on this surface.
+
+**No reconciliation is currently in hand.** Reading β
+(introduced below) is a *reinterpretation* that sidesteps the
+gap rather than a derivation of equivalence — it gives up on
+"one wave-quantum localised on the proton's three tracks" and
+replaces it with "three wave-quanta, one per track, held in
+distinct states by Pauli exclusion under a fermionic spinor
+upgrade." That keeps the framework operating in the
+wave-on-substrate picture, but each track-quantum now carries
+the *constituent-quark* mass (~313 MeV), not the proton mass,
+and R_major rescales by ~3×. So Reading β does not equate the
+two readings; it makes Reading α unnecessary at the cost of
+re-calibrating the construction.
+
+Routes that have *not* been tried and could in principle still
+close the gap: (a) high-eigenvalue scarring on closed geodesics
+(√λ ≫ 1 — does not help the proton specifically but matters for
+heavier baryons); (b) a *restricted* Laplacian on a specific
+Z₃ irrep, where the proton might appear as the ground state of
+a constrained operator rather than the full LB; (c) Husimi /
+phase-space localisation rather than position-space; (d) a
+different metric on the same substrate with sharper "tubes"
+around each track. None of these has been worked out.
+
+The chapter arc therefore: *reports* the negative LB result as
+a finding, *adopts* the particle-on-track calibration with its
+assumptions made explicit, *records* Reading β as the working
+sidestep, and *flags* the remaining mathematical routes as open
+work.
+
+Two further gaps remain open and are carried in Chapter 5 with
+their status:
+
+1. **Semi-classical localisation not derived** (now known not to
+   exist on this surface for the proton — the framework has to
+   work without it).
+2. **Color-singlet structure is informal.** The three Z₃-related
    phase tracks are *interpreted* as three color states whose
    singlet combination is the observable proton, but the framework
    does not derive the antisymmetric singlet structure or any
    binding-into-singlet mechanism.
-
-Chapter 5 will attempt to close gap (2) by direct computation
-(find the actual track-localised 2D LB mode if it exists). If it
-exists at the expected eigenvalue, the path-length picture is
-*observed* rather than posited. If not, the framework has a real
-problem to resolve before going further. Gaps (1) and (3) will be
-documented as open assumptions either way — the arc is honest
-about what it carries.
 
 ### A second reading we keep on the table
 
@@ -234,12 +278,19 @@ current scalar-field structure does not pick between:
   questions (multi-quantum baryon, γ⁵ chirality) are aspects of
   one structural extension.
 
-Reading α is what we have. Reading β stays explicitly on the
-table because if Reading α's Chapter-5 reconciliation gap proves
-unresolvable, β is the candidate alternative. The chapter arc
-should write β as a flag in Chapter 5 (mass) and Chapter 6
-(symmetries / spin / chirality), with the connecting observation:
-**the same spinor upgrade addresses both**.
+Reading α is what the construction has been calibrated *to*.
+Reading β was kept on the table in case the Chapter-5 wave/track
+reconciliation proved unreachable. The direct LB-localisation
+computation (above) has shown that it is unreachable on this
+surface at the proton's energy scale, which moves Reading β
+from "alternative kept open" to **the natural single-quantum
+account for the framework going forward**. The chapter arc should
+treat α as the current particle-on-track calibration (the work
+files have used it; the construction reproduces the right
+numbers under it) and β as the wave-on-substrate-level reading
+the framework will need once the spinor upgrade is in place —
+with the connecting observation that **the same spinor upgrade
+addresses both Reading β and γ⁵ chirality**.
 
 | # | Title | Role |
 |---|---|---|
@@ -247,7 +298,7 @@ should write β as a flag in Chapter 5 (mass) and Chapter 6
 | 2 | **The modulated-clover substrate** | The harmonic N = 3 cross-section family (3 major + 3 minor lobes, six equal pieces). Closure of the surface: allowed twists are multiples of 1/6; the **half-twist** τ = 1/2 is the operative case. Modulation a₁(θ), b₁(θ) restricted to the Z₂ × Z₃-symmetric subspace. The substrate is set up as a *resonator* (the cavity language), not a particle space. |
 | 3 | **Modes and their characteristic curves** | Eigenmodes of the substrate's Laplace–Beltrami operator; the (1/2, 1) torus knots as the *characteristic curves* of localised modes; closure under the half-twist identification. The two distinct tracks at t₀ = ∓π/6 — proton and neutron. The Z₂ × Z₃ orbit gives 6 baryon replicas (3 color phases × 2 isospin states). |
 | 4 | **Charge from per-arc curvature** | The per-arc reading of charge along a mode's characteristic curve, under G1 (inherited). The clean identity Q(t₀) = ½ + M(t₀). Solving the symmetric modulation for M(±π/6) = ±½. Result: Q_proton = +1, Q_neutron = 0 exactly. Per-piece (per-quark) charges as the idealised labelling the smooth construction approximates. |
-| 5 | **Mass and the wave/track reconciliation** | The path-length mass m = 2πℏc/L_track as a *track-localised eigenmode* within the broader 2D LB spectrum. Explicit articulation of the three reconciliation gaps. Numerical attempt to close gap (2) by locating the actual 2D LB eigenmode at the expected eigenvalue; report whether it exists or not. The mass-ratio match m_n/m_p = L_p/L_n at R_major ≈ 36.17 under the path-length reading. R_major's status as the one undetermined free parameter. **This is the honesty chapter — the framework's central interpretive commitment lives here.** |
+| 5 | **Mass and the wave/track reconciliation** | The path-length mass m = 2πℏc/L_track on the (1/2, 1) tracks. Direct LB-localisation computation (per [work/lb-mode-localization.md](work/lb-mode-localization.md)): the 2-D LB picture does *not* localise on the tracks at the proton's energy scale. Consequence: the framework adopts the particle-on-track calibration with its assumptions made explicit, and Reading β (multi-quantum, fermionic) becomes the natural wave-on-substrate account once the spinor upgrade is in place. The mass-ratio match m_n/m_p = L_p/L_n at R_major ≈ 36.17 under the path-length reading. R_major's status as the one undetermined free parameter. **This is the honesty chapter — the framework's central interpretive commitment lives here.** |
 | 6 | **Symmetries — chirality, isospin, color, C** | The Z₂ × Z₂ structure on baryon modes: chirality ((m, n) ↔ (m, −n)) and matter/antimatter ((m, n) ↔ (−m, −n)). The Z₃ ring-axis rotation = color. The Z₂ proton/neutron swap = isospin I_3 = ±½. Geometric chirality vs. γ⁵-chirality (deferred to spinor-upgrade). |
 | 7 | **Beyond proton and neutron — frontier** | Extending the construction to the rest of the u-d hadron spectrum: Δ⁺⁺/Δ⁺/Δ⁰/Δ⁻ (spin-3/2 baryons; candidates: higher mode excitations or different track topologies), and the light mesons π/ρ/η (compound qq̄ readings). Exploratory first-draft, iterating with [work/meson-spectrum.md](work/meson-spectrum.md), [work/clover-mass.md](work/clover-mass.md), [work/strong.md](work/strong.md). |
 | 8 | **Observables** | Computed observables from the construction: magnetic moments (from the wave's current distribution), parity (from substrate enantiomers), baryon number (from track-winding count). Comparison with measured values where possible. Where the construction is silent or makes only qualitative predictions, flag clearly. |

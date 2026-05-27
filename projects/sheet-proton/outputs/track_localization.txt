@@ -1,0 +1,66 @@
+==============================================================================
+track_localization.py — LB-mode track localisation on the
+Z₂ × Z₃-symmetric modulated-clover (work/derived-clover.md gap 2).
+==============================================================================
+
+mesh:        120 x 150 = 18000 vertices
+R_major:     36.1700
+K modes:     400
+σ (rad):     0.1000
+tube area:   0.2345  (fraction of total surface area)
+total area:  2745.7466
+
+calibration:  a perfectly-tube-confined |ψ|² = w would give
+              E_perfect = 3.0134
+              (E = 1.0 means uniform; E = E_perfect means
+               every bit of probability sits in the tube)
+
+observed enrichment range:  min = 0.9738   max = 1.0351
+observed enrichment mean:   0.9998   median = 1.0019
+observed localisation depth (individual modes):
+  (E_max - 1) / (E_perfect - 1) = 0.0174
+
+best-localized superposition within the K-mode subspace:
+  max E over normalised c in span(ψ_1, ..., ψ_K)  =  1.7810
+  subspace localisation depth = 0.3879
+  energy of best superposition ⟨H⟩ = Σ cᵢ² λᵢ = 6.6616e-01
+
+localisation-vs-energy trade-off (truncation sweep):
+  Truncate to first n_trunc modes; report max E achievable
+  inside that subspace and ⟨H⟩ of the localising state.
+  Path-length wavenumber 2π/L_track ≈ 0.028  (so the proton
+  energy is λ_p ≈ 7.8e-4 — orders of magnitude below.)
+
+   n_trunc     max E     depth           ⟨H⟩      √⟨H⟩
+         5    1.0151    0.0075    2.1028e-03    0.0459
+        10    1.0979    0.0486    9.0562e-03    0.0952
+        20    1.1450    0.0720    1.8989e-02    0.1378
+        40    1.1704    0.0846    4.3863e-02    0.2094
+        80    1.1764    0.0876    6.3982e-02    0.2529
+       160    1.1830    0.0909    1.3063e-01    0.3614
+       400    1.7810    0.3879    6.6616e-01    0.8162
+
+upper-half trend (linear fit of E vs index, last 200 modes):
+  E ≈ +0.00007 · index + 0.9786
+  slope > 0 ⇒ enrichment growing with mode index (localising)
+  slope ≤ 0 ⇒ enrichment flat or decaying (no localisation)
+
+top-10 most-enriched modes (mode index, eigenvalue, E):
+  idx= 358   λ=1.3999e+00   E=1.0351
+  idx=  82   λ=3.5502e-01   E=1.0336
+  idx=   6   λ=6.9114e-03   E=1.0270
+  idx= 370   λ=1.4320e+00   E=1.0257
+  idx= 356   λ=1.3901e+00   E=1.0253
+  idx= 355   λ=1.3901e+00   E=1.0253
+  idx= 368   λ=1.4164e+00   E=1.0245
+  idx= 367   λ=1.4164e+00   E=1.0245
+  idx=  81   λ=3.5145e-01   E=1.0217
+  idx= 352   λ=1.3763e+00   E=1.0209
+
+INTERPRETATION GUIDE:
+  - E ≈ 1 throughout:   modes are uniformly spread; no track localisation.
+  - E grows with index: semiclassical localisation kicks in at high k.
+  - A few sporadic E > 1: localisation is mode-by-mode rather than systemic.
+  - Without growth, work/derived-clover.md gap 2 stays open and the
+    Reading α (single-quantum) → Reading β (multi-quantum) alternative
+    cannot be dismissed on internal evidence.

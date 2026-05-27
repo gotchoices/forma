@@ -121,6 +121,12 @@ One-line per file, plus only todos we are tracking *here*. Detailed status, depe
 - [ ] Coulomb+Yukawa Schrödinger solver against R64 Phase 7d's QM gate
 - [ ] Test the deuteron-binding-as-mode-coexistence hypothesis (strong.md §6a) once Phase 3 pins parameters
 
+### [derived-clover.md](derived-clover.md) — formal derivation of the modulated-clover substrate
+- Status: groundwork complete (C1–C6 hypothesis chain, per-arc charge integral, Z₂ × Z₃ symmetric finding, discrete symmetries, wave/track reconciliation status).  Feeds the chapter arc in the parent [README.md](../README.md).
+
+### [lb-mode-localization.md](lb-mode-localization.md) — 2-D LB localization test on the modulated-clover
+- Status: complete.  Direct computation (`scripts/track_localization.py`) showing that no LB eigenmode and no low-energy superposition track-localises at the proton's energy scale on this surface.  Closes the wave/track reconciliation question with a negative result and moves Reading β (multi-quantum / fermionic spinor upgrade) to the live position.
+
 ---
 
 ## Dependency graph
