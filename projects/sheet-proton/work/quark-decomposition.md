@@ -148,6 +148,19 @@ machinery but more rigorous; it would be the natural follow-on
 if Repair A turns out to have its own modulation-distortion
 problem.
 
+## Follow-up: Wannier-function construction
+
+Both Repair A and a fuller "9 wave functions, 3×3 quarks × colors"
+picture were pursued in [quark-wannier-decomposition.md](quark-wannier-decomposition.md).
+Result: the Wannier construction passes structurally (3 localised
+wave packets per track, sitting on the correct arc-sequence), but
+neither the modulated nor the unmodulated Fourier cross-section
+delivers per-arc charges close to ±2/3 / ∓1/3. The values
++2/3 / −1/3 are derived for *piecewise-circular* clover arcs
+(constant κ = ±1/r over 240° / 120° arcs), not for the smooth
+Fourier representation our scripts actually compute. See the
+Wannier file for the three Chapter-5 readings this leaves open.
+
 ## Reproducibility
 
 ```

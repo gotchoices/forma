@@ -95,11 +95,16 @@ settling) on:
    the track, under hypothesis G1 (per metric-charge Ch 11 §6). Yields
    Q_proton = +1, Q_neutron = 0 exactly in the symmetric subspace.
 
-4. **Quark substructure.** The per-arc integral along one track
-   decomposes into three series segments — convex (lobe) arcs at
-   +2/3, concave (saddle) arcs at −1/3 under G1 — yielding the
-   uud series (proton, +1) and udd series (neutron, 0). A quark
-   is one such segment; the constituent-quark mass is m_baryon/3.
+4. **Quark substructure.** The (1/2, 1) track passes through three
+   arc-pieces in series: lobe-saddle-lobe (proton, uud-ordered) or
+   saddle-lobe-saddle (neutron, udd-ordered). A quark is one such
+   arc-piece; the constituent-quark mass is m_baryon/3. Under G1
+   the per-arc charges are +2/3 (lobe, u) and −1/3 (saddle, d) on
+   the piecewise-circular (kissing-circles) idealisation; on the
+   smooth Fourier-series cross-section the per-arc readings are
+   smeared away from these discrete values while the integer
+   baryon charges Q_p = +1, Q_n = 0 are preserved exactly. See
+   Chapter 5 for the explicit position the construction takes.
 
 5. **Color identification.** The three Z₃-related phase tracks of
    a single baryon are its three color states. Color is geometric
@@ -183,12 +188,34 @@ The *quark substructure* of a baryon lives inside the per-arc
 curvature integral along one track. A closed (1/2, 1) track on
 the symmetric modulated-clover passes through the cross-section
 in series — alternating convex (lobe) and concave (saddle)
-arcs. Under G1 each convex arc contributes a +2/3 fractional
-charge unit and each concave arc a −1/3 unit; the series sums
-to +1 for the proton track (uud) and 0 for the neutron track
-(udd). A **quark** is identified with one segment of this
-series; the proton's three quark-segments add to its total
-charge, and similarly for the neutron.
+arcs. The proton track at t₀ = −π/6 passes through lobe-saddle-lobe
+(uud-ordered); the neutron track at t₀ = +π/6 passes through
+saddle-lobe-saddle (udd-ordered). A **quark** is identified with
+one arc-piece in this series; the proton's three quark-segments
+add to its total charge +1 (under G1), and similarly the
+neutron's add to 0.
+
+Per-quark *fractional* charge values depend on the cross-section
+representation. On the idealised piecewise-circular kissing-circles
+clover (constant geodesic curvature κ = ±1/r on each 240° / 120°
+arc), the per-arc reading gives exactly +2/3 (lobe, u) and −1/3
+(saddle, d). On the smooth Fourier-series cross-section actually
+built by `modulated_clover.py`, the per-arc reading is *smeared*
+(~+0.59 per arc for the proton, ~−0.26 per arc for the neutron)
+because the continuous-curvature distribution doesn't concentrate
+the winding at sharp arc boundaries. The integer baryon charges
+Q_p = +1 and Q_n = 0 are exact in both representations — they
+come from the topological (1/2, 1) track integral, which is
+invariant under the piecewise-circular ↔ smooth-Fourier change of
+representation.
+
+Chapter 5 takes this as a *structural prediction* of the framework:
+the construction's per-quark fractional charges are not literally
+the textbook ±2/3 / ∓1/3 — those values are the kissing-circles
+limit. Observables that depend on the discrete fractional values
+(e.g. R-ratio analogs, magnetic-moment ratios, parton distribution
+shapes) would need to be checked against the smooth-substrate
+predictions in future work.
 
 The Z₃ ring-axis screw maps the proton track onto its two
 Z₃-related copies (and similarly for the neutron). These three
@@ -237,8 +264,8 @@ to be closed.
 | 1 | **Foundation** | Inputs from [metric-charge](../metric-charge/) (picture A, the wave-equation framework, the per-arc charge bridge under G1); coordinates and conventions; the central question this project answers ("what specific 2D substrate hosts the u-d hadron generation?"); the framing — one wave-quantum per baryon, with quark substructure organised in series along its characteristic curve. |
 | 2 | **The modulated-clover substrate** | The harmonic N = 3 cross-section family (3 major + 3 minor lobes, six equal pieces). Closure of the surface: allowed twists are multiples of 1/6; the **half-twist** τ = 1/2 is the operative case. Modulation a₁(θ), b₁(θ) restricted to the Z₂ × Z₃-symmetric subspace. The substrate is set up as a *resonator* (the cavity language), not a particle space. |
 | 3 | **Modes and their characteristic curves** | The wave-quantum's characteristic curve — the (1/2, 1) torus knot on the modulated-clover, closing under the half-twist identification. The two distinct curves at t₀ = ∓π/6 — proton and neutron. The Z₂ × Z₃ orbit gives 6 baryon replicas: 3 color phases of the proton and 3 of the neutron. The characteristic curve is where the per-arc charge integral is taken, not where the wave-quantum's amplitude is concentrated (see Ch 5). |
-| 4 | **Charge from per-arc curvature** | The per-arc reading of charge along the characteristic curve, under G1 (inherited). The clean identity Q(t₀) = ½ + M(t₀). Solving the symmetric modulation for M(±π/6) = ±½. Result: Q_proton = +1, Q_neutron = 0 exactly. Convex (lobe) arcs contribute +2/3, concave (saddle) arcs −1/3 to the integral; the **series structure** of these contributions along one track is the input to Chapter 5's quark decomposition. |
-| 5 | **Mass and quark substructure** | The path-length mass m = 2πℏc/L_track on the (1/2, 1) tracks. The per-arc curvature integral along a single track decomposes into **three quark-segments in series**, summing to +1 (uud) for the proton track and 0 (udd) for the neutron. Each constituent-quark mass = m_baryon / 3 ≈ 313 MeV. Color = which of the three Z₃-related phase tracks. Direct LB-localisation computation ([work/lb-mode-localization.md](work/lb-mode-localization.md)) reported as a finding: the wave-quantum is *not* spatially track-localised, but the charge integral does not require it to be. Mass-ratio match m_n/m_p = L_p/L_n at R_major ≈ 36.17. R_major's status as the one undetermined free parameter. |
+| 4 | **Charge from per-arc curvature** | The per-arc reading of charge along the characteristic curve, under G1 (inherited). The clean identity Q(t₀) = ½ + M(t₀). Solving the symmetric modulation for M(±π/6) = ±½. Result: Q_proton = +1, Q_neutron = 0 exactly. The **series structure** of convex (lobe) and concave (saddle) contributions along one track is the input to Chapter 5's quark decomposition. The discrete per-arc values (+2/3 / −1/3) belong to the piecewise-circular idealisation; Chapter 5 reports what the smooth Fourier substrate actually produces. |
+| 5 | **Mass and quark substructure** | The path-length mass m = 2πℏc/L_track on the (1/2, 1) tracks. The closed track passes through **three arc-pieces in series**: lobe-saddle-lobe = uud-ordered (proton) and saddle-lobe-saddle = udd-ordered (neutron). Each arc-piece is one constituent quark; constituent-quark mass = m_baryon / 3 ≈ 313 MeV. Color = which of the three Z₃-related phase tracks. Per-quark fractional charges: ±2/3 / ∓1/3 on the piecewise-circular idealisation; smeared (~+0.59 / −0.26) on the smooth Fourier construction the scripts use — chapter states this as a structural prediction rather than a fit failure (see [work/quark-decomposition.md](work/quark-decomposition.md), [work/quark-wannier-decomposition.md](work/quark-wannier-decomposition.md)). Integer baryon charges are exact in both representations. Direct LB-localisation computation ([work/lb-mode-localization.md](work/lb-mode-localization.md)) reported as a finding: the wave-quantum is *not* spatially track-localised, but the per-arc charge integral does not require it to be. Mass-ratio match m_n/m_p = L_p/L_n at R_major ≈ 36.17. R_major's status as the one undetermined free parameter. |
 | 6 | **Symmetries — chirality, isospin, color, C** | The Z₂ × Z₂ structure on baryon modes: chirality ((m, n) ↔ (m, −n)) and matter/antimatter ((m, n) ↔ (−m, −n)). The Z₃ ring-axis rotation = color. The Z₂ proton/neutron swap = isospin I_3 = ±½. Geometric chirality vs. γ⁵-chirality (deferred to spinor-upgrade). |
 | 7 | **Beyond proton and neutron — frontier** | Extending the construction to the rest of the u-d hadron spectrum: Δ⁺⁺/Δ⁺/Δ⁰/Δ⁻ (spin-3/2 baryons; candidates: higher mode excitations or different track topologies), and the light mesons π/ρ/η (compound qq̄ readings). Exploratory first-draft, iterating with [work/meson-spectrum.md](work/meson-spectrum.md), [work/clover-mass.md](work/clover-mass.md), [work/strong.md](work/strong.md). |
 | 8 | **Observables** | Computed observables from the construction: magnetic moments (from the wave's current distribution), parity (from substrate enantiomers), baryon number (from track-winding count). Comparison with measured values where possible. Where the construction is silent or makes only qualitative predictions, flag clearly. |

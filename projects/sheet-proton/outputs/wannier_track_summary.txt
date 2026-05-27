@@ -1,0 +1,67 @@
+==============================================================================
+wannier_track.py — quark substructure as Wannier functions of
+a 3-mode LB band on the closed (1/2, 1) track.
+==============================================================================
+
+Symmetric Step-7 substrate parameters used:
+  Ac = [ 0.      -0.48765]   As = [0.      0.65694]
+  Bc = [ 0.      -0.00038]   Bs = [0.      0.00032]
+  a2 = 0.32994  b2 = +0.03201
+  R_major = 36.1700
+
+Track lengths (arc-length on the embedded 2-D substrate):
+  L_proton  = 227.6417
+  L_neutron = 227.3283
+  L_p / L_n = 1.0013785   (target m_n/m_p = 1.0013784)
+
+Lowest 1-D LB band on each track (eigenvalues λ = (2π n / L)²):
+  proton  band : [0.0, 0.0007618268264347265, 0.0007618268264347265, 0.003047307305738906, 0.003047307305738906]
+  neutron band : [0.0, 0.0007639285825259077, 0.0007639285825259077, 0.003055714330103631, 0.003055714330103631]
+
+Wannier-function construction: 3 sites at the 3 arc-midpoints
+of each closed track, built from the lowest 3 LB modes
+(constant + lowest cos/sin pair).  The Wannier functions are
+Z₃-symmetric Gaussian-like packets, each peaked at its site,
+with tails extending into adjacent sites.
+
+Per-Wannier per-arc charges: for each Wannier centre we
+compute the *actual* cross-section per-arc winding at that
+(t, θ) by integrating the cross-section tangent rate over
+the arc containing the Wannier centre.  This is the per-quark
+charge under hypothesis G1; the unmodulated (+2/3 / -1/3)
+values are shown alongside for comparison.
+
+PROTON  quark assignment (t₀ = -π/6):
+   k         s_k       t_k       θ_k           arc     q_arc   q_naive
+   0     37.9403    6.2679    1.0166      lobe (u)   +0.5883   +0.6667
+   1    113.8208    1.0281    3.1034    saddle (d)   +0.5876   -0.3333
+   2    189.7014    2.1033    5.2537      lobe (u)   +0.5923   +0.6667
+  ----  sum of q_arc = +1.768196  (target +1)
+
+NEUTRON quark assignment (t₀ = +π/6):
+   k         s_k       t_k       θ_k           arc     q_arc   q_naive
+   0     37.8880    1.0412    1.0352    saddle (d)   -0.2566   -0.3333
+   1    113.6641    2.1038    3.1603      lobe (u)   -0.2591   +0.6667
+   2    189.4402    3.1485    5.2499    saddle (d)   -0.2587   -0.3333
+  ----  sum of q_arc = -0.774374  (target 0)
+
+max |q_arc - q_naive|: proton 0.9209   neutron 0.9257
+
+Same cross-section per-arc winding, but on the *unmodulated*
+backbone (a₁ = b₁ = 0, just a₂ cos 6t + b₂ sin 6t).  This
+isolates the bare Z_6 dihedral cross-section's per-arc charges.
+
+PROTON  (unmodulated cross-section):
+   0  t= 6.2679      lobe (u)  q_arc =  +0.1667  naive =  +0.6667
+   1  t= 1.0281    saddle (d)  q_arc =  +0.1667  naive =  -0.3333
+   2  t= 2.1033      lobe (u)  q_arc =  +0.1667  naive =  +0.6667
+  ----  sum of q_arc (unmod) = +0.500000
+
+NEUTRON (unmodulated cross-section):
+   0  t= 1.0412    saddle (d)  q_arc =  +0.1667  naive =  -0.3333
+   1  t= 2.1038      lobe (u)  q_arc =  +0.1667  naive =  +0.6667
+   2  t= 3.1485    saddle (d)  q_arc =  +0.1667  naive =  -0.3333
+  ----  sum of q_arc (unmod) = +0.500000
+
+RESULT: per-arc cross-section windings do NOT sum to target charges.
+Check the arc-boundary definitions or the Wannier centre placement.

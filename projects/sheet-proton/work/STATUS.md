@@ -128,7 +128,10 @@ One-line per file, plus only todos we are tracking *here*. Detailed status, depe
 - Status: complete.  Direct computation (`scripts/track_localization.py`) showing that no LB eigenmode and no low-energy superposition track-localises at the proton's energy scale on this surface.  Reframed under the single-quantum-with-along-track-substructure reading: the LB amplitude doesn't need to be track-localised because the per-arc charge integral is Berry-phase-like, not amplitude-weighted.
 
 ### [quark-decomposition.md](quark-decomposition.md) — 3-quarks-in-series test on the per-arc track integral
-- Status: first pass complete.  The simplest reading (equal-θ segments of the existing track-charge integral yield per-quark +2/3 / −1/3 charges) does *not* work — Z₃ screw symmetry of the substrate forces all 3 segments to integrate identically.  Two refined repairs identified (cross-section per-arc integral vs Z₃-irrep decomposition); neither tested yet.  **Action item:** test Repair A before drafting Chapter 5.
+- Status: first pass complete.  The simplest reading (equal-θ segments of the existing track-charge integral yield per-quark +2/3 / −1/3 charges) does *not* work — Z₃ screw symmetry of the substrate forces all 3 segments to integrate identically.  Followed up by Wannier-function construction in [quark-wannier-decomposition.md](quark-wannier-decomposition.md).
+
+### [quark-wannier-decomposition.md](quark-wannier-decomposition.md) — Wannier-function formalisation of "3 superimposed wave packets per track"
+- Status: **exploratory record** (demoted 2026-05-26).  Wannier construction agreed with the simpler "3 arc-pieces in series" picture without adding new predictive content; chapter arc reverts to the simpler reading.  The durable finding — **piecewise-circular vs smooth-Fourier distinction** — is the basis for Chapter 5's stated position on per-quark fractional charges (smeared on smooth substrate, exact ±2/3 / ∓1/3 only on the kissing-circles idealisation).  Wannier machinery remains available for future chapters that need quark-quark interference (mesons, magnetic moments, form factors).
 
 ---
 

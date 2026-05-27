@@ -392,13 +392,21 @@ mass-ratio match. The construction is then complete.
 ## Quark substructure and color
 
 The construction's per-arc curvature integral along one (1/2, 1)
-track is the **series** of fractional charge contributions from
-the cross-section pieces the track threads — convex (lobe) arcs
-at +2/3 and concave (saddle) arcs at −1/3 under G1. The series
-sums to +1 on the proton track and 0 on the neutron track. A
-**quark** is identified with one segment of this series; the
-proton track's three quark-segments form a uud series, the
-neutron's a udd series.
+track is the **series** of contributions from the cross-section
+pieces the track threads. The proton track at t₀ = −π/6 passes
+through lobe-saddle-lobe (uud-ordered); the neutron track at
+t₀ = +π/6 through saddle-lobe-saddle (udd-ordered). A **quark**
+is identified with one arc-piece in this series; the three
+quark-segments add to +1 (proton) or 0 (neutron). On the
+idealised piecewise-circular kissing-circles clover, the per-arc
+values are exactly +2/3 (lobe) and −1/3 (saddle); on the smooth
+Fourier-series substrate `modulated_clover.py` actually computes,
+the per-arc values are smeared (~+0.59 per arc for the proton,
+~−0.26 per arc for the neutron) while the integer baryon
+charges Q_p = +1, Q_n = 0 are preserved exactly. See
+[quark-decomposition.md](quark-decomposition.md) and
+[quark-wannier-decomposition.md](quark-wannier-decomposition.md)
+for the explicit computations and Chapter 5's position.
 
 The substrate's Z₃ ring screw maps the proton track onto its two
 Z₃-related copies (and similarly for the neutron). These three
