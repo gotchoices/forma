@@ -40,11 +40,15 @@ Inherited from [metric-charge §Coordinates and notation](../metric-charge/READM
 | **σ_uw** | Shear (off-diagonal metric entry coupling u and w) | Free parameter of the sheet |
 | **(m, n)** | Winding pair of a knot on the sheet | Integer pair |
 
-Additional notation specific to the proton sheet:
-
-- **R64 Point A:** ε = 0.073, σ_uw = 0.194 (fits deuteron + p/n mass ratio)
-- **R64 Point B:** ε = 0.2052, σ_uw = 0.025 (fits Ca→Sn nuclear binding curve)
-- The two points are mutually exclusive; resolution is one of the project's central open questions.
+The (ε, σ_uw) parameterisation is the proton-sheet character at the
+metric-charge / metric-binding level; the modulated-clover
+construction this project develops works in a different
+parameterisation (cross-section harmonic content + R_major +
+modulation amplitudes; see [work/derived-clover.md](work/derived-clover.md)).
+Earlier proton-sheet (ε, σ_uw) parameter fits from R-studies
+(R64 Point A, R64 Point B) are *historical precedents* whose
+relationship to the modulated-clover is not currently load-bearing
+for the arc; see §What we don't predict for the open reconciliation.
 
 ## Ground rules
 
@@ -120,7 +124,10 @@ settling) on:
    Identification with γ⁵-chirality requires a spinor upgrade and is
    deferred.
 
-### Open questions for the formal derivation
+### Open questions inside the construction's scope
+
+These are gaps the arc *can* close with further work on the
+modulated-clover, the per-arc integral, or the LB spectrum.
 
 1. **Closed-form charge integral.** Push M(t₀) = Q(t₀) − ½ to an
    analytical formula in (A, B, φ, a₂, b₂) via Weierstrass
@@ -132,32 +139,72 @@ settling) on:
    lightest stable baryon)? Without that, m_n/m_p is calibration, not
    prediction.
 
-3. **Beyond p and n.** Extending the construction to Δ⁺⁺, Δ⁺, Δ⁰,
-   Δ⁻ (spin-3/2 baryons) and to the light mesons (π, η, ρ, ω). Mode
-   tower / higher harmonics? Compound modes? Work files cover framing
-   but not detailed derivation. See Chapter 7 below.
+### What we don't predict
 
-4. **Multi-sheet hadrons** (Λ, Σ, Ξ, Ω with strange quarks): require
-   a coupling between sheets of different generations. Deferred to
-   metric-binding; the proton-sheet construction must remain
-   compatible with whatever multi-sheet mechanism is adopted there.
+Topics outside the construction's reach at the scalar-field level.
+Each is a flagged limitation rather than a derivable consequence.
 
-5. **Spinor upgrade.** Currently the framework carries a scalar
-   field on the substrate. A spinor upgrade is needed to identify
-   geometric chirality with Dirac γ⁵, and may also be needed for
-   a future generalisation of the baryon mode beyond the
-   single-quantum reading. Forward-looking.
+- **Absolute baryon mass scale.** R_major is a free parameter; the
+  construction matches m_n/m_p but not m_p itself.
+- **Spin and magnetic moments.** A scalar field on the substrate
+  has no spin structure; spin-½ and the proton's magnetic moment
+  require a *spinor upgrade* (promote the substrate field to a
+  spin-½ Dirac field with the substrate's spin structure). Standard
+  technique, but a real piece of machinery, deferred.
+- **Δ baryons** (spin-3/2 u-d baryons). Their mass split from the
+  nucleon (Δ−N ≈ 293 MeV) is a hyperfine-structure prediction that
+  also needs the spinor upgrade.
+- **Light mesons** (π, η, ρ, ω). These are qq̄ compound modes that
+  require a *multi-mode* construction on the same substrate; the
+  framework has not yet built the compound-mode machinery.
+- **Multi-sheet hadrons** (Λ, Σ, Ξ, Ω). These require a coupling
+  mechanism between sheets of different quark generations; the
+  mechanism lives in [metric-binding](../metric-binding/) and/or
+  [ma-domain](../ma-domain/), not on this sheet.
+- **Standard-model intrinsic parity P** as distinct from geometric
+  chirality. The scalar-field framework collapses these into one
+  Z₂; distinguishing them requires the spinor upgrade.
+- **The strong force** as a derived interaction with Yukawa shape and
+  ≈ 1.4 fm range. Currently a target for the construction (see
+  [work/strong.md](work/strong.md)) but not derived.
+- **Nuclear binding curves** (R64 Point A vs Point B). The deuteron
+  / mid-mass nuclei binding fits in [studies/R64-nuclear-harmonic-stack](../../studies/R64-nuclear-harmonic-stack)
+  use different (ε, σ) parameters than the modulated-clover
+  construction; reconciling those parameter readings with the
+  modulated-clover is open work.
+
+### Handoff to ma-domain
+
+[ma-domain](../ma-domain/) is the multi-generation reframe in which
+this sheet (one u-d generation) becomes one cross-term in an N-dim
+compact domain. Sheet-proton has settled on the **half-twist
+τ = 1/2** modulated-clover as the operative geometry; ma-domain's
+multi-generation architecture should adapt to that rather than to
+the older τ = 1/3 clover-quarks precedent (`work/clover-quarks.md`,
+which is superseded by `work/modulated-clover.md` and
+`work/derived-clover.md`). The proton-sheet construction's job is
+to *be one cross-term* cleanly; the multi-cross-term composition
+is ma-domain's problem.
 
 ## Background reading
 
-- [metric-binding/](../metric-binding/) — general multi-knot binding framework, sibling project; sheet-proton is the specific application to the proton sheet
-- [metric-charge/](../metric-charge/) — single-knot framework on a 2D sheet; closure conditions and sheet character
-- [metric-mass/](../metric-mass/) — single-compact-dimension precursor; standing-wave reading
-- [grid-duality/](../grid-duality/) — substrate-level framework; α-coupling
-- [studies/R64-nuclear-harmonic-stack/](../../studies/R64-nuclear-harmonic-stack/) — current proton-sheet parameter fits (Point A, Point B); harmonic-stack reading
-- [studies/R63-proton-tuning/](../../studies/R63-proton-tuning/) — proton/neutron pair tuning, complementary nodes
-- [studies/R53-three-generations/](../../studies/R53-three-generations/) — three-generation structure; quark flavor identification
-- [studies/R54-compound-modes/](../../studies/R54-compound-modes/) — cross-sheet compound modes (model-E alternative)
+**Foundational projects.** Inherited results used by the arc:
+
+- [metric-charge/](../metric-charge/) — single-knot framework on a 2D sheet; closure conditions, sheet character, the G1 per-arc curvature → charge bridge (Ch 11 §6).
+- [metric-mass/](../metric-mass/) — single-compact-dimension precursor; standing-wave reading.
+- [metric-binding/](../metric-binding/) — general multi-knot binding framework, sibling project; sheet-proton is the specific application to the proton sheet.
+- [grid-duality/](../grid-duality/) — substrate-level framework; α-coupling.
+- [ma-domain/](../ma-domain/) — multi-generation reframe; downstream of this project.
+
+**Historical precedents.** Earlier readings of the proton sheet that
+predate the modulated-clover construction. These are useful orientation
+but are *not* load-bearing for the chapter arc, and the arc does not
+promise to reconcile their parameter choices with the modulated-clover.
+
+- [studies/R64-nuclear-harmonic-stack/](../../studies/R64-nuclear-harmonic-stack/) — proton-sheet (ε, σ) Point A / Point B fits; harmonic-stack reading.
+- [studies/R63-proton-tuning/](../../studies/R63-proton-tuning/) — proton/neutron pair tuning, complementary nodes.
+- [studies/R53-three-generations/](../../studies/R53-three-generations/) — three-generation structure; quark flavor identification.
+- [studies/R54-compound-modes/](../../studies/R54-compound-modes/) — cross-sheet compound modes (model-E alternative).
 
 ## Work files
 
@@ -165,11 +212,12 @@ See [work/](work/) for active explorations. [work/STATUS.md](work/STATUS.md) tra
 
 ## Chapter arc
 
-The arc proceeds from inputs → substrate → modes → charge → mass →
-symmetries → spectrum extension → observables → handoff. Chapters
-1–6 are the core derivation; chapters 7–9 are exploratory and will
-be sketchier on first draft, iterating with the work files. Chapter
-10 is the closing summary, parallel to metric-charge Ch 10.
+The arc proceeds from inputs → substrate → modes → charge →
+mass-and-quarks → symmetries → limits-and-handoff. Seven chapters,
+each backed by settled work files. Topics that the construction
+doesn't yet derive (Δ baryons, mesons, magnetic moments, absolute
+mass scale, multi-sheet hadrons) are declared as deferred in the
+final chapter, not promised as content.
 
 ### Framing — one wave-quantum per baryon, with quark substructure along the track
 
@@ -266,11 +314,8 @@ to be closed.
 | 3 | **Modes and their characteristic curves** | The wave-quantum's characteristic curve — the (1/2, 1) torus knot on the modulated-clover, closing under the half-twist identification. The two distinct curves at t₀ = ∓π/6 — proton and neutron. The Z₂ × Z₃ orbit gives 6 baryon replicas: 3 color phases of the proton and 3 of the neutron. The characteristic curve is where the per-arc charge integral is taken, not where the wave-quantum's amplitude is concentrated (see Ch 5). |
 | 4 | **Charge from per-arc curvature** | The per-arc reading of charge along the characteristic curve, under G1 (inherited). The clean identity Q(t₀) = ½ + M(t₀). Solving the symmetric modulation for M(±π/6) = ±½. Result: Q_proton = +1, Q_neutron = 0 exactly. The **series structure** of convex (lobe) and concave (saddle) contributions along one track is the input to Chapter 5's quark decomposition. The discrete per-arc values (+2/3 / −1/3) belong to the piecewise-circular idealisation; Chapter 5 reports what the smooth Fourier substrate actually produces. |
 | 5 | **Mass and quark substructure** | The path-length mass m = 2πℏc/L_track on the (1/2, 1) tracks. The closed track passes through **three arc-pieces in series**: lobe-saddle-lobe = uud-ordered (proton) and saddle-lobe-saddle = udd-ordered (neutron). Each arc-piece is one constituent quark; constituent-quark mass = m_baryon / 3 ≈ 313 MeV. Color = which of the three Z₃-related phase tracks. Per-quark fractional charges: ±2/3 / ∓1/3 on the piecewise-circular idealisation; smeared (~+0.59 / −0.26) on the smooth Fourier construction the scripts use — chapter states this as a structural prediction rather than a fit failure (see [work/quark-decomposition.md](work/quark-decomposition.md), [work/quark-wannier-decomposition.md](work/quark-wannier-decomposition.md)). Integer baryon charges are exact in both representations. Direct LB-localisation computation ([work/lb-mode-localization.md](work/lb-mode-localization.md)) reported as a finding: the wave-quantum is *not* spatially track-localised, but the per-arc charge integral does not require it to be. Mass-ratio match m_n/m_p = L_p/L_n at R_major ≈ 36.17. R_major's status as the one undetermined free parameter. |
-| 6 | **Symmetries — chirality, isospin, color, C** | The Z₂ × Z₂ structure on baryon modes: chirality ((m, n) ↔ (m, −n)) and matter/antimatter ((m, n) ↔ (−m, −n)). The Z₃ ring-axis rotation = color. The Z₂ proton/neutron swap = isospin I_3 = ±½. Geometric chirality vs. γ⁵-chirality (deferred to spinor-upgrade). |
-| 7 | **Beyond proton and neutron — frontier** | Extending the construction to the rest of the u-d hadron spectrum: Δ⁺⁺/Δ⁺/Δ⁰/Δ⁻ (spin-3/2 baryons; candidates: higher mode excitations or different track topologies), and the light mesons π/ρ/η (compound qq̄ readings). Exploratory first-draft, iterating with [work/meson-spectrum.md](work/meson-spectrum.md), [work/clover-mass.md](work/clover-mass.md), [work/strong.md](work/strong.md). |
-| 8 | **Observables** | Computed observables from the construction: magnetic moments (from the wave's current distribution), parity (from substrate enantiomers), baryon number (from track-winding count). Comparison with measured values where possible. Where the construction is silent or makes only qualitative predictions, flag clearly. |
-| 9 | **Limits and handoff** | What's *not* on this sheet: heavier-quark generations (deferred to other sheets / [metric-binding](../metric-binding/)); leptons (deferred to separate substrates). Multi-sheet hadrons (Λ, Σ, Ξ, Ω) require a coupling mechanism that lives in metric-binding; this chapter states the interface and the constraints the proton-sheet construction places on whatever multi-sheet mechanism is eventually adopted. |
-| 10 | **Closing summary** | What the project established under named hypotheses; what remains open; how the construction's claims map onto the framework's broader structure. Parallel to [metric-charge Ch 10](../metric-charge/10-closing-summary.md). |
+| 6 | **Symmetries — chirality, isospin, color, C** | The Z₂ × Z₂ structure on baryon modes: chirality ((m, n) ↔ (m, −n)) and matter/antimatter ((m, n) ↔ (−m, −n)). The Z₃ ring-axis rotation = color. The Z₂ proton/neutron swap = isospin I_3 = ±½. Geometric chirality (the framework's only handedness at the scalar-field level) vs γ⁵-chirality (requires the deferred spinor upgrade). Baryon number = track winding count. |
+| 7 | **Limits, handoff, and closing summary** | What the construction *establishes* under named hypotheses (charge, mass ratio, quark substructure, color, chirality, baryon number). What it *does not predict* (see the §What we don't predict section above). The single-generation scope: heavier-quark generations live elsewhere; multi-sheet hadrons (Λ, Σ, Ξ, Ω) need a coupling mechanism in [metric-binding](../metric-binding/) and/or [ma-domain](../ma-domain/). The handoff to ma-domain: τ = 1/2 modulated-clover is sheet-proton's settled geometry; ma-domain's multi-generation architecture is free to adapt to it rather than the τ = 1/3 clover-quarks precedent. Parallel in role to [metric-charge Ch 10](../metric-charge/10-closing-summary.md). |
 
 Possible appendix (if useful):
 
