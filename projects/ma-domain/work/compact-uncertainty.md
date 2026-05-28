@@ -1,11 +1,20 @@
-# Quantum Measurement as Phase-Matching Between Waves on Compact Dimensions
-## A Geometric Derivation of Collapse, Born's Rule, and the Role of Zero-Point Energy
+# Quantum Measurement as Wave Interaction on Compact Dimensions
+## A geometric program for collapse, Born's rule, and the role of zero-point energy
+
+**Status:** Foundational / interpretive companion to the ma-domain particle-spectrum work. The geometric *foundations* here — quantization from single-valuedness, wave energy from F = ma, zero-point energy as a geometric residue — are sound and connect directly to the rest of the project. The *measurement theory* (collapse, Born's rule, Bell-evasion) is a research program with several open formal problems, not a completed derivation; §3–§5 should be read as candidate mechanisms, and §7 lists what remains unproven. This file was originally drafted in isolation from forma; this version reconciles it with the project's 6-dimensional Ma structure, its closure-mode machinery, and the companion [zpe_derivation.md](zpe_derivation.md) and [threshold-dynamics.md](threshold-dynamics.md).
+
+**Cross-references:**
+- [zpe_derivation.md](zpe_derivation.md) — the clean derivation of ½ℏω₁ as the sub-fundamental band's average energy; supersedes this file's earlier ZPE calculation (§1.3)
+- [threshold-dynamics.md](threshold-dynamics.md) — the threshold-loading mechanism for decay/production; the wave-interaction picture of measurement here is its measurement-side companion (preliminary)
+- [architecture.md §3.3.1](architecture.md) — the closure condition T(1, n); the project's form of "quantization from single-valuedness"
+- [../../metric-charge/04-the-closure-condition.md](../../metric-charge/04-the-closure-condition.md) — charge as a topological cross-section winding number
+- [cand-QY-ED.md](cand-QY-ED.md) — the candidate particle content (6 Ma dims, particles as 2D sheet modes) this file's "compact dimension" specializes
 
 ---
 
 ## Abstract
 
-We propose that quantum particles are waves on compact periodic dimensions, and that quantum measurement is a phase-matching event between two such waves — the particle and the observer. We show that this picture, grounded in classical wave mechanics and the geometry of compact surfaces, provides physical mechanisms for: (1) wavefunction collapse as the consumption of a single countable winding mode; (2) Born's rule as the statistics of phase-matching weighted by local wave intensity; (3) the uniqueness of each measurement event; (4) frame-dependent outcomes as a consequence of relative phase geometry; and (5) genuine quantum randomness as a consequence of zero-point energy continuously randomizing the phases of all waves. We argue this picture is consistent with all known experimental evidence, evades Bell's theorem without invoking local hidden variables, and provides geometric explanations for features of quantum mechanics that are elsewhere postulated without derivation.
+This document develops the proposal that quantum particles are waves on compact periodic dimensions, and that quantum measurement is an interaction event between two such waves — the particle and the observer. Grounded in classical wave mechanics and the geometry of compact surfaces, the picture offers candidate physical mechanisms for: (1) wavefunction collapse as the consumption of a single countable closure mode; (2) Born's rule as the statistics of wave-interaction weighted by local intensity; (3) the uniqueness of each measurement event; (4) frame-dependent outcomes as a consequence of relative phase geometry; and (5) the role of zero-point energy in continuously randomizing wave phases. The foundational derivations (quantization, wave energy, ZPE) are firm; the measurement-theory mechanisms are proposed, not proven, and the Bell-evasion route in particular requires the nonlocal-wave development of §5 and is not yet demonstrated. The aim here is to set up the program honestly and mark what is established versus what is open.
 
 ---
 
@@ -13,248 +22,180 @@ We propose that quantum particles are waves on compact periodic dimensions, and 
 
 ### 1.1 Schrödinger's Original Interpretation, Rescued
 
-Schrödinger's original (1926) interpretation of the wavefunction was realist: ψ is a physical wave, not a probability amplitude. This interpretation was abandoned primarily because: (a) wave packets spread and disperse, and (b) the many-body wavefunction lives in configuration space, not ordinary 3D space.
+Schrödinger's original (1926) interpretation of the wavefunction was realist: ψ is a physical wave, not a probability amplitude. This interpretation was abandoned primarily because (a) wave packets spread and disperse, and (b) the many-body wavefunction lives in configuration space, not ordinary 3D space.
 
-We propose that both objections are resolved by extending Schrödinger's picture to include one compact periodic dimension — a closed loop of circumference L at every point in space. The wavefunction is then a physical wave on this richer geometry, and its apparent complexity and phase structure are geometric consequences of the compact dimension rather than abstract mathematical devices.
+Both objections are addressed by extending Schrödinger's picture to include compact periodic dimensions — closed loops at every point in space. The wavefunction is then a physical wave on this richer geometry, and its apparent complexity and phase structure are geometric consequences of the compact dimensions rather than abstract mathematical devices. This is exactly the ma-domain founding posture — "particles are confined light," waves trapped on material geometry — applied to the measurement problem.
 
-Specifically, what appears in ordinary 3D space as a complex-valued wavefunction:
+In the minimal case of one compact coordinate, what appears in ordinary 3D space as a complex-valued wavefunction ψ(x,t) = A(x,t)·e^(iφ(x,t)) is the projection of a higher-dimensional wave:
 
-```
-ψ(x,t) = A(x,t) · e^(iφ(x,t))
-```
+<!-- Ψ(x, y, t) = A(x,t) · e^(iny/R) -->
+$$
+\Psi(x, y, t) \;=\; A(x,t)\,\cdot\, e^{i n y / R}
+$$
 
-is the projection of a higher-dimensional wave:
-
-```
-Ψ(x, y, t) = A(x,t) · e^(iny/R)
-```
-
-where y is the compact coordinate with period 2πR, and n is the winding number. The imaginary unit i is not a mathematical convenience — it tracks phase rotation in the compact dimension. Time evolution in ordinary space corresponds to phase progression around the compact loop.
+where y is the compact coordinate with period 2πR and n is the winding number. The imaginary unit i tracks phase rotation in the compact dimension; time evolution in ordinary space corresponds to phase progression around the compact loop. (§1.4 reconciles this single-coordinate picture with the project's full 6-dimensional Ma structure, where particles are 2D sheet modes rather than single-loop windings.)
 
 ### 1.2 Quantization from Single-Valuedness
 
-A wave on the compact dimension of circumference L must satisfy the periodic boundary condition:
+A wave on a compact dimension of circumference L must satisfy the periodic boundary condition ψ(x + L) = ψ(x) — the requirement of **single-valuedness**, that the wave be a well-defined function on the closed geometry. For a wave of the form e^(ikx), single-valuedness requires e^(ikL) = 1, hence
 
-```
-ψ(x + L) = ψ(x)
-```
+  kL = 2πn,   n = 0, ±1, ±2, ...
 
-This is the requirement of **single-valuedness** — that the wave be a well-defined function on the closed geometry. For a wave of the form e^(ikx), single-valuedness requires:
+The allowed wavenumbers are integer multiples of 2π/L. This is quantization — emerging not from any postulate but from the geometric requirement that the wave close consistently on the compact surface. Quantized momenta p = ℏk and quantized energies follow immediately.
 
-```
-e^(ikL) = 1  →  kL = 2πn,  n = 0, ±1, ±2, ...
-```
-
-The allowed wavenumbers are integer multiples of 2π/L. This is quantization — emerging not from any postulate but from the geometric requirement that the wave close consistently on the compact surface. Quantized momenta p = ħk and quantized energies follow immediately.
-
-**The winding number n is an integer by topological necessity.** This makes the set of allowed states countable — drawn from the integers, not the reals. The photon, as the minimum countable unit of field energy, is a geometric consequence of this topology.
+**The winding number n is an integer by topological necessity**, which makes the set of allowed states countable. This is the same mechanism that, in the full framework, produces the discrete closure modes T(1, n): the project's [closure condition](architecture.md) (developed in [metric-charge ch. 4](../../metric-charge/04-the-closure-condition.md)) is single-valuedness applied to the 2D sheet, selecting integer windings on both the tube and ring axes. The "minimum countable unit of field energy" here is the closure-mode quantum; in the project it is identified with the particle.
 
 ### 1.3 Zero-Point Energy from Sub-Fundamental Probing
 
-The compact dimension supports stable waves only at frequencies ωₙ = nω₁, where ω₁ = 2πv/L is the fundamental. Waves at frequencies below ω₁ cannot close on the compact surface and therefore cannot persist as stable modes.
+The compact dimension supports stable waves only at frequencies ω_n = n·ω₁, where ω₁ = 2πv/L is the fundamental. Waves below ω₁ cannot close on the compact surface and cannot persist as stable modes — they exist only as transient fluctuations that continuously probe the dimension without achieving resonance.
 
-However, sub-fundamental waves continuously probe the compact dimension. Their energy is carried in the spatial derivative of the wave (established from F = ma in Section 2), and integrating this derivative energy over all sub-fundamental frequencies yields a nonzero residue.
+The energy carried by these sub-fundamental fluctuations does not vanish. Integrated over the sub-fundamental band with the project's two postulates (de Broglie per-cycle action and uniform spectral density), the average energy of a typical sub-fundamental fluctuation is exactly
 
-With the correct integration limits (accounting for the fraction of each sub-fundamental cycle that fits on L), the energy of a partial wave at frequency ω is:
+  ⟨E⟩ = ½ℏω₁
 
-```
-E(ω) = A(ω)²ωv · [πω²/ω₁² + sin(4πω²/ω₁²)/4]
-```
+This is derived cleanly in the companion [zpe_derivation.md](zpe_derivation.md), where the ½ emerges as the geometric mean of the linear relation E(ω) = ℏω over the uniformly-sampled band [0, ω₁]. That derivation **supersedes an earlier calculation in this file** which integrated the spatial-derivative energy of clipped partial waves over the cavity and obtained ¼ E_fundamental; that approach conflated "energy per cycle of a wave" with "energy of a wave clipped to the cavity" (two different quantities) and is withdrawn. The clean result is ½ℏω₁, and the earlier ¼-vs-½ tension is resolved — see [zpe_derivation.md §7](zpe_derivation.md).
 
-Integrating from 0 to ω₁, the oscillatory term vanishes exactly (by the symmetry of sin over a complete period), and the smooth term yields:
+**Zero-point energy, in this picture, is the average energy of the unbiased spectrum of sub-fundamental fluctuations continuously probing the compact dimension — the geometric cost of the compact topology itself.**
 
-```
-E_total = ¼ · E_fundamental
-```
+This ZPE is not static. Sub-fundamental probing is continuous and stochastic — fluctuations of random frequency and random phase constantly explore the compact dimension without achieving resonance. This produces **continuous random phase perturbations** on every resident wave. The consequences are developed in §4.
 
-This is a **geometric fraction** — exact, derived from the topology of the compact dimension, with no free parameters. The relationship to ½ħω₁ requires identifying E_fundamental = ħω₁ (the Planck-Einstein relation), which supplies the scale. The geometry supplies the fraction.
+### 1.4 Relationship to the Full Ma Framework
 
-**Zero-point energy is the irreducible aggregate derivative energy of all sub-fundamental frequencies probing the compact dimension — the geometric cost of the compact topology itself.**
+The single-compact-dimension picture used through this file is the **minimal pedagogical case**. In the full ma-domain framework, the compact sector is **six-dimensional** (dims m1…m6, plus the sub-Planck aleph mediator; see [architecture.md §1](architecture.md)), and a particle is not a winding on a single loop but a **2D standing-wave mode on a dim-pair** Ma(i, j) — a "sheet." The closure-satisfying modes are labelled T(m_t, m_r) with integer windings on the pair's tube and ring axes.
 
-Critically, this ZPE is not static. Sub-fundamental probing is continuous and stochastic — waves of random frequency and random amplitude constantly explore the compact dimension without achieving resonance. This produces **continuous random phase perturbations** on every wave living on the compact dimension. The consequences of this are developed in Section 4.
+The arguments of this file generalize from the single loop to the sheet without structural change:
+
+- **Single-valuedness → closure.** The integer-winding condition of §1.2 becomes the two-axis closure condition T(1, n) on the sheet.
+- **The countable winding mode → the closure mode.** The "winding mode" consumed at measurement (§3.4) is, in the full framework, one quantum of a closure-satisfying sheet mode.
+- **ZPE → per-sheet sub-fundamental band.** Each sheet has its own fundamental and its own sub-fundamental band; the ½ℏω₁ baseline applies per sheet.
+- **The compact dimension's "y" coordinate → the sheet's internal phase.** The phase that ZPE randomizes (§4) is the sheet-mode's internal phase.
+
+Where this file says "compact dimension," read "a dim-pair sheet in the 6-dimensional Ma domain" for the full framework. The single-loop language is retained for clarity of the measurement arguments; nothing in §3–§5 depends on the sector being one-dimensional.
 
 ---
 
 ## 2. Wave Energy from First Principles
 
-Before proceeding, we establish the energy of a wave from F = ma, as this underpins all energy arguments in what follows.
+The energy of a wave follows from F = ma, underpinning the energy arguments below. (This is the same Step 1–2 development as [zpe_derivation.md §1](zpe_derivation.md); reproduced here for self-containment.)
 
 ### 2.1 The Wave Equation from Newton's Second Law
 
-Consider a continuous elastic medium divided into segments of length Δx and mass Δm = μΔx. Each segment is displaced by ψ(x,t). The net restoring force from tension T on each segment is:
+Consider a continuous elastic medium divided into segments of length Δx and mass μΔx, each displaced by ψ(x,t). The net transverse force from tension T is the difference in the tension's vertical component at the segment's two ends:
 
-```
-F = T · ∂ψ/∂x|_{x+Δx}  −  T · ∂ψ/∂x|_{x}
-```
+<!-- F = T·(∂ψ/∂x)|_{x+Δx} − T·(∂ψ/∂x)|_x = T·(∂²ψ/∂x²)·Δx -->
+$$
+F \;=\; T\!\left.\frac{\partial \psi}{\partial x}\right|_{x+\Delta x} - T\!\left.\frac{\partial \psi}{\partial x}\right|_{x} \;=\; T\,\frac{\partial^2 \psi}{\partial x^2}\,\Delta x
+$$
 
-In the limit Δx → 0, applying F = ma (a = ∂²ψ/∂t²):
+Applying F = ma with a = ∂²ψ/∂t² and dividing by Δx, with v² = T/μ:
 
-```
-μ · ∂²ψ/∂t²  =  T · ∂²ψ/∂x²
-```
-
-Defining v² = T/μ:
-
-```
-∂²ψ/∂t²  =  v² · ∂²ψ/∂x²
-```
+  ∂²ψ/∂t² = v²·∂²ψ/∂x²
 
 This is the wave equation, derived directly from Newton's second law. No quantum mechanics is used.
 
 ### 2.2 Energy is Stored in the Spatial Derivative
 
-Multiplying the wave equation by ∂ψ/∂t and integrating by parts over the compact dimension (boundary terms vanish by periodicity):
+Multiplying the wave equation by ∂ψ/∂t and integrating by parts over the compact dimension (boundary terms vanish by periodicity) gives the conserved energy density
 
-```
-e(x,t)  =  ½(∂ψ/∂t)²  +  ½v²(∂ψ/∂x)²
-```
+  e(x,t) = ½(∂ψ/∂t)² + ½v²(∂ψ/∂x)²
 
-The two terms are kinetic and potential energy densities respectively. For a propagating wave they are equal (virial theorem), so:
-
-```
-e(x,t)  =  v²(∂ψ/∂x)²
-```
-
-**Wave energy density is proportional to the square of the spatial slope.** This is not an assumption — it is a direct consequence of F = ma applied to a continuous medium. Higher frequency waves have steeper slopes and therefore more energy per unit length at fixed amplitude.
+the kinetic and potential densities respectively. Time-averaged over a cycle the two are equal (the virial relation for waves), so the time-averaged energy density is ⟨e⟩ = ⟨v²(∂ψ/∂x)²⟩. (The equality is on time-average, not pointwise: for a standing wave the kinetic and potential densities oscillate out of phase.) Higher-frequency waves have steeper slopes and therefore more time-averaged energy per unit length at fixed amplitude.
 
 ---
 
-## 3. The Measurement Theory: Phase-Matching Between Two Waves
+## 3. The Measurement Picture: Interaction Between Two Waves
+
+This section proposes that measurement is a physical interaction between two waves rather than a primitive "collapse." The mechanisms are candidate proposals; §3.2 and §3.4 flag the points where the formalism is not yet settled.
 
 ### 3.1 Setup
 
-Let the particle be a wave on a compact dimension:
-
-```
-ψ_p(x,t)  =  A_p(x,t) · e^(iφ_p(x,t))
-```
-
-Let the observer be a wave on a compact dimension:
-
-```
-ψ_o(x,t)  =  A_o(x,t) · e^(iφ_o(x,t))
-```
-
-Both are physical waves. Both carry energy in their spatial derivatives. Both are continuously perturbed by ZPE phase noise.
+Let the particle be a wave on a compact dimension, ψ_p = A_p·e^(iφ_p), and the observer be a wave on a compact dimension, ψ_o = A_o·e^(iφ_o). Both are physical waves; both carry energy in their spatial derivatives; both are continuously perturbed by ZPE phase noise (§4).
 
 ### 3.2 Interaction as Wave Overlap
 
-In quantum field theory, particle interactions are already computed from wavefunction overlaps. The interaction amplitude at point x is:
+Particle interactions in this picture are computed from wave overlaps, as in quantum field theory. **A modeling choice must be made explicit here**, and it is not yet settled which form is correct:
 
-```
-M(x)  =  ψ_p(x) · ψ_o(x)  =  A_p(x)A_o(x) · e^(i(φ_p(x) + φ_o(x)))
-```
+- **Product form:** M(x) = ψ_p(x)·ψ_o(x), with combined phase φ_p + φ_o. Maximized where φ_p + φ_o = 2πn.
+- **Overlap form:** M(x) = ψ_o*(x)·ψ_p(x), with combined phase φ_p − φ_o (the standard QM inner-product integrand). Maximized where φ_p = φ_o.
 
-The amplitude of this interaction is maximized where the phases satisfy:
+The original draft used the product form without justification. The standard quantum-mechanical overlap is the second (conjugated) form, and detection probabilities go as |⟨ψ_o|ψ_p⟩|². Which form the geometry actually selects — and whether the distinction affects the downstream measurement statistics — is an **open question** (§7.6). The phase-matching language below is written for the product form but should be re-derived once this choice is settled.
 
-```
-φ_p(x) + φ_o(x)  =  2πn
-```
+With that caveat, the **phase-matching condition** is the condition under which the two waves constructively reinforce at point x. Away from it, the interaction integrand oscillates and cancels by single-valuedness. The observed position of the particle is proposed to be the point x where phase-matching is satisfied between the particle wave and the observer wave.
 
-This is the **phase-matching condition**. It is the condition under which the two waves constructively reinforce each other at point x. At all other points the interaction amplitude oscillates and, integrated over the compact dimension, cancels by single-valuedness.
+### 3.3 Motivating Phenomenology
 
-**The observed position of the particle is the point x where the phase-matching condition is satisfied between the particle wave and the observer wave.**
+Phase-dependent measurement outcomes appear across quantum physics. These are cited as **motivation** for a phase-based measurement picture, not as proof of the specific mechanism proposed here:
 
-### 3.3 Supporting Evidence for Phase-Determined Outcomes
+- **Josephson junctions:** supercurrent I = I₀ sin(Δφ) — the observable is determined entirely by relative phase.
+- **Feynman path integrals:** the classical trajectory is the path of stationary phase.
+- **Homodyne detection:** a local-oscillator detector measures by phase matching; detection amplitude goes as cos(Δφ).
+- **Quantum eraser experiments:** the observer's state controls whether interference occurs; erasing which-path information restores fringes.
+- **Weak measurement:** partial coupling produces partial collapse, consistent with incomplete phase-matching.
 
-This is not a novel postulate — phase-determined outcomes are already observed across quantum physics:
+These establish that phase governs outcomes in quantum measurement. They do not, by themselves, establish the particular product-form phase-matching mechanism of §3.2 — that remains the proposal under test.
 
-- **Josephson junctions:** The supercurrent across a junction is I = I₀sin(Δφ), where Δφ is the phase difference between two superconducting wavefunctions. The observable is entirely determined by relative phase.
+### 3.4 Collapse as Consumption of a Closure Mode
 
-- **Feynman path integrals:** The classical observed trajectory is the path of stationary phase — where neighboring paths constructively interfere. Observation occurs at the phase-matching point across the space of paths.
+The particle wave carries a closure mode — a countable integer winding set by the compact topology (§1.2). This is the quantum of energy exchanged.
 
-- **Homodyne detection:** A coherent state detector (local oscillator) measures a signal by phase matching. Detection amplitude goes as cos(Δφ). This is already the standard model for optical quantum measurement.
+The proposal: when the phase-matching condition is satisfied at point x, the closure mode transfers from the particle wave to the observer wave, and this transfer is the measurement event. After transfer the particle wave no longer carries the mode; there is nothing left to match elsewhere. The apparent vanishing of the wavefunction at all points other than x — collapse — is then not a physical process propagating through space but the geometric consequence of countability: one mode, one matching event, nothing remaining.
 
-- **Quantum eraser experiments:** The observer's state directly controls whether interference occurs. Erasing which-path information (resetting the observer's phase relationship) restores interference fringes. The bidirectional phase relationship between observer and particle is experimentally established.
+**An unresolved difficulty must be flagged here.** The winding/closure number is a **topological invariant**, and topological invariants cannot change under continuous evolution of a smooth field — they change only where the field amplitude passes through zero (an unwinding event). For the closure mode to "transfer" from particle to observer, there must be a coordinated unwinding on the particle wave and rewinding on the observer wave, mediated by a point where amplitudes vanish. The draft asserted the transfer without supplying this mechanism. Making the transfer respect topological conservation — i.e., exhibiting the unwinding/rewinding event explicitly — is an **open requirement** (§7.7). Until then, "collapse as mode consumption" is a proposal with a known gap, not a derivation.
 
-- **Weak measurement:** Partial coupling between observer and particle produces partial collapse — consistent with partial phase-matching that does not fully satisfy the constructive condition.
+Subject to that caveat, the picture addresses the three faces of the measurement problem as follows:
 
-### 3.4 Collapse as Consumption of a Winding Mode
-
-The particle wave carries a winding number n — a countable integer set by the compact dimension topology. This winding mode is the quantum of energy being exchanged.
-
-When the phase-matching condition is satisfied at point x, the winding mode transfers from the particle wave to the observer wave. This transfer is the measurement event.
-
-**After transfer, the particle wave no longer carries a winding mode.** There is nothing left to match anywhere else. The apparent vanishing of the wavefunction at all points other than x — what we call collapse — is not a physical process propagating through space. It is the geometric consequence of countability: one winding mode, one matching event, nothing remaining.
-
-This resolves the three parts of the measurement problem:
-
-| Problem | Resolution |
+| Problem | Proposed resolution |
 |---|---|
-| Why a definite outcome? | ZPE phase noise drives waves to a specific matching point |
-| Why that outcome? | Where the ZPE phase walk landed at the moment of overlap |
-| Why does the rest vanish? | The winding mode is consumed — countability precludes a second match |
+| Why a definite outcome? | ZPE phase noise drives the wave to a specific matching point |
+| Why that outcome? | Where the ZPE phase walk stood at the moment of overlap |
+| Why does the rest vanish? | The closure mode is consumed — countability precludes a second match |
 
 ### 3.5 The Uniqueness of Each Measurement Event
 
-A single winding mode can phase-match with exactly one observer wave at one time. This is not a postulate — it follows from countability. One quantum is one winding number. One winding number is consumed by one matching event. A second observer requires a second quantum.
+A single closure mode can phase-match with exactly one observer wave at one time — this follows from countability: one mode is one winding number, consumed by one matching event; a second observer requires a second mode.
 
-This is experimentally established by photon antibunching (Kimble, Dagenais and Mandel, 1977): a single photon source triggers one and only one detector, never two simultaneously, even when both detectors are available. In the compact dimension picture this is the direct experimental signature of winding mode countability.
+This is experimentally anchored by photon antibunching (Kimble, Dagenais & Mandel, 1977): a single-photon source triggers one and only one detector, never two simultaneously. In the closure-mode picture this is the signature of mode countability — the same countability that, in the project, makes a closure-satisfying T(1, n) mode the indivisible particle.
 
 ### 3.6 Frame-Dependent Outcomes
 
-Two observers in different inertial frames encounter the particle wave with different relative phase velocities. The phase-matching condition:
-
-```
-φ_p(x,t) + φ_o(x,t)  =  2πn
-```
-
-is evaluated in each observer's frame. For an observer moving at velocity v relative to the source, the phase they encounter is Doppler-shifted:
-
-```
-φ'(x',t')  =  k'x' − ω't'
-```
-
-where k' and ω' are the frame-dependent wavenumber and frequency. The phase-matching point — the observed position and time — is therefore different for each observer.
-
-The relativity of simultaneity follows: two observers in different frames find their phase-matching conditions satisfied at different spacetime points, and therefore disagree on when and where the particle was detected. This is not imposed by postulating Lorentz transformations — it emerges from the phase geometry of waves in relative motion.
+Two observers in different inertial frames encounter the particle wave with different relative phase velocities. The phase encountered by an observer moving at velocity v relative to the source is Doppler-shifted, so the phase-matching point — the observed position and time — differs between frames. This is **consistent with** the relativity of simultaneity: two observers find their matching conditions satisfied at different spacetime points. (This is a consistency observation, not a derivation of Lorentz invariance, which would require showing the phase geometry transforms correctly under the full Lorentz group.)
 
 ---
 
-## 4. Zero-Point Energy as the Source of Quantum Randomness
+## 4. Zero-Point Energy and Quantum Randomness
 
 ### 4.1 ZPE Continuously Randomizes Phase
 
-Sub-fundamental frequencies continuously probe every compact dimension. They carry real energy (Section 1.3) but cannot achieve resonance and therefore cannot persist. Their effect on the resident wave is a continuous stochastic perturbation of its phase.
+Sub-fundamental fluctuations continuously probe every compact dimension (§1.3). They carry real energy but cannot persist, and their effect on a resident wave is a continuous stochastic perturbation of its phase. This is not a fixed tag attached to the particle at creation — it is an ongoing physical random process, the aggregate of all sub-fundamental fluctuations exploring the dimension at every moment. The phase of every resident wave is therefore a continuously evolving random variable.
 
-This is not a hidden variable. It is not a fixed tag attached to the particle at creation. It is a **real, physical, ongoing random process** — the aggregate effect of all sub-fundamental frequencies exploring the compact dimension at every moment.
+### 4.2 The Status of Quantum Randomness (and what it does NOT settle about Bell)
 
-The phase of every wave is therefore a continuously evolving random variable. No fixed phase persists long enough to constitute a predetermined measurement outcome.
+The randomness of measurement outcomes, in this picture, has a physical source: the continuous ZPE-driven phase walk. Because no fixed phase persists, the outcome is not determined by a value set at creation.
 
-### 4.2 Why This Is Not a Hidden Variable Theory
+**An earlier version of this section claimed that this dynamism evades Bell's theorem — that a continuously-randomized phase "is not a hidden variable" and so escapes Bell's constraint. That claim is incorrect and is withdrawn.** Bell's theorem does not turn on whether a variable is static or dynamic; it turns on **locality**. A phase continuously randomized by *local* ZPE noise is still a *local* variable, and a local stochastic process produces correlations that satisfy the Bell inequalities just as a local static variable does. Dynamism is not an escape from Bell.
 
-Bell's theorem excludes theories in which each particle carries a pre-existing definite value — a hidden variable — that determines measurement outcomes independently of the measurement context.
+The genuine escape route available to this picture is **nonlocality of the joint wave**, developed in §5.3 — and it is not yet demonstrated. The randomness story (local ZPE phase noise, this section) and the Bell story (nonlocal joint-wave structure, §5) are **separate** and must not be conflated; conflating them produced the error just withdrawn. What this section establishes is only that there is a physical source of single-measurement randomness — not that the framework reproduces entangled correlations.
 
-ZPE phase noise violates the pre-existence condition:
+### 4.3 Born's Rule — a Candidate Mechanism (not yet a derivation)
 
-- The phase is not set at particle creation
-- It is continuously refreshed by ongoing ZPE perturbations
-- By the time measurement occurs, the phase has been randomly walked away from any initial value
-- There is no fixed predetermined value to constitute a hidden variable
+The probability of finding a particle at position x is |ψ(x)|² (Born's rule). The picture offers a candidate mechanism:
 
-The randomness of quantum measurement is therefore **ontological, not epistemic** — it does not reflect ignorance of a hidden definite value. It reflects the genuine physical indeterminacy of a phase being continuously driven by ZPE noise.
+The particle wave has amplitude A(x) at each point. ZPE continuously randomizes the phase. Phase-matching with an observer can occur wherever the amplitude is nonzero, and *if* the rate at which the random phase walk satisfies the matching condition at x is proportional to the local wave intensity A(x)², then
 
-### 4.3 Born's Rule from Phase-Matching Statistics
+  P(match at x) ∝ A(x)² = |ψ(x)|²
 
-The probability of finding a particle at position x is |ψ(x)|² — Born's rule. In the compact dimension picture this emerges as follows:
+recovering Born's rule.
 
-The particle wave has amplitude A(x) at each point. ZPE continuously randomizes the phase at each point. Phase-matching with an observer can occur wherever the amplitude is nonzero. The probability of matching at x depends on how frequently the random phase walk satisfies the matching condition there.
+**This is a candidate mechanism, not a derivation, and two gaps must be closed before it earns the latter name:**
 
-The rate at which phase-matching conditions are satisfied at x is proportional to the wave intensity at x:
+1. **The intensity proportionality is assumed, not derived.** Why is the matching *rate* proportional to A² specifically, rather than to A or A⁴? The intuition "more amplitude → more energy → more frequent matching" assumes matching rate ∝ local energy ∝ A², which is precisely the step requiring derivation. It yields the right answer, which is encouraging but not conclusive.
+2. **The observer amplitude is dropped.** The interaction (§3.2) involves both waves, so the matching rate should depend on A_p²·A_o², not A_p² alone. Recovering the standard form requires A_o to be effectively uniform across x, which is not justified.
 
-```
-P(match at x)  ∝  A(x)²  =  |ψ(x)|²
-```
-
-Higher amplitude means more wave energy at that point, more ZPE perturbation at that point, and more frequent excursions through phase-matching conditions. **Born's rule emerges as the statistics of ZPE-driven phase matching weighted by local wave intensity.**
-
-This is a derivation of Born's rule from physical principles — something standard quantum mechanics cannot provide, where it is simply postulated.
+Closing both — deriving the intensity proportionality from the wave dynamics and accounting for the observer amplitude — is the content of the Born-rule problem (§7.3). Stochastic-electrodynamics and de Broglie–Bohm equilibrium arguments offer templates; this picture has the right *type* of mechanism but not yet the derivation.
 
 ### 4.4 The Quantum-to-Classical Transition
 
-Large objects consist of many particles, each on its own compact dimension, each subject to its own ZPE phase noise. The ZPE perturbations are independent across particles. As particle number N grows, phase fluctuations average — their aggregate effect on macroscopic observables diminishes as 1/√N.
-
-At macroscopic scales, phase noise averages to zero, wavefunctions become effectively classical, and deterministic behavior emerges. The quantum-to-classical transition is not a separate postulate — it is the law of large numbers applied to ZPE phase noise across many compact dimensions.
+Large objects consist of many particles, each on its own compact sector, each subject to independent ZPE phase noise. As particle number N grows, the relative phase fluctuations of macroscopic observables diminish (heuristically as 1/√N by the law of large numbers), and deterministic classical behavior emerges. The quantum-to-classical transition is then not a separate postulate but the averaging of independent ZPE phase noise across many compact sectors. (A complete account would connect this to decoherence proper, which involves entanglement with environmental degrees of freedom and is more structured than independent-phase averaging alone.)
 
 ---
 
@@ -262,103 +203,109 @@ At macroscopic scales, phase noise averages to zero, wavefunctions become effect
 
 ### 5.1 Entanglement as Global Phase Correlation
 
-Two particles created together — for example in spontaneous parametric down-conversion — produce waves whose compact dimension phases are correlated at creation. As the particles separate, each is independently perturbed by its local ZPE field.
-
-The local ZPE perturbations are independent — each particle's phase is being driven by its own local sub-fundamental noise. But the **global wave structure** — the joint wavefunction encoding their correlation — is not a local property. It is the shape of the entangled state across both compact dimensions.
+Two particles created together — for example in spontaneous parametric down-conversion — produce waves whose compact-sector phases are correlated at creation. As the particles separate, each is independently perturbed by its local ZPE field. The local perturbations are independent, but the **global wave structure** — the joint wavefunction encoding their correlation — is not a local property; it is the shape of the entangled state across both compact sectors.
 
 ### 5.2 How Correlations Are Preserved
 
-Local ZPE noise perturbs each particle's phase independently. But the phase-matching condition for a measurement on particle 2, given a measurement outcome on particle 1, is constrained by the global phase correlation established at creation.
+Local ZPE noise perturbs each particle's phase independently. But the phase-matching condition for a measurement on particle 2, given an outcome on particle 1, is constrained by the global phase correlation established at creation. When particle 1 is measured — its closure mode matched at point x₁ — the global wave structure updates, and the matching condition for particle 2 is now constrained to produce the correlations the joint wavefunction requires.
 
-When particle 1 is measured — its winding mode matched with observer 1 at point x₁ — the global wave structure updates. The phase-matching condition for particle 2 is now constrained to produce the correlations required by the joint wavefunction.
+This is not signaling: no information propagates from x₁ to particle 2. The constraint resides in the global wave geometry — a nonlocal property of the joint state, established at creation and not destroyed by local ZPE noise.
 
-This is not signaling. No information propagates from x₁ to particle 2. The constraint is in the global wave geometry — a nonlocal property of the joint state that was established at creation and is not destroyed by local ZPE noise.
+### 5.3 The Bell-Evasion Route (proposed, not demonstrated)
 
-### 5.3 Evading Bell's Theorem
+This picture's only viable route past Bell's theorem is **nonlocality of the joint wave**, not the (withdrawn) dynamism argument of §4.2. The route rests on three claims:
 
-Bell's theorem excludes local hidden variable theories. The compact dimension picture is not such a theory because:
+1. **No local hidden variables determine the outcomes** — the per-particle phase is randomized by local ZPE noise and carries no predetermined outcome.
+2. **The joint wave is nonlocal** — the entangled wavefunction is a globally extended object whose phase structure is not decomposable into independent local parts.
+3. **Local noise rides on a nonlocal wave** — ZPE perturbs phases locally, but the correlations are carried by the global structure, which local perturbations do not destroy.
 
-1. **No hidden variables:** Phase is continuously randomized by ZPE — no predetermined values exist
-2. **Nonlocal waves:** The joint wavefunction is a globally extended object whose phase structure is not decomposable into independent local parts
-3. **Local noise on nonlocal waves:** ZPE perturbs phases locally but rides on a globally correlated wave — local perturbations do not destroy global correlations
+This is the same shape of escape that nonlocal theories (e.g. Bohmian mechanics) genuinely use: Bell excludes *local* theories, and a theory with a nonlocal joint wave is not local in Bell's sense. **The route is defensible in principle but not demonstrated.** What is missing is the actual computation: showing that globally-correlated waves with local ZPE noise reproduce the specific quantum correlations (the cosine dependence, the Tsirelson bound) measured in Bell experiments. Until that computation exists, §5 is a proposed mechanism, not a result (§7.3).
 
-The nonlocality required to violate Bell inequalities is carried by the global wave structure. The locality of ZPE noise does not contradict this — local stochastic processes on a globally extended wave are not local hidden variables in Bell's sense.
+If the compact sector is a single global object shared across space (rather than a private loop attached to each particle), the required nonlocality is geometrically natural — but whether the ma-domain Ma sectors have that global character is itself an open structural question for the project.
 
 ---
 
 ## 6. Comparison with Existing Interpretations
 
+The "this picture" column states what the framework *aims* to deliver; entries resting on unfinished work are marked accordingly.
+
 | Feature | Copenhagen | Many Worlds | Pilot Wave | Stochastic ED | This Picture |
 |---|---|---|---|---|---|
-| ψ is real? | No | Yes | Guides particle | Classical field | Yes — wave on compact dim |
-| Collapse mechanism | Postulated | No collapse | Effective | Not explained | Winding mode consumption |
-| Born's rule | Postulated | Derived (controversial) | Postulated | Partially derived | Derived from ZPE statistics |
-| Randomness source | Postulated | None | None | ZPE field | ZPE phase noise on compact dim |
+| ψ is real? | No | Yes | Guides particle | Classical field | Yes — wave on compact sector |
+| Collapse mechanism | Postulated | No collapse | Effective | Not explained | Closure-mode consumption (gap: §3.4) |
+| Born's rule | Postulated | Derived (controversial) | Postulated | Partially derived | Candidate mechanism (§4.3, unproven) |
+| Randomness source | Postulated | None | None | ZPE field | ZPE phase noise on compact sector |
 | Hidden variables? | No | No | Yes | No | No |
-| Bell violations | Postulated | Derived | Nonlocal by construction | Not fully reproduced | Global wave + local ZPE noise |
+| Bell violations | Postulated | Derived | Nonlocal by construction | Not fully reproduced | Nonlocal joint wave (§5.3, not demonstrated) |
 | Quantization origin | Postulated | Postulated | Postulated | Postulated | Single-valuedness on compact geometry |
 | Observer role | Special | Not special | Not special | Not special | Another wave — no special status |
+
+The honest reading: the framework's *distinctive strength* is the quantization-origin row (single-valuedness → closure), which is firm. The collapse, Born, and Bell rows are aspirations with identified gaps, not delivered results.
 
 ---
 
 ## 7. Open Questions and Required Developments
 
-The picture presented here is conceptually complete but requires formal development in several areas:
+**7.1 The amplitude story.** The energy and amplitude prescription for sub-fundamental probing modes must be self-consistent and not borrow from QFT. The ZPE phase-noise spectrum must follow from compact-sector geometry alone. ([zpe_derivation.md](zpe_derivation.md) settles the *average* energy; the *spectrum* of the phase noise is still to be derived.)
 
-**7.1 The amplitude story:** The energy of sub-fundamental probing modes needs to be derived with a self-consistent amplitude prescription — one that does not borrow the answer from QFT. The ZPE phase noise spectrum must be derived from compact dimension geometry alone.
+**7.2 ZPE value — resolved.** The earlier ¼-vs-½ tension is closed: the clean geometric-mean derivation gives ½ℏω₁ ([zpe_derivation.md](zpe_derivation.md)). The clockwise/counterclockwise speculation that once tried to rescue ¼ → ½ is no longer needed and is withdrawn.
 
-**7.2 The ¼ vs ½ question:** The corrected integral over sub-fundamental frequencies yields ¼ħω₁, not ½ħω₁. The resolution may involve probing in both traversal directions on the compact circle (clockwise and counterclockwise), each contributing ¼, summing to ½. This needs formal derivation.
+**7.3 Born's rule and Bell reproduction.** The two hardest formal requirements. Born's rule needs the intensity-proportionality and observer-amplitude gaps of §4.3 closed. Bell needs the §5.3 nonlocal-wave computation actually carried out — reproducing the measured entanglement correlations from globally-correlated waves with local ZPE noise. Neither is done.
 
-**7.3 Bell inequality reproduction:** The precise quantum correlations in entanglement experiments must be shown to emerge from globally correlated waves with local ZPE noise. This is the most demanding formal requirement.
+**7.4 Spin, polarization, and gauge invariance.** The picture must reproduce spin-1 photons, two polarization states, and U(1) gauge invariance. Kaluza–Klein already derives U(1) from a compact dimension, and the project's [metric-charge](../../metric-charge/) work derives charge as a cross-section winding; connecting the measurement picture to that machinery is the natural route. Spin and polarization require the per-sheet spin account (cf. [anomalous-moment.md](anomalous-moment.md)).
 
-**7.4 Spin, polarization, and gauge invariance:** The compact dimension picture must reproduce spin-1 photons, two polarization states, and U(1) gauge invariance. Kaluza-Klein theory already derives U(1) gauge invariance from a compact fifth dimension — this work extends naturally into that framework. Spin and polarization require further development.
+**7.5 The preferred-basis problem.** The picture must specify what determines the measurement basis (why position rather than momentum, say) without circularly invoking the apparatus.
 
-**7.5 The preferred basis problem:** The phase-matching picture must specify what determines the measurement basis — why position rather than momentum, for example — without invoking the measurement apparatus in a circular way.
+**7.6 The interaction form (§3.2).** Whether measurement is the product ψ_p·ψ_o or the conjugated overlap ψ_o*·ψ_p must be settled, and the phase-matching condition re-derived for the correct form.
+
+**7.7 Topological consistency of collapse (§3.4).** The closure-mode "transfer" must be shown to respect topological conservation — exhibiting the unwinding/rewinding event (a zero-amplitude crossing) that allows an integer winding to move between waves. Without it, collapse-as-consumption has a gap.
+
+**7.8 Global vs. private compact sectors.** §5.3's Bell route needs the compact sector to have global (shared-across-space) character. Whether the ma-domain Ma sectors are global in this sense, or private to each particle, is an open structural question that bears directly on whether entanglement is geometrically natural here.
 
 ---
 
 ## 8. Summary
 
-We have proposed and developed a geometric theory of quantum measurement based on the following chain of reasoning:
+The chain of reasoning, with each link's status marked:
 
-1. **Single-valuedness** on a compact periodic dimension forces winding numbers to be integers — this is the geometric origin of quantization, without postulates.
+1. **Single-valuedness** on a compact periodic dimension forces winding numbers to be integers — the geometric origin of quantization, without postulates. *(Firm; the project's closure condition.)*
 
-2. **Countability** of winding modes makes the photon indivisible — one winding mode, one measurement event, no sharing between observers.
+2. **Countability** of closure modes makes the quantum indivisible — one mode, one measurement event. *(Firm as a consequence of countability; experimentally anchored by antibunching.)*
 
-3. **Wave energy in spatial derivatives** (derived from F = ma) means sub-fundamental frequencies carry real energy when probing the compact dimension — this is zero-point energy, geometrically grounded.
+3. **Wave energy in spatial derivatives** (from F = ma) means sub-fundamental frequencies carry real energy when probing the compact dimension — zero-point energy, geometrically grounded, with average ½ℏω₁. *(Firm; see [zpe_derivation.md](zpe_derivation.md).)*
 
-4. **ZPE as continuous phase noise** means no wave ever has a predetermined phase — quantum randomness is ontological, not epistemic, and not a hidden variable.
+4. **ZPE as continuous phase noise** supplies a physical source of single-measurement randomness. *(Plausible; the spectrum is not yet derived.)*
 
-5. **Phase-matching between two waves** (particle and observer) determines the measurement outcome — supported by Josephson junctions, path integrals, homodyne detection, and quantum eraser experiments.
+5. **Measurement as wave interaction** between particle and observer. *(Proposed; the interaction form §3.2 is unsettled and the phenomenology §3.3 is motivation, not proof.)*
 
-6. **Collapse as winding mode consumption** — not a physical process propagating through space, but the geometric consequence of countability: one quantum used, nothing remaining.
+6. **Collapse as closure-mode consumption.** *(Proposed with a known gap: the topological-transfer mechanism §3.4 is missing.)*
 
-7. **Born's rule from phase-matching statistics** — the probability of detection at x is proportional to wave intensity |ψ(x)|², emerging from ZPE-driven phase excursions weighted by local amplitude.
+7. **Born's rule from interaction statistics.** *(Candidate mechanism only; the intensity-proportionality and observer-amplitude gaps §4.3 are open.)*
 
-8. **Frame-dependence from relative phase geometry** — different observers find phase-matching at different spacetime points, recovering the relativity of simultaneity without separate postulates.
+8. **Frame-dependence from relative phase geometry.** *(Consistency observation, not a derivation of Lorentz invariance.)*
 
-9. **Entanglement from global wave correlations** — local ZPE noise does not destroy globally encoded phase correlations; Bell violations emerge from nonlocal wave structure, not local hidden variables.
+9. **Entanglement and Bell-evasion from nonlocal joint-wave structure.** *(Proposed route §5.3; the correlation computation is not done. The earlier dynamism-based Bell argument is withdrawn as incorrect.)*
 
-The picture does not postulate quantization, collapse, Born's rule, or the special role of the observer. Each emerges from the geometry of compact dimensions and the physical reality of zero-point energy. The remaining formal developments are substantial but the conceptual foundations are consistent, experimentally grounded, and address explanatory gaps that all standard interpretations leave open.
+The firm results are the geometric foundations: quantization from single-valuedness, countability of closure modes, and zero-point energy as a geometric residue. These connect directly to the rest of the ma-domain project. The measurement theory — collapse, Born's rule, Bell-evasion — is a coherent research program with sound foundations but substantial unfinished formal work; it should be presented as such, not as a completed derivation.
 
 ---
 
 ## References and Prior Work
 
-**Schrödinger (1926)** — Original realist wave interpretation; abandoned due to wave packet spreading and many-body configuration space problem. Both are addressed here by the compact dimension extension.
+**Schrödinger (1926)** — original realist wave interpretation; abandoned over wave-packet spreading and configuration-space, both addressed here by the compact-dimension extension.
 
-**Kaluza (1921), Klein (1926)** — Compact fifth dimension producing U(1) gauge invariance geometrically. The present work extends this program to measurement theory.
+**Kaluza (1921), Klein (1926)** — compact fifth dimension producing U(1) gauge invariance geometrically; the project's [metric-charge](../../metric-charge/) work is in this lineage.
 
-**Bell (1964)** — Theorem excluding local hidden variable theories. The present picture evades this through global wave nonlocality combined with local stochastic ZPE noise.
+**Bell (1964)** — theorem excluding *local* hidden-variable theories. The escape available here is nonlocality of the joint wave (§5.3), not the (withdrawn) dynamism argument.
 
-**Kimble, Dagenais, Mandel (1977)** — Photon antibunching establishing the indivisibility and uniqueness of single photon detection events. Direct experimental support for winding mode countability.
+**Kimble, Dagenais & Mandel (1977)** — photon antibunching; experimental support for closure-mode countability (§3.5).
 
-**Marshall, Boyer, de la Peña (1960s–present)** — Stochastic electrodynamics: deriving quantum behavior from classical waves plus real ZPE background. The present work grounds the ZPE background geometrically and extends the program to measurement and collapse.
+**Marshall, Boyer, de la Peña (1960s–present)** — stochastic electrodynamics: quantum behavior from classical waves plus a real ZPE background. This file grounds the ZPE background geometrically (§1.3) and extends the program to measurement.
 
-**Aspect, Grangier, Roger (1982)** — Bell inequality violation experiments. The present picture must reproduce these results; the mechanism is proposed in Section 5.
+**Aspect, Grangier & Roger (1982)** — Bell-inequality violation experiments; the correlations §5.3 must reproduce but does not yet.
 
-**Feynman (1948)** — Path integral formulation: classical trajectories as paths of stationary phase. Directly supports the phase-matching picture of observation.
+**Feynman (1948)** — path-integral stationary-phase; motivation for the phase-based measurement picture (§3.3).
 
 ---
 
-*This paper was developed through a collaborative derivation starting from Schrödinger's original wave interpretation, extended to compact periodic dimensions, and built upward through wave mechanics, zero-point energy, quantization, and measurement theory.*
+*This document is the measurement-theory companion to the ma-domain particle-spectrum work. Its geometric foundations are shared with [zpe_derivation.md](zpe_derivation.md) and [architecture.md](architecture.md); its decay/production counterpart is [threshold-dynamics.md](threshold-dynamics.md).*
