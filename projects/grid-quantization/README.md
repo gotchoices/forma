@@ -5,16 +5,20 @@
 h and α can be *derived* (not assumed) from lattice recirculation.
 **Method:** Working hypothesis first; computational probes where they
 settle a question; mathematical derivation as the eventual target.
-**Status:** Tier 1 + band structure + scale-invariance complete.
+**Status:** Tier 1 + band structure + scale-invariance complete;
+the countability question (P3) has a candidate derivation sketch.
 **Headline:** GRID recirculation derives the photon's mode structure,
 spin, α (1/129.7), bound modes, and the quantization *structure*
-(harmonic ⇒ uniform quanta; scale-invariance ⇒ ℏ universal). It does
-*not* need to derive ℏ's scale — that is a unit, not a prediction.
-The lone remaining piece is **countability** (that occupation is
-integer at all); the open question is whether the finite-information
-axiom A5 supplies it. Net: the quantum is *reduced* to one
-dimensionless question + one unit, not left a mystery.
-
+(harmonic ⇒ uniform quanta; scale-invariance ⇒ ℏ universal). ℏ's
+scale is a unit, not a prediction. **Countability** (integer
+occupation — the lone imported piece) now has a candidate derivation
+from A3+A5 via the dual-of-a-circle theorem (U(1)↔ℤ), resting on one
+interpretive reading of A5 — *the same reading that already gives
+GRID its gravity.* So finite information (A5) would be the single
+root of both gravity and quantum discreteness. Net: the quantum is
+*reduced* to one interpretive question + one unit, not left a
+mystery. (Derives countability, not yet all of QM.)
+<!--EC Seems like a stretch to say that we have "found alpha".  Would you agree?  We have found that the amount of light current that recirculates around the loops appears to be close to alpha and this has hinted in other works at being associated with the "leakage", charge, phenomena.  But not sure we've closed the loop yet on "this is alpha".  Push back if you disagree. -->
 ## Why this project exists
 
 GRID derives Maxwell's equations and Newton's G from a discrete
@@ -44,7 +48,7 @@ The conjecture is captured in
 project is its development home.
 
 ## The mechanism in one paragraph
-
+<!--EC Is it grid-duality where we develop the edge/node update rules in some detail?  Wondering if we should refer to the sign-flipped reflection if that is where it is best documented?  Or maybe sim-maxwell does this too? -->
 The honeycomb (N=3) junction rule `outgoing = (2/3)·total − incoming`
 is the discrete wave equation; its sign-flipped reflection (−1/3) is
 the restoring "spring," so an injected static perturbation oscillates
@@ -178,13 +182,13 @@ What *is* real: a circulating (photon-like) excitation couples to the
 bound sector **~1.7× more than random**, and that ratio is
 scale-invariant.
 
-## Tier 2 and the quantization wall (the honest verdict on h)
+## Tier 2: the quantization principle, and where h comes from
 
 Tier 2 was meant to measure the **per-cycle action** vs ω and test
 whether h is frequency-independent. Working through the *definition*
 of that quantity (the gate, work/tier2-design.md §4a) hits a wall
 worth stating plainly:
-
+<!--EC if h is unity by definition, which it should be in natural units, then why are we focused on the value of h? -->
 **The scale of ℏ was never the right target** — it is a *unit* (the
 action unit, = 1 by construction, like c), not a dimensionless
 prediction. Expecting it to "fall out" was a category error. The
@@ -205,17 +209,34 @@ energy exactly ℏω (an anharmonic medium would give uneven rungs and
 no clean photon). The exact linearity of the lattice guarantees the
 clean photon picture; the scale-invariance below makes ℏ universal.
 
-**The one genuinely imported piece is P3 — countability** (the
-[a,a†]=1 step). The grid is not short of integers (winding → charge,
-compact-mode number → spectrum); the sharp open question is whether
-**GRID's finite-information axiom A5 (¼ bit/cell, bounded U(1) phase)
-forces occupation to be countable.** That is the real frontier (cf.
-Q135's Landauer thread) — foundational, not a quick sim.
+**The one imported piece is P3 — countability** (the [a,a†]=1 step).
+This now has a **candidate derivation sketch**
+([work/countability-from-information.md](work/countability-from-information.md)):
+the dual of the compact U(1) phase (A3) is the integers ℤ
+[*rigorous* — the same fact as charge quantization, applied to a
+mode's **oscillation** phase instead of a spatial loop, which gives
+**occupation number** instead of charge], and A5's *informational*
+state (a distribution/amplitude over that compact phase, not a sharp
+classical value) is what triggers it [*interpretive* — the one
+load-bearing assumption]. Integer occupation then follows. A5's
+finiteness further predicts a (huge, in-principle) **maximum
+occupation per mode** — a GRID deviation from QFT's unbounded ladder.
+
+This also corrects an earlier mistake: "winding only gives charge"
+killed the wrong target — photon number is the integer dual of a
+*different* compact phase (the mode's oscillation angle).
+
+**Striking corollary:** A5 is the *same* axiom that gives gravity
+(entropy → Jacobson → G, gravity.md). So finite information would be
+the single root of **both** gravity and quantum discreteness.
 
 **Verdict:** not "failed to derive h" but **"reduced the quantum to
-one dimensionless question (does A5 ⇒ countability?) plus one unit
-(ℏ)."** The grid supplies the entire quantization *structure* — plus
-α, spin, and bound modes; P3 is the lone remaining piece.
+one interpretive reading of A5 (is the substrate's state informational
+= a distribution over the compact phase?) plus one unit (ℏ)."** Given
+that reading — the same one gravity already uses — integer occupation
+is forced by a theorem. Caveat: this derives *countability*, not all
+of QM (complex amplitudes / interference / Born rule are a further,
+unestablished step).
 
 ### Scale-invariance (`scale_invariance.py`) — an IR fixed point
 
@@ -227,12 +248,16 @@ supplies the *universality*; it does not supply the *quantum*.
 
 ## What this project does NOT show
 
-- **Quantization of light (h).** See above — that is the
-  second-quantization wall; the classical lattice gives modes, not
-  quanta. Whether A5's finite information closes this is the open
-  frontier (work/tier2-design.md §6 item 4).
-- **The bound state ⇒ integer occupation.** Loops trap energy, but
-  that is not yet ℏω-per-quantum.
+- **Full QM** (complex amplitudes, interference, the Born rule). The
+  P3 sketch derives *countability* (integer occupation) from A5+A3,
+  not the complex-amplitude structure. Whether A5's informational
+  state must be a complex amplitude (⇒ interference) or only a real
+  distribution (⇒ countability alone) is open
+  (work/countability-from-information.md §8).
+- **A rigorous A5 reading.** The P3 sketch's one load-bearing step —
+  A5's state is a distribution over the compact phase — is graded
+  *interpretive*; hardening it (showing it is the same reading A5 gets
+  in the gravity derivation) is the next foundational task.
 
 ## Files
 
@@ -245,7 +270,8 @@ supplies the *universality*; it does not supply the *quantum*.
 | [loop_scaling.py](loop_scaling.py) | Trapped (bound) fraction vs loop size — the scale-invariance check |
 | [mode_projection.py](mode_projection.py) | Exact projection of excitations onto the bound subspace (settles the "is it the ZPE ½?" question — no) |
 | [scale_invariance.py](scale_invariance.py) | Dispersion linearity vs wavelength — the IR-fixed-point / scale-invariance check |
-| [work/tier2-design.md](work/tier2-design.md) | The bound-state finding, the confirmed band structure, and the Tier 2 (h-universality) plan |
+| [work/tier2-design.md](work/tier2-design.md) | The bound-state finding, the band structure, the principle-vs-scale reframe, and the Tier 2 plan |
+| [work/countability-from-information.md](work/countability-from-information.md) | Derivation sketch: countability (P3) from A3 (compact phase) + A5 (informational state) via U(1)↔ℤ |
 | [outputs/](outputs/) | Figures (`recirc_*.png`, `band_structure.png`, `loop_scaling.png`) and `loop_decay.csv` data |
 
 ## Background and cross-references
@@ -260,21 +286,26 @@ supplies the *universality*; it does not supply the *quantum*.
 
 ## Next steps
 
-Detailed plan in [work/tier2-design.md](work/tier2-design.md) §6. The
-Tier-1 / band-structure / scale-invariance work is done; the path
-forward was reframed by the §4a finding:
+The computational arc (Tier 1, band structure, scale-invariance) is
+done; the conceptual frontier (countability) now has a candidate
+derivation. What remains is to **harden the one interpretive step**
+(work/countability-from-information.md §8):
 
-1. ~~Band structure~~ — **done**: 2 flat bands + 4 dispersive.
-2. ~~Per-cycle-action definition / ω-sweep~~ — **resolved/shelved**:
-   the quantity isn't well-posed classically (the second-quantization
-   wall); the scale-invariance surrogate is measured (IR fixed point).
-3. **The real open frontier — where does h come from?** Does the
-   finite-information axiom (A5: ¼ bit/cell; A3: bounded U(1) phase)
-   quantize a mode's amplitude into ℏω quanta? Concrete sub-question
-   (cf. Q135): is the Landauer cost of registering one cycle of phase
-   advance a *fixed* unit of action, independent of ω? If yes, that
-   unit is h and the IR scale-invariance makes it universal. This is
-   foundational, not a quick sim.
+1. **Pin the A5 reading.** Show that "A5's state = a distribution over
+   the compact phase" is the *same* reading of A5 used in gravity.md's
+   entropy counting — which would upgrade the P3 sketch's load-bearing
+   step from *interpretive* toward *rigorous* and make the
+   gravity↔quantization shared-root claim precise.
+2. **Stochastic vs quantum.** Decide whether the informational state
+   must be a *complex amplitude* (⇒ interference, more of QM) or only
+   a *real distribution* (⇒ countability alone). This bounds how much
+   of QM the substrate delivers.
+3. **The bounded-ladder prediction.** Compute the per-mode occupation
+   cutoff ~2^{Nζ} for a concrete mode; confirm it is unobservably high
+   (consistency) and whether any regime makes it matter.
+
+These are foundational reasoning, not sims. The optional lattice
+follow-ups remain available (explicit CLS construction; block-spin RG).
 
 Optional clean follow-ups: construct the CLS explicitly from the ω=0
 flat-band states (does a *larger* CLS tower exist — Q140 §3a?); and a

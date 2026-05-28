@@ -9,10 +9,13 @@ the substrate is scale-invariant (IR fixed point) ⇒ ℏ universal.
 Deriving ℏ's *scale* was never the target — it is a unit (like c),
 not a dimensionless prediction. The lone genuinely-imported piece is
 **countability** (that occupation is integer at all — the [a,a†]=1
-step); the open question is whether the finite-information axiom A5
-(¼ bit/cell, bounded U(1) phase) supplies it (§7). Net: the quantum
-is *reduced* to one dimensionless question + one unit, not derived in
-full and not left a mystery.
+step), and that now has a **candidate derivation** from A3 + A5 via
+the dual-of-a-circle theorem (U(1)↔ℤ), resting on one interpretive
+reading of A5 — *the same reading that gives GRID its gravity*, so
+finite information would be the shared root of gravity and quantum
+discreteness (§7). Net: the quantum is *reduced* to one interpretive
+question + one unit; countability is sketched (not yet all of QM),
+and ℏ's scale is a unit, not a prediction.
 
 **Source:** User question (recirculation at every scale as the
 quantizer of light).
@@ -360,12 +363,20 @@ decomposes: which frequencies exist (P1, derived), modes are harmonic
 (P2, derived), quanta uniform + ℏ universal (P4, derived via
 harmonicity + scale-invariance), and **occupation countable (P3)** —
 the lone genuine import (the [a,a†]=1 step). The grid supplies the
-quantization *structure*; P3 is the one frontier, and the sharp
-GRID-native question is whether A5's finite information forces
-countability. So the quantum is **reduced to one dimensionless
-question + one unit**, not left a mystery. Full assessment:
+quantization *structure*; P3 now has a **candidate derivation**:
+the dual of the compact U(1) phase (A3) is ℤ [rigorous] — the same
+fact as charge quantization, applied to a mode's *oscillation* phase
+(giving occupation number) rather than a spatial loop (giving charge)
+— triggered by A5's *informational* state being a distribution over
+that phase [interpretive]. Integer occupation follows. Strikingly,
+that A5 reading is the one already used for gravity (gravity.md), so
+finite information would be the **shared root of gravity and quantum
+discreteness**. So the quantum is **reduced to one interpretive
+question + one unit** (countability sketched, not yet all of QM).
+Full assessment:
 [`projects/grid-quantization/work/tier2-design.md`](../projects/grid-quantization/work/tier2-design.md)
-§4a–§4b.
+§4a–§4b and
+[`countability-from-information.md`](../projects/grid-quantization/work/countability-from-information.md).
 
 ---
 

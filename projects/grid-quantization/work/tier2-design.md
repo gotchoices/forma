@@ -291,14 +291,16 @@ one unit (ℏ)."** The grid supplies the entire quantization
 3. ~~Complex-amplitude per-cycle-action ω-sweep.~~ **Shelved** — it
    would measure a classically-unquantized quantity. Not worth coding
    until/unless the quantization source (item 4) is identified.
-4. **The real open frontier — the quantization source.** Does GRID's
-   finite-information axiom (A5: ζ = ¼ bit/cell; A3: bounded U(1)
-   phase) quantize a mode's amplitude into ℏω quanta — i.e. derive
-   second quantization rather than import it? This is *foundational*,
-   not a quick sim. Candidate concrete sub-question (cf. Q135): is the
-   Landauer cost of registering one cycle of phase advance one fixed
-   unit of action, independent of ω? If yes, that unit is h and the
-   IR scale-invariance (§4a) makes it universal.
+4. **The quantization source — now has a candidate derivation.**
+   Does GRID's finite-information axiom (A5) + compact phase (A3)
+   quantize occupation? **Sketch written:**
+   [countability-from-information.md](countability-from-information.md)
+   argues yes for *countability* (P3) — the dual of the compact U(1)
+   phase is ℤ [rigorous], triggered by A5's informational state being
+   a distribution over that phase [interpretive]. Remaining work is to
+   harden the interpretive step (show it is the same A5 reading used
+   in gravity.md) and to separate countability from full QM (complex
+   amplitudes / interference). The scale ℏ stays a unit.
 
 Still-available clean follow-ups (smaller, optional):
 - **Construct the CLS explicitly** from the ω=0 flat-band states;
