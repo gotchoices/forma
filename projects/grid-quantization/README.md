@@ -8,17 +8,23 @@ settle a question; mathematical derivation as the eventual target.
 **Status:** Tier 1 + band structure + scale-invariance complete;
 the countability question (P3) has a candidate derivation sketch.
 **Headline:** GRID recirculation derives the photon's mode structure,
-spin, α (1/129.7), bound modes, and the quantization *structure*
+spin, an α-*scale* leakage coupling (1/129.7, inside α's running
+range — *not* a closed derivation of α, which is an axiom (A6); see
+[Q140 §5](../../qa/Q140-light-quantization-from-recirculation.md) for
+the exponent/running caveats), bound modes, and the quantization *structure*
 (harmonic ⇒ uniform quanta; scale-invariance ⇒ ℏ universal). ℏ's
 scale is a unit, not a prediction. **Countability** (integer
 occupation — the lone imported piece) now has a candidate derivation
 from A3+A5 via the dual-of-a-circle theorem (U(1)↔ℤ), resting on one
-interpretive reading of A5 — *the same reading that already gives
-GRID its gravity.* So finite information (A5) would be the single
-root of both gravity and quantum discreteness. Net: the quantum is
-*reduced* to one interpretive question + one unit, not left a
-mystery. (Derives countability, not yet all of QM.)
-<!--EC Seems like a stretch to say that we have "found alpha".  Would you agree?  We have found that the amount of light current that recirculates around the loops appears to be close to alpha and this has hinted in other works at being associated with the "leakage", charge, phenomena.  But not sure we've closed the loop yet on "this is alpha".  Push back if you disagree. -->
+interpretive reading of A5 — *plausibly the same finite-information
+principle that underwrites GRID's gravity, though that the two
+readings are literally the same is unproven (see
+[work/countability-from-information.md](work/countability-from-information.md)
+§8).* So finite information (A5) may be a shared root of both gravity
+and quantum discreteness. Net: the quantum is *reduced* to one
+interpretive question + one unit, not left a mystery. (Derives
+countability, not yet all of QM.)
+
 ## Why this project exists
 
 GRID derives Maxwell's equations and Newton's G from a discrete
@@ -48,11 +54,13 @@ The conjecture is captured in
 project is its development home.
 
 ## The mechanism in one paragraph
-<!--EC Is it grid-duality where we develop the edge/node update rules in some detail?  Wondering if we should refer to the sign-flipped reflection if that is where it is best documented?  Or maybe sim-maxwell does this too? -->
+
 The honeycomb (N=3) junction rule `outgoing = (2/3)·total − incoming`
-is the discrete wave equation; its sign-flipped reflection (−1/3) is
-the restoring "spring," so an injected static perturbation oscillates
-and propagates. At every junction the wave also spawns a closed
+is the discrete wave equation; its sign-flipped reflection (−1/3 —
+derived in [grid/hexagonal.md](../../grid/hexagonal.md) and simulated
+in [grid/sim-maxwell/](../../grid/sim-maxwell/)) is the restoring
+"spring," so an injected static perturbation oscillates and
+propagates. At every junction the wave also spawns a closed
 recirculation loop. Two consequences are conjectured:
 
 - **Quantization.** A dense tower of loop sizes acts as a near-
@@ -61,12 +69,21 @@ recirculation loop. Two consequences are conjectured:
   GRID already uses for charge) forces integer winding. Self-
   similarity across scales would make the per-cycle action — i.e. h —
   frequency-independent. This is the same question as foundations Q1
-  ("is the junction rule a block-spin RG fixed point?").
-- **Coupling.** A propagating wave leaves a linear array of low-Q
-  loops along its path — a per-vertex coupling, the lattice form of a
-  dressed propagator. The single-hexagon energy-return fraction is
-  the bare coupling: (2/3)¹² = 1/129.75, which sits inside α's
-  physical running range (1/137 low-E, 1/128 at the Z mass).
+  ("is the junction rule a block-spin RG fixed point?"). *(Caveat: the
+  band structure below puts the trapped/bound modes only at ω=0 and
+  ω=π — not at a frequency-matched tower — so the "resonant loop per
+  frequency" picture is this conjecture's most speculative element,
+  not a sim result.)*
+- **Coupling.** A propagating wave is dressed at each vertex it passes
+  by a *virtual* recirculatory component — a per-vertex coupling, the
+  lattice form of a dressed propagator. (In the lossless linear sim
+  this dressing is virtual phase, not real shed energy: a clean
+  propagating eigenmode leaves nothing trapped in its wake — the
+  permanent trapping in the **bound** test below requires a
+  deliberately-injected non-propagating mode, not a passing photon.)
+  The single-hexagon energy-return fraction is the bare coupling:
+  (2/3)¹² = 1/129.75, which sits inside α's physical running range
+  (1/137 low-E, 1/128 at the Z mass).
 
 Spin/polarization come from the same structure: the helical
 circulation eigenmodes of the Y-junction are the two photon
@@ -182,16 +199,15 @@ What *is* real: a circulating (photon-like) excitation couples to the
 bound sector **~1.7× more than random**, and that ratio is
 scale-invariant.
 
-## Tier 2: the quantization principle, and where h comes from
+## Tier 2: the quantization principle (not the scale of ℏ)
 
-Tier 2 was meant to measure the **per-cycle action** vs ω and test
-whether h is frequency-independent. Working through the *definition*
-of that quantity (the gate, work/tier2-design.md §4a) hits a wall
-worth stating plainly:
-<!--EC if h is unity by definition, which it should be in natural units, then why are we focused on the value of h? -->
-**The scale of ℏ was never the right target** — it is a *unit* (the
-action unit, = 1 by construction, like c), not a dimensionless
-prediction. Expecting it to "fall out" was a category error. The
+**ℏ is = 1 by definition in natural units — so its scale was never
+the right target.** It is a *unit* (the action unit, like c), not a
+dimensionless prediction; expecting it to "fall out" was a category
+error. Tier 2 began as an attempt to measure the **per-cycle action**
+vs ω and test whether it is frequency-independent; working through the
+*definition* of that quantity (the gate, work/tier2-design.md §4a) is
+what surfaced the category error and redirected the question. The
 meaningful target is the dimensionless *principle* of quantization,
 which decomposes — and the grid supplies most of it:
 
@@ -226,17 +242,22 @@ This also corrects an earlier mistake: "winding only gives charge"
 killed the wrong target — photon number is the integer dual of a
 *different* compact phase (the mode's oscillation angle).
 
-**Striking corollary:** A5 is the *same* axiom that gives gravity
-(entropy → Jacobson → G, gravity.md). So finite information would be
-the single root of **both** gravity and quantum discreteness.
+**Striking corollary (conditional):** A5 is the *same* axiom that
+gives gravity (entropy → Jacobson → G, gravity.md). *If* gravity's use
+of A5 (horizon-boundary entropy — configuration counting on a spatial
+surface) and the P3 sketch's use (a distribution over a mode's
+oscillation phase) are shown to be the same reading — open; see
+[countability §8](work/countability-from-information.md) — then finite
+information would be a single root of **both** gravity and quantum
+discreteness. The two uses are not yet shown to coincide.
 
 **Verdict:** not "failed to derive h" but **"reduced the quantum to
 one interpretive reading of A5 (is the substrate's state informational
 = a distribution over the compact phase?) plus one unit (ℏ)."** Given
-that reading — the same one gravity already uses — integer occupation
-is forced by a theorem. Caveat: this derives *countability*, not all
-of QM (complex amplitudes / interference / Born rule are a further,
-unestablished step).
+that reading — *argued, not yet shown, to be the same one gravity
+uses* — integer occupation is forced by a theorem. Caveat: this
+derives *countability*, not all of QM (complex amplitudes /
+interference / Born rule are a further, unestablished step).
 
 ### Scale-invariance (`scale_invariance.py`) — an IR fixed point
 
@@ -283,6 +304,7 @@ supplies the *universality*; it does not supply the *quantum*.
 - [grid/hexagonal.md](../../grid/hexagonal.md) — N=3 vs N=6 junction scattering; the 2/3 transmission used here
 - [grid/sim-maxwell/](../../grid/sim-maxwell/) — the completed substrate study this project's lattice code is adapted from
 - [grid/compact-dimensions.md](../../grid/compact-dimensions.md) — the *other* (torus-wrapping) route to α, which found α a "designer's choice"; this project pursues the leakage route instead (INBOX items D/F)
+- [projects/grid-duality/grid-quantizing.md](../grid-duality/grid-quantizing.md) — why a *discrete* substrate does not by itself quantize amplitude: a binary lattice gas (FHP) yields continuous macro-physics, and a substrate "photon" is a coarse-grained bit pattern with near-continuous amplitude — so occupation quantization is a separate ingredient, not a consequence of digitization
 
 ## Next steps
 

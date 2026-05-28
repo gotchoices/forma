@@ -2,20 +2,23 @@
 
 **Status:** Open — **largely answered, and reframed** (developed in
 [`projects/grid-quantization/`](../projects/grid-quantization/)).
-GRID recirculation yields the photon's mode structure, spin, **α**
-(single-loop leakage 1/129.7), genuine **bound modes**, and the
-quantization *structure*: modes are harmonic ⇒ uniform quanta, and
-the substrate is scale-invariant (IR fixed point) ⇒ ℏ universal.
-Deriving ℏ's *scale* was never the target — it is a unit (like c),
-not a dimensionless prediction. The lone genuinely-imported piece is
+GRID recirculation yields the photon's mode structure, spin, an
+**α-scale leakage coupling** (single-hexagon energy return 1/129.7,
+inside α's running range — *not* a closed derivation of α, which is
+an axiom A6), genuine **bound modes**, and the quantization
+*structure*: modes are harmonic ⇒ uniform quanta, and the substrate
+is scale-invariant (IR fixed point) ⇒ ℏ universal. Deriving ℏ's
+*scale* was never the target — it is a unit (like c), not a
+dimensionless prediction. The lone genuinely-imported piece is
 **countability** (that occupation is integer at all — the [a,a†]=1
 step), and that now has a **candidate derivation** from A3 + A5 via
 the dual-of-a-circle theorem (U(1)↔ℤ), resting on one interpretive
-reading of A5 — *the same reading that gives GRID its gravity*, so
-finite information would be the shared root of gravity and quantum
-discreteness (§7). Net: the quantum is *reduced* to one interpretive
-question + one unit; countability is sketched (not yet all of QM),
-and ℏ's scale is a unit, not a prediction.
+reading of A5 — *plausibly the same finite-information principle that
+underwrites GRID's gravity, though that the two readings literally
+coincide is unproven* (§7). So finite information may be a shared root
+of gravity and quantum discreteness. Net: the quantum is *reduced* to
+one interpretive question + one unit; countability is sketched (not
+yet all of QM), and ℏ's scale is a unit, not a prediction.
 
 **Source:** User question (recirculation at every scale as the
 quantizer of light).
@@ -342,8 +345,8 @@ rescue it: compact-U(1) winding quantizes **charge** (vortices, per
 "integer winding ⇒ quantized action" conflates the two.
 
 So the recirculation programme derives the photon's **mode structure,
-spin (helical junction modes), α (1/129.7), and bound modes** — but
-**not h**. The leap to discrete quanta remains the standard
+spin (helical junction modes), an α-scale leakage coupling (1/129.7,
+inside α's running range), and bound modes** — but **not h**. The leap to discrete quanta remains the standard
 second-quantization input *unless* it comes from GRID's
 finite-information axiom (A5: ¼ bit/cell; A3: bounded U(1) phase),
 which the classical sim cannot see and which is **unexplored** (cf.
@@ -368,9 +371,12 @@ the dual of the compact U(1) phase (A3) is ℤ [rigorous] — the same
 fact as charge quantization, applied to a mode's *oscillation* phase
 (giving occupation number) rather than a spatial loop (giving charge)
 — triggered by A5's *informational* state being a distribution over
-that phase [interpretive]. Integer occupation follows. Strikingly,
-that A5 reading is the one already used for gravity (gravity.md), so
-finite information would be the **shared root of gravity and quantum
+that phase [interpretive]. Integer occupation follows. That A5
+reading is *argued* to be the one gravity uses (gravity.md) — though
+showing the two readings literally coincide is open (countability §8),
+since gravity reads A5 as horizon-boundary entropy and the P3 sketch
+reads it as a distribution over a mode's oscillation phase — so finite
+information *may* be a **shared root of gravity and quantum
 discreteness**. So the quantum is **reduced to one interpretive
 question + one unit** (countability sketched, not yet all of QM).
 Full assessment:
