@@ -53,30 +53,76 @@ scattering — a wave/quantum-graph network, which can and evidently
 does carry a flat (dispersionless = localized) band. Confirming that
 flat band is the first recommended computation below.
 
-## 3. Immediate next computation: band structure of the network
+## 3. Band structure — DONE (`band_structure.py`)
 
-Before Tier 2's phasor machinery, one clean, well-posed calculation
-would tie the Tier 1 results together:
+Computed the one-tick Bloch operator U(k) **empirically** from
+`scatter_step` (applying it to the 6 per-cell Bloch basis states and
+reading an interior reference cell — convention-agnostic, unitary to
+3e-16). Cross-checked against full real-space diagonalization on a
+10×10 torus (unitary to 8e-17).
 
-> Compute the dispersion of the one-tick scattering operator over the
-> Brillouin zone of the honeycomb edge-network.
+**Result (confirmed two independent ways):**
 
-State per unit cell: 3 edges × {fwd, bwd} = 6 complex amplitudes (or
-reduce by the A/B sublattice structure). The one-tick update is a
-unitary 6×6 (per k) Bloch operator U(k); its eigenphases are ω(k).
-Expected payoff:
+> The honeycomb edge-network has **2 flat bands (ω = 0 and ω = π) +
+> 4 dispersive bands.** Exactly 1/6 of all states pile up at ω=0 and
+> 1/6 at ω=π. Max propagating group velocity ≈ 0.86.
 
-- A **propagating band** matching the measured linear ω ≈ 0.41·k.
-- A **flat band** at the CLS frequency — the bound state of §2,
-  now explained as a dispersionless band (group velocity 0 ⇒
-  localized).
-- The relation between loop size and resonant frequency (the "tower
-  of virtual compact dimensions" of Q140 §3a) read directly off the
-  band structure.
+- The **flat bands** (group velocity 0) host the **compact localized
+  states** — this is what §2's bound mode is. The bound test's
+  trapped mode lives on the **ω=0 flat band** (a *static* CLS: its
+  loop amplitude never changes sign, confirmed). So the bound state
+  is real and now *explained*: it is a flat-band CLS.
+- The **dispersive bands** are the propagating (free-photon-like)
+  modes; the measured ω ≈ 0.41·k phase velocity is the small-k slope
+  of the lowest dispersive band.
 
-This is a finite linear-algebra problem (diagonalize U(k) on a k-grid)
-— no long-time dynamics, no artifacts. **Recommended as the next
-script** (`band_structure.py`), reusing `lib.py`'s connectivity.
+**Methodological note (cost me an iteration).** The first detector —
+per-band *bandwidth* over the BZ — wrongly reported "no flat band",
+because the flat bands at ω=0,π are coincident with the dispersive
+band *edges*, so sorting smeared them. The correct detector is the
+**density of states**: a flat band is a δ-spike holding ~1/6 of all
+eigenphases. Real-space diagonalization (degeneracy ≈ L² + localized
+eigenvectors, participation ratio ≈ one hexagon) is the ground truth
+that caught the error.
+
+### Answer to "Q vs frequency / bigger loop more lossy"
+
+The band structure settles the question raised when this was run:
+
+- **Q is NON-monotonic in ω.** It is effectively *infinite* at the
+  flat-band frequencies ω = 0 and ω = π (group velocity 0 ⇒ localized
+  ⇒ non-radiating) and *low* mid-band, where group velocity peaks and
+  modes propagate/radiate most. So neither "Q down with frequency"
+  nor "Q up with frequency" holds globally — Q is high at the band
+  extremes and low in between.
+- **Bigger loop more lossy?** Only for a single *traveling pulse*
+  (returns (2/3)^(2P), exponential). For the *coherent circulating
+  mode* the answer is **no** — see the scale-invariance result below,
+  which corrects my first guess that larger loops trap less.
+
+### Scale-invariance of the trapped fraction (`loop_scaling.py`)
+
+Exciting the boundary of a K-hexagon patch as a coherent circulating
+mode and measuring the non-radiating fraction (wraparound-free):
+
+| hexagons | perimeter P | trapped fraction |
+|---:|---:|---:|
+| 1 | 6 | 0.509 |
+| 7 | 20 | 0.507 |
+| 19 | 34 | 0.509 |
+| 37 | 46 | 0.509 |
+
+**The trapped fraction is ~½, independent of loop size** (drift even
+shrinks with P). So the binding efficiency is the same at every loop
+size — i.e. at every frequency scale, since loop size ↔ resonant
+frequency. This is a concrete instance of the **self-similarity /
+scale-invariance** the h-universality argument rests on (Q140 §3a,
+foundations Q1). It is *supportive* — a scale-invariant trapped
+fraction is necessary for, but does not by itself prove, a
+frequency-independent per-cycle action (h). That proof is still the
+Tier 2 job (§4). My earlier intuition that bigger loops trap less was
+wrong; the flat bands hold a fixed (1/3 of all) modes at every scale,
+and a circulating excitation's overlap with them is size-independent.
 
 ## 4. Tier 2 central test: is h frequency-independent?
 
@@ -134,10 +180,19 @@ invariance agree, that is strong, redundant evidence.
 
 ## 6. Recommended order
 
-1. `band_structure.py` — confirm the flat band (the CLS) and map the
-   propagating band(s). Cleanest, lowest-risk, ties Tier 1 together.
-2. Resolve §5.1 (the per-cycle-action definition) on paper.
+1. ~~`band_structure.py` — confirm the flat band, map the propagating
+   band(s).~~ **Done (§3):** 2 flat bands (ω=0, π) + 4 dispersive.
+2. **Next:** resolve §5.1 (the per-cycle-action definition) on paper —
+   the gate for the whole Tier 2 measurement.
 3. Complex-amplitude lattice + helical decomposition (`clib.py` or
-   extend `lib.py`); verify the two circulations are eigenmodes.
+   extend `lib.py`); verify the two circulations are eigenmodes (the
+   ω=π flat band may be one of them — worth checking which flat band
+   carries which circulation).
 4. The ω-sweep action-flatness test (the h-universality / fixed-point
    experiment), with the block-spin cross-check.
+
+A smaller, clean follow-up also now available: **construct the CLS
+explicitly** as localized combinations of the ω=0 flat-band Bloch
+states and confirm they are the hexagon bound mode — and check
+whether *larger* CLS exist (would bear on the "loop tower" of
+Q140 §3a).

@@ -278,8 +278,24 @@ energy ratio.
 >   bound/standing (massive-particle-like) limit of §3a a concrete
 >   realization, coexisting with the propagating photon band. (One
 >   localized eigenmode is not yet integer occupation — that is
->   Tier 2.) Likely a *flat band* of the edge-wave network; band
->   structure is the recommended next computation.
+>   Tier 2.)
+> - **Band structure confirms it.** Diagonalizing the one-tick Bloch
+>   operator (empirically from scatter_step; cross-checked by
+>   real-space diagonalization) gives **2 flat bands (ω=0, π) + 4
+>   dispersive bands**. The flat bands (group velocity 0) host the
+>   compact localized states; the bound mode is the **ω=0 flat-band
+>   CLS** (static). The dispersive bands are the propagating modes
+>   (small-k slope = the 0.41 phase velocity). ⇒ **Q is non-monotonic
+>   in ω** — infinite at the flat bands (0, π), low mid-band where
+>   group velocity peaks; not a simple "Q down with frequency."
+> - **Scale-invariant trapped fraction** (`loop_scaling.py`): a
+>   coherent circulating mode on the boundary of K hexagons traps
+>   **~51% independent of loop size** (P = 6→46). Bigger loops are
+>   not lossier for the coherent mode (only a single traveling pulse
+>   is, exponentially). The binding efficiency is the same at every
+>   loop size = every frequency scale — a concrete instance of the
+>   §3a self-similarity the h-universality claim needs (supportive,
+>   not proof; the per-cycle *action* is still Tier 2).
 > - **Circulation test** (the never-built "Test 4"): trapped loop
 >   mode carries ~6× the circulation of a propagating wavefront —
 >   circulation concentrates in recirculating energy, cancels for

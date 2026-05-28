@@ -109,6 +109,45 @@ Run: `python run_recirculation.py [--test loop|bound|circ|disp|all]`
   relation. (0.41 is the phase velocity along x; it need not equal
   sim-maxwell's ≈0.73 pulse-centroid speed.)
 
+### Band structure (`band_structure.py`) — explains the bound state
+
+Diagonalizing the one-tick Bloch operator over the Brillouin zone
+(built empirically from `scatter_step`; cross-checked against
+real-space diagonalization) gives **2 flat bands (ω = 0 and ω = π) +
+4 dispersive bands**. The flat bands (group velocity 0) host the
+compact localized states — so the **bound** test's trapped mode is
+explained: it is a CLS on the **ω = 0 flat band** (static). The
+dispersive bands are the propagating modes (max group velocity ≈0.86;
+small-k slope = the 0.41 phase velocity).
+
+This answers the loss-vs-frequency question: **Q is non-monotonic in
+ω** — effectively infinite at the flat bands (ω = 0, π) and low
+mid-band where group velocity (radiative coupling) peaks; *not* a
+simple "Q down with frequency." *(Lesson: the first detector —
+per-band bandwidth — wrongly reported "no flat band" because the flat
+bands coincide with dispersive band edges; density-of-states is the
+right detector. See [work/tier2-design.md](work/tier2-design.md) §3.)*
+
+### Loop-size scaling (`loop_scaling.py`) — a scale-invariance hint
+
+Exciting the **boundary of a patch of K hexagons** as a coherent
+circulating mode and measuring the trapped (non-radiating) fraction:
+
+| hexagons | perimeter P | trapped fraction |
+|---:|---:|---:|
+| 1 | 6 | 0.509 |
+| 7 | 20 | 0.507 |
+| 19 | 34 | 0.509 |
+| 37 | 46 | 0.509 |
+
+**The trapped fraction is ~½ independent of loop size.** So a bigger
+loop is *not* lossier for the coherent mode (only a single traveling
+pulse is, exponentially as (2/3)^(2P)). The binding efficiency is the
+same at every loop size — i.e. every frequency scale. This is a
+concrete instance of the **scale-invariance** the h-universality
+argument needs (Q140 §3a): supportive, though not yet proof (that
+still requires the per-cycle *action*, Tier 2).
+
 ## What Tier 1 does NOT yet show
 
 - **That the bound state means quantization.** The compact localized
@@ -133,8 +172,10 @@ Run: `python run_recirculation.py [--test loop|bound|circ|disp|all]`
 | [README.md](README.md) | This document |
 | [lib.py](lib.py) | Self-contained honeycomb lattice + junction scatter + evolve (adapted from grid/sim-maxwell/run_hex.py) |
 | [run_recirculation.py](run_recirculation.py) | Tier 1 measurements: loop leakage, bound state, circulation, dispersion |
-| [work/tier2-design.md](work/tier2-design.md) | The bound-state finding in full + band-structure and Tier 2 (h-universality) plan |
-| [outputs/](outputs/) | Figures (`recirc_*.png`) and `loop_decay.csv` data |
+| [band_structure.py](band_structure.py) | Bloch band structure (empirical U(k) from scatter_step); flat-band / bound-state analysis |
+| [loop_scaling.py](loop_scaling.py) | Trapped (bound) fraction vs loop size — the scale-invariance check |
+| [work/tier2-design.md](work/tier2-design.md) | The bound-state finding, the confirmed band structure, and the Tier 2 (h-universality) plan |
+| [outputs/](outputs/) | Figures (`recirc_*.png`, `band_structure.png`, `loop_scaling.png`) and `loop_decay.csv` data |
 
 ## Background and cross-references
 
@@ -150,14 +191,16 @@ Run: `python run_recirculation.py [--test loop|bound|circ|disp|all]`
 
 Detailed plan in [work/tier2-design.md](work/tier2-design.md). In order:
 
-1. **Band structure** (`band_structure.py`, recommended next): diagonalize
-   the one-tick scattering operator over the Brillouin zone. Expected
-   to show a *propagating band* (matching ω ≈ 0.41·k) plus a *flat
-   band* that explains the bound state of the **bound** test. Cleanest,
-   lowest-risk computation; ties the Tier 1 results together.
+1. ~~**Band structure**~~ — **done** (`band_structure.py`): 2 flat
+   bands (ω=0, π) + 4 dispersive; the bound state is the ω=0 flat-band
+   CLS.
 2. **Resolve the per-cycle-action definition** on paper (the main
-   Tier 2 design risk — work/tier2-design.md §5).
+   Tier 2 design risk — work/tier2-design.md §5). This is the gate.
 3. **Tier 2**: complex amplitudes + helical (E ± iB) mode decomposition;
    measure circulation-mode action per cycle vs ω, and test the
    h-universality / RG-fixed-point prediction (with the block-spin
    cross-check). Substantial; its own module here.
+
+Smaller clean follow-up now available: construct the CLS explicitly
+from the ω=0 flat-band states and check whether *larger* compact
+localized states exist (bears on the "loop tower" of Q140 §3a).
