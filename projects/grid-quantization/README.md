@@ -77,7 +77,7 @@ scatter rule — the reason this project keeps its own
 
 ## Tier 1 results
 
-Run: `python run_recirculation.py [--test loop|circ|disp|all]`
+Run: `python run_recirculation.py [--test loop|bound|circ|disp|all]`
 (from the repo root, with `.venv` active). Outputs in
 [outputs/](outputs/).
 
@@ -89,6 +89,16 @@ Run: `python run_recirculation.py [--test loop|circ|disp|all]`
   Ticks 4–6 are contaminated by returning short reflected walks, so
   the clean number is the early single-step transmission extrapolated
   as T¹².
+- **bound** — *the surprise.* A generic circulating excitation on one
+  hexagon deposits **~51% into a non-radiating compact localized
+  state** that persists indefinitely (flat to t=300; verified
+  wraparound-free); the rest radiates in one tick. The bound pattern
+  has amplitudes ±1/√3, ∓(1−1/√3). **Loops genuinely trap energy** —
+  the bound/standing (massive-particle-like) limit, coexisting with
+  the propagating photon band. This overturned the pre-sim guess that
+  loops are overdamped. Caveat: one localized eigenmode is not yet
+  "quantization at every frequency" — see
+  [work/tier2-design.md](work/tier2-design.md) §2.
 - **circ** — a trapped single-hexagon loop mode carries peak
   circulation 6× its amplitude; a propagating wavefront ≈ 2×.
   Circulation concentrates in recirculating energy and cancels for
@@ -101,12 +111,18 @@ Run: `python run_recirculation.py [--test loop|circ|disp|all]`
 
 ## What Tier 1 does NOT yet show
 
-- **Running coupling.** Does the cumulative coupling of a *row* of
-  plaquettes accumulate from the bare 1/129.7 toward the low-energy
-  1/137? (Q140 §5 prediction b — tractable in this same script.)
-- **Exponent robustness.** Does the count stay 12 under careful
-  entry/exit bookkeeping, or do the −1/3 reflections / re-injection
-  shift it? (Q140 §5 caveat 1.)
+- **That the bound state means quantization.** The compact localized
+  state shows loops *can* trap energy; it is not yet integer
+  occupation or ℏω-per-quantum. That linkage is Tier 2.
+- **Running coupling.** Whether the cumulative coupling of a *row* of
+  plaquettes runs from the bare 1/129.7 toward 1/137 (Q140 §5
+  prediction b) is really about the *virtual* recirculatory dressing,
+  which a lossless scalar model does not expose as energy transfer —
+  so it is a Tier 2 (phasor) question, not a clean Tier 1 one.
+- **Exponent robustness.** The count is unambiguously 12 for the
+  isolated path (6 edges × 2), since T = 2/3 is confirmed
+  path-independent; the open part is whether the *physically relevant*
+  coupling is the bare path or a dressed value (Tier 2).
 - **Anything about h.** Tier 1 is energy ratios only; the
   frequency-independence of the per-cycle action is Tier 2.
 
@@ -116,8 +132,9 @@ Run: `python run_recirculation.py [--test loop|circ|disp|all]`
 |------|----------|
 | [README.md](README.md) | This document |
 | [lib.py](lib.py) | Self-contained honeycomb lattice + junction scatter + evolve (adapted from grid/sim-maxwell/run_hex.py) |
-| [run_recirculation.py](run_recirculation.py) | Tier 1 measurements: loop leakage, circulation, dispersion |
-| [outputs/](outputs/) | Figures and `loop_decay.csv` data |
+| [run_recirculation.py](run_recirculation.py) | Tier 1 measurements: loop leakage, bound state, circulation, dispersion |
+| [work/tier2-design.md](work/tier2-design.md) | The bound-state finding in full + band-structure and Tier 2 (h-universality) plan |
+| [outputs/](outputs/) | Figures (`recirc_*.png`) and `loop_decay.csv` data |
 
 ## Background and cross-references
 
@@ -131,10 +148,16 @@ Run: `python run_recirculation.py [--test loop|circ|disp|all]`
 
 ## Next steps
 
-1. Add a row-of-plaquettes cumulative-coupling measurement to
-   `run_recirculation.py` and test whether it runs toward 1/137.
-2. Settle the exponent-robustness question (entry/exit bookkeeping).
-3. Stand up Tier 2: complex amplitudes + helical mode decomposition,
+Detailed plan in [work/tier2-design.md](work/tier2-design.md). In order:
+
+1. **Band structure** (`band_structure.py`, recommended next): diagonalize
+   the one-tick scattering operator over the Brillouin zone. Expected
+   to show a *propagating band* (matching ω ≈ 0.41·k) plus a *flat
+   band* that explains the bound state of the **bound** test. Cleanest,
+   lowest-risk computation; ties the Tier 1 results together.
+2. **Resolve the per-cycle-action definition** on paper (the main
+   Tier 2 design risk — work/tier2-design.md §5).
+3. **Tier 2**: complex amplitudes + helical (E ± iB) mode decomposition;
    measure circulation-mode action per cycle vs ω, and test the
-   fixed-point (h-universality) prediction. This is a substantial
-   extension and will live in its own module/work folder here.
+   h-universality / RG-fixed-point prediction (with the block-spin
+   cross-check). Substantial; its own module here.

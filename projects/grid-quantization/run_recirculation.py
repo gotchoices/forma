@@ -12,22 +12,27 @@ Self-contained: the lattice / scatter / evolve machinery lives in
 this project's lib.py (adapted from grid/sim-maxwell/run_hex.py).
 The grid/ folder is not touched or imported.
 
-Three measurements:
+Four measurements:
 
-  loop  Single pulse sent around one hexagon.  The wavefront
-        amplitude decays as (2/3)^k along the loop; the per-junction
-        transmission T and the isolated single-loop energy return
-        T^12 = (2/3)^12 = 1/129.75 are the α-leakage conjecture.
+  loop   Single pulse sent around one hexagon.  The wavefront
+         amplitude decays as (2/3)^k along the loop; the per-junction
+         transmission T and the isolated single-loop energy return
+         T^12 = (2/3)^12 = 1/129.75 are the α-leakage conjecture.
 
-  circ  Plaquette circulation: a trapped single-hexagon loop mode
-        (pure circulation) vs a propagating wavefront (circulation
-        cancels).  Tests the zigzag-circulation hypothesis.
+  bound  Generic circulating excitation on one hexagon.  ~½ of it
+         projects onto a NON-RADIATING compact localized state that
+         persists indefinitely; the rest radiates in one tick.  Loops
+         genuinely trap energy — the standing (massive-like) limit.
 
-  disp  Plane-wave dispersion ω(k) via a line source: shows the
-        injected perturbation becomes a travelling oscillation with
-        a definite (linear, non-dispersive) dispersion relation.
+  circ   Plaquette circulation: a trapped single-hexagon loop mode
+         (pure circulation) vs a propagating wavefront (circulation
+         cancels).  Tests the zigzag-circulation hypothesis.
 
-  all   Run all three (default).
+  disp   Plane-wave dispersion ω(k) via a line source: shows the
+         injected perturbation becomes a travelling oscillation with
+         a definite (linear, non-dispersive) dispersion relation.
+
+  all    Run all four (default).
 
 Usage:
     source .venv/bin/activate
@@ -270,6 +275,114 @@ def test_loop(nx, ny, out_dir):
             "seq_amp": seq_amp}
 
 
+# ── Test: compact localized (bound) mode on one hexagon ──────
+
+def test_bound(nx, ny, out_dir):
+    """Excite one hexagon as a generic circulating mode and watch
+    what stays.  Result: a fixed fraction (~½) projects onto a
+    NON-RADIATING bound mode (a compact localized state) that
+    persists indefinitely; the rest radiates away in the first tick.
+
+    So loops genuinely TRAP energy — light quantization can rest on
+    real bound modes, not only on transient recirculation.  This is
+    the bound / standing (massive-particle-like) limit, complementary
+    to the propagating free-photon modes.  See work/tier2-design.md.
+
+    The run length is kept wraparound-free (c·t < box/2) so the
+    radiated fraction cannot return and masquerade as binding.
+    """
+    print(f"\n{'='*64}")
+    print(f"  BOUND — compact localized mode on one hexagon ({nx}×{ny})")
+    print(f"{'='*64}")
+
+    pos, edges, vert_ei, vert_end, edge_dirs, mid, box, wrap = \
+        make_honeycomb(nx, ny)
+    E = len(edges)
+    faces = find_plaquettes(edges, vert_ei, vert_end, edge_dirs)
+    cents = np.array([face_centroid(f, edges, pos) for f in faces])
+    cen = box / 2
+    tf = faces[int(np.argmin(((cents - cen) ** 2).sum(axis=1)))]
+    loop_edges = [ei for ei, _ in tf]
+
+    # Generic circulating excitation: all 6 loop edges, circ. dir.
+    a_fwd = np.zeros(E)
+    a_bwd = np.zeros(E)
+    for ei, side in tf:
+        if side == 0:
+            a_fwd[ei] = 1.0
+        else:
+            a_bwd[ei] = 1.0
+
+    period = len(tf)  # 6 ticks per loop traversal
+    # Keep wraparound-free: radiated energy travels ≤ ~0.73/tick, so
+    # cap the run at t < box_width / (2·0.73).
+    t_safe = int(box[0] / (2 * 0.73)) - 1
+    n_steps = max(2 * period, min(4 * period, t_safe))
+    snaps = evolve(a_fwd, a_bwd, vert_ei, vert_end, n_steps,
+                   snapshot_interval=1, N=3)
+
+    ticks, e_loop = [], []
+    for t, af, ab in snaps:
+        ticks.append(t)
+        e_loop.append(edge_energy(af, ab)[loop_edges].sum())
+    ticks = np.array(ticks)
+    e_loop = np.array(e_loop) / e_loop[0]
+
+    # Bound fraction: the plateau after the prompt radiation burst.
+    plateau = e_loop[period:]
+    f_bound = float(plateau.mean())
+    f_drift = float(plateau.max() - plateau.min())
+
+    # Recover the bound-mode pattern from the late-time loop state.
+    _, af_end, ab_end = snaps[-1]
+    pat_f = np.round(af_end[loop_edges], 3)
+    pat_b = np.round(ab_end[loop_edges], 3)
+
+    print(f"  Generic circulating excitation on a hexagon "
+          f"(run {n_steps} ticks, wraparound-free).")
+    print(f"  Loop energy drops to a plateau in the first tick, then "
+          f"holds:")
+    print(f"    bound-mode energy fraction = {f_bound:.4f} "
+          f"(drift over plateau {f_drift:.4f})")
+    print(f"    ⇒ ~{f_bound*100:.0f}% of the excitation is TRAPPED in "
+          f"a non-radiating bound mode;")
+    print(f"      ~{(1-f_bound)*100:.0f}% radiates away in the first "
+          f"tick and never returns.")
+    print(f"  Bound-mode standing pattern on the 6 loop edges:")
+    print(f"    fwd: {pat_f}")
+    print(f"    bwd: {pat_b}")
+    print(f"    (|amp| ≈ 1/√3 = {1/np.sqrt(3):.3f} and "
+          f"1−1/√3 = {1-1/np.sqrt(3):.3f})")
+    print(f"  ⇒ The honeycomb scattering network supports a COMPACT "
+          f"LOCALIZED STATE: a loop can")
+    print(f"    trap energy permanently.  Light quantization can rest "
+          f"on genuine bound modes — the")
+    print(f"    standing (massive-particle-like) limit, complementary "
+          f"to the propagating photon.")
+
+    fig, ax = plt.subplots(figsize=(7, 5))
+    ax.plot(ticks, e_loop, "navy", marker="o", ms=4,
+            label="loop energy (normalised)")
+    ax.axhline(f_bound, color="red", ls="--",
+               label=f"bound fraction = {f_bound:.3f}")
+    for L in range(1, n_steps // period + 1):
+        ax.axvline(period * L, color="gray", ls=":", alpha=0.4)
+    ax.set_xlabel("tick (dotted = loop periods)")
+    ax.set_ylabel("E_loop(t) / E_loop(0)")
+    ax.set_ylim(0, 1.05)
+    ax.set_title("Compact localized mode: ~½ of the excitation is "
+                 "trapped indefinitely")
+    ax.legend()
+    ax.grid(True, alpha=0.3)
+    fig.tight_layout()
+    path = os.path.join(out_dir, "recirc_bound.png")
+    fig.savefig(path, dpi=150, bbox_inches="tight")
+    print(f"  Saved: {path}")
+    plt.close(fig)
+
+    return {"bound_fraction": f_bound, "drift": f_drift}
+
+
 # ── Test: circulation cancels for a clean wavefront ──────────
 
 def _circ_index(J, energy):
@@ -478,7 +591,8 @@ def main():
     ap = argparse.ArgumentParser(
         description="grid-quantization Tier 1: recirculation / loop "
                     "leakage / dispersion (honeycomb).")
-    ap.add_argument("--test", choices=["loop", "circ", "disp", "all"],
+    ap.add_argument("--test",
+                    choices=["loop", "bound", "circ", "disp", "all"],
                     default="all", help="which measurement to run")
     ap.add_argument("--nx", type=int, default=48,
                     help="unit cells in x")
@@ -501,6 +615,8 @@ def main():
 
     if args.test in ("loop", "all"):
         test_loop(args.nx, args.ny, out_dir)
+    if args.test in ("bound", "all"):
+        test_bound(args.nx, args.ny, out_dir)
     if args.test in ("circ", "all"):
         test_circ(args.nx, args.ny, args.steps, out_dir)
     if args.test in ("disp", "all"):

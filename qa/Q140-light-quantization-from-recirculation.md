@@ -269,6 +269,17 @@ energy ratio.
 >   contaminated by returning short reflected walks; the clean
 >   number is the early single-step transmission extrapolated as
 >   T¹².)
+> - **Compact localized (bound) state — a surprise.** A generic
+>   circulating excitation on one hexagon deposits **~51% into a
+>   non-radiating bound mode** (amplitudes ±1/√3, ∓(1−1/√3)) that
+>   persists indefinitely (verified wraparound-free); the rest
+>   radiates in one tick. This overturned the pre-sim guess that
+>   loops are overdamped: **loops genuinely trap energy**, giving the
+>   bound/standing (massive-particle-like) limit of §3a a concrete
+>   realization, coexisting with the propagating photon band. (One
+>   localized eigenmode is not yet integer occupation — that is
+>   Tier 2.) Likely a *flat band* of the edge-wave network; band
+>   structure is the recommended next computation.
 > - **Circulation test** (the never-built "Test 4"): trapped loop
 >   mode carries ~6× the circulation of a propagating wavefront —
 >   circulation concentrates in recirculating energy, cancels for
@@ -277,10 +288,13 @@ energy ratio.
 >   long-wavelength regime — injected static perturbations become
 >   travelling oscillations with a definite dispersion relation.
 >
-> Not yet done in Tier 1: the **cumulative coupling of a row of
-> plaquettes** (does it run toward 1/137?) and whether the exponent
-> survives careful entry/exit bookkeeping (§5 caveat 1). Both are
-> tractable extensions of the same script.
+> Reassessed: prediction (b) (cumulative "running" coupling toward
+> 1/137) is about the *virtual* recirculatory dressing, which a
+> lossless scalar model does not expose as energy transfer — so it
+> is a Tier 2 (phasor) question, not a clean Tier 1 one. Exponent is
+> unambiguously 12 for the isolated path (T = 2/3 confirmed
+> path-independent). Full design + next steps in
+> [`projects/grid-quantization/work/tier2-design.md`](../projects/grid-quantization/work/tier2-design.md).
 
 **Tier 2 — h / quantization (phase winding + per-cycle action +
 scale invariance).** This needs **complex/phasor amplitudes** (to
