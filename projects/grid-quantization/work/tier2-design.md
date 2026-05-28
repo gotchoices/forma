@@ -124,6 +124,17 @@ Tier 2 job (§4). My earlier intuition that bigger loops trap less was
 wrong; the flat bands hold a fixed (1/3 of all) modes at every scale,
 and a circulating excitation's overlap with them is size-independent.
 
+**Is the ~½ the zero-point ½? No** (`mode_projection.py`). Projecting
+excitations exactly onto the bound subspace: random → 0.337 (= the
+1/3 flat-band dimension fraction), hexagon circulation → **0.571**
+(not 0.5; the dynamics' 0.51 is just the loop-edge part, the rest of
+the bound mode sits on spokes), bound pattern → 1.000. So the value
+is not 0.5 and is excitation-dependent — there is no structural ½.
+The ZPE ½ (zpe_derivation.md) is a spectral-average vacuum quantity,
+a different mechanism. The real, scale-invariant statement is:
+**a circulating (photon-like) excitation couples to the bound sector
+~1.7× more than random.**
+
 ## 4. Tier 2 central test: is h frequency-independent?
 
 The load-bearing Q140 claim: the per-cycle action carried by the
@@ -161,6 +172,60 @@ junction rule 2×/4× and checking the effective T, ζ, coupling return
 to the same values. If both the action-flatness and the block-spin
 invariance agree, that is strong, redundant evidence.
 
+## 4a. Resolving §5.1 on paper — and a wall it hits
+
+Trying to *define* "per-cycle action" rigorously (the §5.1 gate)
+surfaces a problem that no choice of definition fixes, and it is
+important to state plainly rather than code around:
+
+**A classical linear lattice cannot quantize a free wave's energy.**
+A linear field mode at frequency ω has energy ∝ A²ω² with amplitude A
+a *free, continuous* parameter — so its "action per cycle" (∝ E/ω)
+can be any value. There is no h. Quantization into ℏω quanta is
+**second quantization** (promote the mode amplitude to ladder
+operators, impose [a,a†]=1) — the same canonical/de-Broglie input
+standard QM makes (cf. metric-mass ch. 9's HO bridge; Postulate 1 in
+zpe_derivation.md, explicitly *postulated, not derived*). Our scatter
+rule is linear (sim-maxwell confirmed exact superposition), so the
+dynamics are classical-linear and carry no amplitude quantization.
+
+**Doesn't winding save it?** No. The compact-U(1) phase (axiom A3)
+*does* quantize winding — but winding-around-a-loop quantizes
+**charge** (vortices), exactly as maxwell.md derives. Photon *number*
+(occupation of a mode) is a different quantity; the loop topology
+does not fix it. So the §3a "integer winding ⇒ quantized per-cycle
+action" step conflates charge quantization with energy quantization.
+
+**Consequence for Q140.** The recirculation programme genuinely
+delivers: the photon's **mode structure** (bands, dispersion), its
+**spin/polarization** (the helical E±iB junction eigenmodes), **α**
+(single-loop leakage 1/129.7), and **bound modes** (flat-band CLS).
+That is a lot. But it does **not** derive **h**: the leap from a
+classical field to discrete quanta remains the standard
+second-quantization input. h is still as much an input here as in
+ordinary QM — unless it comes from somewhere the classical sim cannot
+see (the finite-information axiom A5/ζ — bounded phase + finite
+bits-per-cell — which *is* a genuine non-classical ingredient, but
+its link to amplitude quantization is unexplored; cf. Q135's
+Landauer-cost thread).
+
+**So the well-posed, lattice-derivable question is not "measure h"
+but "is the substrate scale-invariant?"** — because scale-invariance
+is the property that would make h *universal* (frequency-independent)
+*if* h emerges. That part is computable and is what we test.
+
+### Scale-invariance result (`scale_invariance.py`)
+
+The photon (acoustic) band is **linear, ω = v·k with v ≈ 0.41**, to
+within: 0.1% deviation at λ ≈ 9 L, 1% at λ ≈ 4 L, 10% at λ ≈ 2 L. The
+deviation falls as ~k² toward long wavelength. Real photons have
+λ/L_P ≳ 10²⁰, so the dispersion is scale-free (no preferred scale) to
+~10⁻⁴⁰ at any observable frequency — an excellent **IR fixed point**,
+with scale-invariance breaking only at the lattice (Planck) scale,
+exactly where new physics is expected anyway. So *if* a quantum
+emerges, it is frequency-independent to fantastic precision; the
+substrate supplies the universality, not the quantum.
+
 ## 5. Open design questions / risks (resolve before coding Tier 2)
 
 1. **Definition of "per-cycle action."** Energy/ω is the obvious
@@ -178,21 +243,30 @@ invariance agree, that is strong, redundant evidence.
    equal other directions; the action measure should be
    direction-averaged or the anisotropy quantified.
 
-## 6. Recommended order
+## 6. Recommended order (revised after §4a)
 
 1. ~~`band_structure.py` — confirm the flat band, map the propagating
    band(s).~~ **Done (§3):** 2 flat bands (ω=0, π) + 4 dispersive.
-2. **Next:** resolve §5.1 (the per-cycle-action definition) on paper —
-   the gate for the whole Tier 2 measurement.
-3. Complex-amplitude lattice + helical decomposition (`clib.py` or
-   extend `lib.py`); verify the two circulations are eigenmodes (the
-   ω=π flat band may be one of them — worth checking which flat band
-   carries which circulation).
-4. The ω-sweep action-flatness test (the h-universality / fixed-point
-   experiment), with the block-spin cross-check.
+2. ~~Resolve §5.1 (per-cycle-action definition).~~ **Done (§4a):** the
+   honest resolution is that the quantity isn't well-posed in a
+   classical linear lattice — the lattice gives modes, not quanta.
+   The well-posed surrogate (scale-invariance) is measured
+   (`scale_invariance.py`): an excellent IR fixed point.
+3. ~~Complex-amplitude per-cycle-action ω-sweep.~~ **Shelved** — it
+   would measure a classically-unquantized quantity. Not worth coding
+   until/unless the quantization source (item 4) is identified.
+4. **The real open frontier — the quantization source.** Does GRID's
+   finite-information axiom (A5: ζ = ¼ bit/cell; A3: bounded U(1)
+   phase) quantize a mode's amplitude into ℏω quanta — i.e. derive
+   second quantization rather than import it? This is *foundational*,
+   not a quick sim. Candidate concrete sub-question (cf. Q135): is the
+   Landauer cost of registering one cycle of phase advance one fixed
+   unit of action, independent of ω? If yes, that unit is h and the
+   IR scale-invariance (§4a) makes it universal.
 
-A smaller, clean follow-up also now available: **construct the CLS
-explicitly** as localized combinations of the ω=0 flat-band Bloch
-states and confirm they are the hexagon bound mode — and check
-whether *larger* CLS exist (would bear on the "loop tower" of
-Q140 §3a).
+Still-available clean follow-ups (smaller, optional):
+- **Construct the CLS explicitly** from the ω=0 flat-band states;
+  check whether *larger* CLS exist (bears on the Q140 §3a loop tower).
+- **Block-spin / decimation** (integrate out one sublattice ⇒
+  effective S·M(k) coin) to test the RG fixed point directly, a more
+  rigorous version of the dispersion-linearity scale-invariance.

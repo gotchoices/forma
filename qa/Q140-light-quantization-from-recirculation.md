@@ -1,10 +1,16 @@
 # Q140: Can light quantization (and h, and α) emerge from GRID recirculation loops alone — no MaSt sheets?
 
-**Status:** Open — working conjecture with one striking numerical
-coincidence (α from single-loop leakage) and a concrete simulation
-test. GRID-only by construction: the mechanism uses lattice
-junction scattering and closed-loop recirculation, not MaSt
-particle sheets.
+**Status:** Open — **partially answered** (developed in
+[`projects/grid-quantization/`](../projects/grid-quantization/)).
+GRID recirculation *does* yield the photon's mode structure, spin,
+**α** (single-loop leakage 1/129.7), and genuine **bound modes** —
+all GRID-only. But it does **not** derive **h**: in a classical
+linear lattice, free-wave energy is unquantized (that is second
+quantization), and winding quantizes charge, not photon number (§7).
+What *is* derivable — the scale-invariance that would make h
+universal — holds (an IR fixed point). The quantization source (does
+the finite-information axiom A5 do it?) is the remaining open
+frontier.
 
 **Source:** User question (recirculation at every scale as the
 quantizer of light).
@@ -296,6 +302,13 @@ energy ratio.
 >   loop size = every frequency scale — a concrete instance of the
 >   §3a self-similarity the h-universality claim needs (supportive,
 >   not proof; the per-cycle *action* is still Tier 2).
+> - **Not the zero-point ½** (`mode_projection.py`): exact projection
+>   onto the bound subspace gives random → 0.337 (= 1/3 flat-band
+>   fraction), circulation → **0.571** (not 0.5; the dynamics' 0.51
+>   is only the loop-edge part). Excitation-dependent, so no
+>   structural ½; the ZPE ½ is a spectral-average vacuum quantity, a
+>   different object. Real takeaway: a circulating excitation couples
+>   to the bound sector ~1.7× more than random.
 > - **Circulation test** (the never-built "Test 4"): trapped loop
 >   mode carries ~6× the circulation of a propagating wavefront —
 >   circulation concentrates in recirculating energy, cancels for
@@ -312,20 +325,34 @@ energy ratio.
 > path-independent). Full design + next steps in
 > [`projects/grid-quantization/work/tier2-design.md`](../projects/grid-quantization/work/tier2-design.md).
 
-**Tier 2 — h / quantization (phase winding + per-cycle action +
-scale invariance).** This needs **complex/phasor amplitudes** (to
-track integer winding, which the current real-amplitude code cannot)
-and the symmetric/helical mode decomposition of
-[fields.md](../grid/fields.md). Measure circulation-mode action per
-loop traversal vs ω; the conjecture predicts it is constant in ω
-**iff** the lattice is a block-spin fixed point (foundations Q1). If
-flat in ω → h emerging from geometry *and* the fixed point
-demonstrated in one experiment. If it drifts → h would be
-scale-dependent, a real problem the framework must face. This tier
-is a distinct research program; it will live as its own module in
-[`projects/grid-quantization/`](../projects/grid-quantization/)
-(needing a complex-amplitude lattice, hence the project's own
-`lib.py`).
+**Tier 2 — h / quantization. Reassessed (2026-05-27): hits a wall,
+and it is an honest one.** Trying to *define* "per-cycle action"
+rigorously shows the test isn't well-posed in a classical linear
+lattice: a linear mode at ω has energy ∝ A²ω² with amplitude A free
+and continuous, so action/cycle (∝ E/ω) is *any* value — there is no
+h. Quantization into ℏω quanta is **second quantization** (impose
+[a,a†]=1), the same input standard QM makes. And winding does **not**
+rescue it: compact-U(1) winding quantizes **charge** (vortices, per
+[maxwell.md](../grid/maxwell.md)), not photon *number* — so §3a's
+"integer winding ⇒ quantized action" conflates the two.
+
+So the recirculation programme derives the photon's **mode structure,
+spin (helical junction modes), α (1/129.7), and bound modes** — but
+**not h**. The leap to discrete quanta remains the standard
+second-quantization input *unless* it comes from GRID's
+finite-information axiom (A5: ¼ bit/cell; A3: bounded U(1) phase),
+which the classical sim cannot see and which is **unexplored** (cf.
+[Q135](Q135-free-information-and-decoherence.md)'s Landauer thread —
+is the cost of registering one cycle of phase advance a fixed unit of
+action, independent of ω?). That is the real open frontier.
+
+What *is* lattice-derivable — the **scale-invariance** that makes h
+*universal* if it emerges — holds: the photon band is linear
+(ω ≈ 0.41·k) to ~10⁻⁴⁰ at observable wavelengths, an excellent IR
+fixed point (`scale_invariance.py`). The substrate supplies the
+universality, not the quantum. Full assessment:
+[`projects/grid-quantization/work/tier2-design.md`](../projects/grid-quantization/work/tier2-design.md)
+§4a.
 
 ---
 

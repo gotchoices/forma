@@ -5,9 +5,14 @@
 h and α can be *derived* (not assumed) from lattice recirculation.
 **Method:** Working hypothesis first; computational probes where they
 settle a question; mathematical derivation as the eventual target.
-**Status:** Tier 1 complete (single-loop leakage, circulation,
-dispersion). Tier 2 (phase winding / per-cycle action / RG fixed
-point) not yet started.
+**Status:** Tier 1 + band structure + scale-invariance complete.
+**Headline:** GRID recirculation derives the photon's mode structure,
+spin, α (1/129.7), and bound modes — but **not h**: free-wave energy
+quantization is second quantization, which the classical lattice does
+not supply (see "Tier 2 and the quantization wall" below). The
+scale-invariance that *would* make h universal does hold (IR fixed
+point). Open frontier: does the finite-information axiom A5 quantize
+amplitude into ℏω quanta?
 
 ## Why this project exists
 
@@ -140,30 +145,83 @@ circulating mode and measuring the trapped (non-radiating) fraction:
 | 19 | 34 | 0.509 |
 | 37 | 46 | 0.509 |
 
-**The trapped fraction is ~½ independent of loop size.** So a bigger
-loop is *not* lossier for the coherent mode (only a single traveling
-pulse is, exponentially as (2/3)^(2P)). The binding efficiency is the
-same at every loop size — i.e. every frequency scale. This is a
-concrete instance of the **scale-invariance** the h-universality
-argument needs (Q140 §3a): supportive, though not yet proof (that
-still requires the per-cycle *action*, Tier 2).
+**The trapped fraction is ~½ independent of loop size** (this is the
+energy on the loop edges; the *total* bound fraction including the
+mode's spill onto spokes is 0.571 — see below). So a bigger loop is
+*not* lossier for the coherent mode (only a single traveling pulse
+is, exponentially as (2/3)^(2P)). The binding efficiency is the same
+at every loop size — i.e. every frequency scale. This is a concrete
+instance of the **scale-invariance** the h-universality argument
+needs (Q140 §3a): supportive, though not yet proof (that still
+requires the per-cycle *action*, Tier 2).
 
-## What Tier 1 does NOT yet show
+### Is the ~½ the zero-point ½? (`mode_projection.py`) — No
 
-- **That the bound state means quantization.** The compact localized
-  state shows loops *can* trap energy; it is not yet integer
-  occupation or ℏω-per-quantum. That linkage is Tier 2.
-- **Running coupling.** Whether the cumulative coupling of a *row* of
-  plaquettes runs from the bare 1/129.7 toward 1/137 (Q140 §5
-  prediction b) is really about the *virtual* recirculatory dressing,
-  which a lossless scalar model does not expose as energy transfer —
-  so it is a Tier 2 (phasor) question, not a clean Tier 1 one.
-- **Exponent robustness.** The count is unambiguously 12 for the
-  isolated path (6 edges × 2), since T = 2/3 is confirmed
-  path-independent; the open part is whether the *physically relevant*
-  coupling is the bare path or a dressed value (Tier 2).
-- **Anything about h.** Tier 1 is energy ratios only; the
-  frequency-independence of the per-cycle action is Tier 2.
+Projecting excitations exactly onto the bound (flat-band) subspace:
+
+| excitation | trapped fraction |
+|---|---|
+| flat-band subspace dimension | 0.338 (2 of 6 bands ≈ 1/3) |
+| random state | 0.337 |
+| single edge | 0.338 |
+| hexagon circulation | **0.571** |
+| bound pattern [+,+,−,−,−,+] | 1.000 (pure eigenmode ✓) |
+
+The precise circulation figure is **0.571, not 0.5**, and it is
+**excitation-dependent** (a random state hits the subspace fraction
+1/3) — so there is no structural/universal ½. The ZPE ½ of
+[zpe_derivation.md](../ma-domain/work/zpe_derivation.md) comes from a
+*spectral average over a band* and is a *vacuum* quantity — a
+different object. The two ½'s were a loose coincidence.
+What *is* real: a circulating (photon-like) excitation couples to the
+bound sector **~1.7× more than random**, and that ratio is
+scale-invariant.
+
+## Tier 2 and the quantization wall (the honest verdict on h)
+
+Tier 2 was meant to measure the **per-cycle action** vs ω and test
+whether h is frequency-independent. Working through the *definition*
+of that quantity (the gate, work/tier2-design.md §4a) hits a wall
+worth stating plainly:
+
+**A classical linear lattice cannot quantize a free wave's energy.**
+A linear mode at frequency ω has energy ∝ A²ω² with amplitude A free
+and continuous, so its action per cycle (∝ E/ω) is *any* value —
+there is no h. Quantization into ℏω quanta is **second quantization**
+(impose [a,a†]=1), the same input standard QM makes. And winding does
+*not* rescue it: compact-U(1) winding quantizes **charge** (vortices,
+per maxwell.md), not photon *number*. So the §3a "integer winding ⇒
+quantized action" step conflates the two.
+
+**What this means for the hypothesis:**
+
+- The recirculation programme **does** deliver the photon's mode
+  structure, spin/polarization (helical junction modes), **α**
+  (1/129.7), and **bound modes** — a lot of genuine structure.
+- It does **not** derive **h**. The leap to discrete quanta remains
+  the standard second-quantization input — unless it comes from
+  GRID's finite-information axiom (A5: ¼ bit/cell; A3: bounded phase),
+  which the classical sim cannot see and which is **unexplored**
+  (cf. Q135's Landauer thread). That is the real open frontier.
+- What *is* lattice-derivable is the **scale-invariance** that would
+  make h *universal* if it emerges — and that holds: see below.
+
+### Scale-invariance (`scale_invariance.py`) — an IR fixed point
+
+The photon band is **linear, ω ≈ 0.41·k**, with deviation falling as
+~k²: 0.1% at λ≈9 L, 1% at λ≈4 L. Real photons (λ/L_P ≳ 10²⁰) see a
+scale-free dispersion to ~10⁻⁴⁰ — an excellent IR fixed point, with
+scale-invariance breaking only at the Planck scale. So the substrate
+supplies the *universality*; it does not supply the *quantum*.
+
+## What this project does NOT show
+
+- **Quantization of light (h).** See above — that is the
+  second-quantization wall; the classical lattice gives modes, not
+  quanta. Whether A5's finite information closes this is the open
+  frontier (work/tier2-design.md §6 item 4).
+- **The bound state ⇒ integer occupation.** Loops trap energy, but
+  that is not yet ℏω-per-quantum.
 
 ## Files
 
@@ -174,6 +232,8 @@ still requires the per-cycle *action*, Tier 2).
 | [run_recirculation.py](run_recirculation.py) | Tier 1 measurements: loop leakage, bound state, circulation, dispersion |
 | [band_structure.py](band_structure.py) | Bloch band structure (empirical U(k) from scatter_step); flat-band / bound-state analysis |
 | [loop_scaling.py](loop_scaling.py) | Trapped (bound) fraction vs loop size — the scale-invariance check |
+| [mode_projection.py](mode_projection.py) | Exact projection of excitations onto the bound subspace (settles the "is it the ZPE ½?" question — no) |
+| [scale_invariance.py](scale_invariance.py) | Dispersion linearity vs wavelength — the IR-fixed-point / scale-invariance check |
 | [work/tier2-design.md](work/tier2-design.md) | The bound-state finding, the confirmed band structure, and the Tier 2 (h-universality) plan |
 | [outputs/](outputs/) | Figures (`recirc_*.png`, `band_structure.png`, `loop_scaling.png`) and `loop_decay.csv` data |
 
@@ -189,18 +249,23 @@ still requires the per-cycle *action*, Tier 2).
 
 ## Next steps
 
-Detailed plan in [work/tier2-design.md](work/tier2-design.md). In order:
+Detailed plan in [work/tier2-design.md](work/tier2-design.md) §6. The
+Tier-1 / band-structure / scale-invariance work is done; the path
+forward was reframed by the §4a finding:
 
-1. ~~**Band structure**~~ — **done** (`band_structure.py`): 2 flat
-   bands (ω=0, π) + 4 dispersive; the bound state is the ω=0 flat-band
-   CLS.
-2. **Resolve the per-cycle-action definition** on paper (the main
-   Tier 2 design risk — work/tier2-design.md §5). This is the gate.
-3. **Tier 2**: complex amplitudes + helical (E ± iB) mode decomposition;
-   measure circulation-mode action per cycle vs ω, and test the
-   h-universality / RG-fixed-point prediction (with the block-spin
-   cross-check). Substantial; its own module here.
+1. ~~Band structure~~ — **done**: 2 flat bands + 4 dispersive.
+2. ~~Per-cycle-action definition / ω-sweep~~ — **resolved/shelved**:
+   the quantity isn't well-posed classically (the second-quantization
+   wall); the scale-invariance surrogate is measured (IR fixed point).
+3. **The real open frontier — where does h come from?** Does the
+   finite-information axiom (A5: ¼ bit/cell; A3: bounded U(1) phase)
+   quantize a mode's amplitude into ℏω quanta? Concrete sub-question
+   (cf. Q135): is the Landauer cost of registering one cycle of phase
+   advance a *fixed* unit of action, independent of ω? If yes, that
+   unit is h and the IR scale-invariance makes it universal. This is
+   foundational, not a quick sim.
 
-Smaller clean follow-up now available: construct the CLS explicitly
-from the ω=0 flat-band states and check whether *larger* compact
-localized states exist (bears on the "loop tower" of Q140 §3a).
+Optional clean follow-ups: construct the CLS explicitly from the ω=0
+flat-band states (does a *larger* CLS tower exist — Q140 §3a?); and a
+block-spin / decimation RG to test the fixed point more rigorously
+than the dispersion-linearity proxy.
