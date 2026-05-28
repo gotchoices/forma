@@ -14,7 +14,7 @@
 
 ## Abstract
 
-This document develops the proposal that quantum particles are waves on compact periodic dimensions, and that quantum measurement is an interaction event between two such waves — the particle and the observer. Grounded in classical wave mechanics and the geometry of compact surfaces, the picture offers candidate physical mechanisms for: (1) wavefunction collapse as the consumption of a single countable closure mode; (2) Born's rule as the statistics of wave-interaction weighted by local intensity; (3) the uniqueness of each measurement event; (4) frame-dependent outcomes as a consequence of relative phase geometry; and (5) the role of zero-point energy in continuously randomizing wave phases. The foundational derivations (quantization, wave energy, ZPE) are firm; the measurement-theory mechanisms are proposed, not proven, and the Bell-evasion route in particular requires the nonlocal-wave development of §5 and is not yet demonstrated. The aim here is to set up the program honestly and mark what is established versus what is open.
+This document develops the proposal that quantum particles are waves on compact periodic dimensions, and that quantum measurement is an interaction event between two such waves — the particle and the observer. Grounded in classical wave mechanics and the geometry of compact surfaces, the picture offers candidate physical mechanisms for: (1) wavefunction collapse as a three-part event — interference localizes the interaction, a detector threshold discretizes it, and closure-mode consumption makes it persist; (2) Born's rule as the statistics of wave-interaction weighted by local intensity; (3) the uniqueness of each measurement event; (4) frame-dependent outcomes as a consequence of relative phase geometry; and (5) the role of zero-point energy in continuously randomizing wave phases. A key distinction runs through the measurement account: clean particle-particle interaction (Compton-type) is threshold-free wave interference and unitary, whereas discrete persistent collapse appears only when a bound/atomic detector with a threshold is involved (photoelectric-type). The foundational derivations (quantization, wave energy, ZPE) are firm; the measurement-theory mechanisms are proposed, not proven, and the Bell-evasion route in particular requires the nonlocal-wave development of §5 and is not yet demonstrated. The aim here is to set up the program honestly and mark what is established versus what is open.
 
 ---
 
@@ -111,44 +111,70 @@ This section proposes that measurement is a physical interaction between two wav
 
 Let the particle be a wave on a compact dimension, ψ_p = A_p·e^(iφ_p), and the observer be a wave on a compact dimension, ψ_o = A_o·e^(iφ_o). Both are physical waves; both carry energy in their spatial derivatives; both are continuously perturbed by ZPE phase noise (§4).
 
-### 3.2 Interaction as Wave Overlap
+### 3.2 Interaction as Superposition and Interference
 
-Particle interactions in this picture are computed from wave overlaps, as in quantum field theory. **A modeling choice must be made explicit here**, and it is not yet settled which form is correct:
+When the particle wave and the observer wave come into proximity, the resulting field is their **superposition** — the sum of the two waves:
 
-- **Product form:** M(x) = ψ_p(x)·ψ_o(x), with combined phase φ_p + φ_o. Maximized where φ_p + φ_o = 2πn.
-- **Overlap form:** M(x) = ψ_o*(x)·ψ_p(x), with combined phase φ_p − φ_o (the standard QM inner-product integrand). Maximized where φ_p = φ_o.
+<!-- ψ_total(x) = ψ_p(x) + ψ_o(x) -->
+$$
+\psi_{\text{total}}(x) \;=\; \psi_p(x) + \psi_o(x)
+$$
 
-The original draft used the product form without justification. The standard quantum-mechanical overlap is the second (conjugated) form, and detection probabilities go as |⟨ψ_o|ψ_p⟩|². Which form the geometry actually selects — and whether the distinction affects the downstream measurement statistics — is an **open question** (§7.6). The phase-matching language below is written for the product form but should be re-derived once this choice is settled.
+The observable intensity is then
 
-With that caveat, the **phase-matching condition** is the condition under which the two waves constructively reinforce at point x. Away from it, the interaction integrand oscillates and cancels by single-valuedness. The observed position of the particle is proposed to be the point x where phase-matching is satisfied between the particle wave and the observer wave.
+<!-- |ψ_total|² = A_p² + A_o² + 2 A_p A_o cos(φ_p − φ_o) -->
+$$
+|\psi_{\text{total}}|^2 \;=\; A_p^2 + A_o^2 + 2 A_p A_o \cos(\varphi_p - \varphi_o)
+$$
+
+The cross term 2A_pA_o·cos(φ_p − φ_o) is **interference**: constructive where the compact-dimension phases match (φ_p = φ_o), destructive where they oppose (φ_p − φ_o = π). The interaction concentrates where the two waves phase-match in the compact dimension.
+
+This superposition form supersedes the earlier product/overlap framing. Summation is the physically correct combination for two waves sharing a region — it is what produces interference, and it is what the collapse-as-cancellation picture of §3.4 requires. Its relation to the standard quantum-mechanical inner product ⟨ψ_o|ψ_p⟩ = ∫ψ_o*ψ_p dx is that the inner product is the *spatial integral* of the cross-term; the local interference pattern above is the integrand-level picture, which is what determines *where* the interaction localizes.
+
+The observed location of the interaction is the point where the superposed wave constructively reinforces — where the two compact-dimension phases match.
 
 ### 3.3 Motivating Phenomenology
 
-Phase-dependent measurement outcomes appear across quantum physics. These are cited as **motivation** for a phase-based measurement picture, not as proof of the specific mechanism proposed here:
+Phase- and threshold-dependent outcomes appear across quantum physics. These motivate the picture; they do not by themselves prove the specific mechanism. The phenomena split into two regimes — clean particle-particle interaction and bound-detector measurement — and that split structures the collapse account of §3.4.
 
-- **Josephson junctions:** supercurrent I = I₀ sin(Δφ) — the observable is determined entirely by relative phase.
-- **Feynman path integrals:** the classical trajectory is the path of stationary phase.
-- **Homodyne detection:** a local-oscillator detector measures by phase matching; detection amplitude goes as cos(Δφ).
-- **Quantum eraser experiments:** the observer's state controls whether interference occurs; erasing which-path information restores fringes.
-- **Weak measurement:** partial coupling produces partial collapse, consistent with incomplete phase-matching.
+**Clean particle-particle interaction — Compton scattering.** The cleanest photon-electron interaction is Compton scattering: photon + electron → photon + electron, genuinely two-body, conserving energy and momentum because the photon *survives* rather than being absorbed. (A *free* electron cannot absorb a photon at all — energy-momentum conservation forbids it; in the electron's rest frame absorption would require ω = 0. Clean photon-electron interaction is therefore scattering, not absorption.) Compton scattering is **continuous in energy — there is no threshold**. This is the regime of pure wave interaction (§3.2): the two waves interfere, the outcome is set by their relative compact-phase, and both particles survive. Reiter treats the Compton effect as one of the ratio experiments (h/m); it probes the per-cycle relation of Postulate 1.
 
-These establish that phase governs outcomes in quantum measurement. They do not, by themselves, establish the particular product-form phase-matching mechanism of §3.2 — that remains the proposal under test.
+**Detector measurement — the photoelectric effect (quarantined).** The photoelectric effect demonstrates the threshold/loading mechanism, but it is **not** a clean photon-electron interaction — it is an atomic, indeed ≥ three-body, effect. Since a free electron cannot absorb a photon, the atom or lattice is mandatory to absorb the recoil momentum. The photoelectric *threshold* — the work function W — is therefore an **emergent atomic / solid-state property**, not a fundamental photon-electron threshold. The effect cleanly establishes only two narrow things, and the file claims only these:
+  - **Postulate 1:** the relation E_electron = ℏω − W shows energy enters per-cycle as ℏω — frequency-dependent, intensity-independent.
+  - **The threshold/preload concept:** a bound electron loads continuously from the incoming wave and is liberated when accumulated energy crosses W; a pre-loaded electron is liberated faster, resolving the historical "instantaneity" objection.
 
-### 3.4 Collapse as Consumption of a Closure Mode
+  Beyond these, the work function is emergent atomic structure, not a particle-particle threshold. The photoelectric effect speaks to the *detector* side of measurement, not to the fundamental particle-particle interaction.
 
-The particle wave carries a closure mode — a countable integer winding set by the compact topology (§1.2). This is the quantum of energy exchanged.
+**Other phase-dependent phenomena** (motivation, not proof):
+  - **Josephson junctions:** supercurrent I = I₀ sin(Δφ) — observable determined by relative phase.
+  - **Feynman path integrals:** the classical trajectory is the path of stationary phase.
+  - **Homodyne detection:** detection amplitude goes as cos(Δφ) — phase-matched measurement.
+  - **Quantum eraser experiments:** the observer's state controls whether interference occurs.
 
-The proposal: when the phase-matching condition is satisfied at point x, the closure mode transfers from the particle wave to the observer wave, and this transfer is the measurement event. After transfer the particle wave no longer carries the mode; there is nothing left to match elsewhere. The apparent vanishing of the wavefunction at all points other than x — collapse — is then not a physical process propagating through space but the geometric consequence of countability: one mode, one matching event, nothing remaining.
+**The division of labor:** particle-particle interactions (Compton-clean) are threshold-free wave interference; detector measurements (photoelectric, atomic/bound) add a threshold. This distinction is the spine of the collapse mechanism in §3.4 — and it means collapse is not a clean two-particle phenomenon.
 
-**An unresolved difficulty must be flagged here.** The winding/closure number is a **topological invariant**, and topological invariants cannot change under continuous evolution of a smooth field — they change only where the field amplitude passes through zero (an unwinding event). For the closure mode to "transfer" from particle to observer, there must be a coordinated unwinding on the particle wave and rewinding on the observer wave, mediated by a point where amplitudes vanish. The draft asserted the transfer without supplying this mechanism. Making the transfer respect topological conservation — i.e., exhibiting the unwinding/rewinding event explicitly — is an **open requirement** (§7.7). Until then, "collapse as mode consumption" is a proposal with a known gap, not a derivation.
+### 3.4 Collapse: Interference Localizes, Threshold Discretizes, Consumption Persists
 
-Subject to that caveat, the picture addresses the three faces of the measurement problem as follows:
+The original aim of this document was to explain wavefunction collapse as the **cancellation** of the superposed wave everywhere except at the observed point. That picture is partly right, and completing it requires two companions. Collapse, in this framework, is a three-part event with a clear division of labor — and, crucially, the three parts live in different regimes (§3.3).
 
-| Problem | Proposed resolution |
-|---|---|
-| Why a definite outcome? | ZPE phase noise drives the wave to a specific matching point |
-| Why that outcome? | Where the ZPE phase walk stood at the moment of overlap |
-| Why does the rest vanish? | The closure mode is consumed — countability precludes a second match |
+**Part 1 — Interference localizes (particle-particle, threshold-free).** When the observed wave superposes with the observer wave (§3.2), the combined intensity is large only where the compact-dimension phases match and small (cancelled) where they oppose. This is pure wave interference — the Compton-clean, particle-particle part — and it sets *where* the interaction concentrates. Two physics caveats constrain it:
+
+- **Localization needs a localized observer.** Two simple waves give an interference *pattern* (fringes), not a single spot. Total cancellation requires equal amplitudes and exactly opposite phase, and occurs only on a set of fringe points. A single localized interaction point therefore requires the observer wave to be a localized packet (a superposition of many compact-phase components) so that constructive reinforcement happens at just one place.
+- **Interference redistributes, it does not destroy.** The total ∫|ψ|² is conserved; cancellation at one point piles amplitude at another. So interference *relocates* the wave's weight toward the match point — it does not by itself make the wave vanish permanently. Persistence needs Parts 2 and 3.
+
+**Part 2 — Threshold discretizes (detector, bound/atomic).** A persistent, discrete outcome — a click, an ejected electron, a recorded result — requires a bound or macroscopic detector carrying a threshold (the work function of §3.3, an ionization energy, a mode-creation energy). The combined wave, plus the detector's own preload (its ZPE-loaded internal modes), crosses the detector threshold at the localized match point. This is the snap of [threshold-dynamics.md](threshold-dynamics.md) viewed from the measurement side. The preload matters concretely: a pre-loaded detector crosses threshold from less incoming energy, and **two pre-loaded detectors can both cross from a single quantum** — which is exactly Reiter's coincidence-rate anomaly (R_e/R_c ≫ 1), the empirical signature that detector preload is real and combines.
+
+**Part 3 — Consumption persists (countability).** Once the threshold is crossed and the closure mode is delivered to the detector, the mode is consumed. Countability ensures one mode, one event: nothing remains to deliver elsewhere, so the collapse persists even after the waves separate. *(This step carries the topological-transfer gap of §7.7: the closure number is a topological invariant, and its transfer requires an unwinding/rewinding event — a coordinated zero-amplitude crossing on both waves — that the framework must still exhibit explicitly. Until then Part 3 is a proposal with a known gap, not a derivation.)*
+
+The three parts answer the three faces of the measurement problem with *distinct* mechanisms in *distinct* regimes:
+
+| Face of the problem | Mechanism | Regime |
+|---|---|---|
+| *Where* is the particle found? | Interference reinforcement at the phase-match point | Particle-particle, threshold-free (Compton-clean) |
+| *Why discrete* — a click, one quantum? | Detector threshold crossing + preload | Detector, bound / atomic (photoelectric-type) |
+| *Why does it persist* — stay collapsed? | Closure-mode consumption (countability) | Topological (gap: §7.7) |
+
+This resolves the tension the earlier draft carried. Pure cancellation (Part 1) explains *location* but neither discreteness nor persistence — those need the detector threshold (Part 2) and mode consumption (Part 3). The cancellation idea was right about the particle-particle wave interaction; it was incomplete because collapse-as-recorded-event also requires a bound detector. **The headline consequence: collapse is not a clean two-particle phenomenon.** Particle-particle interaction is unitary, threshold-free interference (Compton); the discrete, persistent collapse appears only when a bound/atomic detector with a threshold takes part (photoelectric). Where the ZPE phase walk stood at the moment of overlap (§4) selects which of the allowed interference maxima the threshold crossing lands on — supplying the definite outcome.
 
 ### 3.5 The Uniqueness of Each Measurement Event
 
@@ -232,7 +258,7 @@ The "this picture" column states what the framework *aims* to deliver; entries r
 | Feature | Copenhagen | Many Worlds | Pilot Wave | Stochastic ED | This Picture |
 |---|---|---|---|---|---|
 | ψ is real? | No | Yes | Guides particle | Classical field | Yes — wave on compact sector |
-| Collapse mechanism | Postulated | No collapse | Effective | Not explained | Closure-mode consumption (gap: §3.4) |
+| Collapse mechanism | Postulated | No collapse | Effective | Not explained | Interference + threshold + consumption (§3.4; Part 3 gap) |
 | Born's rule | Postulated | Derived (controversial) | Postulated | Partially derived | Candidate mechanism (§4.3, unproven) |
 | Randomness source | Postulated | None | None | ZPE field | ZPE phase noise on compact sector |
 | Hidden variables? | No | No | Yes | No | No |
@@ -256,7 +282,9 @@ The honest reading: the framework's *distinctive strength* is the quantization-o
 
 **7.5 The preferred-basis problem.** The picture must specify what determines the measurement basis (why position rather than momentum, say) without circularly invoking the apparatus.
 
-**7.6 The interaction form (§3.2).** Whether measurement is the product ψ_p·ψ_o or the conjugated overlap ψ_o*·ψ_p must be settled, and the phase-matching condition re-derived for the correct form.
+**7.6 Localization and persistence in the interference picture (§3.4).** The interaction form is now settled as superposition/interference (§3.2 — replacing the earlier product/overlap ambiguity). Two issues remain: (a) localizing to a single point requires a localized (wave-packet) observer, which must be justified rather than assumed; (b) interference redistributes amplitude rather than destroying it, so persistent discrete collapse requires the detector threshold (Part 2 of §3.4) and mode consumption (Part 3) — interference alone is not enough.
+
+**7.6b Particle-particle vs. detector measurement.** The framework now separates threshold-free particle-particle interaction (Compton-clean, unitary interference) from threshold-bearing detector measurement (photoelectric, atomic/bound). Making this rigorous requires showing where the boundary lies — at what scale or binding does a system acquire a measurement threshold? — and connecting the detector-threshold side quantitatively to [threshold-dynamics.md](threshold-dynamics.md).
 
 **7.7 Topological consistency of collapse (§3.4).** The closure-mode "transfer" must be shown to respect topological conservation — exhibiting the unwinding/rewinding event (a zero-amplitude crossing) that allows an integer winding to move between waves. Without it, collapse-as-consumption has a gap.
 
@@ -276,9 +304,9 @@ The chain of reasoning, with each link's status marked:
 
 4. **ZPE as continuous phase noise** supplies a physical source of single-measurement randomness. *(Plausible; the spectrum is not yet derived.)*
 
-5. **Measurement as wave interaction** between particle and observer. *(Proposed; the interaction form §3.2 is unsettled and the phenomenology §3.3 is motivation, not proof.)*
+5. **Measurement as wave interaction** between particle and observer, via superposition and interference (§3.2). Clean particle-particle interaction (Compton) is threshold-free; detector measurement (photoelectric) is atomic/bound and adds a threshold. *(Proposed; §3.3 is motivation, not proof.)*
 
-6. **Collapse as closure-mode consumption.** *(Proposed with a known gap: the topological-transfer mechanism §3.4 is missing.)*
+6. **Collapse as a three-part event** — interference localizes (particle-particle), a detector threshold discretizes (bound/atomic), and closure-mode consumption makes it persist (countability). The collapse-as-cancellation aim is reconciled: cancellation is Part 1; discreteness and persistence need Parts 2 and 3. *(Proposed; Part 3 carries the topological-transfer gap of §7.7. Collapse is not a clean two-particle phenomenon — it requires a bound detector.)*
 
 7. **Born's rule from interaction statistics.** *(Candidate mechanism only; the intensity-proportionality and observer-amplitude gaps §4.3 are open.)*
 
