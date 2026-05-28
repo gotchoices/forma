@@ -83,7 +83,7 @@ class BlochOperator:
 
 def main():
     out_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                           "outputs")
+                           "..", "outputs")
     os.makedirs(out_dir, exist_ok=True)
 
     print("Band structure — honeycomb edge-wave network "

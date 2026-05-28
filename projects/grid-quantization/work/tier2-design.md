@@ -14,6 +14,16 @@ settled physics; it is the planning layer for
 | circ | trapped loop circulation ≈ 6×, propagating wave ≈ 2× | circulation concentrates in trapped energy, cancels for propagation |
 | disp | linear ω ≈ 0.41·k, non-dispersive (long-wavelength) | injected static perturbation → travelling oscillation with a definite dispersion relation |
 
+**Tier 1 detail / caveats:**
+- **loop:** the (2/3)ᵏ decay holds to machine precision for the first
+  three junctions (see [../outputs/loop_decay.csv](../outputs/loop_decay.csv));
+  ticks 4–6 are contaminated by returning short reflected walks, so the
+  clean number is the early single-step transmission extrapolated as T¹².
+- **circ:** circulation cancels for clean propagation (the
+  zigzag-cancellation picture).
+- **disp:** 0.41 is the phase velocity along x; it need not equal
+  sim-maxwell's ≈0.73 pulse-centroid speed.
+
 ## 2. The surprise: a compact localized (bound) state
 
 The pre-simulation guess was that a single hexagon is a strongly

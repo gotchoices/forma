@@ -38,8 +38,8 @@ Two results are imported and used, not re-derived (full treatment in [zpe_deriva
 - **Sub-fundamental probing carries ½ℏω₁.** Fluctuations below the fundamental ω₁ = 2πv/L cannot close on the compact dimension and cannot persist, but they carry real energy; averaged over the sub-fundamental band the typical fluctuation holds ½ℏω₁. This zero-point background is continuous and stochastic, so it **randomizes the compact phase** of every resident wave — the noise that makes the compact angle effectively unknowable between measurements.
 
 ### 1.4 Single loop vs. the full Ma sector
-<!--EC It may turn out that a photon is "information on a single compact dimension" (i.e. spin 1) so we should not be quite this dogmatic about everything being a 2D sheet.  The point is that it is not always 1D either.  -->
-The single-loop language used throughout is the minimal pedagogical case. In the full framework the compact sector is six-dimensional and a particle is a 2D standing-wave mode on a dim-pair Ma(i, j) — a "sheet" — with closure modes T(m_t, m_r). Wherever this file says "compact dimension," read "dim-pair sheet"; nothing in the measurement arguments depends on the sector being one-dimensional.
+
+The single-loop language used throughout is the minimal pedagogical case. In the full framework the compact sector is six-dimensional, and a particle is a standing-wave mode on it whose dimensionality is not fixed in advance: a photon may be information on a *single* compact dimension (consistent with spin 1), while many particles are 2D modes on a dim-pair Ma(i, j) — a "sheet," with closure modes T(m_t, m_r). The measurement arguments below do not depend on the mode's dimensionality — wherever this file says "compact dimension," read "the particle's compact mode," of whatever dimensionality the framework assigns it.
 
 ---
 
