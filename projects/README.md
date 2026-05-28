@@ -66,3 +66,10 @@ Each project's README should:
   meson spectrum, Yukawa mediator for strong force, corrugated-
   torus geometry candidate. **Status: active; work-file-driven;
   initial computational results pending.**
+- [grid-quantization/](grid-quantization/) — A GRID-only account of
+  why light is quantized, and whether h and α can be *derived* (not
+  assumed) from lattice recirculation loops. Tests the
+  [Q140](../qa/Q140-light-quantization-from-recirculation.md)
+  conjecture. **Status: Tier 1 done — single-hexagon energy return
+  (2/3)¹² = 1/129.75 sits in α's running range; Tier 2 (h-universality
+  / RG fixed point) not started.**

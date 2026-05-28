@@ -243,17 +243,44 @@ the same number seen two ways is open.
 
 Two tiers, matching two questions:
 
-**Tier 1 — α leakage (energy ratio), simple, backward-compatible
-add to [sim-maxwell](../grid/sim-maxwell/).** Identify hexagonal
+**Tier 1 — α leakage (energy ratio).** Identify hexagonal
 plaquettes, add a circulation/energy-return measurement (the Test 4
-"circulation" item the sim-maxwell README lists but never
-implemented), and a `test_loop_leakage()`: inject a pulse, measure
-the energy a single hexagon returns to the forward wave. Predictions:
+"circulation" item the grid/sim-maxwell README lists but never
+implemented), and a loop-leakage test: inject a pulse, measure the
+energy a single hexagon returns to the forward wave. Predictions:
 (a) single-loop return ≈ 1/130; (b) cumulative coupling of a *row*
 of plaquettes runs with path length toward 1/137. A dispersion
 measurement (drive at several ω, read off λ) makes "why oscillating"
 crisp at the same time. Real scalar amplitudes suffice for the
 energy ratio.
+
+> **Tier 1 implemented** (2026-05-27) — developed in the dedicated
+> project [`projects/grid-quantization/`](../projects/grid-quantization/)
+> (this conjecture's development home, kept out of grid/ since it is
+> speculative). Script
+> [`run_recirculation.py`](../projects/grid-quantization/run_recirculation.py)
+> with a self-contained lattice `lib.py` (adapted from
+> grid/sim-maxwell/run_hex.py; grid/ untouched). Results:
+> - **Single-loop leakage confirmed.** A pulse sent around one
+>   hexagon decays as exactly (2/3)ᵏ for the first three junctions
+>   (ratio 1.000 to machine precision) → per-junction transmission
+>   **T = 2/3**, so the isolated single-loop **energy return is
+>   (2/3)¹² = 1/129.75**, inside α's running range. (Ticks 4–6 are
+>   contaminated by returning short reflected walks; the clean
+>   number is the early single-step transmission extrapolated as
+>   T¹².)
+> - **Circulation test** (the never-built "Test 4"): trapped loop
+>   mode carries ~6× the circulation of a propagating wavefront —
+>   circulation concentrates in recirculating energy, cancels for
+>   clean propagation.
+> - **Dispersion**: linear ω ≈ 0.41·k, non-dispersive in the
+>   long-wavelength regime — injected static perturbations become
+>   travelling oscillations with a definite dispersion relation.
+>
+> Not yet done in Tier 1: the **cumulative coupling of a row of
+> plaquettes** (does it run toward 1/137?) and whether the exponent
+> survives careful entry/exit bookkeeping (§5 caveat 1). Both are
+> tractable extensions of the same script.
 
 **Tier 2 — h / quantization (phase winding + per-cycle action +
 scale invariance).** This needs **complex/phasor amplitudes** (to
@@ -265,8 +292,10 @@ loop traversal vs ω; the conjecture predicts it is constant in ω
 flat in ω → h emerging from geometry *and* the fixed point
 demonstrated in one experiment. If it drifts → h would be
 scale-dependent, a real problem the framework must face. This tier
-is a distinct research program and warrants its own folder
-(`grid/sim-recirculation/`), not a bolt-on to sim-maxwell.
+is a distinct research program; it will live as its own module in
+[`projects/grid-quantization/`](../projects/grid-quantization/)
+(needing a complex-amplitude lattice, hence the project's own
+`lib.py`).
 
 ---
 
