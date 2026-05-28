@@ -1,6 +1,6 @@
 # threshold-dynamics.md — outline of a threshold-based mechanism for decay and production
 
-**Status:** Outline only. The mechanism is not yet developed. This file frames the architecture, names the central open questions, and sets up the production-from-injection scenario whose resolution would be the framework's load-bearing result. A second pass to develop the file body should happen *only after* the mechanism questions in §6 have working answers.
+**Status:** PRELIMINARY — parked, not yet developed. This is an early-stage outline, deliberately not built out. It frames the architecture, names the central open questions, and sets up the production-from-injection scenario whose resolution would be the framework's load-bearing result. **Do not expand the file body until the mechanism questions in §6 have working answers** (see §11 for the gating preparatory work). This is a file to return to at the right time, not an active workstream.
 
 This is the threshold-theory parallel to [leakage-rate.md](leakage-rate.md). Where leakage-rate computes decay rates from the complex pole of a Green's function under standard quantum-mechanical assumptions, threshold-dynamics aims to derive particle creation and decay as **band-energy reorganization into eigenmode quanta** on continuous-amplitude wave dynamics — providing a concrete physical mechanism rather than a statistical postulate.
 
