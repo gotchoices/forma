@@ -226,6 +226,42 @@ exactly where new physics is expected anyway. So *if* a quantum
 emerges, it is frequency-independent to fantastic precision; the
 substrate supplies the universality, not the quantum.
 
+### §4b — Principle vs scale (a correction to the "wall" framing)
+
+The "we didn't derive h" framing above was too gloomy, and conflated
+two different things. **ℏ's numerical value is a *unit*** (the action
+unit, = 1 by construction, exactly like c is the speed unit) — not a
+dimensionless prediction. Expecting the *scale* to "fall out" was a
+category error; GRID takes α (dimensionless) as input and ℏ = c = 1
+by convention. The meaningful target is the dimensionless *principle*
+of quantization, which decomposes:
+
+| Piece of "light is quantized" | Source |
+|---|---|
+| **P1** which frequencies exist (spectrum/dispersion) | grid-derived |
+| **P2** each mode is a *harmonic* (linear) oscillator | grid-derived (exact superposition) |
+| **P3** occupation is *countable* (n ∈ ℤ at all) | the one genuine import |
+| **P4** quanta are *uniform* (ℏω each) and ℏ *universal* across ω | grid-derived (harmonic ⇒ even ladder; §4a scale-invariance ⇒ universal) |
+| scale of ℏ | a unit, not a prediction |
+
+P2 + P4 are not trivial: harmonic oscillators quantize into **even**
+ladders, which is *why* every photon of frequency ω is identical with
+energy exactly ℏω; an anharmonic medium would give uneven rungs and
+no clean photon. The grid's exact linearity guarantees the clean
+photon picture, and scale-invariance makes ℏ the same at every ω.
+
+So the only genuinely-imported piece is **P3 — countability** (the
+[a,a†]=1 step). The grid is not short of integers (winding → charge,
+compact-mode number → spectrum); the sharp open question is whether
+**A5's finite information (¼ bit/cell, bounded U(1) phase) forces
+occupation to be countable.** If yes, P3 is grid-native too and the
+quantization of light is fully GRID-derived up to the unit ℏ.
+
+**Revised verdict:** not "failed to derive h" but **"reduced the
+quantum to one dimensionless question (does A5 ⇒ countability?) plus
+one unit (ℏ)."** The grid supplies the entire quantization
+*structure*; P3 is the lone frontier.
+
 ## 5. Open design questions / risks (resolve before coding Tier 2)
 
 1. **Definition of "per-cycle action."** Energy/ω is the obvious

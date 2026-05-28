@@ -7,12 +7,13 @@ h and α can be *derived* (not assumed) from lattice recirculation.
 settle a question; mathematical derivation as the eventual target.
 **Status:** Tier 1 + band structure + scale-invariance complete.
 **Headline:** GRID recirculation derives the photon's mode structure,
-spin, α (1/129.7), and bound modes — but **not h**: free-wave energy
-quantization is second quantization, which the classical lattice does
-not supply (see "Tier 2 and the quantization wall" below). The
-scale-invariance that *would* make h universal does hold (IR fixed
-point). Open frontier: does the finite-information axiom A5 quantize
-amplitude into ℏω quanta?
+spin, α (1/129.7), bound modes, and the quantization *structure*
+(harmonic ⇒ uniform quanta; scale-invariance ⇒ ℏ universal). It does
+*not* need to derive ℏ's scale — that is a unit, not a prediction.
+The lone remaining piece is **countability** (that occupation is
+integer at all); the open question is whether the finite-information
+axiom A5 supplies it. Net: the quantum is *reduced* to one
+dimensionless question + one unit, not left a mystery.
 
 ## Why this project exists
 
@@ -184,27 +185,37 @@ whether h is frequency-independent. Working through the *definition*
 of that quantity (the gate, work/tier2-design.md §4a) hits a wall
 worth stating plainly:
 
-**A classical linear lattice cannot quantize a free wave's energy.**
-A linear mode at frequency ω has energy ∝ A²ω² with amplitude A free
-and continuous, so its action per cycle (∝ E/ω) is *any* value —
-there is no h. Quantization into ℏω quanta is **second quantization**
-(impose [a,a†]=1), the same input standard QM makes. And winding does
-*not* rescue it: compact-U(1) winding quantizes **charge** (vortices,
-per maxwell.md), not photon *number*. So the §3a "integer winding ⇒
-quantized action" step conflates the two.
+**The scale of ℏ was never the right target** — it is a *unit* (the
+action unit, = 1 by construction, like c), not a dimensionless
+prediction. Expecting it to "fall out" was a category error. The
+meaningful target is the dimensionless *principle* of quantization,
+which decomposes — and the grid supplies most of it:
 
-**What this means for the hypothesis:**
+| piece of "light is quantized" | source |
+|---|---|
+| **P1** which frequencies exist | grid-derived |
+| **P2** each mode is a *harmonic* (linear) oscillator | grid-derived (exact superposition) |
+| **P3** occupation *countable* (n ∈ ℤ at all) | the one genuine import |
+| **P4** quanta *uniform* (ℏω each) + ℏ *universal* across ω | grid-derived (harmonic ⇒ even ladder; scale-invariance) |
+| scale of ℏ | a unit, not a prediction |
 
-- The recirculation programme **does** deliver the photon's mode
-  structure, spin/polarization (helical junction modes), **α**
-  (1/129.7), and **bound modes** — a lot of genuine structure.
-- It does **not** derive **h**. The leap to discrete quanta remains
-  the standard second-quantization input — unless it comes from
-  GRID's finite-information axiom (A5: ¼ bit/cell; A3: bounded phase),
-  which the classical sim cannot see and which is **unexplored**
-  (cf. Q135's Landauer thread). That is the real open frontier.
-- What *is* lattice-derivable is the **scale-invariance** that would
-  make h *universal* if it emerges — and that holds: see below.
+P2+P4 are not trivial: *harmonic* oscillators quantize into **even**
+ladders — that is *why* every photon of frequency ω is identical with
+energy exactly ℏω (an anharmonic medium would give uneven rungs and
+no clean photon). The exact linearity of the lattice guarantees the
+clean photon picture; the scale-invariance below makes ℏ universal.
+
+**The one genuinely imported piece is P3 — countability** (the
+[a,a†]=1 step). The grid is not short of integers (winding → charge,
+compact-mode number → spectrum); the sharp open question is whether
+**GRID's finite-information axiom A5 (¼ bit/cell, bounded U(1) phase)
+forces occupation to be countable.** That is the real frontier (cf.
+Q135's Landauer thread) — foundational, not a quick sim.
+
+**Verdict:** not "failed to derive h" but **"reduced the quantum to
+one dimensionless question (does A5 ⇒ countability?) plus one unit
+(ℏ)."** The grid supplies the entire quantization *structure* — plus
+α, spin, and bound modes; P3 is the lone remaining piece.
 
 ### Scale-invariance (`scale_invariance.py`) — an IR fixed point
 

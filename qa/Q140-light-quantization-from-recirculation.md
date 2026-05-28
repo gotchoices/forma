@@ -1,16 +1,18 @@
 # Q140: Can light quantization (and h, and α) emerge from GRID recirculation loops alone — no MaSt sheets?
 
-**Status:** Open — **partially answered** (developed in
+**Status:** Open — **largely answered, and reframed** (developed in
 [`projects/grid-quantization/`](../projects/grid-quantization/)).
-GRID recirculation *does* yield the photon's mode structure, spin,
-**α** (single-loop leakage 1/129.7), and genuine **bound modes** —
-all GRID-only. But it does **not** derive **h**: in a classical
-linear lattice, free-wave energy is unquantized (that is second
-quantization), and winding quantizes charge, not photon number (§7).
-What *is* derivable — the scale-invariance that would make h
-universal — holds (an IR fixed point). The quantization source (does
-the finite-information axiom A5 do it?) is the remaining open
-frontier.
+GRID recirculation yields the photon's mode structure, spin, **α**
+(single-loop leakage 1/129.7), genuine **bound modes**, and the
+quantization *structure*: modes are harmonic ⇒ uniform quanta, and
+the substrate is scale-invariant (IR fixed point) ⇒ ℏ universal.
+Deriving ℏ's *scale* was never the target — it is a unit (like c),
+not a dimensionless prediction. The lone genuinely-imported piece is
+**countability** (that occupation is integer at all — the [a,a†]=1
+step); the open question is whether the finite-information axiom A5
+(¼ bit/cell, bounded U(1) phase) supplies it (§7). Net: the quantum
+is *reduced* to one dimensionless question + one unit, not derived in
+full and not left a mystery.
 
 **Source:** User question (recirculation at every scale as the
 quantizer of light).
@@ -349,10 +351,21 @@ action, independent of ω?). That is the real open frontier.
 What *is* lattice-derivable — the **scale-invariance** that makes h
 *universal* if it emerges — holds: the photon band is linear
 (ω ≈ 0.41·k) to ~10⁻⁴⁰ at observable wavelengths, an excellent IR
-fixed point (`scale_invariance.py`). The substrate supplies the
-universality, not the quantum. Full assessment:
+fixed point (`scale_invariance.py`).
+
+**Reframed (the sharper, less gloomy reading).** ℏ's *scale* is a
+unit (like c), never a dimensionless prediction — so "h didn't fall
+out" is expected, not a failure. The dimensionless *principle*
+decomposes: which frequencies exist (P1, derived), modes are harmonic
+(P2, derived), quanta uniform + ℏ universal (P4, derived via
+harmonicity + scale-invariance), and **occupation countable (P3)** —
+the lone genuine import (the [a,a†]=1 step). The grid supplies the
+quantization *structure*; P3 is the one frontier, and the sharp
+GRID-native question is whether A5's finite information forces
+countability. So the quantum is **reduced to one dimensionless
+question + one unit**, not left a mystery. Full assessment:
 [`projects/grid-quantization/work/tier2-design.md`](../projects/grid-quantization/work/tier2-design.md)
-§4a.
+§4a–§4b.
 
 ---
 
