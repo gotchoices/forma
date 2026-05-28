@@ -293,6 +293,7 @@ supplies the *universality*; it does not supply the *quantum*.
 | [scale_invariance.py](scale_invariance.py) | Dispersion linearity vs wavelength — the IR-fixed-point / scale-invariance check |
 | [work/tier2-design.md](work/tier2-design.md) | The bound-state finding, the band structure, the principle-vs-scale reframe, and the Tier 2 plan |
 | [work/countability-from-information.md](work/countability-from-information.md) | Derivation sketch: countability (P3) from A3 (compact phase) + A5 (informational state) via U(1)↔ℤ |
+| [work/energy-and-coherence.md](work/energy-and-coherence.md) | Second route to P3 + ℏ's scale: a bounded ±1 substrate with a fixed flip-cost forces E ∝ ω and ℏ = dW × window; reduces to the coherence hinge (topological loop-locking) |
 | [outputs/](outputs/) | Figures (`recirc_*.png`, `band_structure.png`, `loop_scaling.png`) and `loop_decay.csv` data |
 
 ## Background and cross-references
@@ -328,6 +329,14 @@ derivation. What remains is to **harden the one interpretive step**
 
 These are foundational reasoning, not sims. The optional lattice
 follow-ups remain available (explicit CLS construction; block-spin RG).
+
+A second, complementary route to P3 is developed in
+[work/energy-and-coherence.md](work/energy-and-coherence.md): a bounded
+±1 substrate with a fixed per-flip work forces E ∝ ω and fixes ℏ's
+scale as a substrate unit, reducing light-quantization to a single
+coherence hinge. Its first concrete probe is a vertex / height-model
+test of whether loop-closure constraints on the ±1 honeycomb admit
+discrete winding sectors.
 
 Optional clean follow-ups: construct the CLS explicitly from the ω=0
 flat-band states (does a *larger* CLS tower exist — Q140 §3a?); and a
