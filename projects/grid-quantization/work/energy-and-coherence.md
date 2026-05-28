@@ -239,6 +239,28 @@ keeps the §3 energy quantum coherent from the Planck scale up to a
 photon. The two routes are one fact (single-valuedness on a compact
 phase) seen from energy and from topology.
 
+**Why this is quantization, stated plainly: periodicity ⇒ a discrete
+spectrum.** A function on a *periodic* phase (a circle, θ ∈ [0,2π)) is
+a Fourier *series* — Σ_n c_n e^{inθ} with **integer** n — exactly as a
+time-periodic signal has a discrete line spectrum at integer harmonics
+of its fundamental. That integer index *is* the occupation number. So
+quantization comes from the **periodicity** of the phase, **not** from
+the cell values being discrete: the phase values may be continuous,
+yet its conjugate (occupation) is integer because the phase closes on
+itself. This unifies the two routes and the two substrates:
+
+- a **continuous** periodic phase (U(1), infinite information per cell)
+  gives the *unbounded* integer ladder ℤ — ordinary QED;
+- a **finite** dial (ℤ_d, A5's finite information) gives a *bounded*
+  ladder of d rungs — the GRID-specific deviation.
+
+They are the same circle at two resolutions; continuous is the d → ∞
+limit. So the ±1 substrate's discreteness is *not* what does the
+quantizing — periodicity is — it is what makes the ladder *bounded*
+and supplies the substrate energy grain dW (§3). The clean statement
+of the mechanism is the continuous one; the finite substrate is what
+makes it GRID rather than textbook QED.
+
 **Terminology.** The integer such a loop carries is a conserved
 **winding / circulation** — angular-momentum-like in physical content.
 It is *not* automatically "charge." In the GRID/MaSt promotion ladder
@@ -275,9 +297,24 @@ candidate). Progress toward P3, not a closure of it.
 
 ## 8. What would harden or test this
 
-- A bit-conserving (lattice-gas/FHP-style) ±1 scatter rule, to confirm
-  the ±1 dynamics reproduce the linear wave results without
-  naive-rounding noise (grid-quantizing §6.2).
+- A bit-conserving discrete scatter rule, to confirm the discrete
+  dynamics reproduce the linear wave results without naive-rounding
+  noise (grid-quantizing §6.2). **Concrete candidate — a sigma-delta /
+  error-feedback node:** the junction computes the exact (fractional)
+  scatter result, emits only the integer part on each edge, and
+  *carries the remainder forward* in a small bounded accumulator. This
+  resolves the 1/3 obstruction (no finite alphabet is closed under the
+  literal 2/3 rule — denominators grow as 3ⁿ) by tracking the owed
+  fraction exactly: edges stay integer (finite alphabet), the total
+  (edge integers + carried remainders) is **conserved exactly**, and
+  the continuous 2/3 scattering reappears as the noise-shaped
+  time-average of the integer edge stream — the substrate version of
+  how a 1-bit sigma-delta DAC reproduces a high-resolution signal.
+  *Caveats:* the node carries a few bits of memory (bounded, but more
+  than ζ's per-cell budget — it is a junction, not a counted cell),
+  and error-feedback is not automatically reversible (it gives exact
+  *conservation* — the load-bearing property — not microscopic
+  time-reversal; an FHP-style rule would give both).
 - A vertex / height-model formulation of the loop-closure constraints
   on the ±1 honeycomb, to test whether discrete winding sectors exist
   (the §6 conjecture). This is the first computational probe that would

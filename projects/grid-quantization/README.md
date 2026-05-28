@@ -53,6 +53,62 @@ The conjecture is captured in
 [Q140](../../qa/Q140-light-quantization-from-recirculation.md). This
 project is its development home.
 
+## Presentation arc
+
+The exploratory phase has converged. A clean linear derivation — *how
+information becomes light, and why light is quantized, from GRID* —
+runs in seven chapters. Each is tagged by what it actually delivers:
+**[derived]** (from GRID axioms + computation), **[reduced]** (standard
+physics shown to rest on a single GRID ingredient), or **[conjecture]**
+(graded, open). The honest result is a *reduction*, not a new physics:
+the quantization *structure* is grid-native, ℏ is a unit, and "light is
+quantized" collapses to one named hinge reached two independent ways.
+
+1. **The substrate and the junction rule** — *[derived]* the honeycomb
+   lattice; the periodic, bounded phase cell (A3); the equal-impedance
+   rule `outgoing = (2/3)·total − incoming` and its −1/3 restoring term.
+2. **Information becomes a wave** — *[derived]* the restoring term turns
+   an injected static perturbation into a travelling oscillation; linear
+   dispersion (ω ≈ 0.41·k); the helical Y-junction eigenmodes as the two
+   photon helicities (spin/polarization). *Answers "how information
+   becomes light."*
+3. **The modes of light** — *[derived]* the Bloch band structure:
+   dispersive bands (free photons) and flat bands (compact-localized /
+   bound, the mass-like limit); which frequencies exist (P1); each mode
+   an exact harmonic oscillator (P2); scale-invariance as an IR fixed
+   point.
+4. **ℏ is a unit, not a target** — *[reduced]* the principle-vs-scale
+   reframe; ℏ = dW·τ and c = L/τ as grain-combinations (Planck-unit
+   structure; the absolute scale is pinned by ζ via gravity — an
+   identification, not a theorem); h is not derivable from α (a pure
+   number cannot fix a dimensionful quantity). The dimensionless content
+   is ζ and α.
+5. **Why light is quantized: periodicity, not discreteness** —
+   *[reduced]* single-valuedness on the compact phase gives a discrete
+   (integer) spectrum (Fourier series / U(1)↔ℤ), and that integer is the
+   occupation number (P3 + P4). Two independent routes — topological
+   (countability) and energetic (bounded substrate + conserved count) —
+   converge on this one fact. Continuous phase → unbounded ladder (QED);
+   finite phase (A5) → bounded ladder (a GRID deviation). *Answers "why
+   light is quantized."*
+6. **The one imported piece, and the shared root** — *[conjecture]* the
+   lone hinge: the substrate's state must be an amplitude/distribution
+   over the phase (A5's informational reading), not a sharp classical
+   value. This is the same finite-information axiom that gives GRID its
+   gravity — so finite information would be a shared root of gravity and
+   quantum discreteness (unproven; the equivalence of the two A5 readings
+   is the open task). The α-scale leakage coupling (1/129.7) and the
+   bounded ladder enter here as graded GRID-specific signatures.
+7. **The honest ledger** — *[scope]* what is derived (info → light;
+   P1, P2, P4; ℏ as a unit; P3 reduced to one hinge), what is imported /
+   conjectured (the A5 reading; α; the shared root), and what is out of
+   scope (full QM — interference, the Born rule). Open computational
+   probes: the bit-conserving sigma-delta substrate rule, and
+   loop-closure / emergent-photon sectors.
+
+The raw material for these chapters already exists in the work files
+(below); the arc is the order in which to present it as a derivation.
+
 ## The mechanism in one paragraph
 
 The honeycomb (N=3) junction rule `outgoing = (2/3)·total − incoming`
