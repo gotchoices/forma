@@ -6,6 +6,12 @@
 
 ## Outline
 
+- **3.0 Vocabulary first** *(pedagogy).* Define — from the lattice, in
+  plain terms, *before* using them — the words this chapter leans on:
+  *wavevector k* and *Brillouin zone*, *band* and *dispersion relation*
+  ω(k), *Bloch mode*, *flat* vs *dispersive* band, *group velocity*,
+  *density of states*. Introduce each where it first appears; assume no
+  solid-state background.
 - **3.1 The Bloch band structure.** 2 flat bands (ω = 0, π) + 4 dispersive
   bands (built empirically from `scatter_step`; cross-checked real-space).
 - **3.2 Dispersive bands = free photons** (P1: which ω exist); small-k

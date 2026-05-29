@@ -6,6 +6,15 @@
 
 ## Outline
 
+- **5.0 Open with a concrete thought experiment, before any math** *(this
+  is the keystone chapter — acclimate first).* A signals-flavored
+  example that makes "periodicity ⇒ a discrete (integer) spectrum"
+  tangible: a *periodic* signal has a line spectrum at integer harmonics
+  of its fundamental; a non-periodic one has a continuous spectrum. Then
+  point out the move the chapter makes — the same fact applied to the
+  *phase* rather than to time. (The digital-input-at-freq_max experiment
+  is the natural concrete hook for the §5.6 *scaling*; keep the two
+  examples distinct so the scaling is not mistaken for the quantization.)
 - **5.1 The target.** P3 (integer occupation, the one import) + P4 (uniform ℏω).
 - **5.2 The key fact.** Single-valuedness of a **complex amplitude** ψ on
   the compact phase ⇒ discrete (integer) spectrum (Fourier *series*).
