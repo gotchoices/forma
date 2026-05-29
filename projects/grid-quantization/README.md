@@ -69,7 +69,7 @@ unified account below, not novel prediction (α is input, ℏ a unit).
 |---|---|---|
 | EM wave / light | a propagating excitation of the edge-wave (junction-scatter) network | derived |
 | wave propagation | the −1/3 restoring term → oscillation; linear dispersion | derived |
-| spin / polarization | the two helical Y-junction eigenmodes (E ± iB) | derived |
+| spin / polarization | the two helicities (E ± iB) from the **ℵ-line** phase (A3's clock face = the smallest compact dimension), organized by the 3-fold junction — the *same* KK mechanism MaSt uses | derived |
 | photon spectrum (which ω) | the dispersive Bloch bands | derived |
 | ℏ (quantum of action) | the substrate phase-space grain, dW·τ (a unit) | identified |
 | **light quantization** (integer photons) | **single-valuedness of a *complex amplitude* on the compact phase ⇒ integer occupation** | **candidate** — requires A5 to supply a complex amplitude (the quantum state itself); *not* a cheaper stochastic claim |
@@ -190,9 +190,15 @@ recirculation loop. Two consequences are conjectured:
   (2/3)¹² = 1/129.75, which sits inside α's physical running range
   (1/137 low-E, 1/128 at the Z mass).
 
-Spin/polarization come from the same structure: the helical
-circulation eigenmodes of the Y-junction are the two photon
-helicities — so this needs no ℵ-line.
+Spin/polarization come from the **compact phase — the clock face, which
+*is* the ℵ-line (A3)** — organized by the Y-junction's 3-fold geometry
+into the two helicities (E ± iB). This is the *same* Kaluza–Klein
+mechanism MaSt uses (S¹ → U(1) 1-form → spin-1, see
+[../../grid/photon-from-aleph.md](../../grid/photon-from-aleph.md)), at
+the per-edge scale — so it **unifies with** the ℵ-line account rather
+than avoiding it. (Earlier drafts said "no ℵ-line"; that was wrong — the
+phase the junction uses *is* the ℵ-line. The restoring term gives
+propagation, not spin.)
 
 ## Two tiers
 

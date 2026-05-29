@@ -150,14 +150,19 @@ Consequences:
   standing wave, rest mass). A recirculation loop captures only the
   recirculatory fraction (leaky, the wave keeps moving). Same loop
   topology, same integer-winding quantization; the difference is
-  leakiness. This unifies the spin-1 photon and spin-½ matter
-  without invoking the ℵ-line.
-- **Spin / polarization for free.** The two helical Y-junction modes
-  (1, ω, ω²) and (1, ω², ω) — [fields.md](../grid/fields.md) — are
-  left/right circulation = the two photon helicities. Recirculation
-  *is* angular momentum; its handedness *is* spin. In the ℵ-line
-  story spin and quantization are separate compactifications; here
-  they are one object.
+  leakiness. This unifies the spin-1 photon and spin-½ matter through
+  the *same* compact-phase mechanism — see the spin note below.
+- **Spin / polarization from the ℵ-line.** The two helical Y-junction
+  modes (1, ω, ω²) and (1, ω², ω) — [fields.md](../grid/fields.md) — are
+  left/right circulation = the two photon helicities. That circulation
+  is in the **per-edge compact phase, which *is* the ℵ-line** (A3;
+  [photon-from-aleph.md](../grid/photon-from-aleph.md)) — so it is the
+  *same* Kaluza–Klein mechanism as MaSt's spin (S¹ → U(1) 1-form →
+  spin-1), with the 3-fold junction realizing the two helicities. It
+  **unifies with** the ℵ-line account, it does not avoid it. (An earlier
+  framing — "spin needs no ℵ-line" — was wrong: the phase the junction
+  uses *is* the ℵ-line. What is genuinely avoided is a *separate*
+  compactification postulate, not the ℵ-line itself.)
 - **Vacuum-energy bill.** Each virtual compact dimension carries a
   ½ℏω₁^(s) zero-point energy
   ([zpe_derivation](../projects/ma-domain/work/zpe_derivation.md)).
