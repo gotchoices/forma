@@ -63,8 +63,11 @@ open) · **[scope]** (accounting).
   (built empirically from `scatter_step`; cross-checked real-space).
 - 3.2 Dispersive bands = free photons (P1: which ω exist); small-k slope
   = the 0.41 phase velocity.
-- 3.3 Flat bands = compact-localized (bound) states = the mass-like /
-  standing limit (the `bound` test; ~½ trapped; *not* the ZPE ½).
+- 3.3 Flat bands (ω = 0, π) = localized, non-propagating **bound modes**
+  (the `bound` test; ~½ trapped; *not* the ZPE ½). **Not a massive
+  particle:** ω=0 is zero-energy, and there is *no* localized mode at
+  generic finite ω — so this is a bound/zero-mode, not "mass" (mass
+  proper is MaSt, elsewhere).
 - 3.4 Each mode an exact harmonic oscillator (P2): exact superposition.
 - 3.5 Scale-invariance: linear dispersion as an IR fixed point; trapped
   fraction size-independent.
@@ -105,16 +108,18 @@ Planck-units result is a *consistency*, not a proof the cell is Planck-sized.
 *Role:* the core — what light-quantization *is* in the model.
 
 - 5.1 The target: P3 (integer occupation, the one import) + P4 (uniform ℏω).
-- 5.2 The key fact: single-valuedness on the compact phase ⇒ discrete
-  (integer) spectrum — a Fourier *series*. *Periodicity*, not discreteness
-  of values, is the quantizer. (Signals analogy: periodic ⇒ line spectrum
-  at integer harmonics.)
-- 5.3 The integer *is* the occupation number (N = −i∂/∂θ has integer
-  spectrum) — the same fact as charge quantization, on the oscillation
-  phase instead of a spatial loop.
-- 5.4 Two converging routes: topological (dual of U(1) is ℤ) and energetic
-  (energy = conserved integer count; magnitude washes out, the conserved
-  total does not). One fact, two views.
+- 5.2 The key fact: single-valuedness of a **complex amplitude** ψ on the
+  compact phase ⇒ discrete (integer) spectrum (Fourier *series*).
+  *Periodicity* (not discreteness of values) is the quantizer. (Signals
+  analogy: periodic ⇒ line spectrum at integer harmonics.)
+- 5.3 The integer *is* the occupation number — the spectrum of
+  N̂ = −i∂/∂φ on ψ. **It requires the complex ψ:** a *real* distribution's
+  integer index is its *shape*, not occupation. *Distinct from* charge
+  (a classical topological winding, no QM) — same circle→ℤ math, different
+  objects. ⇒ P3 rests on the ch. 6 import (the complex amplitude).
+- 5.4 Two **complementary** routes — topological (the integer label) and
+  energetic (the ω-scaling) — both rest on the *same* A5 hinge:
+  co-dependent, *not* independent confirmation.
 - 5.5 Continuous vs finite: continuous phase → unbounded ladder (QED);
   finite dial (A5) → bounded ladder (GRID deviation). Same circle, two
   resolutions.
@@ -124,8 +129,11 @@ Planck-units result is a *consistency*, not a proof the cell is Planck-sized.
 *Sources:* [countability-from-information.md](countability-from-information.md),
 [energy-and-coherence.md](energy-and-coherence.md) §3, §5, §6.
 *Claim discipline:* the math (U(1)↔ℤ, Fourier series) is standard; the
-contribution is identifying it as the GRID mechanism + the two-route
-convergence. Say "what quantization *is*," not "we derived QM."
+contribution is identifying it as the GRID mechanism. Do **not** claim
+the integer comes from a real/stochastic state (it needs the complex
+amplitude — ch. 6), nor that the two routes are *independent*
+confirmation (they share the hinge). Resolve real-vs-complex before
+grading this [reduced]; "what quantization *is*," never "we derived QM."
 
 ---
 
@@ -133,17 +141,20 @@ convergence. Say "what quantization *is*," not "we derived QM."
 
 *Role:* state the lone hinge honestly and the gravity connection.
 
-- 6.1 The hinge: the state must be an amplitude/distribution over the
-  phase (A5's informational reading), not a sharp classical value
-  (a definite phase does not trigger §5).
+- 6.1 The hinge: the state must be a single-valued **complex amplitude**
+  over the phase (A5's informational reading) — the quantum state itself,
+  not a sharp classical value *and not a mere real distribution* (neither
+  triggers §5).
 - 6.2 Grade [interpretive]: the one load-bearing assumption — natural
   (A5 is an information axiom), but an interpretation, not algebra.
-- 6.3 Shared root with gravity: A5 also gives G (entropy → Jacobson). *If*
-  the two A5 readings coincide, finite information is the shared root of
-  gravity and quantum discreteness — **unproven**; the equivalence is the
-  open task (countability §8 step 1).
-- 6.4 Stochastic vs quantum: a real distribution gives countability; a
-  complex amplitude gives interference (full QM) — the latter not established.
+- 6.3 Shared root with gravity: A5 also gives G (entropy → Jacobson), but
+  the two *uses* differ — gravity reads A5 as a **real/statistical**
+  entropy count, quantization needs a **complex amplitude**. So "shared
+  root" is **unproven** and *harder* than it first looked: bridging
+  real-statistical to complex-amplitude is the open task (countability §8).
+- 6.4 Stochastic vs quantum (resolved): a real distribution does **not**
+  give countability — the complex amplitude is required for P3. Open: can
+  A5 supply a complex amplitude at all? (Interference / Born rule further still.)
 - 6.5 GRID-specific signatures (graded): bounded occupation ladder
   [predicted]; α-scale leakage coupling 1/129.7 [suggestive; value is input].
 - 6.6 The dynamical gate: the substrate rule must be a bit-conserving

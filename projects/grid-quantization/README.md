@@ -72,15 +72,17 @@ unified account below, not novel prediction (α is input, ℏ a unit).
 | spin / polarization | the two helical Y-junction eigenmodes (E ± iB) | derived |
 | photon spectrum (which ω) | the dispersive Bloch bands | derived |
 | ℏ (quantum of action) | the substrate phase-space grain, dW·τ (a unit) | identified |
-| **light quantization** (integer photons) | **single-valuedness on the compact phase ⇒ integer occupation** | **candidate** (rests on the A5 reading) |
-| mass / standing particle | a flat-band compact-localized (bound) state | limit shown |
-| charge | a spatial 2π phase winding (topological vortex) | derived ([maxwell.md](../../grid/maxwell.md)) |
+| **light quantization** (integer photons) | **single-valuedness of a *complex amplitude* on the compact phase ⇒ integer occupation** | **candidate** — requires A5 to supply a complex amplitude (the quantum state itself); *not* a cheaper stochastic claim |
+| localized "bound" mode (the would-be standing limit) | a flat-band compact-localized state at ω = 0, π | shown — but zero / band-edge energy, **not** a finite-rest-energy massive particle; mass proper is MaSt, not here |
+| charge | a spatial 2π phase winding (classical topological vortex) | derived ([maxwell.md](../../grid/maxwell.md)) |
 | gravity | horizon entropy from finite information (A5 → Jacobson) | derived ([gravity.md](../../grid/gravity.md)) |
 | α (coupling strength) | a loop-leakage / winding coupling; the *value* is input (A6) | input |
 
-One substrate; almost every entry an *identifiable structure in the
-model*, not a separate postulate — and the deepest entry (quantization)
-shares its axiom (A5) with gravity.
+One substrate; most entries are *identifiable structures in the model*,
+not separate postulates. The quantization entry shares its axiom (A5)
+with gravity — but note the two *uses* of A5 differ (gravity: a
+real/statistical entropy count; quantization: a complex amplitude), so
+"shared root" is a conjecture, not a demonstrated identity.
 
 ### The derivation, in seven chapters
 
@@ -109,21 +111,27 @@ it delivers: **[derived]** (from GRID axioms + computation), **[reduced]**
    number cannot fix a dimensionful quantity). The dimensionless content
    is ζ and α.
 5. **Why light is quantized: periodicity, not discreteness** —
-   *[reduced]* single-valuedness on the compact phase gives a discrete
-   (integer) spectrum (Fourier series / U(1)↔ℤ), and that integer is the
-   occupation number (P3 + P4). Two independent routes — topological
-   (countability) and energetic (bounded substrate + conserved count) —
-   converge on this one fact. Continuous phase → unbounded ladder (QED);
-   finite phase (A5) → bounded ladder (a GRID deviation). *This is what
-   light-quantization* is *in the model.*
+   *[reduced]* single-valuedness of a *complex amplitude* on the compact
+   phase gives a discrete (integer) spectrum (Fourier series / U(1)↔ℤ),
+   and that integer is the occupation number (P3 + P4). **The integer
+   needs the complex amplitude** — a real distribution gives only the
+   distribution's *shape*, not occupation — so P3 rests on the Ch. 6
+   import, not on discreteness alone. Two **complementary** routes
+   (topological → the integer label; energetic → the ω-scaling) both
+   rest on this one A5 hinge: co-dependent, *not* independent
+   confirmation. Continuous phase → unbounded ladder (QED); finite phase
+   (A5) → bounded ladder (a GRID deviation). *This is what
+   light-quantization* is *in the model* — modulo the Ch. 6 import.
 6. **The one imported piece, and the shared root** — *[conjecture]* the
-   lone hinge: the substrate's state must be an amplitude/distribution
-   over the phase (A5's informational reading), not a sharp classical
-   value. This is the same finite-information axiom that gives GRID its
-   gravity — so finite information would be a shared root of gravity and
-   quantum discreteness (unproven; the equivalence of the two A5 readings
-   is the open task). The α-scale leakage coupling (1/129.7) and the
-   bounded ladder enter here as graded GRID-specific signatures.
+   lone hinge: the substrate's state must be a single-valued **complex
+   amplitude** over the phase (A5's informational reading) — the quantum
+   state itself, not a sharp classical value *or a mere real
+   distribution*. This invokes the same axiom (A5) that gives GRID its
+   gravity, but the two *uses* differ — gravity reads A5 as a
+   real/statistical entropy count, quantization needs a complex amplitude
+   — so "shared root" is a **conjecture**, and bridging real-statistical
+   to complex-amplitude is the open task. The α-scale leakage coupling
+   (1/129.7) and the bounded ladder enter here as graded signatures.
 7. **The honest ledger** — *[scope]* the "what each phenomenon is" table
    above in full: what is derived (info → light; P1, P2, P4; ℏ as a unit;
    P3 reduced to one hinge), what is imported / conjectured (the A5
@@ -153,11 +161,16 @@ recirculation loop. Two consequences are conjectured:
   GRID already uses for charge) forces integer winding. Self-
   similarity across scales would make the per-cycle action — i.e. h —
   frequency-independent. This is the same question as foundations Q1
-  ("is the junction rule a block-spin RG fixed point?"). *(Caveat: the
-  band structure below puts the trapped/bound modes only at ω=0 and
-  ω=π — not at a frequency-matched tower — so the "resonant loop per
-  frequency" picture is this conjecture's most speculative element,
-  not a sim result.)*
+  ("is the junction rule a block-spin RG fixed point?"). *(**Superseded
+  by the findings below.** The band structure puts the trapped/bound
+  modes only at ω=0 and ω=π — there is no frequency-matched tower — so
+  "every frequency finds a resonant loop" is **contradicted**, not just
+  speculative. Quantization does **not** rest on resonant loops; the
+  actual quantizer is single-valuedness of the complex amplitude on the
+  per-mode oscillation phase (the arc, ch. 5). The loops retain a real
+  role — the α-scale leakage coupling and the bound modes — just not
+  this one. This paragraph is the original conjecture, kept for the
+  record.)*
 - **Coupling.** A propagating wave is dressed at each vertex it passes
   by a *virtual* recirculatory component — a per-vertex coupling, the
   lattice form of a dressed propagator. (In the lossless linear sim
@@ -178,13 +191,17 @@ helicities — so this needs no ℵ-line.
 | Tier | Question | State variable | Status |
 |------|----------|----------------|--------|
 | **1** | Single-loop leakage ≈ α? Why does it oscillate? | Real scalar amplitudes (energy ratios) | **Done** — see below |
-| **2** | Is the per-cycle action (h) frequency-independent? (RG fixed point) | Complex/phasor amplitudes (phase winding) | Not started |
+| **2** | ~~Is the per-cycle action (h) frequency-independent? (RG fixed point)~~ | — | **Reframed, not pursued** |
 
-Tier 1 needs only energy ratios, which real amplitudes give. Tier 2
-needs to track *integer phase winding* and the symmetric/helical mode
-decomposition, which requires complex amplitudes and a modified
-scatter rule — the reason this project keeps its own
-[lib.py](scripts/lib.py) rather than importing the grid/ substrate code.
+Tier 1 needs only energy ratios, which real amplitudes give. **Tier 2's
+original goal — "measure h / is it frequency-independent" — was a
+category error and is retired** (chapter 4 / the principle-vs-scale
+reframe): ℏ's *scale* is a unit, not a target. The live successor
+question is the dimensionless quantization *principle*, addressed by the
+two routes above (and resting on the chapter-6 import), not by a
+phasor-action ω-sweep. The substrate's scale-invariance (the property
+that *would* make ℏ universal *if* it emerged) was the part worth
+measuring, and is (`scale_invariance.py`): an IR fixed point.
 
 ## Computational results
 

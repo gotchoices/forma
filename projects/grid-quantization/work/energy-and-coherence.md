@@ -97,16 +97,24 @@ A continuum-amplitude wave would evade this — it could hide a lower ω
 in a gentler amplitude — but the pinned magnitude allows no such trade.
 This is Planck's *scaling*, forced by the bound.
 
-**What is the frequency-independent quantum, then? Not the energy —
-the action.** The invariant is action per cycle (energy × time):
+**What would the frequency-independent quantum be? Not the energy —
+the action.** *If* the action per cycle is a fixed universal h:
 
 > (action per cycle) = E · T = h,  so  E = h/T = **ℏω**
 
-So the energy bucket *shrinks* with frequency (ℏω = h/period): largest
-at ω_max (shortest period, where one cycle ≈ a single flip ≈ dW) and
-proportionally smaller below. **dW is the energy quantum only at the
-top of the band**; the general energy quantum is ℏω. The substrate's
-fixed grain is the *action*:
+then the energy bucket shrinks with frequency (ℏω = h/period), dW being
+its value only at ω_max. **But that "if" is the import, not a result of
+this route.** Flip-counting rigorously gives only the *scaling* —
+power ∝ ω, equivalently per-cycle energy *constant* (2 flips × dW,
+ω-independent). Promoting "per-cycle energy constant" to "per-cycle
+*action* = the universal h" (⇒ E = ℏω) is exactly the quantization
+postulate — the single-valued complex amplitude of
+[countability §3](countability-from-information.md), the
+de Broglie / Bohr–Sommerfeld step this route set out to avoid. So this
+route delivers the rigorous **scaling** (a pinned-magnitude wave cannot
+hide energy in amplitude); the **ℏω quantization itself is imported** —
+the *same* import as the topological route. Independently of that, the
+substrate's fixed *unit* of action is the grain product:
 
 > ℏ ≈ dW · τ = (energy grain) × (time grain)
 
@@ -276,9 +284,10 @@ winding, promoted to spin / mass / charge at successive closures.
 |---|---|
 | bounded *periodic* cell (any resolution; ±1 = minimal hardware); transition costs dW; lossless | **postulate** |
 | energy = dW × transitions (static = 0) | **rigorous** |
-| pinned magnitude ⇒ power ∝ ω (Planck scaling), no amplitude escape | **rigorous** |
-| fixed quantum is *action*; energy quantum = ℏω = h/period (dW only at ω_max) | **rigorous** |
-| ℏ ≈ dW·τ is a unit, window-independent | **rigorous / interpretive** |
+| pinned magnitude ⇒ power ∝ ω (the scaling), no amplitude escape | **rigorous** |
+| per-cycle energy is constant (2 flips × dW), ω-independent | **rigorous** |
+| energy quantum = ℏω (per-cycle action = universal h) | **imported** — the quantization postulate, not derived here |
+| ℏ ≈ dW·τ is the action *unit*, window-independent | **rigorous / interpretive** |
 | resolution ⊥ quantum-size | **rigorous** |
 | conservation transports a discrete *total* through dispersion | **rigorous** (given discrete-CA dynamics) |
 | dynamics are a bit-conserving discrete CA (not the continuous 2/3 rule) | **the dynamical gate** (unbuilt) |

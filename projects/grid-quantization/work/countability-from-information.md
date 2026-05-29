@@ -28,10 +28,18 @@ duality applies to each:
 | matter phase θ wound around **space** | winding number | **charge** (maxwell.md) |
 | a field mode's **oscillation phase** φ = ωt | occupation number | **photon number** |
 
-So photon-number quantization is *not* a different kind of fact from
-charge quantization — it is the **same** fact (compact phase ⇒
-integer conjugate) applied to the mode's own oscillation angle
-instead of to a spatial loop. My objection killed the wrong target.
+These share one piece of *mathematics* — single-valuedness on a
+compact U(1) forces an integer — but they are **not the same physical
+fact**, and the difference is load-bearing (§3). Charge is a
+**classical topological** winding of a classical field around a
+*spatial* loop: an integer with no quantum content (a homotopy class,
+maxwell.md). Occupation is a **quantum spectral** integer — the
+eigenvalue of N̂ on a single-valued *complex amplitude* over the *time*
+phase. Same circle→ℤ duality, different objects (classical homotopy vs
+quantum spectrum). My earlier objection was right that they are
+different; it was wrong only in concluding the oscillation-phase route
+is closed off. (Conflating the two is what misled the first draft of
+§3 below.)
 
 ---
 
@@ -97,12 +105,21 @@ hence graded [interpretive]. It is also the same move metric-mass
 ch. 9 calls "promoting amplitudes to operators"; here A5 is what
 licenses the promotion rather than it being imposed by fiat.
 
-**Quantum vs merely stochastic.** A *real* probability distribution
-over φ already has integer Fourier index — so **countability (P3)**
-needs only the statistical/informational state, not complex
-amplitudes. Full quantum structure (complex amplitudes ⇒
-interference, the Born rule) is a *stronger* claim and is **not**
-established here. This sketch derives countability, not all of QM.
+**Quantum vs merely stochastic — corrected.** An earlier draft claimed
+a *real* probability distribution over φ suffices for countability.
+That is **wrong** (and contradicts §8). A real P(φ) does have an
+integer Fourier index, but those integers index the *angular shape of
+the distribution*, not the occupation ladder. Occupation is the
+spectrum of N̂ = −i∂/∂φ acting on the **complex amplitude** ψ(φ), and
+that spectrum is integer **only because ψ is single-valued and
+complex**; a real P carries no such ψ, and its conjugate action stays
+**continuous**. So **integer occupation requires the complex amplitude
+— the quantum structure itself.** Countability is therefore *not* a
+cheaper, stochastic-only claim separable from QM: the single-valued
+complex amplitude *is* the imported piece. (Interference and the Born
+rule may be further still, but the complex amplitude is already
+required for P3 — so "countability without the rest of QM" overstates;
+the quantum *state* is already in.)
 
 ---
 
@@ -157,24 +174,30 @@ much stronger and more economical claim than deriving either alone.
 | Step | Grade |
 |---|---|
 | Dual of U(1) is ℤ ⇒ integer conjugate to a compact phase | **rigorous** |
-| Photon number = integer dual of the mode's oscillation phase (same fact as charge, different circle) | **rigorous** |
+| Occupation = integer spectrum of N̂ on a single-valued **complex amplitude** over the oscillation phase (a *quantum* fact; *distinct* from charge's classical winding) | **rigorous** |
 | Classical (definite phase) does not trigger it | **rigorous** |
-| A5's informational state = distribution/amplitude over the compact phase | **interpretive** (the one load-bearing assumption) |
-| ⇒ occupation countable (P3) | follows from the above |
+| A5's informational state = a single-valued **complex amplitude** over the compact phase | **interpretive** (the one load-bearing assumption) |
+| ⇒ occupation countable (P3) | follows — but only *given the complex amplitude* |
+| a *real* distribution alone gives countability | **FALSE** (corrected §3) — its integer index is the distribution's shape, not occupation |
 | ℏ is the unit, not derived | rigorous (§4b) |
 | Finite info ⇒ bounded occupation ladder per mode | **predicted** (testable in principle) |
-| Full QM (complex amplitudes, interference, Born rule) | **NOT established** — only countability is |
+| Interference / Born rule (beyond the complex amplitude) | **NOT established** |
 
-**Bottom line.** P3 is no longer a bare import: it is reduced to one
-interpretive reading of A5 (the substrate's state is informational =
-a distribution over the compact phase), after which integer
-occupation is forced by the dual-of-a-circle theorem. Combined with
-the already-derived pieces (P1 spectrum, P2 harmonicity, P4
-uniformity + scale-invariant universality, α, spin, bound modes),
-**the only remaining genuinely-open question is whether A5 should be
-read as supplying that informational/amplitude structure** — and
-that same reading is what already underwrites GRID's gravity. The
-scale ℏ is, and should be, a unit.
+**Bottom line.** P3 is reduced to one interpretive reading of A5 — that
+the substrate's state is a single-valued **complex amplitude** over the
+compact phase — after which integer occupation is forced by the
+dual-of-a-circle theorem. The import is therefore **the quantum state
+itself** (the complex amplitude), *not* a cheaper stochastic
+distribution: "countability without the rest of QM" overstates, since
+the complex amplitude is already the quantum structure. Combined with
+the already-derived pieces (P1, P2, P4 + scale-invariant universality,
+α, spin, bound modes), the genuinely-open question is whether A5
+supplies that *complex-amplitude* structure. The "same reading as
+gravity" claim is now **harder, not easier**: gravity reads A5 as a
+*real/statistical* entropy count (configuration counting on a spatial
+horizon), whereas P3 needs a *complex amplitude* over a temporal phase
+— so the two readings are, if anything, further apart, and showing them
+the same is the open task (§8). The scale ℏ is, and should be, a unit.
 
 ---
 
@@ -184,11 +207,13 @@ scale ℏ is, and should be, a unit.
   compact phase" derivable from how A5 is used in gravity.md (the
   entropy counting), so the two uses of A5 are demonstrably the same
   reading? If yes, the [interpretive] step upgrades toward [rigorous].
-- **Stochastic vs quantum.** Determine whether the informational
-  state must be a complex amplitude (interference, needed for full
-  QM) or can be a real distribution (gives countability only). The
-  former would be a route to deriving more of QM; the latter bounds
-  the claim honestly to "discreteness, not all of QM."
+- **Stochastic vs quantum — now resolved (§3).** Integer occupation
+  requires a single-valued *complex* amplitude; a real distribution
+  does **not** suffice. So the open question is not "real or complex?"
+  but the sharper one: **can A5 supply a complex amplitude at all?** A5
+  as used for gravity is a real/statistical entropy count — so this is
+  the same gap as "pin the A5 reading," now seen to require bridging
+  *real-statistical* (gravity) to *complex-amplitude* (quantization).
 - **The bounded-ladder prediction.** Work out ~2^{Nζ} for a concrete
   mode and confirm the cutoff is unobservably high (consistency), and
   whether any regime (very small N, near the Planck scale) could make
