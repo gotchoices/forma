@@ -1,30 +1,135 @@
 # Ch. 1 — The substrate and the junction rule
 
-**Status:** Outline (no prose yet). Part of the [presentation arc](README.md#presentation-arc).
-**Grade:** [derived]
-**Role:** establish the discrete medium and its local update — the stage on which everything else happens.
+**Status:** Draft (prose, first pass). Part of the [presentation arc](README.md#presentation-arc).
+**Grade:** [derived] — inherited substrate, cited rather than re-derived.
+**Role:** establish the discrete medium and its local update rule — the stage on which the rest is built.
 
-## Outline
+GRID models space not as a continuum but as a discrete network: a graph
+of **nodes** joined by **edges**, advancing under a clock. Everything in
+the chapters that follow happens on this network. This chapter fixes
+three things — the network's shape, the single quantity each piece of it
+carries, and the local rule by which that quantity updates. None of it
+is new; the substrate is the one established in
+[foundations.md](../../grid/foundations.md),
+[hexagonal.md](../../grid/hexagonal.md), and the
+[sim-maxwell](../../grid/sim-maxwell/) study, and is set out here only to
+fix notation and keep the arc self-contained.
 
-- **1.1 The honeycomb lattice.** Edges as cells, nodes as 3-valent
-  junctions; the geometry and why N = 3.
-- **1.2 The cell state — a periodic, bounded phase (A3).** A point on a
-  circle; only phase *differences* are physical; magnitude pinned.
-  *(Introduce the compact phase before any use of it.)*
-- **1.3 The clock (A2).** Discrete ticks; one update per tick; signal
-  limit one edge per tick.
-- **1.4 The junction rule** `out_i = (2/3)·total − in_i`, from energy
-  conservation + equal impedance; the −1/3 reflection / 2/3 transmission.
-- **1.5 No Maxwell input.** Geometry + impedance only.
+## 1.1 The honeycomb lattice
+
+The network is a **honeycomb** (hexagonal) lattice — a tiling of
+hexagons. Its defining feature is its **coordination number**, the
+number of edges meeting at each node, which is **three**. A node where
+three edges meet is a **Y-junction**, and it is where the action is: a
+signal arriving along one edge is redistributed onto the others.
+
+The physical degrees of freedom live on the **edges**, not the nodes. In
+GRID's "cell = its edges" reading, an edge is the elementary cell and a
+node is a junction — a place where cells meet and interact
+([hexagonal.md](../../grid/hexagonal.md)). Three is the smallest
+coordination that lets a signal both continue onward and branch, and it
+is the choice that gives the medium its particular scattering behaviour
+(§1.4). The honeycomb used here is the two-dimensional sheet; the full
+lattice is three-dimensional, but the account of light can be developed
+on the sheet.
+
+## 1.2 The cell's state: a bounded, periodic phase
+
+Each edge carries one degree of freedom: a **phase** θ — an angle, a
+position on a circle, with θ and θ + 2π denoting the *same* state. It is
+like a clock face: the cell's state is where a hand points, and the
+angle is all that matters. This is **axiom A3**.
+
+Two properties of this choice are used repeatedly and are worth naming
+before they are needed:
+
+- **The phase is compact (periodic).** It lives on a closed circle of
+  circumference 2π; advancing by a full turn returns to the start. This
+  per-edge circle is what GRID calls the **ℵ-line**
+  ([foundations.md](../../grid/foundations.md)) — the smallest compact
+  dimension in the framework.
+- **Only differences are physical.** The absolute value of θ on a single
+  cell is not observable; only the *difference* in phase between
+  neighbouring cells carries content. A uniform shift of every cell's
+  phase changes nothing — the lattice's gauge freedom (axiom A4).
+
+A propagating disturbance, then, is not a value sitting on one cell but a
+*pattern of differences* moving across cells. The junction rule (§1.4)
+governs how that pattern moves.
+
+## 1.3 The clock
+
+Time on the lattice is **discrete**: the network advances in synchronous
+steps called **ticks** (axiom A2 supplies discrete time and the causal
+ordering). At each tick, every junction reads its current inputs and
+produces its outputs, and nothing propagates faster than **one edge per
+tick**. That one-edge-per-tick ceiling is the lattice's maximum signal
+speed — the role the speed of light plays in the continuum.
+
+So the substrate is a clocked network: edges hold phases, the clock
+ticks, and at each tick the junctions act. What remains is to say what
+the junctions do.
+
+## 1.4 The junction rule
+
+At a Y-junction the signals arriving on the three edges are scattered
+into the signals leaving on them. The rule is not chosen freely; it is
+fixed by two requirements:
+
+- **energy conservation** — the junction neither creates nor destroys
+  signal energy, and
+- **equal impedance** — the three edges are physically equivalent, so
+  the junction treats them symmetrically.
+
+For a junction of N equal edges, the unique rule meeting both is
+
+> outgoing_i = (2/N) · (total incoming) − incoming_i.
+
+For the honeycomb, N = 3:
+
+> outgoing = (2/3) · (sum of all incoming) − incoming.
+
+This carries two coefficients. A signal arriving on one edge is
+**transmitted** onto each of the other two with coefficient **2/3**, and
+**reflected** back along its own edge with coefficient **−1/3**. The
+reflection is *negative* — sign-flipped relative to the incoming signal.
+That sign is not incidental: it is the single feature that makes the
+medium dynamical rather than inert. It is recorded here and used later.
+The coefficients and their derivation from impedance matching are in
+[hexagonal.md](../../grid/hexagonal.md); the rule is the one simulated in
+[sim-maxwell](../../grid/sim-maxwell/) and reimplemented in this
+project's `scripts/lib.py`.
+
+## 1.5 Nothing electromagnetic was put in
+
+The junction rule was built from geometry, energy conservation, and
+equal impedance alone. No electric field, magnetic field, or Maxwell
+equation enters its construction. That those *follow* — that a
+disturbance on this network is light, obeying Maxwell's equations — is a
+result derived from the rule, not an input to it
+([maxwell.md](../../grid/maxwell.md), sim-maxwell). At bottom the
+substrate is a clocked scattering network of phase-carrying edges;
+electromagnetism is something it does.
+
+---
+
+The stage is set: a honeycomb of phase-carrying edges (each a small
+compact circle, the ℵ-line), a discrete clock, and a single
+impedance-matched scattering rule whose reflection is sign-flipped. The
+remaining chapters (see the [arc](README.md#presentation-arc)) develop
+what lives on this stage.
 
 ## Sources
 
-- [../../grid/hexagonal.md](../../grid/hexagonal.md) — N=3 scattering, the 2/3 / −1/3 coefficients
-- [../../grid/foundations.md](../../grid/foundations.md) — A2 (time), A3 (compact phase)
-- [../../grid/sim-maxwell/](../../grid/sim-maxwell/) — the substrate simulation this is adapted from
-- `scripts/lib.py` — the project's lattice / scatter / evolve machinery
+- [foundations.md](../../grid/foundations.md) — A2 (discrete time), A3 (compact phase / ℵ-line), A4 (gauge)
+- [hexagonal.md](../../grid/hexagonal.md) — N = 3 scattering; the 2/3 transmission, −1/3 reflection
+- [sim-maxwell](../../grid/sim-maxwell/) — the substrate simulation; Maxwell from the rule
+- `scripts/lib.py` — this project's lattice / scatter / evolve implementation
 
 ## Claim discipline
 
-Inherited / standard — cite, don't re-derive. This chapter is setup; no
-quantum content yet.
+[derived] / inherited. Everything here is established GRID substrate,
+cited rather than re-derived. No quantum content, and no claim beyond
+"this is the medium and its rule." The sign-flipped reflection is
+recorded but not yet exploited; the ℵ-line is named but its role is not
+yet drawn on.
