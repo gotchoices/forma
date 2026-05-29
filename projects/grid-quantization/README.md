@@ -140,10 +140,18 @@ it delivers: **[derived]** (from GRID axioms + computation), **[reduced]**
    bit-conserving sigma-delta substrate rule, and loop-closure /
    emergent-photon sectors.
 
-Per-chapter outlines (section skeletons, sources, and claim discipline,
-no prose yet) are drafted in
-[work/chapter-outlines.md](work/chapter-outlines.md); the raw material
-already exists in the work files (below). Develop one chapter at a time.
+Each chapter is a file at the project root, currently in outline form
+(section skeleton, sources, claim discipline — no prose yet):
+[1](01-substrate-and-junction-rule.md) ·
+[2](02-information-becomes-light.md) ·
+[3](03-modes-of-light.md) ·
+[4](04-h-is-a-unit.md) ·
+[5](05-why-light-is-quantized.md) ·
+[6](06-imported-piece-and-shared-root.md) ·
+[7](07-honest-ledger.md).
+The raw material is in the work files (below). Develop one chapter at a
+time, honouring each chapter's *claim discipline* note (which already
+folds in [the outline review](work/chapter-outlines-review.md)).
 
 ## The mechanism in one paragraph
 
