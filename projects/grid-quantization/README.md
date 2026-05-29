@@ -178,7 +178,8 @@ recirculation loop. Two consequences are conjectured:
   per-mode oscillation phase (the arc, ch. 5). The loops retain a real
   role — the α-scale leakage coupling and the bound modes — just not
   this one. This paragraph is the original conjecture, kept for the
-  record.)*
+  record; the full account of this abandoned route is in
+  [work/loop-recirculation-attempt.md](work/loop-recirculation-attempt.md).)*
 - **Coupling.** A propagating wave is dressed at each vertex it passes
   by a *virtual* recirculatory component — a per-vertex coupling, the
   lattice form of a dressed propagator. (In the lossless linear sim
@@ -278,6 +279,7 @@ Figures and data land in [outputs/](outputs/).
 | [work/tier2-design.md](work/tier2-design.md) | The bound-state finding, the band structure, the principle-vs-scale reframe, and the Tier 2 plan |
 | [work/countability-from-information.md](work/countability-from-information.md) | Derivation sketch: countability (P3) from A3 (compact phase) + A5 (informational state) via U(1)↔ℤ |
 | [work/energy-and-coherence.md](work/energy-and-coherence.md) | Second route to P3 + ℏ's scale: a bounded ±1 substrate with a fixed flip-cost forces E ∝ ω and fixes the action unit ℏ = dW·τ; conservation carries the discrete total through dispersion, leaving a bit-conserving-dynamics gate + the topological per-mode lock |
+| [work/loop-recirculation-attempt.md](work/loop-recirculation-attempt.md) | Record of the *superseded* first hypothesis: loop self-consistency as the quantizer. Why it died (winding ⇒ charge not occupation; linear lattice can't quantize; resonant-loop-per-frequency falsified) and the one by-product that survives — the α-scale leakage value (2/3)¹² = 1/129.75 |
 | [outputs/](outputs/) | Figures (`recirc_*.png`, `band_structure.png`, `loop_scaling.png`) and `loop_decay.csv` data |
 
 ## Background and cross-references
