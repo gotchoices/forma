@@ -55,14 +55,39 @@ project is its development home.
 
 ## Presentation arc
 
-The exploratory phase has converged. A clean linear derivation — *how
-information becomes light, and why light is quantized, from GRID* —
-runs in seven chapters. Each is tagged by what it actually delivers:
-**[derived]** (from GRID axioms + computation), **[reduced]** (standard
-physics shown to rest on a single GRID ingredient), or **[conjecture]**
-(graded, open). The honest result is a *reduction*, not a new physics:
-the quantization *structure* is grid-native, ℏ is a unit, and "light is
-quantized" collapses to one named hinge reached two independent ways.
+The exploratory phase has converged. GRID's claim is **explanatory,
+not predictive**: it says **what each phenomenon *is*** in one substrate
+— lattice + clock + periodic phase (A3) + finite information (A5) —
+collapsing many independent postulates into a few. This project supplies
+the conspicuous missing entry, **light-quantization**, resting on one A5
+reading that GRID *also* uses for gravity. The accomplishment is the
+unified account below, not novel prediction (α is input, ℏ a unit).
+
+### What GRID says each phenomenon *is*
+
+| Observed phenomenon | What it *is* in GRID | Status |
+|---|---|---|
+| EM wave / light | a propagating excitation of the edge-wave (junction-scatter) network | derived |
+| wave propagation | the −1/3 restoring term → oscillation; linear dispersion | derived |
+| spin / polarization | the two helical Y-junction eigenmodes (E ± iB) | derived |
+| photon spectrum (which ω) | the dispersive Bloch bands | derived |
+| ℏ (quantum of action) | the substrate phase-space grain, dW·τ (a unit) | identified |
+| **light quantization** (integer photons) | **single-valuedness on the compact phase ⇒ integer occupation** | **candidate** (rests on the A5 reading) |
+| mass / standing particle | a flat-band compact-localized (bound) state | limit shown |
+| charge | a spatial 2π phase winding (topological vortex) | derived ([maxwell.md](../../grid/maxwell.md)) |
+| gravity | horizon entropy from finite information (A5 → Jacobson) | derived ([gravity.md](../../grid/gravity.md)) |
+| α (coupling strength) | a loop-leakage / winding coupling; the *value* is input (A6) | input |
+
+One substrate; almost every entry an *identifiable structure in the
+model*, not a separate postulate — and the deepest entry (quantization)
+shares its axiom (A5) with gravity.
+
+### The derivation, in seven chapters
+
+A clean linear presentation runs in seven chapters, each tagged by what
+it delivers: **[derived]** (from GRID axioms + computation), **[reduced]**
+(standard physics shown to rest on a single GRID ingredient),
+**[conjecture]** (graded, open).
 
 1. **The substrate and the junction rule** — *[derived]* the honeycomb
    lattice; the periodic, bounded phase cell (A3); the equal-impedance
@@ -89,8 +114,8 @@ quantized" collapses to one named hinge reached two independent ways.
    occupation number (P3 + P4). Two independent routes — topological
    (countability) and energetic (bounded substrate + conserved count) —
    converge on this one fact. Continuous phase → unbounded ladder (QED);
-   finite phase (A5) → bounded ladder (a GRID deviation). *Answers "why
-   light is quantized."*
+   finite phase (A5) → bounded ladder (a GRID deviation). *This is what
+   light-quantization* is *in the model.*
 6. **The one imported piece, and the shared root** — *[conjecture]* the
    lone hinge: the substrate's state must be an amplitude/distribution
    over the phase (A5's informational reading), not a sharp classical
@@ -99,15 +124,18 @@ quantized" collapses to one named hinge reached two independent ways.
    quantum discreteness (unproven; the equivalence of the two A5 readings
    is the open task). The α-scale leakage coupling (1/129.7) and the
    bounded ladder enter here as graded GRID-specific signatures.
-7. **The honest ledger** — *[scope]* what is derived (info → light;
-   P1, P2, P4; ℏ as a unit; P3 reduced to one hinge), what is imported /
-   conjectured (the A5 reading; α; the shared root), and what is out of
-   scope (full QM — interference, the Born rule). Open computational
-   probes: the bit-conserving sigma-delta substrate rule, and
-   loop-closure / emergent-photon sectors.
+7. **The honest ledger** — *[scope]* the "what each phenomenon is" table
+   above in full: what is derived (info → light; P1, P2, P4; ℏ as a unit;
+   P3 reduced to one hinge), what is imported / conjectured (the A5
+   reading; α; the shared root), and what is out of scope (full QM —
+   interference, the Born rule). Open computational probes: the
+   bit-conserving sigma-delta substrate rule, and loop-closure /
+   emergent-photon sectors.
 
-The raw material for these chapters already exists in the work files
-(below); the arc is the order in which to present it as a derivation.
+Per-chapter outlines (section skeletons, sources, and claim discipline,
+no prose yet) are drafted in
+[work/chapter-outlines.md](work/chapter-outlines.md); the raw material
+already exists in the work files (below). Develop one chapter at a time.
 
 ## The mechanism in one paragraph
 
