@@ -128,3 +128,69 @@ occupation and ℏω. The project then relocated the source of quantization
 
 These are the productive successors; this loop route is retained only as
 the record of the path not taken.
+
+---
+
+## 5. Aside: could the α-scale loop flux become an α explanation?
+
+The quantization idea died (§3), but the by-product of §2 — a **net
+circulating flux around a closed loop**, energy return (2/3)¹² =
+1/129.75, sitting *inside* α's running band — is exactly the kind of
+object that *produces field* in the MaSt/GRID picture (charge is the 2π
+loop vortex of [maxwell.md](../../../grid/maxwell.md); a coupling is a
+loop quantity). So it is worth positing — as a signpost, not a claim —
+how this might one day yield α, and which methods would bear fruit if
+pursued. Each point is graded *observation* / *conjecture* / *method*.
+
+- **Observation — it is the right kind of object.** A net circulation
+  around a closed loop is field-producing here, so a loop-leakage number
+  landing in α's range is structurally plausible, not a coincidence of
+  kind. The bare value 1/129.75 sits between the IR α (1/137.036) and
+  the M_Z α (1/128); the live question is *which scale it sits at and
+  how it runs*, not whether it equals one fixed α.
+- **Conjecture — the missing piece is screening, and screening is
+  nonlinearity.** Turning a bare loop flux into the *observed* (IR) α
+  needs a running/screening mechanism, and screening cannot appear in
+  the exactly-linear scatter rule: there, background noise superposes
+  and leaves the signal's loop return untouched (zero screening). Any
+  α-running story must therefore live in the **bounded / saturating
+  substrate** (the bit-conserving CA of
+  [energy-and-coherence.md](energy-and-coherence.md) §5–§6), not the
+  linear rule. This mirrors QED, where vacuum polarization is an
+  *interaction* (loop) effect absent from the free field — screening
+  appearing only in the nonlinear lattice is the right structural
+  signature.
+- **Conjecture — the vacuum as a sea of polarizable loops.** QED
+  screening dresses the propagator *between* source and probe. The
+  faithful lattice image: the vacuum is a medium of hexagon loops, each
+  randomly excited by background (ZPE-like) noise; a propagating field
+  is screened by their cumulative random response. Screening is "noise
+  in the **sea of intervening loops**," with single-loop self-saturation
+  a sub-case — not noise confined to the one source loop.
+- **Observation — direction.** Screening *weakens* the coupling (1/α
+  rises), so the bare loop value would screen *toward* the IR value
+  1/137.036 — the right target (the definition-independent α) and the
+  right direction. The separate "sum repeated loop insertions →
+  1/128.75" resummation runs the *opposite*, anti-screening way; the two
+  must not be conflated.
+- **Observation — the required effect is tiny.** Going 1/129.75 →
+  1/137.036 needs only ≈ **0.45% transmission loss per junction** (≈ 5%
+  per loop in energy). A literal 50% preload — or the ZPE reading
+  ⟨v²⟩ = ½ ⇒ RMS ≈ 0.71 of the ±1 range — would over-screen by orders of
+  magnitude. The workable regime is **weak-signal-on-strong-noise** (a
+  gentle reduction of the average susceptibility), not gross clipping. A
+  "50% preload = ZPE ½" identification also inherits the coincidental-½
+  caution already established by `../scripts/mode_projection.py` (its
+  0.571 trapped fraction was *not* the spectral ZPE ½).
+- **Caveat — scale.** A genuine *bare* (Planck-cutoff) coupling should
+  be *stronger* than 1/128; 1/129.75 is weaker, so where it sits on the
+  running curve is itself unsettled — part of what any running mechanism
+  must resolve.
+- **Method — result vs fit.** Build the bit-conserving nonlinear
+  substrate; set the background-noise level *from the ZPE derivation,
+  not tuned*; measure the loop's energy return with vs without the
+  noise. If a reduction appears (nonlinearity screens) and lands near
+  1/137 **with no free knob**, that is a prediction; if the noise must be
+  dialed to hit 137.036, it is a fit. Until such an unforced result
+  exists, α's value remains an A6 input — this is a thread to pull, not
+  a derivation.
