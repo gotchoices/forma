@@ -94,16 +94,17 @@ it delivers: **[derived]** (from GRID axioms + computation), **[reduced]**
 1. **The substrate and the junction rule** — *[derived]* the honeycomb
    lattice; the periodic, bounded phase cell (A3); the equal-impedance
    rule `outgoing = (2/3)·total − incoming` and its −1/3 restoring term.
-2. **Information becomes a wave** — *[derived]* the restoring term turns
+2. **Information becomes light** — *[derived]* the restoring term turns
    an injected static perturbation into a travelling oscillation; linear
-   dispersion (ω ≈ 0.41·k); the helical Y-junction eigenmodes as the two
-   photon helicities (spin/polarization). *Answers "how information
-   becomes light."*
+   dispersion (ω ≈ 0.41·k); spin / polarization from the **ℵ-line** phase
+   (A3) organized by the 3-fold junction into the two helicities — the
+   *same* KK mechanism as MaSt (propagation ← spring; spin ← phase).
+   *Answers "how information becomes light."*
 3. **The modes of light** — *[derived]* the Bloch band structure:
    dispersive bands (free photons) and flat bands (compact-localized /
-   bound, the mass-like limit); which frequencies exist (P1); each mode
-   an exact harmonic oscillator (P2); scale-invariance as an IR fixed
-   point.
+   bound modes at ω = 0, π — *not* finite-rest-energy massive particles);
+   which frequencies exist (P1); each mode an exact harmonic oscillator
+   (P2); scale-invariance as an IR fixed point.
 4. **ℏ is a unit, not a target** — *[reduced]* the principle-vs-scale
    reframe; ℏ = dW·τ and c = L/τ as grain-combinations (Planck-unit
    structure; the absolute scale is pinned by ζ via gravity — an
